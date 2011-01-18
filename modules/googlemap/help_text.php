@@ -217,7 +217,7 @@ case 'PLACECHECK_MATCH':
 	break;
 
 case 'PLACECHECK_KEY':
-	$title=WT_I18N::translate('Key to colors used');
+	$title=WT_I18N::translate('Key to colors used below');
 	$text=
 		'<table border="1" cellspacing="0" cellpadding="3"><tr><td style="color:red;">'.
 		translate_fact('PLAC').
