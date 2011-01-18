@@ -432,10 +432,10 @@ class base_plugin {
 
 	// Decorate inserted/deleted text
 	static function decorateInsertedText($text) {
-		return '<span class="search_hit">'.$text.'</span>';
+		return '<span class="added_text">'.$text.'</span>';
 	}
 	static function decorateDeletedText($text) {
-		return '<span style="text-decoration:line-through;">'.$text.'</span>';
+		return '<span class="deleted_text">'.$text.'</span>';
 	}
 
 	// Converted gedcom links into editable links
