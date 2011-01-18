@@ -69,7 +69,7 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach ($loggedusers as $user_id=>$user_name) {
 				$content .= "<tr><td><br />".PrintReady(getUserFullName($user_id))." - ".$user_name;
 				if (WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
-					$content .= "<br /><a href=\"javascript:;\" onclick=\"return message('" . $user_id . "');\">" . WT_I18N::translate('Send Message') . "</a>";
+					$content .= "<br /><a href=\"javascript:;\" onclick=\"return message('" . $user_name . "');\">" . WT_I18N::translate('Send Message') . "</a>";
 				}
 				$content .= "</td></tr>";
 			}
