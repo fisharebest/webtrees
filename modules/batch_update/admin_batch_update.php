@@ -432,7 +432,7 @@ class base_plugin {
 
 	// Decorate inserted/deleted text
 	static function decorateInsertedText($text) {
-		return '<span style="background:yellow">'.$text.'</span>';
+		return '<span class="search_hit">'.$text.'</span>';
 	}
 	static function decorateDeletedText($text) {
 		return '<span style="text-decoration:line-through;">'.$text.'</span>';
