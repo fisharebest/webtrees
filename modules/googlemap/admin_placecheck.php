@@ -126,10 +126,10 @@ if ($matching==1) {
 echo "></td></tr>";
 echo "</table>";
 echo "</td>";
+/*
 echo "<td>";
 echo "<table class=\"gm_check_top\" align='right'><tr><th>";
-echo WT_I18N::translate('Key to colors used'), help_link('PLACECHECK_KEY','googlemap');
-/*
+echo WT_I18N::translate('Key to colors used below'), help_link('PLACECHECK_KEY','googlemap');
 //Show Key table
 echo "<td rowspan='2'>";
 echo "<table class=\"gm_check_top\" align='right'>";
@@ -138,8 +138,9 @@ echo "<tr><td class='error'>", translate_fact('PLAC'), "</td><td class='error' a
 echo "<tr><td><a>", translate_fact('PLAC'), "</a></td><td class='error' align='center '><strong>X</strong></td><td align='center' class='error'><strong>X</strong></td><td class='check_comment'>", WT_I18N::translate('This place exists in the GoogleMap tables, but has no coordinates.'), "</td></tr>";
 echo "<tr><td><strong>".WT_I18N::translate('unknown')."</font></td><td class='error' align='center '><strong>X</strong></td><td align='center' class='error'><strong>X</strong></td><td class='check_comment'>", WT_I18N::translate('This place level is blank in your GEDCOM file. It should be added to GoogleMap places as "unknown" with coordinates from its parent level before you add any place to the next level.'), "</td></tr>";
 echo "<tr><td><a>".WT_I18N::translate('unknown')."</a></td><td align='center'>N55.0</td><td align='center'>W75.0</td><td class='check_comment'>", WT_I18N::translate('This place level is blank in your GEDCOM file, but exists as "unknown" in the GoogleMap places table with coordinates. No action required until the missing level can be entered.'), "</td></tr>";
-echo "</table>";*/
+echo "</table>";
 echo "</th></table></td>";
+*/
 echo "<td>";
 echo "<input type='submit' value='".WT_I18N::translate('Show')."' $target><input type='hidden' name='action' value='go'>";
 echo "</td>";
