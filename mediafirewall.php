@@ -548,16 +548,16 @@ $filesize = filesize($serverFilename);
 header("Content-Length: " . $filesize);
 
 // Some servers disable fpassthru() and readfile()
-if (function_exists('fpassthru')) {
-	$fp=fopen($serverFilename, 'rb');
-	fpassthru($fp);
-	fclose($fp);
-} elseif (function_exists('readfile')) {
+if (function_exists('readfile')) {
 	readfile($serverFilename);
 } else {
 	$fp=fopen($serverFilename, 'rb');
-	while (!feof($fp)) {
-		echo fread($fp, 65536);
+	if (function_exists('fpassthru')) {
+		fpassthru($fp);
+	} else {
+		while (!feof($fp)) {
+			echo fread($fp, 65536);
+		}
 	}
 	fclose($fp);
 }
