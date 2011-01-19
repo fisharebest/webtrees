@@ -1441,10 +1441,8 @@ function print_changes_table($change_ids) {
  */
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by_event=false) {
 	global $TEXT_DIRECTION, $WT_IMAGES;
-//	require_once WT_ROOT.'js/jquery/jquery.dataTables.min.js';
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	echo WT_JS_START.'var table_id = "'.$table_id.'"'.WT_JS_END;
-
 	?>
 	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
@@ -1455,11 +1453,17 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 				"bFilter": false,
 				"bInfo": false,
 				"bJQueryUI": false,
+				"aoColumns": [
+					null,
+					{ "bVisible": false },
+					null,
+					null,
+					null
+				]
 			});		
 		});
 	</script>
 	<?php
-
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
 	$filter = 0;
@@ -1502,7 +1506,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= "<table id=\"".$table_id."\" class=\"sortable list_table center\">";
 			$return .= "<thead><tr>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_I18N::translate('Record')."</th>";
-			$return .= "<th style=\"display:none\">GIVN</th>";
+			$return .= "<th>GIVN</th>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".translate_fact('DATE')."</th>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"".WT_I18N::translate('Anniversary')."\" title=\"".WT_I18N::translate('Anniversary')."\" border=\"0\" /></th>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".translate_fact('EVEN')."</th>";
@@ -1557,8 +1561,10 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		//-- Anniversary
 		$return .= "<td class=\"list_value_wrap rela\">";
 		$anniv = $value['anniv'];
-		if ($anniv==0) $return .= '<a name="-1">&nbsp;</a>';
-		else $return .= "<a name=\"{$anniv}\">{$anniv}</a>";
+//		if ($anniv==0) $return .= '<a name="-1">&nbsp;</a>';
+		if ($anniv==0) $return .= '&nbsp;';
+//		else $return .= "<a name=\"{$anniv}\">{$anniv}</a>";
+		else $return .= $anniv;
 		$return .= "</td>";
 		//-- Event name
 		$return .= "<td class=\"list_value_wrap\">";
