@@ -267,7 +267,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	if ($numchil==0) {
 		echo WT_I18N::translate('No children');
 	} else {
-		echo /* This is a title, so needs suitable capitalisation */ WT_I18N::plural('%d Child', '%d Children', $numchil, $numchil);
+		echo /* I18N: This is a title, so needs suitable capitalisation */ WT_I18N::plural('%d Child', '%d Children', $numchil, $numchil);
 	}
 	echo '</span>';
 
