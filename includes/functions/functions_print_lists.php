@@ -1394,7 +1394,7 @@ function print_changes_table($change_ids) {
 			if ($SHOW_MARRIED_NAMES) {
 				foreach ($record->getAllNames() as $name) {
 					if ($name['type']=='_MARNM') {
-						echo "<br /><a title=\"_MARNM\" href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady($name['full']), "</a>";
+						echo "<br /><a title=\"", translate_fact('_MARNM'),"\" href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady($name['full']), "</a>";
 					}
 				}
 			}
