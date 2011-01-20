@@ -664,9 +664,9 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$labels["mother"] = WT_I18N::translate('wife');
 				$labels["father"] = '';
 			}
-			$labels["sibling"] = WT_I18N::translate('step-child');
-			$labels["sister"] = WT_I18N::translate('step-daughter');
-			$labels["brother"] = WT_I18N::translate('step-son');
+			$labels["sibling"] = WT_I18N::translate_c('spouses\'s child', 'step-child');
+			$labels["sister"] = WT_I18N::translate_c('spouses\'s daughter', 'step-daughter');
+			$labels["brother"] = WT_I18N::translate_c('spouses\'s son', 'step-son');
 			break;
 		}
 		$newhusb = null;
