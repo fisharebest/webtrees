@@ -151,8 +151,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	}
 
 	function advancedSearch($justSql=false, $table="individuals", $prefix="i") {
-		global $gedcom_record_cache;
-
 		DMsoundex("", "opencache");
 		$this->myindilist = array ();
 		$fct = count($this->fields);
