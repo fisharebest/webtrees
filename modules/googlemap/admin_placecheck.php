@@ -40,6 +40,9 @@ $gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID)
 $openinnew=safe_POST_bool('openinnew'                                           );
 $state    =safe_POST     ('state',     WT_REGEX_UNSAFE,              'XYZ'     );
 $country  =safe_POST     ('country',   WT_REGEX_UNSAFE,              'XYZ'     );
+if (isset($_REQUEST['show_changes']) && $_REQUEST['show_changes']=='yes') {
+	$_POST["matching"] = 1;
+}
 
 // Must be an admin user to use this module
 if (!WT_USER_GEDCOM_ADMIN) {
@@ -120,8 +123,9 @@ echo WT_I18N::translate('List filtering options'), help_link('PLACECHECK_FILTER'
 echo "</th></tr><tr><td>";
 echo WT_I18N::translate('Include fully matched places: '), help_link('PLACECHECK_MATCH','googlemap');
 echo "</td><td><input type=\"checkbox\" name=\"matching\" value=\"active\"";
-if ($matching==1) {
+if ($matching) {
 	echo " checked=\"checked\"";
+	$action = 'go';
 }
 echo "></td></tr>";
 echo "</table>";
@@ -309,7 +313,7 @@ case 'go':
 			$mapstr4=$mapstr4."&amp;parent[".$z."]=".addslashes(PrintReady(rtrim(ltrim($levels[$z]))));
 			$z++;
 		}
-		if ($matching==1) {
+		if ($matching) {
 			$matched[$x]=1;
 		}
 		if ($matched[$x]!=0) {

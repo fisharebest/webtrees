@@ -103,9 +103,9 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('{$link}');\n//-->\n</script>";
+		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('');\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
 	print_simple_footer();
 	exit;
 }
@@ -122,9 +122,9 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('{$link}');\n//-->\n</script>";
+		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('');\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
 	print_simple_footer();
 	exit;
 }
@@ -777,6 +777,6 @@ if ($action=="add") {
 	<input name="save2" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" /><br />
 </form>
 <?php
-echo "<center><br /><br /><br /><a href=\"javascript:;\" onclick=\"edit_close('{$link}')\">", WT_I18N::translate('Close Window'), "</a><br /></center>\n";
+echo "<center><br /><br /><br /><a href=\"javascript:;\" onclick=\"edit_close('')\">", WT_I18N::translate('Close Window'), "</a><br /></center>\n";
 
 print_simple_footer();
