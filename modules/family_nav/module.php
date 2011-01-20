@@ -246,7 +246,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 
 		//-- step families ----------------------------------------------------------------
-		foreach ($this->controller->indi->getStepFamilies() as $famid=>$family) {
+		foreach ($this->controller->indi->getChildStepFamilies() as $famid=>$family) {
 			$label = $this->controller->indi->getStepFamilyLabel($family);
 			$people = $this->controller->buildFamilyList($family, "step");
 			if ($people) {
@@ -621,7 +621,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					}
 
 					//-- step families -----------------------------------------
-					$fams = $person->getStepFamilies();
+					$fams = $person->getChildStepFamilies();
 					foreach ($fams as $famid=>$family) {
 						if (!is_null($family)) {
 							$husb = $family->getHusband($person);

@@ -557,7 +557,7 @@ if (!defined('WT_WEBTREES')) {
 					//-- Step families ---------------------------------------------------------
 
 					//-- Build step families ---------------------------------------------------
-					foreach ($this->indi->getStepFamilies() as $famid=>$family) {
+					foreach ($this->indi->getChildStepFamilies() as $famid=>$family) {
 						$label = $this->indi->getStepFamilyLabel($family);
 						$people = $this->buildFamilyList($family, "step");
 						if ($people) {
@@ -1757,7 +1757,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				}
 
 				//-- Step families -----------------------------------------
-				$fams = $person->getStepFamilies();
+				$fams = $person->getChildStepFamilies();
 				foreach ($fams as $family) {
 					$marrdate = $family->getMarriageDate();
 					$married  = WT_Date::Compare($censdate, $marrdate);

@@ -404,7 +404,7 @@ if (!defined('WT_WEBTREES')) {
 		}
 
 		//-- Build step families ----------------------------------------------------------------
-		foreach ($this->indi->getStepFamilies() as $family) {
+		foreach ($this->indi->getChildStepFamilies() as $family) {
 			$label = $this->indi->getStepFamilyLabel($family);
 			$people = $this->buildFamilyList($family, "step");
 			if ($people) {
@@ -1200,7 +1200,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				}
 
 				//-- step families -----------------------------------------
-				$fams = $person->getStepFamilies();
+				$fams = $person->getChildStepFamilies();
 				foreach ($fams as $family) {
 					if (!is_null($family)) {
 						$husb = $family->getHusband($person);

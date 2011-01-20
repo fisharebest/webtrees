@@ -383,47 +383,36 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<?php
 			}
 		}
-		//-- parent families
+
+		// parents
 		foreach ($families as $family) {
 			$people = $this->controller->buildFamilyList($family, "parents");
 			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getChildFamilyLabel($family));
-			?>
-			<table class="facts_table">
-				<?php
-				$this->printParentsRows($family, $people, "parents");
-				$this->printChildrenRows($family, $people, "parents");
-				?>
-			</table>
-		<?php
+			echo '<table class="facts_table">';
+			$this->printParentsRows($family, $people, "parents");
+			$this->printChildrenRows($family, $people, "parents");
+			echo '</table>';
 		}
 
-		//-- step families
-		foreach ($this->controller->indi->getStepFamilies() as $family) {
+		// step-parents
+		foreach ($this->controller->indi->getChildStepFamilies() as $family) {
 			$people = $this->controller->buildFamilyList($family, "step");
 			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getStepFamilyLabel($family));
-			?>
-			<table class="facts_table">
-				<?php
-				$this->printParentsRows($family, $people, "step");
-				$this->printChildrenRows($family, $people, "step");
-				?>
-			</table>
-		<?php
+			echo '<table class="facts_table">';
+			$this->printParentsRows($family, $people, "step");
+			$this->printChildrenRows($family, $people, "step");
+			echo '</table>';
 		}
 
-		//-- spouses and children
+		// spouses
 		$families = $this->controller->indi->getSpouseFamilies();
 		foreach ($families as $family) {
 			$people = $this->controller->buildFamilyList($family, "spouse");
 			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getSpouseFamilyLabel($family));
-			?>
-			<table class="facts_table">
-				<?php
-				$this->printParentsRows($family, $people, "spouse");
-				$this->printChildrenRows($family, $people, "spouse");
-				?>
-			</table>
-		<?php
+			echo '<table class="facts_table">';
+			$this->printParentsRows($family, $people, "spouse");
+			$this->printChildrenRows($family, $people, "spouse");
+			echo '</table>';
 		}
 
 		?>
