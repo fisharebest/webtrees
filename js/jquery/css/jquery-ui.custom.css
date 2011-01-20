@@ -284,6 +284,9 @@ margin-top: 1px;
 	list-style-type: none;
 	white-space: nowrap;
 }
+#sb_family_nav_content {
+	margin-top: -24px;
+}
 .desc_tree_div {
 	display: none;
 }

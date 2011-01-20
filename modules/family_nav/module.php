@@ -130,7 +130,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				<td style="padding-bottom:4px;" align="center" colspan="2">
 				<?php
 				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
-				echo "<b>".$label."</b>";
+				echo "<b><br />".$label."</b>";
 				echo "</a>";
 				?>
 				</td>
