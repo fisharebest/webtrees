@@ -1914,7 +1914,7 @@ function addNewName() {
 
 	$gedrec='1 NAME '.safe_POST('NAME', WT_REGEX_UNSAFE, '//')."\n";
 
-	$tags=array('TYPE', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX', '_MARNM');
+	$tags=array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
 
 	if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_NAME_FACTS, $match)) {
 		$tags=array_merge($tags, $match[1]);
