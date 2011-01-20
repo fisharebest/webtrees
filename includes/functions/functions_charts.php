@@ -263,17 +263,13 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	$numchil=$family->getNumberOfChildren();
 	echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"2\"><tr>";
 	if ($sosa>0) echo "<td></td>";
-	echo "<td><span class=\"subheaders\">".WT_I18N::translate('Children')."</span>";
-	echo '<span class="font11">&nbsp;&nbsp;', getLRM(), '(';
+	echo "<td><span class=\"subheaders\">";
 	if ($numchil==0) {
 		echo WT_I18N::translate('No children');
-	} else if ($numchil==1) {
-		echo WT_I18N::translate('1 child');
 	} else {
-		echo $numchil, '&nbsp;', WT_I18N::translate('children');
+		echo /* This is a title, so needs suitable capitalisation */ WT_I18N::plural('%d Child', '%d Children', $numchil, $numchil);
 	}
-	echo ')', getLRM(), '</span>';
-	echo "<br />";
+	echo '</span>';
 
 	if ($sosa==0 && WT_USER_CAN_EDIT) {
 		echo "<br />";
