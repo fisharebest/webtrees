@@ -245,10 +245,10 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 
-		//-- step families ----------------------------------------------------------------
+		//-- step parents ----------------------------------------------------------------
 		foreach ($this->controller->indi->getChildStepFamilies() as $famid=>$family) {
 			$label = $this->controller->indi->getStepFamilyLabel($family);
-			$people = $this->controller->buildFamilyList($family, "step");
+			$people = $this->controller->buildFamilyList($family, "step-parents");
 			if ($people) {
 				echo "<tr><td><br /></td><td></td></tr>";
 			}
@@ -504,6 +504,124 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 
 		}
+		//-- step children ----------------------------------------------------------------
+		foreach ($this->controller->indi->getSpouseStepFamilies() as $famid=>$family) {
+			$label = $family->getFullName();
+			$people = $this->controller->buildFamilyList($family, "step-children");
+			if ($people) {
+				echo "<tr><td><br /></td><td></td></tr>";
+			}
+			$styleadd = "";
+			$elderdate = "";
+			?>
+			<tr>
+				<td style="padding-bottom: 4px;" align="center" colspan="2">
+				<?php
+				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
+				echo "<b>".$label."</b>";
+				echo "</a>";
+				?>
+				</td>
+			</tr>
+			<?php
+
+			//if (isset($people["husb"]) && $people["husb"]->getLabel() == ".") {
+			if (isset($people["husb"]) ) {
+				$menu = new WT_Menu($people["husb"]->getLabel());
+				if ($TEXT_DIRECTION=="ltr") {
+					$menu->addClass("", "", "submenu flyout2");
+				} else {
+					$menu->addClass("", "", "submenu flyout2rtl");
+				}
+				$slabel  = "</a>".$this->print_pedigree_person_nav($people["husb"]->getXref(), 2, 0, $personcount++);
+				$slabel .= $parentlinks."<a>";
+				$submenu = new WT_Menu($slabel);
+				$menu->addSubMenu($submenu);
+				?>
+				<tr>
+					<td class="facts_label<?php echo $styleadd; ?>"  nowrap="nowrap" style="width:75px;">
+						<?php echo $menu->getMenu(); ?>
+					</td>
+					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["husb"]); ?> nam">
+						<?php
+						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
+						echo PrintReady($people["husb"]->getFullName());
+						echo "<font size=\"1\"><br />" . $people["husb"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
+						echo " - " . $people["husb"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+						echo "</a>";
+						?>
+					</td>
+				</tr>
+				<?php
+				$elderdate = $people["husb"]->getBirthDate();
+			}
+
+			$styleadd = "";
+			//if (isset($people["wife"]) && $people["wife"]->getLabel() == ".") {
+			if (isset($people["wife"]) ) {
+				$menu = new WT_Menu($people["wife"]->getLabel());
+				//$menu->addClass("", "", "submenu");
+				if ($TEXT_DIRECTION=="ltr") {
+					$menu->addClass("", "", "submenu flyout2");
+				} else {
+					$menu->addClass("", "", "submenu flyout2rtl");
+				}
+				$slabel  = "</a>".$this->print_pedigree_person_nav($people["wife"]->getXref(), 2, 0, $personcount++);
+				$slabel .= $parentlinks."<a>";
+				$submenu = new WT_Menu($slabel);
+				$menu->addSubMenu($submenu);
+				?>
+				<tr>
+					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+						<?php echo $menu->getMenu(); ?>
+					</td>
+					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["wife"]); ?> nam">
+						<?php
+						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
+						echo PrintReady($people["wife"]->getFullName());
+						echo "<font size=\"1\"><br />" . $people["wife"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
+						echo " - " . $people["wife"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+						echo "</a>";
+						?>
+					</td>
+				</tr>
+				<?php
+			}
+			$styleadd = "";
+			if (isset($people["children"])) {
+				$elderdate = $family->getMarriageDate();
+				foreach ($people["children"] as $key=>$child) {
+					$menu = new WT_Menu($child->getLabel());
+					if ($TEXT_DIRECTION=="ltr") {
+						$menu->addClass("", "", "submenu flyout2");
+					} else {
+						$menu->addClass("", "", "submenu flyout2rtl");
+					}
+					$slabel  = "</a>".$this->print_pedigree_person_nav($child->getXref(), 2, 0, $personcount++);
+					$slabel .= $spouselinks."<a>";
+					$submenu = new WT_Menu($slabel);
+					$menu->addSubMenu($submenu);
+					?>
+					<tr>
+						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+							<?php echo $menu->getMenu(); ?>
+						</td>
+						<td align="center" class="<?php echo $this->controller->getPersonStyle($child); ?> nam">
+							<?php
+							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+							echo PrintReady($child->getFullName());
+							echo "<font size=\"1\"><br />" . $child->format_first_major_fact(WT_EVENTS_BIRT, 3);
+							echo " - " . $child->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+							echo "</a>";
+							?>
+						</td>
+					</tr>
+					<?php
+					//$elderdate = $child->getBirthDate();
+				}
+			}
+		}
+
 		echo "</table>";
 
 		// -----------------------------------------------------------------------------

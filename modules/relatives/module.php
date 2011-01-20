@@ -318,8 +318,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				$child_u = WT_I18N::translate('Add a son or daughter');
 				$child_m = WT_I18N::translate('Son');
 				$child_f = WT_I18N::translate('Daughter');
-			}
-			else {
+			} else {
 				$child_u = WT_I18N::translate('Add a brother or sister');
 				$child_m = WT_I18N::translate('Brother');
 				$child_f = WT_I18N::translate('Sister');
@@ -396,11 +395,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		// step-parents
 		foreach ($this->controller->indi->getChildStepFamilies() as $family) {
-			$people = $this->controller->buildFamilyList($family, "step");
+			$people = $this->controller->buildFamilyList($family, "step-parents");
 			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getStepFamilyLabel($family));
 			echo '<table class="facts_table">';
-			$this->printParentsRows($family, $people, "step");
-			$this->printChildrenRows($family, $people, "step");
+			$this->printParentsRows($family, $people, "parents");
+			$this->printChildrenRows($family, $people, "parents");
 			echo '</table>';
 		}
 
@@ -409,6 +408,16 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		foreach ($families as $family) {
 			$people = $this->controller->buildFamilyList($family, "spouse");
 			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getSpouseFamilyLabel($family));
+			echo '<table class="facts_table">';
+			$this->printParentsRows($family, $people, "spouse");
+			$this->printChildrenRows($family, $people, "spouse");
+			echo '</table>';
+		}
+
+		// step-children
+		foreach ($this->controller->indi->getSpouseStepFamilies() as $family) {
+			$people = $this->controller->buildFamilyList($family, "step-children");
+			$this->printFamilyHeader($family->getHtmlUrl(), $family->getFullName());
 			echo '<table class="facts_table">';
 			$this->printParentsRows($family, $people, "spouse");
 			$this->printChildrenRows($family, $people, "spouse");

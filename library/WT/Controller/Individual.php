@@ -604,26 +604,25 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	function buildFamilyList(&$family, $type) {
 		global $PEDI_CODES, $PEDI_CODES_F, $PEDI_CODES_M, $WT_IMAGES;
 
-		$people = array();
-		if (!is_object($family)) return $people;
 		$labels = array();
-		if ($type=="parents") {
+		switch ($type) {
+		case 'parents':
 			$labels["parent"] = WT_I18N::translate('Parent');
 			$labels["mother"] = WT_I18N::translate('Mother');
 			$labels["father"] = WT_I18N::translate('Father');
 			$labels["sibling"] = WT_I18N::translate('Sibling');
 			$labels["sister"] = WT_I18N::translate('Sister');
 			$labels["brother"] = WT_I18N::translate('Brother');
-		}
-		if ($type=="step") {
+			break;
+		case 'step-parents':
 			$labels["parent"] = WT_I18N::translate('Step-Parent');
 			$labels["mother"] = WT_I18N::translate('Step-Mother');
 			$labels["father"] = WT_I18N::translate('Step-Father');
 			$labels["sibling"] = WT_I18N::translate('Half-Sibling');
 			$labels["sister"] = WT_I18N::translate('Half-Sister');
 			$labels["brother"] = WT_I18N::translate('Half-Brother');
-		}
-		if ($type=="spouse") {
+			break;
+		case 'spouse':
 			if ($family->isNotMarried()) {
 				$labels["parent"] = WT_I18N::translate('Partner');
 				$labels["mother"] = WT_I18N::translate('Partner');
@@ -654,6 +653,21 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$labels["sibling"] = WT_I18N::translate('Child');
 			$labels["sister"] = WT_I18N::translate('Daughter');
 			$labels["brother"] = WT_I18N::translate('Son');
+			break;
+		case 'step-children':
+			if ($this->indi->equals($family->getHusband())) {
+				$labels["parent"] = '';
+				$labels["mother"] = '';
+				$labels["father"] = WT_I18N::translate('husband');
+			} else {
+				$labels["parent"] = '';
+				$labels["mother"] = WT_I18N::translate('wife');
+				$labels["father"] = '';
+			}
+			$labels["sibling"] = WT_I18N::translate('step-child');
+			$labels["sister"] = WT_I18N::translate('step-daughter');
+			$labels["brother"] = WT_I18N::translate('step-son');
+			break;
 		}
 		$newhusb = null;
 		$newwife = null;
@@ -668,7 +682,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$children = $family->getChildren();
 		}
 		//-- step families : set the label for the common parent
-		if ($type=="step") {
+		if ($type=="step-parents") {
 			$fams = $this->indi->getChildFamilies();
 			foreach ($fams as $key=>$fam) {
 				if ($fam->hasParent($husb)) $labels["father"] = WT_I18N::translate('Father');
@@ -830,6 +844,8 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			else if (isset($PEDI_CODES[$pedi]))              $label .= "<br />(".$PEDI_CODES[$pedi].")";
 			$delchildren[$i]->setLabel($label);
 		}
+
+		$people = array();
 		if (!is_null($newhusb)) $people['newhusb'] = $newhusb;
 		if (!is_null($husb)) $people['husb'] = $husb;
 		if (!is_null($newwife)) $people['newwife'] = $newwife;

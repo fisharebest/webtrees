@@ -559,7 +559,7 @@ if (!defined('WT_WEBTREES')) {
 					//-- Build step families ---------------------------------------------------
 					foreach ($this->indi->getChildStepFamilies() as $famid=>$family) {
 						$label = $this->indi->getStepFamilyLabel($family);
-						$people = $this->buildFamilyList($family, "step");
+						$people = $this->buildFamilyList($family, "step-parents");
 						if ($people) {
 							echo "<tr><td><br /></td><td></td></tr>";
 						}
