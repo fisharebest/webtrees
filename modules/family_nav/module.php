@@ -845,16 +845,6 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						if ($hasChildren) {
 							$spouselinks .= "</ul>";
 						} 
-						if (!$hasChildren) {
-							$numchil = $family->getNumberOfChildren();
-							if ($numchil==0) {
-								$spouselinks .= "<img src=\"images/small/childless.gif\" alt=\"".WT_I18N::translate('This family remained childless')."\" height=\"15\" align=\"middle\"/> ".WT_I18N::translate('This family remained childless')."<br />";
-							} else if ($numchil==1) {
-								$spouselinks .= WT_I18N::translate('1 child');
-							} else {
-								$spouselinks .= $numchil.'&nbsp;'.WT_I18N::translate('children');
-							}
-						}
 					}
 					if ($persons != "Yes") {
 						$spouselinks  .= "&nbsp;(".WT_I18N::translate('none').")";
