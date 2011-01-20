@@ -132,7 +132,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 						echo "<td width=\"33%\" align=\"left\">";
 						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_editconfig\">".WT_I18N::translate('Manage GoogleMap configuration')."</a>";
 						echo "</td>";
-						echo "<td width=\"33%\" align=\"center\">";
+						echo "<td width=\"34%\" align=\"center\">";
 						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_places\">".WT_I18N::translate('Edit geographic place locations')."</a>";
 						echo "</td>";
 						echo "<td width=\"33%\" align=\"right\">";
