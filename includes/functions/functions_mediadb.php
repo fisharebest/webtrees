@@ -1143,7 +1143,7 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 			if ($i==1) echo "<br /><sub>", WT_I18N::translate('Do not change to keep original file name.'), "</sub>";
 			echo '</td></tr>';
 		} else {
-			echo '<input type="hidden" name="filename', $i, '" value="" />';
+			echo '<tr><td class="', $TEXT_DIRECTION, '"><input type="hidden" name="filename', $i, '" value="" /></td></tr>';
 		}
 
 		if (WT_USER_GEDCOM_ADMIN && $MEDIA_DIRECTORY_LEVELS>0) {
@@ -1169,10 +1169,10 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 			if (WT_USER_IS_ADMIN) {
 				echo '<br /><span dir="ltr"><input name="folder', $i, '" type="text" size="40" value="" onblur="checkpath(this)" /></span>';
 				if ($i==1) echo '<br /><sub>', WT_I18N::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br />Do not enter the &laquo;%s&raquo; part of the destination folder name.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY), '</sub>';
-			} else echo '<span dir="ltr"><input name="folder', $i, '" type="hidden" value="" /></span>';
+			} else echo '<input name="folder', $i, '" type="hidden" value="" />';
 			echo '</td></tr>';
 		} else {
-			echo '<span dir="ltr"><input name="folder', $i, '" type="hidden" value="" /></span>';
+			echo '<tr><td><input name="folder', $i, '" type="hidden" value="" /></td></tr>';
 		}
 		echo '</table>';
 	}
