@@ -103,6 +103,9 @@ if (isset($_REQUEST['to_delete'])) {
 	}
 }
 
+require_once WT_ROOT.'js/prototype.js.htm';
+require_once WT_ROOT.'js/scriptaculous.js.htm';
+
 echo '<form name="delete_form" method="post" action=""><table id="cleanup"><tr><td>';
 
 $dir=dir($INDEX_DIRECTORY);
@@ -111,19 +114,21 @@ while (false !== ($entry=$dir->read())) {
 	$entries[]=$entry;
 }
 sort($entries);
-echo '<div id="cleanup2">';
+echo '<div id="cleanup2"><ul id="reorder_list">';
 foreach ($entries as $entry) {
 	if ($entry[0] != '.') {
-		echo '<div name="', $entry, '">';
 		if (in_array($entry, $locked_by_context)) {
+			echo "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
 			echo '<img src="./images/RESN_confidential.gif" alt="" /> <span>', $entry, '</span>';
 		} else {
+			echo "<li class=\"facts_value\" name=\"$entry\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$entry\" >";
 			echo '<input type="checkbox" name="to_delete[]" value="', $entry, '" />', $entry;
+			$element[] = "li_".$entry;
 		}
-		echo '</div>';
+		echo '</li>';
 	}
 }
-echo '</div>';
+echo '</ul></div>';
 $dir->close();
 echo
 	'</td><td valign="top" id="trash" class="facts_value02">',
@@ -134,19 +139,36 @@ echo
 	'<td><ul id="trashlist">',
 	'</ul></td></tr></table>',
 	'</div>',
-	WT_JS_START,
+	WT_JS_START;
+	foreach($element as $val) {
+		echo "new Draggable('".$val."', {revert:true});";
+	}
+echo
+	'Droppables.add("trash", {',
+	'hoverclass: "facts_valuered",',
+	'onDrop: function(element) {',
+	' $("trashlist").innerHTML +=',
+	'  \'<li class="facts_value">\'+ element.attributes.name.value +\'<input type="hidden" name="to_delete[]" value="\'+element.attributes.name.value+\'"/></li>\' ;',
+	'  element.style.display = \'none\';',
+	'}});',
 	'function ul_clear() {',
-	' var elements=document.getElementsByName("to_delete[]");',
-	' for (i=0; i<elements.length; i++) {',
-	'  elements[i].checked=false;',
+	' $("trashlist").innerHTML = "";',
+	' list = document.getElementById("reorder_list");',
+	' children = list.childNodes;',
+	' for(i=0; i<children.length; i++) {',
+	'  node = children[i];',
+	'  if (node.tagName=="li" || node.tagName=="LI") {',
+	'   node.style.display="list-item";',
+	'  }',
 	' }',
 	'}',
 	'function removeAll() {',
-	' var elements=document.getElementsByName("to_delete[]");',
-	' for (i=0; i<elements.length; i++) {',
-	'  elements[i].checked=true;',
+	' var elements = document.getElementsByName("to_delete[]");',
+	' for(i=0; i<elements.length; i++) {',
+	'  node = elements[i];',
+	'  node.checked = true;',
 	' }',
-	'	document.delete_form.submit();',
+	' document.delete_form.submit();',
 	'}',
 	WT_JS_END,
 	'<button type="submit">', WT_I18N::translate('Delete'), '</button>',
