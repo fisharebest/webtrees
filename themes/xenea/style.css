@@ -1436,6 +1436,11 @@ dt {
 	margin-right:10px;
 	clear:both; 
 }
+html[dir="rtl"] dt {
+	float:right;
+	margin-right:auto;
+	margin-left:10px;
+}
 
 dd {
 	display: inline;
