@@ -722,6 +722,7 @@ print_header(WT_I18N::translate('Family tree configuration'));
 			print_findfamily_link("xref");
 			print_findsource_link("xref");
 			print_findrepository_link("xref");
+			print_findnote_link("xref");
 			print_findmedia_link("xref", "1media");
 			echo '</td><td width="*">';
 			echo select_edit_control('tag_type', $all_tags, '', null, null);

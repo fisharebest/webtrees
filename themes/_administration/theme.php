@@ -48,6 +48,7 @@ $WT_IMAGES=array(
 	'close'=>WT_THEME_DIR.'images/close.png',
 	'button_indi'=>WT_THEME_DIR.'images/indi.gif',
 	'button_family'=>WT_THEME_DIR.'images/family.gif',
+	'button_note'=>WT_THEME_DIR.'images/note.gif',
 	'button_media'=>WT_THEME_DIR.'images/media.gif',
 	'button_repository'=>WT_THEME_DIR.'images/repository.gif',
 	'button_source'=>WT_THEME_DIR.'images/source.gif',
