@@ -53,7 +53,7 @@ function get_tag($txt,$tag){
 	
 print_header(WT_I18N::translate("README documentation"));
 
-echo '<div id="readme">';
+echo '<div id="readme" dir="ltr" lang="en">'; // This page is always LTR/English
 
 $url = 'readme.html';
 $txt = file_get_contents($url);
