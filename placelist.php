@@ -167,7 +167,7 @@ if ($display=="hierarchy") {
 	}
 	else {
 		// show clickable map if found
-		echo "\n\t<br /><br />\n\t<table class=\"width90\"><tr><td class=\"center\">";
+		echo "<br /><br /><table class=\"width90\"><tr><td class=\"center\">";
 		if ($level>=1 && $level<=3) {
 			$country = $parent[0];
 			if ($country == "\xD7\x99\xD7\xA9\xD7\xA8\xD7\x90\xD7\x9C") $country = "ISR"; // Israel hebrew name
@@ -318,12 +318,7 @@ if ($display=="hierarchy") {
 			echo "</td></tr><tr><td class=\"list_value\"><ul>";
 		}
 
-		if (begRTLText($value)) {
-			echo "<li class=\"rtl\" dir=\"rtl\"";
-		} else {
-			echo "<li class=\"ltr\" dir=\"ltr\"";
-		}
-		echo " type=\"square\">\n<a href=\"?action=", $action, "&amp;level=", $level+1, $linklevels;
+		echo "<li type=\"square\">\n<a href=\"?action=", $action, "&amp;level=", $level+1, $linklevels;
 		echo "&amp;parent[", $level, "]=", urlencode($value), "\" class=\"list_item\">";
 
 		if (trim($value)=="") echo WT_I18N::translate('unknown');
@@ -447,12 +442,7 @@ if ($display=="list") {
 				if ($place=="") $revplace .= WT_I18N::translate('unknown');
 				else $revplace .= $place;
 			}
-			if (begRTLText($revplace)) {
-				echo "<li class=\"rtl\" dir=\"rtl\"";
-			} else {
-				echo "<li class=\"ltr\" dir=\"ltr\"";
-			}
-			echo " type=\"square\"><a href=\"?action=show&amp;display=hierarchy&amp;level=", $level, $linklevels, "\">";
+			echo "<li type=\"square\"><a href=\"?action=show&amp;display=hierarchy&amp;level=", $level, $linklevels, "\">";
 			echo PrintReady($revplace), "</a></li>\n";
 			$i++;
 			if ($ct > 20) {
