@@ -132,7 +132,12 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'ALLOW_EDIT_GEDCOM',            safe_POST_bool('NEW_ALLOW_EDIT_GEDCOM'));
 	set_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN',         safe_POST_bool('NEW_ALLOW_THEME_DROPDOWN'));
 	set_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS',         safe_POST_bool('NEW_AUTO_GENERATE_THUMBS'));
-	set_gedcom_setting(WT_GED_ID, 'CALENDAR_FORMAT',              safe_POST('NEW_CALENDAR_FORMAT'));
+	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
+	// e.g. "gregorian_and_jewish"
+	set_gedcom_setting(WT_GED_ID, 'CALENDAR_FORMAT',              implode('_and_', array_unique(array(
+		safe_POST('NEW_CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hebrew|hijri|arabic', 'none'),
+		safe_POST('NEW_CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hebrew|hijri|arabic', 'none')
+	))));
 	set_gedcom_setting(WT_GED_ID, 'CHART_BOX_TAGS',               safe_POST('NEW_CHART_BOX_TAGS'));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD',             str_replace(' ', '', safe_POST('NEW_COMMON_NAMES_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE',          str_replace(' ', '', safe_POST('NEW_COMMON_NAMES_REMOVE')));
@@ -452,7 +457,32 @@ print_header(WT_I18N::translate('Family tree configuration'));
 							<?php echo WT_I18N::translate('Calendar format'), help_link('CALENDAR_FORMAT'); ?>
 						</td>
 						<td>
-							<select id="NEW_CALENDAR_FORMAT" name="NEW_CALENDAR_FORMAT">
+							<select id="NEW_CALENDAR_FORMAT0" name="NEW_CALENDAR_FORMAT0">
+							<?php
+							$CALENDAR_FORMATS=explode('_and_', $CALENDAR_FORMAT);
+							if (count($CALENDAR_FORMATS)==1) {
+								$CALENDAR_FORMATS[]='none';	
+							}
+							foreach (array(
+								'none'=>WT_I18N::translate('No calendar conversion'),
+								'gregorian'=>WT_I18N::translate('Gregorian'),
+								'julian'=>WT_I18N::translate('Julian'),
+								'french'=>WT_I18N::translate('French'),
+								'jewish'=>WT_I18N::translate('Jewish'),
+								'hebrew'=>WT_I18N::translate('Hebrew'),
+								'hijri'=>WT_I18N::translate('Hijri'),
+								'arabic'=>WT_I18N::translate('Arabic')
+							) as $cal=>$name) {
+								echo '<option value="', $cal, '"';
+								if ($CALENDAR_FORMATS[0]==$cal) {
+									echo ' selected="selected"';
+								}
+								echo '>', $name, '</option>';
+							}
+							?>
+						</select>
+						<br/>
+						<select id="NEW_CALENDAR_FORMAT1" name="NEW_CALENDAR_FORMAT1">
 							<?php
 							foreach (array(
 								'none'=>WT_I18N::translate('No calendar conversion'),
@@ -460,14 +490,12 @@ print_header(WT_I18N::translate('Family tree configuration'));
 								'julian'=>WT_I18N::translate('Julian'),
 								'french'=>WT_I18N::translate('French'),
 								'jewish'=>WT_I18N::translate('Jewish'),
-								'jewish_and_gregorian'=>WT_I18N::translate('Jewish and Gregorian'),
 								'hebrew'=>WT_I18N::translate('Hebrew'),
-								'hebrew_and_gregorian'=>WT_I18N::translate('Hebrew and Gregorian'),
 								'hijri'=>WT_I18N::translate('Hijri'),
 								'arabic'=>WT_I18N::translate('Arabic')
 							) as $cal=>$name) {
 								echo '<option value="', $cal, '"';
-								if ($CALENDAR_FORMAT==$cal) {
+								if ($CALENDAR_FORMATS[1]==$cal) {
 									echo ' selected="selected"';
 								}
 								echo '>', $name, '</option>';
