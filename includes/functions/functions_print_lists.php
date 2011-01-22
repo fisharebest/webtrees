@@ -1441,7 +1441,7 @@ function print_changes_table($change_ids) {
  */
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by_event=false) {
 	global $TEXT_DIRECTION, $WT_IMAGES;
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
 	echo WT_JS_START.'var table_id = "'.$table_id.'"'.WT_JS_END;
 	?>
 	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
@@ -1454,11 +1454,12 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 				"bInfo": false,
 				"bJQueryUI": false,
 				"aoColumns": [
-					null,
-					{ "bVisible": false },
-					null,
-					null,
-					null
+					/* 0-Record */ { "aaSorting": [ [0,'asc'], [1,'asc'] ] },
+					/* 1-GIVN */   { "bVisible": false },
+					/* 2-Date */   { "iDataSort": 3 },
+					/* 3-DATE */   { "bVisible": false },
+					/* 4-Anniv. */  null,
+					/* 5-Event */   null
 				]
 			});		
 		});
@@ -1506,8 +1507,9 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= "<table id=\"".$table_id."\" class=\"sortable list_table center\">";
 			$return .= "<thead><tr>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_I18N::translate('Record')."</th>";
-			$return .= "<th>GIVN</th>";
+			$return .= "<th>GIVN</th>"; //hidden by datables code
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".translate_fact('DATE')."</th>";
+			$return .= "<th>DATE</th>"; //hidden by datables code
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"".WT_I18N::translate('Anniversary')."\" title=\"".WT_I18N::translate('Anniversary')."\" border=\"0\" /></th>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".translate_fact('EVEN')."</th>";
 			$return .= "</tr></thead><tbody>";
@@ -1524,11 +1526,11 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	}
 
 	// Now we've filtered the list, we can sort by event, if required
-//	if ($sort_by_event=="anniv") {
-//		uasort($filtered_events, 'event_sort');
-//	} elseif ($sort_by_event) {
-//		uasort($filtered_events, 'event_sort_name');
-//	}
+	if ($sort_by_event=="anniv") {
+		uasort($filtered_events, 'event_sort');
+	} elseif ($sort_by_event) {
+		uasort($filtered_events, 'event_sort_name');
+	}
 
 	foreach ($filtered_events as $value) {
 		$return .= "<tr>";
@@ -1550,13 +1552,17 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		}
 		$return .= "</td>";
 		//-- GIVN
-		$return .= "<td style=\"display:none\">";
+		$return .= "<td>"; //hidden by datables code
 		$exp = explode(",", str_replace('<', ',', $name).",");
 		$return .= $exp[1];
 		$return .= "</td>";
 		//-- Event date
 		$return .= "<td class=\"list_value_wrap\">";
 		$return .= str_replace('<a', '<a name="'.$value['jd'].'"', $value['date']->Display(empty($SEARCH_SPIDER)));
+		$return .= "</td>";
+		//-- Event date (sortable)
+		$return .= "<td>"; //hidden by datables code
+		$return .= $value['date']->MinJD();
 		$return .= "</td>";
 		//-- Anniversary
 		$return .= "<td class=\"list_value_wrap rela\">";
