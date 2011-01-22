@@ -3,7 +3,7 @@
  * Used by AJAX to load the expanded view inside person boxes
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2008 PGV Development Team. All rights reserved.
@@ -34,7 +34,7 @@ $pid = safe_GET_xref('pid');
 $person = WT_Person::getInstance($pid);
 if (!$person->canDisplayDetails()) return WT_I18N::translate('Private');
 
-$nonfacts = array("SEX","FAMS","FAMC","NAME","TITL","NOTE","SOUR","SSN","OBJE","HUSB","WIFE","CHIL","ALIA","ADDR","PHON","SUBM","_EMAIL","CHAN","URL","EMAIL","WWW","RESI","_UID","_TODO","_WT_OBJE_SORT","_WT_OBJE_SORT");
+$nonfacts = array("SEX","FAMS","FAMC","NAME","TITL","NOTE","SOUR","SSN","OBJE","HUSB","WIFE","CHIL","ALIA","ADDR","PHON","SUBM","_EMAIL","CHAN","URL","EMAIL","WWW","RESI","RESN","_UID","_TODO","_WT_OBJE_SORT");
 $person->add_family_facts(false);
 $subfacts = $person->getIndiFacts();
 
