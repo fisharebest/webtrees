@@ -86,11 +86,11 @@ if (empty($SEARCH_SPIDER) && $controller->accept_success) {
 </table>
 <table align="center" width="95%">
 	<tr valign="top">
-		<td align="left" valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->
+		<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->
 			<?php print_family_children($controller->getFamilyID()); ?>
 		</td>
 		<td> <!--//parents pedigree chart and Family Details//-->
-			<table align="left" width="100%">
+			<table width="100%">
 				<tr>
 					<td class="subheaders" valign="top"><?php echo WT_I18N::translate('Parents'); ?></td>
 					<td class="subheaders" valign="top"><?php echo WT_I18N::translate('Grandparents'); ?></td>
@@ -123,7 +123,7 @@ if (empty($SEARCH_SPIDER) && $controller->accept_success) {
 					</td>
 				</tr>
 				<tr>
-					<td align="left" colspan="2">
+					<td colspan="2">
 						<br /><hr />
 						<?php print_family_facts($controller->family); ?>
 					</td>
