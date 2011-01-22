@@ -86,8 +86,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		*   contain embedded keywords.
 		*/
 		// Title
-		$title_tmp=embed_globals(get_block_setting($block_id, 'title'));
-		$html =embed_globals(get_block_setting($block_id, 'html'));
+		$title_tmp=get_block_setting($block_id, 'title');
+		$html =get_block_setting($block_id, 'html');
 		/*
 		* Second Pass.
 		*/

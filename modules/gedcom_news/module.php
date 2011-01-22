@@ -119,16 +119,14 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 			$content .= "<div class=\"news_box\" id=\"{$news['anchor']}\">";
-
-			// Look for $GLOBALS substitutions in the News title
-			$newsTitle = embed_globals($news['title']);
+			$newsTitle = $news['title'];
 			$content .= "<div class=\"news_title\">".PrintReady($newsTitle)."</div>";
 			$content .= "<div class=\"news_date\">".format_timestamp($news['date'])."</div>";
 			if ($news["text"]==strip_tags($news["text"])) {
 				// No HTML?
 				$news["text"]=nl2br($news["text"]);
 			}
-			$content .= embed_globals($news["text"]);
+			$content .= $news["text"];
 			// Print Admin options for this News item
 			if (WT_USER_GEDCOM_ADMIN) {
 				$content .= "<hr size=\"1\" />"

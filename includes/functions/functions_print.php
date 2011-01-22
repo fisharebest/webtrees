@@ -1037,32 +1037,6 @@ function help_link($help_topic, $module='') {
 	}
 }
 
-// Embed global variables and constants in a string.
-// Variables can be specified explicitly with #GLOBALS[variable]# or implicity with #variable#
-// This function is used by the blocks.
-// TODO: There are potential security risks - authorised users may determine the value of
-// site configuration settings.  Also, this logic is legacy, from PGV.  The blocks need better
-// handling of I18N.  Perhaps separate texts for each language?
-function embed_globals($text) {
-	if (preg_match_all('/#GLOBALS\[([A-Za-z_][A-Za-z0-9_]*)\]#/', $text, $matches, PREG_SET_ORDER)) {
-		foreach ($matches as $match) {
-			if (isset($GLOBALS[$match[1]])) {
-				$text=str_replace($match[0], $GLOBALS[$match[1]], $text);
-			}
-		}
-	}
-	if (preg_match_all('/#([A-Za-z_][A-Za-z0-9_]*)#/', $text, $matches, PREG_SET_ORDER)) {
-		foreach ($matches as $match) {
-			if (isset($GLOBALS[$match[1]])) {
-				$text=str_replace($match[0], $GLOBALS[$match[1]], $text);
-			} elseif (defined($match[1])) {
-				$text=str_replace($match[0], constant($match[1]), $text);
-			}
-		}
-	}
-	return $text;
-}
-
 //-------------------------------------------------------------------------------------------------------------
 // switches between left and rigth align on chosen text direction
 //-------------------------------------------------------------------------------------------------------------
