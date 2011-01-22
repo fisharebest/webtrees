@@ -4,7 +4,6 @@
 .ui-tabs { direction: rtl; }
 .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 .ui-tabs .ui-tabs-nav li.ui-state-default {float: right; }
-.ui-tabs .ui-tabs-nav li a { float: right; }
 
 /* -----  Sidebar (rtl) ----- */
 .ui-accordion .ui-accordion-header .ui-icon { position: absolute; left: .5em; top: 50%; margin-top: -8px; }
