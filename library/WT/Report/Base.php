@@ -179,7 +179,7 @@ class WT_Report_Base {
 	* webtrees URL
 	* @var string const
 	*/
-	const pgv_url = WT_WEBTREES_URL;
+	const wt_url = WT_WEBTREES_URL;
 
 	/**
 	* The report title
@@ -402,7 +402,7 @@ class WT_Report_Base {
 	* @param array $style
 	*/
 	function addStyle($style) {
-		$this->Styles[$style["name"]] = $style;
+		$this->Styles[$style['name']] = $style;
 		return 0;
 	}
 
@@ -1226,19 +1226,19 @@ function startElement($parser, $name, $attrs) {
 
 	foreach ($attrs as $key=>$value) {
 		if (preg_match("/^\\$(\w+)$/", $value, $match)) {
-			if ((isset($vars[$match[1]]["id"]))&&(!isset($vars[$match[1]]["gedcom"]))) {
-				$value = $vars[$match[1]]["id"];
+			if ((isset($vars[$match[1]]['id']))&&(!isset($vars[$match[1]]['gedcom']))) {
+				$value = $vars[$match[1]]['id'];
 			}
 		}
 		$newattrs[$key] = $value;
 	}
 	$attrs = $newattrs;
 	if (($processFootnote)&&($processIfs==0 || $name=="if")&&($processGedcoms==0 || $name=="Gedcom")&&($processRepeats==0 || $name=="Facts" || $name=="RepeatTag")) {
-		if (isset($elementHandler[$name]["start"])) {
-			if ($elementHandler[$name]["start"] != "") {
-				call_user_func($elementHandler[$name]["start"], $attrs);
+		if (isset($elementHandler[$name]['start'])) {
+			if ($elementHandler[$name]['start'] != "") {
+				call_user_func($elementHandler[$name]['start'], $attrs);
 			}
-		} elseif (!isset($elementHandler[$name]["end"])) {
+		} elseif (!isset($elementHandler[$name]['end'])) {
 			HTMLSHandler($name, $attrs);
 		}
 	}
@@ -1259,11 +1259,11 @@ function endElement($parser, $name) {
 	global $processFootnote;
 
 	if (($processFootnote || $name=="Footnote")&&($processIfs==0 || $name=="if")&&($processGedcoms==0 || $name=="Gedcom")&&($processRepeats==0 || $name=="Facts" || $name=="RepeatTag" || $name=="List" || $name=="Relatives")) {
-		if (isset($elementHandler[$name]["end"])) {
-			if ($elementHandler[$name]["end"]!="") {
-				call_user_func($elementHandler[$name]["end"]);
+		if (isset($elementHandler[$name]['end'])) {
+			if ($elementHandler[$name]['end']!="") {
+				call_user_func($elementHandler[$name]['end']);
 			}
-		} elseif (!isset($elementHandler[$name]["start"])) {
+		} elseif (!isset($elementHandler[$name]['start'])) {
 			HTMLEHandler($name);
 		}
 	}
@@ -1302,7 +1302,7 @@ function characterData($parser, $data) {
 function StyleSHandler($attrs) {
 	global $wt_report;
 
-	if (empty($attrs["name"])) {
+	if (empty($attrs['name'])) {
 		die("<strong>REPORT ERROR Style: </strong> The \"name\" of the style is missing or not set in the XML file.");
 	}
 
@@ -1310,19 +1310,19 @@ function StyleSHandler($attrs) {
 	$s = array();
 
 	// string Name af the style
-	$s["name"] = $attrs["name"];
+	$s['name'] = $attrs['name'];
 
 	// string Name of the DEFAULT font
-	$s["font"] = $wt_report->defaultFont;
-	if (!empty($attrs["font"])) $s["font"] = $attrs["font"];
+	$s['font'] = $wt_report->defaultFont;
+	if (!empty($attrs['font'])) $s['font'] = $attrs['font'];
 
 	// int The size of the font in points
-	$s["size"] = $wt_report->defaultFontSize;
-	if (!empty($attrs["size"])) $s["size"] = (int)$attrs["size"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
+	$s['size'] = $wt_report->defaultFontSize;
+	if (!empty($attrs['size'])) $s['size'] = (int)$attrs['size']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 
 	// string B: bold, I: italic, U: underline, D: line trough, The default value is regular.
-	$s["style"] = "";
-	if (!empty($attrs["style"])) $s["style"] = $attrs["style"];
+	$s['style'] = "";
+	if (!empty($attrs['style'])) $s['style'] = $attrs['style'];
 
 	$wt_report->addStyle($s);
 }
@@ -1342,67 +1342,67 @@ function DocSHandler($attrs) {
 	$parser = $xml_parser;
 
 	// Custom page width
-	if (!empty($attrs["customwidth"])) $wt_report->pagew = (int)$attrs["customwidth"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (!empty($attrs['customwidth'])) $wt_report->pagew = (int)$attrs['customwidth']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 	// Custom Page height
-	if (!empty($attrs["customheight"])) $wt_report->pageh = (int)$attrs["customheight"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (!empty($attrs['customheight'])) $wt_report->pageh = (int)$attrs['customheight']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 
 	// Left Margin
-	if (isset($attrs["leftmargin"])) {
-		if ($attrs["leftmargin"] === "0") $wt_report->leftmargin = 0;
-		elseif (!empty($attrs["leftmargin"])) {
-			$wt_report->leftmargin = (int)$attrs["leftmargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (isset($attrs['leftmargin'])) {
+		if ($attrs['leftmargin'] === "0") $wt_report->leftmargin = 0;
+		elseif (!empty($attrs['leftmargin'])) {
+			$wt_report->leftmargin = (int)$attrs['leftmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Right Margin
-	if (isset($attrs["rightmargin"])) {
-		if ($attrs["rightmargin"] === "0") $wt_report->rightmargin = 0;
-		elseif (!empty($attrs["rightmargin"])) {
-			$wt_report->rightmargin = (int)$attrs["rightmargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (isset($attrs['rightmargin'])) {
+		if ($attrs['rightmargin'] === "0") $wt_report->rightmargin = 0;
+		elseif (!empty($attrs['rightmargin'])) {
+			$wt_report->rightmargin = (int)$attrs['rightmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Top Margin
-	if (isset($attrs["topmargin"])) {
-		if ($attrs["topmargin"] === "0") $wt_report->topmargin = 0;
-		elseif (!empty($attrs["topmargin"])) {
-			$wt_report->topmargin = (int)$attrs["topmargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (isset($attrs['topmargin'])) {
+		if ($attrs['topmargin'] === "0") $wt_report->topmargin = 0;
+		elseif (!empty($attrs['topmargin'])) {
+			$wt_report->topmargin = (int)$attrs['topmargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Bottom Margin
-	if (isset($attrs["bottommargin"])) {
-		if ($attrs["bottommargin"] === "0") $wt_report->bottommargin = 0;
-		elseif (!empty($attrs["bottommargin"])) {
-			$wt_report->bottommargin = (int)$attrs["bottommargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (isset($attrs['bottommargin'])) {
+		if ($attrs['bottommargin'] === "0") $wt_report->bottommargin = 0;
+		elseif (!empty($attrs['bottommargin'])) {
+			$wt_report->bottommargin = (int)$attrs['bottommargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Header Margin
-	if (isset($attrs["headermargin"])) {
-		if ($attrs["headermargin"] === "0") $wt_report->headermargin = 0;
-		elseif (!empty($attrs["headermargin"])) {
-			$wt_report->headermargin = (int)$attrs["headermargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (isset($attrs['headermargin'])) {
+		if ($attrs['headermargin'] === "0") $wt_report->headermargin = 0;
+		elseif (!empty($attrs['headermargin'])) {
+			$wt_report->headermargin = (int)$attrs['headermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 	// Footer Margin
-	if (isset($attrs["footermargin"])) {
-		if ($attrs["footermargin"] === "0") $wt_report->footermargin = 0;
-		elseif (!empty($attrs["footermargin"])) {
-			$wt_report->footermargin = (int)$attrs["footermargin"]; // Get it as int to ignore all decimal points or text (if any text then int(0))
+	if (isset($attrs['footermargin'])) {
+		if ($attrs['footermargin'] === "0") $wt_report->footermargin = 0;
+		elseif (!empty($attrs['footermargin'])) {
+			$wt_report->footermargin = (int)$attrs['footermargin']; // Get it as int to ignore all decimal points or text (if any text then int(0))
 		}
 	}
 
 	// Page Orientation
-	if (!empty($attrs["orientation"])) {
-		if ($attrs["orientation"] == "landscape") $wt_report->orientation = "landscape";
-		elseif ($attrs["orientation"] == "portrait") {
+	if (!empty($attrs['orientation'])) {
+		if ($attrs['orientation'] == "landscape") $wt_report->orientation = "landscape";
+		elseif ($attrs['orientation'] == "portrait") {
 			$wt_report->orientation = "portrait";
 		}
 	}
 	// Page Size
-	if (!empty($attrs["pageSize"])) $wt_report->pageFormat = strtoupper($attrs["pageSize"]);
+	if (!empty($attrs['pageSize'])) $wt_report->pageFormat = strtoupper($attrs['pageSize']);
 
 	// Show Generated By...
-	if (isset($attrs["showGeneratedBy"])) {
-		if ($attrs["showGeneratedBy"] === "0") $wt_report->showGenText = false;
-		elseif ($attrs["showGeneratedBy"] === "1") {
+	if (isset($attrs['showGeneratedBy'])) {
+		if ($attrs['showGeneratedBy'] === "0") $wt_report->showGenText = false;
+		elseif ($attrs['showGeneratedBy'] === "1") {
 			$wt_report->showGenText = true;
 		}
 	}
@@ -1491,8 +1491,8 @@ function CellSHandler($attrs) {
 
 	// string The text alignment of the text in this box.
 	$align= "";
-	if (!empty($attrs["align"])) {
-		$align = $attrs["align"];
+	if (!empty($attrs['align'])) {
+		$align = $attrs['align'];
 		// RTL supported left/right alignment
 		if ($align == "rightrtl") {
 			if ($wt_report->rtl) {
@@ -1511,85 +1511,85 @@ function CellSHandler($attrs) {
 
 	// string The color to fill the background of this cell
 	$bgcolor = "";
-	if (!empty($attrs["bgcolor"])) $bgcolor = $attrs["bgcolor"];
+	if (!empty($attrs['bgcolor'])) $bgcolor = $attrs['bgcolor'];
 
 	// int Whether or not the background should be painted
 	$fill = 1;
-	if (isset($attrs["fill"])) {
-		if ($attrs["fill"] === "0") {
+	if (isset($attrs['fill'])) {
+		if ($attrs['fill'] === "0") {
 			$fill = 0;
-		} elseif ($attrs["fill"] === "1") {
+		} elseif ($attrs['fill'] === "1") {
 			$fill = 1;
 		}
 	}
 
 	$reseth = true;
 	// boolean   if true reset the last cell height (default true)
-	if (isset($attrs["reseth"])) {
-		if ($attrs["reseth"] === "0") {
+	if (isset($attrs['reseth'])) {
+		if ($attrs['reseth'] === "0") {
 			$reseth = false;
-		} elseif ($attrs["reseth"] === "1") {
+		} elseif ($attrs['reseth'] === "1") {
 			$reseth = true;
 		}
 	}
 
 	// mixed Whether or not a border should be printed around this box
 	$border = 0;
-	if (!empty($attrs["border"])) $border = $attrs["border"];
+	if (!empty($attrs['border'])) $border = $attrs['border'];
 	// @test Print all borders for testing
 	// $border = 1;
 	// string Border color in HTML code
 	$bocolor = "";
-	if (!empty($attrs["bocolor"])) $bocolor = $attrs["bocolor"];
+	if (!empty($attrs['bocolor'])) $bocolor = $attrs['bocolor'];
 
 	// int Cell height (expressed in points) The starting height of this cell. If the text wraps the height will automatically be adjusted.
 	$height= 0;
-	if (!empty($attrs["height"])) $height = (int)$attrs["height"];
+	if (!empty($attrs['height'])) $height = (int)$attrs['height'];
 	// int Cell width (expressed in points) Setting the width to 0 will make it the width from the current location to the right margin.
 	$width = 0;
-	if (!empty($attrs["width"])) $width = (int)$attrs["width"];
+	if (!empty($attrs['width'])) $width = (int)$attrs['width'];
 
 	// int Stretch carachter mode
 	$stretch= 0;
-	if (!empty($attrs["stretch"])) $stretch = (int)$attrs["stretch"];
+	if (!empty($attrs['stretch'])) $stretch = (int)$attrs['stretch'];
 
 	// mixed Position the left corner of this box on the page. The default is the current position.
 	$left = ".";
-	if (isset($attrs["left"])) {
-		if ($attrs["left"] === ".") {
+	if (isset($attrs['left'])) {
+		if ($attrs['left'] === ".") {
 			$left = ".";
-		} elseif (!empty($attrs["left"])) {
-			$left = (int)$attrs["left"];
-		} elseif ($attrs["left"] === "0") {
+		} elseif (!empty($attrs['left'])) {
+			$left = (int)$attrs['left'];
+		} elseif ($attrs['left'] === "0") {
 			$left = 0;
 		}
 	}
 	// mixed Position the top corner of this box on the page. the default is the current position
 	$top = ".";
-	if (isset($attrs["top"])) {
-		if ($attrs["top"] === ".") {
+	if (isset($attrs['top'])) {
+		if ($attrs['top'] === ".") {
 			$top = ".";
-		} elseif (!empty($attrs["top"])) {
-			$top = (int)$attrs["top"];
-		} elseif ($attrs["top"] === "0") {
+		} elseif (!empty($attrs['top'])) {
+			$top = (int)$attrs['top'];
+		} elseif ($attrs['top'] === "0") {
 			$top = 0;
 		}
 	}
 
 	// string The name of the Style that should be used to render the text.
 	$style = "";
-	if (!empty($attrs["style"])) $style = $attrs["style"];
+	if (!empty($attrs['style'])) $style = $attrs['style'];
 
 	// string Text color in html code
 	$tcolor = "";
-	if (!empty($attrs["tcolor"])) $tcolor = $attrs["tcolor"];
+	if (!empty($attrs['tcolor'])) $tcolor = $attrs['tcolor'];
 
 	// int Indicates where the current position should go after the call.
 	$ln = 0;
-	if (isset($attrs["newline"])) {
-		if (!empty($attrs["newline"])) {
-			$ln = (int)$attrs["newline"];
-		} elseif ($attrs["newline"] === "0") {
+	if (isset($attrs['newline'])) {
+		if (!empty($attrs['newline'])) {
+			$ln = (int)$attrs['newline'];
+		} elseif ($attrs['newline'] === "0") {
 			$ln = 0;
 		}
 	}
@@ -1676,20 +1676,20 @@ function GedcomSHandler($attrs) {
 	if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
 		$id = $match[1];
 	}
-	$tag = $attrs["id"];
+	$tag = $attrs['id'];
 	$tag = str_replace("@fact", $fact, $tag);
 	$tags = explode(":", $tag);
 	$newgedrec = "";
 	if (count($tags)<2) {
-		$newgedrec = find_gedcom_record($attrs["id"], WT_GED_ID);
+		$newgedrec = find_gedcom_record($attrs['id'], WT_GED_ID);
 	}
 	if (empty($newgedrec)) {
 		$tgedrec = $gedrec;
 		$newgedrec = "";
 		foreach ($tags as $tag) {
 			if (preg_match("/\\$(.+)/", $tag, $match)) {
-				if (isset($vars[$match[1]]["gedcom"])) {
-					$newgedrec = $vars[$match[1]]["gedcom"];
+				if (isset($vars[$match[1]]['gedcom'])) {
+					$newgedrec = $vars[$match[1]]['gedcom'];
 				} else {
 					$newgedrec = find_gedcom_record($match[1], WT_GED_ID);
 				}
@@ -1755,24 +1755,24 @@ function TextBoxSHandler($attrs) {
 
 	// string Background color code
 	$bgcolor = "";
-	if (!empty($attrs["bgcolor"])) $bgcolor = $attrs["bgcolor"];
+	if (!empty($attrs['bgcolor'])) $bgcolor = $attrs['bgcolor'];
 
 	// boolean Wether or not fill the background color
 	$fill = true;
-	if (isset($attrs["fill"])) {
-		if ($attrs["fill"] === "0") {
+	if (isset($attrs['fill'])) {
+		if ($attrs['fill'] === "0") {
 			$fill = false;
-		} elseif ($attrs["fill"] === "1") {
+		} elseif ($attrs['fill'] === "1") {
 			$fill = true;
 		}
 	}
 
 	// var boolean Whether or not a border should be printed around this box. 0 = no border, 1 = border. Default is 0
 	$border = false;
-	if (isset($attrs["border"])) {
-		if ($attrs["border"] === "1") {
+	if (isset($attrs['border'])) {
+		if ($attrs['border'] === "1") {
 			$border = true;
-		} elseif ($attrs["border"] === "0") {
+		} elseif ($attrs['border'] === "0") {
 			$border = false;
 		}
 	}
@@ -1786,71 +1786,71 @@ function TextBoxSHandler($attrs) {
 	*/
 	/** not yet in use
 	$borderstyle = "";
-	if (!empty($attrs["borderstyle"])) $borderstyle = $attrs["borderstyle"];
+	if (!empty($attrs['borderstyle'])) $borderstyle = $attrs['borderstyle'];
 	*/
 
 	// int The starting height of this cell. If the text wraps the height will automatically be adjusted
 	$height = 0;
-	if (!empty($attrs["height"])) $height = (int)$attrs["height"];
+	if (!empty($attrs['height'])) $height = (int)$attrs['height'];
 	// int Setting the width to 0 will make it the width from the current location to the margin
 	$width = 0;
-	if (!empty($attrs["width"])) $width = (int)$attrs["width"];
+	if (!empty($attrs['width'])) $width = (int)$attrs['width'];
 
 	// mixed Position the left corner of this box on the page. The default is the current position.
 	$left = ".";
-	if (isset($attrs["left"])) {
-		if ($attrs["left"] === ".") {
+	if (isset($attrs['left'])) {
+		if ($attrs['left'] === ".") {
 			$left = ".";
-		} elseif (!empty($attrs["left"])) {
-			$left = (int)$attrs["left"];
-		} elseif ($attrs["left"] === "0") {
+		} elseif (!empty($attrs['left'])) {
+			$left = (int)$attrs['left'];
+		} elseif ($attrs['left'] === "0") {
 			$left = 0;
 		}
 	}
 	// mixed Position the top corner of this box on the page. the default is the current position
 	$top = ".";
-	if (isset($attrs["top"])) {
-		if ($attrs["top"] === ".") {
+	if (isset($attrs['top'])) {
+		if ($attrs['top'] === ".") {
 			$top = ".";
-		} elseif (!empty($attrs["top"])) {
-			$top = (int)$attrs["top"];
-		} elseif ($attrs["top"] === "0") {
+		} elseif (!empty($attrs['top'])) {
+			$top = (int)$attrs['top'];
+		} elseif ($attrs['top'] === "0") {
 			$top = 0;
 		}
 	}
 	// boolean After this box is finished rendering, should the next section of text start immediately after the this box or should it start on a new line under this box. 0 = no new line, 1 = force new line. Default is 0
 	$newline = false;
-	if (isset($attrs["newline"])) {
-		if ($attrs["newline"] === "1") {
+	if (isset($attrs['newline'])) {
+		if ($attrs['newline'] === "1") {
 			$newline = true;
-		} elseif ($attrs["newline"] === "0") {
+		} elseif ($attrs['newline'] === "0") {
 			$newline = false;
 		}
 	}
 	// boolean
 	$pagecheck = true;
-	if (isset($attrs["pagecheck"])) {
-		if ($attrs["pagecheck"] === "0") {
+	if (isset($attrs['pagecheck'])) {
+		if ($attrs['pagecheck'] === "0") {
 			$pagecheck = false;
-		} elseif ($attrs["pagecheck"] === "1") {
+		} elseif ($attrs['pagecheck'] === "1") {
 			$pagecheck = true;
 		}
 	}
 	// boolean Cell padding
 	$padding = true;
-	if (isset($attrs["padding"])) {
-		if ($attrs["padding"] === "0") {
+	if (isset($attrs['padding'])) {
+		if ($attrs['padding'] === "0") {
 			$padding = false;
-		} elseif ($attrs["padding"] === "1") {
+		} elseif ($attrs['padding'] === "1") {
 			$padding = true;
 		}
 	}
 	// boolean Reset this box Height
 	$reseth = false;
-	if (isset($attrs["reseth"])) {
-		if ($attrs["reseth"] === "1") {
+	if (isset($attrs['reseth'])) {
+		if ($attrs['reseth'] === "1") {
 			$reseth = true;
-		} elseif ($attrs["reseth"] === "0") {
+		} elseif ($attrs['reseth'] === "0") {
 			$reseth = false;
 		}
 	}
@@ -1858,7 +1858,7 @@ function TextBoxSHandler($attrs) {
 	// string Style of rendering
 	$style = "";
 	// fill and border is enought for now for user input
-	//if (!empty($attrs["style"])) $style = $attrs["style"];
+	//if (!empty($attrs['style'])) $style = $attrs['style'];
 
 	array_push($printDataStack, $printData);
 	$printData = false;
@@ -1895,11 +1895,11 @@ function TextSHandler($attrs) {
 
 	// string The name of the Style that should be used to render the text.
 	$style = "";
-	if (!empty($attrs["style"])) $style = $attrs["style"];
+	if (!empty($attrs['style'])) $style = $attrs['style'];
 
 	// string  The color of the text - Keep the black color as default
 	$color = "";
-	if (!empty($attrs["color"])) $color = $attrs["color"];
+	if (!empty($attrs['color'])) $color = $attrs['color'];
 
 	$currentElement = $ReportRoot->createText($style, $color);
 }
@@ -1928,23 +1928,23 @@ function GetPersonNameSHandler($attrs) {
 
 	$id = "";
 	$match = array();
-	if (empty($attrs["id"])) {
+	if (empty($attrs['id'])) {
 		if (preg_match("/0 @(.+)@/", $gedrec, $match)) {
 			$id = $match[1];
 		}
 	} else {
-		if (preg_match("/\\$(.+)/", $attrs["id"], $match)) {
-			if (isset($vars[$match[1]]["id"])) {
-				$id = $vars[$match[1]]["id"];
+		if (preg_match("/\\$(.+)/", $attrs['id'], $match)) {
+			if (isset($vars[$match[1]]['id'])) {
+				$id = $vars[$match[1]]['id'];
 			}
 		} else {
-			if (preg_match("/@(.+)/", $attrs["id"], $match)) {
+			if (preg_match("/@(.+)/", $attrs['id'], $match)) {
 				$gmatch = array();
 				if (preg_match("/\d $match[1] @([^@]+)@/", $gedrec, $gmatch)) {
 					$id = $gmatch[1];
 				}
 			} else {
-				$id = $attrs["id"];
+				$id = $attrs['id'];
 			}
 		}
 	}
@@ -1961,9 +1961,9 @@ function GetPersonNameSHandler($attrs) {
 			if (!WT_RNEW) {
 				$name = strip_tags($name);
 			}
-			if (!empty($attrs["truncate"])) {
+			if (!empty($attrs['truncate'])) {
 				//short-circuit with the faster strlen
-				if (strlen($name)>$attrs["truncate"] && utf8_strlen($name)>$attrs["truncate"]) {
+				if (strlen($name)>$attrs['truncate'] && utf8_strlen($name)>$attrs['truncate']) {
 					$name = preg_replace("/\(.*\) ?/", "", $name); //removes () and text inbetween - what about ", [ and { etc?
 					$words = preg_split('/[, -]+/', $name); // names separated with space, comma or hyphen - any others?
 					$name = $words[count($words)-1];
@@ -1972,7 +1972,7 @@ function GetPersonNameSHandler($attrs) {
 						for ($j=count($words)-3; $j>=0; $j--) {
 							$len += utf8_strlen($words[$j]);
 						}
-						if ($len>$attrs["truncate"]) {
+						if ($len>$attrs['truncate']) {
 							$first_letter = utf8_substr($words[$i], 0, 1);
 							//do not show " of nick-names
 							if ($first_letter != "\"") $name = utf8_substr($words[$i], 0, 1).". ".$name;
@@ -2011,13 +2011,13 @@ function GedcomValueSHandler($attrs) {
 		$id = $match[1];
 	}
 
-	if (isset($attrs["newline"]) && $attrs["newline"]=="1") {
+	if (isset($attrs['newline']) && $attrs['newline']=="1") {
 		$useBreak = "1";
 	} else {
 		$useBreak = "0";
 	}
 
-	$tag = $attrs["tag"];
+	$tag = $attrs['tag'];
 	if (!empty($tag)) {
 		if ($tag=="@desc") {
 			$value = $desc;
@@ -2028,18 +2028,18 @@ function GedcomValueSHandler($attrs) {
 			$currentElement->addText($id);
 		} else {
 			$tag = str_replace("@fact", $fact, $tag);
-			if (empty($attrs["level"])) {
+			if (empty($attrs['level'])) {
 				$temp = explode(" ", trim($gedrec));
 				$level = $temp[0];
 				if ($level==0) {
 					$level++;
 				}
 			} else {
-				$level = $attrs["level"];
+				$level = $attrs['level'];
 			}
 			$truncate = "";
-			if (isset($attrs["truncate"])) {
-				$truncate=$attrs["truncate"];
+			if (isset($attrs['truncate'])) {
+				$truncate=$attrs['truncate'];
 			}
 			$tags = explode(":", $tag);
 			$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
@@ -2082,8 +2082,8 @@ function RepeatTagSHandler($attrs) {
 	}
 
 	$tag = "";
-	if (isset($attrs["tag"])) {
-		$tag = $attrs["tag"];
+	if (isset($attrs['tag'])) {
+		$tag = $attrs['tag'];
 	}
 	if (!empty($tag)) {
 		if ($tag=="@desc") {
@@ -2238,14 +2238,14 @@ function varSHandler($attrs) {
 	// Retrievable variables
 	global $desc, $fact, $language_settings, $vars;
 
-	if (empty($attrs["var"])) {
+	if (empty($attrs['var'])) {
 		die("<strong>REPORT ERROR var: </strong> The attribute \"var=\" is missing or not set in the XML file on line: ".xml_get_current_line_number($parser));
 	}
 
-	$var = $attrs["var"];
+	$var = $attrs['var'];
 	// SetVar element preset variables
-	if (!empty($vars[$var]["id"])) {
-		$var = $vars[$var]["id"];
+	if (!empty($vars[$var]['id'])) {
+		$var = $vars[$var]['id'];
 	} else {
 		$tfact = $fact;
 		if (($fact == "EVEN" or $fact == "FACT") and $type != " ") {
@@ -2259,8 +2259,8 @@ function varSHandler($attrs) {
 		}
 	}
 	// Check if variable is set as a date and reformat the date
-	if (isset($attrs["date"])) {
-		if ($attrs["date"] === "1") {
+	if (isset($attrs['date'])) {
+		if ($attrs['date'] === "1") {
 			$g = new WT_Date($var);
 			$var = $g->Display();
 		}
@@ -2276,11 +2276,11 @@ function varSHandler($attrs) {
 function varLetterSHandler($attrs) {
 	global $currentElement, $fact, $desc;
 
-	if (empty($attrs["var"])) {
+	if (empty($attrs['var'])) {
 		die("<strong>REPORT ERROR varLetter: </strong> The attribute \"var=\" is missing or not set in the XML file.");
 	}
 
-	$var=$attrs["var"];
+	$var=$attrs['var'];
 	if ($var) {
 		if ($var=='@fact') {
 			$var=$fact;
@@ -2304,8 +2304,8 @@ function FactsSHandler($attrs) {
 	// @todo Why is this here when its not used?
 
 	$families = 1;
-	if (isset($attrs["families"])) {
-		$families = $attrs["families"];
+	if (isset($attrs['families'])) {
+		$families = $attrs['families'];
 	}
 
 	array_push($repeatsStack, array($repeats, $repeatBytes));
@@ -2318,14 +2318,14 @@ function FactsSHandler($attrs) {
 		$id = $match[1];
 	}
 	$tag = "";
-	if (isset($attrs["ignore"])) {
-		$tag .= $attrs["ignore"];
+	if (isset($attrs['ignore'])) {
+		$tag .= $attrs['ignore'];
 	}
 	if (preg_match("/\\$(.+)/", $tag, $match)) {
-		$tag = $vars[$match[1]]["id"];
+		$tag = $vars[$match[1]]['id'];
 	}
 
-	if (empty($attrs["diff"]) && !empty($id)) {
+	if (empty($attrs['diff']) && !empty($id)) {
 		$record = WT_GedcomRecord::getInstance($id);
 		$facts = $record->getFacts(explode(",", $tag));
 		if (!is_array($facts)) {
@@ -2463,12 +2463,12 @@ function FactsEHandler() {
 function SetVarSHandler($attrs) {
 	global $vars, $gedrec, $fact, $desc, $type, $generation;
 
-	if (empty($attrs["name"])) {
+	if (empty($attrs['name'])) {
 		die("<strong>REPORT ERROR var: </strong> The attribute \"name=\" is missing or not set in the XML file");
 	}
 
-	$name = $attrs["name"];
-	$value = $attrs["value"];
+	$name = $attrs['name'];
+	$value = $attrs['value'];
 	$match = array();
 	// Current GEDCOM record strings
 	if ($value == "@ID") {
@@ -2488,12 +2488,12 @@ function SetVarSHandler($attrs) {
 		}
 	}
 	if (preg_match("/\\$(\w+)/", $name, $match)) {
-		$name = $vars["'".$match[1]."'"]["id"];
+		$name = $vars["'".$match[1]."'"]['id'];
 	}
 	$count = preg_match_all("/\\$(\w+)/", $value, $match, PREG_SET_ORDER);
 	$i=0;
 	while ($i<$count) {
-		$t = $vars[$match[$i][1]]["id"];
+		$t = $vars[$match[$i][1]]['id'];
 		$value = preg_replace("/\\$".$match[$i][1]."/", $t, $value, 1);
 		$i++;
 	}
@@ -2524,7 +2524,7 @@ function SetVarSHandler($attrs) {
 	if (strpos($value, "@")!==false) {
 		$value="";
 	}
-	$vars[$name]["id"]=$value;
+	$vars[$name]['id']=$value;
 }
 
 /**
@@ -2540,8 +2540,8 @@ function ifSHandler($attrs) {
 		return;
 	}
 
-	$vars["POSTAL_CODE"]["id"] = $POSTAL_CODE;
-	$condition = $attrs["condition"];
+	$vars['POSTAL_CODE']['id'] = $POSTAL_CODE;
+	$condition = $attrs['condition'];
 	$condition = preg_replace("/\\$(\w+)/", "\$vars[\"$1\"][\"id\"]", $condition);
 	$condition = str_replace(array(" LT ", " GT "), array("<", ">"), $condition);
 	// Replace the first accurance only once of @fact:DATE or in any other combinations to the current fact, such as BIRT
@@ -2617,8 +2617,8 @@ function FootnoteSHandler($attrs) {
 		array_push($printDataStack, $printData);
 		$printData = true;
 		$style = "";
-		if (!empty($attrs["style"])) {
-			$style=$attrs["style"];
+		if (!empty($attrs['style'])) {
+			$style=$attrs['style'];
 		}
 		$footnoteElement = $currentElement;
 		$currentElement = $ReportRoot->createFootnote($style);
@@ -2750,46 +2750,46 @@ function HighlightedImageSHandler($attrs) {
 
 	// mixed Position the top corner of this box on the page. the default is the current position
 	$top = ".";
-	if (isset($attrs["top"])) {
-		if ($attrs["top"] === "0") {
+	if (isset($attrs['top'])) {
+		if ($attrs['top'] === "0") {
 			$top = 0;
-		} elseif ($attrs["top"] === ".") {
+		} elseif ($attrs['top'] === ".") {
 			$top = ".";
-		} elseif (!empty($attrs["top"])) {
-			$top = (int)$attrs["top"];
+		} elseif (!empty($attrs['top'])) {
+			$top = (int)$attrs['top'];
 		}
 	}
 
 	// mixed Position the left corner of this box on the page. the default is the current position
 	$left = ".";
-	if (isset($attrs["left"])) {
-		if ($attrs["left"] === "0") {
+	if (isset($attrs['left'])) {
+		if ($attrs['left'] === "0") {
 			$left = 0;
-		} elseif ($attrs["left"] === ".") {
+		} elseif ($attrs['left'] === ".") {
 			$left = ".";
-		} elseif (!empty($attrs["left"])) {
-			$left = (int)$attrs["left"];
+		} elseif (!empty($attrs['left'])) {
+			$left = (int)$attrs['left'];
 		}
 	}
 
 	// string Align the image in left, center, right
 	$align = "";
-	if (!empty($attrs["align"])) $align = $attrs["align"];
+	if (!empty($attrs['align'])) $align = $attrs['align'];
 
 	// string Next Line should be T:next to the image, N:next line
 	$ln = "";
-	if (!empty($attrs["ln"])) $ln = $attrs["ln"];
+	if (!empty($attrs['ln'])) $ln = $attrs['ln'];
 
 	$width = 0;
 	$height = 0;
-	if (!empty($attrs["width"])) $width = (int)$attrs["width"];
-	if (!empty($attrs["height"])) $height = (int)$attrs["height"];
+	if (!empty($attrs['width'])) $width = (int)$attrs['width'];
+	if (!empty($attrs['height'])) $height = (int)$attrs['height'];
 
 	$media = find_highlighted_object($id, WT_GED_ID, $gedrec);
-	if (!empty($media["file"])) {
-		if (preg_match("/(jpg)|(jpeg)|(png)$/i", $media["file"])) {
-			if (file_exists($media["file"])) {
-				$size = findImageSize($media["file"]);
+	if (!empty($media['file'])) {
+		if (preg_match("/(jpg)|(jpeg)|(png)$/i", $media['file'])) {
+			if (file_exists($media['file'])) {
+				$size = findImageSize($media['file']);
 				if (($width>0) and ($height==0)) {
 					$perc = $width / $size[0];
 					$height= round($size[1]*$perc);
@@ -2800,7 +2800,7 @@ function HighlightedImageSHandler($attrs) {
 					$width = $size[0];
 					$height = $size[1];
 				}
-				$image = $ReportRoot->createImage($media["file"], $left, $top, $width, $height, $align, $ln);
+				$image = $ReportRoot->createImage($media['file'], $left, $top, $width, $height, $align, $ln);
 				$wt_report->addElement($image);
 			}
 		}
@@ -2816,43 +2816,43 @@ function ImageSHandler($attrs) {
 
 	// mixed Position the top corner of this box on the page. the default is the current position
 	$top = ".";
-	if (isset($attrs["top"])) {
-		if ($attrs["top"] === "0") {
+	if (isset($attrs['top'])) {
+		if ($attrs['top'] === "0") {
 			$top = 0;
-		} elseif ($attrs["top"] === ".") {
+		} elseif ($attrs['top'] === ".") {
 			$top = ".";
-		} elseif (!empty($attrs["top"])) {
-			$top = (int)$attrs["top"];
+		} elseif (!empty($attrs['top'])) {
+			$top = (int)$attrs['top'];
 		}
 	}
 
 	// mixed Position the left corner of this box on the page. the default is the current position
 	$left = ".";
-	if (isset($attrs["left"])) {
-		if ($attrs["left"] === "0") {
+	if (isset($attrs['left'])) {
+		if ($attrs['left'] === "0") {
 			$left = 0;
-		} elseif ($attrs["left"] === ".") {
+		} elseif ($attrs['left'] === ".") {
 			$left = ".";
-		} elseif (!empty($attrs["left"])) {
-			$left = (int)$attrs["left"];
+		} elseif (!empty($attrs['left'])) {
+			$left = (int)$attrs['left'];
 		}
 	}
 
 	// string Align the image in left, center, right
 	$align = "";
-	if (!empty($attrs["align"])) $align = $attrs["align"];
+	if (!empty($attrs['align'])) $align = $attrs['align'];
 
 	// string Next Line should be T:next to the image, N:next line
 	$ln = "T";
-	if (!empty($attrs["ln"])) $ln = $attrs["ln"];
+	if (!empty($attrs['ln'])) $ln = $attrs['ln'];
 
 	$width = 0;
 	$height = 0;
-	if (!empty($attrs["width"])) $width = (int)$attrs["width"];
-	if (!empty($attrs["height"])) $height = (int)$attrs["height"];
+	if (!empty($attrs['width'])) $width = (int)$attrs['width'];
+	if (!empty($attrs['height'])) $height = (int)$attrs['height'];
 
 	$file = "";
-	if (!empty($attrs["file"])) $file = $attrs["file"];
+	if (!empty($attrs['file'])) $file = $attrs['file'];
 
 	if ($file=="@FILE") {
 		$match = array();
@@ -2920,46 +2920,46 @@ function LineSHandler($attrs) {
 
 	// Start horizontal position, current position (default)
 	$x1 = ".";
-	if (isset($attrs["x1"])) {
-		if ($attrs["x1"] === "0") {
+	if (isset($attrs['x1'])) {
+		if ($attrs['x1'] === "0") {
 			$x1 = 0;
-		} elseif ($attrs["x1"] === ".") {
+		} elseif ($attrs['x1'] === ".") {
 			$x1 = ".";
-		} elseif (!empty($attrs["x1"])) {
-			$x1 = (int)$attrs["x1"];
+		} elseif (!empty($attrs['x1'])) {
+			$x1 = (int)$attrs['x1'];
 		}
 	}
 	// Start vertical position, current position (default)
 	$y1 = ".";
-	if (isset($attrs["y1"])) {
-		if ($attrs["y1"] === "0") {
+	if (isset($attrs['y1'])) {
+		if ($attrs['y1'] === "0") {
 			$y1 = 0;
-		} elseif ($attrs["y1"] === ".") {
+		} elseif ($attrs['y1'] === ".") {
 			$y1 = ".";
-		} elseif (!empty($attrs["y1"])) {
-			$y1 = (int)$attrs["y1"];
+		} elseif (!empty($attrs['y1'])) {
+			$y1 = (int)$attrs['y1'];
 		}
 	}
 	// End horizontal position, maximum width (default)
 	$x2 = ".";
-	if (isset($attrs["x2"])) {
-		if ($attrs["x2"] === "0") {
+	if (isset($attrs['x2'])) {
+		if ($attrs['x2'] === "0") {
 			$x2 = 0;
-		} elseif ($attrs["x2"] === ".") {
+		} elseif ($attrs['x2'] === ".") {
 			$x2 = ".";
-		} elseif (!empty($attrs["x2"])) {
-			$x2 = (int)$attrs["x2"];
+		} elseif (!empty($attrs['x2'])) {
+			$x2 = (int)$attrs['x2'];
 		}
 	}
 	// End vertical position
 	$y2 = ".";
-	if (isset($attrs["y2"])) {
-		if ($attrs["y2"] === "0") {
+	if (isset($attrs['y2'])) {
+		if ($attrs['y2'] === "0") {
 			$y2 = 0;
-		} elseif ($attrs["y2"] === ".") {
+		} elseif ($attrs['y2'] === ".") {
 			$y2 = ".";
-		} elseif (!empty($attrs["y2"])) {
-			$y2 = (int)$attrs["y2"];
+		} elseif (!empty($attrs['y2'])) {
+			$y2 = (int)$attrs['y2'];
 		}
 	}
 
@@ -2981,18 +2981,18 @@ function ListSHandler($attrs) {
 	if ($processRepeats > 1) return;
 
 	$match = array();
-	if (isset($attrs["sortby"])) {
-		$sortby = $attrs["sortby"];
+	if (isset($attrs['sortby'])) {
+		$sortby = $attrs['sortby'];
 		if (preg_match("/\\$(\w+)/", $sortby, $match)) {
-			$sortby = $vars[$match[1]]["id"];
+			$sortby = $vars[$match[1]]['id'];
 			$sortby = trim($sortby);
 		}
 	} else {
 		$sortby = "NAME";
 	}
 
-	if (isset($attrs["list"])) {
-		$listname=$attrs["list"];
+	if (isset($attrs['list'])) {
+		$listname=$attrs['list'];
 	} else {
 		$listname = "individual";
 	}
@@ -3118,7 +3118,7 @@ function ListSHandler($attrs) {
 
 	$filters = array();
 	$filters2 = array();
-	if ((isset($attrs["filter1"])) and (count($list) > 0)) {
+	if ((isset($attrs['filter1'])) and (count($list) > 0)) {
 		foreach ($attrs as $key=>$value) {
 			if (preg_match("/filter(\d)/", $key)) {
 				$condition = $value;
@@ -3146,7 +3146,7 @@ function ListSHandler($attrs) {
 					$expr = trim($match[2]);
 					$val = trim($match[3]);
 					if (preg_match("/\\$(\w+)/", $val, $match)) {
-						$val = $vars[$match[1]]["id"];
+						$val = $vars[$match[1]]['id'];
 						$val = trim($val);
 					}
 					$searchstr = "";
@@ -3210,9 +3210,9 @@ function ListSHandler($attrs) {
 			$keep = true;
 			foreach ($filters2 as $filter) {
 				if ($keep) {
-					$tag = $filter["tag"];
-					$expr = $filter["expr"];
-					$val = $filter["val"];
+					$tag = $filter['tag'];
+					$expr = $filter['expr'];
+					$val = $filter['val'];
 					if ($val=="''") {
 						$val = "";
 					}
@@ -3416,35 +3416,35 @@ function RelativesSHandler($attrs) {
 	if ($processRepeats>1) return;
 
 	$sortby = "NAME";
-	if (isset($attrs["sortby"])) $sortby = $attrs["sortby"];
+	if (isset($attrs['sortby'])) $sortby = $attrs['sortby'];
 	$match = array();
 	if (preg_match("/\\$(\w+)/", $sortby, $match)) {
-		$sortby = $vars[$match[1]]["id"];
+		$sortby = $vars[$match[1]]['id'];
 		$sortby = trim($sortby);
 	}
 
 	$maxgen = -1;
-	if (isset($attrs["maxgen"])) $maxgen = $attrs["maxgen"];
+	if (isset($attrs['maxgen'])) $maxgen = $attrs['maxgen'];
 	if ($maxgen=="*") $maxgen = -1;
 
 	$group = "child-family";
-	if (isset($attrs["group"])) $group = $attrs["group"];
+	if (isset($attrs['group'])) $group = $attrs['group'];
 	if (preg_match("/\\$(\w+)/", $group, $match)) {
-		$group = $vars[$match[1]]["id"];
+		$group = $vars[$match[1]]['id'];
 		$group = trim($group);
 	}
 
 	$id = "";
-	if (isset($attrs["id"])) $id = $attrs["id"];
+	if (isset($attrs['id'])) $id = $attrs['id'];
 	if (preg_match("/\\$(\w+)/", $id, $match)) {
-		$id = $vars[$match[1]]["id"];
+		$id = $vars[$match[1]]['id'];
 		$id = trim($id);
 	}
 
 	$showempty = false;
-	if (isset($attrs["showempty"])) $showempty = $attrs["showempty"];
+	if (isset($attrs['showempty'])) $showempty = $attrs['showempty'];
 	if (preg_match("/\\$(\w+)/", $showempty, $match)) {
-		$showempty = $vars[$match[1]]["id"];
+		$showempty = $vars[$match[1]]['id'];
 		$showempty = trim($showempty);
 	}
 
