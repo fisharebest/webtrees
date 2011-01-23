@@ -2,11 +2,11 @@
 /**
  * RTL Functions
  *
- * The functions in this file are common to all PGV pages and include date conversion
+ * The functions in this file are common to all webtrees pages and include date conversion
  * routines and sorting functions.
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2010 to 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -97,7 +97,8 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	$workingText = str_replace(array('<span class="starredname"><br />', '<span<br />class="starredname">'), '<br /><span class="starredname">',$workingText); // Reposition some incorrectly placed line breaks
 	$workingText = stripLRMRLM($workingText); // Get rid of any existing UTF8 control codes
 
-	$nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
+//	$nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
+	$nothing  = '';
 
 	$startLTR = '<LTR>'; // This will become '<span dir="ltr">' at the end
 	$endLTR = '</LTR>'; // This will become '</span>' at the end
@@ -134,7 +135,9 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			if (strlen($element < 7) && $temp == '<br') { // assume we have '<br />' or a variant thereof
 				if ($numberState) {
 					$numberState = false;
-					$waitingText .= WT_UTF8_PDF;
+					if ($currentState == 'RTL') {
+						$waitingText .= WT_UTF8_PDF;
+					}
 				}
 				breakCurrentSpan($result);
 			} else if ($waitingText == '') {
@@ -163,7 +166,9 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 					// we have a New-Line code
 					if ($numberState) {
 						$numberState = false;
-						$waitingText .= WT_UTF8_PDF;
+						if ($currentState == 'RTL') {
+							$waitingText .= WT_UTF8_PDF;
+						}
 					}
 					breakCurrentSpan($result);
 					$workingText = substr($workingText, $currentLen);
@@ -211,10 +216,12 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 					if (strpos($numbers, $charArray['letter']) === false) {
 						// This is not a digit.  End the run of digits and punctuation.
 						$numberState = false;
-						if (strpos($numberPrefix, $currentLetter) === false) {
-							$currentLetter = WT_UTF8_PDF . $currentLetter;
-						} else {
-							$currentLetter = $currentLetter . WT_UTF8_PDF; // Include a trailing + or - in the run
+						if ($currentState == 'RTL') {
+							if (strpos($numberPrefix, $currentLetter) === false) {
+								$currentLetter = WT_UTF8_PDF . $currentLetter;
+							} else {
+								$currentLetter = $currentLetter . WT_UTF8_PDF; // Include a trailing + or - in the run
+							}
 						}
 					}
 				}
@@ -226,11 +233,15 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 					$nextChar = substr($workingText."\n", $offset, 1);
 					if (strpos($numbers, $nextChar) !== false) {
 						$numberState = true; // We found a digit: the lead-in is therefore numeric
-						$currentLetter = WT_UTF8_LRE . $currentLetter;
+						if ($currentState == 'RTL') {
+							$currentLetter = WT_UTF8_LRE . $currentLetter;
+						}
 					}
 				} else if (strpos($numbers, $currentLetter) !== false) {
 					$numberState = true; // The current letter is a digit
-					$currentLetter = WT_UTF8_LRE . $currentLetter;
+					if ($currentState == 'RTL') {
+						$currentLetter = WT_UTF8_LRE . $currentLetter;
+					}
 				}
 			}
 
@@ -353,9 +364,13 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	if ($numberState) {
 		$numberState = false;
 		if ($waitingText == '') {
-			$result .= WT_UTF8_PDF;
+			if ($currentState == 'RTL') {
+				$result .= WT_UTF8_PDF;
+			}
 		} else {
-			$waitingText .= WT_UTF8_PDF;
+			if ($currentState == 'RTL') {
+				$waitingText .= WT_UTF8_PDF;
+			}
 		}
 	}
 	finishCurrentSpan($result, true);

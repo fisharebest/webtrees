@@ -648,8 +648,7 @@ class CellPDF extends Cell {
 		}
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
 		// underline «title» part of Source item
-//		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
-		$temptext = str_replace(array('«', '»'), array('', ''), $temptext);
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 		$match = array();
 		// Indicates if the cell background must be painted (1) or transparent (0)
 		if ($this->fill == 1) {
@@ -1319,8 +1318,7 @@ class FootnotePDF extends Footnote {
 		} else {
 			$temptext = "<span>".$this->num.". </span>".$temptext;
 		}
-		$temptext = spanLTRRTL($temptext, "BOTH");
-//		$pdf->writeHTML($temptext."<br/>", true, false, true, false, '');
+		$temptext = spanLTRRTL($temptext, "BOTH"); 
 		$pdf->writeHTML($temptext, true, false, true, false, '');
 		//$pdf->Write($pdf->getCurrentStyleHeight(), $this->num.". ".$temptext."\n\n"); //@@ indi list of sources
 	}
