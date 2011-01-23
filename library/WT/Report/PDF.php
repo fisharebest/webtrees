@@ -49,7 +49,7 @@ class WT_Report_PDF extends WT_Report_Base {
 	* PDF compression - Zlib extension is required
 	* @var boolean const
 	*/
-	const compression = false;
+	const compression = true;
 	/**
 	* If TRUE reduce the RAM memory usage by caching temporary data on filesystem (slower).
 	* @var boolean const
