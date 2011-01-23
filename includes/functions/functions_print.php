@@ -493,9 +493,9 @@ function print_footer() {
 	if (WT_DEBUG_SQL) {
 		echo WT_DB::getQueryLog();
 	}
-	if (array_key_exists('googleanalytics', WT_Module::getActiveModules())) {
-				echo googleanalytics_WT_Module::addCode();
-			}
+	if (array_key_exists('custom_js', WT_Module::getActiveModules())) {
+		echo custom_js_WT_Module::getFooterCode()."\n";
+	}
 	echo '</body></html>';
 }
 

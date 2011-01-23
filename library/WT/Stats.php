@@ -3634,7 +3634,17 @@ class WT_Stats {
 	static function usersLoggedInTotalVisible() {return self::_usersLoggedInTotal('visible');}
 
 	static function userID() {return getUserId();}
-	static function userName() {return getUserName();}
+	static function userName($params=null) {
+		if (getUserID()) {
+			return getUserName();
+		} else {
+			if (is_array($params) && isset($params[0]) && $params[0] != '') {
+				# if #username:visitor# was specified, then "visitor" will be returned when the user is not logged in 
+				return $params[0]; 
+			}
+			else return null;
+		}
+	}
 	static function userFullName() {return getUserFullName(getUserId());}
 
 	static function _getLatestUserData($type='userid', $params=null) {
