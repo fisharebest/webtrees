@@ -166,7 +166,7 @@ if ($action=='update' && !isset($security_user)) {
 	<?php if ($pid) { ?>
 		<INPUT TYPE="button" VALUE="<?php echo WT_I18N::translate('Return to Album page'); ?>" onclick="javascript:window.location='individual.php?pid=<?php echo $pid; ?>&gedcom=<?php echo $GEDCOM; ?>&tab=lightbox'" />
 	<?php } else { ?>
-		<INPUT TYPE="button" VALUE="<?php echo WT_I18N::translate('Return to Admin Page'); ?>" onclick="javascript:window.location='module_admin.php'" />
+		<INPUT TYPE="button" VALUE="<?php echo WT_I18N::translate('Return to Admin Page'); ?>" onclick="javascript:window.location='admin_modules.php'" />
 	<?php } ?>
 </form>
 <?php print_footer();
