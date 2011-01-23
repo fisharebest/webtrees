@@ -50,6 +50,7 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 .ui-widget-header {padding:5px;}
 .css_right {float:right;}
 html[dir='rtl'] .css_right {float:left;}
+td {vertical-align:top;}
 
 /* Drag-n-drop sorting for modules, etc. */
 .sortme {cursor:move;}
@@ -159,7 +160,7 @@ table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse:separ
 #merge a {padding: 10px;}
 #merge table, #merge2 table, #merge3 table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0; padding:5px;}
 #merge td {padding: 5px; white-space:nowrap;}
-#merge2 td, #merge3 td {border-bottom:1px solid LightGrey; vertical-align:top; }
+#merge2 td, #merge3 td {border-bottom:1px solid LightGrey;}
 #merge3 th {font-weight:bold; text-align:left;}
 
 /* OTHER ADMIN */
@@ -168,7 +169,7 @@ table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse:separ
 #other td {border-bottom:1px solid LightGrey; padding:5px 0;}
 
 /* CLEANUP */
-#cleanup td {padding:5px; vertical-align:top;}
+#cleanup td {padding:5px;}
 #cleanup2 {background:OldLace; border:1px inset #D9D6C4; padding:5px;}
 #cleanup3 table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; padding:5px;}
 #cleanup3 td {border-bottom:1px solid LightGrey; padding:5px 0;}
@@ -185,7 +186,7 @@ table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 #tabs {width:100%}
 #file-options, #privacy, #config-media, #access-options, #layout-options, #hide-show, #edit-options {padding:10px;}
 #file-options table, #privacy table, #config-media table, #access-options table, #layout-options table, #hide-show table, #edit-options table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
-#file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid LightGrey; vertical-align:top;}
+#file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid LightGrey;}
 #file-options th, #privacy th, #config-media th, #access-options th, #layout-options th, #hide-show th, #edit-options th {border-bottom:2px solid LightGrey; color:green; font-weight:bold; text-align:left;}
 #relatives {margin-left:120px;}
 
@@ -202,7 +203,7 @@ table#list  {width:100%}
 td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
 .edit_link {white-space:nowrap;}
 .edit_link:after {content:" " url("../images/edit.png");}
-.details td {vertical-align:top; border-right:1px solid #808080; padding-right:20px;}
+.details td {border-right:1px solid #808080; padding-right:20px;}
 .details th {font-weight:bold; vertical-align:top; padding-left:20px;}
 .details ul {margin:0; padding:0 0 0 20px;}
 .odd {background-color:#dfd;}
@@ -244,9 +245,10 @@ table#media_table  {width:100%;}
 #media_table th {min-width:200px;}
 #media_table th+th {min-width:120px;}
 #media_table th+th+th {width:*;}
-#media_table td {vertical-align:top; padding:5px;}
+#media_table td {padding:5px;}
 .media_items {width:100%; margin:0;}
 .media_items td {background:OldLace; border:1px inset #D9D6C4;}
+.media_items td+td+td {vertical-align:middle;}
 
 /* UPLOAD MEDIA */
 table.upload_media {border-collapse:separate; border-spacing:0; margin:10px 0;}
@@ -264,7 +266,7 @@ table.upload_media {border-collapse:separate; border-spacing:0; margin:10px 0;}
 /* MANAGE MENUS, TABS, BLOCKS, SIDEBAR, REPORTS */
 table.modules_table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; padding:5px; margin-bottom:10px;}
 .modules_table th {border-bottom:2px solid LightGrey; font-weight:bold; font-size:105%;}
-.modules_table td {border-bottom:2px solid LightGrey; padding:3px; min-width:120px; vertical-align:top;}
+.modules_table td {border-bottom:2px solid LightGrey; padding:3px; min-width:120px;}
 .modules_table .modules_table2 td {border:0;}
 
 /* CONFIG ALBUM MODULE */

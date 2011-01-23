@@ -53,8 +53,8 @@ $CJS_FOOTER=get_module_setting('custom_js', 'CJS_FOOTER');
 <input type="hidden" name="action" value="update" />
 	<table id="cjs_config">
 		<tr>
-			<td width="40%"><?php echo WT_I18N::translate('Custom Javascript for Footer'); ?><?php echo help_link('cjs_mod_footer', $this->getName()); ?></td>
-			<td width="60%">
+			<td><?php echo WT_I18N::translate('Custom Javascript for Footer'); ?><?php echo help_link('cjs_mod_footer', $this->getName()); ?></td>
+			<td>
 				<textarea rows="10" cols="60" name="NEW_CJS_FOOTER"><?php echo $CJS_FOOTER; ?></textarea>
 			</td>
 		</tr>
