@@ -1,9 +1,9 @@
 <?php
 /**
- * Online UI for editing config.php site configuration variables
+ * Online UI for editing site configuration variables
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2007  PGV Development Team
@@ -25,9 +25,7 @@
  * This Page Is Valid XHTML 1.0 Transitional! > 17 September 2005
  *
  * @package webtrees
- * @subpackage GoogleMap
- * @see config.php
- * @version $Id: editconfig.php,v$
+ * @subpackage Lightbox
  * $Id$
  */
 
@@ -68,7 +66,7 @@ if ($action=='update' && !isset($security_user)) {
 }
 
 ?>
-<form method="post" name="configform" action="module.php?mod=lightbox&amp;mod_action=lb_editconfig&amp;pid=<?php echo $pid; ?>">
+<form method="post" name="configform" action="module.php?mod=lightbox&amp;mod_action=admin_config&amp;pid=<?php echo $pid; ?>">
 <input type="hidden" name="action" value="update" />
 	<table id="album_config">
 		<tr>
@@ -164,7 +162,7 @@ if ($action=='update' && !isset($security_user)) {
 	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
 	&nbsp;&nbsp;
 	<?php if ($pid) { ?>
-		<INPUT TYPE="button" VALUE="<?php echo WT_I18N::translate('Return to Album page'); ?>" onclick="javascript:window.location='individual.php?pid=<?php echo $pid; ?>&gedcom=<?php echo $GEDCOM; ?>&tab=lightbox'" />
+		<INPUT TYPE="button" VALUE="<?php echo WT_I18N::translate('Return to Album page'); ?>" onclick="javascript:window.location='individual.php?pid=<?php echo $pid; ?>&gedcom=<?php echo $GEDCOM; ?>#lightbox'" />
 	<?php } else { ?>
 		<INPUT TYPE="button" VALUE="<?php echo WT_I18N::translate('Return to Admin Page'); ?>" onclick="javascript:window.location='admin_modules.php'" />
 	<?php } ?>
