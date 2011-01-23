@@ -51,12 +51,6 @@ class WT_MenuBar {
 				$menu->addSubmenu($submenu);
 			}
 		}
-		//-- Welcome Menu customization
-		$filename = WT_ROOT.'includes/extras/custom_welcome_menu.php';
-		if (file_exists($filename)) {
-			require $filename;
-		}
-
 		return $menu;
 	}
 
