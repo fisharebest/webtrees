@@ -1919,7 +1919,14 @@ function addNewName() {
 	if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_NAME_FACTS, $match)) {
 		$tags=array_merge($tags, $match[1]);
 	}
-	foreach ($tags as $tag) {
+
+	// Paternal and Polish surname traditions can also create a _MARNM
+	$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
+	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish') {
+		$tags[]='_MARNM';
+	}
+
+	foreach (array_unique($tags) as $tag) {
 		$TAG=safe_POST($tag, WT_REGEX_UNSAFE);
 		if ($TAG) {
 			$gedrec.="2 {$tag} {$TAG}\n";
