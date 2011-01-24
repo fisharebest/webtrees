@@ -474,6 +474,7 @@ function print_repository_record($xref) {
 	if ($repository && $repository->canDisplayDetails()) {
 		echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br />';
 		print_address_structure($repository->getGedcomRecord(), 1);
+		echo '<br />';
 		print_fact_notes($repository->getGedcomRecord(), 1);
 	}
 }
