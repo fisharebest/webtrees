@@ -484,6 +484,10 @@ if ($action=="add") {
 			map.setCenter(new GLatLng( <?php echo $place_lati, ", ", $place_long, "), ", $zoomfactor; ?>, G_NORMAL_MAP );
 <?php } ?>
 
+// === Script timeout problem is here. The following code is supressed ============================= 
+<?php /*	
+// =================================================================================================
+
 <?php   if ($level < 3) { ?>
 			var childicon = new GIcon();
 			childicon.image = "http://labs.google.com/ridefinder/images/mm_20_green.png";
@@ -524,6 +528,11 @@ if ($action=="add") {
 				}
 			}
 		}
+			
+// =================================================================================================			
+*/ ?><?php
+// === end supressed code ==========================================================================
+
 		if ($show_marker == true) {
 			if (($place_icon == NULL) || ($place_icon == "")) {
 				if (($place_lati == null) || ($place_long == null)) { ?>
