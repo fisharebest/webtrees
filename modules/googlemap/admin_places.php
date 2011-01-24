@@ -315,7 +315,7 @@ if ($action=="ImportFile") {
 	findFiles("modules/googlemap/extra");
 	sort($placefiles);
 ?>
-<form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&mod_action=places">
+<form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&mod_action=admin_places">
 	<input type="hidden" name="action" value="ImportFile2" />
 	<table class="gm_plac_edit ">
 		<tr>
