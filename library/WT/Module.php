@@ -121,6 +121,7 @@ abstract class WT_Module {
 				WT_DB::prepare("DELETE FROM `##block`          WHERE module_name=?")->execute(array($module_name));
 				WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
 			}
+			uasort($array, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
 		return $array;
 	}
