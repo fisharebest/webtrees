@@ -1,33 +1,27 @@
 <?php
-/**
- * Popup window that will allow a user to search for a media
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * Modifications Copyright (c) 2010 Greg Roach
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Display
- * @version $Id$
- */
+// Popup window that will allow a user to search for a media
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// @version $Id$
 
  /* TODO:
  * Add check for missing index.php files when creating a directory
@@ -255,7 +249,7 @@ if (WT_USER_IS_ADMIN) {
 // echo the header of the page
 print_header(WT_I18N::translate('Manage multimedia'));
 ?>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 <!--
 function pasteid(id) {
 	window.opener.paste_id(id);
@@ -299,7 +293,7 @@ function showchanges() {
 
 //-->
 </script>
-<script src="js/webtrees.js" language="JavaScript" type="text/javascript"></script>
+<script src="js/webtrees.js" type="text/javascript"></script>
 <?php
 if (check_media_structure()) {
 	echo "<div id=\"uploadmedia\" style=\"display:none\">";

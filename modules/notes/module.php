@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -121,7 +121,7 @@ if (!$this->controller->indi->canDisplayDetails()) {
 <?php
 if (!$SHOW_LEVEL2_NOTES) {
 	?>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 			<!--
 			toggleByClassName('TR', 'row_note2');
 			//-->

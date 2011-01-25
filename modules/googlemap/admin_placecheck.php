@@ -1,34 +1,28 @@
 <?php
-/**
- * Check a GEDCOM file for compliance with the 5.5.1 specification
- * and other common errors.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team. All rights reserved.
- *
- * Modifications Copyright (c) 2010 Greg Roach
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License or,
- * at your discretion, any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @author Nigel Osborne 26 Mar 2007
- * @package webtrees
- * $Id$
- */
+// Check a GEDCOM file for compliance with the 5.5.1 specification
+// and other common errors.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team. All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License or,
+// at your discretion, any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -193,7 +187,7 @@ case 'go':
 
 	//scripts for edit, add and refresh
 	?>
-	<script language="JavaScript" type="text/javascript">
+	<script type="text/javascript">
 	<!--
 	function edit_place_location(placeid) {
 		window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=680, height=550, resizable=1, scrollbars=1');

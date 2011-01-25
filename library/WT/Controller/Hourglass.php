@@ -474,7 +474,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 	function setupJavascript() {
 		global $bhalfheight;
 ?>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 <!--
 	var pastefield;
 	function paste_id(value) {

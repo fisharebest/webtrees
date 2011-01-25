@@ -1,35 +1,27 @@
 <?php
-/**
- * Register as a new User or request new password if it is lost
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * Modifications Copyright (c) 2010 Greg Roach
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * This Page Is Valid XHTML 1.0 Transitional! > 29 August 2005
- *
- * @package webtrees
- * @subpackage Admin
- * @version $Id$
- */
+// Register as a new User or request new password if it is lost
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// @version $Id$
 
 define('WT_SCRIPT_NAME', 'login_register.php');
 require './includes/session.php';
@@ -60,7 +52,7 @@ switch ($action) {
 	case "pwlost" :
 		print_header(WT_I18N::translate('Lost password request'));
 		?>
-		<script language="JavaScript" type="text/javascript">
+		<script type="text/javascript">
 		<!--
 			function checkform(frm) {
 				/*
@@ -86,7 +78,7 @@ switch ($action) {
 			</table>
 			</form>
 		</div>
-		<script language="JavaScript" type="text/javascript">
+		<script type="text/javascript">
 			document.requestpwform.user_name.focus();
 		</script>
 		<?php
@@ -203,7 +195,7 @@ switch ($action) {
 			$user = array();
 
 			?>
-			<script language="JavaScript" type="text/javascript">
+			<script type="text/javascript">
 			<!--
 				function checkform(frm) {
 					if (frm.user_name.value == "") {
@@ -293,7 +285,7 @@ switch ($action) {
 					</table>
 				</form>
 			</div>
-			<script language="JavaScript" type="text/javascript">
+			<script type="text/javascript">
 				document.registerform.user_realname.focus();
 			</script>
 			<?php
@@ -458,7 +450,7 @@ switch ($action) {
 			</table>
 		</form>
 		</div>
-		<script language="JavaScript" type="text/javascript">
+		<script type="text/javascript">
 			document.verifyform.user_password.focus();
 		</script>
 		<?php

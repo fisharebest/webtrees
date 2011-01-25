@@ -2,7 +2,7 @@
 <html <?php echo WT_I18N::html_markup(); ?>>
 <head>
 <title>Help window</title>
-<script language="JavaScript">
+<script type="text/javascript">
 /*
 	<!--
 	function printToPage()
@@ -26,7 +26,7 @@
 <br /><br />
 Here will be the help for the Census Assistant window:
 <p>
-<script language="JavaScript">
+<script type="text/javascript">
 <!--
 document.write(printToPage());
 //-->

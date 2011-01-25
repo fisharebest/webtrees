@@ -1,36 +1,30 @@
 <?php
-/**
- * Parses gedcom file and displays a pedigree tree.
- *
- * Specify a $rootid to root the pedigree tree at a certain person
- * with id = $rootid in the GEDCOM file.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * This Page Is Valid XHTML 1.0 Transitional! > 22 August 2005
- *
- * $Id$
- * @package webtrees
- * @subpackage Charts
- */
+// Parses gedcom file and displays a pedigree tree.
+//
+// Specify a $rootid to root the pedigree tree at a certain person
+// with id = $rootid in the GEDCOM file.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
@@ -59,7 +53,7 @@ if ($controller->addname!="") {
 echo '</h2>';
 // -- echo the form to change the number of displayed generations
 ?>
-	<script language="JavaScript" type="text/javascript">
+	<script type="text/javascript">
 	<!--
 	var pastefield;
 	function paste_id(value) {
@@ -439,7 +433,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 $maxyoffset+=30;
 ?>
 </div>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 	content_div = document.getElementById("content");
 	if (content_div) {
 		content_div.style.height = <?php echo $maxyoffset; ?> + "px";

@@ -1,33 +1,27 @@
 <?php
-/**
- * Calculates the relationship between two individuals in the gedcom
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * This Page Is Valid XHTML 1.0 Transitional! > 20 August 2005
- *
- * @package webtrees
- * @subpackage Charts
- * @version $Id$
- */
+// Calculates the relationship between two individuals in the gedcom
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
@@ -115,7 +109,7 @@ if ($pid2) {
 	}
 }
 ?>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 var pastefield;
 function paste_id(value) {
 	pastefield.value=value;
@@ -267,7 +261,7 @@ function paste_id(value) {
 			}
 			if (!$followspouse) {
 				?>
-				<script language="JavaScript" type="text/javascript">
+				<script type="text/javascript">
 				document.getElementById("followspousebox").className='facts_valuered';
 				</script>
 				<?php
@@ -508,7 +502,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 $maxyoffset += 100;
 ?>
 </div>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 	relationship_chart_div = document.getElementById("relationship_chart");
 	if (relationship_chart_div) {
 		relationship_chart_div.style.height = <?php echo ($maxyoffset-50); ?> + "px";

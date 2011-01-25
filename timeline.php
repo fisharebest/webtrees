@@ -1,35 +1,29 @@
 <?php
-/**
- * Display a timeline chart for a group of individuals
- *
- * Use the $pids array to set which individuals to show on the chart
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * This Page Is Valid XHTML 1.0 Transitional! > 08 August 2005
- *
- * @package webtrees
- * @subpackage Charts
- * @version $Id$
- */
+// Display a timeline chart for a group of individuals
+//
+// Use the $pids array to set which individuals to show on the chart
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
@@ -41,7 +35,7 @@ print_header(WT_I18N::translate('Timeline'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 ?>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 <!--
 function showhide(divbox, checkbox) {
 	if (checkbox.checked) {
@@ -400,7 +394,7 @@ if (count($controller->people)>0) {
 			</table><br /><br /><br />
 		</div><br /><br /><br /><br />
 	<?php } ?>
-	<script language="JavaScript" type="text/javascript">
+	<script type="text/javascript">
 	<!--
 	var bottomy = <?php echo ($baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale)); ?>-5;
 	var topy = <?php echo $baseyoffset; ?>;
@@ -423,7 +417,7 @@ if (count($controller->people)>0) {
 	</script>
 </div>
 <?php } ?>
-<script language="JavaScript" type="text/javascript">
+<script type="text/javascript">
 <!--
 	timeline_chart_div = document.getElementById("timeline_chart");
 	if (timeline_chart_div) timeline_chart_div.style.height = '<?php echo $baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale*1.1); ?>px';

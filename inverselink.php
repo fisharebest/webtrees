@@ -1,33 +1,29 @@
 <?php
-/**
- * Link media items to indi, sour and fam records
- *
- * This is the page that does the work of linking items.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage MediaDB
- * @version $Id$
- */
+// Link media items to indi, sour and fam records
+//
+// This is the page that does the work of linking items.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
@@ -77,7 +73,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 
 	if ($action == "choose" && $paramok) {
 		?>
-		<script language="JavaScript" type="text/javascript">
+		<script type="text/javascript">
 		<!--
 		var pastefield;
 		var language_filter, magnify;
@@ -100,7 +96,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		}
 		//-->
 		</script>
-	<script src="js/webtrees.js" language="JavaScript" type="text/javascript"></script>
+	<script src="js/webtrees.js" type="text/javascript"></script>
 
 		<?php
 		echo '<form name="link" method="get" action="inverselink.php">';

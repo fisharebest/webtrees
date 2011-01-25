@@ -1,33 +1,29 @@
 <?php
-/**
- * Media Link Assistant Control module for phpGedView
- *
- * Media Link information about an individual
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage GEDFact_assistant
- * @version $Id$
-*/
+// Media Link Assistant Control module for phpGedView
+//
+// Media Link information about an individual
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 // GEDFact Media assistant replacement code for inverselink.php: ===========================
 
@@ -72,7 +68,7 @@ if (!empty($linktoid)) $paramok = canDisplayRecord(WT_GED_ID, find_gedcom_record
 if ($action == "choose" && $paramok) {
 
 	?>
-	<script language="JavaScript" type="text/javascript">
+	<script type="text/javascript">
 	<!--
 	// Javascript variables
 	var id_empty = "<?php echo WT_I18N::translate('When adding a Link, the ID field cannot be empty.'); ?>";
@@ -110,7 +106,7 @@ if ($action == "choose" && $paramok) {
 	var GEDFact_assist = "installed";
 //-->
 	</script>
-	<script src="webtrees.js" language="JavaScript" type="text/javascript"></script>
+	<script src="webtrees.js" type="text/javascript"></script>
 	<link href ="modules/GEDFact_assistant/css/media_0_inverselink.css"  rel="stylesheet" type="text/css" media="screen" />
 
 	<?php
