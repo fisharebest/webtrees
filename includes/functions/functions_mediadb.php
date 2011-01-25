@@ -1067,7 +1067,7 @@ function process_uploadMedia_form() {
 /**
 * print a form for uploading media files
 * @param string $URL  the URL the input form is to execute when the "Submit" button is pressed
-* @param bool   $showthumb the setting of the "show thumbnail" option (required by media.php)
+* @param bool   $showthumb the setting of the "show thumbnail" option (required by admin_media.php)
 */
 function show_mediaUpload_form($URL, $showthumb=false) {
 	global $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
@@ -1583,7 +1583,7 @@ function findImageSize($file) {
 * Print the list of persons, families, and sources that are mentioned in
 * the "LINKS" array of the current item from the Media list.
 *
-* This function is called from media.php, medialist.php, and random_media.php
+* This function is called from admin_media.php, medialist.php, and random_media.php
 */
 
 function PrintMediaLinks($links, $size = "small") {
