@@ -108,27 +108,9 @@ if ($action=='addBanned' || $action=='addSearch' || $action=='deleteBanned' || $
 	$action='showForm';
 }
 
-?>
-
-<script language="JavaScript" type="text/javascript">
-<!--
-function showSite(siteID) {
-	buttonShow = document.getElementById("buttonShow_"+siteID);
-	siteDetails = document.getElementById("siteDetails_"+siteID);
-	if (siteDetails.style.display=='none') {
-		buttonShow.innerHTML='<?php echo WT_I18N::translate('Hide Details'); ?>';
-		siteDetails.style.display='block';
-	} else {
-		buttonShow.innerHTML='<?php echo WT_I18N::translate('Show Details'); ?>';
-		siteDetails.style.display='none';
-	}
-}
-//-->
-</script>
-
-<?php
 // Search Engine IP address table
-echo '<table class="sites">',
+echo
+	'<table class="sites">',
 	'<tr><td>',
 	'<form name="searchengineform" action="', WT_SCRIPT_NAME, '" method="post">',
 	'<table>',
