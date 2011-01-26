@@ -40,7 +40,7 @@ class custom_js_WT_Module extends WT_Module implements WT_Module_Config {
 				$stats = new WT_Stats(WT_GEDCOM);
 				$cjs_footer = $stats->embedTags($cjs_footer);
 			}
-			WT_JS::addInline($cjs_footer);
+			WT_JS::addInline($cjs_footer, WT_JS::PRIORITY_LOW);
 			self::$sent=true;
 		}
 	}
