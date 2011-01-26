@@ -50,5 +50,5 @@ echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
 			echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
 		echo '</a>';
 	}
-'</div>'; // close div id=\"footer\"
+	echo '</div>'; // close div id=\"footer\"
 ?>
