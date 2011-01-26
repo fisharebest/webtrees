@@ -488,9 +488,6 @@ function print_footer() {
 		echo WT_DB::getQueryLog();
 	}
 	echo WT_JS::render();
-	if (array_key_exists('custom_js', WT_Module::getActiveModules())) {
-		echo custom_js_WT_Module::getFooterCode()."\n";
-	}
 	echo '</body></html>';
 }
 

@@ -75,27 +75,16 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		/*
-		* Initiate the stats object.
+		* Retrieve text, process embedded variables
 		*/
-		$stats = new WT_Stats($GEDCOM);
+		$title_tmp = get_block_setting($block_id, 'title');
+		$html = get_block_setting($block_id, 'html');
 
-		/*
-		* First Pass.
-		* Handle embedded language, fact, global, etc. references
-		*   This needs to be done first because the language variables could themselves
-		*   contain embedded keywords.
-		*/
-		// Title
-		$title_tmp=get_block_setting($block_id, 'title');
-		$html =get_block_setting($block_id, 'html');
-		/*
-		* Second Pass.
-		*/
-		list($new_tags, $new_values) = $stats->getTags("{$title_tmp} {$html}");
-		// Title
-		if (strstr($title_tmp, '#')) {$title_tmp = str_replace($new_tags, $new_values, $title_tmp);}
-		// Content
-		$html = str_replace($new_tags, $new_values, $html);
+		if ( (strpos($title_tmp, '#')!==false) || (strpos($html, '#')!==false) ) {
+			$stats = new WT_Stats($GEDCOM);
+			$title_tmp = $stats->embedTags($title_tmp);
+			$html = $stats->embedTags($html);
+		}
 
 		/*
 		* Restore Current GEDCOM

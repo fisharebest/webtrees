@@ -36,7 +36,7 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 // Methods not allowed to be used in a statistic
-define('STATS_NOT_ALLOWED', 'stats,getAllTags,getTags');
+define('STATS_NOT_ALLOWED', 'stats,getAllTags,getTags,embedTags');
 
 class WT_Stats {
 	var $_gedcom;
@@ -188,6 +188,17 @@ class WT_Stats {
 			}
 		}
 		return array($new_tags, $new_values);
+	}
+
+	/*
+	* Embed tags in text
+	*/
+	function embedTags($text) {
+		if (strpos($text, '#')!==false) {
+			list($new_tags, $new_values) = $this->getTags($text);
+			$text = str_replace($new_tags, $new_values, $text);
+		}
+		return $text;
 	}
 
 ///////////////////////////////////////////////////////////////////////////////

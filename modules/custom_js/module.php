@@ -30,20 +30,19 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class custom_js_WT_Module extends WT_Module implements WT_Module_Config {
+	private static $sent=false;
+
 	public function __construct () {
-
-	}
-
-	// Generate custom footer code
-	public static function getFooterCode() {
-		$cjs_footer=get_module_setting('custom_js', 'CJS_FOOTER', '');
-		if (strstr($cjs_footer, '#')) {
-			# parse for embedded keywords
-			$stats = new WT_Stats(WT_GEDCOM);
-			list($new_tags, $new_values) = $stats->getTags($cjs_footer);
-			$cjs_footer = str_replace($new_tags, $new_values, $cjs_footer);
+		if (!self::$sent) {
+			$cjs_footer=get_module_setting('custom_js', 'CJS_FOOTER', '');
+			if (strpos($cjs_footer, '#')!==false) {
+				# parse for embedded keywords
+				$stats = new WT_Stats(WT_GEDCOM);
+				$cjs_footer = $stats->embedTags($cjs_footer);
+			}
+			WT_JS::addInline($cjs_footer);
+			self::$sent=true;
 		}
-		return $cjs_footer;
 	}
 
 	// Extend WT_Module
