@@ -398,22 +398,23 @@ function print_arrow_person($n, $arrow_dir) {
 			$arrow_dir="l";
 		}
 	}
-	if ($TEXT_DIRECTION=="ltr") {
-		$title = WT_I18N::translate('Compact chart').": ".$pid;
-	} else {
-		$title = $pid." :".WT_I18N::translate('Compact chart');
-	}
-	$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' />";
-	$hideArrow = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' style='visibility:hidden;' />";
 
 	$text = "";
 	if ($pid) {
+		$indi=WT_Person::getInstance($pid);
+		$name=$indi->getFullName();
+		if ($TEXT_DIRECTION=="ltr") {
+			$title = WT_I18N::translate('Compact chart').": ".$name;
+		} else {
+			$title = $name." :".WT_I18N::translate('Compact chart');
+		}
+		$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' />";
 		$text .= "<a href=\"?rootid=".$pid;
 		if ($showthumbs) $text .= "&amp;showthumbs=".$showthumbs;
 		$text .= "\" onmouseover=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" onmouseout=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" >";
 		$text .= $arrow_img."</a>";
 	}
 	// -- arrow to empty box does not have a url attached.
-	else $text = $hideArrow;
+	else $text = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='".WT_I18N::translate('Compact chart')."' title='".WT_I18N::translate('Compact chart')."' style='visibility:hidden;' />";
 	echo $text;
 }
