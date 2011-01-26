@@ -200,8 +200,8 @@ if (!$SEARCH_SPIDER) {
 			echo '<a href="', $url, '&amp;show_marnm=yes'.'&amp;ged='.WT_GEDURL.'">', WT_I18N::translate('Include married names'), '</a>';
 		}
 		echo help_link('show_marnm');
-		echo '</p>';
 	}
+	echo '</p>';
 }
 echo '</div>';
 
