@@ -3,7 +3,7 @@
  * Counts how many hits.
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -49,9 +49,6 @@ case 'individual.php':
 	break;
 case 'family.php':
 	$page_parameter=safe_GET('famid', WT_REGEX_XREF);
-	break;
-case 'source.php':
-	$page_parameter=safe_GET('sid', WT_REGEX_XREF);
 	break;
 case 'source.php':
 	$page_parameter=safe_GET('sid', WT_REGEX_XREF);

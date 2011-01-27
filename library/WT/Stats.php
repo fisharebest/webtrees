@@ -3725,6 +3725,51 @@ class WT_Stats {
 // Tools                                                                     //
 ///////////////////////////////////////////////////////////////////////////////
 
+	// These functions provide access to hitcounter
+	// for use in the HTML block.
+
+	static private function getHitCount($page_name='index', $params=null) {
+		global $SHOW_COUNTER, $SEARCH_SPIDER, $hitCount;
+		if (is_array($params) && isset($params[0]) && $params[0] != '') {$page_parameter = $params[0];} else {$page_parameter = '';}
+		$countertext='';
+		if ($SHOW_COUNTER && !$SEARCH_SPIDER) {
+			switch ($page_name) {
+			case 'index':
+				// gedcom:WT_GED_ID;
+				$countertext .= WT_I18N::translate('Hit Count:')." ".$hitCount;
+				break;
+			case 'index.php':
+				// user:USER_ID;
+				$page_parameter = 'user:'.$page_parameter;
+				$hit=WT_DB::prepare(
+					"SELECT page_count FROM `##hit_counter`".
+					" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
+				)->execute(array(WT_GED_ID, $page_name, $page_parameter))->fetchOne();
+				$countertext .= WT_I18N::translate('Hit Count:').' <span class="hit-counter">'.$hit.'</span>';
+				break;
+			default:
+				$hit=WT_DB::prepare(
+					"SELECT page_count FROM `##hit_counter`".
+					" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
+				)->execute(array(WT_GED_ID, $page_name, $page_parameter))->fetchOne();
+				$countertext .= $hit;
+				break;
+			}
+			$countertext = "<div id='hitcounter' class='clearfloat'>".$countertext;
+			$countertext .= "</div>";
+		}
+		return $countertext;
+	}
+
+	static function hitCount()                 {return self::getHitCount();}
+	static function hitCountUser($params=null) {return self::getHitCount('index.php',      $params);}
+	static function hitCountIndi($params=null) {return self::getHitCount('individual.php', $params);}
+	static function hitCountFam ($params=null) {return self::getHitCount('family.php',     $params);}
+	static function hitCountSour($params=null) {return self::getHitCount('source.php',     $params);}
+	static function hitCountRepo($params=null) {return self::getHitCount('repo.php',       $params);}
+	static function hitCountNote($params=null) {return self::getHitCount('note.php',       $params);}
+	static function hitCountObje($params=null) {return self::getHitCount('mediaviewer.php',$params);}
+
 	/*
 	* Leave for backwards compatability? Anybody using this?
 	*/

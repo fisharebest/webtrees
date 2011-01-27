@@ -41,7 +41,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $WT_IMAGES;
+		global $WT_IMAGES, $hitCount, $SHOW_COUNTER;
 
 		$id=$this->getName().$block_id;
 		$title=/* I18N: A greeting; %s is the user's name */ WT_I18N::translate('Welcome %s', getUserFullName(WT_USER_ID));
@@ -58,7 +58,9 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= "</tr><tr><td class=\"center\" colspan=\"3\">";
 		$content .= "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_USER_NAME."&amp;ctype=user"."', '_blank', 'top=50,left=10,width=705,height=355,scrollbars=1,resizable=1');\">".WT_I18N::translate('Customize My Page')."</a>";
 		$content .= help_link('mypage_customize');
-		$content .= "<br />".format_timestamp(client_time());
+		$content .= "<br />".format_timestamp(client_time())."<br />";
+		if ($SHOW_COUNTER)
+			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount."<br />";
 		$content .= "</td></tr></table>";
 
 		if ($template) {
