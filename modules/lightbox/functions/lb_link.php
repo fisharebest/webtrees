@@ -1,5 +1,5 @@
 <?php
-// Lightbox Album module for phpGedView
+// Lightbox Album module for webtrees
 //
 // Display media Items using Lightbox
 //

@@ -1089,7 +1089,7 @@ var CB_Close_Win		= CB_Close_Win;
 		CB_preImages.src = CB_Gallery[CB_ActImgId][0];
 		CB_Loaded = false;
 //		CB_preImages.onerror = function () {CB_ShowImage();alert("ClearBox ERROR:\n\nCould not open Image: " + CB_Gallery[CB_ActImgId][0]);return;};
-		CB_preImages.onerror = function () {CB_ShowImage();alert("ClearBox ERROR:\n\nCould not open Image : " );return;};
+		CB_preImages.onerror = function () {CB_ShowImage();alert("Lightbox ERROR:\n\nCould not open Image : " );return;};
 		CB_CheckLoaded();
 //		resetZoom();
 	}
