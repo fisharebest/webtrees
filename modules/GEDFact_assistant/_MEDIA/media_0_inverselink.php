@@ -124,7 +124,7 @@ if ($action == "choose" && $paramok) {
 	echo '<table class="facts_table center ', $TEXT_DIRECTION, '">';
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo WT_I18N::translate('Link media'), ' ', $toitems, help_link('add_media_linkid');
-	echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media ID'), '</td>';
+	echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media'), '</td>';
 	echo '<td class="optionbox wrap">';
 	if (!empty($mediaid)) {
 		//-- Get the title of this existing Media item
@@ -133,10 +133,7 @@ if ($action == "choose" && $paramok) {
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
 		if ($title) {
-			echo '<b>', PrintReady($title), '</b>&nbsp;&nbsp;&nbsp;';
-			if ($TEXT_DIRECTION=="rtl") echo getRLM();
-			echo '(', $mediaid, ')';
-			if ($TEXT_DIRECTION=="rtl") echo getRLM();
+			echo '<b>', PrintReady($title), '</b>';
 		} else {
 			echo '<b>', $mediaid, '</b>';
 		}
@@ -166,10 +163,7 @@ if ($action == "choose" && $paramok) {
 		// ----
 	} else {
 		$record=WT_Person::getInstance($linktoid);
-		echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-		if ($TEXT_DIRECTION=="rtl") echo getRLM();
-		echo '(', $linktoid, ')';
-		if ($TEXT_DIRECTION=="rtl") echo getRLM();
+		echo '<b>', PrintReady($record->getFullName()), '</b>';
 	}
 	echo '<table><tr><td>';
 		echo "<input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\" />";

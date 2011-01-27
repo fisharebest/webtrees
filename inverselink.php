@@ -112,7 +112,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		echo '<table class="facts_table center ', $TEXT_DIRECTION, '">';
 		echo '<tr><td class="topbottombar" colspan="2">';
 		echo WT_I18N::translate('Link media'), help_link('add_media_linkid'), ' ', $toitems;
-		echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media ID'), '</td>';
+		echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media'), '</td>';
 		echo '<td class="optionbox wrap">';
 		if (!empty($mediaid)) {
 			//-- Get the title of this existing Media item
@@ -121,10 +121,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 				->execute(array($mediaid, WT_GED_ID))
 				->fetchOne();
 			if ($title) {
-				echo '<b>', PrintReady($title), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
-				echo '(', $mediaid, ')';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
+				echo '<b>', PrintReady($title), '</b>';
 			} else {
 				echo '<b>', $mediaid, '</b>';
 			}
@@ -138,17 +135,14 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 		echo '<tr><td class="descriptionbox">';
 
 		if ($linkto == "person") {
-			echo WT_I18N::translate('Enter Individual ID'), "</td>";
+			echo WT_I18N::translate('Person'), "</td>";
 			echo '<td class="optionbox wrap">';
 			if ($linktoid=="") {
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '" />';
 				print_findindi_link("linktopid", "");
 			} else {
 				$record=WT_Person::getInstance($linktoid);
-				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
-				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
+				echo PrintReady($record->format_list('span', false, $record->getFullName()));
 			}
 		}
 
@@ -160,10 +154,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 				print_findfamily_link("linktofamid");
 			} else {
 				$record=WT_Family::getInstance($linktoid);
-				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
-				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
+				echo PrintReady($record->format_list('span', false, $record->getFullName()));
 			}
 		}
 
@@ -175,10 +166,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 				print_findsource_link("linktosid");
 			} else {
 				$record=WT_Source::getInstance($linktoid);
-				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
-				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
+				echo PrintReady($record->format_list('span', false, $record->getFullName()));
 			}
 		}
 		if ($linkto == "repository") {
@@ -188,10 +176,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '" />';
 			} else {
 				$record=WT_Repository::getInstance($linktoid);
-				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
-				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
+				echo PrintReady($record->format_list('span', false, $record->getFullName()));
 			}
 		}
 
@@ -202,10 +187,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.'modules/GEDFac
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '" />';
 			} else {
 				$record=WT_Note::getInstance($linktoid);
-				echo '<b>', PrintReady($record->getFullName()), '</b>&nbsp;&nbsp;&nbsp;';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
-				echo '(', $linktoid, ')';
-				if ($TEXT_DIRECTION=="rtl") echo getRLM();
+				echo PrintReady($record->format_list('span', false, $record->getFullName()));
 			}
 		}
 
