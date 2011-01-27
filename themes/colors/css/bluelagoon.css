@@ -68,6 +68,7 @@ color: #2385c2;
 .tab_cell_active, 
 .news_box, optionbox,
 .person0,  .center .person_box,
+.small_inner_block .person_box, 
 .submenuitem_hover {
 background:#e6f5ff;
 }
@@ -626,8 +627,7 @@ text-align:center;
 }
 
 .facts_value {
-background:#fff;
-border:1pt solid #ddd;
+border:1pt solid #999;
 font-size: 12px;
 padding:4px;
 }
