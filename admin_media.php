@@ -1211,21 +1211,7 @@ echo WT_JS_START; ?>
 
 						//-- name and size field
 						echo "<td class=\" $changeClass $TEXT_DIRECTION wrap\">";
-						if ($media["TITL"]!="" && begRTLText($media["TITL"]) && $TEXT_DIRECTION=="ltr") {
-							if (!empty($media["XREF"])) {
-								echo "(".$media["XREF"].")";
-								echo "&nbsp;&nbsp;&nbsp;";
-							}
-							if ($media["TITL"]!="") echo "<b>".PrintReady($media["TITL"])."</b><br />";
-						} else {
-							if ($media["TITL"]!="") echo "<b>".PrintReady($media["TITL"])."</b>&nbsp;&nbsp;&nbsp;";
-							if (!empty($media["XREF"])) {
-								if ($TEXT_DIRECTION=="rtl") echo getRLM();
-								echo "(".$media["XREF"].")";
-								if ($TEXT_DIRECTION=="rtl") echo getRLM();
-								echo "<br />";
-							}
-						}
+						if ($media["TITL"]!="") echo "<b>".PrintReady($media["TITL"])."</b><br />";
 						if (!$isExternal && !$media["EXISTS"]) echo "<span dir=\"ltr\">".PrintReady($media["FILE"])."</span><br /><span class=\"error\">".WT_I18N::translate('The filename entered does not exist.')."</span><br />";
 						else {
 							if (substr($mediaInfo['type'], 0, 4) == 'url_') $tempText = 'URL';
