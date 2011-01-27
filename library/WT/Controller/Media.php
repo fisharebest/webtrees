@@ -275,7 +275,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_GEDCOM_ADMIN) {
-			$submenu = new WT_Menu(WT_I18N::translate('Remove object'), "media.php?action=removeobject&amp;xref=".$this->pid);
+			$submenu = new WT_Menu(WT_I18N::translate('Remove object'), "admin_media.php?action=removeobject&amp;xref=".$this->pid);
 			$submenu->addOnclick("return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."')");
 			$submenu->addIcon('edit_media');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
