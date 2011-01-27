@@ -595,6 +595,9 @@ class WT_GedcomRecord {
 	public function countLinkedSources() {
 		return count_linked_sour($this->getXref(), $this->getType(), $this->ged_id);
 	}
+	public function countLinkedRepositories() {
+		return count_linked_repo($this->getXref(), $this->getType(), $this->ged_id);
+	}
 	public function countLinkedMedia() {
 		return count_linked_obje($this->getXref(), $this->getType(), $this->ged_id);
 	}
@@ -611,6 +614,9 @@ class WT_GedcomRecord {
 	}
 	public function fetchLinkedSources() {
 		return fetch_linked_sour($this->getXref(), $this->getType(), $this->ged_id);
+	}
+	public function fetchLinkedRepositories() {
+		return fetch_linked_repo($this->getXref(), $this->getType(), $this->ged_id);
 	}
 	public function fetchLinkedMedia() {
 		return fetch_linked_obje($this->getXref(), $this->getType(), $this->ged_id);

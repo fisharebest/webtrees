@@ -6,7 +6,7 @@
 * to use an SQL database as its datastore.
 *
 * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
 * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -509,6 +509,12 @@ function count_linked_sour($xref, $link, $ged_id) {
 		->execute(array($ged_id, $link, $xref))
 		->fetchOne();
 }
+function count_linked_repo($xref, $link, $ged_id) {
+	return
+		WT_DB::prepare("SELECT COUNT(*) FROM `##link`, `##other` WHERE o_file=l_file AND o_id=l_from AND o_type=? AND l_file=? AND l_type=? AND l_to=?")
+		->execute(array('REPO', $ged_id, $link, $xref))
+		->fetchOne();
+}
 function count_linked_obje($xref, $link, $ged_id) {
 	return
 		WT_DB::prepare("SELECT COUNT(*) FROM `##link`, `##media` WHERE m_gedfile=l_file AND m_media=l_from AND l_file=? AND l_type=? AND l_to=?")
@@ -580,6 +586,22 @@ function fetch_linked_sour($xref, $link, $ged_id) {
 	$list=array();
 	foreach ($rows as $row) {
 		$list[]=WT_Source::getInstance($row);
+	}
+	return $list;
+}
+function fetch_linked_repo($xref, $link, $ged_id) {
+	$rows=WT_DB::prepare(
+		"SELECT 'REPO' AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
+		" FROM `##other`".
+		" JOIN `##link` ON (o_file=l_file AND o_id=l_from)".
+		" LEFT JOIN `##name` ON (o_file=n_file AND o_id=n_id AND n_num=0)".
+		" WHERE o_file=? AND o_type='REPO' AND l_type=? AND l_to=?".
+		" ORDER BY n_sort COLLATE '".WT_I18N::$collation."'"
+	)->execute(array($ged_id, $link, $xref))->fetchAll(PDO::FETCH_ASSOC);
+
+	$list=array();
+	foreach ($rows as $row) {
+		$list[]=WT_Note::getInstance($row);
 	}
 	return $list;
 }
