@@ -60,7 +60,7 @@ require_once WT_ROOT.'includes/functions/functions_utf-8.php';
 // example, you can use safe_POST('lang', array_keys($pgv_language), WT_LOCALE)
 // to validate against a list of valid languages and supply a sensible default.
 //
-// If the values are plain text, pass them through preg_quote_array() to 
+// If the values are plain text, pass them through preg_quote_array() to
 // escape any regex special characters:
 // $export = safe_GET('export', preg_quote_array($gedcoms));
 ////////////////////////////////////////////////////////////////////////////////
@@ -862,7 +862,7 @@ function find_parents_in_record($famrec) {
 function find_highlighted_object($pid, $ged_id, $indirec) {
 	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $WT_IMAGES, $MEDIA_EXTERNAL;
 
-	$media = array();
+	$media   = array();
 	$objectA = array();
 	$objectB = array();
 	$objectC = array();
@@ -1371,7 +1371,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 					$dct = preg_match("/2 DATE .*(\d\d\d\d)/", $birthrec, $bmatch);
 					if ($dct>0)
 						$byear2 = $bmatch[1]-25;
-						if ($byear2>2100) $byear2-=3760; // Crude conversion from jewish to gregorian
+						if ($byear2>2100) $byear2-=3760; // Crude conversion from Jewish to gregorian
 				}
 			}
 		}
@@ -1457,7 +1457,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 					$dct = preg_match("/2 DATE .*(\d\d\d\d)/", $birthrec, $match);
 					if ($dct>0)
 						$byear1 = $match[1];
-						if ($byear1>2100) $byear1-=3760; // Crude conversion from jewish to gregorian
+						if ($byear1>2100) $byear1-=3760; // Crude conversion from Jewish to gregorian
 				}
 				if (($byear1!=-1)&&($byear2!=-1)) {
 					$yeardiff = $byear1-$byear2;
@@ -1705,7 +1705,7 @@ function get_relationship_name($nodes) {
 	$pid2=$nodes['path'][count($nodes['path'])-1];
 	$path=array_slice($nodes['relations'], 1);
 	// Look for paths with *specific* names first.
-	// Note that every combination must be listed separately, as the same english
+	// Note that every combination must be listed separately, as the same English
 	// name can be used for many different relationships.  e.g.
 	// brother's wife & husband's sister = sister-in-law.
 	//
@@ -1717,7 +1717,7 @@ function get_relationship_name($nodes) {
 	//
 	// This is always the shortest path, so "father, daughter" is "half-sister", not "sister".
 	//
-	// This is very repetitive in english, but necessary in order to handle the
+	// This is very repetitive in English, but necessary in order to handle the
 	// complexities of other languages.
 	//
 	// TODO: handle unmarried partners, so need male-partner, female-partner, unknown-partner
@@ -2253,7 +2253,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 	}
 
 	// Look for generic/pattern relationships.
-	// TODO: these are heavily based on english relationship names.
+	// TODO: these are heavily based on English relationship names.
 	// We need feedback from other languages to improve this.
 	// Dutch has special names for 8 generations of great-great-..., so these need explicit naming
 	// Spanish has special names for four but also has two different numbering patterns
@@ -2326,7 +2326,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			break;
 		default:
 			// Different languages have different rules for naming generations.
-			// An english great x12 uncle is a danish great x10 uncle.
+			// An English great x12 uncle is a Danish great x10 uncle.
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
@@ -2473,7 +2473,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			}
 		default:
 			// Different languages have different rules for naming generations.
-			// An english great x12 nephew is a polish great x11 nephew.
+			// An English great x12 nephew is a Polish great x11 nephew.
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
@@ -2570,7 +2570,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			break;
 		default:
 			// Different languages have different rules for naming generations.
-			// An english great x12 grandfather is a danish great x11 grandfather.
+			// An English great x12 grandfather is a Danish great x11 grandfather.
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
@@ -2647,7 +2647,7 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			break;
 		default:
 			// Different languages have different rules for naming generations.
-			// An english great x12 grandson is a danish great x11 grandson.
+			// An English great x12 grandson is a Danish great x11 grandson.
 			//
 			// Need to find out which languages use which rules.
 			switch (WT_LOCALE) {
@@ -2676,11 +2676,11 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		$up  =strlen($match[1])/3;
 		$down=strlen($match[2])/3;
 		$last=substr($path, -3, 3);
-		$cousin=min($up, $down);  // Moved out of switch--en/default case--so that
-		$removed=abs($down-$up);  // Spanish (and other languages) can use it, too
+		$cousin=min($up, $down);  // Moved out of switch (en/default case) so that
+		$removed=abs($down-$up);  // Spanish (and other languages) can use it, too.
 
 		// Different languages have different rules for naming cousins.  For example,
-		// an english "second cousin once removed" is a polish "cousin of 7th degree".
+		// an English "second cousin once removed" is a Polish "cousin of 7th degree".
 		//
 		// Need to find out which languages use which rules.
 		switch (WT_LOCALE) {
@@ -2994,7 +2994,7 @@ function get_query_url($overwrite=null) {
 }
 
 //This function works with a specified generation limit.  It will completely fill
-//the pdf without regard to whether a known person exists in each generation.
+//the PDF without regard to whether a known person exists in each generation.
 //ToDo: If a known individual is found in a generation, add prior empty positions
 //and add remaining empty spots automatically.
 function add_ancestors(&$list, $pid, $children=false, $generations=-1, $show_empty=false) {
