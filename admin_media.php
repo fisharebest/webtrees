@@ -1128,7 +1128,7 @@ echo WT_JS_START; ?>
 							if (!empty($media["XREF"])) {
 								$tempURL = WT_SCRIPT_NAME.'?';
 								if (!empty($filter)) $tempURL .= "filter={$filter}&amp;";
-								$tempURL .= "action=removeobjectamp;&showthumb={$showthumb}amp;&sortby={$sortby}amp;&filter={$filter}amp;&subclick={$subclick}amp;&filename=".rawurlencode($media['FILE'])."amp;&directory={$directory}amp;&level={$level}amp;&xref={$media['XREF']}amp;&gedfile={$media['GEDFILE']}";
+								$tempURL .= "action=removeobject&amp;showthumb={$showthumb}&amp;sortby={$sortby}&amp;filter={$filter}&amp;subclick={$subclick}&amp;filename=".rawurlencode($media['FILE'])."&amp;directory={$directory}&amp;level={$level}&amp;xref={$media['XREF']}&amp;gedfile={$media['GEDFILE']}";
 								echo "<a href=\"".$tempURL."\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."');\">".WT_I18N::translate('Remove object')."</a><br />";
 							}
 
