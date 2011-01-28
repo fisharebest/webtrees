@@ -3756,7 +3756,7 @@ class WT_Stats {
 			"SELECT page_count FROM `##hit_counter`".
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
 		)->execute(array(WT_GED_ID, $page_name, $page_parameter))->fetchOne();
-		return $page_name.':'.$page_parameter.'<span class="hit-counter">'.$count.'</span>';
+		return '<span class="hit-counter">'.$count.'</span>';
 	}
 
 	static function hitCount    ($params=null) {return self::_getHitCount(null,             $params);}
