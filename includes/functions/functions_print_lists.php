@@ -1342,6 +1342,7 @@ function print_changes_table($change_ids) {
 	//-- table body
 	$n = 0;
 	$NMAX = 1000;
+	$indi = false;
 	foreach ($change_ids as $change_id) {
 		if ($n>=$NMAX) break;
 		$record=WT_GedcomRecord::getInstance($change_id);
