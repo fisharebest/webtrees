@@ -3739,7 +3739,6 @@ class WT_Stats {
 		} else {
 			$page_parameter = '';
 		}
-		$countertext='';
 
 		if ($page_name===null) {
 			// index.php?ctype=gedcom
