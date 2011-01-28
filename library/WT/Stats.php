@@ -3747,7 +3747,7 @@ class WT_Stats {
 			$page_parameter='gedcom:'.get_id_from_gedcom($page_parameter ? $page_parameter : WT_GEDCOM);
 		} elseif ($page_name=='index.php') {
 			// index.php?ctype=user
-			$page_parameter='user:'.get_user_id($page_parameter);
+			$page_parameter='user:'.($page_parameter ? get_user_id($page_parameter) : WT_USER_ID);
 		} else {
 			// indi/fam/sour/etc.
 		}
