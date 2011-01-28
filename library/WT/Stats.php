@@ -3728,47 +3728,40 @@ class WT_Stats {
 	// These functions provide access to hitcounter
 	// for use in the HTML block.
 
-	static private function getHitCount($page_name='index', $params=null) {
-		global $SHOW_COUNTER, $SEARCH_SPIDER, $hitCount;
-		if (is_array($params) && isset($params[0]) && $params[0] != '') {$page_parameter = $params[0];} else {$page_parameter = '';}
-		$countertext='';
-		if ($SHOW_COUNTER && !$SEARCH_SPIDER) {
-			switch ($page_name) {
-			case 'index':
-				// gedcom:WT_GED_ID;
-				$countertext .= WT_I18N::translate('Hit Count:')." ".$hitCount;
-				break;
-			case 'index.php':
-				// user:USER_ID;
-				$page_parameter = 'user:'.$page_parameter;
-				$hit=WT_DB::prepare(
-					"SELECT page_count FROM `##hit_counter`".
-					" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-				)->execute(array(WT_GED_ID, $page_name, $page_parameter))->fetchOne();
-				$countertext .= WT_I18N::translate('Hit Count:').' <span class="hit-counter">'.$hit.'</span>';
-				break;
-			default:
-				$hit=WT_DB::prepare(
-					"SELECT page_count FROM `##hit_counter`".
-					" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
-				)->execute(array(WT_GED_ID, $page_name, $page_parameter))->fetchOne();
-				$countertext .= $hit;
-				break;
-			}
-			$countertext = "<div id='hitcounter' class='clearfloat'>".$countertext;
-			$countertext .= "</div>";
+	static private function _getHitCount($page_name, $params) {
+		if (is_array($params) && isset($params[0]) && $params[0] != '') {
+			$page_parameter = $params[0];
+		} else {
+			$page_parameter = '';
 		}
-		return $countertext;
+		$countertext='';
+
+		if ($page_name===null) {
+			// index.php?ctype=gedcom
+			$page_name='index.php';
+			$page_parameter='gedcom:'.get_id_from_gedcom($page_parameter ? $page_parameter : WT_GEDCOM);
+		} elseif ($page_name=='index.php') {
+			// index.php?ctype=user
+			$page_parameter='user:'.get_user_id($page_parameter);
+		} else {
+			// indi/fam/sour/etc.
+		}
+		
+		$count=WT_DB::prepare(
+			"SELECT page_count FROM `##hit_counter`".
+			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
+		)->execute(array(WT_GED_ID, $page_name, $page_parameter))->fetchOne();
+		return $page_name.':'.$page_parameter.'<span class="hit-counter">'.$count.'</span>';
 	}
 
-	static function hitCount()                 {return self::getHitCount();}
-	static function hitCountUser($params=null) {return self::getHitCount('index.php',      $params);}
-	static function hitCountIndi($params=null) {return self::getHitCount('individual.php', $params);}
-	static function hitCountFam ($params=null) {return self::getHitCount('family.php',     $params);}
-	static function hitCountSour($params=null) {return self::getHitCount('source.php',     $params);}
-	static function hitCountRepo($params=null) {return self::getHitCount('repo.php',       $params);}
-	static function hitCountNote($params=null) {return self::getHitCount('note.php',       $params);}
-	static function hitCountObje($params=null) {return self::getHitCount('mediaviewer.php',$params);}
+	static function hitCount    ($params=null) {return self::_getHitCount(null,             $params);}
+	static function hitCountUser($params=null) {return self::_getHitCount('index.php',      $params);}
+	static function hitCountIndi($params=null) {return self::_getHitCount('individual.php', $params);}
+	static function hitCountFam ($params=null) {return self::_getHitCount('family.php',     $params);}
+	static function hitCountSour($params=null) {return self::_getHitCount('source.php',     $params);}
+	static function hitCountRepo($params=null) {return self::_getHitCount('repo.php',       $params);}
+	static function hitCountNote($params=null) {return self::_getHitCount('note.php',       $params);}
+	static function hitCountObje($params=null) {return self::_getHitCount('mediaviewer.php',$params);}
 
 	/*
 	* Leave for backwards compatability? Anybody using this?
