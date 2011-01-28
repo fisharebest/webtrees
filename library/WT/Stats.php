@@ -3725,6 +3725,11 @@ class WT_Stats {
 // Tools                                                                     //
 ///////////////////////////////////////////////////////////////////////////////
 
+	// Older versions of webtrees allowed access to all constants and globals.
+	// Newer version just allow access to these values:
+	public static function WT_VERSION()      { return WT_VERSION; }
+	public static function WT_VERSION_TEXT() { return WT_VERSION_TEXT; }
+
 	// These functions provide access to hitcounter
 	// for use in the HTML block.
 
