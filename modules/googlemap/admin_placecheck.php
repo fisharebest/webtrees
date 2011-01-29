@@ -61,10 +61,10 @@ echo "<td>";
 echo "<table class=\"gm_check_top\" align='left'>";
 echo "<tr><th colspan='2'>", WT_I18N::translate('PlaceCheck List Options'), "</th></tr>";
 //Option box to select gedcom
-echo "<tr><td>".WT_I18N::translate('GEDCOM File:')."</td>";
+echo "<tr><td>".WT_I18N::translate('Family tree')."</td>";
 echo "<td><select name='gedcom_id'>";
 foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-	echo '<option value="', $ged_id, '"', $ged_id==$gedcom_id?' selected="selected"':'', '>', htmlspecialchars($gedcom), '</option>';
+	echo '<option value="', $ged_id, '"', $ged_id==$gedcom_id?' selected="selected"':'', '>', get_gedcom_setting($ged_id, 'title'), '</option>';
 }
 echo "</select></td></tr>";
 //Option box for 'Open in new window'
