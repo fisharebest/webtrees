@@ -1449,6 +1449,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 			jQuery('#'+table_id).dataTable( {
+				"bAutoWidth":false,
 				"bPaginate": false,
 				"bLengthChange": false,
 				"bFilter": false,
@@ -1505,7 +1506,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 		if ($output==1) {
 			//-- First table row:  start table headers, etc. first
-			$return .= "<table id=\"".$table_id."\" class=\"sortable list_table center\">";
+			$return .= "<table id=\"".$table_id."\" class=\"list_table center width100\">";
 			$return .= "<thead><tr>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_I18N::translate('Record')."</th>";
 			$return .= "<th>GIVN</th>"; //hidden by datables code
