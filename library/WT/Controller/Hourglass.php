@@ -353,9 +353,8 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 							$spid = $spouse->getXref();
 							echo "<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 							$name = $spouse->getFullName();
-							if (hasRTLText($name))
-							echo "class=\"name2\">";
-							else echo "class=\"name1\">";
+							if (hasRTLText($name)) echo 'class="name2">';
+							else echo 'class="name1">';
 							echo PrintReady($name);
 							echo "<br /></span></a>";
 
@@ -366,13 +365,10 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 							$cid = $child->getXref();
 							echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 							$name = $child->getFullName();
-							if (hasRTLText($name))
-							echo "class=\"name2\">&lt; ";
-							else echo "class=\"name1\">&lt; ";
-							echo PrintReady($name);
-
+							if (hasRTLText($name)) echo 'class="name2">';
+							else echo 'class="name1">';
+							echo '<img src="'.$WT_IMAGES["larrow"].'" height="10" alt="" />  ', PrintReady($name);
 							echo "<br /></span></a>";
-
 						}
 					}
 					//-- do we need to print this arrow?
@@ -388,9 +384,8 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $husb->getFullName();
 								$name = rtrim($name);
-								if (hasRTLText($name))
-								echo "class=\"name2\">";
-								else echo "class=\"name1\">";
+								if (hasRTLText($name)) echo 'class="name2">';
+								else echo 'class="name1">';
 								echo PrintReady($name);
 								echo "<br /></span></a>";
 							}
@@ -400,9 +395,8 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $husb->getFullName();
 								$name = rtrim($name);
-								if (hasRTLText($name))
-								echo "class=\"name2\">";
-								else echo "class=\"name1\">";
+								if (hasRTLText($name)) echo 'class="name2">';
+								else echo 'class="name1">';
 								echo PrintReady($name);
 								echo "<br /></span></a>";
 							}
@@ -417,12 +411,10 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $child->getFullName();
 								$name = rtrim($name);
-								if (hasRTLText($name))
-								echo "class=\"name2\"> ";
-								else echo "class=\"name1\"> ";
+								if (hasRTLText($name)) echo 'class="name2">';
+								else echo 'class="name1">';
 								echo PrintReady($name);
 								echo "<br /></span></a>";
-
 							}
 						}
 					}
