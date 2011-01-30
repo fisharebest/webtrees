@@ -435,7 +435,7 @@ print_header(WT_I18N::translate('Family tree configuration'));
 						<td>
 							<?php echo WT_I18N::translate('Default person for pedigree and descendancy charts'), help_link('PEDIGREE_ROOT_ID'); ?>
 						</td>
-						<td class="  wrap">
+						<td class="wrap">
 							<input type="text" name="NEW_PEDIGREE_ROOT_ID" id="NEW_PEDIGREE_ROOT_ID" value="<?php echo $PEDIGREE_ROOT_ID; ?>" size="5" />
 							<?php
 								print_findindi_link("NEW_PEDIGREE_ROOT_ID", "");

@@ -57,9 +57,9 @@ td {vertical-align:top;}
 .sortme {cursor:move;}
 
 /* Page Help links */
-#page_help{text-align:right;}
+#page_help{margin:-5px 0 15px; text-align:right;}
 html[dir='rtl'] #page_help{text-align:left;}
-#page_help img{ height:24px; margin:-5px; padding:0; width:24px;}
+#page_help a img{display:none; height:24px; margin:-5px; padding:0; width:24px;}
 
 /* HEADER */
 #admin_head {position:relative; height:70px; margin-bottom:10px;}
@@ -381,6 +381,11 @@ table#story_module, table#story_module2 {background:OldLace; border:1px inset #D
 .icon-family { background-position: -113px -138px; width: 14px; height: 15px; }
 .icon-repository { background-position: -91px -318px; width: 15px; height: 15px; }
 .icon-help-15 { background-position: -10px -319px; width: 15px; height: 15px; }
-.icon-indi { background-position: -116px -318px; width: 11px; height: 15px; }
+.icon-indi { background-position: -116px -318px; width: 11px; height: 15px; display:inline; }
 .icon-open { background-position: -64px -343px; width: 12px; height: 12px; }
 .icon-close { background-position: -86px -343px; width: 12px; height: 12px; }
+#page_help .icon-help-15 { background-position: -45px -138px; width: 24px; height: 24px; } /* switch to larger version icon-help-24 */
+
+/* These two needed for now to suppress standard help icons */
+.help {display:inline; margin-left:5px; padding-right:15px; padding-bottom:5px;}
+.icon {display:none;}

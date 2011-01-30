@@ -1021,7 +1021,7 @@ function help_link($help_topic, $module='') {
 
 	if ($_SESSION['show_context_help']) {
 		return
-			'<a class="help" tabindex="-1" href="javascript: '.$help_topic.'" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
+			'<a class="help icon-help-15" tabindex="-1" href="javascript: '.$help_topic.'" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
 			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="" />' : WT_I18N::translate('?')).
 			'&nbsp;</a>';
 	} else {

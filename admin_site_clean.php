@@ -134,7 +134,7 @@ echo
 	'</td><td valign="top" id="trash" class="facts_value02">',
 	'<div id="cleanup3">',
 	'<table><tr><td>',
-	'<img src="', $WT_IMAGES['trashcan'], '" align="left" alt="" />',
+	'<div class="icon-trashcan">&nbsp;</div>',
 	'</td>',
 	'<td><ul id="trashlist">',
 	'</ul></td></tr></table>',
