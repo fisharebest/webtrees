@@ -1031,7 +1031,15 @@ echo WT_JS_START; ?>
 	jQuery(document).ready(function() {
 		jQuery('#media_table').dataTable( {
 			"oLanguage": {
-				"sLengthMenu": 'Display <select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">All</option></select> records'
+				"sLengthMenu": 'Display <select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">All</option></select> records',
+				"oPaginate": {
+					"sFirst": '<?php echo WT_i18n::translate('First');?>',
+					"sLast": '<?php echo WT_i18n::translate('Last');?>',
+					"sNext": '<?php echo WT_i18n::translate('Next');?>',
+					"sPrevious": '<?php echo WT_i18n::translate('Previous');?>',
+					"sZeroRecords": '<?php echo WT_i18n::translate('No records to display');?>',
+					"sInfo": 'Showing _START_ to _END_ of _TOTAL_ entries'
+				}
 			},
 			"bJQueryUI": true,
 			"bAutoWidth":false,
