@@ -2,7 +2,7 @@
 // Class file for the tree navigator
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -159,9 +159,10 @@ class WT_TreeNav {
 		<div id="out_<?php echo $this->name; ?>" dir="ltr" style="position: relative; <?php echo $widthS.$heightS; ?>text-align: center; overflow: hidden; border: 1px solid;">
 			<div id="in_<?php echo $this->name; ?>" style="position: relative; left: -20px; width: auto; cursor: move;" onmousedown="dragStart(event, 'in_<?php echo $this->name; ?>', <?php echo $this->name; ?>);" onmouseup="dragStop(event);">
 			<?php $parent=null;
-			//if ($this->rootPerson!=null && !$this->rootPerson->canDisplayDetails()) print_privacy_error();
-			if (!$this->allSpouses) $this->drawPerson($this->rootPerson, $this->generations, 0, $parent);
-			else $this->drawPersonAllSpouses($this->rootPerson, $this->generations, 0); ?>
+			if ($this->rootPerson!=null && $this->rootPerson->canDisplayDetails()) {
+				if (!$this->allSpouses) $this->drawPerson($this->rootPerson, $this->generations, 0, $parent);
+				else $this->drawPersonAllSpouses($this->rootPerson, $this->generations, 0);
+			} ?>
 			</div>
 			<div id="controls" style="position: absolute; left: 0px; top: 0px; z-index: 100; background-color: #EEEEEE">
 			<table>
@@ -340,7 +341,7 @@ class WT_TreeNav {
 					echo $thumbnail;
 				} ?>
 				<a href="<?php echo $spouse->getHtmlUrl(); ?>" onclick="if (!<?php echo $this->name; ?>.collapseBox) return false;">
-				<?php echo $spouse->getSexImage().PrintReady($name); ?></a>
+				<?php echo WT_I18N::translate($spouse->getSexImage().$name); ?></a> 
 				<img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES["tree"]; ?>" border="0" width="15" onclick="<?php echo $this->name; ?>.newRoot('<?php echo $spouse->getXref(); ?>', <?php echo $this->name; ?>.innerPort, '<?php echo htmlspecialchars($GEDCOM); ?>');" />
 				<br />
 				<div class="details1 indent">
@@ -499,7 +500,6 @@ class WT_TreeNav {
 						<div class="person_box" dir="<?php echo $TEXT_DIRECTION; ?>" id="box_<?php echo $person->getXref(); ?>" style="text-align: <?php echo $TEXT_DIRECTION=="rtl" ? "right":"left"; ?>; cursor: pointer; font-size: <?php echo 10 + $this->zoomLevel; ?>px; width: <?php echo ($this->bwidth+($this->zoomLevel*18)); ?>px; margin-left: 3px; direction: <?php echo $TEXT_DIRECTION; ?>" onclick="<?php echo $this->name; ?>.expandBox(this, '<?php echo $person->getXref(); ?>', 'all');">
 						<?php
 							$name = $person->getFullName();
-
 							echo PrintReady($person->getSexImage('small', $style)." ".$name);
 						?><br />
 						<?php
@@ -507,7 +507,8 @@ class WT_TreeNav {
 							$spouse = $family->getSpouse($person);
 							if (!is_null($spouse)) {
 								$name = $spouse->getFullName();
-								echo PrintReady($spouse->getSexImage('small', $style)." ".$name);
+								if ($TEXT_DIRECTION=="rtl" && !hasRTLText($name)) echo WT_I18N::translate('%s', $name." ".$spouse->getSexImage('small', $style));
+								else echo WT_I18N::translate('%s', $spouse->getSexImage('small', $style)." ".$name);
 								echo "<br />";
 							} else echo "<br />";
 						}
@@ -633,9 +634,9 @@ class WT_TreeNav {
 							echo PrintReady($person->getSexImage('small', $style)." ".$name);
 						?><br />
 						<?php if (!is_null($spouse)) {$name = $spouse->getFullName();
-						echo PrintReady($spouse->getSexImage('small', $style)." ".$name);
+							if ($TEXT_DIRECTION=="rtl" && !hasRTLText($name)) echo WT_I18N::translate('%s', $name." ".$spouse->getSexImage('small', $style));
+							else echo WT_I18N::translate('%s', $spouse->getSexImage('small', $style)." ".$name);
 						} else echo "<br />"; ?>
-
 						</div>
 					</td>
 					<?php

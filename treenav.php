@@ -5,7 +5,7 @@
  * <script type="text/javascript" src="http://yourserver/phpgedview/treenav.php?navAjax=embed&rootid=I14&width=400&height=300"></script>
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2008  PGV Development Team.  All rights reserved.
@@ -39,12 +39,25 @@ $rootid = '';
 $name = 'nav';
 if (isset($_REQUEST['zoom'])) $zoom = $_REQUEST['zoom'];
 if (isset($_REQUEST['rootid'])) $rootid = $_REQUEST['rootid'];
+else $rootid = $PEDIGREE_ROOT_ID;
 if (!empty($_REQUEST['jsname'])) $name = $_REQUEST['jsname'];
 $nav = new WT_TreeNav($rootid, $name, $zoom);
 $nav->generations=6;
 $nav->zoomLevel-=1;
 print_header(WT_I18N::translate('Interactive tree'));
 echo '<h1>', WT_I18N::translate('Interactive tree'), help_link('treenav'), '</h1>';
+
+$person = WT_Person::getInstance($rootid);
+if (is_null($person)) {
+	echo "<b>", WT_I18N::translate('Unable to find record with ID'), "</b><br /><br />";
+	print_footer();
+	exit;
+}
+else if (!$person->canDisplayName()) {
+	print_privacy_error();
+	print_footer();
+	exit;
+}
 $nav->drawViewport('', "", "600px");
 print_footer();
 ?>
