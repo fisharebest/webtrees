@@ -67,7 +67,7 @@ class WT_DB {
 		// Create the underlying PDO object
 		self::$pdo=new PDO(
 			(substr($DBHOST, 0, 1)=='/' ?
-				"mysql:unix_socket={$DBHOST}" :
+				"mysql:unix_socket={$DBHOST};dbname={$DBNAME}" :
 				"mysql:host={$DBHOST};dbname={$DBNAME};port={$DBPORT}"
 			),
 			$DBUSER, $DBPASS,
