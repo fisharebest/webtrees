@@ -341,7 +341,7 @@ class WT_TreeNav {
 					echo $thumbnail;
 				} ?>
 				<a href="<?php echo $spouse->getHtmlUrl(); ?>" onclick="if (!<?php echo $this->name; ?>.collapseBox) return false;">
-				<?php echo WT_I18N::translate($spouse->getSexImage().$name); ?></a> 
+				<?php echo WT_I18N::translate('%s', $spouse->getSexImage().$name); ?></a> 
 				<img src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES["tree"]; ?>" border="0" width="15" onclick="<?php echo $this->name; ?>.newRoot('<?php echo $spouse->getXref(); ?>', <?php echo $this->name; ?>.innerPort, '<?php echo htmlspecialchars($GEDCOM); ?>');" />
 				<br />
 				<div class="details1 indent">
