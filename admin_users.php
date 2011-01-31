@@ -98,7 +98,7 @@ if ($action=='deleteuser') {
 		AddToLog("deleted user ->{$username}<-", 'auth');
 	}
 	// User data is cached, so reload the page to ensure we're up to date
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=listusers');
 	exit;
 }
 
@@ -712,7 +712,7 @@ ob_start();
 					echo '</td>',
 					'<td>';
 						if (WT_USER_ID!=$user_id)
-							echo "<a href=\"admin_users.php?action=deleteuser&amp;username=", rawurlencode($user_name)."&amp;sort={$sort}&amp;filter={$filter}&amp;usrlang={$usrlang}&amp;ged=", rawurlencode($ged), "\" onclick=\"return confirm('", WT_I18N::translate('Are you sure you want to delete the user'), " $user_name');\"><div class=\"icon-delete\">&nbsp;</div></a>";
+							echo "<a href=\"admin_users.php?action=deleteuser&amp;username=", rawurlencode($user_name)."&amp;usrlang={$usrlang}&amp;ged=", rawurlencode($ged), "\" onclick=\"return confirm('", WT_I18N::translate('Are you sure you want to delete the user'), " $user_name');\"><div class=\"icon-delete\">&nbsp;</div></a>";
 					echo '</td>',
 				'</tr>';
 				}
