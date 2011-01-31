@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 // Only record hits for certain pages
 switch (WT_SCRIPT_NAME) {
 case 'index.php':
-	switch (safe_GET('ctype', '(user|gedcom)')) {
+	switch (safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom')) {
 	case 'user':
 		$page_parameter='user:'.WT_USER_ID;
 		break;
