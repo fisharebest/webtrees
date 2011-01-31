@@ -1039,8 +1039,9 @@ echo WT_JS_START; ?>
 					"sPrevious": '<?php echo WT_I18N::translate('Previous');?>',
 					"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
 					"sSearch": '<?php echo WT_I18N::translate('Search');?>:',
-					"sLengthMenu": '<?php echo /* I18N: _MENU_ is a placeholder for listbox containing numeric options */ WT_i18N::translate('Display _MENU_ records'); ?>',
-					"sInfo": '<?php echo /* I18N: _START_, _END_ and _TOTAL_ are placeholders for numbers */ WT_i18N::translate('Showing _START_ to _END_ of _TOTAL_'); ?>'
+					"sLengthMenu": '<?php echo /* I18N: _MENU_ is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display _MENU_ records'); ?>',
+					"sInfo": '<?php echo /* I18N: _START_, _END_ and _TOTAL_ are placeholders for numbers */ WT_I18N::translate('Showing _START_ to _END_ of _TOTAL_'); ?>',
+					"sInfoFiltered": '<?php echo /* I18N: _MAX_  is a placeholder for numbers */ WT_I18N::translate('filtered from _MAX_ total entries'); ?>'
 				}
 			},
 			"bJQueryUI": true,
