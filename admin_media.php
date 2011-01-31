@@ -1033,14 +1033,14 @@ echo WT_JS_START; ?>
 			"oLanguage": {
 				"sLengthMenu": 'Display <select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">All</option></select> records',
 				"oPaginate": {
-					"sFirst": '<?php echo WT_i18n::translate('First');?>',
-					"sLast": '<?php echo WT_i18n::translate('Last');?>',
-					"sNext": '<?php echo WT_i18n::translate('Next');?>',
-					"sPrevious": '<?php echo WT_i18n::translate('Previous');?>',
-					"sZeroRecords": '<?php echo WT_i18n::translate('No records to display');?>',
-					"sSearch": '<?php echo WT_i18n::translate('Search');?>:',
-					"sLengthMenu": '<?php echo /* I18N: _MENU_ is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display _MENU_ records'); ?>',
-					"sInfo": '"sInfo": '<?php echo /* I18N: _START_, _END_ and _TOTAL_ are placeholders for numbers */ WT_I18N::translate('Showing _START_ to _END_ of _TOTAL_'); ?>'
+					"sFirst": '<?php echo WT_I18N::translate('First');?>',
+					"sLast": '<?php echo WT_I18N::translate('Last');?>',
+					"sNext": '<?php echo WT_I18N::translate('Next');?>',
+					"sPrevious": '<?php echo WT_I18N::translate('Previous');?>',
+					"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
+					"sSearch": '<?php echo WT_I18N::translate('Search');?>:',
+					"sLengthMenu": '<?php echo /* I18N: _MENU_ is a placeholder for listbox containing numeric options */ WT_i18N::translate('Display _MENU_ records'); ?>',
+					"sInfo": '<?php echo /* I18N: _START_, _END_ and _TOTAL_ are placeholders for numbers */ WT_i18N::translate('Showing _START_ to _END_ of _TOTAL_'); ?>'
 				}
 			},
 			"bJQueryUI": true,
