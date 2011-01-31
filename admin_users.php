@@ -479,11 +479,13 @@ if ($action=="edituser") {
 				/* 6-Auto_approve */	{ "bVisible": false },
 				/* 7-Theme */			{ "bVisible": false },
 				/* 8-Default_tab */		{ "bVisible": false },
-				/* 9-Date registered */ null,
-				/* 10-Last login */		null,
-				/* 11-Verified */		null,
-				/* 12-Approved */		null,
-				/* 13-Delete */			null
+				/* 9-Date registered */ { "iDataSort": 10 },
+				/* 10-REG_DATE */		{ "bVisible": false },
+				/* 11-Last login */		{ "iDataSort": 12 },
+				/* 12-LOG_DATE */		{ "bVisible": false },
+				/* 13-Verified */		null,
+				/* 14-Approved */		null,
+				/* 15-Delete */			null
 			]
 		});
 		
@@ -568,37 +570,6 @@ if ($action == "listusers") {
 ob_start();
 	$users = get_all_users();
 	
-	// First filter the users, otherwise the javascript to unfold priviledges gets disturbed
-	foreach($users as $user_id=>$user_name) {
-		if ($filter == "warnings") {
-			if (get_user_setting($user_id, 'comment_exp')) {
-				if ((strtotime(get_user_setting($user_id, 'comment_exp')) == "-1") || (strtotime(get_user_setting($user_id, 'comment_exp')) >= time("U"))) unset($users[$user_id]);
-			}
-			else if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) <= 604800) || get_user_setting($user_id, 'verified')) unset($users[$user_id]);
-		}
-		else if ($filter == "adminusers") {
-			if (!get_user_setting($user_id, 'canadmin')) unset($users[$user_id]);
-		}
-		else if ($filter == "usunver") {
-			if (get_user_setting($user_id, 'verified')) unset($users[$user_id]);
-		}
-		else if ($filter == "admunver") {
-			if ((get_user_setting($user_id, 'verified_by_admin')) || (!get_user_setting($user_id, 'verified'))) {
-				unset($users[$user_id]);
-			}
-		}
-		else if ($filter == "language") {
-			if (get_user_setting($user_id, 'language') != $usrlang) {
-				unset($users[$user_id]);
-			}
-		}
-		else if ($filter == "gedadmin") {
-			if (get_user_gedcom_setting($user_id, $ged, 'canedit') != "admin") {
-				unset($users[$user_id]);
-			}
-		}
-	}
-
 	// Then show the users
 	echo
 		'<table id="list">',
@@ -613,7 +584,9 @@ ob_start();
 					'<th>', WT_I18N::translate('Theme'), '</th>',
 					'<th>', WT_I18N::translate('Default tab'), '</th>',
 					'<th>', WT_I18N::translate('Date registered'), '</th>',
+					'<th> REG_DATE </th>',
 					'<th>', WT_I18N::translate('Last logged in'), '</th>',
+					'<th> LOG_DATE </th>',
 					'<th>', WT_I18N::translate('Verified'), '</th>',
 					'<th>', WT_I18N::translate('Approved'), '</th>',
 					'<th>', WT_I18N::translate('Delete'), '</th>',
@@ -684,25 +657,24 @@ ob_start();
 							}
 						} else { echo WT_I18N::translate('default theme');}
 					echo '</td>';					
-
 					echo '<td>';
 						echo get_user_setting($user_id, 'defaulttab');
 					echo '</td>';					
-
-
 					if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified'))
 						echo '<td class="red">';
 					else echo '<td>';
 						echo format_timestamp((int)get_user_setting($user_id, 'reg_timestamp'));
 					echo '</td>';
+					echo '<td>', get_user_setting($user_id, 'reg_timestamp'), '</td>'; //for sorting only
 					echo '<td>';
 						if ((int)get_user_setting($user_id, 'reg_timestamp') > (int)get_user_setting($user_id, 'sessiontime')) {
 							echo WT_I18N::translate('Never'), '<br />', WT_I18N::time_ago(time() - (int)get_user_setting($user_id, 'reg_timestamp'));
 						} else {
 							echo format_timestamp((int)get_user_setting($user_id, 'sessiontime')), '<br />', WT_I18N::time_ago(time() - (int)get_user_setting($user_id, 'sessiontime'));
 						}
-					echo '</td>',
-					'<td class="center">';
+					echo '</td>';					
+					echo '<td>', get_user_setting($user_id, 'sessiontime'), '</td>'; //for sorting only										
+					echo '<td class="center">';
 						if (get_user_setting($user_id, 'verified')) echo WT_I18N::translate('Yes');
 						else echo WT_I18N::translate('No');
 					echo '</td>',
