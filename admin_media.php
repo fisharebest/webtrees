@@ -1039,8 +1039,8 @@ echo WT_JS_START; ?>
 					"sPrevious": '<?php echo WT_i18n::translate('Previous');?>',
 					"sZeroRecords": '<?php echo WT_i18n::translate('No records to display');?>',
 					"sSearch": '<?php echo WT_i18n::translate('Search');?>:',
-					"sLengthMenu": 'Display _MENU_ records',
-					"sInfo": 'Showing _START_ to _END_ of _TOTAL_ entries'
+					"sLengthMenu": '<?php echo /* I18N: _MENU_ is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display _MENU_ records'); ?>',
+					"sInfo": '"sInfo": '<?php echo /* I18N: _START_, _END_ and _TOTAL_ are placeholders for numbers */ WT_I18N::translate('Showing _START_ to _END_ of _TOTAL_'); ?>'
 				}
 			},
 			"bJQueryUI": true,
