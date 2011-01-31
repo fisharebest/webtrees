@@ -113,7 +113,7 @@ jQuery(document).ready(function() {
 					if ($user_id) {
 						$user_name=get_user_name($user_id);
 						echo "&nbsp;";
-						echo printReady("<a href=\"useradmin.php?action=edituser&amp;username={$user_name}\">({$user_name})</a>");
+						echo printReady("<a href=\"admin_users.php?action=edituser&amp;username={$user_name}\">({$user_name})</a>");
 					}
 				}
 			?>

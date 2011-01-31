@@ -498,9 +498,9 @@ switch ($action) {
 
 				if ($TEXT_DIRECTION=="rtl") {
 					$mail_body .= "<a href=\"";
-					$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."useradmin.php?action=edituser&username=" . urlencode($user_name) . "\">";
+					$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?action=edituser&username=" . urlencode($user_name) . "\">";
 				}
-				$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."useradmin.php?action=edituser&username=" . urlencode($user_name);
+				$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?action=edituser&username=" . urlencode($user_name);
 				if ($TEXT_DIRECTION=="rtl") $mail_body .= "</a>";
 				$mail_body .= "\r\n";
 

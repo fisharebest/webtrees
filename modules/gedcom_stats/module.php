@@ -127,7 +127,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($stat_users) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total users').'</td><td class="facts_value"><div dir="rtl">';
 				if (WT_USER_GEDCOM_ADMIN) {
-				$content .= '<a href="useradmin.php">'.$stats->totalUsers().'</a>';
+				$content .= '<a href="admin_users.php">'.$stats->totalUsers().'</a>';
 			} else {
 				$content .= $stats->totalUsers();
 			}

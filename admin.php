@@ -131,33 +131,33 @@ echo
 	echo
 		'<table>',
 		'<tr><td>', WT_I18N::translate('Total number of users'), '</td><td>', $totusers, '</td></tr>',
-		'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="useradmin.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
+		'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
 		'<tr><td colspan="2">', WT_I18N::translate('Managers'), '</td></tr>';
 		foreach ($gedadmin as $key=>$geds) {
-			echo '<tr><td><div><a href="useradmin.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '">', $geds['name'], '</a></div></td><td>', $geds['number'], '</td></tr>';
+			echo '<tr><td><div><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '">', $geds['name'], '</a></div></td><td>', $geds['number'], '</td></tr>';
 		}
 	echo '<tr><td>';
 	if ($warnusers == 0) {
 		echo WT_I18N::translate('Users with warnings');
 	} else {
-		echo '<a href="useradmin.php?action=listusers&amp;filter=warnings">', WT_I18N::translate('Users with warnings'), '</a>';
+		echo '<a href="admin_users.php?action=listusers&amp;filter=warnings">', WT_I18N::translate('Users with warnings'), '</a>';
 	}
 	echo '</td><td>', $warnusers, '</td></tr><tr><td>';
 	if ($applusers == 0) {
 		echo WT_I18N::translate('Unverified by User');
 	} else {
-		echo '<a href="useradmin.php?action=listusers&amp;filter=usunver">', WT_I18N::translate('Unverified by User'), '</a>';
+		echo '<a href="admin_users.php?action=listusers&amp;filter=usunver">', WT_I18N::translate('Unverified by User'), '</a>';
 	}
 	echo '</td><td>', $applusers, '</td></tr><tr><td>';
 	if ($nverusers == 0) {
 		echo WT_I18N::translate('Unverified by Administrator');
 	} else {
-		echo '<a href="useradmin.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
+		echo '<a href="admin_users.php?action=listusers&amp;filter=admunver">', WT_I18N::translate('Unverified by Administrator'), '</a>';
 	}
 	echo '</td><td>', $nverusers, '</td></tr>';
 	echo '<tr><td colspan="2">', WT_I18N::translate('Users\' languages'), '</td></tr>';
 	foreach ($userlang as $key=>$ulang) {
-		echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="useradmin.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></td><td>', $ulang['number'], '</td></tr>';
+		echo '<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=language&amp;usrlang=', $key, '">', $ulang['langname'], '</a></td><td>', $ulang['number'], '</td></tr>';
 	}
 	echo
 		'</tr>',
