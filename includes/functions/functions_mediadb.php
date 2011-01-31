@@ -923,7 +923,7 @@ function get_media_folders() {
 				$entry = $dir->read();
 				if (!$entry)
 					break;
-				if (is_dir($currentFolder . $entry . "/")) {
+				if (is_dir($currentFolder . $entry)) {
 					// Weed out some folders we're not interested in
 					if ($entry != "." && $entry != ".." && $entry != "CVS" && $entry != ".svn") {
 						if ($currentFolder . $entry . "/" != $MEDIA_DIRECTORY . "thumbs/") {
