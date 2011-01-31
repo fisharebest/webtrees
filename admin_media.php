@@ -1038,6 +1038,8 @@ echo WT_JS_START; ?>
 					"sNext": '<?php echo WT_i18n::translate('Next');?>',
 					"sPrevious": '<?php echo WT_i18n::translate('Previous');?>',
 					"sZeroRecords": '<?php echo WT_i18n::translate('No records to display');?>',
+					"sSearch": '<?php echo WT_i18n::translate('Search');?>:',
+					"sLengthMenu": 'Display _MENU_ records',
 					"sInfo": 'Showing _START_ to _END_ of _TOTAL_ entries'
 				}
 			},

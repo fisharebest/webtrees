@@ -193,17 +193,18 @@ table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 
 /* USER LIST */
 table#list  {width:100%}
-/*#list th {text-align:left;white-space:nowrap;}*/
 #list img {padding-left:15px; width:25px; vertical-align:middle;}
-#list img.open {width:16px; vertical-align:middle;}
+#list img.open {width:11px;}
 #list .yes_no img {width:16px; vertical-align:middle;}
 #list .name {padding-right:5px;}
 #list .description {font-size:10px;	color:#666666;	width:35%;}
+.ui-widget-content #list a.icon-edit {padding-left:20px;}
+#list .icon-edit {display:inline;}
+#list div.icon-email, #list div.icon-delete {margin:auto;}
 .dataTables_paginate {float:right;text-align:right;}
 .paging_full_numbers .fg-button {cursor:pointer;padding:2px 6px;}
 td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
 .edit_link {white-space:nowrap;}
-.edit_link:after {content:" " url("../images/edit.png");}
 .details td {border-right:1px solid #808080; padding-right:20px;}
 .details th {font-weight:bold; vertical-align:top; padding-left:20px;}
 .details ul {margin:0; padding:0 0 0 20px;}
@@ -218,7 +219,7 @@ td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
 #user-list_info {float:left;}
 #user-list_paginate {float:right;}
 
-/* USER ADD */
+/* USER ADD & EDIT */
 table#adduser  {width:100%;}
 #adduser th {text-align:left; padding:30px 0 1px 3px;font-size:105%;}
 #adduser td, #adduser td+td+td {background-color:#eceadf;white-space:normal;padding:3px 3px 3px 10px;width:25%;} /* left-cols */
@@ -353,7 +354,7 @@ table#story_module, table#story_module2 {background:OldLace; border:1px inset #D
 { display: block; background: url('images/admin_icon_sprite.png') no-repeat; }
 
 .icon-trashcan { background-position: -10px -0px; width: 128px; height: 128px; }
-.icon-email { background-position: -10px -138px; width: 25px; height: 25px; }
+.icon-email { background-position: -10px -144px; width: 25px; height: 25px; }
 .icon-help-24 { background-position: -45px -138px; width: 24px; height: 24px; }
 .icon-zoomout { background-position: -79px -138px; width: 24px; height: 24px; }
 .icon-zoomin { background-position: -45px -172px; width: 24px; height: 24px; }
