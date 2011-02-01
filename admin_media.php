@@ -1031,17 +1031,17 @@ echo WT_JS_START; ?>
 	jQuery(document).ready(function() {
 		jQuery('#media_table').dataTable( {
 			"oLanguage": {
-				"sLengthMenu": 'Display <select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">All</option></select> records',
+				"sLengthMenu": '<?php echo /* I18N: %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s records', '<select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
+				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
+				"sInfo": '<?php echo /* I18N: %s' are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
+				"sInfoEmpty": '<?php echo /* I18N: %s' are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
+				"sInfoFiltered": '<?php echo /* I18N: %s  is a placeholder for numbers */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
+				"sSearch": '<?php echo WT_I18N::translate('Search');?>:',
 				"oPaginate": {
-					"sFirst": '<?php echo WT_I18N::translate('first');?>',
+					"sFirst": '<?php echo WT_I18N::translate_c('first page', 'first');?>',
 					"sLast": '<?php echo WT_I18N::translate('last');?>',
 					"sNext": '<?php echo WT_I18N::translate('next');?>',
-					"sPrevious": '<?php echo WT_I18N::translate('previous');?>',
-					"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
-					"sSearch": '<?php echo WT_I18N::translate('Search');?>:',
-					"sLengthMenu": '<?php echo /* I18N: _MENU_ is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display _MENU_ records'); ?>',
-					"sInfo": '<?php echo /* I18N: _START_, _END_ and _TOTAL_ are placeholders for numbers */ WT_I18N::translate('Showing _START_ to _END_ of _TOTAL_'); ?>',
-					"sInfoFiltered": '<?php echo /* I18N: _MAX_  is a placeholder for numbers */ WT_I18N::translate('filtered from _MAX_ total entries'); ?>'
+					"sPrevious": '<?php echo WT_I18N::translate('previous');?>'
 				}
 			},
 			"bJQueryUI": true,
