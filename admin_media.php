@@ -1033,10 +1033,10 @@ echo WT_JS_START; ?>
 			"oLanguage": {
 				"sLengthMenu": 'Display <select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">All</option></select> records',
 				"oPaginate": {
-					"sFirst": '<?php echo WT_I18N::translate('First');?>',
-					"sLast": '<?php echo WT_I18N::translate('Last');?>',
-					"sNext": '<?php echo WT_I18N::translate('Next');?>',
-					"sPrevious": '<?php echo WT_I18N::translate('Previous');?>',
+					"sFirst": '<?php echo WT_I18N::translate('first');?>',
+					"sLast": '<?php echo WT_I18N::translate('last');?>',
+					"sNext": '<?php echo WT_I18N::translate('next');?>',
+					"sPrevious": '<?php echo WT_I18N::translate('previous');?>',
 					"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
 					"sSearch": '<?php echo WT_I18N::translate('Search');?>:',
 					"sLengthMenu": '<?php echo /* I18N: _MENU_ is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display _MENU_ records'); ?>',
