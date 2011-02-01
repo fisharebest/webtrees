@@ -256,7 +256,7 @@ class WT_I18N {
 
 	// echo WT_I18N::plural('There is an error', 'There are errors', $num_errors);
 	// echo WT_I18N::plural('There is one error', 'There are %d errors', $num_errors);
-	// echo WT_I18N::plural('There is %$1d %$2s cat', 'There are %$1d %$2s cats', $num, $num, $colour);
+	// echo WT_I18N::plural('There is %1$d %2$s cat', 'There are %1$d %2$s cats', $num, $num, $colour);
 	static public function plural(/* var_args */) {
 		$args=func_get_args();
 		$string=Zend_Registry::get('Zend_Translate')->plural($args[0], $args[1], $args[2]);
