@@ -418,12 +418,12 @@ if (isset($_GET['show_context_help'])) {
 if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
 
 if (WT_SCRIPT_NAME!='help_text.php') {
-	if (!get_gedcom_setting(WT_GED_ID, 'imported') && substr(WT_SCRIPT_NAME, 0, 5)!=='admin' && !in_array(WT_SCRIPT_NAME, array('editconfig_gedcom.php', 'help_text.php', 'editgedcoms.php', 'downloadgedcom.php', 'login.php', 'addmedia.php', 'client.php', 'gedcheck.php', 'admin_users.php', 'export_gedcom.php', 'edit_changes.php', 'import.php', 'pgv_to_wt.php'))) {
+	if (!get_gedcom_setting(WT_GED_ID, 'imported') && substr(WT_SCRIPT_NAME, 0, 5)!=='admin' && !in_array(WT_SCRIPT_NAME, array('help_text.php', 'downloadgedcom.php', 'login.php', 'login_register.php', 'gedcheck.php', 'export_gedcom.php', 'edit_changes.php', 'import.php', 'message.php', 'pgv_to_wt.php'))) {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin.php');
 		exit;
 	}
 
-	if ($REQUIRE_AUTHENTICATION && !WT_USER_ID && !in_array(WT_SCRIPT_NAME, array('login.php', 'login_register.php', 'client.php', 'genservice.php', 'help_text.php', 'message.php'))) {
+	if ($REQUIRE_AUTHENTICATION && !WT_USER_ID && !in_array(WT_SCRIPT_NAME, array('login.php', 'login_register.php', 'help_text.php', 'message.php'))) {
 		if (!empty($_REQUEST['auth']) && $_REQUEST['auth']=='basic') {
 			// if user is attempting basic authentication
 			// TODO: Update if digest auth is ever implemented
