@@ -438,7 +438,7 @@ if ($action=="edituser") {
 		/* Insert a 'details' column to the table */
 		var nCloneTh = document.createElement( 'th' );
 		var nCloneTd = document.createElement( 'td' );
-		nCloneTh.innerHTML = 'Details';
+		nCloneTh.innerHTML = '<?php echo WT_I18N::translate('Details'); ?>';
 		nCloneTd.innerHTML = '<img class="open" src="./themes/_administration/images/open.png">';
 		nCloneTd.className = "open-close";
 		
@@ -659,7 +659,17 @@ ob_start();
 						} else { echo WT_I18N::translate('&lt;default theme&gt;');}
 					echo '</td>';					
 					echo '<td>';
-						echo get_user_setting($user_id, 'defaulttab');
+						$tab = get_user_setting($user_id, 'defaulttab');
+						if ($tab===0) {
+							echo WT_I18N::translate('&lt;default tab&gt;');
+						} else {
+							foreach (WT_Module::getActiveTabs() as $module) {
+								if ($tab == $module->getName()) {
+									echo $module->getTitle();
+									break;
+								}
+							}
+						}
 					echo '</td>';					
 					if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified'))
 						echo '<td class="red">';
