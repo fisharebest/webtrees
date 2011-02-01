@@ -98,13 +98,13 @@ User-agent: Offline Explorer
 Disallow: /
 
 User-agent: Orthogaffe
-Disallow:
+Disallow: /
 
 User-agent: panscient.com
-Disallow:
+Disallow: /
 
 User-agent: Plonebot
-Disallow:
+Disallow: /
 
 User-agent: sitecheck.internetseer.com
 Disallow: /
@@ -182,11 +182,8 @@ Disallow: /admin_site_other.php
 Disallow: /admin_site_readme.php
 Disallow: /admin_trees_config.php
 Disallow: /admin_trees_manage.php
-Disallow: /admin_users_add.php
+Disallow: /admin_users.php
 Disallow: /admin_users_bulk.php
-Disallow: /admin_users_clean.php
-Disallow: /admin_users_edit.php
-Disallow: /admin_users_list.php
 Disallow: /ancestry.php
 Disallow: /autocomplete.php
 Disallow: /branches.php
@@ -220,8 +217,8 @@ Disallow: /import.php
 Disallow: /includes/
 Allow:    /index.php
 Disallow: /index_edit.php
-Disallow: /indilist.php
-Disallow: /individual.php
+Allow:    /indilist.php
+Allow:    /individual.php
 Disallow: /inverselink.php
 Disallow: /js/
 Disallow: /language/
@@ -262,7 +259,7 @@ Disallow: /statisticsplot.php
 Disallow: /themes/
 Disallow: /timeline.php
 Disallow: /treenav.php
-Disallow: /admin_users.php
+
 # This is a trap for bad robots.
 # Visits to this URL will have their IP address and UA string blacklisted.
 Disallow: /bot-trap.php
