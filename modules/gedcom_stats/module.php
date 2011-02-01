@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('GEDCOM statistics');
+		return WT_I18N::translate('Family tree statistics');
 	}
 
 	// Extend class WT_Module
@@ -43,6 +43,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $WT_IMAGES, $MULTI_MEDIA, $top10_block_present;
 
+		$show_last_update    =get_block_setting($block_id, 'show_last_update',     true);
 		$show_common_surnames=get_block_setting($block_id, 'show_common_surnames', true);
 		$stat_indi           =get_block_setting($block_id, 'stat_indi',            true);
 		$stat_fam            =get_block_setting($block_id, 'stat_fam',             true);
@@ -77,27 +78,17 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
-		$title.=WT_I18N::translate('GEDCOM statistics').help_link('index_stats');
+		$title.=$this->getTitle();
 
 		$stats=new WT_Stats(WT_GEDCOM);
 
 		$content = "<b><a href=\"index.php?ctype=gedcom\">".PrintReady(strip_tags(get_gedcom_setting(WT_GED_ID, 'title')))."</a></b><br />";
 
-		$software=trim($stats->gedcomCreatedSoftware().' '.$stats->gedcomCreatedVersion());
-		$date=strip_tags($stats->gedcomDate());
-
-		if ($software && $date) {
-			// I18N: %1$s = software program, %2$s = date
-			$content .= WT_I18N::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', $software, $date);
-		} elseif ($software) {
-			// I18N: %s = software program
-			$content .= WT_I18N::translate('This GEDCOM was created using <b>%s</b>.', $software);
-		} elseif ($date) {
-			// I18N: %s = date
-			$content .= WT_I18N::translate('This GEDCOM was created on <b>%s</b>.', $date);
+		if ($show_last_update) {
+			$content .= '<div>'./* I18N: %s is a date */ WT_I18N::translate('This family tree was last updated on %s', strip_tags($stats->gedcomUpdated())).'</div>';
 		}
 
-		$content .= '<br /><table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
+		$content .= '<table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
 		if ($stat_indi) {
 			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Individuals').'</td><td class="facts_value"><div dir="rtl"><a href="'."indilist.php?surname_sublist=no&amp;ged=".WT_GEDURL.'">'.$stats->totalIndividuals().'</a></div></td></tr>';
 			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Males').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalSexMales().'<br />'.$stats->totalSexMalesPercentage().'%</div></td></tr>';
@@ -246,6 +237,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
+			set_block_setting($block_id, 'show_last_update',     safe_POST_bool('show_last_update'));
 			set_block_setting($block_id, 'show_common_surnames', safe_POST_bool('show_common_surnames'));
 			set_block_setting($block_id, 'stat_indi',            safe_POST_bool('stat_indi'));
 			set_block_setting($block_id, 'stat_fam',             safe_POST_bool('stat_fam'));
@@ -271,9 +263,16 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
+		$show_last_update=get_block_setting($block_id, 'show_last_update', true);
+		echo '<tr><td class="descriptionbox wrap width33">';
+		echo /* I18N: label for yes/no option */ WT_I18N::translate('Show date of last update');
+		echo '</td><td class="optionbox">';
+		echo edit_field_yes_no('show_last_update', $show_last_update);
+		echo '</td></tr>';
+
 		$show_common_surnames=get_block_setting($block_id, 'show_common_surnames', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show common surnames?'), help_link('show_common_surnames');
+		echo WT_I18N::translate('Show common surnames?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_common_surnames', $show_common_surnames);
 		echo '</td></tr>';
@@ -377,7 +376,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	<?php
 		$stat_link=get_block_setting($block_id, 'stat_link', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show link to Statistics charts?'), help_link('show_common_surnames');
+		echo WT_I18N::translate('Show link to Statistics charts?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('stat_link', $stat_link);
 		echo '</td></tr>';
