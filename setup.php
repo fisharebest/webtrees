@@ -183,7 +183,6 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 	foreach (array(
 		'calendar'=>/* I18N: a program feature */ WT_I18N::translate('jewish calendar'),
 		'gd'      =>/* I18N: a program feature */ WT_I18N::translate('creating thumbnails of images'),
-		'dom'     =>/* I18N: a program feature */ WT_I18N::translate('exporting data in xml format'),
 		'xml'     =>/* I18N: a program feature */ WT_I18N::translate('reporting'),
 	) as $extension=>$features) {
 		if (!extension_loaded($extension)) {
