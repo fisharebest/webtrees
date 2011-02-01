@@ -45,15 +45,25 @@ echo
 	'<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '>',
 	'<head>',
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
-	'<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />',
-	'<meta name="robots" content="', htmlspecialchars($META_ROBOTS), '" />',
-	'<meta name="generator" content="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '" />',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />',
 	'<link type="text/css" rel="stylesheet" href="', $stylesheet, '" />',
 	'<link type="text/css" rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" />',
 	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" />',
 	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'modules.css" />';
+
+if (!empty($LINK_CANONICAL)) {
+	echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
+}
+if (!empty($META_DESCRIPTION)) {
+	echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
+}
+if (!empty($META_ROBOTS)) {
+	echo '<meta name="robots" content="', htmlspecialchars($META_ROBOTS), '" />';
+}
+if (!empty($META_GENERATOR)) {
+	echo '<meta name="generator" content="', $META_GENERATOR, '" />';
+}
 
 if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
 	echo '<link type="text/css" rel="stylesheet" href="',  WT_THEME_DIR, $BROWSERTYPE, '.css" />';

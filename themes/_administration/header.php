@@ -34,6 +34,7 @@ echo
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
 	'<link rel="stylesheet" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
+	'<meta name="robots" content="noindex,nofollow" />',
 	$javascript,
 	'</head>';
 ?>

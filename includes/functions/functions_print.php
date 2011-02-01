@@ -367,18 +367,28 @@ function print_header($title) {
 
 	header('Content-Type: text/html; charset=UTF-8');
 
-	$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION');
-	$META_ROBOTS=get_gedcom_setting(WT_GED_ID, 'META_ROBOTS');
-	$META_TITLE=get_gedcom_setting(WT_GED_ID, 'META_TITLE');
+	$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
+	$META_DESCRIPTION="";
+	$META_ROBOTS="noindex,nofollow";
+	$META_GENERATOR="";
+	$LINK_CANONICAL=""; // placeholder for now
+	if ($view!="simple") {
+		$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION');
+		if (empty($META_DESCRIPTION)) {
+			$META_DESCRIPTION=$GEDCOM_TITLE;
+		}
+		$META_ROBOTS=get_gedcom_setting(WT_GED_ID, 'META_ROBOTS');
+		$META_GENERATOR=WT_WEBTREES.' - '.WT_WEBTREES_URL;
+	}
 
 	// The title often includes the names of records, which may have markup
 	// that cannot be used in the page title.
 	$title=strip_tags($title);
 
+	$META_TITLE=get_gedcom_setting(WT_GED_ID, 'META_TITLE');
 	if ($META_TITLE) {
 		$title.=' - '.$META_TITLE;
 	}
-	$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
 	$javascript=
 		'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>'.
 		'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>'.

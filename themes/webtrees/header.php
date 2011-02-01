@@ -63,15 +63,19 @@ if (WT_USE_LIGHTBOX) {
 	}
 }
 
-if ($view!="simple") {
-	if (!empty($META_DESCRIPTION)) {
-		echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
-	}
-	if (!empty($META_ROBOTS)) {
-		echo '<meta name="robots" content="', htmlspecialchars($META_ROBOTS), '" />';
-	}
-	echo '<meta name="generator" content="', WT_WEBTREES, ' - ', WT_WEBTREES_URL, '" />';
+if (!empty($LINK_CANONICAL)) {
+	echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
 }
+if (!empty($META_DESCRIPTION)) {
+	echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
+}
+if (!empty($META_ROBOTS)) {
+	echo '<meta name="robots" content="', htmlspecialchars($META_ROBOTS), '" />';
+}
+if (!empty($META_GENERATOR)) {
+	echo '<meta name="generator" content="', $META_GENERATOR, '" />';
+}
+
 echo
 	$javascript,
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />',

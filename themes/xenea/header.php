@@ -64,11 +64,20 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 		} ?>
 
 	<link rel="stylesheet" href="<?php echo $print_stylesheet; ?>" type="text/css" media="print" />
-	<?php if ($view!="simple") { ?>
-		<?php if (!empty($META_DESCRIPTION)) { ?><meta name="description" content="<?php echo htmlspecialchars($META_DESCRIPTION); ?>" /><?php } ?>
-		<?php if (!empty($META_ROBOTS)) { ?><meta name="robots" content="<?php echo htmlspecialchars($META_ROBOTS); ?>" /><?php } ?>
-		<meta name="generator" content="<?php echo WT_WEBTREES, ' - ', WT_WEBTREES_URL; ?>" />
-	<?php } ?>
+	<?php 
+	if (!empty($LINK_CANONICAL)) {
+		echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
+	}
+	if (!empty($META_DESCRIPTION)) {
+		echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
+	}
+	if (!empty($META_ROBOTS)) {
+		echo '<meta name="robots" content="', htmlspecialchars($META_ROBOTS), '" />';
+	}
+	if (!empty($META_GENERATOR)) {
+		echo '<meta name="generator" content="', $META_GENERATOR, '" />';
+	}
+	?>
 	<?php echo $javascript; ?>
 	<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />
 	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
