@@ -212,6 +212,11 @@ $url=
 	'&amp;user='.rawurlencode($user).
 	'&amp;gedc='.rawurlencode($gedc);
 
+$gedc_array=array();
+foreach (get_all_gedcoms() as $ged_name) {
+	$gedc_array[$ged_name]=$ged_name;
+}
+
 echo
 	WT_JS_END,
 	'<form name="logs" method="get" action="'.WT_SCRIPT_NAME.'">',
@@ -235,7 +240,7 @@ echo
 					WT_I18N::translate('User'), '<br />', select_edit_control('user', array_combine(get_all_users(), get_all_users()), '', $user, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Family tree'), '<br />',  select_edit_control('gedc', array_combine(get_all_gedcoms(), get_all_gedcoms()), '', $gedc, WT_USER_IS_ADMIN ? '' : 'disabled'),
+					WT_I18N::translate('Family tree'), '<br />',  select_edit_control('gedc', $gedc_array, '', $gedc, WT_USER_IS_ADMIN ? '' : 'disabled'),
 				'</td>',
 				'<td>',
 					'<input type="submit" value="', WT_I18N::translate('Filter'), '" />',
