@@ -106,8 +106,8 @@ class batch_update {
 
 					$html.=
 						'</table><table id="batch_update2"><tr><td>'.
-						self::createSubmitButton(WT_I18N::translate('&lt; Previous'), $this->prev_xref).
-						self::createSubmitButton(WT_I18N::translate('Next &gt;'), $this->next_xref).
+						self::createSubmitButton(WT_I18N::translate('previous'), $this->prev_xref).
+						self::createSubmitButton(WT_I18N::translate('next'), $this->next_xref).
 						'</td><th><a href="'.$object->getHtmlUrl().'">'.$object->getFullName().'</a>'.
 						'</th>'.
 						'</tr><tr><td valign="top">'.
