@@ -579,11 +579,11 @@ ob_start();
 					'<th>', WT_I18N::translate('Message'), '</th>',
 					'<th>', WT_I18N::translate('Real name'), '</th>',
 					'<th>', WT_I18N::translate('User name'), '</th>',
-					'<th>', WT_I18N::translate('Languages'), '</th>',
+					'<th>', WT_I18N::translate('Language'), '</th>',
 					'<th>', WT_I18N::translate('Role'), '</th>',
 					'<th>', WT_I18N::translate('Automatically approve changes made by this user'), '</th>',
 					'<th>', WT_I18N::translate('Theme'), '</th>',
-					'<th>', WT_I18N::translate('Default tab'), '</th>',
+					'<th>', WT_I18N::translate('Default tab to show on individual page'), '</th>',
 					'<th>', WT_I18N::translate('Date registered'), '</th>',
 					'<th> REG_DATE </th>',
 					'<th>', WT_I18N::translate('Last logged in'), '</th>',
@@ -656,7 +656,7 @@ ob_start();
 							foreach (get_theme_names() as $themename=>$themedir) {
 								if ($themedir == get_user_setting($user_id, 'theme')) echo $themename;
 							}
-						} else { echo WT_I18N::translate('default theme');}
+						} else { echo WT_I18N::translate('&lt;default theme&gt;');}
 					echo '</td>';					
 					echo '<td>';
 						echo get_user_setting($user_id, 'defaulttab');
