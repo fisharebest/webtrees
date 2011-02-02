@@ -229,7 +229,7 @@ Disallow: /login.php
 Disallow: /login_register.php
 Disallow: /media/
 Disallow: /mediafirewall.php
-Allow:    /medialist.php
+Disallow: /medialist.php
 Disallow: /mediaviewer.php
 Disallow: /message.php
 Disallow: /module.php
@@ -239,7 +239,7 @@ Allow:    /notelist.php
 Disallow: /opensearch.php
 Disallow: /pedigree.php
 Disallow: /pgv_to_wt.php
-Allow:    /placelist.php
+Disallow: /placelist.php
 Disallow: /places/
 Disallow: /relationship.php
 Allow:    /repo.php
