@@ -46,7 +46,7 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 .parentdeath {border:thin solid red; padding:1px;}
 .ui-widget-content a {text-decoration:none;}
 .ui-widget-content a.current {color:#E17009; font-weight:bold;}
-.ui-widget-content a:hover {color:red; cursor:hand; cursor:pointer;}
+.ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:red; cursor:hand; cursor:pointer;}
 .ui-widget-header {padding:5px;}
 .ui-progressbar-value {height:60%!important;}
 .css_right {float:right;}
