@@ -1,5 +1,4 @@
 <!-- @version $Id$ -->
-<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery/jquery.autocomplete.js"></script>
 <script type="text/javascript" src="js/jquery/jquery.ajaxQueue.js"></script>
 <script type="text/javascript">
@@ -127,8 +126,8 @@ jQuery(document).ready(function($){
 		width: 400,
 		minChars: 0
 	});
-	// INDI or FAM or SOUR or REPO or OBJE
-	$("input[id$=privacy_access_ID], input[name^=gid], #cart_item_id").autocomplete("autocomplete.php", {
+	// INDI or FAM or SOUR or REPO or NOTE or OBJE
+	$("input[id$=xref], input[name^=gid], #cart_item_id").autocomplete("autocomplete.php", {
 		extraParams: {field:'IFSRO'},
 		formatItem: function(row, i) {
 			return row[0] + " &lrm;(" + row[1] + ")&lrm;";
