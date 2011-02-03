@@ -2053,6 +2053,12 @@ function get_all_gedcoms() {
 		->fetchAssoc();
 }
 
+function get_gedcom_count() {
+	return
+		WT_DB::prepare("SELECT COUNT(*) FROM `##gedcom` WHERE gedcom_id>0")
+		->fetchOne();
+}
+
 function get_gedcom_titles() {
 	return
 		WT_DB::prepare(
