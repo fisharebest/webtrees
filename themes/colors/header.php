@@ -78,7 +78,6 @@ if (!empty($META_GENERATOR)) {
 }
 
 echo
-	$javascript,
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />';
 ?>
 
@@ -103,6 +102,7 @@ if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) { ?>
 if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?>
 	<link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" />
 <?php }
+	echo $javascript;
 	echo '</head><body id="body">';
 ?>
 
