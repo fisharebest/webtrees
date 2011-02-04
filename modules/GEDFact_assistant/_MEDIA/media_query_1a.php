@@ -1,11 +1,11 @@
 <?php
 /**
- * Media Link Assistant Control module for phpGedView
+ * Media Link Assistant Control module for webtrees
  *
  * Media Link information about an individual
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.

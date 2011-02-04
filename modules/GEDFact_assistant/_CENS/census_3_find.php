@@ -1,9 +1,9 @@
 <?php
 /**
- * Facility for Census assistant that will allow a user to search for a person id
+ * Facility for Census assistant that will allow a user to search for a person
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -23,14 +23,8 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package webtrees
- * @subpackage Display
  * @version $Id$
  */
-
-// define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_CENS/census_3_find.php');
-// require './includes/session.php';
-
-// require WT_ROOT.'includes/functions/functions_print_lists.php';
 
 global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $TEXT_DIRECTION, $ABBREVIATE_CHART_LABELS; 
 

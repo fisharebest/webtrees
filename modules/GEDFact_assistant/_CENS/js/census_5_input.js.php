@@ -1,11 +1,11 @@
 <?php
 /**
- * Census Assistant Control module for phpGedView
+ * Census Assistant Control module for webtrees
  *
  * Census information about an individual
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -25,7 +25,7 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package webtrees
- * @subpackage Census Assistant
+ * @subpackage GEDFact_assistant
  * @version $Id$
  */
 

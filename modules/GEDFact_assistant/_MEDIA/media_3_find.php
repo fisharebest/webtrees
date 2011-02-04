@@ -1,13 +1,13 @@
 <?php
 /**
- * Media Link Assistant Control module for phpGedView
+ * Media Link Assistant Control module for webtrees
  *
  * Media Link information about an individual
  *
  * Popup window that will allow a user to search for a family id, person id
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -27,13 +27,10 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package webtrees
- * @subpackage Display
  * @version $Id$
  */
 
-define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_MEDIA/media_3_find.php');
-require '../../../includes/session.php';
-require WT_ROOT.'includes/functions/functions_print_lists.php';
+global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $TEXT_DIRECTION, $ABBREVIATE_CHART_LABELS;
 
 $type           =safe_GET('type', WT_REGEX_ALPHA, 'indi');
 $filter         =safe_GET('filter');

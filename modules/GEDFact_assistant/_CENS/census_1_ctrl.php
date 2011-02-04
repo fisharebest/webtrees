@@ -1,5 +1,5 @@
 <?php
-// Census Assistant Control module for phpGedView
+// Census Assistant Control module for webtrees
 //
 // Census information about an individual
 //

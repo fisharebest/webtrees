@@ -1,11 +1,11 @@
 <?php
 /**
- * Media Link Assistant Control module for phpGedView
+ * Media Link Assistant Control module for webtrees
  *
  * Media Link information about an individual
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2007 to 2008  PGV Development Team.  All rights reserved.
@@ -25,7 +25,6 @@
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package webtrees
- * @subpackage Module
  * @version $Id$
  * @author Brian Holland
 */
@@ -54,9 +53,8 @@ if (!defined('WT_WEBTREES')) {
 							alert(enter_name);
 					} else {
 						var win02 = window.open(
-						//"module.php?mod=GEDFact_assistant&mod_action=_MEDIA/media_3_find&callback=paste_id&action=filter&type=indi&multiple=&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=600, WIDTH=450 ");
-						"modules/GEDFact_assistant/_MEDIA/media_3_find.php?callback=paste_id&action=filter&type=indi&multiple=&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=600, WIDTH=450 ");
-							if (window.focus) {
+							"module.php?mod=GEDFact_assistant&mod_action=_MEDIA/media_3_find&callback=paste_id&action=filter&type=indi&multiple=&filter="+txt, "win02", "resizable=1, menubar=0, scrollbars=1, top=180, left=600, HEIGHT=600, WIDTH=450 ");
+						if (window.focus) {
 							win02.focus();
 						}
 					}

@@ -1,5 +1,5 @@
 <?php
-// Media Link Assistant Control module for phpGedView
+// Media Link Assistant Control module for webtrees
 //
 // Media Link information about an individual
 //

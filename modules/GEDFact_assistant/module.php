@@ -46,6 +46,10 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			// TODO: this file should be a method in this class
 			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
 			break;
+		case '_MEDIA/media_3_find':
+			// TODO: this file should be a method in this class
+			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
+			break;
 		}
 	}
 }
