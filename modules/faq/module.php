@@ -195,7 +195,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			echo '</td><td>';
 				echo '<select name="gedcom_id" tabindex="4" />';
 					echo '<option value="">', WT_I18N::translate('All'), '</option>';
-					echo '<option value="', WT_GED_ID, '" selected="selected">', htmlspecialchars(WT_GEDCOM), '</option';
+					echo '<option value="', WT_GED_ID, '" selected="selected">', WT_I18N::translate('%s', get_gedcom_setting(WT_GED_ID, 'title')), '</option';
 				echo '</select>';
 			echo '</td></tr>';
 			echo '</table>';

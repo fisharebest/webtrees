@@ -166,9 +166,9 @@ echo WT_JS_START; ?>
 					$order = 1;
 					foreach (WT_Module::getInstalledTabs() as $module) { ?>
 					<tr class="sortme">
-						<td><?php echo $module->getTitle(); ?></td>
+						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getTitle(); ?></td>
 						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
-						<td><input type="text" size="5" value="<?php echo $order; ?>" name="taborder-<?php echo $module->getName(); ?>" />
+						<td><input type="text" size="3" value="<?php echo $order; ?>" name="taborder-<?php echo $module->getName(); ?>" />
 						</td>
 						<td>
 						<table class="modules_table2">
@@ -181,7 +181,7 @@ echo WT_JS_START; ?>
 								if ($access_level===null) {
 									$access_level=$module->defaultAccessLevel();
 								}
-								echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+								echo '<tr><td>',  WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td><td>';
 								echo edit_field_access_level($varname, $access_level);
 							}
 							?>

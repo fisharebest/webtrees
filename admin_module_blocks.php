@@ -145,7 +145,7 @@ print_header(WT_I18N::translate('Module administration'));
 					$order = 1;
 					foreach (WT_Module::getInstalledBlocks() as $module) { ?>
 					<tr>
-						<td><?php echo $module->getTitle(); ?></td>
+						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getTitle(); ?></td>
 						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
 						<td>
 							<table class="modules_table2">
@@ -158,7 +158,7 @@ print_header(WT_I18N::translate('Module administration'));
 									if ($access_level===null) {
 										$access_level=$module->defaultAccessLevel();
 									}
-									echo '<tr><td>', htmlspecialchars($ged_name), '</td><td>';
+									echo '<tr><td>',  WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td><td>';
 									echo edit_field_access_level($varname, $access_level);
 								}
 							?>

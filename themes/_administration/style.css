@@ -269,7 +269,9 @@ table.upload_media {border-collapse:separate; border-spacing:0; margin:10px 0;}
 table.modules_table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; padding:5px; margin-bottom:10px;}
 .modules_table th {border-bottom:2px solid LightGrey; font-weight:bold; font-size:105%;}
 .modules_table td {border-bottom:2px solid LightGrey; padding:3px; min-width:120px;}
+.modules_table td+td+td  {min-width:60px;}
 .modules_table .modules_table2 td {border:0;}
+.modules_table2 td+td  {min-width:120px;}
 
 /* CONFIG ALBUM MODULE */
 table#album_config {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0;}

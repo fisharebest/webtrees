@@ -363,7 +363,7 @@ if ($action=="edituser") {
 						<?php
 							foreach ($all_gedcoms as $ged_id=>$ged_name) {
 								echo '<tr>',
-									'<td>', $ged_name, '</td>',
+									'<td >', WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td>',
 									//Pedigree root person
 									'<td>';
 										$varname='rootid'.$ged_id;
@@ -642,7 +642,7 @@ ob_start();
 						}
 						$uged = get_user_gedcom_setting($user_id, $ged_id, 'gedcomid');
 						if ($uged) {
-							echo ' <a href="individual.php?pid=', $uged, '&amp;ged=', rawurlencode($ged_name), '">', $ged_name, '</a></li>';
+							echo ' <a href="individual.php?pid=', $uged, '&amp;ged=', rawurlencode($ged_name), '">', WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</a></li>';
 						} else {
 							echo ' ', $ged_name, '</li>';
 						}

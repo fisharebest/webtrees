@@ -3,7 +3,7 @@
  * Log viewer.
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -226,7 +226,7 @@ $url=
 
 $gedc_array=array();
 foreach (get_all_gedcoms() as $ged_name) {
-	$gedc_array[$ged_name]=$ged_name;
+	$gedc_array[$ged_name]=WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title'));
 }
 
 echo
@@ -237,7 +237,7 @@ echo
 			'<tr>',
 				'<td>',
 					// I18N: %s are both user-input date fields
-					WT_I18N::translate('From %s to %s', '<input name="from" size="8" value="'.htmlspecialchars($from).'" /><br /><br />', '&nbsp;&nbsp;&nbsp;<input name="to" size="8" value="'.htmlspecialchars($to).'" />'),
+					WT_I18N::translate('From %s to %s', '<input name="from" size="8" value="'.htmlspecialchars($from).'" /><br /><br />', '&nbsp;<input name="to" size="8" value="'.htmlspecialchars($to).'" />'),
 				'</td>',
 				'<td>',
 					WT_I18N::translate('Type'), '<br />', select_edit_control('type', array(''=>'', 'auth'=>'auth','config'=>'config','debug'=>'debug','edit'=>'edit','error'=>'error','media'=>'media','search'=>'search'), null, $type, ''),
