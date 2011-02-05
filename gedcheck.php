@@ -50,7 +50,7 @@ while ($file=readdir($dir)) {
 	if (!is_dir($DATA_DIR.$file) && is_readable($DATA_DIR.$file)) {
 		$h=fopen($DATA_DIR.$file, 'r');
 		if (preg_match('/0.*HEAD/i', fgets($h,255)))
-			$all_geds[$DATA_DIR.$file]=$DATA_DIR.$file;
+			$all_geds[$file]=$DATA_DIR.$file;
 		fclose($h);
 	}
 }
