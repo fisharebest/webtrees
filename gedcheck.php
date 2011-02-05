@@ -40,25 +40,22 @@ if (!WT_USER_GEDCOM_ADMIN) {
 print_header(WT_I18N::translate('GEDCOM checker').' - '.$GEDCOM);
 
 ////////////////////////////////////////////////////////////////////////////////
-// Scan all the gedcom directories for gedcom files
+// Scan the data directory for gedcom files
 ////////////////////////////////////////////////////////////////////////////////
-$all_dirs=array(get_site_setting('INDEX_DIRECTORY')=>'');
-foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-	$all_dirs[dirname(get_gedcom_setting($ged_id, 'path')).'/']='';
-}
+$DATA_DIR=get_site_setting('INDEX_DIRECTORY');
 
 $all_geds=array();
-foreach ($all_dirs as $key=>$value) {
-	$dir=opendir($key);
-	while ($file=readdir($dir))
-		if (!is_dir($key.$file) && is_readable($key.$file)) {
-			$h=fopen($key.$file, 'r');
-			if (preg_match('/0.*HEAD/i', fgets($h,255)))
-				$all_geds[$file]=$key.$file;
-			fclose($h);
-		}
-	closedir($dir);
+$dir=opendir($DATA_DIR);
+while ($file=readdir($dir)) {
+	if (!is_dir($DATA_DIR.$file) && is_readable($DATA_DIR.$file)) {
+		$h=fopen($DATA_DIR.$file, 'r');
+		if (preg_match('/0.*HEAD/i', fgets($h,255)))
+			$all_geds[$DATA_DIR.$file]=$DATA_DIR.$file;
+		fclose($h);
+	}
 }
+closedir($dir);
+
 if (count($all_geds)==0) {
 	$all_geds[]='-';
 } else {
