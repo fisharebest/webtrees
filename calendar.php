@@ -213,7 +213,7 @@ else {
 }
 echo "</td>";
 echo "<td class=\"descriptionbox vmiddle\">";
-echo WT_I18N::translate('Show events of'), help_link('annivers_event'), '</td>';
+echo WT_I18N::translate('Events'), help_link('annivers_event'), '</td>';
 echo "<td class=\"optionbox\">";
 echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\" />";
 echo "<select class=\"list_value\" name=\"filterev\" onchange=\"document.dateform.submit();\">";
