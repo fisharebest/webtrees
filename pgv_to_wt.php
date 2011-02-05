@@ -928,10 +928,19 @@ try {
 
 ////////////////////////////////////////////////////////////////////////////////
 
+echo '<p>pgv_nextid => wt_next_id ...</p>'; ob_flush(); flush(); usleep(50000);
+WT_DB::prepare(
+	"REPLACE INTO `##next_id` (gedcom_id, record_type, next_id)".
+	" SELECT ni_gedfile, ni_type, ni_id FROM `{$DBNAME}`.`{$TBLPREFIX}nextid`".
+	" WHERE ni_type IN ('INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE')"
+)->execute();
+
+////////////////////////////////////////////////////////////////////////////////
+
 echo '<p>pgv_dates => wt_dates ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
 	"REPLACE INTO `##dates` (d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type)".
-	" SELECT d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_File, d_type FROM `{$DBNAME}`.`{$TBLPREFIX}dates`"
+	" SELECT d_day, d_mon, d_month, d_year, d_julianday1, d_julianday2, d_fact, d_gid, d_file, d_type FROM `{$DBNAME}`.`{$TBLPREFIX}dates`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////
