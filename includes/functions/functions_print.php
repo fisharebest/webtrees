@@ -1322,45 +1322,9 @@ function print_asso_rela_record($event) {
 		return;
 	}
 
-	// Level 1 ASSO
-	if (preg_match('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $event->getGedcomRecord(), $amatch)) {
-		$person=WT_Person::getInstance($amatch[1]);
-		if (!$person) {
-			$person=new WT_Person('');
-		}
-		if (preg_match('/\n2 RELA (.+)/', $amatch[2], $rmatch)) {
-			$rela=$rmatch[1];
-		} else {
-			$rela='';
-		}
-		foreach ($associates as $associate) {
-			if ($associate) {
-				if ($rela) {
-					// A specified RELA
-					if (preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $rela)) {
-						$label=get_relationship_name_from_path($rela, $associate->getXref(), $person->getXref());
-					} else {
-						$label=translate_rela($rela, $person->getSex());
-					}
-				} else {
-					// Generate an automatic RELA
-					$label=get_relationship_name(get_relationship($associate->getXref(), $person->getXref(), true, 4));
-				}
-				if (!$label) {
-					$label=WT_I18N::translate('Relationship chart');
-				}
-				echo
-					'<br />',
-					'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>',
-					' - ',
-					'<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label.'</a>';
-			}
-		}
-	}
-
-	// Level 2 ASSO
-	preg_match_all('/\n2 ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcomRecord(), $amatches, PREG_SET_ORDER);
-	foreach ($amatches as $amatch) {
+	preg_match_all('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $event->getGedcomRecord(), $amatches1, PREG_SET_ORDER);
+	preg_match_all('/\n2 ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcomRecord(), $amatches2, PREG_SET_ORDER);
+	foreach (array_merge($amatches1, $amatches2) as $amatch) {
 		$person=WT_Person::getInstance($amatch[1]);
 		if (!$person) {
 			$person=new WT_Person('');
@@ -1370,10 +1334,11 @@ function print_asso_rela_record($event) {
 		} else {
 			$rela='';
 		}
+		$html=array();
 		foreach ($associates as $associate) {
 			if ($associate) {
 				if ($rela) {
-					// A specified RELA
+					// A specified RELA (from the "events of close relatives")
 					if (preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $rela)) {
 						$label=get_relationship_name_from_path($rela, $associate->getXref(), $person->getXref());
 					} else {
@@ -1386,13 +1351,19 @@ function print_asso_rela_record($event) {
 				if (!$label) {
 					$label=WT_I18N::translate('Relationship chart');
 				}
-				echo
-					'<br />',
-					'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>',
-					' - ',
-					'<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label.'</a>';
+				// For family records (e.g. MARR), identify the spouse with a sex icon
+				if ($event->getParentObject() instanceof WT_Family) {
+					$label=$associate->getSexImage().$label;
+				}
+				$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label.'</a>';
 			}
 		}
+		$html=array_unique($html);
+		echo
+			'<br />',
+			'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>',
+			' - ',
+			implode(', ', $html);
 	}
 }
 
