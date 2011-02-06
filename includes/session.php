@@ -228,7 +228,7 @@ try {
 // www.isp.com/~example), then redirect to it.
 $SERVER_URL=get_site_setting('SERVER_URL');
 if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
-	header('Location: '.get_site_setting('SERVER_URL'));
+	header('Location: '.$SERVER_URL.WT_SCRIPT_NAME.($QUERY_STRING ? '?'.$QUERY_STRING : ''), TRUE, 301);
 	exit;
 }
 
