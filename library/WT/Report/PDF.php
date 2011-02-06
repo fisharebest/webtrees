@@ -61,6 +61,12 @@ class WT_Report_PDF extends WT_Report_Base {
 	*/
 	const unicode = true;
 	/**
+	* FALSE means that the full font is embedded, TRUE means only the used chars
+	* in TCPDF v5.9 font subsetting is a very slow process, this leads to larger files  
+	* @var boolean const
+	*/
+	const subsetting = false;
+	/**
 	* A new object of the PDF class
 	* @var PDF
 	*/
@@ -81,6 +87,8 @@ class WT_Report_PDF extends WT_Report_Base {
 		$this->pdf->SetFooterMargin($this->footermargin);
 		//Set auto page breaks
 		$this->pdf->SetAutoPageBreak(true, $this->bottommargin);
+		// Set font subsetting
+		$this->pdf->setFontSubsetting(self::subsetting);
 		// Setup PDF compression
 		$this->pdf->SetCompression(self::compression);
 		// Setup RTL support
