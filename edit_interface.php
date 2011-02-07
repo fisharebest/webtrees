@@ -378,14 +378,14 @@ case 'edit':
 		if ($level1type!="NOTE") print_add_layer("NOTE");
 	} else {
 		if ($level1type!="SEX") {
-			if ($level1type!="ASSO" && $level1type!="REPO" && $level1type!="NOTE") print_add_layer("ASSO");
-			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($level1type=="CHR" || $level1type=="MARR") print_add_layer("ASSO2");
 			if ($level1type!="SOUR" && $level1type!="REPO" ) print_add_layer("SOUR");
+			if ($level1type!="OBJE" && $level1type!="REPO" && $MULTI_MEDIA) print_add_layer("OBJE");
 			if ($level1type!="NOTE") print_add_layer("NOTE");
 			// Shared Note addition ------------
 			if ($level1type!="SHARED_NOTE" && $level1type!="NOTE") print_add_layer("SHARED_NOTE");
-			if ($level1type!="OBJE" && $level1type!="REPO" && $MULTI_MEDIA) print_add_layer("OBJE");
+			if ($level1type!="ASSO" && $level1type!="REPO" && $level1type!="NOTE") print_add_layer("ASSO");
+			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
+			if ($level1type=="CHR" || $level1type=="MARR") print_add_layer("ASSO2");
 			// RESN can be added to all level 1 tags
 			print_add_layer("RESN");
 		}
@@ -430,14 +430,14 @@ case 'add':
 		if ($fact!="NOTE") print_add_layer("NOTE");
 	} else {
 		if ($fact!="OBJE") {
-			if ($fact!="ASSO" && $fact!="SOUR" && $fact!="REPO" && $fact!="SHARED_NOTE") print_add_layer("ASSO");
-			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($fact=="CHR" || $fact=="MARR") print_add_layer("ASSO2");
 			if ($fact!="SOUR" && $fact!="REPO" ) print_add_layer("SOUR");
+			if ($fact!="REPO") print_add_layer("OBJE");
 			if ($fact!="NOTE" && $fact!="SHARED_NOTE") print_add_layer("NOTE");
 			// Shared Note addition ------------
 			if ($fact!="SHARED_NOTE" && $fact!="NOTE") print_add_layer("SHARED_NOTE");
-			if ($fact!="REPO") print_add_layer("OBJE");
+			if ($fact!="ASSO" && $fact!="SOUR" && $fact!="REPO" && $fact!="SHARED_NOTE") print_add_layer("ASSO");
+			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
+			if ($fact=="CHR" || $fact=="MARR") print_add_layer("ASSO2");
 		}
 	}
 	// RESN can be added to all level 1 tags
