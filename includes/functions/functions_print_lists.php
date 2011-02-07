@@ -1329,17 +1329,43 @@ function format_surname_list($surnames, $style, $totals) {
 function print_changes_table($change_ids) {
 	global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES;
 	if (!$change_ids) return;
-	require_once WT_ROOT.'js/sorttable.js.htm';
+//	require_once WT_ROOT.'js/sorttable.js.htm';
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	echo WT_JS_START.'var table_id = "'.$table_id.'"'.WT_JS_END;
+	?>
+	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			jQuery('#'+table_id).dataTable( {
+				"bAutoWidth":false,
+				"bPaginate": false,
+				"bLengthChange": false,
+				"bFilter": false,
+				"bInfo": false,
+				"bJQueryUI": false,
+				"aoColumns": [
+					/* 0-Type*/		null,
+					/* 1-Record */	{ "aaSorting": [ [0,'asc'], [1,'asc'] ] },
+					/* 2-GIVN */	{ "bVisible": false },
+					/* 3-Change */	null,
+					/* 4-User */	null
+				]
+			});		
+		});
+	</script>
+	<?php
 	//-- table header
-	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
-	echo "<tr>";
-	echo "<th colspan=\"2\" class=\"list_label\">", WT_I18N::translate('Record'), "</th>";
-	echo "<th style=\"display:none\">GIVN</th>";
-	echo "<th class=\"list_label\">", translate_fact('CHAN'), "</th>";
-	echo "<th class=\"list_label\">", translate_fact('_WT_USER'), "</th>";
-	echo "</tr>";
+	echo 
+		'<table id="', $table_id, '" class="list_table center width100">',
+		'<thead><tr>',
+		'<th class="list_label">&nbsp;</th>',
+		'<th style="cursor:pointer;" class="list_label">', WT_I18N::translate('Record'), '</th>',
+		'<th>GIVN</th>',
+		'<th style="cursor:pointer;" class="list_label">', translate_fact('CHAN'), '</th>',
+		'<th style="cursor:pointer;" class="list_label">', translate_fact('_WT_USER'), '</th>',
+		'</tr></thead>';
 	//-- table body
+	echo '<tbody>';
 	$n = 0;
 	$NMAX = 1000;
 	$indi = false;
@@ -1350,8 +1376,9 @@ function print_changes_table($change_ids) {
 			continue;
 		}
 		//-- Counter
-		echo "<tr>";
-		echo "<td class=\"list_value_wrap rela list_item\">";
+		echo 
+			'<tr>',
+			'<td class="list_value_wrap rela list_item">';
 		switch ($record->getType()) {
 		case "INDI":
 			echo $record->getSexImage('small', '', '', false);
@@ -1381,56 +1408,59 @@ function print_changes_table($change_ids) {
 			$indi = false;
 			break;
 		}
-		echo "</td>";
+		echo '</td>';
 		++$n;
 		//-- Record name(s)
 		$name = $record->getFullName();
-		echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
-		echo "<a href=\"", $record->getHtmlUrl(), "\" class=\"list_item name2\" dir=\"", $TEXT_DIRECTION, "\">", PrintReady($name), "</a>";
+		echo
+			'<td class="list_value_wrap" align="', get_align($name), '">',
+			'<a href="', $record->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', PrintReady($name), '</a>';
 		$addname=$record->getAddName();
 		if ($addname) {
-			echo "<br /><a href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady($addname), "</a>";
+			echo '<br /><a href="', $record->getHtmlUrl(), '" class="list_item">', PrintReady($addname), '</a>';
 		}
 		if ($indi) {
 			if ($SHOW_MARRIED_NAMES) {
 				foreach ($record->getAllNames() as $name) {
 					if ($name['type']=='_MARNM') {
-						echo "<br /><a title=\"", translate_fact('_MARNM'),"\" href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady($name['full']), "</a>";
+						echo '<br /><a title="', translate_fact('_MARNM'), '" href="', $record->getHtmlUrl(), '" class="list_item">', PrintReady($name['full']), '</a>';
 					}
 				}
 			}
 			echo $record->getPrimaryParentsNames("parents_$table_id details1", "none");
 		}
-		echo "</td>";
+		echo '</td>';
 		//-- GIVN
-		echo "<td style=\"display:none\">";
+		echo '<td>';
 		$exp = explode(",", str_replace('<', ',', $name).",");
 		echo $exp[1];
-		echo "</td>";
+		echo '</td>';
 		//-- Last change date/time
-		echo "<td class=\"list_value_wrap rela\">".$record->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
+		echo '<td class="list_value_wrap rela">', $record->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
 		//-- Last change user
-		echo "<td class=\"list_value_wrap rela\">".$record->LastChangeUser(empty($SEARCH_SPIDER))."</td>";
-		echo "</tr>";
+		echo '<td class="list_value_wrap rela">', $record->LastChangeUser(empty($SEARCH_SPIDER)), '</td>';
+		echo '</tr>';
 	}
+	echo '</tbody>';
 	//-- table footer
-	echo "<tr class=\"sortbottom\">";
-	echo "<td></td>";
-	echo "<td class=\"list_label\">";
+	echo
+		'<tfoot><tr class="sortbottom">',
+		'<td class="list_label" colspan="2">';
 	if ($n>1 && $indi) {
 		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
 	}
 	if ($indi) {
 		echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", WT_I18N::translate('Show parents'), "</label><br />";
 	}
-	echo WT_I18N::translate('Total changes'), ": ", $n;
-	if ($n>=$NMAX) echo "<br /><span class=\"warning\">", WT_I18N::translate('Recent changes'), " &gt; ", $NMAX, "</span>";
-	echo "</td>";
-	echo "<td style=\"display:none\">GIVN</td>";
-	echo "<td></td>";
-	echo "<td></td>";
-	echo "</tr>";
-	echo "</table>";
+	echo WT_I18N::translate('Total changes'), ': ', $n;
+	if ($n>=$NMAX) echo '<br /><span class="warning">', WT_I18N::translate('Recent changes'), ' &gt; ', $NMAX, '</span>';
+	echo
+		'</td>',
+		'<td style="display:none">GIVN</td>',
+		'<td></td>',
+		'<td></td>',
+		'</tr></tfoot>',
+		'</table>';
 }
 
 /**
@@ -1590,8 +1620,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "</td><td class=\"list_label\" colspan=\"3\">";
 		$return .= WT_I18N::translate('Total events').": ".$output;
 		$return .= "</td>";
-		$return .= "<td></td>";
-		$return .= "<td></td>";
 		$return .= "</tr></tfoot>";
 		$return .= "</table>";
 	}
