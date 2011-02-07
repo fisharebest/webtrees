@@ -366,72 +366,69 @@ function print_header($title) {
 	global $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
 	global $controller;
 
-	header('Content-Type: text/html; charset=UTF-8');
-
 	$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
 	$META_DESCRIPTION='';
 	$META_ROBOTS='noindex,nofollow';
 	$META_GENERATOR='';
 	$LINK_CANONICAL='';
 
-	if (preg_match("/index,( *)follow/", get_gedcom_setting(WT_GED_ID, 'META_ROBOTS')) > 0) { // need to convert this to a boolean setting
-		$index_this_page=false;
+	$index_this_page=false;
+	$access_denied=false;
 
-		if (isset($controller) && (in_array(WT_SCRIPT_NAME, array('family.php', 'individual.php', 'note.php', 'repo.php', 'source.php' )))) {
-			switch (get_class($controller)) {
-			case 'WT_Controller_Family':
-				// family.php
-				if ($controller->family) {
-					$LINK_CANONICAL=$controller->family->getHtmlUrl();
-					if ($controller->family->canDisplayName()) $index_this_page=true;
-				}
-				break;
-			case 'WT_Controller_Individual':
-				// individual.php
-				if ($controller->indi) {
-					$LINK_CANONICAL=$controller->indi->getHtmlUrl();
-					if ($controller->indi->canDisplayName()) $index_this_page=true;
-				}
-				break;
-			case 'WT_Controller_Note':
-				// note.php
-				if ($controller->note) {
-					$LINK_CANONICAL=$controller->note->getHtmlUrl();
-					if ($controller->note->canDisplayName()) $index_this_page=true;
-				}
-				break;
-			case 'WT_Controller_Repository':
-				// repo.php
-				if ($controller->repository) {
-					$LINK_CANONICAL=$controller->repository->getHtmlUrl();
-					if ($controller->repository->canDisplayName()) $index_this_page=true;
-				}
-				break;
-			case 'WT_Controller_Source':
-				// source.php
-				if ($controller->source) {
-					$LINK_CANONICAL=$controller->source->getHtmlUrl();
-					if ($controller->source->canDisplayName()) $index_this_page=true;
-				}
-				break;
-			default:
-				break;
+	if (isset($controller) && (in_array(WT_SCRIPT_NAME, array('family.php', 'individual.php', 'note.php', 'repo.php', 'source.php' )))) {
+		switch (get_class($controller)) {
+		case 'WT_Controller_Family':
+			// family.php
+			if ($controller->family) {
+				$LINK_CANONICAL=$controller->family->getHtmlUrl();
+				if ($controller->family->canDisplayDetails()) $index_this_page=true; else $access_denied=true; 
 			}
+			break;
+		case 'WT_Controller_Individual':
+			// individual.php
+			if ($controller->indi) {
+				$LINK_CANONICAL=$controller->indi->getHtmlUrl();
+				if ($controller->indi->canDisplayDetails()) $index_this_page=true; else $access_denied=true;
+			}
+			break;
+		case 'WT_Controller_Note':
+			// note.php
+			if ($controller->note) {
+				$LINK_CANONICAL=$controller->note->getHtmlUrl();
+				if ($controller->note->canDisplayDetails()) $index_this_page=true; else $access_denied=true;
+			}
+			break;
+		case 'WT_Controller_Repository':
+			// repo.php
+			if ($controller->repository) {
+				$LINK_CANONICAL=$controller->repository->getHtmlUrl();
+				if ($controller->repository->canDisplayDetails()) $index_this_page=true; else $access_denied=true;
+			}
+			break;
+		case 'WT_Controller_Source':
+			// source.php
+			if ($controller->source) {
+				$LINK_CANONICAL=$controller->source->getHtmlUrl();
+				if ($controller->source->canDisplayDetails()) $index_this_page=true; else $access_denied=true;
+			}
+			break;
+		default:
+			break;
 		}
+	}
+	
+	if (WT_SCRIPT_NAME=='index.php') {
+		$LINK_CANONICAL='index.php?ctype=gedcom&amp;ged='.WT_GEDURL;
+		$index_this_page=true;
+	}
 
-		if (WT_SCRIPT_NAME=='index.php') {
-			$LINK_CANONICAL='index.php?ctype=gedcom&amp;ged='.WT_GEDURL;
-			$index_this_page=true;
-		}
+	// listing pages 
+	if (in_array(WT_SCRIPT_NAME, array('famlist.php', 'indilist.php', 'notelist.php', 'repolist.php', 'sourcelist.php'))) {
+		$index_this_page=true;
+	}
 
-		if ($index_this_page) {
-			$META_ROBOTS='index,follow';
-		}
-
-		// pages we want search engines to follow, but not index
-		if (in_array(WT_SCRIPT_NAME, array('famlist.php', 'indilist.php', 'notelist.php', 'repolist.php', 'sourcelist.php'))) {
-			$META_ROBOTS='noindex,follow';
-		}
+	if ($index_this_page && (preg_match("/index,( *)follow/", get_gedcom_setting(WT_GED_ID, 'META_ROBOTS')) > 0)) { // need to convert this to a boolean setting
+		$META_ROBOTS='index,follow';
 	}
 
 	if ($view!='simple') {
@@ -440,6 +437,11 @@ function print_header($title) {
 			$META_DESCRIPTION=$GEDCOM_TITLE;
 		}
 		$META_GENERATOR=WT_WEBTREES.' - '.WT_WEBTREES_URL;
+	}
+
+	header('Content-Type: text/html; charset=UTF-8');
+	if ($access_denied) {
+		header($_SERVER["SERVER_PROTOCOL"].' 403 Forbidden');
 	}
 
 	// The title often includes the names of records, which may have markup
