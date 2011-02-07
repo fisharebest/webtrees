@@ -536,13 +536,13 @@ case 'linkspouse':
 		echo "</td></tr>";
 	}
 	echo "</table>";
+	print_add_layer("SOUR");
+	print_add_layer("OBJE");
+	print_add_layer("NOTE");
+	print_add_layer("SHARED_NOTE");
 	print_add_layer("ASSO");
 	// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
 	print_add_layer("ASSO2");
-	print_add_layer("SOUR");
-	print_add_layer("NOTE");
-	print_add_layer("SHARED_NOTE");
-	print_add_layer("OBJE");
 	print_add_layer("RESN");
 	echo "<input type=\"submit\" value=\"", WT_I18N::translate('Set link'), "\" /><br />";
 	echo "</form>";
@@ -959,9 +959,9 @@ case 'editsource':
 		echo "</td></tr>";
 	}
 	echo "</table>";
+	print_add_layer("OBJE");
 	print_add_layer("NOTE");
 	print_add_layer("SHARED_NOTE");
-	print_add_layer("OBJE");
 	print_add_layer("RESN");
 	echo "<br /><input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" /><br />";
 	echo "</form>";

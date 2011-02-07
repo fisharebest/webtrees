@@ -883,9 +883,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		print_add_layer('SHARED_NOTE');
 	} else {
 		print_add_layer('SOUR', 1);
+		print_add_layer('OBJE', 1);
 		print_add_layer('NOTE', 1);
 		print_add_layer('SHARED_NOTE', 1);
-		print_add_layer('OBJE', 1);
 	}
 	echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
 	if (preg_match('/^add(child|spouse|newparent|source)/', $nextaction)) {
