@@ -115,7 +115,7 @@ echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\"    />";
 echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\"    />";
 echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\"    />";
 echo '<table class="facts_table '.$TEXT_DIRECTION.' width100">';
-echo '<tr><td class="facts_label" colspan="8"><h2>';
+echo '<tr><td class="facts_label" colspan="6"><h2>';
 
 // All further uses of $cal are to generate URLs
 $cal=rawurlencode($cal);
@@ -135,7 +135,7 @@ echo '</h2></td></tr>';
 
 // Day selector
 echo '<tr><td class="descriptionbox vmiddle">';
-echo WT_I18N::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="7" class="optionbox">';
+echo WT_I18N::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="5" class="optionbox">';
 for ($d=1; $d<=$days_in_month; $d++) {
 	// Format the day number using the calendar
 	$tmp=new WT_Date($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
@@ -150,7 +150,7 @@ echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_mo
 // Month selector
 echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Month'), help_link('annivers_month_select'), '</td>';
-echo '<td class="optionbox" colspan="7">';
+echo '<td class="optionbox" colspan="5">';
 for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
 	$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
 	$m=$cal_date->NUM_TO_GEDCOM_MONTH($n, $cal_date->IsLeapYear());
@@ -165,7 +165,7 @@ echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Year'), help_link('annivers_year_select'), '</td>';
 echo "<td class=\"optionbox vmiddle\">";
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==1?-1:$cal_date->y-1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">-1</a>";
-echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"7\" /> ";
+echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"4\" /> ";
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==-1?1:$cal_date->y+1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">+1</a>";
 echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%Y')."</b></a>";
 echo "</td> ";
@@ -188,8 +188,8 @@ echo ">".WT_I18N::translate('Recent Years (&lt; 100 yrs)')."</option>";
 echo "</select>";
 
 echo "</td>";
-echo "<td class=\"descriptionbox vmiddle\">";
-echo WT_I18N::translate('Gender'), help_link('annivers_sex'), '</td>';
+
+
 echo "<td class=\"optionbox vmiddle\">";
 if ($filtersx=="") {
 	echo WT_Person::sexImage('M', 'large', 'vertical-align: middle', WT_I18N::translate('All People'));
@@ -212,8 +212,8 @@ else {
 	echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', WT_I18N::translate('Females')), '</a>';
 }
 echo "</td>";
-echo "<td class=\"descriptionbox vmiddle\">";
-echo WT_I18N::translate('Events'), help_link('annivers_event'), '</td>';
+
+
 echo "<td class=\"optionbox\">";
 echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\" />";
 echo "<select class=\"list_value\" name=\"filterev\" onchange=\"document.dateform.submit();\">";
@@ -264,8 +264,11 @@ if ($filterev == "EVEN") echo " selected=\"selected\"";
 echo ">".WT_I18N::translate('Custom Event')."</option>";
 echo "</select>";
 echo "</td></tr>";
+echo "</table></form>";
+echo "<table class=\"center {$TEXT_DIRECTION} width100\"><tr>";
+
 // Day/Month/Year and calendar selector
-echo '<tr><td class="topbottombar" colspan="4">';
+echo '<tr><td class="topbottombar width50" colspan="5">';
 if ($action=='today') {
 	echo "<span class=\"error\">", WT_I18N::translate('View Day'), "</span>";
 } else {
@@ -282,7 +285,7 @@ if ($action=='year') {
 	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=year\">", WT_I18N::translate('View Year'), "</a>";
 }
 echo help_link('day_month');
-echo '</td><td class="topbottombar" colspan="4">';
+echo '</td><td class="topbottombar" colspan="1">';
 $n=0;
 foreach (array(
 	'gregorian'=>WT_I18N::translate('Gregorian'),
@@ -306,7 +309,7 @@ foreach (array(
 	}
 }
 echo "</td></tr>";
-echo "</table></form>";
+echo "</table>";
 
 // Convert event filter option to a list of gedcom event codes
 if ($filterev=='all') {
