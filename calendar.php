@@ -268,7 +268,7 @@ echo "</table></form>";
 echo "<table class=\"center {$TEXT_DIRECTION} width100\"><tr>";
 
 // Day/Month/Year and calendar selector
-echo '<tr><td class="topbottombar width50" colspan="5">';
+echo '<tr><td class="topbottombar width50">';
 if ($action=='today') {
 	echo "<span class=\"error\">", WT_I18N::translate('View Day'), "</span>";
 } else {
@@ -285,7 +285,7 @@ if ($action=='year') {
 	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=year\">", WT_I18N::translate('View Year'), "</a>";
 }
 echo help_link('day_month');
-echo '</td><td class="topbottombar" colspan="1">';
+echo '</td><td class="topbottombar">';
 $n=0;
 foreach (array(
 	'gregorian'=>WT_I18N::translate('Gregorian'),
