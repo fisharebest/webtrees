@@ -129,7 +129,7 @@ function edit_field_yes_no($name, $selected=false, $extra='') {
 // An inline-editing version of edit_field_yes_no()
 function edit_field_yes_no_inline($name, $selected=false, $extra='') {
 	return select_edit_control_inline(
-		$name, array(true=>WT_I18N::translate('yes'), false=>WT_I18N::translate('no')), null, $selected, $extra
+		$name, array(true=>WT_I18N::translate('yes'), false=>WT_I18N::translate('no')), null, (int)$selected, $extra
 	);
 }
 
