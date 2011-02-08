@@ -102,7 +102,7 @@ if ($cal_date->d>$days_in_month && $action=='today')
 
 // Print the header stuff
 print_header(WT_I18N::translate('Anniversary calendar'));
-echo '<div style="text-align: center;" id="calendar_page">';
+echo "<div>";
 
 // Calendar form
 echo '<form name="dateform" method="get" action="calendar.php">';
@@ -115,7 +115,7 @@ echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\"    />";
 echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\"    />";
 echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\"    />";
 echo '<table class="facts_table '.$TEXT_DIRECTION.' width100">';
-echo '<tr><td class="facts_label" colspan="6"><h2>';
+echo '<tr><td class="facts_label" colspan="4"><h2>';
 
 // All further uses of $cal are to generate URLs
 $cal=rawurlencode($cal);
@@ -135,7 +135,7 @@ echo '</h2></td></tr>';
 
 // Day selector
 echo '<tr><td class="descriptionbox vmiddle">';
-echo WT_I18N::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="5" class="optionbox">';
+echo WT_I18N::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="3" class="optionbox">';
 for ($d=1; $d<=$days_in_month; $d++) {
 	// Format the day number using the calendar
 	$tmp=new WT_Date($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
@@ -150,7 +150,7 @@ echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_mo
 // Month selector
 echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Month'), help_link('annivers_month_select'), '</td>';
-echo '<td class="optionbox" colspan="5">';
+echo '<td class="optionbox" colspan="3">';
 for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
 	$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
 	$m=$cal_date->NUM_TO_GEDCOM_MONTH($n, $cal_date->IsLeapYear());
@@ -169,29 +169,30 @@ echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"4\" /> ";
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==-1?1:$cal_date->y+1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">+1</a>";
 echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%Y')."</b></a>";
 echo "</td> ";
+
 // Filtering options
+
 echo "<td class=\"descriptionbox vmiddle\">";
-echo WT_I18N::translate('Show'), help_link('annivers_show'), '</td>';
+	echo WT_I18N::translate('Show'), help_link('annivers_show'), '</td>';
+
 echo "<td class=\"optionbox vmiddle\">";
-echo "<select class=\"list_value\" name=\"filterof\" onchange=\"document.dateform.submit();\">";
-echo "<option value=\"all\"";
-if ($filterof == "all") echo " selected=\"selected\"";
-echo ">".WT_I18N::translate('All People')."</option>";
-if (!$HIDE_LIVE_PEOPLE || WT_USER_ID) {
-	echo "<option value=\"living\"";
+	echo "<select class=\"list_value\" name=\"filterof\" onchange=\"document.dateform.submit();\">";
+	echo "<option value=\"all\"";
+	if ($filterof == "all") echo " selected=\"selected\"";
+	echo ">".WT_I18N::translate('All People')."</option>";
+	if (!$HIDE_LIVE_PEOPLE || WT_USER_ID) {
+		echo "<option value=\"living\"";
 	if ($filterof == "living") echo " selected=\"selected\"";
-	echo ">".WT_I18N::translate('Living People')."</option>";
-}
-echo "<option value=\"recent\"";
-if ($filterof == "recent") echo " selected=\"selected\"";
-echo ">".WT_I18N::translate('Recent Years (&lt; 100 yrs)')."</option>";
-echo "</select>";
-
-echo "</td>";
-
-
-echo "<td class=\"optionbox vmiddle\">";
-if ($filtersx=="") {
+		echo ">".WT_I18N::translate('Living People')."</option>";
+	}
+	echo "<option value=\"recent\"";
+	if ($filterof == "recent") echo " selected=\"selected\"";
+	echo ">".WT_I18N::translate('Recent Years (&lt; 100 yrs)')."</option>";
+	echo "</select>";
+	
+	echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;";
+	
+	if ($filtersx=="") {
 	echo WT_Person::sexImage('M', 'large', 'vertical-align: middle', WT_I18N::translate('All People'));
 	echo WT_Person::sexImage('F', 'large', 'vertical-align: middle', WT_I18N::translate('All People')), ' | ';
 } else {
@@ -211,11 +212,10 @@ else {
 	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx=F&amp;action={$action}\">";
 	echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', WT_I18N::translate('Females')), '</a>';
 }
-echo "</td>";
 
+	echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;";
 
-echo "<td class=\"optionbox\">";
-echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\" />";
+	echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\" />";
 echo "<select class=\"list_value\" name=\"filterev\" onchange=\"document.dateform.submit();\">";
 echo "<option value=\"bdm\"";
 if ($filterev == "bdm") echo " selected=\"selected\"";
@@ -263,6 +263,13 @@ echo "<option value=\"EVEN\"";
 if ($filterev == "EVEN") echo " selected=\"selected\"";
 echo ">".WT_I18N::translate('Custom Event')."</option>";
 echo "</select>";
+
+
+
+
+
+
+
 echo "</td></tr>";
 echo "</table></form>";
 echo "<table class=\"center {$TEXT_DIRECTION} width100\"><tr>";
