@@ -399,10 +399,6 @@ display:inline;
 visibility:visible;
 }
 
-#calendar_page #day {
-border:1px solid #ccc;
-}
-
 #index_title {
 float: left;
 }
@@ -1042,7 +1038,7 @@ font-weight: bold;
 input, button, textarea  {
 border-width:1px;
 font-family: tahoma,arial,helvetica,sans-serif;
-font-size: 14px;
+font-size: 12px;
 }
 
 input, textarea {

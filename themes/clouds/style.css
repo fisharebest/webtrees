@@ -403,10 +403,6 @@ display:inline;
 visibility:visible;
 }
 
-#calendar_page #day {
-border:1px solid #ccc;
-}
-
 #index_title {
 float: left;
 }
