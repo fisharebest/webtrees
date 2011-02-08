@@ -292,7 +292,7 @@ if ($action=='year') {
 	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=year\">", WT_I18N::translate('View Year'), "</a>";
 }
 echo help_link('day_month');
-echo '</td><td class="topbottombar">';
+echo '</td><td class="topbottombar width50">';
 $n=0;
 foreach (array(
 	'gregorian'=>WT_I18N::translate('Gregorian'),
