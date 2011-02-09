@@ -210,6 +210,20 @@ function edit_field_contact($name, $selected='', $extra='') {
 	}
 	return select_edit_control($name, $CONTACT_METHODS, null, $selected, $extra);
 }
+function edit_field_contact_inline($name, $selected='', $extra='') {
+	// Different ways to contact the users
+	$CONTACT_METHODS=array(
+		'messaging' =>WT_I18N::translate('webtrees internal messaging'),
+		'messaging2'=>WT_I18N::translate('Internal messaging with emails'),
+		'messaging3'=>WT_I18N::translate('webtrees sends emails with no storage'),
+		'mailto'    =>WT_I18N::translate('Mailto link'),
+		'none'      =>WT_I18N::translate('No contact'),
+	);
+	if (!get_site_setting('STORE_MESSAGES')) {
+		unset($CONTACT_METHODS['messaging'], $CONTACT_METHODS['messaging2']);
+	}
+	return select_edit_control_inline($name, $CONTACT_METHODS, null, $selected, $extra);
+}
 
 // Print an edit control for a language field
 function edit_field_language($name, $selected='', $extra='') {

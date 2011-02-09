@@ -195,14 +195,89 @@ case 'load1row':
 	// Generate an AJAX response for datatables to load expanded row
 	$user_id=(int)safe_GET('user_id');
 	header('Content-type: text/html; charset=UTF-8');
+	echo '<h1>', WT_I18N::translate('Details'), '</h1>';
 	echo '<dl>';
 	echo '<dt>', WT_I18N::translate('Administrator'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-canadmin-'.$user_id, get_user_setting($user_id, 'canadmin')), '</dd>';
+
+	echo '<dt>', WT_I18N::translate('Password'), '</dt>';
+	echo '<dd>', edit_field_inline('user-password-'.$user_id, ''), '</dd>';
+
 	echo '<dt>', WT_I18N::translate('Preferred contact method'), '</dt>';
-	echo '<dd>', get_user_setting($user_id, 'canadmin'), '</dd>';
-	echo '<dt>TODO ...</dt>';
-	echo '<dd>... the rest of the settings</dd>';
+	echo '<dd>', edit_field_contact_inline('new_contact_method', get_user_setting($user_id, 'contactmethod')), '</dd>';
+
+	echo '<dt>', WT_I18N::translate('Allow this user to edit his account information'), '</dt>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-editaccount-'.$user_id, get_user_setting($user_id, 'editaccount')), '</dd>';
+
+	echo '<dt>', WT_I18N::translate('Automatically approve changes made by this user'), '</dt>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-auto_accept-'.$user_id, get_user_setting($user_id, 'auto_accept')), '</dd>';
+
+	echo '<dt>', WT_I18N::translate('Theme'), '</dt>';
+	echo '<dd>', get_user_setting($user_id, 'theme'), '</dd>';
+
+	echo '<dt>', WT_I18N::translate('Default Tab to show on Individual Information page'), '</dt>';
+	echo '<dd>', get_user_setting($user_id, 'default_tab'), '</dd>';
+
+	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-visibleonline-'.$user_id, get_user_setting($user_id, 'visibleonline')), '</dd>';
+
+	echo '<dt>', WT_I18N::translate('Admin comments on user'), '</dt>';
+	echo '<dd>', edit_field_inline('user_setting-comment-'.$user_id, get_user_setting($user_id, 'admin_comment')), '</dd>';
+
+	echo '<dt>', WT_I18N::translate('Date'), '</dt>';
+	echo '<dd>', edit_field_inline('user_setting-commentexp-'.$user_id, get_user_setting($user_id, 'admin_comment')), '</dd>';
 	echo '</dd>';
+
+	echo '<h1>', WT_I18N::translate('Family tree access and settings'), '</h1>';
+
+	// Column One - details
+
+	echo
+		'<table><tr>',
+		'<th>', WT_I18N::translate('Family tree'), '</th>',
+		'<th>', WT_I18N::translate('Pedigree chart root person'), help_link('useradmin_rootid'), '</th>',
+		'<th>', WT_I18N::translate('Individual record'), help_link('useradmin_gedcomid'), '</th>',
+		'<th>', WT_I18N::translate('Role'), help_link('role'), '</th>',
+		'<th>', WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'), '</th>',
+		'</tr>';
+
+	foreach ($all_gedcoms as $ged_id=>$ged_name) {
+		echo '<tr>',
+			'<td >', WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td>',
+			//Pedigree root person
+			'<td>';
+				$varname='rootid'.$ged_id;
+				echo '<input type="text" name="', $varname, '" id="', $varname, '" value="';
+				$pid=get_user_gedcom_setting($user_id, $ged_id, 'rootid');
+				echo $pid, '" />', print_findindi_link($varname, "", false, false, $ged_name);
+				$GEDCOM=$ged_name; // library functions use global variable instead of parameter.
+				$person=WT_Person::getInstance($pid);
+				if ($person) {
+					echo '<div class="list_item"><a href="', $person->getHtmlUrl(), '">', PrintReady($person->getFullName()), '</a></div>';
+				}
+			echo '</td>',						
+			// GEDCOM INDI Record ID
+			'<td>';
+				$varname='gedcomid'.$ged_id;
+				echo '<input type="text" name="',$varname, '" id="',$varname, '" value="';
+				$pid=get_user_gedcom_setting($user_id, $ged_id, 'gedcomid');
+				echo $pid, '" />';
+				print_findindi_link($varname, "", false, false, $ged_name);
+				$GEDCOM=$ged_name; // library functions use global variable instead of parameter.
+				$person=WT_Person::getInstance($pid);
+				if ($person) {
+					echo ' <div class="list_item"><a href="', $person->getHtmlUrl(), '">', PrintReady($person->getFullName()), '</a></div>';
+				}
+			echo
+				'</td>';
+			echo '<td>', select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-canedit', $ALL_EDIT_OPTIONS, null, get_user_gedcom_setting($user_id, $ged_id, 'canedit', 'none')), '</td>';
+			//Relationship path
+			echo '<td>', select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('No'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, get_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', '0')), '</td>';
+			echo '</tr>';
+	}
+	echo '</table>';
+
+	echo '</td></tr></table>';
 	exit;
 }
 
@@ -452,7 +527,7 @@ if ($action=="edituser") {
 			</tr>
 			<!-- access and relationship path details -->
 			<tr>
-				<td class="subbar" colspan="4"><?php print WT_I18N::translate('Family tree access and settings'); ?></td>
+				<td class="subbar" colspan="4"><?php echo WT_I18N::translate('Family tree access and settings'); ?></td>
 			</tr>
 			<tr>
 				<td colspan="4">
