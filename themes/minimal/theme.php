@@ -87,18 +87,18 @@ $WT_IMAGES['button_head'] = WT_THEME_DIR.'images/buttons/head.gif';
 $WT_IMAGES['button_find_facts'] = WT_THEME_DIR.'images/buttons/find_facts.png';
 
 // Media images - use common/default ones - not all these exist
-$WT_IMAGES['media_audio'] = 'images/media/audio.png';
-$WT_IMAGES['media_doc'] = 'images/media/doc.gif';
-$WT_IMAGES['media_flash'] = 'images/media/flash.png';
-$WT_IMAGES['media_flashrem'] = 'images/media/flashrem.png';
-$WT_IMAGES['media_ged'] = 'images/media/ged.gif';
-$WT_IMAGES['media_globe'] = 'images/media/globe.png';
-$WT_IMAGES['media_html'] = 'images/media/html.gif';
-$WT_IMAGES['media_picasa'] = 'images/media/picasa.png';
-$WT_IMAGES['media_pdf'] = 'images/media/pdf.gif';
-$WT_IMAGES['media_tex'] = 'images/media/tex.gif';
-$WT_IMAGES['media_wmv'] = 'images/media/wmv.png';
-$WT_IMAGES['media_wmvrem'] = 'images/media/wmvrem.png';
+$WT_IMAGES['media_audio'] = WT_THEME_DIR.'images/media/audio.png';
+$WT_IMAGES['media_doc'] = WT_THEME_DIR.'images/media/doc.gif';
+$WT_IMAGES['media_flash'] = WT_THEME_DIR.'images/media/flash.png';
+$WT_IMAGES['media_flashrem'] = WT_THEME_DIR.'images/media/flashrem.png';
+$WT_IMAGES['media_ged'] = WT_THEME_DIR.'images/media/ged.gif';
+$WT_IMAGES['media_globe'] = WT_THEME_DIR.'images/media/globe.png';
+$WT_IMAGES['media_html'] = WT_THEME_DIR.'images/media/html.gif';
+$WT_IMAGES['media_picasa'] = WT_THEME_DIR.'images/media/picasa.png';
+$WT_IMAGES['media_pdf'] = WT_THEME_DIR.'images/media/pdf.gif';
+$WT_IMAGES['media_tex'] = WT_THEME_DIR.'images/media/tex.gif';
+$WT_IMAGES['media_wmv'] = WT_THEME_DIR.'images/media/wmv.png';
+$WT_IMAGES['media_wmvrem'] = WT_THEME_DIR.'images/media/wmvrem.png';
 
 //- other images
 $WT_IMAGES['add'] = WT_THEME_DIR.'images/add.gif';
