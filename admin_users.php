@@ -696,7 +696,7 @@ if ($action == "listusers") {
 		'<table id="list">',
 			'<thead>',
 				'<tr>',
-					'<th> </th>',
+					'<th style="margin:0 -2px 1px 1px; padding:3px 0 4px;"> </th>',
 					'<th> user-id </th>',
 					'<th>', WT_I18N::translate('User name'), '</th>',
 					'<th>', WT_I18N::translate('Real name'), '</th>',
