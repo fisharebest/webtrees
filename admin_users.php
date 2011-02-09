@@ -48,7 +48,7 @@ $ALL_EDIT_OPTIONS=array(
 );
 
 // Extract form actions (GET overrides POST if both set)
-$action                  =safe_POST('action',  $ALL_ACTIONS);
+$action                  =safe_POST('action',  $ALL_ACTIONS, 'listusers');
 $usrlang                 =safe_POST('usrlang', array_keys(WT_I18N::installed_languages()));
 $username                =safe_POST('username', WT_REGEX_USERNAME);
 $filter                  =safe_POST('filter'   );
@@ -97,6 +97,7 @@ case 'deleteuser':
 		delete_user($user_id);
 		AddToLog("deleted user ->{$username}<-", 'auth');
 	}
+	$action='listusers';
 	break;
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
@@ -160,7 +161,7 @@ case 'loadrows':
 	foreach ($aaData as &$aData) {
 		// $aData[0] is a dummy column for the expand-details icon
 		// $aData[1] is the user ID
-		$user_id=$aData[1];
+		$user_id  =$aData[1];
 		$user_name=$aData[2];
 		$aData[2]=edit_field_inline('user-user_name-'.$user_id, $aData[2]);
 		$aData[3]=edit_field_inline('user-real_name-'.$user_id, $aData[3]);
@@ -182,7 +183,12 @@ case 'loadrows':
 		$aData[11]=edit_field_yes_no_inline('user_setting-verified-'.         $user_id, $aData[11]);
 		$aData[12]=edit_field_yes_no_inline('user_setting-verified_by_admin-'.$user_id, $aData[12]);
 		// Add extra column for "delete" action
-		$aData[13]='<div class="icon-delete" onclick="alert(\''.'EEK'.'\');"></div>';
+		if ($user_id != WT_USER_ID) {
+			$aData[13]='<div class="icon-delete" onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Permanently delete "%s"?', $user_name)).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=deleteuser&username='.htmlspecialchars($user_name).'\'; }"></div>';
+		} else {
+			// Do not delete ourself!
+			$aData[13]='';
+		}
 	}
 	
 	// Total filtered/unfiltered rows
@@ -651,12 +657,12 @@ echo WT_JS_START;
 				/* user_name         */ null,
 				/* real_name         */ null,
 				/* email             */ null,
-				/* email link        */ null,
+				/* email link        */ { bSortable:false },
 				/* language          */ null,
 				/* registered (sort) */ { bVisible:false },
-				/* registered        */ { iDataSort:6 },
+				/* registered        */ { iDataSort:7 },
 				/* last_login (sort) */ { bVisible:false },
-				/* last_login        */ { iDataSort:8 },
+				/* last_login        */ { iDataSort:9 },
 				/* verified          */ null,
 				/* approved          */ null,
 				/* delete            */ { bSortable:false }
@@ -690,11 +696,12 @@ if ($action == "listusers") {
 		'<table id="list">',
 			'<thead>',
 				'<tr>',
-					'<th>', WT_I18N::translate('Details'), '</th>',
-					'<th> user-id</th>',
+					'<th> </th>',
+					'<th> user-id </th>',
 					'<th>', WT_I18N::translate('User name'), '</th>',
 					'<th>', WT_I18N::translate('Real name'), '</th>',
-					'<th colspan="2">', WT_I18N::translate('Email'), '</th>',
+					'<th>', WT_I18N::translate('Email'), '</th>',
+					'<th> </th>', /* COLSPAN does not work? */
 					'<th>', WT_I18N::translate('Language'), '</th>',
 					'<th> date_registered </th>',
 					'<th>', WT_I18N::translate('Date registered'), '</th>',
@@ -702,7 +709,7 @@ if ($action == "listusers") {
 					'<th>', WT_I18N::translate('Last logged in'), '</th>',
 					'<th>', WT_I18N::translate('Verified'), '</th>',
 					'<th>', WT_I18N::translate('Approved'), '</th>',
-					'<th></th>',
+					'<th> </th>',
 				'</tr>',
 			'</thead>',
 			'<tbody>',
