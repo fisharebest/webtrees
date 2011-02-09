@@ -128,7 +128,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<th class=\"list_label\">".translate_fact('NAME')."</th>";
 			$content .= "<th style=\"display:none\">GIVN</th>";
 			$content .= "<th class=\"list_label\">".translate_fact('DATE')."</th>";
-			$content .= "<th class=\"list_label\"><img src=\"./images/reminder.gif\" alt=\"".WT_I18N::translate('Anniversary')."\" title=\"".WT_I18N::translate('Anniversary')."\" border=\"0\" /></th>";
+			$content .= '<th class="list_label"><img src="'.$WT_IMAGES['reminder'].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
 			$content .= "<th class=\"list_label\">".translate_fact('_YART')."</th>";
 			$content .= "</tr>";
 

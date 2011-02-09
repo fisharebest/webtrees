@@ -104,16 +104,6 @@ $stylesheet       = WT_THEME_DIR . 'css/' . $subColor . '.css';
 $WT_MENU_LOCATION = 'top';
 $WT_USE_HELPIMG   = true;
 
-
-//-- variables for image names
-$WT_IMAGES['selected'] = 'images/selected.png';
-$WT_IMAGES['sex_m_9x9'] = 'images/sex_m_9x9.gif';
-$WT_IMAGES['sex_f_9x9'] = 'images/sex_f_9x9.gif';
-$WT_IMAGES['sex_u_9x9'] = 'images/sex_u_9x9.gif';
-$WT_IMAGES['sex_m_15x15'] = 'images/sex_m_15x15.gif';
-$WT_IMAGES['sex_f_15x15'] = 'images/sex_f_15x15.gif';
-$WT_IMAGES['sex_u_15x15'] = 'images/sex_u_15x15.gif';
-
 //- WT main icons
 $WT_IMAGES['admin'] = WT_THEME_DIR.'images/admin.gif';
 $WT_IMAGES['ancestry'] = WT_THEME_DIR.'images/ancestry.gif';
@@ -154,12 +144,18 @@ $WT_IMAGES['reports'] = WT_THEME_DIR.'images/report.gif';
 $WT_IMAGES['repository'] = WT_THEME_DIR.'images/repository.gif';
 $WT_IMAGES['rings'] = WT_THEME_DIR.'images/rings.gif';
 $WT_IMAGES['search'] = WT_THEME_DIR.'images/search.gif';
+$WT_IMAGES['selected'] = WT_THEME_DIR.'images/selected.png';
+$WT_IMAGES['sex_m_9x9'] = WT_THEME_DIR.'images/sex_m_9x9.gif';
+$WT_IMAGES['sex_f_9x9'] = WT_THEME_DIR.'images/sex_f_9x9.gif';
+$WT_IMAGES['sex_u_9x9'] = WT_THEME_DIR.'images/sex_u_9x9.gif';
+$WT_IMAGES['sex_m_15x15'] = WT_THEME_DIR.'images/sex_m_15x15.gif';
+$WT_IMAGES['sex_f_15x15'] = WT_THEME_DIR.'images/sex_f_15x15.gif';
+$WT_IMAGES['sex_u_15x15'] = WT_THEME_DIR.'images/sex_u_15x15.gif';
 $WT_IMAGES['sfamily'] = WT_THEME_DIR.'images/sfamily.gif';
 $WT_IMAGES['source'] = WT_THEME_DIR.'images/source.gif';
 $WT_IMAGES['statistic'] = WT_THEME_DIR.'images/statistic.gif';
-$WT_IMAGES['target'] = 'images/buttons/target.gif';
+$WT_IMAGES['target'] = WT_THEME_DIR.'images/buttons/target.gif';
 $WT_IMAGES['timeline'] = WT_THEME_DIR.'images/timeline.gif';
-$WT_IMAGES['trashcan'] = 'images/trashcan.gif';
 $WT_IMAGES['tree'] = WT_THEME_DIR.'images/gedcom.gif';
 $WT_IMAGES['wiki'] = WT_THEME_DIR.'images/w_22.png';
 
@@ -233,8 +229,8 @@ $WT_IMAGES['vline'] = WT_THEME_DIR.'images/vline.gif';
 $WT_IMAGES['webtrees'] = WT_THEME_DIR.'images/webtrees.png';
 $WT_IMAGES['zoomin'] = WT_THEME_DIR.'images/zoomin.gif';
 $WT_IMAGES['zoomout'] = WT_THEME_DIR.'images/zoomout.gif';
-$WT_IMAGES['reminder'] = 'images/reminder.gif';
-$WT_IMAGES['children'] = 'images/children.gif';
+$WT_IMAGES['reminder'] = WT_THEME_DIR.'images/reminder.gif';
+$WT_IMAGES['children'] = WT_THEME_DIR.'images/children.gif';
 
 // - lifespan chart arrows
 $WT_IMAGES['lsltarrow'] = WT_THEME_DIR.'images/lsltarrow.gif';

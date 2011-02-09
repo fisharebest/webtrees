@@ -71,9 +71,9 @@ $WT_IMAGES=array(
 	'ldarrow'=>WT_THEME_DIR.'images/ldarrow.gif',
 	'ddarrow'=>WT_THEME_DIR.'images/ddarrow.gif',
 	'udarrow'=>WT_THEME_DIR.'images/udarrow.gif',
-	'sex_f_9x9'=>'images/sex_f_9x9.gif',
-	'sex_m_9x9'=>'images/sex_m_9x9.gif',
-	'sex_u_9x9'=>'images/sex_u_9x9.gif',
+	'sex_f_9x9'=>WT_THEME_DIR.'images/sex_f_9x9.gif',
+	'sex_m_9x9'=>WT_THEME_DIR.'images/sex_m_9x9.gif',
+	'sex_u_9x9'=>WT_THEME_DIR.'images/sex_u_9x9.gif',
 
 	// media images
 	'media'=>WT_THEME_DIR.'images/media/media.png',

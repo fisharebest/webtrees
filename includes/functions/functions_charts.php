@@ -419,7 +419,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 			$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
 			if ($ct>0) $nchi = $match[1];
 		}
-		if ($nchi=="0") echo "<img src=\"images/small/childless.gif\" alt=\"".WT_I18N::translate('This family remained childless')."\" title=\"".WT_I18N::translate('This family remained childless')."\" /> ".WT_I18N::translate('This family remained childless');
+		if ($nchi=="0") echo '<img src="'.$WT_IMAGES['childless'].'" alt="'.WT_I18N::translate('This family remained childless').'" title="'.WT_I18N::translate('This family remained childless').'" /> '.WT_I18N::translate('This family remained childless');
 		//else echo WT_I18N::translate('No children');
 		echo "</td></tr>";
 	}

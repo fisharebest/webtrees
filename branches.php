@@ -32,8 +32,8 @@ require './includes/session.php';
 
 //-- const
 $fact='MARR';
-define('WT_ICON_RINGS', '<img src="images/small/rings.gif" alt="'.translate_fact('MARR').'" title="'.translate_fact('MARR').'" />');
-define('WT_ICON_BRANCHES', "<img src=\"".$WT_IMAGES["patriarch"]."\" alt=\"\" align=\"middle\" />");
+define('WT_ICON_RINGS', '<img src="'.$WT_IMAGES['rings'].'" alt="'.translate_fact('MARR').'" title="'.translate_fact('MARR').'" />');
+define('WT_ICON_BRANCHES', '<img src="'.$WT_IMAGES['patriarch'].'" alt="" align="middle" />');
 
 //-- args
 $surn = safe_GET('surn', '[^<>&%{};]*');

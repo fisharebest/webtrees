@@ -40,18 +40,12 @@ $WT_USE_HELPIMG=false;
 $WT_MENU_LOCATION='top';
 
 $WT_IMAGES=array(
-	// use the common images for sex icons
-	'sex_f_15x15'=>'images/sex_f_15x15.gif',
-	'sex_f_9x9'=>'images/sex_f_9x9.gif',
-	'sex_m_15x15'=>'images/sex_m_15x15.gif',
-	'sex_m_9x9'=>'images/sex_m_9x9.gif',
-	'sex_u_15x15'=>'images/sex_u_15x15.gif',
-	'sex_u_9x9'=>'images/sex_u_9x9.gif',
 	// main icons
 	'admin'=>WT_THEME_DIR.'images/admin.gif',
 	'ancestry'=>WT_THEME_DIR.'images/ancestry.gif',
 	'calendar'=>WT_THEME_DIR.'images/calendar.gif',
 	'cfamily'=>WT_THEME_DIR.'images/cfamily.gif',
+	'childless'=>WT_THEME_DIR.'images/childless.gif',
 	'clippings'=>WT_THEME_DIR.'images/clippings.gif',
 	'descendant'=>WT_THEME_DIR.'images/descendancy.gif',
 	'edit_fam'=>WT_THEME_DIR.'images/edit_fam.gif',
@@ -83,11 +77,18 @@ $WT_IMAGES=array(
 	'relationship'=>WT_THEME_DIR.'images/relationship.gif',
 	'reports'=>WT_THEME_DIR.'images/reports.gif',
 	'repository'=>WT_THEME_DIR.'images/repository.gif',
+	'rings'=>WT_THEME_DIR.'images/rings.gif',
 	'search'=>WT_THEME_DIR.'images/search.gif',
+	'sex_f_15x15'=>WT_THEME_DIR.'images/sex_f_15x15.gif',
+	'sex_f_9x9'=>WT_THEME_DIR.'images/sex_f_9x9.gif',
+	'sex_m_15x15'=>WT_THEME_DIR.'images/sex_m_15x15.gif',
+	'sex_m_9x9'=>WT_THEME_DIR.'images/sex_m_9x9.gif',
+	'sex_u_15x15'=>WT_THEME_DIR.'images/sex_u_15x15.gif',
+	'sex_u_9x9'=>WT_THEME_DIR.'images/sex_u_9x9.gif',
 	'sfamily'=>WT_THEME_DIR.'images/sfamily.gif',
 	'source'=>WT_THEME_DIR.'images/source.gif',
 	'statistic'=>WT_THEME_DIR.'images/statistic.gif',
-	'target'=>'images/buttons/target.gif',
+	'target'=>WT_THEME_DIR.'images/buttons/target.gif',
 	'timeline'=>WT_THEME_DIR.'images/timeline.gif',
 	'tree'=>WT_THEME_DIR.'images/gedcom.gif',
 	// buttons for data entry pages

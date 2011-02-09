@@ -694,37 +694,37 @@ function media_icon_file($filename, $generateThumb = true, $overwrite = false) {
 	// $type is now: (url | local) _ (flv | picasa | image | pdf | document| audio | wmv | streetview |other)
 	switch ($type) {
 		case 'url_flv':
-			$thumb = isset($WT_IMAGES["media_flashrem"]) ? $WT_IMAGES["media_flashrem"] : 'images/media/flashrem.png';
+			$thumb = $WT_IMAGES['media_flashrem'];
 			break;
 		case 'local_flv':
-			$thumb = isset($WT_IMAGES["media_flash"]) ? $WT_IMAGES["media_flash"] : 'images/media/flash.png';
+			$thumb = $WT_IMAGES['media_flash'];
 			break;
 		case 'url_wmv':
-			$thumb = isset($WT_IMAGES["media_wmvrem"]) ? $WT_IMAGES["media_wmvrem"] : 'images/media/wmvrem.png';
+			$thumb = $WT_IMAGES['media_wmvrem'];
 			break;
 		case 'local_wmv':
-			$thumb = isset($WT_IMAGES["media_wmv"]) ? $WT_IMAGES["media_wmv"] : 'images/media/wmv.png';
+			$thumb = $WT_IMAGES['media_wmv'];
 			break;
 		case 'url_picasa':
-			$thumb = isset($WT_IMAGES["media_picasa"]) ? $WT_IMAGES["media_picasa"] : 'images/media/picasa.png';
+			$thumb = $WT_IMAGES['media_picasa'];
 			break;
 		case 'url_other':
-			$thumb = isset($WT_IMAGES["media_globe"]) ? $WT_IMAGES["media_globe"] : 'images/media/globe.png';
+			$thumb = $WT_IMAGES['media_globe'];
 			break;
 		case 'url_pdf':
 		case 'local_pdf':
-			$thumb = isset($WT_IMAGES["media_pdf"]) ? $WT_IMAGES["media_pdf"] : 'images/media/pdf.gif';
+			$thumb = $WT_IMAGES['media_pdf'];
 			break;
 		case 'url_document':
 		case 'local_document':
-			$thumb = isset($WT_IMAGES["media_doc"]) ? $WT_IMAGES["media_doc"] : 'images/media/doc.gif';
+			$thumb = $WT_IMAGES['media_doc'];
 			break;
 		case 'url_audio':
 		case 'local_audio':
-			$thumb = isset($WT_IMAGES["media_audio"]) ? $WT_IMAGES["media_audio"] : 'images/media/audio.png';
+			$thumb = $WT_IMAGES['media_audio'];
 			break;
 		default:
-			$thumb = $WT_IMAGES["media"];
+			$thumb = $WT_IMAGES['media'];
 	}
 	// Return an icon image
 	return $thumb;

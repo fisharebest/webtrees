@@ -330,8 +330,8 @@ elseif ($action=="setup") {
 		<tr><td class="descriptionbox width30 wrap"></td>
 		<td class="optionbox">
 		<table><tr>
-		<td><img src="<?php echo isset($WT_IMAGES["media_pdf"]) ? $WT_IMAGES["media_pdf"] : "images/media/pdf.gif"; ?>" alt="PDF" title="PDF" /></td>
-		<td><img src="<?php echo isset($WT_IMAGES["media_html"]) ? $WT_IMAGES["media_html"] : "images/media/html.gif"; ?>" alt="HTML" title="HTML" /></td>
+		<td><img src="<?php echo $WT_IMAGES["media_pdf"]; ?>" alt="PDF" title="PDF" /></td>
+		<td><img src="<?php echo $WT_IMAGES["media_html"]; ?>" alt="HTML" title="HTML" /></td>
 		</tr><tr>
 		<td><center><input type="radio" name="output" value="PDF" checked="checked" /></center></td>
 		<td><center><input type="radio" name="output" value="HTML" <?php if ($output=="HTML") echo " checked=\"checked\""; ?> /></center></td>
