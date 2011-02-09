@@ -113,7 +113,7 @@ echo
 	'</ul></li>';
 if (WT_USER_IS_ADMIN) {
 	echo
-		'<li><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="listusers" ? 'class="current" ' : ''), 'href="admin_users.php?action=listusers">',
+		'<li><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')!="cleanup"&& safe_GET('action')!="createform" ? 'class="current" ' : ''), 'href="admin_users.php">',
 		WT_I18N::translate('Users'),
 		'</a></li>',
 		'<li><ul>',

@@ -47,18 +47,12 @@ $ALL_EDIT_OPTIONS=array(
 	'admin' => /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Manager')
 );
 
-// Extract form actions (GET overrides POST if both set)
-$action                  =safe_POST('action',  $ALL_ACTIONS, 'listusers');
-$usrlang                 =safe_POST('usrlang', array_keys(WT_I18N::installed_languages()));
-$username                =safe_POST('username', WT_REGEX_USERNAME);
-$filter                  =safe_POST('filter'   );
-$ged                     =safe_POST('ged'      );
-
-$action                  =safe_GET('action',   $ALL_ACTIONS,                            $action);
-$usrlang                 =safe_GET('usrlang',  array_keys(WT_I18N::installed_languages()), $usrlang);
-$username                =safe_GET('username', WT_REGEX_USERNAME,                      $username);
-$filter                  =safe_GET('filter',   WT_REGEX_NOSCRIPT,                      $filter);
-$ged                     =safe_GET('ged',      WT_REGEX_NOSCRIPT,                      $ged);
+// Form actions
+$action                  =safe_GET('action',   $ALL_ACTIONS, 'listusers');
+$usrlang                 =safe_GET('usrlang',  array_keys(WT_I18N::installed_languages()));
+$username                =safe_GET('username', WT_REGEX_USERNAME);
+$filter                  =safe_GET('filter',   WT_REGEX_NOSCRIPT);
+$ged                     =safe_GET('ged',      WT_REGEX_NOSCRIPT);
 
 // Extract form variables
 $oldusername             =safe_POST('oldusername',     WT_REGEX_USERNAME);
@@ -293,17 +287,15 @@ case 'load1row':
 	exit;
 }
 
+print_header(WT_I18N::translate('User administration'));
 // Save new user info to the database
 if ($action=='createuser' || $action=='edituser2') {
 	if (($action=='createuser' || $action=='edituser2' && $username!=$oldusername) && get_user_id($username)) {
-		print_header(WT_I18N::translate('User administration'));
 		echo "<span class=\"error\">", WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), "</span><br />";
 	} elseif (($action=='createuser' || $action=='edituser2' && $emailaddress!=$oldemailaddress) && get_user_by_email($emailaddress)) {
-		print_header(WT_I18N::translate('User administration'));
 		echo "<span class=\"error\">", WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), "</span><br />";
 	} else {
 		if ($pass1!=$pass2) {
-			print_header(WT_I18N::translate('User administration'));
 			echo "<span class=\"error\">", WT_I18N::translate('Passwords do not match.'), "</span><br />";
 		} else {
 			// New user
@@ -383,13 +375,9 @@ if ($action=='createuser' || $action=='edituser2') {
 				$message["method"]="messaging2";
 				addMessage($message); */
 			}
-			// Reload the form cleanly, to allow the user to verify their changes
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?action=edituser&username=".rawurlencode($username)."&ged=".rawurlencode($ged));
-			exit;
 		}
 	}
 } else {
-	print_header(WT_I18N::translate('User administration'));
 	if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
 	}
@@ -445,8 +433,7 @@ if ($action=="edituser") {
 	//-->
 	</script>
 
-	<form name="editform" method="post" action="admin_users.php" onsubmit="return checkform(this);" autocomplete="off">
-		<input type="hidden" name="action" value="edituser2" />
+	<form name="editform" method="post" action="admin_users.php?action=edituser2" onsubmit="return checkform(this);" autocomplete="off">
 		<input type="hidden" name="filter" value="<?php echo $filter; ?>" />
 		<input type="hidden" name="usrlang" value="<?php echo $usrlang; ?>" />
 		<input type="hidden" name="oldusername" value="<?php echo $username; ?>" />
@@ -780,8 +767,7 @@ if ($action == "createform") {
 	//-->
 	</script>
 
-	<form name="newform" method="post" action="admin_users.php?action=listusers" onsubmit="return checkform(this);" autocomplete="off">
-		<input type="hidden" name="action" value="createuser" />
+	<form name="newform" method="post" action="admin_users.php?action=createuser" onsubmit="return checkform(this);" autocomplete="off">
 		<!--table-->
 		<table id="adduser">
 			<tr>
@@ -935,8 +921,7 @@ if ($action == "createform") {
 //NOTE: WORKING
 if ($action == "cleanup") {
 	?>
-	<form name="cleanupform" method="post" action="admin_users.php&action=cleanup">
-	<input type="hidden" name="action" value="cleanup2" />
+	<form name="cleanupform" method="post" action="admin_users.php&action=cleanup2">
 	<table id="clean" class="<?php echo $TEXT_DIRECTION; ?>">
 	<?php
 	// Check for idle users
@@ -998,7 +983,7 @@ if ($action == "cleanup") {
 	if ($ucnt >0) {
 		?><input type="submit" value="<?php echo WT_I18N::translate('Continue'); ?>" />&nbsp;&nbsp;<?php
 	} ?>
-	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_users.php?action=listusers';"/>
+	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_users.php';"/>
 	</p>
 	</form><?php
 	print_footer();
