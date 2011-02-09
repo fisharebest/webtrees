@@ -142,7 +142,7 @@ case 'loadrows':
 	}
 	
 	$sql=
-		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, us1.setting_value, us2.setting_value, us2.setting_value, us3.setting_value, us3.setting_value, us4.setting_value, us5.setting_value".
+		"SELECT SQL_CACHE SQL_CALC_FOUND_ROWS '', u.user_id, user_name, real_name, email, '', us1.setting_value, us2.setting_value, us2.setting_value, us3.setting_value, us3.setting_value, us4.setting_value, us5.setting_value".
 		" FROM `##user` u".
 		" LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name='language')".
 		" LEFT JOIN `##user_setting` us2 ON (u.user_id=us2.user_id AND us2.setting_name='reg_timestamp')".
@@ -160,23 +160,29 @@ case 'loadrows':
 	foreach ($aaData as &$aData) {
 		// $aData[0] is a dummy column for the expand-details icon
 		// $aData[1] is the user ID
-		$aData[2]=edit_field_inline('user-user_name-'.$aData[1], $aData[2]);
-		$aData[3]=edit_field_inline('user-real_name-'.$aData[1], $aData[3]);
-		$aData[4]=edit_field_inline('user-email-'.    $aData[1], $aData[4]);
-		$aData[5]=edit_field_language_inline('user_setting-langugage-'.$aData[1], $aData[5]);
-		// $aData[6] is the sortable registration timestamp
-		$aData[7]=format_timestamp($aData[7]);
-		if (date("U") - $aData[6] > 604800 && !$aData[10]) {
-			$aData[7]='<span class="red">'.$aData[7].'</span>';
+		$user_id=$aData[1];
+		$user_name=$aData[2];
+		$aData[2]=edit_field_inline('user-user_name-'.$user_id, $aData[2]);
+		$aData[3]=edit_field_inline('user-real_name-'.$user_id, $aData[3]);
+		$aData[4]=edit_field_inline('user-email-'.    $user_id, $aData[4]);
+		// $aData[5] is a link to an email icon
+		$aData[5]='<div class="icon-email" onclick="return message(\''.$user_name.'\');"></div>';
+		$aData[6]=edit_field_language_inline('user_setting-langugage-'.$user_id, $aData[6]);
+		// $aData[7] is the sortable registration timestamp
+		$aData[8]=format_timestamp($aData[8]);
+		if (date("U") - $aData[7] > 604800 && !$aData[11]) {
+			$aData[8]='<span class="red">'.$aData[8].'</span>';
 		}
-		// $aData[8] is the sortable last-login timestamp
-		if ($aData[8]) {
-			$aData[9]=format_timestamp($aData[8]).'<br />'.WT_I18N::time_ago(time() - $aData[8]);
+		// $aData[9] is the sortable last-login timestamp
+		if ($aData[9]) {
+			$aData[10]=format_timestamp($aData[9]).'<br />'.WT_I18N::time_ago(time() - $aData[9]);
 		} else {
-			$aData[9]=WT_I18N::translate('Never');
+			$aData[10]=WT_I18N::translate('Never');
 		}
-		$aData[10]=edit_field_yes_no_inline('user_setting-verified-'.         $aData[1], $aData[10]);
-		$aData[11]=edit_field_yes_no_inline('user_setting-verified_by_admin-'.$aData[1], $aData[11]);
+		$aData[11]=edit_field_yes_no_inline('user_setting-verified-'.         $user_id, $aData[11]);
+		$aData[12]=edit_field_yes_no_inline('user_setting-verified_by_admin-'.$user_id, $aData[12]);
+		// Add extra column for "delete" action
+		$aData[13]='<div class="icon-delete" onclick="alert(\''.'EEK'.'\');"></div>';
 	}
 	
 	// Total filtered/unfiltered rows
@@ -645,13 +651,15 @@ echo WT_JS_START;
 				/* user_name         */ null,
 				/* real_name         */ null,
 				/* email             */ null,
+				/* email link        */ null,
 				/* language          */ null,
 				/* registered (sort) */ { bVisible:false },
 				/* registered        */ { iDataSort:6 },
 				/* last_login (sort) */ { bVisible:false },
 				/* last_login        */ { iDataSort:8 },
 				/* verified          */ null,
-				/* approved          */ null
+				/* approved          */ null,
+				/* delete            */ { bSortable:false }
 			]
 		});
 		
@@ -686,7 +694,7 @@ if ($action == "listusers") {
 					'<th> user-id</th>',
 					'<th>', WT_I18N::translate('User name'), '</th>',
 					'<th>', WT_I18N::translate('Real name'), '</th>',
-					'<th>', WT_I18N::translate('Email'), '</th>',
+					'<th colspan="2">', WT_I18N::translate('Email'), '</th>',
 					'<th>', WT_I18N::translate('Language'), '</th>',
 					'<th> date_registered </th>',
 					'<th>', WT_I18N::translate('Date registered'), '</th>',
@@ -694,6 +702,7 @@ if ($action == "listusers") {
 					'<th>', WT_I18N::translate('Last logged in'), '</th>',
 					'<th>', WT_I18N::translate('Verified'), '</th>',
 					'<th>', WT_I18N::translate('Approved'), '</th>',
+					'<th></th>',
 				'</tr>',
 			'</thead>',
 			'<tbody>',
