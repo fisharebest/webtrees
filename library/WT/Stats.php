@@ -901,7 +901,7 @@ class WT_Stats {
 			." FROM `##dates`"
 			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1=("
 			." SELECT {$dmod}( d_julianday1 )"
-			." FROM `wt_dates`"
+			." FROM `##dates`"
 			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )"
  			." LIMIT 1"
 
