@@ -47,7 +47,7 @@ define('WT_GM_DB_SCHEMA_1_2', '');
 try {
 	WT_DB::exec(
 		"ALTER TABLE `##placelocation` ADD (".
-		" pl_media      VARCHAR(30)     NULL,".
+		" pl_media      VARCHAR(60)     NULL,".
 		" sv_long       VARCHAR(30)     NULL,".
 		" sv_lati       VARCHAR(30)     NULL,".
 		" sv_bearing    FLOAT           NULL,".
