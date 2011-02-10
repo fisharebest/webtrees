@@ -31,25 +31,26 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-//start Clouds unique code
-echo "</div>"; // Close table started in toplinks.html
-echo "<br />";echo "<br />";echo "<br />";
-echo "<div id=\"footer\" class=\"$TEXT_DIRECTION\">";
-echo "\n\t<br /><div align=\"center\" style=\"width:99%;\">";
-echo contact_links();
-echo "\n\t<br />";
-echo '<br /><a href="', WT_WEBTREES_URL, '" target="_blank"><img src="', $WT_IMAGES['webtrees'], '" width="100" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '" title="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '" /></a><br />';
-echo "\n\t<br />";
 
-
-if ($SHOW_STATS || WT_DEBUG) {
-    echo execution_stats();
-}
+echo '</div>';
+// closing div id=\"content\"
+echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
 echo "<br />";
-if (exists_pending_change()) {
-	echo "<br /><a href=\"javascript:;\" onclick=\"window.open('edit_changes.php', '_blank', 'width=600, height=500, resizable=1, scrollbars=1'); return false;\">", WT_I18N::translate('There are pending changes for you to moderate.'), "</a>";
-}
-echo "</div>";
-echo "</div> <!-- close div id=\"footer\" -->\n";
-echo "</div> <!-- close div id=\"rapcontainer\" -->\n";
+	echo contact_links();
+	echo "<br />";
+	echo
+		'<p class="logo">',
+			'<a href="', WT_WEBTREES_URL, '" target="_blank">',
+			'<img src="', $WT_IMAGES['webtrees'], '" width="100" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '"',
+				' title="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "" , '" /></a>',
+		'</p>';
+	if ($SHOW_STATS || WT_DEBUG) {
+				echo execution_stats();
+	}
+	if (exists_pending_change()) {
+		echo '<a href="javascript:;" onclick="window.open(\'edit_changes.php\', \'_blank\', \'width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
+			echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
+		echo '</a>';
+	}
+	echo '</div>'; // close div id=\"footer\"
 ?>

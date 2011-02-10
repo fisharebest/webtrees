@@ -1832,3 +1832,11 @@ td.descriptionbox  a {
 	width: 20px;
 	float: left;
 }
+
+.place {
+	padding-top: 5px;
+}
+
+.logo {
+	text-align: center;
+}
