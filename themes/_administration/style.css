@@ -66,6 +66,7 @@ td {vertical-align:top;}
 /* jQuery.datatable styling over-rides */
 .odd {background-color:#dfd;}
 .even {background-color:#efe;}
+.fg-button {padding:2px 6px;}
 
 /* Drag-n-drop sorting for modules, etc. */
 .sortme {cursor:move;}
