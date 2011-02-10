@@ -131,7 +131,7 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 
 // Update placelocation STREETVIEW fields ----------------------------------------------------------
 if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {	
-	echo "Streetview parameters updated";
+	echo "Google Street View parameters updated";
 	echo "<br /><br />";
 	echo "LATI = ".$_REQUEST['svlati']."<br />";
 	echo "LONG = ".$_REQUEST['svlong']."<br />";

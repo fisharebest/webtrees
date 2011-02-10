@@ -612,7 +612,7 @@ function build_indiv_map($indifacts, $famids) {
 		
 		
 		// *** ENABLE STREETVIEW *** (boolean) ======================================================
-		$STREETVIEW=get_module_setting('googlemap', 'USE_STREETVIEW');
+		$STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		// =========================================================================================
 		
 		// === Include css and js files ============================================================

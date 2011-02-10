@@ -207,7 +207,7 @@ if ($action=="update" && !isset($security_user)) {
 		</td>
 	</tr>
 	<tr>
-		<th><?php echo WT_I18N::translate('Enable StreetView'), help_link('STREETVIEW_ENABLE','googlemap'); ?></th>
+		<th><?php echo WT_I18N::translate('Enable Google Street View'), help_link('STREETVIEW_ENABLE','googlemap'); ?></th>
 		<td><?php echo edit_field_yes_no('NEW_GM_USE_STREETVIEW', get_module_setting('googlemap', 'GM_USE_STREETVIEW')); ?></td>
 	</tr>
 	<tr>
