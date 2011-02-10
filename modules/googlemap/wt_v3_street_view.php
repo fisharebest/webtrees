@@ -352,9 +352,12 @@ google.maps.event.addDomListener(window, 'load', initialize);
   	#butt0 {
   		width:105px;
   	}
-  	#butt1, #butt2 {
+  	#butt1{
+  		width:120px;
+  	}  	  	
+	#butt2 {
   		width:90px;
-  	}
+  	}  	
   	#mapCanvas {
     	width: 520px;
     	height: 350px;
@@ -363,7 +366,6 @@ google.maps.event.addDomListener(window, 'load', initialize);
 		border:1px solid black;
     	// float: left;
   	}
-
   	#infoPanel {
   		display: none;
     	margin: 0 auto;
