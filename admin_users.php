@@ -586,7 +586,6 @@ case 'createform':
 			</tr>
 				<td colspan="4">
 					<input type="submit" value="<?php echo WT_I18N::translate('Create User'); ?>" />
-					<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_users.php?action=listusers;"/>
 				</td>
 			</tr>	
 		</table>
@@ -767,7 +766,7 @@ default:
 					/* last_login        */ { iDataSort:9 },
 					/* verified          */ { sClass:"center" },
 					/* approved          */ { sClass:"center" },
-					/* delete            */ { bSortable:false, sClass:"icon-delete" }
+					/* delete            */ { bSortable:false }
 				]
 			});
 			
