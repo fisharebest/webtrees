@@ -380,25 +380,18 @@ print_header(WT_I18N::translate('Family tree configuration'));
 if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
 }
-?>
-<script type="text/javascript">
-//<![CDATA[
-  jQuery(document).ready(function() {
-  jQuery("#tabs").tabs();
-  });
-//]]>
-</script>
-<script type="text/javascript">
-<!--
+
+echo WT_JS_START;?>
+	jQuery(document).ready(function() {
+		jQuery("#tabs").tabs();
+	});
 	var pastefield;
 	function paste_id(value) {
 		pastefield.value=value;
 	}
-//-->
-</script>
+<?php echo WT_JS_END; ?>
 
-	<form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
-
+<form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 <input type="hidden" name="action" value="update" />
 <?php
 	if (!empty($error_msg)) echo "<br /><span class=\"error\">".$error_msg."</span><br />";
@@ -1700,6 +1693,9 @@ if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple
 				</tr>
 			</table>
 		</td>
+	</tr>
+	</div>
+	</td>
 	</tr>
 </table>
 </form>

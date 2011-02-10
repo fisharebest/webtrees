@@ -35,6 +35,8 @@ legend {font-style:italic; font-weight:bold;	padding:0 5px 5px; align:top;}
 img {border:none; vertical-align:middle;}
 h3 {margin:0}
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
+html[dir='rtl'] .css_right {float:left;}
+td {vertical-align:top;}
 .icon {border:none;	padding-left:0pt;padding-right:5pt;}
 .warning, .error, .red {font-weight:bold; color:red;}
 .accepted {font-weight:bold; color:green;}
@@ -44,14 +46,26 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 .nowrap {white-space:nowrap;}
 .indent {padding-left:15px;}
 .parentdeath {border:thin solid red; padding:1px;}
+
+/* jQuery styling over-rides */
 .ui-widget-content a {text-decoration:none;}
 .ui-widget-content a.current {color:#E17009; font-weight:bold;}
 .ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:red; cursor:hand; cursor:pointer;}
 .ui-widget-header {padding:5px;}
 .ui-progressbar-value {height:60%!important;}
+.ui-accordion .ui-accordion-content-active {display:block;}
 .css_right {float:right;}
-html[dir='rtl'] .css_right {float:left;}
-td {vertical-align:top;}
+
+/* jEditable styling over-rides */
+.editable {width:100%; display:block}
+.editable:hover {color:red; cursor:pointer; cursor:hand;} /* both cursors needed for cross-browser support */
+.editable input, select {padding:0;}
+.editable input {font-size: 90%; height:18px !important;}
+.editable button {font-size:85%; padding:0;}
+
+/* jQuery.datatable styling over-rides */
+.odd {background-color:#dfd;}
+.even {background-color:#efe;}
 
 /* Drag-n-drop sorting for modules, etc. */
 .sortme {cursor:move;}
@@ -114,18 +128,17 @@ html[dir='rtl'] #tree_stats th, html[dir='rtl'] #recent th {padding:0 0 0 10px; 
 html[dir='rtl'] #tree_stats td, #recent td {padding:0 0 0 10px; text-align:left;}
 #tree_stats .ui-accordion-content, #recent2 .ui-accordion-content {padding:1em; min-height:140px;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
-.ui-accordion .ui-accordion-content-active {display:block;}
 #trees span, #recent2 span {text-decoration:underline;}
 
 /*SERVER CONFIG */
-.editable {width:100%; display:block}
-.editable:hover {color:red; cursor:pointer; cursor:hand;} /* both cursors needed for cross-browser support */
-.editable input, select {padding:0;}
-table.site_config {background:OldLace; border-collapse:separate; border-spacing:0; border:1px inset #D9D6C4; padding:10px; margin:0 10px;}
-.site_config th {text-align:left; padding:0 0 1px 3px;font-size:105%;} /* sub-headings, both cols */
-.site_config th+th { font-style:italic;font-size:95%;} /* sub-headings, right col */
-.site_config td {white-space:normal;padding:3px 3px 3px 30px;} /* left-col */
-.site_config td+td {background-color:#dcdcdc; border-bottom:1px solid OldLace; width:250px; padding:3px;} /* right/col */
+#tabs {width:100%}
+#site table, #mail table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
+
+/*table.site_config {background:OldLace; border:1px inset #D9D6C4; padding:10px; margin:0 10px;}*/
+.site_config h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}
+.site_config dl {float:left;margin:0 0 0 20px;line-height:21px;}
+.site_config dt {clear: left; float: left; min-width: 370px; margin: 0; padding: 5px 5px 5px 0; border-bottom: 1px solid #999; font-weight: bold;}
+.site_config dd {border-bottom: 1px solid #999; margin-left: 370px; min-width: 370px; padding: 5px;}
 
 /*SITE LOGS */
 table.site_logs {background:OldLace; border-collapse:separate; border-spacing:0; border:1px inset #D9D6C4; margin:10px;}
@@ -194,37 +207,28 @@ table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 /* USER LIST */
 table#list  {width:100%}
 #list img {padding-left:15px; width:25px; vertical-align:middle;}
-#list img.open {width:11px;}
-#list .yes_no img {width:16px; vertical-align:middle;}
-#list .name {padding-right:5px;}
-#list .description {font-size:10px;	color:#666666;	width:35%;}
-.ui-widget-content #list a.icon-edit {padding-left:20px;}
-#list .icon-edit {display:inline;}
-#list div.icon-email, #list div.icon-delete {margin:auto;}
-.dataTables_paginate {float:right;text-align:right;}
-.paging_full_numbers .fg-button {cursor:pointer;padding:2px 6px;}
+#access img {width:11px;}
+#list h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}
+#list dl {float:left;margin:0 0 0 20px;line-height:21px;}
+#list dt {clear: left; float: left; min-width: 300px; margin: 0; padding: 5px 5px 5px 0; border-bottom: 1px solid #999; font-weight: bold;}
+#list dd {border-bottom: 1px solid #999; margin-left: 300px; min-width: 300px; padding: 5px;}
+#access {float:left; margin-left:20px;}
+#access table {margin-bottom:20px;}
+#access th {background-color:#dcdcdc; text-align:left; padding:0; font-size:100%; white-space:nowrap;}
+#access td, #access td+td, #access td+td+td, #access td+td+td+td {background-color:#eceadf; padding:0;width:auto;}
+#access td+td+td+td {text-align:center;}
 td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
-.edit_link {white-space:nowrap;}
-.details td {border-right:1px solid #808080; padding-right:20px;}
-.details th {font-weight:bold; vertical-align:top; padding-left:20px;}
-.details ul {margin:0; padding:0 0 0 20px;}
-.odd {background-color:#dfd;}
-.even {background-color:#efe;}
 #list_length {float:left;}
 #list_filter {float:right;}
 #list_info {float:left;}
 #list_paginate {float:right;}
-#user-list_length {float:left;}
-#user-list_filter {float:right;}
-#user-list_info {float:left;}
-#user-list_paginate {float:right;}
 
 /* USER ADD & EDIT */
 table#adduser  {width:100%;}
 #adduser th {text-align:left; padding:30px 0 1px 3px;font-size:105%;}
 #adduser td, #adduser td+td+td {background-color:#eceadf;white-space:normal;padding:3px 3px 3px 10px;width:25%;} /* left-cols */
 #adduser td+td, #adduser td+td+td+td {background-color:#dcdcdc; width:250px; padding:3px;} /* right-cols */
-table#adduser2  {margin-left:30px; margin-bottom:20px; width:90%;}
+table#adduser2  {margin-left:30px; margin-bottom:20px; width:100%;}
 #adduser2 th {background-color:#dcdcdc; text-align:left; padding:0;font-size:100%;white-space:nowrap;}
 #adduser2 td, #adduser2 td+td, #adduser2 td+td+td, #adduser2 td+td+td+td {background-color:#eceadf; padding:0;width:auto;}
 #adduser2 td+td+td+td {text-align:center;}

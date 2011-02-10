@@ -201,8 +201,8 @@ case 'load1row':
 	// Generate an AJAX response for datatables to load expanded row
 	$user_id=(int)safe_GET('user_id');
 	header('Content-type: text/html; charset=UTF-8');
-	echo '<h1>', WT_I18N::translate('Details'), '</h1>';
 	echo '<dl>';
+	echo '<h2>', WT_I18N::translate('Details'), '</h2>';
 	echo '<dt>', WT_I18N::translate('Administrator'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-canadmin-'.$user_id, get_user_setting($user_id, 'canadmin')), '</dd>';
 
@@ -233,12 +233,13 @@ case 'load1row':
 	echo '<dt>', WT_I18N::translate('Date'), '</dt>';
 	echo '<dd>', edit_field_inline('user_setting-commentexp-'.$user_id, get_user_setting($user_id, 'admin_comment')), '</dd>';
 	echo '</dd>';
-
-	echo '<h1>', WT_I18N::translate('Family tree access and settings'), '</h1>';
+	echo '</dl>';
 
 	// Column One - details
 
 	echo
+		'<div id="access">',
+		'<h2>', WT_I18N::translate('Family tree access and settings'), '</h2>',
 		'<table><tr>',
 		'<th>', WT_I18N::translate('Family tree'), '</th>',
 		'<th>', WT_I18N::translate('Pedigree chart root person'), help_link('useradmin_rootid'), '</th>',
@@ -283,7 +284,7 @@ case 'load1row':
 	}
 	echo '</table>';
 
-	echo '</td></tr></table>';
+	echo '</td></tr></table></div>';
 	exit;
 }
 
@@ -707,7 +708,7 @@ default:
 		'<table id="list">',
 			'<thead>',
 				'<tr>',
-					'<th style="margin:0 -2px 1px 1px; padding:3px 0 4px;"> </th>',
+					'<th style="margin:0 -2px 1px 1px; padding:6px 0 5px;"> </th>',
 					'<th> user-id </th>',
 					'<th>', WT_I18N::translate('User name'), '</th>',
 					'<th>', WT_I18N::translate('Real name'), '</th>',
@@ -720,7 +721,7 @@ default:
 					'<th>', WT_I18N::translate('Last logged in'), '</th>',
 					'<th>', WT_I18N::translate('Verified'), '</th>',
 					'<th>', WT_I18N::translate('Approved'), '</th>',
-					'<th> </th>',
+					'<th style="margin:0 -2px 1px 1px; padding:3px 0 4px;"> </th>',
 				'</tr>',
 			'</thead>',
 			'<tbody>',
@@ -764,9 +765,9 @@ default:
 					/* registered        */ { iDataSort:7 },
 					/* last_login (sort) */ { bVisible:false },
 					/* last_login        */ { iDataSort:9 },
-					/* verified          */ null,
-					/* approved          */ null,
-					/* delete            */ { bSortable:false }
+					/* verified          */ { sClass:"center" },
+					/* approved          */ { sClass:"center" },
+					/* delete            */ { bSortable:false, sClass:"icon-delete" }
 				]
 			});
 			
