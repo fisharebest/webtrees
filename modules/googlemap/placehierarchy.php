@@ -166,12 +166,16 @@ function set_levelm($level, $parent) {
 function create_map() {
 	$level = safe_GET('level');
 	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $TEXT_DIRECTION;
-	// global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $TEXT_DIRECTION;
+	
+	// *** ENABLE STREETVIEW *** (boolean) =========================================================
+	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
+	// =============================================================================================
+		
 	// create the map
 	echo "<table class=\" center\" style=\"margin-top:0px;\"><tr valign=\"top\"><td style=\"background:none;\">";
 	//<!-- start of map display -->
 	echo "\n<br /><br />\n";
-	echo "<table style=\"margin-top:-31px;\"><tr valign=\"top\">";
+	echo "<table style=\"margin-top:-32px;\"><tr valign=\"top\">";
 	if ($level>=1) {
 		echo "<td class=\"center\" width=\"200px\" style=\"background:none; padding-top:26px; padding-bottom:0px;\">";
 	} else {
@@ -186,7 +190,7 @@ function create_map() {
 	
 	} else {
 	
-		if ($latlng[0]['sv_lati']==null && WT_USER_IS_ADMIN) {		
+		if ($latlng[0]['sv_lati']==null && WT_USER_IS_ADMIN && $STREETVIEW) {		
 			?>
 			<style>
   			#warning {
@@ -250,11 +254,6 @@ function create_map() {
 
 	echo "</td>";
 	echo "<td style=\"margin-left:15; padding-top: 7px; float:right; \">";
-
-	
-	// *** ENABLE STREETVIEW *** (boolean) ==========================================================
-	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
-	// =============================================================================================
 	
 	if ($STREETVIEW) {
 	?>
