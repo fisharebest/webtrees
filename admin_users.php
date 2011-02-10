@@ -161,7 +161,9 @@ case 'loadrows':
 		$aData[3]=edit_field_inline('user-real_name-'.$user_id, $aData[3]);
 		$aData[4]=edit_field_inline('user-email-'.    $user_id, $aData[4]);
 		// $aData[5] is a link to an email icon
-		$aData[5]='<div class="icon-email" onclick="return message(\''.$user_name.'\');"></div>';
+		if ($user_id != WT_USER_ID) {
+			$aData[5]='<div class="icon-email" onclick="return message(\''.$user_name.'\');"></div>';
+		}
 		$aData[6]=edit_field_language_inline('user_setting-langugage-'.$user_id, $aData[6]);
 		// $aData[7] is the sortable registration timestamp
 		$aData[8]=format_timestamp($aData[8]);
