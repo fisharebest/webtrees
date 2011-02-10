@@ -24,7 +24,8 @@
  *
  * @package webtrees
  * @subpackage Googlemap
- * @author Łukasz Wileński <wooc@users.sourceforge.net>
+ * @author Brian Holland (for v3 googlemaps version at webtrees)
+ *
  * $Id$
  */
 
