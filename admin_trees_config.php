@@ -1694,9 +1694,6 @@ echo WT_JS_START;?>
 			</table>
 		</td>
 	</tr>
-	</div>
-	</td>
-	</tr>
 </table>
 </form>
 <?php
