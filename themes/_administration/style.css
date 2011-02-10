@@ -215,10 +215,11 @@ table#list  {width:100%}
 #list dd {border-bottom: 1px solid #999; margin-left: 300px; min-width: 300px; padding: 5px;}
 #access {float:left; margin-left:20px;}
 #access table {margin-bottom:20px;}
-#access th {background-color:#dcdcdc; text-align:left; padding:0; font-size:100%; white-space:nowrap;}
+#access th {background-color:#dcdcdc; text-align:center; padding:0; font-size:100%; min-width:150px;}
 #access td, #access td+td, #access td+td+td, #access td+td+td+td {background-color:#eceadf; padding:0;width:auto;}
 #access td+td+td+td {text-align:center;}
 td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
+td.details:hover {color: black;}
 #list_length {float:left;}
 #list_filter {float:right;}
 #list_info {float:left;}
