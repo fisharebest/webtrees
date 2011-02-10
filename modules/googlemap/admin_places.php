@@ -57,7 +57,7 @@ function place_id_to_hierarchy($id) {
 	return $arr;
 }
 
-// NB This function exists in both places.php and places_edit.php
+// NB This function exists in both admin_places.php and places_edit.php
 function getHighestIndex() {
 	return (int)WT_DB::prepare("SELECT MAX(pl_id) FROM `##placelocation`")->fetchOne();
 }
@@ -517,12 +517,12 @@ function showchanges() {
 }
 
 function edit_place_location(placeid) {
-	window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=700, height=550, resizable=1, scrollbars=1');
+	window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=600, height=650, resizable=1, scrollbars=1');
 	return false;
 }
 
 function add_place_location(placeid) {
-	window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=700, height=550, resizable=1, scrollbars=1');
+	window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=600, height=650, resizable=1, scrollbars=1');
 	return false;
 }
 

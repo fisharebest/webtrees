@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 
 // Create GM tables, if not already present
 try {
-	WT_DB::updateSchema('./modules/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 1);
+	WT_DB::updateSchema('./modules/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 2);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
@@ -42,10 +42,7 @@ try {
 
 // TODO: it will be more efficient to fetch all GM_% settings in a single DB query
 global $GOOGLEMAP_ENABLED;
-$GOOGLEMAP_ENABLED     = get_module_setting('googlemap', 'GM_ENABLED',     '0'); // Enable or disable Googlemap
-
-global $GOOGLEMAP_API_KEY;
-$GOOGLEMAP_API_KEY     = get_module_setting('googlemap', 'GM_API_KEY',     'Fill in your key here. Request key from http://code.google.com/apis/maps/signup.html');  // Fill in your key here. Request key from http://code.google.com/apis/maps/signup.html
+$GOOGLEMAP_ENABLED     = WT_DB::prepare("SELECT status FROM `##module` WHERE module_name='googlemap'")->execute()->fetchOne()=='enabled'; // Enable or disable Googlemap
 
 global $GOOGLEMAP_MAP_TYPE;
 $GOOGLEMAP_MAP_TYPE    = get_module_setting('googlemap', 'GM_MAP_TYPE',    'G_NORMAL_MAP');  // possible values: G_PHYSICAL_MAP, G_NORMAL_MAP, G_SATELLITE_MAP or G_HYBRID_MAP.

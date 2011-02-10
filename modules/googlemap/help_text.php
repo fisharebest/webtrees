@@ -42,11 +42,6 @@ case 'GOOGLEMAP_ENABLE':
 	$text=WT_I18N::translate('Using this option the functionality of the Googlemap can be enabled or disabled.<br />When disabled the Map-tab on the individual page is still shown, but will be left empty. The configuration link for administrators is still available. When disabled the Place Hierarchy has standard show.');
 	break;
 
-case 'GOOGLEMAP_API_KEY':
-	$title=WT_I18N::translate('Google-map API key');
-	$text=/* I18N: %s is a URL */ WT_I18N::translate('Insert your Google Maps API key here.  You can request a key from %s', '<a target="_blank" href="http://code.google.com/apis/maps/signup.html">http://code.google.com/apis/maps/signup.html</a>');
-	break;
-
 case 'GOOGLEMAP_MAP_TYPE':
 	$title=WT_I18N::translate('Google-map type');
 	$text=WT_I18N::translate('The type of map that will be shown by default. This can be Map, Satellite, Hybrid or Terrain.');

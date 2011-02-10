@@ -3,7 +3,7 @@
  * Displays a place hierachy
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
@@ -58,7 +58,7 @@ if ($display=="hierarchy") print_header(WT_I18N::translate('Place hierarchy'));
 else print_header(WT_I18N::translate('Place List'));
 
 echo "\n\t<div class=\"center\">";
-if ($display=="hierarchy") echo "<h2>", WT_I18N::translate('Place hierarchy'), "</h2>\n\t";
+if ($display=="hierarchy") echo "<h2>", WT_I18N::translate('Place hierarchy'), " - ", $parent[$level-1],"</h2>\n\t";
 else echo "<h2>", WT_I18N::translate('Place List'), "</h2>\n\t";
 
 // Make sure the "parent" array has no holes
@@ -112,6 +112,8 @@ if ($display=="hierarchy") {
 	if ($numfound==0) {
 		$action="show";
 	}
+	
+	echo '<link type="text/css" href="modules/googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
 
 	// -- echo the breadcrumb hierarchy
 	$numls=0;
@@ -269,7 +271,7 @@ if ($display=="hierarchy") {
 				//-->
 				</script>
 				<?php
-				echo "</td><td style=\"margin-left:15; vertical-align: top;\">";
+				echo "</td><td style=\"margin-left:30; vertical-align: top;\">";
 			}
 		}
 	}
@@ -296,11 +298,12 @@ if ($display=="hierarchy") {
 	// -- echo the array
 	foreach ($placelist as $key => $value) {
 		if ($i==0) {
-			echo "\n\t<table class=\"list_table $TEXT_DIRECTION\"";
+			echo "\n\t<table id=\"place_hierarchy\" class=\"list_table $TEXT_DIRECTION\" ";
 			if ($TEXT_DIRECTION=="rtl") {
 				echo " dir=\"rtl\"";
 			}
-			echo ">\n\t\t<tr>\n\t\t<td class=\"list_label\" ";
+			echo ">\n\t\t<tr>\n\t\t";
+			echo"<br /><td class=\"list_label\" ";
 			if ($ct1 > 20) {
 				echo "colspan=\"3\"";
 			} elseif ($ct1 > 4) {
