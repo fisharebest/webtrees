@@ -3,7 +3,7 @@
 * Various functions used by the Edit interface
 *
 * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
 * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -44,7 +44,7 @@ function edit_field_inline($name, $value) {
 	return
 		'<span class="editable" id="' . $name . '">' . htmlspecialchars($value) . '</span>' .
 		WT_JS_START .
-		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"' . WT_I18N::translate('OK') . '", style:"inherit"})' .
+		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('Click to edit').'"})' .
 		WT_JS_END;
 }
 
@@ -94,7 +94,7 @@ function select_edit_control_inline($name, $values, $empty, $selected, $extra=''
 		(array_key_exists($selected, $values) ? htmlspecialchars($values[$selected]) : '').
 		'</span>' .
 		WT_JS_START .
-		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"' . WT_I18N::translate('OK') . '", style:"inherit", callback:function(value, settings) {jQuery(this).html(settings.data[value]);} })' .
+		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", callback:function(value, settings) {jQuery(this).html(settings.data[value]);} })' .
 		WT_JS_END;
 }
 
