@@ -147,7 +147,7 @@ if ($view!='simple') {
 
 	echo '<div>',
 		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
-		'<table id="topMenu" width="100%">',
+		'<table id="topMenu">',
 			'<tr>';
 				$menu=WT_MenuBar::getGedcomMenu();
 				if ($menu) {

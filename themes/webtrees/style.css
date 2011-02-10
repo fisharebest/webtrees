@@ -552,7 +552,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	color: #555555;
 	text-decoration: none;
 	font: 11px tahoma, arial, helvetica, sans-serif;
-	text-align: center;
+
 	padding: 1px;
 }
 
@@ -560,7 +560,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	color: black;
 	text-decoration: none;
 	font: 11px tahoma, arial, helvetica, sans-serif;
-	text-align: center;
+
 	padding: 1px;
 }
 
@@ -1688,4 +1688,8 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 
 .logo {
 	text-align: center;
+}
+#topMenu {
+	margin-left:5%;
+	width:100%;
 }
