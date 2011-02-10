@@ -202,15 +202,15 @@
             	document.tabLayerSV = eval('document.getElementById("SV")');
             	document.tabLayerSV.style.background = "#cccccc";
             	document.tabLayerSV.style.paddingBottom = "0px";
-            	document.tabLayerPH = eval('document.getElementById("PH")');
-            	document.tabLayerPH.style.background = "#cccccc";
-            	document.tabLayerPH.style.paddingBottom = "0px";
+            //	document.tabLayerPH = eval('document.getElementById("PH")');
+            //	document.tabLayerPH.style.background = "#cccccc";
+            //	document.tabLayerPH.style.paddingBottom = "0px";
             	document.panelLayer1 = eval('document.getElementById("pane1")');
             	document.panelLayer1.style.display = "block";
             	document.panelLayer2 = eval('document.getElementById("pane2")');
             	document.panelLayer2.style.display = "none";
-            	document.panelLayer3 = eval('document.getElementById("pane3")');
-            	document.panelLayer3.style.display = "none";
+            //	document.panelLayer3 = eval('document.getElementById("pane3")');
+            //	document.panelLayer3.style.display = "none";
             	
           	});	
 			
@@ -221,15 +221,15 @@
             	document.tabLayerSV = eval('document.getElementById("SV")');
             	document.tabLayerSV.style.background = "#ffffff";
             	document.tabLayerSV.style.paddingBottom = "1px";
-            	document.tabLayerPH = eval('document.getElementById("PH")');
-            	document.tabLayerPH.style.background = "#cccccc";
-            	document.tabLayerPH.style.paddingBottom = "0px";
+            //	document.tabLayerPH = eval('document.getElementById("PH")');
+            //	document.tabLayerPH.style.background = "#cccccc";
+            //	document.tabLayerPH.style.paddingBottom = "0px";
             	document.panelLayer1 = eval('document.getElementById("pane1")');
             	document.panelLayer1.style.display = "none";
             	document.panelLayer2 = eval('document.getElementById("pane2")');
             	document.panelLayer2.style.display = "block";
-            	document.panelLayer3 = eval('document.getElementById("pane3")');
-            	document.panelLayer3.style.display = "none";
+            //	document.panelLayer3 = eval('document.getElementById("pane3")');
+            //	document.panelLayer3.style.display = "none";
        			var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
             	// map.setStreetView(panorama);  // **** If you uncomment this, the pegman will appear ****
           	});	
@@ -241,15 +241,15 @@
             	document.tabLayerSV = eval('document.getElementById("SV")');
             	document.tabLayerSV.style.background = "#cccccc";
             	document.tabLayerSV.style.paddingBottom = "0px";
-            	document.tabLayerPH = eval('document.getElementById("PH")');
-            	document.tabLayerPH.style.background = "#ffffff";
-            	document.tabLayerPH.style.paddingBottom = "1px";
+            //	document.tabLayerPH = eval('document.getElementById("PH")');
+            //	document.tabLayerPH.style.background = "#ffffff";
+            //	document.tabLayerPH.style.paddingBottom = "1px";
             	document.panelLayer1 = eval('document.getElementById("pane1")');
             	document.panelLayer1.style.display = "none";
             	document.panelLayer2 = eval('document.getElementById("pane2")');
             	document.panelLayer2.style.display = "none";
-            	document.panelLayer3 = eval('document.getElementById("pane3")');
-            	document.panelLayer3.style.display = "block";
+            //	document.panelLayer3 = eval('document.getElementById("pane3")');
+            //	document.panelLayer3.style.display = "block";
           	});	
           	     	
     	});
@@ -416,23 +416,23 @@
 				if (!empty($this_person)) {
 					$class = "pedigree_image_portrait";
 					if ($gmark['fact'] == 'Census') {
-						$image = "<img src='modules/googlemap/images/facts/CENS.png' align='left' class='".$class."' border='none' alt='' />";
+						$image = "<img src='modules/googlemap/images/facts/CENS.png' align='left' class='".$class."' width='38px' border='none' alt='' />";
 					} else if ($gmark['fact'] == 'Birth') {
-						$image = "<img src='modules/googlemap/images/facts/BIRT.png' align='left' class='".$class."' border='none' alt='' />";
+						$image = "<img src='modules/googlemap/images/facts/BIRT.png' align='left' class='".$class."' width='38px' border='none' alt='' />";
 					} else if ($gmark['fact'] == 'Baptism' || $gmark['fact'] == 'Christening') {
-						$image = "<img src='modules/googlemap/images/facts/BAPM.gif' align='left' class='".$class."' width='50px' border='none' alt='' />";
+						$image = "<img src='modules/googlemap/images/facts/BAPM.gif' align='left' class='".$class."' width='38px' border='none' alt='' />";
 					} else if ($gmark['fact'] == 'Marriage') {
-						$image = "<img src='modules/googlemap/images/facts/MARR.gif' align='left' class='".$class."' border='none' alt='' />";
+						$image = "<img src='modules/googlemap/images/facts/MARR.gif' align='left' class='".$class."' width='38px' border='none' alt='' />";
 					} else if ($gmark['fact'] == 'Occupation') {
-						$image = "<img src='modules/googlemap/images/facts/OCCU.png' align='left' class='".$class."' border='none' alt='' />";
+						$image = "<img src='modules/googlemap/images/facts/OCCU.png' align='left' class='".$class."' width='38px' border='none' alt='' />";
 					} else if ($gmark['fact'] == 'Residence') {
-						$image = "<img src='modules/googlemap/images/facts/RESI.gif' align='left' class='".$class."' width='40px' height='30px' border='none' alt='' />";
+						$image = "<img src='modules/googlemap/images/facts/RESI.gif' align='left' class='".$class."' width='38px' border='none' alt='' />";
 					} else if ($gmark['fact'] == 'Death') {
-						$image = "<img src='modules/googlemap/images/facts/DEAT.gif' height='40' align='left' class='".$class."' border='none' alt='' />";
+						$image = "<img src='modules/googlemap/images/facts/DEAT.gif' height='40' align='left' class='".$class."' width='38px' border='none' alt='' />";
 					} else if ($gmark['fact'] == 'Burial' || $gmark['fact'] == 'Cremation') {
-						$image = "<img src='modules/googlemap/images/facts/BURI.png' height='40' align='left' class='".$class."' border='none' alt='' />";						
+						$image = "<img src='modules/googlemap/images/facts/BURI.png' height='40' align='left' class='".$class."' width='38px' border='none' alt='' />";						
 					} else if ($gmark['fact'] == 'Retirement' ) {
-						$image = "<img src='modules/googlemap/images/facts/RETI.png' height='40' align='left' class='".$class."' border='none' alt='' />";						
+						$image = "<img src='modules/googlemap/images/facts/RETI.png' height='40' align='left' class='".$class."' width='38px' border='none' alt='' />";						
 					} else {
 						$indirec = $this_person->getGedcomRecord();
 						$image = "";							
@@ -629,7 +629,7 @@
           				'<ul class="tabs" >',
          					'<li><a href="#event" id="EV">Events<\/a><\/li>',
           					'<li><a href="#sview" id="SV">Street View<\/a><\/li>',
-          					'<li><a href="#image" id="PH">Image<\/a><\/li>',
+          			//		'<li><a href="#image" id="PH">Image<\/a><\/li>',
           			//		'<li><a href="#" id="SP">Aerial<\/a><\/li>',
        					'<\/ul>',
        					
@@ -643,14 +643,15 @@
        							divhead,
 								'<div id="pano"><\/div>',
           					'<\/div>',
-          					
+          		/*			
           					'<div id = "pane3">',
           						divhead,
           						'<div id = "pane3_text">',
           							'<img style="margin-left: -10px; margin-top: 1px;" src="'+media+'" height= "216px" width= "298px" />',
        							'<\/div>',
        						'<\/div>',
-       			       			
+       			*/
+       			
 				/*	
        						'<div id = "pane4">',
           						divhead,
