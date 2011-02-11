@@ -145,7 +145,7 @@ if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {
 	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();return false;\">", i18n::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
 	print_simple_footer();
 	exit;
 }
