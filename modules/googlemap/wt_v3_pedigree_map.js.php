@@ -59,7 +59,7 @@ function HomeControl(controlDiv, pm_map) {
   	controlUI.style.borderWidth = '2px';
   	controlUI.style.cursor = 'pointer';
   	controlUI.style.textAlign = 'center';
-  	controlUI.title = '<?php echo WT_i18n::translate('Click to reset the map to the original view')?>';
+  	controlUI.title = '<?php echo WT_I18N::translate('Click to reset the map to the original view')?>';
   	controlDiv.appendChild(controlUI);
 
   	// Set CSS for the control interior
@@ -68,7 +68,7 @@ function HomeControl(controlDiv, pm_map) {
   	controlText.style.fontSize = '12px';
   	controlText.style.paddingLeft = '15px';
   	controlText.style.paddingRight = '15px';
-  	controlText.innerHTML = '<b><?php echo WT_i18n::translate('Redraw map')?><\/b>';
+  	controlText.innerHTML = '<b><?php echo WT_I18N::translate('Redraw map')?><\/b>';
   	controlUI.appendChild(controlText);
 
   	// Setup the click event listeners: simply set the map to original LatLng

@@ -43,24 +43,24 @@ $keep2=safe_POST('keep2', WT_REGEX_UNSAFE);
 if (empty($keep1)) $keep1=array();
 if (empty($keep2)) $keep2=array();
 
-print_header(WT_i18n::translate('Add unlinked records'));
+print_header(WT_I18N::translate('Add unlinked records'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 echo
 	'<div id="other">',
-	'<p>', WT_i18n::translate('Add unlinked records'), '</p>',
+	'<p>', WT_I18N::translate('Add unlinked records'), '</p>',
 	'<table id="other">',
 	'<tr><td>',
-	'<a href="javascript:;" onclick="addnewchild(\'\'); return false;">', WT_i18n::translate('Add an unlinked person'), '</a>',
+	'<a href="javascript:;" onclick="addnewchild(\'\'); return false;">', WT_I18N::translate('Add an unlinked person'), '</a>',
 	help_link('edit_add_unlinked_person'),
 	'</td></tr>',
 	'<tr><td>',
-	'<a href="javascript:;" onclick="addnewnote(\'\'); return false;">', WT_i18n::translate('Add an unlinked note'), '</a>',
+	'<a href="javascript:;" onclick="addnewnote(\'\'); return false;">', WT_I18N::translate('Add an unlinked note'), '</a>',
 	help_link('edit_add_unlinked_note'),
 	'</td></tr>',
 	'<tr><td>',
-	'<a href="javascript:;" onclick="addnewsource(\'\'); return false;">', WT_i18n::translate('Add an unlinked source'), '</a>',
+	'<a href="javascript:;" onclick="addnewsource(\'\'); return false;">', WT_I18N::translate('Add an unlinked source'), '</a>',
 	help_link('edit_add_unlinked_source'),
 	'</td></tr>',
 	'</table>',
