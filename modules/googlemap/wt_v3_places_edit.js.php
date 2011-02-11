@@ -226,7 +226,7 @@
 		// Create the Main Location Marker
 		<?php 
 		if ($level < 2 && $place_icon != '') {	
-			echo "var image = new google.maps.MarkerImage('$place_icon',";
+			echo "var image = new google.maps.MarkerImage('modules/googlemap/",$place_icon,"',";
 				echo 'new google.maps.Size(25, 15),';	// Image size
 				echo 'new google.maps.Point(0, 0),';	// Image origin
 				echo 'new google.maps.Point(0, 44)';	// Image anchor

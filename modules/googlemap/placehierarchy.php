@@ -446,7 +446,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			else echo addslashes($place2['place']), "'><br />";
 		}
 		if (($place2["icon"] != NULL) && ($place2['icon'] != "")) {
-			echo "<img src=\'", $place2['icon'], "'>&nbsp;&nbsp;";
+			echo "<img src=\'modules/googlemap/", $place2['icon'], "'>&nbsp;&nbsp;";
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);
@@ -514,7 +514,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			echo "var icon_type = new google.maps.MarkerImage();\n";
 		} else {
 			echo "var icon_type = new google.maps.MarkerImage();\n";
-			echo " icon_type.image = \"", $place2['icon'], "\";\n";
+			echo " icon_type.image = \"modules/googlemap/", $place2['icon'], "\";\n";
 			echo " icon_type.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
 			echo " icon_type.iconSize = new google.maps.Size(25, 15);\n";
 			echo " icon_type.shadowSize = new google.maps.Size(35, 45);\n";
@@ -533,7 +533,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		}
 		if (($place2['icon'] != NULL) && ($place2['icon'] != "")) {
-			echo "<img src=\'", $place2['icon'], "'>&nbsp;&nbsp;";
+			echo "<img src=\'modules/googlemap/", $place2['icon'], "'>&nbsp;&nbsp;";
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);

@@ -532,7 +532,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 						if (($lat[$i] != NULL) && ($lon[$i] != NULL)) {
 							echo "var point = new google.maps.LatLng(" . $lat[$i] . "," . $lon[$i]. ");\n";
 							echo "var Marker1_0_flag = new google.maps.MarkerImage();\n";
-							echo "Marker1_0_flag.image = \"". $flags[$i]. "\";\n";
+							echo "Marker1_0_flag.image = \"modules/googlemap/". $flags[$i]. "\";\n";
 							echo "Marker1_0_flag.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
 							echo "Marker1_0_flag.iconSize = new google.maps.Size(25, 15);\n";
 							echo "Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);\n";
