@@ -768,11 +768,11 @@ if (check_media_structure()) {
 	echo '<div id="page_help">', help_link('manage_media'), '</div>';
 ?>
 
-	<form name="managemedia" method="post" onsubmit="return checknames(this);" action="<?php echo WT_SCRIPT_NAME; ?>">
+	<form name="managemedia" id="managemedia" method="post" onsubmit="return checknames(this);" action="<?php echo WT_SCRIPT_NAME; ?>">
 	<input type="hidden" name="thumbdir" value="<?php echo $thumbdir; ?>" />
 	<input type="hidden" name="level" value="<?php echo $level; ?>" />
 	<input type="hidden" name="all" value="true" />
-	<input type="hidden" name="subclick" />
+	<input type="hidden" name="subclick" value="<?php echo $subclick; ?>"/>
 	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">
 	<tr align="center"><td class="wrap"><?php echo WT_I18N::translate('Sequence'), help_link('sortby'); ?>
 	<select name="sortby">
@@ -844,13 +844,13 @@ if (check_media_structure()) {
 		$pdir = '';
 		for ($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i].'/';
 		if ($pdir != '') {
-			$uplink = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;amp;sortby={$sortby}&amp;amp;level=".($level-1).$thumbget."\">";
+			$uplink = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;amp;sortby={$sortby}&amp;amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\">";
 			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
 			$uplink .= $pdir;
 			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
 			$uplink .= "</a>";
 
-			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."\"><img class=\"icon\" src=\"";
+			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\"><img class=\"icon\" src=\"";
 			$uplink2 .= $WT_IMAGES["larrow"];
 			$uplink2 .= "\" alt=\"\" /></a>";
 		}
@@ -999,7 +999,7 @@ if (check_media_structure()) {
 						echo "</form>";
 			//	echo "</td>";
 					echo "<td class=\"$TEXT_DIRECTION\">";
-						echo "<a href=\"".WT_SCRIPT_NAME."?directory=".rawurlencode($directory.$dir)."/&amp;sortby={$sortby}&amp;level=".($level+1).$thumbget."\">";
+						echo "<a href=\"".WT_SCRIPT_NAME."?directory=".rawurlencode($directory.$dir)."/&amp;sortby={$sortby}&amp;level=".($level+1).$thumbget."&amp;subclick={$subclick}\">";
 						if ($TEXT_DIRECTION=="rtl") echo getRLM();
 						echo $dir;
 						if ($TEXT_DIRECTION=="rtl") echo getRLM();
