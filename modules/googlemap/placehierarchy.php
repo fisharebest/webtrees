@@ -320,7 +320,7 @@ function create_map() {
 		  		if ($latlng[0]['sv_lati']!=null) {
 		  			$_map = WT_I18N::translate('Google Maps');
 		  			$_reset = WT_I18N::translate('Reset');
-		  			$_streetview = WT_I18N::translate('Google Street View');
+						$_streetview = /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View');
 					?>
 					<div>
 					<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="modules/googlemap/wt_v3_street_view.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>&z=18&t=2&c=1&s=1&b=<?php echo $sv_dir; ?>&p=<?php echo $sv_pitch; ?>&m=<?php echo $sv_zoom; ?>&j=1&k=1&v=1&map=<?php echo $_map; ?>&reset=<?php echo $_reset; ?>&streetview=<?php echo $_streetview; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
