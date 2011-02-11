@@ -1485,8 +1485,9 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 				"bFilter": false,
 				"bInfo": false,
 				"bJQueryUI": false,
+				"aaSorting": [[ <?php echo $sort_by=='alpha' ? 0 : 3; ?>, 'asc']],
 				"aoColumns": [
-					/* 0-Record */ { "aaSorting": [ [0,'asc'], [1,'asc'] ] },
+					/* 0-Record */ null,
 					/* 1-GIVN */   { "bVisible": false },
 					/* 2-Date */   { "iDataSort": 3 },
 					/* 3-DATE */   { "bVisible": false },
@@ -1567,7 +1568,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		break;
 	}
 
-	foreach ($filtered_events as $value) {
+	foreach ($filtered_events as $n=>$value) {
 		$return .= "<tr>";
 		//-- Record name(s)
 		$name = $value['name'];
@@ -1597,7 +1598,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "</td>";
 		//-- Event date (sortable)
 		$return .= "<td>"; //hidden by datables code
-		$return .= $value['date']->MinJD();
+		$return .= $n;
 		$return .= "</td>";
 		//-- Anniversary
 		$return .= "<td class=\"list_value_wrap rela\">";
