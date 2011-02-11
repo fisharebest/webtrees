@@ -416,23 +416,23 @@
 				if (!empty($this_person)) {
 					$class = "pedigree_image_portrait";
 					if ($gmark['fact'] == 'Census') {
-						$image = "<img class='icon_cens'/>";
+						$image = "<img class='icon_cens' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Birth') {
-						$image = "<img class='icon_birt'/>";
+						$image = "<img class='icon_birt' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Baptism' || $gmark['fact'] == 'Christening') {
-						$image = "<img class='icon_bapm'/>";
+						$image = "<img class='icon_bapm' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Marriage') {
-						$image = "<img class='icon_marr'/>";
+						$image = "<img class='icon_marr' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Occupation') {
-						$image = "<img class='icon_occu'/>";
+						$image = "<img class='icon_occu' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Residence') {
-						$image = "<img class='icon_resi'/>";
+						$image = "<img class='icon_resi' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Death') {
-						$image = "<img class='icon_deat'/>";
+						$image = "<img class='icon_deat' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Burial' || $gmark['fact'] == 'Cremation') {
-						$image = "<img class='icon_buri'/>";
+						$image = "<img class='icon_buri' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Retirement' ) {
-						$image = "<img class='icon_reti'/>";
+						$image = "<img class='icon_reti' src='././images/pix1.gif' />";
 					} else {
 						$indirec = $this_person->getGedcomRecord();
 						$image = "";							
