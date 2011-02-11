@@ -244,7 +244,7 @@ function create_map() {
 	echo "</tr><tr><td>";
 		echo "<table style=\"width:", $GOOGLEMAP_PH_XSIZE, "px; margin-top:0px; background:none;\" >";
 		echo "<tr><td align=\"left\" style=\"margin-top:0px; \">\n";
-	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_editconfig\">", WT_I18N::translate('Manage GoogleMap configuration'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps configuration'), "</a>";
 		echo "</td>\n";
 		echo "<td align=\"center\">\n";
 	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places\">", WT_I18N::translate('Edit geographic place locations'), "</a>";

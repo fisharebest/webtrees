@@ -71,7 +71,7 @@ if (!$GOOGLEMAP_ENABLED) {
 	echo "<tr><td class=\"facts_value\">", WT_I18N::translate('GoogleMap module disabled'), "</td></tr>\n";
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td align=\"center\">\n";
-		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", WT_I18N::translate('Manage GoogleMap configuration'), "</a>";
+		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps configuration'), "</a>";
 		echo "</td></tr>\n";
 	}
 	echo "</table><br />";
@@ -244,7 +244,7 @@ echo " background-image: url('images/loading.gif'); background-position: center;
 if (WT_USER_IS_ADMIN) {
 	echo "<table width=\"100%\">";
 	echo "<tr><td align=\"left\">\n";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", WT_I18N::translate('Manage GoogleMap configuration'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps configuration'), "</a>";
 	echo "</td>\n";
 	echo "<td align=\"center\">\n";
 	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places\">", WT_I18N::translate('Edit geographic place locations'), "</a>";
