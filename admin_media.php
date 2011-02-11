@@ -850,9 +850,9 @@ if (check_media_structure()) {
 			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
 			$uplink .= "</a>";
 
-			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\"><img class=\"icon\" src=\"";
+			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\"><img class=\"icon-larrow\" src=\"";
 			$uplink2 .= $WT_IMAGES["larrow"];
-			$uplink2 .= "\" alt=\"\" /></a>";
+			$uplink2 .= "\" alt=\"".WT_I18N::translate('Back')."\" title=\"".WT_I18N::translate('Back')."\" /></a>";
 		}
 		// Start of media directory table
 		echo "<table class=\"media_items $TEXT_DIRECTION\">";
@@ -990,7 +990,7 @@ if (check_media_structure()) {
 						echo "<input type=\"hidden\" name=\"action\" value=\"\" />";
 						echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
 						echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
-						echo "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".WT_I18N::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".WT_I18N::translate('Are you sure you want to delete this folder?')."');\" /></td>";
+						echo "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".WT_I18N::translate('Delete')."\" title=\"".WT_I18N::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".WT_I18N::translate('Are you sure you want to delete this folder?')."');\" /></td>";
 						if ($USE_MEDIA_FIREWALL) {
 							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\" /></td>";
 							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\" /></td>";
