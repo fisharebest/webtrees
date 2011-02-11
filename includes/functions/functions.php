@@ -1036,7 +1036,7 @@ function event_sort($a, $b) {
 			return utf8_strcasecmp($a['fact'], $b['fact']);
 		}
 		else {
-			return utf8_strcasecmp($a['anniv'], $b['anniv']);
+			return $a['anniv']-$b['anniv'];
 		}
 	} else {
 		return $a['jd']-$b['jd'];

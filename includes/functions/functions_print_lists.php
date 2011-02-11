@@ -1470,7 +1470,7 @@ function print_changes_table($change_ids) {
  *
  * @param array $datalist contain records that were extracted from the database.
  */
-function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by_event=false) {
+function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
 	global $TEXT_DIRECTION, $WT_IMAGES;
 	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
 	echo WT_JS_START.'var table_id = "'.$table_id.'"'.WT_JS_END;
@@ -1558,10 +1558,13 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	}
 
 	// Now we've filtered the list, we can sort by event, if required
-	if ($sort_by_event=="anniv") {
+	switch ($sort_by) {
+	case 'anniv':
 		uasort($filtered_events, 'event_sort');
-	} elseif ($sort_by_event) {
+		break;
+	case 'alpha':
 		uasort($filtered_events, 'event_sort_name');
+		break;
 	}
 
 	foreach ($filtered_events as $value) {
@@ -1667,7 +1670,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
  *
  * This performs the same function as print_events_table(), but formats the output differently.
  */
-function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by_event=false) {
+function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
 	global $TEXT_DIRECTION;
 
 	// Did we have any output?  Did we skip anything?
@@ -1717,10 +1720,13 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	}
 
 	// Now we've filtered the list, we can sort by event, if required
-	if ($sort_by_event=="anniv") {
+	switch ($sort_by) {
+	case 'anniv':
 		uasort($filtered_events, 'event_sort');
-	} elseif ($sort_by_event) {
+		break;
+	case 'alpha':
 		uasort($filtered_events, 'event_sort_name');
+		break;
 	}
 
 	foreach ($filtered_events as $value) {
@@ -1750,14 +1756,14 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %d==1 is unsed; it is translated separately as tomorrow
+					// I18N: tanslation for %d==1 is unused; it is translated separately as tomorrow
 					$summary = WT_I18N::plural('No events exist for the next %d day.', 'No events exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
 				}
 			} else {
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events for living people exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %d==1 is unsed; it is translated separately as tomorrow
+					// I18N: tanslation for %d==1 is unused; it is translated separately as tomorrow
 					$summary = WT_I18N::plural('No events for living people exist for the next %d day.', 'No events for living people exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
 				}
 			}
