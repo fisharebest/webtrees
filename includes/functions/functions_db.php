@@ -2353,15 +2353,21 @@ function get_user_blocks($user_id, $gedcom_id=WT_GED_ID) {
 				)->execute(array($user_id, $n, $block));
 			}
 		}
+		$block_found=false;
 		foreach (array('user_welcome', 'random_media', 'upcoming_events', 'logged_in') as $n=>$block) {
 			if (array_key_exists($block, $active_blocks)) {
 				WT_DB::prepare(
 					"INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES ".
 					"(?, 'side', ?, ?)"
 				)->execute(array($user_id, $n, $block));
+				$block_found=true;
 			}
 		}
-		return get_user_blocks($user_id);
+		if ($block_found) {
+			return get_user_blocks($user_id);
+		} else {
+			return $blocks;
+		}
 	}
 }
 
@@ -2391,15 +2397,21 @@ function get_gedcom_blocks($gedcom_id) {
 				)->execute(array($gedcom_id, $n, $block));
 			}
 		}
+		$block_found=false;
 		foreach (array('gedcom_block', 'random_media', 'todays_events', 'logged_in') as $n=>$block) {
 			if (array_key_exists($block, $active_blocks)) {
 				WT_DB::prepare(
 					"INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES ".
 					"(?, 'side', ?, ?)"
 				)->execute(array($gedcom_id, $n, $block));
+				$block_found=true;
 			}
 		}
-		return get_gedcom_blocks($gedcom_id);
+		if ($block_found) {
+			return get_gedcom_blocks($user_id);
+		} else {
+			return $blocks;
+		}
 	}
 }
 
