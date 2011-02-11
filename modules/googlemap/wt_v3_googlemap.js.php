@@ -416,23 +416,23 @@
 				if (!empty($this_person)) {
 					$class = "pedigree_image_portrait";
 					if ($gmark['fact'] == 'Census') {
-						$image = "<img src='modules/googlemap/images/facts/CENS.png' align='left' class='".$class."' width='38px' border='none' alt='' />";
+						$image = "<img class='icon_cens'/>";
 					} else if ($gmark['fact'] == 'Birth') {
-						$image = "<img src='modules/googlemap/images/facts/BIRT.png' align='left' class='".$class."' width='38px' border='none' alt='' />";
+						$image = "<img class='icon_birt'/>";
 					} else if ($gmark['fact'] == 'Baptism' || $gmark['fact'] == 'Christening') {
-						$image = "<img src='modules/googlemap/images/facts/BAPM.gif' align='left' class='".$class."' width='38px' border='none' alt='' />";
+						$image = "<img class='icon_bapm'/>";
 					} else if ($gmark['fact'] == 'Marriage') {
-						$image = "<img src='modules/googlemap/images/facts/MARR.gif' align='left' class='".$class."' width='38px' border='none' alt='' />";
+						$image = "<img class='icon_marr'/>";
 					} else if ($gmark['fact'] == 'Occupation') {
-						$image = "<img src='modules/googlemap/images/facts/OCCU.png' align='left' class='".$class."' width='38px' border='none' alt='' />";
+						$image = "<img class='icon_occu'/>";
 					} else if ($gmark['fact'] == 'Residence') {
-						$image = "<img src='modules/googlemap/images/facts/RESI.gif' align='left' class='".$class."' width='38px' border='none' alt='' />";
+						$image = "<img class='icon_resi'/>";
 					} else if ($gmark['fact'] == 'Death') {
-						$image = "<img src='modules/googlemap/images/facts/DEAT.gif' height='40' align='left' class='".$class."' width='38px' border='none' alt='' />";
+						$image = "<img class='icon_deat'/>";
 					} else if ($gmark['fact'] == 'Burial' || $gmark['fact'] == 'Cremation') {
-						$image = "<img src='modules/googlemap/images/facts/BURI.png' height='40' align='left' class='".$class."' width='38px' border='none' alt='' />";						
+						$image = "<img class='icon_buri'/>";
 					} else if ($gmark['fact'] == 'Retirement' ) {
-						$image = "<img src='modules/googlemap/images/facts/RETI.png' height='40' align='left' class='".$class."' width='38px' border='none' alt='' />";						
+						$image = "<img class='icon_reti'/>";
 					} else {
 						$indirec = $this_person->getGedcomRecord();
 						$image = "";							
