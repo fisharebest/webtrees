@@ -318,7 +318,7 @@ function create_map() {
 				
 				// If Streetview coordinates are stored, bring up the regular Streetview -------
 		  		if ($latlng[0]['sv_lati']!=null) {
-		  			$_map = WT_I18N::translate('Google Map');
+		  			$_map = WT_I18N::translate('Google Maps');
 		  			$_reset = WT_I18N::translate('Reset');
 		  			$_streetview = WT_I18N::translate('Google Street View');
 					?>

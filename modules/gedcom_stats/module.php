@@ -85,7 +85,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = "<b><a href=\"index.php?ctype=gedcom\">".PrintReady(strip_tags(get_gedcom_setting(WT_GED_ID, 'title')))."</a></b><br />";
 
 		if ($show_last_update) {
-			$content .= '<div>'./* I18N: %s is a date */ WT_I18N::translate('This family tree was last updated on %s', strip_tags($stats->gedcomUpdated())).'</div>';
+			$content .= '<div>'./* I18N: %s is a date */ WT_I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())).'</div>';
 		}
 
 		$content .= '<table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
@@ -265,7 +265,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$show_last_update=get_block_setting($block_id, 'show_last_update', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for yes/no option */ WT_I18N::translate('Show date of last update');
+		echo /* I18N: label for yes/no option */ WT_I18N::translate('Show date of last update?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_last_update', $show_last_update);
 		echo '</td></tr>';

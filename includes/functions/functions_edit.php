@@ -44,7 +44,7 @@ function edit_field_inline($name, $value) {
 	return
 		'<span class="editable" id="' . $name . '">' . htmlspecialchars($value) . '</span>' .
 		WT_JS_START .
-		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('Click to edit').'"})' .
+		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'"})' .
 		WT_JS_END;
 }
 
