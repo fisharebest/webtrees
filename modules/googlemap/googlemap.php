@@ -588,25 +588,7 @@ function build_indiv_map($indifacts, $famids) {
 
 		// === add $gmarks array to the required wt_v3_googlemap.js.php ============================		
 		$gmarks = $markers;
-
-		// Convert $gmarks array to xml file =======================================================
-		require_once WT_ROOT.'modules/googlemap/Array-XML.php';		
-		$xml = generate_valid_xml_from_array($gmarks, "markers", "marker");
-		$xml = str_replace('&lt;', '<', $xml);
-		$xml = str_replace('&gt;', '>', $xml);
-		$xml = str_replace('<br /><br />', '', $xml);
-		$xml = str_replace('<br />', '', $xml);
-		$xml = str_replace(' "', '" ', $xml);
-		$xml = str_replace('2 PLAC ', '', $xml);		
-		$temp_xml_filename = WT_ROOT.'modules/googlemap/wt_v3_temp.xml';
-		if (file_exists($temp_xml_filename)) {
-			unlink($temp_xml_filename);
-		}
-		$Content = $xml; 
-		$handle = fopen($temp_xml_filename, 'x+');
-		fwrite($handle, $Content);
-		fclose($handle);	
-		
+	
 		global $controller;
 		$pid=$controller->indi->getXref();
 		
