@@ -166,14 +166,19 @@ function set_levelm($level, $parent) {
 
 function create_map() {
 	$level = safe_GET('level');
-	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $TEXT_DIRECTION;
+	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $TEXT_DIRECTION, $levelm;
 	
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
 	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	// =============================================================================================
-		
+	$parent = safe_GET('parent');
+	
 	// create the map
-	echo "<table class=\" center\" style=\"margin-top:0px;\"><tr valign=\"top\"><td style=\"background:none;\">";
+	if ($level > 0) {
+		echo "<p><table class=\" center\" style=\"margin-top:0px;\"><tr valign=\"top\"><td style=\"background:none;\">", WT_I18N::translate('The red markers show the Place Hierarchy defined after:'), " - ", $parent[$level-1], "</p>";
+	}else {
+		echo "<p><table class=\" center\" style=\"margin-top:0px;\"><tr valign=\"top\"><td style=\"background:none;\"></p>";
+	}
 	//<!-- start of map display -->
 	echo "\n<br /><br />\n";
 	echo "<table style=\"margin-top:-32px;\"><tr valign=\"top\">";
@@ -182,8 +187,7 @@ function create_map() {
 	} else {
 		echo "<td class=\"center\" width=\"200px\" style=\"padding-top:6px;\">";	
 	}
-
-	$parent = safe_GET('parent');	
+	
 	$parent[$level-1] = PrintReady(addslashes($parent[$level-1]));	
 	$latlng = WT_DB::prepare("SELECT pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM ##placelocation WHERE pl_place='{$parent[$level-1]}'")->fetchAll(PDO::FETCH_ASSOC);
 	
