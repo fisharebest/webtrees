@@ -450,20 +450,20 @@ function build_indiv_map($indifacts, $famids) {
 										$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
 										if (strpos($srec, "\n1 SEX F")!==false) {
 											$markers[$i]["fact"] = WT_I18N::translate('Daughter');
-											$markers[$i]["class"]  = "person_boxF";
+											$markers[$i]["class"] = "person_boxF";
 										} else
 											if (strpos($srec, "\n1 SEX M")!==false) {
 												$markers[$i]["fact"] = WT_I18N::translate('Son');
-												$markers[$i]["class"]  = "person_box";
+												$markers[$i]["class"] = "person_box";
 											} else {
-												$markers[$i]["fact"]     = translate_fact('CHIL');
-												$markers[$i]["class"]    = "person_boxNN";
+												$markers[$i]["fact"]  = translate_fact('CHIL');
+												$markers[$i]["class"] = "person_boxNN";
 											}
 										$markers[$i]["placerec"] = $placerec;
 										$match1[1] = trim($match1[1]);
 										$match2[1] = trim($match2[1]);
 										$markers[$i]["lati"] = str_replace(array('N', 'S', ','), array('', '-', '.'), $match1[1]);
-										$markers[$i]["lng"]  = str_replace(array('E', 'W', ','), array('', '-', '.'), $match2[1]);
+										$markers[$i]["lng"] = str_replace(array('E', 'W', ','), array('', '-', '.'), $match2[1]);
 										if ($ctd > 0) {
 											$markers[$i]["date"] = $matchd[1];
 										}
@@ -483,27 +483,27 @@ function build_indiv_map($indifacts, $famids) {
 											if ((count($latlongval) != 0) && ($latlongval["lati"] != NULL) && ($latlongval["long"] != NULL)) {
 												$i = $i + 1;
 												$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
-												$markers[$i]["fact"]     = translate_fact('CHIL');
-												$markers[$i]["class"]    = "option_boxNN";
+												$markers[$i]["fact"]	= translate_fact('CHIL');
+												$markers[$i]["class"]	= "option_boxNN";
 												if (strpos($srec, "\n1 SEX F")!==false) {
 													$markers[$i]["fact"] = WT_I18N::translate('Daughter');
-													$markers[$i]["class"]  = "person_boxF";
+													$markers[$i]["class"] = "person_boxF";
 												}
 												if (strpos($srec, "\n1 SEX M")!==false) {
 													$markers[$i]["fact"] = WT_I18N::translate('Son');
-													$markers[$i]["class"]  = "person_box";
+													$markers[$i]["class"] = "person_box";
 												}
 												$markers[$i]["icon"] = $latlongval["icon"];
 												$markers[$i]["placerec"] = $placerec;
 												if ($zoomLevel > $latlongval["zoom"]) {
 													$zoomLevel = $latlongval["zoom"];
 												}
-												$markers[$i]["lati"]     = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval["lati"]);
-												$markers[$i]["lng"]      = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval["long"]);
+												$markers[$i]["lati"] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval["lati"]);
+												$markers[$i]["lng"]  = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval["long"]);
 												if ($ctd > 0) {
 													$markers[$i]["date"] = $matchd[1];
 												}
-												$markers[$i]["name"]   = $smatch[$j][1];
+												$markers[$i]["name"] = $smatch[$j][1];
 												
 												$markers[$i]["media"] = $latlongval["media"];
 												$markers[$i]["sv_lati"] = $latlongval["sv_lati"];
@@ -569,7 +569,7 @@ function build_indiv_map($indifacts, $famids) {
 							$markers[$k]["index"] = $indexcounter;							
 							// if ($tabcounter == 4) {
 							// V3 ==============================
-							if ($tabcounter == 30) {  
+							if ($tabcounter == 30) {
 							// V3 ==============================
 
 								$indexcounter = $indexcounter + 1;
@@ -645,40 +645,40 @@ function build_indiv_map($indifacts, $famids) {
 	
 	// ======= More V3 api stuff (not displayed now) but will be sorted later ==========	
 	?>
-   	<table id="s_bar" style="display:none;">
-   	  	<tr>
-   	    	<td valign="top" style="padding-left:5px; width:360px; text-decoration:none; color:#4444ff; background:#aabbd8;">
-       	   		<div id="side_bar"></div>
-       		</td>
-     		</tr>
-   	</table>
-   	<table style="display:none;">   
-   		<tr>
-   			<td style="width: 360px; text-align:center;">
-   				<form style="width: 360px; id="form1" action="#">
-   				
-      				<!-- Event Map:<input 	name= "radio1" type="checkbox" id="theatrebox" onclick="boxclick(this,'theatre')" checked /> &nbsp; -->
-					Street View Only:<input name= "radio2" type="checkbox" id="golfbox" onclick="boxclick(this,'golf')" /> &nbsp;     				
-      				<!-- Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')" /> -->
+	<table id="s_bar" style="display:none;">
+		<tr>
+			<td valign="top" style="padding-left:5px; width:360px; text-decoration:none; color:#4444ff; background:#aabbd8;">
+				<div id="side_bar"></div>
+			</td>
+			</tr>
+	</table>
+	<table style="display:none;">
+		<tr>
+			<td style="width: 360px; text-align:center;">
+				<form style="width: 360px;" id="form1" action="#">
+				
+					<!-- Event Map:<input 	name= "radio1" type="checkbox" id="theatrebox" onclick="boxclick(this,'theatre')" checked /> &nbsp; -->
+					Street View Only:<input name= "radio2" type="checkbox" id="golfbox" onclick="boxclick(this,'golf')" /> &nbsp;
+					<!-- Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')" /> -->
 
 					<?php
 					// --------- Maybe for later use ---------------
 					/*					
-					 Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')" /> 					
-      				<b>Pedigree Map:</b><input id="sel2" name="select" type=radio  />
+					 Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')" />
+					<b>Pedigree Map:</b><input id="sel2" name="select" type=radio />
 					&nbsp;&nbsp;
-      				Parents: <input type="checkbox" id="parentsbox" onclick="boxclick(this,'gen1')" /> &nbsp;&nbsp;
-      				Grandparents: <input type="checkbox" id="gparentsbox" onclick="boxclick(this,'gen2')" /> &nbsp;&nbsp;
-      				Great Grandparents: <input type="checkbox" id="ggparentsbox" onclick="boxclick(this,'gen3')" /><br />
-      				*/
+					Parents: <input type="checkbox" id="parentsbox" onclick="boxclick(this,'gen1')" /> &nbsp;&nbsp;
+					Grandparents: <input type="checkbox" id="gparentsbox" onclick="boxclick(this,'gen2')" /> &nbsp;&nbsp;
+					Great Grandparents: <input type="checkbox" id="ggparentsbox" onclick="boxclick(this,'gen3')" /><br />
+					*/
 					?>
 
- 		   		</form> 
-    		</td>
-    		<td style="width: 200px;">
-    		</td>
-    	</tr>
-   	</table>  
+				</form> 
+			</td>
+			<td style="width: 200px;">
+			</td>
+		</tr>
+	</table>
 	<?php
 	// =================================================================================
 	
