@@ -58,8 +58,13 @@ if ($display=="hierarchy") print_header(WT_I18N::translate('Place hierarchy'));
 else print_header(WT_I18N::translate('Place List'));
 
 echo "\n\t<div class=\"center\">";
-if ($display=="hierarchy") echo "<h2>", WT_I18N::translate('Place hierarchy'), " - ", $parent[$level-1],"</h2>\n\t";
-else echo "<h2>", WT_I18N::translate('Place List'), "</h2>\n\t";
+if ($display=="hierarchy" && $level == 0)  {
+	echo "<h2>", WT_I18N::translate('Place hierarchy'), " ", $parent[$level-1],"</h2>\n\t";
+} else if ($display=="hierarchy" && $level > 0) {
+	echo "<h2>", WT_I18N::translate('Place hierarchy'), " - ", $parent[$level-1],"</h2>\n\t";
+} else {
+	echo "<h2>", WT_I18N::translate('Place List'), "</h2>\n\t";
+}
 
 // Make sure the "parent" array has no holes
 if (isset($parent) && is_array($parent)) {
