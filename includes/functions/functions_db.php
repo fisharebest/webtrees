@@ -1852,8 +1852,8 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 		$where.=" AND d_file=".$ged_id;
 
 		// Now fetch these anniversaries
-		$ind_sql="SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file ORDER BY d_day ASC, d_year DESC";
-		$fam_sql="SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil, d_type, d_day, d_month, d_year, d_fact, d_type FROM `##dates`, `##families` {$where} AND d_gid=f_id AND d_file=f_file ORDER BY d_day ASC, d_year DESC";
+		$ind_sql="SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex, d_type, d_day, d_month, d_year, d_fact FROM `##dates`, `##individuals` {$where} AND d_gid=i_id AND d_file=i_file ORDER BY d_day ASC, d_year DESC";
+		$fam_sql="SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil, d_type, d_day, d_month, d_year, d_fact FROM `##dates`, `##families` {$where} AND d_gid=f_id AND d_file=f_file ORDER BY d_day ASC, d_year DESC";
 		foreach (array($ind_sql, $fam_sql) as $sql) {
 			$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 			foreach ($rows as $row) {
@@ -1863,8 +1863,8 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 					$record=WT_Family::getInstance($row);
 				}
 				// Generate a regex to match the retrieved date - so we can find it in the original gedcom record.
-				// TODO having to go back to the original gedcom is lame.  This is why it is so slow, and needs
-				// to be cached.  We should store the level1 fact here (or somewhere)
+				// TODO having to go back to the original gedcom is lame.  This is why it is so slow.
+				// We should store the level1 fact here (or in a "facts" table)
 				if ($row['d_type']=='@#DJULIAN@') {
 					if ($row['d_year']<0) {
 						$year_regex=$row['d_year'].' ?[Bb]\.? ?[Cc]\.\ ?';
