@@ -145,7 +145,7 @@ class places_assistant_WT_Module extends WT_Module {
 				else if (ctry.length==3) elt.value=ctry;
 				if (ctry=='') ctry='???';
 				<?php foreach (get_all_countries() as $country_code=>$country_name) { ?>
-				else if (ctry=='<?php echo addslashes($country_name); ?>') ctry='<?php echo $country_code; ?>';
+				else if (ctry=='<?php echo utf8_strtoupper(addslashes($country_name)); ?>') ctry='<?php echo $country_code; ?>';
 				<?php } ?>
 				else if (ctry.length!=3) ctry=ctry.substr(0,3);
 				pdir='modules/places_assistant/'+ctry+'/';
