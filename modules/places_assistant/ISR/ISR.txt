@@ -1,0 +1,19 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- source: http://gis.cbs.gov.il/shnaton54/keymap_e.htm and http://www.health.gov.il/htb/Tables_Selected.asp?CodSub=9 -->
+Central
+Gaza
+Haifa
+Jerusalem
+Judea and Samaria
+Northern
+Southern
+Tel Aviv
+הדרום
+המרכז
+הצפון
+יהודה ושומרון
+ירושלים
+עזה
+חיפה
+תל אביב

@@ -1,0 +1,359 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Adilly 79002
+Aiffres 79003
+Aigonnay 79004
+Airvault 79005
+Allonne 79007
+Amailloux 79008
+Amuré 79009
+Arçais 79010
+Ardilleux 79011
+Ardin 79012
+Argenton-Château 79013
+Argenton-l'Église 79014
+Asnières-en-Poitou 79015
+Assais-les-Jumeaux 79016
+Aubigné 79018
+Aubigny 79019
+Augé 79020
+Availles-sur-Chizé 79021=79090
+Availles-Thouarsais 79022
+Avon 79023
+Azay-le-Brûlé 79024
+Azay-sur-Thouet 79025
+Bagneux 79026=79014
+Beaulieu-sous-Bressuire 79028=79049
+Beaulieu-sous-Parthenay 79029
+Beaussais 79030
+Beauvoir-sur-Niort 79031
+Béceleuf 79032
+Belleville 79033
+Bessines 79034
+Bilazais 79036=79196
+Boësse 79037
+Boismé 79038
+Boisserolles 79039
+Borcq-sur-Airvault 79041=79005
+Bougon 79042
+Bouillé-Loretz 79043
+Bouillé-Saint-Paul 79044
+Bouin 79045
+Boussais 79047
+Bressuire 79049
+Bretignolles 79050
+Breuil-Chaussée 79052=79049
+Brie 79054
+Brieuil-sur-Chizé 79055
+Brion-près-Thouet 79056
+Brioux-sur-Boutonne 79057
+Brûlain 79058
+Caunay 79060
+Celles-sur-Belle 79061
+Cerizay 79062
+Cersay 79063
+Chail 79064
+Chambroutet 79065=79049
+Champdeniers-Saint-Denis 79066
+Champeaux 79067=79066
+Chantecorps 79068
+Chanteloup 79069
+Châtillon-sur-Thouet 79080
+Chauray 79081
+Chavagné 79082=79048
+Chef-Boutonne 79083
+Chenay 79084
+Chérigné 79085
+Cherveux 79086
+Chey 79087
+Chiché 79088
+Chizé 79090
+Cirières 79091
+Clavé 79092
+Clazay 79093=79049
+Clessé 79094
+Clussais-la-Pommeraie 79095
+Combrand 79096
+Coulon 79100
+Coulonges-sur-l'Autize 79101
+Coulonges-Thouarsais 79102
+Courlay 79103
+Cours 79104
+Coutières 79105
+Couture-d'Argenson 79106
+Crézières 79107
+Doux 79108
+Échiré 79109
+Ensigné 79111
+Épannes 79112
+Étusson 79113
+Exireuil 79114
+Exoudun 79115
+Faye-l'Abbesse 79116
+Faye-sur-Ardin 79117
+Fénery 79118
+Fenioux 79119
+Fomperron 79121
+Fors 79125
+François 79128
+Fressines 79129
+Frontenay-Rohan-Rohan 79130
+Geay 79131
+Genneton 79132
+Germond-Rouvre 79133
+Glénay 79134
+Gourgé 79135
+Gournay-Loizé 79136
+Granzay-Gript 79137
+Gript 79138=79137
+Hanc 79140
+Irais 79141
+Juillé 79142
+Juscorps 79144
+L'Absie 79001
+L'Enclave-de-la-Martinière 79110=79264
+La Bataille 79027
+La Boissière-en-Gâtine 79040
+La Chapelle-Bâton 79070
+La Chapelle-Bertrand 79071
+La Chapelle-Gaudin 79072
+La Chapelle-Largeau 79073=79079
+La Chapelle-Pouilloux 79074
+La Chapelle-Saint-Étienne 79075
+La Chapelle-Saint-Laurent 79076
+La Chapelle-Thireuil 79077
+La Couarde 79098
+La Coudre 79099
+La Crèche 79048
+La Ferrière-en-Parthenay 79120
+La Forêt-sur-Sèvre 79123
+La Foye-Monjault 79127
+La Mothe-Saint-Héray 79184
+La Petite-Boissière 79207
+La Peyratte 79208
+La Revêtizon 79227=79031
+La Rochénard 79229
+La Ronde 79232=79123
+Lageon 79145
+Lamairé 79146=79268
+Largeasse 79147
+Le Beugnon 79035
+Le Bourdet 79046
+Le Breuil-Bernard 79051
+Le Breuil-sous-Argenton 79053
+Le Busseau 79059
+Le Chillou 79089
+Le Cormenier 79097=79031
+Le Pin 79210
+Le Puy-Saint-Bonnet 79224=49099
+Le Retail 79226
+Le Tallud 79322
+Le Temple 79323=79079
+Le Vanneau-Irleau 79337
+Le Vert 79346
+Les Alleuds 79006
+Les Aubiers 79017=79195
+Les Forges 79124
+Les Fosses 79126
+Les Groseillers 79139
+Les Jumeaux 79143=79016
+Lezay 79148
+Lhoumois 79149
+Limalonges 79150
+Loizé 79151=79136
+Lorigné 79152
+Loubigné 79153
+Loubillé 79154
+Loublande 79155=79079
+Louin 79156
+Louzy 79157
+Luché-sur-Brioux 79158
+Luché-Thouarsais 79159
+Lusseray 79160
+Luzay 79161
+Magné 79162
+Mairé-Levescault 79163
+Maisonnay 79164
+Maisontiers 79165
+Marigny 79166
+Marnes 79167
+Massais 79168
+Maulais 79169=79321
+Mauléon 79079
+Mauzé-sur-le-Mignon 79170
+Mauzé-Thouarsais 79171
+Mazières-en-Gâtine 79172
+Mazières-sur-Béronne 79173
+Melle 79174
+Melleran 79175
+Ménigoute 79176
+Messé 79177
+Missé 79178
+Moncoutant 79179
+Montalembert 79180
+Montigné 79181=79061
+Montigny 79182=79123
+Montravers 79183
+Mougon 79185
+Moulins 79186=79079
+Moutiers-sous-Argenton 79187
+Moutiers-sous-Chantemerle 79188
+Nanteuil 79189
+Neuvy-Bouin 79190
+Niort 79191
+Noirlieu 79192=79049
+Noirterre 79193=79049
+Noizé 79194=79196
+Nueil-les-Aubiers 79195
+Oiron 79196
+Oroux 79197
+Paizay-le-Chapt 79198
+Paizay-le-Tort 79199
+Pamplie 79200
+Pamproux 79201
+Parthenay 79202
+Pas-de-Jeu 79203
+Périgné 79204
+Pers 79205
+Petit-Breuil-Deyrançon 79206=79170
+Pierrefitte 79209
+Pioussay 79211
+Pliboux 79212
+Pompaire 79213
+Pouffonds 79214
+Pougne-Hérisson 79215
+Prahecq 79216
+Prailles 79217
+Pressigny 79218
+Priaires 79219
+Prin-Deyrançon 79220
+Prissé 79221=79078
+Prissé-la-Charrière 79078
+Pugny 79222
+Puihardy 79223
+Reffannes 79225
+Rigné 79228=79171
+Rom 79230
+Romans 79231
+Rorthais 79233=79079
+Rouvre 79234=79133
+Saint-Amand-sur-Sèvre 79235
+Saint-André-sur-Sèvre 79236
+Saint-Aubin-de-Baubigné 79237=79079
+Saint-Aubin-du-Plain 79238
+Saint-Aubin-le-Cloud 79239
+Saint-Christophe-sur-Roc 79241
+Saint-Clémentin 79242
+Saint-Coutant 79243
+Saint-Cyr-la-Lande 79244
+Saint-Denis 79245=79066
+Saint-Étienne-la-Cigogne 79247
+Saint-Florent 79248=79191
+Saint-Gelais 79249
+Saint-Génard 79251
+Saint-Généroux 79252
+Saint-Georges-de-Noisné 79253
+Saint-Georges-de-Rex 79254
+Saint-Germain-de-Longue-Chaume 79255
+Saint-Germier 79256
+Saint-Hilaire-la-Palud 79257
+Saint-Jacques-de-Thouars 79258
+Saint-Jean-de-Thouars 79259
+Saint-Jouin-de-Marnes 79260
+Saint-Jouin-de-Milly 79261
+Saint-Jouin-sous-Châtillon 79262=79079
+Saint-Laurs 79263
+Saint-Léger-de-la-Martinière 79264
+Saint-Léger-de-Montbrun 79265
+Saint-Liguaire 79266=79191
+Saint-Lin 79267
+Saint-Loup-Lamairé 79268
+Saint-Maixent-de-Beugné 79269
+Saint-Maixent-l'École 79270
+Saint-Marc-la-Lande 79271
+Saint-Marsault 79272=79123
+Saint-Martin-d'Entraigues 79275=79122
+Saint-Martin-de-Bernegoue 79273
+Saint-Martin-de-Mâcon 79274
+Saint-Martin-de-Saint-Maixent 79276
+Saint-Martin-de-Sanzay 79277
+Saint-Martin-du-Fouilloux 79278
+Saint-Martin-lès-Melle 79279
+Saint-Maurice-la-Fougereuse 79280
+Saint-Maxire 79281
+Saint-Médard 79282
+Saint-Pardoux 79285
+Saint-Paul-en-Gâtine 79286
+Saint-Pierre-à-Champ 79288=79063
+Saint-Pierre-des-Échaubrognes 79289
+Saint-Pompain 79290
+Saint-Porchaire 79291=79049
+Saint-Rémy 79293
+Saint-Romans-des-Champs 79294
+Saint-Romans-lès-Melle 79295
+Saint-Sauveur 79296=79049
+Saint-Symphorien 79298
+Saint-Varent 79299
+Saint-Vincent-la-Châtre 79301
+Sainte-Blandine 79240
+Sainte-Eanne 79246
+Sainte-Gemme 79250
+Sainte-Néomaye 79283
+Sainte-Ouenne 79284
+Sainte-Pezenne 79287=79191
+Sainte-Radegonde 79292
+Sainte-Soline 79297
+Sainte-Verge 79300
+Saivres 79302
+Salles 79303
+Sansais 79304
+Sanzay 79305
+Saurais 79306
+Sauzé-Vaussais 79307
+Sciecq 79308
+Scillé 79309
+Secondigné-sur-Belle 79310
+Secondigny 79311
+Séligné 79312
+Sepvret 79313
+Sompt 79314
+Souché 79315=79191
+Soudan 79316
+Soulièvres 79317=79005
+Soutiers 79318
+Souvigné 79319
+Surin 79320
+Taizé 79321
+Terves 79324=79049
+Tessonnière 79325
+Thénezay 79326
+Thorigné 79327
+Thorigny-sur-le-Mignon 79328
+Thouars 79329
+Tillou 79330
+Tourtenay 79331
+Trayes 79332
+Ulcot 79333
+Usseau 79334
+Vallans 79335
+Vançais 79336
+Vanzay 79338
+Vasles 79339
+Vausseroux 79340
+Vautebis 79341
+Vernoux-en-Gâtine 79342
+Vernoux-sur-Boutonne 79343
+Verrines-sous-Celles 79344=79061
+Verruyes 79345
+Viennay 79347
+Villefollet 79348
+Villemain 79349
+Villiers-en-Bois 79350
+Villiers-en-Plaine 79351
+Villiers-sur-Chizé 79352
+Vitré 79353
+Vouhé 79354
+Vouillé 79355
+Voultegon 79356
+Xaintray 79357

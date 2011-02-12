@@ -1,0 +1,26 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Akyurt
+Altindag
+Ayas
+Bala
+Beypazari
+Çamlidere
+Çankaya
+Çubuk
+Elmadag
+Etimesgut
+Evren
+Gölbasi
+Güdül
+Haymana
+Kalecik
+Kazan
+Keçiören
+Kizilcahamam
+Mamak
+Nallihan
+Polatli
+Sincan
+Sereflikoçhisar
+Yenimahalle

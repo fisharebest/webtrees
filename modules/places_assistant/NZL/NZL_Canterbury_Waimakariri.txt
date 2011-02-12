@@ -1,0 +1,24 @@
+﻿<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Ashley 
+Ashley Gorge 
+Camside 
+Clarkville 
+Coldstream 
+Cust 
+Eyreton 
+Fernside 
+Kaiapoi
+Loburn 
+Mairaki 
+Okuku 
+Oxford 
+Pines-Kairaki Beach 
+Rangiora 
+Sefton 
+Southbrook 
+Tuahiwi 
+Waikuku 
+West Eyreton 
+Woodend

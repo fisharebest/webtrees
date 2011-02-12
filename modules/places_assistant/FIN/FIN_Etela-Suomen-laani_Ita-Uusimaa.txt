@@ -1,0 +1,12 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Loviisa
+Porvoo
+Sipoo
+Askola
+Lapinjärvi
+Liljendal
+Myrskylä
+Pernaja
+Pukkila
+Ruotsinpyhtää

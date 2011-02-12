@@ -1,0 +1,22 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Blenheim Central 
+Havelock 
+Marlborough Sounds Coastal Marine 
+Marlborough Sounds Terrestrial 
+Mayfield 
+Omaka 
+Picton 
+Redwoodtown 
+Renwick 
+Seddon 
+Severn 
+Spring Creek-Riverlands 
+Springlands 
+Waikawa 
+Wairau 
+Ward 
+Whitney 
+Witherlea 
+Woodbourne

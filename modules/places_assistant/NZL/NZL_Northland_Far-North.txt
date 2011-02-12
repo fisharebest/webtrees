@@ -1,0 +1,40 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Ahipara 
+Awanui 
+Bay of Islands
+Bay of Islands 
+East Opua 
+Haruru Falls 
+Hokianga Harbour 
+Hokianga North 
+Hokianga South 
+Houhora 
+Kaeo 
+Kaikohe 
+Kaitaia East 
+Kaitaia West 
+Kawakawa 
+Kerikeri 
+Kohukohu 
+Mangapa-Matauri Bay 
+Mangonui East 
+Mangonui West 
+Moerewa 
+Motutangi-Kareponia 
+Ngapuhi-Kaikou 
+North Cape 
+Ohaeawai 
+Okaihau 
+Omapere and Opononi 
+Paihia 
+Pokere-Waihaha 
+Rangaunu Harbour 
+Rawene 
+Russell 
+Taipa Bay-Mangonui 
+Waihou Valley-Hupara 
+Waitangi-Te Tii 
+West Opua 
+Whangaroa Harbour 

@@ -1,0 +1,109 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Addington 
+Aorangi 
+Aranui 
+Avon Loop 
+Avondale 
+Avonhead 
+Avon-Heathcote Estuary 
+Avonside 
+Barrington North 
+Barrington South 
+Beckenham 
+Belfast 
+Bexley 
+Bishopdale 
+Bromley 
+Broomfield 
+Bryndwr 
+Burnside 
+Burwood 
+Casebrook 
+Cashmere East 
+Cashmere West 
+Cathedral Square 
+Chisnall 
+Dallington 
+Deans Bush 
+East Linwood 
+Edgeware 
+Ensors 
+Fendalton 
+Ferrymead 
+Hagley Park 
+Halswell East 
+Halswell South 
+Halswell West 
+Harewood 
+Hawthornden 
+Heathcote Valley 
+Hillmorton 
+Holmwood 
+Hoon Hay 
+Hoon Hay South 
+Hornby North 
+Hornby South 
+Ilam 
+Islington 
+Jellie Park 
+Kaimahi 
+Kennedys Bush 
+Linwood 
+Mairehau 
+Marshland 
+Masham 
+Mcleans Island 
+Merivale 
+Merrin 
+Middleton 
+Moncks Bay 
+Mt Pleasant 
+New Brighton 
+North Beach 
+North Linwood 
+North Richmond 
+Northcote 
+Oaklands 
+Opawa 
+Papanui 
+Parklands 
+Phillipstown 
+Rapaki Track 
+Rawhiti 
+Redwood North 
+Redwood South 
+Riccarton 
+Riccarton South 
+Riccarton West 
+Russley 
+Rutland 
+Sawyers Arms 
+Shirley East 
+Shirley West 
+Sockburn 
+Somerfield 
+South Brighton 
+South Richmond 
+Spreydon 
+St Albans East 
+St Albans West 
+St Martins 
+Strowan 
+Styx 
+Styx Mill 
+Sumner 
+Sydenham 
+Templeton 
+Travis 
+Upper Riccarton 
+Wairarapa 
+Waltham 
+Westburn 
+Westmorland 
+Wharenui 
+Wigram 
+Woolston South 
+Woolston West 
+Yaldhurst

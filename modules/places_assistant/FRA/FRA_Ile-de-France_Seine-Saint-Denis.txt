@@ -1,0 +1,43 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Aubervilliers 93001
+Aulnay-sous-Bois 93005
+Bagnolet 93006
+Bobigny 93008
+Bondy 93010
+Clichy-sous-Bois 93014
+Coubron 93015
+Drancy 93029
+Dugny 93030
+Épinay-sur-Seine 93031
+Gagny 93032
+Gournay-sur-Marne 93033
+L'Île-Saint-Denis 93039
+La Courneuve 93027
+Le Blanc-Mesnil 93007
+Le Bourget 93013
+Le Pré-Saint-Gervais 93061
+Le Raincy 93062
+Les Lilas 93045
+Les Pavillons-sous-Bois 93057
+Livry-Gargan 93046
+Montfermeil 93047
+Montreuil 93048
+Neuilly-Plaisance 93049
+Neuilly-sur-Marne 93050
+Noisy-le-Grand 93051
+Noisy-le-Sec 93053
+Pantin 93055
+Pierrefitte-sur-Seine 93059
+Romainville 93063
+Rosny-sous-Bois 93064
+Saint-Denis 93066
+Saint-Ouen 93070
+Sevran 93071
+Stains 93072
+Tremblay-en-France 93073
+Vaujours 93074
+Villemomble 93077
+Villepinte 93078
+Villetaneuse 93079

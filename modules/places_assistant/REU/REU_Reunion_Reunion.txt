@@ -1,0 +1,27 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Les Avirons 97401
+Bras-Panon 97402
+Cilaos 97424
+Entre-Deux 97403
+L'Étang-Salé 97404
+Petite-Île 97405
+La Plaine-des-Palmistes 97406
+Le Port 97407
+La Possession 97408
+Saint-André 97409
+Saint-Benoît 97410
+Saint-Denis 97411
+Sainte-Marie 97418
+Sainte-Rose 97419
+Sainte-Suzanne 97420
+Saint-Joseph 97412
+Saint-Leu 97413
+Saint-Louis 97414
+Saint-Paul 97415
+Saint-Philippe 97417
+Saint-Pierre 97416
+Salazie 97421
+Le Tampon 97422
+Les Trois-Bassins 97423   

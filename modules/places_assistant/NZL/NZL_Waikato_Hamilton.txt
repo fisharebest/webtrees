@@ -1,0 +1,44 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Bader 
+Beerescourt 
+Bryant 
+Brymer 
+Burbush 
+Chartwell 
+Chedworth 
+Clarkin 
+Claudelands 
+Dinsdale North 
+Dinsdale South 
+Enderley 
+Fairview Downs 
+Flagstaff 
+Frankton Junction 
+Glenview 
+Hamilton Central 
+Hamilton East 
+Hamilton Lake 
+Hillcrest West 
+Horsham Downs 
+Huntington 
+Insoll 
+Maeroa 
+Melville 
+Nawton 
+Naylor 
+Peachgrove 
+Peacocke 
+Porritt 
+Pukete 
+Pukete West 
+Queenwood 
+Riverlea 
+Rotokauri 
+Rototuna 
+Silverdale 
+Swarbrick 
+Sylvester 
+Te Rapa 
+University 

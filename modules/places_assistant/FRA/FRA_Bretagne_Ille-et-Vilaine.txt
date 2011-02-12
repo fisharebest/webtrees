@@ -1,0 +1,366 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Acigné 35001
+Amanlis 35002
+Andouillé-Neuville 35003
+Antrain 35004
+Arbrissel 35005
+Argentré-du-Plessis 35006
+Aubigné 35007
+Availles-sur-Seiche 35008
+Baguer-Morvan 35009
+Baguer-Pican 35010
+Baillé 35011
+Bain-de-Bretagne 35012
+Bains-sur-Oust 35013
+Bais 35014
+Balazé 35015
+Baulon 35016
+Bazouges-la-Pérouse 35019
+Bazouges-sous-Hédé 35020=35130
+Beaucé 35021
+Bécherel 35022
+Bédée 35023
+Betton 35024
+Billé 35025
+Bléruais 35026
+Boisgervilly 35027
+Boistrudan 35028
+Bonnemain 35029
+Bourg-des-Comptes 35033
+Bourgbarré 35032
+Bovel 35035
+Brain-sur-Vilaine 35036=35064
+Bréal-sous-Montfort 35037
+Bréal-sous-Vitré 35038
+Brécé 35039
+Breteil 35040
+Brie 35041
+Brielles 35042
+Broons-sur-Vilaine 35043=35068
+Broualan 35044
+Bruc-sur-Aff 35045
+Bruz 35047
+Campel 35048
+Cancale 35049
+Cardroc 35050
+Cesson-Sévigné 35051
+Champeaux 35052
+Chancé 35053
+Chanteloup 35054
+Chantepie 35055
+Chartres-de-Bretagne 35066
+Chasné-sur-Illet 35067
+Châteaubourg 35068
+Châteaugiron 35069
+Châteauneuf-d'Ille-et-Vilaine 35070
+Châtillon-en-Vendelais 35072
+Châtillon-sur-Seiche 35073=35206
+Chaumeré 35074=35096
+Chauvigné 35075
+Chavagne 35076
+Chelun 35077
+Cherrueix 35078
+Chevaigné 35079
+Cintré 35080
+Clayes 35081
+Coësmes 35082
+Coglès 35083
+Comblessac 35084
+Combourg 35085
+Combourtillé 35086
+Cornillé 35087
+Corps-Nuds 35088
+Crévin 35090
+Cuguen 35092
+Dinard 35093
+Dingé 35094
+Dol-de-Bretagne 35095
+Domagné 35096
+Domalain 35097
+Domloup 35099
+Dompierre-du-Chemin 35100
+Dourdain 35101
+Drouges 35102
+Eancé 35103
+Epiniac 35104
+Erbrée 35105
+Ercé-en-Lamée 35106
+Ercé-près-Liffré 35107
+Essé 35108
+Étrelles 35109
+Feins 35110
+Fleurigné 35112
+Forges-la-Forêt 35114
+Fougères 35115
+Gaël 35117
+Gahard 35118
+Gennes-sur-Seiche 35119
+Gévezé 35120
+Gosné 35121
+Goven 35123
+Grand-Fougeray 35124
+Guichen 35126
+Guignen 35127
+Guipel 35128
+Guipry 35129
+Hédé 35130
+Hirel 35132
+Iffendic 35133
+Irodouër 35135
+Janzé 35136
+Javené 35137
+L'Hermitage 35131
+La Baussaine 35017
+La Bazouge-du-Désert 35018
+La Bosse-de-Bretagne 35030
+La Bouëxière 35031
+La Boussac 35034
+La Chapelle-aux-Filtzméens 35056
+La Chapelle-Bouëxic 35057
+La Chapelle-Chaussée 35058
+La Chapelle-de-Brain 35064
+La Chapelle-des-Fougeretz 35059
+La Chapelle-du-Lou 35060
+La Chapelle-Erbrée 35061
+La Chapelle-Janson 35062
+La Chapelle-Saint-Aubert 35063
+La Chapelle-Thouarault 35065
+La Couyère 35089
+La Dominelais 35098
+La Fontenelle 35113
+La Fresnais 35116
+La Gouesnière 35122
+La Guerche-de-Bretagne 35125
+La Mézière 35177
+La Noë-Blanche 35202
+La Nouaye 35203
+La Richardais 35241
+La Selle-en-Coglès 35323
+La Selle-en-Luitré 35324
+La Selle-Guerchaise 35325
+La Ville-ès-Nonais 35358
+Laignelet 35138
+Laillé 35139
+Lalleu 35140
+Landavran 35141
+Landéan 35142
+Landujan 35143
+Langan 35144
+Langon 35145
+Langouet 35146
+Lanhélin 35147
+Lanrigan 35148
+Lassy 35149
+Le Châtellier 35071
+Le Crouais 35091
+Le Ferré 35111
+Le Loroux 35157
+Le Lou-du-Lac 35158
+Le Minihic-sur-Rance 35181
+Le Pertre 35217
+Le Petit-Fougeray 35218
+Le Rheu 35240
+Le Sel-de-Bretagne 35322
+Le Theil-de-Bretagne 35333
+Le Tiercent 35336
+Le Tronchet 35362
+Le Verger 35351
+Le Vivier-sur-Mer 35361
+Lécousse 35150
+Les Brulais 35046
+Les Iffs 35134
+Lieuron 35151
+Liffré 35152
+Lillemer 35153
+Livré-sur-Changeon 35154
+Lohéac 35155
+Longaulnay 35156
+Lourmais 35159
+Loutehel 35160
+Louvigné-de-Bais 35161
+Louvigné-du-Désert 35162
+Luitré 35163
+Marcillé-Raoul 35164
+Marcillé-Robert 35165
+Marpiré 35166
+Martigné-Ferchaud 35167
+Maure-de-Bretagne 35168
+Maxent 35169
+Mecé 35170
+Médréac 35171
+Meillac 35172
+Melesse 35173
+Mellé 35174
+Mernel 35175
+Messac 35176
+Mézières-sur-Couesnon 35178
+Miniac-Morvan 35179
+Miniac-sous-Bécherel 35180
+Moigné 35182=35240
+Mondevert 35183
+Mont-Dol 35186
+Montauban-de-Bretagne 35184
+Montautour 35185
+Monterfil 35187
+Montfort-sur-Meu 35188
+Montgermont 35189
+Monthault 35190
+Montours 35191
+Montreuil-des-Landes 35192
+Montreuil-le-Gast 35193
+Montreuil-sous-Pérouse 35194
+Montreuil-sur-Ille 35195
+Mordelles 35196
+Mouazé 35197
+Moulins 35198
+Moussé 35199
+Moutiers 35200
+Muel 35201
+Nouvoitou 35204
+Noyal-Châtillon-sur-Seiche 35206
+Noyal-sous-Bazouges 35205
+Noyal-sur-Vilaine 35207
+Orgères 35208
+Ossé 35209
+Pacé 35210
+Paimpont 35211
+Pancé 35212
+Paramé 35213=35288
+Parcé 35214
+Parigné 35215
+Parthenay-de-Bretagne 35216
+Pipriac 35219
+Piré-sur-Seiche 35220
+Pléchâtel 35221
+Pleine-Fougères 35222
+Plélan-le-Grand 35223
+Plerguer 35224
+Plesder 35225
+Pleugueneuc 35226
+Pleumeleuc 35227
+Pleurtuit 35228
+Pocé-les-Bois 35229
+Poilley 35230
+Poligné 35231
+Pont-Péan 35363
+Princé 35232
+Québriac 35233
+Quédillac 35234
+Rannée 35235
+Redon 35236
+Renac 35237
+Rennes 35238
+Retiers 35239
+Rimou 35242
+Romagné 35243
+Romazy 35244
+Romillé 35245
+Roz-Landrieux 35246
+Roz-sur-Couesnon 35247
+Sains 35248
+Saint-Armel 35250
+Saint-Aubin-d'Aubigné 35251
+Saint-Aubin-des-Landes 35252
+Saint-Aubin-du-Cormier 35253
+Saint-Aubin-du-Pavail 35254
+Saint-Benoît-des-Ondes 35255
+Saint-Briac-sur-Mer 35256
+Saint-Brice-en-Coglès 35257
+Saint-Brieuc-des-Iffs 35258
+Saint-Broladre 35259
+Saint-Christophe-de-Valains 35261
+Saint-Christophe-des-Bois 35260
+Saint-Coulomb 35263
+Saint-Didier 35264
+Saint-Domineuc 35265
+Saint-Erblon 35266
+Saint-Étienne-en-Coglès 35267
+Saint-Ganton 35268
+Saint-Georges-de-Chesné 35269
+Saint-Georges-de-Gréhaigne 35270
+Saint-Georges-de-Reintembault 35271
+Saint-Germain-du-Pinel 35272
+Saint-Germain-en-Coglès 35273
+Saint-Germain-sur-Ille 35274
+Saint-Gilles 35275
+Saint-Gondran 35276
+Saint-Gonlay 35277
+Saint-Grégoire 35278
+Saint-Guinoux 35279
+Saint-Hilaire-des-Landes 35280
+Saint-Jacques-de-la-Lande 35281
+Saint-Jean-sur-Couesnon 35282
+Saint-Jean-sur-Vilaine 35283
+Saint-Jouan-des-Guérets 35284
+Saint-Just 35285
+Saint-Léger-des-Prés 35286
+Saint-Lunaire 35287
+Saint-M'Hervé 35300
+Saint-M'Hervon 35301
+Saint-Malo 35288
+Saint-Malo-de-Phily 35289
+Saint-Malon-sur-Mel 35290
+Saint-Marc-le-Blanc 35292
+Saint-Marc-sur-Couesnon 35293
+Saint-Marcan 35291
+Saint-Maugan 35295
+Saint-Médard-sur-Ille 35296
+Saint-Méen-le-Grand 35297
+Saint-Melaine 35298=35068
+Saint-Méloir-des-Ondes 35299
+Saint-Onen-la-Chapelle 35302
+Saint-Ouen-des-Alleux 35304
+Saint-Ouen-la-Rouërie 35303
+Saint-Péran 35305
+Saint-Père 35306
+Saint-Pern 35307
+Saint-Pierre-de-Plesguen 35308
+Saint-Rémy-du-Plain 35309
+Saint-Sauveur-des-Landes 35310
+Saint-Séglin 35311
+Saint-Senoux 35312
+Saint-Servan-sur-Mer 35313=35288
+Saint-Suliac 35314
+Saint-Sulpice-des-Landes 35316
+Saint-Sulpice-la-Forêt 35315
+Saint-Symphorien 35317=35130
+Saint-Thual 35318
+Saint-Thurial 35319
+Saint-Uniac 35320
+Sainte-Anne-sur-Vilaine 35249
+Sainte-Colombe 35262
+Sainte-Marie 35294
+Saulnières 35321
+Sens-de-Bretagne 35326
+Servon-sur-Vilaine 35327
+Sixt-sur-Aff 35328
+Sougéal 35329
+Taillis 35330
+Talensac 35331
+Teillay 35332
+Thorigné-Fouillard 35334
+Thourie 35335
+Tinténiac 35337
+Torcé 35338
+Trans-la-Forêt 35339
+Treffendel 35340
+Tremblay 35341
+Trémeheuc 35342
+Tresboeuf 35343
+Tressé 35344
+Trévérien 35345
+Trimer 35346
+Val-d'Izé 35347
+Vendel 35348
+Veneffles 35349=35069
+Vergéal 35350
+Vern-sur-Seiche 35352
+Vezin-le-Coquet 35353
+Vieux-Viel 35354
+Vieux-Vy-sur-Couesnon 35355
+Vignoc 35356
+Villamée 35357
+Visseiche 35359
+Vitré 35360

@@ -1,0 +1,45 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Abbey Caves 
+Bream Head 
+Hikurangi 
+Horahora 
+Kamo East 
+Kamo West 
+Kensington 
+Mairtown 
+Marsden Point-Ruakaka 
+Maungatapere 
+Maunu 
+Morningside 
+Ngunguru 
+Onerahi 
+Opouteke-Tanekaha 
+Otaika-Portland 
+Otangarei 
+Parahaki 
+Port Whangarei
+Port-Limeburners 
+Punaruku-Kiripaka 
+Raumanga East 
+Raumanga West 
+Regent 
+Riverside 
+Sherwood Rise 
+Springs Flat 
+Te Hihi 
+Three Mile Bush 
+Tikipunga East 
+Tikipunga West 
+Tutukaka Harbour 
+Vinetown 
+Waiotira-Springfield 
+Waipu 
+Western Hills 
+Whangarei Central 
+Whangarei Harbour 
+Whangaruru Harbour 
+Wharekohe-Oakleigh 
+Whau Valley 
+Woodhill

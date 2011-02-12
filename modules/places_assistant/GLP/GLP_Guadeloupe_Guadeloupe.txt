@@ -1,0 +1,37 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Les Abymes 97101
+Anse-Bertrand 97102
+Baie-Mahault 97103
+Baillif 97104
+Basse-Terre 97105
+Bouillante 97106
+Capesterre-Belle-Eau 97107
+Capesterre-de-Marie-Galante 97108
+Deshaies 97111
+La Désirade 97110
+Le Gosier 97113
+Gourbeyre 97109
+Goyave 97114
+Grand-Bourg 97112
+Lamentin 97115
+Morne-à-l'Eau 97116
+Le Moule 97117
+Petit-Bourg 97118
+Petit-Canal 97119
+Pointe-à-Pitre 97120
+Pointe-Noire 97121
+Port-Louis 97122
+Saint-Barthélemy 97123
+Saint-Claude 97124
+Sainte-Anne 97128
+Sainte-Rose 97129
+Saint-François 97125
+Saint-Louis 97126
+Saint-Martin 97127
+Terre-de-Bas 97130
+Terre-de-Haut 97131
+Trois-Rivières 97132
+Vieux-Fort 97133
+Vieux-Habitants 97134

@@ -1,0 +1,58 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+** Petah Tiqwa Region
+** Southern Sharon
+Hod Hasharon
+Kefar Sava
+Petah Tiqwa
+Ra'annana
+Rosh Haayin
+Yehud-Newe Efrayim
+Yehud-Newe Monosson
+Adanim
+Bareqet
+Be'erot Yizhaq
+Bene Atarot
+Bet Berl
+El'ad
+Elishama
+Enat
+Eyal
+Gan Hayyim
+Ganne Am
+Ganne Tiqwa
+Gat Rimmon
+Giv'at Hashelosha
+Giv'at Hen
+Giv'at Koah
+Giv'at Shemu'el
+Hagor
+Horeshim
+Jaljulye
+Kafar Bara
+Kafar Qasem
+Kefar Malal
+Kefar Sirkin
+Kokhav Ya'ir
+Ma'as
+Magshimim
+Mattan
+Mazor
+Nahshonim
+Nehalim
+Newe Yamin
+Newe Yaraq
+Nir Eliyyahu
+Nirit
+Nofekh
+Ramat Hakovesh
+Ramot Hashavim
+Rinnatya
+Savyon
+Sede Hemed
+Sede Warburg
+Tirat Yehuda
+Yarhiv
+Yarqona
+Zofit
+Zur Natan

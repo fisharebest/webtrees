@@ -1,0 +1,36 @@
+﻿<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Algies Bay-Mahurangi 
+Army Bay 
+Cape Rodney 
+Dairy Flat-Redvale 
+Gulf Harbour 
+Hatfields Beach 
+Helensville 
+Kaipara River 
+Kaukapakapa 
+Kawau 
+Kumeu 
+Leigh 
+Manly 
+Matheson Bay 
+Muriwai Beach 
+Orewa 
+Parakai 
+Paremoremo West 
+Red Beach 
+Rewiti 
+Riverhead 
+Silverdale North 
+Silverdale South 
+Snells Beach 
+South Head 
+Stanmore Bay 
+Tahekeroa 
+Tauhoa-Puhoi 
+Taupaki 
+Waipareira West 
+Waiwera 
+Warkworth 
+Wellsford

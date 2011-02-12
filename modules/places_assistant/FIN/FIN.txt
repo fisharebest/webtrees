@@ -1,0 +1,20 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @vesion $Id$ -->
+<!-- source: http://www.kunnat.net/k_peruslistasivu.asp?path=1;29;341;31661;76262 -->
+Ahvenanmaa
+Eastern Finland
+Etelä-Suomen lääni
+Itä-Suomen lääni
+Lapin lääni
+Lapplands län
+Lapland Province
+Länsi-Suomen lääni
+Oulun lääni
+Oulu Province
+Southern Finland
+Södra Finlands län
+Uleåborgs län
+Västra Finlands län
+Western Finland
+Åland
+Östra Finlands län

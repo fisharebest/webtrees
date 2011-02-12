@@ -1,0 +1,18 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Forssa
+Hämeenlinna
+Riihimäki
+Hattula
+Hauho
+Hausjärvi
+Humppila
+Janakkala
+Jokioinen
+Kalvola
+Lammi
+Loppi
+Renko
+Tammela
+Tuulos
+Ypäjä

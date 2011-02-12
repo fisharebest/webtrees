@@ -1,0 +1,141 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+** Arava
+** Be'er Sheva Region
+** Besor Region
+** Dead Sea Region
+** Gerar Region
+** Nothern Negev Mountain
+** Southern Negev Mountain
+Arad
+Be'er Sheva
+Dimona
+Elat
+Netivot
+Ofaqim
+Rahat
+Alumim
+Ammi'oz
+Ar'ara-Banegev
+Ashalim
+Avshalom
+Be'eri
+Berosh
+Bet Hagaddi
+Bet Qama
+Bitha
+Deqel
+Devira
+Eilat
+Elifaz
+Elot
+En Gedi
+En Habesor
+En Hashelosha
+En Hazeva
+En Tamar
+En Yahav
+Eshbol
+Eshel Hanasi
+Gerofit
+Gevulot
+Gilat
+Giv'olim
+Har Amasa
+Hazerim
+Hazeva
+Holit
+Hura
+Iddan
+Ir Ovot
+Kefar Maymon
+Kemehin
+Keramim
+Kerem Shalom
+Kissufim
+Kuseife
+Lahav
+Laqye
+Lehavim
+Lotan
+Mabbu'im
+Ma'galim
+Magen
+Makchul
+Mash'abbe Sade
+Maslul
+Melilot
+Metar
+Midreshet Ben Gurion
+Mishmar Hanegev
+Mivtahim
+Mizpe Ramon
+Ne'ot Hakikkar
+Ne'ot Smadar
+Nevatim
+Newe Harif
+Newe Zohar
+Nir Aqiva
+Nir Moshe
+Nir Oz
+Nir Yizhaq
+Nirim
+Nizzana (Qehilat Hinuh)
+Nizzane Sinay
+Ohad
+Omer
+Pa'ame Tashaz
+Paran
+Pattish
+Peduyim
+Peri Gan
+Qelahim
+Qetura
+Rannen
+Re'im
+Retamim
+Revivim
+Sa'ad
+Samar
+Sansana
+Sappir
+Sede Avraham
+Sede Boqer
+Sede Nizzan
+Sede Zevi
+Segev-Shalom
+Shaharut
+Shani
+Sharsheret
+Shibbolim
+Shittim
+Shoqeda
+Shoval
+Shuva
+Sufa
+Talme Bilu
+Talme Eliyyahu
+Talme Yosef
+Te'ashur
+Tel Sheva
+Telalim
+Tequma
+Tidhar
+Tifrah
+Tushiyya
+Urim
+Ya'alon
+Yahel
+Yated
+Yattir
+Yeroham
+Yesha
+Yevul
+Yoshivya
+Yotvata
+Ze'elim
+Zeru'a
+Zimrat
+Zofar
+Zohar
+Zuqim

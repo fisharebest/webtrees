@@ -1608,12 +1608,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			print_findplace_link($element_id);
 			echo "</div>";
 			echo "<a href=\"javascript:;\" onclick=\"toggle_lati_long();\"><img src=\"", $WT_IMAGES["target"], "\" border=\"0\" align=\"middle\" alt=\"", translate_fact('LATI'), " / ", translate_fact('LONG'), "\" title=\"", translate_fact('LATI'), " / ", translate_fact('LONG'), "\" /></a>";
-			if ($SPLIT_PLACES) {
-				if (!function_exists("print_place_subfields")) {
-					require WT_ROOT.'includes/functions/functions_places.php';
-				}
-				setup_place_subfields($element_id);
-				print_place_subfields($element_id);
+			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
+				places_assistant_WT_Module::setup_place_subfields($element_id);
+				places_assistant_WT_Module::print_place_subfields($element_id);
 			}
 		}
 		else if (($cols>20 || $fact=="NPFX") && $readOnly=='') print_specialchar_link($element_id, false);

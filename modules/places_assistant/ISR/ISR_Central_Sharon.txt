@@ -1,0 +1,89 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+** Eastern Sharon
+** Western Sharon
+Netanya
+Qalansawe
+Tayibe
+Tire
+Ahituv
+Arsuf
+Avihayil
+Azri'el
+Bahan
+Bat Hefer
+Bazra
+Be'erotayim
+Bene Deror
+Bene Ziyyon
+Bet Halewi
+Bet Herut
+Bet Yannay
+Bet Yehoshua
+Bet Yizhaq-Sh. Hefer
+Bitan Aharon
+Burgeta
+Elyakhin
+Elyashiv
+En Hahoresh
+En Sarid
+En Wered
+Even Yehuda
+Ga'ash
+Gan Yoshiyya
+Gannot Hadar
+Ge'ule Teman
+Ge'ulim
+Giv'at Hayyim (Ihud)
+Giv'at Hayyim(Me'uhad)
+Giv'at Shappira
+Hadar Am
+Hama'pil
+Hanni'el
+Haogen
+Haruzim
+Havazzelet Hasharon
+Herev Le'et
+Herut
+Hibbat Ziyyon
+Hofit
+Hogla
+Kefar Avoda
+Kefar Haro'e
+Kefar Hayyim
+Kefar Hess
+Kefar Monash
+Kefar Netter
+Kefar Vitkin
+Kefar Ya'bez
+Kefar Yedidya
+Kefar Yona
+Ma'barot
+Mevo'ot Yam
+Mikhmoret
+Mishmar Hasharon
+Mishmeret
+Ne'urim
+Nizzane Oz
+Nordiyya
+Olesh
+Omez
+Pardesiyya
+Porat
+Qiryat Shelomo
+Rishpon
+Sha'ar Efrayim
+Shefayim
+Shoshannat Haamaqim
+Tel Mond
+Tel Yizhaq
+Tenuvot
+Udim
+Yad Hanna
+Yanuv
+Yaqum
+Ye'af
+Zemer
+Zoran-Qadima
+Zuqi Yam
+Zur Moshe

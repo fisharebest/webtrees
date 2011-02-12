@@ -1,0 +1,135 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+** Bethlehem Region
+** Hebron Region
+** Jenin Region
+** Jordan District
+** Ramalla Region
+** Samaria District
+** Tul Qarem Region
+Betar Illit
+Ma'ale Adummim
+Adora
+Ale Zahav
+Alfe Menashe
+Allon Shevut
+Almog
+Almon
+Argaman
+Ari'el
+Asfar
+Ateret
+Avne Hefez
+Barqan
+Bat Ayin
+Beqa'ot
+Berakha
+Bet Arye
+Bet El
+Bet Haarava
+Bet Horon
+Dolev
+Efrata
+El'azar
+Eli
+Elon More
+Elqana
+Enav
+Eshkolot
+Ez Efrayim
+Gannim
+Geva Binyamin
+Gilgal
+Gittit
+Giv'at Ze'ev
+Giv'on Hahadasha
+Haggay
+Hallamish
+Hamra
+Har Adar
+Har Gillo
+Hashmona'im
+Hemdat
+Hermesh
+Hinnanit
+Homesh
+Immanu'el
+Itamar
+Kaddim
+Karme Zur
+Karmel
+Kefar Adummim
+Kefar Ezyon
+Kefar Haoranim
+Kefar Tappuah
+Kokhav Hashahar
+Kokhav Ya'aqov
+Ma'ale Amos
+Ma'ale Efrayim
+Ma'ale Levona
+Ma'ale Mikhmas
+Ma'ale Shomeron
+Ma'on
+Maskiyyot
+Massu'a
+Mattityahu
+Mehola
+Mekhora
+Mevo Dotan
+Mevo Horon
+Mezadot Yehuda
+Migdal Oz
+Migdalim
+Mizpe Shalem
+Mizpe Yeriho
+Modi'in Illit
+Na'ale
+Nahali'el
+Negohot
+Netiv Hagedud
+Newe Daniyyel
+Nili
+Niran
+Nofim
+No'omi
+Noqedim
+Ofarim
+Ofra
+Oranit
+Otni'el
+Pedu'el
+Pene Hever
+Pesagot
+Peza'el
+Qalya
+Qarne Shomeron
+Qedar
+Qedumim
+Qiryat Arba
+Qiryat Netafim
+Rehan
+Revava
+Rimmonim
+Ro'i
+Rosh Zurim
+Rotem
+Sal'it
+Sa-Nur
+Sha'are Tiqwa
+Shadmot Mehola
+Shaqed
+Shave Shomeron
+Shilo
+Shim'a
+Suseya
+Talmon
+Telem
+Tene
+Teqoa
+Tomer
+Wered Yeriho
+Yafit
+Yaqir
+Yitav
+Yizhar
+Zufim

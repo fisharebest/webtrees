@@ -1,0 +1,10 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Ardanuç
+Arhavi
+Borçka
+Hopa
+Merkez
+Murgul
+Savsat
+Yusufeli

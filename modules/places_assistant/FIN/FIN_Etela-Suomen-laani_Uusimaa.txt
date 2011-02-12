@@ -1,0 +1,26 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Espoo
+Hanko
+Helsinki
+Hyvinkää
+Järvenpää
+Karjaa
+Karkkila
+Kauniainen
+Kerava
+Lohja
+Tammisaari
+Vantaa
+Inkoo
+Karjalohja
+Kirkkonummi
+Mäntsälä
+Nummi-Pusula
+Nurmijärvi
+Pohja
+Pornainen
+Sammatti
+Siuntio
+Tuusula
+Vihti

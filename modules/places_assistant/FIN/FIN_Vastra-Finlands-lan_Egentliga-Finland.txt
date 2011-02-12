@@ -1,0 +1,56 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Laitila
+Loimaa
+Nystad
+Nådendal
+Pargas
+Reso
+S:t Karins
+Salo
+Somero
+Åbo
+Alastaro
+Aura
+Bjärnå
+Dragsfjärd
+Finby
+Gustavs
+Halikko
+Houtskär
+Iniö
+Kiikala
+Kimito
+Kisko
+Korpo
+Koski TL
+Kuusjoki
+Lemu
+Lundo
+Marttila
+Masku
+Mellilä
+Merimasku
+Mietoinen
+Muurla
+Mynämäki
+Nagu
+Nousis
+Oripää
+Pemar
+Pertteli
+Pikis
+Pyhäranta
+Pöytyä
+Rimito
+Rusko
+Sagu
+Suomusjärvi
+Tarvasjoki
+Tövsala
+Vahto
+Vehmaa
+Velkua
+Villnäs
+Västanfjärd
+Yläne

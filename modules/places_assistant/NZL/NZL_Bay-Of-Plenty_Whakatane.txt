@@ -1,0 +1,23 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Allandale-Mokorua 
+Coastlands 
+Edgecumbe Community 
+Maraetotara 
+Matahina-Minginui 
+Matata 
+Murupara
+Ohope 
+Orini 
+Otakiri 
+Poroporo 
+Port Ohope 
+Rotoma 
+Taneatua Community 
+Te Teko 
+Trident 
+Urewera 
+Waimana 
+Whakatane North 
+Whakatane West 

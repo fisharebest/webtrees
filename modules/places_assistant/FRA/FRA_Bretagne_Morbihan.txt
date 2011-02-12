@@ -1,0 +1,267 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Allaire 56001
+Ambon 56002
+Arradon 56003
+Arzal 56004
+Arzon 56005
+Augan 56006
+Auray 56007
+Baden 56008
+Bangor 56009
+Baud 56010
+Béganne 56011
+Beignon 56012
+Belz 56013
+Berné 56014
+Berric 56015
+Bieuzy 56016
+Bignan 56017
+Billiers 56018
+Billio 56019
+Bohal 56020
+Bono 56262
+Brandérion 56021
+Brandivy 56022
+Brech 56023
+Bréhan 56024
+Brignac 56025
+Bubry 56026
+Buléon 56027
+Caden 56028
+Calan 56029
+Camoël 56030
+Camors 56031
+Campénéac 56032
+Carentoir 56033
+Carnac 56034
+Caro 56035
+Caudan 56036
+Cléguer 56040
+Cléguérec 56041
+Colpo 56042
+Concoret 56043
+Cournon 56044
+Crach 56046
+Crédin 56047
+Croixanvec 56049
+Cruguel 56051
+Damgan 56052
+Elven 56053
+Erdeven 56054
+Étel 56055
+Évriguet 56056
+Férel 56058
+Gâvres 56062
+Gestel 56063
+Glénac 56064
+Gourhel 56065
+Gourin 56066
+Grand-Champ 56067
+Groix 56069
+Guégon 56070
+Guéhenno 56071
+Gueltas 56072
+Guémené-sur-Scorff 56073
+Guénin 56074
+Guer 56075
+Guern 56076
+Guidel 56078
+Guillac 56079
+Guilliers 56080
+Guiscriff 56081
+Helléan 56082
+Hennebont 56083
+Hoedic 56085
+Île-aux-Moines 56087
+Île-d'Arz 56088
+Île-d'Houat 56086
+Inguiniel 56089
+Inzinzac-Lochrist 56090
+Josselin 56091
+Kerfourn 56092
+Kergrist 56093
+Kernascléden 56264
+Kervignac 56094
+Keryado 56095=56121
+La Chapelle-Caro 56037
+La Chapelle-Gaceline 56038
+La Chapelle-Neuve 56039
+La Croix-Helléan 56050
+La Gacilly 56061
+La Grée-Saint-Laurent 56068
+La Roche-Bernard 56195
+La Trinité-Porhoët 56257
+La Trinité-sur-Mer 56258
+La Trinité-Surzur 56259
+La Vraie-Croix 56261
+Landaul 56096
+Landévant 56097
+Lanester 56098
+Langoëlan 56099
+Langonnet 56100
+Languidic 56101
+Lanouée 56102
+Lantillac 56103
+Lanvaudan 56104
+Lanvénégen 56105
+Larmor-Baden 56106
+Larmor-Plage 56107
+Larré 56108
+Lauzach 56109
+Le Cours 56045
+Le Croisty 56048
+Le Faouët 56057
+Le Guerno 56077
+Le Hézo 56084
+Le Palais 56152
+Le Roc-Saint-André 56197
+Le Saint 56201
+Le Sourn 56246
+Le Tour-du-Parc 56252
+Les Forges 56059
+Les Fougerêts 56060
+Lignol 56110
+Limerzel 56111
+Lizio 56112
+Locmalo 56113
+Locmaria 56114
+Locmaria-Grand-Champ 56115
+Locmariaquer 56116
+Locminé 56117
+Locmiquélic 56118
+Locoal-Mendon 56119
+Locqueltas 56120
+Lorient 56121
+Loyat 56122
+Malansac 56123
+Malestroit 56124
+Malguénac 56125
+Marzan 56126
+Mauron 56127
+Melrand 56128
+Ménéac 56129
+Merlevenez 56130
+Meslan 56131
+Meucon 56132
+Missiriac 56133
+Mohon 56134
+Molac 56135
+Monteneuf 56136
+Monterblanc 56137
+Monterrein 56138
+Montertelot 56139
+Moréac 56140
+Moustoir-Ac 56141
+Moustoir-Remungol 56142
+Muzillac 56143
+Naizin 56144
+Néant-sur-Yvel 56145
+Neulliac 56146
+Nivillac 56147
+Nostang 56148
+Noyal-Muzillac 56149
+Noyal-Pontivy 56151
+Noyalo 56150
+Péaule 56153
+Peillac 56154
+Pénestin 56155
+Persquen 56156
+Plaudren 56157
+Plescop 56158
+Pleucadeuc 56159
+Pleugriffet 56160
+Ploemel 56161
+Ploemeur 56162
+Ploërdut 56163
+Ploeren 56164
+Ploërmel 56165
+Plouay 56166
+Plougoumelen 56167
+Plouharnel 56168
+Plouhinec 56169
+Plouray 56170
+Pluherlin 56171
+Plumelec 56172
+Pluméliau 56173
+Plumelin 56174
+Plumergat 56175
+Pluneret 56176
+Pluvigner 56177
+Pont-Scorff 56179
+Pontivy 56178
+Porcaro 56180
+Port-Louis 56181
+Priziac 56182
+Quelneuc 56183
+Questembert 56184
+Quéven 56185
+Quiberon 56186
+Quily 56187
+Quistinic 56188
+Radenac 56189
+Réguiny 56190
+Réminiac 56191
+Remungol 56192
+Riantec 56193
+Rieux 56194
+Rochefort-en-Terre 56196
+Rohan 56198
+Roudouallec 56199
+Ruffiac 56200
+Saint-Abraham 56202
+Saint-Aignan 56203
+Saint-Allouestre 56204
+Saint-Armel 56205
+Saint-Avé 56206
+Saint-Barthélemy 56207
+Saint-Brieuc-de-Mauron 56208
+Saint-Caradec-Trégomel 56210
+Saint-Congard 56211
+Saint-Dolay 56212
+Saint-Gérand 56213
+Saint-Gildas-de-Rhuys 56214
+Saint-Gonnery 56215
+Saint-Gorgon 56216
+Saint-Gouvry 56217=56198
+Saint-Gravé 56218
+Saint-Guyomard 56219
+Saint-Jacut-les-Pins 56221
+Saint-Jean-Brévelay 56222
+Saint-Jean-la-Poterie 56223
+Saint-Laurent-sur-Oust 56224
+Saint-Léry 56225
+Saint-Malo-de-Beignon 56226
+Saint-Malo-des-Trois-Fontaines 56227
+Saint-Marcel 56228
+Saint-Martin 56229
+Saint-Nicolas-du-Tertre 56230
+Saint-Nolff 56231
+Saint-Perreux 56232
+Saint-Philibert 56233
+Saint-Pierre-Quiberon 56234
+Saint-Samson 56235=56198
+Saint-Servant 56236
+Saint-Thuriau 56237
+Saint-Tugdual 56238
+Saint-Vincent-sur-Oust 56239
+Sainte-Anne-d'Auray 56263
+Sainte-Brigitte 56209
+Sainte-Hélène 56220
+Sarzeau 56240
+Sauzon 56241
+Séglien 56242
+Séné 56243
+Sérent 56244
+Silfiac 56245
+Sulniac 56247
+Surzur 56248
+Taupont 56249
+Théhillac 56250
+Theix 56251
+Tréal 56253
+Trédion 56254
+Treffléan 56255
+Tréhorenteuc 56256
+Vannes 56260

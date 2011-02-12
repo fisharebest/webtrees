@@ -1,0 +1,20 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Ardmore 
+Bremner 
+Drury 
+Hingaia 
+Massey Park 
+North East Papakura 
+Opaheke 
+Pahurehure 
+Papakura Central 
+Papakura East 
+Papakura North 
+Papakura South 
+Red Hill 
+Rosehill 
+Takanini North 
+Takanini South 
+Takanini West

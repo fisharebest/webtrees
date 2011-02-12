@@ -1,0 +1,30 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.brabantwallon.be/index.cfm?Content_ID=7068988&R_ID=4506766 -->
+Beauvechain
+Braine-l'Alleud
+Braine-le-Château
+Chastre
+Chaumont-Gistoux
+Court-Saint-Etienne
+Genappe
+Grez-Doiceau
+Hélécine
+Incourt
+Ittre
+Jodoigne
+La Hulpe
+Lasne
+Mont-Saint-Guibert
+Nivelles
+Orp-Jauche
+Ottignies-Louvain-la-Neuve
+Perwez
+Ramillies
+Rebecq
+Rixensart
+Tubize
+Villers-la-Ville
+Walhain
+Waterloo
+Wavre

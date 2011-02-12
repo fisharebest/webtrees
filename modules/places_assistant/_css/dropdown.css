@@ -1,0 +1,182 @@
+/*
+ * @version $Id$
+ * @author http://momche.net
+ */
+
+body
+{
+	/*background-color: #DDD;*/
+}
+
+div.acinputContainer
+{
+	float: left;
+	width: 240px;
+	height: 20px;
+	margin:0px;
+	padding: 0px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: buttonshadow buttonhighlight buttonhighlight buttonshadow;
+	background-color: buttonface;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.acinputContainer input
+{
+	width: 220px;
+	height: 100%;
+	border-width: 0px;
+	margin:0px;
+	padding: 0px;
+	clear: none;
+	float: left;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.acinputContainer input.button
+{
+	/*
+	display: inline;
+	clear: none;
+	float: right;
+	*/
+	font-size: 2px;
+	width:18px;
+	height: 100%;
+	border-width: 1px;
+	background-image:url(arrowdown.gif);
+	background-repeat: no-repeat;
+	background-position: 2px 2px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+input.dropdown
+{
+	width: 160px;
+	border: 1px solid #AAAAAA;
+	border-color: #888 #aaa #aaa #888;
+	margin-bottom: 2px;
+	-moz-box-sizing		: border-box;
+}
+
+input.acbutton
+{
+	position: absolute;
+	font-size: 2px;
+	width: 14px;
+	height: 16px;
+	border-width: 1px;
+	background-image:url(arrowdown.gif);
+	background-repeat: no-repeat;
+	background-position: 0px 3px;
+	margin:0px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+div.autocomplete_holder
+{
+	position: absolute;
+	visibility: hidden;
+	background-color: #fff;
+	-moz-box-sizing		: border-box;
+}
+
+div.autocomplete_firstborder
+{
+	border-width: 1px;
+	border-style: solid;
+	border-color: buttonshadow buttonhighlight buttonhighlight buttonshadow;
+	padding: 0px;
+	-moz-box-sizing		: border-box;
+}
+
+div.autocomplete_secondborder
+{
+	border-style: none;
+	padding: 2px;
+	-moz-box-sizing		: border-box;
+}
+
+ul.autocomplete
+{
+	width				: 100%;
+	height 				: 95px;
+	overflow-y			: auto;
+	overflow			: -moz-scrollbars-vertical;
+
+	font				: menu;
+
+	margin				: 0px;
+	margin-left			: 0px;
+	padding-left		: 0px;
+	text-indent			: 0px;
+
+	list-style-type		: none;
+	vertical-align		: middle;
+
+	background-repeat   : no-repeat;
+	-moz-box-sizing		: border-box;
+}
+
+ul.autocomplete li
+{
+	padding				: 0px;
+	paddnig-left		: 5px;
+	background-position : 2px 0px;
+	background-repeat	: no-repeat;
+
+	line-height			: 13px;
+	vertical-align		: top;
+	margin-top			: 0px;
+	margin-bottom		: 0px;
+	border-style		: none;
+	-moz-box-sizing		: border-box;
+}
+
+ul.autocomplete li a:hover
+{
+	color: highlighttext;
+	background-color: highlight;
+	border-color: #e0e0e0;
+
+	/*background-image: url( arrow-left.gif );
+	background-position: center right;
+	background-repeat: no-repeat;
+	border: 1px dotted red;*/
+}
+
+ul.autocomplete li a.selected
+{
+	border				: 1px solid #444;
+	background-color	: #fcbdb6;
+}
+
+ul.autocomplete li a.selected:hover
+{
+	border				: 1px solid #e0e0e0;
+	color				: white;
+	background-color	: #f00;
+	background-image: none;
+}
+
+ul.autocomplete li a, ul.autocomplete li a:hover
+ul.autocomplete li a.selected, ul.autocomplete li a.selected:hover
+{
+	display				: block;
+	width				: 100%;
+	padding				: 2px;
+	text-decoration		: none;
+	color				: #333;
+	border				: 1px solid #fff;
+	-moz-box-sizing		: border-box;
+
+	margin-left			: -14px;
+	voice-family		: "\"}\"";
+	voice-family		: inherit;
+	margin-left			: 0px;
+}

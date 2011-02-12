@@ -1,0 +1,50 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+** Rishon LeZiyyon Region
+** Rehovot Region
+Nes Ziyyona
+Rehovot
+Rishon LeZiyyon
+Yavne
+Aseret
+Ayanot
+Ben Zakkay
+Benaya
+Bene Ayish
+Bene Darom
+Bene Re'em
+Bet El'azari
+Bet Gamli'el
+Bet Hanan
+Bet Hilqiyya
+Bet Oved
+Bet Rabban
+Gan Hadarom
+Gan Shelomo
+Gan Soreq
+Gan Yavne
+Ganne Yohanan
+Ge'alya
+Gedera
+Gibbeton
+Giv'at Brenner
+Hafez Hayyim
+Kefar Aviv
+Kefar Bilu
+Kefar Hanagid
+Kefar Mordekhay
+Kerem Yavne
+Mazkeret Batya
+Meshar
+Misgav Dov
+Neta'im
+Nir Gallim
+Palmahim
+Qevuzat Yavne
+Qidron
+Qiryat Eqron
+Sha'are Avraham
+Shedema
+Yad Binyamin
+Yesodot
+Zofiyya

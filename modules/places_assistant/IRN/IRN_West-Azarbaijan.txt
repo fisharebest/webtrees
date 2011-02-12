@@ -1,0 +1,17 @@
+﻿<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id -->
+<!-- @see http://en.wikipedia.org/wiki/Counties_of_Iran -->
+Bukan
+Chaldoran
+Khoy
+Mahabad
+Maku
+Miandoab
+Naqadeh
+Oshnavieh
+Piranshahr
+Salmas
+Sardasht
+Shahindej
+Takab
+Urmia

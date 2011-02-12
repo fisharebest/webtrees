@@ -1,0 +1,20 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Kaskinen
+Kristiinankaupunki
+Närpiö
+Pietarsaari
+Uusikaarlepyy
+Vaasa
+Isokyrö
+Korsnäs
+Kruunupyy
+Laihia
+Luoto
+Maalahti
+Maksamaa
+Mustasaari
+Oravainen
+Pedesören kunta
+Vähäkyrö
+Vöyri

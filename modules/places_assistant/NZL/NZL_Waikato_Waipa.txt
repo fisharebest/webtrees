@@ -1,0 +1,32 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Allen Road 
+Cambridge Central 
+Cambridge North 
+Cambridge West 
+Hautapu 
+Kaipaki 
+Karapiro 
+Kihikihi 
+Kihikihi Flat 
+Lake Cameron 
+Lake Ngaroto 
+Leamington East 
+Leamington West 
+Ngahinapouri 
+Ohaupo 
+Pirongia 
+Pokuru 
+Pukerimu 
+Rotongata 
+Rotoorangi 
+Te Awamutu Central 
+Te Awamutu East 
+Te Awamutu South 
+Te Awamutu West 
+Te Pahu 
+Te Rahu 
+Te Rore 
+Temple View 
+Tokanui 

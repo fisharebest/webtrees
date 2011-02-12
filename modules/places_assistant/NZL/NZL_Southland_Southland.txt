@@ -1,0 +1,41 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Balfour Community 
+Centre Island 
+Dacre 
+Edendale Community 
+Fairfax 
+Fiordland 
+Hokonui 
+Jacobs River Estuary
+Kaweku 
+Lake Hauroko 
+Lake Manapouri 
+Lake Te Anau 
+Lumsden Community 
+Makarewa North 
+Manapouri 
+Mararoa River 
+Milford 
+Milford Sound 
+Mossburn 
+Nightcaps 
+Ohai 
+Otautau 
+Riversdale Community 
+Riverton East 
+Riverton West 
+Stewart Island 
+Te Anau 
+Te Waewae 
+Toetoes 
+Tuatapere 
+Waianiwa 
+Waikaia 
+Wairio 
+Waituna 
+Wallacetown 
+Winton 
+Woodlands 
+Wyndham 

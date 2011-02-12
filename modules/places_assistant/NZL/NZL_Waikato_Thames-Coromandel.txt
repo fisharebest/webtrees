@@ -1,0 +1,13 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Coromandel 
+Hikuai 
+Moanataiari 
+Parawai 
+Pauanui Beach 
+Tairua 
+Te Puru-Thornton Bay 
+Te Rerenga 
+Whangamata 
+Whitianga 

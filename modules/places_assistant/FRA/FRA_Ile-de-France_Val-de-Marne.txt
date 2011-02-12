@@ -1,0 +1,50 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Ablon-sur-Seine 94001
+Alfortville 94002
+Arcueil 94003
+Boissy-Saint-Léger 94004
+Bonneuil-sur-Marne 94011
+Bry-sur-Marne 94015
+Cachan 94016
+Champigny-sur-Marne 94017
+Charenton-le-Pont 94018
+Chennevières-sur-Marne 94019
+Chevilly-Larue 94021
+Choisy-le-Roi 94022
+Créteil 94028
+Fontenay-sous-Bois 94033
+Fresnes 94034
+Gentilly 94037
+Ivry-sur-Seine 94041
+Joinville-le-Pont 94042
+L'Haÿ-les-Roses 94038
+La Queue-en-Brie 94060
+Le Kremlin-Bicêtre 94043
+Le Perreux-sur-Marne 94058
+Le Plessis-Trévise 94059
+Limeil-Brévannes 94044
+Maisons-Alfort 94046
+Mandres-les-Roses 94047
+Marolles-en-Brie 94048
+Nogent-sur-Marne 94052
+Noiseau 94053
+Orly 94054
+Ormesson-sur-Marne 94055
+Périgny 94056
+Rungis 94065
+Saint-Mandé 94067
+Saint-Maur-des-Fossés 94068
+Saint-Maurice 94069
+Santeny 94070
+Sucy-en-Brie 94071
+Thiais 94073
+Valenton 94074
+Villecresnes 94075
+Villejuif 94076
+Villeneuve-le-Roi 94077
+Villeneuve-Saint-Georges 94078
+Villiers-sur-Marne 94079
+Vincennes 94080
+Vitry-sur-Seine 94081

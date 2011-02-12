@@ -1,0 +1,385 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Aix-en-Diois 26001
+Albon 26002
+Aleyrac 26003
+Alixan 26004
+Allan 26005
+Allex 26006
+Ambonil 26007
+Ancône 26008
+Andancette 26009
+Anneyron 26010
+Aouste-sur-Sye 26011
+Arnayon 26012
+Arpavon 26013
+Arthémonay 26014
+Aubenasson 26015
+Aubres 26016
+Aucelon 26017
+Aulan 26018
+Aurel 26019
+Autichamp 26021
+Ballons 26022
+Barbières 26023
+Barcelonne 26024
+Barnave 26025
+Barret-de-Lioure 26026
+Barsac 26027
+Bathernay 26028
+Beaufort-sur-Gervanne 26035
+Beaumont-en-Diois 26036
+Beaumont-lès-Valence 26037
+Beaumont-Monteux 26038
+Beauregard-Baret 26039
+Beaurières 26040
+Beausemblant 26041
+Beauvallon 26042
+Beauvoisin 26043
+Béconne 26044=26276
+Bellecombe-Tarendol 26046
+Bellegarde-en-Diois 26047
+Bénivay-Ollon 26048
+Bésayes 26049
+Bésignan 26050
+Bézaudun-sur-Bîne 26051
+Bonlieu-sur-Roubion 26052
+Bonneval-en-Diois 26053=26055
+Bouchet 26054
+Boulc 26055
+Bourdeaux 26056
+Bourg-de-Péage 26057
+Bourg-lès-Valence 26058
+Bouvante 26059
+Bouvières 26060
+Bren 26061
+Brette 26062
+Buis-les-Baronnies 26063
+Chabeuil 26064
+Chabrillan 26065
+Chalancon 26067
+Chamaloc 26069
+Chamaret 26070
+Chanos-Curson 26071
+Chantemerle-les-Blés 26072
+Chantemerle-lès-Grignan 26073
+Charens 26076
+Charmes-sur-l'Herbasse 26077
+Charols 26078
+Charpey 26079
+Chastel-Arnaud 26080
+Châteaudouble 26081
+Châteauneuf-de-Bordette 26082
+Châteauneuf-de-Galaure 26083
+Châteauneuf-du-Rhône 26085
+Châteauneuf-sur-Isère 26084
+Châtillon-en-Diois 26086
+Châtillon-Saint-Jean 26087
+Chatuzange-le-Goubet 26088
+Chaudebonne 26089
+Chauvac-Laux-Montaux 26091
+Chavannes 26092
+Clansayes 26093
+Claveyson 26094
+Cléon-d'Andran 26095
+Clérieux 26096
+Cliousclat 26097
+Cobonne 26098
+Colonzelle 26099
+Combovin 26100
+Comps 26101
+Condillac 26102
+Condorcet 26103
+Cornillac 26104
+Cornillon-sur-l'Oule 26105
+Crépol 26107
+Crest 26108
+Creyers 26109=26354
+Crozes-Hermitage 26110
+Crupies 26111
+Curnier 26112
+Die 26113
+Dieulefit 26114
+Divajeu 26115
+Donzère 26116
+Échevis 26117
+Épinouze 26118
+Érôme 26119
+Espeluche 26121
+Espenel 26122
+Establet 26123
+Étoile-sur-Rhône 26124
+Eurre 26125
+Eygalayes 26126
+Eygaliers 26127
+Eygluy-Escoulin 26128
+Eymeux 26129
+Eyroles 26130
+Eyzahut 26131
+Fay-le-Clos 26133
+Félines-sur-Rimandoule 26134
+Ferrassières 26135
+Francillon-sur-Roubion 26137
+Génissieux 26139
+Gervans 26380
+Geyssans 26140
+Gigors-et-Lozeron 26141
+Glandage 26142
+Grane 26144
+Granges-les-Beaumont 26379
+Grignan 26146
+Gumiane 26147
+Hauterives 26148
+Hostun 26149
+Izon-la-Bruisse 26150
+Jaillans 26381
+Jansac 26151=26262
+Jonchères 26152
+L'Escoulin 26120=26128
+La Bâtie-Crémezin 26029=26136
+La Bâtie-des-Fonds 26030
+La Bâtie-Rolland 26031
+La Baume-Cornillane 26032
+La Baume-d'Hostun 26034
+La Baume-de-Transit 26033
+La Bégude-de-Mazenc 26045
+La Chapelle-en-Vercors 26074
+La Charce 26075
+La Chaudière 26090
+La Coucourde 26106
+La Fare 26132=26199
+La Garde-Adhémar 26138
+La Laupie 26157
+La Motte-Chalancon 26215
+La Motte-de-Galaure 26216
+La Motte-Fanjas 26217
+La Penne-sur-l'Ouvèze 26229
+La Répara 26265=26020
+La Répara-Auriples 26020
+La Roche-de-Glun 26271
+La Roche-sur-Grane 26277
+La Roche-sur-le-Buis 26278
+La Rochette-du-Buis 26279
+La Rochette-sur-Crest 26280=26365
+La Touche 26352
+Laborel 26153
+Lachau 26154
+Lapeyrouse-Mornay 26155
+Larnage 26156
+Laux-Montaux 26158=26091
+Laval-d'Aix 26159
+Laveyron 26160
+Le Chaffal 26066
+Le Chalon 26068
+Le Grand-Serre 26143
+Le Pègue 26226
+Le Pilhon 26237=26136
+Le Poët-Célard 26241
+Le Poët-en-Percip 26242
+Le Poët-Laval 26243
+Le Poët-Sigillat 26244
+Lemps 26161
+Lens-Lestang 26162
+Léoncel 26163
+Les Granges-Gontardes 26145
+Les Pilles 26238
+Les Prés 26255
+Les Tonils 26351
+Les Tourrettes 26353
+Lesches-en-Diois 26164
+Livron-sur-Drôme 26165
+Loriol-sur-Drôme 26166
+Luc-en-Diois 26167
+Lus-la-Croix-Haute 26168
+Malataverne 26169
+Malissard 26170
+Manas 26171
+Manthes 26172
+Marches 26173
+Margès 26174
+Marignac-en-Diois 26175
+Marsanne 26176
+Marsaz 26177
+Menglon 26178
+Mercurol 26179
+Mérindol-les-Oliviers 26180
+Mévouillon 26181
+Mirabel-aux-Baronnies 26182
+Mirabel-et-Blacons 26183
+Miribel 26184
+Mirmande 26185
+Miscon 26186
+Molières-Glandaz 26187
+Mollans-sur-Ouvèze 26188
+Montauban-sur-l'Ouvèze 26189
+Montaulieu 26190
+Montboucher-sur-Jabron 26191
+Montbrison-sur-Lez 26192
+Montbrun-les-Bains 26193
+Montchenu 26194
+Montclar-sur-Gervanne 26195
+Montéléger 26196
+Montélier 26197
+Montélimar 26198
+Montferrand-la-Fare 26199
+Montfroc 26200
+Montguers 26201
+Montjoux 26202
+Montjoyer 26203
+Montlaur-en-Diois 26204
+Montmaur-en-Diois 26205
+Montmeyran 26206
+Montmiral 26207
+Montoison 26208
+Montréal-les-Sources 26209
+Montrigaud 26210
+Montségur-sur-Lauzon 26211
+Montvendre 26212
+Moras-en-Valloire 26213
+Mornans 26214
+Mours-Saint-Eusèbe 26218
+Mureils 26219
+Nyons 26220
+Omblèze 26221
+Orcinas 26222
+Oriol-en-Royans 26223
+Ourches 26224
+Parnans 26225
+Pelonne 26227
+Pennes-le-Sec 26228
+Petit-Paris 26230=26321
+Peyrins 26231
+Peyrus 26232
+Piégon 26233
+Piégros-la-Clastre 26234
+Pierrelatte 26235
+Pierrelongue 26236
+Plaisians 26239
+Plan-de-Baix 26240
+Pommerol 26245
+Ponet-et-Saint-Auban 26246
+Ponsas 26247
+Pont-de-Barret 26249
+Pont-de-l'Isère 26250
+Pontaix 26248
+Portes-en-Valdaine 26251
+Portes-lès-Valence 26252
+Poyols 26253
+Pradelle 26254
+Propiac 26256
+Puy-Saint-Martin 26258
+Puygiron 26257
+Ratières 26259
+Ravel-et-Ferriers 26260=26055
+Réauville 26261
+Recoubeau-Jansac 26262
+Reilhanette 26263
+Rémuzat 26264
+Rimon-et-Savel 26266
+Rioms 26267
+Roche-Saint-Secret-Béconne 26276
+Rochebaudin 26268
+Rochebrune 26269
+Rochechinard 26270
+Rochefort-en-Valdaine 26272
+Rochefort-Samson 26273
+Rochefourchat 26274
+Rochegude 26275
+Romans-sur-Isère 26281
+Romeyer 26282
+Rottier 26283
+Roussas 26284
+Rousset-les-Vignes 26285
+Roussieux 26286
+Roynac 26287
+Sahune 26288
+Saillans 26289
+Saint-Agnan-en-Vercors 26290
+Saint-Andéol 26291
+Saint-Auban-sur-l'Ouvèze 26292
+Saint-Avit 26293
+Saint-Bardoux 26294
+Saint-Barthélemy-de-Vals 26295
+Saint-Benoit-en-Diois 26296
+Saint-Bonnet-de-Valclérieux 26297
+Saint-Christophe-et-le-Laris 26298
+Saint-Dizier-en-Diois 26300
+Saint-Donat-sur-l'Herbasse 26301
+Saint-Ferréol-Trente-Pas 26304
+Saint-Gervais-sur-Roubion 26305
+Saint-Jean-en-Royans 26307
+Saint-Julien-en-Quint 26308
+Saint-Julien-en-Vercors 26309
+Saint-Laurent-d'Onay 26310
+Saint-Laurent-en-Royans 26311
+Saint-Marcel-lès-Sauzet 26312
+Saint-Marcel-lès-Valence 26313
+Saint-Martin-d'Août 26314
+Saint-Martin-en-Vercors 26315
+Saint-Martin-le-Colonel 26316
+Saint-Maurice-sur-Eygues 26317
+Saint-May 26318
+Saint-Michel-sur-Savasse 26319
+Saint-Nazaire-en-Royans 26320
+Saint-Nazaire-le-Désert 26321
+Saint-Pantaléon-les-Vignes 26322
+Saint-Paul-lès-Romans 26323
+Saint-Paul-Trois-Châteaux 26324
+Saint-Rambert-d'Albon 26325
+Saint-Restitut 26326
+Saint-Roman 26327
+Saint-Sauveur-en-Diois 26328
+Saint-Sauveur-Gouvernet 26329
+Saint-Sorlin-en-Valloire 26330
+Saint-Thomas-en-Royans 26331
+Saint-Uze 26332
+Saint-Vallier 26333
+Saint-Vincent-la-Commanderie 26382
+Sainte-Croix 26299
+Sainte-Eulalie-en-Royans 26302
+Sainte-Euphémie-sur-Ouvèze 26303
+Sainte-Jalle 26306
+Salettes 26334
+Salles-sous-Bois 26335
+Saou 26336
+Saulce-sur-Rhône 26337
+Sauzet 26338
+Savasse 26339
+Séderon 26340
+Serves-sur-Rhône 26341
+Solérieux 26342
+Souspierre 26343
+Soyans 26344
+Suze 26346
+Suze-la-Rousse 26345
+Tain-l'Hermitage 26347
+Taulignan 26348
+Tersanne 26349
+Teyssières 26350
+Treschenu-Creyers 26354
+Triors 26355
+Truinas 26356
+Tulette 26357
+Upie 26358
+Vachères-en-Quint 26359
+Val-Maravel 26136
+Valaurie 26360
+Valdrôme 26361
+Valence 26362
+Valouse 26363
+Vassieux-en-Vercors 26364
+Vaunaveys-la-Rochette 26365
+Veaunes 26366
+Venterol 26367
+Vercheny 26368
+Verclause 26369
+Vercoiran 26370
+Véronne 26371
+Vers-sur-Méouge 26372
+Vesc 26373
+Villebois-les-Pins 26374
+Villefranche-le-Château 26375
+Villeperdrix 26376
+Vinsobres 26377
+Volvent 26378

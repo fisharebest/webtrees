@@ -1,0 +1,59 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+** Eastern Lower Galilee
+** Kinerot
+Tiberias
+Afiqim
+Almagor
+Alummot
+Amnun
+Arbel
+Ashdot Ya'aqov (Ihud)
+Ashdot Ya'aqov (Me'uhad)
+Bet Qeshet
+Bet Zera
+Deganya Alef
+Deganya Bet
+Eilabun
+En Gev
+Gesher
+Ginnosar
+Giv'at Avni
+Hamam
+Haon
+Hazon
+Hazore'im
+Hodayot
+Huqoq
+Ilaniyya
+Kadoorie
+Kafar Kama
+Kallanit
+Karkom
+Kefar Hittim
+Kefar Kisch
+Kefar Tavor
+Kefar Zetim
+Kinneret (Moshava)
+Kinneret (Qevuza)
+Lavi
+Livnim
+Ma'agan
+Massad
+Massada
+Menahemya
+Migdal
+Mizpa
+Mughar
+Poriyya Illit
+Poriyya-Kefar Avoda
+Poriyya-Newe Oved
+Qaddarim
+Ravid
+Sede Ilan
+Sha'ar Hagolan
+Shadmot Devora
+Sharona
+Tefahot
+Tel Qazir
+Yavne'el

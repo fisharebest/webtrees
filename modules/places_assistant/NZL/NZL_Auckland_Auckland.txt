@@ -1,0 +1,116 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Abbotts Park 
+Aiguilles Island 
+Akarana 
+Arch Hill 
+Auckland Central East 
+Auckland Central West 
+Auckland Harbourside 
+Avondale South 
+Avondale West 
+Balmoral 
+Blockhouse Bay 
+Browns Island 
+Eden Terrace 
+Ellerslie North 
+Ellerslie South 
+Epsom Central 
+Epsom North 
+Epsom South 
+Ferndale 
+Freemans Bay 
+Glen Innes East 
+Glen Innes North 
+Glen Innes West 
+Glenavon 
+Glendowie 
+Grafton East 
+Grafton West 
+Great Barrier Island 
+Grey Lynn East 
+Grey Lynn West 
+Hamlin 
+Herne Bay 
+Hillsborough East 
+Hillsborough West 
+Hobson Bay 
+Kaikoura and Rangiahua Islands 
+Kingsland 
+Kohimarama East 
+Kohimarama West 
+Little Barrier Island 
+Lynfield North 
+Lynfield South 
+Maungawhau 
+Meadowbank North 
+Meadowbank South 
+Mission Bay 
+Mokohinau Island 
+Motutapu
+Mt Albert Central 
+Mt Eden East 
+Mt Eden North 
+Mt Eden South 
+Mt Hobson 
+Mt St John 
+Mt Wellington North 
+Mt Wellington South 
+New Windsor 
+Newmarket 
+Newton 
+One Tree Hill Central 
+One Tree Hill East 
+Onehunga North East 
+Onehunga North West 
+Onehunga South East 
+Onehunga South West 
+Orakei North 
+Orakei South 
+Oranga 
+Otahuhu East 
+Otahuhu West 
+Owairaka East 
+Owairaka West 
+Panmure Basin 
+Parnell East 
+Parnell West 
+Penrose 
+Point Chevalier East 
+Point Chevalier South 
+Point Chevalier West 
+Point England 
+Ponsonby East 
+Ponsonby West 
+Rakino 
+Rakitu Island 
+Rangitoto
+Remuera South 
+Remuera West 
+Roberton 
+Rosebank 
+Royal Oak 
+Sandringham East 
+Sandringham North 
+Sandringham West 
+Sherbourne 
+Springleigh 
+St Heliers 
+St Johns 
+St Lukes 
+St Lukes North 
+St Marys 
+Surrey Crescent 
+Tamaki 
+Te Papapa 
+Three Kings 
+Waiata 
+Waiheke Island 
+Waikowhai East 
+Waikowhai West 
+Waitaramoa 
+Walmsley 
+Waterview 
+Wesley 
+Westmere

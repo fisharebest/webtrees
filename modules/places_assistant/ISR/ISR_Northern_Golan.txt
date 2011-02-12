@@ -1,0 +1,43 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+** Hermon
+** Middle Golan
+** Nothern Golan
+** Southern Golan
+Afiq
+Allone Habashan
+Ani'am
+Avne Etan
+Bene Yehuda
+Buq'ata
+Ein Qiniyye
+Eli-Ad
+El-Rom
+En Ziwan
+Geshur
+Ghajar
+Giv'at Yo'av
+Had-Nes
+Haspin
+Kanaf
+Kefar Haruv
+Ma'ale Gamla
+Majdal Shams
+Mas'ade
+Merom Golan
+Mevo Hamma
+Mezar
+Natur
+Ne'ot Golan
+Newe Ativ
+Nov
+Odem
+Ortal
+Qazrin
+Qela
+Qeshet
+Qidmat Zevi
+Ramat Magshimim
+Ramot
+Sha'al
+Yonatan

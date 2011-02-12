@@ -1,0 +1,104 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Alfortville 75001=94002
+Antony 75002=92002
+Arcueil 75003=94003
+Asnières 75004=92004
+Aubervilliers 75005=93001
+Bagneux 75007=92007
+Bagnolet 75006=93006
+Bobigny 75008=93008
+Bois-Colombes 75009=92009
+Bondy 75010=93010
+Bonneuil-sur-Marne 75011=94011
+Boulogne-Billancourt 75012=92012
+Bourg-la-Reine 75014=92014
+Bry-sur-Marne 75015=94015
+Cachan 75016=94016
+Champigny-sur-Marne 75017=94017
+Charenton-le-Pont 75018=94018
+Châtenay-Malabry 75019=92019
+Châtillon 75020=92020
+Chevilly-Larue 75021=94021
+Choisy-le-Roi 75022=94022
+Clamart 75023=92023
+Clichy 75024=92024
+Colombes 75025=92025
+Courbevoie 75026=92026
+Créteil 75028=94028
+Drancy 75029=93029
+Dugny 75030=93030
+Épinay-sur-Seine 75031=93031
+Fontenay-aux-Roses 75032=92032
+Fontenay-sous-Bois 75033=94033
+Fresnes 75034=94034
+Gennevilliers 75036=92036
+Gentilly 75037=94037
+Issy-les-Moulineaux 75040=92040
+Ivry-sur-Seine 75041=94041
+Joinville-le-Pont 75042=94042
+L'Haÿ-les-Roses 75038=94038
+L'Île-Saint-Denis 75039=93039
+La Courneuve 75027=93027
+La Garenne-Colombes 75035=92035
+Le Bourget 75013=93013
+Le Kremlin-Bicêtre 75043=94043
+Le Perreux-sur-Marne 75058=94058
+Le Plessis-Robinson 75060=92060
+Le Pré-Saint-Gervais 75061=93061
+Les Lilas 75045=93045
+Les Pavillons-sous-Bois 75057=93057
+Levallois-Perret 75044=92044
+Maisons-Alfort 75046=94046
+Malakoff 75047=92046
+Montreuil 75048=93048
+Montrouge 75049=92049
+Nanterre 75050=92050
+Neuilly-sur-Seine 75051=92051
+Nogent-sur-Marne 75052=94052
+Noisy-le-Sec 75053=93053
+Orly 75054=94054
+Pantin 75055=93055
+Paris 75056
+Paris--1er 75101
+Paris--2e 75102
+Paris--3e 75103
+Paris--4e 75104
+Paris--5e 75105
+Paris--6e 75106
+Paris--7e 75107
+Paris--8e 75108
+Paris--9e 75109
+Paris-10e 75110
+Paris-11e 75111
+Paris-12e 75112
+Paris-13e 75113
+Paris-14e 75114
+Paris-15e 75115
+Paris-16e 75116
+Paris-17e 75117
+Paris-18e 75118
+Paris-19e 75119
+Paris-20e 75120
+Pierrefitte-sur-Seine 75059=93059
+Puteaux 75062=92062
+Romainville 75063=93063
+Rosny-sous-Bois 75064=93064
+Rungis 75065=94065
+Saint-Denis 75066=93066
+Saint-Mandé 75067=94067
+Saint-Maur-des-Fossés 75068=94068
+Saint-Maurice 75069=94069
+Saint-Ouen 75070=93070
+Sceaux 75071=92071
+Stains 75072=93072
+Suresnes 75073=92073
+Thiais 75074=94073
+Vanves 75075=92075
+Villejuif 75076=94076
+Villemomble 75077=93077
+Villeneuve-la-Garenne 75078=92078
+Villetaneuse 75079=93079
+Vincennes 75080=94080
+Vitry-sur-Seine 75081=94081

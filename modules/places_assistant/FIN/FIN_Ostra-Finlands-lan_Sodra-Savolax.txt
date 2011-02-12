@@ -1,0 +1,22 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Nyslott
+S:t Michel
+Enonkoski
+Haukivuori
+Heinävesi
+Hirvensalmi
+Jorois
+Juva
+Kangasniemi
+Kerimäki
+Mäntyharju
+Pertunmaa
+Pieksämäki
+Pieksänmaa
+Punkaharju
+Puumala
+Rantasalmi
+Ristiina
+Savonranta
+Sulkava

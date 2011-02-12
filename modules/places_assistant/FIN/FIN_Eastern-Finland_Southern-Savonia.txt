@@ -1,0 +1,22 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Mikkeli
+Savonlinna
+Enonkoski
+Haukivuori
+Heinävesi
+Hirvensalmi
+Joroinen
+Juva
+Kangasniemi
+Kerimäki
+Mäntyharju
+Pertunmaa
+Pieksämäen mlk
+Pieksänmaa
+Punkaharju
+Puumala
+Rantasalmi
+Ristiina
+Savonranta
+Sulkava

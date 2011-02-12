@@ -1,0 +1,17 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Awhitu 
+Bledisloe Park 
+Bombay 
+Eden Road-Hill Top 
+Glenbrook 
+Hunua 
+Kingseat 
+Paerata-Cape Hill 
+Patumahoe 
+Pukekohe North 
+Pukekohe West 
+Runciman 
+Waiuku 
+Whangapouri Creek

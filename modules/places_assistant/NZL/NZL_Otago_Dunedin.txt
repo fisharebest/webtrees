@@ -1,0 +1,76 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Abbotsford 
+Andersons Bay 
+Aramoana 
+Balmacewen 
+Belleknowes 
+Brighton 
+Broad Bay-Portobello 
+Brockville 
+Bush Road 
+Caledonian 
+Caversham 
+Concord 
+Corstorphine East 
+Corstorphine West 
+Dunedin City Bays 
+East Taieri 
+Evansdale 
+Fairfield 
+Forbury 
+Forrester Park 
+Fryatt 
+Glenleith 
+Green Island Central 
+Halfway Bush 
+Helensburgh 
+High St-Stuart St 
+High St-The Oval 
+Hyde 
+Inner Peninsula 
+Kaikorai Hill 
+Kaikorai Lagoon 
+Karitane 
+Kenmure 
+Macandrew Bay 
+Maori Hill 
+Middlemarch 
+Momona 
+Mornington 
+Mosgiel East 
+Mosgiel South 
+Musselburgh 
+North Dunedin 
+North-East Valley 
+Opoho 
+Otago Harbour 
+Otago University 
+Outram 
+Pine Hill 
+Port Chalmers 
+Ravensbourne 
+Raynbirds Bay 
+Roslyn North 
+Roslyn South 
+Sandymount 
+Sawyers Bay 
+Silverpeaks 
+South Dunedin 
+St Clair 
+St Kilda Central 
+St Kilda East 
+St Kilda West 
+St Leonards-Blanket Bay 
+Stuart St-Frederick St 
+Taiaroa-Cape Saunders 
+Vauxhall 
+Waikouaiti 
+Waitati 
+Wakari 
+Waldronville 
+Warrington 
+Wingatui 
+Woodhaugh 
+Wyllies Crossing

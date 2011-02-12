@@ -1,0 +1,15 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Homebush-Te Ore Ore 
+Kopuaranga 
+Lansdowne 
+Masterton Central 
+Masterton East 
+Masterton Railway 
+Masterton West 
+Ngaumutawa 
+Opaki-Fernridge 
+Solway North 
+Solway South 
+Whareama 

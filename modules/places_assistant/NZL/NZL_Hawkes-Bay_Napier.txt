@@ -1,0 +1,24 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Ahuriri 
+Awatoto 
+Bay View 
+Bluff Hill 
+Greenmeadows 
+Hospital Hill 
+Maraenui 
+Marewa 
+Mclean Park 
+Meeanee 
+Nelson Park 
+Onekawa Central 
+Onekawa South 
+Onekawa West 
+Pirimai 
+Poraiti 
+Tamatea North 
+Tamatea South 
+Taradale North 
+Taradale South 
+Westshore

@@ -1,0 +1,19 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Buller Coalfields 
+Buller River 
+Charleston 
+Granity 
+Hector-Ngakawau 
+Inangahua Junction 
+Inangahua Valley 
+Karamea 
+Little Wanganui 
+Maruia 
+Mawheraiti 
+Mokihinui 
+Orowaiti 
+Reefton 
+Westport Rural 
+Westport Urban 

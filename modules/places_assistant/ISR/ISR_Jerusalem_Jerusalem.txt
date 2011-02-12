@@ -1,0 +1,72 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+** Judean Foothills
+** Judean Mountains
+Jerusalem
+Bet Shemesh
+Abu Ghosh
+Adderet
+Agur
+Amminadav
+Avi'ezer
+Bar Giyyora
+Beqoa
+Bet Me'ir
+Bet Neqofa
+Bet Zayit
+Deir Rafat
+Ein Naqquba
+Ein Rafa
+En Karem
+Eshta'ol
+Etanim
+Even Sappir
+Gefen
+Giv'at Shemesh
+Giv'at Ye'arim
+Giv'at Yesha'yahu
+Gizo
+Har'el
+Kefar Uriyya
+Kefar Zoharim
+Kesalon
+Luzit
+Ma'ale Hahamisha
+Mahseya
+Matta
+Mesillat Ziyyon
+Mevasseret Ziyyon
+Mevo Betar
+Moza Illit
+Naham
+Nahshon
+Nataf
+Nehusha
+Nes Harim
+Netiv Halamed-He
+Newe Ilan
+Newe Mikha'el
+Newe Shalom
+Ora
+Qiryat Anavim
+Qiryat Ye'arim
+Ramat Rahel
+Ramat Razi'el
+Sedot Mikha
+Sho'eva
+Shoresh
+Srigim (Li-On)
+Tal Shahar
+Ta'oz
+Tarum
+Tirosh
+Yad Hashemona
+Yedida
+Yish'i
+Zafririm
+Zanoah
+Zekharya
+Zelafon
+Zor'a
+Zova
+Zur Hadassa

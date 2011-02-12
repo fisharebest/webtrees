@@ -1,0 +1,50 @@
+<!-- @version $Id$ -->
+<!-- @see http://www.wirksworth.org.uk/A26-CHAP.htm#Scotland -->
+Aberdeenshire (ABD) -1975
+Angus (ANS) -1975
+Argyllshire (ARL) -1975
+Ayrshire (AYR) -1975
+Banffshire (BAN) -1975
+Berwickshire (BEW) -1975
+Borders (BOR) 1975+
+Bute (BUT) -1975
+Caithness-shire (CAI) -1975
+Central Region (CEN) 1975+
+Clackmannanshire (CLK) -1975
+Dumfries & Galloway (DGY) 1975+
+Dumfriesshire (DFS) -1975
+Dunbartonshire (DNB) -1975
+East Lothian (ELN) -1975
+Edinburgh (MLN) (Midlothian -1975)
+Elgin (MOR) (Moray -1975)
+Fife (FIF)
+Forfar (ANS) (Angus -1975)
+Grampian (GMP) 1975+
+Haddington (ELN) (E Lothian -1975)
+Highland (HLD) 1975+
+Inverness-shire (INV) -1975
+Kincardineshire (KCD) -1975
+Kinross-shire (KRS) -1975
+Kirkcudbrightshire (KKD) -1975
+Lanarkshire (LKS) -1975
+Linlithgow (WLN) (W Lothian -1975)
+Lothian (LTN) 1975+
+Midlothian (MLN) -1975
+Moray (MOR) -1975
+Nairnshire (NAI) -1975
+Orkney Isles (OKI)
+Peebleshire (PEE) -1975
+Perthshire (PER) -1975
+Renfrewshire (RFW) -1975
+Ross & Cromarty (ROC) -1975
+Roxburghshire (ROX) -1975
+Selkirkshire (SEL) -1975
+Shetland Isles (SHI)
+Stirlingshire (STI) -1975
+Strathclyde (STD) 1975+
+Sutherland (SUT) -1975
+Tayside (TAY) 1975+
+West Lothian (WLN) -1975
+Western Isles (WIS) 1975+
+Wigtownshire (WIG) -1975
+Zetland (SHI) (Shetland I -1975)

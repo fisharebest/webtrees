@@ -1,0 +1,19 @@
+﻿<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id -->
+<!-- @see http://en.wikipedia.org/wiki/Counties_of_Iran -->
+Amlash
+Astara
+Astane-ye-Ashrafiyeh
+Bandar-e-Anzali
+Fuman
+Lahijan
+Langrud
+Masal
+Rasht
+Rezvanshahr
+Rudbar
+Rudsar
+Shaft
+Siahkal
+Some'e-sara
+Talesh

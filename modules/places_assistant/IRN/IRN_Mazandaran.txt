@@ -1,0 +1,18 @@
+﻿<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id -->
+<!-- @see http://en.wikipedia.org/wiki/Counties_of_Iran -->
+Amol
+Babol
+Babolsar
+Behshahr
+Chalus
+Juybar
+Mahmudabad
+Neka
+Noshahr
+Nur
+Qaemshahr
+Ramsar
+Sari
+Savadkuh
+Tonekabon

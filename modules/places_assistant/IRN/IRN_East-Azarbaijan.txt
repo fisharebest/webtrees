@@ -1,0 +1,22 @@
+﻿<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id -->
+<!-- @see http://en.wikipedia.org/wiki/Counties_of_Iran -->
+Ahar
+Ajabshir
+Azarshahr
+Bonab
+Bostanabad
+Charuymaq
+Haris
+Hashtrud
+Jolfa
+Kalibar
+Malekan
+Maragheh
+Marand
+Mianeh
+Osku
+Sarab
+Shabestar
+Tabriz
+Varzaqan

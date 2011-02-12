@@ -1,0 +1,24 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Akatarawa 
+Brentwood 
+Clouston Park 
+Cloustonville 
+Ebdentown 
+Elderslea 
+Emerald Hill 
+Heretaunga Park 
+Heretaunga-Silverstream 
+Maidstone 
+Mangaroa 
+Maoribank 
+Moonshine 
+Nabhra 
+Pinehaven 
+Te Marua 
+Totara Park 
+Trentham North 
+Trentham South 
+Upper Hutt Central 
+Wallaceville 

@@ -1,0 +1,18 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Arrowtown 
+Earnslaw
+Frankton 
+Glenorchy 
+Hawea 
+Kelvin Heights 
+Lake Hawea 
+Lake Hayes 
+Lake Wakatipu 
+Lake Wanaka 
+Matukituki 
+Queenstown Bay 
+Skippers 
+Sunshine Bay 
+Wanaka  

@@ -1,0 +1,134 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+** Akko Region
+** Elon Region
+** Karmi'el Region
+** Nahariyya Region
+** Shefar'am Region
+** Yehi'am Region
+Akko
+Karmi'el
+Ma'alot-Tarshiha
+Nahariyya
+Sakhnin
+Shefar'am
+Tamra
+Abbirim
+Abu Sinan
+Adamit
+Adi
+Afeq
+Ahihud
+Amqa
+Aramsha
+Arrabe
+Asherat
+Avdon
+Avtalyon
+Beit Jann
+Ben Ammi
+Bet Haemeq
+Bezet
+Bir El-Maksur
+Bustan Hagalil
+Deir Hanna
+Demeide
+Ein Al-Asad
+Elon
+Elqosh
+En Hamifraz
+En Ya'aqov
+Eshhar
+Even Menahem
+Evron
+Fassuta
+Ga'ton
+Gesher Haziw
+Gilon
+Gitta
+Goren
+Gornot Hagalil
+Haluz
+Hanita
+Hararit
+Harashim
+Hazrot Yasaf
+Hilla
+Hosen
+Hurfeish
+Husniyya
+I'billin
+Judeide-Maker
+Julis
+Kabri
+Kabul
+Kafar Manda
+Kafar Yasif
+Kamane
+Kammon
+Kaokab Abu Al-Hija
+Kefar Masaryk
+Kefar Rosh Haniqra
+Kefar Rozenwald (Zarit)
+Kefar Weradim
+Kelil
+Kishor
+Kisra-Sumei
+Lappidot
+Lavon
+Liman
+Lohame Hageta'ot
+Lotem
+Manof
+Manot
+Mattat
+Mazra'a
+Mazzuva
+Me'ona
+Mi'elya
+Migdal Tefen
+Mikhmannim
+Mizpe Aviv
+Moran
+Moreshet
+Nahef
+Nes Ammim
+Netiv Hashayyara
+Netu'a
+Newe Ziv
+Pelekh
+Peqi'in (Buqei'a)
+Peqi'in Hadasha
+Qoranit
+Rame
+Raqqefet
+Ras Al-Ein
+Regba
+Sa'ar
+Sajur
+Sallama
+Segev
+Sha'ab
+Shagor
+Shamerat
+Shave Ziyyon
+Sheikh Dannun
+Shekhanya
+Shelomi
+Shetula
+Shezor
+Shomera
+Shorashim
+Tal-El
+Tuval
+Ya'ad
+Ya'ara
+Yanuh-Jat
+Yas'ur
+Yehi'am
+Yirka
+Yodefat
+Yuvallim
+Zuri'el
+Zurit
+Zviyya

@@ -1,0 +1,28 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+Alajärvi
+Alavus
+Etseri
+Kauhava
+Kurikka
+Lappo
+Seinäjoki
+Alahärmä
+Bötom
+Evijärvi
+Ilmajoki
+Jalasjärvi
+Jurva
+Kauhajoki
+Kortesjärvi
+Kuortane
+Lappajärvi
+Lehtimäki
+Nurmo
+Östermark
+Soini
+Storå
+Töysä
+Vimpeli
+Ylihärmä
+Ylistaro

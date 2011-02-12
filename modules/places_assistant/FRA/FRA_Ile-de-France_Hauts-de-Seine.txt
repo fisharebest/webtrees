@@ -1,0 +1,39 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Antony 92002
+Asnières-sur-Seine 92004
+Bagneux 92007
+Bois-Colombes 92009
+Boulogne-Billancourt 92012
+Bourg-la-Reine 92014
+Châtenay-Malabry 92019
+Châtillon 92020
+Chaville 92022
+Clamart 92023
+Clichy 92024
+Colombes 92025
+Courbevoie 92026
+Fontenay-aux-Roses 92032
+Garches 92033
+Gennevilliers 92036
+Issy-les-Moulineaux 92040
+La Garenne-Colombes 92035
+Le Plessis-Robinson 92060
+Levallois-Perret 92044
+Malakoff 92046
+Marnes-la-Coquette 92047
+Meudon 92048
+Montrouge 92049
+Nanterre 92050
+Neuilly-sur-Seine 92051
+Puteaux 92062
+Rueil-Malmaison 92063
+Saint-Cloud 92064
+Sceaux 92071
+Sèvres 92072
+Suresnes 92073
+Vanves 92075
+Vaucresson 92076
+Ville-d'Avray 92077
+Villeneuve-la-Garenne 92078

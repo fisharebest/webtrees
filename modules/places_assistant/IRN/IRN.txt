@@ -1,0 +1,33 @@
+﻿<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id -->
+<!-- @see http://en.wikipedia.org/wiki/Provinces_of_Iran -->
+Ardabil
+Bushehr
+Chaharmahal-and-Bakhtiari
+East-Azarbaijan
+Esfahan
+Fars
+Gilan
+Golestan
+Hamadan
+Hormozgan
+Ilam
+Kerman
+Kermanshah
+Khuzestan
+Kohgeluyeh-and-Boyer-Ahmad
+Kordestan
+Lorestan
+Markazi
+Mazandaran
+North-Khorasan
+Qazvin
+Qom
+Razavi-Khorasan
+Semnan
+Sistan-and-Baluchestan
+South-Khorasan
+Tehran
+West-Azarbaijan
+Yazd
+Zanjan

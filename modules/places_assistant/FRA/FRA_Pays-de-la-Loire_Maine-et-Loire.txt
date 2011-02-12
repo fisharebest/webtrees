@@ -1,0 +1,384 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Allonnes 49002
+Ambillou-Château 49003
+Andard 49004
+Andigné 49005
+Andrezé 49006
+Angers 49007
+Angrie 49008
+Antoigné 49009
+Armaillé 49010
+Artannes-sur-Thouet 49011
+Aubigné-sur-Layon 49012
+Auverse 49013
+Aviré 49014
+Avrillé 49015
+Bagneux 49016=49328
+Baracé 49017
+Baugé 49018
+Bauné 49019
+Beaucouzé 49020
+Beaufort-en-Vallée 49021
+Beaulieu-sur-Layon 49022
+Beaupréau 49023
+Beausse 49024
+Beauvau 49025
+Bécon-les-Granits 49026
+Bégrolles-en-Mauges 49027
+Béhuard 49028
+Blaison-Gohier 49029
+Blou 49030
+Bocé 49031
+Botz-en-Mauges 49034
+Bouchemaine 49035
+Bouillé-Ménard 49036
+Bourg-l'Évêque 49038
+Bourgneuf-en-Mauges 49039
+Bouzillé 49040
+Brain-sur-Allonnes 49041
+Brain-sur-l'Authion 49042
+Brain-sur-Longuenée 49043
+Breil 49044
+Brézé 49046
+Brigné 49047
+Briollay 49048
+Brion 49049
+Brissac-Quincé 49050
+Brissarthe 49051
+Broc 49052
+Brossay 49053
+Candé 49054
+Cantenay-Épinard 49055
+Carbay 49056
+Cernusson 49057
+Chacé 49060
+Challain-la-Potherie 49061
+Chalonnes-sous-le-Lude 49062
+Chalonnes-sur-Loire 49063
+Chambellay 49064
+Champ-sur-Layon 49066
+Champigné 49065
+Champteussé-sur-Baconne 49067
+Champtocé-sur-Loire 49068
+Champtoceaux 49069
+Chanteloup-les-Bois 49070
+Chanzeaux 49071
+Charcé-Saint-Ellier-sur-Aubance 49078
+Chartrené 49079
+Châteauneuf-sur-Sarthe 49080
+Châtelais 49081
+Chaudefonds-sur-Layon 49082
+Chaudron-en-Mauges 49083
+Chaumont-d'Anjou 49084
+Chavagnes 49086
+Chavaignes 49087
+Chazé-Henry 49088
+Chazé-sur-Argos 49089
+Cheffes 49090
+Chemellier 49091
+Chemillé 49092
+Chemiré-sur-Sarthe 49093
+Chênehutte-Trèves-Cunault 49094
+Chenillé-Changé 49095
+Cherré 49096
+Cheviré-le-Rouge 49097
+Chigné 49098
+Cholet 49099
+Cizay-la-Madeleine 49100
+Clefs 49101
+Cléré-sur-Layon 49102
+Combrée 49103
+Concourson-sur-Layon 49104
+Contigné 49105
+Corné 49106
+Cornillé-les-Caves 49107
+Coron 49109
+Corzé 49110
+Cossé-d'Anjou 49111
+Courchamps 49113
+Courléon 49114
+Coutures 49115
+Cuon 49116
+Dampierre-sur-Loire 49118=49328
+Daumeray 49119
+Denée 49120
+Dénezé-sous-Doué 49121
+Dénezé-sous-le-Lude 49122
+Distré 49123
+Douces 49124=49125
+Doué-la-Fontaine 49125
+Drain 49126
+Durtal 49127
+Échemiré 49128
+Écouflant 49129
+Écuillé 49130
+Épieds 49131
+Étriché 49132
+Faveraye-Mâchelles 49133
+Faye-d'Anjou 49134
+Feneu 49135
+Fontaine-Guérin 49138
+Fontaine-Milon 49139
+Fontevraud-l'Abbaye 49140
+Forges 49141
+Fougeré 49143
+Freigné 49144
+Gée 49147
+Gené 49148
+Gennes 49149
+Genneteil 49150
+Gesté 49151
+Gohier 49152=49029
+Grez-Neuville 49155
+Grézillé 49154
+Grugé-l'Hôpital 49156
+Huillé 49159
+Ingrandes 49160
+Jallais 49162
+Jarzé 49163
+Joué-Étiau 49164=49153
+Juigné-Béné 49166=49214
+Juigné-sur-Loire 49167
+Jumelles 49168=49180
+Juvardeil 49170
+L'Hôtellerie-de-Flée 49158
+La Bohalle 49032
+La Boissière-sur-Èvre 49033
+La Breille-les-Pins 49045
+La Chapelle-du-Genêt 49072
+La Chapelle-Hullin 49073
+La Chapelle-Rousselin 49074
+La Chapelle-Saint-Florent 49075
+La Chapelle-Saint-Laud 49076
+La Chapelle-sur-Oudon 49077
+La Chaussaire 49085
+La Cornuaille 49108
+La Daguenière 49117
+La Ferrière-de-Flée 49136
+La Fosse-de-Tigné 49142
+La Jaille-Yvon 49161
+La Jubaudière 49165
+La Jumellière 49169
+La Lande-Chasles 49171
+La Meignanne 49196
+La Membrolle-sur-Longuenée 49200
+La Ménitré 49201
+La Pellerine 49237
+La Plaine 49240
+La Poitevinière 49243
+La Pommeraye 49244
+La Possonnière 49247
+La Pouëze 49249
+La Prévière 49250
+La Renaudière 49258
+La Romagne 49260
+La Salle-de-Vihiers 49325
+La Salle-et-Chapelle-Aubry 49324
+La Séguinière 49332
+La Tessoualle 49343
+La Tourlandry 49351
+La Varenne 49360
+Landemont 49172
+Lasse 49173
+Le Bourg-d'Iré 49037
+Le Coudray-Macouard 49112
+Le Fief-Sauvin 49137
+Le Fuilet 49145
+Le Guédéniau 49157
+Le Lion-d'Angers 49176
+Le Longeron 49179
+Le Louroux-Béconnais 49183
+Le Marillais 49190
+Le May-sur-Èvre 49193
+Le Mesnil-en-Vallée 49204
+Le Pin-en-Mauges 49239
+Le Plessis-Grammoire 49241
+Le Plessis-Macé 49242
+Le Puiset-Doré 49252
+Le Puy-Notre-Dame 49253
+Le Thoureil 49346
+Le Tremblay 49354
+Le Vieil-Baugé 49372
+Le Voide 49379=49373
+Les Alleuds 49001
+Les Cerqueux 49058
+Les Cerqueux-sous-Passavant 49059
+Les Gardes 49146=49281
+Les Ponts-de-Cé 49246
+Les Rairies 49257
+Les Rosiers-sur-Loire 49261
+Les Ulmes 49359
+Les Verchers-sur-Layon 49365
+Lézigné 49174
+Linières-Bouton 49175
+Liré 49177
+Loiré 49178
+Longué-Jumelles 49180
+Louerre 49181
+Louresse-Rochemenier 49182
+Louvaines 49184
+Lué-en-Baugeois 49185
+Luigné 49186
+Marans 49187
+Marcé 49188
+Marigné 49189
+Martigné-Briand 49191
+Maulévrier 49192
+Mazé 49194
+Mazières-en-Mauges 49195
+Meigné 49198
+Meigné-le-Vicomte 49197
+Melay 49199
+Méon 49202
+Méron 49203=49215
+Miré 49205
+Montfaucon-Montigné 49206
+Montfort 49207
+Montguillon 49208
+Montigné-lès-Rairies 49209
+Montigné-sur-Moine 49210=49206
+Montilliers 49211
+Montjean-sur-Loire 49212
+Montpollin 49213
+Montreuil-Bellay 49215
+Montreuil-Juigné 49214
+Montreuil-sur-Loir 49216
+Montreuil-sur-Maine 49217
+Montrevault 49218
+Montsoreau 49219
+Morannes 49220
+Mouliherne 49221
+Mozé-sur-Louet 49222
+Mûrs-Erigné 49223
+Neuillé 49224
+Neuvy-en-Mauges 49225
+Noëllet 49226
+Notre-Dame-d'Allençon 49227
+Noyant 49228
+Noyant-la-Gravoyère 49229
+Noyant-la-Plaine 49230
+Nuaillé 49231
+Nueil-sur-Layon 49232
+Nyoiseau 49233
+Parçay-les-Pins 49234
+Parnay 49235
+Passavant-sur-Layon 49236
+Pellouailles-les-Vignes 49238
+Pontigné 49245
+Pouancé 49248
+Pruillé 49251
+Querré 49254
+Quincé 49255=49050
+Rablay-sur-Layon 49256
+Rochefort-sur-Loire 49259
+Rou-Marson 49262
+Roussay 49263
+Saint-André-de-la-Marche 49264
+Saint-Aubin-de-Luigné 49265
+Saint-Augustin-des-Bois 49266
+Saint-Barthélemy-d'Anjou 49267
+Saint-Christophe-du-Bois 49269
+Saint-Christophe-la-Couperie 49270
+Saint-Clément-de-la-Place 49271
+Saint-Clément-des-Levées 49272
+Saint-Crespin-sur-Moine 49273
+Saint-Cyr-en-Bourg 49274
+Saint-Ellier 49275=49078
+Saint-Florent-le-Vieil 49276
+Saint-Georges-des-Gardes 49281
+Saint-Georges-des-Sept-Voies 49279
+Saint-Georges-du-Bois 49280
+Saint-Georges-sur-Layon 49282
+Saint-Georges-sur-Loire 49283
+Saint-Germain-des-Prés 49284
+Saint-Germain-sur-Moine 49285
+Saint-Hilaire-du-Bois 49286=49373
+Saint-Hilaire-Saint-Florent 49287=49328
+Saint-Jean-de-la-Croix 49288
+Saint-Jean-de-Linières 49289
+Saint-Jean-des-Mauvrets 49290
+Saint-Just-sur-Dive 49291
+Saint-Lambert-des-Levées 49293=49328
+Saint-Lambert-du-Lattay 49292
+Saint-Lambert-la-Potherie 49294
+Saint-Laurent-de-la-Plaine 49295
+Saint-Laurent-des-Autels 49296
+Saint-Laurent-du-Mottay 49297
+Saint-Léger-des-Bois 49298
+Saint-Léger-sous-Cholet 49299
+Saint-Lézin 49300
+Saint-Macaire-du-Bois 49302
+Saint-Macaire-en-Mauges 49301
+Saint-Martin-d'Arcé 49303
+Saint-Martin-de-la-Place 49304
+Saint-Martin-du-Bois 49305
+Saint-Martin-du-Fouilloux 49306
+Saint-Mathurin-sur-Loire 49307
+Saint-Melaine-sur-Aubance 49308
+Saint-Michel-et-Chanveaux 49309
+Saint-Paul-du-Bois 49310
+Saint-Philbert-du-Peuple 49311
+Saint-Philbert-en-Mauges 49312
+Saint-Pierre-Montlimart 49313
+Saint-Quentin-en-Mauges 49314
+Saint-Quentin-lès-Beaurepaire 49315
+Saint-Rémy-en-Mauges 49316
+Saint-Rémy-la-Varenne 49317
+Saint-Saturnin-sur-Loire 49318
+Saint-Sauveur-de-Flée 49319
+Saint-Sauveur-de-Landemont 49320
+Saint-Sigismond 49321
+Saint-Sulpice 49322
+Saint-Sylvain-d'Anjou 49323
+Sainte-Christine 49268
+Sainte-Gemmes-d'Andigné 49277
+Sainte-Gemmes-sur-Loire 49278
+Sarrigné 49326
+Saulgé-l'Hôpital 49327
+Saumur 49328
+Savennières 49329
+Sceaux-d'Anjou 49330
+Segré 49331
+Seiches-sur-le-Loir 49333
+Sermaise 49334
+Somloire 49336
+Soucelles 49337
+Soulaines-sur-Aubance 49338
+Soulaire-et-Bourg 49339
+Soulanger 49340=49125
+Soeurdres 49335
+Souzay-Champigny 49341
+Tancoigné 49342
+Thorigné-d'Anjou 49344
+Thouarcé 49345
+Tiercé 49347
+Tigné 49348
+Tillières 49349
+Torfou 49350
+Toutlemonde 49352
+Trélazé 49353
+Trémentines 49355
+Trémont 49356
+Trèves-Cunault 49357=49094
+Turquant 49358
+Valanjou 49153
+Varennes-sur-Loire 49361
+Varrains 49362
+Vauchrétien 49363
+Vaudelnay 49364
+Vaulandry 49380
+Vergonnes 49366
+Vern-d'Anjou 49367
+Vernantes 49368
+Vernoil 49369
+Verrie 49370
+Vezins 49371
+Vihiers 49373
+Villebernier 49374
+Villedieu-la-Blouère 49375
+Villemoisan 49376
+Villevêque 49377
+Vivy 49378
+Yzernay 49381

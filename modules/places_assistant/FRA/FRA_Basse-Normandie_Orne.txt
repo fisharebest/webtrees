@@ -1,0 +1,516 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Alençon 61001
+Almenêches 61002
+Anceins 61003
+Antoigny 61004
+Appenai-sous-Bellême 61005
+Argentan 61006
+Athis-de-l'Orne 61007
+Aube 61008
+Aubry-en-Exmes 61009
+Aubry-le-Panthou 61010
+Aubusson 61011
+Auguaise 61012
+Aunay-les-Bois 61013
+Aunou-le-Faucon 61014
+Aunou-sur-Orne 61015
+Autheuil 61016
+Avernes-Saint-Gourgon 61018
+Avernes-sous-Exmes 61019
+Avoine 61020
+Avrilly 61021
+Bagnoles-de-l'Orne 61022=61483
+Bagnoles-de-l'Orne 61483
+Bailleul 61023
+Banvou 61024
+Barville 61026
+Batilly 61027
+Bazoches-au-Houlme 61028
+Bazoches-sur-Hoëne 61029
+Beauchêne 61031
+Beaufai 61032
+Beaulandais 61033
+Beaulieu 61034
+Beauvain 61035
+Belfonds 61036
+Bellavilliers 61037
+Bellême 61038
+Bellou-en-Houlme 61040
+Bellou-le-Trichard 61041
+Bellou-sur-Huisne 61042
+Berd'huis 61043
+Berjou 61044
+Bivilliers 61045
+Bizou 61046
+Bocquencé 61047
+Boëcé 61048
+Boissei-la-Lande 61049
+Boissy-Maugis 61050
+Boitron 61051
+Bonnefoi 61052
+Bonsmoulins 61053
+Boucé 61055
+Bréel 61058
+Bresolettes 61059
+Brethel 61060
+Bretoncelles 61061
+Brieux 61062
+Briouze 61063
+Brullemail 61064
+Bubertré 61065
+Buré 61066
+Bures 61067
+Bursard 61068
+Cahan 61069
+Caligny 61070
+Camembert 61071
+Canapville 61072
+Carrouges 61074
+Ceaucé 61075
+Cerisé 61077
+Cerisy-Belle-Étoile 61078
+Ceton 61079
+Chahains 61080
+Chailloué 61081
+Chambois 61083
+Champ-Haut 61088
+Champcerie 61084
+Champeaux-sur-Sarthe 61087
+Champosoult 61089
+Champs 61090
+Champsecret 61091
+Chandai 61092
+Chanu 61093
+Chaumont 61103
+Chemilli 61105
+Chênedouit 61106
+Ciral 61107
+Cisai-Saint-Aubin 61108
+Clairefougère 61109
+Colombiers 61111
+Colonard-Corubert 61112
+Comblot 61113
+Commeaux 61114
+Condé-sur-Huisne 61116
+Condé-sur-Sarthe 61117
+Condeau 61115
+Corbon 61118
+Corubert 61119=61112
+Coudehard 61120
+Coulimer 61121
+Coulmer 61122
+Coulonces 61123
+Coulonges-les-Sablons 61125
+Coulonges-sur-Sarthe 61126
+Courcerault 61128
+Courgeon 61129
+Courgeoût 61130
+Courménil 61131
+Courteilles 61132=61189
+Courtomer 61133
+Courtoulin 61134=61029
+Couterne 61135
+Couvains 61136
+Craménil 61137
+Croisilles 61138
+Crouttes 61139
+Crulai 61140
+Cuissai 61141
+Dame-Marie 61142
+Damigny 61143
+Dancé 61144
+Domfront 61145
+Dompierre 61146
+Dorceau 61147
+Durcet 61148
+Échalou 61149
+Échauffour 61150
+Écorcei 61151
+Écorches 61152
+Écouché 61153
+Eperrais 61154
+Essay 61156
+Exmes 61157
+Faverolles 61158
+Fay 61159
+Feings 61160
+Fel 61161
+Ferrières-la-Verrerie 61166
+Flers 61169
+Fleuré 61170
+Fontaine-les-Bassets 61171
+Fontenai-les-Louvets 61172
+Fontenai-sur-Orne 61173
+Forges 61175
+Francheville 61176
+Frênes 61177
+Fresnay-le-Samson 61180
+Gacé 61181
+Gandelain 61182
+Gâprée 61183
+Gauville 61184
+Gémages 61185
+Geneslay 61186
+Giel-Courteilles 61189
+Ginai 61190
+Glos-la-Ferrière 61191
+Godisson 61192
+Goulet 61194
+Guêprei 61197
+Guerquesalles 61198
+Habloville 61199
+Haleine 61200
+Hauterive 61202
+Héloup 61203
+Heugon 61205
+Igé 61207
+Irai 61208
+Joué-du-Bois 61209
+Joué-du-Plain 61210
+Juvigny-sous-Andaine 61211
+Juvigny-sur-Orne 61212
+L'Aigle 61214
+L'Épinay-le-Comte 61155
+L'Hermitière 61204
+L'Hôme-Chamondot 61206
+La Baroche-sous-Lucé 61025
+La Bazoque 61030
+La Bellière 61039
+La Carneille 61073
+La Chapelle-au-Moine 61094
+La Chapelle-Biche 61095
+La Chapelle-d'Andaine 61096
+La Chapelle-Montligeon 61097
+La Chapelle-près-Sées 61098
+La Chapelle-Souëf 61099
+La Chapelle-Viel 61100
+La Chaux 61104
+La Cochère 61110
+La Coulonche 61124
+La Courbe 61127
+La Ferrière-au-Doyen 61162
+La Ferrière-aux-Étangs 61163
+La Ferrière-Béchet 61164
+La Ferrière-Bochard 61165
+La Ferté-Frênel 61167
+La Ferté-Macé 61168
+La Forêt-Auvray 61174
+La Fresnaie-Fayel 61178
+La Fresnaye-au-Sauvage 61179
+La Genevraie 61188
+La Gonfrière 61193
+La Haute-Chapelle 61201
+La Lande-de-Goult 61216
+La Lande-de-Lougé 61217
+La Lande-Patry 61218
+La Lande-Saint-Siméon 61219
+La Lande-sur-Eure 61220
+La Madeleine-Bouvet 61241
+La Mesnière 61277
+La Motte-Fouquet 61295
+La Perrière 61325
+La Poterie-au-Perche 61335
+La Roche-Mabile 61350
+La Rouge 61356
+La Sauvagère 61463
+La Selle-la-Forge 61466
+La Trinité-des-Laitiers 61493
+La Ventrouze 61500
+Lalacelle 61213
+Laleu 61215
+Landigou 61221
+Landisacq 61222
+Larchamp 61223
+Larré 61224
+Le Bosc-Renoult 61054
+Le Bouillon 61056
+Le Bourg-Saint-Léonard 61057
+Le Cercueil 61076
+Le Chalange 61082
+Le Champ-de-la-Pierre 61085
+Le Château-d'Almenêches 61101
+Le Châtellier 61102
+Le Grais 61195
+Le Gué-de-la-Chaîne 61196
+Le Mage 61242
+Le Mêle-sur-Sarthe 61258
+Le Ménil-Bérard 61259
+Le Ménil-Broût 61261
+Le Ménil-Ciboult 61262
+Le Ménil-de-Briouze 61260
+Le Ménil-Guyon 61266
+Le Ménil-Scelleur 61271
+Le Ménil-Vicomte 61272
+Le Merlerault 61275
+Le Pas-Saint-l'Homer 61323
+Le Pin-au-Haras 61328
+Le Pin-la-Garenne 61329
+Le Plantis 61331
+Le Renouard 61346
+Le Sap 61460
+Le Sap-André 61461
+Le Theil 61484
+Les Aspres 61422
+Les Authieux-du-Puits 61017
+Les Champeaux 61086
+Les Genettes 61187
+Les Menus 61274
+Les Rotours 61354
+Les Tourailles 61489
+Les Ventes-de-Bourse 61499
+Les Yveteaux 61512
+Lignères 61225
+Lignerolles 61226
+Lignou 61227
+Livaie 61228
+Loisail 61229
+Longny-au-Perche 61230
+Longuenoë 61231
+Lonlay-l'Abbaye 61232
+Lonlay-le-Tesson 61233
+Lonrai 61234
+Loré 61235
+Loucé 61236
+Lougé-sur-Maire 61237
+Louvières-en-Auge 61238
+Lucé 61239
+Macé 61240
+Magny-le-Désert 61243
+Mahéru 61244
+Maison-Maugis 61245
+Mâle 61246
+Malétable 61247
+Mantilly 61248
+Marcei 61249
+Marchainville 61250
+Marchemaisons 61251
+Mardilly 61252
+Marmouillé 61253
+Marnefer 61254=61136
+Mauves-sur-Huisne 61255
+Médavy 61256
+Méhoudin 61257
+Ménil-Erreux 61263
+Ménil-Froger 61264
+Ménil-Gondouin 61265
+Ménil-Hermei 61267
+Ménil-Hubert-en-Exmes 61268
+Ménil-Hubert-sur-Orne 61269
+Ménil-Jean 61270
+Ménil-Vin 61273
+Merri 61276
+Messei 61278
+Mieuxcé 61279
+Monceaux-au-Perche 61280
+Moncy 61281
+Monnai 61282
+Mont-Ormel 61289
+Montabard 61283
+Montchevrel 61284
+Montgaroult 61285
+Montgaudry 61286
+Montilly-sur-Noireau 61287
+Montmerrei 61288
+Montreuil-au-Houlme 61290
+Montreuil-la-Cambe 61291
+Montsecret 61292
+Mortagne-au-Perche 61293
+Mortrée 61294
+Moulicent 61296
+Moulins-la-Marche 61297
+Moulins-sur-Orne 61298
+Moussonvilliers 61299
+Moutiers-au-Perche 61300
+Neauphe-sous-Essai 61301
+Neauphe-sur-Dive 61302
+Nécy 61303
+Neuilly-le-Bisson 61304
+Neuilly-sur-Eure 61305
+Neuville-près-Sées 61306
+Neuville-sur-Touques 61307
+Neuvy-au-Houlme 61308
+Nocé 61309
+Nonant-le-Pin 61310
+Normandel 61311
+Notre-Dame-d'Aspres 61312=61422
+Notre-Dame-du-Rocher 61313
+Occagnes 61314
+Omméel 61315
+Ommoy 61316
+Orgères 61317
+Origny-le-Butin 61318
+Origny-le-Roux 61319
+Orville 61320
+Pacé 61321
+Parfondeval 61322
+Passais 61324
+Perrou 61326
+Pervenchères 61327
+Planches 61330
+Pointel 61332
+Pont-Écrepin 61334=61339
+Pontchardon 61333
+Pouvrai 61336
+Préaux-du-Perche 61337
+Prépotin 61338
+Putanges-Pont-Écrepin 61339
+Rabodanges 61340
+Radon 61341
+Rai 61342
+Randonnai 61343
+Rânes 61344
+Rémalard 61345
+Résenlieu 61347
+Réveillon 61348
+Ri 61349
+Roiville 61351
+Rônai 61352
+Ronfeugerai 61353
+Rouellé 61355
+Rouperroux 61357
+Sai 61358
+Saint-Agnan-sur-Erre 61359
+Saint-Agnan-sur-Sarthe 61360
+Saint-André-de-Briouze 61361
+Saint-André-de-Messei 61362
+Saint-Aquilin-de-Corbion 61363
+Saint-Aubert-sur-Orne 61364
+Saint-Aubin-d'Appenai 61365
+Saint-Aubin-de-Bonneval 61366
+Saint-Aubin-de-Courteraie 61367
+Saint-Aubin-des-Grois 61368
+Saint-Bômer-les-Forges 61369
+Saint-Brice 61370
+Saint-Brice-sous-Rânes 61371
+Saint-Céneri-le-Gérei 61372
+Saint-Christophe-de-Chaulieu 61374
+Saint-Christophe-le-Jajolet 61375
+Saint-Clair-de-Halouze 61376
+Saint-Cornier-des-Landes 61377
+Saint-Cyr-la-Rosière 61379
+Saint-Denis-de-Villenette 61380
+Saint-Denis-sur-Huisne 61381
+Saint-Denis-sur-Sarthon 61382
+Saint-Didier-sous-Écouves 61383
+Saint-Ellier-les-Bois 61384
+Saint-Evroult-de-Montfort 61385
+Saint-Evroult-Notre-Dame-du-Bois 61386
+Saint-Fraimbault 61387
+Saint-Fulgent-des-Ormes 61388
+Saint-Georges-d'Annebecq 61390
+Saint-Georges-des-Groseillers 61391
+Saint-Germain-d'Aunay 61392
+Saint-Germain-de-Clairefeuille 61393
+Saint-Germain-de-la-Coudre 61394
+Saint-Germain-de-Martigny 61396
+Saint-Germain-des-Grois 61395
+Saint-Germain-du-Corbéis 61397
+Saint-Germain-le-Vieux 61398
+Saint-Gervais-des-Sablons 61399
+Saint-Gervais-du-Perron 61400
+Saint-Gilles-des-Marais 61401
+Saint-Hilaire-de-Briouze 61402
+Saint-Hilaire-la-Gérard 61403
+Saint-Hilaire-le-Châtel 61404
+Saint-Hilaire-sur-Erre 61405
+Saint-Hilaire-sur-Risle 61406
+Saint-Jean-de-la-Forêt 61409
+Saint-Jean-des-Bois 61410
+Saint-Jouin-de-Blavou 61411
+Saint-Julien-sur-Sarthe 61412
+Saint-Lambert-sur-Dive 61413
+Saint-Langis-lès-Mortagne 61414
+Saint-Léger-sur-Sarthe 61415
+Saint-Léonard-des-Parcs 61416
+Saint-Loyer-des-Champs 61417
+Saint-Mard-de-Réno 61418
+Saint-Mars-d'Égrenne 61421
+Saint-Martin-d'Écublei 61423
+Saint-Martin-des-Landes 61424
+Saint-Martin-des-Pézerits 61425
+Saint-Martin-du-Vieux-Bellême 61426
+Saint-Martin-l'Aiguillon 61427
+Saint-Maurice-du-Désert 61428
+Saint-Maurice-lès-Charencey 61429
+Saint-Maurice-sur-Huisne 61430
+Saint-Michel-des-Andaines 61431
+Saint-Michel-Tuboeuf 61432
+Saint-Nicolas-de-Sommaire 61435
+Saint-Nicolas-des-Bois 61433
+Saint-Nicolas-des-Laitiers 61434
+Saint-Ouen-de-la-Cour 61437
+Saint-Ouen-de-Sécherouvre 61438
+Saint-Ouen-le-Brisoult 61439
+Saint-Ouen-sur-Iton 61440
+Saint-Ouen-sur-Maire 61441
+Saint-Patrice-du-Désert 61442
+Saint-Paul 61443
+Saint-Philbert-sur-Orne 61444
+Saint-Pierre-d'Entremont 61445
+Saint-Pierre-des-Loges 61446
+Saint-Pierre-du-Regard 61447
+Saint-Pierre-la-Bruyère 61448
+Saint-Pierre-la-Rivière 61449
+Saint-Quentin-de-Blavou 61450
+Saint-Quentin-les-Chardonnets 61451
+Saint-Roch-sur-Égrenne 61452
+Saint-Sauveur-de-Carrouges 61453
+Saint-Siméon 61455
+Saint-Sulpice-sur-Risle 61456
+Saint-Symphorien-des-Bruyères 61457
+Saint-Victor-de-Réno 61458
+Sainte-Céronne-lès-Mortagne 61373
+Sainte-Croix-sur-Orne 61378
+Sainte-Gauburge-Sainte-Colombe 61389
+Sainte-Honorine-la-Chardonne 61407
+Sainte-Honorine-la-Guillaume 61408
+Sainte-Marguerite-de-Carrouges 61419
+Sainte-Marie-la-Robert 61420
+Sainte-Opportune 61436
+Sainte-Scolasse-sur-Sarthe 61454
+Saires-la-Verrerie 61459
+Sarceaux 61462
+Sées 61464
+Ségrie-Fontaine 61465
+Semallé 61467
+Sentilly 61468
+Sept-Forges 61469
+Serans 61470
+Sérigny 61471
+Sévigny 61472
+Sevrai 61473
+Silly-en-Gouffern 61474
+Soligny-la-Trappe 61475
+Suré 61476
+Survie 61477
+Taillebois 61478
+Tanques 61479
+Tanville 61480
+Tellières-le-Plessis 61481
+Tessé-Froulay 61482
+Ticheville 61485
+Tinchebray 61486
+Torchamp 61487
+Touquettes 61488
+Tournai-sur-Dive 61490
+Tourouvre 61491
+Trémont 61492
+Trun 61494
+Tuboeuf 61495=61432
+Urou-et-Crennes 61496
+Valframbert 61497
+Vaunoise 61498
+Verrières 61501
+Vidai 61502
+Vieux-Pont 61503
+Villebadin 61504
+Villedieu-lès-Bailleul 61505
+Villers-en-Ouche 61506
+Villiers-sous-Mortagne 61507
+Vimoutiers 61508
+Vingt-Hanaps 61509
+Vitrai-sous-Laigle 61510
+Vrigny 61511
+Yvrandes 61513

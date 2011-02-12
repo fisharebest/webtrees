@@ -1,0 +1,34 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://xtabs.stats.govt.nz/eng/statsbyarea/area_main.asp -->
+Appleby-Kew 
+Bay Road West 
+Bluff 
+Bluff Harbour 
+Bushy Point 
+Crinan 
+Dog Island 
+Georgetown 
+Gladstone-Avenal 
+Grasmere 
+Greenhills 
+Hawthorndale 
+Heidelberg 
+Kingswell-Clifton 
+Makarewa 
+Mill Road-Woodend 
+Myross Bush 
+New River Estuary 
+Newfield-Rockdale 
+Oreti Beach 
+Otakaro Park 
+Otatara 
+Richmond 
+Rosedale 
+Strathern 
+Tisbury 
+Tiwai Point 
+Waikiwi 
+Waverley-Glengarry 
+West Invercargill 
+Windsor 

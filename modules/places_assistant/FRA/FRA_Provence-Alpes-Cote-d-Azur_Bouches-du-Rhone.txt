@@ -1,0 +1,138 @@
+<!-- THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost) -->
+<!-- @version $Id$ -->
+<!-- @see http://www.insee.fr/fr/nom_def_met/nomenclatures/cog/donnees/france_txt.zip -->
+Aix-en-Provence 13001
+Allauch 13002
+Alleins 13003
+Arles 13004
+Aubagne 13005
+Aureille 13006
+Auriol 13007
+Aurons 13008
+Barbentane 13010
+Beaurecueil 13012
+Belcodène 13013
+Berre-l'Étang 13014
+Bouc-Bel-Air 13015
+Boulbon 13017
+Cabannes 13018
+Cabriès 13019
+Cadolive 13020
+Carnoux-en-Provence 13119
+Carry-le-Rouet 13021
+Cassis 13022
+Ceyreste 13023
+Charleval 13024
+Châteauneuf-le-Rouge 13025
+Châteauneuf-les-Martigues 13026
+Châteaurenard 13027
+Cornillon-Confoux 13029
+Coudoux 13118
+Cuges-les-Pins 13030
+Éguilles 13032
+Ensuès-la-Redonne 13033
+Eygalières 13034
+Eyguières 13035
+Eyragues 13036
+Fontvieille 13038
+Fos-sur-Mer 13039
+Fuveau 13040
+Gardanne 13041
+Gémenos 13042
+Gignac-la-Nerthe 13043
+Grans 13044
+Graveson 13045
+Gréasque 13046
+Istres 13047
+Jouques 13048
+La Barben 13009
+La Bouilladisse 13016
+La Ciotat 13028
+La Destrousse 13031
+La Fare-les-Oliviers 13037
+La Penne-sur-Huveaune 13070
+La Roque-d'Anthéron 13084
+Lamanon 13049
+Lambesc 13050
+Lançon-Provence 13051
+Le Puy-Sainte-Réparade 13080
+Le Rove 13088
+Le Tholonet 13109
+Les Baux-de-Provence 13011
+Les Pennes-Mirabeau 13071
+Maillane 13052
+Mallemort 13053
+Marignane 13054
+Marseille 13055
+Marseille--1er 13201
+Marseille--2e 13202
+Marseille--3e 13203
+Marseille--4e 13204
+Marseille--5e 13205
+Marseille--6e 13206
+Marseille--7e 13207
+Marseille--8e 13208
+Marseille--9e 13209
+Marseille-10e 13210
+Marseille-11e 13211
+Marseille-12e 13212
+Marseille-13e 13213
+Marseille-14e 13214
+Marseille-15e 13215
+Marseille-16e 13216
+Martigues 13056
+Mas-Blanc-des-Alpilles 13057
+Maussane-les-Alpilles 13058
+Meyrargues 13059
+Meyreuil 13060
+Mimet 13062
+Miramas 13063
+Mollégès 13064
+Mouriès 13065
+Noves 13066
+Orgon 13067
+Paradou 13068
+Pélissanne 13069
+Peynier 13072
+Peypin 13073
+Peyrolles-en-Provence 13074
+Plan-d'Orgon 13076
+Plan-de-Cuques 13075
+Port-de-Bouc 13077
+Port-Saint-Louis-du-Rhône 13078
+Puyloubier 13079
+Rognac 13081
+Rognes 13082
+Rognonas 13083
+Roquefort-la-Bédoule 13085
+Roquevaire 13086
+Rousset 13087
+Saint-Andiol 13089
+Saint-Antonin-sur-Bayon 13090
+Saint-Cannat 13091
+Saint-Chamas 13092
+Saint-Estève-Janson 13093
+Saint-Étienne-du-Grès 13094
+Saint-Marc-Jaumegarde 13095
+Saint-Martin-de-Crau 13097
+Saint-Mitre-les-Remparts 13098
+Saint-Paul-lès-Durance 13099
+Saint-Pierre-de-Mézoargues 13061
+Saint-Rémy-de-Provence 13100
+Saint-Savournin 13101
+Saint-Victoret 13102
+Saintes-Maries-de-la-Mer 13096
+Salon-de-Provence 13103
+Sausset-les-Pins 13104
+Sénas 13105
+Septèmes-les-Vallons 13106
+Simiane-Collongue 13107
+Tarascon 13108
+Trets 13110
+Vauvenargues 13111
+Velaux 13112
+Venelles 13113
+Ventabren 13114
+Vernègues 13115
+Verquières 13116
+Vitrolles 13117

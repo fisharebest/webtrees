@@ -1,0 +1,225 @@
+Adalia
+Aguasal
+Aguilar de Campos
+Alaejos
+Alcazarén
+Aldea de San Miguel
+Aldeamayor de San Martín
+Almenara de Adaja
+Amusquillo
+Arroyo de la Encomienda
+Ataquines
+Bahabón
+Barcial de la Loma
+Barruelo del Valle
+Becilla de Valderaduey
+Benafarces
+Bercero
+Berceruelo
+Berrueces
+Bobadilla del Campo
+Bocigas
+Bocos de Duero
+Boecillo
+Bolaños de Campos
+Brahojos de Medina
+Bustillo de Chaves
+Cabezón de Pisuerga
+Cabezón de Valderaduey
+Cabreros del Monte
+Campaspero
+El Campillo
+Camporredondo
+Canalejas de Peñafiel
+Canillas de Esgueva
+Carpio
+Casasola de Arión
+Castrejón de Trabancos
+Castrillo de Duero
+Castrillo-Tejeriego
+Castrobol
+Castrodeza
+Castromembibre
+Castromonte
+Castronuevo de Esgueva
+Castronuño
+Castroponce
+Castroverde de Cerrato
+Ceinos de Campos
+Cervillego de la Cruz
+Cigales
+Ciguñuela
+Cistérniga
+Cogeces de Íscar
+Cogeces del Monte
+Corcos
+Corrales de Duero
+Cubillas de Santa Marta
+Cuenca de Campos
+Curiel de Duero
+Encinas de Esgueva
+Esguevillas de Esgueva
+Fombellida
+Fompedraza
+Fontihoyuelo
+Fresno el Viejo
+Fuensaldaña
+Fuente el Sol
+Fuente-Olmedo
+Gallegos de Hornija
+Gatón de Campos
+Geria
+Herrín de Campos
+Hornillos de Eresma
+Íscar
+Laguna de Duero
+Langayo
+Llano de Olmedo
+Lomoviejo
+Manzanillo
+Marzales
+Matapozuelos
+Matilla de los Caños
+Mayorga
+Medina de Rioseco
+Medina del Campo
+Megeces
+Melgar de Abajo
+Melgar de Arriba
+Mojados
+Monasterio de Vega
+Montealegre de Campos
+Montemayor de Pililla
+Moral de la Reina
+Moraleja de las Panaderas
+Morales de Campos
+Mota del Marqués
+Mucientes
+La Mudarra
+Muriel
+Nava del Rey
+Nueva Villa de las Torres
+Olivares de Duero
+Olmedo
+Olmos de Esgueva
+Olmos de Peñafiel
+Palazuelo de Vedija
+La Parrilla
+La Pedraja de Portillo
+Pedrajas de San Esteban
+Pedrosa del Rey
+Peñafiel
+Peñaflor de Hornija
+Pesquera de Duero
+Piña de Esgueva
+Piñel de Abajo
+Piñel de Arriba
+Pollos
+Portillo
+Pozal de Gallinas
+Pozaldez
+Pozuelo de la Orden
+Puras
+Quintanilla de Arriba
+Quintanilla de Onésimo
+Quintanilla de Trigueros
+Quintanilla del Molar
+Rábano
+Ramiro
+Renedo de Esgueva
+Roales de Campos
+Robladillo
+Roturas
+Rubí de Bracamonte
+Rueda
+Saelices de Mayorga
+Salvador de Zapardiel
+San Cebrián de Mazote
+San Llorente
+San Martín de Valvení
+San Miguel del Arroyo
+San Miguel del Pino
+San Pablo de la Moraleja
+San Pedro de Latarce
+San Pelayo
+San Román de Hornija
+San Salvador
+San Vicente del Palacio
+Santa Eufemia del Arroyo
+Santervás de Campos
+Santibáñez de Valcorba
+Santovenia de Pisuerga
+Sardón de Duero
+La Seca
+Serrada
+Siete Iglesias de Trabancos
+Simancas
+Tamariz de Campos
+Tiedra
+Tordehumos
+Tordesillas
+Torre de Esgueva
+Torre de Peñafiel
+Torrecilla de la Abadesa
+Torrecilla de la Orden
+Torrecilla de la Torre
+Torrelobatón
+Torrescárcela
+Traspinedo
+Trigueros del Valle
+Tudela de Duero
+La Unión de Campos
+Urones de Castroponce
+Urueña
+Valbuena de Duero
+Valdearcos de la Vega
+Valdenebro de los Valles
+Valdestillas
+Valdunquillo
+Valladolid
+Valoria la Buena
+Valverde de Campos
+Vega de Ruiponce
+Vega de Valdetronco
+Velascálvaro
+Velilla
+Velliza
+Ventosa de la Cuesta
+Viana de Cega
+Villabáñez
+Villabaruz de Campos
+Villabrágima
+Villacarralón
+Villacid de Campos
+Villaco
+Villafrades de Campos
+Villafranca de Duero
+Villafrechós
+Villafuerte
+Villagarcía de Campos
+Villagómez la Nueva
+Villalán de Campos
+Villalar de los Comuneros
+Villalba de la Loma
+Villalba de los Alcores
+Villalbarba
+Villalón de Campos
+Villamuriel de Campos
+Villán de Tordesillas
+Villanubla
+Villanueva de Duero
+Villanueva de la Condesa
+Villanueva de los Caballeros
+Villanueva de los Infantes
+Villanueva de San Mancio
+Villardefrades
+Villarmentero de Esgueva
+Villasexmir
+Villavaquerín
+Villavellid
+Villaverde de Medina
+Villavicencio de los Caballeros
+Viloria
+Wamba
+Zaratán
+La Zarza
