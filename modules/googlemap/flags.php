@@ -54,7 +54,7 @@ if (!is_dir('./modules/googlemap/places/flags/')) {
 $country = array();
 $rep = opendir('./modules/googlemap/places/flags/');
 while ($file = readdir($rep)) {
-	if (stristr($file, ".gif")) {
+	if (stristr($file, ".png")) {
 		$country[] = substr($file, 0, strlen($file)-4);
 	}
 }
@@ -68,7 +68,7 @@ else {
 	$flags = array();
 	$rep = opendir('./modules/googlemap/places/'.$countrySelected.'/flags/');
 	while ($file = readdir($rep)) {
-		if (stristr($file, ".gif")) {
+		if (stristr($file, ".png")) {
 			$flags[] = substr($file, 0, strlen($file)-4);
 		}
 	}
@@ -79,7 +79,7 @@ $flags_s = array();
 if ($stateSelected != "States" && is_dir('./modules/googlemap/places/'.$countrySelected.'/flags/'.$stateSelected.'/')) {
 	$rep = opendir('./modules/googlemap/places/'.$countrySelected.'/flags/'.$stateSelected.'/');
 	while ($file = readdir($rep)) {
-		if (stristr($file, ".gif")) {
+		if (stristr($file, ".png")) {
 			$flags_s[] = substr($file, 0, strlen($file)-4);
 		}
 	}
@@ -93,14 +93,14 @@ if ($action == "ChangeFlag") {
 	<!--
 		function edit_close() {
 <?php if ($_POST["selcountry"] == "Countries") { ?>
-			window.opener.document.editplaces.icon.value = "modules/googlemap/places/flags/<?php echo $flags[$_POST["FLAGS"]]; ?>.gif";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"modules/googlemap/places/flags/<?php echo $country[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
+			window.opener.document.editplaces.icon.value = "modules/googlemap/places/flags/<?php echo $flags[$_POST["FLAGS"]]; ?>.png";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"modules/googlemap/places/flags/<?php echo $country[$_POST["FLAGS"]]; ?>.png\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 <?php } else if ($_POST["selstate"] != "States"){ ?>
-			window.opener.document.editplaces.icon.value = "modules/googlemap/places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.gif";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"modules/googlemap/places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
+			window.opener.document.editplaces.icon.value = "modules/googlemap/places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.png";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"modules/googlemap/places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.png\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 <?php } else { ?>
-			window.opener.document.editplaces.icon.value = "modules/googlemap/places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.gif";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"modules/googlemap/places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.gif\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
+			window.opener.document.editplaces.icon.value = "modules/googlemap/places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.png";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"modules/googlemap/places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.png\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 <?php } ?>
 			window.close();
 		}
@@ -203,13 +203,13 @@ else {
 		$j = 1;
 		for ($i = 0; $i < count($flags); $i++) {
 			if ($countrySelected == "Countries") {
-				$tempstr = "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"".$i."\" onchange=\"enableButtons();\"><img src=\"modules/googlemap/places/flags/".$flags[$i].".gif\" alt=\"".$flags[$i]."\"  title=\"";
+				$tempstr = "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"".$i."\" onchange=\"enableButtons();\"><img src=\"modules/googlemap/places/flags/".$flags[$i].".png\" alt=\"".$flags[$i]."\"  title=\"";
 				if ($flags[$i]!='blank') $tempstr.=$countries[$flags[$i]];
 				else $tempstr.=$countries['???'];
 				echo $tempstr, "\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
 			}
 			else {
-				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"modules/googlemap/places/", $countrySelected, "/flags/", $flags[$i], ".gif\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
+				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"modules/googlemap/places/", $countrySelected, "/flags/", $flags[$i], ".png\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
 			}
 			if ($j == 4) {
 				echo "</tr><tr>\n";
@@ -240,7 +240,7 @@ else {
 		$j = 1;
 		for ($i = 0; $i < count($flags_s); $i++) {
 			if ($stateSelected != "States") {
-				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"modules/googlemap/places/", $countrySelected, "/flags/", $stateSelected, "/", $flags_s[$i], ".gif\">&nbsp;&nbsp;", $flags_s[$i], "</input></td>\n";
+				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"modules/googlemap/places/", $countrySelected, "/flags/", $stateSelected, "/", $flags_s[$i], ".png\">&nbsp;&nbsp;", $flags_s[$i], "</input></td>\n";
 			}
 			if ($j == 4) {
 				echo "</tr><tr>\n";

@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 
 // Create GM tables, if not already present
 try {
-	WT_DB::updateSchema('./modules/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 2);
+	WT_DB::updateSchema('./modules/googlemap/db_schema/', 'GM_SCHEMA_VERSION', 3);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
