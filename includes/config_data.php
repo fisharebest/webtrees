@@ -892,6 +892,7 @@ function get_all_countries() {
 		'GAB'=>WT_I18N::translate('Gabon'),
 		'GBR'=>WT_I18N::translate('United Kingdom'),
 		'GEO'=>WT_I18N::translate('Georgia'),
+		'GGY'=>WT_I18N::translate('Guernsey'),
 		'GHA'=>WT_I18N::translate('Ghana'),
 		'GIB'=>WT_I18N::translate('Gibraltar'),
 		'GIN'=>WT_I18N::translate('Guinea'),
