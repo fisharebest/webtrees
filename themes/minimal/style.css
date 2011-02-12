@@ -558,7 +558,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	font: 11px tahoma, arial, helvetica, sans-serif;
 	background-color: #eeeeee;
 	white-space: nowrap;
-	padding: 1px;
+	padding: 5px 10px 5px 10px;
 	text-align: left;
 }
 
@@ -571,7 +571,7 @@ html[dir='rtl'] .submenuitem { text-align: right; }
 	background-color: white;
 	white-space: nowrap;
 	text-align: left;
-	padding: 1px;
+	padding: 5px 10px 5px 10px;
 }
 
 .submenuitem a, .submenuitem_hover a {
