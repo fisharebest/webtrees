@@ -3,7 +3,7 @@
  * Core Functions
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -301,7 +301,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        =get_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS');
 	global $SHOW_STATS;                   $SHOW_STATS                   =get_gedcom_setting($ged_id, 'SHOW_STATS');
 	global $SOURCE_ID_PREFIX;             $SOURCE_ID_PREFIX             =get_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX');
-	global $SPLIT_PLACES;                 $SPLIT_PLACES                 =get_gedcom_setting($ged_id, 'SPLIT_PLACES');
 	global $SURNAME_LIST_STYLE;           $SURNAME_LIST_STYLE           =get_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE');
 	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              =get_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH');
 	global $UNDERLINE_NAME_QUOTES;        $UNDERLINE_NAME_QUOTES        =get_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES');

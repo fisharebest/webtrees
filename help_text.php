@@ -10,7 +10,7 @@
  * Help text for modules belongs in modules/XXX/help_text.php
  * Module help links are generated using help_link('help_topic', 'module')
  *
- * Copyright (C) 2010 Greg Roach
+ * Copyright (C) 2011 Greg Roach
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -1913,11 +1913,6 @@ case 'SOUR_FACTS_QUICK':
 case 'SOUR_FACTS_UNIQUE':
 	$title=WT_I18N::translate('Unique source facts');
 	$text=WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list.');
-	break;
-
-case 'SPLIT_PLACES':
-	$title=WT_I18N::translate('Split places in edit mode');
-	$text=WT_I18N::translate('Set this to <b>Yes</b> to split each place name by commas into subfields for easier editing.  Example :<br /><ol><li>Default mode<br /><u>Place</u>: Half Moon Bay, San Mateo, California, USA<br /><br /></li><li>Split mode<br /><u>Country</u>: USA<br /><u>State</u>: California<br/><u>County</u>: San Mateo<br/><u>City</u>: Half Moon Bay</li></ol>');
 	break;
 
 case 'SUBLIST_TRIGGER_F':

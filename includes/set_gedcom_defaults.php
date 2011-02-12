@@ -5,7 +5,7 @@
 *
 * The calling module must set $ged_id and $ged_name
 *
-* Copyright (C) 2010 webtrees development team.
+* Copyright (C) 2011 webtrees development team.
 *
 * This program is free software; you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -134,7 +134,6 @@ set_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX',             'S');
 set_gedcom_setting($ged_id, 'SOUR_FACTS_ADD',               'NOTE,OBJE,REPO,SHARED_NOTE');
 set_gedcom_setting($ged_id, 'SOUR_FACTS_QUICK',             'WWW,EMAIL,NOTE');
 set_gedcom_setting($ged_id, 'SOUR_FACTS_UNIQUE',            'AUTH,ABBR,TITL,PUBL,TEXT');
-set_gedcom_setting($ged_id, 'SPLIT_PLACES',                 false);
 set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_F',            '200');
 set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I',            '200');
 set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           'style2');

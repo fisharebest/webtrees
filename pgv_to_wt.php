@@ -3,7 +3,7 @@
  * PGV to webtrees transfer wizard
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -706,7 +706,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'SOUR_FACTS_ADD',               $SOUR_FACTS_ADD);
 	@set_gedcom_setting($ged_id, 'SOUR_FACTS_QUICK',             $SOUR_FACTS_QUICK);
 	@set_gedcom_setting($ged_id, 'SOUR_FACTS_UNIQUE',            $SOUR_FACTS_UNIQUE);
-	@set_gedcom_setting($ged_id, 'SPLIT_PLACES',                 $SPLIT_PLACES);
 	@set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_F',            $SUBLIST_TRIGGER_F);
 	@set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I',            $SUBLIST_TRIGGER_I);
 	@set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           $SURNAME_LIST_STYLE);

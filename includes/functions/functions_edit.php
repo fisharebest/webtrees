@@ -1230,7 +1230,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	global $WT_IMAGES, $MEDIA_DIRECTORY, $TEMPLE_CODES;
 	global $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $STATUS_CODES, $SPLIT_PLACES, $pid, $gender, $linkToID;
+	global $STATUS_CODES, $pid, $gender, $linkToID;
 	global $bdm;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 	global $action, $event_add;
