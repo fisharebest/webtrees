@@ -42,7 +42,9 @@ if (empty($keep2)) $keep2=array();
 
 print_header(WT_I18N::translate('Merge records'));
 
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
+	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
+}
 
 //-- make sure they have accept access privileges
 if (!WT_USER_CAN_ACCEPT) {
@@ -275,16 +277,20 @@ if ($action=="choose") {
 		WT_I18N::translate('Merge To ID:'),
 		'</td><td>
 		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" />
-		<script type="text/javascript">document.getElementById("gid1").focus();</script>
-		<select name="ged" tabindex="4">';
-	$all_gedcoms=get_all_gedcoms();
-	asort($all_gedcoms);
-	foreach ($all_gedcoms as $ged_id=>$ged_name) {
-		echo '<option value="', $ged_name, '"';
-		if (empty($ged) && $ged_id==WT_GED_ID || !empty($ged) && $ged==$ged_name) {
-			echo ' selected="selected"';
+		<script type="text/javascript">document.getElementById("gid1").focus();</script>';
+	if (get_gedcom_count()>1) {
+		echo '<select name="ged" tabindex="4">';
+		$all_gedcoms=get_all_gedcoms();
+		asort($all_gedcoms);
+		foreach ($all_gedcoms as $ged_id=>$ged_name) {
+			echo '<option value="', $ged_name, '"';
+			if (empty($ged) && $ged_id==WT_GED_ID || !empty($ged) && $ged==$ged_name) {
+				echo ' selected="selected"';
+			}
+			echo '>', PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), '</option>';
 		}
-		echo '>', PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), '</option>';
+	} else if (get_gedcom_count()==1) {
+		echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '" />';
 	}
 	$inditext = WT_I18N::translate('Find individual ID');
 	if (isset($WT_IMAGES["button_indi"])) $inditext = "<img src=\"".$WT_IMAGES["button_indi"]."\" alt=\"".$inditext."\" title=\"".$inditext."\" border=\"0\" align=\"middle\" />";
@@ -300,14 +306,18 @@ if ($action=="choose") {
 		</td></tr><tr><td>',
 		WT_I18N::translate('Merge From ID:'),
 		'</td><td>
-		<input type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2"/>
-		<select name="ged2" tabindex="5">';
-	foreach ($all_gedcoms as $ged_id=>$ged_name) {
-		echo '<option value="', $ged_name, '"';
-		if (empty($ged2) && $ged_id==WT_GED_ID || !empty($ged2) && $ged2==$ged_name) {
-			echo ' selected="selected"';
+		<input type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2"/>';
+	if (get_gedcom_count()>1) {
+		echo '<select name="ged2" tabindex="5">';
+		foreach ($all_gedcoms as $ged_id=>$ged_name) {
+			echo '<option value="', $ged_name, '"';
+			if (empty($ged2) && $ged_id==WT_GED_ID || !empty($ged2) && $ged2==$ged_name) {
+				echo ' selected="selected"';
+			}
+			echo '>', PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), '</option>';
 		}
-		echo '>', PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), '</option>';
+	} else if (get_gedcom_count()==1) {
+		echo '<input type="hidden" name="ged2" value="', WT_GEDCOM, '" />';
 	}
 	echo
 		'</select>
