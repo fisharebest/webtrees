@@ -1198,8 +1198,8 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
 * @param int $jd, leave empty to include all
 */
 function get_recent_changes($jd=0, $allgeds=false) {
-	$sql="SELECT d_gid FROM `##dates` WHERE d_fact='CHAN' AND d_julianday1>=? AND d_gid NOT LIKE ?";
-	$vars=array($jd, '%:%');
+	$sql="SELECT d_gid FROM `##dates` WHERE d_fact='CHAN' AND d_julianday1>=?";
+	$vars=array($jd);
 	if (!$allgeds) {
 		$sql.=" AND d_file=?";
 		$vars[]=WT_GED_ID;
