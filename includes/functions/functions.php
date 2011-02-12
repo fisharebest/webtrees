@@ -1795,50 +1795,41 @@ function cousin_name($n, $sex) {
 }
 
 // A variation on cousin_name(), for constructs such as "sixth great-nephew"
+// Currently used only by Spanish relationship names.
 function cousin_name2($n, $sex, $relation) {
 	switch ($sex) {
 	case 'M':
 		switch ($n) {
-		case  1: // I18N: %s is a relationship name, such as "great-uncle".  This is not used by all languages.
+		case  1: // I18N: A Spanish relationship name, such as third great-nephew
 		         return WT_I18N::translate_c('MALE', 'first %s', $relation);
 		case  2: return WT_I18N::translate_c('MALE', 'second %s', $relation);
 		case  3: return WT_I18N::translate_c('MALE', 'third %s', $relation);
 		case  4: return WT_I18N::translate_c('MALE', 'fourth %s', $relation);
 		case  5: return WT_I18N::translate_c('MALE', 'fifth %s', $relation);
-		case  6: return WT_I18N::translate_c('MALE', 'sixth %s', $relation);
-		case  7: return WT_I18N::translate_c('MALE', 'seventh %s', $relation);
-		case  8: return WT_I18N::translate_c('MALE', 'eighth %s', $relation);
-		case  9: return WT_I18N::translate_c('MALE', 'ninth %s', $relation);
-		case 10: return WT_I18N::translate_c('MALE', 'tenth %s', $relation);
-		default: return WT_I18N::translate_c('MALE', '%1$d x %2$s', $n, $relation);
+		default: // I18N: A Spanish relationship name, such as third great-nephew
+		         return WT_I18N::translate_c('MALE', '%1$d x %2$s', $n, $relation);
 		}
 	case 'F':
 		switch ($n) {
-		case  1: return WT_I18N::translate_c('FEMALE', 'first %s', $relation);
+		case  1: // I18N: A Spanish relationship name, such as third great-nephew
+		         return WT_I18N::translate_c('FEMALE', 'first %s', $relation);
 		case  2: return WT_I18N::translate_c('FEMALE', 'second %s', $relation);
 		case  3: return WT_I18N::translate_c('FEMALE', 'third %s', $relation);
 		case  4: return WT_I18N::translate_c('FEMALE', 'fourth %s', $relation);
 		case  5: return WT_I18N::translate_c('FEMALE', 'fifth %s', $relation);
-		case  6: return WT_I18N::translate_c('FEMALE', 'sixth %s', $relation);
-		case  7: return WT_I18N::translate_c('FEMALE', 'seventh %s', $relation);
-		case  8: return WT_I18N::translate_c('FEMALE', 'eighth %s', $relation);
-		case  9: return WT_I18N::translate_c('FEMALE', 'ninth %s', $relation);
-		case 10: return WT_I18N::translate_c('FEMALE', 'tenth %s', $relation);
-		default: return WT_I18N::translate_c('FEMALE', '%1$d x %2$s', $n, $relation);
+		default: // I18N: A Spanish relationship name, such as third great-nephew
+		         return WT_I18N::translate_c('FEMALE', '%1$d x %2$s', $n, $relation);
 		}
 	case 'U':
 		switch ($n) {
-		case  1: return WT_I18N::translate_c('MALE/FEMALE', 'first %s', $relation);
+		case  1: // I18N: A Spanish relationship name, such as third great-nephew
+		         return WT_I18N::translate_c('MALE/FEMALE', 'first %s', $relation);
 		case  2: return WT_I18N::translate_c('MALE/FEMALE', 'second %s', $relation);
 		case  3: return WT_I18N::translate_c('MALE/FEMALE', 'third %s', $relation);
 		case  4: return WT_I18N::translate_c('MALE/FEMALE', 'fourth %s', $relation);
 		case  5: return WT_I18N::translate_c('MALE/FEMALE', 'fifth %s', $relation);
-		case  6: return WT_I18N::translate_c('MALE/FEMALE', 'sixth %s', $relation);
-		case  7: return WT_I18N::translate_c('MALE/FEMALE', 'seventh %s', $relation);
-		case  8: return WT_I18N::translate_c('MALE/FEMALE', 'eighth %s', $relation);
-		case  9: return WT_I18N::translate_c('MALE/FEMALE', 'ninth %s', $relation);
-		case 10: return WT_I18N::translate_c('MALE/FEMALE', 'tenth %s', $relation);
-		default: return WT_I18N::translate_c('MALE/FEMALE', '%1$d x %2$s', $n, $relation);
+		default: // I18N: A Spanish relationship name, such as third great-nephew
+		         return WT_I18N::translate_c('MALE/FEMALE', '%1$d x %2$s', $n, $relation);
 		}
 	}
 }
