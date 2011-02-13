@@ -40,6 +40,10 @@ define('WT_WEBTREES_URL',    'http://webtrees.net');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net');
 define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees');
 
+// Location of our modules and themes.
+define('WT_MODULES_DIR', 'modules/');
+define('WT_THEMES_DIR',  'themes/' );
+
 // Enable debugging output?
 define('WT_DEBUG',      false);
 define('WT_DEBUG_SQL',  false);
@@ -48,7 +52,7 @@ define('WT_DEBUG_SQL',  false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 7);
+define('WT_SCHEMA_VERSION', 8);
 
 // Regular expressions for validating user input, etc.
 define('WT_REGEX_XREF',     '[A-Za-z0-9:_-]+');
@@ -461,7 +465,7 @@ if (WT_USER_ID) {
 // Set the theme
 if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && substr(safe_GET('mod_action'), 0, 5)=='admin') {
 	// Administration scripts begin with 'admin' and use a special administration theme
-	define('WT_THEME_DIR', 'themes/_administration/');
+	define('WT_THEME_DIR', WT_THEMES_DIR.'_administration/');
 } else {
 	if (get_site_setting('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
@@ -482,20 +486,20 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		// 4) first one found
 		$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
 		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR=get_site_setting('THEME_DIR', 'themes/webtrees/');
+			$THEME_DIR=get_site_setting('THEME_DIR', 'webtrees');
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR='themes/webtrees/';
+			$THEME_DIR='webtrees';
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
 			list($THEME_DIR)=get_theme_names();
 		}
 	}
-	define('WT_THEME_DIR', $THEME_DIR);
+	define('WT_THEME_DIR', WT_THEMES_DIR.$THEME_DIR.'/');
 }
 
 // Remember this setting
-if (WT_THEME_DIR!='themes/_administration/') {
+if (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/') {
 	$_SESSION['theme_dir']=WT_THEME_DIR;
 }
 

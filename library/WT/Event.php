@@ -282,7 +282,7 @@ class WT_Event {
  *
  * Many facts change over time.  Military uniforms, marriage dress, census forms.
  * This is a cutesy way to show the changes over time.  More icons need to be added
- * to the themes/?????/images/facts/ directory with a form of nn00_TYPE.gif or nnn0_TYPE.gif.
+ * to the WT_THEME_DIR/images/facts/ directory with a form of nn00_TYPE.gif or nnn0_TYPE.gif.
  * A special case of nn00_OCCU_FARM.gif has been added to celebrate farmers and farm hands.
  * A special case of nn00_OCCU_HOUS.gif has been added for KEEPing HOUSe or HOUSe KEEPers.
  * Generic subtyping is done by storing the first four characters of the value of the

@@ -2872,16 +2872,13 @@ function get_theme_names() {
 	static $themes;
 	if ($themes===null) {
 		$themes = array();
-		$d = dir(WT_ROOT.'themes');
+		$d = dir(WT_ROOT.WT_THEMES_DIR);
 		while (false !== ($entry = $d->read())) {
-			if ($entry[0]!='.' && $entry[0]!='_' && is_dir(WT_ROOT.'themes/'.$entry) && file_exists(WT_ROOT.'themes/'.$entry.'/theme.php')) {
-				$themefile = implode('', file(WT_ROOT.'themes/'.$entry.'/theme.php'));
-				$tt = preg_match('/theme_name\s*=\s*"(.*)";/', $themefile, $match);
-				if ($tt>0)
-					$themename = trim($match[1]);
-				else
-					$themename = "themes/$entry";
-				$themes[WT_I18N::translate('%s', $themename)] = "themes/$entry/";
+			if ($entry[0]!='.' && $entry[0]!='_' && is_dir(WT_ROOT.WT_THEMES_DIR.$entry) && file_exists(WT_ROOT.WT_THEMES_DIR.$entry.'/theme.php')) {
+				$themefile = implode('', file(WT_ROOT.WT_THEMES_DIR.$entry.'/theme.php'));
+				if (preg_match('/theme_name\s*=\s*"(.*)";/', $themefile, $match)) {
+					$themes[WT_I18N::translate('%s', $match[1])] = $entry;
+				}
 			}
 		}
 		$d->close();
@@ -3372,7 +3369,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin=
 
 	// -- Use an overriding thumbnail if one has been provided
 	// Don't accept any overriding thumbnails that are in the "images" or "themes" directories
-	if (substr($thumbName, 0, 7)!='images/' && substr($thumbName, 0, 7)!='themes/') {
+	if (strpos($thumbName, 'images/')!==0 && strpos($thumbName, WT_THEMES_DIR)!==0) {
 		if ($USE_MEDIA_FIREWALL && $MEDIA_FIREWALL_THUMBS) {
 			$tempThumbName = get_media_firewall_path($thumbName);
 		} else {
