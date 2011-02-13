@@ -36,6 +36,7 @@ define('WT_SCRIPT_NAME', 'search_engine.php');
 require './includes/session.php';
 
 header('Content-Type: text/html; charset=UTF-8');
+header($_SERVER["SERVER_PROTOCOL"].' 403 Forbidden');
 
 echo '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">';
 echo '<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '><head>';
