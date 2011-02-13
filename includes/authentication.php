@@ -297,7 +297,7 @@ function AddToLog($log_message, $log_type='error') {
 		$log_type,
 		$log_message,
 		$_SERVER['REMOTE_ADDR'],
-		getUserId() && WT_SCRIPT_NAME!='pgv_to_wt.php' ? getUserId() : null,
+		getUserId() && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' ? getUserId() : null,
 		defined('WT_GED_ID') ? WT_GED_ID : null // logs raised before we select the gedcom won't have this.
 	));
 }

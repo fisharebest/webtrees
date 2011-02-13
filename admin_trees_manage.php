@@ -338,7 +338,7 @@ if (WT_USER_IS_ADMIN) {
 		if (count($gedcoms)==0 && get_user_count()==1) {
 			echo
 				'<div class="center">',
-				'<a style="color:green; font-weight:bold;" href="pgv_to_wt.php">',
+				'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',
 				WT_I18N::translate('Click here for PhpGedView to <b>webtrees</b> transfer wizard'),
 				'</a>',
 				help_link('PGV_WIZARD'),
