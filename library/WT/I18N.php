@@ -162,7 +162,8 @@ class WT_I18N {
 			}
 			closedir($d);
 			if (empty($installed_languages)) {
-				die('There are no lanuages installed.  You must include at least one xx.mo file in /language/');
+				// We cannot translate this
+				die('There are no languages installed.  You must include at least one xx.mo file in /language/');
 			}
 			// Sort by the combined language/language name...
 			uasort($installed_languages, 'utf8_strcasecmp');
