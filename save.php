@@ -91,7 +91,7 @@ case 'site_setting':
 	}
 	switch ($id1) {
 	case 'INDEX_DIRECTORY':
-	case 'THEME':
+	case 'THEME_DIR':
 	case 'ALLOW_CHANGE_GEDCOM':
 	case 'ALLOW_USER_THEMES':
 	case 'SMTP_AUTH':
