@@ -1620,14 +1620,6 @@ echo WT_JS_START;?>
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Split places in edit mode'), help_link('SPLIT_PLACES'); ?>
-					</td>
-					<td>
-						<?php echo edit_field_yes_no('NEW_SPLIT_PLACES', get_gedcom_setting(WT_GED_ID, 'SPLIT_PLACES')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
 						<?php echo WT_I18N::translate('Surname tradition'), help_link('SURNAME_TRADITION'); ?>
 					</td>
 					<td>
