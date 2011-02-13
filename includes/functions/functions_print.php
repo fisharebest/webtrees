@@ -427,7 +427,7 @@ function print_header($title) {
 		$index_this_page=true;
 	}
 
-	if ($index_this_page && (preg_match("/index,( *)follow/", get_gedcom_setting(WT_GED_ID, 'META_ROBOTS')) > 0)) { // need to convert this to a boolean setting
+	if ($index_this_page) {
 		$META_ROBOTS='index,follow';
 	}
 
