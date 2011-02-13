@@ -166,6 +166,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			if (isset($_REQUEST['module'])) {
 				$tabname = $_REQUEST['module'];
 				header("Content-Type: text/html; charset=UTF-8"); //AJAX calls do not have the meta tag headers and need this set
+				header("X-Robots-Tag: noindex,follow"); //AJAX pages should not show up in search results, any links can be followed though
 				$mod = $this->tabs[$tabname];
 				if ($mod) {
 					echo $mod->getTabContent();
