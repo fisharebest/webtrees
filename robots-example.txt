@@ -166,12 +166,13 @@ Disallow: /addmedia.php
 Disallow: /admin.php
 Disallow: /admin_media.php
 Disallow: /admin_media_upload.php
-Disallow: /admin_modules.php
 Disallow: /admin_module_blocks.php
 Disallow: /admin_module_menus.php
 Disallow: /admin_module_reports.php
 Disallow: /admin_module_sidebar.php
 Disallow: /admin_module_tabs.php
+Disallow: /admin_modules.php
+Disallow: /admin_pgv_to_wt.php
 Disallow: /admin_site_clean.php
 Disallow: /admin_site_config.php
 Disallow: /admin_site_info.php
@@ -194,10 +195,10 @@ Disallow: /data/
 Disallow: /descendancy.php
 Disallow: /downloadbackup.php
 Disallow: /downloadgedcom.php
-Disallow: /editnews.php
-Disallow: /edituser.php
 Disallow: /edit_changes.php
 Disallow: /edit_interface.php
+Disallow: /editnews.php
+Disallow: /edituser.php
 Disallow: /expand_view.php
 Disallow: /export_gedcom.php
 Allow:    /family.php
@@ -236,9 +237,7 @@ Disallow: /module.php
 Disallow: /modules/
 Allow:    /note.php
 Allow:    /notelist.php
-Disallow: /opensearch.php
 Disallow: /pedigree.php
-Disallow: /pgv_to_wt.php
 Disallow: /placelist.php
 Disallow: /places/
 Disallow: /relationship.php
