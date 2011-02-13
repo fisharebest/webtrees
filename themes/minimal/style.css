@@ -526,17 +526,19 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .menuitem {
 	color: #555555;
 	text-decoration: none;
-	font: 11px tahoma, arial, helvetica, sans-serif;
+	font: 14px tahoma, arial, helvetica, sans-serif;
 	text-align: center;
 	padding: 1px;
+	border: solid black 1px;
 }
 
 .menuitem_hover	{
 	color: black;
 	text-decoration: underline;
-	font: 11px tahoma, arial, helvetica, sans-serif;
+	font: 14px tahoma, arial, helvetica, sans-serif;
 	text-align: center;
 	padding: 1px;
+	border: solid black 1px;
 }
 
 .submenu {
@@ -1507,3 +1509,9 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 .logo {
 	text-align: center;
 }
+#topMenu {
+margin-left: auto;
+margin-right: auto;
+width: 75%;
+border-spacing: 0px;
+} 

@@ -133,7 +133,7 @@ if (!defined('WT_WEBTREES')) {
 	</tr>
 </table>
 <!-- begin toplinks menu section -->
-<table width="100%" border="1" cellspacing="0">
+<table id=topMenu cellpadding="0">
 	<tr>
 		<?php
 		$menu=WT_MenuBar::getGedcomMenu();
