@@ -86,8 +86,9 @@ asort($all_gedcoms);
 switch ($action) {
 case 'deleteuser':
 	// Delete a user - but don't delete ourselves!
+	$username=safe_GET('username');
 	$user_id=get_user_id($username);
-	if ($user_id!=WT_USER_ID) {
+	if ($user_id && $user_id!=WT_USER_ID) {
 		delete_user($user_id);
 		AddToLog("deleted user ->{$username}<-", 'auth');
 	}
