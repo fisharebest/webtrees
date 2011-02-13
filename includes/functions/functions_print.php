@@ -548,7 +548,7 @@ function print_simple_header($title) {
 
 // -- print the html to close the page
 function print_footer() {
-	global $SHOW_STATS, $footerfile, $printlink, $theme_name, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
+	global $SHOW_STATS, $footerfile, $printlink, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
 
 	if (!isset($footer_count)) $footer_count = 1;
 	else $footer_count++;

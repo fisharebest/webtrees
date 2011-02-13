@@ -47,7 +47,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $SEARCH_SPIDER;
 	global $t, $n, $item, $items, $p, $edit, $reorder, $LB_AL_THUMB_LINKS, $note;
-	global $LB_URL_WIDTH, $LB_URL_HEIGHT, $order1, $sort_i, $notes, $q, $LB_TT_BALLOON, $theme_name ;
+	global $LB_URL_WIDTH, $LB_URL_HEIGHT, $order1, $sort_i, $notes, $q, $LB_TT_BALLOON;
 
 	$reorder=safe_get('reorder', '1', '0');
 
@@ -60,7 +60,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 					echo "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"82px\" alt=\"\"></img>";
 				echo "</td>";
 				echo "<td class=\"description_box\" valign=\"top\" colspan=\"3\" nowrap=\"nowrap\" >";
-					echo "<center><br /><img src=\"themes/" . strtolower($theme_name) . "/images/media.gif\" height=\"30\" border=\"0\" />";
+					echo "<center><br /><img src=\"" . WT_THEME_DIR . "images/media.gif\" height=\"30\" border=\"0\" />";
 					echo "<font size=\"1\"><br />" . WT_I18N::translate('File not found.') . "</font></center>";
 				echo "</td>";
 			echo "</tr>";
@@ -72,7 +72,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 					echo "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"100px\" alt=\"\"></img>";
 				echo "</td>";
 				echo "<td class=\"description_box\" valign=\"top\" colspan=\"3\" nowrap=\"nowrap\" >";
-					echo "<center><br /><img src=\"themes/" . strtolower($theme_name) . "/images/media.gif\" height=\"30\" border=\"0\" />";
+					echo "<center><br /><img src=\"" . WT_THEME_DIR . "images/media.gif\" height=\"30\" border=\"0\" />";
 					echo "<font size=\"1\"><br />" . WT_I18N::translate('File not found.') . "</font></center>";
 				echo "</td>";
 				echo "</tr>";

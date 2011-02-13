@@ -1471,7 +1471,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;
 
-	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent, $tabno, $theme_name, $spousetag;
+	global $spouselinks, $parentlinks, $step_parentlinks, $persons, $person_step, $person_parent, $tabno, $spousetag;
 	global $natdad, $natmom, $censyear, $censdate;
 	// global $pHusbFBP, $pHusbMBP, $pWifeFBP, $pWifeMBP;
 	// global $phusb, $pwife, $pwhusb, $pwwife;

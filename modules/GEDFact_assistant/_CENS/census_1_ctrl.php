@@ -30,7 +30,7 @@
 	exit;
 }
 
-global $summary, $theme_name, $censyear, $censdate;
+global $summary, $censyear, $censdate;
 
 $pid = safe_get('pid');
 
