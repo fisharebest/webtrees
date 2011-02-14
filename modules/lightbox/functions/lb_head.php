@@ -95,7 +95,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 			if ($LB_AL_HEAD_LINKS == "both") {
 				echo "<td class=\"width15 center wrap\" valign=\"top\">";
 				echo "<a href=\"javascript:goto_config_lightbox()\">";
-				echo "<img src=\"modules/lightbox/images/image_edit.gif\" class=\"icon\" title=\"".WT_I18N::translate('Lightbox-Album Configuration')."\" alt=\"".WT_I18N::translate('Lightbox-Album Configuration')."\" /><br />" ;
+				echo "<img src=\"modules/lightbox/images/image_edit.gif\" id=\"head_icon\" class=\"icon\" title=\"".WT_I18N::translate('Lightbox-Album Configuration')."\" alt=\"".WT_I18N::translate('Lightbox-Album Configuration')."\" /><br />" ;
 				echo "" . WT_I18N::translate('Lightbox-Album Configuration') . "&nbsp;";
 				echo "</a>";
 				echo "</td>";
@@ -110,7 +110,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 			} else if ($LB_AL_HEAD_LINKS == "icon") {
 				echo "&nbsp;&nbsp;&nbsp;";
 	            echo "<a href=\"javascript:goto_config_lightbox()\">";
-				echo "<img src=\"modules/lightbox/images/image_edit.gif\" class=\"icon\" title=\"".WT_I18N::translate('Lightbox-Album Configuration')."\" alt=\"".WT_I18N::translate('Lightbox-Album Configuration')."\" />" ;
+				echo "<img src=\"modules/lightbox/images/image_edit.gif\" id=\"head_icon\" class=\"icon\" title=\"".WT_I18N::translate('Lightbox-Album Configuration')."\" alt=\"".WT_I18N::translate('Lightbox-Album Configuration')."\" />" ;
 				echo "</a>";
 			}
         }
@@ -120,7 +120,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 			if ($LB_AL_HEAD_LINKS == "both") {
 				echo "<td class=\"width15 center wrap\" valign=\"top\">";
 	            echo "<a href=\"javascript: album_add()\"> ";
-				echo "<img src=\"modules/lightbox/images/image_add.gif\" class=\"icon\" title=\"".WT_I18N::translate('Add a new Multimedia Object to this Individual')."\" alt=\"".WT_I18N::translate('Add a new Multimedia Object to this Individual')."\" /><br />" ;
+				echo "<img src=\"modules/lightbox/images/image_add.gif\" id=\"head_icon\" class=\"icon\" title=\"".WT_I18N::translate('Add a new Multimedia Object to this Individual')."\" alt=\"".WT_I18N::translate('Add a new Multimedia Object to this Individual')."\" /><br />" ;
 				echo "" . WT_I18N::translate('Add a new Media Object') . "&nbsp;";
 	            echo " </a> ";
 	            echo "</td>";
@@ -135,7 +135,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 			} else if ($LB_AL_HEAD_LINKS == "icon") {
 				echo "&nbsp;&nbsp;&nbsp;";
 	            echo "<a href=\"javascript: album_add()\"> ";
-				echo "<img src=\"modules/lightbox/images/image_add.gif\" class=\"icon\" title=\"".WT_I18N::translate('Add a new Multimedia Object to this Individual')."\" alt=\"".WT_I18N::translate('Add a new Multimedia Object to this Individual')."\" />" ;
+				echo "<img src=\"modules/lightbox/images/image_add.gif\" id=\"head_icon\" class=\"icon\" title=\"".WT_I18N::translate('Add a new Multimedia Object to this Individual')."\" alt=\"".WT_I18N::translate('Add a new Multimedia Object to this Individual')."\" />" ;
 	            echo "</a>";
 			}
         }
@@ -145,7 +145,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 			if ($LB_AL_HEAD_LINKS == "both") {
 				echo "<td class=\"width15 center wrap\" valign=\"top\">";
 	            echo "<a href=\"javascript: album_link()\"> ";
-				echo "<img src=\"modules/lightbox/images/image_link.gif\" class=\"icon\" title=\"".WT_I18N::translate('Link this Individual to an existing Multimedia Object')."\" alt=\"".WT_I18N::translate('Link this Individual to an existing Multimedia Object')."\" /><br />" ;
+				echo "<img src=\"modules/lightbox/images/image_link.gif\" id=\"head_icon\" class=\"icon\" title=\"".WT_I18N::translate('Link this Individual to an existing Multimedia Object')."\" alt=\"".WT_I18N::translate('Link this Individual to an existing Multimedia Object')."\" /><br />" ;
 				echo "" . WT_I18N::translate('Link to an existing Media Object') . "&nbsp;";
 	            echo " </a> ";
 	            echo "</td>";
@@ -160,7 +160,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 			} else if ($LB_AL_HEAD_LINKS == "icon") {
 				echo "&nbsp;&nbsp;&nbsp;";
 	            echo "<a href=\"javascript: album_link()\">";
-				echo "<img src=\"modules/lightbox/images/image_link.gif\" class=\"icon\" title=\"".WT_I18N::translate('Link this Individual to an existing Multimedia Object')."\" alt=\"".WT_I18N::translate('Link this Individual to an existing Multimedia Object')."\" />" ;
+				echo "<img src=\"modules/lightbox/images/image_link.gif\" id=\"head_icon\" class=\"icon\" title=\"".WT_I18N::translate('Link this Individual to an existing Multimedia Object')."\" alt=\"".WT_I18N::translate('Link this Individual to an existing Multimedia Object')."\" />" ;
 	            echo "</a> ";
 			} else {
 			}
@@ -199,7 +199,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 			if ($LB_AL_HEAD_LINKS == "both") {
 				echo "<td class=\"width15 center wrap\" valign=\"top\">";
 				echo "<a href=\"javascript: reorder_media()\">" ;
-				echo "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".WT_I18N::translate('Re-order media (window)')."\" alt=\"".WT_I18N::translate('Re-order media (window)')."\" /><br />" ;
+				echo "<img src=\"modules/lightbox/images/images.gif\" id=\"head_icon\" class=\"icon\" title=\"".WT_I18N::translate('Re-order media (window)')."\" alt=\"".WT_I18N::translate('Re-order media (window)')."\" /><br />" ;
 				//echo "" . WT_I18N::translate('Re-order media (window)') . "&nbsp;";
 				echo "" . WT_I18N::translate('Re-order media (window)') . "&nbsp;";
 				echo '</a>';
@@ -216,7 +216,7 @@ require_once WT_ROOT.'includes/media_reorder_count.php';
 			} else if ($LB_AL_HEAD_LINKS == "icon") {
 				echo "&nbsp;&nbsp;&nbsp;&nbsp;";
 				echo "<a href=\"javascript: reorder_media()\">" ;
-				echo "<img src=\"modules/lightbox/images/images.gif\" class=\"icon\" title=\"".WT_I18N::translate('Re-order media (window)')."\" alt=\"".WT_I18N::translate('Re-order media (window)')."\" /><br />" ;
+				echo "<img src=\"modules/lightbox/images/images.gif\" id=\"head_icon\" class=\"icon\" title=\"".WT_I18N::translate('Re-order media (window)')."\" alt=\"".WT_I18N::translate('Re-order media (window)')."\" /><br />" ;
 				echo '</a>';
 				//echo "<td width=\"5%\">&nbsp;</td>";
 			}

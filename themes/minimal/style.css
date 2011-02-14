@@ -413,6 +413,12 @@ table.center{
 	padding-right: 5pt;
 }
 
+#head_icon {
+		display: block;
+		float: left;
+		margin-right: 15px;
+}
+
 .adminicon {
 	border: none;
 	padding-left: 0pt;

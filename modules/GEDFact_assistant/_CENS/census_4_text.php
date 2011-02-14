@@ -62,9 +62,6 @@ function help_window2(frm)  {
 	</span>
 	<div class="optionbox">
 		<textarea wrap="off" name="NOTE" id="NOTE"></textarea><br />
-		<?php if ($theme_name=="Minimal") { ?>
-			<!--[if IE]><style>textarea#NOTE{height: 18.1em;}</style><![EndIf]-->
-		<?php } ?>
 		<center>
 		<?php print_specialchar_link("NOTE",true); ?>
 		</center>

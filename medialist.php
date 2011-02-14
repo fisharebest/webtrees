@@ -141,13 +141,6 @@ echo "<div class=\"center\"><h2>", WT_I18N::translate('Multimedia objects'), "</
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
 	require WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
-
-	if ($theme_name=="Minimal") {
-		// Force icon options to "text" when we're dealing with the Minimal theme
-		if ($LB_AL_HEAD_LINKS!="none") $LB_AL_HEAD_LINKS = "text";
-		if ($LB_AL_THUMB_LINKS!="none") $LB_AL_THUMB_LINKS = "text";
-		if ($LB_ML_THUMB_LINKS!="none") $LB_ML_THUMB_LINKS = "text";
-	}
 }
 
 //-- automatically generate an image (NOT CURRENTLY USED)
