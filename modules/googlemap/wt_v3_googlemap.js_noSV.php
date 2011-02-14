@@ -498,7 +498,7 @@
 					"<?php echo $gmark['lati']; ?>", 
 					"<?php echo $gmark['lng']; ?>", 
 					"<?php if (!empty($gmark['date'])) { $date=new WT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo WT_I18N::translate('Date not known'); } ?>", 
-					"<?php if (!empty($gmark['info'])) { echo ''.$gmark['info']; } else { echo NULL; } ?>", 
+					"<?php if (!empty($gmark['info'])) { echo $gmark['info']; } else { echo NULL; } ?>", 
 					"<?php if (!empty($gmark['name'])) { $person=WT_Person::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : WT_I18N::translate('Private'), '<\/a>'; } } ?>", 
 					"<?php if (preg_match('/2 PLAC (.*)/', $gmark['placerec']) == 0) { print_address_structure_map($gmark['placerec'], 1); } else { echo preg_replace('/\"/', '\\\"', print_fact_place_map($gmark['placerec'])); } ?>",
 					"<?php echo $gmark['index'].''; ?>", 
@@ -606,12 +606,15 @@
 				if (i==npo[n][0] || i==npo[n][1] || i==npo[n][2] || i==npo[n][3] || i==npo[n][4] || i==npo[n][5] || i==npo[n][6] || i==npo[n][7] || i==npo[n][8] || i==npo[n][9] || i==npo[n][10] || i==npo[n][11] || i==npo[n][12] || i==npo[n][13] || i==npo[n][14] || i==npo[n][15] || i==npo[n][16] || i==npo[n][17] || i==npo[n][18] || i==npo[n][19] || i==npo[n][20] || i==npo[n][21] || i==npo[n][22] || i==npo[n][23] || i==npo[n][24] || i==npo[n][25]) {
 					for (var x=0; x<numtabs[n]; x++) {
 						tabcontid=npo[n][x];
-						// If a fact with a persons name ---
-						if (locations[tabcontid][5]) {
-							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][12]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][4]+'<b>'+locations[tabcontid][5]+'<\/b><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ]; 
+						// If a fact with a persons name and extra info---
+						if (locations[tabcontid][4] && locations[tabcontid][5]) {
+							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][12]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][4]+'<br /><b>'+locations[tabcontid][5]+'<\/b><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
+						// or if a fact with a persons name ---
+						} else if (locations[tabcontid][5]) {
+							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][12]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br /><b>'+locations[tabcontid][5]+'<\/b><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
 						// or if a fact with extra info ---
 						} else if (locations[tabcontid][4]) {
-							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][4]+'<b>'+locations[tabcontid][5]+'<\/b><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ]; 
+							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][4]+'<br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
 						// or just a simple fact ---
 						} else {
 							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
