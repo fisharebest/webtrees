@@ -715,25 +715,25 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			case 'addspouseaction':
 				if ($famtag=='WIFE' && preg_match('/\/(.*)\//', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='polish') {
-						$match[1]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/'), array('ska', 'cka', 'dzka'), $match[1]);
+						$match[1]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[1]);
 					}
 					$new_marnm=$match[1];
 				}
 				break;
 			case 'addchildaction':
 				if (preg_match('/\/((?:[a-z]{2,3}\s+)*)(.*)\//i', $father_name, $match)) {
+					$name_fields['SURN']=$match[2];
 					if ($SURNAME_TRADITION=='polish' && $sextag=='F') {
-						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/'), array('ska', 'cka', 'dzka'), $match[2]);
+						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
 					}
 					$name_fields['SPFX']=trim($match[1]);
-					$name_fields['SURN']=$match[2];
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
 				}
 				break;
 			case 'addnewparentaction':
 				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3}\s+)*)(.*)\//i', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='polish' && $sextag=='M') {
-						$match[2]=preg_replace(array('/ska$/', '/cka$/', '/dzka$/'), array('ski', 'cki', 'dzki'), $match[2]);
+						$match[2]=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
 					}
 					$name_fields['SPFX']=trim($match[1]);
 					$name_fields['SURN']=$match[2];
@@ -945,6 +945,12 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		var spfx=frm.SPFX.value;
 		var surn=frm.SURN.value;
 		var nsfx=frm.NSFX.value;
+		<?php if ($SURNAME_TRADITION=='polish' && $sextag=='F') { ?>
+			surn=surn.replace(/ski$/, 'ska');
+			surn=surn.replace(/cki$/, 'cka');
+			surn=surn.replace(/dzki$/, 'dzka');
+			surn=surn.replace(/żki$/, 'żka');
+		<?php } ?>
 		return trim(npfx+" "+givn+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ "+nsfx);
 	}
 
