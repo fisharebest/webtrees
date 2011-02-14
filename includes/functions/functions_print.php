@@ -361,7 +361,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 */
 function print_header($title) {
 	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $view, $cart;
-	global $GEDCOM, $GEDCOM_TITLE, $action, $query, $theme_name;
+	global $GEDCOM, $GEDCOM_TITLE, $action, $query;
 	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
 	global $controller;
@@ -463,7 +463,6 @@ function print_header($title) {
 		/* setup some javascript variables */
 		var textDirection = "'.$TEXT_DIRECTION.'";
 		var browserType = "'.$BROWSERTYPE.'";
-		var themeName = "'.$theme_name.'";
 		var SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 		/* keep the session id when opening new windows */
 		var sessionid = "'.Zend_Session::getId().'";
