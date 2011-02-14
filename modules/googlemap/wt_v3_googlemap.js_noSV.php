@@ -624,8 +624,8 @@
 				'<div id = "gmtabs">',
 
 						'<ul class="tabs" >',
-							'<li><a href="#event" id="EV">Events<\/a><\/li>',
-					//		'<li><a href="#sview" id="SV">Street View<\/a><\/li>',
+							'<li><a href="#event" id="EV"><?php echo WT_I18N::translate('Events'); ?><\/a><\/li>',
+					//		'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Street View'); ?><\/a><\/li>',
 					//		'<li><a href="#image" id="PH">Image<\/a><\/li>',
 					//		'<li><a href="#" id="SP">Aerial<\/a><\/li>',
 						'<\/ul>',
