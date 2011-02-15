@@ -1,7 +1,7 @@
 /*
 * Style for FAB theme
 *
-* Copyright (c) 2010 Greg Roach
+* Copyright (c) 2011 Greg Roach
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.
 *
@@ -234,13 +234,15 @@ html[dir='rtl'] .makeMenu li ul li {
 /* pedigree.php */
 .pedigree_image_portrait, .pedigree_image_landscape {
 	float:left;
-	height:48px;
+	max-height: 48px;
+	max-width: 100px;
 	margin-right:3px;
 }
 
 .pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
 	float:right;
-	height:48px;
+	max-height: 48px;
+	max-width: 100px;
 	margin-left:3px;
 }
 

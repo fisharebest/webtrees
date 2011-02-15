@@ -1,5 +1,5 @@
 /**
-* Copyright (c) 2010 Rob Peters
+* Copyright (c) 2011 Rob Peters
 *
 * Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
 *
@@ -808,13 +808,16 @@ vertical-align: middle;
 
 .pedigree_image_portrait, .pedigree_image_landscape {
 float: left;
-height: 50px;
+max-height: 50px;
+max-width: 100px;
+border: solid black 1px;
 margin-right: 3px;
 }
 
 .pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
 float: right;
-height: 50px;
+max-height: 50px;
+max-width: 100px;
 border: solid black 1px;
 margin-left: 3px;
 }
