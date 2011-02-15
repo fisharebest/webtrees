@@ -1409,7 +1409,9 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		$end_time = microtime(true);
 		$exectime = $end_time - $start_time;
 		if (($time_limit>1)&&($exectime > $time_limit-1)) {
+			echo '<div>';
 			echo "<span class=\"error\">", WT_I18N::translate('The script timed out before a relationship could be found.'), "</span>";
+			echo '</div>';
 			return false;
 		}
 		if (count($p1nodes)==0) {

@@ -290,6 +290,10 @@ function paste_id(value) {
 	</table></form>
 </div>
 <?php
+if ($check_node===false) {
+	print_footer();
+	return;
+}
 if ($show_full==0) {
 	echo '<br /><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
 }
@@ -299,8 +303,9 @@ if ($show_full==0) {
 $maxyoffset = $Dbaseyoffset;
 if ((!empty($pid1))&&(!empty($pid2))) {
 	if (!$disp) {
-		echo "<br /><br />";
+		echo '<div style="position:absolute; ', ($TEXT_DIRECTION=='ltr'?'left':'right'), ':1px; top:', abs($Dbaseyoffset-70), 'px; z-index:1;">';
 		print_privacy_error();
+		echo '</div>';
 	}
 	else {
 		if (isset($_SESSION["relationships"][$path_to_find])) $node = $_SESSION["relationships"][$path_to_find];
