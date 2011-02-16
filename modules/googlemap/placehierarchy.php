@@ -596,7 +596,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	
 		// Choose icon and shadow ============
 		<?php
-		if ($level==0) {
+		echo "if (icon.image && ($level==0 || $level==1 || $level==2)) {";
   			echo 'var iconImage = new google.maps.MarkerImage(icon.image,'; 
       		echo 'new google.maps.Size(25, 15),';
     		echo 'new google.maps.Point(0,0),';
@@ -610,7 +610,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		//	echo 'coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],';
 		//	echo 'type: "poly"';
 		//	echo '};'; 
-  		} else {
+  		echo " } else { ";
   			echo 'var iconImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker.png",';
       		echo 'new google.maps.Size(20, 34),';
     		echo 'new google.maps.Point(0,0),';
@@ -624,7 +624,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		//	echo 'coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],';
 		//	echo 'type: "poly"';
 		//	echo '};'; 
-  		}	
+  		echo "}";	
     	?>
       	
 		var posn = new google.maps.LatLng(0,0);
