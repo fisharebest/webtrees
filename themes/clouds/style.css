@@ -822,7 +822,6 @@ vertical-align: middle;
 float: left;
 max-height: 50px;
 max-width: 100px;
-border: solid black 1px;
 margin-right: 3px;
 }
 
@@ -830,7 +829,6 @@ margin-right: 3px;
 float: right;
 max-height: 50px;
 max-width: 100px;
-border: solid black 1px;
 margin-left: 3px;
 }
 
