@@ -470,7 +470,7 @@ class WT_MenuBar {
 				}
 				break;
 			}
-			$menu->addSubmenu($submenu);
+			if ($submenu) $menu->addSubmenu($submenu);
 		}
 
 		return $menu;
