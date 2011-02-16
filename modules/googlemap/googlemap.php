@@ -205,7 +205,7 @@ function create_possible_place_names ($placename, $level) {
 		$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
 		$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist);
 		break;
-	case 2:     // 2 = Normal name, Postfix, Prefxi, Both
+	case 2:     // 2 = Normal name, Postfix, Prefix, Both
 		$retlist[] = $placename;
 		$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
 		$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist);

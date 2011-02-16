@@ -66,15 +66,26 @@ if ($display=="hierarchy" && $level == 0)  {
 	echo "<h2>", WT_I18N::translate('Place List'), "</h2>\n\t";
 }
 
+// Set original place name found (used later)
+$base_parent = $parent[$level-1];
+
 // Make sure the "parent" array has no holes
 if (isset($parent) && is_array($parent)) {
 	$parentKeys = array_keys($parent);
 	$highKey = max($parentKeys);
+	
+	$levelm = set_levelm($level, $parent);
+	$latlng = WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM ##placelocation WHERE pl_id='{$levelm}'")->fetch(PDO::FETCH_ASSOC);	
 	for ($j=0; $j<=$highKey; $j++) {
-		if (!isset($parent[$j])) $parent[$j] = "";
+		if (!isset($parent[$j])) {
+			$parent[$j] = "";
+		} else {
+			$parent[$level-1] = $latlng['pl_place'];
+		}
 	}
 	ksort($parent, SORT_NUMERIC);
 }
+
 
 if (!isset($parent)) $parent=array();
 else {
@@ -132,22 +143,30 @@ if ($display=="hierarchy") {
 		$num_place="";
 		//-- place and page text orientation is opposite -> top level added at the beginning of the place text
 		echo "<a href=\"?level=0\">";
-		if ($numls>=0 && (($TEXT_DIRECTION=="ltr" && hasRtLText($parent[$numls])) || ($TEXT_DIRECTION=="rtl" && !hasRtLText($parent[$numls])))) echo WT_I18N::translate('Top Level'), ", ";
+		if ($numls>=0 && (($TEXT_DIRECTION=="ltr" && hasRtLText($parent[$numls])) || ($TEXT_DIRECTION=="rtl" && !hasRtLText($parent[$numls])))) { 
+			echo WT_I18N::translate('Top Level'), ", ";
+		}
 		echo "</a>";
-			for ($i=$numls; $i>=0; $i--) {
+		for ($i=$numls; $i>=0; $i--) {
 			echo "<a href=\"?level=", ($i+1);
 			for ($j=0; $j<=$i; $j++) {
 				$levels = explode(', ', trim($parent[$j]));
 				// Routine for replacing ampersands
 				foreach ($levels as $pindex=>$ppart) {
-					$ppart = rawurlencode($ppart);
+					if ($j==$numls) {
+						$ppart = rawurlencode($base_parent);
+					} else {
+						$ppart = rawurlencode($ppart);
+					}
 					$ppart = preg_replace("/amp\%3B/", "", trim($ppart));
-					echo "&amp;parent[$j]=", $ppart;
+						echo "&amp;parent[$j]=", $ppart;
 				}
 			}
 			echo "\">";
 			if (trim($parent[$i])=="") {
 				echo WT_I18N::translate('unknown');
+			} else if ($i == $numls) {
+				echo $base_parent; 
 			} else {
 				echo PrintReady($parent[$i]);
 			}
@@ -384,5 +403,6 @@ else {
 	echo WT_I18N::translate('Places are encoded in the form: '), WT_I18N::translate('City, County, State/Province, Country'), "  ", WT_I18N::translate('(Default)'), help_link('ppp_default_form');
 }
 echo "<br /><br /></div>";
+
 if ($use_googlemap && $display=="hierarchy") map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
 print_footer();
