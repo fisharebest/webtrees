@@ -407,17 +407,15 @@ a:hover .nameZoom {
 .pedigree_image_portrait, .pedigree_image_landscape {
 	float: left;
 	max-height: 50px;
-	max-width: 100px;
-	border: solid black 1px;
-	margin-right: 3px;
+	max-width: 50px;
+	margin-right: 4px;
 }
 
 .pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
 	float: right;
 	max-height: 50px;
-	max-width: 100px;
-	border: solid black 1px;
-	margin-left: 3px;
+	max-width: 50px;
+	margin-left: 4px;
 }
 
 .pedigree_form {
