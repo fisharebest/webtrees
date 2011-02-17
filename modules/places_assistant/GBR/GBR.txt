@@ -1,7 +1,0 @@
-<!-- @version $Id$ -->
-<!-- @see http://www.wirksworth.org.uk/A26-CHAP.htm#Scotland -->
-Channel Islands (CHI)
-England (ENG)
-Northern Ireland (NIR)
-Scotland (SCT)
-Wales (WLS)

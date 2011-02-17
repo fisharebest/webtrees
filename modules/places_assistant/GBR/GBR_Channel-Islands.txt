@@ -1,6 +1,0 @@
-<!-- @version $Id$ -->
-<!-- @see http://www.wirksworth.org.uk/A26-CHAP.htm#Scotland -->
-Alderney (ALD)
-Guernsey (GSY)
-Jersey (JSY)
-Sark (SRK)

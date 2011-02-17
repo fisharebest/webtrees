@@ -1,9 +1,0 @@
-<!-- @version $Id$ -->
-<!-- @see http://www.wirksworth.org.uk/A26-CHAP.htm#Ireland -->
-Antrim (ANT) 1922+
-Armagh (ARM) 1922+
-Down (DOW) 1922+
-Fermanagh (FER) 1922+
-Londonderry (LDY) 1922+
-Tyrone (TYR) 1922+
-Ulster (UGB)

@@ -1,6 +1,0 @@
-<!-- @version $Id$ -->
-Anvers
-Brabant Flamand
-Flandre Occidentale
-Flandre Orientale
-Limbourg
