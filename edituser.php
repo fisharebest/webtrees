@@ -65,7 +65,6 @@ if ($form_action=='update') {
 	} else {
 		// Change password
 		if (!empty($form_pass1)) {
-			AddToLog('User changed password', 'auth');
 			set_user_password(WT_USER_ID, crypt($form_pass1));
 		}
 		$old_realname =getUserFullName(WT_USER_ID);

@@ -210,10 +210,10 @@ case 'load1row':
 	echo '<dd>', edit_field_yes_no_inline('user_setting-canadmin-'.$user_id, get_user_setting($user_id, 'canadmin')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Password'), '</dt>';
-	echo '<dd>', edit_field_inline('user-password-'.$user_id, ''), '</dd>';
+	echo '<dd>', edit_field_inline('user-password-'.$user_id, '********'), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Preferred contact method'), '</dt>';
-	echo '<dd>', edit_field_contact_inline('new_contact_method', get_user_setting($user_id, 'contactmethod')), '</dd>';
+	echo '<dd>', edit_field_contact_inline('user_setting-contactmethod-'.$user_id, get_user_setting($user_id, 'contactmethod')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Allow this user to edit his account information'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-editaccount-'.$user_id, get_user_setting($user_id, 'editaccount')), '</dd>';
@@ -225,16 +225,16 @@ case 'load1row':
 	echo '<dd>', select_edit_control_inline('user_setting-canedit-'.$user_id, array_flip(get_theme_names()), WT_I18N::translate('&lt;default theme&gt;'), get_user_setting($user_id, 'theme')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Default Tab to show on Individual Information page'), '</dt>';
-	echo '<dd>', edit_field_default_tab_inline('new_default_tab', get_user_setting($user_id, 'defaulttab', 'personal_facts')), '</dd>';
+	echo '<dd>', edit_field_default_tab_inline('user_setting-defaulttab-'.$user_id, get_user_setting($user_id, 'defaulttab', 'personal_facts')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-visibleonline-'.$user_id, get_user_setting($user_id, 'visibleonline')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Admin comments on user'), '</dt>';
-	echo '<dd>', edit_field_inline('user_setting-comment-'.$user_id, get_user_setting($user_id, 'admin_comment')), '</dd>';
+	echo '<dd>', edit_field_inline('user_setting-comment-'.$user_id, get_user_setting($user_id, 'comment')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Date'), '</dt>';
-	echo '<dd>', edit_field_inline('user_setting-commentexp-'.$user_id, get_user_setting($user_id, 'admin_comment')), '</dd>';
+	echo '<dd>', edit_field_inline('user_setting-comment_exp-'.$user_id, get_user_setting($user_id, 'comment_exp')), '</dd>';
 	echo '</dd>';
 	echo '</dl>';
 
@@ -318,7 +318,6 @@ if ($action=='createuser' || $action=='edituser2') {
 			// Change password
 			if ($action=='edituser2' && !empty($pass1)) {
 				set_user_password($user_id, crypt($pass1));
-				AddToLog("User ->{$oldusername}<- had password changed", 'auth');
 			}
 			// Change username
 			if ($action=='edituser2' && $username!=$oldusername) {

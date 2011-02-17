@@ -118,7 +118,7 @@ case 'site_setting':
 	case 'ALLOW_CHANGE_GEDCOM':
 	case 'SMTP_SIMPLE_MAIL':
 	case 'SMTP_AUTH':
-		$value=(bool)$value;
+		$value=(int)$value;
 		break;
 	case 'THEME_DIR':
 	case 'LOGIN_URL':
@@ -140,6 +140,8 @@ case 'site_setting':
 		// An unrecognised setting
 		fail();
 	}
+
+	// Authorised and valid - make update
 	set_site_setting($id1, $value);
 	ok();
 
@@ -147,28 +149,38 @@ case 'user':
 	//////////////////////////////////////////////////////////////////////////////
 	// Table name: WT_USER
 	// ID format:  user-{column_name}-{user_id}
-	// Access:     administrator
-	//             user (if they have "editaccount" rights)
 	//////////////////////////////////////////////////////////////////////////////
+
+	// Authorisation
+	if (!(WT_USER_IS_ADMIN || WT_USER_ID && WT_USER==$id2)) {
+		fail();
+	}
+
+	// Validation
 	switch ($id1) {
+	case 'password':
+		// The password will be displayed as ***** on screen.
+		// Accept the update, but pretend to fail.  This will leave the ***** on screen
+		set_user_password($id2, crypt($value));
+		AddToLog('User ID: '.$user_id. ' changed password', 'auth');
+		fail();
 	case 'user_name':
 	case 'real_name':
 	case 'email':
-		if (WT_USER_IS_ADMIN || WT_USER==$id2 && get_user_setting($id2, 'editaccount')) {
-			try {
-				WT_DB::prepare("UPDATE `##user` SET {$id1}=? WHERE user_id=?")
-					->execute(array($value, $id2));
-			} catch (PDOException $ex) {
-				// Duplicate email or username? How can we display an error message?
-				fail();
-			}
-			ok();
-		} else {
-			// Not allowed
-			fail();
-		}
+		break;
 	default:
 		// An unrecognised setting
+		fail();
+	}
+
+	// Authorised and valid - make update
+	try {
+		WT_DB::prepare("UPDATE `##user` SET {$id1}=? WHERE user_id=?")
+			->execute(array($value, $id2));
+		AddToLog('User ID: '.$user_id. ' changed '.$$id1.' to '.$value, 'auth');
+		ok();
+	} catch (PDOException $ex) {
+		// Duplicate email or username?
 		fail();
 	}
 
@@ -182,39 +194,44 @@ case 'user_setting':
 	//////////////////////////////////////////////////////////////////////////////
 	// Table name: WT_USER_SETTING
 	// ID format:  user_setting-{setting_name}-{user_id}
-	// Access:     administrator
-	//             member (some fields only - if they have "editaccount" rights)
 	//////////////////////////////////////////////////////////////////////////////
+
+	// Authorisation
+	if (!(WT_USER_IS_ADMIN || WT_USER_ID && get_user_setting($id2, 'editaccount') && _array($id1, array('language','defaulttab','visible_online','contact_method')))) {
+		fail();
+	}
+
+	// Validation
 	switch ($id1) {
-	case 'auto_accept':
 	case 'canadmin':
+		// Cannot change our own admin status - either to add it or remove it
+		if (WT_USER_ID==$id2) {
+			fail();
+		}
+		break;
+	case 'auto_accept':
 	case 'editaccount':
 	case 'verified':
 	case 'verified_by_admin':
-	case 'contactmethod':
+	case 'visibleonline':
 	case 'max_relation_path':
+		$value=(int)$value;
+		break;
+	case 'contactmethod':
 	case 'comment':
-		if (WT_USER_IS_ADMIN) {
-			set_user_setting($id2, $id1, $value);
-			ok();
-		} else {
-			// Not allowed
-			fail();
-		}
+	case 'comment_exp':
 	case 'defaulttab':
 	case 'language':
-	case 'visible_online':
-		if (WT_USER_IS_ADMIN || WT_USER==$id2 && get_user_setting($id2, 'editaccount')) {
-			set_user_setting($id2, $id1, $value);
-			ok();
-		} else {
-			// Not allowed
-			fail();
-		}
+	case 'theme':
+		break;
 	default:
 		// An unrecognised setting
 		fail();
 	}
+
+	// Authorised and valid - make update
+	set_user_setting($id2, $id1, $value);
+	ok();
 
 default:
 	// An unrecognised table

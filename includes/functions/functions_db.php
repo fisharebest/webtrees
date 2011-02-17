@@ -2261,6 +2261,7 @@ function get_newest_registered_user() {
 function set_user_password($user_id, $password) {
 	WT_DB::prepare("UPDATE `##user` SET password=? WHERE user_id=?")
 		->execute(array($password, $user_id));
+	AddToLog('User ID: '.$user_id. ' ('.get_user_name($user_id).') changed password', 'auth');
 }
 
 function get_user_password($user_id) {
