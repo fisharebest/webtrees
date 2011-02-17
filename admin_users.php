@@ -248,38 +248,21 @@ case 'load1row':
 		'</tr>';
 
 	foreach ($all_gedcoms as $ged_id=>$ged_name) {
-		echo '<tr>',
-			'<td >', WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td>',
+		echo
+			'<tr><td >',
+			WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), 
 			//Pedigree root person
-			'<td>';
-				$varname='rootid'.$ged_id;
-				echo '<input type="text" name="', $varname, '" id="', $varname, '" value="';
-				$pid=get_user_gedcom_setting($user_id, $ged_id, 'rootid');
-				echo $pid, '" />', print_findindi_link($varname, "", false, false, $ged_name);
-				$GEDCOM=$ged_name; // library functions use global variable instead of parameter.
-				$person=WT_Person::getInstance($pid);
-				if ($person) {
-					echo '<div class="list_item"><a href="', $person->getHtmlUrl(), '">', PrintReady($person->getFullName()), '</a></div>';
-				}
-			echo '</td>',						
-			// GEDCOM INDI Record ID
-			'<td>';
-				$varname='gedcomid'.$ged_id;
-				echo '<input type="text" name="',$varname, '" id="',$varname, '" value="';
-				$pid=get_user_gedcom_setting($user_id, $ged_id, 'gedcomid');
-				echo $pid, '" />';
-				print_findindi_link($varname, "", false, false, $ged_name);
-				$GEDCOM=$ged_name; // library functions use global variable instead of parameter.
-				$person=WT_Person::getInstance($pid);
-				if ($person) {
-					echo ' <div class="list_item"><a href="', $person->getHtmlUrl(), '">', PrintReady($person->getFullName()), '</a></div>';
-				}
-			echo
-				'</td>';
-			echo '<td>', select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-canedit', $ALL_EDIT_OPTIONS, null, get_user_gedcom_setting($user_id, $ged_id, 'canedit', 'none')), '</td>';
-			//Relationship path
-			echo '<td>', select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, get_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', '0')), '</td>';
-			echo '</tr>';
+			'</td><td>',
+			// TODO: autocomplete/find/etc. for this field
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-rootid', get_user_gedcom_setting($user_id, $ged_id, 'rootid')),
+			'</td><td>',
+			// TODO: autocomplete/find/etc. for this field
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-gedcomid', get_user_gedcom_setting($user_id, $ged_id, 'gedcomid')),
+			'</td><td>',
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-canedit', $ALL_EDIT_OPTIONS, null, get_user_gedcom_setting($user_id, $ged_id, 'canedit', 'none')),
+			'</td><td>',
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, get_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', '0')),
+			'</td></tr>';
 	}
 	echo '</table>';
 
