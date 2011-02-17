@@ -164,7 +164,7 @@ case 'loadrows':
 		if ($user_id != WT_USER_ID) {
 			$aData[5]='<div class="icon-email" onclick="return message(\''.$user_name.'\');"></div>';
 		}
-		$aData[6]=edit_field_language_inline('user_setting-language-'.$user_id, $aData[6]);
+		$aData[6]=edit_field_language_inline('user_setting-'.$user_id.'-language', $aData[6]);
 		// $aData[7] is the sortable registration timestamp
 		$aData[8]=format_timestamp($aData[8]);
 		if (date("U") - $aData[7] > 604800 && !$aData[11]) {
@@ -176,8 +176,8 @@ case 'loadrows':
 		} else {
 			$aData[10]=WT_I18N::translate('Never');
 		}
-		$aData[11]=edit_field_yes_no_inline('user_setting-verified-'.         $user_id, $aData[11]);
-		$aData[12]=edit_field_yes_no_inline('user_setting-verified_by_admin-'.$user_id, $aData[12]);
+		$aData[11]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified-',          $aData[11]);
+		$aData[12]=edit_field_yes_no_inline('user_setting-'.$user_id.'-verified_by_admin-', $aData[12]);
 		// Add extra column for "delete" action
 		if ($user_id != WT_USER_ID) {
 			$aData[13]='<div class="icon-delete" onclick="if (confirm(\''.htmlspecialchars(WT_I18N::translate('Permanently delete "%s"?', $user_name)).'\')) { document.location=\''.WT_SCRIPT_NAME.'?action=deleteuser&username='.htmlspecialchars($user_name).'\'; }"></div>';
@@ -206,31 +206,31 @@ case 'load1row':
 	echo '<dl>';
 	echo '<h2>', WT_I18N::translate('Details'), '</h2>';
 	echo '<dt>', WT_I18N::translate('Administrator'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-canadmin-'.$user_id, get_user_setting($user_id, 'canadmin')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-canadmin', get_user_setting($user_id, 'canadmin')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Password'), '</dt>';
 	echo '<dd>', edit_field_inline('user-password-'.$user_id, '********'), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Preferred contact method'), '</dt>';
-	echo '<dd>', edit_field_contact_inline('user_setting-contactmethod-'.$user_id, get_user_setting($user_id, 'contactmethod')), '</dd>';
+	echo '<dd>', edit_field_contact_inline('user_setting-'.$user_id.'-contactmethod', get_user_setting($user_id, 'contactmethod')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Allow this user to edit his account information'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-editaccount-'.$user_id, get_user_setting($user_id, 'editaccount')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-editaccount', get_user_setting($user_id, 'editaccount')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Automatically approve changes made by this user'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-auto_accept-'.$user_id, get_user_setting($user_id, 'auto_accept')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', get_user_setting($user_id, 'auto_accept')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Theme'), '</dt>';
-	echo '<dd>', select_edit_control_inline('user_setting-canedit-'.$user_id, array_flip(get_theme_names()), WT_I18N::translate('&lt;default theme&gt;'), get_user_setting($user_id, 'theme')), '</dd>';
+	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-canedit', array_flip(get_theme_names()), WT_I18N::translate('&lt;default theme&gt;'), get_user_setting($user_id, 'theme')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Default Tab to show on Individual Information page'), '</dt>';
-	echo '<dd>', edit_field_default_tab_inline('user_setting-defaulttab-'.$user_id, get_user_setting($user_id, 'defaulttab', 'personal_facts')), '</dd>';
+	echo '<dd>', edit_field_default_tab_inline('user_setting-'.$user_id.'-defaulttab', get_user_setting($user_id, 'defaulttab', 'personal_facts')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
-	echo '<dd>', edit_field_yes_no_inline('user_setting-visibleonline-'.$user_id, get_user_setting($user_id, 'visibleonline')), '</dd>';
+	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', get_user_setting($user_id, 'visibleonline')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Comments'), '</dt>';
-	echo '<dd>', edit_field_inline('user_setting-comment-'.$user_id, get_user_setting($user_id, 'comment')), '</dd>';
+	echo '<dd>', edit_field_inline('user_setting-'.$user_id.'-comment', get_user_setting($user_id, 'comment')), '</dd>';
 
 	echo '</dl>';
 
@@ -278,7 +278,7 @@ case 'load1row':
 				'</td>';
 			echo '<td>', select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-canedit', $ALL_EDIT_OPTIONS, null, get_user_gedcom_setting($user_id, $ged_id, 'canedit', 'none')), '</td>';
 			//Relationship path
-			echo '<td>', select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('No'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, get_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', '0')), '</td>';
+			echo '<td>', select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, get_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', '0')), '</td>';
 			echo '</tr>';
 	}
 	echo '</table>';

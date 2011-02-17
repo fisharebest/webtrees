@@ -50,36 +50,6 @@ $value=safe_POST('value', WT_REGEX_UNSAFE);
 // Every switch must have a default case, and every case must end in ok() or fail()
 
 switch ($table) {
-case 'block_setting':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_BLOCK_SETTING
-	//////////////////////////////////////////////////////////////////////////////
-	fail();
-
-case 'gedcom_setting':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_GEDCOM_SETTING
-	//////////////////////////////////////////////////////////////////////////////
-	fail();
-
-case 'ip_address':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_IP_ADDRESS
-	//////////////////////////////////////////////////////////////////////////////
-	fail();
-
-case 'module_privacy':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_MODULE_PRIVACY
-	//////////////////////////////////////////////////////////////////////////////
-	fail();
-
-case 'module_setting':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_MODULE_SETTING
-	//////////////////////////////////////////////////////////////////////////////
-	fail();
-
 case 'site_setting':
 	//////////////////////////////////////////////////////////////////////////////
 	// Table name: WT_SITE_SETTING
@@ -177,7 +147,7 @@ case 'user':
 	try {
 		WT_DB::prepare("UPDATE `##user` SET {$id1}=? WHERE user_id=?")
 			->execute(array($value, $id2));
-		AddToLog('User ID: '.$user_id. ' changed '.$$id1.' to '.$value, 'auth');
+		AddToLog('User ID: '.$id2. ' changed '.$id1.' to '.$value, 'auth');
 		ok();
 	} catch (PDOException $ex) {
 		// Duplicate email or username?
@@ -187,25 +157,46 @@ case 'user':
 case 'user_gedcom_setting':
 	//////////////////////////////////////////////////////////////////////////////
 	// Table name: WT_USER_GEDCOM_SETTING
-	//////////////////////////////////////////////////////////////////////////////
-	fail();
-
-case 'user_setting':
-	//////////////////////////////////////////////////////////////////////////////
-	// Table name: WT_USER_SETTING
-	// ID format:  user_setting-{setting_name}-{user_id}
+	// ID format:  user_gedcom_setting-{user_id}-{gedcom_id}-{setting_name}
 	//////////////////////////////////////////////////////////////////////////////
 
 	// Authorisation
-	if (!(WT_USER_IS_ADMIN || WT_USER_ID && get_user_setting($id2, 'editaccount') && _array($id1, array('language','defaulttab','visible_online','contact_method')))) {
+	if (!(WT_USER_IS_ADMIN || userGedcomAdmin($id2, $id3))) {
 		fail();
 	}
 
 	// Validation
-	switch ($id1) {
+	switch($id3) {
+	case 'rootid':
+	case 'gedcomid':
+	case 'canedit':
+	case 'RELATIONSHIP_PATH_LENGTH':
+		break;
+	default:
+		// An unrecognised setting
+		fail();
+	}
+
+	// Authorised and valid - make update
+	set_user_gedcom_setting($id1, $id2, $id3, $value);
+	ok();
+
+case 'user_setting':
+	//////////////////////////////////////////////////////////////////////////////
+	// Table name: WT_USER_SETTING
+	// ID format:  user_setting-{user_id}-{setting_name}
+	//////////////////////////////////////////////////////////////////////////////
+
+	// Authorisation
+	if (!(WT_USER_IS_ADMIN || WT_USER_ID && get_user_setting($id1, 'editaccount') && _array($id2, array('language','defaulttab','visible_online','contact_method')))) {
+		fail();
+	}
+
+	// Validation
+	switch ($id2) {
 	case 'canadmin':
 		// Cannot change our own admin status - either to add it or remove it
-		if (WT_USER_ID==$id2) {
+		if (WT_USER_ID==$id1) {
 			fail();
 		}
 		break;
@@ -229,7 +220,7 @@ case 'user_setting':
 	}
 
 	// Authorised and valid - make update
-	set_user_setting($id2, $id1, $value);
+	set_user_setting($id1, $id2, $value);
 	ok();
 
 default:
