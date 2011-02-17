@@ -116,9 +116,6 @@ function gedcom_header($gedfile) {
 	// Preserve some values from the original header
 	if (get_gedcom_setting($ged_id, 'imported')) {
 		$head=find_gedcom_record("HEAD", $ged_id);
-		if (preg_match("/\n1 CHAR .+/", $head, $match)) {
-			$CHAR=$match[0];
-		}
 		if (preg_match("/\n1 PLAC\n2 FORM .+/", $head, $match)) {
 			$PLAC=$match[0];
 		}
