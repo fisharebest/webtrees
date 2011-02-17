@@ -225,7 +225,6 @@ Disallow: /js/
 Disallow: /language/
 Disallow: /library/
 Disallow: /lifespan.php
-Disallow: /load.php
 Disallow: /login.php
 Disallow: /login_register.php
 Disallow: /media/
