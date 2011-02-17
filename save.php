@@ -84,40 +84,64 @@ case 'site_setting':
 	//////////////////////////////////////////////////////////////////////////////
 	// Table name: WT_SITE_SETTING
 	// ID format:  site_setting-{setting_name}
-	// Access:     administrator only
 	//////////////////////////////////////////////////////////////////////////////
+
+	// Authorisation
 	if (!WT_USER_IS_ADMIN) {
 		fail();
 	}
+
+	// Validation
 	switch ($id1) {
-	case 'INDEX_DIRECTORY':
-	case 'THEME_DIR':
-	case 'ALLOW_CHANGE_GEDCOM':
-	case 'ALLOW_USER_THEMES':
-	case 'SMTP_AUTH':
-	case 'SMTP_SIMPLE_MAIL':
-	case 'STORE_MESSAGES':
-	case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
-	case 'USE_REGISTRATION_MODULE':
 	case 'MAX_EXECUTION_TIME':
 	case 'SESSION_TIME':
 	case 'SMTP_PORT':
-	case 'SERVER_URL':
-	case 'LOGIN_URL':
+		if (!is_numeric($value)) {
+			fail();
+		}
+		break;
+	case 'INDEX_DIRECTORY':
+		if (!is_dir($value) || substr($value, -1)!='/') {
+			fail();
+		}
+		break;
 	case 'MEMORY_LIMIT':
-	case 'SMTP_SSL':
+		// Must specify K, M or G.
+		if (!preg_match('/^[0-9]+[KMG]$/', $value)) {
+			fail();
+		}
+		break;
+	case 'STORE_MESSAGES':
+	case 'USE_REGISTRATION_MODULE':
+	case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
+	case 'ALLOW_USER_THEMES':
+	case 'ALLOW_CHANGE_GEDCOM':
+	case 'SMTP_SIMPLE_MAIL':
+	case 'SMTP_AUTH':
+		$value=(bool)$value;
+		break;
+	case 'THEME_DIR':
+	case 'LOGIN_URL':
+	case 'SERVER_URL':
 	case 'SMTP_ACTIVE':
-	case 'SMTP_HOST':
-	case 'SMTP_HELO':
 	case 'SMTP_AUTH_USER':
-	case 'SMTP_AUTH_PASS':
 	case 'SMTP_FROM_NAME':
+	case 'SMTP_HELO':
+	case 'SMTP_HOST':
+	case 'SMTP_SSL':
+		break;
+	case 'SMTP_AUTH_PASS':
+		// The password will be displayed as ***** on screen.
+		// Accept the update, but pretend to fail.  This will leave the ***** on screen
 		set_site_setting($id1, $value);
-		ok();
+		fail();
+		break;
 	default:
 		// An unrecognised setting
 		fail();
 	}
+	set_site_setting($id1, $value);
+	ok();
 
 case 'user':
 	//////////////////////////////////////////////////////////////////////////////
