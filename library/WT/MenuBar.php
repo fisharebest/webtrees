@@ -422,6 +422,7 @@ class WT_MenuBar {
 				$submenu = new WT_Menu($name, $link);
 				$submenu->addIcon('indis');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_indis');
+				$menu->addSubmenu($submenu);
 				break;
 
 			case 'famlist.php':
@@ -429,6 +430,7 @@ class WT_MenuBar {
 				$submenu = new WT_Menu($name, $link);
 				$submenu->addIcon('cfamily');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_cfamily');
+				$menu->addSubmenu($submenu);
 				break;
 
 			case 'branches.php':
@@ -436,30 +438,35 @@ class WT_MenuBar {
 				$submenu = new WT_Menu($name, $link);
 				$submenu->addIcon('patriarch');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_patriarch');
+				$menu->addSubmenu($submenu);
 				break;
 
 			case 'sourcelist.php':
 				$submenu = new WT_Menu($name, $link);
 				$submenu->addIcon('menu_source');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_source');
+				$menu->addSubmenu($submenu);
 				break;
 
 			case 'notelist.php':
 				$submenu = new WT_Menu($name, $link);
 				$submenu->addIcon('menu_note');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_notes');
+				$menu->addSubmenu($submenu);
 				break;
 
 			case 'repolist.php':
 				$submenu = new WT_Menu($name, $link);
 				$submenu->addIcon('menu_repository');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_repository');
+				$menu->addSubmenu($submenu);
 				break;
 
 			case 'placelist.php':
 				$submenu = new WT_Menu($name, $link);
 				$submenu->addIcon('place');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_place');
+				$menu->addSubmenu($submenu);
 				break;
 
 			case 'medialist.php':
@@ -467,10 +474,10 @@ class WT_MenuBar {
 					$submenu = new WT_Menu($name, $link);
 					$submenu->addIcon('menu_media');
 					$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_media');
+					$menu->addSubmenu($submenu);
 				}
 				break;
 			}
-			if ($submenu) $menu->addSubmenu($submenu);
 		}
 
 		return $menu;
