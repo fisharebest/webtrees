@@ -386,7 +386,7 @@ table.center{
 .pedigree_image_portrait, .pedigree_image_landscape {
 	float: left;
 	max-height: 50px;
-	max-width: 100px;
+	max-width: 50px;
 	border: solid black 1px;
 	margin-right: 3px;
 }
@@ -394,7 +394,7 @@ table.center{
 .pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
 	float: right;
 	max-height: 50px;
-	max-width: 100px;
+	max-width: 50px;
 	border: solid black 1px;
 	margin-left: 3px;
 }
