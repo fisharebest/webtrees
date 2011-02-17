@@ -85,7 +85,7 @@ if ($TEXT_DIRECTION=='rtl') {
 }
 echo
 	'<link type="text/css" href="', WT_THEME_DIR, 'modules.css" rel="Stylesheet" />',
-	'</head>';
+	'</head>',
 	'<body id="body">';
 
 // begin header section
