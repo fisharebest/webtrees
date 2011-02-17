@@ -193,16 +193,16 @@ echo WT_JS_START;
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s records', '<select><option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option></select>'); ?>',
 				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
-				"sInfo": '<?php echo /* I18N: %s' are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
-				"sInfoEmpty": '<?php echo /* I18N: %s' are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
-				"sInfoFiltered": '<?php echo /* I18N: %s  is a placeholder for numbers */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
+				"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
+				"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
+				"sInfoFiltered": '<?php echo /* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
 				"sProcessing": '<?php echo WT_I18N::translate('Loading...');?>',
 				"sSearch": '<?php echo WT_I18N::translate('Search');?>:',
 				"oPaginate": {
-					"sFirst": '<?php echo WT_I18N::translate_c('first page', 'first');?>',
-					"sLast": '<?php echo WT_I18N::translate('last');?>',
-					"sNext": '<?php echo WT_I18N::translate('next');?>',
-					"sPrevious": '<?php echo WT_I18N::translate('previous');?>'
+					"sFirst":    '<?php echo /* I18N: button label, first page    */ WT_I18N::translate('first');    ?>',
+					"sLast":     '<?php echo /* I18N: button label, last page     */ WT_I18N::translate('last');     ?>',
+					"sNext":     '<?php echo /* I18N: button label, next page     */ WT_I18N::translate('next');     ?>',
+					"sPrevious": '<?php echo /* I18N: button label, previous page */ WT_I18N::translate('previous'); ?>'
 				}
 			},
 			"bJQueryUI": true,
