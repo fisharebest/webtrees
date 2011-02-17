@@ -220,10 +220,17 @@ table#list  {width:100%}
 #access td+td+td+td {text-align:center;}
 td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
 td.details:hover {color: black;}
-#list_length {float:left;}
-#list_filter {float:right;}
-#list_info {float:left;}
-#list_paginate {float:right;}
+#list_paginate   { float:left;  }
+#list_processing { float:left;  }
+#list_filter     { float:right; }
+#list_info       { float:left;  }
+#list_length     { float:right; }
+
+html[dir='rtl'] #list_paginate   { float:right; }
+html[dir='rtl'] #list_processing { float:right; }
+html[dir='rtl'] #list_filter     { float:left;  }
+html[dir='rtl'] #list_info       { float:right; }
+html[dir='rtl'] #list_length     { float:left;  }
 
 /* USER ADD & EDIT */
 table#adduser  {width:100%;}

@@ -726,7 +726,7 @@ default:
 		jQuery(document).ready(function(){
 			var oTable = jQuery('#list').dataTable( {
 				"oLanguage": {
-					"sLengthMenu": '<?php echo /* I18N: %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s records', '<select><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="40">40</option><option value="50">50</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
+					"sLengthMenu": '<?php echo /* I18N: %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s records', '<select><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
 					"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
 					"sInfo": '<?php echo /* I18N: %s' are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
 					"sInfoEmpty": '<?php echo /* I18N: %s' are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
@@ -740,6 +740,7 @@ default:
 						"sPrevious": '<?php echo WT_I18N::translate('previous');?>'
 					}
 				},
+				"sDom"            : '<"H"prf>t<"F"il>',
 				"bProcessing"     : true,
 				"bServerSide"     : true,
 				"sAjaxSource"     : "<?php echo WT_SCRIPT_NAME.'?action=loadrows'; ?>",
