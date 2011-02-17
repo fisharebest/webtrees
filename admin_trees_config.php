@@ -243,7 +243,9 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD',       safe_POST_bool('NEW_WELCOME_TEXT_CUST_HEAD'));
 	set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES',           safe_POST_bool('NEW_WORD_WRAPPED_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'ZOOM_BOXES',                   safe_POST('NEW_ZOOM_BOXES'));
-	set_gedcom_setting(WT_GED_ID, 'title',                        safe_POST('gedcom_title', WT_REGEX_UNSAFE));
+	if (safe_POST('gedcom_title', WT_REGEX_UNSAFE)) {
+		set_gedcom_setting(WT_GED_ID, 'title',                        safe_POST('gedcom_title', WT_REGEX_UNSAFE));
+	}
 
 	if (!$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"]) {
 		$NEW_MEDIA_FIREWALL_ROOTDIR = $INDEX_DIRECTORY;
