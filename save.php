@@ -219,7 +219,6 @@ case 'user_setting':
 		break;
 	case 'contactmethod':
 	case 'comment':
-	case 'comment_exp':
 	case 'defaulttab':
 	case 'language':
 	case 'theme':

@@ -475,10 +475,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			" SELECT user_id, 'comment_exp', u_comment_exp".
-			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
-			" UNION ALL".
 			" SELECT user_id, 'relationship_privacy', ".
 			" CASE WHEN u_relationship_privacy IN ('Y', 'yes') THEN 1 WHEN u_relationship_privacy IN ('N', 'no') THEN 0 ELSE u_relationship_privacy END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".

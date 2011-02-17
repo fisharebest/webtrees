@@ -66,7 +66,6 @@ $user_language           =safe_POST('user_language',            array_keys(WT_I1
 $new_contact_method      =safe_POST('new_contact_method');
 $new_default_tab         =safe_POST('new_default_tab',          array_keys(WT_Module::getActiveTabs()), get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'));
 $new_comment             =safe_POST('new_comment',              WT_REGEX_UNSAFE);
-$new_comment_exp         =safe_POST('new_comment_exp'           );
 $new_auto_accept         =safe_POST_bool('new_auto_accept');
 $canadmin                =safe_POST_bool('canadmin');
 $visibleonline           =safe_POST_bool('visibleonline');
@@ -230,12 +229,9 @@ case 'load1row':
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-visibleonline-'.$user_id, get_user_setting($user_id, 'visibleonline')), '</dd>';
 
-	echo '<dt>', WT_I18N::translate('Admin comments on user'), '</dt>';
+	echo '<dt>', WT_I18N::translate('Comments'), '</dt>';
 	echo '<dd>', edit_field_inline('user_setting-comment-'.$user_id, get_user_setting($user_id, 'comment')), '</dd>';
 
-	echo '<dt>', WT_I18N::translate('Date'), '</dt>';
-	echo '<dd>', edit_field_inline('user_setting-comment_exp-'.$user_id, get_user_setting($user_id, 'comment_exp')), '</dd>';
-	echo '</dd>';
 	echo '</dl>';
 
 	// Column One - details
@@ -335,7 +331,6 @@ if ($action=='createuser' || $action=='edituser2') {
 			set_user_setting($user_id, 'contactmethod',        $new_contact_method);
 			set_user_setting($user_id, 'defaulttab',           $new_default_tab);
 			set_user_setting($user_id, 'comment',              $new_comment);
-			set_user_setting($user_id, 'comment_exp',          $new_comment_exp);
 			set_user_setting($user_id, 'auto_accept',          $new_auto_accept);
 			set_user_setting($user_id, 'canadmin',             $canadmin);
 			set_user_setting($user_id, 'visibleonline',        $visibleonline);
@@ -497,9 +492,7 @@ case 'createform':
 			<?php if (WT_USER_IS_ADMIN) { ?>
 			<tr>
 				<td><?php echo WT_I18N::translate('Admin comments on user'), help_link('useradmin_comment'); ?></td>
-				<td ><textarea cols="38" rows="5" name="new_comment"></textarea></td>
-				<td><?php echo WT_I18N::translate('Date'), help_link('useradmin_comment_exp'); ?></td>
-				<td ><input type="text" name="new_comment_exp" id="new_comment_exp" />&nbsp;&nbsp;<?php print_calendar_popup("new_comment_exp"); ?></td>
+				<td colspan="3"><textarea cols="80" rows="5" name="new_comment"></textarea></td>
 			</tr>
 			<?php } ?>
 			<tr>

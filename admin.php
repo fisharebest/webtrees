@@ -90,12 +90,6 @@ echo
 			$totusers = $totusers + 1;
 			if (((date("U") - (int)get_user_setting($user_id, 'reg_timestamp')) > 604800) && !get_user_setting($user_id, 'verified')) {
 				$warnusers++;
-			} else {
-				if (get_user_setting($user_id, 'comment_exp')) {
-					if ((strtotime(get_user_setting($user_id, 'comment_exp')) != "-1") && (strtotime(get_user_setting($user_id, 'comment_exp')) < time("U"))) {
-						$warnusers++;
-					}
-				}
 			}
 			if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
 				$nverusers++;
