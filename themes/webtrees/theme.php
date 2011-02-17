@@ -97,6 +97,7 @@ $WT_IMAGES=array(
 	'target'=>WT_THEME_DIR.'images/buttons/target.gif',
 	'timeline'=>WT_THEME_DIR.'images/timeline.png',
 	'tree'=>WT_THEME_DIR.'images/tree.png',
+	'warning'=>WT_THEME_DIR.'images/warning.gif',
 	'wiki'=>WT_THEME_DIR.'images/w_22.png',
 
 	//- buttons for data entry pages

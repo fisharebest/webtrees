@@ -88,6 +88,7 @@ $WT_IMAGES=array(
 	'target'=>WT_THEME_DIR.'images/buttons/target.gif',
 	'timeline'=>WT_THEME_DIR.'images/timeline.gif',
 	'tree'=>WT_THEME_DIR.'images/gedcom.gif',
+	'warning'=>WT_THEME_DIR.'images/warning.gif',
 	// buttons for data entry pages
 	'button_addmedia'=>WT_THEME_DIR.'images/buttons/addmedia.gif',
 	'button_addrepository'=>WT_THEME_DIR.'images/buttons/addrepository.gif',

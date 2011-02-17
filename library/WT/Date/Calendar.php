@@ -297,6 +297,8 @@ class WT_Date_Calendar {
 	// int $jd: date for calculation
 	// TODO: WT_Date_Jewish needs to redefine this to cope with leap months
 	function GetAge($full, $jd, $warn_on_negative=true) {
+		global $WT_IMAGES;
+
 		if ($this->y==0 || $jd==0) {
 			return '';
 		}
@@ -307,7 +309,7 @@ class WT_Date_Calendar {
 			return $full?'':'0';
 		}
 		if ($warn_on_negative && $jd<$this->minJD) {
-			return '<img alt="" src="images/warning.gif" />';
+			return '<img alt="" src="'.$WT_IMAGES['warning'].'" />';
 		}
 		list($y,$m,$d)=$this->JDtoYMD($jd);
 		$dy=$y-$this->y;

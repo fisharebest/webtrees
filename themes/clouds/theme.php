@@ -99,6 +99,7 @@ $WT_IMAGES['statistic'] = WT_THEME_DIR.'images/statistic.gif';
 $WT_IMAGES['target'] = WT_THEME_DIR.'images/buttons/target.gif';
 $WT_IMAGES['timeline'] = WT_THEME_DIR.'images/timeline.gif';
 $WT_IMAGES['tree'] = WT_THEME_DIR.'images/gedcom.gif';
+$WT_IMAGES['warning'] = WT_THEME_DIR.'images/warning.gif';
 $WT_IMAGES['wiki'] = WT_THEME_DIR.'images/w_22.png';
 
 //- PGV buttons for data entry pages

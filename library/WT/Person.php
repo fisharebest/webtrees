@@ -508,7 +508,8 @@ class WT_Person extends WT_GedcomRecord {
 	* @return string
 	*/
 	function getLabel($elderdate='', $counter=0) {
-		global $TEXT_DIRECTION;
+		global $TEXT_DIRECTION, $WT_IMAGES;
+
 		$label = '';
 		$gap = 0;
 		if (is_object($elderdate) && $elderdate->isOK()) {
@@ -517,9 +518,9 @@ class WT_Person extends WT_GedcomRecord {
 				$gap = $p2->MinJD()-$elderdate->MinJD(); // days
 				$label .= "<div class=\"elderdate age $TEXT_DIRECTION\">";
 				// warning if negative gap : wrong order
-				if ($gap<0 && $counter>0) $label .= "<img alt=\"\" src=\"images/warning.gif\" /> ";
+				if ($gap<0 && $counter>0) $label .= '<img alt="" src="'.$WT_IMAGES['warning'].'" /> ';
 				// warning if gap<6 months
-				if ($gap>1 && $gap<180 && $counter>0) $label .= "<img alt=\"\" src=\"images/warning.gif\" /> ";
+				if ($gap>1 && $gap<180 && $counter>0) $label .= '<img alt="" src="'.$WT_IMAGES['warning'].'" /> ';
 				// children with same date means twin
 				/**if ($gap==0 && $counter>1) {
 					if ($this->getSex()=='M') $label .= WT_I18N::translate('Twin brother');
