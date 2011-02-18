@@ -148,90 +148,58 @@ function create_map() {
 	
 	// create the map
 	if ($level > 0) {
-		echo "<p><table class=\" center\" style=\"margin-top:0px;\"><tr valign=\"top\"><td style=\"background:none;\">", WT_I18N::translate('The red markers show the Place Hierarchy defined after:'), " - ", $parent[$level-1], "</p>";
-	}else {
-		echo "<p><table class=\" center\" style=\"margin-top:0px;\"><tr valign=\"top\"><td style=\"background:none;\"></p>";
+		echo '<p><table class="center" style="margin-top:0px;"><tr valign="top"><td style="background:none;">', WT_I18N::translate('Markers show the Place Hierarchy defined after: %s', $parent[$level-1]), '</p>';
+	} else {
+		echo '<p><table class="center" style="margin-top:0px;"><tr valign="top"><td style="background:none;"></p>';
 	}
 	//<!-- start of map display -->
-	echo "\n<br /><br />\n";
-	echo "<table style=\"margin-top:-32px;\"><tr valign=\"top\">";
+	echo '<br /><br />';
+	echo '<table style="margin-top:-32px;"><tr valign="top">';
 	if ($level>=1) {
-		echo "<td class=\"center\" width=\"200px\" style=\"background:none; padding-top:26px; padding-bottom:0px;\">";
+		echo '<td class="center" width="200px" style="background:none; padding-top:26px; padding-bottom:0px;">';
 	} else {
-		echo "<td class=\"center\" width=\"200px\" style=\"padding-top:6px;\">";	
+		echo '<td class="center" width="200px" style="padding-top:6px;">';	
 	}
 	
 	$levelm = set_levelm($level, $parent);
 	$latlng = WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM ##placelocation WHERE pl_id='{$levelm}'")->fetch(PDO::FETCH_ASSOC);
 
 	if (!isset($latlng)) {
-	
+	// ?
 	} else {
-	
-		if ($latlng['sv_lati']==null && WT_USER_IS_ADMIN && $STREETVIEW && $level > 0) {		
-			?>
-			<style>
-  			#warning {
-    			margin: 0 auto;
-    			width: 520px;
-    			height: 100px;
-				text-align: left;
-				margin-top:-5px;
-  				padding-bottom: 140px; 
-  			}
-  			#warning h5 {
-  				font: 12px verdana; color:red;
-  				font-weight: normal;
-  			}
-  			</style>
-			<div id="warning">
-			<h5>
-				<br /><br /><br />
-			<?php	
-			echo WT_I18n::translate('
-				<b>No Streetview coordinates are saved yet.</b><br />
-				<br />
-				a. 	If no Streetview is displayed in the pane below right,  <br />&nbsp;&nbsp;&nbsp;
-					drag the "Pegman" in the Map pane to the right to a "blue" Street on the map. <br />
-				b. 	When the Streetview is displayed, adjust as necessary to enable the required view. <br />
-					&nbsp;&nbsp;&nbsp; (Right mouse click the "Steetview" pane to toggle Street view navigation arrows.) <br /> 
-				c. 	When the required view is displayed, click the button "Save View".
-		    ');
-			?>
-			</h5>
-			</div>
-			<?php
+		if ($latlng['sv_lati']==null && WT_USER_IS_ADMIN && $STREETVIEW && $level > 0) {
+			echo '<div class="warning ', ($TEXT_DIRECTION=='ltr' ? 'ltr': 'rtl'),'"><b>', WT_I18N::translate('No Street View coordinates are saved yet.'), '</b><br /><br />';
+			echo '<ul>';
+			echo '<li>', WT_I18N::translate('If no Street View is displayed in the pane below right, drag the "Pegman" in the Map pane to the right to a blue street on the map.'), '</li>';
+			echo '<li>', WT_I18N::translate('When the Street View is displayed, adjust as necessary to enable the required view.'), 
+						 WT_I18N::translate('(Right mouse click the Steet View pane to toggle Street View navigation arrows.)'), '</li>';
+			echo '<li>', WT_I18N::translate('When the required view is displayed, click the Save View button.'), '</li>';
+			echo '<ul></div>';
 		}
-		
 	}
-	
-	echo "<div id=\"place_map\" style=\"border: 1px solid gray; width: ", $GOOGLEMAP_PH_XSIZE, "px; height: ", $GOOGLEMAP_PH_YSIZE, "px; ";
+
+	echo '<div id="place_map" style="border: 1px solid gray; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px; ';
 	echo "background-image: url('images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
-
 	echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
-	echo '<script src="', WT_MODULES_DIR, 'googlemap/wt_v3_googlemap.js" type="text/javascript"></script>';
-
-	echo "</td>";
+	echo '</td>';
 
 	if (WT_USER_IS_ADMIN) {
-	echo "</tr><tr><td>";
-		echo "<table style=\"width:", $GOOGLEMAP_PH_XSIZE, "px; margin-top:0px; background:none;\" >";
-		echo "<tr><td align=\"left\" style=\"margin-top:0px; \">\n";
-	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps configuration'), "</a>";
-		echo "</td>\n";
-		echo "<td align=\"center\">\n";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places\">", WT_I18N::translate('Edit geographic place locations'), "</a>";
-		echo "</td>\n";
-		echo "<td align=\"right\">\n";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_placecheck\">", WT_I18N::translate('Place Check'), "</a>";
-		echo "</td></tr>\n";
-		echo "</table>\n";
+	echo '</tr><tr><td>';
+		echo '<table style="width:', $GOOGLEMAP_PH_XSIZE, 'px; margin-top:0px; background:none;" >';
+		echo '<tr><td align="left" style="margin-top:0px; ">';
+	echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
+		echo '</td>';
+		echo '<td align="center">';
+	echo '<a href="module.php?mod=googlemap&mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>';
+		echo '</td>';
+		echo '<td align="right">';
+	echo '<a href="module.php?mod=googlemap&mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>';
+		echo '</td></tr>';
+		echo '</table>';
 	}
-	
-	echo "</tr></table>";
-
-	echo "</td>";
-	echo "<td style=\"margin-left:15; padding-top: 7px; float:right; \">";
+	echo '</tr></table>';
+	echo '</td>';
+	echo '<td style="margin-left:15px; padding-top:7px; float:right; ">';
 	
 	if ($STREETVIEW) {
 	?>
@@ -242,7 +210,7 @@ function create_map() {
 			var svbear = document.getElementById('sv_bearText').value.slice(0, -1);
 			var svelev = document.getElementById('sv_elevText').value.slice(0, -1);
 			var svzoom = document.getElementById('sv_zoomText').value;
-			win03  = window.open('module.php?mod=googlemap&mod_action=places_edit&action=update_sv_params&placeid='+placeid+"&"+sessionname+"="+sessionid+
+			win03 = window.open('module.php?mod=googlemap&mod_action=places_edit&action=update_sv_params&placeid='+placeid+"&"+sessionname+"="+sessionid+
 				'&svlati='+svlati+
 				'&svlong='+svlong+
 				'&svbear='+svbear+
@@ -257,50 +225,46 @@ function create_map() {
 		$parent = safe_GET('parent');
 		global $TBLPREFIX, $pl_lati, $pl_long;
 		if ($level>=1) {
-    	  	if (!isset($latlng)) {
-		    	echo "<br /><br />";
-		    	echo "<br /><br /><br /><br />";
-		    	echo "<font color='red'>";
-		    	echo WT_I18n::translate('<b>This place has not been defined in the Googlemaps Geographic Place Locations</b><br /><br />');
-		    	if ( WT_USER_IS_ADMIN )  {
-		    		echo WT_I18n::translate('
-		    			First, Click "Edit geographic place locations".<br />
-		    			<br />
-		    			Then, if you are using google Maps Streetview,<br />		    		
-		    			return here to position Streetview afterwards.
-		    		');
-		    	} else {
-		    		echo WT_I18n::translate('Please contact your administrator.');
-		    	}
-		    	echo "</font>";
-    	  	} else {
+			if (!isset($latlng)) {
+				echo '<br /><br />';
+				echo '<br /><br /><br />';
+				echo '<div class="warning">';
+				echo '<b>', WT_I18N::translate('This place has no coordinates'), '</b><br /><br />';
+				if (WT_USER_IS_ADMIN) {
+					echo WT_I18N::translate('Click Edit geographic place locations and set coordinates.'), '<br /><br />';
+					echo WT_I18N::translate('Then, if you are using Google Street View, return here to position Street View afterwards.');
+				} else {
+					echo contact_links();
+				}
+				echo '</div>';
+			} else {
 				$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlng['pl_lati']);	// WT_placelocation lati
 				$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlng['pl_long']);	// WT_placelocation long
 				
 				// Check if Streetview location parameters are stored in database		
 				$placeid	= $latlng['pl_id'];			// Placelocation place id
-				$sv_lat		= $latlng['sv_lati']; 		// StreetView Point of View Latitude
-				$sv_lng 	= $latlng['sv_long'];		// StreetView Point of View Longitude	
-				$sv_dir 	= $latlng['sv_bearing'];		// StreetView Point of View Direction (degrees from North)
+				$sv_lat		= $latlng['sv_lati'];		// StreetView Point of View Latitude
+				$sv_lng		= $latlng['sv_long'];		// StreetView Point of View Longitude	
+				$sv_dir		= $latlng['sv_bearing'];	// StreetView Point of View Direction (degrees from North)
 				$sv_pitch	= $latlng['sv_elevation'];	// StreetView Point of View Elevation (+90 to -90 degrees (+=down, -=up)
 				$sv_zoom	= $latlng['sv_zoom'];		// StreetView Point of View Zoom (0, 1, 2 or 3)
 				
 				// If Streetview coordinates are stored, bring up the regular Streetview -------
-		  		if ($latlng['sv_lati']!=null) {
-		  			$_map = WT_I18N::translate('Google Maps');
-		  			$_reset = WT_I18N::translate('Reset');
+				if ($latlng['sv_lati']!=null) {
+					$_map = WT_I18N::translate('Google Maps');
+					$_reset = WT_I18N::translate('Reset');
 						$_streetview = /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View');
 					?>
 					<div>
 					<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="<?php echo WT_MODULES_DIR; ?>googlemap/wt_v3_street_view.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>&z=18&t=2&c=1&s=1&b=<?php echo $sv_dir; ?>&p=<?php echo $sv_pitch; ?>&m=<?php echo $sv_zoom; ?>&j=1&k=1&v=1&map=<?php echo $_map; ?>&reset=<?php echo $_reset; ?>&streetview=<?php echo $_streetview; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 					</div>
 					<?php			
-						$list_latlon = ("
-							lati<input 		name='sv_latiText' id='sv_latiText' type='text' style='width:67px; background:none; border:none;' value='".$sv_lat."' 	/>
-							long<input 		name='sv_longText' id='sv_longText' type='text' style='width:67px; background:none; border:none;' value='".$sv_lng."' 	/>
-							bear<input 		name='sv_bearText' id='sv_bearText' type='text' style='width:50px; background:none; border:none;' value='".$sv_dir."' 	/>
-							elev<input 		name='sv_elevText' id='sv_elevText' type='text' style='width:45px; background:none; border:none;' value='".$sv_pitch."'	/>
-							zoom<input 		name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='".$sv_zoom."'	/>
+						$list_latlon = (
+							translate_fact('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:67px; background:none; border:none;' value='".$sv_lat."' />".
+							translate_fact('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:67px; background:none; border:none;' value='".$sv_lng."' />".
+							WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:50px; background:none; border:none;' value='".$sv_dir."' />".
+							WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:45px; background:none; border:none;' value='".$sv_pitch."'	/>".
+							WT_I18N::translate('Zoom')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='".$sv_zoom."' />
 						");
 						if (WT_USER_IS_ADMIN) {
 							echo "<table align=\"center\" style=\"margin-left:6px; border:solid 1px black; width:522px; margin-top:-28px; background:#cccccc; \">";
@@ -310,47 +274,42 @@ function create_map() {
 						echo "<tr><td>\n";
 						echo "<form style=\"text-align:left; margin-left:5px; font:11px verdana; color:blue;\" method=\"post\" action=\"\">";
 						echo $list_latlon;
-						echo "";
 						echo "<input type=\"submit\" name=\"Submit\" onClick=\"update_sv_params($placeid);\" value=\"", WT_I18N::translate('Save'), "\">";
 						echo "</form>";
 						echo "</td></tr>\n";
 						echo "</table>\n";	
 			
 				// Else, if Admin, bring up StreetView adjustment Map --------------------------
-	  			} else if ( WT_USER_IS_ADMIN )  {
-	  				$sv_lat = $pl_lati; 	// Place Latitude
-					$sv_lng = $pl_long;		// Place Longitude
+				} else if (WT_USER_IS_ADMIN) {
+					$sv_lat = $pl_lati;	// Place Latitude
+					$sv_lng = $pl_long;	// Place Longitude
 					?>
 					<iframe style="background:transparent; margin-top:-2px; margin-left: 2px; width:530px;height:650px;padding:0;border:solid 0px black" src="<?php echo WT_MODULES_DIR; ?>googlemap/wt_v3_street_view_setup.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 					<?php			
 					if (WT_USER_IS_ADMIN) {
-						$list_latlon = ("
-							lati<input 		name='sv_latiText' id='sv_latiText' type='text' style='width:67px; background:none; border:none;' value='".$sv_lat."' 	/>
-							long<input 		name='sv_longText' id='sv_longText' type='text' style='width:67px; background:none; border:none;' value='".$sv_lng."' 	/>
-							bearing<input 	name='sv_bearText' id='sv_bearText' type='text' style='width:50px; background:none; border:none;' value='".$sv_dir."' 	/>
-							elev<input 		name='sv_elevText' id='sv_elevText' type='text' style='width:43px; background:none; border:none;' value='".$sv_pitch."'	/>
-							zoom<input 		name='sv_zoomText' id='sv_zoomText' type='text' style='width:26px; background:none; border:none;' value='".$sv_zoom."'	/>
+						$list_latlon = (
+							translate_fact('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:62px; background:none; border:none;' value='".$sv_lat."' />".
+							translate_fact('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:62px; background:none; border:none;' value='".$sv_lng."' />".
+							WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:43px; background:none; border:none;' value='".$sv_dir."' />".
+							WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:43px; background:none; border:none;' value='".$sv_pitch."' />".
+							WT_I18N::translate('Zoom factor')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:26px; background:none; border:none;' value='".$sv_zoom."' />
 						");
-						echo "<table align=\"center\" style=\" margin-left: 6px; border:1px solid black; width:522px; margin-top:-18px; background:#cccccc; \">";
-						echo "<tr><td>\n";
-							echo "<form style=\"text-align:left; margin-left:5px; font:11px verdana; color:blue;\" method=\"post\" action=\"\">";
-							echo $list_latlon;
-							echo "";
-							echo "<input type=\"submit\" name=\"Submit\" onClick=\"update_sv_params($placeid);\" value=\"", WT_I18n::translate('Save'), "\">";
-							echo "</form>";
-						echo "</td></tr>\n";
-						echo "</table>\n";			
+						echo '<table align="center" style="margin-left:6px; border:1px solid black; width:522px; margin-top:-18px; background:#cccccc; ">';
+						echo '<tr><td>';
+						echo '<form style="text-align:left; margin-left:5px; font:11px verdana; color:blue;" method="post" action="">';
+						echo $list_latlon;
+						echo '<input type="submit" name="Submit" onClick="update_sv_params(', $placeid, ');" value="', WT_I18N::translate('Save'), '">';
+						echo '</form>';
+						echo '</td></tr>';
+						echo '</table>';			
 					}		
-	  			}		
-	  	  	}
+				}		
+			}
 		}
 		// Next line puts Place hierarchy on new row -----
-		echo "</td></tr><tr>";
-		
+		echo '</td></tr><tr>';
 	}	// End Streetview window ===================================================================
-
 }
-	
 
 function check_were_am_i($numls, $levelm) {
 	$where_am_i=place_id_to_hierarchy($levelm);
@@ -405,14 +364,14 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		echo " icon_type.shadowSize = google.maps.Size(37, 34);\n";
 		echo "var point = new google.maps.LatLng(0, 0);\n";
 		if ($lastlevel)
-			echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
 		else {
-			echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><a href='?level=", ($level+1), $linklevels, "&amp;parent[{$level}]=";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", ($level+1), $linklevels, "&amp;parent[{$level}]=";
 			if ($place2['place'] == "Unknown") echo "'><br />";
 			else echo addslashes($place2['place']), "'><br />";
 		}
 		if (($place2["icon"] != NULL) && ($place2['icon'] != "")) {
-			echo '<img src="', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '">&nbsp;&nbsp;';
+			echo '<img src=\"', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);
@@ -457,7 +416,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		echo "<br />", WT_I18N::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
 			echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=", $levelm, "&display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
-		echo "</div></td>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
+		echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
 		$long = str_replace(array('E', 'W', ','), array('', '-', '.'), $place2['long']);
@@ -485,9 +444,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		}
 		echo "var point = new google.maps.LatLng({$lati}, {$long});\n";
 		if ($lastlevel) {
-			echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
 		} else {
-			echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><a href='?level=", ($level+1), $linklevels, "&amp;parent[{$level}]=";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", ($level+1), $linklevels, "&amp;parent[{$level}]=";
 			if ($place2['place'] == "Unknown") {
 				echo "'><br />";
 			} else {
@@ -495,7 +454,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		}
 		if (($place2['icon'] != NULL) && ($place2['icon'] != "")) {
-			echo '<img src="', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '">&nbsp;&nbsp;';
+			echo '<img src=\"', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);
@@ -540,9 +499,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		$temp=addslashes($place2['place']);
 		$temp=str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), $temp);
 		if (!$GOOGLEMAP_COORD) {
-			echo "<br /><br /></div></td>\", icon_type, \"", $temp, "\");\n";
+			echo "<br /><br /></div>\", icon_type, \"", $temp, "\");\n";
 		} else {
-			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div></td>\", icon_type, \"", $temp, "\");\n";	
+			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div>\", icon_type, \"", $temp, "\");\n";	
 		}
 	}
 }
@@ -551,16 +510,14 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	global $GOOGLEMAP_MAP_TYPE, $GM_MAX_NOF_LEVELS, $GOOGLEMAP_PH_WHEEL, $GOOGLEMAP_PH_CONTROLS, $GOOGLEMAP_PH_MARKER;
 	
 	echo '<link type="text/css" href ="', WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
-
 	?>
 	<script type="text/javascript">	
 	// <![CDATA[
 	
 	var infowindow = new google.maps.InfoWindow( { 
-    	// size: new google.maps.Size(150,50),
-    	// maxWidth: 600
-  	});
-  	
+		// size: new google.maps.Size(150,50),
+		// maxWidth: 600
+	});
 
 	var map_center = new google.maps.LatLng(0,0);
 	var map = "";
@@ -569,94 +526,90 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	var gmarkers = [];
 	var i = 0;
 	
- 	// Create the map and mapOptions
- 	var mapOptions = {
+	// Create the map and mapOptions
+	var mapOptions = {
 		zoom: 8,
 		center: map_center,
 		mapTypeId: google.maps.MapTypeId.TERRAIN,					// ROADMAP, SATELLITE, HYBRID, TERRAIN
 		mapTypeControlOptions: {
-			style: google.maps.MapTypeControlStyle.DROPDOWN_MENU 	// DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
+			style: google.maps.MapTypeControlStyle.DROPDOWN_MENU	// DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
 		},
 		navigationControl: true,
-      	navigationControlOptions: {
-   			position: google.maps.ControlPosition.TOP_RIGHT,		// BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-   			style: google.maps.NavigationControlStyle.SMALL			// ANDROID, DEFAULT, SMALL, ZOOM_PAN
-      	},
-      	streetViewControl: false,									// Show Pegman or not
-      	scrollwheel: false  		
+		navigationControlOptions: {
+			position: google.maps.ControlPosition.TOP_RIGHT,		// BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
+			style: google.maps.NavigationControlStyle.SMALL			// ANDROID, DEFAULT, SMALL, ZOOM_PAN
+		},
+		streetViewControl: false,									// Show Pegman or not
+		scrollwheel: false
 	};
 	map = new google.maps.Map(document.getElementById("place_map"), mapOptions);
 
 	// Close any infowindow when map is clicked
-    google.maps.event.addListener(map, 'click', function() {
-        infowindow.close();   	
-    });
+	google.maps.event.addListener(map, 'click', function() {
+		infowindow.close();
+	});
 	
 	// Creates a marker whose info window displays the given name
-	function createMarker(point, html, icon, name) 	{
+	function createMarker(point, html, icon, name) {
 	
 		// Choose icon and shadow ============
 		<?php
 		echo "if (icon.image && ($level==0 || $level==1 || $level==2)) {";
-  			echo 'var iconImage = new google.maps.MarkerImage(icon.image,'; 
-      		echo 'new google.maps.Size(25, 15),';
-    		echo 'new google.maps.Point(0,0),';
-    		echo 'new google.maps.Point(1, 45));';
-  			echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
-    	  	echo 'new google.maps.Size(35, 45),';
-    	  	echo 'new google.maps.Point(0,0),';
-    	  	echo 'new google.maps.Point(1, 45));';
-    	// 	*** Clickable area of icon - To be refined later *** ===================================
-		//  echo 'var iconShape = {';
+			echo 'var iconImage = new google.maps.MarkerImage(icon.image,'; 
+			echo 'new google.maps.Size(25, 15),';
+			echo 'new google.maps.Point(0,0),';
+			echo 'new google.maps.Point(1, 45));';
+			echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
+			echo 'new google.maps.Size(35, 45),';
+			echo 'new google.maps.Point(0,0),';
+			echo 'new google.maps.Point(1, 45));';
+		//	*** Clickable area of icon - To be refined later *** ===================================
+		//	echo 'var iconShape = {';
 		//	echo 'coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],';
 		//	echo 'type: "poly"';
 		//	echo '};'; 
-  		echo " } else { ";
-  			echo 'var iconImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker.png",';
-      		echo 'new google.maps.Size(20, 34),';
-    		echo 'new google.maps.Point(0,0),';
-    		echo 'new google.maps.Point(9, 34));';
-  			echo 'var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",';
-    	  	echo 'new google.maps.Size(37, 34),';
-    	  	echo 'new google.maps.Point(0,0),';
-    	  	echo 'new google.maps.Point(9, 34));';
-    	// 	*** Clickable area of icon - To be refined later *** ===================================
-		//  echo 'var iconShape = {';
+		echo " } else { ";
+			echo 'var iconImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker.png",';
+			echo 'new google.maps.Size(20, 34),';
+			echo 'new google.maps.Point(0,0),';
+			echo 'new google.maps.Point(9, 34));';
+			echo 'var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",';
+			echo 'new google.maps.Size(37, 34),';
+			echo 'new google.maps.Point(0,0),';
+			echo 'new google.maps.Point(9, 34));';
+		//	*** Clickable area of icon - To be refined later *** ===================================
+		//	echo 'var iconShape = {';
 		//	echo 'coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],';
 		//	echo 'type: "poly"';
 		//	echo '};'; 
-  		echo "}";	
-    	?>
-      	
+		echo "}";	
+		?>
+
 		var posn = new google.maps.LatLng(0,0);
 		var marker = new google.maps.Marker({
-		    position: point,
-		    icon: iconImage,
-         	shadow: iconShadow,
-        	map: map,
-        	title: name,
-        });
+			position: point,
+			icon: iconImage,
+			shadow: iconShadow,
+			map: map,
+			title: name,
+		});
 		
 		// Show this markers name in the info window when it is clicked
-    	google.maps.event.addListener(marker, 'click', function() {
-   			infowindow.close();
-       		infowindow.setContent(html);
-       		infowindow.open(map, marker);
-       	});
-       	
-       	// === Store the tab, category and event info as marker properties ===
-        marker.mypoint = point;
-        marker.mytitle = name;
-        marker.myposn = posn;
-        
-        gmarkers.push(marker); 
-        
-        bounds.extend(marker.position);	
+		google.maps.event.addListener(marker, 'click', function() {
+			infowindow.close();
+			infowindow.setContent(html);
+			infowindow.open(map, marker);
+		});
+
+		// === Store the tab, category and event info as marker properties ===
+		marker.mypoint = point;
+		marker.mytitle = name;
+		marker.myposn = posn;
+		gmarkers.push(marker); 
+		bounds.extend(marker.position);	
 		map.fitBounds(bounds);
- 			
 		return marker;
 	}
-
 	<?php
 	if (check_exist_table()) {
 		$levelm = set_levelm($level, $parent);
@@ -678,7 +631,6 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	//		echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 	//		echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
 		} 
-
 		//create markers
 		if ($numfound==0 && $level>0) {
 			if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
@@ -693,7 +645,6 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 				$thisloc = $parent;
 				$thisloc[] = $placename;
 				$this_levelm = set_levelm($level+1, $thisloc);
-
 				// this loop could be optimized into a single SQL statement using 'in':  WHERE pl_id in (1,2,3) 
 				$place2 = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long, pl_zoom as zoom, pl_icon as icon FROM ##placelocation WHERE pl_id='{$this_levelm}'")->fetch(PDO::FETCH_ASSOC);
 				$place2['long'] = $place2['pl_long'];  // mysql won't allow us to name this "long" in the select statement
@@ -701,23 +652,20 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			}
 		}
 	} else {
-	
 		// The following is called when no coordinates exist for a place location at all
 		echo "var icon_type = new google.maps.MarkerImage();\n";
 		echo 'icon_type.image = "', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
 		echo "var point = new google.maps.LatLng(0, 0);\n";
-		echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'>";
+		echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'>";
 		echo "<br />", WT_I18N::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
 			echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=0&display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
-		echo "<br /></div></td>\", icon_type, \"", WT_I18N::translate('Edit geographic location'), "\");\n";
+		echo "<br /></div>\", icon_type, \"", WT_I18N::translate('Edit geographic location'), "\");\n";
 	}
 	//end markers
 	?>
-
 	//]]>
 	</script>
-	
 	<?php
 }
-	?>
+?>
