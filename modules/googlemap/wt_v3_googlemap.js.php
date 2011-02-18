@@ -421,8 +421,8 @@
 						$image = "<img class='icon_birt' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Baptism' || $gmark['fact'] == 'Christening') {
 						$image = "<img class='icon_bapm' src='././images/pix1.gif' />";
-					} else if ($gmark['fact'] == 'Marriage') {
-						$image = "<img class='icon_marr' src='././images/pix1.gif' />";
+					} else if ($gmark['fact'] == 'Military') {
+						$image = "<img class='icon_mili' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Occupation') {
 						$image = "<img class='icon_occu' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Residence') {
