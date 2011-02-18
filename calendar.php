@@ -54,6 +54,16 @@ if (empty($filterev)) $filterev='bdm';
 if (empty($filterof)) $filterof='all';
 if (empty($filtersx)) $filtersx='';
 
+if ($cal.$day.$month.$year=='') {
+	// No date specified?  Use the most likely calendar
+	switch (WT_LOCALE) {
+	case 'fa': $cal='@#DJALALI@';    break;
+	case 'ar': $cal='@#DHIJRI@';     break;
+	case 'he': $cal='@#DHEBREW@';    break;
+	default:   $cal='@#DGREGORIAN@'; break;
+	}
+}
+
 // Create a WT_Date_Calendar from the parameters
 
 // advance-year "year range"
