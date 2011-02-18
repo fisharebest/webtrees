@@ -6,7 +6,7 @@ LANGUAGES_RELEASE=ca cs da de en_GB en_US es et fa fi fr he hr hu it lt nb nl pl
 MO=$(patsubst %,$(LABEL)/language/%.mo,$(LANGUAGES))
 PACKAGE=webtrees
 POT=$(PACKAGE).pot
-PHP=$(shell find .. -path ../library -prune -o -path ../build -prune -o -name '*.php' -print)
+PHP=$(shell find .. -path ../library/Zend -prune -o -path ../build -prune -o -name '*.php' -print)
 SHELL=bash
 SVNVERSION=$(shell svnversion .. | tr -d 'M')
 
@@ -75,6 +75,6 @@ $(LANGUAGE_ARCHIVE):
 $(POT): $(PHP)
 	rm -Rf tmp_reports
 	mkdir tmp_reports
-	for file in ../modules/*/*.xml; do cat $$file | php -r "echo preg_replace('/(i18n::[^)]+\))/', '<'.'?php echo \\1; ?>', file_get_contents('php://stdin'));" > tmp_reports/$$(echo $$file.php | cut -c 12- | tr / _); done
+	for file in ../modules/*/*.xml; do cat $$file | php -r "echo preg_replace('/(WT_I18N::[^)]+\))/', '<'.'?php echo \\1; ?>', file_get_contents('php://stdin'));" > tmp_reports/$$(echo $$file.php | cut -c 12- | tr / _); done
 	@xgettext --package-name=$(PACKAGE) --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=$@ --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1 $(PHP) tmp_reports/*.php
 	rm -Rf tmp_reports
