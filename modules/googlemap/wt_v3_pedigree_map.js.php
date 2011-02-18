@@ -112,7 +112,7 @@ var gicons = [];
 
 // -------------------------------------------------------------------------------------------------
 gicons["1"]  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon1.png")
-gicons["1"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+">googlemap/images/shadow50.png",
+gicons["1"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow50.png",
     						new google.maps.Size(37, 34),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(10, 34)	// Shadow anchor is base of image
@@ -483,7 +483,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		}
 		$relationship=get_relationship_name(get_relationship($controller->rootid, $pid, false, 0, true));
 		if (empty($relationship)) $relationship=WT_I18N::translate('self');
-		$event = '<img src="'.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png" width="10" height="10">'.
+		$event = '<img src=\"'.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png\" width=\"10\" height=\"10\">'.
 			 "<strong>&nbsp;".$relationship.":&nbsp;</strong>";
 
 		// add thumbnail image

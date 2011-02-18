@@ -234,8 +234,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 //<!-- end of count records by type -->
 
 //<!-- start of map display -->
-echo "<table ";
-echo " style=\"tabs_table\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"100%\">\n";
+echo '<table class="tabs_table" cellspacing="0" cellpadding="0" border="0" width="100%">';
 echo "<tr>\n";
 echo "<td valign=\"top\">\n";
 echo "<img src=\"images/spacer.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\" border=\"0\"/>\n";
