@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.'modules/googlemap/defaultconfig.php';
+require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
 global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES;
 
@@ -78,9 +78,9 @@ if (!$GOOGLEMAP_ENABLED) {
 	print_footer();
 	return;
 }
-?>
-<link type="text/css" href ="modules/googlemap/css/googlemap_style.css" rel="stylesheet" />
-<?php
+
+echo '<link type="text/css" href ="', WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
+
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 echo '<div><table><tr><td valign="middle">';
 echo "<h2>" . WT_I18N::translate('Pedigree Map') . " " . WT_I18N::translate('for') . " ";
@@ -304,6 +304,6 @@ echo "</div>";
 <!-- Start of map scripts -->
 <?php
 echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
-require_once 'modules/googlemap/wt_v3_pedigree_map.js.php';
+require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_pedigree_map.js.php';
 
 print_footer();

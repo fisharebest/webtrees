@@ -598,11 +598,11 @@ function build_indiv_map($indifacts, $famids) {
 		// =========================================================================================
 		
 		// === Include css and js files ============================================================
-		echo '<link type="text/css" href="modules/googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
+		echo '<link type="text/css" href="', WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
 		if ($STREETVIEW) {
-			require_once WT_ROOT.'modules/googlemap/wt_v3_googlemap.js.php';
+			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_googlemap.js.php';
 		} else {
-			require_once WT_ROOT.'modules/googlemap/wt_v3_googlemap.js_noSV.php';		
+			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_googlemap.js_noSV.php';		
 		}
 
 		// === Create the normal googlemap sidebar of events and children ==========================

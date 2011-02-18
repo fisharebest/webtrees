@@ -76,12 +76,12 @@ if ($TEXT_DIRECTION=='rtl') {
 if (WT_USE_LIGHTBOX) {
 	if ($TEXT_DIRECTION=='rtl') {
 		echo
-			'<link type="text/css" rel="stylesheet" href="modules/lightbox/css/clearbox_music_RTL.css" />',
-			'<link type="text/css" rel="stylesheet" href="modules/lightbox/css/album_page_RTL_ff.css" />';
+			'<link type="text/css" rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" />',
+			'<link type="text/css" rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" />';
 	} else {
 		echo
-			'<link type="text/css" rel="stylesheet" href="modules/lightbox/css/clearbox_music.css" />',
-			'<link type="text/css" rel="stylesheet" href="modules/lightbox/css/album_page.css" />';
+			'<link type="text/css" rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" />',
+			'<link type="text/css" rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page.css" />';
 	}
 }
 

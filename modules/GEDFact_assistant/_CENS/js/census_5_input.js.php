@@ -35,8 +35,8 @@
 // CONFIG notes. Below are some comments that point to where this script can be customized.
 // Note: Make sure to include a <tbody></tbody> in your table's HTML
 
+echo '<script src="', WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/chapman_codes.js" type="text/javascript"></script>';
 ?>
-<script src="modules/GEDFact_assistant/_CENS/js/chapman_codes.js" type="text/javascript"></script>
 <script>
 
 //Load Language variables for Edit header and tooltip ============================

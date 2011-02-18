@@ -191,14 +191,14 @@ class WT_Controller_Media extends WT_Controller_Base {
 			$menu->addSubmenu($submenu);
 
 			// main link displayed on page
-			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.'modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
+			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
 				$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
 			} else {
 				$submenu = new WT_Menu(WT_I18N::translate('Set link'));
 			}
 
 			// GEDFact assistant Add Media Links =======================
-			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.'modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
+			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','manage');");
 				$submenu->addIcon('edit_media');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');

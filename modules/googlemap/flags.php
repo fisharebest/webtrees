@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.'modules/googlemap/defaultconfig.php';
+require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $countries=get_all_countries();
@@ -45,14 +45,8 @@ if (!isset($stateSelected)) $stateSelected="States";
 
 print_simple_header(WT_I18N::translate('Select flag'));
 
-if (!is_dir('./modules/googlemap/places/flags/')) {
-	echo '<br /><div class="optionbox wrap"><b>', WT_I18N::translate('The flags directory doesn\'t exist'), '</b><br /><br />', WT_I18N::translate('To make the flags work make sure that %s directory exists and contains flags files.', '<b>./modules/googlemap/places/flags/</b>'), '</div><br />';
-	echo '<div class="center"><a href="javascript:;" onclick="window.close();">', WT_I18N::translate('Close Window'), "</a></div><br />\n";
-	print_simple_footer();
-	exit;
-}
 $country = array();
-$rep = opendir('./modules/googlemap/places/flags/');
+$rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/flags/');
 while ($file = readdir($rep)) {
 	if (stristr($file, ".png")) {
 		$country[] = substr($file, 0, strlen($file)-4);
@@ -66,7 +60,7 @@ if ($countrySelected == "Countries") {
 }
 else {
 	$flags = array();
-	$rep = opendir('./modules/googlemap/places/'.$countrySelected.'/flags/');
+	$rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/');
 	while ($file = readdir($rep)) {
 		if (stristr($file, ".png")) {
 			$flags[] = substr($file, 0, strlen($file)-4);
@@ -76,8 +70,8 @@ else {
 	sort($flags);
 }
 $flags_s = array();
-if ($stateSelected != "States" && is_dir('./modules/googlemap/places/'.$countrySelected.'/flags/'.$stateSelected.'/')) {
-	$rep = opendir('./modules/googlemap/places/'.$countrySelected.'/flags/'.$stateSelected.'/');
+if ($stateSelected != "States" && is_dir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/'.$stateSelected.'/')) {
+	$rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/'.$stateSelected.'/');
 	while ($file = readdir($rep)) {
 		if (stristr($file, ".png")) {
 			$flags_s[] = substr($file, 0, strlen($file)-4);
@@ -94,13 +88,13 @@ if ($action == "ChangeFlag") {
 		function edit_close() {
 <?php if ($_POST["selcountry"] == "Countries") { ?>
 			window.opener.document.editplaces.icon.value = "places/flags/<?php echo $flags[$_POST["FLAGS"]]; ?>.png";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"modules/googlemap/places/flags/<?php echo $country[$_POST["FLAGS"]]; ?>.png\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_MODULES_DIR; ?>googlemap/places/flags/<?php echo $country[$_POST["FLAGS"]]; ?>.png\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 <?php } else if ($_POST["selstate"] != "States"){ ?>
 			window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.png";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"modules/googlemap/places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.png\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected, "/flags/", $_POST["selstate"], "/", $flags_s[$_POST["FLAGS"]]; ?>.png\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 <?php } else { ?>
 			window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.png";
-			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"modules/googlemap/places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.png\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
+			window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected, "/flags/", $flags[$_POST["FLAGS"]]; ?>.png\">&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"javascript:;\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 <?php } ?>
 			window.close();
 		}
@@ -146,10 +140,10 @@ else {
 }
 	if (!isset($_SESSION['flags_countrylist'])) {
 		$countryList = array();
-		$placesDir = scandir('./modules/googlemap/places/');
+		$placesDir = scandir(WT_MODULES_DIR.'googlemap/places/');
 		for ($i = 0; $i < count($country); $i++) {
 			if (count(preg_grep('/'.$country[$i].'/', $placesDir)) != 0) {
-				$rep = opendir('./modules/googlemap/places/'.$country[$i].'/');
+				$rep = opendir(WT_MODULES_DIR.'googlemap/places/'.$country[$i].'/');
 				while ($file = readdir($rep)) {
 					if (stristr($file, "flags")) {
 						$countryList[$country[$i]] = $countries[$country[$i]];
@@ -165,10 +159,10 @@ else {
 	}
 	$stateList = array();
 	if ($countrySelected != "Countries") {
-		$placesDir = scandir('./modules/googlemap/places/'.$countrySelected.'/flags/');
+		$placesDir = scandir(WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/');
 		for ($i = 0; $i < count($flags); $i++) {
 			if (in_array($flags[$i], $placesDir)) {
-				$rep = opendir('./modules/googlemap/places/'.$countrySelected.'/flags/'.$flags[$i].'/');
+				$rep = opendir(WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/'.$flags[$i].'/');
 				while ($file = readdir($rep)) {
 					$stateList[$flags[$i]] = $flags[$i];
 				}
@@ -203,13 +197,13 @@ else {
 		$j = 1;
 		for ($i = 0; $i < count($flags); $i++) {
 			if ($countrySelected == "Countries") {
-				$tempstr = "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"".$i."\" onchange=\"enableButtons();\"><img src=\"modules/googlemap/places/flags/".$flags[$i].".png\" alt=\"".$flags[$i]."\"  title=\"";
+				$tempstr = "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"".$i."\" onchange=\"enableButtons();\"><img src=\"".WT_MODULES_DIR."googlemap/places/flags/".$flags[$i].".png\" alt=\"".$flags[$i]."\"  title=\"";
 				if ($flags[$i]!='blank') $tempstr.=$countries[$flags[$i]];
 				else $tempstr.=$countries['???'];
 				echo $tempstr, "\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
 			}
 			else {
-				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"modules/googlemap/places/", $countrySelected, "/flags/", $flags[$i], ".png\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
+				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"".WT_MODULES_DIR."googlemap/places/", $countrySelected, "/flags/", $flags[$i], ".png\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
 			}
 			if ($j == 4) {
 				echo "</tr><tr>\n";
@@ -240,7 +234,7 @@ else {
 		$j = 1;
 		for ($i = 0; $i < count($flags_s); $i++) {
 			if ($stateSelected != "States") {
-				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"modules/googlemap/places/", $countrySelected, "/flags/", $stateSelected, "/", $flags_s[$i], ".png\">&nbsp;&nbsp;", $flags_s[$i], "</input></td>\n";
+				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"".WT_MODULES_DIR."googlemap/places/", $countrySelected, "/flags/", $stateSelected, "/", $flags_s[$i], ".png\">&nbsp;&nbsp;", $flags_s[$i], "</input></td>\n";
 			}
 			if ($j == 4) {
 				echo "</tr><tr>\n";

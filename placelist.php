@@ -33,8 +33,8 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $use_googlemap = false;
 
-if (file_exists(WT_ROOT.'modules/googlemap/placehierarchy.php')) {
-	require WT_ROOT.'modules/googlemap/placehierarchy.php';
+if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/placehierarchy.php')) {
+	require WT_ROOT.WT_MODULES_DIR.'googlemap/placehierarchy.php';
 	if (isset($GOOGLEMAP_ENABLED) && $GOOGLEMAP_ENABLED && isset($GOOGLEMAP_PLACE_HIERARCHY) && $GOOGLEMAP_PLACE_HIERARCHY) {
 		$use_googlemap = true;
 	}
@@ -129,7 +129,7 @@ if ($display=="hierarchy") {
 		$action="show";
 	}
 	
-	echo '<link type="text/css" href="modules/googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
+	echo '<link type="text/css" href="', WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
 
 	// -- echo the breadcrumb hierarchy
 	$numls=0;

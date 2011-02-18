@@ -72,21 +72,21 @@ global $tabno, $LB_MUSIC_FILE, $LB_SS_SPEED, $LB_TRANSITION, $TEXT_DIRECTION;
 </script>
 			
 <?php if ($TEXT_DIRECTION == "rtl") { ?>
-		<script src="modules/lightbox/js/Sound.js"  type="text/javascript"></script>
-		<script src="modules/lightbox/js/clearbox.js"  type="text/javascript"></script>
+		<script src="<?php echo WT_MODULES_DIR; ?>lightbox/js/Sound.js"  type="text/javascript"></script>
+		<script src="<?php echo WT_MODULES_DIR; ?>lightbox/js/clearbox.js"  type="text/javascript"></script>
 		<!--[if lte IE 7]>
-		<link href ="modules/lightbox/css/album_page_RTL.css"  rel="stylesheet" type="text/css" media="screen" />
+		<link href ="<?php echo WT_MODULES_DIR; ?>lightbox/css/album_page_RTL.css"  rel="stylesheet" type="text/css" media="screen" />
 		<![endif]-->
 <?php } else { ?>
-		<script src="modules/lightbox/js/Sound.js"  type="text/javascript"></script>
-		<script src="modules/lightbox/js/clearbox.js"  type="text/javascript"></script>
+		<script src="<?php echo WT_MODULES_DIR; ?>lightbox/js/Sound.js"  type="text/javascript"></script>
+		<script src="<?php echo WT_MODULES_DIR; ?>lightbox/js/clearbox.js"  type="text/javascript"></script>
 <?php } ?>
 
-		<script src="modules/lightbox/js/wz_tooltip.js"  type="text/javascript"></script>
-		<script src="modules/lightbox/js/tip_centerwindow.js"  type="text/javascript"></script>
+		<script src="<?php echo WT_MODULES_DIR; ?>lightbox/js/wz_tooltip.js"  type="text/javascript"></script>
+		<script src="<?php echo WT_MODULES_DIR; ?>lightbox/js/tip_centerwindow.js"  type="text/javascript"></script>
 		
 <?php if ($TEXT_DIRECTION=="rtl") { ?>
-		<script src="modules/lightbox/js/tip_balloon_RTL.js"  type="text/javascript"></script>
+		<script src="<?php echo WT_MODULES_DIR; ?>lightbox/js/tip_balloon_RTL.js"  type="text/javascript"></script>
 <?php } else { ?>
-		<script src="modules/lightbox/js/tip_balloon.js"  type="text/javascript"></script>
+		<script src="<?php echo WT_MODULES_DIR; ?>lightbox/js/tip_balloon.js"  type="text/javascript"></script>
 <?php } ?>

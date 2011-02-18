@@ -54,16 +54,14 @@ $fulln   = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 $wholename = $fulln;
 
 $currpid=$pid;
-?>
-<script src="modules/GEDFact_assistant/_CENS/js/dynamicoptionlist.js" type="text/javascript"></script>
-<script src="modules/GEDFact_assistant/_CENS/js/date.js" type="text/javascript"></script>
 
+echo '<script src="', WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/dynamicoptionlist.js" type="text/javascript"></script>';
+echo '<script src="', WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/date.js" type="text/javascript"></script>';
 
-<?php
-	echo WT_JS_START;
-		 echo "var TheCenYear = opener.document.getElementById('setyear').value;";
-		 echo "var TheCenCtry = opener.document.getElementById('setctry').value;";
-	echo WT_JS_END;
+echo WT_JS_START;
+echo "var TheCenYear = opener.document.getElementById('setyear').value;";
+echo "var TheCenCtry = opener.document.getElementById('setctry').value;";
+echo WT_JS_END;
 
 
 	// Header of assistant window =====================================================
@@ -81,18 +79,18 @@ $currpid=$pid;
 	//-- Census & Source Information Area =============================================
 	echo "<div class=\" cens_container\">";
 		echo "<span >";
-			include('modules/GEDFact_assistant/_CENS/census_2_source_input.php');
+		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_2_source_input.php';
 		echo "</span>";
 		//-- Proposed Census Text Area ================================================
 		echo "<span>";
-			include('modules/GEDFact_assistant/_CENS/census_4_text.php');
+		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_4_text.php';
 		echo "</span>";
 	echo "</div>";
 
 	//-- Search  and Add Family Members Area ==========================================
 	echo "<div class=\"optionbox cens_search\" style=\"overflow:-moz-scrollbars-horizontal;overflow-x:hidden;overflow-y:scroll;\">";
 		?><!--[if lte IE 7]><style>.cens_search{margin-top:-0.7em;}</style><![EndIf]--><?php
-		include('modules/GEDFact_assistant/_CENS/census_3_search_add.php');
+		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_3_search_add.php';
 	echo "</div>";
 
 	//-- Census Text Input Area =======================================================
@@ -109,7 +107,7 @@ $currpid=$pid;
 
 	//-- Census Add Rows Area =========================================================
 		echo "<div class=\"cens_addrows\">";
-			include('modules/GEDFact_assistant/_CENS/census_5_input.php');
+		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_5_input.php';
 		echo "</div>";
 		?>
 	</div>

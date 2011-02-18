@@ -57,7 +57,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		if (!file_exists($rowm['m_file']) && !isset($rowm['m_file'])) {
 			echo "<tr>";
 				echo "<td valign=\"top\" rowspan=\"2\" >";
-					echo "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"82px\" alt=\"\"></img>";
+					echo '<img src="', WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="82px" alt=""></img>';
 				echo "</td>";
 				echo "<td class=\"description_box\" valign=\"top\" colspan=\"3\" nowrap=\"nowrap\" >";
 					echo "<center><br /><img src=\"" . WT_THEME_DIR . "images/media.gif\" height=\"30\" border=\"0\" />";
@@ -69,7 +69,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo "<table class=\"pic\" width=\"50px\" border=\"0\" >";
 			echo "<tr>";
 				echo "<td valign=\"top\" rowspan=\"2\" >";
-					echo "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"100px\" alt=\"\"></img>";
+					echo '<img src="', WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
 				echo "</td>";
 				echo "<td class=\"description_box\" valign=\"top\" colspan=\"3\" nowrap=\"nowrap\" >";
 					echo "<center><br /><img src=\"" . WT_THEME_DIR . "images/media.gif\" height=\"30\" border=\"0\" />";
@@ -288,7 +288,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 					echo "<table width=\"10px\" class=\"pic\" border=\"0\"><tr>";
 				}
 				echo "<td align=\"center\" rowspan=\"2\" >";
-				echo "<img src=\"modules/lightbox/images/transp80px.gif\" height=\"100px\" alt=\"\"></img>";
+				echo '<img src="', WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
 				echo "</td>";
 
 				// Check for Notes associated media item

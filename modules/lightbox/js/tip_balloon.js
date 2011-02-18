@@ -29,7 +29,7 @@ if(typeof config == "undefined")
 //===================  GLOBAL TOOPTIP CONFIGURATION  =========================//
 
 config. Balloon				= false	// true or false - set to true if you want this to be the default behaviour
-config. BalloonImgPath		= "modules/lightbox/js/tip_balloon/" // Path to images (border, corners, stem), in quotes. Path must be relative to your HTML file.
+config. BalloonImgPath		= WT_MODULES_DIR+"lightbox/js/tip_balloon/" // Path to images (border, corners, stem), in quotes. Path must be relative to your HTML file.
 
 // Sizes of balloon images
 config. BalloonEdgeSize		= 6		// Integer - sidelength of quadratic corner images

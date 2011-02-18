@@ -34,9 +34,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.'modules/googlemap/googlemap.php';
-if (file_exists(WT_ROOT.'modules/googlemap/defaultconfig.php')) {
-	require WT_ROOT.'modules/googlemap/defaultconfig.php';
+require WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
+if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php')) {
+	require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 }
 
 $stats = new WT_Stats($GEDCOM);
@@ -209,7 +209,7 @@ function create_map() {
 	echo "background-image: url('images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
 
 	echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
-	echo '<script src="modules/googlemap/wt_v3_googlemap.js" type="text/javascript"></script>';
+	echo '<script src="', WT_MODULES_DIR, 'googlemap/wt_v3_googlemap.js" type="text/javascript"></script>';
 
 	echo "</td>";
 
@@ -292,7 +292,7 @@ function create_map() {
 						$_streetview = /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View');
 					?>
 					<div>
-					<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="modules/googlemap/wt_v3_street_view.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>&z=18&t=2&c=1&s=1&b=<?php echo $sv_dir; ?>&p=<?php echo $sv_pitch; ?>&m=<?php echo $sv_zoom; ?>&j=1&k=1&v=1&map=<?php echo $_map; ?>&reset=<?php echo $_reset; ?>&streetview=<?php echo $_streetview; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+					<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="<?php echo WT_MODULES_DIR; ?>googlemap/wt_v3_street_view.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>&z=18&t=2&c=1&s=1&b=<?php echo $sv_dir; ?>&p=<?php echo $sv_pitch; ?>&m=<?php echo $sv_zoom; ?>&j=1&k=1&v=1&map=<?php echo $_map; ?>&reset=<?php echo $_reset; ?>&streetview=<?php echo $_streetview; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 					</div>
 					<?php			
 						$list_latlon = ("
@@ -321,7 +321,7 @@ function create_map() {
 	  				$sv_lat = $pl_lati; 	// Place Latitude
 					$sv_lng = $pl_long;		// Place Longitude
 					?>
-					<iframe style="background:transparent; margin-top:-2px; margin-left: 2px; width:530px;height:650px;padding:0;border:solid 0px black" src="modules/googlemap/wt_v3_street_view_setup.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+					<iframe style="background:transparent; margin-top:-2px; margin-left: 2px; width:530px;height:650px;padding:0;border:solid 0px black" src="<?php echo WT_MODULES_DIR; ?>googlemap/wt_v3_street_view_setup.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 					<?php			
 					if (WT_USER_IS_ADMIN) {
 						$list_latlon = ("
@@ -399,10 +399,10 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 	
 	if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == "0") && ($place2['long'] == "0"))) {
 		echo "var icon_type = new google.maps.MarkerImage();\n";
-			echo " icon_type.image = \"modules/googlemap/images/marker_yellow.png\";\n";
-			echo " icon_type.shadow = \"modules/googlemap/images/shadow50.png\";\n";
-			echo " icon_type.iconSize = google.maps.Size(20, 34);\n";
-			echo " icon_type.shadowSize = google.maps.Size(37, 34);\n";
+		echo ' icon_type.image = "', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
+		echo ' icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/shadow50.png\";';
+		echo " icon_type.iconSize = google.maps.Size(20, 34);\n";
+		echo " icon_type.shadowSize = google.maps.Size(37, 34);\n";
 		echo "var point = new google.maps.LatLng(0, 0);\n";
 		if ($lastlevel)
 			echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
@@ -412,7 +412,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			else echo addslashes($place2['place']), "'><br />";
 		}
 		if (($place2["icon"] != NULL) && ($place2['icon'] != "")) {
-			echo "<img src=\'modules/googlemap/", $place2['icon'], "'>&nbsp;&nbsp;";
+			echo '<img src="', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '">&nbsp;&nbsp;';
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);
@@ -478,8 +478,8 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			echo "var icon_type = new google.maps.MarkerImage();\n";
 		} else {
 			echo "var icon_type = new google.maps.MarkerImage();\n";
-			echo " icon_type.image = \"modules/googlemap/", $place2['icon'], "\";\n";
-			echo " icon_type.shadow = \"modules/googlemap/images/flag_shadow.png\";\n";
+			echo ' icon_type.image = "', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
+			echo ' icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png";';
 			echo " icon_type.iconSize = new google.maps.Size(25, 15);\n";
 			echo " icon_type.shadowSize = new google.maps.Size(35, 45);\n";
 		}
@@ -495,7 +495,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		}
 		if (($place2['icon'] != NULL) && ($place2['icon'] != "")) {
-			echo "<img src=\'modules/googlemap/", $place2['icon'], "'>&nbsp;&nbsp;";
+			echo '<img src="', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '">&nbsp;&nbsp;';
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);
@@ -549,9 +549,10 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 
 function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names) {
 	global $GOOGLEMAP_MAP_TYPE, $GM_MAX_NOF_LEVELS, $GOOGLEMAP_PH_WHEEL, $GOOGLEMAP_PH_CONTROLS, $GOOGLEMAP_PH_MARKER;
-	?>
 	
-	<link type="text/css" href ="modules/googlemap/css/googlemap_style.css" rel="stylesheet" />
+	echo '<link type="text/css" href ="', WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
+
+	?>
 	<script type="text/javascript">	
 	// <![CDATA[
 	
@@ -601,7 +602,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
       		echo 'new google.maps.Size(25, 15),';
     		echo 'new google.maps.Point(0,0),';
     		echo 'new google.maps.Point(1, 45));';
-  			echo 'var iconShadow = new google.maps.MarkerImage("modules/googlemap/images/flag_shadow.png",';
+  			echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
     	  	echo 'new google.maps.Size(35, 45),';
     	  	echo 'new google.maps.Point(0,0),';
     	  	echo 'new google.maps.Point(1, 45));';
@@ -703,7 +704,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	
 		// The following is called when no coordinates exist for a place location at all
 		echo "var icon_type = new google.maps.MarkerImage();\n";
-		echo "icon_type.image = \"modules/googlemap/images/marker_yellow.png\"";
+		echo 'icon_type.image = "', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
 		echo "var point = new google.maps.LatLng(0, 0);\n";
 		echo "var marker = createMarker(point, \"<td width='100%'><div class='iwstyle' style='width: 250px;'>";
 		echo "<br />", WT_I18N::translate('This place has no coordinates');

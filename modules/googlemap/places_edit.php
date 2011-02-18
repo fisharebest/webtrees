@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.'modules/googlemap/defaultconfig.php';
+require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $action=safe_REQUEST($_REQUEST, 'action');
@@ -49,8 +49,8 @@ if (!WT_USER_IS_ADMIN) {
 	print_simple_footer();
 	exit;
 }
+echo '<link type="text/css" href="', WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
 ?>
-<link type="text/css" href ="modules/googlemap/css/googlemap_style.css" rel="stylesheet" />
 <script type="text/javascript">
 <!--
 function edit_close(newurl) {
@@ -365,7 +365,7 @@ $api="v3";
 				<a href="javascript:;" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>
 <?php   }
 		else { ?>
-				<img alt="<?php echo /* I18N: The emblem of a country or region */ WT_I18N::translate('Flag'); ?>" src="modules/googlemap/<?php echo $place_icon; ?>"/>&nbsp;&nbsp;
+				<img alt="<?php echo /* I18N: The emblem of a country or region */ WT_I18N::translate('Flag'); ?>" src="<?php echo WT_MODULES_DIR, 'googlemap/', $place_icon; ?>"/>&nbsp;&nbsp;
 				<a href="javascript:;" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
 				<a href="javascript:;" onclick="remove_icon();return false;"><?php echo WT_I18N::translate('Remove flag'); ?></a>
 <?php   } ?>

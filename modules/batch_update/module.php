@@ -44,7 +44,7 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 		switch($mod_action) {
 		case 'admin_batch_update':
 			// TODO: these files should be methods in this class
-			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
+			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
 			$mod=new batch_update;
 			echo $mod->main();
 			break;

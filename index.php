@@ -89,8 +89,8 @@ if ($ctype=='user') {
 }
 
 if (WT_USE_LIGHTBOX) {
-	require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
-	require WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
+	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
+	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 
 // TODO: these should be moved to their respective module/block

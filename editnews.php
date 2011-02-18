@@ -83,9 +83,9 @@ if ($action=="compose") {
 	echo "<tr><td valign=\"top\" align=\"right\">".WT_I18N::translate('Entry Text:')."<br /></td>";
 	echo "<td>";
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-		require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
+		require_once WT_ROOT.WT_MODULES_DIR.'ckeditor/ckeditor.php';
 		$oCKeditor = new CKEditor();
-		$oCKeditor->basePath =  './modules/ckeditor/';
+		$oCKeditor->basePath =  WT_MODULES_DIR.'ckeditor/';
 		$oCKeditor->config['width'] = 700;
 		$oCKeditor->config['height'] = 250;
 		$oCKeditor->config['AutoDetectLanguage'] = false ;

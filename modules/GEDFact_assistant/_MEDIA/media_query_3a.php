@@ -25,7 +25,8 @@
 //
 // $Id$
 
-define('WT_SCRIPT_NAME', 'modules/GEDFact_assistant/_MEDIA/media_query_3a.php');
+// TODO: This module should be loaded via module.php.  We should not load it directly.
+define('WT_SCRIPT_NAME', WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_query_3a.php');
 require '../../../includes/session.php';
 
 

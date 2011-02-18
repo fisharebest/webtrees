@@ -881,7 +881,7 @@ case 'addnewnote_assisted':
 			<input id="pid_array" type="hidden" name="pid_array" value="none" />
 			<input id="pid" type="hidden" name="pid" value=<?php echo $pid; ?> />
 			<?php
-				require WT_ROOT.'modules/GEDFact_assistant/CENS_ctrl.php';
+				require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/CENS_ctrl.php';
 			?>
 		</form>
 	</div>
@@ -891,7 +891,7 @@ case 'addnewnote_assisted':
 //------------------------------------------------------------------------------
 //-- create a shared note assisted record from the incoming variables
 case 'addnoteaction_assisted':
-	require WT_ROOT.'modules/GEDFact_assistant/_CENS/addnoteaction_assisted.php';
+	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/addnoteaction_assisted.php';
 	break;
 
 //-- add new Media Links
@@ -903,7 +903,7 @@ case 'addmedia_links':
 		<input type="hidden" name="action" value="addmedia_links" />
 		<input type="hidden" name="noteid" value="newnote" />
 		<?php
-		require WT_ROOT.'modules/GEDFact_assistant/MEDIA_ctrl.php';
+		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php';
 		?>
 	</form>
 	<?php
@@ -2370,17 +2370,6 @@ case 'reorder_fams_update':
 	}
 	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
 	echo "<br /><br />", WT_I18N::translate('Update successful');
-	break;
-//------------------------------------------------------------------------------
-//-- the following section provides a hook for modules
-//-- for reuse of editing functions from forms
-case 'mod_edit_fact':
-	if (isset($_REQUEST['mod'])) $mod = $_REQUEST['mod'];
-	require_once WT_ROOT.'modules/'.$mod.'/'.$mod.'.php';
-	$module = new $mod();
-	if (method_exists($module, "edit_fact")) {
-		$module->edit_fact();
-	}
 	break;
 }
 

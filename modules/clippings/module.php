@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'modules/clippings/clippings_ctrl.php';
+require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
 class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Sidebar {
 	// Extend class WT_Module
@@ -51,7 +51,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		switch($mod_action) {
 		case 'index':
 			// TODO: these files should be methods in this class
-			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
+			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
 			break;
 		}
 	}

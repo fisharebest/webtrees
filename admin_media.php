@@ -734,7 +734,7 @@ if (check_media_structure()) {
 		$menu = new WT_Menu();
 
 		// GEDFact assistant Add Media Links =======================
-		if (file_exists('modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
+		if (file_exists(WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
 			$menu->addLabel(WT_I18N::translate('Manage links'));
 			$menu->addOnclick("return ilinkitem('$mediaid', 'manage')");
 			$menu->addClass("", "", "submenu");
@@ -1017,8 +1017,8 @@ if (check_media_structure()) {
 			if (WT_USE_LIGHTBOX) {
 				// Get Lightbox config variables
 				// Following two lines are temporarily removed as they cause problems. BH 07/01/2011
-				//require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
-				//require WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
+				//require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
+				//require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 			}
 
 			// Sort the media list according to the user's wishes

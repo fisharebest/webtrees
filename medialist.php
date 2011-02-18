@@ -139,8 +139,8 @@ echo "<div class=\"center\"><h2>", WT_I18N::translate('Multimedia objects'), "</
 
 // Get Javascript variables from lb_config.php ---------------------------
 if (WT_USE_LIGHTBOX) {
-	require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
-	require WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
+	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
+	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 
 //-- automatically generate an image (NOT CURRENTLY USED)
@@ -533,7 +533,7 @@ if ($show == "yes") {
 					echo "<td class=\"width33 wrap center font9\" valign=\"top\">";
 					echo "<a href=\"javascript:;\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&pid={$media['XREF']}&linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
 					if ($LB_ML_THUMB_LINKS == "icon" || $LB_ML_THUMB_LINKS == "both") {
-						echo "<img src=\"modules/lightbox/images/image_edit.gif\" alt=\"\" class=\"icon\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" />&nbsp;&nbsp;&nbsp;" ;
+						echo '<img src="'.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '" />&nbsp;&nbsp;&nbsp;';
 					}
 					if ($LB_ML_THUMB_LINKS == "both") {
 						echo "<br />";
@@ -546,7 +546,7 @@ if ($show == "yes") {
 
 					// ---------- Link Media to person, family or source  ---------------
 					echo "<td class=\"width33 wrap center font9\" valign=\"top\">";
-					require  WT_ROOT.'modules/lightbox/functions/lb_link.php';
+					require  WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_link.php';
 					echo "</td>";
 
 					// ---------- View Media Details (mediaviewer) --------------------
@@ -554,8 +554,8 @@ if ($show == "yes") {
 					echo "<a href=\"mediaviewer.php?mid=" . $media["XREF"] . "\" title=\"" . WT_I18N::translate('View this Media Item\'s Details 
 Plus other Media Options - MediaViewer page') . "\">";
 					if ($LB_ML_THUMB_LINKS == "icon" || $LB_ML_THUMB_LINKS == "both") {
-						echo "&nbsp;&nbsp;&nbsp;<img src=\"modules/lightbox/images/image_view.gif\" alt=\"\" class=\"icon\" title=\"" . WT_I18N::translate('View this Media Item\'s Details 
-Plus other Media Options - MediaViewer page') . "\" />";
+						echo '&nbsp;&nbsp;&nbsp;<img src="'.WT_MODULES_DIR.'lightbox/images/image_view.gif" alt="" class="icon" title="', WT_I18N::translate('View this Media Item\'s Details 
+Plus other Media Options - MediaViewer page'), '" />';
 					}
 					if ($LB_ML_THUMB_LINKS == "both") {
 						echo "<br />";

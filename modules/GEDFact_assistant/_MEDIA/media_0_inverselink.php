@@ -99,7 +99,7 @@ if ($action == "choose" && $paramok) {
 		} else {
 			var iid = document.getElementById('gid').value;
 			//var winblank = window.open('module.php?mod=GEDFact_assistant&mod_action=_MEDIA/media_query_3a&iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
-			var winblank = window.open('modules/GEDFact_assistant/_MEDIA/media_query_3a.php?iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
+			var winblank = window.open(WT_MODULES_DIR+'GEDFact_assistant/_MEDIA/media_query_3a.php?iid='+iid, 'winblank', 'top=100, left=200, width=400, height=20, toolbar=0, directories=0, location=0, status=0, menubar=0, resizable=1, scrollbars=1');
 		}
 	}
 
@@ -107,7 +107,7 @@ if ($action == "choose" && $paramok) {
 //-->
 	</script>
 	<script src="webtrees.js" type="text/javascript"></script>
-	<link href ="modules/GEDFact_assistant/css/media_0_inverselink.css"  rel="stylesheet" type="text/css" media="screen" />
+	<link href ="<?php echo WT_MODULES_DIR; ?>GEDFact_assistant/css/media_0_inverselink.css" rel="stylesheet" type="text/css" media="screen" />
 
 	<?php
 	echo '<form name="link" method="get" action="inverselink.php">';
@@ -150,7 +150,7 @@ if ($action == "choose" && $paramok) {
 		echo '</td></tr>';
 		echo '<tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Links'), '</td>';
 		echo '<td class="optionbox wrap">';
-		require 'modules/GEDFact_assistant/_MEDIA/media_query_1a.php';
+		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_query_1a.php';
 		echo '</td></tr>';
 	}
 
@@ -187,7 +187,7 @@ if ($action == "choose" && $paramok) {
 
 	echo '<br /><br />';
 	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID" />';
-	require 'modules/GEDFact_assistant/_MEDIA/media_query_2a.php';
+	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_query_2a.php';
 	echo '</td></tr>';
 	// Admin Option CHAN log update override =======================
 	if (WT_USER_IS_ADMIN) {
@@ -209,7 +209,7 @@ if ($action == "choose" && $paramok) {
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo '<center><input type="submit" value="', WT_I18N::translate('Save'), '" onclick="javascript:shiftlinks();" />';
 	echo '</center></td></tr>';
-	require 'modules/GEDFact_assistant/_MEDIA/media_7_parse_addLinksTbl.php';
+	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_7_parse_addLinksTbl.php';
 	echo '</table>';
 	echo '</form>';
 	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br /></center>';

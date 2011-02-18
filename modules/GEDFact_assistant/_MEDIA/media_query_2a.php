@@ -70,7 +70,7 @@ if (stristr($_SERVER["SCRIPT_NAME"], basename(__FILE__))!==false) {
 <tr>
 <td width="350" class="row2">
 <?php
-	require 'modules/GEDFact_assistant/_MEDIA/media_5_input.php';
+	require WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_5_input.php';
 ?>
 </td>
 </tr>

@@ -611,7 +611,7 @@ function print_media_links($factrec, $level, $pid='') {
 					$name = trim($row["m_titl"]);
 					echo "<a href=\"" . $mainMedia . "\" rel=\"clearbox[general_1]\" rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
 				} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
-					require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
+					require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 					$name = trim($row["m_titl"]);
 					echo "<a href=\"" . $mainMedia . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
 				// extra for Streetview ----------------------------------------
@@ -1141,7 +1141,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					$centitl = "";
 					if ($nt>0) {
 						// If Census assistant installed, enable hotspot link on shared note title ---------------------
-						if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php')) {
+						if (file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php')) {
 							$centitl  = str_replace("~~", "", trim($n1match[1]));
 							$centitl  = str_replace("<br />", "", $centitl);
 							$centitl  = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
@@ -1153,8 +1153,8 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					$text = expand_urls($text);
 					$text = PrintReady($text)." <br />";
 					// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
-					if (strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php')) {
-						require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php';
+					if (strstr($text, "|") && file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php')) {
+						require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
 					} else {
 						$text = $centitl."".$text;
 					}
@@ -1550,8 +1550,8 @@ function print_main_media_row($rtype, $rowm, $pid) {
 // -----------------------------------------------------------------------------
 
 if (WT_USE_LIGHTBOX) {
-	require_once WT_ROOT.'modules/lightbox/functions/lightbox_print_media.php';
-	require_once WT_ROOT.'modules/lightbox/functions/lightbox_print_media_row.php';
+	require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media.php';
+	require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media_row.php';
 }
 
 require_once WT_ROOT.'includes/functions/functions_media_reorder.php';

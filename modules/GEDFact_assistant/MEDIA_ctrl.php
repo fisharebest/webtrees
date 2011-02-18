@@ -31,7 +31,7 @@
 
 $controller = new WT_Controller_Individual();
 $controller->init();
-echo "<link href =\"modules/GEDFact_assistant/css/gf_styles.css\" rel=\"stylesheet\" type=\"text/css\" media=\"screen\" />";
+echo '<link href="'.WT_MODULES_DIR.'GEDFact_assistant/css/gf_styles.css" rel="stylesheet" type="text/css" media="screen" />';
 
 global $USE_THUMBS_MAIN, $tabno;
 global $linkToID;

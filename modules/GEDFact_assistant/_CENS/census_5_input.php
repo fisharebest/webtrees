@@ -28,7 +28,7 @@
  * @subpackage GEDFact_assistant
  * @version $Id$
  */
-include 'modules/GEDFact_assistant/_CENS/js/census_5_input.js.php';
+require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/js/census_5_input.js.php';
 
 ?>
 

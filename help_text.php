@@ -7,7 +7,7 @@
  * in the rest of the code.
  * Help links are generated using help_link('help_topic')
  *
- * Help text for modules belongs in modules/XXX/help_text.php
+ * Help text for modules belongs in WT_MODULES_DIR/XXX/help_text.php
  * Module help links are generated using help_link('help_topic', 'module')
  *
  * Copyright (C) 2011 Greg Roach
@@ -3084,8 +3084,8 @@ default:
 	$text=WT_I18N::translate('The help text has not been written for this item.');
 	// If we've been called from a module, allow the module to provide the help text
 	$mod=safe_GET('mod', '[A-Za-z0-9_]+');
-	if (file_exists(WT_ROOT.'modules/'.$mod.'/help_text.php')) {
-		require WT_ROOT.'modules/'.$mod.'/help_text.php';
+	if (file_exists(WT_ROOT.WT_MODULES_DIR.$mod.'/help_text.php')) {
+		require WT_ROOT.WT_MODULES_DIR.$mod.'/help_text.php';
 	}
 	break;
 }

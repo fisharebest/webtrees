@@ -78,7 +78,7 @@ if ($pid=="") {
 	//echo '</td>';
 	echo '<td valign="top" width=400>';
 	//-- Search  and Add Family Members Area =========================================
-		include('modules/GEDFact_assistant/_MEDIA/media_3_search_add.php');
+	require WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_3_search_add.php';
 	echo '</td>';
 	echo '</tr>';
 	echo '</table>';

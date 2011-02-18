@@ -58,7 +58,7 @@ class relative_report_WT_Module extends WT_Module implements WT_Module_Report {
 			$pid='';
 		}
 		$menus=array();
-		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml'.$pid);
+		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml'.$pid);
 		$menu->addIcon('cfamily');
 		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reports');
 		$menus[]=$menu;

@@ -49,7 +49,7 @@ class cemetery_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Implement WT_Module_Report - a module can provide many reports
 	public function getReportMenus() {
 		$menus=array();
-		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report=modules/'.$this->getName().'/report.xml');
+		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml');
 		$menu->addIcon('place');
 		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reports');
 		$menus[]=$menu;

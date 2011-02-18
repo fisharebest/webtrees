@@ -50,9 +50,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		case 'admin_places':
 		case 'places_edit':
 			// TODO: these files should be methods in this class
-			require_once WT_ROOT.'modules/googlemap/googlemap.php';
-			require_once WT_ROOT.'modules/googlemap/defaultconfig.php';
-			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
+			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
+			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
 			break;
 		}
 	}
@@ -70,8 +70,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
 		ob_start();
-		require_once WT_ROOT.'modules/googlemap/googlemap.php';
-		require_once WT_ROOT.'modules/googlemap/defaultconfig.php';
+		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
+		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		setup_map();
 		return ob_get_clean();
 	}
@@ -90,8 +90,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		global $GM_MARKER_COLOR, $GM_MARKER_SIZE, $GM_PREFIX, $GM_POSTFIX, $GM_PRE_POST_MODE;
 
 		ob_start();
-		require_once WT_ROOT.'modules/googlemap/googlemap.php';
-		require_once WT_ROOT.'modules/googlemap/defaultconfig.php';
+		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
+		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
 		?>
 <table border="0" width="100%">

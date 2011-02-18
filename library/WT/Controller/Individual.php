@@ -862,10 +862,10 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* include GedFact controller
 	*/
 	function census_assistant() {
-		require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php';
+		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_1_ctrl.php';
 	}
 	function medialink_assistant() {
-		require WT_ROOT.'modules/GEDFact_assistant/_MEDIA/media_1_ctrl.php';
+		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php';
 	}
 // -----------------------------------------------------------------------------
 // End GedFact Assistant Functions

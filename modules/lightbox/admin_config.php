@@ -41,7 +41,7 @@ $action = safe_POST("action");
 
 print_header(WT_I18N::translate('Lightbox-Album Configuration'));
 
-require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
+require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 
 if (!WT_USER_IS_ADMIN) {
 	echo'<div class="warning">', WT_I18N::translate('Page only for Administrators'), '</div>';
@@ -62,7 +62,7 @@ if ($action=='update' && !isset($security_user)) {
 
 	AddToLog('Lightbox config updated', 'config');
 	// read the config file again, to set the vars
-	require WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
+	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 }
 
 ?>

@@ -33,8 +33,8 @@
 <head>
 
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-	<script type="text/javascript" src="modules/googlemap/wt_v3_places_edit_overlays.js.php"></script>
-	<link type="text/css" href="modules/googlemap/css/wt_v3_places_edit.css" rel="stylesheet" />
+	<script type="text/javascript" src="<?php echo WT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
+	<link type="text/css" href="<?php echo WT_MODULES_DIR; ?>googlemap/css/wt_v3_places_edit.css" rel="stylesheet" />
 
 	<script type="text/javascript">
 
@@ -204,7 +204,7 @@
 
 		// *** === NOTE *** This function creates the UK country overlays ==================
 		overlays();
-		// === Above function is located in modules/googlemap/wt_v3_placeOverlays.js.php ===
+		// === Above function is located in WT_MODULES_DIR/googlemap/wt_v3_placeOverlays.js.php ===
 		
 		
 		// Close any infowindow when map is clicked
@@ -226,12 +226,12 @@
 		// Create the Main Location Marker
 		<?php 
 		if ($level < 2 && $place_icon != '') {	
-			echo "var image = new google.maps.MarkerImage('modules/googlemap/",$place_icon,"',";
+			echo 'var image = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/',$place_icon,'",';
 				echo 'new google.maps.Size(25, 15),';	// Image size
 				echo 'new google.maps.Point(0, 0),';	// Image origin
 				echo 'new google.maps.Point(0, 44)';	// Image anchor
 			echo ');';
-			echo 'var iconShadow = new google.maps.MarkerImage("modules/googlemap/images/flag_shadow.png",';
+			echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
 				echo 'new google.maps.Size(35, 45),';	// Shadow size
 				echo 'new google.maps.Point(0,0),';		// Shadow origin
 				echo 'new google.maps.Point(1, 45)';	// Shadow anchor is base of flagpole				
@@ -312,12 +312,12 @@
 	function createMarker(i, point, name) {	
 		var contentString = '<div id="iwcontent">'+name+'<\/div>';
 		<?php
-		echo "var image = new google.maps.MarkerImage('modules/googlemap/images/marker_yellow.png',";
+		echo 'var image = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
 			echo 'new google.maps.Size(20, 34),';	// Image size
 			echo 'new google.maps.Point(0, 0),';	// Image origin
 			echo 'new google.maps.Point(10, 34)';	// Image anchor
 		echo ');';
-		echo "var iconShadow = new google.maps.MarkerImage('modules/googlemap/images/shadow50.png',";
+		echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/shadow50.png",';
 			echo 'new google.maps.Size(37, 34),';	// Shadow size
 			echo 'new google.maps.Point(0, 0),';	// Shadow origin
 			echo 'new google.maps.Point(10, 34)';	// Shadow anchor is base of image

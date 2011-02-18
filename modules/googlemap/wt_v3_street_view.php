@@ -349,16 +349,18 @@ google.maps.event.addDomListener(window, 'load', initialize);
 <body>
 
   	<style>
+/* Fixed widths don't work well with different DPI settings or some translations
   	#butt0 {
   		width:105px;
   	}
   	#butt1{
   		width:120px;
   	}  	  	
-	#butt2 {
+		#butt2 {
   		width:90px;
-  	}  	
-  	#mapCanvas {
+  	}
+*/
+		#mapCanvas {
     	width: 520px;
     	height: 350px;
     	margin: 0 auto;

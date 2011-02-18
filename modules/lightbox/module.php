@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
+require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 
 class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
@@ -47,7 +47,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		case 'admin_config':
 		case 'album':
 			// TODO: these files should be methods in this class
-			require WT_ROOT.'modules/'.$this->getName().'/'.$mod_action.'.php';
+			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
 			break;
 		}
 	}
@@ -79,7 +79,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		global $Fam_Navigator, $NAV_ALBUM;
 
 		ob_start();
-		require WT_ROOT.'modules/lightbox/functions/lb_head.php';
+		require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_head.php';
 
 		$media_found = false;
 		if (!$this->controller->indi->canDisplayDetails()) {
@@ -89,7 +89,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 			echo "</td></tr>";
 			echo "</table>";
 		} else {
-			require WT_ROOT.'modules/lightbox/album.php';
+			require WT_ROOT.WT_MODULES_DIR.'lightbox/album.php';
 		}
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
@@ -102,7 +102,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
 		ob_start();
-		require_once WT_ROOT.'modules/lightbox/functions/lb_call_js.php';
+		require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 		return ob_get_clean();
 	}
 

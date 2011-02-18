@@ -40,7 +40,7 @@ if (!defined('WT_WEBTREES')) {
     $mediaid=$media["XREF"];
 		global $TEXT_DIRECTION, $WT_IMAGES;
 		if (!isset($WT_IMAGES['image_link'])) {
-			$WT_IMAGES['image_link']='modules/lightbox/images/image_link.gif';
+			$WT_IMAGES['image_link']=WT_MODULES_DIR.'lightbox/images/image_link.gif';
 		}
 
 		$classSuffix = "";

@@ -99,7 +99,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				// NOTE: Zoom
 				$personlinks .= "<a href=\"pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM)."\" $mouseAction1><b>".WT_I18N::translate('Pedigree Tree')."</b></a>";
 
-				if (file_exists(WT_ROOT.'modules/googlemap/pedigree_map.php')) {
+				if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/pedigree_map.php')) {
 					$personlinks .= "<br /><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Pedigree Map')."</b></a>";
 				}
 				$username = WT_USER_NAME;
@@ -460,6 +460,9 @@ function print_header($title) {
 		'<script type="text/javascript" src="js/jquery/jquery.jeditable.min.js"></script>'.
 		'<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>'.
 		WT_JS_START.'
+		// Give JavaScript access to some PHP constants
+		var WT_THEME_DIR   = "'.WT_THEME_DIR.'";
+		var WT_MODULES_DIR = "'.WT_MODULES_DIR.'";
 		/* setup some javascript variables */
 		var textDirection = "'.$TEXT_DIRECTION.'";
 		var browserType = "'.$BROWSERTYPE.'";
@@ -935,8 +938,8 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 	if (!empty($text) || !empty($centitl)) {
 		$text = PrintReady($text);
 		// Check if Formatted Shared Note (using pipe "|" as delimiter ) --------------------
-		if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec) && strstr($text, "|") && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php') ) {
-			require WT_ROOT.'modules/GEDFact_assistant/_CENS/census_note_decode.php';
+		if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec) && strstr($text, "|") && file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php') ) {
+			require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
 		// Else if unformatted Shared Note --------------------------------------------------
 		} else if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
 			$text=$centitl.$text;

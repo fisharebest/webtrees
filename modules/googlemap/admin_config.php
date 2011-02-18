@@ -36,11 +36,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require 'modules/googlemap/defaultconfig.php';
-
-if (file_exists('modules/googlemap/config.php')) {
-	require 'modules/googlemap/config.php';
-}
+require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
 print_header(WT_I18N::translate('Google Maps'));
 

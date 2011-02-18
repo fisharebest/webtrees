@@ -345,9 +345,9 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		;
 		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 			// use CKeditor module
-			require_once WT_ROOT.'modules/ckeditor/ckeditor.php';
+			require_once WT_ROOT.WT_MODULES_DIR.'ckeditor/ckeditor.php';
 			$oCKeditor = new CKEditor();
-			$oCKeditor->basePath =  './modules/ckeditor/';
+			$oCKeditor->basePath =  WT_MODULES_DIR.'ckeditor/';
 			$oCKeditor->config['width'] = 700;
 			$oCKeditor->config['height'] = 400;
 			$oCKeditor->config['AutoDetectLanguage'] = false ;

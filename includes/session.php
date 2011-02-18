@@ -40,7 +40,7 @@ define('WT_WEBTREES_URL',    'http://webtrees.net');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net');
 define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees');
 
-// Location of our modules and themes.
+// Location of our modules and themes.  These are used as URLs and directory paths.
 define('WT_MODULES_DIR', 'modules/');
 define('WT_THEMES_DIR',  'themes/' );
 
@@ -309,7 +309,7 @@ if ($SEARCH_SPIDER) {
 Zend_Session::start($cfg);
 
 // Register a session "namespace" to store session data.  This is better than
-// using $_SESSION, as we can avoid clashes with other modules/applications,
+// using $_SESSION, as we can avoid clashes with other modules or applications,
 // and problems with servers that have enabled "register_globals".
 $WT_SESSION=new Zend_Session_Namespace('WEBTREES');
 
@@ -522,4 +522,4 @@ if (substr(PHP_SAPI, 0, 3) == 'cgi') {  // cgi-mode, should only be writable by 
 }
 
 // Lightbox needs custom integration in many places.  Only check for the module once.
-define('WT_USE_LIGHTBOX', !$SEARCH_SPIDER && $MULTI_MEDIA && is_dir(WT_ROOT.'modules/lightbox'));
+define('WT_USE_LIGHTBOX', !$SEARCH_SPIDER && $MULTI_MEDIA && is_dir(WT_ROOT.WT_MODULES_DIR.'lightbox'));

@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.'modules/googlemap/defaultconfig.php';
+require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $action=safe_REQUEST($_REQUEST, 'action');
@@ -134,7 +134,7 @@ if ($action=="update" && !isset($security_user)) {
 
 	AddToLog('Googlemap config updated', 'config');
 	// read the config file again, to set the vars
-	require WT_ROOT.'modules/googlemap/defaultconfig.php';
+	require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 }
 
 ?>

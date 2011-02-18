@@ -146,7 +146,7 @@ class WT_MenuBar {
 		if (file_exists(WT_ROOT.'relationship.php')) $menuList['relationship'] = WT_I18N::translate('Relationship chart');
 		if (file_exists(WT_ROOT.'statistics.php')) $menuList['statistics'] = WT_I18N::translate('Statistics');
 		if (file_exists(WT_ROOT.'treenav.php')) $menuList['treenav'] = WT_I18N::translate('Interactive tree');
-		if (file_exists(WT_ROOT.'modules/googlemap/pedigree_map.php')) {
+		if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/pedigree_map.php')) {
 			$menuList['pedigree_map'] = WT_I18N::translate('Pedigree Map');//added for pedigree_map
 		}
 		asort($menuList);
@@ -366,7 +366,7 @@ class WT_MenuBar {
 				if ($rootid) $link .= '&amp;rootid='.$rootid;
 				$submenu = new WT_Menu(WT_I18N::translate('Pedigree Map'), $link);
 				global $WT_IMAGES;
-				$WT_IMAGES['pedigree_map']='modules/googlemap/images/pedigree_map.gif';
+				$WT_IMAGES['pedigree_map']=WT_MODULES_DIR.'googlemap/images/pedigree_map.gif';
 				$submenu->addIcon('pedigree_map');
 				$submenu->addClass('submenuitem', 'submenuitem_hover');
 				$menu->addSubmenu($submenu);

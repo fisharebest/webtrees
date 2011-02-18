@@ -203,7 +203,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 			if ($kind==2) $rownum2=$numm;
 			if ($kind==3) $rownum3=$numm;
 			if ($kind==4) $rownum4=$numm;
-			if ($kind==5) include 'modules/lightbox/functions/lb_horiz_sort.php';
+			if ($kind==5) require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_horiz_sort.php';
 		}
 		// ==================================================
 

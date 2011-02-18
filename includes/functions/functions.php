@@ -3243,7 +3243,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin=
 	while (true) {
 		if (WT_USE_LIGHTBOX && $admin!="ADMIN") {
 			// Lightbox is installed
-			require_once WT_ROOT.'modules/lightbox/lb_defaultconfig.php';
+			require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 			switch ($type) {
 			case 'url_flv':
 				$url = 'js/jw_player/flvVideo.php?flvVideo='.rawurlencode($fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);

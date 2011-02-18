@@ -108,8 +108,8 @@ abstract class WT_Module {
 		)->fetchOneColumn();
 		$array=array();
 		foreach ($module_names as $module_name) {
-			if (file_exists(WT_ROOT.'modules/'.$module_name.'/module.php')) {
-				require_once WT_ROOT.'modules/'.$module_name.'/module.php';
+			if (file_exists(WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php')) {
+				require_once WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php';
 				$class=$module_name.'_WT_Module';
 				$array[$module_name]=new $class();
 			} else {
@@ -136,8 +136,8 @@ abstract class WT_Module {
 		)->execute(array($ged_id, $component, $access_level))->fetchOneColumn();
 		$array=array();
 		foreach ($module_names as $module_name) {
-			if (file_exists(WT_ROOT.'modules/'.$module_name.'/module.php')) {
-				require_once WT_ROOT.'modules/'.$module_name.'/module.php';
+			if (file_exists(WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php')) {
+				require_once WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php';
 				$class=$module_name.'_WT_Module';
 				$array[$module_name]=new $class();
 			} else {
@@ -222,8 +222,8 @@ abstract class WT_Module {
 		if ($modules===null) {
 			$dir=opendir(WT_ROOT.'modules');
 			while (($file=readdir($dir))!==false) {
-				if (preg_match('/^[a-zA-Z0-9_]+$/', $file) && file_exists(WT_ROOT.'modules/'.$file.'/module.php')) {
-					require_once WT_ROOT.'modules/'.$file.'/module.php';
+				if (preg_match('/^[a-zA-Z0-9_]+$/', $file) && file_exists(WT_ROOT.WT_MODULES_DIR.$file.'/module.php')) {
+					require_once WT_ROOT.WT_MODULES_DIR.$file.'/module.php';
 					$class=$file.'_WT_Module';
 					$modules[$file]=new $class();
 				}

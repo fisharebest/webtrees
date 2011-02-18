@@ -296,7 +296,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				if (!empty($addname)) echo "<br />" . $addname;
 				echo "</a>";
 				echo "<br /><a href=\"pedigree.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree Tree')."</a>";
-				if (file_exists(WT_ROOT.'modules/googlemap/pedigree_map.php')) {
+				if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/pedigree_map.php')) {
 					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Pedigree Map')."</a>";
 				}
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {

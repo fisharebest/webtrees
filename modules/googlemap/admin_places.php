@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require WT_ROOT.'modules/googlemap/defaultconfig.php';
+require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
 global $iso3166, $WT_IMAGES;
 $action=safe_REQUEST($_REQUEST, 'action');
@@ -131,7 +131,7 @@ function findFiles($path) {
 				if (is_dir($path."/".$entry)) {
 					findFiles($path."/".$entry);
 				} elseif (strstr($entry, ".csv")!==false) {
-					$placefiles[] = preg_replace("~modules/googlemap/extra~", "", $path)."/".$entry;
+					$placefiles[] = preg_replace('~'.WT_MODULES_DIR.'googlemap/extra~', '', $path).'/'.$entry;
 				}
 			}
 		}
@@ -302,7 +302,7 @@ if ($action=="ImportGedcom") {
 
 if ($action=="ImportFile") {
 	$placefiles = array();
-	findFiles("modules/googlemap/extra");
+	findFiles(WT_MODULES_DIR.'googlemap/extra');
 	sort($placefiles);
 ?>
 <form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&mod_action=admin_places">
@@ -358,7 +358,7 @@ if ($action=="ImportFile2") {
 	if (!empty($_FILES["placesfile"]["tmp_name"])) {
 		$lines = file($_FILES["placesfile"]["tmp_name"]);
 	} elseif (!empty($_REQUEST['localfile'])) {
-		$lines = file("modules/googlemap/extra".$_REQUEST['localfile']);
+		$lines = file(WT_MODULES_DIR.'googlemap/extra'.$_REQUEST['localfile']);
 	}
 	// Strip BYTE-ORDER-MARK, if present
 	if (!empty($lines[0]) && substr($lines[0], 0, 3)==WT_UTF8_BOM) $lines[0]=substr($lines[0], 3);
@@ -596,7 +596,7 @@ foreach ($placelist as $place) {
 			echo "<img src=\"http://labs.google.com/ridefinder/images/mm_20_red.png\">";
 		}
 	} else {
-		echo "<img src=\"modules/googlemap/", $place["icon"], " \"width=\"25\" height=\"15\">";
+		echo '<img src="', WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
 	}
 	echo "</td>";
 	echo "<td class=\"narrow\"><a href=\"javascript:;\" onclick=\"edit_place_location({$place['place_id']});return false;\"><img src=\"", $WT_IMAGES["edit"], "\" border=\"0\" alt=\"", WT_I18N::translate("Edit"), "\" /></a></td>";

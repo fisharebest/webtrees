@@ -1432,7 +1432,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		if ($fact=="NOTE" && $islink) {
 			echo translate_fact('SHARED_NOTE');
 			/*
-			if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
+			if (file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
 				// use $label (GEDFact Assistant);
 			} else {
 				echo WT_I18N::translate('Shared note');
@@ -1452,7 +1452,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			if ($fact=="FORM" && $upperlevel!='OBJE') {
 				echo help_link('FORM');
 			} elseif ($fact=="NOTE" && $islink) {
-				if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
+				if (file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
 					echo help_link('edit_add_GEDFact_ASSISTED');
 				} else {
 					echo help_link('edit_add_SHARED_NOTE');
@@ -1519,7 +1519,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		// If GEDFAct_assistant/_CENS/ module exists && we are on the INDI page && action is ADD a new CENS event
 		// Then show the add Shared note input field and the GEDFact assisted icon.
 		// If GEDFAct_assistant/_CENS/ module not installed  ... do not show
-		if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $fact=="CENS") {
+		if (file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $fact=="CENS") {
 			$type_pid=GedcomRecord::getInstance($pid);
 			if ($type_pid->getType()=="INDI" && $action=="add" ) {
 				add_simple_tag("2 SHARED_NOTE", "", "GEDFact Assistant");
@@ -1644,9 +1644,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		if ($fact=="DATE") {
 			print_calendar_popup($element_id);
 			// If GEDFact_assistant/_CENS/ module is installed -------------------------------------------------
-			if ($action=="add" && file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') ) {
+			if ($action=="add" && file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_1_ctrl.php') ) {
 				if (isset($CensDate) && $CensDate=="yes") {
-					require_once WT_ROOT.'modules/GEDFact_assistant/_CENS/census_asst_date.php';
+					require_once WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_asst_date.php';
 				}
 			}
 			// -------------------------------------------------------------------------------------------------
@@ -1724,7 +1724,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 			// If GEDFact_assistant/_CENS/ module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
 			// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
-			if (file_exists(WT_ROOT.'modules/GEDFact_assistant/_CENS/census_1_ctrl.php') && ($action=="add" || $action=="edit" ) && $pid) {
+			if (file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_1_ctrl.php') && ($action=="add" || $action=="edit" ) && $pid) {
 				// Check if a CENS event ---------------------------
 				if ($event_add=="census_add") {
 					$type_pid=WT_GedcomRecord::getInstance($pid);
