@@ -458,14 +458,13 @@ echo WT_JS_START;?>
 								$CALENDAR_FORMATS[]='none';	
 							}
 							foreach (array(
-								'none'=>WT_I18N::translate('No calendar conversion'),
-								'gregorian'=>WT_I18N::translate('Gregorian'),
-								'julian'=>WT_I18N::translate('Julian'),
-								'french'=>WT_I18N::translate('French'),
-								'jewish'=>WT_I18N::translate('Jewish'),
-								'hebrew'=>WT_I18N::translate('Hebrew'),
-								'hijri'=>WT_I18N::translate('Hijri'),
-								'arabic'=>WT_I18N::translate('Arabic')
+								'none'     =>WT_I18N::translate('No calendar conversion'),
+								'gregorian'=>/* I18N: The gregorian calendar      */ WT_I18N::translate('Gregorian'),
+								'julian'   =>/* I18N: The julian calendar         */ WT_I18N::translate('Julian'),
+								'french'   =>/* I18N: The French calendar         */ WT_I18N::translate('French'),
+								'jewish'   =>/* I18N: The Hebrew/Jewish calendar  */ WT_I18N::translate('Jewish'),
+								'hijri'    =>/* I18N: The Arabic/Hijri calendar   */ WT_I18N::translate('Hijri'),
+								'jalali'   =>/* I18N: The Persian/Jalali calendar */ WT_I18N::translate('Jalali'),
 							) as $cal=>$name) {
 								echo '<option value="', $cal, '"';
 								if ($CALENDAR_FORMATS[0]==$cal) {

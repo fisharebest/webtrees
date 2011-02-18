@@ -345,19 +345,13 @@ class WT_Date_Calendar {
 		case 'julian':
 			return new WT_Date_Julian($this);
 		case 'jewish':
-			if (WT_LOCALE!='he')
-				return new WT_Date_Jewish($this);
-			// no  break
-		case 'hebrew':
-			return new WT_Date_Hebrew($this);
+			return new WT_Date_Jewish($this);
 		case 'french':
 			return new WT_Date_French($this);
-		case 'arabic':
-			if (WT_LOCALE!='ar')
-				return new WT_Date_Arabic($this);
-			// no  break
 		case 'hijri':
 			return new WT_Date_Hijri($this);
+		case 'jalali':
+			return new WT_Date_Jalali($this);
 		default:
 			return $this;
 		}

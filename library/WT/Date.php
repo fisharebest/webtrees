@@ -82,14 +82,14 @@ class WT_Date {
 	// Convert an individual gedcom date string into a WT_Date_Calendar object
 	static function ParseDate($date) {
 		// Valid calendar escape specified? - use it
-		if (preg_match('/^(@#d(?:gregorian|julian|hebrew|hijri|french r|roman)+@) ?(.*)/', $date, $match)) {
+		if (preg_match('/^(@#d(?:gregorian|julian|hebrew|hijri|jalali|french r|roman|jalali)+@) ?(.*)/', $date, $match)) {
 			$cal=$match[1];
 			$date=$match[2];
 		} else {
 			$cal='';
 		}
 		// A date with a month: DM, M, MY or DMY
-		if (preg_match('/^(\d?\d?) ?(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|tsh|csh|ksl|tvt|shv|adr|ads|nsn|iyr|svn|tmz|aav|ell|vend|brum|frim|nivo|pluv|vent|germ|flor|prai|mess|ther|fruc|comp|muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah) ?((?:\d+(?: b ?c)?|\d\d\d\d \/ \d{1,4})?)$/', $date, $match)) {
+		if (preg_match('/^(\d?\d?) ?(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|tsh|csh|ksl|tvt|shv|adr|ads|nsn|iyr|svn|tmz|aav|ell|vend|brum|frim|nivo|pluv|vent|germ|flor|prai|mess|ther|fruc|comp|muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah|farva|ordib|khord|tir|morda|shahr|mehr|aban|azar|dey|bahma|esfan) ?((?:\d+(?: b ?c)?|\d\d\d\d \/ \d{1,4})?)$/', $date, $match)) {
 			$d=$match[1];
 			$m=$match[2];
 			$y=$match[3];
@@ -109,7 +109,7 @@ class WT_Date {
 					$y=$match[1];
 				}
 				// Look for a month anywhere in the date
-				if (preg_match('/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|tsh|csh|ksl|tvt|shv|adr|ads|nsn|iyr|svn|tmz|aav|ell|vend|brum|frim|nivo|pluv|vent|germ|flor|prai|mess|ther|fruc|comp|muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah)/', $date, $match)) {
+				if (preg_match('/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|tsh|csh|ksl|tvt|shv|adr|ads|nsn|iyr|svn|tmz|aav|ell|vend|brum|frim|nivo|pluv|vent|germ|flor|prai|mess|ther|fruc|comp|muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah|farva|ordib|khord|tir|morda|shahr|mehr|aban|azar|dey|bahma|esfan)/', $date, $match)) {
 					$m=$match[1];
 					// Look for a day number anywhere in the date
 					if (preg_match('/\b(\d\d?)\b/', $date, $match))
@@ -125,8 +125,13 @@ class WT_Date {
 			} else {
 				if (preg_match('/^(muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah)$/', $m)) {
 					$cal='@#dhijri@'; // This is a WT extension
-				} elseif (preg_match('/^\d+( b ?c)|\d\d\d\d \/ \d{1,4}$/', $y)) {
-					$cal='@#djulian@';
+				} else {
+					if (preg_match('/^(farva|ordib|khord|tir|morda|shahr|mehr|aban|azar|dey|bahma|esfan)$/', $m)) {
+						$cal='@#djalali@'; // This is a WT extension 
+					} elseif (preg_match('/^\d+( b ?c)|\d\d\d\d \/ \d{1,4}$/', $y)) {
+						$cal='@#djulian@';
+					}
+
 				}
 			}
 		}
@@ -149,17 +154,13 @@ class WT_Date {
 		case '@#djulian@':
 			return new WT_Date_Julian(array($y, $m, $d));
 		case '@#dhebrew@':
-			if (WT_LOCALE=='he')
-				return new WT_Date_Hebrew(array($y, $m, $d));
-			else
-				return new WT_Date_Jewish(array($y, $m, $d));
+			return new WT_Date_Jewish(array($y, $m, $d));
 		case '@#dhijri@':
-			if (WT_LOCALE=='ar')
-				return new WT_Date_Arabic(array($y, $m, $d));
-			else
-				return new WT_Date_Hijri(array($y, $m, $d));
+			return new WT_Date_Hijri(array($y, $m, $d));
 		case '@#dfrench r@':
 			return new WT_Date_French(array($y, $m, $d));
+		case '@#djalali@':
+			return new WT_Date_Jalali(array($y, $m, $d));
 		case '@#droman@':
 			return new WT_Date_Roman(array($y, $m, $d));
 		}

@@ -747,7 +747,7 @@ try {
 		" d_fact       VARCHAR(15) NOT NULL,".
 		" d_gid        VARCHAR(20) NOT NULL,".
 		" d_file       INTEGER     NOT NULL,".
-		" d_type       ENUM ('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@') NOT NULL,".
+		" d_type       ENUM ('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@') NOT NULL,".
 		" KEY ix1 (d_day),".
 		" KEY ix2 (d_month),".
 		" KEY ix3 (d_mon),".
@@ -961,7 +961,7 @@ try {
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
-		"('WT_SCHEMA_VERSION',               '6'),".
+		"('WT_SCHEMA_VERSION',               '9'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".

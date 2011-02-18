@@ -138,7 +138,8 @@ echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="3" class="optionbox">';
 for ($d=1; $d<=$days_in_month; $d++) {
 	// Format the day number using the calendar
-	$tmp=new WT_Date($cal_date->Format("%@ {$d} %O %E")); $d_fmt=$tmp->date1->Format('%j');
+	$tmp=new WT_Date($cal_date->Format("%@ {$d} %O %E"));
+	$d_fmt=$tmp->date1->Format('%j');
 	if ($d==$cal_date->d)
 		echo "<span class=\"error\">{$d_fmt}</span>";
 	else
@@ -299,7 +300,8 @@ foreach (array(
 	'julian'=>WT_I18N::translate('Julian'),
 	'jewish'=>WT_I18N::translate('Jewish'),
 	'french'=>WT_I18N::translate('French'),
-	'hijri'=>WT_I18N::translate('Hijri')
+	'hijri' =>WT_I18N::translate('Hijri'),
+	'jalali'=>WT_I18N::translate('Jalali'),
 ) as $newcal=>$cal_name) {
 	$tmp=$cal_date->convert_to_cal($newcal);
 	if ($tmp->InValidRange()) {

@@ -1731,7 +1731,7 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 	}
 
 	$found_facts=array();
-	foreach (array(new WT_Date_Gregorian($jd), new WT_Date_Julian($jd), new WT_Date_French($jd), new WT_Date_Jewish($jd), new WT_Date_Hijri($jd)) as $anniv) {
+	foreach (array(new WT_Date_Gregorian($jd), new WT_Date_Julian($jd), new WT_Date_French($jd), new WT_Date_Jewish($jd), new WT_Date_Hijri($jd), new WT_Date_Jalali($jd)) as $anniv) {
 		// Build a SQL where clause to match anniversaries in the appropriate calendar.
 		$where="WHERE d_type='".$anniv->CALENDAR_ESCAPE()."'";
 		// SIMPLE CASES:
