@@ -723,7 +723,7 @@ default:
 						"sPrevious": '<?php echo WT_I18N::translate('previous');?>'
 					}
 				},
-				"sDom"            : '<"H"f><"H"lpir>t<"F"lpir>',
+				"sDom"            : '<"H"pflir>t<"F"pflir>',
 				"bProcessing"     : true,
 				"bServerSide"     : true,
 				"sAjaxSource"     : "<?php echo WT_SCRIPT_NAME.'?action=loadrows'; ?>",

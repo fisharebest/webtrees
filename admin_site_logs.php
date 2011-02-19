@@ -186,15 +186,15 @@ echo WT_JS_START;
 ?>
 	jQuery(document).ready(function(){
 		var oTable = jQuery('#log_list').dataTable( {
-			"sDom": '<"H"lpr>t<"F"i>',
+			"sDom": '<"H"pflir>t<"F"pflir>',
 			"bProcessing": true,
 			"bServerSide": true,
 			"sAjaxSource": "<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from=', $from,'&to=', $to, '&type=', $type, '&text=', rawurlencode($text), '&ip=', rawurlencode($ip), '&user=', rawurlencode($user), '&gedc=', rawurlencode($gedc); ?>",
 			"oLanguage": {
-				"sLengthMenu": '<?php echo /* I18N: %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s records', '<select><option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option></select>'); ?>',
+				"sLengthMenu": '<?php echo /* I18N: %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option></select>'); ?>',
 				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
-				"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
-				"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
+				"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('%1$s to %2$s of %3$s Results', '_START_', '_END_', '_TOTAL_'); ?>',
+				"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('%1$s to %2$s of %3$s Results', '0', '0', '0'); ?>',
 				"sInfoFiltered": '<?php echo /* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
 				"sProcessing": '<?php echo WT_I18N::translate('Loading...');?>',
 				"sSearch": '<?php echo WT_I18N::translate('Search');?>:',
