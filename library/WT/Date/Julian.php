@@ -40,6 +40,10 @@ class WT_Date_Julian extends WT_Date_Calendar {
 		return '@#DJULIAN@';
 	}
 
+	static function calendarName() {
+		return /* I18N: The julian calendar */ WT_I18N::translate('Julian');
+	}
+
 	static function NextYear($y) {
 		if ($y==-1)
 			return 1;

@@ -37,6 +37,10 @@ class WT_Date_French extends WT_Date_Calendar {
 		return '@#DFRENCH R@';
 	}
 
+	static function calendarName() {
+		return /* I18N: The French calendar */ WT_I18N::translate('French');
+	}
+
 	static function MONTH_TO_NUM($m) {
 		static $months=array(''=>0, 'vend'=>1, 'brum'=>2, 'frim'=>3, 'nivo'=>4, 'pluv'=>5, 'vent'=>6, 'germ'=>7, 'flor'=>8, 'prai'=>9, 'mess'=>10, 'ther'=>11, 'fruc'=>12, 'comp'=>13);
 		if (isset($months[$m])) {

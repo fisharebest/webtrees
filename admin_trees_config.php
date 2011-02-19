@@ -459,12 +459,12 @@ echo WT_JS_START;?>
 							}
 							foreach (array(
 								'none'     =>WT_I18N::translate('No calendar conversion'),
-								'gregorian'=>/* I18N: The gregorian calendar      */ WT_I18N::translate('Gregorian'),
-								'julian'   =>/* I18N: The julian calendar         */ WT_I18N::translate('Julian'),
-								'french'   =>/* I18N: The French calendar         */ WT_I18N::translate('French'),
-								'jewish'   =>/* I18N: The Hebrew/Jewish calendar  */ WT_I18N::translate('Jewish'),
-								'hijri'    =>/* I18N: The Arabic/Hijri calendar   */ WT_I18N::translate('Hijri'),
-								'jalali'   =>/* I18N: The Persian/Jalali calendar */ WT_I18N::translate('Jalali'),
+								'gregorian'=>WT_Date_Gregorian::calendarName(),
+								'julian'   =>WT_Date_Julian::calendarName(),
+								'french'   =>WT_Date_French::calendarName(),
+								'jewish'   =>WT_Date_Jewish::calendarName(),
+								'hijri'    =>WT_Date_Hijri::calendarName(),
+								'jalali'   =>WT_Date_Jalali::calendarName(),
 							) as $cal=>$name) {
 								echo '<option value="', $cal, '"';
 								if ($CALENDAR_FORMATS[0]==$cal) {

@@ -37,6 +37,10 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		return '@#DHEBREW@';
 	}
 
+	static function calendarName() {
+		return /* I18N: The Hebrew/Jewish calendar */ WT_I18N::translate('Jewish');
+	}
+
 	const GERSHAYIM="״";
 	const GERSH="׳";
 	const ALAFIM="אלפים";

@@ -37,6 +37,11 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	static function CALENDAR_ESCAPE() {
 		return '@#DHIJRI@';
 	}
+
+	static function calendarName() {
+		return /* I18N: The Arabic/Hijri calendar */ WT_I18N::translate('Hijri');
+	}
+
 	static function MONTH_TO_NUM($m) {
 		static $months=array(''=>0, 'muhar'=>1, 'safar'=>2, 'rabia'=>3, 'rabit'=>4, 'jumaa'=>5, 'jumat'=>6, 'rajab'=>7, 'shaab'=>8, 'ramad'=>9, 'shaww'=>10, 'dhuaq'=>11, 'dhuah'=>12);
 		if (isset($months[$m])) {

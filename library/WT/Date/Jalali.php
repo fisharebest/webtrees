@@ -35,6 +35,11 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 	static function CALENDAR_ESCAPE() {
 		return '@#DJALALI@';
 	}
+
+	static function calendarName() {
+		return /* I18N: The Persian/Jalali calendar */ WT_I18N::translate('Jalali');
+	}
+
 	static function MONTH_TO_NUM($m) {
 		static $months=array(''=>0, 'farva'=>1, 'ordib'=>2, 'khord'=>3, 'tir'=>4, 'morda'=>5, 'shahr'=>6, 'mehr'=>7, 'aban'=>8, 'azar'=>9, 'dey'=>10, 'bahma'=>11, 'esfan'=>12);
 		if (isset($months[$m])) {
@@ -43,6 +48,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 			return null;
 		}
 	}
+
 	static function NUM_TO_MONTH_NOMINATIVE($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persion/Jalali calendar */ WT_I18N::translate_c('NOMINATIVE', 'Farvardin' );
@@ -60,6 +66,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
+
 	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persion/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Farvardin' );
@@ -77,6 +84,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
+
 	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persion/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Farvardin' );
@@ -94,6 +102,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
+
 	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
 		switch ($n) {
 		case 1:  return /* I18N:  1st month in the Persion/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Farvardin' );
@@ -111,6 +120,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
+
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		switch ($n) {
 		case 1:  return WT_I18N::translate_c('Abbreviation for Persian month: Farvardin',  'Far' );
@@ -128,6 +138,7 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		default: return '';
 		}
 	}
+
 	static function NUM_TO_GEDCOM_MONTH($n, $leap_year) {
 		switch ($n) {
 		case 1:  return 'FARVA';

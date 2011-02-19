@@ -40,6 +40,10 @@ class WT_Date_Gregorian extends WT_Date_Calendar {
 		return 2299161; // 15 OCT 1582
 	}
 
+	static function calendarName() {
+		return /* I18N: The gregorian calendar */ WT_I18N::translate('Gregorian');
+	}
+
 	function IsLeapYear() {
 		return $this->y%4==0 && $this->y%100!=0 || $this->y%400==0;
 	}

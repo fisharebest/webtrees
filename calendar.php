@@ -306,12 +306,12 @@ echo help_link('day_month');
 echo '</td><td class="topbottombar width50">';
 $n=0;
 foreach (array(
-	'gregorian'=>WT_I18N::translate('Gregorian'),
-	'julian'=>WT_I18N::translate('Julian'),
-	'jewish'=>WT_I18N::translate('Jewish'),
-	'french'=>WT_I18N::translate('French'),
-	'hijri' =>WT_I18N::translate('Hijri'),
-	'jalali'=>WT_I18N::translate('Jalali'),
+	'gregorian'=>WT_Date_Gregorian::calendarName(),
+	'julian'   =>WT_Date_Julian::calendarName(),
+	'jewish'   =>WT_Date_Jewish::calendarName(),
+	'french'   =>WT_Date_French::calendarName(),
+	'hijri'    =>WT_Date_Hijri::calendarName(),
+	'jalali'   =>WT_Date_Jalali::calendarName(),
 ) as $newcal=>$cal_name) {
 	$tmp=$cal_date->convert_to_cal($newcal);
 	if ($tmp->InValidRange()) {
