@@ -160,9 +160,12 @@ function create_map() {
 	} else {
 		echo '<td class="center" width="200px" style="padding-top:6px;">';	
 	}
-	
+
 	$levelm = set_levelm($level, $parent);
-	$latlng = WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM ##placelocation WHERE pl_id='{$levelm}'")->fetch(PDO::FETCH_ASSOC);
+	$latlng = 
+		WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
+		->execute(array($levelm))
+		->fetch(PDO::FETCH_ASSOC);
 
 	if (!isset($latlng)) {
 	// ?
@@ -632,12 +635,11 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	//		echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
 		} 
 		//create markers
+		$placeidlist=array();
 		if ($numfound==0 && $level>0) {
 			if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
 				// there are no sub-places under this place, therefore, show the current place on the map
-				$place2 = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long, pl_zoom as zoom, pl_zoom as icon FROM ##placelocation WHERE pl_id='{$levelm}'")->fetch(PDO::FETCH_ASSOC);
-				$place2['long'] = $place2['pl_long'];  // mysql won't allow us to name this "long" in the select statement
-				print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels);
+				$placeidlist[] = $levelm;
 			}
 		} else {
 			// sub-places exist for this place, display them
@@ -645,10 +647,22 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 				$thisloc = $parent;
 				$thisloc[] = $placename;
 				$this_levelm = set_levelm($level+1, $thisloc);
-				// this loop could be optimized into a single SQL statement using 'in':  WHERE pl_id in (1,2,3) 
-				$place2 = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long, pl_zoom as zoom, pl_icon as icon FROM ##placelocation WHERE pl_id='{$this_levelm}'")->fetch(PDO::FETCH_ASSOC);
-				$place2['long'] = $place2['pl_long'];  // mysql won't allow us to name this "long" in the select statement
-				print_gm_markers($place2, $level, $parent, $this_levelm, $linklevels, $placelevels);
+				$placeidlist[] = $this_levelm;
+			}
+		}
+
+		if ($placeidlist) {
+			$placeidlist=array_unique($placeidlist);
+
+			// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
+			$placelist =
+				WT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN ('.implode(',', array_fill(0, count($placeidlist), '?')).')')
+				->execute($placeidlist)
+				->fetchAll(PDO::FETCH_ASSOC);
+
+			foreach ($placelist as $place) {
+				$place['long'] = $place['pl_long'];  // mysql won't allow us to name this "long" in the select statement
+				print_gm_markers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
 			}
 		}
 	} else {
