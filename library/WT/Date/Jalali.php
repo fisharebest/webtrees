@@ -69,72 +69,72 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 
 	static function NUM_TO_MONTH_GENITIVE($n, $leap_year) {
 		switch ($n) {
-		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Farvardin' );
-		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Ordibehest');
-		case 3:  return /* I18N:  3rd month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Khordad'   );
-		case 4:  return /* I18N:  4th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Tir'       );
-		case 5:  return /* I18N:  5th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Mordad'    );
-		case 6:  return /* I18N:  6th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Shahrivar' );
-		case 7:  return /* I18N:  7th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Mehr'      );
-		case 8:  return /* I18N:  8th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Aban'      );
-		case 9:  return /* I18N:  9th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Azar'      );
-		case 10: return /* I18N: 10th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Dey'       );
-		case 11: return /* I18N: 11th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Bahman'    );
-		case 12: return /* I18N: 12th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Esfand'    );
+		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Farvardin'  );
+		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Ordibehesht');
+		case 3:  return /* I18N:  3rd month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Khordad'    );
+		case 4:  return /* I18N:  4th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Tir'        );
+		case 5:  return /* I18N:  5th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Mordad'     );
+		case 6:  return /* I18N:  6th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Shahrivar'  );
+		case 7:  return /* I18N:  7th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Mehr'       );
+		case 8:  return /* I18N:  8th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Aban'       );
+		case 9:  return /* I18N:  9th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Azar'       );
+		case 10: return /* I18N: 10th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Dey'        );
+		case 11: return /* I18N: 11th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Bahman'     );
+		case 12: return /* I18N: 12th month in the Persian/Jalali calendar */ WT_I18N::translate_c('GENITIVE', 'Esfand'     );
 		default: return '';
 		}
 	}
 
 	static function NUM_TO_MONTH_LOCATIVE($n, $leap_year) {
 		switch ($n) {
-		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Farvardin' );
-		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Ordibehest');
-		case 3:  return /* I18N:  3rd month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Khordad'   );
-		case 4:  return /* I18N:  4th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Tir'       );
-		case 5:  return /* I18N:  5th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Mordad'    );
-		case 6:  return /* I18N:  6th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Shahrivar' );
-		case 7:  return /* I18N:  7th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Mehr'      );
-		case 8:  return /* I18N:  8th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Aban'      );
-		case 9:  return /* I18N:  9th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Azar'      );
-		case 10: return /* I18N: 10th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Dey'       );
-		case 11: return /* I18N: 11th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Bahman'    );
-		case 12: return /* I18N: 12th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Esfand'    );
+		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Farvardin'  );
+		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Ordibehesht');
+		case 3:  return /* I18N:  3rd month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Khordad'    );
+		case 4:  return /* I18N:  4th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Tir'        );
+		case 5:  return /* I18N:  5th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Mordad'     );
+		case 6:  return /* I18N:  6th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Shahrivar'  );
+		case 7:  return /* I18N:  7th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Mehr'       );
+		case 8:  return /* I18N:  8th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Aban'       );
+		case 9:  return /* I18N:  9th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Azar'       );
+		case 10: return /* I18N: 10th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Dey'        );
+		case 11: return /* I18N: 11th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Bahman'     );
+		case 12: return /* I18N: 12th month in the Persian/Jalali calendar */ WT_I18N::translate_c('LOCATIVE', 'Esfand'     );
 		default: return '';
 		}
 	}
 
 	static function NUM_TO_MONTH_INSTRUMENTAL($n, $leap_year) {
 		switch ($n) {
-		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Farvardin' );
-		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Ordibehest');
-		case 3:  return /* I18N:  3rd month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Khordad'   );
-		case 4:  return /* I18N:  4th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Tir'       );
-		case 5:  return /* I18N:  5th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Mordad'    );
-		case 6:  return /* I18N:  6th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Shahrivar' );
-		case 7:  return /* I18N:  7th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Mehr'      );
-		case 8:  return /* I18N:  8th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Aban'      );
-		case 9:  return /* I18N:  9th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Azar'      );
-		case 10: return /* I18N: 10th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Dey'       );
-		case 11: return /* I18N: 11th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Bahman'    );
-		case 12: return /* I18N: 12th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Esfand'    );
+		case 1:  return /* I18N:  1st month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Farvardin'  );
+		case 2:  return /* I18N:  2nd month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Ordibehesht');
+		case 3:  return /* I18N:  3rd month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Khordad'    );
+		case 4:  return /* I18N:  4th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Tir'        );
+		case 5:  return /* I18N:  5th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Mordad'     );
+		case 6:  return /* I18N:  6th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Shahrivar'  );
+		case 7:  return /* I18N:  7th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Mehr'       );
+		case 8:  return /* I18N:  8th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Aban'       );
+		case 9:  return /* I18N:  9th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Azar'       );
+		case 10: return /* I18N: 10th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Dey'        );
+		case 11: return /* I18N: 11th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Bahman'     );
+		case 12: return /* I18N: 12th month in the Persian/Jalali calendar */ WT_I18N::translate_c('INSTRUMENTAL', 'Esfand'     );
 		default: return '';
 		}
 	}
 
 	static function NUM_TO_SHORT_MONTH($n, $leap_year) {
 		switch ($n) {
-		case 1:  return WT_I18N::translate_c('Abbreviation for Persian month: Farvardin',  'Far' );
-		case 2:  return WT_I18N::translate_c('Abbreviation for Persian month: Ordibehest', 'Ord' );
-		case 3:  return WT_I18N::translate_c('Abbreviation for Persian month: Khordad',    'Khor');
-		case 4:  return WT_I18N::translate_c('Abbreviation for Persian month: Tir',        'Tir' );
-		case 5:  return WT_I18N::translate_c('Abbreviation for Persian month: Mordad',     'Mor' );
-		case 6:  return WT_I18N::translate_c('Abbreviation for Persian month: Shahrivar',  'Shah');
-		case 7:  return WT_I18N::translate_c('Abbreviation for Persian month: Mehr',       'Mehr');
-		case 8:  return WT_I18N::translate_c('Abbreviation for Persian month: Aban',       'Aban');
-		case 9:  return WT_I18N::translate_c('Abbreviation for Persian month: Azar',       'Azar');
-		case 10: return WT_I18N::translate_c('Abbreviation for Persian month: Dey',        'Dey' );
-		case 11: return WT_I18N::translate_c('Abbreviation for Persian month: Bahman',     'Bah' );
-		case 12: return WT_I18N::translate_c('Abbreviation for Persian month: Esfand',     'Esf' );
+		case 1:  return WT_I18N::translate_c('Abbreviation for Persian month: Farvardin',   'Far' );
+		case 2:  return WT_I18N::translate_c('Abbreviation for Persian month: Ordibehesht', 'Ord' );
+		case 3:  return WT_I18N::translate_c('Abbreviation for Persian month: Khordad',     'Khor');
+		case 4:  return WT_I18N::translate_c('Abbreviation for Persian month: Tir',         'Tir' );
+		case 5:  return WT_I18N::translate_c('Abbreviation for Persian month: Mordad',      'Mor' );
+		case 6:  return WT_I18N::translate_c('Abbreviation for Persian month: Shahrivar',   'Shah');
+		case 7:  return WT_I18N::translate_c('Abbreviation for Persian month: Mehr',        'Mehr');
+		case 8:  return WT_I18N::translate_c('Abbreviation for Persian month: Aban',        'Aban');
+		case 9:  return WT_I18N::translate_c('Abbreviation for Persian month: Azar',        'Azar');
+		case 10: return WT_I18N::translate_c('Abbreviation for Persian month: Dey',         'Dey' );
+		case 11: return WT_I18N::translate_c('Abbreviation for Persian month: Bahman',      'Bah' );
+		case 12: return WT_I18N::translate_c('Abbreviation for Persian month: Esfand',      'Esf' );
 		default: return '';
 		}
 	}
