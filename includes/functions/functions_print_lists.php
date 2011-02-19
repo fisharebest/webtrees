@@ -1252,16 +1252,17 @@ function format_surname_tagcloud($surnames, $type, $totals) {
 // @param $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
 // @param $style, 1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
 // @param $totals, boolean, show totals after each name
-function format_surname_list($surnames, $style, $totals) {
+// @param $type string, indilist or famlist
+function format_surname_list($surnames, $style, $totals, $type) {
 	global $TEXT_DIRECTION, $GEDCOM;
 
 	$html=array();
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indilist
 		if ($surn) {
-			$url='indilist.php?surname='.urlencode($surn).'&amp;ged='.rawurlencode($GEDCOM);
+			$url=$type.'.php?surname='.urlencode($surn).'&amp;ged='.rawurlencode($GEDCOM);
 		} else {
-			$url='indilist.php?alpha=,&amp;ged='.rawurlencode($GEDCOM);
+			$url=$type.'.php?alpha=,&amp;ged='.rawurlencode($GEDCOM);
 		}
 		// If all the surnames are just case variants, then merge them into one
 		// Comment out this block if you want SMITH listed separately from Smith

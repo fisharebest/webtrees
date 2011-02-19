@@ -211,7 +211,7 @@ if ($showList) {
 		// Show the surname list
 		switch ($SURNAME_LIST_STYLE) {
 		case 'style1';
-			echo format_surname_list($surns, 3, true);
+			echo format_surname_list($surns, 3, true, 'famlist');
 			break;
 		case 'style3':
 			echo format_surname_tagcloud($surns, 'famlist', true);
