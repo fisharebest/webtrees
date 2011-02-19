@@ -197,7 +197,7 @@ echo WT_JS_START;
 				"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
 				"sInfoFiltered": '<?php echo /* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
 				"sProcessing": '<?php echo WT_I18N::translate('Loading...');?>',
-				"sSearch": '<?php echo WT_I18N::translate('Search');?>:',
+				"sSearch": '<?php echo WT_I18N::translate('Search');?>',
 				"oPaginate": {
 					"sFirst":    '<?php echo /* I18N: button label, first page    */ WT_I18N::translate('first');    ?>',
 					"sLast":     '<?php echo /* I18N: button label, last page     */ WT_I18N::translate('last');     ?>',
