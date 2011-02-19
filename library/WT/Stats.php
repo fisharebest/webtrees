@@ -1,8 +1,8 @@
 <?php
-// GEDCOM Statistics Class
+// Family tree Statistics Class
 //
 // This class provides a quick & easy method for accessing statistics
-// about the GEDCOM.
+// about the family tree.
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -3329,8 +3329,7 @@ class WT_Stats {
 		foreach (array_keys($surname_list) as $surname) {
 			$surnames=array_merge($surnames, get_indilist_surns($surname, '', false, false, WT_GED_ID));
 		}
-
-		return format_surname_list($surnames, ($type=='list' ? 1 : 2), $show_tot);
+		return format_surname_list($surnames, ($type=='list' ? 1 : 2), $show_tot, 'indilist');
 	}
 
 	function getCommonSurname() {

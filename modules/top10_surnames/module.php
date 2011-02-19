@@ -96,11 +96,11 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			break;
 		case 'list':
 			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content=format_surname_list($all_surnames, '1', true);
+			$content=format_surname_list($all_surnames, '1', true, 'indilist');
 			break;
 		case 'array':
 			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content=format_surname_list($all_surnames, '2', true);
+			$content=format_surname_list($all_surnames, '2', true, 'indilist');
 			break;
 		case 'table':
 		default:
