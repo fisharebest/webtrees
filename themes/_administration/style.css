@@ -220,11 +220,13 @@ table#list  {width:100%}
 #access td+td+td+td {text-align:center;}
 td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
 td.details:hover {color: black;}
-#list_paginate   { float:left;  }
-#list_processing { float:left;  }
-#list_filter     { float:right; }
-#list_info       { float:right;  }
-#list_length     { float:left; }
+.dataTables_paginate   { float:left;}
+.dataTables_processing { float:left;}
+.dataTables_filter  {float:right;}
+.dataTables_info {float:right; margin-right: 4px;}
+.dataTables_info:after {content:" - "}
+.dataTables_length {float:right;}
+.dataTables_length select {font-size:11px; padding:1px;}
 
 html[dir='rtl'] #list_paginate   { float:right; }
 html[dir='rtl'] #list_processing { float:right; }
