@@ -101,11 +101,12 @@ case 'site_setting':
 	case 'SMTP_SSL':
 		break;
 	case 'SMTP_AUTH_PASS':
-		// The password will be displayed as ***** on screen.
-		// Accept the update, but pretend to fail.  This will leave the ***** on screen
-		set_site_setting($id1, $value);
+		// The password will be displayed as "click to edit" on screen.
+		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
+		if ($value) {
+			set_site_setting($id1, $value);
+		}
 		fail();
-		break;
 	default:
 		// An unrecognised setting
 		fail();
@@ -129,10 +130,12 @@ case 'user':
 	// Validation
 	switch ($id1) {
 	case 'password':
-		// The password will be displayed as ***** on screen.
-		// Accept the update, but pretend to fail.  This will leave the ***** on screen
-		set_user_password($id2, crypt($value));
-		AddToLog('User ID: '.$user_id. ' changed password', 'auth');
+		// The password will be displayed as "click to edit" on screen.
+		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
+		if ($value) {
+			set_user_password($id2, crypt($value));
+			AddToLog('User ID: '.$user_id. ' changed password', 'auth');
+		}
 		fail();
 	case 'user_name':
 	case 'real_name':
