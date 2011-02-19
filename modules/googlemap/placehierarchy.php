@@ -647,7 +647,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 				$thisloc = $parent;
 				$thisloc[] = $placename;
 				$this_levelm = set_levelm($level+1, $thisloc);
-				$placeidlist[] = $this_levelm;
+				if ($this_levelm) $placeidlist[] = $this_levelm;
 			}
 		}
 
