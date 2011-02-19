@@ -74,13 +74,9 @@ if (isset($parent) && is_array($parent)) {
 	$parentKeys = array_keys($parent);
 	$highKey = max($parentKeys);
 	
-	$levelm = set_levelm($level, $parent);
-	$latlng = WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM ##placelocation WHERE pl_id='{$levelm}'")->fetch(PDO::FETCH_ASSOC);	
 	for ($j=0; $j<=$highKey; $j++) {
 		if (!isset($parent[$j])) {
 			$parent[$j] = "";
-		} else {
-			$parent[$level-1] = $latlng['pl_place'];
 		}
 	}
 	ksort($parent, SORT_NUMERIC);
