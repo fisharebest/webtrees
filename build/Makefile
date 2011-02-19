@@ -17,11 +17,11 @@ default: clean webtrees
 	zip -qr webtrees-language-$(shell date +%Y%m%d).zip webtrees/language
 	zip -qr webtrees-$(SVNVERSION).zip webtrees
 	# If we have a GNU private key, sign the file with it
-	test -d ~/.gnupg && gpg --armor --sign --detach-sig webtrees-$(SVNVERSION).zip
+	if test -d ~/.gnupg; then gpg --armor --sign --detach-sig webtrees-$(SVNVERSION).zip; fi
 	# If we have a public html area, publish the files
-	test -d ~/public_html && mkdir -p ~/public_html/build && cp webtrees*.zip ~/public_html/build/
+	if test -d ~/public_html; then mkdir -p ~/public_html/build && cp webtrees*.zip ~/public_html/build/; fi
 	# If we have a public html area, clean up old files
-	test -d ~/public_html/build && find ~/public_html/build -ctime +7 -exec rm -f {} \;
+	if test -d ~/public_html/build; then find ~/public_html/build -ctime +7 -exec rm -f {} \; ; fi
 	# Create an updated message catalog
 	mkdir -p webtrees_tmp
 	rm -Rf webtrees_tmp/*
@@ -44,9 +44,10 @@ dist-clean: clean
 ################################################################################
 # Create a release from this SVN working copy
 ################################################################################
-webtrees: $(PO_DIR) $(MO_DIR) $(MO_FILES)
+webtrees: $(PO_DIR) $(MO_DIR)
 	svn export .. $@
 	bzr update $(PO_DIR)
+	make $(MO_FILES)
 	# Embed the SVN version number in the code (for SVN builds only)
 	sed -i "s/define('WT_VERSION_RELEASE', 'svn')/define('WT_VERSION_RELEASE', 'svn$(SVNVERSION)')/" $@/includes/session.php
 	# Exclude unused Zend Framework components
