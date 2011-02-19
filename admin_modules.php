@@ -144,10 +144,10 @@ print_header(WT_I18N::translate('Module administration'));
 			"sInfoFiltered": '<?php echo /* I18N: %s  is a placeholder for numbers */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
 			"sSearch": '<?php echo WT_I18N::translate('Search');?>:',
 			"oPaginate": {
-				"sFirst": '<?php echo WT_I18N::translate_c('first page', 'first');?>',
-				"sLast": '<?php echo WT_I18N::translate('last');?>',
-				"sNext": '<?php echo WT_I18N::translate('next');?>',
-				"sPrevious": '<?php echo WT_I18N::translate('previous');?>'
+				"sFirst": '<?php echo /* I18N: button label, first page    */ WT_I18N::translate('first'); ?>',
+				"sLast": '<?php echo /* I18N: button label, last page     */ WT_I18N::translate('last'); ?>',
+				"sNext": '<?php echo /* I18N: button label, next page     */ WT_I18N::translate('next'); ?>',
+				"sPrevious": '<?php echo /* I18N: button label, previous page */ WT_I18N::translate('previous'); ?>'
 			}
 		},
 		"sDom": '<"H"pflir>t<"F"pflir>',
