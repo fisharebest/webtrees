@@ -201,7 +201,13 @@ class WT_I18N {
 		foreach ($args as $n=>&$arg) {
 			if ($n) {
 				if (is_numeric($arg)) {
-					// TODO? Convert latin to, say, arabic digits.
+					switch (WT_LOCALE) {
+					case 'ar':
+					case 'fa':
+						// TODO: Persian numerals are styled slightly differently to Arab numberals
+						$arg=Zend_Locale_Format::convertNumerals($arg, 'Latn', 'Arab');
+						break;
+					}
 				} else {
 					// For each embedded string, if the text-direction is the opposite of the
 					// page language, then wrap it in directional indicators.  This will stop
