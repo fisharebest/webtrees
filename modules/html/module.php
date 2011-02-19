@@ -96,7 +96,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		*/
 		$id=$this->getName().$block_id;
 		$title='';
-		if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
+		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
 			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">"
 			."<img class=\"adminicon\" src=\"{$WT_IMAGES['admin']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure').'" /></a>';
 			$title .= help_link('index_htmlplus');
@@ -272,77 +272,60 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		$title=get_block_setting($block_id, 'title');
 		$html=get_block_setting($block_id, 'html');
 		// title
-		echo "<tr><td class=\"descriptionbox wrap width33\">"
-			.translate_fact('TITL')
-			.help_link('index_htmlplus_title')
-			."</td><td class=\"optionbox\"><input type=\"text\" name=\"title\" size=\"30\" value=\"".htmlspecialchars($title)."\" /></td></tr>"
-		;
+		echo '<tr><td class="descriptionbox wrap width33">',
+			translate_fact('TITL'),
+			help_link('index_htmlplus_title'),
+			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', htmlspecialchars($title), '" /></td></tr>';
 
 		// templates
-		echo "<tr><td class=\"descriptionbox wrap width33\">"
-			.WT_I18N::translate('Templates')
-			.help_link('index_htmlplus_template')
-			."</td><td class=\"optionbox\">"
+		echo '<tr><td class="descriptionbox wrap width33">',
+			WT_I18N::translate('Templates'),
+			help_link('index_htmlplus_template'),
+			'</td><td class="optionbox">'
 		;
-		if (array_key_exists('ckeditor', WT_Module::getActiveModules()))
-		{
-			echo "<script language=\"JavaScript\" type=\"text/javascript\">\n"
-				."t<!--\n"
-				."function loadTemplate(html)"
-				."{"
-				."var oEditor = CKEDITOR.instances['html'];"
-				."oEditor.setData(html);"
-				."}"
-				."-->\n"
-				."</script>\n"
-				."<select name=\"template\" onchange=\"loadTemplate(document.block.template.options[document.block.template.selectedIndex].value);\">"
-			;
+		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
+			echo WT_JS_START,
+				'function loadTemplate(html) {',
+				' var oEditor = CKEDITOR.instances["html"];',
+				' oEditor.setData(html);',
+				'}',
+				WT_JS_END,
+				'<select name="template" onchange="loadTemplate(document.block.template.options[document.block.template.selectedIndex].value);">';
+		} else {
+			echo '<select name="template" onchange="document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;">';
 		}
-		else
-		{
-			echo "<select name=\"template\" onchange=\"document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;\">";
+		echo '<option value="', htmlspecialchars($html), '">', WT_I18N::translate('Custom'), '</option>';
+		foreach ($templates as $title=>$template) {
+			echo '<option value="', htmlspecialchars($template), '">', $title, '</option>';
 		}
-		echo "<option value=\"".htmlspecialchars($html)."\">".WT_I18N::translate('Custom')."</option>";
-		foreach ($templates as $title=>$template)
-		{
-			echo "<option value=\"".htmlspecialchars($template)."\">{$title}</option>";
-		}
-		echo "</select>"
-			."</td></tr>"
-		;
+		echo '</select></td></tr>';
 
 		// gedcom
 		$gedcoms = get_all_gedcoms();
 		$gedcom=get_block_setting($block_id, 'gedcom');
-		if (count($gedcoms) > 1)
-		{
+		if (count($gedcoms) > 1) {
 			if ($gedcom == '__current__') {$sel_current = ' selected="selected"';} else {$sel_current = '';}
 			if ($gedcom == '__default__') {$sel_default = ' selected="selected"';} else {$sel_default = '';}
-			echo "<tr><td class=\"descriptionbox wrap width33\">"
-				.WT_I18N::translate('Family tree')
-				.help_link('index_htmlplus_gedcom')
-				."</td><td class=\"optionbox\">"
-				."<select name=\"gedcom\">"
-				."<option value=\"__current__\"{$sel_current}>".WT_I18N::translate('Current')."</option>"
-				."<option value=\"__default__\"{$sel_default}>".WT_I18N::translate('Default')."</option>"
-			;
-			foreach ($gedcoms as $ged_id=>$ged_name)
-			{
+			echo '<tr><td class="descriptionbox wrap width33">',
+				WT_I18N::translate('Family tree'),
+				help_link('index_htmlplus_gedcom'),
+				'</td><td class="optionbox">',
+				'<select name="gedcom">',
+				'<option value="__current__"', $sel_current, '>', WT_I18N::translate('Current'), '</option>',
+				'<option value="__default__"', $sel_default, '>', WT_I18N::translate('Default'), '</option>';
+			foreach ($gedcoms as $ged_id=>$ged_name) {
 				if ($ged_name == $gedcom) {$sel = ' selected="selected"';} else {$sel = '';}
-				echo "<option value=\"{$ged_name}\"{$sel}>".PrintReady(get_gedcom_setting($ged_id, 'title'))."</option>";
+				echo '<option value="', $ged_name, '"', $sel, '>', PrintReady(get_gedcom_setting($ged_id, 'title')), '</option>';
 			}
-			echo "</select>"
-				."</td></tr>"
-			;
+			echo '</select></td></tr>';
 		}
 
 		// html
-		echo "<tr><td class=\"descriptionbox wrap width33\">"
-			.WT_I18N::translate('Content')
-			.help_link('index_htmlplus_content')
-			."<br /><br /></td>"
-			."<td class=\"optionbox\">"
-		;
+		echo '<tr><td class="descriptionbox wrap width33">',
+			WT_I18N::translate('Content'),
+			help_link('index_htmlplus_content'),
+			'<br /><br /></td>',
+			'<td class="optionbox">';
 		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 			// use CKeditor module
 			require_once WT_ROOT.WT_MODULES_DIR.'ckeditor/ckeditor.php';
@@ -353,14 +336,11 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			$oCKeditor->config['AutoDetectLanguage'] = false ;
 			$oCKeditor->config['DefaultLanguage'] = 'en';
 			$oCKeditor->editor('html', $html);
-		}
-		else
-		{
+		} else {
 			//use standard textarea
-			echo "<textarea name=\"html\" rows=\"10\" cols=\"80\">".htmlspecialchars($html)."</textarea>";
+			echo '<textarea name="html" rows="10" cols="80">', htmlspecialchars($html), '</textarea>';
 		}
-
-		echo "</td></tr>";
+		echo '</td></tr>';
 
 		$show_timestamp=get_block_setting($block_id, 'show_timestamp', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
