@@ -1361,7 +1361,7 @@ function print_changes_table($change_ids) {
 		'<thead><tr>',
 		'<th class="list_label">&nbsp;</th>',
 		'<th style="cursor:pointer;" class="list_label">', WT_I18N::translate('Record'), '</th>',
-		'<th>GIVN</th>',
+		'<th style="display:none;">GIVN</th>',
 		'<th style="cursor:pointer;" class="list_label">', translate_fact('CHAN'), '</th>',
 		'<th style="cursor:pointer;" class="list_label">', translate_fact('_WT_USER'), '</th>',
 		'</tr></thead>';
@@ -1541,9 +1541,9 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= "<table id=\"".$table_id."\" class=\"list_table center width100\">";
 			$return .= "<thead><tr>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_I18N::translate('Record')."</th>";
-			$return .= "<th>GIVN</th>"; //hidden by datables code
+			$return .= "<th style=\"display:none;\">GIVN</th>"; //hidden by datables code
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".translate_fact('DATE')."</th>";
-			$return .= "<th>DATE</th>"; //hidden by datables code
+			$return .= "<th style=\"display:none;\">DATE</th>"; //hidden by datables code
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"".WT_I18N::translate('Anniversary')."\" title=\"".WT_I18N::translate('Anniversary')."\" border=\"0\" /></th>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".translate_fact('EVEN')."</th>";
 			$return .= "</tr></thead><tbody>";
@@ -1589,7 +1589,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		}
 		$return .= "</td>";
 		//-- GIVN
-		$return .= "<td>"; //hidden by datables code
+		$return .= "<td style=\"display:none;\">"; //hidden by datables code
 		$exp = explode(",", str_replace('<', ',', $name).",");
 		$return .= $exp[1];
 		$return .= "</td>";
@@ -1598,7 +1598,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= str_replace('<a', '<a name="'.$value['jd'].'"', $value['date']->Display(empty($SEARCH_SPIDER)));
 		$return .= "</td>";
 		//-- Event date (sortable)
-		$return .= "<td>"; //hidden by datables code
+		$return .= "<td style=\"display:none;\">"; //hidden by datables code
 		$return .= $n;
 		$return .= "</td>";
 		//-- Anniversary
