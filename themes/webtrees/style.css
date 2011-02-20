@@ -438,10 +438,10 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	padding-right: 0pt;
 }
 
-.link {
+/*.link {
 	font-size: 11px;
 	text-align: center;
-}
+}*/
 
 .sublinks_table {
 	border: solid #81a9cb 1px;
@@ -922,9 +922,26 @@ h4 {
 }
 
 .title {
+	clear:both;
 	font-size: 20px;
 	font-family: tahoma, arial, helvetica, sans-serif;
+	float:left;
 	padding-left: 10px;
+}
+html[dir='rtl'] .title {
+	float:right;
+	padding-right:10px;
+}
+
+.header_img {
+	float:left;
+}
+html[dir='rtl'] .header_img {
+	float:right;
+}
+
+.header_search {
+	float:right;
 }
 
 /* Styles for the option boxes */
@@ -1652,9 +1669,12 @@ html[dir='rtl'] li up li {
 /* The language/theme/favorites menu in the header is right-justified, so submenus must also be right justified */
 #extra-menu {
 	float:right;
+	white-space:nowrap;
+	margin:20px 10px 0 0;
 }
 html[dir='rtl'] #extra-menu {
 	float:left;
+	margin:20px 0 0 10px ;
 }
 #extra-menu.makeMenu li ul {
 	left:auto;
@@ -1664,7 +1684,6 @@ html[dir='rtl'] #extra-menu.makeMenu li ul {
 	left:0px;
 	right:auto;
 }
-
 
 /*--- edit links ---*/
 
