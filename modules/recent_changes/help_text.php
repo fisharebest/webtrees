@@ -38,6 +38,12 @@ case 'recent_changes':
 	$text.=WT_I18N::translate('Number of days to show: This is the number of days that <b>webtrees</b> should use when searching for events');
 	$text.=' (<i>'.WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30).'</i>).';
 	$text.='</li><li>';
+	$text.=WT_I18N::translate('Presentation Style: Display as a list or in a table.');
+	$text.='</li><li>';
+	$text.=WT_I18N::translate('Display Parents: Select whether to display the person\'s parents.');
+	$text.='</li><li>';
+	$text.=WT_I18N::translate('Sort Style: Only used when viewing a list; for table view, click on the table headings to sort.');
+        $text.='</li><li>';
 	$text.=WT_I18N::translate('Should this block be hidden when it is empty?: Provides the option to hide the block if there are no changes to display.');
 	$text.='</li></ul>';
 	break;

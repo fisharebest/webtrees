@@ -1322,147 +1322,210 @@ function format_surname_list($surnames, $style, $totals, $type) {
 
 
 /**
- * print a sortable table of recent changes
- * also called by mediaviewer to list records linked to a media
+ * print a list of recent changes
  *
- * @param array $datalist contain records that were extracted from the database.
+ * @param array $change_ids contain records that were extracted from the database.
+ * @param string $sort determines what to sort
+ * @param bool $show_parents
  */
-function print_changes_table($change_ids) {
-	global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES;
-	if (!$change_ids) return;
-//	require_once WT_ROOT.'js/sorttable.js.htm';
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
-	echo WT_JS_START.'var table_id = "'.$table_id.'"'.WT_JS_END;
-	?>
-	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
-	<script type="text/javascript">
-		jQuery(document).ready(function(){
-			jQuery('#'+table_id).dataTable( {
-				"bAutoWidth":false,
-				"bPaginate": false,
-				"bLengthChange": false,
-				"bFilter": false,
-				"bInfo": false,
-				"bJQueryUI": false,
-				"aoColumns": [
-					/* 0-Type*/		null,
-					/* 1-Record */	{ "aaSorting": [ [0,'asc'], [1,'asc'] ] },
-					/* 2-GIVN */	{ "bVisible": false },
-					/* 3-Change */	null,
-					/* 4-User */	null
-				]
-			});		
-		});
-	</script>
-	<?php
-	//-- table header
-	echo 
-		'<table id="', $table_id, '" class="list_table center width100">',
-		'<thead><tr>',
-		'<th class="list_label">&nbsp;</th>',
-		'<th style="cursor:pointer;" class="list_label">', WT_I18N::translate('Record'), '</th>',
-		'<th style="display:none;">GIVN</th>',
-		'<th style="cursor:pointer;" class="list_label">', translate_fact('CHAN'), '</th>',
-		'<th style="cursor:pointer;" class="list_label">', translate_fact('_WT_USER'), '</th>',
-		'</tr></thead>';
-	//-- table body
-	echo '<tbody>';
-	$n = 0;
-	$NMAX = 1000;
-	$indi = false;
-	foreach ($change_ids as $change_id) {
-		if ($n>=$NMAX) break;
-		$record=WT_GedcomRecord::getInstance($change_id);
-		if (!$record || !$record->canDisplayDetails()) {
-			continue;
-		}
-		//-- Counter
-		echo 
-			'<tr>',
-			'<td class="list_value_wrap rela list_item">';
-		switch ($record->getType()) {
-		case "INDI":
-			echo $record->getSexImage('small', '', '', false);
-			$indi=true;
-			break;
-		case "FAM":
-			echo '<img src="', $WT_IMAGES['cfamily'], '" title="" alt="" height="12" />';
-			$indi = false;
-			break;
-		case "OBJE":
-			echo '<img src="', $record->getMediaIcon(), '" title="" alt="" height="12" />';
-			$indi = false;
-			break;
-		case "NOTE":
-			echo '<img src="', $WT_IMAGES['note'], '" title="" alt="" height="12" />';
-			$indi = false;
-			break;
-		case "SOUR":
-			echo '<img src="', $WT_IMAGES['source'], '" title="" alt="" height="12" />';
-			$indi = false;
-			break;
-		case "REPO":
-			echo '<img src="', $WT_IMAGES['repository'], '" title="" alt="" height="12" />';
-			$indi = false;
-			break;
-		default:
-			$indi = false;
-			break;
-		}
-		echo '</td>';
-		++$n;
-		//-- Record name(s)
-		$name = $record->getFullName();
-		echo
-			'<td class="list_value_wrap" align="', get_align($name), '">',
-			'<a href="', $record->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', PrintReady($name), '</a>';
-		$addname=$record->getAddName();
-		if ($addname) {
-			echo '<br /><a href="', $record->getHtmlUrl(), '" class="list_item">', PrintReady($addname), '</a>';
-		}
-		if ($indi) {
-			if ($SHOW_MARRIED_NAMES) {
-				foreach ($record->getAllNames() as $name) {
-					if ($name['type']=='_MARNM') {
-						echo '<br /><a title="', translate_fact('_MARNM'), '" href="', $record->getHtmlUrl(), '" class="list_item">', PrintReady($name['full']), '</a>';
-					}
-				}
-			}
-			echo $record->getPrimaryParentsNames("parents_$table_id details1", "none");
-		}
-		echo '</td>';
-		//-- GIVN
-		echo '<td>';
-		$exp = explode(",", str_replace('<', ',', $name).",");
-		echo $exp[1];
-		echo '</td>';
-		//-- Last change date/time
-		echo '<td class="list_value_wrap rela">', $record->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
-		//-- Last change user
-		echo '<td class="list_value_wrap rela">', $record->LastChangeUser(empty($SEARCH_SPIDER)), '</td>';
-		echo '</tr>';
-	}
-	echo '</tbody>';
-	//-- table footer
-	echo
-		'<tfoot><tr class="sortbottom">',
-		'<td class="list_label" colspan="2">';
-	if ($n>1 && $indi) {
-		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
-	}
-	if ($indi) {
-		echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", WT_I18N::translate('Show parents'), "</label><br />";
-	}
-	echo WT_I18N::translate('Total changes'), ': ', $n;
-	if ($n>=$NMAX) echo '<br /><span class="warning">', WT_I18N::translate('Recent changes'), ' &gt; ', $NMAX, '</span>';
-	echo
-		'</td>',
-		'<td style="display:none">GIVN</td>',
-		'<td></td>',
-		'<td></td>',
-		'</tr></tfoot>',
-		'</table>';
+function print_changes_list($change_ids, $sort, $show_parents=false) {
+    global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES;
+    define('NMAX', 1000);
+    $n = 0;
+    foreach ($change_ids as $change_id) {
+        if ($n >= NMAX)
+            break;
+        $record = WT_GedcomRecord::getInstance($change_id);
+        if (!$record || !$record->canDisplayDetails()) {
+            continue;
+        }
+        // setup sorting parameters
+        $arr[$n]['record'] = $record;
+        $arr[$n]['jd'] = ($sort == 'name') ? 1 : $n;
+        $arr[$n]['anniv'] = strtotime(str_replace('-', '', $record->LastChangeTimestamp(false)));
+        $arr[$n++]['fact'] = $record->getSortName(); // in case two changes have same timestamp
+    }
+
+    switch ($sort) {
+        case 'name':
+            uasort($arr, 'event_sort_name');
+            break;
+        case 'date_asc':
+            uasort($arr, 'event_sort');
+            $arr = array_reverse($arr);
+            break;
+        case 'date_desc':
+            uasort($arr, 'event_sort');
+    }
+    $return = '';
+    foreach ($arr as $value) {
+        $return .= "<a href='" . $value['record']->getHtmlUrl() . "' class='list_item name2' dir='" . $TEXT_DIRECTION . "'>" . PrintReady($value['record']->getFullName()) . "</a>";
+        $return .= "<div class='indent'>";
+        if ($value['record']->getType() == 'INDI') {
+            if ($value['record']->getAddName()) {
+                $return .= "<a href='" . $value['record']->getHtmlUrl() . "' class='list_item'>" . PrintReady($value['record']->getAddName()) . "</a>";
+            }
+            if ($SHOW_MARRIED_NAMES) {
+                foreach ($value['record']->getAllNames() as $name) {
+                    if ($name['type'] == '_MARNM') {
+                        $return .= "<div><a title='" . translate_fact('_MARNM') . "' href='" . $value['record']->getHtmlUrl() . "' class='list_item'>" . PrintReady($name['full']) . "</a></div>";
+                    }
+                }
+            }
+            if ($show_parents) {
+                $return .= $value['record']->getPrimaryParentsNames('details1');
+            }
+        }
+        $return .= "<div style='margin-bottom:5px'>";
+        //-- Last change date/time & user
+        $return .= WT_I18N::translate("Changed on %s by %s", $value['record']->LastChangeTimestamp(empty($SEARCH_SPIDER)), $value['record']->LastChangeUser());
+        $return .= "</div>";    // class='indent'
+        $return .= "</div>";
+    }
+    $return .= WT_I18N::translate('Showing 1 to %d of %d entries', $n,$n);
+    if ($n >= NMAX) {
+        $return .= "<div class='warning'>" . WT_I18N::translate('Total changes exceed limit (%d)', NMAX) . "</div>";
+    }
+    return $return;
 }
+
+/**
+ * print a sortable table of recent changes
+ *
+ * @param array $change_ids contain records that were extracted from the database.
+ * @param string $sort determines what to sort
+ * @param bool $show_parents
+ */
+function print_changes_table($change_ids, $sort, $show_parents=false) {
+    global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES;
+    define('NMAX', 1000);
+    $return = '';
+    $n = 0;
+    $table_id = "ID" . floor(microtime() * 1000000); // sorttable requires a unique ID
+    switch ($sort) {
+        case 'name':        //name
+            $aaSorting = "[5,'asc'], [4,'desc']";
+            break;
+        case 'date_asc':    //date ascending
+            $aaSorting = "[4,'asc'], [5,'asc']";
+            break;
+        case 'date_desc':   //date descending
+            $aaSorting = "[4,'desc'], [5,'asc']";
+    }
+    echo WT_JS_START . 'var table_id = "' . $table_id . '"' . WT_JS_END;
+?>
+    <script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('#'+table_id).dataTable( {
+                "bAutoWidth":false,
+                "bPaginate": false,
+                "bLengthChange": false,
+                "bFilter": false,
+                "bInfo": false,
+                "bJQueryUI": false,
+                "aaSorting": [<?php echo $aaSorting; ?>],
+                "aoColumns": [
+                    /* 0-Sex */     { "bSortable" : false },
+                    /* 1-Record */  { "iDataSort" : 5 },
+                    /* 2-Change */  { "iDataSort" : 4 },
+                    /* 3=By */      null,
+                    /* 4-DATE */    { "bVisible" : false },
+                    /* 5-SORTNAME */{ "bVisible" : false }
+                ]
+            });
+        });
+    </script>
+<?php
+    //-- table header
+    $return .= "<table id='" . $table_id . "' class='list_table center width100'>";
+    $return .= "<thead><tr>";
+    $return .= "<th class='list_label'></th>";
+    $return .= "<th style='cursor:pointer;' class='list_label'>" . WT_I18N::translate('Record') . "</th>";
+    $return .= "<th style='cursor:pointer;' class='list_label'>" . translate_fact('CHAN') . "</th>";
+    $return .= "<th style='cursor:pointer;' class='list_label'>" . translate_fact('_WT_USER') . "</th>";
+    $return .= "<th style='display:none;'>DATE</th>";     //hidden by datatables code
+    $return .= "<th style='display:none;'>SORTNAME</th>"; //hidden by datatables code
+    $return .= "</tr></thead><tbody>";
+    //-- table body
+
+    foreach ($change_ids as $change_id) {
+        if ($n >= NMAX)
+            break;
+        $record = WT_GedcomRecord::getInstance($change_id);
+        if (!$record || !$record->canDisplayDetails()) {
+            continue;
+        }
+        $return .= "<tr><td class='list_value_wrap rela list_item'>";
+        $indi = false;
+        switch ($record->getType()) {
+            case "INDI":
+                $return .= $record->getSexImage('small', '', '', false);
+                $indi = true;
+                break;
+            case "FAM":
+                $return .= '<img src="' . $WT_IMAGES['cfamily'] . '" title="" alt="" height="12" />';
+                break;
+            case "OBJE":
+                $return .= '<img src="' . $record->getMediaIcon() . '" title="" alt="" height="12" />';
+                break;
+            case "NOTE":
+                $return .= '<img src="' . $WT_IMAGES['note'] . '" title="" alt="" height="12" />';
+                break;
+            case "SOUR":
+                $return .= '<img src="' . $WT_IMAGES['source'] . '" title="" alt="" height="12" />';
+                break;
+            case "REPO":
+                $return .= '<img src="' . $WT_IMAGES['repository'] . '" title="" alt="" height="12" />';
+                break;
+            default:
+                break;
+        }
+        $return .= "</td>";
+        ++$n;
+        //-- Record name(s)
+        $name = $record->getFullName();
+        $return .= "<td class='list_value_wrap' align='" . get_align($name) . "'>";
+        $return .= "<a href='" . $record->getHtmlUrl() . "' class='list_item name2' dir='" . $TEXT_DIRECTION . "'>" . PrintReady($name) . "</a>";
+        if ($indi) {
+            $return .= "<div class='indent'>";
+            $addname = $record->getAddName();
+            if ($addname) {
+                $return .= "<a href='" . $record->getHtmlUrl() . "' class='list_item'>" . PrintReady($addname) . "</a>";
+            }
+            if ($SHOW_MARRIED_NAMES) {
+                foreach ($record->getAllNames() as $name) {
+                    if ($name['type'] == '_MARNM') {
+                        $return .= "<div><a title='" . translate_fact('_MARNM') . "' href='" . $record->getHtmlUrl() . "' class='list_item'>" . PrintReady($name['full']) . "</a></div>";
+                    }
+                }
+            }
+            if ($show_parents) {
+                $return .= $record->getPrimaryParentsNames("parents_$table_id details1");
+            }
+            $return .= "</div>"; //class='indent'
+        }
+        $return .= "</td>";
+        //-- Last change date/time
+        $return .= "<td class='list_value_wrap'>" . $record->LastChangeTimestamp(empty($SEARCH_SPIDER)) . "</td>";
+        //-- Last change user
+        $return .= "<td class='list_value_wrap'>" . $record->LastChangeUser() . "</td>";
+        //-- change date (sortable) hidden by datatables code
+        $return .= "<td  style='display:none;'>" . strtotime(str_replace('-', '', $record->LastChangeTimestamp(false))) . "</td>";
+        //-- names (sortable) hidden by datatables code
+        $return .= "<td>" . $record->getSortName() . "</td></tr>";
+    }
+
+    //-- table footer
+    $return .= "</tbody>";
+    $return .= "</table>";
+    $return .= WT_I18N::translate('Showing 1 to %d of %d entries', $n, $n);
+    if ($n >= NMAX) {
+        $return .= "<div class='warning'>" . WT_I18N::translate('Total changes exceed limit (%d)', NMAX) . "</div>";
+    }
+    return $return;
+}
+
 
 /**
  * print a sortable table of events
