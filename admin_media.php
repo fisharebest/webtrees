@@ -1044,7 +1044,7 @@ echo WT_JS_START; ?>
 					"sPrevious": '<?php echo WT_I18N::translate('previous');?>'
 				}
 			},
-			"sDom": '<"H"pflir>t<"F"pflir>',
+			"sDom": '<"H"prf>t<"F"li>',
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"aaSorting": [[ 1, "asc" ]],

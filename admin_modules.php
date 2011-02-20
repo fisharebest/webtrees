@@ -150,7 +150,7 @@ print_header(WT_I18N::translate('Module administration'));
 				"sPrevious": '<?php echo /* I18N: button label, previous page */ WT_I18N::translate('previous'); ?>'
 			}
 		},
-		"sDom": '<"H"pflir>t<"F"pflir>',
+		"sDom": '<"H"prf>t<"F"li>',
 		"bJQueryUI": true,
 		"bAutoWidth":false,
 		"aaSorting": [[ 1, "asc" ]],

@@ -186,7 +186,7 @@ echo WT_JS_START;
 ?>
 	jQuery(document).ready(function(){
 		var oTable = jQuery('#log_list').dataTable( {
-			"sDom": '<"H"pflir>t<"F"pflir>',
+			"sDom": '<"H"prf>t<"F"li>',
 			"bProcessing": true,
 			"bServerSide": true,
 			"sAjaxSource": "<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from=', $from,'&to=', $to, '&type=', $type, '&text=', rawurlencode($text), '&ip=', rawurlencode($ip), '&user=', rawurlencode($user), '&gedc=', rawurlencode($gedc); ?>",

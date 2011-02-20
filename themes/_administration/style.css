@@ -69,15 +69,14 @@ td {vertical-align:top;}
 .fg-button {padding:2px 6px;}
 .dataTables_paginate   {float:left;}
 .dataTables_processing {float:left;}
-.dataTables_filter  {float:right; margin: 3px 0 0 15px;}
-.dataTables_info {float:right; margin:3px 4px 0 0;}
-.dataTables_info:after {content:" - ";}
-.dataTables_length {float:right; margin: 3px 0 0 0;}
+.dataTables_filter  {float:right;}
+.dataTables_info {float:left;}
+.dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
 html[dir='rtl'] .dataTables_paginate {float:right;}
 html[dir='rtl'] .dataTables_processing {float:right;}
-html[dir='rtl'] .dataTables_filter  {float:left;margin: 3px 15px 0 0;}
-html[dir='rtl'] .dataTables_info {float:left; margin:3px 0 0 4px}
+html[dir='rtl'] .dataTables_filter  {float:left;}
+html[dir='rtl'] .dataTables_info {float:right}
 html[dir='rtl'] .dataTables_length {float:left;}
 
 /* Drag-n-drop sorting for modules, etc. */
