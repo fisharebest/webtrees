@@ -90,8 +90,8 @@ color: red;
 text-decoration: none;
 }
 
-a.icon_small_theme:link, a.icon_large_gedcom:link, a.icon_language:link, a.icon_color  {color: #707070;}
-a.icon_small_theme:hover, a.icon_large_gedcom:hover, a.icon_language:hover, a.icon_color:hover  {color: #ff0000;}
+a.icon_small_theme:link, a.icon_large_gedcom:link, a.icon_language:link, li a.link  {color: #707070 !important;}
+a.icon_small_theme:hover, a.icon_large_gedcom:hover, a.icon_language:hover, li a.link:hover  {color: #ff0000 !important;}
 
 /*	Define Alert Color					*/
 
@@ -1746,6 +1746,16 @@ padding: 0 10px;
 	white-space:nowrap;
 }
 
+.makeMenu li:before {
+	content:" | ";
+}
+.makeMenu li ul li:before {
+	content:"";
+}
+.makeMenu li:first-child:before {
+	content:"";
+}
+
 .makeMenu li ul {
 	display:none;
 	position:absolute;
@@ -1779,6 +1789,12 @@ html[dir='rtl'] .makeMenu li ul li {
 
 .makeMenu li:hover > ul {
 	display:block;
+}
+
+li a.link {
+font-size: 13px;
+margin-right: 5px;
+margin-left: 5px;
 }
 
 /*--- edit links ---*/

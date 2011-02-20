@@ -53,4 +53,5 @@ echo "<br />";
 		echo '</a>';
 	}
 	echo '</div>'; // close div id=\"footer\"
+	echo '</div>'; // close div id=\"rapcontainer\"
 ?>

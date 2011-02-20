@@ -95,12 +95,11 @@ a {
 	text-decoration: none;
 	}
 
-a.link:link, a.link:visited, a.link:active, a.link:hover, .menuitem a, 
-.nameZoom {
+a.link:link, a.link:visited, a.link:active, a.link:hover, .menuitem a, .nameZoom {
 color:#003399;
 }
 
-a:hover { 
+a:hover, .blanco a.link:hover {
 color: red;
 text-decoration: none;
 }
@@ -1760,6 +1759,16 @@ padding: 0 10px;
 	white-space:nowrap;
 }
 
+.makeMenu li:before {
+	content:" | ";
+}
+.makeMenu li ul li:before {
+	content:"";
+}
+.makeMenu li:first-child:before {
+	content:"";
+}
+
 .makeMenu li ul {
 	display:none;
 	position:absolute;
@@ -1792,6 +1801,11 @@ html[dir='rtl'] .makeMenu li ul li {
 
 .makeMenu li:hover > ul {
 	display:block;
+}
+
+.blanco a.link {
+
+margin-left: 5px;
 }
 
 /*--- edit links ---*/

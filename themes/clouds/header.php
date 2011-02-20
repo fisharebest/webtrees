@@ -111,13 +111,15 @@ if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?>
 ?>
 <table class="header" style="background:url('<?php echo WT_THEME_DIR; ?>images/clouds.gif')" >
 <?php
-	echo '<tr><td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" ><div class="title">';
+	echo 
+		'<tr><td align="', $TEXT_DIRECTION=="ltr"?"left":"right", '" valign="middle" >',
+		'<div class="title">';
 	print_gedcom_title_link(TRUE);
-
+	echo '</div></td>';
 if (empty($SEARCH_SPIDER)) {
-	echo '<td valign="middle" align="center"><div class="blanco" style="COLOR: #6699ff;" >';
+	echo '<td  align="center" valign="middle"><div class="blanco" style="COLOR: #6699ff;" >';
 	if (WT_USER_ID) {
-		echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
+		echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a>', logout_link();
 	} else {
 		echo login_link();
 	}
@@ -200,10 +202,10 @@ echo '<table id="toplinks">',
 		global $ALLOW_THEME_DROPDOWN;
 		$language_menu=WT_MenuBar::getLanguageMenu();
 		if ($language_menu) {
-			echo ' | ', $language_menu->getMenuAsList();
+			echo $language_menu->getMenuAsList();
 		}
 		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-			echo ' | ', WT_MenuBar::getThemeMenu()->getMenuAsList();
+			echo WT_MenuBar::getThemeMenu()->getMenuAsList();
 		}
 		echo '</ul></div></td>';
 	}

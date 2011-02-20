@@ -121,30 +121,30 @@ if ($view!='simple') {
 	if (empty($SEARCH_SPIDER)) {
 		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
 		if (WT_USER_ID) {
-			echo '<li><a href="edituser.php" class="icon_color">', getUserFullName(WT_USER_ID), '</a></li> | <li>', logout_link('class="icon_color"'), '</li>';
+			echo '<li><a href="edituser.php" class="link">', getUserFullName(WT_USER_ID), '</a></li><li>', logout_link(), '</li>';
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-				echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+				echo ' <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 			}
 		} else {
-			echo '<li>', login_link('class="icon_color"'), '</li>';
+			echo '<li>', login_link(),'</li>';
 		}
-		echo ' | <span class="link">', WT_MenuBar::getFavoritesMenu()->getMenuAsList();
+		echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
 		$language_menu=WT_MenuBar::getLanguageMenu();
 		if ($language_menu) {
-			echo ' | ', $language_menu->getMenuAsList();
+			echo $language_menu->getMenuAsList();
 		}
 		global $ALLOW_THEME_DROPDOWN;
 		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-			echo ' | ', WT_MenuBar::getThemeMenu()->getMenuAsList();
+			echo WT_MenuBar::getThemeMenu()->getMenuAsList();
 		}
 		echo
-			'</span> | <form style="display:inline;" action="search.php" method="get">',
+			'<li><form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
 			'<input type="text" name="query" size="15" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
 			'<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
 			'</form>',
-			'</div>';
+			'</li></ul></div>';
 	}
 
 	echo '</td></tr></table></div>';
