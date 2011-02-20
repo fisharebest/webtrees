@@ -304,7 +304,7 @@ if (WT_USER_IS_ADMIN) {
 		'<option>', WT_I18N::translate('&lt;select&gt;'), '</option>',
 	$d=opendir($INDEX_DIRECTORY);
 	$files=false;
-	while (($f=readdir($d))!==false) {
+	while ($d!==false && ($f=readdir($d))!==false) {
 		if (!in_array($f, $gedcoms) && !is_dir($INDEX_DIRECTORY.$f) && is_readable($INDEX_DIRECTORY.$f)) {
 			$fp=fopen($INDEX_DIRECTORY.$f, 'rb');
 			$header=fread($fp, 64);
