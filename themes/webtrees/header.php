@@ -90,7 +90,7 @@ if ($view!='simple') {
 	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
 	'<table width="100%">',
 		'<tr>',
-			'<td><img src="', WT_THEME_DIR, 'images/header.jpg" width="281" height="50" alt="" /></td>',
+			'<td><img src="', WT_THEME_DIR, 'images/webtrees.png" width="242" height="50" alt="" /></td>',
 			'<td width="100%">',
 					'<div align="center">',
 					'<b>';
