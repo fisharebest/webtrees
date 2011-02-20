@@ -496,12 +496,12 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		}
 	}
 	define('WT_THEME_DIR', WT_THEMES_DIR.$THEME_DIR.'/');
+	// Remember this setting
+	if (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/') {
+		$_SESSION['theme_dir']=$THEME_DIR;
+	}
 }
 
-// Remember this setting
-if (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/') {
-	$_SESSION['theme_dir']=WT_THEME_DIR;
-}
 
 require WT_ROOT.WT_THEME_DIR.'theme.php';
 
