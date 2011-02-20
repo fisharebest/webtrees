@@ -1656,11 +1656,11 @@ html[dir='rtl'] li up li {
 html[dir='rtl'] #extra-menu {
 	float:left;
 }
-#extra-menu .makeMenu li ul {
+#extra-menu.makeMenu li ul {
 	left:auto;
 	right:0px;
 }
-html[dir='rtl'] #extra-menu .makeMenu li ul {
+html[dir='rtl'] #extra-menu.makeMenu li ul {
 	left:0px;
 	right:auto;
 }

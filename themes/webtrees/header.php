@@ -102,21 +102,19 @@ if ($view!='simple') {
  	echo '</b>',
 
 					'</div>',
-					'<div id="extra-menu">',
-						'<ul class="makeMenu">';
-								if (!$SEARCH_SPIDER) {
-									echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
-									global $ALLOW_THEME_DROPDOWN;
-									if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-										echo ' | ', WT_MenuBar::getThemeMenu()->getMenuAsList();
-									}
-									$language_menu=WT_MenuBar::getLanguageMenu();
-									if ($language_menu) {
-										echo ' | ', $language_menu->getMenuAsList();
-									}
+					'<ul id="extra-menu" class="makeMenu">';
+							if (!$SEARCH_SPIDER) {
+								echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
+								global $ALLOW_THEME_DROPDOWN;
+								if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
+									echo ' | ', WT_MenuBar::getThemeMenu()->getMenuAsList();
 								}
+								$language_menu=WT_MenuBar::getLanguageMenu();
+								if ($language_menu) {
+									echo ' | ', $language_menu->getMenuAsList();
+								}
+							}
 					echo '</ul>',
-					'</div>',
 			'</td>',
 		'</tr>',
 	'</table>'.
