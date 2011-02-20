@@ -133,8 +133,8 @@ case 'update':
 	// For backwards compatibility with webtrees 1.x we store the two calendar formats in one variable
 	// e.g. "gregorian_and_jewish"
 	set_gedcom_setting(WT_GED_ID, 'CALENDAR_FORMAT',              implode('_and_', array_unique(array(
-		safe_POST('NEW_CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hebrew|hijri|arabic', 'none'),
-		safe_POST('NEW_CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hebrew|hijri|arabic', 'none')
+		safe_POST('NEW_CALENDAR_FORMAT0', 'gregorian|julian|french|jewish|hijri|jalali', 'none'),
+		safe_POST('NEW_CALENDAR_FORMAT1', 'gregorian|julian|french|jewish|hijri|jalali', 'none')
 	))));
 	set_gedcom_setting(WT_GED_ID, 'CHART_BOX_TAGS',               safe_POST('NEW_CHART_BOX_TAGS'));
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD',             str_replace(' ', '', safe_POST('NEW_COMMON_NAMES_ADD')));
@@ -478,14 +478,13 @@ echo WT_JS_START;?>
 						<select id="NEW_CALENDAR_FORMAT1" name="NEW_CALENDAR_FORMAT1">
 							<?php
 							foreach (array(
-								'none'=>WT_I18N::translate('No calendar conversion'),
-								'gregorian'=>WT_I18N::translate('Gregorian'),
-								'julian'=>WT_I18N::translate('Julian'),
-								'french'=>WT_I18N::translate('French'),
-								'jewish'=>WT_I18N::translate('Jewish'),
-								'hebrew'=>WT_I18N::translate('Hebrew'),
-								'hijri'=>WT_I18N::translate('Hijri'),
-								'arabic'=>WT_I18N::translate('Arabic')
+								'none'     =>WT_I18N::translate('No calendar conversion'),
+								'gregorian'=>WT_Date_Gregorian::calendarName(),
+								'julian'   =>WT_Date_Julian::calendarName(),
+								'french'   =>WT_Date_French::calendarName(),
+								'jewish'   =>WT_Date_Jewish::calendarName(),
+								'hijri'    =>WT_Date_Hijri::calendarName(),
+								'jalali'   =>WT_Date_Jalali::calendarName(),
 							) as $cal=>$name) {
 								echo '<option value="', $cal, '"';
 								if ($CALENDAR_FORMATS[1]==$cal) {
