@@ -52,7 +52,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		case 'admin_config':
 			$this->config();
 			break;
-		case 'admin_show_list':
+		case 'show_list':
 			$this->show_list();
 			break;
 		default:
@@ -342,7 +342,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			exit;
 		}
 	}
-	// Following function allows Story list to be added manually as a menu item in header.php if required, using link such as "module.php?mod=stories&mod_action=admin_show_list"
+	// Following function allows Story list to be added manually as a menu item in header.php if required, using link such as "module.php?mod=stories&mod_action=show_list"
 	// No privacy restrictions included here though - so use with care!
 	private function show_list() {
 		global $WT_IMAGES, $TEXT_DIRECTION;
