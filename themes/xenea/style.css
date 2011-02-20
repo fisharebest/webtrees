@@ -1671,16 +1671,24 @@ div.faq_body {
 	display:none;
 	position:absolute;
 	left:0px;
+	right:auto;
 	top:1.1em;
 	background-color:#FFF;
 	border:thin solid #C3DFFF;
 	z-index:999;
+}
+html[dir='rtl'] .makeMenu li ul {
+	left:auto;
+	right:0px;
 }
 
 .makeMenu li ul li {
 	padding: 2px;
 	display:block;
 	text-align:left;
+}
+html[dir='rtl'] li up li {
+	text-align:right;
 }
 
 .makeMenu li ul li a {
@@ -1704,7 +1712,23 @@ div.faq_body {
 }
 
 .makeMenu li ul {
-        margin-left:-40px;
+        xmargin-left:-40px;
+}
+
+/* The language menu in the header is right-justified, so submenus must also be right justified */
+#extra-menu {
+	text-align:right;
+}
+html[dir='rtl'] #extra-menu {
+	text-align:left;
+}
+#extra-menu.makeMenu li ul {
+	left:auto;
+	right:0px;
+}
+html[dir='rtl'] #extra-menu.makeMenu li ul {
+	left:0px;
+	right:auto;
 }
 
 /*--- edit links ---*/
