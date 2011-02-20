@@ -348,7 +348,7 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 ?>
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<?php echo WT_I18N::translate('Databases to search in'); ?>
+			<?php echo WT_I18N::translate('Family trees'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;" colspan="2">
 			<?php
@@ -358,13 +358,25 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 		foreach ($all_gedcoms as $ged_id=>$gedcom) {
 			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
 			$controller->inputFieldNames[] = "$str";
-			echo "<input type=\"checkbox\" ";
-			if (isset ($_REQUEST["$str"]))
-				echo "checked=\"checked\" ";
-			echo "value=\"yes\" name=\"".$str."\""." /><span dir=$TEXT_DIRECTION>".PrintReady(get_gedcom_setting($ged_id, 'title'), true)."</span><br />";
+			echo '<input type="checkbox" ';
+			if ($ged_id==WT_GED_ID) {
+				echo 'checked="checked" ';
+			}
+			echo 'value="yes" id="checkbox_', $ged_id , '" name="', $str, '" />', get_gedcom_setting($ged_id, 'title'), '<br />';
 		}
+		if (count($all_gedcoms)>2) {
+			echo '<br/><input type="button" value="', WT_I18N::translate('select all'), '" onclick="';
+			foreach ($all_gedcoms as $ged_id=>$gedcom) {
+				echo 'document.getElementById(\'checkbox_', $ged_id, '\').checked=\'checked\';';
+			}
+			echo 'return false;"/> <input type="button" value="', WT_I18N::translate('select none'), '" onclick="';
+			foreach ($all_gedcoms as $ged_id=>$gedcom) {
+				echo 'document.getElementById(\'checkbox_', $ged_id, '\').checked=\'\';';
+			}
+			echo 'return false;"/>';
+		}
+		echo '</td>';
 ?>
-		</td>
 	</tr>
 	<?php
 
