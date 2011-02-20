@@ -46,9 +46,6 @@ if (isset($_GET["mod_action"]) && $_GET["mod_action"]=="places_edit") {
 	echo '<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />';
 }
 
-if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {
-	echo '<link rel="stylesheet" href="', $rtl_stylesheet, '" type="text/css" media="all" />';
-}
 if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
 	echo '<link rel="stylesheet" href="', WT_THEME_DIR.$BROWSERTYPE, '.css" type="text/css" media="all" />';
 }
@@ -105,8 +102,8 @@ if ($view!='simple') {
  	echo '</b>',
 
 					'</div>',
-					'<div align="', $TEXT_DIRECTION=="rtl"?"left":"right", '">',
-						'<ul class="makeMenu" align="', $TEXT_DIRECTION=="rtl"?"left":"right", '" >';
+					'<div id="extra-menu">',
+						'<ul class="makeMenu">';
 								if (!$SEARCH_SPIDER) {
 									echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
 									global $ALLOW_THEME_DROPDOWN;
@@ -118,7 +115,7 @@ if ($view!='simple') {
 										echo ' | ', $language_menu->getMenuAsList();
 									}
 								}
-					echo '&nbsp;</ul>',
+					echo '</ul>',
 					'</div>',
 			'</td>',
 		'</tr>',

@@ -1618,17 +1618,25 @@ div.faq_body {
 	display:none;
 	font-weight: normal;
 	position:absolute;
-	right:0px;
+	left:0px;
+	right:auto;
 	top:1.1em;
 	background-color:#FFF;
 	border:thin solid #AAA;
 	z-index:999;
+}
+html[dir='rtl'] .makeMenu li ul {
+	left:auto;
+	right:0px;
 }
 
 .makeMenu li ul li {
 	padding: 2px;
 	display:block;
 	text-align:left;
+}
+html[dir='rtl'] li up li {
+	text-align:right;
 }
 
 .makeMenu, .makeMenu li ul {
@@ -1640,6 +1648,23 @@ div.faq_body {
 .makeMenu li:hover > ul {
 	display:block;
 }
+
+/* The language/theme/favorites menu in the header is right-justified, so submenus must also be right justified */
+#extra-menu {
+	float:right;
+}
+html[dir='rtl'] #extra-menu {
+	float:left;
+}
+#extra-menu .makeMenu li ul {
+	left:auto;
+	right:0px;
+}
+html[dir='rtl'] #extra-menu .makeMenu li ul {
+	left:0px;
+	right:auto;
+}
+
 
 /*--- edit links ---*/
 

@@ -36,7 +36,6 @@ if (!defined('WT_WEBTREES')) {
 
 $theme_name = "webtrees"; // need double quotes, as file is scanned/parsed by script
 $stylesheet       = WT_THEME_DIR.'style.css';
-$rtl_stylesheet   = WT_THEME_DIR.'style_rtl.css';
 $print_stylesheet = WT_THEME_DIR.'print.css';
 $headerfile       = WT_THEME_DIR.'header.php';
 $footerfile       = WT_THEME_DIR.'footer.php';
