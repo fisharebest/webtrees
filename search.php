@@ -359,21 +359,17 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
 			$controller->inputFieldNames[] = "$str";
 			echo '<input type="checkbox" ';
-			if ($ged_id==WT_GED_ID) {
+			if (isset ($_REQUEST["$str"])) {
 				echo 'checked="checked" ';
 			}
 			echo 'value="yes" id="checkbox_', $ged_id , '" name="', $str, '" />', get_gedcom_setting($ged_id, 'title'), '<br />';
 		}
-		if (count($all_gedcoms)>2) {
-			echo '<br/><input type="button" value="', WT_I18N::translate('select all'), '" onclick="';
-			foreach ($all_gedcoms as $ged_id=>$gedcom) {
-				echo 'document.getElementById(\'checkbox_', $ged_id, '\').checked=\'checked\';';
+		if (count($all_gedcoms)>3) {
+			echo '<br/><input type="button" value="', WT_I18N::translate('select all'), '" onclick="jQuery(this).parent().children(\':checkbox\').each(function(){jQuery(this).attr(\'checked\', true);});return false;"/>';
+			echo ' <input type="button" value="', WT_I18N::translate('select none'), '" onclick="jQuery(this).parent().children(\':checkbox\').each(function(){jQuery(this).attr(\'checked\', false);});return false;"/>';
+			if (count($all_gedcoms)>10) {
+			 	echo ' <input type="button" value="', WT_I18N::translate('invert selection'), '" onclick="jQuery(this).parent().children(\':checkbox\').each(function(){jQuery(this).attr(\'checked\', !jQuery(this).attr(\'checked\'));});return false;"/>';
 			}
-			echo 'return false;"/> <input type="button" value="', WT_I18N::translate('select none'), '" onclick="';
-			foreach ($all_gedcoms as $ged_id=>$gedcom) {
-				echo 'document.getElementById(\'checkbox_', $ged_id, '\').checked=\'\';';
-			}
-			echo 'return false;"/>';
 		}
 		echo '</td>';
 ?>
