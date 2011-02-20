@@ -293,8 +293,8 @@ function create_map() {
 						$list_latlon = (
 							translate_fact('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:62px; background:none; border:none;' value='".$sv_lat."' />".
 							translate_fact('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:62px; background:none; border:none;' value='".$sv_lng."' />".
-							WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:43px; background:none; border:none;' value='".$sv_dir."' />".
-							WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:43px; background:none; border:none;' value='".$sv_pitch."' />".
+							/* I18N: compass bearing (in degrees) */ WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:43px; background:none; border:none;' value='".$sv_dir."' />".
+							/* I18N: angle of elevation (in degrees) */ WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:43px; background:none; border:none;' value='".$sv_pitch."' />".
 							WT_I18N::translate('Zoom')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:26px; background:none; border:none;' value='".$sv_zoom."' />
 						");
 						echo '<table align="center" style="margin-left:6px; border:1px solid black; width:522px; margin-top:-18px; background:#cccccc; ">';
