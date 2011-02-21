@@ -83,20 +83,20 @@
 			new google.maps.Size(20, 34),
 			new google.maps.Point(0,0),
 			new google.maps.Point(9, 34));
-		}
+		} 
 		return gicons[iconColor];
 	}
 	
 	function category2color(category) {
 		var color = "red";
 		switch(category) {
-		case "theatre": color = "";
+		 	case "theatre": color = "";
 				break;
-		case "golf":	color = "_green";
+		 	case "golf":	color = "_green";
 				break;
-		case "info":	color = "_yellow";
+		 	case "info":	color = "_yellow";
 				break;
-		default:		color = "";
+		 	default:		color = "";
 				break;
 		}
 		return color;
@@ -158,12 +158,12 @@
 		if (sv_zoom == '' || sv_zoom == 0 || sv_zoom == 1) {
 			marker.sv_zoom = 1.2;
 		} else {
-		marker.sv_zoom = sv_zoom;
-	}
+			marker.sv_zoom = sv_zoom;
+		}
 
 		marker.sv_latlng = new google.maps.LatLng(sv_lati, sv_long);
 		gmarkers.push(marker);
-		
+
 		var sv_dir = [];
 			sv_dir[i] = parseFloat(gmarkers[i].sv_bearing);
 		var sv_elev = [];
@@ -370,12 +370,12 @@
 			center: map_center,
 			mapTypeId: google.maps.MapTypeId.TERRAIN,					// ROADMAP, SATELLITE, HYBRID, TERRAIN
 			mapTypeControlOptions: {
-				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU// DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
+				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
 			},
 			navigationControl: true,
 			navigationControlOptions: {
-			position: google.maps.ControlPosition.TOP_RIGHT,		// BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-			style: google.maps.NavigationControlStyle.SMALL			// ANDROID, DEFAULT, SMALL, ZOOM_PAN
+			position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
+			style: google.maps.NavigationControlStyle.SMALL   // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 			},
 			streetViewControl: false,									// Show Pegman or not
 			scrollwheel: false
@@ -419,8 +419,8 @@
 						$image = "<img class='icon_birt' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Baptism' || $gmark['fact'] == 'Christening') {
 						$image = "<img class='icon_bapm' src='././images/pix1.gif' />";
-					} else if ($gmark['fact'] == 'Marriage') {
-						$image = "<img class='icon_marr' src='././images/pix1.gif' />";
+					} else if ($gmark['fact'] == 'Military') {
+						$image = "<img class='icon_mili' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Occupation') {
 						$image = "<img class='icon_occu' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Residence') {
@@ -598,7 +598,7 @@
 			// If a fact with info or a persons name ---
 			var event_item ="";
 			var event_tab ="";
-			var tabcontid = "";			
+			var tabcontid = "";
 			var divhead = '<h4 id="iwhead" >'+address+'<\/h4>';
 			
 			for (var n = 0; n < locations.length; n++) {

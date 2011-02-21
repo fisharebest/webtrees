@@ -188,10 +188,10 @@
 					pitch: sv_elev[i],
 					// pitch: 5,
 					zoom: sv_zoom[i]
-				}		 	
+				}
 			};
-				
-			// === Use jquery for tabs ===	
+
+			// === Use jquery for tabs ===
 			// var $fred = jQuery("#gmtabs").tabs("div.panes > div");
 			// jQuery("#gmtabs").tabs('select', '#SV');
 			
@@ -202,15 +202,15 @@
 				document.tabLayerSV = eval('document.getElementById("SV")');
 				document.tabLayerSV.style.background = "#cccccc";
 				document.tabLayerSV.style.paddingBottom = "0px";
-			//	document.tabLayerPH = eval('document.getElementById("PH")');
-			//	document.tabLayerPH.style.background = "#cccccc";
-			//	document.tabLayerPH.style.paddingBottom = "0px";
+		//		document.tabLayerPH = eval('document.getElementById("PH")');
+		//		document.tabLayerPH.style.background = "#cccccc";
+		//		document.tabLayerPH.style.paddingBottom = "0px";
 				document.panelLayer1 = eval('document.getElementById("pane1")');
 				document.panelLayer1.style.display = "block";
 				document.panelLayer2 = eval('document.getElementById("pane2")');
 				document.panelLayer2.style.display = "none";
-			//	document.panelLayer3 = eval('document.getElementById("pane3")');
-			//	document.panelLayer3.style.display = "none";
+		//		document.panelLayer3 = eval('document.getElementById("pane3")');
+		//		document.panelLayer3.style.display = "none";
 				
 			});	
 			
@@ -221,15 +221,15 @@
 				document.tabLayerSV = eval('document.getElementById("SV")');
 				document.tabLayerSV.style.background = "#ffffff";
 				document.tabLayerSV.style.paddingBottom = "1px";
-			//	document.tabLayerPH = eval('document.getElementById("PH")');
-			//	document.tabLayerPH.style.background = "#cccccc";
-			//	document.tabLayerPH.style.paddingBottom = "0px";
+		//		document.tabLayerPH = eval('document.getElementById("PH")');
+		//		document.tabLayerPH.style.background = "#cccccc";
+		//		document.tabLayerPH.style.paddingBottom = "0px";
 				document.panelLayer1 = eval('document.getElementById("pane1")');
 				document.panelLayer1.style.display = "none";
 				document.panelLayer2 = eval('document.getElementById("pane2")');
 				document.panelLayer2.style.display = "block";
-			//	document.panelLayer3 = eval('document.getElementById("pane3")');
-			//	document.panelLayer3.style.display = "none";
+		//		document.panelLayer3 = eval('document.getElementById("pane3")');
+		//		document.panelLayer3.style.display = "none";
 				var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
 				// map.setStreetView(panorama);  // **** If you uncomment this, the pegman will appear ****
 			});	
@@ -241,21 +241,19 @@
 				document.tabLayerSV = eval('document.getElementById("SV")');
 				document.tabLayerSV.style.background = "#cccccc";
 				document.tabLayerSV.style.paddingBottom = "0px";
-			//	document.tabLayerPH = eval('document.getElementById("PH")');
-			//	document.tabLayerPH.style.background = "#ffffff";
-			//	document.tabLayerPH.style.paddingBottom = "1px";
+		//		document.tabLayerPH = eval('document.getElementById("PH")');
+		//		document.tabLayerPH.style.background = "#ffffff";
+		//		document.tabLayerPH.style.paddingBottom = "1px";
 				document.panelLayer1 = eval('document.getElementById("pane1")');
 				document.panelLayer1.style.display = "none";
 				document.panelLayer2 = eval('document.getElementById("pane2")');
 				document.panelLayer2.style.display = "none";
-			//	document.panelLayer3 = eval('document.getElementById("pane3")');
-			//	document.panelLayer3.style.display = "block";
-			});	
-				 	
+		//		document.panelLayer3 = eval('document.getElementById("pane3")');
+		//		document.panelLayer3.style.display = "block";
+			});
 		});
-			
 	}
-	
+
 	// == shows all markers of a particular category, and ensures the checkbox is checked ==
 	function show(category) {
 		for (var i=0; i<gmarkers.length; i++) {
@@ -356,13 +354,13 @@
 		controlUI.appendChild(controlText);
 
 		// Setup the click event listeners: simply set the map to original LatLng
-		google.maps.event.addDomListener(controlUI, 'click', function() {			
+		google.maps.event.addDomListener(controlUI, 'click', function() {
 			loadMap();
 		});
 	}
 	
 	function loadMap() { 
-		<?php 	
+		<?php
 			global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $GEDCOM;
 		?>
 		
@@ -372,12 +370,12 @@
 			center: map_center,
 			mapTypeId: google.maps.MapTypeId.TERRAIN,					// ROADMAP, SATELLITE, HYBRID, TERRAIN
 			mapTypeControlOptions: {
-				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU 	// DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
+				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
 			},
 			navigationControl: true,
 			navigationControlOptions: {
-				position: google.maps.ControlPosition.TOP_RIGHT,		// BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-				style: google.maps.NavigationControlStyle.SMALL			// ANDROID, DEFAULT, SMALL, ZOOM_PAN
+			position: google.maps.ControlPosition.TOP_RIGHT,  // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
+			style: google.maps.NavigationControlStyle.SMALL   // ANDROID, DEFAULT, SMALL, ZOOM_PAN
 			},
 			streetViewControl: false,									// Show Pegman or not
 			scrollwheel: false
@@ -391,19 +389,19 @@
 			// == rebuild sidebar (hidden item) ==
 			makeSidebar();
 		});
-		
+
 		// Create the Home DIV and call the HomeControl() constructor in this DIV.
 		var homeControlDiv = document.createElement('DIV');
 		var homeControl = new HomeControl(homeControlDiv, map);
 		homeControlDiv.index = 1;
 		map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 
-		// Add the markers to the map from the $gmarks array 		
+		// Add the markers to the map from the $gmarks array
 		var locations = [
 		
 			<?php 
 			foreach($gmarks as $gmark) { 
-						
+
 				// create thumbnail images of highlighted images ===========================
 				if (!empty($pid)) {
 					$this_person = WT_Person::getInstance($pid);
@@ -411,7 +409,7 @@
 				if (!empty($gmark['name'])) {
 					$person = WT_Person::getInstance($gmark['name']);
 				}
-				
+
 				// The current indi -----------------------------
 				if (!empty($this_person)) {
 					$class = "pedigree_image_portrait";
@@ -491,7 +489,7 @@
 						}
 					} // end of add image
 					
-				}								
+				}
 			?>
 
 				[
@@ -500,7 +498,7 @@
 					"<?php echo $gmark['lati']; ?>", 
 					"<?php echo $gmark['lng']; ?>", 
 					"<?php if (!empty($gmark['date'])) { $date=new WT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo WT_I18N::translate('Date not known'); } ?>", 
-					"<?php if (!empty($gmark['info'])) 	{ echo $gmark['info']; } else { echo NULL; } ?>", 
+					"<?php if (!empty($gmark['info'])) { echo $gmark['info']; } else { echo NULL; } ?>", 
 					"<?php if (!empty($gmark['name'])) { $person=WT_Person::getInstance($gmark['name']); if ($person) { echo '<a href=\"', $person->getHtmlUrl(), '\">', $person->canDisplayName() ? PrintReady(addcslashes($person->getFullName(), '"')) : WT_I18N::translate('Private'), '<\/a>'; } } ?>", 
 					"<?php if (preg_match('/2 PLAC (.*)/', $gmark['placerec']) == 0) { print_address_structure_map($gmark['placerec'], 1); } else { echo preg_replace('/\"/', '\\\"', print_fact_place_map($gmark['placerec'])); } ?>",
 					"<?php echo $gmark['index'].''; ?>", 
@@ -548,7 +546,7 @@
 			np[p] = ''+p+'';			
 			numtabs[p] = 0;
 			npo[p] = new Array();
-			for (var q = 0; q < locations.length; q++) {		
+			for (var q = 0; q < locations.length; q++) {
 				if (jQuery.inArray(np[p], locations[q][7])==0) {
 					npo[p][numtabs[p]] = q;
 					numtabs[p]++;
@@ -556,7 +554,7 @@
 			}
 		} 
 
-		// Loop through all location markers -----------------------------------		
+		// Loop through all location markers -----------------------------------
 		for (var i = 0; i < locations.length; i++) {
 			// obtain the attributes of each marker
 			var event = locations[i][0];							// Event or Fact
@@ -571,7 +569,7 @@
 			var placed = locations[i][9];							// Yes indicates multitab item
 			var name2 = locations[i][11];							// printable name for marker title
 			var point = new google.maps.LatLng(lat,lng);			// Latitude, Longitude
-						
+
 			var media = locations[i][14];							// media item
 			var sv_lati = locations[i][15];							// Street View latitude
 			var sv_long = locations[i][16];							// Street View longitude
@@ -581,7 +579,7 @@
 			
 			// Employ of image tab function using an information image -----
 			if (media == null || media == "") {
-				media = "<?php echo WT_MODULES_DIR; ?>googlemap/images/facts/v3_image_info.png";
+				media = WT_MODULES_DIR+'googlemap/images/facts/v3_image_info.png';
 			} else {
 				media = media;
 			}
@@ -619,18 +617,17 @@
 							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][4]+'<br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
 						// or just a simple fact ---
 						} else {
-							event_tab 	+=	[ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];							
+							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
 						}
 					}
-	 			}
-	 		} 
-		
-	 		var multitabs = [
-	 		'<div class="infowindow">',
- 			 	'<div id = "gmtabs">',
- 			 	
+				}
+			} 
+			var multitabs = [
+			'<div class="infowindow">',
+				'<div id = "gmtabs">',
+
 						'<ul class="tabs" >',
-		 					'<li><a href="#event" id="EV"><?php echo WT_I18N::translate('Events'); ?><\/a><\/li>',
+							'<li><a href="#event" id="EV"><?php echo WT_I18N::translate('Events'); ?><\/a><\/li>',
 							'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Google Street View'); ?><\/a><\/li>',
 					//		'<li><a href="#image" id="PH">Image<\/a><\/li>',
 					//		'<li><a href="#" id="SP">Aerial<\/a><\/li>',
@@ -646,7 +643,7 @@
 								divhead,
 								'<div id="pano"><\/div>',
 							'<\/div>',
-				/*			
+				/*
 							'<div id = "pane3">',
 								divhead,
 								'<div id = "pane3_text">',
@@ -654,7 +651,6 @@
 								'<\/div>',
 							'<\/div>',
 				*/
-				
 				/*	
 							'<div id = "pane4">',
 								divhead,
@@ -665,24 +661,18 @@
 								'<\/div>',
 							'<\/div>',
 				*/	
-
-		 				'<\/div>',
-		 				
+						'<\/div>',
 				'<\/div>',
 			'<\/div>'
 			].join('');
- 	
+
 			// create the marker -----------------------------------------------
 			var html = multitabs;
 			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point);
 			var myLatLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
 			bounds.extend(myLatLng);
 			map.fitBounds(bounds);
-		
 		}  // end loop through location markers
-		
 	}	// end loadMap()
-	
 //]]>
 </script>
-
