@@ -100,20 +100,22 @@ case 'add_ged':
 	exit;
 case 'new_ged':
 	$ged_name=basename(safe_POST('ged_name'));
-	$gedcom_id=get_id_from_gedcom($ged_name);
-	// check it doesn't already exist before we create it
-	if (!$gedcom_id) {
-		$gedcom_id=get_id_from_gedcom($ged_name, true);
-		// I18N: This should be a common/default/placeholder name of a person.  Put slashes around the surname.
-		$john_doe=WT_I18N::translate('John /DOE/');
-		$note=WT_I18N::translate('Edit this individual and replace their details with your own');
-		WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
-		WT_DB::prepare(
-			"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
-		)->execute(array(
-			$gedcom_id,
-			"0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n"
-		));
+	if ($ged_name) {
+		$gedcom_id=get_id_from_gedcom($ged_name);
+		// check it doesn't already exist before we create it
+		if (!$gedcom_id) {
+			$gedcom_id=get_id_from_gedcom($ged_name, true);
+			// I18N: This should be a common/default/placeholder name of a person.  Put slashes around the surname.
+			$john_doe=WT_I18N::translate('John /DOE/');
+			$note=WT_I18N::translate('Edit this individual and replace their details with your own');
+			WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
+			WT_DB::prepare(
+				"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
+			)->execute(array(
+				$gedcom_id,
+				"0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n"
+			));
+		}
 	}
 	break;
 case 'upload_ged':
