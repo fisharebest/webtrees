@@ -263,10 +263,10 @@ function create_map() {
 					</div>
 					<?php			
 						$list_latlon = (
-							translate_fact('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:67px; background:none; border:none;' value='".$sv_lat."' />".
-							translate_fact('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:67px; background:none; border:none;' value='".$sv_lng."' />".
-							WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:50px; background:none; border:none;' value='".$sv_dir."' />".
-							WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:45px; background:none; border:none;' value='".$sv_pitch."'	/>".
+							translate_fact('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:50px; background:none; border:none;' value='".$sv_lat."' />".
+							translate_fact('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:49px; background:none; border:none;' value='".$sv_lng."' />".
+							WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:46px; background:none; border:none;' value='".$sv_dir."' />".
+							WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px; background:none; border:none;' value='".$sv_pitch."'	/>".
 							WT_I18N::translate('Zoom')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='".$sv_zoom."' />
 						");
 						if (WT_USER_IS_ADMIN) {
@@ -553,8 +553,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	});
 	
 	// Creates a marker whose info window displays the given name
-	function createMarker(point, html, icon, name) {
-	
+	function createMarker(point, html, icon, name) {	
 		// Choose icon and shadow ============
 		<?php
 		echo "if (icon.image && ($level==0 || $level==1 || $level==2)) {";
@@ -587,7 +586,6 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		//	echo '};'; 
 		echo "}";	
 		?>
-
 		var posn = new google.maps.LatLng(0,0);
 		var marker = new google.maps.Marker({
 			position: point,
@@ -595,15 +593,13 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			shadow: iconShadow,
 			map: map,
 			title: name,
-		});
-		
+		});		
 		// Show this markers name in the info window when it is clicked
 		google.maps.event.addListener(marker, 'click', function() {
 			infowindow.close();
 			infowindow.setContent(html);
 			infowindow.open(map, marker);
 		});
-
 		// === Store the tab, category and event info as marker properties ===
 		marker.mypoint = point;
 		marker.mytitle = name;
@@ -613,6 +609,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		map.fitBounds(bounds);
 		return marker;
 	}
+	
 	<?php
 	if (check_exist_table()) {
 		$levelm = set_levelm($level, $parent);
@@ -627,7 +624,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	//		echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 	//		echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+6);\n";
 		} else if ($level==2) {
-			echo "map.maxZoom=8;";
+			echo "map.maxZoom=10;";
 	//		echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 	//		echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
 		} else if ($numfound<2 && $level>1) {
@@ -636,12 +633,12 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		} 
 		//create markers
 		$placeidlist=array();
-		if ($numfound==0 && $level>0) {
+	//	if ($numfound==0 && $level>0) {
 			if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
 				// there are no sub-places under this place, therefore, show the current place on the map
 				$placeidlist[] = $levelm;
 			}
-		} else {
+	//	} else {
 			// sub-places exist for this place, display them
 			foreach ($place_names as $placename) {
 				$thisloc = $parent;
@@ -649,7 +646,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 				$this_levelm = set_levelm($level+1, $thisloc);
 				if ($this_levelm) $placeidlist[] = $this_levelm;
 			}
-		}
+	//	}
 
 		if ($placeidlist) {
 			$placeidlist=array_unique($placeidlist);
@@ -676,8 +673,10 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=0&display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
 		echo "<br /></div>\", icon_type, \"", WT_I18N::translate('Edit geographic location'), "\");\n";
 	}
+	
 	//end markers
 	?>
+	
 	//]]>
 	</script>
 	<?php
