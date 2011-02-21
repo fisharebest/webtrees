@@ -69,7 +69,7 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 			$title.="<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
-		$title.= WT_I18N::translate('Upcoming Events').help_link('upcoming_events', $this->getName());
+		$title.= WT_I18N::translate('Upcoming Events');
 
 		$content = "";
 		switch ($infoStyle) {
@@ -152,14 +152,14 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('List'), 'table'=>WT_I18N::translate('Table')), null, $infoStyle, '');
+		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
 		echo '</td></tr>';
 
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Sort Style');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('sortStyle', array('alpha'=>WT_I18N::translate('Alphabetically'), 'anniv'=>WT_I18N::translate('By Anniversary')), null, $sortStyle, '');
+		echo select_edit_control('sortStyle', array('alpha'=>WT_I18N::translate('alphabetically'), 'anniv'=>WT_I18N::translate('By Anniversary')), null, $sortStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);

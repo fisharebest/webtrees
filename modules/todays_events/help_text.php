@@ -31,14 +31,5 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 }
 
 switch ($help) {
-case 'recent_changes':
-	$title=WT_I18N::translate('On This Day');
-	$text=WT_I18N::translate('The On This Day, in Your History... block shows anniversaries of events for today.  You can configure the amount of detail shown.');
-	$text.='<ul><li>';
-
-	// TODO: Other options of this block
-
-	$text.='</li></ul>';
-	break;
 }
 ?>

@@ -31,21 +31,5 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 }
 
 switch ($help) {
-case 'upcoming_events':
-	$title=WT_I18N::translate('Upcoming events block');
-	$text=WT_I18N::translate('This block shows you anniversaries of events that are coming up in the near future.<br /><br />The administrator determines how far ahead the block will look.  You can further refine the block\'s display of upcoming events through several configuration options.');
-	$text.='<ul><li>';
-	$text.=WT_I18N::translate('Number of days to show: This is the number of days that <b>webtrees</b> should use when searching for events');
-	$text.=' (<i>'.WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30).'</i>).';
-	$text.='</li><li>';
-	$text.=WT_I18N::translate('Show only events of living people?: Choose to show events of all people, or just those still living.');
-	$text.='</li><li>';
-	$text.=WT_I18N::translate('Show only births, deaths and marriages?: This option lets you eliminate some dated events.  For example, Divorce, Cremation, Graduation, Bar Mitzvah, First Communion, etc. should all be dated. When you select "Yes", only Births, Deaths, and Marriages will be shown. When you select "No", all dated events will be shown.');
-	$text.='</li><li>';
-	$text.=WT_I18N::translate('Presentation style: Either a simple text "List" or a "Table" format.');
-	$text.='</li><li>';
-	$text.=WT_I18N::translate('Sort style: "Alphabetically", or "By Anniversary" showing results in date order with the most recent first.');
-	$text.='</li></ul>';
-	break;
 }
 ?>
