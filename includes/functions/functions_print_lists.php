@@ -1382,7 +1382,7 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
         $return .= "</div>";    // class='indent'
         $return .= "</div>";
     }
-    $return .= WT_I18N::translate('Showing 1 to %d of %d entries', $n,$n);
+    $return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
     if ($n >= NMAX) {
         $return .= "<div class='warning'>" . WT_I18N::translate('Total changes exceed limit (%d)', NMAX) . "</div>";
     }
@@ -1519,7 +1519,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
     //-- table footer
     $return .= "</tbody>";
     $return .= "</table>";
-    $return .= WT_I18N::translate('Showing 1 to %d of %d entries', $n, $n);
+    $return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
     if ($n >= NMAX) {
         $return .= "<div class='warning'>" . WT_I18N::translate('Total changes exceed limit (%d)', NMAX) . "</div>";
     }
