@@ -148,7 +148,7 @@ function create_map() {
 	
 	// create the map
 	if ($level > 0) {
-		echo '<p><table class="center" style="margin-top:0px;"><tr valign="top"><td style="background:none;">', WT_I18N::translate('Markers show the Place Hierarchy defined after: %s', $parent[$level-1]), '</p>';
+		echo '<p><table class="center" style="margin-top:0px;"><tr valign="top"><td style="background:none;">', /* I18N: %s is a country or region */ WT_I18N::translate('The markers indicate places in %s', $parent[$level-1]), '</p>';
 	} else {
 		echo '<p><table class="center" style="margin-top:0px;"><tr valign="top"><td style="background:none;"></p>';
 	}

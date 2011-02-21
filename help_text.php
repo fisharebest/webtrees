@@ -2721,11 +2721,6 @@ case 'ppp_match_one':
 	$text=WT_I18N::translate('GEDCOM ORDER<br />The locations are assumed to be encoded in the place format explicitly declared in the GEDCOM file.  This overrules the default order.');
 	break;
 
-case 'ppp_placelist':
-	$title=WT_I18N::translate('Place hierarchy');
-	$text=WT_I18N::translate('In this list you can see the locations that are found subordinate to the current location you have chosen.  If you have not yet selected a place, you will see a list of all of the top level locations (e.g. countries or states).<br /><br />The names of the locations in the list are clickable; clicking on a location works like a filter, you will be taken to the next level down.');
-	break;
-
 case 'ppp_view_records':
 	$title=WT_I18N::translate('View all records');
 	$text=WT_I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');

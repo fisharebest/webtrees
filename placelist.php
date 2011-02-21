@@ -231,12 +231,10 @@ if ($display=="hierarchy") {
 			echo ">&nbsp;";
 			echo "<img src=\"", $WT_IMAGES["place"], "\" border=\"0\" title=\"", WT_I18N::translate('Place'), "\" alt=\"", WT_I18N::translate('Place'), "\" />&nbsp;&nbsp;";
 			if ($level>0) {
-				echo " ", WT_I18N::translate('Place Hierarchy after'), ": ";
-				echo PrintReady($num_place);
+				echo /* I18N: %s is a country or region */WT_I18N::translate('Places in %s', $num_place);
 			} else {
 				echo WT_I18N::translate('Place hierarchy');
 			}
-			echo help_link('ppp_placelist');
 			echo "</td></tr><tr><td class=\"list_value\"><ul>";
 		}
 
