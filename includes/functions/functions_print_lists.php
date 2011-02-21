@@ -1330,11 +1330,8 @@ function format_surname_list($surnames, $style, $totals, $type) {
  */
 function print_changes_list($change_ids, $sort, $show_parents=false) {
     global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES;
-    define('NMAX', 1000);
     $n = 0;
     foreach ($change_ids as $change_id) {
-        if ($n >= NMAX)
-            break;
         $record = WT_GedcomRecord::getInstance($change_id);
         if (!$record || !$record->canDisplayDetails()) {
             continue;
@@ -1383,9 +1380,6 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
         $return .= "</div>";
     }
     $return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
-    if ($n >= NMAX) {
-        $return .= "<div class='warning'>" . WT_I18N::translate('Total changes exceed limit (%d)', NMAX) . "</div>";
-    }
     return $return;
 }
 
@@ -1398,7 +1392,6 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
  */
 function print_changes_table($change_ids, $sort, $show_parents=false) {
     global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES;
-    define('NMAX', 1000);
     $return = '';
     $n = 0;
     $table_id = "ID" . floor(microtime() * 1000000); // sorttable requires a unique ID
@@ -1450,8 +1443,6 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
     //-- table body
 
     foreach ($change_ids as $change_id) {
-        if ($n >= NMAX)
-            break;
         $record = WT_GedcomRecord::getInstance($change_id);
         if (!$record || !$record->canDisplayDetails()) {
             continue;
@@ -1520,9 +1511,6 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
     $return .= "</tbody>";
     $return .= "</table>";
     $return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
-    if ($n >= NMAX) {
-        $return .= "<div class='warning'>" . WT_I18N::translate('Total changes exceed limit (%d)', NMAX) . "</div>";
-    }
     return $return;
 }
 
