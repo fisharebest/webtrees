@@ -12,14 +12,14 @@ SVNVERSION=$(shell svnversion .. | tr -d 'M')
 ################################################################################
 default: clean webtrees
 	# Package up the extra language files
-	zip -qr webtrees-language-extra-$(shell date +%Y%m%d).zip $(MO_EXTRA)
+	zip -qr language-extra.zip $(MO_EXTRA)
 	rm -f $(MO_EXTRA)
-	zip -qr webtrees-language-$(shell date +%Y%m%d).zip webtrees/language
+	zip -qr language.zip webtrees/language
 	zip -qr webtrees-$(SVNVERSION).zip webtrees
 	# If we have a GNU private key, sign the file with it
 	if test -d ~/.gnupg; then gpg --armor --sign --detach-sig webtrees-$(SVNVERSION).zip; fi
 	# If we have a public html area, publish the files
-	if test -d ~/public_html; then mkdir -p ~/public_html/build && cp webtrees*.zip ~/public_html/build/; fi
+	if test -d ~/public_html; then mkdir -p ~/public_html/build && cp language*.zip webtrees*.zip ~/public_html/build/; fi
 	# If we have a public html area, clean up old files
 	if test -d ~/public_html/build; then find ~/public_html/build -ctime +7 -exec rm -f {} \; ; fi
 	# Create an updated message catalog
@@ -27,13 +27,13 @@ default: clean webtrees
 	rm -Rf webtrees_tmp/*
 	find webtrees/modules -name "*.xml" | while read file; do sed -e 's~\(WT_I18N::[^)]*[)]\)~<?php echo \1; ?>~' $$file > webtrees_tmp/$$(echo $$file.php | cut -c 10- | tr / _); done
 	find webtrees webtrees_tmp -name "*.php" | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1
-	rm -Rf webtrees_tmp
+	rm -Rf webtrees_tmp webtrees
 
 ################################################################################
 # Remove temporary and intermediate files
 ################################################################################
 clean:
-	rm -Rf webtrees* mo
+	rm -Rf webtrees* mo language.zip language-extra.zip
 
 ################################################################################
 # Remove temporary and intermediate files
