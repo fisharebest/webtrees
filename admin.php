@@ -42,14 +42,9 @@ print_header(WT_I18N::translate('Administration'));
 $latest_version_txt=fetch_latest_version();
 if ($latest_version_txt) {
 	list($latest_version, $earliest_version, $download_url)=explode('|', $latest_version_txt);
-	// If the latest version is newer than this version, show a download link.
-	if (version_compare(WT_VERSION, $latest_version)<=0) {
-		// A newer version is available.  Make a link to it
-		$latest_version='<a href="'.$download_url.'" style="font-weight:bold; color:red;">'.$latest_version.'</a>';
-	}
 } else {
 	// Cannot determine the latest version
-	$latest_version='-';
+	$latest_version='';
 }
 
 // Load all available gedcoms
@@ -70,17 +65,69 @@ echo '<div id="content_container">';
 
 echo '<div id="x">';// div x - manages the accordion effect
 
-echo '<h2>', WT_I18N::translate('About webtrees'), '</h2>',
+echo '<h2>', WT_WEBTREES, ' ', WT_VERSION, '</h2>',
 	'<div id="about">',
-	'<p>', WT_I18N::translate('Welcome to the <b>webtrees</b> administration page. This page provides access to all the site and family tree configuration settings as well as providing some useful information blocks. Administrators can upgrade to the lastest version with a single click, whenever the page reports that a new version is available.'), '</p>',
-	'<p>' ,WT_I18N::translate('Your installed  version of <b>webtrees</b> is: %s', WT_VERSION_TEXT),'</p>';
-if (version_compare(WT_VERSION, $latest_version)>0) {
-	echo '<p>' ,WT_I18N::translate('The latest stable <b>webtrees</b> version is: %s', $latest_version), '&nbsp;<span class="accepted">' ,WT_I18N::translate('No upgrade required.'), '</span></p>';
-} else {
-	echo '<p class="warning">' ,WT_I18N::translate('We recommend you click here to upgrade to the latest stable <b>webtrees</b> version: %s', $latest_version), '</p>';
-}
-echo
+	'<p>', WT_I18N::translate('Welcome to the <b>webtrees</b> administration page. This page provides access to all the site and family tree configuration settings as well as providing some useful information blocks.'), '</p>',
+	'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'), '</p>',
 	'</div>';
+
+// Accordion block for UPGRADE - only shown when upgrades are available
+if (WT_USER_IS_ADMIN && $latest_version && version_compare(WT_VERSION, $latest_version)<0) {
+	echo
+		'<h2><span class="warning">',
+		/* I18N: %s is a version number */ WT_I18N::translate('Upgrade to webtrees %s', $latest_version),
+		'</span></h2>',
+		'<div>',
+		'<h3>', WT_I18N::translate('Upgrade instructions'), '</h3>',
+		'<ul>',
+		'<li>', /* I18N: %s is a URL/link to a .ZIP file */ WT_I18n::translate('Download %s and extract the files.', '<a class="current" href="'.$download_url.'">'.basename($download_url).'</a>'), '</li>';
+	if (version_compare(WT_VERSION, $earliest_version)<0) {
+		echo '<li>', WT_I18N::translate('Accept or reject any pending changes.'), '</li>';
+		echo '<li>', WT_I18N::translate('Save all your family trees to disk, by using the "export" function for each one.'), '</li>';
+	}
+
+	echo '<li>', WT_I18N::translate('Copy the new files to the web server, replacing any that have the same name.'), '</li>';
+
+	if (version_compare(WT_VERSION, $earliest_version)<0) {
+		echo '<li>', WT_I18N::translate('Load all your family trees from disk, by using the "import" function for each one.'), '</li>';
+	}
+
+	echo
+		'</ul>',
+		'<h3>', WT_I18N::translate('Recommendations'), '</h3>',
+		'<ul>',
+		'<li>', WT_I18N::translate('Make a backup of your database before you start.'), '</li>',
+		'</ul>',
+		'</div>';
+}
+
+// Accordion block for DELETE OLD FILES - only shown when old files are found
+$old_files_found=false;
+foreach (old_paths() as $path) {
+	if (file_exists($path)) {
+		delete_recursively($path);
+		// we may not have permission to delete.  Is it still there?
+		if (file_exists($path)) {
+			$old_files_found=true;
+		}
+	}
+}
+
+if (WT_USER_IS_ADMIN && $old_files_found) {
+	echo
+		'<h2><span class="warning">', WT_I18N::translate('Old files found', $latest_version), '</span></h2>',
+		'<div>',
+		'<p>', WT_I18N::translate('Files have been found from a previous version of webtrees.  Old files can sometimes be a security risk.  You should delete them.'), '</p>',
+		'<ul>';
+		foreach (old_paths() as $path) {
+			if (file_exists($path)) {
+				echo '<li>', $path, '</li>';
+			}
+		}
+	echo
+		'</ul>',
+		'</div>';
+}
 
 echo
 	'<h2>', WT_I18N::translate('Users'), '</h2>',
@@ -243,6 +290,135 @@ echo
 	WT_JS_END,
 	'</div>'; //id = content_container
 
-
-
 print_footer();
+
+// This is a list of old files and directories, from earlier versions of webtrees, that can be deleted
+function old_paths() {
+	return array(
+		// Removed in 1.0.2
+		WT_ROOT.'language/en.mo',
+		// Removed in 1.0.3
+		WT_ROOT.'themechange.php',
+		// Removed in 1.0.4
+		WT_ROOT.'themes/fab/images/notes.gif',
+		// Removed in 1.0.5
+		WT_ROOT.'modules/lightbox/functions/lb_indi_doors_0.php',
+		WT_ROOT.'modules/lightbox/functions/lb_indi_doors_1.php',
+		WT_ROOT.'modules/lightbox/functions/lb_indi_tabs_0.php',
+		WT_ROOT.'modules/lightbox/functions/lb_indi_tabs_1.php',
+		// Removed in 1.0.6
+		WT_ROOT.'includes/extras',
+		// Removed in 1.1.0
+		WT_ROOT.'addremotelink.php',
+		WT_ROOT.'addsearchlink.php',
+		WT_ROOT.'client.php',
+		WT_ROOT.'dir_editor.php',
+		WT_ROOT.'editconfig_gedcom.php',
+		WT_ROOT.'editgedcoms.php',
+		WT_ROOT.'edit_merge.php',
+		WT_ROOT.'genservice.php',
+		WT_ROOT.'images/buttons',
+		WT_ROOT.'images/checked.gif',
+		WT_ROOT.'images/checked_qm.gif',
+		WT_ROOT.'images/children.gif',
+		WT_ROOT.'images/feed-icon16x16.png',
+		WT_ROOT.'images/forbidden.gif',
+		WT_ROOT.'images/media',
+		WT_ROOT.'images/reminder.gif',
+		WT_ROOT.'images/selected.png',
+		WT_ROOT.'images/sex_f_15x15.gif',
+		WT_ROOT.'images/sex_f_9x9.gif',
+		WT_ROOT.'images/sex_m_15x15.gif',
+		WT_ROOT.'images/sex_m_9x9.gif',
+		WT_ROOT.'images/sex_u_15x15.gif',
+		WT_ROOT.'images/sex_u_9x9.gif',
+		WT_ROOT.'images/small',
+		WT_ROOT.'images/trashcan.gif',
+		WT_ROOT.'images/warning.gif',
+		WT_ROOT.'includes/classes',
+		WT_ROOT.'includes/controllers',
+		WT_ROOT.'includes/family_nav.php',
+		WT_ROOT.'includes/functions/functions_lang.php',
+		WT_ROOT.'includes/functions/functions_tools.php',
+		WT_ROOT.'js/conio',
+		WT_ROOT.'logs.php',
+		WT_ROOT.'manageservers.php',
+		WT_ROOT.'media.php',
+		WT_ROOT.'module_admin.php',
+		WT_ROOT.'modules/address_label_report',
+		WT_ROOT.'modules/batch_update/batch_update.php',
+		WT_ROOT.'modules/batch_update/plugins/birth_y.php',
+		WT_ROOT.'modules/batch_update/plugins/tmglatlon.php',
+		WT_ROOT.'modules/googlemap/editconfig.php',
+		WT_ROOT.'modules/googlemap/placecheck.php',
+		WT_ROOT.'modules/googlemap/places.php',
+		WT_ROOT.'modules/googlemap/wt_googlemap.js',
+		WT_ROOT.'modules/lightbox/lb_editconfig.php',
+		WT_ROOT.'modules/pedigree_report/report_landscape.xml',
+		WT_ROOT.'modules/pedigree_report/report_portrait.xml',
+		WT_ROOT.'modules/sitemap/admin_config.php',
+		WT_ROOT.'modules/sitemap/gss.xsl',
+		WT_ROOT.'modules/sitemap/index.php',
+		WT_ROOT.'modules/sitemap/sortdown.gif',
+		WT_ROOT.'modules/sitemap/sortup.gif',
+		WT_ROOT.'opensearch.php',
+		WT_ROOT.'PEAR.php',
+		WT_ROOT.'pgv_to_wt.php',
+		WT_ROOT.'places',
+		//WT_ROOT.'robots.txt', // Do not delete this - it may contain user data
+		WT_ROOT.'serviceClientTest.php',
+		WT_ROOT.'siteconfig.php',
+		WT_ROOT.'SOAP',
+		WT_ROOT.'themes/clouds/images/xml.gif',
+		WT_ROOT.'themes/clouds/mozilla.css',
+		WT_ROOT.'themes/clouds/netscape.css',
+		WT_ROOT.'themes/colors/images/xml.gif',
+		WT_ROOT.'themes/colors/mozilla.css',
+		WT_ROOT.'themes/colors/netscape.css',
+		WT_ROOT.'themes/fab/images/checked.gif',
+		WT_ROOT.'themes/fab/images/checked_qm.gif',
+		WT_ROOT.'themes/fab/images/feed-icon16x16.png',
+		WT_ROOT.'themes/fab/images/menu_punbb.gif',
+		WT_ROOT.'themes/fab/images/trashcan.gif',
+		WT_ROOT.'themes/fab/images/xml.gif',
+		WT_ROOT.'themes/fab/mozilla.css',
+		WT_ROOT.'themes/fab/netscape.css',
+		WT_ROOT.'themes/minimal/mozilla.css',
+		WT_ROOT.'themes/minimal/netscape.css',
+		WT_ROOT.'themes/webtrees/images/checked.gif',
+		WT_ROOT.'themes/webtrees/images/checked_qm.gif',
+		WT_ROOT.'themes/webtrees/images/feed-icon16x16.png',
+		WT_ROOT.'themes/webtrees/images/header.jpg',
+		WT_ROOT.'themes/webtrees/images/trashcan.gif',
+		WT_ROOT.'themes/webtrees/images/xml.gif',
+		WT_ROOT.'themes/webtrees/mozilla.css',
+		WT_ROOT.'themes/webtrees/netscape.css',
+		WT_ROOT.'themes/webtrees/style_rtl.css',
+		WT_ROOT.'themes/xenea/mozilla.css',
+		WT_ROOT.'themes/xenea/netscape.css',
+		WT_ROOT.'uploadmedia.php',
+		WT_ROOT.'useradmin.php',
+		WT_ROOT.'webservice',
+		WT_ROOT.'wtinfo.php',
+		// ...this list is complete, up to svn 10930, and was generated with the help of
+		//
+		// svn diff svn://svn.webtrees.net/trunk@9997 svn://svn.webtrees.net/trunk --summarize | grep ^D | sort
+	);
+}
+
+// Delete a file or directory, ignoring errors
+function delete_recursively($path) {
+	@chmod($path, 0777);
+	if (is_dir($path)) {
+		$dir=opendir($path);
+		while ($dir!==false && (($file=readdir($dir))!==false)) {
+			if ($file!='.' && $file!='..') {
+				delete_recursively($path.'/'.$file);
+			}
+		}
+		closedir($dir);
+		@rmdir($path);
+	} else {
+		@unlink($path);
+	}
+}

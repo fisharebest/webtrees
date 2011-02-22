@@ -190,7 +190,7 @@ function fetch_remote_file($host, $path, $timeout=3) {
 // the webtrees.net server, so only check it infrequently, and cache the result.
 function fetch_latest_version() {
 	$last_update_timestamp=get_site_setting('LATEST_WT_VERSION_TIMESTAMP');
-	if ($last_update_timestamp < time()-24*60*60) {
+	if ($last_update_timestamp < time()-24*60*60*3) {
 		$latest_version_txt=fetch_remote_file('webtrees.net', '/latest-version.txt');
 		if ($latest_version_txt) {
 			set_site_setting('LATEST_WT_VERSION', $latest_version_txt);
