@@ -583,6 +583,7 @@ case 'linkfamaction':
 				$gedrec .= "1 FAMS @$famid@";
 			}
 			replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN);
+			$success = true;
 		}
 
 		//-- if it is adding a new child to a family
@@ -590,6 +591,7 @@ case 'linkfamaction':
 			if (strpos($famrec, "1 $famtag @$pid@")===false) {
 				$famrec = trim($famrec) . "\n1 $famtag @$pid@\n";
 				replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
+				$success = true;
 			}
 		} else {
 			//-- if it is adding a husband or wife
@@ -603,18 +605,21 @@ case 'linkfamaction':
 					//-- change a of the old ids to the new id
 					$famrec = str_replace("1 $famtag @$spid@", "1 $famtag @$pid@", $famrec);
 					replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
+					$success = true;
 					//-- remove the FAMS reference from the old husb/wife
 					if (!empty($spid)) {
 						$srec = find_gedcom_record($spid, WT_GED_ID, true);
 						if ($srec) {
 							$srec = str_replace("1 $itag @$famid@", "", $srec);
 							replace_gedrec($spid, WT_GED_ID, $srec, $update_CHAN);
+							$success = true;
 						}
 					}
 				}
 			} else {
 				$famrec .= "\n1 $famtag @$pid@\n";
 				replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
+				$success = true;
 			}
 		}
 	} else {
