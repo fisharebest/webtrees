@@ -362,7 +362,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 	if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == "0") && ($place2['long'] == "0"))) {
 		echo "var icon_type = new google.maps.MarkerImage();\n";
 		echo ' icon_type.image = "', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
-		echo ' icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/shadow50.png\";';
+		echo ' icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
 		echo " icon_type.iconSize = google.maps.Size(20, 34);\n";
 		echo " icon_type.shadowSize = google.maps.Size(37, 34);\n";
 		echo "var point = new google.maps.LatLng(0, 0);\n";
