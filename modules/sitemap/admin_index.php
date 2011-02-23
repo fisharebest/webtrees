@@ -132,8 +132,8 @@ if ($action=="sendFiles") {
 					$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
 					if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
 						echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
-					echo " <changefreq>", $indirec_update, "</changefreq>\n";
-					echo " <priority>0.", $indirec_priority, "</priority>\n";
+					echo " <changefreq>", $famrec_update, "</changefreq>\n";
+					echo " <priority>0.", $famrec_priority, "</priority>\n";
 					echo " </url>\n";
 				}
 			} else {
@@ -142,8 +142,8 @@ if ($action=="sendFiles") {
 				$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
 				if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
 					echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
-				echo " <changefreq>", $indirec_update, "</changefreq>\n";
-				echo " <priority>0.", $indirec_priority, "</priority>\n";
+				echo " <changefreq>", $famrec_update, "</changefreq>\n";
+				echo " <priority>0.", $famrec_priority, "</priority>\n";
 				echo " </url>\n";
 			}
 		}
