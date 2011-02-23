@@ -124,12 +124,15 @@ function initialize() {
    			style: google.maps.NavigationControlStyle.SMALL			// ANDROID, DEFAULT, SMALL, ZOOM_PAN
       	},
       	streetViewControl: false,									// Show Pegman or not
-      	scrollwheel: false     		
+      	scrollwheel: true     		
 	};
 	
     var map = new google.maps.Map(document.getElementById('mapCanvas'), mapOptions);
 
     var bearing = b;
+    if (bearing < 0) {
+    	bearing=bearing+360;
+    }
     var pitch = p;
     var svzoom = m;
     
@@ -144,16 +147,16 @@ function initialize() {
       	new google.maps.Point(26, 36)
     );
 
-//  	var shape = {
-//      	coord: [1, 1, 1, 20, 18, 20, 18 , 1],
-//     	type: 'poly'
-//  	};
+  	var shape = {
+      	coord: [1, 1, 1, 20, 18, 20, 18 , 1],
+     	type: 'poly'
+  	};
  	
   	var marker = new google.maps.Marker({
-        //icon: image,
-        //shape: shape, 
-    	//position: latLng,
-    	title: 'Drag me to a Street',
+        icon: image,
+        // shape: shape, 
+    	position: latLng,
+    	title: 'Drag me to a Blue Street',
     	map: map,
     	draggable: true
   	});
@@ -195,7 +198,7 @@ function initialize() {
 	panorama = new google.maps.StreetViewPanorama(document.getElementById("mapCanvas"), panoramaOptions);
 	panorama.setPosition(latLng);
 
-/*	
+
     	// Enable navigator contol and address control to be toggled with right mouse button -------
 		var aLink = document.createElement('a');
 		aLink.href = "javascript:void(0)"; onmousedown=function(e) {
@@ -211,9 +214,11 @@ function initialize() {
   				}
   				if (clickType!=1) {
 					if (panorama.get('addressControl') == false) {
+						panorama.set('navigationControl', false);
 						panorama.set('addressControl', true);
 						panorama.set('linksControl', true);
 					} else {
+						panorama.set('navigationControl', false);
 						panorama.set('addressControl', false);
 						panorama.set('linksControl', false);
 					}
@@ -228,7 +233,7 @@ function initialize() {
 		};
 		panorama.controls[google.maps.ControlPosition.TOP_RIGHT].push(aLink);
 		// -----------------------------------------------------------------------------------------
-*/
+
 
   	// Update current position info.
   	updateMarkerPosition(latLng);
@@ -402,7 +407,9 @@ google.maps.event.addDomListener(window, 'load', initialize);
   		</form>
   	</div>
   		
-  	<div id="mapCanvas"></div>
+  	<div id="mapCanvas">
+  	
+  	</div>
 
   	<div id="infoPanel">
     	<!-- <b>Marker status:</b> -->

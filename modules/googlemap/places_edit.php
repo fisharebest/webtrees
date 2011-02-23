@@ -278,15 +278,6 @@ $api="v3";
 		</td>
 	</tr>
 	<tr>
-		<td class="optionbox center" colspan="2">
-		<?php
-			if ($api=="v3") {
-		 		echo WT_I18N::translate('Drag the Marker in the Map above, or use parameters below, to re-position the place location');
-			}
-		?>
-		</td>
-	</tr>
-	<tr>
 		<td class="descriptionbox"><?php echo translate_fact('PLAC'), help_link('PLE_PLACES','googlemap'); ?></td>
 		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input" />
 		<div id="INDI_PLAC_pop" style="display: inline;">
