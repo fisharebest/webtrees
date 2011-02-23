@@ -635,8 +635,28 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		$placeidlist=array();
 	//	if ($numfound==0 && $level>0) {
 			if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
-				// there are no sub-places under this place, therefore, show the current place on the map
-				$placeidlist[] = $levelm;
+				// show the current place on the map
+
+				$place = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long, pl_zoom as zoom, pl_icon as icon FROM ##placelocation WHERE pl_id=?")
+				->execute(array($levelm))
+				->fetch(PDO::FETCH_ASSOC);
+
+				if ($place) {
+					// re-calculate the hierarchy information required to display the current place
+					$thisloc = $parent;
+					$xx = array_pop($thisloc);
+					$thislevel = $level-1 ;
+					$thislinklevels = substr($linklevels,0,strrpos($linklevels,'&amp;'));
+					if (strpos($placelevels,',',1)) {
+						$thisplacelevels = substr($placelevels,strpos($placelevels,',',1));
+					} else {
+						// this is the top level, remove everything
+						$thisplacelevels = '';
+					}
+
+					$place['long'] = $place['pl_long'];  // mysql won't allow us to name this "long" in the select statement
+					print_gm_markers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels, $thisplacelevels);
+				}
 			}
 	//	} else {
 			// sub-places exist for this place, display them
@@ -649,8 +669,14 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	//	}
 
 		if ($placeidlist) {
-			$placeidlist=array_unique($placeidlist);
-
+			// flip the array (thus removing duplicates)
+			$placeidlist=array_flip($placeidlist);
+			// remove entry for parent location, plotted above
+			unset($placeidlist[$levelm]);
+		}
+		if ($placeidlist) {
+			// the keys are all we care about (this reverses the earlier array_flip, and ensures there are no "holes" in the array)
+			$placeidlist=array_keys($placeidlist);
 			// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
 			$placelist =
 				WT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN ('.implode(',', array_fill(0, count($placeidlist), '?')).')')
