@@ -1835,6 +1835,7 @@ function cousin_name2($n, $sex, $relation) {
 	}
 }
 
+
 function get_relationship_name_from_path($path, $pid1, $pid2) {
 	if (!preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $path)) {
 		// TODO: Update all the "3 RELA " values in class_person
@@ -2745,13 +2746,13 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 			// Source: Wes Groleau.  See http://UniGen.us/Parentesco.html & http://UniGen.us/Parentesco-D.html
 			if ($down==$up) {
 				return cousin_name($cousin, $sex2);
-			} elseif ($down>$up) {
-				return cousin_name2($cousin, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
+			} elseif ($down<$up) {
+				return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
 			} else {
 				switch ($sex2) {
-				case 'M': return cousin_name2($cousin, $sex2, get_relationship_name_from_path('bro' . $descent, null, null));
-				case 'F': return cousin_name2($cousin, $sex2, get_relationship_name_from_path('sis' . $descent, null, null));
-				case 'U': return cousin_name2($cousin, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
+				case 'M': return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('bro' . $descent, null, null));
+				case 'F': return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('sis' . $descent, null, null));
+				case 'U': return cousin_name2($cousin+1, $sex2, get_relationship_name_from_path('sib' . $descent, null, null));
 				}
 			}
 		case 'en': // See: http://en.wikipedia.org/wiki/File:CousinTree.svg
