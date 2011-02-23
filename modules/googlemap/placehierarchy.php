@@ -157,8 +157,11 @@ function create_map() {
 		WT_DB::prepare("SELECT pl_place, pl_id, pl_lati, pl_long, pl_zoom, sv_long, sv_lati, sv_bearing, sv_elevation, sv_zoom FROM `##placelocation` WHERE pl_id=?")
 		->execute(array($levelm))
 		->fetch(PDO::FETCH_ASSOC);
-
-	echo '<div id="place_map" style="border: 1px solid gray; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px; ';
+	if ($STREETVIEW && $level!=0 ) {
+		echo '<div id="place_map" style=" margin-top: 20px; border:1px solid gray; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px;" ';
+	} else {
+		echo '<div id="place_map" style="border:1px solid gray; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px;" ';	
+	}
 	echo "background-image: url('images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
 	echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
 	echo '</td>';
