@@ -143,7 +143,6 @@ html[dir='rtl'] #tree_stats td, #recent td {padding:0 0 0 10px; text-align:left;
 #trees span, #recent2 span {text-decoration:underline;}
 
 /*SERVER CONFIG */
-#tabs {width:100%}
 #site table, #mail table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
 
 /*table.site_config {background:OldLace; border:1px inset #D9D6C4; padding:10px; margin:0 10px;}*/
@@ -205,7 +204,6 @@ table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 .gedcom_table2 td {text-align:center;}
 
 /* FAMILY TREE CONFIG */
-#tabs {width:100%}
 #file-options, #privacy, #config-media, #access-options, #layout-options, #hide-show, #edit-options {padding:10px;}
 #file-options table, #privacy table, #config-media table, #access-options table, #layout-options table, #hide-show table, #edit-options table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
 #file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid LightGrey;}
@@ -301,11 +299,15 @@ table#faq_module, table#faq_module2 {background:OldLace; border:1px inset #D9D6C
 /* Configure */
 table#gm_config {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 auto 10px; width:100%;}
 #gm_config th {font-size:105%; font-weight:bold; padding:5px; text-align:left;}
-table#gm_edit_config {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0; width:98%;}
-#gm_edit_config th {border-bottom:1px solid LightGrey; font-weight:bold; padding:5px; text-align:left; vertical-align:top;}
-#gm_edit_config td {border-bottom:1px solid LightGrey; margin-left:20px;}
+table.gm_edit_config {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; margin:10px 0;}
+.gm_edit_config th {border-bottom:1px solid LightGrey; font-weight:bold; padding:5px; text-align:left; vertical-align:top;}
+.gm_edit_config td {border-bottom:1px solid LightGrey; padding-left:50px;}
 #gm_breadcrumb, #gm_breadcrumb a { color:green; font-weight:bold; font-size:105%; padding:5px;}
 #gm_active {padding:5px; vertical-align:top;}
+#gm_advanced td {padding:0;}
+table#gm_levels {margin-left:20px;}
+#gm_levels th {color:green;}
+
 /* Place edit */
 table.gm_plac_edit {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:0 5px; width:100%;}
 div.gm_plac_edit {width:100%; max-height:535px; overflow:auto;}
@@ -313,6 +315,7 @@ div.gm_plac_edit {width:100%; max-height:535px; overflow:auto;}
 .gm_plac_edit td {border-bottom:1px solid LightGrey;}
 table#gm_manage {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0 0; padding:0 5px; width:98%;}
 #gm_manage td {border-bottom:1px solid LightGrey;}
+
 /* Place check */
 table.gm_check_outer {border-collapse:separate; border-spacing:0; height:100px; overflow:auto; width:98%}
 .gm_check_top {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0; padding:0;}

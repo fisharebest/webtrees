@@ -40,7 +40,7 @@ function print_level_config_table($level) {
 	<div id="level<?php echo $level; ?>" style="display:<?php if ($GM_MAX_NOF_LEVELS >= $level) {echo "block";} else {echo "none";} ?>">
 		<table id="gm_levels">
 			<tr>
-				<td colspan="2">
+				<th colspan="2">
 					<?php
 					if ($level==1) {
 						echo WT_I18N::translate('Country');
@@ -48,7 +48,7 @@ function print_level_config_table($level) {
 						echo WT_I18N::translate('Level'), " ", $level;
 					}
 					?>
-				</td>
+				</th>
 			</tr>
 			<tr>
 				<td>
@@ -88,6 +88,7 @@ function print_level_config_table($level) {
 }
 
 print_header(WT_I18N::translate('Google Maps configuration'));
+
 
 if (!WT_USER_IS_ADMIN) {
 	echo '<div>', WT_I18N::translate('Page only for Administrators'), '</div>';
@@ -191,10 +192,26 @@ if ($action=="update" && !isset($security_user)) {
 	//-->
 </script>
 
+
+<?php
+echo WT_JS_START;
+?>
+jQuery(document).ready(function() {
+jQuery("#tabs").tabs();
+});
+<?php 
+echo WT_JS_END;
+echo '<div id="tabs">',
+		'<ul>',
+			'<li><a href="#gm_basic"><span>', WT_I18N::translate('Basic'), '</span></a></li>',
+			'<li><a href="#gm_advanced"><span>', WT_I18N::translate('Advanced'), '</span></a></li>',
+		'</ul>';
+?>		
 <form method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_editconfig">
 <input type="hidden" name="action" value="update" />
 
-<table id="gm_edit_config">
+<div id="gm_basic">
+<table class="gm_edit_config">
 	<tr>
 		<th><?php echo WT_I18N::translate('Default map type'), help_link('GOOGLEMAP_MAP_TYPE','googlemap'); ?></th>
 		<td>
@@ -276,6 +293,10 @@ if ($action=="update" && !isset($security_user)) {
 			</select>
 		</td>
 	</tr>
+</table>
+</div>
+<div id="gm_advanced">
+<table class="gm_edit_config">
 	<tr>
 		<th><?php echo WT_I18N::translate('Precision'), help_link('GOOGLEMAP_PRECISION','googlemap'); ?></th>
 		<td>
@@ -354,23 +375,22 @@ if ($action=="update" && !isset($security_user)) {
 			</select>
 		</td>
 	</tr>
-	<tr>
-		<th><?php echo WT_I18N::translate('Configuration per level'); ?></th>
-		<td>
-			<?php
-				print_level_config_table(1);
-				print_level_config_table(2);
-				print_level_config_table(3);
-				print_level_config_table(4);
-				print_level_config_table(5);
-				print_level_config_table(6);
-				print_level_config_table(7);
-				print_level_config_table(8);
-				print_level_config_table(9);
-			?>
-		</td>
-	</tr>
+	<tr><th colspan="2"><?php echo WT_I18N::translate('Configuration per level'); ?></th></tr>
+	<tr><td colspan="2">
+		<table id="gm_levels">				
+		<?php
+			echo
+				'<tr><td>', print_level_config_table(1), '</td><td>', print_level_config_table(2), '</td></tr>',
+				'<tr><td>', print_level_config_table(3), '</td><td>', print_level_config_table(4), '</td></tr>',
+				'<tr><td>', print_level_config_table(5), '</td><td>', print_level_config_table(6), '</td></tr>',
+				'<tr><td>', print_level_config_table(7), '</td><td>', print_level_config_table(8), '</td></tr>',
+				'<tr><td>', print_level_config_table(9), '</td><td>&nbsp;</td></tr>';
+		?>
+		</table>
+	</td></tr>
 </table>
+</div>
+</div>
 <p>
 	<input type="submit" value="<?php echo WT_I18N::translate('Save configuration'); ?>" onclick="closeHelp();" />
 	&nbsp;&nbsp;
