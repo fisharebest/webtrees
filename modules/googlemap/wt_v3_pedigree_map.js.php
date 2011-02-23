@@ -59,7 +59,7 @@ function HomeControl(controlDiv, pm_map) {
   	controlUI.style.borderWidth = '2px';
   	controlUI.style.cursor = 'pointer';
   	controlUI.style.textAlign = 'center';
-  	controlUI.title = '<?php echo WT_I18N::translate('Click to reset the map to the original view')?>';
+  	controlUI.title = '';
   	controlDiv.appendChild(controlUI);
 
   	// Set CSS for the control interior
