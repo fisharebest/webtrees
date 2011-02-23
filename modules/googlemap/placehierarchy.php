@@ -147,19 +147,10 @@ function create_map() {
 	$parent = safe_GET('parent');
 	
 	// create the map
-	if ($level > 0) {
-		echo '<p><table class="center" style="margin-top:0px;"><tr valign="top"><td style="background:none;">', /* I18N: %s is a country or region */ WT_I18N::translate('The markers indicate places in %s', $parent[$level-1]), '</p>';
-	} else {
-		echo '<p><table class="center" style="margin-top:0px;"><tr valign="top"><td style="background:none;"></p>';
-	}
+	echo '<table class="center" style="margin-top:20px;"><tr valign="top"><td>';
 	//<!-- start of map display -->
-	echo '<br /><br />';
-	echo '<table style="margin-top:-32px;"><tr valign="top">';
-	if ($level>=1) {
-		echo '<td class="center" width="200px" style="background:none; padding-top:26px; padding-bottom:0px;">';
-	} else {
-		echo '<td class="center" width="200px" style="padding-top:6px;">';	
-	}
+	echo '<table><tr valign="top">';
+	echo '<td class="center" width="200px">';
 
 	$levelm = set_levelm($level, $parent);
 	$latlng = 
@@ -188,7 +179,7 @@ function create_map() {
 	}
 	echo '</tr></table>';
 	echo '</td>';
-	echo '<td style="margin-left:15px; padding-top:7px; float:right; ">';
+	echo '<td style="margin-left:15px; float:right; ">';
 	
 	if ($STREETVIEW) {
 	?>

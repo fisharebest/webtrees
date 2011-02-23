@@ -222,7 +222,7 @@ if ($display=="hierarchy") {
 				echo " dir=\"rtl\"";
 			}
 			echo ">\n\t\t<tr>\n\t\t";
-			echo"<br /><td class=\"list_label\" ";
+			echo"<td class=\"list_label\" ";
 			if ($ct1 > 20) {
 				echo "colspan=\"3\"";
 			} elseif ($ct1 > 4) {
