@@ -48,11 +48,11 @@ try {
 	WT_DB::exec(
 		"ALTER TABLE `##placelocation` ADD (".
 		" pl_media      VARCHAR(60)     NULL,".
-		" sv_long       VARCHAR(30)     NULL,".
-		" sv_lati       VARCHAR(30)     NULL,".
-		" sv_bearing    FLOAT           NULL,".
-		" sv_elevation  FLOAT           NULL,".
-		" sv_zoom       FLOAT           NULL".
+		" sv_long       VARCHAR(30)     0,".
+		" sv_lati       VARCHAR(30)     0,".
+		" sv_bearing    FLOAT           0,".
+		" sv_elevation  FLOAT           0,".
+		" sv_zoom       FLOAT           0".
 		")"
 	);
 } catch (PDOException $ex) {
