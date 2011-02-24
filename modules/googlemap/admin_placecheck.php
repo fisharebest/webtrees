@@ -32,8 +32,15 @@ if (!defined('WT_WEBTREES')) {
 $action   =safe_POST     ('action'                                              );
 $gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID);
 $openinnew=safe_POST_bool('openinnew'                                           );
-$state    =safe_POST     ('state',     WT_REGEX_UNSAFE,              'XYZ'     );
-$country  =safe_POST     ('country',   WT_REGEX_UNSAFE,              'XYZ'     );
+$country  =safe_POST     ('country',   WT_REGEX_UNSAFE,              ''         );
+if (!$country) {
+	// allow placelist to link directly to a specific country/state
+	$country=safe_GET    ('country',   WT_REGEX_UNSAFE,              'XYZ'      );
+}
+$state    =safe_POST     ('state',     WT_REGEX_UNSAFE,              ''         );
+if (!$state) {
+	$state=safe_GET      ('state',     WT_REGEX_UNSAFE,              'XYZ'      );
+}
 if (isset($_REQUEST['show_changes']) && $_REQUEST['show_changes']=='yes') {
 	$_POST["matching"] = 1;
 }

@@ -167,16 +167,30 @@ function create_map() {
 	echo '</td>';
 
 	if (WT_USER_IS_ADMIN) {
+
+		$placecheck_url = 'module.php?mod=googlemap&amp;mod_action=admin_placecheck';
+		if ($parent && isset($parent[0]) ) {
+			$placecheck_url .= '&amp;country='.$parent[0];
+			if (isset($parent[1])) {
+				$placecheck_url .= '&amp;state='.$parent[1];
+			}
+		}
+
+		$adminplaces_url = 'module.php?mod=googlemap&amp;mod_action=admin_places';
+		if ($latlng && isset($latlng['pl_id'])) {
+			$adminplaces_url .= '&amp;parent='.$latlng['pl_id'];
+		}
+
 	echo '</tr><tr><td>';
 		echo '<table style="width:', $GOOGLEMAP_PH_XSIZE, 'px; margin-top:0px; background:none;" >';
 		echo '<tr><td align="left" style="margin-top:0px; ">';
-	echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
+		echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
 		echo '</td>';
 		echo '<td align="center">';
-	echo '<a href="module.php?mod=googlemap&mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>';
+		echo '<a href="'.$adminplaces_url.'">', WT_I18N::translate('Edit geographic place locations'), '</a>';
 		echo '</td>';
 		echo '<td align="right">';
-	echo '<a href="module.php?mod=googlemap&mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>';
+		echo '<a href="'.$placecheck_url.'">', WT_I18N::translate('Place Check'), '</a>';
 		echo '</td></tr>';
 		echo '</table>';
 	}
