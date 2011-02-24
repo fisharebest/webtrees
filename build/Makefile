@@ -25,7 +25,7 @@ default: clean webtrees
 	# Create an updated message catalog
 	mkdir -p webtrees_tmp
 	rm -Rf webtrees_tmp/*
-	find webtrees/modules -name "*.xml" | while read file; do sed -e 's~\(WT_I18N::[^)]*[)]\)~<?php echo \1; ?>~' $$file > webtrees_tmp/$$(echo $$file.php | cut -c 10- | tr / _); done
+	find webtrees/modules -name "*.xml" | while read file; do sed -e 's~\(WT_I18N::[^)]*[)]\)~<?php echo \1; ?>~g' $$file > webtrees_tmp/$$(echo $$file.php | cut -c 10- | tr / _); done
 	find webtrees webtrees_tmp -name "*.php" | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1
 	rm -Rf webtrees_tmp webtrees
 
