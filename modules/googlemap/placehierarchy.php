@@ -591,12 +591,11 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	//		echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
 		} 
 		//create markers
-		$placeidlist=array();
-	//	if ($numfound==0 && $level>0) {
+		if ($numfound==0 && $level>0) {
 			if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
 				// show the current place on the map
 
-				$place = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long, pl_zoom as zoom, pl_icon as icon FROM ##placelocation WHERE pl_id=?")
+				$place = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM ##placelocation WHERE pl_id=?")
 				->execute(array($levelm))
 				->fetch(PDO::FETCH_ASSOC);
 
@@ -613,24 +612,24 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 						$thisplacelevels = '';
 					}
 
-					$place['long'] = $place['pl_long'];  // mysql won't allow us to name this "long" in the select statement
 					print_gm_markers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels, $thisplacelevels);
 				}
 			}
-	//	} else {
-			// sub-places exist for this place, display them
-			foreach ($place_names as $placename) {
-				$thisloc = $parent;
-				$thisloc[] = $placename;
-				$this_levelm = set_levelm($level+1, $thisloc);
-				if ($this_levelm) $placeidlist[] = $this_levelm;
-			}
-	//	}
+		}
+
+		// display any sub-places
+		$placeidlist=array();
+		foreach ($place_names as $placename) {
+			$thisloc = $parent;
+			$thisloc[] = $placename;
+			$this_levelm = set_levelm($level+1, $thisloc);
+			if ($this_levelm) $placeidlist[] = $this_levelm;
+		}
 
 		if ($placeidlist) {
 			// flip the array (thus removing duplicates)
 			$placeidlist=array_flip($placeidlist);
-			// remove entry for parent location, plotted above
+			// remove entry for parent location
 			unset($placeidlist[$levelm]);
 		}
 		if ($placeidlist) {
@@ -638,12 +637,11 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			$placeidlist=array_keys($placeidlist);
 			// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
 			$placelist =
-				WT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN ('.implode(',', array_fill(0, count($placeidlist), '?')).')')
+				WT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN ('.implode(',', array_fill(0, count($placeidlist), '?')).')')
 				->execute($placeidlist)
 				->fetchAll(PDO::FETCH_ASSOC);
 
 			foreach ($placelist as $place) {
-				$place['long'] = $place['pl_long'];  // mysql won't allow us to name this "long" in the select statement
 				print_gm_markers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
 			}
 		}
