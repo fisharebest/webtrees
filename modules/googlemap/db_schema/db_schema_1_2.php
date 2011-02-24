@@ -52,7 +52,7 @@ try {
 		" sv_lati       VARCHAR(30)     0,".
 		" sv_bearing    FLOAT           0,".
 		" sv_elevation  FLOAT           0,".
-		" sv_zoom       FLOAT           0".
+		" sv_zoom       FLOAT           1".
 		")"
 	);
 } catch (PDOException $ex) {
