@@ -209,6 +209,7 @@ table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 #file-options td, #privacy td, #config-media td, #access-options td, #layout-options td, #hide-show td, #edit-options td {border-bottom:1px solid LightGrey;}
 #file-options th, #privacy th, #config-media th, #access-options th, #layout-options th, #hide-show th, #edit-options th {border-bottom:2px solid LightGrey; color:green; font-weight:bold; text-align:left;}
 #relatives {margin-left:120px;}
+#NEW_CALENDAR_FORMAT1 {margin:0 20px;}
 
 /* USER LIST */
 table#list  {width:100%}

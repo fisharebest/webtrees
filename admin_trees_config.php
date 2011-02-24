@@ -474,7 +474,7 @@ echo WT_JS_START;?>
 							}
 							?>
 						</select>
-						<br/>
+
 						<select id="NEW_CALENDAR_FORMAT1" name="NEW_CALENDAR_FORMAT1">
 							<?php
 							foreach (array(
