@@ -582,16 +582,18 @@ case 'linkfamaction':
 			} else {
 				$gedrec .= "1 FAMS @$famid@";
 			}
-			replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN);
-			$success = true;
+			if (replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN)) {
+				$success=true;
+			}
 		}
 
 		//-- if it is adding a new child to a family
 		if ($famtag=="CHIL") {
 			if (strpos($famrec, "1 $famtag @$pid@")===false) {
 				$famrec = trim($famrec) . "\n1 $famtag @$pid@\n";
-				replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
-				$success = true;
+				if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
+					$success=true;
+				}
 			}
 		} else {
 			//-- if it is adding a husband or wife
@@ -604,22 +606,25 @@ case 'linkfamaction':
 				if ($spid!=$pid) {
 					//-- change a of the old ids to the new id
 					$famrec = str_replace("1 $famtag @$spid@", "1 $famtag @$pid@", $famrec);
-					replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
-					$success = true;
+					if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
+						$success=true;
+					}
 					//-- remove the FAMS reference from the old husb/wife
 					if (!empty($spid)) {
 						$srec = find_gedcom_record($spid, WT_GED_ID, true);
 						if ($srec) {
 							$srec = str_replace("1 $itag @$famid@", "", $srec);
-							replace_gedrec($spid, WT_GED_ID, $srec, $update_CHAN);
-							$success = true;
+							if (replace_gedrec($spid, WT_GED_ID, $srec, $update_CHAN)) {
+								$success=true;
+							}
 						}
 					}
 				}
 			} else {
 				$famrec .= "\n1 $famtag @$pid@\n";
-				replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
-				$success = true;
+				if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
+					$success=true;
+				}
 			}
 		}
 	} else {
@@ -1131,8 +1136,9 @@ case 'addrepoaction':
 case 'updateraw':
 	if (isset($_POST['newgedrec1']) && isset($_POST['newgedrec2'])) {
 		$newgedrec = $_POST['newgedrec1']."\n".$_POST['newgedrec2'];
-		replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
-		$success = true;
+		if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
+			$success=true;
+		}
 	}
 	break;
 
@@ -1340,9 +1346,9 @@ case 'update':
 			}
 
 		}
-
-		replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN);
-		$success = true;
+		if (replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN)) {
+			$success=true;
+		}
 	} // end foreach $cens_pids  -------------
 	break;
 
@@ -1420,9 +1426,10 @@ case 'addchildaction':
 															"1 CHIL @".$child->getXref()."@\n1 CHIL @$xref@",
 															$gedrec);
 			}
-			replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN);
+			if (replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN)) {
+				$success=true;
+			}
 		}
-		$success = true;
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -1496,19 +1503,25 @@ case 'addspouseaction':
 				$famrec = updateRest($famrec);
 			}
 
-			replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
+			if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
+				$success=true;
+			}
 		}
 	}
 	if ((!empty($famid))&&($famid!="new")) {
 		$gedrec = $spouserec;
 		$gedrec = trim($gedrec) . "\n1 FAMS @$famid@\n";
-		replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN);
+		if (replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN)) {
+			$success=true;
+		}
 	}
 	if (!empty($pid)) {
 		$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 		if ($indirec) {
 			$indirec = trim($indirec) . "\n1 FAMS @$famid@\n";
-			replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
+			if (replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN)) {
+				$success=true;
+			}
 		}
 	}
 	break;
@@ -1552,16 +1565,20 @@ case 'linkspouseaction':
 			}
 			if ((!empty($famid))&&($famid!="new")) {
 				$gedrec .= "\n1 FAMS @$famid@\n";
-				replace_gedrec($spid, WT_GED_ID, $gedrec, $update_CHAN);
+				if (replace_gedrec($spid, WT_GED_ID, $gedrec, $update_CHAN)) {
+					$success=true;
+				}
+				
 			}
 			if (!empty($pid)) {
 				$indirec = find_gedcom_record($pid, WT_GED_ID, true);
 				if (!empty($indirec)) {
 					$indirec = trim($indirec) . "\n1 FAMS @$famid@\n";
-					replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
+					if (replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN)) {
+						$success=true;
+					}
 				}
 			}
-			$success = true;
 		}
 	}
 	break;
@@ -1620,26 +1637,27 @@ case 'addnewparentaction':
 		$famrec = find_gedcom_record($famid, WT_GED_ID, true);
 		if (!empty($famrec)) {
 			$famrec = trim($famrec) . "\n1 $famtag @$xref@\n";
-
 			if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 				foreach ($matches[1] as $match) {
 					$famrec.=addNewFact($match);
 				}
 			}
-
 			if (safe_POST_bool('SOUR_FAM')) {
 				$famrec = handle_updates($famrec);
 			} else {
 				$famrec = updateRest($famrec);
 			}
-
-			replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN);
+			if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
+				$success=true;
+			}
 		}
 	}
 	if ((!empty($famid))&&($famid!="new")) {
 			$gedrec = $spouserec;
 			$gedrec = trim($gedrec) . "\n1 FAMS @$famid@\n";
-			replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN);
+			if (replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN)) {
+				$success=true;
+			}
 	}
 	if (!empty($pid)) {
 		$indirec = find_gedcom_record($pid, WT_GED_ID, true);
@@ -1647,7 +1665,9 @@ case 'addnewparentaction':
 		if ($indirec) {
 			if (strpos($indirec, "1 FAMC @$famid@")===false) {
 				$indirec = trim($indirec) . "\n1 FAMC @$famid@\n";
-				replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
+				if (replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN)) {
+					$success=true;
+				}
 			}
 		}
 	}
@@ -1683,7 +1703,9 @@ case 'addopfchildaction':
 	$indirec=find_gedcom_record($pid, WT_GED_ID, true);
 	if ($indirec) {
 		$indirec.="\n1 FAMS @{$newfamxref}@";
-		replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN);
+		if (replace_gedrec($pid, WT_GED_ID, $indirec, $update_CHAN)) {
+			$success=true;
+		}
 		append_gedrec($gedrec, WT_GED_ID);
 		append_gedrec($famrec, WT_GED_ID);
 		echo "<br /><br />", WT_I18N::translate('Update successful');
@@ -1744,9 +1766,10 @@ if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 					}
 				}
 			}
-			replace_gedrec($xref, WT_GED_ID, $newrec, $update_CHAN);
+			if (replace_gedrec($xref, WT_GED_ID, $newrec, $update_CHAN)) {
+				$success=true;
+			}
 		}
-
 		delete_gedrec($pid, WT_GED_ID);
 		$success=true;
 	}
@@ -1803,7 +1826,7 @@ case 'copy':
 //------------------------------------------------------------------------------
 case 'paste':
 	$gedrec .= "\n".$_SESSION["clipboard"][$fact]["factrec"]."\n";
-	if (replace_gedrec($pid, WT_GED_ID, $gedrec, !$NO_UPDATE_CHAN)) {
+	if (replace_gedrec($pid, WT_GED_ID, $gedrec, $NO_UPDATE_CHAN)) {
 		$success=true;
 	}
 	break;
@@ -1846,7 +1869,9 @@ case 'reorder_media_update': // Update sort using popup
 	foreach ($order1 as $m_media=>$num) {
 		$newgedrec .= "1 _WT_OBJE_SORT @".$m_media."@\n";
 	}
-	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
+		$success=true;
+	}
 	echo "<br />", WT_I18N::translate('Update successful'), "<br /><br />";
 
 	if ($currtab=="album") {
@@ -1869,7 +1894,9 @@ case 'al_reset_media_update': // Reset sort using Album Page
 			$newgedrec .= $line."\n";
 		}
 	}
-	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
+		$success=true;
+	}
 	echo "<br />", WT_I18N::translate('Update successful'), "<br /><br />";
 	if ($currtab=="album") {
 		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
@@ -1904,7 +1931,9 @@ case 'al_reorder_media_update': // Update sort using Album Page
 	foreach ($order2 as $m_media=>$num) {
 		$newgedrec .= "1 _WT_OBJE_SORT @".$m_media."@\n";
 	}
-	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
+		$success=true;
+	}
 	if ($currtab=="album") {
 		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
 	} else {
@@ -2373,7 +2402,9 @@ case 'reorder_fams_update':
 	foreach ($order as $famid=>$num) {
 		$newgedrec .= "1 FAMS @".$famid."@\n";
 	}
-	replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN);
+	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
+		$success=true;
+	}
 	echo "<br /><br />", WT_I18N::translate('Update successful');
 	break;
 }
