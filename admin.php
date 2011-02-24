@@ -67,7 +67,7 @@ echo '<div id="x">';// div x - manages the accordion effect
 
 echo '<h2>', WT_WEBTREES, ' ', WT_VERSION, '</h2>',
 	'<div id="about">',
-	'<p>', WT_I18N::translate('Welcome to the <b>webtrees</b> administration page. This page provides access to all the site and family tree configuration settings as well as providing some useful information blocks.'), '</p>',
+	'<p>', WT_I18N::translate('These pages provide access to all the configuration settings and management tools for this <b>webtrees</b> site.'), '</p>',
 	'<p>',  /* I18N: %s is a URL/link to the project website */ WT_I18N::translate('Support and documentation can be found at %s.', ' <a class="current" href="http://webtrees.net/">webtrees.net</a>'), '</p>',
 	'</div>';
 
