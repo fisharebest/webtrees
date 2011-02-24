@@ -221,7 +221,7 @@ case 'load1row':
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-auto_accept', get_user_setting($user_id, 'auto_accept')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Theme'), '</dt>';
-	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-canedit', array_flip(get_theme_names()), WT_I18N::translate('&lt;default theme&gt;'), get_user_setting($user_id, 'theme')), '</dd>';
+	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', array_flip(get_theme_names()), WT_I18N::translate('&lt;default theme&gt;'), get_user_setting($user_id, 'theme')), '</dd>';
 
 	echo '<dt>', WT_I18N::translate('Default Tab to show on Individual Information page'), '</dt>';
 	echo '<dd>', edit_field_default_tab_inline('user_setting-'.$user_id.'-defaulttab', get_user_setting($user_id, 'defaulttab', 'personal_facts')), '</dd>';
