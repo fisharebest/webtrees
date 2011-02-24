@@ -44,20 +44,20 @@ exit;
 define('WT_GM_DB_SCHEMA_1_2', '');
 
 // Create all of the tables needed for this module
-try {
+//try {
 	WT_DB::exec(
 		"ALTER TABLE `##placelocation` ADD (".
 		" pl_media      VARCHAR(60)     NULL,".
-		" sv_long       VARCHAR(30)     0,".
-		" sv_lati       VARCHAR(30)     0,".
-		" sv_bearing    FLOAT           0,".
-		" sv_elevation  FLOAT           0,".
-		" sv_zoom       FLOAT           1".
+		" sv_long       FLOAT           NOT NULL DEFAULT 0,".
+		" sv_lati       FLOAT           NOT NULL DEFAULT 0,".
+		" sv_bearing    FLOAT           NOT NULL DEFAULT 0,".
+		" sv_elevation  FLOAT           NOT NULL DEFAULT 0,".
+		" sv_zoom       FLOAT           NOT NULL DEFAULT 1".
 		")"
 	);
-} catch (PDOException $ex) {
+//} catch (PDOException $ex) {
 	// Already done this?
-}
+//}
 
 // Update the version to indicate success
 set_site_setting($schema_name, $next_version);
