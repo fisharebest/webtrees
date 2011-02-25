@@ -114,7 +114,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$showmsg=preg_replace("/(\w)\/(\w)/","\$1/<span style=\"font-size:1px;\"> </span>\$2",PrintReady($message["subject"]));
 				$showmsg=str_replace("@","@<span style=\"font-size:1px;\"> </span>",$showmsg);
 				$content .= "<td class=\"list_value_wrap\"><a href=\"javascript:;\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"".WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\" /> <b>".$showmsg."</b></a></td>";
-				$content .= "<td class=\"list_value_wrap\">".$message["created"]."</td>";
+				$content .= "<td class=\"list_value_wrap\">".format_timestamp($message['created'])."</td>";
 				$content .= "<td class=\"list_value_wrap\">";
 				$user_id=get_user_id($message["from"]);
 				if ($user_id) {

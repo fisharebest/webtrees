@@ -456,7 +456,7 @@ function deleteMessage($message_id) {
 //-- Return an array of a users messages
 function getUserMessages($user_id) {
 	$rows=
-		WT_DB::prepare("SELECT message_id, sender, subject, body, created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
+		WT_DB::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
 		->execute(array($user_id))
 		->fetchAll();
 
