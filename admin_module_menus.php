@@ -31,63 +31,11 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-// Modules may have been added or updated to no longer provide a particular component
+// New modules may have been added...
 $installed_modules=WT_Module::getInstalledModules();
 foreach ($installed_modules as $module_name=>$module) {
 	// New module
 	WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name) VALUES (?)")->execute(array($module_name));
-
-	// Removed component
-	if (!$module instanceof WT_Module_Block) {
-		WT_DB::prepare(
-			"DELETE FROM `##module_privacy` WHERE module_name=? AND component='block'"
-		)->execute(array($module_name));
-		WT_DB::prepare(
-			"DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE module_name=?"
-		)->execute(array($module_name));
-		WT_DB::prepare(
-			"DELETE FROM `##block` WHERE module_name=?"
-		)->execute(array($module_name));
-	}
-	if (!$module instanceof WT_Module_Chart) {
-		WT_DB::prepare(
-			"DELETE FROM `##module_privacy` WHERE module_name=? AND component='chart'"
-		)->execute(array($module_name));
-	}
-	if (!$module instanceof WT_Module_Menu) {
-		WT_DB::prepare(
-			"DELETE FROM `##module_privacy` WHERE module_name=? AND component='menu'"
-		)->execute(array($module_name));
-		WT_DB::prepare(
-			"UPDATE `##module` SET menu_order=NULL WHERE module_name=?"
-		)->execute(array($module_name));
-	}
-	if (!$module instanceof WT_Module_Report) {
-		WT_DB::prepare(
-			"DELETE FROM `##module_privacy` WHERE module_name=? AND component='report'"
-		)->execute(array($module_name));
-	}
-	if (!$module instanceof WT_Module_Sidebar) {
-		WT_DB::prepare(
-			"DELETE FROM `##module_privacy` WHERE module_name=? AND component='sidebar'"
-		)->execute(array($module_name));
-		WT_DB::prepare(
-			"UPDATE `##module` SET sidebar_order=NULL WHERE module_name=?"
-		)->execute(array($module_name));
-	}
-	if (!$module instanceof WT_Module_Tab) {
-		WT_DB::prepare(
-			"DELETE FROM `##module_privacy` WHERE module_name=? AND component='tab'"
-		)->execute(array($module_name));
-		WT_DB::prepare(
-			"UPDATE `##module` SET tab_order=NULL WHERE module_name=?"
-		)->execute(array($module_name));
-	}
-	if (!$module instanceof WT_Module_Theme) {
-		WT_DB::prepare(
-			"DELETE FROM `##module_privacy` WHERE module_name=? AND component='theme'"
-		)->execute(array($module_name));
-	}
 }
 
 // Disable modules that no longer exist.  Don't delete the config.  The module
