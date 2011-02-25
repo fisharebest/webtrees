@@ -2409,7 +2409,7 @@ function get_gedcom_blocks($gedcom_id) {
 			}
 		}
 		if ($block_found) {
-			return get_gedcom_blocks($user_id);
+			return get_gedcom_blocks($gedcom_id);
 		} else {
 			return $blocks;
 		}
