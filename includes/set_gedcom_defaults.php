@@ -83,7 +83,6 @@ set_gedcom_setting($ged_id, 'MEDIA_FIREWALL_ROOTDIR',       get_site_setting('IN
 set_gedcom_setting($ged_id, 'MEDIA_FIREWALL_THUMBS',        false);
 set_gedcom_setting($ged_id, 'MEDIA_ID_PREFIX',              'M');
 set_gedcom_setting($ged_id, 'META_DESCRIPTION',             '');
-set_gedcom_setting($ged_id, 'META_ROBOTS',                  'index,follow');
 set_gedcom_setting($ged_id, 'META_TITLE',                   WT_WEBTREES);
 set_gedcom_setting($ged_id, 'MULTI_MEDIA',                  true);
 set_gedcom_setting($ged_id, 'NOTE_FACTS_ADD',               'SOUR');

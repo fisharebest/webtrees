@@ -1593,11 +1593,6 @@ case 'META_DESCRIPTION':
 	$text=WT_I18N::translate('The value to place in the Description meta tag in the HTML page header.  Leave this field empty to use the title of the currently active database.');
 	break;
 
-case 'META_ROBOTS':
-	$title=WT_I18N::translate('Robots META tag');
-	$text=WT_I18N::translate('The value to place in the Robots meta tag in the HTML page header.  Some robots or web crawlers ignore this value.');
-	break;
-
 case 'META_TITLE':
 	$title=WT_I18N::translate('Add to TITLE header tag');
 	$text=WT_I18N::translate('This text will be appended to each page title.  It will be shown in the browser\'s title bar, bookmarks, etc.');
