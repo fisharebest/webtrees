@@ -136,7 +136,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach ($yahrzeits as $yahrzeit) {
 				if ($yahrzeit['jd']>=$startjd && $yahrzeit['jd']<$startjd+$days) {
 					++$count;
-					$ind=person::GetInstance($yahrzeit['id']);
+					$ind=WT_person::GetInstance($yahrzeit['id']);
 					$content .= "<tr>";
 					// Record name(s)
 					$name=$ind->getFullName();
