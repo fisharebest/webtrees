@@ -41,7 +41,7 @@ define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net');
 define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees');
 
 // Location of our modules and themes.  These are used as URLs and directory paths.
-define('WT_MODULES_DIR', 'modules/');
+define('WT_MODULES_DIR', 'modules_v2/');
 define('WT_THEMES_DIR',  'themes/' );
 
 // Enable debugging output?
