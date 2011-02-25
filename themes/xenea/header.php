@@ -71,9 +71,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 	if (!empty($META_DESCRIPTION)) {
 		echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
 	}
-	if (!empty($META_ROBOTS)) {
-		echo '<meta name="robots" content="', htmlspecialchars($META_ROBOTS), '" />';
-	}
+	echo '<meta name="robots" content="', $META_ROBOTS, '" />';
 	if (!empty($META_GENERATOR)) {
 		echo '<meta name="generator" content="', $META_GENERATOR, '" />';
 	}
