@@ -137,7 +137,7 @@ function set_levelm($level, $parent) {
 	return $levelm;
 }
 
-function create_map() {
+function create_map($placelevels) {
 	$level = safe_GET('level');
 	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $TEXT_DIRECTION, $levelm;
 	
@@ -191,7 +191,19 @@ function create_map() {
 		echo '</td>';
 		echo '<td align="right">';
 		echo '<a href="'.$placecheck_url.'">', WT_I18N::translate('Place Check'), '</a>';
-		echo '</td></tr>';
+		echo '</td>';
+		if (array_key_exists('batch_update', WT_Module::getActiveModules())) {
+			$placelevels=preg_replace('/, '.WT_I18N::translate('unknown').'/', ', ', $placelevels); // replace ", unknown" with ", " 
+			$placelevels=substr($placelevels, 2); // remove the leading ", "
+			if ($placelevels) {
+				$batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=exact&amp;GEDCOM='.WT_GEDCOM.'&amp;search='.urlencode('PLAC '.$placelevels).'&amp;replace='.urlencode('PLAC '.$placelevels); // exact match
+				// $batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=regex&amp;GEDCOM='.WT_GEDCOM.'&amp;search='.urlencode('PLAC (.*)'.$placelevels);  // regex
+				echo '<td align="right">';
+				echo '<a href="'.$batchupdate_url.'">', WT_I18N::translate('Batch Update'), '</a>';
+				echo '</td>';
+			}
+		}
+		echo '</tr>';
 		echo '</table>';
 	}
 	echo '</tr></table>';

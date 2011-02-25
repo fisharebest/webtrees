@@ -184,16 +184,6 @@ if ($display=="hierarchy") {
 	}
 	echo '</a>', help_link('ppp_levels');
 
-	if ($use_googlemap) {
-		create_map();
-	}
-	else {
-		echo "<br /><br />";
-		if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
-			// show clickable map if found
-			places_assistant_WT_Module::display_map($level, $parent);
-		}
-	}
 
 	//-- create a string to hold the variable links and place names
 	$linklevels="";
@@ -211,6 +201,18 @@ if ($display=="hierarchy") {
 			}
 		}
 	}
+
+	if ($use_googlemap) {
+		create_map($placelevels);
+	}
+	else {
+		echo "<br /><br />";
+		if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
+			// show clickable map if found
+			places_assistant_WT_Module::display_map($level, $parent);
+		}
+	}
+
 	$i=0;
 	$ct1=count($placelist);
 
