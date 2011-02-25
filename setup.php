@@ -163,7 +163,7 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 // Step one - choose language and confirm server configuration
 ////////////////////////////////////////////////////////////////////////////////
 
-if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
+if (empty($_POST['change_lang'])) {
 	echo
 		'<p>', WT_I18N::translate('Change language'), ' ',
 		edit_field_language('change_lang', WT_LOCALE, 'onChange="parent.location=\''.WT_SCRIPT_NAME.'?lang=\'+this.value;">'),
@@ -193,7 +193,8 @@ if (empty($_POST['maxcpu']) || empty($_POST['maxmem'])) {
 	// Settings
 	foreach (array(
 		'file_uploads'=>/* I18N: a program feature */ WT_I18N::translate('file upload capability'),
-		'date.timezone'=>/* I18N: a program feature */ WT_I18N::translate('the correct date and time in logs and messages'),
+		// Do not include this check.  The consequences are minimal, but many users are worried by the message.
+		//'date.timezone'=>/* I18N: a program feature */ WT_I18N::translate('the correct date and time in logs and messages'),
 	) as $setting=>$features) {
 		if (!ini_get($setting)) {
 			echo '<p class="bad">', WT_I18N::translate('PHP setting "%1$s" is disabled. Without it, the following features will not work: %2$s.  Please ask your server\'s administrator to enable it.', $setting, $features), '</p>';
