@@ -220,7 +220,7 @@ abstract class WT_Module {
 	final static public function getInstalledModules() {
 		static $modules=null;
 		if ($modules===null) {
-			$dir=opendir(WT_ROOT.'modules');
+			$dir=opendir(WT_ROOT.WT_MODULES_DIR);
 			while (($file=readdir($dir))!==false) {
 				if (preg_match('/^[a-zA-Z0-9_]+$/', $file) && file_exists(WT_ROOT.WT_MODULES_DIR.$file.'/module.php')) {
 					require_once WT_ROOT.WT_MODULES_DIR.$file.'/module.php';
