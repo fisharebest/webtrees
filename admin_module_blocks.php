@@ -90,21 +90,13 @@ foreach ($installed_modules as $module_name=>$module) {
 	}
 }
 
-// Delete config for modules that no longer exist
-$module_names=WT_DB::prepare("SELECT module_name FROM `##module`")->fetchOneColumn();
+// Disable modules that no longer exist.  Don't delete the config.  The module
+// may have only been removed temporarily, e.g. during an upgrade / migration
+$module_names=WT_DB::prepare("SELECT module_name FROM `##module` WHERE status='enabled'")->fetchOneColumn();
 foreach ($module_names as $module_name) {
 	if (!array_key_exists($module_name, $installed_modules)) {
 		WT_DB::prepare(
-			"DELETE FROM `##module_privacy` WHERE module_name=?"
-		)->execute(array($module_name));
-		WT_DB::prepare(
-			"DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE module_name=?"
-		)->execute(array($module_name));
-		WT_DB::prepare(
-			"DELETE FROM `##block` WHERE module_name=?"
-		)->execute(array($module_name));
-		WT_DB::prepare(
-			"DELETE FROM `##module` WHERE module_name=?"
+			"UPDATE `##module` SET status='disabled' WHERE module_name=?"
 		)->execute(array($module_name));
 	}
 }
