@@ -99,7 +99,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
 			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">"
 			."<img class=\"adminicon\" src=\"{$WT_IMAGES['admin']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure').'" /></a>';
-			$title .= help_link('index_htmlplus');
 		}
 		$title.=$title_tmp;
 
@@ -274,13 +273,12 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		// title
 		echo '<tr><td class="descriptionbox wrap width33">',
 			translate_fact('TITL'),
-			help_link('index_htmlplus_title'),
 			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', htmlspecialchars($title), '" /></td></tr>';
 
 		// templates
 		echo '<tr><td class="descriptionbox wrap width33">',
 			WT_I18N::translate('Templates'),
-			help_link('index_htmlplus_template'),
+			help_link('block_html_template', $this->getName()),
 			'</td><td class="optionbox">'
 		;
 		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
@@ -308,7 +306,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($gedcom == '__default__') {$sel_default = ' selected="selected"';} else {$sel_default = '';}
 			echo '<tr><td class="descriptionbox wrap width33">',
 				WT_I18N::translate('Family tree'),
-				help_link('index_htmlplus_gedcom'),
 				'</td><td class="optionbox">',
 				'<select name="gedcom">',
 				'<option value="__current__"', $sel_current, '>', WT_I18N::translate('Current'), '</option>',
@@ -323,7 +320,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		// html
 		echo '<tr><td class="descriptionbox wrap width33">',
 			WT_I18N::translate('Content'),
-			help_link('index_htmlplus_content'),
+			help_link('block_html_content', $this->getName()),
 			'<br /><br /></td>',
 			'<td class="optionbox">';
 		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {

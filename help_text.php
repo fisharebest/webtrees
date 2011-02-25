@@ -2493,31 +2493,6 @@ case 'index_gedcom_news':
 	$text=WT_I18N::translate('The News block is like a bulletin board for this GEDCOM.  The site administrator can place important announcements or interesting news messages here.<br /><br />If you have something interesting to display, please contact the site administrator;  he can put your message on this bulletin board.');
 	break;
 
-case 'index_htmlplus_content':
-	$title=WT_I18N::translate('HTML content');
-	$text=WT_I18N::translate('As well as using the toolbar to apply HTML formatting, you can insert database fields which are updated automatically.  These special fields are marked with <b>#</b> characters.  For example <b>#totalFamilies#</b> will be replaced with the actual number of families in the database.  Advanced users may wish to apply CSS classes to their text, so that the formatting matches the currently selected theme.');
-	break;
-
-case 'index_htmlplus_gedcom':
-	$title=WT_I18N::translate('Advanced HTML GEDCOM');
-	$text=WT_I18N::translate('Select the database to which the keywords apply.<br /><br />Your site supports several databases.  Keywords such as <b>&#35;totalFamilies&#35;</b> can only refer to one database.  You can identify the database that is to be consulted for all such keywords.  Each Advanced HTML block can only access one database.');
-	break;
-
-case 'index_htmlplus':
-	$title=WT_I18N::translate('Advanced HTML block');
-	$text=WT_I18N::translate('This block lets the administrator add information to My Page or the Home Page.  Its purpose is similar to the HTML, GEDCOM News, and GEDCOM Statistics blocks, but the administrator has more control over its appearance.');
-	break;
-
-case 'index_htmlplus_template':
-	$title=WT_I18N::translate('Advanced HTML template');
-	$text=WT_I18N::translate('To assist you in getting started with this block, we have created several standard templates.  When you select one of these templates, the text area will contain a copy that you can then alter to suit your site\'s requirements.');
-	break;
-
-case 'index_htmlplus_title':
-	$title=WT_I18N::translate('Advanced HTML title');
-	$text=WT_I18N::translate('This text should be blank or very brief.  When blank, the Advanced HTML block will show on the Index or Portal page as a plain block, just like the HTML block does.  When there is text, the Advanced HTML block will show like all the other blocks, complete with a block title bar containing the text you enter here.');
-	break;
-
 case 'index_login':
 	$title=WT_I18N::translate('Login block');
 	$text=WT_I18N::translate('You can login on almost every page of this program. You will usually do so on the first page, since you can only access privileged information when you are logged in.<br /><br />You can login by typing your <b>username</b> and <b>password</b> and then clicking the Login button.');
