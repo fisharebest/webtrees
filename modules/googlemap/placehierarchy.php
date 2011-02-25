@@ -246,10 +246,20 @@ function create_map() {
 				$sv_pitch	= $latlng['sv_elevation'];	// StreetView Point of View Elevation (+90 to -90 degrees (+=down, -=up)
 				$sv_zoom	= $latlng['sv_zoom'];		// StreetView Point of View Zoom (0, 1, 2 or 3)
 				
-				// If Streetview coordinates are stored, bring up the regular Streetview -------
-				if ($latlng['sv_lati']==null) {
-						$sv_lat = $pl_lati;	// Place Latitude
-						$sv_lng = $pl_long;	// Place Longitude
+				// Check if Street View Lati/Long are the default of 0 or null, if so use regular Place Lati/Long to set an initial location for the panda ------------
+				if (($latlng['sv_lati']==null && $latlng['sv_long']==null) || ($latlng['sv_lati']==0 && $latlng['sv_long']==0)) {
+						$sv_lat = $pl_lati;
+						$sv_lng = $pl_long;
+				}
+				// Set Street View parameters to numeric value if NULL (avoids problem with Google Street View Pane not rendering)
+				if ($sv_dir==null) {
+					$sv_dir=0;
+				}
+				if ($sv_pitch==null) {
+					$sv_pitch=0;
+				}				
+				if ($sv_zoom==null) {
+					$sv_zoom=1;
 				}
 				
 				$_map = WT_I18N::translate('Google Maps');
