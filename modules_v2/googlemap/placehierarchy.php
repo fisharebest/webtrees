@@ -167,7 +167,6 @@ function create_map($placelevels) {
 	echo '</td>';
 
 	if (WT_USER_IS_ADMIN) {
-
 		$placecheck_url = 'module.php?mod=googlemap&amp;mod_action=admin_placecheck';
 		if ($parent && isset($parent[0]) ) {
 			$placecheck_url .= '&amp;country='.$parent[0];
@@ -175,38 +174,27 @@ function create_map($placelevels) {
 				$placecheck_url .= '&amp;state='.$parent[1];
 			}
 		}
-
 		$adminplaces_url = 'module.php?mod=googlemap&amp;mod_action=admin_places';
 		if ($latlng && isset($latlng['pl_id'])) {
 			$adminplaces_url .= '&amp;parent='.$latlng['pl_id'];
 		}
-
-	echo '</tr><tr><td>';
-		echo '<table style="width:', $GOOGLEMAP_PH_XSIZE, 'px; margin-top:0px; background:none;" >';
-		echo '<tr><td align="left" style="margin-top:0px; ">';
+		echo '</tr><tr><td>';
 		echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
-		echo '</td>';
-		echo '<td align="center">';
+		echo '&nbsp;|&nbsp;';
 		echo '<a href="'.$adminplaces_url.'">', WT_I18N::translate('Edit geographic place locations'), '</a>';
-		echo '</td>';
-		echo '<td align="right">';
+		echo '&nbsp;|&nbsp;';
 		echo '<a href="'.$placecheck_url.'">', WT_I18N::translate('Place Check'), '</a>';
-		echo '</td>';
 		if (array_key_exists('batch_update', WT_Module::getActiveModules())) {
 			$placelevels=preg_replace('/, '.WT_I18N::translate('unknown').'/', ', ', $placelevels); // replace ", unknown" with ", " 
 			$placelevels=substr($placelevels, 2); // remove the leading ", "
 			if ($placelevels) {
-				$batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=exact&amp;GEDCOM='.WT_GEDCOM.'&amp;search='.urlencode('PLAC '.$placelevels).'&amp;replace='.urlencode('PLAC '.$placelevels); // exact match
-				// $batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=regex&amp;GEDCOM='.WT_GEDCOM.'&amp;search='.urlencode('PLAC (.*)'.$placelevels);  // regex
-				echo '<td align="right">';
+				$batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=exact&amp;GEDCOM='.WT_GEDCOM.'&amp;search='.urlencode($placelevels); // exact match
+				echo '&nbsp;|&nbsp;';
 				echo '<a href="'.$batchupdate_url.'">', WT_I18N::translate('Batch Update'), '</a>';
-				echo '</td>';
 			}
 		}
-		echo '</tr>';
-		echo '</table>';
 	}
-	echo '</tr></table>';
+	echo '</td></tr></table>';
 	echo '</td>';
 	echo '<td style="margin-left:15px; float:right; ">';
 	
