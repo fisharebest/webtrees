@@ -163,7 +163,7 @@ echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 // Step one - choose language and confirm server configuration
 ////////////////////////////////////////////////////////////////////////////////
 
-if (empty($_POST['change_lang'])) {
+if (empty($_POST['lang'])) {
 	echo
 		'<p>', WT_I18N::translate('Change language'), ' ',
 		edit_field_language('change_lang', WT_LOCALE, 'onChange="parent.location=\''.WT_SCRIPT_NAME.'?lang=\'+this.value;">'),
