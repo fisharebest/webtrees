@@ -123,7 +123,7 @@ foreach ($varnames as $indexval => $name) {
 $reports=array();
 foreach (WT_Module::getActiveReports() as $rep) {
 	foreach ($rep->getReportMenus() as $menu) {
-		if (preg_match('/report=(modules\/[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->link, $match)) {
+		if (preg_match('/report=('.preg_quote(WT_MODULES_DIR, '/').'[a-z0-9_]+\/[a-z0-9_]+\.xml)/', $menu->link, $match)) {
 			$reports[$match[1]]=$menu->label;
 		}
 	}
