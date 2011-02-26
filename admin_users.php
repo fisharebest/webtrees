@@ -747,7 +747,18 @@ default:
 					/* verified          */ { sClass:"center" },
 					/* approved          */ { sClass:"center" },
 					/* delete            */ { bSortable:false }
-				]
+				],
+				"fnDrawCallback": function() {
+					// Our JSON responses include JavaScript as well as HTML.  This does not get
+					// executed (except for some versions of Firefox?).  So, extract it, and add
+					// it to its own DOM element
+					jQuery('#list script').each(function() {
+						var script=document.createElement('script');
+						script.type='text/javascript';
+						jQuery(script).text(jQuery(this).text());
+						document.body.appendChild(script);
+					}).remove();
+				}
 			});
 			
 			/* When clicking on the +/- icon, we expand/collapse the details block */
