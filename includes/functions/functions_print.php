@@ -552,6 +552,11 @@ function print_simple_header($title) {
 function print_footer() {
 	global $SHOW_STATS, $footerfile, $printlink, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
 
+	// If the main script hasn't closed its session, do it now.
+	// If we rely on PHP to close the session, it may not do it
+	// until after it has closed the DB connection - which it needs!
+	Zend_Session::writeClose();
+
 	if (!isset($footer_count)) $footer_count = 1;
 	else $footer_count++;
 	echo "<!-- begin footer -->";
