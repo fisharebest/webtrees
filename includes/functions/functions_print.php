@@ -575,6 +575,11 @@ function print_footer() {
 function print_simple_footer() {
 	global $SHOW_STATS;
 
+	// If the main script hasn't closed its session, do it now.
+	// If we rely on PHP to close the session, it may not do it
+	// until after it has closed the DB connection - which it needs!
+	Zend_Session::writeClose();
+
 	if ($SHOW_STATS || WT_DEBUG) {
 		echo execution_stats();
 	}
