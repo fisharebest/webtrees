@@ -97,6 +97,7 @@ if (WT_USER_IS_ADMIN && $latest_version && version_compare(WT_VERSION, $latest_v
 		'<h3>', WT_I18N::translate('Recommendations'), '</h3>',
 		'<ul>',
 		'<li>', WT_I18N::translate('Make a backup of your database before you start.'), '</li>',
+		'<li>', /* I18N: %s is a filename */ WT_I18N::translate('Take your site offline while copying the new files.  Do this by temporarily creating a file %s on the web server.', '<tt style="white-space:nowrap">'.WT_ROOT.'data/offline.txt'.'</tt>'), '</li>',
 		'</ul>',
 		'</div>';
 }
