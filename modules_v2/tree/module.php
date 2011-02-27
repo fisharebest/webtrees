@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return '<span title="'.WT_I18N::translate('Tree').'">'.WT_I18N::translate('Tree').'</span>';
+		return WT_I18N::translate('Tree');
 	}
 
 	// Extend WT_Module

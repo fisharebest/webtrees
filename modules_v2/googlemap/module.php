@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return '<span title="'./* I18N: http://en.wikipedia.org/wiki/Google_maps */ WT_I18N::translate('Google Maps').'">'.WT_I18N::translate('Google Maps').'</span>';
+		return /* I18N: http://en.wikipedia.org/wiki/Google_maps */ WT_I18N::translate('Google Maps');
 	}
 
 	// Extend WT_Module

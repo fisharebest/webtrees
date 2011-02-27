@@ -225,7 +225,7 @@ if (!$controller->indi->canDisplayDetails()) {
 				// Non-AJAX tabs load immediately (search engines don't load ajax)
 				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
 			}
-			echo '<span>', $tab->getTitle(), '</span></a></li>';
+			echo '<span title="', $tab->getTitle(), '">', $tab->getTitle(), '</span></a></li>';
 		}
 	}
 	echo '</ul>';

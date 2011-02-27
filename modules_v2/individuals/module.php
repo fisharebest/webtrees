@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend class WT_Module
 	public function getTitle() {
-		return '<span title="'.WT_I18N::translate('Individuals').'">'.WT_I18N::translate('Individuals').'</span>';
+		return WT_I18N::translate('Individuals');
 	}
 
 	// Extend class WT_Module

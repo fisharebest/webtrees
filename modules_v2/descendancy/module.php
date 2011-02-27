@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
-		return '<span title="'.WT_I18N::translate('Descendancy').'">'.WT_I18N::translate('Descendancy').'</span>';
+		return WT_I18N::translate('Descendancy');
 	}
 
 	// Extend WT_Module

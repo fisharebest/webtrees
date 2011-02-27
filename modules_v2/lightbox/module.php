@@ -33,7 +33,7 @@ require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return '<span title="'.WT_I18N::translate('Album').'">'.WT_I18N::translate('Album').'</span>';
+		return WT_I18N::translate('Album');
 	}
 
 	// Extend WT_Module
