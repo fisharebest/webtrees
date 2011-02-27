@@ -33,7 +33,7 @@ require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Sidebar {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Clippings cart');
+		return '<span title="'.WT_I18N::translate('Clippings cart').'">'.WT_I18N::translate('Clippings cart').'</span>';
 	}
 
 	// Extend class WT_Module
