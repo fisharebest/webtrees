@@ -540,6 +540,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		// Choose icon and shadow ============
 		<?php
 		echo "if (icon.image && ($level==0 || $level==1 || $level==2)) {";
+			echo "if (icon.image!='", WT_MODULES_DIR, "googlemap/images/marker_yellow.png') {";
 			echo 'var iconImage = new google.maps.MarkerImage(icon.image,'; 
 			echo 'new google.maps.Size(25, 15),';
 			echo 'new google.maps.Point(0,0),';
@@ -548,6 +549,16 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			echo 'new google.maps.Size(35, 45),';
 			echo 'new google.maps.Point(0,0),';
 			echo 'new google.maps.Point(1, 45));';
+			echo " } else { ";
+			echo 'var iconImage = new google.maps.MarkerImage(icon.image,';
+			echo 'new google.maps.Size(20, 34),';
+			echo 'new google.maps.Point(0,0),';
+			echo 'new google.maps.Point(9, 34));';
+			echo 'var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",';
+			echo 'new google.maps.Size(37, 34),';
+			echo 'new google.maps.Point(0,0),';
+			echo 'new google.maps.Point(9, 34));';
+			echo "}";	
 		//	*** Clickable area of icon - To be refined later *** ===================================
 		//	echo 'var iconShape = {';
 		//	echo 'coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],';
@@ -673,7 +684,10 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		// The following is called when no coordinates exist for a place location at all
 		echo "var icon_type = new google.maps.MarkerImage();\n";
 		echo 'icon_type.image = "', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
-		echo "var point = new google.maps.LatLng(0, 0);\n";
+		echo 'icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
+		echo 'icon_type.iconSize = google.maps.Size(20, 34);';
+		echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
+		echo 'var point = new google.maps.LatLng(0, 0);';
 		echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'>";
 		echo "<br />", WT_I18N::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
