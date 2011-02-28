@@ -261,7 +261,7 @@ case 'update':
 		// create the media directory
 		// if NEW_MEDIA_FIREWALL_ROOTDIR is the INDEX_DIRECTORY, WT will have perms to create it
 		// if WT is unable to create the directory, tell the user to create it
-		if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true) {
+		if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true && $USE_MEDIA_FIREWALL==false) {
 			if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
 				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY, WT_PERM_EXE);
 				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
@@ -273,7 +273,7 @@ case 'update':
 	}
 	if (!$errors) {
 		// create the thumbs dir to make sure we have write perms
-		if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true) {
+		if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true && $USE_MEDIA_FIREWALL==false) {
 			if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs")) {
 				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs", WT_PERM_EXE);
 				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs")) {
@@ -285,7 +285,7 @@ case 'update':
 	}
 	if (!$errors) {
 		// copy the .htaccess file from INDEX_DIRECTORY to NEW_MEDIA_FIREWALL_ROOTDIR in case it is still in a web-accessible area
-		if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true) {
+		if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true && $USE_MEDIA_FIREWALL==false) {
 			if ((file_exists($INDEX_DIRECTORY.".htaccess")) && (is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) && (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) ) {
 				@copy($INDEX_DIRECTORY.".htaccess", $NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess");
 				if (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) {
@@ -299,7 +299,7 @@ case 'update':
 		set_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_ROOTDIR', safe_POST('NEW_MEDIA_FIREWALL_ROOTDIR'));
 	}
 
-	if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true ) {
+	if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true && $USE_MEDIA_FIREWALL==false) {
 		AddToLog("Media Firewall enabled", 'config');
 
 		if (!$errors) {
@@ -337,7 +337,7 @@ case 'update':
 				chmod($whichFile, 0644); // Make sure apache can read this file
 			}
 		}
-	} elseif ($_POST["NEW_USE_MEDIA_FIREWALL"]==false) {
+	} elseif ($_POST["NEW_USE_MEDIA_FIREWALL"]==false && $USE_MEDIA_FIREWALL==true) {
 		AddToLog("Media Firewall disabled", 'config');
 
 		if (file_exists($MEDIA_DIRECTORY.".htaccess")) {
@@ -377,7 +377,7 @@ case 'update':
 }
 
 print_header(WT_I18N::translate('Family tree configuration'));
-if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
+if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
 }
 
