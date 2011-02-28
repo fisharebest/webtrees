@@ -48,7 +48,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$days = get_block_setting($block_id, 'days', 7);
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		$show_parents = get_block_setting($block_id, 'show_parents', false);
-		$sortStyle = get_block_setting($block_id, 'sortStyle', 'datea');
+		$sortStyle = get_block_setting($block_id, 'sortStyle', 'date_asc');
 		$hide_empty = get_block_setting($block_id, 'hide_empty', false);
 		$block = get_block_setting($block_id, 'block', true);
 		if ($cfg) {
