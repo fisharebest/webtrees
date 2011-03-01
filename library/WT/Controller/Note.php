@@ -205,7 +205,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete this Shared Note'));
 			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete this Shared Note?')."')) return deletenote('".$this->nid."'); else return false;");
-			$submenu->addIcon('edit_note');
+			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 		}

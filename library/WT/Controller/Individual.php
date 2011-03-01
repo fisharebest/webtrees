@@ -513,7 +513,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete this individual'));
 			$submenu->addOnclick("return deleteperson('".$this->pid."');");
-			$submenu->addIcon('edit_indi');
+			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 		}

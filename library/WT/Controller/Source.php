@@ -205,7 +205,7 @@ class WT_Controller_Source extends WT_Controller_Base {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete this Source'));
 			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete this Source?')."')) return deletesource('".$this->sid."'); else return false;");
-			$submenu->addIcon('edit_sour');
+			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
 		}
