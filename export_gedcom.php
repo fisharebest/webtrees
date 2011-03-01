@@ -3,7 +3,7 @@
  * Exports data from the database to a gedcom file
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2008 to 2009  PGV Development Team.  All rights reserved.
@@ -76,12 +76,13 @@ if ($export) {
 		}
 		rename($filename.'.tmp', $filename);
 		$stat = stat($filename);
-		echo sprintf('<p>%d bytes, %0.3f seconds</p>', $stat['size'], $end-$start);
+		$stat['size'] = $stat['size']/1024;
+		echo '<p>', WT_I18N::plural('%d KB, %0.3f seconds', '%d KB, %0.3f seconds', $stat['size'], $stat['size'], $end-$start, $end-$start), '</p>';
 	} else {
-		echo '<p>Error: could not open file for writing</p>';
+		echo '<p>', WT_I18N::translate('Error: could not open file for writing'), '</p>';
 	}
 } else {
-	echo '<h1>Export data from database to gedcom file</h1>';
+	echo '<h1>', WT_I18N::translate('Export data from database to gedcom file'), '</h1>';
 	echo '<ul>';
 	foreach ($gedcoms as $ged_id=>$gedcom) {
 		echo '<li><a href="?export=', rawurlencode($gedcom), '">', $gedcom, ' => ', htmlspecialchars(filename_decode(realpath(get_gedcom_setting($ged_id, 'path')))), '</a></li>';
@@ -89,5 +90,5 @@ if ($export) {
 	echo '</ul>';
 }
 
-echo '<p><a href="javascript: ', WT_I18N::translate('Close Window'), '" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
+echo '<p class="center"><a href="javascript: ', WT_I18N::translate('Close Window'), '" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
 print_simple_footer();
