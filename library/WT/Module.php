@@ -99,29 +99,35 @@ abstract class WT_Module {
 	public function modAction($mod_action) {
 	}
 
-	final static public function getActiveModules() {
-		$module_names=WT_DB::prepare(
-			"SELECT module_name".
-			" FROM `##module`".
-			" WHERE status='enabled'".
-			" ORDER BY module_name"
-		)->fetchOneColumn();
-		$array=array();
-		foreach ($module_names as $module_name) {
-			if (file_exists(WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php')) {
-				require_once WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php';
-				$class=$module_name.'_WT_Module';
-				$array[$module_name]=new $class();
-			} else {
-				// Module has been deleted from disk?  Disable it.
-				AddToLog("Module {$module_name} has been deleted from disk - disabling it", 'config');
-				WT_DB::prepare(
-					"UPDATE `##module` SET status='disabled' WHERE module_name=?"
-				)->execute(array($module_name));
+	final static public function getActiveModules($sort=false) {
+		// We call this function several times, so cache the results.
+		// Sorting is slow, so only do it when requested.
+		static $modules=null;
+		static $sorted =false;
+		
+		if ($modules===null) {
+			$module_names=WT_DB::prepare(
+				"SELECT module_name FROM `##module` WHERE status='enabled'"
+			)->fetchOneColumn();
+			foreach ($module_names as $module_name) {
+				if (file_exists(WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php')) {
+					require_once WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php';
+					$class=$module_name.'_WT_Module';
+					$modules[$module_name]=new $class();
+				} else {
+					// Module has been deleted from disk?  Disable it.
+					AddToLog("Module {$module_name} has been deleted from disk - disabling it", 'config');
+					WT_DB::prepare(
+						"UPDATE `##module` SET status='disabled' WHERE module_name=?"
+					)->execute(array($module_name));
+				}
 			}
 		}
-		uasort($array, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
-		return $array;
+		if ($sort && !$sorted) {
+			uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+			$sorted=true;
+		}
+		return $modules;
 	}
 
 	final static private function getActiveModulesByComponent($component, $ged_id, $access_level) {

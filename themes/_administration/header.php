@@ -152,7 +152,7 @@ if (WT_USER_IS_ADMIN) {
 		WT_I18N::translate('Reports'),
 		'</a></li>',
 		'</ul></li>';
-	foreach (WT_Module::getActiveModules() as $module) {
+	foreach (WT_Module::getActiveModules(true) as $module) {
 		if ($module instanceof WT_Module_Config) {
 			echo '<li><span><a ', (WT_SCRIPT_NAME=="module.php" && safe_GET('mod')==$module->getName() ? 'class="current" ' : ''), 'href="', $module->getConfigLink(), '">', $module->getTitle(), '</a></span></li>';
 		}
