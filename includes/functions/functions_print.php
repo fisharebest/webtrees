@@ -359,8 +359,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 *
 * @param string $title the title to put in the <TITLE></TITLE> header tags
 */
-function print_header($title) {
-	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $view, $cart;
+function print_header($title, $view='full') {
+	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $cart;
 	global $GEDCOM, $GEDCOM_TITLE, $action, $query;
 	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
@@ -431,7 +431,7 @@ function print_header($title) {
 		$META_ROBOTS='index,follow';
 	}
 
-	if ($view!='simple') {
+	if ($view=='full') {
 		$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION');
 		if (empty($META_DESCRIPTION)) {
 			$META_DESCRIPTION=$GEDCOM_TITLE;
@@ -543,13 +543,11 @@ function print_header($title) {
 
 */
 function print_simple_header($title) {
-	global $view;
-	$view = 'simple';
-	print_header($title);
+	print_header($title, 'simple');
 }
 
 // -- print the html to close the page
-function print_footer() {
+function print_footer($view='full') {
 	global $SHOW_STATS, $footerfile, $printlink, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
 
 	// If the main script hasn't closed its session, do it now.
@@ -557,13 +555,20 @@ function print_footer() {
 	// until after it has closed the DB connection - which it needs!
 	Zend_Session::writeClose();
 
-	if (!isset($footer_count)) $footer_count = 1;
-	else $footer_count++;
-	echo "<!-- begin footer -->";
-	require WT_ROOT.$footerfile;
-	if (function_exists("load_behaviour")) {
-		load_behaviour();  // @see function_print_lists.php
+	if ($view=='full') {
+		if (!isset($footer_count)) $footer_count = 1;
+		else $footer_count++;
+		echo "<!-- begin footer -->";
+		require WT_ROOT.$footerfile;
+		if (function_exists("load_behaviour")) {
+			load_behaviour();  // @see function_print_lists.php
+		}
+	} else {
+		if ($SHOW_STATS || WT_DEBUG) {
+			echo execution_stats();
+		}
 	}
+
 	if (WT_DEBUG_SQL) {
 		echo WT_DB::getQueryLog();
 	}
@@ -573,20 +578,7 @@ function print_footer() {
 
 // Page footer for popup/edit windows
 function print_simple_footer() {
-	global $SHOW_STATS;
-
-	// If the main script hasn't closed its session, do it now.
-	// If we rely on PHP to close the session, it may not do it
-	// until after it has closed the DB connection - which it needs!
-	Zend_Session::writeClose();
-
-	if ($SHOW_STATS || WT_DEBUG) {
-		echo execution_stats();
-	}
-	if (WT_DEBUG_SQL) {
-		echo WT_DB::getQueryLog();
-	}
-	echo '</body></html>';
+	print_footer('simple');
 }
 
 /**
