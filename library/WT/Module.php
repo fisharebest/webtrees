@@ -119,8 +119,8 @@ abstract class WT_Module {
 					"UPDATE `##module` SET status='disabled' WHERE module_name=?"
 				)->execute(array($module_name));
 			}
-			uasort($array, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		}
+		uasort($array, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
 		return $array;
 	}
 
