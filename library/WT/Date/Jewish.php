@@ -65,7 +65,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		if (WT_LOCALE=='he') {
 			return $this->NumToHebrew($this->y%1000);
 		} else {
-			return $this->d;
+			return $this->y;
 		}
 	}
 
@@ -73,7 +73,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 		if (WT_LOCALE=='he') {
 			return $this->NumToHebrew($this->y);
 		} else {
-			return $this->d;
+			return $this->y;
 		}
 	}
 
