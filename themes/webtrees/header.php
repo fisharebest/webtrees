@@ -87,7 +87,7 @@ echo
 if ($view!='simple') {
 	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
 			'<div class="header_img"><img src="', WT_THEME_DIR, 'images/webtrees.png" width="242" height="50" alt="" /></div>',
-				'<ul id="extra-menu" class="makeMenu">';
+				'<ul id="extra-menu" class="makeMenu">',
 					'<li>';
 						if (WT_USER_ID) {
 							echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
