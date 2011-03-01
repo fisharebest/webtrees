@@ -133,21 +133,27 @@ class WT_MenuBar {
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_pedigree');
 
 		// Build a sortable list of submenu items and then sort it in localized name order
-		$menuList = array();
-		$menuList['pedigree'] = WT_I18N::translate('Pedigree Chart');
-		if (file_exists(WT_ROOT.'descendancy.php')) $menuList['descendancy'] = WT_I18N::translate('Descendancy chart');
-		if (file_exists(WT_ROOT.'ancestry.php')) $menuList['ancestry'] = WT_I18N::translate('Ancestry chart');
-		if (file_exists(WT_ROOT.'compact.php')) $menuList['compact'] = WT_I18N::translate('Compact chart');
-		if (file_exists(WT_ROOT.'fanchart.php') && function_exists('imagettftext')) $menuList['fanchart'] = WT_I18N::translate('Circle diagram');
-		if (file_exists(WT_ROOT.'hourglass.php')) $menuList['hourglass'] = WT_I18N::translate('Hourglass chart');
-		if (file_exists(WT_ROOT.'familybook.php')) $menuList['familybook'] = WT_I18N::translate('Family book chart');
-		if (file_exists(WT_ROOT.'timeline.php')) $menuList['timeline'] = WT_I18N::translate('Timeline chart');
-		if (file_exists(WT_ROOT.'lifespan.php')) $menuList['lifespan'] = WT_I18N::translate('Lifespan chart');
-		if (file_exists(WT_ROOT.'relationship.php')) $menuList['relationship'] = WT_I18N::translate('Relationship chart');
-		if (file_exists(WT_ROOT.'statistics.php')) $menuList['statistics'] = WT_I18N::translate('Statistics');
-		if (file_exists(WT_ROOT.'treenav.php')) $menuList['treenav'] = WT_I18N::translate('Interactive tree');
-		if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/pedigree_map.php')) {
-			$menuList['pedigree_map'] = WT_I18N::translate('Pedigree Map');//added for pedigree_map
+		$menuList = array(
+			'pedigree'    =>WT_I18N::translate('Pedigree Chart'),
+			'descendancy' =>WT_I18N::translate('Descendancy chart'),
+			'ancestry'    =>WT_I18N::translate('Ancestry chart'),
+			'compact'     =>WT_I18N::translate('Compact chart'),
+			'hourglass'   =>WT_I18N::translate('Hourglass chart'),
+			'familybook'  =>WT_I18N::translate('Family book chart'),
+			'timeline'    =>WT_I18N::translate('Timeline chart'),
+			'lifespan'    =>WT_I18N::translate('Lifespan chart'),
+			'relationship'=>WT_I18N::translate('Relationship chart'),
+			'statistics'  =>WT_I18N::translate('Statistics'),
+		);
+		if (function_exists('imagettftext')) {
+			$menuList['fanchart']=WT_I18N::translate('Circle diagram');
+		}
+		// TODO: Use WT_Module_Chart ??
+		if (array_key_exists('tree', WT_Module::getActiveModules())) {
+			$menuList['treenav']=WT_I18N::translate('Interactive tree');
+		}
+		if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
+			$menuList['pedigree_map']=WT_I18N::translate('Pedigree Map');
 		}
 		asort($menuList);
 
