@@ -41,8 +41,14 @@
 	var marker;
 	var zoom;
 	var pl_name = "<?php echo htmlspecialchars($place_name); ?>";
-	var pl_lati = "<?php echo $parent_lati; ?>";
-	var pl_long = "<?php echo $parent_long; ?>";
+	if (pl_name) {
+		var pl_lati = "<?php echo $place_lati; ?>";
+		var pl_long = "<?php echo $place_long; ?>";
+	
+	} else {
+		var pl_lati = "<?php echo $parent_lati; ?>";
+		var pl_long = "<?php echo $parent_long; ?>";
+	}
 	var pl_zoom = <?php echo $zoomfactor; ?>;
 	var latlng = new google.maps.LatLng(pl_lati, pl_long);
 	var polygon1;
