@@ -516,7 +516,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	var mapOptions = {
 		zoom: 8,
 		center: map_center,
-		mapTypeId: google.maps.MapTypeId.TERRAIN,					// ROADMAP, SATELLITE, HYBRID, TERRAIN
+		mapTypeId: google.maps.MapTypeId.<?php echo $GOOGLEMAP_MAP_TYPE; ?>,	// ROADMAP, SATELLITE, HYBRID, TERRAIN
 		mapTypeControlOptions: {
 			style: google.maps.MapTypeControlStyle.DROPDOWN_MENU	// DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
 		},
