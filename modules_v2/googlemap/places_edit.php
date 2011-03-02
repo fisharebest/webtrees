@@ -222,7 +222,7 @@ if ($action=="add") {
 			if ($row->pl_lati!==null && $row->pl_long!==null) {
 				$parent_lati=str_replace(array('N', 'S', ','), array('', '-', '.') , $row->pl_lati);
 				$parent_long=str_replace(array('E', 'W', ','), array('', '-', '.') , $row->pl_long);
-				$zoomfactor=$row->pl_zoom+2;
+				$zoomfactor=$row->pl_zoom;
 				if ($zoomfactor>$GOOGLEMAP_MAX_ZOOM) {
 					$zoomfactor=$GOOGLEMAP_MAX_ZOOM;
 				}
