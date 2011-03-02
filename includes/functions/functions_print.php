@@ -1572,7 +1572,7 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 * @param boolean $lds option to print LDS TEMPle and STATus
 */
 function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
-	global $SHOW_PEDIGREE_PLACES, $TEMPLE_CODES, $SEARCH_SPIDER, $STATUS_CODES;
+	global $SHOW_PEDIGREE_PLACES, $SEARCH_SPIDER;
 	if ($eventObj==null) return '';
 	if (!is_object($eventObj)) {
 		trigger_error("Object was not sent in, please use Event object", E_USER_WARNING);
@@ -1660,14 +1660,10 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 	if ($lds) {
 		if (preg_match('/2 TEMP (.*)/', $factrec, $match)) {
 			$tcode=trim($match[1]);
-			if (array_key_exists($tcode, $TEMPLE_CODES)) {
-				$html.='<br/>'.WT_I18N::translate('LDS Temple').': '.$TEMPLE_CODES[$tcode];
-			} else {
-				$html.='<br/>'.WT_I18N::translate('LDS Temple Code:').$tcode;
-			}
+			$html.='<br/>'.WT_I18N::translate('LDS Temple').': '.WT_Gedcom_LDS::templeName($match[1]);
 		}
 		if (preg_match('/2 STAT (.*)/', $factrec, $match)) {
-			$html.='<br />'.WT_I18N::translate('Status').': '.(array_key_exists($match[1], $STATUS_CODES) ? $STATUS_CODES[$match[1]] : $match[1]);
+			$html.='<br />'.WT_I18N::translate('Status').': '.WT_Gedcom_LDS::statusName($match[1]);
 			if (preg_match('/3 DATE (.*)/', $factrec, $match)) {
 				$date=new WT_Date($match[1]);
 				$html.=', '.translate_fact('STAT:DATE').': '.$date->Display(false);

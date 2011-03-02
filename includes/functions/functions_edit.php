@@ -1233,10 +1233,10 @@ function print_addnewsource_link($element_id) {
 * @param boolean $rowDisplay True to have the row displayed by default, false to hide it by default
 */
 function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose='', $rowDisplay=true) {
-	global $WT_IMAGES, $MEDIA_DIRECTORY, $TEMPLE_CODES;
+	global $WT_IMAGES, $MEDIA_DIRECTORY;
 	global $tags, $emptyfacts, $main_fact, $TEXT_DIRECTION;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept, $upload_count;
-	global $STATUS_CODES, $pid, $gender, $linkToID;
+	global $pid, $gender, $linkToID;
 	global $bdm;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $PREFER_LEVEL2_SOURCES;
 	global $action, $event_add;
@@ -1529,7 +1529,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 */
 
 	} else if ($fact=="TEMP") {
-		echo select_edit_control($element_name, $TEMPLE_CODES, WT_I18N::translate('No Temple - Living Ordinance'), $value);
+		echo select_edit_control($element_name, WT_Gedcom_LDS::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
 	} else if ($fact=="ADOP") {
 		switch ($gender) {
 		case 'M': echo edit_field_adop_m($element_name, $value); break;
@@ -1543,7 +1543,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		default:  echo edit_field_pedi_u($element_name, $value); break;
 		}
 	} else if ($fact=="STAT") {
-		echo select_edit_control($element_name, $STATUS_CODES, '', $value);
+		echo select_edit_control($element_name, WT_Gedcom_LDS::statusNames($upperlevel), '', $value);
 	} else if ($fact=="RELA") {
 		echo edit_field_rela($element_name, strtolower($value));
 	} else if ($fact=="_WT_USER") {
@@ -2362,7 +2362,7 @@ function create_add_form($fact) {
 */
 function create_edit_form($gedrec, $linenum, $level0type) {
 	global $WORD_WRAPPED_NOTES;
-	global $pid, $tags, $ADVANCED_PLAC_FACTS, $date_and_time, $templefacts;
+	global $pid, $tags, $ADVANCED_PLAC_FACTS, $date_and_time;
 	global $FULL_SOURCES, $TEXT_DIRECTION;
 
 	$tags=array();
@@ -2455,7 +2455,9 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 			} elseif (!$inSource && $type=="DATE") {
 				add_simple_tag($subrecord, $level1type, translate_fact($label, $person));
 				$add_date = false;
-			} else {
+			} elseif ($type=='STAT') {
+				add_simple_tag($subrecord, $level1type, translate_fact($label, $person));
+		 	} else {
 				add_simple_tag($subrecord, $level0type, translate_fact($label, $person));
 			}
 		}
@@ -2486,7 +2488,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		if ($level==2 && $type=='DATE' && in_array($level1type, $date_and_time) && !in_array('TIME', $subtags)) {
 			add_simple_tag("3 TIME"); // TIME is NOT a valid 5.5.1 tag
 		}
-		if ($level==2 && $type=='STAT' && in_array($level1type, $templefacts) && !in_array('DATE', $subtags)) {
+		if ($level==2 && $type=='STAT' && WT_Gedcom_LDS::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
 			add_simple_tag("3 DATE", '', translate_fact('STAT:DATE'));
 		}
 
@@ -2514,7 +2516,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 * @param string $level1tag the type of the level 1 gedcom record
 */
 function insert_missing_subtags($level1tag, $add_date=false) {
-	global $tags, $date_and_time, $templefacts, $level2_tags, $ADVANCED_PLAC_FACTS, $ADVANCED_NAME_FACTS;
+	global $tags, $date_and_time, $level2_tags, $ADVANCED_PLAC_FACTS, $ADVANCED_NAME_FACTS;
 	global $nondatefacts, $nonplacfacts;
 
 	// handle  MARRiage TYPE
@@ -2530,15 +2532,15 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 		}
 		if (in_array($level1tag, $value) && !in_array($key, $tags)) {
 			if ($key=="TYPE") {
-				add_simple_tag("2 TYPE ".$type_val);
+				add_simple_tag("2 TYPE ".$type_val, $level1tag);
 			} elseif ($level1tag=='_TODO' && $key=='DATE') {
-				add_simple_tag("2 ".$key.' '.strtoupper(date('d M Y')));
+				add_simple_tag("2 ".$key.' '.strtoupper(date('d M Y')), $level1tag);
 			} elseif ($level1tag=='_TODO' && $key=='_WT_USER') {
-				add_simple_tag("2 ".$key.' '.WT_USER_NAME);
+				add_simple_tag("2 ".$key.' '.WT_USER_NAME, $level1tag);
 			} else if ($level1tag=='TITL' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {
-				add_simple_tag("2 ".$key);
+				add_simple_tag("2 ".$key, $level1tag);
 			} else if ($level1tag!='TITL') {
-				add_simple_tag("2 ".$key);
+				add_simple_tag("2 ".$key, $level1tag);
 			}
 			switch ($key) { // Add level 3/4 tags as appropriate
 				case "PLAC":
@@ -2559,8 +2561,9 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 					add_simple_tag("3 PLAC");
 					break;
 				case "STAT":
-					if (in_array($level1tag, $templefacts))
+					if (WT_Gedcom_LDS::isTagLDS($level1tag)) {
 						add_simple_tag("3 DATE", '', translate_fact('STAT:DATE'));
+					}
 					break;
 				case "DATE":
 					if (in_array($level1tag, $date_and_time))

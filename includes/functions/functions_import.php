@@ -494,6 +494,11 @@ function reformat_record_import($rec) {
 			break;
 		case 'STATUS':
 			$tag='STAT';
+		case 'STAT':
+			if ($data=='CANCELLED') {
+				// PGV mis-spells this tag - correct it.
+				$data='CANCELED';
+			}
 			break;
 		case 'SUBMISSION':
 			$tag='SUBN';
