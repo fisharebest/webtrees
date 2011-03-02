@@ -165,6 +165,10 @@ echo '<td class="optionbox" colspan="3">';
 for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
 	$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
 	$m=$cal_date->NUM_TO_GEDCOM_MONTH($n, $cal_date->IsLeapYear());
+	if ($m=='ADS' && $cal_date->CALENDAR_ESCAPE()=='@#DHEBREW@' && !$cal_date->IsLeapYear()) {
+		// No month 7 in Jewish leap years.
+		continue;
+	}
 	if ($n==$cal_date->m)
 		$month_name="<span class=\"error\">{$month_name}</span>";
 	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$m}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">{$month_name}</a>";
