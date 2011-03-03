@@ -134,7 +134,7 @@ case 'user':
 		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
 		if ($value) {
 			set_user_password($id2, crypt($value));
-			AddToLog('User ID: '.$user_id. ' changed password', 'auth');
+			AddToLog('User ID: '.WT_USER_ID. ' changed password', 'auth');
 		}
 		fail();
 	case 'user_name':
