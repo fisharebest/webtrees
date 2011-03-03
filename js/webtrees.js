@@ -856,7 +856,7 @@ function restorebox(boxid, bstyle) {
  * @param string newclass the name of the new class to apply to the element
  */
 function change_class(elementid, newclass) {
-	element = document.getElementById(elementid);
+	var element = document.getElementById(elementid);
 	if (element) {
 		element.className = newclass;
 	}
@@ -870,7 +870,7 @@ function change_class(elementid, newclass) {
  * @param string newicon the src path of the new icon to apply to the element
  */
 function change_icon(elementid, newicon) {
-	element = document.getElementById(elementid);
+	var element = document.getElementById(elementid);
 	if (element) {
 		element.src = newicon;
 	}
