@@ -322,15 +322,15 @@ class WT_Controller_Media extends WT_Controller_Base {
 		sort_facts($facts);
 		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->mediaobject->getFilename());
 		$mediaType = $this->mediaobject->getMediatype();
-		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getObjeFileFormTypeValue($mediaType));
+		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
 
 		if ($this->show_changes && ($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
 			$newfacts = $newmedia->getFacts($ignore);
-			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getObjeFileFormTypeValue($mediaType));
+			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
 			$newfacts[] = new WT_Event("1 FORM ".$newmedia->getFiletype());
 			$mediaType = $newmedia->getMediatype();
-			$newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getObjeFileFormTypeValue($mediaType));
+			$newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
 			//-- loop through new facts and add them to the list if they are any changes
 			//-- compare new and old facts of the Personal Fact and Details tab 1
 			for ($i=0; $i<count($facts); $i++) {

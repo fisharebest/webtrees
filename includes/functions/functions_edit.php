@@ -1573,7 +1573,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "<select name=\"text[]\">";
 		if ($value=='') echo "<option selected=\"selected\" value=\"\" > ", WT_I18N::translate('Choose: '), " </option>";
 		$selectedValue = strtolower($value);
-		foreach (WT_Gedcom_Tag::getObjeFileFormTypes() as $typeName => $typeValue) {
+		foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
 			echo "<option value=\"", $typeName, "\" ";
 			if ($selectedValue == $typeName) echo "selected=\"selected\" ";
 			echo "> ", $typeValue, " </option>";

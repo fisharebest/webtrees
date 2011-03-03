@@ -98,7 +98,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 		//print media info
 		$ttype2 = preg_match("/\d TYPE (.*)/", $rowm["m_gedrec"], $match);
 		if ($ttype2>0) {
-			$mediaType = WT_Gedcom_Tag::getObjeFileFormTypeValue($match[1]);
+			$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
 			// echo "<br /><span class=\"label\">".WT_I18N::translate('Type').": </span> <span class=\"field\">$mediaType</span>";
 		}
 

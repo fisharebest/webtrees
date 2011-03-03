@@ -856,8 +856,8 @@ class WT_Stats {
 		asort($media);
 		foreach ($media as $type=>$count) {
 			$mediaCounts[] = round(100 * $count / $tot, 0);
-			$mediaTypes .= WT_Gedcom_Tag::getObjeFileFormTypeValue($type).' - '.$count.'|';
-			$chart_title .= WT_Gedcom_Tag::getObjeFileFormTypeValue($type).' ['.$count.'], ';
+			$mediaTypes .= WT_Gedcom_Tag::getFileFormTypeValue($type).' - '.$count.'|';
+			$chart_title .= WT_Gedcom_Tag::getFileFormTypeValue($type).' ['.$count.'], ';
 		}
 		$chart_title = substr($chart_title,0,-2);
 		$chd = self::_array_to_extended_encoding($mediaCounts);

@@ -463,7 +463,7 @@ function openPic(filename, width, height) {
 				<?php
 				//-- Build the list of checkboxes
 				$i = 0;
-				foreach (WT_Gedcom_Tag::getObjeFileFormTypes() as $typeName => $typeValue) {
+				foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
 					$i++;
 					if ($i > 3) {
 						$i = 1;

@@ -680,7 +680,7 @@ function print_media_links($factrec, $level, $pid='') {
 			}
 			$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $row["m_gedrec"], $match);
 			if ($ttype>0) {
-				$mediaType = WT_Gedcom_Tag::getObjeFileFormTypeValue($match[1]);
+				$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
 				echo "<br /><span class=\"label\">", WT_I18N::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
 			}
 			//echo "</span>";
@@ -1501,7 +1501,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	$ttype = preg_match("/\d TYPE (.*)/", $rowm["m_gedrec"], $match);
 	if ($ttype>0) {
-		$mediaType = WT_Gedcom_Tag::getObjeFileFormTypeValue($match[1]);
+		$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
 		echo "<br /><span class=\"label\">", WT_I18N::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
 	}
 	echo "</span>";

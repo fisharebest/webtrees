@@ -954,8 +954,8 @@ class WT_Gedcom_Tag {
 		'tombstone', 'video', 'painting', 'other',
 	);
 
-	// Translate the value for 0 OBJE/1 FILE/2 FORM/3 TYPE
-	public static function getObjeFileFormTypeValue($type) {
+	// Translate the value for 1 FILE/2 FORM/3 TYPE
+	public static function getFileFormTypeValue($type) {
 		switch (strtolower($type)) {
 		case 'audio':       return WT_I18N::translate('Audio');
 		case 'book':        return WT_I18N::translate('Book');
@@ -978,11 +978,11 @@ class WT_Gedcom_Tag {
 		}
 	}
 
-	// A list of all possible values for 0 OBJE/1 FILE/2 FORM/3 TYPE
-	public static function getObjeFileFormTypes() {
+	// A list of all possible values for 1 FILE/2 FORM/3 TYPE
+	public static function getFileFormTypes() {
 		$values=array();
 		foreach (self::$OBJE_FILE_FORM_TYPE as $type) {
-			$values[$type]=self::getObjeFileFormTypeValue($type);
+			$values[$type]=self::getFileFormTypeValue($type);
 		}
 		uasort($values, 'utf8_strcasecmp');
 		var_dump($values);
