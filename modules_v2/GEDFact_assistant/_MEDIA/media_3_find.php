@@ -448,9 +448,9 @@ if ($action=="filter") {
 					<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;";
 
 					if ($ABBREVIATE_CHART_LABELS) {
-						$born=abbreviate_fact('BIRT');
+						$born=WT_Gedcom_Tag::getAbbreviation('BIRT');
 					} else {
-						$born=translate_fact('BIRT');
+						$born=WT_Gedcom_Tag::getLabel('BIRT');
 					}
 
 

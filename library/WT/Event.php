@@ -247,9 +247,9 @@ class WT_Event {
 
 	function getLabel($abbreviate=false) {
 		if ($abbreviate) {
-			return abbreviate_fact($this->tag);
+			return WT_Gedcom_Tag::getAbbreviation($this->tag);
 		} else {
-			return translate_fact($this->tag, $this->parentObject);
+			return WT_Gedcom_Tag::getLabel($this->tag, $this->parentObject);
 		}
 	}
 

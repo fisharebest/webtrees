@@ -52,12 +52,12 @@ $qs				=safe_GET('tags');
 // $preselDefault will be set to the array of DEFAULT preselected tags
 // $preselCustom will be set to the array of CUSTOM preselected tags
 function getPreselectedTags(&$preselDefault, &$preselCustom) {
-	global $FACTS, $qs;
+	global $qs;
 	$all = strlen($qs) ? explode(',', strtoupper($qs)) : array();
 	$preselDefault = array();
 	$preselCustom = array();
 	foreach ($all as $one) {
-		if (array_key_exists($one, $FACTS)) {
+		if (WT_Gedcom_Tag::isTag($one)) {
 			$preselDefault[] = $one;
 		} else {
 			$preselCustom[] = $one;
@@ -556,7 +556,7 @@ if ($type == "facts") {
 
 		DefaultTags=[<?php
 		$firstFact=TRUE;
-		foreach ($FACTS as $factId => $factName) {
+		foreach (WT_Gedcom_Tag::getPicklistFacts() as $factId => $factName) {
 			if (preg_match('/^_?[A-Z0-9]+$/', $factId, $matches)) {
 				if ($firstFact) $firstFact=FALSE;
 				else echo ',';
@@ -564,17 +564,6 @@ if ($type == "facts") {
 			}
 		}
 		?>];
-		//Sort defined tags alphabetically by name
-		n=DefaultTags.length
-		for (i=0;i<(n-1);i++) {
-			for (j=(i+1);j<n;j++) {
-				if (DefaultTags[i].LowerName>DefaultTags[j].LowerName) {
-					tmp=DefaultTags[i];
-					DefaultTags[i]=DefaultTags[j];
-					DefaultTags[j]=tmp;
-				}
-			}
-		}
 		TheList=document.getElementById("tbDefinedTags");
 		i=document.getElementById("tbxFilter");
 		i.onkeypress=i.onchange=i.onkeyup=function() {
@@ -744,9 +733,9 @@ if ($action=="filter") {
 						echo "<b>".$indi->getFullName()."</b>&nbsp;&nbsp;&nbsp;"; // Name Link
 
 						if ($ABBREVIATE_CHART_LABELS) {
-							$born=abbreviate_fact('BIRT');
+							$born=WT_Gedcom_Tag::getAbbreviation('BIRT');
 						} else {
-							$born=translate_fact('BIRT');
+							$born=WT_Gedcom_Tag::getLabel('BIRT');
 						}
 
 						echo "</span><br><span class=\"list_item\">", $born, " ", $indi->getbirthyear(), "&nbsp;&nbsp;&nbsp;", $indi->getbirthplace(), "</span>";

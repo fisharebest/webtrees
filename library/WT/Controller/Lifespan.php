@@ -434,19 +434,19 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 						$text = explode("-fact, ", $val);
 						$fact = $text[0];
 						$val = $text[1];
-						echo abbreviate_fact($fact);
+						echo WT_Gedcom_Tag::getAbbreviation($fact);
 						echo "</b><span>", PrintReady($val), "</span></a></div>";
 					}
 					$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
 					echo "<table><tr><td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
-					echo abbreviate_fact('BIRT');
+					echo WT_Gedcom_Tag::getAbbreviation('BIRT');
 					echo "</b><span>", $value->getSexImage(), $indiName, "<br/>", translate_fact('BIRT'), " ", strip_tags($bdate->Display(false)), " ", PrintReady($value->getBirthPlace()), "</span></a></td>" ,
 						"<td align=\"left\" width=\"100%\"><a href=\"", $value->getHtmlUrl(), "\">", $value->getSexImage(), $indiName, ":  $lifespan </a></td>" ,
 						"<td width=\"15\">";
 					if ($value->isDead()) {
 						if ($deathReal || $value->isDead()) {
 							echo "<a class=\"showit\" href=\"#\"><b>";
-							echo abbreviate_fact('DEAT');
+							echo WT_Gedcom_Tag::getAbbreviation('DEAT');
 							if (!$deathReal) echo "*";
 							echo "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace())."</span></a>";
 						}
@@ -462,12 +462,12 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 							$text = explode("-fact,", $val);
 							$fact = $text[0];
 							$val = $text[1];
-							echo abbreviate_fact($fact);
+							echo WT_Gedcom_Tag::getAbbreviation($fact);
 							echo "</b><span>".PrintReady($val)."</span></a></div>";
 						}
 						$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
 						echo "<table dir=\"ltr\"><tr><td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
-						echo abbreviate_fact('BIRT');
+						echo WT_Gedcom_Tag::getAbbreviation('BIRT');
 						if (!$birthReal) echo "*";
 						echo "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."</span></a></td>" .
 						"<td align=\"left\" width=\"100%\"><a href=\"".$value->getHtmlUrl()."\">".$value->getSexImage().$indiName."</a></td>" .
@@ -475,7 +475,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 						if ($value->isDead()) {
 							if ($deathReal || $value->isDead()) {
 								echo "<a class=\"showit\" href=\"#\"><b>";
-								echo abbreviate_fact('DEAT');
+								echo WT_Gedcom_Tag::getAbbreviation('DEAT');
 								if (!$deathReal) echo "*";
 								echo "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace())."</span></a>";
 							}
@@ -487,7 +487,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 
 						$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
 						echo "<a class=\"showit\" href=\"".$value->getHtmlUrl()."\"><b>";
-						echo abbreviate_fact('BIRT');
+						echo WT_Gedcom_Tag::getAbbreviation('BIRT');
 						echo "</b><span>".$value->getSexImage().$indiName."<br/>".translate_fact('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."<br/>";
 						foreach ($eventinformation as $evtwidth=>$val) {
 							$text = explode("-fact,", $val);

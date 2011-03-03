@@ -70,7 +70,7 @@ function expand_urls($text) {
  */
 function print_fact(&$eventObj) {
 	global $nonfacts, $GEDCOM, $WORD_WRAPPED_NOTES;
-	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $FACTS, $FACTS_M, $FACTS_F, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
+	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
 	global $n_chil, $n_gchi, $SEARCH_SPIDER;
 
 	if (!$eventObj->canShow()) {
@@ -79,7 +79,7 @@ function print_fact(&$eventObj) {
 
 	$noedit=!$eventObj->canEdit();
 	$fact  = $eventObj->getTag();
-	if ($HIDE_GEDCOM_ERRORS && !array_key_exists($fact, $FACTS) && !array_key_exists($fact, $FACTS_M) && !array_key_exists($fact, $FACTS_F)) {
+	if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($fact)) {
 		return;
 	}
 
@@ -426,7 +426,7 @@ function print_fact(&$eventObj) {
 				$factref = $match[$i][1];
 				if (!in_array($factref, $special_facts)) {
 					$label = translate_fact($fact.':'.$factref, $label_person);
-					if (!$HIDE_GEDCOM_ERRORS || array_key_exists($factref, $FACTS)) {
+					if (!$HIDE_GEDCOM_ERRORS || WT_Gedcom_Tag::isTag($factref)) {
 						if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/".$factref.".gif")) {
 							echo "<img src=\"".WT_THEME_DIR."images/facts/", $factref, ".gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" /> ";
 						} else {

@@ -307,9 +307,9 @@ class WT_TreeNav {
 		</span><br />
 		<div class="details1 indent">
 			<?php
-				echo '<b>', abbreviate_fact('BIRT'), '</b> ', $person->getBirthDate()->Display(), ' ', PrintReady($person->getBirthPlace()), '<br />';
+				echo '<b>', WT_Gedcom_Tag::getAbbreviation('BIRT'), '</b> ', $person->getBirthDate()->Display(), ' ', PrintReady($person->getBirthPlace()), '<br />';
 				if ($person->isDead()) {
-					echo '<b>', abbreviate_fact('DEAT'), '</b> ', $person->getDeathDate()->Display(), ' ', PrintReady($person->getDeathPlace());
+					echo '<b>', WT_Gedcom_Tag::getAbbreviation('DEAT'), '</b> ', $person->getDeathDate()->Display(), ' ', PrintReady($person->getDeathPlace());
 				}
 			?>
 		</div>
@@ -346,13 +346,13 @@ class WT_TreeNav {
 				<br />
 				<div class="details1 indent">
 					<?php
-						echo '<b>', abbreviate_fact('BIRT'), '</b> ', $spouse->getBirthDate()->Display(), ' ', PrintReady($spouse->getBirthPlace()), '<br />';
-						echo '<b>', abbreviate_fact('MARR'), '</b> ', $family->getMarriageDate()->Display(), ' ', $family->getMarriagePlace();
+						echo '<b>', WT_Gedcom_Tag::getAbbreviation('BIRT'), '</b> ', $spouse->getBirthDate()->Display(), ' ', PrintReady($spouse->getBirthPlace()), '<br />';
+						echo '<b>', WT_Gedcom_Tag::getAbbreviation('MARR'), '</b> ', $family->getMarriageDate()->Display(), ' ', $family->getMarriagePlace();
 					?>
 					<a href="<?php echo $family->getHtmlUrl(); ?>" onclick="if (!<?php echo $this->name; ?>.collapseBox) return false;"><img id="d_<?php echo $family->getXref(); ?>" alt="<?php echo $family->getXref(); ?>" class="draggable" src="<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.$WT_IMAGES['button_family']; ?>" border="0" /></a><br />
 					<?php
 						if ($spouse->isDead()) {
-							echo '<b>', abbreviate_fact('DEAT'), '</b> ', $spouse->getDeathDate()->Display(), ' ', PrintReady($spouse->getDeathPlace()), '<br />';
+							echo '<b>', WT_Gedcom_Tag::getAbbreviation('DEAT'), '</b> ', $spouse->getDeathDate()->Display(), ' ', PrintReady($spouse->getDeathPlace()), '<br />';
 				} ?>
 				</div>
 				<?php

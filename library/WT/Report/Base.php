@@ -2285,7 +2285,7 @@ function varLetterSHandler($attrs) {
 		if ($var=='@fact') {
 			$var=$fact;
 		}
-		$currentElement->addText(abbreviate_fact($var));
+		$currentElement->addText(WT_Gedcom_Tag::getAbbreviation($var));
 	}
 }
 
