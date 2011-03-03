@@ -72,7 +72,7 @@ class WT_Gedcom_Tag {
 		'_BURI_GCHI', '_BURI_GCH1', '_BURI_GCH2', '_BURI_GPAR', '_BURI_HSIB', '_BURI_SIBL', '_BURI_SPOU',
 		'_CHR_CHIL', '_CHR_GCHI', '_CHR_GCH1', '_CHR_GCH2', '_CHR_HSIB', '_CHR_SIBL', '_COML',
 		'_CREM_CHIL', '_CREM_GCHI', '_CREM_GCH1', '_CREM_GCH2', '_CREM_GPAR', '_CREM_HSIB', '_CREM_SIBL', '_CREM_SPOU',
-		'_DBID', '_DEAT_CHIL', '_DEAT_GCHI', '_DEAT_GCH1', '_DEAT_GCH2', '_DEAT_GPAR',
+		'_DBID', '_DEAT_CHIL', '_DEAT_GCHI', '_DEAT_GCH1', '_DEAT_GCH2', '_DEAT_GPAR', '_DEAT_GPA1', '_DEAT_GPA2',
 		'_DEAT_HSIB', '_DEAT_PARE', '_DEAT_SIBL', '_DEAT_SPOU', '_DEG', '_DETS',
 		'_EMAIL', '_EYEC', '_FA1', '_FA2', '_FA3', '_FA4', '_FA5', '_FA6', '_FA7', '_FA8',
 		'_FA9', '_FA10', '_FA11', '_FA12', '_FA13', '_FNRL', '_FREL', '_GEDF', '_HAIR',
@@ -705,6 +705,18 @@ class WT_Gedcom_Tag {
 			switch ($sex) {
 			case 'M': return WT_I18N::translate('Death of a grandfather');
 			case 'F': return WT_I18N::translate('Death of a grandmother');
+			default:  return WT_I18N::translate('Death of a grand-parent');
+			}
+		case '_DEAT_GPA1':
+			switch ($sex) {
+			case 'M': return WT_I18N::translate('Death of a paternal grandfather');
+			case 'F': return WT_I18N::translate('Death of a paternal grandmother');
+			default:  return WT_I18N::translate('Death of a grand-parent');
+			}
+		case '_DEAT_GPA2':
+			switch ($sex) {
+			case 'M': return WT_I18N::translate('Death of a maternal grandfather');
+			case 'F': return WT_I18N::translate('Death of a maternal grandmother');
 			default:  return WT_I18N::translate('Death of a grand-parent');
 			}
 		case '_DEAT_HSIB':
