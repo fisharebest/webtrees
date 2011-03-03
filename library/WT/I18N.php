@@ -94,8 +94,12 @@ class WT_I18N {
 				}
 			}
 		}
-		// We now have a valid locale.  Save it and load it.
+		// We now have a valid locale.  Remember it.
 		$_SESSION['locale']=$locale;
+		// The translation files are large and slow.  Use a cache
+		$cache=Zend_Cache::factory('Core', 'File', array('automatic_serialization'=>true), array());
+		Zend_Translate::setCache($cache);
+		// Load the translation file
 		$translate=new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
 		// TODO: This is where we would use $translate->addTranslation() to add module translations
 		// Make the locale and translation adapter available to the rest of the Zend Framework
