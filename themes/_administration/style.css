@@ -88,7 +88,7 @@ html[dir='rtl'] #page_help{text-align:left;}
 #page_help a img{display:none; height:24px; margin:-5px; padding:0; width:24px;}
 
 /* HEADER */
-#admin_head {position:relative; height:70px; margin-bottom:10px;}
+#admin_head {position:relative; height:70px; margin-bottom:10px; min-width:1070px;}
 #title {position:absolute; left:47%; top:20px; font-size:18px; font-weight:bold;}
 #info {position:absolute; right:10px; bottom:0; text-align:right;}
 html[dir='rtl'] #info {right:auto; left:10px; text-align:left;}
@@ -104,6 +104,7 @@ html[dir='rtl'] #links li ul {left:auto; right:0px;}
 
 /* SIDE and CONTENT panels */
 #admin_menu, #admin_content {min-height:580px;}
+#admin_content {min-width:830px;}
 
 /* SIDE MENU */
 #admin_menu {padding:10px 0 10px 5px; width:200px; float:left; position:absolute; color:#2E6E9E; white-space:nowrap; overflow:hidden;}
@@ -142,20 +143,18 @@ html[dir='rtl'] #tree_stats td, #recent td {padding:0 0 0 10px; text-align:left;
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
 #trees span, #recent2 span {text-decoration:underline;}
 
-/*SERVER CONFIG */
+/*SITE CONFIG */
 #site table, #mail table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
-
-/*table.site_config {background:OldLace; border:1px inset #D9D6C4; padding:10px; margin:0 10px;}*/
 .site_config h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}
 .site_config dl {float:left;margin:0 0 0 20px;line-height:21px;}
-.site_config dt {clear: left; float: left; min-width: 370px; margin: 0; padding: 5px 5px 5px 0; border-bottom: 1px solid #999; font-weight: bold;}
+.site_config dt {clear: left; float: left; min-width: 170px; margin: 0; padding: 5px 5px 5px 0; border-bottom: 1px solid #999; font-weight: bold;}
 .site_config dd {border-bottom: 1px solid #999; margin-left: 370px; min-width: 370px; padding: 5px;}
 
 /*SITE LOGS */
 table.site_logs {background:OldLace; border-collapse:separate; border-spacing:0; border:1px inset #D9D6C4; margin:10px;}
-.site_logs td {width:250px; padding:5px; text-align:center;}
+.site_logs td {text-align:center;}
 table#log_list  {width:100%}
-#log_list th {min-width:90px;}
+#log_list th {min-width:80px;}
 
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
