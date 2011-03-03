@@ -261,7 +261,7 @@
 				echo 'title: pl_name,';
 				echo 'draggable: true,';
 				echo 'zIndex:1';
-			echo '});';		
+			echo '});';
 		} else { 
 			echo 'marker = new google.maps.Marker({';
 				echo 'position: latlng,';
@@ -297,6 +297,7 @@
 			pos3 = marker.getPosition();
 			document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos3.lat()).toFixed(prec);
 			document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos3.lng()).toFixed(prec);
+			updateMap('flag_drag');
 			currzoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
 			mapType = map.getMapTypeId();
 			loadMap(currzoom, mapType);
@@ -316,8 +317,6 @@
 			document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos2.lng()).toFixed(prec);
 			updateMap('flag_drag');
 		});
-		
-	
 	}
 	
 	function clearMarks() {
@@ -389,10 +388,9 @@
 		return marker;
 	}
 		
-
 	function change_icon() {
 		window.open('module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $selected_country; ?>', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');
-	return false;
+		return false;
 	}
 
 	function remove_icon() {
