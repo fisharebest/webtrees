@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
-global $iso3166, $WT_IMAGES;
+global $WT_IMAGES;
 $action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['parent'])) $parent=$_REQUEST['parent'];
 if (isset($_REQUEST['display'])) $display=$_REQUEST['display'];
@@ -349,7 +349,7 @@ if ($action=="ImportFile") {
 
 if ($action=="ImportFile2") {
 	$country_names=array();
-	foreach ($iso3166 as $key=>$value) {
+	foreach (WT_Stats::iso3166() as $key=>$value) {
 		$country_names[$key]=WT_I18N::translate($key);
 	}
 	if (isset($_POST["cleardatabase"])) {
