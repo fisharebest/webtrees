@@ -578,7 +578,7 @@ function print_media_links($factrec, $level, $pid='') {
 	global $SEARCH_SPIDER;
 	global $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $LB_URL_WIDTH, $LB_URL_HEIGHT;
-	global $GEDCOM, $MEDIA_TYPES;
+	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	if (!$MULTI_MEDIA) return;
 	$nlevel = $level+1;
@@ -680,13 +680,7 @@ function print_media_links($factrec, $level, $pid='') {
 			}
 			$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $row["m_gedrec"], $match);
 			if ($ttype>0) {
-				$mediaType = $match[1];
-				$varName = strtolower($mediaType);
-				if (array_key_exists($varName, $MEDIA_TYPES)) {
-					$mediaType = $MEDIA_TYPES[$varName];
-				} else {
-					$mediaType = WT_I18N::translate('Other');
-				}
+				$mediaType = WT_Gedcom_Tag::getObjeFileFormTypeValue($match[1]);
 				echo "<br /><span class=\"label\">", WT_I18N::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
 			}
 			//echo "</span>";
@@ -1397,7 +1391,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
  * @param string $pid The record id this media item was attached to
  */
 function print_main_media_row($rtype, $rowm, $pid) {
-	global $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER, $MEDIA_TYPES;
+	global $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER;
 
 	if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec'])) {
 		return false;
@@ -1507,13 +1501,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	$ttype = preg_match("/\d TYPE (.*)/", $rowm["m_gedrec"], $match);
 	if ($ttype>0) {
-		$mediaType = trim($match[1]);
-		$varName = strtolower($mediaType);
-		if (array_key_exists($varName, $MEDIA_TYPES)) {
-			$mediaType = $MEDIA_TYPES[$varName];
-		} else {
-			$mediaType = WT_I18N::translate('Other');
-		}
+		$mediaType = WT_Gedcom_Tag::getObjeFileFormTypeValue($match[1]);
 		echo "<br /><span class=\"label\">", WT_I18N::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
 	}
 	echo "</span>";

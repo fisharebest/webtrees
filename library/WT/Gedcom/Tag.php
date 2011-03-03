@@ -933,9 +933,8 @@ class WT_Gedcom_Tag {
 			'OCCU', 'ORDI', 'ORDN', 'PROB', 'PROP', 'REFN', 'RELI', 'REPO', 'RESI', 'RETI',
 			'RFN', 'RIN', 'SEX', 'SLGC', 'SLGS', 'SSN', 'SUBM', 'TITL', 'WILL', 'WWW',
 			'_BRTM', '_COML', '_DEG', '_EYEC', '_FNRL', '_HAIR', '_HEIG', '_HNM', '_HOL',
-			'_INTE', '_MARI', '_MARNM', '_MBON', '_MDCL', '_MEDC', '_MILI', '_MILT',
-			'_NAME', '_NAMS', '_NLIV', '_NMAR', '_NMR', '_PRMN', '_SEPR', '_TODO', '_UID',
-			'_WEIG', '_YART',
+			'_INTE', '_MARI', '_MBON', '_MDCL', '_MEDC', '_MILI', '_MILT', '_NAME',	'_NAMS',
+			'_NLIV', '_NMAR', '_NMR', '_PRMN', '_SEPR', '_TODO', '_UID', '_WEIG', '_YART',
 		);
 		$facts=array();
 		foreach ($tags as $tag) {
@@ -943,5 +942,50 @@ class WT_Gedcom_Tag {
 		}
 		uasort($facts, 'utf8_strcasecmp');
 		return $facts;
+	}
+
+	//////////////////////////////////////////////////////////////////////////////
+	// Definitions for Object, File, Format, Types
+	//////////////////////////////////////////////////////////////////////////////
+
+	private static $OBJE_FILE_FORM_TYPE=array(
+		'audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic',
+		'fiche', 'film', 'magazine', 'manuscript', 'map', 'newspaper', 'photo',
+		'tombstone', 'video', 'painting', 'other',
+	);
+
+	// Translate the value for 0 OBJE/1 FILE/2 FORM/3 TYPE
+	public static function getObjeFileFormTypeValue($type) {
+		switch (strtolower($type)) {
+		case 'audio':       return WT_I18N::translate('Audio');
+		case 'book':        return WT_I18N::translate('Book');
+		case 'card':        return WT_I18N::translate('Card');
+		case 'certificate': return WT_I18N::translate('Certificate');
+		case 'coat':        return WT_I18N::translate('Coat of Arms');
+		case 'document':    return WT_I18N::translate('Document');
+		case 'electronic':  return WT_I18N::translate('Electronic');
+		case 'fiche':       return WT_I18N::translate('Microfiche');
+		case 'film':        return WT_I18N::translate('Microfilm');
+		case 'magazine':    return WT_I18N::translate('Magazine');
+		case 'manuscript':  return WT_I18N::translate('Manuscript');
+		case 'map':         return WT_I18N::translate('Map');
+		case 'newspaper':   return WT_I18N::translate('Newspaper');
+		case 'photo':       return WT_I18N::translate('Photo');
+		case 'tombstone':   return WT_I18N::translate('Tombstone');
+		case 'video':       return WT_I18N::translate('Video');
+		case 'painting':    return WT_I18N::translate('Painting');
+		default:            return WT_I18N::translate('Other');
+		}
+	}
+
+	// A list of all possible values for 0 OBJE/1 FILE/2 FORM/3 TYPE
+	public static function getObjeFileFormTypes() {
+		$values=array();
+		foreach (self::$OBJE_FILE_FORM_TYPE as $type) {
+			$values[$type]=self::getObjeFileFormTypeValue($type);
+		}
+		uasort($values, 'utf8_strcasecmp');
+		var_dump($values);
+		return $values;
 	}
 }

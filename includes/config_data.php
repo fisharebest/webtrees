@@ -43,8 +43,7 @@ $UNKNOWN_NN=array(
 	'hebrew'    =>'(לא-ידוע)',
 	'arabic'    =>'(غير معروف)',
 	'greek'     =>'(άγνωστος/η)',
-	'russian'   =>'(неопределено)',
-	'cyrillic'  =>'(неопределено)',
+	'cyrillic'  =>'(неопределено)', // Russian
 	'han'       =>'(未知)',
 	'latin'     =>WT_I18N::translate_c('surname', '(unknown)'),
 	'common'    =>WT_I18N::translate_c('surname', '(unknown)'),
@@ -55,34 +54,11 @@ $UNKNOWN_NN=array(
 $UNKNOWN_PN=array(
 	'hebrew'    =>'(לא-ידוע)',
 	'arabic'    =>'(غير معروف)',
-	'greek'     =>'(άγνωστος/η)',
-	'russian'   =>'(неопределено)',
+	'greek'     =>'(άγνωστος/η)', // Russian
 	'cyrillic'   =>'(неопределено)',
 	'han'       =>'(未知)',
 	'latin'     =>WT_I18N::translate_c('given name', '(unknown)'),
 	'common'    =>WT_I18N::translate_c('given name', '(unknown)'),
-);
-
-// Type attribute of a media object
-$MEDIA_TYPES=array(
-	'audio'      =>WT_I18N::translate('Audio'),
-	'book'       =>WT_I18N::translate('Book'),
-	'card'       =>WT_I18N::translate('Card'),
-	'certificate'=>WT_I18N::translate('Certificate'),
-	'coat'       =>WT_I18N::translate('Coat of Arms'),
-	'document'   =>WT_I18N::translate('Document'),
-	'electronic' =>WT_I18N::translate('Electronic'),
-	'fiche'      =>WT_I18N::translate('Microfiche'),
-	'film'       =>WT_I18N::translate('Microfilm'),
-	'magazine'   =>WT_I18N::translate('Magazine'),
-	'manuscript' =>WT_I18N::translate('Manuscript'),
-	'map'        =>WT_I18N::translate('Map'),
-	'newspaper'  =>WT_I18N::translate('Newspaper'),
-	'photo'      =>WT_I18N::translate('Photo'),
-	'tombstone'  =>WT_I18N::translate('Tombstone'),
-	'video'      =>WT_I18N::translate('Video'),
-	'painting'   =>WT_I18N::translate('Painting'),
-	'other'      =>WT_I18N::translate('Other'),
 );
 
 // GEDCOM ADOP codes

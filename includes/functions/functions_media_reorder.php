@@ -46,7 +46,6 @@ function media_reorder_row($rtype, $rowm, $pid) {
 	global $SEARCH_SPIDER;
 	global $t, $n, $item, $items, $p, $edit, $reorder, $LB_AL_THUMB_LINKS, $note, $rowm;
 	global $LB_URL_WIDTH, $LB_URL_HEIGHT, $order1, $mediaType;
-	global $MEDIA_TYPES;
 
 	if (!isset($rowm)) {
 		$rowm=$row;
@@ -99,12 +98,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 		//print media info
 		$ttype2 = preg_match("/\d TYPE (.*)/", $rowm["m_gedrec"], $match);
 		if ($ttype2>0) {
-			$varName = strtolower($match[1]);
-			if (array_key_exists($varName, $MEDIA_TYPES)) {
-				$mediaType = $MEDIA_TYPES[$varName];
-			} else {
-				$mediaType = WT_I18N::translate('Other');
-			}
+			$mediaType = WT_Gedcom_Tag::getObjeFileFormTypeValue($match[1]);
 			// echo "<br /><span class=\"label\">".WT_I18N::translate('Type').": </span> <span class=\"field\">$mediaType</span>";
 		}
 

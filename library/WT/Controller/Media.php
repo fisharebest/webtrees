@@ -311,8 +311,6 @@ class WT_Controller_Media extends WT_Controller_Base {
 	* @return array
 	*/
 	function getFacts($includeFileName=true) {
-		global $MEDIA_TYPES;
-
 		$ignore = array("TITL","FILE");
 		if ($this->show_changes) {
 			$ignore = array();
@@ -324,17 +322,15 @@ class WT_Controller_Media extends WT_Controller_Base {
 		sort_facts($facts);
 		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->mediaobject->getFilename());
 		$mediaType = $this->mediaobject->getMediatype();
-		if (array_key_exists($mediaType, $MEDIA_TYPES)) $facts[] = new WT_Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
-		else $facts[] = new WT_Event("1 TYPE ".WT_I18N::translate('Other'));
+		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getObjeFileFormTypeValue($mediaType));
 
 		if ($this->show_changes && ($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
 			$newfacts = $newmedia->getFacts($ignore);
-			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".$MEDIA_TYPES[$mediaType]);
+			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getObjeFileFormTypeValue($mediaType));
 			$newfacts[] = new WT_Event("1 FORM ".$newmedia->getFiletype());
 			$mediaType = $newmedia->getMediatype();
-			if (array_key_exists($mediaType, $MEDIA_TYPES)) $newfacts[] = new WT_Event("1 TYPE ".$mediaType);
-			else $newfacts[] = new WT_Event("1 TYPE ".WT_I18N::translate('Other'));
+			$newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getObjeFileFormTypeValue($mediaType));
 			//-- loop through new facts and add them to the list if they are any changes
 			//-- compare new and old facts of the Personal Fact and Details tab 1
 			for ($i=0; $i<count($facts); $i++) {

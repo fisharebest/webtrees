@@ -808,7 +808,7 @@ class WT_Stats {
 	function totalMediaUnknown() {return $this->_totalMediaType('unknown');}
 
 	function chartMedia($params=null) {
-		global $TEXT_DIRECTION, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y, $MEDIA_TYPES;
+		global $TEXT_DIRECTION, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
@@ -856,13 +856,8 @@ class WT_Stats {
 		asort($media);
 		foreach ($media as $type=>$count) {
 			$mediaCounts[] = round(100 * $count / $tot, 0);
-			if (array_key_exists($type, $MEDIA_TYPES)) {
-				$mediaTypes .= $MEDIA_TYPES[$type].' - '.$count.'|';
-				$chart_title .= $MEDIA_TYPES[$type].' ['.$count.'], ';
-			} else {
-				$mediaTypes .= WT_I18N::translate('unknown').' - '.$count.'|';
-				$chart_title .= WT_I18N::translate('unknown').' ['.$count.'], ';
-			}
+			$mediaTypes .= WT_Gedcom_Tag::getObjeFileFormTypeValue($type).' - '.$count.'|';
+			$chart_title .= WT_Gedcom_Tag::getObjeFileFormTypeValue($type).' ['.$count.'], ';
 		}
 		$chart_title = substr($chart_title,0,-2);
 		$chd = self::_array_to_extended_encoding($mediaCounts);
