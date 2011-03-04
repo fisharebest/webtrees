@@ -1660,10 +1660,10 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 	if ($lds) {
 		if (preg_match('/2 TEMP (.*)/', $factrec, $match)) {
 			$tcode=trim($match[1]);
-			$html.='<br/>'.WT_I18N::translate('LDS Temple').': '.WT_Gedcom_LDS::templeName($match[1]);
+			$html.='<br/>'.WT_I18N::translate('LDS Temple').': '.WT_Gedcom_Code_LDS::templeName($match[1]);
 		}
 		if (preg_match('/2 STAT (.*)/', $factrec, $match)) {
-			$html.='<br />'.WT_I18N::translate('Status').': '.WT_Gedcom_LDS::statusName($match[1]);
+			$html.='<br />'.WT_I18N::translate('Status').': '.WT_Gedcom_Code_LDS::statusName($match[1]);
 			if (preg_match('/3 DATE (.*)/', $factrec, $match)) {
 				$date=new WT_Date($match[1]);
 				$html.=', '.translate_fact('STAT:DATE').': '.$date->Display(false);
