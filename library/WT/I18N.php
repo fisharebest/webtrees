@@ -159,9 +159,13 @@ class WT_I18N {
 
 					// Sort by the transation of the base language, then the variant.
 					// e.g. English|British English, Portuguese|Brazilian Portuguese
-					$installed_languages[$match[1]]=
-						Zend_Locale::getTranslation($match[2], 'language', $match[2]).'|'.
-						Zend_Locale::getTranslation($match[1], 'language', $match[1]);
+					$tmp1=Zend_Locale::getTranslation($match[1], 'language', $match[1]);
+					if ($match[1]==$match[2]) {
+						$tmp2=$tmp1;
+					} else {
+						$tmp1=Zend_Locale::getTranslation($match[2], 'language', $match[2]);
+					}
+					$installed_languages[$match[1]]=$tmp1.'|'.$tmp2;
 				}
 			}
 			closedir($d);
