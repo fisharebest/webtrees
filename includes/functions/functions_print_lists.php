@@ -1416,6 +1416,9 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
                 "bLengthChange": false,
                 "bFilter": false,
                 "bInfo": false,
+				"oLanguage": {
+					"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
+				},
                 "bJQueryUI": false,
                 "aaSorting": [<?php echo $aaSorting; ?>],
                 "aoColumns": [
