@@ -75,6 +75,19 @@ interface WT_Module_Theme {
 }
 
 abstract class WT_Module {
+
+	private $_title=null;
+
+	public function __toString() {
+		// We need to call getTitle() frequently (e.g. uasort callback function), but
+		// this results in repeated calls to the same WT_I18N::Translate('...')
+		// Caching the result gives a measurable performance boost.
+		if (!isset($this->_title)) {
+			$this->_title=$this->getTitle();
+		}
+		return $this->_title;
+	}
+	
 	// Each module must provide the following functions
 	abstract public function getTitle();       // To label tabs, etc.
 	abstract public function getDescription(); // A sentence describing what this module does
@@ -86,20 +99,20 @@ abstract class WT_Module {
 	}
 
 	// This is an internal name, used to generate identifiers
-	final public function getName() {
+	public function getName() {
 		return str_replace('_WT_Module', '', get_class($this));
 	}
 
 	// Some modules may use the page's controller
 	protected $controller;
-	final public function &getController()   { return $this->controller; }
-	final public function setController(&$c) { $this->controller=$c;     }
+	public function &getController()   { return $this->controller; }
+	public function setController(&$c) { $this->controller=$c;     }
 
 	// Run an action specified on the URL through module.php?mod=FOO&mod_action=BAR
 	public function modAction($mod_action) {
 	}
 
-	final static public function getActiveModules($sort=false) {
+	static public function getActiveModules($sort=false) {
 		// We call this function several times, so cache the results.
 		// Sorting is slow, so only do it when requested.
 		static $modules=null;
@@ -124,13 +137,13 @@ abstract class WT_Module {
 			}
 		}
 		if ($sort && !$sorted) {
-			uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+			uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 			$sorted=true;
 		}
 		return $modules;
 	}
 
-	final static private function getActiveModulesByComponent($component, $ged_id, $access_level) {
+	static private function getActiveModulesByComponent($component, $ged_id, $access_level) {
 		$module_names=WT_DB::prepare(
 			"SELECT module_name".
 			" FROM `##module`".
@@ -153,13 +166,13 @@ abstract class WT_Module {
 			}
 		}
 		if ($component!='menu' && $component!='sidebar' && $component!='tab') {
-			uasort($array, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+			uasort($array, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 		}
 		return $array;
 	}
 
 	// Get a list of all the active, authorised blocks
-	final static public function getActiveBlocks($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	static public function getActiveBlocks($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $blocks=null;
 		if ($blocks===null) {
 			$blocks=self::getActiveModulesByComponent('block', $ged_id, $access_level);
@@ -168,7 +181,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised charts
-	final static public function getActiveCharts($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	static public function getActiveCharts($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $charts=null;
 		if ($charts===null) {
 			$charts=self::getActiveModulesByComponent('chart', $ged_id, $access_level);
@@ -177,7 +190,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised menus
-	final static public function getActiveMenus($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	static public function getActiveMenus($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $menus=null;
 		if ($menus===null) {
 			$menus=self::getActiveModulesByComponent('menu', $ged_id, $access_level);
@@ -186,7 +199,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised reports
-	final static public function getActiveReports($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	static public function getActiveReports($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $reports=null;
 		if ($reports===null) {
 			$reports=self::getActiveModulesByComponent('report', $ged_id, $access_level);
@@ -195,7 +208,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised sidebars
-	final static public function getActiveSidebars($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	static public function getActiveSidebars($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $sidebars=null;
 		if ($sidebars===null) {
 			$sidebars=self::getActiveModulesByComponent('sidebar', $ged_id, $access_level);
@@ -204,7 +217,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised tabs
-	final static public function getActiveTabs($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	static public function getActiveTabs($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $tabs=null;
 		if ($tabs===null) {
 			$tabs=self::getActiveModulesByComponent('tab', $ged_id, $access_level);
@@ -213,7 +226,7 @@ abstract class WT_Module {
 	}
 
 	// Get a list of all the active, authorised themes
-	final static public function getActiveThemes($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
+	static public function getActiveThemes($ged_id=WT_GED_ID, $access_level=WT_USER_ACCESS_LEVEL) {
 		static $themes=null;
 		if ($themes===null) {
 			$themes=self::getActiveModulesByComponent('theme', $ged_id, $access_level);
@@ -222,7 +235,7 @@ abstract class WT_Module {
 	}
 
 	// Get installed modules
-	final static public function getInstalledModules() {
+	static public function getInstalledModules() {
 		static $modules=null;
 		if ($modules===null) {
 			$dir=opendir(WT_ROOT.WT_MODULES_DIR);
@@ -233,13 +246,13 @@ abstract class WT_Module {
 					$modules[$file]=new $class();
 				}
 			}
-			uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp($x->getTitle(), $y->getTitle());'));
+			uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 		}
 		return $modules;
 	}
 
 	// Get installed blocks
-	final static public function getInstalledBlocks() {
+	static public function getInstalledBlocks() {
 		$modules=array();
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Block) {
@@ -250,7 +263,7 @@ abstract class WT_Module {
 	}
 
 	// Get installed charts
-	final static public function getInstalledCharts() {
+	static public function getInstalledCharts() {
 		$modules=array();
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Chart) {
@@ -261,7 +274,7 @@ abstract class WT_Module {
 	}
 
 	// Get installed menus
-	final static public function getInstalledMenus() {
+	static public function getInstalledMenus() {
 		$modules=array();
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Menu) {
@@ -271,12 +284,12 @@ abstract class WT_Module {
 				$modules[$name]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
+		uasort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
 		return $modules;
 	}
 
 	// Get installed reports
-	final static public function getInstalledReports() {
+	static public function getInstalledReports() {
 		$modules=array();
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Report) {
@@ -287,7 +300,7 @@ abstract class WT_Module {
 	}
 
 	// Get installed sidebars
-	final static public function getInstalledSidebars() {
+	static public function getInstalledSidebars() {
 		$modules=array();
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Sidebar) {
@@ -297,12 +310,12 @@ abstract class WT_Module {
 				$modules[$name]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
+		uasort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
 		return $modules;
 	}
 
 	// Get installed tabs
-	final static public function getInstalledTabs() {
+	static public function getInstalledTabs() {
 		$modules=array();
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Tab) {
@@ -312,12 +325,12 @@ abstract class WT_Module {
 				$modules[$name]=$module;
 			}
 		}
-		usort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
+		uasort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
 		return $modules;
 	}
 
 	// Get installed themes
-	final static public function getInstalledThemes() {
+	static public function getInstalledThemes() {
 		$modules=array();
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Theme) {
@@ -327,8 +340,8 @@ abstract class WT_Module {
 		return $modules;
 	}
 
-	//
-	final static public function setDefaultAccess($ged_id) {
+	// We have a new family tree - assign default access rights to it.
+	static public function setDefaultAccess($ged_id) {
 		foreach (self::getInstalledModules() as $module) {
 			WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?)")
 				->execute(array(
