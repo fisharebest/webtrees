@@ -240,40 +240,40 @@ if ($filterev == "all") echo " selected=\"selected\"";
 echo ">".WT_I18N::translate('All')."</option>";
 echo "<option value=\"BIRT\"";
 if ($filterev == "BIRT") echo " selected=\"selected\"";
-echo ">".translate_fact('BIRT')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('BIRT')."</option>";
 echo "<option value=\"CHR\"";
 if ($filterev == "CHR") echo " selected=\"selected\"";
-echo ">".translate_fact('CHR')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('CHR')."</option>";
 echo "<option value=\"CHRA\"";
 if ($filterev == "CHRA") echo " selected=\"selected\"";
-echo ">".translate_fact('CHRA')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('CHRA')."</option>";
 echo "<option value=\"BAPM\"";
 if ($filterev == "BAPM") echo " selected=\"selected\"";
-echo ">".translate_fact('BAPM')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('BAPM')."</option>";
 echo "<option value=\"_COML\"";
 if ($filterev == "_COML") echo " selected=\"selected\"";
-echo ">".translate_fact('_COML')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('_COML')."</option>";
 echo "<option value=\"MARR\"";
 if ($filterev == "MARR") echo " selected=\"selected\"";
-echo ">".translate_fact('MARR')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('MARR')."</option>";
 echo "<option value=\"_SEPR\"";
 if ($filterev == "_SEPR") echo " selected=\"selected\"";
-echo ">".translate_fact('_SEPR')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('_SEPR')."</option>";
 echo "<option value=\"DIV\"";
 if ($filterev == "DIV") echo " selected=\"selected\"";
-echo ">".translate_fact('DIV')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('DIV')."</option>";
 echo "<option value=\"DEAT\"";
 if ($filterev == "DEAT") echo " selected=\"selected\"";
-echo ">".translate_fact('DEAT')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('DEAT')."</option>";
 echo "<option value=\"BURI\"";
 if ($filterev == "BURI") echo " selected=\"selected\"";
-echo ">".translate_fact('BURI')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('BURI')."</option>";
 echo "<option value=\"IMMI\"";
 if ($filterev == "IMMI") echo " selected=\"selected\"";
-echo ">".translate_fact('IMMI')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('IMMI')."</option>";
 echo "<option value=\"EMIG\"";
 if ($filterev == "EMIG") echo " selected=\"selected\"";
-echo ">".translate_fact('EMIG')."</option>";
+echo ">".WT_Gedcom_Tag::getLabel('EMIG')."</option>";
 echo "<option value=\"EVEN\"";
 if ($filterev == "EVEN") echo " selected=\"selected\"";
 echo ">".WT_I18N::translate('Custom Event')."</option>";
@@ -581,7 +581,7 @@ function apply_filter($facts, $filterof, $filtersx) {
 // the place.
 ////////////////////////////////////////////////////////////////////////////////
 function calendar_fact_text($fact, $show_places) {
-	$text=translate_fact($fact['fact']).' - '.$fact['date']->Display(true, "", array());
+	$text=WT_Gedcom_Tag::getLabel($fact['fact']).' - '.$fact['date']->Display(true, "", array());
 	if ($fact['anniv']>0)
 		$text.=' ('.WT_I18N::translate('%s year anniversary', $fact['anniv']).')';
 	if ($show_places && !empty($fact['plac']))
