@@ -218,9 +218,9 @@
 	
 		map = new google.maps.Map(document.getElementById("map_pane"), myOptions);
 
-		// *** === NOTE *** This function creates the UK country overlays ==================
+		// *** === NOTE *** This function creates the UK country overlays ==========================
 		overlays();
-		// === Above function is located in WT_MODULES_DIR/googlemap/wt_v3_placeOverlays.js.php ===
+		// === Above function is located in WT_MODULES_DIR/googlemap/wt_v3_placeOverlays.js.php ====
 		
 		
 		// Close any infowindow when map is clicked
@@ -281,7 +281,7 @@
 		}
 	
 		// Set marker by clicking on map ---
-		google.maps.event.addListener(map, 'click', function(event) {	
+		clickset = google.maps.event.addListener(map, 'click', function(event) {	
 			// alert(pos2);
 			clearMarks();	
 			latlng = event.latLng;
@@ -304,15 +304,13 @@
 		});
 		
 		// Set marker by drag-n-drop on map ---	
-		google.maps.event.addListener(marker, 'drag', function() {
+		dragset = google.maps.event.addListener(marker, 'drag', function() {
 			pos1 = marker.getPosition();
 			document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos1.lat()).toFixed(prec); 
 			document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos1.lng()).toFixed(prec);
 		});	
-		google.maps.event.addListener(marker, 'dragend', function() {
+		dropset = google.maps.event.addListener(marker, 'dragend', function() {
 			pos2 = marker.getPosition();
-			old_lati = document.getElementById('NEW_PLACE_LATI').value;
-			old_long = document.getElementById('NEW_PLACE_LONG').value;
 			document.getElementById('NEW_PLACE_LATI').value = parseFloat(pos2.lat()).toFixed(prec);
 			document.getElementById('NEW_PLACE_LONG').value = parseFloat(pos2.lng()).toFixed(prec);
 			updateMap('flag_drag');
