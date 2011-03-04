@@ -48,7 +48,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		$days = get_block_setting($block_id, 'days', 7);
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');
 		$show_parents = get_block_setting($block_id, 'show_parents', false);
-		$sortStyle = get_block_setting($block_id, 'sortStyle', 'date_asc');
+		$sortStyle = get_block_setting($block_id, 'sortStyle', 'date_desc');
 		$hide_empty = get_block_setting($block_id, 'hide_empty', false);
 		$block = get_block_setting($block_id, 'block', true);
 		if ($cfg) {
@@ -127,7 +127,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'days', safe_POST_integer('days', 1, 30, 7));
 			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'table'), 'table'));
 			set_block_setting($block_id, 'show_parents', safe_POST_bool('show_parents'));
-			set_block_setting($block_id, 'sortStyle', safe_POST('sortStyle', array('name', 'date_asc', 'date_desc'), 'date_asc'));
+			set_block_setting($block_id, 'sortStyle', safe_POST('sortStyle', array('name', 'date_asc', 'date_desc'), 'date_desc'));
 			set_block_setting($block_id, 'hide_empty', safe_POST_bool('hide_empty'));
 			set_block_setting($block_id, 'block', safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
