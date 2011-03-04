@@ -3447,3 +3447,24 @@ function pathinfo_utf($path) {
 
 	return array('dirname'=>$dirname, 'basename'=>$basename, 'extension'=>$extension, 'filename'=>$filename);
 }
+
+// Turn URLs in text into HTML links.  Insert breaks into long URLs
+// so that the browser can word-wrap.
+function expand_urls($text) {
+	// Some versions of RFC3987 have an appendix B which gives the following regex
+	// (([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?
+	// This matches far too much while a "precise" regex is several pages long.
+	// This is a compromise.
+	$URL_REGEX='((https?|ftp]):)(//([^\s/?#<>]*))?([^\s?#<>]*)(\?([^\s#<>]*))?(#[^\s?#<>]+)?';
+
+	return preg_replace_callback(
+		'/'.addcslashes("(?!>)$URL_REGEX(?!</a>)", '/').'/i',
+		create_function( // Insert soft hyphens into the replaced string
+			'$m',
+			'return "<a href=\"".$m[0]."\" target=\"blank\">".preg_replace("/\b/", "&shy;", $m[0])."</a>";'
+		),
+		preg_replace("/<(?!br)/i", "&lt;", $text) // no html except br
+	);
+}
+
+
