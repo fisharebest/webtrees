@@ -641,7 +641,7 @@ if (isset($content) && $content==1) {
 			</div>
 			<div id="surname_opt" style="display:none;">
 			<?php
-			echo translate_fact('SURN'), help_link('google_chart_surname'), '<br /><input type="text" name="SURN" size="20" />';
+			echo WT_Gedcom_Tag::getLabel('SURN'), help_link('google_chart_surname'), '<br /><input type="text" name="SURN" size="20" />';
 			?>
 			<br />
 			</div>
