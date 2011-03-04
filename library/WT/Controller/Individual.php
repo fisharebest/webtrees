@@ -601,7 +601,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @return array an array of Person that will be used to iterate through on the indivudal.php page
 	*/
 	function buildFamilyList(&$family, $type) {
-		global $PEDI_CODES, $PEDI_CODES_F, $PEDI_CODES_M, $WT_IMAGES;
+		global $WT_IMAGES;
 
 		$labels = array();
 		switch ($type) {
@@ -802,9 +802,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcomRecord());
 				$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
 				if ($pedi) {
-					if ($sex=="F" && isset($PEDI_CODES[$pedi]))      $label .= "<br />(".$PEDI_CODES_F[$pedi].")";
-					else if ($sex=="M" && isset($PEDI_CODES[$pedi])) $label .= "<br />(".$PEDI_CODES_M[$pedi].")";
-					else if (isset($PEDI_CODES[$pedi]))              $label .= "<br />(".$PEDI_CODES[$pedi].")";
+					$label.='<br />('.WT_Gedcom_Code_Pedi::getValue($pedi, $children[$i]).')';
 				}
 				$children[$i]->setLabel($label);
 			}
@@ -821,9 +819,9 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		}
 			if ($newchildren[$i]->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 			$pedi = $newchildren[$i]->getChildFamilyPedigree($family->getXref());
-			if ($sex=="F" && isset($PEDI_CODES[$pedi]))      $label .= "<br />(".$PEDI_CODES_F[$pedi].")";
-			else if ($sex=="M" && isset($PEDI_CODES[$pedi])) $label .= "<br />(".$PEDI_CODES_M[$pedi].")";
-			else if (isset($PEDI_CODES[$pedi]))              $label .= "<br />(".$PEDI_CODES[$pedi].")";
+			if ($pedi) {
+				$label.='<br />('.WT_Gedcom_Code_Pedi::getValue($pedi, $newchildren[$i]).')';
+			}
 			$newchildren[$i]->setLabel($label);
 		}
 		$num = count($delchildren);
@@ -838,9 +836,9 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			}
 			if ($delchildren[$i]->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 			$pedi = $delchildren[$i]->getChildFamilyPedigree($family->getXref());
-			if ($sex=="F" && isset($PEDI_CODES[$pedi]))      $label .= "<br />(".$PEDI_CODES_F[$pedi].")";
-			else if ($sex=="M" && isset($PEDI_CODES[$pedi])) $label .= "<br />(".$PEDI_CODES_M[$pedi].")";
-			else if (isset($PEDI_CODES[$pedi]))              $label .= "<br />(".$PEDI_CODES[$pedi].")";
+			if ($pedi) {
+				$label.='<br />('.WT_Gedcom_Code_Pedi::getValue($pedi, $delchildren[$i]).')';
+			}
 			$delchildren[$i]->setLabel($label);
 		}
 

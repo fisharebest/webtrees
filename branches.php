@@ -107,7 +107,7 @@ if ($surn) {
 print_footer();
 
 function print_fams($person, $famid=null) {
-	global $UNKNOWN_NN, $PEDI_CODES, $PEDI_CODES_F, $PEDI_CODES_M, $surn, $surn_script, $TEXT_DIRECTION, $user_ancestors;
+	global $UNKNOWN_NN, $surn, $surn_script, $TEXT_DIRECTION, $user_ancestors;
 	// select person name according to searched surname
 	$person_name = "";
 	foreach ($person->getAllNames() as $n=>$name) {
@@ -145,9 +145,9 @@ function print_fams($person, $famid=null) {
 		$sex = $person->getSex();
 		$famcrec = get_sub_record(1, "1 FAMC @".$famid."@", $person->getGedcomRecord());
 		$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
-		if ($sex=="F" && isset($PEDI_CODES_F[$pedi])) $label = $PEDI_CODES_F[$pedi];
-		else if ($sex=="M" && isset($PEDI_CODES_M[$pedi])) $label = $PEDI_CODES_M[$pedi];
-		else if (isset($PEDI_CODES[$pedi]))     $label = $PEDI_CODES[$pedi];
+		if ($pedi) {
+			$label = WT_Gedcom_Code_Pedi::getValue($pedi, $person);
+		}
 		$current = "<span class='red'>".$label."</span> ".$current;
 	}
 	// spouses and children
