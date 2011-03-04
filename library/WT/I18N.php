@@ -163,9 +163,9 @@ class WT_I18N {
 					if ($match[1]==$match[2]) {
 						$tmp2=$tmp1;
 					} else {
-						$tmp1=Zend_Locale::getTranslation($match[2], 'language', $match[2]);
+						$tmp2=Zend_Locale::getTranslation($match[2], 'language', $match[2]);
 					}
-					$installed_languages[$match[1]]=$tmp1.'|'.$tmp2;
+					$installed_languages[$match[1]]=$tmp2.'|'.$tmp1;
 				}
 			}
 			closedir($d);
