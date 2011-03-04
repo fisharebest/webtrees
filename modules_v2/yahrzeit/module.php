@@ -125,11 +125,11 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 			$content .= "<table id=\"{$table_id}\" class=\"sortable list_table center\">";
 			$content .= "<tr>";
-			$content .= "<th class=\"list_label\">".translate_fact('NAME')."</th>";
+			$content .= "<th class=\"list_label\">".WT_Gedcom_Tag::getLabel('NAME')."</th>";
 			$content .= "<th style=\"display:none\">GIVN</th>";
-			$content .= "<th class=\"list_label\">".translate_fact('DATE')."</th>";
+			$content .= "<th class=\"list_label\">".WT_Gedcom_Tag::getLabel('DATE')."</th>";
 			$content .= '<th class="list_label"><img src="'.$WT_IMAGES['reminder'].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
-			$content .= "<th class=\"list_label\">".translate_fact('_YART')."</th>";
+			$content .= "<th class=\"list_label\">".WT_Gedcom_Tag::getLabel('_YART')."</th>";
 			$content .= "</tr>";
 
 			$count=0;
@@ -185,7 +185,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			// table footer
 			$content .= "<tr class=\"sortbottom\">";
 			$content .= "<td class=\"list_label\">";
-			$content .= '<a href="javascript:;" onclick="sortByOtherCol(this,1)"><img src="images/topdown.gif" alt="" border="0" /> '.translate_fact('GIVN').'</a><br />';
+			$content .= '<a href="javascript:;" onclick="sortByOtherCol(this,1)"><img src="images/topdown.gif" alt="" border="0" /> '.WT_Gedcom_Tag::getLabel('GIVN').'</a><br />';
 			$content .= WT_I18N::translate('Total Names').": ".$count;
 			$content .= '</td>';
 			$content .= '<td style="display:none">GIVN</td>';
