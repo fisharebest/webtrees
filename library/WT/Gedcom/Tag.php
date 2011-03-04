@@ -985,7 +985,6 @@ class WT_Gedcom_Tag {
 			$values[$type]=self::getFileFormTypeValue($type);
 		}
 		uasort($values, 'utf8_strcasecmp');
-		var_dump($values);
 		return $values;
 	}
 }
