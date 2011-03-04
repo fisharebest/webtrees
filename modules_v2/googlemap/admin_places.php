@@ -164,7 +164,7 @@ if ($action=="ExportFile" && WT_USER_IS_ADMIN) {
 	if ($maxLevel>6) echo '"', WT_I18N::translate('Place'), '";';
 	if ($maxLevel>7) echo '"', WT_I18N::translate('Place'), '";';
 	echo '"', WT_I18N::translate('Longitude'), '";"', WT_I18N::translate('Latitude'), '";';
-	echo '"', WT_I18N::translate('Zoom factor'), '";"', WT_I18N::translate('Icon'), WT_EOL;
+	echo '"', WT_I18N::translate('Zoom factor'), '";"', WT_I18N::translate('Icon'), '";', WT_EOL;
 	outputLevel($parent);
 	exit;
 }
