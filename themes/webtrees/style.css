@@ -1709,17 +1709,29 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	width: 20px;
 	float: left;
 }
+html[dir='rtl'] .editlink {
+	background: url(images/edit.png) no-repeat right center;
+	float: right;
+}
 
 .copylink  {
 	background: url(images/copy.png) no-repeat left center;
 	width: 20px;
 	float: left;
 }
+html[dir='rtl'] .copylink {
+	background: url(images/copy.png) no-repeat right center;
+	float: right;
+}
 
 .deletelink  {
 	background: url(images/delete.png) no-repeat left center;
 	width: 20px;
 	float: left;
+}
+html[dir='rtl'] .deletelink {
+	background: url(images/delete.png) no-repeat right center;
+	float: right;
 }
 
 .place {

@@ -1835,17 +1835,29 @@ td.descriptionbox  a {
 	width: 20px;
 	float: left;
 }
+html[dir='rtl'] .editlink, html[dir='rtl'] editlink  {
+	background: url(images/edit_sm.png) no-repeat right center;
+	float: right;
+}
 
 .copylink  {
 	background: url(images/copy.png) no-repeat left center;
 	width: 20px;
 	float: left;
 }
+html[dir='rtl'] .copylink, html[dir='rtl'] copylink  {
+	background: url(images/copy.png) no-repeat right center;
+	float: right;
+}
 
 .deletelink  {
 	background: url(images/delete.png) no-repeat left center;
 	width: 20px;
 	float: left;
+}
+html[dir='rtl'] .deletelink, html[dir='rtl'] deletelink  {
+	background: url(images/delete.png) no-repeat right center;
+	float: right;
 }
 
 .place {

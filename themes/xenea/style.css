@@ -1745,6 +1745,9 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	float: left;
 	padding-top: 5px;
 }
+html[dir='rtl'] .editfacts {
+	float: right;
+}
 
 .link_text {
 	visibility : hidden;
@@ -1755,11 +1758,19 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	width: 20px;
 	float: left;
 }
+html[dir='rtl'] .editlink {
+	background: url(images/edit_sm.png) no-repeat right center;
+	float: right;
+}
 
 .copylink  {
 	background: url(images/copy.png) no-repeat left center;
 	width: 20px;
 	float: left;
+}
+html[dir='rtl'] .copylink {
+	background: url(images/copy.png) no-repeat right center;
+	float: right;
 }
 
 .deletelink  {
@@ -1767,7 +1778,12 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 	width: 20px;
 	float: left;
 }
+html[dir='rtl'] .deletelink {
+	background: url(images/delete.png) no-repeat right center;
+	float: right;
+}
 
 .logo {
 	text-align: center;
 }
+

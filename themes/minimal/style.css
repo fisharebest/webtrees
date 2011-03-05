@@ -1496,9 +1496,15 @@ div.faq_body {
 td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
 	float: left;
 }
+html[dir='rtl'] td.descriptionbox  a {
+	float: right;
+}
 
 .editfacts { /* a container for the following three links */
 	clear: left;
+}
+.editfacts {
+	clear: right;
 }
 
 .link_text {
@@ -1512,6 +1518,10 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 .editlink, .copylink , .deletelink {
 	float:left;
 	padding: 5px 5px 0 0;
+}
+html[dir='rtl'] .editlink, html[dir='rtl'] .copylink , html[dir='rtl'] .deletelink {
+	float:right;
+	padding: 5px 0 0 5px;
 }
 
 .logo {

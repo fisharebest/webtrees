@@ -1814,6 +1814,9 @@ td.descriptionbox  a {
 	clear: left;
 	padding-top: 15px;
 }
+html[dir='rtl'] .editfacts {
+	clear:right;
+}
 
 .editfacts  a:hover { 
 	background-color: transparent;
@@ -1828,11 +1831,21 @@ td.descriptionbox  a {
 	width: 20px;
 	float: left;
 }
+html[dir='rtl'] .editlink, html[dir='rtl'] editlink  {
+	background: url(../images/edit_sm.png) no-repeat right center;
+	width: 20px;
+	float: right;
+}
 
 .copylink  {
 	background: url(../images/copy.png) no-repeat left center;
 	width: 20px;
 	float: left;
+}
+html[dir='rtl'] .copylink, html[dir='rtl'] editlink  {
+	background: url(../images/copy.png) no-repeat right center;
+	width: 20px;
+	float: right;
 }
 
 .deletelink  {
@@ -1840,6 +1853,12 @@ td.descriptionbox  a {
 	width: 20px;
 	float: left;
 }
+html[dir='rtl'] .deletelink, html[dir='rtl'] editlink  {
+	background: url(../images/delete.png) no-repeat right center;
+	width: 20px;
+	float: right;
+}
+
 .place {
 	padding-top: 5px;
 }
