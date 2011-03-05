@@ -74,6 +74,7 @@ $WT_IMAGES=array(
 	'sex_f_9x9'=>WT_THEME_DIR.'images/sex_f_9x9.gif',
 	'sex_m_9x9'=>WT_THEME_DIR.'images/sex_m_9x9.gif',
 	'sex_u_9x9'=>WT_THEME_DIR.'images/sex_u_9x9.gif',
+	'warning'=>WT_THEME_DIR.'images/warning.png',
 
 	// media images
 	'media'=>WT_THEME_DIR.'images/media/media.png',
