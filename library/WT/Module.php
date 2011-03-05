@@ -122,6 +122,7 @@ abstract class WT_Module {
 			$module_names=WT_DB::prepare(
 				"SELECT module_name FROM `##module` WHERE status='enabled'"
 			)->fetchOneColumn();
+			$modules=array();
 			foreach ($module_names as $module_name) {
 				if (file_exists(WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php')) {
 					require_once WT_ROOT.WT_MODULES_DIR.$module_name.'/module.php';
