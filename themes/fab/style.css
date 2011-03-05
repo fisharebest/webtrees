@@ -8,23 +8,6 @@
 * $Id$
 */
 
-/* temp stuff - for old PGV menus */
-.submenu, .sublinks_table {
-	background-color:#EEE;
-	border:thin solid #AAA;
-}
-.sublinks_cell {
-	text-align:center;
-}
-.sublinks_cell .icon {
-	display:none;
-}
-@media print {
-.submenu, .sublinks_table, .help {
-	display:none;
-	}
-}
-
 /* Thin grey borders around block-level elements */
 input,
 textarea,
