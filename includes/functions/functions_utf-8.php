@@ -142,7 +142,7 @@ function utf8_substr($string, $pos, $len=PHP_INT_MAX) {
 		$start=0;
 		while ($pos>0 && $start<$strlen) {
 			++$start;
-			while ((ord($string[$start]) & 0xC0) == 0x80) {
+			while ($start<$strlen && (ord($string[$start]) & 0xC0) == 0x80) {
 				++$start;
 			}
 			--$pos;
