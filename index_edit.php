@@ -140,7 +140,7 @@ if ($action=="configure") {
 	}
 	$class_name=$block_name.'_WT_Module';
 	$block=new $class_name;
-	echo "<table class=\"facts_table ".$TEXT_DIRECTION."\" width=\"99%\">";
+	echo "<table class=\"facts_table\" width=\"99%\">";
 	echo "<tr><td class=\"facts_label\">";
 	echo "<h2>".WT_I18N::translate('Configure')."</h2>";
 	echo "</td></tr>";
@@ -160,7 +160,7 @@ if ($action=="configure") {
 <?php
 	echo "<form name=\"block\" method=\"post\" action=\"index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id=", $block_id, "\">";
 	echo "<input type=\"hidden\" name=\"save\" value=\"1\" />";
-	echo "<table border=\"0\" class=\"facts_table ".$TEXT_DIRECTION."\">";
+	echo "<table border=\"0\" class=\"facts_table\">";
 	$block->configureBlock($block_id);
 	echo "<tr><td colspan=\"2\" class=\"topbottombar\">";
 	echo "<input type=\"button\" value=\"".WT_I18N::translate('Save')."\" onclick=\"document.block.submit();\" />";
@@ -302,7 +302,7 @@ if ($action=="configure") {
 	<input type="hidden" name="ctype" value="<?php echo $ctype; ?>" />
 	<input type="hidden" name="action" value="update" />
 	<input type="hidden" name="name" value="<?php echo $name; ?>" />
-	<table dir="ltr" border="1" width="400px">
+	<table border="1" width="400px">
 	<tr><td class="topbottombar" colspan="7">
 	<?php
 	if ($ctype=="user") echo "<b>".WT_I18N::translate('Customize My Page')."</b>";
@@ -332,7 +332,7 @@ if ($action=="configure") {
 
 	echo "</td>";
 	// NOTE: Row 2 column 2: Left (Main) block list
-	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
+	echo "<td class=\"optionbox\">";
 		echo "<select multiple=\"multiple\" id=\"main_select\" name=\"main[]\" size=\"10\" onchange=\"show_description('main_select');\">";
 		foreach ($blocks['main'] as $block_id=>$block_name) {
 			echo "<option value=\"$block_id\">".$all_blocks[$block_name]->getTitle()."</option>";
@@ -351,7 +351,7 @@ if ($action=="configure") {
 
 	echo "</td>";
 	// Row 2 column 4: Middle (Available) block list
-	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
+	echo "<td class=\"optionbox\">";
 		echo "<select id=\"available_select\" name=\"available[]\" size=\"10\" onchange=\"show_description('available_select');\">";
 		foreach ($all_blocks as $block_name=>$block) {
 			echo "<option value=\"$block_name\">".$block->getTitle()."</option>";
@@ -369,7 +369,7 @@ if ($action=="configure") {
 		echo help_link('block_move_right');
 	echo "</td>";
 	// NOTE: Row 2 column 6: Right block list
-	echo "<td class=\"optionbox\" dir=\"".$TEXT_DIRECTION."\">";
+	echo "<td class=\"optionbox\">";
 		echo "<select multiple=\"multiple\" id=\"right_select\" name=\"right[]\" size=\"10\" onchange=\"show_description('right_select');\">";
 		foreach ($blocks['side'] as $block_id=>$block_name) {
 			echo "<option value=\"$block_id\">".$all_blocks[$block_name]->getTitle()."</option>";
@@ -386,7 +386,7 @@ if ($action=="configure") {
 	echo "</td>";
 	echo "</tr>";
 	// NOTE: Row 3 columns 1-7: Summary description of currently selected block
-	echo "<tr><td class=\"descriptionbox wrap\" colspan=\"7\" dir=\"".$TEXT_DIRECTION."\"><div id=\"instructions\">";
+	echo "<tr><td class=\"descriptionbox wrap\" colspan=\"7\"><div id=\"instructions\">";
 	echo WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
 	echo "</div></td></tr>";
 	echo "<tr><td class=\"topbottombar\" colspan=\"7\">";
