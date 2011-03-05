@@ -80,9 +80,9 @@ img {
 }
 
 legend img {
-	height: 25px;
+	height: 20px;
 	vertical-align: middle;
-	width: 25px;
+	width: 20px;
 }
 
 img.block, #calendar_img, #biglink img, #mycart img  {
@@ -1688,7 +1688,7 @@ html[dir='rtl'] #extra-menu.makeMenu li ul {
 /*--- edit links ---*/
 
 .edit_link:after { /* used only on the user list */
-	content: " " url(images/edit_sm.png);
+	content: " " url(images/edit.png);
 }
 
 td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
@@ -1705,7 +1705,7 @@ td.descriptionbox  a { /* this keeps the tag color the same when it is a link as
 }
 
 .editlink  {
-	background: url(images/edit_sm.png) no-repeat left center;
+	background: url(images/edit.png) no-repeat left center;
 	width: 20px;
 	float: left;
 }

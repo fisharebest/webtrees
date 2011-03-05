@@ -39,7 +39,7 @@ echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
 	echo
 		'<p class="logo">',
 			'<a href="', WT_WEBTREES_URL, '" target="_blank">',
-			'<img src="', $WT_IMAGES['webtrees'], '" width="100" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '"',
+			'<img src="', $WT_IMAGES['webtrees'], '" width="100" height="21" border="0" alt="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "", '"',
 				' title="', WT_WEBTREES, WT_USER_IS_ADMIN? (" - " .WT_VERSION_TEXT): "" , '" /></a>',
 		'</p>';
 	if ($SHOW_STATS || WT_DEBUG) {
