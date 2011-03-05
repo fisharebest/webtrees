@@ -735,7 +735,7 @@ right:10px;
 
 /*-- descendancy chart specific stylesheets --*/
 #descendancy_chart ul {
-	background-image:url(images/vline.gif);
+	background-image:url(images/vline.png);
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style: none;
@@ -774,7 +774,7 @@ html[dir='rtl'] #relationship_chart {
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {
-	background-image: url(images/vline.gif);
+	background-image: url(images/vline.png);
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style: none;
