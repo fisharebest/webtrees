@@ -40,7 +40,7 @@ print_header(WT_I18N::translate('Administration'));
 
 // Check for updates
 $latest_version_txt=fetch_latest_version();
-if ($latest_version_txt) {
+if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 	list($latest_version, $earliest_version, $download_url)=explode('|', $latest_version_txt);
 } else {
 	// Cannot determine the latest version
