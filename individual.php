@@ -119,7 +119,7 @@ jQuery(document).ready(function() {
 			?>
 		</h1>
 			<div id="indi_mainimage">
-				<?php if ($controller->canShowHighlightedObject()) {
+				<?php if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
 					echo $controller->getHighlightedObject();
 				} ?>
 			</div>
