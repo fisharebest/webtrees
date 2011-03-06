@@ -1522,7 +1522,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 */
 
 	} else if ($fact=="TEMP") {
-		echo select_edit_control($element_name, WT_Gedcom_Code_LDS::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
+		echo select_edit_control($element_name, WT_Gedcom_Code_Temp::templeNames(), WT_I18N::translate('No Temple - Living Ordinance'), $value);
 	} else if ($fact=="ADOP") {
 		switch ($gender) {
 		case 'M': echo edit_field_adop_m($element_name, $value); break;
@@ -1536,7 +1536,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		default:  echo edit_field_pedi_u($element_name, $value); break;
 		}
 	} else if ($fact=="STAT") {
-		echo select_edit_control($element_name, WT_Gedcom_Code_LDS::statusNames($upperlevel), '', $value);
+		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
 	} else if ($fact=="RELA") {
 		echo edit_field_rela($element_name, strtolower($value));
 	} else if ($fact=="_WT_USER") {
@@ -2481,7 +2481,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 		if ($level==2 && $type=='DATE' && in_array($level1type, $date_and_time) && !in_array('TIME', $subtags)) {
 			add_simple_tag("3 TIME"); // TIME is NOT a valid 5.5.1 tag
 		}
-		if ($level==2 && $type=='STAT' && WT_Gedcom_Code_LDS::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
+		if ($level==2 && $type=='STAT' && WT_Gedcom_Code_Temp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
 			add_simple_tag("3 DATE", '', translate_fact('STAT:DATE'));
 		}
 
@@ -2554,7 +2554,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 					add_simple_tag("3 PLAC");
 					break;
 				case "STAT":
-					if (WT_Gedcom_Code_LDS::isTagLDS($level1tag)) {
+					if (WT_Gedcom_Code_Temp::isTagLDS($level1tag)) {
 						add_simple_tag("3 DATE", '', translate_fact('STAT:DATE'));
 					}
 					break;
