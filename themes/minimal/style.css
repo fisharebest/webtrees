@@ -28,6 +28,12 @@
  * @subpackage Themes
  * @version $Id$
  */
+
+
+.something {
+	/*empty style to make sure that the BODY style is not ignored */
+}
+
 body {
 	color: black;
 	background-color: white;
@@ -565,6 +571,17 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .sublinks_table .icon {
+	vertical-align: middle;
+	width: 25px;
+	height: 25px;
+}
+
+.menuitem .icon {
+	width: 50px;
+	height: 50px;
+}
+
+.submenu .icon {
 	vertical-align: middle;
 	width: 25px;
 	height: 25px;
@@ -1345,6 +1362,16 @@ ul.clist {
 	width: 8em;
 }
 
+/*
+.menu_separator {
+	height: 3px;
+	display: block;
+	background-image: url(images/hline.gif);
+	background-repeat: repeat-x;
+	background-position: center middle;
+}
+*/
+
 .statistics_chart {
 	text-align: center;
 	text-align: center;
@@ -1624,4 +1651,9 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink , html[dir='rtl'] .deleteli
 .logo {
 	text-align: center;
 }
-
+#topMenu {
+margin-left: auto;
+margin-right: auto;
+width: 75%;
+border-spacing: 0px;
+} 
