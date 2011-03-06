@@ -95,7 +95,7 @@ a {
 	text-decoration: none;
 	}
 
-a.link:link, a.link:visited, a.link:active, a.link:hover, .menuitem a, .nameZoom {
+a:link, a:visited, a:active, a:hover, .menuitem a, .nameZoom {
 color:#003399;
 }
 
