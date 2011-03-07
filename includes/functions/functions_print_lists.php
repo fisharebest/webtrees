@@ -1339,7 +1339,7 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
         // setup sorting parameters
         $arr[$n]['record'] = $record;
         $arr[$n]['jd'] = ($sort == 'name') ? 1 : $n;
-        $arr[$n]['anniv'] = strtotime(str_replace('-', '', $record->LastChangeTimestamp(false)));
+        $arr[$n]['anniv'] = $record->LastChangeTimestamp(false, true);
         $arr[$n++]['fact'] = $record->getSortName(); // in case two changes have same timestamp
     }
 
@@ -1505,7 +1505,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
         //-- Last change user
         $return .= "<td class='list_value_wrap'>" . $record->LastChangeUser() . "</td>";
         //-- change date (sortable) hidden by datatables code
-        $return .= "<td  style='display:none;'>" . strtotime(str_replace('-', '', $record->LastChangeTimestamp(false))) . "</td>";
+        $return .= "<td  style='display:none;'>" . $record->LastChangeTimestamp(false, true) . "</td>";
         //-- names (sortable) hidden by datatables code
         $return .= "<td  style='display:none;'>" . $record->getSortName() . "</td></tr>";
     }

@@ -820,9 +820,9 @@ class WT_GedcomRecord {
 
 	//////////////////////////////////////////////////////////////////////////////
 	// Get the last-change timestamp for this record - optionally wrapped in a
-	// link to ourself.
+	// link to ourself, sorting - used in recent changes table for time sorting
 	//////////////////////////////////////////////////////////////////////////////
-	public function LastChangeTimestamp($add_url) {
+	public function LastChangeTimestamp($add_url, $sorting=false) {
 		global $DATE_FORMAT, $TIME_FORMAT;
 
 		$chan = $this->getChangeEvent();
@@ -833,11 +833,13 @@ class WT_GedcomRecord {
 
 		$d = $chan->getDate();
 		if (preg_match('/^(\d\d):(\d\d):(\d\d)/', get_gedcom_value('DATE:TIME', 2, $chan->getGedcomRecord(), '', false).':00', $match)) {
-			$t=mktime($match[1], $match[2], $match[3]);
 			$sort=$d->MinJD().$match[1].$match[2].$match[3];
+			if ($sorting) return $sort;
+			$t=mktime($match[1], $match[2], $match[3]);
 			$text=strip_tags($d->Display(false, "{$DATE_FORMAT} - ", array()).date(str_replace('%', '', $TIME_FORMAT), $t));
 		} else {
 			$sort=$d->MinJD().'000000';
+			if ($sorting) return $sort;
 			$text=strip_tags($d->Display(false, "{$DATE_FORMAT}", array()));
 		}
 		if ($add_url) {
