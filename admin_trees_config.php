@@ -77,6 +77,53 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 	return $zipfile;
 }
 
+/**
+ * The media firewall should always be enabled. This function adds media firewall code to the media/.htaccess file if it is not already there
+ */
+function fix_media_htaccess() {
+	global $errors, $error_msg, $MEDIA_DIRECTORY, $MULTI_MEDIA;
+	if (!$MULTI_MEDIA) return; // don't create an htaccess flie if media is disabled
+	$whichFile = $MEDIA_DIRECTORY.".htaccess";
+	$httext = "";
+	if (file_exists($whichFile)) {
+		$httext = implode('', file($whichFile));
+		if ($httext && strpos('RewriteRule .* '.WT_SCRIPT_PATH.'mediafirewall.php [L]', $httext) !== false) {
+			return; // don't mess with the file if it already refers to the mediafirewall
+		} else {
+			// remove all WT media firewall sections from the .htaccess
+			$httext = preg_replace('/\n?^[#]*\s*BEGIN WT MEDIA FIREWALL SECTION(.*\n){10}[#]*\s*END WT MEDIA FIREWALL SECTION\s*[#]*\n?/m', "", $httext);
+			// comment out any existing lines that set ErrorDocument 404
+			$httext = preg_replace('/^(ErrorDocument\s*404(.*))\n?/', "#$1\n", $httext);
+			$httext = preg_replace('/[^#](ErrorDocument\s*404(.*))\n?/', "\n#$1\n", $httext);
+		}
+	}
+	// add new WT media firewall section to the end of the file
+	$httext .= "\n######## BEGIN WT MEDIA FIREWALL SECTION ##########";
+	$httext .= "\n################## DO NOT MODIFY ###################";
+	$httext .= "\n## THERE MUST BE EXACTLY 11 LINES IN THIS SECTION ##";
+	$httext .= "\n<IfModule mod_rewrite.c>";
+	$httext .= "\n\tRewriteEngine On";
+	$httext .= "\n\tRewriteCond %{REQUEST_FILENAME} !-f";
+	$httext .= "\n\tRewriteCond %{REQUEST_FILENAME} !-d";
+	$httext .= "\n\tRewriteRule .* ".WT_SCRIPT_PATH."mediafirewall.php"." [L]";
+	$httext .= "\n</IfModule>";
+	$httext .= "\nErrorDocument\t404\t".WT_SCRIPT_PATH."mediafirewall.php";
+	$httext .= "\n########## END WT MEDIA FIREWALL SECTION ##########";
+
+	$fp = @fopen($whichFile, "wb");
+	if (!$fp) {
+		$errors = true;
+		$error_msg .= "<span class=\"error\">".WT_I18N::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</span><br />";
+		return;
+	} else {
+		fwrite($fp, $httext);
+		fclose($fp);
+		chmod($whichFile, WT_PERM_FILE); // Make sure apache can read this file
+	}
+	return true;
+}
+
+
 $errors=false;
 $error_msg='';
 
@@ -258,10 +305,7 @@ case 'update':
 		$error_msg .= "<span class=\"error\">".WT_I18N::translate('The Media Firewall root directory you requested does not exist.  You must create it first.')."</span><br />";
 	}
 	if (!$errors) {
-		// create the media directory
-		// if NEW_MEDIA_FIREWALL_ROOTDIR is the INDEX_DIRECTORY, WT will have perms to create it
-		// if WT is unable to create the directory, tell the user to create it
-		if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true && $USE_MEDIA_FIREWALL==false) {
+		// Since the media firewall is always enabled, need to verify that the protected media dir exists
 			if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
 				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY, WT_PERM_EXE);
 				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
@@ -269,11 +313,9 @@ case 'update':
 					$error_msg .= "<span class=\"error\">".WT_I18N::translate('The protected media directory could not be created in the Media Firewall root directory.  Please create this directory and make it world-writable.')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />";
 				}
 			}
-		}
 	}
 	if (!$errors) {
-		// create the thumbs dir to make sure we have write perms
-		if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true && $USE_MEDIA_FIREWALL==false) {
+		// Since the media firewall is always enabled, need to verify that the protected thumbs dir exists
 			if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs")) {
 				@mkdir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs", WT_PERM_EXE);
 				if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."thumbs")) {
@@ -281,11 +323,9 @@ case 'update':
 					$error_msg .= "<span class=\"error\">".WT_I18N::translate('The protected media directory in the Media Firewall root directory is not world writable. ')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />";
 				}
 			}
-		}
 	}
 	if (!$errors) {
 		// copy the .htaccess file from INDEX_DIRECTORY to NEW_MEDIA_FIREWALL_ROOTDIR in case it is still in a web-accessible area
-		if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true && $USE_MEDIA_FIREWALL==false) {
 			if ((file_exists($INDEX_DIRECTORY.".htaccess")) && (is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) && (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) ) {
 				@copy($INDEX_DIRECTORY.".htaccess", $NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess");
 				if (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) {
@@ -293,73 +333,13 @@ case 'update':
 					$error_msg .= "<span class=\"error\">".WT_I18N::translate('The protected media directory in the Media Firewall root directory is not world writable. ')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />";
 				}
 			}
-		}
 	}
 	if (!$errors) {
 		set_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_ROOTDIR', safe_POST('NEW_MEDIA_FIREWALL_ROOTDIR'));
 	}
 
-	if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true && $USE_MEDIA_FIREWALL==false) {
-		AddToLog("Media Firewall enabled", 'config');
-
-		if (!$errors) {
-			// create/modify an htaccess file in the main media directory
-			$httext = "";
-			if (file_exists($MEDIA_DIRECTORY.".htaccess")) {
-				$httext = implode('', file($MEDIA_DIRECTORY.".htaccess"));
-				// remove all WT media firewall sections from the .htaccess
-				$httext = preg_replace('/\n?^[#]*\s*BEGIN WT MEDIA FIREWALL SECTION(.*\n){10}[#]*\s*END WT MEDIA FIREWALL SECTION\s*[#]*\n?/m', "", $httext);
-				// comment out any existing lines that set ErrorDocument 404
-				$httext = preg_replace('/^(ErrorDocument\s*404(.*))\n?/', "#$1\n", $httext);
-				$httext = preg_replace('/[^#](ErrorDocument\s*404(.*))\n?/', "\n#$1\n", $httext);
-			}
-			// add new WT media firewall section to the end of the file
-			$httext .= "\n######## BEGIN WT MEDIA FIREWALL SECTION ##########";
-			$httext .= "\n################## DO NOT MODIFY ###################";
-			$httext .= "\n## THERE MUST BE EXACTLY 11 LINES IN THIS SECTION ##";
-			$httext .= "\n<IfModule mod_rewrite.c>";
-			$httext .= "\n\tRewriteEngine On";
-			$httext .= "\n\tRewriteCond %{REQUEST_FILENAME} !-f";
-			$httext .= "\n\tRewriteCond %{REQUEST_FILENAME} !-d";
-			$httext .= "\n\tRewriteRule .* ".WT_SCRIPT_PATH."mediafirewall.php"." [L]";
-			$httext .= "\n</IfModule>";
-			$httext .= "\nErrorDocument\t404\t".WT_SCRIPT_PATH."mediafirewall.php";
-			$httext .= "\n########## END WT MEDIA FIREWALL SECTION ##########";
-
-			$whichFile = $MEDIA_DIRECTORY.".htaccess";
-			$fp = @fopen($whichFile, "wb");
-			if (!$fp) {
-				$errors = true;
-				$error_msg .= "<span class=\"error\">".WT_I18N::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</span><br />";
-			} else {
-				fwrite($fp, $httext);
-				fclose($fp);
-				chmod($whichFile, 0644); // Make sure apache can read this file
-			}
-		}
-	} elseif ($_POST["NEW_USE_MEDIA_FIREWALL"]==false && $USE_MEDIA_FIREWALL==true) {
-		AddToLog("Media Firewall disabled", 'config');
-
-		if (file_exists($MEDIA_DIRECTORY.".htaccess")) {
-			$httext = implode('', file($MEDIA_DIRECTORY.".htaccess"));
-			// remove all WT media firewall sections from the .htaccess
-			$httext = preg_replace('/\n?^[#]*\s*BEGIN WT MEDIA FIREWALL SECTION(.*\n){10}[#]*\s*END WT MEDIA FIREWALL SECTION\s*[#]*\n?/m', "", $httext);
-			// comment out any lines that set ErrorDocument 404
-			$httext = preg_replace('/^(ErrorDocument\s*404(.*))\n?/', "#$1\n", $httext);
-			$httext = preg_replace('/[^#](ErrorDocument\s*404(.*))\n?/', "\n#$1\n", $httext);
-			$whichFile = $MEDIA_DIRECTORY.".htaccess";
-			$fp = @fopen($whichFile, "wb");
-			if (!$fp) {
-				$errors = true;
-				$error_msg .= "<span class=\"error\">".WT_I18N::translate('E R R O R !!!<br />Could not write to file <i>%s</i>.  Please check it for proper Write permissions.', $whichFile)."</span><br />";
-			} else {
-				fwrite($fp, $httext);
-				fclose($fp);
-				chmod($whichFile, 0644); // Make sure apache can read this file
-			}
-		}
-
-	}
+	// ensure the media directory has an htaccess file that enables the media firewall 
+	fix_media_htaccess();
 
 	if (!$errors) {
 		$gednews = getUserNews(WT_GEDCOM);
@@ -374,8 +354,13 @@ case 'update':
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 		exit;
 	}
-}
+	break;
+default:
+	// ensure the media directory has an htaccess file that enables the media firewall 
+	fix_media_htaccess();
+	break;
 
+}
 print_header(WT_I18N::translate('Family tree configuration'));
 if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
@@ -885,16 +870,8 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<th colspan="2">
-							<?php echo WT_I18N::translate('Media Firewall'); ?>
+							<?php echo WT_I18N::translate('Media Firewall'); ?> (see <a href="http://wiki.webtrees.net/Media_Firewall" target="_blank">the wiki</a>)
 						</th>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Use media firewall'), help_link('USE_MEDIA_FIREWALL'); ?>
-						</td>
-						<td>
-							<?php echo edit_field_yes_no('NEW_USE_MEDIA_FIREWALL', get_gedcom_setting(WT_GED_ID, 'USE_MEDIA_FIREWALL')); ?>
-						</td>
 					</tr>
 					<tr>
 						<td>
@@ -903,6 +880,14 @@ echo WT_JS_START;?>
 						<td>
 							<input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php echo ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" /><br />
 						<?php echo WT_I18N::translate('When this field is empty, the <b>%s</b> directory will be used.', $INDEX_DIRECTORY); ?>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Automatically protect new images'), help_link('USE_MEDIA_FIREWALL'); ?>
+						</td>
+						<td>
+							<?php echo edit_field_yes_no('NEW_USE_MEDIA_FIREWALL', get_gedcom_setting(WT_GED_ID, 'USE_MEDIA_FIREWALL')); ?>
 						</td>
 					</tr>
 					<tr>

@@ -37,12 +37,12 @@ class WT_Controller_Media extends WT_Controller_Base {
 	var $show_changes=true;
 
 	function init() {
-		global $MEDIA_DIRECTORY, $USE_MEDIA_FIREWALL;
+		global $MEDIA_DIRECTORY;
 
 		$filename = safe_GET('filename');
 		$this->mid = safe_GET_xref('mid');
 
-		if ($USE_MEDIA_FIREWALL && empty($filename) && empty($this->mid)) {
+		if (empty($filename) && empty($this->mid)) {
 			// this section used by mediafirewall.php to determine what media file was requested
 
 			if (isset($_SERVER['REQUEST_URI'])) {

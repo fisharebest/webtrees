@@ -3213,7 +3213,7 @@ function isFileExternal($file) {
 function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin='', $obeyViewerOption=true) {
 	global $THUMBNAIL_WIDTH, $WT_IMAGES;
 	global $LB_URL_WIDTH, $LB_URL_HEIGHT;
-	global $GEDCOM, $USE_MEDIA_VIEWER, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS;
+	global $GEDCOM, $USE_MEDIA_VIEWER;
 
 	$result = array();
 
@@ -3382,31 +3382,25 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin=
 
 	// -- Use an overriding thumbnail if one has been provided
 	// Don't accept any overriding thumbnails that are in the "images" or "themes" directories
-	if (strpos($thumbName, 'images/')!==0 && strpos($thumbName, WT_THEMES_DIR)!==0) {
-		if ($USE_MEDIA_FIREWALL && $MEDIA_FIREWALL_THUMBS) {
-			$tempThumbName = get_media_firewall_path($thumbName);
-		} else {
-			$tempThumbName = $thumbName;
-		}
-		if (file_exists($tempThumbName)) {
-			$thumb = $thumbName;
-		}
-	}
-
-	// -- Use the theme-specific media icon if nothing else works
 	$realThumb = $thumb;
-	if (substr($type, 0, 6)=='local_' && !file_exists($thumb)) {
-		if (!$USE_MEDIA_FIREWALL || !$MEDIA_FIREWALL_THUMBS) {
-			$thumb = $WT_IMAGES['media'];
-			$realThumb = $thumb;
-		} else {
-			$realThumb = get_media_firewall_path($thumb);
-			if (!file_exists($realThumb)) {
+	if (strpos($thumbName, 'images/')!==0 && strpos($thumbName, WT_THEMES_DIR)!==0) {
+		switch (media_exists($thumbName)) {
+			case false: // file doesn't exist
 				$thumb = $WT_IMAGES['media'];
-				$realThumb = $thumb;
-			}
-		}
-		$width = '';
+				$realThumb = $WT_IMAGES['media'];
+				break;
+			case 1: // external file
+				// do nothing
+				break;
+			case 2: // file in standard media directory
+				$thumb = $thumbName;
+				$realThumb = $thumbName;
+				break;
+			case 3: // file in protected media directory
+				$thumb = $thumbName;
+				$realThumb = get_media_firewall_path($thumbName);
+				break;
+		} 
 	}
 
 	// At this point, $width, $realThumb, and $thumb describe the thumbnail to be displayed

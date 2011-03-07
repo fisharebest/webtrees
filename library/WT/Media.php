@@ -110,7 +110,6 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string
 	 */
 	function getServerFilename() {
-		global $USE_MEDIA_FIREWALL;
 		if ($this->serverfilename) return $this->serverfilename;
 		$localfilename = $this->getLocalFilename();
 		if (!empty($localfilename)) {
@@ -120,14 +119,12 @@ class WT_Media extends WT_GedcomRecord {
 				$this->serverfilename = $localfilename;
 				return $this->serverfilename;
 			}
-			if ($USE_MEDIA_FIREWALL) {
-				$protectedfilename = get_media_firewall_path($localfilename);
-				if (file_exists($protectedfilename)) {
-					// found image in protected directory
-					$this->fileexists = 3;
-					$this->serverfilename = $protectedfilename;
-					return $this->serverfilename;
-				}
+			$protectedfilename = get_media_firewall_path($localfilename);
+			if (file_exists($protectedfilename)) {
+				// found image in protected directory
+				$this->fileexists = 3;
+				$this->serverfilename = $protectedfilename;
+				return $this->serverfilename;
 			}
 		}
 		// file doesn't exist, return the standard localfilename for backwards compatibility

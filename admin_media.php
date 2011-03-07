@@ -108,7 +108,7 @@ function move_file($src, $dest) {
 * and vice-versa.  Operates directly on the filesystem, does not use the db.
 */
 function move_files($path, $protect) {
-	global $MEDIA_FIREWALL_THUMBS, $starttime;
+	global $MEDIA_FIREWALL_THUMBS, $starttime, $operation_count;
 	$timelimit=get_site_setting('MAX_EXECUTION_TIME');
 	if ($dir=@opendir($path)) {
 		while (($element=readdir($dir))!== false) {
@@ -125,6 +125,11 @@ function move_files($path, $protect) {
 					// call this function recursively on this directory
 					move_files($filename, $protect);
 				} else {
+					$operation_count++;
+					if ($operation_count % 10) {
+						// flush the buffer so the user can tell something is happening
+						flush(); 
+					}
 					if ($protect) {
 						// Move single file and optionally its corresponding thumbnail to protected dir
 						if (file_exists($filename)) {
@@ -162,7 +167,7 @@ function move_files($path, $protect) {
 * Operates directly on the filesystem, does not use the db.
 */
 function set_perms($path) {
-	global $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY, $starttime;
+	global $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY, $starttime, $operation_count;
 	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $path."/")==0) {
 		return false;
 	}
@@ -192,6 +197,11 @@ function set_perms($path) {
 					} else {
 						echo "<div>".WT_I18N::translate('Permissions Not Set')." [".decoct(WT_PERM_FILE)."] [".$fullpath."]</div>";
 					}
+					$operation_count++;
+					if ($operation_count % 10) {
+						// flush the buffer so the user can tell something is happening
+						flush(); 
+					}
 				}
 			}
 		}
@@ -202,6 +212,7 @@ function set_perms($path) {
 
 // global var used by recursive functions
 $starttime = time();
+$operation_count = 0;
 
 // TODO Determine source and validation requirements for these variables
 $filename=safe_REQUEST($_REQUEST, 'filename');
@@ -222,6 +233,8 @@ $all=safe_REQUEST($_REQUEST, 'all', 'yes', 'no');
 if (isset($_REQUEST['xref'])) $xref = $_REQUEST['xref'];
 
 if (count($_POST) == 0) $showthumb = true;
+
+$is_std_media_writable = dir_is_writable($MEDIA_DIRECTORY);
 
 $thumbget = "";
 if ($showthumb) $thumbget = "&amp;showthumb=true";
@@ -303,9 +316,8 @@ function showchanges() {
 <?php
 if (check_media_structure()) {
 	echo "<div id=\"uploadmedia\" style=\"display:none\">";
-	// Check if Media Directory is writeable or if Media features are enabled
-	// If one of these is not true then do not continue
-	if (!dir_is_writable($MEDIA_DIRECTORY) || !$MULTI_MEDIA) {
+	// Check if Standard Media Directory is writeable, doesn't matter if we upload to protected directory
+	if ((!$is_std_media_writable && !$USE_MEDIA_FIREWALL ) || !$MULTI_MEDIA) {
 		echo "<p class=\"error\"><b>";
 		echo WT_I18N::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
 		echo "</b></p>";
@@ -821,39 +833,9 @@ if (check_media_structure()) {
 </form>
 <?php
 	if (!empty($savedOutput)) echo $savedOutput; // echo everything we have saved up
-
-	if ($action == "filter" && $subclick != "none") {
+	if ($action == "filter") {
 		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
-			// only check for externalLinks when dealing with the root folder
-			$showExternal = ($directory == $MEDIA_DIRECTORY) ? true : false;
-			$medialist=get_medialist(true, $directory, false, false, $showExternal);
 
-
-// Get the list of media items
-/**
- * This is the default action for the page
- *
- * Displays a list of dirs and files. Displaying only
- * thumbnails as the images may be large and we do not want large delays
- * while administering the file structure
- *
- * @name $action->filter
- */
-		// Show link to previous folder
-		$levels = explode('/', $directory);
-		$pdir = '';
-		for ($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i].'/';
-		if ($pdir != '') {
-			$uplink = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;amp;sortby={$sortby}&amp;amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\">";
-			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
-			$uplink .= $pdir;
-			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
-			$uplink .= "</a>";
-
-			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\"><img class=\"icon-larrow\" src=\"";
-			$uplink2 .= $WT_IMAGES["larrow"];
-			$uplink2 .= "\" alt=\"".WT_I18N::translate('Back')."\" title=\"".WT_I18N::translate('Back')."\" /></a>";
-		}
 		// Start of media directory table
 		echo "<table class=\"media_items $TEXT_DIRECTION\">";
 		// Tell the user where he is
@@ -861,9 +843,8 @@ if (check_media_structure()) {
 		echo "<td colspan=\"4\">";
 			echo WT_I18N::translate('Current directory');
 			echo ":&nbsp;&nbsp;&nbsp;";
-			if ($USE_MEDIA_FIREWALL) {
-				echo $MEDIA_FIREWALL_ROOTDIR;
-			}
+//			if ($USE_MEDIA_FIREWALL) { echo $MEDIA_FIREWALL_ROOTDIR; }
+
 			echo PrintReady(substr($directory, 0, -1));
 			echo "<br />";
 
@@ -883,9 +864,7 @@ if (check_media_structure()) {
 				while (false !== ($file = readdir($handle))) {
 					if (!in_array($file, $BADMEDIA)) $files[] = $file;
 				}
-			} else {
-				echo "<div class=\"error\">".$directory." ".WT_I18N::translate('Directory does not exist.')."</div>";
-				AddToLog('Directory does not exist.'.$directory, 'media');
+				closedir($handle);
 			}
 			// Thumbs directory check
 			if (@is_dir(filename_decode($thumbdir))) {
@@ -903,6 +882,7 @@ if (check_media_structure()) {
 				while (false !== ($file = readdir($handle))) {
 					if (!in_array($file, $BADMEDIA)) $files_fw[] = $file;
 				}
+				closedir($handle);
 			}
 			// Media Firewall Thumbs directory check
 			if (@is_dir(filename_decode($thumbdir_fw))) {
@@ -925,43 +905,59 @@ if (check_media_structure()) {
 			echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
 			echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
 
-			if ($USE_MEDIA_FIREWALL) {
+			if ($USE_MEDIA_FIREWALL && $is_std_media_writable) {
 				if ($protected_files < $standard_files) {
 					echo '<div class="error">';
-					echo WT_I18N::translate('The media Firewall is ENABLED but your media may still be located in the Standard Media Directory').'<br />';
-					echo WT_I18N::translate('Choose either').'<br />';
-					echo WT_I18N::translate('(a) Click the "Move ALL to Protected" button to move your media to the protected directory').'<br />';
-					echo WT_I18N::translate('or').'<br />';
-					echo WT_I18N::translate('(b) Disable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
+					echo WT_I18N::translate('Some of your media files are not in the protected media directory.').'<br />';
+					echo WT_I18N::translate('You should click the "Move ALL to Protected" button to move your media to the protected directory').'<br />';
 					echo '</div>';
 				}
-					echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
-					echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
-					echo help_link('move_mediadirs');
-			echo "&nbsp;&nbsp;&nbsp;";
-			}
-
-			if (!$USE_MEDIA_FIREWALL && is_dir($MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) {
-				if ($protected_files > $standard_files) {
-					echo '<div class="error">';
-					echo WT_I18N::translate('The media Firewall is DISABLED but your media may still be located in the Protected Media Directory').'<br />';
-					echo WT_I18N::translate('Choose either').'<br />';
-					echo WT_I18N::translate('(a) Click the "Move ALL to Standard" button to move your media to the standard directory').'<br />';
-					echo WT_I18N::translate('or').'<br />';
-					echo WT_I18N::translate('(b) Re-enable The Media Firewall Directory in the GEDCOM configuration section').'<br /><br />';
-					echo '</div>';
-					echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
-					echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
-					echo help_link('move_mediadirs');
-			echo ":&nbsp;&nbsp;&nbsp;";
-				}
+				echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
+				echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
+				echo help_link('move_mediadirs');
+				echo "&nbsp;&nbsp;&nbsp;";
 			}
 
 			echo "<input type=\"submit\" value=\"".WT_I18N::translate('Correct read/write/execute permissions')."\" onclick=\"this.form.action.value='setpermsfix';\" />";
 			echo help_link('setperms');
 			echo "</form>";
 			echo "</td>";
-		echo "</tr>";
+		echo "</tr>\n";
+
+		flush();
+
+	if ($subclick == "none") {
+		echo "</table>\n";
+	} else {
+// Get the list of media items
+/**
+ * This is the default action for the page
+ *
+ * Displays a list of dirs and files. Displaying only
+ * thumbnails as the images may be large and we do not want large delays
+ * while administering the file structure
+ *
+ * @name $action->filter
+ */
+		// only check for externalLinks when dealing with the root folder
+		$showExternal = ($directory == $MEDIA_DIRECTORY) ? true : false;
+		$medialist=get_medialist(true, $directory, false, false, $showExternal);
+
+		// Show link to previous folder
+		$levels = explode('/', $directory);
+		$pdir = '';
+		for ($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i].'/';
+		if ($pdir != '') {
+			$uplink = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;amp;sortby={$sortby}&amp;amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\">";
+			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
+			$uplink .= $pdir;
+			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
+			$uplink .= "</a>";
+
+			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\"><img class=\"icon-larrow\" src=\"";
+			$uplink2 .= $WT_IMAGES["larrow"];
+			$uplink2 .= "\" alt=\"".WT_I18N::translate('Back')."\" title=\"".WT_I18N::translate('Back')."\" /></a>";
+		}
 
 		// display the directory list
 		if (count($dirs) || $pdir != '') {
@@ -991,7 +987,7 @@ if (check_media_structure()) {
 						echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
 						echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
 						echo "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".WT_I18N::translate('Delete')."\" title=\"".WT_I18N::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".WT_I18N::translate('Are you sure you want to delete this folder?')."');\" /></td>";
-						if ($USE_MEDIA_FIREWALL) {
+						if ($USE_MEDIA_FIREWALL && $is_std_media_writable) {
 							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\" /></td>";
 							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\" /></td>";
 						}
@@ -1009,7 +1005,7 @@ if (check_media_structure()) {
 				}
 			}
 		}
-		echo "</table>";
+		echo "</table>\n";
 		echo "<br />";
 
 		// display the images
@@ -1159,7 +1155,7 @@ echo WT_JS_START; ?>
 
 
 							// Move image between standard and protected directories
-							if ($USE_MEDIA_FIREWALL && ($media["EXISTS"] > 1)) {
+							if (($media["EXISTS"] > 1) && $is_std_media_writable) {
 								$tempURL = WT_SCRIPT_NAME.'?';
 								if ($media["EXISTS"] == 2) {
 									$tempURL .= "action=moveprotected";
@@ -1246,7 +1242,6 @@ echo WT_JS_START; ?>
 						}
 
 
-						if ($USE_MEDIA_FIREWALL) {
 							if ($media["EXISTS"]) {
 								echo "<br />";
 								switch ($media["EXISTS"]) {
@@ -1276,7 +1271,6 @@ echo WT_JS_START; ?>
 								}
 								echo '<br />';
 							}
-						}
 						echo "</td></tr>";
 						break;
 					}
@@ -1289,7 +1283,8 @@ echo WT_JS_START; ?>
 	</form>
 	<?php
 		}
-	}
+	} // end check for ($subclick == "none")
+	} // end check for ($action == "filter")
 } else {
 	echo WT_I18N::translate('The media folder is corrupted.');
 }

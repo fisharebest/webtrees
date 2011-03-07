@@ -173,7 +173,7 @@ function check_media_structure() {
 function get_medialist($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $excludeLinks = false) {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
 	global $level, $dirs, $MEDIA_DIRECTORY;
-	global $MEDIA_EXTERNAL, $USE_MEDIA_FIREWALL;
+	global $MEDIA_EXTERNAL;
 
 	// Create the medialist array of media in the DB and on disk
 	// NOTE: Get the media in the DB
@@ -252,107 +252,6 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 	// At the same time, accumulate a list of GEDCOM IDs that have changes pending approval
 
 	$changedRecords = array ();
-/* DO WE NEED THIS?  Surely we should not be showing unapproved media objects on the welcome page?
-	foreach ($pgv_changes as $changes) {
-		foreach ($changes as $change) {
-			while (true) {
-				if ($change["gedcom"] != WT_GEDCOM || $change["status"] != "submitted")
-					break;
-
-				$gedrec = $change['undo'];
-				if (empty($gedrec))
-					break;
-
-				$ct = preg_match("/0 @.*@ (\w*)/", $gedrec, $match);
-				$type = trim($match[1]);
-				if ($type != "OBJE") {
-					$changedRecords[] = $change["gid"];
-					break;
-				}
-
-				// Build a sortable key for the medialist
-				$firstChar = substr($change["gid"], 0, 1);
-				$restChar = substr($change["gid"], 1);
-				if (is_numeric($firstChar)) {
-					$firstChar = "";
-					$restChar = $change["gid"];
-				}
-				$keyMediaList = $firstChar . substr("000000" . $restChar, -6) . "_" . WT_GED_ID;
-				if (isset ($medialist[$keyMediaList])) {
-					$medialist[$keyMediaList]["CHANGE"] = $change["type"];
-					break;
-				}
-
-				// Build the entry for this new Media object
-				$media = array ();
-				$media["ID"] = $change["gid"];
-				$media["XREF"] = $change["gid"];
-				$media["GEDFILE"] = WT_GED_ID;
-				$media["FILE"] = "";
-				$media["THUMB"] = "";
-				$media["THUMBEXISTS"] = false;
-				$media["EXISTS"] = false;
-				$media["FORM"] = "";
-				$media["TYPE"] = "";
-				$media["TITL"] = "";
-				$media["GEDCOM"] = $gedrec;
-				$media["LEVEL"] = "0";
-				$media["LINKED"] = false;
-				$media["LINKS"] = array ();
-				$media["CHANGE"] = "append";
-
-				// Now fill in the blanks
-				$subrecs = get_all_subrecords($gedrec, "_PRIM,_THUM,CHAN");
-				foreach ($subrecs as $subrec) {
-					$pieces = explode("\r\n", $subrec);
-					foreach ($pieces as $piece) {
-						$ft = preg_match("/(\d) (\w+)(.*)/", $piece, $match);
-						if ($ft > 0) {
-							$subLevel = $match[1];
-							$fact = trim($match[2]);
-							$event = trim($match[3]);
-							$event .= get_cont(($subLevel +1), $subrec, false);
-
-							if ($fact == "FILE")
-								$media["FILE"] = str_replace(array("\r", "\n"), "", $event);
-							if ($fact == "FORM")
-								$media["FORM"] =  str_replace(array("\r", "\n"), "", $event);
-							if ($fact == "TITL")
-								$media["TITL"] = $event;
-						}
-					}
-				}
-
-				// And a few more blanks
-				if (empty($media["FILE"]))
-					break;
-				$fileName = check_media_depth($media["FILE"], "NOTRUNC", "QUIET");
-				if ($MEDIA_EXTERNAL && isFileExternal($media["FILE"])) {
-					$media["THUMB"] = $fileName;
-					$media["THUMBEXISTS"] = 1;  // 1 means external
-					$media["EXISTS"] = 1;  // 1 means external
-				} else {
-					// if currentdir is true, then we are only looking for files in $directory, no subdirs
-					if ($currentdir && $directory != dirname($fileName) . "/")
-						break;
-					// if currentdir is false, then we are looking for all files recursively below $directory.  ignore anything outside of $directory
-					if (!$currentdir && strpos(dirname($fileName), $directory . "/") === false )
-						break;
-					$media["THUMB"] = thumbnail_file($fileName);
-					$media["THUMBEXISTS"] = media_exists($media["THUMB"]);
-					$media["EXISTS"] = media_exists($fileName);
-				}
-
-				// Now save this for future use
-				//echo $keyMediaList.": "; print_r($media); echo "<br/><br/>";
-				$medialist[$keyMediaList] = $media;
-				$mediaObjects[] = $media["XREF"];
-
-				break;
-			}
-		}
-	}
-*/
 
 if (!$excludeLinks) {
 	foreach ($medialist as $key=>$media) {
@@ -430,7 +329,7 @@ if (!$excludeLinks) {
 	if (is_dir(filename_decode($directory))) {
 		array_push($dirs_to_check, $directory);
 	}
-	if ($USE_MEDIA_FIREWALL && is_dir(filename_decode(get_media_firewall_path($directory)))) {
+	if (is_dir(filename_decode(get_media_firewall_path($directory)))) {
 		array_push($dirs_to_check, get_media_firewall_path($directory));
 	}
 
@@ -759,7 +658,7 @@ function media_icon_file($filename, $generateThumb = true, $overwrite = false) {
 *  to know about every Media folder that's being created.
 */
 function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
-	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL;
+	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS;
 
 	if (empty($filename) || ($MEDIA_EXTERNAL && isFileExternal($filename)))
 		return $filename;
@@ -842,49 +741,63 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 	$n = $nStart;
 	while ($n < $nEnd) {
 		$folderName .= $folderList[$n];
-		if (!is_dir(filename_decode($MEDIA_DIRECTORY . $folderName))) {
-			if (!mkdir(filename_decode($MEDIA_DIRECTORY . $folderName))) {
+
+		$destFolder = $MEDIA_DIRECTORY . $folderName;
+		$destThumbFolder = $MEDIA_DIRECTORY . "thumbs/" . $folderName;
+
+		if ($USE_MEDIA_FIREWALL) {
+			$destFolder = get_media_firewall_path($MEDIA_DIRECTORY . $folderName);
+			if ($MEDIA_FIREWALL_THUMBS) $destThumbFolder = get_media_firewall_path($MEDIA_DIRECTORY . "thumbs/" . $folderName);
+		}
+
+		if (!is_dir(filename_decode($destFolder))) {
+			if (!mkdir(filename_decode($destFolder))) {
 				if ($noise == "VERBOSE") {
-					echo "<div class=\"error\">" . WT_I18N::translate('Directory could not be created') . $MEDIA_DIRECTORY . $folderName . "</div>";
+					echo "<div class=\"error\">" . WT_I18N::translate('Directory could not be created') . $destFolder . "</div>";
 				}
 			} else {
 				if ($noise == "VERBOSE") {
-					echo WT_I18N::translate('Directory created') . ": " . $MEDIA_DIRECTORY . $folderName . "/<br />";
+					echo WT_I18N::translate('Directory created') . ": " . $destFolder . "/<br />";
 				}
-				$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . $folderName . "/index.php"), "w+");
-				if (!$fp) {
-					if ($noise == "VERBOSE") {
-						echo "<div class=\"error\">" . WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . $folderName . "</div>";
+				if (!$USE_MEDIA_FIREWALL) { // create index.php in standard media directory only when media firewall is not the default
+					$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . $folderName . "/index.php"), "w+");
+					if (!$fp) {
+						if ($noise == "VERBOSE") {
+							echo "<div class=\"error\">" . WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . $folderName . "</div>";
+						}
+					} else {
+						fwrite($fp, "<?php\r\n");
+						fwrite($fp, "header(\"Location: {$backPointer}medialist.php\");\r\n");
+						fwrite($fp, "exit;\r\n");
+						fwrite($fp, "?>\r\n");
+						fclose($fp);
 					}
-				} else {
-					fwrite($fp, "<?php\r\n");
-					fwrite($fp, "header(\"Location: {$backPointer}medialist.php\");\r\n");
-					fwrite($fp, "exit;\r\n");
-					fwrite($fp, "?>\r\n");
-					fclose($fp);
 				}
+
 			}
 		}
-		if (!is_dir(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName))) {
-			if (!mkdir(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName))) {
+		if (!is_dir(filename_decode($destThumbFolder))) {
+			if (!mkdir(filename_decode($destThumbFolder))) {
 				if ($noise == "VERBOSE") {
-					echo "<div class=\"error\">" . WT_I18N::translate('Directory could not be created') . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
+					echo "<div class=\"error\">" . WT_I18N::translate('Directory could not be created') . $destThumbFolder . "</div>";
 				}
 			} else {
 				if ($noise == "VERBOSE") {
-					echo WT_I18N::translate('Directory created') . ": " . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "/<br />";
+					echo WT_I18N::translate('Directory created') . ": " . $destThumbFolder . "/<br />";
 				}
-				$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName . "/index.php"), "w+");
-				if (!$fp) {
-					if ($noise == "VERBOSE") {
-						echo "<div class=\"error\">" . WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
+				if (!$USE_MEDIA_FIREWALL || !$MEDIA_FIREWALL_THUMBS) { // create index.php in standard media directory only when media firewall is not the default
+					$fp = @ fopen(filename_decode($MEDIA_DIRECTORY . "thumbs/" . $folderName . "/index.php"), "w+");
+					if (!$fp) {
+						if ($noise == "VERBOSE") {
+							echo "<div class=\"error\">" . WT_I18N::translate('Security Warning: Could not create file <b><i>index.php</i></b> in ') . $MEDIA_DIRECTORY . "thumbs/" . $folderName . "</div>";
+						}
+					} else {
+						fwrite($fp, "<?php\r\n");
+						fwrite($fp, "header(\"Location: {$backPointer}../medialist.php\");\r\n");
+						fwrite($fp, "exit;\r\n");
+						fwrite($fp, "?>\r\n");
+						fclose($fp);
 					}
-				} else {
-					fwrite($fp, "<?php\r\n");
-					fwrite($fp, "header(\"Location: {$backPointer}../medialist.php\");\r\n");
-					fwrite($fp, "exit;\r\n");
-					fwrite($fp, "?>\r\n");
-					fclose($fp);
 				}
 			}
 		}
@@ -901,10 +814,11 @@ function check_media_depth($filename, $truncate = "FRONT", $noise = "VERBOSE") {
 * @return array
 */
 function get_media_folders() {
-	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS;
+	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $BADMEDIA;
 
 	$folderList = array ();
-	$folderList[0] = $MEDIA_DIRECTORY;
+	$folderList[0] = $MEDIA_DIRECTORY; // look in both the standard and protected directories
+	$folderList[1] = get_media_firewall_path($MEDIA_DIRECTORY);
 	if ($MEDIA_DIRECTORY_LEVELS == 0)
 		return $folderList;
 
@@ -925,17 +839,26 @@ function get_media_folders() {
 					break;
 				if (is_dir($currentFolder . $entry)) {
 					// Weed out some folders we're not interested in
-					if ($entry != "." && $entry != ".." && $entry != "CVS" && $entry != ".svn") {
-						if ($currentFolder . $entry . "/" != $MEDIA_DIRECTORY . "thumbs/") {
-							$folderList[$nextFolderNum] = $currentFolder . $entry . "/";
-							$nextFolderNum++;
-						}
+					if (!in_array($entry, $BADMEDIA)) {
+						$folderList[$nextFolderNum] = $currentFolder . $entry . "/";
+						$nextFolderNum++;
 					}
 				}
 			}
 			$dir->close();
 		}
 	}
+
+	// remove the media firewall path from the directory listings
+	$currentFolderNum = 0;
+	while ($currentFolderNum < count($folderList)) {
+		$folderList[$currentFolderNum] = get_media_standard_path($folderList[$currentFolderNum]);
+		$currentFolderNum++;
+	}
+
+	// remove duplicates caused by looking in both the standard and protected directories
+	$folderList = array_unique($folderList);
+
 	sort($folderList);
 	return $folderList;
 }
@@ -968,10 +891,8 @@ function process_uploadMedia_form() {
 				if ($MEDIA_FIREWALL_THUMBS) $destThumbFolder = get_media_firewall_path($thumbFolderName);
 			}
 
-			// make sure the dirs exist
-			@mkdirs($folderName);
+			// make sure the destination dirs exist
 			@mkdirs($destFolder);
-			@mkdirs($thumbFolderName);
 			@mkdirs($destThumbFolder);
 
 			$error = "";
@@ -1089,6 +1010,7 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 	if ($thumbSupport != '') $thumbSupport = substr($thumbSupport, 2); // Trim off first ", "
 
 	// Determine file size limit
+	// TODO: do we need to check post_max_size size too?
 	$filesize = ini_get('upload_max_filesize');
 	if (empty($filesize)) $filesize = "2M";
 
@@ -1562,13 +1484,12 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 
 // looks in both the standard and protected media directories
 function findImageSize($file) {
-	global $USE_MEDIA_FIREWALL;
 	if (strtolower(substr($file, 0, 7)) == "http://")
 		$file = "http://" . rawurlencode(substr($file, 7));
 	else
 		$file = filename_decode($file);
 	$imgsize = @getimagesize($file);
-	if ($USE_MEDIA_FIREWALL && !$imgsize) {
+	if (!$imgsize) {
 		$imgsize = @getimagesize(get_media_firewall_path($file));
 	}
 	if (!$imgsize) {
@@ -1785,37 +1706,32 @@ function cropImage($image, $dest_image, $left, $top, $right, $bottom) { //$image
 // returns 3 if it was found in the media firewall directory
 // returns false if not found
 function media_exists($filename) {
-	global $USE_MEDIA_FIREWALL;
 	if (empty($filename)) { return false; }
 	if (isFileExternal($filename)) { return 1; }
 	$filename = filename_decode($filename);
 	if (file_exists($filename)) { return 2; }
-	if ($USE_MEDIA_FIREWALL && file_exists(get_media_firewall_path($filename))) { return 3; }
+	if (file_exists(get_media_firewall_path($filename))) { return 3; }
 	return false;
 }
 
 // returns size of file.  looks in both the standard and protected media directories
 function media_filesize($filename) {
-	global $USE_MEDIA_FIREWALL;
 	$filename = filename_decode($filename);
 	if (file_exists($filename)) { return filesize($filename); }
-	if ($USE_MEDIA_FIREWALL && file_exists(get_media_firewall_path($filename))) { return filesize(get_media_firewall_path($filename)); }
+	if (file_exists(get_media_firewall_path($filename))) { return filesize(get_media_firewall_path($filename)); }
 	return;
 }
 
 // returns path to file on server
 function get_server_filename($filename) {
-		global $USE_MEDIA_FIREWALL;
 		if (file_exists($filename)) {
 			return($filename);
 		}
-		if ($USE_MEDIA_FIREWALL) {
-			$protectedfilename = get_media_firewall_path($filename);
-			if (file_exists($protectedfilename)) {
-				return($protectedfilename);
-			}
+		$protectedfilename = get_media_firewall_path($filename);
+		if (file_exists($protectedfilename)) {
+			return($protectedfilename);
 		}
-		return($filename);
+		return($filename); // TODO: should this return null?
 }
 
 // pass in the standard media directory

@@ -74,7 +74,6 @@ $locked_by_context = array('index.php', 'config.ini.php');
 // If we are storing the media in the data directory (this is the
 // default for the media firewall), then don't delete it.
 if (
-	$USE_MEDIA_FIREWALL &&
 	$MEDIA_FIREWALL_ROOTDIR==$INDEX_DIRECTORY &&
 	(substr($MEDIA_DIRECTORY, 0, 1)!='.')
 ) {

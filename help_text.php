@@ -1957,8 +1957,8 @@ case 'USE_GEONAMES':
 	break;
 
 case 'USE_MEDIA_FIREWALL':
-	$title=WT_I18N::translate('Use media firewall');
-	$text=''; // TODO: the original help text refered to the PGV wiki page (http://wiki.phpgedview.net/en/index.php?title=Media_Firewall), which is out-of-date.  We should either write an equivalent page for webtrees, or put some help inline.
+	$title=WT_I18N::translate('Automatically protect new images');
+	$text=WT_I18N::translate('Should new images automatically go in the protected media directory when they are uploaded?'); 
 	break;
 
 case 'USE_MEDIA_VIEWER':
