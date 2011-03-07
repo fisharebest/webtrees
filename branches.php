@@ -185,7 +185,7 @@ function print_fams($person, $famid=null) {
 			list($surn2, $givn2) = explode(", ", $spouse_name.", x");
 			$txt .= $spouse->getSexImage().
 				"<a target=\"_blank\" class=\"{$class}\" title=\"".$family->getXref()."\" href=\"{$family->getHtmlUrl()}\">".PrintReady($givn2)."</a> ".
-				"<a class=\"{$class}\" title=\"{$surn2}\" href=\"javascript:document.surnlist.surn.value='{$surn2}';document.surnlist.submit();\">".PrintReady($surn2)."</a> ".
+				"<a class=\"{$class}\" title=\"{$surn2}\" href=\"".WT_SCRIPT_NAME."?surn=".urlencode($surn2)."&amp;ged=".WT_GEDURL."\">".PrintReady($surn2)."</a> ".
 				$spouse->getBirthDeathYears()." {$sosa2}";
 		}
 		echo $txt;
