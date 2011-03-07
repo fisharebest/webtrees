@@ -151,7 +151,7 @@ if ($action=="sendFiles") {
 	}
 
 	if (isset($fam_lists)) {
-		foreach (get_indilist_salpha($SHOW_MARRIED_NAMES, true, $index) as $letter=>$count) {
+		foreach (WT_Query_Name::surnameAlpha($SHOW_MARRIED_NAMES, true, $index) as $letter=>$count) {
 			if ($letter!='@') {
 				echo " <url>\n";
 				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "famlist.php?alpha=", urlencode($letter), "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
@@ -163,7 +163,7 @@ if ($action=="sendFiles") {
 	}
 
 	if (isset($indi_lists)) {
-		foreach (get_indilist_salpha($SHOW_MARRIED_NAMES, false, $index) as $letter=>$count) {
+		foreach (WT_Query_Name::surnameAlpha($SHOW_MARRIED_NAMES, false, $index) as $letter=>$count) {
 			if ($letter!='@') {
 				echo " <url>\n";
 				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "indilist.php?alpha=", urlencode($letter), "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";

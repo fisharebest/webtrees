@@ -356,6 +356,10 @@ function reformat_record_import($rec) {
 		case '_MILITARY_SERVICE':
 			$tag='_MILT';
 			break;
+		case 'NAME':
+			// Tidy up whitespace
+			$data=preg_replace('/  +/', ' ', trim($data));
+			break;
 		case 'NAME_PREFIX':
 			$tag='NPFX';
 			break;

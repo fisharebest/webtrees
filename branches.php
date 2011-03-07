@@ -52,7 +52,7 @@ if (WT_USER_GEDCOM_ID) {
 
 //-- random surname
 if ($surn=='*') {
-	$surn = array_rand(get_indilist_surns("", "", false, true, WT_GED_ID));
+	$surn = array_rand(WT_Query_Name::surnames("", "", false, true, WT_GED_ID));
 }
 
 //-- form

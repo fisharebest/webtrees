@@ -1,6 +1,6 @@
 <?php
-// Update the database schema from version 8 to 9
-// - add support for the persian/jalali calendar
+// Update the database schema from version 9 to 10
+// - change index on name table
 //
 // The script should assume that it can be interrupted at
 // any point, and be able to continue by re-running the script.
@@ -33,11 +33,23 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_DB_SCHEMA_8_9', '');
+define('WT_DB_SCHEMA_9_10', '');
 
+// A bug in the original version of db_schema_8_9 failed to update this :-(
+// Do it again....
 try {
 	self::exec(
 		"ALTER TABLE `##dates` CHANGE d_type d_type ENUM('@#DGREGORIAN@', '@#DJULIAN@', '@#DHEBREW@', '@#DFRENCH R@', '@#DHIJRI@', '@#DROMAN@', '@#DJALALI@')"
+	);
+} catch (PDOException $ex) {
+	// Already been run?
+}
+
+
+try {
+	// The INDILIST and FAMLIST scripts have been rewritten to use this index
+	self::exec(
+		"ALTER TABLE `##name` DROP INDEX ix2, ADD INDEX ix2 (n_surn, n_file, n_type, n_id), ADD INDEX ix3 (n_givn, n_file, n_type, n_id)"
 	);
 } catch (PDOException $ex) {
 	// Already been run?

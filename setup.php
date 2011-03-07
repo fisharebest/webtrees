@@ -847,7 +847,8 @@ try {
 		" n_soundex_surn_dm  VARCHAR(255)     NULL,".
 		" PRIMARY KEY (n_id, n_file, n_num),".
 		"         KEY ix1 (n_full, n_id, n_file),".
-		"         KEY ix2 (n_file, n_surn)".
+		"         KEY ix2 (n_surn, n_file, n_type, n_id),".
+		"         KEY ix3 (n_givn, n_file, n_type, n_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 	$dbh->exec(
@@ -962,7 +963,7 @@ try {
 	);
 	$dbh->exec(
 		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
-		"('WT_SCHEMA_VERSION',               '9'),".
+		"('WT_SCHEMA_VERSION',               '10'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".

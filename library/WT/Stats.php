@@ -3322,7 +3322,7 @@ class WT_Stats {
 		// Note that we count/display SPFX SURN, but sort/group under just SURN
 		$surnames=array();
 		foreach (array_keys($surname_list) as $surname) {
-			$surnames=array_merge($surnames, get_indilist_surns($surname, '', false, false, WT_GED_ID));
+			$surnames=array_merge($surnames, WT_Query_Name::surnames($surname, '', false, false, WT_GED_ID));
 		}
 		return format_surname_list($surnames, ($type=='list' ? 1 : 2), $show_tot, 'indilist');
 	}
@@ -3356,7 +3356,7 @@ class WT_Stats {
 			if ($n>=$maxtoshow) {
 				break;
 			}
-			$all_surnames = array_merge($all_surnames, get_indilist_surns(utf8_strtoupper($surname), '', false, false, WT_GED_ID));
+			$all_surnames = array_merge($all_surnames, WT_Query_Name::surnames(utf8_strtoupper($surname), '', false, false, WT_GED_ID));
 		}
 		$tot = 0;
 		$per = 0;

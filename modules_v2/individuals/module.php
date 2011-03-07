@@ -68,7 +68,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $SHOW_MARRIED_NAMES, $WT_IMAGES;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials=get_indilist_salpha($SHOW_MARRIED_NAMES, false, WT_GED_ID);
+		$initials=WT_Query_Name::surnameAlpha($SHOW_MARRIED_NAMES, false, WT_GED_ID);
 
 		$out = '<script type="text/javascript">
 		<!--
@@ -161,7 +161,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	public function getAlphaSurnames($alpha, $surname1='') {
 		global $SHOW_MARRIED_NAMES;
-		$surns=get_indilist_surns('', $alpha, $SHOW_MARRIED_NAMES, false, WT_GED_ID);
+		$surns=WT_Query_Name::surnames('', $alpha, $SHOW_MARRIED_NAMES, false, WT_GED_ID);
 		$out = '<ul>';
 		foreach ($surns as $surname=>$surns) {
 			$out .= '<li id="sb_indi_'.$surname.'" class="sb_indi_surname_li"><a href="'.$surname.'" title="'.$surname.'" alt="'.$alpha.'" class="sb_indi_surname">'.$surname.'</a>';
