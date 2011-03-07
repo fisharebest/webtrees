@@ -28,12 +28,6 @@
  * @subpackage Themes
  * @version $Id$
  */
-
-
-.something {
-	/*empty style to make sure that the BODY style is not ignored */
-}
-
 body {
 	color: black;
 	background-color: white;
@@ -62,39 +56,60 @@ a:hover	{
 /* -----Layout for top header ----- */
 
 .title {display: block; float: left; width: 40%;}
-.hlogin {display: block; float: left; width: 10%; padding-top: 5px; padding-left: 40px;}
-.htheme {display: block; float: left; width: 20%; 	white-space: nowrap;}
-.hsearch {display: block; float: right; }
-
+.hlogin {display: block; float: left; width: 15%; padding-top: 5px; padding-left: 40px;}
+.htheme {display: block; float: left; width: 10%; 	white-space: nowrap;}
+.hsearch, .favorites_form {display: block; float: right; }
+.favorites_form {
+	position:absolute; 
+	right:4px;
+	top:1.4em;
+}
 html[dir='rtl'] .title, html[dir='rtl'] .hlogin, html[dir='rtl'] .htheme {float: right; padding-left: 0px;}
 html[dir='rtl'] .hsearch {float: left;}
+html[dir='rtl'] .favorites_form {
+	right: auto;
+	position:absolute; 
+	left:4px;
+	top:1.4em;
+}
 
 /* Layout for header menu */
 
-#topMenu {  /* set up container for menu */
-	clear: both;
-	width: 700px ;
-	margin-left: auto ;
-	margin-right: auto ;
-	white-space: nowrap;
-	}
+#topMenu {
+	clear:both;
+	float:left;
+	margin:0;
+	padding:0;
+	width:100%;
+	font-size: 14px; 
+	z-index:1000; 	/* This makes the dropdown menus appear above the page content below */
+	position:relative;
+}
+
+/* Top menu items */
+.makeMenu {
+	margin:0;
+	padding:0;
+	list-style:none;
+	float:right;
+	position:relative;
+	right:50%;
+}
 	
 /* Set up main level menus */
-.makeMenu {
-	margin: 0;
-	padding: 0;
-}
 	
 .makeMenu li {
 	width: auto;
 	font-size: 14px;
 	list-style: none;
 	padding: 0px 10px 0px 10px;
-	margin: 5px 0px 5px 0px;
+	margin: 20px 0px 5px 0px;
 	border: solid #999 1px;
-	float: left;
+	float:left;
+	position:relative;
+	left:50%;
 }
-html[dir='rtl'] .makeMenu li{
+html[dir='rtl'] .makeMenu li{ 
 	float:right;
 	text-align: right;
 }
@@ -102,12 +117,12 @@ html[dir='rtl'] .makeMenu li{
 .makeMenu li a {
 	display: block;
 	text-align: center;
-	padding: 3px 8px;
+	padding: 3px 3px;
 	background-color: #fff;
 	color: #555;
 	text-decoration: none; 
 }
-	
+
 /* Subnavigation section */
 .makeMenu ul {
 	border: 1px solid #aaa;
@@ -125,17 +140,19 @@ html[dir='rtl'] .makeMenu li{
 	width: auto; 
 	background: #eeeeee;
 	color: #666;
-	z-index:999;
+	z-index:1000;
 }
+
 html[dir='rtl'] .makeMenu li ul li a {
 	text-align:right;
 }
 	
 .makeMenu li ul li {
+	left: 0%;
 	border: 0;
 	padding: 0;
 	margin: 0;
-	margin-left: -11px; /* sets left edge of submenu */
+	/* margin-left: -11px; */ /* sets left edge of submenu */
 	width: auto;
 	text-align: left;
 }
@@ -169,7 +186,7 @@ html[dir='rtl'] .makeMenu li ul li  {
 .makeMenu li:hover li a {
 	background-color: #eeeeee;
 	border-bottom: 1px solid #fff;
-		text-decoration: none;
+	text-decoration: none;
 	color: #000; 
 }
 	
@@ -571,17 +588,6 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .sublinks_table .icon {
-	vertical-align: middle;
-	width: 25px;
-	height: 25px;
-}
-
-.menuitem .icon {
-	width: 50px;
-	height: 50px;
-}
-
-.submenu .icon {
 	vertical-align: middle;
 	width: 25px;
 	height: 25px;
@@ -1362,16 +1368,6 @@ ul.clist {
 	width: 8em;
 }
 
-/*
-.menu_separator {
-	height: 3px;
-	display: block;
-	background-image: url(images/hline.gif);
-	background-repeat: repeat-x;
-	background-position: center middle;
-}
-*/
-
 .statistics_chart {
 	text-align: center;
 	text-align: center;
@@ -1651,9 +1647,4 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink , html[dir='rtl'] .deleteli
 .logo {
 	text-align: center;
 }
-#topMenu {
-margin-left: auto;
-margin-right: auto;
-width: 75%;
-border-spacing: 0px;
-} 
+

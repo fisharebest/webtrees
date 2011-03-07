@@ -89,109 +89,106 @@ echo "\n";
 
 // begin header section
 if ($view!='simple') {
-	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
-	'<table width="100%">',
-		'<tr>',
-		'<td valign="middle">',
-		'<div id="header" class="', $TEXT_DIRECTION, '">',
-		'<div class="title">';
-					print_gedcom_title_link(TRUE);
 	echo 
-	'</div>',
-	'<td>',
-	'<td align="center" valign="middle">';
-
+	'<div id="header" class="', $TEXT_DIRECTION, '">',
+	'<span class="title">';
+	print_gedcom_title_link(TRUE);
+	echo 
+	'</span>',
+	
+	'<span class="hlogin">';
 	if (WT_USER_ID) {
 		echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
 	} elseif (empty($SEARCH_SPIDER)) {
 		echo login_link();
 	}
-echo
-'</td>';
-if (empty($SEARCH_SPIDER)) { 
-	echo '<td align="', $TEXT_DIRECTION=="rtl"?"left":"right", '" valign="middle" >';
-	$menu=WT_MenuBar::getThemeMenu();
-	if ($menu) {
-		echo $menu->getMenuAsDropdown();
+	echo
+	'</span>';
+	if (empty($SEARCH_SPIDER)) { 
+		echo 
+		'<span class="htheme">';
+		$menu=WT_MenuBar::getThemeMenu();
+		if ($menu) {
+			echo $menu->getMenuAsDropdown();
+		}
+		$menu=WT_MenuBar::getLanguageMenu();
+		if ($menu) {
+			echo $menu->getMenuAsDropdown();
+		}
+		echo
+		'</span>',
+		'<div class="hsearch">';
+		if (empty($SEARCH_SPIDER)) {
+			echo 
+			'<form action="search.php" method="post">',
+			'<input type="hidden" name="action" value="general" />',
+			'<input type="hidden" name="topsearch" value="yes" />',
+			'<input type="text" name="query" size="15" value="', WT_I18N::translate('Search'), '"',
+				'onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();"',
+				'onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
+			'<input type="submit" name="search" value=" &gt; " />',
+			'</form>';
+		}
+		print_favorite_selector();
 	}
-	$menu=WT_MenuBar::getLanguageMenu();
-	if ($menu) {
-		echo $menu->getMenuAsDropdown();
-	}
-echo
-'</td>',
-'<td align="', $TEXT_DIRECTION=="rtl"?"left":"right", '" valign="middle" >';
-if (empty($SEARCH_SPIDER)) {
-	echo '<form action="search.php" method="post">',
-		'<input type="hidden" name="action" value="general" />',
-		'<input type="hidden" name="topsearch" value="yes" />',
-		'<input type="text" name="query" size="15" value="', WT_I18N::translate('Search'), '"',
-			'onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();"',
-			'onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
-		'<input type="submit" name="search" value=" &gt; " />',
-	'</form>';
-}
-print_favorite_selector();
-}
-echo 
-	'</td>',
-	'</tr>',
-	'</table>',
-//  begin top links section 
-	'<table id="topMenu" cellpadding="0">',
-	'<tr>';
+	echo 
+	'</div></div>';
+	echo "\n";
+//  begin top links section
+	echo 
+	'<div id="topMenu">', 
+	'<ul class="makeMenu">'; 
+
 		$menu=WT_MenuBar::getGedcomMenu();
 		if ($menu) {
 			$menu->addIcon(null);
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			echo $menu->getMenuAsList();
 		}
 		$menu=WT_MenuBar::getMyPageMenu();
 		if ($menu) {
-			$menu->addIcon(null);
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			echo $menu->getMenuAsList();
 		}
 		$menu=WT_MenuBar::getChartsMenu();
 		if ($menu) {
 			$menu->addIcon(null);
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			echo $menu->getMenuAsList();
 		}
 		$menu=WT_MenuBar::getListsMenu();
 		if ($menu) {
 			$menu->addIcon(null);
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			echo $menu->getMenuAsList();
 		}
 		$menu=WT_MenuBar::getCalendarMenu();
 		if ($menu) {
 			$menu->addIcon(null);
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			echo $menu->getMenuAsList();
 		}
 		$menu=WT_MenuBar::getReportsMenu();
 		if ($menu) {
 			$menu->addIcon(null);
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			echo $menu->getMenuAsList();
 		}
 		$menu=WT_MenuBar::getSearchMenu();
 		if ($menu) {
 			$menu->addIcon(null);
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			echo $menu->getMenuAsList();
 		}
 		$menus=WT_MenuBar::getModuleMenus();
 		foreach ($menus as $menu) {
 			if ($menu) {
 				$menu->addIcon(null);
-				echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			echo $menu->getMenuAsList();
 			}
 		}
 		$menu=WT_MenuBar::getHelpMenu();
 		if ($menu) {
 			$menu->addIcon(null);
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			echo $menu->getMenuAsList();
 		}
 	echo 
-	'</tr>',
-'</table>',
-'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
-'</div>';
+	'</ul>',
+	'</div>',
+'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />';
 } 
 ?>
 <!-- end menu section -->
