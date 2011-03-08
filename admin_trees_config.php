@@ -162,15 +162,6 @@ case 'add':
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'#privacy');
 	exit;
 case 'update':
-	$_POST["NEW_MEDIA_DIRECTORY"] = trim(str_replace('\\','/',$_POST["NEW_MEDIA_DIRECTORY"]));
-	if (substr ($_POST["NEW_MEDIA_DIRECTORY"], -1) != "/") $_POST["NEW_MEDIA_DIRECTORY"] = $_POST["NEW_MEDIA_DIRECTORY"] . "/";
-	if (substr($_POST["NEW_MEDIA_DIRECTORY"], 0, 2)=="./") $_POST["NEW_MEDIA_DIRECTORY"] = substr($_POST["NEW_MEDIA_DIRECTORY"], 2);
-	if (preg_match("/.*[a-zA-Z]{1}:.*/", $_POST["NEW_MEDIA_DIRECTORY"])>0) $errors = true;
-	if ($_POST["NEW_USE_MEDIA_FIREWALL"]==true) {
-		if (substr($_POST["NEW_MEDIA_DIRECTORY"], 0, 3)=="../") $_POST["NEW_MEDIA_DIRECTORY"] = substr($_POST["NEW_MEDIA_DIRECTORY"], 3);
-		if (substr($_POST["NEW_MEDIA_DIRECTORY"], 0, 1)=="/") $_POST["NEW_MEDIA_DIRECTORY"] = substr($_POST["NEW_MEDIA_DIRECTORY"], 1);
-	}
-
 	set_gedcom_setting(WT_GED_ID, 'ABBREVIATE_CHART_LABELS',      safe_POST_bool('NEW_ABBREVIATE_CHART_LABELS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_NAME_FACTS',          safe_POST('NEW_ADVANCED_NAME_FACTS'));
 	set_gedcom_setting(WT_GED_ID, 'ADVANCED_PLAC_FACTS',          safe_POST('NEW_ADVANCED_PLAC_FACTS'));
@@ -215,7 +206,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',                safe_POST('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
 	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',  safe_POST('NEW_MAX_DESCENDANCY_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_PEDIGREE_GENERATIONS',     safe_POST('NEW_MAX_PEDIGREE_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY',              safe_POST('NEW_MEDIA_DIRECTORY'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY_LEVELS',       safe_POST('NEW_MEDIA_DIRECTORY_LEVELS'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_EXTERNAL',               safe_POST_bool('NEW_MEDIA_EXTERNAL'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_THUMBS',        safe_POST_bool('NEW_MEDIA_FIREWALL_THUMBS'));
@@ -293,11 +283,31 @@ case 'update':
 		set_gedcom_setting(WT_GED_ID, 'title',                        safe_POST('gedcom_title', WT_REGEX_UNSAFE));
 	}
 
+	// process NEW_MEDIA_DIRECTORY
+	$errors_mediadir = false;
+	$_POST["NEW_MEDIA_DIRECTORY"] = trim(str_replace('\\','/',$_POST["NEW_MEDIA_DIRECTORY"])); // silently convert backslashes to forward slashes
+	$_POST["NEW_MEDIA_DIRECTORY"] = str_replace('"','',$_POST["NEW_MEDIA_DIRECTORY"]); // silently remove quote marks
+	$_POST["NEW_MEDIA_DIRECTORY"] = str_replace("'",'',$_POST["NEW_MEDIA_DIRECTORY"]); // silently remove quote marks
+	$_POST["NEW_MEDIA_DIRECTORY"] = str_replace("//",'/',$_POST["NEW_MEDIA_DIRECTORY"]); // silently remove duplicate slashes
+	if (substr ($_POST["NEW_MEDIA_DIRECTORY"], -1) != "/") $_POST["NEW_MEDIA_DIRECTORY"] = $_POST["NEW_MEDIA_DIRECTORY"] . "/"; // silently add trailing slash
+	if (substr($_POST["NEW_MEDIA_DIRECTORY"], 0, 1)=="/")                  { $errors_mediadir = true; } // don't allow absolute path
+	if (preg_match("/.*[a-zA-Z]{1}:.*/", $_POST["NEW_MEDIA_DIRECTORY"])>0) { $errors_mediadir = true; } // don't allow drive letters
+	if (preg_match('/([\.]?[\.][\/])+/', $_POST["NEW_MEDIA_DIRECTORY"])>0) { $errors_mediadir = true; } // don't allow ./ or ../ 
+	if ($errors_mediadir) {
+		$errors = true;
+		$error_msg .= "<span class=\"error\">".WT_I18N::translate('Invalid media directory, it should be in the format of "media/", not "%s". ', $_POST["NEW_MEDIA_DIRECTORY"])."</span><br />";
+	} else {
+		// only save the setting if there were no errors
+		set_gedcom_setting(WT_GED_ID, 'MEDIA_DIRECTORY',              safe_POST('NEW_MEDIA_DIRECTORY'));
+		$MEDIA_DIRECTORY = safe_POST('NEW_MEDIA_DIRECTORY');
+	}
+
+	// process NEW_MEDIA_FIREWALL_ROOTDIR
 	if (!$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"]) {
 		$NEW_MEDIA_FIREWALL_ROOTDIR = $INDEX_DIRECTORY;
 	} else {
-		$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] = trim(str_replace('\\','/',$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"]));
-		if (substr ($_POST["NEW_MEDIA_FIREWALL_ROOTDIR"], -1) != "/") $_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] = $_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] . "/";
+		$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] = trim(str_replace('\\','/',$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"])); // silently convert backslashes to forward slashes
+		if (substr ($_POST["NEW_MEDIA_FIREWALL_ROOTDIR"], -1) != "/") $_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] = $_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] . "/"; // silently add trailing slash
 		$NEW_MEDIA_FIREWALL_ROOTDIR = safe_POST("NEW_MEDIA_FIREWALL_ROOTDIR");
 	}
 	if (!is_dir($NEW_MEDIA_FIREWALL_ROOTDIR)) {
@@ -335,6 +345,7 @@ case 'update':
 			}
 	}
 	if (!$errors) {
+		// only save the setting if there were no errors
 		set_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_ROOTDIR', safe_POST('NEW_MEDIA_FIREWALL_ROOTDIR'));
 	}
 
@@ -793,7 +804,11 @@ echo WT_JS_START;?>
 						</td>
 						<td>
 							<input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php echo $MEDIA_DIRECTORY; ?>" dir="ltr" />
-							<?php if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) echo "<span class=\"error\">".WT_I18N::translate('Media path should not contain a drive letter; media may not be displayed.')."</span>"; ?>
+							<?php
+							// these error messages are not duplicates of the checks above, they warn admins that have problems with their existing settings
+							if (preg_match("/.*[a-zA-Z]{1}:.*/", $MEDIA_DIRECTORY)>0) echo "<br /><span class=\"error\">".WT_I18N::translate('Media path should not contain a drive letter.')."</span>";
+							if (preg_match('/([\.]?[\.][\/])+/', $MEDIA_DIRECTORY)>0) echo "<br /><span class=\"error\">".WT_I18N::translate('Media path should not contain "../" or "./"')."</span>";
+							?>
 						</td>
 					</tr>
 					<tr>
@@ -870,7 +885,7 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<th colspan="2">
-							<?php echo WT_I18N::translate('Media Firewall'); ?> (see <a href="http://wiki.webtrees.net/Media_Firewall" target="_blank">the wiki</a>)
+							<?php echo WT_I18N::translate('Media Firewall'); ?> (<a href="http://wiki.webtrees.net/Media_Firewall" target="_blank"><?php echo WT_I18N::translate('see the wiki'); ?></a>)
 						</th>
 					</tr>
 					<tr>
