@@ -649,7 +649,7 @@ class WT_Gedcom_Tag {
 		case '_CREM_GPA2':
 			switch ($sex) {
 			case 'M': return WT_I18N::translate('Cremation of a maternal grandfather');
-			case 'F': return WT_I18N::translate('Cremation of a paternal grandmother');
+			case 'F': return WT_I18N::translate('Cremation of a maternal grandmother');
 			default:  return WT_I18N::translate('Cremation of a grand-parent');
 			}
 		case '_CREM_HSIB':
