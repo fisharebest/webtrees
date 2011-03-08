@@ -97,7 +97,7 @@ html[dir='rtl'] #links {left:auto; right:10px;}
 #links li {display:inline; position:relative;}
 #links li ul {display:none; position:absolute; left:0px; top:1.2em; background:url("jquery/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border:1px solid #D9D6C4; z-index:999;}
 html[dir='rtl'] #links li ul {left:auto; right:0px;}
-#links li ul li {display:block; padding:0 5px; text-align:left;}
+#links li ul li {display:block; padding:0 5px; text-align:left;z-index:9999;}
  html[dir='rtl'] #links li ul li {text-align:right;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
 #links li:hover > ul {display:block;}
@@ -107,7 +107,20 @@ html[dir='rtl'] #links li ul {left:auto; right:0px;}
 #admin_content {min-width:830px;}
 
 /* SIDE MENU */
-#admin_menu {padding:10px 0 10px 5px; width:200px; float:left; position:absolute; color:#2E6E9E; white-space:nowrap; overflow:hidden;}
+
+#admin_menu {
+padding:10px 0 10px 5px; 
+*padding:10px 0 10px 60px; /* - IE7 hack */
+width:200px; 
+float:left; 
+position:absolute; 
+*position:relative;  /* - IE7 hack */
+color:#2E6E9E; 
+white-space:nowrap; 
+overflow:hidden;
+}
+
+
 html[dir='rtl'] #admin_menu {padding:10px 5px 10px 0; float:right;}
 #admin_menu ul {list-style:none outside none; margin:0 0 0 -30px;}
 html[dir='rtl'] #admin_menu ul {margin:0 -30px 0 0;}
