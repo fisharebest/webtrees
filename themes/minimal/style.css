@@ -1621,10 +1621,7 @@ html[dir='rtl'] td.descriptionbox  a {
 }
 
 .editfacts { /* a container for the following three links */
-	clear: left;
-}
-.editfacts {
-	clear: right;
+	clear: both;
 }
 
 .link_text {
