@@ -95,6 +95,7 @@ html[dir='rtl'] .favorites_form {
 	position:relative;
 	right:50%;
 }
+html[dir='rtl'] .makeMenu { *float:left;} /* hack code for IE7 and rtl */
 	
 /* Set up main level menus */
 	
@@ -152,7 +153,6 @@ html[dir='rtl'] .makeMenu li ul li a {
 	border: 0;
 	padding: 0;
 	margin: 0;
-	/* margin-left: -11px; */ /* sets left edge of submenu */
 	width: auto;
 	text-align: left;
 }
@@ -1648,3 +1648,6 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink , html[dir='rtl'] .deleteli
 	text-align: center;
 }
 
+#topMenu ul li ul {
+margin-left: -10px;
+}
