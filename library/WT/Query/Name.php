@@ -382,7 +382,7 @@ class WT_Query_Name {
 	// To search for names with no surnames, use $salpha=","
 	public static function families($surn, $salpha, $galpha, $marnm, $ged_id) {
 		$list=array();
-		foreach (get_indilist_indis($surn, $salpha, $galpha, $marnm, true, $ged_id) as $indi) {
+		foreach (self::individuals($surn, $salpha, $galpha, $marnm, true, $ged_id) as $indi) {
 			foreach ($indi->getSpouseFamilies() as $family) {
 				$list[$family->getXref()]=$family;
 			}
