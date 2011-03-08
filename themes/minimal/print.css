@@ -29,7 +29,7 @@
  * @package webtrees
  * @subpackage Themes
  */
-#backprint {
+#backprint, #header, #topMenu {
 	display:none;
 }
 /*-- pedigree chart specific stylesheets --*/

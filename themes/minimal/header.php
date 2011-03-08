@@ -39,7 +39,8 @@ echo
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
-	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
+	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
+	'<link rel="stylesheet" href="', $print_stylesheet, '" type="text/css" media="print" />';
 
 
 if (isset($_GET["mod_action"]) && $_GET["mod_action"]=="places_edit") {
