@@ -93,10 +93,10 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 		<td>
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-image:url('<?php
 			if ($TEXT_DIRECTION=="ltr") {
-				echo WT_THEME_DIR,"images/cabeza.jpg'); ";
+				echo WT_THEME_DIR,"images/cabeza.png'); ";
 				echo "background-position:left top; ";
 			} else {
-				echo WT_THEME_DIR,"images/cabeza_rtl.jpg'); ";
+				echo WT_THEME_DIR,"images/cabeza_rtl.png'); ";
 				echo "background-position:right top; ";
 			}
 			?>background-repeat:repeat-y; height:40px;">
@@ -118,7 +118,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 		<?php } ?>
 			</tr></table>
 		<?php if (empty($SEARCH_SPIDER)) { ?>
-			<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#84beff" style="background-image:url('<?php echo WT_THEME_DIR; ?>images/barra.gif');">
+			<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#84beff" style="background-image:url('<?php echo WT_THEME_DIR; ?>images/barra.png');">
 			 <tr class="blanco">
 				<td width="10" height="40"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="18" alt="" /></td>
 				<td width="115"><div id="favtheme" align="<?php echo $TEXT_DIRECTION=="rtl"?"right":"left"; ?>" >
@@ -212,7 +212,7 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 </table>
 </td></tr></table>
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-image:url('<?php echo WT_THEME_DIR; ?>images/sombra.gif'); height:4px;">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-image:url('<?php echo WT_THEME_DIR; ?>images/sombra.png'); height:4px;">
 	<tr>
 		<td><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="1" alt="" /></td>
 	</tr>
