@@ -86,7 +86,7 @@ if (empty($folder)) {
 }
 
 // If SESSION_medialist then it's a return
-if (isset($_SESSION['Medialist'])) {
+if (isset($_SESSION['Medialist']) && isset($_SESSION['Filtered_medialist']) ) {
 	$show = "yes";
 	$search = "yes";
 
