@@ -88,16 +88,16 @@ html[dir='rtl'] #page_help{text-align:left;}
 #page_help a img{display:none; height:24px; margin:-5px; padding:0; width:24px;}
 
 /* HEADER */
-#admin_head {position:relative; height:70px; margin-bottom:10px; min-width:1070px;}
+#admin_head {position:relative; height:70px; margin-bottom:10px; min-width:1070px; z-index:1000;}
 #title {position:absolute; left:47%; top:20px; font-size:18px; font-weight:bold;}
 #info {position:absolute; right:10px; bottom:0; text-align:right;}
 html[dir='rtl'] #info {right:auto; left:10px; text-align:left;}
 #links {position:absolute; left:10px; bottom:0; display:inline; margin-bottom:5px; white-space:nowrap;}
-html[dir='rtl'] #links {left:auto; right:10px;}
+html[dir='rtl'] #links {left:auto; right:10px; *left:0px;/* - IE7 hack */}
 #links li {display:inline; position:relative;}
-#links li ul {display:none; position:absolute; left:0px; top:1.2em; background:url("jquery/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border:1px solid #D9D6C4; z-index:999;}
+#links li ul {display:none; position:absolute; left:0px; top:1.2em; background:url("jquery/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border:1px solid #D9D6C4;z-index:999;}
 html[dir='rtl'] #links li ul {left:auto; right:0px;}
-#links li ul li {display:block; padding:0 5px; text-align:left;z-index:9999;}
+#links li ul li {display:block; padding:0 5px; text-align:left;}
  html[dir='rtl'] #links li ul li {text-align:right;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
 #links li:hover > ul {display:block;}
@@ -110,23 +110,43 @@ html[dir='rtl'] #links li ul {left:auto; right:0px;}
 
 #admin_menu {
 padding:10px 0 10px 5px; 
-*padding:10px 0 10px 60px; /* - IE7 hack */
 width:200px; 
 float:left; 
 position:absolute; 
-*position:relative;  /* - IE7 hack */
 color:#2E6E9E; 
 white-space:nowrap; 
 overflow:hidden;
+*position:relative;  /* - IE7 hack */
+}
+html[dir='rtl'] #admin_menu {
+padding:10px 5px 10px 0;
+float:right;
 }
 
+#admin_menu ul {
+list-style:none outside none;
+margin:0 0 0 -30px;
+*margin:0 0 0 10px;  /* - IE7 hack */
+}
+html[dir='rtl'] #admin_menu ul {
+margin:0 -30px 0 0;
+*margin:0 10px 0 0;  /* - IE7 hack */
+}
 
-html[dir='rtl'] #admin_menu {padding:10px 5px 10px 0; float:right;}
-#admin_menu ul {list-style:none outside none; margin:0 0 0 -30px;}
-html[dir='rtl'] #admin_menu ul {margin:0 -30px 0 0;}
-#admin_menu li ul {list-style:none outside none; margin:0 0 0 -20px;}
-html[dir='rtl'] #admin_menu li ul {margin:0 -20px 0 0;}
+#admin_menu li ul {
+margin:0 0 0 -20px;
+*margin:0 0 0 20px;  /* - IE7 hack */
+}
+html[dir='rtl'] #admin_menu li ul {
+margin:0 -20px 0 0;
+*margin:0 20px 0 0;  /* - IE7 hack */
+}
+
 #admin_menu li span {font-style:italic;}
+#admin_menu ul {list-style:none outside none;}
+#admin_menu ul li ul, html[dir='rtl'] #admin_menu li ul {
+*margin-top:-20px;  /* - IE7 hack */
+}
 
 /* CONTENT */
 #admin_content {margin:0 0 0 220px; padding:10px;}
