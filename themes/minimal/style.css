@@ -81,6 +81,7 @@ html[dir='rtl'] .favorites_form {
 	clear:both;
 	float:left;
 	margin:0;
+	margin-top: 5px;
 	padding:0;
 	width:100%;
 	font-size: 14px; 
@@ -97,7 +98,10 @@ html[dir='rtl'] .favorites_form {
 	position:relative;
 	right:50%;
 }
-html[dir='rtl'] .makeMenu { *float:left;} makeMenu { *left: 50%;}/* For IE7 and rtl */
+html[dir='rtl'] .makeMenu { 
+*float:left;
+*left: 50%; /* For IE7 and rtl */
+}
 	
 /* Set up main level menus */
 	
@@ -111,7 +115,9 @@ html[dir='rtl'] .makeMenu { *float:left;} makeMenu { *left: 50%;}/* For IE7 and 
 	float:left;
 	position:relative;
 	left:50%;
+	zoom: 1; /* IE7 fix */
 }
+
 html[dir='rtl'] .makeMenu li{ 
 	float:right;
 	text-align: right;
@@ -146,25 +152,23 @@ html[dir='rtl'] .makeMenu li{
 	z-index:1000;
 }
 
-html[dir='rtl'] .makeMenu li ul li a {
-	text-align:right;
-}
-	
 .makeMenu li ul li {
 	left: 0%;
 	border: 0;
 	padding: 0;
 	margin: 0;
 	width: auto;
-	text-align: left;
+	text-align: right;
 }
+
+#topMenu ul li ul {  
+	margin-left: -10px;
+}
+
+html[dir='rtl'] #topMenu ul li ul {  margin-right: -10px;}
+html[dir='rtl'] #topMenu ul li li a {  text-align: right;}
 
 .separator {display:none; }
-
-html[dir='rtl'] .makeMenu li ul li  {
-	margin-right: -10px; /* sets right edge of submenu */
-
-}
 
 /* Set up hover layout and style */
 
@@ -1645,9 +1649,5 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink , html[dir='rtl'] .deleteli
 
 .logo {
 	text-align: center;
-}
-
-#topMenu ul li ul {
-margin-left: -10px;
 }
 
