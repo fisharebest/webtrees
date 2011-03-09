@@ -35,6 +35,10 @@ class WT_Gedcom_Code_Temp {
 	public static function templeCodes() {
 		return array(
 			// A list of all temple codes, from the GEDCOM 5.5.1 specification
+			//
+			// Note that this list is out-of-date.  We could add recently built
+			// temples, but what codes would we use?
+			// http://en.wikipedia.org/wiki/List_of_temples_of_The_Church_of_Jesus_Christ_of_Latter-day_Saints
 			'ABA',   'ACCRA', 'ADELA', 'ALBER', 'ALBUQ', 'ANCHO', 'ARIZO', 'ASUNC',
 			'ATLAN', 'BAIRE', 'BILLI', 'BIRMI', 'BISMA', 'BOGOT', 'BOISE', 'BOSTO',
 			'BOUNT', 'BRISB', 'BROUG', 'CAMPI', 'CARAC', 'CHICA', 'CIUJU', 'COCHA',

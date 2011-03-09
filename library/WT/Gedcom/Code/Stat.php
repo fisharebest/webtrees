@@ -52,33 +52,45 @@ class WT_Gedcom_Code_Stat {
 	public static function statusName($status_code) {
 		switch ($status_code) {
 		case 'BIC':
-			return /* LDS sealing statuses; http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
 				WT_I18N::translate('Born in the covenant');
 		case 'CANCELED':
-			return WT_I18N::translate('Sealing cancelled (divorce)');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Sealing cancelled (divorce)');
 		case 'CHILD':
-			return WT_I18N::translate('Died as a child: exempt');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Died as a child: exempt');
 		case 'CLEARED':
 			// This status appears in PGV, but not in the GEDCOM 5.5.1 specification.
-			return WT_I18N::translate('Cleared but not yet completed');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				 WT_I18N::translate('Cleared but not yet completed');
 		case 'COMPLETED':
-			return WT_I18N::translate('Completed; date unknown');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Completed; date unknown');
 		case 'DNS':
-			return WT_I18N::translate('Do Not Seal: unauthorized');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Do Not Seal: unauthorized');
 		case 'DNS/CAN':
-			return WT_I18N::translate('Do Not Seal, previous sealing cancelled');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Do Not Seal, previous sealing cancelled');
 		case 'EXCLUDED':
-			return WT_I18N::translate('Excluded from this submission');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Excluded from this submission');
 		case 'INFANT':
-			return WT_I18N::translate('Died as an infant: exempt');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Died as an infant: exempt');
 		case 'PRE-1970':
-			return WT_I18N::translate('Completed before 1970; date not available');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Completed before 1970; date not available');
 		case 'STILLBORN':
-			return WT_I18N::translate('Stillborn: exempt');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Stillborn: exempt');
 		case 'SUBMITTED':
-			return WT_I18N::translate('Submitted but not yet cleared');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Submitted but not yet cleared');
 		case 'UNCLEARED':
-			return WT_I18N::translate('Uncleared: insufficient data');
+			return /* I18N: LDS sealing status; see http://en.wikipedia.org/wiki/Sealing_(Latter_Day_Saints) */
+				WT_I18N::translate('Uncleared: insufficient data');
 		default:
 			return $status_code;
 		}
