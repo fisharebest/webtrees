@@ -52,11 +52,11 @@ if (WT_USER_GEDCOM_ID) {
 
 //-- random surname
 if ($surn=='*') {
-	$surn = array_rand(WT_Query_Name::surnames("", "", false, true, WT_GED_ID));
+	$surn = array_rand(WT_Query_Name::surnames('', '', false, true, WT_GED_ID));
 }
 
 //-- form
-print_header(WT_I18N::translate('Branches')." - ".$surn);
+print_header(WT_I18N::translate('Branches').' - '.$surn);
 if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'/js/autocomplete.js.htm';
 }
@@ -73,9 +73,9 @@ if ($ENABLE_AUTOCOMPLETE) {
 				<input type="submit" value="<?php echo WT_I18N::translate('Random surname'); ?>" onclick="document.surnlist.surn.value='*';" />
 				<p class="details1">
 					<?php echo WT_I18N::translate('Search the way you think the name is written (Soundex)'), help_link('soundex_search'); ?><br />
-					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo " checked=\"checked\""; ?> />
+					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo ' checked="checked"'; ?> />
 					<label for="soundex_std"><?php echo WT_I18N::translate('Basic'); ?></label>
-					<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php if ($soundex_dm) echo " checked=\"checked\""; ?> />
+					<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php if ($soundex_dm) echo ' checked="checked"'; ?> />
 					<label for="soundex_dm"><?php echo WT_I18N::translate('Daitch-Mokotoff'); ?></label>
 				</p>
 			</td>
@@ -86,9 +86,9 @@ if ($ENABLE_AUTOCOMPLETE) {
 //-- results
 if ($surn) {
 	$surn_script = utf8_script($surn);
-	echo "<fieldset><legend>", WT_ICON_BRANCHES, " ", PrintReady($surn), "</legend>";
+	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', PrintReady($surn), '</legend>';
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
-	echo "<ol>";
+	echo '<ol>';
 	foreach ($indis as $person) {
 		$famc = $person->getPrimaryChildFamily();
 		// Don't show INDIs with parents in the list, as they will be shown twice.
@@ -101,8 +101,8 @@ if ($surn) {
 		}
 		print_fams($person);
 	}
-	echo "</ol>";
-	echo "</fieldset>";
+	echo '</ol>';
+	echo '</fieldset>';
 }
 print_footer();
 
@@ -126,29 +126,29 @@ function print_fams($person, $famid=null) {
 		break;
 	}
 	if (empty($person_name)) {
-		echo "<span title=\"", PrintReady(strip_tags($person->getFullName())), "\">", $person->getSexImage(), "...</span>";
+		echo '<span title="', PrintReady(strip_tags($person->getFullName())), '">', $person->getSexImage(), '...</span>';
 		return;
 	}
 	$person_script = utf8_script($person_name);
 	// current indi
-	echo "<li>";
-	$class = "";
+	echo '<li>';
+	$class = '';
 	$sosa = array_search($person->getXref(), $user_ancestors);
 	if ($sosa) {
-		$class = "search_hit";
-		$sosa = "<a dir=$TEXT_DIRECTION target=\"_blank\" class=\"details1 {$person->getBoxStyle()}\" title=\"Sosa\" href=\"relationship.php?pid2=".WT_USER_ROOT_ID."&pid1=".$person->getXref()."\">&nbsp;{$sosa}&nbsp;</a>".sosa_gen($sosa);
+		$class = 'search_hit';
+		$sosa = '<a dir='.$TEXT_DIRECTION.' target="_blank" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
 	}
 	$current = $person->getSexImage().
-		"<a target=\"_blank\" class=\"{$class}\" title=\"".$person->getXref()."\" href=\"{$person->getHtmlUrl()}\">".PrintReady($person_name)."</a> ".
-		$person->getBirthDeathYears()." {$sosa}";
+		'<a target="_blank" class="'.$class.'" title="'.$person->getXref().'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
+		$person->getBirthDeathYears().' '.$sosa;
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
-		$famcrec = get_sub_record(1, "1 FAMC @".$famid."@", $person->getGedcomRecord());
-		$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
+		$famcrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $person->getGedcomRecord());
+		$pedi = get_gedcom_value('PEDI', 2, $famcrec, '', false);
 		if ($pedi) {
 			$label = WT_Gedcom_Code_Pedi::getValue($pedi, $person);
 		}
-		$current = "<span class='red'>".$label."</span> ".$current;
+		$current = '<span class="red">'.$label.'</span> '.$current;
 	}
 	// spouses and children
 	if (count($person->getSpouseFamilies())<1) {
@@ -158,17 +158,17 @@ function print_fams($person, $famid=null) {
 		$txt = $current;
 		$spouse = $family->getSpouse($person);
 		if ($spouse) {
-			$class = "";
+			$class = '';
 			$sosa2 = array_search($spouse->getXref(), $user_ancestors);
 			if ($sosa2) {
-				$class = "search_hit";
-				$sosa2 = "<a dir=$TEXT_DIRECTION target=\"_blank\" class=\"details1 {$spouse->getBoxStyle()}\" title=\"Sosa\" href=\"relationship.php?pid2=".WT_USER_ROOT_ID."&pid1=".$spouse->getXref()."\">&nbsp;{$sosa2}&nbsp;</a>".sosa_gen($sosa2);
+				$class = 'search_hit';
+				$sosa2 = '<a dir='.$TEXT_DIRECTION.' target="_blank" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
 			}
 			if ($family->getMarriageYear()) {
-				$txt .= "&nbsp;<span dir=$TEXT_DIRECTION class='details1' title=\"".strip_tags($family->getMarriageDate()->Display())."\">".WT_ICON_RINGS.$family->getMarriageYear()."</span>&nbsp;";
+				$txt .= '&nbsp;<span dir='.$TEXT_DIRECTION.' class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</span>&nbsp;';
 			}
 			else if ($family->getMarriage()) {
-				$txt .= "&nbsp;<span dir=$TEXT_DIRECTION class='details1' title=\"".WT_I18N::translate('Yes')."\">".WT_ICON_RINGS."</span>&nbsp;";
+				$txt .= '&nbsp;<span dir='.$TEXT_DIRECTION.' class="details1" title="'.WT_I18N::translate('Yes').'">'.WT_ICON_RINGS.'</span>&nbsp;';
 			}
 			$spouse_name = $spouse->getListName();
 			foreach ($spouse->getAllNames() as $n=>$name) {
@@ -177,25 +177,24 @@ function print_fams($person, $famid=null) {
 					break;
 				}
 				//How can we use check_NN($names) or something else to replace the unknown unknown name from the page language to the language of the spouse's name?
-				else if ($name['fullNN']=="@P.N. @N.N.") {
-					$spouse_name = $UNKNOWN_NN[$person_script].", ".$UNKNOWN_NN[$person_script];
+				else if ($name['fullNN']=='@P.N. @N.N.') {
+					$spouse_name = $UNKNOWN_NN[$person_script].', '.$UNKNOWN_NN[$person_script];
 					break;
 				}
 			}
-			list($surn2, $givn2) = explode(", ", $spouse_name.", x");
+			list($surn2, $givn2) = explode(', ', $spouse_name.', x');
 			$txt .= $spouse->getSexImage().
-				"<a target=\"_blank\" class=\"{$class}\" title=\"".$family->getXref()."\" href=\"{$family->getHtmlUrl()}\">".PrintReady($givn2)."</a> ".
-				"<a class=\"{$class}\" title=\"{$surn2}\" href=\"".WT_SCRIPT_NAME."?surn=".urlencode($surn2)."&amp;ged=".WT_GEDURL."\">".PrintReady($surn2)."</a> ".
-				$spouse->getBirthDeathYears()." {$sosa2}";
+				'<a target="_blank" class="'.$class.'" title="'.$family->getXref().'" href="'.$family->getHtmlUrl().'">'.PrintReady($givn2).'</a> '.
+				'<a class="'.$class.'" title="'.$surn2.'" href="'.WT_SCRIPT_NAME.'?surn='.urlencode($surn2).'&amp;ged='.WT_GEDURL.'">'.PrintReady($surn2).'</a> '.$spouse->getBirthDeathYears().' '.$sosa2;
 		}
 		echo $txt;
-		echo "<ol>";
+		echo '<ol>';
 		foreach ($family->getChildren() as $c=>$child) {
 			print_fams($child, $family->getXref());
 		}
-		echo "</ol>";
+		echo '</ol>';
 	}
-	echo "</li>";
+	echo '</li>';
 }
 
 function load_ancestors_array($person, $sosa=1) {
@@ -204,7 +203,7 @@ function load_ancestors_array($person, $sosa=1) {
 		$user_ancestors[$sosa]=$person->getXref();
 		foreach ($person->getChildFamilies() as $family) {
 			foreach ($family->getSpouses() as $parent) {
-				load_ancestors_array($parent, $sosa*2+($parent->getSex()!='F'));
+				load_ancestors_array($parent, $sosa*2+($parent->getSex()=='F'));
 			}
 		}
 	}
@@ -212,21 +211,21 @@ function load_ancestors_array($person, $sosa=1) {
 
 function indis_array($surn, $soundex_std, $soundex_dm) {
 	$sql=
-		"SELECT DISTINCT n_id".
-		" FROM `##name`".
-		" WHERE n_file=?".
-		" AND n_type!=?".
-		" AND (n_surn=? OR n_surname=?";
+		'SELECT DISTINCT n_id'.
+		' FROM `##name`'.
+		' WHERE n_file=?'.
+		' AND n_type!=?'.
+		' AND (n_surn=? OR n_surname=?';
 	$args=array(WT_GED_ID, '_MARNM', $surn, $surn);
 	if ($soundex_std) {
-		$sql .= " OR n_soundex_surn_std=?";
+		$sql .= ' OR n_soundex_surn_std=?';
 		$args[]=soundex_std($surn);
 	}
 	if ($soundex_dm) {
-		$sql .= " OR n_soundex_surn_dm=?";
+		$sql .= ' OR n_soundex_surn_dm=?';
 		$args[]=soundex_dm($surn);
 	}
-	$sql .= ") ORDER BY n_sort";
+	$sql .= ') ORDER BY n_sort';
 	$rows=
 		WT_DB::prepare($sql)
 		->execute($args)
@@ -240,5 +239,5 @@ function indis_array($surn, $soundex_std, $soundex_dm) {
 
 function sosa_gen($sosa) {
 	$gen = (int)log($sosa, 2)+1;
-	return "<sup title=\"".WT_I18N::translate('Generation')."\">{$gen}</sup>";
+	return '<sup title="'.WT_I18N::translate('Generation').'">'.$gen.'</sup>';
 }
