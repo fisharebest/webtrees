@@ -63,6 +63,7 @@ a:hover	{
 	position:absolute; 
 	right:4px;
 	top:1.4em;
+	*top:1.7em; /* For IE7 */
 }
 html[dir='rtl'] .title, html[dir='rtl'] .hlogin, html[dir='rtl'] .htheme {float: right; padding-left: 0px;}
 html[dir='rtl'] .hsearch {float: left;}
@@ -71,6 +72,7 @@ html[dir='rtl'] .favorites_form {
 	position:absolute; 
 	left:4px;
 	top:1.4em;
+	*top:1.7em; /* For IE7 */
 }
 
 /* Layout for header menu */
@@ -95,7 +97,7 @@ html[dir='rtl'] .favorites_form {
 	position:relative;
 	right:50%;
 }
-html[dir='rtl'] .makeMenu { *float:left;} /* hack code for IE7 and rtl */
+html[dir='rtl'] .makeMenu { *float:left;} makeMenu { *left: 50%;}/* For IE7 and rtl */
 	
 /* Set up main level menus */
 	
@@ -1648,3 +1650,4 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink , html[dir='rtl'] .deleteli
 #topMenu ul li ul {
 margin-left: -10px;
 }
+
