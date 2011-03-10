@@ -66,7 +66,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		global $SEARCH_SPIDER, $controller;
 
 		if ($SEARCH_SPIDER) {
-			return new WT_Menu('', '', '');
+			return null;
 		}
 		//-- main clippings menu item
 		$menu = new WT_Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.WT_GEDURL, 'down');
