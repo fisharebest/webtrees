@@ -147,9 +147,7 @@ if ($action=="choose") {
 	echo "<tr><td class=\"descriptionbox wrap width33 vmiddle\">", WT_I18N::translate('Select report'), "</td>";
 	echo "<td class=\"optionbox\"><select onchange=\"this.form.submit();\" name=\"report\">\n";
 	foreach ($reports as $file=>$report) {
-		if ($report["access"] >= WT_USER_ACCESS_LEVEL) {
 			echo "<option value=\"", $file, "\">", $report, "</option>\n";
-		}
 	}
 	echo "</select></td></tr>\n";
 	echo "<tr><td class=\"topbottombar\" colspan=\"2\"><input type=\"submit\" value=\"", WT_I18N::translate('Click here to continue'), "\" /></td></tr>";
