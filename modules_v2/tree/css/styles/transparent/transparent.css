@@ -1,0 +1,61 @@
+/* Border (also have class table.tv_tree) */
+table#tvTreeBorder td#tv_tree_topleft {
+   background: none;
+}
+table#tvTreeBorder td#tv_tree_top {
+   background: none;
+}
+table#tvTreeBorder td#tv_tree_top div{
+  font-family: Arial, Verdana, sans-serif;
+  font-size: 18px;
+}
+table#tvTreeBorder td#tv_tree_topright {
+   background: none;
+}
+table#tvTreeBorder td#tv_tree_left {
+   background: none;
+}
+table#tvTreeBorder td#tv_tree_right {
+   background: none;
+}
+table#tvTreeBorder td#tv_tree_bottomleft {
+   background: none;
+}
+table#tvTreeBorder td#tv_tree_bottom {
+   background: none;
+}
+table#tvTreeBorder td#tv_tree_bottomright {
+   background: none;
+}
+/* tree */
+table#tvTreeBorder td, #tv_tree {
+   background: none;
+}
+#tv_tree div.tv_box div.tvM, #tv_tree div.tv_box div.tvF {
+	background: none;
+	color: #000;
+}
+/* horizontal and vertical lines color */
+#tv_tree div.tv_vline, #tv_tree div.tv_hline {
+  background-color:  #000;
+}
+#tv_tree table.tv_tree td.tv_vline_h {
+  background-image: url(vline.jpg);
+}
+#tv_tree table.tv_tree td.tv_vline_t {
+  background-image: url(vline_t.gif);
+}
+#tv_tree table.tv_tree td.tv_vline_b {
+  background-image: url(vline_b.gif);
+}
+/* Person or couple(s) box style */
+#tv_tree div.tv_box {
+  border: thin outset #000;
+}
+#tv_tree div.tv_box div.tvM, #tv_tree .tv_box div.tvF {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}

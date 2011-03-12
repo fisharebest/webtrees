@@ -1,0 +1,69 @@
+/* Border (also have class table.tv_tree) */
+table#tvTreeBorder td#tv_tree_topleft {
+  background: url(treetopleft.gif);
+}
+table#tvTreeBorder td#tv_tree_top {
+  background: url(treetop.gif) repeat-x;
+}
+table#tvTreeBorder td#tv_tree_top div{
+  font-family: Times new Roman, Times, serif;
+  font-size: 18px;
+}
+table#tvTreeBorder td#tv_tree_topright {
+  background: url(treetopright.gif);
+}
+table#tvTreeBorder td#tv_tree_left {
+  background: url(treeleft.gif) repeat-y;
+}
+table#tvTreeBorder td#tv_tree_right {
+  background: url(treeright.gif) repeat-y;
+}
+table#tvTreeBorder td#tv_tree_bottomleft {
+  background: url(treebottomleft.gif);
+}
+table#tvTreeBorder td#tv_tree_bottom {
+  background: url(treebottom.gif) repeat-x;
+}
+table#tvTreeBorder td#tv_tree_bottomright {
+  background: url(treebottomright.gif);
+}
+/* tree */
+#tv_tree {
+   background: url(tree.jpg);
+}
+/* Person or couple(s) box style */
+#tv_tree div.tv_box {
+  border: thin outset #6f2f00;
+  border-radius: 8px; 
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px; 
+  -khtml-border-radius: 8px; 
+  box-shadow: 1px 1px 2px #cfcf8f; 
+  -webkit-box-shadow: 1px 1px 2px #cfcf8f; 
+  -moz-box-shadow: 1px 1px 2px #cfcf8f;
+  -khtml-box-shadow: 1px 1px 2px #dfdcfcf8ff00;
+  filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcf8f, offX=1, offY=1, positive=true);
+}
+#tv_tree div.tv_box div.tvM, #tv_tree div.tv_box div.tvF {
+	font-family: Times new Roman, Times, serif;
+	font-size: 120%;
+  border-radius: 8px; 
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px; 
+  -khtml-border-radius: 8px;
+  background: url(papier.jpg);
+  color: #180000;
+}
+/* horizontal and vertical lines color */
+#tv_tree div.tv_vline, #tv_tree div.tv_hline {
+  background-color:  #002f6f;
+}
+#tv_tree table.tv_tree td.tv_vline_h {
+  background-image: url(vline.jpg);
+}
+#tv_tree table.tv_tree td.tv_vline_t {
+  background-image: url(vline_t.gif);
+}
+#tv_tree table.tv_tree td.tv_vline_b {
+  background-image: url(vline_b.gif);
+}

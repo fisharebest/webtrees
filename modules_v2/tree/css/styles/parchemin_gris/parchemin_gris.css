@@ -1,0 +1,37 @@
+/* Border (also have class table.tv_tree) */
+table#tvTreeBorder td#tv_tree_topleft {
+  background: url(treetopleft.gif);
+}
+table#tvTreeBorder td#tv_tree_top {
+  background: url(treetop.gif) repeat-x;
+}
+table#tvTreeBorder td#tv_tree_topright {
+  background: url(treetopright.gif);
+}
+table#tvTreeBorder td#tv_tree_left {
+  background: url(treeleft.gif) repeat-y;
+}
+table#tvTreeBorder td#tv_tree_right {
+  background: url(treeright.gif) repeat-y;
+}
+table#tvTreeBorder td#tv_tree_bottomleft {
+  background: url(treebottomleft.gif);
+}
+table#tvTreeBorder td#tv_tree_bottom {
+  background: url(treebottom.gif) repeat-x;
+}
+table#tvTreeBorder td#tv_tree_bottomright {
+  background: url(treebottomright.gif);
+}
+table#tvTreeBorder td#tv_tree_top div{
+  font-family: Comic Sans MS, cursive;
+  font-size: 18px;
+}
+
+/* tree */
+#tv_tree {
+   background: url(tree.jpg);
+}
+#tv_tree div.tv_box div.tvM, #tv_tree div.tv_box div.tvF {
+	font-family: Comic Sans MS, cursive;
+}

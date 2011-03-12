@@ -150,7 +150,7 @@ class WT_MenuBar {
 		}
 		// TODO: Use WT_Module_Chart ??
 		if (array_key_exists('tree', WT_Module::getActiveModules())) {
-			$menuList['treenav']=WT_I18N::translate('Interactive tree');
+			$menuList['tree']=WT_I18N::translate('Interactive tree');
 		}
 		if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
 			$menuList['pedigree_map']=WT_I18N::translate('Pedigree Map');
@@ -355,10 +355,9 @@ class WT_MenuBar {
 				$menu->addSubmenu($submenu);
 				break;
 
-			case 'treenav':
+			case 'tree':
 				//-- interactive tree
-				$link = 'treenav.php?ged='.WT_GEDURL;
-				if ($rootid) $link .= '&amp;rootid='.$rootid;
+				$link = 'module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$rootid;
 				$submenu = new WT_Menu(WT_I18N::translate('Interactive tree'), $link);
 				$submenu->addIcon('tree');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_gedcom');

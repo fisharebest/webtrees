@@ -1,0 +1,121 @@
+.tv_out {
+  background: #000;
+}
+/* Border (also have class table.tv_tree) */
+table#tvTreeBorder td#tv_tree_topleft {
+  background: url(treetopleft.gif);
+}
+table#tvTreeBorder td#tv_tree_top {
+  background: url(treetop.gif) repeat-x;
+}
+table#tvTreeBorder td#tv_tree_topright {
+  background: url(treetopright.gif);
+}
+table#tvTreeBorder td#tv_tree_left {
+  background: url(treeleft.gif) repeat-y;
+}
+table#tvTreeBorder td#tv_tree_right {
+  background: url(treeright.gif) repeat-y;
+}
+table#tvTreeBorder td#tv_tree_bottomleft {
+  background: url(treebottomleft.gif);
+}
+table#tvTreeBorder td#tv_tree_bottom {
+  background: url(treebottom.gif) repeat-x;
+}
+table#tvTreeBorder td#tv_tree_bottomright {
+  background: url(treebottomright.gif);
+}
+table#tvTreeBorder td#tv_tree_top div{
+  font-family: fantasy;
+  font-size: 16px;
+  color: #4fff8f;
+}
+/* tree */
+table#tvTreeBorder td, #tv_tree {
+ 	background: #000;
+}
+#tv_tree div.tv_box .date{
+	color: #dfdfff;
+}
+#tv_tree div.tv_box div.tvM {
+	background: #000012;
+	color: #efffff;
+}
+#tv_tree div.tv_box div.tvF {
+	background: #120000;
+	color: #ffefef;
+}
+#tv_tree div.tv_box a {
+	color: #4fff8f;
+}
+#tv_tree div.tv_box a:hover {
+	color: #df0000;
+}
+
+/* horizontal and vertical lines color */
+#tv_tree div.tv_vline, #tv_tree div.tv_hline {
+  background-color:  #8fdfaf;
+}
+#tv_tree table.tv_tree td.tv_vline_h {
+  background-image: url(vline.jpg);
+}
+#tv_tree table.tv_tree td.tv_vline_t {
+  background-image: url(vline_t.gif);
+}
+#tv_tree table.tv_tree td.tv_vline_b {
+  background-image: url(vline_b.gif);
+}
+/* Person or couple(s) box style */
+#tv_tree div.tv_box {
+  border: thin inset #00ffef;
+  background: #000;
+   border-radius: 2px; 
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px; 
+  -khtml-border-radius: 2px;
+   box-shadow: 2px 2px 12px #2f8f4f;
+  -webkit-box-shadow: 2px 2px 12px #2f8f4f;
+  -moz-box-shadow: 2px 2px 12px #2f8f4f;
+  -khtml-box-shadow: 2px 2px 12px #2f8f4f;
+  filter: progid:DXImageTransform.Microsoft.dropShadow(color=#2f8f4f, offX=2, offY=2, positive=true);
+}
+#tv_tree div.tv_box span.tvM {
+	color: #00ffff; 
+}
+#tv_tree div.tv_box span.tvF {
+	color: #ffef00;
+}
+/* The toolbox style. Button's images come from the active theme */
+#tv_tools, #tvStylesSubmenu {
+  background-color: #00af8f; 
+  border: 1px outset #004f8f; 
+  -moz-border-radius: 4px; 
+  -webkit-border-radius: 4px; 
+  -khtml-border-radius: 4px; 
+  border-radius: 4px; 
+  box-shadow: 2px 2px 12px #2f8f4f; 
+  -moz-box-shadow: 2px 2px 12px #2f8f4f;
+  -webkit-box-shadow: 2px 2px 12px #2f8f4f;   
+  -khtml-box-shadow: 2px 2px 12px #2f8f4f; 
+  filter: progid:DXImageTransform.Microsoft.dropShadow(color=#2f8f4f, offX=2, offY=2, positive=true);   
+}
+#tv_tools li.tv_button {
+  border: thin solid #00af8f;
+  background-color: #00af8f;
+}
+#tv_tools li.tv_button:hover {
+  background: #8fefaf; 
+  border: thin outset #00fffd;
+}
+#tv_tools li.tvPressed {
+  border: thin inset #008888;
+}
+#tvToolsHandler {
+  border: thin inset #004f8f;
+}
+
+#tvToolsHandler:hover {
+  border: thin outset #004f8f;
+  background-color: #00ffaf;
+}

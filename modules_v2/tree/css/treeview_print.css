@@ -1,0 +1,17 @@
+/**
+ * This file is a printing CSS for the TreeView module
+ *
+ * dF 2011
+ */
+
+#header, #tv_tools, #tv_tree div.tv_box img.tv_treelink, #tv_tree .default_thumbnail {
+  display : none;
+}
+
+.tv_out {
+  top: 0;
+  left: 0;
+  border: 0 none;
+  overflow: visible; /* avoid cutting big trees by this html element */
+  background: none;
+}
