@@ -331,7 +331,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			echo '<div>';
 				$fact = trim($nmatch[$i][1]);
 				if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")&&($fact!="SPFX")) {
-					echo '<dl><dt class="label">', translate_fact($fact, $this->indi), '</dt>';
+					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->indi), '</dt>';
 					echo '<dd class="field">';
 						if (isset($nmatch[$i][2])) {
 							$name = trim($nmatch[$i][2]);

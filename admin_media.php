@@ -788,8 +788,8 @@ if (check_media_structure()) {
 	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">
 	<tr align="center"><td class="wrap"><?php echo WT_I18N::translate('Sequence'), help_link('sortby'); ?>
 	<select name="sortby">
-		<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\""; ?>><?php echo translate_fact('TITL'); ?></option>
-		<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\""; ?>><?php echo translate_fact('FILE'); ?></option>
+		<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\""; ?>><?php echo WT_Gedcom_Tag::getLabel('TITL'); ?></option>
+		<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\""; ?>><?php echo WT_Gedcom_Tag::getLabel('FILE'); ?></option>
 	</select></td>
 	<td class="wrap">
 		<?php echo WT_I18N::translate('Show thumbnails'), help_link('show_thumb'); ?>

@@ -32,7 +32,7 @@ require './includes/session.php';
 
 //-- const
 $fact='MARR';
-define('WT_ICON_RINGS', '<img src="'.$WT_IMAGES['rings'].'" alt="'.translate_fact('MARR').'" title="'.translate_fact('MARR').'" />');
+define('WT_ICON_RINGS', '<img src="'.$WT_IMAGES['rings'].'" alt="'.WT_Gedcom_Tag::getLabel('MARR').'" title="'.WT_Gedcom_Tag::getLabel('MARR').'" />');
 define('WT_ICON_BRANCHES', '<img src="'.$WT_IMAGES['patriarch'].'" alt="" align="middle" />');
 
 //-- args
@@ -65,7 +65,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 	<table class="center facts_table width50">
 		<tr>
 			<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>">
-				<?php echo translate_fact('SURN'), help_link('surname'); ?></td>
+				<?php echo WT_Gedcom_Tag::getLabel('SURN'), help_link('surname'); ?></td>
 			<td class="optionbox <?php echo $TEXT_DIRECTION; ?>">
 				<input type="text" name="surn" id="SURN" value="<?php echo $surn; ?>" />
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" />

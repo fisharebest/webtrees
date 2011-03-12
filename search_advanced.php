@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 define('WT_SCRIPT_NAME', 'search_advanced.php');
 require './includes/session.php';
@@ -218,7 +218,7 @@ echo WT_JS_END;
 					</tr>
 					<tr>
 						<td class="list_label">
-							<?php echo translate_fact('GIVN'); ?>
+							<?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:'.$fatherGivnOption)); ?>" />
@@ -233,7 +233,7 @@ echo WT_JS_END;
 					<tr>
 						<?php $j++; ?>
 						<td class="list_label">
-							<?php echo translate_fact('SURN'); ?>
+							<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:'.$fatherSurnOption)); ?>" />
@@ -255,7 +255,7 @@ echo WT_JS_END;
 					</tr>
 					<tr>
 						<td class="list_label">
-							<?php echo translate_fact('GIVN'); ?>
+							<?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:'.$motherGivnOption)); ?>" />
@@ -270,7 +270,7 @@ echo WT_JS_END;
 					</tr>
 					<tr>
 						<td class="list_label">
-							<?php echo translate_fact('SURN'); ?>
+							<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?>
 						</td>
 						<td class="list_value">
 							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:SURN:'.$motherSurnOption)); ?>" />

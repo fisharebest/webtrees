@@ -122,7 +122,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	}
 
 	function getLabel($tag) {
-		return translate_fact(str_replace(':SDX', '', $tag));
+		return WT_Gedcom_Tag::getLabel(str_replace(':SDX', '', $tag));
 	}
 
 	function reorderFields() {

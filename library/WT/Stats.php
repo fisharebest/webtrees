@@ -1915,7 +1915,7 @@ class WT_Stats {
 				if (isset($eventTypes[$row['fact']])) {
 					$result=$eventTypes[$row['fact']];
 				} else {
-					$result=translate_fact($row['fact']);
+					$result=WT_Gedcom_Tag::getLabel($row['fact']);
 				}
 				break;
 			case 'name':
