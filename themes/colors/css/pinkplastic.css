@@ -29,6 +29,18 @@ padding:0px;
 background:#f41063;
 color: #ffffff;
 }
+
+/*	Define Link Color					*/
+
+a {
+color:#333333;
+text-decoration: none;
+}
+
+a:link, a:visited, a:active, .menuitem a, .nameZoom {
+color:#333333;
+}
+
 /*	Define Tbl hdrs and Light Text Colors	*/
 
 .descriptionbox,
@@ -71,17 +83,6 @@ color: #f391c6;
 .small_inner_block .person_box, 
 .submenuitem_hover {
 background:#fbdaed;
-}
-
-/*	Define Link Color					*/
-
-a {
-color:#333333;
-text-decoration: none;
-}
-
-a:link, a:visited, a:active, .menuitem a, .nameZoom {
-color:#333333;
 }
 
 a:hover { 
