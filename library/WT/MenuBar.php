@@ -545,7 +545,7 @@ class WT_MenuBar {
 	public static function getSearchMenu() {
 		global $WT_IMAGES, $SEARCH_SPIDER;
 
-		if ((!file_exists(WT_ROOT.'search.php')) || (!empty($SEARCH_SPIDER))) {
+		if ($SEARCH_SPIDER) {
 			return null;
 		}
 		//-- main search menu item
@@ -553,7 +553,7 @@ class WT_MenuBar {
 		$menu->addIcon('search');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_search');
 		//-- search_general sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('General Search'), 'search.php?ged='.WT_GEDURL.'&amp;action=general');
+		$submenu = new WT_Menu(WT_I18N::translate('General Search'), 'search.php?ged='.WT_GEDURL);
 		$submenu->addIcon('search');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_search');
 		$menu->addSubmenu($submenu);
