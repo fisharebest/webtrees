@@ -215,11 +215,11 @@ case 'PLACECHECK_KEY':
 	$title=WT_I18N::translate('Key to colors used below');
 	$text=
 		'<table border="1" cellspacing="0" cellpadding="3"><tr><td style="color:red;">'.
-		translate_fact('PLAC').
+		WT_Gedcom_Tag::getLabel('PLAC').
 		'</td><td style="color:red;" align="center"><strong>X</strong></td><td align="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
 		WT_I18N::translate('This place and its coordinates do not exist in the GoogleMap tables.').
 		'</td></tr><tr><td style="color:blue;">'.
-		translate_fact('PLAC').
+		WT_Gedcom_Tag::getLabel('PLAC').
 		'</td><td style="color:red;" align="center"><strong>X</strong></td><td align="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
 		WT_I18N::translate('This place exists in the GoogleMap tables, but has no coordinates.').
 		'</td></tr><tr><td><strong>'.

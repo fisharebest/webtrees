@@ -2253,8 +2253,8 @@ function varSHandler($attrs) {
 			// n TYPE This text if string
 			$tfact = $type;
 		}
-		$var = str_replace(array("@fact", "@desc"), array(translate_fact($tfact), $desc), $var);
-		if (substr($var, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 14)=='translate_fact') {
+		$var = str_replace(array("@fact", "@desc"), array(WT_Gedcom_Tag::getLabel($tfact), $desc), $var);
+		if (substr($var, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 23)=='WT_Gedcom_Tag::getLabel') {
 			eval("\$var=$var;");
 		}
 	}

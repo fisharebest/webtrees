@@ -67,7 +67,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	//-- fieldset
 	if ($option=="BIRT_PLAC" || $option=="DEAT_PLAC") {
 		$filter=$legend;
-		$legend=translate_fact(substr($option, 0, 4))." @ ".$legend;
+		$legend=WT_Gedcom_Tag::getLabel(substr($option, 0, 4))." @ ".$legend;
 	}
 	if ($legend == "") $legend = WT_I18N::translate('Individuals');
 	if (isset($WT_IMAGES["indis"])) $legend = "<img src=\"".$WT_IMAGES["indis"]."\" alt=\"\" align=\"middle\" /> ".$legend;
@@ -94,32 +94,32 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo WT_I18N::translate('Leaves'), "</button> ";
 	echo "<br />";
 	echo "<button type=\"button\" class=\"BIRT_YES\" title=\"", WT_I18N::translate('Show persons born more than 100 years ago.'), "\" >";
-	echo translate_fact('BIRT'), "&gt;100</button> ";
+	echo WT_Gedcom_Tag::getLabel('BIRT'), "&gt;100</button> ";
 	echo "<button type=\"button\" class=\"BIRT_Y100\" title=\"", WT_I18N::translate('Show persons born within the last 100 years.'), "\" >";
-	echo translate_fact('BIRT'), "&lt;=100</button> ";
+	echo WT_Gedcom_Tag::getLabel('BIRT'), "&lt;=100</button> ";
 	echo "<button type=\"button\" class=\"DEAT_YES\" title=\"", WT_I18N::translate('Show people who died more than 100 years ago.'), "\" >";
-	echo translate_fact('DEAT'), "&gt;100</button> ";
+	echo WT_Gedcom_Tag::getLabel('DEAT'), "&gt;100</button> ";
 	echo "<button type=\"button\" class=\"DEAT_Y100\" title=\"", WT_I18N::translate('Show people who died within the last 100 years.'), "\" >";
-	echo translate_fact('DEAT'), "&lt;=100</button> ";
+	echo WT_Gedcom_Tag::getLabel('DEAT'), "&lt;=100</button> ";
 	echo "<button type=\"button\" class=\"reset\" title=\"", WT_I18N::translate('Reset to the list defaults.'), "\" >";
 	echo WT_I18N::translate('Reset'), "</button> ";
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table\">";
 	echo "<thead><tr>";
 	echo "<td></td>";
-	echo '<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', translate_fact('NAME'), '</a></th>';
+	echo '<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', WT_Gedcom_Tag::getLabel('NAME'), '</a></th>';
 	echo "<th class=\"list_label\" style=\"display:none\">GIVN</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">SURN</th>";
 	if ($option=="sosa") echo "<th class=\"list_label\">", /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), "</th>";
-	echo "<th class=\"list_label\">", translate_fact('BIRT'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('BIRT'), "</th>";
 	if ($tiny) echo "<td class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"", WT_I18N::translate('Anniversary'), "\" title=\"", WT_I18N::translate('Anniversary'), "\" border=\"0\" /></td>";
-	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('PLAC'), "</th>";
 	if ($tiny) echo "<th class=\"list_label\"><img src=\"".$WT_IMAGES["children"]."\" alt=\"", WT_I18N::translate('Children'), "\" title=\"", WT_I18N::translate('Children'), "\" border=\"0\" /></th>";
-	echo "<th class=\"list_label\">", translate_fact('DEAT'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('DEAT'), "</th>";
 	if ($tiny) echo "<td class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"", WT_I18N::translate('Anniversary'), "\" title=\"", WT_I18N::translate('Anniversary'), "\" border=\"0\" /></td>";
-	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
-	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
-	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", translate_fact('CHAN'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('AGE'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('PLAC'), "</th>";
+	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", WT_Gedcom_Tag::getLabel('CHAN'), "</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">SEX</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">BIRT</th>";
 	echo "<th class=\"list_label\" style=\"display:none\">DEAT</th>";
@@ -184,7 +184,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				continue;
 			}
 			if ($title=$name['type']=='_MARNM') {
-				$title='title="'.translate_fact('_MARNM').'"';
+				$title='title="'.WT_Gedcom_Tag::getLabel('_MARNM').'"';
 			} else {
 				$title='';
 			}
@@ -380,7 +380,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<td></td>";
 	echo "<td class=\"list_label\">"; // NAME
 	if (count($unique_indis)>1) {
-		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
+		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
 	}
 	echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", WT_I18N::translate('Show parents'), "</label><br />";
 	echo WT_I18N::translate('Total individuals'), ' : ', count($unique_indis);
@@ -444,7 +444,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	//-- fieldset
 	if ($option=="MARR_PLAC") {
 		$filter=$legend;
-		$legend=translate_fact('MARR')." @ ".$legend;
+		$legend=WT_Gedcom_Tag::getLabel('MARR')." @ ".$legend;
 	}
 	if ($legend == "") $legend = WT_I18N::translate('Families');
 	$legend = "<img src=\"".$WT_IMAGES["sfamily"]."\" alt=\"\" align=\"middle\" /> ".$legend;
@@ -466,30 +466,30 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo WT_I18N::translate('Leaves'), "</button> ";
 	echo "<br />";
 	echo "<button type=\"button\" class=\"MARR_U\" title=\"", WT_I18N::translate('Show couples with an unknown marriage date.'), "\" >";
-	echo translate_fact('MARR'), " ?</button> ";
+	echo WT_Gedcom_Tag::getLabel('MARR'), " ?</button> ";
 	echo "<button type=\"button\" class=\"MARR_YES\" title=\"", WT_I18N::translate('Show couples who married more than 100 years ago.'), "\" >";
-	echo translate_fact('MARR'), "&gt;100</button> ";
+	echo WT_Gedcom_Tag::getLabel('MARR'), "&gt;100</button> ";
 	echo "<button type=\"button\" class=\"MARR_Y100\" title=\"", WT_I18N::translate('Show couples who married within the last 100 years.'), "\" >";
-	echo translate_fact('MARR'), "&lt;=100</button> ";
+	echo WT_Gedcom_Tag::getLabel('MARR'), "&lt;=100</button> ";
 	echo "<button type=\"button\" class=\"MARR_DIV\" title=\"", WT_I18N::translate('Show divorced couples.'), "\" >";
-	echo translate_fact('DIV'), "</button> ";
+	echo WT_Gedcom_Tag::getLabel('DIV'), "</button> ";
 	echo "<button type=\"button\" class=\"reset\" title=\"", WT_I18N::translate('Reset to the list defaults.'), "\" >";
 	echo WT_I18N::translate('Reset'), "</button> ";
 	//-- table header
 	echo "<table id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<thead><tr>";
 	echo "<td></td>";
-	echo "<th class=\"list_label\">", translate_fact('NAME'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('NAME'), "</th>";
 	echo "<th style=\"display:none\">HUSB:GIVN</th>";
-	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
-	echo "<th class=\"list_label\">", translate_fact('NAME'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('AGE'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('NAME'), "</th>";
 	echo "<th style=\"display:none\">WIFE:GIVN</th>";
-	echo "<th class=\"list_label\">", translate_fact('AGE'), "</th>";
-	echo "<th class=\"list_label\">", translate_fact('MARR'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('AGE'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('MARR'), "</th>";
 	if ($tiny) echo "<td class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"", WT_I18N::translate('Anniversary'), "\" title=\"", WT_I18N::translate('Anniversary'), "\" border=\"0\" /></td>";
-	echo "<th class=\"list_label\">", translate_fact('PLAC'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('PLAC'), "</th>";
 	if ($tiny) echo "<th class=\"list_label\"><img src=\"".$WT_IMAGES["children"]."\" alt=\"", WT_I18N::translate('Children'), "\" title=\"", WT_I18N::translate('Children'), "\" border=\"0\" /></th>";
-	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", translate_fact('CHAN'), "</th>";
+	if ($tiny && $SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", WT_Gedcom_Tag::getLabel('CHAN'), "</th>";
 	echo "<th style=\"display:none\">MARR</th>";
 	echo "<th style=\"display:none\">DEAT</th>";
 	echo "<th style=\"display:none\">TREE</th>";
@@ -635,15 +635,15 @@ function print_fam_table($datalist, $legend="", $option="") {
 		} else if (get_sub_record(1, "1 _NMR", $family->getGedcomRecord())) {
 			$hus = $family->getHusband();
 			$wif = $family->getWife();
-			if (empty($wif) && !empty($hus)) echo translate_fact('_NMR', $hus);
-			else if (empty($hus) && !empty($wif)) echo translate_fact('_NMR', $wif);
-			else echo translate_fact('_NMR');
+			if (empty($wif) && !empty($hus)) echo WT_Gedcom_Tag::getLabel('_NMR', $hus);
+			else if (empty($hus) && !empty($wif)) echo WT_Gedcom_Tag::getLabel('_NMR', $wif);
+			else echo WT_Gedcom_Tag::getLabel('_NMR');
 		} else if (get_sub_record(1, "1 _NMAR", $family->getGedcomRecord())) {
 			$hus = $family->getHusband();
 			$wif = $family->getWife();
-			if (empty($wif) && !empty($hus)) echo translate_fact('_NMAR', $hus);
-			else if (empty($hus) && !empty($wif)) echo translate_fact('_NMAR', $wif);
-			else echo translate_fact('_NMAR');
+			if (empty($wif) && !empty($hus)) echo WT_Gedcom_Tag::getLabel('_NMAR', $hus);
+			else if (empty($hus) && !empty($wif)) echo WT_Gedcom_Tag::getLabel('_NMAR', $wif);
+			else echo WT_Gedcom_Tag::getLabel('_NMAR');
 		} else {
 			$factdetail = explode(' ', trim($family->getMarriageRecord()));
 			if (isset($factdetail)) {
@@ -734,7 +734,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "<td></td>";
 	echo "<td class=\"list_label\">"; // HUSB:NAME
 	if ($num>1) {
-		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
+		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
 	}
 	echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", WT_I18N::translate('Show parents'), "</label><br />";
 	echo WT_I18N::translate('Total families'), " : ", $num;
@@ -743,7 +743,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "<td style=\"display:none\">HUSB:GIVN</td>";
 	echo "<td></td>"; // HUSB:AGE
 	echo "<td class=\"list_label\" style=\"vertical-align: top;\">"; // WIFE:NAME
-	echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', translate_fact('GIVN'), '</a><br />';
+	echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
 	echo "</td>";
 	echo "<td style=\"display:none\">WIFE:GIVN</td>";
 	echo "<td></td>"; // WIFE:AGE
@@ -795,15 +795,15 @@ function print_sour_table($datalist, $legend=null) {
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center"><tr><td></td>';
-	echo '<th class="list_label">', translate_fact('TITL'), '</th>';
-	echo '<td class="list_label t2" style="display:none;">', translate_fact('TITL'), ' 2</td>';
-	echo '<th class="list_label">', translate_fact('AUTH'), '</th>';
+	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
+	echo '<td class="list_label t2" style="display:none;">', WT_Gedcom_Tag::getLabel('TITL'), ' 2</td>';
+	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Families'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Media'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Shared notes'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th class="list_label rela">', translate_fact('CHAN'), '</th>';
+		echo '<th class="list_label rela">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	}
 	echo '</tr>';
 	//-- table body
@@ -924,13 +924,13 @@ function print_note_table($datalist, $legend=null) {
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
 	echo '<table id="', $table_id, '" class="sortable list_table center" ><tr><td></td>';
-	echo '<th class="list_label">', translate_fact('TITL'), '</th>';
+	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Families'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Media'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th class="list_label rela">', translate_fact('CHAN'), '</th>';
+		echo '<th class="list_label rela">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	}
 	echo '</tr>';
 	//-- table body
@@ -999,7 +999,7 @@ function print_repo_table($repos, $legend='') {
 	echo '<th class="list_label">', WT_I18N::translate('Repository name'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th class="list_label rela">', translate_fact('CHAN'), '</th>';
+		echo '<th class="list_label rela">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	}
 	echo '</tr>';
 	//-- table body
@@ -1050,11 +1050,11 @@ function print_media_table($datalist, $legend="") {
 	echo "<table width=\"100%\" id=\"", $table_id, "\" class=\"sortable list_table center\">";
 	echo "<tr>";
 	echo "<td></td>";
-	echo "<th class=\"list_label\">", translate_fact('TITL'), "</th>";
+	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('TITL'), "</th>";
 	echo "<th class=\"list_label\">", WT_I18N::translate('Individuals'), "</th>";
 	echo "<th class=\"list_label\">", WT_I18N::translate('Families'), "</th>";
 	echo "<th class=\"list_label\">", WT_I18N::translate('Sources'), "</th>";
-	if ($SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", translate_fact('CHAN'), "</th>";
+	if ($SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", WT_Gedcom_Tag::getLabel('CHAN'), "</th>";
 	echo "</tr>";
 	//-- table body
 	$n = 0;
@@ -1129,7 +1129,7 @@ function format_surname_table($surnames, $type) {
 	$table_id ='ID'.floor(microtime()*1000000); // sorttable requires a unique ID
 	$html='<table id="'.$table_id.'" class="sortable list_table center">';
 	$html.='<tr><th></th>';
-	$html.='<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 1)">'.translate_fact('SURN').'</a></th>';
+	$html.='<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 1)">'.WT_Gedcom_Tag::getLabel('SURN').'</a></th>';
 	$html.='<th style="display:none;">SURN</th>'; // hidden column for sorting surnames
 	$html.='<th class="list_label">';
 	if ($type=='famlist') {
@@ -1365,7 +1365,7 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
             if ($SHOW_MARRIED_NAMES) {
                 foreach ($value['record']->getAllNames() as $name) {
                     if ($name['type'] == '_MARNM') {
-                        $return .= "<div><a title='" . translate_fact('_MARNM') . "' href='" . $value['record']->getHtmlUrl() . "' class='list_item'>" . PrintReady($name['full']) . "</a></div>";
+                        $return .= "<div><a title='" . WT_Gedcom_Tag::getLabel('_MARNM') . "' href='" . $value['record']->getHtmlUrl() . "' class='list_item'>" . PrintReady($name['full']) . "</a></div>";
                     }
                 }
             }
@@ -1438,8 +1438,8 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
     $return .= "<thead><tr>";
     $return .= "<th class='list_label'></th>";
     $return .= "<th style='cursor:pointer;' class='list_label'>" . WT_I18N::translate('Record') . "</th>";
-    $return .= "<th style='cursor:pointer;' class='list_label'>" . translate_fact('CHAN') . "</th>";
-    $return .= "<th style='cursor:pointer;' class='list_label'>" . translate_fact('_WT_USER') . "</th>";
+    $return .= "<th style='cursor:pointer;' class='list_label'>" . WT_Gedcom_Tag::getLabel('CHAN') . "</th>";
+    $return .= "<th style='cursor:pointer;' class='list_label'>" . WT_Gedcom_Tag::getLabel('_WT_USER') . "</th>";
     $return .= "<th style='display:none;'>DATE</th>";     //hidden by datatables code
     $return .= "<th style='display:none;'>SORTNAME</th>"; //hidden by datatables code
     $return .= "</tr></thead><tbody>";
@@ -1490,7 +1490,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
             if ($SHOW_MARRIED_NAMES) {
                 foreach ($record->getAllNames() as $name) {
                     if ($name['type'] == '_MARNM') {
-                        $return .= "<div><a title='" . translate_fact('_MARNM') . "' href='" . $record->getHtmlUrl() . "' class='list_item'>" . PrintReady($name['full']) . "</a></div>";
+                        $return .= "<div><a title='" . WT_Gedcom_Tag::getLabel('_MARNM') . "' href='" . $record->getHtmlUrl() . "' class='list_item'>" . PrintReady($name['full']) . "</a></div>";
                     }
                 }
             }
@@ -1596,10 +1596,10 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= "<thead><tr>";
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_I18N::translate('Record')."</th>";
 			$return .= "<th style=\"display:none;\">GIVN</th>"; //hidden by datables code
-			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".translate_fact('DATE')."</th>";
+			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_Gedcom_Tag::getLabel('DATE')."</th>";
 			$return .= "<th style=\"display:none;\">DATE</th>"; //hidden by datables code
 			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"".WT_I18N::translate('Anniversary')."\" title=\"".WT_I18N::translate('Anniversary')."\" border=\"0\" /></th>";
-			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".translate_fact('EVEN')."</th>";
+			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_Gedcom_Tag::getLabel('EVEN')."</th>";
 			$return .= "</tr></thead><tbody>";
 		}
 
@@ -1665,7 +1665,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "</td>";
 		//-- Event name
 		$return .= "<td class=\"list_value_wrap\">";
-		$return .= "<a href=\"".$value['url']."\" class=\"list_item\">".translate_fact($value['fact'])."</a>";
+		$return .= "<a href=\"".$value['url']."\" class=\"list_item\">".WT_Gedcom_Tag::getLabel($value['fact'])."</a>";
 		$return .= "&nbsp;</td>";
 
 		$return .= "</tr>";
@@ -1788,7 +1788,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	foreach ($filtered_events as $value) {
 		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($value['name'])."</a>".$value['sex'];
 		$return .= "<br /><div class=\"indent\">";
-		$return .= translate_fact($value['fact']).' - '.$value['date']->Display(true);
+		$return .= WT_Gedcom_Tag::getLabel($value['fact']).' - '.$value['date']->Display(true);
 		if ($value['anniv']!=0) $return .= " (" . WT_I18N::translate('%s year anniversary', $value['anniv']).")";
 		if (!empty($value['plac'])) $return .= " - <a href=\"".get_place_url($value['plac'])."\">".$value['plac']."</a>";
 		$return .= "</div>";

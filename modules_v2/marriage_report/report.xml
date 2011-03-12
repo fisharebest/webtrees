@@ -7,7 +7,7 @@
 	<Input name="marrplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Marriage Place contains')" /> </Input>
 	<Input name="marrdate1" lookup="DATE" type="text"><var var="WT_I18N::translate('Marriage Date range start')" /></Input>
 	<Input name="marrdate2" lookup="DATE" type="text"><var var="WT_I18N::translate('Marriage Date range end')" /></Input>
-	<Input name="sortby" type="select" options="NAME=>WT_I18N::translate('Name')|MARR:DATE=>translate_fact('MARR:DATE')"><var var="WT_I18N::translate('Sort by')" /></Input>
+	<Input name="sortby" type="select" options="NAME=>WT_I18N::translate('Name')|MARR:DATE=>WT_Gedcom_Tag::getLabel('MARR:DATE')"><var var="WT_I18N::translate('Sort by')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
 

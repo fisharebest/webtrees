@@ -5,7 +5,7 @@
 	<Description><var var="WT_I18N::translate('A report of people buried in a given place.')" /></Description>
 	<Input name="deathplace" lookup="PLAC" type="text"><var var="WT_I18N::translate('Burial Place contains')" /> </Input>
 	<Input name="sortby" type="select" default="NAME" options="none=>WT_I18N::translate('None')|ID=>WT_I18N::translate('ID number')|NAME=>WT_I18N::translate('Name')|DEAT:DATE=>WT_I18N::translate('Date of death')"><var var="WT_I18N::translate('Sort by')" /></Input>
-	<Input name="adlist" type="select" default="none" options="none=>WT_I18N::translate('None')|_MARNM=>translate_fact('_MARNM')|HUSB=>WT_I18N::translate('Husband')"><var var="WT_I18N::translate('Name List')" /></Input>
+	<Input name="adlist" type="select" default="none" options="none=>WT_I18N::translate('None')|_MARNM=>WT_Gedcom_Tag::getLabel('_MARNM')|HUSB=>WT_I18N::translate('Husband')"><var var="WT_I18N::translate('Name List')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
 	<Input name="fonts" type="select" default="dejavusans" options="arialunicid0=>WT_I18N::translate_c('font name', 'Arial')|dejavusans=>WT_I18N::translate_c('font name', 'DejaVu')|helvetica=>WT_I18N::translate_c('font name', 'Helvetica')"><var var="WT_I18N::translate('Font')"/></Input>
 
@@ -42,7 +42,7 @@
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='DEAT:DATE'"><SetVar name="fill" value="#AAAAAA" /></if>
 			<TextBox bgcolor="$fill" border="1" width="$datewidth">
-				<Text style="label"><var var="translate_fact('DEAT:DATE')" /></Text>
+				<Text style="label"><var var="WT_Gedcom_Tag::getLabel('DEAT:DATE')" /></Text>
 			</TextBox>
 			<!-- should print and sort by burial date -->
 

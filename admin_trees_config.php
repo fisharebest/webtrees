@@ -718,7 +718,7 @@ echo WT_JS_START;?>
 
 			foreach ($tags as $tag) {
 				if ($tag) {
-					$all_tags[$tag]=translate_fact($tag);
+					$all_tags[$tag]=WT_Gedcom_Tag::getLabel($tag);
 				}
 			}
 
@@ -763,7 +763,7 @@ echo WT_JS_START;?>
 				echo '</td><td width="*">';
 				if ($row->tag_type) {
 					// I18N: e.g. Marriage (MARR)
-					echo WT_I18N::translate('%1$s [%2$s]', translate_fact($row->tag_type), $row->tag_type);
+					echo WT_I18N::translate('%1$s [%2$s]', WT_Gedcom_Tag::getLabel($row->tag_type), $row->tag_type);
 				} else {
 					echo '&nbsp;';
 				}
@@ -1242,7 +1242,7 @@ echo WT_JS_START;?>
 												echo " checked=\"checked\"";
 											}
 											echo " onchange=\"var old=document.configform.NEW_SHOW_RELATIVES_EVENTS.value; if (this.checked) old+=','+this.value; else old=old.replace(/".$col."/g,''); old=old.replace(/[,]+/gi,','); old=old.replace(/^[,]/gi,''); old=old.replace(/[,]$/gi,''); document.configform.NEW_SHOW_RELATIVES_EVENTS.value=old\" /> ";
-											echo translate_fact($col);
+											echo WT_Gedcom_Tag::getLabel($col);
 										}
 										echo '</td>';
 									}

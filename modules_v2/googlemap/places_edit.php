@@ -278,7 +278,7 @@ $api="v3";
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo translate_fact('PLAC'), help_link('PLE_PLACES','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'), help_link('PLE_PLACES','googlemap'); ?></td>
 		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input" />
 		<div id="INDI_PLAC_pop" style="display: inline;">
 		<?php print_specialchar_link("NEW_PLACE_NAME", false); ?></div>
@@ -323,7 +323,7 @@ $api="v3";
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo translate_fact('LATI'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LATI'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
 		<td class="optionbox">
 			<select name="LATI_CONTROL" onchange="updateMap();">
 				<option value="" <?php if ($place_lati == null) echo " selected=\"selected\""; ?>></option>
@@ -333,7 +333,7 @@ $api="v3";
 			<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" value="<?php if ($place_lati != null) echo abs($place_lati); ?>" size="20" onchange="updateMap();" /></td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo translate_fact('LONG'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LONG'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
 		<td class="optionbox">
 			<select name="LONG_CONTROL" onchange="updateMap();">
 				<option value="" <?php if ($place_long == null) echo " selected=\"selected\""; ?>></option>

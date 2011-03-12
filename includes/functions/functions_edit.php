@@ -789,7 +789,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 					add_simple_tag("2 _MARNM ".$value);
 					add_simple_tag("2 _MARNM_SURN ".$marnm_surn);
 				} else {
-					add_simple_tag("2 $tag $value", '', translate_fact("NAME:{$tag}", $person));
+					add_simple_tag("2 $tag $value", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
 				}
 			}
 			// Allow a new row to be entered if there was no row provided
@@ -798,7 +798,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 					add_simple_tag("0 _MARNM");
 					add_simple_tag("0 _MARNM_SURN $new_marnm");
 				} else {
-					add_simple_tag("0 $tag", '', translate_fact("NAME:{$tag}", $person));
+					add_simple_tag("0 $tag", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
 				}
 	}
 
@@ -1423,7 +1423,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		}
 	} else {
 		if ($fact=="NOTE" && $islink) {
-			echo translate_fact('SHARED_NOTE');
+			echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
 			/*
 			if (file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_1_ctrl.php') && $pid && $label=="GEDFact Assistant") {
 				// use $label (GEDFact Assistant);
@@ -1432,7 +1432,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 			*/
 		} else {
-			echo translate_fact($fact);
+			echo WT_Gedcom_Tag::getLabel($fact);
 		}
 	}
 
@@ -1606,7 +1606,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			print_specialchar_link($element_id, false);
 			print_findplace_link($element_id);
 			echo "</div>";
-			echo "<a href=\"javascript:;\" onclick=\"toggle_lati_long();\"><img src=\"", $WT_IMAGES["target"], "\" border=\"0\" align=\"middle\" alt=\"", translate_fact('LATI'), " / ", translate_fact('LONG'), "\" title=\"", translate_fact('LATI'), " / ", translate_fact('LONG'), "\" /></a>";
+			echo "<a href=\"javascript:;\" onclick=\"toggle_lati_long();\"><img src=\"", $WT_IMAGES["target"], "\" border=\"0\" align=\"middle\" alt=\"", WT_Gedcom_Tag::getLabel('LATI'), " / ", WT_Gedcom_Tag::getLabel('LONG'), "\" title=\"", WT_Gedcom_Tag::getLabel('LATI'), " / ", WT_Gedcom_Tag::getLabel('LONG'), "\" /></a>";
 			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 				places_assistant_WT_Module::setup_place_subfields($element_id);
 				places_assistant_WT_Module::print_place_subfields($element_id);
@@ -1627,7 +1627,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			$b=strtolower($value);
 			if (@strpos($a, $b)!==false or @strpos($b, $a)!==false) echo " selected=\"selected\"";
 			$tmp="MARR_".strtoupper($key);
-			echo ">", translate_fact($tmp), "</option>";
+			echo ">", WT_Gedcom_Tag::getLabel($tmp), "</option>";
 		}
 		echo "</select>";
 	}
@@ -1814,7 +1814,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		add_simple_tag(($level+2)." $text");
 		if ($FULL_SOURCES) {
 			// 4 DATE
-			add_simple_tag(($level+2)." DATE", '', translate_fact('DATA:DATE'));
+			add_simple_tag(($level+2)." DATE", '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
 			// 3 QUAY
 			add_simple_tag(($level+1)." QUAY");
 		}
@@ -1890,7 +1890,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	if ($tag=="RESN") {
 		//-- Retrieve existing resn or add new resn to fact
 		$text = '';
-		echo "<a href=\"javascript:;\" onclick=\"return expand_layer('newresn');\"><img id=\"newresn_img\" src=\"", $WT_IMAGES["plus"], "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" /> ", translate_fact('RESN'), "</a>";
+		echo "<a href=\"javascript:;\" onclick=\"return expand_layer('newresn');\"><img id=\"newresn_img\" src=\"", $WT_IMAGES["plus"], "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" /> ", WT_Gedcom_Tag::getLabel('RESN'), "</a>";
 		echo help_link('RESN');
 		echo "<br />";
 		echo "<div id=\"newresn\" style=\"display: none;\">";
@@ -1912,12 +1912,12 @@ function addSimpleTags($fact) {
 	} else {
 		add_simple_tag("0 {$fact}");
 	}
-	add_simple_tag("0 DATE", $fact, translate_fact("{$fact}:DATE"));
-	add_simple_tag("0 PLAC", $fact, translate_fact("{$fact}:PLAC"));
+	add_simple_tag("0 DATE", $fact, WT_Gedcom_Tag::getLabel("{$fact}:DATE"));
+	add_simple_tag("0 PLAC", $fact, WT_Gedcom_Tag::getLabel("{$fact}:PLAC"));
 
 	if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
 		foreach ($match[1] as $tag) {
-			add_simple_tag("0 {$tag}", $fact, translate_fact("{$fact}:PLAC:{$tag}"));
+			add_simple_tag("0 {$tag}", $fact, WT_Gedcom_Tag::getLabel("{$fact}:PLAC:{$tag}"));
 		}
 	}
 	add_simple_tag("0 MAP", $fact);
@@ -2339,7 +2339,7 @@ function create_add_form($fact) {
 			add_simple_tag("2 PAGE");
 			add_simple_tag("3 TEXT");
 			if ($FULL_SOURCES) {
-				add_simple_tag("3 DATE", '', translate_fact('DATA:DATE'));
+				add_simple_tag("3 DATE", '', WT_Gedcom_Tag::getLabel('DATA:DATE'));
 				add_simple_tag("2 QUAY");
 			}
 		}
@@ -2444,14 +2444,14 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 			$person = WT_Person::getInstance($pid);
 			$subrecord = $level.' '.$type.' '.$text;
 			if ($inSource && $type=="DATE") {
-				add_simple_tag($subrecord, '', translate_fact($label, $person));
+				add_simple_tag($subrecord, '', WT_Gedcom_Tag::getLabel($label, $person));
 			} elseif (!$inSource && $type=="DATE") {
-				add_simple_tag($subrecord, $level1type, translate_fact($label, $person));
+				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
 				$add_date = false;
 			} elseif ($type=='STAT') {
-				add_simple_tag($subrecord, $level1type, translate_fact($label, $person));
+				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
 		 	} else {
-				add_simple_tag($subrecord, $level0type, translate_fact($label, $person));
+				add_simple_tag($subrecord, $level0type, WT_Gedcom_Tag::getLabel($label, $person));
 			}
 		}
 
@@ -2466,11 +2466,11 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 			foreach ($expected_subtags[$type] as $subtag) {
 				if (!in_array($subtag, $subtags)) {
 					if (!$inSource || $subtag!="DATA") {
-						add_simple_tag(($level+1).' '.$subtag, '', translate_fact("{$label}:{$subtag}"));
+						add_simple_tag(($level+1).' '.$subtag, '', WT_Gedcom_Tag::getLabel("{$label}:{$subtag}"));
 					}
 					if (!empty($expected_subtags[$subtag])) {
 						foreach ($expected_subtags[$subtag] as $subsubtag) {
-							add_simple_tag(($level+2).' '.$subsubtag, '', translate_fact("{$label}:{$subtag}:{$subsubtag}"));
+							add_simple_tag(($level+2).' '.$subsubtag, '', WT_Gedcom_Tag::getLabel("{$label}:{$subtag}:{$subsubtag}"));
 						}
 					}
 				}
@@ -2482,7 +2482,7 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 			add_simple_tag("3 TIME"); // TIME is NOT a valid 5.5.1 tag
 		}
 		if ($level==2 && $type=='STAT' && WT_Gedcom_Code_Temp::isTagLDS($level1type) && !in_array('DATE', $subtags)) {
-			add_simple_tag("3 DATE", '', translate_fact('STAT:DATE'));
+			add_simple_tag("3 DATE", '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
 		}
 
 		$i++;
@@ -2539,7 +2539,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 				case "PLAC":
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
 						foreach ($match[1] as $tag) {
-							add_simple_tag("3 $tag", '', translate_fact("{$level1tag}:PLAC:{$tag}"));
+							add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
 						}
 					}
 					add_simple_tag("3 MAP");
@@ -2555,7 +2555,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 					break;
 				case "STAT":
 					if (WT_Gedcom_Code_Temp::isTagLDS($level1tag)) {
-						add_simple_tag("3 DATE", '', translate_fact('STAT:DATE'));
+						add_simple_tag("3 DATE", '', WT_Gedcom_Tag::getLabel('STAT:DATE'));
 					}
 					break;
 				case "DATE":
@@ -2572,7 +2572,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 					break;
 			}
 		} elseif ($key=="DATE" && $add_date) {
-			add_simple_tag("2 DATE", $level1tag, translate_fact("{$level1tag}:DATE"));
+			add_simple_tag("2 DATE", $level1tag, WT_Gedcom_Tag::getLabel("{$level1tag}:DATE"));
 		}
 	}
 	// Do something (anything!) with unrecognised custom tags
@@ -2583,7 +2583,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 				if ($tag=='PLAC') {
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
 						foreach ($match[1] as $tag) {
-							add_simple_tag("3 $tag", '', translate_fact("{$level1tag}:PLAC:{$tag}"));
+							add_simple_tag("3 $tag", '', WT_Gedcom_Tag::getLabel("{$level1tag}:PLAC:{$tag}"));
 						}
 					}
 					add_simple_tag("3 MAP");

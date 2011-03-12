@@ -119,7 +119,7 @@ function varSHandler($attrs) {
 			$tfact = $type;
 		}
 		$var = str_replace(array("@fact", "@desc"), array($tfact, $desc), $var);
-		if (substr($var, 0, 18)=='WT_I18N::translate' || substr($var, 0, 14)=='translate_fact') {
+		if (substr($var, 0, 18)=='WT_I18N::translate' || substr($var, 0, 23)=='WT_Gedcom_Tag::getLabel') {
 			eval("\$var=$var;");
 		}
 		$text .= $var;

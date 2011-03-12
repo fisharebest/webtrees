@@ -299,7 +299,7 @@ var oldMx = 0;
 			<td align="center"><?php echo WT_I18N::translate('Speed'); ?></td>
 				<td align="center"><?php echo WT_I18N::translate('Begin Year'); ?></td>
 				<td align="center"><?php echo WT_I18N::translate('End Year'); ?></td>
-				<td align="center"><?php echo translate_fact('PLAC'); ?></td>
+				<td align="center"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
 		</tr>
 		<tr>
 			<td><select name="speedMenu" size="1">

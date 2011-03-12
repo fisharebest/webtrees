@@ -231,7 +231,7 @@ case 'go':
 	echo "</tr><tr>";
 	$cols=0;
 	while ($cols<$max) {
-		echo "<th>", translate_fact('PLAC'), "</th><th>", WT_I18N::translate('Latitude'), "</th><th>", WT_I18N::translate('Longitude'), "</th></td>";
+		echo "<th>", WT_Gedcom_Tag::getLabel('PLAC'), "</th><th>", WT_I18N::translate('Latitude'), "</th><th>", WT_I18N::translate('Longitude'), "</th></td>";
 		$cols++;
 	}
 	echo "</tr>";

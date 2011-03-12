@@ -169,7 +169,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$marryear = $family->getMarriageYear();
 		if (!empty($marryear)) {
-			$out .= ' ('.translate_fact('MARR').' '.$marryear.')';
+			$out .= ' ('.WT_Gedcom_Tag::getLabel('MARR').' '.$marryear.')';
 		}
 		$out .= '</a> <a href="'.$person->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_indi'].'" border="0" alt="indi" /></a>';
 		$out .= '<a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" border="0" alt="family" /></a>';

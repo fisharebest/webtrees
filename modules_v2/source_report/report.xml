@@ -62,20 +62,20 @@
 			<if condition="$sortby=='BIRT:DATE'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<Cell bgcolor="$fill" border="1" style="list_label" width="$dateevent"><var var="translate_fact('BIRT:DATE')" /></Cell>
+			<Cell bgcolor="$fill" border="1" style="list_label" width="$dateevent"><var var="WT_Gedcom_Tag::getLabel('BIRT:DATE')" /></Cell>
 			<!-- Birth place -->
-			<Cell border="1" style="list_label" width="$placeevent"><var var="translate_fact('BIRT:PLAC')" /></Cell>
+			<Cell border="1" style="list_label" width="$placeevent"><var var="WT_Gedcom_Tag::getLabel('BIRT:PLAC')" /></Cell>
 			<!-- Death date -->
 			<SetVar name="fill" value="" />
 			<if condition="$sortby=='DEAT:DATE'">
 				<SetVar name="fill" value="#AAAAAA" />
 			</if>
-			<Cell bgcolor="$fill" border="1" style="list_label" width="$dateevent"><var var="translate_fact('DEAT:DATE')" /></Cell>
-			<Cell border="1" style="list_label" width="$age"><var var="translate_fact('AGE')" /></Cell>
+			<Cell bgcolor="$fill" border="1" style="list_label" width="$dateevent"><var var="WT_Gedcom_Tag::getLabel('DEAT:DATE')" /></Cell>
+			<Cell border="1" style="list_label" width="$age"><var var="WT_Gedcom_Tag::getLabel('AGE')" /></Cell>
 			<!-- Death place -->
-			<Cell border="1" style="list_label" width="$placeevent"><var var="translate_fact('DEAT:PLAC')" /></Cell>
+			<Cell border="1" style="list_label" width="$placeevent"><var var="WT_Gedcom_Tag::getLabel('DEAT:PLAC')" /></Cell>
 			<!-- Detailed source text -->
-			<Cell border="1" newline="1" style="list_label"><var var="translate_fact('SOUR:PAGE')" /></Cell>
+			<Cell border="1" newline="1" style="list_label"><var var="WT_Gedcom_Tag::getLabel('SOUR:PAGE')" /></Cell>
 			<TextBox height="$vspace" newline="1" padding="0"/>
 
 			<!-- Individual List -->
@@ -163,11 +163,11 @@
 			<!-- Name of the fact that contains the source -->
 			<Cell border="1" style="list_label" width="$fact"><var var="WT_I18N::translate('Event')" /></Cell>
 			<!-- Date of the fact -->
-			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="translate_fact('DATE')" /></Cell>
+			<Cell bgcolor="#AAAAAA" border="1" style="list_label" width="$dateevent"><var var="WT_Gedcom_Tag::getLabel('DATE')" /></Cell>
 			<!-- Date of the fact -->
-			<Cell border="1" style="list_label" width="$placeevent"><var var="translate_fact('PLAC')" /></Cell>
+			<Cell border="1" style="list_label" width="$placeevent"><var var="WT_Gedcom_Tag::getLabel('PLAC')" /></Cell>
 			<!-- Detailed source text -->
-			<Cell border="1" newline="1" style="list_label"><var var="translate_fact('SOUR:PAGE')" /></Cell>
+			<Cell border="1" newline="1" style="list_label"><var var="WT_Gedcom_Tag::getLabel('SOUR:PAGE')" /></Cell>
 
 			<!-- Family List -->
 			<TextBox height="$vspace" newline="1" padding="0"/>

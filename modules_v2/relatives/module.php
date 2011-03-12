@@ -185,14 +185,14 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_label"><br />
 				</td>
 				<td class="facts_value<?php echo $styleadd; ?>">
-					<?php //echo "<span class=\"details_label\">".translate_fact('NCHI').": </span>".$family->getNumberOfChildren()."<br />"; ?>
+					<?php //echo "<span class=\"details_label\">".WT_Gedcom_Tag::getLabel('NCHI').": </span>".$family->getNumberOfChildren()."<br />"; ?>
 					<?php $marr_type = strtoupper($family->getMarriageType());
 					if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='UNKNOWN') {
-						$marr_fact = translate_fact("MARR_".$marr_type);
+						$marr_fact = WT_Gedcom_Tag::getLabel("MARR_".$marr_type);
 					} else if ($marr_type) {
-						$marr_fact = translate_fact("MARR").' '.$family->getMarriageType();
+						$marr_fact = WT_Gedcom_Tag::getLabel("MARR").' '.$family->getMarriageType();
 					} else {
-						$marr_fact = translate_fact("MARR");
+						$marr_fact = WT_Gedcom_Tag::getLabel("MARR");
 					}
 					if ($date && $date->isOK() || $place) {
 						echo '<span class="details_label">', $marr_fact, ': </span>';
@@ -223,15 +223,15 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
 						$husb = $family->getHusband();
 						$wife = $family->getWife();
-						if (empty($wife) && !empty($husb)) echo translate_fact('_NMR', $husb);
-						else if (empty($husb) && !empty($wife)) echo translate_fact('_NMR', $wife);
-						else echo translate_fact('_NMR');
+						if (empty($wife) && !empty($husb)) echo WT_Gedcom_Tag::getLabel('_NMR', $husb);
+						else if (empty($husb) && !empty($wife)) echo WT_Gedcom_Tag::getLabel('_NMR', $wife);
+						else echo WT_Gedcom_Tag::getLabel('_NMR');
 					} else if (get_sub_record(1, "1 _NMAR", find_family_record($famid, WT_GED_ID))) {
 						$husb = $family->getHusband();
 						$wife = $family->getWife();
-						if (empty($wife) && !empty($husb)) echo translate_fact('_NMAR', $husb);
-						else if (empty($husb) && !empty($wife)) echo translate_fact('_NMAR', $wife);
-						else echo translate_fact('_NMAR');
+						if (empty($wife) && !empty($husb)) echo WT_Gedcom_Tag::getLabel('_NMAR', $husb);
+						else if (empty($husb) && !empty($wife)) echo WT_Gedcom_Tag::getLabel('_NMAR', $wife);
+						else echo WT_Gedcom_Tag::getLabel('_NMAR');
 					} else if ($family->getMarriageRecord()=="" && $this->controller->indi->canEdit()) {
 						echo "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".WT_I18N::translate('Add marriage details')."</a>";
 					} else {

@@ -455,9 +455,3 @@ $level2_tags=array(
 // The order of name parts, when generating names
 $STANDARD_NAME_FACTS=array('NAME', 'NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
 $REVERSED_NAME_FACTS=array('NAME', 'NPFX', 'SPFX', 'SURN', 'GIVN', 'NSFX');
-
-// Create a label for a fact type.
-// TODO: update rest of code to call WT_Gedcom_Tag::getLabel() directly
-function translate_fact($fact, $person=null) {
-	return WT_Gedcom_Tag::getLabel($fact, $person);
-}

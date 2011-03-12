@@ -272,7 +272,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		$html=get_block_setting($block_id, 'html');
 		// title
 		echo '<tr><td class="descriptionbox wrap width33">',
-			translate_fact('TITL'),
+			WT_Gedcom_Tag::getLabel('TITL'),
 			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', htmlspecialchars($title), '" /></td></tr>';
 
 		// templates

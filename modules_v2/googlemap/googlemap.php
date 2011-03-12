@@ -123,25 +123,25 @@ function print_address_structure_map($factrec, $level) {
 	$resultText = "<table>";
 	$ct = preg_match_all("/$level PHON (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.translate_fact('PHON').': </b></span></td><td><span class="field">';
+		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('PHON').': </b></span></td><td><span class="field">';
 		$resultText .= getLRM() . $omatch[$i][1]. getLRM();
 		$resultText .= '</span></td></tr>';
 	}
 	$ct = preg_match_all("/$level FAX (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.translate_fact('FAX').': </b></span></td><td><span class="field">';
+		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('FAX').': </b></span></td><td><span class="field">';
 		$resultText .= getLRM() . $omatch[$i][1] . getLRM();
 		$resultText .= '</span></td></tr>';
 	}
 	$ct = preg_match_all("/$level EMAIL (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.translate_fact('EMAIL').': </b></span></td><td><span class="field">';
+		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('EMAIL').': </b></span></td><td><span class="field">';
 		$resultText .= '<a href="mailto:'.$omatch[$i][1].'">'.$omatch[$i][1].'</a>';
 		$resultText .= '</span></td></tr>';
 	}
 	$ct = preg_match_all("/$level (WWW|URL) (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.translate_fact('URL').': </b></span></td><td><span class="field">';
+		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('URL').': </b></span></td><td><span class="field">';
 		$resultText .= '<a href="'.$omatch[$i][2].'" target="_blank">'.$omatch[$i][2].'</a>';
 		$resultText .= '</span></td></tr>';
 	}
@@ -345,10 +345,10 @@ function build_indiv_map($indifacts, $famids) {
 					if (preg_match("/\d TYPE (.*)/", $eventrec, $match3)) {
 						$markers[$i]['fact']=$match3[1];
 					} else {
-						$markers[$i]['fact']=translate_fact($fact);
+						$markers[$i]['fact']=WT_Gedcom_Tag::getLabel($fact);
 					}
 				} else {
-					$markers[$i]['fact']=translate_fact($fact);
+					$markers[$i]['fact']=WT_Gedcom_Tag::getLabel($fact);
 				}
 				if (!empty($fact_data) && $fact_data!='Y') {
 						$markers[$i]['info'] = $fact_data;
@@ -384,10 +384,10 @@ function build_indiv_map($indifacts, $famids) {
 							if (preg_match("/\d TYPE (.*)/", $eventrec, $match3)) {
 								$markers[$i]['fact']=$match3[1];
 							} else {
-								$markers[$i]['fact']=translate_fact($fact);
+								$markers[$i]['fact']=WT_Gedcom_Tag::getLabel($fact);
 							}
 						} else {
-							$markers[$i]['fact']=translate_fact($fact);
+							$markers[$i]['fact']=WT_Gedcom_Tag::getLabel($fact);
 						}
 						if (!empty($fact_data) && $fact_data!='Y') {
 							$markers[$i]['info'] = $fact_data;
@@ -450,7 +450,7 @@ function build_indiv_map($indifacts, $famids) {
 												$markers[$i]['fact'] = WT_I18N::translate('Son');
 												$markers[$i]['class'] = 'person_box';
 											} else {
-												$markers[$i]['fact']  = translate_fact('CHIL');
+												$markers[$i]['fact']  = WT_Gedcom_Tag::getLabel('CHIL');
 												$markers[$i]['class'] = 'person_boxNN';
 											}
 										}
@@ -477,7 +477,7 @@ function build_indiv_map($indifacts, $famids) {
 											if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
 												$i = $i + 1;
 												$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
-												$markers[$i]['fact']	= translate_fact('CHIL');
+												$markers[$i]['fact']	= WT_Gedcom_Tag::getLabel('CHIL');
 												$markers[$i]['class']	= 'option_boxNN';
 												if (strpos($srec, "\n1 SEX F")!==false) {
 													$markers[$i]['fact'] = WT_I18N::translate('Daughter');

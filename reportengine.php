@@ -283,7 +283,7 @@ elseif ($action=="setup") {
 						foreach ($options as $indexval => $option) {
 							$opt = explode('=>', $option);
 							list($value, $display)=$opt;
-							if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 14)=='translate_fact') {
+							if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 23)=='WT_Gedcom_Tag::getLabel') {
 								eval("\$display=$display;");
 							}
 							echo "\t<option value=\"", htmlspecialchars($value), "\"";
