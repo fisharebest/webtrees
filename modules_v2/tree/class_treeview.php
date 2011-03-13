@@ -120,7 +120,7 @@ class TreeView {
     if (safe_GET('mod_action') != 'treeview')
       $r .=  '<li class="tv_button"><a href="module.php?mod=tree&mod_action=treeview&rootId='.$rootPerson->getXref().'#tv_content" title="'.WT_I18N::translate('View this tree in the full page interactive tree').'"><img src="'.$WT_IMAGES["tree"].'" alt="t" /></a></li>'; 
     // Help, and hidden loading image
-		$r .= '<li class="tv_button">'.help_link("TV_MODULE", "treeview").'</li>
+		$r .= '<li class="tv_button">'.help_link("TV_MODULE", 'tree').'</li>
   <li class="tv_button" id="'.$this->name.'_loading"><img src="images/loading.gif" alt="Loading..." /></li>
 </ul>'.$rs;
 		$r .= '</div><div id="'.$this->name.'_in" class="tv_in">';
