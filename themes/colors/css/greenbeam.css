@@ -1459,7 +1459,7 @@ padding:2px 5px;
 }
 
 .ac_loading {
-background:#FFF   url(/images/indicator.gif) right center no-repeat;
+background:#FFF url(../../../images/indicator.gif) right center no-repeat;
 }
 
 .ac_odd {
