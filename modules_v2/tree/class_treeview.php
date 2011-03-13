@@ -295,7 +295,7 @@ class TreeView {
 
     if ($isRoot)
     	$r = '<table id="tvTreeBorder" class="tv_tree"><tbody><tr><td id="tv_tree_topleft"></td><td id="tv_tree_top"><div>'.
-    		WT_I18N::translate('Genealogical tree of ').$person->getFullName().
+    		WT_I18N::translate('Interactive tree of %s',$person->getFullName()).
     		'</div></td><td id="tv_tree_topright"></td></tr><tr><td id="tv_tree_left"></td><td>';
     else $r = '';
     /* height 1% : this hack enable the div auto-dimensionning in td for FF & Chrome */
