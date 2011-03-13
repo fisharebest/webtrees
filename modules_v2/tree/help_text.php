@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 $imgStyle = ' style="height: 22px; width: 22px; border: 0 none"';
 switch ($help) {
 case 'TV_MODULE':
-	$title = WT_I18N::translate('TreeView Module');
+	$title = WT_I18N::translate('Interactive tree');
 	$text = WT_I18N::translate('Interactive and printable genealogical tree.').
 		'<br /><br />'.
 		WT_I18N::translate('Commands').':'.'<br /><table><tbody>'.
