@@ -183,8 +183,8 @@ function print_indi_table($datalist, $legend="", $option="") {
 			if ($dupe_found) {
 				continue;
 			}
-			if ($title=$name['type']=='_MARNM') {
-				$title='title="'.WT_Gedcom_Tag::getLabel('_MARNM').'"';
+			if ($name['type']!='NAME') {
+				$title='title="'.WT_Gedcom_Tag::getLabel($name['type'], $person).'"';
 			} else {
 				$title='';
 			}
