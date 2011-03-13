@@ -139,7 +139,7 @@ function print_fams($person, $famid=null) {
 		$sosa = '<a dir='.$TEXT_DIRECTION.' target="_blank" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
 	}
 	$current = $person->getSexImage().
-		'<a target="_blank" class="'.$class.'" title="'.$person->getXref().'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
+		'<a target="_blank" class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
 		$person->getBirthDeathYears().' '.$sosa;
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
@@ -165,15 +165,18 @@ function print_fams($person, $famid=null) {
 				$sosa2 = '<a dir='.$TEXT_DIRECTION.' target="_blank" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
 			}
 			if ($family->getMarriageYear()) {
-				$txt .= '&nbsp;<span dir='.$TEXT_DIRECTION.' class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</span>&nbsp;';
+				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
+				$txt .= '<span dir='.$TEXT_DIRECTION.' class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</span></a>&nbsp;';
 			}
 			else if ($family->getMarriage()) {
-				$txt .= '&nbsp;<span dir='.$TEXT_DIRECTION.' class="details1" title="'.WT_I18N::translate('Yes').'">'.WT_ICON_RINGS.'</span>&nbsp;';
+				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
+				$txt .= '<span dir='.$TEXT_DIRECTION.' class="details1" title="'.WT_I18N::translate('Yes').'">'.WT_ICON_RINGS.'</span></a>&nbsp;';
 			}
 			$spouse_name = $spouse->getListName();
 			foreach ($spouse->getAllNames() as $n=>$name) {
 				if (utf8_script($name['list']) == $person_script) {
 					$spouse_name = $name['list'];
+					$spouse_surname = $name['surname'];
 					break;
 				}
 				//How can we use check_NN($names) or something else to replace the unknown unknown name from the page language to the language of the spouse's name?
@@ -184,8 +187,8 @@ function print_fams($person, $famid=null) {
 			}
 			list($surn2, $givn2) = explode(', ', $spouse_name.', x');
 			$txt .= $spouse->getSexImage().
-				'<a target="_blank" class="'.$class.'" title="'.$family->getXref().'" href="'.$family->getHtmlUrl().'">'.PrintReady($givn2).'</a> '.
-				'<a class="'.$class.'" title="'.$surn2.'" href="'.WT_SCRIPT_NAME.'?surn='.urlencode($surn2).'&amp;ged='.WT_GEDURL.'">'.PrintReady($surn2).'</a> '.$spouse->getBirthDeathYears().' '.$sosa2;
+				'<a class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$spouse->getHtmlUrl().'">'.PrintReady($givn2).' </a>'.
+				'<a class="'.$class.'" title="'.WT_I18N::translate('Branches').'" href="'.WT_SCRIPT_NAME.'?surn='.urlencode($spouse_surname).'&amp;ged='.WT_GEDURL.'">'.PrintReady($surn2).'</a> '.$spouse->getBirthDeathYears().' '.$sosa2;
 		}
 		echo $txt;
 		echo '<ol>';
