@@ -71,9 +71,6 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			$controller = new WT_Controller_Hourglass();
 			$controller->init($pid,0,3);
 			$controller->setupJavascript();
-		} else {
-			$nav = new WT_TreeNav($pid, 'blocknav',-1);
-			$nav->generations = 2;
 		}
 
 		$person = WT_Person::getInstance($pid);
@@ -106,9 +103,6 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			$title .= help_link('index_charts', $this->getName());
 			$content = "<script src=\"js/webtrees.js\" language=\"JavaScript\" type=\"text/javascript\"></script>";
-			if ($show_full==0) {
-				$content .= '<center><span class="details2">'.WT_I18N::translate('Click on any of the boxes to get more information about that person.').'</span></center><br />';
-			}
 			$content .= '<table cellspacing="0" cellpadding="0" border="0"><tr>';
 			if ($type=='descendants' || $type=='hourglass') {
 				$content .= "<td valign=\"middle\">";
@@ -133,11 +127,21 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "</td>";
 			}
 			if ($type=='treenav') {
-				$content .= "<td>";
-				ob_start();
-				$nav->drawViewport('blocknav', "", "240px");
-				$content .= ob_get_clean();
-				$content .= "</td>";
+				// TODO: we should
+				// 1) check whether the block is active
+				// 2) find out why it is necessary to load jquery, when it is already loaded
+				require_once WT_MODULES_DIR.'tree/module.php';
+				require_once WT_MODULES_DIR.'tree/class_treeview.php';
+				$mod=new tree_WT_Module;
+				$nav=new TreeView;
+				$content .= '<td>';
+				$content .= '<script type="text/javascript" src="js/jquery/jquery.min.js"></script><script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>';
+
+				$content .= $mod->css;
+				$content .= $mod->headers;
+				$content .= $mod->js;
+				$content .= $nav->drawViewport($person->getXref(), 2, '');
+				$content .= '</td>';
 			}
 			$content .= "</tr></table>";
 		} else {
