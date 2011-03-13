@@ -56,7 +56,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$this->show_list();
 			break;
 		default:
-			die("Internal error - unknown action: $mod_action");
+			header('HTTP/1.0 404 Not Found');
 		}
 	}
 

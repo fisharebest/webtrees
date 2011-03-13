@@ -49,6 +49,8 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 			// TODO: these files should be methods in this class
 			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
 			break;
+		default:
+			header('HTTP/1.0 404 Not Found');
 		}
 	}
 

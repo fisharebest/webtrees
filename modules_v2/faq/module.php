@@ -64,7 +64,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			$this->show();
 			break;
 		default:
-			die("Internal error - unknown action: $mod_action");
+			header('HTTP/1.0 404 Not Found');
 		}
 	}
 

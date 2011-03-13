@@ -54,6 +54,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
 			break;
+		default:
+			header('HTTP/1.0 404 Not Found');
 		}
 	}
 

@@ -50,6 +50,8 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			// TODO: this file should be a method in this class
 			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
 			break;
+		default:
+			header('HTTP/1.0 404 Not Found');
 		}
 	}
 }
