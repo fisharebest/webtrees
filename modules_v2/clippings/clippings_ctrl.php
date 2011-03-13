@@ -336,10 +336,8 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	 */
 	function zip_cart()
 	{
-		$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
-
 		$tempFileName = 'clipping'.rand().'.ged';
-		$fp = fopen($INDEX_DIRECTORY.$tempFileName, "wb");
+		$fp = fopen(WT_DATA_DIR.$tempFileName, "wb");
 		if ($fp)
 		{
 			flock($fp,LOCK_EX);
@@ -347,11 +345,11 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			flock($fp,LOCK_UN);
 			fclose($fp);
 			$zipName = "clippings".rand(0, 1500).".zip";
-			$fname = $INDEX_DIRECTORY.$zipName;
+			$fname = WT_DATA_DIR.$zipName;
 			$comment = "Created by ".WT_WEBTREES." ".WT_VERSION_TEXT." on ".date("d M Y").".";
 			$archive = new PclZip($fname);
 			// add the ged file to the root of the zip file (strip off the index_directory)
-			$this->media_list[]= array (PCLZIP_ATT_FILE_NAME => $INDEX_DIRECTORY.$tempFileName, PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
+			$this->media_list[]= array (PCLZIP_ATT_FILE_NAME => WT_DATA_DIR.$tempFileName, PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
 			$v_list = $archive->create($this->media_list, PCLZIP_OPT_COMMENT, $comment);
 			if ($v_list == 0) echo "Error : ".$archive->errorInfo(true)."</td></tr>";
 			else {
@@ -360,11 +358,11 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 				fclose($openedFile);
 				unlink($fname);
 			}
-			unlink($INDEX_DIRECTORY.$tempFileName);
+			unlink(WT_DATA_DIR.$tempFileName);
 		}
 		else
 		{
-			echo WT_I18N::translate('Cannot create')." ".$INDEX_DIRECTORY."$tempFileName ".WT_I18N::translate('Check access rights on this directory.')."<br /><br />";
+			echo WT_I18N::translate('Cannot create')." ".WT_DATA_DIR."$tempFileName ".WT_I18N::translate('Check access rights on this directory.')."<br /><br />";
 		}
 	}
 	/**

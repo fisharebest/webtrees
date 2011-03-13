@@ -229,6 +229,10 @@ try {
 	exit;
 }
 
+// The config.ini.php file must always be in a fixed location.
+// Other user files can be stored elsewhere...
+define('WT_DATA_DIR', realpath(get_site_setting('INDEX_DIRECTORY', 'data')).DIRECTORY_SEPARATOR);
+
 // If we have a preferred URL (e.g. https instead of http, or www.example.com instead of
 // www.isp.com/~example), then redirect to it.
 $SERVER_URL=get_site_setting('SERVER_URL');

@@ -33,8 +33,6 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
-$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
-
 /**
  * find the name of the first GEDCOM file in a zipfile
  * @param string $zipfile the path and filename
@@ -42,8 +40,6 @@ $INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
  * @return string the path and filename of the gedcom file
  */
 function GetGEDFromZIP($zipfile, $extract=true) {
-	GLOBAL $INDEX_DIRECTORY;
-
 	require_once WT_ROOT.'library/pclzip.lib.php';
 	$zip = new PclZip($zipfile);
 	// if it's not a valid zip, just return the filename
@@ -55,7 +51,7 @@ function GetGEDFromZIP($zipfile, $extract=true) {
 	$slpos = strrpos($zipfile, "/");
 	if (!$slpos) $slpos = strrpos($zipfile, "\\");
 	if ($slpos) $path = substr($zipfile, 0, $slpos+1);
-	else $path = $INDEX_DIRECTORY;
+	else $path = WT_DATA_DIR;
 	// Scan the files and return the first .ged found
 	foreach ($list as $key=>$listitem) {
 		if (($listitem["status"]="ok") && (strstr(strtolower($listitem["filename"]), ".")==".ged")) {
@@ -304,7 +300,7 @@ case 'update':
 
 	// process NEW_MEDIA_FIREWALL_ROOTDIR
 	if (!$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"]) {
-		$NEW_MEDIA_FIREWALL_ROOTDIR = $INDEX_DIRECTORY;
+		$NEW_MEDIA_FIREWALL_ROOTDIR = WT_DATA_DIR;
 	} else {
 		$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] = trim(str_replace('\\','/',$_POST["NEW_MEDIA_FIREWALL_ROOTDIR"])); // silently convert backslashes to forward slashes
 		if (substr ($_POST["NEW_MEDIA_FIREWALL_ROOTDIR"], -1) != "/") $_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] = $_POST["NEW_MEDIA_FIREWALL_ROOTDIR"] . "/"; // silently add trailing slash
@@ -336,8 +332,8 @@ case 'update':
 	}
 	if (!$errors) {
 		// copy the .htaccess file from INDEX_DIRECTORY to NEW_MEDIA_FIREWALL_ROOTDIR in case it is still in a web-accessible area
-			if ((file_exists($INDEX_DIRECTORY.".htaccess")) && (is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) && (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) ) {
-				@copy($INDEX_DIRECTORY.".htaccess", $NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess");
+			if ((file_exists(WT_DATA_DIR.".htaccess")) && (is_dir($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)) && (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) ) {
+				@copy(WT_DATA_DIR.".htaccess", $NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess");
 				if (!file_exists($NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.".htaccess")) {
 					$errors = true;
 					$error_msg .= "<span class=\"error\">".WT_I18N::translate('The protected media directory in the Media Firewall root directory is not world writable. ')." ".$NEW_MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY."</span><br />";
@@ -893,8 +889,8 @@ echo WT_JS_START;?>
 							<?php echo WT_I18N::translate('Media firewall root directory'), help_link('MEDIA_FIREWALL_ROOTDIR'); ?>
 						</td>
 						<td>
-							<input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php echo ($MEDIA_FIREWALL_ROOTDIR == $INDEX_DIRECTORY) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" /><br />
-						<?php echo WT_I18N::translate('When this field is empty, the <b>%s</b> directory will be used.', $INDEX_DIRECTORY); ?>
+							<input type="text" name="NEW_MEDIA_FIREWALL_ROOTDIR" size="50" dir="ltr" value="<?php echo ($MEDIA_FIREWALL_ROOTDIR == WT_DATA_DIR) ? "" : $MEDIA_FIREWALL_ROOTDIR; ?>" /><br />
+						<?php echo WT_I18N::translate('When this field is empty, the <b>%s</b> directory will be used.', WT_DATA_DIR); ?>
 						</td>
 					</tr>
 					<tr>

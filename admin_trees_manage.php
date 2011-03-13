@@ -32,9 +32,6 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
-// Which directory contains our data files?
-$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
-
 // Don't allow the user to cancel the request.  We do not want to be left
 // with an incomplete transaction.
 ignore_user_abort(true);
@@ -92,9 +89,9 @@ case 'add_ged':
 	$ged_name=basename(safe_POST('ged_name'));
 	$gedcom_id=get_id_from_gedcom($ged_name);
 	// check it doesn't already exist before we create it
-	if (!$gedcom_id && file_exists($INDEX_DIRECTORY.$ged_name)) {
+	if (!$gedcom_id && file_exists(WT_DATA_DIR.$ged_name)) {
 		$gedcom_id=get_id_from_gedcom($ged_name, true);
-		import_gedcom_file($gedcom_id, $INDEX_DIRECTORY.$ged_name);
+		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name);
 	}
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 	exit;
@@ -149,7 +146,7 @@ case 'replace_import':
 	// Make sure the gedcom still exists
 	if (get_gedcom_from_id($gedcom_id)) {
 		$ged_name=basename(safe_POST('ged_name'));
-		import_gedcom_file($gedcom_id, $INDEX_DIRECTORY.$ged_name);
+		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name);
 	}
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 	exit;
@@ -181,11 +178,11 @@ case 'importform':
 		echo '<input type="file" name="ged_name" />';
 	} else {
 		echo '<input type="hidden" name="action" value="replace_import" />';
-		$d=opendir($INDEX_DIRECTORY);
+		$d=opendir(WT_DATA_DIR);
 		$files=array();
 		while (($f=readdir($d))!==false) {
-			if (!is_dir($INDEX_DIRECTORY.$f) && is_readable($INDEX_DIRECTORY.$f)) {
-				$fp=fopen($INDEX_DIRECTORY.$f, 'rb');
+			if (!is_dir(WT_DATA_DIR.$f) && is_readable(WT_DATA_DIR.$f)) {
+				$fp=fopen(WT_DATA_DIR.$f, 'rb');
 				$header=fread($fp, 64);
 				fclose($fp);
 				if (preg_match('/^('.WT_UTF8_BOM.')?0 *HEAD/', $header)) {
@@ -194,7 +191,7 @@ case 'importform':
 			}
 		}
 		if ($files) {
-			echo $INDEX_DIRECTORY, '<select name="ged_name" />';
+			echo WT_DATA_DIR, '<select name="ged_name" />';
 			foreach ($files as $file) {
 				echo '<option value="', htmlspecialchars($file), '"';
 				if ($file==$gedcom_name) {
@@ -204,7 +201,7 @@ case 'importform':
 			}
 			echo '</select>';
 		} else {
-			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', $INDEX_DIRECTORY);
+			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
 			echo '</form>';
 			echo '<br /><br />';
 			echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', WT_I18N::translate('Cancel'), '" /></form>';
@@ -300,15 +297,15 @@ if (WT_USER_IS_ADMIN) {
 		'</form></td>',
 		'<td>',
 		'<form name="addform" method="post" action="', WT_SCRIPT_NAME, '">',
-		$INDEX_DIRECTORY,
+		WT_DATA_DIR,
 		'<input type="hidden" name="action" value="add_ged" />',
 		'<select name="ged_name" onchange="document.addform.submit();" />',
 		'<option>', WT_I18N::translate('&lt;select&gt;'), '</option>',
-	$d=opendir($INDEX_DIRECTORY);
+	$d=opendir(WT_DATA_DIR);
 	$files=false;
 	while ($d!==false && ($f=readdir($d))!==false) {
-		if (!in_array($f, $gedcoms) && !is_dir($INDEX_DIRECTORY.$f) && is_readable($INDEX_DIRECTORY.$f)) {
-			$fp=fopen($INDEX_DIRECTORY.$f, 'rb');
+		if (!in_array($f, $gedcoms) && !is_dir(WT_DATA_DIR.$f) && is_readable(WT_DATA_DIR.$f)) {
+			$fp=fopen(WT_DATA_DIR.$f, 'rb');
 			$header=fread($fp, 64);
 			fclose($fp);
 			if (preg_match('/^('.WT_UTF8_BOM.')?0 *HEAD/', $header)) {

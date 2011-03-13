@@ -101,10 +101,28 @@ class WT_I18N {
 		Zend_Translate::setCache($cache);
 		// Load the translation file
 		$translate=new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
-		// TODO: This is where we would use $translate->addTranslation() to add module translations
 		// Make the locale and translation adapter available to the rest of the Zend Framework
 		Zend_Registry::set('Zend_Locale',    $locale);
 		Zend_Registry::set('Zend_Translate', $translate);
+
+		// Load any local user translations
+		if (is_dir(WT_DATA_DIR.'language')) {
+			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.mo')) {
+				$translate->addTranslation(
+					new Zend_Translate('gettext', WT_DATA_DIR.'language/'.$locale.'.mo', $locale)
+				);
+			}
+			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.php')) {
+				$translate->addTranslation(
+					new Zend_Translate('array', WT_DATA_DIR.'language/'.$locale.'.php', $locale)
+				);
+			}
+			if (file_exists(WT_DATA_DIR.'language/'.$locale.'.csv')) {
+				$translate->addTranslation(
+					new Zend_Translate('csv', WT_DATA_DIR.'language/'.$locale.'.csv', $locale)
+				);
+			}
+		}
 
 		// Extract language settings from the translation file
 		global $DATE_FORMAT; // I18N: This is the format string for full dates.  See http://php.net/date for codes

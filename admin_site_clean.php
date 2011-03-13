@@ -35,8 +35,6 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
-
 function full_rmdir($dir) {
 	if (!is_writable($dir)) {
 		if (!@chmod($dir, WT_PERM_EXE)) {
@@ -74,7 +72,7 @@ $locked_by_context = array('index.php', 'config.ini.php');
 // If we are storing the media in the data directory (this is the
 // default for the media firewall), then don't delete it.
 if (
-	$MEDIA_FIREWALL_ROOTDIR==$INDEX_DIRECTORY &&
+	$MEDIA_FIREWALL_ROOTDIR==WT_DATA_DIR &&
 	(substr($MEDIA_DIRECTORY, 0, 1)!='.')
 ) {
 	$locked_by_context[]=trim($MEDIA_DIRECTORY, '/');
@@ -93,10 +91,10 @@ echo
 if (isset($_REQUEST['to_delete'])) {
 	echo '<div class="error">', WT_I18N::translate('Deleted files:'), '</div>';
 	foreach ($_REQUEST['to_delete'] as $k=>$v) {
-		if (is_dir($INDEX_DIRECTORY.$v)) {
-			full_rmdir($INDEX_DIRECTORY.$v);
-		} elseif (file_exists($INDEX_DIRECTORY.$v)) {
-			unlink($INDEX_DIRECTORY.$v);
+		if (is_dir(WT_DATA_DIR.$v)) {
+			full_rmdir(WT_DATA_DIR.$v);
+		} elseif (file_exists(WT_DATA_DIR.$v)) {
+			unlink(WT_DATA_DIR.$v);
 		}
 		echo '<div class="error">', $v, '</div>';
 	}
@@ -107,7 +105,7 @@ require_once WT_ROOT.'js/scriptaculous.js.htm';
 
 echo '<form name="delete_form" method="post" action=""><table id="cleanup"><tr><td>';
 
-$dir=dir($INDEX_DIRECTORY);
+$dir=dir(WT_DATA_DIR);
 $entries=array();
 while (false !== ($entry=$dir->read())) {
 	$entries[]=$entry;
