@@ -165,6 +165,11 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$tab = 0;
 			if (isset($_REQUEST['module'])) {
 				$tabname = $_REQUEST['module'];
+				if (!array_key_exists($tabname, $this->tabs)) {
+					// An AJAX request for a non-existant tab?
+					header('HTTP/1.0 404 Not Found');
+					exit;
+				}
 				header("Content-Type: text/html; charset=UTF-8"); //AJAX calls do not have the meta tag headers and need this set
 				header("X-Robots-Tag: noindex,follow"); //AJAX pages should not show up in search results, any links can be followed though
 				$mod = $this->tabs[$tabname];
