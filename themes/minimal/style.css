@@ -127,7 +127,7 @@ html[dir='rtl'] .favorites_form {
 #topMenu ul ul {
 	display:none; /* Sub menus are hiden by default */
 	position:absolute;
-	top:2.2em;
+	top:2.3em;
 	left:0;
 	right:auto; /*resets the right:50% on the parent ul */
 	width: auto; 
