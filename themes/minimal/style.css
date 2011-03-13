@@ -79,132 +79,112 @@ html[dir='rtl'] .favorites_form {
 
 /* Layout for header menu */
 
-#topMenu {
-	clear:both;
-	float:left;
+#topMenu {  /* set up container for menu */
+	clear: both;
+	float: left;
+	width: 100%;
 	margin:0;
-	margin-top: 5px;
 	padding:0;
-	width:100%;
-	font-size: 14px; 
-	z-index:1000; 	/* This makes the dropdown menus appear above the page content below */
-	position:relative;
+	margin-top: 18px;
+	z-index:2000;
+	position: relative;
 }
 
-/* Top menu items */
-.makeMenu {
+/* Set up Top Menu */
+
+#topMenu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	float: right;
+	position: relative;
+	right: 50%;
+}
+
+#topMenu ul li {
 	margin:0;
 	padding:0;
-	list-style:none;
-	float:right;
-	position:relative;
-	right:50%;
-}
-html[dir='rtl'] .makeMenu { 
-*float:left;
-*left: 50%; /* For IE7 and rtl */
-}
-	
-/* Set up main level menus */
-	
-.makeMenu li {
 	width: auto;
-	font-size: 14px;
-	list-style: none;
-	padding: 0px 10px 0px 10px;
-	margin: 20px 0px 5px 0px;
+	padding-left: 5px;
+	padding-right: 5px;
 	border: solid #999 1px;
 	float:left;
 	position:relative;
-	left:50%;
-	zoom: 1; /* IE7 fix */
+	left: 50%;
 }
 
-html[dir='rtl'] .makeMenu li{ 
-	float:right;
-	text-align: right;
-}
-	
-.makeMenu li a {
+#topMenu ul li a {
 	display: block;
+	font-size: 14px; /* set font size for top menu */
 	text-align: center;
-	padding: 3px 3px;
+	padding: 5px 5px 5px 5px;
 	background-color: #fff;
 	color: #555;
 	text-decoration: none; 
 }
 
 /* Subnavigation section */
-.makeMenu ul {
-	border: 1px solid #aaa;
-}
-
-.makeMenu li li a {
-	font-size: 11px;
-	text-align: left;
-}
-
-.makeMenu li ul {
-	padding: 0;
-	display: none; 
-	white-space: nowrap;
+#topMenu ul ul {
+	display:none; /* Sub menus are hiden by default */
+	position:absolute;
+	top:2.2em;
+	left:0;
+	right:auto; /*resets the right:50% on the parent ul */
 	width: auto; 
+	border: 1px solid #AAA;
+	white-space: nowrap;
 	background: #eeeeee;
 	color: #666;
-	z-index:1000;
 }
 
-.makeMenu li ul li {
-	left: 0%;
-	border: 0;
-	padding: 0;
-	margin: 0;
-	width: auto;
-	text-align: right;
+#topMenu ul ul li {
+	border: 0px;
+	left:auto;  /*resets the left:50% on the parent li */
+	margin:0; /* Reset the 1px margin from the top menu */
+	padding-left: 0px;
+	padding-right: 0px;
+	clear:left;
+	float:left;
+	width:100%;
 }
 
-#topMenu ul li ul {  
-	margin-left: -10px;
-}
-
-html[dir='rtl'] #topMenu ul li ul {  margin-right: -10px;}
-html[dir='rtl'] #topMenu ul li li a {  text-align: right;}
-
+#topMenu ul ul li a {
+	font-size: 12px; /* set font size for submenu */
+	padding: 5px 5px 5px 5px;
+	text-align: left;
+ }
+ 
 .separator {display:none; }
 
 /* Set up hover layout and style */
 
 /* header hover */
-.makeMenu li:hover a {
+#topMenu ul li:hover a {
 	text-decoration: underline;
 	color: black;
 }
 
-.makeMenu li:hover ul {
+#topMenu ul li:hover ul {
 	display: block;
 	text-align: left;
 	position: absolute;
 	margin: 0;
-	padding: 0; }
-	
-.makeMenu li:hover li {
-	float: none; 
+	padding: 0; 
 }
+
+#topMenu ul li:hover li {
+	float: none; }
 	
-.makeMenu li:hover li a {
+#topMenu ul li:hover li a {
 	background-color: #eeeeee;
 	border-bottom: 1px solid #fff;
 	text-decoration: none;
-	color: #000; 
-}
+	color: #000; }
 	
-.makeMenu li li a:hover {
+#topMenu ul li li a:hover {
 	background-color: #fff; 
-}
-	
-.makeMenu li ul li {
-	text-align: left;
-}
+	width: auto;
+	}
 
 /* --- end headers --- */
 

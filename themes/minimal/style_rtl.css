@@ -11,3 +11,20 @@ body {
 	direction: rtl;
 	text-align: right;
 }
+
+#topMenu { float: left;}
+#topMenu ul li { float: left; }
+#topMenu ul ul li a { text-align: left; }
+#topMenu ul ul li { text-align: left; }
+#topMenu ul li:hover ul { text-align: left; }
+#topMenu ul li ul li { text-align: left; }
+#topMenu ul li { float: right; }
+#topMenu ul ul li a { text-align: right; }
+#topMenu ul ul li { text-align: right; }
+#topMenu ul li:hover ul { text-align: right; }
+#topMenu ul li ul li { text-align: right; }
+#topMenu ul ul { right:0; left: auto;}
+.makeMenu {  /* fix IE7 RTE */
+*clear: both;
+*width: 750px;
+}
