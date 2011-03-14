@@ -72,7 +72,7 @@ class TreeView {
       $rootPerson = new WT_Person('');
 
     if (WT_SCRIPT_NAME == 'individual.php')
-      $path = 'individual.php?pid='.$rootPerson->getXref().'&ged='.$GEDCOM.'&allPartners='.($this->allPartners ? "false" : "true").'#treeview';
+      $path = 'individual.php?pid='.$rootPerson->getXref().'&ged='.$GEDCOM.'&allPartners='.($this->allPartners ? "false" : "true").'#tree';
     else
       $path = 'module.php?mod=tree&mod_action=treeview&rootId='.$rootPerson->getXref().'&allPartners='.($this->allPartners ? "false" : "true");
     $r = '<a name="tv_content"></a><div id="'.$this->name.'_out" dir="ltr" class="tv_out">';
