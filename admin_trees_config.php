@@ -114,7 +114,7 @@ function fix_media_htaccess() {
 	} else {
 		fwrite($fp, $httext);
 		fclose($fp);
-		chmod($whichFile, WT_PERM_FILE); // Make sure apache can read this file
+		@chmod($whichFile, WT_PERM_FILE); // Make sure apache can read this file
 	}
 	return true;
 }
