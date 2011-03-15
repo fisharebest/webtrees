@@ -80,7 +80,6 @@ if ($controller->accept_success) {
 echo '<span class="name_head">', PrintReady(htmlspecialchars($controller->note->getFullName()));
 echo '</span><br />';
 echo '<table class="facts_table">';
-echo '<tr class="', $TEXT_DIRECTION, '"><td><table class="width100">';
 
 // Shared Note details ---------------------
 $noterec=$controller->note->getGedcomRecord();
