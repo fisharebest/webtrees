@@ -69,11 +69,11 @@ a:hover	{
 html[dir='rtl'] .title, html[dir='rtl'] .hlogin, html[dir='rtl'] .htheme {float: right; padding-left: 0px;}
 html[dir='rtl'] .hsearch {float: left;}
 html[dir='rtl'] .favorites_form {
-	right: auto;
 	position:absolute; 
+	right: auto;
 	left:4px;
 	top:1.4em;
-	z-index:;
+	z-index:2000;
 	*top:1.7em; /* For IE7 */
 }
 
@@ -127,7 +127,7 @@ html[dir='rtl'] .favorites_form {
 #topMenu ul ul {
 	display:none; /* Sub menus are hiden by default */
 	position:absolute;
-	top:2.3em;
+	top:2.2em;
 	left:0;
 	right:auto; /*resets the right:50% on the parent ul */
 	width: auto; 

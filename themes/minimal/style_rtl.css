@@ -12,7 +12,7 @@ body {
 	text-align: right;
 }
 
-#topMenu { float: left;}
+#topMenu { float: left; width: 100%;}
 #topMenu ul li { float: left; }
 #topMenu ul ul li a { text-align: left; }
 #topMenu ul ul li { text-align: left; }
@@ -27,4 +27,19 @@ body {
 .makeMenu {  /* fix IE7 RTE */
 *clear: both;
 *width: 750px;
+}
+#topMenu ul {
+	right: auto;
+	float:left;
+	left: 50%;
+}
+#topMenu ul li {
+	float:right;
+	right: 50%;
+}
+#topMenu ul ul li {
+	right:auto;  /*resets the right:50% on the parent li */
+	clear:right;
+	float:right;
+	width:100%;
 }
