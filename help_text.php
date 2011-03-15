@@ -1501,7 +1501,7 @@ case 'KEEP_ALIVE':
 
 case 'LANGUAGE':
 	$title=WT_I18N::translate('Language');
-	$text=WT_I18N::translate('Assign the default language for the site.<br /><br />When the <b>Allow user to change language</b> option is set, users can override this setting through their browser\'s preferred language configuration, configuration options on their Account page, or through links or buttons on most <b>webtrees</b> pages.');
+	$text=WT_I18N::translate('If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.');
 	break;
 
 case 'LINK_ICONS':
