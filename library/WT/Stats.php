@@ -1199,9 +1199,9 @@ class WT_Stats {
 		$i = 1;
 		// Get the country names for each language
 		$country_names=array();
-		$all_countries = self::get_all_countries();
 		foreach (WT_I18N::installed_languages() as $code=>$lang) {
 			WT_I18N::init($code);
+			$all_countries = self::get_all_countries();
 			foreach ($all_countries as $country_code=>$country_name) {
 				$country_names[$country_name]=$country_code;
 			}
