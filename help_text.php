@@ -2679,21 +2679,6 @@ case 'pls_note11':
 	$text=WT_I18N::translate('To have your password reset, enter your user name.<br /><br />We will respond by sending you an email to the address registered with your account.  The email will contain a URL and confirmation code for your account. When you visit this URL, you can change your password and login to this site. For security reasons, you should not give this confirmation code to anyone.<br /><br />If you require assistance from the site administrator, please use the contact link below.');
 	break;
 
-case 'ppp_default_form':
-	$title=WT_I18N::translate('Default order');
-	$text=WT_I18N::translate('This means that there is no place encoding format declared in this GEDCOM file and the default format is assumed.<br /><br />If another format had been found, it would have been shown between the <b>(</b> and <b>)</b> at the end of the line.');
-	break;
-
-case 'ppp_levels':
-	$title=WT_I18N::translate('Location levels');
-	$text=WT_I18N::translate('This shows the levels that are displayed now.  The list box showing places is actually a sublist of the leftmost level.<br /><br />EXAMPLE:<br />The default order is City, County, State/Province, Country.<br />If the current level is "Top Level", the box will list all the countries in the database.<br />If the current level is "U.S.A., Top Level", the box will list all the states in the U.S.A.<br />etc.<br /><br />You can click a level to go back one or more steps.');
-	break;
-
-case 'ppp_match_one':
-	$title=WT_I18N::translate('Place order format');
-	$text=WT_I18N::translate('GEDCOM ORDER<br />The locations are assumed to be encoded in the place format explicitly declared in the GEDCOM file.  This overrules the default order.');
-	break;
-
 case 'ppp_view_records':
 	$title=WT_I18N::translate('View all records');
 	$text=WT_I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
