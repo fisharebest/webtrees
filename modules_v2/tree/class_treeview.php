@@ -384,7 +384,7 @@ class TreeView {
     	}
     	$title = (isset($father) ? strip_tags($father->getFullName()) : '');
     	$title .= isset($mother) ? (isset($father) ? ' + ' : '').strip_tags($mother->getFullName()) : '';
-    	$title = $title ? ' title="'.htmlentities(utf8_decode(WT_I18N::translate('Child of %s', $title))).'"' : '';
+    	$title = $title ? ' title="'.htmlspecialchars(WT_I18N::translate('Child of %s', $title)).'"' : '';
   	}
   	else
   		$title = '';
@@ -455,7 +455,7 @@ class TreeView {
             $media = WT_Media::getInstance($mid);
             // we need to convert the title to html entities to avoid problems with special chars like quotes,
             // and we need to decode from utf8 before to retrieve accentuated characters after the html entities conversion 
-            $thumbnail .= '<a class="tv_link" href="'.$object["file"].'" rel="clearbox[tvlb'.$personGroup->getXref().']" rev="'.$mid.'::'.$object["file"].'::'.htmlentities(utf8_decode($media->title)).'">';
+            $thumbnail .= '<a class="tv_link" href="'.$object["file"].'" rel="clearbox[tvlb'.$personGroup->getXref().']" rev="'.$mid.'::'.$object["file"].'::'.htmlspecialchars($media->title).'">';
           }
           else
             $thumbnail .= '<a href="mediaviewer.php?mid='.$mid.'">';
