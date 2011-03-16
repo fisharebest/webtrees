@@ -1201,30 +1201,6 @@ function oneRTLText($text) {
 }
 
 /**
- * Verify if text starts by a RtL character
- *
- * This will verify if text starts by a RtL character
- * @param string $text to verify
- */
-function begRTLText($text) {
-	global $RTLOrd;
-	//--- What if gedcom in ANSI?
-	return (in_array(ord(substr(trim($text),0,2)),$RTLOrd) || in_array(ord(substr(trim($text),1,2)),$RTLOrd));
-}
-
-/**
- * Verify if text ends by a RtL character
- *
- * This will verify if text ends by a RtL character
- * @param string $text to verify
- */
-function endRTLText($text) {
-	global $RTLOrd;
-	//--- What if gedcom in ANSI? -- I believe that not used
-	return (in_array(ord(substr(trim($text),strlen(trim($text))-2,2)),$RTLOrd) || in_array(ord(substr(trim($text),strlen(trim($text))-3,2)),$RTLOrd));
-}
-
-/**
  * Verify if text is RtL
  *
  * This will verify if text has RtL characters

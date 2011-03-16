@@ -547,14 +547,13 @@ class WT_GedcomRecord {
 		if (is_null($name)) {
 			$name=($tag=='li') ? $this->getListName() : $this->getFullName();
 		}
-		$dir=begRTLText($name) ? 'rtl' : 'ltr';
 		$html='<a href="'.$this->getHtmlUrl().'"';
 		if ($find) {
 			$html.=' onclick="pasteid(\''.$this->getXref().'\');"';
 		}
 		$html.=' class="list_item"><b>'.$name.'</b>';
 		$html.=$this->format_list_details();
-		$html='<'.$tag.' class="'.$dir.'" dir="'.$dir.'">'.$html.'</a></'.$tag.'>';
+		$html='<'.$tag.'>'.$html.'</a></'.$tag.'>';
 		return $html;
 	}
 
