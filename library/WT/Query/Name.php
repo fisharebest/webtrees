@@ -191,7 +191,7 @@ class WT_Query_Name {
 		foreach (self::_getAlphabet() as $n=>$letter) {
 			$sql.=" AND n_surn NOT LIKE '".$letter."%' COLLATE ".WT_I18N::$collation;
 		}
-		$sql.=" GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)<>'', LEFT(n_surn, 1)<>'@'";
+		$sql.=" GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)<>'', LEFT(n_surn, 1)<>'@', LEFT(n_surn, 1)";
 		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha=>$count) {
 			if ($alpha=='') {
 				// Special code to indicate "no surname"
@@ -266,7 +266,7 @@ class WT_Query_Name {
 		foreach (self::_getAlphabet() as $n=>$letter) {
 			$sql.=" AND n_givn NOT LIKE '".$letter."%' COLLATE ".WT_I18N::$collation;
 		}
-		$sql.=" GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1)<>'@', LEFT(n_givn, 1)<>''";
+		$sql.=" GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1)<>'@', LEFT(n_givn, 1)<>'', LEFT(n_givn, 1)";
 		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha=>$count) {
 			$alphas[$alpha]=$count;
 		}
