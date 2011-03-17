@@ -225,7 +225,7 @@ $url=
 	'&amp;gedc='.rawurlencode($gedc);
 
 $gedc_array=array();
-foreach (get_all_gedcoms() as $ged_name) {
+foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 	$gedc_array[$ged_name]=WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title'));
 }
 
