@@ -58,6 +58,7 @@ a:hover	{
 .title {display: block; float: left; width: 40%;}
 .hlogin {display: block; float: left; width: 13%; padding-top: 5px; padding-left: 40px;}
 .htheme {display: block; float: left; width: 10%; 	white-space: nowrap; }
+.htheme option { text-align:left; }
 .hsearch, .favorites_form {display: block; float: right;}
 .favorites_form {
 	position:absolute; 
