@@ -280,10 +280,10 @@ $controller->checkPrivacy();
 			</a>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>" />
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
-				<span class="details1"><?php echo WT_I18N::translate('Remove person'), help_link('remove_person'); ?></span></a>
+				<span class="details1"><?php echo WT_I18N::translate('Remove person'); ?></span></a>
 			<?php if (!empty($controller->birthyears[$pid])) { ?>
 				<span class="details1"><br />
-				<?php echo WT_I18N::translate('Show age marker'), help_link('show_age_marker'); ?>
+				<?php echo /* I18N: an age marker, which can be moved */ WT_I18N::translate('Show a movable age marker?'); ?>
 				<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="showhide('agebox<?php echo $p; ?>', this);" />
 				</span>
 			<?php }
@@ -296,7 +296,7 @@ $controller->checkPrivacy();
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>" />
 				<br />
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
-				<span class="details1"><?php echo WT_I18N::translate('Remove person'), help_link('remove_person'); ?></span></a>
+				<span class="details1"><?php echo WT_I18N::translate('Remove person'); ?></span></a>
 			<br />
 		<?php } ?>
 		</td>
@@ -304,12 +304,12 @@ $controller->checkPrivacy();
 		if (!isset($col)) $col = 0;
 		?>
 		<td class="person<?php echo $col; ?>" style="padding: 5px" valign="top">
-			<?php echo WT_I18N::translate('Add another person to chart:<br />Person ID:'), help_link('add_person_timeline'); ?>&nbsp;
+			<?php echo WT_I18N::translate('Add another person to the chart'), '<br/>', WT_I18N::translate('Person ID'); ?>&nbsp;
 			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid" />&nbsp;
 			<?php print_findindi_link("newpid",""); ?>
 			<br />
 			<br />
-			<div style="text-align: center"><input type="submit" value="<?php echo WT_I18N::translate('Show'); ?>" /></div>
+			<div style="text-align: center"><input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>" /></div>
 		</td>
 	<?php
 	if (count($controller->people)>0) {

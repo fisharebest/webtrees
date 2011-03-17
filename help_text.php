@@ -2070,22 +2070,6 @@ case 'add_opf_child':
 	$text=WT_I18N::translate('By clicking this link, you can add a <u>new</u> child to this person, creating a one-parent family.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
 	break;
 
-case 'add_person_lifespan':
-	$title=WT_I18N::translate('Add a new person to the chart');
-	$text= WT_I18N::translate('You can have several persons on the timeline.'.
-		'<br /><br />'.
-		'Use this box to supply each person\'s ID.  If you don\'t know the ID of the person, you can click the <b>Find ID</b> link next to the box.');
-	$text .=WT_I18N::translate('<p><b>"Include immediate family" check box</b></p/>'.
-		'Leave this checked to view the father, mother, spouse, siblings, and children of the individual being added to the timeline.  Uncheck to exclude them.');
-	break;
-
-case 'add_person_timeline':
-	$title=WT_I18N::translate('Add a new person to the chart');
-	$text= WT_I18N::translate('You can have several persons on the timeline.'.
-		'<br /><br />'.
-		'Use this box to supply each person\'s ID.  If you don\'t know the ID of the person, you can click the <b>Find ID</b> link next to the box.');
-	break;
-	
 case 'add_shared_note':
 	// This is a general help text for multiple pages
 	$title=WT_I18N::translate('Add a new shared note');
@@ -2814,11 +2798,6 @@ case 'setperms':
 case 'showUnknown':
 	$title=WT_I18N::translate('Show unknown gender');
 	$text=WT_I18N::translate('Hide or show the list of given names of persons of unknown gender.<br /><br />The Top 10 Given Names block always hides the list of given names when no persons of that gender exist in your database.  This option lets you hide the list of persons of unknown gender even when there are such persons in your database.');
-	break;
-
-case 'show_age_marker':
-	$title=WT_I18N::translate('Show age marker');
-	$text=WT_I18N::translate('If you check this box, you will see an Age marker.<br /><br />You can slide this Age marker up or down along the time line.  The sliding Age marker is a nice tool to check the age of a person at a certain event.  You can enable or disable the Age marker individually for each person in the chart.');
 	break;
 
 case 'show_fact_sources':
