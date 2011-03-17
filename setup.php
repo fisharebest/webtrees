@@ -1001,6 +1001,7 @@ try {
 		'</form>',
 		'<p>', WT_I18N::translate('After you have copied this file to the webserver and set the access permissions, click here to continue'), '</p>',
 		'<form name="contform" action="', WT_SCRIPT_NAME, '" method="get" onsubmit="alert(\'', /* I18N: %s is a filename */ WT_I18N::translate('Reminder: you must copy %s to your webserver', WT_CONFIG_FILE), '\');return true;">',
+		'<input type="hidden" name="lang" value="', WT_LOCALE, '">',
 		'<input type="submit" name="contbtn" value="'.WT_I18N::translate('Continue').'" disabled>',
 		'</form></body></html>';
 	exit;
