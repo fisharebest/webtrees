@@ -2070,11 +2070,22 @@ case 'add_opf_child':
 	$text=WT_I18N::translate('By clicking this link, you can add a <u>new</u> child to this person, creating a one-parent family.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
 	break;
 
-case 'add_person':
+case 'add_person_lifespan':
 	$title=WT_I18N::translate('Add a new person to the chart');
-	$text=WT_I18N::translate('You can have several persons on the timeline.<br /><br />Use this box to supply each person\'s ID.  If you don\'t know the ID of the person, you can click the <b>Find ID</b> link next to the box.<br /><br />~Include Immediate Family CheckBox~<br/>Include Immediate Family is checked by default.  Leave checked to view the father, mother, spouse, siblings, and children of the individual being added to the timeline.  Uncheck if you wish to omit the immediate family.');
+	$text= WT_I18N::translate('You can have several persons on the timeline.'.
+		'<br /><br />'.
+		'Use this box to supply each person\'s ID.  If you don\'t know the ID of the person, you can click the <b>Find ID</b> link next to the box.');
+	$text .=WT_I18N::translate('<p><b>"Include immediate family" check box</b></p/>'.
+		'Leave this checked to view the father, mother, spouse, siblings, and children of the individual being added to the timeline.  Uncheck to exclude them.');
 	break;
 
+case 'add_person_timeline':
+	$title=WT_I18N::translate('Add a new person to the chart');
+	$text= WT_I18N::translate('You can have several persons on the timeline.'.
+		'<br /><br />'.
+		'Use this box to supply each person\'s ID.  If you don\'t know the ID of the person, you can click the <b>Find ID</b> link next to the box.');
+	break;
+	
 case 'add_shared_note':
 	// This is a general help text for multiple pages
 	$title=WT_I18N::translate('Add a new shared note');

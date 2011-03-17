@@ -61,11 +61,11 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		?>
 	<table>
 		<tr><td class="person<?php echo $col; ?>" style="padding: 5px" valign="top">
-			<?php echo WT_I18N::translate('Add another person to chart'), help_link('add_person'), '<br />', WT_I18N::translate('Person ID'); ?>
+			<?php echo WT_I18N::translate('Add another person to chart'), help_link('add_person_lifespan'), '<br />', WT_I18N::translate('Person ID'); ?>
 			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid" />
 			<?php print_findindi_link("newpid",""); ?>
 			<br />
-			<div style="text-align: center"><input type="checkbox" checked="checked" value="yes" name="addFamily"/><?php echo WT_I18N::translate('Include Immediate Family'); ?></div>
+			<div style="text-align: center"><input type="checkbox" checked="checked" value="yes" name="addFamily"/><?php echo WT_I18N::translate('Include immediate family'); ?></div>
 			<br />
 			<div style="text-align: center"><input type="submit" value="<?php echo WT_I18N::translate('Show'); ?>" /></div>
 		</td></tr>

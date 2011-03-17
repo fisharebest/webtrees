@@ -304,7 +304,7 @@ $controller->checkPrivacy();
 		if (!isset($col)) $col = 0;
 		?>
 		<td class="person<?php echo $col; ?>" style="padding: 5px" valign="top">
-			<?php echo WT_I18N::translate('Add another person to chart:<br />Person ID:'), help_link('add_person'); ?>&nbsp;
+			<?php echo WT_I18N::translate('Add another person to chart:<br />Person ID:'), help_link('add_person_timeline'); ?>&nbsp;
 			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid" />&nbsp;
 			<?php print_findindi_link("newpid",""); ?>
 			<br />
