@@ -43,6 +43,10 @@ padding-left:6px;
 padding-right:0pt;
 }
 
+.submenuitem .icon, .submenuitem_hover .icon {
+padding-right:0px;
+}
+
 .blockh1 {
 	background-image: url(images/right1B.gif);
 }
