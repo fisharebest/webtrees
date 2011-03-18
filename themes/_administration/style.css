@@ -38,7 +38,7 @@ h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 td {vertical-align:top;}
 .icon {border:none;	padding-left:0pt;padding-right:5pt;}
 .warning, .error, .red {font-weight:bold; color:red;}
-.accepted {font-weight:bold; color:green;}
+.accepted, a.accepted {font-weight:bold; color:green;}
 .center {text-align:center;}
 .ltr {text-align:left;}
 .rtl {text-align:right;}

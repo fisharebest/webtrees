@@ -85,16 +85,6 @@ switch (safe_POST('action')) {
 case 'setdefault':
 	set_site_setting('DEFAULT_GEDCOM', safe_POST('default_ged'));
 	break;
-case 'add_ged':
-	$ged_name=basename(safe_POST('ged_name'));
-	$gedcom_id=get_id_from_gedcom($ged_name);
-	// check it doesn't already exist before we create it
-	if (!$gedcom_id && file_exists(WT_DATA_DIR.$ged_name)) {
-		$gedcom_id=get_id_from_gedcom($ged_name, true);
-		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name);
-	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
-	exit;
 case 'new_ged':
 	$ged_name=basename(safe_POST('ged_name'));
 	if ($ged_name) {
@@ -115,20 +105,6 @@ case 'new_ged':
 		}
 	}
 	break;
-case 'upload_ged':
-	foreach ($_FILES as $FILE) {
-		if ($FILE['error']==0 && is_readable($FILE['tmp_name'])) {
-			$ged_name=$FILE['name'];
-			$gedcom_id=get_id_from_gedcom($ged_name);
-			// check it doesn't already exist before we create it
-			if (!$gedcom_id) {
-				$gedcom_id=get_id_from_gedcom($ged_name, true);
-				import_gedcom_file($gedcom_id, $FILE['tmp_name']);
-			}
-		}
-	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
-	exit;
 case 'replace_upload':
 	$gedcom_id=safe_POST('gedcom_id');
 	// Make sure the gedcom still exists
@@ -226,9 +202,9 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 		echo
 			'<table class="gedcom_table">',
 			'<tr><th>', WT_I18N::translate('Family tree'),
-			'</th><th class="accepted" a href="index.php?ctype=gedcom&ged=', rawurlencode($gedcom_name), '">', htmlspecialchars($gedcom_name), ' - ',
+			'</th><th><a class="accepted" href="index.php?ctype=gedcom&amp;ged=', rawurlencode($gedcom_name), '">',
 			WT_I18N::translate('%s', get_gedcom_setting($gedcom_id, 'title')), '</a>',
-			'</th></tr><tr><th>', WT_I18N::translate('GEDCOM file'),
+			'</th></tr><tr><th class="accepted">', htmlspecialchars($gedcom_name),
 			'</th><td>';
 
 		// The third row shows an optional progress bar and a list of maintenance options
@@ -272,58 +248,28 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 
 // Options for creating new gedcoms and setting defaults
 if (WT_USER_IS_ADMIN) {
-	echo
-		'<table class="gedcom_table2"><tr>',
-		'<th>', WT_I18N::translate('Default GEDCOM'),      help_link('default_gedcom'), '</th>',
-		'<th>', WT_I18N::translate('Add a new GEDCOM'),    help_link('add_gedcom'),     '</th>',
-		'<th>', WT_I18N::translate('Upload a new GEDCOM'), help_link('upload_gedcom'),  '</th>',
-		'<th>', WT_I18N::translate('Create a new GEDCOM'), help_link('add_new_gedcom'), '</th>',
-		'</tr><tr>',
-		'<td>',
-		'<form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
-		'<input type="hidden" name="action" value="setdefault" />',
-		'<select name="default_ged" class="header_select" onchange="document.defaultform.submit();">';
-	$DEFAULT_GEDCOM=get_site_setting('DEFAULT_GEDCOM');
-	if (empty($DEFAULT_GEDCOM)) {
-		echo '<option value="" selected="selected"></option>';
+	echo '<table class="gedcom_table2"><tr>';
+	if (count($gedcoms)>1) {
+		echo '<th>', WT_I18N::translate('Default family tree'), help_link('default_gedcom'), '</th>';
 	}
-	foreach ($gedcoms as $gedcom_name) {
-		echo '<option value="', urlencode($gedcom_name), '"';
-		if ($DEFAULT_GEDCOM==$gedcom_name) echo ' selected="selected"';
-		echo '>', htmlspecialchars($gedcom_name), '</option>';
-	}
-	echo
-		'</select>',
-		'</form></td>',
-		'<td>',
-		'<form name="addform" method="post" action="', WT_SCRIPT_NAME, '">',
-		WT_DATA_DIR,
-		'<input type="hidden" name="action" value="add_ged" />',
-		'<select name="ged_name" onchange="document.addform.submit();" />',
-		'<option>', WT_I18N::translate('&lt;select&gt;'), '</option>',
-	$d=opendir(WT_DATA_DIR);
-	$files=false;
-	while ($d!==false && ($f=readdir($d))!==false) {
-		if (!in_array($f, $gedcoms) && !is_dir(WT_DATA_DIR.$f) && is_readable(WT_DATA_DIR.$f)) {
-			$fp=fopen(WT_DATA_DIR.$f, 'rb');
-			$header=fread($fp, 64);
-			fclose($fp);
-			if (preg_match('/^('.WT_UTF8_BOM.')?0 *HEAD/', $header)) {
-				echo '<option>', htmlspecialchars($f), '</option>';
-				$files=true;
-			}
+	echo '<th>', WT_I18N::translate('Create a new family tree'), help_link('add_new_gedcom'), '</th></tr><tr>';
+	if (count($gedcoms)>1) {
+		echo
+			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
+			'<input type="hidden" name="action" value="setdefault" />',
+			'<select name="default_ged" class="header_select" onchange="document.defaultform.submit();">';
+		$DEFAULT_GEDCOM=get_site_setting('DEFAULT_GEDCOM');
+		if (empty($DEFAULT_GEDCOM)) {
+			echo '<option value="" selected="selected"></option>';
 		}
+		foreach ($gedcoms as $gedcom_name) {
+			echo '<option value="', urlencode($gedcom_name), '"';
+			if ($DEFAULT_GEDCOM==$gedcom_name) echo ' selected="selected"';
+			echo '>', htmlspecialchars($gedcom_name), '</option>';
+		}
+		echo '</select></form></td>';
 	}
 	echo
-		'</select>',
-		'</form>',
-		'</td>',
-		'<td class="button">',
-		'<form name="uploadform" method="post" action="', WT_SCRIPT_NAME, '" enctype="multipart/form-data">',
-		'<input type="hidden" name="action" value="upload_ged" />',
-		'<input type="file" name="ged_name" onchange="document.uploadform.submit();" />',
-		'</form>',
-		'</td>',
 		'<td class="button">',
 		'<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">',
 		'<input type="hidden" name="action" value="new_ged" />',

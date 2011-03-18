@@ -2059,6 +2059,14 @@ case 'add_media_linkid':
 	$text=WT_I18N::translate('Each media item should be associated with one or more person, family, or source records in your database.<br /><br />To establish such a link, you can enter or search for the ID of the person, family, or source at the same time as you create the media item.  You can also establish the link later through editing options on the Manage MultiMedia page, or by adding media items through the Add Media link available on the Individual, Family, or Source Details pages.');
 	break;
 
+case 'add_new_gedcom':
+	$title=WT_I18N::translate('Create a new family tree');
+	$text=
+		WT_I18N::translate('This option creates a new family tree.  The name you give it will be used to generate URLs and filenames, so you should choose something short, simple, and avoid punctuation.').
+		'<br/><br/>'.
+		WT_I18N::translate('After creating the family tree, you will be able to upload or import data from a GEDCOM file.');
+	break;
+
 case 'add_note':
 	// This is a general help text for multiple pages
 	$title=WT_I18N::translate('Add a new note');
@@ -2193,8 +2201,8 @@ case 'day_month':
 	break;
 
 case 'default_gedcom':
-	$title=WT_I18N::translate('Default GEDCOM');
-	$text=WT_I18N::translate('If you have more than one genealogical database, you can set here which of them will be the default.<br /><br />This default will be shown to all visitors and users who have not yet logged in.<br /><br />Users who can edit their account settings can override this default.  In that case, the user\'s preferred database will be shown after login.');
+	$title=WT_I18N::translate('Default family tree');
+	$text=WT_I18N::translate('This option selects the family tree that is shown to visitors when they first arrive at the site.');
 	break;
 
 case 'desc_generations':
@@ -2205,6 +2213,11 @@ case 'desc_generations':
 case 'desc_rootid':
 	$title=WT_I18N::translate('Root individual');
 	$text=WT_I18N::translate('If you want to display a chart with a new starting (root) person, the ID of that new starting person is typed here.<br /><br />If you don\'t know the ID of that person, use the <b>Find ID</b> link.<br /><br /><b>ID NUMBER</b><br />The ID numbers used inside <b>webtrees</b> are <u>not</u> the identification numbers issued by various governments (driving permit or passport numbers, for instance).  The ID number referred to here is simply a number used within the database to uniquely identify each individual; it was assigned by the ancestry program that created the GEDCOM file which was imported into <b>webtrees</b>.');
+	break;
+
+case 'download_gedcom':
+	$title=WT_I18N::translate('Download family tree');
+	$text=WT_I18N::translate('This option will download the family tree to a GEDCOM file on your computer.');
 	break;
 
 case 'download_zipped':
@@ -2352,6 +2365,14 @@ case 'edituser_username':
 	$text=WT_I18N::translate('You can change your username by updating it here.  Usernames are case insensitive and ignore accented letters, so that "chloe", "chlo&euml;" and "CHLOE" are considered to be the same.  Usernames may not contain the following characters: &lt;&gt;"%%{};');
 	break;
 
+case 'export_gedcom':
+	$title=WT_I18N::translate('Export family tree');
+	$text=
+		WT_I18N::translate('This option will save the family tree to a GEDCOM file on the server.').
+		'<br/><br/>'.
+		/* I18N: %s is a directory name */ WT_I18N::translate('Files are stored in the %s directory.', '<b>'.WT_DATA_DIR.'</b>');
+	break;
+
 case 'fambook_descent':
 	$title=WT_I18N::translate('Descendant generations');
 	$text=WT_I18N::translate('This value determines the number of descendant generations of the root person that will be printed in Hourglass format.');
@@ -2451,6 +2472,14 @@ case 'help_editconfig.php':
 case 'hourglass_chart':
 	$title=WT_I18N::translate('Hourglass chart');
 	$text=WT_I18N::translate('The Hourglass chart will show the ancestors and descendants of the selected root person on the same chart.  This chart is a mix between the Descendancy chart and the Pedigree chart.<br /><br />The root person is centered in the middle of the page with his descendants listed to the left and his ancestors listed to the right.  In this view, each generation is lined up across the page starting with the earliest generation and ending with the latest.<br /><br />If there is a downwards arrow on the screen under the root person, clicking on it will display a list of the root person\'s close family members that you can use the navigate down the chart.  Selecting a name from this list will reload the chart with the selected person as the new root person.');
+	break;
+
+case 'import_gedcom':
+	$title=WT_I18N::translate('Import family tree');
+	$text=
+		WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on the server.').
+		'<br/><br/>'.
+		/* I18N: %s is a directory name */ WT_I18N::translate('Files are stored in the %s directory.', '<b>'.WT_DATA_DIR.'</b>');
 	break;
 
 case 'include_media':
@@ -2927,6 +2956,11 @@ case 'treenav':
 		'<br />'.
 		WT_I18N::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGES['tree'].'" width="15px" height="15px" alt="">').
 		'</li></ul>';
+	break;
+
+case 'upload_gedcom':
+	$title=WT_I18N::translate('Upload family tree');
+	$text=WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on your computer.');
 	break;
 
 case 'upload_media_file':
