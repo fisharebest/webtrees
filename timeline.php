@@ -364,7 +364,7 @@ if (count($controller->people)>0) {
 		$ageyoffset = $baseyoffset + ($controller->bheight*$p);
 		$col = $p % 6;
 		?>
-		<div id="agebox<?php echo $p; ?>" style="position:absolute; <?php echo ($TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+20):"right: ".($basexoffset+20)); ?>px; top:<?php echo $ageyoffset; ?>px; height:<?php echo $controller->bheight; ?>px; visibility: hidden;" onmousedown="ageMD(this, <?php echo $p; ?>);">
+		<div id="agebox<?php echo $p; ?>" style="cursor:move; position:absolute; <?php echo ($TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+20):"right: ".($basexoffset+20)); ?>px; top:<?php echo $ageyoffset; ?>px; height:<?php echo $controller->bheight; ?>px; visibility: hidden;" onmousedown="ageMD(this, <?php echo $p; ?>);">
 			<table cellspacing="0" cellpadding="0">
 				<tr>
 					<td>
