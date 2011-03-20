@@ -32,9 +32,10 @@ if (!defined('WT_WEBTREES')) {
 
 $imgStyle = ' style="height: 22px; width: 22px; border: 0 none"';
 switch ($help) {
+	/* This help text need updating before it can be used.  Too much embedded formatting, untranslated alt-text (do we need images here?), irrelevant mention of printing details (does a "printer" icon need help?), does "zoom in/out" really need help?
 case 'TV_MODULE':
 	$title = WT_I18N::translate('Interactive tree');
-	$text = WT_I18N::translate('Interactive and printable genealogical tree.').
+	$text = WT_I18N::translate('An interactive tree showing all the ancestors and descendants of a person.').
 		'<br /><br />'.
 		WT_I18N::translate('Commands').':'.'<br /><table><tbody>'.
 		'<tr><td><img src="'.$WT_IMAGES['zoomin'].'"'.$imgStyle.' alt="zoomin" /></td><td>'.
@@ -53,8 +54,9 @@ case 'TV_MODULE':
 		WT_I18N::translate('Hide/show dates on small boxes.').'</td></tr>'.
 		'<tr><td><img src="'.WT_MODULES_DIR.'/tree/images/compact.png"'.$imgStyle.' alt="c/e" /></td><td>'.
 		WT_I18N::translate('Compact tree / fixed boxes : switch beetween fixed-width boxes and compact tree. <i>fixed-width</i> display one generation\'s boxes in one column, and <i>compact</i> display more persons on the same area.').'</td></tr>'.
-		/* function not enabled yet	'<tr><td><img src="'.$WT_IMAGES['media'].'"'.$imgStyle.' alt="open" /></td><td>'.
-		WT_I18N::translate('Open details for all displayed boxes. Could be long.').'</td></tr>'.*/
+		// function not enabled yet
+		// '<tr><td><img src="'.$WT_IMAGES['media'].'"'.$imgStyle.' alt="open" /></td><td>'.
+		// WT_I18N::translate('Open details for all displayed boxes. Could be long.').'</td></tr>'.
 		'<tr><td><img src="'.$WT_IMAGES["fambook"].'"'.$imgStyle.' alt="close" /></td><td>'.
 		WT_I18N::translate('Close all opened boxes.').'</td></tr>'.			
 		'<tr><td><img src="'.WT_MODULES_DIR.'/tree/images/print.png"'.$imgStyle.' alt="print" /></td><td>'.
@@ -81,4 +83,5 @@ case 'TV_MODULE':
 - if you encounter some printing issues on Linux systems, you can change the print-to-file driver, from lpr to kprinter (even if you don\'t use KDE). In Firefox, that is set in the "about:config" page. 
 ');
 	break;
+*/
 }

@@ -55,12 +55,12 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Extend WT_Module. This title should be normalized when this module will be added officially
 	public function getTitle() {
-		return WT_I18N::translate('Tree');
+		return WT_I18N::translate('Interactive tree');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a tab to the individual page which displays the interactive tree for the given individual.');
+		return WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of a person.');
 	}
 	
 	// Implement WT_Module_Tab
