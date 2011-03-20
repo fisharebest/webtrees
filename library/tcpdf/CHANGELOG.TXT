@@ -1,3 +1,41 @@
+5.9.061 (2011-03-15)
+	- Bug item #3213488 "wrong function call in function Write" was fixed.
+	- Bug item #3203007 "list element with black background" was fixed.
+
+5.9.060 (2011-03-08)
+	- addTOC() method was fixed for text alignment problems.
+
+5.9.059 (2011-02-27)
+	- Default Header() method was improved to reduce document size.
+
+5.9.058 (2011-02-25)
+	- Image() method was improved to cache images with transparency layers (thanks to Korneliusz Jarzębski for reporting this problem).
+
+5.9.057 (2011-02-24)
+	- A problem with image caching system was fixed (thanks to Korneliusz Jarzębski for reporting this problem).
+
+5.9.056 (2011-02-22)
+	- A bug on fixHTMLCode() method was fixed.
+	- Automatic line break for HTML was fixed.
+
+5.9.055 (2011-02-17)
+	- Another bug related to HTML table page break was fixed.
+
+5.9.054 (2011-02-16)
+	- A bug related to HTML table page break was fixed.
+
+5.9.053 (2011-02-16)
+	- Support for HTML attribute display="none" was added.
+
+5.9.052 (2011-02-15)
+	- A bug related to HTML automatic newlines was fixed.
+
+5.9.051 (2011-02-12)
+	- "Commas at beginning of new lines" problem was fixed.
+
+5.9.050 (2011-02-11)
+	- Bug #3177606 "SVG Bar chart error" was fixed.
+
 5.9.049 (2011-02-03)
 	- Bug #3170777 "TCPDF creates a new page after a single line in writeHTML" was fixed.
 
