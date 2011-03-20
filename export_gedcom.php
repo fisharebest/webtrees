@@ -74,15 +74,16 @@ if ($export) {
 		if (file_exists($filename)) {
 			unlink($filename);
 		}
-		rename($filename.'.tmp', $filename);
-		$stat = stat($filename);
-		$stat['size'] = $stat['size']/1024;
-		echo '<p>', WT_I18N::plural('%d KB, %0.3f seconds', '%d KB, %0.3f seconds', $stat['size'], $stat['size'], $end-$start, $end-$start), '</p>';
+		if (rename($filename.'.tmp', $filename)) {
+			echo '<p>', /* I18N: %s is a filename */ WT_I18N::plural('Family tree exported to %s.', $filename), '</p>';
+		} else {
+			echo '<p class="error">', /* I18N: %s is a filename */ WT_I18N::translate('Unable to create %s.  Check the permissions.', $filename), '</p>';
+		}
 	} else {
-		echo '<p>', WT_I18N::translate('Error: could not open file for writing'), '</p>';
+		echo '<p class="error">', /* I18N: %s is a filename */ WT_I18N::translate('Unable to create %s.  Check the permissions.', $filename.'.tmp'), '</p>';
 	}
 } else {
-	echo '<h1>', WT_I18N::translate('Export data from database to gedcom file'), '</h1>';
+	echo '<h1>', WT_I18N::translate('Export family tree'), '</h1>';
 	echo '<ul>';
 	foreach ($gedcoms as $ged_id=>$gedcom) {
 		echo '<li><a href="?export=', rawurlencode($gedcom), '">', $gedcom, ' => ', htmlspecialchars(filename_decode(realpath(get_gedcom_setting($ged_id, 'path')))), '</a></li>';
