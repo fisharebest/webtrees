@@ -106,7 +106,7 @@ class TreeView {
 <li id="tvToolsHandler" title="'.WT_I18N::translate('You can drag the toolbox and double-click to change orientation').'"></li>
 <li id="tvbZoomIn" class="tv_button"><img src="'.$WT_IMAGES['zoomin'].'" alt="z+" title="'.WT_I18N::translate('Zoom in').'" /></li>
 <li id="tvbZoomOut" class="tv_button"><img src="'.$WT_IMAGES['zoomout'].'" alt="z-" title="'.WT_I18N::translate('Zoom out').'" /></li>
-<li id="tvbNoZoom" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/zoom0.png" alt="z0" title="'.WT_I18N::translate('No zoom').'" /></li>
+<li id="tvbNoZoom" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/zoom0.png" alt="z0" title="'.WT_I18N::translate('Reset').'" /></li>
 <li id="tvbLeft" class="tv_button"><img src="'.$WT_IMAGES['ldarrow'].'" alt="|<" title="'.WT_I18N::translate('Align left').'" /></li>
 <li id="tvbCenter" class="tv_button"><img src="'.$WT_IMAGES['patriarch'].'" alt="<>" title="'.WT_I18N::translate('Center on root person').'" /></li>
 <li id="tvbRight" class="tv_button"><img src="'.$WT_IMAGES['rdarrow'].'" alt=">|" title="'.WT_I18N::translate('Align right').'" /></li>
@@ -115,7 +115,7 @@ class TreeView {
 
 <li id="tvbClose" class="tv_button"><img src="'.$WT_IMAGES["fambook"].'" alt="f" title="'.WT_I18N::translate('Close all details boxes').'" /></li>
 <li id="tvStyleButton" class="tv_button">'.$cs.'</li>
-<li id="tvbPrint" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'.WT_I18N::translate('Load full resolution medias and open print dialog').'" /></li>
+<li id="tvbPrint" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'.WT_I18N::translate('Print').'" /></li>
 <li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'" title="'.WT_I18N::translate('Show or hide multiple life partners').'"><img src="'.$WT_IMAGES["sfamily"].'" alt="" /></a></li>';
     if (safe_GET('mod_action') != 'treeview')
       $r .=  '<li class="tv_button"><a href="module.php?mod=tree&mod_action=treeview&rootId='.$rootPerson->getXref().'#tv_content" title="'.WT_I18N::translate('View this tree in the full page interactive tree').'"><img src="'.$WT_IMAGES["tree"].'" alt="t" /></a></li>'; 
@@ -202,20 +202,18 @@ class TreeView {
   * Return the details for a person
   * @param Person $person the person to return the details for
   */
-  private function getPersonDetails(&$personGroup, &$person, $family) {
+  private function getPersonDetails($personGroup, $person, $family) {
 		global $WT_IMAGES;
 
     $r = '<div class="tv'.$person->getSex().' tv_person_expanded">';
     $r .= $this->getThumbnail($personGroup, $person);
-    $r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'" title="'.WT_I18N::translate('Display').' '.$person->getFullName().'">'.PrintReady($person->getFullName()).'</a> <a href="module.php?mod=tree&mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&rootId='.$person->getXref().'" title="'.WT_I18N::translate('Display tree for').' '.$person->getFullName().'"><img src="'.$WT_IMAGES['tree'].'" class="tv_link tv_treelink" /></a>';
-    $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$person->getBirthDate()->Display().' '.PrintReady($person->getBirthPlace());
-    if (!empty($family)) {
-      $nbChildren = $family->getNumberOfChildren();
-      $nbChildren = ($nbChildren > 0 ? ' ('.$nbChildren.' '.WT_I18N::translate('children').')' : '');
-      $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" class="tv_link tv_treelink" title="'.WT_I18N::translate('Display Family').$nbChildren.'" /></a>'.$family->getMarriagePlace();
+    $r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&rootId='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', htmlspecialchars($person->getFullName())).'"><img src="'.$WT_IMAGES['tree'].'" class="tv_link tv_treelink" /></a>';
+    $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$person->getBirthDate()->Display().' '.$person->getBirthPlace();
+    if ($family) {
+      $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" class="tv_link tv_treelink" title="'.htmlspecialchars($family->getFullName()).'" /></a>'.$family->getMarriagePlace();
     }
     if ($person->isDead())
-      $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('DEAT').'</b> '.$person->getDeathDate()->Display().' '.PrintReady($person->getDeathPlace());
+      $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('DEAT').'</b> '.$person->getDeathDate()->Display().' '.$person->getDeathPlace();
     $r.= '</div>';
     return $r;
   }
@@ -226,7 +224,7 @@ class TreeView {
   * @param int $gen number of generations to draw
   * @param boolean $ajax setted to true for an ajax call
   */
-  private function drawChildren(&$familyList, $gen=1, $ajax=false) {
+  private function drawChildren($familyList, $gen=1, $ajax=false) {
   	$r ='';
   	$flWithChildren = array();
   	$f2load = array();
@@ -279,7 +277,7 @@ class TreeView {
   * (for "life partner") here fits much better than "spouse" or "mate"
   * to translate properly the modern french meaning of "conjoint"
   */
-  private function drawPerson(&$person, $gen, $state=0, &$pfamily, $order, $isRoot=false) {
+  private function drawPerson($person, $gen, $state=0, $pfamily, $order, $isRoot=false) {
     global $TEXT_DIRECTION;
 
     if ($gen < 0 || empty($person))
@@ -375,7 +373,7 @@ class TreeView {
   * Draw a person name preceded by sex icon, with parents as tooltip
   * @param WT_Person $p a person
   */
-  private function drawPersonName(&$p) {
+  private function drawPersonName($p) {
   	if ($this->allPartners) {
     	$f = $p->getPrimaryChildFamily();
     	if (!empty($f)) {
@@ -432,7 +430,7 @@ class TreeView {
   * @param Person $person
   * @return string
   */
-  private function getThumbnail($personGroup, &$person) {
+  private function getThumbnail($personGroup, $person) {
     global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $TEXT_DIRECTION, $USE_MEDIA_VIEWER, $USE_SILHOUETTE, $GEDCOM, $WT_IMAGES;
 
     $thumbnail = "";
