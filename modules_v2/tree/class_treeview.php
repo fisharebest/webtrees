@@ -108,14 +108,14 @@ class TreeView {
 <li id="tvbZoomOut" class="tv_button"><img src="'.$WT_IMAGES['zoomout'].'" alt="z-" title="'.WT_I18N::translate('Zoom out').'" /></li>
 <li id="tvbNoZoom" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/zoom0.png" alt="z0" title="'.WT_I18N::translate('Reset').'" /></li>
 <li id="tvbLeft" class="tv_button"><img src="'.$WT_IMAGES['ldarrow'].'" alt="|<" title="'.WT_I18N::translate('Align left').'" /></li>
-<li id="tvbCenter" class="tv_button"><img src="'.$WT_IMAGES['patriarch'].'" alt="<>" title="'.WT_I18N::translate('Center on root person').'" /></li>
+<li id="tvbCenter" class="tv_button"><img src="'.$WT_IMAGES['patriarch'].'" alt="<>" title="'./* I18N: verb/action */ WT_I18N::translate('Center').'" /></li>
 <li id="tvbRight" class="tv_button"><img src="'.$WT_IMAGES['rdarrow'].'" alt=">|" title="'.WT_I18N::translate('Align right').'" /></li>
 <li id="tvbDates" class="tv_button tvPressed"><img src="'.WT_MODULES_DIR.'tree/images/dates.png" alt="d" title="'.WT_I18N::translate('Hide / show dates').'" /></li>
 <li id="tvbCompact" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/compact.png" alt="c" title="'.WT_I18N::translate('Compact tree / fixed width boxes').'" /></li>
 
 <li id="tvbClose" class="tv_button"><img src="'.$WT_IMAGES["fambook"].'" alt="f" title="'.WT_I18N::translate('Close all details boxes').'" /></li>
 <li id="tvStyleButton" class="tv_button">'.$cs.'</li>
-<li id="tvbPrint" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'.WT_I18N::translate('Print').'" /></li>
+<li id="tvbPrint" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'./* I18N: verb/action */ WT_I18N::translate('Print').'" /></li>
 <li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'" title="'.WT_I18N::translate('Show or hide multiple life partners').'"><img src="'.$WT_IMAGES["sfamily"].'" alt="" /></a></li>';
     if (safe_GET('mod_action') != 'treeview')
       $r .=  '<li class="tv_button"><a href="module.php?mod=tree&mod_action=treeview&rootId='.$rootPerson->getXref().'#tv_content" title="'.WT_I18N::translate('View this tree in the full page interactive tree').'"><img src="'.$WT_IMAGES["tree"].'" alt="t" /></a></li>'; 
@@ -376,26 +376,24 @@ class TreeView {
   private function drawPersonName($p) {
   	if ($this->allPartners) {
     	$f = $p->getPrimaryChildFamily();
-    	if (!empty($f)) {
-      	$father = $f->getHusband();
-      	$mother = $f->getWife();
-    	}
-    	$title = (isset($father) ? strip_tags($father->getFullName()) : '');
-    	$title .= isset($mother) ? (isset($father) ? ' + ' : '').strip_tags($mother->getFullName()) : '';
-    	$title = $title ? ' title="'.htmlspecialchars(strip_tags(WT_I18N::translate('Child of %s', $title))).'"' : '';
+    	if ($f) {
+				$title=' title="'.htmlspecialchars(strip_tags(/* I18N: %s is the names of the parents */ WT_I18N::translate('Child of %s', $f->getFullName()))).'"';
+			} else {
+				$title='';
+			}
   	}
   	else
   		$title = '';
 		$sex = $p->getSex();
   	switch($sex) {
-  		case "M":
-  			$sexSymbol = '&#9794;';
+  		case 'M':
+  			$sexSymbol = WT_UTF8_MALE;
   			break;
-  		case "F":
-  			$sexSymbol = '&#9792;';
+  		case 'F':
+  			$sexSymbol = WT_UTF8_FEMALE;
   			break;
   		default:
-  			$sexSymbol = '&#x26aa;';
+  			$sexSymbol = WT_UTF8_NO_SEX;
   			break;
   	}
   	// TODO : other calendars (read option somewhere ?)
