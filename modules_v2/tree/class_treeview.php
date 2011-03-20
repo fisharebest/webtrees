@@ -150,7 +150,7 @@ class TreeView {
         	$r[] = $this->drawChildren($flist, 1, true);
           break;
         case 'p':
-          $params = explode('_', $jsonRequest);
+          $params = explode('@', $jsonRequest);
           $fid = $params[0];
           $order = $params[1];
           $f = WT_Family::getInstance($fid);
@@ -345,7 +345,7 @@ class TreeView {
       $r .= '<td align="left"><table class="tv_tree"><tbody>';
       if (!empty($father)) {
         $u = ($unique ? 'c' : 't');
-        $r .= '<tr><td '.($gen == 0 ? ' abbr="p'.$fatherFamily->getXref().'_'.$u.'"' : '').'>';
+        $r .= '<tr><td '.($gen == 0 ? ' abbr="p'.$fatherFamily->getXref().'@'.$u.'"' : '').'>';
         $r .= $this->drawPerson($father, $gen-1, 1, $fatherFamily, $u);
         $r .= '</td></tr>';
       }
@@ -355,7 +355,7 @@ class TreeView {
         foreach($fop as $p) {
           $n++;
           $u = ($unique ? 'c' : ($n == $nb || empty($p[1]) || !$this->allPartners ? 'b' : 'h'));
-          $r .= '<tr><td '.($gen == 0 ? ' abbr="p'.$p[1]->getXref().'_'.$u.'"' : '').'>'.$this->drawPerson($p[0], $gen-1, 1, $p[1], $u).'</td></tr>';
+          $r .= '<tr><td '.($gen == 0 ? ' abbr="p'.$p[1]->getXref().'@'.$u.'"' : '').'>'.$this->drawPerson($p[0], $gen-1, 1, $p[1], $u).'</td></tr>';
         }
       }
       $r .= '</tbody></table></td>';
