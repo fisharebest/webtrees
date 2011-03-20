@@ -75,7 +75,7 @@ if ($export) {
 			unlink($filename);
 		}
 		if (rename($filename.'.tmp', $filename)) {
-			echo '<p>', /* I18N: %s is a filename */ WT_I18N::plural('Family tree exported to %s.', $filename), '</p>';
+			echo '<p>', /* I18N: %s is a filename */ WT_I18N::translate('Family tree exported to %s.', $filename), '</p>';
 		} else {
 			echo '<p class="error">', /* I18N: %s is a filename */ WT_I18N::translate('Unable to create %s.  Check the permissions.', $filename), '</p>';
 		}
