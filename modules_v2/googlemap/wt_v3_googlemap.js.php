@@ -116,9 +116,25 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	var placer = null;
 
 	// A function to create the marker and set up the event window
-	function createMarker(i, latlng, event, html, category, placed, index, tab, address, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point) {
+	function createMarker(i, latlng, event, html, category, placed, index, tab, address, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon) {
 		var contentString = '<div id="iwcontent">'+html+'<\/div>';
-
+		
+		// === Use flag icon (if defined) instead of regular marker icon ===
+		if (marker_icon) {
+			var icon_image = new google.maps.MarkerImage("modules_v2/googlemap/"+marker_icon,
+				new google.maps.Size(25, 15),
+				new google.maps.Point(0,0),
+				new google.maps.Point(0, 44));
+			var icon_shadow = new google.maps.MarkerImage("modules_v2/googlemap/images/flag_shadow.png",
+				new google.maps.Size(35, 45),	// Shadow size
+				new google.maps.Point(0,0),		// Shadow origin
+				new google.maps.Point(1, 45)	// Shadow anchor is base of flagpole				
+			);
+		} else {
+			var icon_image = gicons[category];
+			var icon_shadow = iconShadow;
+		}
+			
 		// === Decide if marker point is Regular (latlng) or StreetView (sv_point) derived ===
 		if (sv_point == "(0, 0)") {
 			placer = latlng;
@@ -129,8 +145,8 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		// === Define the marker ===
 		var marker = new google.maps.Marker({
 			position: placer,
-			icon: gicons[category],
-			shadow: iconShadow,
+			icon: icon_image,
+			shadow: icon_shadow,
 			map: map,
 			title: address,
 			zIndex: Math.round(latlng.lat()*-100000)<<5
@@ -535,8 +551,9 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					"<?php if (!empty($gmark['sv_long'])) { echo $gmark['sv_long']; } ?>",
 					"<?php if (!empty($gmark['sv_bearing'])) { echo $gmark['sv_bearing']; } ?>",
 					"<?php if (!empty($gmark['sv_elevation'])) { echo $gmark['sv_elevation']; } ?>",
-					"<?php if (!empty($gmark['sv_zoom'])) { echo $gmark['sv_zoom']; } ?>"
+					"<?php if (!empty($gmark['sv_zoom'])) { echo $gmark['sv_zoom']; } ?>",
 					// "<?php if (!empty($gmark['sv_point'])) { echo $gmark['sv_point']; } ?>"
+					"<?php if (!empty($gmark['icon'])) { echo $gmark['icon']; } ?>"
 				],
 
 			<?php } ?>
@@ -588,6 +605,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			var sv_bearing = locations[i][17];						// Street View bearing
 			var sv_elevation = locations[i][18];					// Street View elevation
 			var sv_zoom = locations[i][19];							// Street View zoom
+			var marker_icon = locations[i][20];						// Marker icon image (flag)
 
 			// Employ of image tab function using an information image -----
 			if (media == null || media == "") {
@@ -683,7 +701,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 			// create the marker -----------------------------------------------
 			var html = multitabs;
-			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point);
+			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon);
 			var myLatLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
 			bounds.extend(myLatLng);
 			map.fitBounds(bounds);
