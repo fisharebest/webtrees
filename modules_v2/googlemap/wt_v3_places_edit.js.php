@@ -242,7 +242,7 @@
 
 		// Create the Main Location Marker
 		<?php 
-		if ($level < 2 && $place_icon != '') {	
+		if ($level < 3 && $place_icon != '') {	
 			echo 'var image = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/',$place_icon,'",';
 				echo 'new google.maps.Size(25, 15),';	// Image size
 				echo 'new google.maps.Point(0, 0),';	// Image origin
