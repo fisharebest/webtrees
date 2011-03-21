@@ -189,8 +189,6 @@ html[dir='rtl'] .favorites_form {
 
 /* --- end headers --- */
 
-
-
 h2 {
 	color: black;
 	font: bold 18px tahoma, arial, helvetica, sans-serif;
@@ -265,7 +263,8 @@ table.center{
 
 .list_label, .list_label_wrap {
 	color: black;
-	background-color: ;
+	background-color: #eeeeee;
+	border: 1px solid black;
 	font: 12px tahoma, arial, helvetica, sans-serif;
 	text-align: center;
 }
@@ -296,6 +295,8 @@ table.center{
 
 .facts_label {
 	color: black;
+	background-color: #eeeeee;
+	border: 1px solid black;
 	font: 12px tahoma, arial, helvetica, sans-serif;
 	padding: 4px 4px 4px 4px;
 	width: 20%;
@@ -304,6 +305,8 @@ table.center{
 
 .facts_label02, .facts_label03 {
 	color: black;
+	background-color: #eeeeee;
+	border: 1px solid black;
 	font: bold 12px tahoma, arial, helvetica, sans-serif;
 	padding: 4px 4px 4px 4px;
 	width: 20%;
@@ -311,6 +314,7 @@ table.center{
 }
 
 .facts_value {
+	background-color: white;
 	color: black;
 	border: solid black 1px;
 	font: 12px tahoma, arial, helvetica, sans-serif;
@@ -318,6 +322,7 @@ table.center{
 }
 
 .facts_value02 {
+	background-color: white;
 	color: black;
 	border: solid black 1px;
 	font: 12px tahoma, arial, helvetica, sans-serif;
@@ -326,6 +331,7 @@ table.center{
 
 .facts_labelred, .facts_labelblue {
 	color: #333333;
+	background-color: #eeeeee;
 	font: 12px tahoma, arial, helvetica, sans-serif;
 	padding: 4px 4px 4px 4px;
 	width: 20%;
@@ -333,6 +339,7 @@ table.center{
 }
 
 .facts_valuered, .facts_valueblue {
+	background-color: white;
 	color: black;
 	font: 12px tahoma, arial, helvetica, sans-serif;
 	padding: 4px 4px 4px 4px;
@@ -351,13 +358,15 @@ table.center{
 }
 
 .tab_cell_active {
-	border-left: outset #aaaaaa 2px;
-	border-top: outset #aaaaaa 2px;
-	border-right: outset #aaaaaa 2px;
+	background-color: white;
+	border-left: outset #eeeeee 2px;
+	border-top: outset #eeeeee 2px;
+	border-right: outset #eeeeee 2px;
 	text-align: center;
 }
 
 .tab_cell_inactive {
+	background-color: #eeeeee;
 	border-left: solid black 2px;
 	border-top: solid black 2px;
 	border-right: outset black 2px;
@@ -388,6 +397,7 @@ table.center{
 }
 
 .tab_cell_inactive_empty {
+	background-color: #bababa;
 	border-left: solid black 2px;
 	border-top: solid black 2px;
 	border-right: outset black 2px;
@@ -566,6 +576,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .sublinks_cell {
 	font-size: 12px;
+	background-color: #eeeeee;
 }
 
 .sublinks_table .icon {
@@ -594,6 +605,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .selected-option {
+	background-color: #eeeeee;
 	border: solid black 1px;
 }
 
@@ -641,65 +653,8 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	cursor: help;
 }
 
-.menuitem {
-	color: #555555;
-	text-decoration: none;
-	font: 14px tahoma, arial, helvetica, sans-serif;
-	text-align: center;
-	padding: 1px;
-	border: solid black 1px;
-}
-
-.menuitem_hover	{
-	color: black;
-	text-decoration: underline;
-	font: 14px tahoma, arial, helvetica, sans-serif;
-	text-align: center;
-	padding: 1px;
-	border: solid black 1px;
-}
-
-.submenu {
-	visibility: hidden;
-	position: absolute;
-	z-index: 100;
-	color: black;
-	text-decoration: none;
-	font: 11px tahoma, arial, helvetica, sans-serif;
-	text-align: center;
-	background-color: #eeeeee;
-	border: solid black 1px;
-	white-space: nowrap;
-}
-
-.submenuitem {
-	color: #555555;
-	text-decoration: none;
-	font: 11px tahoma, arial, helvetica, sans-serif;
-	background-color: #eeeeee;
-	white-space: nowrap;
-	padding: 5px 10px 5px 10px;
-	text-align: left;
-}
-
-html[dir='rtl'] .submenuitem { text-align: right; }
-
-.submenuitem_hover	{
-	color: black;
-	text-decoration: underline;
-	font: 11px tahoma, arial, helvetica, sans-serif;
-	background-color: white;
-	white-space: nowrap;
-	text-align: left;
-	padding: 5px 10px 5px 10px;
-}
-
-.submenuitem a, .submenuitem_hover a {
-	display: inline-block;
-	vertical-align: middle;
-}
-
 .news_box {
+	background-color: white;
 	border: solid black 1px;
 }
 
@@ -780,6 +735,7 @@ html[dir='rtl'] .submenuitem { text-align: right; }
 }
 
 .block {
+	background-color: white;
 	color: black;
 	border: solid black 2px;
 	font: 12px tahoma, arial, helvetica, sans-serif;
@@ -918,7 +874,7 @@ left:auto;
 }
 
 .person0 {
-	background-color: #a5a5a5;
+	background-color: #eeeeee;
 	border: outset black 1px;
 	vertical-align: top;
 }
@@ -978,6 +934,8 @@ left:auto;
 /* Style for the top and bottom bar */
 .topbottombar {
 	color: black;
+	background-color: #eeeeee;
+	border: 1px solid black;
 	font: bold 12px tahoma, arial, helvetica, sans-serif;
 	padding: 4px;
 	text-align: center;
@@ -985,6 +943,7 @@ left:auto;
 
 /* Style for the subbar in  */
 .subbar {
+	background-color: white;
 	color: black;
 	border: solid black 1px;
 	font: 11px tahoma, arial, helvetica, sans-serif;
@@ -995,6 +954,7 @@ left:auto;
 
 /* Style for the descriptionbox */
 .descriptionbox {
+	background-color: white;
 	color: black;
 	border: solid black 1px;
 	font: 12px tahoma, arial, helvetica, sans-serif;
@@ -1005,6 +965,7 @@ left:auto;
 
 /* Style for the optionbox */
 .optionbox {
+	background-color: white;
 	color: black;
 	border: solid black 1px;
 	font: 12px tahoma, arial, helvetica, sans-serif;
@@ -1096,6 +1057,7 @@ left:auto;
 
 /* Message box */
 .messagebox {
+	background-color: white;
 	border: solid black 1px;
 }
 
@@ -1139,6 +1101,7 @@ a.showit:hover span {
 	border-bottom: 2px solid black;
 	border-right: 2px solid black;
 	padding: 3px;
+	background: #4f4f4f;
 	color: white;
 	font: 15px tahoma, arial, helvetica, sans-serif;
 	text-align: left;
@@ -1175,6 +1138,7 @@ a.showit:hover span {
 	left: -10px;
 	top:-65px;
 	z-index:2;
+	background-color: white
 }
 
 .lifespan_people {
@@ -1186,6 +1150,7 @@ a.showit:hover span {
 }
 .iwstyle {
 	width:360px;
+	/*background-color: #FFFFFF;*/
 }
 .iwstyle a {
 }
@@ -1205,40 +1170,37 @@ a.showit:hover span {
 	z-index: 100;
 }
 
-	#map_type
-	{
-		margin: 0;
-		padding: 0;
-		font-family: Arial;
-		font-size: 10px;
-		list-style: none;
-	}
-	#map_type li
-	{
-		display: block;
-		width: 70px;
-		text-align: center;
-		padding: 2px;
-		border: 1px solid black;
-		cursor: pointer;
-		float: left;
-		margin-left: 2px;
-	}
-	#map_type li.non_active
-	{
-		color: black;
-		font-weight: normal;
-	}
-	#map_type li.active
-	{
-		background: gray;
-		color: white;
-		font-weight: bold;
-	}
-	#map_type li:hover
-	{
-		background: #ddd;
-	}
+#map_type {
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+	font-size: 10px;
+	list-style: none;
+}
+#map_type li {
+	display: block;
+	width: 70px;
+	text-align: center;
+	padding: 2px;
+	border: 1px solid black;
+	cursor: pointer;
+	float: left;
+	margin-left: 2px;
+}
+#map_type li.non_active {
+	background: white;
+	color: black;
+	font-weight: normal;
+}
+
+#map_type li.active {
+	background: gray;
+	color: white;
+	font-weight: bold;
+}
+#map_type li:hover {
+	background: #ddd;
+}
 
 .tag_cloud {
 	font-family: tahoma, arial, helvetica, sans-serif;
@@ -1255,6 +1217,7 @@ a.showit:hover span {
 .ac_results {
 	padding: 0px;
 	border: 1px solid black;
+	background-color: white;
 	overflow: hidden;
 	z-index: 99999;
 }
@@ -1472,14 +1435,18 @@ table.tablesorter tbody td {
 	padding: 4px;
 	vertical-align: top;
 }
-
+table.tablesorter tbody tr.odd td {
+	background-color:#DDD;
+}
 table.tablesorter thead tr .headerSortUp {
 	background-image: url(images/jquery/asc.gif);
 }
 table.tablesorter thead tr .headerSortDown {
 	background-image: url(images/jquery/desc.gif);
 }
-
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+	background-color: #DDD;
+}
 div.pager {
 	margin-top: -20px;
 	text-align: left;
@@ -1516,9 +1483,11 @@ div.pager input {
 	font-weight:bold;
 }
 #tabDefinedTags tr.sel {
+	background-color:#D1D9EF;
 	color:#888;
 }
 #tabDefinedTags tr.unsel {
+	background-color:#FFFFFF;
 	color:#888;
 }
 #tabDefinedTagsShow {
@@ -1543,12 +1512,15 @@ div.pager input {
 }
 /* FAQ table styles */
 table.faq   {
+	background-color: #DDD;
 	margin:5px 0 50px 5px;
 	width: 98%;
 }
 table.faq  tr.odd td {
+	background-color:#fff;
 }
 div.faq_title {
+	background-color: #DDD;
 	margin: 1em 0 0 1em;
 	padding: .25em;
 	font-weight:bold;
@@ -1603,10 +1575,3 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink , html[dir='rtl'] .deleteli
 .logo {
 	text-align: center;
 }
-/*
-.blockcontent .facts_label, th.list_label, td.list_label, td.facts_label, td.topbottombar, td.facts_label03 {
-background: white;
-border: 1px solid #000;
-}
-
-.htheme option, .htheme select, .optionbox select, .topbottombar input, .list_value select, td.optionbox input, td.list_value input, span.age { background: white; }*/
