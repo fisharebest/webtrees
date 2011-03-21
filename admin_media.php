@@ -779,57 +779,72 @@ if (check_media_structure()) {
 	// "Help for this page" link
 	echo '<div id="page_help">', help_link('manage_media'), '</div>';
 ?>
-
 	<form name="managemedia" id="managemedia" method="post" onsubmit="return checknames(this);" action="<?php echo WT_SCRIPT_NAME; ?>">
 	<input type="hidden" name="thumbdir" value="<?php echo $thumbdir; ?>" />
 	<input type="hidden" name="level" value="<?php echo $level; ?>" />
 	<input type="hidden" name="all" value="true" />
 	<input type="hidden" name="subclick" value="<?php echo $subclick; ?>"/>
 	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">
-	<tr align="center"><td class="wrap"><?php echo WT_I18N::translate('Sequence'), help_link('sortby'); ?>
-	<select name="sortby">
-		<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\""; ?>><?php echo WT_Gedcom_Tag::getLabel('TITL'); ?></option>
-		<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\""; ?>><?php echo WT_Gedcom_Tag::getLabel('FILE'); ?></option>
-	</select></td>
-	<td class="wrap">
-		<?php echo WT_I18N::translate('Show thumbnails'), help_link('show_thumb'); ?>
-		<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();" />
-	</td>
-	<td class="wrap"><?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".WT_I18N::translate('Upload media files')."</a>". help_link('upload_media'); ?></td>
-	<td class="wrap"><a href="javascript: <?php echo WT_I18N::translate('Add media'); ?>" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media item')."</a>". help_link('add_media'); ?></td>
-	<?php
-		$tempURL = WT_SCRIPT_NAME.'?';
-		if (!empty($filter)) $tempURL .= 'filter='.rawurlencode($filter).'&amp;';
-		if (!empty($subclick)) $tempURL .= "subclick={$subclick}&amp;";
-		$tempURL .= "action=thumbnail&amp;sortby={$sortby}&amp;all=yes&amp;level={$level}&amp;directory=".rawurlencode($directory).$thumbget;
-		?>
-	<td class="wrap"><a href="<?php echo $tempURL; ?>"><?php echo WT_I18N::translate('Create missing thumbnails')."</a>". help_link('gen_missing_thumbs');?></td></tr>
-	</table>
+		<tr align="center">
+			<td class="wrap"><?php echo WT_I18N::translate('Sequence'), help_link('sortby'); ?>
+				<select name="sortby">
+					<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\""; ?>><?php echo WT_Gedcom_Tag::getLabel('TITL'); ?></option>
+					<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\""; ?>><?php echo WT_Gedcom_Tag::getLabel('FILE'); ?></option>
+				</select>
+			</td>
+			<td class="wrap">
+				<?php echo WT_I18N::translate('Show thumbnails'), help_link('show_thumb'); ?>
+				<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();" />
+			</td>
+			<!--<td class="wrap">
+				<?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".WT_I18N::translate('Upload media files')."</a>". help_link('upload_media'); ?>
+			</td>-->
+			<td class="wrap">
+				<a href="javascript: <?php echo WT_I18N::translate('Add media'); ?>" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media item')."</a>". help_link('add_media'); ?>
+			</td>
+				<?php
+					$tempURL = WT_SCRIPT_NAME.'?';
+					if (!empty($filter)) $tempURL .= 'filter='.rawurlencode($filter).'&amp;';
+					if (!empty($subclick)) $tempURL .= "subclick={$subclick}&amp;";
+					$tempURL .= "action=thumbnail&amp;sortby={$sortby}&amp;all=yes&amp;level={$level}&amp;directory=".rawurlencode($directory).$thumbget;
+					?>
+			<td class="wrap">
+				<a href="<?php echo $tempURL; ?>"><?php echo WT_I18N::translate('Create missing thumbnails')."</a>". help_link('gen_missing_thumbs');?>
+			</td>
+		</tr>
+<!--	</table>
 
-	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">
-	<tr align="center"><td><?php echo WT_I18N::translate('Folder')."</td><td>". WT_I18N::translate('Filter'), help_link('simple_filter'); ?></td><td rowspan="2"><input type="submit" name="all" value="<?php echo WT_I18N::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" /></td></tr>
-	<tr align="center">	
-		<?php
-			// Directory pick list
-			if (empty($directory)) {
-				if (!empty($_SESSION['upload_folder'])) $directory = $_SESSION['upload_folder'];
-				else $directory = $MEDIA_DIRECTORY;
-			}
-			if ($MEDIA_DIRECTORY_LEVELS >= 0) {
-				$folders = get_media_folders();
-				echo "<td dir=\"ltr\"><select name=\"directory\">";
-				foreach ($folders as $f) {
-					echo "<option value=\"".$f."\"";
-					if ($directory==$f) echo " selected=\"selected\"";
-					echo ">".$f."</option>";
+	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">-->
+		<tr align="center">
+			<td colspan="2">
+				<?php echo WT_I18N::translate('Folder')."</td><td>". WT_I18N::translate('Filter'), help_link('simple_filter'); ?>
+			</td>
+			<td rowspan="2">
+				<input type="submit" name="all" value="<?php echo WT_I18N::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" />
+			</td>
+		</tr>
+		<tr align="center">	
+			<?php
+				// Directory pick list
+				if (empty($directory)) {
+					if (!empty($_SESSION['upload_folder'])) $directory = $_SESSION['upload_folder'];
+					else $directory = $MEDIA_DIRECTORY;
 				}
-				echo "</select></td>";
-			} else echo "<td><input name=\"directory\" type=\"hidden\" value=\"ALL\" /></td>";
-		?>
-		<!-- Text field for filter -->
-		<td><input type="text" name="filter" value="<?php if ($filter) echo $filter; ?>" /><input type="submit" name="search" value="<?php echo WT_I18N::translate('Filter'); ?>" onclick="this.form.subclick.value=this.name" /></td>
-	</tr>
-	</table>
+				if ($MEDIA_DIRECTORY_LEVELS >= 0) {
+					$folders = get_media_folders();
+					echo "<td colspan=\"2\" dir=\"ltr\"><select name=\"directory\">";
+					foreach ($folders as $f) {
+						echo "<option value=\"".$f."\"";
+						if ($directory==$f) echo " selected=\"selected\"";
+						echo ">".$f."</option>";
+					}
+					echo "</select></td>";
+				} else echo "<td><input name=\"directory\" type=\"hidden\" value=\"ALL\" /></td>";
+			?>
+			<!-- Text field for filter -->
+			<td><input type="text" name="filter" value="<?php if ($filter) echo $filter; ?>" /><input type="submit" name="search" value="<?php echo WT_I18N::translate('Filter'); ?>" onclick="this.form.subclick.value=this.name" /></td>
+		</tr>
+		</table>
 </form>
 <?php
 	if (!empty($savedOutput)) echo $savedOutput; // echo everything we have saved up
