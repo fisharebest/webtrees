@@ -287,7 +287,7 @@ echo '<div id="tabs">',
 			<?php } ?>
 			</select>
 			<?php echo WT_I18N::translate('maximum'); ?>: <select name="NEW_GM_MAX_ZOOM">
-			<?php for ($j=1; $j < 15; $j++) { ?>
+			<?php for ($j=1; $j < 17; $j++) { ?>
 			<option value="<?php echo $j, "\""; if ($GOOGLEMAP_MAX_ZOOM==$j) echo " selected=\"selected\""; echo ">", $j; ?></option>
 			<?php } ?>
 			</select>

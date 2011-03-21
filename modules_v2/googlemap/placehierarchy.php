@@ -592,24 +592,26 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	
 	<?php
 	if (check_exist_table()) {
+		global $GOOGLEMAP_MAX_ZOOM;
 		$levelm = set_levelm($level, $parent);
 		if (isset($levelo[0])) $levelo[0]=0;
 		$numls = count($parent)-1;
 		$levelo=check_were_am_i($numls, $levelm);
 		if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))) {
 			echo "map.maxZoom=6;";
-	//		echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-	//		echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+5);\n";
+			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
+			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+5);\n";
 		} else if ($numfound<2 && !isset($levelo[($level-2)])) {
-	//		echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-	//		echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+6);\n";
+			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
+			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+6);\n";
 		} else if ($level==2) {
 			echo "map.maxZoom=10;";
-	//		echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-	//		echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
+			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
+			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
 		} else if ($numfound<2 && $level>1) {
-	//		echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-	//		echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
+			echo "map.maxZoom=".$GOOGLEMAP_MAX_ZOOM.";";
+			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
+			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
 		} 
 		//create markers
 		if ($numfound==0 && $level>0) {
