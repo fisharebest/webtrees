@@ -179,23 +179,21 @@
 }
 
 #CB_TopLeft {
-	background-image:url(../pic/s_topleft.png);
-	background-position:right bottom;
+	background-image:url(../pic/s_corners.png);
+	background-position:top left;
 }
 
 #CB_Top {
-	background-image:url(../pic/s_top.png);
-	background-position:left bottom;
+	background-color:#FFFFFF;
 }
 
 #CB_TopRight {
-	background-image:url(../pic/s_topright.png);
-	background-position:left bottom;
+	background-image:url(../pic/s_corners.png);
+	background-position:top right;
 }
 
 #CB_Left {
-	background-image:url(../pic/s_left.png);
-	background-position:right top;
+	background-color:#FFFFFF;
 }
 
 #CB_Content {
@@ -203,27 +201,25 @@
 }
 
 #CB_Right {
-	background-image:url(../pic/s_right.png);
-	background-position:left top;
+	background-color:#FFFFFF;
 }
 
 #CB_BtmLeft {
-	background-image:url(../pic/s_btmleft.png);
-	background-position:right top;
+	background-image:url(../pic/s_corners.png);
+	background-position:bottom left;
 }
 
 #CB_Btm {
-	background-image:url(../pic/s_btm.png);
-	background-position:left top;
+	background-color:#FFFFFF;
 }
 
 #CB_BtmRight {
-	background-image:url(../pic/s_btmright.png);
-	background-position:left top;
+	background-image:url(../pic/s_corners.png);
+	background-position:bottom right;
 }
 
 #CB_Prev, #CB_Next {
-	background: transparent url(../pic/blank.gif) no-repeat scroll 0%;   
+	background:transparent;   
 	display: block;	
 	width: 49%;
 	cursor: pointer;
@@ -256,11 +252,11 @@
 }
 
 #CB_Prev:hover {
-background:transparent url(../pic/prev.gif) no-repeat scroll left 50%;
+background:transparent url(../pic/prev.png) no-repeat scroll left 50%;
 }
 
 #CB_Next:hover {
-background:transparent url(../pic/next.gif) no-repeat scroll right 50%;
+background:transparent url(../pic/next.png) no-repeat scroll right 50%;
 }
 
 
