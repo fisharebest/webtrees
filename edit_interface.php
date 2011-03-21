@@ -61,7 +61,7 @@ $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
 
-print_simple_header(WT_I18N::translate('Edit interface'));
+print_simple_header(WT_I18N::translate('Edit'));
 
 if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'js/autocomplete.js.htm';
