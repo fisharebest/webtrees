@@ -525,25 +525,25 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	function createMarker(point, html, icon, name) {	
 		// Choose icon and shadow ============
 		<?php
-		echo "if (icon.image && ($level==0 || $level==1 || $level==2)) {";
+		echo "if (icon.image && $level<=3) {";
 			echo "if (icon.image!='", WT_MODULES_DIR, "googlemap/images/marker_yellow.png') {";
-			echo 'var iconImage = new google.maps.MarkerImage(icon.image,'; 
-			echo 'new google.maps.Size(25, 15),';
-			echo 'new google.maps.Point(0,0),';
-			echo 'new google.maps.Point(1, 45));';
-			echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
-			echo 'new google.maps.Size(35, 45),';
-			echo 'new google.maps.Point(0,0),';
-			echo 'new google.maps.Point(1, 45));';
+				echo 'var iconImage = new google.maps.MarkerImage(icon.image,'; 
+				echo 'new google.maps.Size(25, 15),';
+				echo 'new google.maps.Point(0,0),';
+				echo 'new google.maps.Point(1, 45));';
+				echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
+				echo 'new google.maps.Size(35, 45),';
+				echo 'new google.maps.Point(0,0),';
+				echo 'new google.maps.Point(1, 45));';
 			echo " } else { ";
-			echo 'var iconImage = new google.maps.MarkerImage(icon.image,';
-			echo 'new google.maps.Size(20, 34),';
-			echo 'new google.maps.Point(0,0),';
-			echo 'new google.maps.Point(9, 34));';
-			echo 'var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",';
-			echo 'new google.maps.Size(37, 34),';
-			echo 'new google.maps.Point(0,0),';
-			echo 'new google.maps.Point(9, 34));';
+				echo 'var iconImage = new google.maps.MarkerImage(icon.image,';
+				echo 'new google.maps.Size(20, 34),';
+				echo 'new google.maps.Point(0,0),';
+				echo 'new google.maps.Point(9, 34));';
+				echo 'var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",';
+				echo 'new google.maps.Size(37, 34),';
+				echo 'new google.maps.Point(0,0),';
+				echo 'new google.maps.Point(9, 34));';
 			echo "}";	
 		//	*** Clickable area of icon - To be refined later *** ===================================
 		//	echo 'var iconShape = {';
