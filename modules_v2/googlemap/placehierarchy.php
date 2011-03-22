@@ -261,8 +261,8 @@ function create_map($placelevels) {
 			$list_latlon = (
 				WT_Gedcom_Tag::getLabel('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lat."' />".
 				WT_Gedcom_Tag::getLabel('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lng."' />".
-				/* Compass bearing (in degrees), for street-view mapping */ WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:46px; background:none; border:none;' value='".$sv_dir."' />".
-				/* Angle of elevation (in degrees), for street-view mapping */ WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px; background:none; border:none;' value='".$sv_pitch."'	/>".
+				/* I18N: Compass bearing (in degrees), for street-view mapping */ WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:46px; background:none; border:none;' value='".$sv_dir."' />".
+				/* I18N: Angle of elevation (in degrees), for street-view mapping */ WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px; background:none; border:none;' value='".$sv_pitch."'	/>".
 				WT_I18N::translate('Zoom')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='".$sv_zoom."' />
 			");
 			if (WT_USER_IS_ADMIN) {
