@@ -452,7 +452,9 @@ function privatize_gedcom($gedrec) {
 					// Show all the NAME tags, including subtags
 					if (preg_match_all('/\n1 (NAME|_HNM).*(\n[2-9].*)*/', $gedrec, $matches, PREG_SET_ORDER)) {
 						foreach ($matches as $match) {
-							$newrec.=$match[0];
+							if (canDisplayFact($gid, $gedcom_id, $match[0])) {
+								$newrec.=$match[0];
+							}
 						}
 					}
 				} else {
