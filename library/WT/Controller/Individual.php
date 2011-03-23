@@ -433,7 +433,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			//--make sure the totals are correct
 			$this->getGlobalFacts();
 			$submenu = new WT_Menu(WT_I18N::translate('Edit name'));
-			$submenu->addOnclick("return edit_name('".$this->pid."', $this->NAME_LINENUM);");
+			$submenu->addOnclick("return edit_name('".$this->pid."', 1);");
 			$submenu->addIcon('edit_indi');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
