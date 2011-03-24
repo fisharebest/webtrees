@@ -141,7 +141,6 @@ $WT_IMAGES['larrow'] = WT_THEME_DIR.'images/larrow.png';
 $WT_IMAGES['larrow2'] = WT_THEME_DIR.'images/larrow2.png';
 $WT_IMAGES['ldarrow'] = WT_THEME_DIR.'images/ldarrow.png';
 $WT_IMAGES['minus'] = WT_THEME_DIR.'images/minus.png';
-$WT_IMAGES['note'] = WT_THEME_DIR.'images/notes.png';
 $WT_IMAGES['plus'] = WT_THEME_DIR.'images/plus.png';
 $WT_IMAGES['rarrow'] = WT_THEME_DIR.'images/rarrow.png';
 $WT_IMAGES['rarrow2'] = WT_THEME_DIR.'images/rarrow2.png';

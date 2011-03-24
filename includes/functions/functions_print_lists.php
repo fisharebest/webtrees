@@ -1464,7 +1464,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
                 $return .= '<img src="' . $record->getMediaIcon() . '" title="" alt="" height="12" />';
                 break;
             case "NOTE":
-                $return .= '<img src="' . $WT_IMAGES['note'] . '" title="" alt="" height="12" />';
+                $return .= '<img src="' . $WT_IMAGES['notes'] . '" title="" alt="" height="12" />';
                 break;
             case "SOUR":
                 $return .= '<img src="' . $WT_IMAGES['source'] . '" title="" alt="" height="12" />';
