@@ -90,9 +90,6 @@ color: red;
 text-decoration: none;
 }
 
-.makeMenu li a {color: #ffffff;}
-.makeMenu li a:hover  {color: #ff0000;}
-
 /*	Define Alert Color					*/
 
 .error, .warning, .red {
@@ -1760,7 +1757,7 @@ padding: 0 10px;
 	display:none;
 	position:absolute;
 	left:0px;
-	top: 1.1em;
+	top: 1.0em;
 	background-color:#EEE;
 	border:thin solid #AAA;
 	z-index:999;
@@ -1793,6 +1790,19 @@ html[dir='rtl'] .makeMenu li ul li {
 
 .makeMenu li:hover > ul {
 	display:block;
+}
+
+.makeMenu li a {color: #ffffff;}
+
+.makeMenu ul li a {
+    background-color: #fff;
+	padding: 0px 5px 0px 2px;
+    display: block;
+}
+
+.makeMenu ul li a:hover  {
+	background: #d2f4e6;
+	color: #000000;
 }
 
 li a.link {
