@@ -228,6 +228,8 @@ $gedc_array=array();
 foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 	$gedc_array[$ged_name]=WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title'));
 }
+$users_array=array_combine(get_all_users(), get_all_users());
+uksort($users_array, 'strnatcasecmp');
 
 echo
 	WT_JS_END,
@@ -249,7 +251,7 @@ echo
 					WT_I18N::translate('IP address'), '<br /><input name="ip" size="12" value="', htmlspecialchars($ip), '" /> ',
 				'</td>',
 				'<td>',
-					WT_I18N::translate('User'), '<br />', select_edit_control('user', array_combine(get_all_users(), get_all_users()), '', $user, ''),
+					WT_I18N::translate('User'), '<br />', select_edit_control('user', $users_array, '', $user, ''),
 				'</td>',
 				'<td>',
 					WT_I18N::translate('Family tree'), '<br />',  select_edit_control('gedc', $gedc_array, '', $gedc, WT_USER_IS_ADMIN ? '' : 'disabled'),
