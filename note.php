@@ -89,13 +89,13 @@ $note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
 echo '<tr><td align="left" class="descriptionbox ', $TEXT_DIRECTION, '">';
 	if (WT_USER_CAN_EDIT) {
 		echo '<a href="javascript: edit_note()" title="', WT_I18N::translate('Edit'), '">';
-		if (!empty($WT_IMAGES["notes"]) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES["notes"], '" alt="" align="top" />';
+		if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top" />';
 		echo WT_I18N::translate('Shared note'), '</a>';
 		echo '<div class="editfacts">';
 			echo '<a href="javascript: edit_note()" title="', WT_I18N::translate('Edit'), '"><div class="editlink"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
 		echo '</div>';
 	} else { 
-		if (!empty($WT_IMAGES["notes"]) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES["notes"], '" alt="" align="top" />';
+		if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top" />';
 		echo WT_I18N::translate('Shared note');
 	}
 	echo '</td><td class="optionbox wrap width80 ', $TEXT_DIRECTION, '">';

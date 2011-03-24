@@ -1063,7 +1063,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 		if (!$noedit && WT_USER_CAN_EDIT && !FactEditRestricted($pid, $factrec) && $styleadd!="change_old") {
 			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\">";
 			if ($level<2) {
-				echo "<img class=\"icon\" src=\"", $WT_IMAGES["notes"], "\" alt=\"\" />";
+				echo "<img class=\"icon\" src=\"", $WT_IMAGES["note"], "\" alt=\"\" />";
 				if (strstr($factrec, "1 NOTE @" )) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
 				} else {
@@ -1078,7 +1078,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			}
 		} else {
 			if ($level<2) {
-				echo "<img class=\"icon\" src=\"", $WT_IMAGES["notes"], "\" alt=\"\" />";
+				echo "<img class=\"icon\" src=\"", $WT_IMAGES["note"], "\" alt=\"\" />";
 				if (strstr($factrec, "1 NOTE @" )) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
 				} else {

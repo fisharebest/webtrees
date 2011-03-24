@@ -171,10 +171,10 @@ class WT_Controller_Note extends WT_Controller_Base {
 			if (WT_USER_CAN_ACCEPT) {
 				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "note.php?nid={$this->nid}&amp;action=undo");
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addIcon('notes');
+				$submenu->addIcon('note');
 				$menu->addSubmenu($submenu);
 				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "note.php?nid={$this->nid}&amp;action=accept");
-				$submenu->addIcon('notes');
+				$submenu->addIcon('note');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$menu->addSubmenu($submenu);
 			}
