@@ -43,7 +43,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	var $SEX_COUNT = 0;
 	var $tabs;
 	var $Fam_Navigator = 'YES';
-	var $NAME_LINENUM = 1;
+	var $NAME_LINENUM = null;
 	var $SEX_LINENUM = null;
 	var $globalfacts = null;
 
@@ -312,10 +312,10 @@ class WT_Controller_Individual extends WT_Controller_Base {
 
 		$this->name_count++;
 		echo '<div id="nameparts', $this->name_count, '"';
-		if (strpos($factrec, "WT_OLD")!==false) {
+		if (strpos($factrec, "\nWT_OLD")!==false) {
 			echo " class=\"namered\"";
 		}
-		if (strpos($factrec, "WT_NEW")!==false) {
+		if (strpos($factrec, "\nWT_NEW")!==false) {
 			echo " class=\"nameblue\"";
 		}
 		echo ">";
@@ -324,7 +324,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		echo '<div id="name1">';
 			echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
 			echo '<dd class="field">', PrintReady($dummy->getFullName());
-				if ($this->indi->canEdit() && !strpos($factrec, 'WT_OLD') && $this->name_count > 1) {
+				if ($this->indi->canEdit() && !strpos($factrec, "\nWT_OLD") && $this->name_count > 1) {
 					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Edit'), "</a> | ";
 					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Delete'), "</a>";
 				}
@@ -379,10 +379,10 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$sex = $event->getDetail();
 		if (empty($sex)) $sex = 'U';
 		echo '<div id="sex"';
-			if (strpos($factrec, 'WT_OLD')!==false) {
+			if (strpos($factrec, "\nWT_OLD")!==false) {
 				echo ' class="namered"';
 			}
-			if (strpos($factrec, "WT_NEW")!==false) {
+			if (strpos($factrec, "\nWT_NEW")!==false) {
 				echo ' class="nameblue"';
 			}
 			echo '>';
@@ -400,7 +400,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				break;
 			}
 			if ($this->SEX_COUNT>1) {
-				if ($this->indi->canEdit() && strpos($factrec, "WT_OLD")===false) {
+				if ($this->indi->canEdit() && strpos($factrec, "\nWT_OLD")===false) {
 					if ($event->getLineNumber()=="new") {
 						echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"add_new_record('".$this->pid."', 'SEX'); return false;\">".WT_I18N::translate('Edit')."</a>";
 					} else {
@@ -432,11 +432,13 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		if (WT_USER_CAN_EDIT) {
 			//--make sure the totals are correct
 			$this->getGlobalFacts();
-			$submenu = new WT_Menu(WT_I18N::translate('Edit name'));
-			$submenu->addOnclick("return edit_name('".$this->pid."', 1);");
-			$submenu->addIcon('edit_indi');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-			$menu->addSubmenu($submenu);
+			if ($this->NAME_LINENUM) {
+				$submenu = new WT_Menu(WT_I18N::translate('Edit name'));
+				$submenu->addOnclick("return edit_name('".$this->pid."', ".$this->NAME_LINENUM.");");
+				$submenu->addIcon('edit_indi');
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$menu->addSubmenu($submenu);
+			}
 
 			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'));
 			$submenu->addOnclick("return add_name('".$this->pid."');");
@@ -449,7 +451,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				if ($this->SEX_LINENUM=="new") {
 					$submenu->addOnclick("return add_new_record('".$this->pid."', 'SEX');");
 				} else {
-					$submenu->addOnclick("return edit_record('".$this->pid."', $this->SEX_LINENUM);");
+					$submenu->addOnclick("return edit_record('".$this->pid."', ".$this->SEX_LINENUM.");");
 				}
 				$submenu->addIcon('edit_indi');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
@@ -553,7 +555,11 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				}
 				if ($fact=="NAME") {
 					$this->total_names++;
-					$this->NAME_LINENUM = $value->getLineNumber();
+					if ($this->NAME_LINENUM==null && strpos($value->getGedcomRecord(), "\nWT_OLD")===false) {
+						// This is the "primary" name and is edited from the menu
+						// Subsequent names get their own edit links
+						$this->NAME_LINENUM = $value->getLineNumber();
+					}
 				}
 			}
 		}
