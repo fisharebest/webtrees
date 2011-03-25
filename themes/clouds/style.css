@@ -1808,6 +1808,17 @@ html[dir='rtl'] .makeMenu li ul li {
 margin-left: 5px;
 }
 
+.makeMenu ul li a {
+    background-color: #fff;
+	padding: 0px 5px 0px 2px;
+    display: block;
+}
+
+.makeMenu ul li a:hover  {
+	background:#c8e7ff;
+	color: #000;
+}
+
 /*--- edit links ---*/
 
 .edit_link:after { /* used only on the user list */
