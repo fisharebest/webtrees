@@ -166,10 +166,10 @@ $WT_IMAGES['reminder'] = WT_THEME_DIR.'images/reminder.png';
 $WT_IMAGES['children'] = WT_THEME_DIR.'images/children.png';
 
 // - lifespan chart arrows
-$WT_IMAGES['lsltarrow'] = WT_THEME_DIR.'images/lsltarrow.png';
-$WT_IMAGES['lsrtarrow'] = WT_THEME_DIR.'images/lsrtarrow.png';
-$WT_IMAGES['lsdnarrow'] = WT_THEME_DIR.'images/lsdnarrow.png';
-$WT_IMAGES['lsuparrow'] = WT_THEME_DIR.'images/lsuparrow.png';
+$WT_IMAGES['lsltarrow'] = WT_THEME_DIR.'images/lifespan-left.png';
+$WT_IMAGES['lsrtarrow'] = WT_THEME_DIR.'images/lifespan-right.png';
+$WT_IMAGES['lsdnarrow'] = WT_THEME_DIR.'images/lifespan-down.png';
+$WT_IMAGES['lsuparrow'] = WT_THEME_DIR.'images/lifespan-up.png';
 
 //-- Variables for the Fan chart
 $fanChart = array(

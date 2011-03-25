@@ -169,10 +169,10 @@ $WT_IMAGES=array(
 	'children'=>WT_THEME_DIR.'images/children.png',
 
 	// - lifespan chart arrows
-	'lsltarrow'=>WT_THEME_DIR.'images/lsltarrow.png',
-	'lsrtarrow'=>WT_THEME_DIR.'images/lsrtarrow.png',
-	'lsdnarrow'=>WT_THEME_DIR.'images/lsdnarrow.png',
-	'lsuparrow'=>WT_THEME_DIR.'images/lsuparrow.png',
+	'lsltarrow'=>WT_THEME_DIR.'images/lifespan-left.png',
+	'lsrtarrow'=>WT_THEME_DIR.'images/lifespan-right.png',
+	'lsdnarrow'=>WT_THEME_DIR.'images/lifespan-down.png',
+	'lsuparrow'=>WT_THEME_DIR.'images/lifespan-up.png',
 );
 
 //-- variables for the fan chart
