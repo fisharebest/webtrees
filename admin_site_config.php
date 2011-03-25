@@ -37,9 +37,6 @@ if (!WT_USER_IS_ADMIN) {
 
 print_header(WT_I18N::translate('Site configuration'));
 
-// "Help for this page" link
-echo '<div id="page_help">', help_link('help_editconfig.php'), '</div>';
-
 echo WT_JS_START;
 ?>
 jQuery(document).ready(function() {

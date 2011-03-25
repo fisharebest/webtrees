@@ -2483,11 +2483,6 @@ case 'help_contents_help':
 	$text.=('</tr></table>');
 	break;
 
-case 'help_editconfig.php':
-	$title=WT_I18N::translate('Configure webtrees');
-	$text=WT_I18N::translate('On this page you can configure the global settings for <b>webtrees</b>.  You can do this after you have installed <b>webtrees</b> and are running it for the first time.<br /><br />As these settings are <b>global</b>, they are for the whole program and for all genealogical databases you use with <b>webtrees</b>.<br /><br />Each genealogical database also has additional configuration options that you set after clicking the <b>Click here to administer GEDCOMs</b> link on this page.<br /><br />You can also access the GEDCOM Administration function from the main Admin page, whose link is found under the My Page icon or in the header of most pages.  On the Admin page, the relevant link is called <b>Manage GEDCOMs and edit Privacy.</b>');
-	break;
-
 case 'hourglass_chart':
 	$title=WT_I18N::translate('Hourglass chart');
 	$text=WT_I18N::translate('The Hourglass chart will show the ancestors and descendants of the selected root person on the same chart.  This chart is a mix between the Descendancy chart and the Pedigree chart.<br /><br />The root person is centered in the middle of the page with his descendants listed to the left and his ancestors listed to the right.  In this view, each generation is lined up across the page starting with the earliest generation and ending with the latest.<br /><br />If there is a downwards arrow on the screen under the root person, clicking on it will display a list of the root person\'s close family members that you can use the navigate down the chart.  Selecting a name from this list will reload the chart with the selected person as the new root person.');
