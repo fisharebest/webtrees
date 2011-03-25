@@ -1340,11 +1340,27 @@ case 'AUTO_GENERATE_THUMBS':
 	break;
 
 case 'CALENDAR_FORMAT':
-	$title=WT_I18N::translate('Calendar format');
-	$text=WT_I18N::translate('Dates can be recorded in various calendars such as Gregorian, Julian, or the Jewish Calendar.  This option allows you to convert dates to a preferred calendar.  For example, you could select Gregorian to convert Julian and Hebrew dates to Gregorian.  The converted date is shown in parentheses after the regular date.<br /><br />Dates are only converted if they are valid for the calendar.  For example, only dates between 22&nbsp;SEP&nbsp;1792 and 31&nbsp;DEC&nbsp;1805 will be converted to the French Republican calendar and only dates after 15&nbsp;OCT&nbsp;1582 will be converted to the Gregorian calendar.<br /><br />Hebrew is the same as Jewish, but using Hebrew characters.  Arabic is the same as Hijri, but using Arabic characters.<br /><br />Note: Since the Jewish and Hijri calendar day starts at dusk, any event taking place from dusk till midnight will display as one day prior to the correct date.  The display of Hebrew and Arabic can be problematic in old browsers, which may display text backwards (left to right) or not at all.');
-	$text .='<p>';
-	$text .= WT_I18N::translate('There are two options available for sites where it is necessary to have two calendar conversions, such as Gregorian AND Jewish.');
-	$text .='</p>';
+	$d1=new WT_Date('22 SEP 1792'); $d1=$d1->Display(false, null, array());
+	$d2=new WT_Date('31 DEC 1805'); $d2=$d2->Display(false, null, array());
+	$d3=new WT_Date('15 OCT 1582'); $d3=$d3->Display(false, null, array());
+	$title=WT_I18N::translate('Calendar conversion');
+	$text=
+		'<p>'.
+		WT_I18N::translate('Different calendar systems are used in different parts of the world, and many other calendar systems have been used in the past.  Where possible, you should enter dates using the calendar in which the event was originally recorded.  You can then specify a conversion, to show these dates in a more familiar calendar.  If you regularly use two calendars, you can specify two conversions and dates will be converted to both the selected calendars.').
+		'<p>'.
+		WT_I18N::translate('The following calendars are supported:').
+		'</p><ul>'.
+		'<li>'.WT_Date_Gregorian::calendarName().'</li>'.
+		'<li>'.WT_Date_Julian::calendarName().'</li>'.
+		'<li>'.WT_Date_Jewish::calendarName().'</li>'.
+		'<li>'.WT_Date_French::calendarName().'</li>'.
+		'<li>'.WT_Date_Hijri::calendarName().'</li>'.
+		'<li>'.WT_Date_Jalali::calendarName().'</li>'.
+		'</ul><p>'.
+		/* I18N: The three place holders are all dates. */ WT_I18N::translate('Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar', $d1, $d2, $d3).
+		'</p><p>'.
+		WT_I18N::translate('In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out.').
+		'</p>';
 	break;
 
 case 'CHART_BOX_TAGS':

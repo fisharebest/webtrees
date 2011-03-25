@@ -439,7 +439,7 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Calendar format'), help_link('CALENDAR_FORMAT'); ?>
+							<?php echo WT_I18N::translate('Calendar conversion'), help_link('CALENDAR_FORMAT'); ?>
 						</td>
 						<td>
 							<select id="NEW_CALENDAR_FORMAT0" name="NEW_CALENDAR_FORMAT0">
