@@ -235,7 +235,6 @@ Disallow: /statistics.php
 Disallow: /statisticsplot.php
 Disallow: /themes/
 Disallow: /timeline.php
-Disallow: /treenav.php
 
 # This is a trap for bad robots.
 # Visits to this URL will have their IP address and UA string blacklisted.

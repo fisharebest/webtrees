@@ -296,7 +296,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				if (!empty($addname)) echo "<br />" . $addname;
 				echo "</a>";
 				echo "<br /><a href=\"pedigree.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree Tree')."</a>";
-				if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/pedigree_map.php')) {
+				if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
 					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Pedigree Map')."</a>";
 				}
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
@@ -307,7 +307,9 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				echo "<br /><a href=\"compact.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Compact chart')."</a>";
 				echo "<br /><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Circle diagram')."</a>";
 				echo "<br /><a href=\"hourglass.php?pid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Hourglass chart')."</a>";
-				echo "<br /><a href=\"treenav.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Interactive tree')."</a>";
+				if (array_key_exists('tree', WT_Module::getActiveModules())) {
+					echo '<br /><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Interactive tree')."</a>";
+				}
 				// spouse(s) and children
 				foreach ($person->getSpouseFamilies() as $family) {
 					$spouse=$family->getSpouse($person);

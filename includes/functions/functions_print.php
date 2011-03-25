@@ -99,7 +99,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				// NOTE: Zoom
 				$personlinks .= "<a href=\"pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM)."\" $mouseAction1><b>".WT_I18N::translate('Pedigree Tree')."</b></a>";
 
-				if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/pedigree_map.php')) {
+				if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
 					$personlinks .= "<br /><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Pedigree Map')."</b></a>";
 				}
 				$username = WT_USER_NAME;
@@ -111,21 +111,14 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				}
 
 				$personlinks .= "<br /><a href=\"descendancy.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" $mouseAction1><b>".WT_I18N::translate('Descendancy chart')."</b></a><br />";
-
-				if (file_exists(WT_ROOT.'ancestry.php')) {
-					$personlinks .= "<a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Ancestry chart')."</b></a><br />";
-				}
-				if (file_exists(WT_ROOT.'compact.php')) {
-					$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Compact chart')."</b></a><br />";
-				}
-				if (file_exists(WT_ROOT.'fanchart.php') and defined("IMG_ARC_PIE") and function_exists("imagettftext")) {
+				$personlinks .= "<a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Ancestry chart')."</b></a><br />";
+				$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Compact chart')."</b></a><br />";
+				if (function_exists("imagettftext")) {
 					$personlinks .= "<a href=\"fanchart.php?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Circle diagram')."</b></a><br />";
 				}
-				if (file_exists(WT_ROOT.'hourglass.php')) {
-					$personlinks .= "<a href=\"hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."&amp;show_spouse={$show_spouse}\" ".$mouseAction1."><b>".WT_I18N::translate('Hourglass chart')."</b></a><br />";
-				}
-				if (file_exists(WT_ROOT.'treenav.php')) {
-					$personlinks .= "<a href=\"treenav.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Interactive tree')."</b></a><br />";
+				$personlinks .= "<a href=\"hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."&amp;show_spouse={$show_spouse}\" ".$mouseAction1."><b>".WT_I18N::translate('Hourglass chart')."</b></a><br />";
+				if (array_key_exists('tree', WT_Module::getActiveModules())) {
+					$personlinks .= '<a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid.'" '.$mouseAction1.'><b>'.WT_I18N::translate('Interactive tree').'</b></a><br />';
 				}
 
 				foreach ($person->getSpouseFamilies() as $family) {
