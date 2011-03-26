@@ -157,7 +157,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$showUnknown=get_block_setting($block_id, 'showUnknown', true);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show unknown gender'), help_link('showUnknown');
+		echo /* I18N: label for yes/no option */ WT_I18N::translate('Include people whose gender is unknown');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('showUnknown', $showUnknown);
 		echo '</td></tr>';

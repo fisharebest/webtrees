@@ -1357,7 +1357,7 @@ case 'CALENDAR_FORMAT':
 		'<li>'.WT_Date_Hijri::calendarName().'</li>'.
 		'<li>'.WT_Date_Jalali::calendarName().'</li>'.
 		'</ul><p>'.
-		/* I18N: The three place holders are all dates. */ WT_I18N::translate('Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar', $d1, $d2, $d3).
+		/* I18N: The three place holders are all dates. */ WT_I18N::translate('Dates are only converted if they are valid for the calendar.  For example, only dates between %1$s and %2$s will be converted to the French calendar and only dates after %3$s will be converted to the Gregorian calendar.', $d1, $d2, $d3).
 		'</p><p>'.
 		WT_I18N::translate('In some calendars, days start at midnight.  In other calendars, days start at sunset.  The conversion process does not take account of the time, so for any event that occurs between sunset and midnight, the conversion between these types of calendar will be one day out.').
 		'</p>';
@@ -2836,11 +2836,6 @@ case 'search_replace':
 case 'setperms':
 	$title=WT_I18N::translate('Set media permissions');
 	$text=WT_I18N::translate('Recursively set the permissions on the protected (not web-addressable) <b>%s%s</b> and the normal <b>%s</b> directories to either world-writable or read-only.', $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
-	break;
-
-case 'showUnknown':
-	$title=WT_I18N::translate('Show unknown gender');
-	$text=WT_I18N::translate('Hide or show the list of given names of persons of unknown gender.<br /><br />The Top 10 Given Names block always hides the list of given names when no persons of that gender exist in your database.  This option lets you hide the list of persons of unknown gender even when there are such persons in your database.');
 	break;
 
 case 'show_fact_sources':
