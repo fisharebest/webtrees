@@ -2899,8 +2899,10 @@ case 'stat_gcx':
 	break;
 
 case 'stat_gwx':
-	$title=WT_I18N::translate('Select the desired age interval');
-	$text=WT_I18N::translate('For example, <b>months after marriage</b> describes the following set of month ranges:<div style="padding-left:30px;">before the marriage<br />from the marriage to 8 months after<br />from 8 to 12<br />from 12 to 15<br />from 15 to 18<br />from 18 to 24<br />from 24 to 48<br />over 48 months after the marriage</div><br /><br />When you want to show quarters you have to choose: <b>quarters</b>');
+	// Commented out due the bug #741367
+	// When the ststistics will be written it will be easy to restore
+	//$title=WT_I18N::translate('Select the desired age interval');
+	//$text=WT_I18N::translate('For example, <b>months after marriage</b> describes the following set of month ranges:<div style="padding-left:30px;">before the marriage<br />from the marriage to 8 months after<br />from 8 to 12<br />from 12 to 15<br />from 15 to 18<br />from 18 to 24<br />from 24 to 48<br />over 48 months after the marriage</div><br /><br />When you want to show quarters you have to choose: <b>quarters</b>');
 	break;
 
 case 'stat_gwz':
