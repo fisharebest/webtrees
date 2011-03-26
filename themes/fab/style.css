@@ -181,6 +181,17 @@ html[dir='rtl'] .makeMenu li ul li {
 	display:block;
 }
 
+.makeMenu ul li a {
+    background-color: #EEE;
+	padding: 0px 5px 0px 2px;
+    display: block;
+}
+
+.makeMenu ul li a:hover  {
+    background-color: DarkSlateGray;
+	color: #000;
+}
+
 /* person boxes are used in various charts */
 .person_box {
 	background-color:#DDF;
