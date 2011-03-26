@@ -181,11 +181,6 @@ html[dir='rtl'] .makeMenu li ul li {
 	display:block;
 }
 
-.makeMenu ul li a {
-    background-color: #DarkSlateGray;
-    display: block;
-}
-
 /* person boxes are used in various charts */
 .person_box {
 	background-color:#DDF;
