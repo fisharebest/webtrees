@@ -50,6 +50,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'index':
+			require_once WT_ROOT.'includes/functions/functions_export.php';
 			// TODO: these files should be methods in this class
 			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
 			break;
