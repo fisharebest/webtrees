@@ -60,6 +60,7 @@ if ($action=='login') {
 		}
 		$_SESSION['timediff']=time()-$_SESSION['usertime'];
 		$_SESSION['locale']=get_user_setting($user_id, 'language');
+		$_SESSION['theme_dir']=get_user_setting($user_id, 'theme');
 
 		// If we have no access rights to the current gedcom, switch to one where we do
 		if (!userIsAdmin($user_id)) {
