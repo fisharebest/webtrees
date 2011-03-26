@@ -2402,11 +2402,6 @@ case 'family_book_chart':
 	$text=WT_I18N::translate('This chart is very similar to the Hourglass chart.  It will show the ancestors and descendants of the selected root person on the same chart.  It will also show the descendants of the root person in the same Hourglass format.<br /><br />The root person is centered in the middle of the page with his descendants listed to the left and his ancestors listed to the right.  In this view, each generation is lined up across the page starting with the earliest generation and ending with the latest.<br /><br />Each descendant of the root person will become the root person of an additional hourglass chart, printed on the same page.  This process repeats until the specified number of descendant generations have been printed.');
 	break;
 
-case 'fan_chart':
-	$title=WT_I18N::translate('Circle diagram');
-	$text=WT_I18N::translate('The Circle Diagram is very similar to the <a href="?help=pedigree.php">Pedigree Tree</a>, but in a more graphical way.<br /><br />The Root person is shown in the center, his parents on the first ring, grandparents on the second ring, and so on.<br /><br />Years of birth and death are printed under the name when known.<br /><br />Clicking on a name on the chart will open a links menu specific to that person.  From this menu you can choose to center the diagram on that person or on one of that person\'s close relatives, or you can jump to that person\'s Individual Information page or a different chart for that person.');
-	break;
-
 case 'fan_style':
 	$title=WT_I18N::translate('Circle diagram');
 	$text=WT_I18N::translate('This option controls the appearance of the diagram.<ul><li><b>1/2</b><br />Half circle 180&deg; diagram</li><li><b>3/4</b><br />Three-quarter 270&deg; diagram, sometimes called <i>Angel wing</i></li><li><b>4/4</b><br />Full circle 360&deg; diagram</li></ul>');
