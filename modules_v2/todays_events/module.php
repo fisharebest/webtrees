@@ -43,6 +43,8 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $TEXT_DIRECTION, $WT_IMAGES;
 
+		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+
 		$filter       =get_block_setting($block_id, 'filter',   true);
 		$onlyBDM      =get_block_setting($block_id, 'onlyBDM',  true);
 		$infoStyle    =get_block_setting($block_id, 'infoStyle','table');
