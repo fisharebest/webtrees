@@ -43,6 +43,8 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $WT_IMAGES;
 
+		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+
 		$show_unassigned=get_block_setting($block_id, 'show_unassigned', true);
 		$show_other     =get_block_setting($block_id, 'show_other',      true);
 		$show_future    =get_block_setting($block_id, 'show_future',     true);
