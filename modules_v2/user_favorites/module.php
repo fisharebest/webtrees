@@ -126,9 +126,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($ENABLE_AUTOCOMPLETE) {
 			$content = '<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
 			<script type="text/javascript" src="js/jquery/jquery.autocomplete.js"></script>
-			<script type="text/javascript" src="js/jquery/jquery.ajaxQueue.js"></script>
 			<script type="text/javascript">
-			jQuery.noConflict(); // @see http://docs.jquery.com/Using_jQuery_with_Other_Libraries/
 			jQuery(document).ready(function($) {
 				$("input[name^=gid]").autocomplete("autocomplete.php", {
 					extraParams: {field:"IFSRO"},

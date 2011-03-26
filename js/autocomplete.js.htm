@@ -1,8 +1,6 @@
 <!-- @version $Id$ -->
 <script type="text/javascript" src="js/jquery/jquery.autocomplete.js"></script>
-<script type="text/javascript" src="js/jquery/jquery.ajaxQueue.js"></script>
 <script type="text/javascript">
-jQuery.noConflict(); // @see http://docs.jquery.com/Using_jQuery_with_Other_Libraries/
 jQuery(document).ready(function($){
 	// INDI
 	$("#spouseid, input[id*=pid], input[id*=PID], input[id^=gedcomid], input[id^=rootid], input[id$=ROOT_ID], input[name^=FATHER], input[name^=MOTHER], input[name^=CHIL]").autocomplete("autocomplete.php", {
