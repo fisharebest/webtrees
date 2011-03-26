@@ -1144,22 +1144,20 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 * @param boolean $keepmedia Whether or not to keep media and media links in the tables
 */
 function empty_database($ged_id, $keepmedia) {
-	WT_DB::prepare("DELETE FROM `##individuals` WHERE i_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##families`    WHERE f_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##sources`     WHERE s_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##other`       WHERE o_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##places`      WHERE p_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##placelinks`  WHERE pl_file=?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##name`        WHERE n_file =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##dates`       WHERE d_file =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM `##individuals` WHERE i_file   =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM `##families`    WHERE f_file   =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM `##sources`     WHERE s_file   =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM `##other`       WHERE o_file   =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM `##places`      WHERE p_file   =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM `##placelinks`  WHERE pl_file  =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM `##name`        WHERE n_file   =?")->execute(array($ged_id));
+	WT_DB::prepare("DELETE FROM `##dates`       WHERE d_file   =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##change`      WHERE gedcom_id=?")->execute(array($ged_id));
 
 	if ($keepmedia) {
-		WT_DB::prepare("DELETE FROM `##link`    WHERE l_file   =? AND l_type     <>'OBJE'")->execute(array($ged_id));
-		WT_DB::prepare("DELETE FROM `##next_id` WHERE gedcom_id=? AND record_type<>'OBJE'")->execute(array($ged_id));
+		WT_DB::prepare("DELETE FROM `##link`          WHERE l_file    =? AND l_type<>'OBJE'")->execute(array($ged_id));
 	} else {
 		WT_DB::prepare("DELETE FROM `##link`          WHERE l_file    =?")->execute(array($ged_id));
-		WT_DB::prepare("DELETE FROM `##next_id`       WHERE gedcom_id =?")->execute(array($ged_id));
 		WT_DB::prepare("DELETE FROM `##media`         WHERE m_gedfile =?")->execute(array($ged_id));
 		WT_DB::prepare("DELETE FROM `##media_mapping` WHERE mm_gedfile=?")->execute(array($ged_id));
 	}
