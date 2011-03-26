@@ -191,35 +191,36 @@ class WT_Controller_Media extends WT_Controller_Base {
 			$menu->addSubmenu($submenu);
 
 			// main link displayed on page
-			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
-				$submenu = new WT_Menu(WT_I18N::translate('Manage links'));
+			if (WT_USER_GEDCOM_ADMIN && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), '', 'right', 'right');
 			} else {
-				$submenu = new WT_Menu(WT_I18N::translate('Set link'));
+				$submenu = new WT_Menu(WT_I18N::translate('Set link'), '', 'right', 'right');
 			}
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addIcon('edit_media');
 
 			// GEDFact assistant Add Media Links =======================
-			if (WT_USER_GEDCOM_ADMIN && file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
+			if (WT_USER_GEDCOM_ADMIN && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','manage');");
-				$submenu->addIcon('edit_media');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				// Do not print ssubmunu
 			} else {
 				$submenu->addOnclick("return ilinkitem('".$this->pid."','person');");
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','person');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','family');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'));
 				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','source');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 			}
 			$menu->addSubmenu($submenu);
