@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
-
 class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -44,6 +42,8 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $WT_IMAGES;
+
+		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 		$days     =get_block_setting($block_id, 'days',      7);
 		$filter   =get_block_setting($block_id, 'filter',    true);
