@@ -31,25 +31,25 @@
 
 ?>
 
-	<script>
-	var txtcolor="#000000";
-	</script>
-
 	<style type="text/css">
 	<!--
-	#addlinkQueue td, th { padding: 0.2em; }
 	.classy0 { font-family: Verdana, Arial, Helvetica, sans-serif; background-color: transparent; color: #000000; font-size: 10px; }
 	.classy1 { font-family: Verdana, Arial, Helvetica, sans-serif; background-color: transparent; color: #000000; font-size: 10px; }
 	-->
 	</style>
-<?php 
+	
+<?php
+
+global $WT_IMAGES;
 
 // Various JavaScript variables required --------------------------------- ?>
 <script language="javascript" type="text/javascript">
 	var ifamily = "<?php echo WT_I18N::translate('Open Family Navigator'); ?>";
 	var remove = "<?php echo WT_I18N::translate('Remove'); ?>";
 	var linkExists = "<?php echo WT_I18N::translate('This link already exists'); ?>";
-	var imageDir = "<?php echo WT_THEME_DIR.'images/'; ?>";
+	/* ===icons === */
+	var removeLinkIcon = "<?php echo $WT_IMAGES['remove']; ?>";
+	var familyNavIcon = "<?php echo $WT_IMAGES['button_family']; ?>";
 </script>
 
 <?php

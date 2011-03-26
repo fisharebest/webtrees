@@ -139,7 +139,6 @@ function addRowToTable(num, pid, nam, head)
 			var tbl = document.getElementById(TABLE_NAME);
 			var nextRow = tbl.tBodies[0].rows.length;
 			var iteration = nextRow + ROW_BASE;
-			// var txtcolor = "#888888";
 			
 			if (num == null) { 
 				num = nextRow;
@@ -150,7 +149,7 @@ function addRowToTable(num, pid, nam, head)
 			// add the row
 			var row = tbl.tBodies[0].insertRow(num);
 			
-			// CONFIG: requires classe
+			// CONFIG: requires class
 			row.className = 'descriptionbox';
 			
 			// CONFIG: This whole section can be configured
@@ -163,7 +162,6 @@ function addRowToTable(num, pid, nam, head)
 			
 			// cell 1 - ID:
 			var cell1 = row.insertCell(1);
-			//	cell1.setAttribute('align', 'left');
 			if (pid=='') {
 				var txtInp1 = document.createElement('div');
 				txtInp1.setAttribute('type', 'checkbox');
@@ -179,7 +177,6 @@ function addRowToTable(num, pid, nam, head)
 				txtInp1.textContent = pid;
 			}
 				txtInp1.setAttribute('id', INPUT_NAME_PREFIX + iteration + '_1');
-				txtInp1.style.color=txtcolor;
 				txtInp1.style.background='transparent';
 				txtInp1.style.border='0px';
 				txtInp1.style.fontSize="11px";
@@ -187,11 +184,9 @@ function addRowToTable(num, pid, nam, head)
 			
 			// cell 2 - Name
 			var cell2 = row.insertCell(2);
-			//	cell2.setAttribute('align', 'left');
 			var txtInp2 = document.createElement('div');
 				txtInp2.setAttribute('type', 'text');
 				txtInp2.setAttribute('id', INPUT_NAME_PREFIX + iteration + '_2');
-				txtInp2.style.color=txtcolor;
 				txtInp2.style.background='transparent';
 				txtInp2.style.border='0px';
 				txtInp2.style.fontSize="11px";
@@ -204,10 +199,10 @@ function addRowToTable(num, pid, nam, head)
 				cellbtn.setAttribute('align', 'center');
 			var btnEl = document.createElement('img');
 				btnEl.setAttribute('type', 'img');
-				btnEl.setAttribute('src', imageDir+'/remove.gif');
+				btnEl.setAttribute('src', removeLinkIcon);
 				btnEl.setAttribute('alt', remove);
 				btnEl.setAttribute('title', remove);
-				btnEl.setAttribute('height', '13px');
+				btnEl.setAttribute('height', '14px');
 				btnEl.onclick = function () {deleteCurrentRow(this)};
 			cellbtn.appendChild(btnEl);
 			
@@ -217,7 +212,7 @@ function addRowToTable(num, pid, nam, head)
 			if (pid.match("I")=="I" || pid.match("i")=="i") {
 				var btn2El = document.createElement('img');
 					btn2El.setAttribute('type', 'img');
-					btn2El.setAttribute('src', imageDir+'/buttons/family.gif');
+					btn2El.setAttribute('src', familyNavIcon);
 					btn2El.setAttribute('alt', ifamily);
 					btn2El.setAttribute('title', ifamily);
 					btn2El.onclick = function () {openFamNav(pid)};
@@ -225,7 +220,7 @@ function addRowToTable(num, pid, nam, head)
 			} else if (pid.match("F")=="F" || pid.match("f")=="f") {
 				var btn2El = document.createElement('img');
 					btn2El.setAttribute('type', 'img');
-					btn2El.setAttribute('src', imageDir+'/buttons/family.gif');
+					btn2El.setAttribute('src', familyNavIcon);
 					btn2El.setAttribute('alt', ifamily);
 					btn2El.setAttribute('title', ifamily);
 					btn2El.onclick = function () {openFamNav(head)};
