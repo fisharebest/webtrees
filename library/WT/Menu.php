@@ -145,7 +145,7 @@ class WT_Menu {
 				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'">'.$this->label.'</a>';
 			}
 		} else {
-			return '';
+			$html=$this->label;
 		}
 		if ($this->submenus) {
 			$html.="\n\t".'<ul>'."\n";
