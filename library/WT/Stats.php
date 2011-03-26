@@ -283,7 +283,7 @@ class WT_Stats {
 
 	function gedcomUpdated() {
 		$row=
-			WT_DB::prepare("SELECT d_year, d_month, d_day FROM `##dates` WHERE d_file=? AND d_fact=? ORDER BY d_julianday1 DESC, d_type LIMIT 1")
+			WT_DB::prepare("SELECT d_year, d_month, d_day FROM `##dates` WHERE d_julianday1 = ( SELECT max( d_julianday1 ) FROM `##dates` WHERE d_file =? AND d_fact=? ) LIMIT 1")
 			->execute(array($this->_ged_id, 'CHAN'))
 			->fetchOneRow();
 		if ($row) {
