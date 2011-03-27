@@ -282,6 +282,23 @@ color: #ffffff;
 }
 
 /*	Start Standard Code					*/
+
+/* Rounded corners on boxes */
+.block,  .descriptionbox,
+.facts_label, .facts_label02, 
+.facts_label03, .facts_value,
+.lifespan_outer, .subbar,
+.list_label, .list_label_wrap, 
+.list_value, .list_value_wrap,
+.messagebox, .optionbox,
+.person_box, .person_boxF, .person_boxNN,
+.person0,  .person1,  .person2,  .person3,  .person4,  .person5,
+.topbottombar {
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
 #content {
 padding:10px;
 }
@@ -335,6 +352,7 @@ font: normal 10px tahoma, arial, helvetica, sans-serif;
 div.blockcontent {
 	border: solid #999 1px;
 	margin-left:auto;
+	*margin-top: -2px; /* IE7 fix */
 	margin-right:2px;  /* changed from auto for right side match to header */
 	margin-bottom:10px;
 	font-size: 13px;
@@ -1757,7 +1775,7 @@ padding: 0 10px;
 	display:none;
 	position:absolute;
 	left:0px;
-	top: 1.0em;
+	top: 1.1em;
 	background-color:#EEE;
 	border:thin solid #AAA;
 	z-index:999;
@@ -1793,6 +1811,7 @@ html[dir='rtl'] .makeMenu li ul li {
 }
 
 .makeMenu li a {color: #ffffff;}
+.makeMenu li a:hover {color: #f5003d;}
 
 .makeMenu ul li a {
     background-color: #fff;

@@ -288,6 +288,23 @@ color: #003399;
 }
 
 /*	Start Standard Code					*/
+
+/* Rounded corners on boxes */
+.block,  .descriptionbox,
+.facts_label, .facts_label02, 
+.facts_label03, .facts_value,
+.lifespan_outer, .subbar,
+.list_label, .list_label_wrap, 
+.list_value, .list_value_wrap,
+.messagebox, .optionbox,
+.person_box, .person_boxF, .person_boxNN,
+.person0,  .person1,  .person2,  .person3,  .person4,  .person5,
+.topbottombar {
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+}
+
 #content {
 padding:10px;
 }
@@ -341,6 +358,7 @@ padding: 1px;
 div.blockcontent {
 border: solid #999 1px;
 margin-left:auto;
+*margin-top: -2px; /* IE7 fix */
 margin-right:2px;  /* changed from auto for right side match to header */
 margin-bottom:10px;
 font-size: 13px;
