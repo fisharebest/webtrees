@@ -262,7 +262,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 						$submenu->addClass($submenu_class, $submenu_hoverclass);
 						$menu->addSubMenu($submenu);
 					} else {
-						$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Set link') . "&nbsp;&nbsp;", "#", "right");
+						$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Set link') . "&nbsp;&nbsp;", "#", "right", "right");
 
 						$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'));
 						$ssubmenu->addOnclick("return window.open('inverselink.php?mediaid={$rowm['m_media']}&amp;linkto=person', '_blank', 'top=50,left=50,width=570,height=650,resizable=1,scrollbars=1');");
