@@ -338,7 +338,8 @@ case 'DATE':
 		'ABT @#DHEBREW@ CSH 5481'  =>new WT_Date('ABT @#DHEBREW@ CSH 5481'),
 		'BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'=>new WT_Date('BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'),
 		'FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'=>new WT_Date('FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'),
-		'AFT @#DHEBREW@ ADS 5481'  =>new WT_Date('AFT @#DHEBREW@ ADS 5481'),
+		'AFT @#DHEBREW@ ADR 5481'  =>new WT_Date('AFT @#DHEBREW@ ADR 5481'),
+		'AFT @#DHEBREW@ ADS 5480'  =>new WT_Date('AFT @#DHEBREW@ ADS 5480'),
 		'BEF @#DHEBREW@ NSN 5481'  =>new WT_Date('BEF @#DHEBREW@ NSN 5481'),
 		'ABT @#DHEBREW@ IYR 5481'  =>new WT_Date('ABT @#DHEBREW@ IYR 5481'),
 		'FROM @#DHEBREW@ SVN 5481' =>new WT_Date('FROM @#DHEBREW@ SVN 5481'),
@@ -413,7 +414,8 @@ case 'DATE':
 		'<tr><td>'.$dates['ABT @#DHEBREW@ CSH 5481'].'</td><td><tt>ABT @#DHEBREW@ CSH 5481</tt></td></tr>'.
 		'<tr><td>'.$dates['BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'].'</td><td><tt>BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481</tt></td></tr>'.
 		'<tr><td>'.$dates['FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'].'</td><td><tt>FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['AFT @#DHEBREW@ ADS 5481'].'</td><td><tt>AFT @#DHEBREW@ ADS 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT @#DHEBREW@ ADR 5481'].'</td><td><tt>AFT @#DHEBREW@ ADR 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT @#DHEBREW@ ADS 5480'].'</td><td><tt>AFT @#DHEBREW@ ADS 5480</tt></td></tr>'.
 		'<tr><td>'.$dates['BEF @#DHEBREW@ NSN 5481'].'</td><td><tt>BEF @#DHEBREW@ NSN 5481</tt></td></tr>'.
 		'<tr><td>'.$dates['ABT @#DHEBREW@ IYR 5481'].'</td><td><tt>ABT @#DHEBREW@ IYR 5481</tt></td></tr>'.
 		'<tr><td>'.$dates['FROM @#DHEBREW@ SVN 5481'].'</td><td><tt>FROM @#DHEBREW@ SVN 5481</tt></td></tr>'.
