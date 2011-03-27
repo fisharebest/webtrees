@@ -746,7 +746,7 @@ if (check_media_structure()) {
 		$menu = new WT_Menu();
 
 		// GEDFact assistant Add Media Links =======================
-		if (file_exists(WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
+		if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 			$menu->addLabel(WT_I18N::translate('Manage links'));
 			$menu->addOnclick("return ilinkitem('$mediaid', 'manage')");
 			$menu->addClass("", "", "submenu");
@@ -755,18 +755,17 @@ if (check_media_structure()) {
 
 		} else {
 			$menu->addLabel(WT_I18N::translate('Set link'));
-			$menu->addOnclick("return ilinkitem('$mediaid', 'person')");
-			$submenu = new Menu(WT_I18N::translate('To Person'));
+			$submenu = new WT_Menu(WT_I18N::translate('To Person'));
 			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
 			$submenu->addOnclick("return ilinkitem('$mediaid', 'person')");
 			$menu->addSubMenu($submenu);
 
-			$submenu = new Menu(WT_I18N::translate('To Family'));
+			$submenu = new WT_Menu(WT_I18N::translate('To Family'));
 			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
 			$submenu->addOnclick("return ilinkitem('$mediaid', 'family')");
 			$menu->addSubMenu($submenu);
 
-			$submenu = new Menu(WT_I18N::translate('To Source'));
+			$submenu = new WT_Menu(WT_I18N::translate('To Source'));
 			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
 			$submenu->addOnclick("return ilinkitem('$mediaid', 'source')");
 			$menu->addSubMenu($submenu);
