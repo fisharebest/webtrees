@@ -243,11 +243,11 @@ class WT_I18N {
 					// markup is not permitted.
 					if (self::$dir=='ltr') {
 						if (utf8_direction($arg)=='rtl') {
-							$arg='&#x202B;'.$arg.'&#x202C;';
+							$arg=WT_UTF8_RLE.$arg.WT_UTF8_PDF;
 						}
 					} else {
 						if (utf8_direction($arg)=='ltr') {
-							$arg='&#x202A;'.$arg.'&#x202C;';
+							$arg=WT_UTF8_LRE.$arg.WT_UTF8_PDF;
 						}
 					}
 				}
