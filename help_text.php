@@ -2503,11 +2503,6 @@ case 'index_add_favorites':
 	$text=WT_I18N::translate('This form allows you to add a new favorite item to your list of favorites.<br /><br />You must enter either an ID for the person, family, or source you want to store as a favorite, or you must enter a URL and a title.  The Note field is optional and can be used to describe the favorite.  Anything entered in the Note field will be displayed in the Favorites block after the item.');
 	break;
 
-case 'index_common_given_names':
-	$title=WT_I18N::translate('Most common given names block');
-	$text=WT_I18N::translate('This block displays a list of frequently occurring given names from this database. You can configure how many given names should appear in the list.');
-	break;
-
 case 'index_common_names':
 	$title=WT_I18N::translate('Most common surnames block');
 	$text=WT_I18N::translate('This block displays a list of frequently occurring surnames from this database. A surname must occur at least %s times before it will appear in this list.  The administrator has control over this threshold.<br /><br />When you click on a surname in this list, you will be taken to the Individuals, where you will get more details about that name.', get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'));

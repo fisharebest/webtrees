@@ -65,7 +65,6 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		// I18N: There are separate lists of male/female names, containing %d names each
 		$title .= WT_I18N::plural('Top Given Name', 'Top %d Given Names', $num, $num);
-		$title .= help_link('index_common_given_names');
 
 		$content = '<div class="normal_inner_block">';
 		//Select List or Table
