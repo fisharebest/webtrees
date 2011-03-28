@@ -85,7 +85,7 @@ echo
 
 // begin header section
 if ($view!='simple') {
-	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
+	echo '<div id="header">',
 			'<div class="header_img"><img src="', WT_THEME_DIR, 'images/webtrees.png" width="242" height="50" alt="" /></div>',
 				'<ul id="extra-menu" class="makeMenu">',
 					'<li>';

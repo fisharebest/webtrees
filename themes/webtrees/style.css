@@ -553,6 +553,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	text-decoration: none;
 	font: 11px tahoma, arial, helvetica, sans-serif;
 	padding: 1px;
+	text-align:center;
 }
 
 .menuitem_hover {
@@ -560,6 +561,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	text-decoration: none;
 	font: 11px tahoma, arial, helvetica, sans-serif;
 	padding: 1px;
+	text-align:center;
 }
 
 .submenu {
@@ -942,6 +944,9 @@ html[dir='rtl'] .header_img {
 
 .header_search {
 	float:right;
+}
+html[dir='rtl'] .header_search {
+	float:left;
 }
 
 /* Styles for the option boxes */
@@ -1650,10 +1655,6 @@ html[dir='rtl'] .makeMenu li ul {
 .makeMenu li ul li {
 	padding: 2px;
 	display:block;
-	text-align:left;
-}
-html[dir='rtl'] li up li {
-	text-align:right;
 }
 
 .makeMenu, .makeMenu li ul {
