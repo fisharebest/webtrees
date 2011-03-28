@@ -666,16 +666,6 @@ class WT_MenuBar {
 		}
 	}
 
-	public static function getColorMenu($COLOR_THEME_LIST) {
-		$menu=new WT_Menu(WT_I18N::translate('Color Palette'));
-		$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', 'icon_small_theme');
-		foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
-			$submenu=new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice)));
-			$menu->addSubMenu($submenu);
-		}
-		return $menu;
-	}
-
 	public static function getLanguageMenu() {
 		global $WT_IMAGES;
 
