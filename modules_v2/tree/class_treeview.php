@@ -111,7 +111,7 @@ class TreeView {
 			'<li id="tvbLeft" class="tv_button"><img src="'.$WT_IMAGES['ldarrow'].'" alt="'.WT_I18N::translate('Align left').'" title="'.WT_I18N::translate('Align left').'" /></li>'.
 			'<li id="tvbCenter" class="tv_button"><img src="'.$WT_IMAGES['patriarch'].'" alt="'./* I18N: verb/action */ WT_I18N::translate('Center').'" title="'.WT_I18N::translate('Center').'" /></li>'.
 			'<li id="tvbRight" class="tv_button"><img src="'.$WT_IMAGES['rdarrow'].'" alt="'.WT_I18N::translate('Align right').'" title="'.WT_I18N::translate('Align right').'" /></li>'.
-			'<li id="tvbDates" class="tv_button tvPressed"><img src="'.WT_MODULES_DIR.'tree/images/dates.png" alt="'.WT_I18N::translate('Show summary dates').'" title="'.WT_I18N::translate('Show summary dates').'" /></li>'.
+			'<li id="tvbDates" class="tv_button tvPressed"><img src="'.WT_MODULES_DIR.'tree/images/dates.png" alt="'.WT_I18N::translate('Show year of birth and death').'" title="'.WT_I18N::translate('Show year of birth and death').'" /></li>'.
 			'<li id="tvbCompact" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/compact.png" alt="'.WT_I18N::translate('Use compact layout').'" title="'.WT_I18N::translate('Use compact layout').'" /></li>'.
 			// TODO: this is temporarily disabled (as it sends a flood of AJAX requests?)
 			//'<li id="tvbOpen" class="tv_button"><img src="'.$WT_IMAGES["media"].'" alt="o" title="'.WT_I18N::translate('Show all details').'" /></li>'.
@@ -119,7 +119,7 @@ class TreeView {
 			// If the position/order of the style button moves, update TreeViewHandler() in treeview.js
 			'<li id="tvStyleButton" class="tv_button">'.$cs.'</li>'.
 			'<li id="tvbPrint" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'./* I18N: verb/action */ WT_I18N::translate('Print').'" /></li>'.
-			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show other spouses of ancestors').'" title="'.WT_I18N::translate('Show other spouses of ancestors').'" /></a></li>';
+			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show all spouses and ancestors').'" title="'.WT_I18N::translate('Show all spouses and ancestors').'" /></a></li>';
     if (safe_GET('mod_action') != 'treeview') {
 			$r.='<li class="tv_button"><a href="module.php?mod=tree&mod_action=treeview&rootId='.$rootPerson->getXref().'#tv_content" title="'. /* I18N: Button label - view this chart in full-screen mode */ WT_I18N::translate('Full screen').'"><img src="'.$WT_IMAGES["tree"].'" alt="t" /></a></li>';
 		}
@@ -303,16 +303,13 @@ class TreeView {
     /* height 1% : this hack enable the div auto-dimensionning in td for FF & Chrome */
     $r .= '<table class="tv_tree"'.($isRoot ? ' id="tv_tree"' : '').' style="height: 1%"><tbody><tr>';
     
-    // draw children
-    if ($state <= 0) {
-      $fams = $person->getSpouseFamilies();
-    	$fl = $this->allPartners ? $fams : array(end($fams));
-			$r .= $this->drawChildren($fl, $gen);
-    }
-    
-    // draw the parent's lines
-    if ($state > 0)
+    if ($state<=0) {
+    	// draw children
+			$r.=$this->drawChildren($person->getSpouseFamilies(), $gen);
+    } else {
+    	// draw the parent's lines
       $r .= $this->drawVerticalLine($order).$this->drawHorizontalLine();
+		}
 
     /* draw the person. Do NOT add person or family id as an id, since a same person could appear more than once in the tree !!!   */
     // Fixing the width for td to the box initial width when the person is the root person fix a rare bug that happen when a person without child and without known parents is the root person : an unwanted white rectangle appear at the right of the person's boxes, otherwise.
