@@ -1535,131 +1535,130 @@ class WT_Person extends WT_GedcomRecord {
 	protected function _addName($type, $full, $gedrec) {
 		global $UNDERLINE_NAME_QUOTES, $UNKNOWN_NN, $UNKNOWN_PN;
 
-		// Look for GIVN/SURN at level n+1
+		////////////////////////////////////////////////////////////////////////////
+		// Extract the structured name parts - use for "sortable" names and indexes
+		////////////////////////////////////////////////////////////////////////////
+
 		$sublevel=1+(int)$gedrec[0];
+		$NPFX=preg_match("/\n{$sublevel} NPFX (.+)/", $gedrec, $match) ? $match[1] : '';
+		$GIVN=preg_match("/\n{$sublevel} GIVN (.+)/", $gedrec, $match) ? $match[1] : '';
+		$SURN=preg_match("/\n{$sublevel} SURN (.+)/", $gedrec, $match) ? $match[1] : '';
+		$NSFX=preg_match("/\n{$sublevel} NSFX (.+)/", $gedrec, $match) ? $match[1] : '';
+		$NICK=preg_match("/\n{$sublevel} NICK (.+)/", $gedrec, $match) ? $match[1] : '';
+
+		// SURN is an comma-separated list of surnames...
+		if ($SURN) {
+			$SURNS=preg_split('/ *, */', $SURN);
+		} else {
+			$SURNS=array();
+		}
+		// ...so is GIVN - but nobody uses it like that
+		$GIVN=str_replace('/ *, */', ' ', $GIVN);
+
+		////////////////////////////////////////////////////////////////////////////
+		// Extract the components from NAME - use for the "full" and "list" names
+		////////////////////////////////////////////////////////////////////////////
 
 		// Fix bad slashes.  e.g. 'John/Smith' => 'John/Smith/'
 		if (substr_count($full, '/')%2==1) {
-			$full.='/';
-		}
-
-		// Need the GIVN and SURN to generate the sortable name.
-		$givn=preg_match("/\n{$sublevel} GIVN (.+)/", $gedrec, $match) ? $match[1] : '';
-		$surn=preg_match("/\n{$sublevel} SURN (.+)/", $gedrec, $match) ? $match[1] : '';
-		$spfx=preg_match("/\n{$sublevel} SPFX (.+)/", $gedrec, $match) ? $match[1] : '';
-		if ($givn || $surn) {
-			// An empty surname won't have a SURN field
-			if (strpos($full, '//')) {
-				$surn='@N.N.';
-			}
-			// GIVN and SURN can be comma-separated lists.
-			$surns=preg_split('/ *, */', $surn);
-		$givn=str_replace(array(', ', ','), ' ', $givn);
-			// SPFX+SURN for lists
-			$surn=($spfx?$spfx.' ':'').$surn;
+			$full=$full.'/';
 		} else {
-			$name=$full;
-			// We do not have a structured name - extract the GIVN and SURN(s) ourselves
-			// Strip the NPFX
-			if (preg_match('/^(?:(?:(?:ADM|AMB|BRIG|CAN|CAPT|CHAN|CHAPLN|CMDR|COL|CPL|CPT|DR|GEN|GOV|HON|LADY|LORD|LT|MR|MRS|MS|MSGR|PFC|PRES|PROF|PVT|RABBI|REP|REV|SEN|SGT|SIR|SR|SRA|SRTA|VEN)\.? +)+)(.+)/i', $name, $match)) {
-				$name=$match[1];
-			}
-			// Strip the NSFX
-			if (preg_match('/(.+)(?:(?: +(?:ESQ|ESQUIRE|JR|JUNIOR|SR|SENIOR|[IVX]+)\.?)+)$/i', $name, $match)) {
-				$name=$match[1];
-			}
-			// Extract GIVN/SURN.
-			if (strpos($full, '/')===false) {
-				$givn=trim($name);
-				$spfx='';
-				$surns=array('');
-			} else {
-				// Extract SURN.  Split at '/'.  Odd numbered parts are SURNs.
-				$spfx='';
-				$surns=array();
-		foreach (preg_split(': */ *:', $name) as $key=>$value) {
-			if ($key%2==1) {
-				if ($value) {
-					// Strip SPFX
-					if (preg_match('/^((?:(?:A|AAN|AB|AF|AL|AP|AS|AUF|AV|BAT|BIJ|BIN|BINT|DA|DE|DEL|DELLA|DEM|DEN|DER|DI|DU|EL|FITZ|HET|IBN|LA|LAS|LE|LES|LOS|ONDER|OP|OVER|\'S|ST|\'T|TE|TEN|TER|TILL|TOT|UIT|UIJT|VAN|VANDEN|VON|VOOR|VOR) )+(?:[DL]\')?)(.+)$/i', $value, $match)) {
-								$spfx=trim($match[1]);
-						$value=$match[2];
-					}
-							$surns[]=$value ? $value : '@N.N.';
-			} else {
-							$surns[]='@N.N.';
+			$full=$full;
+		}
+
+		// GEDCOM uses "//" to indicate an unknown surname
+		// Some people use /---/ or /___/ or /???/ to indicate an unknown surname
+		$full=preg_replace('/\/(|_{3,}|\?{3,}|-{3,})\//', '/@N.N./', $full);
+
+		// Some people use --- or ___ or ??? to indicate an unknown given name
+		$full=preg_replace('/(_{3,}|\?{3,}|-{3,})/', '/@P.N./', $full);
+
+		// Extract the surname.
+		// Note, there may be multiple surnames, e.g. Jean /Vasquez/ y /Cortes/
+		if (preg_match('/\/.*\//', $full, $match)) {
+			$surname=str_replace('/', '', $match[0]);
+		} else {
+			$surname='';
+		}
+
+		// If we don't have a SURN record, extract it from the NAME
+		if (!$SURNS) {
+			if (preg_match_all('/\/([^\/]*)\//', $full, $matches)) {
+				// There can be many surnames, each wrapped with '/'
+				$SURNS=$matches[1];
+				foreach ($SURNS as $n=>$SURN) {
+					// Remove surname prefix
+					$SURNS[$n]=preg_replace('/^(?:a |aan |ab |af |al |ap |as |auf |av |bat |bij |bin |bint |d\'|da |de |del |della |dem |den |der |di |du |el |fitz |het |ibn |l\'|la |las |le |les |los |onder |op |over |\'s |st |\'t |te |ten |ter |till |tot |uit |uijt |van |vanden |von |voor |vor )+/', '', $SURN);
 				}
-			}
-		}
-				// SPFX+SURN for lists
-				$surn=($spfx ? $spfx.' ' : '').implode(' ', $surns);
-				// Extract the GIVN.  Before first '/' and after last.
-				$pos1=strpos($name, '/');
-				if ($pos1===false) {
-					$givn=$name;
-				} else {
-					$pos2=strrpos($name, '/');
-					$givn=trim(substr($name, 0, $pos1).' '.substr($name, $pos2+1));
-		}
+			} else {
+				// It is valid not to have a surname at all
+				$SURNS=array('');
 			}
 		}
 
-		// Tidy up whitespace
-		$full=preg_replace('/  +/', ' ', trim($full));
-		
-		// Add placeholder for unknown surname
-		if (preg_match(':/ */:', $full)) {
-			$full=preg_replace(':/ */:', '/@N.N./', $full);
+		// If we don't have a GIVN record, extract it from the NAME
+		if (!$GIVN) {
+			// remove any prefix
+			$GIVN=preg_replace('/(?:(?:ADM|AMB|BRIG|CAN|CAPT|CHAN|CHAPLN|CMDR|COL|CPL|CPT|DR|GEN|GOV|HON|LADY|LORD|LT|MR|MRS|MS|MSGR|PFC|PRES|PROF|PVT|RABBI|REP|REV|SEN|SGT|SIR|SR|SRA|SRTA|VEN) )+$/', '', $full);
+			// remove any suffix
+			$GIVN=preg_replace('/(?: (?:ESQ|ESQUIRE|JR|JUNIOR|SR|SENIOR|[IVX]+))+$/', '', $GIVN);
+			// remove surname
+			$GIVN=preg_replace('/ ?\/.*\/ ?/', '', $GIVN);
+			// remove nickname
+			$GIVN=preg_replace('/ ?".+"/', '', $GIVN);
 		}
 
 		// Add placeholder for unknown given name
-		if (!$givn) {
-			$givn='@P.N.';
+		if (!$GIVN) {
+			$GIVN='@P.N.';
 			$pos=strpos($full, '/');
 			$full=substr($full, 0, $pos).'@P.N. '.substr($full, $pos);
 		}
 
-		// Some systems don't include the NPFX in the NAME record.
-		$npfx=preg_match('/^'.$sublevel.' NPFX (.+)/m', $gedrec, $match) ? $match[1] : '';
-		if ($npfx && stristr($full, $npfx)===false) {
-			$full=$npfx.' '.$full;
+		// The NPFX field might be present, but not appear in the NAME
+		if ($NPFX && strpos($full, "$NPFX ")!==0) {
+			$full="$NPFX $full";
 		}
 
-		// Make sure the NICK is included in the NAME record.
-		if (preg_match('/^'.$sublevel.' NICK (.+)/m', $gedrec, $match)) {
+		// The NSFX field might be present, but not appear in the NAME
+		if ($NSFX && strrpos($full, " $NSFX")!==strlen($full)-strlen(" $NSFX")) {
+			$full="$full $NSFX";
+		}
+
+		// The NICK field might be present, but not appear in the NAME
+		if ($NICK && strpos($full, $NICK)===false) {
 			$pos=strpos($full, '/');
 			if ($pos===false) {
-				$full.=' "'.$match[1].'"';
+				$full.=' "'.$NICK.'"';
 			} else {
-				$full=substr($full, 0, $pos).'"'.$match[1].'" '.substr($full, $pos);
+				$full=substr($full, 0, $pos).'"'.$NICK.'" '.substr($full, $pos);
 			}
 		}
 
-		// Convert 'user-defined' unknowns into WT unknowns
-		$full=preg_replace('/\/(_+|\?+|-+)\//',            '/@N.N./', $full);
-		$full=preg_replace('/(?<= |^)(_+|\?+|-+)(?= |$)/', '@P.N.',   $full);
-		$surn=preg_replace('/^(_+|\?+|-+)$/',              '@N.N.',   $surn);
-		$givn=preg_replace('/(?<= |^)(_+|\?+|-+)(?= |$)/', '@P.N.',   $givn);
-		foreach ($surns as $key=>$value) {
-			$surns[$key]=preg_replace('/^(_+|\?+|-+)$/', '@N.N.', $value);
-		}
-
-		// Create the list (surname first) version of the name.  Note that zero
-		// slashes are valid; they indicate NO surname as opposed to missing surname.
-		$pos1=strpos($full, '/');
-		if ($pos1===false) {
-			$list=$full;
-		} else {
-			$pos2=strrpos($full, '/');
-			$list=trim(substr($full, $pos1+1, $pos2-$pos1-1)).', '.substr($full, 0, $pos1).substr($full, $pos2+1);
-			$list=trim(str_replace(array('/', ' ,', '  '), array('', ',', ' '), $list));
-			$full=trim(str_replace(array('/', ' ,', '  '), array('', ',', ' '), $full));
-		}
+		// Generate a "list" name, by moving the surname to the front of the "full" name
+		// Take care of names with no space before/after the surname
+		$list=preg_replace('/^([^\/]+?)( *)(\/.+\/)/', '$3$2$1', $full);
 
 		// Need the 'not known' place holders for the database
 		$fullNN=$full;
 		$listNN=$list;
-		$surname=$surn;
+
+		// If the name is written in greek/cyrillic/hebrew/etc., use the 'unknown' name
+		// from that character set.  Otherwise use the one in the language file.
+		if (strpos($full, '@N.N.')!==false) {
+			$NN=$UNKNOWN_NN[utf8_script($fullNN)];
+			$full   =str_replace('@N.N.', $NN, $full   );
+			$list   =str_replace('@N.N.', $NN, $list   );
+		}
+		if (strpos($full, '@P.N.')!==false) {
+			$PN=$UNKNOWN_PN[utf8_script($fullNN)];
+			$full=str_replace('@P.N.', $PN, $full);
+			$list=str_replace('@P.N.', $PN, $list);
+		}
+
+		// Remove slashes - they don't get displayed
+		$full=str_replace('/', '', $full);
+		$list=str_replace('/', '', $list);
 
 		// Some people put preferred names in quotes
 		if ($UNDERLINE_NAME_QUOTES) {
@@ -1671,47 +1670,28 @@ class WT_Person extends WT_GedcomRecord {
 		$full=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $full);
 		$list=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $list);
 
-		// If the name is written in greek/cyrillic/hebrew/etc., use the 'unknown' name
-		// from that character set.  Otherwise use the one in the language file.
-		if (strpos($givn, '@P.N.')!==false || $surn=='@N.N.' || $surns[0]=='@N.N.') {
-			if (strpos($givn, '@P.N.')!==false && ($surn=='@N.N.' || $surns[0]=='@N.N.')) {
-				$PN=WT_I18N::translate('(unknown)');
-				$NN=WT_I18N::translate('(unknown)');
-			} else {
-				if ($surn!=='')
-					$PN=$UNKNOWN_PN[utf8_script($surn)];
-				else
-					$PN=$UNKNOWN_PN[utf8_script($surns[0])];
-				$NN=$UNKNOWN_NN[utf8_script($givn)];
-			}
-			$list=str_replace(array('@N.N.','@P.N.'), array($NN, $PN), $list);
-			$full=str_replace(array('@N.N.','@P.N.'), array($NN, $PN), $full);
-		}
-		// A comma separated list of surnames (from the SURN, not from the NAME) indicates
-		// multiple surnames (e.g. Spanish).  Each one is a separate sortable name.
+		// Remove prefered-name indicater - they don't go in the database
+		$GIVN  =str_replace('*', '', $GIVN);
+		$fullNN=str_replace('*', '', $fullNN);
+		$listNN=str_replace('*', '', $listNN);
 
-		// Where nicknames are entered in the given name field, these will break
-		// sorting, so strip them out.
-		$GIVN=preg_replace('/["\'()]/', '', $givn);
-
-		foreach ($surns as $n=>$surn) {
-			// Scottish 'Mc and Mac' prefixes both sort under 'Mac'
-			if (strcasecmp(substr($surn, 0, 2), 'Mc')==0) {
-				$surn=substr_replace($surn, 'Mac', 0, 2);
-			} elseif (strcasecmp(substr($surn, 0, 4), 'Mac ')==0) {
-				$surn=substr_replace($surn, 'Mac', 0, 4);
+		foreach ($SURNS AS $SURN) {
+			// Scottish 'Mc and Mac ' prefixes both sort under 'Mac'
+			if (strcasecmp(substr($SURN, 0, 2), 'Mc')==0) {
+				$SURN=substr_replace($SURN, 'Mac', 0, 2);
+			} elseif (strcasecmp(substr($SURN, 0, 4), 'Mac ')==0) {
+				$SURN=substr_replace($SURN, 'Mac', 0, 4);
 			}
 
 			$this->_getAllNames[]=array(
-				'type'=>$type, 'full'=>$full, 'list'=>$list, 'sort'=>$surn.','.$givn,
+				'type'=>$type, 'full'=>$full, 'list'=>$list, 'sort'=>$SURN.','.$GIVN,
 				// These extra parts used to populate the wt_name table and the indi list
 				// For these, we don't want to translate the @N.N. into local text
 				'fullNN'=>$fullNN,
 				'listNN'=>$listNN,
 				'surname'=>$surname,
-				'givn'=>$givn,
-				'spfx'=>($n?'':$spfx),
-				'surn'=>$surn
+				'givn'=>$GIVN,
+				'surn'=>$SURN
 			);
 		}
 	}
