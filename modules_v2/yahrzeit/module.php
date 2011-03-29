@@ -121,6 +121,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			break;
 		case 'table':
 		default:
+			require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 			require_once WT_ROOT.'js/sorttable.js.htm';
 			$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 			$content .= "<table id=\"{$table_id}\" class=\"sortable list_table center\">";
