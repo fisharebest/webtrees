@@ -66,12 +66,12 @@ function TreeViewHandler(treeviewInstance, allPartners, nbStyles) {
     	var bw = tv.buttons.outerWidth(true);
     	var bm = (tv.buttons.outerWidth(true) - tv.buttons.outerWidth()) / 2;
     	if (tv.toolboxOrientation != 'v') {
-    		var deltaX = 6 + 9 * bw;
+    		var deltaX = 6 + 8 * bw; // align with the 8th button
   			var deltaY = bw;
     	}
   		else {
   			var deltaX = bw;
-  			var deltaY = 6 + 9 * (bw-bm);
+  			var deltaY = 6 + 8 * (bw-bm); // align with the 8th button
     	}
   		submenu.css("left", deltaX);
   		submenu.css("top", deltaY);
