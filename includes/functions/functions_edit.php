@@ -944,7 +944,16 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			surn=surn.replace(/dzki$/, 'dzka');
 			surn=surn.replace(/żki$/, 'żka');
 		<?php } ?>
-		return trim(npfx+" "+givn+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ "+nsfx);
+		if (WT_LOCALE=='vi' || WT_LOCALE=='hu') {
+			// Default format: /SURN/ GIVN
+			return trim(npfx+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ "+givn+" "+nsfx);
+		} else if (WT_LOCALE=='zh') {
+			// Default format: /SURN/GIVN
+			return trim(npfx+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/"+givn+" "+nsfx);
+		} else {
+			// Default format: GIVN /SURN/
+			return trim(npfx+" "+givn+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ "+nsfx);
+		}
 	}
 
 	// Update the NAME and _MARNM fields from the name components

@@ -112,11 +112,11 @@ function MM_showHideLayers() { //v6.0
 	    	}
 	    	else {
 	    		//obj.top="auto";
-	    		if (SCRIPT_NAME.indexOf("fanchart")>0) {
+	    		if (WT_SCRIPT_NAME.indexOf("fanchart")>0) {
 		    		obj.top=(msY-20)+'px';
 			    	obj.left=(msX-20)+'px';
 	    		}
-	    		else if (SCRIPT_NAME.indexOf("index.php")==-1) {
+	    		else if (WT_SCRIPT_NAME.indexOf("index.php")==-1) {
 		    		Xadjust = document.getElementById('content').offsetLeft;
 		    		obj.left=(5+(msX-Xadjust))+'px';
 		    		obj.top="auto";
@@ -184,7 +184,7 @@ var show = false;
 				if (textDirection=="rtl") pagewidth -= document.documentElement.scrollLeft;
 				if (famleft+parseInt(parentbox.style.left) > pagewidth-100) famleft=25;
 				famlinks.style.left = famleft + "px";
-				if (SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
+				if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
 				MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
 				return;
 			}
@@ -224,7 +224,7 @@ var show = false;
 				//alert(pagewidth);
 				if (famleft+parseInt(parentbox.style.left) > pagewidth-100) famleft=25;
 				famlinks.style.left = famleft + "px";
-				if (SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
+				if (WT_SCRIPT_NAME.indexOf("index.php")!=-1) famlinks.style.left = "100%";
 				MM_showHideLayers('I'+boxid+'links', ' ', 'show',''+pboxid);
 			}
 			else MM_showHideLayers('I'+boxid+'links', 'followmouse', 'show',''+pboxid);

@@ -456,10 +456,10 @@ function print_header($title, $view='full') {
 		// Give JavaScript access to some PHP constants
 		var WT_THEME_DIR   = "'.WT_THEME_DIR.'";
 		var WT_MODULES_DIR = "'.WT_MODULES_DIR.'";
-		/* setup some javascript variables */
 		var textDirection = "'.$TEXT_DIRECTION.'";
 		var browserType = "'.$BROWSERTYPE.'";
-		var SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
+		var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
+		var WT_LOCALE = "'.WT_LOCALE.'";
 		/* keep the session id when opening new windows */
 		var sessionid = "'.Zend_Session::getId().'";
 		var sessionname = "'.WT_SESSION_NAME.'";
