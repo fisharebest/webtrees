@@ -29,6 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
+require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
