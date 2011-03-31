@@ -106,12 +106,16 @@ if ($show_all=='yes') {
 		}
 	}
 	$show_all='no';
-	$legend=$surname;
+	if ($surname=='@N.N.') {
+		$legend=WT_I18N::translate_c('surname', '(unknown)');
+	} else {
+		$legend=$surname;
+	}
 	switch($falpha) {
 	case '':
 		break;
 	case '@':
-		$legend.=', '.WT_I18N::translate('(unknown)');
+		$legend.=', '.WT_I18N::translate_c('given name', '(unknown)');
 		break;
 	default:
 		$legend.=', '.$falpha;
