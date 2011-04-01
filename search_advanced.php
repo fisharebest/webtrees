@@ -138,7 +138,7 @@ echo WT_JS_END;
 <table id="field_table" class="list_table <?php echo $TEXT_DIRECTION; ?>" width="35%" border="0">
 	<tr>
 		<td colspan="4" class="facts_label03" style="text-align:center; ">
-			<?php echo WT_I18N::translate('Advanced search'), help_link('advanced_search'); ?>
+			<?php echo WT_I18N::translate('Advanced search'); ?>
 		</td>
 	</tr>
 	<!-- // search terms -->

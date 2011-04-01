@@ -295,7 +295,6 @@ var oldMx = 0;
 
 	<table>
 		<tr>
-			<td rowspan="2"><?php echo help_link('timeline_control'); ?></td>
 			<td align="center"><?php echo WT_I18N::translate('Speed'); ?></td>
 				<td align="center"><?php echo WT_I18N::translate('Begin Year'); ?></td>
 				<td align="center"><?php echo WT_I18N::translate('End Year'); ?></td>

@@ -109,7 +109,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 <!-- /**************************************************** General Search Form *************************************************************/ -->
 			<?php if ($controller->action == "general") { ?>
 				<td colspan="3" class="facts_label03" style="text-align:center;">
-					<?php echo WT_I18N::translate('General Search'), help_link('search_enter_terms'); ?>
+					<?php echo WT_I18N::translate('General Search'); ?>
 				</td>
 	</tr>
 	<!-- // search terms -->
@@ -204,7 +204,7 @@ if ($controller->action == "replace")
 	if (WT_USER_CAN_EDIT) {
 ?>
 				<td colspan="3" class="facts_label03" style="text-align: center;">
-					<?php echo WT_I18N::translate('Search and replace'), help_link('search_replace'); ?>
+					<?php echo WT_I18N::translate('Search and replace'); ?>
 				</td>
 	</tr>
 	<!-- // search terms -->
