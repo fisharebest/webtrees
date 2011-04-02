@@ -268,8 +268,7 @@ if ($action=="choose") {
 	</script>
 	<?php
 	echo 
-		'<script type="text/javascript">document.getElementById("gid1").focus();</script>
-		<div id="merge"><h3>', WT_I18N::translate('Merge Step 1 of 3'), '</h3>
+		'<div id="merge"><h3>', WT_I18N::translate('Merge Step 1 of 3'), '</h3>
 		<form method="post" name="merge" action="admin_site_merge.php">
 		<input type="hidden" name="action" value="select" />
 		<p>', WT_I18N::translate('Select two GEDCOM records to merge.  The records must be of the same type.'), '</p>
@@ -277,7 +276,8 @@ if ($action=="choose") {
 		<td>',
 		WT_I18N::translate('Merge To ID:'),
 		'</td><td>
-		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" />&nbsp;';
+		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" />
+		<script type="text/javascript">document.getElementById("gid1").focus();</script>';
 	if (get_gedcom_count()>1) {
 		echo '<select name="ged" tabindex="4">';
 		$all_gedcoms=get_all_gedcoms();
