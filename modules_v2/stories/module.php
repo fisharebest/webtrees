@@ -299,7 +299,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	private function config() {
 		global $WT_IMAGES, $TEXT_DIRECTION;
 
-		if (WT_USER_CAN_EDIT) {
+		if (WT_USER_GEDCOM_ADMIN) {
 			print_header($this->getTitle());
 
 			$stories=WT_DB::prepare(
