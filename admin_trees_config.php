@@ -796,7 +796,7 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Multimedia directory'), help_link('MEDIA_DIRECTORY'); ?>
+							<?php echo WT_I18N::translate('Media directory'), help_link('MEDIA_DIRECTORY'); ?>
 						</td>
 						<td>
 							<input type="text" size="50" name="NEW_MEDIA_DIRECTORY" value="<?php echo $MEDIA_DIRECTORY; ?>" dir="ltr" />
@@ -809,7 +809,7 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Multi-Media directory levels to keep'), help_link('MEDIA_DIRECTORY_LEVELS'); ?>
+							<?php echo WT_I18N::translate('Multimedia directory levels to keep'), help_link('MEDIA_DIRECTORY_LEVELS'); ?>
 						</td>
 						<td>
 							<input type="text" name="NEW_MEDIA_DIRECTORY_LEVELS" value="<?php echo $MEDIA_DIRECTORY_LEVELS; ?>" size="5" />

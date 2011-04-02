@@ -1327,7 +1327,7 @@ case 'ALLOW_EDIT_GEDCOM':
 	break;
 
 case 'ALLOW_THEME_DROPDOWN':
-	$title=WT_I18N::translate('Display theme dropdown selector for theme changes');
+	$title=WT_I18N::translate('Theme dropdown selector for theme changes');
 	$text=WT_I18N::translate('Gives users the option of selecting their own theme from a menu.<br /><br />Even with this option set, the theme currently in effect may not provide for such a menu.  To be effective, this option requires the <b>Allow users to select their own theme</b> option to be set as well.');
 	break;
 
@@ -1337,7 +1337,7 @@ case 'ALLOW_USER_THEMES':
 	break;
 
 case 'AUTO_GENERATE_THUMBS':
-	$title=WT_I18N::translate('Automatically generated thumbnails');
+	$title=WT_I18N::translate('Automatically generate thumbnails');
 	$text=WT_I18N::translate('Should the system automatically generate thumbnails for images that do not have them.  Your PHP installation might not support this functionality.');
 	break;
 
@@ -1396,7 +1396,7 @@ case 'CONTACT_USER_ID':
 	break;
 
 case 'DEFAULT_PEDIGREE_GENERATIONS':
-	$title=WT_I18N::translate('Pedigree generations');
+	$title=WT_I18N::translate('Default pedigree generations');
 	$text=WT_I18N::translate('Set the default number of generations to display on Descendancy and Pedigree charts.');
 	break;
 
@@ -1570,7 +1570,7 @@ case 'MEDIA_DIRECTORY_LEVELS':
 	break;
 
 case 'MEDIA_DIRECTORY':
-	$title=WT_I18N::translate('Multimedia directory');
+	$title=WT_I18N::translate('Media directory');
 	$text=WT_I18N::translate('The path to a readable and writable directory where <b>webtrees</b> should store media files (include the trailing "/").  <b>webtrees</b> does not require this directory\'s name to be "media".  You can choose any name you like.<br /><br />Even though the Media Firewall feature lets you store media files in an area of the server\'s file space that is not accessible from the Internet, the directory named here must still exist and must be readable from the Internet and writable by <b>webtrees</b>.  For more information, please refer to the Media Firewall configuration options in the Multimedia section of the GEDCOM configuration page.');
 	break;
 
@@ -1797,7 +1797,7 @@ case 'SHOW_AGE_DIFF':
 	break;
 
 case 'SHOW_CONTEXT_HELP':
-	$title=WT_I18N::translate('Show contextual <b>?</b> help links');
+	$title=WT_I18N::translate('Contextual Help links');
 	$text=WT_I18N::translate('This option will enable links, identified by question marks, next to items on many pages.  These links allow users to get information or help about those items.');
 	break;
 
@@ -1932,12 +1932,12 @@ case 'SOUR_FACTS_UNIQUE':
 	break;
 
 case 'SUBLIST_TRIGGER_F':
-	$title=WT_I18N::translate('Maximum number of family names');
+	$title=WT_I18N::translate('Maximum number of surnames on family list');
 	$text=WT_I18N::translate('Long lists of families with the same name can be broken into smaller sub-lists according to the first letter of the given name.<br /><br />This option determines when sub-listing of family names will occur.  To disable sub-listing completely, set this option to zero.');
 	break;
 
 case 'SUBLIST_TRIGGER_I':
-	$title=WT_I18N::translate('Maximum number of surnames');
+	$title=WT_I18N::translate('Maximum number of surnames on individual list');
 	$text=WT_I18N::translate('Long lists of persons with the same surname can be broken into smaller sub-lists according to the first letter of the individual\'s given name.<br /><br />This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero.');
 	break;
 
