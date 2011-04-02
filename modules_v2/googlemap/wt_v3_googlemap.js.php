@@ -551,13 +551,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					"<?php if (!empty($gmark['sv_long'])) { echo $gmark['sv_long']; } ?>",
 					"<?php if (!empty($gmark['sv_bearing'])) { echo $gmark['sv_bearing']; } ?>",
 					"<?php if (!empty($gmark['sv_elevation'])) { echo $gmark['sv_elevation']; } ?>",
-<<<<<<< .mine
 					"<?php if (!empty($gmark['sv_zoom'])) { echo $gmark['sv_zoom']; } ?>",
-					"<?php if (!empty($gmark['icon'])) { echo $gmark['icon']; } ?>"
-=======
-					"<?php if (!empty($gmark['sv_zoom'])) { echo $gmark['sv_zoom']; } ?>",
-					// "<?php if (!empty($gmark['sv_point'])) { echo $gmark['sv_point']; } ?>"
->>>>>>> .r11250
 					"<?php if (!empty($gmark['icon'])) { echo $gmark['icon']; } ?>"
 				],
 
@@ -728,11 +722,6 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			}	
 			
 		}  // end loop through location markers		
-			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon);
-			var myLatLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
-			bounds.extend(myLatLng);
-			map.fitBounds(bounds);
-		}  // end loop through location markers
 	}	// end loadMap()
 //]]>
 </script>
