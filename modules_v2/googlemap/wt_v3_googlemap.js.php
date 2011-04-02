@@ -43,7 +43,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 	// this variable will collect the html which will eventually be placed in the side_bar
 	var side_bar_html = '';
-	var map_center = new google.maps.LatLng(53.8403,-2.0377);
+	var map_center = new google.maps.LatLng(0,0);
 	var gmarkers = [];
 	var gicons = [];
 	var map = null;
@@ -545,14 +545,19 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					// Element 13. This Individual's Highlighted image.
 					"<?php if (!empty($pid)) { echo $image; } else { echo ''; } ?>",
 
-					// Elements 14-19 Streetview parameters
+					// Elements 14-20 Streetview parameters
 					"<?php if (!empty($gmark['media'])) { echo $gmark['media']; } ?>",
 					"<?php if (!empty($gmark['sv_lati'])) { echo $gmark['sv_lati']; } ?>",
 					"<?php if (!empty($gmark['sv_long'])) { echo $gmark['sv_long']; } ?>",
 					"<?php if (!empty($gmark['sv_bearing'])) { echo $gmark['sv_bearing']; } ?>",
 					"<?php if (!empty($gmark['sv_elevation'])) { echo $gmark['sv_elevation']; } ?>",
+<<<<<<< .mine
+					"<?php if (!empty($gmark['sv_zoom'])) { echo $gmark['sv_zoom']; } ?>",
+					"<?php if (!empty($gmark['icon'])) { echo $gmark['icon']; } ?>"
+=======
 					"<?php if (!empty($gmark['sv_zoom'])) { echo $gmark['sv_zoom']; } ?>",
 					// "<?php if (!empty($gmark['sv_point'])) { echo $gmark['sv_point']; } ?>"
+>>>>>>> .r11250
 					"<?php if (!empty($gmark['icon'])) { echo $gmark['icon']; } ?>"
 				],
 
@@ -583,7 +588,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			}
 		}
 
-		// Loop through all location markers -----------------------------------
+		// Loop through all location markers ---------------------------------------
 		for (var i = 0; i < locations.length; i++) {
 			// obtain the attributes of each marker
 			var event = locations[i][0];							// Event or Fact
@@ -607,15 +612,16 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			var sv_zoom = locations[i][19];							// Street View zoom
 			var marker_icon = locations[i][20];						// Marker icon image (flag)
 
-			// Employ of image tab function using an information image -----
+			// === Employ of image tab function using an information image -----
 			if (media == null || media == "") {
 				media = WT_MODULES_DIR+'googlemap/images/facts/v3_image_info.png';
 			} else {
 				media = media;
 			}
-			// -------------------------------------------------------------
-
+			
+			// === create the street view point of reference (sv_lati_sv_long) -----
 			var sv_point = new google.maps.LatLng(sv_lati,sv_long); // StreetView Latitude and Longitide
+			
 			if (document.getElementById("golfbox").checked == false) {
 				var category = "theatre";							// Category for future pedigree map use etc
 				var addr2 = locations[i][10];						// printable address for marker title
@@ -661,8 +667,12 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 							<?php if ($STREETVIEW) { ?>
 							'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Google Street View'); ?><\/a><\/li>',
 							<?php } ?>
-					//		'<li><a href="#image" id="PH">Image<\/a><\/li>',
-					//		'<li><a href="#" id="SP">Aerial<\/a><\/li>',
+							
+						// === To be used later --- Do not delete --------------
+						//	'<li><a href="#image" id="PH">Image<\/a><\/li>',
+						//	'<li><a href="#" id="SP">Aerial<\/a><\/li>',
+						// -----------------------------------------------------
+					
 						'<\/ul>',
 
 						'<div class="panes">',
@@ -676,24 +686,24 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 								'<div id="pano"><\/div>',
 							'<\/div>',
 							<?php } ?>
-				/*
-							'<div id = "pane3">',
-								divhead,
-								'<div id = "pane3_text">',
-									'<img style="margin-left: -10px; margin-top: 1px;" src="'+media+'" height= "216px" width= "298px" />',
-								'<\/div>',
-							'<\/div>',
-				*/
-				/*
-							'<div id = "pane4">',
-								divhead,
-								'<div id = "pane4_text">',
-									'<br />',
-									'<br /> Spare Tab Content',
-									'<br />',
-								'<\/div>',
-							'<\/div>',
-				*/
+							
+						// === To be used later --- Do not delete --------------
+						//	'<div id = "pane3">',
+						//		divhead,
+						//		'<div id = "pane3_text">',
+						//			'<img style="margin-left: -10px; margin-top: 1px;" src="'+media+'" height= "216px" width= "298px" />',
+						//		'<\/div>',
+						//	'<\/div>',
+						//	'<div id = "pane4">',
+						//		divhead,
+						//		'<div id = "pane4_text">',
+						//			'<br />',
+						//			'<br /> Spare Tab Content',
+						//			'<br />',
+						//		'<\/div>',
+						//	'<\/div>',
+						// -----------------------------------------------------
+					
 						'<\/div>',
 				'<\/div>',
 			'<\/div>'
@@ -701,11 +711,31 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 			// create the marker -----------------------------------------------
 			var html = multitabs;
+<<<<<<< .mine
+			var zoomLevel = <?php echo $zoomLevel; ?>;
+			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon);
+			if (sv_point) {
+				var myLatLng = sv_point;
+			} else {
+				var myLatLng = point;
+			}
+			if (i < 1) {
+				bounds.extend(myLatLng);
+				map.setZoom(zoomLevel);
+				map.setCenter(myLatLng);
+			} else {				
+				bounds.extend(myLatLng);
+				map.fitBounds(bounds);
+			}	
+			
+		}  // end loop through location markers		
+=======
 			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon);
 			var myLatLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
 			bounds.extend(myLatLng);
 			map.fitBounds(bounds);
 		}  // end loop through location markers
+>>>>>>> .r11250
 	}	// end loadMap()
 //]]>
 </script>
