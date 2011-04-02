@@ -711,7 +711,6 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 			// create the marker -----------------------------------------------
 			var html = multitabs;
-<<<<<<< .mine
 			var zoomLevel = <?php echo $zoomLevel; ?>;
 			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon);
 			if (sv_point) {
@@ -729,13 +728,11 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			}	
 			
 		}  // end loop through location markers		
-=======
 			var marker = createMarker(i, point, event, html, category, placed, index, tab, addr2, media, sv_lati, sv_long, sv_bearing, sv_elevation, sv_zoom, sv_point, marker_icon);
 			var myLatLng = new google.maps.LatLng(locations[i][1], locations[i][2]);
 			bounds.extend(myLatLng);
 			map.fitBounds(bounds);
 		}  // end loop through location markers
->>>>>>> .r11250
 	}	// end loadMap()
 //]]>
 </script>
