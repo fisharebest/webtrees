@@ -1322,7 +1322,7 @@ case 'ALLOW_CHANGE_GEDCOM':
 	break;
 
 case 'ALLOW_EDIT_GEDCOM':
-	$title=WT_I18N::translate('Enable online editing');
+	$title=WT_I18N::translate('Online editing');
 	$text=WT_I18N::translate('This option enables online editing features for this database so that users with Edit privileges may update data online.');
 	break;
 
@@ -1411,7 +1411,7 @@ case 'DISPLAY_JEWISH_THOUSANDS':
 	break;
 
 case 'ENABLE_AUTOCOMPLETE':
-	$title=WT_I18N::translate('Enable autocomplete');
+	$title=WT_I18N::translate('Autocomplete');
 	$text=WT_I18N::translate('This option determines whether Autocomplete should be active while information is being entered into certain fields on input forms.  When this option is set to <b>Yes</b>, text input fields for which Autocomplete is possible are indicated by a differently colored background.<br /><br />When Autocomplete is active, <b>webtrees</b> will search its database for possible matches according to what you have already entered.  As you enter more information, the list of possible matches is refined.  When you see the desired input in the list of matches, you can move the mouse cursor to that line of the list and then click the left mouse button to complete the input.<br /><br />The disadvantages of Autocomplete are that it slows the program, entails significant database activity, and also results in more data being sent to the browser.');
 	break;
 
@@ -1471,12 +1471,12 @@ case 'GENERATE_GUID':
 	break;
 
 case 'HIDE_GEDCOM_ERRORS':
-	$title=WT_I18N::translate('Hide GEDCOM errors');
+	$title=WT_I18N::translate('GEDCOM errors');
 	$text=WT_I18N::translate('Many genealogy programs create GEDCOM files with custom tags, and <b>webtrees</b> understands most of them.  When unrecognised tags are found, this option lets you choose whether to ignore them or display a warning message.');
 	break;
 
 case 'HIDE_LIVE_PEOPLE':
-        $title=WT_I18N::translate('Enable privacy');
+        $title=WT_I18N::translate('Privacy options');
         $text=WT_I18N::translate('This option will enable all privacy settings and hide the details of living people, as defined or modified on the Privacy tab of each GEDCOM\'s configuration page.');
         $text .= '<p>';
 		$text .= WT_I18N::plural('Note: "living" is defined (if no death or burial is known) as ending %d year after birth or estimated birth.','Note: "living" is defined (if no death or burial is known) as ending %d years after birth or estimated birth.', get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'), get_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE'));
@@ -1513,7 +1513,7 @@ case 'INDI_FACTS_UNIQUE':
 	break;
 
 case 'KEEP_ALIVE':
-	$title=WT_I18N::translate('Apply living rules to recently deceased');
+	$title=WT_I18N::translate('Extend privacy to dead people');
 	$text=WT_I18N::translate('In some countries, privacy laws apply not only to living people, but also to those who have died recently.  This option will allow you to extend the privacy rules for living people to those who were born or died within a specified number of years.  Leave these values empty to disable this feature.');
 	break;
 
@@ -1627,7 +1627,7 @@ case 'NOTE_ID_PREFIX':
 	break;
 
 case 'PEDIGREE_FULL_DETAILS':
-	$title=WT_I18N::translate('Show birth and death details on charts');
+	$title=WT_I18N::translate('Birth and death details on charts');
 	$text=WT_I18N::translate('This option controls whether or not to show the Birth and Death details of an individual on charts.');
 	break;
 
@@ -1647,7 +1647,7 @@ case 'PEDIGREE_ROOT_ID':
 	break;
 
 case 'PEDIGREE_SHOW_GENDER':
-	$title=WT_I18N::translate('Show gender icon on charts');
+	$title=WT_I18N::translate('Gender icon on charts');
 	$text=WT_I18N::translate('This option controls whether or not to show the individual\'s gender icon on charts.<br /><br />Since the gender is also indicated by the color of the box, this option doesn\'t conceal the gender. The option simply removes some duplicate information from the box.');
 	break;
 
@@ -1802,7 +1802,7 @@ case 'SHOW_CONTEXT_HELP':
 	break;
 
 case 'SHOW_COUNTER':
-	$title=WT_I18N::translate('Show hit counters');
+	$title=WT_I18N::translate('Hit counters');
 	$text=WT_I18N::translate('Show hit counters on Portal and Individual pages.');
 	break;
 
@@ -1812,12 +1812,12 @@ case 'SHOW_DEAD_PEOPLE':
 	break;
 
 case 'SHOW_EMPTY_BOXES':
-	$title=WT_I18N::translate('Show empty boxes on pedigree charts');
+	$title=WT_I18N::translate('Empty boxes on pedigree charts');
 	$text=WT_I18N::translate('This option controls whether or not to show empty boxes on Pedigree charts.');
 	break;
 
 case 'SHOW_EST_LIST_DATES':
-	$title=WT_I18N::translate('Show estimated dates for birth and death');
+	$title=WT_I18N::translate('Estimated dates for birth and death');
 	$text=WT_I18N::translate('This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known.');
 	break;
 
@@ -1842,7 +1842,7 @@ case 'SHOW_LAST_CHANGE':
 	break;
 
 case 'SHOW_LDS_AT_GLANCE':
-	$title=WT_I18N::translate('Show LDS ordinance codes in chart boxes');
+	$title=WT_I18N::translate('LDS ordinance codes in chart boxes');
 	$text=WT_I18N::translate('Setting this option to <b>Yes</b> will show status codes for LDS ordinances in chart boxes.<ul><li><b>B</b> - Baptism</li><li><b>E</b> - Endowed</li><li><b>S</b> - Sealed to spouse</li><li><b>P</b> - Sealed to parents</li></ul>A person who has all of the ordinances done will have <b>BESP</b> printed after their name.  Missing ordinances are indicated by <b>_</b> in place of the corresponding letter code.  For example, <b>BE__</b> indicates missing <b>S</b> and <b>P</b> ordinances.');
 	break;
 
@@ -1907,7 +1907,7 @@ case 'SHOW_RELATIVES_EVENTS':
 	break;
 
 case 'SHOW_STATS':
-	$title=WT_I18N::translate('Show execution statistics');
+	$title=WT_I18N::translate('Execution statistics');
 	$text=WT_I18N::translate('Show runtime statistics and database queries at the bottom of every page.');
 	break;
 
@@ -1970,7 +1970,7 @@ case 'UNDERLINE_NAME_QUOTES':
 	break;
 
 case 'USE_GEONAMES':
-	$title=WT_I18N::translate('Use GeoNames database');
+	$title=WT_I18N::translate('Use GeoNames database for autocomplete on places');
 	$text=WT_I18N::translate('Should the GeoNames database be used to provide more suggestions for place names?<br /><br />When this option is set to <b>Yes</b>, the GeoNames database will be queried to supply suggestions for the place name being entered.  When set to <b>No</b>, only the current genealogical database will be searched.  As you enter more of the place name, the suggestion will become more precise.  This option can slow down data entry, particularly if your Internet connection is slow.<br /><br />The GeoNames geographical database is accessible free of charge. It currently contains over 8,000,000 geographical names.');
 	break;
 
