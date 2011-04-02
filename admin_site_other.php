@@ -30,26 +30,35 @@
 
 define('WT_SCRIPT_NAME', 'admin_site_other.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_edit.php';
-require_once WT_ROOT.'includes/functions/functions_import.php';
-
-$ged=$GEDCOM;
-$gid1=safe_POST_xref('gid1');
-$gid2=safe_POST_xref('gid2');
-$action=safe_POST('action', WT_REGEX_ALPHA, 'choose');
-$ged2=safe_POST('ged2', WT_REGEX_NOSCRIPT, $GEDCOM);
-$keep1=safe_POST('keep1', WT_REGEX_UNSAFE);
-$keep2=safe_POST('keep2', WT_REGEX_UNSAFE);
-if (empty($keep1)) $keep1=array();
-if (empty($keep2)) $keep2=array();
 
 print_header(WT_I18N::translate('Add unlinked records'));
 
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+// The addnewXXX() functions work only for the default tree.
+// Choose one...
+$html='<p><form method="post" action="'.WT_SCRIPT_NAME.'" name="tree"><select name="ged" onChange="tree.submit();">';
+$n=0;
+foreach (get_gedcom_titles() as $gedcom) {
+	if (userGedcomAdmin(WT_USER_ID, $gedcom->gedcom_id)) {
+		$html.='<option value="'.htmlspecialchars($gedcom->gedcom_name).'"';
+		if ($gedcom->gedcom_id==WT_GED_ID) {
+			$html.=' selected="selected"';
+		}
+		$html.='>'.$gedcom->gedcom_title.'</option>';
+		++$n;
+	}
+}
+$html.='</select></form></p>';
+
+// Don't show gedcom list if there is only one...
+if ($n==1) {
+	$html='';
+}
+
 
 echo
 	'<div id="other">',
 	'<p>', WT_I18N::translate('Add unlinked records'), '</p>',
+	$html,
 	'<table id="other">',
 	'<tr><td>',
 	'<a href="javascript:;" onclick="addnewchild(\'\'); return false;">', WT_I18N::translate('Add an unlinked person'), '</a>',
