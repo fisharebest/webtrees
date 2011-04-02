@@ -32,18 +32,18 @@ require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
 global $WT_IMAGES;
 $action=safe_REQUEST($_REQUEST, 'action');
-if (isset($_REQUEST['parent'])) $parent=$_REQUEST['parent'];
-if (isset($_REQUEST['display'])) $display=$_REQUEST['display'];
-if (isset($_REQUEST['mode'])) $mode=$_REQUEST['mode'];
-if (isset($_REQUEST['deleteRecord'])) $deleteRecord=$_REQUEST['deleteRecord'];
+if (isset($_REQUEST['parent'])) $parent=safe_REQUEST($_REQUEST, 'parent');
+if (isset($_REQUEST['inactive'])) $inactive=safe_GET_bool('inactive');
+if (isset($_REQUEST['mode'])) $mode=safe_REQUEST($_REQUEST, 'mode');
+if (isset($_REQUEST['deleteRecord'])) $deleteRecord=safe_REQUEST($_REQUEST, 'deleteRecord');
 
 if (!isset($parent)) $parent=0;
-if (!isset($display)) $display="";
+if (!isset($inactive)) $inactive=false;
 
 // Take a place id and find its place in the hierarchy
 // Input: place ID
 // Output: ordered array of id=>name values, starting with the Top Level
-// e.g. array(0=>"Top Level", 16=>"England", 19=>"London", 217=>"Westminster");
+// e.g. array(0=>'Top Level', 16=>'England', 19=>'London', 217=>'Westminster');
 // NB This function exists in both places.php and places_edit.php
 function place_id_to_hierarchy($id) {
 	$statement=
@@ -69,8 +69,8 @@ function getHighestLevel() {
 /**
  * Find all of the places in the hierarchy
  */
-function get_place_list_loc($parent_id, $display='') {
-	if ($display=="inactive") {
+function get_place_list_loc($parent_id, $inactive=false) {
+	if ($inactive) {
 		$rows=
 			WT_DB::prepare("SELECT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
 			->execute(array($parent_id))
@@ -89,9 +89,9 @@ function get_place_list_loc($parent_id, $display='') {
 
 	$placelist=array();
 	foreach ($rows as $row) {
-		$placelist[]=array("place_id"=>$row->pl_id, "place"=>$row->pl_place, "lati"=>$row->pl_lati, "long"=>$row->pl_long, "zoom"=>$row->pl_zoom, "icon"=>$row->pl_icon);
+		$placelist[]=array('place_id'=>$row->pl_id, 'place'=>$row->pl_place, 'lati'=>$row->pl_lati, 'long'=>$row->pl_long, 'zoom'=>$row->pl_zoom, 'icon'=>$row->pl_icon);
 	}
-	uasort($placelist, "placesort");
+	uasort($placelist, 'placesort');
 	return $placelist;
 }
 
@@ -111,9 +111,10 @@ function outputLevel($parent_id) {
 		->fetchAll();
 
 	foreach ($rows as $row) {
-		echo "{$level};{$prefix}{$row->pl_place}{$suffix};{$row->pl_long};{$row->pl_lati};{$row->pl_zoom};{$row->pl_icon}\r\n";
-		if ($level < $maxLevel)
+		echo $level,';',$prefix,$row->pl_place,$suffix,';',$row->pl_long,';',$row->pl_lati,';',$row->pl_zoom,';',$row->pl_icon,"\r\n";
+		if ($level < $maxLevel) {
 			outputLevel($row->pl_id);
+		}
 	}
 }
 
@@ -127,10 +128,10 @@ function findFiles($path) {
 	if (file_exists($path)) {
 		$dir = dir($path);
 		while (false !== ($entry = $dir->read())) {
-			if ($entry!="." && $entry!=".." && $entry!=".svn") {
-				if (is_dir($path."/".$entry)) {
-					findFiles($path."/".$entry);
-				} elseif (strstr($entry, ".csv")!==false) {
+			if ($entry!='.' && $entry!='..' && $entry!='.svn') {
+				if (is_dir($path.'/'.$entry)) {
+					findFiles($path.'/'.$entry);
+				} elseif (strstr($entry, '.csv')!==false) {
 					$placefiles[] = preg_replace('~'.WT_MODULES_DIR.'googlemap/extra~', '', $path).'/'.$entry;
 				}
 			}
@@ -146,15 +147,15 @@ if (!WT_USER_IS_ADMIN) {
 
 global $GOOGLEMAP_MAX_ZOOM;
 
-if ($action=="ExportFile" && WT_USER_IS_ADMIN) {
+if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 	$tmp = place_id_to_hierarchy($parent);
 	$maxLevel = getHighestLevel();
 	if ($maxLevel>8) $maxLevel=8;
-	$tmp[0] = "places";
+	$tmp[0] = 'places';
 	$outputFileName=preg_replace('/[:;\/\\\(\)\{\}\[\] $]/', '_', implode('-', $tmp)).'.csv';
 	header('Content-Type: application/octet-stream');
 	header('Content-Disposition: attachment; filename="'.$outputFileName.'"');
-	echo "\"".WT_I18N::translate('Level')."\";\"".WT_I18N::translate('Country')."\";";
+	echo '"', WT_I18N::translate('Level'), '";"', WT_I18N::translate('Country'), '";';
 	if ($maxLevel>0) echo '"', WT_I18N::translate('State'), '";';
 	if ($maxLevel>1) echo '"', WT_I18N::translate('County'), '";';
 	if ($maxLevel>2) echo '"', WT_I18N::translate('City'), '";';
@@ -172,15 +173,15 @@ if ($action=="ExportFile" && WT_USER_IS_ADMIN) {
 print_header(WT_I18N::translate('Edit geographic place locations'));
 
 echo '<table id="gm_config"><tr>',
-	'<th><a ', (safe_GET('mod_action')=="admin_editconfig" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>', help_link('GOOGLEMAP_CONFIG','googlemap'), '</th>',
-	'<th><a ', (safe_GET('mod_action')=="admin_places" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>', help_link('PLE_EDIT','googlemap'), '</th>',
-	'<th><a ', (safe_GET('mod_action')=="admin_placecheck" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>', help_link('GOOGLEMAP_PLACECHECK','googlemap'), '</th>',
+	'<th><a ', (safe_GET('mod_action')=='admin_editconfig' ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>', help_link('GOOGLEMAP_CONFIG','googlemap'), '</th>',
+	'<th><a ', (safe_GET('mod_action')=='admin_places' ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>', help_link('PLE_EDIT','googlemap'), '</th>',
+	'<th><a ', (safe_GET('mod_action')=='admin_placecheck' ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>', help_link('GOOGLEMAP_PLACECHECK','googlemap'), '</th>',
 '</tr></table>';
 
-if ($action=="ImportGedcom") {
+if ($action=='ImportGedcom') {
 	$placelist=array();
 	$j=0;
-	if ($mode=="all") {
+	if ($mode=='all') {
 		$statement=
 			WT_DB::prepare("SELECT i_gedcom FROM `##individuals` UNION ALL SELECT f_gedcom FROM `##families`")
 			->execute();
@@ -191,79 +192,79 @@ if ($action=="ImportGedcom") {
 	}
 	while ($gedrec=$statement->fetchColumn()) {
 		$i = 1;
-		$placerec = get_sub_record(2, "2 PLAC", $gedrec, $i);
+		$placerec = get_sub_record(2, '2 PLAC', $gedrec, $i);
 		while (!empty($placerec)) {
 			if (preg_match("/2 PLAC (.+)/", $placerec, $match)) {
 				$placelist[$j] = array();
-				$placelist[$j]["place"] = trim($match[1]);
+				$placelist[$j]['place'] = trim($match[1]);
 				if (preg_match("/4 LATI (.*)/", $placerec, $match)) {
-					$placelist[$j]["lati"] = trim($match[1]);
-					if (($placelist[$j]["lati"][0] != "N") && ($placelist[$j]["lati"][0] != "S")) {
-						if ($placelist[$j]["lati"] < 0) {
-							$placelist[$j]["lati"][0] = "S";
+					$placelist[$j]['lati'] = trim($match[1]);
+					if (($placelist[$j]['lati'][0] != 'N') && ($placelist[$j]['lati'][0] != 'S')) {
+						if ($placelist[$j]['lati'] < 0) {
+							$placelist[$j]['lati'][0] = 'S';
 						} else {
-							$placelist[$j]["lati"] = "N".$placelist[$j]["lati"];
+							$placelist[$j]['lati'] = 'N'.$placelist[$j]['lati'];
 						}
 					}
 				}
-				else $placelist[$j]["lati"] = "0";
+				else $placelist[$j]['lati'] = '0';
 				if (preg_match("/4 LONG (.*)/", $placerec, $match)) {
-					$placelist[$j]["long"] = trim($match[1]);
-					if (($placelist[$j]["long"][0] != "E") && ($placelist[$j]["long"][0] != "W")) {
-						if ($placelist[$j]["long"] < 0) {
-							$placelist[$j]["long"][0] = "W";
+					$placelist[$j]['long'] = trim($match[1]);
+					if (($placelist[$j]['long'][0] != 'E') && ($placelist[$j]['long'][0] != 'W')) {
+						if ($placelist[$j]['long'] < 0) {
+							$placelist[$j]['long'][0] = 'W';
 						} else {
-							$placelist[$j]["long"] = "E".$placelist[$j]["long"];
+							$placelist[$j]['long'] = 'E'.$placelist[$j]['long'];
 						}
 					}
 				}
-				else $placelist[$j]["long"] = "0";
+				else $placelist[$j]['long'] = '0';
 				$j = $j + 1;
 			}
 			$i = $i + 1;
-			$placerec = get_sub_record(2, "2 PLAC", $gedrec, $i);
+			$placerec = get_sub_record(2, '2 PLAC', $gedrec, $i);
 		}
 	}
 	asort($placelist);
 
-	$prevPlace = "";
-	$prevLati = "";
-	$prevLong = "";
+	$prevPlace = '';
+	$prevLati = '';
+	$prevLong = '';
 	$placelistUniq = array();
 	$j = 0;
 	foreach ($placelist as $k=>$place) {
-		if ($place["place"] != $prevPlace) {
+		if ($place['place'] != $prevPlace) {
 			$placelistUniq[$j] = array();
-			$placelistUniq[$j]["place"] = $place["place"];
-			$placelistUniq[$j]["lati"] = $place["lati"];
-			$placelistUniq[$j]["long"] = $place["long"];
+			$placelistUniq[$j]['place'] = $place['place'];
+			$placelistUniq[$j]['lati'] = $place['lati'];
+			$placelistUniq[$j]['long'] = $place['long'];
 			$j = $j + 1;
-		} else if (($place["place"] == $prevPlace) && (($place["lati"] != $prevLati) || ($place["long"] != $prevLong))) {
-			if (($placelistUniq[$j-1]["lati"] == 0) || ($placelistUniq[$j-1]["long"] == 0)) {
-				$placelistUniq[$j-1]["lati"] = $place["lati"];
-				$placelistUniq[$j-1]["long"] = $place["long"];
-			} else if (($place["lati"] != "0") || ($place["long"] != "0")) {
-				echo "Verscil: vorige waarde = $prevPlace, $prevLati, $prevLong, huidige = ", $place["place"], ", ", $place["lati"], ", ", $place["long"], "<br />";
+		} else if (($place['place'] == $prevPlace) && (($place['lati'] != $prevLati) || ($place['long'] != $prevLong))) {
+			if (($placelistUniq[$j-1]['lati'] == 0) || ($placelistUniq[$j-1]['long'] == 0)) {
+				$placelistUniq[$j-1]['lati'] = $place['lati'];
+				$placelistUniq[$j-1]['long'] = $place['long'];
+			} else if (($place['lati'] != '0') || ($place['long'] != '0')) {
+				echo 'Difference: previous value = ', $prevPlace, ', ', $prevLati, ', ', $prevLong, ' current = ', $place['place'], ', ', $place['lati'], ', ', $place['long'], '<br />';
 			}
 		}
-		$prevPlace = $place["place"];
-		$prevLati = $place["lati"];
-		$prevLong = $place["long"];
+		$prevPlace = $place['place'];
+		$prevLati = $place['lati'];
+		$prevLong = $place['long'];
 	}
 
 	$highestIndex = getHighestIndex();
 
 	$default_zoom_level=array(4, 7, 10, 12);
 	foreach ($placelistUniq as $k=>$place) {
-        $parent=preg_split('/ *, */', $place["place"]);
+        $parent=preg_split('/ *, */', $place['place']);
 		$parent=array_reverse($parent);
 		$parent_id=0;
 		for ($i=0; $i<count($parent); $i++) {
 			if (!isset($default_zoom_level[$i]))
 				$default_zoom_level[$i]=$default_zoom_level[$i-1];
 			$escparent=$parent[$i];
-			if ($escparent == "") {
-				$escparent = "Unknown";
+			if ($escparent == '') {
+				$escparent = 'Unknown';
 			}
 			$row=
 				WT_DB::prepare("SELECT pl_id, pl_long, pl_lati, pl_zoom FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ?")
@@ -285,12 +286,12 @@ if ($action=="ImportGedcom") {
 				if (empty($row->pl_id)) {
 					$highestIndex++;
 					WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom) VALUES (?, ?, ?, ?, ?, ?, ?)")
-						->execute(array($highestIndex, $parent_id, $i, $escparent, $place["long"], $place["lati"], $default_zoom_level[$i]));
+						->execute(array($highestIndex, $parent_id, $i, $escparent, $place['long'], $place['lati'], $default_zoom_level[$i]));
 					echo htmlspecialchars($escparent), '<br />';
 				} else {
-					if (empty($row->pl_long) && empty($row->pl_lati) && $place['lati']!="0" && $place['long']!="0") {
+					if (empty($row->pl_long) && empty($row->pl_lati) && $place['lati']!='0' && $place['long']!='0') {
 						WT_DB::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=? WHERE pl_id=?")
-							->execute(array($place["lati"], $place["long"], $row->pl_id));
+							->execute(array($place['lati'], $place['long'], $row->pl_id));
 						echo htmlspecialchars($escparent), '<br />';
 					}
 				}
@@ -300,14 +301,14 @@ if ($action=="ImportGedcom") {
 	$parent=0;
 }
 
-if ($action=="ImportFile") {
+if ($action=='ImportFile') {
 	$placefiles = array();
 	findFiles(WT_MODULES_DIR.'googlemap/extra');
 	sort($placefiles);
 ?>
 <form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&mod_action=admin_places">
 	<input type="hidden" name="action" value="ImportFile2" />
-	<table class="gm_plac_edit ">
+	<table class="gm_plac_edit">
 		<tr>
 			<th><?php echo WT_I18N::translate('File containing places (CSV)'), help_link('PLIF_FILENAME','googlemap'); ?></th>
 			<td><input type="file" name="placesfile" size="50"></td>
@@ -347,16 +348,16 @@ if ($action=="ImportFile") {
 	exit;
 }
 
-if ($action=="ImportFile2") {
+if ($action=='ImportFile2') {
 	$country_names=array();
 	foreach (WT_Stats::iso3166() as $key=>$value) {
 		$country_names[$key]=WT_I18N::translate($key);
 	}
-	if (isset($_POST["cleardatabase"])) {
+	if (isset($_POST['cleardatabase'])) {
 		WT_DB::exec("DELETE FROM `##placelocation` WHERE 1=1");
 	}
-	if (!empty($_FILES["placesfile"]["tmp_name"])) {
-		$lines = file($_FILES["placesfile"]["tmp_name"]);
+	if (!empty($_FILES['placesfile']['tmp_name'])) {
+		$lines = file($_FILES['placesfile']['tmp_name']);
 	} elseif (!empty($_REQUEST['localfile'])) {
 		$lines = file(WT_MODULES_DIR.'googlemap/extra'.$_REQUEST['localfile']);
 	}
@@ -376,9 +377,9 @@ if ($action=="ImportFile2") {
 		$fieldrec = explode(';', $placerec);
 		if (is_numeric($fieldrec[0]) && $fieldrec[0]<=$maxLevel) {
 			$placelist[$j] = array();
-			$placelist[$j]["place"] = "";
+			$placelist[$j]['place'] = '';
 			for ($ii=$fields-4; $ii>1; $ii--) {
-				if ($fieldrec[0] > $ii-2) $placelist[$j]["place"] .= $fieldrec[$ii].",";
+				if ($fieldrec[0] > $ii-2) $placelist[$j]['place'] .= $fieldrec[$ii].',';
 			}
 			foreach ($country_names as $countrycode => $countryname) {
 				if ($countrycode == strtoupper($fieldrec[1])) {
@@ -386,42 +387,42 @@ if ($action=="ImportFile2") {
 					break;
 				}
 			}
-			$placelist[$j]["place"] .= $fieldrec[1];
-			$placelist[$j]["long"] = $fieldrec[$fields-4];
-			$placelist[$j]["lati"] = $fieldrec[$fields-3];
-			$placelist[$j]["zoom"] = $fieldrec[$fields-2];
-			$placelist[$j]["icon"] = trim($fieldrec[$fields-1]);
+			$placelist[$j]['place'] .= $fieldrec[1];
+			$placelist[$j]['long'] = $fieldrec[$fields-4];
+			$placelist[$j]['lati'] = $fieldrec[$fields-3];
+			$placelist[$j]['zoom'] = $fieldrec[$fields-2];
+			$placelist[$j]['icon'] = trim($fieldrec[$fields-1]);
 			$j = $j + 1;
 		}
 	}
 
-	$prevPlace = "";
-	$prevLati = "";
-	$prevLong = "";
+	$prevPlace = '';
+	$prevLati = '';
+	$prevLong = '';
 	$placelistUniq = array();
 	$j = 0;
 	foreach ($placelist as $k=>$place) {
-		if ($place["place"] != $prevPlace) {
+		if ($place['place'] != $prevPlace) {
 			$placelistUniq[$j] = array();
-			$placelistUniq[$j]["place"] = $place["place"];
-			$placelistUniq[$j]["lati"] = $place["lati"];
-			$placelistUniq[$j]["long"] = $place["long"];
-			$placelistUniq[$j]["zoom"] = $place["zoom"];
-			$placelistUniq[$j]["icon"] = $place["icon"];
+			$placelistUniq[$j]['place'] = $place['place'];
+			$placelistUniq[$j]['lati'] = $place['lati'];
+			$placelistUniq[$j]['long'] = $place['long'];
+			$placelistUniq[$j]['zoom'] = $place['zoom'];
+			$placelistUniq[$j]['icon'] = $place['icon'];
 			$j = $j + 1;
-		} else if (($place["place"] == $prevPlace) && (($place["lati"] != $prevLati) || ($place["long"] != $prevLong))) {
-			if (($placelistUniq[$j-1]["lati"] == 0) || ($placelistUniq[$j-1]["long"] == 0)) {
-				$placelistUniq[$j-1]["lati"] = $place["lati"];
-				$placelistUniq[$j-1]["long"] = $place["long"];
-				$placelistUniq[$j-1]["zoom"] = $place["zoom"];
-				$placelistUniq[$j-1]["icon"] = $place["icon"];
-			} else if (($place["lati"] != "0") || ($place["long"] != "0")) {
-				echo "Differenc: last value = $prevPlace, $prevLati, $prevLong, current = ", $place["place"], ", ", $place["lati"], ", ", $place["long"], "<br />";
+		} else if (($place['place'] == $prevPlace) && (($place['lati'] != $prevLati) || ($place['long'] != $prevLong))) {
+			if (($placelistUniq[$j-1]['lati'] == 0) || ($placelistUniq[$j-1]['long'] == 0)) {
+				$placelistUniq[$j-1]['lati'] = $place['lati'];
+				$placelistUniq[$j-1]['long'] = $place['long'];
+				$placelistUniq[$j-1]['zoom'] = $place['zoom'];
+				$placelistUniq[$j-1]['icon'] = $place['icon'];
+			} else if (($place['lati'] != '0') || ($place['long'] != '0')) {
+				echo 'Difference: previous value = ', $prevPlace, ', ', $prevLati, ', ', $prevLong, ' current = ', $place['place'], ', ', $place['lati'], ', ', $place['long'], '<br />';
 			}
 		}
-		$prevPlace = $place["place"];
-		$prevLati = $place["lati"];
-		$prevLong = $place["long"];
+		$prevPlace = $place['place'];
+		$prevLati = $place['lati'];
+		$prevLong = $place['long'];
 	}
 
 	$default_zoom_level = array();
@@ -430,63 +431,63 @@ if ($action=="ImportFile2") {
 	$default_zoom_level[2] = 10;
 	$default_zoom_level[3] = 12;
 	foreach ($placelistUniq as $k=>$place) {
-		$parent = explode(',', $place["place"]);
+		$parent = explode(',', $place['place']);
 		$parent = array_reverse($parent);
 		$parent_id=0;
 		for ($i=0; $i<count($parent); $i++) {
 			$escparent=$parent[$i];
-			if ($escparent == "") {
-				$escparent = "Unknown";
+			if ($escparent == '') {
+				$escparent = 'Unknown';
 			}
 			$row=
 				WT_DB::prepare("SELECT pl_id, pl_long, pl_lati, pl_zoom, pl_icon FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
 				->execute(array($i, $parent_id, $escparent))
 				->fetchOneRow();
 			if (empty($row)) {       // this name does not yet exist: create entry
-				if (!isset($_POST["updateonly"])) {
+				if (!isset($_POST['updateonly'])) {
 					$highestIndex = $highestIndex + 1;
 					if (($i+1) == count($parent)) {
-						$zoomlevel = $place["zoom"];
+						$zoomlevel = $place['zoom'];
 					} elseif (isset($default_zoom_level[$i])) {
 						$zoomlevel = $default_zoom_level[$i];
 					} else {
 						$zoomlevel = $GOOGLEMAP_MAX_ZOOM;
 					}
-					if (($place["lati"] == "0") || ($place["long"] == "0") || (($i+1) < count($parent))) {
+					if (($place['lati'] == '0') || ($place['long'] == '0') || (($i+1) < count($parent))) {
 						WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?)")
-							->execute(array($highestIndex, $parent_id, $i, $escparent, $zoomlevel, $place["icon"]));
+							->execute(array($highestIndex, $parent_id, $i, $escparent, $zoomlevel, $place['icon']));
 					} else {
 						//delete leading zero
-						$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.') , $place["lati"]);
-						$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.') , $place["long"]);
+						$pl_lati = str_replace(array('N', 'S', ','), array('', '-', '.') , $place['lati']);
+						$pl_long = str_replace(array('E', 'W', ','), array('', '-', '.') , $place['long']);
 						if ($pl_lati >= 0) {
-							$place["lati"] = "N".abs($pl_lati);
+							$place['lati'] = 'N'.abs($pl_lati);
 						} elseif ($pl_lati < 0) {
-							$place["lati"] = "S".abs($pl_lati);
+							$place['lati'] = 'S'.abs($pl_lati);
 						}
 						if ($pl_long >= 0) {
-							$place["long"] = "E".abs($pl_long);
+							$place['long'] = 'E'.abs($pl_long);
 						} elseif ($pl_long < 0) {
-							$place["long"] = "W".abs($pl_long);
+							$place['long'] = 'W'.abs($pl_long);
 						}
 						WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
-							->execute(array($highestIndex, $parent_id, $i, $escparent, $place["long"], $place["lati"], $zoomlevel, $place["icon"]));
+							->execute(array($highestIndex, $parent_id, $i, $escparent, $place['long'], $place['lati'], $zoomlevel, $place['icon']));
 					}
 					$parent_id = $highestIndex;
 				}
 			} else {
 				$parent_id = $row->pl_id;
-				if ((isset($_POST["overwritedata"])) && ($i+1 == count($parent))) {
+				if ((isset($_POST['overwritedata'])) && ($i+1 == count($parent))) {
 					WT_DB::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?")
-						->execute(array($place["lati"], $place["long"], $place["zoom"], $place["icon"], $parent_id));
+						->execute(array($place['lati'], $place['long'], $place['zoom'], $place['icon'], $parent_id));
 				} else {
-					if ((($row->pl_long == "0") || ($row->pl_long == null)) && (($row->pl_lati == "0") || ($row->pl_lati == null))) {
+					if ((($row->pl_long == '0') || ($row->pl_long == null)) && (($row->pl_lati == '0') || ($row->pl_lati == null))) {
 						WT_DB::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=? WHERE pl_id=?")
-							->execute(array($place["lati"], $place["long"], $parent_id));
+							->execute(array($place['lati'], $place['long'], $parent_id));
 					}
 					if (empty($row->pl_icon) && !empty($place['icon'])) {
 						WT_DB::prepare("UPDATE `##placelocation` SET pl_icon=? WHERE pl_id=?")
-							->execute(array($place["icon"], $parent_id));
+							->execute(array($place['icon'], $parent_id));
 					}
 				}
 			}
@@ -495,7 +496,7 @@ if ($action=="ImportFile2") {
 	$parent=0;
 }
 
-if ($action=="DeleteRecord") {
+if ($action=='DeleteRecord') {
 	$exists=
 		WT_DB::prepare("SELECT 1 FROM `##placelocation` WHERE pl_parent_id=?")
 		->execute(array($deleteRecord))
@@ -505,7 +506,7 @@ if ($action=="DeleteRecord") {
 		WT_DB::prepare("DELETE FROM `##placelocation` WHERE pl_id=?")
 			->execute(array($deleteRecord));
 	} else {
-		echo "<table class=\"facts_table\"><tr><td>".WT_I18N::translate('Location not removed: this location contains sub-locations')."</td></tr></table>";
+		echo '<table class="facts_table"><tr><td>', WT_I18N::translate('Location not removed: this location contains sub-locations'), '</td></tr></table>';
 	}
 }
 
@@ -513,23 +514,27 @@ if ($action=="DeleteRecord") {
 <script type="text/javascript">
 <!--
 function showchanges() {
-	window.location = '<?php echo basename($_SERVER["REQUEST_URI"]); ?>&show_changes=yes';
+	window.location = '<?php echo basename($_SERVER['REQUEST_URI']); ?>&show_changes=yes';
+}
+
+function updateList(inactive) {
+	window.location.href='<?php if (strstr($_SERVER['REQUEST_URI'], '&inactive', true)) { $uri=strstr($_SERVER['REQUEST_URI'], '&inactive', true);} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&inactive='; ?>'+inactive;
 }
 
 function edit_place_location(placeid) {
-	window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=690, height=630, resizable=1, scrollbars=1');
+	window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid+'&'+sessionname+'='+sessionid, '_blank', 'top=50, left=50, width=690, height=630, resizable=1, scrollbars=1');
 	return false;
 }
 
 function add_place_location(placeid) {
-	window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=690, height=630, resizable=1, scrollbars=1');
+	window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid+'&'+sessionname+'='+sessionid, '_blank', 'top=50, left=50, width=690, height=630, resizable=1, scrollbars=1');
 	return false;
 }
 
 function delete_place(placeid) {
-	var answer=confirm("<?php echo WT_I18N::translate('Remove this location?'); ?>");
+	var answer=confirm('<?php echo WT_I18N::translate('Remove this location?'); ?>');
 	if (answer == true) {
-		window.location = "<?php echo $_SERVER["REQUEST_URI"]; ?>&action=DeleteRecord&deleteRecord=" + placeid;
+		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&action=DeleteRecord&deleteRecord=' + placeid;
 	}
 }
 
@@ -540,74 +545,74 @@ echo '<div id="gm_breadcrumb">';
 $where_am_i=place_id_to_hierarchy($parent);
 foreach (array_reverse($where_am_i, true) as $id=>$place) {
 	if ($id==$parent) {
-		if ($place != "Unknown") {
+		if ($place != 'Unknown') {
 			echo PrintReady($place);
 		} else {
 			echo WT_I18N::translate('unknown');
 		}
 	} else {
-		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places&parent={$id}&display={$display}\">";
-		if ($place != "Unknown") {
-			echo PrintReady($place), "</a>";
+		echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $id, '&inactive=', $inactive, '">';
+		if ($place != 'Unknown') {
+			echo PrintReady($place), '</a>';
 		} else {
-			echo WT_I18N::translate('unknown'), "</a>";
+			echo WT_I18N::translate('unknown'), '</a>';
 		}
 	}
-	echo " - ";
+	echo ' - ';
 }
-echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places&parent=0&display=$display\">".WT_I18N::translate('Top Level')."</a></div>";
-echo "<form name=\"active\" method=\"post\" action=\"module.php?mod=googlemap&mod_action=admin_places&parent=$parent&display=$display\"><div id=\"gm_active\">";
-echo WT_I18N::translate('Click here to show inactive places');
+echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '">', WT_I18N::translate('Top Level'), '</a></div>';
+echo '<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '"><div id="gm_active">';
+echo '<label for="inactive">', WT_I18N::translate('Click here to show inactive places'), '</label>';
 echo help_link('PLE_ACTIVE','googlemap');
-echo "<input type=\"checkbox\" name=\"display\" value=\"inactive\"";
-if ($display == 'inactive') echo " checked=\"checked\"";
-echo ">&nbsp;&nbsp;<input type=\"submit\" value=\"", WT_I18N::translate('View'), "\" >";
-echo "</div></form>";
+echo '<input type="checkbox" name="inactive" id="inactive"';
+if ($inactive) echo ' checked="checked"';
+echo ' onclick="updateList(this.checked)"';
+echo '></div></form>';
 
-$placelist=get_place_list_loc($parent, $display);
-echo "<div class=\"gm_plac_edit\">";
-echo "<table class=\"gm_plac_edit\"><tr>";
-echo "<th>", WT_Gedcom_Tag::getLabel('PLAC'), "</th>";
-echo "<th>", WT_Gedcom_Tag::getLabel('LATI'), "</th>";
-echo "<th>", WT_Gedcom_Tag::getLabel('LONG'), "</th>";
-echo "<th>".WT_I18N::translate('Zoom factor')."</th>";
-echo "<th>".WT_I18N::translate('Icon')."</th>";
-echo "<th colspan=\"2\">";
-echo WT_I18N::translate('Edit geographic location'), help_link('PL_EDIT_LOCATION','googlemap'), "</th></tr>";
+$placelist=get_place_list_loc($parent, $inactive);
+echo '<div class="gm_plac_edit">';
+echo '<table class="gm_plac_edit"><tr>';
+echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
+echo '<th>', WT_Gedcom_Tag::getLabel('LATI'), '</th>';
+echo '<th>', WT_Gedcom_Tag::getLabel('LONG'), '</th>';
+echo '<th>', WT_I18N::translate('Zoom factor'), '</th>';
+echo '<th>', WT_I18N::translate('Icon'), '</th>';
+echo '<th colspan="2">';
+echo WT_I18N::translate('Edit geographic location'), help_link('PL_EDIT_LOCATION','googlemap'), '</th></tr>';
 if (count($placelist) == 0)
-	echo "<tr><td colspan=\"7\" class=\"accepted\">", WT_I18N::translate('No places found'), "</td></tr>";
+	echo '<tr><td colspan="7" class="accepted">', WT_I18N::translate('No places found'), '</td></tr>';
 foreach ($placelist as $place) {
-	echo "<tr><td><a href=\"module.php?mod=googlemap&mod_action=admin_places&parent={$place['place_id']}&display={$display}\">";
-	if ($place["place"] != "Unknown")
-			echo PrintReady($place["place"]), "</a></td>";
+	echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&inactive=', $inactive, '">';
+	if ($place['place'] != 'Unknown')
+			echo PrintReady($place['place']), '</a></td>';
 		else
-			echo WT_I18N::translate('unknown'), "</a></td>";
-	echo "<td>{$place['lati']}</td>";
-	echo "<td>{$place['long']}</td>";
-	echo "<td>{$place['zoom']}</td>";
-	echo "<td>";
-	if (($place["icon"] == NULL) || ($place["icon"] == "")) {
-		if (($place['lati'] == NULL) || ($place['long'] == NULL) || (($place['lati'] == "0") && ($place['long'] == "0"))) {
-			echo "&nbsp;";
-			echo "<img src=\"http://labs.google.com/ridefinder/images/mm_20_yellow.png\">";
+			echo WT_I18N::translate('unknown'), '</a></td>';
+	echo '<td>', $place['lati'], '</td>';
+	echo '<td>', $place['long'], '</td>';
+	echo '<td>', $place['zoom'], '</td>';
+	echo '<td>';
+	if (($place['icon'] == NULL) || ($place['icon'] == '')) {
+		if (($place['lati'] == NULL) || ($place['long'] == NULL) || (($place['lati'] == '0') && ($place['long'] == '0'))) {
+			echo '&nbsp;';
+			echo '<img src="http://labs.google.com/ridefinder/images/mm_20_yellow.png">';
 		}
 		else {
-			echo "&nbsp;";
-			echo "<img src=\"http://labs.google.com/ridefinder/images/mm_20_red.png\">";
+			echo '&nbsp;';
+			echo '<img src="http://labs.google.com/ridefinder/images/mm_20_red.png">';
 		}
 	} else {
 		echo '<img src="', WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
 	}
-	echo "</td>";
-	echo "<td class=\"narrow\"><a href=\"javascript:;\" onclick=\"edit_place_location({$place['place_id']});return false;\"><img src=\"", $WT_IMAGES["edit"], "\" border=\"0\" alt=\"", WT_I18N::translate("Edit"), "\" /></a></td>";
+	echo '</td>';
+	echo '<td class="narrow"><a href="javascript:;" onclick="edit_place_location(', $place['place_id'], ');return false;"><img src="', $WT_IMAGES['edit'], '" border="0" alt="', WT_I18N::translate("Edit"), '" /></a></td>';
 	$noRows=
 		WT_DB::prepare("SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id=?")
-		->execute(array($place["place_id"]))
+		->execute(array($place['place_id']))
 		->fetchOne();
 	if ($noRows==0) { ?>
-	<td><a href="javascript:;" onclick="delete_place(<?php echo $place["place_id"], ");return false;\">"; ?><img src="<?php echo $WT_IMAGES["remove"];?>" border="0" alt="<?php echo WT_I18N::translate('Remove'); ?>" /></a></td>
+	<td><a href="javascript:;" onclick="delete_place(<?php echo $place['place_id'], ');return false;">'; ?><img src="<?php echo $WT_IMAGES['remove'];?>" border="0" alt="<?php echo WT_I18N::translate('Remove'); ?>" /></a></td>
 <?php       } else { ?>
-		<td><img src="<?php echo $WT_IMAGES["remove_grey"];?>" border="0" alt="" /> </td>
+		<td><img src="<?php echo $WT_IMAGES['remove_grey'];?>" border="0" alt="" /> </td>
 <?php       } ?>
 	</tr>
 	<?php
@@ -630,20 +635,20 @@ foreach ($placelist as $place) {
 			<td>
 <?php
 	if (count($where_am_i)<=4) {
-		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places&action=ExportFile&parent={$parent}\">";
-		echo WT_I18N::translate('Export current view to file'), "</a>";
+		echo '<a href="module.php?mod=googlemap&mod_action=admin_places&action=ExportFile&parent=', $parent, '">';
+		echo WT_I18N::translate('Export current view to file'), '</a>';
 		echo help_link('PL_EXPORT_FILE','googlemap');
 	} else {
-		echo "&nbsp;";
+		echo '&nbsp;';
 	}
-	echo "</td><td colspan=\"2\">";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places&action=ExportFile&parent=0\">";
-	echo WT_I18N::translate('Export all locations to file'), "</a>";
+	echo '</td><td colspan="2">';
+	echo '<a href="module.php?mod=googlemap&mod_action=admin_places&action=ExportFile&parent=0">';
+	echo WT_I18N::translate('Export all locations to file'), '</a>';
 	echo help_link('PL_EXPORT_ALL_FILE','googlemap');
-	echo "</td></tr></table>";
+	echo '</td></tr></table>';
 if (empty($SEARCH_SPIDER))
 	print_footer();
 else {
-	echo WT_I18N::translate('Search Engine Spider Detected'), ": ", $SEARCH_SPIDER;
-	echo "\n</div>\n\t</body>\n</html>";
+	echo WT_I18N::translate('Search Engine Spider Detected'), ': ', $SEARCH_SPIDER;
+	echo '</div></body></html>';
 }

@@ -6,7 +6,7 @@
  * It simply needs to set $title and $text for the help topic $help_topic
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -191,7 +191,17 @@ case 'PLIF_OVERWRITE':
 
 case 'PLE_ACTIVE':
 	$title=WT_I18N::translate('List inactive places');
-	$text=WT_I18N::translate('<strong>List places in the GoogleMaps table that are not used by any current GEDCOM(s).</strong><br /><br />The display is set, by default, to only display for editing here those places that exist on BOTH your GEDCOM files and your GoogleMap tables.<br /><br />When this option is checked, and \"View\" clicked, the list of places will display ALL places at this level.<br /><br />This is designed to speed up the display of the list when large place lists have been imported, but not all used.<br /><br />NOTE - if the option is checked the full list may take a few minutes to display.');
+	$text=
+		'<strong>'.
+		WT_I18N::translate('List places in the Google Maps table that are not used by any current Family tree(s).').
+		'</strong><br /><br />'.
+		WT_I18N::translate('The display is set, by default, to only display for editing here those places that exist on BOTH your Family trees and your Google Maps tables.').
+		'<br /><br />'.
+		WT_I18N::translate('When this option is checked, the list of places will display ALL places at this level.').
+		'<br /><br />'.
+		WT_I18N::translate('This is designed to speed up the display of the list when large place lists have been imported, but not all used.').
+		'<br /><br />'.
+		WT_I18N::translate('NOTE - if the option is checked the full list may take a few minutes to display.');
 	break;
 
 // Help text for placecheck.php
@@ -237,7 +247,7 @@ case 'PLACECHECK_KEY':
 	
 	break;
 
-//wooc Options for Place Hierarchy display
+// Help text for Place Hierarchy display
 
 case 'GOOGLEMAP_PH':
 	$title=WT_I18N::translate('Use Googlemap for Place Hierarchy');
