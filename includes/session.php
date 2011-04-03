@@ -312,7 +312,7 @@ $cfg=array(
 // Search engines don't send cookies, and so create a new session with every visit.
 // Make sure they always use the same one
 if ($SEARCH_SPIDER) {
-	Zend_Session::setId('search_engine_'.$_SERVER['REMOTE_ADDR']);
+	Zend_Session::setId('search-engine-'.str_replace('.', '-', $_SERVER['REMOTE_ADDR']));
 }
 
 Zend_Session::start($cfg);
