@@ -1611,7 +1611,7 @@ echo WT_JS_START;?>
 						<?php echo WT_I18N::translate('Surname tradition'), help_link('SURNAME_TRADITION'); ?>
 					</td>
 					<td>
-						<?php echo select_edit_control('NEW_SURNAME_TRADITION', array('paternal'=>WT_I18N::translate_c('Surname tradition', 'paternal'), 'spanish'=>WT_I18N::translate_c('Surname tradition', 'Spanish'), 'portuguese'=>WT_I18N::translate_c('Surname tradition', 'Portuguese'), 'icelandic'=>WT_I18N::translate_c('Surname tradition', 'Icelandic'), 'polish'=>WT_I18N::translate_c('Surname tradition', 'Polish'), 'none'=>WT_I18N::translate_c('Surname tradition', 'none')), null, get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION')); ?>
+						<?php echo select_edit_control('NEW_SURNAME_TRADITION', array('paternal'=>WT_I18N::translate_c('Surname tradition', 'paternal'), 'spanish'=>WT_I18N::translate_c('Surname tradition', 'Spanish'), 'portuguese'=>WT_I18N::translate_c('Surname tradition', 'Portuguese'), 'icelandic'=>WT_I18N::translate_c('Surname tradition', 'Icelandic'), 'polish'=>WT_I18N::translate_c('Surname tradition', 'Polish'), 'lithuanian'=>WT_I18N::translate_c('Surname tradition', 'Lithuanian'), 'none'=>WT_I18N::translate_c('Surname tradition', 'none')), null, get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION')); ?>
 					</td>
 				</tr>
 				<tr>

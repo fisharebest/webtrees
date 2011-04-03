@@ -703,12 +703,15 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			break;
 		case 'paternal':
 		case 'polish':
+		case 'lithuanian':
 			// Father gives his surname to his wife and children
 			switch ($nextaction) {
 			case 'addspouseaction':
 				if ($famtag=='WIFE' && preg_match('/\/(.*)\//', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='polish') {
 						$match[1]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[1]);
+					} else if ($SURNAME_TRADITION=='lithuanian') {
+						$match[1]=preg_replace(array('/as$/', '/is$/', '/ys$/', '/us$/'), array('ienė', 'ienė', 'ienė', 'ienė'), $match[1]);
 					}
 					$new_marnm=$match[1];
 				}
@@ -718,6 +721,8 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 					$name_fields['SURN']=$match[2];
 					if ($SURNAME_TRADITION=='polish' && $sextag=='F') {
 						$match[2]=preg_replace(array('/ski$/', '/cki$/', '/dzki$/', '/żki$/'), array('ska', 'cka', 'dzka', 'żka'), $match[2]);
+					} else if ($SURNAME_TRADITION=='lithuanian' && $sextag=='F') {
+						$match[2]=preg_replace(array('/as$/', '/a$/', '/is$/', '/ys$/', '/ius$/', '/us$/'), array('aitė', 'aitė', 'ytė', 'ytė', 'iūtė', 'utė'), $match[2]);
 					}
 					$name_fields['SPFX']=trim($match[1]);
 					$name_fields['NAME']="/{$match[1]}{$match[2]}/";
@@ -727,6 +732,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				if ($famtag=='HUSB' && preg_match('/\/((?:[a-z]{2,3}\s+)*)(.*)\//i', $indi_name, $match)) {
 					if ($SURNAME_TRADITION=='polish' && $sextag=='M') {
 						$match[2]=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $match[2]);
+					} else if ($SURNAME_TRADITION=='lithuanian' && $sextag=='F') {
+						// not a complete list as the rules are somewhat complicated but will do 95% correctly
+						$match[2]=preg_replace(array('/aitė$/', '/ytė$/', '/iūtė$/', '/utė$/'), array('as', 'is', 'ius', 'us'), $match[2]);
 					}
 					$name_fields['SPFX']=trim($match[1]);
 					$name_fields['SURN']=$match[2];
@@ -774,9 +782,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		foreach ($match[1] as $tag)
 			$adv_name_fields[$tag]='';
 	// This is a custom tag, but PGV uses it extensively.
-	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || (strpos($namerec, '2 _MARNM')!==false))
+	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || $SURNAME_TRADITION=='lithuanian' || (strpos($namerec, '2 _MARNM')!==false)) {
 		$adv_name_fields['_MARNM']='';
-
+	}
 	$person = WT_Person::getInstance($pid);
 	foreach ($adv_name_fields as $tag=>$dummy) {
 		// Edit existing tags
@@ -1946,9 +1954,9 @@ function addNewName() {
 		$tags=array_merge($tags, $match[1]);
 	}
 
-	// Paternal and Polish surname traditions can also create a _MARNM
+	// Paternal and Polish and Lithuanian surname traditions can also create a _MARNM
 	$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
-	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish') {
+	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || $SURNAME_TRADITION=='lithuanian') {
 		$tags[]='_MARNM';
 	}
 

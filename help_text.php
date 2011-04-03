@@ -1959,7 +1959,19 @@ case 'SURNAME_LIST_STYLE':
 
 case 'SURNAME_TRADITION':
 	$title=WT_I18N::translate('Surname tradition');
-	$text=WT_I18N::translate('When you add new members to a family, <b>webtrees</b> can supply default values for surnames according to regional custom.<br /><br /><ul><li>In the <b>Paternal</b> tradition, all family members share the father\'s surname.</li><li>In the <b>Spanish</b> and <b>Portuguese</b> tradition, children receive a surname from each parent.</li><li>In the <b>Icelandic</b> tradition, children receive their male parent\'s given name as a surname, with a suffix that denotes gender.</li><li>In the <b>Polish</b> tradition, all family members share the father\'s surname. For some surnames, the suffix indicates gender.  The suffixes <i>ski</i>, <i>cki</i>, and <i>dzki</i> indicate male, while the corresponding suffixes <i>ska</i>, <i>cka</i>, and <i>dzka</i> indicate female.</li></ul>');
+	$text=
+		WT_I18N::translate('When you add new members to a family, <b>webtrees</b> can supply default values for surnames according to regional custom.').
+		'<br /><br /><ul><li>'.
+		WT_I18N::translate('In the <b>Paternal</b> tradition, all family members share the father\'s surname.').
+		'</li><li>'.
+		WT_I18N::translate('In the <b>Spanish</b> and <b>Portuguese</b> tradition, children receive a surname from each parent.').
+		'</li><li>'.
+		WT_I18N::translate('In the <b>Icelandic</b> tradition, children receive their male parent\'s given name as a surname, with a suffix that denotes gender.').
+		'</li><li>'.
+		WT_I18N::translate('In the <b>Polish</b> tradition, all family members share the father\'s surname. For some surnames, the suffix indicates gender.  The suffixes <i>ski</i>, <i>cki</i>, <i>dzki</i>, and <i>żki</i> indicate male, while the corresponding suffixes <i>ska</i>, <i>cka</i>, <i>dzka</i>, and <i>żka</i> indicate female.').
+		'</li><li>'.
+		WT_I18N::translate('In the <b>Lithuanian</b> tradition, all family members share the fathers surname. For married females the suffix changes to <i>ienė</i>. While unmarried females suffixes depend on their faters suffix: <i>as</i>, <i>a</i>, <i>is</i>, <i>ys</i>, <i>ius</i> and <i>us</i> change to <i>aitė</i>, <i>aitė</i>, <i>ytė</i>, <i>ytė</i>, <i>iūtė</i> and <i>utė</i>.').
+		'</li></ul>';
 	break;
 
 case 'THEME':
