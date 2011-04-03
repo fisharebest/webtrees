@@ -200,13 +200,11 @@ function print_fact(&$eventObj) {
 				}
 				echo "</a>";
 			}
-			if (empty($SEARCH_SPIDER)) {
-				$family = WT_Family::getInstance($pid);
-				if ($family) {
-					if ($spouse) echo " - ";
-					echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
-					echo '<br />';
-				}
+			$family = WT_Family::getInstance($pid);
+			if ($family) {
+				if ($spouse) echo " - ";
+				echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
+				echo '<br />';
 			}
 		}
 		// -- find date for each fact
@@ -231,12 +229,6 @@ function print_fact(&$eventObj) {
 				//-- strip // from ALIA tag for FTM generated gedcoms
 				echo preg_replace("'/'", "", $event), "<br />";
 			}
-			/* -- see the format_fact_date function where this is handled
-			else if ($event=="Y") {
-				if (get_sub_record(2, "2 DATE", $factrec)=="") {
-					echo WT_I18N::translate('Yes'), "<br />";
-				}
-			}*/
 			elseif ($event=="N") {
 				if (get_sub_record(2, "2 DATE", $factrec)=="") {
 					echo WT_I18N::translate('No');
@@ -287,44 +279,104 @@ function print_fact(&$eventObj) {
 				echo PrintReady($temp);
 			}
 		}
-		//-- find description for some facts
-		$ct = preg_match("/2 DESC (.*)/", $factrec, $match);
-		if ($ct>0) echo PrintReady($match[1]);
-		// -- print PLACe, TEMPle and STATus
+		// Place (includes temple)
 		echo '<div class="place">', format_fact_place($eventObj, true, true, true), '</div>';
-		if (preg_match("/ (PLAC)|(STAT)|(TEMP)|(SOUR) /", $factrec)>0 || ($event && $fact!="ADDR")) print "<br />";
-		// -- print BURIal -> CEMEtery
-		$ct = preg_match("/2 CEME (.*)/", $factrec, $match);
-		if ($ct>0) {
-			if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/CEME.gif"))
-				//echo $eventObj->Icon(), ' '; // echo incorrect fact icon !!!
-				echo "<img src=\"".WT_THEME_DIR."images/facts/CEME.gif\" alt=\"".WT_Gedcom_Tag::getLabel('CEME')."\" title=\"".WT_Gedcom_Tag::getLabel('CEME')."\" align=\"middle\" /> ";
-			echo "<b>", WT_Gedcom_Tag::getLabel('CEME'), ":</b> ", $match[1], "<br />";
-		}
-		//-- print address structure
+		// Address
 		if ($fact!="ADDR") {
 			print_address_structure($factrec, 2);
-		}
-		else {
+		} else {
 			print_address_structure($factrec, 1);
 		}
-		// -- Enhanced ASSOciates > RELAtionship
+		// Associates
 		print_asso_rela_record($eventObj);
-		// -- find _WT_USER field
-		if (preg_match("/\n2 _WT_USER (.+)/", $factrec, $match)) {
-			$fullname=getUserFullname(getUserId($match[1])); // may not exist	
-			echo ' - ', WT_Gedcom_Tag::getLabel('_WT_USER'), ': ';
-			if ($fullname) {
-				echo '<span title="'.htmlspecialchars($fullname).'">'.$match[1].'</span>';
-			} else {
-				echo $match[1];
-			}
-		}
-		// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
-		if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
-			foreach ($matches[1] as $match) {
-				echo '<br/><span class="label">', WT_Gedcom_Tag::getLabel('RESN'), ':</span> <span class="field">';
-				switch ($match) {
+
+		// Display any other "2 XXXX" attributes in the order in which they appear
+		preg_match_all('/\n2 ('.WT_REGEX_TAG.') (.+)/', $factrec, $matches, PREG_SET_ORDER);
+		foreach ($matches as $match) {
+			switch ($match[1]) {
+			case 'DATE':
+			case 'TIME':
+			case 'AGE':
+			case 'PLAC':
+			case 'ADDR':
+			case 'ALIA':
+			case 'ASSO':
+			case 'DESC':
+			case 'EMAIL':
+			case 'FAX':
+			case 'PHON':
+			case 'RELA':
+			case 'STAT':
+			case 'TEMP':
+			case 'TYPE':
+			case 'WWW':
+			case '_EMAIL':
+			case 'URL':
+			case 'FAMS':
+			case '_WTS':
+			case '_WTFS':
+			case 'CONT':
+				// These were already shown at the beginning
+				break;
+			case 'NOTE':
+			case 'OBJE':
+			case 'SOUR':
+				// These will be shown at the end
+				break;
+			case 'EVEN': // 0 SOUR / 1 DATA / 2 EVEN /3 DATE/PLAC
+				echo '<div><b>';
+				foreach (preg_split('/ *, */', $match[2]) as $n=>$value) {
+					if ($n>0) {
+						echo ', ';
+					}
+					echo WT_Gedcom_Tag::getLabel($value);
+				}
+				echo '</b>';
+				if (preg_match('/\n3 DATE (.+)/', $factrec, $date_match)) {
+					$date=new WT_Date($date_match[1]);
+					echo ' - ', $date->Display();
+				}
+				if (preg_match('/\n3 PLAC (.+)/', $factrec, $plac_match)) {
+					echo ' - ', $plac_match[1];
+				}
+				echo '</div>';
+				break;
+			case 'FAMC': // 1 ADOP / 2 FAMC
+				echo '<div><span class="label">', WT_Gedcom_Tag::getLabel('FAMC'), ':</span> ';
+				$family=WT_Family::getInstance(str_replace('@', '', $match[2]));
+				if ($family) { // May be a pointer to a non-existant record
+					echo '<a href="', $family->getHtmlUrl(), '">', $family->getFullName(), '</a>';
+				} else {
+					echo '<span class="error">', $match[2], '</span>';
+				}
+				if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $factrec, $match)) {
+					echo '<div><span class="indent"><span class="label">', WT_Gedcom_Tag::getLabel('ADOP'), ':</span> <span class="field">';
+					switch ($match[1]) {
+					case 'HUSB':
+					case 'WIFE':
+						echo WT_Gedcom_Tag::getLabel($match[1]);
+						break;
+					case 'BOTH':
+						echo WT_Gedcom_Tag::getLabel('HUSB'), '+', WT_Gedcom_Tag::getLabel('WIFE');
+						break;
+					}
+					echo '</span>';
+				}
+				echo '</div>';
+				break;
+			case '_WT_USER':
+				$fullname=getUserFullname(getUserId($match[2])); // may not exist	
+				echo '<div> - ', WT_Gedcom_Tag::getLabel('_WT_USER'), ': ';
+				if ($fullname) {
+					echo '<span title="'.htmlspecialchars($fullname).'">'.$match[2].'</span>';
+				} else {
+					echo $match[2];
+				}
+				echo '</div>';
+				break;
+			case 'RESN':
+				echo '<div><span class="label">', WT_Gedcom_Tag::getLabel('RESN'), ':</span> <span class="field">';
+				switch ($match[2]) {
 				case 'none':
 					// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
 					// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
@@ -343,80 +395,30 @@ function print_fact(&$eventObj) {
 					echo $match;
 					break;
 				}
-				echo '</span>';
-			}
-		}
-		if (preg_match("/\n2 FAMC @(.+)@/", $factrec, $match)) {
-			echo "<br/><span class=\"label\">", WT_Gedcom_Tag::getLabel('FAMC'), ":</span> ";
-			$family=WT_Family::getInstance($match[1]);
-			if ($family) { // May be a pointer to a non-existant record
-				echo '<a href="', $family->getHtmlUrl(), '">', $family->getFullName(), '</a>';
-			} else {
-				echo '<span class="error">', $match[1], '</span>';
-			}
-			if (preg_match("/\n3 ADOP (HUSB|WIFE|BOTH)/", utf8_strtoupper($factrec), $match)) {
-				echo '<br/><span class="indent"><span class="label">', WT_Gedcom_Tag::getLabel('ADOP'), ':</span> ';
-				echo '<span class="field">';
-				switch ($match[1]) {
-				case 'HUSB':
-				case 'WIFE':
-					echo WT_Gedcom_Tag::getLabel($match[1]);
-					break;
-				case 'BOTH':
-					echo WT_Gedcom_Tag::getLabel('HUSB'), '+', WT_Gedcom_Tag::getLabel('WIFE');
-					break;
-				}
-				echo '</span></span>';
-			}
-		}
-		// 0 SOUR/1 DATA/2 EVEN/3 DATE/3 PLAC
-		$data_rec = get_sub_record(1, "1 DATA", $factrec, 1);
-		if (!empty($data_rec)) {
-			for ($even_num=1; $even_rec=get_sub_record(2, "2 EVEN", $data_rec, $even_num); ++$even_num) {
-				$tmp1=get_gedcom_value('EVEN', 2, $even_rec, $truncate='', $convert=false);
-				$tmp2=new WT_Date(get_gedcom_value('DATE', 3, $even_rec, $truncate='', $convert=false));
-				$tmp3=get_gedcom_value('PLAC', 3, $even_rec, $truncate='', $convert=false);
-				$fact_string = "";
-				if ($even_num>1)
-					$fact_string .= "<br />";
-				$fact_string .= "<b>";
-				foreach (preg_split('/\W+/', $tmp1) as $key=>$value) {
-					if ($key>0)
-						$fact_string .= ", ";
-					$fact_string .= WT_I18N::translate($value);
-				}
-				$fact_string .= "</b>";
-				if ($tmp2->Display(false, '', array())!="&nbsp;") $fact_string .= " - ".$tmp2->Display(false, '', array());
-				if ($tmp3!='') $fact_string .= " - ".$tmp3;
-				echo $fact_string;
-			}
-		}
-		if ($fact!="ADDR") {
-			//-- catch all other facts that could be here
-			$special_facts = array("ADDR", "ALIA", "ASSO", "CEME", "CONT", "DATE", "DESC", "EMAIL",
-			"FAMC", "FAMS", "FAX", "NOTE", "OBJE", "PHON", "PLAC", "RESN", "RELA", "SOUR", "STAT", "TEMP",
-			"TIME", "TYPE", "WWW", "_EMAIL", "_WT_USER", "URL", "AGE", "_WTS", "_WTFS");
-			$ct = preg_match_all("/\n2 (\w+) (.*)/", $factrec, $match, PREG_SET_ORDER);
-			if ($ct>0) echo "<br />";
-			for ($i=0; $i<$ct; $i++) {
-				$factref = $match[$i][1];
-				if (!in_array($factref, $special_facts)) {
-					$label = WT_Gedcom_Tag::getLabel($fact.':'.$factref, $label_person);
-					if (!$HIDE_GEDCOM_ERRORS || WT_Gedcom_Tag::isTag($factref)) {
-						if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/".$factref.".gif")) {
-							echo "<img src=\"".WT_THEME_DIR."images/facts/", $factref, ".gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" /> ";
-						} else {
-							echo "<span class=\"label\">", $label, ": </span>";
-						}
-						echo htmlspecialchars($match[$i][2]);
-						$sub_rec = get_sub_record(2, "2 ".$factref, $factrec, 1);
-						$tmp=new WT_Date(get_gedcom_value('DATE', 3, $sub_rec, $truncate='', $convert=false));
-						if ($tmp->Display(true)!="&nbsp;") echo " - ".$tmp->Display(true);
-						echo "<br />";
+				echo '</span></div>';
+				break;
+			case 'CALN':
+				echo '<div><span class="label">', WT_Gedcom_Tag::getLabel($match[1]), ':</span> <span class="field">', expand_urls($match[2]), '</span></div>';
+				break;
+			default:
+				if (!$HIDE_GEDCOM_ERRORS || WT_Gedcom_Tag::isTag($match[1])) {
+					echo '<div>';
+					$label = WT_Gedcom_Tag::getLabel($fact.':'.$match[1], $label_person);
+					if ($SHOW_FACT_ICONS && file_exists(WT_THEME_DIR."images/facts/".$match[1].".gif")) {
+						echo '<img src="', WT_THEME_DIR, 'images/facts/', $match[1], '.gif" alt="', $label, '" title="', $label, '" align="middle" /> ';
+					} else {
+						echo '<span class="label">', $label, ':</span> ';
 					}
+					echo htmlspecialchars($match[2]);
+					$sub_rec = get_sub_record(2, '2 '.$factref, $factrec, 1);
+					$tmp=new WT_Date(get_gedcom_value('DATE', 3, $sub_rec, $truncate='', $convert=false));
+					if ($tmp->Display(true)!='&nbsp;') echo ' - '.$tmp->Display(true);
+					echo '</div>';
 				}
+				break;
 			}
 		}
+		echo '<br/>';
 		// -- find source for each fact
 		print_fact_sources($factrec, 2);
 		// -- find notes for each fact
@@ -424,9 +426,7 @@ function print_fact(&$eventObj) {
 		//-- find multimedia objects
 		print_media_links($factrec, 2, $pid);
 	}
-	echo "<br />";
-	echo "</td>";
-	echo "</tr>";
+	echo '</td></tr>';
 }
 //------------------- end print fact function
 
