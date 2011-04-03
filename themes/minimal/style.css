@@ -138,6 +138,13 @@ html[dir='rtl'] .favorites_form {
 	color: #666;
 }
 
+/* sub-sub-menus */
+#topMenu ul ul ul {
+	z-index:2100;
+	top:0;
+	left:100px;
+}
+
 #topMenu ul ul li {
 	border: 0px;
 	left:auto;  /*resets the left:50% on the parent li */
@@ -165,7 +172,7 @@ html[dir='rtl'] .favorites_form {
 	color: black;
 }
 
-#topMenu ul li:hover ul {
+#topMenu ul li:hover > ul {
 	display: block;
 	text-align: left;
 	position: absolute;

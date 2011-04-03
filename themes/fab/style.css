@@ -161,6 +161,17 @@ html[dir='rtl'] .makeMenu li ul {
 	right:0px;
 }
 
+/* position sub-sub-menus */
+.makeMenu ul ul {
+	top:0;
+	left:100px;
+}
+html[dir='rtl'] .makeMenu ul ul {
+	top:0;
+	left:auto;
+	right:100px;
+}
+
 .makeMenu li ul li {
 	display:block;
 	text-align:left;
@@ -176,14 +187,14 @@ html[dir='rtl'] .makeMenu li ul li {
 	padding:1px;
 }
 
-.makeMenu li:hover ul {
+.makeMenu li:hover > ul {
 	display:block;
 }
 
 .makeMenu ul li a {
-    background-color: #EEE;
+	background-color: #EEE;
 	padding: 0px 5px 0px 2px;
-    display: block;
+	display: block;
 }
 
 .makeMenu ul li a:hover  {

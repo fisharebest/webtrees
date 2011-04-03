@@ -24,6 +24,7 @@ body {
 #topMenu ul li:hover ul { text-align: right; }
 #topMenu ul li ul li { text-align: right; }
 #topMenu ul ul { right:0; left: auto;}
+#topMenu ul ul ul { left:auto; right:100px;}
 .makeMenu {  /* fix IE7 RTE */
 *clear: both;
 *width: 750px;
