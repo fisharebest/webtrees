@@ -139,6 +139,7 @@ set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           'style2');
 switch (WT_LOCALE) {
 case 'es': set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'spanish');    break;
 case 'is': set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'icelandic');  break;
+case 'lt': set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'lithuanian'); break;
 case 'pl': set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'polish');     break;
 case 'pt': set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'portuguese'); break;
 default:   set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'paternal');   break;
