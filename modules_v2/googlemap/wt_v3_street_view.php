@@ -138,7 +138,7 @@ function initialize() {
     
 	var imageNum = Math.round(bearing/22.5) % 16;  
       
-  	var image = new google.maps.MarkerImage("http://mk.mapchannels.com/panda-" + imageNum + ".png",
+  	var image = new google.maps.MarkerImage('http://mk.mapchannels.com/panda-' + imageNum + '.png',
       	// This marker is 50 pixels wide by 50 pixels tall.
       	new google.maps.Size(50, 50),
       	// The origin for this image is 0,0.
@@ -166,7 +166,7 @@ function initialize() {
     
     // --- First check if Browser supports html5 ---
     var browserName=navigator.appName;
-    if (browserName=="Microsoft Internet Explorer") {
+    if (browserName=='Microsoft Internet Explorer') {
         var render_type = '';
     } else {
        	var render_type = 'html5';
@@ -195,16 +195,16 @@ function initialize() {
           	zoom: svzoom
         }
     };
-	panorama = new google.maps.StreetViewPanorama(document.getElementById("mapCanvas"), panoramaOptions);
+	panorama = new google.maps.StreetViewPanorama(document.getElementById('mapCanvas'), panoramaOptions);
 	panorama.setPosition(latLng);
 
 
     	// Enable navigator contol and address control to be toggled with right mouse button -------
 		var aLink = document.createElement('a');
-		aLink.href = "javascript:void(0)"; onmousedown=function(e) {
+		aLink.href = 'javascript:void(0)'; onmousedown=function(e) {
  			if (parseInt(navigator.appVersion)>3) {
   				var clickType=1;
-  				if (navigator.appName=="Netscape") {
+  				if (navigator.appName=='Netscape') {
   					clickType=e.which;
   				} else {
   					clickType=event.button;
@@ -227,7 +227,7 @@ function initialize() {
  			return true;
 			if (parseInt(navigator.appVersion)>3) {
  				document.onmousedown = mouseDown;
- 			if (navigator.appName=="Netscape") 
+ 			if (navigator.appName=='Netscape') 
   				document.captureEvents(Event.MOUSEDOWN);
 			}
 		};
@@ -278,8 +278,8 @@ function initialize() {
 	var traffic = new google.maps.ImageMapType({
 		getTileUrl: function(coord, zoom) {
 			var X = coord.x % (1 << zoom);  // wrap
-			return "http://mt3.google.com/mapstt?" +
-				"zoom=" + zoom + "&x=" + X + "&y=" + coord.y + "&client=api";
+			return 'http://mt3.google.com/mapstt?' +
+				'zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&client=api';
 		},
 		tileSize: new google.maps.Size(256, 256),
 		isPng: true
@@ -296,8 +296,8 @@ function initialize() {
 	var street = new google.maps.ImageMapType({
 		getTileUrl: function(coord, zoom) {
 			var X = coord.x % (1 << zoom);  // wrap
-			return "http://cbk0.google.com/cbk?output=overlay&" +
-				"zoom=" + zoom + "&x=" + X + "&y=" + coord.y + "&cb_client=api";
+			return 'http://cbk0.google.com/cbk?output=overlay&' +
+				'zoom=' + zoom + '&x=' + X + '&y=' + coord.y + '&cb_client=api';
 		},
 		tileSize: new google.maps.Size(256, 256),
 		isPng: true
@@ -329,12 +329,12 @@ function toggleStreetViewControls() {
 		panorama.set('navigationControl', true);
 		panorama.set('addressControl', true);
 		panorama.set('linksControl', true);
-		document.myForm.butt0.value="SV controls OFF";
+		document.myForm.butt0.value='SV controls OFF';
 	} else {
 		panorama.set('navigationControl', false);
 		panorama.set('addressControl', false);
 		panorama.set('linksControl', false);
-		document.myForm.butt0.value="SV controls ON ";
+		document.myForm.butt0.value='SV controls ON ';
 	}
 }
 
@@ -342,7 +342,7 @@ function toggleStreetViewControls() {
 
 function resetview() {
 	initialize();
-	document.myForm.butt0.value="SV controls ON ";
+	document.myForm.butt0.value='SV controls ON ';
 }
 
 // Onload handler to fire off the app.
@@ -397,11 +397,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 -->
 
   			<?php
-  			$map = $_GET["map"];
-  			$reset = $_GET["reset"];
-  			echo "<input id=\"butt0\" name =\"butt0\" type=\"button\" value=\"SV controls ON \" onclick=\"toggleStreetViewControls();\"></input>";
-  			echo "<input id=\"butt1\" name =\"butt1\" type=\"button\" value=\"$map\" onclick=\"toggleStreetView();\"></input>";
-  			echo "<input id=\"butt2\" name =\"butt2\" type=\"button\" value=\"$reset\" onclick=\"resetview();\"></input>";
+  			$map = $_GET['map'];
+  			$reset = $_GET['reset'];
+  			echo '<input id="butt0" name ="butt0" type="button" value="SV controls ON " onclick="toggleStreetViewControls();"></input>';
+  			echo '<input id="butt1" name ="butt1" type="button" value="', $map, '" onclick="toggleStreetView();"></input>';
+  			echo '<input id="butt2" name ="butt2" type="button" value="', $reset, '" onclick="resetview();"></input>';
   			?>
   			
   		</form>

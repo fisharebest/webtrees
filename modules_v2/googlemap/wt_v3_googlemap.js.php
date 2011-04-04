@@ -27,7 +27,11 @@
  *
  * @author Brian Holland
  */
-
+ 
+if (!defined('WT_WEBTREES')) {
+	header('HTTP/1.0 403 Forbidden');
+	exit;
+}
 // *** ENABLE STREETVIEW ***
 $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
@@ -79,11 +83,11 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	?>
 
 	function getMarkerImage(iconColor) {
-		if ((typeof(iconColor)=="undefined") || (iconColor==null)) {
-			iconColor = "red";
+		if ((typeof(iconColor)=='undefined') || (iconColor==null)) {
+			iconColor = 'red';
 		}
 		if (!gicons[iconColor]) {
-			gicons[iconColor] = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker"+ iconColor +".png",
+			gicons[iconColor] = new google.maps.MarkerImage('http://maps.google.com/mapfiles/marker'+ iconColor +'.png',
 			new google.maps.Size(20, 34),
 			new google.maps.Point(0,0),
 			new google.maps.Point(9, 34));
@@ -92,23 +96,23 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	}
 
 	function category2color(category) {
-		var color = "red";
+		var color = 'red';
 		switch(category) {
-		 	case "theatre": color = "";
+		 	case 'theatre': color = '';
 				break;
-		 	case "golf":	color = "_green";
+		 	case 'golf':	color = '_green';
 				break;
-		 	case "info":	color = "_yellow";
+		 	case 'info':	color = '_yellow';
 				break;
-		 	default:		color = "";
+		 	default:		color = '';
 				break;
 		}
 		return color;
 	}
 
-	gicons["theatre"] = getMarkerImage(category2color("theatre"));
-	gicons["golf"] = getMarkerImage(category2color("golf"));
-	gicons["info"] = getMarkerImage(category2color("info"));
+	gicons['theatre'] = getMarkerImage(category2color('theatre'));
+	gicons['golf'] = getMarkerImage(category2color('golf'));
+	gicons['info'] = getMarkerImage(category2color('info'));
 
 	var sv2_bear = null;
 	var sv2_elev = null;
@@ -121,11 +125,11 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		
 		// === Use flag icon (if defined) instead of regular marker icon ===
 		if (marker_icon) {
-			var icon_image = new google.maps.MarkerImage("modules_v2/googlemap/"+marker_icon,
+			var icon_image = new google.maps.MarkerImage('modules_v2/googlemap/'+marker_icon,
 				new google.maps.Size(25, 15),
 				new google.maps.Point(0,0),
 				new google.maps.Point(0, 44));
-			var icon_shadow = new google.maps.MarkerImage("modules_v2/googlemap/images/flag_shadow.png",
+			var icon_shadow = new google.maps.MarkerImage('modules_v2/googlemap/images/flag_shadow.png',
 				new google.maps.Size(35, 45),	// Shadow size
 				new google.maps.Point(0,0),		// Shadow origin
 				new google.maps.Point(1, 45)	// Shadow anchor is base of flagpole				
@@ -136,7 +140,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		}
 			
 		// === Decide if marker point is Regular (latlng) or StreetView (sv_point) derived ===
-		if (sv_point == "(0, 0)") {
+		if (sv_point == '(0, 0)') {
 			placer = latlng;
 		} else {
 			placer = sv_point;
@@ -212,76 +216,76 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			};
 
 			// === Use jquery for tabs ===
-			// var $fred = jQuery("#gmtabs").tabs("div.panes > div");
-			// jQuery("#gmtabs").tabs('select', '#SV');
+			// var $fred = jQuery('#gmtabs').tabs('div.panes > div');
+			// jQuery('#gmtabs').tabs('select', '#SV');
 
 			jQuery('#EV').click(function() {
 				document.tabLayerEV = eval('document.getElementById("EV")');
-				document.tabLayerEV.style.background = "#ffffff";
-				document.tabLayerEV.style.paddingBottom = "1px";
+				document.tabLayerEV.style.background = '#ffffff';
+				document.tabLayerEV.style.paddingBottom = '1px';
 				<?php if ($STREETVIEW) { ?>
 				document.tabLayerSV = eval('document.getElementById("SV")');
-				document.tabLayerSV.style.background = "#cccccc";
-				document.tabLayerSV.style.paddingBottom = "0px";
+				document.tabLayerSV.style.background = '#cccccc';
+				document.tabLayerSV.style.paddingBottom = '0px';
 				<?php } ?>
 		//		document.tabLayerPH = eval('document.getElementById("PH")');
-		//		document.tabLayerPH.style.background = "#cccccc";
-		//		document.tabLayerPH.style.paddingBottom = "0px";
+		//		document.tabLayerPH.style.background = '#cccccc';
+		//		document.tabLayerPH.style.paddingBottom = '0px';
 				document.panelLayer1 = eval('document.getElementById("pane1")');
-				document.panelLayer1.style.display = "block";
+				document.panelLayer1.style.display = 'block';
 				<?php if ($STREETVIEW) { ?>
 				document.panelLayer2 = eval('document.getElementById("pane2")');
-				document.panelLayer2.style.display = "none";
+				document.panelLayer2.style.display = 'none';
 				<?php } ?>
 		//		document.panelLayer3 = eval('document.getElementById("pane3")');
-		//		document.panelLayer3.style.display = "none";
+		//		document.panelLayer3.style.display = 'none';
 
 			});
 
 			jQuery('#SV').click(function() {
 				document.tabLayerEV = eval('document.getElementById("EV")');
-				document.tabLayerEV.style.background = "#cccccc";
-				document.tabLayerEV.style.paddingBottom = "0px";
+				document.tabLayerEV.style.background = '#cccccc';
+				document.tabLayerEV.style.paddingBottom = '0px';
 				<?php if ($STREETVIEW) { ?>
 				document.tabLayerSV = eval('document.getElementById("SV")');
-				document.tabLayerSV.style.background = "#ffffff";
-				document.tabLayerSV.style.paddingBottom = "1px";
+				document.tabLayerSV.style.background = '#ffffff';
+				document.tabLayerSV.style.paddingBottom = '1px';
 				<?php } ?>
 		//		document.tabLayerPH = eval('document.getElementById("PH")');
-		//		document.tabLayerPH.style.background = "#cccccc";
-		//		document.tabLayerPH.style.paddingBottom = "0px";
+		//		document.tabLayerPH.style.background = '#cccccc';
+		//		document.tabLayerPH.style.paddingBottom = '0px';
 				document.panelLayer1 = eval('document.getElementById("pane1")');
-				document.panelLayer1.style.display = "none";
+				document.panelLayer1.style.display = 'none';
 				<?php if ($STREETVIEW) { ?>
 				document.panelLayer2 = eval('document.getElementById("pane2")');
-				document.panelLayer2.style.display = "block";
+				document.panelLayer2.style.display = 'block';
 				<?php } ?>
 		//		document.panelLayer3 = eval('document.getElementById("pane3")');
-		//		document.panelLayer3.style.display = "none";
-				var panorama = new google.maps.StreetViewPanorama(document.getElementById("pano"), panoramaOptions);
+		//		document.panelLayer3.style.display = 'none';
+				var panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'), panoramaOptions);
 				// map.setStreetView(panorama);  // **** If you uncomment this, the pegman will appear ****
 			});
 
 			jQuery('#PH').click(function() {
 				document.tabLayerEV = eval('document.getElementById("EV")');
-				document.tabLayerEV.style.background = "#cccccc";
-				document.tabLayerEV.style.paddingBottom = "0px";
+				document.tabLayerEV.style.background = '#cccccc';
+				document.tabLayerEV.style.paddingBottom = '0px';
 				<?php if ($STREETVIEW) { ?>
 				document.tabLayerSV = eval('document.getElementById("SV")');
-				document.tabLayerSV.style.background = "#cccccc";
-				document.tabLayerSV.style.paddingBottom = "0px";
+				document.tabLayerSV.style.background = '#cccccc';
+				document.tabLayerSV.style.paddingBottom = '0px';
 				<?php } ?>
 		//		document.tabLayerPH = eval('document.getElementById("PH")');
-		//		document.tabLayerPH.style.background = "#ffffff";
-		//		document.tabLayerPH.style.paddingBottom = "1px";
+		//		document.tabLayerPH.style.background = '#ffffff';
+		//		document.tabLayerPH.style.paddingBottom = '1px';
 				document.panelLayer1 = eval('document.getElementById("pane1")');
-				document.panelLayer1.style.display = "none";
+				document.panelLayer1.style.display = 'none';
 				<?php if ($STREETVIEW) { ?>
 				document.panelLayer2 = eval('document.getElementById("pane2")');
-				document.panelLayer2.style.display = "none";
+				document.panelLayer2.style.display = 'none';
 				<?php } ?>
 		//		document.panelLayer3 = eval('document.getElementById("pane3")');
-		//		document.panelLayer3.style.display = "block";
+		//		document.panelLayer3.style.display = 'block';
 			});
 		});
 	}
@@ -323,7 +327,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	// == Opens Marker infowindow when corresponding Sidebar item is clicked ==
 	function myclick(i, index, tab) {
 		infowindow.close();
-		google.maps.event.trigger(gmarkers[i], "click");
+		google.maps.event.trigger(gmarkers[i], 'click');
 	}
 
 	// == rebuild sidebar (hidden item) when any marker's infowindow is closed ==
@@ -333,7 +337,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 	// == rebuilds the sidebar (hidden item) to match the markers currently displayed ==
 	function makeSidebar(x) {
-		var html = "";
+		var html = '';
 		//var tab = gmarkers.mytab;
 		for (var i=0; i<gmarkers.length; i++) {
 			if (gmarkers[i].getVisible()) {
@@ -351,7 +355,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				}
 			}
 		}
-		document.getElementById("side_bar").innerHTML = html;
+		document.getElementById('side_bar').innerHTML = html;
 		x=null;
 	}
 
@@ -412,7 +416,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			streetViewControl: false,									// Show Pegman or not
 			scrollwheel: false
 		};
-		map = new google.maps.Map(document.getElementById("map_pane"), mapOptions);
+		map = new google.maps.Map(document.getElementById('map_pane'), mapOptions);
 
 		// Close any infowindow when map is clicked
 		google.maps.event.addListener(map, 'click', function() {
@@ -442,7 +446,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 				// The current indi -----------------------------
 				if (!empty($this_person)) {
-					$class = "pedigree_image_portrait";
+					$class = 'pedigree_image_portrait';
 					if ($gmark['fact'] == 'Census') {
 						$image = "<img class='icon_cens' src='././images/pix1.gif' />";
 					} else if ($gmark['fact'] == 'Birth') {
@@ -463,27 +467,27 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						$image = "<img class='icon_reti' src='././images/pix1.gif' />";
 					} else {
 						$indirec = $this_person->getGedcomRecord();
-						$image = "";
+						$image = '';
 						if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 							if (!empty($pid)) {
 								$object = find_highlighted_object($pid, WT_GED_ID, $indirec);
 							} else {
-								$object = "";
+								$object = '';
 							}
-							if (!empty($object["thumb"])) {
-								$size = findImageSize($object["thumb"]);
-								$class = "pedigree_image_portrait";
-								if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
-								if ($TEXT_DIRECTION=="rtl") $class .= "_rtl";
+							if (!empty($object['thumb'])) {
+								$size = findImageSize($object['thumb']);
+								$class = 'pedigree_image_portrait';
+								if ($size[0]>$size[1]) $class = 'pedigree_image_landscape';
+								if ($TEXT_DIRECTION=='rtl') $class .= '_rtl';
 								$image = "<img src='{$object["thumb"]}' vspace='0' hspace='0' class='{$class}' alt ='' title='' >";
 							} else {
-								$class = "pedigree_image_portrait";
-								if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
+								$class = 'pedigree_image_portrait';
+								if ($TEXT_DIRECTION == 'rtl') $class .= '_rtl';
 								$sex = $this_person->getSex();
 								$image = "<img src=\'./";
-								if ($sex == 'F') { $image .= $WT_IMAGES["default_image_F"]; }
-								elseif ($sex == 'M') { $image .= $WT_IMAGES["default_image_M"]; }
-								else { $image .= $WT_IMAGES["default_image_U"]; }
+								if ($sex == 'F') { $image .= $WT_IMAGES['default_image_F']; }
+								elseif ($sex == 'M') { $image .= $WT_IMAGES['default_image_M']; }
+								else { $image .= $WT_IMAGES['default_image_U']; }
 								$image .="\' align=\'left\' class=\'".$class."\' border=\'none\' alt=\'\' />";
 							}
 						} // end of add image
@@ -493,28 +497,28 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				// Other people ----------------------------
 				if (!empty($person)) {
 					$indirec2 = $person->getGedcomRecord();
-					$image2 = "";
+					$image2 = '';
 					if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 						if (!empty($gmark['name'])) {
 							$object2 = find_highlighted_object($gmark['name'], WT_GED_ID, $indirec2);
 						} else {
-							$object2 = "";
+							$object2 = '';
 						}
 
-						if (!empty($object2["thumb"])) {
-							$size = findImageSize($object2["thumb"]);
-							$class = "pedigree_image_portrait";
-							if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
-							if ($TEXT_DIRECTION=="rtl") $class .= "_rtl";
+						if (!empty($object2['thumb'])) {
+							$size = findImageSize($object2['thumb']);
+							$class = 'pedigree_image_portrait';
+							if ($size[0]>$size[1]) $class = 'pedigree_image_landscape';
+							if ($TEXT_DIRECTION=='rtl') $class .= '_rtl';
 							$image2 = "<img src='{$object2["thumb"]}' vspace='0' hspace='0' class='{$class}' alt ='' title='' >";
 						} else {
-							$class = "pedigree_image_portrait";
-							if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
+							$class = 'pedigree_image_portrait';
+							if ($TEXT_DIRECTION == 'rtl') $class .= '_rtl';
 							$sex = $person->getSex();
 							$image2 = "<img src=\'./";
-							if ($sex == 'F') { $image2 .= $WT_IMAGES["default_image_F"]; }
-							elseif ($sex == 'M') { $image2 .= $WT_IMAGES["default_image_M"]; }
-							else { $image2 .= $WT_IMAGES["default_image_U"]; }
+							if ($sex == 'F') { $image2 .= $WT_IMAGES['default_image_F']; }
+							elseif ($sex == 'M') { $image2 .= $WT_IMAGES['default_image_M']; }
+							else { $image2 .= $WT_IMAGES['default_image_U']; }
 							$image2 .="\' align=\'left\' class=\'".$class."\' border=\'none\' alt=\'\' />";
 						}
 					} // end of add image
@@ -608,7 +612,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			var marker_icon = locations[i][20];						// Marker icon image (flag)
 
 			// Employ of image tab function using an information image -----
-			if (media == null || media == "") {
+			if (media == null || media == '') {
 				media = WT_MODULES_DIR+'googlemap/images/facts/v3_image_info.png';
 			} else {
 				media = media;
@@ -616,19 +620,19 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			// -------------------------------------------------------------
 
 			var sv_point = new google.maps.LatLng(sv_lati,sv_long); // StreetView Latitude and Longitide
-			if (document.getElementById("golfbox").checked == false) {
-				var category = "theatre";							// Category for future pedigree map use etc
+			if (document.getElementById('golfbox').checked == false) {
+				var category = 'theatre';							// Category for future pedigree map use etc
 				var addr2 = locations[i][10];						// printable address for marker title
 			} else {
-				var category = "golf";
+				var category = 'golf';
 				var addr2 = locations[i][10];						// printable address for marker title
 			}
 
 			// === Use this variable if a multitab marker ===
 			// If a fact with info or a persons name ---
-			var event_item ="";
-			var event_tab ="";
-			var tabcontid = "";
+			var event_item ='';
+			var event_tab ='';
+			var tabcontid = '';
 			var divhead = '<h4 id="iwhead" >'+address+'<\/h4>';
 
 			for (var n = 0; n < locations.length; n++) {

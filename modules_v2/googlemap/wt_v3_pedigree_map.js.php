@@ -37,7 +37,6 @@ if (!defined('WT_WEBTREES')) {
 }
 ?>
 
-
 <script type="text/javascript">
 
 //<![CDATA[
@@ -88,13 +87,11 @@ function myclick(i) {
 	if (document.getElementById(lastlinkid) != null) {
 		document.getElementById(lastlinkid).className = 'person_box:target';
 	}
-	google.maps.event.trigger(gmarkers[i], "click");
+	google.maps.event.trigger(gmarkers[i], 'click');
 }
-	
-
 
 // this variable will collect the html which will eventually be placed in the side_bar
-var side_bar_html = "";
+var side_bar_html = '';
 
 // arrays to hold copies of the markers and html used by the side_bar
 // because the function closure trick doesnt work there
@@ -106,272 +103,271 @@ var infowindow = new google.maps.InfoWindow({
 	//	
 });	
 
-
 // === Create an associative array of GIcons() =====================================================
 var gicons = [];
 
 // -------------------------------------------------------------------------------------------------
-gicons["1"]  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon1.png")
-gicons["1"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow50.png",
+gicons['1']  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon1.png')
+gicons['1'].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow50.png',
     						new google.maps.Size(37, 34),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(10, 34)	// Shadow anchor is base of image
     					);
 // -------------------------------------------------------------------------------------------------
-gicons["2"]  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon2.png")
-gicons["2"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow50.png",
+gicons['2']  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon2.png')
+gicons['2'].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow50.png',
     						new google.maps.Size(37, 34),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(10, 34)	// Shadow anchor is base of image
     					);
-gicons["2L"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon2L.png",
+gicons['2L'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon2L.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(28, 28)	// Image anchor
     					);	
-gicons["2L"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
+gicons['2L'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-left-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(32, 27)	// Shadow anchor is base of image
     					);
-gicons["2R"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon2R.png",
+gicons['2R'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon2R.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(4, 28)	// Image anchor
     					);
-gicons["2R"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
+gicons['2R'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-right-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(15, 27)	// Shadow anchor is base of image
     					);
-gicons["2Ls"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon2Ls.png",
+gicons['2Ls'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon2Ls.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(22, 22)	// Image anchor
     					);
-gicons["2Rs"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon2Rs.png",
+gicons['2Rs'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon2Rs.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(2, 22)	// Image anchor
     					);
 // -------------------------------------------------------------------------------------------------
-gicons["3"]  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon3.png")
-gicons["3"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow50.png",
+gicons['3']  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon3.png')
+gicons['3'].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow50.png',
     						new google.maps.Size(37, 34),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(10, 34)	// Shadow anchor is base of image
     					);
-gicons["3L"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon3L.png",
+gicons['3L'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon3L.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(28, 28)	// Image anchor
     					);	
-gicons["3L"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
+gicons['3L'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-left-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(32, 27)	// Shadow anchor is base of image
     					);    		
-gicons["3R"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon3R.png",
+gicons['3R'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon3R.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(4, 28)	// Image anchor
     					);
-gicons["3R"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
+gicons['3R'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-right-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(15, 27)	// Shadow anchor is base of image
     					);
-gicons["3Ls"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon3Ls.png",
+gicons['3Ls'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon3Ls.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(22, 22)	// Image anchor
     					);
-gicons["3Rs"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon3Rs.png",
+gicons['3Rs'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon3Rs.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(2, 22)	// Image anchor
     					);
 // -------------------------------------------------------------------------------------------------
-gicons["4"]  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon4.png")
-gicons["4"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow50.png",
+gicons['4']  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon4.png')
+gicons['4'].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow50.png',
     						new google.maps.Size(37, 34),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(10, 34)	// Shadow anchor is base of image
     					);
-gicons["4L"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon4L.png",
+gicons['4L'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon4L.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(28, 28)	// Image anchor
     					);
-gicons["4L"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
+gicons['4L'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-left-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(32, 27)	// Shadow anchor is base of image
     					);
-gicons["4R"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon4R.png",
+gicons['4R'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon4R.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(4, 28)	// Image anchor
     					);
-gicons["4R"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
+gicons['4R'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-right-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(15, 27)	// Shadow anchor is base of image
     					);
-gicons["4Ls"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon4Ls.png",
+gicons['4Ls'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon4Ls.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(22, 22)	// Image anchor
     					);
-gicons["4Rs"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon4Rs.png",
+gicons['4Rs'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon4Rs.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(2, 22)	// Image anchor
     					);
 // -------------------------------------------------------------------------------------------------    			
-gicons["5"]  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon5.png")
-gicons["5"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow50.png",
+gicons['5']  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon5.png')
+gicons['5'].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow50.png',
     						new google.maps.Size(37, 34),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(10, 34)	// Shadow anchor is base of image
     					);
-gicons["5L"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon5L.png",
+gicons['5L'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon5L.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(28, 28)	// Image anchor
     					);
-gicons["5L"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
+gicons['5L'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-left-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(32, 27)	// Shadow anchor is base of image
     					);
-gicons["5R"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon5R.png",
+gicons['5R'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon5R.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(4, 28)	// Image anchor
     					);
-gicons["5R"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
+gicons['5R'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-right-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(15, 27)	// Shadow anchor is base of image
     					);
-gicons["5Ls"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon5Ls.png",
+gicons['5Ls'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon5Ls.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(22, 22)	// Image anchor
     					);
-gicons["5Rs"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon5Rs.png",
+gicons['5Rs'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon5Rs.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(2, 22)	// Image anchor
     					);
 // -------------------------------------------------------------------------------------------------
-gicons["6"]  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon6.png")
-gicons["6"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow50.png",
+gicons['6']  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon6.png')
+gicons['6'].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow50.png',
     						new google.maps.Size(37, 34),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(10, 34)	// Shadow anchor is base of image
     					);
-gicons["6L"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon6L.png",
+gicons['6L'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon6L.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(28, 28)	// Image anchor
     					);
-gicons["6L"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
+gicons['6L'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-left-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(32, 27)	// Shadow anchor is base of image
     					);
-gicons["6R"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon6R.png",
+gicons['6R'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon6R.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(4, 28)	// Image anchor
     					);
-gicons["6R"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
+gicons['6R'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-right-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(15, 27)	// Shadow anchor is base of image
     					);
-gicons["6Ls"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon6Ls.png",
+gicons['6Ls'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon6Ls.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(22, 22)	// Image anchor
     					);
-gicons["6Rs"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon6Rs.png",
+gicons['6Rs'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon6Rs.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(2, 22)	// Image anchor
     					);
 // -------------------------------------------------------------------------------------------------
-gicons["7"]  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon7.png")
-gicons["7"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow50.png",
+gicons['7']  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon7.png')
+gicons['7'].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow50.png',
     						new google.maps.Size(37, 34),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(10, 34)	// Shadow anchor is base of image
     					);
-gicons["7L"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon7L.png",
+gicons['7L'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon7L.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(28, 28)	// Image anchor
     					);
-gicons["7L"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
+gicons['7L'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-left-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(32, 27)	// Shadow anchor is base of image
     					);
-gicons["7R"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon7R.png",
+gicons['7R'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon7R.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(4, 28)	// Image anchor
     					);
-gicons["7R"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
+gicons['7R'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-right-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(15, 27)	// Shadow anchor is base of image
     					);
-gicons["7Ls"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon7Ls.png",
+gicons['7Ls'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon7Ls.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(22, 22)	// Image anchor
     					);
-gicons["7Rs"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon7Rs.png",
+gicons['7Rs'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon7Rs.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(2, 22)	// Image anchor
     					);
 // -------------------------------------------------------------------------------------------------
-gicons["8"]  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon8.png")
-gicons["8"].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow50.png",
+gicons['8']  		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon8.png')
+gicons['8'].shadow 	= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow50.png',
     						new google.maps.Size(37, 34),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(10, 34)	// Shadow anchor is base of image
     					);
-gicons["8L"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon8L.png",
+gicons['8L'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon8L.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(28, 28)	// Image anchor
     					);
-gicons["8L"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-left-large.png",
+gicons['8L'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-left-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(32, 27)	// Shadow anchor is base of image
     					);
-gicons["8R"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon8R.png",
+gicons['8R'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon8R.png',
     	  					new google.maps.Size(32, 32),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(4, 28)	// Image anchor
     					);
-gicons["8R"].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/shadow-right-large.png",
+gicons['8R'].shadow = 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/shadow-right-large.png',
     						new google.maps.Size(49, 32),	// Shadow size
     						new google.maps.Point(0, 0),	// Shadow origin
     						new google.maps.Point(15, 27)	// Shadow anchor is base of image
     					);
-gicons["8Ls"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon8Ls.png",
+gicons['8Ls'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon8Ls.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(22, 22)	// Image anchor
     					);
-gicons["8Rs"] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+"googlemap/images/icon8Rs.png",
+gicons['8Rs'] 		= 	new google.maps.MarkerImage(WT_MODULES_DIR+'googlemap/images/icon8Rs.png',
     	  					new google.maps.Size(24, 24),	// Image size
     	  					new google.maps.Point(0, 0),	// Image origin
     	  					new google.maps.Point(2, 22)	// Image anchor
@@ -391,7 +387,7 @@ function createMarker(point, name, html, mhtml, icontype) {
         position: 	point,
         zIndex: 	0
     });		
-	var linkid = "link"+i;	
+	var linkid = 'link'+i;	
     google.maps.event.addListener(marker, 'click', function() {
     	infowindow.close();
         infowindow.setContent(contentString);
@@ -411,9 +407,6 @@ function createMarker(point, name, html, mhtml, icontype) {
 	return marker;	
 };
 
-
-
-
 // create the map
 var myOptions = {
 	zoom: 6,
@@ -430,7 +423,7 @@ var myOptions = {
     scrollwheel: true     		
 };
 	
-var pm_map = new google.maps.Map(document.getElementById("pm_map"), myOptions);
+var pm_map = new google.maps.Map(document.getElementById('pm_map'), myOptions);
 		
 google.maps.event.addListener(pm_map, 'maptypechanged', function() 	{
 	map_type.refresh();
@@ -450,10 +443,8 @@ homeControlDiv.index = 1;
 pm_map.controls[google.maps.ControlPosition.TOP_RIGHT].push(homeControlDiv);
 // ---------------------------------------------------------------------------------
 
-
 // create the map bounds
 var bounds = new google.maps.LatLngBounds();
-
 
 <?php
 // add the points
@@ -461,10 +452,10 @@ $curgen=1;
 $priv=0;
 $count=0;
 $event = '<img src="'.WT_MODULES_DIR.'googlemap/images/sq1.png" width="10" height="10">' .
-	 "<strong>&nbsp;".WT_I18N::translate('Root').":&nbsp;</strong>";
-$colored_line = array("1"=>"#FF0000","2"=>"#0000FF","3"=>"#00FF00",
-				"4"=>"#FFFF00","5"=>"#00FFFF","6"=>"#FF00FF",
-				"7"=>"#C0C0FF","8"=>"#808000");
+	 '<strong>&nbsp;'.WT_I18N::translate('Root').':&nbsp;</strong>';
+$colored_line = array('1'=>'#FF0000','2'=>'#0000FF','3'=>'#00FF00',
+				'4'=>'#FFFF00','5'=>'#00FFFF','6'=>'#FF00FF',
+				'7'=>'#C0C0FF','8'=>'#808000');
 
 for ($i=0; $i<($controller->treesize); $i++) {
 	// moved up to grab the sex of the individuals
@@ -484,26 +475,26 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		$relationship=get_relationship_name(get_relationship($controller->rootid, $pid, false, 0, true));
 		if (empty($relationship)) $relationship=WT_I18N::translate('self');
 		$event = '<img src=\"'.WT_MODULES_DIR.'googlemap/images/sq'.$curgen.'.png\" width=\"10\" height=\"10\">'.
-			 "<strong>&nbsp;".$relationship.":&nbsp;</strong>";
+			 '<strong>&nbsp;'.$relationship.':&nbsp;</strong>';
 
 		// add thumbnail image
-		$image = "";
+		$image = '';
 		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 			$object = find_highlighted_object($pid, WT_GED_ID, $indirec);
-			if (!empty($object["thumb"])) {
-				$size = findImageSize($object["thumb"]);
-				$class = "pedigree_image_portrait";
-				if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
-				if ($TEXT_DIRECTION=="rtl") $class .= "_rtl";
+			if (!empty($object['thumb'])) {
+				$size = findImageSize($object['thumb']);
+				$class = 'pedigree_image_portrait';
+				if ($size[0]>$size[1]) $class = 'pedigree_image_landscape';
+				if ($TEXT_DIRECTION=='rtl') $class .= '_rtl';
 				$image = "<img src='{$object["thumb"]}' vspace='0' hspace='0' class='{$class}' alt ='' title='' >";
 			} else {
-				$class = "pedigree_image_portrait";
-				if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
+				$class = 'pedigree_image_portrait';
+				if ($TEXT_DIRECTION == 'rtl') $class .= '_rtl';
 				$sex = $person->getSex();
 				$image = "<img src=\'./";
-				if ($sex == 'F') { $image .= $WT_IMAGES["default_image_F"]; }
-				elseif ($sex == 'M') { $image .= $WT_IMAGES["default_image_M"]; }
-				else { $image .= $WT_IMAGES["default_image_U"]; }
+				if ($sex == 'F') { $image .= $WT_IMAGES['default_image_F']; }
+				elseif ($sex == 'M') { $image .= $WT_IMAGES['default_image_M']; }
+				else { $image .= $WT_IMAGES['default_image_U']; }
 				$image .="\' align=\'left\' class=\'".$class."\' border=\'none\' alt=\'\' />";
 			}
 		}
@@ -512,38 +503,38 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		$dataleft  = $image . $event . addslashes($name);
 		$datamid   = " <span><a href='".$person->getHtmlUrl()."' id='alturl' title='" . WT_I18N::translate('Individual information') . "'>";
 		
-		if ($TEXT_DIRECTION == "rtl") $datamid .= PrintReady("(".WT_I18N::translate('View Person').")");
-		else $datamid .= "(".WT_I18N::translate('View Person').")";
-		$datamid  .= "</a></span>";
-		$dataright = "<br /><strong>". WT_I18N::translate('Birth:') . "&nbsp;</strong>" .
-				addslashes($bdate->Display(false))."<br />".$bplace;
+		if ($TEXT_DIRECTION == 'rtl') $datamid .= PrintReady('('.WT_I18N::translate('View Person').')');
+		else $datamid .= '('.WT_I18N::translate('View Person').')';
+		$datamid  .= '</a></span>';
+		$dataright = '<br /><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .
+				addslashes($bdate->Display(false)).'<br />'.$bplace;
 
 		$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
 		if ($latlongval[$i] != NULL) {
-			$lat[$i] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]["lati"]);
-			$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]["long"]);
+			$lat[$i] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval[$i]['lati']);
+			$lon[$i] = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval[$i]['long']);
 			if (!($lat[$i] == NULL && $lon[$i] == NULL) && !($lat[$i] == 0 && $lon[$i] == 0)) {
-				if ((!$hideflags) && ($latlongval[$i]["icon"] != NULL)) {
-					$flags[$i] = $latlongval[$i]["icon"];
-					$ffile = strrchr($latlongval[$i]["icon"], '/');
+				if ((!$hideflags) && ($latlongval[$i]['icon'] != NULL)) {
+					$flags[$i] = $latlongval[$i]['icon'];
+					$ffile = strrchr($latlongval[$i]['icon'], '/');
 					$ffile = substr($ffile,1, strpos($ffile, '.')-1);
 					if (empty($flags[$ffile])) {
 						$flags[$ffile] = $i; // Only generate the flag once
 						if (($lat[$i] != NULL) && ($lon[$i] != NULL)) {
-							echo "var point = new google.maps.LatLng(" . $lat[$i] . "," . $lon[$i]. ");\n";
-							echo "var Marker1_0_flag = new google.maps.MarkerImage();\n";
+							echo 'var point = new google.maps.LatLng(' . $lat[$i] . ',' . $lon[$i]. ');';
+							echo 'var Marker1_0_flag = new google.maps.MarkerImage();';
 							echo 'Marker1_0_flag.image = "', WT_MODULES_DIR, 'googlemap/', $flags[$i], '";';
 							echo 'Marker1_0_flag.shadow = "', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png";';
-							echo "Marker1_0_flag.iconSize = new google.maps.Size(25, 15);\n";
-							echo "Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);\n";
-							echo "Marker1_0_flag.iconAnchor = new google.maps.Point(1, 45);\n";
-						//BH	echo "Marker1_0_flag.infoWindowAnchor = new google.maps.Point(5, 1);\n";
-							echo "var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});\n";
-						//BH 	echo "pm_map.addOverlay(Marker1_0);\n\n";
+							echo 'Marker1_0_flag.iconSize = new google.maps.Size(25, 15);';
+							echo 'Marker1_0_flag.shadowSize = new google.maps.Size(35, 45);';
+							echo 'Marker1_0_flag.iconAnchor = new google.maps.Point(1, 45);';
+						//BH	echo 'Marker1_0_flag.infoWindowAnchor = new google.maps.Point(5, 1);';
+							echo 'var Marker1_0 = new google.maps.LatLng(point, {icon:Marker1_0_flag});';
+						//BH 	echo 'pm_map.addOverlay(Marker1_0);';
 						}
 					}
 				}
-				$marker_number = "$curgen";
+				$marker_number = $curgen;
 				$dups=0;
 				for ($k=0; $k<$i; $k++) {
 					if ($latlongval[$i] == $latlongval[$k]) {
@@ -553,16 +544,16 @@ for ($i=0; $i<($controller->treesize); $i++) {
 						} else {
 							$dups++;
 							switch($dups) {
-								case 1: $marker_number = "$curgen" . "L"; break;
-								case 2: $marker_number = "$curgen" . "R"; break;
+								case 1: $marker_number = $curgen . 'L'; break;
+								case 2: $marker_number = $curgen . 'R'; break;
 								case 3: if ($clustersize==5) {
-									$marker_number = "$curgen" . "Ls"; break;
+									$marker_number = $curgen . 'Ls'; break;
 									}
 								case 4: if ($clustersize==5) {
-									$marker_number = "$curgen" . "Rs"; break;
+									$marker_number = $curgen . 'Rs'; break;
 									}
 								case 5: //adjust position where markers have same coodinates
-								default: $marker_number = "$curgen";
+								default: $marker_number = $curgen;
 									$lon[$i] = $lon[$i]+0.0025;
 									$lat[$i] = $lat[$i]+0.0025;
 									break;
@@ -570,14 +561,14 @@ for ($i=0; $i<($controller->treesize); $i++) {
 						}
 					}
 				}
-				echo "var point = new google.maps.LatLng(" . $lat[$i] . "," . $lon[$i]. ");\n";
-				echo "var marker = createMarker(point, \"" . addslashes($name). "\",\n\t\"<div>".$dataleft.$datamid.$dataright."</div>\", \"";
+				echo 'var point = new google.maps.LatLng(', $lat[$i], ',', $lon[$i], ');';
+				echo "var marker = createMarker(point, \"", addslashes($name), "\",\n\t\"<div>",$dataleft,$datamid,$dataright,"</div>\", \"";
 				echo "<div class='iwstyle'>";
-				echo "<a href='module.php?ged=".WT_GEDURL."&mod=googlemap&mod_action=pedigree_map&rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
-				if ($hideflags) echo "&hideflags=1";
-				if ($hidelines) echo "&hidelines=1";
-				if ($clustersize != 5) echo "&clustersize=". $clustersize; // ignoring the default of 5
-				echo "' title='" . WT_I18N::translate('Pedigree Map') . "'>" . $dataleft . "</a>" . $datamid . $dataright . "</div>\", \"".$marker_number."\");\n";
+				echo "<a href='module.php?ged=", WT_GEDURL, "&mod=googlemap&mod_action=pedigree_map&rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}";
+				if ($hideflags) echo '&hideflags=1';
+				if ($hidelines) echo '&hidelines=1';
+				if ($clustersize != 5) echo '&clustersize=', $clustersize; // ignoring the default of 5
+				echo "' title='", WT_I18N::translate('Pedigree Map'), "'>", $dataleft, "</a>", $datamid, $dataright, "</div>\", \"", $marker_number, "\");\n";
 				//BH echo "pm_map.addOverlay(marker);\n";
 
 				// Construct the polygon lines ---------------------------------
@@ -588,8 +579,8 @@ for ($i=0; $i<($controller->treesize); $i++) {
 					var plines;			
     				var lines = [
     					<?php
-        				echo "new google.maps.LatLng(".$lat[$i].",".$lon[$i]."), ";
-        				echo "new google.maps.LatLng(".$lat[$to_child].",".$lon[$to_child].")";
+        				echo 'new google.maps.LatLng(', $lat[$i], ',', $lon[$i], '), ';
+        				echo 'new google.maps.LatLng(', $lat[$to_child], ',', $lon[$to_child], ')';
 						?>
     				];
    					linecolor = <?php echo "'$colored_line[$curgen]'"; ?>;  				
@@ -599,17 +590,16 @@ for ($i=0; $i<($controller->treesize); $i++) {
       					// strokeColor: <?php echo $colored_line[$curgen]; ?>,
       					strokeOpacity: 0.8,
       					strokeWeight: 3,
-      					fillColor: "#FF0000",
+      					fillColor: '#FF0000',
       					//fillOpacity: 0.35
       					fillOpacity: 0.1
     				}); 
    					plines.setMap(pm_map);		
    				<?php
 				}
-				
    				// Extend and fit marker bounds---------------------------------  				
-				echo "bounds.extend(point);\n";
-				echo "pm_map.fitBounds(bounds);";
+				echo 'bounds.extend(point);';
+				echo 'pm_map.fitBounds(bounds);';
 				echo "\n";
 				$count++;
 			}
@@ -626,18 +616,18 @@ pm_map.setCenter(bounds.getCenter());
 
 
 // Close the sidebar highlight when the infowindow is closed ------
-google.maps.event.addListener(infowindow, "closeclick", function() {
+google.maps.event.addListener(infowindow, 'closeclick', function() {
 	document.getElementById(lastlinkid).className = 'person_box:target';
 });
 
 // put the assembled side_bar_html contents into the side_bar div
-document.getElementById("side_bar").innerHTML = side_bar_html;
+document.getElementById('side_bar').innerHTML = side_bar_html;
 
 
 
 // === create the context menu div ===
-var contextmenu = document.createElement("div");
-	contextmenu.style.visibility="hidden";
+var contextmenu = document.createElement('div');
+	contextmenu.style.visibility='hidden';
 	contextmenu.innerHTML = '<a href="javascript:zoomIn()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom in'); ?>&nbsp;&nbsp;</div></a>'
 						  + '<a href="javascript:zoomOut()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom out'); ?>&nbsp;&nbsp;</div></a>'
 						  + '<a href="javascript:zoomInHere()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom in here'); ?>&nbsp;&nbsp;</div></a>'
@@ -646,8 +636,8 @@ var contextmenu = document.createElement("div");
 //BH pm_map.getContainer().appendChild(contextmenu);
 
 // === listen for singlerightclick ===
-google.maps.event.addListener(pm_map,"singlerightclick",function(pixel,tile) {
-	// store the "pixel" info in case we need it later
+google.maps.event.addListener(pm_map,'singlerightclick',function(pixel,tile) {
+	// store the 'pixel' info in case we need it later
 	// adjust the context menu location if near an egde
 	// create a GControlPosition
 	// apply it to the context menu, and make the context menu visible
@@ -658,7 +648,7 @@ google.maps.event.addListener(pm_map,"singlerightclick",function(pixel,tile) {
 	if (y > pm_map.getSize().height - 100) { y = pm_map.getSize().height - 100 }
 	var pos = new GControlPosition(G_ANCHOR_TOP_LEFT, new GSize(x,y));
 	pos.apply(contextmenu);
-	contextmenu.style.visibility = "visible";
+	contextmenu.style.visibility = 'visible';
 });
 
 // === functions that perform the context menu options ===
@@ -666,41 +656,40 @@ function zoomIn() {
 	// perform the requested operation
 	pm_map.zoomIn();
 	// hide the context menu now that it has been used
-	contextmenu.style.visibility="hidden";
+	contextmenu.style.visibility='hidden';
 }
 function zoomOut() {
 	// perform the requested operation
 	pm_map.zoomOut();
 	// hide the context menu now that it has been used
-	contextmenu.style.visibility="hidden";
+	contextmenu.style.visibility='hidden';
 }
 function zoomInHere() {
 	// perform the requested operation
 	var point = pm_map.fromContainerPixelToLatLng(clickedPixel)
 	pm_map.zoomIn(point,true);
 	// hide the context menu now that it has been used
-	contextmenu.style.visibility="hidden";
+	contextmenu.style.visibility='hidden';
 }
 function zoomOutHere() {
 	// perform the requested operation
 	var point = pm_map.fromContainerPixelToLatLng(clickedPixel)
 	pm_map.setCenter(point,pm_map.getZoom()-1); // There is no pm_map.zoomOut() equivalent
 	// hide the context menu now that it has been used
-	contextmenu.style.visibility="hidden";
+	contextmenu.style.visibility='hidden';
 }
 function centreMapHere() {
 	// perform the requested operation
 	var point = pm_map.fromContainerPixelToLatLng(clickedPixel)
 	pm_map.setCenter(point);
 	// hide the context menu now that it has been used
-	contextmenu.style.visibility="hidden";
+	contextmenu.style.visibility='hidden';
 }
 
 // === If the user clicks on the map, close the context menu ===
-google.maps.event.addListener(pm_map, "click", function() {
-	contextmenu.style.visibility="hidden";
+google.maps.event.addListener(pm_map, 'click', function() {
+	contextmenu.style.visibility='hidden';
 });
-
 
 //]]>
 </script>

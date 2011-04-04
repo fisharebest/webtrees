@@ -28,10 +28,14 @@
  *
  * @author Brian Holland (windmillway)
  */
+ 
+if (!defined('WT_WEBTREES')) {
+	header('HTTP/1.0 403 Forbidden');
+	exit;
+}
 ?>
 
 <head>
-
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="<?php echo WT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
 	<link type="text/css" href="<?php echo WT_MODULES_DIR; ?>googlemap/css/wt_v3_places_edit.css" rel="stylesheet" />
@@ -40,13 +44,13 @@
 	var map;
 	var marker;
 	var zoom;
-	var pl_name = "<?php echo htmlspecialchars($place_name); ?>";
+	var pl_name = '<?php echo htmlspecialchars($place_name); ?>';
 	if (pl_name) {
-		var pl_lati = "<?php echo $place_lati; ?>";
-		var pl_long = "<?php echo $place_long; ?>";	
+		var pl_lati = '<?php echo $place_lati; ?>';
+		var pl_long = '<?php echo $place_long; ?>';	
 	} else {
-		var pl_lati = "<?php echo $parent_lati; ?>";
-		var pl_long = "<?php echo $parent_long; ?>";
+		var pl_lati = '<?php echo $parent_lati; ?>';
+		var pl_long = '<?php echo $parent_long; ?>';
 	}
 	var pl_zoom = <?php echo $zoomfactor; ?>;
 	var latlng = new google.maps.LatLng(pl_lati, pl_long);
@@ -77,8 +81,8 @@
 		var longitude;
 		var i;		
 
-		document.editplaces.save1.disabled = "";
-		document.editplaces.save2.disabled = "";
+		document.editplaces.save1.disabled = '';
+		document.editplaces.save2.disabled = '';
 		zoom = parseInt(document.editplaces.NEW_ZOOM_FACTOR.value);
 
 		prec = 20;
@@ -87,8 +91,8 @@
 				prec = document.editplaces.NEW_PRECISION[i].value;
 			}
 		}
-		if ((document.editplaces.NEW_PLACE_LATI.value == "") ||
-			(document.editplaces.NEW_PLACE_LONG.value == "")) {
+		if ((document.editplaces.NEW_PLACE_LATI.value == '') ||
+			(document.editplaces.NEW_PLACE_LONG.value == '')) {
 			latitude = parseFloat(document.editplaces.parent_lati.value).toFixed(prec);
 			longitude = parseFloat(document.editplaces.parent_long.value).toFixed(prec);
 			point = new google.maps.LatLng(latitude, longitude);
@@ -102,26 +106,26 @@
 				if (longitude < 0.0 ) {
 					longitude = longitude * -1;
 					document.editplaces.NEW_PLACE_LONG.value = longitude;
-					document.editplaces.LONG_CONTROL.value = "PL_W";
+					document.editplaces.LONG_CONTROL.value = 'PL_W';
 				} else {
 					longitude = longitude ;
 					document.editplaces.NEW_PLACE_LONG.value = longitude;
-					document.editplaces.LONG_CONTROL.value = "PL_E";
+					document.editplaces.LONG_CONTROL.value = 'PL_E';
 				}
 				if (latitude < 0.0 ) {
 					latitude = latitude * -1;
 					document.editplaces.NEW_PLACE_LATI.value = latitude;
-					document.editplaces.LATI_CONTROL.value = "PL_S";
+					document.editplaces.LATI_CONTROL.value = 'PL_S';
 				} else {
 					latitude = latitude ;
 					document.editplaces.NEW_PLACE_LATI.value = latitude;
-					document.editplaces.LATI_CONTROL.value = "PL_N";
+					document.editplaces.LATI_CONTROL.value = 'PL_N';
 				}
 
-				if (document.editplaces.LATI_CONTROL.value == "PL_S") {
+				if (document.editplaces.LATI_CONTROL.value == 'PL_S') {
 					latitude = latitude * -1;
 				}
-				if (document.editplaces.LONG_CONTROL.value == "PL_W") {
+				if (document.editplaces.LONG_CONTROL.value == 'PL_W') {
 					longitude = longitude * -1;
 				}
 				point = new google.maps.LatLng(latitude, longitude);
@@ -134,10 +138,10 @@
 					longitude = longitude * -1;
 					document.editplaces.NEW_PLACE_LONG.value = longitude;
 				}
-				if (document.editplaces.LATI_CONTROL.value == "PL_S") {
+				if (document.editplaces.LATI_CONTROL.value == 'PL_S') {
 					latitude = latitude * -1;
 				}
-				if (document.editplaces.LONG_CONTROL.value == "PL_W") {
+				if (document.editplaces.LONG_CONTROL.value == 'PL_W') {
 					longitude = longitude * -1;
 				}
 				point = new google.maps.LatLng(latitude, longitude);
@@ -167,7 +171,7 @@
 		controlUI.style.borderWidth = '2px';
 		controlUI.style.cursor = 'pointer';
 		controlUI.style.textAlign = 'center';
-		controlUI.title = 'Click to set the map to Home';
+		controlUI.title = '';
 		controlDiv.appendChild(controlUI);
 
 		// Set CSS for the control interior
@@ -176,7 +180,7 @@
 		controlText.style.fontSize = '12px';
 		controlText.style.paddingLeft = '15px';
 		controlText.style.paddingRight = '15px';
-		controlText.innerHTML = '<b>Home<\/b>';
+		controlText.innerHTML = '<b><?php echo WT_I18N::translate('Redraw map')?><\/b>';
 		controlUI.appendChild(controlText);
 
 		// Setup the click event listeners: simply set the map to original LatLng
@@ -216,7 +220,7 @@
 			scrollwheel: true
 		};
 	
-		map = new google.maps.Map(document.getElementById("map_pane"), myOptions);
+		map = new google.maps.Map(document.getElementById('map_pane'), myOptions);
 
 		// *** === NOTE *** This function creates the UK country overlays ==========================
 		overlays();
@@ -335,17 +339,17 @@
 		}
 		if (lat < 0.0) {
 			document.editplaces.NEW_PLACE_LATI.value = (lat.toFixed(prec) * -1);
-			document.editplaces.LATI_CONTROL.value = "PL_S";
+			document.editplaces.LATI_CONTROL.value = 'PL_S';
 		} else {
 			document.editplaces.NEW_PLACE_LATI.value = lat.toFixed(prec);
-			document.editplaces.LATI_CONTROL.value = "PL_N";
+			document.editplaces.LATI_CONTROL.value = 'PL_N';
 		}
 		if (lng < 0.0) {
 			document.editplaces.NEW_PLACE_LONG.value = (lng.toFixed(prec) * -1);
-			document.editplaces.LONG_CONTROL.value = "PL_W";
+			document.editplaces.LONG_CONTROL.value = 'PL_W';
 		} else {
 			document.editplaces.NEW_PLACE_LONG.value = lng.toFixed(prec);
-			document.editplaces.LONG_CONTROL.value = "PL_E";
+			document.editplaces.LONG_CONTROL.value = 'PL_E';
 		}
 		newval = new google.maps.LatLng (lat.toFixed(prec), lng.toFixed(prec));
 		updateMap();
@@ -392,20 +396,20 @@
 	}
 
 	function remove_icon() {
-		document.editplaces.icon.value = "";
-		document.getElementById('flagsDiv').innerHTML = "<a href=\"javascript:;\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>";
+		document.editplaces.icon.value = '';
+		document.getElementById('flagsDiv').innerHTML = '<a href="javascript:;" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>';
 	}
 	
 	function addAddressToMap(response) {
 		var bounds = new google.maps.LatLngBounds();
 		if (!response ) {
-			alert("<?php echo WT_I18N::translate('No places found'); ?>");
+			alert('<?php echo WT_I18N::translate('No places found'); ?>');
 		} else {	
 			if (response.length > 0) {
 				for (i=0; i<response.length; i++) {					
 					var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br /> '+response[i].geometry.location+''
-						name +=	"<br /><a href=\"javascript:;\" onclick=\"setLoc(" + response[i].geometry.location.lat() + ", " + response[i].geometry.location.lng() + ");\"><div id=\"namelink\"><?php echo PrintReady(WT_I18N::translate('Use this value')); ?></div></a>"
-						name += "</div>"
+						name +=	'<br /><a href="javascript:;" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo PrintReady(WT_I18N::translate('Use this value')); ?></div></a>'
+						name += '</div>'
 					var point = response[i].geometry.location;
 					var marker = createMarker(i, point, name);	
 					bounds.extend(response[i].geometry.location);
@@ -438,7 +442,7 @@
 	}
 
 	function showLocation_level(address) {
-		address += '<?php if ($level>0) echo ", ", addslashes(PrintReady(implode(', ', array_reverse($where_am_i, true)))); ?>';
+		address += '<?php if ($level>0) echo ', ', addslashes(PrintReady(implode(', ', array_reverse($where_am_i, true)))); ?>';
 		geocoder.geocode({'address': address}, addAddressToMap);
 	}
 
@@ -451,13 +455,9 @@
 		language_filter = lang;
 		magnify = mag;
 	}
-
 </script>
-
 </head>
-
 <body onload="loadMap()" >
 <table><tr><td align="center">
 </td></tr></table>
 </body>
-
