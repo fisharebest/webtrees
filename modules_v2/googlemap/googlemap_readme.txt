@@ -1,25 +1,21 @@
-﻿README file for the Googlemap module for webtrees
+﻿README file for the Google Maps module for webtrees
 
 The files in this archive should be extracted into your modules directory.
 
-These are the instruction on getting your Googlemap interface to work:
+These are the instruction on getting your Google Maps interface to work:
 
-1. Get your personal Google Map API key from
-   http://www.google.com/apis/maps/signup.html
-2. Go to the Googlemap configuration page. You can find this page under the
-   Administration page.
-3. Set Enable Googlemap to ‘Yes’.
-4. Enter the key in the input field, and click save.
+1. Go to the Modules. You can find this page under the Administration page.
+2. Tick Enable Google Maps.
 
 The map will only be shown if at least one fact has a place with coordinates
 attached to it. Attaching a coordinate can be done through the generic
-place-location interface (located at the Googlamp configuration page) or by
-specifying a MAP record with an event.
+place-location interface (located at the Google Maps configuration page) or
+by specifying a MAP record with an event.
 
 Adding places one by one to your GEDCOM file (not recommended):
 
 This method is included so that you may have an idea of how a GEDCOM stores
-place data. You do not need the Googlemap module to use this procedure.
+place data. You do not need the Google Maps module to use this procedure.
 The co-ordinates for an event can only be added directly to a GEDCOM file. 
 The correct way to do this is for a PLAC record:
 2 PLAC <Placename>
@@ -37,7 +33,7 @@ editing if that option is selected.
 It is also possible to define a MAP record within a ADDR record, even though
 this is not according to the standard (these records are created by Legacy).
 
-Add a place using webtrees Googlemap module (recommended method):
+Add a place using webtrees Google Maps module (recommended method):
 
 Forenote: the Google Map module is designed to work with locations in tree-like
 fashion. If we were to consider a suburb of London, the tree would take the
@@ -57,10 +53,10 @@ information. Existing places can be imported and location information can be
 added using graphic tools (zoom/click on map) or specific location data. 
 
 The location information is held outside the GEDCOM (and can be shared between
-GEDCOMs in webtrees) and location data is entered only once for each place. Backup
-of location data is available by export of each new place database table to a
-text file (separated with ";"). Bulk additions can be performed by text file
-import (with reservations for specific place structure and spelling). 
+family trees in webtrees) and location data is entered only once for each place.
+Backup of location data is available by export of each new place database table
+to a text file (separated with ";"). Bulk additions can be performed by text
+file import (with reservations for specific place structure and spelling). 
 
 Using the tree structure mentioned above, we start to build location data
 from the top down – which, in 99% of cases, will mean starting by entering
@@ -70,4 +66,4 @@ whatever is appropriate for your locale.)
 To make the flags work make sure that ./places/flags directory exists.
 
 More information:
-http://wiki.webtrees.net/en/index.php?title=How_to:Add_Google_maps
+http://wiki.webtrees.net/Google_Map_module
