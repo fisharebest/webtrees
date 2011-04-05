@@ -37,7 +37,7 @@ table#tvTreeBorder td, #tv_tree {
 }
 /* horizontal and vertical lines color */
 #tv_tree div.tv_vline, #tv_tree div.tv_hline {
-  background-color:  #000;
+  background-color:  #999;
 }
 #tv_tree table.tv_tree td.tv_vline_h {
   background-image: url(vline.jpg);
