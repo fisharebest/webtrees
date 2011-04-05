@@ -1580,15 +1580,16 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo ">", WT_I18N::translate_c('unknown gender', 'Unknown'), "</option></select>";
 	} else if ($fact == "TYPE" && $level == '3') {
 		//-- Build the selector for the Media "TYPE" Fact
-		echo "<select name=\"text[]\">";
-		if ($value=='') echo "<option selected=\"selected\" value=\"\" > ", WT_I18N::translate('Choose: '), " </option>";
+		echo '<select name="text[]"><option selected="selected" value="" ></option>';
 		$selectedValue = strtolower($value);
 		foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
-			echo "<option value=\"", $typeName, "\" ";
-			if ($selectedValue == $typeName) echo "selected=\"selected\" ";
-			echo "> ", $typeValue, " </option>";
+			echo '<option value="', $typeName, '"';
+			if ($selectedValue == $typeName) {
+				echo ' selected="selected"';
+			}
+			echo '>', $typeValue, '</option>';
 		}
-		echo "</select>";
+		echo '</select>';
 	} else if (($fact=="NAME" && $upperlevel!='REPO') || $fact=="_MARNM") {
 		// Populated in javascript from sub-tags
 		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", PrintReady(htmlspecialchars($value)), "\" />";
