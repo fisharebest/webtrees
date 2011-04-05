@@ -1582,6 +1582,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		//-- Build the selector for the Media "TYPE" Fact
 		echo '<select name="text[]"><option selected="selected" value="" ></option>';
 		$selectedValue = strtolower($value);
+		if (!array_key_exists($selectedValue, WT_Gedcom_Tag::getFileFormTypes())) {
+			echo '<option selected="selected" value="', htmlspecialchars($value), '" >', htmlspecialchars($value), '</option>';
+		}
 		foreach (WT_Gedcom_Tag::getFileFormTypes() as $typeName => $typeValue) {
 			echo '<option value="', $typeName, '"';
 			if ($selectedValue == $typeName) {
@@ -1633,7 +1636,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		else if (($cols>20 || $fact=="NPFX") && $readOnly=='') print_specialchar_link($element_id, false);
 	}
 	// MARRiage TYPE : hide text field and show a selection list
-	if ($fact=="TYPE" and $tags[0]=="MARR") {
+	if ($fact=='TYPE' && $level==2 && $tags[0]=='MARR') {
 		echo "<script type='text/javascript'>";
 		echo "document.getElementById('", $element_id, "').style.display='none'";
 		echo "</script>";
