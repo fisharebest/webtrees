@@ -268,12 +268,12 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 		'<div>',
 		'<table>',
 		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Day'), '</span></td><td><span>', WT_I18N::translate('Week'), '</span></td><td><span>', WT_I18N::translate('Month'), '</span></td></tr>',
-		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', count_changes_today($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($GEDCOM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($GEDCOM_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', count_changes_today($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($FAM_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($FAM_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>', count_changes_today($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($SOURCE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($SOURCE_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Repositories'), '</th><td>', count_changes_today($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($REPO_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($REPO_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Media objects'), '</th><td>', count_changes_today($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($MEDIA_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($MEDIA_ID_PREFIX, $ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Notes'), '</th><td>', count_changes_today($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_week($NOTE_ID_PREFIX, $ged_id), '</td><td>', count_changes_month($NOTE_ID_PREFIX, $ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', WT_Query_Admin::countIndiChangesToday($ged_id), '</td><td>', WT_Query_Admin::countIndiChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countIndiChangesMonth($ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', WT_Query_Admin::countFamChangesToday($ged_id), '</td><td>', WT_Query_Admin::countFamChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countFamChangesMonth($ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>',  WT_Query_Admin::countSourChangesToday($ged_id), '</td><td>', WT_Query_Admin::countSourChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countSourChangesMonth($ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Repositories'), '</th><td>',  WT_Query_Admin::countRepoChangesToday($ged_id), '</td><td>', WT_Query_Admin::countRepoChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countRepoChangesMonth($ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Media objects'), '</th><td>', WT_Query_Admin::countObjeChangesToday($ged_id), '</td><td>', WT_Query_Admin::countObjeChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countObjeChangesMonth($ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Notes'), '</th><td>', WT_Query_Admin::countNoteChangesToday($ged_id), '</td><td>', WT_Query_Admin::countNoteChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countNoteChangesMonth($ged_id), '</td></tr>',
 		'</table>',
 		'</div>';
 	}
