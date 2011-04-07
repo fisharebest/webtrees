@@ -211,7 +211,7 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 //-- data that is hidden because of privacy is stored in the $pgv_private_records array
 //-- any private data will be restored when the record is replaced
 if (isset($gedrec)) {
-	$gedrec = privatize_gedcom($gedrec);
+	$gedrec = privatize_gedcom(WT_GED_ID, $gedrec);
 }
 
 if (!isset($type)) {

@@ -65,7 +65,7 @@ class WT_GedcomRecord {
 
 		//-- set the gedcom record a privatized version
 		$this->disp  =canDisplayRecord($this->ged_id, $this->gedrec);
-		$this->gedrec=privatize_gedcom($this->gedrec);
+		$this->gedrec=privatize_gedcom($this->ged_id, $this->gedrec);
 	}
 
 	// Get an instance of a GedcomRecord.  We either specify

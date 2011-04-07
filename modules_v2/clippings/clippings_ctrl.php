@@ -214,7 +214,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 					$record = find_gedcom_record($clipping['id'], WT_GED_ID);
 					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($clipping['type']=='obje') $record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
-					$record = privatize_gedcom($record);
+					$record = privatize_gedcom(WT_GED_ID, $record);
 					$record = remove_custom_tags($record, $remove);
 					if ($convert == "yes")
 					$record = utf8_decode($record);
