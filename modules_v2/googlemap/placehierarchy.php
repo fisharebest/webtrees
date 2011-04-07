@@ -618,7 +618,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
 				// show the current place on the map
 
-				$place = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM ##placelocation WHERE pl_id=?")
+				$place = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id=?")
 				->execute(array($levelm))
 				->fetch(PDO::FETCH_ASSOC);
 

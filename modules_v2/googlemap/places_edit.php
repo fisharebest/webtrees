@@ -140,7 +140,7 @@ if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {
 	echo "ZOOM = ".$_REQUEST['svzoom']."<br />";
 	echo "<br /><br />";	
 	$statement=
-		WT_DB::prepare("UPDATE ##placelocation SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?");		
+		WT_DB::prepare("UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?");		
 	$statement->execute(array(stripLRMRLM($_REQUEST['svlati']), $_REQUEST['svlong'], $_REQUEST['svbear'], $_REQUEST['svelev'], $_REQUEST['svzoom'], $placeid));
 	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";

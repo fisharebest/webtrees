@@ -381,17 +381,17 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			" SELECT user_id, 'canadmin', ".
 			" CASE WHEN u_canadmin IN ('Y', 'yes') THEN 1 WHEN u_canadmin IN ('N', 'no') THEN 0 ELSE u_canadmin END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'verified', ".
 			" CASE WHEN u_verified IN ('Y', 'yes') THEN 1 WHEN u_verified IN ('N', 'no') THEN 0 ELSE u_verified END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'verified_by_admin', ".
 			" CASE WHEN u_verified_by_admin IN ('Y', 'yes') THEN 1 WHEN u_verified_by_admin IN ('N', 'no') THEN 0 ELSE u_verified_by_admin END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'language', ".
 			" CASE u_language".
@@ -419,20 +419,20 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			"  ELSE 'en_US'". // PGV supports other languages that webtrees does not (yet)
 			" END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'pwrequested', ".
 			" CASE WHEN u_pwrequested IN ('Y', 'yes') THEN 1 WHEN u_pwrequested IN ('N', 'no') THEN 0 ELSE u_pwrequested END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'reg_timestamp', u_reg_timestamp".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'reg_hashcode', u_reg_hashcode".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'theme', ".
 			" CASE u_theme".
@@ -446,48 +446,48 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			"  ELSE 'themes/webtrees/'". // ocean, simplyred/blue/green, standard, wood
 			" END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'sessiontime', u_sessiontime".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'contactmethod', u_contactmethod".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'visibleonline', ".
 			" CASE WHEN u_visibleonline IN ('Y', 'yes') THEN 1 WHEN u_visibleonline IN ('N', 'no') THEN 0 ELSE u_visibleonline END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'editaccount', ".
 			" CASE WHEN u_editaccount IN ('Y', 'yes') THEN 1 WHEN u_editaccount IN ('N', 'no') THEN 0 ELSE u_editaccount END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'defaulttab', ".
 			" CASE WHEN u_defaulttab IN ('Y', 'yes') THEN 1 WHEN u_defaulttab IN ('N', 'no') THEN 0 ELSE u_defaulttab END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'comment', u_comment".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'relationship_privacy', ".
 			" CASE WHEN u_relationship_privacy IN ('Y', 'yes') THEN 1 WHEN u_relationship_privacy IN ('N', 'no') THEN 0 ELSE u_relationship_privacy END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'max_relation_path', u_max_relation_path".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'auto_accept', ".
 			" CASE WHEN u_auto_accept IN ('Y', 'yes') THEN 1 WHEN u_auto_accept IN ('N', 'no') THEN 0 ELSE u_auto_accept END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
+			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
 		)->execute();
 	} catch (PDOException $ex) {
 		// This could only fail if;
@@ -500,7 +500,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			WT_DB::prepare(
 				"SELECT user_id, u_gedcomid, u_rootid, u_canedit".
 				" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-				" JOIN ##user ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
+				" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)"
 			)->fetchAll();
 		foreach ($user_gedcom_settings as $setting) {
 			@$array=unserialize($setting->u_gedcomid);
