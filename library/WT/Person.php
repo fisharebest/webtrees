@@ -1637,7 +1637,7 @@ class WT_Person extends WT_GedcomRecord {
 
 		// Generate a "list" name, by moving the surname to the front of the "full" name
 		// Take care of names with no space before/after the surname
-		$list=preg_replace('/^([^\/]+?)( *)(\/.+\/)/', '$3$2$1', $full);
+		$list=preg_replace('/^([^\/]+?)( *)(\/.+\/)/', '$3,$2$1', $full);
 
 		// Need the 'not known' place holders for the database
 		$fullNN=$full;
