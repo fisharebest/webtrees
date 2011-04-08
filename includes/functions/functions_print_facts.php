@@ -325,7 +325,6 @@ function print_fact(&$eventObj) {
 				break;
 			case 'EVEN': // 0 SOUR / 1 DATA / 2 EVEN /3 DATE/PLAC
 				echo '<div>';
-				$text='';
 				foreach (preg_split('/ *, */', $match[2]) as $n=>$value) {
 					if ($n>0) {
 						echo ', ';
