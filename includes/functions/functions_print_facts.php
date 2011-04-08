@@ -324,14 +324,18 @@ function print_fact(&$eventObj) {
 				// These will be shown at the end
 				break;
 			case 'EVEN': // 0 SOUR / 1 DATA / 2 EVEN /3 DATE/PLAC
-				echo '<div><b>';
+				echo '<div>';
+				$text='';
 				foreach (preg_split('/ *, */', $match[2]) as $n=>$value) {
 					if ($n>0) {
 						echo ', ';
 					}
-					echo WT_Gedcom_Tag::getLabel($value);
+					if (preg_match("/2 EVEN (.*)/", $factrec)>0) {
+						echo '<span class="label">', WT_Gedcom_Tag::getLabel('EVEN'), ':</span> <span class="field">', $value, '</span>';
+					} else {
+						echo $value;
+					}
 				}
-				echo '</b>';
 				if (preg_match('/\n3 DATE (.+)/', $factrec, $date_match)) {
 					$date=new WT_Date($date_match[1]);
 					echo ' - ', $date->Display();
