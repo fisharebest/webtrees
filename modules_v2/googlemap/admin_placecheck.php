@@ -42,7 +42,9 @@ if (!$state) {
 	$state=safe_GET      ('state',     WT_REGEX_UNSAFE,              'XYZ'      );
 }
 if (isset($_REQUEST['show_changes']) && $_REQUEST['show_changes']=='yes') {
-	$_POST["matching"] = 1;
+	$show_changes = true;
+} else {
+	$show_changes = false;
 }
 
 // Must be an admin user to use this module
@@ -52,7 +54,7 @@ if (!WT_USER_GEDCOM_ADMIN) {
 }
 print_header(WT_I18N::translate('Place Check').' - '.WT_GEDCOM);
 
-$target=$openinnew ? "target='_blank'" : "";
+$target=$openinnew ? 'target="_blank"' : '';
 
 echo '<table id="gm_config"><tr>',
 	'<th><a ', (safe_GET('mod_action')=="admin_editconfig" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>', help_link('GOOGLEMAP_CONFIG','googlemap'), '</th>',
@@ -61,83 +63,85 @@ echo '<table id="gm_config"><tr>',
 '</tr></table>';
 
 //Start of User Defined options
-echo "<table id=\"gm_check_outer\">";
-echo "<form method='post' name='placecheck' action='module.php?mod=googlemap&amp;mod_action=admin_placecheck'>";
-echo "<tr valign='top'>";
-echo "<td>";
-echo "<table class=\"gm_check_top\" align='left'>";
-echo "<tr><th colspan='2'>", WT_I18N::translate('PlaceCheck List Options'), "</th></tr>";
+echo '<table id="gm_check_outer">';
+echo '<form method="post" name="placecheck" action="module.php?mod=googlemap&amp;mod_action=admin_placecheck">';
+echo '<tr valign="top">';
+echo '<td>';
+echo '<table class="gm_check_top" align="left">';
+echo '<tr><th colspan="2">', WT_I18N::translate('PlaceCheck List Options'), '</th></tr>';
 //Option box to select gedcom
-echo "<tr><td>".WT_I18N::translate('Family tree')."</td>";
-echo "<td><select name='gedcom_id'>";
+echo '<tr><td>', WT_I18N::translate('Family tree'), '</td>';
+echo '<td><select name="gedcom_id">';
 foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	echo '<option value="', $ged_id, '"', $ged_id==$gedcom_id?' selected="selected"':'', '>', get_gedcom_setting($ged_id, 'title'), '</option>';
 }
-echo "</select></td></tr>";
+echo '</select></td></tr>';
 //Option box for 'Open in new window'
-echo "<tr><td>".WT_I18N::translate('Open links in')."</td>";
-echo "<td><select name='openinnew'>";
-echo "<option value='0' ", $openinnew?" selected='selected'":"", ">".WT_I18N::translate('Same tab/window')."</option>";
-echo "<option value='1' ", $openinnew?" selected='selected'":"", ">".WT_I18N::translate('New tab/window')."</option>";
-echo "</select></td></tr>";
+echo '<tr><td>', WT_I18N::translate('Open links in'), '</td>';
+echo '<td><select name="openinnew">';
+echo '<option value="0" ', $openinnew?' selected="selected"':'', '>', WT_I18N::translate('Same tab/window'), '</option>';
+echo '<option value="1" ', $openinnew?' selected="selected"':'', '>', WT_I18N::translate('New tab/window'), '</option>';
+echo '</select></td></tr>';
 //Option box to select Country within Gedcom
-echo "<tr><td>", WT_I18N::translate('Country'), "</td>";
-echo "<td><select name='country'>";
-echo "<option value='XYZ' selected='selected'>", /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('&lt;select&gt;'), "</option>";
-echo "<option value='XYZ'>", WT_I18N::translate('All'), "</option>";
+echo '<tr><td>', WT_I18N::translate('Country'), '</td>';
+echo '<td><select name="country">';
+echo '<option value="XYZ" selected="selected">', /* I18N: first/default option in a drop-down listbox */ WT_I18N::translate('&lt;select&gt;'), '</option>';
+echo '<option value="XYZ">', WT_I18N::translate('All'), '</option>';
 $rows=
 	WT_DB::prepare("SELECT pl_id, pl_place FROM `##placelocation` WHERE pl_level=0 ORDER BY pl_place")
 	->fetchAssoc();
 foreach ($rows as $id=>$place) {
-	echo "<option value='{$place}'";
+	echo '<option value="', $place, '"';
 	if ($place==$country) {
-		echo " selected='selected'";
+		echo ' selected="selected"';
 		$par_id=$id;
 	}
-	echo ">{$place}</option>";
+	echo '>', $place, '</option>';
 }
-echo "</select></td></tr>";
+echo '</select></td></tr>';
 
 //Option box to select level 2 place within the selected Country
 if ($country!='XYZ') {
-	echo "<tr><td>", /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'), "</td>";
-	echo "<td><select name='state'>";
-	echo "<option value='XYZ' selected='selected'>", WT_I18N::translate('&lt;select&gt;'), "</option>";
-	echo "<option value='XYZ'>", WT_I18N::translate('All'), "</option>";
+	echo '<tr><td>', /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'), '</td>';
+	echo '<td><select name="state">';
+	echo '<option value="XYZ" selected="selected">', WT_I18N::translate('&lt;select&gt;'), '</option>';
+	echo '<option value="XYZ">', WT_I18N::translate('All'), '</option>';
 	$places=
 		WT_DB::prepare("SELECT pl_place FROM `##placelocation` WHERE pl_parent_id=? ORDER BY pl_place")
 		->execute(array($par_id))
 		->fetchOneColumn();
 	foreach ($places as $place) {
-		echo "<option value='{$place}'", $place==$state?" selected='selected'":"", ">{$place}</option>";
+		echo '<option value="', $place, '"', $place==$state?' selected="selected"':'', '>', $place, '</option>';
 	}
-	echo "</select></td></tr>";
+	echo '</select></td></tr>';
 }
-echo "</table>";
-echo "</td>";
+echo '</table>';
+echo '</td>';
 //Show Filter table
-if (!isset ($_POST["matching"])) {$matching=0;} else {$matching=1;}
-echo "<td>";
-echo "<table class=\"gm_check_top\"  align='center'>";
-echo "<tr><th colspan='2'>";
+if (!isset ($_POST['matching'])) {$matching=false;} else {$matching=true;}
+echo '<td>';
+echo '<table class="gm_check_top"  align="center">';
+echo '<tr><th colspan="2">';
 echo WT_I18N::translate('List filtering options'), help_link('PLACECHECK_FILTER','googlemap');
-echo "</th></tr><tr><td>";
+echo '</th></tr><tr><td>';
 echo WT_I18N::translate('Include fully matched places: '), help_link('PLACECHECK_MATCH','googlemap');
-echo "</td><td><input type=\"checkbox\" name=\"matching\" value=\"active\"";
+echo '</td><td><input type="checkbox" name="matching" value="active"';
 if ($matching) {
-	echo " checked=\"checked\"";
+	echo ' checked="checked"';
+}
+if ($show_changes) {
 	$action = 'go';
 }
-echo "></td></tr>";
-echo "</table>";
-echo "</td>";
-echo "<td>";
-echo "<input type='submit' value='".WT_I18N::translate('Show')."' $target><input type='hidden' name='action' value='go'>";
-echo "</td>";
-echo "</tr>";
-echo "</form>";
-echo "</table>";
-echo "<hr />";
+echo '></td></tr>';
+echo '</table>';
+echo '</td>';
+echo '<td>';
+echo '<input type="submit" value="', WT_I18N::translate('Show'), '"', $target, '><input type="hidden" name="action" value="go">';
+echo '</td>';
+echo '</tr>';
+echo '</form>';
+echo '</table>';
+echo '<hr />';
 
 switch ($action) {
 case 'go':
