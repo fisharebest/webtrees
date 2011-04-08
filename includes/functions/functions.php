@@ -3461,4 +3461,8 @@ function expand_urls($text) {
 	);
 }
 
-
+// Returns the part of the haystack before the first occurrence of the needle.
+// Use it to emulate the before_needle php 5.3.0 strstr function
+function strstrb($haystack, $needle){
+	return substr($haystack, 0, strpos($haystack, $needle));
+}

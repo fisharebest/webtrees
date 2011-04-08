@@ -518,7 +518,7 @@ function showchanges() {
 }
 
 function updateList(inactive) {
-	window.location.href='<?php if (strstr($_SERVER['REQUEST_URI'], '&inactive', true)) { $uri=strstr($_SERVER['REQUEST_URI'], '&inactive', true);} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&inactive='; ?>'+inactive;
+	window.location.href='<?php if (strstrb($_SERVER['REQUEST_URI'], '&inactive')) { $uri=strstrb($_SERVER['REQUEST_URI'], '&inactive');} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&inactive='; ?>'+inactive;
 }
 
 function edit_place_location(placeid) {
