@@ -197,6 +197,8 @@ function initialize() {
     };
 	panorama = new google.maps.StreetViewPanorama(document.getElementById('mapCanvas'), panoramaOptions);
 	panorama.setPosition(latLng);
+	setTimeout(function() { panorama.setVisible(true); }, 1000);
+    setTimeout(function() { panorama.setVisible(true); }, 1500);		
 
 
     	// Enable navigator contol and address control to be toggled with right mouse button -------
