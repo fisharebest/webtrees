@@ -73,7 +73,7 @@ switch ($action) {
 			<span class="warning"><?php echo $message; ?></span>
 			<table class="center facts_table width25">
 				<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Lost password request'), help_link('pls_note11'); ?></td></tr>
-				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('User name'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" name="user_name" value="" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="username"><?php echo WT_I18N::translate('User name'); ?></label></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="username" name="user_name" value="" /></td></tr>
 				<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php echo WT_I18N::translate('Lost password request'); ?>" /></td></tr>
 			</table>
 			</form>
@@ -265,21 +265,21 @@ switch ($action) {
 					<input type="hidden" name="time" value="" />
 					<table class="center facts_table width50">
 						<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Request new user account'); ?><br /><?php if (strlen($message) > 0) echo $message; ?></td></tr>
-						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Real name'), help_link('new_user_realname'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" name="user_realname" value="<?php if (!$user_realname_false) echo $user_realname; ?>" /> *</td></tr>
-						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Email address'), help_link('edituser_email'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" size="30" name="user_email" value="<?php if (!$user_email_false) echo $user_email; ?>"  /> *</td></tr>
-						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Desired user name'), help_link('username'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" name="user_name" value="<?php if (!$user_name_false) echo $user_name; ?>" /> *</td></tr>
-						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Desired password'), help_link('edituser_password'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" name="user_password01" value="" /> *</td></tr>
-						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Confirm password'), help_link('edituser_conf_password'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" name="user_password02" value="" /> *</td></tr>
+						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_realname"><?php echo WT_I18N::translate('Real name'), '</label>', help_link('new_user_realname'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="user_realname" name="user_realname" value="<?php if (!$user_realname_false) echo $user_realname; ?>" /> *</td></tr>
+						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_email"><?php echo WT_I18N::translate('Email address'), '</label>', help_link('edituser_email'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" size="30" id="user_email" name="user_email" value="<?php if (!$user_email_false) echo $user_email; ?>"  /> *</td></tr>
+						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="username"><?php echo WT_I18N::translate('Desired user name'), '</label>', help_link('username'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="username" name="user_name" value="<?php if (!$user_name_false) echo $user_name; ?>" /> *</td></tr>
+						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_password01"><?php echo WT_I18N::translate('Desired password'), '</label>', help_link('edituser_password'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" id="user_password01" name="user_password01" value="" /> *</td></tr>
+						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_password02"><?php echo WT_I18N::translate('Confirm password'), '</label>', help_link('edituser_conf_password'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" id="user_password02" name="user_password02" value="" /> *</td></tr>
 						<?php
 						echo "<tr><td class=\"descriptionbox wrap ", $TEXT_DIRECTION, "\">";
-						echo WT_I18N::translate('Change language'), help_link('edituser_change_lang');
+						echo '<label for="user_language">', WT_I18N::translate('Change language'), '</label>', help_link('edituser_change_lang');
 						echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
 						echo edit_field_language('user_language', WT_LOCALE);
 						echo '</td></tr>';
 						if ($REQUIRE_AUTHENTICATION && $SHOW_LIVING_NAMES>=WT_PRIV_PUBLIC) { ?>
-						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Individual record'), help_link('register_gedcomid'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>" valign="top" ><input type="text" size="10" name="user_gedcomid" id="user_gedcomid" value="" /><?php print_findindi_link("user_gedcomid",""); ?></td></tr>
+						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_gedcomid"><?php echo WT_I18N::translate('Individual record'), '</label>', help_link('register_gedcomid'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>" valign="top" ><input type="text" size="10" name="user_gedcomid" id="user_gedcomid" value="" /><?php print_findindi_link("user_gedcomid",""); ?></td></tr>
 						<?php } ?>
-						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Comments'), help_link('register_comments'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>" valign="top" ><textarea cols="50" rows="5" name="user_comments"><?php if (!$user_comments_false) echo $user_comments; ?></textarea> *</td></tr>
+						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_comments"><?php echo WT_I18N::translate('Comments'), '</label>', help_link('register_comments'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>" valign="top" ><textarea cols="50" rows="5" id="user_comments" name="user_comments"><?php if (!$user_comments_false) echo $user_comments; ?></textarea> *</td></tr>
 						<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php echo WT_I18N::translate('Request new user account'); ?>" /></td></tr>
 						<tr><td align="left" colspan="2" ><?php echo WT_I18N::translate('Fields marked with * are mandatory.'); ?></td></tr>
 					</table>
@@ -443,9 +443,9 @@ switch ($action) {
 			<input type="hidden" name="time" value="" />
 			<table class="center facts_table width25">
 				<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('User verification'), help_link('pls_note07'); ?></td></tr>
-				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('User name'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" name="user_name" value="<?php echo $user_name; ?>" /></td></tr>
-				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Password'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" name="user_password" value="" /></td></tr>
-				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Verification code:'); ?></td><td class="facts_value <?php echo $TEXT_DIRECTION; ?>"><input type="text" name="user_hashcode" value="<?php echo $user_hashcode; ?>" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="username"><?php echo WT_I18N::translate('User name'); ?></label></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="username" name="user_name" value="<?php echo $user_name; ?>" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_password"><?php echo WT_I18N::translate('Password'); ?></label></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" id="user_password" name="user_password" value="" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_hashcode"><?php echo WT_I18N::translate('Verification code:'); ?></label></td><td class="facts_value <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="user_hashcode" name="user_hashcode" value="<?php echo $user_hashcode; ?>" /></td></tr>
 				<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php echo WT_I18N::translate('Send'); ?>" /></td></tr>
 			</table>
 		</form>

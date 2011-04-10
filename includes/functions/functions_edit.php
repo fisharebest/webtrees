@@ -75,7 +75,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 			$html.='<option value="'.htmlspecialchars($key).'">'.htmlspecialchars($value).'</option>';
 		}
 	}
-	return '<select name="'.$name.'" '.$extra.'>'.$html.'</select>';
+	return '<select id="'.$name.'" name="'.$name.'" '.$extra.'>'.$html.'</select>';
 }
 
 // An inline-editing version of select_edit_control()
