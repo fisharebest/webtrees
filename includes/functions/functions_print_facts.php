@@ -490,7 +490,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			$srec = get_sub_record($level, "$level SOUR ", $factrec, $j+1);
 			$srec = substr($srec, 6); // remove "2 SOUR"
 			$srec = str_replace("\n".($level+1)." CONT ", "<br/>", $srec); // remove n+1 CONT
-			$data .= "<br /><span class=\"label\">".WT_I18N::translate('Source').":</span> <span class=\"field\">".PrintReady($srec)."</span><br />";
+			$data .= "<div=\"fact_SOUR\"><span class=\"label\">".WT_I18N::translate('Source').":</span> <span class=\"field\">".PrintReady($srec)."</span></div>";
 			$printDone = true;
 		}
 	}
@@ -505,7 +505,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			if (!$spos2) $spos2 = strlen($factrec);
 			$srec = substr($factrec, $spos1, $spos2-$spos1);
 			$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
-			$data .= "<br />";
+			$data .= "<div class=\"fact_SOUR\">";
 			$data .= "<span class=\"label\">";
 			$elementID = $sid."-".floor(microtime()*1000000);
 			if ($EXPAND_SOURCES) $plusminus="minus"; else $plusminus="plus";
@@ -521,7 +521,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			} else {
 				$data .= $sid;
 			}
-			$data .= "</span>";
+			$data .= "</span></div>";
 
 			$data .= "<div id=\"$elementID\"";
 			if ($EXPAND_SOURCES) $data .= " style=\"display:block\"";
@@ -545,10 +545,10 @@ function print_fact_sources($factrec, $level, $return=false) {
 			$printDone = true;
 		}
 	}
-	if ($printDone) $data .= "<br />";
+
 	if (!$return) echo $data;
 	else return $data;
-	echo "<br />";
+	
 }
 
 //-- Print the links to multi-media objects

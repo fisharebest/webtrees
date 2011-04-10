@@ -950,7 +950,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 
 		$brpos = strpos($text, "<br />");
 		if (!$npage) {
-			$data .= "<span class=\"label\">";
+			$data .= "<div class=\"fact_NOTE\"><span class=\"label\">";
 			if ($brpos !== false) {
 				if ($EXPAND_NOTES) $plusminus="minus"; else $plusminus="plus";
 				$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
@@ -969,7 +969,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		if ($brpos !== false) {
 			$data .= substr($text, 0, $brpos);
 			if ($npage) {
-				$data .= "<br />".substr($text, $brpos + 6);
+				$data .= "<br />".substr($text, $brpos + 6) . "</div>";
 			} else {
 				$data .= "<div id=\"$elementID\"";
 				if ($EXPAND_NOTES) $data .= " style=\"display:block\"";
@@ -1359,10 +1359,11 @@ function print_asso_rela_record($event) {
 		}
 		$html=array_unique($html);
 		echo
-			'<br />',
+			'<div class="fact_ASSO">',
 			'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>',
 			' - ',
 			implode(', ', $html);
+			echo '</div>';
 	}
 }
 
