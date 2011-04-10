@@ -308,7 +308,7 @@ function build_indiv_map($indifacts, $famids) {
 	// Create the markers list array ===============================================================
 	$markers=array();
 	// Add the events to the markers list array=====================================================
-	$placelocation=WT_DB::table_exists('##placelocation');
+	$placelocation=WT_DB::table_exists("`##placelocation`");
 	//-- sort the facts into date order
 	sort_facts($indifacts);
 	$i = 0;

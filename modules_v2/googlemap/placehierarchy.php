@@ -42,7 +42,7 @@ if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php')) {
 $stats = new WT_Stats($GEDCOM);
 
 function check_exist_table() {
-	return WT_DB::table_exists('##placelocation');
+	return WT_DB::table_exists('`##placelocation`');
 }
 
 function place_id_to_hierarchy($id) {
