@@ -1,6 +1,6 @@
 <?php
-// Check a GEDCOM file for compliance with the 5.5.1 specification
-// and other common errors.
+// Provides a way to compare places in your family tree file with the matching
+// entries in the Google Maps 'placelocations' table.
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 $action   =safe_POST     ('action'                                              );
-$gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID);
+$gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID );
 $openinnew=safe_POST_bool('openinnew'                                           );
 $country  =safe_POST     ('country',   WT_REGEX_UNSAFE,              ''         );
 if (!$country) {
@@ -45,6 +45,27 @@ if (isset($_REQUEST['show_changes']) && $_REQUEST['show_changes']=='yes') {
 	$show_changes = true;
 } else {
 	$show_changes = false;
+}
+
+if ($show_changes && !empty($_SESSION['placecheck_gedcom_id'])) {
+	$gedcom_id = $_SESSION['placecheck_gedcom_id'];
+} else {
+	$_SESSION['placecheck_gedcom_id'] = $gedcom_id;
+}
+if ($show_changes && !empty($_SESSION['placecheck_openinnew'])) {
+	$openinnew = $_SESSION['placecheck_openinnew'];
+} else {
+	$_SESSION['placecheck_openinnew'] = $openinnew;
+}
+if ($show_changes && !empty($_SESSION['placecheck_country'])) {
+	$country = $_SESSION['placecheck_country'];
+} else {
+	$_SESSION['placecheck_country'] = $country;
+}
+if ($show_changes && !empty($_SESSION['placecheck_state'])) {
+	$state = $_SESSION['placecheck_state'];
+} else {
+	$_SESSION['placecheck_state'] = $state;
 }
 
 // Must be an admin user to use this module
