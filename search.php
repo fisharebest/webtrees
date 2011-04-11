@@ -340,7 +340,7 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 			 	echo ' <input type="button" value="', WT_I18N::translate('invert selection'), '" onclick="jQuery(\'#trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', !jQuery(this).attr(\'checked\'));});return false;"/>';
 			}
 		}
-		echo '</div><div id="trees" style="max-height:300px; overflow-x:auto;">';
+		echo '</div><div id="trees" style="max-height:300px; overflow-x:auto;">', "\n";
 		//-- sorting menu by gedcom filename
 		asort($all_gedcoms);
 		foreach ($all_gedcoms as $ged_id=>$gedcom) {
@@ -350,13 +350,12 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 			if (isset ($_REQUEST["$str"])) {
 				echo 'checked="checked" ';
 			}
-			echo 'value="yes" id="checkbox_', $ged_id , '" name="', $str, '" />', get_gedcom_setting($ged_id, 'title'), '<br />';
+			echo 'value="yes" id="checkbox_', $ged_id , '" name="', $str, '" /><label for="checkbox_', $ged_id , '">', get_gedcom_setting($ged_id, 'title'), '</label><br />', "\n";
 		}
 		echo '</div></td>';
 ?>
 	</tr>
 	<?php
-
 	}
 }
 ?>
