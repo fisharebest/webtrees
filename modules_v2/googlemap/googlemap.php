@@ -289,7 +289,7 @@ function setup_map() {
 	}
 	?>
 	<!--  V3 ============ -->
-	<script src="http://maps.google.com/maps/api/js?v=3.2&sensor=false" type="text/javascript"></script>
+	<script src="http://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language=<?php echo WT_LOCALE; ?>" type="text/javascript"></script>
 	<!--  V3 ============ -->
 	<script type="text/javascript">
 		var minZoomLevel = <?php echo $GOOGLEMAP_MIN_ZOOM;?>;
