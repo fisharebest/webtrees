@@ -133,7 +133,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		<td class="list_value" style="padding: 5px;">
 			<input type="checkbox"<?php
 	if (isset ($controller->srindi) || !$controller->isPostBack)
-		echo ' checked="checked" '; ?>value="yes" id="srindi name="srindi" />
+		echo ' checked="checked" '; ?>value="yes" id="srindi" name="srindi" />
 				<label for="srindi"><?php echo WT_I18N::translate('Individuals'); ?></label><br />
 			<input type="checkbox"<?php
 	if (isset ($controller->srfams))
