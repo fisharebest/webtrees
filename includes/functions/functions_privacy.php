@@ -185,20 +185,18 @@ function is_dead($indirec, $gedcom_id) {
 * @param string $pid the GEDCOM XRef ID for the entity to check privacy settings for
 * @return boolean return true to show the person's name, return false to keep it private
 */
-function showLivingNameById($pid) {
+function showLivingNameById($pid, $gedcom_id) {
 	global $SHOW_LIVING_NAMES;
 
 	if ($_SESSION["wt_user"]==WT_USER_ID) {
 		// Normal operation
-		$pgv_GED_ID            = WT_GED_ID;
 		$pgv_USER_ACCESS_LEVEL = WT_USER_ACCESS_LEVEL;
 	} else {
 		// We're in the middle of a Download -- get overriding information from cache
-		$pgv_GED_ID            = $_SESSION["pgv_GED_ID"];
 		$pgv_USER_ACCESS_LEVEL = $_SESSION["pgv_USER_ACCESS_LEVEL"];
 	}
 
-	return $SHOW_LIVING_NAMES>=$pgv_USER_ACCESS_LEVEL || canDisplayRecord($pgv_GED_ID, find_person_record($pid, $pgv_GED_ID));
+	return $SHOW_LIVING_NAMES>=$pgv_USER_ACCESS_LEVEL || canDisplayRecord($gedcom_id, find_person_record($pid, $gedcom_id));
 }
 
 
@@ -446,7 +444,7 @@ function privatize_gedcom($gedcom_id, $gedrec) {
 			switch($type) {
 			case 'INDI':
 				$newrec="0 @{$gid}@ INDI";
-				if (showLivingNameById($gid)) {
+				if (showLivingNameById($gid, $gedcom_id)) {
 					// Show all the NAME tags, including subtags
 					if (preg_match_all('/\n1 (NAME|_HNM).*(\n[2-9].*)*/', $gedrec, $matches, PREG_SET_ORDER)) {
 						foreach ($matches as $match) {

@@ -68,7 +68,7 @@ class WT_Person extends WT_GedcomRecord {
 
 		parent::__construct($data);
 
-		$this->dispname=$this->disp || showLivingNameById($this->xref);
+		$this->dispname=$this->disp || showLivingNameById($this->ged_id, $this->xref);
 	}
 
 	// Static helper function to sort an array of people by birth date

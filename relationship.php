@@ -213,9 +213,9 @@ function paste_id(value) {
 		echo "</td>";
 	} else {
 		if ((!empty($pid1))&&(!empty($pid2))) {
-			if ((!canDisplayRecord(WT_GED_ID, find_gedcom_record($pid1, WT_GED_ID)))&&(!showLivingNameById($pid1))) {
+			if ((!canDisplayRecord(WT_GED_ID, find_gedcom_record($pid1, WT_GED_ID)))&&(!showLivingNameById($pid1, WT_GED_ID))) {
 				$disp = false;
-			} elseif (!canDisplayRecord(WT_GED_ID, find_gedcom_record($pid2, WT_GED_ID))&&(!showLivingNameById($pid2))) {
+			} elseif (!canDisplayRecord(WT_GED_ID, find_gedcom_record($pid2, WT_GED_ID))&&(!showLivingNameById($pid2, WT_GED_ID))) {
 				$disp = false;
 			}
 			if ($disp) {

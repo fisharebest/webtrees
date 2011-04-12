@@ -405,7 +405,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			$clipping['gedcom'] = $GEDCOM;
 			$ged_id=get_id_from_gedcom($GEDCOM);
 			$gedrec=find_gedcom_record($clipping['id'], $ged_id);
-			if (canDisplayRecord($ged_id, $gedrec) || showLivingNameById($clipping['id'])) {
+			if (canDisplayRecord($ged_id, $gedrec) || showLivingNameById($clipping['id'], $ged_id)) {
 				$cart[] = $clipping;
 				$this->addCount++;
 			} else {
