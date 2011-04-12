@@ -149,48 +149,6 @@ function gedcom_header($gedfile) {
 }
 
 /**
- * Create a temporary user, and assign rights as specified
- */
-function createTempUser($userID, $rights, $gedcom) {
-	if ($tempUserID=get_user_id($userID)) {
-		delete_user($tempUserID);
-		AddToLog("deleted dummy user -> {$userID} <-, which was not deleted in a previous session", 'auth');
-	}
-	$ged_id=get_id_from_gedcom($gedcom);
-
-	$tempUserID=create_user($userID, "Dummy User", "dummy@email", md5(rand()));
-	if (!$tempUserID) return false;
-
-	set_user_setting($tempUserID, 'visibleonline', '0');
-	set_user_setting($tempUserID, 'contactmethod', 'none');
-	switch ($rights) {
-	case 'admin':
-		set_user_setting($tempUserID, 'canadmin', '1');
-		set_user_gedcom_setting($tempUserID, $ged_id, 'canedit', 'admin');
-	case 'gedadmin':
-		set_user_setting($tempUserID, 'canadmin', '0');
-		set_user_gedcom_setting($tempUserID, $ged_id, 'canedit', 'admin');
-		break;
-	case 'user':
-		set_user_setting($tempUserID, 'canadmin', '0');
-		set_user_gedcom_setting($tempUserID, $ged_id, 'canedit', 'access');
-		break;
-	case 'visitor':
-	default:
-		set_user_setting($tempUserID, 'canadmin', '0');
-		set_user_gedcom_setting($tempUserID, $ged_id, 'canedit', 'none');
-		break;
-	}
-	AddToLog("created dummy user -> {$userID} <- with level {$rights} to GEDCOM {$gedcom}", 'auth');
-
-	// Save things in cache
-	$_SESSION["pgv_GED_ID"]           =$ged_id;
-	$_SESSION["pgv_USER_ACCESS_LEVEL"]=getUserAccessLevel($tempUserID, $ged_id);
-
-	return $tempUserID;
-}
-
-/**
  * remove any custom webtrees tags from the given gedcom record
  * custom tags include _WT_USER and _THUM
  * @param string $gedrec the raw gedcom record
@@ -250,14 +208,19 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	$GEDCOM = $gedcom;
 	$ged_id=get_id_from_gedcom($gedcom);
 
-	$tempUserID = '#ExPoRt#';
-	if ($exportOptions['privatize']!='none') {
-		// Create a temporary userid
-		$export_user_id = createTempUser($tempUserID, $exportOptions['privatize'], $gedcom); // Create a temporary userid
-
-		// Temporarily become this user
-		$_SESSION["org_user"]=$_SESSION["wt_user"];
-		$_SESSION["wt_user"]=$export_user_id;
+	switch($exportOptions['privatize']) {
+	case 'gedadmin':
+		$access_level=WT_PRIV_NONE;
+		break;
+	case 'user':
+		$access_level=WT_PRIV_USER;
+		break;
+	case 'visitor':
+		$access_level=WT_PRIV_PUBLIC;
+		break;
+	case 'none':
+		$access_level=WT_USER_ACCESS_LEVEL;
+		break;
 	}
 
 	$head=gedcom_header($gedcom);
@@ -276,7 +239,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
 		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec);
+		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
 		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
@@ -291,7 +254,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
 		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec);
+		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
 		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
@@ -306,7 +269,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
 		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec);
+		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
 		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
@@ -321,7 +284,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
 		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec);
+		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
 		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
@@ -337,7 +300,7 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	foreach ($recs as $rec) {
 		$rec = convert_media_path($rec, $exportOptions['path'], $exportOptions['slashes']);
 		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec);
+		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
 		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
@@ -347,12 +310,6 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	}
 
 	fwrite($gedout, $buffer."0 TRLR".WT_EOL);
-
-	if ($exportOptions['privatize']!='none') {
-		$_SESSION["wt_user"]=$_SESSION["org_user"];
-		delete_user($export_user_id);
-		AddToLog("deleted dummy user -> {$tempUserID} <-", 'auth');
-	}
 
 	$GEDCOM = $oldGEDCOM;
 }

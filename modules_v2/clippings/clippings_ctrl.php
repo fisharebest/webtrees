@@ -198,14 +198,19 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 				$filetext = utf8_decode($filetext);
 			}
 
-			$tempUserID = '#ExPoRt#';
-			if ($this->privatize_export!='none') {
-				// Create a temporary userid
-				$export_user_id = createTempUser($tempUserID, $this->privatize_export, $GEDCOM); // Create a temporary userid
-
-				// Temporarily become this user
-				$_SESSION["org_user"]=$_SESSION["wt_user"];
-				$_SESSION["wt_user"]=$export_user_id;
+			switch($this->privatize_export) {
+			case 'gedadmin':
+				$access_level=WT_PRIV_NONE;
+				break;
+			case 'user':
+				$access_level=WT_PRIV_USER;
+				break;
+			case 'visitor':
+				$access_level=WT_PRIV_PUBLIC;
+				break;
+			case 'none':
+				$access_level=WT_USER_ACCESS_LEVEL;
+				break;
 			}
 
 			for ($i = 0; $i < $ct; $i++) {
@@ -214,7 +219,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 					$record = find_gedcom_record($clipping['id'], WT_GED_ID);
 					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($clipping['type']=='obje') $record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
-					$record = privatize_gedcom(WT_GED_ID, $record);
+					$record = privatize_gedcom(WT_GED_ID, $record, $access_level);
 					$record = remove_custom_tags($record, $remove);
 					if ($convert == "yes")
 					$record = utf8_decode($record);
@@ -295,12 +300,6 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 						break;
 					}
 				}
-			}
-
-			if ($this->privatize_export!='none') {
-				$_SESSION["wt_user"]=$_SESSION["org_user"];
-				delete_user($export_user_id);
-				AddToLog("deleted dummy user -> {$tempUserID} <-", 'auth');
 			}
 
 			if ($this->IncludeMedia == "yes")
@@ -405,7 +404,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			$clipping['gedcom'] = $GEDCOM;
 			$ged_id=get_id_from_gedcom($GEDCOM);
 			$gedrec=find_gedcom_record($clipping['id'], $ged_id);
-			if (canDisplayRecord($ged_id, $gedrec) || showLivingNameById($clipping['id'], $ged_id)) {
+			if (showLivingNameById($clipping['id'], $ged_id)) {
 				$cart[] = $clipping;
 				$this->addCount++;
 			} else {

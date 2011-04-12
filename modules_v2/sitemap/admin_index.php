@@ -89,16 +89,12 @@ if ($action=="sendFiles") {
 	}
 	$oldGEDCOM = $GEDCOM;
 	$GEDCOM = $gedcom_name;
-	// Create a temporary userid
-	$sitemap_user_id = createTempUser('#SiteMap#', 'visitor', $gedcom_name); // Create a temporary userid
-	// Temporarily become this user
-	$_SESSION["org_user"]=$_SESSION["wt_user"];
-	$_SESSION["wt_user"]=$sitemap_user_id;
+
 	if (isset($indi_rec)) {
 		$statement=WT_DB::prepare("SELECT i_id, i_gedcom FROM `##individuals` WHERE i_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
 			if ($no_private_links) {
-				if (canDisplayRecord($index, $row[1])) {
+				if (canDisplayRecord($index, $row[1], WT_PRIV_PUBLIC)) {
 					echo " <url>\n";
 					echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "individual.php?pid=", $row[0], "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
 					$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
@@ -126,7 +122,7 @@ if ($action=="sendFiles") {
 		$statement=WT_DB::prepare("SELECT f_id, f_gedcom FROM `##families` WHERE f_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
 			if ($no_private_links) {
-				if (canDisplayRecord($index, $row[1])) {
+				if (canDisplayRecord($index, $row[1], WT_PRIV_PUBLIC)) {
 					echo " <url>\n";
 					echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "family.php?famid=", $row[0], "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
 					$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
@@ -174,9 +170,6 @@ if ($action=="sendFiles") {
 		}
 	}
 	echo "</urlset>";
-	$_SESSION["wt_user"]=$_SESSION["org_user"];
-	delete_user($sitemap_user_id);
-	AddToLog("deleted dummy user -> #SiteMap# <-", 'auth');
 	$GEDCOM = $oldGEDCOM;
 	exit;
 }
