@@ -397,32 +397,13 @@ class TreeView {
   			$sexSymbol = WT_UTF8_NO_SEX;
   			break;
   	}
-  	// TODO : other calendars (read option somewhere ?)
-  	$n = $this->getDate($p->getBirthDate());
-    $d = $this->getDate($p->getDeathDate());
-  	$dates = ($n || $d) ? ' <i class="dates">'.($n ? $n : '').($d ? '-'.$d : '').'</i>' : '';
+  	$born=$p->format_first_major_fact(WT_EVENTS_BIRT, 3);
+  	$died=$p->format_first_major_fact(WT_EVENTS_DEAT, 3);
+  	$dates = $born || $died ? '<i class="dates">'.$born.'-'.$died.'</i>' : '';
   	$r = '<div class="tv'.$sex.'"'.$title.'>'.$dates.'<a href="'.$p->getHtmlUrl().'"><span class="tvSexSymbol tv'.$sex.' tv_link">'.$sexSymbol.'</span></a>&nbsp;'.$p->getFullName().'</div>';
   	return $r;
   }
 
-  private function getDate($date) {
-    $q = $date->qual1;
-    switch($q) {
-      case 'abt' :
-        $r = '~';
-        break;
-      case 'bef' :
-        $r = '<';
-        break;
-      case 'aft' :
-        $r = '>';
-        break;
-      default:
-        $r = '';
-    }
-    return $r.$date->gregorianYear();
-  }
-  
   /**
   * Get the thumbnail image for the given person
   *
