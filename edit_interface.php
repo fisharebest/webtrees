@@ -317,7 +317,7 @@ case 'editraw':
 		// Notes are special - they may contain data on the first line
 		$gedrec=preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
 		list($gedrec1, $gedrec2)=explode("\n", $gedrec, 2);
-		echo '<textarea name="newgedrec1" rows="1"  cols="80" readonly="yes">', $gedrec1, '</textarea><br />';
+		echo '<textarea name="newgedrec1" rows="1"  cols="80" dir="ltr" readonly="yes">', $gedrec1, '</textarea><br />';
 		echo '<textarea name="newgedrec2" rows="20" cols="80" dir="ltr">', $gedrec2, "</textarea><br />";
 		if (WT_USER_IS_ADMIN) {
 			echo "<table class=\"facts_table\">";
