@@ -1218,6 +1218,8 @@ class WT_Stats {
 				}
 			}
 		}
+		// get all the user's countries names
+		$all_countries = self::get_all_countries();
 		foreach ($all_db_countries as $country_code=>$country) {
 			$top10[]="\t<li>";
 			foreach ($country as $country_name=>$tot) {
