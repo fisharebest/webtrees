@@ -392,6 +392,7 @@ $level2_tags=array(
 		'SLGS',
 	),
 	'ADDR'=>array(
+		'BAPM',
 		'BIRT',
 		'BURI',
 		'CENS',
