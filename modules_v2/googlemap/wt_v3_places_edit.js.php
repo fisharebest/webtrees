@@ -44,7 +44,7 @@ if (!defined('WT_WEBTREES')) {
 	var map;
 	var marker;
 	var zoom;
-	var pl_name = '<?php echo htmlspecialchars($place_name); ?>';
+	var pl_name = "<?php echo htmlspecialchars($place_name); ?>";
 	if (pl_name) {
 		var pl_lati = '<?php echo $place_lati; ?>';
 		var pl_long = '<?php echo $place_long; ?>';	
