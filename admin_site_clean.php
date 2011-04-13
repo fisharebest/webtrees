@@ -71,11 +71,13 @@ $locked_by_context = array('index.php', 'config.ini.php');
 
 // If we are storing the media in the data directory (this is the
 // default for the media firewall), then don't delete it.
-if (
-	$MEDIA_FIREWALL_ROOTDIR==WT_DATA_DIR &&
-	(substr($MEDIA_DIRECTORY, 0, 1)!='.')
-) {
-	$locked_by_context[]=trim($MEDIA_DIRECTORY, '/');
+// Need to consider the settings for all gedcoms
+foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
+	$MEDIA_FIREWALL_ROOTDIR=get_gedcom_setting($ged_id, 'MEDIA_FIREWALL_ROOTDIR', WT_DATA_DIR);
+	$MEDIA_DIRECTORY       =get_gedcom_setting($ged_id, 'MEDIA_DIRECTORY');
+	if (realpath($MEDIA_FIREWALL_ROOTDIR)==realpath(WT_DATA_DIR)) {
+		$locked_by_context[]=trim($MEDIA_DIRECTORY, '/');
+	}
 }
 
 print_header(WT_I18N::translate('Cleanup data directory'));
