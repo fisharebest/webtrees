@@ -660,6 +660,11 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	cursor: help;
 }
 
+.submenu {
+	background-color: #eeeeee;
+	border: solid black 1px;
+}
+
 .news_box {
 	background-color: white;
 	border: solid black 1px;
