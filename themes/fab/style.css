@@ -8,6 +8,11 @@
 * $Id$
 */
 
+.submenu, .sublinks_table {
+	background-color:#EEE;
+	border:thin solid #AAA;
+}
+
 /* Thin grey borders around block-level elements */
 input,
 textarea,
