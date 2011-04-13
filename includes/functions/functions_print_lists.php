@@ -1379,8 +1379,10 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
         $return .= "</div>";    // class='indent'
         $return .= "</div>";
     }
-    $return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
-    return $return;
+	if ($n>0) {
+		$return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
+	}
+	return $return;
 }
 
 /**
@@ -1511,10 +1513,12 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
     }
 
     //-- table footer
-    $return .= "</tbody>";
-    $return .= "</table>";
-    $return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
-    return $return;
+	$return .= "</tbody>";
+	$return .= "</table>";
+	if ($n>0) {
+		$return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
+	}
+	return $return;
 }
 
 
