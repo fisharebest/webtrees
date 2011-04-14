@@ -46,6 +46,8 @@ td {vertical-align:top;}
 .indent {padding-left:15px;}
 html[dir='rtl'] .indent {padding-right:15px;}
 .parentdeath {border:thin solid red; padding:1px;}
+.submenu { background-color:#EEE; border:thin solid #AAA; padding: 3px;}
+
 
 /* jQuery styling over-rides */
 .ui-widget-content a {text-decoration:none;}

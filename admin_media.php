@@ -749,12 +749,12 @@ if (check_media_structure()) {
 		if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 			$menu->addLabel(WT_I18N::translate('Manage links'));
 			$menu->addOnclick("return ilinkitem('$mediaid', 'manage')");
-			$menu->addClass("", "", "submenu");
 			$menu->addFlyout("left");
 			// Do not echo submunu
 
 		} else {
 			$menu->addLabel(WT_I18N::translate('Set link'));
+			$menu->addClass("", "", "submenu");
 			$submenu = new WT_Menu(WT_I18N::translate('To Person'));
 			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
 			$submenu->addOnclick("return ilinkitem('$mediaid', 'person')");
