@@ -95,7 +95,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Females').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalSexFemales().'<br />'.$stats->totalSexFemalesPercentage().'%</div></td></tr>';
 		}
 		if ($stat_surname) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total surnames').'</td><td class="facts_value"><div dir="rtl"><a href="'."indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged=".WT_GEDURL.'">'.$stats->totalSurnames().'</a></div></td></tr>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total surnames').'</td><td class="facts_value"><div dir="rtl"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged='.WT_GEDURL.'">'.$stats->totalSurnames().'</a></div></td></tr>';
 		}
 		if ($stat_fam) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Families').'</td><td class="facts_value"><div dir="rtl"><a href="famlist.php?ged='.WT_GEDURL.'">'.$stats->totalFamilies().'</a></div></td></tr>';
@@ -107,7 +107,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Media objects').'</td><td class="facts_value"><div dir="rtl"><a href="medialist.php?ged='.WT_GEDURL.'">'.$stats->totalMedia().'</a></div></td></tr>';
 		}
 		if ($stat_repo) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Repositories').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalRepositories().'</div></td></tr>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Repositories').'</td><td class="facts_value"><div dir="rtl"><a href="repolist.php?ged='.WT_GEDURL.'">'.$stats->totalRepositories().'</a></div></td></tr>';
 		}
 		if ($stat_other) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Other records').'</td><td class="facts_value"><div dir="rtl">'.$stats->totalOtherRecords().'</div></td></tr>';

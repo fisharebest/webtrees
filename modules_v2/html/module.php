@@ -175,24 +175,32 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 									<td class="facts_value">&nbsp;<a href="indilist.php?surname_sublist=no">#totalIndividuals#</a></td>
 								</tr>
 								<tr>
+									<td class="facts_label">'.WT_I18N::translate('Males').'</td>
+									<td class="facts_value">&nbsp;#totalSexMales#<br />#totalSexMalesPercentage#%</td>
+								</tr>
+								<tr>
+									<td class="facts_label">'.WT_I18N::translate('Females').'</td>
+									<td class="facts_value">&nbsp;#totalSexFemales#<br />#totalSexFemalesPercentage#%</td>
+								</tr>
+								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Total surnames').'</td>
-									<td class="facts_value">&nbsp;<a href="indilist.php?surname_sublist=yes">#totalSurnames#</a></td>
+									<td class="facts_value">&nbsp;<a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged='.WT_GEDURL.'">#totalSurnames#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'. WT_I18N::translate('Families').'</td>
-									<td class="facts_value">&nbsp;<a href="famlist.php">#totalFamilies#</a></td>
+									<td class="facts_value">&nbsp;<a href="famlist.php?ged='.WT_GEDURL.'">#totalFamilies#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Sources').'</td>
-									<td class="facts_value">&nbsp;<a href="sourcelist.php">#totalSources#</a></td>
+									<td class="facts_value">&nbsp;<a href="sourcelist.php?ged='.WT_GEDURL.'">#totalSources#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Media objects').'</td>
-									<td class="facts_value">&nbsp;#totalMedia#</td>
+									<td class="facts_value">&nbsp;<a href="medialist.php?ged='.WT_GEDURL.'">#totalMedia#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Repositories').'</td>
-									<td class="facts_value">&nbsp;#totalRepositories#</td>
+									<td class="facts_value">&nbsp;<a href="repolist.php?ged='.WT_GEDURL.'">#totalRepositories#</a></td>
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Other records').'</td>
@@ -201,14 +209,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Total events').'</td>
 									<td class="facts_value">&nbsp;#totalEvents#</td>
-								</tr>
-								<tr>
-									<td class="facts_label">'.WT_I18N::translate('Males').'</td>
-									<td class="facts_value">&nbsp;#totalSexMales# [#totalSexMalesPercentage#%]</td>
-								</tr>
-								<tr>
-									<td class="facts_label">'.WT_I18N::translate('Females').'</td>
-									<td class="facts_value">&nbsp;#totalSexFemales#  [#totalSexFemalesPercentage#%]</td>
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Total users').'</td>
