@@ -116,14 +116,14 @@ echo "<div>";
 
 // Calendar form
 echo '<form name="dateform" method="get" action="calendar.php">';
-echo "<input type=\"hidden\" name=\"cal\"      value=\"{$cal}\"         />";
-echo "<input type=\"hidden\" name=\"day\"      value=\"{$cal_date->d}\" />";
-echo "<input type=\"hidden\" name=\"month\"    value=\"{$cal_month}\"   />";
-echo "<input type=\"hidden\" name=\"year\"     value=\"{$cal_date->y}\" />";
-echo "<input type=\"hidden\" name=\"action\"   value=\"{$action}\"      />";
-echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\"    />";
-echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\"    />";
-echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\"    />";
+echo "<input type=\"hidden\" name=\"cal\" value=\"{$cal}\" />";
+echo "<input type=\"hidden\" name=\"day\" value=\"{$cal_date->d}\" />";
+echo "<input type=\"hidden\" name=\"month\" value=\"{$cal_month}\" />";
+echo "<input type=\"hidden\" name=\"year\" value=\"{$cal_date->y}\" />";
+echo "<input type=\"hidden\" name=\"action\" value=\"{$action}\" />";
+echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\" />";
+echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\" />";
+echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\" />";
 echo '<table class="facts_table '.$TEXT_DIRECTION.' width100">';
 echo '<tr><td class="facts_label" colspan="4"><h2>';
 
@@ -178,34 +178,34 @@ echo "<a href=\"calendar.php?cal={$cal}&amp;day=".min($cal_date->d, $today->Days
 // Year selector
 echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Year'), help_link('annivers_year_select'), '</td>';
-echo "<td class=\"optionbox vmiddle\">";
+echo '<td class="optionbox vmiddle">';
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==1?-1:$cal_date->y-1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">-1</a>";
 echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"4\" /> ";
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==-1?1:$cal_date->y+1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">+1</a>";
 echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%Y')."</b></a>";
-echo "</td> ";
+echo '</td> ';
 
 // Filtering options
 
-echo "<td class=\"descriptionbox vmiddle\">";
+echo '<td class="descriptionbox vmiddle">';
 	echo WT_I18N::translate('Show'), help_link('annivers_show'), '</td>';
 
-echo "<td class=\"optionbox vmiddle\">";
-	echo "<select class=\"list_value\" name=\"filterof\" onchange=\"document.dateform.submit();\">";
-	echo "<option value=\"all\"";
-	if ($filterof == "all") echo " selected=\"selected\"";
-	echo ">".WT_I18N::translate('All People')."</option>";
+echo '<td class="optionbox vmiddle">';
+	echo '<select class="list_value" name="filterof" onchange="document.dateform.submit();">';
+	echo '<option value="all"';
+	if ($filterof == "all") echo 'selected="selected"';
+	echo '>', WT_I18N::translate('All People'), '</option>';
 	if (!$HIDE_LIVE_PEOPLE || WT_USER_ID) {
-		echo "<option value=\"living\"";
-	if ($filterof == "living") echo " selected=\"selected\"";
-		echo ">".WT_I18N::translate('Living People')."</option>";
+		echo '<option value="living"';
+	if ($filterof == "living") echo 'selected="selected"';
+		echo '>', WT_I18N::translate('Living People'), '</option>';
 	}
-	echo "<option value=\"recent\"";
-	if ($filterof == "recent") echo " selected=\"selected\"";
-	echo ">".WT_I18N::translate('Recent Years (&lt; 100 yrs)')."</option>";
-	echo "</select>";
+	echo '<option value="recent"';
+	if ($filterof == "recent") echo 'selected="selected"';
+	echo '>', WT_I18N::translate('Recent Years (&lt; 100 yrs)'), '</option>';
+	echo '</select>';
 	
-	echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;";
+	echo '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;';
 	
 	if ($filtersx=="") {
 	echo WT_Person::sexImage('M', 'large', 'vertical-align: middle', WT_I18N::translate('All People'));
@@ -228,81 +228,76 @@ else {
 	echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', WT_I18N::translate('Females')), '</a>';
 }
 
-	echo "&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;";
+	echo '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;';
 
 	echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\" />";
-echo "<select class=\"list_value\" name=\"filterev\" onchange=\"document.dateform.submit();\">";
-echo "<option value=\"bdm\"";
-if ($filterev == "bdm") echo " selected=\"selected\"";
-echo ">".WT_I18N::translate('Births, Deaths, Marriages')."</option>";
-echo "<option value=\"all\"";
-if ($filterev == "all") echo " selected=\"selected\"";
-echo ">".WT_I18N::translate('All')."</option>";
-echo "<option value=\"BIRT\"";
-if ($filterev == "BIRT") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('BIRT')."</option>";
-echo "<option value=\"CHR\"";
-if ($filterev == "CHR") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('CHR')."</option>";
-echo "<option value=\"CHRA\"";
-if ($filterev == "CHRA") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('CHRA')."</option>";
-echo "<option value=\"BAPM\"";
-if ($filterev == "BAPM") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('BAPM')."</option>";
-echo "<option value=\"_COML\"";
-if ($filterev == "_COML") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('_COML')."</option>";
-echo "<option value=\"MARR\"";
-if ($filterev == "MARR") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('MARR')."</option>";
-echo "<option value=\"_SEPR\"";
-if ($filterev == "_SEPR") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('_SEPR')."</option>";
-echo "<option value=\"DIV\"";
-if ($filterev == "DIV") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('DIV')."</option>";
-echo "<option value=\"DEAT\"";
-if ($filterev == "DEAT") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('DEAT')."</option>";
-echo "<option value=\"BURI\"";
-if ($filterev == "BURI") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('BURI')."</option>";
-echo "<option value=\"IMMI\"";
-if ($filterev == "IMMI") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('IMMI')."</option>";
-echo "<option value=\"EMIG\"";
-if ($filterev == "EMIG") echo " selected=\"selected\"";
-echo ">".WT_Gedcom_Tag::getLabel('EMIG')."</option>";
-echo "<option value=\"EVEN\"";
-if ($filterev == "EVEN") echo " selected=\"selected\"";
-echo ">".WT_I18N::translate('Custom Event')."</option>";
-echo "</select>";
+echo '<select class="list_value" name="filterev" onchange="document.dateform.submit();">';
+echo '<option value="bdm"';
+if ($filterev == "bdm") echo 'selected="selected"';
+echo '>', WT_I18N::translate('Births, Deaths, Marriages'), '</option>';
+echo '<option value="all"';
+if ($filterev == "all") echo 'selected="selected"';
+echo '>', WT_I18N::translate('All'), '</option>';
+echo '<option value="BIRT"';
+if ($filterev == "BIRT") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('BIRT'), '</option>';
+echo '<option value="CHR"';
+if ($filterev == "CHR") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('CHR'), '</option>';
+echo '<option value="CHRA"';
+if ($filterev == "CHRA") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('CHRA'), '</option>';
+echo '<option value="BAPM"';
+if ($filterev == "BAPM") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('BAPM'), '</option>';
+echo '<option value="_COML"';
+if ($filterev == "_COML") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('_COML'), '</option>';
+echo '<option value="MARR"';
+if ($filterev == "MARR") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('MARR'), '</option>';
+echo '<option value="_SEPR"';
+if ($filterev == "_SEPR") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('_SEPR'), '</option>';
+echo '<option value="DIV"';
+if ($filterev == "DIV") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('DIV'), '</option>';
+echo '<option value="DEAT"';
+if ($filterev == "DEAT") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('DEAT'), '</option>';
+echo '<option value="BURI"';
+if ($filterev == "BURI") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('BURI'), '</option>';
+echo '<option value="IMMI"';
+if ($filterev == "IMMI") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('IMMI'), '</option>';
+echo '<option value="EMIG"';
+if ($filterev == "EMIG") echo 'selected="selected"';
+echo '>', WT_Gedcom_Tag::getLabel('EMIG'), '</option>';
+echo '<option value="EVEN"';
+if ($filterev == "EVEN") echo 'selected="selected"';
+echo '>', WT_I18N::translate('Custom Event'), '</option>';
+echo '</select>';
 
 
-
-
-
-
-
-echo "</td></tr>";
-echo "</table></form>";
+echo '</td></tr>';
+echo '</table></form>';
 echo "<table class=\"center {$TEXT_DIRECTION} width100\"><tr>";
 
 // Day/Month/Year and calendar selector
 echo '<tr><td class="topbottombar width50">';
 if ($action=='today') {
-	echo "<span class=\"error\">", WT_I18N::translate('View Day'), "</span>";
+	echo '<span class="error">', WT_I18N::translate('View Day'), '</span>';
 } else {
 	echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=today\">", WT_I18N::translate('View Day'), "</a>";
 }
 if ($action=='calendar') {
-	echo " | <span class=\"error\">", WT_I18N::translate('View Month'), "</span>";
+	echo ' | <span class="error">', WT_I18N::translate('View Month'), '</span>';
 } else {
 	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=calendar\">", WT_I18N::translate('View Month'), "</a>";
 }
 if ($action=='year') {
-	echo " | <span class=\"error\">", WT_I18N::translate('View Year'), "</span>";
+	echo ' | <span class="error">', WT_I18N::translate('View Year'), '</span>';
 } else {
 	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=year\">", WT_I18N::translate('View Year'), "</a>";
 }
@@ -460,16 +455,16 @@ case 'today':
 	echo '</td>';
 	echo "</tr><tr>";
 	// Table footers
-	echo "<td class=\"descriptionbox\">", WT_I18N::translate('Total individuals'), " ";
+	echo '<td class="descriptionbox">', WT_I18N::translate('Total individuals'), ' ';
 	echo count($indis);
-	echo "<br />";
+	echo '<br />';
 	echo WT_Person::sexImage('M', 'small', 'vertical-align: middle', WT_I18N::translate('Males')), "&nbsp;{$males}&nbsp;&nbsp;&nbsp;&nbsp;";
 	echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', WT_I18N::translate('Females')), "&nbsp;{$females}&nbsp;&nbsp;&nbsp;&nbsp;";
 	if (count($indis)!=$males+$females)
 		echo WT_Person::sexImage('U', 'small', 'vertical-align: middle', WT_I18N::translate('All People')), '&nbsp;', count($indis)-$males-$females;
-	echo "</td>";
-	echo "<td class=\"descriptionbox\">", WT_I18N::translate('Total families'), " ".count($fams)."</td>";
-	echo "</tr></table>";
+	echo '</td>';
+	echo '<td class="descriptionbox">', WT_I18N::translate('Total families'), ' ', count($fams), '</td>';
+	echo '</tr></table>';
 
 	break;
 case 'calendar':
@@ -524,11 +519,11 @@ case 'calendar':
 					break;
 				}
 			}
-			echo "<br style=\"clear: both\" /><div class=\"details1\" style=\"height: 150px; overflow: auto;\">";
+			echo '<br style="clear: both" /><div class="details1" style="height: 150px; overflow: auto;">';
 			echo calendar_list_text($cal_facts[$d], "", "", false);
-			echo "</div>";
+			echo '</div>';
 		}
-		echo "</td>";
+		echo '</td>';
 		if (($d+$cal_date->minJD-$week_start) % $days_in_week==0) {
 			echo '</tr>';
 		}
@@ -536,7 +531,7 @@ case 'calendar':
 	echo '</table>';
 	break;
 }
-echo "</div><br />";
+echo '</div><br />';
 print_footer();
 
 /////////////////////////////////////////////////////////////////////////////////
