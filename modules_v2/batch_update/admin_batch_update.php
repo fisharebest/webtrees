@@ -84,7 +84,7 @@ class batch_update {
 		}
 		$html.='</select>';
 		if ($this->PLUGIN) {
-			$html.='<br/><i>'.$this->PLUGIN->getDescription().'</i>';
+			$html.='<br/><em>'.$this->PLUGIN->getDescription().'</em>';
 		}
 		$html.='</td></tr>';
 

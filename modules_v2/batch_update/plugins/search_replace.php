@@ -54,7 +54,7 @@ class search_replace_bu_plugin extends base_plugin {
 	}
 
 	function doesRecordNeedUpdate($xref, $gedrec) {
-		return !$this->error && preg_match('/(?:'.$this->regex.')/'.$this->case, $gedrec);
+		return !$this->error && preg_match('/(?:'.$this->regex.')/m'.$this->case, $gedrec);
 	}
 
 	function updateRecord($xref, $gedrec) {
@@ -64,7 +64,7 @@ class search_replace_bu_plugin extends base_plugin {
 	function getOptions() {
 		parent::getOptions();
 		$this->search =safe_GET('search');
-		$this->replace=safe_GET('replace');
+		$this->replace=safe_GET('replace',WT_REGEX_UNSAFE);
 		$this->method =safe_GET('method', array('exact', 'words', 'wildcards', 'regex'), 'exact');
 		$this->case   =safe_GET('case', 'i');
 
@@ -117,12 +117,12 @@ class search_replace_bu_plugin extends base_plugin {
 			'<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Whole words only')    .'</option>'.
 			'<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.WT_I18N::translate('Wildcards').'</option>'.
 			'<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Regular expression')    .'</option>'.
-			'</select><br/><i>'.$descriptions[$this->method].'</i>'.$this->error.'</td></tr>'.
+			'</select><br/><em>'.$descriptions[$this->method].'</em>'.$this->error.'</td></tr>'.
 
 			'<tr><th>'.WT_I18N::translate('Case insensitive').':</th>'.
 			'<td>'.
 			'<input type="checkbox" name="case" value="i" '.($this->case=='i' ? 'checked="checked"' : '').'" onchange="this.form.submit();">'.
-			'<br/><i>'.WT_I18N::translate('Tick this box to match both upper and lower case letters.').'</i></td></tr>'.
+			'<br/><em>'.WT_I18N::translate('Tick this box to match both upper and lower case letters.').'</em></td></tr>'.
 			parent::getOptionsForm();
 	}
 }

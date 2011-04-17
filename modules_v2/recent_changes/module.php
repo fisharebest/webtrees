@@ -143,7 +143,7 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
 		echo '<input type="text" name="days" size="2" value="', $days, '" />';
-		echo ' <i>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30), '</i>';
+		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30), '</em>';
 		echo '</td></tr>';
 
 		$infoStyle = get_block_setting($block_id, 'infoStyle', 'table');

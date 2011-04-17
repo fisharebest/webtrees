@@ -416,7 +416,7 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
   	<div id="infoPanel">
     	<!-- <b>Marker status:</b> -->
-    	<div id="markerStatus"><i>Click and drag the marker.</i></div>
+    	<div id="markerStatus"><em>Click and drag the marker.</em></div>
 <!--    	<b>Current position:</b> -->
     	<div id="info" ></div> 
 <!--    	<b>Closest matching address:</b> -->
