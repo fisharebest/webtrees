@@ -1680,9 +1680,9 @@ function format_first_major_fact($key, $majorfacts = array("BIRT", "CHR", "BAPM"
 	foreach ($majorfacts as $indexval => $fact) {
 		$event = $person->getFactByType($fact);
 		if (!is_null($event) && $event->hasDatePlace() && $event->canShow()) {
-			$html.='<span dir="'.$TEXT_DIRECTION.'"><br /><i>';
+			$html.='<span dir="'.$TEXT_DIRECTION.'"><br /><em>';
 			$html .= $event->getLabel();
-			$html.=' '.format_fact_date($event).format_fact_place($event).'</i></span>';
+			$html.=' '.format_fact_date($event).format_fact_place($event).'</em></span>';
 			break;
 		}
 	}

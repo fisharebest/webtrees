@@ -638,8 +638,8 @@ function print_media_links($factrec, $level, $pid='') {
 			if (empty($SEARCH_SPIDER)) {
 				echo "<a href=\"mediaviewer.php?mid={$media_id}\">";
 			}
-			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo "<i>" , getLRM() ,  PrintReady($mediaTitle), "</i>";
-			else echo "<i>", PrintReady($mediaTitle), "</i><br />";
+			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo "<em>" , getLRM() ,  PrintReady($mediaTitle), "</em>";
+			else echo "<em>", PrintReady($mediaTitle), "</em><br />";
 			if (empty($SEARCH_SPIDER)) {
 				echo "</a>";
 			}
@@ -1451,9 +1451,9 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		echo "<a href=\"mediaviewer.php?mid={$rowm['m_media']}\">";
 	}
 	if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) {
-		echo "<i>", getLRM(), PrintReady(htmlspecialchars($mediaTitle));
+		echo "<em>", getLRM(), PrintReady(htmlspecialchars($mediaTitle));
 	} else {
-		echo "<i>", PrintReady(htmlspecialchars($mediaTitle));
+		echo "<em>", PrintReady(htmlspecialchars($mediaTitle));
 	}
 	$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 1, $rowm["m_gedrec"]);
@@ -1461,7 +1461,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	$addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 1, $rowm["m_gedrec"]);
 	if (!empty($addtitle)) echo "<br />", PrintReady(htmlspecialchars($addtitle));
-	echo "</i>";
+	echo "</em>";
 	if (empty($SEARCH_SPIDER)) {
 		echo "</a>";
 	}
