@@ -175,7 +175,7 @@ function is_dead($indirec, $gedcom_id) {
 function showLivingNameById($pid, $gedcom_id, $access_level=WT_USER_ACCESS_LEVEL) {
 	global $SHOW_LIVING_NAMES;
 
-	return $SHOW_LIVING_NAMES>=$access_level || canDisplayRecord($gedcom_id, find_person_record($pid, $gedcom_id, $access_level));
+	return $SHOW_LIVING_NAMES>=$access_level || canDisplayRecord($gedcom_id, find_person_record($pid, $gedcom_id), $access_level);
 }
 
 
