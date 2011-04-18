@@ -104,7 +104,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
     switch($mod_action) {
       case 'treeview':
         $tvName = 'tv';
-        $rid = safe_GET('rootId');
+        $rid = safe_GET('rootid');
         $tv = new TreeView('tv');
         ob_start();
         print_header(WT_I18N::translate('Interactive tree'));
