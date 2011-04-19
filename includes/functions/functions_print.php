@@ -1540,12 +1540,13 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 		}
 	} else {
 		// 1 DEAT Y with no DATE => print YES
+		// 1 BIRT 2 SOUR @S1@ => print YES
 		// 1 DEAT N is not allowed
 		// It is not proper GEDCOM form to use a N(o) value with an event tag to infer that it did not happen.
 		$factrec = str_replace("\nWT_OLD\n", '', $factrec);
 		$factrec = str_replace("\nWT_NEW\n", '', $factrec);
 		$factdetail = explode(' ', trim($factrec));
-		if (isset($factdetail)) if (count($factdetail) == 3) if (strtoupper($factdetail[2]) == 'Y') {
+		if (isset($factdetail) && (count($factdetail) == 3 && strtoupper($factdetail[2]) == 'Y') || (count($factdetail) == 4 && $factdetail[2] == 'SOUR')) {
 			$html.=WT_I18N::translate('Yes');
 		}
 	}
