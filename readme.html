@@ -205,11 +205,12 @@ If you are moving to <b>webtrees</b> from an existing PhpGedView ("PGV") setup, 
 <br /><br />
 The requirements are:
 <ul>
-	<li>The PGV database and index directory must be on the same server as <b>webtrees</b>;</li>
-	<li>Your <b>webtrees</b> MySQL database username and password must either be the same as your PGV username and password, or if you created a new user for <b>webtrees</b>, that new user must also have full privileges to access your PGV database;</li>
-	<li>PGV must be version 4.2.3 or 4.2.4 (this corresponds to an internal "PGV_SCHEMA_VERSION" of between 10 and 14).  Newer versions, including SVN versions will probably work too, provided the data structures haven't changed; </li>
-	<li>All changes in PGV must be accepted (as pending edits will not be transfered)</li>
-	<li>All existing PGV users must have an email address, and it must be unique to that user (PGV allows users to delete their email address, or have the same email address as other users;  <b>webtrees</b> requires that all users have their own unique email address)</li>
+	<li>The PGV database and index directory must be on the same server as <b>webtrees</b>.</li>
+	<li>Your <b>webtrees</b> MySQL database username and password must either be the same as your PGV username and password, or if you created a new user for <b>webtrees</b>, that new user must also have full privileges to access your PGV database.</li>
+	<li>PGV must be version 4.2.3 or 4.2.4 (this corresponds to an internal "PGV_SCHEMA_VERSION" of between 10 and 14).  Newer versions, including SVN versions will probably work too, provided the data structures haven't changed.</li>
+	<li>All changes in PGV must be accepted (as pending edits will not be transfered).</li>
+	<li>All existing PGV users must have an email address, and it must be unique to that user (PGV allows users to delete their email address, or have the same email address as other users;  <b>webtrees</b> requires that all users have their own unique email address).</li>
+	<li>The wizard transfer process overwrites the username and password you may have entered in setting up the initial account. The main administration user name and password will be identical to the admin user name and password from PGV. You can manage your account and change the password, should you so decide.</li>
 </ul>
 <p><b>Important Note:</b> This transfer wizard is not able to assist with moving media items. You will need to set up and move or copy your media configuration and objects separately after the transfer wizard is finished. If you use the media firewall in PGV and a directory outside of PGV, then duplicating the media configuration in <b>webtrees</b> media folder, and setting the media firewall directory to your PGV folder will make your media available to <b>webtrees</b>.</p>
 <p>After the transfer is complete, you should check your family tree configuration and privacy settings. Due to differences in internal data formats, the following settings are not yet transfered: custom privacy restrictions, block configuration, FAQs, and HTML blocks.  We hope to add these to the wizard in a future release.</p>
