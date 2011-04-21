@@ -1625,8 +1625,9 @@ class WT_Person extends WT_GedcomRecord {
 			$full="$full $NSFX";
 		}
 
-		// The NICK field might be present, but not appear in the NAME
-		if ($NICK && strpos($full, $NICK)===false) {
+		// The NICK field might be present, but not appear in the NAME.
+		// Nicknames must be surrounded by spaces or standard quotation marks (ones with HTML entities)
+		if ($NICK && !preg_match('/(^| |"|«|“|\'|‹|‘)'.preg_quote($NICK, '/').'( |"|»|”|\'|›|’|$)/', $full)) {
 			$pos=strpos($full, '/');
 			if ($pos===false) {
 				$full.=' "'.$NICK.'"';
