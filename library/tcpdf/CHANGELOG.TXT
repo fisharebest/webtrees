@@ -1,3 +1,34 @@
+5.9.071 (2011-04-19)
+	- Bug #3288574 "<br/> trouble" was fixed.
+
+5.9.069 (2011-04-19)
+	- Bug #3288763 "HTML-Table: non-breaking table rows: Bug" was fixed.
+
+5.9.068 (2011-04-15)
+	- Bookmark, addTOC and addHTMLTOC methods were improved to include font style and color (Examples 15, 49 and 59 were updated).
+	- Default $_SERVER['DOCUMENT_ROOT'] value on tcpdf_config.php file was changed.
+
+5.9.067 (2011-04-10)
+	- Performances were drastically improved (PDF documents are now created more quickly).
+
+5.9.066 (2011-04-09)
+	- A bug related to digital signature + encryption was fixed.
+	- A bug related to encryption + xobject templates was fixed.
+
+5.9.065 (2011-04-08)
+	- Bug item #3280512 "Text encoding iso-8859-2 crashes" was fixed.
+
+5.9.064 (2011-04-05)
+	- A bug related to character entities on HTML cells was fixed.
+
+5.9.063 (2011-04-01)
+	- Bug item #3267235 "WriteHTML() and image that doesn't fit on the page" was fixed.
+
+5.9.062 (2011-03-23)
+	- Bug item #3232650 "Using Write if there are pageRegions active creates error" was fixed.
+	- Bug item #3221891 "text input borders" was fixed.
+	- Bug item #3228958 "Adobe Reader 9.4.2 crash" was fixed.
+
 5.9.061 (2011-03-15)
 	- Bug item #3213488 "wrong function call in function Write" was fixed.
 	- Bug item #3203007 "list element with black background" was fixed.
