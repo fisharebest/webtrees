@@ -1,11 +1,11 @@
-/*
+/**
  * Theme specific module CSS for PHPGedView
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2010 webtrees development team.
  *
  * Derived from PhpGedView
- * Copyright (C) 2010 PGV Development Team.  All rights reserved.
+ * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,15 +14,15 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
  * @package webtrees
- * @subpackage module themes
+ * @subpackage Themes
  * @version $Id$
  */
  
@@ -33,7 +33,7 @@
 	color:black;
  }
 .USA {
-	background-color:#dddddd; 
+	background-color:#aaccff; 
 	color:black;
  }
 /* Indi Page - Shared Note column headers (census_note_decode.php) */
@@ -54,7 +54,7 @@
 	float: left;
 	margin: 0.5em 0 0 0.5em;
 	width: 23.1em;
-	height: 33.9em;  /* customize height maybe change to 37.0 */
+	height: 33.9em;
 	overflow: auto; 
 	/*border: 1px solid red; */
 }
@@ -106,7 +106,6 @@ a.linka {
 	margin: 0.5em 0 0 0.3em;
 	padding: 0;
 	border: 0px solid yellow;
-	/* border: 1px solid red; */
 }
 .cens_container span {
 	margin: 0 0.5em;
@@ -222,7 +221,6 @@ textarea#NOTE {
 	float: left;
 	margin: 0.4em 0 0 0.3em;
 	width: 69.8em;
-	/* width: 74.1em */
 }
 .cens_textinput_left  {
 	float: left;
@@ -232,7 +230,7 @@ textarea#NOTE {
 .cens_textinput_right  {
 	float: right;
 	font-size: 1em;
-	margin-right: 2em; /* 2.2 */
+	margin-right: 2em;
 }
 /* Census Add Rows Area */
 .cens_addrows {
@@ -240,18 +238,16 @@ textarea#NOTE {
 	/*border: 0em outset;*/
 	float: left;
 	margin: 0;
-	width: 69.8em;  /* width 100% */
+	width: 69.8em; 
 }
 /* Census data Input area */
 .cens_data {
 	width:100%;
 	height:12.46em;
 	overflow:auto;
-	/* height:14.0em;
-	overflow:scroll; */
 }
 .cens_data table {
-	width: 68em; /* 100%*/
+	width: 68em;
 	border: 0;
 	margin: 0;
 	padding: 0;
