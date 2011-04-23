@@ -305,22 +305,15 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		echo '<table class="faq">';
 		// List of titles
 		foreach ($faqs as $id => $faq) {
-			$header = get_block_setting($faq->block_id, 'header');
-			$faqbody = get_block_setting($faq->block_id, 'faqbody');
+			$header   =get_block_setting($faq->block_id, 'header');
+			$faqbody  =get_block_setting($faq->block_id, 'faqbody');
 			$languages=get_block_setting($faq->block_id, 'languages');
-			if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
-				return;
-			}
-			if ($header && $faqbody) {
+			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 				$row_color = ($row_count % 2) ? 'odd' : 'even';
-				echo '';
-					// NOTE: Print the header of the current item
-						echo '<tr class="', $row_color, '"><td style="padding: 5px;">';
-						echo '<a href="#faq', $id, '">';
-							echo $id+1, '.&nbsp;', $faq->header;
-						echo '</a>';
-					echo '</td></tr>';
-				echo '';
+				// NOTE: Print the header of the current item
+				echo '<tr class="', $row_color, '"><td style="padding: 5px;">';
+				echo '<a href="#faq', $id, '">', $id+1, ' ', $faq->header, '</a>';
+				echo '</td></tr>';
 				$row_count++;
 			}
 		}
@@ -328,23 +321,17 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		// Detailed entries
 		echo '<table>';
 		foreach ($faqs as $id => $faq) {
-			$header = get_block_setting($faq->block_id, 'header');
-			$faqbody = get_block_setting($faq->block_id, 'faqbody');
+			$header   =get_block_setting($faq->block_id, 'header');
+			$faqbody  =get_block_setting($faq->block_id, 'faqbody');
 			$languages=get_block_setting($faq->block_id, 'languages');
-			if ($languages && !in_array(WT_LOCALE, explode(',', $languages))) {
-				return;
-			}
-			if ($header && $faqbody) {
+			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 				// NOTE: Print the body text of the current item, with its header
-				echo '<div class="faq_title" id="faq', $id, '">',
-					$faq->header;
-					echo '<div style="float:right;" class="faq_italic">';
-						echo '<a href="#body">[', WT_I18N::translate('back to top'), ']</a>';
-					echo '</div>';
+				echo '<div class="faq_title" id="faq', $id, '">', $faq->header;
+				echo '<div style="float:right;" class="faq_italic">';
+				echo '<a href="#body">', WT_I18N::translate('back to top'), '</a>';
 				echo '</div>';
-				echo '<div class="faq_body">',
-					substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody);
 				echo '</div>';
+				echo '<div class="faq_body">', substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody), '</div>';
 				echo '<hr />';
 			}
 		}
