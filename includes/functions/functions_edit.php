@@ -2471,7 +2471,10 @@ function create_edit_form($gedrec, $linenum, $level0type) {
 				$add_date = false;
 			} elseif ($type=='STAT') {
 				add_simple_tag($subrecord, $level1type, WT_Gedcom_Tag::getLabel($label, $person));
-		 	} else {
+		 	} elseif ($level0type=='REPO') {
+				$repo = WT_Repository::getInstance($pid);
+				add_simple_tag($subrecord, $level0type, WT_Gedcom_Tag::getLabel($label, $repo));
+			} else {
 				add_simple_tag($subrecord, $level0type, WT_Gedcom_Tag::getLabel($label, $person));
 			}
 		}
@@ -2553,7 +2556,9 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 				add_simple_tag("2 ".$key.' '.WT_USER_NAME, $level1tag);
 			} else if ($level1tag=='TITL' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {
 				add_simple_tag("2 ".$key, $level1tag);
-			} else if ($level1tag!='TITL') {
+			} else if ($level1tag=='NAME' && strstr($ADVANCED_NAME_FACTS, $key)!==false) {
+				add_simple_tag("2 ".$key, $level1tag);
+			} else if ($level1tag!='TITL' && $level1tag!='NAME') {
 				add_simple_tag("2 ".$key, $level1tag);
 			}
 			switch ($key) { // Add level 3/4 tags as appropriate
