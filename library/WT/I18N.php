@@ -138,9 +138,6 @@ class WT_I18N {
 		global $WEEK_START; // I18N: This is the first day of the week on calendars. 0=Sunday, 1=Monday...
 		$WEEK_START=self::noop('WEEK_START=0');
 		list(, $WEEK_START)=explode('=', $WEEK_START);
-		global $DICTIONARY_SORT; // I18N: 1=>ignore diacrics when sorting, 0=>letters with diacritics are distinct
-		$DICTIONARY_SORT=self::noop('DICTIONARY_SORT=1');
-		list(, $DICTIONARY_SORT)=explode('=', $DICTIONARY_SORT);
 
 		global $TEXT_DIRECTION;
 		$localeData=Zend_Locale_Data::getList($locale, 'layout');
@@ -148,9 +145,6 @@ class WT_I18N {
 
 		self::$locale=$locale;
 		self::$dir=$TEXT_DIRECTION;
-
-		// I18N: This is a space separated list of initial letters for lists of names, etc.  Multi-letter characters are OK, e.g. "A B C CS D DZ DZS E F G GY H ..."  You may use upper/lowers case, such as "D Dz Dzs".
-		self::$alphabet=WT_I18N::translate('A B C D E F G H I J K L M N O P Q R S T U V W X Y Z');
 
 		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 		self::$collation=WT_I18N::translate('utf8_unicode_ci');
