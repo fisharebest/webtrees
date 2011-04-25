@@ -71,8 +71,8 @@ function print_indi_table($datalist, $legend="", $option="") {
 	}
 	if ($legend == "") $legend = WT_I18N::translate('Individuals');
 	if (isset($WT_IMAGES["indis"])) $legend = "<img src=\"".$WT_IMAGES["indis"]."\" alt=\"\" align=\"middle\" /> ".$legend;
-	echo "<fieldset><legend>", $legend, "</legend>";
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	echo '<fieldset><legend>', $legend, '</legend>';
+	$table_id = 'ID'.floor(microtime()*1000000); // sorttable requires a unique ID
 	echo '<div id="', $table_id, '-table" class="center">';
 	//-- filter buttons
 	echo "<button type=\"button\" class=\"SEX_M\" title=\"", WT_I18N::translate('Show only males.'), "\" >";
@@ -104,13 +104,13 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<button type=\"button\" class=\"reset\" title=\"", WT_I18N::translate('Reset to the list defaults.'), "\" >";
 	echo WT_I18N::translate('Reset'), "</button> ";
 	//-- table header
-	echo "<table id=\"", $table_id, "\" class=\"sortable list_table\">";
-	echo "<thead><tr>";
-	echo "<td></td>";
+	echo '<table id="', $table_id, '" class="sortable list_table">';
+	echo '<thead><tr>';
+	echo '<td></td>';
 	echo '<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', WT_Gedcom_Tag::getLabel('NAME'), '</a></th>';
-	echo "<th class=\"list_label\" style=\"display:none\">GIVN</th>";
-	echo "<th class=\"list_label\" style=\"display:none\">SURN</th>";
-	if ($option=="sosa") echo "<th class=\"list_label\">", /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), "</th>";
+	echo '<th class="list_label" style="display:none">GIVN</th>';
+	echo '<th class="list_label" style="display:none">SURN</th>';
+	if ($option=="sosa") echo '<th class="list_label">', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
 	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('BIRT'), "</th>";
 	if ($tiny) echo "<td class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"", WT_I18N::translate('Anniversary'), "\" title=\"", WT_I18N::translate('Anniversary'), "\" border=\"0\" /></td>";
 	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('PLAC'), "</th>";
@@ -154,13 +154,13 @@ function print_indi_table($datalist, $legend="", $option="") {
 		if ($option=="BIRT_PLAC" && strstr($person->getBirthPlace(), $filter)===false) continue;
 		if ($option=="DEAT_PLAC" && strstr($person->getDeathPlace(), $filter)===false) continue;
 		//-- Counter
-		echo "<tr>";
-		echo "<td class=\"list_value_wrap rela list_item\">", ++$n, "</td>";
+		echo '<tr>';
+		echo '<td class="list_value_wrap rela list_item">', ++$n, '</td>';
 		//-- Indi name(s)
-		$tdclass = "list_value_wrap";
-		if (!$person->isDead()) $tdclass .= " alive";
-		if (!$person->getChildFamilies()) $tdclass .= " patriarch";
-		echo "<td class=\"", $tdclass, "\" align=\"", get_align($person->getListName()), "\">";
+		$tdclass = 'list_value_wrap';
+		if (!$person->isDead()) $tdclass .= ' alive';
+		if (!$person->getChildFamilies()) $tdclass .= ' patriarch';
+		echo '<td class="', $tdclass, '" align="', get_align($person->getListName()), '">';
 		list($surn, $givn)=explode(',', $person->getSortName());
 		// If we're showing search results, then the highlighted name is not
 		// necessarily the person's primary name.
@@ -196,7 +196,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				$class='list_item';
 				$sex_image='';
 			}
-			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', PrintReady($name['list']), '</a>', $sex_image, "<br/>";
+			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', PrintReady($name['list']), '</a>', $sex_image, '<br/>';
 		}
 		// Indi parents
 		echo $person->getPrimaryParentsNames("parents_$table_id details1", 'none');
@@ -266,9 +266,9 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo '</td>';
 		//-- Number of children
 		if ($tiny) {
-			echo "<td class=\"list_value_wrap\">";
-			echo "<a href=\"", $person->getHtmlUrl(), "\" class=\"list_item\" name=\"", $person->getNumberOfChildren(), "\">", $person->getNumberOfChildren(), "</a>";
-			echo "</td>";
+			echo '<td class="list_value_wrap">';
+			echo '<a href="', $person->getHtmlUrl(), '" class="list_item" name="', $person->getNumberOfChildren(), '">', $person->getNumberOfChildren(), '</a>';
+			echo '</td>';
 		}
 		//-- Death date
 		echo "<td class=\"list_value_wrap\">";
@@ -298,11 +298,11 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo "</td>";
 		//-- Death anniversary
 		if ($tiny) {
-			echo "<td class=\"list_value_wrap rela\">";
+			echo '<td class="list_value_wrap rela">';
 			if ($death_dates[0]->isOK())
-				echo "<span class=\"age\">", WT_Date::GetAgeYears($death_dates[0]), "</span>";
+				echo '<span class="age">', WT_Date::GetAgeYears($death_dates[0]), '</span>';
 			else
-				echo "&nbsp;";
+				echo '&nbsp;';
 			echo '</td>';
 		}
 		//-- Age at death
@@ -337,44 +337,44 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo '</td>';
 		//-- Last change
 		if ($tiny && $SHOW_LAST_CHANGE) {
-			echo "<td class=\"list_value_wrap rela\">", $person->LastChangeTimestamp(empty($SEARCH_SPIDER)), "</td>";
+			echo '<td class="list_value_wrap rela">', $person->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
 		}
 		//-- Sorting by gender
-		echo "<td style=\"display:none\">";
+		echo '<td style="display:none">';
 		echo $person->getSex();
-		echo "</td>";
+		echo '</td>';
 		//-- Filtering by birth date
-		echo "<td style=\"display:none\">";
+		echo '<td style="display:none">';
 		if (!$person->canDisplayDetails() || WT_Date::Compare($birth_dates[0], $d100y)>0) {
-			echo "Y100";
+			echo 'Y100';
 		} else {
-			echo "YES";
+			echo 'YES';
 		}
-		echo "</td>";
+		echo '</td>';
 		//-- Filtering by death date
-		echo "<td style=\"display:none\">";
+		echo '<td style="display:none">';
 		if ($person->isDead()) {
 			if (WT_Date::Compare($death_dates[0], $d100y)>0) {
-				echo "Y100";
+				echo 'Y100';
 			} else {
-				echo "YES";
+				echo 'YES';
 			}
 		} else {
-			echo "N";
+			echo 'N';
 		}
-		echo "</td>";
+		echo '</td>';
 		//-- Roots or Leaves ?
-		echo "<td style=\"display:none\">";
+		echo '<td style="display:none">';
 		if (!$person->getChildFamilies()) {
-			echo "R"; // roots
+			echo 'R'; // roots
 		} elseif (!$person->isDead() && $person->getNumberOfChildren()<1) {
-			echo "L"; // leaves
+			echo 'L'; // leaves
 		}
-		echo "</td>";
-		echo "</tr>";
+		echo '</td>';
+		echo '</tr>', "\n";
 		$unique_indis[$person->getXref()]=true;
 	}
-	echo "</tbody>";
+	echo '</tbody>', "\n";
 	//-- table footer
 	echo "<tfoot><tr class=\"sortbottom\">";
 	echo "<td></td>";
@@ -404,9 +404,9 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<td style=\"display:none\">BIRT</td>";
 	echo "<td style=\"display:none\">DEAT</td>";
 	echo "<td style=\"display:none\">TREE</td>";
-	echo "</tr>";
+	echo '</tr>', "\n";
 	echo "</tfoot>";
-	echo "</table>";
+	echo "</table>", "\n";
 	echo "</div>";
 	//-- charts
 	echo "<div class=\"", $table_id, "-charts\" style=\"display:none\">";
