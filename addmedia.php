@@ -61,14 +61,14 @@ print_simple_header(WT_I18N::translate('Add a new media item'));
 $disp = true;
 if (empty($pid) && !empty($mid)) $pid = $mid;
 if (!empty($pid)) {
-	$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
-	$disp = canDisplayRecord(WT_GED_ID, $gedrec);
+	$disp = WT_GedcomRecord::getInstance($pid)->canDisplayDetails();
 }
 if ($action=='update' || $action=='newentry') {
 	if (!isset($linktoid) || $linktoid=='new') $linktoid='';
 	if (empty($linktoid) && !empty($gid)) $linktoid = $gid;
 	if (!empty($linktoid)) {
-		$disp = canDisplayRecord(WT_GED_ID, find_gedcom_record($linktoid, WT_GED_ID));
+		$disp = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
+
 	}
 }
 
