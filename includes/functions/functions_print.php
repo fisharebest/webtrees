@@ -1019,8 +1019,9 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 			$closeSpan = print_note_record($match[$j][1], $nlevel, $nrec, $textOnly, true);
 			$data .= $closeSpan."<br />";
 		} else {
-			$noterec = find_gedcom_record($nmatch[1], $ged_id);
-			if (canDisplayRecord($ged_id, $noterec)) {
+			$note=WT_Note::getInstance($nmatch[1]);
+			if ($note->canDisplayDetails()) {
+				$noterec = $note->getGedcomRecord();
 				//-- print linked note records
 				$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
 				$closeSpan = print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
