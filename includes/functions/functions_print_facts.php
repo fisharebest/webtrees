@@ -499,7 +499,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 	$spos2 = 0;
 	for ($j=0; $j<$ct; $j++) {
 		$sid = $match[$j][1];
-		if (canDisplayRecord(WT_GED_ID, find_source_record($sid, WT_GED_ID))) {
+		if (WT_Source::getInstance($sid)->canDisplayDetails()) {
 			$spos1 = strpos($factrec, "$level SOUR @".$sid."@", $spos2);
 			$spos2 = strpos($factrec, "\n$level", $spos1);
 			if (!$spos2) $spos2 = strlen($factrec);
@@ -563,15 +563,15 @@ function print_media_links($factrec, $level, $pid='') {
 	$nlevel = $level+1;
 	if ($level==1) $size=50;
 	else $size=25;
-	if (preg_match_all("/$level OBJE(.*)/", $factrec, $omatch, PREG_SET_ORDER) == 0) return;
+	if (preg_match_all("/$level OBJE @(.*)@/", $factrec, $omatch, PREG_SET_ORDER) == 0) return;
 	$objectNum = 0;
 	while ($objectNum < count($omatch)) {
-		$media_id = str_replace("@", "", trim($omatch[$objectNum][1]));
+		$media_id = $omatch[$objectNum][1];
 		$row=
 			WT_DB::prepare("SELECT m_titl, m_file, m_gedrec FROM `##media` where m_media=? AND m_gedfile=?")
 			->execute(array($media_id, WT_GED_ID))
 			->fetchOneRow(PDO::FETCH_ASSOC);
-		if (canDisplayRecord(WT_GED_ID, $row['m_gedrec'])) {
+		if (WT_Media::getInstance($media_id)->canDisplayDetails()) {
 			// A new record, pending acceptance?
 			if (!$row && WT_USER_CAN_EDIT) {
 				$mediarec = find_updated_record($media_id, $ged_id);
@@ -843,7 +843,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 		$spos2 = strpos($factrec, "\n$level", $spos1);
 		if (!$spos2) $spos2 = strlen($factrec);
 		$srec = substr($factrec, $spos1, $spos2-$spos1);
-		if (canDisplayRecord(WT_GED_ID, find_source_record($sid, WT_GED_ID))) {
+		if (WT_Source::getInstance($sid)->canDisplayDetails()) {
 			if ($level==2) echo "<tr class=\"row_sour2\">";
 			else echo "<tr>";
 			echo "<td class=\"descriptionbox";
@@ -1372,7 +1372,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 function print_main_media_row($rtype, $rowm, $pid) {
 	global $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER;
 
-	if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec'])) {
+	if (!WT_Media::getInstance($rowm['m_media'])->canDisplayDetails()) {
 		return false;
 	}
 
