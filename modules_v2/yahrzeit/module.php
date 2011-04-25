@@ -74,10 +74,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach (get_anniversary_events($jd, 'DEAT _YART') as $fact) {
 				// Extract hebrew dates only
 				if ($fact['date']->date1->CALENDAR_ESCAPE()=='@#DHEBREW@' && $fact['date']->MinJD()==$fact['date']->MaxJD()) {
-					// Apply privacy
-					if (canDisplayRecord(WT_GED_ID, find_person_record($fact['id'], WT_GED_ID)) && canDisplayFact($fact['id'], WT_GED_ID, $fact['factrec'])) {
-						$yahrzeits[]=$fact;
-					}
+					$yahrzeits[]=$fact;
 				}
 			}
 		}

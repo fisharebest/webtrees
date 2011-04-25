@@ -1562,38 +1562,40 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 				} else {
 					$record=WT_Family::getInstance($row);
 				}
-				// Generate a regex to match the retrieved date - so we can find it in the original gedcom record.
-				// TODO having to go back to the original gedcom is lame.  This is why it is so slow.
-				// We should store the level1 fact here (or in a "facts" table)
-				if ($row['d_type']=='@#DJULIAN@') {
-					if ($row['d_year']<0) {
-						$year_regex=$row['d_year'].' ?[Bb]\.? ?[Cc]\.\ ?';
-					} else {
-						$year_regex="({$row['d_year']}|".($row['d_year']-1)."\/".($row['d_year']%100).")";
-					}
-				} else
-					$year_regex="0*".$row['d_year'];
-				$ged_date_regex="/2 DATE.*(".($row['d_day']>0 ? "0?{$row['d_day']}\s*" : "").$row['d_month']."\s*".($row['d_year']!=0 ? $year_regex : "").")/i";
-				foreach (get_all_subrecords($row['gedrec'], $skipfacts, false, false) as $factrec) {
-					if (preg_match("/(^1 {$row['d_fact']}|^1 (FACT|EVEN).*\n2 TYPE {$row['d_fact']})/s", $factrec) && preg_match($ged_date_regex, $factrec) && preg_match('/2 DATE (.+)/', $factrec, $match)) {
-						$date=new WT_Date($match[1]);
-						if (preg_match('/2 PLAC (.+)/', $factrec, $match)) {
-							$plac=$match[1];
+				if ($record->canDisplayDetails()) {
+					// Generate a regex to match the retrieved date - so we can find it in the original gedcom record.
+					// TODO having to go back to the original gedcom is lame.  This is why it is so slow.
+					// We should store the level1 fact here (or in a "facts" table)
+					if ($row['d_type']=='@#DJULIAN@') {
+						if ($row['d_year']<0) {
+							$year_regex=$row['d_year'].' ?[Bb]\.? ?[Cc]\.\ ?';
 						} else {
-							$plac='';
+							$year_regex="({$row['d_year']}|".($row['d_year']-1)."\/".($row['d_year']%100).")";
 						}
-						if (canDisplayFact($row['xref'], $ged_id, $factrec)) {
-							$found_facts[]=array(
-								'record'=>$record,
-								'id'=>$row['xref'],
-								'objtype'=>$row['type'],
-								'fact'=>$row['d_fact'],
-								'factrec'=>$factrec,
-								'jd'=>$jd,
-								'anniv'=>($row['d_year']==0?0:$anniv->y-$row['d_year']),
-								'date'=>$date,
-								'plac'=>$plac
-							);
+					} else
+						$year_regex="0*".$row['d_year'];
+					$ged_date_regex="/2 DATE.*(".($row['d_day']>0 ? "0?{$row['d_day']}\s*" : "").$row['d_month']."\s*".($row['d_year']!=0 ? $year_regex : "").")/i";
+					foreach (get_all_subrecords($row['gedrec'], $skipfacts, false, false) as $factrec) {
+						if (preg_match("/(^1 {$row['d_fact']}|^1 (FACT|EVEN).*\n2 TYPE {$row['d_fact']})/s", $factrec) && preg_match($ged_date_regex, $factrec) && preg_match('/2 DATE (.+)/', $factrec, $match)) {
+							$date=new WT_Date($match[1]);
+							if (preg_match('/2 PLAC (.+)/', $factrec, $match)) {
+								$plac=$match[1];
+							} else {
+								$plac='';
+							}
+							if (canDisplayFact($row['xref'], $ged_id, $factrec)) {
+								$found_facts[]=array(
+									'record'=>$record,
+									'id'=>$row['xref'],
+									'objtype'=>$row['type'],
+									'fact'=>$row['d_fact'],
+									'factrec'=>$factrec,
+									'jd'=>$jd,
+									'anniv'=>($row['d_year']==0?0:$anniv->y-$row['d_year']),
+									'date'=>$date,
+									'plac'=>$plac
+								);
+							}
 						}
 					}
 				}
