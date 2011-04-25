@@ -333,7 +333,7 @@ function build_indiv_map($indifacts, $famids) {
 			$spouserec = get_sub_record(2, '2 _WTS', $factrec);
 			$ctlp = preg_match("/\d _WTS @(.*)@/", $spouserec, $spouseid);
 			if ($ctlp>0) {
-				$useThisItem = canDisplayRecord(WT_GED_ID, find_family_record($spouseid[1], WT_GED_ID));
+				$useThisItem = WT_Family::getInstance($spouseid[1])->canDisplayDetails();
 			} else {
 				$useThisItem = true;
 			}
