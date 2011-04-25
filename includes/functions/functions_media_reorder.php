@@ -53,7 +53,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 	echo "<li class=\"facts_value\" style=\"list-style:none;cursor:move;margin-bottom:2px;\" id=\"li_" . $rowm['m_media'] . "\" >";
 
     //echo $rtype." ".$rowm["m_media"]." ".$pid;
-    if (!canDisplayRecord($rowm['m_gedfile'], $rowm['m_gedrec']) || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
+    if (!WT_Media::getInstance($rowm['m_media'])->canDisplayDetails() || !canDisplayFact($rowm['m_media'], $rowm['m_gedfile'], $rowm['mm_gedrec'])) {
         //echo $rowm['m_media']." no privacy ";
         return false;
     }
