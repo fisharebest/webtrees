@@ -179,7 +179,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	public function getSurnameFams($alpha, $surname) {
 		global $SHOW_MARRIED_NAMES;
-		$families=get_famlist_fams($surname, $alpha, '', $SHOW_MARRIED_NAMES, WT_GED_ID);
+		$families=WT_Query_Name::families($surname, $alpha, '', $SHOW_MARRIED_NAMES, WT_GED_ID);
 		$out = '<ul>';
 		$private_count = 0;
 		foreach ($families as $family) {

@@ -180,7 +180,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	public function getSurnameIndis($alpha, $surname) {
 		global $SHOW_MARRIED_NAMES;
-		$indis=get_indilist_indis($surname, $alpha, '', $SHOW_MARRIED_NAMES, false, WT_GED_ID);
+		$indis=WT_Query_Name::individuals($surname, $alpha, '', $SHOW_MARRIED_NAMES, false, WT_GED_ID);
 		$out = '<ul>';
 		$private_count = 0;
 		foreach ($indis as $person) {
