@@ -110,11 +110,17 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				$links = $medialist[$value]["LINKS"];
 				$disp = ($medialist[$value]["EXISTS"]>0) && $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
-				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br />";}
+				if (WT_DEBUG && !$disp && !$error) {
+					$error = true;
+					echo "<span class=\"error\">".$medialist[$value]["XREF"]." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br />";
+				}
 
-				$disp &= canDisplayRecord($medialist[$value]["GEDFILE"], $medialist[$value]["GEDCOM"]);
+				$disp &= WT_Media::getInstance($medialist[$value]["XREF"])->canDisplayDetails();
 
-				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." Failed to pass privacy</span><br />";}
+				if (WT_DEBUG && !$disp && !$error) {
+					$error = true;
+					echo "<span class=\"error\">".$medialist[$value]["XREF"]." Failed to pass privacy</span><br />";
+				}
 
 				$isExternal = isFileExternal($medialist[$value]["FILE"]);
 
