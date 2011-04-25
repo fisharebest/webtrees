@@ -68,7 +68,6 @@ $famrec_update = safe_REQUEST($_REQUEST, 'famrec_update', WT_REGEX_XREF);
 $fam_lists = safe_REQUEST($_REQUEST, 'fam_lists', WT_REGEX_XREF);
 $famlist_priority = safe_REQUEST($_REQUEST, 'famlist_priority', WT_REGEX_XREF);
 $famlist_update = safe_REQUEST($_REQUEST, 'famlist_update', WT_REGEX_XREF);
-$no_private_links = safe_REQUEST($_REQUEST, 'no_private_links', '1', '0');
 
 if ($action=="sendFiles") {
 	header('Content-Type: application/octet-stream');
@@ -93,23 +92,17 @@ if ($action=="sendFiles") {
 	if (isset($indi_rec)) {
 		$statement=WT_DB::prepare("SELECT i_id, i_gedcom FROM `##individuals` WHERE i_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
-			if ($no_private_links) {
-				if (canDisplayRecord($index, $row[1], WT_PRIV_PUBLIC)) {
-					echo " <url>\n";
-					echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "individual.php?pid=", $row[0], "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
-					$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
-					if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
-						echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
-					echo " <changefreq>", $indirec_update, "</changefreq>\n";
-					echo " <priority>0.", $indirec_priority, "</priority>\n";
-					echo " </url>\n";
-				}
-			} else {
+			$record=WT_Person::getInstance($row[0]);
+			if ($record->canDisplayDetails(WT_PRIV_PUBLIC)) {
 				echo " <url>\n";
-				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "individual.php?pid=", $row[0], "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
-				$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
-				if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
-					echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
+				echo " <loc>", $record->getAbsoluteLinkUrl(), "</loc>\n";
+				$chan=$record->getChangeEvent();
+				if ($chan) {
+					$date=$chan->getDate();
+					if ($date->isOK()) {
+						echo " <lastmod>", $date->MinDate()->Format('%Y-%d-%m'), "</lastmod>\n";
+					}
+				}
 				echo " <changefreq>", $indirec_update, "</changefreq>\n";
 				echo " <priority>0.", $indirec_priority, "</priority>\n";
 				echo " </url>\n";
@@ -121,23 +114,17 @@ if ($action=="sendFiles") {
 	if (isset($fam_rec)) {
 		$statement=WT_DB::prepare("SELECT f_id, f_gedcom FROM `##families` WHERE f_file=?")->execute(array($index));
 		while ($row=$statement->fetch(PDO::FETCH_NUM)) {
-			if ($no_private_links) {
-				if (canDisplayRecord($index, $row[1], WT_PRIV_PUBLIC)) {
-					echo " <url>\n";
-					echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "family.php?famid=", $row[0], "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
-					$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
-					if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
-						echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
-					echo " <changefreq>", $famrec_update, "</changefreq>\n";
-					echo " <priority>0.", $famrec_priority, "</priority>\n";
-					echo " </url>\n";
-				}
-			} else {
+			$record=WT_Family::getInstance($row[0]);
+			if ($record->canDisplayDetails(WT_PRIV_PUBLIC)) {
 				echo " <url>\n";
 				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "family.php?famid=", $row[0], "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
-				$arec = get_sub_record(1, "1 CHAN", $row[1], 1);
-				if (!empty($arec) && preg_match("/2 DATE (.*)/", $arec, $datematch))
-					echo " <lastmod>", date("Y-m-d", strtotime($datematch[1])), "</lastmod>\n";
+				$chan=$record->getChangeEvent();
+				if ($chan) {
+					$date=$chan->getDate();
+					if ($date->isOK()) {
+						echo " <lastmod>", $date->MinDate()->Format('%Y-%d-%m'), "</lastmod>\n";
+					}
+				}
 				echo " <changefreq>", $famrec_update, "</changefreq>\n";
 				echo " <priority>0.", $famrec_priority, "</priority>\n";
 				echo " </url>\n";
@@ -212,7 +199,6 @@ if ($action=="generate") {
 	if (isset($_POST["indi_list"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Individual List'), "</td></tr>\n";
 	if (isset($_POST["fam_recs"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Family information'), "</td></tr>\n";
 	if (isset($_POST["fam_list"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Family List'), "</td></tr>\n";
-	if (isset($_POST["GEDCOM_Privacy"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('No links to private information'), "</td></tr>\n";
 
 	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('GEDCOMs to store in Sitemap:'), "</td></tr>\n";
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
@@ -231,7 +217,6 @@ if ($action=="generate") {
 			if (isset($_POST["indi_list"])) echo "&indi_lists=true&indilist_priority=", $indilist_priority, "&indilist_update=", $indilist_update;
 			if (isset($_POST["fam_recs"])) echo "&fam_rec=true&famrec_priority=", $famrec_priority, "&famrec_update=", $famrec_update;
 			if (isset($_POST["fam_list"])) echo "&fam_lists=true&famlist_priority=", $famlist_priority, "&famlist_update=", $famlist_update;
-			if (isset($_POST["GEDCOM_Privacy"])) echo "&no_private_links=1";
 			echo "\"><b>", $sitemapFilename, "</b></a></td></tr>\n";
 		}
 	}
@@ -266,13 +251,6 @@ if ($action=="") {
 		echo " <input type=\"checkbox\" name=\"GEDCOM_", $ged_id, "\" value=\"", $ged_id, "\" checked>", get_gedcom_setting($ged_id, 'title'), "<br />\n";
 	}
 ?>
-			</td>
-		</tr>
-		<tr>
-			<th>
-			</th>
-			<td colspan="3">
-				<input type="checkbox" name="GEDCOM_Privacy" checked><?php echo WT_I18N::translate('No links to private information'); ?>
 			</td>
 		</tr>
 		<tr>
