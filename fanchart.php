@@ -184,8 +184,6 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 		while ($sosa >= $p2) {
 			$pid=$treeid[$sosa];
 			if ($pid) {
-				$indirec=find_gedcom_record($pid, WT_GED_ID, WT_USER_CAN_EDIT);
-
 				$person =WT_Person::getInstance($pid);
 				$name   =$person->getFullName();
 				$addname=$person->getAddName();
@@ -214,11 +212,11 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				$text = reverseText($name) . "\n";
 				if (!empty($addname)) $text .= reverseText($addname). "\n";
 
-				if (canDisplayRecord(WT_GED_ID, $indirec)) {
-					$birthrec = get_sub_record(1, "1 BIRT", $indirec);
+				if ($person->canDisplayDetails()) {
+					$birthrec = get_sub_record(1, "1 BIRT", $person->getGedcomRecord());
 					$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $birthrec, $match);
 					if ($ct>0) $text.= trim($match[1]);
-					$deathrec = get_sub_record(1, "1 DEAT", $indirec);
+					$deathrec = get_sub_record(1, "1 DEAT", $person->getGedcomRecord());
 					$ct = preg_match("/2 DATE.*(\d\d\d\d)/", $deathrec, $match);
 					if ($ct>0) $text.= "-".trim($match[1]);
 				}
