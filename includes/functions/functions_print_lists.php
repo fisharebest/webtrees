@@ -1596,15 +1596,15 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 		if ($output==1) {
 			//-- First table row:  start table headers, etc. first
-			$return .= "<table id=\"".$table_id."\" class=\"list_table center width100\">";
-			$return .= "<thead><tr>";
-			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_I18N::translate('Record')."</th>";
-			$return .= "<th style=\"display:none;\">GIVN</th>"; //hidden by datables code
-			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_Gedcom_Tag::getLabel('DATE')."</th>";
-			$return .= "<th style=\"display:none;\">DATE</th>"; //hidden by datables code
-			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\"><img src=\"".$WT_IMAGES["reminder"]."\" alt=\"".WT_I18N::translate('Anniversary')."\" title=\"".WT_I18N::translate('Anniversary')."\" border=\"0\" /></th>";
-			$return .= "<th style=\"cursor:pointer;\" class=\"list_label\">".WT_Gedcom_Tag::getLabel('EVEN')."</th>";
-			$return .= "</tr></thead><tbody>";
+			$return .= '<table id="'.$table_id.'" class="list_table center width100">';
+			$return .= '<thead><tr>';
+			$return .= '<th style="cursor:pointer;" class="list_label">'.WT_I18N::translate('Record').'</th>';
+			$return .= '<th style="display:none;">GIVN</th>'; //hidden by datables code
+			$return .= '<th style="cursor:pointer;" class="list_label">'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
+			$return .= '<th style="display:none;">DATE</th>'; //hidden by datables code
+			$return .= '<th style="cursor:pointer;" class="list_label"><img src="'.$WT_IMAGES["reminder"].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
+			$return .= '<th style="cursor:pointer;" class="list_label">'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
+			$return .= '</tr></thead><tbody>'."\n";
 		}
 
 		$value['name'] = $record->getListName();
@@ -1639,52 +1639,52 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			if ($wife) $exp[1] .= $wife->getPrimaryParentsNames("parents_$table_id details1", "none");
 			$name = implode("<div></div>", $exp); // <div></div> is better here than <br />
 		}
-		$return .= "<td class=\"list_value_wrap\" align=\"".get_align($name)."\">";
-		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($name)."</a>";
+		$return .= '<td class="list_value_wrap" align="'.get_align($name).'">';
+		$return .= '<a href='.$value['url'].'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.PrintReady($name).'</a>';
 		if ($value['record']->getType()=="INDI") {
 			$return .= $value['sex'];
 			$return .= $value['record']->getPrimaryParentsNames("parents_$table_id details1", "none");
 		}
-		$return .= "</td>";
+		$return .= '</td>';
 		//-- GIVN
-		$return .= "<td style=\"display:none;\">"; //hidden by datables code
+		$return .= '<td style="display:none;">'; //hidden by datables code
 		$exp = explode(",", str_replace('<', ',', $name).",");
 		$return .= $exp[1];
-		$return .= "</td>";
+		$return .= '</td>';
 		//-- Event date
-		$return .= "<td class=\"list_value_wrap\">";
+		$return .= '<td class="list_value_wrap">';
 		$return .= str_replace('<a', '<a name="'.$value['jd'].'"', $value['date']->Display(empty($SEARCH_SPIDER)));
-		$return .= "</td>";
+		$return .= '</td>';
 		//-- Event date (sortable)
-		$return .= "<td style=\"display:none;\">"; //hidden by datables code
+		$return .= '<td style="display:none;">'; //hidden by datables code
 		$return .= $n;
-		$return .= "</td>";
+		$return .= '</td>';
 		//-- Anniversary
-		$return .= "<td class=\"list_value_wrap rela\">";
+		$return .= '<td class="list_value_wrap rela">';
 		$anniv = $value['anniv'];
 //		if ($anniv==0) $return .= '<a name="-1">&nbsp;</a>';
 		if ($anniv==0) $return .= '&nbsp;';
 //		else $return .= "<a name=\"{$anniv}\">{$anniv}</a>";
 		else $return .= $anniv;
-		$return .= "</td>";
+		$return .= '</td>';
 		//-- Event name
-		$return .= "<td class=\"list_value_wrap\">";
-		$return .= "<a href=\"".$value['url']."\" class=\"list_item\">".WT_Gedcom_Tag::getLabel($value['fact'])."</a>";
-		$return .= "&nbsp;</td>";
+		$return .= '<td class="list_value_wrap">';
+		$return .= '<a href="'.$value['url'].'" class="list_item">'.WT_Gedcom_Tag::getLabel($value['fact']).'</a>';
+		$return .= '&nbsp;</td>';
 
-		$return .= "</tr>";
+		$return .= '</tr>'."\n";
 	}
 
 	if ($output!=0) {
 		//-- table footer
-		$return .= "</tbody><tfoot><tr class=\"sortbottom\">";
-		$return .= "<td class=\"list_label\">";
-		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents')."</label><br />";
-		$return .= "</td><td class=\"list_label\" colspan=\"3\">";
+		$return .= '</tbody><tfoot><tr class="sortbottom">';
+		$return .= '<td class="list_label">';
+		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents').'</label><br />';
+		$return .= '</td><td class="list_label" colspan="3">';
 		$return .= WT_I18N::translate('Total events').": ".$output;
-		$return .= "</td>";
-		$return .= "</tr></tfoot>";
-		$return .= "</table>";
+		$return .= '</td>';
+		$return .= '</tr></tfoot>';
+		$return .= '</table>';
 	}
 
 	// Print a final summary message about restricted/filtered facts
@@ -1719,7 +1719,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		}
 	}
 	if ($summary!="") {
-		$return .= "<b>". $summary. "</b>";
+		$return .= '<strong>'. $summary. '</strong>';
 	}
 
 	return $return;
