@@ -676,10 +676,6 @@ function import_record($gedrec, $ged_id, $update) {
 		break;
 	}
 
-	// Just in case the admin has blocked themself from seeing names!
-	$record->disp=true;
-	$record->dispname=true;
-
 	// Update the cross-reference/index tables.
 	update_places($xref, $ged_id, $gedrec);
 	update_dates ($xref, $ged_id, $gedrec);
