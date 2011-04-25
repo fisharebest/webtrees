@@ -80,33 +80,27 @@ if (WT_USE_LIGHTBOX) {
 }
 // ------------------------------------------------------------------------------------------------------------------------------
 
-if ($pid1) {
-	//-- check if the id is valid
-	$person=WT_Person::getInstance($pid1);
-	if ($person) {
-		$title_string.=':<br />'.$person->getFullName();
-		$pid1=$person->getXref(); // i1 => I1
-	} else {
-		$pid1='';
-	}
-	if (!empty($_SESSION["pid1"]) && $_SESSION["pid1"]!=$pid1) {
-		unset($_SESSION["relationships"]);
-		$path_to_find=0;
-	}
+$person1=WT_Person::getInstance($pid1);
+if ($person1) {
+	$title_string.=':<br />'.$person1->getFullName();
+	$pid1=$person1->getXref(); // i1 => I1
+} else {
+	$pid1='';
 }
-if ($pid2) {
-	//-- check if the id is valid
-	$person=WT_Person::getInstance($pid2);
-	if ($person) {
-		$title_string.=' '.WT_I18N::translate('and').' '.$person->getFullName();
-		$pid2=$person->getXref(); // i2 => I2
-	} else {
-		$pid2='';
-	}
-	if (!empty($_SESSION["pid2"]) && $_SESSION["pid2"]!=$pid2) {
-		unset($_SESSION["relationships"]);
-		$path_to_find=0;
-	}
+if (!empty($_SESSION["pid1"]) && $_SESSION["pid1"]!=$pid1) {
+	unset($_SESSION["relationships"]);
+	$path_to_find=0;
+}
+$person2=WT_Person::getInstance($pid2);
+if ($person2) {
+	$title_string.=' '.WT_I18N::translate('and').' '.$person2->getFullName();
+	$pid2=$person2->getXref(); // i2 => I2
+} else {
+	$pid2='';
+}
+if (!empty($_SESSION["pid2"]) && $_SESSION["pid2"]!=$pid2) {
+	unset($_SESSION["relationships"]);
+	$path_to_find=0;
 }
 ?>
 <script type="text/javascript">
@@ -212,12 +206,8 @@ function paste_id(value) {
 		if (($new_path)&&($path_to_find<$i+1)&&($check_node)) echo " | <span class=\"error\">".($i+1)."</span>";
 		echo "</td>";
 	} else {
-		if ((!empty($pid1))&&(!empty($pid2))) {
-			if ((!canDisplayRecord(WT_GED_ID, find_gedcom_record($pid1, WT_GED_ID)))&&(!showLivingNameById($pid1, WT_GED_ID))) {
-				$disp = false;
-			} elseif (!canDisplayRecord(WT_GED_ID, find_gedcom_record($pid2, WT_GED_ID))&&(!showLivingNameById($pid2, WT_GED_ID))) {
-				$disp = false;
-			}
+		if ($person1 && $person2) {
+			$disp=$person1->canDisplayName() && $person2->canDisplayName();
 			if ($disp) {
 				echo WT_I18N::translate('Show path'), ": </td>";
 				echo "<td class=\"optionbox\">";
@@ -248,7 +238,7 @@ function paste_id(value) {
 	echo " onclick=\"document.people.path_to_find.value='-1';\""; ?> />
 	</td>
 	<?php
-	if ((!empty($pid1))&&(!empty($pid2))&&($disp)) {
+	if ($person1 && $person2 && $disp) {
 		echo "</tr><tr>";
 		if (($disp)&&(!$check_node)) {
 			echo "<td class=\"topbottombar wrap vmiddle center\" colspan=\"2\">";
