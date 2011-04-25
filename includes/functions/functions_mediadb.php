@@ -428,13 +428,8 @@ function filterMedia($media, $filter, $acceptExt) {
 		$acceptExt = "";
 
 	//-- Check Privacy first.  No point in proceeding if Privacy says "don't show"
-	$links = $media["LINKS"];
-	if (count($links) != 0) {
-		foreach ($links as $id => $type) {
-			if (!canDisplayRecord(WT_GED_ID, find_gedcom_record($id, WT_GED_ID))) {
-				return false;
-			}
-		}
+	if (!WT_Media::getInstance($media["XREF"])->canDisplayDetails()) {
+		return false;
 	}
 
 	//-- Accept when filter string contained in Media item's id
@@ -471,7 +466,7 @@ function filterMedia($media, $filter, $acceptExt) {
 
 	//-- Accept when filter string contained in name of any item
 	//-- this Media item is linked to.  (Privacy already checked)
-	foreach ($links as $id=>$type) {
+	foreach ($media['LINKS'] as $id=>$type) {
 		$record=WT_GedcomRecord::getInstance($id);
 		foreach ($record->getAllNames() as $name) {
 			if (strpos(utf8_strtoupper($name['full']), $filter)!==false) {
