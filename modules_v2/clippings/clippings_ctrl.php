@@ -403,8 +403,8 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		if (!self::id_in_cart($clipping['id'])) {
 			$clipping['gedcom'] = $GEDCOM;
 			$ged_id=get_id_from_gedcom($GEDCOM);
-			$gedrec=find_gedcom_record($clipping['id'], $ged_id);
-			if (showLivingNameById($clipping['id'], $ged_id)) {
+			$gedrec=WT_GedcomRecord::getInstance($clipping['id']);
+			if ($gedrec->canDisplayName()) {
 				$cart[] = $clipping;
 				$this->addCount++;
 			} else {
@@ -413,8 +413,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			}
 			//-- look in the gedcom record for any linked SOUR, NOTE, or OBJE and also add them to the
 			//- clippings cart
-			$gedrec = find_gedcom_record($clipping['id'], WT_GED_ID);
-			$st = preg_match_all("/\d SOUR @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
+			$st = preg_match_all("/\d SOUR @(.*)@/", $gedrec->getGedcomRecord(), $match, PREG_SET_ORDER);
 			for ($i = 0; $i < $st; $i++) {
 				// add SOUR
 				$this->add_clipping(WT_Source::getInstance($match[$i][1]));
@@ -425,12 +424,12 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 					$this->add_clipping(WT_Repository::getInstance($rmatch[$j][1]));
 				}
 			}
-			$nt = preg_match_all("/\d NOTE @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
+			$nt = preg_match_all("/\d NOTE @(.*)@/", $gedrec->getGedcomRecord(), $match, PREG_SET_ORDER);
 			for ($i = 0; $i < $nt; $i++) {
 				$this->add_clipping(WT_Note::getInstance($match[$i][1]));
 			}
 			if ($MULTI_MEDIA) {
-				$nt = preg_match_all("/\d OBJE @(.*)@/", $gedrec, $match, PREG_SET_ORDER);
+				$nt = preg_match_all("/\d OBJE @(.*)@/", $gedrec->getGedcomRecord(), $match, PREG_SET_ORDER);
 				for ($i = 0; $i < $nt; $i++) {
 					$this->add_clipping(WT_Media::getInstance($match[$i][1]));
 				}
