@@ -165,7 +165,7 @@ if ($build == "yes") {
 			// Display when user has Edit rights or when object belongs to current GEDCOM
 			$disp = WT_USER_CAN_EDIT || $media["GEDFILE"]==WT_GED_ID;
 			// Display when Media objects aren't restricted by global privacy
-			$disp &= canDisplayRecord($media["GEDFILE"], $media["GEDCOM"]);
+			$disp &= WT_Media::getInstance($media["XREF"])->canDisplayDetails();
 			// Display when this Media object isn't restricted
 			$disp &= canDisplayFact($media["XREF"], $media["GEDFILE"], $media["GEDCOM"]);
 		if (!$disp) unset($medialist[$key]);
