@@ -122,7 +122,7 @@ echo '<div id="sidebarAccordion">';
 		if (isset($controller)) $mod->setController($controller);
 		if ($mod->hasSidebarContent()) {
 			?>
-			<h3 title="<?php echo $mod->getName(); ?>"><a href="#"><?php echo $mod->getTitle(); ?></a></h3>
+			<h3 title="<?php echo $mod->getName(); ?>"><a href="#"><?php echo '<span title="', $mod->getTitle(), '">', $mod->getTitle(), '</span>'; ?></a></h3>
 			<div id="sb_content_<?php echo $mod->getName(); ?>">
 			<?php  echo $mod->getSidebarContent();?>
 			</div>
