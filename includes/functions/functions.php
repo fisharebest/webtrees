@@ -874,7 +874,8 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 		->fetchAll(PDO::FETCH_NUM);
 
 	foreach ($media as $i=>$row) {
-		if (canDisplayRecord($ged_id, $row[2]) && canDisplayFact($row[0], $ged_id, $row[3])) {
+		$obj=WT_Media::getInstance($row[0]);
+		if ($obj->canDisplayDetails() && canDisplayFact($row[0], $ged_id, $row[3])) {
 			$level=0;
 			$ct = preg_match("/(\d+) OBJE/", $row[3], $match);
 			if ($ct>0) {
