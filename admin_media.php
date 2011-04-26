@@ -1067,7 +1067,7 @@ echo WT_JS_START; ?>
 	});
 <?php echo WT_JS_END;?>
 
-<form class="tablesorter" method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 		<table id="media_table">
 			<thead>
 				<tr>

@@ -88,6 +88,8 @@ $WT_IMAGES['button_source'] = WT_THEME_DIR.'images/buttons/source.gif';
 $WT_IMAGES['button_note'] = WT_THEME_DIR.'images/buttons/note.gif';
 $WT_IMAGES['button_head'] = WT_THEME_DIR.'images/buttons/head.gif';
 $WT_IMAGES['button_find_facts'] = WT_THEME_DIR.'images/buttons/find_facts.png';
+$WT_IMAGES['button_indi'] = WT_THEME_DIR.'images/buttons/indi.gif';
+$WT_IMAGES['button_family'] = WT_THEME_DIR.'images/buttons/family.gif';
 
 // Media images - use common/default ones - not all these exist
 $WT_IMAGES['media_audio'] = WT_THEME_DIR.'images/media/audio.png';

@@ -7,7 +7,9 @@
 // Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
-// Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+// Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
+//
+// Sidebar controls courtesy of http://devheart.org/articles/jquery-collapsible-sidebar-layout/
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -60,8 +62,7 @@ $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
 
 ?>
 
-<script type="text/javascript">
-// <![CDATA[
+<?php echo WT_JS_START;?>
 // javascript function to open a window with the raw gedcom in it
 function show_gedcom_record(shownew) {
 	fromfile="";
@@ -74,8 +75,11 @@ function showchanges() {
 }
 <?php } ?>
 
+jQuery('#main').addClass('use-sidebar'); // Show
+jQuery('#main').removeClass('use-sidebar'); // Hide
+jQuery('#main').toggleClass('use-sidebar'); // Toggle
+
 var tabCache = new Array();
-var pinned = false;
 
 jQuery(document).ready(function() {
 	// TODO: change images directory when the common images will be deleted.
@@ -93,15 +97,61 @@ jQuery(document).ready(function() {
 	?>
 	});
 });
-//]]>
-</script>
 
-<div id="indi_main_blocks">
-	<?php
-		if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) echo "<b>", WT_I18N::translate('Changes successfully accepted into database'), "</b><br />";
-		if ($controller->indi->isMarkedDeleted()) echo "<span class=\"error\">".WT_I18N::translate('This record has been marked for deletion upon admin approval.')."</span>";
-		if (strlen($controller->indi->getAddName()) > 0) echo "<span class=\"name_head\">", PrintReady($controller->indi->getAddName()), "</span><br />";
-	?>
+jQuery(document).ready(function(){
+
+	// Variables
+	var objMain			= jQuery('#main');
+	var objTabs			= jQuery('#tabs');
+	var objBar			= jQuery('#sidebar');
+	var objSeparator	= jQuery('#separator');
+	
+	// Show sidebar
+	function showSidebar(){
+		objMain.addClass('use-sidebar');
+		objSeparator.css('height', objBar.outerHeight() + 'px');
+		jQuery.cookie('sidebar-pref', 'use-sidebar', { expires: 30 });
+	}
+
+	// Hide sidebar
+	function hideSidebar(){
+		objMain.removeClass('use-sidebar');
+		objSeparator.css('height', objTabs.outerHeight() + 'px');
+		jQuery.cookie('sidebar-pref', null, { expires: 30 });
+	}
+
+	// Sidebar separator
+	objSeparator.click(function(e){
+		e.preventDefault();
+		if ( objMain.hasClass('use-sidebar') ){
+			hideSidebar();
+		}
+		else {
+			showSidebar();
+		}
+	});
+;
+
+	// Load preference
+	if ( jQuery.cookie('sidebar-pref') == null ){
+		objMain.removeClass('use-sidebar');
+		objSeparator.css('height', objTabs.outerHeight() + 'px');
+	} else {
+		objSeparator.css('height', objBar.outerHeight() + 'px');
+	}
+	
+});
+
+<?php
+echo WT_JS_END;
+
+// ===================================== header area =======================================
+if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) echo "<b>", WT_I18N::translate('Changes successfully accepted into database'), "</b><br />";
+if ($controller->indi->isMarkedDeleted()) echo "<span class=\"error\">".WT_I18N::translate('This record has been marked for deletion upon admin approval.')."</span>";
+if (strlen($controller->indi->getAddName()) > 0) echo "<span class=\"name_head\">", PrintReady($controller->indi->getAddName()), "</span><br />";
+
+echo '<div id="main" class="use-sidebar sidebar-at-right">'; //overall page container
+?>
 	<div id="indi_header">
 		<h1><?php
 				if ($TEXT_DIRECTION=="rtl") echo "&nbsp;"; {
@@ -180,48 +230,26 @@ jQuery(document).ready(function() {
 			}
 		?>
 	</div>
-
+	
 <?php
+// ===================================== main content tabs
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
 }
-?>
-<?php
-	$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
-?>
-</div>
-<?php
-if (!$controller->indi->canDisplayDetails()) {
-	echo "<table><tr><td class=\"facts_value\" >";
-	print_privacy_error();
-	echo "</td></tr></table>";
-} else {
-	require './sidebar.php';
-
-	// Initially hide the sidebar controls & pin ======
-	?>
-	<script type="text/javascript">
-		jQuery('#sidebar_controls').hide();
-		jQuery('#sidebar_pin').hide();
-	</script>
-	<?php
-	// =====================================
-
-	echo '<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">';
-	echo '<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">';
+$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
+	echo '<div id="tabs" >';
+	echo '<ul>';
 	foreach ($controller->tabs as $tab) {
 		if ($tab->hasTabContent()) {
-			// jQuery UI uses the title attribute to link named tabs to content-divs.
-			// Unfortunately, this shows in a tool-tip.  How to improve this?
 			if ($tab->getName()==$controller->default_tab) {
 				// Default tab loads immediately
-				echo '<li class="ui-state-default ui-corner-top ui-tabs-selected"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
+				echo '<li><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
 			} elseif ($tab->canLoadAjax()) {
 				// AJAX tabs load later
-				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="',$controller->indi->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
+				echo '<li><a title="', $tab->getName(), '" href="',$controller->indi->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
 			} else {
 				// Non-AJAX tabs load immediately (search engines don't load ajax)
-				echo '<li class="ui-state-default ui-corner-top"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
+				echo '<li><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
 			}
 			echo '<span title="', $tab->getTitle(), '">', $tab->getTitle(), '</span></a></li>';
 		}
@@ -230,21 +258,34 @@ if (!$controller->indi->canDisplayDetails()) {
 	foreach ($controller->tabs as $tab) {
 		if ($tab->hasTabContent()) {
 			if ($tab->getName()==$controller->default_tab || !$tab->canLoadAjax()) {
-				echo '<div id="', $tab->getName(), '" class="ui-tabs-panel ui-widget-content ui-corner-bottom">';
+				echo '<div id="', $tab->getName(), '">';
 				echo $tab->getTabContent();
 				echo '</div>';
 			}
 		}
-	} ?>
-	</div> <!-- tabs -->
-	<?php
-}
+	}
+	echo '</div>'; // close #tabs 
 
-echo WT_JS_START;
-echo 'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}';
-echo 'if (typeof toggleByClassName == "undefined") {';
-echo 'alert("webtrees.js: A javascript function is missing.  Please clear your Web browser cache");';
-echo '}';
-echo WT_JS_END;
+// ===================================== sidebar area
+	echo '<div id="sidebar">'; // sidebar code
+	if (!$controller->indi->canDisplayDetails()) {
+		echo "<table><tr><td class=\"facts_value\" >";
+		print_privacy_error();
+		echo "</td></tr></table>";
+	} else {
+		require './sidebar.php';
+	}
+echo
+	'</div>',  // close #sidebar
+	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></a>'; //clickable element to open/close sidebar
+
+// =======================================footer and other items 
+echo '</div>', // close #main
+		WT_JS_START,
+		'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}',
+		'if (typeof toggleByClassName == "undefined") {',
+		'alert("webtrees.js: A javascript function is missing.  Please clear your Web browser cache");',
+		'}',
+		WT_JS_END;
 
 print_footer();

@@ -448,10 +448,9 @@ function print_header($title, $view='full') {
 	$javascript=
 		'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>'.
 		'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>'.
-		'<script type="text/javascript" src="js/jquery/jquery.tablesorter.js"></script>'. // Deprecated - use datatables
-		'<script type="text/javascript" src="js/jquery/jquery.tablesorter.pager.js"></script>'. // Deprecated - use datatables
 		'<script type="text/javascript" src="js/jquery/jquery.jeditable.min.js"></script>'.
 		'<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>'.
+		'<script type="text/javascript" src="js/jquery/jquery.cookie.js"></script>'.
 		WT_JS_START.'
 		// Give JavaScript access to some PHP constants
 		var WT_THEME_DIR   = "'.WT_THEME_DIR.'";

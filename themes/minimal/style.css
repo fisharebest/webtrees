@@ -437,7 +437,6 @@ table.center{
 .details1 {
 	font: normal 10px tahoma, arial, helvetica, sans-serif;
 }
-
 .name2 {
 	color: black;
 	font: bold 12px tahoma, arial, helvetica, sans-serif;
@@ -1372,6 +1371,7 @@ dd {
 	vertical-align:	top;
 	float: 			left;
 }
+html[dir='rtl'] #indi_mainimage {float:right;}
 
 #indi_name_details {
 	vertical-align:	top;
@@ -1379,6 +1379,7 @@ dd {
 	margin: 10px 0 0 0;
 	width: 85%;
 }
+html[dir='rtl'] #indi_name_details {float:right;}
 
 #indi_name_details a {
 	color: #333377;
@@ -1395,10 +1396,12 @@ dd {
 	margin-right: 20px;
 	max-width:50%;
 }
+html[dir='rtl'] #nameparts1  {float:right; margin-left:20px;}
 
 #nameparts2, #nameparts3, #nameparts4, #nameparts5, #nameparts6  {
 	clear: left;
 }
+html[dir='rtl'] #nameparts2 {clear:right;}
 
 #name1 {
 	line-height: 1;
@@ -1410,62 +1413,16 @@ dd {
 	padding: 0 15px 0 0;
 	width: 45%;
 }
+html[dir='rtl'] #indi_facts {float:right; padding: 0 0 0 15px;}
 
-#sex, #mainfacts {
+#mainfacts {
 	vertical-align:	top;
 }
 
 #hitcounter {
-	display: block;
+	clear: left;
 	margin-bottom:10px;
 	padding-left: 10px;
-}
-/* =================================== */
-
-/* tables for Module Admin tab */
-table.tablesorter {
-	margin:5px 0pt 15px;
-	width: 100%;
-	text-align: left;
-	font-family:tahoma,arial,helvetica,sans-serif;
-	font-size:12px;
-}
-table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-	border: 1px solid #000;
-	padding: 4px;
-}
-table.tablesorter thead tr .header {
-	background-image: url(images/jquery/bg.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-	font-size:11px;
-	padding-right:20px;
-	white-space:nowrap;
-	cursor: pointer;
-}
-table.tablesorter tbody td {
-	padding: 4px;
-	vertical-align: top;
-}
-table.tablesorter tbody tr.odd td {
-	background-color:#DDD;
-}
-table.tablesorter thead tr .headerSortUp {
-	background-image: url(images/jquery/asc.gif);
-}
-table.tablesorter thead tr .headerSortDown {
-	background-image: url(images/jquery/desc.gif);
-}
-table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-	background-color: #DDD;
-}
-div.pager {
-	margin-top: -20px;
-	text-align: left;
-}
-div.pager input {
-	width: 50px;
-	text-align: center;
 }
 
 /* styles for FindFacts pop-up */
@@ -1587,3 +1544,20 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink , html[dir='rtl'] .deleteli
 .logo {
 	text-align: center;
 }
+
+/* ========= Sidebar ============== */
+#tabs,#sidebar {border: 1px solid;}
+#sidebar {background-color:#DEF; border-color:#BCD; display:none; margin:0 2px 0 !important; height:auto !important; position:relative !important;}
+html[dir='rtl'] #sidebar  {margin:0 0 0 2px !important;}
+#tabs {background-color: #EFE; border-color: #CDC; width:98%;}
+.use-sidebar #tabs {	width: 77%;}
+.use-sidebar #sidebar {display: block;}
+.sidebar-at-right #sidebar {	width:20%;}
+.use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float: right;}
+html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
+.sidebar-at-right #tabs {float: left;}
+html[dir='rtl'] .sidebar-at-right #tabs {float: right;}
+#separator {	display: block; background: #DDD url('images/indi_sprite.png') no-repeat -26px 100px; width: 10px; border: 1px solid #888; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
+html[dir='rtl'] #separator { background: #DDD url('images/indi_sprite.png') no-repeat -1px 100px;}
+.use-sidebar #separator { background: #DDD url('images/indi_sprite.png') no-repeat -1px 100px;}
+html[dir='rtl'] .use-sidebar #separator {background: #DDD url('images/indi_sprite.png') no-repeat -26px 100px;}

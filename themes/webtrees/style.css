@@ -169,7 +169,7 @@ table.center {
 }
 
 .facts_table, .facts_table_rtl {
-	width: 99%;
+	width: 100%;
 }
 
 .facts_label {
@@ -318,9 +318,6 @@ a:hover .nameZoom {
 	font: bold 14px tahoma, arial, helvetica, sans-serif;
 }
 
-.details1 {
-	font: normal 10px tahoma, arial, helvetica, sans-serif;
-}
 
 .name2 {
 	color: #333;
@@ -384,7 +381,6 @@ a:hover .nameZoom {
 
 .indent {
 	padding-left: 7px;
-/*	position: absolute;*/
 }
 
 .indent_rtl {
@@ -437,11 +433,6 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	padding-left: 5pt;
 	padding-right: 0pt;
 }
-
-/*.link {
-	font-size: 11px;
-	text-align: center;
-}*/
 
 .sublinks_table {
 	border: solid #81a9cb 1px;
@@ -1438,10 +1429,11 @@ dd {
 }
 
 #indi_mainimage {
-	margin-right:	15px;
-	vertical-align:	top;
-	float: 			left;
+	margin-right:15px;
+	vertical-align:top;
+	float: left;
 }
+html[dir='rtl'] #indi_mainimage {float:right;}
 
 #indi_name_details {
 	vertical-align:	top;
@@ -1449,6 +1441,7 @@ dd {
 	margin: 10px 0 0 0;
 	width: 85%;
 }
+html[dir='rtl'] #indi_name_details {float:right;}
 
 #indi_name_details a {
 	color: #333377;
@@ -1465,10 +1458,12 @@ dd {
 	margin-right: 20px;
 	max-width:50%;
 }
+html[dir='rtl'] #nameparts1  {float:right; margin-left:20px;}
 
 #nameparts2, #nameparts3, #nameparts4, #nameparts5, #nameparts6  {
 	clear: left;
 }
+html[dir='rtl'] #nameparts2 {clear:right;}
 
 #name1 {
 	line-height:	1.6;
@@ -1480,63 +1475,18 @@ dd {
 	padding: 0 15px 0 0;
 	width: 45%;
 }
+html[dir='rtl'] #indi_facts {float:right; padding: 0 0 0 15px;}
 
 #sex {
 	margin-top: 3px;
 }
 
 #hitcounter {
-	display: block;
+	clear: left;
 	margin-bottom:10px;
 	padding-left: 10px;
 }
-/* =================================== */
-
-/* tables for Module Admin tab */
-table.tablesorter {
-	background-color: #E0E0E0;
-	margin:5px 0pt 15px;
-	width: 100%;
-	text-align: left;
-}
-table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-	background-color: #E7EEF3;
-	border: 1px solid #FFF;
-	padding: 4px;
-}
-table.tablesorter thead tr .header {
-	background-image: url(images/jquery/bg.gif);
-	background-repeat: no-repeat;
-	background-position: center right;
-	padding-right:20px;
-	white-space:nowrap;
-	cursor: pointer;
-}
-table.tablesorter tbody td {
-	color: #3D3D3D;
-	padding: 4px;
-	vertical-align: top;
-}
-table.tablesorter tbody tr.odd td {
-	background-color:#E7EEF3;
-}
-table.tablesorter thead tr .headerSortUp {
-	background-image: url(images/jquery/asc.gif);
-}
-table.tablesorter thead tr .headerSortDown {
-	background-image: url(images/jquery/desc.gif);
-}
-table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
-	background-color: #8dbdd8;
-}
-div.pager {
-	margin-top: -20px;
-	text-align: left;
-}
-div.pager input {
-	width: 50px;
-	text-align: center;
-}
+html[dir='rtl'] #hitcounter {clear: right;}
 
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {
@@ -1748,3 +1698,20 @@ html[dir='rtl'] .deletelink {
 	margin-left:5%;
 	width:92.5%;
 }
+
+/* ========= Sidebar ============== */
+#tabs,#sidebar {border: 1px solid;}
+#sidebar {background-color:#DEF; border-color:#BCD; display:none; margin:0 2px 0 !important; height:auto !important; position:relative !important;}
+html[dir='rtl'] #sidebar  {margin:0 0 0 2px !important;}
+#tabs {background-color: #EFE; border-color: #CDC; width:98%;}
+.use-sidebar #tabs {	width: 77%;}
+.use-sidebar #sidebar {display: block;}
+.sidebar-at-right #sidebar {	width:20%;}
+.use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float: right;}
+html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
+.sidebar-at-right #tabs {float: left;}
+html[dir='rtl'] .sidebar-at-right #tabs {float: right;}
+#separator {	display: block; background: #99c2ff url('images/indi_sprite.png') no-repeat -26px 100px; width: 10px; border: 1px solid #81a9cb; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
+html[dir='rtl'] #separator { background: #99c2ff url('images/indi_sprite.png') no-repeat -1px 100px;}
+.use-sidebar #separator { background: #99c2ff url('images/indi_sprite.png') no-repeat -1px 100px;}
+html[dir='rtl'] .use-sidebar #separator {background: #99c2ff url('images/indi_sprite.png') no-repeat -26px 100px;}

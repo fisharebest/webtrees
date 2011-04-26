@@ -108,7 +108,7 @@ print_header(WT_I18N::translate('Module administration'));
 	<div id="tabs">
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 			<input type="hidden" name="action" value="update_mods" />
-			<table id="installed_table" class="tablesorter" border="0" cellpadding="0" cellspacing="1">
+			<table id="installed_table" border="0" cellpadding="0" cellspacing="1">
 				<thead>
 					<tr>
 					<th><?php echo WT_I18N::translate('Enabled'); ?></th>
