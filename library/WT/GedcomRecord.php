@@ -35,8 +35,7 @@ class WT_GedcomRecord {
 	protected $gedrec     =null;  // Raw gedcom text (privatised)
 	protected $facts      =null;
 	protected $changeEvent=null;
-	public    $disp       =true;  // Can we display details of this object
-	public    $dispname   =true;  // Can we display the name of this object
+	private   $disp       =null;  // Can we display details of this object
 	private   $changed    =false; // Is this a new record, pending approval
 
 	// Cached results from various functions.
@@ -63,7 +62,6 @@ class WT_GedcomRecord {
 		}
 
 		//-- set the gedcom record a privatized version
-		$this->disp  =canDisplayRecord($this->ged_id, $this->gedrec);
 		$this->gedrec=privatize_gedcom($this->ged_id, $this->gedrec);
 	}
 
@@ -288,20 +286,17 @@ class WT_GedcomRecord {
 		return $tmp==='';
 	}
 
-	/**
-	* Can the details of this record be shown?
-	* @return boolean
-	*/
+	// Can the details of this record be shown?
 	public function canDisplayDetails() {
+		if ($this->disp===null) {
+			$this->disp=canDisplayRecord($this->ged_id, $this->gedrec);
+		}
 		return $this->disp;
 	}
 
-	/**
-	* Can the name of this record be shown?
-	* @return boolean
-	*/
+	// Can the name of this record be shown?
 	public function canDisplayName() {
-		return $this->dispname;
+		return $this->canDisplayDetails();
 	}
 
 	// Can we edit this record?
