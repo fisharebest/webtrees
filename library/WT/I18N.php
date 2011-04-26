@@ -146,6 +146,9 @@ class WT_I18N {
 		self::$locale=$locale;
 		self::$dir=$TEXT_DIRECTION;
 
+		// I18N: This is a space separated list of initial letters for lists of names, etc.  Multi-letter characters are OK, e.g. "A B C CS D DZ DZS E F G GY H ..."  You may use upper/lowers case, such as "D Dz Dzs".
+		self::$alphabet=WT_I18N::translate('A B C D E F G H I J K L M N O P Q R S T U V W X Y Z');
+
 		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 		self::$collation=WT_I18N::translate('utf8_unicode_ci');
 
