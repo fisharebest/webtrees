@@ -36,7 +36,6 @@ class WT_GedcomRecord {
 	protected $facts      =null;
 	protected $changeEvent=null;
 	public    $disp       =true;  // Can we display details of this object
-	private   $can_edit   =null;
 	public    $dispname   =true;  // Can we display the name of this object
 	private   $changed    =false; // Is this a new record, pending approval
 
@@ -307,14 +306,11 @@ class WT_GedcomRecord {
 
 	// Can we edit this record?
 	public function canEdit() {
-		if ($this->can_edit===null) {
-			$this->can_edit=
-				get_gedcom_setting($this->ged_id, 'ALLOW_EDIT_GEDCOM') && (
-					WT_USER_GEDCOM_ADMIN ||
-					WT_USER_CAN_EDIT && strpos($this->gedrec, "\n1 RESN locked")===false
-				);
-		}
-		return  $this->can_edit;
+		return
+			get_gedcom_setting($this->ged_id, 'ALLOW_EDIT_GEDCOM') && (
+				WT_USER_GEDCOM_ADMIN ||
+				WT_USER_CAN_EDIT && strpos($this->gedrec, "\n1 RESN locked")===false
+			);
 	}
 
 	// Convert a name record into sortable and listable versions.  This default
