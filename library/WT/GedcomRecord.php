@@ -498,54 +498,23 @@ class WT_GedcomRecord {
 	}
 
 	// Get the three variants of the name
-	// luk
 	public function getFullName() {
 		if ($this->canDisplayName()) {
 			$tmp=$this->getAllNames();
-			if (isset($tmp[1]['full']) && $tmp[1]['type']=='_MARNM') {
-				$name = $tmp[$this->getPrimaryName()]['full'];
-				$surname = substr($name, strRpos($name, ' '));
-				$givname = substr($name, 0, strRpos($name, ' '));
-				$m_name = $tmp[1]['full'];
-				$m_givname = substr($m_name, 0, strRpos($m_name, ' '));
-				return str_replace($m_givname, $givname, $m_name).' ('.WT_I18N::translate('zd.').$surname.')';
-			} else {
-				return $tmp[$this->getPrimaryName()]['full'];
-			}
+			return $tmp[$this->getPrimaryName()]['full'];
 		} else {
 			return WT_I18N::translate('Private');
 		}
 	}
-	// luk
 	public function getSortName() {
 		// The sortable name is never displayed, no need to call canDisplayName()
 		$tmp=$this->getAllNames();
 		return $tmp[$this->getPrimaryName()]['sort'];
-		if (isset($tmp[1]['sort']) && $tmp[1]['type']=='_MARNM') {
-			$name = $tmp[$this->getPrimaryName()]['sort'];
-			$surname = substr($name, strRpos($name, ' '));
-			$givname = substr($name, 0, strRpos($name, ' '));
-			$m_name = $tmp[1]['sort'];
-			$m_givname = substr($m_name, 0, strRpos($m_name, ' '));
-			return str_replace($m_givname, $givname, $m_name).' ('.WT_I18N::translate('zd.').$surname.')';
-		} else {
-			return $tmp[$this->getPrimaryName()]['sort'];
-		}
 	}
-	// luk
 	public function getListName() {
 		if ($this->canDisplayName()) {
 			$tmp=$this->getAllNames();
-			if (isset($tmp[1]['list']) && $tmp[1]['type']=='_MARNM') {
-				$name = $tmp[$this->getPrimaryName()]['list'];
-				$surname = substr($name, 0, strRpos($name, ' '));
-				$givname = substr($name, strRpos($name, ' '));
-				$m_name = $tmp[1]['list'];
-				$m_givname = substr($m_name, strRpos($m_name, ' '));
-				return str_replace($m_givname, $givname, $m_name).' ('.WT_I18N::translate('zd.').' '.$surname.')';
-			} else {
-				return $tmp[$this->getPrimaryName()]['list'];
-			}
+			return $tmp[$this->getPrimaryName()]['list'];
 		} else {
 			return WT_I18N::translate('Private');
 		}
@@ -573,9 +542,9 @@ class WT_GedcomRecord {
 		if ($find) {
 			$html.=' onclick="pasteid(\''.$this->getXref().'\');"';
 		}
-		$html.=' class="list_item"><b>'.$name.'</b></a>';
+		$html.=' class="list_item"><b>'.$name.'</b>';
 		$html.=$this->format_list_details();
-		$html='<'.$tag.'>'.$html.'</'.$tag.'>';
+		$html='<'.$tag.'>'.$html.'</a></'.$tag.'>';
 		return $html;
 	}
 

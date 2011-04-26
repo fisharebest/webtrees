@@ -50,8 +50,6 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 	public function getReportMenus() {
 		global $controller;
 
-		require_once WT_ROOT.WT_MODULES_DIR.$this->getName().'/class_pedigree.php';
-	
 		if ($controller && isset($controller->pid)) {
 			$pid='&amp;pid='.$controller->pid;
 		} elseif ($controller && isset($controller->rootid)) {
@@ -64,11 +62,6 @@ class pedigree_report_WT_Module extends WT_Module implements WT_Module_Report {
 		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml'.$pid);
 		$menu->addIcon('pedigree');
 		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reports');
-		$menus[]=$menu;
-
-		$menu=new WT_Menu($this->getTitle().' - '.WT_I18N::translate('Single page'), 'reportengine.php?ged='.urlencode(WT_GEDCOM).'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report_singlepage.xml'.$pid);
-		$menu->addClass("submenuitem", "submenuitem_hover", "submenu", "icon_small_reports");
-		$menu->addIcon('pedigree');
 		$menus[]=$menu;
 
 		return $menus;

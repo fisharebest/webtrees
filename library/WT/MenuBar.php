@@ -408,16 +408,16 @@ class WT_MenuBar {
 
 		// Build a list of submenu items and then sort it in localized name order
 		$menuList=array(
-			'indilist.php'  =>WT_I18N::translate('Individuals'),
-			'famlist.php'   =>WT_I18N::translate('Families'),
 			'branches.php'  =>WT_I18N::translate('Branches'),
-			'sourcelist.php'=>WT_I18N::translate('Sources'),
+			'famlist.php'   =>WT_I18N::translate('Families'),
+			'indilist.php'  =>WT_I18N::translate('Individuals'),
+			'medialist.php' =>WT_I18N::translate('Multimedia'),
+			'placelist.php' =>WT_I18N::translate('Place hierarchy'),
 			'repolist.php'  =>WT_I18N::translate('Repositories'),
 			'notelist.php'  =>WT_I18N::translate('Shared notes'),
-			'placelist.php' =>WT_I18N::translate('Place hierarchy'),
-			'medialist.php' =>WT_I18N::translate('Multimedia')
+			'sourcelist.php'=>WT_I18N::translate('Sources')
 		);
-		//asort($menuList);
+		asort($menuList);
 
 		foreach ($menuList as $page=>$name) {
 			$link=$page.'?ged='.WT_GEDURL;

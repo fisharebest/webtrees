@@ -193,11 +193,10 @@ function print_indi_table($datalist, $legend="", $option="") {
 				$sex_image=$person->getSexImage();
 				list($surn, $givn)=explode(',', $name['sort']);
 			} else {
-				// luk
-				$class='list_item details2';
+				$class='list_item';
 				$sex_image='';
 			}
-			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', PrintReady(str_replace(', ', ' ', $name['list'])), '</a>', $sex_image, '<br/>';
+			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', PrintReady($name['list']), '</a>', $sex_image, '<br/>';
 		}
 		// Indi parents
 		echo $person->getPrimaryParentsNames("parents_$table_id details1", 'none');
@@ -1634,8 +1633,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$name = $value['name'];
 		if ($value['record']->getType()=="FAM") {
 			$exp = explode("<br />", $name);
-			// luk
-			//$exp = explode(" + ", $name);
 			$husb = $value['record']->getHusband();
 			if ($husb) $exp[0] .= $husb->getPrimaryParentsNames("parents_$table_id details1", "none");
 			$wife = $value['record']->getWife();
