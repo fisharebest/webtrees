@@ -148,24 +148,11 @@ function gedcom_header($gedfile) {
 	return $HEAD.$SOUR.$DEST.$DATE.$GEDC.$CHAR.$FILE.$COPR.$LANG.$PLAC.$SUBN.$SUBM."\n";
 }
 
-/**
- * remove any custom webtrees tags from the given gedcom record
- * custom tags include _WT_USER and _THUM
- * @param string $gedrec the raw gedcom record
- * @return string the updated gedcom record
- */
-function remove_custom_tags($gedrec, $remove="no") {
-	if ($remove=="yes") {
-		//-- remove _WT...
-		$gedrec = preg_replace("/\d _WT.*/", "", $gedrec);
-		//-- remove _THUM
-		$gedrec = preg_replace("/\d _THUM .*/", "", $gedrec);
-	}
-	//-- cleanup so there are not any empty lines
-	$gedrec = preg_replace(array("/(\r\n)+/", "/\r+/", "/\n+/"), array("\r\n", "\r", "\n"), $gedrec);
-	//-- make downloaded file DOS formatted
-	$gedrec = preg_replace("/([^\r])\n/", "$1\n", $gedrec);
-	return $gedrec;
+// Remove cuustom webtrees tags from the record.
+// _WT*
+// _THUM
+function remove_custom_tags($gedrec) {
+	return preg_replace('/\n\d _(WT|THUM ).*/', '', $gedrec);
 }
 
 /**
@@ -228,7 +215,6 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		$head=str_replace("UTF-8", "ANSI", $head);
 		$head=utf8_decode($head);
 	}
-	$head=remove_custom_tags($head, $exportOptions['noCustomTags']);
 
 	// Buffer the output.  Lots of small fwrite() calls can be very slow when writing large gedcoms.
 	$buffer=reformat_record_export($head);
@@ -238,9 +224,15 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		->execute(array($ged_id))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
-		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
-		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
+		if ($exportOptions['privatize']!='none') {
+			$rec=privatize_gedcom($ged_id, $rec, $access_level);
+		}
+		if ($exportOptions['noCustomTags']=='yes') {
+			$rec=remove_custom_tags($rec);
+		}
+		if ($exportOptions['toANSI']=="yes") {
+			$rec=utf8_decode($rec);
+		}
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
 			fwrite($gedout, $buffer);
@@ -253,9 +245,15 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		->execute(array($ged_id))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
-		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
-		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
+		if ($exportOptions['privatize']!='none') {
+			$rec=privatize_gedcom($ged_id, $rec, $access_level);
+		}
+		if ($exportOptions['noCustomTags']=='yes') {
+			$rec=remove_custom_tags($rec);
+		}
+		if ($exportOptions['toANSI']=="yes") {
+			$rec=utf8_decode($rec);
+		}
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
 			fwrite($gedout, $buffer);
@@ -268,9 +266,15 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		->execute(array($ged_id))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
-		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
-		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
+		if ($exportOptions['privatize']!='none') {
+			$rec=privatize_gedcom($ged_id, $rec, $access_level);
+		}
+		if ($exportOptions['noCustomTags']=='yes') {
+			$rec=remove_custom_tags($rec);
+		}
+		if ($exportOptions['toANSI']=="yes") {
+			$rec=utf8_decode($rec);
+		}
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
 			fwrite($gedout, $buffer);
@@ -283,9 +287,15 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		->execute(array($ged_id, 'HEAD', 'TRLR'))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
-		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
-		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
+		if ($exportOptions['privatize']!='none') {
+			$rec=privatize_gedcom($ged_id, $rec, $access_level);
+		}
+		if ($exportOptions['noCustomTags']=='yes') {
+			$rec=remove_custom_tags($rec);
+		}
+		if ($exportOptions['toANSI']=="yes") {
+			$rec=utf8_decode($rec);
+		}
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
 			fwrite($gedout, $buffer);
@@ -298,10 +308,16 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 		->execute(array($ged_id))
 		->fetchOneColumn();
 	foreach ($recs as $rec) {
+		if ($exportOptions['privatize']!='none') {
+			$rec=privatize_gedcom($ged_id, $rec, $access_level);
+		}
 		$rec = convert_media_path($rec, $exportOptions['path'], $exportOptions['slashes']);
-		$rec=remove_custom_tags($rec, $exportOptions['noCustomTags']);
-		if ($exportOptions['privatize']!='none') $rec=privatize_gedcom($ged_id, $rec, $access_level);
-		if ($exportOptions['toANSI']=="yes") $rec=utf8_decode($rec);
+		if ($exportOptions['noCustomTags']=='yes') {
+			$rec=remove_custom_tags($rec);
+		}
+		if ($exportOptions['toANSI']=="yes") {
+			$rec=utf8_decode($rec);
+		}
 		$buffer.=reformat_record_export($rec);
 		if (strlen($buffer)>65536) {
 			fwrite($gedout, $buffer);
