@@ -111,6 +111,54 @@ class WT_Query_Name {
 		}
 	}
 
+	// Get the initial letter of a name, taking care of multi-letter sequences and equivalences.
+	static public function initialLetter($name) {
+		$name=utf8_strtoupper($name);
+		// For some languages, it is not simply the first character.
+		switch (WT_LOCALE) {
+		case 'cs':
+			if (substr($name, 0, 2)=='CH') {
+				return 'CH';
+			}
+			break;
+		case 'da':
+		case 'nb':
+		case 'nn':
+			if (substr($name, 0, 2)=='AA') {
+				return 'Å';
+			}
+			break;
+		case 'hu':
+			if (substr($name, 0, 2)=='CS') {
+				return 'CS';
+			} elseif (substr($name, 0, 2)=='DZS') {
+				return 'DZS';
+			} elseif (substr($name, 0, 2)=='DZ') {
+				return 'DZ';
+			} elseif (substr($name, 0, 2)=='GY') {
+				return 'GY';
+			} elseif (substr($name, 0, 2)=='LY') {
+				return 'LY';
+			} elseif (substr($name, 0, 2)=='NY') {
+				return 'NY';
+			} elseif (substr($name, 0, 2)=='SZ') {
+				return 'SZ';
+			} elseif (substr($name, 0, 2)=='TY') {
+				return 'TY';
+			} elseif (substr($name, 0, 2)=='ZS') {
+				return 'ZS';
+			}
+			break;
+		case 'nl':
+			if (substr($name, 0, 2)=='IJ') {
+				return 'IJ';
+			}
+			break;
+		}
+		// No special rules - just take the first character
+		return utf8_substr($name, 0, 1);
+	}
+
 	// Generate SQL to match a given letter, taking care of cases that
 	// are not covered by the collation setting.  We must consider:
 	// potential substrings, such as Czech "CH" and "C"
@@ -138,6 +186,7 @@ class WT_Query_Name {
 			break;
 		case 'hu':
 			switch ($letter) {
+			case 'C':  return $field." LIKE 'C%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'CS%' COLLATE ". WT_I18N::$collation;
 			case 'D':  return $field." LIKE 'D%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'DZ%' COLLATE ". WT_I18N::$collation;
 			case 'DZ': return $field." LIKE 'DZ%' COLLATE ".WT_I18N::$collation." AND ".$field." NOT LIKE 'DZS%' COLLATE ".WT_I18N::$collation;
 			case 'G':  return $field." LIKE 'G%' COLLATE ". WT_I18N::$collation." AND ".$field." NOT LIKE 'GY%' COLLATE ". WT_I18N::$collation;

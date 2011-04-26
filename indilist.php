@@ -98,13 +98,7 @@ if ($show_all=='yes') {
 	$legend=WT_I18N::translate('All');
 	$url='indilist.php?show_all=yes';
 } elseif ($surname) {
-	$surname=utf8_strtoupper($surname);
-	$alpha=utf8_substr($surname, 0, 1);
-	foreach (explode(' ', WT_I18N::$alphabet) as $letter) {
-		if (strpos($surname, utf8_strtoupper($letter))===0) {
-			$alpha=utf8_strtoupper($letter);
-		}
-	}
+	$alpha=WT_Query_Name::initialLetter($surname);
 	$show_all='no';
 	if ($surname=='@N.N.') {
 		$legend=WT_I18N::translate_c('surname', '(unknown)');
@@ -122,7 +116,7 @@ if ($show_all=='yes') {
 		break;
 	}
 	$surname_sublist='no';
-	$url='indilist.php?surname='.urlencode($surname);
+	$url='indilist.php?surname='.rawurlencode($surname);
 } else {
 	$show_all='no';
 	$surname='';
@@ -136,7 +130,7 @@ if ($show_all=='yes') {
 	} else {
 		$legend=$alpha;
 	}
-	$url='indilist.php?alpha='.urlencode($alpha);
+	$url='indilist.php?alpha='.rawurlencode($alpha);
 }
 
 
@@ -159,12 +153,12 @@ foreach ($initials as $letter=>$count) {
 	if ($count) {
 		if ($showList && $letter==$alpha && $show_all=='no') {
 			if ($surname) {
-				$html='<a href="indilist.php?alpha='.urlencode($letter).'&amp;ged='.WT_GEDURL.'" class="warning" title="'.$count.'">'.$html.'</a>';
+				$html='<a href="indilist.php?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" class="warning" title="'.$count.'">'.$html.'</a>';
 			} else {
 				$html='<span class="warning" title="'.$count.'">'.$html.'</span>';
 			}
 		} else {
-			$html='<a href="indilist.php?alpha='.urlencode($letter).'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
+			$html='<a href="indilist.php?alpha='.rawurlencode($letter).'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
 		}
 	}
 	$list[]=$html;
