@@ -275,7 +275,7 @@ function print_fact(&$eventObj) {
 				}
 			}
 			$temp = trim(get_cont(2, $factrec));
-			if (strstr("PHON ADDR ", $fact." ")===false && $temp!="") {
+			if (strstr("ADDR ", $fact." ")===false && $temp!="") {
 				echo PrintReady($temp);
 			}
 		}
@@ -965,7 +965,18 @@ function printSourceStructure($textSOUR) {
 			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('DATA:DATE').':</span> <span class="field">'.$date->Display(false).'</span></div>';
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field">'.PrintReady(expand_urls($text)).'</span></div>';
+			if ($textSOUR['NOTE']) {
+				$noterec = find_gedcom_record(str_replace("@", "", $textSOUR['NOTE']), WT_GED_ID);
+				if (!empty($noterec)) {
+					$nt = preg_match("/0 ".$textSOUR['NOTE']." NOTE(.*)/", $noterec, $n1match);
+					if ($nt==1) {
+						$text.=print_note_record($n1match[1], 1, $noterec,  true, true);
+					}
+				}
+				$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field">'.$text.'</span></div>';
+			} else {
+				$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field">'.PrintReady(expand_urls($text)).'</span></div>';
+			}
 		}
 	}
 

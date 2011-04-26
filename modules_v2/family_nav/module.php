@@ -790,7 +790,12 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						} 
 					}
 					if ($persons != "Yes") {
-						$spouselinks  .= "&nbsp;(".WT_I18N::translate('none').")";
+						$marr = get_gedcom_value("MARR", 1, get_sub_record(1, "1 MARR", $person->getGedcomRecord(), 1), '', false);
+						if ($marr) {
+							$spouselinks  .= "&nbsp;".$marr;
+						} else {
+							$spouselinks  .= "&nbsp;(".WT_I18N::translate('none').")";
+						}
 					}
 					if ($person_parent != "Yes") {
 						$parentlinks .= "&nbsp;(".WT_I18N::translate_c('unknown family', 'unknown').")";

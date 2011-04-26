@@ -46,7 +46,23 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$id=$this->getName().$block_id;
 		$title=get_gedcom_setting(WT_GED_ID, 'title');
 		$content = "<div class=\"center\">";
-		$content .= "<br />".format_timestamp(client_time())."<br />";
+		ob_start();
+		?>
+		<font id="ur" size="2" face="Trebuchet MS, Verdana, Arial, sans-serif" color="#000066"></font>
+		<script type="text/javascript">
+		function UR_Start() {
+			UR_Nu = new Date;
+			UR_Indhold = showFilled(UR_Nu.getHours()) + ":" + showFilled(UR_Nu.getMinutes()) + ":" + showFilled(UR_Nu.getSeconds());
+			document.getElementById("ur").innerHTML = UR_Indhold;
+			setTimeout("UR_Start()",1000);
+		}
+		function showFilled(Value) {
+			return (Value > 9) ? "" + Value : "0" + Value;
+		}
+		UR_Start();
+		</script>
+		<?php
+		$content .= ob_get_clean()."<br />".format_timestamp(client_time())."<br />";
 		if ($SHOW_COUNTER)
 			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount."<br />";
 		$content .=  "<br />";

@@ -1352,7 +1352,7 @@ function print_asso_rela_record($event) {
 				}
 				// For family records (e.g. MARR), identify the spouse with a sex icon
 				if ($event->getParentObject() instanceof WT_Family) {
-					$label=$associate->getSexImage().$label;
+					$label=$associate->getSexImage('small', '', '', false).$label;
 				}
 				$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label.'</a>';
 			}
@@ -1364,6 +1364,24 @@ function print_asso_rela_record($event) {
 			' - ',
 			implode(', ', $html);
 			echo '</div>';
+	}
+	// Level 2 ASSO luk
+	preg_match_all('/\n2 ASSO @(.*)@((\n[3-9].*)*)/', $event->getGedcomRecord(), $amatches_l, PREG_SET_ORDER);
+	foreach ($amatches_l as $amatch) {
+		if (!in_array($amatch, array_merge($amatches1, $amatches2))) {
+			if (preg_match('/\n3 RELA (.+)/', $amatch[2], $rmatch)) {
+				$rela=$rmatch[1];
+			} else {
+				$rela='';
+			}
+			if ($rela) {
+				$label=WT_Gedcom_Code_Rela::getValue($rela);
+			}
+			if (!$label) {
+				$label='?';
+			}
+			echo '<div class="fact_ASSO">', $amatch[1], ' - ', $label, '</div>';
+		}
 	}
 }
 
@@ -1415,10 +1433,11 @@ function format_parents_age($pid, $birth_date=null) {
 						$title=WT_I18N::translate('Parent\'s age');
 						break;
 					}
+					// luk
 					if ($class) {
-						$html.=' <span class="'.$class.'" title="'.$title.'">'.$parent->getSexImage().$age.'</span>';
+						$html.=' <span class="'.$class.'" title="'.$title.'">'.$parent->getSexImage('small', '', '', false).$age.'</span>';
 					} else {
-						$html.=' <span title="'.$title.'">'.$parent->getSexImage().$age.'</span>';
+						$html.=' <span title="'.$title.'">'.$parent->getSexImage('small', '', '', false).$age.'</span>';
 					}
 				}
 			}
@@ -1590,6 +1609,27 @@ function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
 			}
 			$tempURL .= 'level='.count($levels);
 			$html .= '<a href="'.$tempURL.'"> '.PrintReady($place).'</a>';
+			//luk
+			$place_pic = ' ';
+			global $TBLPREFIX, $WT_IMAGES, $WT_IMAGE_DIR, $GEDCOM;
+			if (empty($ged)) $ged=$GEDCOM;
+			$sql = "SELECT * FROM ##media WHERE m_file LIKE '%/places/%' AND m_gedfile=".WT_GED_ID;
+			$rows=WT_DB::prepare($sql)->execute()->fetchAll(PDO::FETCH_ASSOC);
+			foreach ($rows as $rowm) {
+				// Get info on how to handle this media file
+				$media=WT_Media::getInstance($rowm["m_media"]);
+				$rawTitle = $rowm["m_titl"];
+				if (empty($rawTitle)) $rawTitle = get_gedcom_value("TITL", 2, $rowm["mm_gedrec"]);
+				if (empty($rawTitle)) $rawTitle = basename($rowm["m_file"]);
+				$mediaTitle = PrintReady(htmlspecialchars($rawTitle));
+				$mainMedia = check_media_depth($rowm["m_file"], "NOTRUNC");
+				$thumbnail = thumbnail_file($rowm["m_file"], true, false);
+				if ($mediaTitle == PrintReady($place) && $media->canDisplayDetails()) {
+					$place_pic .= "<a href=\"".$mainMedia."\" rel=\"clearbox[general_6]\" rev=\"".$rowm["m_media"]."::".$ged."::".$mediaTitle."::\"> <img src=\"".$WT_IMAGES["button_media"]."\" alt=\"".WT_I18N::translate('Show photos?')."\" title= \"".WT_I18N::translate('Show photos?')."\" border=\"0\" align=\"top\" /></a>";
+					break;
+				}
+			}
+			$html .= $place_pic;
 		} else {
 			if (!$SEARCH_SPIDER) {
 				$html.=' -- ';

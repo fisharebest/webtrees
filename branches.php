@@ -111,7 +111,7 @@ function print_fams($person, $famid=null) {
 	// select person name according to searched surname
 	$person_name = "";
 	foreach ($person->getAllNames() as $n=>$name) {
-		list($surn1) = explode(", ", $name['list']);
+		list($surn1) = explode(" ", $name['list']);
 		if (stripos($surn1, $surn)===false
 			&& stripos($surn, $surn1)===false
 			&& soundex_std($surn1)!==soundex_std($surn)
@@ -126,7 +126,7 @@ function print_fams($person, $famid=null) {
 		break;
 	}
 	if (empty($person_name)) {
-		echo '<span title="', PrintReady(strip_tags($person->getFullName())), '">', $person->getSexImage(), '...</span>';
+		echo '<span title="', PrintReady(strip_tags($person->getFullName())), '">', $person->getSexImage('small', '', '', false), '...</span>';
 		return;
 	}
 	$person_script = utf8_script($person_name);
@@ -139,7 +139,7 @@ function print_fams($person, $famid=null) {
 		$sosa = '<a dir='.$TEXT_DIRECTION.' target="_blank" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
 	}
 	$current = $person->getSexImage().
-		'<a target="_blank" class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
+		'<a target="_blank" class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$person->getHtmlUrl().'">'.PrintReady($person->getFullName()).'</a> '.
 		$person->getBirthDeathYears().' '.$sosa;
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
@@ -176,6 +176,7 @@ function print_fams($person, $famid=null) {
 			foreach ($spouse->getAllNames() as $n=>$name) {
 				if (utf8_script($name['list']) == $person_script) {
 					$spouse_name = $name['list'];
+					$spouse_givenname = $name['givn'];
 					$spouse_surname = $name['surname'];
 					break;
 				}
@@ -186,9 +187,11 @@ function print_fams($person, $famid=null) {
 				}
 			}
 			list($surn2, $givn2) = explode(', ', $spouse_name.', x');
+			$spouse_surname_l = explode(' ', $surn2);
+			$spouse_surname_l = $spouse_surname_l[0];
 			$txt .= $spouse->getSexImage().
-				'<a class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$spouse->getHtmlUrl().'">'.PrintReady($givn2).' </a>'.
-				'<a class="'.$class.'" title="'.WT_I18N::translate('Branches').'" href="'.WT_SCRIPT_NAME.'?surn='.urlencode($spouse_surname).'&amp;ged='.WT_GEDURL.'">'.PrintReady($surn2).'</a> '.$spouse->getBirthDeathYears().' '.$sosa2;
+				'<a class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$spouse->getHtmlUrl().'">'.PrintReady($spouse_givenname).' </a>'.
+				'<a class="'.$class.'" title="'.WT_I18N::translate('Branches').'" href="'.WT_SCRIPT_NAME.'?surn='.urlencode($spouse_surname).'&amp;ged='.WT_GEDURL.'">'.PrintReady($spouse_surname_l).'</a> '.$spouse->getBirthDeathYears().' '.$sosa2;
 		}
 		echo $txt;
 		echo '<ol>';

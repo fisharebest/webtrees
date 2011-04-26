@@ -55,7 +55,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Extend WT_Module. This title should be normalized when this module will be added officially
 	public function getTitle() {
-		return WT_I18N::translate('Interactive tree');
+		return WT_I18N::translate('Tree');
 	}
 
 	// Extend WT_Module
