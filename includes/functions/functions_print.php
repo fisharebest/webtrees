@@ -963,6 +963,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 			} else {
 				$data .= WT_I18N::translate('Note').": </span>";
 			}
+			$data .= "</div>";
 		}
 
 		if ($brpos !== false) {
