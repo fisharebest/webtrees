@@ -298,7 +298,7 @@ color: #003399;
 .list_value, .list_value_wrap,
 .messagebox, .optionbox,
 .person_box, .person_boxF, .person_boxNN,
-.person0,  .person1,  .person2,  .person3,  .person4,  .person5,
+.person0,  .person1,  .person2,  .person3,  .person4,  .person5, #sidebar,
 .topbottombar {
 	border-radius:3px;
 	-moz-border-radius:3px;
@@ -1856,9 +1856,9 @@ html[dir='rtl'] .deletelink, html[dir='rtl'] deletelink  {
 
 /* ========= Sidebar ============== */
 #tabs,#sidebar {border: 1px solid;}
-#sidebar {background-color:#DEF; border-color:#BCD; display:none; margin:0 2px 0 !important; height:auto !important; position:relative !important;}
+#sidebar {background-color:#DEF; border-color:#DDD; display:none; margin:0 2px 0 !important; height:auto !important; position:relative !important;}
 html[dir='rtl'] #sidebar  {margin:0 0 0 2px !important;}
-#tabs {background-color: #fff; border-color: #CDC; width:98%;}
+#tabs {background-color: #fff; border-color: #DDD; width:98%;}
 .use-sidebar #tabs {	width: 77%;}
 .use-sidebar #sidebar {display: block;}
 .sidebar-at-right #sidebar {	width:20%;}
