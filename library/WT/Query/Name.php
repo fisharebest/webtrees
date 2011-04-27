@@ -436,17 +436,6 @@ class WT_Query_Name {
 				$list[$family->getXref()]=$family;
 			}
 		}
-		// If we're searching for "Unknown surname", we also need to include families
-		// with missing spouses
-		if ($surn=='@N.N.' || $salpha=='@') {
-			$rows=
-				WT_DB::prepare("SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil FROM `##families` f WHERE f_file={$ged_id} AND (f_husb='' OR f_wife='')")
-				->fetchAll(PDO::FETCH_ASSOC);
-	
-			foreach ($rows as $row) {
-				$list[]=WT_Family::getInstance($row);
-			}
-		}
 		usort($list, array('WT_GedcomRecord', 'Compare'));
 		return $list;
 	}
