@@ -1640,7 +1640,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$name = implode("<div></div>", $exp); // <div></div> is better here than <br />
 		}
 		$return .= '<td class="list_value_wrap" align="'.get_align($name).'">';
-		$return .= '<a href='.$value['url'].'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.PrintReady($name).'</a>';
+		$return .= '<a href="'.$value['url'].'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.PrintReady($name).'</a>';
 		if ($value['record']->getType()=="INDI") {
 			$return .= $value['sex'];
 			$return .= $value['record']->getPrimaryParentsNames("parents_$table_id details1", "none");
