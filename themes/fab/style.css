@@ -1149,10 +1149,10 @@ html[dir='rtl'] .deletelink, html[dir='rtl'] deletelink  {
 }
 
 /* ========= Sidebar ============== */
-#tabs,#sidebar {border: 1px solid;}
+#tabs,#sidebar {border: 1px solid;	margin:0px;}
 #sidebar {background-color:#DEF; border-color:#ddd; display:none; margin:0 2px 0 !important; height:auto !important; position:relative !important;}
 html[dir='rtl'] #sidebar  {margin:0 0 0 2px !important;}
-#tabs {background-color: #fff; border-color: #ddd; width:97%;}
+#tabs {background-color: #fff; border-color: #ddd; width:98%;}
 .use-sidebar #tabs {	width: 77%;}
 .use-sidebar #sidebar {display: block;}
 .sidebar-at-right #sidebar {	width:20%;}
