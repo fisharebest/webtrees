@@ -1132,6 +1132,7 @@ padding: 3px;
 }
 
 .optionbox {
+background: #d2f4e6;
 border:solid #999 1px;
 font-size: 12px;
 vertical-align: top;
@@ -1863,7 +1864,7 @@ html[dir='rtl'] .deletelink, html[dir='rtl'] editlink  {
 #tabs,#sidebar {border: 1px solid;}
 #sidebar {background-color:#DEF; border-color:#BCD; display:none; margin:0 2px 0 !important; height:auto !important; position:relative !important;}
 html[dir='rtl'] #sidebar  {margin:0 0 0 2px !important;}
-#tabs {background-color: #EFE; border-color: #CDC; width:98%;}
+#tabs {background-color: #fff; border-color: #CDC; width:98%;}
 .use-sidebar #tabs {	width: 77%;}
 .use-sidebar #sidebar {display: block;}
 .sidebar-at-right #sidebar {	width:20%;}
@@ -1871,7 +1872,7 @@ html[dir='rtl'] #sidebar  {margin:0 0 0 2px !important;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
 .sidebar-at-right #tabs {float: left;}
 html[dir='rtl'] .sidebar-at-right #tabs {float: right;}
-#separator {	display: block; background: #51B389 url('../images/indi_sprite.png') no-repeat -26px 100px; width: 10px; border: 1px solid #51B389; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
+#separator {	display: block; background: #51B389 url('../images/indi_sprite.png') no-repeat -26px 100px; width: 10px; border: 1px solid #808B9D; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
 html[dir='rtl'] #separator { background: #51B389 url('../images/indi_sprite.png') no-repeat -1px 100px;}
 .use-sidebar #separator { background: #51B389 url('../images/indi_sprite.png') no-repeat -1px 100px;}
 html[dir='rtl'] .use-sidebar #separator {background: #51B389 url('images/indi_sprite.png') no-repeat -26px 100px;}
