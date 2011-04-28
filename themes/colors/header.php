@@ -52,6 +52,30 @@ echo
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
 
+if (!empty($LINK_CANONICAL)) {
+	echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
+}
+if (!empty($META_DESCRIPTION)) {
+	echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
+}
+echo '<meta name="robots" content="', $META_ROBOTS, '" />';
+if (!empty($META_GENERATOR)) {
+	echo '<meta name="generator" content="', $META_GENERATOR, '" />';
+}
+
+	echo $javascript,
+	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />',
+	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
+	'<link rel="stylesheet" href="<?php echo $print_stylesheet; ?>" type="text/css" media="print" />';
+
+if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {
+	echo '<link rel="stylesheet" href="', $rtl_stylesheet, '" type="text/css" media="all" />';
+}
+
+if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
+	echo '<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />';
+}
+
 if (WT_USE_LIGHTBOX) {
 	if ($TEXT_DIRECTION=='rtl') {
 		echo
@@ -64,44 +88,10 @@ if (WT_USE_LIGHTBOX) {
 	}
 }
 
-if (!empty($LINK_CANONICAL)) {
-	echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
-}
-if (!empty($META_DESCRIPTION)) {
-	echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
-}
-echo '<meta name="robots" content="', $META_ROBOTS, '" />';
-if (!empty($META_GENERATOR)) {
-	echo '<meta name="generator" content="', $META_GENERATOR, '" />';
-}
-
 echo
-	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />';
-?>
-
-<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
-<link rel="stylesheet" href="<?php echo $print_stylesheet; ?>" type="text/css" media="print" />
-
-<?php
-if ($TEXT_DIRECTION=='rtl') { ?>
-	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
-<?php }
-
-echo
-	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
-	'<link rel="stylesheet" href="', $modules, '" type="text/css" />';
-
-if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) { ?>
-	<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
-<?php
-}
-
-
-if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?>
-	<link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" />
-<?php }
-	echo $javascript;
-	echo '</head><body id="body">';
+	'<link rel="stylesheet" href="', $modules, '" type="text/css" />',
+	'</head>',
+	'<body id="body">';
 ?>
 
 <!-- Remove header for edit windows -->

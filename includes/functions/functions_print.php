@@ -345,7 +345,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 * print out standard HTML header
 *
 * This function will print out the HTML, HEAD, and BODY tags and will load in the CSS javascript and
-* other auxiliary files needed to run PGV.  It will also include the theme specific header file.
+* other auxiliary files needed to run webtrees.  It will also include the theme specific header file.
 * This function should be called by every page, except popups, before anything is output.
 *
 * Popup pages, because of their different format, should invoke function print_simple_header() instead.

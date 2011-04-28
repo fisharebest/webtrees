@@ -236,51 +236,6 @@ p.center .warning, tr td.optionbox span.error, span.error {
 color:#f50;
 }
 
-/* Override js/jquery-ui.custom.css            */
-/* Right Side Tab----------------------------------*/
-.ui-state-active, .ui-widget-content .ui-state-active { background: #F75993;}
-
-/* Flyout changes */
-
-.flyout2 {
-        margin-left:-40px; /* move popup left */
-}
-.flyout2 a:hover{ /* color change and force underline */
-         color:#2f416f;
-         text-decoration:underline !important;
-}
-#flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {
-    font-size: 11px;
-    color: #000;
-}
-
-/* Tabs ----------------------------------*/
-.ui-widget-header { border: 1px solid #fff; background: #F75993 !important;  opacity: 0.67;  filter: alpha(opacity = 67);}
-.ui-widget-content a:hover {color: #f50;}
-.ui-state-active, .ui-widget-content .ui-state-active { border: 0px !important ; }
-.ui-state-default a:link { color: #000000;}
-.ui-state-active a:link { color: #ffffff;}
-
-.ui-tabs-nav li.ui-tabs-selected { background: #fff; }
-
-
-/* Colors specific changes                     */
-/* Location and behavior of Right Site Tab in/out pin-------*/
-
-table.width66{
-margin-left: auto;
-margin-right: auto;
-}
-
-/* Navigator and Flyout menu Styles -----------*/
-
-.nav_content #spouse {
-color:  #000;
-}
-.nav_content .facts_label a{
-color: #ffffff;
-}
-
 /*	Start Standard Code					*/
 
 /* Rounded corners on boxes */
@@ -1860,11 +1815,39 @@ html[dir='rtl'] .deletelink, html[dir='rtl'] editlink  {
 	text-align: center;
 }
 
+/* ========= jquery-ui.custom.css changes ============ */
+.ui-widget-content                                         { color:black;  }
+.ui-widget-content a                                       { color:#003399; }
+.ui-widget-content a:hover                                  { color: red; }
+html[dir='rtl'] .ui-tabs { direction:rtl;}
+html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
+.ui-state-active, .ui-widget-content .ui-state-active {border:1px solid #999; background:#F75993; font-weight:normal; color:black; outline:none;}
+
+.ui-tabs-nav li.ui-tabs-selected                                  { background: #f8f8f8;  color: #003399; }
+.ui-tabs-nav li.ui-tabs-selected a                                  { font-weight:600; color: #003399; }
+.ui-tabs-nav li.ui-tabs-selected a:hover                         { font-weight:600; color: #003399; }
+
+.ui-widget-header { border: 1px solid #fff; background: #F75993;  opacity: 0.67;  filter: alpha(opacity = 67);}
+.ui-widget-content a:hover {color: #f50;}
+.ui-state-active, .ui-widget-content .ui-state-active { border: 0px ; }
+.ui-state-default a:link { color: #000000;}
+.ui-state-active a:link { color: #ffffff;}
+
+.ui-tabs-nav li.ui-tabs-selected { background: #fff; }
+
+.ui-accordion .ui-accordion-header .ui-icon { position:absolute; left:.5em; top:50%; margin-top:-8px; }
+.ui-accordion .ui-accordion-content { padding:1em 0.05em; border-top:0; margin-top:2px; position:relative; top:1px; margin-bottom:2px; overflow:visible; display:none; }
+.ui-accordion .ui-accordion-content-active { display:block;}
+.ui-accordion .ui-accordion-header a {padding: .5em;}
+
 /* ========= Sidebar ============== */
 #tabs,#sidebar {border: 1px solid;}
-#sidebar {background-color:#DEF; border-color:#DDD; display:none; margin:0 2px 0 !important; height:auto !important; position:relative !important;}
-html[dir='rtl'] #sidebar  {margin:0 0 0 2px !important;}
+#sidebar {background-color:#DEF; border-color:#DDD; display:none; margin:0 2px 0; height:auto; position:relative;}
+html[dir='rtl'] #sidebar  {margin:0 0 0 2px;}
 #tabs {background-color: #fff; border-color: #DDD; width:98%;}
+#sidebarAccordion {width:auto;}
+#sidebarAccordion h3 {height:35px; text-align: center; border-color:#999}
 .use-sidebar #tabs {	width: 77%;}
 .use-sidebar #sidebar {display: block;}
 .sidebar-at-right #sidebar {	width:20%;}
@@ -1876,3 +1859,43 @@ html[dir='rtl'] .sidebar-at-right #tabs {float: right;}
 html[dir='rtl'] #separator { background: #F75993 url('../images/indi_sprite.png') no-repeat -1px 100px;}
 .use-sidebar #separator { background: #F75993 url('../images/indi_sprite.png') no-repeat -1px 100px;}
 html[dir='rtl'] .use-sidebar #separator {background: #F75993 url('images/indi_sprite.png') no-repeat -26px 100px;}
+
+/* ============== Sidebar content items ============== */
+#sb_content_family_nav {padding:0;}
+#sb_family_nav_content {margin-top:0px;}
+.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.gif');white-space:nowrap;}
+.name_tree_div li, .name_tree_div_visible li {white-space:normal;}
+.sb_desc_indi_li {list-style-type:none;	white-space:nowrap;}
+.desc_tree_div {	display:none;}
+.desc_tree_div ul {padding:0px;	margin-left:10px;margin-top:0px;margin-right:0px;}
+html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
+#sb_desc_content {margin-left:3px;}
+html[dir='rtl'] #sb_desc_content {margin-right:3px;}
+#sb_desc_content ul {padding:0px; margin:0px; font-size:10px;}
+.name_tree_div {	display:none;}
+.name_tree_div li,  .name_tree_div_visible li {list-style:none;margin:0px;padding:0px;white-space:nowrap;}
+.name_tree_div ul, .name_tree_div_visible ul {padding:0px;margin:0px;}
+#sb_clippings_content li {list-style:none;margin:0px;padding:0px;white-space:nowrap;}
+#sb_clippings_content ul {padding:0px;margin:0px;}
+.nam a:hover {color:red;}
+.nav_content {width:100%; padding:0;}
+.nav_content #spouse {color:  #000;}
+.nav_content .facts_label a{color: #ffffff;}
+.flyout {color:#000000; 	text-align:left; margin-top:-20px; right:210px; padding:3px;}
+html[dir='rtl'] .flyout {text-align:right; left:210px;}
+.flyout2 {color:#000000;	text-align:left;margin-top:-2px; left:40px; padding:3px;}
+html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
+.flyout2 a:hover{color:#2f416f; text-decoration:underline;}
+.flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
+#flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {background:none; border:none; color: #000; font-size: 11px; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
+html[dir='rtl'] #flyout3 {text-align:right;}
+table.width66{margin-left: auto;margin-right: auto;}
+
+ul.clist {
+	list-style-image: none;
+	text-decoration:none;
+	color:#000000; 
+	margin: 0px;
+	margin-left: 0px;
+}
+

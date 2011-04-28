@@ -39,31 +39,11 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php echo WT_I18N::html_markup(); ?>>
-	<head>
-		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-		<?php if (isset($_GET["mod_action"]) && $_GET["mod_action"]=="places_edit") { ?>
-			<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" /> <?php }
-		?>
-		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<head>
+	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+	<title><?php echo htmlspecialchars($title); ?></title>
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
 
-		<title><?php echo htmlspecialchars($title); ?></title>
-		<link rel="stylesheet" href="<?php echo $stylesheet; ?>" type="text/css" media="all" />
-		<?php if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?> <link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> <?php } ?>
-		<?php if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) { ?>
-			<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
-		<?php }
-		// Additional css files required (Only if Lightbox installed)
-		if (WT_USE_LIGHTBOX) {
-			if ($TEXT_DIRECTION=='rtl') {
-				echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" type="text/css" />';
-				echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" type="text/css" media="screen" />';
-			} else {
-				echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" type="text/css" />';
-				echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page.css" type="text/css" media="screen" />';
-			}
-		} ?>
-
-	<link rel="stylesheet" href="<?php echo $print_stylesheet; ?>" type="text/css" media="print" />
 	<?php 
 	if (!empty($LINK_CANONICAL)) {
 		echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
@@ -76,12 +56,26 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 		echo '<meta name="generator" content="', $META_GENERATOR, '" />';
 	}
 	?>
+	
 	<?php echo $javascript; ?>
+	
 	<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />
-	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
-	<?php if ($TEXT_DIRECTION=='rtl') { ?>
-		<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
-	<?php } ?>
+	<link rel="stylesheet" href="<?php echo $stylesheet; ?>" type="text/css" media="all" />
+	<?php if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?> <link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> <?php } ?>
+	<?php if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) { ?>
+		<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
+	<?php }
+	// Additional css files required (Only if Lightbox installed)
+	if (WT_USE_LIGHTBOX) {
+		if ($TEXT_DIRECTION=='rtl') {
+			echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" type="text/css" />';
+			echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" type="text/css" media="screen" />';
+		} else {
+			echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" type="text/css" />';
+			echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page.css" type="text/css" media="screen" />';
+		}
+	} ?>
+
 	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>modules.css" rel="Stylesheet" />
 </head>
 <body id="body">

@@ -62,34 +62,3 @@ padding-right:0px;
 #logout_block .blockh1 {
 	background-image: url(images/right1R.gif);
 }
-/* jquery css THEME adjustments for RTL */
-/* @version $Id$ */
-
-/* Tabs --------------------------------*/
-.ui-tabs { direction: rtl; }
-
-.ui-tabs .ui-tabs-nav li.ui-tabs-selected,
-.ui-tabs .ui-tabs-nav li.ui-state-default {float: right; }
-.ui-tabs .ui-tabs-nav li a { float: right; }
-
-/* Navigator & Flyout menu Styles ------*/
-.flyoutrtl {
-	color:#000000; 
-	text-align: right;
-	margin-top: -20px;
-	left: 210px;
-	padding: 3px;
-}
-.flyout2rtl {
-	color:#000000; 
-	text-align: right;
-	margin-top: -2px;
-	right: 64px;
-	padding: 3px;
-}
-.flyout2rtl a:hover{
-	color:red;
-}
-#flyout3 {
-	text-align: right;
-}

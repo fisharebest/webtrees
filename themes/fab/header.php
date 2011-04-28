@@ -46,12 +46,8 @@ echo
 	'<head>',
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />',
-	'<link type="text/css" rel="stylesheet" href="', $stylesheet, '" />',
-	'<link type="text/css" rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" />',
-	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" />',
-	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'modules.css" />';
-
+	'<link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />';
+	
 if (!empty($LINK_CANONICAL)) {
 	echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
 }
@@ -62,13 +58,18 @@ echo '<meta name="robots" content="', $META_ROBOTS, '" />';
 if (!empty($META_GENERATOR)) {
 	echo '<meta name="generator" content="', $META_GENERATOR, '" />';
 }
-
-if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
-	echo '<link type="text/css" rel="stylesheet" href="',  WT_THEME_DIR, $BROWSERTYPE, '.css" />';
-}
+	
+echo
+	$javascript,
+	'<link type="text/css" rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" />',
+	'<link type="text/css" rel="stylesheet" href="', $stylesheet, '" />';
 
 if ($TEXT_DIRECTION=='rtl') {
 	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme_rtl.css" />';
+}
+
+if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
+	echo '<link type="text/css" rel="stylesheet" href="',  WT_THEME_DIR, $BROWSERTYPE, '.css" />';
 }
 
 if (WT_USE_LIGHTBOX) {
@@ -84,7 +85,7 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo
-	$javascript,
+	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'modules.css" />',
 	'</head>',
 	'<body id="body">';
 

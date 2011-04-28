@@ -32,16 +32,6 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-global $modules;
-// Definitions to simplify logic on pages with right-to-left languages
-// TODO: merge this into the trunk?
-if ($TEXT_DIRECTION=='ltr') {
-	define ('WT_CSS_ALIGN',         'left');
-	define ('WT_CSS_REVERSE_ALIGN', 'right');
-} else {
-	define ('WT_CSS_ALIGN',         'right');
-	define ('WT_CSS_REVERSE_ALIGN', 'left');
-}
 
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
@@ -50,18 +40,6 @@ echo
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
-
-if (WT_USE_LIGHTBOX) {
-	if ($TEXT_DIRECTION=='rtl') {
-		echo
-			'<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" type="text/css" />',
-			'<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" type="text/css" media="screen" />';
-	} else {
-		echo
-			'<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" type="text/css" />',
-			'<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page.css" type="text/css" media="screen" />';
-	}
-}
 
 if (!empty($LINK_CANONICAL)) {
 	echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
@@ -75,36 +53,38 @@ if (!empty($META_GENERATOR)) {
 }
 
 echo
-	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />';
-?>
-
-<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme.css" rel="Stylesheet" />
-<link rel="stylesheet" href="<?php echo $print_stylesheet; ?>" type="text/css" media="print" />
-
-<?php
-if ($TEXT_DIRECTION=='rtl') { ?>
-	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>jquery/jquery-ui_theme_rtl.css" rel="Stylesheet" />
-<?php }
-
-echo
+	$javascript,
+	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
-	'<link rel="stylesheet" href="', $modules, '" type="text/css" />';
-
-if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) { ?>
-	<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
-<?php
+	'<link rel="stylesheet" href="<?php echo $print_stylesheet; ?>" type="text/css" media="print" />';
+	
+if ($TEXT_DIRECTION=='rtl') { 
+	echo '<link rel="stylesheet" href="', $rtl_stylesheet, '" type="text/css" media="all" />';
 }
 
+if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
+	echo '<link rel="stylesheet" href="', WT_THEME_DIR.$BROWSERTYPE, '.css" type="text/css" media="all" />';
+}
 
-if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?>
-	<link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" />
-<?php }
-	echo $javascript;
-	echo '</head><body id="body">';
-?>
+if (WT_USE_LIGHTBOX) {
+	if ($TEXT_DIRECTION=='rtl') {
+		echo
+			'<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" type="text/css" />',
+			'<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" type="text/css" media="screen" />';
+	} else {
+		echo
+			'<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" type="text/css" />',
+			'<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page.css" type="text/css" media="screen" />';
+	}
+}
 
-<!-- begin header section -->
-<?php if ($view!='simple') {
+echo
+	'<link rel="stylesheet" href="', $modules, '" type="text/css" />',
+	'</head>',
+	'<body id="body">';
+
+// begin header section -->
+if ($view!='simple') {
 	echo '<div id="rapcontainer"><div id="header" class="', $TEXT_DIRECTION, '">';
 ?>
 <table class="header" style="background:url('<?php echo WT_THEME_DIR; ?>images/clouds.gif')" >

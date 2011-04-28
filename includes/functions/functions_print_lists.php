@@ -726,7 +726,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 			echo "L"; // leaves
 		}
 		echo "</td>";
-		echo "</tr>";
+		echo "</tr>\n";
 	}
 	echo "</tbody>";
 	//-- table footer
@@ -869,7 +869,7 @@ function print_sour_table($datalist, $legend=null) {
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td class="list_value_wrap rela">'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 		}
-		echo "</tr>";
+		echo "</tr>\n";
 	}
 	//-- table footer
 	echo '<tr class="sortbottom"><td></td>';
@@ -961,7 +961,7 @@ function print_note_table($datalist, $legend=null) {
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td class="list_value_wrap rela">'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 		}
-		echo "</tr>";
+		echo "</tr>\n";
 	}
 	//-- table footer
 	echo '<tr class="sortbottom"><td></td>';
@@ -1112,7 +1112,7 @@ function print_media_table($datalist, $legend="") {
 			//-- Last change
 			if ($SHOW_LAST_CHANGE)
 				echo "<td class=\"list_value_wrap rela\">".$media->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
-			echo "</tr>";
+			echo "</tr>\n";
 		}
 	}
 	echo "</table>";
