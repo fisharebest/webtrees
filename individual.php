@@ -52,10 +52,10 @@ if (!$controller->indi) {
 	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
 	print_footer();
 	exit;
-} else if (!$controller->indi->canDisplayDetails()) {
-	echo '<table><tr><td class="facts_value" >';
+} else if (!$controller->indi->canDisplayName()) {
+	echo '<div class="facts_value" >';
 	print_privacy_error();
-	echo '</td></tr></table>';
+	echo '</div>';
 	print_footer();
 	exit;
 }
@@ -209,15 +209,24 @@ echo '<div id="main" class="use-sidebar sidebar-at-right">'; //overall page cont
 		?>
 	</div>
 </div>
+<?php
+if (!$controller->indi->canDisplayDetails()) {
+	echo '<div id="tabs" >';
+	print_privacy_error();
+	echo '</div>';
+	print_footer();
+	exit;
+}
+?>
 <div id="hitcounter" class="clearfloat">
 	<?php
 	if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
 		//print indi counter only if displaying a non-private person
 		require WT_ROOT.'includes/hitcount.php';
-		echo WT_I18N::translate('Hit Count:'), " ", $hitCount;
+		echo WT_I18N::translate('Hit Count:'), ' ', $hitCount;
 	}
 	?>
-</div>	
+</div>
 <?php
 // ===================================== main content tabs
 foreach ($controller->tabs as $tab) {
