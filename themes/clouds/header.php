@@ -3,7 +3,7 @@
  * Header for Clouds theme
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView Cloudy theme
  * Original author w.a. bastein http://genealogy.bastein.biz
@@ -31,6 +31,18 @@
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
+}
+
+global $modules;
+
+// Definitions to simplify logic on pages with right-to-left languages
+// TODO: merge this into the trunk?
+if ($TEXT_DIRECTION=='ltr') {
+	define ('WT_CSS_ALIGN',         'left');
+	define ('WT_CSS_REVERSE_ALIGN', 'right');
+} else {
+	define ('WT_CSS_ALIGN',         'right');
+	define ('WT_CSS_REVERSE_ALIGN', 'left');
 }
 
 echo
