@@ -322,7 +322,7 @@ class batch_update {
 
 	// Get the current view of a record, allowing for pending changes
 	static function getLatestRecord($xref, $type) {
-		return find_gedcom_record($xref, WT_GED_ID);
+		return find_gedcom_record($xref, WT_GED_ID, true);
 	}
 }
 
