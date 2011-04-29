@@ -38,18 +38,8 @@ echo
 	'<head>',
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
+	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
-
-if (!empty($LINK_CANONICAL)) {
-	echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
-}
-if (!empty($META_DESCRIPTION)) {
-	echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
-}
-echo '<meta name="robots" content="', $META_ROBOTS, '" />';
-if (!empty($META_GENERATOR)) {
-	echo '<meta name="generator" content="', $META_GENERATOR, '" />';
-}
 
 echo
 	$javascript,
