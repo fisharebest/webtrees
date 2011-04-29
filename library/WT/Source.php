@@ -29,8 +29,28 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Source extends WT_GedcomRecord {
+	// Implement source-specific privacy logic
+	protected function _canDisplayDetailsByType($access_level) {
+		// Hide sources if they are attached to private repositories ...
+		preg_match_all('/\n1 REPO @(.+)@/', $this->_gedrec, $matches);
+		foreach ($matches[0] as $match) {
+			$repo=WT_Repository::getInstance($match);
+			if ($repo && !$repo->canDisplayDetails($access_level)) {
+				return false;
+			}
+		}
+
+		// ... otherwise apply default behaviour
+		return parent::_canDisplayDetailsByType($access_level);
+	}
+
+	// Generate a private version of this record
+	protected function createPrivateGedcomRecord($access_level) {
+		return "0 @".$this->xref."@ ".$this->type."\n1 TITL ".WT_I18N::translate('Private');
+	}
+
 	public function getAuth() {
-		return get_gedcom_value('AUTH', 1, $this->gedrec, '', false);
+		return get_gedcom_value('AUTH', 1, $this->getGedcomRecord(), '', false);
 	}
 
 	// Generate a URL to this record, suitable for use in HTML

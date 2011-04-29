@@ -32,7 +32,8 @@ class WT_GedcomRecord {
 	protected $xref       =null;  // The record identifier
 	protected $type       =null;  // INDI, FAM, etc.
 	public    $ged_id     =null;  // The gedcom file, only set if this record comes from the database
-	protected $gedrec     =null;  // Raw gedcom text (privatised)
+	protected $_gedrec    =null;  // Raw gedcom text (unprivatised)
+	private   $gedrec     =null;  // Raw gedcom text (privatised)
 	protected $facts      =null;
 	protected $changeEvent=null;
 	private   $disp       =null;  // Can we display details of this object
@@ -47,22 +48,19 @@ class WT_GedcomRecord {
 	public function __construct($data) {
 		if (is_array($data)) {
 			// Construct from a row from the database
-			$this->xref  =$data['xref'];
-			$this->type  =$data['type'];
-			$this->ged_id=$data['ged_id'];
-			$this->gedrec=$data['gedrec'];
+			$this->xref   =$data['xref'];
+			$this->type   =$data['type'];
+			$this->ged_id =$data['ged_id'];
+			$this->_gedrec=$data['gedrec'];
 		} else {
 			// Construct from raw GEDCOM data
-			$this->gedrec=$data;
+			$this->_gedrec=$data;
 			if (preg_match('/^0 (?:@('.WT_REGEX_XREF.')@ )?('.WT_REGEX_TAG.')/', $data, $match)) {
 				$this->xref=$match[1];
 				$this->type=$match[2];
 				$this->ged_id=WT_GED_ID;
 			}
 		}
-
-		//-- set the gedcom record a privatized version
-		$this->gedrec=privatize_gedcom($this->ged_id, $this->gedrec);
 	}
 
 	// Get an instance of a GedcomRecord.  We either specify
@@ -199,6 +197,9 @@ class WT_GedcomRecord {
 	* get gedcom record
 	*/
 	public function getGedcomRecord() {
+		if ($this->gedrec===null) {
+			list($this->gedrec)=$this->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+		}
 		return $this->gedrec;
 	}
 	/**
@@ -286,10 +287,69 @@ class WT_GedcomRecord {
 		return $tmp==='';
 	}
 
+	// Work out whether this record can be shown to a user with a given access level
+	private function _canDisplayDetails($access_level) {
+		global $person_privacy, $HIDE_LIVE_PEOPLE, $PRIVACY_CHECKS;
+
+		//-- keep a count of how many times we have checked for privacy
+		++$PRIVACY_CHECKS;
+		// This setting would better be called "$ENABLE_PRIVACY"
+		if (!$HIDE_LIVE_PEOPLE) {
+			return true;
+		}
+
+		// We should always be able to see our own record (unless an admin is applying download restrictions)
+		if ($this->getXref()==WT_USER_GEDCOM_ID && $this->getGedId()==WT_GED_ID && $access_level==WT_USER_ACCESS_LEVEL) {
+			return true;
+		}
+
+		// Does this record have a RESN?
+		if (strpos($this->_gedrec, "\n1 RESN confidential")) {
+			return WT_PRIV_NONE>=$access_level;
+		}
+		if (strpos($this->_gedrec, "\n1 RESN privacy")) {
+			return WT_PRIV_USER>=$access_level;
+		}
+		if (strpos($this->_gedrec, "\n1 RESN none")) {
+			return true;
+		}
+
+		// Does this record have a default RESN?
+		if (isset($person_privacy[$this->getXref()])) {
+			return $person_privacy[$this->getXref()]>=$access_level;
+		}
+
+		// Privacy rules do not apply to admins
+		if (WT_PRIV_NONE>=$access_level) {
+			return true;
+		}
+
+		// Different types of record have different privacy rules
+		return $this->_canDisplayDetailsByType($access_level);
+	}
+
+	// Each object type may have its own special rules, and re-implement this function.
+	protected function _canDisplayDetailsByType($access_level) {
+		global $global_facts;
+
+		if (isset($global_facts[$this->getType()])) {
+			// Restriction found
+			return $global_facts[$this->getType()]>=$access_level;
+		} else {
+			// No restriction found - must be public:
+			return true;
+		}
+	}
+
 	// Can the details of this record be shown?
-	public function canDisplayDetails() {
+	public function canDisplayDetails($access_level=WT_USER_ACCESS_LEVEL) {
+
+		// Temporarily remove caching.  It is causing problems with
+		// the privacy filtering on the download gedcom page.
+		return $this->_canDisplayDetails($access_level);
+
 		if ($this->disp===null) {
-			$this->disp=canDisplayRecord($this->ged_id, $this->gedrec);
+			$this->disp=$this->_canDisplayDetails($access_level);
 		}
 		return $this->disp;
 	}
@@ -300,12 +360,54 @@ class WT_GedcomRecord {
 	}
 
 	// Can we edit this record?
+	// We use the unprivatized _gedrec as we must take account
+	// of the RESN tag, even if we are not permitted to see it.
 	public function canEdit() {
 		return
 			get_gedcom_setting($this->ged_id, 'ALLOW_EDIT_GEDCOM') && (
 				WT_USER_GEDCOM_ADMIN ||
-				WT_USER_CAN_EDIT && strpos($this->gedrec, "\n1 RESN locked")===false
+				WT_USER_CAN_EDIT && strpos($this->_gedrec, "\n1 RESN locked")===false
 			);
+	}
+
+	// Remove private data from the raw gedcom record.
+	// Return both the visible and invisible data.  We need the invisible data when editing.
+	public function privatizeGedcom($access_level) {
+		global $global_facts, $person_facts;
+
+		if ($this->canDisplayDetails($access_level)) {
+			// The record is not private, but the individual facts may be.
+			if (
+				!strpos($this->_gedrec, "\n2 RESN") &&
+				!isset($person_facts[$this->xref]) &&
+				!preg_match('/\n1 (?:'.implode('|', array_keys($global_facts)).')/', $this->_gedrec)
+			) {
+				// Nothing to indicate fact privacy needed
+				return array($this->_gedrec, '');
+			}
+
+			// Include the entire first line (for NOTE records)
+			list($gedrec)=explode("\n", $this->_gedrec, 2);
+
+			$private_gedrec='';
+			// Check each of the sub facts for access
+			preg_match_all('/\n1 .*(?:\n[2-9].*)*/', $this->_gedrec, $matches);
+			foreach ($matches[0] as $match) {
+				if (canDisplayFact($this->xref, $this->ged_id, $match, $access_level)) {
+					$gedrec.=$match;
+				} else {
+					$private_gedrec.=$match;
+				}
+			}
+			return array($gedrec, $private_gedrec);
+		} else {
+			return array($this->createPrivateGedcomRecord($access_level), '');
+		}
+	}
+
+	// Generate a private version of this record
+	protected function createPrivateGedcomRecord($access_level) {
+		return "0 @".$this->xref."@ ".$this->type."\n1 NOTE ".WT_I18N::translate('Private');
 	}
 
 	// Convert a name record into sortable and listable versions.  This default
@@ -336,7 +438,7 @@ class WT_GedcomRecord {
 			if ($this->canDisplayName()) {
 				$sublevel=$level+1;
 				$subsublevel=$sublevel+1;
-				if (preg_match_all("/^{$level} ({$fact}) (.+)((\n[{$sublevel}-9].+)*)/m", $this->gedrec, $matches, PREG_SET_ORDER)) {
+				if (preg_match_all("/^{$level} ({$fact}) (.+)((\n[{$sublevel}-9].+)*)/m", $this->getGedcomRecord(), $matches, PREG_SET_ORDER)) {
 					foreach ($matches as $match) {
 						// Treat 1 NAME / 2 TYPE married the same as _MARNM
 						if ($match[1]=='NAME' && $match[3]=="\n2 TYPE married") {
@@ -713,10 +815,8 @@ class WT_GedcomRecord {
 		if (!$this->canDisplayDetails()) {
 			return;
 		}
-		//-- must trim the record here because the record is trimmed in edit and it could mess up line numbers
-		$this->gedrec = trim($this->gedrec);
 		//-- find all the fact information
-		$indilines = explode("\n", $this->gedrec);   // -- find the number of lines in the individuals record
+		$indilines = explode("\n", $this->getGedcomRecord());   // -- find the number of lines in the individuals record
 		$lct = count($indilines);
 		$factrec = ''; // -- complete fact record
 		$line = '';   // -- temporary line buffer

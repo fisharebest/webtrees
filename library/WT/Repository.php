@@ -33,9 +33,15 @@ class WT_Repository extends WT_GedcomRecord {
 	public function getHtmlUrl() {
 		return parent::_getLinkUrl('repo.php?rid=', '&amp;');
 	}
+
 	// Generate a URL to this record, suitable for use in javascript, HTTP headers, etc.
 	public function getRawUrl() {
 		return parent::_getLinkUrl('repo.php?rid=', '&');
+	}
+
+	// Generate a private version of this record
+	protected function createPrivateGedcomRecord($access_level) {
+		return "0 @".$this->xref."@ REPO\n1 NAME ".WT_I18N::translate('Private');
 	}
 
 	// Get an array of structures containing all the names in the record

@@ -144,7 +144,7 @@ echo WT_JS_START;
 <?php
 echo WT_JS_END;
 //-- check if user has access to the gedcom record
-$disp = false;
+$edit = false;
 $success = false;
 
 if (!empty($pid)) {
@@ -153,12 +153,13 @@ if (!empty($pid)) {
 		$ct = preg_match("/^0 @$pid@ (.*)/i", $gedrec, $match);
 		if ($ct>0) {
 			$type = trim($match[1]);
-			$disp = canDisplayRecord(WT_GED_ID, $gedrec);
+			$tmp  = WT_GedcomRecord::getInstance($pid);
+			$edit = $tmp->canDisplayDetails() && $tmp->canEdit();
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
 		checkChangeTime($pid, $gedrec, safe_GET('accesstime', WT_REGEX_INTEGER));
 	} else {
-		$disp = true;
+		$edit = true;
 	}
 } elseif (!empty($famid)) {
 	if ($famid != "new") {
@@ -166,7 +167,8 @@ if (!empty($pid)) {
 		$ct = preg_match("/^0 @$famid@ (.*)/i", $gedrec, $match);
 		if ($ct>0) {
 			$type = trim($match[1]);
-			$disp = canDisplayRecord(WT_GED_ID, $gedrec);
+			$tmp  = WT_GedcomRecord::getInstance($pid);
+			$edit = $tmp->canDisplayDetails() && $tmp->canEdit();
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
 		checkChangeTime($famid, $gedrec, safe_GET('accesstime', WT_REGEX_INTEGER));
@@ -174,44 +176,17 @@ if (!empty($pid)) {
 } elseif (($action!="addchild")&&($action!="addchildaction")&&($action!="addnewsource")&&($action!="mod_edit_fact")&&($action!="addnewnote")&&($action!="addmedia_links")&&($action!="addnoteaction")&&($action!="addnoteaction_assisted")) {
 	echo '<span class="error">', WT_I18N::translate('The \$pid variable was empty. Unable to perform $action xxx.'), '</span>';
 	print_simple_footer();
-	$disp = true;
+	$edit = true;
 } else {
-	$disp = true;
+	$edit = true;
 }
 
-if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
-	//echo "pid: $pid<br />";
-	//echo "gedrec: $gedrec<br />";
-	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
-	//-- display messages as to why the editing access was denied
-	if (!WT_USER_CAN_EDIT) {
-		echo '<br />', WT_I18N::translate('This user name cannot edit this GEDCOM.');
-	}
-	if (!$ALLOW_EDIT_GEDCOM) {
-		echo '<br />', WT_I18N::translate('Editing this GEDCOM has been disabled by the administrator.');
-	}
-	if (!$disp) {
-		echo '<br />', WT_I18N::translate('Privacy settings prevent you from editing this record.');
-		if (!empty($pid)) {
-			echo '<br />', WT_I18N::translate('You have no access to'), " pid $pid.";
-		}
-		if (!empty($famid)) {
-			echo '<br />', WT_I18N::translate('You have no access to'), " famid $famid.";
-		}
-	}
-	if (empty($gedrec)) {
-		echo '<br /><span class="error">', WT_I18N::translate('The requested GEDCOM record could not be found.  This could be caused by a link to an invalid person or by a corrupt GEDCOM file.'), '</span>';
-	}
-	echo '<br /><br /><div class="center"><a href="javascript: ', WT_I18N::translate('Close Window'), '" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></div>';
+if (!WT_USER_CAN_EDIT || !$edit || !$ALLOW_EDIT_GEDCOM) {
+	echo
+		'<p class="error">', WT_I18N::translate('Privacy settings prevent you from editing this record.'), '</p>',
+		'<p><a href="javascript: ', WT_I18N::translate('Close Window'), '" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
 	print_simple_footer();
 	exit;
-}
-
-//-- privatize the record so that line numbers etc. match what was in the display
-//-- data that is hidden because of privacy is stored in the $pgv_private_records array
-//-- any private data will be restored when the record is replaced
-if (isset($gedrec)) {
-	$gedrec = privatize_gedcom(WT_GED_ID, $gedrec);
 }
 
 if (!isset($type)) {
@@ -276,6 +251,10 @@ case 'delete':
 			delete_gedrec($pid, WT_GED_ID);
 			$success=true;
 		} else {
+			// Retrieve the private data
+			$tmp=new WT_GedcomRecord($gedrec);
+			list($gedcom, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			
 			$mediaid='';
 			if (isset($_REQUEST['mediaid'])) {
 				$mediaid = $_REQUEST['mediaid'];
@@ -287,7 +266,7 @@ case 'delete':
 			} else {
 				$newged = remove_subline($gedrec, $linenum);
 			}
-			if (replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN)) {
+			if (replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN)) {
 				$success=true;
 			}
 		}
@@ -296,60 +275,56 @@ case 'delete':
 //------------------------------------------------------------------------------
 //-- echo a form to edit the raw gedcom record in a large textarea
 case 'editraw':
-	if (!WT_GedcomRecord::getInstance($pid)->canEdit()) {
-		echo '<br />', WT_I18N::translate('Privacy settings prevent you from editing this record.');
-		if (!empty($pid)) {
-			echo '<br />', WT_I18N::translate('You have no access to'), " pid $pid.";
-		}
-		if (!empty($famid)) {
-			echo '<br />', WT_I18N::translate('You have no access to'), " famid $famid.";
-		}
-		print_simple_footer();
-		exit;
-	} else {
-		echo '<br /><b>', WT_I18N::translate('Edit raw GEDCOM record'), '</b>', help_link('edit_edit_raw');
-		echo '<form method="post" action="edit_interface.php">';
-		echo '<input type="hidden" name="action" value="updateraw" />';
-		echo '<input type="hidden" name="pid" value="', $pid, '" />';
-		echo '<input id="savebutton2" type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
-		// Remove the first line of the gedrec - things go wrong when users
-		// change either the TYPE or XREF
-		// Notes are special - they may contain data on the first line
-		$gedrec=preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
-		list($gedrec1, $gedrec2)=explode("\n", $gedrec, 2);
-		echo '<textarea name="newgedrec1" rows="1"  cols="80" dir="ltr" readonly="yes">', $gedrec1, '</textarea><br />';
-		echo '<textarea name="newgedrec2" rows="20" cols="80" dir="ltr">', $gedrec2, "</textarea><br />";
-		if (WT_USER_IS_ADMIN) {
-			echo '<table class="facts_table">';
-			echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-			echo WT_I18N::translate('Admin Option'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
-			echo '<input type="checkbox" name="preserve_last_changed"';
-			if ($NO_UPDATE_CHAN) {
-				echo ' checked="checked"';
-			} 
-			echo ' />';
-			echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), '<br />';
-			$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
-			echo format_fact_date($event, false, true);
-			echo '</td></tr>';
-			echo '</table>';
-		}
-		print_specialchar_link("newgedrec", true);
-		echo '<br />';
-		echo '<input id="savebutton" type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
-		echo '</form>';
-		echo WT_JS_START;
-		echo "textbox = document.getElementById('newgedrec');";
-		echo "savebutton = document.getElementById('savebutton');";
-		echo 'if (textbox && savebutton) {';
-		echo ' window.resizeTo(textbox.offsetLeft+textbox.offsetWidth+100, savebutton.offsetTop+savebutton.offsetHeight+150);';
-		echo '}';
-		echo WT_JS_END;
+	// Hide the private data
+	$tmp=new WT_GedcomRecord($gedrec);
+	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+
+	echo '<br /><b>', WT_I18N::translate('Edit raw GEDCOM record'), '</b>', help_link('edit_edit_raw');
+	echo '<form method="post" action="edit_interface.php">';
+	echo '<input type="hidden" name="action" value="updateraw" />';
+	echo '<input type="hidden" name="pid" value="', $pid, '" />';
+	echo '<input id="savebutton2" type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
+	// Remove the first line of the gedrec - things go wrong when users
+	// change either the TYPE or XREF
+	// Notes are special - they may contain data on the first line
+	$gedrec=preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
+	list($gedrec1, $gedrec2)=explode("\n", $gedrec, 2);
+	echo '<textarea name="newgedrec1" rows="1"  cols="80" dir="ltr" readonly="yes">', $gedrec1, '</textarea><br />';
+	echo '<textarea name="newgedrec2" rows="20" cols="80" dir="ltr">', $gedrec2, "</textarea><br />";
+	if (WT_USER_IS_ADMIN) {
+		echo '<table class="facts_table">';
+		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
+		echo WT_I18N::translate('Admin Option'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+		echo '<input type="checkbox" name="preserve_last_changed"';
+		if ($NO_UPDATE_CHAN) {
+			echo ' checked="checked"';
+		} 
+		echo ' />';
+		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), '<br />';
+		$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
+		echo format_fact_date($event, false, true);
+		echo '</td></tr>';
+		echo '</table>';
 	}
+	print_specialchar_link("newgedrec", true);
+	echo '<br />';
+	echo '<input id="savebutton" type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
+	echo '</form>';
+	echo WT_JS_START;
+	echo "textbox = document.getElementById('newgedrec');";
+	echo "savebutton = document.getElementById('savebutton');";
+	echo 'if (textbox && savebutton) {';
+	echo ' window.resizeTo(textbox.offsetLeft+textbox.offsetWidth+100, savebutton.offsetTop+savebutton.offsetHeight+150);';
+	echo '}';
+	echo WT_JS_END;
 	break;
 //------------------------------------------------------------------------------
 //-- edit a fact record in a form
 case 'edit':
+	// Hide the private data
+	$tmp=new WT_GedcomRecord($gedrec);
+	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+
 	init_calendar_popup();
 	echo '<form name="editform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
 	echo '<input type="hidden" name="action" value="update" />';
@@ -604,7 +579,7 @@ case 'linkfamaction':
 				//-- only continue if the old husb/wife is not the same as the current one
 				if ($spid!=$pid) {
 					//-- change a of the old ids to the new id
-					$famrec = str_replace("1 $famtag @$spid@", "1 $famtag @$pid@", $famrec);
+					$famrec = str_replace("\n1 $famtag @$spid@", "\n1 $famtag @$pid@", $famrec);
 					if (replace_gedrec($famid, WT_GED_ID, $famrec, $update_CHAN)) {
 						$success=true;
 					}
@@ -612,7 +587,7 @@ case 'linkfamaction':
 					if (!empty($spid)) {
 						$srec = find_gedcom_record($spid, WT_GED_ID, true);
 						if ($srec) {
-							$srec = str_replace("1 $itag @$famid@", "", $srec);
+							$srec = str_replace("\n1 $itag @$famid@", "", $srec);
 							if (replace_gedrec($spid, WT_GED_ID, $srec, $update_CHAN)) {
 								$success=true;
 							}
@@ -1133,9 +1108,13 @@ case 'addrepoaction':
 //------------------------------------------------------------------------------
 //-- get the new incoming raw gedcom record and store it in the file
 case 'updateraw':
+	// Retrieve the private data
+	$tmp=new WT_GedcomRecord($gedrec);
+	list(, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			
 	if (isset($_POST['newgedrec1']) && isset($_POST['newgedrec2'])) {
 		$newgedrec = $_POST['newgedrec1']."\n".$_POST['newgedrec2'];
-		if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
+		if (replace_gedrec($pid, WT_GED_ID, $newgedrec.$private_gedrec, $update_CHAN)) {
 			$success=true;
 		}
 	}
@@ -1178,6 +1157,10 @@ case 'update':
 			$gedrec = find_gedcom_record($famid, WT_GED_ID, true);
 		}
 
+		// Retrieve the private data
+		$tmp=new WT_GedcomRecord($gedrec);
+		list($gedrec, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+			
 		// add or remove Y
 		if ($text[0]=="Y" or $text[0]=="y") $text[0]="";
 		if (in_array($tag[0], $emptyfacts) && array_unique($text)==array("") && !$islink[0]) $text[0]="Y";
@@ -1345,7 +1328,7 @@ case 'update':
 			}
 
 		}
-		if (replace_gedrec($pid, WT_GED_ID, $newged, $update_CHAN)) {
+		if (replace_gedrec($pid, WT_GED_ID, $newged.$private_gedrec, $update_CHAN)) {
 			$success=true;
 		}
 	} // end foreach $cens_pids  -------------
@@ -1402,9 +1385,8 @@ case 'addchildaction':
 		if (!empty($famid)) {
 			// Insert new child at the right place [ 1686246 ]
 			$newchild = WT_Person::getInstance($xref);
-			$family = WT_Family::getInstance($famid);
-			if ($family->getUpdatedFamily()) $family = $family->getUpdatedFamily();
-			$gedrec = $family->getGedcomRecord();
+			$gedrec=find_gedcom_record($famid, WT_GED_ID, true);
+			$family=new WT_Family($gedrec);
 			$done = false;
 			foreach ($family->getChildren() as $key=>$child) {
 				if (WT_Date::Compare($newchild->getEstimatedBirthDate(), $child->getEstimatedBirthDate())<0) {
@@ -1421,8 +1403,8 @@ case 'addchildaction':
 				$gedrec .= "\n1 CHIL @$xref@";
 			} elseif (!$done) {
 				// new child is the youngest or undated : insert after
-				$gedrec = str_replace("1 CHIL @".$child->getXref()."@",
-															"1 CHIL @".$child->getXref()."@\n1 CHIL @$xref@",
+				$gedrec = str_replace("\n1 CHIL @".$child->getXref()."@",
+															"\n1 CHIL @".$child->getXref()."@\n1 CHIL @$xref@",
 															$gedrec);
 			}
 			if (replace_gedrec($famid, WT_GED_ID, $gedrec, $update_CHAN)) {
@@ -1712,21 +1694,13 @@ case 'addopfchildaction':
 	break;
 //------------------------------------------------------------------------------
 case 'deleteperson':
-	if (!WT_Person::getInstance($pid)->canEdit()) {
-		echo '<br />', WT_I18N::translate('Privacy settings prevent you from editing this record.');
-		if (!empty($pid)) echo '<br />', WT_I18N::translate('You have no access to'), " pid $pid.";
-		if (!empty($famid)) echo '<br />', WT_I18N::translate('You have no access to'), " famid $famid.";
-	} elseif (delete_person($pid, $gedrec)) {
+	if (delete_person($pid, $gedrec)) {
 		$success=true;
 	}
 	break;
 //------------------------------------------------------------------------------
 case 'deletefamily':
-	if (!WT_Person::getInstance($famid)->canEdit()) {
-		echo '<br />', WT_I18N::translate('Privacy settings prevent you from editing this record.');
-		if (!empty($pid)) echo '<br />', WT_I18N::translate('You have no access to'), " pid $pid.";
-		if (!empty($famid)) echo '<br />', WT_I18N::translate('You have no access to'), " famid $famid.";
-	} elseif (delete_family($famid, $gedrec)) {
+	if (delete_family($famid, $gedrec)) {
 		$success=true;
 	}
 	break;

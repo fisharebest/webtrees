@@ -62,6 +62,23 @@ class WT_Media extends WT_GedcomRecord {
 		parent::__construct($data);
 	}
 
+	// Implement media-specific privacy logic ...
+	protected function _canDisplayDetailsByType($access_level) {
+		// Hide media objects if they are attached to private records
+		$linked_ids=WT_DB::prepare(
+			"SELECT l_from FROM `##link` WHERE l_to=? AND l_file=?"
+		)->execute(array($this->xref, $this->ged_id))->fetchOneColumn();
+		foreach ($linked_ids as $linked_id) {
+			$linked_record=WT_GedcomRecord::getInstance($linked_id);
+			if ($linked_record && !$linked_record->canDisplayName($access_level)) {
+				return false;
+			}
+		}
+
+		// ... otherwise apply default behaviour
+		return parent::_canDisplayDetailsByType($access_level);
+	}
+
 	/**
 	 * get the media note
 	 * @return string
@@ -165,7 +182,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string
 	 */
 	function getMediatype() {
-		$mediaType = strtolower(get_gedcom_value('FORM:TYPE', 2, $this->gedrec));
+		$mediaType = strtolower(get_gedcom_value('FORM:TYPE', 2, $this->getGedcomRecord()));
 		return $mediaType;
 	}
 
@@ -291,7 +308,7 @@ class WT_Media extends WT_GedcomRecord {
 
 	// Get an array of structures containing all the names in the record
 	public function getAllNames() {
-		if (strpos($this->gedrec, "\n1 TITL ")) {
+		if (strpos($this->getGedcomRecord(), "\n1 TITL ")) {
 			// Earlier gedcom versions had level 1 titles
 			return parent::_getAllNames('TITL', 1);
 		} else {

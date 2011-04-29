@@ -70,8 +70,81 @@ class WT_Person extends WT_GedcomRecord {
 	}
 
 	// Can the name of this record be shown?
-	public function canDisplayName() {
-		return $this->canDisplayDetails() || showLivingNameById($this->xref, $this->ged_id);
+	public function canDisplayName($access_level=WT_USER_ACCESS_LEVEL) {
+		global $SHOW_LIVING_NAMES;
+
+		return $SHOW_LIVING_NAMES>=$access_level || $this->canDisplayDetails($access_level);
+	}
+
+	// Implement person-specific privacy logic
+	protected function _canDisplayDetailsByType($access_level) {
+		global $SHOW_DEAD_PEOPLE, $KEEP_ALIVE_YEARS_BIRTH, $KEEP_ALIVE_YEARS_DEATH;
+
+		// Dead people...
+		if ($SHOW_DEAD_PEOPLE>=$access_level && $this->isDead()) {
+			$keep_alive=false;
+			if ($KEEP_ALIVE_YEARS_BIRTH) {
+				preg_match_all('/\n1 (?:'.WT_EVENTS_BIRT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->_gedrec, $matches, PREG_SET_ORDER);
+				foreach ($matches as $match) {
+					$date=new WT_Date($match[1]);
+					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_BIRTH > date('Y')) {
+						$keep_alive=true;
+						break;
+					}
+				}
+			}
+			if ($KEEP_ALIVE_YEARS_DEATH) {
+				preg_match_all('/\n1 (?:'.WT_EVENTS_DEAT.').*(?:\n[2-9].*)*(?:\n2 DATE (.+))/', $this->_gedrec, $matches, PREG_SET_ORDER);
+				foreach ($matches as $match) {
+					$date=new WT_Date($match[1]);
+					if ($date->isOK() && $date->gregorianYear()+$KEEP_ALIVE_YEARS_DEATH > date('Y')) {
+						$keep_alive=true;
+						break;
+					}
+				}
+			}
+			if (!$keep_alive) {
+				return true;
+			}
+		}
+		// Consider relationship privacy (unless an admin is applying download restrictions)
+		if (WT_USER_GEDCOM_ID && WT_USER_PATH_LENGTH && $this->getGedId()==WT_GED_ID && $access_level=WT_USER_ACCESS_LEVEL) {
+			$relationship=get_relationship(WT_USER_GEDCOM_ID, $this->getXref(), true, WT_USER_PATH_LENGTH);
+			return $relationship!==false;
+		}
+		// No restriction found - show living people to members only:
+		return WT_PRIV_USER>=$access_level;
+	}
+
+	// Generate a private version of this record
+	protected function createPrivateGedcomRecord($access_level) {
+		global $SHOW_PRIVATE_RELATIONSHIPS, $SHOW_LIVING_NAMES;
+
+		$rec='0 @'.$this->xref.'@ INDI';
+		if ($SHOW_LIVING_NAMES>=$access_level) {
+			// Show all the NAME tags, including subtags
+			preg_match_all('/\n1 NAME.*(?:\n[2-9].*)*/', $this->_gedrec, $matches);
+			foreach ($matches[0] as $match) {
+				if (canDisplayFact($this->xref, $this->ged_id, $match, $access_level)) {
+					$rec.=$match;
+				}
+			}
+		} else {
+			$rec.="\n1 NAME ".WT_I18N::translate('Private');
+		}
+		// Just show the 1 FAMC/FAMS tag, not any subtags, which may contain private data
+		preg_match_all('/\n1 (?:FAMC|FAMS) @('.WT_REGEX_XREF.')@/', $this->_gedrec, $matches, PREG_SET_ORDER);
+		foreach ($matches as $match) {
+			$rela=WT_Family::getInstance($match[1]);
+			if ($SHOW_PRIVATE_RELATIONSHIPS || $rela && $rela->canDisplayName($access_level)) {
+				$rec.=$match[0];
+			}
+		}
+		// Don't privatize sex.
+		if (preg_match('/\n1 SEX [MFU]/', $this->_gedrec, $match)) {
+			$rec.=$match[0];
+		}
+		return $rec;
 	}
 
 	// Static helper function to sort an array of people by birth date
@@ -84,13 +157,93 @@ class WT_Person extends WT_GedcomRecord {
 		return WT_Date::Compare($x->getEstimatedDeathDate(), $y->getEstimatedDeathDate());
 	}
 
-	/**
-	* Return whether or not this person is already dead
-	* @return boolean true if dead, false if alive
-	*/
-	function isDead() {
+	// Calculate whether this person is living or dead.
+	// If not known to be dead, then assume living.
+	private function _isDead() {
+		global $MAX_ALIVE_AGE;
+
+		// "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
+		if (preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 (DATE|PLAC) )/', $this->_gedrec)) {
+			return true;
+		}
+
+		// If any event occured more than $MAX_ALIVE_AGE years ago, then assume the person is dead
+		preg_match_all('/\n2 DATE (.+)/', $this->_gedrec, $date_matches);
+		foreach ($date_matches[1] as $date_match) {
+			$date=new WT_Date($date_match);
+			if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*$MAX_ALIVE_AGE) {
+				return true;
+			}
+		}
+
+		// If we found no dates then check the dates of close relatives.
+
+		// Check parents (birth and adopted)
+		foreach ($this->getChildFamilies() as $family) {
+			foreach ($family->getSpouses() as $spouse) {
+				$date=$spouse->getBirthDate();
+				// Assume parents are no more than 45 years older than their children
+				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+45)) {
+					return true;
+				}
+			}
+		}
+
+		// Check spouses
+		foreach ($this->getSpouseFamilies() as $family) {
+			preg_match_all('/\n2 DATE (.+)/', $family->_gedrec, $date_matches);
+			foreach ($date_matches[1] as $date_match) {
+				$date=new WT_Date($date_match);
+				// Assume marriage occurs after age of 10
+				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-10)) {
+					return true;
+				}
+			}
+			// Check spouse dates
+			$spouse=$family->getSpouse($this);
+			if ($spouse) {
+				preg_match_all('/\n2 DATE (.+)/', $spouse->_gedrec, $date_matches);
+				foreach ($date_matches[1] as $date_match) {
+					$date=new WT_Date($date_match);
+					// Assume max age difference between spouses of 40 years
+					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+40)) {
+						return true;
+					}
+				}
+			}
+			// Check child dates
+			foreach ($family->getChildren() as $child) {
+				preg_match_all('/\n2 DATE (.+)/', $child->_gedrec, $date_matches);
+				// Assume children born after age of 15
+				foreach ($date_matches[1] as $date_match) {
+					$date=new WT_Date($date_match);
+					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-15)) {
+						return true;
+					}
+				}
+				// Check grandchildren
+				foreach ($child->getSpouseFamilies() as $child_family) {
+					foreach ($child_family->getChildren() as $grandchild) {
+						preg_match_all('/\n2 DATE (.+)/', $grandchild->getGedcomRecord(), $date_matches);
+						// Assume grandchildren born after age of 30
+						foreach ($date_matches[1] as $date_match) {
+							$date=new WT_Date($date_match);
+							if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE-30)) {
+								return true;
+							}
+						}
+					}
+				}
+			}
+		}
+		return false;
+	}
+
+	// Find out whether the person is dead - and store the result in the DB
+	// for future use.
+	public function isDead() {
 		if ($this->isdead==-1) {
-			$this->isdead=is_dead($this->gedrec, $this->ged_id);
+			$this->isdead=$this->_isDead();
 			WT_DB::prepare(
 				"UPDATE `##individuals` SET i_isdead=? WHERE i_id=? AND i_file=?"
 			)->execute(array($this->isdead, $this->xref, $this->ged_id));
@@ -104,7 +257,7 @@ class WT_Person extends WT_GedcomRecord {
 	*/
 	function findHighlightedMedia() {
 		if (is_null($this->highlightedimage)) {
-			$this->highlightedimage = find_highlighted_object($this->xref, $this->ged_id, $this->gedrec);
+			$this->highlightedimage = find_highlighted_object($this->xref, $this->ged_id, $this->getGedcomRecord());
 		}
 		return $this->highlightedimage;
 	}
@@ -436,9 +589,11 @@ class WT_Person extends WT_GedcomRecord {
 	* get the sex
 	* @return string  return M, F, or U
 	*/
+	// Use the un-privatised gedcom record.  We call this function during
+	// the privatize-gedcom function, and we are allowed to know this.
 	function getSex() {
 		if (is_null($this->sex)) {
-			if (preg_match('/\n1 SEX ([MF])/', $this->gedrec, $match)) {
+			if (preg_match('/\n1 SEX ([MF])/', $this->_gedrec, $match)) {
 				$this->sex=$match[1];
 			} else {
 				$this->sex='U';
@@ -551,19 +706,15 @@ class WT_Person extends WT_GedcomRecord {
 
 	// Get a list of this person's spouse families
 	function getSpouseFamilies() {
-		global $SHOW_LIVING_NAMES;
+		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		if ($this->_spouseFamilies===null) {
 			$this->_spouseFamilies=array();
-			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
+			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
-				if (!$family) {
-					echo '<span class="warning">', WT_I18N::translate('Unable to find record with ID'), ' ', $pid, '</span>';
-				} else {
-					if ($SHOW_LIVING_NAMES || $family->canDisplayDetails()) {
-						$this->_spouseFamilies[]=$family;
-					}
+				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canDisplayDetails())) {
+					$this->_spouseFamilies[]=$family;
 				}
 			}
 		}
@@ -588,27 +739,23 @@ class WT_Person extends WT_GedcomRecord {
 
 	// Get a count of the children for this individual
 	function getNumberOfChildren() {
-		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->gedrec);
-		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->gedrec);
+		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->getGedcomRecord());
+		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->getGedcomRecord());
 		$nchi3=count(fetch_child_ids($this->xref, $this->ged_id));
 		return max($nchi1, $nchi2, $nchi3);
 	}
-	
+
 	// Get a list of this person's child families (i.e. their parents)
 	function getChildFamilies() {
-		global $SHOW_LIVING_NAMES;
+		global $SHOW_PRIVATE_RELATIONSHIPS;
 
 		if ($this->_childFamilies===null) {
 			$this->_childFamilies=array();
-			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
+			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
-				if (!$family) {
-					echo '<span class="warning">', WT_I18N::translate('Unable to find record with ID'), ' ', $pid, '</span>';
-				} else {
-					if ($SHOW_LIVING_NAMES || $family->canDisplayDetails()) {
-						$this->_childFamilies[]=$family;
-					}
+				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canDisplayDetails())) {
+					$this->_childFamilies[]=$family;
 				}
 			}
 		}
@@ -630,19 +777,19 @@ class WT_Person extends WT_GedcomRecord {
 			// If there is more than one FAMC record, choose the preferred parents:
 			// a) records with '2 _PRIMARY'
 			foreach ($families as $famid=>$fam) {
-				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->gedrec)) {
+				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 _PRIMARY Y)/", $this->getGedcomRecord())) {
 					return $fam;
 				}
 			}
 			// b) records with '2 PEDI birt'
 			foreach ($families as $famid=>$fam) {
-				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->gedrec)) {
+				if (preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI birth)/", $this->getGedcomRecord())) {
 					return $fam;
 				}
 			}
 			// c) records with no '2 PEDI'
 			foreach ($families as $famid=>$fam) {
-				if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->gedrec)) {
+				if (!preg_match("/\n1 FAMC @{$famid}@\n(?:[2-9].*\n)*(?:2 PEDI)/", $this->getGedcomRecord())) {
 					return $fam;
 				}
 			}
@@ -655,7 +802,7 @@ class WT_Person extends WT_GedcomRecord {
 	* @return string FAMC:PEDI value [ adopted | birth | foster | sealing ]
 	*/
 	function getChildFamilyPedigree($famid) {
-		$subrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $this->gedrec);
+		$subrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $this->getGedcomRecord());
 		$pedi = get_gedcom_value('PEDI', 2, $subrec, '', false);
 		// birth=default => return an empty string
 		return ($pedi=='birth') ? '' : $pedi;
@@ -685,7 +832,7 @@ class WT_Person extends WT_GedcomRecord {
 		}
 		return $step_families;
 	}
-	
+
 	// Get a list of step-child families
 	function getSpouseStepFamilies() {
 		$step_families=array();
@@ -702,7 +849,7 @@ class WT_Person extends WT_GedcomRecord {
 		}
 		return $step_families;
 	}
-	
+
 	/**
 	* get global facts
 	* @return array
@@ -735,7 +882,7 @@ class WT_Person extends WT_GedcomRecord {
 	*/
 	function getChildFamilyLabel($family) {
 		if (!is_null($family)) {
-			$famlink = get_sub_record(1, '1 FAMC @'.$family->getXref().'@', $this->gedrec);
+			$famlink = get_sub_record(1, '1 FAMC @'.$family->getXref().'@', $this->getGedcomRecord());
 			if (preg_match('/2 PEDI (.*)/', $famlink, $fmatch)) {
 				switch ($fmatch[1]) {
 				case 'adopted': return WT_I18N::translate('Family with adoptive parents');
@@ -914,7 +1061,7 @@ class WT_Person extends WT_GedcomRecord {
 			$this->add_asso_facts();
 		}
 	}
-	
+
 	// Add parents' (and parents' relatives') events to individual facts array
 	function add_parents_facts($person, $sosa) {
 		global $SHOW_RELATIVES_EVENTS;
@@ -935,7 +1082,7 @@ class WT_Person extends WT_GedcomRecord {
 					$this->add_parents_facts($spouse, $spouse->getSex()=='F' ? 3 : 2);
 				}
 			}
-	
+
 			$rela='';
 			break;
 		case 2:

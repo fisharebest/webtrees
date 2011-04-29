@@ -86,8 +86,8 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 
 		$this->action = safe_GET("action");
 		$this->id = safe_GET('id');
-		$remove = safe_GET('remove',"","no");
-		$convert = safe_GET('convert',"","no");
+		$remove = safe_GET('remove',"yes","no");
+		$convert = safe_GET('convert',"yes","no");
 		$this->Zip = safe_GET('Zip');
 		$this->IncludeMedia = safe_GET('IncludeMedia');
 		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT, $_SESSION['exportConvPath']);
@@ -216,13 +216,15 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			for ($i = 0; $i < $ct; $i++) {
 				$clipping = $cart[$i];
 				if ($clipping['gedcom'] == $GEDCOM) {
-					$record = find_gedcom_record($clipping['id'], WT_GED_ID);
+					list($record) = WT_GedcomRecord::getInstance($clipping['id'])->privatizeGedcom($access_level);
+					$record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
+					if ($remove=='yes') {
+						$record=remove_custom_tags($record);
+					}
 					$savedRecord = $record; // Save this for the "does this file exist" check
-					if ($clipping['type']=='obje') $record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
-					$record = privatize_gedcom(WT_GED_ID, $record, $access_level);
-					$record = remove_custom_tags($record, $remove);
-					if ($convert == "yes")
-					$record = utf8_decode($record);
+					if ($convert=='yes') {
+						$record=utf8_decode($record);
+					}
 					switch ($clipping['type']) {
 					case 'indi':
 						$ft = preg_match_all("/1 FAMC @(.*)@/", $record, $match, PREG_SET_ORDER);

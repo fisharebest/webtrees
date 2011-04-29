@@ -77,6 +77,22 @@ class WT_Family extends WT_GedcomRecord {
 		parent::__construct($data);
 	}
 
+	// Generate a private version of this record
+	protected function createPrivateGedcomRecord($access_level) {
+		global $SHOW_PRIVATE_RELATIONSHIPS;
+
+		$rec='0 @'.$this->xref.'@ FAM';
+		// Just show the 1 CHIL/HUSB/WIFE tag, not any subtags, which may contain private data
+		preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $this->_gedrec, $matches, PREG_SET_ORDER);
+		foreach ($matches as $match) {
+			$rela=WT_Person::getInstance($match[1]);
+			if ($SHOW_PRIVATE_RELATIONSHIPS || $rela && $rela->canDisplayName($access_level)) {
+				$rec.=$match[0];
+			}
+		}
+		return $rec;
+	}
+
 	/**
 	 * get the husband's person object
 	 * @return Person
@@ -90,6 +106,19 @@ class WT_Family extends WT_GedcomRecord {
 	 */
 	function &getWife() {
 		return $this->wife;
+	}
+
+	// Implement family-specific privacy logic
+	protected function _canDisplayDetailsByType($access_level) {
+		// Hide a family if any member is private
+		preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $this->_gedrec, $matches);
+		foreach ($matches[1] as $match) {
+			$person=WT_Person::getInstance($match);
+			if ($person && !$person->canDisplayName($access_level)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
@@ -131,14 +160,14 @@ class WT_Family extends WT_GedcomRecord {
 	 * get the children
 	 * @return array array of children Persons
 	 */
-	function getChildren() {
+	function getChildren($access_level=WT_USER_ACCESS_LEVEL) {
 		if ($this->_children===null) {
 			$this->_children=array();
-			preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->gedrec, $match);
+			preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->getGedcomRecord(), $match);
 			foreach ($match[1] as $pid) {
 				$child=WT_Person::getInstance($pid);
 				if ($child) {
-					if ($child->canDisplayName()) {
+					if ($child->canDisplayName($access_level)) {
 						$this->_children[]=$child;
 					}
 				} else {
@@ -160,8 +189,8 @@ class WT_Family extends WT_GedcomRecord {
 	 */
 	function getNumberOfChildren() {
 
-		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->gedrec);
-		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->gedrec);
+		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->getGedcomRecord());
+		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->getGedcomRecord());
 		$nchi3=count($this->getChildren());
 		return $this->numChildren=max($nchi1, $nchi2, $nchi3);
 	}
@@ -216,7 +245,7 @@ class WT_Family extends WT_GedcomRecord {
 	 * parse marriage record
 	 */
 	function _parseMarriageRecord() {
-		$this->marriage = new WT_Event(trim(get_sub_record(1, '1 MARR', $this->gedrec)), -1);
+		$this->marriage = new WT_Event(trim(get_sub_record(1, '1 MARR', $this->getGedcomRecord())), -1);
 		$this->marriage->setParentObject($this);
 	}
 
