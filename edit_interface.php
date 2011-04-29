@@ -895,6 +895,10 @@ case 'addmedia_links':
 
 //-- edit source
 case 'editsource':
+	// Hide the private data
+	$tmp=new WT_GedcomRecord($gedrec);
+	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	
 	init_calendar_popup();
 	echo '<form method="post" action="edit_interface.php" enctype="multipart/form-data">';
 	echo '<input type="hidden" name="action" value="update" />';
@@ -953,6 +957,10 @@ case 'editsource':
 //------------------------------------------------------------------------------
 //-- edit a Shared Note
 case 'editnote':
+	// Hide the private data
+	$tmp=new WT_GedcomRecord($gedrec);
+	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+	
 	?>
 	<b><?php echo WT_I18N::translate('Edit Shared Note'), "&nbsp;&nbsp;(" . $pid . ")"; ?></b><br /><br />
 	<form method="post" action="edit_interface.php" >
@@ -960,7 +968,6 @@ case 'editnote':
 		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
 
 		<?php
-		$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 		if (preg_match("/^0 @$pid@ NOTE ?(.*)/", $gedrec, $n1match)) {
 			$note_content=$n1match[1].get_cont(1, $gedrec, false);
 			
@@ -1749,6 +1756,10 @@ if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 	break;
 //------------------------------------------------------------------------------
 case 'editname':
+	// Hide the private data
+	$tmp=new WT_GedcomRecord($gedrec);
+	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
+
 	$gedlines = explode("\n", trim($gedrec));
 	$fields = explode(' ', $gedlines[$linenum]);
 	$glevel = $fields[0];
