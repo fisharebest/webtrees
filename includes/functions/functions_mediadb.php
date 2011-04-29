@@ -428,7 +428,7 @@ function filterMedia($media, $filter, $acceptExt) {
 		$acceptExt = "";
 
 	//-- Check Privacy first.  No point in proceeding if Privacy says "don't show"
-	if (!WT_Media::getInstance($media["XREF"])->canDisplayDetails()) {
+	if ($media["XREF"] && !WT_Media::getInstance($media["XREF"])->canDisplayDetails()) {
 		return false;
 	}
 
