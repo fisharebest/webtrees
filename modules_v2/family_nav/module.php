@@ -637,18 +637,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 							// Husband ------------------------------
 							if ($husb || $num>0) {
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Family book chart').": ".$famid;
-								} else {
-									$title = $famid." :".WT_I18N::translate('Family book chart');
-								}
 								if ($husb) {
 									$person_parent="Yes";
-									if ($TEXT_DIRECTION=="ltr") {
-										$title = WT_I18N::translate('Individual information').": ".$husb->getXref();
-									} else {
-										$title = $husb->getXref()." :".WT_I18N::translate('Individual information');
-									}
 									$parentlinks .= "<a id=\"phusb\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
 									$parentlinks .= "&nbsp;".PrintReady($husb->getFullName());
 									$parentlinks .= "</a>";
@@ -659,18 +649,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 							// Wife ------------------------------
 							if ($wife || $num>0) {
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Family book chart').": ".$famid;
-								} else {
-									$title = $famid." :".WT_I18N::translate('Family book chart');
-								}
 								if ($wife) {
 									$person_parent="Yes";
-									if ($TEXT_DIRECTION=="ltr") {
-										$title = WT_I18N::translate('Individual information').": ".$wife->getXref();
-									} else {
-										$title = $wife->getXref()." :".WT_I18N::translate('Individual information');
-									}
 									$parentlinks .= "<a id=\"pwife\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
 									$parentlinks .= "&nbsp;".PrintReady($wife->getFullName());
 									$parentlinks .= "</a>";
@@ -695,18 +675,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							} else {
 								// Husband -----------------------
 								if ($husb || $num>0) {
-									if ($TEXT_DIRECTION=="ltr") {
-										$title = WT_I18N::translate('Family book chart').": ".$famid;
-									} else {
-										$title = $famid." :".WT_I18N::translate('Family book chart');
-									}
 									if ($husb) {
 										$person_step="Yes";
-										if ($TEXT_DIRECTION=="ltr") {
-											$title = WT_I18N::translate('Individual information').": ".$husb->getXref();
-										} else {
-											$title = $husb->getXref()." :".WT_I18N::translate('Individual information');
-										}
 										$parentlinks .= "<a id=\"shusb\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
 										$parentlinks .= "&nbsp;".PrintReady($husb->getFullName());
 										$parentlinks .= "</a>";
@@ -718,18 +688,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							if ($natmom != "yes") {
 								// Wife ----------------------------
 								if ($wife || $num>0) {
-									if ($TEXT_DIRECTION=="ltr") {
-										$title = WT_I18N::translate('Family book chart').": ".$famid;
-									} else {
-										$title = $famid." :".WT_I18N::translate('Family book chart');
-									}
 									if ($wife) {
 										$person_step="Yes";
-										if ($TEXT_DIRECTION=="ltr") {
-											$title = WT_I18N::translate('Individual information').": ".$wife->getXref();
-										} else {
-											$title = $wife->getXref()." :".WT_I18N::translate('Individual information');
-										}
 										$parentlinks .= "<a id=\"swife\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
 										$parentlinks .= "&nbsp;".PrintReady($wife->getFullName());
 										$parentlinks .= "</a>";
@@ -748,17 +708,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 						// Spouse ------------------------------
 						if ($spouse || $num>0) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
-							} else {
-								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
-							}
 							if ($spouse) {
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Individual information').": ".$spouse->getXref();
-								} else {
-									$title = $spouse->getXref()." :".WT_I18N::translate('Individual information');
-								}
 								$spouselinks .= "<a id=\"spouse\" href=\"".$spouse->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$spouse->getHtmlUrl()."');\">";
 								$spouselinks .= "&nbsp;".PrintReady($spouse->getFullName());
 								$spouselinks .= "</a>";
@@ -778,7 +728,6 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 									$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
 								}
 								$persons="Yes";
-								$title = WT_I18N::translate('Individual information').": ".$child->getXref();
 								$spouselinks .= "<li id=\"flyout3\">";
 								$spouselinks .= "<a href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 								$spouselinks .= PrintReady($child->getFullName());

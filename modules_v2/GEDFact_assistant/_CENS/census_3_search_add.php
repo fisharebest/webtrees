@@ -1553,11 +1553,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 						//-- Parent Husband ------------------------------
 						if ($husb || $num>0) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
-							} else {
-								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
-							}
 							if ($husb) {
 								//-- Parent Husbands Parents ----------------------
 								$gparent=WT_Person::getInstance($husb->getXref());
@@ -1572,11 +1567,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 								//-- Parent Husbands Details ----------------------
 								$person_parent="Yes";
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Individual information').": ".$husb->getXref();
-								} else {
-									$title = $husb->getXref()." :".WT_I18N::translate('Individual information');
-								}
 								$tmp=$husb->getXref();
 								if ($husb->canDisplayName()) {
 									$nam   = $husb->getAllNames();
@@ -1645,11 +1635,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 						//-- Parent Wife ------------------------------
 						if ($wife || $num>0) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
-							} else {
-								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
-							}
 							if ($wife) {
 								//-- Parent Wifes Parents ----------------------
 								$gparent=WT_Person::getInstance($wife->getXref());
@@ -1664,11 +1649,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 								//-- Parent Wifes Details ----------------------
 								$person_parent="Yes";
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Individual information').": ".$wife->getXref();
-								} else {
-									$title = $wife->getXref()." :".WT_I18N::translate('Individual information');
-								}
 								$tmp=$wife->getXref();
 								if ($wife->canDisplayName()) {
 									$married = WT_Date::Compare($censdate, $marrdate);
@@ -1782,11 +1762,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						if ($natdad == "yes") {
 						} else {
 							if (($husb || $num>0) && $husb->getLabel() != ".") {
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
-								} else {
-									$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
-								}
 								if ($husb) {
 									//-- Step Husbands Parents -----------------------------
 									$gparent=WT_Person::getInstance($husb->getXref());
@@ -1801,11 +1776,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									}
 									//-- Step Husband Details ------------------------------
 									$person_step="Yes";
-									if ($TEXT_DIRECTION=="ltr") {
-										$title = WT_I18N::translate('Individual information').": ".$husb->getXref();
-									} else {
-										$title = $husb->getXref()." :".WT_I18N::translate('Individual information');
-									}
 									$tmp=$husb->getXref();
 									if ($husb->canDisplayName()) {
 										$nam   = $husb->getAllNames();
@@ -1877,11 +1847,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						if ($natmom == "yes") {
 						} else {
 							if ($wife || $num>0) {
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
-								} else {
-									$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
-								}
 								if ($wife) {
 									//-- Step Wifes Parents ---------------------------
 									$gparent=WT_Person::getInstance($wife->getXref());
@@ -1896,11 +1861,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									}
 									//-- Step Wife Details ------------------------------
 									$person_step="Yes";
-									if ($TEXT_DIRECTION=="ltr") {
-										$title = WT_I18N::translate('Individual information').": ".$wife->getXref();
-									} else {
-										$title = $wife->getXref()." :".WT_I18N::translate('Individual information');
-									}
 									$tmp=$wife->getXref();
 									if ($wife->canDisplayName()) {
 										$married = WT_Date::Compare($censdate, $marrdate);
@@ -2012,11 +1972,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						
 						//-- Spouse -----------------------------------------
 						if ($spouse || $num>0) {
-							if ($TEXT_DIRECTION=="ltr") {
-								$title = WT_I18N::translate('Family book chart').": ".$family->getXref();
-							} else {
-								$title = $family->getXref()." :".WT_I18N::translate('Family book chart');
-							}
 							if ($spouse) {
 
 								//-- Spouse Parents -----------------------------
@@ -2032,11 +1987,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 
 								//-- Spouse Details -----------------------------
-								if ($TEXT_DIRECTION=="ltr") {
-									$title = WT_I18N::translate('Individual information').": ".$spouse->getXref();
-								} else {
-									$title = $spouse->getXref()." :".WT_I18N::translate('Individual information');
-								}
 								$tmp=$spouse->getXref();
 								if ($spouse->canDisplayName()) {
 									$married = WT_Date::Compare($censdate, $marrdate);
@@ -2169,7 +2119,6 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									}
 								}
 								// Childs Details -------------------------
-								$title = WT_I18N::translate('Individual information').": ".$cpid;
 								$spouselinks .= "<li>";
 								if ($child->canDisplayName()) {
 									$nam   = $child->getAllNames();
