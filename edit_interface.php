@@ -167,7 +167,7 @@ if (!empty($pid)) {
 		$ct = preg_match("/^0 @$famid@ (.*)/i", $gedrec, $match);
 		if ($ct>0) {
 			$type = trim($match[1]);
-			$tmp  = WT_GedcomRecord::getInstance($pid);
+			$tmp  = WT_GedcomRecord::getInstance($famid);
 			$edit = $tmp->canDisplayDetails() && $tmp->canEdit();
 		}
 		// Don't allow edits if the record has changed since the edit-link was created
