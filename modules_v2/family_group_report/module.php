@@ -51,7 +51,7 @@ class family_group_report_WT_Module extends WT_Module implements WT_Module_Repor
 		global $controller;
 
 		if ($controller && isset($controller->famid)) {
-			$pid='&amp;pid='.$controller->famid;
+			$pid='&amp;famid='.$controller->famid;
 		} else {
 			$pid='';
 		}
