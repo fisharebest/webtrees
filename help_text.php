@@ -2171,7 +2171,7 @@ case 'alpha':
 	break;
 
 case 'ancestry_chart':
-	$title=WT_I18N::translate('Ancestry chart');
+	$title=WT_I18N::translate('Ancestors');
 	$text=WT_I18N::translate('The Ancestry page is very similar to the <a href="?help=pedigree.php">Pedigree Tree</a>, but with more details and alternate <a href="?help=chart_style">Chart style</a> displays.<br /><br />Each ancestry is shown with a unique number, calculated according to the <i>Sosa-Stradonitz</i> system:<div style="padding-left:30px;"><b>Even</b> numbers for men (child*2)<br /><b>Odd</b> numbers for women (husband+1) except for <b>1</b></div><br />Example:<br /><div style="padding-left:30px;">The root person is <b>1</b>, regardless of gender.<br /><b>1</b>\'s father is <b>2</b> (<b>1</b> * 2), mother is <b>3</b> (<b>2</b> + 1).<br /><b>2</b>\'s father is <b>4</b> (<b>2</b> * 2), mother is <b>5</b> (<b>4</b> + 1).<br /><b>3</b>\'s father is <b>6</b> (<b>3</b> * 2), mother is <b>7</b> (<b>6</b> + 1).<br /><b>7</b>\'s father is <b>14</b> (<b>7</b> * 2), mother is <b>15</b> (<b>14</b> +1).</div><br />etc.');
 	break;
 
@@ -2437,12 +2437,12 @@ case 'fambook_descent':
 	break;
 
 case 'family_book_chart':
-	$title=WT_I18N::translate('Family book chart');
+	$title=WT_I18N::translate('Family book');
 	$text=WT_I18N::translate('This chart is very similar to the Hourglass chart.  It will show the ancestors and descendants of the selected root person on the same chart.  It will also show the descendants of the root person in the same Hourglass format.<br /><br />The root person is centered in the middle of the page with his descendants listed to the left and his ancestors listed to the right.  In this view, each generation is lined up across the page starting with the earliest generation and ending with the latest.<br /><br />Each descendant of the root person will become the root person of an additional hourglass chart, printed on the same page.  This process repeats until the specified number of descendant generations have been printed.');
 	break;
 
 case 'fan_style':
-	$title=WT_I18N::translate('Circle diagram');
+	$title=WT_I18N::translate('Fan chart');
 	$text=WT_I18N::translate('This option controls the appearance of the diagram.<ul><li><b>1/2</b><br />Half circle 180&deg; diagram</li><li><b>3/4</b><br />Three-quarter 270&deg; diagram, sometimes called <i>Angel wing</i></li><li><b>4/4</b><br />Full circle 360&deg; diagram</li></ul>');
 	break;
 
@@ -2505,11 +2505,11 @@ case 'help_contents_help':
 	$title=WT_I18N::translate('Help contents');
 	$text=
 			'<table><tr><td><span class="helpstart">'.WT_I18N::translate('Help items').'</span>
-			<ul><li><a href="?help=ancestry.php">'.WT_I18N::translate('Ancestry chart').'</a></li><li><a href="?help=fanchart.php">'.WT_I18N::translate('Circle diagram').'</a></li><li><a href="?help=familybook.php">'
-			.WT_I18N::translate('Family book chart').'</a></li><li><a href="?help=gedcom_info">'.WT_I18N::translate('GEDCOM information').'</a></li><li><a href="?help=index_portal">'.WT_I18N::translate('Home page').'</a></li><li><a href="?help=hourglass.php">'.WT_I18N::translate('Hourglass chart').'</a></li><li><a href="?help=individual.php">'
+			<ul><li><a href="?help=ancestry.php">'.WT_I18N::translate('Ancestors').'</a></li><li><a href="?help=fanchart.php">'.WT_I18N::translate('Fan chart').'</a></li><li><a href="?help=familybook.php">'
+			.WT_I18N::translate('Family book').'</a></li><li><a href="?help=gedcom_info">'.WT_I18N::translate('GEDCOM information').'</a></li><li><a href="?help=index_portal">'.WT_I18N::translate('Home page').'</a></li><li><a href="?help=hourglass.php">'.WT_I18N::translate('Hourglass chart').'</a></li><li><a href="?help=individual.php">'
 			.WT_I18N::translate('Individual information').'</a></li><li><a href="?help=indilist.php">'.WT_I18N::translate('Individuals').'</a></li><li><a href="?help=treenav">'.WT_I18N::translate('Interactive tree').'</a></li><li><a href="?help=login.php">'
 			.WT_I18N::translate('Login').'</a></li><li><a href="?help=pls_note11">'.WT_I18N::translate('Lost password request').'</a></li><li><a href="?help=medialist.php">'.WT_I18N::translate('Multimedia').'</a></li><li><a href="?help=edituser.php">'
-			.WT_I18N::translate('My account').'</a></li><li><a href="?help=mypage_portal">'.WT_I18N::translate('My Page').'</a></li><li><a href="?help=edituser_password">'.WT_I18N::translate('Password').'</a></li><li><a href="?help=pedigree.php">'.WT_I18N::translate('Pedigree Tree').'</a></li><li><a href="?help=timeline.php">'.WT_I18N::translate('Timeline chart').'</a></li><li><a href="?help=edituser_username">'.WT_I18N::translate('Username').'</a></li></ul></td>';
+			.WT_I18N::translate('My account').'</a></li><li><a href="?help=mypage_portal">'.WT_I18N::translate('My Page').'</a></li><li><a href="?help=edituser_password">'.WT_I18N::translate('Password').'</a></li><li><a href="?help=pedigree.php">'.WT_I18N::translate('Pedigree tree').'</a></li><li><a href="?help=timeline.php">'.WT_I18N::translate('Timeline').'</a></li><li><a href="?help=edituser_username">'.WT_I18N::translate('Username').'</a></li></ul></td>';
 		if (WT_USER_IS_ADMIN) {
 			$text.='<td valign="top"><span class="helpstart">'.WT_I18N::translate('Administrator help items').'</span><ul><li><a href="?help=admin.php">'.WT_I18N::translate('Administration').'</a></li><li><a href="?help=help_editconfig.php">'.WT_I18N::translate('Configure').'</a></li><li><a href="?help=help_faq.php">'
 			.WT_I18N::translate('FAQ List: Edit').'</a></li><li><a href="?help=edit_gedcoms">'.WT_I18N::translate('GEDCOM: Administration page').'</a></li><li><a href="?help=edit_config_gedcom">'.WT_I18N::translate('GEDCOM: Configure').'</a></li><li><a href="?help=default_gedcom">'.WT_I18N::translate('GEDCOM: Default').'</a></li><li><a href="readme.html">'.WT_I18N::translate('View readme.html file').'</a></li><li><a href="?help=help_admin_users.php">'.WT_I18N::translate('User administration').'</a></li></ul></td>';
@@ -2591,7 +2591,7 @@ case 'index_welcome':
 	break;
 
 case 'lifespan_chart':
-	$title=WT_I18N::translate('Lifespan chart');
+	$title=WT_I18N::translate('Lifespans');
 	$text=WT_I18N::translate('On this chart you can display one or more persons along a horizontal timeline.  This chart allows you to see how the lives of different people overlapped.<br /><br />You can add people to the chart individually or by family groups by their IDs.  The previous list will be remembered as you add more people to the chart.  You can clear the chart at any time with the <b>Clear Chart</b> button.<br /><br />You can also add people to the chart by searching for them by date range or locality.');
 	break;
 
@@ -2712,7 +2712,7 @@ case 'password':
 	break;
 
 case 'pedigree_tree':
-	$title=WT_I18N::translate('Pedigree Tree');
+	$title=WT_I18N::translate('Pedigree tree');
 	$text=WT_I18N::translate('A pedigree is an enumeration of all ancestors of the starting person.  Users who are not logged in see the pedigree of the starting (root) person chosen by the site administrator.  Logged in users can select their own starting (root) person.<br /><br />In this context, "All ancestors" means the father and mother, their parents, and so on.  The pedigree is displayed graphically; you don\'t have to struggle through pages of text to determine your ancestors.<br /><br />All individuals are displayed in Name boxes on the screen.<br /><ul><li><b>Name boxes on the pedigree</b><br />If the Pedigree page is set to show details, you will see the person\'s name and birth and death dates.  You can click on a person\'s name to take you directly to the Individual Information page of that person.<br /><br />When <b>Show details</b> is on there are two icons inside the name box.</li><li><b>Pedigree icon inside the Name box</b><br />When the option <b>Show Details</b> is on, you see a Pedigree icon in the Name box. Depending on the site settings, you have to hover over the icon or click on it.  When you click on or hover over this icon, a small sub-menu appears.<br /><br />The items <b>Pedigree Tree</b> and <b>Descendancy Chart</b> are similar to those items in the main menu, but the difference is that the starting person is now the individual of mentioned in the Name box.  You also see <b>Family with Spouse</b>. Underneath that you see the name of the spouse followed by the names of the children.  All names are clickable.</li><li><b>Magnifying glass inside the Name box</b><br />Depending on the site settings, you have to hover over the icon or click on it.  This magnifies the Name box so that more details will be displayed.  You will see more dates and events. Names are clickable.</li><li><b>Arrows</b><br />On the left or right of the leftmost or rightmost Name boxes you may see arrows.  When you click on these arrows the screen display will shift in the direction of the arrow.</li></ul>');
 	break;
 
@@ -2955,7 +2955,7 @@ case 'talloffset':
 	break;
 
 case 'timeline_chart':
-	$title=WT_I18N::translate('Timeline chart');
+	$title=WT_I18N::translate('Timeline');
 	$text=WT_I18N::translate('On this chart you can display one or more persons along a timeline.  You can, for example, visualize the status of two or more persons at a certain moment.<br /><br />If you click the <b>Time Line</b> link on an other page you will already see one person on the Time Line.  If you clicked the <b>Time Line</b> menu item in a page header, you have to supply the starting person\'s ID.');
 	break;
 

@@ -104,10 +104,12 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
     switch($mod_action) {
       case 'treeview':
         $tvName = 'tv';
-        $rid = safe_GET('rootid');
+        $rootid = safe_GET('rootid');
+				$rootid = check_rootid($rootid);
         $tv = new TreeView('tv');
-        ob_start();
-        print_header(WT_I18N::translate('Interactive tree'));
+				ob_start();
+				$person=WT_Person::getInstance($rootid);
+	       print_header(WT_I18N::translate('Interactive tree of %s', $person->getFullName()));
         if (WT_USE_LIGHTBOX) {
         	require WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 				}
@@ -121,7 +123,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
         // If TreeView was personalized, include the custom CSS at the end of the header, to "cascade" previously loaded CSS
        	$header = str_replace('</head>', $this->js.$this->css.'</head>', $header);
         echo $header;
-        echo $tv->drawViewport($rid, 4, $this->style);
+        echo $tv->drawViewport($rootid, 4, $this->style);
         print_footer();
         break;
 

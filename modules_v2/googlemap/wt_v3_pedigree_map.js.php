@@ -566,7 +566,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 				if ($hideflags) echo '&hideflags=1';
 				if ($hidelines) echo '&hidelines=1';
 				if ($clustersize != 5) echo '&clustersize=', $clustersize; // ignoring the default of 5
-				echo "' title='", WT_I18N::translate('Pedigree Map'), "'>", $dataleft, "</a>", $datamid, $dataright, "</div>\", \"", $marker_number, "\");\n";
+				echo "' title='", WT_I18N::translate('Pedigree map'), "'>", $dataleft, "</a>", $datamid, $dataright, "</div>\", \"", $marker_number, "\");\n";
 				//BH echo "pm_map.addOverlay(marker);\n";
 
 				// Construct the polygon lines ---------------------------------

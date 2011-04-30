@@ -134,26 +134,26 @@ class WT_MenuBar {
 
 		// Build a sortable list of submenu items and then sort it in localized name order
 		$menuList = array(
-			'pedigree'    =>WT_I18N::translate('Pedigree Chart'),
-			'descendancy' =>WT_I18N::translate('Descendancy chart'),
-			'ancestry'    =>WT_I18N::translate('Ancestry chart'),
+			'pedigree'    =>WT_I18N::translate('Pedigree tree'),
+			'descendancy' =>WT_I18N::translate('Descendants'),
+			'ancestry'    =>WT_I18N::translate('Ancestors'),
 			'compact'     =>WT_I18N::translate('Compact chart'),
 			'hourglass'   =>WT_I18N::translate('Hourglass chart'),
-			'familybook'  =>WT_I18N::translate('Family book chart'),
-			'timeline'    =>WT_I18N::translate('Timeline chart'),
-			'lifespan'    =>WT_I18N::translate('Lifespan chart'),
-			'relationship'=>WT_I18N::translate('Relationship chart'),
+			'familybook'  =>WT_I18N::translate('Family book'),
+			'timeline'    =>WT_I18N::translate('Timeline'),
+			'lifespan'    =>WT_I18N::translate('Lifespans'),
+			'relationship'=>WT_I18N::translate('Relationships'),
 			'statistics'  =>WT_I18N::translate('Statistics'),
 		);
 		if (function_exists('imagettftext')) {
-			$menuList['fanchart']=WT_I18N::translate('Circle diagram');
+			$menuList['fanchart']=WT_I18N::translate('Fan chart');
 		}
 		// TODO: Use WT_Module_Chart ??
 		if (array_key_exists('tree', WT_Module::getActiveModules())) {
 			$menuList['tree']=WT_I18N::translate('Interactive tree');
 		}
 		if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-			$menuList['pedigree_map']=WT_I18N::translate('Pedigree Map');
+			$menuList['pedigree_map']=WT_I18N::translate('Pedigree map');
 		}
 		asort($menuList);
 
@@ -164,7 +164,7 @@ class WT_MenuBar {
 				//-- pedigree
 				$link = 'pedigree.php?ged='.WT_GEDURL."&amp;show_full={$showFull}&amp;talloffset={$showLayout}";
 				if ($rootid) $link .= "&amp;rootid={$rootid}";
-				$submenu = new WT_Menu(WT_I18N::translate('Pedigree Chart'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('pedigree');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_pedigree');
 				$menu->addSubmenu($submenu);
@@ -174,7 +174,7 @@ class WT_MenuBar {
 				//-- descendancy
 				$link = 'descendancy.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;pid={$rootid}&amp;show_full={$showFull}";
-				$submenu = new WT_Menu(WT_I18N::translate('Descendancy chart'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('descendant');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_descendant');
 				$menu->addSubmenu($submenu);
@@ -184,7 +184,7 @@ class WT_MenuBar {
 				//-- ancestry
 				$link = 'ancestry.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;rootid={$rootid}&amp;show_full={$showFull}";
-				$submenu = new WT_Menu(WT_I18N::translate('Ancestry chart'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('ancestry');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_ancestry');
 				$menu->addSubmenu($submenu);
@@ -194,7 +194,7 @@ class WT_MenuBar {
 				//-- compact
 				$link = 'compact.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= '&amp;rootid='.$rootid;
-				$submenu = new WT_Menu(WT_I18N::translate('Compact chart'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('ancestry');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_ancestry');
 				$menu->addSubmenu($submenu);
@@ -204,7 +204,7 @@ class WT_MenuBar {
 				//-- fan chart
 				$link = 'fanchart.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= '&amp;rootid='.$rootid;
-				$submenu = new WT_Menu(WT_I18N::translate('Circle diagram'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('fanchart');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_fanchart');
 				$menu->addSubmenu($submenu);
@@ -214,7 +214,7 @@ class WT_MenuBar {
 				//-- hourglass
 				$link = 'hourglass.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;pid={$rootid}&amp;show_full={$showFull}";
-				$submenu = new WT_Menu(WT_I18N::translate('Hourglass chart'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('hourglass');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_hourglass');
 				$menu->addSubmenu($submenu);
@@ -224,7 +224,7 @@ class WT_MenuBar {
 				//-- familybook
 				$link = 'familybook.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;pid={$rootid}&amp;show_full={$showFull}";
-				$submenu = new WT_Menu(WT_I18N::translate('Family book chart'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('fambook');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_fambook');
 				$menu->addSubmenu($submenu);
@@ -234,7 +234,7 @@ class WT_MenuBar {
 				//-- timeline
 				$link = 'timeline.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= '&amp;pids[]='.$rootid;
-				$submenu = new WT_Menu(WT_I18N::translate('Timeline chart'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('timeline');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_timeline');
 				$menu->addSubmenu($submenu);
@@ -289,7 +289,7 @@ class WT_MenuBar {
 				//-- lifespan
 				$link = 'lifespan.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;pids[]={$rootid}&amp;addFamily=1";
-				$submenu = new WT_Menu(WT_I18N::translate('Lifespan chart'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('timeline');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_timeline');
 				$menu->addSubmenu($submenu);
@@ -320,12 +320,12 @@ class WT_MenuBar {
 								$person=WT_Person::getInstance($pid2);
 								if ($person instanceof WT_Person) {
 									$submenu = new WT_Menu(
-										WT_I18N::translate('Relationship chart').': '.PrintReady($person->getFullName()),
+										WT_I18N::translate('Relationships').': '.PrintReady($person->getFullName()),
 										"relationship.php?pid1={$pid2}&amp;pid2={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDURL
 									);
 								} else {
 									$submenu = new WT_Menu(
-										WT_I18N::translate('Relationship chart'),
+										WT_I18N::translate('Relationships'),
 										"relationship.php?pid1={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDURL
 									);
 								}
@@ -334,7 +334,7 @@ class WT_MenuBar {
 								$menu->addSubmenu($submenu);
 							} else {
 								$submenu = new WT_Menu(
-									WT_I18N::translate('Relationship chart'),
+									WT_I18N::translate('Relationships'),
 									"relationship.php?pid1={$pid1}&amp;pretty=2&amp;followspouse=1&amp;ged=".WT_GEDURL
 								);
 								$submenu->addIcon('relationship');
@@ -349,7 +349,7 @@ class WT_MenuBar {
 
 			case 'statistics':
 				//-- statistics plot
-				$submenu = new WT_Menu(WT_I18N::translate('Statistics'), 'statistics.php?ged='.WT_GEDURL);
+				$submenu = new WT_Menu($menuName, 'statistics.php?ged='.WT_GEDURL);
 				$submenu->addIcon('statistic');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_statistic');
 				$menu->addSubmenu($submenu);
@@ -358,7 +358,7 @@ class WT_MenuBar {
 			case 'tree':
 				//-- interactive tree
 				$link = 'module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$rootid;
-				$submenu = new WT_Menu(WT_I18N::translate('Interactive tree'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				$submenu->addIcon('tree');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_gedcom');
 				$menu->addSubmenu($submenu);
@@ -369,7 +369,7 @@ class WT_MenuBar {
 				//-- pedigree map
 				$link = 'module.php?ged='.WT_GEDURL.'&amp;mod=googlemap&amp;mod_action=pedigree_map';
 				if ($rootid) $link .= '&amp;rootid='.$rootid;
-				$submenu = new WT_Menu(WT_I18N::translate('Pedigree Map'), $link);
+				$submenu = new WT_Menu($menuName, $link);
 				global $WT_IMAGES;
 				$WT_IMAGES['pedigree_map']=WT_MODULES_DIR.'googlemap/images/pedigree_map.gif';
 				$submenu->addIcon('pedigree_map');

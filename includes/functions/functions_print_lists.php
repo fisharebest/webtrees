@@ -209,7 +209,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 			echo
 				'<td class="list_value_wrap"><a href="',
 				'relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(),
-				'" title="', WT_I18N::translate('Relationship chart'), '"',
+				'" title="', WT_I18N::translate('Relationships'), '"',
 				' name="', $key, '" class="list_item name2">', $key, '</a></td>';
 		}
 		//-- Birth date

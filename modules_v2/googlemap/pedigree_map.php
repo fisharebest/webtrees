@@ -63,8 +63,7 @@ $MAX_PEDIGREE_GENERATIONS = min($MAX_PEDIGREE_GENERATIONS, 8);
 
 global $TEXT_DIRECTION;
 
-// -- print html header information
-print_header($controller->getPersonName().' - '.WT_I18N::translate('Pedigree Map'));
+print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()));
 
 if (!$GOOGLEMAP_ENABLED) {
 	echo "<table class=\"facts_table\">\n";
@@ -83,8 +82,7 @@ echo '<link type="text/css" href ="', WT_MODULES_DIR, 'googlemap/css/googlemap_s
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 echo '<div><table><tr><td valign="middle">';
-echo "<h2>" . WT_I18N::translate('Pedigree Map') . " " . WT_I18N::translate('for') . " ";
-echo PrintReady($controller->getPersonName())."</h2>";
+echo '<h2>', WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()), '</h2>';
 
 // -- print the form to change the number of displayed generations
 ?>
@@ -101,11 +99,6 @@ echo PrintReady($controller->getPersonName())."</h2>";
 		<input type="hidden" name="mod" value="googlemap" />
 		<input type="hidden" name="mod_action" value="pedigree_map" />
 		<table class="pedigree_table <?php echo $TEXT_DIRECTION; ?>" width="555">
-			<tr>
-				<td colspan="5" class="topbottombar" style="text-align:center; ">
-					<?php echo WT_I18N::translate('Pedigree Map Options'); ?>
-				</td>
-			</tr>
 			<tr>
 				<td class="descriptionbox wrap">
 					<?php echo WT_I18N::translate('Root Person ID'), help_link('rootid'); ?>

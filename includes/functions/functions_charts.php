@@ -624,6 +624,9 @@ function print_url_arrow($id, $url, $label, $dir=2) {
 	if ($TEXT_DIRECTION=="rtl" and $dir==0) $adir=1;
 	if ($TEXT_DIRECTION=="rtl" and $dir==1) $adir=0;
 
+	// Labels include people's names, which may contain markup
+	$label=htmlspecialchars(strip_tags($label));
+
 	// arrow style     0         1         2         3
 	$array_style=array("larrow", "rarrow", "uarrow", "darrow");
 	$astyle=$array_style[$adir];

@@ -67,7 +67,33 @@ if (empty($pid1)) {
 $check_node = true;
 $disp = true;
 
-$title_string .= WT_I18N::translate('Relationship chart');
+// ------------------------------------------------------------------------------------------------------------------------------
+
+$person1=WT_Person::getInstance($pid1);
+$person2=WT_Person::getInstance($pid2);
+if ($person1 && $person2) {
+	$title_string=WT_I18N::translate(/* I18N: %s are people's names */ 'Relationships between %1$s and %2$s', $person1->getFullName(), $person2->getFullName());
+} else {
+	$title_string=WT_I18N::translate('Relationships');
+}
+if ($person1) {
+	$pid1=$person1->getXref(); // i1 => I1
+} else {
+	$pid1='';
+}
+if (!empty($_SESSION["pid1"]) && $_SESSION["pid1"]!=$pid1) {
+	unset($_SESSION["relationships"]);
+	$path_to_find=0;
+}
+if ($person2) {
+	$pid2=$person2->getXref(); // i2 => I2
+} else {
+	$pid2='';
+}
+if (!empty($_SESSION["pid2"]) && $_SESSION["pid2"]!=$pid2) {
+	unset($_SESSION["relationships"]);
+	$path_to_find=0;
+}
 // -- print html header information
 print_header($title_string);
 
@@ -77,30 +103,6 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 	require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
-}
-// ------------------------------------------------------------------------------------------------------------------------------
-
-$person1=WT_Person::getInstance($pid1);
-if ($person1) {
-	$title_string.=':<br />'.$person1->getFullName();
-	$pid1=$person1->getXref(); // i1 => I1
-} else {
-	$pid1='';
-}
-if (!empty($_SESSION["pid1"]) && $_SESSION["pid1"]!=$pid1) {
-	unset($_SESSION["relationships"]);
-	$path_to_find=0;
-}
-$person2=WT_Person::getInstance($pid2);
-if ($person2) {
-	$title_string.=' '.WT_I18N::translate('and').' '.$person2->getFullName();
-	$pid2=$person2->getXref(); // i2 => I2
-} else {
-	$pid2='';
-}
-if (!empty($_SESSION["pid2"]) && $_SESSION["pid2"]!=$pid2) {
-	unset($_SESSION["relationships"]);
-	$path_to_find=0;
 }
 ?>
 <script type="text/javascript">
@@ -121,7 +123,7 @@ function paste_id(value) {
 
 	<!-- // Relationship header -->
 	<tr><td colspan="2" class="topbottombar center">
-	<?php echo WT_I18N::translate('Relationship chart'); ?>
+	<?php echo WT_I18N::translate('Relationships'); ?>
 	</td>
 
 	<!-- // Empty space -->

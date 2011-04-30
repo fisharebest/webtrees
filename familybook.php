@@ -208,8 +208,7 @@ function print_family_book($person, $descent) {
 	}
 }
 
-// -- print html header information
-print_header(PrintReady($name)." ".WT_I18N::translate('Family book chart'));
+print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Family book of %s', $person->getFullName()));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -221,7 +220,7 @@ if (WT_USE_LIGHTBOX) {
 // ==========================================================================================
 
 echo '<table><tr><td valign="top">';
-echo '<h2>'.WT_I18N::translate('Family book chart'), help_link('family_book_chart'), '<br />', PrintReady($name), '</h2>';
+echo '<h2>'.WT_I18N::translate('Family book of %s', $person->getFullName()), help_link('family_book_chart'), '</h2>';
 ?>
 
 <script type="text/javascript">

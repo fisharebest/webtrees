@@ -38,7 +38,7 @@ $controller->init();
 $zoomfactor = 10;
 //if peeps !null then pass new array for zooming
 
-print_header(WT_I18N::translate('Lifespan chart'));
+print_header(WT_I18N::translate('Lifespans'));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 ?>
@@ -51,7 +51,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	//-->
 	</script>
 
-<h2><?php echo WT_I18N::translate('Lifespan chart'), help_link('lifespan_chart'); ?></h2>
+<h2><?php echo WT_I18N::translate('Lifespans'), help_link('lifespan_chart'); ?></h2>
 <table><tr><td>
 <form name="people" action="lifespan.php">
 
@@ -70,7 +70,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 			<div style="text-align: center"><input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>" /></div>
 		</td></tr>
 	</table>
-	<?php if (count($controller->pids)<11) { ?><br /><a href="timeline.php"><b><?php echo WT_I18N::translate('Show Timeline chart'); ?></b></a><br /><br /><?php } ?>
+	<?php if (count($controller->pids)<11) { ?><br /><a href="timeline.php"><b><?php echo WT_I18N::translate('Show timeline'); ?></b></a><br /><br /><?php } ?>
 
 </form>
 <script type="text/javascript">

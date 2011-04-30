@@ -38,8 +38,7 @@ $person =WT_Person::getInstance($rootid);
 $name   =$person->getFullName();
 $addname=$person->getAddName();
 
-// -- print html header information
-print_header(PrintReady($name) . " " . WT_I18N::translate('Compact chart'));
+print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Compact chart of %s', $person->getFullName()));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -53,10 +52,7 @@ if (WT_USE_LIGHTBOX) {
 if (strlen($name)<30) $cellwidth="420";
 else $cellwidth=(strlen($name)*14);
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"{$cellwidth}px\" valign=\"top\">";
-echo "<h2>" . WT_I18N::translate('Compact chart') . ":";
-echo "<br />".PrintReady($name) ;
-if ($addname != "") echo "<br />" . PrintReady($addname);
-echo "</h2>";
+echo '<h2>', WT_I18N::translate('Compact chart of %s', $person->getFullName()), '</h2>';
 
 // -- print the form
 ?>
