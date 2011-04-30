@@ -1446,7 +1446,6 @@ case 'addspouseaction':
 	} else {
 		exit;
 	}
-	$spouserec = $gedrec;
 	$success = true;
 	if ($famid=="new") {
 		$famrec = "0 @new@ FAM\n";
@@ -1497,8 +1496,7 @@ case 'addspouseaction':
 		}
 	}
 	if ((!empty($famid))&&($famid!="new")) {
-		$gedrec = $spouserec;
-		$gedrec = trim($gedrec) . "\n1 FAMS @$famid@\n";
+		$gedrec = find_gedcom_record($xref, WT_GED_ID, true) . "\n1 FAMS @$famid@";
 		if (replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN)) {
 			$success=true;
 		}
