@@ -174,7 +174,7 @@ if (!empty($pid)) {
 		checkChangeTime($famid, $gedrec, safe_GET('accesstime', WT_REGEX_INTEGER));
 	}
 } elseif (($action!="addchild")&&($action!="addchildaction")&&($action!="addnewsource")&&($action!="mod_edit_fact")&&($action!="addnewnote")&&($action!="addmedia_links")&&($action!="addnoteaction")&&($action!="addnoteaction_assisted")) {
-	echo '<span class="error">', WT_I18N::translate('The \$pid variable was empty. Unable to perform $action xxx.'), '</span>';
+	// No $pid?  Internal error of some sort
 	print_simple_footer();
 	$edit = true;
 } else {
