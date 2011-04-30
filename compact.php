@@ -38,7 +38,7 @@ $person =WT_Person::getInstance($rootid);
 $name   =$person->getFullName();
 $addname=$person->getAddName();
 
-print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Compact chart of %s', $person->getFullName()));
+print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Compact tree of %s', $person->getFullName()));
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -52,7 +52,7 @@ if (WT_USE_LIGHTBOX) {
 if (strlen($name)<30) $cellwidth="420";
 else $cellwidth=(strlen($name)*14);
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"{$cellwidth}px\" valign=\"top\">";
-echo '<h2>', WT_I18N::translate('Compact chart of %s', $person->getFullName()), '</h2>';
+echo '<h2>', WT_I18N::translate('Compact tree of %s', $person->getFullName()), '</h2>';
 
 // -- print the form
 ?>
@@ -286,12 +286,6 @@ function print_td_person($n) {
 	$text = "";
 	$pid = $treeid[$n];
 
-	if ($TEXT_DIRECTION=="ltr") {
-		$title = WT_I18N::translate('Individual information').": ".$pid;
-	} else {
-		$title = $pid." :".WT_I18N::translate('Individual information');
-	}
-
 	if ($pid) {
 		$indi=WT_Person::getInstance($pid);
 		$name=$indi->getFullName();
@@ -335,7 +329,7 @@ function print_td_person($n) {
 			}
 		}
 
-		$text .= "<a class=\"name1\" href=\"".$indi->getHtmlUrl()."\" title=\"$title\"> ";
+		$text .= "<a class=\"name1\" href=\"".$indi->getHtmlUrl()."\">";
 		$text .= PrintReady(htmlspecialchars(strip_tags($name)));
 		if ($addname) $text .= "<br />" . PrintReady($addname);
 		$text .= "</a>";
@@ -398,12 +392,8 @@ function print_arrow_person($n, $arrow_dir) {
 	$text = "";
 	if ($pid) {
 		$indi=WT_Person::getInstance($pid);
-		$name=$indi->getFullName();
-		if ($TEXT_DIRECTION=="ltr") {
-			$title = WT_I18N::translate('Compact chart').": ".$name;
-		} else {
-			$title = $name." :".WT_I18N::translate('Compact chart');
-		}
+		$title=WT_I18N::translate('Compact tree of %s', $indi->getFullName());
+		$title=htmlspecialchars(strip_tags($title));
 		$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' />";
 		$text .= "<a href=\"?rootid=".$pid;
 		if ($showthumbs) $text .= "&amp;showthumbs=".$showthumbs;
@@ -411,6 +401,6 @@ function print_arrow_person($n, $arrow_dir) {
 		$text .= $arrow_img."</a>";
 	}
 	// -- arrow to empty box does not have a url attached.
-	else $text = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='".WT_I18N::translate('Compact chart')."' title='".WT_I18N::translate('Compact chart')."' style='visibility:hidden;' />";
+	else $text = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='".WT_I18N::translate('Compact tree')."' title='".WT_I18N::translate('Compact tree')."' style='visibility:hidden;' />";
 	echo $text;
 }

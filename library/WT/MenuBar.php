@@ -137,7 +137,7 @@ class WT_MenuBar {
 			'pedigree'    =>WT_I18N::translate('Pedigree tree'),
 			'descendancy' =>WT_I18N::translate('Descendants'),
 			'ancestry'    =>WT_I18N::translate('Ancestors'),
-			'compact'     =>WT_I18N::translate('Compact chart'),
+			'compact'     =>WT_I18N::translate('Compact tree'),
 			'hourglass'   =>WT_I18N::translate('Hourglass chart'),
 			'familybook'  =>WT_I18N::translate('Family book'),
 			'timeline'    =>WT_I18N::translate('Timeline'),
