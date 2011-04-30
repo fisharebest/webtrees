@@ -1596,7 +1596,6 @@ case 'addnewparentaction':
 	} else {
 		exit;
 	}
-	$spouserec = $gedrec;
 	$success = true;
 	if ($famid=="new") {
 		$famrec = "0 @new@ FAM\n";
@@ -1640,16 +1639,15 @@ case 'addnewparentaction':
 			}
 		}
 	}
-	if ((!empty($famid))&&($famid!="new")) {
-			$gedrec = $spouserec;
-			$gedrec = trim($gedrec) . "\n1 FAMS @$famid@\n";
-			if (replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN)) {
-				$success=true;
-			}
+	if (!empty($famid) && $famid!="new") {
+		$gedrec = find_gedcom_record($xref, WT_GED_ID, true);
+		$gedrec.= "\n1 FAMS @$famid@";
+		if (replace_gedrec($xref, WT_GED_ID, $gedrec, $update_CHAN)) {
+			$success=true;
+		}
 	}
 	if (!empty($pid)) {
 		$indirec = find_gedcom_record($pid, WT_GED_ID, true);
-		$indirec = trim($indirec);
 		if ($indirec) {
 			if (strpos($indirec, "1 FAMC @$famid@")===false) {
 				$indirec = trim($indirec) . "\n1 FAMC @$famid@\n";
