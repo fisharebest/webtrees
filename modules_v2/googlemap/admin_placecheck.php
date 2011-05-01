@@ -29,6 +29,11 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+if (!WT_USER_IS_ADMIN) {
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin.php');
+	exit;
+}
+
 $action   =safe_POST     ('action'                                              );
 $gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID );
 $openinnew=safe_POST_bool('openinnew'                                           );
