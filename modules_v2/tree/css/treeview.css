@@ -294,6 +294,9 @@ table#tvTreeBorder td#tv_tree_bottomright {
   border: thin outset #fdfffd; /* customizable */
   cursor: pointer;
 }
+.tv_button a:hover, a:active {
+  background: #fffdfd; /* customizable */
+}
 #tv_tools li.tvPressed {
   border: thin inset #ffffff; /* customizable */
 }
