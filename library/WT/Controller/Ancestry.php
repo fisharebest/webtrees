@@ -101,8 +101,10 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 
 		if ($person) {
 			$pid=$person->getXref();
+			$label=WT_I18N::translate('Ancestors of %s', $person->getFullName());
 		} else {
 			$pid='';
+			$label='';
 		}
 		// child
 		echo "<li>";
@@ -115,7 +117,6 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 		print_pedigree_person($person, 1);
 		echo "</td>";
 		echo "<td>";
-		$label=WT_I18N::translate('Ancestors of %s', $person->getFullName());
 		if ($sosa>1) {
 			print_url_arrow($pid, "?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;show_full={$this->show_full}&amp;box_width={$box_width}&amp;chart_style={$this->chart_style}", $label, 3);
 		}
