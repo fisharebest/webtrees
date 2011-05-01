@@ -37,29 +37,11 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_CONFIG_DATA_PHP', '');
 
-// Unknown surname in various scripts
-// TODO: This is extremely poor I18N - there is not a 1:1 correlation between script and language
-$UNKNOWN_NN=array(
-	'hebrew'    =>'(לא-ידוע)',
-	'arabic'    =>'(غير معروف)',
-	'greek'     =>'(άγνωστος/η)',
-	'cyrillic'  =>'(неопределено)', // Russian
-	'han'       =>'(未知)',
-	'latin'     =>WT_I18N::translate_c('surname', '(unknown)'),
-	'common'    =>WT_I18N::translate_c('surname', '(unknown)'),
-);
+// Unknown surname
+$UNKNOWN_NN=WT_I18N::translate_c('Unknown surname', '…');
 
-// Unknown givne name in various scripts
-// TODO: This is extremely poor I18N - there is not a 1:1 correlation between script and language
-$UNKNOWN_PN=array(
-	'hebrew'    =>'(לא-ידוע)',
-	'arabic'    =>'(غير معروف)',
-	'greek'     =>'(άγνωστος/η)', // Russian
-	'cyrillic'   =>'(неопределено)',
-	'han'       =>'(未知)',
-	'latin'     =>WT_I18N::translate_c('given name', '(unknown)'),
-	'common'    =>WT_I18N::translate_c('given name', '(unknown)'),
-);
+// Unknown given name
+$UNKNOWN_PN=WT_I18N::translate_c('Unknown given name', '…');
 
 // NPFX tags - name prefixes
 $NPFX_accept=array(

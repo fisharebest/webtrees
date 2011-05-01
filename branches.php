@@ -181,7 +181,7 @@ function print_fams($person, $famid=null) {
 				}
 				//How can we use check_NN($names) or something else to replace the unknown unknown name from the page language to the language of the spouse's name?
 				else if ($name['fullNN']=='@P.N. @N.N.') {
-					$spouse_name = $UNKNOWN_NN[$person_script].', '.$UNKNOWN_NN[$person_script];
+					$spouse_name = $UNKNOWN_NN.', '.$UNKNOWN_NN;
 					break;
 				}
 			}

@@ -105,10 +105,8 @@ function check_NN($names) {
 	$fullname = '';
 
 	if (!is_array($names)) {
-		$script = utf8_script($names);
-		$NN = $UNKNOWN_NN[$script];
-		$names = preg_replace(array('~ /~','~/,~','~/~'), array(' ', ',', ' '), $names);
-		$names = preg_replace(array('/@N.N.?/','/@P.N.?/'), array($UNKNOWN_NN[$script],$UNKNOWN_PN[$script]), trim($names));
+		$names = str_replace(array(' /','/,','/'), array(' ', ',', ' '), $names);
+		$names = str_replace(array('@N.N.','@P.N.'), array($UNKNOWN_NN,$UNKNOWN_PN), trim($names));
 		//-- underline names with a * at the end
 		//-- see this forum thread http://sourceforge.net/forum/forum.php?thread_id=1223099&forum_id=185165
 		if ($UNDERLINE_NAME_QUOTES) {
@@ -117,18 +115,17 @@ function check_NN($names) {
 		$names = preg_replace('/([^ ]+)\*/', '<span class="starredname">$1</span>', $names);
 		return $names;
 	}
-	if (count($names) == 2 && stristr($names[0], '@N.N') && stristr($names[1], '@N.N')) {
+	if (count($names) == 2 && stristr($names[0], '@N.N.') && stristr($names[1], '@N.N.')) {
 		$fullname = WT_I18N::translate('(unknown)'). ' + '. WT_I18N::translate('(unknown)');
 	} else {
 		for ($i=0; $i<count($names); $i++) {
-			$script = utf8_script($names[$i]);
 			$unknown = false;
-			if (stristr($names[$i], '@N.N')) {
+			if (stristr($names[$i], '@N.N.')) {
 				$unknown = true;
-				$names[$i] = preg_replace('/@N.N.?/', $UNKNOWN_NN[$script], trim($names[$i]));
+				$names[$i] = str_replace('@N.N.', $UNKNOWN_NN, trim($names[$i]));
 			}
-			if (stristr($names[$i], '@P.N')) {
-				$names[$i] = $UNKNOWN_PN[$script];
+			if (stristr($names[$i], '@P.N.')) {
+				$names[$i] = $UNKNOWN_PN;
 			}
 			if ($i==1 && $unknown && count($names)==3) {
 				$fullname .= ', ';

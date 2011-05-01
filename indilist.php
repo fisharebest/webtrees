@@ -101,7 +101,7 @@ if ($show_all=='yes') {
 	$alpha=WT_Query_Name::initialLetter($surname);
 	$show_all='no';
 	if ($surname=='@N.N.') {
-		$legend=WT_I18N::translate_c('surname', '(unknown)');
+		$legend=$UNKNOWN_NN;
 	} else {
 		$legend=$surname;
 	}
@@ -109,7 +109,7 @@ if ($show_all=='yes') {
 	case '':
 		break;
 	case '@':
-		$legend.=', '.WT_I18N::translate_c('given name', '(unknown)');
+		$legend.=', '.$UNKNOWN_PN;
 		break;
 	default:
 		$legend.=', '.$falpha;
@@ -121,7 +121,7 @@ if ($show_all=='yes') {
 	$show_all='no';
 	$surname='';
 	if ($alpha=='@') {
-		$legend=WT_I18N::translate('(unknown)');
+		$legend=$UNKNOWN_NN;
 		$surname_sublist='no';
 		$surname='@N.N.';
 	} elseif ($alpha==',') {
@@ -141,7 +141,7 @@ echo '<h2 class="center">', WT_I18N::translate('Individuals'), '</h2>';
 foreach ($initials as $letter=>$count) {
 	switch ($letter) {
 	case '@':
-		$html=WT_I18N::translate('(unknown)');
+		$html=$UNKNOWN_NN;
 		break;
 	case ',':
 		$html=WT_I18N::translate('None');
@@ -241,7 +241,7 @@ if ($showList) {
 				foreach ($givn_initials as $givn_initial=>$count) {
 					switch ($givn_initial) {
 					case '@':
-						$html=WT_I18N::translate('(unknown)');
+						$html=$UNKNOWN_PN;
 						break;
 					default:
 						$html=$givn_initial;

@@ -1797,17 +1797,14 @@ class WT_Person extends WT_GedcomRecord {
 		$fullNN=$full;
 		$listNN=$list;
 
-		// If the name is written in greek/cyrillic/hebrew/etc., use the 'unknown' name
-		// from that character set.  Otherwise use the one in the language file.
+		// Insert placeholders for any missing/unknown names
 		if (strpos($full, '@N.N.')!==false) {
-			$NN=$UNKNOWN_NN[utf8_script($fullNN)];
-			$full   =str_replace('@N.N.', $NN, $full   );
-			$list   =str_replace('@N.N.', $NN, $list   );
+			$full=str_replace('@N.N.', $UNKNOWN_NN, $full   );
+			$list=str_replace('@N.N.', $UNKNOWN_NN, $list   );
 		}
 		if (strpos($full, '@P.N.')!==false) {
-			$PN=$UNKNOWN_PN[utf8_script($fullNN)];
-			$full=str_replace('@P.N.', $PN, $full);
-			$list=str_replace('@P.N.', $PN, $list);
+			$full=str_replace('@P.N.', $UNKNOWN_PN, $full);
+			$list=str_replace('@P.N.', $UNKNOWN_PN, $list);
 		}
 
 		// Remove slashes - they don't get displayed
