@@ -1272,14 +1272,10 @@ function update_record($gedrec, $ged_id, $delete) {
 
 // Create a pseudo-random UUID
 function uuid() {
-	if (defined('WT_USE_RFC4122')) {
-		// Standards purists want this format (RFC4122)
-		$fmt='%02X%02X%02X%02X-%02X%02X-%02X%02X-%02X%02X-%02X%02X%02X%02X%02X%02X';
-	} else {
-		// Most users want this format (for compatibility with PAF)
-		$fmt='%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X';
-	}
-	return sprintf(
+	// Most users want this format (for compatibility with PAF)
+	$fmt='%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X';
+	
+	$uid = sprintf(
 		$fmt,
 		rand(0, 255),
 		rand(0, 255),
@@ -1298,6 +1294,28 @@ function uuid() {
 		rand(0, 255),
 		rand(0, 255)
 	);
+	return sprintf('%s%s', $uid, getCheckSums($uid));
+}
+
+/**
+* Produces checksums compliant with a Family Search guideline from 2007
+* these checksums are compatible with PAF, Legacy, RootsMagic and other applications
+* following these guidelines. This prevents dropping and recreation of UID's 
+*
+* @author Veit Olschinski
+* @param string $uid the 32 hexadecimal character long uid  
+* @return string containing the checksum string for the uid
+*/
+function getCheckSums($uid) {
+	$checkA=0; // a sum of the bytes
+	$checkB=0; // a sum of the incremental values of checkA
+	
+	// Compute both checksums
+	for ($i = 0; $i < 32; $i+=2) {
+		$checkA += hexdec(substr($uid, $i, 2));
+		$checkB += $checkA & 0xFF;
+	}
+	return strtoupper(sprintf('%s%s', substr(dechex($checkA), -2), substr(dechex($checkB), -2)));
 }
 
 /**
