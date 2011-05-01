@@ -98,6 +98,11 @@ $WT_IMAGES=array(
 	'tree'=>WT_THEME_DIR.'images/tree.png',
 	'warning'=>WT_THEME_DIR.'images/warning.png',
 	'wiki'=>WT_THEME_DIR.'images/w_22.png',
+	'itree'=>WT_THEME_DIR.'images/tree.png',
+	// - Interactive Chart Icons
+	'fscreen'=>WT_THEME_DIR.'images/fscreen.gif',
+	'center'=>WT_THEME_DIR.'images/center.gif',
+	'itree'=>WT_THEME_DIR.'images/tree.png',
 
 	//- buttons for data entry pages
 	'button_addmedia'=>WT_THEME_DIR.'images/buttons/addmedia.png',

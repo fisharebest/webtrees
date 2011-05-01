@@ -163,6 +163,11 @@ $WT_IMAGES['tree'] = WT_THEME_DIR.'images/gedcom.gif';
 $WT_IMAGES['warning'] = WT_THEME_DIR.'images/warning.gif';
 $WT_IMAGES['wiki'] = WT_THEME_DIR.'images/w_22.png';
 
+// - Interactive Chart Icons
+$WT_IMAGES['fscreen'] = WT_THEME_DIR.'images/fscreen.gif';
+$WT_IMAGES['center'] = WT_THEME_DIR.'images/center.gif';
+$WT_IMAGES['itree'] = WT_THEME_DIR.'images/itree.gif';
+
 //- PGV buttons for data entry pages
 $WT_IMAGES['button_addmedia'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
 $WT_IMAGES['button_addnote'] = WT_THEME_DIR.'images/buttons/addnote.gif';

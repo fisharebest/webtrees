@@ -97,6 +97,11 @@ $WT_IMAGES['tree'] = WT_THEME_DIR.'images/tree.png';
 $WT_IMAGES['warning'] = WT_THEME_DIR.'images/warning.png';
 $WT_IMAGES['wiki'] = WT_THEME_DIR.'images/w_22.png';
 
+// - Interactive Chart Icons
+$WT_IMAGES['fscreen'] = WT_THEME_DIR.'images/fscreen.gif';
+$WT_IMAGES['center'] = WT_THEME_DIR.'images/center.gif';
+$WT_IMAGES['itree'] = WT_THEME_DIR.'images/tree.png';
+
 //- PGV buttons for data entry pages
 $WT_IMAGES['button_addmedia'] = WT_THEME_DIR.'images/buttons/addmedia.png';
 $WT_IMAGES['button_addrepository'] = WT_THEME_DIR.'images/buttons/addrepository.png';

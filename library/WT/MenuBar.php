@@ -134,10 +134,10 @@ class WT_MenuBar {
 
 		// Build a sortable list of submenu items and then sort it in localized name order
 		$menuList = array(
-			'pedigree'    =>WT_I18N::translate('Pedigree'),
+			'pedigree'    =>WT_I18N::translate('Pedigree tree'),
 			'descendancy' =>WT_I18N::translate('Descendants'),
 			'ancestry'    =>WT_I18N::translate('Ancestors'),
-			'compact'     =>WT_I18N::translate('Compact tree'),
+			'compact'     =>WT_I18N::translate('Compact chart'),
 			'hourglass'   =>WT_I18N::translate('Hourglass chart'),
 			'familybook'  =>WT_I18N::translate('Family book'),
 			'timeline'    =>WT_I18N::translate('Timeline'),
@@ -359,7 +359,7 @@ class WT_MenuBar {
 				//-- interactive tree
 				$link = 'module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$rootid;
 				$submenu = new WT_Menu($menuName, $link);
-				$submenu->addIcon('tree');
+				$submenu->addIcon('itree');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_gedcom');
 				$menu->addSubmenu($submenu);
 				break;

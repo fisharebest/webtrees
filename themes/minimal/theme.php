@@ -78,6 +78,11 @@ $WT_IMAGES['timeline'] = WT_THEME_DIR.'images/timeline.gif';
 $WT_IMAGES['tree'] = WT_THEME_DIR.'images/gedcom.gif';
 $WT_IMAGES['warning'] = WT_THEME_DIR.'images/warning.gif';
 
+// - Interactive Chart Icons
+$WT_IMAGES['fscreen'] = WT_THEME_DIR.'images/fscreen.gif';
+$WT_IMAGES['center'] = WT_THEME_DIR.'images/center.gif';
+$WT_IMAGES['itree'] = WT_THEME_DIR.'images/itree.gif';
+
 //- WT buttons for data entry pages
 $WT_IMAGES['button_addmedia'] = WT_THEME_DIR.'images/buttons/addmedia.gif';
 $WT_IMAGES['button_addsource'] = WT_THEME_DIR.'images/buttons/addsource.gif';

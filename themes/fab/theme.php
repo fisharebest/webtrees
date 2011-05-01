@@ -89,6 +89,10 @@ $WT_IMAGES=array(
 	'timeline'=>WT_THEME_DIR.'images/timeline.gif',
 	'tree'=>WT_THEME_DIR.'images/gedcom.gif',
 	'warning'=>WT_THEME_DIR.'images/warning.gif',
+	// - Interactive Chart Icons
+	'fscreen'=>WT_THEME_DIR.'images/fscreen.gif',
+	'center'=>WT_THEME_DIR.'images/center.gif',
+	'itree'=>WT_THEME_DIR.'images/itree.gif',
 	// buttons for data entry pages
 	'button_addmedia'=>WT_THEME_DIR.'images/buttons/addmedia.gif',
 	'button_addrepository'=>WT_THEME_DIR.'images/buttons/addrepository.gif',
