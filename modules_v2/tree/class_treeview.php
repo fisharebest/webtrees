@@ -118,7 +118,7 @@ class TreeView {
 			'<li id="tvbPrint" class="tv_button"><img src="'.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'./* I18N: verb/action */ WT_I18N::translate('Print').'" /></li>'.
 			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show all spouses and ancestors').'" title="'.WT_I18N::translate('Show all spouses and ancestors').'" /></a></li>';
     if (safe_GET('mod_action') != 'treeview') {
-			$r.='<li class="tv_button"><a href="module.php?mod=tree&mod_action=treeview&rootid='.$rootPerson->getXref().'#tv_content" title="'. /* I18N: Button label - view this chart in full-screen mode */ WT_I18N::translate('Full screen').'"><img src="'.$WT_IMAGES["fscreen"].'" alt="t" /></a></li>';
+			$r.='<li class="tv_button"><a href="module.php?mod=tree&mod_action=treeview&rootid='.$rootPerson->getXref().'#tv_content" title="'. /* I18N: Button label - view this chart in full-screen mode */ WT_I18N::translate('Full screen').'"><img src="'.$WT_IMAGES["fscreen"].'" alt="full screen" /></a></li>';
 		}
     // Help, and hidden loading image
 		$r.='<li class="tv_button">'.help_link("TV_MODULE", 'tree').'</li>
