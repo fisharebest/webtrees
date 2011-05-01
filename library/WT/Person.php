@@ -181,10 +181,13 @@ class WT_Person extends WT_GedcomRecord {
 		// Check parents (birth and adopted)
 		foreach ($this->getChildFamilies() as $family) {
 			foreach ($family->getSpouses() as $spouse) {
-				$date=$spouse->getBirthDate();
 				// Assume parents are no more than 45 years older than their children
-				if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+45)) {
-					return true;
+				preg_match_all('/\n2 DATE (.+)/', $spouse->_gedrec, $date_matches);
+				foreach ($date_matches[1] as $date_match) {
+					$date=new WT_Date($date_match);
+					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+45)) {
+						return true;
+					}
 				}
 			}
 		}
