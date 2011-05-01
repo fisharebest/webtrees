@@ -1272,28 +1272,30 @@ function update_record($gedrec, $ged_id, $delete) {
 
 // Create a pseudo-random UUID
 function uuid() {
+	// Official Format with dashes ('%04x%04x-%04x-%04x-%04x-%04x%04x%04x')
 	// Most users want this format (for compatibility with PAF)
-	$fmt='%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X';
+	$fmt='%04X%04X%04X%04X%04X%04X%04X%04X';
 	
 	$uid = sprintf(
 		$fmt,
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255)&0x3f|0x80, // Set the version to random (10xxxxxx)
-		rand(0, 255),
-		rand(0, 255)&0x0f|0x40, // Set the variant to RFC4122 (0100xxxx)
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255),
-		rand(0, 255)
-	);
+    // 32 bits for "time_low"
+    mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+
+    // 16 bits for "time_mid"
+    mt_rand(0, 0xffff),
+
+    // 16 bits for "time_hi_and_version",
+    // four most significant bits holds version number 4
+    mt_rand(0, 0x0fff) | 0x4000,
+
+    // 16 bits, 8 bits for "clk_seq_hi_res",
+    // 8 bits for "clk_seq_low",
+    // two most significant bits holds zero and one for variant RFC4122
+    mt_rand(0, 0x3fff) | 0x8000,
+
+    // 48 bits for "node"
+    mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
+    );
 	return sprintf('%s%s', $uid, getCheckSums($uid));
 }
 
