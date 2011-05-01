@@ -499,7 +499,8 @@ function print_fact_sources($factrec, $level, $return=false) {
 	$spos2 = 0;
 	for ($j=0; $j<$ct; $j++) {
 		$sid = $match[$j][1];
-		if (WT_Source::getInstance($sid)->canDisplayDetails()) {
+		$source=WT_Source::getInstance($sid);
+		if ($source && $source->canDisplayDetails()) {
 			$spos1 = strpos($factrec, "$level SOUR @".$sid."@", $spos2);
 			$spos2 = strpos($factrec, "\n$level", $spos1);
 			if (!$spos2) $spos2 = strlen($factrec);
@@ -515,7 +516,6 @@ function print_fact_sources($factrec, $level, $return=false) {
 				else $data .= WT_I18N::translate('Hide Details')."\" title=\"".WT_I18N::translate('Hide Details')."\" /></a> ";
 			}
 			$data .= WT_I18N::translate('Source').":</span> <span class=\"field\">";
-			$source=WT_Source::getInstance($sid);
 			if ($source) {
 				$data .= "<a href=\"".$source->getHtmlUrl()."\">".PrintReady($source->getFullName())."</a>";
 			} else {
@@ -543,6 +543,8 @@ function print_fact_sources($factrec, $level, $return=false) {
 			$data .= "</div>";
 			$data .= "</div>";
 			$printDone = true;
+		} else {
+			echo '<div class="fact_SOUR"><span class="label">', WT_I18N::translate('Source'), '</span>: <span class="field">', $sid, '</span></div>';
 		}
 	}
 
