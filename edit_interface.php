@@ -449,7 +449,7 @@ case 'addfamlink':
 	print_findfamily_link('famid');
 	echo '</td></tr>';
 	if ($famtag=='CHIL') {
-		echo '<tr><td class="facts_label">', WT_I18N::translate('Pedigree'), '</td><td class="facts_value">';
+		echo '<tr><td class="facts_label">', WT_Gedcom_Tag::getLabel('PEDI'), '</td><td class="facts_value">';
 		switch (WT_Person::getInstance($pid)->getSex()) {
 		case 'M': echo edit_field_pedi_m('pedigree'); break;
 		case 'F': echo edit_field_pedi_f('pedigree'); break;

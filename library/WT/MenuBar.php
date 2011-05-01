@@ -134,7 +134,7 @@ class WT_MenuBar {
 
 		// Build a sortable list of submenu items and then sort it in localized name order
 		$menuList = array(
-			'pedigree'    =>WT_I18N::translate('Pedigree tree'),
+			'pedigree'    =>WT_I18N::translate('Pedigree'),
 			'descendancy' =>WT_I18N::translate('Descendants'),
 			'ancestry'    =>WT_I18N::translate('Ancestors'),
 			'compact'     =>WT_I18N::translate('Compact tree'),

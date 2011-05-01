@@ -293,7 +293,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				echo "<a href=\"".$person->getHtmlUrl()."\" class=\"name1\">" . $name;
 				if (!empty($addname)) echo "<br />" . $addname;
 				echo "</a>";
-				echo "<br /><a href=\"pedigree.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree tree')."</a>";
+				echo "<br /><a href=\"pedigree.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree')."</a>";
 				if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
 					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Pedigree map')."</a>";
 				}

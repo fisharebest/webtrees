@@ -89,7 +89,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($person) {
 			switch($type) {
 				case 'pedigree':
-					$title .= WT_I18N::translate('Pedigree tree of %s', $person->getFullName());
+					$title .= WT_I18N::translate('Pedigree of %s', $person->getFullName());
 					break;
 				case 'descendants':
 					$title .= WT_I18N::translate('Descendants of %s', $person->getFullName());
@@ -200,7 +200,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
 		<td class="optionbox">
 			<select name="type">
-				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Pedigree tree'); ?></option>
+				<option value="pedigree"<?php if ($type=="pedigree") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Pedigree'); ?></option>
 				<option value="descendants"<?php if ($type=="descendants") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Descendants'); ?></option>
 				<option value="hourglass"<?php if ($type=="hourglass") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Hourglass chart'); ?></option>
 				<option value="treenav"<?php if ($type=="treenav") echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Interactive tree'); ?></option>
