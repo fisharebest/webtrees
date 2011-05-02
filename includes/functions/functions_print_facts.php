@@ -479,7 +479,6 @@ function print_repository_record($xref) {
 function print_fact_sources($factrec, $level, $return=false) {
 	global $WT_IMAGES, $EXPAND_SOURCES;
 
-	$printDone = false;
 	$data = "";
 	$nlevel = $level+1;
 
@@ -491,7 +490,6 @@ function print_fact_sources($factrec, $level, $return=false) {
 			$srec = substr($srec, 6); // remove "2 SOUR"
 			$srec = str_replace("\n".($level+1)." CONT ", "<br/>", $srec); // remove n+1 CONT
 			$data .= "<div=\"fact_SOUR\"><span class=\"label\">".WT_I18N::translate('Source').":</span> <span class=\"field\">".PrintReady($srec)."</span></div>";
-			$printDone = true;
 		}
 	}
 	// -- find source for each fact
@@ -500,57 +498,64 @@ function print_fact_sources($factrec, $level, $return=false) {
 	for ($j=0; $j<$ct; $j++) {
 		$sid = $match[$j][1];
 		$source=WT_Source::getInstance($sid);
-		if ($source && $source->canDisplayDetails()) {
-			$spos1 = strpos($factrec, "$level SOUR @".$sid."@", $spos2);
-			$spos2 = strpos($factrec, "\n$level", $spos1);
-			if (!$spos2) $spos2 = strlen($factrec);
-			$srec = substr($factrec, $spos1, $spos2-$spos1);
-			$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
-			$data .= "<div class=\"fact_SOUR\">";
-			$data .= "<span class=\"label\">";
-			$elementID = $sid."-".floor(microtime()*1000000);
-			if ($EXPAND_SOURCES) $plusminus="minus"; else $plusminus="plus";
-			if ($lt>0) {
-				$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
-				if ($plusminus=="plus") $data .= WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\" /></a> ";
-				else $data .= WT_I18N::translate('Hide Details')."\" title=\"".WT_I18N::translate('Hide Details')."\" /></a> ";
-			}
-			$data .= WT_I18N::translate('Source').":</span> <span class=\"field\">";
-			if ($source) {
-				$data .= "<a href=\"".$source->getHtmlUrl()."\">".PrintReady($source->getFullName())."</a>";
-			} else {
-				$data .= $sid;
-			}
-			$data .= "</span></div>";
-
-			$data .= "<div id=\"$elementID\"";
-			if ($EXPAND_SOURCES) $data .= " style=\"display:block\"";
-			$data .= " class=\"source_citations\">";
-			// PUBL
-			if ($source) {
-				$text = get_gedcom_value("PUBL", "1", $source->getGedcomRecord());
-				if (!empty($text)) {
-					$data .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('PUBL').": </span>";
-					$data .= $text;
+		if ($source) {
+			if ($source->canDisplayDetails()) {
+				$spos1 = strpos($factrec, "$level SOUR @".$sid."@", $spos2);
+				$spos2 = strpos($factrec, "\n$level", $spos1);
+				if (!$spos2) {
+					$spos2 = strlen($factrec);
 				}
+				$srec = substr($factrec, $spos1, $spos2-$spos1);
+				$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
+				$data .= "<div class=\"fact_SOUR\">";
+				$data .= "<span class=\"label\">";
+				$elementID = $sid."-".floor(microtime()*1000000);
+				if ($EXPAND_SOURCES) {
+					$plusminus="minus";
+				} else {
+					$plusminus="plus";
+				}
+				if ($lt>0) {
+					$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
+					if ($plusminus=="plus") $data .= WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\" /></a> ";
+					else $data .= WT_I18N::translate('Hide Details')."\" title=\"".WT_I18N::translate('Hide Details')."\" /></a> ";
+				}
+				$data .= WT_I18N::translate('Source').":</span> <span class=\"field\">";
+				$data .= "<a href=\"".$source->getHtmlUrl()."\">".PrintReady($source->getFullName())."</a>";
+				$data .= "</span></div>";
+	
+				$data .= "<div id=\"$elementID\"";
+				if ($EXPAND_SOURCES) {
+					$data .= " style=\"display:block\"";
+				}
+				$data .= " class=\"source_citations\">";
+				// PUBL
+				if ($source) {
+					$text = get_gedcom_value("PUBL", "1", $source->getGedcomRecord());
+					if (!empty($text)) {
+						$data .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('PUBL').": </span>";
+						$data .= $text;
+					}
+				}
+				$data .= printSourceStructure(getSourceStructure($srec));
+				$data .= "<div class=\"indent\">";
+				ob_start();
+				print_media_links($srec, $nlevel);
+				$data .= ob_get_clean();
+				$data .= print_fact_notes($srec, $nlevel, false, true);
+				$data .= "</div>";
+				$data .= "</div>";
 			}
-			$data .= printSourceStructure(getSourceStructure($srec));
-			$data .= "<div class=\"indent\">";
-			ob_start();
-			print_media_links($srec, $nlevel);
-			$data .= ob_get_clean();
-			$data .= print_fact_notes($srec, $nlevel, false, true);
-			$data .= "</div>";
-			$data .= "</div>";
-			$printDone = true;
 		} else {
-			echo '<div class="fact_SOUR"><span class="label">', WT_I18N::translate('Source'), '</span>: <span class="field">', $sid, '</span></div>';
+			$data='<div class="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').'</span>: <span class="field">'.$sid.'</span></div>';
 		}
 	}
 
-	if (!$return) echo $data;
-	else return $data;
-	
+	if ($return) {
+		return $data;
+	} else {
+		echo $data;
+	}	
 }
 
 //-- Print the links to multi-media objects
