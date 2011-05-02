@@ -33,7 +33,7 @@ class WT_Source extends WT_GedcomRecord {
 	protected function _canDisplayDetailsByType($access_level) {
 		// Hide sources if they are attached to private repositories ...
 		preg_match_all('/\n1 REPO @(.+)@/', $this->_gedrec, $matches);
-		foreach ($matches[0] as $match) {
+		foreach ($matches[1] as $match) {
 			$repo=WT_Repository::getInstance($match);
 			if ($repo && !$repo->canDisplayDetails($access_level)) {
 				return false;
