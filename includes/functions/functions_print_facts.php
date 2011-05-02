@@ -530,12 +530,10 @@ function print_fact_sources($factrec, $level, $return=false) {
 				}
 				$data .= " class=\"source_citations\">";
 				// PUBL
-				if ($source) {
-					$text = get_gedcom_value("PUBL", "1", $source->getGedcomRecord());
-					if (!empty($text)) {
-						$data .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('PUBL').": </span>";
-						$data .= $text;
-					}
+				$text = get_gedcom_value("PUBL", "1", $source->getGedcomRecord());
+				if (!empty($text)) {
+					$data .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('PUBL').": </span>";
+					$data .= $text;
 				}
 				$data .= printSourceStructure(getSourceStructure($srec));
 				$data .= "<div class=\"indent\">";
