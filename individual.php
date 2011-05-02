@@ -135,81 +135,79 @@ jQuery(document).ready(function(){
 <?php
 echo WT_JS_END;
 // ===================================== header area =======================================
-if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) echo '<b>', WT_I18N::translate('Changes successfully accepted into database'), '</b><br />';
-if ($controller->indi->isMarkedDeleted()) echo '<span class="error">', WT_I18N::translate('This record has been marked for deletion upon admin approval.'), '</span>';
-if (strlen($controller->indi->getAddName()) > 0) echo '<span class="name_head">', PrintReady($controller->indi->getAddName()), '</span><br />';
+if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) {
+	echo '<b>', WT_I18N::translate('Changes successfully accepted into database'), '</b><br />';
+}
+if ($controller->indi->isMarkedDeleted()) {
+	echo '<span class="error">', WT_I18N::translate('This record has been marked for deletion upon admin approval.'), '</span>';
+}
 echo '<div id="main" class="use-sidebar sidebar-at-right">'; //overall page container
-?>
-<div id="indi_header">
-	<h1><?php
-		if ($TEXT_DIRECTION=='rtl') echo '&nbsp;'; {
-			echo PrintReady($controller->indi->getFullName());
-		}
-		if (WT_USER_IS_ADMIN) {
-			$user_id=get_user_from_gedcom_xref(WT_GED_ID, $controller->pid);
-			if ($user_id) {
-				$user_name=get_user_name($user_id);
-				echo '&nbsp;';
-				echo printReady('<a href="admin_users.php?action=edituser&amp;username='.$user_name.'">('.$user_name.')</a>');
+echo '<div id="indi_header">';
+echo '<h1>',  $controller->indi->getFullName();
+if (WT_USER_IS_ADMIN) {
+	$user_id=get_user_from_gedcom_xref(WT_GED_ID, $controller->pid);
+	if ($user_id) {
+		$user_name=get_user_name($user_id);
+		echo ' - <a href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</a>';
+	}
+}
+echo '</h1>';
+if ($controller->indi->getAddName()) {
+	echo '<h1>', $controller->indi->getAddName(), '</h1>';
+}
+echo '<div id="indi_mainimage">';
+if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
+	echo $controller->getHighlightedObject();
+}
+echo '<div>';
+echo '<div id="indi_name_details">';
+//Display name details
+if ($controller->indi->canDisplayDetails()) {
+	$globalfacts=$controller->getGlobalFacts();
+	$nameSex = array('NAME', 'SEX');
+	foreach ($globalfacts as $key=>$value) {
+		if ($key == 0) {
+			// First name
+			$fact = $value->getTag();
+			if (in_array($fact, $nameSex)) {
+				if ($fact=='NAME') $controller->print_name_record($value);
 			}
-		}
-	?></h1>
-	<div id="indi_mainimage">
-		<?php if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
-			echo $controller->getHighlightedObject();
-		} ?>
-	</div>
-	<div id="indi_name_details">
-		<?php
-		//Display name details
-		if ($controller->indi->canDisplayDetails()) {
-			$globalfacts=$controller->getGlobalFacts();
-			$nameSex = array('NAME', 'SEX');
+			//Display facts
+			echo '<div id="indi_facts">';
+			//Display gender
 			foreach ($globalfacts as $key=>$value) {
-				if ($key == 0) {
-					// First name
-					$fact = $value->getTag();
-					if (in_array($fact, $nameSex)) {
-						if ($fact=='NAME') $controller->print_name_record($value);
-					}
-					//Display facts
-					echo '<div id="indi_facts">';
-					//Display gender
-					foreach ($globalfacts as $key=>$value) {
-						$fact = $value->getTag();
-						if (in_array($fact, $nameSex)) {
-							if ($fact=='SEX') $controller->print_sex_record($value);
-						}
-					}
-					// Display summary birth/death info.
-					$summary=$controller->indi->format_first_major_fact(WT_EVENTS_BIRT, 2);
-					// If living display age
-					if (!$controller->indi->isDead()) {
-						$bdate=$controller->indi->getBirthDate();
-						$age = WT_Date::GetAgeGedcom($bdate);
-						if ($age!='') $summary.= '<dl><dt class="label">'.WT_I18N::translate('Age').'</dt><span class="field">'.get_age_at_event($age, true).'</span></dl>';
-					}
-					$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);
-					if ($SHOW_LDS_AT_GLANCE) {
-						$summary.='<dl><span><b>'.get_lds_glance($controller->indi->getGedcomRecord()).'</b></span></dl>';
-					}
-					if ($summary) {
-						echo $summary;
-					}
-					echo '</div>';
-				} else {
-					// 2nd and more names
-					$fact = $value->getTag();
-					if (in_array($fact, $nameSex)) {
-						if ($fact=='NAME') $controller->print_name_record($value);
-					}
+				$fact = $value->getTag();
+				if (in_array($fact, $nameSex)) {
+					if ($fact=='SEX') $controller->print_sex_record($value);
 				}
 			}
+			// Display summary birth/death info.
+			$summary=$controller->indi->format_first_major_fact(WT_EVENTS_BIRT, 2);
+			// If living display age
+			if (!$controller->indi->isDead()) {
+				$bdate=$controller->indi->getBirthDate();
+				$age = WT_Date::GetAgeGedcom($bdate);
+				if ($age!='') $summary.= '<dl><dt class="label">'.WT_I18N::translate('Age').'</dt><span class="field">'.get_age_at_event($age, true).'</span></dl>';
+			}
+			$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);
+			if ($SHOW_LDS_AT_GLANCE) {
+				$summary.='<dl><span><b>'.get_lds_glance($controller->indi->getGedcomRecord()).'</b></span></dl>';
+			}
+			if ($summary) {
+				echo $summary;
+			}
+			echo '</div>';
+		} else {
+			// 2nd and more names
+			$fact = $value->getTag();
+			if (in_array($fact, $nameSex)) {
+				if ($fact=='NAME') $controller->print_name_record($value);
+			}
 		}
-		?>
-	</div>
-</div>
-<?php
+	}
+}
+echo '</div>';
+echo '</div>';
 if (!$controller->indi->canDisplayDetails()) {
 	echo '<div id="tabs" >';
 	print_privacy_error();
@@ -217,17 +215,13 @@ if (!$controller->indi->canDisplayDetails()) {
 	print_footer();
 	exit;
 }
-?>
-<div id="hitcounter" class="clearfloat">
-	<?php
-	if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
-		//print indi counter only if displaying a non-private person
-		require WT_ROOT.'includes/hitcount.php';
-		echo WT_I18N::translate('Hit Count:'), ' ', $hitCount;
-	}
-	?>
-</div>
-<?php
+echo '<div id="hitcounter" class="clearfloat">';
+if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
+	//print indi counter only if displaying a non-private person
+	require WT_ROOT.'includes/hitcount.php';
+	echo WT_I18N::translate('Hit Count:'), ' ', $hitCount;
+}
+echo '</div>';
 // ===================================== main content tabs
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
