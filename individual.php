@@ -159,6 +159,7 @@ echo '<div id="indi_mainimage">';
 if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
 	echo $controller->getHighlightedObject();
 }
+echo '</div>'; // close #indi_mainimage
 echo '<div id="indi_name_details">';
 //Display name details
 if ($controller->indi->canDisplayDetails()) {
@@ -195,7 +196,7 @@ if ($controller->indi->canDisplayDetails()) {
 			if ($summary) {
 				echo $summary;
 			}
-			echo '</div>';
+			echo '</div>'; // close #indi_facts
 		} else {
 			// 2nd and more names
 			$fact = $value->getTag();
@@ -205,23 +206,25 @@ if ($controller->indi->canDisplayDetails()) {
 		}
 	}
 }
-echo '</div>';
-echo '</div>';
-if (!$controller->indi->canDisplayDetails()) {
-	echo '<div id="tabs" >';
-	print_privacy_error();
-	echo '</div>';
-	print_footer();
-	exit;
-}
+echo '</div>'; // close #indi_name_details
 echo '<div id="hitcounter" class="clearfloat">';
 if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
 	//print indi counter only if displaying a non-private person
 	require WT_ROOT.'includes/hitcount.php';
 	echo WT_I18N::translate('Hit Count:'), ' ', $hitCount;
 }
-echo '</div>';
+echo '</div>';// close #hitcounter
+echo '</div>'; // close #indi_header
+
 // ===================================== main content tabs
+if (!$controller->indi->canDisplayDetails()) {
+	echo '<div id="tabs" >';
+	print_privacy_error();
+	echo '</div>'; //close #tabs
+	print_footer();
+	exit;
+}
+
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
 }
@@ -249,7 +252,7 @@ foreach ($controller->tabs as $tab) {
 		if ($tab->getName()==$controller->default_tab || !$tab->canLoadAjax()) {
 			echo '<div id="', $tab->getName(), '">';
 			echo $tab->getTabContent();
-			echo '</div>';
+			echo '</div>'; // close each tab div
 		}
 	}
 }
