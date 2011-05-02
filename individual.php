@@ -159,7 +159,6 @@ echo '<div id="indi_mainimage">';
 if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
 	echo $controller->getHighlightedObject();
 }
-echo '<div>';
 echo '<div id="indi_name_details">';
 //Display name details
 if ($controller->indi->canDisplayDetails()) {
