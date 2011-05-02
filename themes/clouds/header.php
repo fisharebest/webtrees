@@ -68,7 +68,7 @@ echo
 	$javascript,
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
-	'<link rel="stylesheet" href="<?php echo $print_stylesheet; ?>" type="text/css" media="print" />';
+	'<link rel="stylesheet" href="', $print_stylesheet, '" type="text/css" media="print" />';
 	
 if ($TEXT_DIRECTION=='rtl') { 
 	echo '<link rel="stylesheet" href="', $rtl_stylesheet, '" type="text/css" media="all" />';
