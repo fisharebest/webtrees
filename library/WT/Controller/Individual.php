@@ -319,11 +319,10 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			echo " class=\"nameblue\"";
 		}
 		echo ">";
-		$dummy=new WT_Person($factrec);
-		$dummy->setPrimaryName(0);
+		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@\n".$factrec);
 		echo '<div id="name1">';
 			echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
-			echo '<dd class="field">', PrintReady($dummy->getFullName());
+			echo '<dd class="field">', $dummy->getFullName();
 				if ($this->indi->canEdit() && !strpos($factrec, "\nWT_OLD") && $this->name_count > 1) {
 					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Edit'), "</a> | ";
 					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Delete'), "</a>";
