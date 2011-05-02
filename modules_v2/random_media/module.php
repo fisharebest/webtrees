@@ -196,7 +196,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				} else {
 					$image = "rarrow";
 				}
-				$linkNextImage = "<a href=\"javascript: ".WT_I18N::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?action=ajax&block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']}\" border=\"0\" alt=\"".WT_I18N::translate('Next image')."\" title=\"".WT_I18N::translate('Next image')."\" /></a>";
+				$linkNextImage = "<a href=\"javascript: ".WT_I18N::translate('Next image')."\" onclick=\"jQuery('#block_{$block_id}').load('index.php?ctype={$ctype}&amp;action=ajax&amp;block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']}\" border=\"0\" alt=\"".WT_I18N::translate('Next image')."\" title=\"".WT_I18N::translate('Next image')."\" /></a>";
 
 				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br />";
 				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
