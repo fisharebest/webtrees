@@ -127,7 +127,6 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "</tr></thead>";
 	//-- table body
 	echo "<tbody>";
-	$hidden = 0;
 	$n = 0;
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
 	$dateY = date("Y");
@@ -147,7 +146,6 @@ function print_indi_table($datalist, $legend="", $option="") {
 		if (is_null($person)) continue;
 		if ($person->getType() !== "INDI") continue;
 		if (!$person->canDisplayName()) {
-			$hidden++;
 			continue;
 		}
 		//-- place filtering
@@ -387,7 +385,6 @@ function print_indi_table($datalist, $legend="", $option="") {
 	if ($n!=count($unique_indis)) {
 		echo '<br/>', WT_I18N::translate('Total Names'), ' : ', $n;
 	}
-	if ($hidden) echo "<br /><span class=\"warning\">", WT_I18N::translate('Hidden'), " : ", $hidden, "</span>";
 	echo "</td>";
 	echo "<td style=\"display:none\">GIVN</td>";
 	echo "<td style=\"display:none\">SURN</td>";
@@ -496,7 +493,6 @@ function print_fam_table($datalist, $legend="", $option="") {
 	echo "</tr></thead>";
 	//-- table body
 	echo "<tbody>";
-	$hidden = 0;
 	$num = 0;
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
 	foreach ($datalist as $key => $value) {
@@ -518,7 +514,6 @@ function print_fam_table($datalist, $legend="", $option="") {
 		$wife = $family->getWife();
 		if (is_null($wife)) $wife = new WT_Person('');
 		if (!$husb->canDisplayName() || !$wife->canDisplayName()) {
-			$hidden++;
 			continue;
 		}
 		//-- place filtering
@@ -738,7 +733,6 @@ function print_fam_table($datalist, $legend="", $option="") {
 	}
 	echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", WT_I18N::translate('Show parents'), "</label><br />";
 	echo WT_I18N::translate('Total families'), " : ", $num;
-	if ($hidden) echo "<br /><span class=\"warning\">", WT_I18N::translate('Hidden'), " : ", $hidden, "</span>";
 	echo "</td>";
 	echo "<td style=\"display:none\">HUSB:GIVN</td>";
 	echo "<td></td>"; // HUSB:AGE
