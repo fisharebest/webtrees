@@ -296,6 +296,10 @@ overflow: auto;
 font: normal 10px tahoma, arial, helvetica, sans-serif;
 }
 
+img {
+    border: 0 none;
+}
+
 .block {
 	color: #030303;
 	font: 12px tahoma, arial, helvetica, sans-serif;
@@ -343,14 +347,6 @@ height:24px;
 .blockhc {
 padding-right:15px;
 padding-top: 3px;
-}
-
-#login_block .blockh1 {
-background-image:url(../images/left1G.gif);
-}
-
-#logout_block .blockh1 {
-background-image:url(../images/leftR.gif);
 }
 
 #index_small_blocks .person_box .pedigree_image_portrait,
@@ -1756,6 +1752,7 @@ background: transparent;
 }
 
 td.descriptionbox  a { 
+color: #ffffff;
 }
 
 .editfacts { /* a container for the following three links */
@@ -1831,6 +1828,7 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 .ui-widget-header { border: 1px solid #fff; background: #af2604;  opacity: 0.67;  filter: alpha(opacity = 67);}
 .ui-widget-content a:hover {color: #f50;}
 .ui-state-active, .ui-widget-content .ui-state-active { border: 0px ; }
+
 .ui-state-default a:link { color: #000000;}
 .ui-state-active a:link { color: #ffffff;}
 
@@ -1846,7 +1844,7 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 #tabs,#sidebar {margin:0;}
 #sidebar {background-color:#DEF; border-color:#DDD; display:none; margin:0 2px 0 0; height:auto;}
 html[dir='rtl'] #sidebar  {margin:0 0 0 2px;}
-#tabs {background-color: #fff; border-color: #DDD; width:98%; overflow:auto;}
+#tabs {background-color: #fff; border-color: #DDD; width:98%; overflow:auto; overflow:auto;}
 #sidebarAccordion {width:auto;}
 #sidebarAccordion h3 {height:35px; text-align: center; border-color:#999}
 .use-sidebar #tabs {	width: 77%;}
@@ -1899,3 +1897,4 @@ ul.clist {
 	margin: 0px;
 	margin-left: 0px;
 }
+

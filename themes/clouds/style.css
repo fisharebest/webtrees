@@ -319,6 +319,10 @@ overflow: auto;
 font: normal 10px tahoma, arial, helvetica, sans-serif;
 }
 
+img {
+    border: 0 none;
+}
+
 .block {
 color: #030303;
 font: 12px tahoma, arial, helvetica, sans-serif;
@@ -366,14 +370,6 @@ height:24px;
 .blockhc {
 padding-right:15px;
 padding-top: 2px;
-}
-
-#login_block .blockh1 {
-background-image:url(images/left1G.gif);
-}
-
-#logout_block .blockh1 {
-background-image:url(images/leftR.gif);
 }
 
 #index_small_blocks .person_box .pedigree_image_portrait,
