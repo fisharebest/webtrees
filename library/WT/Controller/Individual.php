@@ -319,7 +319,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			echo " class=\"nameblue\"";
 		}
 		echo ">";
-		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@\n".$factrec);
+		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n".$factrec);
 		echo '<div id="name1">';
 			echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
 			echo '<dd class="field">', $dummy->getFullName();
