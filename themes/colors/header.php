@@ -73,7 +73,7 @@ if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {
 }
 
 if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
-	echo '<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />';
+	echo '<link rel="stylesheet" href="', WT_THEME_DIR.$BROWSERTYPE, '.css" type="text/css" media="all" />';
 }
 
 if (WT_USE_LIGHTBOX) {
