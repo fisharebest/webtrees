@@ -235,7 +235,6 @@ $WT_IMAGES=array(
 	'media_tex'=>WT_THEME_DIR.'images/media/tex.gif',
 	'media_wmv'=>WT_THEME_DIR.'images/media/wmv.png',
 	'media_wmvrem'=>WT_THEME_DIR.'images/media/wmvrem.png',
-	'media'=>WT_THEME_DIR.'images/media.gif'
 );
 
 //-- Variables for the Fan chart
