@@ -49,6 +49,13 @@ if (!$controller->mediaobject) {
 	print_footer();
 	exit;
 }
+
+if (!$controller->mediaobject->canDisplayDetails()) {
+	print_privacy_error();
+	print_footer();
+	exit;
+}
+
 global $tmb;
 
 // LBox =============================================================================
