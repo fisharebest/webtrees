@@ -52,7 +52,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 		$this->nid=$this->note->getXref(); // Correct upper/lower case mismatch
 
 		if (!$this->note->canDisplayDetails()) {
-			print_header(WT_I18N::translate('Shared note'));
+			print_header($this->getPageTitle());
 			print_privacy_error();
 			print_footer();
 			exit;
