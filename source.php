@@ -88,9 +88,9 @@ print_main_media($controller->sid);
 if ($controller->source->canEdit()) {
 	print_add_new_fact($controller->sid, $sourcefacts, 'SOUR');
 	// new media
-	echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, '">';
+	echo '<tr><td class="descriptionbox">';
 	echo WT_I18N::translate('Add media'), help_link('add_media');
-	echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
+	echo '</td><td class="optionbox">';
 	echo '<a href="javascript: ', WT_I18N::translate('Add media'), '" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=', $controller->sid, '\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Add a new media item'), '</a>';
 	echo '<br />';
 	echo '<a href="javascript:;" onclick="window.open(\'inverselink.php?linktoid=', $controller->sid, '&linkto=source\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Link to an existing Media item'), '</a>';
