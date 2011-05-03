@@ -2797,69 +2797,24 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		}
 	}
 
-	// Try to split the relationship into sub-relationships, e.g., third-cousin's wife's fourth-cousin.
-	// This next block of code is experimental.  If it doesn't work, we can remove it.....
-	if (preg_match('/^(.*)(hus|wif|spo)(.*)/', $path, $match)) {
-		if ($match[1]=='') {
-			return WT_I18N::translate(
-				// I18N: A complex relationship, such as "husband's great-uncle"
-				'%1$s\'s %2$s',
-				get_relationship_name_from_path($match[2], null, null), // TODO: need the actual people
-				get_relationship_name_from_path($match[3], null, null)
-			);
-		} elseif ($match[3]=='') {
-			return WT_I18N::translate(
-				// I18N: A complex relationship, such as "second cousin's wife"
-				'%1$s\'s %2$s',
-				get_relationship_name_from_path($match[1], null, null),
-				get_relationship_name_from_path($match[2], null, null)
-			);
-		} else {
-			return WT_I18N::translate(
-				// I18N: A complex relationship, such as "second cousin's husband's third cousin"
-				'%1$s\'s %2$s\'s %3$s',
-				get_relationship_name_from_path($match[1], null, null),
-				get_relationship_name_from_path($match[2], null, null),
-				get_relationship_name_from_path($match[3], null, null)
-			);
-		}
-	}
+	// Split the relationship into sub-relationships, e.g., third-cousin's great-uncle.
+	// Try splitting at every point, and choose the path with the shorted translated name.
 
-	// We don't have a specific name for this relationship, and we can't match it with a pattern.
-	// Just spell it out.
-
-	// TODO: long relationships are a bit ridiculous - although technically correct.
-	// Perhaps translate long paths as "a distant blood relative", or "a distant relative by marriage"
-	switch (substr($path, -3, 3)) {
-	case 'mot': $relationship=WT_I18N::translate('mother'  ); break;
-	case 'fat': $relationship=WT_I18N::translate('father'  ); break;
-	case 'par': $relationship=WT_I18N::translate('parent'  ); break;
-	case 'hus': $relationship=WT_I18N::translate('husband' ); break;
-	case 'wif': $relationship=WT_I18N::translate('wife'    ); break;
-	case 'spo': $relationship=WT_I18N::translate('spouse'  ); break;
-	case 'bro': $relationship=WT_I18N::translate('brother' ); break;
-	case 'sis': $relationship=WT_I18N::translate('sister'  ); break;
-	case 'sib': $relationship=WT_I18N::translate('sibling' ); break;
-	case 'son': $relationship=WT_I18N::translate('son'     ); break;
-	case 'dau': $relationship=WT_I18N::translate('daughter'); break;
-	case 'chi': $relationship=WT_I18N::translate('child'   ); break;
-	}
-	while (($path=substr($path, 0, strlen($path)-3))!='') {
-		switch (substr($path, -3, 3)) {
-			// I18N: These strings are used to build paths of relationships, such as "father's wife's husband's brother"
-		case 'mot': $relationship=WT_I18N::translate('mother\'s %s',   $relationship); break;
-		case 'fat': $relationship=WT_I18N::translate('father\'s %s',   $relationship); break;
-		case 'par': $relationship=WT_I18N::translate('parent\'s %s',   $relationship); break;
-		case 'hus': $relationship=WT_I18N::translate('husband\'s %s',  $relationship); break;
-		case 'wif': $relationship=WT_I18N::translate('wife\'s %s',     $relationship); break;
-		case 'spo': $relationship=WT_I18N::translate('spouse\'s %s',   $relationship); break;
-		case 'bro': $relationship=WT_I18N::translate('brother\'s %s',  $relationship); break;
-		case 'sis': $relationship=WT_I18N::translate('sister\'s %s',   $relationship); break;
-		case 'sib': $relationship=WT_I18N::translate('sibling\'s %s',  $relationship); break;
-		case 'son': $relationship=WT_I18N::translate('son\'s %s',      $relationship); break;
-		case 'dau': $relationship=WT_I18N::translate('daughter\'s %s', $relationship); break;
-		case 'chi': $relationship=WT_I18N::translate('child\'s %s',    $relationship); break;
+	$relationship=null;
+	$path1=substr($path, 0, 3);
+	$path2=substr($path, 3);
+	while ($path2) {
+		$tmp=WT_I18N::translate(
+			// I18N: A complex relationship, such as "third-cousin's great-uncle"
+			'%1$s\'s %2$s',
+			get_relationship_name_from_path($path1, null, null), // TODO: need the actual people
+			get_relationship_name_from_path($path2, null, null)
+		);
+		if (!$relationship || strlen($tmp)<strlen($relationship)) {
+			$relationship=$tmp;
 		}
+		$path1.=substr($path2, 0, 3);
+		$path2=substr($path2, 3);
 	}
 	return $relationship;
 }
