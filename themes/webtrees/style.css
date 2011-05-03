@@ -1689,7 +1689,7 @@ html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected, html[dir='rtl'] .ui-ta
 
 /* ========= Sidebar ============== */
 #main {min-width:600px;}
-#tabs,#sidebar {border:1px solid;}
+#tabs,#sidebar {margin:0;}
 #sidebar {border-color:#DDD; display:none; margin:0 2px 0 0; height:auto;}
 html[dir='rtl'] #sidebar  {margin:0 0 0 2px;}
 #tabs {background-color:#FFF; border-color:#DDD; width:98%; overflow:auto;}

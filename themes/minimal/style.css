@@ -1572,10 +1572,11 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 .ui-accordion .ui-accordion-header a {padding:.5em}
 
 /* ========= Sidebar ============== */
-#tabs,#sidebar {border: 1px solid;}
-#sidebar {background-color:#DEF; border-color:#DDD; display:none; margin:0 2px 0 !important; height:auto !important; position:relative !important;}
-html[dir='rtl'] #sidebar  {margin:0 0 0 2px !important;}
-#tabs {background-color: #FFF; border-color: #DDD; width:98%;}
+#main {min-width:600px;}
+#tabs,#sidebar {margin:0;}
+#sidebar {background-color:#DEF; border-color:#DDD; display:none; margin:0 2px 0 0; height:auto;}
+html[dir='rtl'] #sidebar  {margin:0 0 0 2px;}
+#tabs {background-color: #FFF; border-color: #DDD; width:98%; overflow:auto;}
 #sidebarAccordion {width:auto;}
 #sidebarAccordion h3 {height:35px; text-align: center;}
 .use-sidebar #tabs {	width: 77%;}
@@ -1585,16 +1586,16 @@ html[dir='rtl'] #sidebar  {margin:0 0 0 2px !important;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
 .sidebar-at-right #tabs {float: left;}
 html[dir='rtl'] .sidebar-at-right #tabs {float: right;}
-#separator {	display: block; background: #DDD url('images/indi_sprite.png') no-repeat -26px 100px; width: 10px; border: 1px solid #888; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
+#separator {	display: block; background: #DDD url('images/indi_sprite.png') no-repeat -26px 100px; width:0.75%; max-width:10px; border: 1px solid #888; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
 html[dir='rtl'] #separator { background: #DDD url('images/indi_sprite.png') no-repeat -1px 100px;}
 .use-sidebar #separator { background: #DDD url('images/indi_sprite.png') no-repeat -1px 100px;}
 html[dir='rtl'] .use-sidebar #separator {background: #DDD url('images/indi_sprite.png') no-repeat -26px 100px;}
 
 /* ============== Sidebar content items ============== */
-#sb_content_family_nav {padding:0 !important;}
-#sb_family_nav_content {margin-top:0px;}
+#sb_content_family_nav {padding:0;}
+#sb_family_nav_content {margin-top:0;}
 .sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.gif');white-space:nowrap;}
-.name_tree_div li, .name_tree_div_visible li {white-space:normal !important;}
+.name_tree_div li, .name_tree_div_visible li {white-space:normal;}
 .sb_desc_indi_li {list-style-type:none;	white-space:nowrap;}
 .desc_tree_div {	display:none;}
 .desc_tree_div ul {padding:0px;	margin-left:10px;margin-top:0px;margin-right:0px;}
