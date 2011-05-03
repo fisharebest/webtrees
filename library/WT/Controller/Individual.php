@@ -319,16 +319,17 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			echo " class=\"nameblue\"";
 		}
 		echo ">";
-		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n".$factrec);
+		// Create a dummy record, so we can extract the formatted NAME value from the event.
+		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
 		echo '<div id="name1">';
-			echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
-			echo '<dd class="field">', $dummy->getFullName();
-				if ($this->indi->canEdit() && !strpos($factrec, "\nWT_OLD") && $this->name_count > 1) {
-					echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Edit'), "</a> | ";
-					echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Delete'), "</a>";
-				}
-			echo '</dd>';
-			echo '</dl>';
+		echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
+		echo '<dd class="field">', $dummy->getFullName();
+		if ($this->indi->canEdit() && !strpos($factrec, "\nWT_OLD") && $this->name_count > 1) {
+			echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Edit'), "</a> | ";
+			echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Delete'), "</a>";
+		}
+		echo '</dd>';
+		echo '</dl>';
 		echo '</div>';
 		$ct = preg_match_all('/\n2 (\w+) (.*)/', $factrec, $nmatch, PREG_SET_ORDER);
 		for ($i=0; $i<$ct; $i++) {
