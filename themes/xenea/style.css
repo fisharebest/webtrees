@@ -284,7 +284,7 @@ th {
 
 .name1 {
 	color: #000066;
-	font: bold 10px tahoma, arial, helvetica, sans-serif;
+	font: bold 11px tahoma, arial, helvetica, sans-serif;
 }
 
 a:hover .name1 {
@@ -313,6 +313,10 @@ a:hover .nameZoom {
 .name2 {
 	color: #000066;
 	font: bold 11px tahoma, arial, helvetica, sans-serif;
+}
+
+.details1 {
+font-size: 10px;
 }
 
 .details2 {
@@ -1764,7 +1768,7 @@ html[dir='rtl'] #sidebar  {margin:0 0 0 2px;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
 .sidebar-at-right #tabs {float: left;}
 html[dir='rtl'] .sidebar-at-right #tabs {float:right;}
-#separator {	display: block; background: #c3dfff url('images/indi_sprite.png') no-repeat -26px 100px; width:0.75%; max-width:10px; border: 1px solid #999; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
+#separator {	display: block; background: #c3dfff url('images/indi_sprite.png') no-repeat -26px 100px; min-width:0.75%; max-width:10px; border: 1px solid #999; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
 html[dir='rtl'] #separator { background: #c3dfff url('images/indi_sprite.png') no-repeat -1px 100px;}
 .use-sidebar #separator { background: #c3dfff url('images/indi_sprite.png') no-repeat -1px 100px;}
 html[dir='rtl'] .use-sidebar #separator {background: #c3dfff url('images/indi_sprite.png') no-repeat -26px 100px;}

@@ -1854,7 +1854,7 @@ html[dir='rtl'] #sidebar  {margin:0 0 0 2px;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
 .sidebar-at-right #tabs {float: left;}
 html[dir='rtl'] .sidebar-at-right #tabs {float: right;}
-#separator {	display: block; background: #04AF23 url('../images/indi_sprite.png') no-repeat -26px 100px; width:0.75%; max-width:10px; border: 1px solid #808B9D; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
+#separator {	display: block; background: #04AF23 url('../images/indi_sprite.png') no-repeat -26px 100px; min-width:0.75%; max-width:10px; border: 1px solid #808B9D; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px;}
 html[dir='rtl'] #separator { background: #04AF23 url('../images/indi_sprite.png') no-repeat -1px 100px;}
 .use-sidebar #separator { background: #04AF23 url('../images/indi_sprite.png') no-repeat -1px 100px;}
 html[dir='rtl'] .use-sidebar #separator {background: #04AF23 url('images/indi_sprite.png') no-repeat -26px 100px;}
