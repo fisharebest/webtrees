@@ -380,6 +380,7 @@ $level2_tags=array(
 		'CENS',
 		'CHR',
 		'CHRA',
+		'CONF',
 		'CREM',
 		'DEAT',
 		'EDUC',
