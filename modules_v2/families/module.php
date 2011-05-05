@@ -181,7 +181,6 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $SHOW_MARRIED_NAMES;
 		$families=WT_Query_Name::families($surname, $alpha, '', $SHOW_MARRIED_NAMES, WT_GED_ID);
 		$out = '<ul>';
-		$private_count = 0;
 		foreach ($families as $family) {
 			if ($family->canDisplayName()) {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
@@ -191,9 +190,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$out .= '</a></li>';
 			}
-			else $private_count++;
 		}
-		if ($private_count>0) $out .= '<li>'.PrintReady(WT_I18N::translate('Private').' ('.$private_count.')').'</li>';
 		$out .= '</ul>';
 		return $out;
 	}
@@ -234,7 +231,6 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		->fetchAll(PDO::FETCH_ASSOC);
 
 		$out = '<ul>';
-		$private_count = 0;
 		foreach ($rows as $row) {
 			$family=WT_Family::getInstance($row);
 			if ($family->canDisplayName()) {
@@ -245,9 +241,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$out .= '</a></li>';
 			}
-			else $private_count++;
 		}
-		if ($private_count>0) $out .= '<li>'.PrintReady(WT_I18N::translate('Private').' ('.$private_count.')').'</li>';
 		$out .= '</ul>';
 		return $out;
 	}

@@ -182,7 +182,6 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $SHOW_MARRIED_NAMES;
 		$indis=WT_Query_Name::individuals($surname, $alpha, '', $SHOW_MARRIED_NAMES, false, WT_GED_ID);
 		$out = '<ul>';
-		$private_count = 0;
 		foreach ($indis as $person) {
 			if ($person->canDisplayName()) {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
@@ -192,9 +191,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$out .= '</a></li>';
 			}
-			else $private_count++;
 		}
-		if ($private_count>0) $out .= '<li>'.WT_I18N::translate('Private').' ('.$private_count.')</li>';
 		$out .= '</ul>';
 		return $out;
 	}
@@ -216,7 +213,6 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			->fetchAll(PDO::FETCH_ASSOC);
 
 		$out = '<ul>';
-		$private_count = 0;
 		foreach ($rows as $row) {
 			$person=WT_Person::getInstance($row);
 			if ($person->canDisplayName()) {
@@ -227,9 +223,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				$out .= '</a></li>';
 			}
-			else $private_count++;
 		}
-		if ($private_count>0) $out .= '<li>'.PrintReady(WT_I18N::translate('Private').' ('.$private_count.')').'</li>';
 		$out .= '</ul>';
 		return $out;
 	}
