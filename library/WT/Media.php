@@ -44,7 +44,7 @@ class WT_Media extends WT_GedcomRecord {
 	var $filepropset   =false;
 
 	// Create a Media object from either raw GEDCOM data or a database row
-	function __construct($data) {
+	public function __construct($data) {
 		if (is_array($data)) {
 			// Construct from a row from the database
 			$this->title=$data['m_titl'];
@@ -83,7 +83,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the media note
 	 * @return string
 	 */
-	function getNote() {
+	public function getNote() {
 		if (is_null($this->note)) {
 			$this->note=get_gedcom_value('NOTE', 1, $this->getGedcomRecord());
 		}
@@ -94,7 +94,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the thumbnail filename
 	 * @return string
 	 */
-	function getThumbnail($generateThumb = true) {
+	public function getThumbnail($generateThumb = true) {
 		return thumbnail_file($this->file,$generateThumb);
 	}
 
@@ -102,7 +102,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the media icon filename
 	 * @return string
 	 */
-	function getMediaIcon() {
+	public function getMediaIcon() {
 		return media_icon_file($this->file);
 	}
 
@@ -110,7 +110,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the media file name
 	 * @return string
 	 */
-	function getFilename() {
+	public function getFilename() {
 		return $this->file;
 	}
 
@@ -118,7 +118,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the relative file path of the image on the server
 	 * @return string
 	 */
-	function getLocalFilename() {
+	public function getLocalFilename() {
 		return check_media_depth($this->file);
 	}
 
@@ -126,7 +126,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the file name on the server
 	 * @return string
 	 */
-	function getServerFilename() {
+	public function getServerFilename() {
 		if ($this->serverfilename) return $this->serverfilename;
 		$localfilename = $this->getLocalFilename();
 		if (!empty($localfilename)) {
@@ -154,7 +154,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * check if the file exists on this server
 	 * @return boolean
 	 */
-	function fileExists() {
+	public function fileExists() {
 		if (!$this->serverfilename) $this->getServerFilename();
 		return $this->fileexists;
 	}
@@ -163,8 +163,8 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the media file size
 	 * @return string
 	 */
-	function getFilesize() {
-		if (!$this->filepropset) $this->setFileProperties();
+	public function getFilesize() {
+		if (!$this->filepropset) $this->_setFileProperties();
 		return sprintf('%.2f', @$this->filesizeraw/1024);
 	}
 
@@ -172,8 +172,8 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the media file size, unformatted
 	 * @return number
 	 */
-	function getFilesizeraw() {
-		if (!$this->filepropset) $this->setFileProperties();
+	public function getFilesizeraw() {
+		if (!$this->filepropset) $this->_setFileProperties();
 		return $this->filesizeraw;
 	}
 
@@ -181,7 +181,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the media type
 	 * @return string
 	 */
-	function getMediatype() {
+	public function getMediatype() {
 		$mediaType = strtolower(get_gedcom_value('FORM:TYPE', 2, $this->getGedcomRecord()));
 		return $mediaType;
 	}
@@ -190,8 +190,8 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the media file type
 	 * @return string
 	 */
-	function getFiletype() {
-		if (!$this->filepropset) $this->setFileProperties();
+	public function getFiletype() {
+		if (!$this->filepropset) $this->_setFileProperties();
 		return $this->ext;
 	}
 
@@ -199,8 +199,8 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the media mime type
 	 * @return string
 	 */
-	function getMimetype() {
-		if (!$this->filepropset) $this->setFileProperties();
+	public function getMimetype() {
+		if (!$this->filepropset) $this->_setFileProperties();
 		return $this->mime;
 	}
 
@@ -208,8 +208,8 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the width of the image
 	 * @return number (0 if not an image)
 	 */
-	function getWidth() {
-		if (!$this->filepropset) $this->setFileProperties();
+	public function getWidth() {
+		if (!$this->filepropset) $this->_setFileProperties();
 		return $this->width;
 	}
 
@@ -217,8 +217,8 @@ class WT_Media extends WT_GedcomRecord {
 	 * get the height of the image
 	 * @return number (0 if not an image)
 	 */
-	function getHeight() {
-		if (!$this->filepropset) $this->setFileProperties();
+	public function getHeight() {
+		if (!$this->filepropset) $this->_setFileProperties();
 		return $this->height;
 	}
 
@@ -227,7 +227,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * no need to call directly
 	 * @return nothing
 	 */
-	function setFileProperties() {
+	private function _setFileProperties() {
 		if ($this->fileExists()) {
 			$this->filesizeraw = @filesize($this->getServerFilename());
 			$imgsize=@getimagesize($this->getServerFilename()); // [0]=width [1]=height [2]=filetype ['mime']=mimetype
@@ -290,7 +290,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * basically just checks if the IDs are the same
 	 * @param GedcomRecord $obj
 	 */
-	function equals(&$obj) {
+	public function equals(&$obj) {
 		if (is_null($obj)) return false;
 		if ($this->xref==$obj->getXref()) return true;
 		if ($this->title==$obj->title && $this->file==$obj->file) return true;
@@ -298,7 +298,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	// If this object has no name, what do we call it?
-	function getFallBackName() {
+	public function getFallBackName() {
 		if ($this->canDisplayDetails()) {
 			return utf8_strtoupper(basename($this->file));
 		} else {
@@ -319,7 +319,7 @@ class WT_Media extends WT_GedcomRecord {
 
 	// Extra info to display when displaying this record in a list of
 	// selection items or favorites.
-	function format_list_details() {
+	public function format_list_details() {
 		ob_start();
 		print_media_links('1 OBJE @'.$this->getXref().'@', 1, $this->getXref());
 		return ob_get_clean();
