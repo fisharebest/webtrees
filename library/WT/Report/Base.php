@@ -2613,7 +2613,8 @@ function FootnoteSHandler($attrs) {
 		$tag = $match[1];
 		$id = $match[2];
 	}
-	if (WT_GedcomRecord::GetInstance($id)->canDisplayDetails()) {
+	$record=WT_GedcomRecord::GetInstance($id);
+	if ($record && $record->canDisplayDetails()) {
 		array_push($printDataStack, $printData);
 		$printData = true;
 		$style = "";
