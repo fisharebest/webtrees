@@ -39,26 +39,30 @@ $nonfacts = array();
 $controller=new WT_Controller_Note();
 $controller->init();
 
-// Tell addmedia.php what to link to
-$linkToID=$controller->nid;
-
 print_header($controller->getPageTitle());
 
-// LightBox
+if (!$controller->note) {
+	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
+	print_footer();
+	exit;
+}
+
+if (!$controller->note->canDisplayDetails()) {
+	print_privacy_error();
+	print_footer();
+	exit;
+}
+
+if ($controller->note->isMarkedDeleted()) {
+	echo '<span class="error">', WT_I18N::translate('This record has been marked for deletion upon admin approval.'), '</span>';
+}
+
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 
-// If note does not currently exist
-if (!$controller->note) {
-	echo "<b>", WT_I18N::translate('Unable to find record with ID'), "</b><br /><br />";
-	print_footer();
-	exit;
-}
-else if ($controller->note->isMarkedDeleted()) {
-	echo '<span class="error">', WT_I18N::translate('This record has been marked for deletion upon admin approval.'), '</span>';
-}
+$linkToID=$controller->nid; // Tell addmedia.php what to link to
 
 echo WT_JS_START;
 echo 'function show_gedcom_record() {';

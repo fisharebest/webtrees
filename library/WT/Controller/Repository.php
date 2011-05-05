@@ -51,13 +51,6 @@ class WT_Controller_Repository extends WT_Controller_Base {
 
 		$this->rid=$this->repository->getXref(); // Correct upper/lower case mismatch
 
-		if (!$this->repository->canDisplayDetails()) {
-			print_header($this->getPageTitle());
-			print_privacy_error();
-			print_footer();
-			exit;
-		}
-
 		//-- perform the desired action
 		switch($this->action) {
 		case 'addfav':

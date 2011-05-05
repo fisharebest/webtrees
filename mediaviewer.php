@@ -34,18 +34,10 @@ $nonfacts=array();
 $controller = new WT_Controller_Media();
 $controller->init();
 
-
-/* Note:
- *  if $controller->getLocalFilename() is not set, then an invalid MID was passed in
- *  if $controller->pid is not set, then a filename was passed in that is not in the gedcom
- */
-
-$filename = $controller->getLocalFilename();
-
 print_header($controller->getPageTitle());
 
 if (!$controller->mediaobject) {
-	echo "<b>", WT_I18N::translate('Unable to find record with ID'), "</b><br /><br />";
+	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
 	print_footer();
 	exit;
 }
@@ -56,15 +48,18 @@ if (!$controller->mediaobject->canDisplayDetails()) {
 	exit;
 }
 
-global $tmb;
-
-// LBox =============================================================================
-// Get Javascript variables from lb_config.php ---------------------------
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
-// LBox  ============================================================================
+
+/* Note:
+ *  if $controller->getLocalFilename() is not set, then an invalid MID was passed in
+ *  if $controller->pid is not set, then a filename was passed in that is not in the gedcom
+ */
+$filename = $controller->getLocalFilename();
+
+global $tmb;
 
 //The next set of code draws the table that displays information about the person
 ?>

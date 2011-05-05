@@ -52,14 +52,18 @@ if (!$controller->indi) {
 	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
 	print_footer();
 	exit;
-} else if (!$controller->indi->canDisplayName()) {
+}
+
+if (!$controller->indi->canDisplayName()) {
 	echo '<div class="facts_value" >';
 	print_privacy_error();
 	echo '</div>';
 	print_footer();
 	exit;
 }
+
 $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
+
 echo WT_JS_START; ?>
 // javascript function to open a window with the raw gedcom in it
 function show_gedcom_record(shownew) {
