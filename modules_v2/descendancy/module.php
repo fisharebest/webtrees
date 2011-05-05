@@ -195,15 +195,12 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		->fetchAll(PDO::FETCH_ASSOC);
 
 		$out = '<ul>';
-		$private_count = 0;
 		foreach ($rows as $row) {
-			$person=PWT_erson::getInstance($row);
+			$person=WT_Person::getInstance($row);
 			if ($person->canDisplayName()) {
 				$out .= $this->getPersonLi($person);
 			}
-			else $private_count++;
 		}
-		if ($private_count>0) $out .= '<li>'.WT_I18N::translate('Private').' ('.$private_count.')</li>';
 		$out .= '</ul>';
 		return $out;
 	}
@@ -229,14 +226,10 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if ($family->canDisplayDetails()) {
 			$children = $family->getChildren();
 			if (count($children)>0) {
-				$private = 0;
 				foreach($children as $child) {
-					if ($child->canDisplayName()) $out .= $this->getPersonLi($child, $generations-1);
-					else $private++;
+					$out .= $this->getPersonLi($child, $generations-1);
 				}
-				if ($private>0) $out .= '<li class="sb_desc_indi_li">'.WT_I18N::translate('Private').' ('.$private.')</li>';
-			}
-			else {
+			} else {
 				$out .= WT_I18N::translate('No children');
 			}
 		}
