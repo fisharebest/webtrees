@@ -220,7 +220,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if (empty($ids)) {
 			//-- no match : search for FAM id
 			$where = "f_id LIKE ?";
-			$vars[]="%{$FILTER}%";
+			$vars[]="%{$query}%";
 		} else {
 			//-- search for spouses
 			$qs=implode(',', array_fill(0, count($ids), '?'));
