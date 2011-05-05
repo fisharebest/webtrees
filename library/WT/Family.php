@@ -161,17 +161,15 @@ class WT_Family extends WT_GedcomRecord {
 	 * @return array array of children Persons
 	 */
 	function getChildren($access_level=WT_USER_ACCESS_LEVEL) {
+		global $SHOW_PRIVATE_RELATIONSHIPS;
+
 		if ($this->_children===null) {
 			$this->_children=array();
 			preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->getGedcomRecord(), $match);
 			foreach ($match[1] as $pid) {
 				$child=WT_Person::getInstance($pid);
-				if ($child) {
-					if ($child->canDisplayName($access_level)) {
-						$this->_children[]=$child;
-					}
-				} else {
-					echo '<span class="warning">', WT_I18N::translate('Unable to find record with ID'), ' ', $pid, '</span>';
+				if ($SHOW_PRIVATE_RELATIONSHIPS || $child && $child->canDisplayName($access_level)) {
+					$this->_children[]=$child;
 				}
 			}
 		}
