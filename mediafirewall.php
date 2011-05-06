@@ -414,7 +414,7 @@ if (@$_SERVER["HTTP_IF_MODIFIED_SINCE"]) {
 // parse IF_NONE_MATCH header from client
 $if_none_match = 'x';
 if (@$_SERVER["HTTP_IF_NONE_MATCH"]) {
-	$if_none_match = str_replace('\"', '', $_SERVER["HTTP_IF_NONE_MATCH"]);
+	$if_none_match = str_replace("\"", "", $_SERVER["HTTP_IF_NONE_MATCH"]);
 }
 
 if ($debug_mediafirewall) {
