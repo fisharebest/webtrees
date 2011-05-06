@@ -5,7 +5,7 @@
 * ($rootid=1, father=2, mother=3 ...)
 *
 * webtrees: Web based Family History software
-* Copyright (C) 2010 webtrees development team.
+* Copyright (C) 2011 webtrees development team.
 *
 * Derived from PhpGedView
 * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -114,7 +114,7 @@ if ($controller->show_cousins) {
 	echo '0" onclick="document.people.show_cousins.value=\'1\';"';
 }
 echo ' />';
-echo WT_I18N::translate('Show cousins'), help_link('show_cousins');
+echo WT_I18N::translate('Show cousins');
 
 echo '<br /><input type="radio" name="chart_style" value="2"';
 if ($controller->chart_style=="2") {

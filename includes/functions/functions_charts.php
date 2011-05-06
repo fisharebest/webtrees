@@ -3,7 +3,7 @@
  * Functions used for charts
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -655,13 +655,12 @@ function get_sosa_name($sosa) {
 	return get_relationship_name($path);
 }
 
-
 /**
  * print cousins list
  *
  * @param string $famid family ID
  */
-function print_cousins($famid, $personcount="1") {
+function print_cousins($famid, $personcount=1) {
 	global $show_full, $bheight, $bwidth, $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
@@ -676,37 +675,37 @@ function print_cousins($famid, $personcount="1") {
 		$bwidth-=40;
 	}
 	$show_full = false;
-	echo "<td valign=\"middle\" height=\"100%\">";
+	echo '<td valign="middle" height="100%">';
 	if ($kids) {
-		echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" ><tr valign=\"middle\">";
-		if ($kids>1) echo "<td rowspan=\"".$kids."\" valign=\"middle\" align=\"right\"><img width=\"3px\" height=\"". (($bheight+5) * ($kids-1)) ."px\" src=\"".$WT_IMAGES["vline"]."\" alt=\"\" /></td>";
+		echo '<table cellspacing="0" cellpadding="0" border="0" ><tr valign="middle">';
+		if ($kids>1) echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight+5)*($kids-1)), 'px" src="', $WT_IMAGES["vline"], '" alt="" /></td>';
 		$ctkids = count($fchildren);
 		$i = 1;
 		foreach ($fchildren as $fchil) {
-			echo "<td><img width=\"10px\" height=\"3px\" style=\"padding-";
-			if ($TEXT_DIRECTION=="ltr") echo "right";
-			else echo "left";
-			echo ": 2px;\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\" /></td><td>";
+			echo '<td><img width="10px" height="3px" style="padding-';
+			if ($TEXT_DIRECTION=='ltr') echo 'right';
+			else echo 'left';
+			echo ': 2px;" src="', $WT_IMAGES["hline"], '" alt="" /></td><td>';
 			print_pedigree_person($fchil, 1 , 0, $personcount);
 			$personcount++;
-			echo "</td></tr>";
+			echo '</td></tr>';
 			if ($i < $ctkids) {
-				echo "<tr>";
+				echo '<tr>';
 				$i++;
 			}
 		}
-		echo "</table>";
+		echo '</table>';
 	} else {
 		$famrec = find_family_record($famid, $ged_id);
 		$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
 		if ($ct>0) $nchi = $match[1];
 		else $nchi = "";
-		if ($nchi=="0") echo "&nbsp;<img src=\"images/small/childless.gif\" alt=\"".WT_I18N::translate('This family remained childless')."\" title=\"".WT_I18N::translate('This family remained childless')."\" />";
+		if ($nchi=='0') echo '&nbsp;<img src="', $WT_IMAGES['childless'], '" alt="', WT_I18N::translate('This family remained childless'), '" title="', WT_I18N::translate('This family remained childless'), '" />';
 	}
 	$show_full = $save_show_full;
 	if ($save_show_full) {
 		$bheight*=4;
 		$bwidth+=40;
 	}
-	echo "</td>";
+	echo '</td>';
 }
