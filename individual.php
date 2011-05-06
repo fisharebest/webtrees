@@ -129,7 +129,7 @@ jQuery(document).ready(function(){
 ;
 	// Load preference
 	if ( jQuery.cookie('sidebar-pref') == null ){
-		objMain.removeClass('use-sidebar');
+		objMain.addClass('use-sidebar');
 		objSeparator.css('height', objTabs.outerHeight() + 'px');
 	} else {
 		objSeparator.css('height', objBar.outerHeight() + 'px');
