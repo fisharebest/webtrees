@@ -326,17 +326,27 @@ if (empty($_POST['dbuser']) || !$dbh || !$db_version_ok) {
 if (empty($_POST['dbname'])) $_POST['dbname']='';
 if (empty($_POST['tblpfx'])) $_POST['tblpfx']='wt_';
 
+// The character "`" is not valid in database or table names (even if escaped).
+// By removing it, we can ensure that our SQL statements are quoted correctly.
+//
+// Other characters may be invalid (objects must be valid filenames on the
+// MySQL server's filesystem), so block the usual ones.
+$DBNAME   =str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['dbname']);
+$TBLPREFIX=str_replace(array('`', '"', '\'', ':', '/', '\\', '\r', '\n', '\t', '\0'), '', $_POST['tblpfx']);
+
+// If we have specified a database, and we have not used invalid characters,
+// try to connect to it.
 $dbname_ok=false;
-if ($_POST['dbname']) {
+if ($DBNAME && $DBNAME==$_POST['dbname'] && $TBLPREFIX==$_POST['tblpfx']) {
 	try {
 		// Try to create the database, if it does not exist.
-		$dbh->exec('CREATE DATABASE IF NOT EXISTS `'.$_POST['dbname'].'` COLLATE utf8_unicode_ci');
+		$dbh->exec("CREATE DATABASE IF NOT EXISTS `{$DBNAME}` COLLATE utf8_unicode_ci");
 	} catch (PDOException $ex) {
 		// If we have no permission to do this, there's nothing helpful we can say.
 		// We'll get a more helpful error message from the next test.
 	}
 	try {
-		$dbh->exec('USE `'.addcslashes($_POST['dbname'], '`').'`');
+		$dbh->exec("USE `{$DBNAME}`");
 		$dbname_ok=true;
 	} catch (PDOException $ex) {
 		echo
@@ -351,7 +361,7 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.3 and earlier) and many other applications have a USERS table.
 		// webtrees has a USER table
-		$dummy=$dbh->query("SELECT COUNT(*) FROM `".addcslashes($_POST['tblpfx'], '`')."users`");
+		$dummy=$dbh->query("SELECT COUNT(*) FROM `{$TBLPREFIX}users`");
 		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
@@ -362,7 +372,7 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.4 and later) has a site_setting.site_setting_name column.
 		// [We changed the column name in webtrees, so we can tell the difference!]
-		$dummy=$dbh->query("SELECT site_setting_value FROM `".addcslashes($_POST['tblpfx'], '`')."site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'");
+		$dummy=$dbh->query("SELECT site_setting_value FROM `{$TBLPREFIX}site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'");
 		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
@@ -515,13 +525,13 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		WT_I18N::translate('Security'), '</td><td>',
 		'<select name="smtpsecure"', $_POST['smtpuse']=='exernal' ? '' : 'disabled', '>',
 		'<option value="none" ',
-		$_POST['smtpusepw']=='none' ? 'selected="selected"' : '',
+		$_POST['smtpsecure']=='none' ? 'selected="selected"' : '',
 		'>', WT_I18N::translate('none'), '</option>',
 		'<option value="tls" ',
-		$_POST['smtpusepw']=='tls' ? 'selected="selected"' : '',
+		$_POST['smtpsecure']=='tls' ? 'selected="selected"' : '',
 		'>', /* I18n: Transport Layer Security - a secure communications protocol */ WT_I18N::translate('tls'), '</option>',
 		'<option value="ssl" ',
-		$_POST['smtpusepw']=='ssl' ? 'selected="selected"' : '',
+		$_POST['smtpsecure']=='ssl' ? 'selected="selected"' : '',
 		'>', /* I18n: Secure Sockets Layer - a secure communications protocol*/ WT_I18N::translate('ssl'), '</option>',
 		'</select></td><td>',
 		WT_I18N::translate('Most servers do not use secure connections.'),
@@ -567,7 +577,6 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 
 try {
 	// These shouldn't fail.
-	$TBLPREFIX=$_POST['tblpfx'];
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}gedcom` (".
 		" gedcom_id     INTEGER AUTO_INCREMENT NOT NULL,".
@@ -947,21 +956,27 @@ try {
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 
-	$dbh->exec(
+	$dbh->prepare(
 		"INSERT IGNORE INTO `{$TBLPREFIX}user` (user_id, user_name, real_name, email, password) VALUES ".
-		" (1, '".addcslashes($_POST['wtuser'], "'")."', '".addcslashes($_POST['wtname'], "'")."', '".addcslashes($_POST['wtemail'], "'")."', '".crypt($_POST['wtpass'])."')"
-	);
-	$dbh->exec(
+		" (1, ?, ?, ?, ?)"
+	)->execute(array(
+		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], crypt($_POST['wtpass'])
+	));
+
+	$dbh->prepare(
 		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
-		" (1, 'canadmin',          '1'),".
-		" (1, 'language',          '".Zend_Registry::get('Zend_Locale')."'),".
-		" (1, 'verified',          '1'),".
-		" (1, 'verified_by_admin', '1'),".
-		" (1, 'editaccount',       '1'),".
-		" (1, 'auto_accept',       '0'),".
-		" (1, 'visibleonline',     '1')"
-	);
-	$dbh->exec(
+		" (1, 'canadmin',          ?),".
+		" (1, 'language',          ?),".
+		" (1, 'verified',          ?),".
+		" (1, 'verified_by_admin', ?),".
+		" (1, 'editaccount',       ?),".
+		" (1, 'auto_accept',       ?),".
+		" (1, 'visibleonline',     ?)"
+	)->execute(array(
+		1, Zend_Registry::get('Zend_Locale'), 1, 1, 1, 0, 1
+	));
+
+	$dbh->prepare(
 		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
 		"('WT_SCHEMA_VERSION',               '10'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
@@ -973,17 +988,21 @@ try {
 		"('SESSION_TIME',                    '7200'),".
 		"('SERVER_URL',                      ''),".
 		"('LOGIN_URL',                       'login.php'),".
-		"('SMTP_ACTIVE',                     '".addcslashes($_POST['smtpuse'], "'")."'),".
-		"('SMTP_HOST',                       '".addcslashes($_POST['smtpserv'], "'")."'),".
-		"('SMTP_HELO',                       '".addcslashes($_POST['smtpsender'], "'")."'),".
-		"('SMTP_PORT',                       '".addcslashes($_POST['smtpport'], "'")."'),".
-		"('SMTP_AUTH',                       '".($_POST['smtpusepw']==1)."'),".
-		"('SMTP_AUTH_USER',                  '".addcslashes($_POST['smtpuser'], "'")."'),".
-		"('SMTP_AUTH_PASS',                  '".addcslashes($_POST['smtppass'], "'")."'),".
-		"('SMTP_SSL',                        '".addcslashes($_POST['smtpsecure'], "'")."'),".
-		"('SMTP_SIMPLE_MAIL',                '".addcslashes($_POST['smtpsmpl'], "'")."'),".
-		"('SMTP_FROM_NAME',                  '".addcslashes($_POST['smtpfrom'], "'")."')"
-	);
+		"('SMTP_ACTIVE',                     ?),".
+		"('SMTP_HOST',                       ?),".
+		"('SMTP_HELO',                       ?),".
+		"('SMTP_PORT',                       ?),".
+		"('SMTP_AUTH',                       ?),".
+		"('SMTP_AUTH_USER',                  ?),".
+		"('SMTP_AUTH_PASS',                  ?),".
+		"('SMTP_SSL',                        ?),".
+		"('SMTP_SIMPLE_MAIL',                ?),".
+		"('SMTP_FROM_NAME',                  ?)"
+	)->execute(array(
+		$_POST['smtpuse'], $_POST['smtpserv'], $_POST['smtpsender'], $_POST['smtpport'], $_POST['smtpusepw'],
+		$_POST['smtpuser'], $_POST['smtppass'], $_POST['smtpsecure'], $_POST['smtpsmpl'], $_POST['smtpfrom']
+	));
+
 	echo
 		'<p>', WT_I18N::translate('Your system is almost ready for use.  The final step is to download a configuration file <b>%1$s</b> and copy this to the <b>%2$s</b> directory on your webserver.  This is a security measure to ensure only the website\'s owner can configure it.', WT_CONFIG_FILE, realpath(WT_DATA_DIR)), '</p>';
 	if (DIRECTORY_SEPARATOR=='/') {
