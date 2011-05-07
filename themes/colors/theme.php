@@ -200,7 +200,7 @@ $WT_IMAGES=array(
  	'vline'=>WT_THEME_DIR.'images/vline.gif',
  	'warning'=>WT_THEME_DIR.'images/warning.gif',
  	'webtrees'=>WT_THEME_DIR.'images/webtrees.png',
- 	'wiki'=>WT_THEME_DIR.'images/w_22.png',
+ 	'wiki'=>WT_THEME_DIR.'images/wiki.png',
  	'zoomin'=>WT_THEME_DIR.'images/zoomin.gif',
  	'zoomout'=>WT_THEME_DIR.'images/zoomout.gif',
 

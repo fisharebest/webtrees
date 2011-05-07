@@ -1162,11 +1162,6 @@ font-weight:bold;
 .details_label {
 font-weight:bold;
 }
-/*  removed for IE7 
-ul {
-list-style: url(images/li.gif);
-}
-*/
 
 form .rtl {
 text-align:right;
@@ -1453,10 +1448,6 @@ line-height:14px;
 overflow:hidden;
 margin:0;
 padding:2px 5px;
-}
-
-.ac_loading {
-background:#fff url(../../../images/indicator.gif) right center no-repeat;
 }
 
 .ac_odd {
@@ -1768,12 +1759,11 @@ margin-left: 5px;
 	content: " " url(images/edit_sm.png);
 }
 
-td.descriptionbox  a { 
-}
-
 .editfacts { /* a container for the following three links */
 	clear: left;
-	padding-top: 15px;
+}
+html[dir='rtl'] .editfacts {
+	clear:right;
 }
 
 .editfacts  a:hover { 

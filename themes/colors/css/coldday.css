@@ -729,7 +729,6 @@ letter-spacing: .2px;
 
 .date {
 color: #333;
-/* font-weight: bold; */
 }
 
 .label, .field {
@@ -1425,10 +1424,6 @@ margin:0;
 padding:2px 5px;
 }
 
-.ac_loading {
-background:#FFF   url(/images/indicator.gif) right center no-repeat;
-}
-
 .ac_odd {
 background:#eee;
 }
@@ -1756,8 +1751,8 @@ color: #ffffff;
 }
 
 .editfacts { /* a container for the following three links */
+	padding-top: 5px;
 	clear: left;
-	padding-top: 15px;
 }
 html[dir='rtl'] .editfacts {
 	clear:right;
@@ -1814,16 +1809,16 @@ html[dir='rtl'] .deletelink, html[dir='rtl'] editlink  {
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-widget-content                                         { color:black;  }
-.ui-widget-content a                                       { color:#003399; }
+.ui-widget-content a                                       { color:black; }
 .ui-widget-content a:hover                                  { color: red; }
 html[dir='rtl'] .ui-tabs { direction:rtl;}
 html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 .ui-state-active, .ui-widget-content .ui-state-active {border:1px solid #999; background:#5997E3; font-weight:normal; color:black; outline:none;}
 
-.ui-tabs-nav li.ui-tabs-selected                                  { background: #f8f8f8;  color: #003399; }
-.ui-tabs-nav li.ui-tabs-selected a                                  { font-weight:600; color: #003399; }
-.ui-tabs-nav li.ui-tabs-selected a:hover                         { font-weight:600; color: #003399; }
+.ui-tabs-nav li.ui-tabs-selected                                  { background: #f8f8f8;  color: black; }
+.ui-tabs-nav li.ui-tabs-selected a                                  { font-weight:600; color: black; }
+.ui-tabs-nav li.ui-tabs-selected a:hover                         { font-weight:600; color: black; }
 
 .ui-widget-header { border: 1px solid #fff; background: #5997E3;  opacity: 0.67;  filter: alpha(opacity = 67);}
 .ui-widget-content a:hover {color: #f50;}
@@ -1844,7 +1839,7 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 #tabs,#sidebar {margin:0;}
 #sidebar {background-color:#DEF; border-color:#DDD; display:none; margin:0 2px 0 0; height:auto;}
 html[dir='rtl'] #sidebar  {margin:0 0 0 2px;}
-#tabs {background-color: #fff; border-color: #DDD; width:98%; overflow:auto; overflow:auto;}
+#tabs {background-color: #fff; border-color: #DDD; width:98%; overflow:auto;}
 #sidebarAccordion {width:auto;}
 #sidebarAccordion h3 {height:35px; text-align: center; border-color:#999}
 .use-sidebar #tabs {	width: 77%;}
@@ -1897,4 +1892,3 @@ ul.clist {
 	margin: 0px;
 	margin-left: 0px;
 }
-
