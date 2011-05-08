@@ -372,11 +372,11 @@ class WT_Family extends WT_GedcomRecord {
 			// Check the script used by each name, so we can match cyrillic with cyrillic, greek with greek, etc.
 			$husb_names=$husb->getAllNames();
 			foreach ($husb_names as $n=>$husb_name) {
-				$husb_names[$n]['script']=utf8_script($husb_name['surn']);
+				$husb_names[$n]['script']=utf8_script($husb_name['full']);
 			}
 			$wife_names=$wife->getAllNames();
 			foreach ($wife_names as $n=>$wife_name) {
-				$wife_names[$n]['script']=utf8_script($wife_name['surn']);
+				$wife_names[$n]['script']=utf8_script($wife_name['full']);
 			}
 			// Add the matched names first
 			foreach ($husb_names as $husb_name) {
