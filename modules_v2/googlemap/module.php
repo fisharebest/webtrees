@@ -95,93 +95,79 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
-		?>
-<table border="0" width="100%">
-	<tr>
-		<td><?php
+		echo '<table border="0" width="100%"><tr><td>';
 		if (!array_key_exists('googlemap', WT_Module::getActiveModules())) {
-			echo "<table class=\"facts_table\">";
-			echo "<tr><td id=\"no_tab8\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('GoogleMap module disabled')."</td></tr>";
+			echo '<table class="facts_table">';
+			echo '<tr><td id="no_tab8" colspan="2" class="facts_value">', WT_I18N::translate('GoogleMap module disabled'), '</td></tr>';
 			if (WT_USER_IS_ADMIN) {
-				echo "<tr><td align=\"center\" colspan=\"2\">";
-				echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_editconfig\">".WT_I18N::translate('Google Maps configuration')."</a>";
-				echo "</td>";
-				echo "</tr>";
+				echo '<tr><td align="center" colspan="2">';
+				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
+				echo '</td>';
+				echo '</tr>';
 			}
-			echo "</table><br />";
-			?> <script type="text/javascript">
-			<!--
-				function ResizeMap () {}
-				function SetMarkersAndBounds () {}
-			//-->
-			</script> <?php
+			echo '</table><br />';
+			echo WT_JS_START,
+				'<!--
+					function ResizeMap () {}
+					function SetMarkersAndBounds () {}
+				//-->',
+				WT_JS_END;
 		} else {
 			if (!$this->controller->indi->canDisplayName()) {
-				echo "<table class=\"facts_table\">";
-				echo "<tr><td class=\"facts_value\">";
+				echo '<table class="facts_table">';
+				echo '<tr><td class="facts_value">';
 				print_privacy_error();
-				echo "</td></tr>";
-				echo "</table><br />";
-				echo "<script type=\"text/javascript\">";
-				echo "function ResizeMap () {}</script>";
+				echo '</td></tr>';
+				echo '</table><br />';
+				echo WT_JS_START, 'function ResizeMap () {}', WT_JS_END;
 			} else {
-					echo "<table width=\"100%\" border=\"0\" class=\"facts_table\">";
-					echo "<tr><td valign=\"top\">";
-					echo "<div id=\"googlemap_left\">";
-					echo "<img src=\"images/hline.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\" />";
-					echo "<div id=\"map_pane\" style=\"border: 1px solid gray; color:black; width: 100%; height: ".$GOOGLEMAP_YSIZE."px\"></div>";
-					if (WT_USER_IS_ADMIN) {
-						echo "<table style=\"font-size:13px; \" width=\"100%\"><tr>";
-						echo "<td width=\"40%\" align=\"left\">";
-						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_editconfig\">".WT_I18N::translate('Google Maps configuration')."</a>";
-						echo "</td>";
-						echo "<td width=\"35%\" align=\"center\">";
-						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_places\">".WT_I18N::translate('Edit geographic place locations')."</a>";
-						echo "</td>";
-						echo "<td width=\"25%\" align=\"right\">";
-						echo "<a href=\"module.php?mod=".$this->getName()."&amp;mod_action=admin_placecheck\">".WT_I18N::translate('Place Check')."</a>";
-						echo "</td>";
-						echo "</tr></table>";
-					}
-					echo "</div>";
-					echo "</td>";
-					echo "<td valign=\"top\" width=\"30%\">";
-					echo "<div id=\"map_content\">";
-					$famids = array();
-					$families = $this->controller->indi->getSpouseFamilies();
-					foreach ($families as $family) {
-						$famids[] = $family->getXref();
-					}
-					$this->controller->indi->add_family_facts(false);
-//					create_indiv_buttons();
-					build_indiv_map($this->controller->indi->getIndiFacts(), $famids);
-					echo "</div>";
-					echo "</td>";
-					echo "</tr></table>";
-
-				
+				echo '<table width="100%" border="0" class="facts_table">';
+				echo '<tr><td valign="top">';
+				echo '<div id="googlemap_left">';
+				echo '<img src="images/hline.gif" width="', $GOOGLEMAP_XSIZE, '" height="0" alt="" />';
+				echo '<div id="map_pane" style="border: 1px solid gray; color: black; width: 100%; height: ', $GOOGLEMAP_YSIZE, 'px"></div>';
+				if (WT_USER_IS_ADMIN) {
+					echo '<table style="font-size:13px;" width="100%"><tr>';
+					echo '<td width="40%" align="left">';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
+					echo '</td>';
+					echo '<td width="35%" align="center">';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>';
+					echo '</td>';
+					echo '<td width="25%" align="right">';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place Check'),'</a>';
+					echo '</td>';
+					echo '</tr></table>';
+				}
+				echo '</div>';
+				echo '</td>';
+				echo '<td valign="top" width="30%">';
+				echo '<div id="map_content">';
+				$famids = array();
+				$families = $this->controller->indi->getSpouseFamilies();
+				foreach ($families as $family) {
+					$famids[] = $family->getXref();
+				}
+				$this->controller->indi->add_family_facts(false);
+//				create_indiv_buttons();
+				build_indiv_map($this->controller->indi->getIndiFacts(), $famids);
+				echo '</div>';
+				echo '</td>';
+				echo '</tr></table>';
 			}
 		}
 		// start
-		echo "<img src=\"".$WT_IMAGES["spacer"]."\" id=\"marker6\" width=\"1\" height=\"1\" alt=\"\" />";
+		echo '<img src="', $WT_IMAGES['spacer'], '" id="marker6" width="1" height="1" alt="" />';
 		// end
-		?>
-		</td>
-	</tr>
-</table>
-
-
-		<?php
+		echo '</td></tr></table>';
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
 		global $GOOGLEMAP_ENABLED, $SEARCH_SPIDER;
-
 		return !$SEARCH_SPIDER && (array_key_exists('googlemap', WT_Module::getActiveModules()) || WT_USER_IS_ADMIN);
 	}
-	
 
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
@@ -190,8 +176,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			'if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title")=="'.$this->getName().'") {'.
 				'loadMap();'.				
 			'}'.
+			'jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});'. // scroll the page to top
 			'';
 		return $out;
 	}
-
 }
