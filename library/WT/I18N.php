@@ -207,16 +207,12 @@ class WT_I18N {
 		return 'lang="'.$lang.'" xml:lang="'.$lang.'" dir="'.$dir.'"';
 	}
 
-	// echo WT_I18N::translate('Hello World!');
-	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
-	static public function translate(/* var_args */) {
+	// Add I18N features to sprintf()
+	// - Convert numeric values to the locale's preference
+	// - Convert arrays into lists
+	// - Add directional markup for mixed LTR/RTL strings
+	static public function sprintf(/* var_args */) {
 		$args=func_get_args();
-		$args[0]=Zend_Registry::get('Zend_Translate')->_($args[0]);
-		foreach ($args as &$arg) {
-			if (is_array($arg)) {
-				$arg=WT_I18N::make_list($arg);
-			}
-		}
 		foreach ($args as $n=>&$arg) {
 			if ($n) {
 				if (is_numeric($arg)) {
@@ -226,6 +222,18 @@ class WT_I18N {
 						// TODO: Persian numerals are styled slightly differently to Arab numberals
 						$arg=Zend_Locale_Format::convertNumerals($arg, 'Latn', 'Arab');
 						break;
+					}
+				} elseif (is_array($arg)) {
+					// Is this actually used?
+					$n=count($arg);
+					switch ($n) {
+					case 0:
+						$arg='';
+					case 1:
+						$arg=$arg[0];
+					default:
+						// TODO: add LTR/RTL markup to each element?
+						$arg=implode(self::$list_separator, array_slice($arg, 0, $n-1)).self::$list_separator_last.$arg[$n-1];
 					}
 				} else {
 					// For each embedded string, if the text-direction is the opposite of the
@@ -249,6 +257,14 @@ class WT_I18N {
 		return call_user_func_array('sprintf', $args);
 	}
 
+	// echo WT_I18N::translate('Hello World!');
+	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
+	static public function translate(/* var_args */) {
+		$args=func_get_args();
+		$args[0]=Zend_Registry::get('Zend_Translate')->_($args[0]);
+		return call_user_func_array(array('WT_I18N', 'sprintf'), $args);
+	}
+
 	// Context sensitive version of translate.
 	// echo WT_I18N::translate_c('NOMINATIVE', 'January');
 	// echo WT_I18N::translate_c('GENITIVE',   'January');
@@ -261,16 +277,7 @@ class WT_I18N {
 		}
 		$args[0]=$msgtxt;
 		unset ($args[1]);
-		foreach ($args as &$arg) {
-			if (is_array($arg)) {
-				$arg=WT_I18N::make_list($arg);
-			}
-		}
-		// TODO: for each embedded string, if the text-direction is the opposite of the
-		// page language, then wrap it in &ltr; on LTR pages and &rtl; on RTL pages.
-		// This will ensure that non/weakly direction characters in the main string
-		// are displayed correctly by the browser's BIDI algorithm.
-		return call_user_func_array('sprintf', $args);
+		return call_user_func_array(array('WT_I18N', 'sprintf'), $args);
 	}
 
 	// Similar to translate, but do perform "no operation" on it.
@@ -288,24 +295,6 @@ class WT_I18N {
 		$string=Zend_Registry::get('Zend_Translate')->plural($args[0], $args[1], $args[2]);
 		array_splice($args, 0, 3, array($string));
 		return call_user_func_array('sprintf', $args);
-	}
-
-	// Convert an array to a list.  For example
-	// array("red", "green", "yellow", "blue") => "red, green, yellow and blue"
-	static public function make_list($array) {
-		// TODO: for each array element, if the text-direction is the opposite of the
-		// page language, then wrap it in &ltr; on LTR pages and &rtl; on RTL pages.
-		// This will ensure that non/weakly direction characters in the main string
-		// are displayed correctly by the browser's BIDI algorithm.
-		$n=count($array);
-		switch ($n) {
-		case 0:
-			return '';
-		case 1:
-			return $array[0];
-		default:
-			return implode(self::$list_separator, array_slice($array, 0, $n-1)).self::$list_separator_last.$array[$n-1];
-		}
 	}
 
 	// Convert a GEDCOM age string into translated_text
