@@ -2640,11 +2640,17 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 				case 'F': return WT_I18N::translate('great x%d grandmother', $up);
 				case 'U': return WT_I18N::translate('great x%d grandparent', $up);
 				}
+			case 'fr': // Source: Jacqueline Tetreault
+				switch ($sex2) {
+				case 'M': return WT_I18N::translate('great x%d grandfather', $up-1);
+				case 'F': return WT_I18N::translate('great x%d grandmother', $up-1);
+				case 'U': return WT_I18N::translate('great x%d grandparent', $up-1);
+				}
 			case 'en':
 			default:
 				switch ($sex2) {
 				case 'M': // I18N: if you need a different number for %d, contact the developers, as a code-change is required
-				            return WT_I18N::translate('great x%d grandfather', $up-2);
+				          return WT_I18N::translate('great x%d grandfather', $up-2);
 				case 'F': return WT_I18N::translate('great x%d grandmother', $up-2);
 				case 'U': return WT_I18N::translate('great x%d grandparent', $up-2);
 				}
