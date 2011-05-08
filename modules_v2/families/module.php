@@ -73,7 +73,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		<!--
 		var famloadedNames = new Array();
 
-		function searchQ() {
+		function fsearchQ() {
 			var query = jQuery("#sb_fam_name").attr("value");
 			if (query.length>1) {
 				jQuery("#sb_fam_content").load("sidebar.php?sb_action=families&search="+query);
@@ -86,7 +86,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			var famtimerid = null;
 			jQuery("#sb_fam_name").keyup(function(e) {
 				if (famtimerid) window.clearTimeout(famtimerid);
-				famtimerid = window.setTimeout("searchQ()", 500);
+				famtimerid = window.setTimeout("fsearchQ()", 500);
 			});
 			jQuery(".sb_fam_letter").live("click", function() {
 				jQuery("#sb_fam_content").load(this.href);
@@ -196,7 +196,9 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function search($query) {
-		if (strlen($query)<2) return '';
+		if (strlen($query)<2) {
+			return '';
+		}
 
 		//-- search for INDI names
 		$rows=WT_DB::prepare(

@@ -74,7 +74,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		<!--
 		var loadedNames = new Array();
 
-		function searchQ() {
+		function isearchQ() {
 			var query = jQuery("#sb_indi_name").attr("value");
 			if (query.length>1) {
 				jQuery("#sb_indi_content").load("sidebar.php?sb_action=individuals&search="+query);
@@ -87,7 +87,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			var timerid = null;
 			jQuery("#sb_indi_name").keyup(function(e) {
 				if (timerid) window.clearTimeout(timerid);
-				timerid = window.setTimeout("searchQ()", 500);
+				timerid = window.setTimeout("isearchQ()", 500);
 			});
 			jQuery(".sb_indi_letter").live("click", function() {
 				jQuery("#sb_indi_content").load(this.href);
@@ -227,5 +227,4 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= '</ul>';
 		return $out;
 	}
-
 }
