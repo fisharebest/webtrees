@@ -274,6 +274,7 @@ echo '</div>', // close #main
 		'if (typeof toggleByClassName == "undefined") {',
 		'alert("webtrees.js: A javascript function is missing.  Please clear your Web browser cache");',
 		'}',
+		'jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});', // scroll the page to top
 		WT_JS_END;
 
 print_footer();
