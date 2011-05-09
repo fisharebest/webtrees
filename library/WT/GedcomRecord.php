@@ -343,11 +343,14 @@ class WT_GedcomRecord {
 
 	// Can the details of this record be shown?
 	public function canDisplayDetails($access_level=WT_USER_ACCESS_LEVEL) {
-
-		// Temporarily remove caching.  It is causing problems with
-		// the privacy filtering on the download gedcom page.
-		return $this->_canDisplayDetails($access_level);
-
+		// CACHING: this function can take four different parameters, 
+		// and therefore needs four different caches for the result.
+		// However, when we use a non-default value for $access_level,
+		// we use that access level exclusively.  This happens in
+		// 1) downloading a gedcom with privacy filtering
+		// 2) downloading a clipping cart with privacy filtering
+		// 3) generating a sitemap
+		// As a result, we currently need only the one cached value.
 		if ($this->disp===null) {
 			$this->disp=$this->_canDisplayDetails($access_level);
 		}
