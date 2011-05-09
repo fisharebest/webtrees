@@ -1272,7 +1272,7 @@ echo WT_JS_START; ?>
 								echo '<br />';
 							}
 							if ($media["THUMBEXISTS"]) {
-								switch ($media["EXISTS"]) {
+								switch ($media["THUMBEXISTS"]) {
 								case 1:
 									echo WT_I18N::translate('This thumbnail is located on an external server');
 									break;
