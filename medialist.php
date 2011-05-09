@@ -517,10 +517,10 @@ if ($show == 'yes') {
 						// ---------- View Media Details (mediaviewer) --------------------
 						echo '<td class="width33 wrap center font9" valign="top">';
 						echo '<a href="mediaviewer.php?mid=', $media['XREF'], '" title="', WT_I18N::translate('View this Media Item\'s Details 
-	Plus other Media Options - MediaViewer page'), '">';
+Plus other Media Options - MediaViewer page'), '">';
 						if ($LB_ML_THUMB_LINKS == 'icon' || $LB_ML_THUMB_LINKS == 'both') {
 							echo '&nbsp;&nbsp;&nbsp;<img src="'.WT_MODULES_DIR.'lightbox/images/image_view.gif" alt="" class="icon" title="', WT_I18N::translate('View this Media Item\'s Details 
-	Plus other Media Options - MediaViewer page'), '" />';
+Plus other Media Options - MediaViewer page'), '" />';
 						}
 						if ($LB_ML_THUMB_LINKS == 'both') {
 							echo '<br />';
