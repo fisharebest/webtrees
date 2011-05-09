@@ -190,24 +190,19 @@ case 'PLIF_OVERWRITE':
 	break;
 
 case 'PLE_ACTIVE':
-	$title=WT_I18N::translate('List inactive places');
+	$title=WT_I18N::translate('Show inactive places');
 	$text=
-		'<strong>'.
-		WT_I18N::translate('List places in the Google Maps table that are not used by any current Family tree(s).').
-		'</strong><br /><br />'.
-		WT_I18N::translate('The display is set, by default, to only display for editing here those places that exist on BOTH your Family trees and your Google Maps tables.').
-		'<br /><br />'.
-		WT_I18N::translate('When this option is checked, the list of places will display ALL places at this level.').
-		'<br /><br />'.
-		WT_I18N::translate('This is designed to speed up the display of the list when large place lists have been imported, but not all used.').
-		'<br /><br />'.
-		WT_I18N::translate('NOTE - if the option is checked the full list may take a few minutes to display.');
+		'<p>'.
+		WT_I18N::translate('By default, the list shows only those places which can be found in your family trees.  You may have details for other places, such as those imported in bulk from an external file.  Selecting this option will show all places, including ones that are not currently used.').
+		'</p><p class="warning">'.
+		WT_I18N::translate('If you have a large number of inactive places, it can be slow to generate the list.').
+		'</p>';
 	break;
 
 // Help text for placecheck.php
 
 case 'GOOGLEMAP_PLACECHECK':
-	$title=WT_I18N::translate('Place Checking Tool');
+	$title=WT_I18N::translate('Place Check');
 	$text=WT_I18N::translate('<strong>This tool</strong> provides a way to compare places in your gedcom file with the matching entries in the googlemaps \'placelocations\' table.<br /><br /><strong>The display</strong> can be structured for a specific gedcom file; for a specific country within that file; and for a particular area (e.g. state or county) within that country.<br /><br /><strong>Places</strong>are listed alphabetically so that minor spelling differences can be easily spotted, and corrected.<br /><br /><strong>From</strong> the results of the comparison you can click on place names for one of these three options:<br /><br /><strong>1 - </strong>For gedcom file places you will be taken to the Place Heirarchy view. Here you will see all records that are linked to that place.<br /><br /><strong>2 - </strong>For places that exist in the gedcom file, but not in the googlemap table (highlighted in red), you will get the googlemap \"Add place\" screen.<br /><br /><strong>3 - </strong>For places that exist in both the gedcom file and the googlemap table (perhaps without coordinates) you will get the googlemap \"edit place\" screen. Here you can edit any aspect of the place record for the googlemap display.<br /><br /><strong>Hovering</strong> over any place in the googlemap table columns will display the zoom level curently set for that place.');
 	break;
 
