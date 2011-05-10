@@ -176,11 +176,11 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Males').'</td>
-									<td class="facts_value">&nbsp;#totalSexMales#<br />#totalSexMalesPercentage#%</td>
+									<td class="facts_value">&nbsp;#totalSexMales#<br />#totalSexMalesPercentage#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Females').'</td>
-									<td class="facts_value">&nbsp;#totalSexFemales#<br />#totalSexFemalesPercentage#%</td>
+									<td class="facts_value">&nbsp;#totalSexFemales#<br />#totalSexFemalesPercentage#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Total surnames').'</td>

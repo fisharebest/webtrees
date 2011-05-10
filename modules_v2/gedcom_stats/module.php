@@ -91,8 +91,8 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= '<table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
 		if ($stat_indi) {
 			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Individuals').'</td><td class="facts_value" align="right"><a href="'."indilist.php?surname_sublist=no&amp;ged=".WT_GEDURL.'">'.$stats->totalIndividuals().'</a></td></tr>';
-			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Males').'</td><td class="facts_value" align="right">'.$stats->totalSexMales().'<br />'./* I18N: This is a percentage, such as "32.53%". "%.2f" is the number, "%%" is the percent symbol.  Some languages require a space between the two. */ WT_I18N::translate('%.2f%%', $stats->totalSexMalesPercentage()).'</td></tr>';
-			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Females').'</td><td class="facts_value" align="right">'.$stats->totalSexFemales().'<br />'.WT_I18N::translate('%.2f%%', $stats->totalSexFemalesPercentage()).'</td></tr>';
+			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Males').'</td><td class="facts_value" align="right">'.$stats->totalSexMales().'<br />'.$stats->totalSexMalesPercentage().'</td></tr>';
+			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Females').'</td><td class="facts_value" align="right">'.$stats->totalSexFemales().'<br />'.$stats->totalSexFemalesPercentage().'</td></tr>';
 		}
 		if ($stat_surname) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total surnames').'</td><td class="facts_value" align="right"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged='.WT_GEDURL.'">'.$stats->totalSurnames().'</a></td></tr>';

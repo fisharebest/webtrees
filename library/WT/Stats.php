@@ -72,9 +72,6 @@ class WT_Stats {
 				continue;
 			}
 			$examples[$methods[$i]] = $this->$methods[$i]();
-			if (stristr($methods[$i], 'percentage')) {
-				$examples[$methods[$i]] .='%';
-			}
 			if (stristr($methods[$i], 'highlight')) {
 				$examples[$methods[$i]]=str_replace(array(' align="left"', ' align="right"'), '', $examples[$methods[$i]]);
 			}
@@ -96,9 +93,6 @@ class WT_Stats {
 				continue;
 			} // Include this method name to prevent bad stuff happening
 			$examples[$methods[$i]] = $this->$methods[$i]();
-			if (stristr($methods[$i], 'percentage')) {
-				$examples[$methods[$i]] .='%';
-			}
 			if (stristr($methods[$i], 'highlight')) {
 				$examples[$methods[$i]]=str_replace(array(' align="left"', ' align="right"'), '', $examples[$methods[$i]]);
 			}
@@ -344,7 +338,6 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _getPercentage($total, $type) {
-		$per=null;
 		switch($type) {
 			default:
 			case 'all':
@@ -365,13 +358,12 @@ class WT_Stats {
 			case 'other':
 				$type = $this->totalOtherRecords();
 				break;
+			default:
+				return WT_I18N::translate('%.2f%%', 0);
 		}
-		if ($type>0) {
-			$per = round(100 * $total / $type, 2);
-		} else {
-			$per = 0;
-		}
-		return $per;
+		return
+			/* I18N: This is a percentage, such as "32.53%". "%.2f" is the number, "%%" is the percent symbol.  Some languages require a space between the two. */
+			WT_I18N::translate('%.2f%%', 100 * $total / $type);
 	}
 
 	function totalRecords() {
@@ -414,7 +406,7 @@ class WT_Stats {
 	}
 
 	function totalIndividualsPercentage() {
-		return $this->_getPercentage($this->totalIndividuals(), 'all', 2);
+		return $this->_getPercentage($this->totalIndividuals(), 'all');
 	}
 
 	function totalFamilies() {
@@ -453,7 +445,7 @@ class WT_Stats {
 	}
 
 	function totalFamiliesPercentage() {
-		return $this->_getPercentage($this->totalFamilies(), 'all', 2);
+		return $this->_getPercentage($this->totalFamilies(), 'all');
 	}
 
 	function totalSources() {
@@ -464,7 +456,7 @@ class WT_Stats {
 	}
 
 	function totalSourcesPercentage() {
-		return $this->_getPercentage($this->totalSources(), 'all', 2);
+		return $this->_getPercentage($this->totalSources(), 'all');
 	}
 
 	function totalNotes() {
@@ -475,7 +467,7 @@ class WT_Stats {
 	}
 
 	function totalNotesPercentage() {
-		return $this->_getPercentage($this->totalNotes(), 'all', 2);
+		return $this->_getPercentage($this->totalNotes(), 'all');
 	}
 
 	function totalRepositories() {
@@ -486,7 +478,7 @@ class WT_Stats {
 	}
 
 	function totalRepositoriesPercentage() {
-		return $this->_getPercentage($this->totalRepositories(), 'all', 2);
+		return $this->_getPercentage($this->totalRepositories(), 'all');
 	}
 
 	function totalOtherRecords() {
@@ -497,7 +489,7 @@ class WT_Stats {
 	}
 
 	function totalOtherPercentage() {
-		return $this->_getPercentage($this->totalOtherRecords(), 'all', 2);
+		return $this->_getPercentage($this->totalOtherRecords(), 'all');
 	}
 
 	function totalSurnames($params = null) {
