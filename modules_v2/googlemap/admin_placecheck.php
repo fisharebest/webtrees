@@ -366,7 +366,7 @@ case 'go':
 	}
 
 	// echo final row of table
-	echo "<tr><td colspan=\"2\" class=\"accepted\">", WT_I18N::translate('Total unique places'), ": ", $countrows, "</td></tr></table></div>";
+	echo "<tr><td colspan=\"2\" class=\"accepted\">", WT_I18N::translate('Total places: %s', WT_I18N::number($countrows)), "</td></tr></table></div>";
 	break;
 default:
 	// Do not run until user selects a gedcom/place/etc.
