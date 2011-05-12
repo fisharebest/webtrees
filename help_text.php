@@ -2094,7 +2094,8 @@ case 'add_child':
 case 'add_facts':
 	$title=WT_I18N::translate('Add a fact');
 	$text=WT_I18N::translate('Here you can add a fact to the record being edited.<br /><br />First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list.');
-	$text.=WT_I18N::translate('Add from clipboard');
+	$text.='<br/><br/>';
+	$text.='<b>'.WT_I18N::translate('Add from clipboard').'</b>';
 	$text.='<br/><br/>';
 	$text.=WT_I18N::translate('<b>webtrees</b> allows you to copy up to 10 facts, with all their details, to a clipboard.  This clipboard is different from the Clippings Cart that you can use to export portions of your database.<br /><br />You can select any of the facts from the clipboard and copy the selected fact to the Individual, Family, Media, Source, or Repository record currently being edited.  However, you cannot copy facts of dissimilar record types.  For example, you cannot copy a Marriage fact to a Source or an Individual record since the Marriage fact is associated only with Family records.<br /><br />This is very helpful when entering similar facts, such as census facts, for many individuals or families.');
 	break;
