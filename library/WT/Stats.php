@@ -174,7 +174,13 @@ class WT_Stats {
 			// Generate the replacement value for the tag
 			if (method_exists($this, $tags[$i])) {
 				$new_tags[] = "#{$full_tag}#";
-				$new_values[] = call_user_func_array(array($this, $tags[$i]), array($params));
+				$new_value=call_user_func_array(array($this, $tags[$i]), array($params));
+				// Numeric values need "translating" to local formats
+				if (is_numeric($new_value)) {
+					$new_values[]=WT_I18N::number($new_value);
+				} else {
+					$new_values[]=$new_value;
+				}
 			} elseif ($tags[$i] == 'help') {
 				// re-merge, just in case
 				$new_tags[] = "#{$full_tag}#";
@@ -359,11 +365,10 @@ class WT_Stats {
 				$type = $this->totalOtherRecords();
 				break;
 			default:
-				return WT_I18N::translate('%.2f%%', 0);
+				return WT_I18N::percentage(0, 2);
 		}
 		return
-			/* I18N: This is a percentage, such as "32.53%". "%.2f" is the number, "%%" is the percent symbol.  Some languages require a space between the two. */
-			WT_I18N::translate('%.2f%%', 100 * $total / $type);
+			WT_I18N::percentage($total / $type, 2);
 	}
 
 	function totalRecords() {

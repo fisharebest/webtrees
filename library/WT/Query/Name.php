@@ -224,8 +224,8 @@ class WT_Query_Name {
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::_getAlphabet() as $letter) {
-			$alphas[$letter]=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_surn', $letter))
-				->fetchOne();
+			$count=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_surn', $letter))->fetchOne();
+			$alphas[$letter]=WT_I18N::number($count);
 		}
 
 		// Now fetch initial letters that are not in our alphabet,
@@ -246,7 +246,7 @@ class WT_Query_Name {
 				// Special code to indicate "no surname"
 				$alpha=',';
 			}
-			$alphas[$alpha]=$count;
+			$alphas[$alpha]=WT_I18N::number($count);
 		}
 
 		return $alphas;
@@ -285,9 +285,8 @@ class WT_Query_Name {
 		// are any names beginning with that letter.  It looks better to
 		// show the full alphabet, rather than omitting rare letters such as X
 		foreach (self::_getAlphabet() as $letter) {
-			$alphas[$letter]=
-				WT_DB::prepare($sql." AND ".self::_getInitialSql('n_givn', $letter))
-				->fetchOne();
+			$count=WT_DB::prepare($sql." AND ".self::_getInitialSql('n_givn', $letter))->fetchOne();
+			$alphas[$letter]=WT_I18N::number($count);
 		}
 
 		// Now fetch initial letters that are not in our alphabet,
@@ -317,7 +316,7 @@ class WT_Query_Name {
 		}
 		$sql.=" GROUP BY LEFT(n_givn, 1) ORDER BY LEFT(n_givn, 1)='@', LEFT(n_givn, 1)='', LEFT(n_givn, 1)";
 		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha=>$count) {
-			$alphas[$alpha]=$count;
+			$alphas[$alpha]=WT_I18N::number($count);
 		}
 
 		return $alphas;

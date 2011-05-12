@@ -600,12 +600,16 @@ function print_simple_footer() {
 function execution_stats() {
 	global $start_time, $PRIVACY_CHECKS;
 
-	return sprintf("<div class=\"execution_stats\">".WT_I18N::translate('Execution time:')." %.3f ".WT_I18N::translate('sec.')." ".WT_I18N::translate('Total Database Queries: ')." %d. ".WT_I18N::translate('Total privacy checks: ')." %d. ".WT_I18N::translate('Total Memory Usage:')." %.0f KB.</div>",
-		microtime(true)-$start_time,
-		WT_DB::getQueryCount(),
-		$PRIVACY_CHECKS,
-		version_compare(PHP_VERSION, '5.2.1', '>=') ? (memory_get_peak_usage(true)/1024) : (memory_get_usage()/1024)
-	);
+	return
+		'<div class="execution_stats">'.
+		WT_I18N::translate(
+			'Execution time: %1$s seconds. Database queries: %2$s. Privacy checks: %3$s. Memory usage: %4$s KB.',
+			WT_I18N::number(microtime(true)-$start_time, 3),
+			WT_I18N::number(WT_DB::getQueryCount()),
+			WT_I18N::number($PRIVACY_CHECKS),
+			WT_I18N::number(version_compare(PHP_VERSION, '5.2.1', '>=') ? (memory_get_peak_usage(true)/1024) : (memory_get_usage()/1024))
+		).
+		'</div>';
 }
 
 // Generate a login link

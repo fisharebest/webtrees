@@ -381,9 +381,9 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
 	}
 	echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", WT_I18N::translate('Show parents'), "</label><br />";
-	echo WT_I18N::translate('Total individuals'), ' : ', count($unique_indis);
+	echo WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indis)));
 	if ($n!=count($unique_indis)) {
-		echo '<br/>', WT_I18N::translate('Total Names'), ' : ', $n;
+		echo '<br/>', WT_I18N::translate('Total surnames: %s', WT_I18N::number($n));
 	}
 	echo "</td>";
 	echo "<td style=\"display:none\">GIVN</td>";
@@ -1190,8 +1190,8 @@ function format_surname_table($surnames, $type) {
 	$html.='<tr class="sortbottom"><td class="list_item">&nbsp;</td>';
 	$html.='<td class="list_item">&nbsp;</td>';
 	$html.='<td style="display:none;">&nbsp;</td>'; // hidden column for sorting surnames
-	$html.='<td class="list_label name2">'.WT_I18N::translate('Total individuals').': '.count($unique_indi);
-	$html.='<br/>'.WT_I18N::translate('Total Names').': '.count($unique_surn).'</td></tr></table>';
+	$html.='<td class="list_label name2">'. /* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi)));
+	$html.='<br/>'. /* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).'</td></tr></table>';
 	return $html;
 }
 

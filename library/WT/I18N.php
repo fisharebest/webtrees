@@ -208,22 +208,13 @@ class WT_I18N {
 	}
 
 	// Add I18N features to sprintf()
-	// - Convert numeric values to the locale's preference
 	// - Convert arrays into lists
 	// - Add directional markup for mixed LTR/RTL strings
 	static public function sprintf(/* var_args */) {
 		$args=func_get_args();
 		foreach ($args as $n=>&$arg) {
 			if ($n) {
-				if (is_numeric($arg)) {
-					switch (WT_LOCALE) {
-					case 'ar':
-					case 'fa':
-						// TODO: Persian numerals are styled slightly differently to Arab numberals
-						$arg=Zend_Locale_Format::convertNumerals($arg, 'Latn', 'Arab');
-						break;
-					}
-				} elseif (is_array($arg)) {
+				if (is_array($arg)) {
 					// Is this actually used?
 					$n=count($arg);
 					switch ($n) {
@@ -256,6 +247,32 @@ class WT_I18N {
 		}
 		return call_user_func_array('sprintf', $args);
 	}
+
+	// Translate a number into the local representation.  e.g. 12345.67 becomes
+	// en: 12,345.67
+	// fr: 12 345,67
+	// de: 12.345,67
+	static public function number($n, $precision=0) {
+		// Add "punctuation"
+		$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
+		// Convert digits
+		if (WT_LOCALE=='ar' || WT_LOCALE=='fa') {
+			$n=Zend_Locale_Format::convertNumerals($n, 'Latn', 'Arab');
+		}
+		return $n;
+	}
+
+	// Translate a fraction into a percentage.  e.g. 0.123 becomes
+	// en: 12.3%
+	// fr: 12,3 %
+	// de: 12,3%
+	static public function percentage($n, $precision=0) {
+		return
+ 			/* I18N: This is a percentage, such as "32.5%". "%s" is the number, "%%" is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
+			WT_I18N::translate('%s%%', WT_I18N::number($n*100.0, $precision));
+	}
+
+
 
 	// echo WT_I18N::translate('Hello World!');
 	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
