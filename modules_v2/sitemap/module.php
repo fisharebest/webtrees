@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 class sitemap_WT_Module extends WT_Module implements WT_Module_Config{
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Sitemap');
+		return WT_I18N::translate('Sitemaps');
 	}
 
 	// Extend WT_Module

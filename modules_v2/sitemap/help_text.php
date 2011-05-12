@@ -32,10 +32,36 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 switch ($help) {
 
 case 'SITEMAP':
-	$title=WT_I18N::translate('Sitemap information');
-	$text=WT_I18N::translate('This module generates Sitemap files for use by search engines. Currently, only the Google search engine supports Sitemap files.<br /><br />There is a Sitemap file for each GEDCOM on your site, and when your site has more than one GEDCOM there is also an index Sitemap file that points to each of the GEDCOMs.  The Sitemap files contain links to pages of your site that you want the search engine to index.<br /><br />After this module has generated the Sitemap files, you should inspect them and make whatever changes are necessary.').
-	/* I18N: %s is a URL */ WT_I18N::translate('You should copy these files to the server directory where webtrees is installed, and then log into the %s site to make Google aware of their presence.<br /><br />.', '<a href="https://www.google.com/webmasters/sitemaps/">Google webmaster tools</a>').
-	/* I18N: %s is a URL */ WT_I18N::translate('For more information on Google and Sitemap files, visit %s.', '<a href="https://www.google.com/webmasters/sitemaps/docs/en/about.html">Google webmaster tools</a>');
+	$title=
+		/* I18N: Sitemaps are defined at www.sitemaps.org */
+		WT_I18N::translate('Sitemaps');
+	$text=
+		'<p>'.
+		/* I18N: The www.sitemaps.org site is translated into many languages (e.g. http://www.sitemaps.org/fr/) - choose an appropriate URL. */
+		WT_I18N::translate('Sitemaps are a way for webmasters to tell search engines about the pages on a website that are available for crawling.  All major search engines support sitemaps.  For more information, see <a href="http://www.sitemaps.org/">www.sitemaps.org</a>.').
+		'</p><p>'.
+		WT_I18N::translate('After generating the sitemap files, you should upload them to the webtrees installation directory on the web-server.').
+		'</p>';
+	// If we are installed in the domain root, then robots.txt is the best approach.
+	// Otherwise, we must submit to each search engine individually.
+	if (WT_SCRIPT_PATH=='/') {
+		$text.=
+			'<p>'.
+			/* I18N: Do not translate the text "robots.txt" - the file must have exactly this name. */
+			WT_I18N::translate('To tell search engines that sitemaps are available, you should add the following line to your robots.txt file.').
+			'</p><pre>Sitemap:'.WT_SERVER_NAME.WT_SCRIPT_PATH.'SitemapIndex.xml</pre>';
+	} else {
+		$text.=
+			'<p>'.
+			WT_I18N::translate('To tell search engines that sitemaps are available, you can use the following links.').
+			'</p><ul>'.
+			// This list comes from http://en.wikipedia.org/wiki/Sitemaps
+			'<li><a href="http://www.google.com/webmasters/tools/ping?sitemap='.WT_SERVER_NAME.WT_SCRIPT_PATH.'SitemapIndex.xml">Google</a></li>'.
+			'<li><a href="http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=SitemapWriter&amp;url='.WT_SERVER_NAME.WT_SCRIPT_PATH.'SitemapIndex.xml">Yahoo</a></li>'.
+			'<li><a href="http://submissions.ask.com/ping?sitemap='.WT_SERVER_NAME.WT_SCRIPT_PATH.'SitemapIndex.xml">Ask</a></li>'.
+			'<li><a href="http://www.bing.com/webmaster/ping.aspx?siteMap='.WT_SERVER_NAME.WT_SCRIPT_PATH.'SitemapIndex.xml">Bing</a></li>'.
+			'</ul>';
+	}
 	break;
 
 case 'SM_GEDCOM_SELECT':
