@@ -469,14 +469,13 @@ if (check_media_structure()) {
 			$medialist = get_medialist(true, $directory);
 			foreach ($medialist as $key => $media) {
 				if (!($MEDIA_EXTERNAL && isFileExternal($filename))) {
-					// why doesn't this use thumbnail_file??
 					$thumbnail = str_replace("$MEDIA_DIRECTORY", $MEDIA_DIRECTORY."thumbs/", check_media_depth($media["FILE"], "NOTRUNC"));
-					if (!$media["THUMBEXISTS"]) {
+					if (!media_exists($thumbnail)) {  
+						// can't use thumbnail_file or $media["THUMB"] or $media["THUMBEXISTS"] because it they reference the icon from WT_IMAGES 
 						if (generate_thumbnail($media["FILE"], $thumbnail)) {
 							echo WT_I18N::translate('Thumbnail %s generated automatically.', $thumbnail);
 							AddToLog("Thumbnail {$thumbnail} generated automatically.", 'edit');
-						}
-						else {
+						}	else {
 							echo "<span class=\"error\">";
 							echo WT_I18N::translate('Thumbnail %s could not be generated automatically.', $thumbnail);
 							echo "</span>";
@@ -1184,7 +1183,7 @@ echo WT_JS_START; ?>
 							}
 
 							// Generate thumbnail
-							if (!$isExternal && (empty($media["THUMB"]) || !$media["THUMBEXISTS"])) {
+							if (!$isExternal && (empty($media["THUMB"]) || !$media["THUMBEXISTS"] || strpos($media["THUMB"], "themes/")!==false)) {
 								$ct = preg_match("/\.([^\.]+)$/", $media["FILE"], $match);
 								if ($ct>0) $ext = strtolower(trim($match[1]));
 								if ($ext=="jpg" || $ext=="jpeg" || $ext=="gif" || $ext=="png") {
