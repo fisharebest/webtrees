@@ -29,6 +29,9 @@ define('WT_SCRIPT_NAME', 'mediaviewer.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
+
 $nonfacts=array();
 
 $controller = new WT_Controller_Media();
@@ -74,48 +77,11 @@ global $tmb;
 	<tr>
 		<td align="center" width="150">
 			<?php
-
-			// If we can display details
+			// display image
 			if ($controller->canDisplayDetails()) {
-				//Check to see if the File exists in the system. (ie if the file is external, or it exists locally)
-				if (isFileExternal($filename) || $controller->mediaobject->fileExists()) {
-					// the file is external, or it exists locally
-					// attempt to get the image size
-					$imgwidth = $controller->mediaobject->getWidth()+40;
-					$imgheight = $controller->mediaobject->getHeight()+150;
-					if (WT_USE_LIGHTBOX) $dwidth = 200;
-					else $dwidth = 300;
-					if ($imgwidth<$dwidth) $dwidth = $imgwidth;
-
-					$name = trim($controller->mediaobject->getFullName());
-
-					// Get info on how to handle this media file
-					$mediaInfo = mediaFileInfo($filename, $controller->mediaobject->getThumbnail(), $controller->pid, $name, '', false);
-
-					//-- Thumbnail field
-					echo '<a href="', $mediaInfo['url'], '">';
-					echo '<img src="', $mediaInfo['thumb'], '" border="0" align="', $TEXT_DIRECTION=="rtl" ? "left":"right", '" class="thumbnail"', $mediaInfo['width'];
-
-					// Finish off anchor and tooltips
-					echo " alt=\"" . PrintReady(htmlspecialchars($name)) . "\" title=\"" . PrintReady(htmlspecialchars($name)) . "\" /></a>";
-
-					// If download
-					if ($SHOW_MEDIA_DOWNLOAD) {
-						echo "<br /><br /><a href=\"".$filename."\">".WT_I18N::translate('Download File')."</a><br/>";
-					}
-
-					// else the file is not external and does not exist
-				} else {
-					?>
-					<img src="<?php echo $controller->mediaobject->getThumbnail(); ?>" border="0" width="100" alt="<?php echo $controller->mediaobject->getFullName(); ?>" title="<?php echo PrintReady(htmlspecialchars($controller->mediaobject->getFullName())); ?>" />
-					<span class="error">
-						<?php echo WT_I18N::translate('File not found.'); ?>
-					</span>
-					<?php
-				}
+				echo $controller->mediaobject->displayMedia(true);
 			}
 			?>
-
 		</td>
 		<td valign="top">
 			<table width="100%">
@@ -197,7 +163,7 @@ function show_gedcom_record(shownew) {
 }
 
 function showchanges() {
-	window.location = 'mediaviewer.php?mid=<?php echo $controller->pid; ?>&show_changes=yes';
+	window.location = '<?php echo $controller->mediaobject->getRawUrl(); ?>&show_changes=yes';
 }
 
 function ilinkitem(mediaid, type) {

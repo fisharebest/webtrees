@@ -509,6 +509,7 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 	else
 		$thumbExt = "";
 
+	// how does $pid ever get set?
 	if (!empty($pid)) {
 		$media_id_number = get_media_id_from_file($filename);
 		// run the clip method foreach person associated with the picture
@@ -523,6 +524,10 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 	if (!$overwrite && media_exists($thumbDir . $thumbName))
 		return $thumbDir . $thumbName;
 
+	// look for png thumbnail file, so thumbnail for myfile.wmv could be thumbs/myfile.png
+	$altthumb = $parts["filename"] . '.png';
+	if (!$overwrite && media_exists($thumbDir . $altthumb)) return $thumbDir . $altthumb;
+
 	if ($generateThumb && get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS')) {
 		if (generate_thumbnail($mainDir . $thumbName, $thumbDir . $thumbName)) {
 			return $thumbDir . $thumbName;
@@ -531,97 +536,74 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 
 	// Thumbnail doesn't exist and could not be generated:
 	// Return an icon image instead
-	switch ($thumbExt) {
-		case "pdf" :
-			$which = "_pdf";
-			break;
-		case "doc" :
-		case "txt" :
-			$which = "_doc";
-			break;
-		case "ged" :
-			$which = "_ged";
-			break;
-		default :
-			$which = "";
-	}
-	return $WT_IMAGES["media{$which}"];
-}
-
-/**
-* Generates the icon filename and path
-*
-* The full file path is taken and turned into the location of the icon file.
-*
-* @param string $filename The full filename of the media item
-* @return string the location of the icon file
-*/
-function media_icon_file($filename, $generateThumb = true, $overwrite = false) {
-	global $MEDIA_DIRECTORY, $WT_IMAGES, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL;
-
-	if (strlen($filename) == 0)
-		return false;
-
-	$filename = check_media_depth($filename, "NOTRUNC");
-	// -- Classify the incoming media file
-	if (preg_match('~^https?://~i', $filename)) $type = 'url_';
-	else $type = 'local_';
-	if ((preg_match('/\.flv$/i', $filename) || preg_match('~^https?://.*\.youtube\..*/watch\?~i', $filename)) && is_dir(WT_ROOT.'js/jw_player')) {
-		$type .= 'flv';
-	} else if (preg_match('~^https?://picasaweb*\.google\..*/.*/~i', $filename)) {
-		$type .= 'picasa';
-	} else if (preg_match('/\.(jpg|jpeg|gif|png)$/i', $filename)) {
-		$type .= 'image';
-	} else if (preg_match('/\.pdf$/i', $filename)) {
-		$type .= 'pdf';
-	} else if (preg_match('/\.(doc|txt)$/i', $filename)) {
-		$type .= 'document';
-	} else if (preg_match('/\.mp3$/i', $filename)) {
-		$type .= 'audio';
-	} else if (preg_match('/\.(avi|wmv)$/i', $filename)) {
-		$type .= 'wmv';
-	} else if (strpos($filename, 'http://maps.google.')===0) {
-		$type .= 'streetview';
-	} else {
-		$type .= 'other';
-	}
-	// $type is now: (url | local) _ (flv | picasa | image | pdf | document| audio | wmv | streetview |other)
-	switch ($type) {
+	switch (get_url_type($filename)) {
 		case 'url_flv':
-			$thumb = $WT_IMAGES['media_flashrem'];
+			$iconthumb = $WT_IMAGES['media_flashrem'];
 			break;
 		case 'local_flv':
-			$thumb = $WT_IMAGES['media_flash'];
+			$iconthumb = $WT_IMAGES['media_flash'];
 			break;
 		case 'url_wmv':
-			$thumb = $WT_IMAGES['media_wmvrem'];
+			$iconthumb = $WT_IMAGES['media_wmvrem'];
 			break;
 		case 'local_wmv':
-			$thumb = $WT_IMAGES['media_wmv'];
+			$iconthumb = $WT_IMAGES['media_wmv'];
 			break;
 		case 'url_picasa':
-			$thumb = $WT_IMAGES['media_picasa'];
+			$iconthumb = $WT_IMAGES['media_picasa'];
 			break;
 		case 'url_other':
-			$thumb = $WT_IMAGES['media_globe'];
+			$iconthumb = $WT_IMAGES['media_globe'];
 			break;
 		case 'url_pdf':
 		case 'local_pdf':
-			$thumb = $WT_IMAGES['media_pdf'];
+			$iconthumb = $WT_IMAGES['media_pdf'];
 			break;
 		case 'url_document':
 		case 'local_document':
-			$thumb = $WT_IMAGES['media_doc'];
+			$iconthumb = $WT_IMAGES['media_doc'];
 			break;
 		case 'url_audio':
 		case 'local_audio':
-			$thumb = $WT_IMAGES['media_audio'];
+			$iconthumb = $WT_IMAGES['media_audio'];
 			break;
 		default:
-			$thumb = $WT_IMAGES['media'];
+			$iconthumb = $WT_IMAGES['media'];
 	}
 	// Return an icon image
-	return $thumb;
+	return $iconthumb;
+}
+
+/**
+* parses a filename and determines what sort of content it is 
+*/
+function get_url_type($filename) {
+	// -- Classify the incoming media file
+	if (isFileExternal($filename)) $urltype = 'url_';
+	else $urltype = 'local_';
+	if ((preg_match('/\.flv$/i', $filename) || preg_match('~^https?://.*\.youtube\..*/watch\?~i', $filename)) && is_dir(WT_ROOT.'js/jw_player')) {
+		$urltype .= 'flv';
+	} else if (preg_match('~^https?://picasaweb*\.google\..*/.*/~i', $filename)) {
+		$urltype .= 'picasa';
+	} else if (preg_match('/\.(jpg|jpeg|gif|png)$/i', $filename)) {
+		$urltype .= 'image';
+	} else if (preg_match('/\.(doc|txt)$/i', $filename)) {
+		$urltype .= 'document';
+	} else if (preg_match('/\.(avi|txt)$/i', $filename)) {
+		$urltype .= 'page';
+	} else if (preg_match('/\.mp3$/i', $filename)) {
+		$urltype .= 'audio';
+	} else if (preg_match('/\.pdf$/i', $filename)) {
+		$urltype .= 'pdf';
+	} else if (preg_match('/\.(avi|wmv)$/i', $filename)) {
+		$urltype .= 'wmv';
+	} else if (strpos($filename, 'http://maps.google.')===0) {
+		$urltype .= 'streetview';
+	} else {
+		$urltype .= 'other';
+	}
+	// $urltype is now: (url | local) _ (flv | picasa | image | page | audio | wmv | streetview |other)
+	return $urltype;
 }
 
 /**

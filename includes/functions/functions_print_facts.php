@@ -1280,26 +1280,6 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 			if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
 			continue;
 		}
-		// NOTE: Determine the size of the mediafile
-		$imgwidth = 300+40;
-		$imgheight = 300+150;
-		if (isFileExternal($rowm["m_file"])) {
-			if (in_array($rowm["m_ext"], $MEDIATYPE)) {
-				$imgwidth = 400+40;
-				$imgheight = 500+150;
-			}
-			else {
-				$imgwidth = 800+40;
-				$imgheight = 400+150;
-			}
-		}
-		else {
-			$imgsize = @findImageSize(check_media_depth($rowm["m_file"], "NOTRUNC"));
-			if ($imgsize[0]) {
-				$imgwidth = $imgsize[0]+40;
-				$imgheight = $imgsize[1]+150;
-			}
-		}
 		$rows=array();
 
 		//-- if there is a change to this media item then get the
@@ -1377,16 +1357,14 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 function print_main_media_row($rtype, $rowm, $pid) {
 	global $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER;
 
-	if (!WT_Media::getInstance($rowm['m_media'])->canDisplayDetails()) {
+	$mediaobject = WT_Media::getInstance($rowm['m_media']);
+	if (!$mediaobject->canDisplayDetails()) {
 		return false;
 	}
 
 	$styleadd="";
 	if ($rtype=='new') $styleadd = "change_new";
 	if ($rtype=='old') $styleadd = "change_old";
-	// NOTEStart printing the media details
-	$thumbnail = thumbnail_file($rowm["m_file"], true, false, $pid);
-	$isExternal = isFileExternal($thumbnail);
 
 	$linenum = 0;
 	echo "<tr><td class=\"descriptionbox $styleadd width20\">";
@@ -1403,62 +1381,15 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	// NOTE Print the title of the media
 	echo "<td class=\"optionbox wrap $styleadd\"><span class=\"field\">";
-	$mediaTitle = $rowm["m_titl"];
-	$mainMedia = check_media_depth($rowm["m_file"], "NOTRUNC");
-	if ($mediaTitle=="") $mediaTitle = basename($rowm["m_file"]);
-
-	$imgsize = findImageSize($mainMedia);
-	$imgwidth = $imgsize[0]+40;
-	$imgheight = $imgsize[1]+150;
-
-	// Check Filetype of media item ( URL, Local or Other )
-	if (preg_match("/^https?:\/\//i", $rowm['m_file'])) {
-		$file_type = 'url_';
-	} else {
-		$file_type = 'local_';
-	}
-	if (preg_match("/\.flv$/i", $rowm['m_file']) && file_exists(WT_ROOT.'js/jw_player/flvVideo.php')) {
-		$file_type .= 'flv';
-	} elseif (preg_match("/\.(jpg|jpeg|gif|png)$/i", $rowm['m_file'])) {
-		$file_type .= 'image';
-	} elseif (preg_match("/\.(pdf|avi)$/i", $rowm['m_file'])) {
-		$file_type .= 'page';
-	} elseif (preg_match("/\.mp3$/i", $rowm['m_file'])) {
-		$file_type .= 'audio';
-	} else {
-		$file_type = 'other';
-	}
-
-	//Get media item Notes
-	$haystack = $rowm["m_gedrec"];
-	$needle   = "1 NOTE";
-	$before   = substr($haystack, 0, strpos($haystack, $needle));
-	$after    = substr(strstr($haystack, $needle), strlen($needle));
-	$final    = $before.$needle.$after;
-	$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true))));
-
-	$name = trim($rowm['m_titl']);
-
-	// Get info on how to handle this media file
-	//$mediaInfo = mediaFileInfo($rowm['m_file'], $thumbnail, $rowm['m_media'], $name, $notes);
-	$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm['m_media'], $name, $notes);
-
-	//-- Thumbnail field
-	echo '<a href="', $mediaInfo['url'], '">';
-	echo '<img src="', $mediaInfo['thumb'], '" border="none" align="', $TEXT_DIRECTION=="rtl" ? "right":"left", '" class="thumbnail"', $mediaInfo['width'];
-	if (strpos($mainMedia, 'http://maps.google.')===0) {
-		//
-	} else {
-		echo ' alt="', PrintReady(htmlspecialchars($name)), '" title="', PrintReady(htmlspecialchars($name)), '" /></a>';
-	}
-
+	echo $mediaobject->displayMedia();
+	$name = $mediaobject->getFullName();
 	if (empty($SEARCH_SPIDER)) {
-		echo "<a href=\"mediaviewer.php?mid={$rowm['m_media']}\">";
+		echo '<a href="'.$mediaobject->getHtmlUrl().'">';
 	}
-	if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) {
-		echo "<em>", getLRM(), PrintReady(htmlspecialchars($mediaTitle));
+	if ($TEXT_DIRECTION=="rtl" && !hasRTLText($name)) {
+		echo "<em>", getLRM(), PrintReady(htmlspecialchars($name));
 	} else {
-		echo "<em>", PrintReady(htmlspecialchars($mediaTitle));
+		echo "<em>", PrintReady(htmlspecialchars($name));
 	}
 	$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
 	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 1, $rowm["m_gedrec"]);
@@ -1471,12 +1402,17 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		echo "</a>";
 	}
 
-	// NOTE: echo the format of the media
-	if (!empty($rowm["m_ext"])) {
-		echo "<br /><span class=\"label\">", WT_Gedcom_Tag::getLabel('FORM'), ": </span> <span class=\"field\">", $rowm["m_ext"], "</span>";
-		if (isset($imgsize) and $imgsize[2]!==false) {
-			echo "<span class=\"label\"><br />", WT_I18N::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">", $imgsize[0], $TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM(). " ") : " x ", $imgsize[1], "</span>";
-		}
+	$imgsize = $mediaobject->getImagesize('main');
+	if (!empty($imgsize['ext'])) {
+		// this does not match the output of the media controller exactly
+		// $rowm["m_ext"] is empty
+		echo "<br /><span class=\"label\">", WT_Gedcom_Tag::getLabel('FORM'), ": </span> <span class=\"field\">", $imgsize['ext'], "</span>";
+	}
+	if (!empty($imgsize['WxH'])) {
+		echo "<span class=\"label\"><br />", WT_I18N::translate('Image Dimensions'), ": </span> <span class=\"field\" dir=\"ltr\">", $imgsize['WxH'], "</span>";
+	}
+	if ($mediaobject->getFilesizeraw()>0) {
+		echo "<span class=\"label\"><br />", WT_I18N::translate('File Size'), ": </span> <span class=\"field\" dir=\"ltr\">", $mediaobject->getFilesize() , "</span>";
 	}
 	if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $rowm["m_gedrec"]), $match)) {
 		$media_date=new WT_Date($match[1]);
@@ -1523,6 +1459,10 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	print_fact_notes($rowm["m_gedrec"], 1);
 	print_fact_sources($rowm["m_gedrec"], 1);
 	echo "</td></tr>";
+
+	// print_r($rowm);
+	// print_r($mediaobject);
+
 	return true;
 }
 

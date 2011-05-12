@@ -1068,13 +1068,10 @@ function print_media_table($datalist, $legend="") {
 			$name = $media->getFullName();
 			echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
 			echo "<a href=\"", $media->getHtmlUrl(), "\" class=\"list_item name2\">";
-			echo '<img src=', thumbnail_file($media->file, false), ' height="15" /> ';
+			echo '<img src=', $media->getThumbnail(), ' height="15" /> ';
 			echo PrintReady($name), "</a>";
 			if ($SHOW_MEDIA_FILENAME || WT_USER_IS_ADMIN)
-				echo "<br /><a href=\"", $media->getHtmlUrl(), "\">", basename($media->file), "</a>";
-			//echo "<br />", $media->getFiletype();
-			//echo "&nbsp;&nbsp;", $media->width, "x", $media->height;
-			//echo "&nbsp;&nbsp;", $media->getFilesize(), "kB";
+				echo "<br /><a href=\"", $media->getHtmlUrl(), "\">", basename($media->getFilename()), "</a>";
 			if ($media->getNote()) echo "<br />", print_fact_notes("1 NOTE ".$media->getNote(), 1);
 			echo "</td>";
 

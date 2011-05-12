@@ -328,8 +328,9 @@ class WT_Controller_Media extends WT_Controller_Base {
 		if ($this->show_changes && ($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
 			$newfacts = $newmedia->getFacts($ignore);
+			$newimgsize = $newmedia->getImagesize();
 			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
-			$newfacts[] = new WT_Event("1 FORM ".$newmedia->getFiletype());
+			$newfacts[] = new WT_Event("1 FORM ".$newimgsize['ext']);
 			$mediaType = $newmedia->getMediatype();
 			$newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
 			//-- loop through new facts and add them to the list if they are any changes
@@ -363,12 +364,12 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 		if ($this->mediaobject->fileExists()) {
 			// get height and width of image, when available
-			if ($this->mediaobject->getWidth()) {
-				$facts[] = new WT_Event("1 EVEN " . '<span dir="ltr">' . $this->mediaobject->getWidth()." x ".$this->mediaobject->getHeight() . '</span>' . "\n2 TYPE image_size");
+			$imgsize = $this->mediaobject->getImagesize();
+			if (!empty($imgsize['WxH'])) {
+				$facts[] = new WT_Event("1 EVEN " . '<span dir="ltr">' . $imgsize['WxH'] . '</span>' . "\n2 TYPE image_size");
 			}
 			//Prints the file size
-			//Rounds the size of the image to 2 decimal places
-			$facts[] = new WT_Event("1 EVEN " . '<span dir="ltr">' . round($this->mediaobject->getFilesizeraw()/1024, 2)." kb" . '</span>' . "\n2 TYPE file_size");
+			$facts[] = new WT_Event("1 EVEN " . '<span dir="ltr">' . $this->mediaobject->getFilesize(). '</span>' . "\n2 TYPE file_size");
 		}
 
 		sort_facts($facts);

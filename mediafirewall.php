@@ -319,20 +319,21 @@ if (!$serverFilename) {
 	sendErrorAndExit($ext, WT_I18N::translate('The media file was not found in this family tree'), $requestedfile);
 }
 
-$isThumb = false;
-if (strpos($_SERVER['REQUEST_URI'], '/thumbs/')) {
+$which = 'main';
+if (strpos($_SERVER['REQUEST_URI'], '/thumbs/') || safe_GET_bool('thumb')) {
 	// the user requested a thumbnail, but the $controller only knows how to lookup information on the main file
 	// display the thumbnail file instead of the main file
 	// NOTE: since this script was called when a 404 error occured, we know the requested file
 	// does not exist in the main media directory.  just check the media firewall directory
-	$serverFilename = get_media_firewall_path($controller->mediaobject->getThumbnail(false));
-	$isThumb = true;
+	$serverFilename = $controller->mediaobject->getServerFilename('thumb');
+	$which = 'thumb';
 }
 
+$imgsize = $controller->mediaobject->getImagesize($which);
 if (!file_exists($serverFilename)) {
 	// the requested file MAY be in the gedcom, but it does NOT exist on the server.  bail.
 	// Note: the 404 error status is still in effect.
-	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), WT_I18N::translate('The media file was not found in this family tree'), $serverFilename);
+	if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'), $serverFilename);
 }
 
 if (empty($controller->pid)) {
@@ -341,7 +342,7 @@ if (empty($controller->pid)) {
 		// only show these files to admin users
 		// bail since current user is not admin
 		// Note: the 404 error status is still in effect.
-		// if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), WT_I18N::translate('The media file was not found in this family tree'), $serverFilename);
+		// if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'), $serverFilename);
 	}
 }
 
@@ -349,21 +350,22 @@ if (empty($controller->pid)) {
 if (!$controller->mediaobject->canDisplayDetails()) {
 	// if no permissions, bail
 	// Note: the 404 error status is still in effect
-	if (!$debug_mediafirewall) sendErrorAndExit($controller->mediaobject->getFiletype(), WT_I18N::translate('The media file was not found in this family tree'));
+	if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'));
 }
 
 $protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 or HTTP/1.1
-$filetime = @filemtime($serverFilename);
+$filetime = $controller->mediaobject->getFiletime($which);
 $filetimeHeader = gmdate("D, d M Y H:i:s", $filetime).' GMT';
 $expireOffset = 3600 * 24;  // tell browser to cache this image for 24 hours
+if (safe_GET('cb')) $expireOffset = $expireOffset * 7; // if cb parameter was sent, cache for 7 days 
 $expireHeader = gmdate("D, d M Y H:i:s", time() + $expireOffset) . " GMT";
 
-$type = isImageTypeSupported($controller->mediaobject->getFiletype());
+$type = isImageTypeSupported($imgsize['ext']);
 $usewatermark = false;
 // if this image supports watermarks and the watermark module is intalled...
 if ($type && function_exists("applyWatermark")) {
 	// if this is not a thumbnail, or WATERMARK_THUMB is true
-	if (!$isThumb || $WATERMARK_THUMB ) {
+	if (($which=='main') || $WATERMARK_THUMB ) {
 		// if the user's priv's justify it...
 		if (WT_USER_ACCESS_LEVEL > $SHOW_NO_WATERMARK ) {
 			// add a watermark
@@ -399,11 +401,14 @@ if ($usewatermark) {
 	}
 }
 
-$mimetype = $controller->mediaobject->getMimetype();
-
-// setup the etag.  use enough info so that if anything important changes, the etag won't match
-$etag_string = basename($serverFilename).$filetime.WT_GEDCOM.WT_USER_ACCESS_LEVEL.$SHOW_NO_WATERMARK;
-$etag = dechex(crc32($etag_string));
+$etag = $controller->mediaobject->getEtag($which);
+$mimetype = $imgsize['mime'];
+$disposition = 'inline';
+if (safe_GET('dl')) {
+	// if user requested to download the file, adjust headers accordingly
+	$mimetype = 'application/octet-stream';
+	$disposition = 'attachment';
+}
 
 // parse IF_MODIFIED_SINCE header from client
 $if_modified_since = 'x';
@@ -429,10 +434,11 @@ if ($debug_mediafirewall) {
 	echo  '<tr><td>Requested URL</td><td>', urldecode($_SERVER['REQUEST_URI']), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>serverFilename</td><td>', $serverFilename, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>controller->mediaobject->getFilename()</td><td>', $controller->mediaobject->getFilename(), '</td><td>this is direct from the gedcom</td></tr>';
+	echo  '<tr><td>controller->mediaobject->getLocalFilename()</td><td>', $controller->mediaobject->getLocalFilename(), '</td><td></td></tr>';
 	echo  '<tr><td>controller->mediaobject->getServerFilename()</td><td>', $controller->mediaobject->getServerFilename(), '</td><td></td></tr>';
 	echo  '<tr><td>controller->mediaobject->fileExists()</td><td>', $controller->mediaobject->fileExists(), '</td><td></td></tr>';
-	echo  '<tr><td>controller->mediaobject->getFiletype()</td><td>', $controller->mediaobject->getFiletype(), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>mimetype</td><td>', $mimetype, '</td><td>&nbsp;</td></tr>';
+	echo  '<tr><td>disposition</td><td>', $disposition, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>controller->mediaobject->getFilesize()</td><td>', $controller->mediaobject->getFilesize(), '</td><td>cannot use this</td></tr>';
 	echo  '<tr><td>filesize</td><td>', @filesize($serverFilename), '</td><td>this is right</td></tr>';
 	echo  '<tr><td>controller->mediaobject->getThumbnail()</td><td>', $controller->mediaobject->getThumbnail(), '</td><td>&nbsp;</td></tr>';
@@ -444,7 +450,6 @@ if ($debug_mediafirewall) {
 	echo  '<tr><td>if_modified_since</td><td>', $if_modified_since, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>if_none_match</td><td>', $if_none_match, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>etag</td><td>', $etag, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>etag_string</td><td>', $etag_string, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>expireHeader</td><td>', $expireHeader, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>protocol</td><td>', $protocol, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>SHOW_NO_WATERMARK</td><td>', $SHOW_NO_WATERMARK, '</td><td>&nbsp;</td></tr>';
@@ -494,7 +499,7 @@ header("Status: 200 OK");
 // send headers for the image
 if (!$debug_watermark) {
 	header("Content-Type: " . $mimetype);
-	header('Content-Disposition: inline; filename="'.basename($serverFilename).'"');
+	header('Content-Disposition: '.$disposition.'; filename="'.basename($serverFilename).'"');
 }
 
 if ($generatewatermark) {
@@ -509,7 +514,7 @@ if ($generatewatermark) {
 
 		$imSendFunc = 'image'.$type;
 		// save the image, if preferences allow
-		if (($isThumb && $SAVE_WATERMARK_THUMB) || (!$isThumb && $SAVE_WATERMARK_IMAGE)) {
+		if ((($which=='thumb') && $SAVE_WATERMARK_THUMB) || (($which=='main') && $SAVE_WATERMARK_IMAGE)) {
 			// make sure the directory exists
 			if (!is_dir(dirname($watermarkfile))) {
 				mkdirs(dirname($watermarkfile));
