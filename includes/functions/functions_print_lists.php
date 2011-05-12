@@ -732,7 +732,7 @@ function print_fam_table($datalist, $legend="", $option="") {
 		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
 	}
 	echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", WT_I18N::translate('Show parents'), "</label><br />";
-	echo WT_I18N::translate('Total families'), " : ", $num;
+	echo  /* I18N: A count of families */ WT_I18N::translate('Total families: %s', WT_I18N::number($num));
 	echo "</td>";
 	echo "<td style=\"display:none\">HUSB:GIVN</td>";
 	echo "<td></td>"; // HUSB:AGE
@@ -867,7 +867,7 @@ function print_sour_table($datalist, $legend=null) {
 	}
 	//-- table footer
 	echo '<tr class="sortbottom"><td></td>';
-	echo '<td class="list_label">', WT_I18N::translate('Total Sources'), ' : ', $n,  '</td><td></td><td class="t2" style="display:none;"></td><td></td><td></td><td></td><td></td>';
+	echo '<td class="list_label">',  /* I18N: A count of sources */ WT_I18N::translate('Total sources: %s', WT_I18N::number($n)), '</td><td></td><td class="t2" style="display:none;"></td><td></td><td></td><td></td><td></td>';
 	if ($SHOW_LAST_CHANGE) {
 		echo '<td></td>';
 	}
@@ -959,7 +959,7 @@ function print_note_table($datalist, $legend=null) {
 	}
 	//-- table footer
 	echo '<tr class="sortbottom"><td></td>';
-	echo '<td class="list_label">', WT_I18N::translate('Total Shared Notes'), ' : ', $n,  '</td><td></td><td class="t2" style="display:none;"></td><td></td><td></td><td></td>';
+	echo '<td class="list_label">',  /* I18N: A count of shared notes */ WT_I18N::translate('Total shared notes: %s', WT_I18N::number($n)), '</td><td></td><td class="t2" style="display:none;"></td><td></td><td></td><td></td>';
 	if ($SHOW_LAST_CHANGE) {
 		echo '<td></td>';
 	}
@@ -1672,7 +1672,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= '<td class="list_label">';
 		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents').'</label><br />';
 		$return .= '</td><td class="list_label" colspan="3">';
-		$return .= WT_I18N::translate('Total events').": ".$output;
+		$return .= /* I18N: A count of events */ WT_I18N::translate('Total events: %s', WT_I18N::number($output));
 		$return .= '</td>';
 		$return .= '</tr></tfoot>';
 		$return .= '</table>';

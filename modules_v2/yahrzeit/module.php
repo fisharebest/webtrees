@@ -184,7 +184,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<tr class=\"sortbottom\">";
 			$content .= "<td class=\"list_label\">";
 			$content .= '<a href="javascript:;" onclick="sortByOtherCol(this,1)"><img src="images/topdown.gif" alt="" border="0" /> '.WT_Gedcom_Tag::getLabel('GIVN').'</a><br />';
-			$content .= WT_I18N::translate('Total Names').": ".$count;
+			$content .= WT_I18N::translate('Total individuals: %s', WT_I18N::number($count));
 			$content .= '</td>';
 			$content .= '<td style="display:none">GIVN</td>';
 			$content .= '<td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>';
