@@ -97,14 +97,14 @@ class WT_Family extends WT_GedcomRecord {
 	 * get the husband's person object
 	 * @return Person
 	 */
-	function &getHusband() {
+	function getHusband() {
 		return $this->husb;
 	}
 	/**
 	 * get the wife's person object
 	 * @return Person
 	 */
-	function &getWife() {
+	function getWife() {
 		return $this->wife;
 	}
 
@@ -126,7 +126,7 @@ class WT_Family extends WT_GedcomRecord {
 	 * @param Person $person
 	 * @return Person
 	 */
-	function &getSpouse(&$person) {
+	function getSpouse($person) {
 		if (is_null($this->wife) || is_null($this->husb)) return null;
 		if ($this->wife->equals($person)) return $this->husb;
 		if ($this->husb->equals($person)) return $this->wife;
@@ -217,7 +217,7 @@ class WT_Family extends WT_GedcomRecord {
 	 * as a parent in the family
 	 * @param Person $person
 	 */
-	function hasParent(&$person) {
+	function hasParent($person) {
 		if (is_null($person)) return false;
 		if ($person->equals($this->husb)) return true;
 		if ($person->equals($this->wife)) return true;
@@ -228,7 +228,7 @@ class WT_Family extends WT_GedcomRecord {
 	 * as a child in the family
 	 * @param Person $person
 	 */
-	function hasChild(&$person) {
+	function hasChild($person) {
 		if ($person) {
 			foreach ($this->getChildren() as $child) {
 				if ($person->equals($child)) {
