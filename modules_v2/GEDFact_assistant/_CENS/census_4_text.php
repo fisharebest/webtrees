@@ -29,13 +29,12 @@
  * @version $Id$
  * @author Brian Holland
  */
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-global $theme_name;
 ?>
-
 <script>
 function help_window2(frm)  {
 	var aWindow = window.open('http://wiki.phpgedview.net/en/index.php?title=GedFactAssistant_module#Sub-module:_Census_Assistant', 'HelpWindow',
@@ -45,9 +44,8 @@ function help_window2(frm)  {
 	frm.target = 'TableAddRow2NewWindow';
 }
 </script>
-
 <!--   ---- The proposed Census Text -------- -->
-<div class="optionbox cens_text">
+<div class="optionbox cens_text wrap">
 <!--[if IE]><style>.cens_text{margin-top:-1.3em;}</style><![EndIf]-->
 	<span><input type="button" value="<?php echo WT_I18N::translate('Help'); ?>" onclick="javascript: help_window2(this.form)" /></span>
 	<span><?php echo WT_I18N::translate('Click &quot;Preview&quot; to copy Edit Input Fields'); ?></span>
@@ -63,7 +61,7 @@ function help_window2(frm)  {
 	<div class="optionbox">
 		<textarea wrap="off" name="NOTE" id="NOTE"></textarea><br />
 		<center>
-		<?php print_specialchar_link("NOTE",true); ?>
+		<?php print_specialchar_link('NOTE',true); ?>
 		</center>
 	</div>
 </div>
