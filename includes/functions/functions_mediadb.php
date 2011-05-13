@@ -1856,7 +1856,7 @@ function generate_thumbnail($filename, $thumbnail) {
 			}
 		}
 		if (!file_exists(filename_decode($filename))) return false;  // Can't thumbnail a non-existent image
-		$imgsize = getimagesize(filename_decode($filename));
+		$imgsize = @getimagesize(filename_decode($filename));
 		if (!$imgsize) return false;  // Can't thumbnail an image of unknown size
 
 		//-- check if file is small enough to be its own thumbnail
@@ -1876,8 +1876,8 @@ function generate_thumbnail($filename, $thumbnail) {
 			$fp = fopen(filename_decode($thumbnail), "wb");
 			if (!fwrite($fp, $conts)) return false;
 			fclose($fp);
-			if (!isFileExternal($filename)) $imgsize = getimagesize(filename_decode($filename));
-			else $imgsize = getimagesize(filename_decode($thumbnail));
+			if (!isFileExternal($filename)) $imgsize = @getimagesize(filename_decode($filename));
+			else $imgsize = @getimagesize(filename_decode($thumbnail));
 			if ($imgsize===false) return false;
 			if (($imgsize[0]<150)&&($imgsize[1]<150)) return true;
 		}
