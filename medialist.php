@@ -1,31 +1,27 @@
 <?php
-/**
- * Displays a list of the multimedia objects
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Lists
- * @version $Id$
- */
+// Displays a list of the multimedia objects
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';
@@ -575,7 +571,7 @@ Plus other Media Options - MediaViewer page'), '" />';
 			$sizeString = getfilesize($fileSize);
 			echo '&nbsp;&nbsp;&nbsp;<span class="field" style="direction: ltr;">', $sizeString, '</span>';
 			if ($imgsize[2]!==false) {
-				echo '<span class="label"><br />', WT_I18N::translate('Image Dimensions'), ': </span> <span class="field" style="direction: ltr;">', $imgsize[0], $TEXT_DIRECTION =='rtl'?(' ' . getRLM() . 'x' . getRLM() . ' ') : ' x ', $imgsize[1], '</span>';
+				echo '<span class="label"><br />', WT_I18N::translate('Image Dimensions'), ': </span> <span class="field">', WT_I18N::translate('%1$s &times; %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1'])), '</span>';
 			}
 		}
 			echo '<div style="white-space: normal; width: 95%;">';
