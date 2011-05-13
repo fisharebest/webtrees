@@ -205,9 +205,9 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string
 	 */
 	public function getFilesize($which='main') {
-		$tmp = $this->getFilesizeraw($which);
-		if ($tmp) $tmp=$tmp/1024;
-		return sprintf('%.2f', $tmp).' kb';
+		$size = $this->getFilesizeraw($which);
+		if ($size) $size=$size/1024;
+		return /* I18N: size of file in kb */ WT_I18N::translate('%s kb', WT_I18N::number($size,2));
 	}
 
 	/**
@@ -277,7 +277,8 @@ class WT_Media extends WT_GedcomRecord {
 				$imgsize['adjH']=$imgsize[1]+$addHeight; // adjusted height
 				$imageTypes=array('','GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM');
 				$imgsize['ext']=$imageTypes[0+$imgsize[2]];
-				$imgsize['WxH']=$imgsize['0']." x ".$imgsize['1']; // this is for display purposes, always show non-adjusted info
+				// this is for display purposes, always show non-adjusted info
+				$imgsize['WxH']=/* I18N: image dimensions, width x height */ WT_I18N::translate('%s x %s', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1']));
 				$imgsize['imgWH']=' width="'.$imgsize['adjW'].'" height="'.$imgsize['adjH'].'" ';
 				if ( ($which=='thumb') && ($imgsize['0'] > $THUMBNAIL_WIDTH) ) {
 					// don't let large images break the dislay
