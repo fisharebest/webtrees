@@ -76,15 +76,6 @@ class WT_Media extends WT_GedcomRecord {
 		return parent::_canDisplayDetailsByType($access_level);
 	}
 
-	// Get the file extension
-	public function getFileExtension() {
-		if (preg_match('/[.]([^.]+)$/', $this->file, $match)) {
-			return strtolower($match[1]);
-		} else {
-			return '';
-		}
-	}
-
 	/**
 	 * get the media note from the gedcom
 	 * @return string
