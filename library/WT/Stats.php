@@ -367,8 +367,11 @@ class WT_Stats {
 			default:
 				return WT_I18N::percentage(0, 2);
 		}
-		return
-			WT_I18N::percentage($total / $type, 2);
+		if ($type==0) {
+			return WT_I18N::percentage(0.0, 2);
+		} else {
+			return WT_I18N::percentage($total / $type, 2);
+		}
 	}
 
 	function totalRecords() {
