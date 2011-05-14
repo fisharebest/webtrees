@@ -1489,7 +1489,7 @@ class WT_Person extends WT_GedcomRecord {
 	* for generating a diff view
 	* @param Person $diff the person to compare facts with
 	*/
-	function diffMerge(&$diff) {
+	function diffMerge($diff) {
 		if (is_null($diff)) return;
 		$this->parseFacts();
 		$diff->parseFacts();

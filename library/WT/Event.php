@@ -182,7 +182,7 @@ class WT_Event {
 	 *
 	 * @param WT_Date $date
 	 */
-	function setDate(&$date) {
+	function setDate($date) {
 		$this->date = $date;
 		$this->dest = true;
 	}
@@ -224,7 +224,7 @@ class WT_Event {
 	/**
 	 *
 	 */
-	function setParentObject(&$parent) {
+	function setParentObject($parent) {
 		$this->parentObject = $parent;
 	}
 
@@ -342,7 +342,7 @@ class WT_Event {
 	 * @param WT_Event $b
 	 * @return int
 	 */
-	static function CompareDate(&$a, &$b) {
+	static function CompareDate($a, $b) {
 		$adate = $a->getDate();
 		$bdate = $b->getDate();
 		//-- non-dated events should sort according to the preferred sort order
@@ -370,7 +370,7 @@ class WT_Event {
 	 * @param WT_Event $b
 	 * @return int
 	 */
-	static function CompareType(&$a, &$b) {
+	static function CompareType($a, $b) {
 		global $factsort;
 
 		if (empty($factsort))

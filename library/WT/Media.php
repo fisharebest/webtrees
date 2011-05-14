@@ -548,18 +548,6 @@ class WT_Media extends WT_GedcomRecord {
 			->fetchOne();
 	}
 
-	/**
-	 * check if this object is equal to the given object
-	 * basically just checks if the IDs are the same
-	 * @param GedcomRecord $obj
-	 */
-	public function equals(&$obj) {
-		if (is_null($obj)) return false;
-		if ($this->xref==$obj->getXref()) return true;
-		if ($this->title==$obj->title && $this->file==$obj->file) return true;
-		return false;
-	}
-
 	// If this object has no name, what do we call it?
 	public function getFallBackName() {
 		if ($this->canDisplayDetails()) {
