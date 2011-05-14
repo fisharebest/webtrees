@@ -88,6 +88,14 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
+	 * get the media icon filename
+	 * @return string
+	 */
+	public function getMediaIcon() {
+		return media_icon_file($this->file);
+	}
+
+	/**
 	 * get the main media file name
 	 * @return string
 	 */

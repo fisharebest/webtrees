@@ -494,7 +494,6 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 	if (strlen($filename) == 0)
 		return false;
 
-	// NOTE: Lets get the file details
 	if (isFileExternal($filename))
 		return $filename;
 
@@ -536,6 +535,26 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 
 	// Thumbnail doesn't exist and could not be generated:
 	// Return an icon image instead
+	return media_icon_file($filename);
+
+}
+
+/**
+* Generates the icon filename and path
+*
+* The full file path is taken and turned into the location of the icon file.
+*
+* @param string $filename The full filename of the media item
+* @return string the location of the icon file
+*/
+function media_icon_file($filename) {
+	global $WT_IMAGES;
+
+	if (strlen($filename) == 0)
+		return false;
+
+	$filename = check_media_depth($filename, "NOTRUNC");
+
 	switch (get_url_type($filename)) {
 		case 'url_flv':
 			$iconthumb = $WT_IMAGES['media_flashrem'];
