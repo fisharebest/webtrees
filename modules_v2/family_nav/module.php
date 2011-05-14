@@ -363,7 +363,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			<?php
 			//$personcount = 0;
 			$people = $this->controller->buildFamilyList($family, "spouse");
-			if ($this->controller->indi->equals($people["husb"])) {
+			if (isset($people["husb"]) && $this->controller->indi->equals($people["husb"])) {
 				$spousetag = 'WIFE';
 			} else {
 				$spousetag = 'HUSB';
