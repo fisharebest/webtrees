@@ -105,7 +105,6 @@ set_gedcom_setting($ged_id, 'REPO_ID_PREFIX',               'R');
 set_gedcom_setting($ged_id, 'REQUIRE_AUTHENTICATION',       false);
 set_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE',         false);
 set_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB',         false);
-set_gedcom_setting($ged_id, 'SEARCH_FACTS_DEFAULT',         'NAME:GIVN:SDX,NAME:SURN:SDX,BIRT:DATE,BIRT:PLAC,FAMS:MARR:DATE,FAMS:MARR:PLAC,DEAT:DATE,DEAT:PLAC');
 set_gedcom_setting($ged_id, 'SHOW_AGE_DIFF',                false);
 set_gedcom_setting($ged_id, 'SHOW_CONTEXT_HELP',            true);
 set_gedcom_setting($ged_id, 'SHOW_COUNTER',                 true);

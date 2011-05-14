@@ -50,12 +50,21 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			$this->reorderFields();
 			$this->advancedSearch();
 		}
-		if (count($this->fields)==0) {
-			$this->fields = explode(",",get_gedcom_setting(WT_GED_ID, 'SEARCH_FACTS_DEFAULT'));
-			$this->fields[] = "FAMC:HUSB:NAME:GIVN:SDX";
-			$this->fields[] = "FAMC:HUSB:NAME:SURN:SDX";
-			$this->fields[] = "FAMC:WIFE:NAME:GIVN:SDX";
-			$this->fields[] = "FAMC:WIFE:NAME:SURN:SDX";
+		if (!$this->fields) {
+			$this->fields=array(
+				'NAME:GIVN:SDX',
+				'NAME:SURN:SDX',
+				'BIRT:DATE',
+				'BIRT:PLAC',
+				'FAMS:MARR:DATE',
+				'FAMS:MARR:PLAC',
+				'DEAT:DATE',
+				'DEAT:PLAC',
+				'FAMC:HUSB:NAME:GIVN:SDX',
+				'FAMC:HUSB:NAME:SURN:SDX',
+				'FAMC:WIFE:NAME:GIVN:SDX',
+				'FAMC:WIFE:NAME:SURN:SDX',
+			);
 		}
 	}
 

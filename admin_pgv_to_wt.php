@@ -665,7 +665,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'REQUIRE_AUTHENTICATION',       $REQUIRE_AUTHENTICATION);
 	@set_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE',         $SAVE_WATERMARK_IMAGE);
 	@set_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB',         $SAVE_WATERMARK_THUMB);
-	@set_gedcom_setting($ged_id, 'SEARCH_FACTS_DEFAULT',         $SEARCH_FACTS_DEFAULT);
 	@set_gedcom_setting($ged_id, 'SHOW_AGE_DIFF',                $SHOW_AGE_DIFF);
 	@set_gedcom_setting($ged_id, 'SHOW_CONTEXT_HELP',            $SHOW_CONTEXT_HELP);
 	@set_gedcom_setting($ged_id, 'SHOW_COUNTER',                 $SHOW_COUNTER);
