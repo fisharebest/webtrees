@@ -42,11 +42,20 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	 */
 	function init() {
 		parent :: init();
-		if (empty($_REQUEST['action'])) $this->action="advanced";
+		if (empty($_REQUEST['action'])) {
+			$this->action="advanced";
+		}
 		if ($this->action=="advanced") {
-			if (isset($_REQUEST['fields'])) $this->fields = $_REQUEST['fields'];
-			if (isset($_REQUEST['values'])) $this->values = $_REQUEST['values'];
-			if (isset($_REQUEST['plusminus'])) $this->plusminus = $_REQUEST['plusminus'];
+			if (isset($_REQUEST['fields'])) {
+				$this->fields = $_REQUEST['fields'];
+				ksort($this->fields);
+			}
+			if (isset($_REQUEST['values'])) {
+				$this->values = $_REQUEST['values'];
+			}
+			if (isset($_REQUEST['plusminus'])) {
+				$this->plusminus = $_REQUEST['plusminus'];
+			}
 			$this->reorderFields();
 			$this->advancedSearch();
 		}
