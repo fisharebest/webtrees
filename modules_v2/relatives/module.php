@@ -110,7 +110,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 		}
 		//-- missing husband
-		if ($type=="spouse" && $this->controller->indi->equals($people["wife"]) && !isset($people["husb"]) && !isset($people["newhusb"])) {
+		if ($type=="spouse" && !isset($people["husb"]) && !isset($people["newhusb"])) {
 			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
@@ -156,7 +156,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 		}
 		//-- missing wife
-		if ($type=="spouse" && $this->controller->indi->equals($people["husb"]) && !isset($people["wife"]) && !isset($people["newwife"])) {
+		if ($type=="spouse" && !isset($people["wife"]) && !isset($people["newwife"])) {
 			if ($this->controller->indi->canEdit()) {
 				?>
 				<tr>
