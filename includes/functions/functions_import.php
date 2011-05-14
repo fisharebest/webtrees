@@ -1040,7 +1040,7 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 		//--check if we already have a similar object
 		$new_media = WT_Media::in_obje_list($media, $ged_id);
 		if (!$new_media) {
-			$sql_insert_media->execute(array($new_m_media, $media->ext, $media->title, $media->file, $ged_id, $gedrec));
+			$sql_insert_media->execute(array($new_m_media, $media->getFileExtension(), $media->title, $media->file, $ged_id, $gedrec));
 			$media_count++;
 		} else {
 			$new_m_media = $new_media;
