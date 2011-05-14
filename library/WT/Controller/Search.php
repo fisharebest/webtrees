@@ -286,29 +286,13 @@ class WT_Controller_Search extends WT_Controller_Base {
 	 */
 	function setRequestValues($varNames) {
 		foreach ($varNames as $key => $varName) {
-			if (isset ($_REQUEST[$varName]))
-			{
-				if ($varName == "action")
-				if ($_REQUEST[$varName] == "replace")
-				if (!WT_USER_CAN_ACCEPT)
-				{
-					$this->action = "general";
+			if (isset ($_REQUEST[$varName])) {
+				if ($varName=='action' && $_REQUEST[$varName]=='replace' && !WT_USER_CAN_EDIT) {
+					$this->action='general';
 					continue;
 				}
-				$this-> $varName = $_REQUEST[$varName];
+				$this->$varName = $_REQUEST[$varName];
 			}
-		}
-	}
-
-	/**
-	 * setRequestValues - Prints out all of the variable names and their
-	 * values based on the variable name ($this->$varName).
-	 *
-	 * @param array $varNames - Array of variable names(strings).
-	 */
-	function printVars($varNames) {
-		foreach ($varNames as $key => $varName) {
-			echo $varName.": ".$this-> $varName."<br/>";
 		}
 	}
 
