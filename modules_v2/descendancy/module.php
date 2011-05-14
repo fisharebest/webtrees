@@ -134,7 +134,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return $out;
 	}
 
-	public function getPersonLi(&$person, $generations=0) {
+	public function getPersonLi($person, $generations=0) {
 		global $WT_IMAGES;
 
 		$out = '';
@@ -159,7 +159,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return $out;
 	}
 
-	public function getFamilyLi(&$family, &$person, $generations=0) {
+	public function getFamilyLi($family, $person, $generations=0) {
 		global $WT_IMAGES;
 
 		$out = '';

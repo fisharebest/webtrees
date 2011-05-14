@@ -273,7 +273,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		$out .= '<br />';
 		return $out;
 	}
-	public function askAddOptions(&$person) {
+	public function askAddOptions($person) {
 		global $MAX_PEDIGREE_GENERATIONS;
 		$out = "<b>".$person->getFullName()."</b>";
 		$out .= WT_JS_START;

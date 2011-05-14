@@ -68,7 +68,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @param String family type
 	* @return html table rows
 	*/
-	function printParentsRows(&$family, &$people, $type) {
+	function printParentsRows($family, $people, $type) {
 		global $personcount, $WT_IMAGES, $SHOW_PEDIGREE_PLACES;
 
 		$elderdate = "";
@@ -260,7 +260,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @param String family type
 	* @return html table rows
 	*/
-	function printChildrenRows(&$family, &$people, $type) {
+	function printChildrenRows($family, $people, $type) {
 		global $personcount, $WT_IMAGES;
 
 		$elderdate = $family->getMarriageDate();
