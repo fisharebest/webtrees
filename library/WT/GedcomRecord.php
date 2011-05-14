@@ -227,7 +227,7 @@ class WT_GedcomRecord {
 	* check if this object is equal to the given object
 	* @param GedcomRecord $obj
 	*/
-	public function equals(&$obj) {
+	public function equals($obj) {
 		return !is_null($obj) && $this->xref==$obj->getXref();
 	}
 
@@ -854,7 +854,7 @@ class WT_GedcomRecord {
 	* for generating a diff view
 	* @param GedcomRecord $diff the record to compare facts with
 	*/
-	public function diffMerge(&$diff) {
+	public function diffMerge($diff) {
 		if (is_null($diff)) {
 			return;
 		}
