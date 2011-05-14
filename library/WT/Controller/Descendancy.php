@@ -109,7 +109,7 @@ class WT_Controller_Descendancy extends WT_Controller_Base {
 	 * @param string $pid individual Gedcom Id
 	 * @param int $depth the descendancy depth to show
 	 */
-	function print_child_family(&$person, $depth, $label="1.", $gpid="") {
+	function print_child_family($person, $depth, $label="1.", $gpid="") {
 		global $personcount;
 
 		if (is_null($person)) return;
@@ -130,7 +130,7 @@ class WT_Controller_Descendancy extends WT_Controller_Base {
 	 * @param string $pid individual Gedcom Id
 	 * @param int $depth the descendancy depth to show
 	 */
-	function print_child_descendancy(&$person, $depth) {
+	function print_child_descendancy($person, $depth) {
 		global $WT_IMAGES, $Dindent, $personcount;
 	
 		if (is_null($person)) return;
@@ -191,7 +191,7 @@ class WT_Controller_Descendancy extends WT_Controller_Base {
 	 * @param Family $famid family record
 	 * @param int $depth the descendancy depth to show
 	 */
-	function print_family_descendancy(&$person, &$family, $depth) {
+	function print_family_descendancy($person, $family, $depth) {
 		global $GEDCOM, $WT_IMAGES, $Dindent, $personcount;
 	
 		if (is_null($family)) return;

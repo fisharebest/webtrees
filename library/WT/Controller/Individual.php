@@ -301,7 +301,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @see individual.php
 	* @param Event $event the event object
 	*/
-	function print_name_record(&$event) {
+	function print_name_record($event) {
 		global $UNDERLINE_NAME_QUOTES;
 
 		if (!$event->canShow()) {
@@ -371,7 +371,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @see individual.php
 	* @param Event $event the Event object
 	*/
-	function print_sex_record(&$event) {
+	function print_sex_record($event) {
 		global $sex;
 
 		if (!$event->canShow()) return false;
@@ -589,7 +589,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @param Person $person
 	* @return string returns 'person_box', 'person_boxF', or 'person_boxNN'
 	*/
-	function getPersonStyle(&$person) {
+	function getPersonStyle($person) {
 		$sex = $person->getSex();
 		switch($sex) {
 			case "M":
@@ -611,7 +611,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @param Family $family the family we are building for
 	* @return array an array of Person that will be used to iterate through on the indivudal.php page
 	*/
-	function buildFamilyList(&$family, $type) {
+	function buildFamilyList($family, $type) {
 		global $WT_IMAGES;
 
 		$labels = array();
