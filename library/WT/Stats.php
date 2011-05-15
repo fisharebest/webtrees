@@ -513,7 +513,10 @@ class WT_Stats {
 		}
 		$vars[]=$this->_ged_id;
 		return (int)
-			WT_DB::prepare("SELECT COUNT({$distinct} n_surn) FROM `##name` WHERE n_surn {$opt} AND n_file=?")
+			WT_DB::prepare(
+				"SELECT COUNT({$distinct} n_surn COLLATE '".WT_I18N::$collation."')".
+				" FROM `##name`".
+				" WHERE n_surn COLLATE '".WT_I18N::$collation."' {$opt} AND n_file=?")
 			->execute($vars)
 			->fetchOne();
 	}
