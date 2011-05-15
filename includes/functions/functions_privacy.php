@@ -63,7 +63,7 @@ function canDisplayFact($xref, $ged_id, $gedrec, $access_level=WT_USER_ACCESS_LE
 	}
 
 	// Does this record have a default RESN?
-	if (preg_match('/^1 ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
+	if (preg_match('/^\n?1 ('.WT_REGEX_TAG.')/', $gedrec, $match)) {
 		$tag=$match[1];
 		if (isset($person_facts[$xref][$tag])) {
 			return $person_facts[$xref][$tag]>=$access_level;
