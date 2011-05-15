@@ -358,8 +358,8 @@ class WT_GedcomRecord {
 	}
 
 	// Can the name of this record be shown?
-	public function canDisplayName() {
-		return $this->canDisplayDetails();
+	public function canDisplayName($access_level=WT_USER_ACCESS_LEVEL) {
+		return $this->canDisplayDetails($access_level);
 	}
 
 	// Can we edit this record?

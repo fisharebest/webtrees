@@ -67,7 +67,7 @@ class WT_Media extends WT_GedcomRecord {
 		)->execute(array($this->xref, $this->ged_id))->fetchOneColumn();
 		foreach ($linked_ids as $linked_id) {
 			$linked_record=WT_GedcomRecord::getInstance($linked_id);
-			if ($linked_record && !$linked_record->canDisplayName($access_level)) {
+			if ($linked_record && !$linked_record->canDisplayDetails($access_level)) {
 				return false;
 			}
 		}

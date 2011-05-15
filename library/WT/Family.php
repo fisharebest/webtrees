@@ -114,10 +114,17 @@ class WT_Family extends WT_GedcomRecord {
 		preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $this->_gedrec, $matches);
 		foreach ($matches[1] as $match) {
 			$person=WT_Person::getInstance($match);
-			if ($person && !$person->canDisplayName($access_level)) {
+			if ($person && !$person->canDisplayDetails($access_level)) {
 				return false;
 			}
 		}
+		return true;
+	}
+
+	// Can the name of this record be shown?
+	public function canDisplayName($access_level=WT_USER_ACCESS_LEVEL) {
+		// We can always see the name (Husband-name + Wife-name), however,
+		// the name will often be "private + private"
 		return true;
 	}
 
