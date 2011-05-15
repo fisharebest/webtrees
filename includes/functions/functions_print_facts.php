@@ -1239,6 +1239,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 	else $regexp = "/OBJE @(.*)@/";
 	$ct = preg_match_all($regexp, $gedrec, $match, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
+		$match[$i][1]=strtoupper($match[$i][1]); // Force PHP to copy MySQL's case-insensitivity
 		if (!isset($current_objes[$match[$i][1]])) $current_objes[$match[$i][1]] = 1;
 		else $current_objes[$match[$i][1]]++;
 		$obje_links[$match[$i][1]][] = $match[$i][0];
@@ -1276,6 +1277,7 @@ function print_main_media($pid, $level=1, $related=false, $noedit=false) {
 
 	$foundObjs = array();
 	foreach ($rows as $rowm) {
+		$rowm['m_media']=strtoupper($rowm['m_media']); // Force PHP to copy MySQL's case-insensitivity
 		if (isset($foundObjs[$rowm['m_media']])) {
 			if (isset($current_objes[$rowm['m_media']])) $current_objes[$rowm['m_media']]--;
 			continue;
@@ -1358,7 +1360,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	global $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER;
 
 	$mediaobject = WT_Media::getInstance($rowm['m_media']);
-	if (!$mediaobject->canDisplayDetails()) {
+	if (!$mediaobject || !$mediaobject->canDisplayDetails()) {
 		return false;
 	}
 
@@ -1370,12 +1372,12 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	echo "<tr><td class=\"descriptionbox $styleadd width20\">";
 	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($rowm['m_media'], $rowm['m_gedrec'])) && ($styleadd!="change_old")) {
 		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\">";
-			echo "<img class=\"icon\" src=\"", $WT_IMAGES["media"], "\" alt=\"\" />". WT_Gedcom_Tag::getLabel('OBJE'). "</a>";
-			echo "<div class=\"editfacts\">";
-				echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"editlink\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></span></a>";
-				echo "<a onclick=\"return copy_record('".$rowm['m_media']."', 'media');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Copy')."\"><span class=\"copylink\"><span class=\"link_text\">".WT_I18N::translate('Copy')."</span></span></a>";
-				echo "<a onclick=\"return delete_record('$pid', 'OBJE', '".$rowm['m_media']."');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"deletelink\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></span></a>";
-			echo "</div>";
+		echo "<img class=\"icon\" src=\"", $WT_IMAGES["media"], "\" alt=\"\" />". WT_Gedcom_Tag::getLabel('OBJE'). "</a>";
+		echo "<div class=\"editfacts\">";
+		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"editlink\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></span></a>";
+		echo "<a onclick=\"return copy_record('".$rowm['m_media']."', 'media');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Copy')."\"><span class=\"copylink\"><span class=\"link_text\">".WT_I18N::translate('Copy')."</span></span></a>";
+		echo "<a onclick=\"return delete_record('$pid', 'OBJE', '".$rowm['m_media']."');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"deletelink\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></span></a>";
+		echo "</div>";
 		echo "</td>";
 	}
 
