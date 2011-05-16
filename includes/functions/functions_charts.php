@@ -440,7 +440,6 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
  */
 function print_family_facts(&$family) {
 	global $pbwidth, $pbheight;
-	global $nonfacts;
 	global $TEXT_DIRECTION, $GEDCOM;
 	global $show_changes;
 	global $linkToID;
@@ -449,8 +448,6 @@ function print_family_facts(&$family) {
 	// -- if both parents are displayable then print the marriage facts
 	if ($family->canDisplayDetails()) {
 		$linkToID = $famid; // -- Tell addmedia.php what to link to
-		// -- array of GEDCOM elements that will be found but should not be displayed
-		$nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "HUSB", "WIFE", "CHIL", "");
 
 		// -- find all the fact information
 		$indifacts = $family->getFacts();

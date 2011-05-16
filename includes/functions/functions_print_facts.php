@@ -1,35 +1,29 @@
 <?php
-/**
- * Function for printing facts
- *
- * Various printing functions used to print fact records
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
- *
- * Modifications Copyright (c) 2010 Greg Roach
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Display
- * @version $Id$
- */
+// Function for printing facts
+//
+// Various printing functions used to print fact records
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -38,14 +32,8 @@ if (!defined('WT_WEBTREES')) {
 
 define('WT_FUNCTIONS_PRINT_FACTS_PHP', '');
 
-/**
- * print a fact record
- *
- * prints a fact record designed for the personal facts and details page
- * @param Event $eventObj The Event object to print
- */
-function print_fact(&$eventObj) {
-	global $nonfacts, $GEDCOM, $WORD_WRAPPED_NOTES;
+// print a fact record, for the gedcom object pages.
+function print_fact(WT_Event $eventObj) {
 	global $TEXT_DIRECTION, $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME;
 	global $n_chil, $n_gchi, $SEARCH_SPIDER;
 
@@ -53,22 +41,49 @@ function print_fact(&$eventObj) {
 		return;
 	}
 
-	$noedit=!$eventObj->canEdit();
-	$fact  = $eventObj->getTag();
-	if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($fact)) {
-		return;
-	}
-
+	$noedit   = !$eventObj->canEdit();
+	$fact     = $eventObj->getTag();
 	$rawEvent = $eventObj->getDetail();
-	$event = htmlspecialchars($rawEvent);
-	$factrec = $eventObj->getGedcomRecord();
-	$linenum = $eventObj->getLineNumber();
-	$parent = $eventObj->getParentObject();
-	$pid = "";
+	$event    = htmlspecialchars($rawEvent);
+	$factrec  = $eventObj->getGedcomRecord();
+	$linenum  = $eventObj->getLineNumber();
+	$parent   = $eventObj->getParentObject();
+	
 	if (!is_null($eventObj->getFamilyId())) {
 		$pid = $eventObj->getFamilyId();
 	} elseif (!is_null($parent)) {
 		$pid = $parent->getXref();
+	} else {
+		$pid = '';
+	}
+
+	// Some facts don't get printed here ...
+	switch ($fact) {
+	case 'NOTE':
+		print_main_notes($factrec, 1, $pid, $linenum, $noedit);
+		return;
+	case 'SOUR':
+		print_main_sources($factrec, 1, $pid, $linenum, $noedit);
+		return;
+	case 'OBJE':
+		// These are printed separately, after all other facts
+		return;
+	case 'BLOB':
+		// A deprecated tag, that cannot be displayed ??
+		return;
+	case 'FAMC':
+	case 'FAMS':
+	case 'CHIL':
+	case 'HUSB':
+	case 'WIFE':
+		// These are internal links, not facts
+		return;
+	default:
+		// Hide unrecognised/custom tags?
+		if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($fact)) {
+			return;
+		}
+		break;
 	}
 
 	// Who is this fact about?  Need it to translate fact label correctly
@@ -90,17 +105,12 @@ function print_fact(&$eventObj) {
 		$label_person=$parent;
 	}
 
-	if ($fact=="NOTE") return print_main_notes($factrec, 1, $pid, $linenum, $noedit);
-	if ($fact=="SOUR") return print_main_sources($factrec, 1, $pid, $linenum, $noedit);
 	$styleadd="";
 	if (strpos($factrec, "WT_NEW")!==false) $styleadd="change_new";
 	if (strpos($factrec, "WT_OLD")!==false) $styleadd="change_old";
 
-	if (($linenum<1) && (!empty($SEARCH_SPIDER)))  return; // don't add relatives for spiders.
 	if ($linenum<1) $styleadd="rela"; // not editable
 	if ($linenum==-1) $styleadd="histo"; // historical facts
-	// -- avoid known non facts
-	if (in_array($fact, $nonfacts)) return;
 	//-- do not print empty facts
 	$lines = explode("\n", trim($factrec));
 	if (count($lines)<2 && $event=="") {
@@ -108,7 +118,7 @@ function print_fact(&$eventObj) {
 	}
 	// Assume that all recognised tags are translated.
 	// -- handle generic facts
-	if ($fact!="EVEN" && $fact!="FACT" && $fact!="OBJE") {
+	if ($fact!="EVEN" && $fact!="FACT") {
 		$factref = $fact;
 		if ($styleadd=="") $rowID = "row_".floor(microtime()*1000000);
 		else $rowID = "row_".$styleadd;
@@ -130,7 +140,6 @@ function print_fact(&$eventObj) {
 		if (preg_match("/_BIRT_GCH[I12]/", $fact)) echo "<br />", WT_I18N::translate('#%d', $n_gchi++);
 		echo "</td>";
 	} else {
-		if ($fact == "OBJE") return false;
 		// -- find generic type for each fact
 		$ct = preg_match("/2 TYPE (.*)/", $factrec, $match);
 		if ($ct>0) {

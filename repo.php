@@ -34,8 +34,6 @@ require WT_ROOT.'includes/functions/functions_print_lists.php';
 // We have finished writing session data, so release the lock
 Zend_Session::writeClose();
 
-$nonfacts = array();
-
 $controller=new WT_Controller_Repository();
 $controller->init();
 
