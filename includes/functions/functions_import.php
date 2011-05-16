@@ -969,7 +969,7 @@ function insert_media($objrec, $objlevel, $update, $gid, $ged_id, $count) {
 		$new_media = WT_Media::in_obje_list($media, $ged_id);
 		if (!$new_media) {
 			//-- add it to the media database table
-			$imgsize = $media->getImagesize();
+			$imgsize = $media->getImageAttributes();
 			$sql_insert_media->execute(array($m_media, $imgsize['ext'], $media->title, $media->file, $ged_id, $objrec));
 			$media_count++;
 		} else {
@@ -1041,7 +1041,7 @@ function update_media($gid, $ged_id, $gedrec, $update = false) {
 		//--check if we already have a similar object
 		$new_media = WT_Media::in_obje_list($media, $ged_id);
 		if (!$new_media) {
-			$imgsize = $media->getImagesize();
+			$imgsize = $media->getImageAttributes();
 			$sql_insert_media->execute(array($new_m_media, $imgsize['ext'], $media->title, $media->file, $ged_id, $gedrec));
 			$media_count++;
 		} else {

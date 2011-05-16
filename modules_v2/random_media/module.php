@@ -42,8 +42,6 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $foundlist, $MULTI_MEDIA, $TEXT_DIRECTION, $WT_IMAGES;
-		global $MEDIA_EXTERNAL, $MEDIA_DIRECTORY;
-		global $MEDIATYPE, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 
 		if (!$MULTI_MEDIA) return;
 
@@ -104,29 +102,29 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			while ($i<40) {
 				$error = false;
 				$value = array_rand($medialist);
+				$mediaobject = WT_Media::getInstance($medialist[$value]["XREF"]);
 				if (WT_DEBUG) {
-					echo "<br />";print_r($medialist[$value]);echo "<br />";
-					echo "Trying ".$medialist[$value]["XREF"]."<br />";
+					echo "<br />";print_r($medialist[$value]);echo "<br />\n";
+					echo "<br />";print_r($mediaobject);echo "<br />\n";
+					echo "Trying ".$mediaobject->getXref()."<br />\n";
 				}
 				$links = $medialist[$value]["LINKS"];
-				$disp = ($medialist[$value]["EXISTS"]>0) && $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
+				$disp = ($mediaobject->fileExists('main') || $mediaobject->isFileExternal())&& $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
 				if (WT_DEBUG && !$disp && !$error) {
 					$error = true;
-					echo "<span class=\"error\">".$medialist[$value]["XREF"]." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br />";
+					echo "<span class=\"error\">".$mediaobject->getXref()." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br />";
 				}
 
-				$disp &= WT_Media::getInstance($medialist[$value]["XREF"])->canDisplayDetails();
-
+				$disp &= $mediaobject->canDisplayDetails();
 				if (WT_DEBUG && !$disp && !$error) {
 					$error = true;
-					echo "<span class=\"error\">".$medialist[$value]["XREF"]." Failed to pass privacy</span><br />";
+					echo "<span class=\"error\">".$mediaobject->getXref()." Failed to pass privacy</span><br />";
 				}
 
-				$isExternal = isFileExternal($medialist[$value]["FILE"]);
+				if ($block && !$mediaobject->isFileExternal()) $disp &= $mediaobject->fileExists('thumb'); // external files are ok w/o thumb
+				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." thumbnail file could not be found</span><br />";}
 
-				if ($block && !$isExternal) $disp &= ($medialist[$value]["THUMBEXISTS"]>0);
-				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." thumbnail file could not be found</span><br />";}
-
+				// TODO convert this to the Media API
 				// Filter according to format and type  (Default: unless configured otherwise, don't filter)
 				if ($medialist[$value]['FORM']!='' && !array_key_exists($medialist[$value]['FORM'], $filters)) {
 					$disp=false;
@@ -137,13 +135,13 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				} elseif (!empty($medialist[$value]["TYPE"]) && !$filters[$medialist[$value]["TYPE"]]) {
 					$disp=false;
 				}
-				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." failed Format or Type filters</span><br />";
+				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed Format or Type filters</span><br />";
 				}
 
 				if ($disp && count($links) != 0) {
 					if ($disp && $filter!="all") {
 						// Apply filter criteria
-						$ct = preg_match("/0 (@.*@) OBJE/", $medialist[$value]["GEDCOM"], $match);
+						$ct = preg_match("/0 (@.*@) OBJE/", $mediaobject->getGedcomRecord(), $match);
 						$objectID = $match[1];
 						//-- we could probably use the database for this filter
 						foreach ($links as $key=>$type) {
@@ -153,7 +151,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 								$objectRefLevel = $match2[1];
 								if ($filter=="indi" && $objectRefLevel!="1") $disp = false;
 								if ($filter=="event" && $objectRefLevel=="1") $disp = false;
-								if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$medialist[$value]["XREF"]." failed to pass config filter</span><br />";}
+								if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed to pass config filter</span><br />";}
 							}
 							else $disp = false;
 						}
@@ -165,7 +163,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				//-- otherwise remove the private media item from the list
 				else {
-					if (WT_DEBUG) echo "<span class=\"error\">".$medialist[$value]["XREF"]." Will not be shown</span><br />";
+					if (WT_DEBUG) echo "<span class=\"error\">".$mediaobject->getXref()." Will not be shown</span><br />";
 					unset($medialist[$value]);
 				}
 				//-- if there are no more media items, then try to get some more
@@ -235,75 +233,22 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= WT_JS_START.'togglePlay();'.WT_JS_END;
 			}
 			$content .= "<div class=\"center\" id=\"random_picture_content$block_id\">";
-			$imgsize = findImageSize($medialist[$value]["FILE"]);
-			$imgwidth = $imgsize[0]+40;
-			$imgheight = $imgsize[1]+150;
 			$content .= "<table id=\"random_picture_box\" width=\"100%\"><tr><td valign=\"top\"";
 
 			if ($block) $content .= " align=\"center\" class=\"details1\"";
 			else $content .= " class=\"details2\"";
-			$mediaid = $medialist[$value]["XREF"];
+			$content .= " >";
+			$content .= $mediaobject->displayMedia(array('align'=>'none', 'uselightbox'=>false, 'uselightbox_fallback'=>false));
 
-//LBox --------  change for Lightbox Album --------------------------------------------
-?>
-<script type="text/javascript">
-<!--
-function openPic(filename, width, height) {
-		height=height+50;
-		screenW = screen.width;
-		screenH = screen.height;
-		if (width>screenW-100) width=screenW-100;
-		if (height>screenH-110) height=screenH-120;
-		if ((filename.search(/\.je?pg$/gi)!=-1)||(filename.search(/\.gif$/gi)!=-1)||(filename.search(/\.png$/gi)!=-1)||(filename.search(/\.bmp$/gi)!=-1))
-			win02 = window.open('imageview.php?filename='+filename,'win02','top=50,left=150,height='+height+',width='+width+',scrollbars=1,resizable=1');
-			// win03.resizeTo(winWidth 2,winHeight 30);
-		else window.open(unescape(filename),'win02','top=50,left=150,height='+height+',width='+width+',scrollbars=1,resizable=1');
-		win02.focus();
-	}
--->
-</script><?php
-
-			if (WT_USE_LIGHTBOX) {
-				// $content .= " ><a href=\"javascript:;\" onclick=\"return openPic('".$medialist[$value]["FILE"]."', $imgwidth, $imgheight);\">";
-				// $content .= " ><a href=\"javascript:;\" onclick=\"return openImage('".$medialist[$value]["FILE"]."', $imgwidth, $imgheight);\">";
-				// $content .= "><a href=\"" . $medialist[$value]["FILE"] . "\" rel=\"clearbox[general_4]\" title=\"" . $mediaid . "\">";
-				$content .= " ><a href=\"mediaviewer.php?mid=".$mediaid."\">";
-			} else
-// ---------------------------------------------------------------------------------------------
-
-
-			if ($USE_MEDIA_VIEWER) {
-					$content .= " ><a href=\"mediaviewer.php?mid=".$mediaid."\">";
-			}
-			else {
-					$content .= " ><a href=\"javascript:;\" onclick=\"return openImage('".$medialist[$value]["FILE"]."', $imgwidth, $imgheight);\">";
-			}
-			$mediaTitle = "";
-			if (!empty($medialist[$value]["TITL"])) {
-				$mediaTitle = PrintReady($medialist[$value]["TITL"]);
-			}
-			else $mediaTitle = basename($medialist[$value]["FILE"]);
-			if ($block) {
-				$content .= "<img src=\"".$medialist[$value]["THUMB"]."\" border=\"0\" class=\"thumbnail\"";
-				if ($isExternal) $content .= " width=\"".$THUMBNAIL_WIDTH."\"";
-			} else {
-				$content .= "<img src=\"".$medialist[$value]["FILE"]."\" border=\"0\" class=\"thumbnail\" ";
-				$imgsize = findImageSize($medialist[$value]["FILE"]);
-				if ($imgsize[0] > 175) $content .= "width=\"175\" ";
-			}
-			$content .= " alt=\"{$mediaTitle}\" title=\"{$mediaTitle}\" />";
-			$content .= "</a>";
-			if ($block) $content .= "<br />";
-			else $content .= "</td><td class=\"details2\">";
-			$content .= "<a href=\"mediaviewer.php?mid=".$mediaid."\">";
-			$content .= "<b>". $mediaTitle ."</b>";
-			$content .= "</a><br />";
+			if ($block) $content .= '<br />';
+			else $content .= '</td><td class="details2">';
+			$content .= '<a href="'.$mediaobject->getHtmlUrl().'"><b>'. PrintReady(htmlspecialchars($mediaobject->getFullName())) .'</b></a><br />';
 
 			ob_start();
 			PrintMediaLinks($medialist[$value]["LINKS"], "normal");
 			$content .= ob_get_clean();
 			$content .= "<br /><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
-			$content .= print_fact_notes($medialist[$value]["GEDCOM"], "1", false, true);
+			$content .= print_fact_notes($mediaobject->getGedcomRecord(), "1", false, true);
 			$content .= "</div>";
 			$content .= "</td></tr></table>";
 			$content .= "</div>"; // random_picture_content

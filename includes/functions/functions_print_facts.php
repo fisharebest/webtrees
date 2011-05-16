@@ -1404,10 +1404,9 @@ function print_main_media_row($rtype, $rowm, $pid) {
 		echo "</a>";
 	}
 
-	$imgsize = $mediaobject->getImagesize('main');
+	$imgsize = $mediaobject->getImageAttributes('main');
 	if (!empty($imgsize['ext'])) {
 		// this does not match the output of the media controller exactly
-		// $rowm["m_ext"] is empty
 		echo "<br /><span class=\"label\">", WT_Gedcom_Tag::getLabel('FORM'), ": </span> <span class=\"field\">", $imgsize['ext'], "</span>";
 	}
 	if (!empty($imgsize['WxH'])) {

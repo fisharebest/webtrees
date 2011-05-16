@@ -272,7 +272,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @param addHeight int - amount to add to height
 	 * @return array
 	 */
-	public function getImagesize($which='main',$addWidth=0,$addHeight=0) {
+	public function getImageAttributes($which='main',$addWidth=0,$addHeight=0) {
 		global $THUMBNAIL_WIDTH, $TEXT_DIRECTION;
 		$imgsize = array();
 		if ($this->fileExists($which)) {
@@ -401,9 +401,19 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * builds html snippet with javascript, etc appropriate to view the media file
+	 * @param array with optional parameters: 
+	*    'obeyViewerOption'=>true|false, default is 'true'
+	*    'uselightbox'=>true|false,  default is true - if set to true, will use global settings for lightbox.  if false, will not use regardless of global settings
+	*    'uselightbox_fallback'=>true|false,  default is true - if lb is not available, should we use  fallback javascript (true) or link directly to media viewer (false)
 	 * @return string, suitable for use inside an a tag: '<a href="'.$this->getHtmlUrlSnippet().'">';
 	 */
-	public function getHtmlUrlSnippet($obeyViewerOption=true) {
+	public function getHtmlUrlSnippet(array $parameter = array()) {
+		global $USE_MEDIA_VIEWER;
+
+		$obeyViewerOption=true;
+		$uselightbox=true;
+		$uselightbox_fallback=true;
+		extract($parameter, EXTR_IF_EXISTS);    
 
 		$name=PrintReady(htmlspecialchars($this->getFullName()));
 		$urltype = get_url_type($this->getLocalFilename());
@@ -411,7 +421,7 @@ class WT_Media extends WT_GedcomRecord {
 
 		// -- Determine the correct URL to open this media file
 		while (true) {
-			if (WT_USE_LIGHTBOX && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/')) {
+			if ($uselightbox && WT_USE_LIGHTBOX && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/')) {
 				// Lightbox is installed
 				require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 				switch ($urltype) {
@@ -447,46 +457,51 @@ class WT_Media extends WT_GedcomRecord {
 				}
 			}
 
-			// Lightbox is not installed or Lightbox is not appropriate for this media type
-			switch ($urltype) {
-			case 'url_flv':
-				$url = "javascript:;\" onclick=\" var winflv = window.open('".'js/jw_player/flvVideo.php?flvVideo='.$this->getRawUrlDirect('main') . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
-				break 2;
-			case 'local_flv':
-				$url = "javascript:;\" onclick=\" var winflv = window.open('".'js/jw_player/flvVideo.php?flvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
-				break 2;
-			case 'url_wmv':
-				$url = "javascript:;\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.$this->getRawUrlDirect('main') . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
-				break 2;
-			case 'local_wmv':
-			case 'local_audio':
-				$url = "javascript:;\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
-				break 2;
-			case 'url_image':
-			case 'local_image':
-				$imgsize = $this->getImagesize('main',40,150);
-				$url = "javascript:;\" onclick=\"var winimg = window.open('".$this->getRawUrlDirect('main')."', 'winimg', 'width=".$imgsize['adjW'].", height=".$imgsize['adjH'].", left=200, top=200'); if (window.focus) {winimg.focus();}";
-				break 2;
-			case 'url_picasa':
-			case 'url_page':
-			case 'url_pdf':
-			case 'url_other':
-			case 'local_other';
-				$url = "javascript:;\" onclick=\"var winurl = window.open('".$this->getRawUrlDirect('main')."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
-				break 2;
-			case 'local_page':
-			case 'local_pdf':
-				$url = "javascript:;\" onclick=\"var winurl = window.open('".$this->getRawUrlDirect('main')."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
-				break 2;
-			case 'url_streetview':
-				// need to call getHtmlForStreetview() instead of getHtmlUrlSnippet()
-				break 2;
+			if ($uselightbox_fallback) {
+				// Lightbox is not installed or Lightbox is not appropriate for this media type
+				switch ($urltype) {
+				case 'url_flv':
+					$url = "javascript:;\" onclick=\" var winflv = window.open('".'js/jw_player/flvVideo.php?flvVideo='.$this->getRawUrlDirect('main') . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
+					break 2;
+				case 'local_flv':
+					$url = "javascript:;\" onclick=\" var winflv = window.open('".'js/jw_player/flvVideo.php?flvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
+					break 2;
+				case 'url_wmv':
+					$url = "javascript:;\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.$this->getRawUrlDirect('main') . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
+					break 2;
+				case 'local_wmv':
+				case 'local_audio':
+					$url = "javascript:;\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
+					break 2;
+				case 'url_image':
+				case 'local_image':
+					$imgsize = $this->getImageAttributes('main',40,150);
+					$url = "javascript:;\" onclick=\"var winimg = window.open('".$this->getRawUrlDirect('main')."', 'winimg', 'width=".$imgsize['adjW'].", height=".$imgsize['adjH'].", left=200, top=200'); if (window.focus) {winimg.focus();}";
+					break 2;
+				case 'url_picasa':
+				case 'url_page':
+				case 'url_pdf':
+				case 'url_other':
+				case 'local_other';
+					$url = "javascript:;\" onclick=\"var winurl = window.open('".$this->getRawUrlDirect('main')."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
+					break 2;
+				case 'local_page':
+				case 'local_pdf':
+					$url = "javascript:;\" onclick=\"var winurl = window.open('".$this->getRawUrlDirect('main')."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
+					break 2;
+				case 'url_streetview':
+					// need to call getHtmlForStreetview() instead of getHtmlUrlSnippet()
+					break 2;
+				}
 			}
+
+			// final option if nothing else worked
 			if ($USE_MEDIA_VIEWER && $obeyViewerOption) {
 				$url = $this->getHtmlUrl();
 			} else {
-				$imgsize = $this->getImagesize('main',40,150);
-				$url = "javascript:;\" onclick=\"return openImage('".$this->getRawUrlDirect('main')."', ".$imgsize['adjW'].", ".$imgsize['adjH'].");";
+				$imgsize = $this->getImageAttributes('main',40,150);
+				$jsurl = str_replace('mediaviewer.php?','imageview.php?', $this->getRawUrl());
+				$url = "javascript:;\" onclick=\"return openImage('".$jsurl."', ".$imgsize['adjW'].", ".$imgsize['adjH'].");";
 			}
 			break;
 		}
@@ -508,21 +523,32 @@ class WT_Media extends WT_GedcomRecord {
 
 	/**
 	 * returns the complete HTML needed to render a thumbnail image that is linked to the main image
-	* @return string
+	 * @param array with optional parameters: 
+	*    'download'=>true|false, default is false - whether or not to show a 'download file' link
+	*    'align'=>'auto'|'none', default is 'auto' - if set to 'auto', will add align='left' or align='right', depending on TEXT_DIRECTION 
+	 * @return string
 	 */
-	public function displayMedia($download=false, $obeyViewerOption=true) {
+	public function displayMedia(array $parameter = array()) {
 		global $TEXT_DIRECTION,$SHOW_MEDIA_DOWNLOAD;
+
+		// set defaults
+		$download=false;
+		$align='auto';
+		// override defaults with values passed in
+		extract($parameter, EXTR_IF_EXISTS);    
+
 		if ($this->getHtmlForStreetview()) {
 			$output  = $this->getHtmlForStreetview();
 		} else {
 
 			$oktolink = $this->isFileExternal() || $this->fileExists('main');
 			$name=PrintReady(htmlspecialchars($this->getFullName()));
-			$imgsizeThumb = $this->getImagesize('thumb');
+			$imgsizeThumb = $this->getImageAttributes('thumb');
+			$alignstr = ($align=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
 			$output = '';
 
-			if ($oktolink) $output .= '<a href="'.$this->getHtmlUrlSnippet($obeyViewerOption).'">';
-			$output .= '<img src="'.$this->getHtmlUrlDirect('thumb').'" '.$imgsizeThumb['imgWH'].' border="none" align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'" class="thumbnail"';
+			if ($oktolink) $output .= '<a href="'.$this->getHtmlUrlSnippet($parameter).'">';
+			$output .= '<img src="'.$this->getHtmlUrlDirect('thumb').'" '.$imgsizeThumb['imgWH'].' border="none" '.$alignstr.' class="thumbnail"';
 			$output .= ' alt="'.$name.'" title="'.$name.'" />';
 			if ($oktolink) {
 				$output .= '</a>';

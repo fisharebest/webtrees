@@ -26,10 +26,25 @@
 define('WT_SCRIPT_NAME', 'imageview.php');
 require './includes/session.php';
 
-$filename=safe_GET('filename');
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
+
+$controller = new WT_Controller_Media();
+$controller->init();
 
 print_simple_header(WT_I18N::translate('Image viewer'));
 
+if (!$controller->mediaobject) {
+	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
+	print_footer();
+	exit;
+}
+
+if (!$controller->mediaobject->canDisplayDetails()) {
+	print_privacy_error();
+	print_footer();
+	exit;
+}
 ?>
 <script type="text/javascript">
 <!--
@@ -167,27 +182,27 @@ print_simple_header(WT_I18N::translate('Image viewer'));
 -->
 </script>
 <?php
+
 echo "<form name=\"zoomform\" onsubmit=\"setzoom(document.getElementById('zoomval').value); return false;\" action=\"imageview.php\">";
-$isExternal = isFileExternal($filename);
-if (!$isExternal && !media_exists($filename) ) {
-	echo "<span class=\"error\">".WT_I18N::translate('File not found.')."&nbsp;".$filename."</span>";
+if (!$controller->mediaobject->isFileExternal() && !$controller->mediaobject->fileExists() ) {
+	echo "<span class=\"error\">".WT_I18N::translate('File not found.')."&nbsp;".$controller->getLocalFilename()."</span>";
 	echo "<br /><br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"self.close();\">".WT_I18N::translate('Close Window')."</a></div>";
 } else {
 	echo "<center><font size=\"6\"><a href=\"javascript:;\" onclick=\"zoomin(); return false;\">+</a> <a href=\"javascript:;\" onclick=\"zoomout();\">&ndash;</a> </font>";
 	echo "<input type=\"text\" size=\"2\" name=\"zoomval\" id=\"zoomval\" value=\"100\" />%";
 	echo "<input type=\"button\" value=\"".WT_I18N::translate('Reset')."\" onclick=\"resetimage(); return false;\" />";
-	echo "<br /><a href=\"javascript:;\" onclick=\"window.opener.location='mediaviewer.php?filename=".urlencode(str_replace($MEDIA_DIRECTORY, "", $filename))."'; window.close();\">".WT_I18N::translate('View image details')."</a>";
+	echo "<br /><a href=\"javascript:;\" onclick=\"window.opener.location='".$controller->mediaobject->getRawUrl()."'; window.close();\">".WT_I18N::translate('View image details')."</a>";
 	echo "</center>";
-	$imgsize = findImageSize($filename);
-	$imgwidth = $imgsize[0]+2;
-	$imgheight = $imgsize[1]+2;
+	$imgsize = $controller->mediaobject->getImageAttributes('main',2,2);
+	$imgwidth = $imgsize['adjW'];
+	$imgheight = $imgsize['adjH'];
 	echo "<script language=\"JavaScript\" type=\"text/javascript\">";
 	echo "var imgwidth = $imgwidth-5; var imgheight = $imgheight-5;";
 	echo "var landscape = false;";
 	echo "if (imgwidth > imgheight) landscape = true;";
 	echo "</script>";
 	echo '<br /><center><div id="imagecropper" style="position: relative; border: outset white 3px; background-color: black; overflow: auto; vertical-align: middle; text-align: center; width: '.$imgwidth.'px; height: '.$imgheight.'px; ">';
-	echo "<img id=\"theimage\" src=\"$filename\" style=\"position: absolute; left: 1px; top: 1px; cursor: move;\" onmousedown=\"panimage(); return false;\" alt=\"\" />";
+	echo "<img id=\"theimage\" src=\"".$controller->mediaobject->getHtmlUrlDirect()."\" style=\"position: absolute; left: 1px; top: 1px; cursor: move;\" onmousedown=\"panimage(); return false;\" alt=\"\" />";
 	echo '</div></center>';
 }
 echo "</form>";

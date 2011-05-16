@@ -329,7 +329,7 @@ if (strpos($_SERVER['REQUEST_URI'], '/thumbs/') || safe_GET_bool('thumb')) {
 	$which = 'thumb';
 }
 
-$imgsize = $controller->mediaobject->getImagesize($which);
+$imgsize = $controller->mediaobject->getImageAttributes($which);
 if (!file_exists($serverFilename)) {
 	// the requested file MAY be in the gedcom, but it does NOT exist on the server.  bail.
 	// Note: the 404 error status is still in effect.

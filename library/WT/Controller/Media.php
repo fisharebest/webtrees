@@ -328,7 +328,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		if ($this->show_changes && ($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
 			$newfacts = $newmedia->getFacts($ignore);
-			$newimgsize = $newmedia->getImagesize();
+			$newimgsize = $newmedia->getImageAttributes();
 			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
 			$newfacts[] = new WT_Event("1 FORM ".$newimgsize['ext']);
 			$mediaType = $newmedia->getMediatype();
@@ -364,7 +364,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 		if ($this->mediaobject->fileExists()) {
 			// get height and width of image, when available
-			$imgsize = $this->mediaobject->getImagesize();
+			$imgsize = $this->mediaobject->getImageAttributes();
 			if (!empty($imgsize['WxH'])) {
 				$facts[] = new WT_Event("1 EVEN " . '<span dir="ltr">' . $imgsize['WxH'] . '</span>' . "\n2 TYPE image_size");
 			}

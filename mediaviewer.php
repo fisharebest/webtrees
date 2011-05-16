@@ -79,7 +79,7 @@ global $tmb;
 			<?php
 			// display image
 			if ($controller->canDisplayDetails()) {
-				echo $controller->mediaobject->displayMedia(true);
+				echo $controller->mediaobject->displayMedia(array('download'=>true, 'align'=>'none'));
 			}
 			?>
 		</td>

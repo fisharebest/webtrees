@@ -54,9 +54,11 @@ function openImage(filename, width, height) {
 	screenH = screen.height;
 	if (width>screenW-100) width=screenW-100;
 	if (height>screenH-110) height=screenH-120;
-//	if (filename.search(/\.(jpe?g|gif|png)$/gi)!=-1)
-		window.open('imageview.php?filename='+filename,'_blank','top=50,left=50,height='+height+',width='+width+',scrollbars=1,resizable=1');
-//	else window.open(unescape(filename),'_blank','top=50,left=50,height='+height+',width='+width+',scrollbars=1,resizable=1');
+	if (filename.indexOf('imageview.php')!=0) {
+		// just a filename was passed in, turn it into a full url
+		filename = 'imageview.php?filename='+filename;
+	}
+	window.open(filename,'_blank','top=50,left=50,height='+height+',width='+width+',scrollbars=1,resizable=1');
 	return false;
 }
 
