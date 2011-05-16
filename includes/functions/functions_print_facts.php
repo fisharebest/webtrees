@@ -109,89 +109,98 @@ function print_fact(WT_Event $eventObj) {
 	if (strpos($factrec, "WT_NEW")!==false) $styleadd="change_new";
 	if (strpos($factrec, "WT_OLD")!==false) $styleadd="change_old";
 
-	if ($linenum<1) $styleadd="rela"; // not editable
-	if ($linenum==-1) $styleadd="histo"; // historical facts
-	//-- do not print empty facts
-	$lines = explode("\n", trim($factrec));
-	if (count($lines)<2 && $event=="") {
-		return;
-	}
+	if ($linenum<1) $styleadd='rela'; // not editable
+	if ($linenum==-1) $styleadd='histo'; // historical facts
 
-	if ($styleadd=="") {
+	if ($styleadd=='') {
 		$rowID = 'row_'.floor(microtime()*1000000);
 	} else {
 		$rowID = 'row_'.$styleadd;
 	}
+
+	// Does this fact have a type?
+	if (preg_match('/\n2 TYPE (.+)/', $factrec, $match)) {
+		$type=$match[1];
+	} else {
+		$type='';
+	}
+
+	switch ($fact) {
+	case 'EVEN':
+	case 'FACT':
+		if ($type=='image_size') {
+			// The media page generates dummy "1 EVEN/2 TYPE image_size" facts
+			$label=WT_I18N::translate('Image Dimensions');
+		} elseif ($type=='file_size') {
+			// The media page generates dummy "1 EVEN/2 TYPE file_size" facts
+			$label=WT_I18N::translate('File Size');
+		} elseif (WT_Gedcom_Tag::isTag($type)) {
+			// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT".  Translate the TYPE.
+			$label=WT_Gedcom_Tag::getLabel($type, $label_person);
+		} elseif ($type) {
+			// We don't have a translation for $type - but a custom translation might exist.
+			$label=WT_I18N::translate(htmlspecialchars($type));
+		} else {
+			// An unspecified fact/event
+			$label=WT_Gedcom_Tag::getLabel($fact, $label_person);
+		}
+		break;
+	case 'MARR':
+		// This is a hack for a proprietory extension.  Is it still used/needed?
+		if ($type=='CIVIL' || $type=='PARTNERS' || $type=='RELIGIOUS' || $type=='UNKNOWN') {
+			$label=WT_Gedcom_Tag::getLabel('MARR_'.$type, $label_person);
+			$type='';
+		} else {
+			$label=WT_Gedcom_Tag::getLabel($fact, $label_person);
+		}
+		break;
+	default:
+		// Normal fact/event
+		$label=WT_Gedcom_Tag::getLabel($fact, $label_person);
+		break;
+	}
+
 	echo '<tr class="', $rowID, '">';
 	echo '<td class="descriptionbox ', $styleadd, ' width20">';
+
 	if ($SHOW_FACT_ICONS) {
 		echo $eventObj->Icon(), ' ';
 	}
 
-	// Assume that all recognised tags are translated.
-	// -- handle generic facts
-	if ($fact!="EVEN" && $fact!="FACT") {
-		$factref = $fact;
-		if (WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
-			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\">". WT_Gedcom_Tag::getLabel($factref, $label_person). "</a>";
-			echo "<div class=\"editfacts\">";
-			echo "<div class=\"editlink\"><a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
-			echo "<div class=\"copylink\"><a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Copy')."\"><span class=\"link_text\">".WT_I18N::translate('Copy')."</span></a></div>";
-			echo "<div class=\"deletelink\"><a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
-			echo "</div>";
-		} else {
-			echo WT_Gedcom_Tag::getLabel($factref, $label_person);
-		}
-		if ($fact=="_BIRT_CHIL") echo "<br />", WT_I18N::translate('#%d', $n_chil++);
-		if (preg_match("/_BIRT_GCH[I12]/", $fact)) echo "<br />", WT_I18N::translate('#%d', $n_gchi++);
+	if (WT_USER_CAN_EDIT && $styleadd!='change_old' && $linenum>0 && $eventObj->canEdit()) {
+		echo
+			'<a onclick="return edit_record(\'', $pid, '\', ', $linenum, ');" href="javascript:;" title="', WT_I18N::translate('Edit'), '">',  $label,  '</a>',
+			'<div class="editfacts">',
+			'<div class="editlink"><a onclick="return edit_record(\'', $pid, '\', ', $linenum, ');" href="javascript:;" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '"</span></a></div>',
+			'<div class="copylink"><a onclick="return copy_record(\'', $pid, '\', ', $linenum, ');" href="javascript:;" title="', WT_I18N::translate('Copy'), '"><span class="link_text">', WT_I18N::translate('Copy'), '"</span></a></div>',
+			'<div class="deletelink"><a onclick="return delete_record(\'', $pid, '\', ', $linenum, ');" href="javascript:;" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '"</span></a></div>',
+			'</div>';
 	} else {
-		// -- find generic type for each fact
-		$ct = preg_match("/2 TYPE (.*)/", $factrec, $match);
-		if ($ct>0) {
-			// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT".  Translate the TYPE, if we can.
-			$factref = strip_tags(WT_Gedcom_Tag::getLabel($match[1], $label_person));
-		} else {
-			$factref = $fact;
-		}
-		if ($ct>0) {
-			if ($factref=='image_size') echo WT_I18N::translate('Image Dimensions');
-			else if ($factref=='file_size') echo WT_I18N::translate('File Size');
-			else if (WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
-				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\">". $factref. "</a>";
-				echo "<div class=\"editfacts\">";
-				echo "<div class=\"editlink\"><a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
-				echo "<div class=\"copylink\"><a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Copy')."\"><span class=\"link_text\">".WT_I18N::translate('Copy')."</span></a></div>";
-				echo "<div class=\"deletelink\"><a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
-				echo "</div>";
-			} else {
-				echo $factref;
-			}
-		} else if (WT_USER_CAN_EDIT && $styleadd!="change_old" && $linenum>0 && $eventObj->canEdit()) {
-			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\">". WT_Gedcom_Tag::getLabel($factref, $label_person). "</a>";
-			echo "<div class=\"editfacts\">";
-			echo "<div class=\"editlink\"><a onclick=\"return edit_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
-			echo "<div class=\"copylink\"><a onclick=\"return copy_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Copy')."\"><span class=\"link_text\">".WT_I18N::translate('Copy')."</span></a></div>";
-			echo "<div class=\"deletelink\"><a onclick=\"return delete_record('$pid', $linenum);\" href=\"javascript:;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
-			echo "</div>";
-		} else {
-			echo WT_Gedcom_Tag::getLabel($factref, $label_person);
-		}
+		echo $label;
 	}
-	echo '</td>';
-	echo '<td class="optionbox ', $styleadd, ' wrap">';
-	// -- first print TYPE for some facts
-	if ($fact!='EVEN' && $fact!='FACT') {
-		if (preg_match('/2 TYPE (.*)/', $factrec, $match)) {
-			if ($fact=='MARR') {
-				echo WT_Gedcom_Tag::getLabel('MARR_'.strtoupper($match[1]), $label_person);
-			} else {
-				echo $match[1];
-			}
-			echo '<br />';
-		}
+
+	switch ($fact) {
+	case '_BIRT_CHIL':
+		echo '<br />', WT_I18N::translate('#%d', $n_chil++);
+		break;
+	case '_BIRT_GCHI':
+	case '_BIRT_GCH1':
+	case '_BIRT_GCH2':
+		echo '<br />', WT_I18N::translate('#%d', $n_gchi++);
+		break;
 	}
+
+	echo '</td><td class="optionbox ', $styleadd, ' wrap">';
+
+	// Display a "2 TYPE xxx" - except for FACT/EVEN, as we have already displayed this above.
+	if ($fact!='FACT' && $fact!='EVEN' && $type) {
+		// We don't have a translation for $type - but a custom translation might exist.
+		echo  WT_I18N::translate(htmlspecialchars($type));
+		echo '<br />';
+	}
+
 	//-- print spouse name for marriage events
-	if (preg_match("/_WTS @(.*)@/", $factrec, $match)) {
+	if (preg_match('/_WTS @(.*)@/', $factrec, $match)) {
 		$spouse=WT_Person::getInstance($match[1]);
 		if ($spouse) {
 			echo ' <a href="', $spouse->getHtmlUrl(), '">';
@@ -204,7 +213,7 @@ function print_fact(WT_Event $eventObj) {
 		}
 		$family = WT_Family::getInstance($pid);
 		if ($family) {
-			if ($spouse) echo " - ";
+			if ($spouse) echo ' - ';
 			echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
 			echo '<br />';
 		}
@@ -269,7 +278,7 @@ function print_fact(WT_Event $eventObj) {
 			echo '</span>';
 		} elseif ($event!='Y') {
 			if (!strstr('ADDR _CREM ', substr($fact, 0, 5).' ')) {
-				if ($factref=='file_size' || $factref=='image_size') {
+				if ($fact=='EVEN' && ($type=='file_size' || $type=='image_size')) {
 					echo PrintReady($rawEvent);
 				} else {
 					echo PrintReady($event);
@@ -415,7 +424,7 @@ function print_fact(WT_Event $eventObj) {
 					echo '<span class="label">', $label, ':</span> ';
 				}
 				echo htmlspecialchars($match[2]);
-				$sub_rec = get_sub_record(2, '2 '.$factref, $factrec, 1);
+				$sub_rec = get_sub_record(2, '2 '.$fact, $factrec, 1);
 				$tmp=new WT_Date(get_gedcom_value('DATE', 3, $sub_rec, $truncate='', $convert=false));
 				if ($tmp->Display(true)!='&nbsp;') echo ' - '.$tmp->Display(true);
 				echo '</div>';
