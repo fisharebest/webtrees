@@ -36,8 +36,6 @@ if (!defined('WT_WEBTREES')) {
 class WT_I18N {
 	static private $locale='';
 	static private $dir='';
-	static private $list_separator;
-	static private $list_separator_last;
 	static public  $collation;
 
 	// Initialise the translation adapter with a locale setting.
@@ -148,11 +146,6 @@ class WT_I18N {
 		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 		self::$collation=WT_I18N::translate('utf8_unicode_ci');
 
-		// I18N: This is the puncutation symbol used to separate the first items in a list.  e.g. the <comma><space> in "red, green, yellow and blue"
-		self::$list_separator=WT_I18N::noop('LANGUAGE_LIST_SEPARATOR');
-		// I18N: This is the puncutation symbol used to separate the final items in a list.  e.g. the <space>and<space> in "red, green, yellow and blue"
-		self::$list_separator_last=WT_I18N::noop('LANGUAGE_LIST_SEPARATOR_LAST');
-
 		return $locale;
 	}
 
@@ -224,7 +217,7 @@ class WT_I18N {
 						$arg=$arg[0];
 					default:
 						// TODO: add LTR/RTL markup to each element?
-						$arg=implode(self::$list_separator, array_slice($arg, 0, $n-1)).self::$list_separator_last.$arg[$n-1];
+						$arg=implode(', ', $arg);
 					}
 				} else {
 					// For each embedded string, if the text-direction is the opposite of the
