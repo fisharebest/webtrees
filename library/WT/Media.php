@@ -407,13 +407,15 @@ class WT_Media extends WT_GedcomRecord {
 	*    'uselightbox_fallback'=>true|false,  default is true - if lb is not available, should we use  fallback javascript (true) or link directly to media viewer (false)
 	 * @return string, suitable for use inside an a tag: '<a href="'.$this->getHtmlUrlSnippet().'">';
 	 */
-	public function getHtmlUrlSnippet(array $parameter = array()) {
+	public function getHtmlUrlSnippet(array $config = array()) {
 		global $USE_MEDIA_VIEWER;
 
-		$obeyViewerOption=true;
-		$uselightbox=true;
-		$uselightbox_fallback=true;
-		extract($parameter, EXTR_IF_EXISTS);    
+		$default_config=array(
+			'obeyViewerOption'=>true,
+			'uselightbox'=>true,
+			'uselightbox_fallback'=>true
+		 );
+		$config=array_merge($default_config, $config);
 
 		$name=PrintReady(htmlspecialchars($this->getFullName()));
 		$urltype = get_url_type($this->getLocalFilename());
@@ -421,7 +423,7 @@ class WT_Media extends WT_GedcomRecord {
 
 		// -- Determine the correct URL to open this media file
 		while (true) {
-			if ($uselightbox && WT_USE_LIGHTBOX && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/')) {
+			if ($config['uselightbox'] && WT_USE_LIGHTBOX && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/')) {
 				// Lightbox is installed
 				require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 				switch ($urltype) {
@@ -457,7 +459,7 @@ class WT_Media extends WT_GedcomRecord {
 				}
 			}
 
-			if ($uselightbox_fallback) {
+			if ($config['uselightbox_fallback']) {
 				// Lightbox is not installed or Lightbox is not appropriate for this media type
 				switch ($urltype) {
 				case 'url_flv':
@@ -496,7 +498,7 @@ class WT_Media extends WT_GedcomRecord {
 			}
 
 			// final option if nothing else worked
-			if ($USE_MEDIA_VIEWER && $obeyViewerOption) {
+			if ($USE_MEDIA_VIEWER && $config['obeyViewerOption']) {
 				$url = $this->getHtmlUrl();
 			} else {
 				$imgsize = $this->getImageAttributes('main',40,150);
@@ -528,14 +530,14 @@ class WT_Media extends WT_GedcomRecord {
 	*    'align'=>'auto'|'none', default is 'auto' - if set to 'auto', will add align='left' or align='right', depending on TEXT_DIRECTION 
 	 * @return string
 	 */
-	public function displayMedia(array $parameter = array()) {
+	public function displayMedia(array $config = array()) {
 		global $TEXT_DIRECTION,$SHOW_MEDIA_DOWNLOAD;
 
-		// set defaults
-		$download=false;
-		$align='auto';
-		// override defaults with values passed in
-		extract($parameter, EXTR_IF_EXISTS);    
+		$default_config=array(
+			'download'=>false,
+			'align'=>'auto'
+		 );
+		$config=array_merge($default_config, $config);
 
 		if ($this->getHtmlForStreetview()) {
 			$output  = $this->getHtmlForStreetview();
@@ -544,15 +546,15 @@ class WT_Media extends WT_GedcomRecord {
 			$oktolink = $this->isFileExternal() || $this->fileExists('main');
 			$name=PrintReady(htmlspecialchars($this->getFullName()));
 			$imgsizeThumb = $this->getImageAttributes('thumb');
-			$alignstr = ($align=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
+			$alignstr = ($config['align']=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
 			$output = '';
 
-			if ($oktolink) $output .= '<a href="'.$this->getHtmlUrlSnippet($parameter).'">';
+			if ($oktolink) $output .= '<a href="'.$this->getHtmlUrlSnippet($config).'">';
 			$output .= '<img src="'.$this->getHtmlUrlDirect('thumb').'" '.$imgsizeThumb['imgWH'].' border="none" '.$alignstr.' class="thumbnail"';
 			$output .= ' alt="'.$name.'" title="'.$name.'" />';
 			if ($oktolink) {
 				$output .= '</a>';
-				if ($download && $SHOW_MEDIA_DOWNLOAD) {
+				if ($config['download'] && $SHOW_MEDIA_DOWNLOAD) {
 					$output .= '<div><a href="'.$this->getHtmlUrlDirect('main', true).'">'.WT_I18N::translate('Download File').'</a></div>';
 				}
 			} else {
