@@ -2167,8 +2167,15 @@ case 'age_differences':
 	break;
 
 case 'alpha':
-	$title=WT_I18N::translate('Alphabetical index');
-	$text=WT_I18N::translate('Clicking a letter in the Alphabetical index will display a list of the names that start with the letter you clicked.<br /><br />The second to last item in the Alphabetical index can be <b>(unknown)</b>.  This entry will be present when there are people in the database whose surname has not been recorded or does not contain any recognizable letters.  Unknown surnames are often recorded as <b>?</b>, and these will be recognized as <b>(unknown)</b>.  This will also happen if the person is unknown.<br /><br /><b>Note:</b><br />Surnames entered as, for example, <b>Nn</b>, <b>NN</b>, <b>Unknown</b>, or even <b>N.N.</b> will <u>not</u> be found in the <b>(unknown)</b> list. Instead, you will find these persons by clicking <b>N</b> or <b>U</b> because these are the initial letters of those names.  <b>webtrees</b> cannot possibly account for all possible ways of entering unknown surnames;  there is no recognized convention for this.<br /><br />At the end of the Alphabetical index you see <b>ALL</b>. When you click on this item, you will see a list of all surnames in the database.<br /><br /><b>Missing letters?</b><br />If your Alphabetical index appears to be incomplete, with missing letters, your database doesn\'t contain any surnames that start with that missing letter.');
+	$title=
+		/* I18N: Replace A-Z with the first/last letters from your own alphabet. */
+		WT_I18N::translate('A-Z list of names');
+	$text=
+		/* I18N: Replace A-Z with the first/last letters from your own alphabet. Note "…" and "None" should be the same as your translation of these individual terms. */
+		WT_I18N::translate('The A-Z list allows you to select all names beginning with a certain letter.  Unknown names are listed under “…” and people who do not have a surname are listed under “None”.').
+		'</p><p>'.
+		WT_I18N::translate('If a person’s name is not known, it should be left blank.  If you enter “Unknown” as a name, it will be listed under “U”.').
+		'</p>';
 	break;
 
 case 'ancestry_chart':

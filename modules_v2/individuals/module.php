@@ -65,7 +65,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $SHOW_MARRIED_NAMES, $WT_IMAGES;
+		global $SHOW_MARRIED_NAMES, $WT_IMAGES, $UNKNOWN_NN;
 
 		// Fetch a list of the initial letters of all surnames in the database
 		$initials=WT_Query_Name::surnameAlpha($SHOW_MARRIED_NAMES, false, WT_GED_ID);
@@ -130,7 +130,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {
 				case '@':
-					$html=WT_I18N::translate('(unknown)');
+					$html=$UNKNOWN_NN;
 					break;
 				case ',':
 					$html=WT_I18N::translate('None');

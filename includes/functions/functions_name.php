@@ -116,7 +116,7 @@ function check_NN($names) {
 		return $names;
 	}
 	if (count($names) == 2 && stristr($names[0], '@N.N.') && stristr($names[1], '@N.N.')) {
-		$fullname = WT_I18N::translate('(unknown)'). ' + '. WT_I18N::translate('(unknown)');
+		$fullname = $UNKNOWN_NN.' + '.$UNKNOWN_NN;
 	} else {
 		for ($i=0; $i<count($names); $i++) {
 			$unknown = false;
@@ -145,7 +145,7 @@ function check_NN($names) {
 	if (substr($fullname,-1)==',') $fullname = substr($fullname,0,strlen($fullname)-1);
 	if (substr($fullname,0,2)==', ') $fullname = substr($fullname,2);
 	$fullname = trim($fullname);
-	if (empty($fullname)) return WT_I18N::translate('(unknown)');
+	if (empty($fullname)) return $UNKNOWN_NN;
 
 	return $fullname;
 }
