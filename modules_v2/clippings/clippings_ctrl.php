@@ -92,7 +92,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		$this->IncludeMedia = safe_GET('IncludeMedia');
 		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT, $_SESSION['exportConvPath']);
 		$this->conv_slashes = safe_GET('conv_slashes', array('forward', 'backward'), $_SESSION['exportConvSlashes']);
-		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'), 'none');
+		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
 		$this->level1 = safe_GET('level1', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$this->level2 = safe_GET('level2', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$this->level3 = safe_GET('level3', WT_REGEX_INTEGER, PHP_INT_MAX);
@@ -215,8 +215,20 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 
 			for ($i = 0; $i < $ct; $i++) {
 				$clipping = $cart[$i];
-				if ($clipping['gedcom'] == $GEDCOM) {
-					list($record) = WT_GedcomRecord::getInstance($clipping['id'])->privatizeGedcom($access_level);
+				if ($clipping['gedcom'] == WT_GEDCOM) {
+					$object=WT_GedcomRecord::getInstance($clipping['id']);
+					if ($this->privatize_export=='none') {
+						$record=find_gedcom_record($clipping['id'], WT_GED_ID);
+					} else {
+						list($record)=$object->privatizeGedcom($access_level);
+					}
+					// Remove links to objects that aren't in the cart
+					preg_match_all('/\n1 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@/', $record, $matches, PREG_SET_ORDER);
+					foreach ($matches as $match) {
+						if (!self::id_in_cart($match[1])) {
+							$record=str_replace($match[0], '', $record);
+						}
+					}
 					$record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
 					if ($remove=='yes') {
 						$record=remove_custom_tags($record);
@@ -227,58 +239,19 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 					}
 					switch ($clipping['type']) {
 					case 'indi':
-						$ft = preg_match_all("/1 FAMC @(.*)@/", $record, $match, PREG_SET_ORDER);
-						for ($k = 0; $k < $ft; $k++) {
-							if (!self::id_in_cart($match[$k][1])) {
-								$record = preg_replace("/1 FAMC @" . $match[$k][1] . "@.*/", "", $record);
-							}
-						}
-						$ft = preg_match_all("/1 FAMS @(.*)@/", $record, $match, PREG_SET_ORDER);
-						for ($k = 0; $k < $ft; $k++) {
-							if (!self::id_in_cart($match[$k][1])) {
-								$record = preg_replace("/1 FAMS @" . $match[$k][1] . "@.*/", "", $record);
-							}
-						}
-						$filetext .= trim($record) . "\n";
+						$filetext .= $record."\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH."individual.php?pid={$clipping['id']}&ged=" . rawurlencode($clipping['gedcom']) . "\n";
+						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
 						break;
-
 					case 'fam':
-						$ft = preg_match_all("/1 CHIL @(.*)@/", $record, $match, PREG_SET_ORDER);
-						for ($k = 0; $k < $ft; $k++) {
-							if (!self::id_in_cart($match[$k][1])) {
-								/* if the child is not in the list delete the record of it */
-								$record = preg_replace("/1 CHIL @" . $match[$k][1] . "@.*/", "", $record);
-							}
-						}
-
-						$ft = preg_match_all("/1 HUSB @(.*)@/", $record, $match, PREG_SET_ORDER);
-						for ($k = 0; $k < $ft; $k++) {
-							if (!self::id_in_cart($match[$k][1])) {
-								/* if the husband is not in the list delete the record of him */
-								$record = preg_replace("/1 HUSB @" . $match[$k][1] . "@.*/", "", $record);
-							}
-						}
-
-						$ft = preg_match_all("/1 WIFE @(.*)@/", $record, $match, PREG_SET_ORDER);
-						for ($k = 0; $k < $ft; $k++) {
-							if (!self::id_in_cart($match[$k][1])) {
-								/* if the wife is not in the list delete the record of her */
-								$record = preg_replace("/1 WIFE @" . $match[$k][1] . "@.*/", "", $record);
-							}
-						}
-
-						$filetext .= trim($record) . "\n";
+						$filetext .= $record."\n";
 						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= "2 PAGE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "family.php?famid={$clipping['id']}&ged=" . rawurlencode($clipping['gedcom']) . "\n";
+						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
 						break;
-
 					case 'source':
-						$filetext .= trim($record) . "\n";
-						$filetext .= "1 NOTE " . WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid={$clipping['id']}&ged=" . rawurlencode($clipping['gedcom']) . "\n";
+						$filetext .= $record."\n";
+						$filetext .= "1 NOTE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
 						break;
-
 					default:
 						$ft = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
 						for ($k = 0; $k < $ft; $k++) {
