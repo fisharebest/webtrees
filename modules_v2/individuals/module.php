@@ -58,9 +58,15 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$last = array('alpha'=>$alpha, 'surname'=>$surname, 'search'=>$search);
 		$_SESSION['sb_individuals_last'] = $last;
 
-		if (!empty($search)) return $this->search($search);
-		else if (empty($surname)) return $this->getAlphaSurnames($alpha, $surname);
-		else return $this->getSurnameIndis($alpha, $surname);
+		if ($search) {
+			return $this->search($search);
+		} elseif ($alpha=='@' || $alpha==',' || $surname) {
+			return $this->getSurnameIndis($alpha, $surname);
+		} elseif ($alpha) {
+			return $this->getAlphaSurnames($alpha, $surname);
+		} else {
+			return '';
+		}
 	}
 
 	// Implement WT_Module_Sidebar
@@ -147,12 +153,17 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= '<div id="sb_indi_content">';
 
 		if (isset($_SESSION['sb_individuals_last'])) {
-			$last = $_SESSION['sb_individuals_last'];
-			$alpha = $last['alpha'];
-			$search = $last['search'];
-			$surname = $last['surname'];
-			if (!empty($search)) $out.= $this->search($search);
-			else if (!empty($alpha)) $out.= $this->getAlphaSurnames($alpha, $surname);
+			$alpha   = $_SESSION['sb_individuals_last']['alpha'];
+			$search  = $_SESSION['sb_individuals_last']['search'];
+			$surname = $_SESSION['sb_individuals_last']['surname'];
+			
+			if ($search) {
+				$out.=$this->search($search);
+			} elseif ($alpha=='@' || $alpha==',' || $surname) {
+				$out.=$this->getSurnameIndis($alpha, $surname);
+			} elseif ($alpha) {
+				$out.=$this->getAlphaSurnames($alpha, $surname);
+			}
 		}
 
 		$out .= '</div></form>';
@@ -169,9 +180,9 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$out .= '<div class="name_tree_div_visible">';
 				$out .= $this->getSurnameIndis($alpha, $surname1);
 				$out .= '</div>';
-			}
-			else
+			} else {
 				$out .= '<div class="name_tree_div"></div>';
+			}
 			$out .= '</li>';
 		}
 		$out .= '</ul>';
@@ -187,7 +198,9 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
 				if ($person->canDisplayDetails()) {
 					$bd = $person->getBirthDeathYears(false,'');
-					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');
+					if (!empty($bd)) {
+						$out .= PrintReady(' ('.$bd.')');
+					}
 				}
 				$out .= '</a></li>';
 			}

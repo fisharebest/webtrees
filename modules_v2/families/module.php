@@ -57,9 +57,16 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$last = array('alpha'=>$alpha, 'surname'=>$surname, 'search'=>$search);
 		$_SESSION['sb_families_last'] = $last;
-		if (!empty($search)) return $this->search($search);
-		else if (empty($surname)) return $this->getAlphaSurnames($alpha, $surname);
-		else return $this->getSurnameFams($alpha, $surname);
+		
+		if ($search) {
+			return $this->search($search);
+		} elseif ($alpha=='@' || $alpha==',' || $surname) {
+			return $this->getSurnameFams($alpha, $surname);
+		} elseif ($alpha) {
+			return $this->getAlphaSurnames($alpha, $surname);
+		} else {
+			return '';
+		}
 	}
 
 	// Implement WT_Module_Sidebar
@@ -145,13 +152,18 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= '</p>';
 		$out .= '<div id="sb_fam_content">';
 
-		if (isset($_SESSION['sb_families_last'])) {
-			$last = $_SESSION['sb_families_last'];
-			$alpha = $last['alpha'];
-			$search = $last['search'];
-			$surname = $last['surname'];
-			if (!empty($search)) $out.= $this->search($search);
-			else if (!empty($alpha)) $out.= $this->getAlphaSurnames($alpha, $surname);
+		if (isset($_SESSION['sb_individuals_last'])) {
+			$alpha   = $_SESSION['sb_individuals_last']['alpha'];
+			$search  = $_SESSION['sb_individuals_last']['search'];
+			$surname = $_SESSION['sb_individuals_last']['surname'];
+			
+			if ($search) {
+				$out.=$this->search($search);
+			} elseif ($alpha=='@' || $alpha==',' || $surname) {
+				$out.=$this->getSurnameFams($alpha, $surname);
+			} elseif ($alpha) {
+				$out.=$this->getAlphaSurnames($alpha, $surname);
+			}
 		}
 
 		$out .= '</div></form>';
@@ -168,9 +180,9 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$out .= '<div class="name_tree_div_visible">';
 				$out .= $this->getSurnameFams($alpha, $surname1);
 				$out .= '</div>';
-			}
-			else
+			} else {
 				$out .= '<div class="name_tree_div"></div>';
+			}
 			$out .= '</li>';
 		}
 		$out .= '</ul>';
@@ -186,7 +198,9 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
 				if ($family->canDisplayDetails()) {
 					$bd = $family->getMarriageYear();
-					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');
+					if (!empty($bd)) {
+						$out .= PrintReady(' ('.$bd.')');
+					}
 				}
 				$out .= '</a></li>';
 			}
