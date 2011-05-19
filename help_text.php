@@ -3100,12 +3100,13 @@ default:
 	break;
 }
 
-print_simple_header(WT_I18N::translate('Help for «%s»', htmlspecialchars(strip_tags($title))));
-echo '<div class="helpheader">', nl2br($title), '</div>';
-echo '<div class="helpcontent">', nl2br($text),'</div>';
-echo '<div class="helpfooter"><br />';
-echo '<a href="javascript:;" onclick="window.history.go(-1)">','<img src="', $WT_IMAGES["larrow"], '" alt="<"><br />';
-echo '<a href="help_text.php?help=help_contents_help"><b>', WT_I18N::translate('Help contents'), '</b></a><br />';
-echo '<a href="javascript:;" onclick="window.close();"><b>', WT_I18N::translate('Close Window'), '</b></a>';
+print_simple_header($title);
+echo '<div class="helpheader">', $title, '</div>';
+echo '<div class="helpcontent">', $text,'</div>';
+echo '<div class="helpfooter">';
+if ($help!='help_contents_help') {
+	echo '<a href="help_text.php?help=help_contents_help">', WT_I18N::translate('Help contents'), '</a><br />';
+}
+echo '<a href="javascript:;" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a>';
 echo '</div>';
 print_simple_footer();
