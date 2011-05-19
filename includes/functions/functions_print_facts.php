@@ -233,16 +233,16 @@ function print_fact(WT_Event $eventObj) {
 		case 'none':
 			// Note: "1 RESN none" is not valid gedcom, and the GUI will not let you add it.
 			// However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
-			echo '<img src="images/RESN_none.gif"/>', WT_I18N::translate('Show to visitors');
+			echo '<img src="images/RESN_none.gif" align="middle"/> ', WT_I18N::translate('Show to visitors');
 			break;
 		case 'privacy':
-			echo '<img src="images/RESN_privacy.gif"/>', WT_I18N::translate('Show to members');
+			echo '<img src="images/RESN_privacy.gif" align="middle"/> ', WT_I18N::translate('Show to members');
 			break;
 		case 'confidential':
-			echo '<img src="images/RESN_confidential.gif"/>', WT_I18N::translate('Show to managers');
+			echo '<img src="images/RESN_confidential.gif" align="middle"/> ', WT_I18N::translate('Show to managers');
 			break;
 		case 'locked':
-			echo '<img src="images/RESN_locked.gif"/>', WT_I18N::translate('Only managers can edit');
+			echo '<img src="images/RESN_locked.gif" align="middle"/> ', WT_I18N::translate('Only managers can edit');
 			break;
 		default:
 			echo htmlspecialchars($eventObj->getDetail());
