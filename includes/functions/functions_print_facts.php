@@ -140,6 +140,7 @@ function print_fact(WT_Event $eventObj) {
 		break;
 	case 'MARR':
 		// This is a hack for a proprietory extension.  Is it still used/needed?
+		$type = strtoupper($type);
 		if ($type=='CIVIL' || $type=='PARTNERS' || $type=='RELIGIOUS' || $type=='UNKNOWN') {
 			$label=WT_Gedcom_Tag::getLabel('MARR_'.$type, $label_person);
 			$type=''; // Do not print this again
