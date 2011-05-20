@@ -45,8 +45,8 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $GEDCOM;
 	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
-	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
-	global $USE_SILHOUETTE, $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
+	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
+	global $WT_IMAGES, $ABBREVIATE_CHART_LABELS;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;
@@ -229,45 +229,15 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	//-- find the name
 	$name = $person->getFullName();
 	if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
-		$object = $person->findHighlightedMedia();
+		$object=$person->findHighlightedMedia();
+		$img_title=PrintReady(htmlspecialchars($name));
+		$img_id='box-'.$boxID.'.-thumb';
 		if (!empty($object)) {
-			$whichFile = thumb_or_main($object); // Do we send the main image or a thumbnail?
-			$size = findImageSize($whichFile);
-			$class = "pedigree_image_portrait";
-			if ($size[0]>$size[1]) $class = "pedigree_image_landscape";
-			if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
-			// NOTE: IMG ID
-			$imgsize = findImageSize($object["file"]);
-			$imgwidth = $imgsize[0]+50;
-			$imgheight = $imgsize[1]+150;
-
-			if (WT_USE_LIGHTBOX) {
-				$thumbnail .= "<a href=\"" . $object["file"] . "\" rel=\"clearbox[general_2]\" rev=\"" . $object['mid'] . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
-			} else if (!empty($object['mid']) && $USE_MEDIA_VIEWER) {
-				$thumbnail .= "<a href=\"mediaviewer.php?mid=".$object['mid']."\" >";
-			} else {
-				$thumbnail .= "<a href=\"javascript:;\" onclick=\"return openImage('".rawurlencode($object["file"])."', $imgwidth, $imgheight);\">";
-			}
-			$thumbnail .= "<img id=\"box-$boxID-thumb\" src=\"".$whichFile."\" vspace=\"0\" hspace=\"0\" class=\"$class\" alt=\"\" title=\"".PrintReady(htmlspecialchars(strip_tags($name)))."\"";
-			if (!$show_full) $thumbnail .= " style=\"display: none;\"";
-			if ($imgsize) $thumbnail .= " /></a>";
-			else $thumbnail .= " />";
-		} else if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"])) {
-			$class = "pedigree_image_portrait";
-			if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
-			$sex = $person->getSex();
-			$thumbnail = "<img id=\"box-$boxID-thumb\" src=\"";
-			if ($sex == 'F') {
-				$thumbnail .= $WT_IMAGES["default_image_F"]."\"";
-			}
-			else if ($sex == 'M') {
-				$thumbnail .= $WT_IMAGES["default_image_M"]."\"";
-			}
-			else {
-				$thumbnail .= $WT_IMAGES["default_image_U"]."\"";
-			}
-			if (!$show_full) $thumbnail .= " style=\"display: none;\"";
-			$thumbnail .=" class=\"".$class."\" border=\"none\" alt=\"\" />";
+			$which=thumb_or_main($object); // Do we send the main image or a thumbnail?
+			$mediaobject=WT_Media::getInstance($object['mid']);
+			$thumbnail=$mediaobject->displayMedia(array('which'=>$which,'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title,'show_full'=>$show_full));
+		} else {
+			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title,'show_full'=>$show_full)); // may return ''
 		}
 	}
 	//-- find additional name

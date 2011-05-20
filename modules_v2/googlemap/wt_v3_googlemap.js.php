@@ -479,24 +479,14 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 							if (!empty($pid)) {
 								$object = find_highlighted_object($pid, WT_GED_ID, $indirec);
-							} else {
-								$object = '';
 							}
-							if (!empty($object['thumb'])) {
-								$size = findImageSize($object['thumb']);
-								$class = 'pedigree_image_portrait';
-								if ($size[0]>$size[1]) $class = 'pedigree_image_landscape';
-								if ($TEXT_DIRECTION=='rtl') $class .= '_rtl';
-								$image = "<img src='{$object["thumb"]}' vspace='0' hspace='0' class='{$class}' alt ='' title='' >";
+							if (!empty($object)) {
+								// should we call thumb_or_main?
+								$mediaobject=WT_Media::getInstance($object['mid']);
+								$image=$mediaobject->displayMedia(array('which'=>'thumb','display_type'=>'googlemap'));
 							} else {
-								$class = 'pedigree_image_portrait';
-								if ($TEXT_DIRECTION == 'rtl') $class .= '_rtl';
-								$sex = $this_person->getSex();
-								$image = "<img src=\'./";
-								if ($sex == 'F') { $image .= $WT_IMAGES['default_image_F']; }
-								elseif ($sex == 'M') { $image .= $WT_IMAGES['default_image_M']; }
-								else { $image .= $WT_IMAGES['default_image_U']; }
-								$image .="\' align=\'left\' class=\'".$class."\' border=\'none\' alt=\'\' />";
+								$sex=$this_person->getSex();
+								$image=display_silhouette(array('sex'=>$sex,'display_type'=>'googlemap')); // may return ''
 							}
 						} // end of add image
 					}
@@ -509,25 +499,14 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 						if (!empty($gmark['name'])) {
 							$object2 = find_highlighted_object($gmark['name'], WT_GED_ID, $indirec2);
-						} else {
-							$object2 = '';
 						}
-
-						if (!empty($object2['thumb'])) {
-							$size = findImageSize($object2['thumb']);
-							$class = 'pedigree_image_portrait';
-							if ($size[0]>$size[1]) $class = 'pedigree_image_landscape';
-							if ($TEXT_DIRECTION=='rtl') $class .= '_rtl';
-							$image2 = "<img src='{$object2["thumb"]}' vspace='0' hspace='0' class='{$class}' alt ='' title='' >";
+						if (!empty($object2)) {
+							// should we call thumb_or_main?
+							$mediaobject=WT_Media::getInstance($object2['mid']);
+							$image2=$mediaobject->displayMedia(array('which'=>'thumb','display_type'=>'googlemap'));
 						} else {
-							$class = 'pedigree_image_portrait';
-							if ($TEXT_DIRECTION == 'rtl') $class .= '_rtl';
-							$sex = $person->getSex();
-							$image2 = "<img src=\'./";
-							if ($sex == 'F') { $image2 .= $WT_IMAGES['default_image_F']; }
-							elseif ($sex == 'M') { $image2 .= $WT_IMAGES['default_image_M']; }
-							else { $image2 .= $WT_IMAGES['default_image_U']; }
-							$image2 .="\' align=\'left\' class=\'".$class."\' border=\'none\' alt=\'\' />";
+							$sex=$person->getSex();
+							$image2=display_silhouette(array('sex'=>$sex,'display_type'=>'googlemap')); // may return ''
 						}
 					} // end of add image
 				}

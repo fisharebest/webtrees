@@ -407,61 +407,24 @@ class TreeView {
   * @param Person $person
   * @return string
   */
-  private function getThumbnail($personGroup, $person) {
-    global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $TEXT_DIRECTION, $USE_MEDIA_VIEWER, $USE_SILHOUETTE, $GEDCOM, $WT_IMAGES;
+	private function getThumbnail($personGroup, $person) {
+		global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES;
 
-    $thumbnail = "";
-    if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
-      $object = $person->findHighlightedMedia();
-      if (!empty($object)) {
-        $whichFile = thumb_or_main($object); // Do we send the main image or a thumbnail?
-        $size = findImageSize($whichFile);
-        $class = "tv_link pedigree_image_portrait";
-        if ($size[0]>$size[1]) $class = "tv_link pedigree_image_landscape";
-        if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
-        // NOTE: IMG ID
-        $imgsize = findImageSize($object["file"]);
-        $imgwidth = $imgsize[0]+50;
-        $imgheight = $imgsize[1]+150;
+		$thumbnail="";
+		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
+			$object=$person->findHighlightedMedia();
+			$img_title=PrintReady(htmlspecialchars($person->getFullName()));
+			if (!empty($object)) {
+				$which=thumb_or_main($object); // Do we send the main image or a thumbnail?
+				$mediaobject=WT_Media::getInstance($object['mid']);
+				$thumbnail=$mediaobject->displayMedia(array('which'=>$which,'display_type'=>'treeview','img_title'=>$img_title,'clearbox'=>'tvlb'.$personGroup->getXref()));
+			} else {
+				$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'treeview','img_title'=>$img_title)); // may return ''
+			}
+		}
 
-        if (!empty($object['mid']) && $USE_MEDIA_VIEWER) {
-        	$mid = $object['mid'];
-          if (WT_USE_LIGHTBOX) {
-            $media = WT_Media::getInstance($mid);
-            // we need to convert the title to html entities to avoid problems with special chars like quotes,
-            // and we need to decode from utf8 before to retrieve accentuated characters after the html entities conversion 
-            $thumbnail .= '<a class="tv_link" href="'.$object["file"].'" rel="clearbox[tvlb'.$personGroup->getXref().']" rev="'.$mid.'::'.$object["file"].'::'.htmlspecialchars($media->title).'">';
-          }
-          else
-            $thumbnail .= '<a href="mediaviewer.php?mid='.$mid.'">';
-        }
-        else {
-        	$mid = '';
-          $thumbnail .= "<a href=\"javascript:;\" onclick=\"return openImage('".rawurlencode($object["file"])."',$imgwidth, $imgheight);\">";
-        }
-        $thumbnail .= "<img src=\"".$whichFile."\" vspace=\"0\" hspace=\"0\" class=\"$class\" alt=\"$mid\" title=\"\"";
-        if ($imgsize) $thumbnail .= " /></a>";
-        else $thumbnail .= " />";
-      }
-    }
-    if (empty($thumbnail) && ($USE_SILHOUETTE)) {
-      $class = "default_thumbnail pedigree_image_portrait";
-      if ($TEXT_DIRECTION == "rtl") $class .= "_rtl";
-      $sex = $person->getSex();
-      $thumbnail = "<img src=\"";
-      if ($sex == 'F') {
-        $thumbnail .= $WT_IMAGES['default_image_F'];
-      }
-      else if ($sex == 'M') {
-        $thumbnail .= $WT_IMAGES['default_image_M'];
-      }
-      else {
-        $thumbnail .= $WT_IMAGES['default_image_U'];
-      }
-      $thumbnail .="\" class=\"".$class."\" alt=\"\" />";
-    }
-    return $thumbnail;
-  }
+		return $thumbnail;
+	}
 
   /**
   * Draw a vertical line

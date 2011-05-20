@@ -144,6 +144,21 @@ function check_media_structure() {
 }
 
 /**
+ * Determine whether the main image or a thumbnail should be sent to the browser
+ */
+function thumb_or_main($object) {
+	global $USE_THUMBS_MAIN;
+
+	if ($object['_THUM']=='Y' || !$USE_THUMBS_MAIN) {
+		$file = 'main';
+	} else {
+		$file = 'thumb';
+	}
+	return $file;
+}
+
+
+/**
 * Get the list of media from the database
 *
 * Searches the media table of the database for media items that
@@ -623,6 +638,70 @@ function get_url_type($filename) {
 	}
 	// $urltype is now: (url | local) _ (flv | picasa | image | page | audio | wmv | streetview |other)
 	return $urltype;
+}
+
+/**
+* Return the img code for the appropriate silhouette
+*
+* The config array is designed to match Media->displayMedia
+*/
+function display_silhouette(array $config = array()) {
+	global $USE_SILHOUETTE, $WT_IMAGES, $TEXT_DIRECTION;
+
+	$default_config=array(
+		'sex'=>'U',
+		'align'=>'auto',
+		'display_type'=>'normal',
+		'img_id'=>'',
+		'class'=>'',
+		'img_title'=>'',
+		'addslashes'=>false,
+		'show_full'=>true
+	 );
+	$config=array_merge($default_config, $config);
+
+	if (!$USE_SILHOUETTE) return '';
+	if (($config['sex']!='F') && ($config['sex']!='M')) {
+		$config['sex']='U';
+	}
+	if (!isset($WT_IMAGES['default_image_'.$config['sex']])) {
+		return '';
+	}
+
+	$spacestr='';
+	if ($config['display_type']=='pedigree_person') {
+		$config['align']='none';
+		$config['class']='pedigree_image_portrait';
+		$spacestr=' vspace="0" hspace="0" ';
+	}
+	if ($config['display_type']=='treeview') {
+		$config['align']='none';
+		$config['class']='default_thumbnail pedigree_image_portrait';
+		$spacestr=' vspace="0" hspace="0" ';
+	}
+	if ($config['display_type']=='googlemap') {
+		$config['align']='none';
+		$config['usejavascript']=false;
+		$config['addslashes']=true;
+		$config['class']='pedigree_image_portrait';
+		$spacestr=' vspace="0" hspace="0" ';
+	}
+
+	$classstr='';
+	if ($config['class']) {
+		if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
+		$classstr=' class="'.$config['class'].'" ';
+	}
+	$idstr=($config['img_id']) ? ' id="'.$config['img_id'].'" ' : '';
+	$stylestr=($config['show_full']) ? '' : ' style="display: none;" ';
+	$alignstr=($config['align']=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
+	$output='<img '.$idstr.' src="'.$WT_IMAGES['default_image_'.$config['sex']].'" '.$classstr.$spacestr.$alignstr.' border="none" alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.' />';
+
+	if ($config['addslashes']) {
+		// the image string will be used in javascript code, such as googlemaps
+		$output=addslashes($output);
+	}
+	return $output;
 }
 
 /**

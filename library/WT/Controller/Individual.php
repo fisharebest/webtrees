@@ -219,13 +219,13 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @return boolean
 	*/
 	function canShowHighlightedObject() {
-		global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $USE_SILHOUETTE, $WT_IMAGES;
+		global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $USE_SILHOUETTE;
 
 		if (($this->indi->canDisplayDetails()) && ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES)) {
 			$firstmediarec = $this->indi->findHighlightedMedia();
 			if ($firstmediarec) return true;
 		}
-		if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"])) { return true; }
+		if ($USE_SILHOUETTE) { return true; }
 		return false;
 	}
 	/**
@@ -243,55 +243,21 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @return string HTML string for the <img> tag
 	*/
 	function getHighlightedObject() {
-		global $USE_THUMBS_MAIN, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $GEDCOM, $WT_IMAGES, $USE_SILHOUETTE, $sex;
+		global $sex;
 
 		if ($this->canShowHighlightedObject()) {
-			$firstmediarec = $this->indi->findHighlightedMedia();
+			$firstmediarec=$this->indi->findHighlightedMedia();
 			if (!empty($firstmediarec)) {
-				$filename = thumb_or_main($firstmediarec); // Do we send the main image or a thumbnail?
-				if (!$USE_THUMBS_MAIN || $firstmediarec["_THUM"]=='Y') {
-					$class = "image";
-				} else {
-					$class = "thumbnail";
-				}
-				$isExternal = isFileExternal($filename);
-				if ($isExternal && $class=="thumbnail") $class .= "\" width=\"".$THUMBNAIL_WIDTH;
-				if (!empty($filename)) {
-					$result = "";
-					$imgsize = findImageSize($firstmediarec["file"]);
-					$imgwidth = $imgsize[0]+40;
-					$imgheight = $imgsize[1]+150;
-					//Gets the Media View Link Information and Concatenate
-					$mid = $firstmediarec['mid'];
+				$which=thumb_or_main($firstmediarec); // Do we send the main image or a thumbnail?
+				$mediaobject=WT_Media::getInstance($firstmediarec['mid']);
+				$result=$mediaobject->displayMedia(array('which'=>$which,'uselightbox_fallback'=>false,'clearbox'=>'general_1'));
+				return $result;
+			}
+		}
 
-					$name = $this->indi->getFullName();
-					if (WT_USE_LIGHTBOX) {
-						echo "<a href=\"" . $firstmediarec["file"] . "\" rel=\"clearbox[general_1]\" rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
-					} else if (!$USE_MEDIA_VIEWER && $imgsize) {
-						$result .= "<a href=\"javascript:;\" onclick=\"return openImage('".urlencode($firstmediarec["file"])."', $imgwidth, $imgheight);\">";
-					} else {
-						$result .= "<a href=\"mediaviewer.php?mid={$mid}\">";
-					}
-					$result .= "<img src=\"$filename\" align=\"left\" class=\"".$class."\" border=\"none\" title=\"".PrintReady(htmlspecialchars(strip_tags($name)))."\" alt=\"".PrintReady(htmlspecialchars(strip_tags($name)))."\" />";
-					$result .= "</a>";
-					return $result;
-				}
-			}
-		}
-		if ($USE_SILHOUETTE && isset($WT_IMAGES["default_image_U"])) {
-			$class = "\" width=\"".$THUMBNAIL_WIDTH;
-			$sex = $this->indi->getSex();
-			$result = "<img src=\"";
-			if ($sex == 'F') {
-				$result .= $WT_IMAGES["default_image_F"];
-			} elseif ($sex == 'M') {
-				$result .= $WT_IMAGES["default_image_M"];
-			} else {
-				$result .= $WT_IMAGES["default_image_U"];
-			}
-			$result .="\" class=\"".$class."\" border=\"none\" alt=\"\" />";
-			return $result;
-		}
+		$sex=$this->indi->getSex();
+		return display_silhouette(array('sex'=>$sex)); // may return ''
+
 	}
 
 	/**

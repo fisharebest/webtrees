@@ -285,6 +285,7 @@ class WT_Media extends WT_GedcomRecord {
 				$imgsize['adjH']=$imgsize[1]+$addHeight; // adjusted height
 				$imageTypes=array('','GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM');
 				$imgsize['ext']=$imageTypes[0+$imgsize[2]];
+				$imgsize['aspect']=($imgsize[0]>$imgsize[1]) ? 'landscape' : 'portrait';
 				// this is for display purposes, always show non-adjusted info
 				$imgsize['WxH']=/* I18N: image dimensions, width x height */ WT_I18N::translate('%1$s &times; %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1']));
 				$imgsize['imgWH']=' width="'.$imgsize['adjW'].'" height="'.$imgsize['adjH'].'" ';
@@ -302,6 +303,7 @@ class WT_Media extends WT_GedcomRecord {
 			$imgsize['adjW']=0;
 			$imgsize['adjH']=0;
 			$imgsize['ext']='';
+			$imgsize['aspect']='';
 			$imgsize['mime']='';
 			$imgsize['WxH']='';
 			$imgsize['imgWH']='';
@@ -400,11 +402,26 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
+	 * if this is a Google Streetview url, return the HTML required to display it
+	* if not a Google Streetview url, return ''
+	* @return string
+	 */
+	public function getHtmlForStreetview() {
+		if (strpos($this->getHtmlUrlDirect('main'), 'http://maps.google.')===0) {
+			return '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="'.$this->getHtmlUrlDirect('main').'&amp;output=svembed"></iframe>';
+		}
+		return '';
+	}
+
+	/**
 	 * builds html snippet with javascript, etc appropriate to view the media file
 	 * @param array with optional parameters: 
-	*    'obeyViewerOption'=>true|false, default is 'true'
-	*    'uselightbox'=>true|false,  default is true - if set to true, will use global settings for lightbox.  if false, will not use regardless of global settings
-	*    'uselightbox_fallback'=>true|false,  default is true - if lb is not available, should we use  fallback javascript (true) or link directly to media viewer (false)
+	 *    'obeyViewerOption'=>true|false, default is 'true'
+	 *    'uselightbox'=>true|false,  default is true - if set to true, will use global settings for lightbox.  if false, will not use regardless of global settings
+	 *    'uselightbox_fallback'=>true|false,  default is true - if lb is not available, should we use  fallback javascript (true) or link directly to media viewer (false)
+	 *    'usejavascript'=>true|false,  default is true - set to false to ensure no javascript will be used in the link
+	 *    'clearbox'=>'general'|'general_1' etc
+	 *    'img_title'=>string (optional) - image title to override the default.  must run PrintReady(htmlspecialchars()) priort to sending
 	 * @return string, suitable for use inside an a tag: '<a href="'.$this->getHtmlUrlSnippet().'">';
 	 */
 	public function getHtmlUrlSnippet(array $config = array()) {
@@ -413,36 +430,41 @@ class WT_Media extends WT_GedcomRecord {
 		$default_config=array(
 			'obeyViewerOption'=>true,
 			'uselightbox'=>true,
-			'uselightbox_fallback'=>true
+			'uselightbox_fallback'=>true,
+			'usejavascript'=>true,
+			'clearbox'=>'general',
+			'img_title'=>''
 		 );
 		$config=array_merge($default_config, $config);
 
-		$name=PrintReady(htmlspecialchars($this->getFullName()));
 		$urltype = get_url_type($this->getLocalFilename());
-		$notes=($this->getNote()) ? print_fact_notes("1 NOTE ".$this->getNote(), 1, true, true) : '';
+		$notes=($this->getNote()) ? htmlspecialchars(print_fact_notes("1 NOTE ".$this->getNote(), 1, true, true)) : '';
+		if (!$config['img_title']) {
+			$config['img_title']=PrintReady(htmlspecialchars($this->getFullName()));
+		}
 
 		// -- Determine the correct URL to open this media file
 		while (true) {
-			if ($config['uselightbox'] && WT_USE_LIGHTBOX && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/')) {
+			if (WT_USE_LIGHTBOX && $config['uselightbox'] && $config['usejavascript'] && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/')) {
 				// Lightbox is installed
 				require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 				switch ($urltype) {
 				case 'url_flv':
-					$url = 'js/jw_player/flvVideo.php?flvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $name . "::" . htmlspecialchars($notes);
+					$url = 'js/jw_player/flvVideo.php?flvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
 				case 'local_flv':
-					$url = 'js/jw_player/flvVideo.php?flvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $name . "::" . htmlspecialchars($notes);
+					$url = 'js/jw_player/flvVideo.php?flvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
 				case 'url_wmv':
-					$url = 'js/jw_player/wmvVideo.php?wmvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $name . "::" . htmlspecialchars($notes);
+					$url = 'js/jw_player/wmvVideo.php?wmvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
 				case 'local_audio':
 				case 'local_wmv':
-					$url = 'js/jw_player/wmvVideo.php?wmvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $name . "::" . htmlspecialchars($notes);
+					$url = 'js/jw_player/wmvVideo.php?wmvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
 				case 'url_image':
 				case 'local_image':
-					$url = $this->getHtmlUrlDirect('main') . "\" rel=\"clearbox[general]\" rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $name . "::" . htmlspecialchars($notes);
+					$url = $this->getHtmlUrlDirect('main') . "\" rel=\"clearbox[" . $config['clearbox'] . "]\" rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
 				case 'url_picasa':
 				case 'url_page':
@@ -451,7 +473,7 @@ class WT_Media extends WT_GedcomRecord {
 				case 'local_page':
 				case 'local_pdf':
 				// case 'local_other':
-					$url = $this->getHtmlUrlDirect('main') . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $name . "::" . htmlspecialchars($notes);
+					$url = $this->getHtmlUrlDirect('main') . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
 				case 'url_streetview':
 					// need to call getHtmlForStreetview() instead of getHtmlUrlSnippet()
@@ -459,7 +481,7 @@ class WT_Media extends WT_GedcomRecord {
 				}
 			}
 
-			if ($config['uselightbox_fallback']) {
+			if ($config['uselightbox_fallback'] && $config['usejavascript']) {
 				// Lightbox is not installed or Lightbox is not appropriate for this media type
 				switch ($urltype) {
 				case 'url_flv':
@@ -478,7 +500,11 @@ class WT_Media extends WT_GedcomRecord {
 				case 'url_image':
 				case 'local_image':
 					$imgsize = $this->getImageAttributes('main',40,150);
-					$url = "javascript:;\" onclick=\"var winimg = window.open('".$this->getRawUrlDirect('main')."', 'winimg', 'width=".$imgsize['adjW'].", height=".$imgsize['adjH'].", left=200, top=200'); if (window.focus) {winimg.focus();}";
+					if ($imgsize['0']) {
+						$url = "javascript:;\" onclick=\"var winimg = window.open('".$this->getRawUrlDirect('main')."', 'winimg', 'width=".$imgsize['adjW'].", height=".$imgsize['adjH'].", left=200, top=200'); if (window.focus) {winimg.focus();}";
+					} else {
+						$url = $this->getHtmlUrl();
+					}
 					break 2;
 				case 'url_picasa':
 				case 'url_page':
@@ -498,12 +524,16 @@ class WT_Media extends WT_GedcomRecord {
 			}
 
 			// final option if nothing else worked
-			if ($USE_MEDIA_VIEWER && $config['obeyViewerOption']) {
+			if (($USE_MEDIA_VIEWER && $config['obeyViewerOption']) || !$config['usejavascript']) {
 				$url = $this->getHtmlUrl();
 			} else {
 				$imgsize = $this->getImageAttributes('main',40,150);
-				$jsurl = str_replace('mediaviewer.php?','imageview.php?', $this->getRawUrl());
-				$url = "javascript:;\" onclick=\"return openImage('".$jsurl."', ".$imgsize['adjW'].", ".$imgsize['adjH'].");";
+				if ($imgsize['0']) {
+					$jsurl = str_replace('mediaviewer.php?','imageview.php?', $this->getRawUrl());
+					$url = "javascript:;\" onclick=\"return openImage('".$jsurl."', ".$imgsize['adjW'].", ".$imgsize['adjH'].");";
+				} else {
+					$url = $this->getHtmlUrl();
+				}
 			}
 			break;
 		}
@@ -512,22 +542,18 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * if this is a Google Streetview url, return the HTML required to display it
-	* if not a Google Streetview url, return ''
-	* @return string
-	 */
-	public function getHtmlForStreetview() {
-		if (strpos($this->getHtmlUrlDirect('main'), 'http://maps.google.')===0) {
-			return '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="'.$this->getHtmlUrlDirect('main').'&amp;output=svembed"></iframe>';
-		}
-		return '';
-	}
-
-	/**
 	 * returns the complete HTML needed to render a thumbnail image that is linked to the main image
 	 * @param array with optional parameters: 
-	*    'download'=>true|false, default is false - whether or not to show a 'download file' link
-	*    'align'=>'auto'|'none', default is 'auto' - if set to 'auto', will add align='left' or align='right', depending on TEXT_DIRECTION 
+	 *    'download'=>true|false, default is false - whether or not to show a 'download file' link
+	 *    'align'=>'auto'|'none', default is 'auto' - if set to 'auto', will add align='left' or align='right', depending on TEXT_DIRECTION
+	 *    'which'=>'main'|'thumb', default is 'thumb' - which image to display
+	 *    'display_type'=>'normal'|'pedigree_person'|'treeview'|'googlemap' the type of image this is
+	 *    'img_id'=>string (optional) - if this image needs an id, set it here
+	 *    'class'=>string (optional) - class to assign to image
+	 *    'img_title'=>string (optional) - image title to override the default.  must run PrintReady(htmlspecialchars()) priort to sending
+	 *    'addslashes'=>true|false, default is false - if result will be stored in javascript array (such as googlemaps) set to true
+	 *    'oktolink'=>true|false, default is true - whether to include link to main image
+	 *    'show_full'=>true|false, default is true - whether to show or hide the image 
 	 * @return string
 	 */
 	public function displayMedia(array $config = array()) {
@@ -535,31 +561,91 @@ class WT_Media extends WT_GedcomRecord {
 
 		$default_config=array(
 			'download'=>false,
-			'align'=>'auto'
+			'align'=>'auto',
+			'which'=>'thumb',
+			'display_type'=>'normal',
+			'img_id'=>'',
+			'class'=>'thumbnail',
+			'img_title'=>'',
+			'addslashes'=>false,
+			'oktolink'=>true,
+			'show_full'=>true
 		 );
 		$config=array_merge($default_config, $config);
-
 		if ($this->getHtmlForStreetview()) {
-			$output  = $this->getHtmlForStreetview();
+			$output=$this->getHtmlForStreetview();
 		} else {
 
-			$oktolink = $this->isFileExternal() || $this->fileExists('main');
-			$name=PrintReady(htmlspecialchars($this->getFullName()));
-			$imgsizeThumb = $this->getImageAttributes('thumb');
-			$alignstr = ($config['align']=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
-			$output = '';
+			$spacestr='';
+			if ( ($config['which']=='main') && (!$this->fileExists('main'))) {
+				// if main image does not exist, display thumbnail instead
+				$config['which']='thumb';
+			}
+			if ($config['display_type']=='pedigree_person') {
+				// 
+				$config['align']='none';
+				$config['uselightbox_fallback']=false;
+				$config['clearbox']='general_2';        
+				$spacestr=' vspace="0" hspace="0" ';
+				$imgsizeped=$this->getImageAttributes($config['which']);
+				$config['class']='pedigree_image_'.$imgsizeped['aspect'];
+				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
+			}
+			if ($config['display_type']=='treeview') {
+				// 
+				$config['align']='none';
+				$config['uselightbox_fallback']=false;
+				$spacestr=' vspace="0" hspace="0" ';
+				$imgsizeped=$this->getImageAttributes($config['which']);
+				$config['class']='tv_link pedigree_image_'.$imgsizeped['aspect'];
+				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
+			}
+			if ($config['display_type']=='googlemap') {
+				// used on google maps tab on indi page
+				$config['align']='none';
+				$config['oktolink']=false;
+				$config['addslashes']=true;
+				$spacestr=' vspace="0" hspace="0" ';
+				$imgsizeped=$this->getImageAttributes($config['which']);
+				$config['class']='pedigree_image_'.$imgsizeped['aspect'];
+				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
+			}
 
-			if ($oktolink) $output .= '<a href="'.$this->getHtmlUrlSnippet($config).'">';
-			$output .= '<img src="'.$this->getHtmlUrlDirect('thumb').'" '.$imgsizeThumb['imgWH'].' border="none" '.$alignstr.' class="thumbnail"';
-			$output .= ' alt="'.$name.'" title="'.$name.'" />';
-			if ($oktolink) {
+			$mainexists=$this->isFileExternal() || $this->fileExists('main');
+			$idstr=($config['img_id']) ? 'id="'.$config['img_id'].'"' : '';
+			$alignstr=($config['align']=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
+			$stylestr=($config['show_full']) ? '' : ' style="display: none;" ';
+			if (!$config['img_title']) {
+				$config['img_title']=PrintReady(htmlspecialchars($this->getFullName()));
+			}
+			$sizestr='';
+			if ($config['class']=='thumbnail') {
+				if ($config['which']=='main') {
+					$config['class']='image';
+				} else {
+					// only set width/height when class==thumbnail, all other classes control the width/height
+					$imgsize=$this->getImageAttributes('thumb');
+					$sizestr=$imgsize['imgWH'];
+				}
+			}
+
+			$output='';
+			if ($config['oktolink'] && $mainexists) $output .= '<a href="'.$this->getHtmlUrlSnippet($config).'">';
+			$output .= '<img '.$idstr.' src="'.$this->getHtmlUrlDirect($config['which']).'" '.$sizestr.' class="'.$config['class'].'"';
+			$output .= $spacestr.' border="none" '.$alignstr.' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.' />';
+			if ($config['oktolink'] && $mainexists) {
 				$output .= '</a>';
 				if ($config['download'] && $SHOW_MEDIA_DOWNLOAD) {
 					$output .= '<div><a href="'.$this->getHtmlUrlDirect('main', true).'">'.WT_I18N::translate('Download File').'</a></div>';
 				}
-			} else {
+			} else if (!$mainexists) {
+				// ignore $config['oktolink'] when checking if the file exists
 				$output .= '<div class="error">'.WT_I18N::translate('File not found.').'</div>';
 			}
+		}
+		if ($config['addslashes']) {
+			// the image string will be used in javascript code, such as googlemaps
+			$output=addslashes($output);
 		}
 		return $output;
 	}

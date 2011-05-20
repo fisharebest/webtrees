@@ -941,19 +941,6 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 }
 
 /**
- * Determine whether the main image or a thumbnail should be sent to the browser
- */
-function thumb_or_main($object) {
-	global $USE_THUMBS_MAIN;
-
-	if ($object['_THUM']=='Y' || !$USE_THUMBS_MAIN) $file = 'file';
-	else $file = 'thumb';
-
-	// Here we should check whether the selected file actually exists
-	return($object[$file]);
-}
-
-/**
  * get the full file path
  *
  * get the file path from a multimedia gedcom record

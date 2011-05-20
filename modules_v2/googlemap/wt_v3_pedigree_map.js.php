@@ -479,21 +479,13 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		$image = '';
 		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 			$object = find_highlighted_object($pid, WT_GED_ID, $indirec);
-			if (!empty($object['thumb'])) {
-				$size = findImageSize($object['thumb']);
-				$class = 'pedigree_image_portrait';
-				if ($size[0]>$size[1]) $class = 'pedigree_image_landscape';
-				if ($TEXT_DIRECTION=='rtl') $class .= '_rtl';
-				$image = "<img src='{$object["thumb"]}' vspace='0' hspace='0' class='{$class}' alt ='' title='' >";
+			if (!empty($object)) {
+				// should we call thumb_or_main?
+				$mediaobject=WT_Media::getInstance($object['mid']);
+				$image=$mediaobject->displayMedia(array('which'=>'thumb','display_type'=>'googlemap'));
 			} else {
-				$class = 'pedigree_image_portrait';
-				if ($TEXT_DIRECTION == 'rtl') $class .= '_rtl';
-				$sex = $person->getSex();
-				$image = "<img src=\'./";
-				if ($sex == 'F') { $image .= $WT_IMAGES['default_image_F']; }
-				elseif ($sex == 'M') { $image .= $WT_IMAGES['default_image_M']; }
-				else { $image .= $WT_IMAGES['default_image_U']; }
-				$image .="\' align=\'left\' class=\'".$class."\' border=\'none\' alt=\'\' />";
+				$sex=$person->getSex();
+				$image=display_silhouette(array('sex'=>$sex,'display_type'=>'googlemap')); // may return ''
 			}
 		}
 		// end of add image
