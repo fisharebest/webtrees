@@ -5,7 +5,7 @@
  * Display media Items using Lightbox
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2007 to 2009  PGV Development Team.  All rights reserved.
@@ -24,8 +24,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @package webtrees
- * @subpackage Module
  * @version $Id$
  * @author Brian Holland
  */
@@ -35,8 +33,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-global $edit, $controller, $tabno, $_REQUEST, $thumb_edit, $n, $LB_URL_WIDTH, $LB_URL_HEIGHT, $LB_TT_BALLOON ;
-global $reorder, $rownum, $sort_i, $GEDCOM;
+global $edit, $sort_i;
 
 $reorder=safe_get('reorder', '1', '0');
 $pid=$this->controller->indi->getXref();
@@ -47,15 +44,12 @@ require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media.php';
 require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media_row.php';
 
-function cut_html($string)
-{
+function cut_html($string) {
     $a=$string;
 
-    while ($a = strstr($a, '&'))
-    {
+    while ($a = strstr($a, '&')) {
         $b=strstr($a, ';');
-        if (!$b)
-        {
+        if (!$b) {
             $nb=strlen($a);
             return substr($string, 0, strlen($string)-$nb);
         }
@@ -64,18 +58,14 @@ function cut_html($string)
     return $string;
 }
 
-if (isset($edit)) {
-	$edit=$edit;
-} else {
+if (!isset($edit)) {
 	$edit=1;
 }
 
 // Used when sorting media on album tab page ===============================================
 if ($reorder==1) {
-
-$sort_i=0; // Used in sorting on lightbox_print_media_row.php page
-
-?>
+	$sort_i=0; // Used in sorting on lightbox_print_media_row.php page
+	?>
 	<script type="text/javascript">
 	<!--
 	// This script saves the dranNdrop reordered info into a hidden form input element (name=order2)
@@ -85,78 +75,37 @@ $sort_i=0; // Used in sorting on lightbox_print_media_row.php page
 		var order = '';
 		sections.each(function(section) {
 			order += Sortable.sequence(section) + ',';
-			document.getElementById("ord2").value = order;
+			document.getElementById('ord2').value = order;
 		});
-		//document.getElementById("ord2").value = order;
 	};
 	//-->
 	</script>
-
-
 	<form name="reorder_form" method="post" action="edit_interface.php">
 		<input type="hidden" name="action" value="al_reorder_media_update" />
 		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
 		<input type="hidden" id="ord2" name="order2" value="" />
-
 		<center>
-		<button type="submit" title="<?php echo WT_I18N::translate('Saves the sorted media to the database'); ?>" onclick="saveOrder();" ><?php echo WT_I18N::translate('Save'); ?></button>&nbsp;
-		<button type="submit" title="<?php echo WT_I18N::translate('Reset to the original order'); ?>" onclick="document.reorder_form.action.value='al_reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>&nbsp;
-		<button type="button" title="<?php echo WT_I18N::translate('Quit and return'); ?>" onClick="location.href='<?php echo WT_SCRIPT_NAME, "?pid=", $pid, "&tab=", $tabno; ?>'"><?php echo WT_I18N::translate('Cancel'); ?></button>
-<?php
-/*
-		// Debug ---------------------------------------------------------------------------
-		&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="button" onClick="getGroupOrder()" value="Debug: Sorted">
-		// ------------------------------------------------------------------------------------
-*/
-?>
+			<button type="submit" title="<?php echo WT_I18N::translate('Saves the sorted media to the database'); ?>" onclick="saveOrder();" ><?php echo WT_I18N::translate('Save'); ?></button>&nbsp;
+			<button type="submit" title="<?php echo WT_I18N::translate('Reset to the original order'); ?>" onclick="document.reorder_form.action.value='al_reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>&nbsp;
+			<button type="button" title="<?php echo WT_I18N::translate('Quit and return'); ?>" onClick="location.href='<?php echo WT_SCRIPT_NAME, '?pid=', $pid, '#lightbox'; ?>'"><?php echo WT_I18N::translate('Cancel'); ?></button>
+			<?php
+			/*
+			// Debug ---------------------------------------------------------------------------
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			<input type="button" onClick="getGroupOrder()" value="Debug: Sorted">
+			// ------------------------------------------------------------------------------------
+			*/
+			?>
 		</center>
 	</form>
-<?php
+	<?php
 }
-// =====================================================================================
-
-//------------------------------------------------------------------------------
-// Start Main Table
-//------------------------------------------------------------------------------
-// echo "<table border='0' width='100%' cellpadding=\"0\" ><tr>";
-
-//------------------------------------------------------------------------------
-// Build Thumbnail Rows
-//------------------------------------------------------------------------------
-// echo "<td valign=\"top\">";
-		echo "<table width=\"100%\" cellpadding=\"0\" border=\"0\"><tr>";
-		echo "<td width=\"100%\" valign=\"top\" >";
-		lightbox_print_media($pid, 0, true, 1); // map, painting, photo, tombstone)
-		lightbox_print_media($pid, 0, true, 2); // card, certificate, document, magazine, manuscript, newspaper
-		lightbox_print_media($pid, 0, true, 3); // electronic, fiche, film
-		lightbox_print_media($pid, 0, true, 4); // audio, book, coat, video, other
-		lightbox_print_media($pid, 0, true, 5); // footnotes
-		echo "</td>";
-		echo "</tr></table>";
-// echo "</td>";
-//------------------------------------------------------------------------------
-// End Thumbnail Rows
-//------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------
-// Build Relatives navigator from individual controller
-//------------------------------------------------------------------------------
-/*
-	echo '<td valign="top" align="center" width="220px">';
-		echo "<table cellpadding=\"0\" style=\"margin-top:2px; margin-left:0px;\" ><tr><td width=\"220px\" class=\"optionbox\" align=\"center\">";
-		echo "<b>", WT_I18N::translate('View Album of ...'), "</b><br /><br />";
-			$controller->fam_nav();
-		echo "<br />";
-		echo "</td></tr></table>";
-	echo "</td>";
-*/
-// -----------------------------------------------------------------------------
-// end Relatives navigator
-// -----------------------------------------------------------------------------
-
-
-//------------------------------------------------------------------------------
-// End Main Table
-//------------------------------------------------------------------------------
-//echo "</tr></table>";
+echo '<table width="100%" cellpadding="0" border="0"><tr>';
+echo '<td width="100%" valign="top" >';
+lightbox_print_media($pid, 0, true, 1); // map, painting, photo, tombstone)
+lightbox_print_media($pid, 0, true, 2); // card, certificate, document, magazine, manuscript, newspaper
+lightbox_print_media($pid, 0, true, 3); // electronic, fiche, film
+lightbox_print_media($pid, 0, true, 4); // audio, book, coat, video, other
+lightbox_print_media($pid, 0, true, 5); // footnotes
+echo '</td>';
+echo '</tr></table><br /><br /><br />';

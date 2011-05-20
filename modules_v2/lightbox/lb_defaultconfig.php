@@ -5,7 +5,7 @@
  * Display media Items using Lightbox
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2009  PHPGedView Development Team
@@ -24,8 +24,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @package webtrees
- * @subpackage Module
  * @version $Id$
  * @author Brian Holland
  */
@@ -35,8 +33,8 @@ if (!defined('WT_WEBTREES')) {
  exit;
 }
 
-global $LB_AL_HEAD_LINKS,$LB_AL_THUMB_LINKS,$LB_ML_THUMB_LINKS,$LB_SS_SPEED;
-global $LB_MUSIC_FILE,$LB_TRANSITION,$LB_URL_WIDTH,$LB_URL_HEIGHT,$LB_TT_BALLOON,$GEDCOM;
+global $LB_AL_HEAD_LINKS,$LB_TT_BALLOON,$LB_AL_THUMB_LINKS,$LB_SS_SPEED;
+global $LB_MUSIC_FILE,$LB_TRANSITION,$LB_URL_WIDTH,$LB_URL_HEIGHT,$LB_ML_THUMB_LINKS;
 
 $LB_AL_HEAD_LINKS=get_module_setting('lightbox', 'LB_AL_HEAD_LINKS', 'both');   // Album Tab Page Header Links.
           // Set to 'icon' to view icon links.

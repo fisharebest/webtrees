@@ -37,7 +37,7 @@ if (!defined('WT_WEBTREES')) {
 global $pid, $GEDCOM ;
 
 $pid=safe_get('pid');
-$action = safe_POST("action");
+$action = safe_POST('action');
 
 print_header(WT_I18N::translate('Lightbox-Album Configuration'));
 
@@ -73,25 +73,25 @@ if ($action=='update' && !isset($security_user)) {
 			<td><?php echo WT_I18N::translate('Individual Page - Album Tab Header'); ?><?php echo help_link('lb_al_head_links', $this->getName()); ?><p><?php echo WT_I18N::translate('Link appearance'); ?></p></td>
 			<td>
 				<select name="NEW_LB_AL_HEAD_LINKS">
-					<option value="icon" <?php if ($LB_AL_HEAD_LINKS=="icon") echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Icon'); ?></option>
-					<option value="text" <?php if ($LB_AL_HEAD_LINKS=="text") echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Text'); ?></option>
-					<option value="both" <?php if ($LB_AL_HEAD_LINKS=="both") echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Both'); ?></option>
+					<option value="icon" <?php if ($LB_AL_HEAD_LINKS=='icon') echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Icon'); ?></option>
+					<option value="text" <?php if ($LB_AL_HEAD_LINKS=='text') echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Text'); ?></option>
+					<option value="both" <?php if ($LB_AL_HEAD_LINKS=='both') echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Both'); ?></option>
 				</select>
 			</td>
 		</tr>
 		<tr>
 			<td><?php echo WT_I18N::translate('Individual Page - Album Tab Thumbnail - Notes Tooltip'); ?><?php echo help_link('lb_tt_balloon', $this->getName()); ?><p><?php echo WT_I18N::translate('Notes - Tooltip appearance'); ?></p></td>
 			<td><select name="NEW_LB_TT_BALLOON">
-					<option value="true"  <?php if ($LB_TT_BALLOON=="true")  echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Balloon'); ?></option>
-					<option value="false" <?php if ($LB_TT_BALLOON=="false") echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Normal'); ?></option>
+					<option value="true"  <?php if ($LB_TT_BALLOON=='true')  echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Balloon'); ?></option>
+					<option value="false" <?php if ($LB_TT_BALLOON=='false') echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Normal'); ?></option>
 				</select>
 			</td>
 		</tr>
 		<tr>
 			<td><?php echo WT_I18N::translate('Individual Page - Album Tab Thumbnails'); ?><?php echo help_link('lb_al_thumb_links', $this->getName()); ?><p><?php echo WT_I18N::translate('Link appearance'); ?></p></td>
 			<td><select name="NEW_LB_AL_THUMB_LINKS">
-					<option value="icon" <?php if ($LB_AL_THUMB_LINKS=="icon") echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Icon'); ?></option>
-					<option value="text" <?php if ($LB_AL_THUMB_LINKS=="text") echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Text'); ?></option>
+					<option value="icon" <?php if ($LB_AL_THUMB_LINKS=='icon') echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Icon'); ?></option>
+					<option value="text" <?php if ($LB_AL_THUMB_LINKS=='text') echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Text'); ?></option>
 				</select>
 			</td>
 		</tr>
@@ -127,10 +127,10 @@ if ($action=='update' && !isset($security_user)) {
 			<td><?php echo WT_I18N::translate('Image Transition speed'); ?><?php echo help_link('lb_transition', $this->getName()); ?></td>
 			<td>
 				<select name="NEW_LB_TRANSITION">
-					<option value="none"   <?php if ($LB_TRANSITION=="none")   echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('None'); ?></option>
-					<option value="normal" <?php if ($LB_TRANSITION=="normal") echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Normal'); ?></option>
-					<option value="double" <?php if ($LB_TRANSITION=="double") echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Double'); ?></option>
-					<option value="warp"   <?php if ($LB_TRANSITION=="warp")   echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Warp'); ?></option>
+					<option value="none"   <?php if ($LB_TRANSITION=='none')   echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('None'); ?></option>
+					<option value="normal" <?php if ($LB_TRANSITION=='normal') echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Normal'); ?></option>
+					<option value="double" <?php if ($LB_TRANSITION=='double') echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Double'); ?></option>
+					<option value="warp"   <?php if ($LB_TRANSITION=='warp')   echo 'selected="selected"'; ?>><?php echo WT_I18N::translate('Warp'); ?></option>
 				</select>
 			</td>
 		</tr>
@@ -149,10 +149,10 @@ if ($action=='update' && !isset($security_user)) {
 			<td><?php echo WT_I18N::translate('Multimedia Page - Thumbnails'); ?><?php echo help_link('lb_ml_thumb_links', $this->getName()); ?><p><?php echo WT_I18N::translate('Link appearance'); ?></p></td>
 			<td>
 				<select name="NEW_LB_ML_THUMB_LINKS">
-					<option value= "none" <?php if ($LB_ML_THUMB_LINKS == "none")  echo 'selected="selected"'; ?>><?php echo  WT_I18N::translate('None'); ?></option>
-					<option value= "text" <?php if ($LB_ML_THUMB_LINKS == "text")  echo 'selected="selected"'; ?>><?php echo  WT_I18N::translate('Text'); ?></option>
-					<option value= "icon" <?php if ($LB_ML_THUMB_LINKS == "icon")  echo 'selected="selected"'; ?>><?php echo  WT_I18N::translate('Icon'); ?></option>
-					<option value= "both" <?php if ($LB_ML_THUMB_LINKS == "both")  echo 'selected="selected"'; ?>><?php echo  WT_I18N::translate('Both'); ?></option>
+					<option value= "none" <?php if ($LB_ML_THUMB_LINKS == 'none')  echo 'selected="selected"'; ?>><?php echo  WT_I18N::translate('None'); ?></option>
+					<option value= "text" <?php if ($LB_ML_THUMB_LINKS == 'text')  echo 'selected="selected"'; ?>><?php echo  WT_I18N::translate('Text'); ?></option>
+					<option value= "icon" <?php if ($LB_ML_THUMB_LINKS == 'icon')  echo 'selected="selected"'; ?>><?php echo  WT_I18N::translate('Icon'); ?></option>
+					<option value= "both" <?php if ($LB_ML_THUMB_LINKS == 'both')  echo 'selected="selected"'; ?>><?php echo  WT_I18N::translate('Both'); ?></option>
 				</select>
 			</td>
 		</tr>

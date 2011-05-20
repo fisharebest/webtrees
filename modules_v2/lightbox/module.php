@@ -73,24 +73,16 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $MULTI_MEDIA, $MEDIA_EXTERNAL;
-		global $GEDCOM, $MEDIATYPE;
-		global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGES, $TEXT_DIRECTION, $is_media;
-		global $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec ;
-		global $edit ;
-		global $tabno;
-		global $Fam_Navigator, $NAV_ALBUM;
-
 		ob_start();
 		require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_head.php';
 
 		$media_found = false;
 		if (!$this->controller->indi->canDisplayDetails()) {
-			echo "<table class=\"facts_table\" cellpadding=\"0\">";
-			echo "<tr><td class=\"facts_value\">";
+			echo '<table class="facts_table" cellpadding="0">';
+			echo '<tr><td class="facts_value">';
 			print_privacy_error();
-			echo "</td></tr>";
-			echo "</table>";
+			echo '</td></tr>';
+			echo '</table>';
 		} else {
 			require WT_ROOT.WT_MODULES_DIR.'lightbox/album.php';
 		}

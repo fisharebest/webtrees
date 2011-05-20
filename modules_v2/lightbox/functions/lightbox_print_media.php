@@ -5,7 +5,7 @@
  * Display media Items using Lightbox
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2007 to 2009  PGV Development Team.  All rights reserved.
@@ -26,8 +26,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @package webtrees
- * @subpackage Module
  * @version $Id$
  * @author Brian Holland
  *
@@ -46,22 +44,11 @@ if (!defined('WT_WEBTREES')) {
  * @param boolean $related        Whether or not to grab media from related records
  */
 function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=false) {
-
-	$edit="1";
-	$n=1;
-	$fn=1;
-
-	global $MULTI_MEDIA, $MEDIA_EXTERNAL;
 	global $GEDCOM, $MEDIATYPE;
-	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGES, $TEXT_DIRECTION;
+	global $res, $rowm;
+	global $rownum, $rownum1, $rownum2, $rownum3, $rownum4;
 
-	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;
-	global $res, $typ2b, $edit, $tabno, $n, $item, $items, $p, $note, $rowm, $note_text, $reorder;
-	global $action, $order, $order2, $rownum, $rownum1, $rownum2, $rownum3, $rownum4, $media_data, $sort_i;
-
-	global $GEDCOM_ID_PREFIX;
 	$ged_id=get_id_from_gedcom($GEDCOM);
-
 	$gedrec = find_gedcom_record($pid, $ged_id, WT_USER_CAN_EDIT);
 	$ids = array($pid);
 
@@ -165,7 +152,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		break;
 	case 5:
 	default:
-		$tt      = WT_I18N::translate('Not in DB');
+		$tt = WT_I18N::translate('Not in DB');
 		break;
 	}
 
@@ -182,19 +169,15 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 	// Begin to Layout the Album Media Rows
 	if ($numm>0 || $kind==5) {
 		if ($kind!=5) {
-			echo "\n\n";
-			echo "<table cellpadding=\"0\" border=\"0\" width=\"100%\" class=\"facts_table\"><tr>", "\n";
-
+			echo '<table cellpadding="0" border="0" width="100%" class="facts_table"><tr>';
 			echo '<td width="100" align="center" class="descriptionbox" style="vertical-align:middle;">';
-			echo "<b>{$tt}</b>";
+			echo '<b>', $tt, '</b>';
 			echo '</td>';
-
 			echo '<td class="facts_value" >';
-			echo '<table class="facts_table" width="100%" cellpadding="0"><tr><td >' . "\n";
-			echo "<div id=\"thumbcontainer", $kind, "\">" . "\n";
-			echo "<ul class=\"section\" id=\"thumblist_", $kind, "\">" . "\n\n";
+			echo '<table class="facts_table" width="100%" cellpadding="0"><tr><td >';
+			echo '<div id="thumbcontainer', $kind, '">';
+			echo '<ul class="section" id="thumblist_', $kind, '">';
 		}
-
 		// Album Reorder include =============================
 		// Following used for Album media sort ------------------
 		$reorder=safe_get('reorder', '1', '0');
@@ -206,7 +189,6 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 			if ($kind==5) require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_horiz_sort.php';
 		}
 		// ==================================================
-
 		// Start pulling media items into thumbcontainer div ==============================
 		foreach ($rows as $rowm) {
 			if (isset($foundObjs[$rowm['m_media']])) {
@@ -218,16 +200,16 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 			// NOTE: Determine the size of the mediafile
 			$imgwidth = 300+40;
 			$imgheight = 300+150;
-			if (isFileExternal($rowm["m_file"])) {
-				if (in_array($rowm["m_ext"], $MEDIATYPE)) {
+			if (isFileExternal($rowm['m_file'])) {
+				if (in_array($rowm['m_ext'], $MEDIATYPE)) {
 					$imgwidth = 400+40;
 					$imgheight = 500+150;
 				} else {
 					$imgwidth = 800+40;
 					$imgheight = 400+150;
 				}
-			} else if (media_exists(check_media_depth($rowm["m_file"], "NOTRUNC"))) {
-				$imgsize = findImageSize(check_media_depth($rowm["m_file"], "NOTRUNC"));
+			} else if (media_exists(check_media_depth($rowm['m_file'], 'NOTRUNC'))) {
+				$imgsize = findImageSize(check_media_depth($rowm['m_file'], 'NOTRUNC'));
 				$imgwidth = $imgsize[0]+40;
 				$imgheight = $imgsize[1]+150;
 			}
@@ -236,9 +218,9 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 
 			//-- if there is a change to this media item then get the
 			//-- updated media item and show it
-			if (($newrec=find_updated_record($rowm["m_media"], $ged_id)) && $kind!=5  ) {
+			if (($newrec=find_updated_record($rowm['m_media'], $ged_id)) && $kind!=5  ) {
 				$row = array();
-				$row['m_media'] = $rowm["m_media"];
+				$row['m_media'] = $rowm['m_media'];
 				$row['m_file'] = get_gedcom_value("FILE", 1, $newrec);
 				$row['m_titl'] = get_gedcom_value("TITL", 1, $newrec);
 				if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value("FILE:TITL", 1, $newrec);
@@ -248,7 +230,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 				if ($et>0) $ext = substr(trim($ematch[1]), 1);
 				$row['m_ext'] = $ext;
 				$row['mm_gid'] = $pid;
-				$row['mm_gedrec'] = $rowm["mm_gedrec"];
+				$row['mm_gedrec'] = $rowm['mm_gedrec'];
 				$rows['new'] = $row;
 				$rows['old'] = $rowm;
 			} else {
@@ -261,7 +243,6 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 					}
 				}
 			}
-
 			foreach ($rows as $rtype => $rowm) {
 				if ($kind!=5) {
 					$res = lightbox_print_media_row($rtype, $rowm, $pid);
@@ -270,13 +251,11 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 				$foundObjs[$rowm['m_media']]=true;
 			}
 		}
-
 		// =====================================================================================
 		//-- Objects are removed from the $current_objes list as they are printed.
 		//-- Any "Extra" objects left in the list are new objects recently added to the gedcom
 		//-- but not yet accepted into the database.
 		//-- We will print them too, and put any "Extra Items not in DB" into a new Row.
-
 		// Firstly, get count of Items in Database for this Individual
 		$indiobjs = "SELECT ";
 		$indiobjs .= "m_media, m_ext, m_file, m_titl, m_gedfile, m_gedrec, mm_gid, mm_gedrec FROM `##media`, `##media_mapping` where ";
@@ -290,15 +269,14 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		// Compare Items count in Database versus Item count in GEDCOM
 		if ($kind==5 && $ct!=$numindiobjs) {
 			// If any items are left in $current_objes list for this individual, put them into $kind 5 ("Not in DB") row
-			echo "\n\n";
-			echo "<table cellpadding=\"0\" border=\"0\" width=\"100%\" class=\"facts_table\"><tr>", "\n";
+			echo '<table cellpadding="0" border="0" width="100%" class="facts_table"><tr>';
 			echo '<td width="100" align="center" class="descriptionbox" style="vertical-align:middle;">';
-			echo "<b>{$tt}</b>";
+			echo '<b>', $tt, '</b>';
 			echo '</td>';
 			echo '<td class="facts_value" >';
-			echo '<table class="facts_table" width="100%" cellpadding="0"><tr><td >' . "\n";
-			echo "<div id=\"thumbcontainer", $kind, "\">" . "\n";
-			echo "<ul class=\"section\" id=\"thumblist_", $kind, "\">" . "\n\n";
+			echo '<table class="facts_table" width="100%" cellpadding="0"><tr><td >';
+			echo '<div id="thumbcontainer', $kind, '">';
+			echo '<ul class="section" id="thumblist_', $kind, '">';
 			foreach ($current_objes as $media_id=>$value) {
 				while ($value>0) {
 					$objSubrec = array_pop($obje_links[$media_id]);
@@ -322,41 +300,36 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 				}
 			}
 		}
-
 		// No "Extra" Media Items ============================
 		if ($kind==5 && $ct==$numindiobjs) {
 		// "Extra" Media Item in GEDCOM but NOT in DB ========
 		} else if ($kind==5 && $ct!=$numindiobjs) {
-			echo "</ul>";
-			echo "</div>";
-			echo "<div class=\"clearlist\">";
-			echo "</div>";
-			echo '</td></tr></table>' . "\n";
-			echo '</td>'. "\n";
+			echo '</ul>';
+			echo '</div>';
+			echo '<div class="clearlist">';
+			echo '</div>';
+			echo '</td></tr></table>';
+			echo '</td>';
 			echo '</tr>';
-			echo '</table>' . "\n\n";
+			echo '</table>';
 		// Media Item in GEDCOM & in DB ======================
 		} else {
-			echo "</ul>";
-			echo "</div>";
-			echo "<div class=\"clearlist\">";
-			echo "</div>";
-			echo '</td></tr></table>' . "\n";
+			echo '</ul>';
+			echo '</div>';
+			echo '<div class="clearlist">';
+			echo '</div>';
+			echo '</td></tr></table>';
 			if ($kind==3 && $numm > 0) {
-				echo "<font size='1'>";
+				echo '<font size="1">';
 				echo WT_I18N::translate('"UK census images have been obtained from "The National Archives", the custodian of the original records, and appear here with their approval on the condition that no commercial use is made of them without permission.
-Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom."
-');
-				echo "</font>";
+Requests for commercial publication of these or other UK census images appearing on this website should be directed to: Image Library, The National Archives, Kew, Surrey, TW9 4DU, United Kingdom."');
+				echo '</font>';
 			}
-			echo '</td>'. "\n";
+			echo '</td>';
 			echo '</tr>';
-			echo '</table>' . "\n\n";
+			echo '</table>';
 		}
-
 	}
-
-	if ($media_found) return $is_media="YES" ;
-	else return $is_media="NO" ;
-
+	if ($media_found) return $is_media='YES';
+	else return $is_media='NO';
 }
