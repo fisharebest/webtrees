@@ -109,6 +109,7 @@ case 'loadrows':
 	}
 	$iDisplayStart =(int)safe_GET('iDisplayStart');
 	$iDisplayLength=(int)safe_GET('iDisplayLength');
+	set_user_setting(WT_USER_ID, 'admin_users_page_size', $iDisplayLength);
 	if ($iDisplayLength>0) {
 		$LIMIT=" LIMIT " . $iDisplayStart . ',' . $iDisplayLength;
 	} else {
@@ -729,7 +730,7 @@ default:
 				"sAjaxSource"     : "<?php echo WT_SCRIPT_NAME.'?action=loadrows'; ?>",
 				"bJQueryUI": true,
 				"bAutoWidth":false,
-				"iDisplayLength": 10,
+				"iDisplayLength": <?php echo get_user_setting(WT_USER_ID, 'admin_users_page_size', 10); ?>,
 				"sPaginationType": "full_numbers",
 				"aaSorting": [[2,'asc']],
 				"aoColumns": [
