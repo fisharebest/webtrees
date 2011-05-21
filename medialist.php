@@ -219,12 +219,9 @@ $_SESSION['Medialist'] = $medialist;
 	<!-- // begin sub directories -->
 			<td class="descriptionbox wrap width25">
 				<?php echo WT_I18N::translate('Include subdirectories'), help_link('medialist_recursive'); ?>
-			<td class="optionbox wrap width25">
-				<?php //if ($MEDIA_DIRECTORY_LEVELS > 0) { ?>
-				<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?> />
 			</td>
-				<?php
-				//} else echo WT_I18N::translate('none');{ ?>
+			<td class="optionbox wrap width25">
+				<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?> />
 			</td>
 				<?php // } ?>
 	<!-- // end subdirectories -->
@@ -444,48 +441,20 @@ if ($show == 'yes') {
 	}
 	echo '</td>';
 	echo '</tr></table></td></tr>';
-	// -- echo the array
-	echo '<tr>';
 
-	for ($i=0; $i<$count; $i++) {
+	echo '<tr>';
+	for ($i=0; $i<$count; $i++) { 	// begin looping through the media
 		$media = $sortedMediaList[$start+$i];
-		$isExternal = isFileExternal($media['FILE']);
-		$imgsize = findImageSize($media['FILE']);
-		$imgwidth = $imgsize[0]+40;
-		$imgheight = $imgsize[1]+150;
-		if ($media['FILE'] == $media['TITL']) {
-			$name = basename($media['TITL']);
-		} else {
-			$name = $media['TITL'];
-		}
-		$showFile = WT_USER_CAN_EDIT;
-		if ($name=='') {
-			//$showFile = false;
-			if ($isExternal) $name = 'URL';
-			else $name = basename($media['FILE']);
-		}
+		$mediaobject = WT_Media::getInstance($media['XREF']);
+		$isExternal = $mediaobject->isExternal();
 		if ($columns == '1') echo '<td class="list_value_wrap" width="80%">';
 		if ($columns == '2') echo '<td class="list_value_wrap" width="50%">';
 
 		echo '<table class="', $TEXT_DIRECTION, '"><tr><td valign="top" style="white-space: normal;">';
 
-		//Get media item Notes
-		$haystack = $media['GEDCOM'];
-		$needle   = '1 NOTE';
-		$before   = substr($haystack, 0, strpos($haystack, $needle));
-		$after    = substr(strstr($haystack, $needle), strlen($needle));
-		$worked   = str_replace('1 NOTE', '1 NOTE<br />', $after);
-		$final    = $before.$needle.$worked;
-		$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true))));
-
-		// Get info on how to handle this media file
-		$mediaInfo = mediaFileInfo($media['FILE'], $media['THUMB'], $media['XREF'], $name, $notes);
-
 		//-- Thumbnail field
 		if ($show_thumbnail) {
-			echo '<a href="', $mediaInfo['url'], '">';
-			echo '<img src="', $mediaInfo['thumb'], '" align="center" class="thumbnail" border="none"', $mediaInfo['width'];
-			echo ' alt="', PrintReady(htmlspecialchars($name)), '" title="', PrintReady(htmlspecialchars($name)), '" /></a>';
+			echo $mediaobject->displayMedia(array('which'=>'thumb'));
 			echo '</td><td class="list_value_wrap" style="border: none;" width="100%">';
 
 			if (WT_USE_LIGHTBOX) {
@@ -494,7 +463,7 @@ if ($show == 'yes') {
 						echo '<table border=0><tr>';
 						// ---------- Edit Media --------------------
 						echo '<td class="width33 wrap center font9" valign="top">';
-						echo "<a href=\"javascript:;\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&pid={$media['XREF']}&linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
+						echo "<a href=\"javascript:;\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
 						if ($LB_ML_THUMB_LINKS == 'icon' || $LB_ML_THUMB_LINKS == 'both') {
 							echo '<img src="'.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '" />&nbsp;&nbsp;&nbsp;';
 						}
@@ -512,7 +481,7 @@ if ($show == 'yes') {
 						echo '</td>';
 						// ---------- View Media Details (mediaviewer) --------------------
 						echo '<td class="width33 wrap center font9" valign="top">';
-						echo '<a href="mediaviewer.php?mid=', $media['XREF'], '" title="', WT_I18N::translate('View this Media Item\'s Details 
+						echo '<a href="'.$mediaobject->getHtmlUrl().'" title="', WT_I18N::translate('View this Media Item\'s Details 
 Plus other Media Options - MediaViewer page'), '">';
 						if ($LB_ML_THUMB_LINKS == 'icon' || $LB_ML_THUMB_LINKS == 'both') {
 							echo '&nbsp;&nbsp;&nbsp;<img src="'.WT_MODULES_DIR.'lightbox/images/image_view.gif" alt="" class="icon" title="', WT_I18N::translate('View this Media Item\'s Details 
@@ -535,45 +504,40 @@ Plus other Media Options - MediaViewer page'), '" />';
 		}
 		// -- new naming structure ---------
 		if ($sortby == 'title') {
-			$name_disp1 = $name;
-			$name_disp2 = basename($media['FILE']);
+			$name_disp1 = $mediaobject->getFullName();
+			$name_disp2 = basename($mediaobject->getFilename());
 			if ($isExternal) $name_disp2 = 'URL';
-			$name_disp3 = $media['FILE'];
+			$name_disp3 = $mediaobject->getLocalFilename();
 			$name_disp4 = WT_I18N::translate('Filename');
 		} else {
-			$name_disp1 = basename($media['FILE']);
+			$name_disp1 = basename($mediaobject->getFilename());
 			if ($isExternal) $name_disp1 = 'URL';
-			$name_disp2 = $name;
-			$name_disp3 = $media['FILE'];
+			$name_disp2 = $mediaobject->getFullName();
+			$name_disp3 = $mediaobject->getLocalFilename();
 			$name_disp4 = WT_I18N::translate('Title');
 		}
-		echo '<a href="mediaviewer.php?mid=', $media["XREF"], '">';
+		echo '<a href="'.$mediaobject->getHtmlUrl().'">';
 		echo '<b>', PrintReady($name_disp1), '</b>';
 		echo '</a>';
-		if ($showFile) {
+		if (WT_USER_CAN_EDIT) {
 				echo '<br /><br /><sub><span dir="ltr"><b>', PrintReady($name_disp4), ': </b>', PrintReady($name_disp2), '</span></sub>';
 				echo '<br /><sub><span dir="ltr"><b>', WT_I18N::translate('Location'), ': </b>', PrintReady($name_disp3), '</span></sub>';
 		}
 		echo '<br />';
-		if (!$isExternal && !$media['EXISTS']) {
-			echo '<br /><span class="error">', WT_I18N::translate('File not found.'), ' <span dir="ltr">', PrintReady($media['FILE']), '</span></span>';
-		}
-		if (!$isExternal && $media['EXISTS']) {
-			$imageTypes = array('', 'GIF', 'JPG', 'PNG', 'SWF', 'PSD', 'BMP', 'TIF', 'TIFF', 'JPC', 'JP2', 'JPX', 'JB2', 'SWC', 'IFF', 'WBMP', 'XBM');
-			if (!empty($imgsize[2])) {
-				echo '<span class="label"><br />', WT_I18N::translate('Media Format'), ': </span> <span class="field" style="direction: ltr;">', $imageTypes[$imgsize[2]], '</span>';
-			} else if (empty($imgsize[2])) {
-				$path_end=substr($media['FILE'], strlen($media['FILE'])-5);
-				$imageType = strtoupper(substr($path_end, strpos($path_end, '.')+1));
-				echo '<span class="label"><br />', WT_I18N::translate('Media Format'), ': </span> <span class="field" style="direction: ltr;">', $imageType, '</span>';
-			}
-			$fileSize = media_filesize($media['FILE']);
-			$sizeString = getfilesize($fileSize);
-			echo '&nbsp;&nbsp;&nbsp;<span class="field" style="direction: ltr;">', $sizeString, '</span>';
-			if ($imgsize[2]!==false) {
-				echo '<span class="label"><br />', WT_I18N::translate('Image Dimensions'), ': </span> <span class="field">', WT_I18N::translate('%1$s &times; %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1'])), '</span>';
+		if (!$isExternal) {
+			if (!$mediaobject->fileExists()) {
+				echo '<br /><span class="error">', WT_I18N::translate('File not found.'), ' <span dir="ltr">', PrintReady(basename($mediaobject->getFilename())), '</span></span>';
+			} else {
+				$imgsize = $mediaobject->getImageAttributes();
+				echo '<span class="label"><br />', WT_I18N::translate('Media Format'), ': </span>'; 
+				echo '<span class="field" style="direction: ltr;">', ($imgsize['ext']) ? $imgsize['ext'] : '--', '</span>';
+				echo '&nbsp;&nbsp;&nbsp;<span class="field" style="direction: ltr;">', $mediaobject->getFilesize(), '</span>';
+				if ($imgsize['WxH']) {
+					echo '<span class="label"><br />', WT_I18N::translate('Image Dimensions'), ': </span> <span class="field">', $imgsize['WxH'], '</span>';
+				}
 			}
 		}
+			// TODO convert this to the Media API
 			echo '<div style="white-space: normal; width: 95%;">';
 			print_fact_sources($media['GEDCOM'], $media['LEVEL']+1);
 			print_fact_notes($media['GEDCOM'], $media['LEVEL']+1);
@@ -584,7 +548,7 @@ Plus other Media Options - MediaViewer page'), '" />';
 			if ($columns == '1') echo '</tr><tr>';
 			if (($columns == '2') && ($i%2 == 1 && $i < ($count-1)))
 			echo '</tr><tr>';
-	}
+	} // end media loop
 	echo '</tr>';
 	// echo page back, page number, page forward controls
 	echo '<tr><td colspan="2">';

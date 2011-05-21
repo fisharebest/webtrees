@@ -77,7 +77,7 @@ global $tmb;
 			<?php
 			// display image
 			if ($controller->canDisplayDetails()) {
-				echo $controller->mediaobject->displayMedia(array('download'=>true, 'align'=>'none'));
+				echo $controller->mediaobject->displayMedia(array('download'=>true, 'align'=>'none', 'alertnotfound'=>true));
 			}
 			?>
 		</td>

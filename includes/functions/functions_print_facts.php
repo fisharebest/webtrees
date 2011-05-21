@@ -1350,7 +1350,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	// NOTE Print the title of the media
 	echo "<td class=\"optionbox wrap $styleadd\"><span class=\"field\">";
-	echo $mediaobject->displayMedia();
+	echo $mediaobject->displayMedia(array('alertnotfound'=>true));
 	$name = $mediaobject->getFullName();
 	if (empty($SEARCH_SPIDER)) {
 		echo '<a href="'.$mediaobject->getHtmlUrl().'">';

@@ -184,7 +184,7 @@ if (!$controller->mediaobject->canDisplayDetails()) {
 <?php
 
 echo "<form name=\"zoomform\" onsubmit=\"setzoom(document.getElementById('zoomval').value); return false;\" action=\"imageview.php\">";
-if (!$controller->mediaobject->isFileExternal() && !$controller->mediaobject->fileExists() ) {
+if (!$controller->mediaobject->isExternal() && !$controller->mediaobject->fileExists() ) {
 	echo "<span class=\"error\">".WT_I18N::translate('File not found.')."&nbsp;".$controller->getLocalFilename()."</span>";
 	echo "<br /><br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"self.close();\">".WT_I18N::translate('Close Window')."</a></div>";
 } else {

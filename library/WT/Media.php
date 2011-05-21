@@ -126,7 +126,7 @@ class WT_Media extends WT_GedcomRecord {
 		if ($which=='main') {
 			if ($this->serverfilename) return $this->serverfilename;
 			$localfilename = $this->getLocalFilename();
-			if (!empty($localfilename) && !$this->isFileExternal()) {
+			if (!empty($localfilename) && !$this->isExternal()) {
 				if (file_exists($localfilename)) {
 					// found image in unprotected directory
 					$this->fileexists = 2;
@@ -165,13 +165,24 @@ class WT_Media extends WT_GedcomRecord {
 			return $this->thumbfileexists;
 		}
 	}
+
 	/**
 	 * determine if the file is an external url
-	* operates on the main url
+	 * operates on the main url
 	 * @return boolean
 	 */
-	public function isFileExternal() {
+	public function isExternal() {
 		return isFileExternal($this->getLocalFilename());
+	}
+
+	/**
+	 * determine if the thumb file is a media icon
+	 * operates on the thumb file
+	 * @return boolean
+	 */
+	public function isMediaIcon() {
+		$thumb=$this->getThumbnail(false);
+		return (strpos($thumb, "themes/")!==false); 
 	}
 
 	/**
@@ -184,7 +195,7 @@ class WT_Media extends WT_GedcomRecord {
 		$localfilename = thumbnail_file($this->getLocalFilename(),$generateThumb);
 		// Note that localfilename could be in WT_IMAGES
 		$this->thumbfilename = $localfilename;
-		if (!empty($localfilename) && !$this->isFileExternal()) {
+		if (!empty($localfilename) && !$this->isExternal()) {
 			if (file_exists($localfilename)) {
 				// found image in unprotected directory
 				$this->thumbfileexists = 2;
@@ -246,7 +257,7 @@ class WT_Media extends WT_GedcomRecord {
 	public function getEtag($which='main') {
 		// setup the etag.  use enough info so that if anything important changes, the etag won't match
 		global $SHOW_NO_WATERMARK;
-		if ($this->isFileExternal()) {
+		if ($this->isExternal()) {
 			// etag not really defined for external media
 			return '';
 		}
@@ -307,7 +318,7 @@ class WT_Media extends WT_GedcomRecord {
 			$imgsize['mime']='';
 			$imgsize['WxH']='';
 			$imgsize['imgWH']='';
-			if ($this->isFileExternal($which)) {
+			if ($this->isExternal($which)) {
 				// don't let large external images break the dislay
 				$imgsize['imgWH']=' width="'.$THUMBNAIL_WIDTH.'" ';
 			}
@@ -356,7 +367,7 @@ class WT_Media extends WT_GedcomRecord {
 	 */
 	public function getHtmlUrlDirect($which='main', $download=false, $separator = '&amp;') {
 
-	 	if ($this->isFileExternal()) {
+	 	if ($this->isExternal()) {
 			// this is an external file, do not try to access it through the media firewall
 			if ($separator == '&') {
 				return rawurlencode($this->getFilename());
@@ -553,6 +564,7 @@ class WT_Media extends WT_GedcomRecord {
 	 *    'img_title'=>string (optional) - image title to override the default.  must run PrintReady(htmlspecialchars()) priort to sending
 	 *    'addslashes'=>true|false, default is false - if result will be stored in javascript array (such as googlemaps) set to true
 	 *    'oktolink'=>true|false, default is true - whether to include link to main image
+	 *    'alertnotfound'=>true|false, default is false - whether to display error when main image is missing
 	 *    'show_full'=>true|false, default is true - whether to show or hide the image 
 	 * @return string
 	 */
@@ -569,6 +581,7 @@ class WT_Media extends WT_GedcomRecord {
 			'img_title'=>'',
 			'addslashes'=>false,
 			'oktolink'=>true,
+			'alertnotfound'=>false,
 			'show_full'=>true
 		 );
 		$config=array_merge($default_config, $config);
@@ -611,7 +624,7 @@ class WT_Media extends WT_GedcomRecord {
 				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
 			}
 
-			$mainexists=$this->isFileExternal() || $this->fileExists('main');
+			$mainexists=$this->isExternal() || $this->fileExists('main');
 			$idstr=($config['img_id']) ? 'id="'.$config['img_id'].'"' : '';
 			$alignstr=($config['align']=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
 			$stylestr=($config['show_full']) ? '' : ' style="display: none;" ';
@@ -638,8 +651,7 @@ class WT_Media extends WT_GedcomRecord {
 				if ($config['download'] && $SHOW_MEDIA_DOWNLOAD) {
 					$output .= '<div><a href="'.$this->getHtmlUrlDirect('main', true).'">'.WT_I18N::translate('Download File').'</a></div>';
 				}
-			} else if (!$mainexists) {
-				// ignore $config['oktolink'] when checking if the file exists
+			} else if ($config['alertnotfound'] && !$mainexists) {
 				$output .= '<div class="error">'.WT_I18N::translate('File not found.').'</div>';
 			}
 		}
@@ -647,7 +659,7 @@ class WT_Media extends WT_GedcomRecord {
 			// the image string will be used in javascript code, such as googlemaps
 			$output=addslashes($output);
 		}
-		return $output;
+		return "\n".$output."\n";
 	}
 
 	/**
