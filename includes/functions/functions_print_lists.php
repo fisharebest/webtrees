@@ -1366,7 +1366,7 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
         }
         $return .= "<div style='margin-bottom:5px'>";
         //-- Last change date/time & user
-		$return .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(empty($SEARCH_SPIDER)), $value['record']->LastChangeUser());
+				$return .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(empty($SEARCH_SPIDER)), $value['record']->LastChangeUser());
         $return .= "</div>";    // class='indent'
         $return .= "</div>";
     }

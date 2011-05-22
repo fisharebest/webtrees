@@ -217,7 +217,7 @@ class WT_Date_Jewish extends WT_Date_Calendar {
 	// Convert a decimal number to hebrew - like roman numerals, but with extra punctuation
 	// and special rules.
 	static function NumToHebrew($num) {
-		global $DISPLAY_JEWISH_THOUSANDS;
+		$DISPLAY_JEWISH_THOUSANDS=false;
 
 		static $jHundreds = array("", "ק", "ר", "ש", "ת", "תק", "תר","תש", "תת", "תתק");
 		static $jTens     = array("", "י", "כ", "ל", "מ", "נ", "ס", "ע", "פ", "צ");
