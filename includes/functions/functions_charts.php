@@ -546,11 +546,9 @@ function check_rootid($rootid) {
 				if (find_person_record($PEDIGREE_ROOT_ID, WT_GED_ID)) {
 					$rootid=trim($PEDIGREE_ROOT_ID);
 				} else {
-					$rootid=get_first_xref('INDI', WT_GED_ID);
-					// If there are no users in the gedcom, do something.
-					if (!$rootid) {
-						$rootid='I1';
-					}
+					$rootid=WT_DB::prepare(
+						"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?`"
+					)->execute(array(WT_GED_ID))->fetchOne();
 				}
 			}
 		}
