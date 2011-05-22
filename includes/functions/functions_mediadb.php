@@ -452,7 +452,7 @@ if (!$excludeLinks) {
 * - REMOVED $media["TYPE"]        the type of media item (ie certificate, document, photo, tombstone etc)
 * - REMOVED $media["TITL"]        a title for the item, used for list display
 * - REMOVED $media["GEDCOM"]      gedcom record snippet
-* - $media["LEVEL"]       level number (normally zero)
+* - REMOVED $media["LEVEL"]       level number (normally zero)
 * - $media["LINKED"]      Flag for front end to indicate this is linked
 * - $media["LINKS"]       Array of gedcom ids that this is linked to
 * - $media["CHANGE"]      Indicates the type of change waiting admin approval
@@ -499,10 +499,10 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 	// but weed out any folders we're not interested in
 	foreach ($rows as $row) {
 		$fileName = check_media_depth($row->m_file, "NOTRUNC", "QUIET");
-		if (!$currentdir || $directory == dirname($fileName) . "/") {
+		$isExternal = isFileExternal($fileName);
+		if ($isExternal || !$currentdir || $directory == dirname($fileName) . "/") {
 			$media = array ();
 			$media["XREF"] = $row->m_media;
-			$media["LEVEL"] = '0';
 			$media["LINKED"] = false;
 			$media["LINKS"] = array ();
 			$media["CHANGE"] = "";

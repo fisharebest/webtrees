@@ -436,7 +436,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string, suitable for use inside an a tag: '<a href="'.$this->getHtmlUrlSnippet().'">';
 	 */
 	public function getHtmlUrlSnippet(array $config = array()) {
-		global $USE_MEDIA_VIEWER;
+		global $USE_MEDIA_VIEWER,$LB_URL_WIDTH,$LB_URL_HEIGHT;
 
 		$default_config=array(
 			'obeyViewerOption'=>true,
