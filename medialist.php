@@ -148,17 +148,18 @@ if ($build == 'yes') {
 	}
 	// show external links only if looking at top level directory
 	$showExternal = ($folder == $MEDIA_DIRECTORY) ? true : false;
-	$medialist=get_medialist($currentdironly, $folder, true, false, $showExternal, $exclude_links);
+	$medialist=get_medialist2($currentdironly, $folder, true, false, $showExternal, $exclude_links);
 
 	//-- remove all private media objects
 	foreach ($medialist as $key => $media) {
 			echo ' ';
+			$mediaobject=WT_Media::getInstance($media['XREF']);
 			// Display when user has Edit rights or when object belongs to current GEDCOM
-			$disp = WT_USER_CAN_EDIT || $media['GEDFILE']==WT_GED_ID;
+			$disp = WT_USER_CAN_EDIT || $mediaobject->ged_id==WT_GED_ID;
 			// Display when Media objects aren't restricted by global privacy
-			$disp &= WT_Media::getInstance($media['XREF'])->canDisplayDetails();
+			$disp &= $mediaobject->canDisplayDetails();
 			// Display when this Media object isn't restricted
-			$disp &= canDisplayFact($media['XREF'], $media['GEDFILE'], $media['GEDCOM']);
+			$disp &= canDisplayFact($mediaobject->getXref(), $mediaobject->ged_id, $mediaobject->getGedcomRecord());
 		if (!$disp) unset($medialist[$key]);
 	}
 	usort($medialist, 'mediasort'); // Reset numbering of medialist array
@@ -254,7 +255,7 @@ $_SESSION['Medialist'] = $medialist;
 				<select name="filter_type">
 					<?php
 					foreach (array($or, $and) as $selectEntry) {
-						echo '<option value="$selectEntry"';
+						echo '<option value="', $selectEntry, '"';
 						if ($selectEntry==$filter_type) echo ' selected="selected"';
 						echo '>', $selectEntry, '</option>';
 					}
@@ -322,7 +323,7 @@ if ($action=='filter' && (!empty($filtered_medialist))) {
 	if ($filter_type == $or) {
 		if ((strlen($filter1) > 1) && (strlen($filter2)) > 1) {
 			foreach ($filtered_medialist as $key => $media) {
-				if (!filterMedia($media, $filter1, 'http') && !filterMedia($media, $filter2, 'http'))
+				if (!filterMedia2($media, $filter1, 'http') && !filterMedia2($media, $filter2, 'http'))
 				unset($filtered_medialist[$key]);
 			}
 			usort($filtered_medialist, 'mediasort'); // Reset numbering of medialist array
@@ -332,8 +333,8 @@ if ($action=='filter' && (!empty($filtered_medialist))) {
 	if ($filter_type == $and) {
 		if ((strlen($filter1) > 1) || (strlen($filter2)) > 1) {
 			foreach ($filtered_medialist as $key => $media) {
-				if (!filterMedia($media, $filter1, 'http')) unset($filtered_medialist[$key]);
-				if (!filterMedia($media, $filter2, 'http')) unset($filtered_medialist[$key]);
+				if (!filterMedia2($media, $filter1, 'http')) unset($filtered_medialist[$key]);
+				if (!filterMedia2($media, $filter2, 'http')) unset($filtered_medialist[$key]);
 			}
 			usort($filtered_medialist, 'mediasort'); // Reset numbering of medialist array
 		}
@@ -539,8 +540,8 @@ Plus other Media Options - MediaViewer page'), '" />';
 		}
 			// TODO convert this to the Media API
 			echo '<div style="white-space: normal; width: 95%;">';
-			print_fact_sources($media['GEDCOM'], $media['LEVEL']+1);
-			print_fact_notes($media['GEDCOM'], $media['LEVEL']+1);
+			print_fact_sources($mediaobject->getGedcomRecord(), $media['LEVEL']+1);
+			print_fact_notes($mediaobject->getGedcomRecord(), $media['LEVEL']+1);
 			echo '</div>';
 			PrintMediaLinks($media['LINKS'], 'small');
 			echo '</td></tr></table>';

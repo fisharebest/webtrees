@@ -428,6 +428,265 @@ if (!$excludeLinks) {
 	return $medialist;
 }
 /**
+* Simpler version of get_medialist, returns much less information
+* All code should be modified to use this function, then the original get_medialist will go away
+*
+* NOTE: Currently this function should only be called with $linkonly=true
+*
+*
+* 
+* Get the list of media from the database
+*
+* Searches the media table of the database for media items that
+* are associated with the currently active GEDCOM.
+*
+* The medialist that is returned contains the following elements:
+* - REMOVED $media["ID"]          the unique id of this media item in the table (Mxxxx)
+* - $media["XREF"]        Another copy of the Media ID (not sure why there are two)
+* - REMOVED $media["GEDFILE"]     the gedcom file the media item should be added to
+* - REMOVED $media["FILE"]        the filename of the media item
+* - REMOVED $media["EXISTS"]      whether the file exists.  0=no, 1=external, 2=std dir, 3=protected dir
+* - REMOVED $media["THUMB"]       the filename of the thumbnail
+* - REMOVED $media["THUMBEXISTS"] whether the thumbnail exists.  0=no, 1=external, 2=std dir, 3=protected dir
+* - REMOVED $media["FORM"]        the format of the item (ie bmp, gif, jpeg, pcx etc)
+* - REMOVED $media["TYPE"]        the type of media item (ie certificate, document, photo, tombstone etc)
+* - REMOVED $media["TITL"]        a title for the item, used for list display
+* - REMOVED $media["GEDCOM"]      gedcom record snippet
+* - $media["LEVEL"]       level number (normally zero)
+* - $media["LINKED"]      Flag for front end to indicate this is linked
+* - $media["LINKS"]       Array of gedcom ids that this is linked to
+* - $media["CHANGE"]      Indicates the type of change waiting admin approval
+*
+* @param boolean $random If $random is true then the function will return 5 random pictures.
+* @return mixed A media list array.
+*/
+
+function get_medialist2($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $excludeLinks = false) {
+	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
+	global $level, $dirs, $MEDIA_DIRECTORY;
+	global $MEDIA_EXTERNAL;
+
+	// get_medialist2 currently only works with $linkonly=true
+	if (!$linkonly) {
+		return;
+	}
+
+	// Create the medialist array of media in the DB and on disk
+	// NOTE: Get the media in the DB
+	$medialist = array ();
+	if (empty($directory))
+		$directory = $MEDIA_DIRECTORY;
+	$myDir = str_replace($MEDIA_DIRECTORY, "", $directory);
+	if ($random) {
+		$rows=
+			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? ORDER BY RAND() LIMIT 5")
+			->execute(array(WT_GED_ID))
+			->fetchAll();
+	} else if ($MEDIA_EXTERNAL && $includeExternal) {
+		$rows=
+			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ORDER BY m_id desc")
+			->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))
+			->fetchAll();
+	} else {
+		$rows=
+			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND m_file LIKE ? ORDER BY m_id desc")
+			->execute(array(WT_GED_ID, "%{$myDir}%"))
+			->fetchAll();
+	}
+	$mediaObjects = array ();
+
+	// Build the raw medialist array,
+	// but weed out any folders we're not interested in
+	foreach ($rows as $row) {
+		$fileName = check_media_depth($row->m_file, "NOTRUNC", "QUIET");
+		if (!$currentdir || $directory == dirname($fileName) . "/") {
+			$media = array ();
+			$media["XREF"] = $row->m_media;
+			$media["LEVEL"] = '0';
+			$media["LINKED"] = false;
+			$media["LINKS"] = array ();
+			$media["CHANGE"] = "";
+			// Build a sortable key for the medialist
+			$firstChar = substr($media["XREF"], 0, 1);
+			$restChar = substr($media["XREF"], 1);
+			if (is_numeric($firstChar)) {
+				$firstChar = "";
+				$restChar = $media["XREF"];
+			}
+			$keyMediaList = $firstChar . substr("000000" . $restChar, -6) . "_" . $row->m_gedfile;
+			$medialist[$keyMediaList] = $media;
+			$mediaObjects[] = $media["XREF"];
+		}
+	}
+
+	// Look for new Media objects in the list of changes pending approval
+	// At the same time, accumulate a list of GEDCOM IDs that have changes pending approval
+
+	$changedRecords = array ();
+
+if (!$excludeLinks) {
+	foreach ($medialist as $key=>$media) {
+		foreach (fetch_linked_indi($media["XREF"], 'OBJE', WT_GED_ID) as $indi) {
+			$medialist[$key]["LINKS"][$indi->getXref()]='INDI';
+			$medialist[$key]["LINKED"]=true;
+		}
+		foreach (fetch_linked_fam($media["XREF"], 'OBJE', WT_GED_ID) as $fam) {
+			$medialist[$key]["LINKS"][$fam->getXref()]='FAM';
+			$medialist[$key]["LINKED"]=true;
+		}
+		foreach (fetch_linked_sour($media["XREF"], 'OBJE', WT_GED_ID) as $sour) {
+			$medialist[$key]["LINKS"][$sour->getXref()]='SOUR';
+			$medialist[$key]["LINKED"]=true;
+		}
+	}
+}
+	// Search the list of GEDCOM changes pending approval.  There may be some new
+	// links to new or old media items that haven't been approved yet.
+	// Logic:
+	//   Make sure the array $changedRecords contains unique entries.  Ditto for array
+	//   $mediaObjects.
+	//   Read each of the entries in array $changedRecords.  Get the matching record from
+	//   the GEDCOM file.  Search the GEDCOM record for each of the entries in array
+	//   $mediaObjects.  A hit means that the GEDCOM record contains a link to the
+	//   media object.  If we don't already know about the link, add it to that media
+	//   object's link table.
+	$mediaObjects = array_unique($mediaObjects);
+	$changedRecords = array_unique($changedRecords);
+	foreach ($changedRecords as $pid) {
+		$gedrec = find_updated_record($pid, WT_GED_ID);
+		if ($gedrec) {
+			foreach ($mediaObjects as $mediaId) {
+				if (strpos($gedrec, "@" . $mediaId . "@")) {
+					// Build the key for the medialist
+					$firstChar = substr($mediaId, 0, 1);
+					$restChar = substr($mediaId, 1);
+					if (is_numeric($firstChar)) {
+						$firstChar = "";
+						$restChar = $mediaId;
+					}
+					$keyMediaList = $firstChar . substr("000000" . $restChar, -6) . "_" . WT_GED_ID;
+
+					// Add this GEDCOM ID to the link list of the media object
+					if (isset ($medialist[$keyMediaList])) {
+						$medialist[$keyMediaList]["LINKS"][$pid] = gedcom_record_type($pid, WT_GED_ID);
+						$medialist[$keyMediaList]["LINKED"] = true;
+					}
+				}
+			}
+		}
+	}
+
+	uasort($medialist, "mediasort");
+
+	//-- for the media list do not look in the directory
+	if ($linkonly)
+		return $medialist;
+	// NOTE: the code below this has not been optimized for get_medialist2 yet
+
+	// The database part of the medialist is now complete.
+	// We still have to get a list of all media items that exist as files but
+	// have not yet been entered into the database.  We'll do this only for the
+	// current folder.
+	//
+	// At the same time, we'll build a list of all the sub-folders in this folder.
+	$temp = str_replace($MEDIA_DIRECTORY, "", $directory);
+	if ($temp == "")
+		$folderDepth = 0;
+	else
+		$folderDepth = count(explode("/", $temp)) - 1;
+	$dirs = array ();
+	$images = array ();
+
+	$dirs_to_check = array ();
+	if (is_dir(filename_decode($directory))) {
+		array_push($dirs_to_check, $directory);
+	}
+	if (is_dir(filename_decode(get_media_firewall_path($directory)))) {
+		array_push($dirs_to_check, get_media_firewall_path($directory));
+	}
+
+	foreach ($dirs_to_check as $thedir) {
+		$d = dir(filename_decode(substr($thedir, 0, -1)));
+		while (false !== ($fileName = $d->read())) {
+			$fileName = filename_encode($fileName);
+			while (true) {
+				// Make sure we only look at valid media files
+				if (in_array($fileName, $BADMEDIA))
+					break;
+				if (is_dir(filename_decode($thedir . $fileName))) {
+					if ($folderDepth < $MEDIA_DIRECTORY_LEVELS)
+						$dirs[] = $fileName; // note: we will remove duplicates when the loop is complete
+					break;
+				}
+				$exts = explode(".", $fileName);
+				if (count($exts) == 1)
+					break;
+				$ext = strtolower($exts[count($exts) - 1]);
+				if (!in_array($ext, $MEDIATYPE))
+					break;
+
+				// This is a valid media file:
+				// now see whether we already know about it
+				$mediafile = $directory . $fileName;
+				$exist = false;
+				$oldObject = false;
+				foreach ($medialist as $key => $item) {
+					if ($item["FILE"] == $directory . $fileName) {
+						if ($item["CHANGE"] == "delete") {
+							$exist = false;
+							$oldObject = true;
+						} else {
+							$exist = true;
+							$oldObject = false;
+						}
+					}
+				}
+				if ($exist)
+					break;
+
+				// This media item is not yet in the database
+				$media = array ();
+				$media["ID"] = "";
+				$media["XREF"] = "";
+				$media["GEDFILE"] = "";
+				$media["FILE"] = $directory . $fileName;
+				$media["THUMB"] = thumbnail_file($directory . $fileName, false);
+				$media["THUMBEXISTS"] = media_exists($media["THUMB"]);
+				$media["EXISTS"] = media_exists($media["FILE"]);
+				$media["FORM"] = $ext;
+				if ($ext == "jpg" || $ext == "jp2")
+					$media["FORM"] = "jpeg";
+				if ($ext == "tif")
+					$media["FORM"] = "tiff";
+				$media["TYPE"] = "";
+				$media["TITL"] = "";
+				$media["GEDCOM"] = "";
+				$media["LEVEL"] = "0";
+				$media["LINKED"] = false;
+				$media["LINKS"] = array ();
+				$media["CHANGE"] = "";
+				if ($oldObject)
+					$media["CHANGE"] = "append";
+				$images[$fileName] = $media;
+				break;
+			}
+		}
+		$d->close();
+	}
+	//print_r($images); echo "<br />";
+	$dirs = array_unique($dirs); // remove duplicates that were added because we checked both the regular dir and the media firewall dir
+	sort($dirs);
+	//print_r($dirs); echo "<br />";
+	if (count($images) > 0) {
+		ksort($images);
+		$medialist = array_merge($images, $medialist);
+	}
+	//print_r($medialist); echo "<br />";
+	return $medialist;
+}
+
+
+/**
 * Determine whether the current Media item matches the filter criteria
 *
 * @param array $media An item from the Media list produced by get_medialist()
@@ -492,6 +751,77 @@ function filterMedia($media, $filter, $acceptExt) {
 
 	return false;
 }
+/**
+* Simpler version of filterMedia, works with get_medialist2
+* All code should be modified to use this function, then the original filterMedia will go away
+*
+* Determine whether the current Media item matches the filter criteria
+*
+* @param array $media An item from the Media list produced by get_medialist()
+* @param string $filter The filter to be looked for within various elements of the $media array
+* @param string $acceptExt "http" if links to external media should be considered too
+* @return bool false if the Media item doesn't match the filter criteria
+*/
+function filterMedia2($media, $filter, $acceptExt) {
+
+	if (empty($filter) || strlen($filter) < 2)
+		$filter = "";
+	if (empty($acceptExt) || $acceptExt != "http")
+		$acceptExt = "";
+
+	$mediaobject=WT_Media::getInstance($media['XREF']);
+	if (!$mediaobject) {
+		return false;
+	}
+
+	//-- Check Privacy first.  No point in proceeding if Privacy says "don't show"
+	if (!$mediaobject->canDisplayDetails()) {
+		return false;
+	}
+
+	//-- Accept when filter string contained in Media item's id
+	if ($mediaobject->getXref() == $filter) {
+		return true;
+	}
+
+	//-- Accept external Media only if specifically told to do so
+	if ($mediaobject->isExternal() && $acceptExt != "http")
+		return false;
+
+	//-- Accept everything if filter string is empty
+	if ($filter == "")
+		return true;
+
+	$filter=utf8_strtoupper($filter);
+
+	//-- Accept when filter string contained in file name (but only for editing users)
+	if (WT_USER_CAN_EDIT && strstr(utf8_strtoupper(basename($mediaobject->getFilename())), $filter))
+		return true;
+
+	//-- Accept when filter string contained in Media item's title
+	foreach ($mediaobject->getAllNames() as $name) {
+		if (strpos(utf8_strtoupper($name['full']), $filter)!==false) {
+			return true;
+		}
+	}
+
+	if (strpos(utf8_strtoupper($mediaobject->title), $filter)!==false)
+		return true;
+
+	//-- Accept when filter string contained in name of any item
+	//-- this Media item is linked to.  (Privacy already checked)
+	foreach ($media['LINKS'] as $id=>$type) {
+		$record=WT_GedcomRecord::getInstance($id);
+		foreach ($record->getAllNames() as $name) {
+			if (strpos(utf8_strtoupper($name['full']), $filter)!==false) {
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 /**
 * Generates the thumbnail filename and path
 *
