@@ -1229,50 +1229,6 @@ function get_top_surnames($ged_id, $min, $max) {
 	}
 }
 
-function delete_fact($linenum, $pid, $gedrec) {
-	global $linefix;
-
-	if (!empty($linenum)) {
-		if ($linenum==0) {
-			delete_gedrec($pid, WT_GED_ID);
-			echo WT_I18N::translate('GEDCOM record successfully deleted.');
-		} else {
-			$gedlines = explode("\n", $gedrec);
-			// NOTE: The array_pop is used to kick off the last empty element on the array
-			// NOTE: To prevent empty lines in the GEDCOM
-			// DEBUG: Records without line breaks are imported as 1 big string
-			if ($linefix > 0) {
-				array_pop($gedlines);
-			}
-			$newged = "";
-			// NOTE: Add all lines that are before the fact to be deleted
-			for ($i=0; $i<$linenum; $i++) {
-				$newged .= trim($gedlines[$i])."\n";
-			}
-			if (isset($gedlines[$linenum])) {
-				$fields = explode(' ', $gedlines[$linenum]);
-				$glevel = $fields[0];
-				$ctlines = count($gedlines);
-				$i++;
-				if ($i<$ctlines) {
-					// Remove the fact
-					while ((isset($gedlines[$i]))&&($gedlines[$i]{0}>$glevel)) {
-						$i++;
-					}
-					// Add the remaining lines
-					while ($i<$ctlines) {
-						$newged .= $gedlines[$i]."\n";
-						$i++;
-					}
-				}
-			}
-			if ($newged != "") {
-				return $newged;
-			}
-		}
-	}
-}
-
 ////////////////////////////////////////////////////////////////////////////////
 // Get a list of events whose anniversary occured on a given julian day.
 // Used on the on-this-day/upcoming blocks and the day/month calendar views.
