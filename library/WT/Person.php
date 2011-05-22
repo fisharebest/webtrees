@@ -742,10 +742,17 @@ class WT_Person extends WT_GedcomRecord {
 
 	// Get a count of the children for this individual
 	function getNumberOfChildren() {
-		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->getGedcomRecord());
-		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->getGedcomRecord());
-		$nchi3=count(fetch_child_ids($this->xref, $this->ged_id));
-		return max($nchi1, $nchi2, $nchi3);
+		if (preg_match('/\n1 NCHI (.+)/', $this->getGedcomRecord())) {
+			return (int)$match[1];
+		} else {
+			$children=array();
+			foreach ($this->getSpouseFamilies() as $fam) {
+				foreach ($fam->getChildren() as $child) {
+					$children[$child->getXref()]=true;
+				}
+			}
+			return count($children);
+		}
 	}
 
 	// Get a list of this person's child families (i.e. their parents)

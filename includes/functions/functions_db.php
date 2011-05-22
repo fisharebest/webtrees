@@ -40,19 +40,6 @@ if (!defined('WT_WEBTREES')) {
 define('WT_FUNCTIONS_DB_PHP', '');
 
 ////////////////////////////////////////////////////////////////////////////////
-// Fetch a list of children for an individual, from all their partners.
-////////////////////////////////////////////////////////////////////////////////
-function fetch_child_ids($parent_id, $ged_id) {
-	static $statement=null;
-
-	if (is_null($statement)) {
-		$statement=WT_DB::prepare("SELECT DISTINCT child.l_from AS xref FROM `##link` child, `##link` spouse WHERE child.l_type=? AND spouse.l_type=? AND child.l_file=spouse.l_file AND child.l_to=spouse.l_to AND spouse.l_from=? AND child.l_file=?");
-	}
-
-	return $statement->execute(array('FAMC', 'FAMS', $parent_id, $ged_id))->fetchOneColumn();
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Count the number of records linked to a given record
 ////////////////////////////////////////////////////////////////////////////////
 function count_linked_indi($xref, $link, $ged_id) {
