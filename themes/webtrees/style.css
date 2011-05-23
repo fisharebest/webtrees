@@ -1679,10 +1679,8 @@ html[dir='rtl'] .deletelink {
 .logo {
 	text-align:center;
 }
-#topMenu {
-	margin-left:5%;
-	width:92.5%;
-}
+#topMenu {margin:0 0 0 5%;width:92.5%;}
+html[dir='rtl'] #topMenu {margin: 0 5% 0 0;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs .ui-tabs-panel {padding:1em 0;}
