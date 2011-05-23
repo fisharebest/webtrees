@@ -437,19 +437,13 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 	}
 
 	if ($REQUIRE_AUTHENTICATION && !WT_USER_ID && !in_array(WT_SCRIPT_NAME, array('login.php', 'login_register.php', 'help_text.php', 'message.php'))) {
-		if (!empty($_REQUEST['auth']) && $_REQUEST['auth']=='basic') {
-			// if user is attempting basic authentication
-			// TODO: Update if digest auth is ever implemented
-			basicHTTPAuthenticateUser();
+		if (WT_SCRIPT_NAME=='index.php') {
+			$url='index.php?ged='.WT_GEDCOM;
 		} else {
-			if (WT_SCRIPT_NAME=='index.php') {
-				$url='index.php?ged='.WT_GEDCOM;
-			} else {
-				$url=WT_SCRIPT_NAME.'?'.$QUERY_STRING;
-			}
-			header('Location: '.get_site_setting('LOGIN_URL').'?url='.rawurlencode($url));
-			exit;
+			$url=WT_SCRIPT_NAME.'?'.$QUERY_STRING;
 		}
+		header('Location: '.get_site_setting('LOGIN_URL').'?url='.rawurlencode($url));
+		exit;
 	}
 
 	// -- setup session information for tree clippings cart features

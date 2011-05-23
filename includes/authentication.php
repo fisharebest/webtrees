@@ -49,10 +49,9 @@ define('WT_AUTHENTICATION_PHP', '');
  * The username is stored in the <var>$_SESSION["wt_user"]</var> session variable.
  * @param string $user_name the username for the user attempting to login
  * @param string $password the plain text password to test
- * @param boolean $basic true if the userName and password were retrived via Basic HTTP authentication. Defaults to false. At this point, this is only used for logging
  * @return the user_id if successful, false otherwise
  */
-function authenticateUser($user_name, $password, $basic=false) {
+function authenticateUser($user_name, $password) {
 	// If we were already logged in, log out first
 	if (getUserId()) {
 		userLogout(getUserId());
@@ -65,38 +64,13 @@ function authenticateUser($user_name, $password, $basic=false) {
 				// Whenever we change our authorisation level change the session ID
 				Zend_Session::regenerateId();
 				$_SESSION['wt_user'] = $user_id;
-				AddToLog(($basic ? 'Basic HTTP Authentication' :'Login'). ' Successful', 'auth');
+				AddToLog('Login successful', 'auth');
 				return $user_id;
 			}
 		}
 	}
-	AddToLog(($basic ? 'Basic HTTP Authentication' : 'Login').' Failed ->'.$user_name.'<-', 'auth');
+	AddToLog('Login failed ->'.$user_name.'<-', 'auth');
 	return false;
-}
-
-/**
- * authenticate a username and password using Basic HTTP Authentication
- *
- * This function uses authenticateUser(), for authentication, but retrives the userName and password provided via basic auth.
- * @return bool return true if the user is already logged in or the basic HTTP auth username and password credentials match a user in the database return false if they don't
- * @TODO Security audit for this functionality
- * @TODO Do we really need a return value here?
- * @TODO should we reauthenticate the user even if already logged in?
- * @TODO do we need to set the user language and other jobs done in login.php? Should that loading be moved to a function called from the authenticateUser function?
- */
-function basicHTTPAuthenticateUser() {
-	$user_id = getUserId();
-	if (empty($user_id)) { //not logged in.
-		if (!isset($_SERVER['PHP_AUTH_USER']) || !isset($_SERVER['PHP_AUTH_PW'])
-				|| (! authenticateUser($_SERVER['PHP_AUTH_USER'], $_SERVER['PHP_AUTH_PW'], true))) {
-			header('WWW-Authenticate: Basic realm="' . WT_I18N::translate('webtrees Authentication System') . '"');
-			header('HTTP/1.0 401 Unauthorized');
-			echo WT_I18N::translate('You must enter a valid login ID and password to access this resource') ;
-			exit;
-		}
-	} else { //already logged in or successful basic authentication
-		return true; //probably not needed
-	}
 }
 
 /**
