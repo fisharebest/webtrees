@@ -375,7 +375,7 @@ class WT_Query_Name {
 	// To search for names with no surnames, use $salpha=","
 	public static function individuals($surn, $salpha, $galpha, $marnm, $fams, $ged_id) {
 		$sql=
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex, n_surn, n_surname, n_num ".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex, n_full ".
 			"FROM `##individuals` ".
 			"JOIN `##name` ON (n_id=i_id AND n_file=i_file) ".
 			($fams ? "JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
@@ -404,13 +404,17 @@ class WT_Query_Name {
 		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row) {
 			$person=WT_Person::getInstance($row);
-			$person->setPrimaryName($row['n_num']);
-			// We need to clone $person, as we may have multiple references to the
-			// same person in this list, and the "primary name" would otherwise
-			// be shared amongst all of them.  This has some performance/memory
-			// implications, and there is probably a better way.  This, however,
-			// is clean, easy and works.
-			$list[]=clone $person;
+			// The name from the database may be private - check the filtered list...
+			foreach ($person->getAllNames() as $n=>$name) {
+				if ($name['fullNN']==$row['n_full']) {
+					$person->setPrimaryName($n);
+					// We need to clone $person, as we may have multiple references to the
+					// same person in this list, and the "primary name" would otherwise
+					// be shared amongst all of them.
+					$list[]=clone $person;
+					break;
+				}
+			}
 		}
 		return $list;
 	}
