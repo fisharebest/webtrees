@@ -225,6 +225,29 @@ case 'user_setting':
 	set_user_setting($id1, $id2, $value);
 	ok();
 
+case 'module':
+	//////////////////////////////////////////////////////////////////////////////
+	// Table name: WT_MODULE
+	// ID format:  module-{column}-{module_name}
+	//////////////////////////////////////////////////////////////////////////////
+
+	// Authorisation
+	if (!WT_USER_IS_ADMIN) {
+		fail();
+	}
+
+	switch($id1) {
+	case 'status':
+	case 'tab_order':
+	case 'menu_order':
+	case 'sidebar_order':
+		WT_DB::prepare("UPDATE `##module` SET {$id1}=? WHERE module_name=?")
+			->execute(array($value, $id2));
+		ok();
+	default:
+		fail();
+	}
+
 default:
 	// An unrecognised table
 	fail();
