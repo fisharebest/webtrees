@@ -547,7 +547,7 @@ function check_rootid($rootid) {
 					$rootid=trim($PEDIGREE_ROOT_ID);
 				} else {
 					$rootid=WT_DB::prepare(
-						"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?`"
+						"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
 					)->execute(array(WT_GED_ID))->fetchOne();
 				}
 			}
