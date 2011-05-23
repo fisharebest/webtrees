@@ -1,34 +1,30 @@
 <?php
-/**
- * Functions for printing lists
- *
- * Various printing functions for printing lists
- * used on the indilist, famlist, find, and search pages.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Display
- * @version $Id$
- */
+// Functions for printing lists
+//
+// Various printing functions for printing lists
+// used on the indilist, famlist, find, and search pages.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -38,7 +34,6 @@ if (!defined('WT_WEBTREES')) {
 define('WT_FUNCTIONS_PRINT_LISTS_PHP', '');
 
 require_once WT_ROOT.'includes/functions/functions_places.php';
-require_once WT_ROOT.'includes/cssparser.inc.php';
 
 /**
  * print a sortable table of individuals
@@ -1320,58 +1315,53 @@ function format_surname_list($surnames, $style, $totals, $type) {
  * @param bool $show_parents
  */
 function print_changes_list($change_ids, $sort, $show_parents=false) {
-    global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES;
-    $n = 0;
-    foreach ($change_ids as $change_id) {
-        $record = WT_GedcomRecord::getInstance($change_id);
-        if (!$record || !$record->canDisplayDetails()) {
-            continue;
-        }
-        // setup sorting parameters
-        $arr[$n]['record'] = $record;
-        $arr[$n]['jd'] = ($sort == 'name') ? 1 : $n;
-        $arr[$n]['anniv'] = $record->LastChangeTimestamp(false, true);
-        $arr[$n++]['fact'] = $record->getSortName(); // in case two changes have same timestamp
-    }
+	global $SHOW_MARRIED_NAMES;
+	$n = 0;
+	$arr=array();
+	foreach ($change_ids as $change_id) {
+		$record = WT_GedcomRecord::getInstance($change_id);
+		if (!$record || !$record->canDisplayDetails()) {
+			continue;
+		}
+		// setup sorting parameters
+		$arr[$n]['record'] = $record;
+		$arr[$n]['jd'] = ($sort == 'name') ? 1 : $n;
+		$arr[$n]['anniv'] = $record->LastChangeTimestamp(false, true);
+		$arr[$n++]['fact'] = $record->getSortName(); // in case two changes have same timestamp
+	}
 
-    switch ($sort) {
-        case 'name':
-            uasort($arr, 'event_sort_name');
-            break;
-        case 'date_asc':
-            uasort($arr, 'event_sort');
-            $arr = array_reverse($arr);
-            break;
-        case 'date_desc':
-            uasort($arr, 'event_sort');
-    }
-    $return = '';
-    foreach ($arr as $value) {
-        $return .= "<a href='" . $value['record']->getHtmlUrl() . "' class='list_item name2' dir='" . $TEXT_DIRECTION . "'>" . PrintReady($value['record']->getFullName()) . "</a>";
-        $return .= "<div class='indent'>";
-        if ($value['record']->getType() == 'INDI') {
-            if ($value['record']->getAddName()) {
-                $return .= "<a href='" . $value['record']->getHtmlUrl() . "' class='list_item'>" . PrintReady($value['record']->getAddName()) . "</a>";
-            }
-            if ($SHOW_MARRIED_NAMES) {
-                foreach ($value['record']->getAllNames() as $name) {
-                    if ($name['type'] == '_MARNM') {
-                        $return .= "<div><a title='" . WT_Gedcom_Tag::getLabel('_MARNM') . "' href='" . $value['record']->getHtmlUrl() . "' class='list_item'>" . PrintReady($name['full']) . "</a></div>";
-                    }
-                }
-            }
-            if ($show_parents) {
-                $return .= $value['record']->getPrimaryParentsNames('details1');
-            }
-        }
-        $return .= "<div style='margin-bottom:5px'>";
-        //-- Last change date/time & user
-				$return .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(empty($SEARCH_SPIDER)), $value['record']->LastChangeUser());
-        $return .= "</div>";    // class='indent'
-        $return .= "</div>";
-    }
-	if ($n>0) {
-		$return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
+	switch ($sort) {
+	case 'name':
+		uasort($arr, 'event_sort_name');
+		break;
+	case 'date_asc':
+		uasort($arr, 'event_sort');
+		$arr = array_reverse($arr);
+		break;
+	case 'date_desc':
+		uasort($arr, 'event_sort');
+	}
+	$return = '';
+	foreach ($arr as $value) {
+		$return .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item name2">' . PrintReady($value['record']->getFullName()) . '</a>';
+		$return .= '<div class="indent" style="margin-bottom:5px">';
+		if ($value['record']->getType() == 'INDI') {
+			if ($value['record']->getAddName()) {
+				$return .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . PrintReady($value['record']->getAddName()) . '</a>';
+			}
+			if ($SHOW_MARRIED_NAMES) {
+				foreach ($value['record']->getAllNames() as $name) {
+					if ($name['type'] == '_MARNM') {
+						$return .= '<div><a title="' . WT_Gedcom_Tag::getLabel('_MARNM') . '" href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . PrintReady($name['full']) . '</a></div>';
+					}
+				}
+			}
+			if ($show_parents) {
+				$return .= $value['record']->getPrimaryParentsNames('details1');
+			}
+		}
+		$return .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(false), $value['record']->LastChangeUser());
+		$return .= '</div>';
 	}
 	return $return;
 }
@@ -1837,6 +1827,7 @@ function print_chart_by_age($data, $title) {
 	global $GEDCOM;
 	global $stylesheet;
 
+	require_once WT_ROOT.'includes/cssparser.inc.php';
 	$css = new cssparser(false);
 	$css->Parse($stylesheet);
 	$color = $css->Get("body", "background-color");
@@ -1910,6 +1901,7 @@ function print_chart_by_age($data, $title) {
 function print_chart_by_decade($data, $title) {
 	global $stylesheet;
 
+	require_once WT_ROOT.'includes/cssparser.inc.php';
 	$css = new cssparser(false);
 	$css->Parse($stylesheet);
 	$color = $css->Get("body", "background-color");
