@@ -2863,22 +2863,6 @@ function filename_encode($filename) {
 		return $filename;
 }
 
-function getfilesize($bytes) {
-	if ($bytes>=1099511627776) {
-		return WT_I18N::number($bytes/1099511627776, 2)." TB";
-	}
-	if ($bytes>=1073741824) {
-		return WT_I18N::number($bytes/1073741824, 2)." GB";
-	}
-	if ($bytes>=1048576) {
-		return WT_I18N::number($bytes/1048576, 2)." MB";
-	}
-	if ($bytes>=1024) {
-		return WT_I18N::translate('%s KB', WT_I18N::number($bytes/1024,2));
-	}
-	return WT_I18N::number($bytes)." B";
-}
-
 /**
  * array merge function for PGV
  * the PHP array_merge function will reindex all numerical indexes

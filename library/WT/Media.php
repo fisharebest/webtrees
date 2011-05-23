@@ -225,8 +225,8 @@ class WT_Media extends WT_GedcomRecord {
 	 */
 	public function getFilesize($which='main') {
 		$size = $this->getFilesizeraw($which);
-		if ($size) $size=$size/1024;
-		return /* I18N: size of file in KB */ WT_I18N::translate('%s KB', WT_I18N::number($size,2));
+		if ($size) $size=floor(($size+1023)/1024); // add some bytes to be sure we never return "0 KB"
+		return /* I18N: size of file in KB */ WT_I18N::translate('%s KB', WT_I18N::number($size));
 	}
 
 	/**
