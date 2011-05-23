@@ -294,13 +294,13 @@ case 'editraw':
 	if (WT_USER_IS_ADMIN) {
 		echo '<table class="facts_table">';
 		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -337,13 +337,13 @@ case 'edit':
 	$level1type = create_edit_form($gedrec, $linenum, $level0type);
 	if (WT_USER_IS_ADMIN) {
 		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -387,13 +387,13 @@ case 'add':
 
 	if (WT_USER_IS_ADMIN) {
 		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -459,13 +459,13 @@ case 'addfamlink':
 	}
 	if (WT_USER_IS_ADMIN) {
 		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -498,13 +498,13 @@ case 'linkspouse':
 	add_simple_tag("0 PLAC", "MARR");
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -649,13 +649,13 @@ case 'addnewsource':
 		<?php
 			if (WT_USER_IS_ADMIN) {
 				echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-				echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+				echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 				echo '<input type="checkbox" name="preserve_last_changed"';
 				if ($NO_UPDATE_CHAN) {
 					echo ' checked="checked"';
 				} 
 				echo ' />';
-				echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+				echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 				echo '</td></tr>';
 			}
 		?>
@@ -761,13 +761,13 @@ case 'addnewnote':
 				echo '</tr>';
 			if (WT_USER_IS_ADMIN) {
 				echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-				echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+				echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 				echo '<input type="checkbox" name="preserve_last_changed"';
 				if ($NO_UPDATE_CHAN) {
 					echo ' checked="checked"';
 				} 
 				echo ' />';
-				echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+				echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 				echo "</td></tr>";
 			}
 			echo '</table>';
@@ -931,13 +931,13 @@ case 'editsource':
 
 	if (WT_USER_IS_ADMIN) {
 		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-		echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+		echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 		echo '<input type="checkbox" name="preserve_last_changed"';
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -988,13 +988,13 @@ case 'editnote':
 			<?php
 				if (WT_USER_IS_ADMIN) {
 					echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-					echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+					echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 					echo '<input type="checkbox" name="preserve_last_changed"';
 					if ($NO_UPDATE_CHAN) {
 						echo ' checked="checked"';
 					} 
 					echo ' />';
-					echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+					echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 					echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 					echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 					echo '</td></tr>';
@@ -1052,13 +1052,13 @@ case 'addnewrepository':
 		<?php
 			if (WT_USER_IS_ADMIN) {
 				echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, ' wrap width25">';
-				echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), '</td><td class="optionbox wrap">';
+				echo WT_Gedcom_Tag::getLabel('CHAN'), '</td><td class="optionbox wrap">';
 				echo '<input type="checkbox" name="preserve_last_changed"';
 				if ($NO_UPDATE_CHAN) {
 					echo ' checked="checked"';
 				} 
 				echo ' />';
-				echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+				echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 				echo '</td></tr>';
 			}
 		?>
@@ -1980,13 +1980,13 @@ case 'reorder_children':
 		<?php echo WT_JS_END;
 		if (WT_USER_IS_ADMIN) {
 			echo "<center><table width=93%><tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-			echo WT_Gedcom_Tag::getLabel('CHAN'), help_link('no_update_CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">";
+			echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">";
 			echo '<input type="checkbox" name="preserve_last_changed"';
 			if ($NO_UPDATE_CHAN) {
 				echo ' checked="checked"';
 			} 
 			echo ' />';
-			echo WT_I18N::translate('Do not update the CHAN (Last Change) record');
+			echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
 			echo WT_Gedcom_Tag::getLabelValue('DATE', $family->LastChangeTimestamp(false));
 			echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $family->LastChangeUser());
 			echo '</td></tr></table></center><br />';
