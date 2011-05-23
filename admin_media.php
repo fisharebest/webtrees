@@ -1090,8 +1090,8 @@ echo WT_JS_START; ?>
 				$printDone = false;
 				foreach ($sortedMediaList as $indexval => $media) {
 					while (true) {
+						$isExternal = isFileExternal($media["FILE"]); // isExternal must be defined before any "break", so the if statement at the end of the loop doesn't fail
 						if (!filterMedia($media, $filter, $httpFilter)) break;
-						$isExternal = isFileExternal($media["FILE"]);
 						if ($passCount==1 && !$isExternal) break;
 						if ($passCount==2 && $isExternal) break;
 						$imgsize = findImageSize($media["FILE"]);
