@@ -659,7 +659,7 @@ class WT_Media extends WT_GedcomRecord {
 			// the image string will be used in javascript code, such as googlemaps
 			$output=addslashes($output);
 		}
-		return "\n".$output."\n";
+		return $output;
 	}
 
 	/**
