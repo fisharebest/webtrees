@@ -369,7 +369,7 @@ function print_fact(WT_Event $eventObj) {
 			}
 			break;
 		case '_WT_USER':
-			$fullname=getUserFullname(getUserId($match[2])); // may not exist	
+			$fullname=getUserFullname(get_user_id($match[2])); // may not exist	
 			if ($fullname) {
 				echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $fullname);
 			} else {
