@@ -1043,23 +1043,27 @@ function event_sort_name($a, $b) {
 
 function mediasort($a, $b) {
 	$aKey = "";
-	if (!empty($a["TITL"])) {
-		$aKey = $a["TITL"];
+	if (!empty($a["MEDIASORT"])) {
+		$aKey = $a["MEDIASORT"]; // set in get_medialist2
 	} else {
-		if (!empty($a["titl"])) {
-			$aKey = $a["titl"];
+		if (!empty($a["TITL"])) {
+			$aKey = $a["TITL"]; // set in get_medialist
 		} else {
-			if (!empty($a["NAME"])) {
-				$aKey = $a["NAME"];
+			if (!empty($a["titl"])) {
+				$aKey = $a["titl"];
 			} else {
-				if (!empty($a["name"])) {
-					$aKey = $a["name"];
+				if (!empty($a["NAME"])) {
+					$aKey = $a["NAME"];
 				} else {
-					if (!empty($a["FILE"])) {
-						$aKey = basename($a["FILE"]);
+					if (!empty($a["name"])) { // set in PrintMediaLinks
+						$aKey = $a["name"];
 					} else {
-						if (!empty($a["file"])) {
-							$aKey = basename($a["file"]);
+						if (!empty($a["FILE"])) {
+							$aKey = basename($a["FILE"]); // set in get_medialist
+						} else {
+							if (!empty($a["file"])) {
+								$aKey = basename($a["file"]);
+							}
 						}
 					}
 				}
@@ -1068,23 +1072,27 @@ function mediasort($a, $b) {
 	}
 
 	$bKey = "";
-	if (!empty($b["TITL"])) {
-		$bKey = $b["TITL"];
+	if (!empty($b["MEDIASORT"])) {
+		$bKey = $b["MEDIASORT"];
 	} else {
-		if (!empty($b["titl"])) {
-			$bKey = $b["titl"];
+		if (!empty($b["TITL"])) {
+			$bKey = $b["TITL"];
 		} else {
-			if (!empty($b["NAME"])) {
-				$bKey = $b["NAME"];
+			if (!empty($b["titl"])) {
+				$bKey = $b["titl"];
 			} else {
-				if (!empty($b["name"])) {
-					$bKey = $b["name"];
+				if (!empty($b["NAME"])) {
+					$bKey = $b["NAME"];
 				} else {
-					if (!empty($b["FILE"])) {
-						$bKey = basename($b["FILE"]);
+					if (!empty($b["name"])) {
+						$bKey = $b["name"];
 					} else {
-						if (!empty($b["file"])) {
-							$bKey = basename($b["file"]);
+						if (!empty($b["FILE"])) {
+							$bKey = basename($b["FILE"]);
+						} else {
+							if (!empty($b["file"])) {
+								$bKey = basename($b["file"]);
+							}
 						}
 					}
 				}
@@ -1100,17 +1108,25 @@ function mediasort($a, $b) {
 
 function filesort($a, $b) {
 	$aKey = "";
-	if (!empty($a["FILE"])) {
-		$aKey = basename($a["FILE"]);
-	} else if (!empty($a["file"])) {
-		$aKey = basename($a["file"]);
+	if (!empty($a["FILESORT"])) {
+		$aKey = $a["FILESORT"]; // set in get_medialist2, has already been basename'd
+	} else {
+		if (!empty($a["FILE"])) {
+			$aKey = basename($a["FILE"]); // set in get_medialist
+		} else if (!empty($a["file"])) {
+			$aKey = basename($a["file"]);
+		}
 	}
 
 	$bKey = "";
-	if (!empty($b["FILE"])) {
-		$bKey = basename($b["FILE"]);
-	} else if (!empty($b["file"])) {
-		$bKey = basename($b["file"]);
+	if (!empty($b["FILESORT"])) {
+		$bKey = $b["FILESORT"];
+	} else {
+		if (!empty($b["FILE"])) {
+			$bKey = basename($b["FILE"]);
+		} else if (!empty($b["file"])) {
+			$bKey = basename($b["file"]);
+		}
 	}
 	return utf8_strcasecmp($aKey, $bKey, true); // Case-insensitive compare
 }

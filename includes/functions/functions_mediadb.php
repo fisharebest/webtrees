@@ -506,6 +506,9 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 			$media["LINKED"] = false;
 			$media["LINKS"] = array ();
 			$media["CHANGE"] = "";
+			// Build sort paramters to be used by filesort and mediasort
+			$media["FILESORT"] = basename($fileName);
+			$media["MEDIASORT"] = (!empty($row->m_titl)) ? $row->m_titl : $media["FILESORT"];
 			// Build a sortable key for the medialist
 			$firstChar = substr($media["XREF"], 0, 1);
 			$restChar = substr($media["XREF"], 1);
