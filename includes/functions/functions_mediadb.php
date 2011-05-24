@@ -527,22 +527,6 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 
 	$changedRecords = array ();
 
-if (!$excludeLinks) {
-	foreach ($medialist as $key=>$media) {
-		foreach (fetch_linked_indi($media["XREF"], 'OBJE', WT_GED_ID) as $indi) {
-			$medialist[$key]["LINKS"][$indi->getXref()]='INDI';
-			$medialist[$key]["LINKED"]=true;
-		}
-		foreach (fetch_linked_fam($media["XREF"], 'OBJE', WT_GED_ID) as $fam) {
-			$medialist[$key]["LINKS"][$fam->getXref()]='FAM';
-			$medialist[$key]["LINKED"]=true;
-		}
-		foreach (fetch_linked_sour($media["XREF"], 'OBJE', WT_GED_ID) as $sour) {
-			$medialist[$key]["LINKS"][$sour->getXref()]='SOUR';
-			$medialist[$key]["LINKED"]=true;
-		}
-	}
-}
 	// Search the list of GEDCOM changes pending approval.  There may be some new
 	// links to new or old media items that haven't been approved yet.
 	// Logic:

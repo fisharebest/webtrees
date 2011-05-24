@@ -663,6 +663,69 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
+	 * output the list of linked records
+	 * @param size='small'|'normal'
+	 * @return string
+	 */
+	public function printLinkedRecords($size = "small") {
+		if ($size != "small") $size = "normal";
+		$linkList = array ();
+
+		foreach ($this->fetchLinkedIndividuals() as $indi) {
+			if ($indi->canDisplaydetails()) {
+				$linkItem=array ();
+				$linkItem['MEDIASORT']='A'.$indi->getSortName();
+				$linkItem['record']=$indi;
+				$linkList[]=$linkItem;
+			}
+		}
+		foreach ($this->fetchLinkedFamilies() as $fam) {
+			if ($fam->canDisplaydetails()) {
+				$linkItem=array ();
+				$linkItem['MEDIASORT']='B'.$fam->getSortName();
+				$linkItem['record']=$fam;
+				$linkList[]=$linkItem;
+			}
+		}
+		foreach ($this->fetchLinkedSources() as $sour) {
+			if ($sour->canDisplaydetails()) {
+				$linkItem=array ();
+				$linkItem['MEDIASORT']='C'.$sour->getSortName();
+				$linkItem['record']=$sour;
+				$linkList[]=$linkItem;
+			}
+		}
+
+		uasort($linkList, "mediasort");
+
+		$output="";
+		if ($size == "small") $output.="<sub>";
+		$prev_record=null;
+		foreach ($linkList as $linkItem) {
+			$record=$linkItem['record'];
+			if ($prev_record && $prev_record->getType()!=$record->getType()) {
+				$output.='<br />';
+			}
+			$output.='<br /><a href="'.$record->getHtmlUrl().'">';
+			switch ($record->getType()) {
+			case 'INDI':
+				$output.=WT_I18N::translate('View Person');
+				break;
+			case 'FAM':
+				$output.=WT_I18N::translate('View Family');
+				break;
+			case 'SOUR':
+				$output.=WT_I18N::translate('View Source');
+				break;
+			}
+			$output.=' -- '.$record->getFullname().'</a>';
+			$prev_record=$record;
+		}
+		if ($size == "small") $output.="</sub>";
+		return ($output);
+	}
+
+	/**
 	 * check if the given Media object is in the objectlist
 	 * @param Media $obje
 	 * @return mixed  returns the ID for the for the matching media or null if not found

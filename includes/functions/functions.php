@@ -1044,7 +1044,7 @@ function event_sort_name($a, $b) {
 function mediasort($a, $b) {
 	$aKey = "";
 	if (!empty($a["MEDIASORT"])) {
-		$aKey = $a["MEDIASORT"]; // set in get_medialist2
+		$aKey = $a["MEDIASORT"]; // set in get_medialist2 and Media->printLinkedRecords()
 	} else {
 		if (!empty($a["TITL"])) {
 			$aKey = $a["TITL"]; // set in get_medialist

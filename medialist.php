@@ -538,12 +538,11 @@ Plus other Media Options - MediaViewer page'), '" />';
 				}
 			}
 		}
-			// TODO convert this to the Media API
 			echo '<div style="white-space: normal; width: 95%;">';
 			print_fact_sources($mediaobject->getGedcomRecord(), 1);
 			print_fact_notes($mediaobject->getGedcomRecord(), 1);
 			echo '</div>';
-			PrintMediaLinks($media['LINKS'], 'small');
+			echo $mediaobject->printLinkedRecords('small');
 			echo '</td></tr></table>';
 			echo '</td>';
 			if ($columns == '1') echo '</tr><tr>';
