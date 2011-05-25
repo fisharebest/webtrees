@@ -1210,11 +1210,11 @@ function get_media_folders() {
 	global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $BADMEDIA;
 
 	$folderList = array ();
-	$folderList[0] = $MEDIA_DIRECTORY; // look in both the standard and protected directories
-	$folderList[1] = get_media_firewall_path($MEDIA_DIRECTORY);
+	$folderList[0] = $MEDIA_DIRECTORY;
 	if ($MEDIA_DIRECTORY_LEVELS == 0)
 		return $folderList;
 
+	$folderList[1] = get_media_firewall_path($MEDIA_DIRECTORY);  // look in both the standard and protected directories
 	$currentFolderNum = 0;
 	$nextFolderNum = 1;
 	while ($currentFolderNum < count($folderList)) {
@@ -1241,7 +1241,6 @@ function get_media_folders() {
 			$dir->close();
 		}
 	}
-
 	// remove the media firewall path from the directory listings
 	$currentFolderNum = 0;
 	while ($currentFolderNum < count($folderList)) {
