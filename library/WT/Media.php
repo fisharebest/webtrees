@@ -456,7 +456,7 @@ class WT_Media extends WT_GedcomRecord {
 
 		// -- Determine the correct URL to open this media file
 		while (true) {
-			if (WT_USE_LIGHTBOX && $config['uselightbox'] && $config['usejavascript'] && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/') && 0) {
+			if (WT_USE_LIGHTBOX && $config['uselightbox'] && $config['usejavascript'] && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/')) {
 				// Lightbox is installed
 				require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 				switch ($urltype) {
