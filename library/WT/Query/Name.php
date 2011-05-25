@@ -234,7 +234,7 @@ class WT_Query_Name {
 			"SELECT LEFT(n_surn, 1), COUNT(n_id)".
 			" FROM `##name` ".
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
-			" WHERE n_file={$ged_id} ".
+			" WHERE n_file={$ged_id} AND n_surn<>''".
 			($marnm ? "" : " AND n_type!='_MARNM'");
 
 		foreach (self::_getAlphabet() as $n=>$letter) {
@@ -242,11 +242,20 @@ class WT_Query_Name {
 		}
 		$sql.=" GROUP BY LEFT(n_surn, 1) ORDER BY LEFT(n_surn, 1)='', LEFT(n_surn, 1)='@', LEFT(n_surn, 1)";
 		foreach (WT_DB::prepare($sql)->fetchAssoc() as $alpha=>$count) {
-			if ($alpha=='') {
-				// Special code to indicate "no surname"
-				$alpha=',';
-			}
 			$alphas[$alpha]=WT_I18N::number($count);
+		}
+
+		// Names with no surname
+		$sql=
+			"SELECT COUNT(n_id)".
+			" FROM `##name` ".
+			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
+			" WHERE n_file={$ged_id} AND n_surn=''".
+			($marnm ? "" : " AND n_type!='_MARNM'");
+		$num_none=WT_DB::prepare($sql)->fetchOne();
+		if ($num_none) {
+			// Special code to indicate "no surname"
+			$alphas[',']=$num_none;
 		}
 
 		return $alphas;
