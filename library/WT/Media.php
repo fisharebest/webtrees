@@ -374,7 +374,7 @@ class WT_Media extends WT_GedcomRecord {
 			} else {
 				return $this->getFilename();
 			}
-		} else if ($this->ged_id) {
+		} else if ($this->getXref()) {
 			// this file has gedcom record
 			if ($this->fileExists($which) == 3) {
 				// file is in protected media directory, access through media firewall
@@ -456,7 +456,7 @@ class WT_Media extends WT_GedcomRecord {
 
 		// -- Determine the correct URL to open this media file
 		while (true) {
-			if (WT_USE_LIGHTBOX && $config['uselightbox'] && $config['usejavascript'] && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/')) {
+			if (WT_USE_LIGHTBOX && $config['uselightbox'] && $config['usejavascript'] && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/') && 0) {
 				// Lightbox is installed
 				require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 				switch ($urltype) {
@@ -466,6 +466,7 @@ class WT_Media extends WT_GedcomRecord {
 				case 'local_flv':
 					$url = 'js/jw_player/flvVideo.php?flvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
+				case 'url_audio':
 				case 'url_wmv':
 					$url = 'js/jw_player/wmvVideo.php?wmvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
@@ -481,9 +482,11 @@ class WT_Media extends WT_GedcomRecord {
 				case 'url_page':
 				case 'url_pdf':
 				case 'url_other':
+				case 'url_document':
+				// case 'local_other':
 				case 'local_page':
 				case 'local_pdf':
-				// case 'local_other':
+				case 'local_document':
 					$url = $this->getHtmlUrlDirect('main') . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
 				case 'url_streetview':
@@ -491,7 +494,6 @@ class WT_Media extends WT_GedcomRecord {
 					break 2;
 				}
 			}
-
 			if ($config['uselightbox_fallback'] && $config['usejavascript']) {
 				// Lightbox is not installed or Lightbox is not appropriate for this media type
 				switch ($urltype) {
@@ -501,11 +503,12 @@ class WT_Media extends WT_GedcomRecord {
 				case 'local_flv':
 					$url = "javascript:;\" onclick=\" var winflv = window.open('".'js/jw_player/flvVideo.php?flvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "', 'winflv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winflv.focus();}";
 					break 2;
+				case 'url_audio':
 				case 'url_wmv':
 					$url = "javascript:;\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.$this->getRawUrlDirect('main') . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
 					break 2;
-				case 'local_wmv':
 				case 'local_audio':
+				case 'local_wmv':
 					$url = "javascript:;\" onclick=\" var winwmv = window.open('".'js/jw_player/wmvVideo.php?wmvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "', 'winwmv', 'width=500, height=392, left=600, top=200'); if (window.focus) {winwmv.focus();}";
 					break 2;
 				case 'url_image':
@@ -521,12 +524,14 @@ class WT_Media extends WT_GedcomRecord {
 				case 'url_page':
 				case 'url_pdf':
 				case 'url_other':
-				case 'local_other';
+				case 'url_document':
 					$url = "javascript:;\" onclick=\"var winurl = window.open('".$this->getRawUrlDirect('main')."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
 					break 2;
+				case 'local_other';
 				case 'local_page':
 				case 'local_pdf':
-					$url = "javascript:;\" onclick=\"var winurl = window.open('".$this->getRawUrlDirect('main')."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
+				case 'local_document':
+					$url = "javascript:;\" onclick=\"var winurl = window.open('".WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main')."', 'winurl', 'width=900, height=600, left=200, top=200'); if (window.focus) {winurl.focus();}";
 					break 2;
 				case 'url_streetview':
 					// need to call getHtmlForStreetview() instead of getHtmlUrlSnippet()
