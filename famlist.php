@@ -146,6 +146,9 @@ foreach ($initials as $letter=>$count) {
 	case ',':
 		$html=WT_I18N::translate('None');
 		break;
+	case ' ':
+		$html='&nbsp;';
+		break;
 	default:
 		$html=$letter;
 		break;

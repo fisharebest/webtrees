@@ -133,7 +133,6 @@ if ($show_all=='yes') {
 	$url='indilist.php?alpha='.rawurlencode($alpha);
 }
 
-
 print_header(WT_I18N::translate('Individuals').' : '.$legend);
 echo '<h2 class="center">', WT_I18N::translate('Individuals'), '</h2>';
 
@@ -145,6 +144,9 @@ foreach ($initials as $letter=>$count) {
 		break;
 	case ',':
 		$html=WT_I18N::translate('None');
+		break;
+	case ' ':
+		$html='&nbsp;';
 		break;
 	default:
 		$html=$letter;

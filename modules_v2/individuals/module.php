@@ -141,6 +141,9 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				case ',':
 					$html=WT_I18N::translate('None');
 					break;
+				case ' ':
+					$html='&nbsp;';
+					break;
 				default:
 					$html=$letter;
 					break;

@@ -107,7 +107,7 @@ function safe_REQUEST($arr, $var, $regex=WT_REGEX_NOSCRIPT, $default=null) {
 		$regex='(?:'.join('|', $regex).')';
 	}
 	if (array_key_exists($var, $arr) && preg_match_recursive('~^'.addcslashes($regex, '~').'$~', $arr[$var])) {
-		return trim_recursive($arr[$var]);
+		return $arr[$var];
 	} else {
 		return $default;
 	}
@@ -143,22 +143,6 @@ function preg_match_recursive($regex, $var) {
 		} else {
 			// Neither scalar nor array.  Object?
 			return false;
-		}
-	}
-}
-
-function trim_recursive($var) {
-	if (is_scalar($var)) {
-		return trim($var);
-	} else {
-		if (is_array($var)) {
-			foreach ($var as $k=>$v) {
-				$var[$k]=trim_recursive($v);
-			}
-			return $var;
-		} else {
-			// Neither scalar nor array.  Object?
-			return $var;
 		}
 	}
 }
