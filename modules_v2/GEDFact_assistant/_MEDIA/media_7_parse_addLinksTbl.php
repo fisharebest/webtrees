@@ -32,30 +32,16 @@
 
 <script>
 function parseAddLinks() {
-	str = "";
+	str = '';
 	var tbl = document.getElementById('addlinkQueue');
 	for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 		var tr = tbl.rows[i];
-		var strRow = '';
-		for (var j=1; j<tr.cells.length; j++) { // Start at col 1 (j=1)
-			if (j>=2) {
-				// dont show  col 0 index
-				//  SHOW col 1 id
-				// miss out col 2 name
-				// miss out col 3 relationship
-				// miss out col 4 delete button
-				continue;
-			} else {
-				if (IE) {
-					strRow += (strRow==''?'':'') + tr.cells[j].childNodes[0].innerHTML;
-				} else {
-					strRow += (strRow==''?'':'') + tr.cells[j].childNodes[0].textContent;
-				}
-			}
+		if (IE) {
+			str += (str==''?'':', ') + tr.cells[1].childNodes[0].innerHTML;
+		} else {
+			str += (str==''?'':', ') + tr.cells[1].childNodes[0].textContent;
 		}
-		str += (str==''?'':', ') + strRow;
 	}
-	// str += (str==''?'':'' '); // Adds just final single quote at end of string (\')
 }
 
 function parseRemLinks() {

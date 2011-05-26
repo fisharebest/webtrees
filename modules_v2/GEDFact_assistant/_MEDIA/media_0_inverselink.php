@@ -224,8 +224,6 @@ if ($action == "choose" && $paramok) {
 		$exist_links = substr($exist_links, 0, -1);
 		$rem_exist_links = (explode(", ", $exist_links));
 		foreach ($rem_exist_links as $remLinkId) {
-			global $linkToId;
-			$linkToId = PrintReady($remLinkId);
 			echo WT_I18N::translate('Link to %s deleted', $remLinkId);
 			echo '<br />';
 			if ($update_CHAN=='no_change') {
@@ -241,11 +239,8 @@ if ($action == "choose" && $paramok) {
 
 	// Add new Links ====================================
 	if (isset($more_links) && $more_links!="No_Values" && $more_links!=",") {
-		$more_links = substr($more_links, 0, -1);
 		$add_more_links = (explode(", ", $more_links));
 		foreach ($add_more_links as $addLinkId) {
-			global $unlinkFromId;
-			$$unlinkFromId = PrintReady($addLinkId);
 			echo WT_I18N::translate('Link to %s added', $addLinkId);
 			if ($update_CHAN=='no_change') {
 				linkMedia($mediaid, $addLinkId, 1, false);
@@ -255,11 +250,6 @@ if ($action == "choose" && $paramok) {
 			echo '<br />';
 		}
 		echo '<br />';
-	} else if ($more_links==",") {
-		// echo nothing and do nothing
-	} else {
-		//echo $mediaid, $pgv_lang["media_now_linked to"], '(', $gid, ')<br />';
-		//linkMedia($mediaid, $gid);
 	}
 
 	if ($update_CHAN=='no_change') {

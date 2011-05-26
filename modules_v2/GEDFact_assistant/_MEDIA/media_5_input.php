@@ -67,5 +67,4 @@ echo '<script src="', WT_MODULES_DIR, 'GEDFact_assistant/_MEDIA/media_5_input.js
 		</tr>
 		</thead>
 		<tbody></tbody>
-		<tr><td></td></tr>
 	</table>
