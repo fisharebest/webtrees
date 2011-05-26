@@ -58,8 +58,7 @@ function authenticateUser($user_name, $password) {
 	}
 
 	if ($user_id=get_user_id($user_name)) {
-		$dbpassword=get_user_password($user_id);
-		if (crypt($password, $dbpassword)==$dbpassword) {
+		if (check_user_password($user_id, $password)) {
 			if (get_user_setting($user_id, 'verified') && get_user_setting($user_id, 'verified_by_admin') || get_user_setting($user_id, 'canadmin')) {
 				// Whenever we change our authorisation level change the session ID
 				Zend_Session::regenerateId();

@@ -284,7 +284,7 @@ if ($action=='createuser' || $action=='edituser2') {
 		} else {
 			// New user
 			if ($action=='createuser') {
-				if ($user_id=create_user($username, $realname, $emailaddress, crypt($pass1))) {
+				if ($user_id=create_user($username, $realname, $emailaddress, $pass1)) {
 					set_user_setting($user_id, 'reg_timestamp', date('U'));
 					set_user_setting($user_id, 'sessiontime', '0');
 					AddToLog("User ->{$username}<- created", 'auth');
@@ -297,7 +297,7 @@ if ($action=='createuser' || $action=='edituser2') {
 			}
 			// Change password
 			if ($action=='edituser2' && !empty($pass1)) {
-				set_user_password($user_id, crypt($pass1));
+				set_user_password($user_id, $pass1);
 			}
 			// Change username
 			if ($action=='edituser2' && $username!=$oldusername) {

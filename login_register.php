@@ -108,7 +108,7 @@ switch ($action) {
 					$user_new_pw .= $passchars{$index};
 				}
 
-				set_user_password($user_id, crypt($user_new_pw));
+				set_user_password($user_id, $user_new_pw);
 				set_user_setting($user_id, 'pwrequested', 1);
 
 				// switch language to user settings
@@ -331,12 +331,12 @@ switch ($action) {
 				echo "<span class=\"warning\">".WT_I18N::translate('Duplicate email address.  A user with that email already exists.')."</span><br /><br />";
 				echo "<a href=\"javascript:history.back()\">".WT_I18N::translate('Back')."</a><br />";
 			} elseif ($user_password01 == $user_password02) {
-				if ($user_id=create_user($user_name, $user_realname, $user_email, crypt($user_password01))) {
+				if ($user_id=create_user($user_name, $user_realname, $user_email, $user_password01)) {
 					set_user_setting($user_id, 'language',            $user_language);
 					set_user_setting($user_id, 'verified',             0);
 					set_user_setting($user_id, 'verified_by_admin',    !$REQUIRE_ADMIN_AUTH_REGISTRATION);
 					set_user_setting($user_id, 'reg_timestamp',        date('U'));
-					set_user_setting($user_id, 'reg_hashcode',         md5(crypt($user_name)));
+					set_user_setting($user_id, 'reg_hashcode',         md5(uniqid(rand(), true)));
 					set_user_setting($user_id, 'contactmethod',        "messaging2");
 					set_user_setting($user_id, 'defaulttab',           get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'));
 					set_user_setting($user_id, 'visibleonline',        1);
@@ -474,7 +474,7 @@ switch ($action) {
 		echo "<tr><td class=\"optionbox\">";
 		echo WT_I18N::translate('The data for the user <b>%s</b> was checked.', $user_name);
 		if ($user_id) {
-			$pw_ok = (get_user_password($user_id) == crypt($user_password, get_user_password($user_id)));
+			$pw_ok = check_user_password($user_id, $user_password);
 			$hc_ok = (get_user_setting($user_id, 'reg_hashcode') == $user_hashcode);
 			if (($pw_ok) && ($hc_ok)) {
 				set_user_setting($user_id, 'verified', 1);

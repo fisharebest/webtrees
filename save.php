@@ -133,7 +133,7 @@ case 'user':
 		// The password will be displayed as "click to edit" on screen.
 		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
 		if ($value) {
-			set_user_password($id2, crypt($value));
+			set_user_password($id2, $value);
 		}
 		fail();
 	case 'user_name':
