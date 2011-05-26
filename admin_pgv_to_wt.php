@@ -494,6 +494,10 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		// a) we've already done it (upgrade)
 		// b) it doesn't exist (new install)
 	}
+	// Some PGV installations store the u_reg_timestamp in the format "2010-03-07 21:41:07"
+	WT_DB::prepare(
+		"UPDATE `##user_setting` SET setting_value=UNIX_TIMESTAMP(setting_value) WHERE setting_name='reg_timestamp' AND setting_value like '____-__-__ __:__:__'"
+	)->execute();
 	echo '<p>pgv_users => wt_user_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
 	try {
 		$user_gedcom_settings=
