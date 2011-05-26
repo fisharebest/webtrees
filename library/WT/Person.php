@@ -742,7 +742,7 @@ class WT_Person extends WT_GedcomRecord {
 
 	// Get a count of the children for this individual
 	function getNumberOfChildren() {
-		if (preg_match('/\n1 NCHI (\d+)/', $this->getGedcomRecord(), $match)) {
+		if (preg_match('/\n1 NCHI (\d+)(?:\n|$)/', $this->getGedcomRecord(), $match)) {
 			return $match[1];
 		} else {
 			$children=array();
