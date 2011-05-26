@@ -88,7 +88,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<div>'./* I18N: %s is a date */ WT_I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())).'</div>';
 		}
 
-		$content .= '<table><tr><td valign="top" class="width20"><table cellspacing="1" cellpadding="0">';
+		$content .= '<table><tr><td valign="top" class="width20"><table class="facts_table">';
 		if ($stat_indi) {
 			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Individuals').'</td><td class="facts_value" align="right"><a href="'."indilist.php?surname_sublist=no&amp;ged=".WT_GEDURL.'">'.WT_I18N::number($stats->totalIndividuals()).'</a></td></tr>';
 			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Males').'</td><td class="facts_value" align="right">'.WT_I18N::number($stats->totalSexMales()).'<br />'.$stats->totalSexMalesPercentage().'</td></tr>';

@@ -52,6 +52,7 @@ class missing_facts_report_WT_Module extends WT_Module implements WT_Module_Repo
 		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml');
 		$menu->addIcon('sfamily');
 		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reports');
+		$menu->addId('menu-report-'.$this->getName());
 		$menus[]=$menu;
 
 		return $menus;

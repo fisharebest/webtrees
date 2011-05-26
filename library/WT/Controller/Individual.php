@@ -394,6 +394,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_indi');
 		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_gedcom');
+		$menu->addId('menu-indi');
 
 		if (WT_USER_CAN_EDIT) {
 			//--make sure the totals are correct
@@ -403,6 +404,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$submenu->addOnclick("return edit_name('".$this->pid."', ".$this->NAME_LINENUM.");");
 				$submenu->addIcon('edit_indi');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$submenu->addId('menu-indi-editname');
 				$menu->addSubmenu($submenu);
 			}
 
@@ -410,6 +412,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$submenu->addOnclick("return add_name('".$this->pid."');");
 			$submenu->addIcon('edit_indi');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-indi-addname');
 			$menu->addSubmenu($submenu);
 
 			if ($this->SEX_COUNT<2) {
@@ -421,6 +424,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				}
 				$submenu->addIcon('edit_indi');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$submenu->addId('menu-indi-editsex');
 				$menu->addSubmenu($submenu);
 			}
 
@@ -429,6 +433,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$submenu->addOnclick("return reorder_families('".$this->pid."');");
 				$submenu->addIcon('edit_fam');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$submenu->addId('menu-indi-orderfam');
 				$menu->addSubmenu($submenu);
 			}
 
@@ -440,11 +445,14 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			if (!$this->show_changes) {
 				$label = WT_I18N::translate('This record has been updated.  Click here to show changes.');
 				$link = $this->indi->getHtmlUrl().'&amp;show_changes=yes';
+				$submenu = new WT_Menu($label, $link);
+				$submenu->addId('menu-indi-showchan');
 			} else {
 				$label = WT_I18N::translate('Click here to hide changes.');
 				$link = $this->indi->getHtmlUrl().'&amp;show_changes=no';
+				$submenu = new WT_Menu($label, $link);
+				$submenu->addId('menu-indi-hidechan');
 			}
-			$submenu = new WT_Menu($label, $link);
 			$submenu->addIcon('edit_indi');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
@@ -453,10 +461,12 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), $this->indi->getHtmlUrl()."&amp;action=undo");
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$submenu->addIcon('edit_indi');
+				$submenu->addId('menu-indi-undochan');
 				$menu->addSubmenu($submenu);
 				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), $this->indi->getHtmlUrl()."&amp;action=accept");
 				$submenu->addIcon('edit_indi');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$submenu->addId('menu-indi-savechan');
 				$menu->addSubmenu($submenu);
 			}
 
@@ -469,6 +479,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-indi-editraw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
@@ -479,6 +490,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-indi-viewraw');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -488,6 +500,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$submenu->addOnclick("return deleteperson('".$this->pid."');");
 			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-indi-del');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -495,6 +508,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), $this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->pid);
 		$submenu->addIcon('favorites');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+		$submenu->addId('menu-indi-addfav');
 		$menu->addSubmenu($submenu);
 
 		//-- get the link for the first submenu and set it as the link for the main menu

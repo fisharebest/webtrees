@@ -166,6 +166,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_fam');
 		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_gedcom');
+		$menu->addId('menu-fam');
 
 		if (WT_USER_CAN_EDIT) {
 			// edit_fam / members
@@ -173,6 +174,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu->addOnclick("return change_family_members('".$this->getFamilyID()."');");
 			$submenu->addIcon('edit_fam');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-fam-change');
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / add child
@@ -180,6 +182,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu->addOnclick("return addnewchild('".$this->getFamilyID()."');");
 			$submenu->addIcon('edit_fam');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-fam-addchil');
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / reorder_children
@@ -188,6 +191,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 				$submenu->addOnclick("return reorder_children('".$this->getFamilyID()."');");
 				$submenu->addIcon('edit_fam');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-fam-orderchil');
 				$menu->addSubmenu($submenu);
 			}
 
@@ -199,11 +203,14 @@ class WT_Controller_Family extends WT_Controller_Base {
 			if (!$this->show_changes) {
 				$label = WT_I18N::translate('This record has been updated.  Click here to show changes.');
 				$link = $this->family->getHtmlUrl().'&amp;show_changes=yes';
+				$submenu = new WT_Menu($label, $link);
+				$submenu->addId('menu-fam-showchan');
 			} else {
 				$label = WT_I18N::translate('Click here to hide changes.');
 				$link = $this->family->getHtmlUrl().'&amp;show_changes=no';
+				$submenu = new WT_Menu($label, $link);
+				$submenu->addId('menu-fam-hidechan');
 			}
-			$submenu = new WT_Menu($label, $link);
 			$submenu->addIcon('edit_fam');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 			$menu->addSubmenu($submenu);
@@ -212,10 +219,12 @@ class WT_Controller_Family extends WT_Controller_Base {
 				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "family.php?famid={$this->famid}&amp;action=undo");
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
 				$submenu->addIcon('edit_fam');
+				$submenu->addId('menu-fam-undochan');
 				$menu->addSubmenu($submenu);
 				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "family.php?famid={$this->famid}&amp;action=accept");
 				$submenu->addIcon('edit_fam');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$submenu->addId('menu-fam-savechan');
 				$menu->addSubmenu($submenu);
 			}
 
@@ -228,6 +237,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu->addOnclick("return edit_raw('".$this->getFamilyID()."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-fam-editraw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
@@ -238,6 +248,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-fam-viewraw');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -247,6 +258,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?')."')) return delete_family('".$this->getFamilyID()."'); else return false;");
 			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-fam-del');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -254,6 +266,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), 'family.php?action=addfav&amp;famid='.$this->getFamilyID().'&gamp;id='.$this->getFamilyID());
 		$submenu->addIcon('favorites');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addId('menu-fam-addfav');
 		$menu->addSubmenu($submenu);
 
 		//-- get the link for the first submenu and set it as the link for the main menu

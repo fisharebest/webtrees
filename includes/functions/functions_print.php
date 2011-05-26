@@ -689,12 +689,12 @@ function contact_menus($ged_id=WT_GED_ID) {
 	$menuitems=array();
 	if ($support_menu==$contact_menu) {
 		$support_menu['label']=WT_I18N::translate('Technical help contact');
-		$menuitems[]=$support_menu;
+		$menuitems['menu-help-technical']=$support_menu;
 	} else {
 		$support_menu['label']=WT_I18N::translate('Technical help contact');
-		$menuitems[]=$support_menu;
+		$menuitems['menu-help-technical']=$support_menu;
 		$contact_menu['label']=WT_I18N::translate('Genealogy contact');
-		$menuitems[]=$contact_menu;
+		$menuitems['menu-help-genealogy']=$contact_menu;
 	}
 	return $menuitems;
 }

@@ -51,6 +51,7 @@ class occupation_report_WT_Module extends WT_Module implements WT_Module_Report 
 		$menus=array();
 		$menu=new WT_Menu($this->getTitle(), 'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml');
 		$menu->addIcon('indis');
+		$menu->addId('menu-report-'.$this->getName());
 		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reports');
 		$menus[]=$menu;
 
