@@ -745,7 +745,7 @@ class WT_Media extends WT_GedcomRecord {
 	// If this object has no name, what do we call it?
 	public function getFallBackName() {
 		if ($this->canDisplayDetails()) {
-			return utf8_strtoupper(basename($this->file));
+			return basename($this->file);
 		} else {
 			return $this->getXref();
 		}
