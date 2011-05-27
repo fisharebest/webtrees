@@ -51,7 +51,7 @@ function edit_field_inline($name, $value) {
 // Create a text area for inline editing using jeditable
 function edit_text_inline($name, $value) {
 	return
-		'<span class="editable" id="' . $name . '">' . htmlspecialchars($value) . '</span>' .
+		'<span class="editable" style="white-space:pre-wrap;" id="' . $name . '">' . htmlspecialchars($value) . '</span>' .
 		WT_JS_START .
 		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", type: "textarea", rows:4, cols:60 })' .
 		WT_JS_END;
