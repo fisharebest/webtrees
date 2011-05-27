@@ -165,9 +165,9 @@ function print_fact(WT_Event $eventObj) {
 		echo
 			'<a onclick="return edit_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Edit'), '">',  $label,  '</a>',
 			'<div class="editfacts">',
-			'<div class="editlink"><a onclick="return edit_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '"</span></a></div>',
-			'<div class="copylink"><a onclick="return copy_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Copy'), '"><span class="link_text">', WT_I18N::translate('Copy'), '"</span></a></div>',
-			'<div class="deletelink"><a onclick="return delete_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '"</span></a></div>',
+			'<div class="editlink"><a onclick="return edit_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></a></div>',
+			'<div class="copylink"><a onclick="return copy_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Copy'), '"><span class="link_text">', WT_I18N::translate('Copy'), '</span></a></div>',
+			'<div class="deletelink"><a onclick="return delete_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>',
 			'</div>';
 	} else {
 		echo $label;

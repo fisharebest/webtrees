@@ -115,20 +115,34 @@ if (isset($controller)) {
 	if (empty($famid)) $famid = safe_POST('famid', WT_REGEX_XREF, '');
 }
 
-	
-echo '<div id="sidebarAccordion">';
-	$counter = 0;
+	echo '<div id="sidebarAccordion2">';
 	foreach ($sidebarmods as $mod) {
 		if (isset($controller)) $mod->setController($controller);
 		if ($mod->hasSidebarContent()) {
-			?>
-			<h3 title="<?php echo $mod->getName(); ?>"><a href="#"><?php echo '<span title="', $mod->getTitle(), '">', $mod->getTitle(), '</span>'; ?></a></h3>
-			<div id="sb_content_<?php echo $mod->getName(); ?>">
-			<?php  echo $mod->getSidebarContent();?>
-			</div>
-			<?php
-			$counter++;
+			if ($mod=="References") {
+				echo '<h3 title="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
+					'<div id="sb_content_', $mod->getName(), '">', $mod->getSidebarContent(), '</div>',
+					WT_JS_START,'jQuery("#sidebarAccordion2").accordion({active:0, icons:true, autoHeight: false, collapsible: true});', WT_JS_END;
+			}
+		}
+	}
+	echo '</div>';
+
+	$counter = 0;
+	echo '<div id="sidebarAccordion">';
+	foreach ($sidebarmods as $mod) {
+		if (isset($controller)) $mod->setController($controller);
+		if ($mod->hasSidebarContent()) {
+			if ($mod!="References") {
+				?>
+				<h3 title="<?php echo $mod->getName(); ?>"><a href="#"><?php echo '<span title="', $mod->getTitle(), '">', $mod->getTitle(), '</span>'; ?></a></h3>
+				<div id="sb_content_<?php echo $mod->getName(); ?>">
+				<?php  echo $mod->getSidebarContent();?>
+				</div>
+				<?php
+				$counter++;
+			}
 		}
 	}
 echo '</div>';
-echo WT_JS_START,'jQuery("#sidebarAccordion").accordion({active:0, icons:false, autoHeight: false, collapsible: true});', WT_JS_END;
+echo WT_JS_START,'jQuery("#sidebarAccordion").accordion({active:0, icons:true, autoHeight: false, collapsible: true});', WT_JS_END;

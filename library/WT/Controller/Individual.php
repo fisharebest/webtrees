@@ -276,8 +276,12 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$factrec = $event->getGedComRecord();
 		$linenum = $event->getLineNumber();
 
+		// Create a dummy record, so we can extract the formatted NAME value from the event.
+		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
+		
 		$this->name_count++;
-		echo '<div id="nameparts', $this->name_count, '"';
+		if ($this->name_count >1) { echo '<h3 class="name_two">',$dummy->getFullName(), '</h3>'; } //Other names accordion element
+		echo '<div id="indi_name_details"';
 		if (strpos($factrec, "\nWT_OLD")!==false) {
 			echo " class=\"namered\"";
 		}
@@ -285,14 +289,13 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			echo " class=\"nameblue\"";
 		}
 		echo ">";
-		// Create a dummy record, so we can extract the formatted NAME value from the event.
-		$dummy=new WT_Person('0 @'.$event->getParentObject()->getXref()."@ INDI\n1 DEAT Y\n".$factrec);
+
 		echo '<div id="name1">';
 		echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
 		echo '<dd class="field">', $dummy->getFullName();
-		if ($this->indi->canEdit() && !strpos($factrec, "\nWT_OLD") && $this->name_count > 1) {
-			echo "&nbsp;&nbsp;&nbsp;<a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Edit'), "</a> | ";
-			echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\">", WT_I18N::translate('Delete'), "</a>";
+		if ($this->indi->canEdit() && !strpos($factrec, "\nWT_OLD")) {
+			echo "&nbsp;&nbsp;<div class=\"deletelink\"><a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+			echo "&nbsp;&nbsp;&nbsp;<div class=\"editlink\"><a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>&nbsp;";
 		}
 		echo '</dd>';
 		echo '</dl>';
@@ -301,7 +304,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		for ($i=0; $i<$ct; $i++) {
 			echo '<div>';
 				$fact = trim($nmatch[$i][1]);
-				if (($fact!="SOUR")&&($fact!="NOTE")&&($fact!="GIVN")&&($fact!="SURN")&&($fact!="SPFX")) {
+				if (($fact!="SOUR")&&($fact!="NOTE") && ($fact!="SPFX")) {
 					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->indi), '</dt>';
 					echo '<dd class="field">';
 						if (isset($nmatch[$i][2])) {
@@ -344,27 +347,25 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$factrec = $event->getGedComRecord();
 		$sex = $event->getDetail();
 		if (empty($sex)) $sex = 'U';
-		echo '<div id="sex"';
+		echo '<span id="sex"';
 			if (strpos($factrec, "\nWT_OLD")!==false) {
 				echo ' class="namered"';
 			}
 			if (strpos($factrec, "\nWT_NEW")!==false) {
 				echo ' class="nameblue"';
 			}
-			echo '>';
-			echo '<dl><dt class="label">', WT_I18N::translate('Gender'), '</dt>';
-			echo '<dd class="field">';
 			switch ($sex) {
 			case 'M':
-				echo WT_I18N::translate('Male'), WT_Person::sexImage('M', 'small', '', WT_I18N::translate('Male'));
+				echo ' class="male_gender" title="'.WT_I18N::translate('Male').'"';
 				break;
 			case 'F':
-				echo WT_I18N::translate('Female'), WT_Person::sexImage('F', 'small', '', WT_I18N::translate('Female'));
+				echo ' class="female_gender" title="'.WT_I18N::translate('Female').'"';
 				break;
 			case 'U':
-				echo WT_I18N::translate_c('unknown gender', 'Unknown'), WT_Person::sexImage('U', 'small', '', WT_I18N::translate_c('unknown gender', 'Unknown'));
+				echo ' class="unknown_gender" title="'.WT_I18N::translate('Unknown').'"';
 				break;
 			}
+			echo '>&nbsp;';
 			if ($this->SEX_COUNT>1) {
 				if ($this->indi->canEdit() && strpos($factrec, "\nWT_OLD")===false) {
 					if ($event->getLineNumber()=="new") {
@@ -375,13 +376,11 @@ class WT_Controller_Individual extends WT_Controller_Base {
 					}
 				}
 			}
-			echo '</dd>';
-			echo '</dl>';
 			// -- find sources
-			print_fact_sources($event->getGedComRecord(), 2);
+//			print_fact_sources($event->getGedComRecord(), 2);
 			//-- find the notes
 			print_fact_notes($event->getGedComRecord(), 2);
-		echo '</div>';
+		echo '</span>';
 	}
 	/**
 	* get edit menu

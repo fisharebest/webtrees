@@ -52,9 +52,7 @@ if (!$controller->indi) {
 	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
 	print_footer();
 	exit;
-}
-
-if (!$controller->indi->canDisplayName()) {
+} else if (!$controller->indi->canDisplayName()) {
 	echo '<div class="facts_value" >';
 	print_privacy_error();
 	echo '</div>';
@@ -63,7 +61,6 @@ if (!$controller->indi->canDisplayName()) {
 }
 
 $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
-
 echo WT_JS_START; ?>
 // javascript function to open a window with the raw gedcom in it
 function show_gedcom_record(shownew) {
@@ -97,12 +94,11 @@ jQuery(document).ready(function() {
 	}
 	?>
 	});
-});
 
-jQuery(document).ready(function(){
+	// sidebar settings 
 	// Variables
 	var objMain			= jQuery('#main');
-	var objTabs			= jQuery('#tabs');
+	var objTabs			= jQuery('#indi_left');
 	var objBar			= jQuery('#sidebar');
 	var objSeparator	= jQuery('#separator');
 	// Show sidebar
@@ -138,88 +134,76 @@ jQuery(document).ready(function(){
 });
 <?php
 echo WT_JS_END;
-// ===================================== header area =======================================
+// ===================================== header area
 if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) {
-	echo '<b>', WT_I18N::translate('Changes successfully accepted into database'), '</b><br />';
+	echo '<strong>', WT_I18N::translate('Changes successfully accepted into database'), '</strong><br />';
 }
 if ($controller->indi->isMarkedDeleted()) {
 	echo '<span class="error">', WT_I18N::translate('This record has been marked for deletion upon admin approval.'), '</span>';
 }
 echo '<div id="main" class="use-sidebar sidebar-at-right">'; //overall page container
-echo '<div id="indi_header">';
-echo '<h1>',  $controller->indi->getFullName();
-if (WT_USER_IS_ADMIN) {
-	$user_id=get_user_from_gedcom_xref(WT_GED_ID, $controller->pid);
-	if ($user_id) {
-		$user_name=get_user_name($user_id);
-		echo ' - <a href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</a>';
-	}
-}
-echo '</h1>';
-if ($controller->indi->getAddName()) {
-	echo '<h1>', $controller->indi->getAddName(), '</h1>';
-}
-echo '<div id="indi_mainimage">';
-if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
-	echo $controller->getHighlightedObject();
-}
-echo '</div>'; // close #indi_mainimage
-echo '<div id="indi_name_details">';
-//Display name details
-if ($controller->indi->canDisplayDetails()) {
+echo '<div id="indi_left">',
+	'<div id="indi_header">';
+	if ($controller->indi->canDisplayDetails()) {
 	$globalfacts=$controller->getGlobalFacts();
-	$nameSex = array('NAME', 'SEX');
-	foreach ($globalfacts as $key=>$value) {
-		if ($key == 0) {
-			// First name
-			$fact = $value->getTag();
-			if (in_array($fact, $nameSex)) {
-				if ($fact=='NAME') $controller->print_name_record($value);
-			}
-			//Display facts
-			echo '<div id="indi_facts">';
-			//Display gender
-			foreach ($globalfacts as $key=>$value) {
-				$fact = $value->getTag();
-				if (in_array($fact, $nameSex)) {
-					if ($fact=='SEX') $controller->print_sex_record($value);
+		echo '<div id="header_accordion1">', // contain accordions for names
+			'<h3 class="name_one ', $controller->getPersonStyle($controller->indi), '"><span>', $controller->indi->getFullName(), '</span>'; // First name accordion element
+				if (WT_USER_IS_ADMIN) {
+					$user_id=get_user_from_gedcom_xref(WT_GED_ID, $controller->pid);
+					if ($user_id) {
+						$user_name=get_user_name($user_id);
+						echo '<span> - <a href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</span></a>';
+					}
 				}
-			}
-			// Display summary birth/death info.
-			$summary=$controller->indi->format_first_major_fact(WT_EVENTS_BIRT, 2);
-			// If living display age
-			if (!$controller->indi->isDead()) {
-				$bdate=$controller->indi->getBirthDate();
-				$age = WT_Date::GetAgeGedcom($bdate);
-				if ($age!='') $summary.= '<dl><dt class="label">'.WT_I18N::translate('Age').'</dt><span class="field">'.get_age_at_event($age, true).'</span></dl>';
-			}
-			$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);
-			if ($SHOW_LDS_AT_GLANCE) {
-				$summary.='<dl><span><b>'.get_lds_glance($controller->indi->getGedcomRecord()).'</b></span></dl>';
-			}
-			if ($summary) {
-				echo $summary;
-			}
-			echo '</div>'; // close #indi_facts
-		} else {
-			// 2nd and more names
-			$fact = $value->getTag();
-			if (in_array($fact, $nameSex)) {
-				if ($fact=='NAME') $controller->print_name_record($value);
-			}
+				// If living display age
+				if (!$controller->indi->isDead()) {
+					$bdate=$controller->indi->getBirthDate();
+					$age = WT_Date::GetAgeGedcom($bdate);
+					if ($age!='') echo '<span class="age">('.WT_I18N::translate('Age').' '.get_age_at_event($age, true).')</span>';
+				}
+				// Display summary birth/death info.
+				echo '<span id="dates">', $controller->indi->getBirthDeathYears(), '</span>';
+				//Display gender icon
+				$nameSex = array('NAME', 'SEX');
+				foreach ($globalfacts as $key=>$value) {
+					$fact = $value->getTag();
+					if (in_array($fact, $nameSex)) {
+						if ($fact=="SEX") $controller->print_sex_record($value);
+					}
+				}
+			echo '</h3>';
+			//Display name details
+				$nameSex = array('NAME', 'SEX');
+				foreach ($globalfacts as $key=>$value) {
+					if ($key == 0) {
+					// First name
+						$fact = $value->getTag();
+						if (in_array($fact, $nameSex)) {
+							if ($fact=="NAME") $controller->print_name_record($value);
+						}
+					}
+				}
+			//Display name details
+				$nameSex = array('NAME', 'SEX');
+				foreach ($globalfacts as $key=>$value) {
+					if ($key != 0) {
+						// 2nd and more names
+						$fact = $value->getTag();
+						if (in_array($fact, $nameSex)) {
+							if ($fact=="NAME") $controller->print_name_record($value);
+						}
+					}
+				}
+		echo '</div>'; // close header_accordion1
+		echo WT_JS_START,'jQuery("#header_accordion1").accordion({active:0, icon:false, autoHeight:false, collapsible: true});',	WT_JS_END; //accordion details
+		// Display highlight image
+		echo '<div id="indi_mainimage">';// highlighted image
+		if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
+			echo $controller->getHighlightedObject();
 		}
+		echo '</div>'; // close #indi_mainimage
 	}
-}
-echo '</div>'; // close #indi_name_details
-echo '<div id="hitcounter" class="clearfloat">';
-if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
-	//print indi counter only if displaying a non-private person
-	require WT_ROOT.'includes/hitcount.php';
-	echo WT_I18N::translate('Hit Count:'), ' ', $hitCount;
-}
-echo '</div>';// close #hitcounter
-echo '</div>'; // close #indi_header
-
+echo '</div>';// close #indi_header
 // ===================================== main content tabs
 if (!$controller->indi->canDisplayDetails()) {
 	echo '<div id="tabs" >';
@@ -228,7 +212,6 @@ if (!$controller->indi->canDisplayDetails()) {
 	print_footer();
 	exit;
 }
-
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
 }
@@ -260,21 +243,21 @@ foreach ($controller->tabs as $tab) {
 		}
 	}
 }
-echo '</div>'; // close #tabs 
+echo '</div>', // close #tabs
+	'</div>';//close indi_left
 // ===================================== sidebar area
 echo '<div id="sidebar">'; // sidebar code
 require './sidebar.php';
 echo
 	'</div>',  // close #sidebar
-	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></a>'; //clickable element to open/close sidebar
+	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></a>',//clickable element to open/close sidebar
+	'<div style="clear:both;">&nbsp;</div></div>', // close #main	
 // =======================================footer and other items 
-echo '</div>', // close #main
-		WT_JS_START,
-		'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}',
-		'if (typeof toggleByClassName == "undefined") {',
-		'alert("webtrees.js: A javascript function is missing.  Please clear your Web browser cache");',
-		'}',
-		'jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});', // scroll the page to top
-		WT_JS_END;
-
+WT_JS_START,
+'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}',
+'if (typeof toggleByClassName == "undefined") {',
+'alert("webtrees.js: A javascript function is missing.  Please clear your Web browser cache");',
+'}',
+'jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});', // scroll the page to top
+WT_JS_END;
 print_footer();

@@ -410,7 +410,8 @@ class WT_Person extends WT_GedcomRecord {
 		if (!$this->getBirthYear()) {
 			return '';
 		}
-		$tmp = '<span dir="ltr" title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthYear().'-</span>';
+		$tmp = '<span dir="ltr" title="'.strip_tags($this->getBirthDate()->Display()).'">'.$this->getBirthYear();
+			if (strip_tags($this->getDeathYear()) =='') { $tmp .= '</span>'; } else { $tmp .= '-</span>'; } 		
 		$tmp .= '<span title="'.strip_tags($this->getDeathDate()->Display()).'">'.$this->getDeathYear().'</span>';
 		// display age only for exact dates (empty date qualifier)
 		if ($age_at_death

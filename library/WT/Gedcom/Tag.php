@@ -952,6 +952,12 @@ class WT_Gedcom_Tag {
 		uasort($facts, 'utf8_strcasecmp');
 		return $facts;
 	}
+	
+	// Get a list of reference facts that will be displayed in the "References" sidebar module, and at the same time excluded from the personal_facts module
+	public static function getReferenceFacts() {
+		return array('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID');
+	}
+
 
 	//////////////////////////////////////////////////////////////////////////////
 	// Definitions for Object, File, Format, Types

@@ -163,13 +163,9 @@ $WT_IMAGES=array(
 	'zoomin'=>WT_THEME_DIR.'images/zoomin.png',
 	'zoomout'=>WT_THEME_DIR.'images/zoomout.png',
 	'stop'=>WT_THEME_DIR.'images/stop.png',
-	'pin-out'=>WT_THEME_DIR.'images/pin-out.png',
-	'pin-in'=>WT_THEME_DIR.'images/pin-in.png',
 	'default_image_M'=>WT_THEME_DIR.'images/silhouette_male.png',
 	'default_image_F'=>WT_THEME_DIR.'images/silhouette_female.png',
 	'default_image_U'=>WT_THEME_DIR.'images/silhouette_unknown.png',
-	'slide_open'=>WT_THEME_DIR.'images/open.png',
-	'slide_close'=>WT_THEME_DIR.'images/close.png',
 	'reminder'=>WT_THEME_DIR.'images/reminder.png',
 	'children'=>WT_THEME_DIR.'images/children.png',
 

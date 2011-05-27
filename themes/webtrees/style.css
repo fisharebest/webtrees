@@ -26,7 +26,7 @@
  *
  * @package webtrees
  * @subpackage Themes
- * @version $Id:style.css 11402 2011-04-28 06:44:53Z nigel $
+ * $Id$
  */
 
 
@@ -96,7 +96,6 @@ img.block, #calendar_img, #biglink img, #mycart img  {
 }
 
 .optionbox a img {
-	vertical-align:top;
 }
 
 .button {
@@ -325,7 +324,7 @@ a:hover .nameZoom {
 }
 
 .details1 {
-	font-size:10px;
+	/*font-size:10px; NIGEL */
 }
 
 .details2 {
@@ -384,11 +383,11 @@ a:hover .nameZoom {
 }
 
 .indent {
-	padding-left:7px;
+	padding-left:20px;
 }
 
 .indent_rtl {
-	padding-right:7px;
+	padding-right:20px;
 }
 
 .image {
@@ -437,6 +436,11 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	padding-left:5pt;
 	padding-right:0pt;
 }
+
+/*.link {
+	font-size: 11px;
+	text-align: center;
+}*/
 
 .sublinks_table {
 	border:solid #81a9cb 1px;
@@ -1394,85 +1398,6 @@ dd {
 	clear:both;
 }
 
-/* Classes for the INDI page header */
-
-#indi_header h1 {
-	color:#555555;
-	font-size:2em;
-	padding:0 .5em;
-	margin:0.25em 0 0 0;
-}
-
-#indi_header a {
-	color:#333377;
-	font-size:.75em;
-	font-weight:normal;
-}
-
-#indi_header a:hover {
-	color:red;
-}
-
-#indi_mainimage {
-	margin-right:15px;
-	vertical-align:top;
-	float:left;
-}
-html[dir='rtl'] #indi_mainimage {float:right;}
-
-#indi_name_details {
-	vertical-align:	top;
-	float:left;
-	margin:10px 0 0 0;
-	width:85%;
-}
-html[dir='rtl'] #indi_name_details {float:right;}
-
-#indi_name_details a {
-	color:#333377;
-}
-
-#indi_name_details dt:after { content:":"; }
-
-#indi_note {
-	margin:	0 0 5px 0;
-}
-
-#nameparts1 {
-	float:left;
-	margin-right:20px;
-	max-width:50%;
-}
-html[dir='rtl'] #nameparts1  {float:right; margin-left:20px;}
-
-#nameparts2, #nameparts3, #nameparts4, #nameparts5, #nameparts6  {
-	clear:left;
-}
-html[dir='rtl'] #nameparts2 {clear:right;}
-
-#name1 {
-	line-height:	1.6;
-	padding-bottom:	2px;
-}
-
-#indi_facts {
-	float:left;
-	padding:0 15px 0 0;
-	width:45%;
-}
-html[dir='rtl'] #indi_facts {float:right; padding:0 0 0 15px;}
-
-#sex {
-	margin-top:3px;
-}
-
-#hitcounter {
-	clear:left;
-	margin-bottom:10px;
-	padding-left:10px;
-}
-html[dir='rtl'] #hitcounter {clear:right;}
-
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {
 	width:450px;
@@ -1682,47 +1607,84 @@ html[dir='rtl'] .deletelink {
 #topMenu {margin:0 0 0 5%;width:92.5%;}
 html[dir='rtl'] #topMenu {margin: 0 5% 0 0;}
 
+/* =========== Indi header ================== */ 
+#indi_header {float:left; width:98%; border-radius: 3px; background: url("images/ui-bg_highlight-soft_100_e7eef3_1x100.png") repeat-x scroll 50% 50% #fff; border: 1px solid #B2C7D7; margin:5px 0; padding:10px;}
+html[dir='rtl'] #indi_header { float:right;}
+#indi_header h3 {color: #555555; font-size: 90%; font-weight:bold; margin: 0; padding: 0 10px 0 30px; text-align:left;}
+html[dir='rtl'] #indi_header h3 { padding: 0 30px 0 10px; text-align:right;}
+#indi_header h3.name_one {overflow:hidden; position:relative; font-size:1.5em;}
+#indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border:1px solid #2694E8;}
+#indi_header h3 .age {padding:5px 0 5px 5px; float:right; font-weight:normal; font-size:65%;}
+html[dir='rtl']  #indi_header h3 .age {padding:5px 5px 5px 0; float:left;}
+#indi_header h3 a {display:inline;}
+#indi_header a {color:#333377; font-size:0.75em; font-weight:normal;}
+#indi_header a:hover {color:red;}
+#main_name {color:#555555; float:left; font-size:2em; margin:10px; font-weight:bold;}
+html[dir='rtl'] #main_name {float:right;}
+#indi_mainimage {float:left; width:15%}
+html[dir='rtl'] #indi_mainimage {float:right;}
+#indi_mainimage a img {float:left; padding:0;}
+html[dir='rtl'] #indi_mainimage a img {float:right;}
+#indi_name_details {	margin:0; padding: 5px;}
+#indi_name_details a {color:#333377;}
+#indi_name_details dt:after { content:":"; }
+#name1 {}
+#indi_note {margin:	0 0 5px 0;}
+html[dir='rtl'] #indi_note .fact_NOTE {float:right; margin:00 0 10px;}
+#header_accordion1 {clear:both; float:right; width:84%;}
+html[dir='rtl'] #header_accordion1 {float:left;}
+.indi_table {clear:left;}
+html[dir='rtl'] .indi_table {clear:right;}
+#sex {float:right;}
+html[dir='rtl']  #sex {float:left;}	
+#dates {color: #555555; float:right;}
+html[dir='rtl']  #dates {	float:left;}
+dd .editlink, dd .deletelink  {float:right;}
+html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
+.fact_NOTE {float:left; margin:0 5px 0 0;}
+#indi_note .note_details {font-size:100%;}
+.fact_SOUR {margin: 3px 0}
+#indi_note .fact_SOUR a {font-size:100%; margin: 3px 0}
+
+/* INDI IMAGE SPRITE */
+.male_gender, .female_gender, .unknown_gender { display: block; background: url('images/indi_sprite.png') no-repeat; }
+.female_gender { background-position: -45px 3px; width: 24px;}
+.male_gender { background-position: -72px 5px; width: 24px;}
+.unknown_gender { background-position: -100px 4px; width: 24px;}
+
 /* ========= jquery-ui.custom.css changes ============ */
+.ui-tabs {padding:0;}
 .ui-tabs .ui-tabs-panel {padding:1em 0;}
 html[dir='rtl'] .ui-tabs { direction:rtl;}
 html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected, html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 .ui-accordion .ui-accordion-content {overflow:visible;}
-.ui-accordion .ui-accordion-header {text-align:center; padding:3px 0; margin-top:0;}
+.ui-accordion .ui-accordion-header {text-align:center; margin-top:0;}
+.ui-accordion .ui-accordion-header a {padding: 2px;}
+html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
+.ui-helper-reset {line-height: 1.6;}
 
 /* ========= Sidebar ============== */
-#main {min-width:600px;}
-#tabs,#sidebar {margin:0;}
-#sidebar {border-color:#DDD; display:none; margin:0 2px 0 0; height:auto;}
-html[dir='rtl'] #sidebar  {margin:0 0 0 2px;}
-#tabs {background-color:#FFF; border-color:#DDD; width:98%; overflow:auto;}
-.use-sidebar #tabs {	width:77%;}
+#main {min-width:600px; width:100%}
+#indi_left {float:left; width:98%;}
+html[dir='rtl'] #indi_left {float:right;}
+#tabs {background-color:#FFF; border-color:#DDD; float:left; width:100%; overflow:auto;}
+html[dir='rtl'] #tabs {float:right;}
+#sidebar {border-color:#DDD; display:none; margin:5px 2px 0 0; height:auto;}
+html[dir='rtl'] #sidebar  {margin:5px 0 0 2px;}
+.use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {	width:20%;}
 .use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float:right;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
-.sidebar-at-right #tabs {float:left;}
-html[dir='rtl'] .sidebar-at-right #tabs {float:right;}
-#separator {min-width:6px; max-width:10px; width:0.75%; background:#99c2ff url('images/indi_sprite.png') no-repeat -26px 100px; border:1px solid #81a9cb; -moz-border-radius-topleft:3px; -moz-border-radius-topright:3px;}
-html[dir='rtl'] #separator { background:#99c2ff url('images/indi_sprite.png') no-repeat -1px 100px;}
-.use-sidebar #separator { background:#99c2ff url('images/indi_sprite.png') no-repeat -1px 100px;}
+#separator {float:right; display:block; background:#99c2ff url('images/indi_sprite.png') no-repeat -26px 100px; width:0.75%; min-width: 6px; max-width:10px; border:1px solid #81a9cb; -moz-border-radius-topleft:3px; -moz-border-radius-topright:3px; margin-top:5px;}
+html[dir='rtl'] #separator {float:left; background:#99c2ff url('images/indi_sprite.png') no-repeat -1px 100px;}
+.use-sidebar #separator {background:#99c2ff url('images/indi_sprite.png') no-repeat -1px 100px;}
 html[dir='rtl'] .use-sidebar #separator {background:#99c2ff url('images/indi_sprite.png') no-repeat -26px 100px;}
 
 /* ============== Sidebar content items ============== */
+/* Family navigator */
 #sb_content_family_nav {padding:0;}
 #sb_family_nav_content {margin-top:8px;}
-.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.png');white-space:nowrap;}
-.sb_desc_indi_li {list-style-type:none;	white-space:nowrap;}
-.desc_tree_div {	display:none;}
-.desc_tree_div ul {padding:0px;	margin-left:10px;margin-top:0px;margin-right:0px;}
-html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
-#sb_desc_content {margin-left:3px; font-size:0.8em;}
-html[dir='rtl'] #sb_desc_content {margin-right:3px;}
-#sb_desc_content ul {padding:0px; margin:0px;}
-.name_tree_div {	display:none;}
-.name_tree_div ul, .name_tree_div_visible ul {padding:0px;margin:0px;}
-.name_tree_div li,  .name_tree_div_visible li {list-style:none;margin:0px;padding:0px;white-space:normal;}
-#sb_clippings_content ul {padding:0px;margin:0px;}
-#sb_clippings_content li {list-style:none;margin:0px;padding:0px;white-space:nowrap;}
 .nam a:hover {color:red;}
 .nav_content {width:100%; padding:0;}
 .flyout {color:#000000; 	text-align:left; margin-top:-20px; right:210px; padding:3px;}
@@ -1733,3 +1695,30 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
 #flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
 html[dir='rtl'] #flyout3 {text-align:right;}
+
+/* Descendancy */
+#sb_desc_content {margin-left:3px; font-size:0.8em;}
+html[dir='rtl'] #sb_desc_content {margin-right:3px;}
+#sb_desc_content ul {padding:0px; margin:0px;}
+.sb_desc_indi_li {list-style-type:none;	white-space:nowrap;}
+.desc_tree_div {	display:none;}
+.desc_tree_div ul {padding:0px;	margin-left:10px;margin-top:0px;margin-right:0px;}
+html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
+
+/* Individuals, Families */
+.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.png'); white-space:nowrap;}
+.name_tree_div {	display:none;}
+.name_tree_div ul, .name_tree_div_visible ul {padding:0px;margin:0px;}
+.name_tree_div li, .name_tree_div_visible li {list-style:none; margin:0px; padding:0px; white-space:normal;}
+
+/* Clippings */
+#sb_clippings_content ul {padding:0px; margin:0px;}
+#sb_clippings_content li {list-style:none; margin:0px; padding:0px; white-space:nowrap;}
+
+/* References */
+#sb_content_references {font-size:80%; font-weight:bold; margin-top:1px; padding:5px;}
+#sb_content_references .editfacts {float:right; margin-top:-30px;}
+html[dir='rtl'] #sb_content_references .editfacts {float:left;}
+#sb_content_references a {display:block;}
+#sb_content_references span {font-weight:normal;}
+#sb_content_references #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
