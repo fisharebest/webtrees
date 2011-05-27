@@ -2443,7 +2443,7 @@ class WT_Stats {
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
-						."d_fact IN ('DIV', 'ANUL', '_SEPR') AND "
+						."d_fact = 'DIV' AND "
 						."d_type='@#DGREGORIAN@'";
 						if ($year1>=0 && $year2>=0) {
 							$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
@@ -2470,7 +2470,7 @@ class WT_Stats {
 			.' WHERE'
 				.' divorced.d_gid = fam.f_id AND'
 				." fam.f_file = {$this->_ged_id} AND"
-				." divorced.d_fact IN ('DIV', 'ANUL', '_SEPR') AND"
+				." divorced.d_fact = 'DIV' AND"
 				.' divorced.d_julianday2 <> 0 AND'
 				.$years
 				.' (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)'
@@ -2479,7 +2479,7 @@ class WT_Stats {
 			$sql = "SELECT d_month, COUNT(*) AS total FROM `##dates` "
 				."WHERE "
 				."d_file={$this->_ged_id} AND "
-				."d_fact IN ('DIV', 'ANUL', '_SEPR')";
+				."d_fact = 'DIV'";
 				if ($year1>=0 && $year2>=0) {
 					$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 				}
@@ -3469,6 +3469,7 @@ class WT_Stats {
 		$tot_indi = $this->totalIndividuals();
 		$surnames = get_common_surnames($threshold);
 		if (count($surnames) <= 0) {return '';}
+		$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
 		uasort($surnames, array('WT_Stats', '_name_total_rsort'));
 		$surnames = array_slice($surnames, 0, $maxtoshow);
 		$all_surnames = array();
@@ -3481,7 +3482,7 @@ class WT_Stats {
 		$tot = 0;
 		$per = 0;
 		foreach ($surnames as $indexval=>$surname) {$tot += $surname['match'];}
-		$chart_title = "";
+		$chart_title = '';
 		$chd = '';
 		$chl = array();
 		foreach ($all_surnames as $surn=>$surns) {
@@ -3496,6 +3497,11 @@ class WT_Stats {
 					$top_name = $spfxsurn;
 				}
 			}
+			switch ($SURNAME_TRADITION) {
+			case 'polish':
+				// most common surname should be in male format (Kowalski, not Kowalska)
+				$top_name=preg_replace(array('/ska$/', '/cka$/', '/dzka$/', '/żka$/'), array('ski', 'cki', 'dzki', 'żki'), $top_name);
+			}
 			$per = round(100 * $count_per / $tot_indi, 0);
 			$chd .= self::_array_to_extended_encoding($per);
 			//ToDo: RTL names are often printed LTR when also LTR names are present
@@ -3509,7 +3515,7 @@ class WT_Stats {
 		$chart_title .= WT_I18N::translate('Other').' - '.($tot_indi-$tot);
 
 		$chl = join('|', $chl);
-		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=".rawurlencode($chl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
+		return '<img src="http://chart.apis.google.com/chart?cht=p3&amp;chd=e:'.$chd.'&amp;chs='.$size.'&amp;chco='.$color_from.','.$color_to.'&amp;chf=bg,s,ffffff00&amp;chl='.rawurlencode($chl).'" width="'.$sizes[0].'" height="'.$sizes[1].'" alt="'.$chart_title.'" title="'.$chart_title.'" />';
 	}
 
 
@@ -3600,7 +3606,7 @@ class WT_Stats {
 			switch ($type) {
 			case 'table':
 				$lookup=array('M'=>WT_I18N::translate('Male'), 'F'=>WT_I18N::translate('Female'), 'U'=>WT_I18N::translate_c('unknown gender', 'Unknown'), 'B'=>WT_I18N::translate('All'));
-				return '<table><tr><td colspan="2" class="descriptionbox center">'.$lookup[$sex].'</td></tr><tr><td class="descriptionbox center">'.WT_I18N::translate('Names').'</td><td class="descriptionbox center">'.WT_I18N::translate('Count').'</td></tr>'.join('', $common).'</table>';
+				return '<table><tr><td colspan="2" class="descriptionbox center">'.$lookup[$sex].'</td></tr><tr><td class="descriptionbox center">'.WT_Gedcom_Tag::getLabel('GIVN').'</td><td class="descriptionbox center">'.WT_I18N::translate('Count').'</td></tr>'.join('', $common).'</table>';
 			case 'list':
 				return "<ul>\n".join("\n", $common)."</ul>\n";
 			case 'nolist':
