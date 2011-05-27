@@ -447,6 +447,10 @@ if ($show == 'yes') {
 	for ($i=0; $i<$count; $i++) { 	// begin looping through the media
 		$media = $sortedMediaList[$start+$i];
 		$mediaobject = WT_Media::getInstance($media['XREF']);
+		if (!$mediaobject) {
+			// the media object was apparently deleted after the medialist was stored in the session
+			continue;
+		}
 		$isExternal = $mediaobject->isExternal();
 		if ($columns == '1') echo '<td class="list_value_wrap" width="80%">';
 		if ($columns == '2') echo '<td class="list_value_wrap" width="50%">';
