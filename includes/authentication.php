@@ -319,8 +319,12 @@ function addMessage($message) {
 	$email2 = $message["body"];
 	if (isset($message["from_name"]))
 		$email2 = WT_I18N::translate('Your Name:')." ".$message["from_name"]."\r\n".WT_I18N::translate('Email Address:')." ".$message["from_email"]."\r\n\r\n".$email2;
-	if (!empty($message["url"]))
-		$email2 .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".WT_SERVER_NAME.WT_SCRIPT_PATH.$message["url"]."\r\n";
+	if (!empty($message["url"])) {
+		if (strpos($message["url"],WT_SERVER_NAME.WT_SCRIPT_PATH)!==0) {
+			$message["url"]=WT_SERVER_NAME.WT_SCRIPT_PATH.$message["url"];
+		}
+		$email2 .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message["url"]."\r\n";
+	}
 	$email2 .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$_SERVER['REMOTE_ADDR']."\r\n";
 	$email2 .= "DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n";
 	$email2 .= "LANGUAGE: ".WT_LOCALE."\r\n";
@@ -375,7 +379,7 @@ function addMessage($message) {
 	//-- [ webtrees-Feature Requests-1588353 ] Supress admin IP address in Outgoing PGV Email
 	if (!userIsAdmin($user_id_from)) {
 		if (!empty($message["url"]))
-			$message["body"] .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".WT_SERVER_NAME.WT_SCRIPT_PATH.$message["url"]."\r\n";
+			$message["body"] .= "\r\n\r\n--------------------------------------\r\n\r\n".WT_I18N::translate('This message was sent while viewing the following URL: ')."\r\n".$message["url"]."\r\n";
 		$message["body"] .= "\r\n=--------------------------------------=\r\nIP ADDRESS: ".$_SERVER['REMOTE_ADDR']."\r\n";
 		$message["body"] .= "DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n";
 		$message["body"] .= "LANGUAGE: ".WT_LOCALE."\r\n";
