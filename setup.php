@@ -609,7 +609,7 @@ try {
 		" user_name VARCHAR(32)            NOT NULL,".
 		" real_name VARCHAR(64)            NOT NULL,".
 		" email     VARCHAR(64)            NOT NULL,".
-		" password  VARCHAR(64)            NOT NULL,".
+		" password  VARCHAR(128)           NOT NULL,".
 		" PRIMARY KEY     (user_id),".
 		" UNIQUE  KEY ux1 (user_name),".
 		" UNIQUE  KEY ux2 (email)".
