@@ -570,6 +570,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	white-space:nowrap;
 	visibility:hidden;
 	position:absolute;
+	padding:5px;
 }
 
 .submenuitem {
@@ -1608,7 +1609,7 @@ html[dir='rtl'] .deletelink {
 html[dir='rtl'] #topMenu {margin: 0 5% 0 0;}
 
 /* =========== Indi header ================== */ 
-#indi_header {float:left; width:98%; border-radius: 3px; background: url("images/ui-bg_highlight-soft_100_e7eef3_1x100.png") repeat-x scroll 50% 50% #fff; border: 1px solid #B2C7D7; margin:5px 0; padding:10px;}
+#indi_header {float:left; width:98%; border-radius: 3px; border: 1px solid #B2C7D7; margin:5px 0; padding:10px;}
 html[dir='rtl'] #indi_header { float:right;}
 #indi_header h3 {color: #555555; font-size: 90%; font-weight:bold; margin: 0; padding: 0 10px 0 30px; text-align:left;}
 html[dir='rtl'] #indi_header h3 { padding: 0 30px 0 10px; text-align:right;}
