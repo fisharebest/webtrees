@@ -1662,7 +1662,6 @@ html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected, html[dir='rtl'] .ui-ta
 .ui-accordion .ui-accordion-header {text-align:center; margin-top:0;}
 .ui-accordion .ui-accordion-header a {padding: 2px;}
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
-.ui-helper-reset {line-height: 1.6;}
 
 /* ========= Sidebar ============== */
 #main {min-width:600px; width:100%}
