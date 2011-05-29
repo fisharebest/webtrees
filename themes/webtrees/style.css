@@ -1697,6 +1697,7 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 html[dir='rtl'] #flyout3 {text-align:right;}
 
 /* Descendancy */
+#sb_content_descendancy {margin-top:5px;}
 #sb_desc_content {margin-left:3px; font-size:0.8em;}
 html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 #sb_desc_content ul {padding:0px; margin:0px;}
@@ -1706,12 +1707,14 @@ html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
 
 /* Individuals, Families */
+#sb_content_individuals, #sb_content_families {margin-top:5px;}
 .sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.png'); white-space:nowrap;}
 .name_tree_div {	display:none;}
 .name_tree_div ul, .name_tree_div_visible ul {padding:0px;margin:0px;}
 .name_tree_div li, .name_tree_div_visible li {list-style:none; margin:0px; padding:0px; white-space:normal;}
 
 /* Clippings */
+#sb_content_clippings {margin-top:5px;}
 #sb_clippings_content ul {padding:0px; margin:0px;}
 #sb_clippings_content li {list-style:none; margin:0px; padding:0px; white-space:nowrap;}
 

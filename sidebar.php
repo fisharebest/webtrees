@@ -122,7 +122,7 @@ if (isset($controller)) {
 			if ($mod=="References") {
 				echo '<h3 title="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
 					'<div id="sb_content_', $mod->getName(), '">', $mod->getSidebarContent(), '</div>',
-					WT_JS_START,'jQuery("#sidebarAccordion2").accordion({active:0, icons:true, autoHeight: false, collapsible: true});', WT_JS_END;
+					WT_JS_START,'jQuery("#sidebarAccordion2").accordion({active:0, autoHeight: false, collapsible: true});', WT_JS_END;
 			}
 		}
 	}
@@ -145,4 +145,4 @@ if (isset($controller)) {
 		}
 	}
 echo '</div>';
-echo WT_JS_START,'jQuery("#sidebarAccordion").accordion({active:0, icons:true, autoHeight: false, collapsible: true});', WT_JS_END;
+echo WT_JS_START,'jQuery("#sidebarAccordion").accordion({active:0, autoHeight: false, collapsible: true});', WT_JS_END;
