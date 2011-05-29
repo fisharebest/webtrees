@@ -1,4 +1,11 @@
-/* @version $Id$ */
+/*
+ * @version $Id$
+ */
+
+/* 
+ * The following style definitions can be removed when IE supports the "opacity" 
+ * specification in place of its proprietary and non-standard method.
+ */
 
 .rela {
 	filter: alpha(opacity=67);
@@ -7,3 +14,8 @@
 a.showit:hover span {
 	filter: alpha(opacity=85);
 }
+.makeMenu li ul {
+	top: 2px;\9
+}
+
+
