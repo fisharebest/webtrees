@@ -68,13 +68,14 @@ if ($sb_action!='none') {
 		foreach ($sidebarmods as $mod) {
 			if (isset($controller)) $mod->setController($controller);
 			if ($mod->hasSidebarContent()) {
-				?>
-				<h3 title="<?php echo $mod->getName(); ?>"><a href="#"><?php echo '<span title="', $mod->getTitle(), '">', $mod->getTitle(), '</span>'; ?></a></h3>
-				<div id="sb_content_<?php echo $mod->getName(); ?>">
-				<?php if ($counter==0) echo $mod->getSidebarContent();
-				else { ?><img src="<?php echo WT_THEME_DIR; ?>images/loading.gif" /><?php } ?>
-				</div>
-				<?php
+				echo '<h3 id="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
+						'<div id="sb_content_', $mod->getName(), '">';
+				if ($counter==0) {
+					echo $mod->getSidebarContent();
+				} else {
+					echo '<img src="', WT_THEME_DIR, 'images/loading.gif" />';
+				}
+				echo '</div>';
 				$counter++;
 			}
 		}
@@ -120,7 +121,7 @@ if (isset($controller)) {
 		if (isset($controller)) $mod->setController($controller);
 		if ($mod->hasSidebarContent()) {
 			if ($mod=="References") {
-				echo '<h3 title="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
+				echo '<h3 id="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
 					'<div id="sb_content_', $mod->getName(), '">', $mod->getSidebarContent(), '</div>',
 					WT_JS_START,'jQuery("#sidebarAccordion2").accordion({active:0, autoHeight: false, collapsible: true});', WT_JS_END;
 			}
@@ -134,12 +135,8 @@ if (isset($controller)) {
 		if (isset($controller)) $mod->setController($controller);
 		if ($mod->hasSidebarContent()) {
 			if ($mod!="References") {
-				?>
-				<h3 title="<?php echo $mod->getName(); ?>"><a href="#"><?php echo '<span title="', $mod->getTitle(), '">', $mod->getTitle(), '</span>'; ?></a></h3>
-				<div id="sb_content_<?php echo $mod->getName(); ?>">
-				<?php  echo $mod->getSidebarContent();?>
-				</div>
-				<?php
+				echo '<h3 id="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
+					'<div id="sb_content_', $mod->getName(), '">', $mod->getSidebarContent(), '</div>';
 				$counter++;
 			}
 		}
