@@ -100,7 +100,7 @@ function select_edit_control_inline($name, $values, $empty, $selected, $extra=''
 	$values['selected']=$selected;
 	return
 		'<span class="editable" id="' . $name . '">' .
-		(array_key_exists($selected, $values) ? htmlspecialchars($values[$selected]) : '').
+		(array_key_exists($selected, $values) ? html_entity_decode(htmlspecialchars($values[$selected])) : '').
 		'</span>' .
 		WT_JS_START .
 		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", callback:function(value, settings) {jQuery(this).html(settings.data[value]);} })' .
