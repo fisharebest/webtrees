@@ -1736,6 +1736,16 @@ ul.clist {
 	margin-left: 0px;
 }
 
+/* ========= Positioning edit, copy, delete links ============= */
+/* General use */
+.editfacts {clear:left;	padding-top:15px;} /* a container for the following three links */
+.editlink, .copylink, .deletelink {float:left;}
+html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelink {float:right;}
+/* Indi header */
+.field  .editlink, .field  .deletelink, .field .copylink {float:right;}
+html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:left;}
+/* =========== end edit, copy, delete links ==================== */
+
 /* =========== Indi header ================== */ 
 #indi_header {float:left; width:98%; border-radius: 3px; margin:5px 0; padding:0 10px;}
 html[dir='rtl'] #indi_header { float:right;}
