@@ -1443,29 +1443,23 @@ html[dir='rtl'] td.descriptionbox  a {
 	float: right;
 }
 
-.editfacts { /* a container for the following three links */
-	clear: both;
-}
-
-.link_text {
-}
-
-.link_text:hover {
-	text-decoration: underline;
-}
-
-.editlink, .copylink , .deletelink {
-	float:left;
-	padding: 5px 5px 0 0;
-}
-html[dir='rtl'] .editlink, html[dir='rtl'] .copylink , html[dir='rtl'] .deletelink {
-	float:right;
-	padding: 5px 0 0 5px;
-}
-
 .logo {
 	text-align: center;
 }
+
+/* ========= Positioning edit, copy, delete links ============= */
+/* General use */
+.editfacts {clear:both;	padding-top:15px;} /* a container for the following three links */
+.editlink, .copylink, .deletelink {float:left; padding:5px 5px 0 0;
+}
+html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelink {float:right; padding:5px 0 0 5px;
+}
+span.link_text  {}
+span.link_text:hover {text-decoration: underline;}
+/* Indi header */
+.field  .editlink, .field  .deletelink, .field .copylink {float:right;}
+html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:left;}
+/* =========== end edit, copy, delete links ==================== */
 
 /* =========== Indi header ================== */ 
 #indi_header {float:left; width:98%; margin:5px 0; padding:0 10px 0 0;}

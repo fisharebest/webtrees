@@ -1549,64 +1549,23 @@ html[dir='rtl'] #extra-menu.makeMenu li ul {
 	right:auto;
 }
 
-/*--- edit links ---*/
-
-.edit_link:after { /* used only on the user list */
-	content:" " url(images/edit.png);
-}
-
-td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
-	color:#ffffff;
-}
-
-.editfacts { /* a container for the following three links */
-	clear:left;
-	padding-top:15px;
-}
-
-.link_text {
-	visibility :hidden;
-}
-
-.editlink  {
-	background:url(images/edit.png) no-repeat left center;
-	width:20px;
-	float:left;
-}
-html[dir='rtl'] .editlink {
-	background:url(images/edit.png) no-repeat right center;
-	float:right;
-}
-
-.copylink  {
-	background:url(images/copy.png) no-repeat left center;
-	width:20px;
-	float:left;
-}
-html[dir='rtl'] .copylink {
-	background:url(images/copy.png) no-repeat right center;
-	float:right;
-}
-
-.deletelink  {
-	background:url(images/delete.png) no-repeat left center;
-	width:20px;
-	float:left;
-}
-html[dir='rtl'] .deletelink {
-	background:url(images/delete.png) no-repeat right center;
-	float:right;
-}
-
-.place {
-	padding-top:5px;
-}
-
-.logo {
-	text-align:center;
-}
+.edit_link:after {content:" " url(images/edit.png);}/* used only on the user list */
+td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when it is a link as when not */
+.place {	padding-top:5px;}
+.logo {text-align:center;}
 #topMenu {margin:0 0 0 5%;width:92.5%;}
 html[dir='rtl'] #topMenu {margin: 0 5% 0 0;}
+
+/* ========= Positioning edit, copy, delete links ============= */
+/* General use */
+.editfacts {clear:left;	padding-top:15px;} /* a container for the following three links */
+.editlink, .copylink, .deletelink {float:left;}
+html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelink {float:right;}
+span.link_text  {display:none;}
+/* Indi header */
+.field  .editlink, .field  .deletelink, .field .copylink {float:right;}
+html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:left;}
+/* =========== end edit, copy, delete links ==================== */
 
 /* =========== Indi header ================== */ 
 #indi_header {float:left; width:98%; border-radius: 3px; border: 1px solid #B2C7D7; margin:5px 0; padding:10px;}
@@ -1648,10 +1607,13 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 #indi_note .fact_SOUR a {font-size:100%; margin: 3px 0}
 
 /* INDI IMAGE SPRITE */
-.male_gender, .female_gender, .unknown_gender { display: block; background: url('images/indi_sprite.png') no-repeat; }
-.female_gender { background-position: -45px 3px; width: 24px;}
-.male_gender { background-position: -72px 5px; width: 24px;}
-.unknown_gender { background-position: -100px 4px; width: 24px;}
+.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon { display: block; background: url('images/indi_sprite.png') no-repeat; }
+.female_gender {background-position: -45px 3px; width: 24px;}
+.male_gender {background-position: -72px 3px; width: 24px;}
+.unknown_gender {background-position: -100px 4px; width: 24px;}
+.editicon {background-position: -40px -32px; width: 24px; height:16px;}
+.copyicon {background-position: -70px -32px; width: 24px; height:16px;}
+.deleteicon {background-position: -100px -32px; width: 24px; height:16px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs {padding:0;}
@@ -1661,6 +1623,7 @@ html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected, html[dir='rtl'] .ui-ta
 .ui-accordion .ui-accordion-content {overflow:visible;}
 .ui-accordion .ui-accordion-header {text-align:center; margin-top:0;}
 .ui-accordion .ui-accordion-header a {padding: 2px;}
+.ui-helper-reset {line-height: 1.5;}
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 
 /* ========= Sidebar ============== */

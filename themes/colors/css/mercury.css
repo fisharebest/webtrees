@@ -1776,10 +1776,10 @@ dd .editlink, dd .deletelink  {float:right;}
 html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 
 /* INDI IMAGE SPRITE */
-.male_gender, .female_gender, .unknown_gender { display: block; background: url('../images/indi_sprite.png') no-repeat; }
-.female_gender { background-position: -45px 3px; width: 24px;}
-.male_gender { background-position: -72px 5px; width: 24px;}
-.unknown_gender { background-position: -100px 5px; width: 24px;}
+.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon { display: block; background: url('../images/indi_sprite.png') no-repeat; }
+.female_gender {background-position: -45px 3px; width: 24px;}
+.male_gender {background-position: -72px 3px; width: 24px;}
+.unknown_gender {background-position: -100px 4px; width: 24px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-widget-content                                         { color:black;  }
@@ -1799,9 +1799,7 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 .ui-state-active, .ui-widget-content .ui-state-active { border: 0px ; }
 .ui-state-default a:link { color: #707070;}
 .ui-state-active a:link { color: #707070;}
-.ui-state-default .ui-icon {
-    background-image: url("/js/jquery/css/images/ui-icons_ffffff_256x240.png")!important;
-}
+html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 
 .ui-tabs-nav li.ui-tabs-selected { background: #fff; }
 

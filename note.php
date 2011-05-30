@@ -94,7 +94,7 @@ echo '<tr><td align="left" class="descriptionbox ', $TEXT_DIRECTION, '">';
 		if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top" />';
 		echo WT_I18N::translate('Shared note'), '</a>';
 		echo '<div class="editfacts">';
-			echo '<a href="javascript: edit_note()" title="', WT_I18N::translate('Edit'), '"><div class="editlink"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
+			echo '<div class="editlink"><a class="editicon" href="javascript: edit_note()" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
 		echo '</div>';
 	} else { 
 		if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top" />';

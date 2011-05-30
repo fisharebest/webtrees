@@ -1032,44 +1032,6 @@ div.faq_body {
 td.descriptionbox  a { 
 }
 
-.editfacts  a:hover { 
-	background-color: transparent;
-}
-
-.link_text {
-	visibility : hidden;
-}
-
-.editlink, editlink  {
-	background: url(images/edit_sm.png) no-repeat left center;
-	width: 20px;
-	float: left;
-}
-html[dir='rtl'] .editlink, html[dir='rtl'] editlink  {
-	background: url(images/edit_sm.png) no-repeat right center;
-	float: right;
-}
-
-.copylink  {
-	background: url(images/copy.png) no-repeat left center;
-	width: 20px;
-	float: left;
-}
-html[dir='rtl'] .copylink, html[dir='rtl'] copylink  {
-	background: url(images/copy.png) no-repeat right center;
-	float: right;
-}
-
-.deletelink  {
-	background: url(images/delete.png) no-repeat left center;
-	width: 20px;
-	float: left;
-}
-html[dir='rtl'] .deletelink, html[dir='rtl'] deletelink  {
-	background: url(images/delete.png) no-repeat right center;
-	float: right;
-}
-
 ul.clist {
 	list-style-image: none;
 	text-decoration:none;
@@ -1077,6 +1039,18 @@ ul.clist {
 	margin: 0px;
 	margin-left: -23px;
 }
+
+/* ========= Positioning edit, copy, delete links ============= */
+/* General use */
+.editfacts {clear:left;	padding-top:15px;} /* a container for the following three links */
+.editfacts  a:hover, .field a:hover {background-color: transparent!important;}
+.editlink, .copylink, .deletelink {float:left;}
+html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelink {float:right;}
+span.link_text  {display:none;}
+/* Indi header */
+.field  .editlink, .field  .deletelink, .field .copylink {float:right;}
+html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:left;}
+/* =========== end edit, copy, delete links ==================== */
 
 /* =========== Indi header ================== */ 
 #indi_header {float:left; width:98%; border-radius: 3px; margin:5px 0; padding:0 10px;}
@@ -1117,10 +1091,13 @@ dd .editlink, dd .deletelink  {float:right;}
 html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 
 /* INDI IMAGE SPRITE */
-.male_gender, .female_gender, .unknown_gender { display: block; background: url('images/indi_sprite.png') no-repeat; }
-.female_gender { background-position: -45px 3px; width: 24px;}
-.male_gender { background-position: -72px 5px; width: 24px;}
-.unknown_gender { background-position: -100px 4px; width: 24px;}
+.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon { display: block; background: url('images/indi_sprite.png') no-repeat; }
+.female_gender {background-position: -45px 3px; width: 24px;}
+.male_gender {background-position: -72px 3px; width: 24px;}
+.unknown_gender {background-position: -100px 4px; width: 24px;}
+.editicon {background-position: -40px -32px; width: 24px; height:16px;}
+.copyicon {background-position: -70px -32px; width: 24px; height:16px;}
+.deleteicon {background-position: -100px -32px; width: 24px; height:16px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-widget-content a:hover  { color:red; }

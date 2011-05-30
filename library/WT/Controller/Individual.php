@@ -294,8 +294,8 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
 		echo '<dd class="field">', $dummy->getFullName();
 		if ($this->indi->canEdit() && !strpos($factrec, "\nWT_OLD")) {
-			echo "&nbsp;&nbsp;<div class=\"deletelink\"><a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
-			echo "&nbsp;&nbsp;&nbsp;<div class=\"editlink\"><a href=\"javascript:;\" class=\"font9\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>&nbsp;";
+			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+			echo "<div class=\"editlink\"><a href=\"javascript:;\" class=\"font9 editicon\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
 		}
 		echo '</dd>';
 		echo '</dl>';
