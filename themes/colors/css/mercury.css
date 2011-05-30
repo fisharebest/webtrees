@@ -1811,11 +1811,11 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 .ui-state-active a:link { color: #707070;}
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 .ui-state-default .ui-icon {
-    background-image: url("/js/jquery/css/images/ui-icons_222222_256x240.png");
+    background-image: url("../../../js/jquery/css/images/ui-icons_222222_256x240.png");
 }
 
 .ui-state-active .ui-icon {
-    background-image: url("/js/jquery/css/images/ui-icons_222222_256x240.png");
+    background-image: url("../../../js/jquery/css/images/ui-icons_222222_256x240.png");
 }
 }
 
@@ -1877,7 +1877,7 @@ html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
 
 /* Individuals, Families */
-table.width66{margin-left: auto;margin-right: auto;}.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.gif');white-space:nowrap;}
+table.width66{margin-left: auto;margin-right: auto;}.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('../images/plus.gif');white-space:nowrap;}
 .name_tree_div li, .name_tree_div_visible li {white-space:normal;}
 .name_tree_div {	display:none;}
 .name_tree_div li,  .name_tree_div_visible li {list-style:none;margin:0px;padding:0px;white-space:nowrap;}
