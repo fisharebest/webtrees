@@ -1844,11 +1844,11 @@ html[dir='rtl'] #sidebar  {margin:5px 0 0 2px;}
 .use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float: right;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
 .sidebar-at-right #separator {float: right;}
-html[dir='rtl'] .sidebar-at-right #separator {float: right;}
+html[dir='rtl'] .sidebar-at-right #separator {float: left;}
 #separator {float:right; display: block; background: #04AF23 url('../images/indi_sprite.png') no-repeat -26px 100px; min-width:6px; max-width:10px; width:0.75%; border: 1px solid #999; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; margin-top:5px;}
 html[dir='rtl'] #separator {float:left; background: #04AF23 url('../images/indi_sprite.png') no-repeat -1px 100px;}
 .use-sidebar #separator { background: #04AF23 url('../images/indi_sprite.png') no-repeat -1px 100px;}
-html[dir='rtl'] .use-sidebar #separator {background: #04AF23 url('images/indi_sprite.png') no-repeat -26px 100px;}
+html[dir='rtl'] .use-sidebar #separator {background: #04AF23 url('../images/indi_sprite.png') no-repeat -26px 100px;}
 
 /* ============== Sidebar content items ============== */
 /* Family navigator */
