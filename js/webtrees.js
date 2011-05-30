@@ -895,7 +895,7 @@ function show_submenu(elementid, parentid, dir) {
 					//if (textDirection=="rtl") element.style.left = (element.offsetLeft-70)+'px';
 				}
 				else {
-					pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft-0;
+					pagewidth = document.body.scrollWidth+document.documentElement.scrollLeft-55;
 					if (textDirection=="rtl") {
 						boxright = element.offsetLeft+element.offsetWidth+10;
 					}
