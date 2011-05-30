@@ -1739,10 +1739,10 @@ ul.clist {
 /* =========== Indi header ================== */ 
 #indi_header {float:left; width:98%; border-radius: 3px; margin:5px 0; padding:0 10px;}
 html[dir='rtl'] #indi_header { float:right;}
-#indi_header h3 {color: #ffffff; font-size: 90%; font-weight:bold; margin: 0; padding: 0 10px 0 30px; text-align:left;}
+#indi_header h3 {color: #707070; font-size: 90%; font-weight:bold; margin: 0; padding: 0 10px 0 30px; text-align:left;}
 html[dir='rtl'] #indi_header h3 { padding: 0 30px 0 10px; text-align:right;}
 #indi_header h3.name_one {overflow:hidden; position:relative; font-size:1.5em;}
-#indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border: 1px solid #999; background:#af2604; }
+#indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border: 1px solid #999; background:#f6edd5; }
 #indi_header h3 .age {padding:5px 0 5px 5px; float:right; font-weight:normal; font-size:65%;}
 html[dir='rtl']  #indi_header h3 .age {padding:5px 5px 5px 0; float:left;}
 #indi_header h3 a {display:inline;}
@@ -1769,7 +1769,7 @@ html[dir='rtl'] #header_accordion1 {float:left;}
 html[dir='rtl'] .indi_table {clear:right;}
 #sex {float:right;}
 html[dir='rtl']  #sex {float:left;}	
-#dates {color: #ffffff; float:right;}
+#dates {color: #333333; float:right;}
 html[dir='rtl']  #dates {	float:left;}
 #dates .details1 {font-size: 1em;}
 dd .editlink, dd .deletelink  {float:right;}
@@ -1800,6 +1800,14 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 .ui-state-default a:link { color: #000000;}
 .ui-state-active a:link { color: #ffffff;}
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
+.ui-state-default .ui-icon {
+    background-image: url("/js/jquery/css/images/ui-icons_222222_256x240.png");
+}
+
+.ui-state-active .ui-icon {
+    background-image: url("/js/jquery/css/images/ui-icons_222222_256x240.png");
+}
+}
 
 .ui-tabs-nav li.ui-tabs-selected { background: #fff; }
 
