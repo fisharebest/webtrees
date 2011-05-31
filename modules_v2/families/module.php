@@ -36,12 +36,12 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a sidebar which allows for easy navigation of famlies in a list format.');
+		return WT_I18N::translate('A sidebar that shows an alphabetic list of all the families in the family tree.');
 	}
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 40;
+		return 50;
 	}
 
 	// Implement WT_Module_Sidebar

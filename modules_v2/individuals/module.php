@@ -36,12 +36,12 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a sidebar which allows for easy navigation of individuals in a list format.');
+		return WT_I18N::translate('A sidebar that shows an alphabetic list of all the individuals in the family tree.');
 	}
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 30;
+		return 40;
 	}
 
 	// Implement WT_Module_Sidebar

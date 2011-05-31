@@ -124,7 +124,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 50;
+		return 60;
 	}
 
 	// Impelement WT_Module_Sidebar

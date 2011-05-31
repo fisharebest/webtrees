@@ -31,17 +31,17 @@ if (!defined('WT_WEBTREES')) {
 class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Descendancy');
+		return WT_I18N::translate('Descendants');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a sidebar which allows for easy navigation of individuals in a descendants tree-view format.');
+		return WT_I18N::translate('A sidebar that shows the descendants of an individual.');
 	}
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 20;
+		return 30;
 	}
 
 	// Implement WT_Module_Sidebar

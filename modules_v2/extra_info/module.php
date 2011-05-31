@@ -1,11 +1,8 @@
 <?php
-// Classes and libraries for module system
+// A sidebar to show extra/non-genealogical information about an individual
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -21,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id: module.php 11459 2011-05-04 23:37:08Z nigel $
+//  $Id: module.php 11459 2011-05-04 23:37:08Z nigel $
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -30,20 +27,20 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-class references_WT_Module extends WT_Module implements WT_Module_Sidebar {
+class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('References');
+		return WT_I18N::translate('Extra information');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a sidebar containing references for the individual.');
+		return WT_I18N::translate('A sidebar that shows non-genealogical facts and other information about an indivdual.');
 	}
 
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
-		return 8;
+		return 10;
 	}
 
 	// Implement WT_Module_Sidebar
