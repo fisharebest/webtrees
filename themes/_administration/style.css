@@ -321,6 +321,7 @@ html[dir='rtl'] .upload_media th {text-align:right;}
 html[dir='rtl'] .upload_media td+td {padding-right:20px;}
 
 /* MANAGE MODULES */
+#installed_table {width:100%;}
 #installed_table th {min-width:60px;}
 
 /* MANAGE MENUS, TABS, BLOCKS, SIDEBAR, REPORTS */
