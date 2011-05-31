@@ -510,10 +510,7 @@ if (isset($content) && $content==1) {
 
 		?>
 			<tr>
-				<td class="descriptionbox" colspan="4"><?php echo WT_I18N::translate('Fill in the following parameters for the plot'), help_link('stat'); ?></td>
-			</tr>
-			<tr>
-			<td class="descriptionbox width25 wrap"><?php echo WT_I18N::translate('Select chart type:'), help_link('stat_x'); ?></td>
+			<td class="descriptionbox width25 wrap"><?php echo WT_I18N::translate('Select chart type:'); ?></td>
 			<td class="optionbox">
 			<input type="radio" id="stat_11" name="x-as" value="11"
 			<?php
@@ -655,7 +652,7 @@ if (isset($content) && $content==1) {
 			</select>
 			</div>
 			</td>
-			<td class="descriptionbox width20 wrap" id="axes"><?php echo WT_I18N::translate('Categories:'), help_link('stat_z'); ?></td>
+			<td class="descriptionbox width20 wrap" id="axes"><?php echo WT_I18N::translate('Categories:'); ?></td>
 			<td class="optionbox width30" id="zyaxes">
 			<input type="radio" id="z_none" name="z-as" value="300"
 			<?php
@@ -690,7 +687,7 @@ if (isset($content) && $content==1) {
 			</select>
 			<br /><br />
 			<?php
-			echo WT_I18N::translate('results:'), help_link('stat_y'), '<br />';
+			echo WT_I18N::translate('results:'), '<br />';
 			?>
 			<input type="radio" id="y_num" name="y-as" value="201"
 			<?php

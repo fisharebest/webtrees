@@ -2900,11 +2900,6 @@ case 'soundex_search':
 	$text=WT_I18N::translate('Soundex is a method of coding words according to their pronunciation.  This allows you to search the database for names and places when you don\'t know precisely how they are written.  <b>webtrees</b> supports two different Soundex algorithms that produce vastly different results.<ul><li><b>Basic</b><br />This method, patented in 1918 by Russell, is very simple and can be done by hand.<br /><br />Because the Basic method retains the first letter of the name as part of the resultant code, it is not very helpful when you are unsure of that first letter.  The Basic algorithm is not well suited to names that were originally in languages other than English, and even with English names the results are very surprising.  For example, a Basic Soundex search for <b>Smith</b> will return not only <b>Smith, Smid, Smit, Schmidt, Smyth, Smithe, Smithee, Schmitt</b>, all of which are clearly variations of <b>Smith</b>, but also <b>Smead, Sneed, Smoote, Sammett, Shand,</b> and <b>Snoddy</b>.  <br /><br /></li><li><b>Daitch-Mokotoff</b><br />This method, developed in 1985, is much more complex than the Basic method and is not easily done by hand.<br /><br />A Soundex search using this method produces much more accurate results.</li></ul>For details on both Soundex algorithms, visit this <a href="http://www.jewishgen.org/infofiles/soundex.html" target=_blank><b>Jewish Genealogical Society</b></a> web page.');
 	break;
 
-case 'stat':
-	$title=WT_I18N::translate('Options for statistics plots');
-	$text=WT_I18N::translate('A number of different plots of statistics from your database can be produced.<br /><br />Select the chart, then adjust the options from the drop-down boxes.<br /><br />The numbers included in each plot depend on the data available. For example, individuals without a month of birth (e.g. just \'1856\') cannot be included in a plot of births by month.');
-	break;
-
 case 'stat_gax':
 	$title=WT_I18N::translate('Select the desired age interval');
 	$text=WT_I18N::translate('For example, <b>interval 10 years</b> describes the following set of age ranges:<div style="padding-left:30px;">younger than one year<br />one year to 5 years<br />6 to 10<br />11 to 20<br />21 to 30<br />31 to 40<br />41 to 50<br />51 to 60<br />61 to 70<br />71 to 80<br />81 to 90<br />91 to 100<br />older than 100 years</div>');
@@ -2930,21 +2925,6 @@ case 'stat_gwx':
 case 'stat_gwz':
 	$title=WT_I18N::translate('Boundaries for Z axis');
 	$text=WT_I18N::translate('Select the desired starting year and interval<br /><br />For example, <b>from 1700 interval 50 years</b> describes the following set of date ranges:<div style="padding-left:30px;">before 1700<br />1700 to 1749<br />1750 to 1799<br />1800 to 1849<br />1850 to 1899<br />1900 to 1949<br />1950 to 1999<br />2000 or later</div>');
-	break;
-
-case 'stat_x':
-	$title=WT_I18N::translate('X axis');
-	$text=WT_I18N::translate('The following options are available for the X axis (horizontal). Each will then be presented according to options set for the Y and Z axes.<p style="padding-left: 25px"><b>Month of birth</b>&nbsp;&nbsp;individuals born in each month.<br /><b>Month of death</b>&nbsp;&nbsp;individuals who died in each month.<br /><b>Month of marriage</b>&nbsp;&nbsp;marriages that occurred in each month.<br /><b>Month of birth of first child in a relation</b>&nbsp;&nbsp;the number of first-borns for each family by month.<br /><b>Month of first marriage</b>&nbsp;&nbsp;the number of first marriages per month.<br /><b>Months between marriage and first child</b>&nbsp;&nbsp;the number of months between marriage and birth of first child to that couple.<br /><b>Age related to birth year</b>&nbsp;&nbsp;age at death, related to the time period that includes each person\'s birth year.<br /><b>Age related to death year</b>&nbsp;&nbsp;age at death, related to the time period that includes each person\'s year of death.<br /><b>Age in year of marriage</b>&nbsp;&nbsp;the average age of individuals at the time of their marriages.<br /><b>Age in year of first marriage</b>&nbsp;&nbsp;the average age of individuals at the time of their first marriage.<br /><b>Number of children</b>&nbsp;&nbsp;average family sizes.<br /><b>Individual distribution</b>&nbsp;&nbsp;placement of all persons or persons with the specified name, by country.<br /><b>Birth by country</b>&nbsp;&nbsp;country of birth.<br /><b>Marriage by country</b>&nbsp;&nbsp;country of marriage.<br /><b>Death by country</b>&nbsp;&nbsp;country of death.<br /><b>Individuals with sources</b>&nbsp;&nbsp;pie chart of individuals with sources.<br /><b>Families with sources</b>&nbsp;&nbsp;pie chart of families with sources.</p>');
-	break;
-
-case 'stat_y':
-	$title=WT_I18N::translate('Y axis');
-	$text=WT_I18N::translate('The following options are available for the Y axis (vertical). These options alter the way the items presented on the X axis are displayed.<p style="padding-left: 25px"><b>numbers</b>&nbsp;&nbsp;displays the number of individuals in each category defined by the X axis.<br /><b>percentage</b>&nbsp;&nbsp;calculates and diplays the proportion of each item in the X axis categories.</p>');
-	break;
-
-case 'stat_z':
-	$title=WT_I18N::translate('Z axis');
-	$text=WT_I18N::translate('The following options are available for the Z axis. These options provide a sub-division of the categories selected for the X axis.<p style="padding-left: 25px"><b>none</b>&nbsp;&nbsp;displays the items as a single column for each X axis category.<br /><b>gender</b>&nbsp;&nbsp;displays the items in 2 columns (male and female) for each X axis category.<br /><b>date periods</b>&nbsp;&nbsp;displays the items in a number of columns related to the time periods set in the next section, for each X axis category.</p>');
 	break;
 
 case 'talloffset':
