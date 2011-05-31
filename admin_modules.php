@@ -123,9 +123,9 @@ print_header(WT_I18N::translate('Module administration'));
 			{ sClass: "center" },
 			{ sClass: "center" },
 			{ sClass: "center" },
+			{ sClass: "center", bVisible: false }, // The WT_Module system does not yet include charts
 			{ sClass: "center" },
-			{ sClass: "center" },
-			{ sClass: "center" }
+			{ sClass: "center", bVisible: false } // The WT_Module system does not yet include themes
 		]
 	});
 });
