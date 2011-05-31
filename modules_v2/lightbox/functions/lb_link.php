@@ -46,15 +46,8 @@ $classSuffix = '';
 if ($TEXT_DIRECTION=='rtl') $classSuffix = '_rtl';
 // main link displayed on page
 $menu = new WT_Menu();
-if ($LB_ML_THUMB_LINKS == 'icon' || $LB_ML_THUMB_LINKS == 'both') {
-	$menu->addIcon('image_link');
-}
-if ($LB_ML_THUMB_LINKS == 'both') {
-	$menu->addLabel(WT_I18N::translate('Set link'), 'down');
-}
-if ($LB_ML_THUMB_LINKS == 'text') {
-	$menu->addLabel(WT_I18N::translate('Set link'));
-}
+$menu->addIcon('image_link');
+$menu->addLabel(WT_I18N::translate('Set link'), 'down');
 $menu->addOnclick("return ilinkitem('$mediaid','person')");
 $menu->addClass('', '', 'submenu');
 $menu->addFlyout('left');

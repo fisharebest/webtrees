@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-global $GEDCOM, $LB_AL_HEAD_LINKS;
+global $GEDCOM;
 $reorder=safe_get('reorder', '1', '0');
 ?>
 <script language="javascript" type="text/javascript">
@@ -69,90 +69,36 @@ if (isset($reorder) && $reorder==1) {
 	echo '<br />';
 } else {
 	//Show Lightbox-Album header Links
-	echo '<table border="0" width="75%"><tr>';
-	if ($LB_AL_HEAD_LINKS == 'icon' || (!WT_USER_IS_ADMIN && !WT_USER_CAN_EDIT)) {
-		echo '<td>';
-	}
 	if (WT_USER_IS_ADMIN) {
-		if ($LB_AL_HEAD_LINKS == 'both') {
-			// Configuration
-			echo '<td class="width15 center wrap" valign="top">';
-			echo '<a href="javascript:goto_config_lightbox()">';
-			echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_edit.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Lightbox-Album Configuration'), '" alt="', WT_I18N::translate('Lightbox-Album Configuration'), '" /><br />';
-			echo WT_I18N::translate('Lightbox-Album Configuration'), '&nbsp;';
-			echo '</a>';
-			echo '</td>';
-			// Add a new multimedia object
-			echo '<td class="width15 center wrap" valign="top">';
-			echo '<a href="javascript: album_add()">';
-			echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" alt="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" /><br />';
-			echo WT_I18N::translate('Add a new Media Object'), '&nbsp;';
-			echo '</a>';
-			echo '</td>';
-			// Link to an existing item
-			echo '<td class="width15 center wrap" valign="top">';
-			echo '<a href="javascript: album_link()">';
-			echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_link.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" alt="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" /><br />';
-			echo WT_I18N::translate('Link to an existing Media Object'), '&nbsp;';
-			echo '</a>';
-			echo '</td>';
-			// Popup Reorder Media
-			echo '<td class="width15 center wrap" valign="top">';
-			echo '<a href="javascript: reorder_media()">';
-			echo '<img src="', WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media (window)'), '" alt="', WT_I18N::translate('Re-order media (window)'), '" /><br />';
-			echo WT_I18N::translate('Re-order media (window)'), '&nbsp;';
-			echo '</a>';
-			echo '</td>';
-		} else if ($LB_AL_HEAD_LINKS == 'text') {
-			// Configuration
-			echo '<td class="width15 center wrap" valign="top">';
-			echo '<a href="javascript:goto_config_lightbox()">';
-			echo WT_I18N::translate('Lightbox-Album Configuration'), '&nbsp;';
-			echo '</a>';
-			echo '</td>';
-			//Add a new multimedia object
-			echo '<td class="width15 center wrap" valign="top">';
-			echo '<a href="javascript: album_add()"> ';
-			echo WT_I18N::translate('Add a new Media Object'), '&nbsp;';
-			echo '</a>';
-			echo '</td>';
-			// Link to an existing item
-			echo '<td class="width15 center wrap" valign="top">';
-			echo '<a href="javascript: album_link()">';
-			echo WT_I18N::translate('Link to an existing Media Object'), '&nbsp;';
-			echo '</a>';
-			echo '</td>';
-			// Popup Reorder Media
-			echo '<td class="width15 center wrap" valign="top">';
-			echo '<a href="javascript: reorder_media()">';
-			echo WT_I18N::translate('Re-order media'), '&nbsp;';
-			echo '</a>';
-			echo '</td>';
-		} else if ($LB_AL_HEAD_LINKS == 'icon') {
-			// Configuration
-			echo '&nbsp;&nbsp;&nbsp;';
-			echo '<a href="javascript:goto_config_lightbox()">';
-			echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_edit.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Lightbox-Album Configuration'), '" alt="', WT_I18N::translate('Lightbox-Album Configuration'), '" />';
-			echo '</a>';
-			// Add a new multimedia object
-			echo '&nbsp;&nbsp;&nbsp;';
-			echo '<a href="javascript: album_add()">';
-			echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" alt="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" />';
-			echo '</a>';
-			// Link to an existing item
-			echo '&nbsp;&nbsp;&nbsp;';
-			echo '<a href="javascript: album_link()">';
-			echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_link.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" alt="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" />';
-			echo '</a>';
-			// Popup Reorder Media
-			echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-			echo '<a href="javascript: reorder_media()">';
-			echo '<img src="', WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media (window)'), '" alt="', WT_I18N::translate('Re-order media (window)'), '" /><br />';
-			echo '</a>';
-		}
-	}
-	if ($LB_AL_HEAD_LINKS == 'icon' || (!WT_USER_IS_ADMIN && !WT_USER_CAN_EDIT)) {
+		echo '<table border="0" width="75%"><tr>';
+		// Configuration
+		echo '<td class="width15 center wrap" valign="top">';
+		echo '<a href="javascript:goto_config_lightbox()">';
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_edit.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Lightbox-Album Configuration'), '" alt="', WT_I18N::translate('Lightbox-Album Configuration'), '" /><br />';
+		echo WT_I18N::translate('Lightbox-Album Configuration'), '&nbsp;';
+		echo '</a>';
 		echo '</td>';
+		// Add a new multimedia object
+		echo '<td class="width15 center wrap" valign="top">';
+		echo '<a href="javascript: album_add()">';
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" alt="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" /><br />';
+		echo WT_I18N::translate('Add a new Media Object'), '&nbsp;';
+		echo '</a>';
+		echo '</td>';
+		// Link to an existing item
+		echo '<td class="width15 center wrap" valign="top">';
+		echo '<a href="javascript: album_link()">';
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_link.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" alt="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" /><br />';
+		echo WT_I18N::translate('Link to an existing Media Object'), '&nbsp;';
+		echo '</a>';
+		echo '</td>';
+		// Popup Reorder Media
+		echo '<td class="width15 center wrap" valign="top">';
+		echo '<a href="javascript: reorder_media()">';
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media (window)'), '" alt="', WT_I18N::translate('Re-order media (window)'), '" /><br />';
+		echo WT_I18N::translate('Re-order media (window)'), '&nbsp;';
+		echo '</a>';
+		echo '</td>';
+		echo '</tr></table>';
 	}
-	echo '</tr></table>';
 }

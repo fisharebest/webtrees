@@ -41,7 +41,7 @@ if (!defined('WT_WEBTREES')) {
  */
 function lightbox_print_media_row($rtype, $rowm, $pid) {
 
-	global $TEXT_DIRECTION, $LB_TT_BALLOON;
+	global $TEXT_DIRECTION;
 	global $item, $sort_i, $notes;
 
 	$reorder=safe_get('reorder', '1', '0');
@@ -159,7 +159,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		}
 
 		// Tooltip Options
-		$tt_opts = ", BALLOON," . $LB_TT_BALLOON ;
+		$tt_opts = ", BALLOON," . true ; // true=balloon, false=normal
 		$tt_opts .= ", LEFT," . $left;
 		$tt_opts .= ", ABOVE, true";
 		$tt_opts .= ", TEXTALIGN, '" . $alignm . "'";
