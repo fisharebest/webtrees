@@ -464,44 +464,30 @@ if ($show == 'yes') {
 
 			if (WT_USE_LIGHTBOX) {
 				if (WT_USER_CAN_EDIT) {
-					if ($LB_ML_THUMB_LINKS != 'none') {
-						echo '<table border=0><tr>';
-						// ---------- Edit Media --------------------
-						echo '<td class="width33 wrap center font9" valign="top">';
-						echo "<a href=\"javascript:;\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
-						if ($LB_ML_THUMB_LINKS == 'icon' || $LB_ML_THUMB_LINKS == 'both') {
-							echo '<img src="'.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '" />&nbsp;&nbsp;&nbsp;';
-						}
-						if ($LB_ML_THUMB_LINKS == 'both') {
-							echo '<br />';
-						}
-						if ($LB_ML_THUMB_LINKS == 'both' || $LB_ML_THUMB_LINKS == 'text') {
-							echo WT_I18N::translate('Edit Details') ;
-						}
-						echo '</a>';
-						echo '</td>';
-						// ---------- Link Media to person, family or source  ---------------
-						echo '<td class="width33 wrap center font9" valign="top">';
-						require  WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_link.php';
-						echo '</td>';
-						// ---------- View Media Details (mediaviewer) --------------------
-						echo '<td class="width33 wrap center font9" valign="top">';
-						echo '<a href="'.$mediaobject->getHtmlUrl().'" title="', WT_I18N::translate('View this Media Item\'s Details 
+					echo '<table border=0><tr>';
+					// ---------- Edit Media --------------------
+					echo '<td class="width33 wrap center font9" valign="top">';
+					echo "<a href=\"javascript:;\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
+					echo '<img src="'.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '" />&nbsp;&nbsp;&nbsp;';
+					echo '<br />';
+					echo WT_I18N::translate('Edit Details') ;
+					echo '</a>';
+					echo '</td>';
+					// ---------- Link Media to person, family or source  ---------------
+					echo '<td class="width33 wrap center font9" valign="top">';
+					require  WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_link.php';
+					echo '</td>';
+					// ---------- View Media Details (mediaviewer) --------------------
+					echo '<td class="width33 wrap center font9" valign="top">';
+					echo '<a href="'.$mediaobject->getHtmlUrl().'" title="', WT_I18N::translate('View this Media Item\'s Details 
 Plus other Media Options - MediaViewer page'), '">';
-						if ($LB_ML_THUMB_LINKS == 'icon' || $LB_ML_THUMB_LINKS == 'both') {
-							echo '&nbsp;&nbsp;&nbsp;<img src="'.WT_MODULES_DIR.'lightbox/images/image_view.gif" alt="" class="icon" title="', WT_I18N::translate('View this Media Item\'s Details 
+					echo '&nbsp;&nbsp;&nbsp;<img src="'.WT_MODULES_DIR.'lightbox/images/image_view.gif" alt="" class="icon" title="', WT_I18N::translate('View this Media Item\'s Details 
 Plus other Media Options - MediaViewer page'), '" />';
-						}
-						if ($LB_ML_THUMB_LINKS == 'both') {
-							echo '<br />';
-						}
-						if ($LB_ML_THUMB_LINKS == 'both' || $LB_ML_THUMB_LINKS == 'text') {
-							echo WT_I18N::translate('View Details') ;
-						}
-						echo '</a>';
-						echo '</td>';
-						echo '</tr></table>';
-					}
+					echo '<br />';
+					echo WT_I18N::translate('View Details') ;
+					echo '</a>';
+					echo '</td>';
+					echo '</tr></table>';
 					// ------------ Linespace ---------------------
 					echo '<br />';
 				}
