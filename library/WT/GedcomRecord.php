@@ -669,8 +669,6 @@ class WT_GedcomRecord {
 					return '<br /><em>'.$event->getLabel().' '.format_fact_date($event).format_fact_place($event).'</em>';
 				case 2:
 					return '<dl><dt class="label">'.$event->getLabel().'</dt><dd class="field">'.format_fact_date($event).format_fact_place($event).'</dd></dl>';
-				case 3:
-					return $event->getDate()->MinDate()->Format('%Y');
 				}
 			}
 		}

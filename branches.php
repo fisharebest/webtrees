@@ -140,7 +140,7 @@ function print_fams($person, $famid=null) {
 	}
 	$current = $person->getSexImage().
 		'<a target="_blank" class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
-		$person->getBirthDeathYears().' '.$sosa;
+		$person->getLifeSpan().' '.$sosa;
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
 		$famcrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $person->getGedcomRecord());
@@ -188,7 +188,7 @@ function print_fams($person, $famid=null) {
 			list($surn2, $givn2) = explode(', ', $spouse_name.', x');
 			$txt .= $spouse->getSexImage().
 				'<a class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$spouse->getHtmlUrl().'">'.PrintReady($givn2).' </a>'.
-				'<a class="'.$class.'" title="'.WT_I18N::translate('Branches').'" href="'.WT_SCRIPT_NAME.'?surn='.urlencode($spouse_surname).'&amp;ged='.WT_GEDURL.'">'.PrintReady($surn2).'</a> '.$spouse->getBirthDeathYears().' '.$sosa2;
+				'<a class="'.$class.'" title="'.WT_I18N::translate('Branches').'" href="'.WT_SCRIPT_NAME.'?surn='.urlencode($spouse_surname).'&amp;ged='.WT_GEDURL.'">'.PrintReady($surn2).'</a> '.$spouse->getLifeSpan().' '.$sosa2;
 		}
 		echo $txt;
 		echo '<ol>';

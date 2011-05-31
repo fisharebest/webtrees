@@ -394,10 +394,7 @@ class TreeView {
   			$sexSymbol = WT_UTF8_NO_SEX;
   			break;
   	}
-  	$born=$p->format_first_major_fact(WT_EVENTS_BIRT, 3);
-  	$died=$p->format_first_major_fact(WT_EVENTS_DEAT, 3);
-  	$dates = $born || $died ? '<i class="dates">'.$born.'-'.$died.'</i>' : '';
-  	$r = '<div class="tv'.$sex.'"'.$title.'>'.$dates.'<a href="'.$p->getHtmlUrl().'"><span class="tvSexSymbol tv'.$sex.' tv_link">'.$sexSymbol.'</span></a>&nbsp;'.$p->getFullName().'</div>';
+  	$r = '<div class="tv'.$sex.'"'.$title.'>'.$p->getLifeSpan().'<a href="'.$p->getHtmlUrl().'"><span class="tvSexSymbol tv'.$sex.' tv_link">'.$sexSymbol.'</span></a>&nbsp;'.$p->getFullName().'</div>';
   	return $r;
   }
 

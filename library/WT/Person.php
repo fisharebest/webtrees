@@ -428,6 +428,20 @@ class WT_Person extends WT_GedcomRecord {
 		return $tmp;
 	}
 
+	// Get the range of years in which a person lived.  e.g. "1870–", "1870–1920", "–1920".
+	// Provide the full date using a tooltip.
+	// For consistent layout in charts, etc., show just a "–" when no dates are known.
+	// Note that this is a (non-breaking) en-dash, and not a hyphen.
+	public function getLifeSpan() {
+		return
+			/* I18N: A range of years, e.g. "1870–", "1870–1920", "–1920" */
+			WT_I18N::translate(
+				'%1$s–%2$s',
+				'<span title="'.htmlspecialchars(strip_tags($this->getBirthDate()->Display())).'">'.$this->getBirthDate()->MinDate()->Format('%Y').'</span>',
+				'<span title="'.htmlspecialchars(strip_tags($this->getDeathDate()->Display())).'">'.$this->getDeathDate()->MinDate()->Format('%Y').'</span>'
+			);
+	}
+
 	// Get all the dates/places for births/deaths - for the INDI lists
 	function getAllBirthDates() {
 		if (is_null($this->_getAllBirthDates)) {

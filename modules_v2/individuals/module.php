@@ -200,7 +200,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if ($person->canDisplayName()) {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
 				if ($person->canDisplayDetails()) {
-					$bd = $person->getBirthDeathYears(false,'');
+					$bd = $person->getLifeSpan();
 					if (!empty($bd)) {
 						$out .= PrintReady(' ('.$bd.')');
 					}
@@ -234,7 +234,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if ($person->canDisplayName()) {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
 				if ($person->canDisplayDetails()) {
-					$bd = $person->getBirthDeathYears(false,'');
+					$bd = $person->getLifeSpan();
 					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');
 				}
 				$out .= '</a></li>';

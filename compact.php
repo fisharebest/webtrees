@@ -314,7 +314,7 @@ function print_td_person($n) {
 		$text .= "<br />";
 		if ($indi->canDisplayDetails()) {
 			$text.="<span class='details1'>";
-			$text.=$indi->getBirthYear().'-'.$indi->getDeathYear();
+			$text.=$indi->getLifeSpan();
 			$age=WT_Date::GetAgeYears($indi->getBirthDate(), $indi->getDeathDate());
 			if ($age) {
 				$text.=" <span class=\"age\">".PrintReady("({$age})")."</span>";
@@ -322,9 +322,6 @@ function print_td_person($n) {
 			$text.="</span>";
 		}
 	}
-
-	//Removed by BH causing problems with nicknames not printing
-	//$text = unhtmlentities($text);
 
 	// -- empty box
 	if (empty($text)) {

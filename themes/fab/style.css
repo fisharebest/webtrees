@@ -1059,8 +1059,8 @@ html[dir='rtl'] #indi_header { float:right;}
 html[dir='rtl'] #indi_header h3 { padding: 0 30px 0 10px; text-align:right;}
 #indi_header h3.name_one {overflow:hidden; position:relative; font-size:1.5em;}
 #indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border:1px solid darkGray;}
-#indi_header h3 .age {padding:5px 0 5px 5px; float:right; font-weight:normal; font-size:65%;}
-html[dir='rtl']  #indi_header h3 .age {padding:5px 5px 5px 0; float:left;}
+#indi_header h3 .fact_AGE {padding:5px 0 5px 5px; float:right; font-weight:normal; font-size:65%;}
+html[dir='rtl']  #indi_header h3 .fact_AGE {padding:5px 5px 5px 0; float:left;}
 #indi_header h3 a {display:inline;}
 #indi_header a {color:#333377; font-size:0.75em; font-weight:normal;}
 #indi_header a:hover {color:red;}

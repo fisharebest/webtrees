@@ -155,14 +155,17 @@ echo '<div id="indi_left">',
 						echo '<span> - <a href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</span></a>';
 					}
 				}
-				// If living display age
-				if (!$controller->indi->isDead()) {
-					$bdate=$controller->indi->getBirthDate();
-					$age = WT_Date::GetAgeGedcom($bdate);
-					if ($age!='') echo '<span class="age">('.WT_I18N::translate('Age').' '.get_age_at_event($age, true).')</span>';
+				$bdate=$controller->indi->getBirthDate();
+				$ddate=$controller->indi->getDeathDate();
+				if ($bdate->isOK() && !$controller->indi->isDead()) {
+					// If living display age
+					echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true));
+				} elseif ($bdate->isOK() && $ddate->isOK()) {
+					// If dead, show age at death
+					echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false));
 				}
 				// Display summary birth/death info.
-				echo '<span id="dates">', $controller->indi->getBirthDeathYears(), '</span>';
+				echo '<span id="dates">', $controller->indi->getLifeSpan(), '</span>';
 				//Display gender icon
 				$nameSex = array('NAME', 'SEX');
 				foreach ($globalfacts as $key=>$value) {

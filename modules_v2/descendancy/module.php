@@ -143,8 +143,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		else $out .= '<img src="'.$WT_IMAGES['plus'].'" border="0" class="plusminus" />';
 		$out .= $person->getSexImage().' '.$person->getListName().' ';
 		if ($person->canDisplayDetails()) {
-			$bd = $person->getBirthDeathYears(false,'');
-			if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');
+			$out .= PrintReady(' ('.$person->getLifeSpan().')');
 		}
 		$out .= '</a> <a href="'.$person->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_indi'].'" border="0" alt="indi" /></a>';
 		if ($generations>0) {

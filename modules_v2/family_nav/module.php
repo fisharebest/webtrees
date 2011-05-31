@@ -152,8 +152,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());
-						echo "<font size=\"1\"><br />" . $people["husb"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-						echo " - " . $people["husb"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+						echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 						echo "</a>";
 						?>
 					</td>
@@ -177,8 +176,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						echo PrintReady($people["wife"]->getFullName());
-						echo "<font size=\"1\"><br />" . $people["wife"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-						echo " - " . $people["wife"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+						echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 						echo "</a>";
 						?>
 					</td>
@@ -212,13 +210,11 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							<?php
 							if ($pid == $child->getXref()) {
 								echo "<span style=\"font: 12px tahoma, arial, helvetica, sans-serif;\">".PrintReady($child->getFullName())."</span>";
-								echo "<br /><span style=\"font:9px tahoma, arial, helvetica, sans-serif;\">".$child->format_first_major_fact(WT_EVENTS_BIRT, 3);
-								echo " - " . $child->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</span>";
+								echo "<br /><span style=\"font:9px tahoma, arial, helvetica, sans-serif;\">".$child->getLifeSpan() . "</span>";
 							} else {
 								echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 								echo PrintReady($child->getFullName());
-								echo "<font size=\"1\"><br />" . $child->format_first_major_fact(WT_EVENTS_BIRT, 3);
-								echo " - " . $child->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+								echo "<font size=\"1\"><br />" . $child->getLifeSpan() . "</font>";
 								echo "</a>";
 							}
 							?>
@@ -273,8 +269,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());
-						echo "<font size=\"1\"><br />" . $people["husb"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-						echo " - " . $people["husb"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+						echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 						echo "</a>";
 						?>
 					</td>
@@ -307,8 +302,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						echo PrintReady($people["wife"]->getFullName());
-						echo "<font size=\"1\"><br />" . $people["wife"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-						echo " - " . $people["wife"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+						echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 						echo "</a>";
 						?>
 					</td>
@@ -334,8 +328,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							<?php
 							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							echo PrintReady($child->getFullName());
-							echo "<font size=\"1\"><br />" . $child->format_first_major_fact(WT_EVENTS_BIRT, 3);
-							echo " - " . $child->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+							echo "<font size=\"1\"><br />" . $child->getLifeSpan() . "</font>";
 							echo "</a>";
 							?>
 						</td>
@@ -385,13 +378,11 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						if ($pid == $people["husb"]->getXref()) {
 							echo PrintReady($people["husb"]->getFullName());
-							echo "<font size=\"1\"><br />" . $people["husb"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-							echo " - " . $people["husb"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+							echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 						} else {
 							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 							echo PrintReady($people["husb"]->getFullName());
-							echo "<font size=\"1\"><br />" . $people["husb"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-							echo " - " . $people["husb"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+							echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 							echo "</a>";
 						}
 						?>
@@ -416,13 +407,11 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						if ($pid == $people["wife"]->getXref()) {
 							echo PrintReady($people["wife"]->getFullName());
-							echo "<font size=\"1\"><br />" . $people["wife"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-							echo " - " . $people["wife"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+							echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 						} else {
 							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 							echo PrintReady($people["wife"]->getFullName());
-							echo "<font size=\"1\"><br />" . $people["wife"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-							echo " - " . $people["wife"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+							echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 							echo "</a>";
 						}
 						?>
@@ -449,8 +438,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							<?php
 							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							echo PrintReady($child->getFullName());
-							echo "<font size=\"1\"><br />" . $child->format_first_major_fact(WT_EVENTS_BIRT, 3);
-							echo " - " . $child->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+							echo "<font size=\"1\"><br />" . $child->getLifeSpan() . "</font>";
 							echo "</a>";
 							?>
 						</td>
@@ -498,8 +486,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());
-						echo "<font size=\"1\"><br />" . $people["husb"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-						echo " - " . $people["husb"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+						echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 						echo "</a>";
 						?>
 					</td>
@@ -526,8 +513,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						echo PrintReady($people["wife"]->getFullName());
-						echo "<font size=\"1\"><br />" . $people["wife"]->format_first_major_fact(WT_EVENTS_BIRT, 3);
-						echo " - " . $people["wife"]->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+						echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 						echo "</a>";
 						?>
 					</td>
@@ -553,8 +539,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							<?php
 							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							echo PrintReady($child->getFullName());
-							echo "<font size=\"1\"><br />" . $child->format_first_major_fact(WT_EVENTS_BIRT, 3);
-							echo " - " . $child->format_first_major_fact(WT_EVENTS_DEAT, 3) . "</font>";
+							echo "<font size=\"1\"><br />" . $child->getLifeSpan() . "</font>";
 							echo "</a>";
 							?>
 						</td>
