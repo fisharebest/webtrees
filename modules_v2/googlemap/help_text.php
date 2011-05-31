@@ -37,11 +37,6 @@ case 'GOOGLEMAP_CONFIG':
 	$text=WT_I18N::translate('Configure all aspects of the Google Map module here.');
 	break;
 
-case 'GOOGLEMAP_ENABLE':
-	$title=WT_I18N::translate('Enable Google-map');
-	$text=WT_I18N::translate('Using this option the functionality of the Googlemap can be enabled or disabled.<br />When disabled the Map-tab on the individual page is still shown, but will be left empty. The configuration link for administrators is still available. When disabled the Place Hierarchy has standard show.');
-	break;
-
 case 'GOOGLEMAP_MAP_TYPE':
 	$title=WT_I18N::translate('Google-map type');
 	$text=WT_I18N::translate('The type of map that will be shown by default. This can be Map, Satellite, Hybrid or Terrain.');
