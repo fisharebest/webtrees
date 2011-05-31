@@ -38,7 +38,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a sidebar element which displays a family navigator on the individual page.');
+		return WT_I18N::translate('Adds a sidebar which displays a family navigator on the individual page.');
 	}
 
 	// Implement WT_Module_Sidebar

@@ -38,7 +38,7 @@ class references_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a sidebar element containing references for the individual.');
+		return WT_I18N::translate('Adds a sidebar containing references for the individual.');
 	}
 
 	// Implement WT_Module_Sidebar
