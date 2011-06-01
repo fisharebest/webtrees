@@ -65,19 +65,6 @@ global $TEXT_DIRECTION;
 
 print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()));
 
-if (!$GOOGLEMAP_ENABLED) {
-	echo "<table class=\"facts_table\">\n";
-	echo "<tr><td class=\"facts_value\">", WT_I18N::translate('GoogleMap module disabled'), "</td></tr>\n";
-	if (WT_USER_IS_ADMIN) {
-		echo "<tr><td align=\"center\">\n";
-		echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps configuration'), "</a>";
-		echo "</td></tr>\n";
-	}
-	echo "</table><br />";
-	print_footer();
-	return;
-}
-
 echo '<link type="text/css" href ="', WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
