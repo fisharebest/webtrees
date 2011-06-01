@@ -156,6 +156,9 @@ class WT_Menu {
 		if ($this->submenus) {
 			$html.='<ul>';
 			foreach ($this->submenus as $submenu) {
+				if ($submenu->submenus) {
+					$submenu->label.=' &raquo;';
+				}
 				$html.=$submenu->getMenuAsList();
 			}
 			$html.='</ul>';
