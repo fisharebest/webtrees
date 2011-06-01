@@ -71,6 +71,9 @@
         filter: Alpha(opacity=50);
 }
 */
+
+#lightbox {margin-bottom:70px;}
+
 .lb_notes:target, .lb_notes:target a{
 	color:#000000;
     background-color: #ffffcc;
