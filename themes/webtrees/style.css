@@ -1574,7 +1574,7 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 #indi_note .fact_SOUR a {font-size:100%; margin: 3px 0}
 
 /* INDI IMAGE SPRITE */
-.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon, .icon_large_gedcom, .icon_large_pedigree, .icon_large_indis, .icon_large_reports, .icon_large_search, .icon_large_help, .icon_large_calendar, .icon_large_mypage, .icon_large_clippings, .icon_large_edit_indi, .icon_large_edit_source, .icon_large_edit_fam, .icon_large_edit_media, .icon_large_edit_notes, .icon_large_edit_repo, .icon_small_add_clip, .icon_small_admin, .icon_small_ancestry, .icon_small_calendar, .icon_small_cfamily, .icon_small_clippings, .icon_small_contact, .icon_small_delete, .icon_small_descendant, .icon_small_fambook, .icon_small_fanchart, .icon_small_fav, .icon_small_gedcom, .icon_small_hourglass, .icon_small_indis, .icon_small_map, .icon_small_menu_help, .icon_small_menu_media, .icon_small_menu_repository, .icon_small_menu_source, .icon_small_edit_indi, .icon_small_edit_fam, .icon_small_edit_notes, .icon_small_edit_raw, .icon_small_edit_repo, .icon_small_edit_sex, .icon_small_edit_source , .icon_small_add_indi , .icon_small_mypage, .icon_small_notes, .icon_small_patriarch, .icon_small_pedigree, .icon_small_place, .icon_small_relationship, .icon_small_reports, .icon_small_search, .icon_small_statistic, .icon_small_timeline, .icon_small_wiki {display: block; background: url('images/indi_sprite.png') no-repeat 0 0;}
+.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon, .icon_large_gedcom, .icon_large_pedigree, .icon_large_indis, .icon_large_reports, .icon_large_search, .icon_large_help, .icon_large_calendar, .icon_large_mypage, .icon_large_clippings, .icon_large_edit_indi, .icon_large_edit_source, .icon_large_edit_fam, .icon_large_edit_media, .icon_large_edit_notes, .icon_large_edit_repo, .icon_small_add_clip, .icon_small_add_fam, .icon_small_admin, .icon_small_ancestry, .icon_small_calendar, .icon_small_cfamily, .icon_small_clippings, .icon_small_contact, .icon_small_delete, .icon_small_descendant, .icon_small_fambook, .icon_small_fanchart, .icon_small_fav, .icon_small_gedcom, .icon_small_hourglass, .icon_small_indis, .icon_small_map, .icon_small_menu_help, .icon_small_menu_media, .icon_small_menu_repository, .icon_small_menu_source, .icon_small_edit_indi, .icon_small_edit_fam, .icon_small_edit_notes, .icon_small_edit_raw, .icon_small_edit_repo, .icon_small_edit_sex, .icon_small_edit_source , .icon_small_add_indi, .icon_small_reord_fam, .icon_small_mypage, .icon_small_notes, .icon_small_patriarch, .icon_small_pedigree, .icon_small_place, .icon_small_relationship, .icon_small_reports, .icon_small_search, .icon_small_statistic, .icon_small_timeline, .icon_small_wiki {display: block; background: url('images/indi_sprite.png') no-repeat 0 0;}
 
 .female_gender {background-position: -45px 3px; width: 24px;}
 .male_gender {background-position: -72px 3px; width: 24px;}
@@ -1636,6 +1636,8 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .icon_small_edit_source {background-position: -125px -960px; width:20px;}
 .icon_small_edit_repo {background-position: -125px -990px; width:20px;}
 .icon_small_edit_notes {background-position: -125px -1020px; width:20px;}
+.icon_small_add_fam {background-position: -125px -1050px; width:20px;}
+.icon_small_reord_fam {background-position: -125px -1080px; width:20px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs {padding:0;}

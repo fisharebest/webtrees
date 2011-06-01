@@ -165,7 +165,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_fam');
-		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_gedcom');
+		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_edit_fam');
 		$menu->addId('menu-fam');
 
 		if (WT_USER_CAN_EDIT) {
@@ -173,7 +173,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Change Family Members'));
 			$submenu->addOnclick("return change_family_members('".$this->getFamilyID()."');");
 			$submenu->addIcon('edit_fam');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_fam');
 			$submenu->addId('menu-fam-change');
 			$menu->addSubmenu($submenu);
 
@@ -181,7 +181,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Add a child to this family'));
 			$submenu->addOnclick("return addnewchild('".$this->getFamilyID()."');");
 			$submenu->addIcon('edit_fam');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_add_fam');
 			$submenu->addId('menu-fam-addchil');
 			$menu->addSubmenu($submenu);
 
@@ -190,7 +190,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 				$submenu = new WT_Menu(WT_I18N::translate('Re-order children'));
 				$submenu->addOnclick("return reorder_children('".$this->getFamilyID()."');");
 				$submenu->addIcon('edit_fam');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reord_fam');
 			$submenu->addId('menu-fam-orderchil');
 				$menu->addSubmenu($submenu);
 			}
@@ -236,7 +236,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->getFamilyID()."');");
 			$submenu->addIcon('gedcom');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_edit_fam');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$submenu->addId('menu-fam-editraw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
@@ -247,7 +247,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$submenu->addId('menu-fam-viewraw');
 			$menu->addSubmenu($submenu);
 		}
@@ -257,7 +257,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete family'));
 			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?')."')) return delete_family('".$this->getFamilyID()."'); else return false;");
 			$submenu->addIcon('remove');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$submenu->addId('menu-fam-del');
 			$menu->addSubmenu($submenu);
 		}
@@ -265,7 +265,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 		// add to favorites
 		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), 'family.php?action=addfav&amp;famid='.$this->getFamilyID().'&gamp;id='.$this->getFamilyID());
 		$submenu->addIcon('favorites');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$submenu->addId('menu-fam-addfav');
 		$menu->addSubmenu($submenu);
 
