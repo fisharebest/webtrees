@@ -120,7 +120,7 @@ if (isset($controller)) {
 	foreach ($sidebarmods as $mod) {
 		if (isset($controller)) $mod->setController($controller);
 		if ($mod->hasSidebarContent()) {
-			if ($mod=="Extra information") {
+			if ($mod->getName()=="extra_info") {
 				echo '<h3 id="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
 					'<div id="sb_content_', $mod->getName(), '">', $mod->getSidebarContent(), '</div>',
 					WT_JS_START,'jQuery("#sidebarAccordion2").accordion({active:0, autoHeight: false, collapsible: true});', WT_JS_END;
@@ -134,7 +134,7 @@ if (isset($controller)) {
 	foreach ($sidebarmods as $mod) {
 		if (isset($controller)) $mod->setController($controller);
 		if ($mod->hasSidebarContent()) {
-			if ($mod!="Extra information") {
+			if ($mod->getName()!="extra_info") {
 				echo '<h3 id="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
 					'<div id="sb_content_', $mod->getName(), '">', $mod->getSidebarContent(), '</div>';
 				$counter++;
