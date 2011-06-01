@@ -1326,7 +1326,7 @@ function print_main_media($pid, $level=1, $related=false) {
 function print_main_media_row($rtype, $rowm, $pid) {
 	global $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER, $SEARCH_SPIDER;
 
-	$mediaobject = WT_Media::getInstance($rowm['m_media']);
+	$mediaobject = new WT_Media($rowm['m_gedrec']);
 	if (!$mediaobject || !$mediaobject->canDisplayDetails()) {
 		return false;
 	}
