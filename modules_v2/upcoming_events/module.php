@@ -157,7 +157,7 @@ class upcoming_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Sort Style');
+		echo WT_I18N::translate('Sort style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('sortStyle', array('alpha'=>WT_I18N::translate('alphabetically'), 'anniv'=>WT_I18N::translate('By Anniversary')), null, $sortStyle, '');
 		echo '</td></tr>';
