@@ -40,10 +40,6 @@ try {
 	die($ex);
 }
 
-// TODO: it will be more efficient to fetch all GM_% settings in a single DB query
-global $GOOGLEMAP_ENABLED;
-$GOOGLEMAP_ENABLED     = WT_DB::prepare("SELECT status FROM `##module` WHERE module_name='googlemap'")->execute()->fetchOne()=='enabled'; // Enable or disable Googlemap
-
 global $GOOGLEMAP_MAP_TYPE;
 $GOOGLEMAP_MAP_TYPE    = get_module_setting('googlemap', 'GM_MAP_TYPE',    'G_NORMAL_MAP');  // possible values: G_PHYSICAL_MAP, G_NORMAL_MAP, G_SATELLITE_MAP or G_HYBRID_MAP.
 
@@ -79,8 +75,6 @@ global $GOOGLEMAP_COORD;
 $GOOGLEMAP_COORD       = get_module_setting('googlemap', 'GM_COORD',             '0'); // Enable or disable Display Map Co-ordinates
 
 //Place Hierarchy
-global $GOOGLEMAP_PLACE_HIERARCHY;
-$GOOGLEMAP_PLACE_HIERARCHY=get_module_setting('googlemap', 'GM_PLACE_HIERARCHY',  '1'     ); // Enable or disable Display Map in place herarchy
 global $GOOGLEMAP_PH_XSIZE;
 $GOOGLEMAP_PH_XSIZE       =get_module_setting('googlemap', 'GM_PH_XSIZE',         '500'   ); // X-size of Place Hierarchy Google map
 global $GOOGLEMAP_PH_YSIZE;
