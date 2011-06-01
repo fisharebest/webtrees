@@ -392,7 +392,7 @@ class WT_MenuBar {
 				$WT_IMAGES['pedigree_map']=WT_MODULES_DIR.'googlemap/images/pedigree_map.gif';
 				$submenu->addIcon('pedigree_map');
 				$submenu->addId('menu-chart-pedigree_map');
-				$submenu->addClass('submenuitem', 'submenuitem_hover');
+				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_map');
 				$menu->addSubmenu($submenu);
 				break;
 			}

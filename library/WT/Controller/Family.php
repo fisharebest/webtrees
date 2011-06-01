@@ -236,7 +236,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->getFamilyID()."');");
 			$submenu->addIcon('gedcom');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_edit_fam');
 			$submenu->addId('menu-fam-editraw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {

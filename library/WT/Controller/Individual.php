@@ -392,7 +392,8 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_indi');
-		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_gedcom');
+		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_indi');
+		$menu->addLabel($menu->label, 'down');
 		$menu->addId('menu-indi');
 
 		if (WT_USER_CAN_EDIT) {
@@ -402,7 +403,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$submenu = new WT_Menu(WT_I18N::translate('Edit name'));
 				$submenu->addOnclick("return edit_name('".$this->pid."', ".$this->NAME_LINENUM.");");
 				$submenu->addIcon('edit_indi');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_indi');
 				$submenu->addId('menu-indi-editname');
 				$menu->addSubmenu($submenu);
 			}
@@ -410,7 +411,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'));
 			$submenu->addOnclick("return add_name('".$this->pid."');");
 			$submenu->addIcon('edit_indi');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_add_indi');
 			$submenu->addId('menu-indi-addname');
 			$menu->addSubmenu($submenu);
 
@@ -422,7 +423,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 					$submenu->addOnclick("return edit_record('".$this->pid."', ".$this->SEX_LINENUM.");");
 				}
 				$submenu->addIcon('edit_indi');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_sex');
 				$submenu->addId('menu-indi-editsex');
 				$menu->addSubmenu($submenu);
 			}
@@ -431,7 +432,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$submenu = new WT_Menu(WT_I18N::translate('Reorder families'));
 				$submenu->addOnclick("return reorder_families('".$this->pid."');");
 				$submenu->addIcon('edit_fam');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_fam');
 				$submenu->addId('menu-indi-orderfam');
 				$menu->addSubmenu($submenu);
 			}
@@ -477,7 +478,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
 			$submenu->addIcon('gedcom');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$submenu->addId('menu-indi-editraw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
@@ -488,7 +489,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$submenu->addId('menu-indi-viewraw');
 			$menu->addSubmenu($submenu);
 		}
@@ -498,7 +499,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete this individual'));
 			$submenu->addOnclick("return deleteperson('".$this->pid."');");
 			$submenu->addIcon('remove');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$submenu->addId('menu-indi-del');
 			$menu->addSubmenu($submenu);
 		}
@@ -506,7 +507,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		// add to favorites
 		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), $this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->pid);
 		$submenu->addIcon('favorites');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 		$submenu->addId('menu-indi-addfav');
 		$menu->addSubmenu($submenu);
 

@@ -56,8 +56,8 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 		if (WT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
 			$menu = $controller->getEditMenu();
 			if ($menu) {
-				$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_gedcom');
-				$menu->addLabel($menu->label, 'down');
+			//	$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_gedcom');
+			//	$menu->addLabel($menu->label, 'down');
 			}
 		}
 		return $menu;

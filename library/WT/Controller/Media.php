@@ -181,7 +181,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_media');
-		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_gedcom');
+		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_edit_media');
 		$menu->addId('menu-obje');
 
 		if (WT_USER_CAN_EDIT) {

@@ -68,90 +68,78 @@ echo
 
 // begin header section
 if ($view!='simple') {
-	echo '<div id="header" class="', $TEXT_DIRECTION, '">',
-			'<div class="header_img"><img src="', WT_THEME_DIR, 'images/webtrees.png" width="242" height="50" alt="" /></div>',
-				'<ul id="extra-menu" class="makeMenu">',
-					'<li>';
-						if (WT_USER_ID) {
-							echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
-						} elseif (empty($SEARCH_SPIDER)) {
-							echo login_link();
-						}
-					echo ' | </li>';
-					if (!$SEARCH_SPIDER) {
-						echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
-						global $ALLOW_THEME_DROPDOWN;
-						if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-							echo ' | ', WT_MenuBar::getThemeMenu()->getMenuAsList();
-						}
-						$language_menu=WT_MenuBar::getLanguageMenu();
-						if ($language_menu) {
-							echo ' | ', $language_menu->getMenuAsList();
-						}
+	echo '<div id="header">',
+			'<div class="header_img"><img src="', WT_THEME_DIR, 'images/webtrees.png" width="242" height="50" alt="" /></div>';
+		if ($SEARCH_SPIDER) {
+			// Search engines get a reduced menu
+			$menu_items=array(
+				WT_MenuBar::getGedcomMenu(),
+				WT_MenuBar::getListsMenu(),
+				WT_MenuBar::getCalendarMenu()
+			);
+		} else {
+			// Options for real users
+			echo '<ul id="extra-menu" class="makeMenu">',
+				'<li>';
+					if (WT_USER_ID) {
+						echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
+					} elseif (empty($SEARCH_SPIDER)) {
+						echo login_link();
 					}
-				echo '</ul>',
-				'<div class="title">';
-					print_gedcom_title_link(TRUE);
-				echo '</div>';
-				if (empty($SEARCH_SPIDER)) {
-					echo '<div class="header_search">',
-						'<form action="search.php" method="post">',
-						'<input type="hidden" name="action" value="general" />',
-						'<input type="hidden" name="topsearch" value="yes" />',
-						'<input type="text" name="query" size="25" value="', WT_I18N::translate('Search'), '"',
-							'onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();"',
-							'onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
-						'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
-						'</form>';
-					echo '</div>';
-				}
-	echo '<div>', // menu
-		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
-		'<table id="topMenu">',
-			'<tr>';
-				$menu=WT_MenuBar::getGedcomMenu();
-				if ($menu) {
-					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
-				}
-				$menu=WT_MenuBar::getMyPageMenu();
-				if ($menu) {
-					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
-				}
-				$menu=WT_MenuBar::getChartsMenu();
-				if ($menu) {
-					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
-				}
-				$menu=WT_MenuBar::getListsMenu();
-				if ($menu) {
-					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
-				}
-				$menu=WT_MenuBar::getCalendarMenu();
-				if ($menu) {
-					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
-				}
-				$menu=WT_MenuBar::getReportsMenu();
-				if ($menu) {
-					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
-				}
-				$menu=WT_MenuBar::getSearchMenu();
-				if ($menu) {
-					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
-				}
-				$menus=WT_MenuBar::getModuleMenus();
-				foreach ($menus as $m=>$menu) {
-					if ($menu) {
-						echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
+				echo ' | </li>';
+				if (!$SEARCH_SPIDER) {
+					echo WT_MenuBar::getFavoritesMenu()->GetMenuAsList();
+					global $ALLOW_THEME_DROPDOWN;
+					if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
+						echo ' | ', WT_MenuBar::getThemeMenu()->GetMenuAsList();
+					}
+					$language_menu=WT_MenuBar::getLanguageMenu();
+					if ($language_menu) {
+						echo ' | ', $language_menu->GetMenuAsList();
 					}
 				}
-				$menu=WT_MenuBar::getHelpMenu();
-				if ($menu) {
-					echo '<td width="1" valign="top">', $menu->getMenu(), '</td>';
-				}
-			echo '</tr>',
-		'</table>',
+			echo '</ul>',
+			'<div class="title">';
+				print_gedcom_title_link(TRUE);
+			echo '</div>';
+			echo '<div class="header_search">',
+				'<form action="search.php" method="post">',
+				'<input type="hidden" name="action" value="general" />',
+				'<input type="hidden" name="topsearch" value="yes" />',
+				'<input type="text" name="query" size="25" value="', WT_I18N::translate('Search'), '"',
+					'onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();"',
+					'onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
+				'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
+				'</form>';
+			echo '</div>';
+			$menu_items=array(
+				WT_MenuBar::getGedcomMenu(),
+				WT_MenuBar::getMyPageMenu(),
+				WT_MenuBar::getChartsMenu(),
+				WT_MenuBar::getListsMenu(),
+				WT_MenuBar::getCalendarMenu(),
+				WT_MenuBar::getReportsMenu(),
+				WT_MenuBar::getSearchMenu(),
+			);
+			foreach (WT_MenuBar::getModuleMenus() as $menu) {
+				$menu_items[]=$menu;
+			}
+			$menu_items[]=WT_MenuBar::getHelpMenu();
+		}
+		// Print the menu bar
+		echo '<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
+		'<div id="topMenu">',
+		'<ul id="main-menu">';
+		foreach ($menu_items as $menu) {
+			if ($menu) {
+				echo $menu->getMenuAsList();
+			}
+		}
+		unset($menu_items, $menu);
+		echo '</ul>',
+		'</div>', // close topMenu
 		'<img align="middle" src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
-	'</div>', // close menu
-'</div>', // close header
+		'</div>', // close header
 // end header section -->
 // begin content section -->
 '<div id="content">';

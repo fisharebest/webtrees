@@ -137,11 +137,18 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_repo');
-		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_gedcom');
+		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_repo');
 		$menu->addId('menu-repo');
 
 		if (WT_USER_CAN_EDIT) {
-			// For consistency with other controllers, we need an "edit repo" option
+			$submenu = new WT_Menu(WT_I18N::translate('Edit repository'));
+			$submenu->addOnclick('return edit_source(\''.$this->rid.'\');');
+			$submenu->addIcon('edit_repo');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_repo');
+			$submenu->addId('menu-repo-edit');
+			$menu->addSubmenu($submenu);
+
+			$menu->addSeparator();
 		}
 
 		// show/hide changes
@@ -179,7 +186,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->rid."');");
 			$submenu->addIcon('gedcom');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$submenu->addId('menu-repo-editraw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
@@ -190,7 +197,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$submenu->addId('menu-repo-viewraw');
 			$menu->addSubmenu($submenu);
 		}
@@ -200,7 +207,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete repository'));
 			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete this Repository?')."')) return deleterepository('".$this->rid."'); else return false;");
 			$submenu->addIcon('remove');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$submenu->addId('menu-repo-del');
 			$menu->addSubmenu($submenu);
 		}
@@ -208,7 +215,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		// add to favorites
 		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), "repo.php?action=addfav&amp;rid={$this->rid}&amp;gid={$this->rid}");
 		$submenu->addIcon('favorites');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 		$submenu->addId('menu-repo-addfav');
 		$menu->addSubmenu($submenu);
 

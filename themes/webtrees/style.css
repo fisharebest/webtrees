@@ -1482,79 +1482,45 @@ div.faq_body {
 	padding:0 10px;
 }
 
-/* Use CSS menus based on nested <ul> */
-
-.makeMenu {
-	color:#555555;
-	font-weight:bold;
-}
-
-.makeMenu li {
-	display:inline;
-	position:relative;
-	white-space:nowrap;
-}
-
-.makeMenu li ul {
-	display:none;
-	font-weight:normal;
-	position:absolute;
-	left:0px;
-	right:auto;
-	top:1.1em;
-	background-color:#FFF;
-	border:thin solid #AAA;
-	z-index:999;
-}
-html[dir='rtl'] .makeMenu li ul {
-	left:auto;
-	right:0px;
-}
-
-.makeMenu li ul li {
-	padding:2px;
-	display:block;
-	text-align:left;
-}
-html[dir='rtl'] li up li {
-	text-align:right;
-}
-
-.makeMenu, .makeMenu li ul {
-	list-style:none;
-	margin:0;
-	padding:1px;
-}
-
-.makeMenu li:hover > ul {
-	display:block;
-}
-
-/* The language/theme/favorites menu in the header is right-justified, so submenus must also be right justified */
-#extra-menu {
-	float:right;
-	white-space:nowrap;
-	margin:20px 10px 0 0;
-}
-html[dir='rtl'] #extra-menu {
-	float:left;
-	margin:20px 0 0 10px ;
-}
-#extra-menu.makeMenu li ul {
-	left:auto;
-	right:0px;
-}
-html[dir='rtl'] #extra-menu.makeMenu li ul {
-	left:0px;
-	right:auto;
-}
-
 .edit_link:after {content:" " url(images/edit.png);}/* used only on the user list */
 td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when it is a link as when not */
 .place {	padding-top:5px;}
 .logo {text-align:center;}
-#topMenu {margin:0 0 0 5%;width:92.5%;}
-html[dir='rtl'] #topMenu {margin: 0 5% 0 0;}
+
+
+/* ======= Main menu items ========== */
+#topMenu {float:left; width:100%; position:relative;}
+html[dir='rtl'] #topMenu {float:right;}
+#topMenu ul {clear:left; float:right; list-style:none; margin:0; padding:0; position:relative; right:50%; text-align:center;}
+#topMenu ul li {display:block; float:left; list-style:none; margin:0; min-width:100px; padding:5px 0; position:relative; left:50%;}
+html[dir='rtl'] #topMenu ul li {float:right; }
+#topMenu ul li a {margin:auto; padding-top:52px; width:100%;}
+#topMenu ul li:hover ul {display:block;}
+#topMenu ul li.separator span {background: url('images/hline.png') repeat-x; display:block; height:3px; margin:0;}
+#topMenu ul ul {background:none; display:none; font-weight:normal; position:absolute; left:0px; right:auto; top:70px; background-color:#FFF; border:thin solid #AAA; z-index:999;}
+html[dir='rtl'] #topMenu ul ul {right:0px; left:auto;}
+#topMenu ul ul li {left:auto; margin:0; clear:left; text-align:left; width:100%;}
+html[dir='rtl'] #topMenu ul ul li {right:auto; clear:right; text-align:right;}
+#topMenu ul ul li a {font-size:11px; height:20px; padding:1px 10px 0 28px; white-space: nowrap;}
+html[dir='rtl'] #topMenu ul ul li a {padding:1px 2px 0 0;}
+#topMenu ul ul ul {display:none !important; left:100%; position:absolute; top:0px;}
+html[dir='rtl'] #topMenu ul ul ul {right:100%;}
+#topMenu ul ul li:hover ul {display:block !important;}
+
+/* ========= Login|Favorites|Theme|Language menu items ========== */
+#extra-menu {float:right;white-space:nowrap;	margin:20px 10px 0 0;}
+html[dir='rtl'] #extra-menu {	float:left;	margin:20px 0 0 10px ;}
+#extra-menu.makeMenu li ul {left:auto;	right:0px;}
+html[dir='rtl'] #extra-menu.makeMenu li ul {left:0px;right:auto;}
+#extra-menu a {background:none; display:inline;}
+.makeMenu {color:#555555; font-weight:bold;}
+.makeMenu li {display:inline; position:relative; white-space:nowrap;}
+.makeMenu li ul { display:none;	font-weight:normal;	position:absolute; left:0px; right:auto; top:1.1em;	background-color:#FFF; border:thin solid #AAA; z-index:999;}
+html[dir='rtl'] .makeMenu li ul { left:auto; right:0px;}
+.makeMenu li ul li {padding:2px;	display:block; text-align:left;}
+html[dir='rtl'] .makeMenu li ul li { text-align:right;}
+.makeMenu, .makeMenu li ul {list-style:none; margin:0;	padding:1px;}
+.makeMenu li:hover > ul {display:block;}
 
 /* ========= Positioning edit, copy, delete links ============= */
 /* General use */
@@ -1608,13 +1574,68 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 #indi_note .fact_SOUR a {font-size:100%; margin: 3px 0}
 
 /* INDI IMAGE SPRITE */
-.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon { display: block; background: url('images/indi_sprite.png') no-repeat; }
+.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon, .icon_large_gedcom, .icon_large_pedigree, .icon_large_indis, .icon_large_reports, .icon_large_search, .icon_large_help, .icon_large_calendar, .icon_large_mypage, .icon_large_clippings, .icon_large_edit_indi, .icon_large_edit_source, .icon_large_edit_fam, .icon_large_edit_media, .icon_large_edit_notes, .icon_large_edit_repo, .icon_small_add_clip, .icon_small_admin, .icon_small_ancestry, .icon_small_calendar, .icon_small_cfamily, .icon_small_clippings, .icon_small_contact, .icon_small_delete, .icon_small_descendant, .icon_small_fambook, .icon_small_fanchart, .icon_small_fav, .icon_small_gedcom, .icon_small_hourglass, .icon_small_indis, .icon_small_map, .icon_small_menu_help, .icon_small_menu_media, .icon_small_menu_repository, .icon_small_menu_source, .icon_small_edit_indi, .icon_small_edit_fam, .icon_small_edit_notes, .icon_small_edit_raw, .icon_small_edit_repo, .icon_small_edit_sex, .icon_small_edit_source , .icon_small_add_indi , .icon_small_mypage, .icon_small_notes, .icon_small_patriarch, .icon_small_pedigree, .icon_small_place, .icon_small_relationship, .icon_small_reports, .icon_small_search, .icon_small_statistic, .icon_small_timeline, .icon_small_wiki {display: block; background: url('images/indi_sprite.png') no-repeat 0 0;}
+
 .female_gender {background-position: -45px 3px; width: 24px;}
 .male_gender {background-position: -72px 3px; width: 24px;}
 .unknown_gender {background-position: -100px 4px; width: 24px;}
 .editicon {background-position: -40px -32px; width: 24px; height:16px;}
 .copyicon {background-position: -70px -32px; width: 24px; height:16px;}
 .deleteicon {background-position: -100px -32px; width: 24px; height:16px;}
+.icon_large_gedcom {background-position: 12px -148px; width:64px;}
+.icon_large_mypage {background-position: 12px -218px; width:64px;}
+.icon_large_pedigree {background-position: 12px -288px; width:64px;}
+.icon_large_indis {background-position: 12px -358px; width:64px;}
+.icon_large_reports {background-position: 12px -428px; width:64px;}
+.icon_large_calendar {background-position: 12px -498px; width:64px;}
+.icon_large_search {background-position: 12px -568px; width:64px;}
+.icon_large_help {background-position: 12px -638px; width:64px;}
+.icon_large_clippings {background-position: 12px -708px; width:64px;}
+.icon_large_edit_indi {background-position: 12px -778px; width:64px;}
+.icon_large_edit_source {background-position: 12px -848px; width:64px;}
+.icon_large_edit_fam {background-position: 12px -918px; width:64px;}
+.icon_large_edit_media {background-position: 12px -988px; width:64px;}
+.icon_large_edit_notes {background-position: 12px -1058px; width:64px;}
+.icon_large_edit_repo {background-position: 12px -1128px; width:64px;}
+.icon_small_admin {background-position: -125px 0px; width:20px;}
+.icon_small_ancestry {background-position: -125px -30px; width:20px;}
+.icon_small_calendar {background-position: -125px -60px; width:20px;}
+.icon_small_cfamily {background-position: -125px -90px; width:20px;}
+.icon_small_contact {background-position: -125px -120px; width:20px;}
+.icon_small_descendant {background-position: -125px -150px; width:20px;}
+.icon_small_fambook {background-position: -125px -180px; width:20px;}
+.icon_small_fanchart {background-position: -125px -210px; width:20px;}
+.icon_small_gedcom {background-position: -125px -240px; width:20px;}
+.icon_small_hourglass {background-position: -125px -270px; width:20px;}
+.icon_small_indis {background-position: -125px -120px; width:20px;}
+.icon_small_menu_help {background-position: -125px -300px; width:20px;}
+.icon_small_menu_media {background-position: -125px -330px; width:20px;}
+.icon_small_menu_repository {background-position: -125px -360px; width:20px;}
+.icon_small_menu_source {background-position: -125px -180px; width:20px;}
+.icon_small_mypage {background-position: -125px -390px; width:20px;}
+.icon_small_notes {background-position: -125px -420px; width:20px;}
+.icon_small_patriarch {background-position: -125px -450px; width:20px;}
+.icon_small_pedigree {background-position: -125px -480px; width:20px;}
+.icon_small_place {background-position: -125px -510px; width:20px;}
+.icon_small_relationship {background-position: -125px -540px; width:20px;}
+.icon_small_reports {background-position: -125px -570px; width:20px;}
+.icon_small_search {background-position: -125px -600px; width:20px;}
+.icon_small_statistic {background-position: -125px -630px; width:20px;}
+.icon_small_timeline {background-position: -125px -660px; width:20px;}
+.icon_small_wiki {background-position: -125px -690px; width:20px;}
+.icon_small_map {background-position: -125px -720px; width:20px;}
+.icon_small_edit_indi {background-position: -125px -750px; width:20px;}
+.icon_small_add_indi {background-position: -125px -780px; width:20px;}
+.icon_small_edit_sex {background-position: -125px -810px; width:20px;}
+.icon_small_edit_fam {background-position: -125px -90px; width:20px;}
+.icon_small_edit_raw {background-position: -125px -240px; width:20px;}
+.icon_small_delete {background-position: -125px -840px; width:20px;}
+.icon_small_fav {background-position: -125px -870px; width:20px;}
+.icon_small_clippings {background-position: -125px -900px; width:20px;}
+.icon_small_add_clip {background-position: -125px -930px; width:20px;}
+.icon_small_edit_source {background-position: -125px -960px; width:20px;}
+.icon_small_edit_repo {background-position: -125px -990px; width:20px;}
+.icon_small_edit_notes {background-position: -125px -1020px; width:20px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs {padding:0;}

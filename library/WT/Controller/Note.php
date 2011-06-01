@@ -137,14 +137,14 @@ class WT_Controller_Note extends WT_Controller_Base {
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'));
 		$menu->addIcon('edit_note');
-		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_gedcom');
+		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_edit_notes');
 		$menu->addId('menu-note');
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit note'));
 			$submenu->addOnclick('return edit_note(\''.$this->nid.'\');');
 			$submenu->addIcon('edit_note');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_notes');
 			$submenu->addId('menu-note-edit');
 			$menu->addSubmenu($submenu);
 
@@ -186,7 +186,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'));
 			$submenu->addOnclick("return edit_raw('".$this->nid."');");
 			$submenu->addIcon('gedcom');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$submenu->addId('menu-note-editraw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
@@ -197,7 +197,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$submenu->addId('menu-note-viewraw');
 			$menu->addSubmenu($submenu);
 		}
@@ -207,7 +207,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete this Shared Note'));
 			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete this Shared Note?')."')) return deletenote('".$this->nid."'); else return false;");
 			$submenu->addIcon('remove');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$submenu->addId('menu-note-del');
 			$menu->addSubmenu($submenu);
 		}
@@ -215,7 +215,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 		// add to favorites
 		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), "note.php?action=addfav&amp;nid={$this->nid}&amp;gid={$this->nid}");
 		$submenu->addIcon('favorites');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
+		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 		$submenu->addId('menu-note-addfav');
 		$menu->addSubmenu($submenu);
 
