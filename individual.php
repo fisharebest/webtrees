@@ -141,71 +141,79 @@ if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) {
 if ($controller->indi->isMarkedDeleted()) {
 	echo '<span class="error">', WT_I18N::translate('This record has been marked for deletion upon admin approval.'), '</span>';
 }
-echo '<div id="main" class="use-sidebar sidebar-at-right">'; //overall page container
-echo '<div id="indi_left">',
+echo
+	'<div id="main" class="use-sidebar sidebar-at-right">', //overall page container
+	'<div id="indi_left">',
 	'<div id="indi_header">';
-	if ($controller->indi->canDisplayDetails()) {
-	$globalfacts=$controller->getGlobalFacts();
-		echo '<div id="header_accordion1">', // contain accordions for names
-			'<h3 class="name_one ', $controller->getPersonStyle($controller->indi), '"><span>', $controller->indi->getFullName(), '</span>'; // First name accordion element
-				if (WT_USER_IS_ADMIN) {
-					$user_id=get_user_from_gedcom_xref(WT_GED_ID, $controller->pid);
-					if ($user_id) {
-						$user_name=get_user_name($user_id);
-						echo '<span> - <a href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</span></a>';
-					}
+if ($controller->indi->canDisplayDetails()) {
+$globalfacts=$controller->getGlobalFacts();
+	echo '<div id="header_accordion1">', // contain accordions for names
+		'<h3 class="name_one ', $controller->getPersonStyle($controller->indi), '"><span>', $controller->indi->getFullName(), '</span>'; // First name accordion element
+			if (WT_USER_IS_ADMIN) {
+				$user_id=get_user_from_gedcom_xref(WT_GED_ID, $controller->pid);
+				if ($user_id) {
+					$user_name=get_user_name($user_id);
+					echo '<span> - <a href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</span></a>';
 				}
-				$bdate=$controller->indi->getBirthDate();
-				$ddate=$controller->indi->getDeathDate();
-				if ($bdate->isOK() && !$controller->indi->isDead()) {
-					// If living display age
-					echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true));
-				} elseif ($bdate->isOK() && $ddate->isOK()) {
-					// If dead, show age at death
-					echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false));
+			}
+			$bdate=$controller->indi->getBirthDate();
+			$ddate=$controller->indi->getDeathDate();
+			if ($bdate->isOK() && !$controller->indi->isDead()) {
+				// If living display age
+				echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true));
+			} elseif ($bdate->isOK() && $ddate->isOK()) {
+				// If dead, show age at death
+				echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false));
+			}
+			// Display summary birth/death info.
+			echo '<span id="dates">', $controller->indi->getLifeSpan(), '</span>';
+			//Display gender icon
+			$nameSex = array('NAME', 'SEX');
+			foreach ($globalfacts as $key=>$value) {
+				$fact = $value->getTag();
+				if (in_array($fact, $nameSex)) {
+					if ($fact=="SEX") $controller->print_sex_record($value);
 				}
-				// Display summary birth/death info.
-				echo '<span id="dates">', $controller->indi->getLifeSpan(), '</span>';
-				//Display gender icon
-				$nameSex = array('NAME', 'SEX');
-				foreach ($globalfacts as $key=>$value) {
+			}
+		echo '</h3>';
+		//Display name details
+			$nameSex = array('NAME', 'SEX');
+			foreach ($globalfacts as $key=>$value) {
+				if ($key == 0) {
+				// First name
 					$fact = $value->getTag();
 					if (in_array($fact, $nameSex)) {
-						if ($fact=="SEX") $controller->print_sex_record($value);
+						if ($fact=="NAME") $controller->print_name_record($value);
 					}
 				}
-			echo '</h3>';
-			//Display name details
-				$nameSex = array('NAME', 'SEX');
-				foreach ($globalfacts as $key=>$value) {
-					if ($key == 0) {
-					// First name
-						$fact = $value->getTag();
-						if (in_array($fact, $nameSex)) {
-							if ($fact=="NAME") $controller->print_name_record($value);
-						}
+			}
+		//Display name details
+			$nameSex = array('NAME', 'SEX');
+			foreach ($globalfacts as $key=>$value) {
+				if ($key != 0) {
+					// 2nd and more names
+					$fact = $value->getTag();
+					if (in_array($fact, $nameSex)) {
+						if ($fact=="NAME") $controller->print_name_record($value);
 					}
 				}
-			//Display name details
-				$nameSex = array('NAME', 'SEX');
-				foreach ($globalfacts as $key=>$value) {
-					if ($key != 0) {
-						// 2nd and more names
-						$fact = $value->getTag();
-						if (in_array($fact, $nameSex)) {
-							if ($fact=="NAME") $controller->print_name_record($value);
-						}
-					}
-				}
-		echo '</div>'; // close header_accordion1
-		echo WT_JS_START,'jQuery("#header_accordion1").accordion({active:0, icon:false, autoHeight:false, collapsible: true});',	WT_JS_END; //accordion details
-		// Display highlight image
-		echo '<div id="indi_mainimage">';// highlighted image
-		if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
-			echo $controller->getHighlightedObject();
-		}
-		echo '</div>'; // close #indi_mainimage
+			}
+	echo
+		'</div>', // close header_accordion1
+		WT_JS_START,
+		'jQuery("#header_accordion1").accordion({',
+		' active: 0,',
+		' icons: {"header": "ui-icon-triangle-1-', $TEXT_DIRECTION=='ltr' ? 'e' : 'w', '", "headerSelected": "ui-icon-triangle-1-s" },',
+		' autoHeight: false,',
+		' collapsible: true',
+		'});',
+		WT_JS_END; //accordion details
+		echo '<div id="indi_mainimage">'; // Display highlight image
+	if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
+		echo $controller->getHighlightedObject();
 	}
+	echo '</div>'; // close #indi_mainimage
+}
 echo '</div>';// close #indi_header
 // ===================================== main content tabs
 if (!$controller->indi->canDisplayDetails()) {
