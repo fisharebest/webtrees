@@ -238,7 +238,7 @@ echo '<div id="tabs">',
 	</tr>
 	<tr>
 		<th><?php echo WT_I18N::translate('Use Googlemap for Place Hierarchy'), help_link('GOOGLEMAP_PH','googlemap'); ?></th>
-		<td><?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', $GOOGLEMAP_PLACE_HIERARCHY); ?></td>
+		<td><?php echo edit_field_yes_no('NEW_GM_PLACE_HIERARCHY', get_module_setting('googlemap', 'GOOGLEMAP_PLACE_HIERARCHY')); ?></td>
 	</tr>
 	<tr>
 		<th><?php echo WT_I18N::translate('Size of Place Hierarchy map (in pixels)'), help_link('GOOGLEMAP_PH_MAP_SIZE','googlemap'); ?></th>
