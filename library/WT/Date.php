@@ -109,7 +109,7 @@ class WT_Date {
 					$y=$match[1];
 				}
 				// Look for a month anywhere in the date
-				if (preg_match('/\b(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|tsh|csh|ksl|tvt|shv|adr|ads|nsn|iyr|svn|tmz|aav|ell|vend|brum|frim|nivo|pluv|vent|germ|flor|prai|mess|ther|fruc|comp|muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah|farva|ordib|khord|tir|morda|shahr|mehr|aban|azar|dey|bahma|esfan)/', $date, $match)) {
+				if (preg_match('/(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec|tsh|csh|ksl|tvt|shv|adr|ads|nsn|iyr|svn|tmz|aav|ell|vend|brum|frim|nivo|pluv|vent|germ|flor|prai|mess|ther|fruc|comp|muhar|safar|rabi[at]|juma[at]|rajab|shaab|ramad|shaww|dhuaq|dhuah|farva|ordib|khord|tir|morda|shahr|mehr|aban|azar|dey|bahma|esfan)/', $date, $match)) {
 					$m=$match[1];
 					// Look for a day number anywhere in the date
 					if (preg_match('/\b(\d\d?)\b/', $date, $match))
