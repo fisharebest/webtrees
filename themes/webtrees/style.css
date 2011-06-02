@@ -1487,7 +1487,6 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 .place {	padding-top:5px;}
 .logo {text-align:center;}
 
-
 /* ======= Main menu items ========== */
 #topMenu {float:left; width:100%; position:relative;}
 html[dir='rtl'] #topMenu {float:right;}
@@ -1497,12 +1496,11 @@ html[dir='rtl'] #topMenu ul li {float:right; }
 #topMenu ul li a {margin:auto; padding-top:52px; width:100%;}
 #topMenu ul li:hover ul {display:block;}
 #topMenu ul li.separator span {background: url('images/hline.png') repeat-x; display:block; height:3px; margin:0;}
-#topMenu ul ul {background:none; display:none; font-weight:normal; position:absolute; left:0px; right:auto; top:70px; background-color:#FFF; border:thin solid #AAA; z-index:999;}
-html[dir='rtl'] #topMenu ul ul {right:0px; left:auto;}
-#topMenu ul ul li {left:auto; margin:0; clear:left; text-align:left; width:100%;}
+#topMenu ul ul {background:none; display:none; font-weight:normal; position:absolute; left:0px; right:auto; top:70px; background-color:#FFF; border:thin solid #AAA; z-index:999; padding-top:5px;}
+html[dir='rtl'] #topMenu ul ul {left:auto; right:0px;}
+#topMenu ul ul li {clear:left; left:auto; margin:0; padding:0; text-align:left; width:100%;}
 html[dir='rtl'] #topMenu ul ul li {right:auto; clear:right; text-align:right;}
-#topMenu ul ul li a {font-size:11px; height:20px; padding:1px 10px 0 28px; white-space: nowrap;}
-html[dir='rtl'] #topMenu ul ul li a {padding:1px 2px 0 0;}
+#topMenu ul ul li a {font-size:11px; height:20px; padding:1px 6px; text-indent:27px; white-space:nowrap;}
 #topMenu ul ul ul {display:none !important; left:100%; position:absolute; top:0px;}
 html[dir='rtl'] #topMenu ul ul ul {right:100%;}
 #topMenu ul ul li:hover ul {display:block !important;}
@@ -1573,8 +1571,8 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .fact_SOUR {margin: 3px 0}
 #indi_note .fact_SOUR a {font-size:100%; margin: 3px 0}
 
-/* INDI IMAGE SPRITE */
-.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon, .icon_large_gedcom, .icon_large_pedigree, .icon_large_indis, .icon_large_reports, .icon_large_search, .icon_large_help, .icon_large_calendar, .icon_large_mypage, .icon_large_clippings, .icon_large_edit_indi, .icon_large_edit_source, .icon_large_edit_fam, .icon_large_edit_media, .icon_large_edit_notes, .icon_large_edit_repo, .icon_small_add_clip, .icon_small_add_fam, .icon_small_admin, .icon_small_ancestry, .icon_small_calendar, .icon_small_cfamily, .icon_small_clippings, .icon_small_contact, .icon_small_delete, .icon_small_descendant, .icon_small_fambook, .icon_small_fanchart, .icon_small_fav, .icon_small_gedcom, .icon_small_hourglass, .icon_small_indis, .icon_small_map, .icon_small_menu_help, .icon_small_menu_media, .icon_small_menu_repository, .icon_small_menu_source, .icon_small_edit_indi, .icon_small_edit_fam, .icon_small_edit_notes, .icon_small_edit_raw, .icon_small_edit_repo, .icon_small_edit_sex, .icon_small_edit_source , .icon_small_add_indi, .icon_small_reord_fam, .icon_small_mypage, .icon_small_notes, .icon_small_patriarch, .icon_small_pedigree, .icon_small_place, .icon_small_relationship, .icon_small_reports, .icon_small_search, .icon_small_statistic, .icon_small_timeline, .icon_small_wiki {display: block; background: url('images/indi_sprite.png') no-repeat 0 0;}
+/* General sprite */
+.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display: block; background: url('images/general_sprite.png') no-repeat left 0;}
 
 .female_gender {background-position: -45px 3px; width: 24px;}
 .male_gender {background-position: -72px 3px; width: 24px;}
@@ -1582,62 +1580,73 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .editicon {background-position: -40px -32px; width: 24px; height:16px;}
 .copyicon {background-position: -70px -32px; width: 24px; height:16px;}
 .deleteicon {background-position: -100px -32px; width: 24px; height:16px;}
-.icon_large_gedcom {background-position: 12px -148px; width:64px;}
-.icon_large_mypage {background-position: 12px -218px; width:64px;}
-.icon_large_pedigree {background-position: 12px -288px; width:64px;}
-.icon_large_indis {background-position: 12px -358px; width:64px;}
-.icon_large_reports {background-position: 12px -428px; width:64px;}
-.icon_large_calendar {background-position: 12px -498px; width:64px;}
-.icon_large_search {background-position: 12px -568px; width:64px;}
-.icon_large_help {background-position: 12px -638px; width:64px;}
-.icon_large_clippings {background-position: 12px -708px; width:64px;}
-.icon_large_edit_indi {background-position: 12px -778px; width:64px;}
-.icon_large_edit_source {background-position: 12px -848px; width:64px;}
-.icon_large_edit_fam {background-position: 12px -918px; width:64px;}
-.icon_large_edit_media {background-position: 12px -988px; width:64px;}
-.icon_large_edit_notes {background-position: 12px -1058px; width:64px;}
-.icon_large_edit_repo {background-position: 12px -1128px; width:64px;}
-.icon_small_admin {background-position: -125px 0px; width:20px;}
-.icon_small_ancestry {background-position: -125px -30px; width:20px;}
-.icon_small_calendar {background-position: -125px -60px; width:20px;}
-.icon_small_cfamily {background-position: -125px -90px; width:20px;}
-.icon_small_contact {background-position: -125px -120px; width:20px;}
-.icon_small_descendant {background-position: -125px -150px; width:20px;}
-.icon_small_fambook {background-position: -125px -180px; width:20px;}
-.icon_small_fanchart {background-position: -125px -210px; width:20px;}
-.icon_small_gedcom {background-position: -125px -240px; width:20px;}
-.icon_small_hourglass {background-position: -125px -270px; width:20px;}
-.icon_small_indis {background-position: -125px -120px; width:20px;}
-.icon_small_menu_help {background-position: -125px -300px; width:20px;}
-.icon_small_menu_media {background-position: -125px -330px; width:20px;}
-.icon_small_menu_repository {background-position: -125px -360px; width:20px;}
-.icon_small_menu_source {background-position: -125px -180px; width:20px;}
-.icon_small_mypage {background-position: -125px -390px; width:20px;}
-.icon_small_notes {background-position: -125px -420px; width:20px;}
-.icon_small_patriarch {background-position: -125px -450px; width:20px;}
-.icon_small_pedigree {background-position: -125px -480px; width:20px;}
-.icon_small_place {background-position: -125px -510px; width:20px;}
-.icon_small_relationship {background-position: -125px -540px; width:20px;}
-.icon_small_reports {background-position: -125px -570px; width:20px;}
-.icon_small_search {background-position: -125px -600px; width:20px;}
-.icon_small_statistic {background-position: -125px -630px; width:20px;}
-.icon_small_timeline {background-position: -125px -660px; width:20px;}
-.icon_small_wiki {background-position: -125px -690px; width:20px;}
-.icon_small_map {background-position: -125px -720px; width:20px;}
-.icon_small_edit_indi {background-position: -125px -750px; width:20px;}
-.icon_small_add_indi {background-position: -125px -780px; width:20px;}
-.icon_small_edit_sex {background-position: -125px -810px; width:20px;}
-.icon_small_edit_fam {background-position: -125px -90px; width:20px;}
-.icon_small_edit_raw {background-position: -125px -240px; width:20px;}
-.icon_small_delete {background-position: -125px -840px; width:20px;}
-.icon_small_fav {background-position: -125px -870px; width:20px;}
-.icon_small_clippings {background-position: -125px -900px; width:20px;}
-.icon_small_add_clip {background-position: -125px -930px; width:20px;}
-.icon_small_edit_source {background-position: -125px -960px; width:20px;}
-.icon_small_edit_repo {background-position: -125px -990px; width:20px;}
-.icon_small_edit_notes {background-position: -125px -1020px; width:20px;}
-.icon_small_add_fam {background-position: -125px -1050px; width:20px;}
-.icon_small_reord_fam {background-position: -125px -1080px; width:20px;}
+
+/* Large menu icons sprite */
+.icon_large_gedcom, .icon_large_pedigree, .icon_large_indis, .icon_large_reports, .icon_large_search, .icon_large_help, .icon_large_calendar, .icon_large_mypage, .icon_large_clippings, .icon_large_edit_indi, .icon_large_edit_source, .icon_large_edit_fam, .icon_large_edit_media, .icon_large_edit_notes, .icon_large_edit_repo {display: block; background: url('images/large_menu_sprite.png') no-repeat left 0;}
+
+.icon_large_gedcom {background-position: center 0px;}
+.icon_large_mypage {background-position: center -70px; width:64px;}
+.icon_large_pedigree {background-position: center -140px; width:64px;}
+.icon_large_indis {background-position: center -210px; width:64px;}
+.icon_large_reports {background-position: center -280px; width:64px;}
+.icon_large_calendar {background-position: center -350px; width:64px;}
+.icon_large_search {background-position: center -420px; width:64px;}
+.icon_large_help {background-position: center -490px; width:64px;}
+.icon_large_clippings {background-position: center -560px; width:64px;}
+.icon_large_edit_indi {background-position: center -630px; width:64px;}
+.icon_large_edit_source {background-position: center -700px; width:64px;}
+.icon_large_edit_fam {background-position: center -770px; width:64px;}
+.icon_large_edit_media {background-position: center -840px; width:64px;}
+.icon_large_edit_notes {background-position: center -910px; width:64px;}
+.icon_large_edit_repo {background-position: center -980px; width:64px;}
+
+/* Small menu icons sprite */
+.icon_small_add_clip, .icon_small_add_fam, .icon_small_admin, .icon_small_ancestry, .icon_small_calendar, .icon_small_cfamily, .icon_small_clippings, .icon_small_contact, .icon_small_delete, .icon_small_descendant, .icon_small_fambook, .icon_small_fanchart, .icon_small_fav, .icon_small_gedcom, .icon_small_hourglass, .icon_small_indis, .icon_small_map, .icon_small_menu_help, .icon_small_menu_media, .icon_small_menu_repository, .icon_small_menu_source, .icon_small_edit_indi, .icon_small_edit_fam, .icon_small_edit_notes, .icon_small_edit_raw, .icon_small_edit_repo, .icon_small_edit_sex, .icon_small_edit_source , .icon_small_add_indi, .icon_small_reord_fam, .icon_small_mypage, .icon_small_notes, .icon_small_patriarch, .icon_small_pedigree, .icon_small_place, .icon_small_relationship, .icon_small_reports, .icon_small_search, .icon_small_statistic, .icon_small_timeline, .icon_small_wiki, .icon_small_edit_media, .icon_small_medialink, .icon_arrow {display: block; background: url('images/small_menu_sprite.png') no-repeat left 0;}
+
+.icon_small_admin {background-position: left 0px;} html[dir='rtl'] .icon_small_admin {background-position: right 0px;}
+.icon_small_ancestry {background-position: left -30px;} html[dir='rtl'] .icon_small_ancestry {background-position: right -30px;}
+.icon_small_calendar {background-position: left -60px;} html[dir='rtl'] .icon_small_calendar {background-position: right -60px;}
+.icon_small_cfamily {background-position: left -90px;} html[dir='rtl'] .icon_small_cfamily {background-position: right -90px;}
+.icon_small_contact {background-position: left -120px;} html[dir='rtl'] .icon_small_contact {background-position: right -120px;}
+.icon_small_descendant {background-position: left -150px;} html[dir='rtl'] .icon_small_descendant {background-position: right -150px;}
+.icon_small_fambook {background-position: left -180px;} html[dir='rtl'] .icon_small_fambook {background-position: right -180px;}
+.icon_small_fanchart {background-position: left -210px;} html[dir='rtl'] .icon_small_fanchart {background-position: right -210px;}
+.icon_small_gedcom {background-position: left -240px;} html[dir='rtl'] .icon_small_gedcom {background-position: right -240px;}
+.icon_small_hourglass {background-position: left -270px;} html[dir='rtl'] .icon_small_hourglass {background-position: right -270px;}
+.icon_small_indis {background-position: left -120px;} html[dir='rtl'] .icon_small_indis {background-position: right -120px;}
+.icon_small_menu_help {background-position: left -300px;} html[dir='rtl'] .icon_small_menu_help {background-position: right -300px;}
+.icon_small_menu_media {background-position: left -330px;} html[dir='rtl'] .icon_small_menu_media {background-position: right -330px;}
+.icon_small_menu_repository {background-position: left -360px;} html[dir='rtl'] .icon_small_menu_repository {background-position: right -360px;}
+.icon_small_menu_source {background-position: left -180px;} html[dir='rtl'] .icon_small_menu_source {background-position: right -180px;}
+.icon_small_mypage {background-position: left -390px;} html[dir='rtl'] .icon_small_mypage {background-position: right -390px;}
+.icon_small_notes {background-position: left -420px;} html[dir='rtl'] .icon_small_notes {background-position: right -420px;}
+.icon_small_patriarch {background-position: left -450px;} html[dir='rtl'] .icon_small_patriarch {background-position: right -450px;}
+.icon_small_pedigree {background-position: left -480px;} html[dir='rtl'] .icon_small_pedigree {background-position: right -480px;}
+.icon_small_place {background-position: left -510px;} html[dir='rtl'] .icon_small_place {background-position: right -510px;}
+.icon_small_relationship {background-position: left -540px;} html[dir='rtl'] .icon_small_relationship {background-position: right -540px;}
+.icon_small_reports {background-position: left -570px;} html[dir='rtl'] .icon_small_reports {background-position: right -570px;}
+.icon_small_search {background-position: left -600px;} html[dir='rtl'] .icon_small_search {background-position: right -600px;}
+.icon_small_statistic {background-position: left -630px;} html[dir='rtl'] .icon_small_statistic {background-position: right -630px;}
+.icon_small_timeline {background-position: left -660px;} html[dir='rtl'] .icon_small_timeline {background-position: right -660px;}
+.icon_small_wiki {background-position: left -690px;} html[dir='rtl'] .icon_small_wiki {background-position: right -690px;}
+.icon_small_map {background-position: left -720px;} html[dir='rtl'] .icon_small_map {background-position: right -720px;}
+.icon_small_edit_indi {background-position: left -750px;} html[dir='rtl'] .icon_small_edit_indi {background-position: right -750px;}
+.icon_small_add_indi {background-position: left -780px;} html[dir='rtl'] .icon_small_add_indi {background-position: right -780px;}
+.icon_small_edit_sex {background-position: left -810px;} html[dir='rtl'] .icon_small_edit_sex {background-position: right -810px;}
+.icon_small_edit_fam {background-position: left -90px;} html[dir='rtl'] .icon_small_edit_fam {background-position: right -90px;}
+.icon_small_edit_raw {background-position: left -240px;} html[dir='rtl'] .icon_small_edit_raw {background-position: right -240px;}
+.icon_small_delete {background-position: left -840px;} html[dir='rtl'] .icon_small_delete {background-position: right -840px;}
+.icon_small_fav {background-position: left -870px;} html[dir='rtl'] .icon_small_fav {background-position: right -870px;}
+.icon_small_clippings {background-position: left -900px;} html[dir='rtl'] .icon_small_clippings {background-position: right -900px;}
+.icon_small_add_clip {background-position: left -930px;} html[dir='rtl'] .icon_small_add_clip {background-position: right -930px;}
+.icon_small_edit_source {background-position: left -960px;} html[dir='rtl'] .icon_small_edit_source {background-position: right -960px;}
+.icon_small_edit_repo {background-position: left -990px;} html[dir='rtl'] .icon_small_edit_repo {background-position: right -990px;}
+.icon_small_edit_notes {background-position: left -1020px;} html[dir='rtl'] .icon_small_edit_notes {background-position: right -1020px;}
+.icon_small_add_fam {background-position: left -1050px;} html[dir='rtl'] .icon_small_add_fam {background-position: right -1050px;}
+.icon_small_reord_fam {background-position: left -1080px;} html[dir='rtl'] .icon_small_reord_fam {background-position: right -1080px;}
+.icon_small_edit_media {background-position: left -1110px;} html[dir='rtl'] .icon_small_edit_media {background-position: right -1110px;}
+.icon_small_medialink {background-position: left -1140px;} html[dir='rtl'] .icon_small_medialink {background-position: right -1140px;}
+.icon_arrow {background-position: right -1170px; float: right; margin-top: -12px;} html[dir='rtl'] .icon_arrow {background-position: left -1190px;  float: left;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs {padding:0;}
