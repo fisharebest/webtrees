@@ -357,7 +357,7 @@ if (isset($content) && $content==1) {
 				<legend><?php echo WT_I18N::translate('Media objects'), ': ', $stats->totalMedia(); ?></legend>
 				<table class="facts_table">
 				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Media'); ?></td>
+					<td class="facts_label"><?php echo WT_I18N::translate('Media objects'); ?></td>
 				</tr>
 				<tr>
 					<td class="facts_value statistics_chart"><?php echo $stats->chartMedia(); ?></td>

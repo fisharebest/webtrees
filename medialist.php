@@ -129,8 +129,8 @@ if (isset($_SESSION['Medialist']) && isset($_SESSION['Filtered_medialist']) ) {
 // Disable autocomplete
 // if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
-print_header(WT_I18N::translate('Multimedia objects'));
-echo '<div class="center"><h2>', WT_I18N::translate('Multimedia objects'), '</h2></div>';
+print_header(WT_I18N::translate('Media objects'));
+echo '<div class="center"><h2>', WT_I18N::translate('Media objects'), '</h2></div>';
 // Get Javascript variables from lb_config.php ---------------------------
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';

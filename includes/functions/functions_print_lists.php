@@ -789,7 +789,7 @@ function print_sour_table($datalist, $legend=null) {
 	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Families'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Media'), '</th>';
+	echo '<th class="list_label">', WT_I18N::translate('Media objects'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Shared notes'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
 		echo '<th class="list_label rela">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
@@ -916,7 +916,7 @@ function print_note_table($datalist, $legend=null) {
 	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Families'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Media'), '</th>';
+	echo '<th class="list_label">', WT_I18N::translate('Media objects'), '</th>';
 	echo '<th class="list_label">', WT_I18N::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
 		echo '<th class="list_label rela">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
@@ -1023,15 +1023,14 @@ function print_repo_table($repos, $legend='') {
  * print a sortable table of media objects
  *
  * @param array $datalist contain media objects that were extracted from the database.
- * @param string $legend optional legend of the fieldset
+ * @param string $legend legend of the fieldset
  */
-function print_media_table($datalist, $legend="") {
+function print_media_table($datalist, $legend) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_MEDIA_FILENAME;
 
 	if (count($datalist)<1) return;
 	require_once WT_ROOT.'js/sorttable.js.htm';
 
-	if ($legend == "") $legend = WT_I18N::translate('Media');
 	$legend = "<img src=\"".$WT_IMAGES["media"]."\" alt=\"\" align=\"middle\" /> ".$legend;
 	echo "<fieldset><legend>", $legend, "</legend>";
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
