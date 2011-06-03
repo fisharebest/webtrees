@@ -53,9 +53,6 @@ $reorder=safe_get('reorder', '1', '0');
 		'inverselink.php?linktoid=<?php echo $this->controller->indi->getXref(); ?>&linkto=person', 'win04', 'resizable=1, scrollbars=1, top=50, HEIGHT=300, WIDTH=450 ');
 		win04.focus()
 	}
-	function goto_config_lightbox() {
-		window.location = 'module.php?mod=lightbox&mod_action=admin_config&pid=<?php echo $this->controller->indi->getXref(); ?>&gedcom=<?php echo $GEDCOM; ?>#lightbox';
-	}
 -->
 </script>
 
@@ -71,32 +68,25 @@ if (isset($reorder) && $reorder==1) {
 	//Show Lightbox-Album header Links
 	if (WT_USER_IS_ADMIN) {
 		echo '<table border="0" width="75%"><tr>';
-		// Configuration
-		echo '<td class="width15 center wrap" valign="top">';
-		echo '<a href="javascript:goto_config_lightbox()">';
-		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_edit.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Lightbox-Album Configuration'), '" alt="', WT_I18N::translate('Lightbox-Album Configuration'), '" /><br />';
-		echo WT_I18N::translate('Lightbox-Album Configuration'), '&nbsp;';
-		echo '</a>';
-		echo '</td>';
 		// Add a new multimedia object
 		echo '<td class="width15 center wrap" valign="top">';
 		echo '<a href="javascript: album_add()">';
 		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" alt="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" /><br />';
-		echo WT_I18N::translate('Add a new Media Object'), '&nbsp;';
+		echo WT_I18N::translate('Add a new Media Object');
 		echo '</a>';
 		echo '</td>';
 		// Link to an existing item
 		echo '<td class="width15 center wrap" valign="top">';
 		echo '<a href="javascript: album_link()">';
 		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_link.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" alt="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" /><br />';
-		echo WT_I18N::translate('Link to an existing Media Object'), '&nbsp;';
+		echo WT_I18N::translate('Link to an existing Media Object');
 		echo '</a>';
 		echo '</td>';
 		// Popup Reorder Media
 		echo '<td class="width15 center wrap" valign="top">';
 		echo '<a href="javascript: reorder_media()">';
 		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media (window)'), '" alt="', WT_I18N::translate('Re-order media (window)'), '" /><br />';
-		echo WT_I18N::translate('Re-order media (window)'), '&nbsp;';
+		echo WT_I18N::translate('Re-order media (window)');
 		echo '</a>';
 		echo '</td>';
 		echo '</tr></table>';

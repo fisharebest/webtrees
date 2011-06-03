@@ -34,9 +34,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-global $pid, $GEDCOM ;
-
-$pid=safe_get('pid');
 $action = safe_POST('action');
 
 print_header(WT_I18N::translate('Lightbox-Album Configuration'));
@@ -62,7 +59,7 @@ if ($action=='update' && !isset($security_user)) {
 }
 
 ?>
-<form method="post" name="configform" action="module.php?mod=lightbox&amp;mod_action=admin_config&amp;pid=<?php echo $pid; ?>">
+<form method="post" name="configform" action="module.php?mod=lightbox&amp;mod_action=admin_config">
 <input type="hidden" name="action" value="update" />
 	<table id="album_config">
 		<tr>
@@ -116,14 +113,8 @@ if ($action=='update' && !isset($security_user)) {
 			</td>
 		</tr>
 	</table>
-	<input type="submit" value="<?php echo WT_I18N::translate('Save configuration'); ?>" onclick="closeHelp();" />
+	<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="closeHelp();" />
 	&nbsp;&nbsp;
 	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
-	&nbsp;&nbsp;
-	<?php if ($pid) { ?>
-		<INPUT TYPE="button" VALUE="<?php echo WT_I18N::translate('Return to Album page'); ?>" onclick="javascript:window.location='individual.php?pid=<?php echo $pid; ?>&gedcom=<?php echo $GEDCOM; ?>#lightbox'" />
-	<?php } else { ?>
-		<INPUT TYPE="button" VALUE="<?php echo WT_I18N::translate('Return to Admin Page'); ?>" onclick="javascript:window.location='admin_modules.php'" />
-	<?php } ?>
 </form>
 <?php print_footer();

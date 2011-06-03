@@ -1646,9 +1646,9 @@ echo WT_JS_START;?>
 				<tr>
 					<td style="padding: 5px" class="topbottombar">
 						<div class="btn">
-						<button type="submit" tabindex="<?php echo ++$i; ?>" value="<?php echo WT_I18N::translate('Save configuration'); ?>" /><span><?php echo WT_I18N::translate('Save configuration'); ?></span></button>				
+						<input type="submit" tabindex="<?php echo ++$i; ?>" value="<?php echo WT_I18N::translate('Save'); ?>" />
 						&nbsp;&nbsp;
-						<button type="reset" tabindex="<?php echo ++$i; ?>" value="<?php echo WT_I18N::translate('Reset'); ?>" /><span><?php echo WT_I18N::translate('Reset'); ?></span></button>
+						<input type="reset" tabindex="<?php echo ++$i; ?>" value="<?php echo WT_I18N::translate('Reset'); ?>" />
 						</div>
 					</td>
 				</tr>
