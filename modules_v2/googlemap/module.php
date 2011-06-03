@@ -42,7 +42,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
-		case 'admin_config':
 		case 'admin_editconfig':
 		case 'flags':
 		case 'pedigree_map':
@@ -61,7 +60,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&mod_action=admin_config';
+		return 'module.php?mod='.$this->getName().'&mod_action=admin_editconfig';
 	}
 
 	// Implement WT_Module_Tab
