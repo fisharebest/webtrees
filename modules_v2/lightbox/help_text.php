@@ -48,7 +48,7 @@ case 'lb_transition':
 	$text=WT_I18N::translate('This option lets you specify the transition speed when the image changes.  This selection is applied during the slideshow.  It is also applied when you move to the next or previous image when the slideshow is not running.<br /><br />The <b>None</b> option eliminates image transitions so that the new image immediately replaces the old without visible adjustment of the new image\'s dimensions.<br />');
 	break;
 case 'lb_url_dimensions':
-	$title=WT_I18N::translate('Lightbox URL Window dimensions');
+	$title=WT_I18N::translate('URL Window dimensions');
 	$text=WT_I18N::translate('When clicking on a URL image thumbnail, this option lets you specify the Lightbox URL Window dimensions in pixels.<br /><br />This should normally be less than your current browser window dimensions, and certainly less than your screen resolution.<br />');
 	break;
 }

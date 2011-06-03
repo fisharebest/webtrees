@@ -1683,7 +1683,7 @@ case 'SMTP_AUTH_USER':
 	break;
 
 case 'SMTP_AUTH':
-	$title=WT_I18N::translate('Username and password');
+	$title=WT_I18N::translate('Use password');
 	$text=WT_I18N::translate('Use name and password authentication to connect to the SMTP server.<br /><br />Some SMTP servers require all connections to be authenticated before they will accept outbound e-mails.');
 	break;
 
