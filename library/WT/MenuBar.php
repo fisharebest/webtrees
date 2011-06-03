@@ -425,20 +425,37 @@ class WT_MenuBar {
 			return $menu;
 		}
 
+		// Do not show empty lists
+		$row=WT_DB::prepare(
+			"SELECT SQL_CACHE".
+			" EXISTS(SELECT 1 FROM `##sources` WHERE s_file=?                  ) AS sour,".
+			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='REPO') AS repo,".
+			" EXISTS(SELECT 1 FROM `##other`   WHERE o_file=? AND o_type='NOTE') AS note,".
+			" EXISTS(SELECT 1 FROM `##media`   WHERE m_gedfile=?               ) AS obje"
+		)->execute(array(WT_GED_ID, WT_GED_ID, WT_GED_ID, WT_GED_ID))->fetchOneRow();
+
 		// Build a list of submenu items and then sort it in localized name order
-		$menuList=array(
+		$menulist=array(
 			'branches.php'  =>WT_I18N::translate('Branches'),
 			'famlist.php'   =>WT_I18N::translate('Families'),
 			'indilist.php'  =>WT_I18N::translate('Individuals'),
-			'medialist.php' =>WT_I18N::translate('Multimedia'),
 			'placelist.php' =>WT_I18N::translate('Place hierarchy'),
-			'repolist.php'  =>WT_I18N::translate('Repositories'),
-			'notelist.php'  =>WT_I18N::translate('Shared notes'),
-			'sourcelist.php'=>WT_I18N::translate('Sources')
 		);
-		asort($menuList);
+		if ($row->obje) {
+			$menulist['medialist.php']=WT_I18N::translate('Multimedia');
+		}
+		if ($row->repo) {
+			$menulist['repolist.php']=WT_I18N::translate('Repositories');
+		}
+		if ($row->sour) {
+			$menulist['sourcelist.php']=WT_I18N::translate('Sources');
+		}
+		if ($row->note) {
+			$menulist['notelist.php']=WT_I18N::translate('Shared notes');
+		}
+		asort($menulist);
 
-		foreach ($menuList as $page=>$name) {
+		foreach ($menulist as $page=>$name) {
 			$link=$page.'?ged='.WT_GEDURL;
 			switch ($page) {
 			case 'indilist.php':
