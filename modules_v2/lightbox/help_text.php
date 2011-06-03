@@ -30,10 +30,6 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 	exit;
 }
 switch ($help) {
-case 'LIGHTBOX_CONFIG':
-	$title=WT_I18N::translate('Configure Lightbox');
-	$text=WT_I18N::translate('Configure all aspects of the Lightbox module here.');
-	break;
 case 'mediatab':
 	$title=WT_I18N::translate('Media Tab Appearance');
 	$text=WT_I18N::translate('This option lets you determine whether the Media tab should be shown on the Individual Information page.<br /><br />When this option is set to <b>Hide</b>, only the <b>Lightbox</b> tab will be shown.<br />');

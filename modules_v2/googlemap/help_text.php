@@ -32,11 +32,6 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 
 switch ($help) {
 
-case 'GOOGLEMAP_CONFIG':
-	$title=WT_I18N::translate('Configure Google-map');
-	$text=WT_I18N::translate('Configure all aspects of the Google Map module here.');
-	break;
-
 case 'GOOGLEMAP_MAP_TYPE':
 	$title=WT_I18N::translate('Google-map type');
 	$text=WT_I18N::translate('The type of map that will be shown by default. This can be Map, Satellite, Hybrid or Terrain.');
