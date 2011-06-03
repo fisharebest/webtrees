@@ -129,7 +129,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			<tr>
 				<td style="padding-bottom:4px;" align="center" colspan="2">
 				<?php
-				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
+				echo "<a class=\"famnav_link\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
 				echo "<b>".$label."</b>";
 				echo "</a>";
 				?>
@@ -150,7 +150,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["husb"]); ?> nam">
 						<?php
-						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
+						echo "<a class=\"famnav_link\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());
 						echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 						echo "</a>";
@@ -174,7 +174,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
-						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
+						echo "<a class=\"famnav_link\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						echo PrintReady($people["wife"]->getFullName());
 						echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 						echo "</a>";
@@ -212,7 +212,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 								echo "<span style=\"font: 12px tahoma, arial, helvetica, sans-serif;\">".PrintReady($child->getFullName())."</span>";
 								echo "<br /><span style=\"font:9px tahoma, arial, helvetica, sans-serif;\">".$child->getLifeSpan() . "</span>";
 							} else {
-								echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+								echo "<a class=\"famnav_link\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 								echo PrintReady($child->getFullName());
 								echo "<font size=\"1\"><br />" . $child->getLifeSpan() . "</font>";
 								echo "</a>";
@@ -239,7 +239,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			<tr>
 				<td style="padding-bottom: 4px;" align="center" colspan="2">
 				<?php
-				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
+				echo "<a class=\"famnav_link\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
 				echo "<b>".$label."</b>";
 				echo "</a>";
 				?>
@@ -267,7 +267,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["husb"]); ?> nam">
 						<?php
-						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
+						echo "<a class=\"famnav_link\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());
 						echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 						echo "</a>";
@@ -300,7 +300,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
-						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
+						echo "<a class=\"famnav_link\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						echo PrintReady($people["wife"]->getFullName());
 						echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 						echo "</a>";
@@ -326,7 +326,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						</td>
 						<td align="center" class="<?php echo $this->controller->getPersonStyle($child); ?> nam">
 							<?php
-							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+							echo "<a class=\"famnav_link\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							echo PrintReady($child->getFullName());
 							echo "<font size=\"1\"><br />" . $child->getLifeSpan() . "</font>";
 							echo "</a>";
@@ -347,7 +347,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			<tr>
 				<td style="padding-bottom: 4px;" align="center" colspan="2">
 				<?php
-				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
+				echo "<a class=\"famnav_link\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
 				echo "<b>".WT_I18N::translate('Immediate Family')."</b>";
 				echo "</a>";
 				?>
@@ -380,7 +380,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							echo PrintReady($people["husb"]->getFullName());
 							echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 						} else {
-							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
+							echo "<a class=\"famnav_link\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 							echo PrintReady($people["husb"]->getFullName());
 							echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 							echo "</a>";
@@ -409,7 +409,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							echo PrintReady($people["wife"]->getFullName());
 							echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 						} else {
-							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
+							echo "<a class=\"famnav_link\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 							echo PrintReady($people["wife"]->getFullName());
 							echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 							echo "</a>";
@@ -436,7 +436,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						</td>
 						<td align="center" class="<?php echo $this->controller->getPersonStyle($child); ?> nam">
 							<?php
-							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+							echo "<a class=\"famnav_link\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							echo PrintReady($child->getFullName());
 							echo "<font size=\"1\"><br />" . $child->getLifeSpan() . "</font>";
 							echo "</a>";
@@ -461,7 +461,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			<tr>
 				<td style="padding-bottom: 4px;" align="center" colspan="2">
 				<?php
-				echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
+				echo "<a class=\"famnav_link\" href=\"".$family->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$family->getHtmlUrl()."');\">";
 				echo "<b>".$label."</b>";
 				echo "</a>";
 				?>
@@ -484,7 +484,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["husb"]); ?> nam">
 						<?php
-						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
+						echo "<a class=\"famnav_link\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());
 						echo "<font size=\"1\"><br />" . $people["husb"]->getLifeSpan() . "</font>";
 						echo "</a>";
@@ -511,7 +511,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					</td>
 					<td align="center" class="<?php echo $this->controller->getPersonStyle($people["wife"]); ?> nam">
 						<?php
-						echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
+						echo "<a class=\"famnav_link\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						echo PrintReady($people["wife"]->getFullName());
 						echo "<font size=\"1\"><br />" . $people["wife"]->getLifeSpan() . "</font>";
 						echo "</a>";
@@ -537,7 +537,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						</td>
 						<td align="center" class="<?php echo $this->controller->getPersonStyle($child); ?> nam">
 							<?php
-							echo "<a style=\"font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+							echo "<a class=\"famnav_link\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							echo PrintReady($child->getFullName());
 							echo "<font size=\"1\"><br />" . $child->getLifeSpan() . "</font>";
 							echo "</a>";

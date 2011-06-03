@@ -1815,6 +1815,7 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
 #flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {background:none; border:none; font-size:11px; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
 html[dir='rtl'] #flyout3 {text-align:right;}
+.famnav_link {font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;}
 
 /* Descendancy */
 #sb_desc_content {margin-left:3px;}
