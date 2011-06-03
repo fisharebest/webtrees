@@ -328,7 +328,6 @@ if ($type == "media" && $MULTI_MEDIA) {
 	echo "<input type=\"checkbox\" name=\"showthumb\" value=\"true\"";
 	if ($showthumb) echo "checked=\"checked\"";
 	echo "onclick=\"javascript: this.form.submit();\" />", WT_I18N::translate('Show thumbnails');
-	echo help_link('show_thumb');
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
 	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";

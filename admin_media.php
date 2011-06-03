@@ -791,7 +791,7 @@ if (check_media_structure()) {
 				</select>
 			</td>
 			<td class="wrap">
-				<?php echo WT_I18N::translate('Show thumbnails'), help_link('show_thumb'); ?>
+				<?php echo WT_I18N::translate('Show thumbnails'); ?>
 				<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();" />
 			</td>
 			<!--<td class="wrap">

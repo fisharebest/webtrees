@@ -2875,11 +2875,6 @@ case 'show_spouse':
 	$text=WT_I18N::translate('By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart.');
 	break;
 
-case 'show_thumb':
-	$title=WT_I18N::translate('Show thumbnails');
-	$text=WT_I18N::translate('Thumbnails will be shown if you check this box.');
-	break;
-
 case 'simple_filter':
 	$title=WT_I18N::translate('Simple search filter');
 	$text=WT_I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.');
