@@ -97,7 +97,7 @@ if (!WT_USER_IS_ADMIN) {
 } else { 
 	echo '<table id="gm_config"><tr>',
 		'<th><a ', (safe_GET('mod_action')=="admin_editconfig" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>', '</th>',
-		'<th><a ', (safe_GET('mod_action')=="admin_places" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>', help_link('PLE_EDIT','googlemap'), '</th>',
+		'<th><a ', (safe_GET('mod_action')=="admin_places" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>', '</th>',
 		'<th><a ', (safe_GET('mod_action')=="admin_placecheck" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>', help_link('GOOGLEMAP_PLACECHECK','googlemap'), '</th>',
 	'</tr></table>';
 }
@@ -298,7 +298,7 @@ echo '<div id="tabs">',
 <div id="gm_advanced">
 <table class="gm_edit_config">
 	<tr>
-		<th><?php echo WT_I18N::translate('Precision'), help_link('GOOGLEMAP_PRECISION','googlemap'); ?></th>
+		<th><?php echo WT_I18N::translate('Precision of the latitude and longitude'), help_link('GOOGLEMAP_PRECISION','googlemap'); ?></th>
 		<td>
 			<table>
 				<tr>
@@ -356,7 +356,7 @@ echo '<div id="tabs">',
 		</td>
 	</tr>
 	<tr>
-		<th><?php echo WT_I18N::translate('Default top level value'), help_link('GM_DEFAULT_LEVEL_0','googlemap'); ?></th>
+		<th><?php echo WT_I18N::translate('Default value for top-level'), help_link('GM_DEFAULT_LEVEL_0','googlemap'); ?></th>
 		<td><input type="text" name="NEW_GM_DEFAULT_TOP_LEVEL" value="<?php echo $GM_DEFAULT_TOP_VALUE; ?>" size="20" /></td>
 	</tr>
 	<tr>

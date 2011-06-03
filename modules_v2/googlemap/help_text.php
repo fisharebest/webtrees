@@ -33,17 +33,17 @@ if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='he
 switch ($help) {
 
 case 'GOOGLEMAP_MAP_TYPE':
-	$title=WT_I18N::translate('Google-map type');
+	$title=WT_I18N::translate('Default map type');
 	$text=WT_I18N::translate('The type of map that will be shown by default. This can be Map, Satellite, Hybrid or Terrain.');
 	break;
 
 case 'GOOGLEMAP_MAP_SIZE':
-	$title=WT_I18N::translate('Google-map size');
+	$title=WT_I18N::translate('Size of map (in pixels)');
 	$text=WT_I18N::translate('The size of the map (in pixels) as shown on the Individual pages.');
 	break;
 
 case 'GOOGLEMAP_MAP_ZOOM':
-	$title=WT_I18N::translate('Google-map zoom factor');
+	$title=WT_I18N::translate('Zoom factor of map');
 	$text=WT_I18N::translate('Minimum and maximum zoom factor for the Google map. 1 is the full map, 15 is single house. Note that 15 is only available in certain areas.');
 	break;
 
@@ -58,7 +58,7 @@ case 'GM_DEFAULT_LEVEL_0':
 	break;
 
 case 'GM_NOF_LEVELS':
-	$title=WT_I18N::translate('This indicates the number of levels used within Googlemap');
+	$title=WT_I18N::translate('Number of levels');
 	$text=WT_I18N::translate('This field indicates the number of levels in the places-hierarchy that is being used by the Googlemap modules.<br />The default value is 4 (Country, State, County, Place), which is usually good enough. If you want to add an extra level (for example to add specific location like cemeteries or schools) change this value. If you want to remove a level (for example county) you can also change this value, but keep in mind that the files containing the place-locations contain a 4-level structure.');
 	break;
 
@@ -73,7 +73,7 @@ case 'GM_NAME_POSTFIX':
 	break;
 
 case 'GM_NAME_PRE_POST':
-	$title=WT_I18N::translate('Order of the pre/postfix to use');
+	$title=WT_I18N::translate('Prefix / Postfix order');
 	$text=WT_I18N::translate('This field indicates the order in which names are tried using the prefix and postfix. The possible values are:<br /><ul><li>No pre/postfix</li><li>Normal name, Prefix, Postfix, both</li><li>Normal name, Postfix, Prefix, both</li><li>Prefix, Postfix, both, Normal name</li><li>Postfix, Prefix, both, Normal name</li><li>Prefix, Postfix, Normal name, both</li><li>Postfix, Prefix, Normal name, both</li></ul>');
 	break;
 
@@ -118,11 +118,6 @@ case 'GOOGLEMAP_COORD':
 	break;
 
 // Help texts for places_edit.php
-
-case 'PLE_EDIT':
-	$title=WT_I18N::translate('Edit Google Map Places');
-	$text=WT_I18N::translate('Here you can add, edit or delete Google Map place details.');
-	break;
 
 case 'PLE_PLACES':
 	$title=WT_I18N::translate('Enter place name');
