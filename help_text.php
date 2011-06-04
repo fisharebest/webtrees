@@ -2613,11 +2613,6 @@ case 'link_new_wife':
 	$text=WT_I18N::translate('This will allow you to link another individual, who already exists, as a new wife to this person.  This will create a new family with the wife you select.  You will also have the option of specifying a marriage for this new family.');
 	break;
 
-case 'link_person_id':
-	$title=WT_I18N::translate('Person ID');
-	$text=WT_I18N::translate('In this field you enter the ID of the person you are linking to (e.g. I100).');
-	break;
-
 case 'link_wife':
 	$title=WT_I18N::translate('Link to an existing family as a wife');
 	$text=WT_I18N::translate('This item will allow you to link the current individual as a wife to a family that is already in the database.<br /><br />This is an advanced editing option that should only be used if the family you want to link to already exists.  If you want to add a <u>new</u> family to this individual, use the <b>Add a new husband</b> link.');
