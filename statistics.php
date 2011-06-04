@@ -48,7 +48,7 @@ if (isset($content) && $content==1) {
 	if ($tab==0) { ?>
 		<div id="pagetab0">
 		<fieldset>
-			<legend><?php echo WT_I18N::translate('Total individuals'), ': ', $stats->totalIndividuals(); ?></legend>
+			<legend><?php echo WT_I18N::translate('Total individuals: %s', $stats->totalIndividuals()); ?></legend>
 				<table class="facts_table">
 					<tr>
 						<td class="facts_label"><?php echo WT_I18N::translate('Total males'); ?></td>
@@ -177,7 +177,7 @@ if (isset($content) && $content==1) {
 	if ($tab==1) { ?>
 		<div id="pagetab1">
 		<fieldset>
-			<legend><?php echo WT_I18N::translate('Total families'), ': ', $stats->totalFamilies(); ?></legend>
+			<legend><?php echo WT_I18N::translate('Total families: %s', $stats->totalFamilies()); ?></legend>
 				<b><?php echo WT_I18N::translate('Events'); ?></b>
 				<table class="facts_table">
 					<tr>

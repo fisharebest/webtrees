@@ -637,7 +637,7 @@ if ($action=="filter") {
 			foreach ($myindilist as $indi) {
 				echo $indi->format_list('li', true);
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total individuals'), ' ', count($myindilist), '</tr></td>';
+			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
 		} else {
 			echo "<td class=\"list_value_wrap\">";
 			echo WT_I18N::translate('No results found.');
@@ -662,7 +662,7 @@ if ($action=="filter") {
 			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total families'), ' ', count($myfamlist), '</tr></td>';
+			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total families: %s', count($myfamlist)), '</tr></td>';
 		} else {
 			echo "<td class=\"list_value_wrap\">";
 			echo WT_I18N::translate('No results found.');
@@ -918,7 +918,7 @@ if ($action=="filter") {
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getListName(),'</span></a></li>';
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total Sources'), ' ', count($mysourcelist), '</td></tr>';
+			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total sources: %s', count($mysourcelist)), '</td></tr>';
 		}
 		else {
 			echo '<tr><td class="list_value_wrap">', WT_I18N::translate('No results found.'), '</td></tr>';

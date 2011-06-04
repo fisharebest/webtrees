@@ -455,15 +455,14 @@ case 'today':
 	echo '</td>';
 	echo "</tr><tr>";
 	// Table footers
-	echo '<td class="descriptionbox">', WT_I18N::translate('Total individuals'), ' ';
-	echo count($indis);
+	echo '<td class="descriptionbox">', WT_I18N::translate('Total individuals: %s', count($indis));
 	echo '<br />';
 	echo WT_Person::sexImage('M', 'small', 'vertical-align: middle', WT_I18N::translate('Males')), "&nbsp;{$males}&nbsp;&nbsp;&nbsp;&nbsp;";
 	echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', WT_I18N::translate('Females')), "&nbsp;{$females}&nbsp;&nbsp;&nbsp;&nbsp;";
 	if (count($indis)!=$males+$females)
 		echo WT_Person::sexImage('U', 'small', 'vertical-align: middle', WT_I18N::translate('All People')), '&nbsp;', count($indis)-$males-$females;
 	echo '</td>';
-	echo '<td class="descriptionbox">', WT_I18N::translate('Total families'), ' ', count($fams), '</td>';
+	echo '<td class="descriptionbox">', WT_I18N::translate('Total families: %s', count($fams)), '</td>';
 	echo '</tr></table>';
 
 	break;
