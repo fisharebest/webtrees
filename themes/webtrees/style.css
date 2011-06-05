@@ -1533,7 +1533,7 @@ html[dir='rtl'] #topMenu {float:right;}
 html[dir='rtl'] #main-menu li {float:right;}
 html[dir='rtl'] #main-menu   li:hover > ul {right:100%; left:auto;}
 html[dir='rtl'] #main-menu > li:hover > ul {left:auto; right:0;}
-html[dir=rtl] #main-menu   li  li {text-align:right;}
+html[dir='rtl'] #main-menu   li  li {text-align:right;}
 
 /* Main menu icons */
 #menu-calendar  {background-position:center -350px;}
