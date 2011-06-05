@@ -315,7 +315,11 @@ class WT_Controller_Individual extends WT_Controller_Base {
 								$name=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $name);
 							}
 							$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
-							echo PrintReady($name);
+							if ($fact=='TYPE') {
+								echo WT_Gedcom_Code_Name::getValue($name, $this->indi);
+							} else {
+								echo PrintReady($name);
+							}
 						}
 					echo '</dd>';
 					echo '</dl>';
