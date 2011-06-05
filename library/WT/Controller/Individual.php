@@ -294,8 +294,8 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
 		echo '<dd class="field">', $dummy->getFullName();
 		if ($this->indi->canEdit() && !strpos($factrec, "\nWT_OLD")) {
-			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
-			echo "<div class=\"editlink\"><a href=\"javascript:;\" class=\"font9 editicon\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
+			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
+			echo "<div class=\"editlink\"><a href=\"javascript:;\" class=\"font9 editicon\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
 		}
 		echo '</dd>';
 		echo '</dl>';
@@ -597,20 +597,20 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$labels = array();
 		switch ($type) {
 		case 'parents':
-			$labels["parent"] = WT_I18N::translate('Parent');
-			$labels["mother"] = WT_I18N::translate('Mother');
-			$labels["father"] = WT_I18N::translate('Father');
-			$labels["sibling"] = WT_I18N::translate('Sibling');
-			$labels["sister"] = WT_I18N::translate('Sister');
-			$labels["brother"] = WT_I18N::translate('Brother');
+			$labels["parent" ] = get_relationship_name_from_path('par', null, null);
+			$labels["mother" ] = get_relationship_name_from_path('mot', null, null);
+			$labels["father" ] = get_relationship_name_from_path('fat', null, null);
+			$labels["sibling"] = get_relationship_name_from_path('sib', null, null);
+			$labels["sister" ] = get_relationship_name_from_path('sis', null, null);
+			$labels["brother"] = get_relationship_name_from_path('bro', null, null);
 			break;
 		case 'step-parents':
-			$labels["parent"] = WT_I18N::translate('Step-Parent');
-			$labels["mother"] = WT_I18N::translate('Step-Mother');
-			$labels["father"] = WT_I18N::translate('Step-Father');
-			$labels["sibling"] = WT_I18N::translate('Half-Sibling');
-			$labels["sister"] = WT_I18N::translate('Half-Sister');
-			$labels["brother"] = WT_I18N::translate('Half-Brother');
+			$labels["parent" ] = get_relationship_name_from_path('parspo', null, null);
+			$labels["mother" ] = get_relationship_name_from_path('fatwif', null, null);
+			$labels["father" ] = get_relationship_name_from_path('mothus', null, null);
+			$labels["sibling"] = get_relationship_name_from_path('parchi', null, null);
+			$labels["sister" ] = get_relationship_name_from_path('pardau', null, null);
+			$labels["brother"] = get_relationship_name_from_path('parson', null, null);
 			break;
 		case 'spouse':
 			if ($family->isNotMarried()) {
@@ -626,37 +626,37 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				if (!empty($marr_rec)) {
 					$type = $family->getMarriageType();
 					if (empty($type) || stristr($type, "partner")===false) {
-						$labels["parent"] = WT_I18N::translate('Spouse');
-						$labels["mother"] = WT_I18N::translate('Wife');
-						$labels["father"] = WT_I18N::translate('Husband');
+						$labels["parent"] = get_relationship_name_from_path('spo', null, null);
+						$labels["mother"] = get_relationship_name_from_path('wif', null, null);
+						$labels["father"] = get_relationship_name_from_path('hus', null, null);
 					} else {
 						$labels["parent"] = WT_I18N::translate('Partner');
 						$labels["mother"] = WT_I18N::translate('Partner');
 						$labels["father"] = WT_I18N::translate('Partner');
 					}
 				} else {
-					$labels["parent"] = WT_I18N::translate('Spouse');
-					$labels["mother"] = WT_I18N::translate('Wife');
-					$labels["father"] = WT_I18N::translate('Husband');
+					$labels["parent"] = get_relationship_name_from_path('spo', null, null);
+					$labels["mother"] = get_relationship_name_from_path('wif', null, null);
+					$labels["father"] = get_relationship_name_from_path('hus', null, null);
 				}
 			}
-			$labels["sibling"] = WT_I18N::translate('Child');
-			$labels["sister"] = WT_I18N::translate('Daughter');
-			$labels["brother"] = WT_I18N::translate('Son');
+			$labels["sibling"] = get_relationship_name_from_path('chi', null, null);
+			$labels["sister" ] = get_relationship_name_from_path('dau', null, null);
+			$labels["brother"] = get_relationship_name_from_path('son', null, null);
 			break;
 		case 'step-children':
 			if ($this->indi->equals($family->getHusband())) {
 				$labels["parent"] = '';
 				$labels["mother"] = '';
-				$labels["father"] = WT_I18N::translate('husband');
+				$labels["father"] = get_relationship_name_from_path('hus', null, null);
 			} else {
 				$labels["parent"] = '';
-				$labels["mother"] = WT_I18N::translate('wife');
+				$labels["mother"] = get_relationship_name_from_path('wif', null, null);
 				$labels["father"] = '';
 			}
-			$labels["sibling"] = WT_I18N::translate_c('spouses\'s child', 'step-child');
-			$labels["sister"] = WT_I18N::translate_c('spouses\'s daughter', 'step-daughter');
-			$labels["brother"] = WT_I18N::translate_c('spouses\'s son', 'step-son');
+			$labels["sibling"] = WT_I18N::translate_c('spouses\'s child',    'step-child');
+			$labels["sister" ] = WT_I18N::translate_c('spouses\'s daughter', 'step-daughter');
+			$labels["brother"] = WT_I18N::translate_c('spouses\'s son',      'step-son');
 			break;
 		}
 		$newhusb = null;
@@ -675,8 +675,8 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		if ($type=="step-parents") {
 			$fams = $this->indi->getChildFamilies();
 			foreach ($fams as $key=>$fam) {
-				if ($fam->hasParent($husb)) $labels["father"] = WT_I18N::translate('Father');
-				if ($fam->hasParent($wife)) $labels["mother"] = WT_I18N::translate('Mother');
+				if ($fam->hasParent($husb)) $labels["father"] = get_relationship_name_from_path('fat', null, null);
+				if ($fam->hasParent($wife)) $labels["mother"] = get_relationship_name_from_path('mot', null, null);
 			}
 		}
 		//-- set the label for the husband
