@@ -99,8 +99,8 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 						print_fact($value);
 					}
 				} else {
-					//$reftags = array ('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID');// list of tags used in sidebar module 'references'
-						if (!in_array($value->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !in_array('References', WT_Module::getActiveSidebars())) {
+					//$reftags = array ('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID');// list of tags used in "Extra information" sidebar module
+					if (!in_array($value->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !array_key_exists('extra_info', WT_Module::getActiveModules())) {
 						print_fact($value);
 					}
 				}

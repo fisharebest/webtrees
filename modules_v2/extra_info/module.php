@@ -71,8 +71,8 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 			foreach ($indifacts as $value) {
 				if (in_array($value->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
-						print_fact($value);
-					}
+					print_fact($value);
+				}
 				$FACT_COUNT++;
 			}
 		}
@@ -84,12 +84,11 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			echo WT_I18N::translate('Hit Count:'). ' '. $hitCount;
 		}
 		echo '</div>';// close #hitcounter
-
-		}
+	}
 	
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
-		return "";
+		return '';
 	}
 
 }
