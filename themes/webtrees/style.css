@@ -1488,25 +1488,6 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 .logo {text-align:center;}
 
 /* ======= Main menu items ========== */
-/*
-#topMenu {float:left; width:100%; position:relative;}
-html[dir='rtl'] #topMenu {float:right;}
-#main-menu {clear:left; float:right; list-style:none; margin:0; padding:0; position:relative; right:50%; text-align:center;}
-#main-menu li {display:block; float:left; list-style:none; margin:0; min-width:100px; padding:5px 0; position:relative; left:50%; height:60px; background:url('images/large_menu_sprite.png') no-repeat;}}
-html[dir='rtl'] #main-menu li {float:right;}
-#main-menu li a {margin:auto; padding-top:52px; width:100%;}
-#main-menu li:hover ul {display:block;}
-#main-menu li.separator span {background: url('images/hline.png') repeat-x; display:block; height:3px; margin:0;}
-#main-menu ul {background:none; display:none; font-weight:normal; position:absolute; left:0px; right:auto; top:70px; background-color:#FFF; border:thin solid #AAA; z-index:999; padding-top:5px;}
-html[dir='rtl'] #main-menu ul {left:auto; right:0px;}
-#main-menu ul li {clear:left; left:auto; margin:0; padding:0; text-align:left; width:100%; text-indent:27px; white-space:nowrap; height:24px; background:url('images/small_menu_sprite.png') no-repeat;}
-html[dir='rtl'] #main-menu ul li {right:auto; clear:right; text-align:right;}
-#main-menu ul li a {font-size:11px; height:20px; padding:1px 6px;}
-#main-menu ul ul {display:none !important; left:100%; position:absolute; top:0px;}
-html[dir='rtl'] #main-menu ul ul {right:100%;}
-#main-menu ul li:hover ul {display:block !important;}
-*/
-
 #topMenu {float:left; width:100%; padding:5px 0; position:relative;}
 #main-menu  {clear:both; position:relative; z-index:500; float:right; right:50%;}
 #main-menu,
