@@ -1508,17 +1508,14 @@ html[dir='rtl'] #main-menu ul ul {right:100%;}
 */
 
 #topMenu {float:left; width:100%; padding:5px 0; position:relative;}
-html[dir='rtl'] #topMenu {float:right;}
 #main-menu  {clear:both; position:relative; z-index:500; float:right; right:50%;}
-html[dir='rtl'] #main-menu li {float:right;}
 #main-menu,
 #main-menu   ul  {padding:0; margin:0; list-style-type:none; }
-#main-menu   ul ul {z-index:600;margin-left:-6px;}
+#main-menu   ul ul {z-index:600;}
 #main-menu   li  {float:left; position:relative; left:50%;}
-html[dir='rtl'] #main-menu li {float:right;}
 #main-menu li li { clear:both; }
-#main-menu   li:hover > ul {display:block; position:absolute; top:0; left:120px;}
-#main-menu > li:hover > ul {left:0; top:64px;}
+#main-menu   li:hover > ul {display:block; position:absolute; top:0; left:100%; right:auto;}
+#main-menu > li:hover > ul {left:0; right:auto; top:66px;}
 #main-menu   a {display:block; white-space:nowrap; overflow:hidden;}
 #main-menu   ul {position:absolute; display:none; background:#ffffff; border:thin solid #aaaaaa; padding:5px 0; z-index:999;}
 #main-menu li a {margin:auto; padding-top:52px; width:100%;}
@@ -1526,16 +1523,17 @@ html[dir='rtl'] #main-menu li {float:right;}
 
 /* Menu icons */
 #main-menu  > li {background-image:url(images/large_menu_sprite.png); background-repeat:no-repeat; min-width:100px; height:64px; text-align:center;}
-#main-menu li li {background-image:url(images/small_menu_sprite.png); background-repeat:no-repeat; height:24px; left:auto; line-height:24px; text-align:left; text-indent:26px;}
+#main-menu li li {background-image:url(images/small_menu_sprite.png); background-repeat:no-repeat; height:24px; left:auto; line-height:24px; text-align:left; text-indent:26px; width:100%}
 
 /* Separators */
 #main-menu li.separator {background: url(images/hline.png) repeat-x; display:block; height:3px; width:100%;}
 
 /* Reverse left and right on RTL pages */
-html[dir=rtl] #main-menu   li            {float:right;}
-html[dir=rtl] #main-menu   li:hover > ul {left:auto; right:120px;}
-html[dir=rtl] #main-menu > li:hover > ul {left:auto; right:0;}
-html[dir=rtl] #main-menu   li         li {text-align:right;}
+html[dir='rtl'] #topMenu {float:right;}
+html[dir='rtl'] #main-menu li {float:right;}
+html[dir='rtl'] #main-menu   li:hover > ul {right:100%; left:auto;}
+html[dir='rtl'] #main-menu > li:hover > ul {left:auto; right:0;}
+html[dir=rtl] #main-menu   li  li {text-align:right;}
 
 /* Main menu icons */
 #menu-calendar  {background-position:center -350px;}
@@ -1602,7 +1600,7 @@ html[dir=rtl] #main-menu   li         li {text-align:right;}
 #menu-indi-showchan         {background-position:left  -750px;} html[dir=rtl] #menu-indi-showchan         {background-position:right  -750px;}
 #menu-indi-undochan         {background-position:left  -750px;} html[dir=rtl] #menu-indi-undochan         {background-position:right  -750px;}
 #menu-list-fam              {background-position:left   -90px;} html[dir=rtl] #menu-list-fam              {background-position:right   -90px;}
-#menu-list-indi             {background-position:left  -300px;} html[dir=rtl] #menu-list-indi             {background-position:right  -300px;}
+#menu-list-indi             {background-position:left  -120px;} html[dir=rtl] #menu-list-indi             {background-position:right  -120px;}
 #menu-list-note             {background-position:left  -420px;} html[dir=rtl] #menu-list-note             {background-position:right  -420px;}
 #menu-list-obje             {background-position:left  -330px;} html[dir=rtl] #menu-list-obje             {background-position:right  -330px;}
 #menu-list-plac             {background-position:left  -510px;} html[dir=rtl] #menu-list-plac             {background-position:right  -510px;}
@@ -1728,7 +1726,7 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .deleteicon {background-position: -100px -32px; width: 24px; height:16px;}
 
 .icon_arrow {display: block; background: url('images/small_menu_sprite.png') no-repeat left 0;}
-.icon_arrow {background-position: right -1170px; float: right; margin-top: -12px;} html[dir='rtl'] .icon_arrow {background-position: left -1190px;  float: left;}
+.icon_arrow {background-position: right -1170px; float: right; margin-top: -14px;} html[dir='rtl'] .icon_arrow {background-position: 5px -1188px; float: left;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs {padding:0;}
