@@ -157,7 +157,7 @@ class WT_Menu {
 			$html.='<ul>';
 			foreach ($this->submenus as $submenu) {
 				if ($submenu->submenus) {
-					$submenu->label.='<span class="icon_arrow">&nbsp;</span>';
+					$submenu->iconclass.=' icon_arrow';
 				}
 				$html.=$submenu->getMenuAsList();
 			}

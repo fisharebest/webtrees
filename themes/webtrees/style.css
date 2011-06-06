@@ -1500,10 +1500,10 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 #main-menu   a {display:block; white-space:nowrap; overflow:hidden;}
 #main-menu   ul {position:absolute; display:none; background:#ffffff; border:thin solid #aaaaaa; padding:5px 0; z-index:999;}
 #main-menu li a {margin:auto; padding-top:52px; width:100%;}
-#main-menu  li li a {font-size:11px; line-height:1.5; padding:1px 6px;}
+#main-menu  li li a {display:block; position:relative; float:left; font-size:11px; line-height:1.5; padding:1px 10px 1px 5px;}
 
 /* Menu icons */
-#main-menu  > li {background-image:url(images/large_menu_sprite.png); background-repeat:no-repeat; min-width:100px; height:64px; text-align:center;}
+#main-menu  > li {background-image:url(images/large_menu_sprite.png); background-repeat:no-repeat; width:110px; height:64px; text-align:center;}
 #main-menu li li {background-image:url(images/small_menu_sprite.png); background-repeat:no-repeat; height:24px; left:auto; line-height:24px; text-align:left; text-indent:26px; width:100%}
 
 /* Separators */
@@ -1515,6 +1515,7 @@ html[dir='rtl'] #main-menu li {float:right;}
 html[dir='rtl'] #main-menu   li:hover > ul {right:100%; left:auto;}
 html[dir='rtl'] #main-menu > li:hover > ul {left:auto; right:0;}
 html[dir='rtl'] #main-menu   li  li {text-align:right;}
+html[dir='rtl'] #main-menu  li li a {float:right;padding:1px 5px 1px 10px;}
 
 /* Main menu icons */
 #menu-calendar  {background-position:center -350px;}
@@ -1707,7 +1708,7 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .deleteicon {background-position: -100px -32px; width: 24px; height:16px;}
 
 .icon_arrow {display: block; background: url('images/small_menu_sprite.png') no-repeat left 0;}
-.icon_arrow {background-position: right -1170px; float: right; margin-top: -14px;} html[dir='rtl'] .icon_arrow {background-position: 5px -1188px; float: left;}
+.icon_arrow {background-position: 90% -1166px;} html[dir='rtl'] .icon_arrow {background-position: 10% -1184px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs {padding:0;}
