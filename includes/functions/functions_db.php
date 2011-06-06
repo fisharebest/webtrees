@@ -1774,26 +1774,21 @@ function get_newest_registered_user() {
 }
 
 function set_user_password($user_id, $password) {
-	require_once WT_ROOT.'library/PasswordHash.php';
-	$t_hasher = new PasswordHash(12, FALSE);
-	$password_hash=$t_hasher->HashPassword($password);
+	// The crypt() function requires a salt.  You could force a particular
+	// algorithm by creating a salt with a specify format.  See php.net/crypt
+	$password_hash=crypt($password);
 	WT_DB::prepare("UPDATE `##user` SET password=? WHERE user_id=?")
 		->execute(array($password_hash, $user_id));
 	AddToLog('User ID: '.$user_id. ' ('.get_user_name($user_id).') changed password', 'auth');
 }
 
 function check_user_password($user_id, $password) {
-	require_once WT_ROOT.'library/PasswordHash.php';
-	$t_hasher = new PasswordHash(12, FALSE);
+	// crypt() needs the password-hash to use as a salt
 	$password_hash=
 		WT_DB::prepare("SELECT password FROM `##user` WHERE user_id=?")
 		->execute(array($user_id))
 		->fetchOne();
-	$check=$t_hasher->CheckPassword($password, $password_hash);
-	if ($check && (substr($password_hash,0,3)=='$1$' || substr($password_hash,0,7)=='$2a$05$' || substr($password_hash,0,1)!='$')) {
-		set_user_password($user_id, $password);
-	}
-	return $check;
+	return crypt($password, $password_hash)==$password_hash;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
