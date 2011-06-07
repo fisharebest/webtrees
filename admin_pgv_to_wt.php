@@ -988,8 +988,8 @@ WT_DB::prepare(
 
 echo '<p>pgv_name => wt_name ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
-	"REPLACE INTO `##name` (n_file, n_id, n_num, n_type, n_sort, n_full, n_list, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm)".
-	" SELECT n_file, n_id, n_num, n_type, n_sort, n_full, n_list, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM `{$DBNAME}`.`{$TBLPREFIX}name`"
+	"REPLACE INTO `##name` (n_file, n_id, n_num, n_type, n_sort, n_full, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm)".
+	" SELECT n_file, n_id, n_num, n_type, n_sort, n_full, n_surname, n_surn, n_givn, n_soundex_givn_std, n_soundex_surn_std, n_soundex_givn_dm, n_soundex_surn_dm FROM `{$DBNAME}`.`{$TBLPREFIX}name`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////

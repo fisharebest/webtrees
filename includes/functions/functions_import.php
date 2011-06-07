@@ -890,8 +890,8 @@ function update_names($xref, $ged_id, $record) {
 	static $sql_insert_name_indi=null;
 	static $sql_insert_name_other=null;
 	if (!$sql_insert_name_indi) {
-		$sql_insert_name_indi=WT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_list,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-		$sql_insert_name_other=WT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_list) VALUES (?,?,?,?,?,?,?)");
+		$sql_insert_name_indi=WT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full,n_surname,n_surn,n_givn,n_soundex_givn_std,n_soundex_surn_std,n_soundex_givn_dm,n_soundex_surn_dm) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$sql_insert_name_other=WT_DB::prepare("INSERT INTO `##name` (n_file,n_id,n_num,n_type,n_sort,n_full) VALUES (?,?,?,?,?,?)");
 	}
 
 	if ($record->getType()!='FAM' && $record->getXref()) {
@@ -911,9 +911,9 @@ function update_names($xref, $ged_id, $record) {
 					$soundex_surn_std="'".soundex_std($name['surname'])."'";
 					$soundex_surn_dm="'".soundex_dm($name['surname'])."'";
 				}
-				$sql_insert_name_indi->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['listNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm));
+				$sql_insert_name_indi->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm));
 			} else {
-				$sql_insert_name_other->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['full'], $name['list']));
+				$sql_insert_name_other->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['full']));
 			}
 		}
 	}

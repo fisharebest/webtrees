@@ -1815,9 +1815,12 @@ class WT_Person extends WT_GedcomRecord {
 		// Take care of names with no space before/after the surname
 		$list=preg_replace('/^([^\/]+?)( *)(\/.+\/)/', '$3,$2$1', $full);
 
+		// Remove slashes - they don't get displayed
+		$full=str_replace('/', '', $full);
+		$list=str_replace('/', '', $list);
+
 		// Need the 'not known' place holders for the database
 		$fullNN=$full;
-		$listNN=$list;
 
 		// Insert placeholders for any missing/unknown names
 		if (strpos($full, '@N.N.')!==false) {
@@ -1828,10 +1831,6 @@ class WT_Person extends WT_GedcomRecord {
 			$full=str_replace('@P.N.', $UNKNOWN_PN, $full);
 			$list=str_replace('@P.N.', $UNKNOWN_PN, $list);
 		}
-
-		// Remove slashes - they don't get displayed
-		$full=str_replace('/', '', $full);
-		$list=str_replace('/', '', $list);
 
 		// Some people put preferred names in quotes
 		if ($UNDERLINE_NAME_QUOTES) {
@@ -1846,7 +1845,6 @@ class WT_Person extends WT_GedcomRecord {
 		// Remove prefered-name indicater - they don't go in the database
 		$GIVN  =str_replace('*', '', $GIVN);
 		$fullNN=str_replace('*', '', $fullNN);
-		$listNN=str_replace('*', '', $listNN);
 
 		foreach ($SURNS AS $SURN) {
 			// Scottish 'Mc and Mac ' prefixes both sort under 'Mac'
@@ -1861,7 +1859,6 @@ class WT_Person extends WT_GedcomRecord {
 				// These extra parts used to populate the wt_name table and the indi list
 				// For these, we don't want to translate the @N.N. into local text
 				'fullNN'=>$fullNN,
-				'listNN'=>$listNN,
 				'surname'=>$surname,
 				'givn'=>$GIVN,
 				'surn'=>$SURN

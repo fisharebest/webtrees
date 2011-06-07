@@ -845,7 +845,6 @@ try {
 		" n_type             VARCHAR(15)  NOT NULL,".
 		" n_sort             VARCHAR(255) NOT NULL,". // e.g. "GOGH,VINCENT WILLEM"
 		" n_full             VARCHAR(255) NOT NULL,". // e.g. "Vincent Willem van GOGH"
-		" n_list             VARCHAR(255) NOT NULL,". // e.g. "van GOGH, Vincent Willem"
 		// These fields are only used for INDI records
 		" n_surname          VARCHAR(255)     NULL,". // e.g. "van GOGH"
 		" n_surn             VARCHAR(255)     NULL,". // e.g. "GOGH"
@@ -978,7 +977,7 @@ try {
 
 	$dbh->prepare(
 		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
-		"('WT_SCHEMA_VERSION',               '10'),".
+		"('WT_SCHEMA_VERSION',               '12'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".
