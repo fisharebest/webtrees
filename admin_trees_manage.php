@@ -36,14 +36,14 @@ if (!WT_USER_GEDCOM_ADMIN) {
 // with an incomplete transaction.
 ignore_user_abort(true);
 
-function import_gedcom_file($gedcom_id, $file_name) {
+function import_gedcom_file($gedcom_id, $filename) {
 	// Read the file in blocks of roughly 64K.  Ensure that each block
 	// contains complete gedcom records.  This will ensure we don't split
 	// multi-byte characters, as well as simplifying the code to import
 	// each block.
 
 	$file_data='';
-	$fp=fopen($file_name, 'rb');
+	$fp=fopen($filename, 'rb');
 
 	WT_DB::exec("START TRANSACTION");
 	WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
@@ -68,6 +68,7 @@ function import_gedcom_file($gedcom_id, $file_name) {
 		"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
 	)->execute(array($gedcom_id, $file_data));
 
+	set_gedcom_setting($gedcom_id, 'gedcom_filename', basename($filename));
 	WT_DB::exec("COMMIT");
 	fclose($fp);
 }
@@ -147,7 +148,8 @@ case 'importform':
 	}
 	echo '<p>', WT_I18N::translate('This will delete all the genealogical data from <b>%s</b> and replace it with data from another GEDCOM.', $gedcom_name), '</p>';
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).  
-	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($gedcom_name), '\') return confirm(\'', htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
+	$previous_gedcom_filename=get_gedcom_setting($gedcom_id, 'gedcom_filename');
+	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($previous_gedcom_filename), '\' && \'\' != \'', htmlspecialchars($previous_gedcom_filename), '\') return confirm(\'', htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
 	echo '<input type="hidden" name="gedcom_id" value="', $gedcom_id, '" />';
 	if (safe_GET('action')=='uploadform') {
 		echo '<input type="hidden" name="action" value="replace_upload" />';
@@ -170,7 +172,7 @@ case 'importform':
 			echo WT_DATA_DIR, '<select name="ged_name" />';
 			foreach ($files as $file) {
 				echo '<option value="', htmlspecialchars($file), '"';
-				if ($file==$gedcom_name) {
+				if ($file==$previous_gedcom_filename) {
 					echo ' selected="selected"';
 				}
 				echo'>', htmlspecialchars($file), '</option>';
