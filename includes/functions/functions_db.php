@@ -1774,9 +1774,19 @@ function get_newest_registered_user() {
 }
 
 function set_user_password($user_id, $password) {
-	// The crypt() function requires a salt.  You could force a particular
-	// algorithm by creating a salt with a specify format.  See php.net/crypt
-	$password_hash=crypt($password);
+	if (CRYPT_BLOWFISH==1) {
+		// PHP5.3 will always support BLOWFISH - see php.net/crypt
+		// This salt will select the BLOWFISH algorithm with 2^12 rounds
+		$salt='$2a$12$';
+		$salt_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
+		for ($i=0;$i<22;++$i) {
+			$salt.=substr($salt_chars, mt_rand(0,63), 1);
+		}
+		$password_hash=crypt($password, $salt);
+	} else {
+		// Our prefered hash algorithm is not available.  Use the default.
+		$password_hash=crypt($password);
+	}
 	WT_DB::prepare("UPDATE `##user` SET password=? WHERE user_id=?")
 		->execute(array($password_hash, $user_id));
 	AddToLog('User ID: '.$user_id. ' ('.get_user_name($user_id).') changed password', 'auth');
@@ -1788,9 +1798,16 @@ function check_user_password($user_id, $password) {
 		WT_DB::prepare("SELECT password FROM `##user` WHERE user_id=?")
 		->execute(array($user_id))
 		->fetchOne();
-	return crypt($password, $password_hash)==$password_hash;
+	if (crypt($password, $password_hash)==$password_hash) {
+		// Update older passwords to use BLOWFISH with 2^12 rounds
+		if (CRYPT_BLOWFISH==1 && substr($password_hash, 0, 7)!='$2a$12$') {
+			set_user_password($user_id, $password);
+		}
+		return true;
+	} else {
+		return false;
+	}
 }
-
 ////////////////////////////////////////////////////////////////////////////////
 // Functions to access the WT_USER_SETTING table
 ////////////////////////////////////////////////////////////////////////////////
