@@ -227,7 +227,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 							}
 						}
 						function reload_image() {
-							jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1\');
+							if (play) {
+								jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1\');
+							}
 						}
 					'.WT_JS_END;
 			}
