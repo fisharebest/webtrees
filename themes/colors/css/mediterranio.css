@@ -1,14 +1,10 @@
 /**
 * Copyright (c) 2011 Rob Peters
 *
-* Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.        
+* Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.
 *
 * $Id$
 */
-
-.something {
-/*empty style to make sure that the BODY style is not ignored */
-}
 
 body {
 font: 12px tahoma, arial, helvetica, sans-serif;
@@ -21,8 +17,362 @@ margin:0px;
 padding:0px;
 }
 
+/*   Header Layout   */
+
+#header {height: 65px; }
+.title {display: block; float: left; margin-top: 30px; margin-left: 12px; font-size: 24px; vertical-align:bottom; }
+.makeMenu {display: block; float: right;  margin: 40px 10px 0px 0px; }
+
+html[dir='rtl'] .title {float: right; margin-right: 12px; }
+html[dir='rtl'] .makeMenu {display: block; float: left;  margin: 40px 0px 0px 10px; }
+html[dir='rtl'] .topMenu_right {float: left;} 
+
+/*  Menu System Layout  */
+
+#topMenu {  /* set up div container for menu */
+	clear: both;
+	height:41px;
+	float: left;
+	width: 100%;
+	margin:0;
+	padding:0;
+	margin-top: 0px;
+	position: relative;
+}
+html[dir='rtl'] #topMenu {	float: right;}
+
+/* Set up Top Menu */
+
+#topMenu ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position:relative; 
+}
+
+#topMenu ul li {
+	display: block;
+	list-style:none;
+	width: auto;
+	float:left;
+	position:relative;
+}
+html[dir='rtl'] #topMenu ul li { float: right;}
+
+#topMenu ul li a {
+	margin: auto;
+	display: block;
+	font-size: 14px; /* set font size for top menu */
+	text-align: center;
+	padding: 5px 5px 5px 5px;
+	text-decoration: none; 
+}
+
+/* Subnavigation section */
+#topMenu ul ul {
+	background: none;
+	display:none; /* Sub menus are hidden by default */
+	position:absolute;
+	z-index:2001;
+	top: 28px;
+	left:0;
+	right: auto;
+	width: auto;  
+	background: #fff;
+	text-align: left;
+	border: 1px solid #ccc;
+	white-space: nowrap;
+}
+html[dir='rtl'] #topMenu ul ul {right: 0px; left: auto; }
+
+#topMenu ul ul li {
+	left:auto; 
+	margin:0; 
+	clear:left; 
+	text-align:left; 
+	width:100%
+}
+html[dir='rtl'] #topMenu ul ul li { right:auto; clear:right; text-align:right;}
+
+#topMenu ul ul li a {
+	font-size: 12px; 
+	padding: 5px 5px 5px 5px;
+	text-align: left;
+	white-space: nowrap;
+ }
+html[dir='rtl'] #topMenu ul ul li a { text-align: right; float: right; padding-right: 30px;}
+ 
+/* Submenu horizontal */
+#topMenu ul ul ul{ display:none!important; } /* Sub menus are hiden by default */
+
+/* Set up hover layout and style */
+
+#topMenu ul li:hover ul { display: block; }
+
+#topMenu ul li:hover li { float: none; }
+
+#topMenu ul li:hover li a { text-decoration: none; }   
+	
+#topMenu ul li li a:hover {	width: auto; }
+
+#topMenu ul  ul li:hover ul{
+	display:block!important;
+	position: absolute;
+	margin-left: 118px;
+	margin-top: -35px;  
+} 
+ /* Color Palette Layout */
+
+.toplinks_right {
+	float: right;
+	padding: 13px 15px 10px 10px;
+} 
+html[dir='rtl'] .toplinks_right  {	float: left; padding: 13px 10px 10px 15px; }
+
+/*  Mainmenu Icons*/
+#topMenu > ul > li {
+	background-image:url(../images/sprites-top-menu.png);
+	background-repeat:no-repeat;
+	width: 29px; 
+	height: 28px;
+	line-height: 28px;
+	text-indent: 32px;
+	margin: 7px 0px 0px 16px;
+}
+html[dir='rtl'] #topMenu > ul > li {margin: 7px 16px 0px 0px; left: auto;}
+
+/*  Submenu Icons */
+#main-menu li ul li{
+	background-image:url(../images/sprites-sub-menu.png);
+	background-repeat:no-repeat;
+	height: 22px;
+	line-height: 15px;
+	text-indent: 22px;
+	margin: 5px 0px 5px 0px;
+}
+html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
+
+/*  Delete tag from mainmenu icons */
+#topMenu > ul >  li  > a {
+	color: #fc6d1d;
+	width: 17px; 
+	height: 17px;
+	line-height: 60px;
+	overflow: hidden;
+}
+
+/* #topMenu ul li.separator span {display: none;} */
+/********************Menu Top Row Icons **********************/
+#menu-tree 		{background-position: center -0px; } 
+#menu-chart 	{background-position: center -29px; }    
+#menu-list		{background-position: center -58px; } 
+#menu-calendar 	{background-position: center -87px; } 
+#menu-report 	{background-position: center -116px; } 
+#menu-search 	{background-position: center -145px; } 
+#menu-help 		{background-position: center -174px; }
+#menu-mymenu	{background-position: center -203px; }
+#menu-clippings	{background-position: center -232px; }
+#menu-indi		{background-position: center -261px; }
+#menu-sour		{background-position: center -319px; }
+#menu-fam		{background-position: center -290px; }
+#menu-note		{background-position: center -348px; }
+#menu-obje		{background-position: center -377px; }
+#menu-repo		{background-position: center -406px; }
+     
+/*******************Menu submenu Icons**********************/
+/* Chart Icons */
+#menu-chart-ancestry 		{background-position: left -0px; }  html[dir=rtl] #menu-chart-ancestry 			{background-position: right -0px; } 
+#menu-chart-fanchart 		{background-position: left -23px; } html[dir=rtl] #menu-chart-fanchart 			{background-position: right -23px; }
+#menu-chart-compact 		{background-position: left -46px; } html[dir=rtl] #menu-chart-compact 			{background-position: right -46px; }
+#menu-chart-descendancy		{background-position: left -69px; } html[dir=rtl] #menu-chart-descendancy		{background-position: right -69px; } 
+#menu-chart-familybook		{background-position: left -92px; } html[dir=rtl] #menu-chart-familybook		{background-position: right -92px; }
+#menu-chart-hourglass		{background-position: left -115px; } html[dir=rtl] #menu-chart-hourglass		{background-position: right -115px; }
+#menu-chart-tree			{background-position: left -138px; } html[dir=rtl] #menu-chart-tree				{background-position: right -138px; } 
+#menu-chart-lifespan		{background-position: left -161px; } html[dir=rtl] #menu-chart-lifespan			{background-position: right -161px; }
+#menu-chart-pedigree		{background-position: left -184px; } html[dir=rtl] #menu-chart-pedigree			{background-position: right -184px; }
+#menu-chart-pedigree_map	{background-position: left -207px; } html[dir=rtl] #menu-chart-pedigree_map		{background-position: right -207px; }
+#menu-chart-relationship	{background-position: left -230px; } html[dir=rtl] #menu-chart-relationship		{background-position: right -230px; }
+#menu-chart-relationship li {background-position: left -230px; } html[dir=rtl] #menu-chart-relationship li  {background-position: right -230px; }
+#menu-chart-statistics		{background-position: left -253px; } html[dir=rtl] #menu-chart-statistics		{background-position: right -253px; }
+#menu-chart-timeline		{background-position: left -276px; } html[dir=rtl] #menu-chart-timeline			{background-position: right -276px; }
+
+/* Lists Icons */
+#menu-list-obje		{background-position: left -299px; } html[dir=rtl] #menu-list-obje	{background-position: right -299px; }
+#menu-list-plac		{background-position: left -322px; } html[dir=rtl] #menu-list-plac	{background-position: right -322px; }
+#menu-list-repo		{background-position: left -345px; } html[dir=rtl] #menu-list-repo	{background-position: right -345px; }
+#menu-list-note		{background-position: left -368px; } html[dir=rtl] #menu-list-note	{background-position: right -368px; } 
+#menu-list-sour		{background-position: left -391px; } html[dir=rtl] #menu-list-sour	{background-position: right -391px; }
+#menu-branches		{background-position: left -414px; } html[dir=rtl] #menu-branches	{background-position: right -414px; }
+#menu-list-fam		{background-position: left -437px; } html[dir=rtl] #menu-list-fam	{background-position: right -437px; }
+#menu-list-indi		{background-position: left -460px; } html[dir=rtl] #menu-list-indi	{background-position: right -460px; }
+
+/* Report Icons */
+#menu-report li		{background-position: left -483px; } html[dir=rtl] #menu-report li	{background-position: right -483px; }
+
+/* Calendar Icons */
+#menu-calendar-day		{background-position: left -506px; } html[dir=rtl] #menu-calendar-day		{background-position: right -506px; }
+#menu-calendar-month	{background-position: left -506px; } html[dir=rtl] #menu-calendar-month		{background-position: right -506px; }
+#menu-calendar-year		{background-position: left -506px; } html[dir=rtl] #menu-calendar-year		{background-position: right -506px; }
+
+/* Search Icons */
+#menu-search-general	{background-position: left -529px; } html[dir=rtl] #menu-search-general		{background-position: right -529px; }
+#menu-search-soundex	{background-position: left -529px; } html[dir=rtl] #menu-search-soundex		{background-position: right -529px; }
+#menu-search-advanced	{background-position: left -529px; } html[dir=rtl] #menu-search-advanced	{background-position: right -529px; } 
+#menu-search-replace	{background-position: left -529px; } html[dir=rtl] #menu-search-replace		{background-position: right -529px; }
+
+/* Help Icons */
+#menu-help-genealogy	{background-position: left -552px; } html[dir=rtl] #menu-help-genealogy		{background-position: right -552px; }
+#menu-help-show			{background-position: left -552px; } html[dir=rtl] #menu-help-show			{background-position: right -552px; } 
+#menu-help-contents		{background-position: left -552px; } html[dir=rtl] #menu-help-contents		{background-position: right -552px; }
+#menu-help-hide			{background-position: left -552px; } html[dir=rtl] #menu-help-hide			{background-position: right -552px; }
+#menu-help-wiki			{background-position: left -575px; } html[dir=rtl] #menu-help-wiki			{background-position: right -575px; }
+#menu-help-technical	{background-position: left -598px; } html[dir=rtl] #menu-help-technical		{background-position: right -598px; }
+
+#topMenu ul li.separator 	{display: none; }
+
+/* MyPage Icons */
+#menu-mypage 		{background-position: left -598px; } html[dir=rtl] #menu-mypage 	{background-position: right -598px; }
+#menu-myaccount		{background-position: left -598px; } html[dir=rtl] #menu-myaccount	{background-position: right -598px; }
+#menu-mypedigree 	{background-position: left -828px; } html[dir=rtl] #menu-mypedigree	{background-position: right -828px; }          
+#menu-myrecord		{background-position: left -460px; } html[dir=rtl] #menu-myrecord	{background-position: right -460px; }
+#menu-admin			{background-position: left -644px; } html[dir=rtl] #menu-admin		{background-position: right -644px; }
+#menu-tree li		{background-position: left -667px; } html[dir=rtl] #menu-tree li	{background-position: right -667px; }
+
+/* Family Icons  */
+#menu-fam-addchil	{background-position: left -759px; } html[dir=rtl] #menu-fam-addchil	{background-position: right -759px; }
+#menu-fam-addfav	{background-position: left -736px; } html[dir=rtl] #menu-fam-addfav		{background-position: right -736px; }
+#menu-fam-change	{background-position: left -759px; } html[dir=rtl] #menu-fam-change		{background-position: right -759px; }
+#menu-fam-del		{background-position: left -713px; } html[dir=rtl] #menu-fam-del		{background-position: right -713px; }
+#menu-fam-editraw	{background-position: left -667px; } html[dir=rtl] #menu-fam-editraw	{background-position: right -667px; }
+#menu-fam-hidechan	{background-position: left -690px; } html[dir=rtl] #menu-fam-hidechan	{background-position: right -690px; }
+#menu-fam-orderchil	{background-position: left -759px; } html[dir=rtl] #menu-fam-orderchil	{background-position: right -759x; }
+#menu-fam-showchan	{background-position: left -690px; } html[dir=rtl] #menu-fam-showchan	{background-position: right -690px; }
+#menu-fam-undochan	{background-position: left -690px; } html[dir=rtl] #menu-fam-undochan	{background-position: right -690px; }
+
+/* Clipping Icons */
+#menu-clippingscart	{background-position: left -621px; } html[dir=rtl] #menu-clippingscart	{background-position: right -621px; }
+#menu-clippingsadd	{background-position: left -621px; } html[dir=rtl] #menu-clippingsadd	{background-position: right -621px; } 
+
+/* Edit Icons */
+#menu-indi-editraw	{background-position: left -667px; } html[dir=rtl] #menu-indi-editraw	{background-position: right -667px; }
+#menu-indi-editname	{background-position: left -690px; } html[dir=rtl] #menu-indi-editname	{background-position: right -690px; }
+#menu-indi-addname	{background-position: left -690px; } html[dir=rtl] #menu-indi-addname	{background-position: right -690px; }
+#menu-indi-editsex	{background-position: left -690px; } html[dir=rtl] #menu-indi-editsex	{background-position: right -690px; }
+#menu-indi-del		{background-position: left -713px; } html[dir=rtl] #menu-indi-del		{background-position: right -713px; }
+#menu-indi-addfav	{background-position: left -736px; } html[dir=rtl] #menu-indi-addfav	{background-position: right -736px; }
+#menu-indi-hidechan	{background-position: left -690px; } html[dir=rtl] #menu-indi-hidechan	{background-position: right -690px; }
+#menu-indi-showchan	{background-position: left -690px; } html[dir=rtl] #menu-indi-showchan	{background-position: right -690px; }
+#menu-indi-undochan	{background-position: left -690px; } html[dir=rtl] #menu-indi-undochan	{background-position: right -690px; }
+
+/* Edit Notes  */
+#menu-note-addfav	{background-position: left -736px; } html[dir=rtl] #menu-note-fav		{background-position: right -736px; }
+#menu-note-del		{background-position: left -713px; } html[dir=rtl] #menu-note-del		{background-position: right -713px; }
+#menu-note-edit		{background-position: left -805px; } html[dir=rtl] #menu-note-edit		{background-position: right -805px; }
+#menu-note-editraw	{background-position: left -667px; } html[dir=rtl] #menu-note-editraw	{background-position: right -667px; }
+#menu-note-hidechan	{background-position: left -805px; } html[dir=rtl] #menu-note-hidechan	{background-position: right -805px; }
+#menu-note-savechan	{background-position: left -805px; } html[dir=rtl] #menu-note-savechan	{background-position: right -805px; }
+#menu-note-undochan	{background-position: left -805px; } html[dir=rtl] #menu-note-undochan	{background-position: right -805px; }
+
+/* Objects  */
+#menu-obje-addfav	{background-position: left -736px; } html[dir=rtl] #menu-obje-addfav	{background-position: right -736px; }
+#menu-obje-del		{background-position: left -713px; } html[dir=rtl] #menu-obje-del		{background-position: right -713px; }
+#menu-obje-edit		{background-position: left -852px; } html[dir=rtl] #menu-obje-edit		{background-position: right -852px; }
+#menu-obje-editraw	{background-position: left -667px; } html[dir=rtl] #menu-obje-editraw	{background-position: right -667px; }
+#menu-obje-hidechan	{background-position: left -852px; } html[dir=rtl] #menu-obje-hidechan	{background-position: right -852px; }
+#menu-obje-link		{background-position: left -875px; } html[dir=rtl] #menu-obje-link		{background-position: right -875px; }
+#menu-obje-linkfam	{background-position: left -437px; } html[dir=rtl] #menu-obje-linkfam	{background-position: right -437px; }
+#menu-obje-link-ind	{background-position: left -460px; } html[dir=rtl] #menu-obje-link-ind	{background-position: right -460px; }
+#menu-obje-link-sour{background-position: left -391px; } html[dir=rtl] #menu-obje-link-sour	{background-position: right -391px; }
+#menu-obje-savechan	{background-position: left -852px; } html[dir=rtl] #menu-obje-savechan	{background-position: right -852px; }
+#menu-obje-undochan	{background-position: left -852px; } html[dir=rtl] #menu-obje-undochan	{background-position: right -852px; }
+
+/* Repository */
+#menu-repo-addfav	{background-position: left -736px; } html[dir=rtl] #menu-repo-addfav	{background-position: right -736px; }
+#menu-repo-del		{background-position: left -713px; } html[dir=rtl] #menu-repo-del		{background-position: right -713px; }
+#menu-repo-edit		{background-position: left -897px; } html[dir=rtl] #menu-repo-edit		{background-position: right -897px; }
+#menu-repo-editraw	{background-position: left -667px; } html[dir=rtl] #menu-repo-editraw	{background-position: right -667px; }
+#menu-repo-hidechan	{background-position: left -897px; } html[dir=rtl] #menu-repo-hidechan	{background-position: right -897px; }
+#menu-repo-savechan	{background-position: left -897px; } html[dir=rtl] #menu-repo-savechan	{background-position: right -897px; }
+#menu-repo-undochan	{background-position: left -897px; } html[dir=rtl] #menu-repo-undochan	{background-position: right -897px; }
+
+/*  Source  */
+#menu-sour-addfav	{background-position: left -736px; } html[dir=rtl] #menu-sour-addfav	{background-position: right -736px; }
+#menu-sour-del		{background-position: left -713px; } html[dir=rtl] #menu-sour-del		{background-position: right -713px; }
+#menu-sour-edit		{background-position: left -782px; } html[dir=rtl] #menu-sour-edit		{background-position: right -782px; }
+#menu-sour-editraw	{background-position: left -667px; } html[dir=rtl] #menu-sour-editraw	{background-position: right -667px; }
+#menu-sour-hidechan	{background-position: left -782px; } html[dir=rtl] #menu-sour-hidechan	{background-position: right -782px; }
+#menu-sour-savechan	{background-position: left -782px; } html[dir=rtl] #menu-sour-savechan	{background-position: right -782px; }
+#menu-sour-undochan	{background-position: left -782px; } html[dir=rtl] #menu-sour-undochan	{background-position: right -782px; }
+
+/* Right Nav Menu system <ul> */
+
+.makeMenu li {
+z-index: 100;
+	display:inline;
+	position:relative;
+	white-space:nowrap;
+}
+
+.makeMenu li:before { content:" | "; }
+.makeMenu li ul li:before { content:""; }
+.makeMenu li:first-child:before { content:""; }
+
+.makeMenu li ul {
+	display:none;
+	position:absolute;
+	left:10px;
+	top: 1.1em;
+	background-color:#EEE;
+	border:thin solid #AAA;
+	z-index:999;
+}
+
+html[dir='rtl'] .makeMenu li ul {
+	left:auto;
+	right:10px;
+}
+
+.makeMenu li ul li {
+	display:block;
+	text-align:left;
+}
+
+.makeMenu li ul li a { color: #333; }
+
+html[dir='rtl'] .makeMenu li ul li { text-align:right; }
+
+.makeMenu, .makeMenu li ul {
+    color: #fff;
+	list-style:none;
+	top: 5px;
+	margin-left: 0px!important;
+	padding:1px;
+}
+
+.makeMenu li:hover > ul { display:block; }
+
+.makeMenu li a {color: #ffffff;}
+.makeMenu li a:hover {color: #f5003d;}
+
+.makeMenu ul li a {
+    background-color: #fff;
+	padding: 0px 5px 0px 2px;
+    display: block;
+}
+
+.makeMenu ul li a:hover  {
+	background: #fef9dc;
+	color: #000;
+}
+
+li a.link {
+	font-size: 13px;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+/*   Colors Style */
 /*	Color settings for the this theme	*/
-/*	Define Header and Light Text Colors	*/
+/*	Header and Light Text Colors	*/
 
 #header,
 .gedcomtitle {
@@ -62,7 +412,7 @@ color: #ffffff;
 
 /*	Define TopLink Color				*/
 
-#toplinks {
+#topMenu {
 background:#fc6d1d;
 }
 
@@ -110,64 +460,6 @@ body,
 .subheaders {
 color:#494949;
 }
-
-#toplinks {
-width:100%;
-height:36px;
-}
-
-.toplinks_left {
-min-width: 200px;
-padding-left: 10px;
-}
-
-.toplinks_right {
-padding-right: 13px;
-} 
-
-.icon, .adminicon {
-border:none;
-padding-top:1px;
-padding-left:0px;
-padding-right:8pt;
-}
-
-/*	Submenu style				*/
-
-.submenu {
-visibility: hidden;
-position: absolute;
-z-index: 100;
-font-size: 11px;
-background: #fff;
-border: solid #999 1px;
-}
-
-/*	Submenuitem style			*/
-
-.submenuitem .icon, .submenuitem_hover .icon {
-width: 22px;
-height: 22px;
-vertical-align: middle;
-padding:0px 5px 0px 3px;
-}
-
-.submenuitem, .submenuitem_hover {
-height: 22px;
-padding-right: 5px;
-font-size: 11px;
-border: 1pt solid white;
-white-space: nowrap;
-}
-
-.submenuitem a, .submenuitem_hover a {
-color: #000;
-display: inline-block;
-vertical-align: middle;
-text-decoration:none;
-}
-
-/*	End Toplinks Section				 */
 
 /*   Edit Facts */
 td.descriptionbox div a {
@@ -347,6 +639,11 @@ height:24px;
 .blockhc {
 padding-right:15px;
 padding-top: 3px;
+}
+
+#content {
+clear: both;
+padding:10px 10px 0px 10px;
 }
 
 #index_small_blocks .person_box .pedigree_image_portrait,
@@ -1048,11 +1345,6 @@ background:#FF0;
 color:#000;
 }
 
-.title {
-font-size: 24px;
-vertical-align:bottom;
-}
-
 .accesskeys {
 width:1px;
 height:1px;
@@ -1584,81 +1876,7 @@ font-size: 90%;
 padding: 0 10px;
 }
 
-/* Use CSS menus based on nested <ul> */
-.makeMenu li {
-	display:inline;
-	position:relative;
-	white-space:nowrap;
-}
 
-.makeMenu li:before {
-	content:" | ";
-}
-.makeMenu li ul li:before {
-	content:"";
-}
-.makeMenu li:first-child:before {
-	content:"";
-}
-
-.makeMenu li ul {
-	display:none;
-	position:absolute;
-	left:0px;
-	top: 1.1em;
-	background-color:#EEE;
-	border:thin solid #AAA;
-	z-index:999;
-}
-
-html[dir='rtl'] .makeMenu li ul {
-	left:auto;
-	right:0px;
-}
-
-.makeMenu li ul li {
-	display:block;
-	text-align:left;
-}
-
-.makeMenu li ul li a {
-	color: #333;
-}
-
-html[dir='rtl'] .makeMenu li ul li {
-	text-align:right;
-}
-
-.makeMenu, .makeMenu li ul {
-    color: #fff;
-	list-style:none;
-	margin:0;
-	padding:1px;
-}
-
-.makeMenu li:hover > ul {
-	display:block;
-}
-
-.makeMenu li a {color: #ffffff;}
-.makeMenu li a:hover {color: #f5003d;}
-
-.makeMenu ul li a {
-    background-color: #fff;
-	padding: 0px 5px 0px 2px;
-    display: block;
-}
-
-.makeMenu ul li a:hover  {
-	background: #fef9dc;
-	color: #000;
-}
-
-li a.link {
-font-size: 13px;
-margin-right: 5px;
-margin-left: 5px;
-}
 
 /*--- edit links ---*/
 

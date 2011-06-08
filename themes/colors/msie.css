@@ -14,8 +14,10 @@
 a.showit:hover span {
 	filter: alpha(opacity=85);
 }
+/* IE7 fixs */
 .makeMenu li ul {
 	top: 2px;
+	*top: 8px; 
 }
-
+#menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px}
 
