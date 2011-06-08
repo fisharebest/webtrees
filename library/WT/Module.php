@@ -68,7 +68,7 @@ interface WT_Module_Tab {
 	public function canLoadAjax();
 	public function getPreLoadContent();
 	public function getJSCallback();
-	public function addTabContent();
+	public function isGrayedOut();
 
 }
 

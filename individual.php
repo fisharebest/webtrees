@@ -231,7 +231,7 @@ echo '<div id="tabs" >';
 echo '<ul>';
 foreach ($controller->tabs as $tab) {
 	$greyed_out='';
-	if ($tab->addTabContent()) $greyed_out = 'rela40';
+	if ($tab->isGrayedOut()) $greyed_out = 'rela';
 	if ($tab->hasTabContent()) {
 		if ($tab->getName()==$controller->default_tab) {
 			// Default tab loads immediately

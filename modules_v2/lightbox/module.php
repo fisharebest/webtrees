@@ -72,6 +72,12 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 	}
 
 	// Implement WT_Module_Tab
+	public function isGrayedOut() {
+		global $MULTI_MEDIA;
+		return $MULTI_MEDIA && (WT_USER_CAN_EDIT && $this->get_media_count()==0);
+	}
+
+	// Implement WT_Module_Tab
 	public function getTabContent() {
 		ob_start();
 		require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_head.php';
@@ -87,12 +93,6 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 			require WT_ROOT.WT_MODULES_DIR.'lightbox/album.php';
 		}
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
-	}
-
-	// Implement WT_Module_Tab
-	public function addTabContent() {
-		global $MULTI_MEDIA;
-		return $MULTI_MEDIA && (WT_USER_CAN_EDIT && $this->get_media_count()==0);
 	}
 
 	// Implement WT_Module_Tab

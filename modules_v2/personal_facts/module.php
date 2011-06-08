@@ -45,8 +45,8 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	// Implement WT_Module_Tab
-	public function addTabContent() {
-		return '';
+	public function isGrayedOut() {
+		return false;
 	}
 	
 	// Implement WT_Module_Tab

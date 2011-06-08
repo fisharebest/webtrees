@@ -86,8 +86,8 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		return true;
 	}
 	// Implement WT_Module_Tab
-	public function addTabContent() {
-		return '';
+	public function isGrayedOut() {
+		return false;
 	}
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {

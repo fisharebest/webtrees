@@ -135,11 +135,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	// Implement WT_Module_Tab
-	public function addTabContent() {
-	
-		$stories=
+	public function isGrayedOut() {
+		$count_of_stories=
 			WT_DB::prepare(
-				"SELECT block_id".
+				"SELECT COUNT(block_id)".
 				" FROM `##block`".
 				" WHERE module_name=?".
 				" AND xref=?".
@@ -148,9 +147,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$this->getName(),
 				$xref=$this->controller->indi->getXref(),
 				WT_GED_ID
-			))->fetchOneColumn();
+			))->fetchOne();
 			
-		return !$stories;
+		return $count_of_stories==0;
 	}
 	
 	// Implement class WT_Module_Tab

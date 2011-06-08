@@ -146,7 +146,7 @@ if (!$SHOW_LEVEL2_NOTES) {
 		return WT_USER_CAN_EDIT || $this->get_note_count()>0;
 	}
 	// Implement WT_Module_Tab
-	public function addTabContent() {
+	public function isGrayedOut() {
 		return WT_USER_CAN_EDIT || $this->get_note_count()==0;
 	}
 	// Implement WT_Module_Tab
