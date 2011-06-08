@@ -35,6 +35,8 @@ class WT_Controller_Media extends WT_Controller_Base {
 	var $mid;
 	var $mediaobject;
 	var $show_changes=true;
+	var $accept_success = false;
+	var $reject_success = false;
 
 	function init() {
 		global $MEDIA_DIRECTORY;
@@ -134,7 +136,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->pid, WT_GED_ID);
 				$this->show_changes=false;
-				$this->accept_success=true;
+				$this->reject_success=true;
 				$mediarec = find_media_record($this->pid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($mediarec)) {
@@ -228,40 +230,6 @@ class WT_Controller_Media extends WT_Controller_Base {
 				$submenu->addSubMenu($ssubmenu);
 			}
 			$menu->addSubmenu($submenu);
-
-			$menu->addSeparator();
-		}
-
-		// show/hide changes
-		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
-			if (!$this->show_changes) {
-				$label = WT_I18N::translate('This record has been updated.  Click here to show changes.');
-				$link = "mediaviewer.php?mid={$this->pid}&amp;show_changes=yes";
-				$submenu = new WT_Menu($label, $link);
-				$submenu->addId('menu-obje-showchan');
-			} else {
-				$label = WT_I18N::translate('Click here to hide changes.');
-				$link = "mediaviewer.php?mid={$this->pid}&samp;how_changes=no";
-				$submenu = new WT_Menu($label, $link);
-				$submenu->addId('menu-obje-hidechan');
-			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-			$menu->addSubmenu($submenu);
-
-			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=undo");
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addIcon('media');
-				$submenu->addId('menu-obje-undochan');
-				$menu->addSubmenu($submenu);
-				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "mediaviewer.php?mid={$this->pid}&amp;action=accept");
-				$submenu->addIcon('media');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addId('menu-obje-savechan');
-				$menu->addSubmenu($submenu);
-			}
-
-			$menu->addSeparator();
 		}
 
 		// edit/view raw gedcom

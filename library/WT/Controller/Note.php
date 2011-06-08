@@ -36,6 +36,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 	var $note = null;
 	var $diffnote = null;
 	var $accept_success = false;
+	var $reject_success = false;
 
 	function init() {
 		$this->nid = safe_GET_xref('nid');
@@ -87,7 +88,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->nid, WT_GED_ID);
 				$this->show_changes=false;
-				$this->accept_success=true;
+				$this->reject_success=true;
 				$gedrec = find_other_record($this->nid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {
@@ -147,38 +148,6 @@ class WT_Controller_Note extends WT_Controller_Base {
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_notes');
 			$submenu->addId('menu-note-edit');
 			$menu->addSubmenu($submenu);
-
-			$menu->addSeparator();
-		}
-
-		// show/hide changes
-		if (find_updated_record($this->nid, WT_GED_ID)!==null) {
-			if (!$this->show_changes) {
-				$submenu = new WT_Menu(WT_I18N::translate('This record has been updated.  Click here to show changes.'), "note.php?nid={$this->nid}&amp;show_changes=yes");
-				$submenu->addIcon('edit_note');
-				$submenu->addId('menu-note-showchan');
-			} else {
-				$submenu = new WT_Menu(WT_I18N::translate('Click here to hide changes.'), "note.php?nid={$this->nid}&amp;show_changes=no");
-				$submenu->addIcon('edit_note');
-				$submenu->addId('menu-note-hidechan');
-			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-			$menu->addSubmenu($submenu);
-
-			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "note.php?nid={$this->nid}&amp;action=undo");
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addIcon('note');
-				$submenu->addId('menu-note-undochan');
-				$menu->addSubmenu($submenu);
-				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "note.php?nid={$this->nid}&amp;action=accept");
-				$submenu->addIcon('note');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addId('menu-note-savechan');
-				$menu->addSubmenu($submenu);
-			}
-
-			$menu->addSeparator();
 		}
 
 		// edit/view raw gedcom

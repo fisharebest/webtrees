@@ -36,6 +36,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	var $indi = null;
 	var $diffindi = null;
 	var $accept_success = false;
+	var $reject_success = false;
 	var $default_tab = '';
 
 	var $name_count = 0;
@@ -117,7 +118,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->pid, WT_GED_ID);
 				$this->show_changes=false;
-				$this->accept_success=true;
+				$this->reject_success=true;
 				$gedrec = find_person_record($this->pid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {
@@ -207,11 +208,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @return string the title of the page to go in the <title> tags
 	*/
 	function getPageTitle() {
-		if ($this->indi) {
-			return $this->indi->getFullName();
-		} else {
-			return WT_I18N::translate('Unable to find record with ID');
-		}
+		return $this->indi->getFullName();
 	}
 
 	/**
@@ -440,41 +437,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$submenu->addId('menu-indi-orderfam');
 				$menu->addSubmenu($submenu);
 			}
-
-			$menu->addSeparator();
-		}
-
-		// show/hide changes
-		if (find_updated_record($this->pid, WT_GED_ID)!==null) {
-			if (!$this->show_changes) {
-				$label = WT_I18N::translate('This record has been updated.  Click here to show changes.');
-				$link = $this->indi->getHtmlUrl().'&amp;show_changes=yes';
-				$submenu = new WT_Menu($label, $link);
-				$submenu->addId('menu-indi-showchan');
-			} else {
-				$label = WT_I18N::translate('Click here to hide changes.');
-				$link = $this->indi->getHtmlUrl().'&amp;show_changes=no';
-				$submenu = new WT_Menu($label, $link);
-				$submenu->addId('menu-indi-hidechan');
-			}
-			$submenu->addIcon('edit_indi');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-			$menu->addSubmenu($submenu);
-
-			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), $this->indi->getHtmlUrl()."&amp;action=undo");
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addIcon('edit_indi');
-				$submenu->addId('menu-indi-undochan');
-				$menu->addSubmenu($submenu);
-				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), $this->indi->getHtmlUrl()."&amp;action=accept");
-				$submenu->addIcon('edit_indi');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addId('menu-indi-savechan');
-				$menu->addSubmenu($submenu);
-			}
-
-			$menu->addSeparator();
 		}
 
 		// edit/view raw gedcom

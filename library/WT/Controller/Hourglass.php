@@ -46,7 +46,6 @@ $nonfamfacts[] = "";
 class WT_Controller_Hourglass extends WT_Controller_Base {
 	var $pid = "";
 
-	var $accept_success = false;
 	var $canedit = false;
 	var $name_count = 0;
 	var $total_names = 0;

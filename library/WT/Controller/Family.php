@@ -37,6 +37,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 	var $family = null;
 	var $difffam = null;
 	var $accept_success = false;
+	var $reject_success = false;
 	var $user = null;
 	var $display = false;
 	var $show_changes = true;
@@ -102,7 +103,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->famid, WT_GED_ID);
 				$this->show_changes=false;
-				$this->accept_success=true;
+				$this->reject_success=true;
 				$gedrec = find_family_record($this->famid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {
@@ -194,41 +195,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 			$submenu->addId('menu-fam-orderchil');
 				$menu->addSubmenu($submenu);
 			}
-
-			$menu->addSeparator();
-		}
-
-		// show/hide changes
-		if (find_updated_record($this->getFamilyID(), WT_GED_ID)!==null) {
-			if (!$this->show_changes) {
-				$label = WT_I18N::translate('This record has been updated.  Click here to show changes.');
-				$link = $this->family->getHtmlUrl().'&amp;show_changes=yes';
-				$submenu = new WT_Menu($label, $link);
-				$submenu->addId('menu-fam-showchan');
-			} else {
-				$label = WT_I18N::translate('Click here to hide changes.');
-				$link = $this->family->getHtmlUrl().'&amp;show_changes=no';
-				$submenu = new WT_Menu($label, $link);
-				$submenu->addId('menu-fam-hidechan');
-			}
-			$submenu->addIcon('edit_fam');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-			$menu->addSubmenu($submenu);
-
-			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "family.php?famid={$this->famid}&amp;action=undo");
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addIcon('edit_fam');
-				$submenu->addId('menu-fam-undochan');
-				$menu->addSubmenu($submenu);
-				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "family.php?famid={$this->famid}&amp;action=accept");
-				$submenu->addIcon('edit_fam');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addId('menu-fam-savechan');
-				$menu->addSubmenu($submenu);
-			}
-
-			$menu->addSeparator();
 		}
 
 		// edit/view raw gedcom

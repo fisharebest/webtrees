@@ -1,31 +1,28 @@
 <?php
-/**
-* Displays the details about a source record.  Also shows how many people and families
-* reference this source.
-*
-* webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
-* Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*
-* @package webtrees
-* @version $Id$
-*/
+// Displays the details about a source record.  Also shows how many people and families
+// reference this source.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
@@ -34,26 +31,43 @@ require WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Source();
 $controller->init();
 
-print_header($controller->getPageTitle());
+if ($controller->source && $controller->source->canDisplayName()) {
+	print_header($controller->getPageTitle());
+	if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+		if ($controller->source->isMarkedDeleted()) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been deleted, but the deletion needs to be reviewed by a moderator.');
+			if (WT_USER_CAN_ACCEPT) {
+				echo ' <a href="', $controller->source->getHtmlUrl(), '&amp;action=accept">', WT_I18N::translate('Accept the changes.'), '</a>';
+				echo ' <a href="', $controller->source->getHtmlUrl(), '&amp;action=undo">', WT_I18N::translate('Reject the changes.'), '</a>';
+			}
+			echo '</p>';
+		} elseif (find_updated_record($controller->source->getXref(), WT_GED_ID)!==null) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been changed, but the changes need to be reviewed by a moderator.');
+			if ($controller->show_changes) {
+				echo ' <a href="', $controller->source->getHtmlUrl(), '&amp;show_changes=no">', WT_I18N::translate('Hide the changes.'), '</a>';
+				if (WT_USER_CAN_ACCEPT) {
+					echo ' <a href="', $controller->source->getHtmlUrl(), '&amp;action=accept">', WT_I18N::translate('Accept the changes.'), '</a>';
+					echo ' <a href="', $controller->source->getHtmlUrl(), '&amp;action=undo">', WT_I18N::translate('Reject the changes.'), '</a>';
+				}
+			} else {
+				echo ' <a href="', $controller->source->getHtmlUrl(), '&amp;show_changes=yes">', WT_I18N::translate('Show the changes.'), '</a>';
+			}
+			echo '</p>';
+		} elseif ($controller->accept_success) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
+		} elseif ($controller->reject_success) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
+		}
+	}
+} else {
+	print_header(WT_I18N::translate('Source'));
+	echo '<p class="ui-state-error">', WT_I18N::translate('This record does not exist or you do not have permission to view it.'), '</p>';
+	print_footer();
+	exit;
+}
 
 // We have finished writing session data, so release the lock
 Zend_Session::writeClose();
-
-if (!$controller->source) {
-	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
-	print_footer();
-	exit;
-}
-
-if (!$controller->source->canDisplayDetails()) {
-	print_privacy_error();
-	print_footer();
-	exit;
-}
-
-if ($controller->source->isMarkedDeleted()) {
-	echo '<span class="error">', WT_I18N::translate('This record has been marked for deletion upon admin approval.'), '</span>';
-}
 
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
@@ -72,9 +86,6 @@ echo '}';
 echo WT_JS_END;
 
 echo '<table width="70%" class="list_table"><tr><td>';
-if ($controller->accept_success) {
-	echo '<b>', WT_I18N::translate('Changes successfully accepted into database'), '</b><br />';
-}
 echo '<span class="name_head">', PrintReady(htmlspecialchars($controller->source->getFullName()));
 echo '</span><br />';
 echo '<table class="facts_table">';

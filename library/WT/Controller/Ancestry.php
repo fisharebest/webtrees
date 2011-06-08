@@ -33,7 +33,6 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 class WT_Controller_Ancestry extends WT_Controller_Base {
 	var $pid = "";
 	var $user = false;
-	var $accept_success = false;
 	var $show_cousins;
 	var $rootid;
 	var $name;

@@ -31,23 +31,41 @@ require './includes/session.php';
 $controller = new WT_Controller_Family();
 $controller->init();
 
-print_header($controller->getPageTitle());
-
-if (!$controller->family) {
-	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
+if ($controller->family && $controller->family->canDisplayName()) {
+	print_header($controller->getPageTitle());
+		if ($controller->family->isMarkedDeleted()) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been deleted, but the deletion needs to be reviewed by a moderator.');
+			if (WT_USER_CAN_ACCEPT) {
+				echo ' <a href="', $controller->family->getHtmlUrl(), '&amp;action=accept">', WT_I18N::translate('Accept the changes.'), '</a>';
+				echo ' <a href="', $controller->family->getHtmlUrl(), '&amp;action=undo">', WT_I18N::translate('Reject the changes.'), '</a>';
+			}
+			echo '</p>';
+		} elseif (find_updated_record($controller->family->getXref(), WT_GED_ID)!==null) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been changed, but the changes need to be reviewed by a moderator.');
+			if ($controller->show_changes) {
+				echo ' <a href="', $controller->family->getHtmlUrl(), '&amp;show_changes=no">', WT_I18N::translate('Hide the changes.'), '</a>';
+				if (WT_USER_CAN_ACCEPT) {
+					echo ' <a href="', $controller->family->getHtmlUrl(), '&amp;action=accept">', WT_I18N::translate('Accept the changes.'), '</a>';
+					echo ' <a href="', $controller->family->getHtmlUrl(), '&amp;action=undo">', WT_I18N::translate('Reject the changes.'), '</a>';
+				}
+			} else {
+				echo ' <a href="', $controller->family->getHtmlUrl(), '&amp;show_changes=yes">', WT_I18N::translate('Show the changes.'), '</a>';
+			}
+			echo '</p>';
+		} elseif ($controller->accept_success) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
+		} elseif ($controller->reject_success) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
+		}
+} else {
+	print_header(WT_I18N::translate('Family'));
+	echo '<p class="ui-state-error">', WT_I18N::translate('This record does not exist or you do not have permission to view it.'), '</p>';
 	print_footer();
 	exit;
 }
 
-if (!$controller->family->canDisplayDetails()) {
-	print_privacy_error();
-	print_footer();
-	exit;
-}
-
-if ($controller->family->isMarkedDeleted()) {
-	echo '<span class="error">', WT_I18N::translate('This record has been marked for deletion upon admin approval.'), '</span>';
-}
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
@@ -70,11 +88,6 @@ $show_full = "1";
 	}
 //-->
 </script>
-<?php
-if (empty($SEARCH_SPIDER) && $controller->accept_success) {
-	echo "<b>".WT_I18N::translate('Changes successfully accepted into database')."</b><br />";
-}
-?>
 <table align="center" width="95%">
 	<tr>
 		<td>

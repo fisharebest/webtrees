@@ -30,35 +30,53 @@
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 
-$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
-
 // -- array of GEDCOM elements that will be found but should not be displayed
 $nonfacts = array('FAMS', 'FAMC', 'MAY', 'BLOB', 'CHIL', 'HUSB', 'WIFE', 'RFN', '_WT_OBJE_SORT', '');
-
 $nonfamfacts = array(/*'NCHI',*/ 'UID', '');
 
 $controller=new WT_Controller_Individual();
 $controller->init();
 
-// tell tabs that use jquery that it is already loaded
-define('WT_JQUERY_LOADED', 1);
-
-print_header($controller->getPageTitle());
+if ($controller->indi && $controller->indi->canDisplayName()) {
+	print_header($controller->getPageTitle());
+	if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+		if ($controller->indi->isMarkedDeleted()) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been deleted, but the deletion needs to be reviewed by a moderator.');
+			if (WT_USER_CAN_ACCEPT) {
+				echo ' <a href="', $controller->indi->getHtmlUrl(), '&amp;action=accept">', WT_I18N::translate('Accept the changes.'), '</a>';
+				echo ' <a href="', $controller->indi->getHtmlUrl(), '&amp;action=undo">', WT_I18N::translate('Reject the changes.'), '</a>';
+			}
+			echo '</p>';
+		} elseif (find_updated_record($controller->indi->getXref(), WT_GED_ID)!==null) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been changed, but the changes need to be reviewed by a moderator.');
+			if ($controller->show_changes) {
+				echo ' <a href="', $controller->indi->getHtmlUrl(), '&amp;show_changes=no">', WT_I18N::translate('Hide the changes.'), '</a>';
+				if (WT_USER_CAN_ACCEPT) {
+					echo ' <a href="', $controller->indi->getHtmlUrl(), '&amp;action=accept">', WT_I18N::translate('Accept the changes.'), '</a>';
+					echo ' <a href="', $controller->indi->getHtmlUrl(), '&amp;action=undo">', WT_I18N::translate('Reject the changes.'), '</a>';
+				}
+			} else {
+				echo ' <a href="', $controller->indi->getHtmlUrl(), '&amp;show_changes=yes">', WT_I18N::translate('Show the changes.'), '</a>';
+			}
+			echo '</p>';
+		} elseif ($controller->accept_success) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
+		} elseif ($controller->reject_success) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
+		}
+	}
+} else {
+	print_header(WT_I18N::translate('Individual'));
+	echo '<p class="ui-state-error">', WT_I18N::translate('This record does not exist or you do not have permission to view it.'), '</p>';
+	print_footer();
+	exit;
+}
 
 // We have finished writing session data, so release the lock
 Zend_Session::writeClose();
 
-if (!$controller->indi) {
-	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
-	print_footer();
-	exit;
-} else if (!$controller->indi->canDisplayName()) {
-	echo '<div class="facts_value" >';
-	print_privacy_error();
-	echo '</div>';
-	print_footer();
-	exit;
-}
+// tell tabs that use jquery that it is already loaded
+define('WT_JQUERY_LOADED', 1);
 
 $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
 echo WT_JS_START; ?>
@@ -135,12 +153,7 @@ jQuery(document).ready(function() {
 <?php
 echo WT_JS_END;
 // ===================================== header area
-if ((empty($SEARCH_SPIDER))&&($controller->accept_success)) {
-	echo '<strong>', WT_I18N::translate('Changes successfully accepted into database'), '</strong><br />';
-}
-if ($controller->indi->isMarkedDeleted()) {
-	echo '<span class="error">', WT_I18N::translate('This record has been marked for deletion upon admin approval.'), '</span>';
-}
+
 echo
 	'<div id="main" class="use-sidebar sidebar-at-right">', //overall page container
 	'<div id="indi_left">',
@@ -226,7 +239,6 @@ if (!$controller->indi->canDisplayDetails()) {
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
 }
-$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
 echo '<div id="tabs" >';
 echo '<ul>';
 foreach ($controller->tabs as $tab) {

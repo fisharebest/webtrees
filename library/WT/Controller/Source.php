@@ -36,6 +36,7 @@ class WT_Controller_Source extends WT_Controller_Base {
 	var $source = null;
 	var $diffsource = null;
 	var $accept_success = false;
+	var $reject_success = false;
 
 	function init() {
 		$this->sid = safe_GET_xref('sid');
@@ -87,7 +88,7 @@ class WT_Controller_Source extends WT_Controller_Base {
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->sid, WT_GED_ID);
 				$this->show_changes=false;
-				$this->accept_success=true;
+				$this->reject_success=true;
 				$gedrec = find_source_record($this->sid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {
@@ -147,38 +148,6 @@ class WT_Controller_Source extends WT_Controller_Base {
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_source');
 			$submenu->addId('menu-sour-edit');
 			$menu->addSubmenu($submenu);
-
-			$menu->addSeparator();
-		}
-
-		// show/hide changes
-		if (find_updated_record($this->sid, WT_GED_ID)!==null) {
-			if (!$this->show_changes) {
-				$submenu = new WT_Menu(WT_I18N::translate('This record has been updated.  Click here to show changes.'), "source.php?sid={$this->sid}&amp;show_changes=yes");
-				$submenu->addIcon('edit_sour');
-				$submenu->addId('menu-sour-showchan');
-			} else {
-				$submenu = new WT_Menu(WT_I18N::translate('Click here to hide changes.'), "source.php?sid={$this->sid}&amp;show_changes=no");
-				$submenu->addIcon('edit_sour');
-				$submenu->addId('menu-sour-hidechan');
-			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-			$menu->addSubmenu($submenu);
-
-			if (WT_USER_CAN_ACCEPT) {
-				$submenu = new WT_Menu(WT_I18N::translate('Undo all changes'), "source.php?sid={$this->sid}&amp;action=undo");
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addIcon('edit_sour');
-				$submenu->addId('menu-sour-undochan');
-				$menu->addSubmenu($submenu);
-				$submenu = new WT_Menu(WT_I18N::translate('Approve all changes'), "source.php?sid={$this->sid}&amp;action=accept");
-				$submenu->addIcon('edit_sour');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu');
-				$submenu->addId('menu-sour-savechan');
-				$menu->addSubmenu($submenu);
-			}
-
-			$menu->addSeparator();
 		}
 
 		// edit/view raw gedcom
