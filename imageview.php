@@ -26,13 +26,13 @@
 define('WT_SCRIPT_NAME', 'imageview.php');
 require './includes/session.php';
 
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
-
 $controller = new WT_Controller_Media();
 $controller->init();
 
 print_simple_header(WT_I18N::translate('Image viewer'));
+
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 if (!$controller->mediaobject) {
 	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';

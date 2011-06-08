@@ -31,13 +31,13 @@ define('WT_SCRIPT_NAME', 'source.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_print_lists.php';
 
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
-
 $controller=new WT_Controller_Source();
 $controller->init();
 
 print_header($controller->getPageTitle());
+
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 if (!$controller->source) {
 	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';

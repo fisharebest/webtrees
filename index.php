@@ -77,9 +77,6 @@ if ($action=='ajax') {
 	exit;
 }
 
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
-
 if ($ctype=='user') {
 	$helpindex = 'mypage_portal';
 	print_header(WT_I18N::translate('My Page'));
@@ -87,6 +84,9 @@ if ($ctype=='user') {
 	$helpindex = 'index_portal';
 	print_header(get_gedcom_setting(WT_GED_ID, 'title'));
 }
+
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';

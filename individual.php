@@ -43,10 +43,10 @@ $controller->init();
 // tell tabs that use jquery that it is already loaded
 define('WT_JQUERY_LOADED', 1);
 
+print_header($controller->getPageTitle());
+
 // We have finished writing session data, so release the lock
 Zend_Session::writeClose();
-
-print_header($controller->getPageTitle());
 
 if (!$controller->indi) {
 	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
