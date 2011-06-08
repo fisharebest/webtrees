@@ -1604,11 +1604,6 @@ ul.clist {
 list-style-image: none;
 }
 
-.menu_separator img {
-height: 3px;
-width: 8em;
-} 
-
 .statistics_chart{
 text-align: center;
 } 

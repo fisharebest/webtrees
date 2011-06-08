@@ -674,7 +674,6 @@ class WT_MenuBar {
 			$menu->addSubmenu($submenu);
 		}
 		//-- add wiki links
-		$menu->addSeparator();
 		$submenu = new WT_Menu(WT_I18N::translate('Wiki Main Page'), WT_WEBTREES_WIKI.'" target="_blank');
 		$submenu->addIcon('wiki');
 		$submenu->addId('menu-help-wiki');
@@ -682,7 +681,6 @@ class WT_MenuBar {
 		$menu->addSubmenu($submenu);
 
 		//-- add contact links to help menu
-		$menu->addSeparator();
 		$menuitems = contact_menus();
 		foreach ($menuitems as $menu_id=>$menuitem) {
 			$submenu = new WT_Menu($menuitem['label'], $menuitem['link']);
@@ -693,7 +691,6 @@ class WT_MenuBar {
 			$menu->addSubmenu($submenu);
 		}
 		//-- add show/hide context_help
-		$menu->addSeparator();
 		if ($_SESSION['show_context_help']) {
 			$submenu = new WT_Menu(WT_I18N::translate('Hide contextual help'), get_query_url(array('show_context_help'=>'no')));
 			$submenu->addId('menu-help-hide');
@@ -830,9 +827,6 @@ class WT_MenuBar {
 						break;
 					}
 					$GEDCOM=WT_GEDCOM;
-				}
-				if ($gedfavs) {
-					$menu->addSeparator();
 				}
 			}
 		}

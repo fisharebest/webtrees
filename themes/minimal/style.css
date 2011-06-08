@@ -162,8 +162,6 @@ html[dir='rtl'] .favorites_form {
 	text-align: left;
  }
  
-.separator {display:none; }
-
 /* Set up hover layout and style */
 
 /* header hover */
@@ -1303,11 +1301,6 @@ a.showit:hover span {
 ul.clist {
 	list-style-image: none;
 	margin: 0px;
-}
-
-.menu_separator img {
-	height: 3px;
-	width: 8em;
 }
 
 .statistics_chart {

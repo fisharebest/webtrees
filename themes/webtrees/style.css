@@ -1347,11 +1347,6 @@ ul.clist {
 	margin:0px;
 }
 
-.menu_separator img {
-	height:3px;
-	width:8em;
-}
-
 .statistics_chart {
 	text-align:center;
 }
@@ -1505,9 +1500,6 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 /* Menu icons */
 #main-menu  > li {background-image:url(images/large_menu_sprite.png); background-repeat:no-repeat; width:110px; height:64px; text-align:center;}
 #main-menu li li {background-image:url(images/small_menu_sprite.png); background-repeat:no-repeat; height:24px; left:auto; line-height:24px; text-align:left; text-indent:26px; width:100%}
-
-/* Separators */
-#main-menu li.separator {background: url(images/hline.png) repeat-x; display:block; height:3px; width:100%;}
 
 /* Reverse left and right on RTL pages */
 html[dir='rtl'] #topMenu {float:right;}

@@ -783,9 +783,6 @@ function print_favorite_selector($option=0) {
 					}
 				}
 			}
-			if (count($gedcomfavs)>0) {
-				$menu->addSeparator();
-			}
 		}
 		if (count($gedcomfavs)>0) {
 			$submenu = new WT_Menu("<strong>".WT_I18N::translate('This GEDCOM\'s Favorites')."</strong>", "#", "right");
