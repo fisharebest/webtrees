@@ -117,13 +117,15 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 					echo "<span class=\"error\">".$mediaobject->getXref()." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br />";
 				}
 
-				$disp &= $mediaobject->canDisplayDetails();
+				$disp = $disp && $mediaobject->canDisplayDetails();
 				if (WT_DEBUG && !$disp && !$error) {
 					$error = true;
 					echo "<span class=\"error\">".$mediaobject->getXref()." Failed to pass privacy</span><br />";
 				}
 
-				if ($block && !$mediaobject->isExternal()) $disp &= ($mediaobject->fileExists('thumb')>0); // external files are ok w/o thumb
+				if ($block && !$mediaobject->isExternal()) {
+					$disp = $disp && $mediaobject->fileExists('thumb'); // external files are ok w/o thumb
+				}
 				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." thumbnail file could not be found</span><br />";}
 
 				// TODO convert this to the Media API
