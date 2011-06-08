@@ -128,7 +128,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
-		return WT_USER_CAN_EDIT || $this->get_source_count()==0;
+		return $this->get_source_count()==0;
 	}
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
