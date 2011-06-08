@@ -61,11 +61,14 @@ if ($controller->mediaobject && $controller->mediaobject->canDisplayName()) {
 		}
 	}
 } else {
-	print_header(WT_I18N::translate('Repository'));
+	print_header(WT_I18N::translate('Media object'));
 	echo '<p class="ui-state-error">', WT_I18N::translate('This record does not exist or you do not have permission to view it.'), '</p>';
 	print_footer();
 	exit;
 }
+
+// We have finished writing session data, so release the lock
+Zend_Session::writeClose();
 
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';

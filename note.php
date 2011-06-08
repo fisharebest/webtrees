@@ -60,7 +60,7 @@ if ($controller->note && $controller->note->canDisplayName()) {
 		}
 	}
 } else {
-	print_header(WT_I18N::translate('Repository'));
+	print_header(WT_I18N::translate('Note'));
 	echo '<p class="ui-state-error">', WT_I18N::translate('This record does not exist or you do not have permission to view it.'), '</p>';
 	print_footer();
 	exit;
