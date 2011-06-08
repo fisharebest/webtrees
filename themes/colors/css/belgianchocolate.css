@@ -245,7 +245,7 @@ html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
 #menu-fam-del		{background-position: left -713px; } html[dir=rtl] #menu-fam-del		{background-position: right -713px; }
 #menu-fam-editraw	{background-position: left -667px; } html[dir=rtl] #menu-fam-editraw	{background-position: right -667px; }
 #menu-fam-hidechan	{background-position: left -690px; } html[dir=rtl] #menu-fam-hidechan	{background-position: right -690px; }
-#menu-fam-orderchil	{background-position: left -759px; } html[dir=rtl] #menu-fam-orderchil	{background-position: right -759x; }
+#menu-fam-orderchil	{background-position: left -759px; } html[dir=rtl] #menu-fam-orderchil	{background-position: right -759px; }
 #menu-fam-showchan	{background-position: left -690px; } html[dir=rtl] #menu-fam-showchan	{background-position: right -690px; }
 #menu-fam-undochan	{background-position: left -690px; } html[dir=rtl] #menu-fam-undochan	{background-position: right -690px; }
 
@@ -603,7 +603,6 @@ img {
 div.blockcontent {
 	border: solid #999 1px;
 	margin-left:auto;
-	*margin-top: -2px; /* IE7 fix */
 	margin-right:2px;  /* changed from auto for right side match to header */
 	margin-bottom:10px;
 	font-size: 13px;
@@ -612,7 +611,7 @@ div.blockcontent {
 }
 
 .blockheader {
-width:100%;
+	width:100%;
 }
 
 .blockh1 {
@@ -1134,7 +1133,6 @@ display:none;
 font-size: 12px;
 width: 99%;
 direction: ltr;
-caption-side: left;
 text-align: center;
 }
 
@@ -2025,7 +2023,7 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 .ui-tabs-nav li.ui-tabs-selected a                                  { font-weight:600; color: black; }
 .ui-tabs-nav li.ui-tabs-selected a:hover                         { font-weight:600; color: black; }
 
-.ui-widget-header { border: 1px solid #fff; background: #af2604;  opacity: 0.67;  filter: alpha(opacity = 67);}
+.ui-widget-header { border: 1px solid #fff; background: #af2604; filter: alpha(opacity = 67);}
 .ui-widget-content a:hover {color: #f50;}
 .ui-state-active, .ui-widget-content .ui-state-active { border: 0px ; }
 .ui-state-default a:link { color: #000000;}
@@ -2037,7 +2035,6 @@ html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 
 .ui-state-active .ui-icon {
     background-image: url("../../../js/jquery/css/images/ui-icons_222222_256x240.png");
-}
 }
 
 .ui-tabs-nav li.ui-tabs-selected { background: #fff; }

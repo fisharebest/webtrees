@@ -129,7 +129,7 @@ if ($view!='simple') {
 				'<input type="text" name="query" size="15" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
 				'<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
 				'</form>',
-				'</li></ul></span>';
+				'</li></ul>';
 				}
 			echo '</div></div>';
 ?>
@@ -188,7 +188,7 @@ if ($view!='simple') {
 	echo 
 	'</ul>';
 		if (empty($SEARCH_SPIDER)) {
-			echo '<span class="toplinks_right"><div align="', $TEXT_DIRECTION=="rtl"?"left":"right", '">';
+			echo '<span class="toplinks_right">';
 			echo color_theme_dropdown();
 			echo '</span>';
 		}

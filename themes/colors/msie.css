@@ -21,3 +21,6 @@ a.showit:hover span {
 }
 #menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px}
 
+div.blockcontent {
+	*margin-top: -2px; /* IE7 fix */
+}
