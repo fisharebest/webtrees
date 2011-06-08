@@ -45,6 +45,11 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	// Implement WT_Module_Tab
+	public function addTabContent() {
+		return '';
+	}
+	
+	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $FACT_COUNT, $EXPAND_RELATIVES_EVENTS, $n_chil, $n_gchi;
 

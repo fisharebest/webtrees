@@ -151,6 +151,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	}
 
 	// Implement WT_Module_Tab
+	public function addTabContent() {
+		return '';
+	}
+	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		global $GOOGLEMAP_PH_CONTROLS;
 		$out=

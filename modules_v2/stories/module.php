@@ -134,6 +134,25 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		return $this->getTabContent() <> '';
 	}
 
+	// Implement WT_Module_Tab
+	public function addTabContent() {
+	
+		$stories=
+			WT_DB::prepare(
+				"SELECT block_id".
+				" FROM `##block`".
+				" WHERE module_name=?".
+				" AND xref=?".
+				" AND gedcom_id=?"
+			)->execute(array(
+				$this->getName(),
+				$xref=$this->controller->indi->getXref(),
+				WT_GED_ID
+			))->fetchOneColumn();
+			
+		return !$stories;
+	}
+	
 	// Implement class WT_Module_Tab
 	public function canLoadAjax() {
 		return false;

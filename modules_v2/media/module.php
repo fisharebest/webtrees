@@ -51,6 +51,12 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		global $MULTI_MEDIA;
 		return $MULTI_MEDIA && (WT_USER_CAN_EDIT || $this->get_media_count()>0);
 	}
+	
+	// Implement WT_Module_Tab
+	public function addTabContent() {
+		global $MULTI_MEDIA;
+		return $MULTI_MEDIA && (WT_USER_CAN_EDIT && $this->get_media_count()==0);
+	}
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {

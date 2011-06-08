@@ -230,16 +230,18 @@ $showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
 echo '<div id="tabs" >';
 echo '<ul>';
 foreach ($controller->tabs as $tab) {
+	$greyed_out='';
+	if ($tab->addTabContent()) $greyed_out = 'rela40';
 	if ($tab->hasTabContent()) {
 		if ($tab->getName()==$controller->default_tab) {
 			// Default tab loads immediately
-			echo '<li><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
+			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
 		} else if ($tab->canLoadAjax()) {
 			// AJAX tabs load later
-			echo '<li><a title="', $tab->getName(), '" href="',$controller->indi->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
+			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="',$controller->indi->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
 		} else {
 			// Non-AJAX tabs load immediately (search engines don't load ajax)
-			echo '<li><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
+			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
 		}
 		echo '<span title="', $tab->getTitle(), '">', $tab->getTitle(), '</span></a></li>';
 	}
