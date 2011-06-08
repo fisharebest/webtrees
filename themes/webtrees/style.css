@@ -1777,7 +1777,7 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
 #sb_clippings_content li {list-style:none; margin:0px; padding:0px; white-space:nowrap;}
 
 /* References */
-#sb_content_extra_info {font-size:80%; font-weight:bold; margin-top:1px; padding:5px;}
+#sb_content_extra_info {font-size:80%; font-weight:bold; margin-top:1px; overflow:hidden; padding:5px;}
 #sb_content_extra_info .editfacts {float:right; margin-top:-30px;}
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 #sb_content_extra_info a {display:block;}

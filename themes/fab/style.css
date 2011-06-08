@@ -1174,9 +1174,9 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
 #sb_clippings_content ul {padding:0px;margin:0px;}
 
 /* References */
-#sb_content_references {font-size:80%; font-weight:bold; margin-top:1px; padding:5px;}
-#sb_content_references .editfacts {float:right; margin-top:-10px;}
-html[dir='rtl'] #sb_content_references .editfacts {float:left;}
-#sb_content_references a {display:block;}
-#sb_content_references span {font-weight:normal;}
-#sb_content_references #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
+#sb_content_extra_info {font-size:80%; font-weight:bold; margin-top:1px; overflow:hidden; padding:5px;}
+#sb_content_extra_info .editfacts {float:right; margin-top:-10px;}
+html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
+#sb_content_extra_info a {display:block;}
+#sb_content_extra_info span {font-weight:normal;}
+#sb_content_extra_info #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
