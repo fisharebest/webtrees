@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -73,9 +73,9 @@ class WT_Controller_Media extends WT_Controller_Base {
 			}
 		}
 
-		//Checks to see if the File Name ($filename) exists
+		//Checks to see if the filename ($filename) exists
 		if (!empty($filename)) {
-			//If the File Name ($filename) is set, then it will call the method to get the Media ID ($this->mid) from the File Name ($filename)
+			//If the filename ($filename) is set, then it will call the method to get the Media ID ($this->mid) from the filename ($filename)
 			$this->mid = get_media_id_from_file($filename);
 			if (!$this->mid) {
 				//This will set the Media ID to be false if the File given doesn't match to anything in the database
@@ -360,7 +360,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 	}
 
 	/**
-	* get the file name on the server
+	* get the filename on the server
 	* @return string
 	*/
 	function getServerFilename() {

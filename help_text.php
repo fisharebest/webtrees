@@ -1871,11 +1871,6 @@ case 'SHOW_MEDIA_DOWNLOAD':
 	$text=WT_I18N::translate('The Media Viewer can show a link which, when clicked, will download the Media file to the local PC.<br /><br />You may want to hide the download link for security reasons.');
 	break;
 
-case 'SHOW_MEDIA_FILENAME':
-	$title=WT_I18N::translate('Show file name in media viewer');
-	$text=WT_I18N::translate('The Media Viewer can show the name of the Media file being viewed.  This option determines whether that file name is shown to users or not.<br /><br />You may want to hide the file name for security reasons.');
-	break;
-
 case 'SHOW_NO_WATERMARK':
 	$title=WT_I18N::translate('Who can view non-watermarked images?');
 	$text=WT_I18N::translate('If the Media Firewall is enabled, users will see watermarks if they do not have the privilege level specified here.');
@@ -2877,11 +2872,6 @@ case 'simple_filter':
 case 'skip_sublist':
 	$title=WT_I18N::translate('Skip surname lists');
 	$text=WT_I18N::translate('The standard setting is that, after you have clicked a letter of the Alphabetical index, you will get a sub-list with surnames.  If you click this link, all individuals with surnames that have the currently selected initial letter will be displayed immediately. Thereafter, the list of individuals will be displayed directly whenever you click on a new initial letter in the Alphabetical list.<br /><br />To reverse this action, click on the Show Surname lists link.');
-	break;
-
-case 'sortby':
-	$title=WT_I18N::translate('Sequence');
-	$text=WT_I18N::translate('Select the order in which you wish to see the list.');
 	break;
 
 case 'soundex_search':

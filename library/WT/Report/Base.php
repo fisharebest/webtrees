@@ -1,35 +1,31 @@
 <?php
-/**
- * Base Report Generator
- *
- * used by the SAX parser to generate reports from the XML report file.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * Modifications Copyright (c) 2010 Greg Roach
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Reports
- * @version $Id$
- */
+// Base Report Generator
+//
+// used by the SAX parser to generate reports from the XML report file.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// Modifications Copyright (c) 2010 Greg Roach
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -1071,7 +1067,7 @@ class PageHeader extends Element {
 */
 class Image extends Element {
 	/**
-	* File name of the image
+	* Filename of the image
 	* @var string
 	*/
 	public $file;
@@ -1109,7 +1105,7 @@ class Image extends Element {
 	/**
 	* Image class function - Base
 	*
-	* @param string $file File name of the image
+	* @param string $file Filename of the image
 	* @param float $x X-position (left) of the image
 	* @param float $y Y-position (top) of the image
 	* @param float $w Width of the image
@@ -3279,9 +3275,6 @@ function ListSHandler($attrs) {
 		case "NAME":
 			uasort($list, array("WT_GedcomRecord", "Compare"));
 			break;
-		case "ID":
-			uasort($list, array("WT_GedcomRecord", "CompareId"));
-			break;
 		case "CHAN":
 			uasort($list, array("WT_GedcomRecord", "CompareChanDate"));
 			break;
@@ -3506,9 +3499,6 @@ function RelativesSHandler($attrs) {
 	switch ($sortby) {
 		case "NAME":
 			uasort($list, array("WT_GedcomRecord", "Compare"));
-			break;
-		case "ID":
-			uasort($list, array("WT_GedcomRecord", "CompareId"));
 			break;
 		case "BIRT:DATE":
 			uasort($list, array("WT_Report_Base", "CompareBirthDate"));

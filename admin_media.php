@@ -784,10 +784,10 @@ if (check_media_structure()) {
 	<input type="hidden" name="subclick" value="<?php echo $subclick; ?>"/>
 	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">
 		<tr align="center">
-			<td class="wrap"><?php echo WT_I18N::translate('Sequence'), help_link('sortby'); ?>
+			<td class="wrap"><?php echo /* I18N: Label for list of sort options */ WT_I18N::translate('Sort order'); ?>
 				<select name="sortby">
-					<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\""; ?>><?php echo WT_Gedcom_Tag::getLabel('TITL'); ?></option>
-					<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\""; ?>><?php echo WT_Gedcom_Tag::getLabel('FILE'); ?></option>
+					<option value="title" <?php if ($sortby=='title') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('sort by title'); ?></option>
+					<option value="file" <?php if ($sortby=='file') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('sort by filename'); ?></option>
 				</select>
 			</td>
 			<td class="wrap">

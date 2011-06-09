@@ -1984,7 +1984,7 @@ case 'reorder_children':
 		}
 		?>
 		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
-		<button type="submit" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Sort by birth dates'); ?></button>
+		<button type="submit" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of birth'); ?></button>
 		<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
 	</form>
 	<br />
@@ -2347,7 +2347,7 @@ case 'reorder_fams':
 			);
 		<?php echo WT_JS_END; ?>
 		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
-		<button type="submit" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Sort by marriage date'); ?></button>
+		<button type="submit" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of marriage'); ?></button>
 		<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
 	</form>
 	<?php

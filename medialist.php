@@ -200,13 +200,13 @@ $_SESSION['Medialist'] = $medialist;
 <!-- // NOTE: Row 1 right: -->
 	<!-- begin sort files -->
 			<td class="descriptionbox wrap width25">
-					<?php echo WT_I18N::translate('Sort by title or file name'), help_link('sortby'); ?>
+					<?php echo WT_I18N::translate('Sort order'); ?>
 			</td>
 			<td class="optionbox wrap width25"><select name="sortby">
 				<option value="title" <?php if ($sortby=='title') echo 'selected="selected"'; ?>>
-					<?php echo WT_I18N::translate('Sort by title'); ?></option>
+					<?php echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by title'); ?></option>
 				<option value="file" <?php if ($sortby=='file') echo 'selected="selected"'; ?>>
-					<?php echo WT_I18N::translate('Sort by file name'); ?></option>
+					<?php echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by filename'); ?></option>
 				</select>
 			</td>
 	<!-- //end sort files -->

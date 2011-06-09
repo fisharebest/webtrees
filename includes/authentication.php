@@ -1,38 +1,34 @@
 <?php
-/**
- * User and Authentication functions
- *
- * This file contains functions for working with users and authenticating them.
- * It also handles the internal mail messages, news/journal, and storage of My Page
- * customizations.  Assumes that a database connection has already been established.
- *
- * You can extend webtrees to work with other systems by implementing the functions in this file.
- * Other possible options are to use LDAP for authentication.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage DB
- * @version $Id$
- */
+// User and Authentication functions
+//
+// This file contains functions for working with users and authenticating them.
+// It also handles the internal mail messages, news/journal, and storage of My Page
+// customizations.  Assumes that a database connection has already been established.
+//
+// You can extend webtrees to work with other systems by implementing the functions in this file.
+// Other possible options are to use LDAP for authentication.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -483,7 +479,7 @@ function deleteNews($news_id) {
 /**
  * Gets the news items for the given user or gedcom
  *
- * @param String $username the username or gedcom file name to get news items for
+ * @param String $username the username or gedcom filename to get news items for
  */
 function getUserNews($username) {
 	$rows=

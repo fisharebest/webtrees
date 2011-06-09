@@ -1026,7 +1026,7 @@ function print_repo_table($repos, $legend='') {
  * @param string $legend legend of the fieldset
  */
 function print_media_table($datalist, $legend) {
-	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_MEDIA_FILENAME;
+	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES;
 
 	if (count($datalist)<1) return;
 	require_once WT_ROOT.'js/sorttable.js.htm';
@@ -1064,7 +1064,7 @@ function print_media_table($datalist, $legend) {
 			echo "<a href=\"", $media->getHtmlUrl(), "\" class=\"list_item name2\">";
 			echo '<img src=', $media->getThumbnail(), ' height="15" /> ';
 			echo PrintReady($name), "</a>";
-			if ($SHOW_MEDIA_FILENAME || WT_USER_IS_ADMIN)
+			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT)
 				echo "<br /><a href=\"", $media->getHtmlUrl(), "\">", basename($media->getFilename()), "</a>";
 			if ($media->getNote()) echo "<br />", print_fact_notes("1 NOTE ".$media->getNote(), 1);
 			echo "</td>";

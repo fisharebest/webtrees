@@ -269,7 +269,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SHOW_LIVING_NAMES;            $SHOW_LIVING_NAMES            =get_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES');
 	global $SHOW_MARRIED_NAMES;           $SHOW_MARRIED_NAMES           =get_gedcom_setting($ged_id, 'SHOW_MARRIED_NAMES');
 	global $SHOW_MEDIA_DOWNLOAD;          $SHOW_MEDIA_DOWNLOAD          =get_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD');
-	global $SHOW_MEDIA_FILENAME;          $SHOW_MEDIA_FILENAME          =get_gedcom_setting($ged_id, 'SHOW_MEDIA_FILENAME');
 	global $SHOW_NO_WATERMARK;            $SHOW_NO_WATERMARK            =get_gedcom_setting($ged_id, 'SHOW_NO_WATERMARK');
 	global $SHOW_PARENTS_AGE;             $SHOW_PARENTS_AGE             =get_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE');
 	global $SHOW_PEDIGREE_PLACES;         $SHOW_PEDIGREE_PLACES         =get_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES');
@@ -1081,7 +1080,7 @@ function mediasort($a, $b) {
 	return utf8_strcasecmp($aKey, $bKey, true); // Case-insensitive compare
 }
 /**
- * sort an array according to the file name
+ * sort an array according to the filename
  *
  */
 
@@ -3352,7 +3351,7 @@ function pathinfo_utf($path) {
 		$basename=end($tmp);
 		$dirname=substr($path, 0, strlen($path) - strlen($basename) - 1);
 	} else {
-		$basename=$path; // We have just a file name
+		$basename=$path; // We have just a filename
 		$dirname='.';    // For compatibility with pathinfo()
 	}
 

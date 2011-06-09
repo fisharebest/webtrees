@@ -150,9 +150,12 @@ class todays_events_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$sortStyle=get_block_setting($block_id, 'sortStyle',  'alpha');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Sort style');
+		echo WT_I18N::translate('Sort order');
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('sortStyle', array('alpha'=>WT_I18N::translate('alphabetically'), 'anniv'=>WT_I18N::translate('By Anniversary')), null, $sortStyle, '');
+		echo select_edit_control('sortStyle', array(
+			/* I18N: An option in a list-box */ 'alpha'=>WT_I18N::translate('sort by name'),
+			/* I18N: An option in a list-box */ 'anniv'=>WT_I18N::translate('sort by date'
+		)), null, $sortStyle, '');
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);

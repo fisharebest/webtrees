@@ -578,11 +578,6 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Static helper function to sort an array of objects by ID
-	static function CompareId($x, $y) {
-		return strnatcasecmp($x->getXref(), $y->getXref());
-	}
-
 	// Static helper function to sort an array of objects by Change Date
 	static function CompareChanDate($x, $y) {
 		$chan_x = $x->getChangeEvent();

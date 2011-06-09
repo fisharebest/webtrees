@@ -5,7 +5,7 @@
 	<Description><var var="WT_I18N::translate('A report of recent and pending changes.')" /></Description>
 	<Input name="changeRangeStart" lookup="DATE" type="text" default="NOW-30"><var var="WT_I18N::translate('Starting range of change dates')" /></Input>
 	<Input name="changeRangeEnd" lookup="DATE" type="text" default="NOW"><var var="WT_I18N::translate('Ending range of change dates')" /></Input>
-	<Input name="sortby" type="select" options="CHAN=>WT_I18N::translate('Last change')|NAME=>WT_I18N::translate('Name')|BIRT:DATE=>WT_I18N::translate('Date of birth')"><var var="WT_I18N::translate('Sort by')" /></Input>
+	<Input name="sortby" type="select" default="CHAN" options="CHAN=>WT_I18N::translate('sort by date')|NAME=>WT_I18N::translate('sort by name')|BIRT:DATE=>WT_I18N::translate('sort by date of birth')"><var var="WT_I18N::translate('Sort order')" /></Input>
 	<Input name="pending" type="select" options="yes=>WT_I18N::translate('Yes')|no=>WT_I18N::translate('No')"><var var="WT_I18N::translate('Show pending changes')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
 	<Input name="pageorient" type="select" default="landscape" options="landscape=>WT_I18N::translate('Landscape')|portrait=>WT_I18N::translate('Portrait')"><var var="WT_I18N::translate('Orientation')" /></Input>

@@ -96,7 +96,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * get the main media file name
+	 * get the main media filename
 	 * @return string
 	 */
 	public function getFilename() {
@@ -118,7 +118,7 @@ class WT_Media extends WT_GedcomRecord {
 	}
 
 	/**
-	 * get the file name on the server, either in the standard or protected directory
+	 * get the filename on the server, either in the standard or protected directory
 	 * @param which string - specify either 'main' or 'thumb'
 	 * @return string
 	 */

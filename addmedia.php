@@ -159,7 +159,7 @@ if ($action=='newentry') {
 
 		$error = '';
 
-		// Determine file name on server
+		// Determine filename on server
 		if (WT_USER_GEDCOM_ADMIN && !empty($text[0])) $fileName = trim(trim($text[0]), '/');
 		else $fileName = '';
 		$parts = pathinfo_utf($fileName);
@@ -170,13 +170,13 @@ if ($action=='newentry') {
 				// Strip invalid extension from supplied name
 				$lastDot = strrpos($mediaFile, '.');
 				if ($lastDot !== false) $mediaFile = substr($mediaFile, 0, $lastDot);
-				// Use extension of original uploaded file name
+				// Use extension of original uploaded filename
 				if (!empty($_FILES['mediafile']['name'])) $parts = pathinfo_utf($_FILES['mediafile']['name']);
 				else $parts = pathinfo_utf($_FILES['thumbnail']['name']);
 				if (!empty($parts['extension'])) $mediaFile .= '.'.$parts['extension'];
 			}
 		} else {
-			// User did not specify a name to be used on the server:  use the original uploaded file name
+			// User did not specify a name to be used on the server:  use the original uploaded filename
 			if (!empty($_FILES['mediafile']['name'])) $parts = pathinfo_utf($_FILES['mediafile']['name']);
 			else $parts = pathinfo_utf($_FILES['thumbnail']['name']);
 			$mediaFile = $parts['basename'];

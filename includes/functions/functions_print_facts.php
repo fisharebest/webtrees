@@ -34,7 +34,7 @@ define('WT_FUNCTIONS_PRINT_FACTS_PHP', '');
 
 // print a fact record, for the gedcom object pages.
 function print_fact(WT_Event $eventObj) {
-	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $SHOW_MEDIA_FILENAME, $SEARCH_SPIDER, $n_chil, $n_gchi;
+	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $n_chil, $n_gchi;
 
 	if (!$eventObj->canShow()) {
 		return;
@@ -223,7 +223,7 @@ function print_fact(WT_Event $eventObj) {
 		echo '<div class="field"><a href="mailto:', htmlspecialchars($eventObj->getDetail()), '">', htmlspecialchars($eventObj->getDetail()), '</a></div>';
 		break;
 	case 'FILE':
-		if ($SHOW_MEDIA_FILENAME || WT_USER_GEDCOM_ADMIN) {
+		if (WT_USER_CAN_EDIT || WT_USER_IS_ADMIN) {
 			echo '<div class="field">', htmlspecialchars($eventObj->getDetail()), '</div>';
 		}
 		break;

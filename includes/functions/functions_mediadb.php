@@ -662,7 +662,7 @@ function filterMedia($media, $filter, $acceptExt) {
 
 	$filter=utf8_strtoupper($filter);
 
-	//-- Accept when filter string contained in file name (but only for editing users)
+	//-- Accept when filter string contained in filename (but only for editing users)
 	if (WT_USER_CAN_EDIT && strstr(utf8_strtoupper(basename($media["FILE"])), $filter))
 		return true;
 
@@ -735,7 +735,7 @@ function filterMedia2($media, $filter, $acceptExt) {
 
 	$filter=utf8_strtoupper($filter);
 
-	//-- Accept when filter string contained in file name (but only for editing users)
+	//-- Accept when filter string contained in filename (but only for editing users)
 	if (WT_USER_CAN_EDIT && strstr(utf8_strtoupper(basename($mediaobject->getFilename())), $filter))
 		return true;
 
@@ -771,7 +771,7 @@ function filterMedia2($media, $filter, $acceptExt) {
 *
 * @author roland-d
 * @param string $filename The full filename of the media item
-* @param bool $generateThumb 'true' when thumbnail should be generated, 'false' when only the file name should be returned
+* @param bool $generateThumb 'true' when thumbnail should be generated, 'false' when only the filename should be returned
 * @param bool $overwrite 'true' to replace existing thumbnail
 * @return string the location of the thumbnail
 */
@@ -984,7 +984,7 @@ function display_silhouette(array $config = array()) {
 * takes a filename, split it in parts and then recreates it according to the
 * chosen media depth
 *
-* When the input file name is a URL, this routine does nothing.  Only http:// URLs
+* When the input filename is a URL, this routine does nothing.  Only http:// URLs
 * are supported.
 *
 * @author roland-d
@@ -1244,7 +1244,7 @@ function process_uploadMedia_form() {
 
 			$error = "";
 
-			// Determine file name on server
+			// Determine filename on server
 			$fileName = trim(trim(safe_POST('filename'.$i, WT_REGEX_NOSCRIPT)), '/');
 			$parts = pathinfo_utf($fileName);
 			if (!empty($parts["basename"])) {
@@ -1254,13 +1254,13 @@ function process_uploadMedia_form() {
 					// Strip invalid extension from supplied name
 					$lastDot = strrpos($mediaFile, '.');
 					if ($lastDot !== false) $mediaFile = substr($mediaFile, 0, $lastDot);
-					// Use extension of original uploaded file name
+					// Use extension of original uploaded filename
 					if (!empty($_FILES["mediafile".$i]["name"])) $parts = pathinfo_utf($_FILES["mediafile".$i]["name"]);
 					else $parts = pathinfo_utf($_FILES["thumbnail".$i]["name"]);
 					if (!empty($parts["extension"])) $mediaFile .= ".".$parts["extension"];
 				}
 			} else {
-				// User did not specify a name to be used on the server:  use the original uploaded file name
+				// User did not specify a name to be used on the server:  use the original uploaded filename
 				if (!empty($_FILES["mediafile".$i]["name"])) $parts = pathinfo_utf($_FILES["mediafile".$i]["name"]);
 				else $parts = pathinfo_utf($_FILES["thumbnail".$i]["name"]);
 				$mediaFile = $parts["basename"];
@@ -1537,7 +1537,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		}
 		else echo "<input type=\"hidden\" name=\"genthumb\" value=\"yes\" />";
 	}
-	// File name on server
+	// Filename on server
 	$isExternal = isFileExternal($gedfile);
 	if ($gedfile == "FILE") {
 		if (WT_USER_GEDCOM_ADMIN) {
