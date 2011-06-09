@@ -1470,9 +1470,9 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	echo "<table class=\"facts_table center ", $TEXT_DIRECTION, "\">";
 	echo "<tr><td class=\"topbottombar\" colspan=\"2\">";
 	if ($action == "newentry") {
-		echo WT_I18N::translate('Add a new media item');
+		echo WT_I18N::translate('Add a new media object');
 	} else {
-		echo WT_I18N::translate('Edit Media Item (%s)', $pid);
+		echo WT_I18N::translate('Edit media object');
 	}
 	echo "</td></tr>";
 	echo "<tr><td colspan=\"2\" class=\"descriptionbox\"><input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" /></td></tr>";

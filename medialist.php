@@ -1,5 +1,5 @@
 <?php
-// Displays a list of the multimedia objects
+// Displays a list of the media objects
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.

@@ -2,7 +2,7 @@
 // System for generating menus.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
@@ -23,7 +23,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -442,7 +442,7 @@ class WT_MenuBar {
 			'placelist.php' =>WT_I18N::translate('Place hierarchy'),
 		);
 		if ($row->obje) {
-			$menulist['medialist.php']=WT_I18N::translate('Multimedia');
+			$menulist['medialist.php']=WT_I18N::translate('Media objects');
 		}
 		if ($row->repo) {
 			$menulist['repolist.php']=WT_I18N::translate('Repositories');

@@ -184,7 +184,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		$menu->addId('menu-obje');
 
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(WT_I18N::translate('Edit media'));
+			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'));
 			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->pid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')");
 			$submenu->addIcon('edit_media');
 			$submenu->addId('menu-obje-edit');

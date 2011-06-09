@@ -412,7 +412,7 @@ function print_fact(WT_Event $eventObj) {
 	print_fact_sources($eventObj->getGedcomRecord(), 2);
 	// -- find notes for each fact
 	print_fact_notes($eventObj->getGedcomRecord(), 2);
-	//-- find multimedia objects
+	//-- find media objects
 	print_media_links($eventObj->getGedcomRecord(), 2, $pid);
 	echo '</td></tr>';
 }
@@ -523,7 +523,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 	}	
 }
 
-//-- Print the links to multi-media objects
+//-- Print the links to media objects
 function print_media_links($factrec, $level, $pid='') {
 	global $MULTI_MEDIA, $TEXT_DIRECTION;
 	global $SEARCH_SPIDER;
@@ -1160,7 +1160,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 }
 
 /**
- * Print the links to multi-media objects
+ * Print the links to media objects
  * @param string $pid The the xref id of the object to find media records related to
  * @param int $level The level of media object to find
  * @param boolean $related Whether or not to grab media from related records

@@ -1,32 +1,29 @@
 <?php
-/**
- * Lightbox Album module for webtrees
- *
- * Display media Items using Lightbox
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2007 to 2008  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @version $Id$
- * @author Brian Holland
- */
+// Lightbox Album module for webtrees
+//
+// Display media Items using Lightbox
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2007 to 2008  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -68,18 +65,18 @@ if (isset($reorder) && $reorder==1) {
 	//Show Lightbox-Album header Links
 	if (WT_USER_IS_ADMIN) {
 		echo '<table border="0" width="75%"><tr>';
-		// Add a new multimedia object
+		// Add a new media object
 		echo '<td class="width15 center wrap" valign="top">';
 		echo '<a href="javascript: album_add()">';
-		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" alt="', WT_I18N::translate('Add a new Multimedia Object to this Individual'), '" /><br />';
-		echo WT_I18N::translate('Add a new Media Object');
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new media object'), '" alt="', WT_I18N::translate('Add a new media object'), '" /><br />';
+		echo WT_I18N::translate('Add a new media object');
 		echo '</a>';
 		echo '</td>';
 		// Link to an existing item
 		echo '<td class="width15 center wrap" valign="top">';
 		echo '<a href="javascript: album_link()">';
-		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_link.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" alt="', WT_I18N::translate('Link this Individual to an existing Multimedia Object'), '" /><br />';
-		echo WT_I18N::translate('Link to an existing Media Object');
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_link.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Link to an existing media object'), '" alt="', WT_I18N::translate('Link to an existing media object'), '" /><br />';
+		echo WT_I18N::translate('Link to an existing media object');
 		echo '</a>';
 		echo '</td>';
 		// Popup Reorder Media
