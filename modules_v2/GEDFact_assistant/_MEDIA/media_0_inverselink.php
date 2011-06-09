@@ -192,13 +192,13 @@ if ($action == "choose" && $paramok) {
 	// Admin Option CHAN log update override =======================
 	if (WT_USER_IS_ADMIN) {
 		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo WT_I18N::translate('Admin Option'), "</td><td class=\"optionbox wrap\">";
+		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
 			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 		} else {
 			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) records'), help_link('no_update_CHAN'), '<br /><br />';
+		echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN'), '<br /><br />';
 		echo "</td></tr>";
 	}
 	echo '</tr>';

@@ -1,33 +1,27 @@
 <?php
-/**
-* PopUp Window to provide editing features.
-*
-* webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
-*
-* Modifications Copyright (c) 2010 Greg Roach
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*
-* @package webtrees
-* @subpackage Edit
-* @version $Id$
-*/
+// PopUp Window to provide editing features.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
@@ -300,7 +294,7 @@ case 'editraw':
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+		echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -343,7 +337,7 @@ case 'edit':
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+		echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -393,7 +387,7 @@ case 'add':
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+		echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -465,7 +459,7 @@ case 'addfamlink':
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+		echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -504,7 +498,7 @@ case 'linkspouse':
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+		echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -655,7 +649,7 @@ case 'addnewsource':
 					echo ' checked="checked"';
 				} 
 				echo ' />';
-				echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+				echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 				echo '</td></tr>';
 			}
 		?>
@@ -767,7 +761,7 @@ case 'addnewnote':
 					echo ' checked="checked"';
 				} 
 				echo ' />';
-				echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+				echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 				echo "</td></tr>";
 			}
 			echo '</table>';
@@ -934,7 +928,7 @@ case 'editsource':
 			echo ' checked="checked"';
 		} 
 		echo ' />';
-		echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+		echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
@@ -991,7 +985,7 @@ case 'editnote':
 						echo ' checked="checked"';
 					} 
 					echo ' />';
-					echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+					echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 					echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 					echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 					echo '</td></tr>';
@@ -1055,7 +1049,7 @@ case 'addnewrepository':
 					echo ' checked="checked"';
 				} 
 				echo ' />';
-				echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+				echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 				echo '</td></tr>';
 			}
 		?>
@@ -1983,7 +1977,7 @@ case 'reorder_children':
 				echo ' checked="checked"';
 			} 
 			echo ' />';
-			echo WT_I18N::translate('Do not update the CHAN (Last Change) record'), help_link('no_update_CHAN');
+			echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN');
 			echo WT_Gedcom_Tag::getLabelValue('DATE', $family->LastChangeTimestamp(false));
 			echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $family->LastChangeUser());
 			echo '</td></tr></table></center><br />';
