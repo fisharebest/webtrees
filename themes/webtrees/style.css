@@ -516,20 +516,6 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	font-weight:bold;
 }
 
-/* This is the original.
- * It's not used, but it's left in in case you want to go back to it. */
-.flag {
-	width:15px;
-	border:solid black 1px;
-}
-
-/* This one is for a place flag */
-.brightflag {
-	height:15px;
-	border:none;
-	opacity:1;		/* IE's support is different */
-}
-
 .border1 {
 	border:solid black 1px;
 }
