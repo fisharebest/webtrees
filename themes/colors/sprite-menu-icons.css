@@ -33,6 +33,7 @@
 #menu-chart-relationship li { background-position:left -230px; } html[dir=rtl] #menu-chart-relationship li  { background-position:right -230px; }
 #menu-chart-statistics      { background-position:left -253px; } html[dir=rtl] #menu-chart-statistics       { background-position:right -253px; }
 #menu-chart-timeline        { background-position:left -276px; } html[dir=rtl] #menu-chart-timeline         { background-position:right -276px; }
+#menu-chart-timeline li     { background-position:left -276px; } html[dir=rtl] #menu-chart-timeline li      { background-position:right -276px; }
 
 /* Lists Icons */
 #menu-list-obje             { background-position:left -299px; } html[dir=rtl] #menu-list-obje              { background-position:right -299px; }
