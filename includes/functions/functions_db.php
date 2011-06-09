@@ -1657,7 +1657,7 @@ function set_gedcom_setting($ged_id, $setting_name, $setting_value) {
 function create_user($username, $realname, $email, $password) {
 	try {
 		WT_DB::prepare("INSERT INTO `##user` (user_name, real_name, email, password) VALUES (?, ?, ?, ?)")
-			->execute(array($username, $realname, $email, $password));
+			->execute(array($username, $realname, $email, crypt($password)));
 	} catch (PDOException $ex) {
 		// User already exists?
 	}
