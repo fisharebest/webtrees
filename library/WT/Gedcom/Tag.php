@@ -309,7 +309,7 @@ class WT_Gedcom_Tag {
 		case 'NOTE': return /* I18N: gedcom tag NOTE */ WT_I18N::translate('Note');
 		case 'NPFX': return /* I18N: gedcom tag NPFX */ WT_I18N::translate('Name prefix');
 		case 'NSFX': return /* I18N: gedcom tag NSFX */ WT_I18N::translate('Name suffix');
-		case 'OBJE': return /* I18N: gedcom tag OBJE */ WT_I18N::translate('Multimedia object');
+		case 'OBJE': return /* I18N: gedcom tag OBJE */ WT_I18N::translate('Media object');
 		case 'OCCU': return /* I18N: gedcom tag OCCU */ WT_I18N::translate('Occupation');
 		case 'OCCU:AGNC': return WT_I18N::translate('Employer');
 		case 'ORDI': return /* I18N: gedcom tag ORDI */ WT_I18N::translate('Ordinance');
