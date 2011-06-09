@@ -346,7 +346,7 @@ function print_fact(WT_Event $eventObj) {
 			foreach (preg_split('/ *, */', $match[2]) as $event) {
 				$events[]=WT_Gedcom_Tag::getLabel($event);
 			}
-			echo WT_Gedcom_Tag::getLabelValue('EVEN', $events);
+			echo WT_Gedcom_Tag::getLabelValue('EVEN', implode(', ', $events));
 			if (preg_match('/\n3 DATE (.+)/', $eventObj->getGedcomRecord(), $date_match)) {
 				$date=new WT_Date($date_match[1]);
 				echo WT_Gedcom_Tag::getLabelValue('DATE', $date->Display());
