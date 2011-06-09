@@ -749,16 +749,17 @@ function filterMedia2($media, $filter, $acceptExt) {
 	if (strpos(utf8_strtoupper($mediaobject->title), $filter)!==false)
 		return true;
 
+	// TODO: convert this to the API
 	//-- Accept when filter string contained in name of any item
 	//-- this Media item is linked to.  (Privacy already checked)
-	foreach ($media['LINKS'] as $id=>$type) {
-		$record=WT_GedcomRecord::getInstance($id);
-		foreach ($record->getAllNames() as $name) {
-			if (strpos(utf8_strtoupper($name['full']), $filter)!==false) {
-				return true;
-			}
-		}
-	}
+//	foreach ($media['LINKS'] as $id=>$type) {
+//		$record=WT_GedcomRecord::getInstance($id);
+//		foreach ($record->getAllNames() as $name) {
+//			if (strpos(utf8_strtoupper($name['full']), $filter)!==false) {
+//				return true;
+//			}
+//		}
+//	}
 
 	return false;
 }
