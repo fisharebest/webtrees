@@ -757,19 +757,19 @@ if (isset($content) && $content==1) {
 		<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 		<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab0" title="<?php echo WT_I18N::translate('Individuals'); ?>" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=0"><span>
+				<a name="pagetab0" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=0"><span>
 					<?php echo WT_I18N::translate('Individuals'); ?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab1" title="<?php echo WT_I18N::translate('Families'); ?>" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=1"><span>
+				<a name="pagetab1" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=1"><span>
 					<?php echo WT_I18N::translate('Families'); ?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab2" title="<?php echo WT_I18N::translate('Others'); ?>" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=2"><span>
+				<a name="pagetab2" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=2"><span>
 					<?php echo WT_I18N::translate('Others'); ?></span></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab3" title="<?php echo WT_I18N::translate('Own charts'); ?>" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=3"><span>
+				<a name="pagetab3" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&content=1&tab=3"><span>
 					<?php echo WT_I18N::translate('Own charts'); ?></span></a>
 			</li>
 		</ul>
