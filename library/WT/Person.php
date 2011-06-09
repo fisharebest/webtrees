@@ -434,8 +434,7 @@ class WT_Person extends WT_GedcomRecord {
 	// Note that this is a (non-breaking) en-dash, and not a hyphen.
 	public function getLifeSpan() {
 		return
-			/* I18N: A range of years, e.g. "1870–", "1870–1920", "–1920" */
-			WT_I18N::translate(
+			/* I18N: A range of years, e.g. "1870–", "1870–1920", "–1920" */ WT_I18N::translate(
 				'%1$s–%2$s',
 				'<span title="'.htmlspecialchars(strip_tags($this->getBirthDate()->Display())).'">'.$this->getBirthDate()->MinDate()->Format('%Y').'</span>',
 				'<span title="'.htmlspecialchars(strip_tags($this->getDeathDate()->Display())).'">'.$this->getDeathDate()->MinDate()->Format('%Y').'</span>'
