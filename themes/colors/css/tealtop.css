@@ -1939,7 +1939,8 @@ html[dir='rtl'] .use-sidebar #separator {background: #51B389 url('../images/indi
 .nav_content .facts_label a{color: #ffffff;}
 .flyout {color:#000000; 	text-align:left; margin-top:-20px; right:210px; padding:3px;}
 html[dir='rtl'] .flyout {text-align:right; left:210px;}
-.flyout2 {color:#000000;	text-align:left;margin-top:-2px; left:40px; padding:3px;}
+.flyout2 {color:#000000;	text-align:left;margin-top:-2px; left:40px; padding:3px; background: #fff; 	border: 1px solid #ccc;}
+.flyout2 a:hover{ color:#2f416f; text-decoration:underline !important;}
 html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .flyout2 a:hover{color:#2f416f; text-decoration:underline;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
