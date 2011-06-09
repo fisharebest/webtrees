@@ -125,7 +125,13 @@ html[dir='rtl'] #topMenu ul ul li a { text-align: right; float: right; padding-r
 	margin-left: 118px;
 	margin-top: -35px;  
 } 
- /* Color Palette Layout */
+
+html[dir='rtl'] #topMenu ul  ul li:hover ul {
+	margin-left: auto;
+	margin-right: 118px;
+} 
+
+/* Color Palette Layout */
 
 .toplinks_right {
 	float: right;
