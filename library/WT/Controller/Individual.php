@@ -102,7 +102,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->pid, WT_GED_ID);
-				$this->show_changes=false;
 				$this->accept_success=true;
 				//-- check if we just deleted the record and redirect to index
 				$gedrec = find_person_record($this->pid, WT_GED_ID);
@@ -117,7 +116,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->pid, WT_GED_ID);
-				$this->show_changes=false;
 				$this->reject_success=true;
 				$gedrec = find_person_record($this->pid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
@@ -132,7 +130,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		}
 
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT) {
+		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 			$newrec = find_updated_record($this->pid, WT_GED_ID);
 			if (!empty($newrec)) {
 				$this->diffindi = new WT_Person($newrec);
@@ -140,9 +138,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			}
 		}
 
-		if ($this->show_changes) {
-			$this->indi->diffMerge($this->diffindi);
-		}
+		$this->indi->diffMerge($this->diffindi);
 
 		// Initialise tabs
 		$this->tabs = WT_Module::getActiveTabs();
@@ -450,7 +446,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
 			$submenu->addIcon('gedcom');
-			if ($this->show_changes && WT_USER_CAN_EDIT) {
+			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
@@ -671,7 +667,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			if ($wife->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 			$wife->setLabel($label);
 		}
-		if ($this->show_changes) {
+		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 			$newfamily = $family->getUpdatedFamily();
 			if (!is_null($newfamily)) {
 				$newhusb = $newfamily->getHusband();

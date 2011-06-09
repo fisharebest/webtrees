@@ -34,7 +34,6 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 class WT_Controller_Media extends WT_Controller_Base {
 	var $mid;
 	var $mediaobject;
-	var $show_changes=true;
 	var $accept_success = false;
 	var $reject_success = false;
 
@@ -120,7 +119,6 @@ class WT_Controller_Media extends WT_Controller_Base {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->pid, WT_GED_ID);
-				$this->show_changes=false;
 				$this->accept_success=true;
 				//-- check if we just deleted the record and redirect to index
 				$mediarec = find_media_record($this->pid, WT_GED_ID);
@@ -135,7 +133,6 @@ class WT_Controller_Media extends WT_Controller_Base {
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->pid, WT_GED_ID);
-				$this->show_changes=false;
 				$this->reject_success=true;
 				$mediarec = find_media_record($this->pid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
@@ -243,7 +240,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
 			$submenu->addIcon('gedcom');
-			if ($this->show_changes && WT_USER_CAN_EDIT) {
+			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
@@ -293,22 +290,15 @@ class WT_Controller_Media extends WT_Controller_Base {
 	* @return array
 	*/
 	function getFacts($includeFileName=true) {
-		$ignore = array("TITL","FILE");
-		if ($this->show_changes) {
-			$ignore = array();
-		} elseif (WT_USER_GEDCOM_ADMIN) {
-			$ignore = array("TITL");
-		}
-
-		$facts = $this->mediaobject->getFacts($ignore);
+		$facts = $this->mediaobject->getFacts(array());
 		sort_facts($facts);
 		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->mediaobject->getFilename());
 		$mediaType = $this->mediaobject->getMediatype();
 		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
 
-		if ($this->show_changes && ($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
+		if (($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
-			$newfacts = $newmedia->getFacts($ignore);
+			$newfacts = $newmedia->getFacts(array());
 			$newimgsize = $newmedia->getImageAttributes();
 			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
 			$newfacts[] = new WT_Event("1 FORM ".$newimgsize['ext']);

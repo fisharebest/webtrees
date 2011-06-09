@@ -172,7 +172,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			$date = $family->getMarriageDate();
 			$place = $family->getMarriagePlace();
 			$famid = $family->getXref();
-			if (!$date && $this->controller->show_changes && ($famrec = find_updated_record($famid))!==null) {
+			if (!$date && ($famrec = find_updated_record($famid))!==null) {
 				$marrrec = get_sub_record(1, "1 MARR", $famrec);
 				if ($marrrec!=$family->getMarriageRecord()) {
 					$date = new WT_Date(get_gedcom_value("MARR:DATE", 1, $marrrec, '', false));

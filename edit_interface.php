@@ -734,7 +734,7 @@ case 'addsourceaction':
 		if (!empty($CALN)) $newgedrec .= "2 CALN $CALN\n";
 	}
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
-	$link = "source.php?sid=$xref&show_changes=yes";
+	$link = "source.php?sid=$xref";
 	if ($xref) {
 		echo '<br /><br />', WT_I18N::translate('New source created successfully.'), '<br /><br />';
 		echo "<a href=\"javascript://SOUR $xref\" onclick=\"openerpasteid('$xref'); return false;\">", WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$xref</b></a>";
@@ -834,10 +834,7 @@ case 'addnoteaction':
 	}
 	// $xref = "Test";
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
-
-	// Not sure if next line is needed ?? BH ?? --------
-	// $link = "note.php?nid=$xref&show_changes=yes";
-	// -------------------------------------------------
+	$link = "note.php?nid=$xref";
 
 	if ($xref != "none") {
 		echo "<br /><br />".WT_I18N::translate('New Shared Note created successfully.')." (".$xref.")<br /><br />";
@@ -1100,7 +1097,7 @@ case 'addrepoaction':
 	if (!empty($WWW)) $newgedrec .= "1 WWW $WWW\n";
 
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
-	$link = "repo.php?rid=$xref&show_changes=yes";
+	$link = "repo.php?rid=$xref";
 	if ($xref) {
 		echo '<br /><br />', WT_I18N::translate('New Repository created'), '<br /><br />';
 		echo "<a href=\"javascript://REPO $xref\" onclick=\"openerpasteid('$xref'); return false;\">", WT_I18N::translate('Paste the following Repository ID into your editing fields to reference this Repository '), " <b>$xref</b></a>";
@@ -1379,7 +1376,7 @@ case 'addchildaction':
 	}
 
 	$xref = append_gedrec($gedrec, WT_GED_ID);
-	$link = "individual.php?pid=$xref&show_changes=yes";
+	$link = "individual.php?pid=$xref";
 	if ($xref) {
 		echo "<br /><br />", WT_I18N::translate('Update successful');
 		$gedrec = "";
@@ -1434,7 +1431,7 @@ case 'addspouseaction':
 	}
 
 	$xref = append_gedrec($gedrec, WT_GED_ID);
-	$link = "individual.php?pid=$xref&show_changes=yes";
+	$link = "individual.php?pid=$xref";
 	if ($xref) {
 		echo "<br /><br />", WT_I18N::translate('Update successful');
 	} else {
@@ -1582,7 +1579,7 @@ case 'addnewparentaction':
 	}
 
 	$xref = append_gedrec($gedrec, WT_GED_ID);
-	$link = "individual.php?pid=$xref&show_changes=yes";
+	$link = "individual.php?pid=$xref";
 	if ($xref) {
 		echo "<br /><br />", WT_I18N::translate('Update successful');
 	} else {
@@ -1849,9 +1846,9 @@ case 'reorder_media_update': // Update sort using popup
 	echo "<br />", WT_I18N::translate('Update successful'), "<br /><br />";
 
 	if ($currtab=="album") {
-		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
+		$link = "individual.php?pid=$pid#lightbox";
 	} else {
-		$link = "individual.php?pid=$pid&show_changes=yes#media";
+		$link = "individual.php?pid=$pid#media";
 	}
 	echo WT_JS_START;
 	echo "edit_close('{$link}')";
@@ -1873,9 +1870,9 @@ case 'al_reset_media_update': // Reset sort using Album Page
 	}
 	echo "<br />", WT_I18N::translate('Update successful'), "<br /><br />";
 	if ($currtab=="album") {
-		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
+		$link = "individual.php?pid=$pid#lightbox";
 	} else {
-		$link = "individual.php?pid=$pid&show_changes=yes#media";
+		$link = "individual.php?pid=$pid#media";
 	}
 	echo WT_JS_START;
 	echo "edit_close('{$link}')";
@@ -1909,9 +1906,9 @@ case 'al_reorder_media_update': // Update sort using Album Page
 		$success=true;
 	}
 	if ($currtab=="album") {
-		$link = "individual.php?pid=$pid&show_changes=yes#lightbox";
+		$link = "individual.php?pid=$pid#lightbox";
 	} else {
-		$link = "individual.php?pid=$pid&show_changes=yes#media";
+		$link = "individual.php?pid=$pid#media";
 	}
 	echo WT_JS_START;
 	echo "edit_close('{$link}')";

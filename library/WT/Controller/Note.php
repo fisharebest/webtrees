@@ -72,7 +72,6 @@ class WT_Controller_Note extends WT_Controller_Base {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->nid, WT_GED_ID);
-				$this->show_changes=false;
 				$this->accept_success=true;
 				//-- check if we just deleted the record and redirect to index
 				$gedrec = find_other_record($this->nid, WT_GED_ID);
@@ -87,7 +86,6 @@ class WT_Controller_Note extends WT_Controller_Base {
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->nid, WT_GED_ID);
-				$this->show_changes=false;
 				$this->reject_success=true;
 				$gedrec = find_other_record($this->nid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
@@ -102,7 +100,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 		}
 
 		//-- if the user can edit and there are changes then get the new changes
-		if ($this->show_changes && WT_USER_CAN_EDIT) {
+		if (WT_USER_CAN_EDIT) {
 			$newrec = find_updated_record($this->nid, WT_GED_ID);
 			if (!empty($newrec)) {
 				$this->diffnote = new WT_Note($newrec);
@@ -110,9 +108,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 			}
 		}
 
-		if ($this->show_changes) {
-			$this->note->diffMerge($this->diffnote);
-		}
+		$this->note->diffMerge($this->diffnote);
 	}
 
 	/**
@@ -161,7 +157,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
 			$submenu->addIcon('gedcom');
-			if ($this->show_changes && WT_USER_CAN_EDIT) {
+			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");

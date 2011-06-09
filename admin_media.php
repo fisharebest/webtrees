@@ -307,7 +307,7 @@ function checkpath(folder) {
 }
 
 function showchanges() {
-	window.location = '<?php echo WT_SCRIPT_NAME."?show_changes=yes&directory=".$directory."&level=".$level."&filter=".$filter."&subclick=".$subclick; ?>';
+	window.location = '<?php echo WT_SCRIPT_NAME."?directory=".$directory."&level=".$level."&filter=".$filter."&subclick=".$subclick; ?>';
 }
 
 //-->

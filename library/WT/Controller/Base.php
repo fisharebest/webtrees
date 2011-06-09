@@ -30,10 +30,8 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Controller_Base {
 	var $action      =null;
-	var $show_changes=null;
 
 	function __construct() {
 		$this->action      =safe_GET('action');
-		$this->show_changes=safe_GET('show_changes', 'no', 'yes')=='yes'; // if not specified, then default to "yes"
 	}
 }

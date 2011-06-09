@@ -130,7 +130,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						case 'SOUR':
 						case 'OBJE':
 							$content.=$block ? '<br />' : ' ';
-							$content.='<a href="'.$record->getHtmlUrl().'&amp;show_changes=yes'.'">'.WT_I18N::translate('View Change Diff').'</a>';
+							$content.='<a href="'.$record->getHtmlUrl().'">'.WT_I18N::translate('View the changes.').'</a>';
 							break;
 						}
 						$content.='<br />';

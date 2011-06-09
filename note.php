@@ -33,31 +33,22 @@ $controller->init();
 
 if ($controller->note && $controller->note->canDisplayName()) {
 	print_header($controller->getPageTitle());
-	if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-		if ($controller->note->isMarkedDeleted()) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been deleted, but the deletion needs to be reviewed by a moderator.');
-			if (WT_USER_CAN_ACCEPT) {
-				echo ' <a href="', $controller->note->getHtmlUrl(), '&amp;action=accept">', WT_I18N::translate('Accept the changes.'), '</a>';
-				echo ' <a href="', $controller->note->getHtmlUrl(), '&amp;action=undo">', WT_I18N::translate('Reject the changes.'), '</a>';
-			}
-			echo '</p>';
-		} elseif (find_updated_record($controller->note->getXref(), WT_GED_ID)!==null) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been changed, but the changes need to be reviewed by a moderator.');
-			if ($controller->show_changes) {
-				echo ' <a href="', $controller->note->getHtmlUrl(), '&amp;show_changes=no">', WT_I18N::translate('Hide the changes.'), '</a>';
-				if (WT_USER_CAN_ACCEPT) {
-					echo ' <a href="', $controller->note->getHtmlUrl(), '&amp;action=accept">', WT_I18N::translate('Accept the changes.'), '</a>';
-					echo ' <a href="', $controller->note->getHtmlUrl(), '&amp;action=undo">', WT_I18N::translate('Reject the changes.'), '</a>';
-				}
-			} else {
-				echo ' <a href="', $controller->note->getHtmlUrl(), '&amp;show_changes=yes">', WT_I18N::translate('Show the changes.'), '</a>';
-			}
-			echo '</p>';
-		} elseif ($controller->accept_success) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
-		} elseif ($controller->reject_success) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
+	if ($controller->note->isMarkedDeleted()) {
+		if (WT_USER_CAN_ACCEPT) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been deleted.  You can <a href="%1$s">accept</a> or <a href="%2$s">reject</a> this deletion.', $controller->note->getHtmlUrl().'&amp;action=accept', $controller->note->getHtmlUrl().'&amp;action=undo'), '</p>';
+		} elseif (WT_USER_CAN_EDIT) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been deleted, but the deletion needs to be reviewed by a moderator.'), '</p>';
 		}
+	} elseif (find_updated_record($controller->note->getXref(), WT_GED_ID)!==null) {
+		if (WT_USER_CAN_ACCEPT) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been changed.  You can <a href="%1$s">accept</a> or <a href="%2$s">reject</a> the changes.', $controller->note->getHtmlUrl().'&amp;action=accept', $controller->note->getHtmlUrl().'&amp;action=undo'), '</p>';
+		} elseif (WT_USER_CAN_EDIT) {
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been changed, but the changes need to be reviewed by a moderator.'), '</p>';
+		}
+	} elseif ($controller->accept_success) {
+		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
+	} elseif ($controller->reject_success) {
+		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
 	}
 } else {
 	print_header(WT_I18N::translate('Note'));
@@ -81,7 +72,7 @@ echo 'function show_gedcom_record() {';
 echo ' var recwin=window.open("gedrecord.php?pid=', $controller->nid, '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
 echo '}';
 echo 'function showchanges() {';
-echo ' window.location="note.php?nid=', $controller->nid, '&show_changes=yes"';
+echo ' window.location="note.php?nid=', $controller->nid, '"';
 echo '}';
 echo 'function edit_note() {';
 echo ' var win04 = window.open("edit_interface.php?action=editnote&pid=', $linkToID, '", "win04", "top=70, left=70, width=620, height=500, resizable=1, scrollbars=1");';

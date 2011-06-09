@@ -40,7 +40,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 	var $reject_success = false;
 	var $user = null;
 	var $display = false;
-	var $show_changes = true;
 	var $famrec = '';
 	var $title = '';
 
@@ -87,7 +86,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->famid, WT_GED_ID);
-				$this->show_changes=false;
 				$this->accept_success=true;
 				//-- check if we just deleted the record and redirect to index
 				$gedrec = find_family_record($this->famid, WT_GED_ID);
@@ -102,7 +100,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->famid, WT_GED_ID);
-				$this->show_changes=false;
 				$this->reject_success=true;
 				$gedrec = find_family_record($this->famid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
@@ -125,9 +122,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 			}
 		}
 
-		if ($this->show_changes) {
-			$this->family->diffMerge($this->difffam);
-		}
+		$this->family->diffMerge($this->difffam);
 	}
 
 	function getFamilyID() {
@@ -208,7 +203,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'));
 			$submenu->addIcon('gedcom');
-			if ($this->show_changes && WT_USER_CAN_EDIT) {
+			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");

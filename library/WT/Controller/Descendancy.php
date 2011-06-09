@@ -89,7 +89,6 @@ class WT_Controller_Descendancy extends WT_Controller_Base {
 	$pbwidth = $bwidth+12;
 	$pbheight = $bheight+14;
 
-	$this->show_changes=safe_GET('show_changes');
 	$this->action      =safe_GET('action');
 
 	// Validate form variables

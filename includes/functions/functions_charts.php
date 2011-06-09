@@ -82,7 +82,7 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
 function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="", $personcount="1") {
-	global $show_full, $TEXT_DIRECTION, $SHOW_EMPTY_BOXES, $pbwidth, $pbheight, $WT_IMAGES, $show_changes, $GEDCOM;
+	global $show_full, $TEXT_DIRECTION, $SHOW_EMPTY_BOXES, $pbwidth, $pbheight, $WT_IMAGES, $GEDCOM;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
@@ -253,7 +253,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
  * @param string $label optional indi label (descendancy booklet)
  */
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
-	global $pbwidth, $pbheight, $show_cousins, $WT_IMAGES, $show_changes, $GEDCOM, $TEXT_DIRECTION;
+	global $pbwidth, $pbheight, $show_cousins, $WT_IMAGES, $GEDCOM, $TEXT_DIRECTION;
 
 	$family=WT_Family::getInstance($famid);
 	$children=array();
@@ -287,25 +287,23 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 
 	$newchildren = array();
 	$oldchildren = array();
-	if (WT_USER_CAN_EDIT) {
-		if (!isset($_REQUEST['show_changes']) || $_REQUEST['show_changes']=='yes') {
-			$newrec = find_gedcom_record($famid, WT_GED_ID, true);
-			$ct = preg_match_all("/1 CHIL @(.*)@/", $newrec, $match, PREG_SET_ORDER);
-			if ($ct > 0) {
-				$oldchil = array();
+	if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+		$newrec = find_gedcom_record($famid, WT_GED_ID, true);
+		$ct = preg_match_all("/1 CHIL @(.*)@/", $newrec, $match, PREG_SET_ORDER);
+		if ($ct > 0) {
+			$oldchil = array();
+			for ($i = 0; $i < $ct; $i++) {
+				if (!in_array($match[$i][1], $children)) $newchildren[] = $match[$i][1];
+				else $oldchil[] = $match[$i][1];
+			}
+			foreach ($children as $indexval => $chil) {
+				if (!in_array($chil, $oldchil)) $oldchildren[] = $chil;
+			}
+			//-- if there are no old or new children then the children were reordered
+			if ((count($newchildren)==0)&&(count($oldchildren)==0)) {
+				$children = array();
 				for ($i = 0; $i < $ct; $i++) {
-					if (!in_array($match[$i][1], $children)) $newchildren[] = $match[$i][1];
-					else $oldchil[] = $match[$i][1];
-				}
-				foreach ($children as $indexval => $chil) {
-					if (!in_array($chil, $oldchil)) $oldchildren[] = $chil;
-				}
-				//-- if there are no old or new children then the children were reordered
-				if ((count($newchildren)==0)&&(count($oldchildren)==0)) {
-					$children = array();
-					for ($i = 0; $i < $ct; $i++) {
-						$children[] = $match[$i][1];
-					}
+					$children[] = $match[$i][1];
 				}
 			}
 		}
@@ -441,7 +439,6 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 function print_family_facts(&$family) {
 	global $pbwidth, $pbheight;
 	global $TEXT_DIRECTION, $GEDCOM;
-	global $show_changes;
 	global $linkToID;
 
 	$famid=$family->getXref();
