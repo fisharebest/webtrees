@@ -2689,7 +2689,7 @@ case 'next_path':
 	break;
 
 case 'no_update_CHAN':
-	$title=WT_I18N::translate('Do not update the “Last change” record');
+	$title=WT_I18N::translate('Do not update the “last change” record');
 	$text=WT_I18N::translate('Administrators sometimes need to clean up and correct the data submitted by users.  For example, they might need to correct the PLAC location to include the country.  When Administrators make such corrections, information about the original change is normally replaced.  This may not be desirable.<br /><br />When this option is selected, <b>webtrees</b> will retain the original Change information instead of replacing it with that of the current session.  With this option selected, Administrators also have the ability to modify or delete the information associated with the original CHAN tag.');
 	break;
 

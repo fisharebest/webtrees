@@ -1630,7 +1630,7 @@ echo WT_JS_START;?>
 				</tr>
 				<tr>
 					<td>
-						<?php echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN'); ?>
+						<?php echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'); ?>
 					</td>
 					<td>
 						<?php echo edit_field_yes_no('NEW_NO_UPDATE_CHAN', get_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN')); ?>

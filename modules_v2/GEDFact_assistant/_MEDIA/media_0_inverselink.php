@@ -198,7 +198,7 @@ if ($action == "choose" && $paramok) {
 		} else {
 			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
-		echo WT_I18N::translate('Do not update the “Last change” record'), help_link('no_update_CHAN'), '<br /><br />';
+		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br /><br />';
 		echo "</td></tr>";
 	}
 	echo '</tr>';

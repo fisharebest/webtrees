@@ -88,7 +88,6 @@
 
 /* Edit Icons */
 #menu-indi-editraw          { background-position:left -667px; } html[dir=rtl] #menu-indi-editraw           { background-position:right -667px; }
-#menu-indi-editname         { background-position:left -690px; } html[dir=rtl] #menu-indi-editname          { background-position:right -690px; }
 #menu-indi-addname          { background-position:left -690px; } html[dir=rtl] #menu-indi-addname           { background-position:right -690px; }
 #menu-indi-editsex          { background-position:left -690px; } html[dir=rtl] #menu-indi-editsex           { background-position:right -690px; }
 #menu-indi-del              { background-position:left -713px; } html[dir=rtl] #menu-indi-del               { background-position:right -713px; }

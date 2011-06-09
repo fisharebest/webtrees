@@ -396,15 +396,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		if (WT_USER_CAN_EDIT) {
 			//--make sure the totals are correct
 			$this->getGlobalFacts();
-			if ($this->NAME_LINENUM) {
-				$submenu = new WT_Menu(WT_I18N::translate('Edit name'));
-				$submenu->addOnclick("return edit_name('".$this->pid."', ".$this->NAME_LINENUM.");");
-				$submenu->addIcon('edit_indi');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_indi');
-				$submenu->addId('menu-indi-editname');
-				$menu->addSubmenu($submenu);
-			}
-
 			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'));
 			$submenu->addOnclick("return add_name('".$this->pid."');");
 			$submenu->addIcon('edit_indi');
