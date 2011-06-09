@@ -120,3 +120,6 @@
 #menu-sour-del              { background-position:left -713px; } html[dir=rtl] #menu-sour-del               { background-position:right -713px; }
 #menu-sour-edit             { background-position:left -782px; } html[dir=rtl] #menu-sour-edit              { background-position:right -782px; }
 #menu-sour-editraw          { background-position:left -667px; } html[dir=rtl] #menu-sour-editraw           { background-position:right -667px; }
+
+#menu-language li {text-align:left;} /* The language menu is always LTR, even on RTL pages */
+#menu-theme    li {text-align:left;} /* The theme menu is always LTR, even on RTL pages */

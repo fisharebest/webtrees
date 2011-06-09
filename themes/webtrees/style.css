@@ -1590,6 +1590,9 @@ html[dir='rtl'] #main-menu  li li a {float:right;padding:1px 5px 1px 10px;}
 #menu-sour-editraw          {background-position:left  -240px;} html[dir=rtl] #menu-sour-editraw          {background-position:right  -240px;}
 #menu-tree li               {background-position:left  -240px;} html[dir=rtl] #menu-tree li               {background-position:right  -240px;}
 
+#menu-language li {text-align:left;} /* The language menu is always LTR, even on RTL pages */
+#menu-theme    li {text-align:left;} /* The theme menu is always LTR, even on RTL pages */
+
 /* ========= Login|Favorites|Theme|Language menu items ========== */
 #extra-menu {float:right;white-space:nowrap;	margin:20px 10px 0 0;}
 html[dir='rtl'] #extra-menu {	float:left;	margin:20px 0 0 10px ;}
