@@ -443,6 +443,8 @@ if (!$excludeLinks) {
 * The medialist that is returned contains the following elements:
 * - REMOVED $media["ID"]          the unique id of this media item in the table (Mxxxx)
 * - $media["XREF"]        Another copy of the Media ID (not sure why there are two)
+* -	$media["FILESORT"]            key to sort by filename
+* -	$media["MEDIASORT"]           key to sort by media name
 * - REMOVED $media["GEDFILE"]     the gedcom file the media item should be added to
 * - REMOVED $media["FILE"]        the filename of the media item
 * - REMOVED $media["EXISTS"]      whether the file exists.  0=no, 1=external, 2=std dir, 3=protected dir
@@ -453,15 +455,15 @@ if (!$excludeLinks) {
 * - REMOVED $media["TITL"]        a title for the item, used for list display
 * - REMOVED $media["GEDCOM"]      gedcom record snippet
 * - REMOVED $media["LEVEL"]       level number (normally zero)
-* - $media["LINKED"]      Flag for front end to indicate this is linked
-* - $media["LINKS"]       Array of gedcom ids that this is linked to
-* - $media["CHANGE"]      Indicates the type of change waiting admin approval
+* - REMOVED $media["LINKED"]      Flag for front end to indicate this is linked
+* - REMOVED $media["LINKS"]       Array of gedcom ids that this is linked to
+* - REMOVED $media["CHANGE"]      Indicates the type of change waiting admin approval
 *
 * @param boolean $random If $random is true then the function will return 5 random pictures.
 * @return mixed A media list array.
 */
 
-function get_medialist2($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $excludeLinks = false) {
+function get_medialist2($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true) {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
 	global $level, $dirs, $MEDIA_DIRECTORY;
 	global $MEDIA_EXTERNAL;
@@ -493,7 +495,6 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 			->execute(array(WT_GED_ID, "%{$myDir}%"))
 			->fetchAll();
 	}
-	$mediaObjects = array ();
 
 	// Build the raw medialist array,
 	// but weed out any folders we're not interested in
@@ -503,9 +504,6 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 		if ($isExternal || !$currentdir || $directory == dirname($fileName) . "/") {
 			$media = array ();
 			$media["XREF"] = $row->m_media;
-			$media["LINKED"] = false;
-			$media["LINKS"] = array ();
-			$media["CHANGE"] = "";
 			// Build sort paramters to be used by filesort and mediasort
 			$media["FILESORT"] = basename($fileName);
 			$media["MEDIASORT"] = (!empty($row->m_titl)) ? $row->m_titl : $media["FILESORT"];
@@ -518,52 +516,8 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 			}
 			$keyMediaList = $firstChar . substr("000000" . $restChar, -6) . "_" . $row->m_gedfile;
 			$medialist[$keyMediaList] = $media;
-			$mediaObjects[] = $media["XREF"];
 		}
 	}
-
-	// Look for new Media objects in the list of changes pending approval
-	// At the same time, accumulate a list of GEDCOM IDs that have changes pending approval
-
-	$changedRecords = array ();
-
-	// Search the list of GEDCOM changes pending approval.  There may be some new
-	// links to new or old media items that haven't been approved yet.
-	// Logic:
-	//   Make sure the array $changedRecords contains unique entries.  Ditto for array
-	//   $mediaObjects.
-	//   Read each of the entries in array $changedRecords.  Get the matching record from
-	//   the GEDCOM file.  Search the GEDCOM record for each of the entries in array
-	//   $mediaObjects.  A hit means that the GEDCOM record contains a link to the
-	//   media object.  If we don't already know about the link, add it to that media
-	//   object's link table.
-	$mediaObjects = array_unique($mediaObjects);
-	$changedRecords = array_unique($changedRecords);
-	foreach ($changedRecords as $pid) {
-		$gedrec = find_updated_record($pid, WT_GED_ID);
-		if ($gedrec) {
-			foreach ($mediaObjects as $mediaId) {
-				if (strpos($gedrec, "@" . $mediaId . "@")) {
-					// Build the key for the medialist
-					$firstChar = substr($mediaId, 0, 1);
-					$restChar = substr($mediaId, 1);
-					if (is_numeric($firstChar)) {
-						$firstChar = "";
-						$restChar = $mediaId;
-					}
-					$keyMediaList = $firstChar . substr("000000" . $restChar, -6) . "_" . WT_GED_ID;
-
-					// Add this GEDCOM ID to the link list of the media object
-					if (isset ($medialist[$keyMediaList])) {
-						$medialist[$keyMediaList]["LINKS"][$pid] = gedcom_record_type($pid, WT_GED_ID);
-						$medialist[$keyMediaList]["LINKED"] = true;
-					}
-				}
-			}
-		}
-	}
-
-	uasort($medialist, "mediasort");
 
 	//-- for the media list do not look in the directory
 	if ($linkonly)

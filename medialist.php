@@ -49,7 +49,6 @@ $filter_type = safe_GET('filter_type', array($or, $and), $or);
 $columns = safe_GET('columns', array('1', '2'), '2');
 $currentdironly = (isset($_REQUEST['subdirs']) && $_REQUEST['subdirs']=='on') ? false : true;
 $show_thumbnail = (isset($_REQUEST['thumbnails']) && $_REQUEST['thumbnails']=='on') ? true : false;
-$exclude_links = (isset($_REQUEST['exclude_links']) && $_REQUEST['exclude_links']=='on') ? true : false;
 $subdirs = safe_GET('subdirs');
 $thumbnail = safe_GET('thumbnail');
 
@@ -78,7 +77,6 @@ if ($_SESSION['Medialist_ged'] != WT_GEDCOM) {
 if (empty($folder)) {
 	$folder = $MEDIA_DIRECTORY; // default setting
 	$show_thumbnail = true; // default setting
-	$exclude_links = false; // default setting
 }
 
 // If SESSION_medialist then it's a return
@@ -99,7 +97,6 @@ if (isset($_SESSION['Medialist']) && isset($_SESSION['Filtered_medialist']) ) {
 		$columns=($_SESSION['Medialist_columns']);
 		$currentdironly=($_SESSION['Medialist_currentdironly']);
 		$show_thumbnail=($_SESSION['Medialist_thumbnail']);
-		$exclude_links=($_SESSION['Medialist_links']);
 
 	} else {
 		// This is a return visit and the FILTER button was used
@@ -108,8 +105,6 @@ if (isset($_SESSION['Medialist']) && isset($_SESSION['Filtered_medialist']) ) {
 			if ($folder != $_SESSION['Medialist_folder']) $build = 'yes';
 			if ($currentdironly != $_SESSION['Medialist_currentdironly']) $build ='yes';
 		}
-		// Check if the 'Include media links' option has changed
-		if ($exclude_links != $_SESSION['Medialist_links']) $build ='yes';
 		// if same subdirectory and folder then use an existing medialist
 		if ($build != 'yes') {
 			if (($filter1 == $_SESSION['Medialist_filter1']) && ($filter2 == $_SESSION['Medialist_filter2']) && ($filter_type == $_SESSION['Filter_type'])) {
@@ -148,7 +143,7 @@ if ($build == 'yes') {
 	}
 	// show external links only if looking at top level directory
 	$showExternal = ($folder == $MEDIA_DIRECTORY) ? true : false;
-	$medialist=get_medialist2($currentdironly, $folder, true, false, $showExternal, $exclude_links);
+	$medialist=get_medialist2($currentdironly, $folder, true, false, $showExternal);
 
 	//-- remove all private media objects
 	foreach ($medialist as $key => $media) {
@@ -298,16 +293,9 @@ $_SESSION['Medialist'] = $medialist;
 	<!-- // end search buttons  -->
 <!-- // NOTE: Row 4 right:-->
 	<!-- // thumbnail option  -->
-			<td class="descriptionbox wrap width25">
-				<?php if (WT_USER_IS_ADMIN) { ?>
-					<?php echo WT_I18N::translate('Exclude media links'), help_link('media_links'); ?>
-				<?php } ?>
+			<td class="descriptionbox wrap width25">&nbsp;
 			</td>
-			<td class="optionbox wrap width25">
-			<?php if (WT_USER_IS_ADMIN) { ?>
-				<input type="checkbox" id="exclude_links" name="exclude_links"
-				<?php if ($exclude_links) { ?>checked="checked"<?php } ?> />
-			<?php } ?>
+			<td class="optionbox wrap width25">&nbsp;
 			</td>
 	<!-- // end thumbnail option -->
 	</tr></table>
@@ -355,7 +343,6 @@ if ($search=='yes') {
 	$_SESSION['Medialist_columns']=$columns;
 	$_SESSION['Medialist_currentdironly']=$currentdironly;
 	$_SESSION['Medialist_thumbnail']=$show_thumbnail;
-	$_SESSION['Medialist_links']=$exclude_links;
 }
 // *****************************  End Set SESSION variables ********************************************
 // ************************  BEGIN = 'Print the medialist array' ************************
