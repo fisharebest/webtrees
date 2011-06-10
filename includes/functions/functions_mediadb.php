@@ -2150,7 +2150,7 @@ function getImageInfoForLog($filename) {
 	$filesize = sprintf("%.2f", filesize($filename)/1024);
 	$imgsize = @getimagesize($filename);
 	$strinfo = $filesize."kb ";
-	if (is_array($imgsize)) { $strinfo .= @$imgsize[0]."x".@$imgsize[1]." ".@$imgsize['bits']." bits ".@$imgsize['channels']. " channels"; }
+	if (is_array($imgsize)) { $strinfo .= @$imgsize[0].' × '.@$imgsize[1]." ".@$imgsize['bits']." bits ".@$imgsize['channels']. " channels"; }
 	return ($strinfo);
 }
 

@@ -609,13 +609,6 @@ function print_media_links($factrec, $level, $pid='') {
 			}
 			// NOTE: echo the notes of the media
 			echo print_fact_notes($row["m_gedrec"], 1);
-			// NOTE: echo the format of the media
-			if (!empty($row["m_ext"])) {
-				echo "<br /><span class=\"label\">", WT_Gedcom_Tag::getLabel('FORM'), ": </span> <span class=\"field\">", $row["m_ext"], "</span>";
-				if ($imgsize[2]!==false) {
-					echo "<span class=\"label\"><br />", WT_I18N::translate('Image Dimensions'), ": </span> <span class=\"field\" style=\"direction: ltr;\">" , $imgsize[0] , ($TEXT_DIRECTION =="rtl"?(" " . getRLM() . "x" . getRLM() . " ") : " x ") , $imgsize[1] , "</span>";
-				}
-			}
 			if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $row["m_gedrec"]), $match)) {
 				$media_date=new WT_Date($match[1]);
 				$md = $media_date->Display(true);

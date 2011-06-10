@@ -1244,7 +1244,7 @@ echo WT_JS_START; ?>
 							}
 						}
 						if (substr($mediaInfo['type'], 0, 4) != 'url_' && !empty($imgsize[0])) {
-							echo "<sub>&nbsp;&nbsp;".WT_I18N::translate('Image Dimensions')." -- ".$imgsize[0]."x".$imgsize[1]."</sub><br />";
+							echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize[0].' × '.$imgsize[1]);
 						}
 						print_fact_notes($media["GEDCOM"], 1);
 						print_fact_sources($media["GEDCOM"], 1);
