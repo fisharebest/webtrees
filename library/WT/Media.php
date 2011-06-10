@@ -695,7 +695,8 @@ class WT_Media extends WT_GedcomRecord {
 					$output .= '<div><a href="'.$this->getHtmlUrlDirect('main', true).'">'.WT_I18N::translate('Download File').'</a></div>';
 				}
 			} else if ($config['alertnotfound'] && !$mainexists) {
-				$output .= '<div class="error">'.WT_I18N::translate('File not found.').'</div>';
+				$output .= '<p class="ui-state-error">' . WT_I18N::translate('The file “%s” does not exist.', $this->getLocalFilename()) . '</p>';
+				
 			}
 		}
 		if ($config['addslashes']) {

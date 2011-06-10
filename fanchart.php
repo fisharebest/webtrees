@@ -110,7 +110,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 
 	// Validate
 	if (!file_exists($fanChart['font'])) {
-		echo '<span class="error">', WT_I18N::translate('Font file not found on PHP server'), ' : ', $fanChart['font']. '</span>';
+		echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $fanChart['font']), '</p>';
 		return false;
 	}
 

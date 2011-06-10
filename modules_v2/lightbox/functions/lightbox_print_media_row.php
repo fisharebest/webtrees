@@ -56,7 +56,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo '</td>';
 			echo '<td class="description_box" valign="top" colspan="3" nowrap="nowrap">';
 			echo '<center><br /><img src="', WT_THEME_DIR, 'images/media.gif" height="30" border="0" />';
-			echo '<font size="1"><br />', WT_I18N::translate('File not found.'), '</font></center>';
+			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_file']), '</p>';
 			echo '</td>';
 			echo '</tr>';
 		} else if (!file_exists($rowm['m_file'])) {
@@ -68,7 +68,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo '</td>';
 			echo '<td class="description_box" valign="top" colspan="3" nowrap="nowrap" >';
 			echo '<center><br /><img src="', WT_THEME_DIR, 'images/media.gif" height="30" border="0" />';
-			echo '<font size="1"><br />', WT_I18N::translate('File not found.'), '</font></center>';
+			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_file']), '</p>';
 			echo '</td>';
 			echo '</tr>';
 		} else {

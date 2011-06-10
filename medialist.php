@@ -492,50 +492,51 @@ Plus other Media Options - MediaViewer page'), '" />';
 				}
 			}
 		}
-		// -- new naming structure ---------
-		if ($sortby == 'title') {
-			$name_disp1 = $mediaobject->getFullName();
-			$name_disp2 = basename($mediaobject->getFilename());
-			if ($isExternal) $name_disp2 = 'URL';
-			$name_disp3 = $mediaobject->getLocalFilename();
-			$name_disp4 = WT_I18N::translate('Filename');
-		} else {
-			$name_disp1 = basename($mediaobject->getFilename());
-			if ($isExternal) $name_disp1 = 'URL';
-			$name_disp2 = $mediaobject->getFullName();
-			$name_disp3 = $mediaobject->getLocalFilename();
-			$name_disp4 = WT_I18N::translate('Title');
-		}
-		echo '<a href="'.$mediaobject->getHtmlUrl().'">';
-		echo '<b>', PrintReady($name_disp1), '</b>';
-		echo '</a>';
-		if (WT_USER_CAN_EDIT) {
-				echo '<br /><br /><sub><span dir="ltr"><b>', PrintReady($name_disp4), ': </b>', PrintReady($name_disp2), '</span></sub>';
-				echo '<br /><sub><span dir="ltr"><b>', WT_I18N::translate('Location'), ': </b>', PrintReady($name_disp3), '</span></sub>';
-		}
-		echo '<br />';
-		if (!$isExternal) {
-			if (!$mediaobject->fileExists()) {
-				echo '<br /><span class="error">', WT_I18N::translate('File not found.'), ' <span dir="ltr">', PrintReady(basename($mediaobject->getFilename())), '</span></span>';
+		// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
+		if ($sortby=='title') {
+			echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
+			echo $mediaobject->getFullName();
+			echo '</a></b></p>';
+			if ($isExternal) {
+				echo WT_Gedcom_Tag::getLabelValue('URL', $mediaobject->getLocalFilename());
 			} else {
+				if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+					echo WT_Gedcom_Tag::getLabelValue('FILE', $mediaobject->getLocalFilename());
+				}
+			}
+		} else {
+			echo '<p><b><a href="', $mediaobject->getHtmlUrl(), '">';
+			echo basename($mediaobject->getFilename());
+			echo '</a></b></p>';
+			echo WT_Gedcom_Tag::getLabelValue('TITL', $mediaobject->getFullName());
+		}
+		// Show file details
+		if (!$isExternal) {
+			if ($mediaobject->fileExists()) {
+				if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+					echo WT_Gedcom_Tag::getLabelValue('FILE', $mediaobject->getLocalFilename());
+				}
 				echo WT_Gedcom_Tag::getLabelValue('FORM', $mediaobject->getMediaFormat());
 				echo WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__', $mediaobject->getFilesize());
 				$imgsize = $mediaobject->getImageAttributes();
 				if ($imgsize['WxH']) {
 					echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 				}
+			} else {
+				echo '<p class="ui-state-error">', /* I18N: %s is a filename */ WT_I18N::translate('The file “%s” does not exist.', $mediaobject->getLocalFilename()), '</p>';
 			}
 		}
-			echo '<div style="white-space: normal; width: 95%;">';
-			print_fact_sources($mediaobject->getGedcomRecord(), 1);
-			print_fact_notes($mediaobject->getGedcomRecord(), 1);
-			echo '</div>';
-			echo $mediaobject->printLinkedRecords('small');
-			echo '</td></tr></table>';
-			echo '</td>';
-			if ($columns == '1') echo '</tr><tr>';
-			if (($columns == '2') && ($i%2 == 1 && $i < ($count-1)))
-			echo '</tr><tr>';
+		echo '<br />';
+		echo '<div style="white-space: normal; width: 95%;">';
+		print_fact_sources($mediaobject->getGedcomRecord(), 1);
+		print_fact_notes($mediaobject->getGedcomRecord(), 1);
+		echo '</div>';
+		echo $mediaobject->printLinkedRecords('small');
+		echo '</td></tr></table>';
+		echo '</td>';
+		if ($columns == '1') echo '</tr><tr>';
+		if (($columns == '2') && ($i%2 == 1 && $i < ($count-1)))
+		echo '</tr><tr>';
 	} // end media loop
 	echo '</tr>';
 	// echo page back, page number, page forward controls
