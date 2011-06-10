@@ -570,3 +570,12 @@ elseif ($action=='run') {
 	}
 	xml_parser_free($xml_parser);
 }
+
+exit;
+
+// We cannot add translation comments inside the XML files.
+// These messages are all used in the reports.  We repeat them
+// here, so we can add comments
+$x=/* I18N: An option in a list-box */ WT_I18N::translate('sort by date of birth');
+$x=/* I18N: An option in a list-box */ WT_I18N::translate('sort by date of marriage');
+$x=/* I18N: An option in a list-box */ WT_I18N::translate('sort by date of death');
