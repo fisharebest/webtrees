@@ -223,7 +223,7 @@ function print_fact(WT_Event $eventObj) {
 		echo '<div class="field"><a href="mailto:', htmlspecialchars($eventObj->getDetail()), '">', htmlspecialchars($eventObj->getDetail()), '</a></div>';
 		break;
 	case 'FILE':
-		if (WT_USER_CAN_EDIT || WT_USER_IS_ADMIN) {
+		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 			echo '<div class="field">', htmlspecialchars($eventObj->getDetail()), '</div>';
 		}
 		break;

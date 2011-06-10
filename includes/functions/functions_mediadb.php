@@ -481,17 +481,17 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 	$myDir = str_replace($MEDIA_DIRECTORY, "", $directory);
 	if ($random) {
 		$rows=
-			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? ORDER BY RAND() LIMIT 5")
+			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? ORDER BY RAND() LIMIT 5")
 			->execute(array(WT_GED_ID))
 			->fetchAll();
 	} else if ($MEDIA_EXTERNAL && $includeExternal) {
 		$rows=
-			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ORDER BY m_id desc")
+			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ORDER BY m_titl desc")
 			->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))
 			->fetchAll();
 	} else {
 		$rows=
-			WT_DB::prepare("SELECT m_id, m_file, m_media, m_gedrec, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND m_file LIKE ? ORDER BY m_id desc")
+			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND m_file LIKE ? ORDER BY m_titl desc")
 			->execute(array(WT_GED_ID, "%{$myDir}%"))
 			->fetchAll();
 	}
@@ -518,6 +518,8 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 			$medialist[$keyMediaList] = $media;
 		}
 	}
+
+	// uasort($medialist, "mediasort");
 
 	//-- for the media list do not look in the directory
 	if ($linkonly)

@@ -32,6 +32,9 @@ $level = safe_GET('level', '', '0');
 $action = safe_GET('action');
 $search = safe_GET('search');
 $sortby = safe_GET('sortby', 'file', 'title');
+if (!WT_USER_CAN_EDIT && !WT_USER_CAN_ACCEPT) {
+	$sortby='title';
+}
 $max = safe_GET('max', array('10', '20', '30', '40', '50', '75', '100', '125', '150', '200'), '20');
 $folder = safe_GET('folder');
 $show = safe_GET('show');
@@ -199,16 +202,25 @@ $_SESSION['Medialist'] = $medialist;
 	<!-- // end select media folders -->
 <!-- // NOTE: Row 1 right: -->
 	<!-- begin sort files -->
-			<td class="descriptionbox wrap width25">
-					<?php echo WT_I18N::translate('Sort order'); ?>
-			</td>
-			<td class="optionbox wrap width25"><select name="sortby">
-				<option value="title" <?php if ($sortby=='title') echo 'selected="selected"'; ?>>
-					<?php echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by title'); ?></option>
-				<option value="file" <?php if ($sortby=='file') echo 'selected="selected"'; ?>>
-					<?php echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by filename'); ?></option>
-				</select>
-			</td>
+			<?php	
+			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
+				echo '<td class="descriptionbox wrap width25">';
+				echo WT_I18N::translate('Sort order');
+				echo '</td><td class="optionbox wrap width25">';
+				echo '<select name="sortby">';
+				echo '<option value="title" ', ($sortby=='title') ? 'selected="selected"' : '', '>';
+				echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by title');
+				echo '</option>';
+				echo '<option value="file" ', ($sortby=='file') ? 'selected="selected"' : '' , '>';
+				echo /* I18N: An option in a list-box */ WT_I18N::translate('sort by filename');
+				echo '</option>';
+				echo '</select>';
+				echo '</td>';
+			} else {
+				echo '<td class="descriptionbox wrap width25">&nbsp;</td>';
+				echo '<td class="optionbox wrap width25">&nbsp;</td>';
+			}
+			?>
 	<!-- //end sort files -->
 	</tr><tr>
 <!-- // NOTE: Row 2 left:-->
