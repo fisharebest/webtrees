@@ -35,15 +35,15 @@ if ($controller->source && $controller->source->canDisplayName()) {
 	print_header($controller->getPageTitle());
 	if ($controller->source->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been deleted.  You should review the deletion and then <a href="%1$s">accept</a> or <a href="%2$s">reject</a> it.', $controller->source->getHtmlUrl().'&amp;action=accept', $controller->source->getHtmlUrl().'&amp;action=undo'), '</p>';
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This source has been deleted.'), WT_I18N::translate('You should review the deletion and then <a href="%1$s">accept</a> or <a href="%2$s">reject</a> it.', $controller->source->getHtmlUrl().'&amp;action=accept', $controller->source->getHtmlUrl().'&amp;action=undo'), '</p>';
 		} elseif (WT_USER_CAN_EDIT) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been deleted.  The deletion will need to be reviewed by a moderator.'), '</p>';
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This source has been deleted.'), WT_I18N::translate('The deletion will need to be reviewed by a moderator.'), '</p>';
 		}
 	} elseif (find_updated_record($controller->source->getXref(), WT_GED_ID)!==null) {
 		if (WT_USER_CAN_ACCEPT) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been edited.  You should review the changes and then <a href="%1$s">accept</a> or <a href="%2$s">reject</a> them.', $controller->source->getHtmlUrl().'&amp;action=accept', $controller->source->getHtmlUrl().'&amp;action=undo'), '</p>';
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This source has been edited.'), WT_I18N::translate('You should review the changes and then <a href="%1$s">accept</a> or <a href="%2$s">reject</a> them.', $controller->source->getHtmlUrl().'&amp;action=accept', $controller->source->getHtmlUrl().'&amp;action=undo'), '</p>';
 		} elseif (WT_USER_CAN_EDIT) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This record has been edited.  The changes need to be reviewed by a moderator.'), '</p>';
+			echo '<p class="ui-state-highlight">', WT_I18N::translate('This source has been edited.'), WT_I18N::translate('The changes need to be reviewed by a moderator.'), '</p>';
 		}
 	} elseif ($controller->accept_success) {
 		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
@@ -52,7 +52,7 @@ if ($controller->source && $controller->source->canDisplayName()) {
 	}
 } else {
 	print_header(WT_I18N::translate('Source'));
-	echo '<p class="ui-state-error">', WT_I18N::translate('This record does not exist or you do not have permission to view it.'), '</p>';
+	echo '<p class="ui-state-error">', WT_I18N::translate('This source does not exist or you do not have permission to view it.'), '</p>';
 	print_footer();
 	exit;
 }
