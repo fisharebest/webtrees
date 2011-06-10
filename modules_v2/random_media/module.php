@@ -82,6 +82,9 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			'tombstone'  =>get_block_setting($block_id, 'filter_tombstone', true),
 			'video'      =>get_block_setting($block_id, 'filter_video', false),
 		);
+		if (WT_DEBUG) {
+			echo "<br />";print_r($filters);echo "<br />\n";
+		}
 		if ($cfg) {
 			foreach (array('filter', 'controls', 'start', 'filter_avi', 'filter_bmp', 'filter_gif', 'filter_jpeg', 'filter_mp3', 'filter_ole', 'filter_pcx', 'filter_pdf', 'filter_png', 'filter_tiff', 'filter_wav', 'filter_audio', 'filter_book', 'filter_card', 'filter_certificate', 'filter_coat', 'filter_document', 'filter_electronic', 'filter_fiche', 'filter_film', 'filter_magazine', 'filter_manuscript', 'filter_map', 'filter_newspaper', 'filter_other', 'filter_painting', 'filter_photo', 'filter_tombstone', 'filter_video', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
@@ -128,19 +131,19 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." thumbnail file could not be found</span><br />";}
 
-				// TODO convert this to the Media API
-				// Filter according to format and type  (Default: unless configured otherwise, don't filter)
-				if ($medialist[$value]['FORM']!='' && !array_key_exists($medialist[$value]['FORM'], $filters)) {
-					$disp=false;
-				} elseif ($medialist[$value]['TYPE']!='' && !array_key_exists($medialist[$value]['TYPE'], $filters)) {
-					$disp=false;
-				} elseif (!empty($medialist[$value]["FORM"]) && !$filters[$medialist[$value]["FORM"]]) {
-					$disp=false;
-				} elseif (!empty($medialist[$value]["TYPE"]) && !$filters[$medialist[$value]["TYPE"]]) {
-					$disp=false;
+				$mediaformat=strtolower($mediaobject->getMediaFormat());
+				if ($mediaformat) {
+					if (!array_key_exists($mediaformat, $filters) || !$filters[$mediaformat]) {
+						$disp=false;
+					}
 				}
-				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed Format or Type filters</span><br />";
+				$mediatype=strtolower($mediaobject->getMediaType());
+				if ($mediatype) {
+					if (!array_key_exists($mediatype, $filters) || !$filters[$mediatype]) {
+						$disp=false;
+					}
 				}
+				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed Format or Type filters</span><br />";}
 
 				if ($disp && count($links) != 0) {
 					if ($disp && $filter!="all") {
@@ -251,7 +254,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<a href="'.$mediaobject->getHtmlUrl().'"><b>'. PrintReady(htmlspecialchars($mediaobject->getFullName())) .'</b></a><br />';
 
 			ob_start();
-			PrintMediaLinks($medialist[$value]["LINKS"], "normal");
+			$content .= $mediaobject->printLinkedRecords('normal');
 			$content .= ob_get_clean();
 			$content .= "<br /><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
 			$content .= print_fact_notes($mediaobject->getGedcomRecord(), "1", false, true);

@@ -34,11 +34,14 @@ class WT_Media extends WT_GedcomRecord {
 	var $title         =null;
 	var $file          =null;
 	var $note          =null;
-	var $serverfilename='';
+	var $localfilename =null;
+	var $serverfilename=null;
 	var $fileexists    =false;
-	var $thumbfilename = null;
-	var $thumbserverfilename = '';
-	var $thumbfileexists = false;
+	var $thumbfilename =null;
+	var $thumbserverfilename=null;
+	var $thumbfileexists=false;
+	var $mainimagesize  =null;
+	var $thumbimagesize =null;
 
 	// Create a Media object from either raw GEDCOM data or a database row
 	public function __construct($data) {
@@ -110,7 +113,8 @@ class WT_Media extends WT_GedcomRecord {
 	 */
 	public function getLocalFilename($which='main') {
 		if ($which=='main') {
-			return check_media_depth($this->file);
+			if (!$this->localfilename) $this->localfilename=check_media_depth($this->file);
+			return $this->localfilename;
 		} else {
 			// this is a convenience method
 			return $this->getThumbnail(false);
@@ -125,7 +129,7 @@ class WT_Media extends WT_GedcomRecord {
 	public function getServerFilename($which='main') {
 		if ($which=='main') {
 			if ($this->serverfilename) return $this->serverfilename;
-			$localfilename = $this->getLocalFilename();
+			$localfilename = $this->getLocalFilename($which);
 			if (!empty($localfilename) && !$this->isExternal()) {
 				if (file_exists($localfilename)) {
 					// found image in unprotected directory
@@ -172,7 +176,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return boolean
 	 */
 	public function isExternal() {
-		return isFileExternal($this->getLocalFilename());
+		return isFileExternal($this->getLocalFilename('main'));
 	}
 
 	/**
@@ -268,12 +272,43 @@ class WT_Media extends WT_GedcomRecord {
 
 
 	/**
+	 * get the media FORM from the gedcom.  if not defined, calculate from file extension 
+	 * @return string
+	 */
+	public function getMediaFormat() {
+		$mediaFormat = get_gedcom_value('FORM', 2, $this->getGedcomRecord());
+		if (!$mediaFormat) {
+			$imgsize=$this->getImageAttributes('main');
+			$mediaFormat=$imgsize['ext'];
+		}
+		return $mediaFormat;
+	}
+
+	/**
 	 * get the media type from the gedcom
 	 * @return string
 	 */
-	public function getMediatype() {
+	public function getMediaType() {
 		$mediaType = strtolower(get_gedcom_value('FORM:TYPE', 2, $this->getGedcomRecord()));
 		return $mediaType;
+	}
+
+	/**
+	 * get the media _PRIM from the gedcom
+	 * @return string
+	 */
+	public function isPrimary() {
+		$prim = get_gedcom_value("_PRIM", 1, $this->getGedcomRecord());
+		return $prim;
+	}
+
+	/**
+	 * get the media _THUM from the gedcom
+	 * @return string
+	 */
+	public function useMainImage() {
+		$thum = get_gedcom_value("_THUM", 1, $this->getGedcomRecord());
+		return $thum;
 	}
 
 	/**
@@ -285,6 +320,8 @@ class WT_Media extends WT_GedcomRecord {
 	 */
 	public function getImageAttributes($which='main',$addWidth=0,$addHeight=0) {
 		global $THUMBNAIL_WIDTH, $TEXT_DIRECTION;
+		$var=$which.'imagesize';
+		if (!empty($this->$var)) return $this->$var;
 		$imgsize = array();
 		if ($this->fileExists($which)) {
 			$imgsize=@getimagesize($this->getServerFilename($which)); // [0]=width [1]=height [2]=filetype ['mime']=mimetype
@@ -346,7 +383,8 @@ class WT_Media extends WT_GedcomRecord {
 				$imgsize['mime']=$mime[$imgsize['ext']];
 			}
 		}
-		return $imgsize;
+		$this->$var=$imgsize;
+		return $this->$var;
 	}
 
 	// Generate a URL to this record, suitable for use in HTML

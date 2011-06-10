@@ -518,10 +518,10 @@ Plus other Media Options - MediaViewer page'), '" />';
 			if (!$mediaobject->fileExists()) {
 				echo '<br /><span class="error">', WT_I18N::translate('File not found.'), ' <span dir="ltr">', PrintReady(basename($mediaobject->getFilename())), '</span></span>';
 			} else {
-				$imgsize = $mediaobject->getImageAttributes();
 				echo '<span class="label"><br />', WT_I18N::translate('Media Format'), ': </span>'; 
-				echo '<span class="field" style="direction: ltr;">', ($imgsize['ext']) ? $imgsize['ext'] : '--', '</span>';
+				echo '<span class="field" style="direction: ltr;">', $mediaobject->getMediaFormat(), '</span>';
 				echo '&nbsp;&nbsp;&nbsp;<span class="field" style="direction: ltr;">', $mediaobject->getFilesize(), '</span>';
+				$imgsize = $mediaobject->getImageAttributes();
 				if ($imgsize['WxH']) {
 					echo '<span class="label"><br />', WT_I18N::translate('Image Dimensions'), ': </span> <span class="field">', $imgsize['WxH'], '</span>';
 				}

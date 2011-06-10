@@ -1269,7 +1269,7 @@ function print_main_media($pid, $level=1, $related=false) {
 			$row['mm_gedrec'] = $rowm["mm_gedrec"];
 			$rows['new'] = $row;
 			$rows['old'] = $rowm;
-			// $current_objes[$rowm['m_media']]--;
+			$current_objes[$rowm['m_media']]--;
 		} else {
 			if (!isset($current_objes[$rowm['m_media']]) && ($rowm['mm_gid']==$pid)) {
 				$rows['old'] = $rowm;
@@ -1337,13 +1337,13 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	$linenum = 0;
 	echo "<tr><td class=\"descriptionbox $styleadd width20\">";
-	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($rowm['m_media'], $rowm['m_gedrec'])) && ($styleadd!="change_old")) {
-		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\">";
+	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!="change_old")) {
+		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\">";
 		echo "<img class=\"icon\" src=\"", $WT_IMAGES["media"], "\" alt=\"\" />". WT_Gedcom_Tag::getLabel('OBJE'). "</a>";
 		echo "<div class=\"editfacts\">";
-		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&pid={$rowm['m_media']}&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></div></a>";
-		echo "<span class=\"copylink\"><a class=\"copyicon\" onclick=\"return copy_record('".$rowm['m_media']."', 'media');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Copy')."\"><span class=\"link_text\">".WT_I18N::translate('Copy')."</span></a></div>";
-		echo "<span class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_record('$pid', 'OBJE', '".$rowm['m_media']."');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></div></a>";
+		echo "<span class=\"copylink\"><a class=\"copyicon\" onclick=\"return copy_record('".$mediaobject->getXref()."', 'media');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Copy')."\"><span class=\"link_text\">".WT_I18N::translate('Copy')."</span></a></div>";
+		echo "<span class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_record('$pid', 'OBJE', '".$mediaobject->getXref()."');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 		echo "</div>";
 		echo "</td>";
 	}
@@ -1351,46 +1351,33 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	// NOTE Print the title of the media
 	echo "<td class=\"optionbox wrap $styleadd\"><span class=\"field\">";
 	echo $mediaobject->displayMedia(array('alertnotfound'=>true));
-	$name = $mediaobject->getFullName();
 	if (empty($SEARCH_SPIDER)) {
 		echo '<a href="'.$mediaobject->getHtmlUrl().'">';
 	}
-	if ($TEXT_DIRECTION=="rtl" && !hasRTLText($name)) {
-		echo "<em>", getLRM(), PrintReady(htmlspecialchars($name));
-	} else {
-		echo "<em>", PrintReady(htmlspecialchars($name));
+	echo '<em>';
+	foreach ($mediaobject->getAllNames() as $name) {
+		if ($name['type']!='TITL') echo '<br />'; 
+		echo htmlspecialchars($name['full']);
 	}
-	$addtitle = get_gedcom_value("TITL:_HEB", 2, $rowm["m_gedrec"]);
-	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:_HEB", 1, $rowm["m_gedrec"]);
-	if (!empty($addtitle)) echo "<br />", PrintReady(htmlspecialchars($addtitle));
-	$addtitle = get_gedcom_value("TITL:ROMN", 2, $rowm["m_gedrec"]);
-	if (empty($addtitle)) $addtitle = get_gedcom_value("TITL:ROMN", 1, $rowm["m_gedrec"]);
-	if (!empty($addtitle)) echo "<br />", PrintReady(htmlspecialchars($addtitle));
-	echo "</em>";
+	echo '</em>';
 	if (empty($SEARCH_SPIDER)) {
 		echo "</a>";
 	}
 
-	$imgsize = $mediaobject->getImageAttributes('main');
-	if (!empty($imgsize['ext'])) {
-		// this does not match the output of the media controller exactly
-		echo "<br /><span class=\"label\">", WT_Gedcom_Tag::getLabel('FORM'), ": </span> <span class=\"field\">", $imgsize['ext'], "</span>";
+	$mediaformat=$mediaobject->getMediaFormat();
+	if ($mediaformat) {
+		echo "<br /><span class=\"label\">", WT_Gedcom_Tag::getLabel('FORM'), ": </span> <span class=\"field\">", $mediaformat, "</span>";
 	}
+	$imgsize = $mediaobject->getImageAttributes('main');
 	if (!empty($imgsize['WxH'])) {
 		echo "<span class=\"label\"><br />", WT_I18N::translate('Image Dimensions'), ": </span> <span class=\"field\" dir=\"ltr\">", $imgsize['WxH'], "</span>";
 	}
 	if ($mediaobject->getFilesizeraw()>0) {
 		echo "<span class=\"label\"><br />", WT_I18N::translate('File Size'), ": </span> <span class=\"field\" dir=\"ltr\">", $mediaobject->getFilesize() , "</span>";
 	}
-	if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $rowm["m_gedrec"]), $match)) {
-		$media_date=new WT_Date($match[1]);
-		$md = $media_date->Display(true);
-		echo "<br /><span class=\"label\">", WT_Gedcom_Tag::getLabel('DATE'), ": </span> ", $md;
-	}
-	$ttype = preg_match("/\d TYPE (.*)/", $rowm["m_gedrec"], $match);
-	if ($ttype>0) {
-		$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
-		echo "<br /><span class=\"label\">", WT_I18N::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
+	$mediatype=$mediaobject->getMediaType();
+	if ($mediatype) {
+		echo "<br /><span class=\"label\">", WT_I18N::translate('Type'), ": </span> <span class=\"field\">", $mediatype, "</span>";
 	}
 	echo "</span>";
 	echo "<br />";
@@ -1408,7 +1395,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	//-- don't show _PRIM option to regular users
 	if (WT_USER_GEDCOM_ADMIN) {
-		$prim = get_gedcom_value("_PRIM", 1, $rowm["m_gedrec"]);
+		$prim=$mediaobject->isPrimary();
 		if (!empty($prim)) {
 			echo "<span class=\"label\">", WT_Gedcom_Tag::getLabel('_PRIM'), ":</span> ";
 			if ($prim=="Y") echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No');
@@ -1417,19 +1404,19 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	//-- don't show _THUM option to regular users
 	if (WT_USER_GEDCOM_ADMIN) {
-		$thum = get_gedcom_value("_THUM", 1, $rowm["m_gedrec"]);
+		$thum=$mediaobject->useMainImage();
 		if (!empty($thum)) {
 			echo "<span class=\"label\">", WT_Gedcom_Tag::getLabel('_THUM'), ":</span> ";
 			if ($thum=="Y") echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No');
 			echo "<br />";
 		}
 	}
-	print_fact_notes($rowm["m_gedrec"], 1);
-	print_fact_sources($rowm["m_gedrec"], 1);
+	print_fact_notes($mediaobject->getGedcomRecord(), 1);
+	print_fact_sources($mediaobject->getGedcomRecord(), 1);
+
 	echo "</td></tr>";
 
-	// print_r($rowm);
-	// print_r($mediaobject);
+	// echo "<pre>"; print_r($rowm); print_r($mediaobject); echo "</pre>";
 
 	return true;
 }
