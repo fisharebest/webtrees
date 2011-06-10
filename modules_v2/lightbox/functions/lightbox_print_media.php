@@ -225,6 +225,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 				$row['m_ext'] = $ext;
 				$row['mm_gid'] = $pid;
 				$row['mm_gedrec'] = $rowm['mm_gedrec'];
+				$row['m_gedfile'] = $rowm['m_gedfile'];
 				$rows['new'] = $row;
 				$rows['old'] = $rowm;
 			} else {
