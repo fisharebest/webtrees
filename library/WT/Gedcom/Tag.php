@@ -84,7 +84,9 @@ class WT_Gedcom_Tag {
 		'_NLIV', '_NMAR', '_NMR', '_WT_USER', '_PRMN', '_SCBK', '_SEPR', '_SSHOW', '_STAT',
 		'_SUBQ', '_THUM', '_TODO', '_TYPE', '_UID', '_URL', '_WEIG', '_YART', '__BRTM_CHIL',
 		'__BRTM_GCHI', '__BRTM_GCH1', '__BRTM_GCH2', '__BRTM_HSIB', '__BRTM_SIBL',
-	);
+		// These pseudo-tags are generated dynamically to display media object attributes
+		'__FILE_SIZE__', '__IMAGE_SIZE__',
+);
 
 	// Is $tag one of our known tags?
 	public static function isTag($tag) {
@@ -890,26 +892,29 @@ class WT_Gedcom_Tag {
 			default:  return /* I18N: gedcom tag _NMR */ WT_I18N::translate  (          'Not married');
 			}
 		case '_WT_USER': return WT_I18N::translate('by');
-		case '_PRMN': return /* I18N: gedcom tag _PRMN */ WT_I18N::translate('Permanent number');
-		case '_SCBK': return /* I18N: gedcom tag _SCBK */ WT_I18N::translate('Scrapbook');
-		case '_SEPR': return /* I18N: gedcom tag _SEPR */ WT_I18N::translate('Separated');
+		case '_PRMN':  return /* I18N: gedcom tag _PRMN */  WT_I18N::translate('Permanent number');
+		case '_SCBK':  return /* I18N: gedcom tag _SCBK */  WT_I18N::translate('Scrapbook');
+		case '_SEPR':  return /* I18N: gedcom tag _SEPR */  WT_I18N::translate('Separated');
 		case '_SSHOW': return /* I18N: gedcom tag _SSHOW */ WT_I18N::translate('Slide show');
-		case '_STAT': return /* I18N: gedcom tag _STAT */ WT_I18N::translate('Marriage status');
-		case '_SUBQ': return /* I18N: gedcom tag _SUBQ */ WT_I18N::translate('Short version');
-		case '_THUM': return /* I18N: gedcom tag _THUM */ WT_I18N::translate('Always use main image?');
-		case '_TODO': return /* I18N: gedcom tag _TODO */ WT_I18N::translate('To-do item');
-		case '_TYPE': return /* I18N: gedcom tag _TYPE */ WT_I18N::translate('Media type');
-		case '_UID': return /* I18N: gedcom tag _UID */ WT_I18N::translate('Globally unique identifier');
-		case '_URL': return /* I18N: gedcom tag _URL */ WT_I18N::translate('Web URL');
-		case '_WEIG': return /* I18N: gedcom tag _WEIG */ WT_I18N::translate('Weight');
-		case '_YART': return /* I18N: gedcom tag _YART */ WT_I18N::translate('Yahrzeit');
-		// Brit milah applies only to males, no no need for male/female translations
-		case '__BRTM_CHIL': return WT_I18N::translate ( 'Brit milah of a son');
-		case '__BRTM_GCHI': return WT_I18N::translate ( 'Brit milah of a grandson');
+		case '_STAT':  return /* I18N: gedcom tag _STAT */  WT_I18N::translate('Marriage status');
+		case '_SUBQ':  return /* I18N: gedcom tag _SUBQ */  WT_I18N::translate('Short version');
+		case '_THUM':  return /* I18N: gedcom tag _THUM */  WT_I18N::translate('Always use main image?');
+		case '_TODO':  return /* I18N: gedcom tag _TODO */  WT_I18N::translate('To-do item');
+		case '_TYPE':  return /* I18N: gedcom tag _TYPE */  WT_I18N::translate('Media type');
+		case '_UID':   return /* I18N: gedcom tag _UID */   WT_I18N::translate('Globally unique identifier');
+		case '_URL':   return /* I18N: gedcom tag _URL */   WT_I18N::translate('Web URL');
+		case '_WEIG':  return /* I18N: gedcom tag _WEIG */  WT_I18N::translate('Weight');
+		case '_YART':  return /* I18N: gedcom tag _YART */  WT_I18N::translate('Yahrzeit');
+		// Brit milah applies only to males, no need for male/female translations
+		case '__BRTM_CHIL': return WT_I18N::translate  ('Brit milah of a son');
+		case '__BRTM_GCHI': return WT_I18N::translate  ('Brit milah of a grandson');
 		case '__BRTM_GCH1': return WT_I18N::translate_c('daughter\'s son', 'Brit milah of a grandson');
 		case '__BRTM_GCH2': return WT_I18N::translate_c('son\'s son', 'Brit milah of a grandson');
-		case '__BRTM_HSIB': return WT_I18N::translate ( 'Brit milah of a half-brother');
-		case '__BRTM_SIBL': return WT_I18N::translate ( 'Brit milah of a brother');
+		case '__BRTM_HSIB': return WT_I18N::translate  ('Brit milah of a half-brother');
+		case '__BRTM_SIBL': return WT_I18N::translate  ('Brit milah of a brother');
+		// These "pseudo" tags are generated internally to present information about a media object
+		case '__FILE_SIZE__':  return WT_I18N::translate('File size');
+		case '__IMAGE_SIZE__': return WT_I18N::translate('Image dimensions');
 		default:
 			// If no specialisation exists (e.g. DEAT:CAUS), then look for the general (CAUS)
 			if (strpos($tag, ':')) {

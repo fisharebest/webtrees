@@ -337,10 +337,10 @@ class WT_Controller_Media extends WT_Controller_Base {
 			// get height and width of image, when available
 			$imgsize = $this->mediaobject->getImageAttributes();
 			if (!empty($imgsize['WxH'])) {
-				$facts[] = new WT_Event("1 EVEN " . '<span dir="ltr">' . $imgsize['WxH'] . '</span>' . "\n2 TYPE image_size");
+				$facts[] = new WT_Event('1 __IMAGE_SIZE__ '.$imgsize['WxH']);
 			}
 			//Prints the file size
-			$facts[] = new WT_Event("1 EVEN " . '<span dir="ltr">' . $this->mediaobject->getFilesize(). '</span>' . "\n2 TYPE file_size");
+			$facts[] = new WT_Event('1 __FILE_SIZE__ '.$this->mediaobject->getFilesize());
 		}
 
 		sort_facts($facts);

@@ -119,13 +119,7 @@ function print_fact(WT_Event $eventObj) {
 	switch ($eventObj->getTag()) {
 	case 'EVEN':
 	case 'FACT':
-		if ($type=='image_size') {
-			// The media page generates dummy "1 EVEN/2 TYPE image_size" facts
-			$label=WT_I18N::translate('Image Dimensions');
-		} elseif ($type=='file_size') {
-			// The media page generates dummy "1 EVEN/2 TYPE file_size" facts
-			$label=WT_I18N::translate('File Size');
-		} elseif (WT_Gedcom_Tag::isTag($type)) {
+		if (WT_Gedcom_Tag::isTag($type)) {
 			// Some users (just Meliza?) use "1 EVEN/2 TYPE BIRT".  Translate the TYPE.
 			$label=WT_Gedcom_Tag::getLabel($type, $label_person);
 			$type=''; // Do not print this again
@@ -282,8 +276,6 @@ function print_fact(WT_Event $eventObj) {
 				} else {
 					echo '<div class="error">', htmlspecialchars($eventObj->getDetail()), '</div>';
 				}
-			} elseif ($type=='image_size' || $type=='file_size') {
-				echo '<div class="field">', $eventObj->getDetail(), '</div>';
 			} else {
 				echo '<div class="field">', htmlspecialchars($eventObj->getDetail()), '</div>';
 			}
@@ -293,7 +285,7 @@ function print_fact(WT_Event $eventObj) {
 	}
 
 	// Print the type of this fact/event
-	if ($type && $type!='image_size' && $type!='file_size') {
+	if ($type) {
 		// We don't have a translation for $type - but a custom translation might exist.
 		echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_I18N::translate(htmlspecialchars($type)));
 	}
@@ -1366,18 +1358,18 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	$mediaformat=$mediaobject->getMediaFormat();
 	if ($mediaformat) {
-		echo "<br /><span class=\"label\">", WT_Gedcom_Tag::getLabel('FORM'), ": </span> <span class=\"field\">", $mediaformat, "</span>";
+		echo WT_Gedcom_Tag::getLabelValue('FORM', $mediaformat);
 	}
 	$imgsize = $mediaobject->getImageAttributes('main');
 	if (!empty($imgsize['WxH'])) {
-		echo "<span class=\"label\"><br />", WT_I18N::translate('Image Dimensions'), ": </span> <span class=\"field\" dir=\"ltr\">", $imgsize['WxH'], "</span>";
+		echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize['WxH']);
 	}
 	if ($mediaobject->getFilesizeraw()>0) {
-		echo "<span class=\"label\"><br />", WT_I18N::translate('File Size'), ": </span> <span class=\"field\" dir=\"ltr\">", $mediaobject->getFilesize() , "</span>";
+		echo WT_Gedcom_Tag::getLabelValue('__FILE_SIZE__',  $mediaobject->getFilesize());
 	}
 	$mediatype=$mediaobject->getMediaType();
 	if ($mediatype) {
-		echo "<br /><span class=\"label\">", WT_I18N::translate('Type'), ": </span> <span class=\"field\">", $mediatype, "</span>";
+		echo WT_Gedcom_Tag::getLabelValue('TYPE', $mediatype);
 	}
 	echo "</span>";
 	echo "<br />";
@@ -1396,19 +1388,15 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	//-- don't show _PRIM option to regular users
 	if (WT_USER_GEDCOM_ADMIN) {
 		$prim=$mediaobject->isPrimary();
-		if (!empty($prim)) {
-			echo "<span class=\"label\">", WT_Gedcom_Tag::getLabel('_PRIM'), ":</span> ";
-			if ($prim=="Y") echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No');
-			echo "<br />";
+		if ($prim) {
+			echo WT_Gedcom_Tag::getLabelValue('_PRIM', $prim=='Y' ? WT_I18N::translate('Yes') : WT_I18N::translate('No'));
 		}
 	}
 	//-- don't show _THUM option to regular users
 	if (WT_USER_GEDCOM_ADMIN) {
 		$thum=$mediaobject->useMainImage();
-		if (!empty($thum)) {
-			echo "<span class=\"label\">", WT_Gedcom_Tag::getLabel('_THUM'), ":</span> ";
-			if ($thum=="Y") echo WT_I18N::translate('Yes'); else echo WT_I18N::translate('No');
-			echo "<br />";
+		if ($thum) {
+			echo WT_Gedcom_Tag::getLabelValue('_THUM', $thum=='Y' ? WT_I18N::translate('Yes') : WT_I18N::translate('No'));
 		}
 	}
 	print_fact_notes($mediaobject->getGedcomRecord(), 1);

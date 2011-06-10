@@ -23,7 +23,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -335,7 +335,7 @@ class WT_Media extends WT_GedcomRecord {
 				$imgsize['ext']=$imageTypes[0+$imgsize[2]];
 				$imgsize['aspect']=($imgsize[0]>$imgsize[1]) ? 'landscape' : 'portrait';
 				// this is for display purposes, always show non-adjusted info
-				$imgsize['WxH']=/* I18N: image dimensions, width x height */ WT_I18N::translate('%1$s &times; %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1']));
+				$imgsize['WxH']=/* I18N: image dimensions, width x height */ WT_I18N::translate('%1$s × %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1']));
 				$imgsize['imgWH']=' width="'.$imgsize['adjW'].'" height="'.$imgsize['adjH'].'" ';
 				if ( ($which=='thumb') && ($imgsize['0'] > $THUMBNAIL_WIDTH) ) {
 					// don't let large images break the dislay
