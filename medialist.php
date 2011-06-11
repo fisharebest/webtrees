@@ -27,7 +27,6 @@ define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
-// $LB_SS_SPEED = '5';
 $level = safe_GET('level', '', '0');
 $action = safe_GET('action');
 $search = safe_GET('search');
@@ -133,7 +132,6 @@ print_header(WT_I18N::translate('Media objects'));
 echo '<div class="center"><h2>', WT_I18N::translate('Media objects'), '</h2></div>';
 // Get Javascript variables from lb_config.php ---------------------------
 if (WT_USE_LIGHTBOX) {
-	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 // ************************  BEGIN = 'Build the medialist array' ************************

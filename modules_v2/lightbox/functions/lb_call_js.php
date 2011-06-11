@@ -1,40 +1,37 @@
 <?php
-/**
- * Lightbox Album module for webtrees
- *
- * Display media Items using Lightbox
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Module
- * @version $Id$
- * @author Brian Holland
- */
+// Lightbox Album module for webtrees
+//
+// Display media Items using Lightbox
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
+
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
 
-global $LB_MUSIC_FILE, $LB_SS_SPEED, $LB_TRANSITION, $TEXT_DIRECTION;
+global $TEXT_DIRECTION;
+$LB_MUSIC_FILE=get_module_setting('lightbox', 'LB_MUSIC_FILE', WT_MODULES_DIR.'lightbox/music/music.mp3');
 ?>
 <script language="javascript" type="text/javascript">
 	var CB_ImgDetails = "<?php echo WT_I18N::translate('Details'); ?>";
@@ -61,8 +58,8 @@ global $LB_MUSIC_FILE, $LB_SS_SPEED, $LB_TRANSITION, $TEXT_DIRECTION;
 	<?php } else { ?>
 		var myMusic  = '<?php echo $LB_MUSIC_FILE; ?>';   // The music file
 	<?php } ?>
-	var CB_SlShowTime  = '<?php echo $LB_SS_SPEED; ?>'; // Slide show timer
-	var CB_Animation = '<?php echo $LB_TRANSITION; ?>'; // Next/Prev Image transition effect
+	var CB_SlShowTime  = '<?php echo get_module_setting('lightbox', 'LB_SS_SPEED', '6'); ?>'; // Slide show timer
+	var CB_Animation = '<?php echo get_module_setting('lightbox', 'LB_TRANSITION', 'warp'); ?>'; // Next/Prev Image transition effect
 </script>
 
 <?php if ($TEXT_DIRECTION == 'rtl') { ?>

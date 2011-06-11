@@ -3137,7 +3137,6 @@ function isFileExternal($file) {
  */
 function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin='', $obeyViewerOption=true) {
 	global $THUMBNAIL_WIDTH, $WT_IMAGES;
-	global $LB_URL_WIDTH, $LB_URL_HEIGHT;
 	global $GEDCOM, $USE_MEDIA_VIEWER;
 
 	$result = array();
@@ -3171,7 +3170,6 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin=
 	while (true) {
 		if (WT_USE_LIGHTBOX && $admin!="ADMIN") {
 			// Lightbox is installed
-			require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 			switch ($type) {
 			case 'url_flv':
 				$url = 'js/jw_player/flvVideo.php?flvVideo='.rawurlencode($fileName) . "\" rel='clearbox(500, 392, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
@@ -3197,7 +3195,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin=
 			case 'local_page':
 			case 'local_pdf':
 			// case 'local_other':
-				$url = $fileName . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $mid . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
+				$url = $fileName . "\" rel='clearbox(" . get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000') . ',' . get_module_setting('lightbox', 'LB_URL_HEIGHT', '600') . ", click)' rev=\"" . $mid . '::' . $GEDCOM . '::' . PrintReady(htmlspecialchars($name)) . "::" . htmlspecialchars($notes);
 				break 2;
 			case 'url_streetview':
 				if (WT_SCRIPT_NAME != "admin_media.php") {

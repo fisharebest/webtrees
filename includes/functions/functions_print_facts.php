@@ -520,7 +520,6 @@ function print_media_links($factrec, $level, $pid='') {
 	global $MULTI_MEDIA, $TEXT_DIRECTION;
 	global $SEARCH_SPIDER;
 	global $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
-	global $LB_URL_WIDTH, $LB_URL_HEIGHT;
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	if (!$MULTI_MEDIA) return;
@@ -563,9 +562,8 @@ function print_media_links($factrec, $level, $pid='') {
 					$name = trim($row["m_titl"]);
 					echo "<a href=\"" . $mainMedia . "\" rel=\"clearbox[general_1]\" rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
 				} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
-					require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 					$name = trim($row["m_titl"]);
-					echo "<a href=\"" . $mainMedia . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
+					echo "<a href=\"" . $mainMedia . "\" rel='clearbox(", get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000'), ", ", get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'), ", click)' rev=\"" . $media_id . "::" . $GEDCOM . "::" . PrintReady(htmlspecialchars($name)) . "\">";
 				// extra for Streetview ----------------------------------------
 				} else if (WT_USE_LIGHTBOX && strpos($row["m_file"], 'http://maps.google.')===0) {
 					echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';

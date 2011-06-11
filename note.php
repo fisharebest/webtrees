@@ -61,7 +61,6 @@ if ($controller->note && $controller->note->canDisplayName()) {
 Zend_Session::writeClose();
 
 if (WT_USE_LIGHTBOX) {
-	require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 

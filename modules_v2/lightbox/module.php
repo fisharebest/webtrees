@@ -21,15 +21,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module

@@ -1026,7 +1026,6 @@ if (check_media_structure()) {
 			if (WT_USE_LIGHTBOX) {
 				// Get Lightbox config variables
 				// Following two lines are temporarily removed as they cause problems. BH 07/01/2011
-				//require WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 				//require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 			}
 

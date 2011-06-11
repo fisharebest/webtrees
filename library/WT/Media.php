@@ -474,7 +474,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return string, suitable for use inside an a tag: '<a href="'.$this->getHtmlUrlSnippet().'">';
 	 */
 	public function getHtmlUrlSnippet(array $config = array()) {
-		global $USE_MEDIA_VIEWER,$LB_URL_WIDTH,$LB_URL_HEIGHT;
+		global $USE_MEDIA_VIEWER;
 
 		$default_config=array(
 			'obeyViewerOption'=>true,
@@ -496,7 +496,6 @@ class WT_Media extends WT_GedcomRecord {
 		while (true) {
 			if (WT_USE_LIGHTBOX && $config['uselightbox'] && $config['usejavascript'] && (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/')) {
 				// Lightbox is installed
-				require_once WT_ROOT.WT_MODULES_DIR.'lightbox/lb_defaultconfig.php';
 				switch ($urltype) {
 				case 'url_flv':
 					$url = 'js/jw_player/flvVideo.php?flvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
@@ -525,7 +524,7 @@ class WT_Media extends WT_GedcomRecord {
 				case 'local_page':
 				case 'local_pdf':
 				case 'local_document':
-					$url = $this->getHtmlUrlDirect('main') . "\" rel='clearbox({$LB_URL_WIDTH}, {$LB_URL_HEIGHT}, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
+					$url = $this->getHtmlUrlDirect('main') . "\" rel='clearbox(" . get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000') . ',' . get_module_setting('lightbox', 'LB_URL_HEIGHT', '600') . ", click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
 					break 2;
 				case 'url_streetview':
 					// need to call getHtmlForStreetview() instead of getHtmlUrlSnippet()
