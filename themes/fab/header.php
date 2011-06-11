@@ -50,7 +50,6 @@ echo
 	'<link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />';
 	
 echo
-	$javascript,
 	'<link type="text/css" rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" />',
 	'<link type="text/css" rel="stylesheet" href="', $stylesheet, '" />';
 
@@ -72,6 +71,7 @@ if (WT_USE_LIGHTBOX) {
 
 echo
 	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'modules.css" />',
+	$javascript,
 	'</head>',
 	'<body id="body">';
 

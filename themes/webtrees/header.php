@@ -39,10 +39,7 @@ echo
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
-
-echo
-	$javascript,
+	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 
@@ -63,6 +60,7 @@ if (WT_USE_LIGHTBOX) {
 
 echo
 	'<link type="text/css" href="', WT_THEME_DIR, 'modules.css" rel="Stylesheet" />',
+	$javascript,
 	'</head>',
 	'<body id="body">';
 

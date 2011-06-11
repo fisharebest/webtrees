@@ -57,8 +57,6 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 	}
 	?>
 	
-	<?php echo $javascript; ?>
-	
 	<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />
 	<link rel="stylesheet" href="<?php echo $stylesheet; ?>" type="text/css" media="all" />
 	<?php if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?> <link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> <?php } ?>
@@ -77,6 +75,8 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 	} ?>
 
 	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>modules.css" rel="Stylesheet" />
+	
+	<?php echo $javascript; ?>
 </head>
 <body id="body">
 <!-- begin header section -->

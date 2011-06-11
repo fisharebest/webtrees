@@ -65,7 +65,6 @@ if (!empty($META_GENERATOR)) {
 }
 
 echo
-	$javascript,
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
 	'<link rel="stylesheet" href="', $print_stylesheet, '" type="text/css" media="print" />';
@@ -92,6 +91,7 @@ if (WT_USE_LIGHTBOX) {
 
 echo
 	'<link rel="stylesheet" href="', $modules, '" type="text/css" />',
+	$javascript,
 	'</head>',
 	'<body id="body">';
 

@@ -64,7 +64,7 @@ if (!empty($META_GENERATOR)) {
 }
 ?>
 <?php
-	echo $javascript,
+	echo
 	'<link rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css "type="text/css"  />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
 	'<link rel="stylesheet" href="', WT_THEME_DIR, 'sprite-menu-icons.css" type="text/css" />',
@@ -92,6 +92,7 @@ if (WT_USE_LIGHTBOX) {
 
 echo
 	'<link rel="stylesheet" href="', $modules, '" type="text/css" />',
+	$javascript,
 	'</head>',
 	'<body id="body">';
 ?>
