@@ -94,9 +94,11 @@ a.help {
 body {
 	color:DimGray;
 	background-color:White;
-	font:12px sans-serif;
+	font:12px sans-serif; /* Use the browser's default font - give control to the user */
 	margin:0px;
 }
+
+.ui-widget { font-family:inherit; } /* We have one jQuery-UI CSS file for (all* themes.  Don't let it override our font */
 
 img {
 	border:0;
@@ -899,7 +901,6 @@ a.showit:hover span {
 {
 	margin: 0;
 	padding: 0;
-	font-family: Arial;
 	font-size: 10px;
 	list-style: none;
 }
@@ -932,7 +933,6 @@ a.showit:hover span {
 }
 
 .tag_cloud {
-	font-family: tahoma, arial, helvetica, sans-serif;
 }
 .tag_cloud a {
 	white-space:nowrap;
@@ -1173,7 +1173,7 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
 #flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
 html[dir='rtl'] #flyout3 {text-align:right;}
-.famnav_link {font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;}
+.famnav_link {font-size:12px; padding:0px; width:100%;}
 
 /* Descendancy */
 #sb_desc_content {margin-left:3px; font-size:0.8em;}
