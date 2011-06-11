@@ -525,4 +525,4 @@ if (substr(PHP_SAPI, 0, 3) == 'cgi') {  // cgi-mode, should only be writable by 
 }
 
 // Lightbox needs custom integration in many places.  Only check for the module once.
-define('WT_USE_LIGHTBOX', !$SEARCH_SPIDER && $MULTI_MEDIA && is_dir(WT_ROOT.WT_MODULES_DIR.'lightbox'));
+define('WT_USE_LIGHTBOX', !$SEARCH_SPIDER && $MULTI_MEDIA && array_key_exists('lightbox', WT_Module::getActiveModules()));
