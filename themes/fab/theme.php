@@ -23,9 +23,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @package webtrees
-// @subpackage Themes
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -152,7 +150,6 @@ $WT_IMAGES=array(
 	'tree'                =>WT_THEME_DIR.'images/gedcom.gif',
 	'uarrow'              =>WT_THEME_DIR.'images/uarrow.gif',
 	'uarrow2'             =>WT_THEME_DIR.'images/uarrow2.gif',
-	'uarrow3'             =>WT_THEME_DIR.'images/uarrow3.gif',
 	'udarrow'             =>WT_THEME_DIR.'images/udarrow.gif',
 	'vline'               =>WT_THEME_DIR.'images/vline.gif',
 	'warning'             =>WT_THEME_DIR.'images/warning.gif',
@@ -204,6 +201,3 @@ $WT_STATS_MAP_Y=220;
 $WT_STATS_CHART_COLOR1='ffffff';
 $WT_STATS_CHART_COLOR2='9ca3d4';
 $WT_STATS_CHART_COLOR3='e5e6ef';
-
-// Arrow symbol or icon for up-page links on Help pages
-$UpArrow='<img src="'.WT_THEME_DIR.'images/uarrow3.gif" class="icon" border="0" alt="^" />';

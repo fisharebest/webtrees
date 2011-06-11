@@ -1,32 +1,28 @@
 <?php
-/**
- * Clouds theme
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView Cloudy theme
- * Original author w.a. bastein http://genealogy.bastein.biz
- * Copyright (C) 2010  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Themes
- * @version $Id$
- */
+// Clouds theme
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView Cloudy theme
+// Original author w.a. bastein http://genealogy.bastein.biz
+// Copyright (C) 2010  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -131,7 +127,6 @@ $WT_IMAGES=array(
 	'tree'=>WT_THEME_DIR.'images/gedcom.gif',
 	'uarrow'=>WT_THEME_DIR.'images/uarrow.gif',
 	'uarrow2'=>WT_THEME_DIR.'images/uarrow2.gif',
-	'uarrow3'=>WT_THEME_DIR.'images/uarrow3.gif',
 	'udarrow'=>WT_THEME_DIR.'images/udarrow.gif',
 	'vline'=>WT_THEME_DIR.'images/vline.gif',
 	'warning'=>WT_THEME_DIR.'images/warning.gif',
@@ -215,6 +210,3 @@ $WT_STATS_MAP_Y = "220";
 $WT_STATS_CHART_COLOR1 = "ffffff";
 $WT_STATS_CHART_COLOR2 = "95b8e0";
 $WT_STATS_CHART_COLOR3 = "c8e7ff";
-
-// Arrow symbol or icon for up-page links on Help pages
-$UpArrow = "<img src=\"".WT_THEME_DIR."images/uarrow3.gif\" class=\"icon\" border=\"0\" alt=\"^\" />";
