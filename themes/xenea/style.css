@@ -48,20 +48,17 @@ img {
 
 a.link:link, a.link:active, a.link:visited {
 	color: white;
-	font-family: tahoma, arial, helvetica, sans-serif;
 	font-weight: bold;
 }
 
 a.link:hover {
 	color: #333366;
-	font-family: tahoma, arial, helvetica, sans-serif;
 	font-weight: bold;
 }
 
 a {
 	color: blue;
 	text-decoration: none;
-	font-family: tahoma, arial, helvetica, sans-serif;
 }
 
 a:hover	{
@@ -125,7 +122,7 @@ th {
 .list_label, .list_label_wrap {
 	color: #000066;
 	background-color: #C3DFFF;
-	font: bold 12px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:12px;
 	text-align: center;
 }
 
@@ -133,7 +130,7 @@ th {
 	background-color: #ECF5FF;
 	border: solid #C3DFFF 1px;
 	color: #000066;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	vertical-align: top;
 }
 
@@ -156,7 +153,7 @@ th {
 .facts_label {
 	color: #000066;
 	background-color: #C3DFFF;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding: 4px;
 	width: 20%;
 	text-align: center;
@@ -165,7 +162,7 @@ th {
 .facts_label02, .facts_label03 {
 	color: white;
 	background-color: #84BEFF;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding: 4px;
 	text-align: center;
 	font-weight: bold;
@@ -175,7 +172,7 @@ th {
 	background-color: #ECF5FF;
 	border: solid #C3DFFF 1px;
 	color: #000066;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding: 4px;
 }
 
@@ -183,14 +180,14 @@ th {
 	background-color: #FBFDFF;
 	border: solid #C3DFFF 1px;
 	color: #000066;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding: 5px;
 }
 
 .facts_labelred, .facts_labelblue {
 	color: #000066;
 	background-color: #9DD8FF;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding: 4px;
 	width: 20%;
 	text-align: center;
@@ -199,7 +196,7 @@ th {
 .facts_valuered, .facts_valueblue {
 	background-color: #FBFDFF;
 	color: #000066;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding: 4px;
 }
 
@@ -277,22 +274,22 @@ th {
 
 .name1 {
 	color: #000066;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 }
 
 a:hover .name1 {
 	color: red;
-	font: bold 10px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:10px;
 }
 
 a:hover .name2 {
 	color: red;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 }
 
 a:hover .nameZoom {
 	color: red;
-	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:14px;
 }
 
 .namered {
@@ -305,7 +302,7 @@ a:hover .nameZoom {
 
 .name2 {
 	color: #000066;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 }
 
 .details1 {
@@ -314,23 +311,23 @@ font-size: 10px;
 
 .details2 {
 	color: #000066;
-	font: 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	text-decoration: none;
 }
 
 .nameZoom {
 	color: #000066;
-	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:14px;
 }
 
 .detailsZoom {
-	font: 14px tahoma, arial, helvetica, sans-serif;
+	font-size:14px;
 	text-decoration: none;
 }
 
 .name_head {
 	color: #000066;
-	font: bold 16px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:16px;
 	letter-spacing: .2px;
 }
 
@@ -347,19 +344,17 @@ font-size: 10px;
 
 .error {
 	color: #DD0000;
-	font-family: tahoma, arial, helvetica, sans-serif;
 	font-weight: bold;
 }
 
 .largeError {
 	color: #DD0000;
-	font: large tahoma, arial, helvetica, sans-serif;
+	font-size:large;
 	font-weight: bold;
 }
 
 .warning {
 	color: red;
-	font-family: tahoma, arial, helvetica, sans-serif;
 	font-weight: bold;
 }
 
@@ -457,7 +452,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .subheaders {
-	font: bold 16px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:16px;
 	text-indent: 20px;
 	margin-top: 15px;
 	vertical-align: bottom;
@@ -483,7 +478,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .theme_form {
 	margin-top: 0;
-	font: 14px tahoma, arial, helvetica, sans-serif;
+	font-size:14px;
 	color: white;
 }
 
@@ -512,13 +507,13 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .favorites_form {
 	margin-top: 0px;
-	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:14px;
 	color: white;
 }
 
 .langmenuitem {
 	color: white;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 	text-decoration: none;
 	padding: 1px;
 }
@@ -529,14 +524,14 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .langmenuitem_hover {
 	color: red;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 	text-decoration: none;
 	padding: 1px;
 }
 
 .thememenuitem  {
 	color: white;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 	text-decoration: none;
 	padding: 1px;
 }
@@ -547,7 +542,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .thememenuitem_hover {
 	color: red;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 	text-decoration: none;
 	padding: 1px;
 }
@@ -555,7 +550,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .themesubmenu {
 	color: black;
 	text-decoration: none;
-	font: 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	text-align: left;
 	background-color: #ECF5FF;
 	border: solid #84BEFF 1px;
@@ -565,7 +560,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .favmenuitem {
 	color: white;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 	text-decoration: none;
 	padding: 1px;
 }
@@ -576,7 +571,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .favmenuitem_hover {
 	color: red;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 	text-decoration: none;
 	padding: 1px;
 }
@@ -584,7 +579,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .favsubmenu {
 	color: black;
 	text-decoration: none;
-	font: 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	text-align: center;
 	background-color: #ECF5FF;
 	border: solid #84BEFF 1px;
@@ -593,7 +588,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .favsubmenuitem a, .favsubmenuitem_selected a {
 	color: black;
-	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	text-decoration: none;
 	background-color: #ECF5FF;
 	white-space: nowrap;
@@ -606,7 +601,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .favsubmenuitem_hover a {
 	color: red;
-	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	text-decoration: none;
 	background-color: white;
 	white-space: nowrap;
@@ -620,7 +615,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .menuitem {
 	color: black;
-	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	text-decoration: none;
 	text-align: center;
 	padding: 1px;
@@ -628,7 +623,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .menuitem_hover {
 	color: black;
-	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	text-decoration: none;
 	text-align: center;
 	padding: 1px;
@@ -640,7 +635,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	z-index: 100;
 	color: black;
 	text-decoration: none;
-	font: 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	background-color: #ECF5FF;
 	border: solid #84BEFF 1px;
 	white-space: nowrap;
@@ -650,7 +645,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	vertical-align: middle;
 	height: 22px;
 	color: black;
-	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	text-decoration: none;
 	background-color: #ECF5FF;
 	white-space: nowrap;
@@ -667,7 +662,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	vertical-align: middle;
 	height: 22px;
 	color: black;
-	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	text-decoration: none;
 	background-color: white;
 	white-space: nowrap;
@@ -680,12 +675,12 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .news_title {
-	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:14px;
 	color: black;
 }
 
 .news_date {
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	color: black;
 	margin-bottom: 12px;
 }
@@ -728,13 +723,13 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .helpstart {
 	margin: 10px;
-	font: bold 14px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:14px;
 	color: Blue;
 	text-decoration: none;
 }
 
 .helptext {
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	color: black;
 }
 
@@ -745,7 +740,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 #footer {
 	clear: both;
 	color: #000066;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	width: 99%;
 }
 
@@ -753,7 +748,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .small_inner_block {
 	max-height: 190px;
 	overflow: auto;
-	font: normal 10px tahoma, arial, helvetica, sans-serif;
+	font-size:10px;
 	text-decoration: none;
 }
 
@@ -765,7 +760,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	background-color: #ECF5FF;
 	border: solid #84BEFF 1px;
 	color: black;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	vertical-align: top;
 	margin-bottom: 5px;
 	padding: 1px;
@@ -940,23 +935,22 @@ left:auto;
 .listlog {
 	line-height: 20pt;
 	color: #555555;
-	font-family: tahoma, arial, helvetica, sans-serif;
 }
 
 .barra {
 	color: black;
-	font: normal 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 }
 
 .blanco {
 	color: white;
-	font: bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 }
 
 input, button, textarea {
 	border-color: white #000066 #000066 white;
 	border-width: 1px;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 }
 
 input, textarea {
@@ -967,25 +961,25 @@ input, textarea {
 select {
 	border-color: #84BEFF;
 	border-width: 1px;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 }
 
 form {
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 }
 
 h2 {
 	color: #000066;
-	font: bold 18px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:18px;
 }
 
 h4 {
 	color: #000066;
-	font: bold 12px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:12px;
 }
 
 .formField {
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 }
 
 .starredname {
@@ -1004,7 +998,7 @@ h4 {
 .topbottombar {
 	color: white;
 	background-color: #84BEFF;
-	font: bold 12px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:12px;
 	padding: 4px;
 	text-align: center;
 }
@@ -1015,7 +1009,7 @@ h4 {
 	background-color: #ECF5FF;
 	border: solid #C3DFFF 1px;
 	color: #000066;
-	font: 11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	padding: 3px;
 	white-space: nowrap;
 	vertical-align: top;
@@ -1025,7 +1019,7 @@ h4 {
 .descriptionbox {
 	color: #000066;
 	background-color: #C3DFFF;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding: 4px;
 	white-space: nowrap;
 	vertical-align: top;
@@ -1036,7 +1030,7 @@ h4 {
 	background-color: #ECF5FF;
 	border: solid #C3DFFF 1px;
 	color: #000066;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding: 3px;
 	vertical-align: top;
 	white-space: nowrap;
@@ -1189,7 +1183,7 @@ a.showit:hover span {
 	padding: 3px;
 	background: #4F4F4F;
 	color: white;
-	font: 15px tahoma, arial, helvetica, sans-serif;
+	font-size:15px;
 	text-align: left;
 	opacity: .85;
 	z-index: 5;
@@ -1197,7 +1191,8 @@ a.showit:hover span {
 }
 
 .lifespan_people span:first-letter {
-	font: small-caps bold 16px tahoma, arial, helvetica, sans-serif;
+	font-variant:small-caps;
+	font-weight:bold; font-size:16px;
 	padding: 1px;
 }
 
@@ -1260,7 +1255,6 @@ a.showit:hover span {
 	{
 		margin: 0;
 		padding: 0;
-		font-family: Arial;
 		font-size: 10px;
 		list-style: none;
 	}
@@ -1293,7 +1287,6 @@ a.showit:hover span {
 	}
 
 .tag_cloud {
-	font-family: tahoma, arial, helvetica, sans-serif;
 }
 .tag_cloud a {
 	white-space:nowrap;
@@ -1701,7 +1694,7 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
 #flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
 html[dir='rtl'] #flyout3 {text-align:right;}.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.gif');white-space:nowrap;}
-.famnav_link {font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;}
+.famnav_link {font-size:12px; padding:0px; width:100%;}
 
 /* Descendancy */
 #sb_desc_content {margin-left:3px; font-size:0.8em;}
