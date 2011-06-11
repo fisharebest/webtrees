@@ -393,9 +393,19 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$menu->addLabel($menu->label, 'down');
 		$menu->addId('menu-indi');
 
+		$this->getGlobalFacts(); // sets NAME_LINENUM and SEX_LINENUM.  individual.php doesn't do it early enough for us....
+
+		// What behaviour shall we give the main menu?  If we leave it blank, the framework
+		// will copy the first submenu - which may be edit-raw or delete.
+		// As a temporary solution, make it edit the name
+		if (WT_USER_CAN_EDIT && $this->NAME_LINENUM) {
+			$menu->addOnclick("return edit_name('".$this->pid."', ".$this->NAME_LINENUM.");");
+		} else {
+			$menu->addOnclick("return false;");
+		}
+
 		if (WT_USER_CAN_EDIT) {
 			//--make sure the totals are correct
-			$this->getGlobalFacts();
 			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'));
 			$submenu->addOnclick("return add_name('".$this->pid."');");
 			$submenu->addIcon('edit_indi');
@@ -464,11 +474,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$submenu->addId('menu-indi-addfav');
 		$menu->addSubmenu($submenu);
 
-		//-- get the link for the first submenu and set it as the link for the main menu
-		if (isset($menu->submenus[0])) {
-			$link = $menu->submenus[0]->onclick;
-			$menu->addOnclick($link);
-		}
 		return $menu;
 	}
 
