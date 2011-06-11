@@ -223,6 +223,7 @@ img {
 input, textarea {
 	padding-left: 3px;
 	padding-right: 3px;
+	font-family:inherit;
 }
 
 .gedcom_table {

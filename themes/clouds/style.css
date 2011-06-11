@@ -332,7 +332,7 @@ color:#333333;
 .small_inner_block {
 max-height: 200px;
 overflow: auto;
-font: normal 10px tahoma, arial, helvetica, sans-serif;
+font-size:10px;
 }
 
 img {
@@ -341,7 +341,7 @@ img {
 
 .block {
 color: #030303;
-font: 12px tahoma, arial, helvetica, sans-serif;
+font-size:12px;
 vertical-align: top;
 margin-bottom: 5px;
 padding: 1px;
@@ -733,13 +733,13 @@ font-weight: bold;
 
 a:hover .name1 {
 color: red;
-font-size: 11px;
+font-size:11px;
 font-weight: bold;
 }
 
 a:hover.name2 {
 color: red;
-font-size: 12px;
+font-size:12px;
 font-weight: bold;
 }
 
@@ -752,13 +752,13 @@ text-decoration:none;
 }
 
 .nameZoom {
-font: 14px tahoma, arial, helvetica, sans-serif;
+font-size:14px;
 font-weight: bold;
 text-decoration:none;
 }
 
  a:hover .nameZoom {
-font: bold 14px tahoma, arial, helvetica, sans-serif;
+font-weight:bold; font-size:14px;
 color: red;
 }
 
@@ -768,7 +768,7 @@ text-decoration:none;
 }
 
 .name_head {
-font: bold 11pt tahoma, arial, helvetica, sans-serif;
+font-weight:bold; font-size:11px;
 letter-spacing: .2px;
 }
 
@@ -1049,7 +1049,7 @@ font-weight: bold;
 }
 input, button, textarea  {
 border-width:1px;
-font-family: tahoma,arial,helvetica,sans-serif;
+font-family:inherit;
 font-size: 12px;
 }
 
@@ -1063,7 +1063,7 @@ html[dir="rtl"] .optionbox > input { margin-right: 5px;}
 
 select {
 border:1px solid #ccc;
-font-family: tahoma, arial, helvetica, sans-serif;
+font-family:inherit;
 font-size: 12px;
 }
 
@@ -1134,7 +1134,7 @@ padding: 3px;
 background-color: #ECF5FF;
 border: 1px solid #84BEFF;
 color: #006;
-font: 11px tahoma, arial, helvetica, sans-serif;
+font-size:11px;
 padding: 3px;
 vertical-align: top;
 white-space: nowrap;
@@ -1359,7 +1359,8 @@ text-decoration:none;
 }
 
 .lifespan_people span:first-letter {
-font:small-caps bold 16px tahoma, arial, helvetica, sans-serif;
+font-variant:small-caps;
+font-weight:bold; font-size:16px;
 padding:1px;
 }
 
@@ -1404,7 +1405,6 @@ z-index:100;
 }
 
 #map_type {
-font-family:arial;
 font-size:10px;
 list-style:none;
 margin:0;
@@ -1508,7 +1508,6 @@ text-align: center;
 } 
 
 .tag_cloud {
-font-family: tahoma, arial, helvetica, sans-serif;
 }
 .tag_cloud a {
 white-space:nowrap;
@@ -1826,7 +1825,7 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
 #flyout3, #flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {background:none; border:none; font-size:11px; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
 html[dir='rtl'] #flyout3 {text-align:right;}
-.famnav_link {font:12px tahoma, arial, helvetica, sans-serif; padding:0px; width:100%;}
+.famnav_link {font-size:12px; padding:0px; width:100%;}
 
 /* Descendancy */
 #sb_desc_content {margin-left:3px;}

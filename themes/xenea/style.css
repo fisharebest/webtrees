@@ -950,6 +950,7 @@ left:auto;
 input, button, textarea {
 	border-color: white #000066 #000066 white;
 	border-width: 1px;
+	font-family:inherit;
 	font-size:12px;
 }
 
@@ -961,6 +962,7 @@ input, textarea {
 select {
 	border-color: #84BEFF;
 	border-width: 1px;
+	font-family:inherit;
 	font-size:12px;
 }
 
