@@ -1,8 +1,5 @@
-/**
+/*
  * Style for Xenea theme
- *
- * Use this stylesheet to customize the display of your site.
- * To learn more about CSS visit http: //www.w3.org/TR/REC-CSS2/
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2011 webtrees development team.
@@ -24,15 +21,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
- * @package webtrees
- * @subpackage Themes
- * @version $Id$
+ * $Id$
  */
 
-
-.something {
-	/*empty style to make sure that the BODY style is not ignored */
-}
+/* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
+html { overflow-y:scroll; }
 
 body {
 	color: #000066;

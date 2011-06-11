@@ -1,10 +1,7 @@
-/**
+/*
  * Style for Standard theme
  *
- * Use this stylesheet to customize the display of your site.
- * To learn more about CSS visit http://www.w3.org/TR/REC-CSS2/
- *
- * webtrees:Web based Family History software
+ * webtrees: Web based Family History software
  * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
@@ -17,22 +14,18 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
- * @package webtrees
- * @subpackage Themes
  * $Id$
  */
 
-
-.something {
-	/*empty style to make sure that the BODY style is not ignored */
-}
+/* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
+html { overflow-y:scroll; }
 
 body {
 	color:black;
