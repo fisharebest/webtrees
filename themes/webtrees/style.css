@@ -28,8 +28,8 @@
 html { overflow-y:scroll; }
 
 body {
-	color:black;
-	background-color:white;
+	color:#000000;
+	background-color:#FFFFFF;
 	font:12px tahoma, arial, helvetica, sans-serif;
 	margin:1px;
 	padding-left:5px;
@@ -46,7 +46,6 @@ legend {
 a {
 	color:#555555;
 	text-decoration:none;
-	font-family:tahoma, arial, helvetica, sans-serif;
 }
 
 a:hover	{
@@ -136,7 +135,7 @@ table.center {
 .list_label, .list_label_wrap {
 	color:#ffffff;
 	background-color:#81a9cb;
-	font:bold 12px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:12px;
 	text-align:center;
 }
 
@@ -144,7 +143,7 @@ table.center {
 	background-color:#edf7f9;
 	color:black;
 	border:solid #81a9cb 1px;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	vertical-align:top;
 }
 
@@ -167,7 +166,7 @@ table.center {
 .facts_label {
 	color:#ffffff;
 	background-color:#81a9cb;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding:4px 4px 4px 4px;
 	width:20%;
 	text-align:center;
@@ -175,7 +174,7 @@ table.center {
 
 .facts_label02, .facts_label03 {
 	color:#ffffff;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding:4px 4px 4px 4px;
 	text-align:center;
 	font-weight:bold;
@@ -193,7 +192,7 @@ table.center {
 	background-color:#edf7fd;
 	color:black;
 	border:solid #81a9cb 1px;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding:4px 4px 4px 4px;
 }
 
@@ -201,14 +200,14 @@ table.center {
 	background-color:#edf7fd;
 	color:black;
 	border:solid #81a9cb 1px;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding:5px;
 }
 
 .facts_labelred, .facts_labelblue {
 	color:#ffffff;
 	background-color:#81a9cb;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding:4px 4px 4px 4px;
 	width:20%;
 	text-align:center;
@@ -217,7 +216,7 @@ table.center {
 .facts_valuered, .facts_valueblue {
 	background-color:#edf7fd;
 	color:black;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	padding:4px 4px 4px 4px;
 }
 
@@ -292,28 +291,28 @@ table.center {
 
 .name1 {
 	color:#333333;
-	font:bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 }
 
 a:hover .name1 {
 	color:red;
-	font:bold 11px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:11px;
 }
 
 a:hover .name2 {
 	color:red;
-	font:bold 12px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:12px;
 }
 
 a:hover .nameZoom {
 	color:red;
-	font:bold 14px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:14px;
 }
 
 
 .name2 {
 	color:#333;
-	font:bold 12px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:12px;
 }
 
 .details1 {
@@ -321,16 +320,16 @@ a:hover .nameZoom {
 }
 
 .details2 {
-	font:normal 12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 }
 
 .nameZoom {
 	color:#333;
-	font:bold 14px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:14px;
 }
 
 .detailsZoom {
-	font:14px tahoma, arial, helvetica, sans-serif;
+	font-size:14px;
 	text-decoration:none;
 }
 
@@ -340,7 +339,7 @@ a:hover .nameZoom {
 
 .name_head {
 	color:#333;
-	font:bold 16px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:16px;
 	letter-spacing:.2px;
 	line-height:	2;
 	padding:0 5px;
@@ -359,19 +358,17 @@ a:hover .nameZoom {
 
 .error {
 	color:#dd0000;
-	font-family:tahoma, arial, helvetica, sans-serif;
 	font-weight:bold;
 }
 
 .largeError {
 	color:#dd0000;
-	font:large tahoma, arial, helvetica, sans-serif;
+	font-size:large;
 	font-weight:bold;
 }
 
 .warning {
 	color:red;
-	font-family:tahoma, arial, helvetica, sans-serif;
 	font-weight:bold;
 }
 
@@ -468,7 +465,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .subheaders {
-	font:bold 15px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:15px;
 	margin-top:15px;
 	vertical-align:bottom;
 }
@@ -529,21 +526,21 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .menuitem {
 	color:#555555;
 	text-decoration:none;
-	font:11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	padding:1px;
 }
 
 .menuitem_hover {
 	color:black;
 	text-decoration:none;
-	font:11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	padding:1px;
 }
 
 .submenu {
 	color:black;
 	text-decoration:none;
-	font:11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	background-color:#edf7fd;
 	border:solid #81a9cb 1px;
 	white-space:nowrap;
@@ -557,7 +554,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	height:20px;
 	color:#555555;
 	text-decoration:none;
-	font:11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	background-color:#edf7fd;
 	white-space:nowrap;
 	padding:1px;
@@ -567,7 +564,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	vertical-align:middle;
 	height:20px;
 	color:black;
-	font:11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	background-color:#e6f0fa;
 	white-space:nowrap;
 	padding:1px;
@@ -584,7 +581,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .news_title {
-	font:bold 14px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:14px;
 	color:black;
 }
 
@@ -628,13 +625,13 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .helpstart {
 	margin:10px;
-	font:bold 14px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:14px;
 	color:blue;
 	text-decoration:none;
 }
 
 .helptext {
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	color:black;
 }
 
@@ -645,7 +642,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 #footer {
 	clear:both;
 	color:black;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	text-align:center;
 }
 
@@ -653,7 +650,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .small_inner_block {
 	max-height:200px;
 	overflow:auto;
-	font:normal 10px tahoma, arial, helvetica, sans-serif;
+	font-size:10px;
 }
 
 .normal_inner_block {
@@ -664,7 +661,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	background-color:#edf7fd;
 	color:black;
 	border:solid #81a9cb 1px;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	vertical-align:top;
 	margin-bottom:5px;
 	padding:1px;
@@ -834,7 +831,6 @@ left:auto;
 .listlog {
 	line-height:20pt;
 	color:#555555;
-	font-family:tahoma, arial, helvetica, sans-serif;
 }
 
 input, button, textarea {
@@ -845,7 +841,7 @@ input, button, textarea {
 	border-top-width:1px;
 	border-left-width:1px;
 	border-bottom-width:1px;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	border-right-width:1px;
 }
 
@@ -870,26 +866,26 @@ select {
 	border-top-width:1px;
 	border-left-width:1px;
 	border-bottom-width:1px;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	border-right-width:1px;
 }
 
 form {
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 }
 
 h2 {
 	color:#000066;
-	font:bold 18px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:18px;
 }
 
 h4 {
 	color:#000066;
-	font:bold 12px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:12px;
 }
 
 .formField {
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 }
 
 .starredname {
@@ -903,7 +899,6 @@ h4 {
 .title {
 	clear:both;
 	font-size:20px;
-	font-family:tahoma, arial, helvetica, sans-serif;
 	float:left;
 	padding-left:10px;
 }
@@ -932,7 +927,7 @@ html[dir='rtl'] .header_search {
 .topbottombar {
 	color:#ffffff;
 	background-color:#81a9cb;
-	font:bold 12px tahoma, arial, helvetica, sans-serif;
+	font-weight:bold; font-size:12px;
 	padding:4px;
 	text-align:center;
 }
@@ -943,7 +938,7 @@ html[dir='rtl'] .header_search {
 	background-color:#d1d9ef;
 	color:black;
 	border:solid #81a9cb 1px;
-	font:11px tahoma, arial, helvetica, sans-serif;
+	font-size:11px;
 	vertical-align:top;
 	white-space:nowrap;
 	padding:3px;
@@ -953,7 +948,7 @@ html[dir='rtl'] .header_search {
 .descriptionbox {
 	color:#ffffff;
 	background-color:#81a9cb;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	vertical-align:top;
 	padding:3px;
 }
@@ -968,7 +963,7 @@ html[dir='rtl'] .header_search {
 	background-color:#d1d9ef;
 	color:black;
 	border:solid #81a9cb 1px;
-	font:12px tahoma, arial, helvetica, sans-serif;
+	font-size:12px;
 	vertical-align:top;
 	white-space:nowrap;
 	padding:3px;
@@ -1120,14 +1115,14 @@ a.showit:hover span {
 	padding:3px;
 	background:#4f4f4f;
 	color:white;
-	font:15px tahoma, arial, helvetica, sans-serif;
+	font-size:15px;
 	text-align:left;
 	opacity:.85;
 	z-index:5;
 }
 
 .lifespan_people span:first-letter {
-	font:bold 16px tahoma, arial, helvetica, sans-serif;
+	font-size:16px;
 	font-variant:small-caps;
 	padding:1px;
 }
@@ -1191,7 +1186,6 @@ a.showit:hover span {
 	{
 		margin:0;
 		padding:0;
-		font-family:Arial;
 		font-size:10px;
 		list-style:none;
 	}
@@ -1224,7 +1218,6 @@ a.showit:hover span {
 	}
 
 .tag_cloud {
-	font-family:tahoma, arial, helvetica, sans-serif;
 	text-align:center;
 }
 .tag_cloud a {
