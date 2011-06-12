@@ -154,10 +154,7 @@ function check_NN($names) {
 function DMSoundex($name) {
 	global $transformNameTable, $dmsounds, $maxchar;
 
-	// If the code tables are not loaded, reload! Keep them global!
-	if (!defined('WT_DMSOUNDS_UTF8_PHP')) {
-		require WT_ROOT.'includes/dmsounds_UTF8.php';
-	}
+	require_once WT_ROOT.'includes/dmsounds_UTF8.php';
 
 	// Apply special transformation rules to the input string
 	$name = utf8_strtoupper($name);
