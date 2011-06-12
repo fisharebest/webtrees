@@ -50,16 +50,15 @@ html[dir='rtl'] .topMenu_right {float: left;}
 
 /* set up div container for menu */
 #topMenu { clear: both; height:41px; float: left; width: 100%; margin:0; padding:0; margin-top: 0px; position: relative; }
-html[dir='rtl'] #topMenu {	float: right;}
 
 /* Set up Top Menu */
 
-#topMenu ul 		{ margin: 0; padding: 0; list-style: none; position:relative; }
-#topMenu ul li 		{ display: block; list-style:none; width: auto; float:left; position:relative; }
-#topMenu ul li a 	{ margin: auto; display: block; font-size: 14px; text-align: center; padding: 5px 5px 5px 5px; text-decoration: none; 
+#topMenu ul { margin: 0; padding: 0; list-style: none; position:relative; }
+#topMenu ul li { display: block; list-style:none; width: auto; float:left; position:relative; }
+#topMenu ul li a { margin: auto; display: block; font-size: 14px; text-align: center; padding: 5px 5px 5px 5px; text-decoration: none;  }
 
+html[dir='rtl'] #topMenu {	float: right;}
 html[dir='rtl'] #topMenu ul li { float: right;}
-}
 
 /* Subnavigation section */
 
@@ -83,10 +82,7 @@ html[dir='rtl'] #topMenu ul ul li a	{ text-align: right; float: right; padding-r
 #topMenu ul li li a:hover	{	width: auto; }
 #topMenu ul  ul li:hover ul	{ display:block!important; position: absolute; margin-left: 118px; margin-top: -35px; } 
 
-html[dir='rtl'] #topMenu ul  ul li:hover ul { margin-left: auto; margin-right: 118px;
-} 
-
-
+html[dir='rtl'] #topMenu ul  ul li:hover ul { margin-left: auto; margin-right: 118px; } 
 
 /*  Mainmenu Icons*/
 #topMenu > ul > li {
