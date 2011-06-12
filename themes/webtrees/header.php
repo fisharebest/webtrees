@@ -77,28 +77,21 @@ if ($view!='simple') {
 			);
 		} else {
 			// Options for real users
-			echo
-				'<ul id="extra-menu" class="makeMenu">',
-				'<li>';
+			echo '<ul id="extra-menu" class="makeMenu"><li>';
 			if (WT_USER_ID) {
 				echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
-			} elseif (empty($SEARCH_SPIDER)) {
+			} else {
 				echo login_link();
 			}
-			echo ' | </li>';
-			if (!$SEARCH_SPIDER) {
-				echo WT_MenuBar::getFavoritesMenu()->GetMenuAsList();
-				if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
-					echo ' | ', WT_MenuBar::getThemeMenu()->GetMenuAsList();
-				}
-				$language_menu=WT_MenuBar::getLanguageMenu();
-				if ($language_menu) {
-					echo ' | ', $language_menu->GetMenuAsList();
-				}
+			echo ' | </li>', WT_MenuBar::getFavoritesMenu()->GetMenuAsList();
+			if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
+				echo ' | ', WT_MenuBar::getThemeMenu()->GetMenuAsList();
 			}
-			echo
-				'</ul>',
-				'<div class="title">';
+			$language_menu=WT_MenuBar::getLanguageMenu();
+			if ($language_menu) {
+				echo ' | ', $language_menu->GetMenuAsList();
+			}
+			echo '</ul><div class="title">';
 			print_gedcom_title_link(true);
 			echo
 				'</div>',
@@ -140,7 +133,7 @@ if ($view!='simple') {
 	echo
 		'</ul>',  // <ul id="main-menu">
 		'</div>', // <div id="topMenu">
-		'<img align="middle" src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
+		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
 		'</div>', // <div id="header">
 		'<div id="content">';
 }
