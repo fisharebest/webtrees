@@ -1,25 +1,39 @@
 /**
-* Copyright (c) 2011 Rob Peters
-*
-* Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.
-*
-* $Id$
+* Style for colors theme
+ *
+ * webtrees: Web based Family History software
+ * Copyright (C) 2011 webtrees development team.
+ *
+ * Derived from PhpGedView Cloudy theme
+ * Original author w.a. bastein http://genealogy.bastein.biz
+ * Copyright (C) 2010  PGV Development Team.  All rights reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ * $Id$
 */
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html { overflow-y:scroll; }
 
-body {
-font: 12px tahoma, arial, helvetica, sans-serif;
-background:#fff;
+/* Set global defaults */
 
-}
+body { font: 12px tahoma, arial, helvetica, sans-serif; background:#fff; }
+* { margin:0px; padding:0px; }
 
-* {
-margin:0px;
-padding:0px;
-}
-
+/* ================= */
 /*   Header Layout   */
 
 #header {height: 65px; }
@@ -30,113 +44,49 @@ html[dir='rtl'] .title {float: right; margin-right: 12px; }
 html[dir='rtl'] .makeMenu {display: block; float: left;  margin: 40px 0px 0px 10px; }
 html[dir='rtl'] .topMenu_right {float: left;} 
 
-/*  Menu System Layout  */
 
-#topMenu {  /* set up div container for menu */
-	clear: both;
-	height:41px;
-	float: left;
-	width: 100%;
-	margin:0;
-	padding:0;
-	margin-top: 0px;
-	position: relative;
-}
+/* ====================== */
+/* Layout Left Main menu  */
+
+/* set up div container for menu */
+#topMenu { clear: both; height:41px; float: left; width: 100%; margin:0; padding:0; margin-top: 0px; position: relative; }
 html[dir='rtl'] #topMenu {	float: right;}
 
 /* Set up Top Menu */
 
-#topMenu ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	position:relative; 
-}
+#topMenu ul 		{ margin: 0; padding: 0; list-style: none; position:relative; }
+#topMenu ul li 		{ display: block; list-style:none; width: auto; float:left; position:relative; }
+#topMenu ul li a 	{ margin: auto; display: block; font-size: 14px; text-align: center; padding: 5px 5px 5px 5px; text-decoration: none; 
 
-#topMenu ul li {
-	display: block;
-	list-style:none;
-	width: auto;
-	float:left;
-	position:relative;
-}
 html[dir='rtl'] #topMenu ul li { float: right;}
-
-#topMenu ul li a {
-	margin: auto;
-	display: block;
-	font-size: 14px; /* set font size for top menu */
-	text-align: center;
-	padding: 5px 5px 5px 5px;
-	text-decoration: none; 
 }
 
 /* Subnavigation section */
-#topMenu ul ul {
-	background: none;
-	display:none; /* Sub menus are hidden by default */
-	position:absolute;
-	z-index:2001;
-	top: 28px;
-	left:0;
-	right: auto;
-	width: auto;  
-	background: #fff;
-	text-align: left;
-	border: 1px solid #ccc;
-	white-space: nowrap;
-}
-html[dir='rtl'] #topMenu ul ul {right: 0px; left: auto; }
 
-#topMenu ul ul li {
-	left:auto; 
-	margin:0; 
-	clear:left; 
-	text-align:left; 
-	width:100%
-}
-html[dir='rtl'] #topMenu ul ul li { right:auto; clear:right; text-align:right;}
+#topMenu ul ul 		{ background: none; display:none;  position:absolute; z-index:2001; top: 28px; left:0; right: auto; width: auto; background: #fff; text-align: left; border: 1px solid #ccc; white-space: nowrap; }
+#topMenu ul ul li 	{ left:auto;  margin:0;  clear:left;  text-align:left;  width:100% }
+#topMenu ul ul li a	{ font-size: 12px;  padding: 5px 5px 5px 5px; text-align: left; white-space: nowrap; }
 
-#topMenu ul ul li a {
-	font-size: 12px; 
-	padding: 5px 5px 5px 5px;
-	text-align: left;
-	white-space: nowrap;
- }
-html[dir='rtl'] #topMenu ul ul li a { text-align: right; float: right; padding-right: 30px;}
+html[dir='rtl'] #topMenu ul ul 		{right: 0px; left: auto; }
+html[dir='rtl'] #topMenu ul ul li 	{ right:auto; clear:right; text-align:right;}
+html[dir='rtl'] #topMenu ul ul li a	{ text-align: right; float: right; padding-right: 30px;}
  
 /* Submenu horizontal */
-#topMenu ul ul ul{ display:none!important; } /* Sub menus are hiden by default */
+
+#topMenu ul ul ul{ display:none!important; } 
 
 /* Set up hover layout and style */
 
-#topMenu ul li:hover ul { display: block; }
+#topMenu ul li:hover ul 	{ display: block; }
+#topMenu ul li:hover li		{ float: none; }
+#topMenu ul li:hover li a 	{ text-decoration: none; }   
+#topMenu ul li li a:hover	{	width: auto; }
+#topMenu ul  ul li:hover ul	{ display:block!important; position: absolute; margin-left: 118px; margin-top: -35px; } 
 
-#topMenu ul li:hover li { float: none; }
-
-#topMenu ul li:hover li a { text-decoration: none; }   
-	
-#topMenu ul li li a:hover {	width: auto; }
-
-#topMenu ul  ul li:hover ul{
-	display:block!important;
-	position: absolute;
-	margin-left: 118px;
-	margin-top: -35px;  
+html[dir='rtl'] #topMenu ul  ul li:hover ul { margin-left: auto; margin-right: 118px;
 } 
 
-html[dir='rtl'] #topMenu ul  ul li:hover ul {
-	margin-left: auto;
-	margin-right: 118px;
-} 
 
-/* Color Palette Layout */
-
-.toplinks_right {
-	float: right;
-	padding: 13px 15px 10px 10px;
-} 
-html[dir='rtl'] .toplinks_right  {	float: left; padding: 13px 10px 10px 15px; }
 
 /*  Mainmenu Icons*/
 #topMenu > ul > li {
@@ -171,72 +121,30 @@ html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
 }
 /* Menu icons moved to file sprite-menu-icons.css */
 
-/* Right Nav Menu system <ul> */
+/* Options Menu, language, theme, login */
 
-.makeMenu li {
-z-index: 100;
-	display:inline;
-	position:relative;
-	white-space:nowrap;
-}
+.toplinks_right 				{ float: right; padding: 13px 15px 10px 10px; } 
 
-.makeMenu li:before { content:" | "; }
-.makeMenu li ul li:before { content:""; }
+
+.makeMenu li 					{ z-index: 100; display:inline; position:relative; white-space:nowrap; }
+.makeMenu li:before 			{ content:" | "; }
+.makeMenu li ul li:before 		{ content:""; }
 .makeMenu li:first-child:before { content:""; }
+.makeMenu li ul 				{ display:none; position:absolute; left:10px; background-color:#EEE; border:thin solid #AAA; z-index:999; }
+.makeMenu li ul li 				{ display:block; text-align:left; }
+.makeMenu li ul li a 			{ color: #333; }
+.makeMenu, .makeMenu li ul 		{ color: #fff; list-style:none; top: 5px; margin-left: 0px!important; padding:1px; }
+.makeMenu li:hover > ul 		{ display:block; }
+.makeMenu li a 					{color: #ffffff;}
+.makeMenu li a:hover 			{color: #f5003d;}
+.makeMenu ul li a 				{ background-color: #fff; padding: 0px 5px 0px 2px; display: block; }
+.makeMenu ul li a:hover  		{ background: #fef9dc; color: #000; }
+li a.link 						{ font-size: 13px; margin-right: 5px; margin-left: 5px; }
 
-.makeMenu li ul {
-	display:none;
-	position:absolute;
-	left:10px;
-	top: 1.1em;
-	background-color:#EEE;
-	border:thin solid #AAA;
-	z-index:999;
-}
-
-html[dir='rtl'] .makeMenu li ul {
-	left:auto;
-	right:10px;
-}
-
-.makeMenu li ul li {
-	display:block;
-	text-align:left;
-}
-
-.makeMenu li ul li a { color: #333; }
-
+html[dir='rtl'] .toplinks_right { float: left; padding: 13px 10px 10px 15px; }
+html[dir='rtl'] .makeMenu li ul { left:auto; right:10px; }
 html[dir='rtl'] .makeMenu li ul li { text-align:right; }
 
-.makeMenu, .makeMenu li ul {
-    color: #fff;
-	list-style:none;
-	top: 5px;
-	margin-left: 0px!important;
-	padding:1px;
-}
-
-.makeMenu li:hover > ul { display:block; }
-
-.makeMenu li a {color: #ffffff;}
-.makeMenu li a:hover {color: #f5003d;}
-
-.makeMenu ul li a {
-    background-color: #fff;
-	padding: 0px 5px 0px 2px;
-    display: block;
-}
-
-.makeMenu ul li a:hover  {
-	background: #fef9dc;
-	color: #000;
-}
-
-li a.link {
-	font-size: 13px;
-	margin-right: 5px;
-	margin-left: 5px;
-}
 /*   Colors Style */
 /*	Color settings for the this theme	*/
 /*	Header and Light Text Colors	*/
@@ -309,24 +217,13 @@ text-decoration: none;
 
 /*	Define Alert Color					*/
 
-.error, .warning, .red {
-color:#fc6d1d;
-}
-
-.facts_labelred, .facts_valuered {
-border: solid #fc6d1d 2px;
-}
+.error, .warning, .red { color:#fc6d1d; }
+.facts_labelred, .facts_valuered { border: solid #fc6d1d 2px; }
 
 /*	Define Dark Text Color 				*/
 
-input,button,textarea {
-border-color:#fff #494949 #494949 #fff;
-}
-
-body,
-.subheaders {
-color:#494949;
-}
+input,button,textarea 	{ border-color:#fff #494949 #494949 #fff; }
+body, .subheaders 		{ color:#494949; }
 
 /*   Edit Facts */
 td.descriptionbox div a {

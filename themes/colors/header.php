@@ -63,7 +63,7 @@ if (!empty($META_GENERATOR)) {
 	echo
 	'<link rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css "type="text/css"  />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
-	'<link rel="stylesheet" href="', WT_THEME_DIR, 'sprite-menu-icons.css" type="text/css" />',
+	'<link rel="stylesheet" href="', WT_THEME_DIR, 'css/common.css" type="text/css" />',
 	'<link rel="stylesheet" href="', $print_stylesheet,'" type="text/css" media="print" />';
 
 if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {
