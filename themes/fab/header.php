@@ -2,7 +2,7 @@
 // Header for FAB theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
 // Modifications Copyright (c) 2010 Greg Roach
@@ -21,9 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @package webtrees
-// @subpackage Themes
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -101,8 +99,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 		if ($language_menu) {
 			echo $language_menu->getMenuAsList();
 		}
-		global $ALLOW_THEME_DROPDOWN;
-		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
+		if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
 			echo WT_MenuBar::getThemeMenu()->getMenuAsList();
 		}
 		echo

@@ -30,20 +30,16 @@ if (!defined('WT_WEBTREES')) {
 
 //-- print color theme sub type change dropdown box
 function color_theme_dropdown() {
-	global $ALLOW_THEME_DROPDOWN, $COLOR_THEME_LIST;
-
-	if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
-		$menu=new WT_Menu(WT_I18N::translate('Color Palette'));
-		$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', 'icon_small_theme');
-		uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
-		foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
-			$submenu=new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice)));
-			$menu->addSubMenu($submenu);
-		}
-		return '<div class="color_form">'.$menu->getMenuAsDropdown().'</div>';
-	} else {
-		return '&nbsp;';
+	global $COLOR_THEME_LIST;
+	
+	$menu=new WT_Menu(WT_I18N::translate('Color Palette'));
+	$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', 'icon_small_theme');
+	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
+	foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
+		$submenu=new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice)));
+		$menu->addSubMenu($submenu);
 	}
+	return '<div class="color_form">'.$menu->getMenuAsDropdown().'</div>';
 }
 
 /**

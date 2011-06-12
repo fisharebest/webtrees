@@ -705,26 +705,20 @@ class WT_MenuBar {
 	}
 
 	public static function getThemeMenu() {
-		global $SEARCH_SPIDER, $ALLOW_THEME_DROPDOWN;
-
-		if ($ALLOW_THEME_DROPDOWN && !$SEARCH_SPIDER && get_site_setting('ALLOW_USER_THEMES')) {
-			$menu=new WT_Menu(WT_I18N::translate('Theme'));
-			$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', 'icon_small_theme');
-			$menu->addId('menu-theme');
-			foreach (get_theme_names() as $themename=>$themedir) {
-				$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir)));
-				if ($themedir==WT_THEME_DIR) {
-					$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
-				} else {
-					$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-				}
-				$submenu->addId('menu-theme-'.$themedir);
-				$menu->addSubMenu($submenu);
+		$menu=new WT_Menu(WT_I18N::translate('Theme'));
+		$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', 'icon_small_theme');
+		$menu->addId('menu-theme');
+		foreach (get_theme_names() as $themename=>$themedir) {
+			$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir)));
+			if ($themedir==WT_THEME_DIR) {
+				$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
+			} else {
+				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
 			}
-			return $menu;
-		} else {
-			return null;
+			$submenu->addId('menu-theme-'.$themedir);
+			$menu->addSubMenu($submenu);
 		}
+		return $menu;
 	}
 
 	public static function getLanguageMenu() {

@@ -117,9 +117,8 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 				<td width="10" height="40"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="18" alt="" /></td>
 				<td width="115"><div id="favtheme" align="<?php echo $TEXT_DIRECTION=="rtl"?"right":"left"; ?>" >
 					<?php
-					$menu=WT_MenuBar::getThemeMenu();
-					if ($menu) {
-						echo $menu->getMenu();
+					if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
+						echo WT_MenuBar::getThemeMenu()->getMenu();
 					}
 					print_favorite_selector(1);
 				?>
