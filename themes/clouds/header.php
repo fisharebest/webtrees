@@ -195,9 +195,11 @@ if ($view!='simple') {
 		if ($language_menu) {
 			echo $language_menu->getMenuAsList();
 		}
-		global $ALLOW_THEME_DROPDOWN;
-		if ($ALLOW_THEME_DROPDOWN && get_site_setting('ALLOW_USER_THEMES')) {
+		if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
 			echo WT_MenuBar::getThemeMenu()->getMenuAsList();
+			$allow_color_dropdown=true;
+		} else {
+			$allow_color_dropdown=false;
 		}
 	}
 				echo '</span></div>';
