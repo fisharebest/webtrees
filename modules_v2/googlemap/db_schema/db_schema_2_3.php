@@ -30,11 +30,9 @@
 // $Id$
 
 if (!defined('WT_WEBTREES')) {
-header('HTTP/1.0 403 Forbidden');
-exit;
+	header('HTTP/1.0 403 Forbidden');
+	exit;
 }
-
-define('WT_GM_DB_SCHEMA_2_3', '');
 
 WT_DB::exec("UPDATE `##placelocation` SET pl_icon=REPLACE(pl_icon, '.gif', '.png')");
 

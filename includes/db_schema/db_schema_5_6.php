@@ -26,14 +26,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-define('WT_DB_SCHEMA_5_6', '');
 
 $settings=self::prepare(
 	"SELECT gedcom_id, setting_value FROM `##gedcom_setting` WHERE setting_name='SHOW_RELATIVES_EVENTS'"

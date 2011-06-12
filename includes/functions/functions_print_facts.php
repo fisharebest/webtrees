@@ -30,8 +30,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_FUNCTIONS_PRINT_FACTS_PHP', '');
-
 // print a fact record, for the gedcom object pages.
 function print_fact(WT_Event $eventObj) {
 	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $n_chil, $n_gchi;

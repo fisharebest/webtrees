@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_FUNCTIONS_CHARTS_PHP', '');
-
 /**
  * print a table cell with sosa number
  *

@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_FUNCTIONS_PHP', '');
-
 require_once WT_ROOT.'includes/functions/functions_utf-8.php';
 
 ////////////////////////////////////////////////////////////////////////////////

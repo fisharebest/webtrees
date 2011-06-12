@@ -35,8 +35,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_AUTHENTICATION_PHP', '');
-
 /**
  * authenticate a username and password
  *

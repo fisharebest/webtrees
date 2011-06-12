@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_FUNCTIONS_PLACE_PHP', '');
-
 /**
  * get the URL to link to a place
  * @string a url that can be used to link to placelist

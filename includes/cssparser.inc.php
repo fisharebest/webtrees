@@ -1,22 +1,32 @@
 <?php
-/**
- * Class to parse css information.
- *
- * See the readme file : http://www.phpclasses.org/browse/file/4685.html
- *
- * $Id$
- *
- * @author http://www.phpclasses.org/browse/package/1289.html
- * @package webtrees
- * @subpackage Charts
- */
+// Class to parse css information.
+// 
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Original author, and copyright (C) Thomas Björk
+// http://www.phpclasses.org/browse/package/1289.html
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-define('WT_CSS_PARSER_PHP', '');
 
 class cssparser {
   var $css;

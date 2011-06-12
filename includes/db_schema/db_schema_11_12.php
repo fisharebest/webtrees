@@ -30,14 +30,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id: db_schema_10_11.php 11634 2011-05-28 17:26:04Z greg $
+// $Id: db_schema_10_11.php 11634 2011-05-28 17:26:04Z greg $
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-define('WT_DB_SCHEMA_11_12', '');
 
 // Remove slashes from INDI names
 self::exec("UPDATE `##name` SET n_full=REPLACE(n_full, '/', '') WHERE n_surn IS NOT NULL");

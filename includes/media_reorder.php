@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_MEDIA_REORDER_PHP', '');
-
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
 	echo "<br /><b>".WT_I18N::translate('Re-order media')."</b>";

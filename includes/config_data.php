@@ -1,41 +1,37 @@
 <?php
-/**
- * Application configuration data.  Data here has no GUI to edit it,
- * although most of it can be altered to customise local installations.
- *
- * NOTE: The one-item-per-line and extra-comma-after-last-item approach
- * is used to allow SVN to reliably merge changes for users that have
- * customised their local copy of this file.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2010 PGV Development Team.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @version $Id$
- */
+// Application configuration data.  Data here has no GUI to edit it,
+// although most of it can be altered to customise local installations.
+//
+// NOTE: The one-item-per-line and extra-comma-after-last-item approach
+// is used to allow SVN to reliably merge changes for users that have
+// customised their local copy of this file.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2010 PGV Development Team.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
-define('WT_CONFIG_DATA_PHP', '');
 
 // Unknown surname
 $UNKNOWN_NN=WT_I18N::translate_c('Unknown surname', '…');

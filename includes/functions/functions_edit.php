@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-define('WT_FUNCTIONS_EDIT_PHP', '');
-
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 // Create an edit control for inline editing using jeditable
