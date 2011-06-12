@@ -1561,11 +1561,6 @@ html[dir='rtl'] #extra-menu.makeMenu li ul {
 	right:auto;
 }
 
-/*--- edit links ---*/
-.edit_link:after { /* used only on the user list */
-	content: " " url(images/edit_sm.png);
-}
-
 td.descriptionbox  a { /* this keeps the tag color the same when it is a link as when not */
 	color: blue;
 }

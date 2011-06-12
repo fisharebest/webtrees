@@ -1709,11 +1709,6 @@ font-size: 90%;
 padding: 0 10px;
 }
 
-/*--- edit links ---*/
-.edit_link:after { /* used only on the user list */
-	content: " " url(images/edit_sm.png);
-}
-
 .place {
 	padding-top: 5px;
 }

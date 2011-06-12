@@ -1449,7 +1449,6 @@ div.faq_body {
 	padding:0 10px;
 }
 
-.edit_link:after {content:" " url(images/edit.png);}/* used only on the user list */
 td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when it is a link as when not */
 .place {	padding-top:5px;}
 .logo {text-align:center;}

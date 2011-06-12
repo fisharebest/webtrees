@@ -1642,10 +1642,6 @@ padding: 0 10px;
 background: transparent;
 }
 
-.edit_link:after { /* used only on the user list */
-	content: " " url(../images/edit_sm.png);
-}
-
 td.descriptionbox  a { 
 color: #ffffff;
 }
