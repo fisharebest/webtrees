@@ -16,7 +16,7 @@ a.showit:hover span {
 }
 /* IE7 fixs */
 .makeMenu li ul {
-	top: 2px;
+	top: -6px;
 	*top: 8px; 
 }
 #menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px}
