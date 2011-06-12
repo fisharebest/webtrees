@@ -1108,12 +1108,9 @@ function print_media_table($datalist, $legend) {
 function format_surname_table($surnames, $type) {
 	global $GEDCOM;
 
-	require_once WT_ROOT.'js/sorttable.js.htm';
-	$table_id ='ID'.floor(microtime()*1000000); // sorttable requires a unique ID
-	$html='<table id="'.$table_id.'" class="sortable list_table center">';
-	$html.='<tr><th></th>';
-	$html.='<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 1)">'.WT_Gedcom_Tag::getLabel('SURN').'</a></th>';
-	$html.='<th style="display:none;">SURN</th>'; // hidden column for sorting surnames
+	$html='<table class="sortable list_table center">';
+	$html.='<th>&nbsp;</th>';
+	$html.='<th class="list_label">'.WT_Gedcom_Tag::getLabel('SURN').'</th>';
 	$html.='<th class="list_label">';
 	if ($type=='famlist') {
 		$html.=WT_I18N::translate('Spouses');
@@ -1128,9 +1125,9 @@ function format_surname_table($surnames, $type) {
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indi/fam surname list
 		if ($surn) {
-			$url=$type.'.php?surname='.urlencode($surn).'&amp;ged='.rawurlencode($GEDCOM);
+			$url=$type.'.php?surname='.urlencode($surn).'&amp;ged='.WT_GEDURL;
 		} else {
-			$url=$type.'.php?alpha=,&amp;ged='.rawurlencode($GEDCOM);
+			$url=$type.'.php?alpha=,&amp;ged='.WT_GEDURL;
 		}
 		// Row counter
 		++$row_num;
@@ -1157,31 +1154,28 @@ function format_surname_table($surnames, $type) {
 			}
 		}
 		$html.='</td>';
-		// Hidden column for sorting surnames
-		$html.='<td style="display:none;">'.htmlspecialchars($surn).'</td>';
 		// Surname count
 		$html.='<td class="list_value_wrap">';
 		if (count($surns)==1) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal=count($indis);
-				$html.='<a name="'.$subtotal.'">'.$subtotal.'</a>';
+				$html.='<a name="'.$subtotal.'">'.WT_I18N::number($subtotal).'</a>';
 			}
 		} else {
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			$subtotal=0;
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal+=count($indis);
-				$html.=count($indis).'<br />';
+				$html.=WT_I18N::number(count($indis)).'<br />';
 			}
-			$html.='<a name="'.$subtotal.'">'.$subtotal.'</a>';
+			$html.='<a name="'.$subtotal.'">'.WT_I18N::number($subtotal).'</a>';
 		}
 		$html.='</td></tr>';
 	}
 	//-- table footer
 	$html.='<tr class="sortbottom"><td class="list_item">&nbsp;</td>';
 	$html.='<td class="list_item">&nbsp;</td>';
-	$html.='<td style="display:none;">&nbsp;</td>'; // hidden column for sorting surnames
 	$html.='<td class="list_label name2">'. /* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi)));
 	$html.='<br/>'. /* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).'</td></tr></table>';
 	return $html;
