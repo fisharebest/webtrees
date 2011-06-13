@@ -1451,7 +1451,7 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 				$timerec=get_sub_record(2, '2 DATE', $factrec);
 			}
 			if (preg_match('/[2-3] TIME (.*)/', $timerec, $tmatch)) {
-				$html.=' - <span class="date">'.$tmatch[1].'</span>';
+				$html.='<span class="date"> - '.$tmatch[1].'</span>';
 			}
 		}
 		$fact = $eventObj->getTag();

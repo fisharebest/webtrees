@@ -1718,6 +1718,7 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
 #sb_content_extra_info .editfacts {float:right; margin-top:-30px;}
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 #sb_content_extra_info a {display:block;}
-#sb_content_extra_info span {font-weight:normal;}
+#sb_content_extra_info span {font-weight:normal; white-space:nowrap;}
+#sb_content_extra_info span a {display:inline;}
 #sb_content_extra_info #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
 
