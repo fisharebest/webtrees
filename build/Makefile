@@ -47,6 +47,7 @@ dist-clean: clean
 webtrees: $(PO_DIR) $(MO_DIR)
 	svn export .. $@
 	bzr update $(PO_DIR)
+	bzr revert $(PO_DIR)
 	make $(MO_FILES)
 	# Embed the SVN version number in the code (for SVN builds only)
 	sed -i "s/define('WT_VERSION_RELEASE', 'svn')/define('WT_VERSION_RELEASE', 'svn$(SVNVERSION)')/" $@/includes/session.php

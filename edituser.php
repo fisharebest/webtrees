@@ -193,7 +193,7 @@ echo '<input type="text" name="form_email" value="', getUserEmail(WT_USER_ID), '
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Theme'), help_link('THEME'), '</td><td class="optionbox" valign="top">';
 echo '<select name="form_theme">';
-echo '<option value="">', /* I18N: default option in list of themes */ WT_I18N::translate('&lt;default theme&gt;'), '</option>';
+echo '<option value="">', htmlspecialchars(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
 foreach (get_theme_names() as $themename=>$themedir) {
 	echo '<option value="', $themedir, '"';
 	if ($themedir==get_user_setting(WT_USER_ID, 'theme')) {

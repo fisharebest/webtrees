@@ -996,7 +996,7 @@ echo WT_JS_START;?>
 						<td>
 							<select name="NEW_THEME_DIR">
 								<?php
-									echo '<option value="">', WT_I18N::translate('&lt;default theme&gt;'), '</option>';
+									echo '<option value="">', htmlspecialchars(WT_I18N::translate('<default theme>')), '</option>';
 									$current_themedir=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
 									foreach (get_theme_names() as $themename=>$themedir) {
 										echo '<option value="', $themedir, '"';
