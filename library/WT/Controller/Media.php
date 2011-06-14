@@ -292,18 +292,18 @@ class WT_Controller_Media extends WT_Controller_Base {
 	function getFacts($includeFileName=true) {
 		$facts = $this->mediaobject->getFacts(array());
 		sort_facts($facts);
-		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->mediaobject->getFilename());
+		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->mediaobject->getFilename(), $this->mediaobject, 0);
 		$mediaType = $this->mediaobject->getMediatype();
-		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
+		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->mediaobject, 0);
 
 		if (($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
 			$newfacts = $newmedia->getFacts(array());
 			$newimgsize = $newmedia->getImageAttributes();
-			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
-			$newfacts[] = new WT_Event("1 FORM ".$newimgsize['ext']);
+			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->mediaobject, 0);
+			$newfacts[] = new WT_Event("1 FORM ".$newimgsize['ext'], $this->mediaobject, 0);
 			$mediaType = $newmedia->getMediatype();
-			$newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType));
+			$newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->mediaobject, 0);
 			//-- loop through new facts and add them to the list if they are any changes
 			//-- compare new and old facts of the Personal Fact and Details tab 1
 			for ($i=0; $i<count($facts); $i++) {
@@ -337,10 +337,10 @@ class WT_Controller_Media extends WT_Controller_Base {
 			// get height and width of image, when available
 			$imgsize = $this->mediaobject->getImageAttributes();
 			if (!empty($imgsize['WxH'])) {
-				$facts[] = new WT_Event('1 __IMAGE_SIZE__ '.$imgsize['WxH']);
+				$facts[] = new WT_Event('1 __IMAGE_SIZE__ '.$imgsize['WxH'], $this->mediaobject, 0);
 			}
 			//Prints the file size
-			$facts[] = new WT_Event('1 __FILE_SIZE__ '.$this->mediaobject->getFilesize());
+			$facts[] = new WT_Event('1 __FILE_SIZE__ '.$this->mediaobject->getFilesize(), $this->mediaobject, 0);
 		}
 
 		sort_facts($facts);

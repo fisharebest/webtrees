@@ -79,21 +79,21 @@ class WT_Event {
 		return null;
 	}
 
-	/**
-	 * Parses supplied subrecord to fill in the properties of the class.
-	 * Assumes the level of the subrecord is 1, and that all its associated sub records are provided.
-	 *
-	 * @param string $subrecord
-	 * @param int $lineNumber
-	 * @return WT_Event
-	 */
-	function __construct($subrecord, $lineNumber=-1) {
-		if (preg_match('/^1 ('.WT_REGEX_TAG.') *(.*)/', $subrecord, $match)) {
-			$this->tag=$match[1];
+	// Create an event objects from a gedcom fragment.
+	// We also need to know the parent (to check privacy, etc.) and
+	// the line number (from the original, privacy-filtered) gedcom
+	// record, to allow editing
+	function __construct($subrecord, $parent, $lineNumber) {
+		if (preg_match('/^1 ('.WT_REGEX_TAG.') ?(.*)/', $subrecord, $match)) {
+			$this->tag   =$match[1];
 			$this->detail=$match[2];
-			$this->lineNumber=$lineNumber;
-			$this->gedcomRecord=$subrecord;
+		} else {
+			// We are not ready for this yet.
+			// throw new Exception('Invalid GEDCOM data passed to WT_Event::_construct('.$subrecord.')');
 		}
+		$this->gedcomRecord=$subrecord;
+		$this->parentObject=$parent;
+		$this->lineNumber  =$lineNumber;
 	}
 
 	function setState($s) {
@@ -219,13 +219,6 @@ class WT_Event {
 	 */
 	function getParentObject() {
 		return $this->parentObject;
-	}
-
-	/**
-	 *
-	 */
-	function setParentObject($parent) {
-		$this->parentObject = $parent;
 	}
 
 	/**

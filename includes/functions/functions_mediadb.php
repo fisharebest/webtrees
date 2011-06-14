@@ -1799,7 +1799,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
 		}
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), "<br />";
-		$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec));
+		$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec), null, 0);
 		echo format_fact_date($event, false, true);
 		echo "</td></tr>";
 	}

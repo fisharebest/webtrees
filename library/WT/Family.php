@@ -250,8 +250,7 @@ class WT_Family extends WT_GedcomRecord {
 	 * parse marriage record
 	 */
 	function _parseMarriageRecord() {
-		$this->marriage = new WT_Event(trim(get_sub_record(1, '1 MARR', $this->getGedcomRecord())), -1);
-		$this->marriage->setParentObject($this);
+		$this->marriage = new WT_Event(get_sub_record(1, '1 MARR', $this->getGedcomRecord()), $this, 0);
 	}
 
 	/**

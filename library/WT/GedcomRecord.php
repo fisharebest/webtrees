@@ -828,10 +828,9 @@ class WT_GedcomRecord {
 			}
 			if ($i==$lct||$line{0}==1) {
 				if ($i>1) {
-					$event = new WT_Event($factrec, $linenum);
+					$event = new WT_Event($factrec, $this, $linenum);
 					$fact = $event->getTag();
 					if ($nfacts==NULL || !in_array($fact, $nfacts)) {
-						$event->setParentObject($this);
 						$this->facts[] = $event;
 					}
 				}
