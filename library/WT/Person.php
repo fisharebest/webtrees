@@ -1428,64 +1428,35 @@ class WT_Person extends WT_GedcomRecord {
 				$srec = $event->getGedcomRecord();
 				$arec = get_sub_record(2, '2 ASSO @'.$this->getXref().'@', $srec);
 				if ($arec) {
-					$fact = $event->getTag();
-					$label = $event->getLabel();
-					$sdate = get_sub_record(2, '2 DATE', $srec);
-					// relationship ?
-					$rrec = get_sub_record(3, '3 RELA', $arec);
-					$rela = trim(substr($rrec, 7));
-					if (empty($rela)) {
-						$rela = 'ASSO';
+					// Extract the important details from the fact
+					$factrec='1 '.$event->getTag();
+					if (preg_match('/\n2 DATE .*/', $srec, $match)) {
+						$factrec.=$match[0];
 					}
-					// add an event record
-					$factrec = "1 EVEN\n2 TYPE ".$label.'<br/>[ <span class="details_label">';
-					$factrec .= WT_I18N::translate($rela);
-					$factrec.='</span> ]'.$sdate."\n".get_sub_record(2, '2 PLAC', $srec);
-					if (!$event->canShow()) $factrec .= "\n2 RESN privacy";
-					if ($associate->getType()=='FAM') {
-						$famrec = find_family_record($associate->getXref(), $this->ged_id);
-						if ($famrec) {
-							$parents = find_parents_in_record($famrec);
-							if ($parents['HUSB']) $factrec .= "\n2 ASSO @".$parents['HUSB'].'@';
-							if ($parents['WIFE']) $factrec .= "\n2 ASSO @".$parents['WIFE'].'@';
+					if (preg_match('/\n2 PLAC .*/', $srec, $match)) {
+						$factrec.=$match[0];
+					}
+					if ($associate instanceof WT_Family) {
+						foreach ($associate->getSpouses() as $spouse) {
+							$factrec.="\n2 ASSO @".$spouse->getXref().'@';
 						}
-					} elseif ($fact=='BIRT') {
-						$sex = $associate->getSex();
-						if ($sex == 'M') {
-							$rela_b='twin_brother';
-						} elseif ($sex == 'F') {
-							$rela_b='twin_sister';
-						} else {
-							$rela_b='twin';
-						}
-						$factrec .= "\n2 ASSO @".$associate->getXref()."@\n3 RELA ".$rela_b;
-					} elseif ($fact=='CHR') {
-						$sex = $associate->getSex();
-						if ($sex == 'M') {
-							$rela_chr='godson';
-						} elseif ($sex == 'F') {
-							$rela_chr='goddaughter';
-						} else {
-							$rela_chr='godchild';
-						}
-						$factrec .= "\n2 ASSO @".$associate->getXref()."@\n3 RELA ".$rela_chr;
 					} else {
-						$factrec .= "\n2 ASSO @".$associate->getXref()."@\n3 RELA ".$fact;
-					}
-					//$factrec .= "\n3 NOTE ".$rela;
-					$factrec .= "\n2 ASSO @".$this->getXref()."@\n3 RELA *".$rela;
-					// check if this fact already exists in the list
-					$found = false;
-					if ($sdate) foreach ($this->indifacts as $k=>$v) {
-						if (strpos($v->getGedcomRecord(), $sdate)
-						&& strpos($v->getGedcomRecord(), '2 ASSO @'.$this->getXref().'@')) {
-							$found = true;
-							break;
+						$factrec.="\n2 ASSO @".$associate->getXref().'@';
+						// CHR/BAPM events are commonly used.  Generate the reverse relationship
+						if ($event->getTag()=='CHR' || $event->getTag()=='BAPM') {
+							switch ($associate->getSex()) {
+							case 'M':
+								$factrec.="\n3 RELA godson";
+								break;
+							case 'F':
+								$factrec.="\n3 RELA goddaughter";
+								break;
+							case 'U':
+								$factrec.="\n3 RELA godchild";
+								break;
+							}
 						}
-					}
-					if (!$found) {
-						$event = new WT_Event($factrec, $associate, 0);
-						$this->indifacts[] = $event;
+						$this->indifacts[] = new WT_Event($factrec, $associate, 0);
 					}
 				}
 			}
