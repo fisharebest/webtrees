@@ -461,14 +461,16 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		}
 
 		// add to favorites
-		$submenu = new WT_Menu(
-			WT_I18N::translate('Add to My Favorites'),
-			$this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->pid,
-			'menu-indi-addfav'
-		);
-		$submenu->addIcon('favorites');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
-		$menu->addSubmenu($submenu);
+		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+			$submenu = new WT_Menu(
+				WT_I18N::translate('Add to favorites'),
+				$this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->pid,
+				'menu-indi-addfav'
+			);
+			$submenu->addIcon('favorites');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
+			$menu->addSubmenu($submenu);
+		}
 
 		return $menu;
 	}

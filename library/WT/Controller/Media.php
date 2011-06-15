@@ -256,10 +256,16 @@ class WT_Controller_Media extends WT_Controller_Base {
 		}
 
 		// add to favorites
-		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), "mediaviewer.php?action=addfav&amp;mid={$this->mid}&amp;gid={$this->mid}", 'menu-obje-addfav');
-		$submenu->addIcon('favorites');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
-		$menu->addSubmenu($submenu);
+		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+			$submenu = new WT_Menu(
+				WT_I18N::translate('Add to favorites'),
+				$this->mediaobject->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->mid,
+				'menu-obje-addfav'
+			);
+			$submenu->addIcon('favorites');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
+			$menu->addSubmenu($submenu);
+		}
 
 		//-- get the link for the first submenu and set it as the link for the main menu
 		if (isset($menu->submenus[0])) {

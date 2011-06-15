@@ -173,10 +173,16 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		}
 
 		// add to favorites
-		$submenu = new WT_Menu(WT_I18N::translate('Add to My Favorites'), "repo.php?action=addfav&amp;rid={$this->rid}&amp;gid={$this->rid}", 'menu-repo-addfav');
-		$submenu->addIcon('favorites');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
-		$menu->addSubmenu($submenu);
+		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+			$submenu = new WT_Menu(
+				WT_I18N::translate('Add to favorites'),
+				$this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->rid,
+				'menu-repo-addfav'
+			);
+			$submenu->addIcon('favorites');
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
+			$menu->addSubmenu($submenu);
+		}
 
 		//-- get the link for the first submenu and set it as the link for the main menu
 		if (isset($menu->submenus[0])) {
