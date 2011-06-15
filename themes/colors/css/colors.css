@@ -1748,18 +1748,14 @@ html[dir='rtl'] .indi_table {clear:right;}
 
 /* General sprite */
 .male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display: block; background-color: transparent; background: url('../images/general_sprite.png') no-repeat left 0;}
-.icon_arrow {display: block; background: url('../images/small_menu_sprite.png') no-repeat left 0;}
 
 .editicon 	{background-position:  -40px -32px; width: 24px; height:16px;}
 .copyicon 	{background-position:  -70px -32px; width: 24px; height:16px;}
 .deleteicon {background-position: -100px -32px; width: 24px; height:16px;}
 
-.icon_arrow		{background-position: 90% -1166px;} 
 .female_gender 	{background-position: -45px 3px; width: 24px;}
 .male_gender 	{background-position: -72px 3px; width: 24px;}
 .unknown_gender {background-position: -100px 4px; width: 24px;}
-
-html[dir='rtl'] .icon_arrow {background-position: 10% -1184px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-state-default .ui-icon { background-image: url("../../../js/jquery/css/images/ui-icons_222222_256x240.png"); }
