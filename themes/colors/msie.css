@@ -24,3 +24,8 @@ a.showit:hover span {
 div.blockcontent {
 	*margin-top: -2px; /* IE7 fix */
 }
+
+#main-menu {*z-index:5001; }
+.makeMenu  {*z-index:5001; }
+
+

@@ -15,7 +15,15 @@ a.showit:hover span {
 	filter: alpha(opacity=85);
 }
 .makeMenu li ul {
-top: 2px!important;
-	*top: 8px; 
+top: 12px;
+	*top:12px; 
 }
 
+#menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px}
+
+div.blockcontent {
+	*margin-top: -2px; /* IE7 fix */
+}
+
+#main-menu {*z-index:5001; }
+.makeMenu {*z-index:5001; }
