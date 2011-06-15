@@ -247,7 +247,6 @@ html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
 
 .makeMenu li 					{ z-index: 100; display:inline; position:relative; white-space:nowrap; }
 .makeMenu li:before 			{ content:" | "; }
-.makeMenu li a { color: #ffffff;}
 .makeMenu li ul li:before 		{ content:""; }
 .makeMenu li:first-child:before { content:""; }
 .makeMenu li ul 				{ display:none; position:absolute; left:10px; top: 1.1em!important; background-color:#EEE; border:thin solid #AAA; z-index:999; }
@@ -311,9 +310,6 @@ a:hover, .blanco a.link:hover { color: red; text-decoration: none; }
 
 .error, .warning, .red { color: red; }
 .facts_labelred, .facts_valuered { border: solid red 2px; }
-
-/*	Define lite Text Color 				*/
-.descriptionbox { color: #fff; }
 
 /*	Define Dark Text Color 				*/
 
@@ -711,7 +707,6 @@ border:1px solid #acf;
 font-size: 12px;
 padding:4px;
 width:20%;
-color: #fff !important;
 text-align:center;
 }
 
