@@ -749,15 +749,15 @@ function print_favorite_selector($option=0) {
 	echo "<div class=\"favorites_form\">";
 	switch($option) {
 	case 1:
-		$menu = new WT_Menu(WT_I18N::translate('Favorites'), "#", "right", "down");
+		$menu = new WT_Menu(WT_I18N::translate('Favorites'), "#", null, "right", "down");
 		$menu->addClass("favmenuitem", "favmenuitem_hover", "favsubmenu");
 		if (count($userfavs)>0 || $gid!='') {
-			$submenu = new WT_Menu("<strong>".WT_I18N::translate('My Favorites')."</strong>", "#", "right");
+			$submenu = new WT_Menu("<strong>".WT_I18N::translate('My Favorites')."</strong>", "#", null, "right");
 			$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 			$menu->addSubMenu($submenu);
 
 			if ($gid!='') {
-				$submenu = new WT_Menu('<em>'.WT_I18N::translate('Add to My Favorites').'</em>', get_query_url(array('action'=>'addfav', 'gid'=>$gid)), "right");
+				$submenu = new WT_Menu('<em>'.WT_I18N::translate('Add to My Favorites').'</em>', get_query_url(array('action'=>'addfav', 'gid'=>$gid)), null, "right");
 				$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 				$menu->addSubMenu($submenu);
 			}
@@ -783,7 +783,7 @@ function print_favorite_selector($option=0) {
 			}
 		}
 		if (count($gedcomfavs)>0) {
-			$submenu = new WT_Menu("<strong>".WT_I18N::translate('This GEDCOM\'s Favorites')."</strong>", "#", "right");
+			$submenu = new WT_Menu("<strong>".WT_I18N::translate('This GEDCOM\'s Favorites')."</strong>", "#", null, "right");
 			$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
 			$menu->addSubMenu($submenu);
 			foreach ($gedcomfavs as $key=>$favorite) {

@@ -35,21 +35,23 @@ class WT_MenuBar {
 		global $WT_IMAGES;
 
 		//-- main menu
-		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom', 'down');
+		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom', 'menu-tree', 'down');
 		if (!empty($WT_IMAGES['home'])) {
 			$menu->addIcon('home');
 		}
-		$menu->addId('menu-tree');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_gedcom');
 		//-- gedcom list
 		$gedcom_titles=get_gedcom_titles();
 		if (count($gedcom_titles)>1 && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 			foreach ($gedcom_titles as $gedcom_title) {
-				$submenu = new WT_Menu(PrintReady($gedcom_title->gedcom_title, true), 'index.php?ctype=gedcom&amp;ged='.rawurlencode($gedcom_title->gedcom_name));
+				$submenu = new WT_Menu(
+					PrintReady($gedcom_title->gedcom_title, true),
+					'index.php?ctype=gedcom&amp;ged='.rawurlencode($gedcom_title->gedcom_name),
+					'menu-tree-'.$gedcom_title->gedcom_id // Cannot use name - it must be a CSS identifier
+				);
 				if (!empty($WT_IMAGES['gedcom'])) {
 					$submenu->addIcon('gedcom');
 				}
-				$submenu->addId('menu-tree-'.$gedcom_title->gedcom_id); // Cannot use name - it must be a CSS identifier
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_gedcom');
 				$menu->addSubmenu($submenu);
 			}
@@ -70,45 +72,43 @@ class WT_MenuBar {
 		}
 
 		//-- main menu
-		$menu = new WT_Menu(WT_I18N::translate('My Page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'down');
+		$menu = new WT_Menu(WT_I18N::translate('My Page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mymenu', 'down');
 		$menu->addIcon('mypage');
-		$menu->addId('menu-mymenu');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_mypage');
 
 		//-- mypage submenu
-		$submenu = new WT_Menu(WT_I18N::translate('My Page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL);
+		$submenu = new WT_Menu(WT_I18N::translate('My Page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mypage');
 		$submenu->addIcon('mypage');
-		$submenu->addId('menu-mypage');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_mypage');
 		$menu->addSubmenu($submenu);
 		//-- editaccount submenu
 		if (get_user_setting(WT_USER_ID, 'editaccount')) {
-			$submenu = new WT_Menu(WT_I18N::translate('My account'), 'edituser.php');
+			$submenu = new WT_Menu(WT_I18N::translate('My account'), 'edituser.php', 'menu-myaccount');
 			$submenu->addIcon('mypage');
-			$submenu->addId('menu-myaccount');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_mypage');
 			$menu->addSubmenu($submenu);
 		}
 		if (WT_USER_GEDCOM_ID) {
 			//-- my_pedigree submenu
-			$submenu = new WT_Menu(WT_I18N::translate('My Pedigree'), 'pedigree.php?ged='.WT_GEDURL.'&amp;rootid='.WT_USER_GEDCOM_ID."&amp;show_full={$showFull}&amp;talloffset={$showLayout}");
+			$submenu = new WT_Menu(
+				WT_I18N::translate('My Pedigree'),
+				'pedigree.php?ged='.WT_GEDURL.'&amp;rootid='.WT_USER_GEDCOM_ID."&amp;show_full={$showFull}&amp;talloffset={$showLayout}",
+				'menu-mypedigree'
+			);
 			if (!empty($WT_IMAGES['pedigree']))
 				$submenu->addIcon('pedigree');
-			$submenu->addId('menu-mypedigree');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_pedigree');
 			$menu->addSubmenu($submenu);
 			//-- my_indi submenu
-			$submenu = new WT_Menu(WT_I18N::translate('My individual record'), 'individual.php?ged='.WT_GEDURL.'&amp;pid='.WT_USER_GEDCOM_ID);
+			$submenu = new WT_Menu(WT_I18N::translate('My individual record'), 'individual.php?ged='.WT_GEDURL.'&amp;pid='.WT_USER_GEDCOM_ID, 'menu-myrecord');
 			$submenu->addIcon('indis');
-			$submenu->addId('menu-myrecord');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_indis');
 			$menu->addSubmenu($submenu);
 		}
 		if (WT_USER_GEDCOM_ADMIN) {
 			//-- admin submenu
-			$submenu = new WT_Menu(WT_I18N::translate('Administration'), 'admin.php');
+			$submenu = new WT_Menu(WT_I18N::translate('Administration'), 'admin.php', 'menu-admin');
 			$submenu->addIcon('admin');
-			$submenu->addId('menu-admin');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_admin');
 			$menu->addSubmenu($submenu);
 		}		
@@ -137,9 +137,8 @@ class WT_MenuBar {
 		//-- main charts menu item
 		$link = 'pedigree.php?ged='.WT_GEDURL."&amp;show_full={$showFull}&amp;talloffset={$showLayout}";
 		if ($rootid) $link .= "&amp;rootid={$rootid}";
-		$menu = new WT_Menu(WT_I18N::translate('Charts'), $link, 'down');
+		$menu = new WT_Menu(WT_I18N::translate('Charts'), $link, 'menu-chart', 'down');
 		$menu->addIcon('charts');
-		$menu->addId('menu-chart');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_pedigree');
 
 		// Build a sortable list of submenu items and then sort it in localized name order
@@ -174,9 +173,8 @@ class WT_MenuBar {
 				//-- pedigree
 				$link = 'pedigree.php?ged='.WT_GEDURL."&amp;show_full={$showFull}&amp;talloffset={$showLayout}";
 				if ($rootid) $link .= "&amp;rootid={$rootid}";
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-pedigree');
 				$submenu->addIcon('pedigree');
-				$submenu->addId('menu-chart-pedigree');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_pedigree');
 				$menu->addSubmenu($submenu);
 				break;
@@ -185,9 +183,8 @@ class WT_MenuBar {
 				//-- descendancy
 				$link = 'descendancy.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;pid={$rootid}&amp;show_full={$showFull}";
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-descendancy');
 				$submenu->addIcon('descendant');
-				$submenu->addId('menu-chart-descendancy');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_descendant');
 				$menu->addSubmenu($submenu);
 				break;
@@ -196,9 +193,8 @@ class WT_MenuBar {
 				//-- ancestry
 				$link = 'ancestry.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;rootid={$rootid}&amp;show_full={$showFull}";
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-ancestry');
 				$submenu->addIcon('ancestry');
-				$submenu->addId('menu-chart-ancestry');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_ancestry');
 				$menu->addSubmenu($submenu);
 				break;
@@ -207,9 +203,8 @@ class WT_MenuBar {
 				//-- compact
 				$link = 'compact.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= '&amp;rootid='.$rootid;
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-compact');
 				$submenu->addIcon('ancestry');
-				$submenu->addId('menu-chart-compact');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_ancestry');
 				$menu->addSubmenu($submenu);
 				break;
@@ -218,9 +213,8 @@ class WT_MenuBar {
 				//-- fan chart
 				$link = 'fanchart.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= '&amp;rootid='.$rootid;
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-fanchart');
 				$submenu->addIcon('fanchart');
-				$submenu->addId('menu-chart-fanchart');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_fanchart');
 				$menu->addSubmenu($submenu);
 				break;
@@ -229,9 +223,8 @@ class WT_MenuBar {
 				//-- hourglass
 				$link = 'hourglass.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;pid={$rootid}&amp;show_full={$showFull}";
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-hourglass');
 				$submenu->addIcon('hourglass');
-				$submenu->addId('menu-chart-hourglass');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_hourglass');
 				$menu->addSubmenu($submenu);
 				break;
@@ -240,9 +233,8 @@ class WT_MenuBar {
 				//-- familybook
 				$link = 'familybook.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;pid={$rootid}&amp;show_full={$showFull}";
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-familybook');
 				$submenu->addIcon('fambook');
-				$submenu->addId('menu-chart-familybook');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_fambook');
 				$menu->addSubmenu($submenu);
 				break;
@@ -251,9 +243,8 @@ class WT_MenuBar {
 				//-- timeline
 				$link = 'timeline.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= '&amp;pids[]='.$rootid;
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-timeline');
 				$submenu->addIcon('timeline');
-				$submenu->addId('menu-chart-timeline');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_timeline');
 				if (isset($controller) && !empty($controller->family)) {
 					// Build a sortable list of submenu items and then sort it in localized name order
@@ -268,33 +259,36 @@ class WT_MenuBar {
 						switch ($menuType) {
 						case 'parentTimeLine':
 							// charts / parents_timeline
-							$subsubmenu = new WT_Menu(WT_I18N::translate('Show couple on timeline chart'), 'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE')).'&amp;ged='.WT_GEDURL);
-							if (!empty($WT_IMAGES['timeline'])) {
-								$subsubmenu->addIcon('timeline');
-							}
-							$subsubmenu->addId('menu-chart-timeline-parents');
+							$subsubmenu = new WT_Menu(
+								WT_I18N::translate('Show couple on timeline chart'),
+								'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE')).'&amp;ged='.WT_GEDURL,
+								'menu-chart-timeline-parents'
+							);
+							$subsubmenu->addIcon('timeline');
 							$subsubmenu->addClass('submenuitem', 'submenuitem_hover');
 							$submenu->addSubmenu($subsubmenu);
 							break;
 
 						case 'childTimeLine':
 							// charts / children_timeline
-							$subsubmenu = new WT_Menu(WT_I18N::translate('Show children on timeline chart'), 'timeline.php?'.$controller->getTimelineIndis(array('CHIL')).'&amp;ged='.WT_GEDURL);
-							if (!empty($WT_IMAGES['timeline'])) {
-								$subsubmenu->addIcon('timeline');
-							}
-							$subsubmenu->addId('menu-chart-timeline-children');
+							$subsubmenu = new WT_Menu(
+								WT_I18N::translate('Show children on timeline chart'),
+								'timeline.php?'.$controller->getTimelineIndis(array('CHIL')).'&amp;ged='.WT_GEDURL,
+								'menu-chart-timeline-children'
+							);
+							$subsubmenu->addIcon('timeline');
 							$subsubmenu->addClass('submenuitem', 'submenuitem_hover');
 							$submenu->addSubmenu($subsubmenu);
 							break;
 
 						case 'familyTimeLine':
 							// charts / family_timeline
-							$subsubmenu = new WT_Menu(WT_I18N::translate('Show family on timeline chart'), 'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE','CHIL')).'&amp;ged='.WT_GEDURL);
-							if (!empty($WT_IMAGES['timeline'])) {
-								$subsubmenu->addIcon('timeline');
-							}
-							$subsubmenu->addId('menu-chart-timeline-family');
+							$subsubmenu = new WT_Menu(
+								WT_I18N::translate('Show family on timeline chart'),
+								'timeline.php?'.$controller->getTimelineIndis(array('HUSB','WIFE','CHIL')).'&amp;ged='.WT_GEDURL,
+								'menu-chart-timeline-family'
+							);
+							$subsubmenu->addIcon('timeline');
 							$subsubmenu->addClass('submenuitem', 'submenuitem_hover');
 							$submenu->addSubmenu($subsubmenu);
 							break;
@@ -309,9 +303,8 @@ class WT_MenuBar {
 				//-- lifespan
 				$link = 'lifespan.php?ged='.WT_GEDURL;
 				if ($rootid) $link .= "&amp;pids[]={$rootid}&amp;addFamily=1";
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-lifespan');
 				$submenu->addIcon('timeline');
-				$submenu->addId('menu-chart-lifespan');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_timeline');
 				$menu->addSubmenu($submenu);
 				break;
@@ -326,10 +319,10 @@ class WT_MenuBar {
 					}
 					$submenu = new WT_Menu(
 						WT_I18N::translate('Relationships'),
-						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL
+						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL,
+						'menu-chart-relationship'
 					);
 					$submenu->addIcon('relationship');
-					$submenu->addId('menu-chart-relationship');
 					$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_relationship');
 					if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 						// Add a submenu showing relationship from this person to each of our favorites
@@ -339,10 +332,10 @@ class WT_MenuBar {
 								if ($person instanceof WT_Person) {
 									$subsubmenu = new WT_Menu(
 										$person->getFullName(),
-										'relationship.php?pid1='.$pid1.'&amp;pid2='.$person->getXref().'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL
+										'relationship.php?pid1='.$pid1.'&amp;pid2='.$person->getXref().'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL,
+										'menu-chart-relationship-'.$person->getGedId().'-'.$person->getXref() // We don't use these, but a custom theme might
 									);
 									$subsubmenu->addIcon('relationship');
-									$subsubmenu->addId('menu-chart-relationship-'.$person->getGedId().'-'.$person->getXref());
 									$subsubmenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_relationship');
 									$submenu->addSubmenu($subsubmenu);
 								}
@@ -355,10 +348,10 @@ class WT_MenuBar {
 					$pid2='';
 					$submenu = new WT_Menu(
 						WT_I18N::translate('Relationships'),
-						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL
+						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL,
+						'menu-chart-relationship'
 					);
 					$submenu->addIcon('relationship');
-					$submenu->addId('menu-chart-relationship');
 					$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_relationship');
 				}
 				$menu->addSubmenu($submenu);
@@ -366,9 +359,8 @@ class WT_MenuBar {
 
 			case 'statistics':
 				//-- statistics plot
-				$submenu = new WT_Menu($menuName, 'statistics.php?ged='.WT_GEDURL);
+				$submenu = new WT_Menu($menuName, 'statistics.php?ged='.WT_GEDURL, 'menu-chart-statistics');
 				$submenu->addIcon('statistic');
-				$submenu->addId('menu-chart-statistics');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_statistic');
 				$menu->addSubmenu($submenu);
 				break;
@@ -376,9 +368,8 @@ class WT_MenuBar {
 			case 'tree':
 				//-- interactive tree
 				$link = 'module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$rootid;
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-tree');
 				$submenu->addIcon('itree');
-				$submenu->addId('menu-chart-tree');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_gedcom');
 				$menu->addSubmenu($submenu);
 				break;
@@ -387,11 +378,10 @@ class WT_MenuBar {
 				//-- pedigree map
 				$link = 'module.php?ged='.WT_GEDURL.'&amp;mod=googlemap&amp;mod_action=pedigree_map';
 				if ($rootid) $link .= '&amp;rootid='.$rootid;
-				$submenu = new WT_Menu($menuName, $link);
+				$submenu = new WT_Menu($menuName, $link, 'menu-chart-pedigree_map');
 				global $WT_IMAGES;
 				$WT_IMAGES['pedigree_map']=WT_MODULES_DIR.'googlemap/images/pedigree_map.gif';
 				$submenu->addIcon('pedigree_map');
-				$submenu->addId('menu-chart-pedigree_map');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_map');
 				$menu->addSubmenu($submenu);
 				break;
@@ -415,9 +405,8 @@ class WT_MenuBar {
 		}
 
 		// The top level menu shows the individual list
-		$menu=new WT_Menu(WT_I18N::translate('Lists'), 'indilist.php?ged='.WT_GEDURL, 'down');
+		$menu=new WT_Menu(WT_I18N::translate('Lists'), 'indilist.php?ged='.WT_GEDURL, 'menu-list', 'down');
 		$menu->addIcon('lists');
-		$menu->addId('menu-list');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_indis');
  
 		// Search engines only get the individual list
@@ -460,68 +449,60 @@ class WT_MenuBar {
 			switch ($page) {
 			case 'indilist.php':
 				if ($surname) $link .= '&amp;surname='.$surname;
-				$submenu = new WT_Menu($name, $link);
+				$submenu = new WT_Menu($name, $link, 'menu-list-indi');
 				$submenu->addIcon('indis');
-				$submenu->addId('menu-list-indi');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_indis');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'famlist.php':
 				if ($surname) $link .= '&amp;surname='.$surname;
-				$submenu = new WT_Menu($name, $link);
+				$submenu = new WT_Menu($name, $link, 'menu-list-fam');
 				$submenu->addIcon('cfamily');
-				$submenu->addId('menu-list-fam');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_cfamily');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'branches.php':
 				if ($surname) $link .= '&amp;surn='.$surname;
-				$submenu = new WT_Menu($name, $link);
+				$submenu = new WT_Menu($name, $link, 'menu-branches');
 				$submenu->addIcon('patriarch');
-				$submenu->addId('menu-branches');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_patriarch');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'sourcelist.php':
-				$submenu = new WT_Menu($name, $link);
+				$submenu = new WT_Menu($name, $link, 'menu-list-sour');
 				$submenu->addIcon('menu_source');
-				$submenu->addId('menu-list-sour');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_source');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'notelist.php':
-				$submenu = new WT_Menu($name, $link);
+				$submenu = new WT_Menu($name, $link, 'menu-list-note');
 				$submenu->addIcon('menu_note');
-				$submenu->addId('menu-list-note');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_notes');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'repolist.php':
-				$submenu = new WT_Menu($name, $link);
+				$submenu = new WT_Menu($name, $link, 'menu-list-repo');
 				$submenu->addIcon('menu_repository');
-				$submenu->addId('menu-list-repo');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_repository');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'placelist.php':
-				$submenu = new WT_Menu($name, $link);
+				$submenu = new WT_Menu($name, $link, 'menu-list-plac');
 				$submenu->addIcon('place');
-				$submenu->addId('menu-list-plac');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_place');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'medialist.php':
 				if ($MULTI_MEDIA) {
-					$submenu = new WT_Menu($name, $link);
+					$submenu = new WT_Menu($name, $link, 'menu-list-obje');
 					$submenu->addIcon('menu_media');
-					$submenu->addId('menu-list-obje');
 					$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_media');
 					$menu->addSubmenu($submenu);
 				}
@@ -536,30 +517,26 @@ class WT_MenuBar {
 		global $WT_IMAGES, $SEARCH_SPIDER;
 
 		if ((!file_exists(WT_ROOT.'calendar.php')) || (!empty($SEARCH_SPIDER))) {
-			$menu = new WT_Menu('', '', '');
+			$menu = new WT_Menu();
 			return $menu;
 		}
 		//-- main calendar menu item
-		$menu = new WT_Menu(WT_I18N::translate('Calendar'), 'calendar.php?ged='.WT_GEDURL, 'down');
+		$menu = new WT_Menu(WT_I18N::translate('Calendar'), 'calendar.php?ged='.WT_GEDURL, 'menu-calendar', 'down');
 		$menu->addIcon('calendar');
-		$menu->addId('menu-calendar');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_calendar');
 		//-- viewday sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('View Day'), 'calendar.php?ged='.WT_GEDURL);
+		$submenu = new WT_Menu(WT_I18N::translate('View Day'), 'calendar.php?ged='.WT_GEDURL, 'menu-calendar-day');
 		$submenu->addIcon('calendar');
-		$submenu->addId('menu-calendar-day');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_calendar');
 		$menu->addSubmenu($submenu);
 		//-- viewmonth sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('View Month'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=calendar');
+		$submenu = new WT_Menu(WT_I18N::translate('View Month'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=calendar', 'menu-calendar-month');
 		$submenu->addIcon('calendar');
-		$submenu->addId('menu-calendar-month');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_calendar');
 		$menu->addSubmenu($submenu);
 		//-- viewyear sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('View Year'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=year');
+		$submenu = new WT_Menu(WT_I18N::translate('View Year'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=year', 'menu-calendar-year');
 		$submenu->addIcon('calendar');
-		$submenu->addId('menu-calendar-year');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_calendar');
 		$menu->addSubmenu($submenu);
 		return $menu;
@@ -577,9 +554,8 @@ class WT_MenuBar {
 			return null;
 		}
 
-		$menu = new WT_Menu(WT_I18N::translate('Reports'), 'reportengine.php?ged='.WT_GEDURL, 'down');
+		$menu = new WT_Menu(WT_I18N::translate('Reports'), 'reportengine.php?ged='.WT_GEDURL, 'menu-report', 'down');
 		$menu->addIcon('reports');
-		$menu->addId('menu-report');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_reports');
 
 		foreach ($active_reports as $report) {
@@ -597,33 +573,28 @@ class WT_MenuBar {
 			return null;
 		}
 		//-- main search menu item
-		$menu = new WT_Menu(WT_I18N::translate('Search'), 'search.php?ged='.WT_GEDURL, 'down');
+		$menu = new WT_Menu(WT_I18N::translate('Search'), 'search.php?ged='.WT_GEDURL, 'menu-search', 'down');
 		$menu->addIcon('search');
-		$menu->addId('menu-search');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_search');
 		//-- search_general sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('General Search'), 'search.php?ged='.WT_GEDURL);
+		$submenu = new WT_Menu(WT_I18N::translate('General Search'), 'search.php?ged='.WT_GEDURL, 'menu-search-general');
 		$submenu->addIcon('search');
-		$submenu->addId('menu-search-general');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_search');
 		$menu->addSubmenu($submenu);
 		//-- search_soundex sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('Soundex Search'), 'search.php?ged='.WT_GEDURL.'&amp;action=soundex');
+		$submenu = new WT_Menu(WT_I18N::translate('Soundex Search'), 'search.php?ged='.WT_GEDURL.'&amp;action=soundex', 'menu-search-soundex');
 		$submenu->addIcon('search');
-		$submenu->addId('menu-search-soundex');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_search');
 		$menu->addSubmenu($submenu);
 		//-- advanced search
-		$submenu = new WT_Menu(WT_I18N::translate('Advanced search'), 'search_advanced.php?ged='.WT_GEDURL);
+		$submenu = new WT_Menu(WT_I18N::translate('Advanced search'), 'search_advanced.php?ged='.WT_GEDURL, 'menu-search-advanced');
 		$submenu->addIcon('search');
-		$submenu->addId('menu-search-advanced');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_search');
 		$menu->addSubmenu($submenu);
 		//-- search_replace sub menu
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(WT_I18N::translate('Search and replace'), 'search.php?ged='.WT_GEDURL.'&amp;action=replace');
+			$submenu = new WT_Menu(WT_I18N::translate('Search and replace'), 'search.php?ged='.WT_GEDURL.'&amp;action=replace', 'menu-search-replace');
 			$submenu->addIcon('search');
-			$submenu->addId('menu-search-replace');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_search');
 			$menu->addSubmenu($submenu);
 		}
@@ -648,9 +619,8 @@ class WT_MenuBar {
 			return null;
 		}
 		//-- main help menu item
-		$menu = new WT_Menu(WT_I18N::translate('Help'), '#', 'down');
+		$menu = new WT_Menu(WT_I18N::translate('Help'), '#', 'menu-help', 'down');
 		$menu->addIcon('menu_help');
-		$menu->addId('menu-help');
 		if (empty($helpindex))
 			$menu->addOnclick("return helpPopup('".WT_SCRIPT_NAME."');");
 		else
@@ -658,45 +628,39 @@ class WT_MenuBar {
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_help');
 
 		//-- help_contents sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('Help contents'), '#');
+		$submenu = new WT_Menu(WT_I18N::translate('Help contents'), '#', 'menu-help-contents');
 		$submenu->addIcon('help');
-		$submenu->addId('menu-help-contents');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_help');
 		$submenu->addOnclick("return helpPopup('help_contents_help');");
 		$menu->addSubmenu($submenu);
 		//-- faq sub menu
 		if (array_key_exists('faq', WT_Module::getActiveModules()) && WT_DB::prepare("SELECT COUNT(*) FROM `##block` WHERE module_name='faq'")->fetchOne()) {
 
-			$submenu = new WT_Menu(WT_I18N::translate('FAQ'), 'module.php?mod=faq&mod_action=show');
+			$submenu = new WT_Menu(WT_I18N::translate('FAQ'), 'module.php?mod=faq&mod_action=show', 'menu-help-faq');
 			$submenu->addIcon('help');
-			$submenu->addId('menu-help-faq');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_help');
 			$menu->addSubmenu($submenu);
 		}
 		//-- add wiki links
-		$submenu = new WT_Menu(WT_I18N::translate('Wiki Main Page'), WT_WEBTREES_WIKI.'" target="_blank');
+		$submenu = new WT_Menu(WT_I18N::translate('Wiki Main Page'), WT_WEBTREES_WIKI.'" target="_blank', 'menu-help-wiki');
 		$submenu->addIcon('wiki');
-		$submenu->addId('menu-help-wiki');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_wiki');
 		$menu->addSubmenu($submenu);
 
 		//-- add contact links to help menu
 		$menuitems = contact_menus();
 		foreach ($menuitems as $menu_id=>$menuitem) {
-			$submenu = new WT_Menu($menuitem['label'], $menuitem['link']);
+			$submenu = new WT_Menu($menuitem['label'], $menuitem['link'], $menu_id);
 			$submenu->addIcon('mypage');
-			$submenu->addId($menu_id);
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_contact');
 			if (!empty($menuitem['onclick'])) $submenu->addOnclick($menuitem['onclick']);
 			$menu->addSubmenu($submenu);
 		}
 		//-- add show/hide context_help
 		if ($_SESSION['show_context_help']) {
-			$submenu = new WT_Menu(WT_I18N::translate('Hide contextual help'), get_query_url(array('show_context_help'=>'no')));
-			$submenu->addId('menu-help-hide');
+			$submenu = new WT_Menu(WT_I18N::translate('Hide contextual help'), get_query_url(array('show_context_help'=>'no')), 'menu-help-hide');
 		} else {
-			$submenu = new WT_Menu(WT_I18N::translate('Show contextual help'), get_query_url(array('show_context_help'=>'yes')));
-			$submenu->addId('menu-help-show');
+			$submenu = new WT_Menu(WT_I18N::translate('Show contextual help'), get_query_url(array('show_context_help'=>'yes')), 'menu-help-show');
 		}
 		$submenu->addIcon('help');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_help');
@@ -705,17 +669,15 @@ class WT_MenuBar {
 	}
 
 	public static function getThemeMenu() {
-		$menu=new WT_Menu(WT_I18N::translate('Theme'));
+		$menu=new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme');
 		$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', 'icon_small_theme');
-		$menu->addId('menu-theme');
 		foreach (get_theme_names() as $themename=>$themedir) {
-			$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir)));
+			$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir)), 'menu-theme-'.$themedir);
 			if ($themedir==WT_THEME_DIR) {
 				$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
 			} else {
 				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
 			}
-			$submenu->addId('menu-theme-'.$themedir);
 			$menu->addSubMenu($submenu);
 		}
 		return $menu;
@@ -724,18 +686,16 @@ class WT_MenuBar {
 	public static function getLanguageMenu() {
 		global $WT_IMAGES;
 
-		$menu=new WT_Menu(WT_I18N::translate('Language'), '#', 'down');
+		$menu=new WT_Menu(WT_I18N::translate('Language'), '#', 'menu-language', 'down');
 		$menu->addClass('langmenuitem', 'langmenuitem_hover', 'submenu', 'icon_language');
-		$menu->addId('menu-language');
 
 		foreach (WT_I18N::installed_languages() as $lang=>$name) {
-			$submenu=new WT_Menu($name, get_query_url(array('lang'=>$lang)));
+			$submenu=new WT_Menu($name, get_query_url(array('lang'=>$lang)), 'menu-language-'.$lang);
 			if ($lang==WT_LOCALE) {
 				$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
 			} else {
 				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
 			}
-			$submenu->addId('menu-language-'.$lang);
 			$menu->addSubMenu($submenu);
 		}
 		if (count($menu->submenus)>1) {
@@ -750,10 +710,9 @@ class WT_MenuBar {
 		global $SEARCH_SPIDER;
 		global $controller; // Pages with a controller can be added to the favorites
 
-		$menu=new WT_Menu(WT_I18N::translate('Favorites'), '#', 'down');
+		$menu=new WT_Menu(WT_I18N::translate('Favorites'), '#', 'menu-favorites', 'down');
 		$menu->addIcon('gedcom');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_gedcom');
-		$menu->addId('menu-favorites');
 
 		// Don't list favorites on private sites and for search engines
 		if (!WT_USER_ID && $REQUIRE_AUTHENTICATION || $SEARCH_SPIDER) {

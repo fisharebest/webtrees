@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -52,13 +52,14 @@ class WT_Menu {
 	* @param string $pos The position of the label relative to the icon (right, left, top, bottom)
 	* @param string $flyout The direction where any submenus should appear relative to the menu item (right, down)
 	*/
-	function __construct($label=' ', $link='#', $pos='right', $flyout='down', $id=null)
+	function __construct($label=' ', $link='#', $id=null, $labelpos='right', $flyout='down')
 	{
-		$this->submenus = array();
-		$this->addLink($link);
-		$this->addLabel($label, $pos);
-		$this->addFlyout($flyout);
-		$this->addId($id);
+		$this->label   =$label;
+		$this->labelpos=$labelpos;
+		$this->link    =$link;
+		$this->id      =$id;
+		$this->flyout  =$flyout;
+		$this->submenus=array();
 	}
 
 	function addLabel($label=' ', $pos='right')
@@ -103,10 +104,6 @@ class WT_Menu {
 		$this->hoverclass = $hoverclass;
 		$this->submenuclass = $submenuclass;
 		$this->iconclass = $iconclass;
-	}
-
-	function addId($id) {
-		$this->id=$id;
 	}
 
 	function addTarget($target)
