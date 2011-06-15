@@ -197,8 +197,13 @@ set_error_handler('wt_error_handler');
 if (file_exists(WT_ROOT.'data/config.ini.php')) {
 	$dbconfig=parse_ini_file(WT_ROOT.'data/config.ini.php');
 	// Invalid/unreadable config file?
-	if (!is_array($dbconfig) || file_exists(WT_ROOT.'data/offline.txt')) {
+	if (!is_array($dbconfig)) {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-unavailable.php');
+		exit;
+	}
+	// Down for maintenance?
+	if (file_exists(WT_ROOT.'data/offline.txt')) {
+		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'site-offline.php');
 		exit;
 	}
 } else {
