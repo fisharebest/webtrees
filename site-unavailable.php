@@ -32,6 +32,7 @@ define('WT_WEBTREES', true);
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
+define('WT_DATA_DIR', realpath('data').DIRECTORY_SEPARATOR);
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
 set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
@@ -60,7 +61,11 @@ echo
 	</style>',
 	'</head><body>',
 	'<h1>', WT_I18N::translate('<b>webtrees</b> site unavailable'), '</h1>',
-	'<div class="content">',
+	'<div class="content">';
+
+var_dump(WT_DATA_DIR);
+
+echo
 	'<p>', WT_I18N::translate('Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.'), '</p>';
 
 $config_ini_php=parse_ini_file('data/config.ini.php');
