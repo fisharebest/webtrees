@@ -1780,7 +1780,7 @@ html[dir='rtl'] .indi_table {clear:right;}
 .ui-tabs {padding:0;}
 span.link_text  {display:none;}
 
-.ui-state-active, .ui-widget-content .ui-state-active {border:1px solid #999; font-weight:normal; color:black; outline:none; }
+.ui-state-active, .ui-widget-content .ui-state-active {border:0px solid #999; font-weight:normal; color:black; outline:none; }
 .ui-state-default a:link { color: #000000;}
 
 .ui-widget-header {border: 1px solid #fff; filter: alpha(opacity = 67);}

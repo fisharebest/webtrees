@@ -1810,7 +1810,7 @@ html[dir='rtl'] .indi_table {clear:right;}
 .ui-tabs {padding:0;}
 span.link_text  {display:none;}
 
-.ui-state-active, .ui-widget-content .ui-state-active {border:1px solid #AACCFF; font-weight:normal; color:black; outline:none; background:#AACCFF; }
+.ui-state-active, .ui-widget-content .ui-state-active {border:0px solid #AACCFF; font-weight:normal; color:black; outline:none; background:#AACCFF; }
 .ui-state-active a:link { color: #ffffff;}
 .ui-state-default a:link { color: #000000;}
 .us-state-hover a, .ui-state-hover a:hover { color: #000;}
