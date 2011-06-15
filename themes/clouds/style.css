@@ -1055,6 +1055,17 @@ vertical-align: top;
 
 }
 
+.submenuitem {
+height:20px;
+color:#555555;
+text-decoration:none;
+font-size:11px;
+background-color:#fff;
+border: 1px solid #ccc;
+white-space:nowrap;
+padding:3px 3px 0px 3px;
+}
+
 .news_box {
 padding: 3pt;
 }
@@ -1802,6 +1813,7 @@ span.link_text  {display:none;}
 .ui-state-active, .ui-widget-content .ui-state-active {border:1px solid #AACCFF; font-weight:normal; color:black; outline:none; background:#AACCFF; }
 .ui-state-active a:link { color: #ffffff;}
 .ui-state-default a:link { color: #000000;}
+.us-state-hover a, .ui-state-hover a:hover { color: #000;}
 
 .ui-widget-header {background:#AACCFF; border: 1px solid #fff; filter: alpha(opacity = 67);}
 
