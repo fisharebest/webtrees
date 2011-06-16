@@ -1754,7 +1754,7 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelin
 #indi_header h3 {color: #000666; font-size: 90%; font-weight:bold; margin: 0; padding: 0 10px 0 30px; text-align:left;}
 #indi_header h3 a {display:inline;}
 #indi_header h3.name_one {overflow:hidden; position:relative; font-size:1.5em;}
-#indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border:1px solid #AACCFF;}
+#indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border:1px solid #8FBCFF;}
 
 #indi_mainimage {float:left; width:15%}
 #indi_mainimage a img {float:left; padding:0;}
@@ -1810,7 +1810,7 @@ html[dir='rtl'] .indi_table {clear:right;}
 .ui-tabs {padding:0;}
 span.link_text  {display:none;}
 
-.ui-state-active, .ui-widget-content .ui-state-active {border:0px solid #AACCFF; font-weight:normal; color:black; outline:none; background:#AACCFF; }
+.ui-state-active, .ui-widget-content .ui-state-active {border:0px solid #8FBCFF; font-weight:normal; color:black; outline:none; background:#AACCFF; }
 .ui-state-active a:link { color: #ffffff;}
 .ui-state-default a:link { color: #000000;}
 .us-state-hover a, .ui-state-hover a:hover { color: #000;}
@@ -1824,9 +1824,9 @@ html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected, html[dir='rtl'] .ui-ta
 /* ========= Sidebar ============== */
 #indi_left {float:left; width:98%;}
 #main {min-width:600px; width:100%}
-#separator {background:#AACCFF url('images/general_sprite.png') no-repeat -26px 100px; float:right; display:block; width:0.75%; min-width: 6px; max-width:10px; border:1px solid #AACCFF; -moz-border-radius-topleft:3px; -moz-border-radius-topright:3px; margin-top:5px;}
-#sidebar {border-color:#AACCFF; display:none; margin:5px 2px 0 0; height:auto;}
-#tabs {background-color:#FFF; border-color:#AACCFF; float:left; width:100%; overflow:auto;}
+#separator {background:#AACCFF url('images/general_sprite.png') no-repeat -26px 100px; float:right; display:block; width:0.75%; min-width: 6px; max-width:10px; border:1px solid #8FBCFF; -moz-border-radius-topleft:3px; -moz-border-radius-topright:3px; margin-top:5px;}
+#sidebar {border-color:#8FBCFF; display:none; margin:5px 2px 0 0; height:auto;}
+#tabs {background-color:#FFF; border-color:#8FBCFF; float:left; width:100%; overflow:auto;}
 .sidebar-at-right #sidebar { width:20%;}
 
 .use-sidebar #indi_left {width:77%;}
