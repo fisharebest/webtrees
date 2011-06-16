@@ -65,7 +65,6 @@ a:hover { color: red; text-decoration: none; }
 
 /* jquery-ui.custom.css */
 .ui-state-active, .ui-widget-content .ui-state-active {background:#6A78BE;} 
-.ui-widget-header {background:#6A78BE; }
 
 /* sidebar */
 #separator 	{background:#6A78BE url('../images/general_sprite.png') no-repeat -26px 100px; }
