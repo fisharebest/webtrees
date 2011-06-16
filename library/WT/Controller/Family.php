@@ -220,7 +220,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(
 				/* I18N: Menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
-				$this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->getFamilyID(),
+				$this->family->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->getFamilyID(),
 				'menu-fam-addfav'
 			);
 			$submenu->addIcon('favorites');
