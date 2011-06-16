@@ -189,9 +189,9 @@ if ($view!='simple') {
 	echo 
 	'</ul>';
 		if ($allow_color_dropdown && !$SEARCH_SPIDER) {
-			echo '<span class="toplinks_right">';
+			echo '<div class="toplinks_right">';
 			echo color_theme_dropdown();
-			echo '</span>';
+			echo '</div>';
 		}
 	echo '</div>', // close topMenu
 '</div>'; // close header

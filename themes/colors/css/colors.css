@@ -1783,7 +1783,7 @@ span.link_text  {display:none;}
 .ui-state-active, .ui-widget-content .ui-state-active {border:0px solid #999; font-weight:normal; color:black; outline:none; }
 .ui-state-default a:link { color: #000000;}
 
-.ui-widget-header {border: 1px solid #fff; filter: alpha(opacity = 67);}
+.ui-widget-header {border: 1px solid #fff; filter:Alpha(opacity=.67);}
 
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 html[dir='rtl'] .ui-tabs {direction:rtl;}
