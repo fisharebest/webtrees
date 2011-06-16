@@ -46,6 +46,14 @@ class WT_Debug {
 	public static function pseudoTranslate($text) {
 		global $TEXT_DIRECTION;
 
+		// There are certain texts that we should never translate!
+		switch ($text) {
+		case 'utf8_unicode_ci':
+			return $text;
+		default:
+			break;
+		}
+
 		// Process the each UTF8 character separately.
 		// Take care not to transform HTML tags
 		$tmp='';
