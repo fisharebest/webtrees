@@ -148,7 +148,7 @@ function fetch_remote_file($host, $path, $timeout=3) {
 		return null;
 	}
 
-	fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nKeep-Alive: 300\r\nConnection: keep-alive\r\n\r\n");
+	fputs($fp, "GET $path HTTP/1.0\r\nHost: $host\r\nConnection: Close\r\n\r\n");
 
 	$response='';
 	while ($data=fread($fp, 65536)) {
@@ -156,10 +156,13 @@ function fetch_remote_file($host, $path, $timeout=3) {
 	}
 	fclose($fp);
 
-	// The response includes headers, a blank line, then the content
-	$response=substr($response, strpos($response, "\r\n\r\n") + 4);
-
-	return $response;
+	// Take account of a "moved" response.
+	if (substr($response, 0, 12)=='HTTP/1.1 303' && preg_match('/\nLocation: http:\/\/([a-z0-9.-]+)(.+)/', $response, $match)) {
+		return fetch_remote_file($match[1], $match[2]);
+	} else {
+		// The response includes headers, a blank line, then the content
+		return substr($response, strpos($response, "\r\n\r\n") + 4);
+	}
 }
 
 // Check with the webtrees.net server for the latest version of webtrees.
