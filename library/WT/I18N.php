@@ -1,7 +1,15 @@
 <?php
 // Class to support internationalisation (i18n) functionality.
 //
-// Copyright (C) 2010 Greg Roach
+// We use gettext to provide translation.  You should configure xgettext to
+// search for:
+// translate()
+// plural()
+//
+// We wrap the Zend_Translate gettext library, to allow us to add extra
+// functionality, such as mixed RTL and LTR text.
+//
+// Copyright (C) 2011 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,16 +25,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @author Greg Roach
-// @version $Id$
-//
-// We use gettext to provide translation.  You should configure xgettext to
-// search for:
-// translate()
-// plural()
-//
-// We wrap the Zend_Translate gettext library, to allow us to add extra
-// functionality, such as mixed RTL and LTR text.
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -271,7 +270,11 @@ class WT_I18N {
 	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
 	static public function translate(/* var_args */) {
 		$args=func_get_args();
-		$args[0]=Zend_Registry::get('Zend_Translate')->_($args[0]);
+		if (WT_DEBUG_LANG) {
+			$args[0]=WT_Debug::pseudoTranslate($args[0]);
+		} else {
+			$args[0]=Zend_Registry::get('Zend_Translate')->_($args[0]);
+		}
 		return call_user_func_array(array('WT_I18N', 'sprintf'), $args);
 	}
 
@@ -280,10 +283,14 @@ class WT_I18N {
 	// echo WT_I18N::translate_c('GENITIVE',   'January');
 	static public function translate_c(/* var_args */) {
 		$args=func_get_args();
-		$msgid=$args[0]."\x04".$args[1];
-		$msgtxt=Zend_Registry::get('Zend_Translate')->_($msgid);
-		if ($msgtxt==$msgid) {
-			$msgtxt=$args[1];
+		if (WT_DEBUG_LANG) {
+			$msgtxt=WT_Debug::pseudoTranslate($args[1]);
+		} else {
+			$msgid=$args[0]."\x04".$args[1];
+			$msgtxt=Zend_Registry::get('Zend_Translate')->_($msgid);
+			if ($msgtxt==$msgid) {
+				$msgtxt=$args[1];
+			}
 		}
 		$args[0]=$msgtxt;
 		unset ($args[1]);
@@ -302,7 +309,15 @@ class WT_I18N {
 	// echo WT_I18N::plural('There is %1$d %2$s cat', 'There are %1$d %2$s cats', $num, $num, $colour);
 	static public function plural(/* var_args */) {
 		$args=func_get_args();
-		$string=Zend_Registry::get('Zend_Translate')->plural($args[0], $args[1], $args[2]);
+		if (WT_DEBUG_LANG) {
+			if ($args[2]==1) {
+				$string=WT_Debug::pseudoTranslate($args[0]);
+			} else {
+				$string=WT_Debug::pseudoTranslate($args[1]);
+			}
+		} else {
+			$string=Zend_Registry::get('Zend_Translate')->plural($args[0], $args[1], $args[2]);
+		}
 		array_splice($args, 0, 3, array($string));
 		return call_user_func_array('sprintf', $args);
 	}
