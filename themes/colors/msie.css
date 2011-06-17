@@ -7,6 +7,10 @@
  * specification in place of its proprietary and non-standard method.
  */
 
+.makeMenu li ul {
+	top: -6px; 
+}
+/*==========  IE7 Fixes ============================= */
 .rela {
 	filter: alpha(opacity=67);
 }
@@ -14,18 +18,23 @@
 a.showit:hover span {
 	filter: alpha(opacity=85);
 }
-/* IE7 fixs */
+
 .makeMenu li ul {
 	top: -6px;
 	*top: 8px; 
 }
-#menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px}
+#menu-theme, #menu-language, #menu-theme, #menu-favorites {
+	*padding-right: 10px
+	}
 
 div.blockcontent {
-	*margin-top: -2px; /* IE7 fix */
+	*margin-top: -2px; 
 }
 
-#main-menu {*z-index:5001; }
-.makeMenu  {*z-index:5001; }
+#topMenu {
+position: relative; z-index: 2001; 
+}
 
-
+#header {
+  position: relative; z-index: 2002; 
+}

@@ -14,10 +14,11 @@
 a.showit:hover span {
 	filter: alpha(opacity=85);
 }
+
 .makeMenu li ul {
 top: 0px!important;
 }
-.
+/* ============  IE7 Fixes =============*/
 
 div.blockcontent {
 *margin-top: 10px!important; }
@@ -25,6 +26,14 @@ div.blockcontent {
 #menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px}
 
 div.blockcontent {
-	*margin-top: -2px; /* IE7 fix */
+	*margin-top: -2px; 
+}
+
+#topMenu {
+position: relative; z-index: 2001; 
+}
+
+#header {
+  position: relative; z-index: 2002; 
 }
 
