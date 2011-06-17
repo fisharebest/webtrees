@@ -141,7 +141,7 @@ table.center {
 
 .list_value, .list_value_wrap {
 	background-color:#edf7f9;
-	color:black;
+	color:#555;
 	border:solid #81a9cb 1px;
 	font-size:12px;
 	vertical-align:top;

@@ -1632,7 +1632,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= $n;
 		$return .= '</td>';
 		//-- Anniversary
-		$return .= '<td class="list_value_wrap rela">';
+		$return .= '<td class="list_value_wrap">';
 		$anniv = $value['anniv'];
 //		if ($anniv==0) $return .= '<a name="-1">&nbsp;</a>';
 		if ($anniv==0) $return .= '&nbsp;';
