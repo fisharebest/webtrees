@@ -196,7 +196,7 @@ elseif ($action=='setup') {
 
 	echo '<table class="facts_table width50 center ', $TEXT_DIRECTION, ' ">';
 	echo '<tr><td class="topbottombar" colspan="2">', WT_I18N::translate('Enter report values'), '</td></tr>';
-	echo '<tr><td class="descriptionbox width30 wrap">', WT_I18N::translate('Selected Report'), '</td><td class="optionbox">', $report_array['title'], '</td></tr>';
+	echo '<tr><td class="descriptionbox width30 wrap">', WT_I18N::translate('Selected Report'), '</td><td class="optionbox">', $report_array['title'], '<br/>', $report_array['description'], '</td></tr>';
 
 	$doctitle = trim($report_array['title']);
 	if (!isset($report_array['inputs'])) {
