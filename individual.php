@@ -140,6 +140,19 @@ jQuery(document).ready(function() {
 		objSeparator.css('height', objBar.outerHeight() + 'px');
 	}
 	
+	// calculate header accordion width from its outer container and thubnail image sizes
+	    var indi_header_div = document.getElementById('indi_header').offsetWidth - 20;
+		var indi_mainimage_div = document.getElementById('indi_mainimage').offsetWidth +20;
+		var header_accordion_div = document.getElementById('header_accordion1');
+		header_accordion_div.style.width = indi_header_div - indi_mainimage_div +'px';
+
+                jQuery(window).bind("resize", function(){
+					var indi_header_div = document.getElementById('indi_header').offsetWidth - 20;
+					var indi_mainimage_div = document.getElementById('indi_mainimage').offsetWidth +20;
+					var header_accordion_div = document.getElementById('header_accordion1');
+					header_accordion_div.style.width = indi_header_div - indi_mainimage_div +'px';
+                 });
+		
 });
 <?php
 echo WT_JS_END;
@@ -150,7 +163,12 @@ echo
 	'<div id="indi_left">',
 	'<div id="indi_header">';
 if ($controller->indi->canDisplayDetails()) {
-$globalfacts=$controller->getGlobalFacts();
+	echo '<div id="indi_mainimage">'; // Display highlight image
+	if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
+		echo $controller->getHighlightedObject();
+	}
+	echo '</div>'; // close #indi_mainimage
+	$globalfacts=$controller->getGlobalFacts();
 	echo '<div id="header_accordion1">', // contain accordions for names
 		'<h3 class="name_one ', $controller->getPersonStyle($controller->indi), '"><span>', $controller->indi->getFullName(), '</span>'; // First name accordion element
 			if (WT_USER_IS_ADMIN) {
@@ -212,11 +230,6 @@ $globalfacts=$controller->getGlobalFacts();
 		' collapsible: true',
 		'});',
 		WT_JS_END; //accordion details
-		echo '<div id="indi_mainimage">'; // Display highlight image
-	if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
-		echo $controller->getHighlightedObject();
-	}
-	echo '</div>'; // close #indi_mainimage
 }
 echo '</div>';// close #indi_header
 // ===================================== main content tabs

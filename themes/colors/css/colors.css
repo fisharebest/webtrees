@@ -1711,7 +1711,7 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 /* =========== Indi header ================== */ 
 
 #dates {color: #333333; float:right;}
-#header_accordion1 {clear:both; float:right; width:84%;}
+#header_accordion1 {float:right;}
 
 #indi_header {float:left; width:98%; border-radius: 3px; border: margin:5px 0; padding:10px;}
 #indi_header a {color:#333377; font-size:0.75em; font-weight:normal;}
@@ -1723,7 +1723,7 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 #indi_header h3.name_one {overflow:hidden; position:relative; font-size:1.5em;}
 #indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border:1px solid #999;}
 
-#indi_mainimage {float:left; width:15%}
+#indi_mainimage {float:left;}
 #indi_mainimage a img {float:left; padding:0;}
 
 #indi_name_details { margin:0; padding: 5px;}
