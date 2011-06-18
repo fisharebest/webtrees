@@ -112,27 +112,31 @@ if ($view!='simple') {
 		} else {
 			echo '<li>', login_link(),'</li>';
 		}
-		echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
-		$language_menu=WT_MenuBar::getLanguageMenu();
-		if ($language_menu) {
-			echo $language_menu->getMenuAsList();
+		$menu=WT_MenuBar::getFavoritesMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
 		}
-		if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
-			echo WT_MenuBar::getThemeMenu()->getMenuAsList();
+		$menu=WT_MenuBar::getLanguageMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
+		}
+		$menu=WT_MenuBar::getThemeMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
 			$allow_color_dropdown=true;
 		} else {
 			$allow_color_dropdown=false;
 		}
-			echo
-				'<li><form style="display:inline;" action="search.php" method="get">',
-				'<input type="hidden" name="action" value="general" />',
-				'<input type="hidden" name="topsearch" value="yes" />',
-				'<input type="text" name="query" size="15" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
-				'<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
-				'</form>',
-				'</li></ul>';
-				}
-			echo '</div></div>';
+		echo
+			'<li><form style="display:inline;" action="search.php" method="get">',
+			'<input type="hidden" name="action" value="general" />',
+			'<input type="hidden" name="topsearch" value="yes" />',
+			'<input type="text" name="query" size="15" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
+			'<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
+			'</form>',
+			'</li></ul>';
+	}
+	echo '</div></div>';
 ?>
 <!--end header section -->
 <!--begin menu section -->

@@ -101,8 +101,9 @@ if ($view!='simple') {
 	if (empty($SEARCH_SPIDER)) { 
 		echo 
 		'<span class="htheme">';
-		if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
-			echo WT_MenuBar::getThemeMenu()->getMenuAsDropdown();
+		$menu=WT_MenuBar::getThemeMenu();
+		if ($menu) {
+			echo $menu->getMenuAsDropdown();
 		}
 		$menu=WT_MenuBar::getLanguageMenu();
 		if ($menu) {

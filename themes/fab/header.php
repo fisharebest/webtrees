@@ -87,20 +87,24 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 		// Options for real users
 		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
 		if (WT_USER_ID) {
-			echo '<li><a href="edituser.php" class="link">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+			echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
 			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
 				echo ' <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 			}
 		} else {
 			echo '<li>', login_link(), '</li> ';
 		}
-		echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
-		$language_menu=WT_MenuBar::getLanguageMenu();
-		if ($language_menu) {
-			echo $language_menu->getMenuAsList();
+		$menu=WT_MenuBar::getFavoritesMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
 		}
-		if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
-			echo WT_MenuBar::getThemeMenu()->getMenuAsList();
+		$menu=WT_MenuBar::getLanguageMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
+		}
+		$menu=WT_MenuBar::getThemeMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
 		}
 		echo
 			'<li><form style="display:inline;" action="search.php" method="get">',

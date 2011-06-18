@@ -669,18 +669,22 @@ class WT_MenuBar {
 	}
 
 	public static function getThemeMenu() {
-		$menu=new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme');
-		$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', 'icon_small_theme');
-		foreach (get_theme_names() as $themename=>$themedir) {
-			$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir)), 'menu-theme-'.$themedir);
-			if ($themedir==WT_THEME_DIR) {
-				$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
-			} else {
-				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+		if (get_site_setting('ALLOW_USER_THEMES') && get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')) {
+			$menu=new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme');
+			$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', 'icon_small_theme');
+			foreach (get_theme_names() as $themename=>$themedir) {
+				$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir)), 'menu-theme-'.$themedir);
+				if ($themedir==WT_THEME_DIR) {
+					$submenu->addClass('favsubmenuitem_selected', 'favsubmenuitem_hover');
+				} else {
+					$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+				}
+				$menu->addSubMenu($submenu);
 			}
-			$menu->addSubMenu($submenu);
+			return $menu;
+		} else {
+			return null;
 		}
-		return $menu;
 	}
 
 	public static function getLanguageMenu() {
@@ -706,93 +710,26 @@ class WT_MenuBar {
 	}
 
 	public static function getFavoritesMenu() {
-		global $REQUIRE_AUTHENTICATION, $GEDCOM, $WT_IMAGES;
-		global $SEARCH_SPIDER;
-		global $controller; // Pages with a controller can be added to the favorites
+		global $REQUIRE_AUTHENTICATION;
 
-		$menu=new WT_Menu(WT_I18N::translate('Favorites'), '#', 'menu-favorites', 'down');
-		$menu->addIcon('gedcom');
-		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_gedcom');
-
-		// Don't list favorites on private sites and for search engines
-		if (!WT_USER_ID && $REQUIRE_AUTHENTICATION || $SEARCH_SPIDER) {
-			return $menu;
-		}
-
-		if (array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
-			$gedfavs=gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM);
+		if (WT_USER_ID && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
+			$favorites=user_favorites_WT_Module::getUserFavorites(WT_USER_NAME);
 		} else {
-			$gedfavs=array();
+			$favorites=array();
 		}
 
-		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-			$userfavs=user_favorites_WT_Module::getUserFavorites(WT_USER_NAME);
-
-			// User favorites
-			if ($userfavs || WT_USER_ID) {
-				$submenu=new WT_Menu('<strong>'.WT_I18N::translate('My Favorites').'</strong>');
-				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-				$menu->addSubMenu($submenu);
-				while (WT_USER_ID && isset($controller)) {
-					// Get the right $gid from each supported controller type
-					switch (get_class($controller)) {
-					case 'WT_Controller_Individual':
-						$gid = $controller->pid;
-						break;
-					case 'WT_Controller_Family':
-						$gid = $controller->famid;
-						break;
-					case 'WT_Controller_Media':
-						$gid = $controller->mid;
-						break;
-					case 'WT_Controller_Source':
-						$gid = $controller->sid;
-						break;
-					case 'WT_Controller_Repository':
-						$gid = $controller->rid;
-						break;
-					default:
-						break 2;
-					}
-					$submenu=new WT_Menu('<em>'.WT_I18N::translate('Add to My Favorites').'</em>', get_query_url(array('action'=>'addfav', 'gid'=>$gid)));
-					$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-					$menu->addSubMenu($submenu);
-					break;
-				}
-				foreach ($userfavs as $fav) {
-					$GEDCOM=$fav['file'];
-					switch($fav['type']) {
-					case 'URL':
-						$submenu=new WT_Menu(PrintReady($fav['title']), $fav['url']);
-						$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-						$menu->addSubMenu($submenu);
-						break;
-					case 'INDI':
-					case 'FAM':
-					case 'SOUR':
-					case 'OBJE':
-						$obj=WT_GedcomRecord::getInstance($fav['gid']);
-						if ($obj && $obj->canDisplayName()) {
-							$submenu=new WT_Menu(PrintReady($obj->getFullName()), $obj->getHtmlUrl());
-							$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-							$menu->addSubMenu($submenu);
-						}
-						break;
-					}
-					$GEDCOM=WT_GEDCOM;
-				}
-			}
+		if (!$favorites && !$REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
+			$favorites=gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM);
 		}
-		// Gedcom favorites
-		if ($gedfavs) {
-			$submenu=new WT_Menu('<strong>'.WT_I18N::translate('This GEDCOM\'s Favorites').'</strong>');
-			$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-			$menu->addSubMenu($submenu);
-			foreach ($gedfavs as $fav) {
-				$GEDCOM=$fav['file'];
-				switch($fav['type']) {
+
+		if ($favorites) {
+			$menu=new WT_Menu(WT_I18N::translate('Favorites'), '#', 'menu-favorites');
+			$menu->addClass('favmenuitem', 'favmenuitem_hover', 'favsubmenu');
+
+			foreach ($favorites as $favorite) {
+				switch($favorite['type']) {
 				case 'URL':
-					$submenu=new WT_Menu(PrintReady($fav['title']), $fav['url']);
+					$submenu=new WT_Menu($favorite['title'], $favorite['url']);
 					$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
 					$menu->addSubMenu($submenu);
 					break;
@@ -800,17 +737,18 @@ class WT_MenuBar {
 				case 'FAM':
 				case 'SOUR':
 				case 'OBJE':
-					$obj=WT_GedcomRecord::getInstance($fav['gid']);
+					$obj=WT_GedcomRecord::getInstance($favorite['gid']);
 					if ($obj && $obj->canDisplayName()) {
-						$submenu=new WT_Menu(PrintReady($obj->getFullName()), $obj->getHtmlUrl());
+						$submenu=new WT_Menu($obj->getFullName(), $obj->getHtmlUrl());
 						$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
 						$menu->addSubMenu($submenu);
 					}
 					break;
 				}
-				$GEDCOM=WT_GEDCOM;
 			}
+			return $menu;
+		} else {
+			return null;
 		}
-		return $menu;
 	}
 }

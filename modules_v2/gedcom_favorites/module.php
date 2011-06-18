@@ -119,9 +119,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$title=WT_I18N::translate('This GEDCOM\'s Favorites').help_link('index_favorites');
-		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();
-		$title .= "(".count($userfavs).")";
-		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();
+		if ($TEXT_DIRECTION=='rtl') $title .= getRLM();
+		$title .= '('.count($userfavs).')';
+		if ($TEXT_DIRECTION=='rtl') $title .= getRLM();
 
 		if (WT_USER_IS_ADMIN && $ENABLE_AUTOCOMPLETE) {
 			$content = '<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
@@ -145,12 +145,12 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if ($block) {
 			$style = 2; // 1 means "regular box", 2 means "wide box"
-			$tableWidth = ($BROWSERTYPE=="msie") ? "95%" : "99%"; // IE needs to have room for vertical scroll bar inside the box
-			$cellSpacing = "1px";
+			$tableWidth = ($BROWSERTYPE=='msie') ? '95%' : '99%'; // IE needs to have room for vertical scroll bar inside the box
+			$cellSpacing = '1px';
 		} else {
 			$style = 2;
-			$tableWidth = "99%";
-			$cellSpacing = "3px";
+			$tableWidth = '99%';
+			$cellSpacing = '3px';
 		}
 		if (count($userfavs)==0) {
 			if (WT_USER_GEDCOM_ADMIN) {
@@ -161,13 +161,13 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center $TEXT_DIRECTION\">";
 			foreach ($userfavs as $key=>$favorite) {
-				if (isset($favorite["id"])) $key=$favorite["id"];
+				if (isset($favorite['id'])) $key=$favorite['id'];
 				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype=$ctype&amp;action=deletefav&amp;fv_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".WT_I18N::translate('Remove')."</a><br />";
-				$content .= "<tr><td>";
-				if ($favorite["type"]=="URL") {
+				$content .= '<tr><td>';
+				if ($favorite['type']=='URL') {
 					$content .= "<div id=\"boxurl".$key.".0\" class=\"person_box\">";
-					if ($ctype=="user" || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
-					$content .= "<a href=\"".$favorite["url"]."\"><b>".PrintReady($favorite["title"])."</b></a>";
+					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
+					$content .= "<a href=\"".$favorite['url']."\"><b>".PrintReady($favorite['title']).'</b></a>';
 					$content .= "<br />".PrintReady($favorite["note"]);
 					$content .= "</div>";
 				} else {
@@ -335,35 +335,16 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		//-- add the favorite to the database
 		return (bool)
 			WT_DB::prepare("INSERT INTO `##favorites` (fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note) VALUES (?, ? ,? ,? ,? ,? ,?)")
-				->execute(array($favorite["username"], $favorite["gid"], $favorite["type"], $favorite["file"], $favorite["url"], $favorite["title"], $favorite["note"]));
+				->execute(array($favorite['username'], $favorite['gid'], $favorite['type'], $favorite['file'], $favorite['url'], $favorite['title'], $favorite['note']));
 	}
 
-	/**
-	 * Get a user's favorites
-	 * Return an array of a users messages
-	 * @param string $username the username to get the favorites for
-	 */
-	public static function getUserFavorites($username) {
-		$rows=
-			WT_DB::prepare("SELECT * FROM `##favorites` WHERE fv_username=?")
-			->execute(array($username))
-			->fetchAll();
-
-		$favorites = array();
-		foreach ($rows as $row) {
-			if (get_id_from_gedcom($row->fv_file)) { // If gedcom exists
-				$favorites[]=array(
-					"id"=>$row->fv_id,
-					"username"=>$row->fv_username,
-					"gid"=>$row->fv_gid,
-					"type"=>$row->fv_type,
-					"file"=>$row->fv_file,
-					"title"=>$row->fv_title,
-					"note"=>$row->fv_note,
-					"url"=>$row->fv_url
-				);
-			}
-		}
-		return $favorites;
+	// Get a family tree's favorites
+	public static function getUserFavorites($gedcom) {
+		return
+			WT_DB::prepare(
+				"SELECT fv_id AS id, fv_username AS username, fv_gid AS gid, fv_type AS type, fv_file AS file, fv_title AS title, fv_note AS note, fv_url AS url".
+				" FROM `##favorites` WHERE fv_username=?")
+			->execute(array($gedcom))
+			->fetchAll(PDO::FETCH_ASSOC);
 	}
 }

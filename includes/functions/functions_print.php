@@ -699,184 +699,22 @@ function contact_menus($ged_id=WT_GED_ID) {
 
 //-- print user favorites
 function print_favorite_selector($option=0) {
-	global $GEDCOM;
-	global $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION, $WT_IMAGES, $SEARCH_SPIDER;
-	global $controller; // Pages with a controller can be added to the favorites
+	$menu=WT_MenuBar::getFavoritesMenu();
 
-	if (!empty($SEARCH_SPIDER)) {
-		return; // show no favorites, because they taint every page that is indexed.
-	}
-	if (!WT_USER_NAME && $REQUIRE_AUTHENTICATION) return false;
-
-	$currentGedcom = $GEDCOM;
-
-	if (array_key_exists('gedcom_favorites', WT_Module::getActiveModules())) {
-		$gedcomfavs = gedcom_favorites_WT_Module::getUserFavorites($GEDCOM);
-	} else {
-		$gedcomfavs = array();
-	}
-	if (WT_USER_NAME && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-		$userfavs = user_favorites_WT_Module::getUserFavorites(WT_USER_NAME);
-	} else {
-		$userfavs = array();
-	}
-
-	$gid = '';
-	if (WT_USER_NAME && isset($controller)) {
-		// Get the right $gid from each supported controller type
-		switch (get_class($controller)) {
-		case 'WT_Controller_Individual':
-			$gid = $controller->pid;
-			break;
-		case 'WT_Controller_Family':
-			$gid = $controller->famid;
-			break;
-		case 'WT_Controller_Media':
-			$gid = $controller->mid;
-			break;
-		case 'WT_Controller_Source':
-			$gid = $controller->sid;
-			break;
-		case 'WT_Controller_Repository':
-			$gid = $controller->rid;
+	if ($menu) {
+		echo '<div class="favorites_form">';
+		switch($option) {
+		case 1:
+			echo WT_MenuBar::getFavoritesMenu()->getMenu();
 			break;
 		default:
+			echo '<form class="favorites_form">';
+			echo WT_MenuBar::getFavoritesMenu()->getMenuAsDropdown();
+			echo '</form>';
 			break;
 		}
+		echo '</div>';
 	}
-
-	if (!WT_USER_NAME && count($gedcomfavs)==0) return;
-	echo "<div class=\"favorites_form\">";
-	switch($option) {
-	case 1:
-		$menu = new WT_Menu(WT_I18N::translate('Favorites'), "#", null, "right", "down");
-		$menu->addClass("favmenuitem", "favmenuitem_hover", "favsubmenu");
-		if (count($userfavs)>0 || $gid!='') {
-			$submenu = new WT_Menu("<strong>".WT_I18N::translate('My Favorites')."</strong>", "#", null, "right");
-			$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
-			$menu->addSubMenu($submenu);
-
-			if ($gid!='') {
-				$submenu = new WT_Menu('<em>'.WT_I18N::translate('Add to My Favorites').'</em>', get_query_url(array('action'=>'addfav', 'gid'=>$gid)), null, "right");
-				$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
-				$menu->addSubMenu($submenu);
-			}
-
-			foreach ($userfavs as $key=>$favorite) {
-				$GEDCOM = $favorite["file"];
-				$submenu = new WT_Menu();
-				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
-					$submenu->addLink($favorite["url"]);
-					$submenu->addLabel(PrintReady($favorite["title"]), "right");
-					$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
-					$menu->addSubMenu($submenu);
-				} else {
-					$record=WT_GedcomRecord::getInstance($favorite["gid"]);
-					if ($record && $record->canDisplayName()) {
-						$submenu->addLink($record->getHtmlUrl());
-						$slabel = PrintReady($record->getFullName());
-						$submenu->addLabel($slabel,  "right");
-						$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
-						$menu->addSubMenu($submenu);
-					}
-				}
-			}
-		}
-		if (count($gedcomfavs)>0) {
-			$submenu = new WT_Menu("<strong>".WT_I18N::translate('This GEDCOM\'s Favorites')."</strong>", "#", null, "right");
-			$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
-			$menu->addSubMenu($submenu);
-			foreach ($gedcomfavs as $key=>$favorite) {
-				$GEDCOM = $favorite["file"];
-				$submenu = new WT_Menu();
-				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
-					$submenu->addLink($favorite["url"]);
-					$submenu->addLabel(PrintReady($favorite["title"]), "right");
-					$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
-					$menu->addSubMenu($submenu);
-				} else {
-					$record=WT_GedcomRecord::getInstance($favorite["gid"]);
-					if ($record && $record->canDisplayName()) {
-						$submenu->addLink($record->getHtmlUrl());
-						$slabel = PrintReady($record->getFullName());
-						$submenu->addLabel($slabel,  "right");
-						$submenu->addClass("favsubmenuitem", "favsubmenuitem_hover");
-						$menu->addSubMenu($submenu);
-					}
-				}
-			}
-		}
-		echo $menu->getMenu();
-		break;
-	default:
-		echo '<form class="favorites_form" name="favoriteform" action="', WT_SCRIPT_NAME, '"';
-		echo " method=\"post\" onsubmit=\"return false;\">";
-		echo "<select name=\"fav_id\" class=\"header_select\" onchange=\"if (document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value!='') window.location=document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value; if (document.favoriteform.fav_id.options[document.favoriteform.fav_id.selectedIndex].value=='add') window.location='", get_query_url(array('action'=>'addfav', 'gid'=>$gid)), "';\">";
-		echo "<option value=\"\">", WT_I18N::translate('Favorites'), "</option>";
-		if (WT_USER_NAME && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-			if (count($userfavs)>0 || $gid!='') {
-				echo "<optgroup label=\"", WT_I18N::translate('My Favorites'), "\">";
-			}
-			if ($gid!='') {
-				echo "<option value=\"add\">- ", WT_I18N::translate('Add to My Favorites'), " -</option>";
-			}
-			foreach ($userfavs as $key=>$favorite) {
-				$GEDCOM = $favorite["file"];
-				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
-					echo "<option value=\"", $favorite["url"], "\">", PrintReady($favorite["title"]);
-					echo "</option>";
-				} else {
-					switch ($favorite['type']) {
-					case 'INDI':
-						$record=WT_Person::getInstance($favorite["gid"]);
-						break;
-					case 'FAM':
-						$record=WT_Family::getInstance($favorite["gid"]);
-						break;
-					case 'SOUR':
-						$record=WT_Source::getInstance($favorite["gid"]);
-						break;
-					case 'REPO':
-						$record=WT_Repository::getInstance($favorite["gid"]);
-						break;
-					case 'OBJE':
-						$record=WT_Media::getInstance($favorite["gid"]);
-						break;
-					default:
-						$record=WT_GedcomRecord::getInstance($favorite["gid"]);
-						break;
-					}
-					if ($record && $record->canDisplayName()) {
-						$name=$record->getFullName();
-						echo "<option value=\"", $record->getHtmlUrl(), "\">", $name, "</option>";
-					}
-				}
-			}
-			if (count($userfavs)>0 || $gid!='') {
-				echo "</optgroup>";
-			}
-		}
-		if (count($gedcomfavs)>0) {
-			echo "<optgroup label=\"", WT_I18N::translate('This GEDCOM\'s Favorites'), "\">";
-			foreach ($gedcomfavs as $key=>$favorite) {
-				if ($favorite["type"]=="URL" && !empty($favorite["url"])) {
-					echo "<option value=\"", $favorite["url"], "\">", PrintReady($favorite["title"]);
-					echo "</option>";
-				} else {
-					$record=WT_GedcomRecord::getInstance($favorite["gid"]);
-					if ($record && $record->canDisplayName()) {
-						$name=$record->getFullName();
-						echo "<option value=\"", $record->getHtmlUrl(), "\">", $name, "</option>";
-					}
-				}
-			}
-			echo "</optgroup>";
-		}
-		echo "</select></form>";
-		break;
-	}
-	echo "</div>";
-	$GEDCOM = $currentGedcom;
 }
 /**
 * print a note record

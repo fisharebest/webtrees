@@ -190,21 +190,20 @@ if ($view!='simple') {
 		} else {
 			echo '<li>', login_link(),'</li>';
 		}
-		echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
-		$language_menu=WT_MenuBar::getLanguageMenu();
-		if ($language_menu) {
-			echo $language_menu->getMenuAsList();
+		$menu=WT_MenuBar::getFavoritesMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
 		}
-		if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
-			echo WT_MenuBar::getThemeMenu()->getMenuAsList();
-			$allow_color_dropdown=true;
-		} else {
-			$allow_color_dropdown=false;
+		$menu=WT_MenuBar::getLanguageMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
+		}
+		$menu=WT_MenuBar::getThemeMenu();
+		if ($menu) {
+			echo $menu->getMenuAsList();
 		}
 	}
-				echo '</ul></div></div>';
-	
-
+	echo '</ul></div></div>';
 }
 ?>
 <!-- end menu section -->

@@ -83,13 +83,18 @@ if ($view!='simple') {
 		} else {
 			echo login_link();
 		}
-		echo ' | </li>', WT_MenuBar::getFavoritesMenu()->GetMenuAsList();
-		if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
-			echo ' | ', WT_MenuBar::getThemeMenu()->GetMenuAsList();
+		echo '</li>';
+		$menu=WT_MenuBar::getFavoritesMenu();
+		if ($menu) {
+			echo ' | ', $menu->GetMenuAsList();
 		}
-		$language_menu=WT_MenuBar::getLanguageMenu();
-		if ($language_menu) {
-			echo ' | ', $language_menu->GetMenuAsList();
+		$menu=WT_MenuBar::getThemeMenu();
+		if ($menu) {
+			echo ' | ', $menu->GetMenuAsList();
+		}
+		$menu=WT_MenuBar::getLanguageMenu();
+		if ($menu) {
+			echo ' | ', $menu->GetMenuAsList();
 		}
 		echo '</ul><div class="title">';
 		print_gedcom_title_link(true);
