@@ -29,6 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/functions/functions.php';
+require_once WT_ROOT.'includes/functions/functions_export.php';
 require_once WT_ROOT.'library/pclzip.lib.php';
 
 function same_group($a, $b) {
@@ -179,14 +180,22 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			$media = array ();
 			$mediacount = 0;
 			$ct = count($cart);
-			$filetext = "0 HEAD\n1 SOUR ".WT_WEBTREES."\n2 NAME ".WT_WEBTREES."\n2 VERS ".WT_VERSION_TEXT."\n1 DEST DISKETTE\n1 DATE " . date("j M Y") . "\n2 TIME " . date("H:i:s") . "\n";
-			$filetext .= "1 GEDC\n2 VERS 5.5\n2 FORM LINEAGE-LINKED\n1 CHAR UTF-8\n";
-			$head = find_gedcom_record("HEAD", WT_GED_ID);
-			$placeform = trim(get_sub_record(1, "1 PLAC", $head));
-			if (!empty ($placeform))
-			$filetext .= $placeform . "\n";
-			else
-			$filetext .= "1 PLAC\n2 FORM " . "City, County, State/Province, Country" . "\n";
+			$filetext = gedcom_header(WT_GEDCOM);
+			// Include SUBM/SUBN records, if they exist
+			$subn=
+				WT_DB::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
+				->execute(array('SUBN', WT_GED_ID))
+				->fetchOne();
+			if ($subn) {
+				$filetext .= $subn."\n";
+			}
+			$subm=
+				WT_DB::prepare("SELECT o_gedcom FROM `##other` WHERE o_type=? AND o_file=?")
+				->execute(array('SUBM', WT_GED_ID))
+				->fetchOne();
+			if ($subm) {
+				$filetext .= $subm."\n";
+			}
 			if ($convert == "yes") {
 				$filetext = str_replace("UTF-8", "ANSI", $filetext);
 				$filetext = utf8_decode($filetext);
