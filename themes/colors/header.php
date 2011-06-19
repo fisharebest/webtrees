@@ -61,7 +61,7 @@ if (!empty($META_GENERATOR)) {
 ?>
 <?php
 	echo
-	'<link rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css "type="text/css"  />',
+	'<link rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" "type="text/css"  />',
 	'<link rel="stylesheet" href="', WT_THEME_DIR, 'css/colors.css" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
 
