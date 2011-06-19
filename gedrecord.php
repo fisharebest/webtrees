@@ -26,11 +26,6 @@ require './includes/session.php';
 
 $obj=WT_GedcomRecord::getInstance(safe_GET_xref('pid'));
 
-if (!$obj) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-	exit;
-}
-
 if (
 	$obj instanceof WT_Person ||
 	$obj instanceof WT_Family ||
@@ -41,14 +36,17 @@ if (
 ) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$obj->getRawUrl());
 	exit;
+} elseif (!$obj || !$obj->canDisplayDetails()) {
+	print_header(WT_I18N::translate('Private'));
+	print_privacy_error();
+} else {
+	print_header($obj->getFullName());
+	echo
+		'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
+		preg_replace(
+			'/@('.WT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
+			htmlspecialchars($obj->getGedcomRecord())
+		),
+		'</pre>';
 }
-
-print_header($obj->getFullName());
-echo
-	'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
-	preg_replace(
-		'/@('.WT_REGEX_XREF.')@/', '@<a href="gedrecord.php?pid=$1">$1</a>@',
-		htmlspecialchars($obj->getGedcomRecord())
-	),
-	'</pre>';
 print_footer();
