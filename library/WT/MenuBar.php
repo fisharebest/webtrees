@@ -730,7 +730,7 @@ class WT_MenuBar {
 
 		$favorites=array_merge(
 			gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM),
-			user_favorites_WT_Module::getUserFavorites(WT_USER_NAME),
+			user_favorites_WT_Module::getUserFavorites(WT_USER_NAME)
 		);
 		// Sort these alphabetically?
 
