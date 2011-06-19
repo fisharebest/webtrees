@@ -138,10 +138,12 @@ class WT_Menu {
 		if ($this->submenus) {
 			$html.='<ul>';
 			foreach ($this->submenus as $submenu) {
-				if ($submenu->submenus) {
-					$submenu->iconclass.=' icon_arrow';
+				if ($submenu) {
+					if ($submenu->submenus) {
+						$submenu->iconclass.=' icon_arrow';
+					}
+					$html.=$submenu->getMenuAsList();
 				}
-				$html.=$submenu->getMenuAsList();
 			}
 			$html.='</ul>';
 		}
