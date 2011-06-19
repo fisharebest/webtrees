@@ -61,7 +61,7 @@ if (!empty($META_GENERATOR)) {
 ?>
 <?php
 	echo
-	'<link rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" "type="text/css"  />',
+	'<link type="text/css" rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" />',
 	'<link rel="stylesheet" href="', WT_THEME_DIR, 'css/colors.css" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
 
@@ -197,8 +197,7 @@ if ($view!='simple') {
 			echo color_theme_dropdown();
 			echo '</div>';
 		}
-	echo '</div>', // close topMenu
-'</div>'; // close header
+	echo '</div>'; // close topMenu
 // end header section -->
 }
 ?>
