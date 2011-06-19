@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class html_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('HTML');
+		return /* I18N: Name of a module */ WT_I18N::translate('HTML');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('This is an HTML block that you can place on your page to add any sort of message you may want.  You can insert references to information from your GEDCOM into the HTML text.');
+		return /* I18N: Description of the "HTML" module */ WT_I18N::translate('Add your own text and graphics.');
 	}
 
 	// Implement class WT_Module_Block

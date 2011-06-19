@@ -1,29 +1,25 @@
 <?php
-/**
- * TreeView module class
- *
- * Copyright (C) 2011 Daniel Faivre
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Modules
- * @version $Id$
- */
-
+// TreeView module class
+//
 // Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load 
+//
+// Copyright (C) 2011 webtrees development team
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -55,12 +51,12 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Extend WT_Module. This title should be normalized when this module will be added officially
 	public function getTitle() {
-		return WT_I18N::translate('Interactive tree');
+		return /* I18N: Name of a module */ WT_I18N::translate('Interactive tree');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of a person.');
+		return /* I18N: Description of the "Interactive tree" module */ WT_I18N::translate('An interactive tree, showing all the ancestors and descendants of a person.');
 	}
 	
 	// Implement WT_Module_Tab

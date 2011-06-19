@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<!-- $Id$ -->
-	<Title><var var="WT_I18N::translate('Close Relatives Report')" /></Title>
-	<Description><var var="WT_I18N::translate('A report of a person and their close relatives.')" /></Description>
+	<Title><var var="WT_I18N::translate('Related families')" /></Title>
+	<Description><var var="WT_I18N::translate('A report of the families that are closely related to an individual.')" /></Description>
 	<Input name="pid" type="text" default="" lookup="INDI"><var var="WT_I18N::translate('Enter Individual ID')"/></Input>
 	<Input name="relatives" type="select" options="child-family=>WT_I18N::translate('Parents and siblings')|spouse-family=>WT_I18N::translate('Spouses and children')|direct-ancestors=>WT_I18N::translate('Direct line ancestors')|ancestors=>WT_I18N::translate('Direct line ancestors and their families')|descendants=>WT_I18N::translate('Descendants')|all=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Choose relatives')"/></Input>
 	<Input name="maxgen" type="select" default="4" options="*=>*|1=>1|2=>2|3=>3|4=>4|5=>5|6=>6|7=>7|8=>8|9=>9|10=>10"><var var="WT_I18N::translate('Generations')"/></Input>
@@ -86,7 +86,7 @@
 
 	<Doc pageSize="$pageSize">
 		<Header>
-			<Cell align="center" newline="1" style="header"><var var="WT_I18N::translate('Close Relatives Report')"/></Cell>
+			<Cell align="center" newline="1" style="header"><var var="WT_I18N::translate('Related families')"/></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')"/> <PageNum/> / <TotalPages/></Cell>
 		</Header>
 

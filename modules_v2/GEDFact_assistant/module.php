@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class GEDFact_assistant_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Census assistant');
+		return /* I18N: Name of a module */ WT_I18N::translate('Census assistant');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The census assistant provides a simple way to enter census transcripts and link them to each person listed in the census.');
+		return /* I18N: Description of the "Census assistant" module */ WT_I18N::translate('An alternative way to enter census transcripts and link them to individuals.');
 	}
 
 	// Extend WT_Module

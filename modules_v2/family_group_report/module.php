@@ -32,13 +32,13 @@ class family_group_report_WT_Module extends WT_Module implements WT_Module_Repor
 	// Extend class WT_Module
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a report */ WT_I18N::translate('Family Group Report');
+		return /* I18N: Name of a module/report */ WT_I18N::translate('Family');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of a report */ WT_I18N::translate('A report of family members and their details.');
+		return /* I18N: Description of the "Family" module */ WT_I18N::translate('A report of family members and their details.');
 	}
 
 	// Extend class WT_Module

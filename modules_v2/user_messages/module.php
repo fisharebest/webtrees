@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('User Messages');
+		return /* I18N: Name of a module */ WT_I18N::translate('Messages');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The User Messages block shows a list of the messages that have been sent to the active user.');
+		return /* I18N: Description of the "Messages" module */ WT_I18N::translate('Communicate directly with other users, using private messages.');
 	}
 
 	// Implement class WT_Module_Block
@@ -68,11 +68,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$usermessages = getUserMessages(WT_USER_ID);
 
 		$id=$this->getName().$block_id;
-		$title=WT_I18N::translate('My Messages').help_link('mypage_message');
-		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();
-		$title .= "(".count($usermessages).")";
-		if ($TEXT_DIRECTION=="rtl") $title .= getRLM();
-
+		$title=WT_I18N::plural('%s message', '%d messages',count($usermessages), count($usermessages));
 		$content = "";
 		$content .= "<form name=\"messageform\" action=\"index.php?ctype={$ctype}\" method=\"get\" onsubmit=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">";
 		if (get_user_count()>1) {

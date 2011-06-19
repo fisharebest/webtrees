@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Tab, WT_Module_Config {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Stories');
+		return /* I18N: Name of a module */ WT_I18N::translate('Stories');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Add a narrative story to a person.');
+		return /* I18N: Description of the "Stories" module */ WT_I18N::translate('Add narrative stories to individuals in the family tree.');
 	}
 
 	// Extend WT_Module

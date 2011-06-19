@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Most Viewed Items');
+		return /* I18N: Name of a module */ WT_I18N::translate('Most viewed pages');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('This block will show the 10 records that have been viewed the most.  This block requires that Hit Counters be enabled in the GEDCOM configuration settings.');
+		return /* I18N: Description of the "Most visited pages" module */ WT_I18N::translate('A list of the pages that have been viewed the most number of times.');
 	}
 
 	// Implement class WT_Module_Block
@@ -60,50 +60,39 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 			$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
-		$title .= WT_I18N::translate('Most Viewed Items');
+		$title .= $this->getTitle();
 		$title .= help_link('index_top10_pageviews');
 		$content = "";
 
-		// if the counter file does not exist then don't do anything
-		if (!$SHOW_COUNTER) {
-			if (WT_USER_IS_ADMIN) {
-				$content .= "<span class=\"error\">".WT_I18N::translate('Hit counters must be enabled in the GEDCOM configuration, Display and Layout section, Hide and Show group.')."</span>";
-			}
+		// load the lines from the file
+		$top10=WT_DB::prepare(
+			"SELECT page_parameter, page_count".
+			" FROM `##hit_counter`".
+			" WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
+			" ORDER BY page_count DESC LIMIT ".$num
+		)->execute(array(WT_GED_ID))->FetchAssoc();
+
+
+		if ($block) {
+			$content .= "<table width=\"90%\">";
 		} else {
-			// load the lines from the file
-			$top10=WT_DB::prepare(
-				"SELECT page_parameter, page_count".
-				" FROM `##hit_counter`".
-				" WHERE gedcom_id=? AND page_name IN ('individual.php','family.php','source.php','repo.php','note.php','mediaviewer.php')".
-				" ORDER BY page_count DESC LIMIT ".$num
-			)->execute(array(WT_GED_ID))->FetchAssoc();
-
-
-			if ($top10) {
-				if ($block) {
-					$content .= "<table width=\"90%\">";
-				} else {
-					$content .= "<table>";
+			$content .= "<table>";
+		}
+		foreach ($top10 as $id=>$count) {
+			$record=WT_GedcomRecord::getInstance($id);
+			if ($record && $record->canDisplayDetails()) {
+				$content .= '<tr valign="top">';
+				if ($count_placement=='before') {
+					$content .= '<td dir="ltr" align="right">['.$count.']</td>';
 				}
-				foreach ($top10 as $id=>$count) {
-					$record=WT_GedcomRecord::getInstance($id);
-					if ($record && $record->canDisplayDetails()) {
-						$content .= '<tr valign="top">';
-						if ($count_placement=='before') {
-							$content .= '<td dir="ltr" align="right">['.$count.']</td>';
-						}
-						$content .= '<td class="name2" ><a href="'.$record->getHtmlUrl().'">'.PrintReady($record->getFullName()).'</a></td>';
-						if ($count_placement=='after') {
-							$content .= '<td dir="ltr" align="right">['.$count.']</td>';
-						}
-						$content .= '</tr>';
-					}
+				$content .= '<td class="name2" ><a href="'.$record->getHtmlUrl().'">'.PrintReady($record->getFullName()).'</a></td>';
+				if ($count_placement=='after') {
+					$content .= '<td dir="ltr" align="right">['.$count.']</td>';
 				}
-				$content .= "</table>";
-			} else {
-				$content .= "<b>".WT_I18N::translate('There are currently no hits to show.')."</b>";
+				$content .= '</tr>';
 			}
 		}
+		$content .= "</table>";
 
 		if ($template) {
 			if ($block) {

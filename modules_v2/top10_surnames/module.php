@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Top surnames');
+		return /* I18N: Name of a module.  Top=Most common */ WT_I18N::translate('Top surnames');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('This block displays the most frequently occurring surnames in the database. The actual number of surnames shown in this block is configurable. Using the GEDCOM administration function, you can also configure names to remove from this list.');
+		return /* I18N: Description of the "Top surnames" module */ WT_I18N::translate('A list of the most popular surnames.');
 	}
 
 	// Implement class WT_Module_Block

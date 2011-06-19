@@ -32,13 +32,13 @@ class marriage_report_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a report */ WT_I18N::translate('Marriage Date and Place Report');
+		return /* I18N: Name of a module/report */ WT_I18N::translate('Marriages');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of a report */ WT_I18N::translate('A report of people who were married in a given time or place.');
+		return /* I18N: Description of the "Marriages" module */ WT_I18N::translate('A report of individuals who were married in a given time or place.');
 	}
 
 	// Extend class WT_Module

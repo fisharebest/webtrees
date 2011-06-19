@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('GEDCOM Welcome');
+		return /* I18N: Name of a module */ WT_I18N::translate('Home page');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The GEDCOM Welcome block works the same as the User Welcome block.  It welcomes the visitor to the site and displays the title of the currently active database as well as the current date and time.');
+		return /* I18N: Description of the "Home page" module */ WT_I18N::translate('A greeting message for site visitors.');
 	}
 
 	// Implement class WT_Module_Block
@@ -51,7 +51,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount."<br />";
 		$content .=  "<br />";
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .=  "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".WT_I18N::translate('Customize this GEDCOM Home Page')."</a><br />";
+			$content .=  "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".WT_I18N::translate('Change the blocks on this page')."</a><br />";
 		}
 		$content .=  "</div>";
 

@@ -28,15 +28,29 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+// http://www.google.com/permissions/guidelines.html
+//
+// "... an unregistered Google Brand Feature should be followed by
+// the superscripted letters TM or SM ..."
+//
+// Hence, use "Google Maps™"
+//
+// "... Use the trademark only as an adjective"
+//
+// "... Use a generic term following the trademark, for example:
+// GOOGLE search engine, Google search"
+//
+// Hence, use "Google Maps™ mapping service" where appropriate.
+
 class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: http://en.wikipedia.org/wiki/Google_maps */ WT_I18N::translate('Google Maps');
+		return /* I18N: The name of a module.  Google Maps is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ WT_I18N::translate('Google Maps™');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a tab to the individual page which maps the events of an individual and their close relatives on a Google map.');
+		return /* I18N: Description of the "Google Maps™" module */ WT_I18N::translate('Show the location of places and events using the Google Maps™ mapping service.');
 	}
 
 	// Extend WT_Module

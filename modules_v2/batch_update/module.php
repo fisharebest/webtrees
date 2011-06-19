@@ -4,9 +4,6 @@
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
 //
-// Derived from PhpGedView
-// Copyright (C) 2010 John Finlay
-//
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License, or
@@ -21,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +28,12 @@ if (!defined('WT_WEBTREES')) {
 class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Batch Update');
+		return /* I18N: Name of a module */ WT_I18N::translate('Batch update');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Perform bulk updates and corrections on your GEDCOM data');
+		return /* I18N: Description of the "Batch update" module */ WT_I18N::translate('Apply automatic corrections to your genealogy data.');
 	}
 
 	// Extend WT_Module

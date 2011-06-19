@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<!-- $Id$ -->
-	<Title><var var="WT_I18N::translate('Pedigree Chart')" /></Title>
+	<Title><var var="WT_I18N::translate('Pedigree')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of a person\'s ancestors, formatted as a tree.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text" default=""><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
 	<Input name="orientation" type="select" default="portrait" options="portrait=>WT_I18N::translate('Portrait')|landscape=>WT_I18N::translate('Landscape')"><var var="WT_I18N::translate('Orientation')"/></Input>
@@ -38,7 +38,7 @@
 
 		<Doc pageSize="$pageSize" leftmargin="1" rightmargin="1">
 			<Header>
-				<Cell height="20" newline="1" left="20" style="header"><var var="WT_I18N::translate('Pedigree Chart')" /></Cell>
+				<Cell height="20" newline="1" left="20" style="header"><var var="WT_I18N::translate('Pedigree')" /></Cell>
 				<Cell align="rightrtl" height="10" newline="1" style="date"><Now /></Cell>
 			</Header>
 			<Body>

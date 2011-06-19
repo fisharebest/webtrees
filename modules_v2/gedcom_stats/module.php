@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Family tree statistics');
+		return /* I18N: Name of a module */ WT_I18N::translate('Statistics');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The GEDCOM Statistics block shows the visitor some basic information about the database, such as when it was created and how many people are in it.<br /><br />It also has a list of the most frequent surnames.  You can configure this block to not show the Frequent Surnames list, and you can also configure the GEDCOM to remove or add names to this list.  You can set the occurrence threshold for this list in the GEDCOM configuration.');
+		return /* I18N: Description of "Statistics" module */ WT_I18N::translate('The size of the family tree, earliest and latest events, common names, etc.');
 	}
 
 	// Implement class WT_Module_Block
@@ -195,7 +195,6 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$surnames = get_common_surnames(get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'));
 			if (count($surnames)>0) {
 				$content .= '<br /><b>'.WT_I18N::translate('Most Common Surnames').'</b>';
-				$content .= help_link('index_common_names');
 				$content .= '<br />';
 				$i=0;
 				foreach ($surnames as $indexval => $surname) {

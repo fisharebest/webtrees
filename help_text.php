@@ -2527,21 +2527,6 @@ case 'include_media':
 	$text=WT_I18N::translate('Select this option to include the media files associated with the records in your clippings cart.  Choosing this option will automatically zip the files during download.');
 	break;
 
-case 'index_add_favorites':
-	$title=WT_I18N::translate('Add a new favorite');
-	$text=WT_I18N::translate('This form allows you to add a new favorite item to your list of favorites.<br /><br />You must enter either an ID for the person, family, or source you want to store as a favorite, or you must enter a URL and a title.  The Note field is optional and can be used to describe the favorite.  Anything entered in the Note field will be displayed in the Favorites block after the item.');
-	break;
-
-case 'index_common_names':
-	$title=WT_I18N::translate('Most common surnames block');
-	$text=WT_I18N::translate('This block displays a list of frequently occurring surnames from this database. A surname must occur at least %s times before it will appear in this list.  The administrator has control over this threshold.<br /><br />When you click on a surname in this list, you will be taken to the Individuals, where you will get more details about that name.', get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'));
-	break;
-
-case 'index_favorites':
-	$title=WT_I18N::translate('GEDCOM favorites block');
-	$text=WT_I18N::translate('The GEDCOM Favorites block is much the same as the "My Favorites" block of My Page. Unlike the My Page configuration, only the administrator or a user with Admin rights can change the list of favorites in this block.<br /><br />The purpose of the GEDCOM Favorites block is to draw the visitor\'s attention to persons of special interest.  This GEDCOM\'s favorites are available for selection from a drop-down list in the header on every page.<br /><br />When you click on one of the listed site favorites, you will be taken to the Individual Information page of that person.');
-	break;
-
 case 'index_gedcom_news_adm':
 	$title=WT_I18N::translate('GEDCOM news block HTML');
 	$text=WT_I18N::translate('The GEDCOM News text allows the use of <b>HTML tags</b> and <b>HTML entities</b>.  HTML should not be used in News titles.<br /><br />Be sure to always use both start and end tags.  It may help to have an understanding of HTML appropriate for a web site administrator. This program uses <b>Cascading Style Sheets (CSS)</b> as well. A different CSS is implemented for each theme.  You can use classes from these style sheets to control the appearance of your messages.');
@@ -2630,11 +2615,6 @@ case 'move_mediadirs':
 case 'mypage_customize':
 	$title=WT_I18N::translate('Customize My Page');
 	$text=WT_I18N::translate('When you entered here for the first time, you already had some blocks on this page.  If you like, you can customize this My Page.<br /><br />When you click this link you will be taken to a form where you can add, move, or delete blocks.  More explanation is available on that form.');
-	break;
-
-case 'mypage_favorites':
-	$title=WT_I18N::translate('Favorites block');
-	$text=WT_I18N::translate('Favorites are similar to bookmarks.<br /><br />Suppose you have somebody in the family tree whose record you want to check regularly.  Just go to the person\'s Individual Information page and select the <b>Add to My Favorites</b> option from the Favorites drop-down list. This person is now book marked and added to your list of favorites.<br /><br />Wherever you are on this site, you can click on a name in the "My Favorites" drop-down list in the header.  This will take you to the Individual Information page of that person.');
 	break;
 
 case 'mypage_message':

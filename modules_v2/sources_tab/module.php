@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Sources');
+		return /* I18N: Name of a module */ WT_I18N::translate('Sources');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a tab to the individual page which displays the sources linked to an individual.');
+		return /* I18N: Description of the "Sources" module */ WT_I18N::translate('A tab showing the sources linked to an individual.');
 	}
 
 	// Implement WT_Module_Tab

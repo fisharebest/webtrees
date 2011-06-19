@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Logged In Users');
+		return /* I18N: Name of a module. (A list of users who are online now) */ WT_I18N::translate('Who is online');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The Logged In Users block shows a list of the users who are currently logged in.');
+		return /* I18N: Description of the "Who is online" module */ WT_I18N::translate('A list of users and visitors who are currently online.');
 	}
 
 	// Implement class WT_Module_Block
@@ -53,7 +53,7 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		$id=$this->getName().$block_id;
-		$title=WT_I18N::translate('Users Logged In').help_link('index_loggedin', $this->getName());
+		$title=$this->getTitle().help_link('index_loggedin', $this->getName());
 		$content='<table width="90%">';
 		$LoginUsers=count($loggedusers);
 		if ($LoginUsers==0 && $NumAnonymous==0) {

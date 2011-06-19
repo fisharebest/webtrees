@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Random Media');
+		return /* I18N: Name of a module */WT_I18N::translate('Slide show');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The Random Media block randomly selects a photo or other media item from the currently active database and displays it to the user.<br /><br />The administrator determines whether this block can show media items associated with persons or events.');
+		return /* I18N: Description of the "Slide show" module */ WT_I18N::translate('Random images from the current family tree.');
 	}
 
 	// Implement class WT_Module_Block
@@ -192,7 +192,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$title .= "<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGES['admin']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure').'" /></a>';
 			}
-			$title .= WT_I18N::translate('Random Picture');
+			$title .= $this->getTitle();
 			$title .= help_link('index_media');
 			$content = "<div id=\"random_picture_container$block_id\">";
 			if ($controls) {
@@ -443,14 +443,14 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$controls=get_block_setting($block_id, 'controls', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show slideshow controls?'), help_link('random_media_ajax_controls');
+		echo WT_I18N::translate('Show slide show controls?'), help_link('random_media_ajax_controls');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('controls', $controls);
 		echo '</td></tr>';
 
 		$start=get_block_setting($block_id, 'start', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Start slideshow on page load?'), help_link('random_media_start_slide');
+		echo WT_I18N::translate('Start slide show on page load?'), help_link('random_media_start_slide');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('start', $start);
 		echo '</td></tr>';

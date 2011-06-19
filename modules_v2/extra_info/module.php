@@ -18,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-//  $Id: module.php 11459 2011-05-04 23:37:08Z nigel $
+// $Id: module.php 11459 2011-05-04 23:37:08Z nigel $
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -30,12 +30,12 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Extra information');
+		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Extra information');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('A sidebar that shows non-genealogical facts and other information about an indivdual.');
+		return /* I18N: Description of the "Extra information" module */ WT_I18N::translate('A sidebar showing non-genealogical information about an indivdual.');
 	}
 
 	// Implement WT_Module_Sidebar

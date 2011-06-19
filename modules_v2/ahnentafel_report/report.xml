@@ -2,8 +2,8 @@
 <!-- Includes 2010 work done by John Hawthornthwaite(hagershorn1) for an ancestry report in PhpGedView -->
 <Report>
 	<!-- $Id$ -->
-	<Title><var var="WT_I18N::translate('Ahnentafel Report')" /></Title>
-	<Description><var var="WT_I18N::translate('A report of a person\'s ancestors in a narrative style.')" /></Description>
+	<Title><var var="WT_I18N::translate('Ancestors')" /></Title>
+	<Description><var var="WT_I18N::translate('A report of an individual’s ancestors, in a narrative style.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text"><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
 	<Input name="maxgen" type="select" options="3=>3|4=>4|5=>5|6=>6|7=>7|8=>8|9=>9|*=>*"><var var="WT_I18N::translate('Generations')" /></Input>
 	<Input name="sources" type="checkbox" default="1"><var var="WT_I18N::translate('Show sources?')" /></Input>
@@ -50,7 +50,7 @@
 
 	<Doc pageSize="$pageSize">
 		<Header>
-			<Cell align="center" height="30" newline="1" style="header"><var var="WT_I18N::translate('Ahnentafel Report for ')" /><GetPersonName id="$pid" /></Cell>
+			<Cell align="center" height="30" newline="1" style="header"><var var="WT_I18N::translate('Ancestors of ')" /><GetPersonName id="$pid" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
 		</Header>
 		<Body>

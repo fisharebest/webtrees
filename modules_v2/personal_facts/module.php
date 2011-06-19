@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id: module.php 11574 2011-05-22 22:56:28Z nigel $
+// $Id: module.php 11574 2011-05-22 22:56:28Z nigel $
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Personal Facts');
+		return /* I18N: Name of a module/tab on the individual page. */ WT_I18N::translate('Facts and events');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a tab to the individual page which displays the facts of an individual and their close relatives.');
+		return /* I18N: Description of the "Facts and events" module */ WT_I18N::translate('A tab showing the facts and events of an individual.');
 	}
 
 	// Implement WT_Module_Tab

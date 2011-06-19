@@ -32,13 +32,13 @@ class fact_sources_WT_Module extends WT_Module implements WT_Module_Report {
 	// Extend class WT_Module
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a report */ WT_I18N::translate('Fact Sources');
+		return /* I18N: Name of a module/report */ WT_I18N::translate('Source');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of a report */ WT_I18N::translate('A report of facts which are supported by a given source.');
+		return /* I18N: Description of the "Source" module */ WT_I18N::translate('A report of the information provided by a source.');
 	}
 
 	// Extend class WT_Module

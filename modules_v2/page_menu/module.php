@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Page Menu');
+		return /* I18N: Name of a module/menu */ WT_I18N::translate('Edit');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a menu to the menu bar which provides page specific options.');
+		return /* I18N: Description of the "Edit" module */ WT_I18N::translate('An edit menu for individuals, families, sources, etc.');
 	}
 
 	// Implement WT_Module_Menu

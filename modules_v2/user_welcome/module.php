@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('User Welcome');
+		return /* I18N: Name of a module */ WT_I18N::translate('My page');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The User Welcome block shows the user the current date and time, quick links to modify his account or go to his own Pedigree chart, and a link to customize his My Page.');
+		return /* I18N: Description of the "My page" module */ WT_I18N::translate('A greeting message and useful links for a user. ');
 	}
 
 	// Implement class WT_Module_Block
@@ -52,11 +52,11 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<td class=\"center details2\" style=\" width: 33%; clear: none; vertical-align: top; margin-top: 2px;\"><a href=\"edituser.php\"><img class=\"block\" src=\"".$WT_IMAGES["mypage"]."\" border=\"0\" alt=\"".WT_I18N::translate('My account')."\" /><br />".WT_I18N::translate('My account')."</a></td>";
 		}
 		if (WT_USER_GEDCOM_ID) {
-			$content .= "<td class=\"center details2\" style=\" width: 33%; clear: none; vertical-align: top; margin-top: 2px;\"><a href=\"pedigree.php?rootid=".WT_USER_GEDCOM_ID."&amp;ged=".WT_GEDURL."\"><img class=\"block\" src=\"".$WT_IMAGES["pedigree"]."\" border=\"0\" alt=\"".WT_I18N::translate('My Pedigree')."\" title=\"".WT_I18N::translate('My Pedigree')."\" /><br />".WT_I18N::translate('My Pedigree')."</a></td>";
+			$content .= "<td class=\"center details2\" style=\" width: 33%; clear: none; vertical-align: top; margin-top: 2px;\"><a href=\"pedigree.php?rootid=".WT_USER_GEDCOM_ID."&amp;ged=".WT_GEDURL."\"><img class=\"block\" src=\"".$WT_IMAGES["pedigree"]."\" border=\"0\" alt=\"".WT_I18N::translate('My pedigree')."\" title=\"".WT_I18N::translate('My pedigree')."\" /><br />".WT_I18N::translate('My pedigree')."</a></td>";
 			$content .= "<td class=\"center details2\" style=\" width: 33%; clear: none; vertical-align: top; margin-top: 2px;\"><a href=\"individual.php?pid=".WT_USER_GEDCOM_ID."&amp;ged=".WT_GEDURL."\"><img class=\"block\" src=\"".$WT_IMAGES["indis"]."\" border=\"0\" alt=\"".WT_I18N::translate('My individual record')."\" /><br />".WT_I18N::translate('My individual record')."</a></td>";
 		}
 		$content .= "</tr><tr><td class=\"center\" colspan=\"3\">";
-		$content .= "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_USER_NAME."&amp;ctype=user"."', '_blank', 'top=50,left=10,width=705,height=355,scrollbars=1,resizable=1');\">".WT_I18N::translate('Customize My Page')."</a>";
+		$content .= "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_USER_NAME."&amp;ctype=user"."', '_blank', 'top=50,left=10,width=705,height=355,scrollbars=1,resizable=1');\">".WT_I18N::translate('Change the blocks on this page')."</a>";
 		$content .= help_link('mypage_customize');
 		$content .= "<br />".format_timestamp(client_time())."<br />";
 		if ($SHOW_COUNTER)

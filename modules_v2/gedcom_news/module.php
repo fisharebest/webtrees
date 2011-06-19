@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -39,12 +39,12 @@ try {
 class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('GEDCOM News');
+		return /* I18N: Name of a module */ WT_I18N::translate('News');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The GEDCOM News block shows the visitor news releases or articles posted by an admin user.<br /><br />The News block is a good place to announce a significant database update, a family reunion, or the birth of a child.');
+		return /* I18N: Description of the "GEDCOM News" module */ WT_I18N::translate('Family news and site announcements.');
 	}
 
 	// Implement class WT_Module_Block
@@ -92,7 +92,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			$title.="<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
-		$title .= WT_I18N::translate('News');
+		$title .= $this->getTitle();
 		if (WT_USER_GEDCOM_ADMIN) {
 			$title .= help_link('index_gedcom_news_adm');
 		} else {

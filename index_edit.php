@@ -1,6 +1,5 @@
 <?php
-// My Page page allows a logged in user the abilty
-// to keep bookmarks, see a list of upcoming events, etc.
+// Change the blocks on "My page" and "Home page"
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -91,7 +90,7 @@ if ($ctype=='user') {
 }
 
 if ($ctype=='user') {
-	print_simple_header(WT_I18N::translate('My Page'));
+	print_simple_header(WT_I18N::translate('My page'));
 } else {
 	print_simple_header(get_gedcom_setting(WT_GED_ID, 'title'));
 }
@@ -305,8 +304,7 @@ if ($action=="configure") {
 	<table border="1" width="400px">
 	<tr><td class="topbottombar" colspan="7">
 	<?php
-	if ($ctype=="user") echo "<b>".WT_I18N::translate('Customize My Page')."</b>";
-	else echo "<b>".WT_I18N::translate('Customize this GEDCOM Home Page')."</b>";
+	echo "<b>".WT_I18N::translate('Change the blocks on this page')."</b>";
 	echo help_link('portal_config_intructions');
 	echo "</td></tr>";
 	// NOTE: Row 1: Column legends

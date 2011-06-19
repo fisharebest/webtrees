@@ -106,10 +106,10 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 <table class="list_table $TEXT_DIRECTION" width="35%" border="0">
 	<tr>
 
-<!-- /**************************************************** General Search Form *************************************************************/ -->
+<!-- /**************************************************** General search Form *************************************************************/ -->
 			<?php if ($controller->action == "general") { ?>
 				<td colspan="3" class="facts_label03" style="text-align:center;">
-					<?php echo WT_I18N::translate('General Search'); ?>
+					<?php echo WT_I18N::translate('General search'); ?>
 				</td>
 	</tr>
 	<!-- // search terms -->
@@ -179,7 +179,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 			<?php
 
 }
-/**************************************************** Search and Replace Search Form ****************************************************/
+/**************************************************** Search and replace Search Form ****************************************************/
 if ($controller->action == "replace")
 {
 	if (WT_USER_CAN_EDIT) {
@@ -235,7 +235,7 @@ if ($controller->action == "replace")
 }
 }
 
-/**************************************************** Soundex Search Form *************************************************************/
+/**************************************************** Phonetic search Form *************************************************************/
 if ($controller->action == "soundex") {
 ?>
 				<td colspan="3" class="facts_label03" style="text-align:center; ">
@@ -383,17 +383,17 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 			<?php
 
 if ($controller->action == "general") {
-	echo '<a href="?action=soundex">', WT_I18N::translate('Soundex Search'), '</a>';
+	echo '<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a>';
 	echo ' | <a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
 	if (WT_USER_CAN_EDIT) {
 		echo ' | <a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';
 	}
 } else if ($controller->action == "replace") {
-	echo '<a href="?action=general">', WT_I18N::translate('General Search'), '</a> | ';
-	echo '<a href="?action=soundex">', WT_I18N::translate('Soundex Search'), '</a>';
+	echo '<a href="?action=general">', WT_I18N::translate('General search'), '</a> | ';
+	echo '<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a>';
 	echo ' | <a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
 } else if ($controller->action == "soundex") {
-		echo '<a href="?action=general">', WT_I18N::translate('General Search'), '</a>';
+		echo '<a href="?action=general">', WT_I18N::translate('General search'), '</a>';
 		echo ' | <a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
 		if (WT_USER_CAN_EDIT) {
 			echo ' | <a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';

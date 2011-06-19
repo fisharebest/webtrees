@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -39,12 +39,12 @@ try {
 class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('User Journal');
+		return /* I18N: Name of a module */ WT_I18N::translate('Journal');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The User Journal block lets the user keep notes or a journal online.');
+		return /* I18N: Description of the "Journal" module */ WT_I18N::translate('A private area to record notes or keep a journal.');
 	}
 
 	// Implement class WT_Module_Block
@@ -70,7 +70,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 		$usernews = getUserNews(WT_USER_ID);
 
 		$id=$this->getName().$block_id;
-		$title=WT_I18N::translate('My Journal').help_link('mypage_myjournal');
+		$title=$this->getTitle().help_link('mypage_myjournal');
 		$content = "";
 		if (count($usernews)==0) {
 			$content .= WT_I18N::translate('You have not created any Journal items.').' ';

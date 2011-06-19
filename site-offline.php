@@ -20,7 +20,7 @@
 //
 // $Id$
 
-define('WT_SCRIPT_NAME', 'site-unavailable.php');
+define('WT_SCRIPT_NAME', 'site-offline.php');
 
 // This script does not load session.php.
 // session.php won't run until a configuration file and database connection exist...
@@ -66,7 +66,7 @@ echo
 		.good {color: green;}
 	</style>',
 	'</head><body>',
-	'<h1>', WT_I18N::translate('<b>webtrees</b> site unavailable'), '</h1>',
+	'<h1>', WT_I18N::translate('This website is temporarily unavailable'), '</h1>',
 	'<div class="content"><p>';
 
 if ($offline_txt) {

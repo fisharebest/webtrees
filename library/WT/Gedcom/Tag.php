@@ -899,7 +899,7 @@ class WT_Gedcom_Tag {
 		case '_STAT':  return /* I18N: gedcom tag _STAT */  WT_I18N::translate('Marriage status');
 		case '_SUBQ':  return /* I18N: gedcom tag _SUBQ */  WT_I18N::translate('Short version');
 		case '_THUM':  return /* I18N: gedcom tag _THUM */  WT_I18N::translate('Always use main image?');
-		case '_TODO':  return /* I18N: gedcom tag _TODO */  WT_I18N::translate('To-do item');
+		case '_TODO':  return /* I18N: gedcom tag _TODO */  WT_I18N::translate('Research task');
 		case '_TYPE':  return /* I18N: gedcom tag _TYPE */  WT_I18N::translate('Media type');
 		case '_UID':   return /* I18N: gedcom tag _UID */   WT_I18N::translate('Globally unique identifier');
 		case '_URL':   return /* I18N: gedcom tag _URL */   WT_I18N::translate('Web URL');

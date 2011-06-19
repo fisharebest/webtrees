@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<!-- $Id$ -->
-	<Title><var var="WT_I18N::translate('Family Group Report')" /></Title>
+	<Title><var var="WT_I18N::translate('Family')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of family members and their details.')" /></Description>
 	<!-- User inputs for the report -->
 	<Input name="famid" lookup="FAM" type="text" default=""><var var="WT_I18N::translate('Enter Family ID')" /></Input>
@@ -83,7 +83,7 @@
 		<SetVar name="wifeid" value="@WIFE" />
 
 		<Header>
-			<Cell align="center" newline="1" style="header"><var var="WT_I18N::translate('Family Group Report')" /></Cell>
+			<Cell align="center" newline="1" style="header"><var var="WT_I18N::translate('Family')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
 		</Header>
 
@@ -702,7 +702,7 @@
 				<!-- print the children box in gray or color -->
 				<TextBox border="1" width="$width" newline="1" bgcolor="$sectionbox_bgcolor">
 					<Text color="$tcolor" style="text">
-						<var var="WT_I18N::translate('Children')" />  <var var="WT_I18N::translate('List each child in order of birth.')" />
+						<var var="WT_I18N::translate('Children')" />
 					</Text>
 				</TextBox>
 

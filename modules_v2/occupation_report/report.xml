@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<!-- $Id$ -->
-	<Title><var var="WT_I18N::translate('Occupation report')" /></Title>
-	<Description><var var="WT_I18N::translate('A report of people who had a given occupation.')" /></Description>
+	<Title><var var="WT_I18N::translate('Occupations')" /></Title>
+	<Description><var var="WT_I18N::translate('A report of individuals who had a given occupation.')" /></Description>
 	<Input name="occupation" lookup="OCCU" type="text"><var var="WT_Gedcom_Tag::getLabel('OCCU')" /> </Input>
 	<Input name="sortby" type="select" default="NAME" options="NAME=>WT_I18N::translate('sort by name')|BIRT:DATE=>WT_I18N::translate('sort by date of birth')"><var var="WT_I18N::translate('Sort order')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>
@@ -32,7 +32,7 @@
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
-			<Cell align="center" height="20" newline="1" style="header"><var var="WT_I18N::translate('Occupation report')" /></Cell>
+			<Cell align="center" height="20" newline="1" style="header"><var var="WT_I18N::translate('Occupations')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
 
 			<SetVar name="fill" value="" />

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Report>
 	<!-- $Id$ -->
-	<Title><var var="WT_I18N::translate('Expanded Relatives Report')" /></Title>
-	<Description><var var="WT_I18N::translate('A report of a person and details of their relatives.')" /></Description>
+	<Title><var var="WT_I18N::translate('Related individuals')" /></Title>
+	<Description><var var="WT_I18N::translate('A report of the individuals that are closely related to an individual.')" /></Description>
 	<Input name="pid" lookup="INDI" type="text"><var var="WT_I18N::translate('Enter Individual ID')" /></Input>
 	<Input name="relatives" type="select" options="child-family=>WT_I18N::translate('Parents and siblings')|spouse-family=>WT_I18N::translate('Spouses and children')|direct-ancestors=>WT_I18N::translate('Direct line ancestors')|ancestors=>WT_I18N::translate('Direct line ancestors and their families')|descendants=>WT_I18N::translate('Descendants')|all=>WT_I18N::translate('All')"><var var="WT_I18N::translate('Choose relatives')" /></Input>
 	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>WT_I18N::translate('sort by name')|BIRT:DATE=>WT_I18N::translate('sort by date of birth')|DEAT:DATE=>WT_I18N::translate('sort by date of death')"><var var="WT_I18N::translate('Sort order')" /></Input>
@@ -38,7 +38,7 @@
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
-			<Cell align="center" height="20" newline="1" style="header"><var var="WT_I18N::translate('Expanded Relatives Report')" /></Cell>
+			<Cell align="center" height="20" newline="1" style="header"><var var="WT_I18N::translate('Related individuals')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
 
 			<SetVar name="fill" value="" />

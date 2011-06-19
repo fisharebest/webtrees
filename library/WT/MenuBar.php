@@ -72,12 +72,12 @@ class WT_MenuBar {
 		}
 
 		//-- main menu
-		$menu = new WT_Menu(WT_I18N::translate('My Page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mymenu', 'down');
+		$menu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mymenu', 'down');
 		$menu->addIcon('mypage');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_mypage');
 
 		//-- mypage submenu
-		$submenu = new WT_Menu(WT_I18N::translate('My Page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mypage');
+		$submenu = new WT_Menu(WT_I18N::translate('My page'), 'index.php?ctype=user&amp;ged='.WT_GEDURL, 'menu-mypage');
 		$submenu->addIcon('mypage');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_mypage');
 		$menu->addSubmenu($submenu);
@@ -91,7 +91,7 @@ class WT_MenuBar {
 		if (WT_USER_GEDCOM_ID) {
 			//-- my_pedigree submenu
 			$submenu = new WT_Menu(
-				WT_I18N::translate('My Pedigree'),
+				WT_I18N::translate('My pedigree'),
 				'pedigree.php?ged='.WT_GEDURL.'&amp;rootid='.WT_USER_GEDCOM_ID."&amp;show_full={$showFull}&amp;talloffset={$showLayout}",
 				'menu-mypedigree'
 			);
@@ -525,17 +525,17 @@ class WT_MenuBar {
 		$menu->addIcon('calendar');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_calendar');
 		//-- viewday sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('View Day'), 'calendar.php?ged='.WT_GEDURL, 'menu-calendar-day');
+		$submenu = new WT_Menu(WT_I18N::translate('Day'), 'calendar.php?ged='.WT_GEDURL, 'menu-calendar-day');
 		$submenu->addIcon('calendar');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_calendar');
 		$menu->addSubmenu($submenu);
 		//-- viewmonth sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('View Month'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=calendar', 'menu-calendar-month');
+		$submenu = new WT_Menu(WT_I18N::translate('Month'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=calendar', 'menu-calendar-month');
 		$submenu->addIcon('calendar');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_calendar');
 		$menu->addSubmenu($submenu);
 		//-- viewyear sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('View Year'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=year', 'menu-calendar-year');
+		$submenu = new WT_Menu(WT_I18N::translate('Year'), 'calendar.php?ged='.WT_GEDURL.'&amp;action=year', 'menu-calendar-year');
 		$submenu->addIcon('calendar');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_calendar');
 		$menu->addSubmenu($submenu);
@@ -577,12 +577,12 @@ class WT_MenuBar {
 		$menu->addIcon('search');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_search');
 		//-- search_general sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('General Search'), 'search.php?ged='.WT_GEDURL, 'menu-search-general');
+		$submenu = new WT_Menu(WT_I18N::translate('General search'), 'search.php?ged='.WT_GEDURL, 'menu-search-general');
 		$submenu->addIcon('search');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_search');
 		$menu->addSubmenu($submenu);
 		//-- search_soundex sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('Soundex Search'), 'search.php?ged='.WT_GEDURL.'&amp;action=soundex', 'menu-search-soundex');
+		$submenu = new WT_Menu(/* I18N: search using "sounds like", rather than exact spelling */ WT_I18N::translate('Phonetic search'), 'search.php?ged='.WT_GEDURL.'&amp;action=soundex', 'menu-search-soundex');
 		$submenu->addIcon('search');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_search');
 		$menu->addSubmenu($submenu);
@@ -642,7 +642,7 @@ class WT_MenuBar {
 			$menu->addSubmenu($submenu);
 		}
 		//-- add wiki links
-		$submenu = new WT_Menu(WT_I18N::translate('Wiki Main Page'), WT_WEBTREES_WIKI.'" target="_blank', 'menu-help-wiki');
+		$submenu = new WT_Menu(/* I18N: The website wiki.webtrees.net.  Do not translate this? */ WT_I18N::translate('webtrees wiki'), WT_WEBTREES_WIKI.'" target="_blank', 'menu-help-wiki');
 		$submenu->addIcon('wiki');
 		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_wiki');
 		$menu->addSubmenu($submenu);

@@ -39,12 +39,12 @@ try {
 class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('User Favorites');
+		return WT_I18N::translate('Favorites');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The User Favorites block shows the user a list of his favorite people in the database so that he can easily link to them.');
+		return WT_I18N::translate('Display and manage a user’s favorite pages.');
 	}
 
 	// Implement class WT_Module_Block
@@ -118,10 +118,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		if (!is_array($userfavs)) $userfavs = array();
 
 		$id=$this->getName().$block_id;
-		$title=WT_I18N::translate('My Favorites').help_link('mypage_favorites');
-		if ($TEXT_DIRECTION=='rtl') $title .= getRLM();
-		$title .= '('.count($userfavs).')';
-		if ($TEXT_DIRECTION=='rtl') $title .= getRLM();
+		$title=$this->getTitle();
 
 		if ($ENABLE_AUTOCOMPLETE) {
 			$content = '<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
@@ -152,9 +149,7 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$tableWidth = '99%';
 			$cellSpacing = '3px';
 		}
-		if (count($userfavs)==0) {
-			$content .= WT_I18N::translate('You have not selected any favorites.<br /><br />To add an individual, a family, or a source to your favorites, click on the <b>Add a new favorite</b> link to reveal some fields where you can enter or search for an ID number.  Instead of an ID number, you can enter a URL and a title.');
-		} else {
+		if ($userfavs) {
 			$mygedcom = $GEDCOM;
 			$current_gedcom = $GEDCOM;
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center $TEXT_DIRECTION\">";
@@ -213,7 +208,6 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		';
 		$uniqueID = floor(microtime() * 1000000);
 		$content .= "<b><a href=\"javascript: ".WT_I18N::translate('Add a new favorite')." \" onclick=\"expand_layer('add_user_fav{$uniqueID}'); return false;\"><img id=\"add_user_fav_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"\" />&nbsp;".WT_I18N::translate('Add a new favorite')."</a></b>";
-		$content .= help_link('index_add_favorites');
 		$content .= "<br /><div id=\"add_user_fav{$uniqueID}\" style=\"display: none;\">";
 		$content .= "<form name=\"addufavform\" method=\"get\" action=\"index.php\">";
 		$content .= "<input type=\"hidden\" name=\"action\" value=\"addfav\" />";

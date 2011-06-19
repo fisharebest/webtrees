@@ -57,7 +57,7 @@ echo
 		.good {color: green;}
 	</style>',
 	'</head><body>',
-	'<h1>', WT_I18N::translate('<b>webtrees</b> site unavailable'), '</h1>',
+	'<h1>', WT_I18N::translate('This website is temporarily unavailable'), '</h1>',
 	'<div class="content">',
 	'<p>', WT_I18N::translate('Oops!  The webserver is unable to connect to the database server.  It could be busy, undergoing maintenance, or simply broken.  You should <a href="index.php">try again</a> in a few minutes or contact the website administrator.'), '</p>';
 

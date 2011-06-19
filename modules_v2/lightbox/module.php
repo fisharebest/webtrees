@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Album');
+		return /* I18N: Name of a module */ WT_I18N::translate('Album');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds a tab (Album) to the individual page which an alternate way to view and work with media.');
+		return /* I18N: Description of the "Album" module */ WT_I18N::translate('An alternative to the “media” tab, and an enhanced image viewer.');
 	}
 
 	// Extend WT_Module

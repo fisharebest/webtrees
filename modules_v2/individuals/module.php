@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Individuals');
+		return /* I18N: Name of a module */ WT_I18N::translate('Individual list');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('A sidebar that shows an alphabetic list of all the individuals in the family tree.');
+		return /* I18N: Description of "Individuals" module */ WT_I18N::translate('A sidebar showing an alphabetic list of all the individuals in the family tree.');
 	}
 
 	// Implement WT_Module_Sidebar

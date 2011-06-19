@@ -32,13 +32,13 @@ class individual_report_WT_Module extends WT_Module implements WT_Module_Report 
 	// Extend class WT_Module
 	public function getTitle() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Name of a report */ WT_I18N::translate('Individual Report');
+		return /* I18N: Name of a module/report */ WT_I18N::translate('Individual');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
 		// This text also appears in the .XML file - update both together
-		return /* I18N: Description of a report */ WT_I18N::translate('A report of the details of a person.');
+		return /* I18N: Description of the "Individual" module */ WT_I18N::translate('A report of an individual’s details.');
 	}
 
 	// Extend class WT_Module

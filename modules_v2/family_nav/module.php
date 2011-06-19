@@ -33,12 +33,12 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Family navigator');
+		return /* I18N: Name of a module/sidebar */ WT_I18N::translate('Family navigator');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('A sidebar that shows an individual’s close families and relatives.');
+		return /* I18N: Description of the "Family navigator" module */ WT_I18N::translate('A sidebar showing an individual’s close families and relatives.');
 	}
 
 	// Implement WT_Module_Sidebar

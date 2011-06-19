@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Top 10 Given Names');
+		return /* I18N: Name of a module.  Top=Most common */ WT_I18N::translate('Top given names');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('This block shows a table of the 10 most frequently occurring given names in the database.  The actual number of given names shown in this block is configurable.');
+		return /* I18N: Description of the "Top given names" module */ WT_I18N::translate('A list of the most popular given names.');
 	}
 
 	// Implement class WT_Module_Block
@@ -64,7 +64,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
 		// I18N: There are separate lists of male/female names, containing %d names each
-		$title .= WT_I18N::plural('Top Given Name', 'Top %d Given Names', $num, $num);
+		$title .= WT_I18N::plural('Top given name', 'Top %d given names', $num, $num);
 
 		$content = '<div class="normal_inner_block">';
 		//Select List or Table

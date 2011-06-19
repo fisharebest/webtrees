@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,18 +31,18 @@ if (!defined('WT_WEBTREES')) {
 class theme_select_WT_Module extends WT_Module implements WT_Module_Block {
 	// Extend class WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('Theme Select');
+		return /* I18N: Name of a module */ WT_I18N::translate('Theme change');
 	}
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('The Theme Select block displays the Theme selector even when the Change Theme feature is disabled.');
+		return /* I18N: Description of the "Theme change" module */ WT_I18N::translate('An alternative way to select a new theme.');
 	}
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		$id=$this->getName().$block_id;
-		$title=WT_I18N::translate('Change theme').help_link('change_theme');
+		$title=$this->getTitle();
 		$menu=WT_MenuBar::getThemeMenu();
 		if ($menu) {
 			$content='<br /><div class="center theme_form">'.WT_MenuBar::getThemeMenu()->getMenuAsDropdown().'</div><br />';

@@ -22,7 +22,7 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -269,9 +269,9 @@ class WT_Controller_Search extends WT_Controller_Base {
 	function getPageTitle() {
 		switch ($this->action) {
 		case 'general':
-			return WT_I18N::translate('General Search');
+			return WT_I18N::translate('General search');
 		case 'soundex':
-			return WT_I18N::translate('Soundex Search');
+			return WT_I18N::translate('Phonetic search');
 		case 'replace':
 			return WT_I18N::translate('Search and replace');
 		}

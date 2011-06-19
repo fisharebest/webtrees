@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -31,11 +31,11 @@ if (!defined('WT_WEBTREES')) {
 class ckeditor_WT_Module extends WT_Module {
 	// Extend WT_Module
 	public function getTitle() {
-		return WT_I18N::translate('CKEditor');
+		return /* I18N: Name of a module.  CKEditor is a trademark.  Do not translate it?  http://ckeditor.com */ WT_I18N::translate('CKEditor™');
 	}
 
 	// Extend WT_Module
 	public function getDescription() {
-		return WT_I18N::translate('Adds CKEditor for text editing in FAQ, News, HTML, and Stories modules.');
+		return /* I18N: Description of the "CKEditor" module.  WYSIWYG = "what you see is what you get" */ WT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
 	}
 }
