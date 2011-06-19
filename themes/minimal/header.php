@@ -114,12 +114,10 @@ if ($view!='simple') {
 		'<div class="hsearch">';
 		if (empty($SEARCH_SPIDER)) {
 			echo 
-			'<form action="search.php" method="post">',
+			'<form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
-			'<input type="text" name="query" size="12" value="', WT_I18N::translate('Search'), '"',
-				'onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();"',
-				'onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
+			'<input type="text" name="query" size="15" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
 			'<input type="submit" name="search" value=" &gt; " />',
 			'</form>';
 		}

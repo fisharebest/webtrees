@@ -134,12 +134,12 @@ $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMA
 				?>
 				</div></td>
 				<td>
-					<div id="extra-menu" class="makeMenu"><?php
+					<div id="extra-menu" class="makeMenu"><ul class="makeMenu"><?php
 						$language_menu=WT_MenuBar::getLanguageMenu();
 						if ($language_menu) {
 							echo $language_menu->getMenuAsList();
 						}
-						?></div>
+						?></ul></div>
 					<div id="favdate" align="right" ><?php echo $displayDate; ?></div>
 				</td>
 				<td width="10"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="1" alt="" /></td></tr></table>
