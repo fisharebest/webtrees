@@ -139,14 +139,14 @@ if ($action=="configure") {
 	}
 	$class_name=$block_name.'_WT_Module';
 	$block=new $class_name;
-	echo "<table class=\"facts_table\" width=\"99%\">";
-	echo "<tr><td class=\"facts_label\">";
-	echo "<h2>".WT_I18N::translate('Configure')."</h2>";
-	echo "</td></tr>";
-	echo "<tr><td class=\"facts_label03\">";
-	echo "<b>".$block->getTitle()."</b>";
-	echo "</td></tr>";
-	echo "</table>";
+	echo '<table class="facts_table" width="99%">';
+	echo '<tr><td class="facts_label">';
+	echo '<h2>', WT_I18N::translate('Configure'), '</h2>';
+	echo '</td></tr>';
+	echo '<tr><td class="facts_label03">';
+	echo '<b>', $block->getTitle(), ' - ', $block->getDescription(), '</b>';
+	echo '</td></tr>';
+	echo '</table>';
 ?>
 <script type="text/javascript">
 <!--
