@@ -141,7 +141,7 @@ function initialize() {
     
 	var imageNum = Math.round(bearing/22.5) % 16;  
       
-  	var image = new google.maps.MarkerImage('http://mk.mapchannels.com/panda-' + imageNum + '.png',
+  	var image = new google.maps.MarkerImage('images/panda-icons/panda-' + imageNum + '.png',
       	// This marker is 50 pixels wide by 50 pixels tall.
       	new google.maps.Size(50, 50),
       	// The origin for this image is 0,0.
