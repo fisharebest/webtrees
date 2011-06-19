@@ -152,8 +152,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a class=\"famnav_link\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());
-						echo "<div>" . $people["husb"]->getLifeSpan() . "</div>";
 						echo "</a>";
+						echo "<div class=\"font9\">" . $people["husb"]->getLifeSpan() . "</div>";
 						?>
 					</td>
 				</tr>
@@ -176,8 +176,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a class=\"famnav_link\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						echo PrintReady($people["wife"]->getFullName());
-						echo "<div>" . $people["wife"]->getLifeSpan() . "</div>";
 						echo "</a>";
+						echo "<div class=\"font9\">" . $people["wife"]->getLifeSpan() . "</div>";
 						?>
 					</td>
 				</tr>
@@ -211,13 +211,13 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							if ($pid == $child->getXref()) {
 								echo "<a class=\"famnav_link\" href=\"#\">";
 								echo PrintReady($child->getFullName());
-								echo "<div>".$child->getLifeSpan() . "</div>";
 								echo "</a>";
+								echo "<div class=\"font9\">".$child->getLifeSpan() . "</div>";
 							} else {
 								echo "<a class=\"famnav_link\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 								echo PrintReady($child->getFullName());
-								echo "<div>" . $child->getLifeSpan() . "</div>";
 								echo "</a>";
+								echo "<div class=\"font9\">" . $child->getLifeSpan() . "</div>";
 							}
 							?>
 						</td>
@@ -271,8 +271,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a class=\"famnav_link\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());
-						echo "<div>" . $people["husb"]->getLifeSpan() . "</div>";
 						echo "</a>";
+						echo "<div class=\"font9\">" . $people["husb"]->getLifeSpan() . "</div>";
 						?>
 					</td>
 				</tr>
@@ -304,8 +304,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a class=\"famnav_link\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						echo PrintReady($people["wife"]->getFullName());
-						echo "<div>" . $people["wife"]->getLifeSpan() . "</div>";
 						echo "</a>";
+						echo "<div class=\"font9\">" . $people["wife"]->getLifeSpan() . "</div>";
 						?>
 					</td>
 				</tr>
@@ -330,8 +330,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							<?php
 							echo "<a class=\"famnav_link\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							echo PrintReady($child->getFullName());
-							echo "<div>" . $child->getLifeSpan() . "</div>";
 							echo "</a>";
+							echo "<div class=\"font9\">" . $child->getLifeSpan() . "</div>";
 							?>
 						</td>
 					</tr>
@@ -381,13 +381,13 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						if ($pid == $people["husb"]->getXref()) {
 							echo "<a class=\"famnav_link\" href=\"#\">";
 							echo PrintReady($people["husb"]->getFullName());
-							echo "<div>" . $people["husb"]->getLifeSpan() . "</div>";
 							echo "</a>";
+							echo "<div class=\"font9\">" . $people["husb"]->getLifeSpan() . "</div>";
 						} else {
 							echo "<a class=\"famnav_link\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 							echo PrintReady($people["husb"]->getFullName());
-							echo "<div>" . $people["husb"]->getLifeSpan() . "</div>";
 							echo "</a>";
+							echo "<div class=\"font9\">" . $people["husb"]->getLifeSpan() . "</div>";
 						}
 						?>
 					</td>
@@ -412,13 +412,13 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						if ($pid == $people["wife"]->getXref()) {
 							echo "<a class=\"famnav_link\" href=\"#\">";
 							echo PrintReady($people["wife"]->getFullName());
-							echo "<div>" . $people["wife"]->getLifeSpan() . "</div>";
 							echo "</a>";
+							echo "<div class=\"font9\">" . $people["wife"]->getLifeSpan() . "</div>";
 						} else {
 							echo "<a class=\"famnav_link\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 							echo PrintReady($people["wife"]->getFullName());
-							echo "<div>" . $people["wife"]->getLifeSpan() . "</div>";
 							echo "</a>";
+							echo "<div class=\"font9\">" . $people["wife"]->getLifeSpan() . "</div>";
 						}
 						?>
 					</td>
@@ -444,8 +444,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							<?php
 							echo "<a class=\"famnav_link\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							echo PrintReady($child->getFullName());
-							echo "<div>" . $child->getLifeSpan() . "</div>";
 							echo "</a>";
+							echo "<div class=\"font9\">" . $child->getLifeSpan() . "</div>";
 							?>
 						</td>
 					</tr>
@@ -492,8 +492,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a class=\"famnav_link\" href=\"".$people["husb"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['husb']->getHtmlUrl()."');\">";
 						echo PrintReady($people["husb"]->getFullName());
-						echo "<div>" . $people["husb"]->getLifeSpan() . "</div>";
 						echo "</a>";
+						echo "<div class=\"font9\">" . $people["husb"]->getLifeSpan() . "</div>";
 						?>
 					</td>
 				</tr>
@@ -519,8 +519,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						<?php
 						echo "<a class=\"famnav_link\" href=\"".$people["wife"]->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$people['wife']->getHtmlUrl()."');\">";
 						echo PrintReady($people["wife"]->getFullName());
-						echo "<div>" . $people["wife"]->getLifeSpan() . "</div>";
 						echo "</a>";
+						echo "<div class=\"font9\">" . $people["wife"]->getLifeSpan() . "</div>";
 						?>
 					</td>
 				</tr>
@@ -545,8 +545,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							<?php
 							echo "<a class=\"famnav_link\" href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 							echo PrintReady($child->getFullName());
-							echo "<div>" . $child->getLifeSpan() . "</div>";
 							echo "</a>";
+							echo "<div class=\"font9\">" . $child->getLifeSpan() . "</div>";
 							?>
 						</td>
 					</tr>
