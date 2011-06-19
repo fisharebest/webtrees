@@ -190,10 +190,10 @@ if ($ct==0) {
 
 		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
 		<td class="list_value">
-		<input type="radio" name="privatize_export1" value="visitor" <?php echo $radioPrivatizeVisitor; ?>/>&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
-		<input type="radio" name="privatize_export2" value="user" <?php echo $radioPrivatizeUser; ?>/>&nbsp;<?php echo WT_I18N::translate('Member'); ?><br />
-		<input type="radio" name="privatize_export3" value="gedadmin" <?php echo $radioPrivatizeGedadmin; ?>/>&nbsp;<?php echo WT_I18N::translate('Manager'); ?>
-		<input type="radio" name="privatize_export4" value="none" <?php echo $radioPrivatizeNone; ?>/>&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
+		<input type="radio" name="privatize_export" value="visitor" <?php echo $radioPrivatizeVisitor; ?>/>&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
+		<input type="radio" name="privatize_export" value="user" <?php echo $radioPrivatizeUser; ?>/>&nbsp;<?php echo WT_I18N::translate('Member'); ?><br />
+		<input type="radio" name="privatize_export" value="gedadmin" <?php echo $radioPrivatizeGedadmin; ?>/>&nbsp;<?php echo WT_I18N::translate('Manager'); ?>
+		<input type="radio" name="privatize_export" value="none" <?php echo $radioPrivatizeNone; ?>/>&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
 		</td></tr>
 
 		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
