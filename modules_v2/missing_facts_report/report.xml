@@ -47,7 +47,7 @@
 
 	<Doc pageSize="$pageSize">
 		<Header>
-			<Cell align="center" newline="1" style="header"><var var="WT_I18N::translate('Missing facts')" /></Cell>
+			<Cell align="center" newline="1" style="header"><var var="WT_I18N::translate('Missing data')" /></Cell>
 			<Cell align="rightrtl" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')"/> <PageNum/> / <TotalPages/></Cell>
 			<Cell align="center" border="1" style="list_label" width="$name"><var var="WT_I18N::translate('Name')" /></Cell>
 			<Cell align="center" border="1" newline="1" style="list_label"><var var="WT_I18N::translate('Event')" /></Cell>
