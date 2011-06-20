@@ -175,7 +175,7 @@ class WT_Family extends WT_GedcomRecord {
 			preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->getGedcomRecord(), $match);
 			foreach ($match[1] as $pid) {
 				$child=WT_Person::getInstance($pid);
-				if ($SHOW_PRIVATE_RELATIONSHIPS || $child && $child->canDisplayName($access_level)) {
+				if ($SHOW_PRIVATE_RELATIONSHIPS || $child && $child->canDisplayDetails($access_level)) {
 					$this->_children[]=$child;
 				}
 			}
