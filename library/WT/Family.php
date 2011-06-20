@@ -86,7 +86,7 @@ class WT_Family extends WT_GedcomRecord {
 		preg_match_all('/\n1 (?:CHIL|HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $this->_gedrec, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$rela=WT_Person::getInstance($match[1]);
-			if ($SHOW_PRIVATE_RELATIONSHIPS || $rela && $rela->canDisplayName($access_level)) {
+			if ($SHOW_PRIVATE_RELATIONSHIPS || $rela && $rela->canDisplayDetails($access_level)) {
 				$rec.=$match[0];
 			}
 		}
