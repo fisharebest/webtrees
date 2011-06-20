@@ -36,7 +36,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Extend class WT_Module
 	public function getDescription() {
-		return /* I18N: Description of the "My page" module */ WT_I18N::translate('A greeting message and useful links for a user. ');
+		return /* I18N: Description of the "My page" module */ WT_I18N::translate('A greeting message and useful links for a user.');
 	}
 
 	// Implement class WT_Module_Block
