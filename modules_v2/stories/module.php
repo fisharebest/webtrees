@@ -400,16 +400,14 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			echo '</table>';
 			print_footer();
 	}
-	/* ====  To add a "Stories" menu item, uncomment the following section, then set access levels
-				and menu position in 'administration -> modules -> menus' ===== */
-/*	
+
 		// Implement WT_Module_Menu
 		public function defaultMenuOrder() {
-			return 50;
+			return 30;
 		}
 		// Extend class WT_Module
 		public function defaultAccessLevel() {
-			return WT_PRIV_USER;
+			return WT_PRIV_HIDE;
 		}
 		// Implement WT_Module_Menu
 		public function getMenu() {
@@ -423,7 +421,5 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_media');		
 			return $menu;
 		}
-*/	
-	/* ====  End of "Stories" menu item ===== */
 
 }
