@@ -1640,9 +1640,6 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 /* ========= jquery-ui.custom.css changes ============ */.ui-widget-content  {color:black; border-color:#999999;  }
 .ui-widget-content a  {color:blue; }
 .ui-widget-content a:hover  { color:red; }
-html[dir='rtl'] .ui-tabs { direction:rtl;}
-html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
-html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 .ui-state-active, .ui-widget-content .ui-state-active {border:1px solid #c3dfff; background:#c3dfff; font-weight:normal; color:black; outline:none;}
 
 .ui-tabs .ui-tabs-nav  {padding: .3em .3em 0 .3em; border-color:#888888; }
@@ -1662,26 +1659,32 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 .ui-accordion .ui-accordion-content-active { display:block;}
 .ui-accordion .ui-accordion-header a {padding: 0.5em;}
 .ui-helper-reset {line-height: 1.6;}
+.ui-state-highlight a {color: red;}
+
+html[dir='rtl'] .ui-tabs { direction:rtl;}
+html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
+html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right; }
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 
 /* ========= Sidebar ============== */
 #main {min-width:600px; width:100%}
 #indi_left {float:left; width:98%;}
-html[dir='rtl'] #indi_left {float:right;}
 #tabs {background-color:#FFF; border-color:#DDD; float:left; width:100%; overflow:auto;}
-html[dir='rtl'] #tabs {float:right;}
 #sidebar {border-color:#DDD; display:none; margin:5px 2px 0 0; height:auto;}
-html[dir='rtl'] #sidebar  {margin:5px 0 0 2px;}
 #sidebarAccordion, #sidebarAccordion2 {width:auto;}
 #sidebarAccordion h3, #sidebarAccordion2 h3 {height:30px; text-align: center; border-color:#999;}
 .use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {	width:20%;}
 .use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float:right;}
-html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
 #separator {	display: block; background: #c3dfff url('images/indi_sprite.png') no-repeat -26px 100px; min-width:6px; max-width:10px; width:0.75%; border: 1px solid #999; border-top-left-radius: 3px; border-top-right-radius: 3px; margin-top:5px;}
-html[dir='rtl'] #separator { background: #c3dfff url('images/indi_sprite.png') no-repeat -1px 100px;}
 .use-sidebar #separator { background: #c3dfff url('images/indi_sprite.png') no-repeat -1px 100px;}
+
+html[dir='rtl'] #indi_left {float:right;}
+html[dir='rtl'] #tabs {float:right;}
+html[dir='rtl'] #sidebar  {margin:5px 0 0 2px;}
+html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
+html[dir='rtl'] #separator { background: #c3dfff url('images/indi_sprite.png') no-repeat -1px 100px;}
 html[dir='rtl'] .use-sidebar #separator {background: #c3dfff url('images/indi_sprite.png') no-repeat -26px 100px;}
 
 /* ============== Sidebar content items ============== */
@@ -1691,22 +1694,24 @@ html[dir='rtl'] .use-sidebar #separator {background: #c3dfff url('images/indi_sp
 .nam a:hover {color:red;}
 .nav_content {width:100%; padding:10px 0;}
 .flyout {color:#000000; 	text-align:left; margin-top:-20px; right:210px; padding:3px;}
-html[dir='rtl'] .flyout {text-align:right; left:210px;}
 .flyout2 {color:#000000;	text-align:left;margin-top:-2px; left:40px; padding:3px;}
-html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .flyout2 a:hover{color:#ff0000;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
 .flyout3, .flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
-html[dir='rtl'] .flyout3 {text-align:right;}.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.gif');white-space:nowrap;}
 .famnav_link {font-size:12px; padding:0px; width:100%;}
+
+html[dir='rtl'] .flyout {text-align:right; left:210px;}
+html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
+html[dir='rtl'] .flyout3 {text-align:right;}.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.gif');white-space:nowrap;}
 
 /* Descendancy */
 #sb_desc_content {margin-left:3px; font-size:0.8em;}
-html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 #sb_desc_content ul {padding:0px; margin:0px;}
 .sb_desc_indi_li {list-style-type:none;	white-space:nowrap;}
 .desc_tree_div {	display:none;}
 .desc_tree_div ul {padding:0px;	margin-left:10px;margin-top:0px;margin-right:0px;}
+
+html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
 
 /* Individuals, Families */
@@ -1720,12 +1725,12 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
 #sb_clippings_content li {list-style:none;margin:0px;padding:0px;white-space:nowrap;}
 #sb_clippings_content ul {padding:0px;margin:0px;}
 
-/* References */
+/* Extra info */
 #sb_content_extra_info {font-size:80%; font-weight:bold; margin-top:1px; overflow:hidden; padding:5px;}
 #sb_content_extra_info .editfacts {float:right; margin-top:-30px;}
-html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 #sb_content_extra_info a {display:block;}
 #sb_content_extra_info span {font-weight:normal; white-space:nowrap;}
 #sb_content_extra_info span a {display:inline;}
 #sb_content_extra_info #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
 
+html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
