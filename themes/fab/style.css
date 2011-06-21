@@ -157,6 +157,7 @@ img {
 
 /* Use CSS menus based on nested <ul> */
 .makeMenu li {
+	background: none !important;
 	display:inline;
 	position:relative;
 	white-space:nowrap;

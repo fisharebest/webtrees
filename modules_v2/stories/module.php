@@ -28,7 +28,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Tab, WT_Module_Config {
+class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Tab, WT_Module_Config, WT_Module_Menu {
 	// Extend class WT_Module
 	public function getTitle() {
 		return /* I18N: Name of a module */ WT_I18N::translate('Stories');
@@ -362,8 +362,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			exit;
 		}
 	}
-	// Following function allows Story list to be added manually as a menu item in header.php if required, using link such as "module.php?mod=stories&mod_action=show_list"
-	// No privacy restrictions included here though - so use with care!
+
 	private function show_list() {
 		global $WT_IMAGES, $TEXT_DIRECTION;
 
@@ -401,4 +400,30 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			echo '</table>';
 			print_footer();
 	}
+	/* ====  To add a "Stories" menu item, uncomment the following section, then set access levels
+				and menu position in 'administration -> modules -> menus' ===== */
+/*	
+		// Implement WT_Module_Menu
+		public function defaultMenuOrder() {
+			return 50;
+		}
+		// Extend class WT_Module
+		public function defaultAccessLevel() {
+			return WT_PRIV_USER;
+		}
+		// Implement WT_Module_Menu
+		public function getMenu() {
+			global $SEARCH_SPIDER;
+			if ($SEARCH_SPIDER) {
+				return null;
+			}
+			//-- Stories menu item
+			$menu = new WT_Menu($this->getTitle(), 'module.php?mod='.$this->getName().'&amp;mod_action=show_list', 'menu-story', 'down');
+			$menu->addIcon('edit_media');
+			$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_media');		
+			return $menu;
+		}
+*/	
+	/* ====  End of "Stories" menu item ===== */
+
 }

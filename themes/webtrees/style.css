@@ -1495,6 +1495,7 @@ html[dir='rtl'] #main-menu  li li a {float:right;padding:1px 5px 1px 10px;}
 #menu-search    {background-position:center -420px;}
 #menu-sour      {background-position:center -700px;}
 #menu-tree      {background-position:center    0px;}
+#menu-story      {background-position:center -1045px;}
 
 /* Sub-menu icons */
 #menu-admin                 {background-position:left     0px;} html[dir=rtl] #menu-admin                 {background-position:right     0px;}
