@@ -852,7 +852,6 @@ padding-right: 7px;
 .image {
 height: 150px;
 padding: 5px;
-border: solid black 1px;
 margin-right: 15px;
 }
 
@@ -1780,12 +1779,14 @@ span.link_text  {display:none;}
 
 .ui-state-active, .ui-widget-content .ui-state-active {border:0px solid #999; font-weight:normal; color:black; outline:none; }
 .ui-state-default a:link { color: #000000;}
+.ui-state-highlight a {color: red;}
 
 .ui-widget-header {border: 1px solid #fff;}
 
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 html[dir='rtl'] .ui-tabs {direction:rtl;}
-html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected, html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
+html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-tabs-selected, 
+html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 
 /* ========= Sidebar ============== */
 
@@ -1849,7 +1850,7 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0px;}
 #sb_clippings_content ul {padding:0px; margin:0px;}
 #sb_content_clippings {margin-top:5px;}
 
-/* References */
+/* Extra Info */
 #sb_content_extra_info {font-size:80%; font-weight:bold; margin-top:1px; overflow:hidden; padding:5px;}
 #sb_content_extra_info .editfacts {float:right; margin-top:-30px;}
 #sb_content_extra_info #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
