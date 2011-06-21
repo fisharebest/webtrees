@@ -1528,34 +1528,34 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		case 'F': echo edit_field_pedi_f($element_name, $value); break;
 		default:  echo edit_field_pedi_u($element_name, $value); break;
 		}
-	} else if ($fact=="STAT") {
+	} else if ($fact=='STAT') {
 		echo select_edit_control($element_name, WT_Gedcom_Code_Stat::statusNames($upperlevel), '', $value);
-	} else if ($fact=="RELA") {
+	} else if ($fact=='RELA') {
 		echo edit_field_rela($element_name, strtolower($value));
-	} else if ($fact=="_WT_USER") {
+	} else if ($fact=='_WT_USER') {
 		echo edit_field_username($element_name, $value);
-	} else if ($fact=="RESN") {
+	} else if ($fact=='RESN') {
 		echo edit_field_resn($element_name, $value);
-	} else if ($fact=="_PRIM" or $fact=="_THUM") {
-		echo "<select id=\"", $element_id, "\" name=\"", $element_name, "\" >";
-		echo "<option value=\"\"></option>";
-		echo "<option value=\"Y\"";
-		if ($value=="Y") echo " selected=\"selected\"";
-		echo ">", WT_I18N::translate('Yes'), "</option>";
-		echo "<option value=\"N\"";
-		if ($value=="N") echo " selected=\"selected\"";
-		echo ">", WT_I18N::translate('No'), "</option>";
-		echo "</select>";
-	} else if ($fact=="SEX") {
-		echo "<select id=\"", $element_id, "\" name=\"", $element_name, "\"><option value=\"M\"";
-		if ($value=="M") echo " selected=\"selected\"";
-		echo ">", WT_I18N::translate('Male'), "</option><option value=\"F\"";
-		if ($value=="F") echo " selected=\"selected\"";
-		echo ">", WT_I18N::translate('Female'), "</option><option value=\"U\"";
-		if ($value=="U" || empty($value)) echo " selected=\"selected\"";
-		echo ">", WT_I18N::translate_c('unknown gender', 'Unknown'), "</option></select>";
-	} else if ($fact == "TYPE" && $level == '3') {
-		//-- Build the selector for the Media "TYPE" Fact
+	} else if ($fact=='_PRIM') {
+		echo '<select id="', $element_id, '" name="', $element_name, '" >';
+		echo '<option value=""></option>';
+		echo '<option value="Y"';
+		if ($value=='Y') echo ' selected="selected"';
+		echo '>', WT_I18N::translate('yes'), '</option>';
+		echo '<option value="N"';
+		if ($value=='N') echo ' selected="selected"';
+		echo '>', WT_I18N::translate('no'), '</option>';
+		echo '</select>';
+	} else if ($fact=='SEX') {
+		echo '<select id="', $element_id, '" name="', $element_name, '"><option value="M"';
+		if ($value=='M') echo ' selected="selected"';
+		echo '>', WT_I18N::translate('Male'), '</option><option value="F"';
+		if ($value=='F') echo ' selected="selected"';
+		echo '>', WT_I18N::translate('Female'), '</option><option value="U"';
+		if ($value=='U' || empty($value)) echo ' selected="selected"';
+		echo '>', WT_I18N::translate_c('unknown gender', 'Unknown'), '</option></select>';
+	} else if ($fact == 'TYPE' && $level == '3') {
+		//-- Build the selector for the Media 'TYPE' Fact
 		echo '<select name="text[]"><option selected="selected" value="" ></option>';
 		$selectedValue = strtolower($value);
 		if (!array_key_exists($selectedValue, WT_Gedcom_Tag::getFileFormTypes())) {

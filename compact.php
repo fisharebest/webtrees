@@ -298,9 +298,8 @@ function print_td_person($n) {
 			$img_title=str_replace(chr(160), "", $img_title); // date->Display might return '&nbsp', which html_entity_decode converts to '0xa0' 
 			$img_id='box-'.$pid;
 			if (!empty($object)) {
-				$which=thumb_or_main($object); // Do we send the main image or a thumbnail?
 				$mediaobject=WT_Media::getInstance($object['mid']);
-				$text=$mediaobject->displayMedia(array('which'=>$which,'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title));
+				$text=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title));
 			} else {
 				$text=display_silhouette(array('sex'=>$indi->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title)); // may return ''
 			}

@@ -486,9 +486,8 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 								$object = find_highlighted_object($pid, WT_GED_ID, $indirec);
 							}
 							if (!empty($object)) {
-								// should we call thumb_or_main?
 								$mediaobject=WT_Media::getInstance($object['mid']);
-								$image=$mediaobject->displayMedia(array('which'=>'thumb','display_type'=>'googlemap'));
+								$image=$mediaobject->displayMedia(array('display_type'=>'googlemap'));
 							} else {
 								$sex=$this_person->getSex();
 								$image=display_silhouette(array('sex'=>$sex,'display_type'=>'googlemap')); // may return ''
@@ -506,9 +505,8 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 							$object2 = find_highlighted_object($gmark['name'], WT_GED_ID, $indirec2);
 						}
 						if (!empty($object2)) {
-							// should we call thumb_or_main?
 							$mediaobject=WT_Media::getInstance($object2['mid']);
-							$image2=$mediaobject->displayMedia(array('which'=>'thumb','display_type'=>'googlemap'));
+							$image2=$mediaobject->displayMedia(array('display_type'=>'googlemap'));
 						} else {
 							$sex=$person->getSex();
 							$image2=display_silhouette(array('sex'=>$sex,'display_type'=>'googlemap')); // may return ''

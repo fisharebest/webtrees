@@ -231,9 +231,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		$img_title=PrintReady(htmlspecialchars($name));
 		$img_id='box-'.$boxID.'.-thumb';
 		if (!empty($object)) {
-			$which=thumb_or_main($object); // Do we send the main image or a thumbnail?
 			$mediaobject=WT_Media::getInstance($object['mid']);
-			$thumbnail=$mediaobject->displayMedia(array('which'=>$which,'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title,'show_full'=>$show_full));
+			$thumbnail=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title,'show_full'=>$show_full));
 		} else {
 			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title,'show_full'=>$show_full)); // may return ''
 		}

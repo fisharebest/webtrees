@@ -285,7 +285,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $USE_MEDIA_VIEWER;             $USE_MEDIA_VIEWER             =get_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER');
 	global $USE_RIN;                      $USE_RIN                      =get_gedcom_setting($ged_id, 'USE_RIN');
 	global $USE_SILHOUETTE;               $USE_SILHOUETTE               =get_gedcom_setting($ged_id, 'USE_SILHOUETTE');
-	global $USE_THUMBS_MAIN;              $USE_THUMBS_MAIN              =get_gedcom_setting($ged_id, 'USE_THUMBS_MAIN');
 	global $WATERMARK_THUMB;              $WATERMARK_THUMB              =get_gedcom_setting($ged_id, 'WATERMARK_THUMB');
 	global $WEBMASTER_USER_ID;            $WEBMASTER_USER_ID            =get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
 	global $WEBTREES_EMAIL;               $WEBTREES_EMAIL               =get_gedcom_setting($ged_id, 'WEBTREES_EMAIL');
@@ -858,10 +857,8 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 				$level = $match[1];
 			}
 			if (strstr($row[3], "_PRIM ")) {
-				$thum = get_gedcom_value('_THUM', $level+1, $row[3]);
 				$prim = get_gedcom_value('_PRIM', $level+1, $row[3]);
 			} else {
-				$thum = get_gedcom_value('_THUM', 1, $row[2]);
 				$prim = get_gedcom_value('_PRIM', 1, $row[2]);
 			}
 
@@ -873,7 +870,6 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 					if (empty($objectA)) {
 						$objectA['file'] = $file;
 						$objectA['thumb'] = $thumb;
-						$objectA['_THUM'] = $thum; // This overrides GEDCOM's "Use main image as thumbnail" option
 						$objectA['level'] = $level;
 						$objectA['mid'] = $row[0];
 					}
@@ -881,7 +877,6 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 					if (empty($objectB)) {
 						$objectB['file'] = $file;
 						$objectB['thumb'] = $thumb;
-						$objectB['_THUM'] = $thum; // This overrides GEDCOM's "Use main image as thumbnail" option
 						$objectB['level'] = $level;
 						$objectB['mid'] = $row[0];
 					}
@@ -891,7 +886,6 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 					if (empty($objectC)) {
 						$objectC['file'] = $file;
 						$objectC['thumb'] = $thumb;
-						$objectC['_THUM'] = $thum; // This overrides GEDCOM's "Use main image as thumbnail" option
 						$objectC['level'] = $level;
 						$objectC['mid'] = $row[0];
 					}
@@ -899,7 +893,6 @@ function find_highlighted_object($pid, $ged_id, $indirec) {
 					if (empty($objectD)) {
 						$objectD['file'] = $file;
 						$objectD['thumb'] = $thumb;
-						$objectD['_THUM'] = $thum; // This overrides GEDCOM's "Use main image as thumbnail" option
 						$objectD['level'] = $level;
 						$objectD['mid'] = $row[0];
 					}

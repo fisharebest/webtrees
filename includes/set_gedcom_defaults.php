@@ -145,7 +145,6 @@ set_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL',           false);
 set_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER',             true);
 set_gedcom_setting($ged_id, 'USE_RIN',                      false);
 set_gedcom_setting($ged_id, 'USE_SILHOUETTE',               true);
-set_gedcom_setting($ged_id, 'USE_THUMBS_MAIN',              true);
 set_gedcom_setting($ged_id, 'WATERMARK_THUMB',              false);
 set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            WT_USER_ID);
 set_gedcom_setting($ged_id, 'WEBTREES_EMAIL',               '');

@@ -142,21 +142,6 @@ function check_media_structure() {
 }
 
 /**
- * Determine whether the main image or a thumbnail should be sent to the browser
- */
-function thumb_or_main($object) {
-	global $USE_THUMBS_MAIN;
-
-	if ($object['_THUM']=='Y' || !$USE_THUMBS_MAIN) {
-		$file = 'main';
-	} else {
-		$file = 'thumb';
-	}
-	return $file;
-}
-
-
-/**
 * Get the list of media from the database
 *
 * Searches the media table of the database for media items that
@@ -1702,20 +1687,6 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 				$gedprim = "_PRIM";
 		}
 		add_simple_tag("1 $gedprim");
-	//}
-
-	//-- don't show _THUM option to regular users
-	//if (WT_USER_GEDCOM_ADMIN) {
-		// 2 _THUM
-		if ($gedrec == "")
-			$gedthum = "_THUM N";
-		else {
-			//  $gedthum = get_sub_record(1, "_THUM", $gedrec);
-			$gedthum = get_first_tag(1, "_THUM", $gedrec);
-			if (empty($gedthum))
-				$gedthum = "_THUM N";
-		}
-		add_simple_tag("1 $gedthum");
 	//}
 
 	//-- print out editing fields for any other data in the media record

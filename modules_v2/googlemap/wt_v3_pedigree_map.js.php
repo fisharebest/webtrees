@@ -480,9 +480,8 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
 			$object = find_highlighted_object($pid, WT_GED_ID, $indirec);
 			if (!empty($object)) {
-				// should we call thumb_or_main?
 				$mediaobject=WT_Media::getInstance($object['mid']);
-				$image=$mediaobject->displayMedia(array('which'=>'thumb','display_type'=>'googlemap'));
+				$image=$mediaobject->displayMedia(array('display_type'=>'googlemap'));
 			} else {
 				$sex=$person->getSex();
 				$image=display_silhouette(array('sex'=>$sex,'display_type'=>'googlemap')); // may return ''

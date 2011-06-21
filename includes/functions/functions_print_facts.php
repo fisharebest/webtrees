@@ -1381,13 +1381,6 @@ function print_main_media_row($rtype, $rowm, $pid) {
 			echo WT_Gedcom_Tag::getLabelValue('_PRIM', $prim=='Y' ? WT_I18N::translate('Yes') : WT_I18N::translate('No'));
 		}
 	}
-	//-- don't show _THUM option to regular users
-	if (WT_USER_GEDCOM_ADMIN) {
-		$thum=$mediaobject->useMainImage();
-		if ($thum) {
-			echo WT_Gedcom_Tag::getLabelValue('_THUM', $thum=='Y' ? WT_I18N::translate('Yes') : WT_I18N::translate('No'));
-		}
-	}
 	print_fact_notes($mediaobject->getGedcomRecord(), 1);
 	print_fact_sources($mediaobject->getGedcomRecord(), 1);
 

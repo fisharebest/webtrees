@@ -241,9 +241,8 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		if ($this->canShowHighlightedObject()) {
 			$firstmediarec=$this->indi->findHighlightedMedia();
 			if (!empty($firstmediarec)) {
-				$which=thumb_or_main($firstmediarec); // Do we send the main image or a thumbnail?
 				$mediaobject=WT_Media::getInstance($firstmediarec['mid']);
-				$result=$mediaobject->displayMedia(array('which'=>$which,'uselightbox_fallback'=>false,'clearbox'=>'general_1'));
+				$result=$mediaobject->displayMedia(array('uselightbox_fallback'=>false,'clearbox'=>'general_1'));
 				return $result;
 			}
 		}

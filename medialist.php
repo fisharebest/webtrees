@@ -454,7 +454,7 @@ if ($show == 'yes') {
 
 		//-- Thumbnail field
 		if ($show_thumbnail) {
-			echo $mediaobject->displayMedia(array('which'=>'thumb'));
+			echo $mediaobject->displayMedia(array());
 			echo '</td><td class="list_value_wrap" style="border: none;" width="100%">';
 
 			if (WT_USE_LIGHTBOX) {
