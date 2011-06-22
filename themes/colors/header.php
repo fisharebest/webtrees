@@ -88,10 +88,10 @@ if ($SEARCH_SPIDER) {
 	unset($menu_items, $menu);
 	echo 
 	'</ul><div>';
-}
+
 // Regular headers
 
-if ($view!='simple' && !$SEARCH_SPIDER) { // Use "simple" headers for popup windows
+} elseif  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 	// Top row left
 	'<div id="header">',
