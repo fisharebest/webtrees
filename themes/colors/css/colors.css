@@ -276,8 +276,8 @@ html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
 .makeMenu ul li a:hover  		{ color: #000; }
 li a.link 						{ font-size: 13px; margin-right: 5px; margin-left: 5px; }
 
-html[dir='rtl'] .toplinks_right { float: left; padding: 13px 10px 10px 15px; }
-html[dir='rtl'] .makeMenu li ul { left:auto; right:10px; }
+html[dir='rtl'] .toplinks_right { float: left; padding: 13px 10px 10px 10px; }
+html[dir='rtl'] .makeMenu li ul { left:auto; right:0px; }
 html[dir='rtl'] .makeMenu li ul li { text-align:right!important; }
 
 /*   Edit Facts */
@@ -417,6 +417,8 @@ width:26px;
 height:24px;
 }
 
+html[dir='rtl'] .blockh1 {	background-image: url(../images/right1B.gif); }
+
 .blockh2 { 
 background-image:url(../images/left2.gif);
 background-repeat:repeat-x;
@@ -430,6 +432,7 @@ background-repeat:no-repeat;
 width:8px;
 height:24px;
 }
+html[dir='rtl'] .blockh3 { background-image: url(../images/right3.gif); }
 
 .blockhc {
 padding-right:15px;
@@ -1109,9 +1112,10 @@ font-size: 12px;
 }
 
 input, textarea {
-padding-left: 3px;
+padding-left: 0px;
 padding-right: 3px;
 }
+html[dir="rtl"] input, textarea { padding-left: 10px; padding-right: 0px;}
 
 .optionbox > input { margin-left: 5px;} 
 html[dir="rtl"] .optionbox > input { margin-right: 5px;} 
@@ -1556,7 +1560,7 @@ border: 1px solid #999;
 } 
 
 .execution_stats {
-padding-top: 12px;
+padding: 12px 12px;
 text-align: center;
 } 
 
