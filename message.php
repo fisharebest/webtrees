@@ -50,8 +50,12 @@ if ($to=="all" && !WT_USER_IS_ADMIN) {
 	print_simple_footer();
 	exit;
 }
-if (preg_match('~(ftp|http|https)://~', $subject) || preg_match('~(ftp|http|https)://~', $body)) {
-	echo '<p class="ui-state-error">'.WT_I18N::translate('You are not allowed to send messages that contain external links, for example “http://”.').'</p>';
+// Do not allow links to external sites
+if (
+	preg_match('/(?!'.preg_quote(WT_SERVER_NAME, '/').')(?:ftp|http|https|mailto):\/\/[a-zA-Z0-9-]+/', $subject) ||
+	preg_match('/(?!'.preg_quote(WT_SERVER_NAME, '/').')(?:ftp|http|https|mailto):\/\/[a-zA-Z0-9-]+/', $body)
+) {
+	echo '<p class="ui-state-error">'.WT_I18N::translate('You are not allowed to send messages that contain external links.').'</p>';
 	AddToLog('Possible spam message from "'.$from_name.'"/"'.$from_email.'", IP="'.$_SERVER['REMOTE_ADDR'].'", subject="'.$subject.'", body="'.$body.'"', 'auth');
 	$action='compose';
 }
