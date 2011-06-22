@@ -452,6 +452,8 @@ width:26px;
 height:24px;
 }
 
+html[dir='rtl'] .blockh1 { background-image: url(images/right1B.gif); }
+
 .blockh2 { 
 background-image:url(images/left2.gif);
 background-repeat:repeat-x;
@@ -465,6 +467,8 @@ background-repeat:no-repeat;
 width:8px;
 height:24px;
 }
+
+html[dir='rtl'] .blockh3 { background-image: url(images/right3.gif); }
 
 .blockhc {
 padding-right:15px;
@@ -890,6 +894,8 @@ height: 150px;
 padding: 5px;
 margin-right: 15px;
 }
+
+html[dir='rtl'] .image { margin-right: 0px; margin-left: 15px; }
 
 .gender_image {
 padding-left: 3px;
