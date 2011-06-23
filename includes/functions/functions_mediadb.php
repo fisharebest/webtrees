@@ -426,8 +426,8 @@ if (!$excludeLinks) {
 * The medialist that is returned contains the following elements:
 * - REMOVED $media["ID"]          the unique id of this media item in the table (Mxxxx)
 * - $media["XREF"]        Another copy of the Media ID (not sure why there are two)
-* -	$media["FILESORT"]            key to sort by filename
-* -	$media["MEDIASORT"]           key to sort by media name
+* -	REMOVED $media["FILESORT"]            key to sort by filename
+* -	REMOVED $media["MEDIASORT"]           key to sort by media name
 * - REMOVED $media["GEDFILE"]     the gedcom file the media item should be added to
 * - REMOVED $media["FILE"]        the filename of the media item
 * - REMOVED $media["EXISTS"]      whether the file exists.  0=no, 1=external, 2=std dir, 3=protected dir
@@ -446,7 +446,7 @@ if (!$excludeLinks) {
 * @return mixed A media list array.
 */
 
-function get_medialist2($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true) {
+function get_medialist2($currentdir = false, $directory = "", $linkonly = false, $random = false, $includeExternal = true, $sortby = 'title') {
 	global $MEDIA_DIRECTORY_LEVELS, $BADMEDIA, $thumbdir, $MEDIATYPE;
 	global $level, $dirs, $MEDIA_DIRECTORY;
 	global $MEDIA_EXTERNAL;
@@ -456,12 +456,11 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 		return;
 	}
 
-	// Create the medialist array of media in the DB and on disk
-	// NOTE: Get the media in the DB
+	// Create the medialist array of media in the DB
 	$medialist = array ();
-	if (empty($directory))
-		$directory = $MEDIA_DIRECTORY;
+	if (empty($directory)) $directory = $MEDIA_DIRECTORY;
 	$myDir = str_replace($MEDIA_DIRECTORY, "", $directory);
+	$orderby = ($sortby == 'file') ? " ORDER BY SUBSTRING_INDEX(m_file, '/', -1) " : ' ORDER by m_titl ';
 	if ($random) {
 		$rows=
 			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? ORDER BY RAND() LIMIT 5")
@@ -469,12 +468,12 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 			->fetchAll();
 	} else if ($MEDIA_EXTERNAL && $includeExternal) {
 		$rows=
-			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ORDER BY m_titl desc")
+			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND (m_file LIKE ? OR m_file LIKE ?) ".$orderby." COLLATE '".WT_I18N::$collation."'")
 			->execute(array(WT_GED_ID, "%{$myDir}%", "%://%"))
 			->fetchAll();
 	} else {
 		$rows=
-			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND m_file LIKE ? ORDER BY m_titl desc")
+			WT_DB::prepare("SELECT m_file, m_media, m_titl, m_gedfile FROM `##media` WHERE m_gedfile=? AND m_file LIKE ? ".$orderby." COLLATE '".WT_I18N::$collation."'")
 			->execute(array(WT_GED_ID, "%{$myDir}%"))
 			->fetchAll();
 	}
@@ -487,9 +486,6 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 		if ($isExternal || !$currentdir || $directory == dirname($fileName) . "/") {
 			$media = array ();
 			$media["XREF"] = $row->m_media;
-			// Build sort paramters to be used by filesort and mediasort
-			$media["FILESORT"] = basename($fileName);
-			$media["MEDIASORT"] = (!empty($row->m_titl)) ? $row->m_titl : $media["FILESORT"];
 			// Build a sortable key for the medialist
 			$firstChar = substr($media["XREF"], 0, 1);
 			$restChar = substr($media["XREF"], 1);
@@ -501,8 +497,6 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 			$medialist[$keyMediaList] = $media;
 		}
 	}
-
-	// uasort($medialist, "mediasort");
 
 	//-- for the media list do not look in the directory
 	if ($linkonly)
@@ -685,37 +679,26 @@ function filterMedia($media, $filter, $acceptExt) {
 *
 * @param array $media An item from the Media list produced by get_medialist()
 * @param string $filter The filter to be looked for within various elements of the $media array
-* @param string $acceptExt "http" if links to external media should be considered too
 * @return bool false if the Media item doesn't match the filter criteria
 */
-function filterMedia2($media, $filter, $acceptExt) {
+function filterMedia2($mediaobject, $filter) {
+
+
+	if (!$mediaobject)
+		return false;
+
+	// assume have already checked privacy
 
 	if (empty($filter) || strlen($filter) < 2)
 		$filter = "";
-	if (empty($acceptExt) || $acceptExt != "http")
-		$acceptExt = "";
-
-	$mediaobject=WT_Media::getInstance($media['XREF']);
-	if (!$mediaobject) {
-		return false;
-	}
-
-	//-- Check Privacy first.  No point in proceeding if Privacy says "don't show"
-	if (!$mediaobject->canDisplayDetails()) {
-		return false;
-	}
-
-	//-- Accept when filter string contained in Media item's id
-	if ($mediaobject->getXref() == $filter) {
-		return true;
-	}
-
-	//-- Accept external Media only if specifically told to do so
-	if ($mediaobject->isExternal() && $acceptExt != "http")
-		return false;
 
 	//-- Accept everything if filter string is empty
 	if ($filter == "")
+		return true;
+
+
+	//-- Accept when filter string contained in Media item's id
+	if ($mediaobject->getXref() == $filter)
 		return true;
 
 	$filter=utf8_strtoupper($filter);
