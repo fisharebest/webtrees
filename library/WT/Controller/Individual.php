@@ -550,7 +550,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @param Family $family the family we are building for
 	* @return array an array of Person that will be used to iterate through on the indivudal.php page
 	*/
-	function buildFamilyList($family, $type) {
+	function buildFamilyList($family, $type, $include_pedi=true) {
 		global $WT_IMAGES;
 
 		$labels = array();
@@ -749,10 +749,12 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				if ($children[$i]->getXref()==$this->pid) {
 					$label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
 				}
-				$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcomRecord());
-				$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
-				if ($pedi) {
-					$label.='<br />('.WT_Gedcom_Code_Pedi::getValue($pedi, $children[$i]).')';
+				if ($include_pedi==true) {
+					$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcomRecord());
+					$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
+					if ($pedi) {
+						$label.='<br />('.WT_Gedcom_Code_Pedi::getValue($pedi, $children[$i]).')';
+					}
 				}
 				$children[$i]->setLabel($label);
 			}
@@ -766,11 +768,13 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			}
 			if ($sex=="M") {
 				$label = $labels["brother"];
-		}
+			}
 			if ($newchildren[$i]->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
-			$pedi = $newchildren[$i]->getChildFamilyPedigree($family->getXref());
-			if ($pedi) {
-				$label.='<br />('.WT_Gedcom_Code_Pedi::getValue($pedi, $newchildren[$i]).')';
+			if ($include_pedi==true) {
+				$pedi = $newchildren[$i]->getChildFamilyPedigree($family->getXref());
+				if ($pedi) {
+					$label.='<br />('.WT_Gedcom_Code_Pedi::getValue($pedi, $newchildren[$i]).')';
+				}
 			}
 			$newchildren[$i]->setLabel($label);
 		}
@@ -785,11 +789,14 @@ class WT_Controller_Individual extends WT_Controller_Base {
 				$label = $labels["brother"];
 			}
 			if ($delchildren[$i]->getXref()==$this->pid) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\" />";
-			$pedi = $delchildren[$i]->getChildFamilyPedigree($family->getXref());
-			if ($pedi) {
-				$label.='<br />('.WT_Gedcom_Code_Pedi::getValue($pedi, $delchildren[$i]).')';
+			if ($include_pedi==true) {
+				$pedi = $delchildren[$i]->getChildFamilyPedigree($family->getXref());
+				if ($pedi) {
+					$label.='<br />('.WT_Gedcom_Code_Pedi::getValue($pedi, $delchildren[$i]).')';
+				}
 			}
 			$delchildren[$i]->setLabel($label);
+			
 		}
 
 		$people = array();
