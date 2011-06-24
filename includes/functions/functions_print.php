@@ -1163,12 +1163,7 @@ function print_asso_rela_record($event) {
 		foreach ($associates as $associate) {
 			if ($associate) {
 				if ($rela) {
-					// A specified RELA (from the "events of close relatives")
-					if (preg_match('/^(mot|fat|par|hus|wif|spo|son|dau|chi|bro|sis|sib)*$/', $rela)) {
-						$label=get_relationship_name_from_path($rela, $associate->getXref(), $person->getXref());
-					} else {
-						$label=WT_Gedcom_Code_Rela::getValue($rela, $person);
-					}
+					$label=WT_Gedcom_Code_Rela::getValue($rela, $person);
 				} else {
 					// Generate an automatic RELA
 					$label=get_relationship_name(get_relationship($associate->getXref(), $person->getXref(), true, 4));

@@ -1143,9 +1143,9 @@ class WT_Person extends WT_GedcomRecord {
 								$factrec .= "\n2 RESN privacy";
 							}
 							if ($parent->getSex()=='F') {
-								$factrec.="\n2 ASSO @".$parent->getXref()."@\n3 RELA ".$rela."mot";
+								$factrec.="\n2 ASSO @".$parent->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela.'mot', $this->getXref(), $parent->getXref());
 							} else {
-								$factrec.="\n2 ASSO @".$parent->getXref()."@\n3 RELA ".$rela."fat";
+								$factrec.="\n2 ASSO @".$parent->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela.'fat', $this->getXref(), $parent->getXref());
 							}
 							$event=new WT_Event($factrec, $parent, 0);
 							$this->indifacts[] = $event;
@@ -1183,9 +1183,9 @@ class WT_Person extends WT_GedcomRecord {
 								$factrec = '1 '.$fact;
 								$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
 								$factrec .= "\n2 ASSO @".$parent->getXref().'@';
-								$factrec .= "\n3 RELA ".$rela1;
+								$factrec .= "\n3 RELA ".get_relationship_name_from_path($rela1, $this->getXref(), $parent->getXref());
 								$factrec .= "\n2 ASSO @".$sfamily->getSpouseId($parent->getXref()).'@';
-								$factrec .= "\n3 RELA ".$rela2;
+								$factrec .= "\n3 RELA ".get_relationship_name_from_path($rela2, $this->getXref(), $parent->getXref());
 								if (!$sEvent->canShow()) {
 									$factrec .= "\n2 RESN privacy";
 								}
@@ -1268,7 +1268,7 @@ class WT_Person extends WT_GedcomRecord {
 						if (!$sEvent->canShow()) {
 							$factrec.='\n2 RESN privacy';
 						}
-						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".$rela;
+						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela, $this->getXref(), $child->getXref());
 						$event = new WT_Event($factrec, $child, 0);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
@@ -1294,7 +1294,7 @@ class WT_Person extends WT_GedcomRecord {
 						if (!$sEvent->canShow()) {
 							$factrec.='\n2 RESN privacy';
 						}
-						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".$rela;
+						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela, $this->getXref(), $child->getXref());
 						$event = new WT_Event($factrec, $child, 0);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
@@ -1326,8 +1326,8 @@ class WT_Person extends WT_GedcomRecord {
 						case 'F': $rela2=$rela.'hus'; break;
 						case 'U': $rela2=$rela.'spo'; break;
 						}
-						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".$rela;
-						$factrec.="\n2 ASSO @".$sfamily->getSpouseId($child->getXref())."@\n3 RELA ".$rela2;
+						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela, $this->getXref(), $child->getXref());
+						$factrec.="\n2 ASSO @".$sfamily->getSpouseId($child->getXref())."@\n3 RELA ".get_relationship_name_from_path($rela2, $this->getXref(), $sfamily->getSpouseId($child->getXref()));
 						$event = new WT_Event($factrec, $sfamily, 0);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
@@ -1367,9 +1367,9 @@ class WT_Person extends WT_GedcomRecord {
 					$srec=preg_replace('/^1 .*/', '1 _'.$sEvent->getTag().'_SPOU ', $srec);
 					$srec.="\n".get_sub_record(2, '2 ASSO @'.$this->xref.'@', $srec);
 					switch ($spouse->getSex()) {
-					case 'M': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA hus"; break;
-					case 'F': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA wif"; break;
-					case 'U': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA spo"; break;
+					case 'M': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA ".get_relationship_name_from_path('hus', $this->getXref(), $spouse->getXref()); break;
+					case 'F': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA ".get_relationship_name_from_path('wif', $this->getXref(), $spouse->getXref()); break;
+					case 'U': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA ".get_relationship_name_from_path('spo', $this->getXref(), $spouse->getXref()); break;
 					}
 					$event = new WT_Event($srec, $spouse, 0);
 					$this->indifacts[] = $event;
