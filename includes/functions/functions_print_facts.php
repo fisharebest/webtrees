@@ -209,6 +209,11 @@ function print_fact(WT_Event $eventObj) {
 	case 'ASSO':
 		// we handle this later, in print_asso_rela_record()
 		break;
+	case 'PHON': // Not valid as a level 1 tag...
+	case 'FAX': // Not valid as a level 1 tag...
+		// These tags always(?) contain LTR data.  Make sure they render correctly on RTL pages.
+		echo '<div class="field"><span dir="ltr">', htmlspecialchars($eventObj->getDetail()), '</span></div>';
+		break;
 	case 'EMAIL':
 	case 'EMAI':
 	case '_EMAIL':
