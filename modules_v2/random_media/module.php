@@ -193,7 +193,6 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGES['admin']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure').'" /></a>';
 			}
 			$title .= $this->getTitle();
-			$title .= help_link('index_media');
 			$content = "<div id=\"random_picture_container$block_id\">";
 			if ($controls) {
 				if ($start) {

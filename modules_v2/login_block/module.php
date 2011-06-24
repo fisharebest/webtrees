@@ -56,11 +56,6 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<br /><br /></form></div>";
 		} else {
 			$title = WT_I18N::translate('Login');
-			if (get_site_setting('USE_REGISTRATION_MODULE')) {
-				$title.=help_link('index_login_register');
-			} else {
-				$title.=help_link('index_login');
-			}
 			$LOGIN_URL=get_site_setting('LOGIN_URL');
 			$content = "<div class=\"center\"><form method=\"post\" action=\"$LOGIN_URL\" name=\"loginform\" onsubmit=\"t = new Date(); document.loginform.usertime.value=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds(); return true;\">";
 			$content .= "<input type=\"hidden\" name=\"url\" value=\"index.php\" />";

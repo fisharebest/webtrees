@@ -57,7 +57,6 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$content .= "</tr><tr><td class=\"center\" colspan=\"3\">";
 		$content .= "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_USER_NAME."&amp;ctype=user"."', '_blank', 'top=50,left=10,width=705,height=355,scrollbars=1,resizable=1');\">".WT_I18N::translate('Change the blocks on this page')."</a>";
-		$content .= help_link('mypage_customize');
 		$content .= "<br />".format_timestamp(client_time())."<br />";
 		if ($SHOW_COUNTER)
 			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount."<br />";

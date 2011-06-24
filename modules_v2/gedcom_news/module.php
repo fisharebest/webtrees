@@ -93,11 +93,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
 		$title .= $this->getTitle();
-		if (WT_USER_GEDCOM_ADMIN) {
-			$title .= help_link('index_gedcom_news_adm');
-		} else {
-			$title .= help_link('index_gedcom_news');
-		}
 		$content = "";
 		if (count($usernews) == 0)
 		{

@@ -70,7 +70,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 		$usernews = getUserNews(WT_USER_ID);
 
 		$id=$this->getName().$block_id;
-		$title=$this->getTitle().help_link('mypage_myjournal');
+		$title=$this->getTitle();
 		$content = "";
 		if (count($usernews)==0) {
 			$content .= WT_I18N::translate('You have not created any Journal items.').' ';

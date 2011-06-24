@@ -53,8 +53,8 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		$id=$this->getName().$block_id;
-		$title=$this->getTitle().help_link('index_loggedin', $this->getName());
-		$content='<table width="90%">';
+		$title=$this->getTitle();
+		$content='<table>';
 		$LoginUsers=count($loggedusers);
 		if ($LoginUsers==0 && $NumAnonymous==0) {
 			$content.='<tr><td><b>' . WT_I18N::translate('No logged-in and no anonymous users') . '</b></td></tr>';
