@@ -2622,9 +2622,28 @@ case 'PGV_WIZARD':
 	$text .= '</p>';
 	break;
 
-	case 'phpinfo':
+case 'phpinfo':
 	$title=WT_I18N::translate('PHP information');
 	$text=WT_I18N::translate('This page provides extensive information about the server on which <b>webtrees</b> is being hosted.  Many configuration details about the server\'s software, as it relates to PHP and <b>webtrees</b>, can be viewed.');
+	break;
+
+case 'pending_changes':
+	$title=WT_I18N::translate('Pending changes');
+	$text=
+		'<p>'.
+		WT_I18N::translate('When you add, edit, or delete information, the changes are not saved immediately.  Instead, they are kept in a “pending” area.  These pending changes need to be reviewed by a moderator before they are accepted.').
+		'</p><p>'.
+		WT_I18N::translate('This process allows the site’s owner to ensure that the new information follows the site’s standards and conventions, has proper source attributions, etc.').
+		'</p><p>'.
+		WT_I18N::translate('Pending changes are only shown when your account has permission to edit.  When you log out, you will no longer be able to see them.  Also, pending changes are only shown on certain pages.  For example, they are not shown in lists, reports, or search results.').
+		'</p>';
+	if (WT_USER_IS_ADMIN) {
+		$text.=
+			'<p>'.
+			WT_I18N::translate('Each user account has an option to “automatically accept changes”.  When this is enabled, any changes made by that user are saved immediately.  Many administrators enable this for their own user account.').
+			'</p>';
+	}
+
 	break;
 
 case 'pls_note11':

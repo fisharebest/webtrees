@@ -35,15 +35,39 @@ if ($controller->family && $controller->family->canDisplayName()) {
 	print_header($controller->getPageTitle());
 	if ($controller->family->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This family has been deleted.  You should review the deletion and then <a href="%1$s">accept</a> or <a href="%2$s">reject</a> it.', $controller->family->getHtmlUrl().'&amp;action=accept', $controller->family->getHtmlUrl().'&amp;action=undo'), '</p>';
+			echo
+				'<p class="ui-state-highlight">',
+				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
+					'This family has been deleted.  You should review the deletion and then %1$s or %2$s it.',
+					'<a href="' . $controller->family->getHtmlUrl() . '&amp;action=accept">' . WT_I18N::translate_c('You should accept or reject it.', 'accept') . '</a>',
+					'<a href="' . $controller->family->getHtmlUrl() . '&amp;action=undo">' . WT_I18N::translate_c('You should accept or reject it.', 'reject') . '</a>'
+				),
+				' ', help_link('pending_changes'),
+				'</p>';
 		} elseif (WT_USER_CAN_EDIT) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This family has been deleted.  The deletion will need to be reviewed by a moderator.'), '</p>';
+			echo
+				'<p class="ui-state-highlight">',
+				WT_I18N::translate('This family has been deleted.  The deletion will need to be reviewed by a moderator.'),
+				' ', help_link('pending_changes'),
+				'</p>';
 		}
 	} elseif (find_updated_record($controller->family->getXref(), WT_GED_ID)!==null) {
 		if (WT_USER_CAN_ACCEPT) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This family has been edited.  You should review the changes and then <a href="%1$s">accept</a> or <a href="%2$s">reject</a> them.', $controller->family->getHtmlUrl().'&amp;action=accept', $controller->family->getHtmlUrl().'&amp;action=undo'), '</p>';
+			echo
+				'<p class="ui-state-highlight">',
+				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
+					'This family has been edited.  You should review the changes and then %1$s or %2$s them.',
+					'<a href="' . $controller->family->getHtmlUrl() . '&amp;action=accept">' . WT_I18N::translate_c('You should accept or reject it.', 'accept') . '</a>',
+					'<a href="' . $controller->family->getHtmlUrl() . '&amp;action=undo">' . WT_I18N::translate_c('You should accept or reject it.', 'reject') . '</a>'
+				),
+				' ', help_link('pending_changes'),
+				'</p>';
 		} elseif (WT_USER_CAN_EDIT) {
-			echo '<p class="ui-state-highlight">', WT_I18N::translate('This family has been edited.  The changes need to be reviewed by a moderator.'), '</p>';
+			echo
+				'<p class="ui-state-highlight">',
+				WT_I18N::translate('This family has been edited.  The changes need to be reviewed by a moderator.'),
+				' ', help_link('pending_changes'),
+				'</p>';
 		}
 	} elseif ($controller->accept_success) {
 		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
