@@ -53,6 +53,8 @@ $all_blocks=WT_Module::getActiveBlocks();
 
 // We generate individual blocks using AJAX
 if ($action=='ajax') {
+	// We have finished writing session data, so release the lock
+	Zend_Session::writeClose();
 	header('Content-Type: text/html; charset=UTF-8');
 	// Check we're displaying an allowable block.
 	$block_id=safe_GET('block_id');
