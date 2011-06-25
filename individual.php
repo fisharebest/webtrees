@@ -114,9 +114,9 @@ jQuery('#main').toggleClass('use-sidebar'); // Toggle
 var tabCache = new Array();
 
 jQuery(document).ready(function() {
-	// TODO: change images directory when the common images will be deleted.
 	jQuery('#tabs').tabs({ spinner: '<img src=\"images/loading.gif\" height=\"18\" border=\"0\" alt=\"\" />' });
 	jQuery("#tabs").tabs({ cache: true });
+	jQuery("#tabs").css('display', 'inline');
 	var $tabs = jQuery('#tabs');
 	jQuery('#tabs').bind('tabsshow', function(event, ui) {
 		var selectedTab = ui.tab.name;
@@ -267,7 +267,7 @@ if (!$controller->indi->canDisplayDetails()) {
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
 }
-echo '<div id="tabs" >';
+echo '<div id="tabs" style="display:none;">';
 echo '<ul>';
 foreach ($controller->tabs as $tab) {
 	$greyed_out='';
