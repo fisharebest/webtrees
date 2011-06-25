@@ -1,31 +1,27 @@
 <?php
-/**
- * Header for Xenea theme
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Themes
- * @version $Id$
- */
+// Header for xenea theme
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -36,185 +32,151 @@ global $DATE_FORMAT;
 
 $displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMAT);
 
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" <?php echo WT_I18N::html_markup(); ?>>
-<head>
-	<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-	<title><?php echo htmlspecialchars($title); ?></title>
-	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+echo
+	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
+	'<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '>',
+	'<head>',
+	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
+	'<title>', htmlspecialchars($title), '</title>',
+	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
+	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
+	'<link rel="stylesheet" type="text/css" href="js/jquery/css/jquery-ui.custom.css" />',
+	'<link rel="stylesheet" type="text/css" href="', $stylesheet, '" />';
 
-	<?php 
-	if (!empty($LINK_CANONICAL)) {
-		echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
+switch ($BROWSERTYPE) {
+case 'chrome':
+case 'msie':
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, $BROWSERTYPE, '.css" />';
+	break;
+}
+
+// Additional css files required (Only if Lightbox installed)
+if (WT_USE_LIGHTBOX) {
+	if ($TEXT_DIRECTION=='rtl') {
+		echo '<link rel="stylesheet" type="text/css" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="', WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" media="screen" />';
+	} else {
+		echo '<link rel="stylesheet" type="text/css" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" />';
+		echo '<link rel="stylesheet" type="text/css" href="', WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen" />';
 	}
-	if (!empty($META_DESCRIPTION)) {
-		echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
+}
+echo
+	'<link rel="stylesheet" type="text/css" href="', WT_THEME_DIR, 'modules.css" />',
+	$javascript,
+	'</head>',
+	'<body id="body">';
+
+// Begin Headers 
+
+if ($SEARCH_SPIDER) {
+	echo '<div id="header"><span class="title">';
+		print_gedcom_title_link(TRUE);
+	echo '</span></div>';
+
+	$menu_items=array(
+		WT_MenuBar::getGedcomMenu(),
+		WT_MenuBar::getListsMenu(),
+		WT_MenuBar::getCalendarMenu()
+	);
+
+	echo
+	'<div id="topMenu">',
+	'<ul id="main-menu">'; 
+	foreach ($menu_items as $menu) {
+		if ($menu) {
+		echo $menu->getMenuAsList();
+		}
 	}
-	echo '<meta name="robots" content="', $META_ROBOTS, '" />';
-	if (!empty($META_GENERATOR)) {
-		echo '<meta name="generator" content="', $META_GENERATOR, '" />';
-	}
-	?>
-	
-	<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />
-	<link rel="stylesheet" href="<?php echo $stylesheet; ?>" type="text/css" media="all" />
-	<?php if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) { ?> <link rel="stylesheet" href="<?php echo $rtl_stylesheet; ?>" type="text/css" media="all" /> <?php } ?>
-	<?php if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) { ?>
-		<link rel="stylesheet" href="<?php echo WT_THEME_DIR.$BROWSERTYPE; ?>.css" type="text/css" media="all" />
-	<?php }
-	// Additional css files required (Only if Lightbox installed)
-	if (WT_USE_LIGHTBOX) {
-		if ($TEXT_DIRECTION=='rtl') {
-			echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" type="text/css" />';
-			echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" type="text/css" media="screen" />';
+	unset($menu_items, $menu);
+	echo 
+	'</ul><div>';
+
+// Regular headers
+} elseif ($view!='simple') { // Use "simple" headers for popup windows
+	echo 
+	'<div id="header">',
+		'<span class="title">';
+		print_gedcom_title_link(TRUE);
+	echo 
+		'</span>',
+		'<div class="hsearch">';
+		echo 
+			'<form action="search.php" method="post">',
+			'<input type="hidden" name="action" value="general" />',
+			'<input type="hidden" name="topsearch" value="yes" />',
+			'<input type="text" name="query" size="12" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
+			'<input type="submit" name="search" value="&gt;" />',
+			'</form>',
+		'</div>',
+	'</div>';
+	echo
+		'<div id="optionsmenu">',
+			'<div id="theme-menu">',
+				'<ul class="makeMenu">';
+				if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
+					echo WT_MenuBar::getThemeMenu()->getMenuAsList();
+				}
+		echo
+				'</ul>',
+			'</div>',
+			'<div id="fav-menu">',
+				'<ul class="makeMenu">';
+				echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
+		echo
+				'</ul>',
+			'</div>',
+			'<div id="login-menu">',
+				'<ul class="makeMenu">';
+		if (WT_USER_ID) {
+			echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+				echo ' <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+			}
 		} else {
-			echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" type="text/css" />';
-			echo '<link rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page.css" type="text/css" media="screen" />';
+			echo '<li>', login_link(), '</li> ';
 		}
-	} ?>
-
-	<link type="text/css" href="<?php echo WT_THEME_DIR; ?>modules.css" rel="Stylesheet" />
-	
-	<?php echo $javascript; ?>
-</head>
-<body id="body">
-<!-- begin header section -->
-<?php if ($view!='simple') { ?>
-<div id="header" class="<?php echo $TEXT_DIRECTION; ?>">
-<table width="100%" border="0" cellspacing="0" cellpadding="1" bgcolor="#003399">
-	<tr>
-		<td>
-			<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-image:url('<?php
-			if ($TEXT_DIRECTION=="ltr") {
-				echo WT_THEME_DIR,"images/cabeza.png'); ";
-				echo "background-position:left top; ";
-			} else {
-				echo WT_THEME_DIR,"images/cabeza_rtl.png'); ";
-				echo "background-position:right top; ";
-			}
-			?>background-repeat:repeat-y; height:40px;">
-			<tr>
-				<td width="10"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="1" alt="" /></td>
-				<td valign="middle"><font color="#FFFFFF" size="5" face="Verdana, Arial, Helvetica, sans-serif">
-				<?php echo PrintReady($GEDCOM_TITLE, true); ?>
-				</font></td>
-		<?php if (empty($SEARCH_SPIDER)) { ?>
-				<td align="<?php echo $TEXT_DIRECTION=="rtl"?"left":"right"; ?>">
-				<form action="search.php" method="get">
-				<input type="hidden" name="action" value="general" />
-				<input type="hidden" name="topsearch" value="yes" />
-				<input type="text" name="query" size="12" value="<?php echo WT_I18N::translate('Search'); ?>" onfocus="if (this.value == '<?php echo WT_I18N::translate('Search'); ?>') this.value=''; focusHandler();" onblur="if (this.value == '') this.value='<?php echo WT_I18N::translate('Search'); ?>';" />
-				<input type="submit" name="search" value="&gt;" />
-				</form>
-				</td>
-				<td width="10"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="1" alt="" /></td>
-		<?php } ?>
-			</tr></table>
-		<?php if (empty($SEARCH_SPIDER)) { ?>
-			<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#84beff" style="background-image:url('<?php echo WT_THEME_DIR; ?>images/barra.png');">
-			 <tr class="blanco">
-				<td width="10" height="40"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="18" alt="" /></td>
-				<td width="115"><div id="favtheme" align="<?php echo $TEXT_DIRECTION=="rtl"?"right":"left"; ?>" >
-					<?php
-					$menu=WT_MenuBar::getThemeMenu();
-					if ($menu) {
-						echo WT_MenuBar::getThemeMenu()->getMenu();
+		echo	'</ul>',
+			'</div>';
+		echo
+			'<div id="lang-menu" class="makeMenu">',
+				'<ul class="makeMenu">';
+					$language_menu=WT_MenuBar::getLanguageMenu();
+					if ($language_menu) {
+						echo $language_menu->getMenuAsList();
 					}
-					print_favorite_selector(1);
-				?>
-				</div></td>
-				<td><div align="center" >
-				<?php
-					if (WT_USER_ID) {
-						echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
-					} elseif (empty($SEARCH_SPIDER)) {
-						echo login_link();
-					}
-				?>
-				</div></td>
-				<td>
-					<div id="extra-menu" class="makeMenu"><ul class="makeMenu"><?php
-						$language_menu=WT_MenuBar::getLanguageMenu();
-						if ($language_menu) {
-							echo $language_menu->getMenuAsList();
-						}
-						?></ul></div>
-					<div id="favdate" align="right" ><?php echo $displayDate; ?></div>
-				</td>
-				<td width="10"><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="1" alt="" /></td></tr></table>
-		<?php } ?>
+			echo 
+				'</ul>',
+				'<div id="favdate">', $displayDate, '</div>',
 
-<!-- Begin Toplinks menu section" -->
-<table width="100%" border="0" cellspacing="0" cellpadding="4" bgcolor="#FFFFFF" style="border: 1px solid #84beff">
-	<tr>
-		<td>
-			<div align="center">
-				<table width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
-		<tr>
-		<td width="10">
-			&nbsp;
-		</td>
-		<?php
-		$menu=WT_MenuBar::getGedcomMenu();
-		if ($menu) {
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
+			'</div>';
+		$menu_items=array(
+			WT_MenuBar::getGedcomMenu(),
+			WT_MenuBar::getMyPageMenu(),
+			WT_MenuBar::getChartsMenu(),
+			WT_MenuBar::getListsMenu(),
+			WT_MenuBar::getCalendarMenu(),
+			WT_MenuBar::getReportsMenu(),
+			WT_MenuBar::getSearchMenu(),
+		);
+		foreach (WT_MenuBar::getModuleMenus() as $menu) {
+			$menu_items[]=$menu;
 		}
-		$menu=WT_MenuBar::getMyPageMenu();
-		if ($menu) {
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
-		}
-		$menu=WT_MenuBar::getChartsMenu();
-		if ($menu) {
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
-		}
-		$menu=WT_MenuBar::getListsMenu();
-		if ($menu) {
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
-		}
-		$menu=WT_MenuBar::getCalendarMenu();
-		if ($menu) {
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
-		}
-		$menu=WT_MenuBar::getReportsMenu();
-		if ($menu) {
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
-		}
-		$menu=WT_MenuBar::getSearchMenu();
-		if ($menu) {
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
-		}
-		$menus=WT_MenuBar::getModuleMenus();
-		foreach ($menus as $menu) {
-			if ($menu) {
-				echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
-			}
-		}
-		$menu=WT_MenuBar::getHelpMenu();
-		if ($menu) {
-			echo '<td width="7%" valign="top">', $menu->getMenu(), '</td>';
-		}
-		?>
-		<td width="10">
-			&nbsp;
-		</td>
-		</tr>
-		</table>
-		</div>
-		</td>
-	</tr>
-</table>
-</td></tr></table>
+		$menu_items[]=WT_MenuBar::getHelpMenu();
 
-<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-image:url('<?php echo WT_THEME_DIR; ?>images/sombra.png'); height:4px;">
-	<tr>
-		<td><img src="<?php echo WT_THEME_DIR; ?>images/pixel.gif" width="1" height="1" alt="" /></td>
-	</tr>
-</table>
-<br />
-<!-- close div for div id="header" -->
-</div>
-<?php } ?>
-<!-- end toplinks menu section -->
-<!-- begin content section -->
-<div id="content">
+	// Print the menu bar
+	echo
+		'<div id="topMenu">',
+		'<ul id="main-menu">';
+	foreach ($menu_items as $menu) {
+		if ($menu) {
+			echo $menu->getMenuAsList();
+		}
+	}
+	unset($menu_items, $menu);
+	echo
+		'</ul>',  // <ul id="main-menu">
+		'</div>', // <div id="topMenu">
+		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
+		'</div>', // <div id="header">
+		'<div id="content">';
+}
