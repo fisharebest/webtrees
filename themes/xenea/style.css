@@ -77,7 +77,7 @@ html[dir='rtl'] .hsearch 	{ float: left; padding-left: 10px; }
 
 #theme-menu		{ float: left;  margin-left: 10px; margin-top: 5px; }
 #fav-menu 		{ position: absolute; left: 10px; top: 20px;}
-#login-menu 	{ position: absolute; left:30%; top: 15px; }
+#login-menu 	{ position: absolute; left:  30%; top: 15px; }
 #lang-menu	 	{ float: right; margin-right: 10px; margin-top: 5px; text-align:right;  }
 #lang-menu .makeMenu li ul { left:auto; right:0px; }
 
@@ -113,12 +113,12 @@ html[dir='rtl'] #extra-menu.makeMenu li ul { left:0px; right:auto; }
 #main-menu ul ul 			{ z-index:600;}
 #main-menu li  				{ float:left; position:relative; left:50%; }
 #main-menu li li 			{ clear:both; }
-#main-menu li:hover > ul 	{ display:block; position:absolute; top:0; left:100%; right:auto; }
+#main-menu li:hover > ul 	{ display:block; position:absolute; top:0; left:100%; right:auto; margin-top: 0px;}
 #main-menu > li:hover > ul 	{ left:0; right:auto; top:42px; }
 #main-menu a 				{ display:block; white-space:nowrap; overflow:hidden; }
-#main-menu ul 				{ position:absolute; display:none; background:#ffffff; border:thin solid #aaaaaa; padding:5px 0; z-index:999; }
+#main-menu ul 				{ position:absolute; display:none; background:#ffffff; border:thin solid #aaaaaa; padding:0px 0; z-index:999; }
 #main-menu li a 			{ margin:auto; padding-top:22px; width:100%; }
-#main-menu li li a 			{ display:block; position:relative; float:left; font-size:11px; line-height:1.5; padding:1px 10px 1px 5px; }
+#main-menu li li a 			{ display:block; position:relative; float:left; font-size:11px; line-height:1.5; padding:0px 10px 1px 5px; }
 
 /* Menu icons */
 #main-menu  > li {

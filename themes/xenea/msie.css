@@ -1,16 +1,15 @@
 /*
  * @version $Id$
  */
-.small_inner_block {
-	height: expression( this.scrollHeight > 179 ? "180px" : "auto" ); 
+
+.makeMenu li ul {
+	top: 2px!important; 
+	z-index: 9000;
+}
+/*==========  IE7 Fixes ============================= */
+.rela {
+	filter: alpha(opacity=67);
 }
 
-.normal_inner_block {
-	width: 100%;
-}
+#content 		{ *margin-top: 50px;}
 
-a.showit:hover span {
-	filter: alpha(opacity=85);
-}
-
-form { margin-top: 0px; margin-bottom: 0px; }
