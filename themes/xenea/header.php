@@ -100,7 +100,7 @@ if ($SEARCH_SPIDER) {
 	echo 
 		'</span>',
 		'<div class="hsearch">';
-		echo 
+	echo 
 			'<form action="search.php" method="post">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
@@ -110,45 +110,47 @@ if ($SEARCH_SPIDER) {
 		'</div>',
 	'</div>';
 	echo
-		'<div id="optionsmenu">',
-			'<div id="theme-menu">',
-				'<ul class="makeMenu">';
-				if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
-					echo WT_MenuBar::getThemeMenu()->getMenuAsList();
-				}
-		echo
-				'</ul>',
-			'</div>',
-			'<div id="fav-menu">',
-				'<ul class="makeMenu">';
-				echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
-		echo
-				'</ul>',
-			'</div>',
-			'<div id="login-menu">',
-				'<ul class="makeMenu">';
-		if (WT_USER_ID) {
-			echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
-			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-				echo ' <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+	'<div id="optionsmenu">',
+		'<div id="theme-menu">',
+			'<ul class="makeMenu">';
+			if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
+				echo WT_MenuBar::getThemeMenu()->getMenuAsList();
 			}
-		} else {
-			echo '<li>', login_link(), '</li> ';
-		}
-		echo	'</ul>',
-			'</div>';
-		echo
-			'<div id="lang-menu" class="makeMenu">',
-				'<ul class="makeMenu">';
-					$language_menu=WT_MenuBar::getLanguageMenu();
-					if ($language_menu) {
-						echo $language_menu->getMenuAsList();
-					}
-			echo 
-				'</ul>',
-				'<div id="favdate">', $displayDate, '</div>',
-
-			'</div>';
+	echo
+			'</ul>',
+		'</div>',
+		'<div id="fav-menu">',
+			'<ul class="makeMenu">';
+			echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
+	echo
+			'</ul>',
+		'</div>',
+		'<div id="login-menu">',
+			'<ul class="makeMenu">';
+			if (WT_USER_ID) {
+				echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+					echo ' <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+				}
+			} else {
+				echo '<li>', login_link(), '</li> ';
+			}
+	echo	
+			'</ul>',
+		'</div>';
+	echo
+		'<div id="lang-menu" class="makeMenu">',
+			'<ul class="makeMenu">';
+				$language_menu=WT_MenuBar::getLanguageMenu();
+				if ($language_menu) {
+					echo $language_menu->getMenuAsList();
+				}
+	echo 
+			'</ul>',
+			'<div id="favdate">', $displayDate, '</div>',
+		'</div>',
+	'</div>';
+// Menu 
 		$menu_items=array(
 			WT_MenuBar::getGedcomMenu(),
 			WT_MenuBar::getMyPageMenu(),
