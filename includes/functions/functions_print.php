@@ -853,6 +853,7 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 				$data .= $closeSpan."<br />";
 				if (!$textOnly) {
 					if (strpos($noterec, "1 SOUR")!==false) {
+						require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 						$data .= print_fact_sources($noterec, 1, true);
 						$data .= "<br />";
 					}
