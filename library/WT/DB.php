@@ -23,7 +23,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -165,43 +165,6 @@ class WT_DB {
 		$html='<table border="1"><col span="3"/><col align="char"/><thead><tr><th>#</th><th>Query</th><th>Rows</th><th>Time (ms)</th></tr><tbody/>'.implode('', self::$log).'</table>';
 		self::$log=array();
 		return $html;
-	}
-
-	//////////////////////////////////////////////////////////////////////////////
-	// INTERROGATE DATA DICTIONARY
-	//////////////////////////////////////////////////////////////////////////////
-	public static function table_exists($table) {
-		global $DBNAME;
-
-		switch (self::$pdo->getAttribute(PDO::ATTR_DRIVER_NAME)) {
-		case 'mysql':
-			// Mysql 4.x does not support the information schema
-		default:
-			// Catch-all for other databases
-			try {
-				WT_DB::prepare("SELECT 1 FROM {$table}")->fetchOne();
-				return true;
-			} catch (PDOException $ex) {
-				return false;
-			}
-		}
-	}
-
-	public static function column_exists($table, $column) {
-		global $DBNAME;
-
-		switch (self::$pdo->getAttribute(PDO::ATTR_DRIVER_NAME)) {
-		case 'mysql':
-			// Mysql 4.x does not support the information schema
-		default:
-			// Catch-all for other databases
-			try {
-				WT_DB::prepare("SELECT {$column} FROM {$table}")->fetchOne();
-				return true;
-			} catch (PDOException $ex) {
-				return false;
-			}
-		}
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
