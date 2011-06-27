@@ -114,9 +114,8 @@ jQuery('#main').toggleClass('use-sidebar'); // Toggle
 var tabCache = new Array();
 
 jQuery(document).ready(function() {
-	jQuery('#tabs').tabs({ spinner: '<img src=\"images/loading.gif\" height=\"18\" border=\"0\" alt=\"\" />' });
+	jQuery('#tabs').tabs({ spinner: '<img src="images/loading.gif" height="18" border="0" alt="" />' });
 	jQuery("#tabs").tabs({ cache: true });
-	jQuery("#tabs").css('display', 'inline');
 	var $tabs = jQuery('#tabs');
 	jQuery('#tabs').bind('tabsshow', function(event, ui) {
 		var selectedTab = ui.tab.name;
@@ -134,6 +133,20 @@ jQuery(document).ready(function() {
 	var objTabs			= jQuery('#indi_left');
 	var objBar			= jQuery('#sidebar');
 	var objSeparator	= jQuery('#separator');
+	// Adjust header dimensions
+	function adjHeader(){
+		var indi_header_div = document.getElementById('indi_header').offsetWidth - 20;
+		var indi_mainimage_div = document.getElementById('indi_mainimage').offsetWidth +20;
+		var header_accordion_div = document.getElementById('header_accordion1');
+		header_accordion_div.style.width = indi_header_div - indi_mainimage_div +'px';
+
+		jQuery(window).bind("resize", function(){
+			var indi_header_div = document.getElementById('indi_header').offsetWidth - 20;
+			var indi_mainimage_div = document.getElementById('indi_mainimage').offsetWidth +20;
+			var header_accordion_div = document.getElementById('header_accordion1');
+			header_accordion_div.style.width = indi_header_div - indi_mainimage_div +'px';
+		 });
+	}
 	// Show sidebar
 	function showSidebar(){
 		objMain.addClass('use-sidebar');
@@ -151,11 +164,13 @@ jQuery(document).ready(function() {
 		e.preventDefault();
 		if ( objMain.hasClass('use-sidebar') ){
 			hideSidebar();
+			adjHeader();
 		} else {
 			showSidebar();
+			adjHeader();
 		}
 	});
-;
+
 	// Load preference
 	if ( jQuery.cookie('sidebar-pref') == null ){
 		objMain.addClass('use-sidebar');
@@ -164,26 +179,15 @@ jQuery(document).ready(function() {
 		objSeparator.css('height', objBar.outerHeight() + 'px');
 	}
 	
-	// calculate header accordion width from its outer container and thubnail image sizes
-	    var indi_header_div = document.getElementById('indi_header').offsetWidth - 20;
-		var indi_mainimage_div = document.getElementById('indi_mainimage').offsetWidth +20;
-		var header_accordion_div = document.getElementById('header_accordion1');
-		header_accordion_div.style.width = indi_header_div - indi_mainimage_div +'px';
-
-                jQuery(window).bind("resize", function(){
-					var indi_header_div = document.getElementById('indi_header').offsetWidth - 20;
-					var indi_mainimage_div = document.getElementById('indi_mainimage').offsetWidth +20;
-					var header_accordion_div = document.getElementById('header_accordion1');
-					header_accordion_div.style.width = indi_header_div - indi_mainimage_div +'px';
-                 });
-		
+	adjHeader();
+	jQuery("#main").css('visibility', 'visible');
 });
 <?php
 echo WT_JS_END;
 // ===================================== header area
 
 echo
-	'<div id="main" class="use-sidebar sidebar-at-right">', //overall page container
+	'<div id="main" class="use-sidebar sidebar-at-right" style="visibility:hidden;">', //overall page container
 	'<div id="indi_left">',
 	'<div id="indi_header">';
 if ($controller->indi->canDisplayDetails()) {
@@ -258,7 +262,7 @@ if ($controller->indi->canDisplayDetails()) {
 echo '</div>';// close #indi_header
 // ===================================== main content tabs
 if (!$controller->indi->canDisplayDetails()) {
-	echo '<div id="tabs" >';
+	echo '<div id="tabs">';
 	print_privacy_error();
 	echo '</div>'; //close #tabs
 	print_footer();
@@ -267,7 +271,7 @@ if (!$controller->indi->canDisplayDetails()) {
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
 }
-echo '<div id="tabs" style="display:none;">';
+echo '<div id="tabs">';
 echo '<ul>';
 foreach ($controller->tabs as $tab) {
 	$greyed_out='';
