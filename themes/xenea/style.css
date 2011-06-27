@@ -167,7 +167,8 @@ html[dir='rtl'] #main-menu li li a 		{ float:right;padding:1px 5px 1px 10px; }
 #menu-note      { background-position:center -348px; }
 #menu-obje      { background-position:center -377px; }
 #menu-repo      { background-position:center -406px; }
-     
+#menu-story    { background-position:center -435px; }
+    
 /*******************Menu submenu Icons**********************/
 /* Chart Icons */
 #menu-chart-ancestry        { background-position:left   -0px; } html[dir=rtl] #menu-chart-ancestry         { background-position:right   -0px; } 
@@ -265,7 +266,6 @@ html[dir='rtl'] #main-menu li li a 		{ float:right;padding:1px 5px 1px 10px; }
 /* Repository */
 #menu-repo-addfav           { background-position:left -736px; } html[dir=rtl] #menu-repo-addfav            { background-position:right -736px; }
 #menu-repo-del              { background-position:left -713px; } html[dir=rtl] #menu-repo-del               { background-position:right -713px; }
-#menu-repo-edit             { background-position:left -897px; } html[dir=rtl] #menu-repo-edit              { background-position:right -897px; }
 #menu-repo-editraw          { background-position:left -667px; } html[dir=rtl] #menu-repo-editraw           { background-position:right -667px; }
 
 /*  Source  */
