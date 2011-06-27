@@ -625,48 +625,35 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 				print_gm_markers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels, $thisplacelevels);
 			}
 		}
+	}
 
-		// display any sub-places
-		$placeidlist=array();
-		foreach ($place_names as $placename) {
-			$thisloc = $parent;
-			$thisloc[] = $placename;
-			$this_levelm = set_levelm($level+1, $thisloc);
-			if ($this_levelm) $placeidlist[] = $this_levelm;
-		}
+	// display any sub-places
+	$placeidlist=array();
+	foreach ($place_names as $placename) {
+		$thisloc = $parent;
+		$thisloc[] = $placename;
+		$this_levelm = set_levelm($level+1, $thisloc);
+		if ($this_levelm) $placeidlist[] = $this_levelm;
+	}
 
-		if ($placeidlist) {
-			// flip the array (thus removing duplicates)
-			$placeidlist=array_flip($placeidlist);
-			// remove entry for parent location
-			unset($placeidlist[$levelm]);
-		}
-		if ($placeidlist) {
-			// the keys are all we care about (this reverses the earlier array_flip, and ensures there are no "holes" in the array)
-			$placeidlist=array_keys($placeidlist);
-			// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
-			$placelist =
-				WT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN ('.implode(',', array_fill(0, count($placeidlist), '?')).')')
-				->execute($placeidlist)
-				->fetchAll(PDO::FETCH_ASSOC);
+	if ($placeidlist) {
+		// flip the array (thus removing duplicates)
+		$placeidlist=array_flip($placeidlist);
+		// remove entry for parent location
+		unset($placeidlist[$levelm]);
+	}
+	if ($placeidlist) {
+		// the keys are all we care about (this reverses the earlier array_flip, and ensures there are no "holes" in the array)
+		$placeidlist=array_keys($placeidlist);
+		// note: this implode/array_fill code generates one '?' for each entry in the $placeidlist array
+		$placelist =
+			WT_DB::prepare('SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id IN ('.implode(',', array_fill(0, count($placeidlist), '?')).')')
+			->execute($placeidlist)
+			->fetchAll(PDO::FETCH_ASSOC);
 
-			foreach ($placelist as $place) {
-				print_gm_markers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
-			}
+		foreach ($placelist as $place) {
+			print_gm_markers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
 		}
-	} else {
-		// The following is called when no coordinates exist for a place location at all
-		echo "var icon_type = new google.maps.MarkerImage();\n";
-		echo 'icon_type.image = "', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
-		echo 'icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
-		echo 'icon_type.iconSize = google.maps.Size(20, 34);';
-		echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
-		echo 'var point = new google.maps.LatLng(0, 0);';
-		echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'>";
-		echo "<br />", WT_I18N::translate('This place has no coordinates');
-		if (WT_USER_IS_ADMIN)
-			echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=0&display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
-		echo "<br /></div>\", icon_type, \"", WT_I18N::translate('Edit geographic location'), "\");\n";
 	}
 	
 	//end markers
