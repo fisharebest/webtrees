@@ -27,6 +27,7 @@ define('WT_SCRIPT_NAME', 'setup.php');
 define('WT_DATA_DIR',    'data/');
 define('WT_MEDIA_DIR',   'media/');
 define('WT_CONFIG_FILE', 'config.ini.php');
+define('WT_DEBUG_LANG',  false); // The translation library needs this
 define('WT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
 
 // magic quotes were deprecated in PHP5.3.0 and removed in PHP6.0.0
