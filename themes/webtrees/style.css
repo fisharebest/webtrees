@@ -1581,18 +1581,22 @@ html[dir='rtl'] #main-menu  li li a {float:right;padding:1px 5px 1px 10px;}
 
 /* ========= Login|Favorites|Theme|Language menu items ========== */
 #extra-menu {float:right;white-space:nowrap;	margin:20px 10px 0 0;}
-html[dir='rtl'] #extra-menu {	float:left;	margin:20px 0 0 10px ;}
 #extra-menu.makeMenu li ul {left:auto;	right:0px;}
-html[dir='rtl'] #extra-menu.makeMenu li ul {left:0px;right:auto;}
 #extra-menu a {background:none; display:inline;}
 .makeMenu {color:#555555; font-weight:bold;}
-.makeMenu li {display:inline; position:relative; white-space:nowrap;}
+.makeMenu li {display:inline; position:relative; white-space:nowrap; border-left: 2px solid; padding:0 5px;}
+.makeMenu li:first-child, .makeMenu li ul li  {border:none;}
 .makeMenu li ul {display:none;	font-weight:normal;	position:absolute; left:0px; right:auto; top:1.1em;	background-color:#FFF; border:thin solid #AAA; z-index:999;}
-html[dir='rtl'] .makeMenu li ul {left:auto; right:0px;}
 .makeMenu li ul li {padding:2px;	display:block; text-align:left;}
-html[dir='rtl'] .makeMenu li ul li {text-align:right;}
 .makeMenu, .makeMenu li ul {list-style:none; margin:0;	padding:1px;}
 .makeMenu li:hover > ul {display:block;}
+
+html[dir='rtl'] #extra-menu {	float:left;	margin:20px 0 0 10px ;}
+html[dir='rtl'] #extra-menu.makeMenu li ul {left:0px;right:auto;}
+html[dir='rtl'] .makeMenu li ul {left:auto; right:0px;}
+html[dir='rtl'] .makeMenu li ul li {text-align:right;}
+html[dir='rtl'] .makeMenu li {border-left:none; border-right: 2px solid;}
+html[dir='rtl'] .makeMenu li:first-child, html[dir='rtl'] .makeMenu li ul li  {border:none;}
 
 /* ========= Positioning edit, copy, delete links ============= */
 /* General use */

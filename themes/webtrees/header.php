@@ -79,22 +79,22 @@ if ($view!='simple') {
 		// Options for real users
 		echo '<ul id="extra-menu" class="makeMenu"><li>';
 		if (WT_USER_ID) {
-			echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
+			echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a>', logout_link();
 		} else {
 			echo login_link();
 		}
 		echo '</li>';
 		$menu=WT_MenuBar::getFavoritesMenu();
 		if ($menu) {
-			echo ' | ', $menu->GetMenuAsList();
+			echo $menu->GetMenuAsList();
 		}
 		$menu=WT_MenuBar::getThemeMenu();
 		if ($menu) {
-			echo ' | ', $menu->GetMenuAsList();
+			echo $menu->GetMenuAsList();
 		}
 		$menu=WT_MenuBar::getLanguageMenu();
 		if ($menu) {
-			echo ' | ', $menu->GetMenuAsList();
+			echo $menu->GetMenuAsList();
 		}
 		echo '</ul><div class="title">';
 		print_gedcom_title_link(true);
