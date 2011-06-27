@@ -1,35 +1,27 @@
 <?php
-/**
- * Google map module for phpGedView
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
- *
- * Modifications Copyright (c) 2010 Greg Roach
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Module
- * $Id$
- *
- * @author Brian Holland
- */
+// Google map module for phpGedView
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -306,7 +298,6 @@ function build_indiv_map($indifacts, $famids) {
 	// Create the markers list array ===============================================================
 	$markers=array();
 	// Add the events to the markers list array=====================================================
-	$placelocation=WT_DB::table_exists("`##placelocation`");
 	//-- sort the facts into date order
 	sort_facts($indifacts);
 	$i = 0;
@@ -364,7 +355,7 @@ function build_indiv_map($indifacts, $famids) {
 					$markers[$i]['name']=$spouseid[1];
 				}
 			} else {
-				if (($placelocation == true) && ($useThisItem==true) && ($addrFound==false)) {
+				if ($useThisItem==true && $addrFound==false) {
 					$ctpl = preg_match("/\d PLAC (.*)/", $placerec, $match1);
 					$latlongval = get_lati_long_placelocation($match1[1]);
 					if ((count($latlongval) == 0) && (!empty($GM_DEFAULT_TOP_VALUE))) {
@@ -462,47 +453,45 @@ function build_indiv_map($indifacts, $famids) {
 										}
 										$markers[$i]['name'] = $smatch[$j][1];
 									} else {
-										if ($placelocation == true) {
-											$ctpl = preg_match("/\d PLAC (.*)/", $placerec, $match1);
-											$latlongval = get_lati_long_placelocation($match1[1]);
-											if ((count($latlongval) == 0) && (!empty($GM_DEFAULT_TOP_VALUE))) {
-												$latlongval = get_lati_long_placelocation($match1[1].', '.$GM_DEFAULT_TOP_VALUE);
-												if ((count($latlongval) != 0) && ($latlongval['level'] == 0)) {
-													$latlongval['lati'] = NULL;
-													$latlongval['long'] = NULL;
-												}
+										$ctpl = preg_match("/\d PLAC (.*)/", $placerec, $match1);
+										$latlongval = get_lati_long_placelocation($match1[1]);
+										if ((count($latlongval) == 0) && (!empty($GM_DEFAULT_TOP_VALUE))) {
+											$latlongval = get_lati_long_placelocation($match1[1].', '.$GM_DEFAULT_TOP_VALUE);
+											if ((count($latlongval) != 0) && ($latlongval['level'] == 0)) {
+												$latlongval['lati'] = NULL;
+												$latlongval['long'] = NULL;
 											}
-											if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
-												$i = $i + 1;
-												$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
-												$markers[$i]['fact']	= WT_Gedcom_Tag::getLabel('CHIL');
-												$markers[$i]['class']	= 'option_boxNN';
-												if (strpos($srec, "\n1 SEX F")!==false) {
-													$markers[$i]['fact'] = WT_I18N::translate('Daughter');
-													$markers[$i]['class'] = 'person_boxF';
-												}
-												if (strpos($srec, "\n1 SEX M")!==false) {
-													$markers[$i]['fact'] = WT_I18N::translate('Son');
-													$markers[$i]['class'] = 'person_box';
-												}
-												$markers[$i]['icon'] = $latlongval['icon'];
-												$markers[$i]['placerec'] = $placerec;
-												if ($zoomLevel > $latlongval['zoom']) {
-													$zoomLevel = $latlongval['zoom'];
-												}
-												$markers[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval['lati']);
-												$markers[$i]['lng']  = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval['long']);
-												if ($ctd > 0) {
-													$markers[$i]['date'] = $matchd[1];
-												}
-												$markers[$i]['name'] = $smatch[$j][1];
-												$markers[$i]['media'] = $latlongval['media'];
-												$markers[$i]['sv_lati'] = $latlongval['sv_lati'];
-												$markers[$i]['sv_long'] = $latlongval['sv_long'];
-												$markers[$i]['sv_bearing'] = $latlongval['sv_bearing'];
-												$markers[$i]['sv_elevation'] = $latlongval['sv_elevation'];
-												$markers[$i]['sv_zoom'] = $latlongval['sv_zoom'];
+										}
+										if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
+											$i = $i + 1;
+											$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
+											$markers[$i]['fact']	= WT_Gedcom_Tag::getLabel('CHIL');
+											$markers[$i]['class']	= 'option_boxNN';
+											if (strpos($srec, "\n1 SEX F")!==false) {
+												$markers[$i]['fact'] = WT_I18N::translate('Daughter');
+												$markers[$i]['class'] = 'person_boxF';
 											}
+											if (strpos($srec, "\n1 SEX M")!==false) {
+												$markers[$i]['fact'] = WT_I18N::translate('Son');
+												$markers[$i]['class'] = 'person_box';
+											}
+											$markers[$i]['icon'] = $latlongval['icon'];
+											$markers[$i]['placerec'] = $placerec;
+											if ($zoomLevel > $latlongval['zoom']) {
+												$zoomLevel = $latlongval['zoom'];
+											}
+											$markers[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval['lati']);
+											$markers[$i]['lng']  = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval['long']);
+											if ($ctd > 0) {
+												$markers[$i]['date'] = $matchd[1];
+											}
+											$markers[$i]['name'] = $smatch[$j][1];
+											$markers[$i]['media'] = $latlongval['media'];
+											$markers[$i]['sv_lati'] = $latlongval['sv_lati'];
+											$markers[$i]['sv_long'] = $latlongval['sv_long'];
+											$markers[$i]['sv_bearing'] = $latlongval['sv_bearing'];
+											$markers[$i]['sv_elevation'] = $latlongval['sv_elevation'];
+											$markers[$i]['sv_zoom'] = $latlongval['sv_zoom'];
 										}
 									}
 								}

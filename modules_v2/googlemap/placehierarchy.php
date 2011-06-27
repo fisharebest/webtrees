@@ -1,33 +1,27 @@
 <?php
-/**
- * Displays a place hierachy
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Googlemap
- * @author Brian Holland (for v3 googlemaps version at webtrees)
- *
- * $Id$
- */
+// Displays a place hierachy
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -40,10 +34,6 @@ if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php')) {
 }
 
 $stats = new WT_Stats($GEDCOM);
-
-function check_exist_table() {
-	return WT_DB::table_exists('`##placelocation`');
-}
 
 function place_id_to_hierarchy($id) {
 	$statement=
@@ -61,21 +51,19 @@ function get_placeid($place) {
 	$par = explode (",", $place);
 	$par = array_reverse($par);
 	$place_id = 0;
-	if (check_exist_table()) {
-		for ($i=0; $i<count($par); $i++) {
-			$par[$i] = trim($par[$i]);
-			if (empty($par[$i])) $par[$i]="unknown";
-			$placelist = create_possible_place_names($par[$i], $i+1);
-			foreach ($placelist as $key => $placename) {
-				$pl_id=
-					WT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
-					->execute(array($i, $place_id, $placename))
-					->fetchOne();
-				if (!empty($pl_id)) break;
-			}
-			if (empty($pl_id)) break;
-			$place_id = $pl_id;
+	for ($i=0; $i<count($par); $i++) {
+		$par[$i] = trim($par[$i]);
+		if (empty($par[$i])) $par[$i]="unknown";
+		$placelist = create_possible_place_names($par[$i], $i+1);
+		foreach ($placelist as $key => $placename) {
+			$pl_id=
+				WT_DB::prepare("SELECT pl_id FROM `##placelocation` WHERE pl_level=? AND pl_parent_id=? AND pl_place LIKE ? ORDER BY pl_place")
+				->execute(array($i, $place_id, $placename))
+				->fetchOne();
+			if (!empty($pl_id)) break;
 		}
+		if (empty($pl_id)) break;
+		$place_id = $pl_id;
 	}
 	return $place_id;
 }
@@ -591,52 +579,50 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	}
 	
 	<?php
-	if (check_exist_table()) {
-		global $GOOGLEMAP_MAX_ZOOM;
-		$levelm = set_levelm($level, $parent);
-		if (isset($levelo[0])) $levelo[0]=0;
-		$numls = count($parent)-1;
-		$levelo=check_were_am_i($numls, $levelm);
-		if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))) {
-			echo "map.maxZoom=6;";
-			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+5);\n";
-		} else if ($numfound<2 && !isset($levelo[($level-2)])) {
-			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+6);\n";
-		} else if ($level==2) {
-			echo "map.maxZoom=10;";
-			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
-		} else if ($numfound<2 && $level>1) {
-			echo "map.maxZoom=".$GOOGLEMAP_MAX_ZOOM.";";
-			// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
-			// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
-		} 
-		//create markers
-		if ($numfound==0 && $level>0) {
-			if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
-				// show the current place on the map
+	global $GOOGLEMAP_MAX_ZOOM;
+	$levelm = set_levelm($level, $parent);
+	if (isset($levelo[0])) $levelo[0]=0;
+	$numls = count($parent)-1;
+	$levelo=check_were_am_i($numls, $levelm);
+	if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))) {
+		echo "map.maxZoom=6;";
+		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
+		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+5);\n";
+	} else if ($numfound<2 && !isset($levelo[($level-2)])) {
+		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
+		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+6);\n";
+	} else if ($level==2) {
+		echo "map.maxZoom=10;";
+		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
+		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
+	} else if ($numfound<2 && $level>1) {
+		echo "map.maxZoom=".$GOOGLEMAP_MAX_ZOOM.";";
+		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
+		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
+	} 
+	//create markers
+	if ($numfound==0 && $level>0) {
+		if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
+			// show the current place on the map
 
-				$place = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id=?")
-				->execute(array($levelm))
-				->fetch(PDO::FETCH_ASSOC);
+			$place = WT_DB::prepare("SELECT pl_id as place_id, pl_place as place, pl_lati as lati, pl_long as `long`, pl_zoom as zoom, pl_icon as icon FROM `##placelocation` WHERE pl_id=?")
+			->execute(array($levelm))
+			->fetch(PDO::FETCH_ASSOC);
 
-				if ($place) {
-					// re-calculate the hierarchy information required to display the current place
-					$thisloc = $parent;
-					$xx = array_pop($thisloc);
-					$thislevel = $level-1 ;
-					$thislinklevels = substr($linklevels,0,strrpos($linklevels,'&amp;'));
-					if (strpos($placelevels,',',1)) {
-						$thisplacelevels = substr($placelevels,strpos($placelevels,',',1));
-					} else {
-						// this is the top level, remove everything
-						$thisplacelevels = '';
-					}
-
-					print_gm_markers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels, $thisplacelevels);
+			if ($place) {
+				// re-calculate the hierarchy information required to display the current place
+				$thisloc = $parent;
+				$xx = array_pop($thisloc);
+				$thislevel = $level-1 ;
+				$thislinklevels = substr($linklevels,0,strrpos($linklevels,'&amp;'));
+				if (strpos($placelevels,',',1)) {
+					$thisplacelevels = substr($placelevels,strpos($placelevels,',',1));
+				} else {
+					// this is the top level, remove everything
+					$thisplacelevels = '';
 				}
+
+				print_gm_markers($place, $thislevel, $thisloc, $place['place_id'], $thislinklevels, $thisplacelevels);
 			}
 		}
 
