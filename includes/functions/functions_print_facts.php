@@ -258,6 +258,9 @@ function print_fact(WT_Event $eventObj) {
 	case 'WWW':
 		echo '<div class="field"><a href="', htmlspecialchars($eventObj->getDetail()), '">', htmlspecialchars($eventObj->getDetail()), '</a></div>';
 		break;
+	case 'TEXT': // 0 SOUR / 1 TEXT
+		echo '<div class="field">', nl2br(htmlspecialchars($eventObj->getDetail())), '</div>';
+		break;
 	default:
 		// Display the value for all other facts/events
 		switch ($eventObj->getDetail()) {

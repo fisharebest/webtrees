@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -84,9 +84,13 @@ class WT_Event {
 	// the line number (from the original, privacy-filtered) gedcom
 	// record, to allow editing
 	function __construct($subrecord, $parent, $lineNumber) {
-		if (preg_match('/^1 ('.WT_REGEX_TAG.') ?(.*)/', $subrecord, $match)) {
+		if (preg_match('/^1 ('.WT_REGEX_TAG.') ?(.*)((\n2 CONT .*)*)/', $subrecord, $match)) {
 			$this->tag   =$match[1];
 			$this->detail=$match[2];
+			// Some detail records contain multiple lines
+			if ($match[3]) {
+				$this->detail.=str_replace("\n2 CONT ", "\n", $match[3]);
+			}
 		} else {
 			// We are not ready for this yet.
 			// throw new Exception('Invalid GEDCOM data passed to WT_Event::_construct('.$subrecord.')');
