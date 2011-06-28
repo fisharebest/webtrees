@@ -430,7 +430,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
  *
  * @param string $famid family gedcom ID
  */
-function print_family_facts(&$family) {
+function print_family_facts($family) {
 	global $pbwidth, $pbheight;
 	global $TEXT_DIRECTION, $GEDCOM;
 	global $linkToID;
@@ -448,7 +448,7 @@ function print_family_facts(&$family) {
 		if ($indifacts) {
 			sort_facts($indifacts);
 			foreach ($indifacts as $fact) {
-				print_fact($fact);
+				print_fact($fact, $family);
 			}
 			print_main_media($famid);
 		} else {

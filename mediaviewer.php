@@ -129,8 +129,8 @@ global $tmb;
 						<table class="facts_table<?php echo $TEXT_DIRECTION=='ltr'?'':'_rtl'; ?>">
 							<?php
 								$facts = $controller->getFacts(WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT);
-								foreach ($facts as $f=>$factrec) {
-									print_fact($factrec);
+								foreach ($facts as $f=>$fact) {
+									print_fact($fact, $controller->mediaobject);
 								}
 							?>
 						</table>

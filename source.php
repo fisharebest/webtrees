@@ -104,7 +104,7 @@ echo '<table class="facts_table">';
 
 $sourcefacts=$controller->source->getFacts();
 foreach ($sourcefacts as $fact) {
-	print_fact($fact);
+	print_fact($fact, $controller->source);
 }
 
 // Print media

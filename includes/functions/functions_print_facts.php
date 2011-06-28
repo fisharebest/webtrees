@@ -30,29 +30,36 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// print a fact record, for the gedcom object pages.
-function print_fact(WT_Event $eventObj) {
-	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS, $n_chil, $n_gchi;
+// Print a fact record, for the individual/family/source/repository/etc. pages.
+//
+// Although a WT_Event has a parent object, we also need to know
+// the WT_GedcomRecord for which we are printing it.  For example,
+// we can show the death of X on the page of Y, or the marriage
+// of X+Y on the page of Z.  We need to know both records to
+// calculate ages, relationships, etc.
+function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
+	global $HIDE_GEDCOM_ERRORS, $SHOW_FACT_ICONS;
+	static $n_chil=0, $n_gchi=0;
 
-	if (!$eventObj->canShow()) {
+	if (!$fact->canShow()) {
 		return;
 	}
 
-	if (!is_null($eventObj->getFamilyId())) {
-		$pid = $eventObj->getFamilyId();
-	} elseif ($eventObj->getParentObject()) {
-		$pid = $eventObj->getParentObject()->getXref();
+	if (!is_null($fact->getFamilyId())) {
+		$pid = $fact->getFamilyId();
+	} elseif ($fact->getParentObject()) {
+		$pid = $fact->getParentObject()->getXref();
 	} else {
 		$pid = '';
 	}
 
 	// Some facts don't get printed here ...
-	switch ($eventObj->getTag()) {
+	switch ($fact->getTag()) {
 	case 'NOTE':
-		print_main_notes($eventObj->getGedcomRecord(), 1, $pid, $eventObj->getLineNumber(), !$eventObj->canEdit());
+		print_main_notes($fact->getGedcomRecord(), 1, $pid, $fact->getLineNumber(), !$fact->canEdit());
 		return;
 	case 'SOUR':
-		print_main_sources($eventObj->getGedcomRecord(), 1, $pid, $eventObj->getLineNumber(), !$eventObj->canEdit());
+		print_main_sources($fact->getGedcomRecord(), 1, $pid, $fact->getLineNumber(), !$fact->canEdit());
 		return;
 	case 'OBJE':
 		// These are printed separately, after all other facts
@@ -69,37 +76,37 @@ function print_fact(WT_Event $eventObj) {
 		return;
 	default:
 		// Hide unrecognised/custom tags?
-		if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($eventObj->getTag())) {
+		if ($HIDE_GEDCOM_ERRORS && !WT_Gedcom_Tag::isTag($fact->getTag())) {
 			return;
 		}
 		break;
 	}
 
 	// Who is this fact about?  Need it to translate fact label correctly
-	if (preg_match('/2 ASSO @('.WT_REGEX_XREF.')@/', $eventObj->getGedcomRecord(), $match)) {
+	if (preg_match('/2 ASSO @('.WT_REGEX_XREF.')@/', $fact->getGedcomRecord(), $match)) {
 		// Event of close relative
 		$label_person=WT_Person::getInstance($match[1]);
-	} else if (preg_match('/2 _WTS @('.WT_REGEX_XREF.')@/', $eventObj->getGedcomRecord(), $match)) {
+	} else if (preg_match('/2 _WTS @('.WT_REGEX_XREF.')@/', $fact->getGedcomRecord(), $match)) {
 		// Event of close relative
 		$label_person=WT_Person::getInstance($match[1]);
-	} else if ($eventObj->getParentObject() instanceof WT_Family) {
+	} else if ($fact->getParentObject() instanceof WT_Family) {
 		// Family event
-		$husb = $eventObj->getParentObject()->getHusband();
-		$wife = $eventObj->getParentObject()->getWife();
+		$husb = $fact->getParentObject()->getHusband();
+		$wife = $fact->getParentObject()->getWife();
 		if (empty($wife) && !empty($husb)) $label_person=$husb;
 		else if (empty($husb) && !empty($wife)) $label_person=$wife;
-		else $label_person=$eventObj->getParentObject();
+		else $label_person=$fact->getParentObject();
 	} else {
 		// The actual person
-		$label_person=$eventObj->getParentObject();
+		$label_person=$fact->getParentObject();
 	}
 
 	$styleadd="";
-	if (strpos($eventObj->getGedcomRecord(), "WT_NEW")!==false) $styleadd="change_new";
-	if (strpos($eventObj->getGedcomRecord(), "WT_OLD")!==false) $styleadd="change_old";
+	if (strpos($fact->getGedcomRecord(), "WT_NEW")!==false) $styleadd="change_new";
+	if (strpos($fact->getGedcomRecord(), "WT_OLD")!==false) $styleadd="change_old";
 
-	if ($eventObj->getLineNumber()<1) $styleadd='rela'; // not editable
-	if ($eventObj->getLineNumber()==-1) $styleadd='histo'; // historical facts
+	if ($fact->getLineNumber()<1) $styleadd='rela'; // not editable
+	if ($fact->getLineNumber()==-1) $styleadd='histo'; // historical facts
 
 	if ($styleadd=='') {
 		$rowID = 'row_'.floor(microtime()*1000000);
@@ -108,13 +115,13 @@ function print_fact(WT_Event $eventObj) {
 	}
 
 	// Does this fact have a type?
-	if (preg_match('/\n2 TYPE (.+)/', $eventObj->getGedcomRecord(), $match)) {
+	if (preg_match('/\n2 TYPE (.+)/', $fact->getGedcomRecord(), $match)) {
 		$type=$match[1];
 	} else {
 		$type='';
 	}
 
-	switch ($eventObj->getTag()) {
+	switch ($fact->getTag()) {
 	case 'EVEN':
 	case 'FACT':
 		if (WT_Gedcom_Tag::isTag($type)) {
@@ -127,7 +134,7 @@ function print_fact(WT_Event $eventObj) {
 			$type=''; // Do not print this again
 		} else {
 			// An unspecified fact/event
-			$label=WT_Gedcom_Tag::getLabel($eventObj->getTag(), $label_person);
+			$label=WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
 		}
 		break;
 	case 'MARR':
@@ -137,12 +144,12 @@ function print_fact(WT_Event $eventObj) {
 			$label=WT_Gedcom_Tag::getLabel('MARR_'.$type, $label_person);
 			$type=''; // Do not print this again
 		} else {
-			$label=WT_Gedcom_Tag::getLabel($eventObj->getTag(), $label_person);
+			$label=WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
 		}
 		break;
 	default:
 		// Normal fact/event
-		$label=WT_Gedcom_Tag::getLabel($eventObj->getTag(), $label_person);
+		$label=WT_Gedcom_Tag::getLabel($fact->getTag(), $label_person);
 		break;
 	}
 
@@ -150,36 +157,36 @@ function print_fact(WT_Event $eventObj) {
 	echo '<td class="descriptionbox ', $styleadd, ' width20">';
 
 	if ($SHOW_FACT_ICONS) {
-		echo $eventObj->Icon(), ' ';
+		echo $fact->Icon(), ' ';
 	}
 
-	if (WT_USER_CAN_EDIT && $styleadd!='change_old' && $eventObj->getLineNumber()>0 && $eventObj->canEdit()) {
+	if (WT_USER_CAN_EDIT && $styleadd!='change_old' && $fact->getLineNumber()>0 && $fact->canEdit()) {
 		echo
-			'<a onclick="return edit_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Edit'), '">',  $label,  '</a>',
+			'<a onclick="return edit_record(\'', $pid, '\', ', $fact->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Edit'), '">',  $label,  '</a>',
 			'<div class="editfacts">',
-			'<div class="editlink"><a class="editicon" onclick="return edit_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></a></div>',
-			'<div class="copylink"><a class="copyicon" onclick="return copy_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Copy'), '"><span class="link_text">', WT_I18N::translate('Copy'), '</span></a></div>',
-			'<div class="deletelink"><a class="deleteicon" onclick="return delete_record(\'', $pid, '\', ', $eventObj->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>',
+			'<div class="editlink"><a class="editicon" onclick="return edit_record(\'', $pid, '\', ', $fact->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></a></div>',
+			'<div class="copylink"><a class="copyicon" onclick="return copy_record(\'', $pid, '\', ', $fact->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Copy'), '"><span class="link_text">', WT_I18N::translate('Copy'), '</span></a></div>',
+			'<div class="deletelink"><a class="deleteicon" onclick="return delete_record(\'', $pid, '\', ', $fact->getLineNumber(), ');" href="javascript:;" title="', WT_I18N::translate('Delete'), '"><span class="link_text">', WT_I18N::translate('Delete'), '</span></a></div>',
 			'</div>';
 	} else {
 		echo $label;
 	}
 
-	switch ($eventObj->getTag()) {
+	switch ($fact->getTag()) {
 	case '_BIRT_CHIL':
-		echo '<br />', WT_I18N::translate('#%d', $n_chil++);
+		echo '<br />', WT_I18N::translate('#%d', ++$n_chil);
 		break;
 	case '_BIRT_GCHI':
 	case '_BIRT_GCH1':
 	case '_BIRT_GCH2':
-		echo '<br />', WT_I18N::translate('#%d', $n_gchi++);
+		echo '<br />', WT_I18N::translate('#%d', ++$n_gchi);
 		break;
 	}
 
 	echo '</td><td class="optionbox ', $styleadd, ' wrap">';
 
 	// Print the spouse and family of this fact/event
-	if (preg_match('/_WTS @(.*)@/', $eventObj->getGedcomRecord(), $match)) {
+	if (preg_match('/_WTS @(.*)@/', $fact->getGedcomRecord(), $match)) {
 		$spouse=WT_Person::getInstance($match[1]);
 		if ($spouse) {
 			echo ' <a href="', $spouse->getHtmlUrl(), '">';
@@ -199,12 +206,12 @@ function print_fact(WT_Event $eventObj) {
 	}
 
 	// Print the value of this fact/event
-	switch ($eventObj->getTag()) {
+	switch ($fact->getTag()) {
 	case 'ADDR':
-		print_address_structure($eventObj->getGedcomRecord(), 1);
+		print_address_structure($fact->getGedcomRecord(), 1);
 		break;
 	case 'AFN':
-		echo '<div class="field"><a href="http://www.familysearch.org/Eng/Search/customsearchresults.asp?LDS=0&file_number=', rawurlencode($eventObj->getDetail()), '" target="new">', htmlspecialchars($eventObj->getDetail()), '</a></div>';
+		echo '<div class="field"><a href="http://www.familysearch.org/Eng/Search/customsearchresults.asp?LDS=0&file_number=', rawurlencode($fact->getDetail()), '" target="new">', htmlspecialchars($fact->getDetail()), '</a></div>';
 		break;
 	case 'ASSO':
 		// we handle this later, in print_asso_rela_record()
@@ -212,21 +219,21 @@ function print_fact(WT_Event $eventObj) {
 	case 'PHON': // Not valid as a level 1 tag...
 	case 'FAX': // Not valid as a level 1 tag...
 		// These tags always(?) contain LTR data.  Make sure they render correctly on RTL pages.
-		echo '<div class="field"><span dir="ltr">', htmlspecialchars($eventObj->getDetail()), '</span></div>';
+		echo '<div class="field"><span dir="ltr">', htmlspecialchars($fact->getDetail()), '</span></div>';
 		break;
 	case 'EMAIL':
 	case 'EMAI':
 	case '_EMAIL':
-		echo '<div class="field"><a href="mailto:', htmlspecialchars($eventObj->getDetail()), '">', htmlspecialchars($eventObj->getDetail()), '</a></div>';
+		echo '<div class="field"><a href="mailto:', htmlspecialchars($fact->getDetail()), '">', htmlspecialchars($fact->getDetail()), '</a></div>';
 		break;
 	case 'FILE':
 		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
-			echo '<div class="field">', htmlspecialchars($eventObj->getDetail()), '</div>';
+			echo '<div class="field">', htmlspecialchars($fact->getDetail()), '</div>';
 		}
 		break;
 	case 'RESN':
 		echo '<div class="field">';
-		switch ($eventObj->getDetail()) {
+		switch ($fact->getDetail()) {
 		case 'none':
 			// Note: "1 RESN none" is not valid gedcom, and the GUI will not let you add it.
 			// However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
@@ -242,28 +249,28 @@ function print_fact(WT_Event $eventObj) {
 			echo '<img src="images/RESN_locked.gif" align="middle"/> ', WT_I18N::translate('Only managers can edit');
 			break;
 		default:
-			echo htmlspecialchars($eventObj->getDetail());
+			echo htmlspecialchars($fact->getDetail());
 			break;
 		}
 		echo '</div>';
 		break;
 	case 'REPO':
-		if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $eventObj->getDetail(), $match)) {
+		if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $fact->getDetail(), $match)) {
 			print_repository_record($match[1]);
 		} else {
-			echo '<div class="error">', htmlspecialchars($eventObj->getDetail()), '</div>';
+			echo '<div class="error">', htmlspecialchars($fact->getDetail()), '</div>';
 		}
 		break;
 	case 'URL':
 	case 'WWW':
-		echo '<div class="field"><a href="', htmlspecialchars($eventObj->getDetail()), '">', htmlspecialchars($eventObj->getDetail()), '</a></div>';
+		echo '<div class="field"><a href="', htmlspecialchars($fact->getDetail()), '">', htmlspecialchars($fact->getDetail()), '</a></div>';
 		break;
 	case 'TEXT': // 0 SOUR / 1 TEXT
-		echo '<div class="field">', nl2br(htmlspecialchars($eventObj->getDetail())), '</div>';
+		echo '<div class="field">', nl2br(htmlspecialchars($fact->getDetail())), '</div>';
 		break;
 	default:
 		// Display the value for all other facts/events
-		switch ($eventObj->getDetail()) {
+		switch ($fact->getDetail()) {
 		case '':
 			// Nothing to display
 			break;
@@ -275,15 +282,15 @@ function print_fact(WT_Event $eventObj) {
 			// Do not display "Yes".
 			break;
 		default:
-			if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $eventObj->getDetail(), $match)) {
+			if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $fact->getDetail(), $match)) {
 				$target=WT_GedcomRecord::getInstance($match[1]);
 				if ($target) {
 					echo '<div><a href="', $target->getHtmlUrl(), '">', $target->getFullName(), '</a></div>';
 				} else {
-					echo '<div class="error">', htmlspecialchars($eventObj->getDetail()), '</div>';
+					echo '<div class="error">', htmlspecialchars($fact->getDetail()), '</div>';
 				}
 			} else {
-				echo '<div class="field">', htmlspecialchars($eventObj->getDetail()), '</div>';
+				echo '<div class="field">', htmlspecialchars($fact->getDetail()), '</div>';
 			}
 			break;
 		}
@@ -297,17 +304,17 @@ function print_fact(WT_Event $eventObj) {
 	}
 
 	// Print the date of this fact/event
-	echo format_fact_date($eventObj, true, true);
+	echo format_fact_date($fact, true, true);
 	
 	// Print the place of this fact/event
-	echo '<div class="place">', format_fact_place($eventObj, true, true, true), '</div>';
-	print_address_structure($eventObj->getGedcomRecord(), 2);
+	echo '<div class="place">', format_fact_place($fact, true, true, true), '</div>';
+	print_address_structure($fact->getGedcomRecord(), 2);
 
 	// Print the associates of this fact/event
-	print_asso_rela_record($eventObj);
+	print_asso_rela_record($fact);
 
 	// Print any other "2 XXXX" attributes, in the order in which they appear.
-	preg_match_all('/\n2 ('.WT_REGEX_TAG.') (.+)/', $eventObj->getGedcomRecord(), $matches, PREG_SET_ORDER);
+	preg_match_all('/\n2 ('.WT_REGEX_TAG.') (.+)/', $fact->getGedcomRecord(), $matches, PREG_SET_ORDER);
 	foreach ($matches as $match) {
 		switch ($match[1]) {
 		case 'DATE':
@@ -345,11 +352,11 @@ function print_fact(WT_Event $eventObj) {
 				$events[]=WT_Gedcom_Tag::getLabel($event);
 			}
 			echo WT_Gedcom_Tag::getLabelValue('EVEN', implode(', ', $events));
-			if (preg_match('/\n3 DATE (.+)/', $eventObj->getGedcomRecord(), $date_match)) {
+			if (preg_match('/\n3 DATE (.+)/', $fact->getGedcomRecord(), $date_match)) {
 				$date=new WT_Date($date_match[1]);
 				echo WT_Gedcom_Tag::getLabelValue('DATE', $date->Display());
 			}
-			if (preg_match('/\n3 PLAC (.+)/', $eventObj->getGedcomRecord(), $plac_match)) {
+			if (preg_match('/\n3 PLAC (.+)/', $fact->getGedcomRecord(), $plac_match)) {
 				echo WT_Gedcom_Tag::getLabelValue('PLAC', $plac_match[1]);
 			}
 			break;
@@ -360,7 +367,7 @@ function print_fact(WT_Event $eventObj) {
 			} else {
 				echo WT_Gedcom_Tag::getLabelValue('FAMC', '<span class="error">'.$match[2].'</span>');
 			}
-			if (preg_match('/\n3 ADOP (HUSB|WIFE)/', $eventObj->getGedcomRecord(), $match)) {
+			if (preg_match('/\n3 ADOP (HUSB|WIFE)/', $fact->getGedcomRecord(), $match)) {
 				echo WT_Gedcom_Tag::getLabelValue('ADOP', $match[1]);
 			} else {
 				echo WT_Gedcom_Tag::getLabelValue('ADOP', WT_Gedcom_Tag::getLabel('HUSB').'+'.WT_Gedcom_Tag::getLabel('WIFE'));
@@ -400,18 +407,18 @@ function print_fact(WT_Event $eventObj) {
 			break;
 		default:
 			if (!$HIDE_GEDCOM_ERRORS || WT_Gedcom_Tag::isTag($match[1])) {
-				echo WT_Gedcom_Tag::getLabelValue($eventObj->getTag().':'.$match[1], htmlspecialchars($match[2]));
+				echo WT_Gedcom_Tag::getLabelValue($fact->getTag().':'.$match[1], htmlspecialchars($match[2]));
 			}
 			break;
 		}
 	}
 	echo '<br/>';
 	// -- find source for each fact
-	print_fact_sources($eventObj->getGedcomRecord(), 2);
+	print_fact_sources($fact->getGedcomRecord(), 2);
 	// -- find notes for each fact
-	print_fact_notes($eventObj->getGedcomRecord(), 2);
+	print_fact_notes($fact->getGedcomRecord(), 2);
 	//-- find media objects
-	print_media_links($eventObj->getGedcomRecord(), 2, $pid);
+	print_media_links($fact->getGedcomRecord(), 2, $pid);
 	echo '</td></tr>';
 }
 //------------------- end print fact function

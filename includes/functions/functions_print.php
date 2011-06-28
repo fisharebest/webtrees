@@ -1254,17 +1254,16 @@ function format_parents_age($pid, $birth_date=null) {
 /**
 * print fact DATE TIME
 *
-* @param Event $eventObj Event to print the date for
+* @param Event $event Event to print the date for
 * @param boolean $anchor option to print a link to calendar
 * @param boolean $time option to print TIME value
 */
-function format_fact_date(&$eventObj, $anchor=false, $time=false) {
+function format_fact_date(WT_Event $event, $anchor=false, $time=false) {
 	global $pid, $SEARCH_SPIDER;
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
-	if (!is_object($eventObj)) trigger_error("Must use Event object", E_USER_WARNING);
-	$factrec = $eventObj->getGedcomRecord();
+	$factrec = $event->getGedcomRecord();
 	$html='';
 	// Recorded age
 	$fact_age=get_gedcom_value('AGE', 2, $factrec);
@@ -1287,8 +1286,8 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 				$html.='<span class="date"> - '.$tmatch[1].'</span>';
 			}
 		}
-		$fact = $eventObj->getTag();
-		$person = $eventObj->getParentObject();
+		$fact = $event->getTag();
+		$person = $event->getParentObject();
 		if (!is_null($person) && $person->getType()=='INDI') {
 			// age of parents at child birth
 			if ($fact=='BIRT') {
@@ -1383,19 +1382,15 @@ function format_fact_date(&$eventObj, $anchor=false, $time=false) {
 /**
 * print fact PLACe TEMPle STATus
 *
-* @param Event $eventObj gedcom fact record
+* @param Event $event gedcom fact record
 * @param boolean $anchor option to print a link to placelist
 * @param boolean $sub option to print place subrecords
 * @param boolean $lds option to print LDS TEMPle and STATus
 */
-function format_fact_place(&$eventObj, $anchor=false, $sub=false, $lds=false) {
+function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=false) {
 	global $SHOW_PEDIGREE_PLACES, $SEARCH_SPIDER;
-	if ($eventObj==null) return '';
-	if (!is_object($eventObj)) {
-		trigger_error("Object was not sent in, please use Event object", E_USER_WARNING);
-		$factrec = $eventObj;
-	}
-	else $factrec = $eventObj->getGedcomRecord();
+
+	$factrec = $event->getGedcomRecord();
 	$html='';
 
 	$ct = preg_match("/2 PLAC (.*)/", $factrec, $match);

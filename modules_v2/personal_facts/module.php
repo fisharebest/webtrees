@@ -51,7 +51,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $FACT_COUNT, $EXPAND_RELATIVES_EVENTS, $n_chil, $n_gchi;
+		global $FACT_COUNT, $EXPAND_RELATIVES_EVENTS;
 
 		/*if (isset($_COOKIE['row_rela'])) $EXPAND_RELATIVES_EVENTS = ($_COOKIE['row_rela']);
 		if (isset($_COOKIE['row_histo'])) $EXPAND_HISTO_EVENTS = ($_COOKIE['row_histo']);
@@ -93,20 +93,18 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			<?php
 			}
 			$yetdied=false;
-			$n_chil=1;
-			$n_gchi=1;
-			foreach ($indifacts as $value) {
-				if (strstr(WT_EVENTS_DEAT, $value->getTag())) {
+			foreach ($indifacts as $fact) {
+				if (strstr(WT_EVENTS_DEAT, $fact->getTag())) {
 					$yetdied = true;
 				}
-				if (!is_null($value->getFamilyId())) {
+				if (!is_null($fact->getFamilyId())) {
 					if (!$yetdied) {
-						print_fact($value);
+						print_fact($fact, $this->controller->indi);
 					}
 				} else {
 					//$reftags = array ('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID');// list of tags used in "Extra information" sidebar module
-					if (!in_array($value->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !array_key_exists('extra_info', WT_Module::getActiveModules())) {
-						print_fact($value);
+					if (!in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !array_key_exists('extra_info', WT_Module::getActiveModules())) {
+						print_fact($fact, $this->controller->indi);
 					}
 				}
 				$FACT_COUNT++;

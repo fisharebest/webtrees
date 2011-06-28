@@ -104,7 +104,7 @@ echo '<table class="facts_table">';
 
 $repositoryfacts=$controller->repository->getFacts();
 foreach ($repositoryfacts as $fact) {
-	print_fact($fact);
+	print_fact($fact, $controller->repository);
 }
 
 // Print media

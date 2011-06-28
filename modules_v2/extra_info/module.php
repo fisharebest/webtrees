@@ -69,9 +69,9 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if (count($indifacts)==0) {
 				echo WT_I18N::translate('There are no Facts for this individual.');
 			}
-			foreach ($indifacts as $value) {
-				if (in_array($value->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
-					print_fact($value);
+			foreach ($indifacts as $fact) {
+				if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
+					print_fact($fact, $this->controller->indi);
 				}
 				$FACT_COUNT++;
 			}
