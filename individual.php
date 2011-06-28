@@ -101,18 +101,14 @@ Zend_Session::writeClose();
 define('WT_JQUERY_LOADED', 1);
 
 $linkToID=$controller->pid; // -- Tell addmedia.php what to link to
-echo WT_JS_START; ?>
-// javascript function to open a window with the raw gedcom in it
-function show_gedcom_record(shownew) {
-	fromfile="";
-	if (shownew=="yes") fromfile='&fromfile=1';
-	var recwin = window.open("gedrecord.php?pid=<?php echo $controller->pid; ?>"+fromfile, "_blank", "top=50,left=50,width=600,height=400,scrollbars=1,scrollable=1,resizable=1");
-}
-<?php if (WT_USER_CAN_EDIT) { ?>
-function showchanges() {
-	window.location = '<?php echo $controller->indi->getRawUrl(); ?>';
-}
-<?php } ?>
+
+echo WT_JS_START;
+echo 'function show_gedcom_record() {';
+echo ' var recwin=window.open("gedrecord.php?pid=', $controller->indi->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
+echo '}';
+echo 'function showchanges() { window.location="'.$controller->indi->getRawUrl().'"; }';
+
+?>
 
 jQuery('#main').addClass('use-sidebar'); // Show
 jQuery('#main').removeClass('use-sidebar'); // Hide

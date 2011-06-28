@@ -92,11 +92,9 @@ $linkToID=$controller->rid; // Tell addmedia.php what to link to
 
 echo WT_JS_START;
 echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->rid, '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
+echo ' var recwin=window.open("gedrecord.php?pid=', $controller->repository->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
 echo '}';
-echo 'function showchanges() {';
-echo ' window.location="repo.php?rid=', $controller->rid, '"';
-echo '}';
+echo 'function showchanges() { window.location="', $controller->repository->getRawUrl(), '"; }';
 echo WT_JS_END;
 
 echo '<table class="list_table"><tr><td>';

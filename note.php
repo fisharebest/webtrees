@@ -92,11 +92,9 @@ $linkToID=$controller->nid; // Tell addmedia.php what to link to
 
 echo WT_JS_START;
 echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->nid, '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
+echo ' var recwin=window.open("gedrecord.php?pid=', $controller->note->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
 echo '}';
-echo 'function showchanges() {';
-echo ' window.location="note.php?nid=', $controller->nid, '"';
-echo '}';
+echo 'function showchanges() { window.location="', $controller->note->getRawUrl(), '"; }';
 echo 'function edit_note() {';
 echo ' var win04 = window.open("edit_interface.php?action=editnote&pid=', $linkToID, '", "win04", "top=70, left=70, width=620, height=500, resizable=1, scrollbars=1");';
 echo ' if (window.focus) {win04.focus();}';

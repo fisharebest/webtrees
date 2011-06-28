@@ -95,19 +95,14 @@ if (WT_USE_LIGHTBOX) {
 $PEDIGREE_FULL_DETAILS = "1"; // Override GEDCOM configuration
 $show_full = "1";
 
+echo WT_JS_START;
+echo 'function show_gedcom_record() {';
+echo ' var recwin=window.open("gedrecord.php?pid=', $controller->family->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
+echo '}';
+echo 'function showchanges() { window.location="'.$controller->family->getRawUrl().'"; }';
+echo WT_JS_END;
+
 ?>
-<script type="text/javascript">
-<!--
-	function show_gedcom_record(shownew) {
-		fromfile="";
-		if (shownew=="yes") fromfile='&fromfile=1';
-		var recwin = window.open("gedrecord.php?pid=<?php echo $controller->getFamilyID(); ?>"+fromfile, "_blank", "top=50, left=50, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
-	}
-	function showchanges() {
-		window.location = '<?php echo $controller->family->getRawUrl(); ?>';
-	}
-//-->
-</script>
 <table align="center" width="95%">
 	<tr>
 		<td>

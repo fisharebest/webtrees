@@ -85,6 +85,13 @@ if ($controller->mediaobject && $controller->mediaobject->canDisplayDetails()) {
 // We have finished writing session data, so release the lock
 Zend_Session::writeClose();
 
+echo WT_JS_START;
+echo 'function show_gedcom_record() {';
+echo ' var recwin=window.open("gedrecord.php?pid=', $controller->mediaobject->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
+echo '}';
+echo 'function showchanges() { window.location="'.$controller->mediaobject->getRawUrl().'"; }';
+echo WT_JS_END;
+
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
