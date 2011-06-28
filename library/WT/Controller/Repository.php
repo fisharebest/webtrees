@@ -117,9 +117,9 @@ class WT_Controller_Repository extends WT_Controller_Base {
 	*/
 	function getPageTitle() {
 		if ($this->repository) {
-			return $this->repository->getFullName()." - ".WT_I18N::translate('Repository information');
+			return $this->repository->getFullName();
 		} else {
-			return WT_I18N::translate('Unable to find record with ID');
+			return WT_I18N::translate('Repository');
 		}
 	}
 

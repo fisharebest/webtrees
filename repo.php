@@ -31,7 +31,7 @@ require WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Repository();
 $controller->init();
 
-if ($controller->repository && $controller->repository->canDisplayName()) {
+if ($controller->repository && $controller->repository->canDisplayDetails()) {
 	print_header($controller->getPageTitle());
 	if ($controller->repository->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {

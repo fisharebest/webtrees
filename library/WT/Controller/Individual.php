@@ -204,10 +204,14 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @return string the title of the page to go in the <title> tags
 	*/
 	function getPageTitle() {
-		if ($this->indi->canDisplayDetails()) {
-			return $this->indi->getFullName().' '.$this->indi->getLifespan();
+		if ($this->indi) {
+			if ($this->indi->canDisplayDetails()) {
+				return $this->indi->getFullName().' '.$this->indi->getLifespan();
+			} else {
+				return $this->indi->getFullName();
+			}
 		} else {
-			return $this->indi->getFullName();
+			return WT_I18N::translate('Individual');
 		}
 	}
 

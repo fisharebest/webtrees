@@ -32,7 +32,7 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller = new WT_Controller_Media();
 $controller->init();
 
-if ($controller->mediaobject && $controller->mediaobject->canDisplayName()) {
+if ($controller->mediaobject && $controller->mediaobject->canDisplayDetails()) {
 	print_header($controller->getPageTitle());
 	if ($controller->mediaobject->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {

@@ -31,7 +31,7 @@ require './includes/session.php';
 $controller = new WT_Controller_Family();
 $controller->init();
 
-if ($controller->family && $controller->family->canDisplayName()) {
+if ($controller->family && $controller->family->canDisplayDetails()) {
 	print_header($controller->getPageTitle());
 	if ($controller->family->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {

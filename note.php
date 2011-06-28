@@ -31,7 +31,7 @@ require WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Note();
 $controller->init();
 
-if ($controller->note && $controller->note->canDisplayName()) {
+if ($controller->note && $controller->note->canDisplayDetails()) {
 	print_header($controller->getPageTitle());
 	if ($controller->note->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {

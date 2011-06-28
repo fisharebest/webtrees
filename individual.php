@@ -37,7 +37,7 @@ $nonfamfacts = array(/*'NCHI',*/ 'UID', '');
 $controller=new WT_Controller_Individual();
 $controller->init();
 
-if ($controller->indi && $controller->indi->canDisplayName()) {
+if ($controller->indi && $controller->indi->canDisplayDetails()) {
 	print_header($controller->getPageTitle());
 	if ($controller->indi->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
@@ -80,6 +80,13 @@ if ($controller->indi && $controller->indi->canDisplayName()) {
 	} elseif ($controller->reject_success) {
 		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
 	}
+} elseif ($controller->indi && $controller->indi->canDisplayName()) {
+	// Just show the name.
+	print_header($controller->getPageTitle());
+	echo '<h2>', $controller->indi->getFullName(), '</h2>';
+	echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this individual are private.'), '</p>';
+	print_footer();
+	exit;
 } else {
 	print_header(WT_I18N::translate('Individual'));
 	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
@@ -261,13 +268,6 @@ if ($controller->indi->canDisplayDetails()) {
 }
 echo '</div>';// close #indi_header
 // ===================================== main content tabs
-if (!$controller->indi->canDisplayDetails()) {
-	echo '<div id="tabs">';
-	print_privacy_error();
-	echo '</div>'; //close #tabs
-	print_footer();
-	exit;
-}
 foreach ($controller->tabs as $tab) {
 	echo $tab->getPreLoadContent();
 }

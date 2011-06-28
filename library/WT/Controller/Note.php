@@ -117,9 +117,9 @@ class WT_Controller_Note extends WT_Controller_Base {
 	*/
 	function getPageTitle() {
 		if ($this->note) {
-			return $this->note->getFullName()." - ".WT_I18N::translate('Shared Note Information');
+			return $this->note->getFullName();
 		} else {
-			return WT_I18N::translate('Unable to find record with ID');
+			return WT_I18N::translate('Note');
 		}
 	}
 

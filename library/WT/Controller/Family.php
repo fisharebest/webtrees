@@ -146,7 +146,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 		if ($this->family) {
 			return $this->family->getFullName();
 		} else {
-			return WT_I18N::translate('Unable to find record with ID');
+			return WT_I18N::translate('Family');
 		}
 	}
 
