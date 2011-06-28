@@ -113,15 +113,19 @@ if ($SEARCH_SPIDER) {
 	'<div id="optionsmenu">',
 		'<div id="theme-menu">',
 			'<ul class="makeMenu">';
-			if (get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN') && get_site_setting('ALLOW_USER_THEMES')) {
-				echo WT_MenuBar::getThemeMenu()->getMenuAsList();
-			}
+	$menu=WT_MenuBar::getThemeMenu();
+	if ($menu) {
+		echo $menu->getMenuAsList();
+	}
 	echo
 			'</ul>',
 		'</div>',
 		'<div id="fav-menu">',
 			'<ul class="makeMenu">';
-			echo WT_MenuBar::getFavoritesMenu()->getMenuAsList();
+	$menu=WT_MenuBar::getFavoritesMenu();
+	if ($menu) {
+		echo $menu->getMenuAsList();
+	}
 	echo
 			'</ul>',
 		'</div>',
@@ -141,9 +145,9 @@ if ($SEARCH_SPIDER) {
 	echo
 		'<div id="lang-menu" class="makeMenu">',
 			'<ul class="makeMenu">';
-				$language_menu=WT_MenuBar::getLanguageMenu();
-				if ($language_menu) {
-					echo $language_menu->getMenuAsList();
+				$menu=WT_MenuBar::getLanguageMenu();
+				if ($menu) {
+					echo $menu->getMenuAsList();
 				}
 	echo 
 			'</ul>',
