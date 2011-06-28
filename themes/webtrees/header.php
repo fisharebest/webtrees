@@ -85,17 +85,11 @@ if ($view!='simple') {
 		}
 		echo '</li>';
 		$menu=WT_MenuBar::getFavoritesMenu();
-		if ($menu) {
-			echo $menu->GetMenuAsList();
-		}
+			if ($menu) {echo $menu->GetMenuAsList();}
 		$menu=WT_MenuBar::getThemeMenu();
-		if ($menu) {
-			echo $menu->GetMenuAsList();
-		}
+			if ($menu) {echo $menu->GetMenuAsList();}
 		$menu=WT_MenuBar::getLanguageMenu();
-		if ($menu) {
-			echo $menu->GetMenuAsList();
-		}
+			if ($menu) {echo $menu->GetMenuAsList();}
 		echo '</ul><div class="title">';
 		print_gedcom_title_link(true);
 		echo
@@ -104,8 +98,8 @@ if ($view!='simple') {
 			'<form action="search.php" method="post">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
-			'<input type="text" name="query" size="25" value="', WT_I18N::translate('Search'), '"',
-				'onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();"',
+			'<input type="text" name="query" size="25" value="', WT_I18N::translate('Search'), '" ',
+				'onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" ',
 				'onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
 			'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
 			'</form>',
