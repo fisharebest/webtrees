@@ -74,6 +74,10 @@ if ($controller->family && $controller->family->canDisplayDetails()) {
 	} elseif ($controller->reject_success) {
 		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
 	}
+} elseif ($controller->family && $SHOW_PRIVATE_RELATIONSHIPS) {
+	print_header($controller->getPageTitle());
+	// Continue - to display the children/parents/grandparents.
+	// We'll check for showing the details again later
 } else {
 	print_header(WT_I18N::translate('Family'));
 	echo '<p class="ui-state-error">', WT_I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
@@ -151,8 +155,13 @@ $show_full = "1";
 				</tr>
 				<tr>
 					<td colspan="2">
-						<br /><hr />
-						<?php print_family_facts($controller->family); ?>
+						<?php
+							if ($controller->family->canDisplayDetails()) {
+								print_family_facts($controller->family);
+							} else {
+								echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this family are private.'), '</p>';
+							}
+						?>
 					</td>
 				</tr>
 			</table>
