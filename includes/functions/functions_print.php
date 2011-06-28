@@ -1134,7 +1134,7 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 /**
 * print ASSO RELA information from an event
 */
-function print_asso_rela_record($event) {
+function print_asso_rela_record(WT_Event $event) {
 	// To whom is this record an assocate?
 	if ($event->getParentObject() instanceof WT_Person) {
 		$associates=array($event->getParentObject());
@@ -1167,7 +1167,7 @@ function print_asso_rela_record($event) {
 					$label=WT_Gedcom_Code_Rela::getValue($rela, $person);
 				} else {
 					// Generate an automatic RELA
-					$label=get_relationship_name(get_relationship($associate->getXref(), $person->getXref(), true, 4));
+					$label=get_relationship_name(get_relationship($associate->getXref(), $person->getXref(), true, 4, true));
 				}
 				if (!$label) {
 					$label=WT_I18N::translate('Relationships');
