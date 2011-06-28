@@ -141,14 +141,6 @@ print_main_media($controller->nid);
 // new fact link
 if ($controller->note->canEdit()) {
 	print_add_new_fact($controller->nid, $notefacts, 'NOTE');
-	// new media
-	echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, '">';
-	echo WT_I18N::translate('Add media'), help_link('add_media');
-	echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
-	echo '<a href="javascript:;" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=', $controller->nid, '\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Add a new media object'), '</a>';
-	echo '<br />';
-	echo '<a href="javascript:;" onclick="window.open(\'inverselink.php?linktoid=', $controller->nid, '&linkto=note\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Link to an existing media object'), '</a>';
-	echo '</td></tr>';
 }
 echo '</table><br /><br /></td></tr><tr class="center"><td colspan="2">';
 
