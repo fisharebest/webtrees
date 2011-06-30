@@ -191,7 +191,9 @@ $known_spiders = array(
 	'Ask Jeeves',
 	'Mediapartners-Google',
 	'Feedfetcher-Google',
-	'Twiceler'
+	'Twiceler',
+	'YandexBot',   // Popular Russian/cyrillic search engine
+	'Baiduspider', // Popular Chinese search engine
 );
 
 // We overlay the following name with carefully selected characters.
