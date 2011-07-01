@@ -1714,7 +1714,7 @@ html[dir='rtl'] .use-sidebar #separator {background:#99c2ff url('images/general_
 .flyout2 {color:#000000;	text-align:left;margin-top:-2px; left:40px; padding:3px;}
 .flyout2 a:hover{color:#ff0000;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
-.flyout3, .flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
+.flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
 
 html[dir='rtl'] .flyout {text-align:right; left:210px;}
 html[dir='rtl'] .flyout2 {text-align:right; right:40px;}

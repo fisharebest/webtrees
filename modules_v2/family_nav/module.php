@@ -630,7 +630,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							if ($husb || $num>0) {
 								if ($husb) {
 									$person_parent="Yes";
-									$parentlinks .= "<a id=\"phusb\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
+									$parentlinks .= "<a class=\"flyout3\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
 									$parentlinks .= "&nbsp;".PrintReady($husb->getFullName());
 									$parentlinks .= "</a>";
 									$parentlinks .= "<br />";
@@ -642,7 +642,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							if ($wife || $num>0) {
 								if ($wife) {
 									$person_parent="Yes";
-									$parentlinks .= "<a id=\"pwife\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
+									$parentlinks .= "<a class=\"flyout3\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
 									$parentlinks .= "&nbsp;".PrintReady($wife->getFullName());
 									$parentlinks .= "</a>";
 									$parentlinks .= "<br />";
@@ -668,7 +668,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 								if ($husb || $num>0) {
 									if ($husb) {
 										$person_step="Yes";
-										$parentlinks .= "<a id=\"shusb\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
+										$parentlinks .= "<a class=\"flyout3\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
 										$parentlinks .= "&nbsp;".PrintReady($husb->getFullName());
 										$parentlinks .= "</a>";
 										$parentlinks .= "<br />";
@@ -681,7 +681,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 								if ($wife || $num>0) {
 									if ($wife) {
 										$person_step="Yes";
-										$parentlinks .= "<a id=\"swife\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
+										$parentlinks .= "<a class=\"flyout3\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
 										$parentlinks .= "&nbsp;".PrintReady($wife->getFullName());
 										$parentlinks .= "</a>";
 										$parentlinks .= "<br />";
@@ -700,7 +700,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						// Spouse ------------------------------
 						if ($spouse || $num>0) {
 							if ($spouse) {
-								$spouselinks .= "<a id=\"spouse\" href=\"".$spouse->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$spouse->getHtmlUrl()."');\">";
+								$spouselinks .= "<a class=\"flyout3\" href=\"".$spouse->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$spouse->getHtmlUrl()."');\">";
 								$spouselinks .= "&nbsp;".PrintReady($spouse->getFullName());
 								$spouselinks .= "</a>";
 								$spouselinks .= "<br />";

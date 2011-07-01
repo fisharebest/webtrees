@@ -1545,7 +1545,7 @@ html[dir='rtl'] .use-sidebar #separator {background: #DDD url('images/indi_sprit
 .flyout2 {color:#000000;	text-align:left;margin-top:-2px; left:40px; padding:3px;}
 .flyout2 a:hover{color:black;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
-.flyout3, .flyout3 a, #phusb, #pwife, #shusb, #swife, #spouse {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
+.flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
 .famnav_link {font-size:12px; padding:0px; width:100%;}
 
 html[dir='rtl'] .flyout {text-align:right; left:210px;}
