@@ -275,61 +275,20 @@ class WT_Event {
 		else return $data;
 	}
 
-/* Print a fact icon that varies by the decade, century, and subtype
- *
- * Many facts change over time.  Military uniforms, marriage dress, census forms.
- * This is a cutesy way to show the changes over time.  More icons need to be added
- * to the WT_THEME_DIR/images/facts/ directory with a form of nn00_TYPE.gif or nnn0_TYPE.gif.
- * A special case of nn00_OCCU_FARM.gif has been added to celebrate farmers and farm hands.
- * A special case of nn00_OCCU_HOUS.gif has been added for KEEPing HOUSe or HOUSe KEEPers.
- * Generic subtyping is done by storing the first four characters of the value of the
- * record in a filename.  "1 RELI Methodist" is RELI_METH.gif or 1900_RELI_METH.gif.
- * 1960__MILI_CONF.gif would be Confederate soldier, and 1860__MILI_UNIO.gif would be
- * the counterpart Union soldier.  The most specific match wins.
- * Examples: 1900_CENS.gif 1910_CENS.gif 1900_OCCU_FARM.gif 1800_OCCU_FARM.gif
- */
- function Icon() {
-		// Need the gregorian century/decade
-		$date=$this->getDate();
-
-		// If no year, use birth date as fallback
-		if ($date->date1->y==0 && is_object($this->parentObject) && $this->parentObject->getType()=='INDI')
-			$date=$this->parentObject->getEstimatedBirthDate();
-
-		$gdate=new WT_Date_Gregorian($date->MinDate());
-		$century=floor($gdate->y/100).'00';
-		$decade=floor($gdate->y/10).'0';
-
+	// Display an icon for this fact.
+	// Icons are held in a theme subfolder.  Not all themes provide icons.
+	function Icon() {
+		$dir=WT_THEME_DIR.'images/facts/';
 		$tag=$this->getTag();
-		$dir=WT_THEME_DIR."images/facts";
-
-		// Which era (century/decade)
-		$eras=array("{$decade}_", "{$century}_", '');
-
-		// Extra details, such as 1 OCCU Shoemaker or 1 RELI Catholic
-		$detail=trim(strtoupper(substr($this->getDetail(),0,4)));
-		if ($detail=='KEEP') // Keeping House => House Keeper
-			$detail='HOUS';
-		$details=array('_'.$detail, '');
-
-		// Variations for different sexes
-		if (is_object($this->parentObject) && $this->parentObject->getType()=='INDI')
-			$sexes=array('_'.$this->parentObject->getSex(), '');
-		else
-			$sexes=array('');
-
-		// Image naming structure is [era]tag[detail][sex].gif
-		// e.g. 1860_OCCU_FARM_M.gif for a male farm-worker in the 1860s
-		$image='';
-		foreach ($eras as $era)
-			foreach ($details as $detail)
-				foreach ($sexes as $sex)
-					if (file_exists("{$dir}/{$era}{$tag}{$detail}{$sex}.gif")) {
-						$label=$this->getLabel();
-						return "<img src=\"{$dir}/{$era}{$tag}{$detail}{$sex}.gif\" alt=\"{$label}\" title=\"{$label}\" align=\"middle\" />";
-					}
-
-		return '';
+		$file=$tag.'.png';
+		if (file_exists($dir.$file)) {
+			return '<img src="'.$dir.$file.'" title="'.WT_Gedcom_Tag::getLabel($tag).'" align="middle"/>';
+		} elseif (file_exists($dir.'NULL.png')) {
+			// Spacer image - for alignment - until we move to a sprite.
+			return '<img src="'.$dir.'NULL.png" align="middle" />';
+		} else {
+			return '';
+		}
 	}
 
 	/**
