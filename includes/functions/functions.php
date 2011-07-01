@@ -275,7 +275,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SHOW_PRIVATE_RELATIONSHIPS;   $SHOW_PRIVATE_RELATIONSHIPS   =get_gedcom_setting($ged_id, 'SHOW_PRIVATE_RELATIONSHIPS');
 	global $SHOW_REGISTER_CAUTION;        $SHOW_REGISTER_CAUTION        =get_gedcom_setting($ged_id, 'SHOW_REGISTER_CAUTION');
 	global $SHOW_RELATIVES_EVENTS;        $SHOW_RELATIVES_EVENTS        =get_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS');
-	global $SHOW_STATS;                   $SHOW_STATS                   =get_gedcom_setting($ged_id, 'SHOW_STATS');
 	global $SOURCE_ID_PREFIX;             $SOURCE_ID_PREFIX             =get_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX');
 	global $SURNAME_LIST_STYLE;           $SURNAME_LIST_STYLE           =get_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE');
 	global $THUMBNAIL_WIDTH;              $THUMBNAIL_WIDTH              =get_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH');

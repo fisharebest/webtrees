@@ -507,7 +507,7 @@ function print_simple_header($title) {
 
 // -- print the html to close the page
 function print_footer($view='full') {
-	global $SHOW_STATS, $footerfile, $printlink, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
+	global $footerfile, $printlink, $WT_IMAGES, $TEXT_DIRECTION, $footer_count;
 
 	// If the main script hasn't closed its session, do it now.
 	// If we rely on PHP to close the session, it may not do it
@@ -523,7 +523,7 @@ function print_footer($view='full') {
 			load_behaviour();  // @see function_print_lists.php
 		}
 	} else {
-		if ($SHOW_STATS || WT_DEBUG) {
+		if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
 			echo execution_stats();
 		}
 	}

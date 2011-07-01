@@ -1388,7 +1388,7 @@ echo WT_JS_START;?>
 							<?php echo WT_I18N::translate('Execution statistics'), help_link('SHOW_STATS'); ?>
 						</td>
 						<td>
-							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_STATS); ?>
+							<?php echo radio_buttons('NEW_SHOW_STATS', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')); ?>
 						</td>
 					</tr>
 					<tr>
