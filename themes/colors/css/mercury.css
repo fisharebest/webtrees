@@ -61,7 +61,7 @@ a:hover { color: red; text-decoration: none; }
 /*	Light Text Colors	*/
 
 .makeMenu li a { color: #707070;}
-.ui-state-active a:link { color: #707070;}
+ui-state-active a:link, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a { color: #707070;}
 
 /* jquery-ui.custom.css */
 .ui-state-active, .ui-widget-content .ui-state-active {background:#C6C8D2;} 
