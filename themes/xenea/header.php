@@ -183,6 +183,5 @@ if ($SEARCH_SPIDER) {
 		'</ul>',  // <ul id="main-menu">
 		'</div>', // <div id="topMenu">
 		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
-		'</div>', // <div id="header">
 		'<div id="content">';
 }
