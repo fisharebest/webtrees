@@ -92,7 +92,7 @@ if ($view!='simple') {
 	
 	'<span class="hlogin">';
 	if (WT_USER_ID) {
-		echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a> | ', logout_link();
+		echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a> | ', logout_link();
 	} elseif (empty($SEARCH_SPIDER)) {
 		echo login_link();
 	}

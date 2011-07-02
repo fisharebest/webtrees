@@ -77,13 +77,12 @@ if ($view!='simple') {
 		);
 	} else {
 		// Options for real users
-		echo '<ul id="extra-menu" class="makeMenu"><li>';
+		echo '<ul id="extra-menu" class="makeMenu">';
 		if (WT_USER_ID) {
-			echo '<a href="edituser.php">', WT_I18N::translate('Logged in as '), ' (', WT_USER_NAME, ')</a>', logout_link();
+			echo '<li><a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
 		} else {
-			echo login_link();
+			echo '<li>', login_link(), '</li> ';
 		}
-		echo '</li>';
 		$menu=WT_MenuBar::getFavoritesMenu();
 			if ($menu) {echo $menu->GetMenuAsList();}
 		$menu=WT_MenuBar::getThemeMenu();

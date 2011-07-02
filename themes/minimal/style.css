@@ -54,7 +54,7 @@ a:hover	{
 /* -----Layout for top header ----- */
 
 .title {display: block; float: left; width: 40%;}
-.hlogin {display: block; float: left; width: 13%; padding-top: 5px; padding-left: 40px;}
+.hlogin {display: block; float: left; padding: 2px 20px;}
 .htheme {display: block; float: left; width: 10%; 	white-space: nowrap; }
 .htheme option { text-align:left; }
 .hsearch, .favorites_form {display: block; float: right;}
@@ -65,7 +65,7 @@ a:hover	{
 	z-index:2000;
 	*top:1.7em; /* For IE7 */
 }
-html[dir='rtl'] .title, html[dir='rtl'] .hlogin, html[dir='rtl'] .htheme {float: right; padding-left: 0px;}
+html[dir='rtl'] .title, html[dir='rtl'] .hlogin, html[dir='rtl'] .htheme {float: right;}
 html[dir='rtl'] .hsearch {float: left;}
 html[dir='rtl'] .favorites_form {
 	position:absolute; 
