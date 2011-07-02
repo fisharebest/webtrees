@@ -177,8 +177,9 @@ if ($SEARCH_SPIDER) {
 		echo color_theme_dropdown();
 		echo '</div>';
 	}
-	echo '</div>'; // topMenu
-echo '</div>'; // close header
+
+echo 
+	'</div>'; // close topMenu
 }
 // end header section -->
 ?>
