@@ -84,7 +84,7 @@ if (isset($reorder) && $reorder==1) {
 		// Popup Reorder Media
 		echo '<td class="width15 center wrap" valign="top">';
 		echo '<a href="javascript: reorder_media()">';
-		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media (window)'), '" alt="', WT_I18N::translate('Re-order media (window)'), '" /><br />';
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '" /><br />';
 		echo WT_I18N::translate('Re-order media (window)');
 		echo '</a>';
 		echo '</td>';
