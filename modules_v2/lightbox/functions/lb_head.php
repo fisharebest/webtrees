@@ -63,7 +63,7 @@ if (isset($reorder) && $reorder==1) {
 	echo '<br />';
 } else {
 	//Show Lightbox-Album header Links
-	if (WT_USER_IS_ADMIN) {
+	if (WT_USER_CAN_EDIT) {
 		echo '<table border="0" width="75%"><tr>';
 		// Add a new media object
 		echo '<td class="width15 center wrap" valign="top">';
@@ -79,6 +79,8 @@ if (isset($reorder) && $reorder==1) {
 		echo WT_I18N::translate('Link to an existing media object');
 		echo '</a>';
 		echo '</td>';
+	}
+	if (WT_USER_GEDCOM_ADMIN) {
 		// Popup Reorder Media
 		echo '<td class="width15 center wrap" valign="top">';
 		echo '<a href="javascript: reorder_media()">';
