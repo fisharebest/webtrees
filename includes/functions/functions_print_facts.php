@@ -351,7 +351,8 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			foreach (preg_split('/ *, */', $match[2]) as $event) {
 				$events[]=WT_Gedcom_Tag::getLabel($event);
 			}
-			echo WT_Gedcom_Tag::getLabelValue('EVEN', implode(', ', $events));
+			if (count($events)==1) echo WT_Gedcom_Tag::getLabelValue('EVEN', $event);
+			else echo WT_Gedcom_Tag::getLabelValue('EVEN', implode(', ', $events));
 			if (preg_match('/\n3 DATE (.+)/', $fact->getGedcomRecord(), $date_match)) {
 				$date=new WT_Date($date_match[1]);
 				echo WT_Gedcom_Tag::getLabelValue('DATE', $date->Display());
@@ -1373,10 +1374,9 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	$mediatype=$mediaobject->getMediaType();
 	if ($mediatype) {
-		echo WT_Gedcom_Tag::getLabelValue('TYPE', $mediatype);
+		echo WT_Gedcom_Tag::getLabelValue('TYPE', WT_Gedcom_Tag::getFileFormTypeValue($mediatype));
 	}
-	echo "</span>";
-	echo "<br />";
+	echo '</span>';
 	//-- print spouse name for marriage events
 	if ($rowm['mm_gid']!=$pid) {
 		$person=WT_Person::getInstance($pid);
@@ -1399,9 +1399,9 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	print_fact_notes($mediaobject->getGedcomRecord(), 1);
 	print_fact_sources($mediaobject->getGedcomRecord(), 1);
 
-	echo "</td></tr>";
+	echo '</td></tr>';
 
-	// echo "<pre>"; print_r($rowm); print_r($mediaobject); echo "</pre>";
+	// echo '<pre>'; print_r($rowm); print_r($mediaobject); echo '</pre>';
 
 	return true;
 }
