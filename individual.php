@@ -214,10 +214,10 @@ if ($controller->indi->canDisplayDetails()) {
 			echo '<span class="header_age">';
 			if ($bdate->isOK() && !$controller->indi->isDead()) {
 				// If living display age
-				echo strip_tags(WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true)));
+				echo strip_tags(WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true)), '<span>');
 			} elseif ($bdate->isOK() && $ddate->isOK()) {
 				// If dead, show age at death
-				echo strip_tags(WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false)));
+				echo strip_tags(WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false)), '<span>');
 			}
 			echo '</span>';
 			// Display summary birth/death info.
