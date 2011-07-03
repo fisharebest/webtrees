@@ -61,7 +61,7 @@ $stats=new WT_Stats(WT_GEDCOM);
 	
 // Display a series of "blocks" of general information, vary according to admin or manager.
 
-echo '<div id="content_container">';
+echo '<div id="content_container" style="visibility:hidden">';
 
 echo '<div id="x">';// div x - manages the accordion effect
 
@@ -248,7 +248,7 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 echo
 	'</div>', // id=tree_stats
 	WT_JS_START,
-	'jQuery("#tree_stats").accordion({active:',$accordion_element,', icons:false});',
+	'jQuery("#tree_stats").accordion({active:',$accordion_element,', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});',
 	WT_JS_END,
 	'</div>'; // id=trees
 
@@ -280,14 +280,15 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 echo
 	'</div>', // id=changes
 	WT_JS_START,
-	'jQuery("#changes").accordion({active:',$accordion_element,', icons:false});',
+	'jQuery("#changes").accordion({active:',$accordion_element,', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});',
 	WT_JS_END,
 	'</div>'; // id=recent
 
 echo
 	'</div>', //id = "x"
 	WT_JS_START,
-	'jQuery("#x").accordion({active:0, icons:false});',
+	'jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }, autoHeight:false});',
+	'jQuery("#content_container").css(\'visibility\', \'visible\');',
 	WT_JS_END,
 	'</div>'; //id = content_container
 

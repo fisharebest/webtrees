@@ -108,7 +108,6 @@ html[dir='rtl'] #links li ul {left:auto; right:0px;}
 #admin_content {min-width:830px;}
 
 /* SIDE MENU */
-
 #admin_menu {
 	padding:10px 0 10px 5px; 
 	width:200px; 
@@ -159,7 +158,6 @@ html[dir='rtl'] #admin_footer {float:right;}
 
 /* DASHBOARD BLOCKS */
 #content_container {background:OldLace; padding:5px; border:1px inset #D9D6C4; height:570px; overflow:auto;}
-#about {height:140px !important;}
 #users {white-space:nowrap;}
 #users ul {list-style-type:none; padding:0px; margin:0 0 0 20px;}
 html[dir='rtl'] #users ul {margin:0 20px 0 0;}
@@ -173,9 +171,10 @@ html[dir='rtl'] #users td div {padding-right:20px;}
 html[dir='rtl'] #tree_stats th, html[dir='rtl'] #recent th {padding:0 0 0 10px; text-align:right;}
 #tree_stats td, #recent2 td {padding:0 10px 0 0; min-width:30px; text-align:right; white-space:nowrap;}
 html[dir='rtl'] #tree_stats td, html[dir='rtl'] #recent td {padding:0 0 0 10px; text-align:left;}
-#tree_stats .ui-accordion-content, #recent2 .ui-accordion-content {padding:1em; min-height:140px;}
+#tree_stats .ui-accordion-content, #recent2 .ui-accordion-content {padding:1em;}
 #tree_stats.ui-widget, #changes.ui-widget {font-size:100% !important;}
 #trees span, #recent2 span {text-decoration:underline;}
+#x h2, #x h3 {padding:0 25px;}
 
 /*SITE CONFIG */
 #site table, #mail table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}

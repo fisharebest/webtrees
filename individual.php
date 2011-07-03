@@ -256,7 +256,7 @@ if ($controller->indi->canDisplayDetails()) {
 		WT_JS_START,
 		'jQuery("#header_accordion1").accordion({',
 		' active: 0,',
-		' icons: {"header": "ui-icon-triangle-1-', $TEXT_DIRECTION=='ltr' ? 'e' : 'w', '", "headerSelected": "ui-icon-triangle-1-s" },',
+		' icons: {"header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" },',
 		' autoHeight: false,',
 		' collapsible: true',
 		'});',

@@ -135,7 +135,7 @@ foreach ($sidebarmods as $mod) {
 		if ($mod->getName()=="extra_info") {
 			echo '<h3 id="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
 				'<div id="sb_content_', $mod->getName(), '"><table><tbody>', $mod->getSidebarContent(), '</tbody></table></div>',
-				WT_JS_START,'jQuery("#sidebarAccordion2").accordion({active:0, autoHeight: false, collapsible: true});', WT_JS_END;
+				WT_JS_START,'jQuery("#sidebarAccordion2").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
 		}
 	}
 }
@@ -154,4 +154,4 @@ foreach ($sidebarmods as $mod) {
 	}
 }
 echo '</div>';
-echo WT_JS_START,'jQuery("#sidebarAccordion").accordion({active:0, autoHeight: false, collapsible: true});', WT_JS_END;
+echo WT_JS_START,'jQuery("#sidebarAccordion").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
