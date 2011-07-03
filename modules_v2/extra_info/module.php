@@ -77,13 +77,13 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			}
 		}
 
-		echo '<div id="hitcounter">';
+		echo '<tr><td><div id="hitcounter">';
 		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
 			//print indi counter only if displaying a non-private person
 			require WT_ROOT.'includes/hitcount.php';
 			echo WT_I18N::translate('Hit Count:'). ' '. $hitCount;
 		}
-		echo '</div>';// close #hitcounter
+		echo '</div></td></tr>';// close #hitcounter
 	}
 	
 	// Implement WT_Module_Sidebar
