@@ -716,18 +716,17 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							if ($child) {
 								if (!$hasChildren) {
 									$hasChildren = true;
-									$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
 								}
 								$persons="Yes";
+								$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
 								$spouselinks .= "<li class=\"flyout3\">";
 								$spouselinks .= "<a href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
 								$spouselinks .= PrintReady($child->getFullName());
 								$spouselinks .= "</a>";
+								$spouselinks .= "</li>";
+								$spouselinks .= "</ul>";
 							}
 						}
-						if ($hasChildren) {
-							$spouselinks .= "</ul>";
-						} 
 					}
 					if ($persons != "Yes") {
 						$spouselinks  .= "&nbsp;(".WT_I18N::translate('none').")";

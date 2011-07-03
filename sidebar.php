@@ -120,10 +120,10 @@ if (isset($controller)) {
 echo WT_JS_START; //jQuery code to remove table elements from INDI facts
 ?>
 jQuery(document).ready(function() {
-	jQuery('#sidebarAccordion2 table').replaceWith(function() { return $(this).contents(); });
-	jQuery('#sidebarAccordion2 tbody').replaceWith(function() { return $(this).contents(); });
-	jQuery('#sidebarAccordion2 tr').replaceWith(function() { return $(this).contents();	});
-	jQuery('#sidebarAccordion2 td').replaceWith(function() { return $(this).contents();	});
+	jQuery('#sidebarAccordion2 table').replaceWith(function() { return jQuery(this).contents(); });
+	jQuery('#sidebarAccordion2 tbody').replaceWith(function() { return jQuery(this).contents(); });
+	jQuery('#sidebarAccordion2 tr').replaceWith(function() { return jQuery(this).contents();	});
+	jQuery('#sidebarAccordion2 td').replaceWith(function() { return jQuery(this).contents();	});
 });
 <?php
 echo WT_JS_END;
