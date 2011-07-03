@@ -1075,7 +1075,7 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 #indi_header h3 {color: #000666; font-size: 90%; font-weight:bold; margin: 0; padding: 0 10px 0 30px; text-align:left;}
 #indi_header h3.name_one {overflow:hidden; position:relative; font-size:1.5em;}
 #indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border:1px solid darkGray;}
-#indi_header h3 .fact_AGE {padding:5px 0 5px 5px; float:right; font-weight:normal; font-size:65%;}
+#indi_header h3 .header_age {padding:5px 0 5px 5px; float:right; font-weight:normal; font-size:65%;}
 #indi_header h3 a {display:inline;}
 #indi_header a {color:#333377; font-size:0.75em; font-weight:normal;}
 #indi_header a:hover {color:red;}
@@ -1104,7 +1104,7 @@ dd .editlink, dd .deletelink  {float:right;}
 
 html[dir='rtl'] #indi_header {float:right;}
 html[dir='rtl'] #indi_header h3 {padding: 0 30px 0 10px; text-align:right;}
-html[dir='rtl']  #indi_header h3 .fact_AGE {padding:5px 5px 5px 0; float:left;}
+html[dir='rtl']  #indi_header h3 .header_age {padding:5px 5px 5px 0; float:left;}
 html[dir='rtl'] #main_name {float:right;}
 html[dir='rtl'] #indi_mainimage {float:left;}
 html[dir='rtl'] #indi_mainimage a img {float:left;}
