@@ -139,8 +139,8 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$out = '';
 		$out .= '<li id="sb_desc_'.$person->getXref().'" class="sb_desc_indi_li"><a href="sidebar.php?sb_action=descendancy&amp;pid='.$person->getXref().'" title="'.$person->getXref().'" class="sb_desc_indi">';
-		if ($generations>0) $out .= '<img src="'.$WT_IMAGES['minus'].'" border="0" class="plusminus" />';
-		else $out .= '<img src="'.$WT_IMAGES['plus'].'" border="0" class="plusminus" />';
+		if ($generations>0) $out .= '<img src="'.$WT_IMAGES['minus'].'" border="0" class="plusminus" alt="" />';
+		else $out .= '<img src="'.$WT_IMAGES['plus'].'" border="0" class="plusminus" alt="" />';
 		$out .= $person->getSexImage().' '.$person->getListName().' ';
 		if ($person->canDisplayDetails()) {
 			$out .= PrintReady(' ('.$person->getLifeSpan().')');
@@ -163,7 +163,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$out = '';
 		$out .= '<li id="sb_desc_'.$family->getXref().'" class="sb_desc_indi_li"><a href="sidebar.php?sb_action=descendancy&amp;famid='.$family->getXref().'" title="'.$family->getXref().'" class="sb_desc_indi">';
-		$out .= '<img src="'.$WT_IMAGES['minus'].'" border="0" class="plusminus" />';
+		$out .= '<img src="'.$WT_IMAGES['minus'].'" border="0" class="plusminus" alt="" />';
 		$out .= $person->getSexImage().$person->getListName();
 
 		$marryear = $family->getMarriageYear();
