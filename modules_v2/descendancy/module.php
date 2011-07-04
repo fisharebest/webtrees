@@ -125,9 +125,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if (!$root) $root = $fam->getWife();
 			}
 			if ($root!=null) {
-				$out .= '<ul>';
 				$out .= $this->getPersonLi($root, 1);
-				$out .= '</ul>';
 			}
 		}
 		$out .= '</div>';
@@ -155,7 +153,11 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$out .= '</div>';
 		}
 		$out .= '</li>';
-		return $out;
+		if ($out) {
+			return '<ul>'.$out.'</ul>';
+		} else {
+			return '';
+		}
 	}
 
 	public function getFamilyLi($family, $person, $generations=0) {
@@ -176,7 +178,11 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= $this->loadChildren($family->getXref(), $generations);
 		$out .= '</div><script type="text/javascript">dloadedNames["'.$family->getXref().'"]=2;</script>';
 		$out .= '</li>';
-		return $out;
+		if ($out) {
+			return '<ul>'.$out.'</ul>';
+		} else {
+			return '';
+		}
 	}
 
 	public function search($query) {
