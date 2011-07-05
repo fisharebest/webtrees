@@ -1108,7 +1108,7 @@ function print_calendar_popup($id, $asString=false) {
 	if (isset($WT_IMAGES["button_calendar"])) $Link = "<img src=\"".$WT_IMAGES["button_calendar"]."\" name=\"img".$id."\" id=\"img".$id."\" alt=\"".$text."\" title=\"".$text."\" border=\"0\" align=\"middle\" />";
 	else $Link = $text;
 	$out = ' ';
-	$out .= "<a href=\"javascript: ".$text."\" onclick=\"cal_toggleDate('caldiv".$id."', '".$id."'); return false;\" tabindex=\"-1\">";
+	$out .= "<a href=\"javascript: ".$text."\" onclick=\"cal_toggleDate('caldiv".$id."', '".$id."'); return false;\">";
 	$out .= $Link;
 	$out .= "</a>";
 	$out .= "<div id=\"caldiv".$id."\" style=\"position:absolute;visibility:hidden;background-color:white;layer-background-color:white; z-index: 1000;\"></div>";

@@ -322,9 +322,9 @@ if ($action=="configure") {
 	echo "<tr>";
 	// NOTE: Row 2 column 1: Up/Down buttons for left (main) block list
 	echo "<td class=\"optionbox width20px center vmiddle\">";
-		echo "<a tabindex=\"-1\" onclick=\"move_up_block('main_select');\" title=\"".WT_I18N::translate('Move up')."\">".$IconUarrow."</a>";
+		echo "<a onclick=\"move_up_block('main_select');\" title=\"".WT_I18N::translate('Move up')."\">".$IconUarrow."</a>";
 		echo "<br />";
-		echo "<a tabindex=\"-1\" onclick=\"move_down_block('main_select');\" title=\"".WT_I18N::translate('Move down')."\">".$IconDarrow."</a>";
+		echo "<a onclick=\"move_down_block('main_select');\" title=\"".WT_I18N::translate('Move down')."\">".$IconDarrow."</a>";
 		echo "<br /><br />";
 		echo help_link('block_move_up');
 
@@ -339,11 +339,11 @@ if ($action=="configure") {
 	echo "</td>";
 	// NOTE: Row 2 column 3: Left/Right buttons for left (main) block list
 	echo "<td class=\"optionbox width20 vmiddle\">";
-		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('main_select', 'right_select');\" title=\"".WT_I18N::translate('Move Right')."\">".$IconRDarrow."</a>";
+		echo "<a onclick=\"move_left_right_block('main_select', 'right_select');\" title=\"".WT_I18N::translate('Move Right')."\">".$IconRDarrow."</a>";
 		echo "<br />";
-		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('main_select', 'available_select');\" title=\"".WT_I18N::translate('Remove')."\">".$IconRarrow."</a>";
+		echo "<a onclick=\"move_left_right_block('main_select', 'available_select');\" title=\"".WT_I18N::translate('Remove')."\">".$IconRarrow."</a>";
 		echo "<br />";
-		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('available_select', 'main_select');\" title=\"".WT_I18N::translate('Add')."\">".$IconLarrow."</a>";
+		echo "<a onclick=\"move_left_right_block('available_select', 'main_select');\" title=\"".WT_I18N::translate('Add')."\">".$IconLarrow."</a>";
 		echo "<br /><br />";
 		echo help_link('block_move_right');
 
@@ -358,11 +358,11 @@ if ($action=="configure") {
 	echo "</td>";
 	// NOTE: Row 2 column 5: Left/Right buttons for right block list
 	echo "<td class=\"optionbox width20 vmiddle\">";
-		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('right_select', 'main_select');\" title=\"".WT_I18N::translate('Move Left')."\">".$IconLDarrow."</a>";
+		echo "<a onclick=\"move_left_right_block('right_select', 'main_select');\" title=\"".WT_I18N::translate('Move Left')."\">".$IconLDarrow."</a>";
 		echo "<br />";
-		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('right_select', 'available_select');\" title=\"".WT_I18N::translate('Remove')."\">".$IconLarrow."</a>";
+		echo "<a onclick=\"move_left_right_block('right_select', 'available_select');\" title=\"".WT_I18N::translate('Remove')."\">".$IconLarrow."</a>";
 		echo "<br />";
-		echo "<a tabindex=\"-1\" onclick=\"move_left_right_block('available_select', 'right_select');\" title=\"".WT_I18N::translate('Add')."\">".$IconRarrow."</a>";
+		echo "<a onclick=\"move_left_right_block('available_select', 'right_select');\" title=\"".WT_I18N::translate('Add')."\">".$IconRarrow."</a>";
 		echo "<br /><br />";
 		echo help_link('block_move_right');
 	echo "</td>";
@@ -376,9 +376,9 @@ if ($action=="configure") {
 	echo "</td>";
 	// NOTE: Row 2 column 7: Up/Down buttons for right block list
 	echo "<td class=\"optionbox width20 vmiddle\">";
-		echo "<a tabindex=\"-1\" onclick=\"move_up_block('right_select');\" title=\"".WT_I18N::translate('Move up')."\">".$IconUarrow."</a>";
+		echo "<a onclick=\"move_up_block('right_select');\" title=\"".WT_I18N::translate('Move up')."\">".$IconUarrow."</a>";
 		echo "<br />";
-		echo "<a tabindex=\"-1\" onclick=\"move_down_block('right_select');\" title=\"".WT_I18N::translate('Move down')."\">".$IconDarrow."</a>";
+		echo "<a onclick=\"move_down_block('right_select');\" title=\"".WT_I18N::translate('Move down')."\">".$IconDarrow."</a>";
 		echo "<br /><br />";
 		echo help_link('block_move_up');
 	echo "</td>";
