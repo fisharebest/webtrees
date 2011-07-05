@@ -668,7 +668,7 @@ class WT_Media extends WT_GedcomRecord {
 			$output='';
 			if ($config['oktolink'] && $mainexists) $output .= '<a href="'.$this->getHtmlUrlSnippet($config).'">';
 			$output .= '<img '.$idstr.' src="'.$this->getHtmlUrlDirect('thumb').'" '.$sizestr.' class="'.$config['class'].'"';
-			$output .= $spacestr.' border="none" '.$alignstr.' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.' />';
+			$output .= $spacestr.' '.$alignstr.' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.' />';
 			if ($config['oktolink'] && $mainexists) {
 				$output .= '</a>';
 				if ($config['download'] && $SHOW_MEDIA_DOWNLOAD) {

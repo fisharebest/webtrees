@@ -1238,7 +1238,7 @@ echo WT_JS_START; ?>
 							} else {
 								echo '<center><a href="', $mediaInfo['url'], '">';
 								//echo '<center><a href="'.$url2.'">';
-								echo '<img src="', $mediaInfo['thumb'], '" align="middle" class="thumbnail" border="none"', $mediaInfo['width'];
+								echo '<img src="', $mediaInfo['thumb'], '" align="middle" class="thumbnail"', $mediaInfo['width'];
 								echo ' title="', $name, '" /></a></center>';
 							}
 							echo '</td>';

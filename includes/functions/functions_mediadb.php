@@ -935,7 +935,7 @@ function display_silhouette(array $config = array()) {
 	$idstr=($config['img_id']) ? ' id="'.$config['img_id'].'" ' : '';
 	$stylestr=($config['show_full']) ? '' : ' style="display: none;" ';
 	$alignstr=($config['align']=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
-	$output='<img '.$idstr.' src="'.$WT_IMAGES['default_image_'.$config['sex']].'" '.$classstr.$spacestr.$alignstr.' border="none" alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.' />';
+	$output='<img '.$idstr.' src="'.$WT_IMAGES['default_image_'.$config['sex']].'" '.$classstr.$spacestr.$alignstr.' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.' />';
 
 	if ($config['addslashes']) {
 		// the image string will be used in javascript code, such as googlemaps
