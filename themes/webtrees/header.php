@@ -67,7 +67,7 @@ echo
 if ($view!='simple') {
 	echo
 		'<div id="header">',
-		'<div class="header_img"><img src="', WT_THEME_DIR, 'images/webtrees.png" width="242" height="50" alt="" /></div>';
+		'<div class="header_img"><img src="', WT_THEME_DIR, 'images/webtrees.png" width="242" height="50" alt="', WT_WEBTREES, '" /></div>';
 	if ($SEARCH_SPIDER) {
 		// Search engines get a reduced menu
 		$menu_items=array(
