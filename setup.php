@@ -157,7 +157,7 @@ if (file_exists(WT_DATA_DIR.WT_CONFIG_FILE)) {
 	exit;
 }
 
-echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post" autocomplete="off">';
+echo '<form name="config" action="', WT_SCRIPT_NAME, '" method="post">';
 echo '<input type="hidden" name="lang" value="', WT_LOCALE, '">';
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -1589,7 +1589,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value)), "\" size=\"", $cols, "\" dir=\"ltr\"";
 			}
 			echo " class=\"{$fact}\"";
-			echo " autocomplete=\"off\"";
 			if (in_array($fact, $subnamefacts)) echo " onblur=\"updatewholename();\" onkeyup=\"updatewholename();\"";
 			if ($fact=="DATE") echo " onblur=\"valid_date(this);\" onmouseout=\"valid_date(this);\"";
 			if ($fact=="LATI") echo " onblur=\"valid_lati_long(this, 'N', 'S');\" onmouseout=\"valid_lati_long(this, 'N', 'S');\"";

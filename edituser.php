@@ -138,7 +138,7 @@ function paste_id(value) {
 
 // show the form to edit a user account details
 $tab=0;
-echo '<form name="editform" method="post" action="" onsubmit="return checkform(this);" autocomplete="off">';
+echo '<form name="editform" method="post" action="" onsubmit="return checkform(this);">';
 echo '<input type="hidden" name="form_action" value="update" />';
 echo '<table class="list_table center ', $TEXT_DIRECTION, '">';
 

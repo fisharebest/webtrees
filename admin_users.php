@@ -427,7 +427,7 @@ case 'createform':
 	//-->
 	</script>
 
-	<form name="newform" method="post" action="admin_users.php?action=createuser" onsubmit="return checkform(this);" autocomplete="off">
+	<form name="newform" method="post" action="admin_users.php?action=createuser" onsubmit="return checkform(this);">
 		<!--table-->
 		<table id="adduser">
 			<tr>

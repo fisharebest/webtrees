@@ -248,7 +248,7 @@ if ($controller->action == "soundex") {
 			<?php echo WT_I18N::translate('Given name'); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="3" type="text" id="firstfocus" name="firstname" autocomplete="off" value="<?php echo $controller->myfirstname; ?>" />
+			<input tabindex="3" type="text" id="firstfocus" name="firstname" value="<?php echo $controller->myfirstname; ?>" />
 		</td>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="6">
 			<input tabindex="7" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>" />
@@ -259,7 +259,7 @@ if ($controller->action == "soundex") {
 			<?php echo WT_I18N::translate('Last name'); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="4" type="text" name="lastname" autocomplete="off" value="<?php echo $controller->mylastname; ?>" />
+			<input tabindex="4" type="text" name="lastname" value="<?php echo $controller->mylastname; ?>" />
 		</td>
 	</tr>
 	<tr>
