@@ -1,31 +1,27 @@
 <?php
-/**
-* List branches by surname
-*
-* webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
-* Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*
-* @package webtrees
-* @subpackage Lists
-* @version $Id$
-*/
+// List branches by surname
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'branches.php');
 require './includes/session.php';
@@ -126,7 +122,7 @@ function print_fams($person, $famid=null) {
 		break;
 	}
 	if (empty($person_name)) {
-		echo '<span title="', PrintReady(strip_tags($person->getFullName())), '">', $person->getSexImage(), '...</span>';
+		echo '<li title="', PrintReady(strip_tags($person->getFullName())), '">', $person->getSexImage(), '...</li>';
 		return;
 	}
 	$person_script = utf8_script($person_name);
@@ -136,7 +132,7 @@ function print_fams($person, $famid=null) {
 	$sosa = array_search($person->getXref(), $user_ancestors);
 	if ($sosa) {
 		$class = 'search_hit';
-		$sosa = '<a dir='.$TEXT_DIRECTION.' target="_blank" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
+		$sosa = '<a target="_blank" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
 	}
 	$current = $person->getSexImage().
 		'<a target="_blank" class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
@@ -162,17 +158,18 @@ function print_fams($person, $famid=null) {
 			$sosa2 = array_search($spouse->getXref(), $user_ancestors);
 			if ($sosa2) {
 				$class = 'search_hit';
-				$sosa2 = '<a dir='.$TEXT_DIRECTION.' target="_blank" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
+				$sosa2 = '<a target="_blank" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
 			}
 			if ($family->getMarriageYear()) {
 				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<span dir='.$TEXT_DIRECTION.' class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</span></a>&nbsp;';
+				$txt .= '<span class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</span></a>&nbsp;';
 			}
 			else if ($family->getMarriage()) {
 				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<span dir='.$TEXT_DIRECTION.' class="details1" title="'.WT_I18N::translate('Yes').'">'.WT_ICON_RINGS.'</span></a>&nbsp;';
+				$txt .= '<span class="details1" title="'.WT_I18N::translate('Yes').'">'.WT_ICON_RINGS.'</span></a>&nbsp;';
 			}
 			$spouse_name = $spouse->getListName();
+			$spouse_surname='@N.N.';
 			foreach ($spouse->getAllNames() as $n=>$name) {
 				if (utf8_script($name['list']) == $person_script) {
 					$spouse_name = $name['list'];
