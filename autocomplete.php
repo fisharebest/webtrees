@@ -731,41 +731,51 @@ function get_autocomplete_GIVN($FILTER, $ged_id=WT_GED_ID) {
 		->execute(array("%{$FILTER}%", $ged_id))
 		->fetchAll();
 }
-
+//PLAC autocomplete - three functions
 function get_autocomplete_PLAC($FILTER, $ged_id=WT_GED_ID) {
-	return
-		WT_DB::prepare(
-		"SELECT p1.p_place".
-		" FROM `##places` p1".
-		" WHERE p1.p_place like ? and p1.p_parent_id=0 AND p1.p_file=?".
-		" UNION ".
-		"SELECT CONCAT(p1.p_place, ', ', p2.p_place)".
-		" FROM `##places` p1".
-		" JOIN `##places` p2 ON (p1.p_parent_id=p2.p_id AND p1.p_file=p2.p_file)".
-		" WHERE p1.p_place like ? and p2.p_parent_id=0 AND p1.p_file=?".
-		" UNION ".
-		"SELECT CONCAT(p1.p_place, ', ', p2.p_place, ', ', p3.p_place)".
-		" FROM `##places` p1".
-		" JOIN `##places` p2 ON (p1.p_parent_id=p2.p_id AND p1.p_file=p2.p_file)".
-		" JOIN `##places` p3 ON (p2.p_parent_id=p3.p_id AND p2.p_file=p3.p_file)".
-		" WHERE p1.p_place like ? and p3.p_parent_id=0 AND p1.p_file=?".
-		" UNION ".
-		"SELECT CONCAT(p1.p_place, ', ', p2.p_place, ', ', p3.p_place, ', ', p4.p_place)".
-		" FROM `##places` p1".
-		" JOIN `##places` p2 ON (p1.p_parent_id=p2.p_id AND p1.p_file=p2.p_file)".
-		" JOIN `##places` p3 ON (p2.p_parent_id=p3.p_id AND p2.p_file=p3.p_file)".
-		" JOIN `##places` p4 ON (p3.p_parent_id=p4.p_id AND p3.p_file=p4.p_file)".
-		" WHERE p1.p_place like ? and p4.p_parent_id=0 AND p1.p_file=?".
-		" UNION ".
-		"SELECT CONCAT(p1.p_place, ', ', p2.p_place, ', ', p3.p_place, ', ', p4.p_place, ', ', p5.p_place)".
-		" FROM `##places` p1".
-		" JOIN `##places` p2 ON (p1.p_parent_id=p2.p_id AND p1.p_file=p2.p_file)".
-		" JOIN `##places` p3 ON (p2.p_parent_id=p3.p_id AND p2.p_file=p3.p_file)".
-		" JOIN `##places` p4 ON (p3.p_parent_id=p4.p_id AND p3.p_file=p4.p_file)".
-		" JOIN `##places` p5 ON (p4.p_parent_id=p5.p_id AND p4.p_file=p5.p_file)".
-		" WHERE p1.p_place like ? and p5.p_parent_id=0 AND p1.p_file=?".
-		" LIMIT ".WT_AUTOCOMPLETE_LIMIT
-		)
-		->execute(array("%{$FILTER}%", $ged_id, "%{$FILTER}%", $ged_id, "%{$FILTER}%", $ged_id, "%{$FILTER}%", $ged_id, "%{$FILTER}%", $ged_id))
-		->fetchOneColumn();
+
+        // Retrieve the maximum number of levels
+	$nbLevels = get_number_levels_PLAC($ged_id) + 1;
+	
+        // Generate the SQL statement
+	$sql = generate_place_sql($nbLevels)." LIMIT ".WT_AUTOCOMPLETE_LIMIT;
+	
+	$arrayFilter = array();
+	for ($i = 0; $i < $nbLevels; $i++) {
+		$arrayFilter[] = "%{$FILTER}%";
+		$arrayFilter[] =  $ged_id;
+	}
+	
+	return WT_DB::prepare($sql)->execute($arrayFilter)->fetchOneColumn();
 }
+
+function get_number_levels_PLAC($ged_id=WT_GED_ID){
+	return
+		WT_DB::prepare("SELECT MAX(p_level) FROM `##places` WHERE p_file=?")
+		->execute(array($ged_id))
+		->fetchOne(0);
+}
+
+function generate_place_sql($nbLevels) { 
+	if($nbLevels<=1){ 
+    	return 
+        	"SELECT p1.p_place". 
+            " FROM `##places` p1". 
+            " WHERE p1.p_place like ? and p1.p_parent_id=0 AND p1.p_file=?"; 
+	}
+	else {
+		$select = "p1.p_place"; 
+		$from = "`##places` p1";
+		for($i = 2; $i <= $nbLevels ; $i++) { 
+			$select .= ", ', ', p".$i.".p_place";
+			$from .= " JOIN `##places` p".$i." ON (p".($i-1).".p_parent_id=p".$i.".p_id AND p".($i-1).".p_file=p".$i.".p_file)"; 
+		}
+		return
+			"SELECT CONCAT(".$select.")".
+			" FROM ".$from.
+			" WHERE p1.p_place like ? and p".$nbLevels.".p_parent_id=0 AND p1.p_file=?".
+			" UNION ".
+			generate_place_sql($nbLevels - 1);
+	}
+//end of PLAC autocomplete functions
+} 
