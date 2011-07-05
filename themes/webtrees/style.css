@@ -77,7 +77,7 @@ legend img {
 	width:20px;
 }
 
-img.block, #calendar_img, #biglink img, #mycart img  {
+img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img  {
 	border:none;
 	height:25px;
 	vertical-align:middle;
