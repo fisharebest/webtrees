@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -636,22 +636,26 @@ class WT_Person extends WT_GedcomRecord {
 			$image='sex_'.strtolower($sex).'_15x15';
 		}
 
+		if ($title) {
+			$title=' title="'.$title.'"';
+		}
+
 		switch ($sex) {
 		case 'M':
 			if (isset($WT_IMAGES[$image])) {
-				return "<img src=\"{$WT_IMAGES[$image]}\" class=\"gender_image\" style=\"{$style}\" alt=\"{$title}\" title=\"{$title}\" />";
+				return '<img src="'.$WT_IMAGES[$image].'" class="gender_image" style="'.$style.'" alt="'.WT_I18N::translate('Male').'"'.$title.' />';
 			} else {
 				return '<span style="size:'.$size.'">'.WT_UTF8_MALE.'</span>';
 			}
 		case 'F':
 			if (isset($WT_IMAGES[$image])) {
-				return "<img src=\"{$WT_IMAGES[$image]}\" class=\"gender_image\" style=\"{$style}\" alt=\"{$title}\" title=\"{$title}\" />";
+				return '<img src="'.$WT_IMAGES[$image].'" class="gender_image" style="'.$style.'" alt="'.WT_I18N::translate('Female').'"'.$title.' />';
 			} else {
 				return '<span style="size:'.$size.'">'.WT_UTF8_FEMALE.'</span>';
 			}
 		default:
 			if (isset($WT_IMAGES[$image])) {
-				return "<img src=\"{$WT_IMAGES[$image]}\" class=\"gender_image\" style=\"{$style}\" alt=\"{$title}\" title=\"{$title}\" />";
+				return '<img src="'.$WT_IMAGES[$image].'" class="gender_image" style="'.$style.'" alt="'.WT_I18N::translate_c('unknown gender', 'Unknown').'"'.$title.' />';
 			} else {
 				return '<span style="size:'.$size.'">?</span>';
 			}
