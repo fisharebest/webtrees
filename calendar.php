@@ -151,7 +151,8 @@ for ($d=1; $d<=$days_in_month; $d++) {
 	echo ' | ';
 }
 $tmp=new WT_Date($today->Format('%@ %A %O %E')); // Need a WT_Date object to get localisation
-echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->Display(true, NULL, array()).'</b></a>';
+echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$tmp->Display(false, NULL, array()).'</b></a>';
+echo '</td></tr>';
 // Month selector
 echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Month'), help_link('annivers_month_select'), '</td>';
@@ -276,7 +277,7 @@ echo '</select>';
 
 echo '</td></tr>';
 echo '</table></form>';
-echo "<table class=\"center {$TEXT_DIRECTION} width100\"><tr>";
+echo "<table class=\"center {$TEXT_DIRECTION} width100\">";
 
 // Day/Month/Year and calendar selector
 echo '<tr><td class="topbottombar width50">';
