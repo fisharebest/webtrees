@@ -95,7 +95,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		}
 		$this->pdf->SetCreator($appversion." (".parent::wt_url.")");
 		// Not implemented yet - WT_Report_Base::setup()
-		//$this->pdf->SetAuthor($this->rauthor);
+		$this->pdf->SetAuthor($this->rauthor);
 		$this->pdf->SetTitle($this->title);
 		$this->pdf->SetSubject($this->rsubject);
 		$this->pdf->SetKeywords($this->rkeywords);
@@ -476,7 +476,7 @@ class PDF extends TCPDF {
 		$this->currentStyle = $s;
 		$style = $this->wt_report->getStyle($s);
 		$this->SetFont($style['font'], $style['style'], $style['size']);
-	}
+		} 
 
 	/**
 	* Get the style -PDF

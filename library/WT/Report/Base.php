@@ -188,7 +188,7 @@ class WT_Report_Base {
 	* @var string
 	* @todo add the author support
 	*/
-	//var $rauthor = "";
+	public $rauthor = WT_SERVER_NAME;
 	/**
 	* Keywords
 	* @see WT_Report_Base::setup()
