@@ -636,7 +636,7 @@ class WT_MenuBar {
 		//-- faq sub menu
 		if (array_key_exists('faq', WT_Module::getActiveModules()) && WT_DB::prepare("SELECT COUNT(*) FROM `##block` WHERE module_name='faq'")->fetchOne()) {
 
-			$submenu = new WT_Menu(WT_I18N::translate('FAQ'), 'module.php?mod=faq&mod_action=show', 'menu-help-faq');
+			$submenu = new WT_Menu(WT_I18N::translate('FAQ'), 'module.php?mod=faq&amp;mod_action=show', 'menu-help-faq');
 			$submenu->addIcon('help');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_help');
 			$menu->addSubmenu($submenu);
