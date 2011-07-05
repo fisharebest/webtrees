@@ -178,7 +178,8 @@ $real_browsers = array(
 	'MSFrontPage',
 	'RssReader',
 	'Liferea/',
-	'W3C_Validator'
+	'W3C_Validator',
+	'TotalValidator',
 	);
 
 // Here we list the search engines whose accesses we don't need to log.
