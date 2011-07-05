@@ -70,7 +70,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 	// Implement WT_Module_Config
 	public function getConfigLink() {
-		return 'module.php?mod='.$this->getName().'&mod_action=admin_config';
+		return 'module.php?mod='.$this->getName().'&amp;mod_action=admin_config';
 	}
 
 	// Implement class WT_Module_Block
