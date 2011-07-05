@@ -540,7 +540,10 @@ function print_footer($view='full') {
 // now added as a function here.
 
 function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) {
-	$header_links = '';
+	$header_links=
+		// Strict validation requires a default type for inline <script> and <style>
+		'<meta http-equiv="Content-Style-Type" content="text/css" />'.
+		'<meta http-equiv="Content-Script-Type" content="text/javascript" />';
 	if (!empty($LINK_CANONICAL)) {
 		$header_links.= '<link rel="canonical" href="'. $LINK_CANONICAL. '" />';
 	}
