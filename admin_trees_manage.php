@@ -1,26 +1,24 @@
 <?php
-/**
- * UI for online updating of the GEDCOM configuration.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @version $Id$
- */
+// UI for online updating of the GEDCOM configuration.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 
@@ -36,14 +34,16 @@ if (!WT_USER_GEDCOM_ADMIN) {
 // with an incomplete transaction.
 ignore_user_abort(true);
 
-function import_gedcom_file($gedcom_id, $filename) {
+// $path is the full path to the (possibly temporary) file.
+// $filename is the actual filename (no directory).
+function import_gedcom_file($gedcom_id, $path, $filename) {
 	// Read the file in blocks of roughly 64K.  Ensure that each block
 	// contains complete gedcom records.  This will ensure we don't split
 	// multi-byte characters, as well as simplifying the code to import
 	// each block.
 
 	$file_data='';
-	$fp=fopen($filename, 'rb');
+	$fp=fopen($path, 'rb');
 
 	WT_DB::exec("START TRANSACTION");
 	WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
@@ -68,7 +68,7 @@ function import_gedcom_file($gedcom_id, $filename) {
 		"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
 	)->execute(array($gedcom_id, $file_data));
 
-	set_gedcom_setting($gedcom_id, 'gedcom_filename', basename($filename));
+	set_gedcom_setting($gedcom_id, 'gedcom_filename', $filename);
 	WT_DB::exec("COMMIT");
 	fclose($fp);
 }
@@ -112,7 +112,7 @@ case 'replace_upload':
 	if (get_gedcom_from_id($gedcom_id)) {
 		foreach ($_FILES as $FILE) {
 			if ($FILE['error']==0 && is_readable($FILE['tmp_name'])) {
-				import_gedcom_file($gedcom_id, $FILE['tmp_name']);
+				import_gedcom_file($gedcom_id, $FILE['tmp_name'], $FILE['name']);
 			}
 		}
 	}
@@ -123,7 +123,7 @@ case 'replace_import':
 	// Make sure the gedcom still exists
 	if (get_gedcom_from_id($gedcom_id)) {
 		$ged_name=basename(safe_POST('ged_name'));
-		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name);
+		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name, $ged_name);
 	}
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 	exit;
