@@ -49,6 +49,10 @@ body { font: 12px tahoma, arial, helvetica, sans-serif; background:#fff; }
 	-webkit-border-radius:3px;
 }
 
+:focus {
+  outline-style:none;
+}
+
 /* ================= */
 /*   Header Layout   */
 
@@ -70,7 +74,7 @@ html[dir='rtl'] .topMenu_right {float: left;}
 
 #topMenu ul { margin: 0; padding: 0; list-style: none; position:relative; }
 #topMenu ul li { display: block; list-style:none; width: auto; float:left; position:relative; }
-#topMenu ul li a { margin: auto; display: block; font-size: 14px; text-align: center; padding: 5px 5px 5px 5px; text-decoration: none; height: 32px; }
+#topMenu ul li a { margin: auto; display: block; font-size: 14px; text-align: center; padding: 5px 5px 5px 5px; text-decoration: none; height: 12px; }
 
 html[dir='rtl'] #topMenu {	float: right;}
 html[dir='rtl'] #topMenu ul li { float: right;}
@@ -122,15 +126,17 @@ html[dir='rtl'] #topMenu > ul > li {margin: 7px 16px 0px 0px; left: auto;}
 }
 html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
 
-/*  Delete tag from mainmenu icons 
-#topMenu > ul >  li  > a {
-	color: #2A2B2D;
-	width: 17px; 
-	height: 17px;
-	line-height: 60px;
-	overflow: hidden;
+#main-menu > li > ul > li:first-child {
+    border-bottom: 2px solid #DDDDDD;
+    font-weight: bold;
+    text-align: center;
+    text-indent: 0;
+    margin-right: 10px;
+    background-image: none;
 }
-*/
+html[dir='rtl'] #main-menu > li > ul > li:first-child { margin-left: 10px;}
+
+
 /********************Menu Top Row Icons **********************/
 
 #menu-tree		{ background-position:center   -0px; } 
@@ -1868,15 +1874,3 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0px;}
 
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 
-/* Rob */
-#main-menu > li > ul > li:first-child {
-    border-bottom: 2px solid #DDDDDD;
-    font-weight: bold;
-    text-align: center;
-    text-indent: 0;
-    margin-right: 10px;
-    background-image: none;
-}
-:focus {
-  outline-style:none;
-}
