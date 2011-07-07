@@ -381,6 +381,7 @@ echo WT_JS_START;?>
 
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 <input type="hidden" name="action" value="update" />
+<input type="hidden" name="ged" value="<?php echo htmlspecialchars(WT_GEDCOM); ?>" />
 <?php
 	if (!empty($error_msg)) echo "<br /><span class=\"error\">".$error_msg."</span><br />";
 	$i = 0;
