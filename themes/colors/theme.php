@@ -30,15 +30,15 @@ if (!defined('WT_WEBTREES')) {
 }
 // Convert a menu into our theme-specific format
 function getMenuAsCustomList($menu) {
-       // Create a inert menu - to use as a label
-       $tmp=new WT_Menu(strip_tags($menu->label), '');
-       // Insert the label into the submenu
-       array_unshift($menu->submenus, $tmp);
-       // Neutralise the top-level menu
-       $menu->label='';
-
-       $menu->iconclass='';
-       return $menu->getMenuAsList();
+		// Create a inert menu - to use as a label
+		$tmp=new WT_Menu(strip_tags($menu->label), '');
+		// Insert the label into the submenu
+		array_unshift($menu->submenus, $tmp);
+		// Neutralise the top-level menu
+		$menu->label='';
+		$menu->onclick='';
+		$menu->iconclass='';
+		return $menu->getMenuAsList();
 }
 
 //-- print color theme sub type change dropdown box

@@ -131,10 +131,8 @@ html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
     font-weight: bold;
     text-align: center;
     text-indent: 0;
-    margin-right: 10px;
     background-image: none;
 }
-html[dir='rtl'] #main-menu > li > ul > li:first-child { margin-left: 10px;}
 
 
 /********************Menu Top Row Icons **********************/
@@ -1873,4 +1871,3 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0px;}
 #sb_content_extra_info span a {display:inline;}
 
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
-
