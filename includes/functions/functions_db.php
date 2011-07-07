@@ -1547,7 +1547,7 @@ function set_site_setting($setting_name, $setting_value) {
 		WT_DB::prepare("DELETE FROM `##site_setting` WHERE setting_name=?")
 			->execute(array($setting_name));
 	} else {
-		$rowcount=WT_DB::prepare("REPLACE INTO `##site_setting` (setting_name, setting_value) VALUES (?, ?)")
+		$rowcount=WT_DB::prepare("REPLACE INTO `##site_setting` (setting_name, setting_value) VALUES (?, LEFT(?, 255))")
 			->execute(array($setting_name, $setting_value));
 	}
 }
@@ -1639,7 +1639,7 @@ function set_gedcom_setting($ged_id, $setting_name, $setting_value) {
 		WT_DB::prepare("DELETE FROM `##gedcom_setting` WHERE gedcom_id=? AND setting_name=?")
 			->execute(array($ged_id, $setting_name));
 	} else {
-		WT_DB::prepare("REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, ?)")
+		WT_DB::prepare("REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
 			->execute(array($ged_id, $setting_name, $setting_value));
 	}
 }
@@ -1820,7 +1820,7 @@ function set_user_setting($user_id, $setting_name, $setting_value) {
 		WT_DB::prepare("DELETE FROM `##user_setting` WHERE user_id=? AND setting_name=?")
 			->execute(array($user_id, $setting_name));
 	} else {
-		WT_DB::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, ?)")
+		WT_DB::prepare("REPLACE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
 			->execute(array($user_id, $setting_name, $setting_value));
 	}
 }
@@ -1845,7 +1845,7 @@ function set_user_gedcom_setting($user_id, $ged_id, $setting_name, $setting_valu
 		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=? AND gedcom_id=? AND setting_name=?")
 			->execute(array($user_id, $ged_id, $setting_name));
 	} else {
-		WT_DB::prepare("REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, ?)")
+		WT_DB::prepare("REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, LEFT(?, 255))")
 			->execute(array($user_id, $ged_id, $setting_name, $setting_value));
 	}
 }
