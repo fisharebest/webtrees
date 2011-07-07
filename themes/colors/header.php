@@ -128,12 +128,15 @@ if ($SEARCH_SPIDER) {
 	} else {
 		$allow_color_dropdown=false;
 	}
+	if ($allow_color_dropdown) {
+		echo color_theme_dropdown();
+	}
 	echo
 		'<li>',
 			'<form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
-			'<input type="text" name="query" size="15" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
+			'<input type="text" name="query" size="10" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
 			'<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
 			'</form>',
 		'</li>',
@@ -144,7 +147,7 @@ if ($SEARCH_SPIDER) {
 	// Second Row menu and palette selection
 	// Menu
 	$menu_items=array(
-		WT_MenuBar::getGedcomMenu(),
+		WT_MenuBar::getGedcomMenu(), 
 		WT_MenuBar::getMyPageMenu(),
 		WT_MenuBar::getChartsMenu(),
 		WT_MenuBar::getListsMenu(),
@@ -163,18 +166,13 @@ if ($SEARCH_SPIDER) {
 		'<ul id="main-menu">'; 
 		foreach ($menu_items as $menu) {
 			if ($menu) {
-			echo $menu->getMenuAsList();
+			echo getMenuAsCustomList($menu);
 			}
 		}
 	unset($menu_items, $menu);
 	echo
 	'</ul>';
-	// Palette
-	if ($allow_color_dropdown) {
-		echo '<div class="toplinks_right">';
-		echo color_theme_dropdown();
-		echo '</div>';
-	}
+
 
 echo 
 	'</div>'; // close topMenu

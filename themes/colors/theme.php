@@ -20,6 +20,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+// PNG Icons By: Alessandro Rei; License:  GPL; www.deviantdark.com
 //
 // $Id$
 
@@ -27,19 +28,31 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+// Convert a menu into our theme-specific format
+function getMenuAsCustomList($menu) {
+       // Create a inert menu - to use as a label
+       $tmp=new WT_Menu(strip_tags($menu->label), '');
+       // Insert the label into the submenu
+       array_unshift($menu->submenus, $tmp);
+       // Neutralise the top-level menu
+       $menu->label='';
+
+       $menu->iconclass='';
+       return $menu->getMenuAsList();
+}
 
 //-- print color theme sub type change dropdown box
 function color_theme_dropdown() {
 	global $COLOR_THEME_LIST;
 	
-	$menu=new WT_Menu(WT_I18N::translate('Color Palette'), '#', 'menu-color');
+	$menu=new WT_Menu(WT_I18N::translate('Palette'), '#', 'menu-color');
 	$menu->addClass('thememenuitem', 'thememenuitem_hover', 'themesubmenu', 'icon_small_theme');
 	uasort($COLOR_THEME_LIST, 'utf8_strcasecmp');
 	foreach ($COLOR_THEME_LIST as $colorChoice=>$colorName) {
 		$submenu=new WT_Menu($colorName, get_query_url(array('themecolor'=>$colorChoice)), 'menu-color-'.$colorChoice);
 		$menu->addSubMenu($submenu);
 	}
-	return '<div class="color_form">'.$menu->getMenuAsDropdown().'</div>';
+	return $menu->getMenuAsList();
 }
 
 /**
@@ -54,6 +67,7 @@ $COLOR_THEME_LIST=array(
 	'belgianchocolate'=> /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Belgian Chocolate'),
 	'bluelagoon'      => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Blue Lagoon'),
 	'bluemarine'      => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Blue Marine'),
+	'coffeeandcream'  => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Coffee and Cream'),
 	'coldday'         => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Cold Day'),
 	'greenbeam'       => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Green Beam'),
 	'mediterranio'    => /* I18N: This is the name of theme color-scheme */ WT_I18N::translate('Mediterranio'),
