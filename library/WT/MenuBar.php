@@ -704,27 +704,29 @@ class WT_MenuBar {
 	public static function getFavoritesMenu() {
 		global $REQUIRE_AUTHENTICATION, $controller;
 
-		$show_user_favs=WT_USER_ID && array_key_exists('user_favorites', WT_Module::getActiveModules());
+		$show_user_favs=WT_USER_ID               && array_key_exists('user_favorites',   WT_Module::getActiveModules());
 		$show_gedc_favs=!$REQUIRE_AUTHENTICATION && array_key_exists('gedcom_favorites', WT_Module::getActiveModules());
 
-		if (!$show_user_favs && !$show_gedc_favs) {
-			return null;
+		if ($show_user_favs) {
+			if ($show_gedc_favs) {
+				$favorites=array_merge(
+					gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM),
+					user_favorites_WT_Module::getUserFavorites(WT_USER_NAME)
+				);
+			} else {
+				$favorites=user_favorites_WT_Module::getUserFavorites(WT_USER_NAME);
+			}
+		} else {
+			if ($show_gedc_favs) {
+				$favorites=gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM);
+			} else {
+				return null;
+			}
 		}
+		// Sort $favorites alphabetically?
 
 		$menu=new WT_Menu(WT_I18N::translate('Favorites'), '#', 'menu-favorites');
 		$menu->addClass('favmenuitem', 'favmenuitem_hover', 'favsubmenu');
-
-		if (WT_USER_ID && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-			$favorites=user_favorites_WT_Module::getUserFavorites(WT_USER_NAME);
-		} else {
-			$favorites=array();
-		}
-
-		$favorites=array_merge(
-			gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM),
-			user_favorites_WT_Module::getUserFavorites(WT_USER_NAME)
-		);
-		// Sort these alphabetically?
 
 		foreach ($favorites as $favorite) {
 			switch($favorite['type']) {
@@ -747,31 +749,33 @@ class WT_MenuBar {
 			}
 		}
 
-		if ($controller instanceof WT_Controller_Individual && $controller->indi) {
-			$submenu=new WT_Menu('Add to favorites', $controller->indi->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->indi->getXref());
-			$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-			$menu->addSubMenu($submenu);
-		} else if ($controller instanceof WT_Controller_Family && $controller->family) {
-			$submenu=new WT_Menu('Add to favorites', $controller->family->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->family->getXref());
-			$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-			$menu->addSubMenu($submenu);
-		} else if ($controller instanceof WT_Controller_Source && $controller->source) {
-			$submenu=new WT_Menu('Add to favorites', $controller->source->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->source->getXref());
-			$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-			$menu->addSubMenu($submenu);
-		} else if ($controller instanceof WT_Controller_Repository && $controller->repository) {
-			$submenu=new WT_Menu('Add to favorites', $controller->repository->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->repository->getXref());
-			$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-			$menu->addSubMenu($submenu);
-		} else if ($controller instanceof WT_Controller_Media && $controller->mediaobject) {
-			$submenu=new WT_Menu('Add to favorites', $controller->mediaobject->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->mediaobject->getXref());
-			$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-			$menu->addSubMenu($submenu);
-		} else if ($controller instanceof WT_ControllerNote && $controller->note) {
-			$submenu=new WT_Menu('Add to favorites', $controller->note->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->note->getXref());
-			$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-			$menu->addSubMenu($submenu);
-		} 
+		if ($show_user_favs) {
+			if ($controller instanceof WT_Controller_Individual && $controller->indi) {
+				$submenu=new WT_Menu('Add to favorites', $controller->indi->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->indi->getXref());
+				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+				$menu->addSubMenu($submenu);
+			} else if ($controller instanceof WT_Controller_Family && $controller->family) {
+				$submenu=new WT_Menu('Add to favorites', $controller->family->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->family->getXref());
+				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+				$menu->addSubMenu($submenu);
+			} else if ($controller instanceof WT_Controller_Source && $controller->source) {
+				$submenu=new WT_Menu('Add to favorites', $controller->source->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->source->getXref());
+				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+				$menu->addSubMenu($submenu);
+			} else if ($controller instanceof WT_Controller_Repository && $controller->repository) {
+				$submenu=new WT_Menu('Add to favorites', $controller->repository->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->repository->getXref());
+				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+				$menu->addSubMenu($submenu);
+			} else if ($controller instanceof WT_Controller_Media && $controller->mediaobject) {
+				$submenu=new WT_Menu('Add to favorites', $controller->mediaobject->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->mediaobject->getXref());
+				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+				$menu->addSubMenu($submenu);
+			} else if ($controller instanceof WT_Controller_Note && $controller->note) {
+				$submenu=new WT_Menu('Add to favorites', $controller->note->getHtmlUrl().'&amp;action=addfav&amp;gid='.$controller->note->getXref());
+				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
+				$menu->addSubMenu($submenu);
+			} 
+		}
 		
 		return $menu;
 	}
