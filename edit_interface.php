@@ -846,6 +846,9 @@ case 'addnewnote_assisted':
 	?>
 	<div class="center font11" style="width:100%;">
 		<b><?php echo WT_I18N::translate('Create a new Shared Note using Assistant'); ?></b>
+		<?php
+			echo wiki_help_link(/* I18N: This is a page on http://wiki.webtrees.net/  Only translate this when a translated page exists on the wiki. */ WT_I18N::translate_c('http://wiki.webtrees.net/', 'Census_Assistant_module'));
+		?>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 			<input type="hidden" name="action" value="addnoteaction_assisted" />
 			<input type="hidden" name="noteid" value="newnote" />

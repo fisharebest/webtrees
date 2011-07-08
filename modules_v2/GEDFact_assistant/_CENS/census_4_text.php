@@ -35,19 +35,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 ?>
-<script>
-function help_window2(frm)  {
-	var aWindow = window.open('http://wiki.phpgedview.net/en/index.php?title=GedFactAssistant_module#Sub-module:_Census_Assistant', 'HelpWindow',
-	'scrollbars=yes,menubar=no,resizable=yes,location=no,toolbar=no,width=900,height=700');
-	aWindow.focus();
-	// set the target to the blank window
-	frm.target = 'TableAddRow2NewWindow';
-}
-</script>
 <!--   ---- The proposed Census Text -------- -->
 <div class="optionbox cens_text wrap">
 <!--[if IE]><style>.cens_text{margin-top:-1.3em;}</style><![EndIf]-->
-	<span><input type="button" value="<?php echo WT_I18N::translate('Help'); ?>" onclick="javascript: help_window2(this.form)" /></span>
 	<span><?php echo WT_I18N::translate('Click &quot;Preview&quot; to copy Edit Input Fields'); ?></span>
 	<span><input type="button" value="<?php echo WT_I18N::translate('Preview'); ?>" onclick="preview();" /></span>
 	<span><b><?php echo WT_I18N::translate('Proposed Census Text&nbsp;&nbsp;'); ?></b></span>

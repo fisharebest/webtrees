@@ -917,11 +917,25 @@ function print_privacy_error() {
 
 // Print a link for a popup help window
 function help_link($help_topic, $module='') {
-	global $WT_USE_HELPIMG, $WT_IMAGES, $SEARCH_SPIDER;
+	global $WT_USE_HELPIMG, $WT_IMAGES;
 
 	if ($_SESSION['show_context_help']) {
 		return
 			'<a class="help icon-help-15" href="javascript: '.$help_topic.'" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
+			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="" />' : WT_I18N::translate('?')).
+			'&nbsp;</a>';
+	} else {
+		return '';
+	}
+}
+
+// Print an external help link to the wiki site, in a new window
+function wiki_help_link($topic) {
+	global $WT_USE_HELPIMG, $WT_IMAGES;
+
+	if ($_SESSION['show_context_help']) {
+		return
+			'<a class="help icon-help-15" href="'.WT_WEBTREES_WIKI.$topic.'" target="_new">&nbsp;'.
 			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="" />' : WT_I18N::translate('?')).
 			'&nbsp;</a>';
 	} else {
