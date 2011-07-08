@@ -42,8 +42,9 @@ class WT_MenuBar {
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_gedcom');
 		//-- gedcom list
 		$gedcom_titles=get_gedcom_titles();
-		if (count($gedcom_titles)>1 && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
-			foreach ($gedcom_titles as $gedcom_title) {
+		$ALLOW_CHANGE_GEDCOM=get_site_setting('ALLOW_CHANGE_GEDCOM');
+		foreach ($gedcom_titles as $gedcom_title) {
+			if ($gedcom_title->gedcom_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new WT_Menu(
 					PrintReady($gedcom_title->gedcom_title, true),
 					'index.php?ctype=gedcom&amp;ged='.rawurlencode($gedcom_title->gedcom_name),
@@ -60,9 +61,7 @@ class WT_MenuBar {
 	}
 
 	public static function getMyPageMenu() {
-		global $MEDIA_DIRECTORY, $MULTI_MEDIA;
-		global $WT_IMAGES;
-		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
+		global $WT_IMAGES, $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
 
 		$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
 		$showLayout = ($PEDIGREE_LAYOUT) ? 1 : 0;
@@ -116,9 +115,7 @@ class WT_MenuBar {
 	}
 
 	public static function getChartsMenu($rootid='') {
-		global $WT_IMAGES, $SEARCH_SPIDER;
-		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
-		global $controller;
+		global $WT_IMAGES, $SEARCH_SPIDER, $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $controller;
 
 		if (isset($controller)) {
 			if (!$rootid) {
@@ -379,7 +376,6 @@ class WT_MenuBar {
 				$link = 'module.php?ged='.WT_GEDURL.'&amp;mod=googlemap&amp;mod_action=pedigree_map';
 				if ($rootid) $link .= '&amp;rootid='.$rootid;
 				$submenu = new WT_Menu($menuName, $link, 'menu-chart-pedigree_map');
-				global $WT_IMAGES;
 				$WT_IMAGES['pedigree_map']=WT_MODULES_DIR.'googlemap/images/pedigree_map.gif';
 				$submenu->addIcon('pedigree_map');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_map');
@@ -391,7 +387,7 @@ class WT_MenuBar {
 	}
 
 	public static function getListsMenu() {
-		global $WT_IMAGES, $MULTI_MEDIA, $SEARCH_SPIDER, $controller;
+		global $MULTI_MEDIA, $SEARCH_SPIDER, $controller;
 
 		$surname='';
 		if (isset($controller)) {
@@ -430,7 +426,7 @@ class WT_MenuBar {
 			'indilist.php'  =>WT_I18N::translate('Individuals'),
 			'placelist.php' =>WT_I18N::translate('Place hierarchy'),
 		);
-		if ($row->obje) {
+		if ($row->obje && $MULTI_MEDIA) {
 			$menulist['medialist.php']=WT_I18N::translate('Media objects');
 		}
 		if ($row->repo) {
@@ -500,12 +496,10 @@ class WT_MenuBar {
 				break;
 
 			case 'medialist.php':
-				if ($MULTI_MEDIA) {
-					$submenu = new WT_Menu($name, $link, 'menu-list-obje');
-					$submenu->addIcon('menu_media');
-					$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_media');
-					$menu->addSubmenu($submenu);
-				}
+				$submenu = new WT_Menu($name, $link, 'menu-list-obje');
+				$submenu->addIcon('menu_media');
+				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_media');
+				$menu->addSubmenu($submenu);
 				break;
 			}
 		}
@@ -514,7 +508,7 @@ class WT_MenuBar {
 	}
 
 	public static function getCalendarMenu() {
-		global $WT_IMAGES, $SEARCH_SPIDER;
+		global $SEARCH_SPIDER;
 
 		if ((!file_exists(WT_ROOT.'calendar.php')) || (!empty($SEARCH_SPIDER))) {
 			$menu = new WT_Menu();
@@ -547,7 +541,7 @@ class WT_MenuBar {
 	* @return WT_Menu the menu item
 	*/
 	public static function getReportsMenu($pid='', $famid='') {
-		global $WT_IMAGES, $SEARCH_SPIDER, $controller;
+		global $SEARCH_SPIDER, $controller;
 
 		$active_reports=WT_Module::getActiveReports();
 		if ($SEARCH_SPIDER || !$active_reports) {
@@ -567,7 +561,7 @@ class WT_MenuBar {
 	}
 
 	public static function getSearchMenu() {
-		global $WT_IMAGES, $SEARCH_SPIDER;
+		global $SEARCH_SPIDER;
 
 		if ($SEARCH_SPIDER) {
 			return null;
@@ -613,7 +607,7 @@ class WT_MenuBar {
 	}
 
 	public static function getHelpMenu() {
-		global $WT_IMAGES, $SEARCH_SPIDER, $helpindex, $action;
+		global $SEARCH_SPIDER, $helpindex;
 
 		if (!empty($SEARCH_SPIDER)) {
 			return null;
@@ -688,8 +682,6 @@ class WT_MenuBar {
 	}
 
 	public static function getLanguageMenu() {
-		global $WT_IMAGES;
-
 		$menu=new WT_Menu(WT_I18N::translate('Language'), '#', 'menu-language', 'down');
 		$menu->addClass('langmenuitem', 'langmenuitem_hover', 'submenu', 'icon_language');
 

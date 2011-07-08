@@ -184,23 +184,23 @@ class WT_Menu {
 		if ($this->link=="#") $this->link = "javascript:;";
 		$link = "<a href=\"{$this->link}\" onmouseover=\"";
 		if ($c >= 0) {
-			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}', '{$this->flyout}'); ";
+			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}', '{$this->flyout}');";
 		}
 		if ($this->hoverclass !== null) {
-			$link .= "change_class('menu{$id}', '{$this->hoverclass}'); ";
+			$link .= "change_class('menu{$id}', '{$this->hoverclass}');";
 		}
 		if ($this->hovericon !== null) {
-			$link .= "change_icon('menu{$id}_icon', '{$this->hovericon}'); ";
+			$link .= "change_icon('menu{$id}_icon', '{$this->hovericon}');";
 		}
 		$link .= '" onmouseout="';
 		if ($c >= 0) {
-			$link .= "timeout_submenu('menu{$id}_subs'); ";
+			$link .= "timeout_submenu('menu{$id}_subs');";
 		}
 		if ($this->hoverclass !== null) {
-			$link .= "change_class('menu{$id}', '{$this->class}'); ";
+			$link .= "change_class('menu{$id}', '{$this->class}');";
 		}
 		if ($this->hovericon !== null) {
-			$link .= "change_icon('menu{$id}_icon', '{$this->icon}'); ";
+			$link .= "change_icon('menu{$id}_icon', '{$this->icon}');";
 		}
 		if ($this->onclick !== null) {
 			$link .= "\" onclick=\"{$this->onclick}";
