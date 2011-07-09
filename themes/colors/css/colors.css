@@ -1,5 +1,5 @@
 /**
-* Style for colors theme
+ * Style for colors theme
  *
  * webtrees: Web based Family History software
  * Copyright (C) 2011 webtrees development team.
@@ -22,11 +22,10 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
- * $Id: ash.css 11806 2011-06-13 00:21:19Z nigel $
-*/
+ * $Id: colors.css 11973 2011-07-07 18:37:11Z rob $
+ */
 
-
-
+/* =================== */
 /* Set global defaults */
 
 body { font: 12px tahoma, arial, helvetica, sans-serif; background:#fff; }
@@ -49,10 +48,6 @@ body { font: 12px tahoma, arial, helvetica, sans-serif; background:#fff; }
 	-webkit-border-radius:3px;
 }
 
-:focus {
-  outline-style:none;
-}
-
 /* ================= */
 /*   Header Layout   */
 
@@ -65,21 +60,22 @@ html[dir='rtl'] .makeMenu {display: block; float: left;  margin: 40px 0px 0px 10
 html[dir='rtl'] .topMenu_right {float: left;} 
 
 /* ====================== */
-/* Layout Left Main menu  */
+/* Layout Main menu  */
 
 /* set up div container for menu */
 #topMenu { clear: both; height:51px; float: left; width: 100%; margin:0; padding:0; margin-top: 0px;}
 
-/* Set up Top Menu */
+/* Top Menu */
 
 #topMenu ul { margin: 0; padding: 0; list-style: none; position:relative; }
 #topMenu ul li { display: block; list-style:none; width: auto; float:left; position:relative; }
 #topMenu ul li a { margin: auto; display: block; font-size: 14px; text-align: center; padding: 5px 5px 5px 5px; text-decoration: none; height: 12px; }
+#topMenu > ul > li > a  { height: 27px; }
 
 html[dir='rtl'] #topMenu {	float: right;}
 html[dir='rtl'] #topMenu ul li { float: right;}
 
-/* Subnavigation section */
+/* Submenu one */
 
 #topMenu ul ul 		{ background: none; display:none;  position:absolute; z-index:2001; top: 40px; left:0; right: auto; width: auto; background: #fff; text-align: left; border: 1px solid #ccc; white-space: nowrap; }
 #topMenu ul ul li 	{ left:auto;  margin:0;  clear:left;  text-align:left;  width:100% }
@@ -89,11 +85,11 @@ html[dir='rtl'] #topMenu ul ul 		{right: 0px; left: auto; }
 html[dir='rtl'] #topMenu ul ul li 	{ right:auto; clear:right; text-align:right;}
 html[dir='rtl'] #topMenu ul ul li a	{ text-align: right; float: right; padding-right: 30px;}
  
-/* Submenu horizontal */
+/* Submenu two */
 
 #topMenu ul ul ul{ display:none!important; } 
 
-/* Set up hover layout and style */
+/* Hover Layout */
 
 #topMenu ul li:hover ul 	{ display: block; }
 #topMenu ul li:hover li		{ float: none; }
@@ -104,6 +100,7 @@ html[dir='rtl'] #topMenu ul ul li a	{ text-align: right; float: right; padding-r
 html[dir='rtl'] #topMenu ul  ul li:hover ul { margin-left: auto; margin-right: 118px; } 
 
 /*  Mainmenu Icons*/
+
 #topMenu > ul > li {
 	background-image:url(../images/sprites-top-menu.png);
 	background-repeat:no-repeat;
@@ -266,9 +263,8 @@ html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
 #menu-language li {text-align:left;} /* The language menu is always LTR, even on RTL pages */
 #menu-theme    li {text-align:left;} /* The theme menu is always LTR, even on RTL pages */
 
-/* Options Menu, language, theme, login */
-
-.toplinks_right 				{ float: right; padding: 13px 15px 10px 10px; } 
+/* ============================================= */
+/* Options Menu, language, theme, palette, login */
 
 .makeMenu li 					{ z-index: 100; display:inline; position:relative; white-space:nowrap; }
 .makeMenu li:before 			{ content:" | "; }
@@ -287,6 +283,14 @@ li a.link 						{ font-size: 13px; margin-right: 5px; margin-left: 5px; }
 html[dir='rtl'] .toplinks_right { float: left; padding: 13px 10px 10px 10px; }
 html[dir='rtl'] .makeMenu li ul { left:auto; right:0px; }
 html[dir='rtl'] .makeMenu li ul li { text-align:right!important; }
+
+/* ================ */
+/*  Standard style  */
+
+a { color:#333333; text-decoration: none; }
+a:link, a:visited, a:active, .menuitem a, .nameZoom { color:#333333; }
+a:hover { color: red; text-decoration: none; }
+:focus { outline-style:none; }
 
 /*   Edit Facts */
 td.descriptionbox div a {
@@ -1805,9 +1809,11 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 #indi_left {float:left; width:98%;}
 #main {min-width:600px; width:100%}
 #separator {float:right; display:block; width:0.75%; min-width: 6px; max-width:10px; border:1px solid #999; -moz-border-radius-topleft:3px; -moz-border-radius-topright:3px; margin-top:5px;}
+#separator { background-image: url('../images/general_sprite.png'); background-repeat: no-repeat; background-position: -26px 100px; }
 #sidebar {border-color:#DDD; display:none; margin:5px 2px 0 0; height:auto;}
 #tabs {background-color:#FFF; border-color:#DDD; float:left; width:100%; overflow:auto;}
 .sidebar-at-right #sidebar { width:20%;}
+.use-sidebar #separator { background-image: url('../images/general_sprite.png'); background-repeat: no-repeat; background-position: -1px 100px; }
 
 .use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}
@@ -1815,6 +1821,8 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 
 html[dir='rtl'] #indi_left {float:right;}
 html[dir='rtl'] #sidebar  {margin:5px 0 0 2px;}
+html[dir='rtl'] #separator { background-image: url('../images/general_sprite.png'); background-repeat: no-repeat; background-position: -1px 100px; }
+html[dir='rtl'] .use-sidebar #separator { background-image: url('../images/general_sprite.png'); background-repeat: no-repeat; background-position: -26px 100px; }
 html[dir='rtl'] #tabs {float:right;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
 
