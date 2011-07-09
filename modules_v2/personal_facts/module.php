@@ -103,7 +103,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 					}
 				} else {
 					//$reftags = array ('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID');// list of tags used in "Extra information" sidebar module
-					if (!in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !array_key_exists('extra_info', WT_Module::getActiveModules())) {
+					if (!in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !array_key_exists('extra_info', WT_Module::getActiveSidebars())) {
 						print_fact($fact, $this->controller->indi);
 					}
 				}
