@@ -267,7 +267,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
 			if (!in_array($birttag, $opt_tags)) {
 				$event = $person->getFactByType($birttag);
-				if (!is_null($event) && $event->canShow()) {
+				if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
 					$BirthDeath .= $event->print_simple_fact(true);
 					break;
 					}
@@ -288,7 +288,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			// Show DEAT or equivalent event
 			foreach (explode('|', WT_EVENTS_DEAT) as $deattag) {
 			$event = $person->getFactByType($deattag);
-			if (!is_null($event) && $event->canShow()) {
+			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
 				$BirthDeath .= $event->print_simple_fact(true);
 					if (in_array($deattag, $opt_tags)) {
 						unset ($opt_tags[array_search($deattag, $opt_tags)]);

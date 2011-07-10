@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -658,7 +658,7 @@ class WT_GedcomRecord {
 	public function format_first_major_fact($facts, $style) {
 		foreach ($this->getAllFactsByType(explode('|', $facts)) as $event) {
 			// Only display if it has a date or place (or both)
-			if (($event->getDate() || $event->getPlace()) && $event->canShow()) {
+			if (($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
 				switch ($style) {
 				case 1:
 					return '<br /><em>'.$event->getLabel().' '.format_fact_date($event).format_fact_place($event).'</em>';
