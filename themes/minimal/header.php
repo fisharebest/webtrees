@@ -59,8 +59,11 @@ if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {
 	echo '<link rel="stylesheet" href="', $rtl_stylesheet, '" type="text/css" media="all" />';
 }
 
-if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
-	echo '<link rel="stylesheet" href="', WT_THEME_DIR.$BROWSERTYPE, '.css" type="text/css" media="all" />';
+switch ($BROWSERTYPE) {
+//case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
+case 'msie':
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, $BROWSERTYPE, '.css" />';
+	break;
 }
 
 // Additional css files required (Only if Lightbox installed)

@@ -51,8 +51,11 @@ echo
 	'<link type="text/css" rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" />',
 	'<link type="text/css" rel="stylesheet" href="', $stylesheet, '" />';
 
-if (file_exists(WT_THEME_DIR.$BROWSERTYPE.'.css')) {
-	echo '<link type="text/css" rel="stylesheet" href="',  WT_THEME_DIR, $BROWSERTYPE, '.css" />';
+switch ($BROWSERTYPE) {
+//case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
+case 'msie':
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, $BROWSERTYPE, '.css" />';
+	break;
 }
 
 if (WT_USE_LIGHTBOX) {
