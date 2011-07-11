@@ -63,7 +63,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		ob_start();
 		// For Reorder media ------------------------------------
-		if (WT_USER_CAN_EDIT) {
+		if (WT_USER_GEDCOM_ADMIN) {
 			echo "<center>";
 			require_once './includes/media_tab_head.php';
 			echo "</center>";
