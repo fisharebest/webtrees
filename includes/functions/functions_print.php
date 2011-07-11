@@ -157,7 +157,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				if ($ZOOM_BOXES=="mouseover") $icons .= $mouseAction2;
 				if ($ZOOM_BOXES=="mousedown") $icons .= $mouseAction3;
 				if ($ZOOM_BOXES=="click") $icons .= $mouseAction4;
-				$icons .= "><img id=\"iconz-$boxID\" src=\"".$WT_IMAGES["zoomin"]."\" width=\"25\" height=\"25\" border=\"0\" alt=\"".WT_I18N::translate('Zoom in/out on this box.')."\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\" /></a>";
+				$icons .= "><img id=\"iconz-$boxID\" src=\"".$WT_IMAGES["zoomin"]."\" border=\"0\" alt=\"".WT_I18N::translate('Zoom in/out on this box.')."\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\" /></a>";
 			}
 			if ($LINK_ICONS!="disabled") {
 				$click_link="javascript:;";
@@ -203,7 +203,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				$icons .= "onmouseout=\"family_box_timeout('".$boxID."');";
 				$icons .= " return false;\"";
 				if (($click_link=="#")&&($LINK_ICONS!="click")) $icons .= "onclick=\"return false;\"";
-				$icons .= "><img src=\"".$WT_IMAGES["pedigree"]."\" width=\"25\" border=\"0\" vspace=\"0\" hspace=\"0\" alt=\"".WT_I18N::translate('Links to charts, families, and close relatives of this person. Click this icon to view this page, starting at this person.')."\" title=\"".WT_I18N::translate('Links to charts, families, and close relatives of this person. Click this icon to view this page, starting at this person.')."\" /></a>";
+				$icons .= "><img src=\"".$WT_IMAGES["pedigree"]."\" border=\"0\" vspace=\"0\" hspace=\"0\" alt=\"".WT_I18N::translate('Links to charts, families, and close relatives of this person. Click this icon to view this page, starting at this person.')."\" title=\"".WT_I18N::translate('Links to charts, families, and close relatives of this person. Click this icon to view this page, starting at this person.')."\" /></a>";
 			}
 		}
 		else {

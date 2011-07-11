@@ -275,7 +275,7 @@ html[dir='rtl'] #main-menu li li a 		{ float:right;padding:1px 5px 1px 10px; }
 #menu-sour-editraw          { background-position:left -667px; } html[dir=rtl] #menu-sour-editraw           { background-position:right -667px; }
 
 /*  Stories  */
-#menu-story-sub           { background-position:left -900px; } html[dir=rtl] #menu-story-sub            { background-position:right -900px; }
+#menu-story-sub           { background-position:left -920px; } html[dir=rtl] #menu-story-sub            { background-position:right -920px; }
 
 #menu-language li {text-align:left;} /* The language menu is always LTR, even on RTL pages */
 #menu-theme    li {text-align:left;} /* The theme menu is always LTR, even on RTL pages */
