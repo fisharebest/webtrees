@@ -104,30 +104,35 @@ echo WT_JS_START; ?>
 				<tbody>
 					<?php
 					$order = 1;
-					foreach (WT_Module::getInstalledMenus() as $module) { ?>
-					<tr class="sortme">
-						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getTitle(); ?></td>
-						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
-						<td><input type="text" size="3" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName(); ?>" />
-						</td>
-						<td>
-							<table class="modules_table2">
-								<?php
-									foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-										$varname = 'menuaccess-'.$module->getName().'-'.$ged_id;
-										$access_level=WT_DB::prepare(
-											"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='menu'"
-										)->execute(array($ged_id, $module->getName()))->fetchOne();
-										if ($access_level===null) {
-											$access_level=$module->defaultAccessLevel();
+					foreach (WT_Module::getInstalledMenus() as $module) {
+						if (array_key_exists($module->getName(), $module->getActiveModules())) {
+							echo '<tr class="sortme">';
+						} else {
+							echo '<tr class="sortme rela">';
+						}
+						?>
+							<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getTitle(); ?></td>
+							<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
+							<td><input type="text" size="3" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName(); ?>" />
+							</td>
+							<td>
+								<table class="modules_table2">
+									<?php
+										foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+											$varname = 'menuaccess-'.$module->getName().'-'.$ged_id;
+											$access_level=WT_DB::prepare(
+												"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='menu'"
+											)->execute(array($ged_id, $module->getName()))->fetchOne();
+											if ($access_level===null) {
+												$access_level=$module->defaultAccessLevel();
+											}
+											echo '<tr><td>',  WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td><td>';
+											echo edit_field_access_level($varname, $access_level);
 										}
-										echo '<tr><td>',  WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td><td>';
-										echo edit_field_access_level($varname, $access_level);
-									}
-								?>
-							</table>
-						</td>
-					</tr>
+									?>
+								</table>
+							</td>
+						</tr>
 					<?php
 					$order++;
 					}

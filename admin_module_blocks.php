@@ -83,8 +83,13 @@ print_header(WT_I18N::translate('Module administration'));
 				<tbody>
 					<?php
 					$order = 1;
-					foreach (WT_Module::getInstalledBlocks() as $module) { ?>
-					<tr>
+					foreach (WT_Module::getInstalledBlocks() as $module) {
+						if (array_key_exists($module->getName(), $module->getActiveModules())) {
+							echo '<tr>';
+						} else {
+							echo '<tr class="rela">';
+						}
+					?>
 						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getTitle(); ?></td>
 						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
 						<td>

@@ -104,12 +104,16 @@ echo WT_JS_START; ?>
 				<tbody>
 					<?php
 					$order = 1;
-					foreach (WT_Module::getInstalledSidebars() as $module) { ?>
-						<tr class="sortme">
+					foreach (WT_Module::getInstalledSidebars() as $module) { 
+						if (array_key_exists($module->getName(), $module->getActiveModules())) {
+							echo '<tr class="sortme">';
+						} else {
+							echo '<tr class="sortme rela">';
+						}
+						?>
 							<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getTitle(); ?></td>
 							<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
-							<td><input type="text" size="3" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName(); ?>" />
-							</td>
+							<td><input type="text" size="3" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName(); ?>" /></td>
 							<td>
 								<table class="modules_table2">
 									<?php
