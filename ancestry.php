@@ -27,7 +27,7 @@
 
 define('WT_SCRIPT_NAME', 'ancestry.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 // -- array of GEDCOM elements that will be found but should not be displayed
 $nonfacts[] = "FAMS";

@@ -25,7 +25,7 @@
 
 define('WT_SCRIPT_NAME', 'addmedia.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 // TODO use GET/POST, rather than $_REQUEST

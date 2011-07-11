@@ -27,7 +27,7 @@
 
 define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 if (isset($_REQUEST['cal'])) $cal = $_REQUEST['cal'];
 if (isset($_REQUEST['day'])) $day = $_REQUEST['day'];

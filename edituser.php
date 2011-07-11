@@ -25,7 +25,7 @@
 
 define('WT_SCRIPT_NAME', 'edituser.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_print_lists.php';
+require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 // prevent users with editing account disabled from being able to edit their account
