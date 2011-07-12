@@ -26,7 +26,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -2251,9 +2251,11 @@ class WT_Stats {
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' husbbirth.d_gid = fam.f_husb AND'
-				." husbbirth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				//." husbbirth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				." husbbirth.d_fact = 'BIRT' AND"
 				.' wifebirth.d_gid = fam.f_wife AND'
-				." wifebirth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				//." wifebirth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+				." wifebirth.d_fact = 'BIRT' AND"
 				.$query2
 			.' GROUP BY'
 				.' family'
