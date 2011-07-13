@@ -10,7 +10,7 @@
 .makeMenu li ul {
 	top: -6px; 
 }
-/*==========  IE7 Fixes ============================= */
+
 .rela {
 	filter: alpha(opacity=67);
 }

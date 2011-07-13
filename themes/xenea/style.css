@@ -1163,16 +1163,6 @@ left:auto;
 	color: #555555;
 }
 
-.barra {
-	color: black;
-	font-size:11px;
-}
-
-.blanco {
-	color: white;
-	font-weight:bold; font-size:11px;
-}
-
 input, button, textarea {
 	border-color: white #000066 #000066 white;
 	border-width: 1px;

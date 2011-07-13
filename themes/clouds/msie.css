@@ -18,7 +18,6 @@ a.showit:hover span {
 .makeMenu li ul {
 top: 0px!important;
 }
-/* ============  IE7 Fixes =============*/
 
 div.blockcontent {
 *margin-top: 10px!important; }
@@ -35,5 +34,9 @@ position: relative; z-index: 2001;
 
 #header {
   position: relative; z-index: 2002; 
+}
+
+div.blockcontent {
+*margin-top: -2px; 
 }
 

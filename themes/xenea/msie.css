@@ -6,7 +6,6 @@
 	top: 2px!important; 
 	z-index: 9000;
 }
-/*==========  IE7 Fixes ============================= */
 .rela {
 	filter: alpha(opacity=67);
 }

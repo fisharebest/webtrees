@@ -437,7 +437,6 @@ padding: 1px;
 div.blockcontent {
 border: solid #999 1px;
 margin-left:auto;
-*margin-top: -2px; /* IE7 fix */
 margin-right:2px;  /* changed from auto for right side match to header */
 margin-bottom:10px;
 font-size: 13px;
@@ -1137,11 +1136,6 @@ vertical-align:top;
 .listlog {
 line-height:20pt;
 color:#555;
-}
-
-.barra {
-color:#000;
-font-size: 11px;
 }
 
 .blanco {
