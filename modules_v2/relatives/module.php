@@ -490,14 +490,12 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 			</tr>
 			<?php } ?>
-<?php if (WT_USER_CAN_ACCEPT) { // NOTE this function is restricted to ACCEPTORS because another bug prevents pending changes being shown on the close relatives tab of the indi page. Once that bug is fixed, this function can be opened up to all! ?>
 			<tr>
 				<td class="facts_value">
 				<a href="javascript:;" onclick="return addopfchild('<?php echo $this->controller->pid; ?>','U');"><?php echo WT_I18N::translate('Add a child to create a one-parent family'); ?></a>
 				<?php echo help_link('add_opf_child'); ?>
 				</td>
 			</tr>
-<?php } ?>
 		</table>
 		<?php } ?>
 		<br />
