@@ -101,7 +101,7 @@ if ($SEARCH_SPIDER) {
 
 	// Top row right 
 	echo 
-	'<div>',
+	'<div class="optionsMenu" >',
 	'<ul class="makeMenu">';
 
 	if (WT_USER_ID) {

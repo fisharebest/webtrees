@@ -423,28 +423,28 @@ div.blockcontent {
 }
 
 .blockh1 {
-background-image:url(../images/left1B.gif);
+background-image:url(../images/left1B.png);
 background-repeat: no-repeat;
 width:26px;
 height:24px;
 }
 
-html[dir='rtl'] .blockh1 {	background-image: url(../images/right1B.gif); }
+html[dir='rtl'] .blockh1 {	background-image: url(../images/right1B.png); }
 
 .blockh2 { 
-background-image:url(../images/left2.gif);
+background-image:url(../images/left2.png);
 background-repeat:repeat-x;
 font-size: 13px;
 font-weight:bold;
 }
 
 .blockh3 {
-background-image:url(../images/left3.gif);
+background-image:url(../images/left3.png);
 background-repeat:no-repeat;
 width:8px;
 height:24px;
 }
-html[dir='rtl'] .blockh3 { background-image: url(../images/right3.gif); }
+html[dir='rtl'] .blockh3 { background-image: url(../images/right3.png); }
 
 .blockhc {
 padding-right:15px;
