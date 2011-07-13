@@ -61,8 +61,7 @@ if (!$this->controller->indi->canDisplayDetails()) {
 } else {
 	?>
 	<tr>
-		<td></td>
-		<td class="descriptionbox rela"><input id="checkbox_note2"
+		<td colspan="2" class="descriptionbox rela"><input id="checkbox_note2"
 			type="checkbox"
 			<?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?>
 			onclick="toggleByClassName('TR', 'row_note2');" /> <label

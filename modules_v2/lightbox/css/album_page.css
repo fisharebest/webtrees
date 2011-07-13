@@ -74,6 +74,9 @@
 
 #lightbox {margin-bottom:100px;}
 
+#lightbox  .descriptionbox span {margin:0 20px;}
+#lightbox  .descriptionbox .icon {padding: 0 2px 2px 2px; vertical-align: middle;}
+
 .lb_notes:target, .lb_notes:target a{
 	color:#000000;
     background-color: #ffffcc;

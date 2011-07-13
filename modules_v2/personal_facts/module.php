@@ -80,8 +80,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			if (!isset($this->controller->skipFamilyFacts)) {
 			?>
 			<tr id="row_top">
-				<td valign="top"></td>
-				<td class="descriptionbox rela">
+				<td colspan="2" class="descriptionbox rela">
 					<input id="checkbox_rela_facts" type="checkbox" <?php if ($EXPAND_RELATIVES_EVENTS) echo ' checked="checked"'; ?> onclick="toggleByClassName('TR', 'row_rela');" />
 					<label for="checkbox_rela_facts"><?php echo WT_I18N::translate('Events of close relatives'); ?></label>
 					<?php if (file_exists(get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) { ?>

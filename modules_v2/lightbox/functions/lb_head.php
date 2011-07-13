@@ -64,29 +64,27 @@ if (isset($reorder) && $reorder==1) {
 } else {
 	//Show Lightbox-Album header Links
 	if (WT_USER_CAN_EDIT) {
-		echo '<table border="0" width="75%"><tr>';
+		echo '<table class="facts_table"><tr>';
 		// Add a new media object
-		echo '<td class="width15 center wrap" valign="top">';
-		echo '<a href="javascript: album_add()">';
-		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new media object'), '" alt="', WT_I18N::translate('Add a new media object'), '" /><br />';
+		echo '<td class="descriptionbox rela">';
+		echo '<span><a href="javascript: album_add()">';
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new media object'), '" alt="', WT_I18N::translate('Add a new media object'), '" />';
 		echo WT_I18N::translate('Add a new media object');
-		echo '</a>';
-		echo '</td>';
+		echo '</a></span>';
 		// Link to an existing item
-		echo '<td class="width15 center wrap" valign="top">';
-		echo '<a href="javascript: album_link()">';
-		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_link.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Link to an existing media object'), '" alt="', WT_I18N::translate('Link to an existing media object'), '" /><br />';
+		echo '<span><a href="javascript: album_link()">';
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_link.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Link to an existing media object'), '" alt="', WT_I18N::translate('Link to an existing media object'), '" />';
 		echo WT_I18N::translate('Link to an existing media object');
-		echo '</a>';
-		echo '</td>';
+		echo '</a></span>';
+//		echo '</td>';
 	}
 	if (WT_USER_GEDCOM_ADMIN) {
 		// Popup Reorder Media
-		echo '<td class="width15 center wrap" valign="top">';
-		echo '<a href="javascript: reorder_media()">';
-		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '" /><br />';
-		echo WT_I18N::translate('Re-order media (window)');
-		echo '</a>';
+//		echo '<td class="width15 center wrap" valign="top">';
+		echo '<span><a href="javascript: reorder_media()">';
+		echo '<img src="', WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '" />';
+		echo WT_I18N::translate('Re-order media');
+		echo '</a></span>';
 		echo '</td>';
 		echo '</tr></table>';
 	}
