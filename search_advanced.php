@@ -137,7 +137,7 @@ echo WT_JS_END;
 <input type="hidden" name="isPostBack" value="true" />
 <table id="field_table" class="list_table <?php echo $TEXT_DIRECTION; ?>" width="35%" border="0">
 	<tr>
-		<td colspan="4" class="facts_label03" style="text-align:center; ">
+		<td colspan="4" class="facts_label03" style="text-align:center;">
 			<?php echo WT_I18N::translate('Advanced search'); ?>
 		</td>
 	</tr>
@@ -212,7 +212,7 @@ echo WT_JS_END;
 				<table>
 					<!--  father -->
 					<tr>
-						<td colspan="2" class="facts_label03" style="text-align:center; ">
+						<td colspan="2" class="facts_label03" style="text-align:center;">
 							<?php echo WT_I18N::translate('Father'); ?>
 						</td>
 					</tr>
@@ -249,7 +249,7 @@ echo WT_JS_END;
 					<?php $j++; ?>
 					<tr><td colspan="2">&nbsp;</td></tr>
 					<tr>
-						<td colspan="2" class="facts_label03" style="text-align:center; ">
+						<td colspan="2" class="facts_label03" style="text-align:center;">
 							<?php echo WT_I18N::translate('Mother'); ?>
 						</td>
 					</tr>

@@ -238,7 +238,7 @@ if ($controller->action == "replace")
 /**************************************************** Phonetic search Form *************************************************************/
 if ($controller->action == "soundex") {
 ?>
-				<td colspan="3" class="facts_label03" style="text-align:center; ">
+				<td colspan="3" class="facts_label03" style="text-align:center;">
 					<?php echo WT_I18N::translate('Search the way you think the name is written (Soundex)'), help_link('soundex_search'); ?>
 				</td>
 	</tr>
@@ -286,10 +286,10 @@ if ($controller->action == "soundex") {
 		<td class="list_value" >
 			<input type="radio" name="soundex" value="Russell"
 				<?php if ($controller->soundex == "Russell") echo ' checked="checked" '; ?>/>
-			<?php echo WT_I18N::translate('Basic'); ?><br />
+			<?php echo /* I18N: http://en.wikipedia.org/wiki/Soundex */ WT_I18N::translate('Russell'); ?><br />
 			<input type="radio" name="soundex" value="DaitchM"
 				<?php if ($controller->soundex == "DaitchM" || $controller->soundex == "") echo ' checked="checked" '; ?>/>
-			<?php echo WT_I18N::translate('Daitch-Mokotoff'); ?>
+			<?php echo /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */ WT_I18N::translate('Daitch-Mokotoff'); ?>
 		</td>
 	</tr>
 
@@ -379,7 +379,7 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 		<td class="list_label" style="padding: 5px;" >
 			<?php echo WT_I18N::translate('Other Searches'); ?>
 		</td>
-		<td class="list_value" style="padding: 5px; text-align:center; " colspan="2" >
+		<td class="list_value" style="padding: 5px; text-align:center;" colspan="2" >
 			<?php
 
 if ($controller->action == "general") {
