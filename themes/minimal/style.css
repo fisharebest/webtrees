@@ -1582,3 +1582,39 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0px;}
 #sb_content_extra_info #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
 
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
+@media print {
+#backprint, #header, #topMenu {
+	display:none;
+}
+/*-- pedigree chart specific stylesheets --*/
+#pedigree_chart {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+/*-- pedigree chart rtl specific stylesheets --*/
+html[dir='rtl'] #pedigree_chart {
+left:auto;
+right:0px;
+}
+
+#header, #footer, .noprint {display:none !important;}
+form, button, input {display: none;} /* buttons and input are used out of forms in sortable tables*/
+
+.lifespan_outer {
+	position: relative;
+	width: auto;
+	height: auto;
+	overflow: visible;
+	border: none;
+}
+
+.lifespan_people {
+	position: absolute;
+	width: auto;
+	left: -10px;
+	top: -60px;
+	z-index:1;
+}
+
+}

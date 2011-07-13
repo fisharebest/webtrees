@@ -36,8 +36,7 @@ echo
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
 	'<link rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" type="text/css"  />',	'<link rel="stylesheet" href="', WT_THEME_DIR, 'css/colors.css" type="text/css" />',
-	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
-	'<link rel="stylesheet" href="', $print_stylesheet,'" type="text/css" media="print" />';
+	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed

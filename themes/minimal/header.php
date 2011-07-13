@@ -79,7 +79,6 @@ if (WT_USE_LIGHTBOX) {
 
 echo
 	'<link type="text/css" href="', WT_THEME_DIR, 'modules.css" rel="Stylesheet" />',
-	'<link rel="stylesheet" href="', $print_stylesheet, '" type="text/css" media="print" />',
 	$javascript,
 	'</head>',
 	'<body id="body">';
