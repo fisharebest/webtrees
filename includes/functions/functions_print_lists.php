@@ -1505,7 +1505,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	?>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
-			jQuery('#<?php $table_id; ?>').dataTable( {
+			jQuery('#<?php echo $table_id; ?>').dataTable( {
 				"bAutoWidth":false,
 				"bPaginate": false,
 				"bLengthChange": false,
