@@ -68,9 +68,9 @@ if ($ENABLE_AUTOCOMPLETE) {
 				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
 				<input type="submit" value="<?php echo WT_I18N::translate('Random surname'); ?>" onclick="document.surnlist.surn.value='*';" />
 				<p class="details1">
-					<?php echo WT_I18N::translate('Search the way you think the name is written (Soundex)'), help_link('soundex_search'); ?><br />
+					<?php echo WT_I18N::translate('Phonetic search'); ?><br />
 					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo ' checked="checked"'; ?> />
-					<label for="soundex_std"><?php echo WT_I18N::translate('Basic'); ?></label>
+					<label for="soundex_std"><?php echo WT_I18N::translate('Russell'); ?></label>
 					<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php if ($soundex_dm) echo ' checked="checked"'; ?> />
 					<label for="soundex_dm"><?php echo WT_I18N::translate('Daitch-Mokotoff'); ?></label>
 				</p>

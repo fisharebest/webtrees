@@ -239,7 +239,7 @@ if ($controller->action == "replace")
 if ($controller->action == "soundex") {
 ?>
 				<td colspan="3" class="facts_label03" style="text-align:center;">
-					<?php echo WT_I18N::translate('Search the way you think the name is written (Soundex)'), help_link('soundex_search'); ?>
+					<?php echo WT_I18N::translate('Phonetic search'); ?>
 				</td>
 	</tr>
 	<!-- // search terms -->
@@ -281,7 +281,7 @@ if ($controller->action == "soundex") {
 	<!-- Soundex type options (Russell, DaitchM) -->
 	<tr>
 		<td class="list_label">
-			<?php echo WT_I18N::translate('Soundex type:'); ?>
+			<?php echo /* I18N: rules for matching names by sound, rather than spelling */ WT_I18N::translate('Phonetic algorithm'); ?>
 		</td>
 		<td class="list_value" >
 			<input type="radio" name="soundex" value="Russell"
