@@ -1379,12 +1379,10 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
         case 'date_desc':   //date descending
             $aaSorting = "[4,'desc'], [5,'asc']";
     }
-    echo WT_JS_START . 'var table_id = "' . $table_id . '"' . WT_JS_END;
 ?>
-    <script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function(){
-            jQuery('#'+table_id).dataTable( {
+					jQuery('#<?php echo $table_id; ?>').dataTable( {
                 "bAutoWidth":false,
                 "bPaginate": false,
                 "bLengthChange": false,
@@ -1504,12 +1502,10 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
 	global $TEXT_DIRECTION, $WT_IMAGES;
 	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
-	echo WT_JS_START.'var table_id = "'.$table_id.'"'.WT_JS_END;
 	?>
-	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
-			jQuery('#'+table_id).dataTable( {
+			jQuery('#<?php $table_id; ?>').dataTable( {
 				"bAutoWidth":false,
 				"bPaginate": false,
 				"bLengthChange": false,
