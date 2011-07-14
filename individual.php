@@ -45,8 +45,8 @@ if ($controller->indi && $controller->indi->canDisplayDetails()) {
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
 					'This individual has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="' . $controller->indi->getHtmlUrl() . '&amp;action=accept">' . WT_I18N::translate_c('You should accept or reject it.', 'accept') . '</a>',
-					'<a href="' . $controller->indi->getHtmlUrl() . '&amp;action=undo">' . WT_I18N::translate_c('You should accept or reject it.', 'reject') . '</a>'
+					'<a href="' . $controller->indi->getHtmlUrl() . '&amp;action=accept">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="' . $controller->indi->getHtmlUrl() . '&amp;action=undo">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -63,8 +63,8 @@ if ($controller->indi && $controller->indi->canDisplayDetails()) {
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
 					'This individual has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="' . $controller->indi->getHtmlUrl() . '&amp;action=accept">' . WT_I18N::translate_c('You should accept or reject it.', 'accept') . '</a>',
-					'<a href="' . $controller->indi->getHtmlUrl() . '&amp;action=undo">' . WT_I18N::translate_c('You should accept or reject it.', 'reject') . '</a>'
+					'<a href="' . $controller->indi->getHtmlUrl() . '&amp;action=accept">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="' . $controller->indi->getHtmlUrl() . '&amp;action=undo">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
