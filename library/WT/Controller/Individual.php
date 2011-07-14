@@ -293,6 +293,15 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		echo '<div id="name1">';
 		echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
 		echo '<dd class="field">', $dummy->getFullName();
+		if ($this->name_count == 1) {
+			if (WT_USER_IS_ADMIN) {
+				$user_id=get_user_from_gedcom_xref(WT_GED_ID, $this->pid);
+				if ($user_id) {
+					$user_name=get_user_name($user_id);
+					echo '<span> - <a class="warning" href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</span></a>';
+				}
+			}
+		}
 		if ($this->indi->canEdit() && !strpos($factrec, "\nWT_OLD")) {
 			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"javascript:;\" onclick=\"delete_record('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
 			echo "<div class=\"editlink\"><a href=\"javascript:;\" class=\"font9 editicon\" onclick=\"edit_name('".$this->pid."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
@@ -304,7 +313,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		for ($i=0; $i<$ct; $i++) {
 			echo '<div>';
 				$fact = trim($nmatch[$i][1]);
-				if (($fact!="SOUR")&&($fact!="NOTE") && ($fact!="SPFX")) {
+				if (($fact!="SOUR") && ($fact!="NOTE") && ($fact!="SPFX")) {
 					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->indi), '</dt>';
 					echo '<dd class="field">';
 						if (isset($nmatch[$i][2])) {

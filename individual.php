@@ -200,59 +200,34 @@ if ($controller->indi->canDisplayDetails()) {
 	}
 	echo '</div>'; // close #indi_mainimage
 	$globalfacts=$controller->getGlobalFacts();
-	echo '<div id="header_accordion1">', // contain accordions for names
-		'<h3 class="name_one ', $controller->getPersonStyle($controller->indi), '"><span>', $controller->indi->getFullName(), '</span>'; // First name accordion element
-			if (WT_USER_IS_ADMIN) {
-				$user_id=get_user_from_gedcom_xref(WT_GED_ID, $controller->pid);
-				if ($user_id) {
-					$user_name=get_user_name($user_id);
-					echo '<span> - <a href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</span></a>';
-				}
-			}
-			$bdate=$controller->indi->getBirthDate();
-			$ddate=$controller->indi->getDeathDate();
-			echo '<span class="header_age">';
-			if ($bdate->isOK() && !$controller->indi->isDead()) {
-				// If living display age
-				echo strip_tags(WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true)), '<span>');
-			} elseif ($bdate->isOK() && $ddate->isOK()) {
-				// If dead, show age at death
-				echo strip_tags(WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false)), '<span>');
-			}
-			echo '</span>';
-			// Display summary birth/death info.
-			echo '<span id="dates">', $controller->indi->getLifeSpan(), '</span>';
-			//Display gender icon
-			$nameSex = array('NAME', 'SEX');
-			foreach ($globalfacts as $key=>$value) {
-				$fact = $value->getTag();
-				if (in_array($fact, $nameSex)) {
-					if ($fact=="SEX") $controller->print_sex_record($value);
-				}
-			}
-		echo '</h3>';
-		//Display name details
-			$nameSex = array('NAME', 'SEX');
-			foreach ($globalfacts as $key=>$value) {
-				if ($key == 0) {
-				// First name
-					$fact = $value->getTag();
-					if (in_array($fact, $nameSex)) {
-						if ($fact=="NAME") $controller->print_name_record($value);
-					}
-				}
-			}
-		//Display name details
-			$nameSex = array('NAME', 'SEX');
-			foreach ($globalfacts as $key=>$value) {
-				if ($key != 0) {
-					// 2nd and more names
-					$fact = $value->getTag();
-					if (in_array($fact, $nameSex)) {
-						if ($fact=="NAME") $controller->print_name_record($value);
-					}
-				}
-			}
+	echo '<div id="header_accordion1">'; // contain accordions for names
+	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->indi), '"><span>', $controller->indi->getFullName(), '</span>'; // First name accordion header
+	$bdate=$controller->indi->getBirthDate();
+	$ddate=$controller->indi->getDeathDate();
+	echo '<span class="header_age">';
+	if ($bdate->isOK() && !$controller->indi->isDead()) {
+		// If living display age
+		echo strip_tags(WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true)), '<span>');
+	} elseif ($bdate->isOK() && $ddate->isOK()) {
+		// If dead, show age at death
+		echo strip_tags(WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false)), '<span>');
+	}
+	echo '</span>';
+	// Display summary birth/death info.
+	echo '<span id="dates">', $controller->indi->getLifeSpan(), '</span>';
+	//Display gender icon
+	foreach ($globalfacts as $key=>$value) {
+		$fact = $value->getTag();
+		if ($fact=="SEX") $controller->print_sex_record($value);
+	}
+	echo '</h3>'; // close first name accordion header
+	
+	//Display name details
+	foreach ($globalfacts as $key=>$value) {
+		$fact = $value->getTag();
+		if ($fact=="NAME") $controller->print_name_record($value);
+	}
+
 	echo
 		'</div>', // close header_accordion1
 		WT_JS_START,

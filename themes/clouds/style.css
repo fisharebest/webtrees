@@ -1760,7 +1760,7 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelin
 #indi_mainimage a img {float:left; padding:0;}
 
 #indi_name_details { margin:0; padding: 5px;}
-#indi_name_details a {color:#333377;}
+#indi_name_details a {color:red; font-size:1em;}
 #indi_name_details dt:after {content:":";}
 
 #indi_note .fact_SOUR a {font-size:100%; margin: 3px 0}
