@@ -681,6 +681,7 @@ case 'cleanup2':
 	}
 	break;
 case 'listusers':
+case 'edituser':
 default:
 	echo
 		'<table id="list">',
@@ -760,6 +761,7 @@ default:
 						document.body.appendChild(script);
 					}).remove();
 				}
+				
 			});
 			
 			/* When clicking on the +/- icon, we expand/collapse the details block */
@@ -776,8 +778,14 @@ default:
 				jQuery.get("<?php echo WT_SCRIPT_NAME.'?action=load1row&user_id='; ?>"+aData[1], function(data) {
 					oTable.fnOpen(nTr, data, "details");
 				});
-				jQuery(this).addClass("icon-close");
+				jQuery(this).addClass("icon-open");
 			});
+			
+			/* Filter immediately for single user name */
+			<?php if ($action=='edituser') { $username=safe_GET('username'); ?>
+				oTable = jQuery('#list').dataTable();			
+				oTable.fnFilter( '<?php echo $username; ?>' );
+			<?php } ?>
 	
 		});
 	<?php
