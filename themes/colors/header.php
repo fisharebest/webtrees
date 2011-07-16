@@ -61,7 +61,17 @@ echo
 	'</head>',
 	'<body id="body">';
 ?>
-
+<!-- Remove submenu from home -->
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	var obj = {};
+	var num = 0;
+    var num = jQuery('#menu-tree ul li').length; 
+	if(num == 2) { 
+		jQuery('#menu-tree ul').remove();
+	}
+});
+</script>
 <!-- begin header section -->
 <?php
 
