@@ -129,7 +129,9 @@ class WT_Controller_Note extends WT_Controller_Base {
 	function getEditMenu() {
 		global $SHOW_GEDCOM_RECORD;
 
-		if (!$this->note) return null;
+		if (!$this->note || $this->note->isMarkedDeleted()) {
+			return null;
+		}
 
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-note');

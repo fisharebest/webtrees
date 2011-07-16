@@ -401,7 +401,9 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	function getEditMenu() {
 		global $SHOW_GEDCOM_RECORD;
 
-		if (!$this->indi) return null;
+		if (!$this->indi || $this->indi->isMarkedDeleted()) {
+			return null;
+		}
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-indi');
 		$menu->addIcon('edit_indi');

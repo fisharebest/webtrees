@@ -169,7 +169,9 @@ class WT_Controller_Media extends WT_Controller_Base {
 	function getEditMenu() {
 		global $SHOW_GEDCOM_RECORD;
 
-		if (!$this->mediaobject) return null;
+		if (!$this->mediaobject || $this->mediaobject->isMarkedDeleted()) {
+			return null;
+		}
 
 		$links = get_media_relations($this->pid);
 		$linktoid = "new";

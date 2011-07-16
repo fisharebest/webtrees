@@ -156,7 +156,9 @@ class WT_Controller_Family extends WT_Controller_Base {
 	function getEditMenu() {
 		global $SHOW_GEDCOM_RECORD;
 
-		if (!$this->family) return null;
+		if (!$this->family || $this->family->isMarkedDeleted()) {
+			return null;
+		}
 
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-fam');

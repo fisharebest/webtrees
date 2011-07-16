@@ -129,7 +129,9 @@ class WT_Controller_Repository extends WT_Controller_Base {
 	function getEditMenu() {
 		global $SHOW_GEDCOM_RECORD;
 
-		if (!$this->repository) return null;
+		if (!$this->repository || $this->repository->isMarkedDeleted()) {
+			return null;
+		}
 
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-repo');
