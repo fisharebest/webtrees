@@ -399,7 +399,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* get edit menu
 	*/
 	function getEditMenu() {
-		global $SHOW_GEDCOM_RECORD;
+		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
 		if (!$this->indi || $this->indi->isMarkedDeleted()) {
 			return null;
