@@ -55,10 +55,6 @@ echo
 	'<link type="text/css" href="js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 
-if ((!empty($rtl_stylesheet))&&($TEXT_DIRECTION=="rtl")) {
-	echo '<link rel="stylesheet" href="', $rtl_stylesheet, '" type="text/css" media="all" />';
-}
-
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
