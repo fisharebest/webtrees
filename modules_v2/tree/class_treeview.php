@@ -394,7 +394,7 @@ class TreeView {
   			$sexSymbol = WT_UTF8_NO_SEX;
   			break;
   	}
-  	$r = '<div class="tv'.$sex.'"'.$title.'>'.$p->getLifeSpan().'<a href="'.$p->getHtmlUrl().'"><span class="tvSexSymbol tv'.$sex.' tv_link">'.$sexSymbol.'</span></a>&nbsp;'.$p->getFullName().'</div>';
+  	$r = '<div class="tv'.$sex.'"'.$title.'><span class="dates">'.$p->getLifeSpan().'</span><a href="'.$p->getHtmlUrl().'"><span class="tvSexSymbol tv'.$sex.' tv_link">'.$sexSymbol.'</span></a>&nbsp;'.$p->getFullName().'</div>';
   	return $r;
   }
 
