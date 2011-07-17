@@ -140,7 +140,7 @@ if (preg_match("/=.*:\/\//i", rawurldecode($_SERVER["REQUEST_URI"]))) {
 // check for worms and bad bots
 if ($quitReason == "") {
 	foreach ($worms as $worm) {
-		if (preg_match('/'.$worm.'/i', $ua)) {
+		if (preg_match('/'.$worm.'/', $ua)) {
 			$quitReason = "Blocked crawler detected";
 			break;
 		}
