@@ -778,7 +778,7 @@ default:
 				jQuery.get("<?php echo WT_SCRIPT_NAME.'?action=load1row&user_id='; ?>"+aData[1], function(data) {
 					oTable.fnOpen(nTr, data, "details");
 				});
-				jQuery(this).addClass("icon-open");
+				jQuery(this).addClass("icon-close");
 			});
 			
 			/* Filter immediately for single user name */
