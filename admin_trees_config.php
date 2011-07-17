@@ -372,6 +372,7 @@ if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple
 echo WT_JS_START;?>
 	jQuery(document).ready(function() {
 		jQuery("#tabs").tabs();
+		jQuery("#tabs").css('display', 'inline');
 	});
 	var pastefield;
 	function paste_id(value) {
@@ -390,7 +391,7 @@ echo WT_JS_START;?>
 <table class="center <?php echo $TEXT_DIRECTION; ?>">
 	<tr>
 		<td colspan="2">
-			<div id="tabs">
+			<div id="tabs" style="display:none">
 				<ul>
 					<li><a href="#file-options"><span><?php echo WT_I18N::translate('GEDCOM Basics'); ?></span></a></li>
 					<li><a href="#privacy"><span><?php echo WT_I18N::translate('Privacy'); ?></span></a></li>
