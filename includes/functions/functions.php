@@ -1267,7 +1267,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 	}
 
 	$time_limit=ini_get('max_execution_time');
-	$indirec = find_gedcom_record($pid2, WT_GED_ID, WT_USER_CAN_EDIT);
+	$indirec = find_person_record($pid2, WT_GED_ID);
 	//-- check the cache
 	if (!$ignore_cache) {
 		if (isset($NODE_CACHE["$pid1-$pid2"])) {
@@ -1284,7 +1284,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 			$famids[$i]=$match[$i][1];
 		}
 		foreach ($famids as $indexval => $fam) {
-			$famrec = find_gedcom_record($fam, WT_GED_ID, WT_USER_CAN_EDIT);
+			$famrec = find_family_record($fam, WT_GED_ID);
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
 			for ($i=0; $i<$ct; $i++) {
 				$child = $match[$i][1];
@@ -1330,13 +1330,13 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		$numfams = preg_match_all("/1 FAMS @(.*)@/", $indirec, $fmatch, PREG_SET_ORDER);
 		for ($j=0; $j<$numfams; $j++) {
 			// Get the family record
-			$famrec = find_gedcom_record($fmatch[$j][1], WT_GED_ID, WT_USER_CAN_EDIT);
+			$famrec = find_family_record($fmatch[$j][1], WT_GED_ID);
 
 			// Get the set of children
 			$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $cmatch, PREG_SET_ORDER);
 			for ($i=0; $i<$ct; $i++) {
 				// Get each child's record
-				$childrec = find_gedcom_record($cmatch[$i][1], WT_GED_ID, WT_USER_CAN_EDIT);
+				$childrec = find_person_record($cmatch[$i][1], WT_GED_ID);
 				$birthrec = get_sub_record(1, "1 BIRT", $childrec);
 				if ($birthrec!==false) {
 					$dct = preg_match("/2 DATE .*(\d\d\d\d)/", $birthrec, $bmatch);
@@ -1423,7 +1423,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				$childh = 3;
 
 				//-- generate heuristic values based on the birthdates of the current node and p2
-				$indirec = find_gedcom_record($node["pid"], WT_GED_ID, WT_USER_CAN_EDIT);
+				$indirec = find_person_record($node["pid"], WT_GED_ID);
 				$byear1 = -1;
 				$birthrec = get_sub_record(1, "1 BIRT", $indirec);
 				if ($birthrec!==false) {
@@ -1499,7 +1499,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				}
 				foreach ($famids as $indexval => $fam) {
 					$visited[$fam] = true;
-					$famrec = find_gedcom_record($fam, WT_GED_ID, WT_USER_CAN_EDIT);
+					$famrec = find_family_record($fam, WT_GED_ID);
 					$parents = find_parents_in_record($famrec);
 					if ((!empty($parents["HUSB"]))&&(!isset($visited[$parents["HUSB"]]))) {
 						$node1 = $node;
@@ -1568,7 +1568,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				}
 				foreach ($famids as $indexval => $fam) {
 					$visited[$fam] = true;
-					$famrec = find_gedcom_record($fam, WT_GED_ID, WT_USER_CAN_EDIT);
+					$famrec = find_family_record($fam, WT_GED_ID);
 					if ($followspouse) {
 						$parents = find_parents_in_record($famrec);
 						if ((!empty($parents["HUSB"]))&&((!in_arrayr($parents["HUSB"], $node1))||(!isset($visited[$parents["HUSB"]])))) {
