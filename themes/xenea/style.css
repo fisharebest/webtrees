@@ -1781,6 +1781,9 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .ui-widget-content a  {color:blue; }
 .ui-widget-content a:hover  { color:red; }
 .ui-state-active, .ui-widget-content .ui-state-active {border:1px solid #c3dfff; background:#c3dfff; font-weight:normal; color:black; outline:none;}
+.ui-state-active .ui-icon { background-image: url("../../../js/jquery/css/images/ui-icons_222222_256x240.png"); }
+.ui-state-default .ui-icon { background-image: url("../../../js/jquery/css/images/ui-icons_222222_256x240.png"); }
+
 
 .ui-tabs .ui-tabs-nav  {padding: .3em .3em 0 .3em; border-color:#888888; }
 .ui-tabs .ui-tabs-nav li {font-size:1em; bottom:0px; margin:0 0.15em 0 0.1em; border-color:#888888; background: #eff8f8;}

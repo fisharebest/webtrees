@@ -1513,6 +1513,8 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .ui-widget-content a {color:black; }
 .ui-widget-content a:hover  {color:black; }
 .ui-state-active, .ui-widget-content .ui-state-active {background:#888; font-weight:normal; color:black; outline:none;}
+.ui-state-active .ui-icon { background-image: url("../../../js/jquery/css/images/ui-icons_222222_256x240.png"); }
+.ui-state-default .ui-icon { background-image: url("../../../js/jquery/css/images/ui-icons_222222_256x240.png"); }
 
 .ui-tabs .ui-tabs-nav {padding: .3em .3em 0 .3em; border-color:#888888; background: #dddddd; }
 .ui-tabs .ui-tabs-nav li {font-size:1em; bottom:0px; margin:0 0.15em 0 0.1em; border-color:#888888; background: #efefef;}
@@ -1530,7 +1532,7 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .ui-accordion .ui-accordion-content {padding: 1em .05em; border-top: 0; margin-top: -2px; position: relative; top: 1px; margin-bottom: 2px; overflow: visible; display: none; }
 .ui-accordion .ui-accordion-content-active {display: block; }
 .ui-accordion .ui-accordion-header a {padding:.5em}
-.ui-helper-reset {line-height: 1.2;}
+.ui-helper-reset {line-height: 1.5;}
 .ui-state-highlight a {color: red;}
 
 html[dir='rtl'] .ui-tabs {direction:rtl;}
