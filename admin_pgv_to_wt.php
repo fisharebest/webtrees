@@ -313,6 +313,14 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		"  WHEN 'themes/xenea/'       THEN 'xenea'".
 		"  ELSE 'themes/webtrees/'". // ocean, simplyred/blue/green, standard, wood
 		" END".
+		" WHEN 'defaulttab' THEN".
+		"  CASE setting_value".
+		"  WHEN '1' THEN 'notes'".
+		"  WHEN '2' THEN 'sources_tab'".
+		"  WHEN '3' THEN 'media'".
+		"  WHEN '4' THEN 'relatives'".
+		"  ELSE 'personal_facts'". // -1=all and -2=last are not supported
+		" END".
 		" ELSE".
 		"  CASE".
 		"  WHEN setting_value IN ('Y', 'yes') THEN 1 WHEN setting_value IN ('N', 'no') THEN 0 ELSE setting_value END".
@@ -464,7 +472,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
 			" SELECT user_id, 'defaulttab', ".
-			" CASE WHEN u_defaulttab IN ('Y', 'yes') THEN 1 WHEN u_defaulttab IN ('N', 'no') THEN 0 ELSE u_defaulttab END".
+			" CASE u_defaulttab WHEN 1 THEN 'notes' WHEN 2 THEN 'sources_tab' WHEN 3 THEN 'media' WHEN 4 THEN 'relatives' ELSE 'personal_facts' END".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
