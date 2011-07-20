@@ -1269,14 +1269,14 @@ function format_parents_age($pid, $birth_date=null) {
 	}
 	return $html;
 }
-/**
-* print fact DATE TIME
-*
-* @param Event $event Event to print the date for
-* @param boolean $anchor option to print a link to calendar
-* @param boolean $time option to print TIME value
-*/
-function format_fact_date(WT_Event $event, $anchor=false, $time=false) {
+
+// print fact DATE TIME
+//
+// $event - event containing the date/age
+// $record - the person (or couple) whose ages should be printed
+// $anchor option to print a link to calendar
+// $time option to print TIME value
+function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=false, $time=false) {
 	global $pid, $SEARCH_SPIDER;
 	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
@@ -1305,26 +1305,25 @@ function format_fact_date(WT_Event $event, $anchor=false, $time=false) {
 			}
 		}
 		$fact = $event->getTag();
-		$person = $event->getParentObject();
-		if (!is_null($person) && $person->getType()=='INDI') {
+		if ($record instanceof WT_Person) {
 			// age of parents at child birth
 			if ($fact=='BIRT') {
-				$html .= format_parents_age($person->getXref(), $date);
+				$html .= format_parents_age($record->getXref(), $date);
 			}
 			// age at event
 			else if ($fact!='CHAN' && $fact!='_TODO') {
-				$birth_date=$person->getBirthDate();
+				$birth_date=$record->getBirthDate();
 				// Can't use getDeathDate(), as this also gives BURI/CREM events, which
 				// wouldn't give the correct "days after death" result for people with
 				// no DEAT.
-				$death_event=$person->getFactByType('DEAT');
+				$death_event=$record->getFactByType('DEAT');
 				if ($death_event) {
 					$death_date=$death_event->getDate();
 				} else {
 					$death_date=new WT_Date('');
 				}
 				$ageText = '';
-				if ((WT_Date::Compare($date, $death_date)<=0 || !$person->isDead()) || $fact=='DEAT') {
+				if ((WT_Date::Compare($date, $death_date)<=0 || !$record->isDead()) || $fact=='DEAT') {
 					// Before death, print age
 					$age=WT_Date::GetAgeGedcom($birth_date, $date);
 					// Only show calculated age if it differs from recorded age
@@ -1332,8 +1331,8 @@ function format_fact_date(WT_Event $event, $anchor=false, $time=false) {
 						if (
 							$fact_age!='' && $fact_age!=$age ||
 							$fact_age=='' && $husb_age=='' && $wife_age=='' ||
-							$husb_age!='' && $person->getSex()=='M' && $husb_age!=$age ||
-							$wife_age!='' && $person->getSex()=='F' && $wife_age!=$age
+							$husb_age!='' && $record->getSex()=='M' && $husb_age!=$age ||
+							$wife_age!='' && $record->getSex()=='F' && $wife_age!=$age
 						) {
 							if ($age!="0d") {
 								$ageText = '('.WT_I18N::translate('Age').' '.get_age_at_event($age, false).')';
@@ -1354,8 +1353,7 @@ function format_fact_date(WT_Event $event, $anchor=false, $time=false) {
 				}
 				if ($ageText!='') $html .= '<span class="age"> '.PrintReady($ageText).'</span>';
 			}
-		}
-		else if (!is_null($person) && $person->getType()=='FAM') {
+		} elseif ($record instanceof WT_Family) {
 			$indirec=find_person_record($pid, $ged_id);
 			$indi=new WT_Person($indirec);
 			$birth_date=$indi->getBirthDate();
@@ -1518,7 +1516,7 @@ function format_first_major_fact($key, $majorfacts = array("BIRT", "CHR", "BAPM"
 		if (!is_null($event) && $event->hasDatePlace() && $event->canShow()) {
 			$html.='<span dir="'.$TEXT_DIRECTION.'"><br /><em>';
 			$html .= $event->getLabel();
-			$html.=' '.format_fact_date($event).format_fact_place($event).'</em></span>';
+			$html.=' '.format_fact_date($event, $person, false, false).format_fact_place($event).'</em></span>';
 			break;
 		}
 	}

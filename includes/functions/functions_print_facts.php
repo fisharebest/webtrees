@@ -304,7 +304,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	}
 
 	// Print the date of this fact/event
-	echo format_fact_date($fact, true, true);
+	echo format_fact_date($fact, $record, true, true);
 	
 	// Print the place of this fact/event
 	echo '<div class="place">', format_fact_place($fact, true, true, true), '</div>';

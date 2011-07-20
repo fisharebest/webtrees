@@ -268,7 +268,7 @@ class WT_Event {
 		if (!in_array($this->tag, $emptyfacts))
 			$data .= PrintReady($this->detail);
 		if (!$this->dest)
-			$data .= format_fact_date($this, $anchor, false, true);
+			$data .= format_fact_date($this, $this->getParentObject(), $anchor, false);
 		$data .= format_fact_place($this, $anchor, false, false);
 		$data .= "<br />";
 		if (!$return) echo $data;

@@ -81,7 +81,7 @@ foreach ($events as $event) {
 			if ($details!='Y' && $details!='N') {
 				echo PrintReady($details);
 			}
-			echo format_fact_date($event, false, false);
+			echo format_fact_date($event, $person, false, false);
 			// Show spouse/family for family events
 			$spouse=WT_Person::getInstance($event->getSpouseId());
 			if ($spouse) {
