@@ -1148,28 +1148,29 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 	}
 	return $text;
 }
-/**
-* print ASSO RELA information from an event
-*/
-function print_asso_rela_record(WT_Event $event) {
+
+// Print the associations from the associated individuals in $event to the individuals in $record
+function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 	// To whom is this record an assocate?
-	if ($event->getParentObject() instanceof WT_Person) {
-		$associates=array($event->getParentObject());
-	} elseif ($event->getParentObject() instanceof WT_Family) {
-		// FAM links don't occur in GEDCOM, but are created by the
-		// "events of close relatives" code.
-		$associates=array($event->getParentObject()->getHusband(), $event->getParentObject()->getWife());
+	if ($record instanceof WT_Person) {
+		// On an individual page, we just show links to the person
+		$associates=array($record);
+	} elseif ($record instanceof WT_Family) {
+		// On a family page, we show links to both spouses
+		$associates=$record->getSpouses();
 	} else {
-		// This function gets called for all facts, including those
-		// on records such as source/media that do not have ASSO tags.
+		// On other pages, it does not make sense to show associates
 		return;
 	}
 
 	preg_match_all('/^1 ASSO @('.WT_REGEX_XREF.')@((\n[2-9].*)*)/', $event->getGedcomRecord(), $amatches1, PREG_SET_ORDER);
 	preg_match_all('/\n2 ASSO @('.WT_REGEX_XREF.')@((\n[3-9].*)*)/', $event->getGedcomRecord(), $amatches2, PREG_SET_ORDER);
+	// For each ASSO record
 	foreach (array_merge($amatches1, $amatches2) as $amatch) {
 		$person=WT_Person::getInstance($amatch[1]);
 		if (!$person) {
+			// If the target of the ASSO does not exist, create a dummy person, so
+			// the user can see that something is present.
 			$person=new WT_Person('');
 		}
 		if (preg_match('/\n[23] RELA (.+)/', $amatch[2], $rmatch)) {
@@ -1190,7 +1191,7 @@ function print_asso_rela_record(WT_Event $event) {
 					$label=WT_I18N::translate('Relationships');
 				}
 				// For family records (e.g. MARR), identify the spouse with a sex icon
-				if ($event->getParentObject() instanceof WT_Family) {
+				if ($record instanceof WT_Family) {
 					$label=$associate->getSexImage().$label;
 				}
 				$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label.'</a>';

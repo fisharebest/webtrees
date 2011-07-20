@@ -1129,73 +1129,54 @@ class WT_Person extends WT_GedcomRecord {
 			foreach ($family->getSpouses() as $parent) {
 				if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT'.($sosa==1 ? '_PARE' : '_GPAR'))) {
 					foreach ($parent->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
-						$srec = $sEvent->getGedcomRecord();
 						if (WT_Date::Compare($bDate, $sEvent->getDate())<0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
+							$srec = $sEvent->getGedcomRecord();
 							switch ($sosa) {
 							case 1:
-								$factrec='1 _'.$sEvent->getTag().'_PARE';
+								// Convert the event to a close relatives event
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_PARE ', $sEvent->getGedcomRecord()); // Full
+								$tmp_rec="1 _".$sEvent->getTag()."_PARE\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 								break;
 							case 2:
-								$factrec='1 _'.$sEvent->getTag().'_GPA1';
+								// Convert the event to a close relatives event
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GPA1 ', $sEvent->getGedcomRecord()); // Full
+								$tmp_rec="1 _".$sEvent->getTag()."_GPA1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 								break;
 							case 3:
-								$factrec='1 _'.$sEvent->getTag().'_GPA2';
+								// Convert the event to a close relatives event
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GPA2 ', $sEvent->getGedcomRecord()); // Full
+								$tmp_rec="1 _".$sEvent->getTag()."_GPA2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 								break;
 							}
-							$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
-							if (!$sEvent->canShow()) {
-								$factrec .= "\n2 RESN privacy";
-							}
-							if ($parent->getSex()=='F') {
-								$factrec.="\n2 ASSO @".$parent->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela.'mot', $this->getXref(), $parent->getXref());
-							} else {
-								$factrec.="\n2 ASSO @".$parent->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela.'fat', $this->getXref(), $parent->getXref());
-							}
-							$event=new WT_Event($factrec, $parent, 0);
-							$this->indifacts[] = $event;
+							// Create a new event
+							$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$parent->getXref()."@", $parent, 0);
 						}
 					}
 				}
 			}
-			if ($sosa==1) {
+
+			if ($sosa==1 && strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
 				// add father/mother marriages
 				foreach ($family->getSpouses() as $parent) {
 					foreach ($parent->getSpouseFamilies() as $sfamily) {
-						if ($sfamily->equals($family)) {
-							if ($parent->getSex()=='F') {
-								// show current family marriage only once
-								continue;
-							}
-							$fact='_MARR_FAMC';  // marriage of parents (to each other)
-							$rela1='fat';
-							$rela2='mot';
-						} else {
-							if ($parent->getSex()=='M') {
-								$fact='_MARR_PARE'; // marriage of a parent (to another spouse)
-								$rela1='fat';
-								$rela2='fatwif';
-							} else {
-								$fact='_MARR_PARE';
-								$rela1='mot';
-								$rela2='mothus';
-							}
-						}
-						if (strstr($SHOW_RELATIVES_EVENTS, '_MARR_PARE')) {
-							$sEvent = $sfamily->getMarriage();
-							$srec = $sEvent->getGedcomRecord();
-							if (WT_Date::Compare($bDate, $sEvent->getDate())<0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
-								$factrec = '1 '.$fact;
-								$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
-								$factrec .= "\n2 ASSO @".$parent->getXref().'@';
-								$factrec .= "\n3 RELA ".get_relationship_name_from_path($rela1, $this->getXref(), $parent->getXref());
-								$factrec .= "\n2 ASSO @".$sfamily->getSpouseId($parent->getXref()).'@';
-								$factrec .= "\n3 RELA ".get_relationship_name_from_path($rela2, $this->getXref(), $parent->getXref());
-								if (!$sEvent->canShow()) {
-									$factrec .= "\n2 RESN privacy";
+						$sEvent = $sfamily->getMarriage();
+						if (WT_Date::Compare($bDate, $sEvent->getDate())<0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
+							if ($sfamily->equals($family)) {
+								if ($parent->getSex()=='F') {
+									// show current family marriage only once
+									continue;
 								}
-								$event = new WT_Event($factrec, $sfamily, 0);
-								$this->indifacts[] = $event;
+								// marriage of parents (to each other)
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_FAMC ', $sEvent->getGedcomRecord()); // Full
+								$tmp_rec="1 _".$sEvent->getTag()."_FAMC\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
+							} else {
+								// marriage of a parent (to another spouse)
+								// Convert the event to a close relatives event
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_PARE ', $sEvent->getGedcomRecord()); // Full
+								$tmp_rec="1 _".$sEvent->getTag()."_PARE\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 							}
+							// Create a new event
+							$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$parent->getXref()."@\n2 ASSO @".$sfamily->getSpouseId($parent->getXref()).'@', $sfamily, 0);
 						}
 					}
 				}
@@ -1242,38 +1223,26 @@ class WT_Person extends WT_GedcomRecord {
 				// We are not our own sibling!
 				continue;
 			}
-			switch ($child->getSex()) {
-			case 'M':
-				$rela=$option=='_SIBL' ? 'bro' : $relation.'son';
-				break;
-			case 'F':
-				$rela=$option=='_SIBL' ? 'sis' : $relation.'dau';
-				break;
-			case 'U':
-				$rela=$option=='_SIBL' ? 'sib' : $relation.'chi';
-				break;
-			}
 			// add child's birth
 			if (strpos($SHOW_RELATIVES_EVENTS, '_BIRT'.str_replace('_HSIB', '_SIBL', $option))!==false) {
 				foreach ($child->getAllFactsByType(explode('|', WT_EVENTS_BIRT)) as $sEvent) {
-					$srec = $sEvent->getGedcomRecord();
 					$sgdate=$sEvent->getDate();
 					// Always show _BIRT_CHIL, even if the dates are not known
 					if ($option=='_CHIL' || $sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-						$factrec='1 _'.$sEvent->getTag();
 						if ($option=='_GCHI' && $relation=='son') {
-							$factrec.='_GCH1';
+							// Convert the event to a close relatives event.
+							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_BIRT.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord()); // Full
+							$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 						} elseif ($option=='_GCHI' && $relation=='dau') {
-							$factrec.='_GCH2';
+							// Convert the event to a close relatives event.
+							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_BIRT.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord()); // Full
+							$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 						} else {
-							$factrec.=$option;
+							// Convert the event to a close relatives event.
+							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_BIRT.')/', '1 _$1'.$option, $sEvent->getGedcomRecord()); // Full
+							$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 						}
-						$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
-						if (!$sEvent->canShow()) {
-							$factrec.='\n2 RESN privacy';
-						}
-						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela, $this->getXref(), $child->getXref());
-						$event = new WT_Event($factrec, $child, 0);
+						$event=new WT_Event($tmp_rec."\n2 ASSO @".$child->getXref()."@", $child, 0);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
 						}
@@ -1286,20 +1255,20 @@ class WT_Person extends WT_GedcomRecord {
 					$sgdate=$sEvent->getDate();
 					$srec = $sEvent->getGedcomRecord();
 					if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-						$factrec='1 _'.$sEvent->getTag();
 						if ($option=='_GCHI' && $relation=='son') {
-							$factrec.='_GCH1';
+							// Convert the event to a close relatives event.
+							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord()); // Full
+							$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 						} elseif ($option=='_GCHI' && $relation=='dau') {
-							$factrec.='_GCH2';
+							// Convert the event to a close relatives event.
+							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord()); // Full
+							$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 						} else {
-							$factrec.=$option;
+							// Convert the event to a close relatives event.
+							$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1'.$option, $sEvent->getGedcomRecord()); // Full
+							$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 						}
-						$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
-						if (!$sEvent->canShow()) {
-							$factrec.='\n2 RESN privacy';
-						}
-						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela, $this->getXref(), $child->getXref());
-						$event = new WT_Event($factrec, $child, 0);
+						$event=new WT_Event($tmp_rec."\n2 ASSO @".$child->getXref()."@", $child, 0);
 						if (!in_array($event, $this->indifacts)) {
 							$this->indifacts[]=$event;
 						}
@@ -1309,32 +1278,26 @@ class WT_Person extends WT_GedcomRecord {
 			// add child's marriage
 			if (strstr($SHOW_RELATIVES_EVENTS, '_MARR'.str_replace('_HSIB', '_SIBL', $option))) {
 				foreach ($child->getSpouseFamilies() as $sfamily) {
-					$sEvent = $sfamily->getMarriage();
-					$sgdate=$sEvent->getDate();
-					$srec = $sEvent->getGedcomRecord();
-					if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
-						$factrec='1 _'.$sEvent->getTag();
-						if ($option=='_GCHI' && $relation=='son') {
-							$factrec.='_GCH1';
-						} elseif ($option=='_GCHI' && $relation=='dau') {
-							$factrec.='_GCH2';
-						} else {
-							$factrec.=$option;
-						}
-						$factrec.="\n".get_sub_record(2, '2 DATE', $srec)."\n".get_sub_record(2, '2 PLAC', $srec);
-						if (!$sEvent->canShow()) {
-							$factrec.='\n2 RESN privacy';
-						}
-						switch ($child->getSex()) {
-						case 'M': $rela2=$rela.'wif'; break;
-						case 'F': $rela2=$rela.'hus'; break;
-						case 'U': $rela2=$rela.'spo'; break;
-						}
-						$factrec.="\n2 ASSO @".$child->getXref()."@\n3 RELA ".get_relationship_name_from_path($rela, $this->getXref(), $child->getXref());
-						$factrec.="\n2 ASSO @".$sfamily->getSpouseId($child->getXref())."@\n3 RELA ".get_relationship_name_from_path($rela2, $this->getXref(), $sfamily->getSpouseId($child->getXref()));
-						$event = new WT_Event($factrec, $sfamily, 0);
-						if (!in_array($event, $this->indifacts)) {
-							$this->indifacts[]=$event;
+					foreach ($sfamily->getAllFactsByType(explode('|', WT_EVENTS_MARR)) as $sEvent) {
+						$sgdate=$sEvent->getDate();
+						if ($sgdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sgdate)<=0 && WT_Date::Compare($sgdate, $this->getEstimatedDeathDate())<=0) {
+							if ($option=='_GCHI' && $relation=='son') {
+								// Convert the event to a close relatives event.
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH1', $sEvent->getGedcomRecord()); // Full
+								$tmp_rec="1 _".$sEvent->getTag()."_GCH1\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
+							} elseif ($option=='_GCHI' && $relation=='dau') {
+								// Convert the event to a close relatives event.
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_GCH2', $sEvent->getGedcomRecord()); // Full
+								$tmp_rec="1 _".$sEvent->getTag()."_GCH2\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
+							} else {
+								// Convert the event to a close relatives event.
+								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1'.$option, $sEvent->getGedcomRecord()); // Full
+								$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
+							}
+							$event=new WT_Event($tmp_rec."\n2 ASSO @".$child->getXref()."@\n2 ASSO @".$sfamily->getSpouseId($child->getXref())."@", $child, 0);
+							if (!in_array($event, $this->indifacts)) {
+								$this->indifacts[]=$event;
+							}
 						}
 					}
 				}
@@ -1366,17 +1329,12 @@ class WT_Person extends WT_GedcomRecord {
 		if ($spouse && strstr($SHOW_RELATIVES_EVENTS, '_DEAT_SPOU')) {
 			foreach ($spouse->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
 				$sdate=$sEvent->getDate();
-				$srec = $sEvent->getGedcomRecord();
 				if ($sdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && WT_Date::Compare($sdate, $this->getEstimatedDeathDate())<=0) {
-					$srec=preg_replace('/^1 .*/', '1 _'.$sEvent->getTag().'_SPOU ', $srec);
-					$srec.="\n".get_sub_record(2, '2 ASSO @'.$this->xref.'@', $srec);
-					switch ($spouse->getSex()) {
-					case 'M': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA ".get_relationship_name_from_path('hus', $this->getXref(), $spouse->getXref()); break;
-					case 'F': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA ".get_relationship_name_from_path('wif', $this->getXref(), $spouse->getXref()); break;
-					case 'U': $srec.="\n2 ASSO @".$spouse->getXref()."@\n3 RELA ".get_relationship_name_from_path('spo', $this->getXref(), $spouse->getXref()); break;
-					}
-					$event = new WT_Event($srec, $spouse, 0);
-					$this->indifacts[] = $event;
+					// Convert the event to a close relatives event.
+					$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_DEAT.')/', '1 _$1_SPOU ', $sEvent->getGedcomRecord()); // Full
+					$tmp_rec="1 _".$sEvent->getTag()."_SPOU\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
+					// Create a new event
+					$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$spouse->getXref()."@", $spouse, 0);
 				}
 			}
 		}

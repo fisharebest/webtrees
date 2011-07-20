@@ -311,7 +311,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	print_address_structure($fact->getGedcomRecord(), 2);
 
 	// Print the associates of this fact/event
-	print_asso_rela_record($fact);
+	print_asso_rela_record($fact, $record);
 
 	// Print any other "2 XXXX" attributes, in the order in which they appear.
 	preg_match_all('/\n2 ('.WT_REGEX_TAG.') (.+)/', $fact->getGedcomRecord(), $matches, PREG_SET_ORDER);

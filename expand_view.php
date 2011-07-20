@@ -70,7 +70,7 @@ foreach ($events as $event) {
 		case 'ASSO':
 			// Associates
 			echo '<div>';
-			print_asso_rela_record($event);
+			print_asso_rela_record($event, $person);
 			echo '</div>';
 		default:
 			// Simple version of print_fact()
