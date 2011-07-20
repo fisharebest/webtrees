@@ -1129,8 +1129,7 @@ class WT_Person extends WT_GedcomRecord {
 			foreach ($family->getSpouses() as $parent) {
 				if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT'.($sosa==1 ? '_PARE' : '_GPAR'))) {
 					foreach ($parent->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
-						if (WT_Date::Compare($bDate, $sEvent->getDate())<0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
-							$srec = $sEvent->getGedcomRecord();
+						if (WT_Date::Compare($bDate, $sEvent->getDate())<=0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
 							switch ($sosa) {
 							case 1:
 								// Convert the event to a close relatives event
@@ -1159,24 +1158,26 @@ class WT_Person extends WT_GedcomRecord {
 				// add father/mother marriages
 				foreach ($family->getSpouses() as $parent) {
 					foreach ($parent->getSpouseFamilies() as $sfamily) {
-						$sEvent = $sfamily->getMarriage();
-						if (WT_Date::Compare($bDate, $sEvent->getDate())<0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
-							if ($sfamily->equals($family)) {
-								if ($parent->getSex()=='F') {
-									// show current family marriage only once
-									continue;
+						foreach ($sfamily->getAllFactsByType(explode('|', WT_EVENTS_MARR)) as $sEvent) {
+							if (WT_Date::Compare($bDate, $sEvent->getDate())<=0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
+								if ($sfamily->equals($family)) {
+									if ($parent->getSex()=='F') {
+										// show current family marriage only once
+										continue;
+									}
+									// marriage of parents (to each other)
+									// Convert the event to a close relatives event
+									$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_FAMC ', $sEvent->getGedcomRecord()); // Full
+									$tmp_rec="1 _".$sEvent->getTag()."_FAMC\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
+								} else {
+									// marriage of a parent (to another spouse)
+									// Convert the event to a close relatives event
+									$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_PARE ', $sEvent->getGedcomRecord()); // Full
+									$tmp_rec="1 _".$sEvent->getTag()."_PARE\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 								}
-								// marriage of parents (to each other)
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_FAMC ', $sEvent->getGedcomRecord()); // Full
-								$tmp_rec="1 _".$sEvent->getTag()."_FAMC\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
-							} else {
-								// marriage of a parent (to another spouse)
-								// Convert the event to a close relatives event
-								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1_PARE ', $sEvent->getGedcomRecord()); // Full
-								$tmp_rec="1 _".$sEvent->getTag()."_PARE\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
+								// Create a new event
+								$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$parent->getXref()."@\n2 ASSO @".$sfamily->getSpouseId($parent->getXref()).'@', $sfamily, 0);
 							}
-							// Create a new event
-							$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$parent->getXref()."@\n2 ASSO @".$sfamily->getSpouseId($parent->getXref()).'@', $sfamily, 0);
 						}
 					}
 				}
