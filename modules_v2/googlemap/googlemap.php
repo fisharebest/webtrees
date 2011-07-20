@@ -141,41 +141,33 @@ function print_address_structure_map($factrec, $level) {
 	if ($resultText!='<table></table>') echo str_replace(chr(10), ' ' , $resultText);
 }
 
-function rem_prefix_from_placename($prefix_list, $place, $placelist) {
+function rem_prefix_from_placename($prefix_list, $place, &$placelist) {
 	$prefix_split = explode(';', $prefix_list);
 	foreach ($prefix_split as $prefix) {
-		if (!empty($prefix)) {
-			if (preg_match('/^'.$prefix.' (.*)/', $place, $matches) != 0) {
-				$placelist[] = $matches[1];
-			}
+		if ($prefix && substr($place, 0, strlen($prefix)+1)==$prefix.' ') {
+			$placelist[] = substr($place, strlen($prefix)+1);
 		}
 	}
 	return $placelist;
 }
 
-function rem_postfix_from_placename($postfix_list, $place, $placelist) {
+function rem_postfix_from_placename($postfix_list, $place, &$placelist) {
 	$postfix_split = explode (';', $postfix_list);
 	foreach ($postfix_split as $postfix) {
-		if (!empty($postfix)) {
-			if (preg_match('/^(.*) '.$postfix.'$/', $place, $matches) != 0) {
-				$placelist[] = $matches[1];
-			}
+		if ($postfix && substr($place, -strlen($postfix)-1)==' '.$postfix) {
+			$placelist[] = substr($place, 0, strlen($place)-strlen($postfix)-1);
 		}
 	}
 	return $placelist;
 }
 
-function rem_prefix_postfix_from_placename($prefix_list, $postfix_list, $place, $placelist) {
+function rem_prefix_postfix_from_placename($prefix_list, $postfix_list, $place, &$placelist) {
 	$prefix_split = explode (";", $prefix_list);
 	$postfix_split = explode (";", $postfix_list);
 	foreach ($prefix_split as $prefix) {
-		if (!empty($prefix)) {
-			foreach ($postfix_split as $postfix) {
-				if (!empty($postfix)) {
-					if (preg_match('/^'.$prefix.' (.*) '.$postfix.'$/', $place, $matches) != 0) {
-						$placelist[] = $matches[1];
-					}
-				}
+		foreach ($postfix_split as $postfix) {
+			if ($prefix && $postfix && substr($place, 0, strlen($prefix)+1)==$prefix.' ' && substr($place, -strlen($postfix)-1)==' '.$postfix) {
+				$placelist[] = substr($place, strlen($prefix)+1, strlen($place)-strlen($prefix)-strlen($postfix)-2);
 			}
 		}
 	}
