@@ -720,8 +720,9 @@ echo WT_JS_START;?>
 			$rows=WT_DB::prepare(
 				"SELECT default_resn_id, tag_type, xref, resn".
 				" FROM `##default_resn`".
+				" LEFT JOIN `##name` ON (gedcom_id=n_file AND xref=n_id AND n_num=0)".
 				" WHERE gedcom_id=?".
-				" ORDER BY xref IS NULL, tag_type IS NULL, xref, tag_type"
+				" ORDER BY xref IS NULL, n_sort, xref, tag_type"
 			)->execute(array(WT_GED_ID))->fetchAll();
 			foreach ($rows as $row) {
 				echo '<tr><td width="*">';
