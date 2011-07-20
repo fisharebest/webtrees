@@ -134,12 +134,12 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		}
 
 		// edit menu
-		$menu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit'), '#', 'menu-repo');
+		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-repo');
 		$menu->addIcon('edit_repo');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_repo');
 
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit repository'), '#', 'menu-repo-edit');
+			$submenu = new WT_Menu(WT_I18N::translate('Edit repository'), '#', 'menu-repo-edit');
 			$submenu->addOnclick('return edit_source(\''.$this->rid.'\');');
 			$submenu->addIcon('edit_repo');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_repo');
@@ -148,13 +148,13 @@ class WT_Controller_Repository extends WT_Controller_Base {
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-repo-editraw');
+			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-repo-editraw');
 			$submenu->addOnclick("return edit_raw('".$this->rid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('View GEDCOM Record'), '#', 'menu-repo-viewraw');
+			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-repo-viewraw');
 			$submenu->addIcon('gedcom');
 			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
@@ -167,8 +167,8 @@ class WT_Controller_Repository extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Delete repository'), '#', 'menu-repo-del');
-			$submenu->addOnclick("if (confirm('".htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', $this->repository->getFullName()))."')) return delete_repository('".$this->rid."'); else return false;");
+			$submenu = new WT_Menu(WT_I18N::translate('Delete repository'), '#', 'menu-repo-del');
+			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete this Repository?')."')) return deleterepository('".$this->rid."'); else return false;");
 			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
@@ -177,7 +177,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		// add to favorites
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(
-				/* I18N: A menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
+				WT_I18N::translate('Add to favorites'),
 				$this->repository->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->rid,
 				'menu-repo-addfav'
 			);

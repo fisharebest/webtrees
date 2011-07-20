@@ -219,7 +219,7 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 				echo $event->getLabel();
 				echo " -- ";
 				if ($record instanceof WT_Person) {
-					echo format_fact_date($event, $record, false, false);
+					echo format_fact_date($event);
 				} elseif ($record instanceof WT_Family) {
 					echo $gdate->Display(false);
 					if ($record->getHusband() && $record->getHusband()->getBirthDate()->isOK()) {

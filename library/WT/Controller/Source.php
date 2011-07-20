@@ -134,12 +134,12 @@ class WT_Controller_Source extends WT_Controller_Base {
 		}
 
 		// edit menu
-		$menu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit'), '#', 'menu-sour');
+		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-sour');
 		$menu->addIcon('edit_sour');
 		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_edit_source');
 
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit source'), '#', 'menu-sour-edit');
+			$submenu = new WT_Menu(WT_I18N::translate('Edit source'), '#', 'menu-sour-edit');
 			$submenu->addOnclick('return edit_source(\''.$this->sid.'\');');
 			$submenu->addIcon('edit_sour');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_source');
@@ -148,13 +148,13 @@ class WT_Controller_Source extends WT_Controller_Base {
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-sour-editraw');
+			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-sour-editraw');
 			$submenu->addOnclick("return edit_raw('".$this->sid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('View GEDCOM Record'), '#', 'menu-sour-viewraw');
+			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-sour-viewraw');
 			$submenu->addIcon('gedcom');
 			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
@@ -167,8 +167,8 @@ class WT_Controller_Source extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Delete source'), '#', 'menu-sour-del');
-			$submenu->addOnclick("if (confirm('".htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', $this->source->getFullName()))."')) return delete_source('".$this->sid."'); else return false;");
+			$submenu = new WT_Menu(WT_I18N::translate('Delete this Source'), '#', 'menu-sour-del');
+			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Are you sure you want to delete this Source?')."')) return deletesource('".$this->sid."'); else return false;");
 			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
@@ -177,7 +177,7 @@ class WT_Controller_Source extends WT_Controller_Base {
 		// add to favorites
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(
-				/* I18N: A menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
+				WT_I18N::translate('Add to favorites'),
 				$this->source->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->sid,
 				'menu-sour-addfav'
 			);
