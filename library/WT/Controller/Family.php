@@ -161,20 +161,20 @@ class WT_Controller_Family extends WT_Controller_Base {
 		}
 
 		// edit menu
-		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-fam');
+		$menu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit'), '#', 'menu-fam');
 		$menu->addIcon('edit_fam');
 		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_edit_fam');
 
 		if (WT_USER_CAN_EDIT) {
 			// edit_fam / members
-			$submenu = new WT_Menu(WT_I18N::translate('Change Family Members'), '#', 'menu-fam-change');
+			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Change Family Members'), '#', 'menu-fam-change');
 			$submenu->addOnclick("return change_family_members('".$this->getFamilyID()."');");
 			$submenu->addIcon('edit_fam');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_fam');
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / add child
-			$submenu = new WT_Menu(WT_I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil');
+			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil');
 			$submenu->addOnclick("return addnewchild('".$this->getFamilyID()."');");
 			$submenu->addIcon('edit_fam');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_add_fam');
@@ -182,7 +182,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 
 			// edit_fam / reorder_children
 			if ($this->family->getNumberOfChildren() > 1) {
-				$submenu = new WT_Menu(WT_I18N::translate('Re-order children'), '#', 'menu-fam-orderchil');
+				$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Re-order children'), '#', 'menu-fam-orderchil');
 				$submenu->addOnclick("return reorder_children('".$this->getFamilyID()."');");
 				$submenu->addIcon('edit_fam');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reord_fam');
@@ -192,13 +192,13 @@ class WT_Controller_Family extends WT_Controller_Base {
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-fam-editraw');
+			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-fam-editraw');
 			$submenu->addOnclick("return edit_raw('".$this->getFamilyID()."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-fam-viewraw');
+			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('View GEDCOM Record'), '#', 'menu-fam-viewraw');
 			$submenu->addIcon('gedcom');
 			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
@@ -211,8 +211,8 @@ class WT_Controller_Family extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(WT_I18N::translate('Delete family'), '#', 'menu-fam-del');
-			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?')."')) return delete_family('".$this->getFamilyID()."'); else return false;");
+			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Delete family'), '#', 'menu-fam-del');
+			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Deleting a family does not delete the family members, but leaves them as unconnected individuals.').' '.htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', $this->family->getFullName()))."')) return delete_family('".$this->getFamilyID()."'); else return false;");
 			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
@@ -221,7 +221,7 @@ class WT_Controller_Family extends WT_Controller_Base {
 		// add to favorites
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(
-				/* I18N: Menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
+				/* I18N: A menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
 				$this->family->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->getFamilyID(),
 				'menu-fam-addfav'
 			);

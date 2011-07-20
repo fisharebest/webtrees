@@ -405,7 +405,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			return null;
 		}
 		// edit menu
-		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-indi');
+		$menu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit'), '#', 'menu-indi');
 		$menu->addIcon('edit_indi');
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_indi');
 		$menu->addLabel($menu->label, 'down');
@@ -423,14 +423,14 @@ class WT_Controller_Individual extends WT_Controller_Base {
 
 		if (WT_USER_CAN_EDIT) {
 			//--make sure the totals are correct
-			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'), '#', 'menu-indi-addname');
+			$submenu = new WT_Menu(/* I18N: A menu option - Add another name to an individual */ WT_I18N::translate('Add a new name'), '#', 'menu-indi-addname');
 			$submenu->addOnclick("return add_name('".$this->pid."');");
 			$submenu->addIcon('edit_indi');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_add_indi');
 			$menu->addSubmenu($submenu);
 
 			if ($this->SEX_COUNT<2) {
-				$submenu = new WT_Menu(WT_I18N::translate('Edit gender'), '#', 'menu-indi-editsex');
+				$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit gender'), '#', 'menu-indi-editsex');
 				if ($this->SEX_LINENUM=="new") {
 					$submenu->addOnclick("return add_new_record('".$this->pid."', 'SEX');");
 				} else {
@@ -442,7 +442,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			}
 
 			if (count($this->indi->getSpouseFamilies())>1) {
-				$submenu = new WT_Menu(WT_I18N::translate('Reorder families'), '#', 'menu-indi-orderfam');
+				$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Reorder families'), '#', 'menu-indi-orderfam');
 				$submenu->addOnclick("return reorder_families('".$this->pid."');");
 				$submenu->addIcon('edit_fam');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_fam');
@@ -452,13 +452,13 @@ class WT_Controller_Individual extends WT_Controller_Base {
 
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $this->canShowGedcomRecord()) {
-			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-indi-editraw');
+			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-indi-editraw');
 			$submenu->addOnclick("return edit_raw('".$this->pid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
-			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-indi-viewraw');
+			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('View GEDCOM Record'), '#', 'menu-indi-viewraw');
 			$submenu->addIcon('gedcom');
 			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
@@ -471,8 +471,8 @@ class WT_Controller_Individual extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(WT_I18N::translate('Delete this individual'), '#', 'menu-indi-del');
-			$submenu->addOnclick("return deleteperson('".$this->pid."');");
+			$submenu = new WT_Menu(/* I18N: A menu option */ WT_I18N::translate('Delete individual'), '#', 'menu-indi-del');
+			$submenu->addOnclick("if (confirm('".htmlspecialchars(WT_I18N::translate('Are you sure you want to delete “%s”?', $this->indi->getFullName()))."')) return delete_individual('".$this->pid."'); else return false;");
 			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
@@ -481,7 +481,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		// add to favorites
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(
-				WT_I18N::translate('Add to favorites'),
+				/* I18N: A menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
 				$this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->pid,
 				'menu-indi-addfav'
 			);
