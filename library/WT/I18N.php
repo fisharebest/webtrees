@@ -92,8 +92,11 @@ class WT_I18N {
 		}
 		// We now have a valid locale.  Remember it.
 		$_SESSION['locale']=$locale;
-		// The translation files are large and slow.  Use a cache
-		$cache=Zend_Cache::factory('Core', 'File', array('automatic_serialization'=>true), array());
+		// The translation files are large and slow.  Use a cache.
+		if (!is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
+			mkdir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache');
+		}
+		$cache=Zend_Cache::factory('Core', 'File', array('automatic_serialization'=>true), array('cache_dir'=>WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache'));
 		Zend_Translate::setCache($cache);
 		// Load the translation file
 		$translate=new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
