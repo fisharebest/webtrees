@@ -870,7 +870,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), "<br />";
 		if (isset($famrec)) {
 			$event = new WT_Event(get_sub_record(1, "1 CHAN", $famrec), null, 0);
-			echo format_fact_date($event, new WT_Person(), false, true);
+			echo format_fact_date($event, new WT_Person(''), false, true);
 		}
 		echo "</td></tr>";
 	}
