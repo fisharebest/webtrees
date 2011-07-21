@@ -204,7 +204,7 @@ class WT_Query_Name {
 			break;
 		}
 		// Easy cases: the MySQL collation rules take care of it
-		return "$field LIKE '".$letter."%' COLLATE ".WT_I18N::$collation;
+		return "$field LIKE '@".$letter."%' ESCAPE '@' COLLATE ".WT_I18N::$collation;
 	}
 
 	// Get a list of initial surname letters for indilist.php and famlist.php
