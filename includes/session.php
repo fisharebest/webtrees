@@ -263,8 +263,6 @@ $BROWSERTYPE = 'other';
 if (!empty($_SERVER['HTTP_USER_AGENT'])) {
 	if (stristr($_SERVER['HTTP_USER_AGENT'], 'Opera')) {
 		$BROWSERTYPE = 'opera';
-	} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'Netscape')) {
-		$BROWSERTYPE = 'netscape';
 	} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'KHTML')) {
 		$BROWSERTYPE = 'chrome';
 	} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'Gecko')) {
