@@ -310,6 +310,8 @@ $cfg=array(
 	'name'            => WT_SESSION_NAME,
 	'cookie_lifetime' => 0,
 	'gc_maxlifetime'  => get_site_setting('SESSION_TIME'),
+	'gc_probability'  => 1,
+	'gc_divisor'      => 100,
 	'cookie_path'     => WT_SCRIPT_PATH,
 );
 
