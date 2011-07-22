@@ -373,6 +373,10 @@ if ($action=='ImportFile2') {
 		if ($fieldrec[0] > $maxLevel) $maxLevel = $fieldrec[0];
 	}
 	$fields = count($fieldrec);
+	$set_icon = true;
+	if (!is_dir(WT_MODULES_DIR.'googlemap/places/flags/')) {
+		$set_icon = false;
+	}
 	foreach ($lines as $p => $placerec) {
 		$fieldrec = explode(';', $placerec);
 		if (is_numeric($fieldrec[0]) && $fieldrec[0]<=$maxLevel) {
@@ -391,7 +395,11 @@ if ($action=='ImportFile2') {
 			$placelist[$j]['long'] = $fieldrec[$fields-4];
 			$placelist[$j]['lati'] = $fieldrec[$fields-3];
 			$placelist[$j]['zoom'] = $fieldrec[$fields-2];
-			$placelist[$j]['icon'] = trim($fieldrec[$fields-1]);
+			if($set_icon) {
+				$placelist[$j]['icon'] = trim($fieldrec[$fields-1]);
+			} else {
+				$placelist[$j]['icon'] = '';
+			}
 			$j = $j + 1;
 		}
 	}
