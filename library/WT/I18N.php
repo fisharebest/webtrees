@@ -40,6 +40,14 @@ class WT_I18N {
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
 	static public function init($locale=null) {
+		// The translation libraries work much quicker with a cache.
+		if (!is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
+			mkdir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache');
+		}
+		$cache=Zend_Cache::factory('Core', 'File', array('automatic_serialization'=>true), array('cache_dir'=>WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache'));
+		Zend_Locale::setCache($cache);
+		Zend_Translate::setCache($cache);
+
 		$installed_languages=self::installed_languages();
 		if (is_null($locale) || !array_key_exists($locale, $installed_languages)) {
 			// Automatic locale selection.
@@ -92,14 +100,10 @@ class WT_I18N {
 		}
 		// We now have a valid locale.  Remember it.
 		$_SESSION['locale']=$locale;
-		// The translation files are large and slow.  Use a cache.
-		if (!is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
-			mkdir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache');
-		}
-		$cache=Zend_Cache::factory('Core', 'File', array('automatic_serialization'=>true), array('cache_dir'=>WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache'));
-		Zend_Translate::setCache($cache);
+
 		// Load the translation file
 		$translate=new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
+
 		// Make the locale and translation adapter available to the rest of the Zend Framework
 		Zend_Registry::set('Zend_Locale',    $locale);
 		Zend_Registry::set('Zend_Translate', $translate);
