@@ -60,7 +60,7 @@ echo
 	'<link rel="stylesheet" type="text/css" href="', WT_THEME_DIR, 'modules.css" />',
 	$javascript,
 	'</head>',
-	'<body>';
+	'<body id="body">';
 
 // begin header section -->
 if ($SEARCH_SPIDER) {

@@ -1716,6 +1716,12 @@ font-size: 90%;
 padding: 0 10px;
 }
 
+.faq_top {float:right;}
+.faq_edit {float:right;}
+
+html[dir='rtl'] .faq_top {float:left;}
+html[dir='rtl'] .faq_edit {float:left;}
+
 .place {
 	padding-top: 5px;
 }

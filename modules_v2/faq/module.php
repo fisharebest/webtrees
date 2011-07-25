@@ -295,7 +295,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		// Instructions
 		echo '<div class="faq_italic">', WT_I18N::translate('Click on a title to go straight to it, or scroll down to read them all');
 			if (WT_USER_GEDCOM_ADMIN) {
-				echo '<div style="float:right;">',
+				echo '<div class="faq_edit">',
 						'<a href="module.php?mod=faq&mod_action=admin_config">', WT_I18N::translate('Click here to Add, Edit, or Delete'), '</a>',
 				'</div>';
 			}
@@ -327,7 +327,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 				// NOTE: Print the body text of the current item, with its header
 				echo '<div class="faq_title" id="faq', $id, '">', $faq->header;
-				echo '<div style="float:right;" class="faq_italic">';
+				echo '<div class="faq_top faq_italic">';
 				echo '<a href="#body">', WT_I18N::translate('back to top'), '</a>';
 				echo '</div>';
 				echo '</div>';
