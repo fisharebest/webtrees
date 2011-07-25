@@ -288,8 +288,7 @@ html[dir='rtl'] .makeMenu li ul li { text-align:right!important; }
 /*  Standard style  */
 
 a { color:#333333; text-decoration: none; }
-a:link, a:visited, a:active, .menuitem a, .nameZoom { color:#333333; }
-a:hover { color: red; text-decoration: none; }
+a:hover { color: red; text-decoration: none; } 
 :focus { outline-style:none; }
 
 /*   Edit Facts */
@@ -354,10 +353,6 @@ p.center .warning, tr td.optionbox span.error, span.error {
 color:#f50;
 }
 
-#content {
-padding:10px;
-}
-
 #pid {
 color:#333;
 background:#FFC;
@@ -393,7 +388,7 @@ color:#333333;
 .small_inner_block {
 max-height: 200px;
 overflow: auto;
-font: normal 10px tahoma, arial, helvetica, sans-serif;
+font-size: 10px;
 }
 
 img {
@@ -402,12 +397,12 @@ img {
 
 .block {
 	color: #030303;
-	font: 12px tahoma, arial, helvetica, sans-serif;
+	font-size: 12px;
 	vertical-align: top;
 	margin-bottom: 5px;
 	padding: 1px;
 }
-	
+
 div.blockcontent {
 	border: solid #999 1px;
 	margin-left:auto;
@@ -572,7 +567,6 @@ margin:0px 0px 0px 0px;
 padding:0px 2px 0px 0px;
 left:auto;
 }
-
 
 .topheader {
 color:gray;
@@ -814,13 +808,14 @@ text-decoration:none;
 }
 
 .nameZoom {
-font: 14px tahoma, arial, helvetica, sans-serif;
+font-size: 14px;
 font-weight: bold;
 text-decoration:none;
 }
 
  a:hover .nameZoom {
-font: bold 14px tahoma, arial, helvetica, sans-serif;
+font-size: 14px;
+font-weight: bold;
 color: red;
 }
 
@@ -830,7 +825,8 @@ text-decoration:none;
 }
 
 .name_head {
-font: bold 11pt tahoma, arial, helvetica, sans-serif;
+font-size: 11px;
+font-weight: bold;
 letter-spacing: .2px;
 }
 
@@ -1023,12 +1019,6 @@ font-size: 12px;
 color:#000;
 }
 
-.block {
-color: #030303;
-vertical-align: top;
-
-}
-
 .submenuitem {
 height:20px;
 color:#555555;
@@ -1114,7 +1104,6 @@ font-weight: bold;
 }
 input, button, textarea  {
 border-width:1px;
-font-family: tahoma,arial,helvetica,sans-serif;
 font-size: 12px;
 }
 
@@ -1129,7 +1118,6 @@ html[dir="rtl"] .optionbox > input { margin-right: 5px;}
 
 select {
 border:1px solid #ccc;
-font-family: tahoma, arial, helvetica, sans-serif;
 font-size: 12px;
 }
 
@@ -1250,8 +1238,7 @@ form .rtl {
 text-align:right;
 }
 
-/* 											*/
-/*	Standard PGV Markup						*/
+/*  Standard Markup	  */
 
 .favmenuitem {
 color:#FFF;
@@ -1571,9 +1558,6 @@ padding: 12px 12px;
 text-align: center;
 } 
 
-.tag_cloud {
-font-family: tahoma, arial, helvetica, sans-serif;
-}
 .tag_cloud a {
 white-space:nowrap;
 }
@@ -1610,6 +1594,7 @@ margin: 0;
 }
 #tabDefinedTags {
 	width:430px;
+	border-collapse:collapse;
 }
 #layDefinedTags {
 	margin-left:auto;
@@ -1617,9 +1602,6 @@ margin: 0;
 	height:285px;
 	overflow:auto;
 	border:inset 2px buttonface;
-}
-#tabDefinedTags {
-	border-collapse:collapse;
 }
 #tabDefinedTags th,#tabDefinedTags td {
 	border:solid 1px #000;
