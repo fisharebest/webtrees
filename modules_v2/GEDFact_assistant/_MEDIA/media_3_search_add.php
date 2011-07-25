@@ -108,7 +108,6 @@ if (!defined('WT_WEBTREES')) {
 			$marrdate = $family->getMarriageDate();
 
 			// Husband -------------------
-			$styleadd = "";
 			if (isset($people["husb"])) {
 				$married   = WT_Date::Compare($censdate, $marrdate);
 				$nam   = $people["husb"]->getAllNames();
@@ -402,7 +401,6 @@ if (!defined('WT_WEBTREES')) {
 			$marrdate = $family->getMarriageDate();
 
 			// Husband -----------------------------
-			$styleadd = "";
 			$elderdate = "";
 			if (isset($people["husb"]) ) {
 				$married   = WT_Date::Compare($censdate, $marrdate);
@@ -494,7 +492,6 @@ if (!defined('WT_WEBTREES')) {
 			}
 
 			// Wife -------------------
-			$styleadd = "";
 			if (isset($people["wife"]) ) {
 				$married   = WT_Date::Compare($censdate, $marrdate);
 				$nam   = $people["wife"]->getAllNames();
@@ -593,7 +590,6 @@ if (!defined('WT_WEBTREES')) {
 			}
 
 			// Children ---------------------
-			$styleadd = "";
 			if (isset($people["children"])) {
 				$elderdate = $family->getMarriageDate();
 				foreach ($people["children"] as $key=>$child) {

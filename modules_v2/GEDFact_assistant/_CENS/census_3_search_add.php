@@ -127,7 +127,6 @@ if (!defined('WT_WEBTREES')) {
 						}
 
 						//-- Parents Husband -------------------
-						$styleadd = "";
 						if (isset($people["husb"])) {
 
 							//-- Parents Husbands Parents --------------------------------------
@@ -573,7 +572,6 @@ if (!defined('WT_WEBTREES')) {
 						}
 
 						// Step Husband -----------------------------
-						$styleadd = "";
 						$elderdate = "";
 						if (isset($people["husb"])) {
 
@@ -710,7 +708,6 @@ if (!defined('WT_WEBTREES')) {
 						}
 
 						// Step Wife -------------------
-						$styleadd = "";
 						if (isset($people["wife"])) {
 
 							//-- Step Wifes Parent Family --------------------------------------
@@ -856,7 +853,6 @@ if (!defined('WT_WEBTREES')) {
 						}
 
 						// Step Children ---------------------
-						$styleadd = "";
 						if (isset($people["children"])) {
 							$elderdate = $family->getMarriageDate();
 							foreach ($people["children"] as $child) {
@@ -1054,7 +1050,7 @@ if (!defined('WT_WEBTREES')) {
 							if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
 							?>
 							<tr class="fact_value">
-								<td align="left" nowrap="nowrap" class="linkcell optionbox<?php echo $styleadd; ?>">
+								<td align="left" nowrap="nowrap" class="linkcell optionbox">
 									<font size=1>
 										<?php
 										if ($people["husb"]->getXref()==$pid) {
@@ -1201,7 +1197,7 @@ if (!defined('WT_WEBTREES')) {
 							if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
 							?>
 							<tr>
-								<td align="left" nowrap="nowrap" class="linkcell optionbox<?php echo $styleadd; ?>">
+								<td align="left" nowrap="nowrap" class="linkcell optionbox">
 									<font size=1>
 										<?php
 										if ($people["wife"]->getXref()==$pid) {
