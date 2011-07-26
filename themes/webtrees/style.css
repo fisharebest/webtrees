@@ -87,6 +87,18 @@ img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img  {
 	height:15px;
 }
 
+#content {
+	margin-left:1px;
+}
+
+#footer {
+	clear:both;
+	color:black;
+	font-size:12px;
+	padding-top: 10px;
+	text-align:center;
+}
+
 .optionbox a img {
 }
 
@@ -634,17 +646,6 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	color:black;
 }
 
-#content {
-	margin-left:1px;
-}
-
-#footer {
-	clear:both;
-	color:black;
-	font-size:12px;
-	text-align:center;
-}
-
 /*-- index.php specific style sheets -- */
 .small_inner_block {
 	max-height:200px;
@@ -658,12 +659,12 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .block {
 	background-color:#edf7fd;
-	color:black;
 	border:solid #81a9cb 1px;
+	color:black;
 	font-size:12px;
-	vertical-align:top;
-	margin-bottom:5px;
+	margin-top:10px;
 	padding:1px;
+	vertical-align:top;
 }
 
 .blockcontent {
