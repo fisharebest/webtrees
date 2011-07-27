@@ -674,9 +674,12 @@ vertical-align:text-top;
 .list_value, .list_value_wrap {
 border:solid #999 1px;
 font-size: 12px;
+text-align:left;
 padding:1px;
 vertical-align:top;
 }
+
+html[dir=rtl] .list_value,  html[dir=rtl] .list_value_wrap { text-align:right; }
 
 .list_label, .list_value {
 white-space: nowrap;
