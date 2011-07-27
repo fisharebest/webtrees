@@ -1268,6 +1268,8 @@ fieldset ol, fieldset li {
 margin:2px 0px 0px 5px;
 }
 
+html[dir='rtl'] fieldset ol, fieldset li { margin:2px 5px 0px 0px; }
+
 div.blockhc a:hover {
 background: transparent;
 }
