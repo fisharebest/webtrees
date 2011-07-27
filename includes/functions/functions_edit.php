@@ -1443,6 +1443,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				} else {
 					echo help_link('edit_add_SHARED_NOTE');
 				}
+			} elseif ($fact=="TYPE" && $upperlevel=='OBJE') {
+			// no help required for Media Type drop-down list
 			} else {
 				echo help_link($fact);
 			}
