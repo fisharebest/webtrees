@@ -2672,7 +2672,7 @@ case 'random_media_persons_or_all':
 	break;
 
 case 'random_media_start_slide':
-	$title=WT_I18N::translate('Start slideshow on page load?');
+	$title=WT_I18N::translate('Start slide show on page load?');
 	$text=WT_I18N::translate('Should the slideshow start automatically when the page is loaded.<br /><br />The slideshow changes the contents of the block without preloading information from the server and without reloading the entire page.');
 	break;
 
