@@ -611,7 +611,7 @@ class CellHTML extends Cell {
 	*/
 	function render(&$html) {
 
-		if (strpos($this->text, "{{nb}}") !== false) {
+		if (strpos($this->text, "{{:ptp:}}") !== false) {
 			return;
 		}
 		$temptext = str_replace("#PAGENUM#", $html->PageNo(), $this->text);
