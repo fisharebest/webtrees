@@ -1295,7 +1295,7 @@ class FootnotePDF extends Footnote {
 	*/
 	function render(&$pdf) {
 		$pdf->setCurrentStyle("footnotenum");
-		$pdf->Write($pdf->getCurrentStyleHeight(), $this->numText, $this->addlink); //source link numbers after name
+		$pdf->Write($pdf->getCurrentStyleHeight(), $this->numText.'  ', $this->addlink); //source link numbers after name
 	}
 
 	/**
