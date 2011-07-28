@@ -309,8 +309,8 @@ class WT_MenuBar {
 			case 'relationship':
 				if ($rootid) {
 					// Pages focused on a specific person - from the person, to me
-					$pid1=$rootid;
-					$pid2=WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
+					$pid1=WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;
+					$pid2=$rootid;
 					if ($pid1==$pid2) {
 						$pid2='';
 					}
@@ -329,8 +329,8 @@ class WT_MenuBar {
 								if ($person instanceof WT_Person) {
 									$subsubmenu = new WT_Menu(
 										$person->getFullName(),
-										'relationship.php?pid1='.$pid1.'&amp;pid2='.$person->getXref().'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL,
-										'menu-chart-relationship-'.$person->getGedId().'-'.$person->getXref() // We don't use these, but a custom theme might
+										'relationship.php?pid1='.$person->getXref().'&amp;pid2='.$pid2.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL,
+										'menu-chart-relationship-'.$person->getXref().'-'.$pid2 // We don't use these, but a custom theme might
 									);
 									$subsubmenu->addIcon('relationship');
 									$subsubmenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_relationship');

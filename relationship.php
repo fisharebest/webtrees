@@ -135,7 +135,7 @@ function paste_id(value) {
 
 	<!-- // Person 1 -->
 	<tr><td class="descriptionbox">
-	<?php echo WT_I18N::translate('Person 1'), help_link('relationship_id'); ?>
+	<?php echo WT_I18N::translate('Person 1'); ?>
 	</td>
 	<td class="optionbox vmiddle">
 	<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>" />
@@ -160,7 +160,7 @@ function paste_id(value) {
 
 	<!-- // Person 2 -->
 	<tr><td class="descriptionbox">
-	<?php echo WT_I18N::translate('Person 2'), help_link('relationship_id'); ?>
+	<?php echo WT_I18N::translate('Person 2'); ?>
 	</td>
 	<td class="optionbox vmiddle">
 	<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>" />

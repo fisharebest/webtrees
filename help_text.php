@@ -2686,11 +2686,6 @@ case 'register_gedcomid':
 	$text=WT_I18N::translate('Every person in the database has a unique ID number on this site.  If you know the ID number for your own record, please enter it here.  If you don\'t know your ID number or could not find it because of privacy settings, please provide enough information in the Comments field to help the site administrator identify who you are on this site so that he can set the ID for you.');
 	break;
 
-case 'relationship_id':
-	$title=WT_I18N::translate('ID\'s of person 1 and person 2');
-	$text=WT_I18N::translate('If you have jumped from another page to this one by having clicked the <b>Relation to me</b> link, you will see here the relationship between yourself and that other individual.<br /><br />If you arrived at this page through the <b>Relationship Chart</b> menu entry on any page header, you have to type the identifier numbers of the two people whose relationship you wish to see.  If you don\'t know the identifier of the desired person, you can click the <b>Find ID</b> link.');
-	break;
-
 case 'remove_person':
 	$title=WT_I18N::translate('Remove person');
 	$text=WT_I18N::translate('Click this link to remove the person from the timeline.');
