@@ -1651,7 +1651,7 @@ function PageNumSHandler() {
 */
 function TotalPagesSHandler() {
 	global $currentElement;
-	$currentElement->addText("{{nb}}");
+	$currentElement->addText("{{:ptp:}}");
 }
 
 /**
