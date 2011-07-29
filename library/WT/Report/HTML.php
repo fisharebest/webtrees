@@ -569,7 +569,7 @@ class WT_Report_HTML extends WT_Report_Base {
 			}
 		}
 		$htmlcode .= ">$text</span>";
-		$htmlcode = str_replace(array("\n", "> ", " <", "+", ","), array("&nbsp;", ">&nbsp;", "&nbsp;<", $this->entityRTL."+", $this->entityRTL.","), $htmlcode);
+		$htmlcode = str_replace(array("\n", "> ", " <", "+", ","), array("<br />", ">&nbsp;", "&nbsp;<", $this->entityRTL."+", $this->entityRTL.","), $htmlcode);
 		echo $htmlcode;
 	}
 
