@@ -110,10 +110,10 @@
 
 				<TextBox width="205" height="46">
 					<Text style="text">
-						<GetPersonName id="" />
+						<GetPersonName id="" /><br />
 					</Text>
 					<Text style="small">
-						<br />   <var var="WT_I18N::translate('Father')" />
+						   <var var="WT_I18N::translate('Father')" />
 						: <Gedcom id="@FAMC"><GetPersonName id="@HUSB" /></Gedcom>
 						<br />   <var var="WT_I18N::translate('Mother')" />
 						: <Gedcom id="@FAMC"><GetPersonName id="@WIFE" /></Gedcom>
@@ -131,7 +131,7 @@
 							: <GedcomValue tag="BIRT:DATE" />
 							<br />  <var var="WT_I18N::translate('Place')" />
 							: <GedcomValue tag="BIRT:PLAC" />
-							<br />  <var var="WT_I18N::translate('Source')" /> 
+							<br />  <var var="WT_I18N::translate('Source')" />
 							: <RepeatTag tag="BIRT:SOUR">
 								<Gedcom id="@SOUR">
 									<GedcomValue tag="TITL" />
