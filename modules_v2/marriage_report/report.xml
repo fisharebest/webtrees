@@ -76,8 +76,7 @@
 					<SetVar name="printedFamilies" value="$printedFamilies+1" />
 
 					<TextBox height="12" width="200">
-						<Text style="text"><GetPersonName id="@HUSB" /></Text>
-						<Text style="spouse">
+						<Text style="text"><GetPersonName id="@HUSB" />
 							<br />   <GetPersonName id="@WIFE" />
 						</Text>
 					</TextBox>
