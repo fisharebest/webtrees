@@ -171,6 +171,7 @@ case 'load_json':
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchColumn();
 	$iTotalRecords=WT_DB::prepare($SELECT2.$WHERE)->execute($args)->fetchColumn();
 
+	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
 		'sEcho'               =>(int)safe_GET('sEcho'),
 		'iTotalRecords'       =>$iTotalRecords,
