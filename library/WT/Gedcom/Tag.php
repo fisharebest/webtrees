@@ -747,6 +747,7 @@ class WT_Gedcom_Tag {
 			}
 		case '_DEG': return /* I18N: gedcom tag _DEG */ WT_I18N::translate('Degree');
 		case '_DETS': return /* I18N: gedcom tag _DETS */ WT_I18N::translate('Death of one spouse');
+		case '_DNA': return /* I18N: gedcom tag _DNA (from FTM 2010) */ WT_I18N::translate('DNA Markers');
 		case '_EMAIL': return /* I18N: gedcom tag _EMAIL */ WT_I18N::translate('Email address');
 		case '_EYEC': return /* I18N: gedcom tag _EYEC */ WT_I18N::translate('Eye color');
 		case '_FA1': return WT_I18N::translate('Fact 1');
