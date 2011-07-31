@@ -210,7 +210,7 @@ echo WT_JS_START;
 			"bAutoWidth":false,
 			"aaSorting": [[ 0, "desc" ]],
 			"iDisplayLength": <?php echo get_user_setting(WT_USER_ID, 'admin_site_log_page_size', 20); ?>,
-			"sPaginationType": "full_numbers",
+			"sPaginationType": "full_numbers"
 		});
 	});
 
