@@ -27,7 +27,7 @@ html { overflow-y:scroll; }
 /* general styles */
 body {font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size:12px; margin:10px; min-width:800px;}
 input.ui-button { padding:1px 3px;}
-input, textarea { color:black; padding-left:3px; padding-right:0px; font-size: 12px; }
+input, textarea { color:black; padding-left:3px; padding-right:0px; }
 html[dir='rtl'] input, html[dir='rtl'] textarea {padding-right: 3px; padding-left: 0px;}
 
 fieldset {margin:8px 8px 4px 8px;}
