@@ -34,7 +34,16 @@ echo
 	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
 	'<link rel="stylesheet" href="', WT_THEME_DIR, 'jquery/jquery-ui_theme.css" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
-	'<meta name="robots" content="noindex,nofollow" />',
+	'<meta name="robots" content="noindex,nofollow" />';
+	
+switch ($BROWSERTYPE) {
+//case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
+case 'msie':
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, $BROWSERTYPE, '.css" />';
+	break;
+}
+
+echo
 	$javascript,
 	'</head>';
 ?>
@@ -85,7 +94,7 @@ if (WT_USER_IS_ADMIN) {
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_info.php" ? 'class="current" ' : ''), 'href="admin_site_info.php?action=phpinfo">', WT_I18N::translate('PHP information'), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_ipaddress.php" ? 'class="current" ' : ''), 'href="admin_site_ipaddress.php">', WT_I18N::translate('Manage sites'), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_clean.php" ? 'class="current" ' : ''), 'href="admin_site_clean.php">', WT_I18N::translate('Cleanup data directory'), '</a></li>',
-		'</ul></li>',
+		'<li><a ', (WT_SCRIPT_NAME=="admin_mysqldumper.php" ? 'class="current" ' : ''), 'href="admin_mysqldumper.php">',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_trees_manage.php" ? 'class="current" ' : ''), 'href="admin_trees_manage.php">',
 		WT_I18N::translate('Family trees'),
 		'</a></li>';

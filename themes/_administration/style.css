@@ -27,7 +27,7 @@ html { overflow-y:scroll; }
 /* general styles */
 body {font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size:12px; margin:10px; min-width:800px;}
 input.ui-button { padding:1px 3px;}
-input, textarea { color:black; padding-left:3px; padding-right:0px; }
+input, textarea { color:black; padding-left:3px; padding-right:3px; }
 html[dir='rtl'] input, html[dir='rtl'] textarea {padding-right: 3px; padding-left: 0px;}
 
 fieldset {margin:8px 8px 4px 8px;}
@@ -97,7 +97,7 @@ html[dir='rtl'] #page_help{text-align:left;}
 #info {position:absolute; right:10px; bottom:0; text-align:right;}
 html[dir='rtl'] #info {right:auto; left:10px; text-align:left;}
 #links {position:absolute; left:10px; bottom:0; display:inline; margin-bottom:5px; white-space:nowrap;}
-html[dir='rtl'] #links {left:auto; right:10px; *left:0px;/* - IE7 hack */}
+html[dir='rtl'] #links {left:auto; right:10px;}
 #links li {display:inline; position:relative;}
 #links li ul {display:none; position:absolute; left:0px; top:1.2em; background:url("jquery/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border:1px solid #D9D6C4;z-index:999;}
 html[dir='rtl'] #links li ul {left:auto; right:0px;}
@@ -111,47 +111,14 @@ html[dir='rtl'] #links li ul {left:auto; right:0px;}
 #admin_content {min-width:830px;}
 
 /* SIDE MENU */
-#admin_menu {
-	padding:10px 0 10px 5px;
-	top: 92px; left: 10px; right: auto; 
-	width:200px; 
-	float:left; 
-	position:absolute; 
-	color:#2E6E9E; 
-	white-space:nowrap; 
-	overflow:hidden;
-	*position:relative;  /* - IE7 hack */
-}
-html[dir='rtl'] #admin_menu {
-	top: 92px; left: auto; right: 10px; 
-	padding:10px 5px 10px 0;
-	float:right;
-}
-
-#admin_menu ul {
-	list-style:none outside none;
-	margin:0 0 0 -30px;
-	*margin:0 0 0 10px;  /* - IE7 hack */
-}
-html[dir='rtl'] #admin_menu ul {
-	margin:0 -30px 0 0;
-	*margin:0 10px 0 0;  /* - IE7 hack */
-}
-
-#admin_menu li ul {
-	margin:0 0 0 -20px;
-	*margin:0 0 0 20px;  /* - IE7 hack */
-}
-html[dir='rtl'] #admin_menu li ul {
-	margin:0 -20px 0 0;
-	*margin:0 20px 0 0;  /* - IE7 hack */
-}
-
+#admin_menu {padding:10px 0 10px 5px;top: 92px; left: 10px; right: auto; width:200px; float:left; position:absolute;	color:#2E6E9E; white-space:nowrap; overflow:hidden;}
+html[dir='rtl'] #admin_menu {top: 92px; left: auto; right: 10px; padding:10px 5px 10px 0;	float:right;}
+#admin_menu ul {list-style:none outside none;	margin:0 0 0 -30px;}
+html[dir='rtl'] #admin_menu ul {margin:0 -30px 0 0;}
+#admin_menu li ul {	margin:0 0 0 -20px;}
+html[dir='rtl'] #admin_menu li ul {margin:0 -20px 0 0;}
 #admin_menu li span {font-style:italic;}
 #admin_menu ul {list-style:none outside none;}
-#admin_menu ul li ul, html[dir='rtl'] #admin_menu li ul {
-	*margin-top:-20px;  /* - IE7 hack */
-}
 
 /* CONTENT */
 #admin_content {margin:0 0 0 220px; padding:10px;}
@@ -193,7 +160,9 @@ html[dir='rtl'] .site_config dd {margin-right: 370px;}
 
 /*SITE LOGS */
 table.site_logs {background:OldLace; border-collapse:separate; border-spacing:0; border:1px inset #D9D6C4; margin:10px;}
-.site_logs td {text-align:center;}
+.site_logs td {text-align:center; vertical-align:middle;}
+input.log-date {width:68px;}
+input.log-filter {width:120px;}
 table#log_list  {width:100%}
 #log_list th {min-width:80px;}
 
