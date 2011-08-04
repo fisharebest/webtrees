@@ -1117,7 +1117,8 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 				if ($TEXT_DIRECTION=="rtl" && !hasRTLText($text) && hasLTRText($text)) $align=" align=\"left\"";
 				if ($TEXT_DIRECTION=="ltr" && !hasLTRText($text) && hasRTLText($text)) $align=" align=\"right\"";
 			}
-		echo "<td class=\"optionbox $styleadd wrap\" $align>";
+		echo "<td class=\"optionbox $styleadd wrap\", align=\"" ,    $TEXT_DIRECTION== "rtl"?"right": "left" , '>"';
+		
 		if (!empty($text)) {
 			echo $text;
 			if (!empty($noterec)) print_fact_sources($noterec, 1);
