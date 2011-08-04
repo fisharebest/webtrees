@@ -27,7 +27,9 @@ html { overflow-y:scroll; }
 /* general styles */
 body {font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size:12px; margin:10px; min-width:800px;}
 input.ui-button { padding:1px 3px;}
-input, textarea {	color:black; padding-left:3px; padding-right:3px;}
+input, textarea { color:black; padding-left:3px; padding-right:0px; font-size: 12px; }
+html[dir='rtl'] input, html[dir='rtl'] textarea {padding-right: 3px; padding-left: 0px;}
+
 fieldset {margin:8px 8px 4px 8px;}
 legend {font-style:italic; font-weight:bold;	padding:0 5px 5px; align:top;}
 img {border:none; vertical-align:middle;}
@@ -56,6 +58,7 @@ html[dir='rtl'] .indent {padding-right:15px;}
 .ui-accordion .ui-accordion-content-active {display:block;}
 .css_right {float:right;}
 html[dir='rtl'] .css_right {float:left;}
+html[dir='rtl'] input {padding-right: 3px; padding-left: 0px;}
 
 /* jEditable styling over-rides */
 .editable {width:100%; display:block}
