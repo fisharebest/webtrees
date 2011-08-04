@@ -264,8 +264,7 @@ if (isset($curgen)) {
 		if ($miscount == 0) {
 			echo WT_I18N::translate('No ancestors in the database.'), "<br />\n";
 		} else {
-			// I18N: %1$d is a count of individuals, %2$s is a list of their names
-			echo " ".WT_I18N::plural(
+			echo /* I18N: %1$d is a count of individuals, %2$s is a list of their names */ WT_I18N::plural(
 				'%1$d individual is missing birthplace map coordinates: %2$s.',
 				'%1$d individuals are missing birthplace map coordinates: %2$s.',
 				$miscount, $miscount, $missing),
