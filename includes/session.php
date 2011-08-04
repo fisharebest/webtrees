@@ -31,8 +31,8 @@ if (!defined('WT_SCRIPT_NAME')) {
 
 // Identify ourself
 define('WT_WEBTREES',        'webtrees');
-define('WT_VERSION',         '1.2.2');
-define('WT_VERSION_RELEASE', ''); // 'svn', 'beta', 'rc1', '', etc.
+define('WT_VERSION',         '1.2.3');
+define('WT_VERSION_RELEASE', 'svn'); // 'svn', 'beta', 'rc1', '', etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
 define('WT_WEBTREES_URL',    'http://webtrees.net/');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
