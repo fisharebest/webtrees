@@ -40,13 +40,18 @@ class WT_I18N {
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
 	static public function init($locale=null) {
-		// The translation libraries work much quicker with a cache.
+		// The translation libraries work much faster with a cache.  Try to create one.
 		if (!is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
-			mkdir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache');
+			// We may not have permission - especially during setup, before we instruct
+			// the user to "chmod 777 /data"
+			@mkdir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache');
 		}
-		$cache=Zend_Cache::factory('Core', 'File', array('automatic_serialization'=>true), array('cache_dir'=>WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache'));
-		Zend_Locale::setCache($cache);
-		Zend_Translate::setCache($cache);
+		// If a cache directory exists, use it.
+		if (is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
+			$cache=Zend_Cache::factory('Core', 'File', array('automatic_serialization'=>true), array('cache_dir'=>WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache'));
+			Zend_Locale::setCache($cache);
+			Zend_Translate::setCache($cache);
+		}
 
 		$installed_languages=self::installed_languages();
 		if (is_null($locale) || !array_key_exists($locale, $installed_languages)) {
