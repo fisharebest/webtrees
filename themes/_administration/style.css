@@ -112,7 +112,8 @@ html[dir='rtl'] #links li ul {left:auto; right:0px;}
 
 /* SIDE MENU */
 #admin_menu {
-	padding:10px 0 10px 5px; 
+	padding:10px 0 10px 5px;
+	top: 92px; left: 10px; right: auto; 
 	width:200px; 
 	float:left; 
 	position:absolute; 
@@ -122,6 +123,7 @@ html[dir='rtl'] #links li ul {left:auto; right:0px;}
 	*position:relative;  /* - IE7 hack */
 }
 html[dir='rtl'] #admin_menu {
+	top: 92px; left: auto; right: 10px; 
 	padding:10px 5px 10px 0;
 	float:right;
 }
