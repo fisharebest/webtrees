@@ -306,10 +306,6 @@ function old_paths() {
 		// Removed in 1.0.4
 		WT_ROOT.'themes/fab/images/notes.gif',
 		// Removed in 1.0.5
-		WT_ROOT.'modules/lightbox/functions/lb_indi_doors_0.php',
-		WT_ROOT.'modules/lightbox/functions/lb_indi_doors_1.php',
-		WT_ROOT.'modules/lightbox/functions/lb_indi_tabs_0.php',
-		WT_ROOT.'modules/lightbox/functions/lb_indi_tabs_1.php',
 		// Removed in 1.0.6
 		WT_ROOT.'includes/extras',
 		// Removed in 1.1.0
@@ -349,7 +345,7 @@ function old_paths() {
 		WT_ROOT.'manageservers.php',
 		WT_ROOT.'media.php',
 		WT_ROOT.'module_admin.php',
-		WT_ROOT.'modules',
+		//WT_ROOT.'modules', // Do not delete - users may have stored custom modules/data here
 		WT_ROOT.'opensearch.php',
 		WT_ROOT.'PEAR.php',
 		WT_ROOT.'pgv_to_wt.php',
@@ -481,19 +477,6 @@ function old_paths() {
 		WT_ROOT.'js/jquery/jquery.ajaxQueue.js',
 		WT_ROOT.'js/treenav.js',
 		WT_ROOT.'library/WT/TreeNav.php',
-		WT_ROOT.'modules_v2/lightbox/pic/detail.gif',
-		WT_ROOT.'modules_v2/lightbox/pic/details.gif',
-		WT_ROOT.'modules_v2/lightbox/pic/next.gif',
-		WT_ROOT.'modules_v2/lightbox/pic/notes.gif',
-		WT_ROOT.'modules_v2/lightbox/pic/prev.gif',
-		WT_ROOT.'modules_v2/lightbox/pic/s_btmleft.png',
-		WT_ROOT.'modules_v2/lightbox/pic/s_btm.png',
-		WT_ROOT.'modules_v2/lightbox/pic/s_btmright.png',
-		WT_ROOT.'modules_v2/lightbox/pic/s_left.png',
-		WT_ROOT.'modules_v2/lightbox/pic/s_right.png',
-		WT_ROOT.'modules_v2/lightbox/pic/s_topleft.png',
-		WT_ROOT.'modules_v2/lightbox/pic/s_top.png',
-		WT_ROOT.'modules_v2/lightbox/pic/s_topright.png',
 		WT_ROOT.'themes/clouds/images/background.jpg',
 		WT_ROOT.'themes/clouds/images/buttons/refresh.gif',
 		WT_ROOT.'themes/clouds/images/buttons/view_all.gif',
@@ -679,7 +662,6 @@ function old_paths() {
 		WT_ROOT.'js/jquery/css/jquery_rtl.css',
 		WT_ROOT.'js/jquery/jquery.tablesorter.js',
 		WT_ROOT.'js/jquery/jquery.tablesorter.pager.js',
-		WT_ROOT.'modules_v2/googlemap/admin_config.php',
 		WT_ROOT.'themes/clouds/images/close.png',
 		WT_ROOT.'themes/clouds/images/copy.png',
 		WT_ROOT.'themes/clouds/images/jquery',
@@ -751,11 +733,8 @@ function old_paths() {
 		WT_ROOT.'themes/xenea/images/pin-in.png',
 		WT_ROOT.'themes/xenea/images/pin-out.png',
 		WT_ROOT.'themes/xenea/jquery',
-		// Nothing removed in 1.2.1
+		// Removed in 1.2.1
 		// Removed in 1.2.2
-		//WT_ROOT.'modules_v2/googlemap/places/...', // Do not delete, these are now optional modules
-		WT_ROOT.'modules_v2/relative_report',
-		WT_ROOT.'modules_v2/source_report',
 		WT_ROOT.'themes/clouds/chrome.css',
 		WT_ROOT.'themes/clouds/images/ancestry.gif',
 		WT_ROOT.'themes/clouds/images/calendar.gif',
@@ -861,10 +840,30 @@ function old_paths() {
 		WT_ROOT.'themes/webtrees/images/lists.png',
 		WT_ROOT.'themes/webtrees/images/reports.png',
 		WT_ROOT.'themes/xenea/chrome.css',
-		//WT_ROOT.'themes/xenea/images/facts/????.gif', // Do not delete - users may have modified these
+		WT_ROOT.'themes/xenea/images/facts/ADDR.gif',
+		WT_ROOT.'themes/xenea/images/facts/BAPM.gif',
+		WT_ROOT.'themes/xenea/images/facts/BIRT.gif',
+		WT_ROOT.'themes/xenea/images/facts/BURI.gif',
+		WT_ROOT.'themes/xenea/images/facts/CEME.gif',
+		WT_ROOT.'themes/xenea/images/facts/CHAN.gif',
+		WT_ROOT.'themes/xenea/images/facts/CHR.gif',
+		WT_ROOT.'themes/xenea/images/facts/DEAT.gif',
+		WT_ROOT.'themes/xenea/images/facts/EDUC.gif',
+		WT_ROOT.'themes/xenea/images/facts/ENGA.gif',
+		WT_ROOT.'themes/xenea/images/facts/GRAD.gif',
+		WT_ROOT.'themes/xenea/images/facts/MARR.gif',
+		WT_ROOT.'themes/xenea/images/facts/_MDCL.if',
+		WT_ROOT.'themes/xenea/images/facts/_MILI.gif',
+		WT_ROOT.'themes/xenea/images/facts/OCCU.gif',
+		WT_ROOT.'themes/xenea/images/facts/ORDN.gif',
+		WT_ROOT.'themes/xenea/images/facts/PHON.gif',
+		WT_ROOT.'themes/xenea/images/facts/RELA.gif',
+		WT_ROOT.'themes/xenea/images/facts/RESI.gif',
 		WT_ROOT.'themes/xenea/opera.css',
 		WT_ROOT.'themes/xenea/print.css',
 		WT_ROOT.'themes/xenea/style_rtl.css',
+		// Removed in 1.2.3
+		//WT_ROOT.'modules_v2', // Do not delete - users may have stored custom modules/data here
 	);
 }
 
