@@ -125,8 +125,7 @@ html[dir='rtl'] #admin_menu li ul {margin:0 -20px 0 0;}
 html[dir='rtl'] #admin_content {margin:0 220px 0 0;}
 
 /* FOOTER */
-#admin_footer {float:left; text-align:center; width:100%; margin-top:30px;}
-html[dir='rtl'] #admin_footer {float:right;}
+#admin_footer {text-align:center; width:100%; margin-top:30px;}
 
 /* DASHBOARD BLOCKS */
 #content_container {background:OldLace; padding:5px; border:1px inset #D9D6C4; height:570px; overflow:auto;}
