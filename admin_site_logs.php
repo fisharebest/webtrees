@@ -240,8 +240,7 @@ echo
 			'<tr>',
 				'<td colspan="6">',
 					// I18N: %s are both user-input date fields
-					WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars($from).'" />', '
-					<input class="log-date" name="to" value="'.htmlspecialchars($to).'" />'),
+					WT_I18N::translate('From %s to %s', '<input class="log-date" name="from" value="'.htmlspecialchars($from).'" />', '<input class="log-date" name="to" value="'.htmlspecialchars($to).'" />'),
 				'</td>',
 			'</tr><tr>',
 				'<td>',
