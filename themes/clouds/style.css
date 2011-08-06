@@ -432,6 +432,8 @@ margin-bottom: 5px;
 padding: 1px;
 }
 
+img.block { height: 25px; }
+
 div.blockcontent {
 border: solid #999 1px;
 margin-left:auto;
