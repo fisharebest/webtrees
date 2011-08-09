@@ -94,7 +94,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getPreLoadContent() {
 		// a workaround to the lack of a proper method of class Module to insert css and scripts in <head> where needed
 		// the required loading order is : headers, theme, css
-	  return $this->js.'<script language="javascript" type="text/javascript">jQuery("head").prepend(\''.$this->headers.'\').append(\''.$this->css.'\');</script>';
+	  return $this->js.$this->headers;
 	}
 
   // Extend WT_Module
