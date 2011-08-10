@@ -147,7 +147,8 @@ table.center {
 .list_label, .list_label_wrap {
 	color:#ffffff;
 	background-color:#81a9cb;
-	font-weight:bold; font-size:12px;
+	font-weight:bold;
+	font-size:12px;
 	text-align:center;
 }
 
@@ -644,56 +645,6 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .helptext {
 	font-size:12px;
 	color:black;
-}
-
-/*-- index.php specific style sheets -- */
-.small_inner_block {
-	max-height:200px;
-	overflow:auto;
-	font-size:10px;
-}
-
-.normal_inner_block {
-	overflow:auto;
-}
-
-.block {
-	background-color:#edf7fd;
-	border:solid #81a9cb 1px;
-	color:black;
-	font-size:12px;
-	margin-top:10px;
-	padding:1px;
-	vertical-align:top;
-}
-
-.blockcontent {
-	margin-left:auto;
-	margin-right:auto;
-	margin-bottom:10px;
-	font-size:13px;
-	overflow:auto;
-}
-
-#index_main_blocks {
-	clear:none;
-	width:66%;
-	float:left;
-}
-
-#index_small_blocks {
-	clear:none;
-	width:33%;
-	float:right;
-}
-
-#index_full_blocks {
-	clear:none;
-	width:100%;
-}
-
-#random_picture {
-	text-align:center;
 }
 
 /*-- pedigree chart specific stylesheets --*/
@@ -1366,69 +1317,37 @@ dd {
 	clear:both;
 }
 
-/* styles for FindFacts pop-up */
-#layDefinedTags,#tabDefinedTagsShow {
-	width:450px;
-}
-#tabDefinedTags {
-	width:430px;
-}
-#layDefinedTags {
-	margin-left:auto;
-	margin-right:auto;
-	height:285px;
-	overflow:auto;
-	border:inset 2px buttonface;
-}
-#tabDefinedTags {
-	border-collapse:collapse;
-}
-#tabDefinedTags th,#tabDefinedTags td {
-	border:solid 1px #000;
-	margin:0;
-	padding:3px;
-}
-#tabDefinedTags tbody th {
-	text-align:left;
-	font-weight:bold;
-}
-#tabDefinedTags tr.sel {
-	background-color:#D1D9EF;
-	color:#888;
-}
-#tabDefinedTags tr.unsel {
-	background-color:#FFFFFF;
-	color:#888;
-}
-#tabDefinedTagsShow {
-	margin-left:auto;
-	margin-right:auto;
-}
-#tabDefinedTagsShow td {
-	width:50%;
-	text-align:center;
-}
-#tabFilterAndCustom {
-	margin-left:auto;
-	margin-right:auto;
-}
-#tabAction {
-	margin-left:auto;
-	margin-right:auto;
-}
-#tabAction td {
-	width:50%;
-	text-align:center;
-}
-
-.faq_top {float:right;}
-.faq_edit {float:right;}
-html[dir='rtl'] .faq_top {float:left;}
-html[dir='rtl'] .faq_edit {float:left;}
-
 td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when it is a link as when not */
 .place {	padding-top:5px;}
 .logo {text-align:center;}
+
+/* styles for FindFacts pop-up */
+#layDefinedTags,#tabDefinedTagsShow {width:450px;}
+#tabDefinedTags {width:430px;}
+#layDefinedTags {margin-left:auto;margin-right:auto;	height:285px;overflow:auto;	border:inset 2px buttonface;}
+#tabDefinedTags {border-collapse:collapse;}
+#tabDefinedTags th,#tabDefinedTags td {border:solid 1px #000;margin:0;	padding:3px;}
+#tabDefinedTags tbody th {text-align:left;font-weight:bold;}
+#tabDefinedTags tr.sel {background-color:#D1D9EF;color:#888;}
+#tabDefinedTags tr.unsel {background-color:#FFFFFF;color:#888;}
+#tabDefinedTagsShow {margin-left:auto;margin-right:auto;}
+#tabDefinedTagsShow td {width:50%;text-align:center;}
+#tabFilterAndCustom {margin-left:auto;margin-right:auto;}
+#tabAction {	margin-left:auto;margin-right:auto;}
+#tabAction td {width:50%;	text-align:center;}
+
+
+/* ======= Block styles ========== */
+#index_main_blocks {	clear:none; width:66%; float:left; padding:3px;}
+#index_small_blocks {clear:none; width:33%; float:right;}
+#index_full_blocks {	clear:none; width:100%;}
+#random_picture {text-align:center;}
+.small_inner_block {	max-height:200px; overflow:auto; font-size:10px;}
+.normal_inner_block {overflow:auto;}
+.block {	background-color:#edf7fd; border:solid #81a9cb 1px; color:black; font-size:12px; margin-top:10px; padding:3px; vertical-align:top;}
+.blockcontent {margin:5px; font-size:13px; overflow:auto;}
+.blockcontent .list_table {border-spacing:0; border:solid #81a9cb 1px; border-right:0;}
+.blockcontent .list_value, .blockcontent  .list_value_wrap {border:0; border-top:solid #81a9cb 1px; border-right:solid #81a9cb 1px;}
 
 /* ======= FAQ table styles ========== */
 table.faq   {background-color:#E0E0E0;	margin:5px 0 50px 5px;width:98%;}

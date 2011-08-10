@@ -1647,13 +1647,13 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 	if ($output!=0) {
 		//-- table footer
-		$return .= '</tbody><tfoot><tr class="sortbottom">';
+		$return .= '</tbody><tfoot><tr>';
 		$return .= '<td class="list_label">';
-		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents').'</label><br />';
+		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents').'</label>';
 		$return .= '</td><td class="list_label">';
 		$return .= /* I18N: A count of events */ WT_I18N::translate('Total events: %s', WT_I18N::number($output));
 		$return .= '</td>';
-		$return .= '<td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td>';//DataTables cannot work with colspan
+		$return .= '<td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td>';//DataTables cannot work with colspan
 		$return .= '</tr></tfoot>';
 		$return .= '</table>';
 	}
