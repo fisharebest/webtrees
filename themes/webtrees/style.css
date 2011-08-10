@@ -1421,33 +1421,6 @@ dd {
 	text-align:center;
 }
 
-/* FAQ table styles */
-table.faq   {
-	background-color:#E0E0E0;
-	margin:5px 0 50px 5px;
-	width:98%;
-}
-table.faq  tr.odd td {
-	background-color:#E7EEF3;
-}
-div.faq_title {
-	background-color:#E0E0E0;
-	margin:1em 0;
-	padding:.25em;
-	font-weight:bold;
-	width:98%;
-}
-div.faq_body {
-	clear:both;
-	margin:1em 0;
-	padding:1em;
-}
-.faq_italic {
-	font-style:italic;
-	font-weight:bold;
-	font-size:90%;
-	padding:0 10px;
-}
 .faq_top {float:right;}
 .faq_edit {float:right;}
 html[dir='rtl'] .faq_top {float:left;}
@@ -1457,7 +1430,19 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 .place {	padding-top:5px;}
 .logo {text-align:center;}
 
-/* ======= Main menu items ========== */
+/* ======= FAQ table styles ========== */
+table.faq   {background-color:#E0E0E0;	margin:5px 0 50px 5px;width:98%;}
+table.faq  tr.odd td {background-color:#E7EEF3;}
+div.faq_title {background-color:#E0E0E0;margin:1em 0;padding:.25em;font-weight:bold;width:98%;}
+div.faq_body {clear:both;margin:1em 0;padding:1em;}
+.faq_italic {font-style:italic;font-weight:bold;font-size:90%;padding:0 10px;}
+.faq_top {float:right;}
+.faq_edit {float:right;}
+
+html[dir='rtl'] .faq_top {float:left;}
+html[dir='rtl'] .faq_edit {float:left;}
+
+/* ======= Heder menu styles  ========== */
 #topMenu {float:left; width:100%; padding:5px 0; position:relative;}
 #main-menu  {clear:both; position:relative; z-index:500; float:right; right:50%;}
 #main-menu,
@@ -1616,7 +1601,6 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 /* =========== end edit, copy, delete links ==================== */
 
 /* =========== Indi header ================== */ 
-
 #indi_header {float:left; width:98%; border-radius: 3px; border: 1px solid #B2C7D7; margin:5px 0; padding:10px;}
 #indi_header h3 {color: #555555; font-size: 90%; font-weight:bold; margin: 0; padding: 0 10px 0 30px; text-align:left;}
 #indi_header h3.name_one {overflow:hidden; position:relative; font-size:1.5em;}
@@ -1646,10 +1630,10 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 #dates {color: #555555; float:right;}
 
 dd .editlink, dd .deletelink  {float:right;}
-.fact_NOTE {float:left; margin:0 5px 0 0;}
+#indi_note .fact_NOTE {float:left; margin:0 5px 0 0;}
 #indi_note .note_details {font-size:100%;}
-.fact_SOUR {margin: 3px 0}
-#indi_note .fact_SOUR a {font-size:100%; margin: 3px 0}
+#indi_note .fact_SOUR {margin: 3px 0}
+#indi_note .fact_SOUR a {font-size:100%;}
 
 html[dir='rtl'] #indi_header {float:right;}
 html[dir='rtl'] #indi_header h3 {padding: 0 30px 0 10px; text-align:right;}
@@ -1676,6 +1660,13 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 
 .icon_arrow {display: block; background: url('images/small_menu_sprite.png') no-repeat left 0;}
 .icon_arrow {background-position: 90% -1166px;} html[dir='rtl'] .icon_arrow {background-position: 10% -1184px;}
+
+/* =========== Indi tabs ================== */ 
+/* Facts & Events tab */
+#personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR {margin: 5px 3px 5px 0}
+#media-display-image {float:left;}
+#media-display-title {float:left; font-style:italic; margin:10px;}
+
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-tabs {padding:0;}

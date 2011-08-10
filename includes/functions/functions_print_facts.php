@@ -413,7 +413,6 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			break;
 		}
 	}
-	echo '<br/>';
 	// -- find source for each fact
 	print_fact_sources($fact->getGedcomRecord(), 2);
 	// -- find notes for each fact
@@ -568,7 +567,8 @@ function print_media_links($factrec, $level, $pid='') {
 			$imgwidth = $imgsize[0]+40;
 			$imgheight = $imgsize[1]+150;
 			if ($objectNum > 0) echo "<br clear=\"all\" />";
-			echo "<table><tr><td>";
+			echo '<div id="media-display">
+				<div id="media-display-image">';;
 			if ($isExternal || media_exists($thumbnail)) {
 
 				//LBox --------  change for Lightbox Album --------------------------------------------
@@ -610,35 +610,36 @@ function print_media_links($factrec, $level, $pid='') {
 				echo "/>";
 				echo "</a>";
 			}
-			echo "</td><td>";
+			echo '</div>'; // close div "media-display-image"
+			echo '<div id="media-display-title">';
 			if (empty($SEARCH_SPIDER)) {
-				echo "<a href=\"mediaviewer.php?mid={$media_id}\">";
+				echo '<a href="mediaviewer.php?mid=', $media_id, '">';
 			}
-			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo "<em>" , getLRM() ,  PrintReady($mediaTitle), "</em>";
-			else echo "<em>", PrintReady($mediaTitle), "</em><br />";
+			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo getLRM(),  PrintReady($mediaTitle);
+			else echo PrintReady($mediaTitle);
 			if (empty($SEARCH_SPIDER)) {
 				echo "</a>";
 			}
 			// NOTE: echo the notes of the media
+			echo '<p>';
 			echo print_fact_notes($row["m_gedrec"], 1);
 			if (preg_match('/2 DATE (.+)/', get_sub_record("FILE", 1, $row["m_gedrec"]), $match)) {
 				$media_date=new WT_Date($match[1]);
 				$md = $media_date->Display(true);
-				echo "<br /><span class=\"label\">", WT_Gedcom_Tag::getLabel('DATE'), ": </span> ", $md;
+				echo '<p class="label">', WT_Gedcom_Tag::getLabel('DATE'), ': </p> ', $md;
 			}
 			$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $row["m_gedrec"], $match);
 			if ($ttype>0) {
 				$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
-				echo "<br /><span class=\"label\">", WT_I18N::translate('Type'), ": </span> <span class=\"field\">$mediaType</span>";
+				echo '<p class="label">', WT_I18N::translate('Type'), ': </span> <span class="field">$mediaType</p>';
 			}
-			//echo "</span>";
-			echo "<br />";
+			echo '</p>';
 			//-- print spouse name for marriage events
 			$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
 			if ($ct>0) {
 				$spouse=WT_Person::getInstance($match[1]);
 				if ($spouse) {
-					echo "<a href=\"", $spouse->getHtmlUrl(), "\">";
+					echo '<a href="', $spouse->getHtmlUrl(), '">';
 					if ($spouse->canDisplayName()) {
 						echo PrintReady($spouse->getFullName());
 					} else {
@@ -658,10 +659,10 @@ function print_media_links($factrec, $level, $pid='') {
 					}
 				}
 			}
-			echo "<br />";
 			print_fact_notes($row["m_gedrec"], $nlevel);
 			print_fact_sources($row["m_gedrec"], $nlevel);
-			echo "</td></tr></table>";
+			echo '</div>';//close div "media-display-title"
+			echo '</div>';//close div "media-display"
 		}
 		$objectNum ++;
 	}
