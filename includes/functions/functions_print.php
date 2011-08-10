@@ -796,7 +796,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		if ($brpos !== false) {
 			$data .= substr($text, 0, $brpos);
 			if ($npage) {
-				$data .= "<br />".substr($text, $brpos + 6) . "</div>";
+				$data .= substr($text, $brpos + 6) . "</div>";
 			} else {
 				$data .= "<div id=\"$elementID\"";
 				if ($EXPAND_NOTES) $data .= " style=\"display:block\"";
@@ -845,7 +845,7 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 		if ($nt==0) {
 			//-- print embedded note records
 			$closeSpan = print_note_record($match[$j][1], $nlevel, $nrec, $textOnly, true);
-			$data .= $closeSpan."<br />";
+			$data .= $closeSpan;
 		} else {
 			$note=WT_Note::getInstance($nmatch[1]);
 			if ($note->canDisplayDetails()) {
@@ -853,12 +853,11 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 				//-- print linked note records
 				$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
 				$closeSpan = print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
-				$data .= $closeSpan."<br />";
+				$data .= $closeSpan;
 				if (!$textOnly) {
 					if (strpos($noterec, "1 SOUR")!==false) {
 						require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 						$data .= print_fact_sources($noterec, 1, true);
-						$data .= "<br />";
 					}
 				}
 			}
@@ -870,15 +869,6 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 				$data .= "</div>";
 			}
 		}
-		/*
-		if ($closeSpan) {
-			if ($j==$ct-1 || $textOnly==false) {
-				$data .= "</span>";
-			} else {
-				$data .= "</span><br /><br />";
-			}
-		}
-		*/
 	}
 	if (!$return) echo $data;
 	else return $data;
