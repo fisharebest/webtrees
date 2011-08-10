@@ -757,9 +757,10 @@ default:
 					jQuery('#list script').each(function() {
 						var script=document.createElement('script');
 						script.type='text/javascript';
-						jQuery(script).text(jQuery(this).text());
+						jQuery('#list script').appendTo('body'); 
 						document.body.appendChild(script);
 					}).remove();
+					//
 				}
 				
 			});
