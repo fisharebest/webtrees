@@ -1156,6 +1156,7 @@ html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 /* ========= jQuery.datatable styling over-rides ============ */
 .odd {background-color:LightGrey;}
 .even {background-color:#fff;}
+.css_right {float:left;}
 .fg-button {padding:2px 6px;}
 .fg-toolbar {background:#EEE; border-color:darkGray;}
 .dataTables_paginate   {float:left; margin:5px;}
@@ -1164,7 +1165,6 @@ html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 .dataTables_info {float:left; margin:5px;}
 .dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
-.css_right {float:left;}
 #loading {text-align:center;}
 
 html[dir='rtl'] .css_right {float:right;}

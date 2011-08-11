@@ -146,7 +146,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		if ($option=="DEAT_PLAC" && strstr($person->getDeathPlace(), $filter)===false) continue;
 		//-- Counter
 		echo '<tr>';
-		echo '<td class="list_value_wrap rela list_item">', ++$n, '</td>';
+		echo '<td class="rela list_item">', ++$n, '</td>';
 		//-- Indi name(s)
 		$tdclass = 'list_value_wrap';
 		if (!$person->isDead()) $tdclass .= ' alive';
@@ -229,7 +229,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo '</td>';
 		//-- Birth anniversary
 		if ($tiny) {
-			echo '<td class="list_value_wrap rela">';
+			echo '<td class="rela">';
 			$bage =WT_Date::GetAgeYears($birth_dates[0]);
 			if (empty($bage)) {
 				echo "&nbsp;";
@@ -289,7 +289,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo "</td>";
 		//-- Death anniversary
 		if ($tiny) {
-			echo '<td class="list_value_wrap rela">';
+			echo '<td class="rela">';
 			if ($death_dates[0]->isOK())
 				echo '<span class="age">', WT_Date::GetAgeYears($death_dates[0]), '</span>';
 			else
@@ -328,7 +328,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo '</td>';
 		//-- Last change
 		if ($tiny && $SHOW_LAST_CHANGE) {
-			echo '<td class="list_value_wrap rela">', $person->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
+			echo '<td class="rela">', $person->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
 		}
 		//-- Sorting by gender
 		echo '<td style="display:none">';
@@ -513,7 +513,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 		if ($option=='MARR_PLAC' && strstr($family->getMarriagePlace(), $filter)===false) continue;
 		//-- Counter
 		echo '<tr>';
-		echo '<td class="list_value_wrap rela list_item">', ++$num, '</td>';
+		echo '<td class="rela list_item">', ++$num, '</td>';
 		//-- Husband name(s)
 		list($husb_name, $wife_name)=explode(' + ', $family->getSortName());
 		$names=$husb->getAllNames();
@@ -647,7 +647,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 		echo '</td>';
 		//-- Marriage anniversary
 		if ($tiny) {
-			echo '<td class="list_value_wrap rela">';
+			echo '<td class="rela">';
 			$mage=WT_Date::GetAgeYears($mdate);
 			if (empty($mage)) echo '&nbsp;';
 			else echo '<span class="age">', $mage, '</span>';
@@ -678,7 +678,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 		}
 		//-- Last change
 		if ($tiny && $SHOW_LAST_CHANGE)
-			echo '<td class="list_value_wrap rela">', $family->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
+			echo '<td class="rela">', $family->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
 		//-- Sorting by marriage date
 		echo '<td style="display:none">';
 		if (!$family->canDisplayDetails() || !$mdate->isOK()) {
@@ -764,36 +764,70 @@ function print_fam_table($datalist, $legend='', $option='') {
  * @param array $datalist contain sources that were extracted from the database.
  * @param string $legend optional legend of the fieldset
  */
-function print_sour_table($datalist, $legend=null) {
+function print_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES;
 
-	if (count($datalist)<1) {
-		return;
-	}
-	require_once WT_ROOT.'js/sorttable.js.htm';
-
-	echo '<fieldset><legend><img src="', $WT_IMAGES['source'], '" align="middle" alt="" /> ';
-	if ($legend) {
-		echo $legend;
-	} else {
-		echo WT_I18N::translate('Sources');
-	}
-	echo '</legend>';
 	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	echo WT_JS_START;?>
+	jQuery(document).ready(function(){
+		jQuery('#<?php echo $table_id; ?>').dataTable( {
+			"sDom": '<"H"prf>t<"F"li>',
+			"oLanguage": {
+				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
+				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
+				"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
+				"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
+				"sInfoFiltered": '<?php echo /* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
+				"sProcessing": '<?php echo WT_I18N::translate('Loading...');?>',
+				"sSearch": '<?php echo WT_I18N::translate('Search');?>',
+				"oPaginate": {
+					"sFirst":    '<?php echo /* I18N: button label, first page    */ WT_I18N::translate('first');    ?>',
+					"sLast":     '<?php echo /* I18N: button label, last page     */ WT_I18N::translate('last');     ?>',
+					"sNext":     '<?php echo /* I18N: button label, next page     */ WT_I18N::translate('next');     ?>',
+					"sPrevious": '<?php echo /* I18N: button label, previous page */ WT_I18N::translate('previous'); ?>'
+				}
+			},
+			"bJQueryUI": true,
+			"bAutoWidth":false,
+			"bProcessing": true,
+			"aoColumnDefs": [
+				{"bSortable": false, "aTargets": [ 8 ]},
+				{"sType": "numeric", "aTargets": [3, 4, 5, 6]}
+			],
+			"aaSorting": [[ 0, "asc" ]],
+			"iDisplayLength": 20,
+			"sPaginationType": "full_numbers",
+	   });
+	   	jQuery("#loading").css('display', 'none');
+	   	jQuery("#source-list").css('visibility', 'visible');
+	});
+	<?php
+	echo WT_JS_END;
+	//--table wrapper
+	echo '<div id="loading" align="center"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
+	echo '<div id="source-list">';
 	//-- table header
-	echo '<table id="', $table_id, '" class="sortable list_table center"><tr><td></td>';
-	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
-	echo '<td class="list_label t2" style="display:none;">', WT_Gedcom_Tag::getLabel('TITL'), ' 2</td>';
-	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Individuals'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Families'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Media objects'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Shared notes'), '</th>';
+	echo '<table id="', $table_id, '"><thead><tr>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
+	echo '<th class="list_label t2" style="display:none;">', WT_Gedcom_Tag::getLabel('TITL'), ' 2</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
+	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
+	echo '<th>', WT_I18N::translate('Families'), '</th>';
+	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
+	echo '<th>', WT_I18N::translate('Shared notes'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th class="list_label rela">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+		echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	} else {
+		echo '<th style="display:none;"></th>';
 	}
-	echo '</tr>';
+	if (WT_USER_CAN_EDIT) {
+		echo '<th style="margin:0 -2px 1px 1px; padding:3px 0 4px;"> </th>';//delete
+	} else {
+		echo '<th style="display:none;"></th>';
+	}
+	echo '</tr></thead>';
 	//-- table body
+	echo '<tbody>';
 	$t2=false;
 	$n=0;
 	foreach ($datalist as $key=>$value) {
@@ -820,57 +854,61 @@ function print_sour_table($datalist, $legend=null) {
 			continue;
 		}
 		$link_url=$source->getHtmlUrl();
-		//-- Counter
-		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
+		echo '<tr>';
 		//-- Source name(s)
 		$tmp=$source->getFullName();
-		echo '<td class="list_value_wrap" align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item name2">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
+		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
 		// alternate title in a new column
 		$tmp=$source->getAddName();
 		if ($tmp) {
-			echo '<td class="list_value_wrap t2" style="display:none;" align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
+			echo '<td class="t2" style="display:none;" align="', get_align($tmp), '"><a href="', $link_url, '">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
 			$t2=true;
 		} else {
-			echo '<td class="list_value_wrap t2" style="display:none;">&nbsp;</td>';
+			echo '<td class="t2" style="display:none;">&nbsp;</td>';
 		}
 		//-- Author
 		$tmp=$source->getAuth();
 		if ($tmp) {
-			echo '<td class="list_value_wrap" align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
+			echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
 		} else {
-			echo '<td class="list_value_wrap">&nbsp;</td>';
+			echo '<td>&nbsp;</td>';
 		}
 		//-- Linked INDIs
 		$tmp=$source->countLinkedIndividuals();
-		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td>', $tmp, '</td>';
 		//-- Linked FAMs
 		$tmp=$source->countLinkedfamilies();
-		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td>', $tmp, '</td>';
 		//-- Linked OBJEcts
 		$tmp=$source->countLinkedMedia();
-		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td>', $tmp, '</td>';
 		//-- Linked NOTEs
 		$tmp=$source->countLinkedNotes();
-		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td>', $tmp, '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td class="list_value_wrap rela">'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+			echo '<td>'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+		} else {
+			echo '<td style="display:none;"></td>';
+		}
+		//-- Delete 
+		if (WT_USER_CAN_EDIT) {
+			$deletesource = explode("@", $source);
+			echo '<td><div title="', WT_I18N::translate('Delete source'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Source?'), '\')) return deletesource(\'', $deletesource[0],'\'); else return false;"></div></td>';
+		} else {
+			echo '<td style="display:none;"></td>';
 		}
 		echo "</tr>\n";
 	}
-	//-- table footer
-	echo '<tr class="sortbottom"><td></td>';
-	echo '<td class="list_label">',  /* I18N: A count of sources */ WT_I18N::translate('Total sources: %s', WT_I18N::number($n)), '</td><td></td><td class="t2" style="display:none;"></td><td></td><td></td><td></td><td></td>';
-	if ($SHOW_LAST_CHANGE) {
-		echo '<td></td>';
-	}
-	echo '</tr></table></fieldset>';
+	echo '</tbody>';
+	echo '</table>';
+	echo '</div>';
 	// show TITLE2 col if not empty
 	if ($t2) {
 		echo <<< T2
 		<script type="text/javascript">
 			var table = document.getElementById("$table_id");
-			cells = table.getElementsByTagName('td');
+			cells = table.getElementsByTagName('td, th');
 			for (i=0;i<cells.length;i++) {
 				if (cells[i].className && (cells[i].className.indexOf('t2') != -1)) {
 					cells[i].style.display="";
@@ -928,7 +966,7 @@ function print_note_table($datalist, $legend=null) {
 		}
 		$link_url=$note->getHtmlUrl();
 		//-- Counter
-		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
+		echo '<tr><td class="rela list_item">', ++$n, '</td>';
 		//-- Shared Note name(s)
 		$tmp=$note->getFullName();
 		echo '<td class="list_value_wrap" align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item name2">', PrintReady($tmp), '</a></td>';
@@ -946,7 +984,7 @@ function print_note_table($datalist, $legend=null) {
 		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td class="list_value_wrap rela">'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+			echo '<td class="rela">'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 		}
 		echo "</tr>\n";
 	}
@@ -996,7 +1034,7 @@ function print_repo_table($repos, $legend='') {
 			continue;
 		}
 		//-- Counter
-		echo '<tr><td class="list_value_wrap rela list_item">', ++$n, '</td>';
+		echo '<tr><td class="rela list_item">', ++$n, '</td>';
 		//-- Repository name(s)
 		$name = $repo->getFullName();
 		echo '<td class="list_value_wrap" align="', get_align($name), '"><a href="', $repo->getHtmlUrl(), '" class="list_item name2">', PrintReady(htmlspecialchars($name)), '</a>';
@@ -1010,7 +1048,7 @@ function print_repo_table($repos, $legend='') {
 		echo '<td class="list_value_wrap"><a href="', $repo->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td class="list_value_wrap rela">', $repo->LastChangeTimestamp(!$SEARCH_SPIDER), '</td>';
+			echo '<td class="rela">', $repo->LastChangeTimestamp(!$SEARCH_SPIDER), '</td>';
 		}
 		echo '</tr>';
 	}
@@ -1055,7 +1093,7 @@ function print_media_table($datalist, $legend) {
 		if ($media->canDisplayDetails()) {
 			//-- Counter
 			echo "<tr>";
-			echo "<td class=\"list_value_wrap rela list_item\">", ++$n, "</td>";
+			echo "<td class=\"rela list_item\">", ++$n, "</td>";
 			//-- Object name(s)
 			$name = $media->getFullName();
 			echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
@@ -1094,7 +1132,7 @@ function print_media_table($datalist, $legend) {
 			*/
 			//-- Last change
 			if ($SHOW_LAST_CHANGE)
-				echo "<td class=\"list_value_wrap rela\">".$media->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
+				echo "<td class=\"rela\">".$media->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
 			echo "</tr>\n";
 		}
 	}
@@ -1108,16 +1146,16 @@ function print_media_table($datalist, $legend) {
 function format_surname_table($surnames, $type) {
 	global $GEDCOM;
 
-	$html='<table class="list_table center width100"><thead><tr>
-			<th class="list_label">&nbsp;</th>
-			<th class="list_label">'.WT_Gedcom_Tag::getLabel('SURN').'</th>
-			<th class="list_label">';
+	$html='<table class="sortable list_table center">';
+	$html.='<th>&nbsp;</th>';
+	$html.='<th class="list_label">'.WT_Gedcom_Tag::getLabel('SURN').'</th>';
+	$html.='<th class="list_label">';
 	if ($type=='famlist') {
 		$html.=WT_I18N::translate('Spouses');
 	} else {
 		$html.=WT_I18N::translate('Individuals');
 	}
-	$html.='</th></tr></thead><tbody>';
+	$html.='</th></tr>';
 
 	$unique_surn=array();
 	$unique_indi=array();
@@ -1131,7 +1169,7 @@ function format_surname_table($surnames, $type) {
 		}
 		// Row counter
 		++$row_num;
-		$html.='<tr><td class="list_value_wrap">'.$row_num.'</td>';
+		$html.='<tr><td class="rela list_item">'.$row_num.'</td>';
 		// Surname
 		$html.='<td class="list_value_wrap" align="'.get_align($surn).'">';
 		if (count($surns)==1) {
@@ -1173,13 +1211,11 @@ function format_surname_table($surnames, $type) {
 		}
 		$html.='</td></tr>';
 	}
-	$html.='</tbody>';
-	
 	//-- table footer
-	$html.='<tfoot><tr>
-			<td class="list_label" colspan="3">'. /* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi))).
-			'<br/>'. /* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).'</td>
-			</tr></table>';
+	$html.='<tr class="sortbottom"><td class="list_item">&nbsp;</td>';
+	$html.='<td class="list_item">&nbsp;</td>';
+	$html.='<td class="list_label name2">'. /* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi)));
+	$html.='<br/>'. /* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).'</td></tr></table>';
 	return $html;
 }
 
@@ -1382,10 +1418,10 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
             $aaSorting = "[4,'desc'], [5,'asc']";
     }
 ?>
-    <script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function(){
-					jQuery('#<?php echo $table_id; ?>').dataTable( {
+				jQuery('#<?php echo $table_id; ?>').dataTable( {
                 "bAutoWidth":false,
                 "bPaginate": false,
                 "bLengthChange": false,
@@ -1425,7 +1461,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
         if (!$record || !$record->canDisplayDetails()) {
             continue;
         }
-        $return .= "<tr><td class='list_value_wrap rela list_item'>";
+        $return .= "<tr><td class='rela list_item'>";
         $indi = false;
         switch ($record->getType()) {
             case "INDI":
@@ -1506,17 +1542,18 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	global $TEXT_DIRECTION, $WT_IMAGES;
 	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
 	?>
-    <script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 			jQuery('#<?php echo $table_id; ?>').dataTable( {
+				"sDom": '<"F"li>',
 				"bAutoWidth":false,
 				"bPaginate": false,
 				"bLengthChange": false,
 				"bFilter": false,
 				"bInfo": false,
 				"bJQueryUI": false,
-				"aaSorting": [[ <?php echo $sort_by=='alpha' ? 0 : 3; ?>, 'asc']],
+				//"aaSorting": [[ <?php echo $sort_by=='alpha' ? 0 : 3; ?>, 'asc']],
 				"aoColumns": [
 					/* 0-Record */ null,
 					/* 1-GIVN */   { "bVisible": false },
@@ -1649,13 +1686,13 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 	if ($output!=0) {
 		//-- table footer
-		$return .= '</tbody><tfoot><tr>';
+		$return .= '</tbody><tfoot><tr class="sortbottom">';
 		$return .= '<td class="list_label">';
-		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents').'</label>';
+		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents').'</label><br />';
 		$return .= '</td><td class="list_label">';
 		$return .= /* I18N: A count of events */ WT_I18N::translate('Total events: %s', WT_I18N::number($output));
 		$return .= '</td>';
-		$return .= '<td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td>';//DataTables cannot work with colspan
+		$return .= '<td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td>';//DataTables cannot work with colspan
 		$return .= '</tr></tfoot>';
 		$return .= '</table>';
 	}

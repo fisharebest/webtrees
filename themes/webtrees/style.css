@@ -1336,6 +1336,17 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 #tabAction {	margin-left:auto;margin-right:auto;}
 #tabAction td {width:50%;	text-align:center;}
 
+/* ======= List styles =========== */
+/* Source list */
+#source-list{margin:auto; visibility:hidden; width:80%;}
+#source-list th{min-width:120px;}
+#source-list th:last-child{min-width:24px;}
+#source-details{margin:auto; text-align:center; width:80%;}
+#source-tabs{text-align:left; visibility:hidden;}
+#source-return{float:right; padding:7px}
+
+html[dir='rtl'] #source-return {float:left;}
+html[dir='rtl'] #source-tabs {text-align:right;}
 
 /* ======= Block styles ========== */
 #index_main_blocks {	clear:none; width:66%; float:left; padding:3px;}
@@ -1361,7 +1372,7 @@ div.faq_body {clear:both;margin:1em 0;padding:1em;}
 html[dir='rtl'] .faq_top {float:left;}
 html[dir='rtl'] .faq_edit {float:left;}
 
-/* ======= Heder menu styles  ========== */
+/* ======= Header menu styles  ========== */
 #topMenu {float:left; width:100%; padding:5px 0; position:relative;}
 #main-menu  {clear:both; position:relative; z-index:500; float:right; right:50%;}
 #main-menu,
@@ -1594,10 +1605,30 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .ui-accordion .ui-accordion-header a {padding: 2px;}
 .ui-helper-reset {line-height: 1.5;}
 .ui-state-highlight a {color: red;}
+.ui-widget-header {padding:3px;}
 
 html[dir='rtl'] .ui-tabs {direction:rtl;}
 html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected, html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
+
+/* jQuery.datatable styling general over-rides */
+.odd {background-color:#E7EEF3;}
+.even {background-color:#efe;}
+.css_right {float:left;}
+.fg-button {padding:2px 6px;}
+.dataTables_paginate  {float:left;}
+.dataTables_processing {float:left;}
+.dataTables_filter {float:right;}
+.dataTables_info {float:left;}
+.dataTables_length {float:right;}
+.dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
+
+html[dir='rtl'] .css_right {float:right;}
+html[dir='rtl'] .dataTables_paginate {float:right;}
+html[dir='rtl'] .dataTables_processing {float:right;}
+html[dir='rtl'] .dataTables_filter {float:left;}
+html[dir='rtl'] .dataTables_info {float:right}
+html[dir='rtl'] .dataTables_length {float:left;}
 
 /* ========= Sidebar ============== */
 #main {min-width:600px; width:100%}
