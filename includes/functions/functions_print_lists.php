@@ -796,7 +796,7 @@ function print_sour_table($datalist) {
 			],
 			"aaSorting": [[ 0, "asc" ]],
 			"iDisplayLength": 20,
-			"sPaginationType": "full_numbers",
+			"sPaginationType": "full_numbers"
 	   });
 	   	jQuery("#loading").css('display', 'none');
 	   	jQuery("#source-list").css('visibility', 'visible');
