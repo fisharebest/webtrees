@@ -80,7 +80,7 @@
 {
 	background:#fbdaed;
 }
-#indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  
+#indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN, .odd 
 {
 	background: #fbdaed;
 }

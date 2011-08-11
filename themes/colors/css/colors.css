@@ -28,7 +28,7 @@
 /* =================== */
 /* Set global defaults */
 
-body { font: 12px tahoma, arial, helvetica, sans-serif; background:#fff; }
+body { font: 12px tahoma, arial, helvetica, sans-serif;}
 
 * { margin:0px; padding:0px; }
 
@@ -1090,6 +1090,7 @@ border:1px solid #ccc;
 }
 
 h2 {
+color: #333;
 font-size: 18px;
 font-weight: bold;
 }
