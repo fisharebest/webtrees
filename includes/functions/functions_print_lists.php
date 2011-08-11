@@ -1108,16 +1108,16 @@ function print_media_table($datalist, $legend) {
 function format_surname_table($surnames, $type) {
 	global $GEDCOM;
 
-	$html='<table class="sortable list_table center">';
-	$html.='<th>&nbsp;</th>';
-	$html.='<th class="list_label">'.WT_Gedcom_Tag::getLabel('SURN').'</th>';
-	$html.='<th class="list_label">';
+	$html='<table class="list_table center width100"><thead><tr>
+			<th class="list_label">&nbsp;</th>
+			<th class="list_label">'.WT_Gedcom_Tag::getLabel('SURN').'</th>
+			<th class="list_label">';
 	if ($type=='famlist') {
 		$html.=WT_I18N::translate('Spouses');
 	} else {
 		$html.=WT_I18N::translate('Individuals');
 	}
-	$html.='</th></tr>';
+	$html.='</th></tr></thead><tbody>';
 
 	$unique_surn=array();
 	$unique_indi=array();
@@ -1131,7 +1131,7 @@ function format_surname_table($surnames, $type) {
 		}
 		// Row counter
 		++$row_num;
-		$html.='<tr><td class="list_value_wrap rela list_item">'.$row_num.'</td>';
+		$html.='<tr><td class="list_value_wrap">'.$row_num.'</td>';
 		// Surname
 		$html.='<td class="list_value_wrap" align="'.get_align($surn).'">';
 		if (count($surns)==1) {
@@ -1173,11 +1173,13 @@ function format_surname_table($surnames, $type) {
 		}
 		$html.='</td></tr>';
 	}
+	$html.='</tbody>';
+	
 	//-- table footer
-	$html.='<tr class="sortbottom"><td class="list_item">&nbsp;</td>';
-	$html.='<td class="list_item">&nbsp;</td>';
-	$html.='<td class="list_label name2">'. /* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi)));
-	$html.='<br/>'. /* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).'</td></tr></table>';
+	$html.='<tfoot><tr>
+			<td class="list_label" colspan="3">'. /* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi))).
+			'<br/>'. /* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).'</td>
+			</tr></table>';
 	return $html;
 }
 
