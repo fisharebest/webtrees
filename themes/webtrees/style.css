@@ -1339,6 +1339,7 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 /* ======= List styles =========== */
 /* Source list */
 #source-list{margin:auto; visibility:hidden; width:80%;}
+#source-list table{width:100%;}
 #source-list th{min-width:120px;}
 #source-list th:last-child{min-width:24px;}
 #source-details{margin:auto; text-align:center; width:80%;}
