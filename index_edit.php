@@ -398,9 +398,10 @@ if ($action=="configure") {
 	echo "</div></td></tr>";
 	echo "<tr><td class=\"topbottombar\" colspan=\"7\">";
 
+	/* This section temporarily removed as it does not work (kiwi - 15/08/2011)
 	if (WT_USER_IS_ADMIN && $ctype=='user') {
 		echo WT_I18N::translate('Use these blocks as the default block configuration for all users?')."<input type=\"checkbox\" name=\"setdefault\" value=\"1\" /><br /><br />";
-	}
+	}*/
 
 	echo "<input type=\"button\" value=\"".WT_I18N::translate('Reset to Default Blocks')."\" onclick=\"window.location='index_edit.php?ctype=$ctype&amp;action=reset&amp;name=".str_replace("'", "\'", $name)."';\" />";
 	if ($ctype=='user') {
