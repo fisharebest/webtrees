@@ -69,20 +69,32 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
 		$title.=$this->getTitle().help_link('todo', $this->getName());
+		$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+		?>
+		<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('#<?php echo $table_id; ?>').dataTable( {
+				"bAutoWidth":false,
+				"bPaginate": false,
+				"bLengthChange": false,
+				"bFilter": false,
+				"bInfo": false,
+				"bJQueryUI": false
+				});		
+			});
+		</script>
+		<?php
 		$content='';
-
-		require_once WT_ROOT.'js/sorttable.js.htm';
-
-		$table_id = 'ID'.floor(microtime()*1000000); // sorttable requires a unique ID
-		$content .= '<table id="'.$table_id.'" class="sortable list_table center">';
-		$content .= '<tr>';
-		$content .= '<th class="list_label">'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
-		$content .= '<th class="list_label">'.WT_I18N::translate('Record').'</th>';
+		$content .= '<table id="'.$table_id.'" class="list_table center">';
+		$content .= '<thead><tr>';
+		$content .= '<th class="list_label" style="cursor:pointer;">'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
+		$content .= '<th class="list_label" style="cursor:pointer;">'.WT_I18N::translate('Record').'</th>';
 		if ($show_unassigned || $show_other) {
-			$content .= '<th class="list_label">'.WT_I18N::translate('User name').'</th>';
+			$content .= '<th class="list_label" style="cursor:pointer;">'.WT_I18N::translate('User name').'</th>';
 		}
-		$content .= '<th class="list_label">'.WT_Gedcom_Tag::getLabel('TEXT').'</th>';
-		$content .= '</tr>';
+		$content .= '<th class="list_label" style="cursor:pointer;">'.WT_Gedcom_Tag::getLabel('TEXT').'</th>';
+		$content .= '</tr></thead><tbody>';
 
 		$found=false;
 		$end_jd=$show_future ? 99999999 : WT_CLIENT_JD;
@@ -106,7 +118,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 		}
 
-		$content .= '</table>';
+		$content .= '</tbody></table>';
 		if (!$found) {
 			$content.='<p>'.WT_I18N::translate('There are no research tasks in this family tree.').'</p>';
 		}
@@ -124,7 +136,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function loadAjax() {
-		return true;
+		return false;
 	}
 
 	// Implement class WT_Module_Block
