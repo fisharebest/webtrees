@@ -1772,7 +1772,7 @@ html[dir='rtl'] .dataTables_length {float:left;}
 /* ========= Source list ================= */
 #source-list  { margin:auto; width:98%; visibility:hidden;}
 #source-list table  {width:100%;}
-#source-list th {white-space: nowrap;}
+#source-list th {cursor:pointer; cursor:hand; white-space: nowrap;}
 #source-list th:last-child {width:24px;}
 #source-details h2 {margin-bottom:20px; text-align:center;}
 #source-tabs {margin:auto; visibility:hidden; width:80%;}

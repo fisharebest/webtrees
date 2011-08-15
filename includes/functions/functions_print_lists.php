@@ -767,10 +767,9 @@ function print_fam_table($datalist, $legend='', $option='') {
 function print_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES;
 
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	echo WT_JS_START;?>
 	jQuery(document).ready(function(){
-		jQuery('#<?php echo $table_id; ?>').dataTable( {
+		jQuery('#source_list_table').dataTable( {
 			"sDom": '<"H"prf>t<"F"li>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
@@ -790,26 +789,25 @@ function print_sour_table($datalist) {
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
+			"bStateSave": true,
 			"aoColumnDefs": [
 				{"bSortable": false, "aTargets": [ 8 ]},
 				{"sType": "numeric", "aTargets": [3, 4, 5, 6]}
 			],
-			"aaSorting": [[ <?php echo $sort_by=='alpha' ? 0 : 3; ?>, 'asc']],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
 	   	jQuery("#loading").css('display', 'none');
 	   	jQuery("#source-list").css('visibility', 'visible');
 	});
-	<?php
-	echo WT_JS_END;
+	<?php echo WT_JS_END;
 	//--table wrapper
 	echo '<div id="loading" align="center"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
 	echo '<div id="source-list">';
 	//-- table header
-	echo '<table id="', $table_id, '"><thead><tr>';
+	echo '<table id="source_list_table"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
-	echo '<th class="list_label t2" style="display:none;">', WT_Gedcom_Tag::getLabel('TITL'), ' 2</th>';
+	echo '<th class="t2" style="display:none;">', WT_Gedcom_Tag::getLabel('TITL'), ' 2</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
