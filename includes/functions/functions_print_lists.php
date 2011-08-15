@@ -1692,7 +1692,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= '</td><td class="list_label">';
 		$return .= /* I18N: A count of events */ WT_I18N::translate('Total events: %s', WT_I18N::number($output));
 		$return .= '</td>';
-		$return .= '<td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td>';//DataTables cannot work with colspan
+		$return .= '<td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td>';//DataTables cannot work with colspan
 		$return .= '</tr></tfoot>';
 		$return .= '</table>';
 	}
