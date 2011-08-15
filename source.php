@@ -107,7 +107,7 @@ echo '<h2>', WT_I18N::translate('Source:'), '&nbsp;', PrintReady(htmlspecialchar
 echo '<div id="loading"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
 echo '<div id="source-tabs">
 		<ul>
-			<li><a href="#edit"><span>', WT_I18N::translate('Edit'), '</span></a></li>
+			<li><a href="#edit"><span>', WT_I18N::translate('Details'), '</span></a></li>
 			<li><a href="#indi-sources"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>
 			<li><a href="#fam-sources"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>
 			<li><a href="#media-sources"><span id="mediasource">', WT_I18N::translate('Media objects'), '</span></a></li>
