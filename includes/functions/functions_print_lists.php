@@ -794,7 +794,7 @@ function print_sour_table($datalist) {
 				{"bSortable": false, "aTargets": [ 8 ]},
 				{"sType": "numeric", "aTargets": [3, 4, 5, 6]}
 			],
-			"aaSorting": [[ 0, "asc" ]],
+			"aaSorting": [[ <?php echo $sort_by=='alpha' ? 0 : 3; ?>, 'asc']],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
