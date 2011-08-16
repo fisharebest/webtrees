@@ -106,16 +106,24 @@ echo '<div id="source-details">';
 echo '<h2>', WT_I18N::translate('Source:'), '&nbsp;', PrintReady(htmlspecialchars($controller->source->getFullName())), '</h2>';
 echo '<div id="loading"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
 echo '<div id="source-tabs">
-		<ul>
-			<li><a href="#edit"><span>', WT_I18N::translate('Details'), '</span></a></li>
-			<li><a href="#indi-sources"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>
-			<li><a href="#fam-sources"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>
-			<li><a href="#media-sources"><span id="mediasource">', WT_I18N::translate('Media objects'), '</span></a></li>
-			<li><a href="#note-sources"><span id="notesource">', WT_I18N::translate('Notes'), '</span></a></li>
-			<a id="source-return" href="sourcelist.php">', WT_I18N::translate('Return to sources'), '</a>
-		</ul>';
+	<ul>
+		<li><a href="#details"><span>', WT_I18N::translate('Details'), '</span></a></li>';
+		if ($controller->source->countLinkedIndividuals()) {
+			echo '<li><a href="#indi-sources"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
+		}
+		if ($controller->source->countLinkedFamilies()) {
+			echo '<li><a href="#fam-sources"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';
+		}
+		if ($controller->source->countLinkedMedia()) {
+			echo '<li><a href="#media-sources"><span id="mediasource">', WT_I18N::translate('Media objects'), '</span></a></li>';
+		}
+		if ($controller->source->countLinkedNotes()) {
+			echo '<li><a href="#note-sources"><span id="notesource">', WT_I18N::translate('Notes'), '</span></a></li>';
+		}
+		echo '<a id="source-return" href="sourcelist.php">', WT_I18N::translate('Return to sources'), '</a>
+	</ul>';
 	// Edit this source
-	echo '<div id="edit">';
+	echo '<div id="details">';
 		echo '<table class="facts_table">';
 
 		$sourcefacts=$controller->source->getFacts();
@@ -139,42 +147,31 @@ echo '<div id="source-tabs">
 			echo '</td></tr>';
 		}
 		echo '</table>
-	</div>'; // close "edit"
-	echo '<div id="indi-sources">';
-		if ($controller->source->countLinkedIndividuals()) {
-			print_indi_table($controller->source->fetchLinkedIndividuals(), $controller->source->getFullName());
-		} else {
-			echo WT_I18N::translate('No records to display');
-			echo WT_JS_START;?> jQuery(document).ready(function() {	jQuery("#indisource").addClass('rela')});<?php echo WT_JS_END;
-		}
-	echo '</div>'; //close "indi-sources"
+	</div>'; // close "details"
+	// Individuals linked to this source
+	if ($controller->source->countLinkedIndividuals()) {
+		echo '<div id="indi-sources">';
+		print_indi_table($controller->source->fetchLinkedIndividuals(), $controller->source->getFullName());
+		echo '</div>'; //close "indi-sources"
+	}
 	// Families linked to this source
-	echo '<div id="fam-sources">';
-		if ($controller->source->countLinkedFamilies()) {
-			print_fam_table($controller->source->fetchLinkedFamilies(), $controller->source->getFullName());
-		} else {
-			echo WT_I18N::translate('No records to display');
-			echo WT_JS_START;?> jQuery(document).ready(function() {	jQuery("#famsource").addClass('rela')});<?php echo WT_JS_END;
-		}
-	echo '</div>'; //close "fam-sources"
+	if ($controller->source->countLinkedFamilies()) {
+		echo '<div id="fam-sources">';
+		print_fam_table($controller->source->fetchLinkedFamilies(), $controller->source->getFullName());
+		echo '</div>'; //close "fam-sources"
+	}
 	// Media Items linked to this source
-	echo '<div id="media-sources">';
-		if ($controller->source->countLinkedMedia()) {
-			print_media_table($controller->source->fetchLinkedMedia(), $controller->source->getFullName());
-		} else {
-			echo WT_I18N::translate('No records to display');
-			echo WT_JS_START;?> jQuery(document).ready(function() {	jQuery("#mediasource").addClass('rela')});<?php echo WT_JS_END;
-		}
-	echo '</div>'; //close "media-sources"
+	if ($controller->source->countLinkedMedia()) {
+		echo '<div id="media-sources">';
+		print_media_table($controller->source->fetchLinkedMedia(), $controller->source->getFullName());
+		echo '</div>'; //close "media-sources"
+	}
 	// Shared Notes linked to this source
-	echo '<div id="note-sources">';
-		if ($controller->source->countLinkedNotes()) {
-			print_note_table($controller->source->fetchLinkedNotes(), $controller->source->getFullName());
-		} else {
-			echo WT_I18N::translate('No records to display');
-			echo WT_JS_START;?> jQuery(document).ready(function() {	jQuery("#notesource").addClass('rela')});<?php echo WT_JS_END;
-		}
-	echo '</div>'; //close "note-sources"
+	if ($controller->source->countLinkedNotes()) {
+		echo '<div id="note-sources">';
+		print_note_table($controller->source->fetchLinkedNotes(), $controller->source->getFullName());
+		echo '</div>'; //close "note-sources"
+	}
 echo '</div>'; //close div "source-tabs"
-echo '</div>'; //close div "source-detailss"
+echo '</div>'; //close div "source-details"
 print_footer();

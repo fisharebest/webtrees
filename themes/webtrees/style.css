@@ -1337,17 +1337,15 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 #tabAction td {width:50%;	text-align:center;}
 
 /* ======= List styles =========== */
-/* Source list */
-#source-list{margin:auto; visibility:hidden; width:80%;}
-#source-list table{width:100%;}
-#source-list th{cursor:pointer; cursor:hand; white-space: nowrap; padding:4px;}
-#source-list th:last-child{width:24px;}
-#source-details{margin:auto; text-align:center; width:80%;}
-#source-tabs{text-align:left; visibility:hidden;}
-#source-return{float:right; padding:7px}
+#source-list, #note-list {margin:auto; visibility:hidden; width:80%;}
+#source-list table, #note-list table {width:100%;}
+#source-list th, #note-list th{cursor:pointer; cursor:hand; white-space: nowrap; padding:4px;}
+#source-list th:last-child, #note-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
+#source-details h2, #note-details h2 {margin-bottom:20px; text-align:center;}
+#source-tabs, #note-tabs {margin:auto; visibility:hidden; width:80%;}
+#source-return, #note-return {float:right; padding:6px}
 
-html[dir='rtl'] #source-return {float:left;}
-html[dir='rtl'] #source-tabs {text-align:right;}
+html[dir='rtl'] #source-return, html[dir='rtl'] #note-return {float:left;}
 
 /* ======= Block styles ========== */
 #index_main_blocks {	clear:none; width:66%; float:left; padding:3px;}
@@ -1623,6 +1621,7 @@ html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 .dataTables_info {float:left;}
 .dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
+#loading {text-align:center;}
 
 html[dir='rtl'] .css_right {float:right;}
 html[dir='rtl'] .dataTables_paginate {float:right;}

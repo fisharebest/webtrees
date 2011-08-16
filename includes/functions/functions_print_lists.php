@@ -819,7 +819,7 @@ function print_sour_table($datalist) {
 		echo '<th style="display:none;"></th>';
 	}
 	if (WT_USER_CAN_EDIT) {
-		echo '<th style="margin:0 -2px 1px 1px; padding:3px 0 4px;"> </th>';//delete
+		echo '<th>&nbsp;</th>';//delete
 	} else {
 		echo '<th style="display:none;"></th>';
 	}
@@ -931,68 +931,103 @@ function print_note_table($datalist, $legend=null) {
 	if (count($datalist)<1) {
 		return;
 	}
-	require_once WT_ROOT.'js/sorttable.js.htm';
+	echo WT_JS_START;?>
+	jQuery(document).ready(function(){
+		jQuery('#note_list_table').dataTable( {
+			"sDom": '<"H"prf>t<"F"li>',
+			"oLanguage": {
+				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
+				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
+				"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
+				"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
+				"sInfoFiltered": '<?php echo /* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
+				"sProcessing": '<?php echo WT_I18N::translate('Loading...');?>',
+				"sSearch": '<?php echo WT_I18N::translate('Search');?>',
+				"oPaginate": {
+					"sFirst":    '<?php echo /* I18N: button label, first page    */ WT_I18N::translate('first');    ?>',
+					"sLast":     '<?php echo /* I18N: button label, last page     */ WT_I18N::translate('last');     ?>',
+					"sNext":     '<?php echo /* I18N: button label, next page     */ WT_I18N::translate('next');     ?>',
+					"sPrevious": '<?php echo /* I18N: button label, previous page */ WT_I18N::translate('previous'); ?>'
+				}
+			},
+			"bJQueryUI": true,
+			"bAutoWidth":false,
+			"bProcessing": true,
+			"bStateSave": true,
+			"aoColumnDefs": [
+				{"bSortable": false, "aTargets": [ 6 ]},
+				{"sType": "numeric", "aTargets": [1, 2, 3, 4]}
+			],
+			"iDisplayLength": 20,
+			"sPaginationType": "full_numbers"
+	   });
+	   	jQuery("#loading").css('display', 'none');
+	   	jQuery("#note-list").css('visibility', 'visible');
+	});
+	<?php echo WT_JS_END;
+	//--table wrapper
+	echo '<div id="loading" align="center"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
+	echo '<div id="note-list">';
 
-	if (!empty($WT_IMAGES["menu_note"])) {
-		echo '<fieldset><legend><img src="', $WT_IMAGES["menu_note"], '" align="middle" alt="" /> ';
-	} else {
-		echo '<fieldset><legend><img src="', $WT_IMAGES['note'], '" align="middle" alt="" /> ';
-	}
-	if ($legend) {
-		echo $legend;
-	} else {
-		echo WT_I18N::translate('Shared notes');
-	}
-	echo '</legend>';
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
-	echo '<table id="', $table_id, '" class="sortable list_table center" ><tr><td></td>';
-	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Individuals'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Families'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Media objects'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Sources'), '</th>';
+	echo '<table id="note_list_table"><thead><tr>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
+	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
+	echo '<th>', WT_I18N::translate('Families'), '</th>';
+	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
+	echo '<th>', WT_I18N::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th class="list_label rela">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+		echo '<th">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	} else {
+		echo '<th style="display:none;"></th>';
 	}
-	echo '</tr>';
+	if (WT_USER_CAN_EDIT) {
+		echo '<th>&nbsp;</th>';//delete
+	} else {
+		echo '<th style="display:none;"></th>';
+	}
+	echo '</tr></thead>';
 	//-- table body
+	echo '<tbody>';
 	$n=0;
 	foreach ($datalist as $note) {
 		if (!$note->canDisplayDetails()) {
 			continue;
 		}
 		$link_url=$note->getHtmlUrl();
-		//-- Counter
-		echo '<tr><td class="rela list_item">', ++$n, '</td>';
 		//-- Shared Note name(s)
 		$tmp=$note->getFullName();
-		echo '<td class="list_value_wrap" align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item name2">', PrintReady($tmp), '</a></td>';
+		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item name2">', PrintReady($tmp), '</a></td>';
 		//-- Linked INDIs
 		$tmp=$note->countLinkedIndividuals();
-		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td>', $tmp, '</td>';
 		//-- Linked FAMs
 		$tmp=$note->countLinkedfamilies();
-		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td>', $tmp, '</td>';
 		//-- Linked OBJEcts
 		$tmp=$note->countLinkedMedia();
-		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td>', $tmp, '</td>';
 		//-- Linked SOURs
 		$tmp=$note->countLinkedSources();
-		echo '<td class="list_value_wrap"><a href="', $link_url, '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td>', $tmp, '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td class="rela">'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+			echo '<td>'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+		} else {
+			echo '<td style="display:none;"></td>';
+		}
+		//-- Delete 
+		if (WT_USER_CAN_EDIT) {
+			$deletenote = explode("@", $note);
+			echo '<td><div title="', WT_I18N::translate('Delete shared note'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Shared Note?'), '\')) return deletenote(\'', $deletenote[0],'\'); else return false;"></div></td>';
+		} else {
+			echo '<td style="display:none;"></td>';
 		}
 		echo "</tr>\n";
 	}
-	//-- table footer
-	echo '<tr class="sortbottom"><td></td>';
-	echo '<td class="list_label">',  /* I18N: A count of shared notes */ WT_I18N::translate('Total shared notes: %s', WT_I18N::number($n)), '</td><td></td><td class="t2" style="display:none;"></td><td></td><td></td><td></td>';
-	if ($SHOW_LAST_CHANGE) {
-		echo '<td></td>';
-	}
-	echo '</tr></table></fieldset>';
+	echo '</tbody>';
+	echo '</table>';
+	echo '</div>';
 }
 
 /**
