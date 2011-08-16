@@ -287,6 +287,11 @@ html[dir='rtl'] .makeMenu li ul li {
 	left: 0px;
 }
 
+.thumbnail {
+height:auto;
+padding:5px;
+}
+
 /*-- pedigree chart rtl specific stylesheets --*/
 html[dir='rtl'] #pedigree_chart {
 left:auto;
