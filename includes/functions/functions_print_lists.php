@@ -905,7 +905,7 @@ function print_sour_table($datalist) {
 	if ($t2) {
 		echo <<< T2
 		<script type="text/javascript">
-			var table = document.getElementById("$table_id");
+			var table = document.getElementById("#source_list_table");
 			cells = table.getElementsByTagName('td, th');
 			for (i=0;i<cells.length;i++) {
 				if (cells[i].className && (cells[i].className.indexOf('t2') != -1)) {
