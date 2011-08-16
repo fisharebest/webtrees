@@ -319,7 +319,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		}
 		echo '</table><hr>';
 		// Detailed entries
-		echo '<table>';
 		foreach ($faqs as $id => $faq) {
 			$header   =get_block_setting($faq->block_id, 'header');
 			$faqbody  =get_block_setting($faq->block_id, 'faqbody');
@@ -335,8 +334,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				echo '<hr />';
 			}
 		}
-		echo '</table>';
-
 		print_footer();
 	}
 
