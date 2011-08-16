@@ -1344,6 +1344,7 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 #source-details h2, #note-details h2 {margin-bottom:20px; text-align:center;}
 #source-tabs, #note-tabs {margin:auto; visibility:hidden; width:80%;}
 #source-return, #note-return {float:right; padding:6px}
+#source-edit, #note-edit {overflow-x:auto;}
 
 html[dir='rtl'] #source-return, html[dir='rtl'] #note-return {float:left;}
 
@@ -1611,7 +1612,7 @@ html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected, html[dir='rtl'] .ui-ta
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 
 /* jQuery.datatable styling general over-rides */
-.odd {background-color:#E7EEF3;}
+.odd {background-color:#ccdbe4;}
 .even {background-color:#efe;}
 .css_right {float:left;}
 .fg-button {padding:2px 6px;}

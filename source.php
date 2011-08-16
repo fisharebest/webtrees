@@ -107,7 +107,7 @@ echo '<h2>', WT_I18N::translate('Source:'), '&nbsp;', PrintReady(htmlspecialchar
 echo '<div id="loading"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
 echo '<div id="source-tabs">
 	<ul>
-		<li><a href="#details"><span>', WT_I18N::translate('Details'), '</span></a></li>';
+		<li><a href="#source-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';
 		if ($controller->source->countLinkedIndividuals()) {
 			echo '<li><a href="#indi-sources"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
 		}
@@ -123,7 +123,7 @@ echo '<div id="source-tabs">
 		echo '<a id="source-return" href="sourcelist.php">', WT_I18N::translate('Return to sources'), '</a>
 	</ul>';
 	// Edit this source
-	echo '<div id="details">';
+	echo '<div id="source-edit">';
 		echo '<table class="facts_table">';
 
 		$sourcefacts=$controller->source->getFacts();

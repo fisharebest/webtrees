@@ -1860,6 +1860,7 @@ html[dir='rtl'] .dataTables_length {float:left;}
 #source-details h2, #note-details h2 {margin-bottom:20px; text-align:center;}
 #source-tabs, #note-tabs {margin:auto; visibility:hidden; width:80%;}
 #source-return, #note-return {float:right; margin:6px;}
+#source-edit, #note-edit {overflow-x:auto;}
 
 html[dir='rtl'] #source-return, html[dir='rtl'] #note-return  {float:left;}
 

@@ -818,7 +818,7 @@ function print_sour_table($datalist) {
 	} else {
 		echo '<th style="display:none;"></th>';
 	}
-	if (WT_USER_CAN_EDIT) {
+	if (WT_USER_GEDCOM_ADMIN) {
 		echo '<th>&nbsp;</th>';//delete
 	} else {
 		echo '<th style="display:none;"></th>';
@@ -890,7 +890,7 @@ function print_sour_table($datalist) {
 			echo '<td style="display:none;"></td>';
 		}
 		//-- Delete 
-		if (WT_USER_CAN_EDIT) {
+		if (WT_USER_GEDCOM_ADMIN) {
 			$deletesource = explode("@", $source);
 			echo '<td><div title="', WT_I18N::translate('Delete source'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Source?'), '\')) return deletesource(\'', $deletesource[0],'\'); else return false;"></div></td>';
 		} else {
@@ -981,7 +981,7 @@ function print_note_table($datalist, $legend=null) {
 	} else {
 		echo '<th style="display:none;"></th>';
 	}
-	if (WT_USER_CAN_EDIT) {
+	if (WT_USER_GEDCOM_ADMIN) {
 		echo '<th>&nbsp;</th>';//delete
 	} else {
 		echo '<th style="display:none;"></th>';
@@ -1017,7 +1017,7 @@ function print_note_table($datalist, $legend=null) {
 			echo '<td style="display:none;"></td>';
 		}
 		//-- Delete 
-		if (WT_USER_CAN_EDIT) {
+		if (WT_USER_GEDCOM_ADMIN) {
 			$deletenote = explode("@", $note);
 			echo '<td><div title="', WT_I18N::translate('Delete shared note'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Shared Note?'), '\')) return deletenote(\'', $deletenote[0],'\'); else return false;"></div></td>';
 		} else {

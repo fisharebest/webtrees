@@ -112,7 +112,7 @@ echo '<h2>', PrintReady(htmlspecialchars($controller->note->getFullName())), '</
 echo '<div id="loading"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
 echo '<div id="note-tabs">
 	<ul>
-		<li><a href="#details"><span>', WT_I18N::translate('Details'), '</span></a></li>';
+		<li><a href="#note-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';
 		if ($controller->note->countLinkedIndividuals()) {
 			echo '<li><a href="#indi-note"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
 		}
@@ -133,7 +133,7 @@ echo '<div id="note-tabs">
 	preg_match("/0 @{$controller->nid}@ NOTE(.*)/", $noterec, $n1match);
 	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
 
-	echo '<div id="details">';
+	echo '<div id="note-edit">';
 		echo '<table class="facts_table">';
 			echo '<tr><td align="left" class="descriptionbox ', $TEXT_DIRECTION, '">';
 				if (WT_USER_CAN_EDIT) {
