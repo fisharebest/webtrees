@@ -163,7 +163,8 @@ class WT_Controller_Family extends WT_Controller_Base {
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-fam');
 		$menu->addIcon('edit_fam');
-		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_edit_fam');
+		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_fam');
+		$menu->addLabel($menu->label, 'down');
 
 		if (WT_USER_CAN_EDIT) {
 			// edit_fam / members
