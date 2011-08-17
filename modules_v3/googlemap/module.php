@@ -171,8 +171,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Tab
 	public function getJSCallback() {
 		global $GOOGLEMAP_PH_CONTROLS;
-		$out='if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title")=="'.$this->getName().'") {'.'loadMap();}';
-		$out.='jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});'; // scroll the page to top
+		$out=
+			'if (jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title")=="'.$this->getName().'") {'.
+				'loadMap();'.				
+			'}'.
+			'jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});'. // scroll the page to top
+			'';
 		return $out;
 	}
 }
