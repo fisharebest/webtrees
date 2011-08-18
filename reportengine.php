@@ -327,7 +327,8 @@ elseif ($action=='setup') {
 	<?php
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo '<input type="submit" value="', WT_I18N::translate('Download report'), '" ;"/>';
-	echo '<input type="submit" value="', WT_I18N::translate('Cancel'), '" onclick="document.setupreport.elements[\'action\'].value=\'setup\'; "/>';
+//	echo '<input type="submit" value="', WT_I18N::translate('Cancel'), '" onclick="document.setupreport.elements[\'action\'].value=\'setup\'; "/>';
+	echo '<input type="reset" title="', WT_I18N::translate('This will set all fields back to default values'), '" value="', WT_I18N::translate('Reset'), '" ;"/>';// This replaces the line above. Not sure what that was designed to do???? See https://bugs.launchpad.net/webtrees/+bug/827621
 	echo '</td></tr></table></form><br /><br />';
 	echo WT_JS_START, 'document.title = "', $doctitle, '";', WT_JS_END;
 	print_footer();
