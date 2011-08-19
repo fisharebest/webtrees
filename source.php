@@ -97,14 +97,12 @@ echo '}';
 echo 'function showchanges() { window.location="', $controller->source->getRawUrl(), '"; }';
 ?>	jQuery(document).ready(function() {
 		jQuery("#source-tabs").tabs();
-		jQuery("#loading").css('display', 'none');
 		jQuery("#source-tabs").css('visibility', 'visible');
 	});
 <?php
 echo WT_JS_END;
 echo '<div id="source-details">';
 echo '<h2>', WT_I18N::translate('Source'), '&nbsp;', PrintReady(htmlspecialchars($controller->source->getFullName())), '</h2>';
-echo '<div id="loading"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
 echo '<div id="source-tabs">
 	<ul>
 		<li><a href="#source-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';

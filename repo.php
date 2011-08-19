@@ -95,41 +95,59 @@ echo 'function show_gedcom_record() {';
 echo ' var recwin=window.open("gedrecord.php?pid=', $controller->repository->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
 echo '}';
 echo 'function showchanges() { window.location="', $controller->repository->getRawUrl(), '"; }';
+?>	jQuery(document).ready(function() {
+		jQuery("#repo-tabs").tabs();
+		jQuery("#repo-tabs").css('visibility', 'visible');
+	});
+<?php
 echo WT_JS_END;
 
-echo '<table class="list_table"><tr><td>';
-echo '<span class="name_head">', PrintReady(htmlspecialchars($controller->repository->getFullName()));
-echo '</span><br />';
-echo '<table class="facts_table">';
+echo '<div id="repo-details">';
+echo '<h2>', PrintReady(htmlspecialchars($controller->repository->getFullName())), '</h2>';
+echo '<div id="repo-tabs">
+	<ul>
+		<li><a href="#repo-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';
+		if ($controller->repository->countLinkedSources()) {
+			echo '<li><a href="#source-repo"><span id="reposource">', WT_I18N::translate('Sources'), '</span></a></li>';
+		}
+		echo '<a id="repo-return" href="repolist.php">', WT_I18N::translate('Return to repositories'), '</a>
+	</ul>';
 
-$repositoryfacts=$controller->repository->getFacts();
-foreach ($repositoryfacts as $fact) {
-	print_fact($fact, $controller->repository);
-}
+	// Shared Note details ---------------------
+	echo '<div id="repo-edit">';
+		echo '<table class="facts_table">';
+			$repositoryfacts=$controller->repository->getFacts();
+			foreach ($repositoryfacts as $fact) {
+				print_fact($fact, $controller->repository);
+			}
 
-// Print media
-print_main_media($controller->rid);
+			// Print media
+			print_main_media($controller->rid);
 
-// new fact link
-if ($controller->repository->canEdit()) {
-	print_add_new_fact($controller->rid, $repositoryfacts, 'REPO');
-	// new media
-	echo '<tr><td class="descriptionbox">';
-	echo WT_I18N::translate('Add media'), help_link('add_media');
-	echo '</td><td class="optionbox">';
-	echo '<a href="javascript:;" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=', $controller->rid, '\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Add a new media object'), '</a>';
-	echo '<br />';
-	echo '<a href="javascript:;" onclick="window.open(\'inverselink.php?linktoid=', $controller->rid, '&linkto=repository\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Link to an existing media object'), '</a>';
-	echo '</td></tr>';
-}
-echo '</table><br /><br /></td></tr><tr class="center"><td colspan="2">';
+			// new fact link
+			if ($controller->repository->canEdit()) {
+				print_add_new_fact($controller->rid, $repositoryfacts, 'REPO');
+				// new media
+				echo '<tr><td class="descriptionbox">';
+				echo WT_I18N::translate('Add media'), help_link('add_media');
+				echo '</td><td class="optionbox">';
+				echo '<a href="javascript:;" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid=', $controller->rid, '\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Add a new media object'), '</a>';
+				echo '<br />';
+				echo '<a href="javascript:;" onclick="window.open(\'inverselink.php?linktoid=', $controller->rid, '&linkto=repository\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Link to an existing media object'), '</a>';
+				echo '</td></tr>';
+			}
+		echo '</table>
+	</div>'; // close "repo-edit"
 
 
-// Sources linked to this repository
-if ($controller->repository->countLinkedSources()) {
-	print_sour_table($controller->repository->fetchLinkedSources(), $controller->repository->getFullName());
-}
+	// Sources linked to this repository
+	if ($controller->repository->countLinkedSources()) {
+		echo '<div id="source-repo">';
+		print_sour_table($controller->repository->fetchLinkedSources(), $controller->repository->getFullName());
+		echo '</div>'; //close "source-repo"
+	}
 
-echo '</td></tr></table>';
+echo '</div>'; //close div "repo-tabs"
+echo '</div>'; //close div "repo-details"
 
 print_footer();

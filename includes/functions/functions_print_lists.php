@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Functions for printing lists
 //
 // Various printing functions for printing lists
@@ -797,12 +797,10 @@ function print_sour_table($datalist) {
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
-	   	jQuery("#loading").css('display', 'none');
 	   	jQuery("#source-list").css('visibility', 'visible');
 	});
 	<?php echo WT_JS_END;
 	//--table wrapper
-	echo '<div id="loading" align="center"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
 	echo '<div id="source-list">';
 	//-- table header
 	echo '<table id="source_list_table"><thead><tr>';
@@ -892,11 +890,11 @@ function print_sour_table($datalist) {
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
 			$deletesource = explode("@", $source);
-			echo '<td><div title="', WT_I18N::translate('Delete source'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Source?'), '\')) return deletesource(\'', $deletesource[0],'\'); else return false;"></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete source'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Source?'), '\')) return deletesource(\'', $deletesource[0],'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;"></td>';
 		}
-		echo "</tr>\n";
+		echo "</tr>";
 	}
 	echo '</tbody>';
 	echo '</table>';
@@ -961,12 +959,10 @@ function print_note_table($datalist, $legend=null) {
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
-	   	jQuery("#loading").css('display', 'none');
 	   	jQuery("#note-list").css('visibility', 'visible');
 	});
 	<?php echo WT_JS_END;
 	//--table wrapper
-	echo '<div id="loading" align="center"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
 	echo '<div id="note-list">';
 
 	//-- table header
@@ -994,6 +990,7 @@ function print_note_table($datalist, $legend=null) {
 		if (!$note->canDisplayDetails()) {
 			continue;
 		}
+		echo '<tr>';
 		$link_url=$note->getHtmlUrl();
 		//-- Shared Note name(s)
 		$tmp=$note->getFullName();
@@ -1019,11 +1016,11 @@ function print_note_table($datalist, $legend=null) {
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
 			$deletenote = explode("@", $note);
-			echo '<td><div title="', WT_I18N::translate('Delete shared note'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Shared Note?'), '\')) return deletenote(\'', $deletenote[0],'\'); else return false;"></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete shared note'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Shared Note?'), '\')) return deletenote(\'', $deletenote[0],'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;"></td>';
 		}
-		echo "</tr>\n";
+		echo "</tr>";
 	}
 	echo '</tbody>';
 	echo '</table>';
@@ -1042,35 +1039,68 @@ function print_repo_table($repos, $legend='') {
 	if (!$repos) {
 		return;
 	}
-	require_once WT_ROOT.'js/sorttable.js.htm';
+	echo WT_JS_START;?>
+	jQuery(document).ready(function(){
+		jQuery('#repo_list_table').dataTable( {
+			"sDom": '<"H"prf>t<"F"li>',
+			"oLanguage": {
+				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
+				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
+				"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
+				"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
+				"sInfoFiltered": '<?php echo /* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
+				"sProcessing": '<?php echo WT_I18N::translate('Loading...');?>',
+				"sSearch": '<?php echo WT_I18N::translate('Search');?>',
+				"oPaginate": {
+					"sFirst":    '<?php echo /* I18N: button label, first page    */ WT_I18N::translate('first');    ?>',
+					"sLast":     '<?php echo /* I18N: button label, last page     */ WT_I18N::translate('last');     ?>',
+					"sNext":     '<?php echo /* I18N: button label, next page     */ WT_I18N::translate('next');     ?>',
+					"sPrevious": '<?php echo /* I18N: button label, previous page */ WT_I18N::translate('previous'); ?>'
+				}
+			},
+			"bJQueryUI": true,
+			"bAutoWidth":false,
+			"bProcessing": true,
+			"bStateSave": true,
+			"aoColumnDefs": [
+				{"bSortable": false, "aTargets": [ 3 ]},
+				{"sType": "numeric", "aTargets": [ 1 ]}
+			],
+			"iDisplayLength": 20,
+			"sPaginationType": "full_numbers"
+	   });
+	   	jQuery("#repo-list").css('visibility', 'visible');
+	});
+	<?php echo WT_JS_END;
+	//--table wrapper
+	echo '<div id="repo-list">';
 
-	echo '<fieldset><legend><img src="', $WT_IMAGES['repository'], '" align="middle" alt="" />';
-	if ($legend) {
-		echo htmlspecialchars($legend);
-	} else {
-		echo WT_I18N::translate('Repositories found');
-	}
-	echo '</legend>';
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 	//-- table header
-	echo '<table id="', $table_id, '" class="sortable list_table center"><tr><td></td>';
-	echo '<th class="list_label">', WT_I18N::translate('Repository name'), '</th>';
-	echo '<th class="list_label">', WT_I18N::translate('Sources'), '</th>';
+	echo '<table id="repo_list_table"><thead><tr>';
+	echo '<th>', WT_I18N::translate('Repository name'), '</th>';
+	echo '<th>', WT_I18N::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th class="list_label rela">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+		echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	} else {
+		echo '<th style="display:none;"></th>';
 	}
-	echo '</tr>';
+	if (WT_USER_GEDCOM_ADMIN) {
+		echo '<th>&nbsp;</th>';//delete
+	} else {
+		echo '<th style="display:none;"></th>';
+	}
+	echo '</tr></thead>';
 	//-- table body
+	echo '<tbody>';
 	$n=0;
 	foreach ($repos as $repo) {
 		if (!$repo->canDisplayDetails()) {
 			continue;
 		}
-		//-- Counter
-		echo '<tr><td class="rela list_item">', ++$n, '</td>';
+		echo '<tr>';
 		//-- Repository name(s)
 		$name = $repo->getFullName();
-		echo '<td class="list_value_wrap" align="', get_align($name), '"><a href="', $repo->getHtmlUrl(), '" class="list_item name2">', PrintReady(htmlspecialchars($name)), '</a>';
+		echo '<td align="', get_align($name), '"><a href="', $repo->getHtmlUrl(), '" class="list_item name2">', PrintReady(htmlspecialchars($name)), '</a>';
 		$addname=$repo->getAddName();
 		if ($addname) {
 			echo '<br /><a href="', $repo->getHtmlUrl(), '" class="list_item">', PrintReady(htmlspecialchars($addname)), '</a>';
@@ -1078,14 +1108,25 @@ function print_repo_table($repos, $legend='') {
 		echo '</td>';
 		//-- Linked SOURces
 		$tmp=$repo->countLinkedSources();
-		echo '<td class="list_value_wrap"><a href="', $repo->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+		echo '<td>', $tmp, '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td class="rela">', $repo->LastChangeTimestamp(!$SEARCH_SPIDER), '</td>';
+			echo '<td>', $repo->LastChangeTimestamp(!$SEARCH_SPIDER), '</td>';
+		} else {
+			echo '<td style="display:none;"></td>';
+		}
+		//-- Delete 
+		if (WT_USER_GEDCOM_ADMIN) {
+			$deleterepo = explode("@", $repo);
+			echo '<td><div title="', WT_I18N::translate('Delete repository'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Repository?'), '\')) return deleterepository(\'', $deleterepo[0],'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+		} else {
+			echo '<td style="display:none;"></td>';
 		}
 		echo '</tr>';
 	}
-	echo '</table></fieldset>';
+	echo '</tbody>';
+	echo '</table>';
+	echo '</div>';
 }
 
 /**
@@ -1439,7 +1480,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
     global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES;
     $return = '';
     $n = 0;
-    $table_id = "ID" . floor(microtime() * 1000000); // sorttable requires a unique ID
+    $table_id = "ID" . floor(microtime() * 1000000); // create a unique ID
     switch ($sort) {
         case 'name':        //name
             $aaSorting = "[5,'asc'], [4,'desc']";

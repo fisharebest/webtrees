@@ -69,7 +69,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
 		$title.=$this->getTitle().help_link('todo', $this->getName());
-		$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+		$table_id = "ID".floor(microtime()*1000000); // create a unique ID
 		?>
 		<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
 		<script type="text/javascript">

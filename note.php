@@ -101,7 +101,6 @@ echo ' if (window.focus) {win04.focus();}';
 echo '}';
 ?>	jQuery(document).ready(function() {
 		jQuery("#note-tabs").tabs();
-		jQuery("#loading").css('display', 'none');
 		jQuery("#note-tabs").css('visibility', 'visible');
 	});
 <?php
@@ -109,7 +108,6 @@ echo WT_JS_END;
 
 echo '<div id="note-details">';
 echo '<h2>', PrintReady(htmlspecialchars($controller->note->getFullName())), '</h2>';
-echo '<div id="loading"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/><br />', WT_I18N::translate('Loading...'), '</div>';
 echo '<div id="note-tabs">
 	<ul>
 		<li><a href="#note-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';
@@ -123,7 +121,7 @@ echo '<div id="note-tabs">
 			echo '<li><a href="#media-note"><span id="mediasource">', WT_I18N::translate('Media objects'), '</span></a></li>';
 		}
 		if ($controller->note->countLinkedSources()) {
-			echo '<li><a href="#note-note"><span id="notesource">', WT_I18N::translate('Notes'), '</span></a></li>';
+			echo '<li><a href="#source-note"><span id="notesource">', WT_I18N::translate('Sources'), '</span></a></li>';
 		}
 		echo '<a id="note-return" href="notelist.php">', WT_I18N::translate('Return to notes'), '</a>
 	</ul>';
@@ -165,7 +163,7 @@ echo '<div id="note-tabs">
 				print_add_new_fact($controller->nid, $notefacts, 'NOTE');
 			}
 		echo '</table>
-	</div>'; // close "details"
+	</div>'; // close "note-edit"
 
 	// Individuals linked to this shared note
 	if ($controller->note->countLinkedIndividuals()) {
