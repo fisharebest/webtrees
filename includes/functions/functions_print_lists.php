@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Functions for printing lists
 //
 // Various printing functions for printing lists
