@@ -205,7 +205,7 @@ html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
 /* MyPage Icons */
 #menu-mypage                { background-position:left -598px; } html[dir=rtl] #menu-mypage                 { background-position:right -598px; }
 #menu-myaccount             { background-position:left -598px; } html[dir=rtl] #menu-myaccount              { background-position:right -598px; }
-#menu-mypedigree            { background-position:left -828px; } html[dir=rtl] #menu-mypedigree             { background-position:right -828px; }
+#menu-mypedigree            { background-position:left -184px; } html[dir=rtl] #menu-mypedigree             { background-position:right -828px; }
 #menu-myrecord              { background-position:left -460px; } html[dir=rtl] #menu-myrecord               { background-position:right -460px; }
 #menu-admin                 { background-position:left -644px; } html[dir=rtl] #menu-admin                  { background-position:right -644px; }
 #menu-tree li               { background-position:left -667px; } html[dir=rtl] #menu-tree li                { background-position:right -667px; }
