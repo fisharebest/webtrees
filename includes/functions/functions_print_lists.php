@@ -1139,22 +1139,56 @@ function print_media_table($datalist, $legend) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES;
 
 	if (count($datalist)<1) return;
-	require_once WT_ROOT.'js/sorttable.js.htm';
-
-	$legend = "<img src=\"".$WT_IMAGES["media"]."\" alt=\"\" align=\"middle\" /> ".$legend;
-	echo "<fieldset><legend>", $legend, "</legend>";
-	$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
+	echo WT_JS_START;?>
+	jQuery(document).ready(function(){
+		jQuery('#media_list_table').dataTable( {
+			"sDom": '<"H"prf>t<"F"li>',
+			"oLanguage": {
+				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
+				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
+				"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
+				"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
+				"sInfoFiltered": '<?php echo /* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
+				"sProcessing": '<?php echo WT_I18N::translate('Loading...');?>',
+				"sSearch": '<?php echo WT_I18N::translate('Search');?>',
+				"oPaginate": {
+					"sFirst":    '<?php echo /* I18N: button label, first page    */ WT_I18N::translate('first');    ?>',
+					"sLast":     '<?php echo /* I18N: button label, last page     */ WT_I18N::translate('last');     ?>',
+					"sNext":     '<?php echo /* I18N: button label, next page     */ WT_I18N::translate('next');     ?>',
+					"sPrevious": '<?php echo /* I18N: button label, previous page */ WT_I18N::translate('previous'); ?>'
+				}
+			},
+			"bJQueryUI": true,
+			"bAutoWidth":false,
+			"bProcessing": true,
+			"bStateSave": true,
+			"aoColumnDefs": [
+				{"bSortable": false, "aTargets": [ 0 ]},
+				{"sType": "numeric", "aTargets": [2, 3, 4]}
+			],
+			"iDisplayLength": 20,
+			"sPaginationType": "full_numbers"
+	   });
+	   	jQuery("#media-list").css('visibility', 'visible');
+	});
+	<?php echo WT_JS_END;
+	//--table wrapper
+	echo '<div id="media-list">';
 	//-- table header
-	echo "<table width=\"100%\" id=\"", $table_id, "\" class=\"sortable list_table center\">";
-	echo "<tr>";
-	echo "<td></td>";
-	echo "<th class=\"list_label\">", WT_Gedcom_Tag::getLabel('TITL'), "</th>";
-	echo "<th class=\"list_label\">", WT_I18N::translate('Individuals'), "</th>";
-	echo "<th class=\"list_label\">", WT_I18N::translate('Families'), "</th>";
-	echo "<th class=\"list_label\">", WT_I18N::translate('Sources'), "</th>";
-	if ($SHOW_LAST_CHANGE) echo "<th class=\"list_label rela\">", WT_Gedcom_Tag::getLabel('CHAN'), "</th>";
-	echo "</tr>";
+	echo '<table id="media_list_table"><thead><tr>';
+	echo '<th>', WT_I18N::translate('Media'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
+	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
+	echo '<th>', WT_I18N::translate('Families'), '</th>';
+	echo '<th>', WT_I18N::translate('Sources'), '</th>';
+	if ($SHOW_LAST_CHANGE) {
+		echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	} else {
+		echo '<th style="display:none;"></th>';
+	}
+	echo '</tr></thead>';
 	//-- table body
+	echo '<tbody>';
 	$n = 0;
 	foreach ($datalist as $key => $value) {
 		if (is_object($value)) { // Array of objects
@@ -1165,53 +1199,40 @@ function print_media_table($datalist, $legend) {
 			if (is_null($media)) continue;
 		}
 		if ($media->canDisplayDetails()) {
-			//-- Counter
-			echo "<tr>";
-			echo "<td class=\"rela list_item\">", ++$n, "</td>";
-			//-- Object name(s)
 			$name = $media->getFullName();
-			echo "<td class=\"list_value_wrap\" align=\"", get_align($name), "\">";
-			echo "<a href=\"", $media->getHtmlUrl(), "\" class=\"list_item name2\">";
-			echo '<img src=', $media->getThumbnail(), ' height="15" /> ';
-			echo PrintReady($name), "</a>";
+			echo "<tr>";
+			//-- Object thumbnail
+			echo '<td><img src="', $media->getThumbnail(), '" alt="', $name, '" /></td>';
+			//-- Object name(s)
+			echo '<td align="', get_align($name), '">';
+			echo '<a href="', $media->getHtmlUrl(), '" class="list_item name2">';
+			echo PrintReady($name), '</a>';
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT)
-				echo "<br /><a href=\"", $media->getHtmlUrl(), "\">", basename($media->getFilename()), "</a>";
-			if ($media->getNote()) echo "<br />", print_fact_notes("1 NOTE ".$media->getNote(), 1);
-			echo "</td>";
+				echo '<br /><a href="', $media->getHtmlUrl(), '">', basename($media->getFilename()), '</a>';
+			if ($media->getNote()) echo '<br />', print_fact_notes('1 NOTE '.$media->getNote(), 1);
+			echo '</td>';
 
 			//-- Linked INDIs
 			$tmp=$media->countLinkedIndividuals();
-			echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+			echo '<td>', $tmp, '</td>';
 			//-- Linked FAMs
 			$tmp=$media->countLinkedfamilies();
-			echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
+			echo '<td>', $tmp, '</td>';
 			//-- Linked SOURces
 			$tmp=$media->countLinkedSources();
-			echo '<td class="list_value_wrap"><a href="', $media->getHtmlUrl(), '" class="list_item" name="', $tmp, '">', $tmp, '</a></td>';
-			/*
-			//-- Linked records
-			foreach (array("INDI", "FAM", "SOUR") as $rectype) {
-				$resu = array();
-				foreach ($value["LINKS"] as $k=>$v) {
-					if ($v!=$rectype) continue;
-					$record = WT_GedcomRecord::getInstance($k);
-					$txt = $record->getListName();
-					$resu[] = $txt;
-				}
-				sort($resu);
-				echo "<td class=\"list_value_wrap\" align=\"", get_align(@$resu[0]), "\">";
-				foreach ($resu as $txt) echo "<a href=\"", $record->getHtmlUrl(), "\" class=\"list_item\">", PrintReady("&bull; ".$txt), "</a><br />";
-				echo "</td>";
-			}
-			*/
+			echo '<td>', $tmp, '</td>';
 			//-- Last change
-			if ($SHOW_LAST_CHANGE)
-				echo "<td class=\"rela\">".$media->LastChangeTimestamp(empty($SEARCH_SPIDER))."</td>";
-			echo "</tr>\n";
+			if ($SHOW_LAST_CHANGE) {
+				echo '<td>'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+			} else {
+				echo '<td style="display:none;"></td>';
+			}
+			echo '</tr>';
 		}
 	}
-	echo "</table>";
-	echo "</fieldset>";
+	echo '</tbody>';
+	echo '</table>';
+	echo '</div>';
 }
 
 // Print a table of surnames.
