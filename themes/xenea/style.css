@@ -1853,7 +1853,7 @@ html[dir='rtl'] .dataTables_info {float:right}
 html[dir='rtl'] .dataTables_length {float:left;}
 
 /* ========= List styles ================= */
-#source-list, #note-list, #repo-list, #media-list  { margin:auto; visibility:hidden; width:98%;}
+#source-list, #note-list, #repo-list, #media-list  {margin:auto; text-align:center; visibility:hidden; width:98%;}
 #source-list table, #note-list table, #repo-list table, #media-list table  {width:100%;}
 #source-list th, #note-list th, #repo-list th, #media-list th {cursor:pointer; cursor:hand; white-space: nowrap;}
 #source-list th:last-child, #note-list th:last-child, #repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
