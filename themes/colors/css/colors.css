@@ -1770,14 +1770,14 @@ html[dir='rtl'] .dataTables_info {float:right}
 html[dir='rtl'] .dataTables_length {float:left;}
 
 /* ========= List styles ================= */
-#source-list, #note-list, #repo-list, #media-list  { margin:auto; text-align:center; visibility:hidden; width:98%;}
+#source-list, #note-list, #repo-list, #media-list  {margin:auto; text-align:center; visibility:hidden; width:98%;}
 #source-list table, #note-list table, #repo-list table, #media-list table  {width:100%;}
 #source-list th, #note-list th, #repo-list th, #media-list th {cursor:pointer; cursor:hand; white-space: nowrap;}
 #source-list th:last-child, #note-list th:last-child, #repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
-#source-details h2, #note-details h2, #repo-details h2 {margin-bottom:20px; text-align:center;}
-#source-tabs, #note-tabs, #repo-tabs {margin:auto; visibility:hidden; width:80%;}
+#source-details h2, #note-details h2, #repo-details h2, #media-details h2 {margin-bottom:20px; text-align:center;}
+#source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto; visibility:hidden; width:80%;}
 #source-return, #note-return, #repo-return {float:right; margin:6px;}
-#source-edit, #note-edit, #repo-edit {overflow-x:auto;}
+#source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
 #media-list img {display:block; height:40px; margin:3px auto;}
 
 html[dir='rtl'] #source-return, html[dir='rtl'] #note-return, html[dir='rtl'] #repo-return  {float:left;}
