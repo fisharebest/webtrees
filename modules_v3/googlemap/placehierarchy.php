@@ -127,7 +127,7 @@ function set_levelm($level, $parent) {
 
 function create_map($placelevels) {
 	$level = safe_GET('level');
-	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $TEXT_DIRECTION, $levelm;
+	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $TEXT_DIRECTION, $levelm, $plzoom;
 	
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
 	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
@@ -153,6 +153,8 @@ function create_map($placelevels) {
 	echo "background-image: url('images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
 	echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
 	echo '</td>';
+	
+	$plzoom	= $latlng['pl_zoom'];		// Map zoom level
 
 	if (WT_USER_IS_ADMIN) {
 		$placecheck_url = 'module.php?mod=googlemap&amp;mod_action=admin_placecheck';
@@ -317,12 +319,12 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 	global $GOOGLEMAP_COORD, $GOOGLEMAP_PH_MARKER, $GM_DISP_SHORT_PLACE, $GM_DISP_COUNT;
 	
 	if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == "0") && ($place2['long'] == "0"))) {
-		echo "var icon_type = new google.maps.MarkerImage();\n";
-		echo ' icon_type.image = "', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
-		echo ' icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
-		echo " icon_type.iconSize = google.maps.Size(20, 34);\n";
-		echo " icon_type.shadowSize = google.maps.Size(37, 34);\n";
-		echo "var point = new google.maps.LatLng(0, 0);\n";
+		echo 'var icon_type = new google.maps.MarkerImage();\n';
+		echo 'icon_type.image = "', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
+		echo 'icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
+		echo 'icon_type.iconSize = google.maps.Size(20, 34);\n';
+		echo 'icon_type.shadowSize = google.maps.Size(37, 34);\n';
+		echo 'var point = new google.maps.LatLng(0, 0);\n';
 		if ($lastlevel)
 			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
 		else {
@@ -467,7 +469,11 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 }
 
 function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names) {
-	global $GOOGLEMAP_MAP_TYPE, $GM_MAX_NOF_LEVELS, $GOOGLEMAP_PH_WHEEL, $GOOGLEMAP_PH_CONTROLS, $GOOGLEMAP_PH_MARKER;
+	global $GOOGLEMAP_MAP_TYPE, $GM_MAX_NOF_LEVELS, $GOOGLEMAP_PH_WHEEL, $GOOGLEMAP_PH_CONTROLS, $GOOGLEMAP_PH_MARKER, $plzoom;
+	
+	echo "<script> var numMarkers = '".$numfound."';</script>";
+	echo "<script> var mapLevel = '".$level."';</script>";
+	echo "<script> var placezoom = '", $plzoom, "';</script>";
 	
 	echo '<link type="text/css" href ="', WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
 	?>
@@ -508,6 +514,11 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	google.maps.event.addListener(map, 'click', function() {
 		infowindow.close();
 	});
+	
+	// If only one marker, set zoom level to that of place in database
+	if (mapLevel != 0) {
+		var pointZoom = placezoom;
+	}
 	
 	// Creates a marker whose info window displays the given name
 	function createMarker(point, html, icon, name) {	
@@ -574,7 +585,15 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		marker.myposn = posn;
 		gmarkers.push(marker); 
 		bounds.extend(marker.position);	
-		map.fitBounds(bounds);
+		
+		// If only one marker use database place zoom level rather than fitBounds of markers		
+		if (numMarkers > 1) {
+ 			map.fitBounds(bounds);
+		} else {
+ 			map.setCenter(bounds.getCenter());
+  			map.setZoom(parseFloat(pointZoom));
+		}
+		
 		return marker;
 	}
 	
@@ -596,7 +615,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
 	} else if ($numfound<2 && $level>1) {
-		echo "map.maxZoom=".$GOOGLEMAP_MAX_ZOOM.";";
+		// echo "map.maxZoom=".$GOOGLEMAP_MAX_ZOOM.";";
 		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
 	} 
