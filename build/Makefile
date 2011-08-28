@@ -1,5 +1,5 @@
-LANGUAGES_BUILD=ca cs da de en_GB en_US es et fa fi fr he hr hu it lt nb nl pl pt ru sk sl sv tr vi
-LANGUAGES_EXTRA=af ar dv el en_AU fo id nn oc pt_BR ro sr sr@Latn ta zh
+LANGUAGES_BUILD=bs ca cs da de en_GB en_US es et fa fi fr he hr hu it lt nb nl pl pt ru sk sl sv tr vi
+LANGUAGES_EXTRA=af ar dv el en_AU fo gl id nn oc pt_BR ro sr sr@Latn ta zh
 PO_DIR=po
 MO_DIR=mo
 MO_FILES=$(patsubst %,$(MO_DIR)/%.mo,$(LANGUAGES_BUILD) $(LANGUAGES_EXTRA))
