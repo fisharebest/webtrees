@@ -36,7 +36,7 @@ $linkto   = safe_GET     ('linkto', array('person', 'source', 'family', 'manage'
 $action   = safe_GET     ('action', WT_REGEX_ALPHA, 'choose');
 
 // If GedFAct_assistant/_MEDIA/ installed ======================
-if (WT_USER_IS_ADMIN && $linkto=='manage' && file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_1_ctrl.php')) {
+if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_0_inverselink.php';
 } else {
 

@@ -1093,7 +1093,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					$centitl = "";
 					if ($nt>0) {
 						// If Census assistant installed, enable hotspot link on shared note title ---------------------
-						if (file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php')) {
+						if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 							$centitl  = str_replace("~~", "", trim($n1match[1]));
 							$centitl  = str_replace("<br />", "", $centitl);
 							$centitl  = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
@@ -1105,7 +1105,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					$text = expand_urls($text);
 					$text = PrintReady($text)." <br />";
 					// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
-					if (strstr($text, "|") && file_exists(WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php')) {
+					if (strstr($text, '|') && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
 					} else {
 						$text = $centitl."".$text;
