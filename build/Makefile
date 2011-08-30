@@ -25,7 +25,7 @@ default: clean webtrees
 	# Create an updated message catalog
 	mkdir -p webtrees_tmp
 	rm -Rf webtrees_tmp/*
-	find webtrees/modules_v2 -name "*.xml" | while read file; do sed -e 's~\(WT_I18N::[^)]*[)]\)~<?php echo \1; ?>~g' $$file > webtrees_tmp/$$(echo $$file.php | cut -c 10- | tr / _); done
+	find webtrees/modules_v3 -name "*.xml" | while read file; do sed -e 's~\(WT_I18N::[^)]*[)]\)~<?php echo \1; ?>~g' $$file > webtrees_tmp/$$(echo $$file.php | cut -c 10- | tr / _); done
 	find webtrees webtrees_tmp -name "*.php" | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1
 	rm -Rf webtrees_tmp webtrees
 
@@ -54,7 +54,7 @@ webtrees: $(PO_DIR) $(MO_DIR)
 	# Exclude unused Zend Framework components
 	rm -R $@/library/Zend/{Acl,Amf,Application,Auth,Barcode,Captcha,CodeGenerator,Console,Controller,Config,Crypt,Currency,Date,Db,Debug,Dojo,Dom,Feed,File,Form,Gdata,Http,InfoCard,Json,Layout,Ldap,Log,Mail,Markup,Measure,Memory,Mime,Navigation,Oauth,OpenId,Paginator,Pdf,ProgressBar,Queue,Reflection,Rest,Search,Serializer,Service,Soap,Test,Text,TimeSync,Tool,Uri,Validate,Version,View,Wildfire,XmlRpc}*
 	# Exclude unused locale data
-	rm -f $@/library/Zend/Locale/Data/{aa,ak,am,ar_,as,az,b,ca_,cch,cop,cs_CZ,cy,da_,de_,dv_,dz,ee,el_,en_{AS,B,C,D,GU,H,I,J,M,N,P,S,T,UM,US_,VI,ZA,ZW},eo,es_,eu,et_,fa_,fil,fo_,fr_,fur,g,ha,haw,he_,hi,hr_,hu_,hy,ia,id_,ig,ii,in,is,it_,iu,iw,j,k,ln,lo,lt_,lv,m{k,l,n,o,r,t,y},nb_,nd,ne,nl_,no,nn_,nso,nr,ny,oc_,om,or,pa,pl_,ps,pt_PT,ro_,ru_,rw,sa,se,sh,si,sk_,sl_,so,sq,sr_B,sr_C,sr_Latn_,sr_ME,sr_RS,sr_YU,ss,st,sv_,sw,syr,ta_,te,tg,th,ti,tl,tn,to,tr_,trv,ts,tt,u,ve,vi_,w,x,y,zh_H,zh_{MO,SG,TW},zu}*.xml
+	rm -f $@/library/Zend/Locale/Data/{aa,ak,am,ar_,as,az,be,bg,bn,bo,byn,ca_,cch,cop,cs_CZ,cy,da_,de_,dv_,dz,ee,el_,en_{AS,B,C,D,GU,H,I,J,M,N,P,S,T,UM,US_,VI,ZA,ZW},eo,es_,eu,et_,fa_,fil,fo_,fr_,fur,ga,gaa,gez,gsw,gu,gv,ha,haw,he_,hi,hr_,hu_,hy,ia,id_,ig,ii,in,is,it_,iu,iw,j,k,ln,lo,lt_,lv,m{k,l,n,o,r,t,y},nb_,nd,ne,nl_,no,nn_,nso,nr,ny,oc_,om,or,pa,pl_,ps,pt_PT,ro_,ru_,rw,sa,se,sh,si,sk_,sl_,so,sq,sr_B,sr_C,sr_Latn_,sr_ME,sr_RS,sr_YU,ss,st,sv_,sw,syr,ta_,te,tg,th,ti,tl,tn,to,tr_,trv,ts,tt,u,ve,vi_,w,x,y,zh_H,zh_{MO,SG,TW},zu}*.xml
 	rm -Rf $@/build
 	# Check for syntax errors
 	if find $@ -name '*.php' -exec php -l {} \; | grep -v "No syntax errors"; then false; else true; fi
