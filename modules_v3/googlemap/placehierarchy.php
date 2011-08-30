@@ -571,7 +571,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			icon: iconImage,
 			shadow: iconShadow,
 			map: map,
-			title: name,
+			title: name
 		});		
 		// Show this markers name in the info window when it is clicked
 		google.maps.event.addListener(marker, 'click', function() {
