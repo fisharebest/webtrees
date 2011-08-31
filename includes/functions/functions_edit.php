@@ -930,13 +930,13 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		<?php } ?>
 		if (WT_LOCALE=='vi' || WT_LOCALE=='hu') {
 			// Default format: /SURN/ GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ "+givn+" ")+nsfx;
+			return trim(npfx+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ "+givn+" "+nsfx);
 		} else if (WT_LOCALE=='zh') {
 			// Default format: /SURN/GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/"+givn+" ")+nsfx;
+			return trim(npfx+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/"+givn+" "+nsfx);
 		} else {
 			// Default format: GIVN /SURN/
-			return trim(npfx+" "+givn+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ ")+" "+nsfx;
+			return trim(npfx+" "+givn+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ "+nsfx);
 		}
 	}
 

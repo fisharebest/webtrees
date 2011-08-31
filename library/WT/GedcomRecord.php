@@ -447,8 +447,7 @@ class WT_GedcomRecord {
 						if ($match[1]=='NAME' && $match[3]=="\n2 TYPE married") {
 							$this->_addName('_MARNM', $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
 						} else {
-						//	$this->_addName($match[1], $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
-							$this->_addName($match[1], $match[2], $match[1]);//kiwi's change
+							$this->_addName($match[1], $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
 						}
 						if ($match[3] && preg_match_all("/^{$sublevel} (ROMN|FONE|_\w+) (.+)((\n[{$subsublevel}-9].+)*)/m", $match[3], $submatches, PREG_SET_ORDER)) {
 							foreach ($submatches as $submatch) {
