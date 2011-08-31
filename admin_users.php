@@ -573,7 +573,7 @@ case 'createform':
 	break;
 case 'cleanup':
 	?>
-	<form name="cleanupform" method="post" action="admin_users.php&action=cleanup2">
+	<form name="cleanupform" method="post" action="admin_users.php?action=cleanup2">
 	<table id="clean" class="<?php echo $TEXT_DIRECTION; ?>">
 	<?php
 	// Check for idle users
