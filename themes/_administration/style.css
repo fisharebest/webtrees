@@ -245,6 +245,7 @@ html[dir='rtl'] #access {float:right; margin-right:20px;}
 #access td+td+td+td {text-align:center;}
 td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
 td.details:hover {color:black;}
+.icon-email {cursor:hand; cursor:pointer;}
 
 /* USER ADD & EDIT */
 table#adduser {width:100%;}
