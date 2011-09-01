@@ -1223,7 +1223,7 @@ function print_media_table($datalist, $legend) {
 			echo '<td>', $tmp, '</td>';
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {
-				echo '<td>'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+				echo '<td>'.$media->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 			} else {
 				echo '<td style="display:none;"></td>';
 			}
