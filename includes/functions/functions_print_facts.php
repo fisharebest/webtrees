@@ -813,7 +813,9 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 		$spos2 = strpos($factrec, "\n$level", $spos1);
 		if (!$spos2) $spos2 = strlen($factrec);
 		$srec = substr($factrec, $spos1, $spos2-$spos1);
-		if (WT_Source::getInstance($sid)->canDisplayDetails()) {
+		$source=WT_Source::getInstance($sid);
+		// Allow access to "1 SOUR @non_existent_source@", so it can be corrected/deleted
+		if (!$source || $source->canDisplayDetails()) {
 			if ($level==2) echo "<tr class=\"row_sour2\">";
 			else echo "<tr>";
 			echo "<td class=\"descriptionbox";
@@ -849,7 +851,6 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo "</td>";
 			echo "<td class=\"optionbox $styleadd wrap\">";
 			//echo "<td class=\"facts_value$styleadd\">";
-			$source=WT_Source::getInstance($sid);
 			if ($source) {
 				echo "<a href=\"", $source->getHtmlUrl(), "\">", PrintReady($source->getFullName()), "</a>";
 				// PUBL
@@ -890,19 +891,19 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 					$cs = preg_match("/".($nlevel+1)." ROLE (.*)/", $srec, $cmatch);
 					if ($cs>0) echo "<br />&nbsp;&nbsp;&nbsp;&nbsp;<span class=\"label\">", WT_Gedcom_Tag::getLabel('ROLE'), " </span><span class=\"field\">$cmatch[1]</span>";
 				}
-				if ($source) {
-					echo printSourceStructure(getSourceStructure($srec));
-					echo "<div class=\"indent\">";
-					print_media_links($srec, $nlevel);
-					if ($nlevel==2) {
-						print_media_links($source->getGedcomRecord(), 1);
-					}
-					print_fact_notes($srec, $nlevel);
-					if ($nlevel==2) {
-						print_fact_notes($source->getGedcomRecord(), 1);
-					}
-					echo "</div>";
+				echo printSourceStructure(getSourceStructure($srec));
+				echo "<div class=\"indent\">";
+				print_media_links($srec, $nlevel);
+				if ($nlevel==2) {
+					print_media_links($source->getGedcomRecord(), 1);
 				}
+				print_fact_notes($srec, $nlevel);
+				if ($nlevel==2) {
+					print_fact_notes($source->getGedcomRecord(), 1);
+				}
+				echo "</div>";
+			} else {
+				echo $sid;
 			}
 			echo "</td></tr>";
 		}
