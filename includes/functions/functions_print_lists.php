@@ -789,6 +789,7 @@ function print_sour_table($datalist) {
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
+			"bRetrieve": true,
 			"bStateSave": true,
 			"aoColumnDefs": [
 				{"bSortable": false, "aTargets": [ 8 ]},
@@ -973,7 +974,7 @@ function print_note_table($datalist, $legend=null) {
 	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
-		echo '<th">', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+		echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	} else {
 		echo '<th style="display:none;"></th>';
 	}
