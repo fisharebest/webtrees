@@ -415,10 +415,10 @@ class TreeView {
   * @return string
   */
 	private function getThumbnail($personGroup, $person) {
-		global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES;
+		global $SHOW_HIGHLIGHT_IMAGES;
 
 		$thumbnail="";
-		if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
+		if ($SHOW_HIGHLIGHT_IMAGES) {
 			$object=$person->findHighlightedMedia();
 			$img_title=PrintReady(htmlspecialchars($person->getFullName()));
 			if (!empty($object)) {

@@ -240,7 +240,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $MEDIA_FIREWALL_ROOTDIR;       $MEDIA_FIREWALL_ROOTDIR       =get_gedcom_setting($ged_id, 'MEDIA_FIREWALL_ROOTDIR', WT_DATA_DIR);
 	global $MEDIA_FIREWALL_THUMBS;        $MEDIA_FIREWALL_THUMBS        =get_gedcom_setting($ged_id, 'MEDIA_FIREWALL_THUMBS');
 	global $MEDIA_ID_PREFIX;              $MEDIA_ID_PREFIX              =get_gedcom_setting($ged_id, 'MEDIA_ID_PREFIX');
-	global $MULTI_MEDIA;                  $MULTI_MEDIA                  =get_gedcom_setting($ged_id, 'MULTI_MEDIA');
 	global $NOTE_ID_PREFIX;               $NOTE_ID_PREFIX               =get_gedcom_setting($ged_id, 'NOTE_ID_PREFIX');
 	global $NO_UPDATE_CHAN;               $NO_UPDATE_CHAN               =get_gedcom_setting($ged_id, 'NO_UPDATE_CHAN');
 	global $PEDIGREE_FULL_DETAILS;        $PEDIGREE_FULL_DETAILS        =get_gedcom_setting($ged_id, 'PEDIGREE_FULL_DETAILS');

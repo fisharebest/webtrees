@@ -54,16 +54,6 @@ if (!WT_USER_IS_ADMIN) {
 	exit;
 }
 
-// media must be enabled
-if (!$MULTI_MEDIA) {
-	print_header(WT_I18N::translate('Manage multimedia'));
-	echo "<span class=\"error\"><b>";
-	echo WT_I18N::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
-	echo "</b></span><br />";
-	print_footer();
-	exit;
-}
-
 // editing must be enabled
 if (!$ALLOW_EDIT_GEDCOM) {
 	print_header(WT_I18N::translate('Manage multimedia'));
@@ -332,9 +322,9 @@ function showchanges() {
 if (check_media_structure()) {
 	echo "<div id=\"uploadmedia\" style=\"display:none\">";
 	// Check if Standard Media Directory is writeable, doesn't matter if we upload to protected directory
-	if ((!$is_std_media_writable && !$USE_MEDIA_FIREWALL ) || !$MULTI_MEDIA) {
+	if (!$is_std_media_writable && !$USE_MEDIA_FIREWALL) {
 		echo "<p class=\"error\"><b>";
-		echo WT_I18N::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
+		echo WT_I18N::translate('Uploading media files is not allowed because the media directory is not writable.');
 		echo "</b></p>";
 	} else {
 		show_mediaUpload_form(WT_SCRIPT_NAME, $showthumb); // We have the green light to upload media, echo the form

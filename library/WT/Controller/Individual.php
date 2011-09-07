@@ -220,9 +220,9 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	* @return boolean
 	*/
 	function canShowHighlightedObject() {
-		global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $USE_SILHOUETTE;
+		global $SHOW_HIGHLIGHT_IMAGES, $USE_SILHOUETTE;
 
-		if (($this->indi->canDisplayDetails()) && ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES)) {
+		if (($this->indi->canDisplayDetails()) && $SHOW_HIGHLIGHT_IMAGES) {
 			$firstmediarec = $this->indi->findHighlightedMedia();
 			if ($firstmediarec) return true;
 		}

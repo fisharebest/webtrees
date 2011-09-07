@@ -347,8 +347,8 @@ case 'edit':
 		if ($level1type!="NOTE") print_add_layer("NOTE");
 	} else {
 		if ($level1type!="SEX") {
-			if ($level1type!="SOUR" && $level1type!="REPO" ) print_add_layer("SOUR");
-			if ($level1type!="OBJE" && $level1type!="REPO" && $MULTI_MEDIA) print_add_layer("OBJE");
+			if ($level1type!="SOUR" && $level1type!="REPO") print_add_layer("SOUR");
+			if ($level1type!="OBJE" && $level1type!="REPO") print_add_layer("OBJE");
 			if ($level1type!="NOTE") print_add_layer("NOTE");
 			// Shared Note addition ------------
 			if ($level1type!="SHARED_NOTE" && $level1type!="NOTE") print_add_layer("SHARED_NOTE");

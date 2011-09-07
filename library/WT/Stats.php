@@ -764,9 +764,7 @@ class WT_Stats {
 	}
 
 	function _totalMediaType($type='all') {
-		global $MULTI_MEDIA;
-
-		if (!$MULTI_MEDIA || !in_array($type, self::$_media_types) && $type != 'all' && $type != 'unknown') {
+		if (!in_array($type, self::$_media_types) && $type != 'all' && $type != 'unknown') {
 			return 0;
 		}
 		$sql="SELECT COUNT(*) AS tot FROM `##media` WHERE m_gedfile=?";

@@ -387,7 +387,7 @@ class WT_MenuBar {
 	}
 
 	public static function getListsMenu() {
-		global $MULTI_MEDIA, $SEARCH_SPIDER, $controller;
+		global $SEARCH_SPIDER, $controller;
 
 		$surname='';
 		if (isset($controller)) {
@@ -426,7 +426,7 @@ class WT_MenuBar {
 			'indilist.php'  =>WT_I18N::translate('Individuals'),
 			'placelist.php' =>WT_I18N::translate('Place hierarchy'),
 		);
-		if ($row->obje && $MULTI_MEDIA) {
+		if ($row->obje) {
 			$menulist['medialist.php']=WT_I18N::translate('Media objects');
 		}
 		if ($row->repo) {

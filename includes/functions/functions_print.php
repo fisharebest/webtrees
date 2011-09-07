@@ -42,7 +42,7 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 */
 function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $GEDCOM;
-	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
+	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
 	global $WT_IMAGES, $ABBREVIATE_CHART_LABELS;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
@@ -226,7 +226,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	}
 	//-- find the name
 	$name = $person->getFullName();
-	if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
+	if ($SHOW_HIGHLIGHT_IMAGES) {
 		$object=$person->findHighlightedMedia();
 		$img_title=PrintReady(htmlspecialchars($name));
 		$img_id='box-'.$boxID.'.-thumb';

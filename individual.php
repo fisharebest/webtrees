@@ -195,7 +195,7 @@ echo
 	'<div id="indi_header">';
 if ($controller->indi->canDisplayDetails()) {
 	echo '<div id="indi_mainimage">'; // Display highlight image
-	if ($MULTI_MEDIA && $controller->canShowHighlightedObject()) {
+	if ($controller->canShowHighlightedObject()) {
 		echo $controller->getHighlightedObject();
 	}
 	echo '</div>'; // close #indi_mainimage

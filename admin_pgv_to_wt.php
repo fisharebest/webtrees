@@ -651,7 +651,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'MEDIA_ID_PREFIX',              $MEDIA_ID_PREFIX);
 	@set_gedcom_setting($ged_id, 'META_DESCRIPTION',             $META_DESCRIPTION);
 	@set_gedcom_setting($ged_id, 'META_TITLE',                   $META_TITLE);
-	@set_gedcom_setting($ged_id, 'MULTI_MEDIA',                  $MULTI_MEDIA);
+	@set_gedcom_setting($ged_id, 'MEDIA_UPLOAD',                 $MULTI_MEDIA); // see schema v12-13
 	@set_gedcom_setting($ged_id, 'NOTE_FACTS_ADD',               $NOTE_FACTS_ADD);
 	@set_gedcom_setting($ged_id, 'NOTE_FACTS_QUICK',             $NOTE_FACTS_QUICK);
 	@set_gedcom_setting($ged_id, 'NOTE_FACTS_UNIQUE',            $NOTE_FACTS_UNIQUE);

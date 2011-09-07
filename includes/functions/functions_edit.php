@@ -1792,6 +1792,10 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	global $WT_IMAGES, $MEDIA_DIRECTORY, $TEXT_DIRECTION, $gedrec, $FULL_SOURCES, $islink;
 
+	if ($tag=='OBJE' && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') <= WT_USER_ACCESS_LEVEL) {
+		return;
+	}
+
 	if ($tag=="SOUR") {
 		//-- Add new source to fact
 		echo "<a href=\"javascript:;\" onclick=\"return expand_layer('newsource');\"><img id=\"newsource_img\" src=\"", $WT_IMAGES["plus"], "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" /> ", WT_I18N::translate('Add a new source citation'), "</a>";

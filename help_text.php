@@ -1589,6 +1589,11 @@ case 'MEDIA_ID_PREFIX':
 	$text=WT_I18N::translate('When a new media record is added online in <b>webtrees</b>, a new ID for that media will be generated automatically. The media ID will have this prefix.');
 	break;
 
+case 'MEDIA_UPLOAD':
+	$title=WT_I18N::translate('Who can upload new media files?');
+	$text=WT_I18N::translate('If you are concerned that users might upload inappropriate images, you can restrict media uploads to managers only.');
+	break;
+
 case 'MEMORY_LIMIT':
 	// Find the default value for max_execution_time
 	ini_restore('memory_limit');
@@ -1609,11 +1614,6 @@ case 'META_DESCRIPTION':
 case 'META_TITLE':
 	$title=WT_I18N::translate('Add to TITLE header tag');
 	$text=WT_I18N::translate('This text will be appended to each page title.  It will be shown in the browser\'s title bar, bookmarks, etc.');
-	break;
-
-case 'MULTI_MEDIA':
-	$title=WT_I18N::translate('Enable multimedia features');
-	$text=WT_I18N::translate('<b>webtrees</b> allows you to link pictures, videos, and other multimedia objects to your GEDCOM.  If you do not use multimedia, you can disable the multimedia features.');
 	break;
 
 case 'NOTE_ID_PREFIX':

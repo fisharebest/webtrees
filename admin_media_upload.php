@@ -73,9 +73,9 @@ if ($action == "upload") {
 
 // Check if Media Directory is writeable or if Media features are enabled
 // If one of these is not true then do not continue
-if (!dir_is_writable($MEDIA_DIRECTORY) || !$MULTI_MEDIA) {
+if (!dir_is_writable($MEDIA_DIRECTORY)) {
 	echo "<span class=\"error\"><b>";
-	echo WT_I18N::translate('Uploading media files is not allowed because multi-media items have been disabled or because the media directory is not writable.');
+	echo WT_I18N::translate('Uploading media files is not allowed because the media directory is not writable.');
 	echo "</b></span><br />";
 } else {
 	show_mediaUpload_form(WT_SCRIPT_NAME, false); // We have the green light to upload media, print the form

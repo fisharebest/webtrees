@@ -77,8 +77,8 @@ function GetGEDFromZIP($zipfile, $extract=true) {
  * The media firewall should always be enabled. This function adds media firewall code to the media/.htaccess file if it is not already there
  */
 function fix_media_htaccess() {
-	global $errors, $error_msg, $MEDIA_DIRECTORY, $MULTI_MEDIA;
-	if (!$MULTI_MEDIA) return; // don't create an htaccess flie if media is disabled
+	global $errors, $error_msg, $MEDIA_DIRECTORY;
+
 	$whichFile = $MEDIA_DIRECTORY.".htaccess";
 	$httext = "";
 	if (file_exists($whichFile)) {
@@ -204,9 +204,9 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_EXTERNAL',               safe_POST_bool('NEW_MEDIA_EXTERNAL'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_FIREWALL_THUMBS',        safe_POST_bool('NEW_MEDIA_FIREWALL_THUMBS'));
 	set_gedcom_setting(WT_GED_ID, 'MEDIA_ID_PREFIX',              safe_POST('NEW_MEDIA_ID_PREFIX'));
+	set_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD',                 safe_POST('NEW_MEDIA_UPLOAD'));
 	set_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION',             safe_POST('NEW_META_DESCRIPTION'));
 	set_gedcom_setting(WT_GED_ID, 'META_TITLE',                   safe_POST('NEW_META_TITLE'));
-	set_gedcom_setting(WT_GED_ID, 'MULTI_MEDIA',                  safe_POST_bool('NEW_MULTI_MEDIA'));
 	set_gedcom_setting(WT_GED_ID, 'NOTE_ID_PREFIX',               safe_POST('NEW_NOTE_ID_PREFIX'));
 	set_gedcom_setting(WT_GED_ID, 'NO_UPDATE_CHAN',               safe_POST_bool('NEW_NO_UPDATE_CHAN'));
 	set_gedcom_setting(WT_GED_ID, 'PEDIGREE_FULL_DETAILS',        safe_POST_bool('NEW_PEDIGREE_FULL_DETAILS'));
@@ -758,14 +758,6 @@ echo WT_JS_START;?>
 			<div id="config-media">
 				<table>
 					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Enable multimedia features'), help_link('MULTI_MEDIA'); ?>
-						</td>
-						<td>
-							<?php  echo edit_field_yes_no('NEW_MULTI_MEDIA', get_gedcom_setting(WT_GED_ID, 'MULTI_MEDIA')); ?>
-						</td>
-					</tr>
-					<tr>
 						<th colspan="2"><?php echo WT_I18N::translate('General'); ?></th>
 					</tr>
 					<tr>
@@ -905,6 +897,18 @@ echo WT_JS_START;?>
 						</td>
 						<td>
 							<?php echo edit_field_yes_no('NEW_SAVE_WATERMARK_THUMB', get_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB')); ?>
+						</td>
+					</tr>
+					<tr>
+						<th colspan="2"><?php echo WT_I18N::translate('Access'); ?></th>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Who can upload new media files?'), help_link('MEDIA_UPLOAD'); ?>
+						</td>
+						<td>
+							<?php echo select_edit_control('NEW_MEDIA_UPLOAD', array(WT_PRIV_USER=>WT_I18N::translate('Show to members'),
+ WT_PRIV_NONE=>WT_I18N::translate('Show to managers'), WT_PRIV_HIDE=>WT_I18N::translate('Hide from everyone')), null, get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD')); ?>
 						</td>
 					</tr>
 				</table>

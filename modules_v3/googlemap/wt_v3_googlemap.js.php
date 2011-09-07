@@ -410,7 +410,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 	function loadMap() {
 		<?php
-			global $GOOGLEMAP_MAP_TYPE, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $GEDCOM;
+			global $GOOGLEMAP_MAP_TYPE, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $GEDCOM;
 		?>
 
 		// Create the map and mapOptions
@@ -481,7 +481,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					} else {
 						$indirec = $this_person->getGedcomRecord();
 						$image = '';
-						if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
+						if ($SHOW_HIGHLIGHT_IMAGES) {
 							if (!empty($pid)) {
 								$object = find_highlighted_object($pid, WT_GED_ID, $indirec);
 							}
@@ -500,7 +500,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				if (!empty($person)) {
 					$indirec2 = $person->getGedcomRecord();
 					$image2 = '';
-					if ($MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
+					if ($SHOW_HIGHLIGHT_IMAGES) {
 						if (!empty($gmark['name'])) {
 							$object2 = find_highlighted_object($gmark['name'], WT_GED_ID, $indirec2);
 						}

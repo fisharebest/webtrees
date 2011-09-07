@@ -279,7 +279,7 @@ print_footer();
 
 function print_td_person($n) {
 	global $treeid, $WT_IMAGES;
-	global $MULTI_MEDIA, $SHOW_HIGHLIGHT_IMAGES;
+	global $SHOW_HIGHLIGHT_IMAGES;
 	global $showthumbs;
 
 	$text = "";
@@ -290,7 +290,7 @@ function print_td_person($n) {
 		$name=$indi->getFullName();
 		$addname=$indi->getAddName();
 
-		if ($showthumbs && $MULTI_MEDIA && $SHOW_HIGHLIGHT_IMAGES) {
+		if ($showthumbs && $SHOW_HIGHLIGHT_IMAGES) {
 			$object=find_highlighted_object($pid, WT_GED_ID, $indi->getGedcomRecord());
 			$birth_date=$indi->getBirthDate();
 			$death_date=$indi->getDeathDate();

@@ -308,7 +308,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		}
 		
 		// Show media and hide the rest
-		if ($type == "media" && $MULTI_MEDIA) {
+		if ($type == 'media') {
 			echo "<div align=\"center\">";
 			echo "<form name=\"filtermedia\" method=\"get\" onsubmit=\"return checknames(this);\" action=\"find.php\">";
 			echo "<input type=\"hidden\" name=\"choose\" value=\"", $choose, "\" />";

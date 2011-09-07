@@ -41,7 +41,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $WT_IMAGES, $MULTI_MEDIA, $top10_block_present;
+		global $ctype, $WT_IMAGES, $top10_block_present;
 
 		$show_last_update    =get_block_setting($block_id, 'show_last_update',     true);
 		$show_common_surnames=get_block_setting($block_id, 'show_common_surnames', true);
@@ -103,7 +103,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($stat_sour) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Sources').'</td><td class="facts_value" align="right"><a href="sourcelist.php?ged='.WT_GEDURL.'">'.WT_I18N::number($stats->totalSources()).'</a></td></tr>';
 		}
-		if ($stat_media && $MULTI_MEDIA==true) {
+		if ($stat_media) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Media objects').'</td><td class="facts_value" align="right"><a href="medialist.php?ged='.WT_GEDURL.'">'.WT_I18N::number($stats->totalMedia()).'</a></td></tr>';
 		}
 		if ($stat_repo) {

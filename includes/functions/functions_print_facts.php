@@ -530,12 +530,12 @@ function print_fact_sources($factrec, $level, $return=false) {
 
 //-- Print the links to media objects
 function print_media_links($factrec, $level, $pid='') {
-	global $MULTI_MEDIA, $TEXT_DIRECTION;
+	global $TEXT_DIRECTION;
 	global $SEARCH_SPIDER;
 	global $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $GEDCOM;
+
 	$ged_id=get_id_from_gedcom($GEDCOM);
-	if (!$MULTI_MEDIA) return;
 	$nlevel = $level+1;
 	if ($level==1) $size=50;
 	else $size=25;

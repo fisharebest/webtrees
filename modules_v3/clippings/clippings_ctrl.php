@@ -366,7 +366,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	 * @param
 	 */
 	function add_clipping($clipping) {
-		global $cart, $MULTI_MEDIA, $GEDCOM;
+		global $cart, $GEDCOM;
 
 		if (!$clipping || !$clipping->canDisplayName()) {
 			return;
@@ -406,11 +406,9 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			for ($i = 0; $i < $nt; $i++) {
 				$this->add_clipping(WT_Note::getInstance($match[$i][1]));
 			}
-			if ($MULTI_MEDIA) {
-				$nt = preg_match_all("/\d OBJE @(.*)@/", $gedrec->getGedcomRecord(), $match, PREG_SET_ORDER);
-				for ($i = 0; $i < $nt; $i++) {
-					$this->add_clipping(WT_Media::getInstance($match[$i][1]));
-				}
+			$nt = preg_match_all("/\d OBJE @(.*)@/", $gedrec->getGedcomRecord(), $match, PREG_SET_ORDER);
+			for ($i = 0; $i < $nt; $i++) {
+				$this->add_clipping(WT_Media::getInstance($match[$i][1]));
 			}
 		}
 		return true;
