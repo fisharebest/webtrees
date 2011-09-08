@@ -1261,3 +1261,8 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0px;}
 #sb_content_extra_info #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
 
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
+
+fieldset {
+	text-align:left;
+}
+html[dir='rtl'] fieldset {text-align:right;}

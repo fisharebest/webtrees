@@ -283,8 +283,11 @@ html[dir='rtl'] #main-menu li li a 		{ float:right;padding:1px 5px 1px 10px; }
 /*   Header end    */
 
 fieldset {
-	margin: 8px 8px 4px 8px;
+	margin:8px 8px 4px 8px;
+	text-align:left;
 }
+
+html[dir='rtl'] fieldset {text-align:right;}
 
 legend {
 	font-weight: bold;

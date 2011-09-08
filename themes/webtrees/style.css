@@ -37,7 +37,9 @@ body {
 
 fieldset {
 	margin:8px 8px 4px 8px;
+	text-align:left;
 }
+html[dir='rtl'] fieldset {text-align:right;}
 
 legend {
 	font-weight:bold;
@@ -1338,14 +1340,22 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 
 /* ======= List styles =========== */
 #source-list, #note-list, #repo-list, #media-list  {margin:auto; visibility:hidden; text-align:center; width:98%;}
-#source-list table, #note-list table, #repo-list table, #media-list table  {width:100%;}
-#source-list th, #note-list th, #repo-list th, #media-list th{cursor:pointer; cursor:hand; white-space: nowrap; padding:4px;}
+#indi-list  {margin: 5px auto; visibility:hidden; text-align:center; width:100%;}
+#source-list table, #note-list table, #repo-list table, #media-list table, #indi-list table  {width:100%;}
+#source-list th, #note-list th, #repo-list th, #media-list th, #indi-list th{cursor:pointer; cursor:hand; white-space: nowrap; padding:4px;}
 #source-list th:last-child, #note-list th:last-child, #repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
 #source-details h2, #note-details h2, #repo-details h2, #media-details h2  {margin-bottom:20px; text-align:center;}
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto; visibility:hidden; width:80%;}
 #source-return, #note-return , #repo-return{float:right; padding:6px}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
 #media-list img {display:block; height:40px; margin:3px auto;}
+#indi-list td {color:#555;}
+#SEX_M, #SEX_F, #SEX_U {height:20px;}
+#SEX_M img, #SEX_F img, #SEX_U img {vertical-align:top;}
+#gender, #aliveinyear, #years, #given, #charts, #reset {background-color:lightgrey; display:inline; margin:0 6px 0 0; padding:0 0 1px 0;}
+#gender{padding:2px 0;}
+#aliveyear{background-color:#EEE8AA;}
+#indi-list .stats {margin:0 auto; width:auto;}
 
 html[dir='rtl'] #source-return, html[dir='rtl'] #note-return, html[dir='rtl'] #repo-return {float:left;}
 

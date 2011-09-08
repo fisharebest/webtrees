@@ -764,12 +764,13 @@ function print_fam_table($datalist, $legend='', $option='') {
  * @param array $datalist contain sources that were extracted from the database.
  * @param string $legend optional legend of the fieldset
  */
-function print_sour_table($datalist) {
+function print_sour_table($datalist, $legend=null) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES;
 
+	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	echo WT_JS_START;?>
 	jQuery(document).ready(function(){
-		jQuery('#source_list_table').dataTable( {
+		jQuery('#<?php echo $table_id; ?>').dataTable( {
 			"sDom": '<"H"prf>t<"F"li>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
@@ -789,7 +790,6 @@ function print_sour_table($datalist) {
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
-			"bRetrieve": true,
 			"bStateSave": true,
 			"aoColumnDefs": [
 				{"bSortable": false, "aTargets": [ 8 ]},
@@ -803,8 +803,15 @@ function print_sour_table($datalist) {
 	<?php echo WT_JS_END;
 	//--table wrapper
 	echo '<div id="source-list">';
+	echo '<fieldset><legend><img src="', $WT_IMAGES['source'], '" align="middle" alt="" /> ';
+	if ($legend) {
+		echo $legend;
+	} else {
+		echo WT_I18N::translate('Sources');
+	}
+	echo '</legend>';
 	//-- table header
-	echo '<table id="source_list_table"><thead><tr>';
+	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
 	echo '<th class="t2" style="display:none;">', WT_Gedcom_Tag::getLabel('TITL'), ' 2</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
@@ -898,7 +905,7 @@ function print_sour_table($datalist) {
 		echo "</tr>";
 	}
 	echo '</tbody>';
-	echo '</table>';
+	echo '</table></fieldset>';
 	echo '</div>';
 	// show TITLE2 col if not empty
 	if ($t2) {
@@ -930,9 +937,10 @@ function print_note_table($datalist, $legend=null) {
 	if (count($datalist)<1) {
 		return;
 	}
+	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	echo WT_JS_START;?>
 	jQuery(document).ready(function(){
-		jQuery('#note_list_table').dataTable( {
+		jQuery('#<?php echo $table_id; ?>').dataTable( {
 			"sDom": '<"H"prf>t<"F"li>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
@@ -965,9 +973,15 @@ function print_note_table($datalist, $legend=null) {
 	<?php echo WT_JS_END;
 	//--table wrapper
 	echo '<div id="note-list">';
-
+	echo '<fieldset><legend><img src="', $WT_IMAGES['notes'], '" align="middle" alt="" /> ';
+	if ($legend) {
+		echo $legend;
+	} else {
+		echo WT_I18N::translate('Shared notes');
+	}
+	echo '</legend>';
 	//-- table header
-	echo '<table id="note_list_table"><thead><tr>';
+	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
@@ -1024,7 +1038,7 @@ function print_note_table($datalist, $legend=null) {
 		echo "</tr>";
 	}
 	echo '</tbody>';
-	echo '</table>';
+	echo '</table></fieldset>';
 	echo '</div>';
 }
 
@@ -1040,9 +1054,10 @@ function print_repo_table($repos, $legend='') {
 	if (!$repos) {
 		return;
 	}
+	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	echo WT_JS_START;?>
 	jQuery(document).ready(function(){
-		jQuery('#repo_list_table').dataTable( {
+		jQuery('#<?php echo $table_id; ?>').dataTable( {
 			"sDom": '<"H"prf>t<"F"li>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
@@ -1075,9 +1090,16 @@ function print_repo_table($repos, $legend='') {
 	<?php echo WT_JS_END;
 	//--table wrapper
 	echo '<div id="repo-list">';
+	echo '<fieldset><legend><img src="', $WT_IMAGES['repository'], '" align="middle" alt="" /> ';
+	if ($legend) {
+		echo $legend;
+	} else {
+		echo WT_I18N::translate('Repositories');
+	}
+	echo '</legend>';
 
 	//-- table header
-	echo '<table id="repo_list_table"><thead><tr>';
+	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Repository name'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
 	if ($SHOW_LAST_CHANGE) {
@@ -1126,7 +1148,7 @@ function print_repo_table($repos, $legend='') {
 		echo '</tr>';
 	}
 	echo '</tbody>';
-	echo '</table>';
+	echo '</table></fieldset>';
 	echo '</div>';
 }
 
@@ -1140,9 +1162,10 @@ function print_media_table($datalist, $legend) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES;
 
 	if (count($datalist)<1) return;
+	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	echo WT_JS_START;?>
 	jQuery(document).ready(function(){
-		jQuery('#media_list_table').dataTable( {
+		jQuery('#<?php echo $table_id; ?>').dataTable( {
 			"sDom": '<"H"prf>t<"F"li>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',

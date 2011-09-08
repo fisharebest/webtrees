@@ -62,6 +62,7 @@ $WT_IMAGES=array(
 	'home'=>WT_THEME_DIR.'images/home.png',
 	'hourglass'=>WT_THEME_DIR.'images/hourglass.png',
 	'indis'=>WT_THEME_DIR.'images/indis.png',
+	'indi-list'=>WT_THEME_DIR.'images/indis.png',
 	'lists'=>WT_THEME_DIR.'images/lists.png',
 	'media'=>WT_THEME_DIR.'images/media.png',
 	'menu_help'=>WT_THEME_DIR.'images/help.png',
