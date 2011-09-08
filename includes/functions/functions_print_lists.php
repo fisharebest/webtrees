@@ -973,7 +973,7 @@ function print_note_table($datalist, $legend=null) {
 	<?php echo WT_JS_END;
 	//--table wrapper
 	echo '<div id="note-list">';
-	echo '<fieldset><legend><img src="', $WT_IMAGES['notes'], '" align="middle" alt="" /> ';
+	echo '<fieldset><legend><img src="', $WT_IMAGES['note'], '" align="middle" alt="" /> ';
 	if ($legend) {
 		echo $legend;
 	} else {
