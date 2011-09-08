@@ -67,7 +67,7 @@ if (isset($reorder) && $reorder==1) {
 		echo '<table class="facts_table"><tr>';
 		echo '<td class="descriptionbox rela">';
 		// Add a new media object
-		if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') > WT_USER_ACCESS_LEVEL) {
+		if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 			echo '<span><a href="javascript: album_add()">';
 			echo '<img src="', WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new media object'), '" alt="', WT_I18N::translate('Add a new media object'), '" />';
 			echo WT_I18N::translate('Add a new media object');

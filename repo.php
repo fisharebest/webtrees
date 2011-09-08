@@ -128,7 +128,7 @@ echo '<div id="repo-tabs">
 			if ($controller->repository->canEdit()) {
 				print_add_new_fact($controller->rid, $repositoryfacts, 'REPO');
 				// new media
-				if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') > WT_USER_ACCESS_LEVEL) {
+				if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 					echo '<tr><td class="descriptionbox">';
 					echo WT_I18N::translate('Add media'), help_link('add_media');
 					echo '</td><td class="optionbox">';

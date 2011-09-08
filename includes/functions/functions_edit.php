@@ -1792,7 +1792,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	global $WT_IMAGES, $MEDIA_DIRECTORY, $TEXT_DIRECTION, $gedrec, $FULL_SOURCES, $islink;
 
-	if ($tag=='OBJE' && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') <= WT_USER_ACCESS_LEVEL) {
+	if ($tag=='OBJE' && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') < WT_USER_ACCESS_LEVEL) {
 		return;
 	}
 
