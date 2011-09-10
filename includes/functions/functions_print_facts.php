@@ -1337,13 +1337,13 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 	$linenum = 0;
 	echo "<tr><td class=\"descriptionbox $styleadd width20\">";
-	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!="change_old")) {
+	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!="change_old") && $rowm['m_gedrec']!='') {
 		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\">";
 		echo "<img class=\"icon\" src=\"", $WT_IMAGES["media"], "\" alt=\"\" />". WT_Gedcom_Tag::getLabel('OBJE'). "</a>";
 		echo "<div class=\"editfacts\">";
-		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></div></a>";
-		echo "<span class=\"copylink\"><a class=\"copyicon\" onclick=\"return copy_record('".$mediaobject->getXref()."', 'media');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Copy')."\"><span class=\"link_text\">".WT_I18N::translate('Copy')."</span></a></div>";
-		echo "<span class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_record('$pid', 'OBJE', '".$mediaobject->getXref()."');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
+		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
+		echo "<div class=\"copylink\"><a class=\"copyicon\" onclick=\"return copy_record('".$mediaobject->getXref()."', 'media');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Copy')."\"><span class=\"link_text\">".WT_I18N::translate('Copy')."</span></a></div>";
+		echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_record('$pid', 'OBJE', '".$mediaobject->getXref()."');\" href=\"javascript:;\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 		echo "</div>";
 		echo "</td>";
 	}
