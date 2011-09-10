@@ -10,8 +10,6 @@
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
 //
-// Modifications Copyright (c) 2010 Greg Roach
-//
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License, or
@@ -673,10 +671,15 @@ class WT_Stats {
 		}
 	}
 
+	// The totalLiving/totalDeceased queries assume that every dead person will
+	// have a DEAT record.  It will not include individuals who were born more
+	// than MAX_ALIVE_AGE years ago, and who have no DEAT record.
+	// A good reason to run the "Add missing DEAT records" batch-update!
+	// However, SQL cannot provide the same logic used by Person::isDead().
 	function totalLiving() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_isdead=?")
-			->execute(array($this->_ged_id, 0))
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT LIKE '%\\n1 DEAT%'")
+			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
@@ -686,30 +689,13 @@ class WT_Stats {
 
 	function totalDeceased() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_isdead=?")
-			->execute(array($this->_ged_id, 1))
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom  LIKE '%\\n1 DEAT%'")
+			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
 	function totalDeceasedPercentage() {
 		return $this->_getPercentage($this->totalDeceased(), 'individual');
-	}
-
-	function totalMortalityUnknown() {
-		return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_isdead=?")
-			->execute(array($this->_ged_id, -1))
-			->fetchOne();
-	}
-
-	function totalMortalityUnknownPercentage() {
-		return $this->_getPercentage($this->totalMortalityUnknown(), 'individual');
-	}
-
-	function mortalityUnknown() {
-		$rows=self::_runSQL("SELECT i_id AS id FROM `##individuals` WHERE i_file={$this->_ged_id} AND i_isdead=-1");
-		if (!isset($rows[0])) {return '';}
-		return $rows;
 	}
 
 	function chartMortality($params=null) {
@@ -718,24 +704,11 @@ class WT_Stats {
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_living = strtolower($params[1]);} else {$color_living = 'ffffff';}
 		if (isset($params[2]) && $params[2] != '') {$color_dead = strtolower($params[2]);} else {$color_dead = 'cccccc';}
-		if (isset($params[3]) && $params[3] != '') {$color_unknown = strtolower($params[3]);} else {$color_unknown = '777777';}
 		$sizes = explode('x', $size);
 		$tot_l = $this->totalLivingPercentage();
 		$tot_d = $this->totalDeceasedPercentage();
-		$tot_u = $this->totalMortalityUnknownPercentage();
-		if ($tot_l == 0 && $tot_d == 0 && $tot_u == 0) {
+		if ($tot_l == 0 && $tot_d == 0) {
 			return '';
-		} else if ($tot_u > 0) {
-			$chd = self::_array_to_extended_encoding(array($tot_u, $tot_l, $tot_d));
-			$chl =
-				WT_I18N::translate_c('unknown people', 'Unknown').' - '.round($tot_u,1).'%|'.
-				WT_I18N::translate('Living').' - '.round($tot_l,1).'%|'.
-				WT_I18N::translate('Dead').' - '.round($tot_d,1).'%';
-			$chart_title =
-				WT_I18N::translate('Living').' ['.round($tot_l,1).'%], '.
-				WT_I18N::translate('Dead').' ['.round($tot_d,1).'%], '.
-				WT_I18N::translate_c('unknown people', 'Unknown').' ['.round($tot_u,1).'%]';
-			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
 			$chd = self::_array_to_extended_encoding(array($tot_l, $tot_d));
 			$chl =
@@ -1615,24 +1588,24 @@ class WT_Stats {
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
 		$rows=self::_runSQL(''
-			.' SELECT'
-				.' birth.d_gid AS id,'
-				.' MIN(birth.d_julianday1) AS age'
-			.' FROM'
-				." `##dates` AS birth,"
-				." `##individuals` AS indi"
-			.' WHERE'
-				.' indi.i_id=birth.d_gid AND'
-				.' indi.i_isdead=0 AND'
-				." birth.d_file={$this->_ged_id} AND"
-				.' birth.d_file=indi.i_file AND'
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
-				.' birth.d_julianday1<>0'
-				.$sex_search
+			." SELECT"
+			." birth.d_gid AS id,"
+			." MIN(birth.d_julianday1) AS age"
+			." FROM"
+			." `##dates` AS birth,"
+			." `##individuals` AS indi"
+			." WHERE"
+			." indi.i_id=birth.d_gid AND"
+			." indi.i_gedrec NOT LIKE '%\\n1 DEAT%' AND"
+			." birth.d_file={$this->_ged_id} AND"
+			." birth.d_file=indi.i_file AND"
+			." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
+			." birth.d_julianday1<>0"
+			.$sex_search
 			.' GROUP BY'
-				.' id'
+			.' id'
 			.' ORDER BY'
-				.' age ASC LIMIT '.$total
+			.' age ASC LIMIT '.$total
 		);
 		if (!isset($rows)) {return 0;}
 		$top10 = array();

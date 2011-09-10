@@ -38,7 +38,6 @@ class WT_Person extends WT_GedcomRecord {
 	var $highlightedimage = null;
 	var $file = '';
 	var $age = null;
-	var $isdead = -1;
 	var $sex=null;
 	var $generation; // used in some lists to keep track of this Person's generation in that list
 
@@ -60,7 +59,6 @@ class WT_Person extends WT_GedcomRecord {
 	function __construct($data) {
 		if (is_array($data)) {
 			// Construct from a row from the database
-			$this->isdead=$data['i_isdead'];
 			$this->sex   =$data['i_sex'];
 		} else {
 			// Construct from raw GEDCOM data
@@ -159,7 +157,7 @@ class WT_Person extends WT_GedcomRecord {
 
 	// Calculate whether this person is living or dead.
 	// If not known to be dead, then assume living.
-	private function _isDead() {
+	public function isDead() {
 		global $MAX_ALIVE_AGE;
 
 		// "1 DEAT Y" or "1 DEAT/2 DATE" or "1 DEAT/2 PLAC"
@@ -240,18 +238,6 @@ class WT_Person extends WT_GedcomRecord {
 			}
 		}
 		return false;
-	}
-
-	// Find out whether the person is dead - and store the result in the DB
-	// for future use.
-	public function isDead() {
-		if ($this->isdead==-1) {
-			$this->isdead=$this->_isDead();
-			WT_DB::prepare(
-				"UPDATE `##individuals` SET i_isdead=? WHERE i_id=? AND i_file=?"
-			)->execute(array($this->isdead, $this->xref, $this->ged_id));
-		}
-		return $this->isdead;
 	}
 
 	/**

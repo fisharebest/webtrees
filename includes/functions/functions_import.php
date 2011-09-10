@@ -599,7 +599,7 @@ function import_record($gedrec, $ged_id, $update) {
 	static $sql_insert_other=null;
 	if (!$sql_insert_indi) {
 		$sql_insert_indi=WT_DB::prepare(
-			"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom) VALUES (?,?,?,?,?,?)"
+			"INSERT INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom) VALUES (?,?,?,?,?)"
 		);
 		$sql_insert_fam=WT_DB::prepare(
 			"INSERT INTO `##families` (f_id, f_file, f_husb, f_wife, f_gedcom, f_numchil) VALUES (?,?,?,?,?,?)"
@@ -682,11 +682,7 @@ function import_record($gedrec, $ged_id, $update) {
 		} else {
 			$rin=$xref;
 		}
-		// Death events need a Y or a DATE or a PLAC.  Set the initial value to either
-		// dead (1) or unknown (-1).  We'll do a more detailed analysis when we have
-		// imported the rest of the gedcom.
-		$is_dead=preg_match('/\n1 (?:'.WT_EVENTS_DEAT.')(?: Y|(?:\n[2-9].+)*\n2 (?:PLAC |DATE ))/', $gedrec) ? 1 : -1;
-		$sql_insert_indi->execute(array($xref, $ged_id, $rin, $is_dead, $record->getSex(), $gedrec));
+		$sql_insert_indi->execute(array($xref, $ged_id, $rin, $record->getSex(), $gedrec));
 		break;
 	case 'FAM':
 		if (preg_match('/\n1 HUSB @('.WT_REGEX_XREF.')@/', $gedrec, $match)) {

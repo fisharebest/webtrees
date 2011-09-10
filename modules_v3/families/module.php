@@ -219,7 +219,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		//-- search for INDI names
 		$rows=WT_DB::prepare(
-			"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
+			"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".

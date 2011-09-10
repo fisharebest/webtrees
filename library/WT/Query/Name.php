@@ -384,7 +384,7 @@ class WT_Query_Name {
 	// To search for names with no surnames, use $salpha=","
 	public static function individuals($surn, $salpha, $galpha, $marnm, $fams, $ged_id) {
 		$sql=
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex, n_full ".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex, n_full ".
 			"FROM `##individuals` ".
 			"JOIN `##name` ON (n_id=i_id AND n_file=i_file) ".
 			($fams ? "JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").

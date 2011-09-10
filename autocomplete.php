@@ -1,31 +1,27 @@
 <?php
-/**
-* Returns data for autocompletion
-*
-* webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
-* Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
-*
-* This program is free software; you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation; either version 2 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program; if not, write to the Free Software
-* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-*
-* @package webtrees
-* @subpackage Edit
-* @version $Id$
-*/
+// Returns data for autocompletion
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'autocomplete.php');
 require './includes/session.php';
@@ -549,7 +545,7 @@ function get_autocomplete_INDI($FILTER, $ged_id=WT_GED_ID) {
 	// search for ids first and request the exact id from FILTER and ids with one additional digit
 	$rows=
 		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id=? OR i_id LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
@@ -562,7 +558,7 @@ function get_autocomplete_INDI($FILTER, $ged_id=WT_GED_ID) {
 	if (count($rows)==0) {
 		return
 			WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
 			" FROM `##individuals`, `##name`".
 			" WHERE n_sort LIKE ?".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
@@ -639,7 +635,7 @@ function get_autocomplete_SOUR_TITL($FILTER, $ged_id=WT_GED_ID) {
 function get_autocomplete_INDI_BURI_CEME($FILTER, $ged_id=WT_GED_ID) {
 	return
 		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
 			" FROM `##individuals`".
 			" WHERE i_gedcom LIKE ? AND i_file=?".
 			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
@@ -651,7 +647,7 @@ function get_autocomplete_INDI_BURI_CEME($FILTER, $ged_id=WT_GED_ID) {
 function get_autocomplete_INDI_SOUR_PAGE($FILTER, $OPTION, $ged_id=WT_GED_ID) {
 	return
 		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_isdead, i_sex".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
 			" FROM `##individuals`".
 			" WHERE i_gedcom LIKE ? AND i_file=?".
 			" LIMIT ".WT_AUTOCOMPLETE_LIMIT

@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -182,7 +182,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 
 		$sql = '';
 		if ($justSql) $sqlfields = "SELECT {$prefix}_id, {$prefix}_file";
-		else $sqlfields = "SELECT i_id, i_gedcom, i_isdead, i_file, i_sex";
+		else $sqlfields = "SELECT i_id, i_gedcom, i_file, i_sex";
 		$sqltables = " FROM `##".$table."`";
 		$sqlwhere = " WHERE ".$prefix."_file=".WT_GED_ID;
 		$keepfields = $this->fields;

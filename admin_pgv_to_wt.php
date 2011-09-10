@@ -955,8 +955,8 @@ WT_DB::prepare(
 
 echo '<p>pgv_individuals => wt_individuals ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
-	"REPLACE INTO `##individuals` (i_id, i_file, i_rin, i_isdead, i_sex, i_gedcom)".
-	" SELECT i_id, i_file, i_rin, i_isdead, i_sex, ".
+	"REPLACE INTO `##individuals` (i_id, i_file, i_rin, i_sex, i_gedcom)".
+	" SELECT i_id, i_file, i_rin, i_sex, ".
 	" REPLACE(REPLACE(i_gedcom, '\n2 _PGVU ', '\n2 _WT_USER '), '\n1 _PGV_OBJS ', '\n1 _WT_OBJE_SORT ')".
 	" FROM `{$DBNAME}`.`{$TBLPREFIX}individuals`"
 )->execute();
