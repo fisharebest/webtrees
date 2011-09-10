@@ -1,10 +1,6 @@
 <?php
-// Update the database schema from version 11 to 12
-// - delete the wt_name.n_list column; it has never been used
-// - a bug in webtrees 1.1.2 caused the wt_name.n_full column
-// to include slashes around the surname.  These are unnecessary,
-// and cause problems when we try to match the name from the
-// gedcom with the name from the table.
+// Update the database schema from version 13 to 14
+// - delete old config settings
 //
 // The script should assume that it can be interrupted at
 // any point, and be able to continue by re-running the script.
@@ -37,14 +33,11 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Remove slashes from INDI names
-self::exec("UPDATE `##name` SET n_full=REPLACE(n_full, '/', '') WHERE n_surn IS NOT NULL");
-
-// Remove the n_list column
+// Remove the i_isdead column
 try {
-	self::exec("ALTER TABLE `##name` DROP n_list");
-} catch (PDOException $x) {
-	// Already done?
+	self::exec("ALTER TABLE `##individuals` DROP i_isdead");
+} catch (PDOException $ex) {
+	// Already done this?
 }
 
 // Update the version to indicate success
