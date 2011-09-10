@@ -51,7 +51,7 @@ body {
 /* ================= */
 /*   Header Layout   */
 
-#header { height: 29px; background-image:url(images/clouds.gif); }
+#header { height: 29px; background-image:url(images/clouds.png); }
 .title {display: block; float: left; margin-top: 5px; margin-left: 12px; font-size: 24px; vertical-align:bottom; width: 70%; text-decoration: none; }
 .hsearch {display: block; float: right; padding-top: 5px; padding-right: 10px;}
 .title .gedcomtitle { text-decoration:none; color: #003399; }
@@ -448,29 +448,29 @@ width:100%;
 }
 
 .blockh1 {
-background-image:url(images/left1B.gif);
+background-image:url(images/left1B.png);
 background-repeat: no-repeat;
 width:26px;
 height:24px;
 }
 
-html[dir='rtl'] .blockh1 { background-image: url(images/right1B.gif); }
+html[dir='rtl'] .blockh1 { background-image: url(images/right1B.png); }
 
 .blockh2 { 
-background-image:url(images/left2.gif);
+background-image:url(images/left2.png);
 background-repeat:repeat-x;
 font-size: 13px;
 font-weight:bold;
 }
 
 .blockh3 {
-background-image:url(images/left3.gif);
+background-image:url(images/left3.png);
 background-repeat:no-repeat;
 width:8px;
 height:24px;
 }
 
-html[dir='rtl'] .blockh3 { background-image: url(images/right3.gif); }
+html[dir='rtl'] .blockh3 { background-image: url(images/right3.png); }
 
 .blockhc {
 padding-right:15px;
@@ -526,7 +526,7 @@ right:0px;
 }
 
 #descendancy_chart ul {
-background-image:url(images/vline.gif);
+background-image:url(images/vline.png);
 background-repeat:repeat-y;
 background-position:left top;
 list-style:none;
@@ -564,7 +564,7 @@ right:0px;
 }
 
 #ancestry_chart ul {
-background-image:url(images/vline.gif);
+background-image:url(images/vline.png);
 background-repeat:repeat-y;
 background-position:left top;
 list-style:none;

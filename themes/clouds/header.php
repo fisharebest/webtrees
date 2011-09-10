@@ -102,7 +102,7 @@ if ($SEARCH_SPIDER) {
 						'<input type="hidden" name="action" value="general" />',
 						'<input type="hidden" name="topsearch" value="yes" />',
 						'<input type="text" name="query" size="15" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
-						'<input type="image" src="', WT_THEME_DIR, 'images/go.gif', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
+						'<input type="image" src="', WT_THEME_DIR, 'images/go.png', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
 					'</form>',
 				'</div>',
 			'</div>',
