@@ -663,7 +663,7 @@ function old_paths() {
 		WT_ROOT.'js/jquery/jquery.tablesorter.js',
 		WT_ROOT.'js/jquery/jquery.tablesorter.pager.js',
 		WT_ROOT.'themes/clouds/images/close.png',
-		WT_ROOT.'themes/clouds/images/copy.png',
+		// WT_ROOT.'themes/clouds/images/copy.png', // Added back in 1.2.4
 		WT_ROOT.'themes/clouds/images/jquery',
 		WT_ROOT.'themes/clouds/images/left1G.gif',
 		WT_ROOT.'themes/clouds/images/left1R.gif',
@@ -767,7 +767,7 @@ function old_paths() {
 		WT_ROOT.'themes/colors/images/buttons/autocomplete.gif',
 		WT_ROOT.'themes/colors/images/buttons/calendar.gif',
 		WT_ROOT.'themes/colors/images/buttons/family.gif',
-		WT_ROOT.'themes/colors/images/buttons/find_facts.png',
+		//WT_ROOT.'themes/colors/images/buttons/find_facts.png', // Added back in 1.2.4
 		WT_ROOT.'themes/colors/images/buttons/head.gif',
 		WT_ROOT.'themes/colors/images/buttons/indi.gif',
 		WT_ROOT.'themes/colors/images/buttons/keyboard.gif',
