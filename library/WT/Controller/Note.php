@@ -35,22 +35,27 @@ class WT_Controller_Note extends WT_Controller_Base {
 	var $nid;
 	var $note = null;
 	var $diffnote = null;
-	var $accept_success = false;
-	var $reject_success = false;
 
 	function init() {
 		$this->nid = safe_GET_xref('nid');
 
-		$gedrec = find_other_record($this->nid, WT_GED_ID);
-
-		if (find_other_record($this->nid, WT_GED_ID) || find_updated_record($this->nid, WT_GED_ID)!==null) {
-			$this->note = new WT_Note($gedrec);
-			$this->note->ged_id=WT_GED_ID; // This record is from a file
-		} else if (!$gedrec) {
-			return false;
+		$gedrec=find_other_record($this->nid, WT_GED_ID);
+		if (WT_USER_CAN_EDIT) {
+			$newrec=find_updated_record($this->nid, WT_GED_ID);
+		} else {
+			$newrec=null;
 		}
 
-		$this->nid=$this->note->getXref(); // Correct upper/lower case mismatch
+		if ($gedrec===null) {
+			if ($newrec===null) {
+				// Nothing to see here.
+				return;
+			} else {
+				// Create a dummy record from the first line of the new record.
+				// We need it for diffMerge(), getXref(), etc.
+				list($gedrec)=explode("\n", $newrec);
+			}
+		}
 
 		//-- perform the desired action
 		switch($this->action) {
@@ -72,10 +77,9 @@ class WT_Controller_Note extends WT_Controller_Base {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->nid, WT_GED_ID);
-				$this->accept_success=true;
-				//-- check if we just deleted the record and redirect to index
-				$gedrec = find_other_record($this->nid, WT_GED_ID);
-				if (empty($gedrec)) {
+				$gedrec=find_other_record($this->nid, WT_GED_ID);
+				$newrec=null;
+				if ($gedrec===null) {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
@@ -86,30 +90,27 @@ class WT_Controller_Note extends WT_Controller_Base {
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->nid, WT_GED_ID);
-				$this->reject_success=true;
-				$gedrec = find_other_record($this->nid, WT_GED_ID);
-				//-- check if we just deleted the record and redirect to index
-				if (empty($gedrec)) {
+				$gedrec=find_other_record($this->nid, WT_GED_ID);
+				$newrec=null;
+				if ($gedrec===null) {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->note = new WT_Note($gedrec);
 			}
 			unset($_GET['action']);
 			break;
 		}
 
-		//-- if the user can edit and there are changes then get the new changes
-		if (WT_USER_CAN_EDIT) {
-			$newrec = find_updated_record($this->nid, WT_GED_ID);
-			if (!empty($newrec)) {
-				$this->diffnote = new WT_Note($newrec);
-				$this->diffnote->setChanged(true);
-			}
-		}
+		$this->note = new WT_Note($gedrec);
 
-		$this->note->diffMerge($this->diffnote);
-	}
+		// If there are pending changes, merge them in.
+		if ($newrec!==null) {
+			$this->diffnote=new WT_Note($newrec);
+			$this->diffnote->setChanged(true);
+			$this->note->diffMerge($this->diffnote);
+			}
+			$this->nid=$this->note->getXref(); // We may have requested X1234, but found x1234
+		}
 
 	/**
 	* get the title for this page

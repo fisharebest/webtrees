@@ -69,10 +69,6 @@ if ($controller->repository && $controller->repository->canDisplayDetails()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif ($controller->accept_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
-	} elseif ($controller->reject_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
 	}
 } else {
 	print_header(WT_I18N::translate('Repository'));
@@ -110,8 +106,7 @@ echo '<div id="repo-tabs">
 		if ($controller->repository->countLinkedSources()) {
 			echo '<li><a href="#source-repo"><span id="reposource">', WT_I18N::translate('Sources'), '</span></a></li>';
 		}
-		echo '<a id="repo-return" href="repolist.php">', WT_I18N::translate('Return to repositories'), '</a>
-	</ul>';
+		echo '</ul>';
 
 	// Shared Note details ---------------------
 	echo '<div id="repo-edit">';

@@ -69,10 +69,6 @@ if ($controller->note && $controller->note->canDisplayDetails()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif ($controller->accept_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
-	} elseif ($controller->reject_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
 	}
 } else {
 	print_header(WT_I18N::translate('Note'));
@@ -123,8 +119,7 @@ echo '<div id="note-tabs">
 		if ($controller->note->countLinkedSources()) {
 			echo '<li><a href="#source-note"><span id="notesource">', WT_I18N::translate('Sources'), '</span></a></li>';
 		}
-		echo '<a id="note-return" href="notelist.php">', WT_I18N::translate('Return to notes'), '</a>
-	</ul>';
+		echo '</ul>';
 
 	// Shared Note details ---------------------
 	$noterec=$controller->note->getGedcomRecord();

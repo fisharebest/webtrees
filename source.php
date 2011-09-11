@@ -69,10 +69,6 @@ if ($controller->source && $controller->source->canDisplayDetails()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif ($controller->accept_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
-	} elseif ($controller->reject_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
 	}
 } else {
 	print_header(WT_I18N::translate('Source'));
@@ -118,8 +114,7 @@ echo '<div id="source-tabs">
 		if ($controller->source->countLinkedNotes()) {
 			echo '<li><a href="#note-sources"><span id="notesource">', WT_I18N::translate('Notes'), '</span></a></li>';
 		}
-		echo '<a id="source-return" href="sourcelist.php">', WT_I18N::translate('Return to sources'), '</a>
-	</ul>';
+		echo '</ul>';
 	// Edit this source
 	echo '<div id="source-edit">';
 		echo '<table class="facts_table">';

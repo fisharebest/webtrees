@@ -69,10 +69,6 @@ if ($controller->family && $controller->family->canDisplayDetails()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif ($controller->accept_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
-	} elseif ($controller->reject_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
 	}
 } elseif ($controller->family && $SHOW_PRIVATE_RELATIONSHIPS) {
 	print_header($controller->getPageTitle());

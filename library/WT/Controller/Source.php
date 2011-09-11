@@ -35,22 +35,27 @@ class WT_Controller_Source extends WT_Controller_Base {
 	var $sid;
 	var $source = null;
 	var $diffsource = null;
-	var $accept_success = false;
-	var $reject_success = false;
 
 	function init() {
-		$this->sid = safe_GET_xref('sid');
+		$this->sid=safe_GET_xref('sid');
 
-		$gedrec = find_source_record($this->sid, WT_GED_ID);
-
-		if (find_source_record($this->sid, WT_GED_ID) || find_updated_record($this->sid, WT_GED_ID)!==null) {
-			$this->source = new WT_Source($gedrec);
-			$this->source->ged_id=WT_GED_ID; // This record is from a file
-		} else if (!$gedrec) {
-			return false;
+		$gedrec=find_source_record($this->sid, WT_GED_ID);
+		if (WT_USER_CAN_EDIT) {
+			$newrec=find_updated_record($this->sid, WT_GED_ID);
+		} else {
+			$newrec=null;
 		}
 
-		$this->rid=$this->source->getXref(); // Correct upper/lower case mismatch
+		if ($gedrec===null) {
+			if ($newrec===null) {
+				// Nothing to see here.
+				return;
+			} else {
+				// Create a dummy record from the first line of the new record.
+				// We need it for diffMerge(), getXref(), etc.
+				list($gedrec)=explode("\n", $newrec);
+			}
+		}
 
 		//-- perform the desired action
 		switch($this->action) {
@@ -72,10 +77,9 @@ class WT_Controller_Source extends WT_Controller_Base {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->sid, WT_GED_ID);
-				$this->accept_success=true;
-				//-- check if we just deleted the record and redirect to index
-				$gedrec = find_source_record($this->sid, WT_GED_ID);
-				if (empty($gedrec)) {
+				$gedrec=find_source_record($this->sid, WT_GED_ID);
+				$newrec=null;
+				if ($gedrec===null) {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
@@ -86,29 +90,26 @@ class WT_Controller_Source extends WT_Controller_Base {
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->sid, WT_GED_ID);
-				$this->reject_success=true;
-				$gedrec = find_source_record($this->sid, WT_GED_ID);
-				//-- check if we just deleted the record and redirect to index
-				if (empty($gedrec)) {
+				$gedrec=find_source_record($this->sid, WT_GED_ID);
+				$newrec=null;
+				if ($gedrec===null) {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
 				}
-				$this->source = new WT_Source($gedrec);
 			}
 			unset($_GET['action']);
 			break;
 		}
 
-		//-- if the user can edit and there are changes then get the new changes
-		if (WT_USER_CAN_EDIT) {
-			$newrec = find_updated_record($this->sid, WT_GED_ID);
-			if (!empty($newrec)) {
-				$this->diffsource = new WT_Source($newrec);
-				$this->diffsource->setChanged(true);
-			}
-		}
+		$this->source = new WT_Source($gedrec);
 
-		$this->source->diffMerge($this->diffsource);
+		// If there are pending changes, merge them in.
+		if ($newrec!==null) {
+			$this->diffsource=new WT_Source($newrec);
+			$this->diffsource->setChanged(true);
+			$this->source->diffMerge($this->diffsource);
+		}
+		$this->sid=$this->source->getXref(); // We may have requested X1234, but found x1234
 	}
 
 	/**

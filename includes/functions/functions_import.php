@@ -1173,6 +1173,7 @@ function accept_all_changes($xref, $ged_id) {
 			" WHERE status='pending' AND xref=? AND gedcom_id=?"
 		)->execute(array($xref, $ged_id));
 		AddToLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", 'edit');
+		//Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('The changes have been accepted.'));
 	}
 }
 
@@ -1183,6 +1184,7 @@ function reject_all_changes($xref, $ged_id) {
 		" SET status='rejected'".
 		" WHERE status='pending' AND xref=? AND gedcom_id=?"
 	)->execute(array($xref, $ged_id));
+	//Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('The changes have been rejected.'));
 }
 
 // Find a string in a file, preceded by a any form of line-ending.

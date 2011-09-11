@@ -34,8 +34,6 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 class WT_Controller_Media extends WT_Controller_Base {
 	var $mid;
 	var $mediaobject;
-	var $accept_success = false;
-	var $reject_success = false;
 
 	function init() {
 		global $MEDIA_DIRECTORY;
@@ -119,7 +117,6 @@ class WT_Controller_Media extends WT_Controller_Base {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->pid, WT_GED_ID);
-				$this->accept_success=true;
 				//-- check if we just deleted the record and redirect to index
 				$mediarec = find_media_record($this->pid, WT_GED_ID);
 				if (empty($mediarec)) {
@@ -133,7 +130,6 @@ class WT_Controller_Media extends WT_Controller_Base {
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->pid, WT_GED_ID);
-				$this->reject_success=true;
 				$mediarec = find_media_record($this->pid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($mediarec)) {

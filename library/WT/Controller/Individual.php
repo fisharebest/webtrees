@@ -35,8 +35,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	var $pid = '';
 	var $indi = null;
 	var $diffindi = null;
-	var $accept_success = false;
-	var $reject_success = false;
 	var $default_tab = '';
 
 	var $name_count = 0;
@@ -102,7 +100,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->pid, WT_GED_ID);
-				$this->accept_success=true;
 				//-- check if we just deleted the record and redirect to index
 				$gedrec = find_person_record($this->pid, WT_GED_ID);
 				if (empty($gedrec)) {
@@ -116,7 +113,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->pid, WT_GED_ID);
-				$this->reject_success=true;
 				$gedrec = find_person_record($this->pid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {

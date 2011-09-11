@@ -36,8 +36,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 	var $famid = '';
 	var $family = null;
 	var $difffam = null;
-	var $accept_success = false;
-	var $reject_success = false;
 	var $user = null;
 	var $display = false;
 	var $famrec = '';
@@ -86,7 +84,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
 				accept_all_changes($this->famid, WT_GED_ID);
-				$this->accept_success=true;
 				//-- check if we just deleted the record and redirect to index
 				$gedrec = find_family_record($this->famid, WT_GED_ID);
 				if (empty($gedrec)) {
@@ -100,7 +97,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
 				reject_all_changes($this->famid, WT_GED_ID);
-				$this->reject_success=true;
 				$gedrec = find_family_record($this->famid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($gedrec)) {

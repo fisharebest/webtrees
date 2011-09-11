@@ -70,10 +70,6 @@ if ($controller->mediaobject && $controller->mediaobject->canDisplayDetails()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif ($controller->accept_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been accepted.'), '</p>';
-	} elseif ($controller->reject_success) {
-		echo '<p class="ui-state-highlight">', WT_I18N::translate('The changes have been rejected.'), '</p>';
 	}
 } else {
 	print_header(WT_I18N::translate('Media object'));
@@ -130,9 +126,7 @@ echo '<div id="media-tabs">
 		if ($controller->mediaobject->countLinkedNotes()) {
 			echo '<li><a href="#notes-media"><span id="notemedia">', WT_I18N::translate('Notes'), '</span></a></li>';
 		}
-		echo
-//			'<a id="media-return" href="medialist.php">', WT_I18N::translate('Return to medias'), '</a>',
-	'</ul>';
+echo '</ul>';
 
 	// Media Object details ---------------------
 	echo '<div id="media-edit">';
