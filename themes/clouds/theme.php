@@ -34,7 +34,6 @@ $modules          = WT_THEME_DIR . 'modules.css';
 $stylesheet       = WT_THEME_DIR . 'style.css';
 $print_stylesheet = WT_THEME_DIR . 'print.css';
 $headerfile       = WT_THEME_DIR . 'header.php';
-$rtl_stylesheet   = WT_THEME_DIR . 'style_rtl.css';
 $footerfile       = WT_THEME_DIR . 'footer.php';
 $WT_USE_HELPIMG   = true;
 $WT_MENU_LOCATION = 'top';

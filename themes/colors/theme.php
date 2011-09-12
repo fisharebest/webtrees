@@ -108,7 +108,6 @@ $footerfile       = WT_THEME_DIR . 'footer.php';
 $headerfile       = WT_THEME_DIR . 'header.php';
 $modules          = WT_THEME_DIR . 'modules.css';
 $print_stylesheet = WT_THEME_DIR . 'print.css';
-$rtl_stylesheet   = WT_THEME_DIR . 'style_rtl.css';
 $stylesheet       = WT_THEME_DIR . 'css/' . $subColor . '.css';
 $WT_MENU_LOCATION = 'top';
 $WT_USE_HELPIMG   = true;

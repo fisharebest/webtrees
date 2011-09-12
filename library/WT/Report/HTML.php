@@ -179,7 +179,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	}
 
 	function run() {
-		global $rtl_stylesheet, $stylesheet, $TEXT_DIRECTION;
+		global $stylesheet, $TEXT_DIRECTION;
 
 		echo "
 <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
@@ -191,13 +191,6 @@ class WT_Report_HTML extends WT_Report_Base {
 <meta name=\"description\" content=\"", $this->rsubject, "\" />
 <title>", $this->title, "</title>
 <link rel=\"stylesheet\" href=\"", $stylesheet, "\" type=\"text/css\" media=\"all\" />";
-
-		// Check first if RTL
-		if ($this->rtl) {
-			if (!empty($rtl_stylesheet)) {
-				echo "\n<link rel=\"stylesheet\" href=\"", $rtl_stylesheet, "\" type=\"text/css\" media=\"all\" />";
-			}
-		}
 
 		// Setting up the styles
 		echo "\n<style type=\"text/css\">\n";

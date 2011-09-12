@@ -322,7 +322,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 function print_header($title, $view='full') {
 	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $cart;
 	global $GEDCOM, $GEDCOM_TITLE, $action, $query;
-	global $stylesheet, $print_stylesheet, $rtl_stylesheet, $headerfile, $print_headerfile;
+	global $stylesheet, $print_stylesheet, $headerfile, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
 	global $controller;
 
