@@ -894,14 +894,6 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	<script type="text/javascript">
 	<!--
 	function trim(str) {
-		// Commas are used in the GIVN and SURN field to separate lists of surnames.
-		// For example, to differentiate the two Spanish surnames from an English
-		// double-barred name.
-		// Commas *may* be used in the NAME field, and will form part of the displayed
-		// name.  This is not encouraged, as it may confuse some logic that assumes
-		// "list" format names are always "surn, givn".
-		str=str.replace(/,/g," ");
-
 		str=str.replace(/\s\s+/g, " ");
 		return str.replace(/(^\s+)|(\s+$)/g, '');
 	}
@@ -928,15 +920,19 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			surn=surn.replace(/dzki$/, 'dzka');
 			surn=surn.replace(/żki$/, 'żka');
 		<?php } ?>
+		// Commas are used in the GIVN and SURN field to separate lists of surnames.
+		// For example, to differentiate the two Spanish surnames from an English
+		// double-barred name.
+		// Commas *may* be used in other fields, and will form part of the NAME.
 		if (WT_LOCALE=='vi' || WT_LOCALE=='hu') {
 			// Default format: /SURN/ GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ "+givn+" "+nsfx);
+			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */, " ")+"/ "+givn.replace(/ *, */, " ")+" "+nsfx);
 		} else if (WT_LOCALE=='zh') {
 			// Default format: /SURN/GIVN
-			return trim(npfx+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/"+givn+" "+nsfx);
+			return trim(npfx+" /"+trim(spfx+" "+surn).replace(/ *, */, " ")+"/"+givn.replace(/ *, */, " ")+" "+nsfx);
 		} else {
 			// Default format: GIVN /SURN/
-			return trim(npfx+" "+givn+" /"+trim(spfx+" "+surn.replace(/ *, */, " "))+"/ "+nsfx);
+			return trim(npfx+" "+givn.replace(/ *, */, " ")+" /"+trim(spfx+" "+surn).replace(/ *, */, " ")+"/ "+nsfx);
 		}
 	}
 
