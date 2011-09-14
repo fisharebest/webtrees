@@ -182,7 +182,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 
 		$sql = '';
 		if ($justSql) $sqlfields = "SELECT {$prefix}_id, {$prefix}_file";
-		else $sqlfields = "SELECT i_id, i_gedcom, i_file, i_sex";
+		else $sqlfields = "SELECT i_id, i_gedcom, i_file";
 		$sqltables = " FROM `##".$table."`";
 		$sqlwhere = " WHERE ".$prefix."_file=".WT_GED_ID;
 		$keepfields = $this->fields;

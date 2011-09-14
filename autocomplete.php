@@ -545,7 +545,7 @@ function get_autocomplete_INDI($FILTER, $ged_id=WT_GED_ID) {
 	// search for ids first and request the exact id from FILTER and ids with one additional digit
 	$rows=
 		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id=? OR i_id LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
@@ -558,7 +558,7 @@ function get_autocomplete_INDI($FILTER, $ged_id=WT_GED_ID) {
 	if (count($rows)==0) {
 		return
 			WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`, `##name`".
 			" WHERE n_sort LIKE ?".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
@@ -635,7 +635,7 @@ function get_autocomplete_SOUR_TITL($FILTER, $ged_id=WT_GED_ID) {
 function get_autocomplete_INDI_BURI_CEME($FILTER, $ged_id=WT_GED_ID) {
 	return
 		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`".
 			" WHERE i_gedcom LIKE ? AND i_file=?".
 			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
@@ -647,7 +647,7 @@ function get_autocomplete_INDI_BURI_CEME($FILTER, $ged_id=WT_GED_ID) {
 function get_autocomplete_INDI_SOUR_PAGE($FILTER, $OPTION, $ged_id=WT_GED_ID) {
 	return
 		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`".
 			" WHERE i_gedcom LIKE ? AND i_file=?".
 			" LIMIT ".WT_AUTOCOMPLETE_LIMIT

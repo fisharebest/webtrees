@@ -55,18 +55,6 @@ class WT_Person extends WT_GedcomRecord {
 	private $_getAllDeathPlaces=null;
 	private $_getEstimatedDeathDate=null;
 
-	// Create a Person object from either raw GEDCOM data or a database row
-	function __construct($data) {
-		if (is_array($data)) {
-			// Construct from a row from the database
-			$this->sex   =$data['i_sex'];
-		} else {
-			// Construct from raw GEDCOM data
-		}
-
-		parent::__construct($data);
-	}
-
 	// Can the name of this record be shown?
 	public function canDisplayName($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_LIVING_NAMES;

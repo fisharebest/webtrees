@@ -186,7 +186,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		if (strlen($query)<2) return '';
 		$rows=WT_DB::prepare(
-			"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, i_sex".
+			"SELECT ? AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
