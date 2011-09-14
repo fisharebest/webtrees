@@ -34,8 +34,6 @@ class WT_Family extends WT_GedcomRecord {
 	private $_children = null;
 	private $marriage = null;
 	private $numChildren   = false;
-	private $_isDivorced   = null;
-	private $_isNotMarried = null;
 
 	// Create a Family object from either raw GEDCOM data or a database row
 	function __construct($data) {
@@ -48,10 +46,6 @@ class WT_Family extends WT_GedcomRecord {
 				$this->wife=WT_Person::getInstance($data['f_wife']);
 			}
 			$this->numChildren=$data['f_numchil'];
-			// Check for divorce, etc. *before* we privatize the data so
-			// we can correctly label spouses/ex-spouses/partners
-			$this->_isDivorced=(bool)preg_match('/\n1 ('.WT_EVENTS_DIV.')( Y|\n)/', $data['gedrec']);
-			$this->_isNotMarried=(bool)preg_match('/\n1 _NMR( Y|\n)/', $data['gedrec']);
 		} else {
 			// Construct from raw GEDCOM data
 			if (preg_match('/^1 HUSB @(.+)@/m', $data, $match)) {
@@ -63,10 +57,6 @@ class WT_Family extends WT_GedcomRecord {
 			if (preg_match('/^1 NCHI (\d+)/m', $data, $match)) {
 				$this->numChildren=$match[1];
 			}
-			// Check for divorce, etc. *before* we privatize the data so
-			// we can correctly label spouses/ex-spouses/partners
-			$this->_isDivorced=(bool)preg_match('/\n1 ('.WT_EVENTS_DIV.')( Y|\n)/', $data);
-			$this->_isNotMarried=(bool)preg_match('/\n1 _NMR( Y|\n)/', $data);
 		}
 
 		// Make sure husb/wife are the right way round.
@@ -273,14 +263,13 @@ class WT_Family extends WT_GedcomRecord {
 	}
 
 	// Return whether or not this family ended in a divorce or was never married.
-	// Note that this is calculated prior to privatizing the data, so we can
-	// always distinguish spouses from ex-spouses.  This apparant leaking of
-	// private data was discussed and agreed on the pgv forum.
+	// Note that this is calculated using unprivatized data, so we can
+	// always distinguish spouses from ex-spouses.
 	function isDivorced() {
-		return $this->_isDivorced;
+		return (bool)preg_match('/\n1 ('.WT_EVENTS_DIV.')( Y|\n)/', $this->_gedrec);
 	}
 	function isNotMarried() {
-		return $this->_isNotMarried;
+		return (bool)preg_match('/\n1 _NMR( Y|\n)/', $this->_gedrec);
 	}
 
 	/**
