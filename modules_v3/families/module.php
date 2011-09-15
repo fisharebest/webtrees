@@ -245,7 +245,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 
 		$vars[]=WT_GED_ID;
-		$rows=WT_DB::prepare("SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife, f_numchil FROM `##families` WHERE {$where} AND f_file=? LIMIT ".WT_AUTOCOMPLETE_LIMIT)
+		$rows=WT_DB::prepare("SELECT ? AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec, f_husb, f_wife FROM `##families` WHERE {$where} AND f_file=? LIMIT ".WT_AUTOCOMPLETE_LIMIT)
 		->execute($vars)
 		->fetchAll(PDO::FETCH_ASSOC);
 

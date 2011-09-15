@@ -33,7 +33,6 @@ class WT_Family extends WT_GedcomRecord {
 	private $wife = null;
 	private $_children = null;
 	private $marriage = null;
-	private $numChildren   = false;
 
 	// Create a Family object from either raw GEDCOM data or a database row
 	function __construct($data) {
@@ -45,7 +44,6 @@ class WT_Family extends WT_GedcomRecord {
 			if ($data['f_wife']) {
 				$this->wife=WT_Person::getInstance($data['f_wife']);
 			}
-			$this->numChildren=$data['f_numchil'];
 		} else {
 			// Construct from raw GEDCOM data
 			if (preg_match('/^1 HUSB @(.+)@/m', $data, $match)) {
@@ -53,9 +51,6 @@ class WT_Family extends WT_GedcomRecord {
 			}
 			if (preg_match('/^1 WIFE @(.+)@/m', $data, $match)) {
 				$this->wife=WT_Person::getInstance($match[1]);
-			}
-			if (preg_match('/^1 NCHI (\d+)/m', $data, $match)) {
-				$this->numChildren=$match[1];
 			}
 		}
 
@@ -187,7 +182,7 @@ class WT_Family extends WT_GedcomRecord {
 		$nchi1=(int)get_gedcom_value('NCHI', 1, $this->getGedcomRecord());
 		$nchi2=(int)get_gedcom_value('NCHI', 2, $this->getGedcomRecord());
 		$nchi3=count($this->getChildren());
-		return $this->numChildren=max($nchi1, $nchi2, $nchi3);
+		return max($nchi1, $nchi2, $nchi3);
 	}
 
 	/**
