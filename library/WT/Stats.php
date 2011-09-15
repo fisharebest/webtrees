@@ -1596,7 +1596,7 @@ class WT_Stats {
 			." `##individuals` AS indi"
 			." WHERE"
 			." indi.i_id=birth.d_gid AND"
-			." indi.i_gedrec NOT LIKE '%\\n1 DEAT%' AND"
+			." indi.i_gedcom NOT LIKE '%\\n1 DEAT%' AND"
 			." birth.d_file={$this->_ged_id} AND"
 			." birth.d_file=indi.i_file AND"
 			." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
