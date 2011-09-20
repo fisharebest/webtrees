@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
@@ -31,7 +31,7 @@ $url         =safe_POST('url',      WT_REGEX_URL);
 $type        =safe_POST('type',     array('full', 'simple'));
 $action      =safe_POST('action');
 $username    =safe_POST('username', WT_REGEX_USERNAME);
-$password    =safe_POST('password', WT_REGEX_PASSWORD);
+$password    =safe_POST('password', WT_REGEX_UNSAFE); // Can use any password that was previously stored
 $usertime    =safe_POST('usertime');
 $pid         =safe_POST('pid',      WT_REGEX_XREF);
 $ged         =safe_POST('ged',      preg_quote_array(get_all_gedcoms()), $GEDCOM);

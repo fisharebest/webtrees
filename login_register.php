@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 define('WT_SCRIPT_NAME', 'login_register.php');
 require './includes/session.php';
@@ -40,7 +40,7 @@ $user_password02=safe_POST('user_password02', WT_REGEX_PASSWORD);
 $user_language  =safe_POST('user_language', array_keys(WT_I18N::installed_languages()), WT_LOCALE);
 $user_gedcomid  =safe_POST('user_gedcomid');
 $user_comments  =safe_POST('user_comments');
-$user_password  =safe_POST('user_password');
+$user_password  =safe_POST('user_password',   WT_REGEX_UNSAFE); // Can use any password that was previously stored
 $user_hashcode  =safe_POST('user_hashcode');
 if (empty($action)) $action = safe_GET('action');
 if (empty($user_name)) $user_name = safe_GET('user_name', WT_REGEX_USERNAME);
