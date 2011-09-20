@@ -1677,7 +1677,8 @@ function GedcomSHandler($attrs) {
 	$tags = explode(":", $tag);
 	$newgedrec = "";
 	if (count($tags)<2) {
-		$newgedrec = find_gedcom_record($attrs['id'], WT_GED_ID);
+		$tmp=WT_GedcomRecord::getInstance($attrs['id']);
+		$newgedrec=$tmp ? $tmp->getGedcomRecord() : '';
 	}
 	if (empty($newgedrec)) {
 		$tgedrec = $gedrec;
@@ -1687,13 +1688,15 @@ function GedcomSHandler($attrs) {
 				if (isset($vars[$match[1]]['gedcom'])) {
 					$newgedrec = $vars[$match[1]]['gedcom'];
 				} else {
-					$newgedrec = find_gedcom_record($match[1], WT_GED_ID);
+					$tmp=WT_GedcomRecord::getInstance($match[1]);
+					$newgedrec=$tmp ? $tmp->getGedcomRecord() : '';
 				}
 			} else {
 				if (preg_match("/@(.+)/", $tag, $match)) {
 					$gmatch = array();
 					if (preg_match("/\d $match[1] @([^@]+)@/", $tgedrec, $gmatch)) {
-						$newgedrec = find_gedcom_record($gmatch[1], WT_GED_ID);
+						$tmp=WT_GedcomRecord::getInstance($gmatch[1]);
+						$newgedrec=$tmp ? $tmp->getGedcomRecord() : '';
 						$tgedrec = $newgedrec;
 					} else {
 						$newgedrec = "";
@@ -1709,9 +1712,8 @@ function GedcomSHandler($attrs) {
 		}
 	}
 	if (!empty($newgedrec)) {
-		$gedObj = new WT_GedcomRecord($newgedrec);
 		array_push($gedrecStack, array($gedrec, $fact, $desc));
-		$gedrec = $gedObj->getGedcomRecord();
+		$gedrec = $newgedrec;
 		if (preg_match("/(\d+) (_?[A-Z0-9]+) (.*)/", $gedrec, $match)) {
 			$ged_level = $match[1];
 			$fact = $match[2];
