@@ -678,7 +678,7 @@ class WT_Stats {
 	// However, SQL cannot provide the same logic used by Person::isDead().
 	function totalLiving() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT LIKE '%\\n1 DEAT%'")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (".WT_EVENTS_DEAT.")'")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
@@ -689,7 +689,7 @@ class WT_Stats {
 
 	function totalDeceased() {
 		return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom  LIKE '%\\n1 DEAT%'")
+			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom REGEXP '\\n1 (".WT_EVENTS_DEAT.")'")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
@@ -1507,37 +1507,36 @@ class WT_Stats {
 		global $TEXT_DIRECTION;
 
 		if ($sex == 'F') {
-			$sex_search = " AND i_sex='F'";
+			$sex_search = " AND i_sex='F' ";
 		} elseif ($sex == 'M') {
-			$sex_search = " AND i_sex='M'";
+			$sex_search = " AND i_sex='M' ";
 		} else {
 			$sex_search = '';
 		}
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
-		$rows=self::_runSQL(''
-			.' SELECT '
-				.' MAX(death.d_julianday2-birth.d_julianday1) AS age,'
-				.' death.d_gid AS deathdate'
-			.' FROM'
-				." `##dates` AS death,"
-				." `##dates` AS birth,"
-				." `##individuals` AS indi"
-			.' WHERE'
-				.' indi.i_id=birth.d_gid AND'
-				.' birth.d_gid=death.d_gid AND'
-				." death.d_file={$this->_ged_id} AND"
-				.' birth.d_file=death.d_file AND'
-				.' birth.d_file=indi.i_file AND'
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
-				." death.d_fact IN ('DEAT', 'BURI', 'CREM') AND"
-				.' birth.d_julianday1<>0 AND'
-				.' death.d_julianday1>birth.d_julianday2'
-				.$sex_search
-			.' GROUP BY'
-				.' deathdate'
-			.' ORDER BY'
-				.' age DESC LIMIT '.$total
+		$rows=self::_runSQL(
+			'SELECT '.
+			' MAX(death.d_julianday2-birth.d_julianday1) AS age, '.
+			' death.d_gid AS deathdate '.
+			'FROM '.
+			" `##dates` AS death, ".
+			" `##dates` AS birth, ".
+			" `##individuals` AS indi ".
+			'WHERE '.
+			' indi.i_id=birth.d_gid AND '.
+			' birth.d_gid=death.d_gid AND '.
+			" death.d_file={$this->_ged_id} AND ".
+			' birth.d_file=death.d_file AND '.
+			' birth.d_file=indi.i_file AND '.
+			" birth.d_fact='BIRT' AND ". // Only use BIRT/DEAT.  Using CHR/BURI can give spurious results.
+			" death.d_fact='DEAT' AND ".
+			' birth.d_julianday1<>0 AND '.
+			' death.d_julianday1>birth.d_julianday2 '.
+			$sex_search.
+			'GROUP BY deathdate '.
+			'ORDER BY age DESC '.
+			'LIMIT '.$total
 		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
@@ -1592,14 +1591,13 @@ class WT_Stats {
 			." birth.d_gid AS id,"
 			." MIN(birth.d_julianday1) AS age"
 			." FROM"
-			." `##dates` AS birth,"
+			." `##dates` AS birth," // assume all events occur *after* birth
 			." `##individuals` AS indi"
 			." WHERE"
 			." indi.i_id=birth.d_gid AND"
-			." indi.i_gedcom NOT LIKE '%\\n1 DEAT%' AND"
+			." indi.i_gedcom NOT REGEXP '\n1 (".WT_EVENTS_DEAT.")' AND"
 			." birth.d_file={$this->_ged_id} AND"
 			." birth.d_file=indi.i_file AND"
-			." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
 			." birth.d_julianday1<>0"
 			.$sex_search
 			.' GROUP BY'
@@ -1642,30 +1640,30 @@ class WT_Stats {
 
 	function _averageLifespanQuery($sex='BOTH', $show_years=false) {
 		if ($sex == 'F') {
-			$sex_search = " AND i_sex='F'";
+			$sex_search = " AND i_sex='F' ";
 		} elseif ($sex == 'M') {
-			$sex_search = " AND i_sex='M'";
+			$sex_search = " AND i_sex='M' ";
 		} else {
 			$sex_search = '';
 		}
-		$rows=self::_runSQL(''
-			.' SELECT'
-				.' AVG(death.d_julianday2-birth.d_julianday1) AS age'
-			.' FROM'
-				." `##dates` AS death,"
-				." `##dates` AS birth,"
-				." `##individuals` AS indi"
-			.' WHERE'
-				.' indi.i_id=birth.d_gid AND'
-				.' birth.d_gid=death.d_gid AND'
-				." death.d_file={$this->_ged_id} AND"
-				.' birth.d_file=death.d_file AND'
-				.' birth.d_file=indi.i_file AND'
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
-				." death.d_fact IN ('DEAT', 'BURI', 'CREM') AND"
-				.' birth.d_julianday1<>0 AND'
-				.' death.d_julianday1>birth.d_julianday2'
-				.$sex_search
+		$rows=self::_runSQL(
+			"SELECT ".
+			" AVG(death.d_julianday2-birth.d_julianday1) AS age ".
+			"FROM ".
+			" `##dates` AS death, ".
+			" `##dates` AS birth, ".
+			" `##individuals` AS indi ".
+			"WHERE ".
+			" indi.i_id=birth.d_gid AND ".
+			" birth.d_gid=death.d_gid AND ".
+			" death.d_file=".$this->_ged_id. " AND ".
+			" birth.d_file=death.d_file AND ".
+			" birth.d_file=indi.i_file AND ".
+			" birth.d_fact='BIRT' AND ". // Use only BIRT and DEAT.  Using CHR/BURI can give spurious results.
+			" death.d_fact='DEAT' AND ".
+			" birth.d_julianday1<>0 AND ".
+			" death.d_julianday1>birth.d_julianday2 ".
+			$sex_search
 		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
