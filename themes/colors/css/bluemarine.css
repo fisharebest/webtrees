@@ -94,7 +94,9 @@
 
 .makeMenu li a { color: #FFFFFF; }
 .ui-state-active a:link, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a { color: #ffffff;}
-
+/*.ui-widget-content span a, ui-widget-content span a:hover {color: #ffffff;} */
+#lightbox_content span a, #lightbox_content span a:hover {color: #ffffff; background: #6598cb;}
+#lightbox_content span a:hover {color: #FF0000; background: #6598cb;}  
 /*  Dark Text Color  */
 
 input,button,textarea 	{ border-color:#fff #000000 #494949 #fff; }
