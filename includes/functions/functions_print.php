@@ -966,6 +966,16 @@ function write_align_with_textdir_check($t_dir, $return=false)
 	echo $out;
 }
 
+function highlight_search_hits($string, $search_terms) {
+	$regex=array();
+	foreach ($search_terms as $search_term) {
+		$regex[]=preg_quote($search_term, '/');
+	}
+	// Match these strings, provided they do not occur inside HTML tags
+	$regex='('.implode('|', $regex).')(?![^<]*>)';
+	return preg_replace('/'.$regex.'/i', '<span class="search_hit">$1</span>', $string);
+}
+
 /**
 * Prepare text with parenthesis for printing
 * Convert & to &amp; for xhtml compliance
@@ -976,122 +986,19 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 	global $action, $firstname, $lastname, $place, $year;
 	global $TEXT_DIRECTION_array, $TEXT_DIRECTION, $controller;
 	// Check whether Search page highlighting should be done or not
-	if (isset($controller) && $controller instanceof WT_Controller_Search && $controller->query) {
-		$query=$controller->query;
-		$HighlightOK=true;
-	} else {
-		$query='';
-		$HighlightOK=false;
+	if (isset($controller) && $controller instanceof WT_Controller_Search) {
+		// TODO: when a search contains multiple words, we search independently.
+		// e.g. searching for "FOO BAR" will find records containing both FOO and BAR.
+		// However, we only highlight the original search string, not the search terms.
+		// The controller needs to provide its "query_terms" array.
+		$text=highlight_search_hits($text, array($controller->query));
 	}
 	//-- convert all & to &amp;
 	$text = str_replace("&", "&amp;", $text);
 	//$text = preg_replace(array("/&/", "/</", "/>/"), array("&amp;", "&lt;", "&gt;"), $text);
 	//-- make sure we didn't double convert existing HTML entities like so:  &foo; to &amp;foo;
 	$text = preg_replace("/&amp;(\w+);/", "&$1;", $text);
-		if ($trim) $text = trim($text);
-		//-- if we are on the search page body, then highlight any search hits
-		//  In this routine, we will assume that the input string doesn't contain any
-		//  \x01 or \x02 characters.  We'll represent the <span class="search_hit"> by \x01
-		//  and </span> by \x02.  We will translate these \x01 and \x02 into their true
-		//  meaning at the end.
-		//
-		//  This special handling is required in case the user has submitted a multiple
-		//  argument search, in which the second or later arguments can be found in the
-		//  <span> or </span> strings.
-		if ($HighlightOK) {
-			$queries = explode(" ", $query);
-			$newtext = $text;
-			$hasallhits = true;
-			foreach ($queries as $index=>$query1) {
-				$query1esc=preg_quote($query1, '/');
-				if (@preg_match("/(".$query1esc.")/i", $text)) { // Use @ as user-supplied query might be invalid.
-					$newtext = preg_replace("/(".$query1esc.")/i", "\x01$1\x02", $newtext);
-				}
-				else if (@preg_match("/(".utf8_strtoupper($query1esc).")/", utf8_strtoupper($text))) {
-					$nlen = strlen($query1);
-					$npos = strpos(utf8_strtoupper($text), utf8_strtoupper($query1));
-					$newtext = substr_replace($newtext, "\x02", $npos+$nlen, 0);
-					$newtext = substr_replace($newtext, "\x01", $npos, 0);
-				}
-				else $hasallhits = false;
-			}
-			if ($hasallhits) $text = $newtext;
-			if (isset($action) && ($action === "soundex")) {
-				if (isset($firstname)) {
-					$queries = explode(" ", $firstname);
-					$newtext = $text;
-					$hasallhits = true;
-					foreach ($queries as $index=>$query1) {
-						$query1esc=preg_quote($query1, '/');
-						if (preg_match("/(".$query1esc.")/i", $text)) {
-							$newtext = preg_replace("/(".$query1esc.")/i", "\x01$1\x02", $newtext);
-						}
-						else if (preg_match("/(".utf8_strtoupper($query1esc).")/", utf8_strtoupper($text))) {
-							$nlen = strlen($query1);
-							$npos = strpos(utf8_strtoupper($text), utf8_strtoupper($query1));
-							$newtext = substr_replace($newtext, "\x02", $npos+$nlen, 0);
-							$newtext = substr_replace($newtext, "\x01", $npos, 0);
-						}
-						else $hasallhits = false;
-					}
-					if ($hasallhits) $text = $newtext;
-				}
-				if (isset($lastname)) {
-					$queries = explode(" ", $lastname);
-					$newtext = $text;
-					$hasallhits = true;
-					foreach ($queries as $index=>$query1) {
-						$query1esc=preg_quote($query1, '/');
-						if (preg_match("/(".$query1esc.")/i", $text)) {
-							$newtext = preg_replace("/(".$query1esc.")/i", "\x01$1\x02", $newtext);
-						}
-						else if (preg_match("/(".utf8_strtoupper($query1esc).")/", utf8_strtoupper($text))) {
-							$nlen = strlen($query1);
-							$npos = strpos(utf8_strtoupper($text), utf8_strtoupper($query1));
-							$newtext = substr_replace($newtext, "\x02", $npos+$nlen, 0);
-							$newtext = substr_replace($newtext, "\x01", $npos, 0);
-						}
-						else $hasallhits = false;
-					}
-					if ($hasallhits) $text = $newtext;
-				}
-				if (isset($place)) {
-					$queries = explode(" ", $place);
-					$newtext = $text;
-					$hasallhits = true;
-					foreach ($queries as $index=>$query1) {
-						$query1esc=preg_quote($query1, '/');
-						if (preg_match("/(".$query1esc.")/i", $text)) {
-							$newtext = preg_replace("/(".$query1esc.")/i", "\x01$1\x02", $newtext);
-						}
-						else if (preg_match("/(".utf8_strtoupper($query1esc).")/", utf8_strtoupper($text))) {
-							$nlen = strlen($query1);
-							$npos = strpos(utf8_strtoupper($text), utf8_strtoupper($query1));
-							$newtext = substr_replace($newtext, "\x02", $npos+$nlen, 0);
-							$newtext = substr_replace($newtext, "\x01", $npos, 0);
-						}
-						else $hasallhits = false;
-					}
-					if ($hasallhits) $text = $newtext;
-				}
-				if (isset($year)) {
-					$queries = explode(" ", $year);
-					$newtext = $text;
-					$hasallhits = true;
-					foreach ($queries as $index=>$query1) {
-						$query1=preg_quote($query1, '/');
-						if (preg_match("/(".$query1.")/i", $text)) {
-							$newtext = preg_replace("/(".$query1.")/i", "\x01$1\x02", $newtext);
-						}
-						else $hasallhits = false;
-					}
-					if ($hasallhits) $text = $newtext;
-				}
-			}
-			// All the "Highlight start" and "Highlight end" flags are set:
-			//  Delay the final clean-up and insertion of proper <span> and </span>
-			//  until parentheses, braces, and brackets have been processed
-		}
+	if ($trim) $text = trim($text);
 
 	// Look for strings enclosed in parentheses, braces, or brackets.
 	//
@@ -1129,13 +1036,6 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 	}
 	$text = $newText;
 
-	// Parentheses, braces, and brackets have been processed:
-	// Finish processing of "Highlight Start and "Highlight end"
-	if (!$InHeaders) {
-		$text = str_replace(array("\x02\x01", "\x02 \x01", "\x01", "\x02"), array("", " ", "<span class=\"search_hit\">", "</span>"), $text);
-	} else {
-		$text = str_replace(array("\x02\x01", "\x02 \x01", "\x01", "\x02"), array("", " ", "", ""), $text);
-	}
 	return $text;
 }
 
