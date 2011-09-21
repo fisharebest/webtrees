@@ -864,7 +864,7 @@ if ($action=="filter") {
 		if ($repo_list) {
 			echo "<td class=\"list_value_wrap\"><ul>";
 			foreach ($repo_list as $repo) {
-				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getListName(),'</span></a></li>';
+				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(),'</span></a></li>';
 			}
 			echo "</ul></td></tr>";
 			echo "<tr><td class=\"list_label\">", WT_I18N::translate('Repositories found'), " ", count($repo_list);
@@ -890,7 +890,7 @@ if ($action=="filter") {
 			usort($mynotelist, array('WT_GedcomRecord', 'Compare'));
 			echo '<tr><td class="list_value_wrap"><ul>';
 			foreach ($mynotelist as $note) {
-				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getListName(),'</span></a></li>';
+				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(),'</span></a></li>';
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Shared Notes found'), ' ', count($mynotelist), '</td></tr>';
 		}
@@ -912,7 +912,7 @@ if ($action=="filter") {
 			usort($mysourcelist, array('WT_GedcomRecord', 'Compare'));
 			echo '<tr><td class="list_value_wrap"><ul>';
 			foreach ($mysourcelist as $source) {
-				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getListName(),'</span></a></li>';
+				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getFullName(),'</span></a></li>';
 			}
 			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total sources: %s', count($mysourcelist)), '</td></tr>';
 		}
