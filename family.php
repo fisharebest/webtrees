@@ -75,6 +75,7 @@ if ($controller->family && $controller->family->canDisplayDetails()) {
 	// Continue - to display the children/parents/grandparents.
 	// We'll check for showing the details again later
 } else {
+	header('HTTP/1.0 403 Forbidden');
 	print_header(WT_I18N::translate('Family'));
 	echo '<p class="ui-state-error">', WT_I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
 	print_footer();

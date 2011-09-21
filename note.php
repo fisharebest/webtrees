@@ -71,6 +71,7 @@ if ($controller->note && $controller->note->canDisplayDetails()) {
 		}
 	}
 } else {
+	header('HTTP/1.0 403 Forbidden');
 	print_header(WT_I18N::translate('Note'));
 	echo '<p class="ui-state-error">', WT_I18N::translate('This note does not exist or you do not have permission to view it.'), '</p>';
 	print_footer();

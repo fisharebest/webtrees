@@ -84,6 +84,7 @@ if ($controller->indi && $controller->indi->canDisplayDetails()) {
 	print_footer();
 	exit;
 } else {
+	header('HTTP/1.0 403 Forbidden');
 	print_header(WT_I18N::translate('Individual'));
 	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
 	print_footer();
