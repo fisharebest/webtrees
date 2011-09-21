@@ -413,13 +413,12 @@ class WT_GedcomRecord {
 		return "0 @".$this->xref."@ ".$this->type."\n1 NOTE ".WT_I18N::translate('Private');
 	}
 
-	// Convert a name record into sortable and listable versions.  This default
-	// should be OK for simple record types.  INDI records will need to redefine it.
+	// Convert a name record into sortable and full/display versions.  This default
+	// should be OK for simple record types.  INDI/FAM records will need to redefine it.
 	protected function _addName($type, $value, $gedrec) {
 		$this->_getAllNames[]=array(
 			'type'=>$type,
 			'full'=>$value,
-			'list'=>$value,
 			'sort'=>preg_replace('/([0-9]+)/e', 'substr("000000000\\1", -10)', $value)
 		);
 	}

@@ -187,7 +187,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				$class='list_item';
 				$sex_image='';
 			}
-			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', PrintReady($name['list']), '</a>', $sex_image, '<br/>';
+			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', PrintReady($name['full']), '</a>', $sex_image, '<br/>';
 		}
 		// Indi parents
 		echo $person->getPrimaryParentsNames("parents_$table_id details1", 'none');
@@ -469,11 +469,13 @@ function print_fam_table($datalist, $legend='', $option='') {
 	echo '<table id="', $table_id, '" class="sortable list_table center">';
 	echo '<thead><tr>';
 	echo '<td></td>';
-	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
-	echo '<th style="display:none">HUSB:GIVN</th>';
+	echo '<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', WT_Gedcom_Tag::getLabel('NAME'), '</a></th>';
+	echo '<th style="display:none">HUSB:GIVN_SURN</th>';
+	echo '<th style="display:none">HUSB:SURN_GIVN</th>';
 	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
-	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
-	echo '<th style="display:none">WIFE:GIVN</th>';
+	echo '<th class="list_label"><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', WT_Gedcom_Tag::getLabel('NAME'), '</a></th>';
+	echo '<th style="display:none">WIFE:GIVN_SURN</th>';
+	echo '<th style="display:none">WIFE:SURN_GIVN</th>';
 	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
 	echo '<th class="list_label">', WT_Gedcom_Tag::getLabel('MARR'), '</th>';
 	if ($tiny) echo '<td class="list_label"><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></td>';
@@ -529,18 +531,19 @@ function print_fam_table($datalist, $legend='', $option='') {
 		$tdclass = 'list_value_wrap';
 		if (!$husb->isDead()) $tdclass .= ' alive';
 		if (!$husb->getChildFamilies()) $tdclass .= ' patriarch';
-		echo '<td class="', $tdclass, '" align="', get_align($names[$n1]['list']), '">';
-		echo '<a href="', $family->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', PrintReady($names[$n1]['list']), '</a>';
+		echo '<td class="', $tdclass, '" align="', get_align($names[$n1]['full']), '">';
+		echo '<a href="', $family->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', PrintReady($names[$n1]['full']), '</a>';
 		if ($tiny) echo $husb->getSexImage();
 		if ($n1!=$n2) {
-			echo '<br /><a href="', $family->getHtmlUrl(), '" class="list_item">', PrintReady($names[$n2]['list']), '</a>';
+			echo '<br /><a href="', $family->getHtmlUrl(), '" class="list_item">', PrintReady($names[$n2]['full']), '</a>';
 		}
 		// Husband parents
 		echo $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
 		echo '</td>';
 		//-- Husb GIVN
 		list($surn, $givn)=explode(',', $husb->getSortName());
-		echo '<td style="display:none">', $givn, '</td>';
+		echo '<td style="display:none">', $givn, ',', $surn, '</td>';
+		echo '<td style="display:none">', $surn, ',', $givn, '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Husband age
 		echo '<td class="list_value_wrap">';
@@ -575,18 +578,19 @@ function print_fam_table($datalist, $legend='', $option='') {
 		$tdclass = 'list_value_wrap';
 		if (!$wife->isDead()) $tdclass .= ' alive';
 		if (!$wife->getChildFamilies()) $tdclass .= ' patriarch';
-		echo '<td class="', $tdclass, '" align="', get_align($names[$n1]['list']), '">';
-		echo '<a href="', $family->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', PrintReady($names[$n1]['list']), '</a>';
+		echo '<td class="', $tdclass, '" align="', get_align($names[$n1]['full']), '">';
+		echo '<a href="', $family->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', PrintReady($names[$n1]['full']), '</a>';
 		if ($tiny) echo $wife->getSexImage();
 		if ($n1!=$n2) {
-			echo '<br /><a href="', $family->getHtmlUrl(), '" class="list_item">', PrintReady($names[$n2]['list']), '</a>';
+			echo '<br /><a href="', $family->getHtmlUrl(), '" class="list_item">', PrintReady($names[$n2]['full']), '</a>';
 		}
 		// Wife parents
 		echo $wife->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
 		echo '</td>';
 		//-- Wife GIVN
 		list($surn, $givn)=explode(',', $wife->getSortName());
-		echo '<td style="display:none">', $givn, '</td>';
+		echo '<td style="display:none">', $givn, ',', $surn, '</td>';
+		echo '<td style="display:none">', $surn, ',', $givn, '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Wife age
 		echo '<td class="list_value_wrap">';
@@ -730,7 +734,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	echo '<td style="display:none">HUSB:GIVN</td>';
 	echo '<td></td>'; // HUSB:AGE
 	echo '<td class="list_label" style="vertical-align: top;">'; // WIFE:NAME
-	echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
+	echo '<a href="javascript:;" onclick="sortByOtherCol(this, 2)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
 	echo '</td>';
 	echo '<td style="display:none">WIFE:GIVN</td>';
 	echo '<td></td>'; // WIFE:AGE

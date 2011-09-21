@@ -1578,8 +1578,8 @@ class WT_Person extends WT_GedcomRecord {
 		return '@P.N. /@N.N./';
 	}
 
-	// Convert a name record into 'full', 'sort' and 'list' versions.
-	// Use the NAME field to generate the 'full' and 'list' versions, as the
+	// Convert a name record into 'full' and 'sort' versions.
+	// Use the NAME field to generate the 'full' version, as the
 	// gedcom spec says that this is the person's name, as they would write it.
 	// Use the SURN field to generate the sortable names.  Note that this field
 	// may also be used for the 'true' surname, perhaps spelt differently to that
@@ -1592,7 +1592,6 @@ class WT_Person extends WT_GedcomRecord {
 	// 2 NICK The Bald
 	//
 	// full=>'Robert de Gliderow 'The Bald''
-	// list=>'de Gliderow, Robert 'The Bald''
 	// sort=>'CLITHEROW, ROBERT'
 	//
 	// Handle multiple surnames, either as;
@@ -1625,7 +1624,7 @@ class WT_Person extends WT_GedcomRecord {
 		$GIVN=str_replace('/ *, */', ' ', $GIVN);
 
 		////////////////////////////////////////////////////////////////////////////
-		// Extract the components from NAME - use for the "full" and "list" names
+		// Extract the components from NAME - use for the "full" names
 		////////////////////////////////////////////////////////////////////////////
 
 		// Fix bad slashes.  e.g. 'John/Smith' => 'John/Smith/'
@@ -1705,36 +1704,27 @@ class WT_Person extends WT_GedcomRecord {
 			}
 		}
 
-		// Generate a "list" name, by moving the surname to the front of the "full" name
-		// Take care of names with no space before/after the surname
-		$list=preg_replace('/^([^\/]+?)( *)(\/.+\/)/', '$3,$2$1', $full);
-
 		// Remove slashes - they don't get displayed
-		$full=str_replace('/', '', $full);
-		$list=str_replace('/', '', $list);
-
-		// Need the 'not known' place holders for the database
-		$fullNN=$full;
+		// $fullNN keeps the @N.N. placeholders, for the database
+		// $full is for display on-screen
+		$fullNN=str_replace('/', '', $full);
+		$full='<span class="NAME">'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', $full).'</span>';
 
 		// Insert placeholders for any missing/unknown names
 		if (strpos($full, '@N.N.')!==false) {
 			$full=str_replace('@N.N.', $UNKNOWN_NN, $full   );
-			$list=str_replace('@N.N.', $UNKNOWN_NN, $list   );
 		}
 		if (strpos($full, '@P.N.')!==false) {
 			$full=str_replace('@P.N.', $UNKNOWN_PN, $full);
-			$list=str_replace('@P.N.', $UNKNOWN_PN, $list);
 		}
 
 		// Some people put preferred names in quotes
 		if ($UNDERLINE_NAME_QUOTES) {
 			$full=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $full);
-			$list=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $list);
 		}
 
 		// The standards say you should use a suffix of '*'
 		$full=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $full);
-		$list=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $list);
 
 		// Remove prefered-name indicater - they don't go in the database
 		$GIVN  =str_replace('*', '', $GIVN);
@@ -1749,7 +1739,7 @@ class WT_Person extends WT_GedcomRecord {
 			}
 
 			$this->_getAllNames[]=array(
-				'type'=>$type, 'full'=>$full, 'list'=>$list, 'sort'=>$SURN.','.$GIVN,
+				'type'=>$type, 'full'=>$full, 'sort'=>$SURN.','.$GIVN,
 				// These extra parts used to populate the wt_name table and the indi list
 				// For these, we don't want to translate the @N.N. into local text
 				'fullNN'=>$fullNN,

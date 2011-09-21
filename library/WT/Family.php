@@ -375,7 +375,6 @@ class WT_Family extends WT_GedcomRecord {
 						$this->_getAllNames[]=array(
 							'type'=>$husb_name['type'],
 							'full'=>$husb_name['full'].' + '.$wife_name['full'],
-							'list'=>$husb_name['list'].$husb->getSexImage().'<br />'.$wife_name['list'].$wife->getSexImage(),
 							'sort'=>$husb_name['sort'].' + '.$wife_name['sort'],
 						);
 					}
@@ -388,7 +387,6 @@ class WT_Family extends WT_GedcomRecord {
 						$this->_getAllNames[]=array(
 							'type'=>$husb_name['type'],
 							'full'=>$husb_name['full'].' + '.$wife_name['full'],
-							'list'=>$husb_name['list'].$husb->getSexImage().'<br />'.$wife_name['list'].$wife->getSexImage(),
 							'sort'=>$husb_name['sort'].' + '.$wife_name['sort'],
 						);
 					}
