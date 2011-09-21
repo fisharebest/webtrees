@@ -51,9 +51,9 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
-		$search   =safe_GET('search');
+		$search=safe_GET('search');
 		$pid   =safe_GET('pid', WT_REGEX_XREF);
-		$famid   =safe_GET('famid', WT_REGEX_XREF);
+		$famid =safe_GET('famid', WT_REGEX_XREF);
 
 		$last = array('search'=>$search);
 		$_SESSION['sb_descendancy_last'] = $last;
@@ -144,7 +144,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		} else {
 			$out .= '<img src="'.$WT_IMAGES['plus'].'" border="0" class="plusminus" alt="" />';
 		}
-		$out .= $person->getSexImage().' '.$person->getListName().' ';
+		$out .= $person->getSexImage().' '.$person->getFullName().' ';
 		if ($person->canDisplayDetails()) {
 			$out .= PrintReady(' ('.$person->getLifeSpan().')');
 		}
@@ -166,7 +166,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$out = '<li id="sb_desc_'.$family->getXref().'" class="sb_desc_indi_li"><a href="sidebar.php?sb_action=descendancy&amp;famid='.$family->getXref().'" title="'.$family->getXref().'" class="sb_desc_indi">';
 		$out .= '<img src="'.$WT_IMAGES['minus'].'" border="0" class="plusminus" alt="" />';
-		$out .= $person->getSexImage().$person->getListName();
+		$out .= $person->getSexImage().$person->getFullName();
 
 		$marryear = $family->getMarriageYear();
 		if (!empty($marryear)) {

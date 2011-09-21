@@ -1548,7 +1548,7 @@ class WT_Person extends WT_GedcomRecord {
 			// want the default name, not the one selected for display on the indilist.
 			$primary=$husb->getPrimaryName();
 			$husb->setPrimaryName(null);
-			$txt .= WT_I18N::translate('Father').': '.PrintReady($husb->getListName()).'<br />';
+			$txt .= /* I18N: %s is the name of a person's father */ WT_I18N::translate('Father: %s', $husb->getFullName()).'<br />';
 			$husb->setPrimaryName($primary);
 		}
 		$wife = $fam->getWife();
@@ -1557,7 +1557,7 @@ class WT_Person extends WT_GedcomRecord {
 			// want the default name, not the one selected for display on the indilist.
 			$primary=$wife->getPrimaryName();
 			$wife->setPrimaryName(null);
-			$txt .= WT_I18N::translate('Mother').': '.PrintReady($wife->getListName());
+			$txt .= /* I18N: %s is the name of a person's mother */ WT_I18N::translate('Mother: %s', $wife->getFullName());
 			$wife->setPrimaryName($primary);
 		}
 		$txt .= '</div>';

@@ -151,7 +151,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 		$tdclass = 'list_value_wrap';
 		if (!$person->isDead()) $tdclass .= ' alive';
 		if (!$person->getChildFamilies()) $tdclass .= ' patriarch';
-		echo '<td class="', $tdclass, '" align="', get_align($person->getListName()), '">';
+		echo '<td class="', $tdclass, '" align="', get_align($person->getFullName()), '">';
 		list($surn, $givn)=explode(',', $person->getSortName());
 		// If we're showing search results, then the highlighted name is not
 		// necessarily the person's primary name.
@@ -1674,8 +1674,8 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 				"bJQueryUI": false,
 				//"aaSorting": [[ <?php echo $sort_by=='alpha' ? 0 : 3; ?>, 'asc']],
 				"aoColumns": [
-					/* 0-Record */ null,
-					/* 1-GIVN */   { "bVisible": false },
+					/* 0-Record */ { "iDataSort": 1 },
+					/* 1-NAME */   { "bVisible": false },
 					/* 2-Date */   { "iDataSort": 3 },
 					/* 3-DATE */   { "bVisible": false },
 					/* 4-Anniv. */  null,
@@ -1727,7 +1727,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= '<table id="'.$table_id.'" class="list_table center width100">';
 			$return .= '<thead><tr>';
 			$return .= '<th style="cursor:pointer;" class="list_label">'.WT_I18N::translate('Record').'</th>';
-			$return .= '<th style="display:none;">GIVN</th>'; //hidden by datables code
+			$return .= '<th style="display:none;">NAME</th>'; //hidden by datables code
 			$return .= '<th style="cursor:pointer;" class="list_label">'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
 			$return .= '<th style="display:none;">DATE</th>'; //hidden by datables code
 			$return .= '<th style="cursor:pointer;" class="list_label"><img src="'.$WT_IMAGES["reminder"].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
@@ -1735,7 +1735,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= '</tr></thead><tbody>'."\n";
 		}
 
-		$value['name'] = $record->getListName();
+		$value['name'] = $record->getFullName();
 		$value['url'] = $record->getHtmlUrl();
 		if ($record->getType()=="INDI") {
 			$value['sex'] = $record->getSexImage();
@@ -1759,14 +1759,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "<tr>";
 		//-- Record name(s)
 		$name = $value['name'];
-		if ($value['record']->getType()=="FAM") {
-			$exp = explode("<br />", $name);
-			$husb = $value['record']->getHusband();
-			if ($husb) $exp[0] .= $husb->getPrimaryParentsNames("parents_$table_id details1", "none");
-			$wife = $value['record']->getWife();
-			if ($wife) $exp[1] .= $wife->getPrimaryParentsNames("parents_$table_id details1", "none");
-			$name = implode("<div></div>", $exp); // <div></div> is better here than <br />
-		}
 		$return .= '<td class="list_value_wrap" align="'.get_align($name).'">';
 		$return .= '<a href="'.$value['url'].'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.PrintReady($name).'</a>';
 		if ($value['record']->getType()=="INDI") {
@@ -1774,10 +1766,9 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= $value['record']->getPrimaryParentsNames("parents_$table_id details1", "none");
 		}
 		$return .= '</td>';
-		//-- GIVN
+		//-- NAME
 		$return .= '<td style="display:none;">'; //hidden by datables code
-		$exp = explode(",", str_replace('<', ',', $name).",");
-		$return .= $exp[1];
+		$return .= $value['record']->getSortName();
 		$return .= '</td>';
 		//-- Event date
 		$return .= '<td class="list_value_wrap">';
@@ -1898,7 +1889,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		}
 		$output ++;
 
-		$value['name'] = $record->getListName();
+		$value['name'] = $record->getFullName();
 		$value['url'] = $record->getHtmlUrl();
 		if ($record->getType()=="INDI") {
 			$value['sex'] = $record->getSexImage();

@@ -107,7 +107,7 @@ function print_fams($person, $famid=null) {
 	// select person name according to searched surname
 	$person_name = "";
 	foreach ($person->getAllNames() as $n=>$name) {
-		list($surn1) = explode(", ", $name['list']);
+		list($surn1) = explode(", ", $name['sort']);
 		if (stripos($surn1, $surn)===false
 			&& stripos($surn, $surn1)===false
 			&& soundex_std($surn1)!==soundex_std($surn)
@@ -122,7 +122,7 @@ function print_fams($person, $famid=null) {
 		break;
 	}
 	if (empty($person_name)) {
-		echo '<li title="', PrintReady(strip_tags($person->getFullName())), '">', $person->getSexImage(), '...</li>';
+		echo '<li title="', strip_tags($person->getFullName()), '">', $person->getSexImage(), '…</li>';
 		return;
 	}
 	$person_script = utf8_script($person_name);
@@ -135,7 +135,7 @@ function print_fams($person, $famid=null) {
 		$sosa = '<a target="_blank" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
 	}
 	$current = $person->getSexImage().
-		'<a target="_blank" class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
+		'<a target="_blank" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
 		$person->getLifeSpan().' '.$sosa;
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
@@ -168,24 +168,9 @@ function print_fams($person, $famid=null) {
 				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
 				$txt .= '<span class="details1" title="'.WT_I18N::translate('Yes').'">'.WT_ICON_RINGS.'</span></a>&nbsp;';
 			}
-			$spouse_name = $spouse->getListName();
-			$spouse_surname='@N.N.';
-			foreach ($spouse->getAllNames() as $n=>$name) {
-				if (utf8_script($name['list']) == $person_script) {
-					$spouse_name = $name['list'];
-					$spouse_surname = $name['surname'];
-					break;
-				}
-				//How can we use check_NN($names) or something else to replace the unknown unknown name from the page language to the language of the spouse's name?
-				else if ($name['fullNN']=='@P.N. @N.N.') {
-					$spouse_name = $UNKNOWN_NN.', '.$UNKNOWN_NN;
-					break;
-				}
-			}
-			list($surn2, $givn2) = explode(', ', $spouse_name.', x');
-			$txt .= $spouse->getSexImage().
-				'<a class="'.$class.'" title="'.WT_I18N::translate('View Person').'" href="'.$spouse->getHtmlUrl().'">'.PrintReady($givn2).' </a>'.
-				'<a class="'.$class.'" title="'.WT_I18N::translate('Branches').'" href="'.WT_SCRIPT_NAME.'?surn='.urlencode($spouse_surname).'&amp;ged='.WT_GEDURL.'">'.PrintReady($surn2).'</a> '.$spouse->getLifeSpan().' '.$sosa2;
+		$txt .=
+			$spouse->getSexImage().
+			'<a class="'.$class.'" href="'.$spouse->getHtmlUrl().'">'.PrintReady($spouse->getFullName()).' </a>';
 		}
 		echo $txt;
 		echo '<ol>';

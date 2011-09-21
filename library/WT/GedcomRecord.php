@@ -431,7 +431,6 @@ class WT_GedcomRecord {
 	// Return value: an array of name structures, each containing
 	// ['type'] = the gedcom fact, e.g. NAME, TITL, FONE, _HEB, etc.
 	// ['full'] = the name as specified in the record, e.g. 'Vincent van Gogh' or 'John Unknown'
-	// ['list'] = a version of the name as might appear in lists, e.g. 'van Gogh, Vincent' or 'Unknown, John'
 	// ['sort'] = a sortable version of the name (not for display), e.g. 'Gogh, Vincent' or '@N.N., John'
 	protected function _getAllNames($fact='!', $level=1) {
 		global $WORD_WRAPPED_NOTES;
@@ -611,14 +610,6 @@ class WT_GedcomRecord {
 		$tmp=$this->getAllNames();
 		return $tmp[$this->getPrimaryName()]['sort'];
 	}
-	public function getListName() {
-		if ($this->canDisplayName()) {
-			$tmp=$this->getAllNames();
-			return $tmp[$this->getPrimaryName()]['list'];
-		} else {
-			return WT_I18N::translate('Private');
-		}
-	}
 	// Get the fullname in an alternative character set
 	public function getAddName() {
 		if ($this->canDisplayName() && $this->getPrimaryName()!=$this->getSecondaryName()) {
@@ -636,7 +627,7 @@ class WT_GedcomRecord {
 	//////////////////////////////////////////////////////////////////////////////
 	public function format_list($tag='li', $find=false, $name=null) {
 		if (is_null($name)) {
-			$name=($tag=='li') ? $this->getListName() : $this->getFullName();
+			$name=$this->getFullName();
 		}
 		$html='<a href="'.$this->getHtmlUrl().'"';
 		if ($find) {

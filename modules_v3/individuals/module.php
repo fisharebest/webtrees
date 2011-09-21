@@ -198,7 +198,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canDisplayName()) {
-				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
+				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getFullName().' ';
 				if ($person->canDisplayDetails()) {
 					$bd = $person->getLifeSpan();
 					if (!empty($bd)) {
@@ -232,7 +232,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		foreach ($rows as $row) {
 			$person=WT_Person::getInstance($row);
 			if ($person->canDisplayName()) {
-				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getListName().' ';
+				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getFullName().' ';
 				if ($person->canDisplayDetails()) {
 					$bd = $person->getLifeSpan();
 					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');

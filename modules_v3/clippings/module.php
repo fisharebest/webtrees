@@ -148,7 +148,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				$root = WT_GedcomRecord::getInstance($this->controller->pid);
 				if ($root && $root->canDisplayDetails())
 					$out .= '<a href="sidebar.php?sb_action=clippings&amp;add='.$root->getXref().'" class="add_cart">
-					<img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.WT_I18N::translate('Add %s to cart', $root->getListName()).'</a>';
+					<img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.WT_I18N::translate('Add %s to cart', $root->getFullName()).'</a>';
 			}
 			$out .= '</div>';
 		}
