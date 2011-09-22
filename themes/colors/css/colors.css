@@ -1330,11 +1330,11 @@ background:#ff9;
 cursor:crosshair;
 }
 
-a.showit span {
+a.showit > span {
 display: none;
 }
 
-a.showit:hover span {
+a.showit:hover > span {
 display:block;
 position:absolute;
 top:22px;

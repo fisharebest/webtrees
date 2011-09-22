@@ -1,6 +1,4 @@
-/*
- * @version $Id$
- */
+/* version $Id$ */
 
 /* 
  * The following style definitions can be removed when IE supports the "opacity" 
@@ -11,7 +9,7 @@
 	filter: alpha(opacity=67);
 }
 
-a.showit:hover span {
+a.showit:hover > span {
 	filter: alpha(opacity=85);
 }
 

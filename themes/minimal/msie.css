@@ -1,6 +1,4 @@
-/*
- * @version $Id$
- */
+/* $Id$ */
 .small_inner_block {
 	height: expression( this.scrollHeight > 199 ? "200px" : "auto" ); 
 }
@@ -9,7 +7,7 @@
 	width: 100%;
 }
 
-a.showit:hover span {
+a.showit:hover > span {
 	filter: alpha(opacity=85);
 }
 

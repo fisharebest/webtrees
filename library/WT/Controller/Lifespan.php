@@ -334,10 +334,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 				$height = 2 * $this->zoomfactor;
 
 				$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 14 + $modFix;
-				if (stristr($value->getFullName(), "starredname"))
-					$minlength = (utf8_strlen($value->getFullName())-34) * $this->zoomfactor;
-				else
-					$minlength = utf8_strlen($value->getFullName()) * $this->zoomfactor;
+				$minlength = utf8_strlen(strip_tags($value->getFullName())) * $this->zoomfactor;
 
 				if ($startPos > 15) {
 					$startPos = (($birthYear - $this->timelineMinYear) * $this->zoomfactor) + 15 + $modFix;
@@ -434,68 +431,65 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 						$text = explode("-fact, ", $val);
 						$fact = $text[0];
 						$val = $text[1];
-						echo WT_Gedcom_Tag::getAbbreviation($fact);
-						echo "</b><span>", PrintReady($val), "</span></a></div>";
+						echo '</b><span>', WT_Gedcom_Tag::getAbbreviation($fact), '</span></a></div>';
 					}
-					$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
-					echo "<table><tr><td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
+					$indiName = $value->getFullName();
+					echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
 					echo WT_Gedcom_Tag::getAbbreviation('BIRT');
-					echo "</b><span>", $value->getSexImage(), $indiName, "<br/>", WT_Gedcom_Tag::getLabel('BIRT'), " ", strip_tags($bdate->Display(false)), " ", PrintReady($value->getBirthPlace()), "</span></a></td>" ,
-						"<td align=\"left\" width=\"100%\"><a href=\"", $value->getHtmlUrl(), "\">", $value->getSexImage(), $indiName, ":  $lifespan </a></td>" ,
-						"<td width=\"15\">";
+					echo '</b><span>', $value->getSexImage(), $indiName, '<br/>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->Display(false)), ' ', $value->getBirthPlace(), '</span></a></div>',
+						'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, ':  ', $lifespan, ' </a></td>' ,
+						'<td width="15">';
 					if ($value->isDead()) {
 						if ($deathReal || $value->isDead()) {
-							echo "<a class=\"showit\" href=\"#\"><b>";
+							echo '<a class="showit" href="#"><b>';
 							echo WT_Gedcom_Tag::getAbbreviation('DEAT');
-							if (!$deathReal) echo "*";
-							echo "</b><span>".$value->getSexImage().$indiName."<br/>".WT_Gedcom_Tag::getLabel('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace())."</span></a>";
+							if (!$deathReal) echo '*';
+							echo '</b><span>'.$value->getSexImage().$indiName.'<br/>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
 						}
 					}
-					echo "</td></tr></table>";
+					echo '</td></tr></table>';
 					echo '</div>';
 
 				} else {
 					if ($width > $minlength +5) {
-						echo "<div style=\"text-align: left; position: absolute; top:", $Y, "px; left:", $startPos, "px; width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">";
+						echo '<div style="text-align: left; position: absolute; top:', $Y, 'px; left:', $startPos, 'px; width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
 						foreach ($eventinformation as $evtwidth=>$val) {
-							echo "<div style=\"position:absolute; left:".$evtwidth." \"><a class=\"showit\" href=\"#\" style=\"top:-2px; font-size:10px;\"><b>";
+							echo '<div style="position:absolute; left:', $evtwidth, ' "><a class="showit" href="#" style="top:-2px; font-size:10px;"><b>';
 							$text = explode("-fact,", $val);
 							$fact = $text[0];
 							$val = $text[1];
-							echo WT_Gedcom_Tag::getAbbreviation($fact);
-							echo "</b><span>".PrintReady($val)."</span></a></div>";
+							echo '</b><span>'.WT_Gedcom_Tag::getAbbreviation($fact).'</span></a></div>';
 						}
-						$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
-						echo "<table dir=\"ltr\"><tr><td width=\"15\"><a class=\"showit\" href=\"#\"><b>";
+						$indiName = $value->getFullName();
+						echo '<table dir="ltr"><tr><td width="15"><a class="showit" href="#"><b>';
 						echo WT_Gedcom_Tag::getAbbreviation('BIRT');
-						if (!$birthReal) echo "*";
-						echo "</b><span>".$value->getSexImage().$indiName."<br/>".WT_Gedcom_Tag::getLabel('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."</span></a></td>" .
-						"<td align=\"left\" width=\"100%\"><a href=\"".$value->getHtmlUrl()."\">".$value->getSexImage().$indiName."</a></td>" .
-						"<td width=\"15\">";
+						if (!$birthReal) echo '*';
+						echo '</b><span>'.$value->getSexImage().$indiName.'<br/>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'</span></a></td>'.
+						'<td align="left" width="100%"><a href="'.$value->getHtmlUrl().'">'.$value->getSexImage().$indiName.'</a></td>'.
+						'<td width="15">';
 						if ($value->isDead()) {
 							if ($deathReal || $value->isDead()) {
-								echo "<a class=\"showit\" href=\"#\"><b>";
+								echo '<a class="showit" href="#"><b>';
 								echo WT_Gedcom_Tag::getAbbreviation('DEAT');
 								if (!$deathReal) echo "*";
-								echo "</b><span>".$value->getSexImage().$indiName."<br/>".WT_Gedcom_Tag::getLabel('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace())."</span></a>";
+								echo '</b><span>'.$value->getSexImage().$indiName.'<br/>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
 							}
 						}
-						echo "</td></tr></table>";
+						echo '</td></tr></table>';
 						echo '</div>';
 					} else {
-						echo "<div style=\"text-align: left; position: absolute;top:", $Y, "px; left:", $startPos, "px;width:", $width, "px; height:", $height, "px; background-color:", $this->color, "; border: solid blue 1px; z-index:$Z;\">" ;
-
-						$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $value->getFullName()));
-						echo "<a class=\"showit\" href=\"".$value->getHtmlUrl()."\"><b>";
+						echo '<div style="text-align: left; position: absolute;top:', $Y, 'px; left:', $startPos, 'px;width:', $width, 'px; height:', $height, 'px; background-color:', $this->color, '; border: solid blue 1px; z-index:', $Z, '">';
+						$indiName = $value->getFullName();
+						echo '<a class="showit" href="'.$value->getHtmlUrl().'"><b>';
 						echo WT_Gedcom_Tag::getAbbreviation('BIRT');
-						echo "</b><span>".$value->getSexImage().$indiName."<br/>".WT_Gedcom_Tag::getLabel('BIRT')." ".strip_tags($bdate->Display(false))." ".PrintReady($value->getBirthPlace())."<br/>";
+						echo '</b><span>'.$value->getSexImage().$indiName.'<br/>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'<br/>';
 						foreach ($eventinformation as $evtwidth=>$val) {
-							$text = explode("-fact,", $val);
+							$text = explode('-fact,', $val);
 							$val = $text[1];
 							echo $val."<br />";
 						}
-						if ($value->isDead() && $deathReal) echo WT_Gedcom_Tag::getLabel('DEAT')." ".strip_tags($ddate->Display(false))." ".PrintReady($value->getDeathPlace());
-						echo "</span></a>";
+						if ($value->isDead() && $deathReal) echo WT_Gedcom_Tag::getLabel('DEAT')." ".strip_tags($ddate->Display(false))." ".$value->getDeathPlace();
+						echo '</span></a>';
 						echo '</div>';
 					}
 				}
