@@ -191,7 +191,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		if ($spouse) {
 			echo ' <a href="', $spouse->getHtmlUrl(), '">';
 			if ($spouse->canDisplayName()) {
-				echo PrintReady($spouse->getFullName());
+				echo $spouse->getFullName();
 			} else {
 				echo WT_I18N::translate('Private');
 			}
@@ -493,7 +493,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 					else $data .= WT_I18N::translate('Hide Details')."\" title=\"".WT_I18N::translate('Hide Details')."\" /></a> ";
 				}
 				$data .= WT_I18N::translate('Source').":</span> <span class=\"field\">";
-				$data .= "<a href=\"".$source->getHtmlUrl()."\">".PrintReady($source->getFullName())."</a>";
+				$data .= "<a href=\"".$source->getHtmlUrl()."\">".$source->getFullName()."</a>";
 				$data .= "</span></div>";
 	
 				$data .= "<div id=\"$elementID\"";
@@ -640,11 +640,7 @@ function print_media_links($factrec, $level, $pid='') {
 				$spouse=WT_Person::getInstance($match[1]);
 				if ($spouse) {
 					echo '<a href="', $spouse->getHtmlUrl(), '">';
-					if ($spouse->canDisplayName()) {
-						echo PrintReady($spouse->getFullName());
-					} else {
-						echo WT_I18N::translate('Private');
-					}
+					echo $spouse->getFullName();
 					echo "</a>";
 				}
 				if (empty($SEARCH_SPIDER)) {
@@ -852,7 +848,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo "<td class=\"optionbox $styleadd wrap\">";
 			//echo "<td class=\"facts_value$styleadd\">";
 			if ($source) {
-				echo "<a href=\"", $source->getHtmlUrl(), "\">", PrintReady($source->getFullName()), "</a>";
+				echo "<a href=\"", $source->getHtmlUrl(), "\">", $source->getFullName(), "</a>";
 				// PUBL
 				$text = get_gedcom_value("PUBL", "1", $source->getGedcomRecord());
 				if (!empty($text)) {

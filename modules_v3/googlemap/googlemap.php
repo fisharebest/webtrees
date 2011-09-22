@@ -580,7 +580,7 @@ function build_indiv_map($indifacts, $famids) {
 			if (!empty($marker['name'])) {
 				$person=WT_Person::getInstance($marker['name']);
 				if ($person) {
-					echo '<a href="', $person->getHtmlUrl(), '">', $person->canDisplayName() ? PrintReady($person->getFullName()) : WT_I18N::translate('Private'), '</a>';
+					echo '<a href="', $person->getHtmlUrl(), '">', $person->getFullName(), '</a>';
 				}
 				echo '<br />';
 			}

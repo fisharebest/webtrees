@@ -290,7 +290,7 @@ if ($ct==0) {
 			<td class="list_value">
 			<?php
 			$record=WT_GedcomRecord::getInstance($clipping['id']);
-			if ($record) echo '<a href="', $record->getHtmlUrl(), '">', PrintReady($record->getFullName()), '</a>';
+			if ($record) echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
 			?>
 			</td>
 			<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;item=<?php echo $i; ?>"><img src="<?php echo $WT_IMAGES["remove"]; ?>" border="0" alt="<?php echo WT_I18N::translate('Remove'); ?>" title="<?php echo WT_I18N::translate('Remove'); ?>" /></a></td>

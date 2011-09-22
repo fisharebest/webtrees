@@ -248,7 +248,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 			if ($block) $content .= '<br />';
 			else $content .= '</td><td class="details2">';
-			$content .= '<a href="'.$mediaobject->getHtmlUrl().'"><b>'. PrintReady(htmlspecialchars($mediaobject->getFullName())) .'</b></a><br />';
+			$content .= '<a href="'.$mediaobject->getHtmlUrl().'"><b>'. $mediaobject->getFullName() .'</b></a><br />';
 
 			ob_start();
 			$content .= $mediaobject->printLinkedRecords('normal');

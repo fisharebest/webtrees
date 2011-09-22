@@ -275,7 +275,7 @@ $controller->checkPrivacy();
 				echo $indi->getSexImage('large', '', WT_I18N::translate_c('unknown gender', 'Unknown'));
 			}
 		?>
-			<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo PrintReady($indi->getFullName()); ?><br /><br />
+			<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo $indi->getFullName(); ?><br /><br />
 			<?php $addname = $indi->getAddName(); if (strlen($addname) > 0) echo PrintReady($addname); ?>
 			</a>
 			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>" />

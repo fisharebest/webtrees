@@ -128,15 +128,13 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 						$personlinks .= "<a href=\"".$family->getHtmlUrl()."&amp;show_full=1\" ".$mouseAction1."><b>".WT_I18N::translate('Family with spouse')."</b></a><br />";
 						if (!empty($spouse)) {
 							$personlinks .= "<a href=\"".$spouse->getHtmlUrl()."\" $mouseAction1>";
-							if ($spouse->canDisplayName()) $personlinks .= PrintReady($spouse->getFullName());
-							else $personlinks .= WT_I18N::translate('Private');
+							$personlinks .= $spouse->getFullName();
 							$personlinks .= "</a><br />";
 						}
 					}
 					foreach ($children as $child) {
 						$personlinks .= "&nbsp;&nbsp;<a href=\"".$child->getHtmlUrl()."\" $mouseAction1>";
-						if ($child->canDisplayName()) $personlinks .= PrintReady($child->getFullName());
-						else $personlinks .= WT_I18N::translate('Private');
+						$personlinks .= $child->getFullName();
 						$personlinks .= "<br /></a>";
 					}
 				}
@@ -228,7 +226,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$name = $person->getFullName();
 	if ($SHOW_HIGHLIGHT_IMAGES) {
 		$object=$person->findHighlightedMedia();
-		$img_title=PrintReady(htmlspecialchars($name));
+		$img_title=strip_tags($name);
 		$img_id='box-'.$boxID.'.-thumb';
 		if (!empty($object)) {
 			$mediaobject=WT_Media::getInstance($object['mid']);

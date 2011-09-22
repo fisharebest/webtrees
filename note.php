@@ -104,7 +104,7 @@ echo '}';
 echo WT_JS_END;
 
 echo '<div id="note-details">';
-echo '<h2>', PrintReady(htmlspecialchars($controller->note->getFullName())), '</h2>';
+echo '<h2>', $controller->note->getFullName(), '</h2>';
 echo '<div id="note-tabs">
 	<ul>
 		<li><a href="#note-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';

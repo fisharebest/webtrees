@@ -108,7 +108,7 @@ $filename = $controller->getLocalFilename();
 global $tmb;
 
 echo '<div id="media-details">';
-echo '<h2>', PrintReady($controller->mediaobject->getFullName()), PrintReady($controller->mediaobject->getAddName()), '</h2>';
+echo '<h2>', $controller->mediaobject->getFullName(), ' ', $controller->mediaobject->getAddName(), '</h2>';
 echo '<div id="media-tabs">
 	<ul>
 		<li><a href="#media-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';

@@ -294,8 +294,7 @@ function print_td_person($n) {
 			$object=find_highlighted_object($pid, WT_GED_ID, $indi->getGedcomRecord());
 			$birth_date=$indi->getBirthDate();
 			$death_date=$indi->getDeathDate();
-			$img_title=PrintReady(htmlspecialchars(strip_tags($name)))." - ".strip_tags(html_entity_decode($birth_date->Display(false)." - ".$death_date->Display(false)));
-			$img_title=str_replace(chr(160), "", $img_title); // date->Display might return '&nbsp', which html_entity_decode converts to '0xa0' 
+			$img_title=strip_tags($name.' - '.$birth_date->Display(false).' - '.$death_date->Display(false));
 			$img_id='box-'.$pid;
 			if (!empty($object)) {
 				$mediaobject=WT_Media::getInstance($object['mid']);
@@ -306,8 +305,8 @@ function print_td_person($n) {
 		}
 
 		$text .= "<a class=\"name1\" href=\"".$indi->getHtmlUrl()."\">";
-		$text .= PrintReady(htmlspecialchars(strip_tags($name)));
-		if ($addname) $text .= "<br />" . PrintReady($addname);
+		$text .= $name;
+		if ($addname) $text .= "<br />" . $addname;
 		$text .= "</a>";
 		$text .= "<br />";
 		if ($indi->canDisplayDetails()) {

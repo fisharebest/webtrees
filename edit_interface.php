@@ -189,17 +189,17 @@ if (!isset($type)) {
 $level0type = $type;
 if ($type=='INDI') {
 	$record=WT_Person::getInstance($pid);
-	echo '<b>', PrintReady($record->getFullName()), '</b><br />';
+	echo '<b>', $record->getFullName(), '</b><br />';
 } elseif ($type=='FAM') {
 	if (!empty($pid)) {
 		$record=WT_Family::getInstance($pid);
 	} else {
 		$record=WT_Family::getInstance($famid);
 	}
-	echo '<b>', PrintReady($record->getFullName()), '</b><br />';
+	echo '<b>', $record->getFullName(), '</b><br />';
 } elseif ($type=='SOUR') {
 	$record=WT_Source::getInstance($pid);
-	echo '<b>', PrintReady($record->getFullName()), '&nbsp;&nbsp;&nbsp;';
+	echo '<b>', $record->getFullName(), '&nbsp;&nbsp;&nbsp;';
 	if ($TEXT_DIRECTION=='rtl') {
 		echo getRLM();
 	}
@@ -2070,7 +2070,7 @@ case 'changefamily':
 			if (!is_null($father)) {
 			?>
 				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo $father->getLabel(); ?></b><input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>" /></td>
-				<td id="HUSBName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo PrintReady($father->getFullName()); ?></td>
+				<td id="HUSBName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo $father->getFullName(); ?></td>
 			<?php
 			} else {
 			?>
@@ -2089,7 +2089,7 @@ case 'changefamily':
 			if (!is_null($mother)) {
 			?>
 				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo $mother->getLabel(); ?></b><input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>" /></td>
-				<td id="WIFEName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo PrintReady($mother->getFullName()); ?></td>
+				<td id="WIFEName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo $mother->getFullName(); ?></td>
 			<?php
 			} else {
 			?>
@@ -2110,7 +2110,7 @@ case 'changefamily':
 				?>
 			<tr>
 				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo $child->getLabel(); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>" /></td>
-				<td id="CHILName<?php echo $i; ?>" class="optionbox wrap"><?php echo PrintReady($child->getFullName()); ?></td>
+				<td id="CHILName<?php echo $i; ?>" class="optionbox wrap"><?php echo $child->getFullName(); ?></td>
 				<td class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>">
 					<a href="javascript:;" id="childrem<?php echo $i; ?>" style="display: block;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
 					<a href="javascript:;" onclick="nameElement = document.getElementById('CHILName<?php echo $i; ?>'); remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>);"><?php echo WT_I18N::translate('Change'); ?></a><br />

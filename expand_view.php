@@ -85,7 +85,7 @@ foreach ($events as $event) {
 			// Show spouse/family for family events
 			$spouse=WT_Person::getInstance($event->getSpouseId());
 			if ($spouse) {
-				echo ' <a href="', $spouse->getHtmlUrl(), '">', PrintReady($spouse->getFullName()), '</a> - ';
+				echo ' <a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
 			}
 			$family=WT_Family::getInstance($event->getFamilyId());
 			if ($family) {

@@ -99,7 +99,7 @@ echo 'function showchanges() { window.location="', $controller->source->getRawUr
 <?php
 echo WT_JS_END;
 echo '<div id="source-details">';
-echo '<h2>', WT_I18N::translate('Source'), '&nbsp;', PrintReady(htmlspecialchars($controller->source->getFullName())), '</h2>';
+echo '<h2>', $controller->source->getFullName(), '</h2>';
 echo '<div id="source-tabs">
 	<ul>
 		<li><a href="#source-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';

@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -354,7 +354,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 							$name = $spouse->getFullName();
 							if (hasRTLText($name)) echo 'class="name2">';
 							else echo 'class="name1">';
-							echo PrintReady($name);
+							echo $name;
 							echo "<br /></span></a>";
 
 						}
@@ -366,7 +366,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 							$name = $child->getFullName();
 							if (hasRTLText($name)) echo 'class="name2">';
 							else echo 'class="name1">';
-							echo '<img src="'.$WT_IMAGES["larrow"].'" height="10" alt="" />  ', PrintReady($name);
+							echo '<img src="'.$WT_IMAGES["larrow"].'" height="10" alt="" />  ', $name;
 							echo "<br /></span></a>";
 						}
 					}
@@ -385,7 +385,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 								$name = rtrim($name);
 								if (hasRTLText($name)) echo 'class="name2">';
 								else echo 'class="name1">';
-								echo PrintReady($name);
+								echo $name;
 								echo "<br /></span></a>";
 							}
 							$husb = $family->getWife();
@@ -396,7 +396,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 								$name = rtrim($name);
 								if (hasRTLText($name)) echo 'class="name2">';
 								else echo 'class="name1">';
-								echo PrintReady($name);
+								echo $name;
 								echo "<br /></span></a>";
 							}
 						}
@@ -412,7 +412,7 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 								$name = rtrim($name);
 								if (hasRTLText($name)) echo 'class="name2">';
 								else echo 'class="name1">';
-								echo PrintReady($name);
+								echo $name;
 								echo "<br /></span></a>";
 							}
 						}

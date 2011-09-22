@@ -1553,9 +1553,9 @@ class WT_Stats {
 			$age = get_age_at_event($age, true);
 			if ($person->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".PrintReady($person->getFullName()."</a> [".$age."]")."</li>\n";
+					$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> [".$age."]"."</li>\n";
 				} else {
-					$top10[]="<a href=\"".$person->getHtmlUrl()."\">".PrintReady($person->getFullName()."</a> [".$age."]");
+					$top10[]="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> [".$age."]";
 				}
 			}
 		}
@@ -1619,9 +1619,9 @@ class WT_Stats {
 			}
 			$age = get_age_at_event($age, true);
 			if ($type == 'list') {
-				$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".PrintReady($person->getFullName()."</a> [".$age."]")."</li>\n";
+				$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> [".$age."]"."</li>\n";
 			} else {
-				$top10[]="<a href=\"".$person->getHtmlUrl()."\">".PrintReady($person->getFullName()."</a> [".$age."]");
+				$top10[]="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> [".$age."]";
 			}
 		}
 		if ($type == 'list') {
@@ -1893,7 +1893,7 @@ class WT_Stats {
 				}
 				break;
 			case 'name':
-				$result="<a href=\"".$record->getHtmlUrl()."\">".PrintReady($record->getFullName())."</a>";
+				$result="<a href=\"".$record->getHtmlUrl()."\">".$record->getFullName()."</a>";
 				break;
 			case 'place':
 				$fact=$record->getFactByType($row['fact']);
@@ -2172,9 +2172,9 @@ class WT_Stats {
 			if (($husb->getAllDeathDates() && $wife->getAllDeathDates()) || !$husb->isDead() || !$wife->isDead()) {
 				if ($family->canDisplayDetails()) {
 					if ($type == 'list') {
-						$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [".$age."]")."</li>\n";
+						$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [".$age."]"."</li>\n";
 					} else {
-						$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [".$age."]");
+						$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [".$age."]";
 					}
 				}
 				if (++$i==$total) break;
@@ -2247,9 +2247,9 @@ class WT_Stats {
 			$age = get_age_at_event($age, true);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [".$age."]")."</li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [".$age."]"."</li>\n";
 				} else {
-					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [".$age."]");
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [".$age."]";
 				}
 			}
 		}
@@ -2775,7 +2775,7 @@ class WT_Stats {
 				$result=$row['tot'];
 				break;
 			case 'name':
-				$result="<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()).'</a>';
+				$result="<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName().'</a>';
 				break;
 		}
 		// Statistics are used by RSS feeds, etc., so need absolute URLs.
@@ -2804,9 +2804,9 @@ class WT_Stats {
 			$family=WT_Family::getInstance($rows[$c]['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$rows[$c]['tot']} ".WT_I18N::translate('children')."]")."</li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [{$rows[$c]['tot']} ".WT_I18N::translate('children')."]"."</li>\n";
 				} else {
-					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$rows[$c]['tot']} ".WT_I18N::translate('children')."]");
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [{$rows[$c]['tot']} ".WT_I18N::translate('children')."]";
 				}
 			}
 		}
@@ -2868,9 +2868,9 @@ class WT_Stats {
 			$child2 = WT_Person::getInstance($fam['ch2']);
 			if ($type == 'name') {
 				if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
-					$return = "<a href=\"".$child2->getHtmlUrl()."\">".PrintReady($child2->getFullName())."</a> ";
+					$return = "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
 					$return .= WT_I18N::translate('and')." ";
-					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".PrintReady($child1->getFullName())."</a>";
+					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
 					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>\n";
 				} else {
 					$return = WT_I18N::translate('This information is private and cannot be shown.');
@@ -2893,9 +2893,9 @@ class WT_Stats {
 				if ($one && !in_array($fam['family'], $dist)) {
 					if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
 						$return = "\t<li>";
-						$return .= "<a href=\"".$child2->getHtmlUrl()."\">".PrintReady($child2->getFullName())."</a> ";
+						$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
 						$return .= WT_I18N::translate('and')." ";
-						$return .= "<a href=\"".$child1->getHtmlUrl()."\">".PrintReady($child1->getFullName())."</a>";
+						$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
 						$return .= " [".$age."]";
 						$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
 						$return .= "\t</li>\n";
@@ -2904,9 +2904,9 @@ class WT_Stats {
 					}
 				} else if (!$one && $child1->canDisplayDetails() && $child2->canDisplayDetails()) {
 					$return = "\t<li>";
-					$return .= "<a href=\"".$child2->getHtmlUrl()."\">".PrintReady($child2->getFullName())."</a> ";
+					$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
 					$return .= WT_I18N::translate('and')." ";
-					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".PrintReady($child1->getFullName())."</a>";
+					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
 					$return .= " [".$age."]";
 					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
 					$return .= "\t</li>\n";
@@ -3231,9 +3231,9 @@ class WT_Stats {
 			$family=WT_Family::getInstance($row['family']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName())."</a></li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a></li>\n";
 				} else {
-					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName())."</a>";
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a>";
 				}
 			}
 		}
@@ -3355,9 +3355,9 @@ class WT_Stats {
 			$family=WT_Family::getInstance($row['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$row['tot']} ".WT_I18N::translate('grandchildren')."]")."</li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [{$row['tot']} ".WT_I18N::translate('grandchildren')."]"."</li>\n";
 				} else {
-					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".PrintReady($family->getFullName()."</a> [{$row['tot']} ".WT_I18N::translate('grandchildren')."]");
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [{$row['tot']} ".WT_I18N::translate('grandchildren')."]";
 				}
 			}
 		}

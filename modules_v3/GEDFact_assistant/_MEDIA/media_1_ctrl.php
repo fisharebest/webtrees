@@ -56,8 +56,8 @@ if ($pid=="") {
 	$person=WT_Person::getInstance($pid);
 	// var_dump($person->getAllNames());
 	$nam = $person->getAllNames();
-	if (PrintReady($person->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($person->getDeathYear()); }
-	if (PrintReady($person->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($person->getBirthYear()); }
+	if ($person->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $person->getDeathYear(); }
+	if ($person->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $person->getBirthYear(); }
 	if ($married>=0 && isset($nam[1])) {
 		$wholename = rtrim($nam[1]['fullNN']);
 	} else {
@@ -195,14 +195,14 @@ if ($pid=="") {
 							if (($people["husb"]->canDisplayDetails())) {
 							?>
 							<a href='javaScript:opener.insertRowToTable("<?php
-									echo PrintReady($people["husb"]->getXref()) ; // pid = PID
+									echo $people["husb"]->getXref() ; // pid = PID
 								?>", "<?php
-								// echo PrintReady($people["husb"]->getFullName()); // nam = Name
-									echo PrintReady($fulln);
+								// echo $people["husb"]->getFullName(); // nam = Name
+									echo $fulln;
 								?>", "<?php
-									echo PrintReady($people["husb"]->getLabel()); // label = Relationship
+									echo $people["husb"]->getLabel(); // label = Relationship
 								?>", "<?php
-									echo PrintReady($people["husb"]->getSex()); // gend = Gender
+									echo $people["husb"]->getSex(); // gend = Gender
 								?>", "<?php
 									if ($married>=0) {
 										echo "M"; // cond = Condition (Married)
@@ -210,17 +210,17 @@ if ($pid=="") {
 										echo "S"; // cond = Condition (Single)
 									}
 								?>", "<?php
-									echo PrintReady($people["husb"]->getbirthyear()); // yob = Year of Birth
+									echo $people["husb"]->getbirthyear(); // yob = Year of Birth
 								?>", "<?php
-									echo PrintReady($censyear-$people["husb"]->getbirthyear()); //  age = Census Date minus YOB
+									echo $censyear-$people["husb"]->getbirthyear(); //  age = Census Date minus YOB
 								?>", "<?php
 									echo "Y"; // YMD
 								?>", "<?php
 									echo ""; // occu = Occupation
 								?>", "<?php
-									echo PrintReady($people["husb"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+									echo $people["husb"]->getcensbirthplace(); //  birthpl = Census Place of Birth
 								?>");'><?php
-									 echo PrintReady($people["husb"]->getFullName()); // Name
+									 echo $people["husb"]->getFullName(); // Name
 								?>
 							</a>
 							<?php
@@ -279,15 +279,15 @@ if ($pid=="") {
 									echo $people["wife"]->getXref() ; // pid = PID
 								?>", "<?php
 								// if ($married>=0 && isset($nam[1])) {
-								// echo PrintReady($fulmn); // nam = Married Name
+								// echo $fulmn; // nam = Married Name
 								// } else {
-										//echo PrintReady($people["wife"]->getFullName()); // nam = Name
-										echo PrintReady($fulln);
+										//echo $people["wife"]->getFullName(); // nam = Name
+										echo $fulln;
 								// }
 									?>", "<?php
-									echo PrintReady($people["wife"]->getLabel()); // label = Relationship
+									echo $people["wife"]->getLabel(); // label = Relationship
 								?>", "<?php
-									echo PrintReady($people["wife"]->getSex()); // gend = Gender
+									echo $people["wife"]->getSex(); // gend = Gender
 								?>", "<?php
 									if ($married>=0 && isset($nam[1])) {
 										echo "M"; // cond = Condition (Married)
@@ -295,21 +295,21 @@ if ($pid=="") {
 										echo "S"; // cond = Condition (Single)
 									}
 									?>", "<?php
-									echo PrintReady($people["wife"]->getbirthyear()); // yob = Year of Birth
+									echo $people["wife"]->getbirthyear(); // yob = Year of Birth
 								?>", "<?php
-									echo PrintReady($censyear-$people["wife"]->getbirthyear()); //  age = Census Date minus YOB
+									echo $censyear-$people["wife"]->getbirthyear(); //  age = Census Date minus YOB
 								?>", "<?php
 									echo "Y"; // YMD
 								?>", "<?php
 									echo ""; // occu = Occupation
 								?>", "<?php
-									echo PrintReady($people["wife"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+									echo $people["wife"]->getcensbirthplace(); //  birthpl = Census Place of Birth
 								?>");'>
 								<?php
 								//if ($married>=0 && isset($nam[1])) {
-								// echo PrintReady($fulmn); // Full Married Name
+								// echo $fulmn; // Full Married Name
 								//} else {
-									echo PrintReady($people["wife"]->getFullName()); // Full Name
+									echo $people["wife"]->getFullName(); // Full Name
 								//}
 								?>
 							</a>
@@ -383,19 +383,19 @@ if ($pid=="") {
 												echo $child->getXref() ; // pid = PID
 											?>", "<?php
 											//if ($married>=0 && isset($nam[1])) {
-											// echo PrintReady($fulmn); // nam = Married Name
+											// echo $fulmn; // nam = Married Name
 											//} else {
-												//echo PrintReady($child->getFullName()); // nam = Full Name
-												echo PrintReady($fulln);
+												//echo $child->getFullName(); // nam = Full Name
+												echo $fulln;
 											//}
 												?>", "<?php
 												if ($child->getXref()==$pid) {
 													echo "Head"; // label = Head
 												} else {
-													echo PrintReady($child->getLabel()); // label = Relationship
+													echo $child->getLabel(); // label = Relationship
 												}
 											?>", "<?php
-												echo PrintReady($child->getSex()); // gend = Gender
+												echo $child->getSex(); // gend = Gender
 											?>", "<?php
 												if ($married>0) {
 													echo "M"; // cond = Condition (Married)
@@ -405,20 +405,20 @@ if ($pid=="") {
 													echo ""; // cond = Condition (Not Known)
 												}
 											?>", "<?php
-												echo PrintReady($child->getbirthyear()); // yob = Year of Birth
+												echo $child->getbirthyear(); // yob = Year of Birth
 											?>", "<?php
-												echo PrintReady($censyear-$child->getbirthyear()); // age = Census Date minus YOB
+												echo $censyear-$child->getbirthyear(); // age = Census Date minus YOB
 											?>", "<?php
 												echo "Y"; // YMD
 											?>", "<?php
 												echo ""; // occu = Occupation
 											?>", "<?php
-												echo PrintReady($child->getcensbirthplace()); // birthpl = Census Place of Birth
+												echo $child->getcensbirthplace(); // birthpl = Census Place of Birth
 											?>");'><?php
 											// if ($married>=0 && isset($nam[1])) {
-											// echo PrintReady($fulmn); // Full Married Name
+											// echo $fulmn; // Full Married Name
 											// } else {
-													echo PrintReady($child->getFullName()); // Full Name
+													echo $child->getFullName(); // Full Name
 											// }
 											?>
 										</a>
@@ -469,8 +469,8 @@ if ($pid=="") {
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
-					if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
-					if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
+					if ($people["husb"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["husb"]->getDeathYear(); }
+					if ($people["husb"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["husb"]->getBirthYear(); }
 					?>
 					<tr>
 						<td width=75 align="left" class="optionbox">
@@ -493,18 +493,18 @@ if ($pid=="") {
 							if (($people["husb"]->canDisplayDetails())) {
 								?>
 								<a href='javaScript:opener.insertRowToTable("<?php
-									echo PrintReady($people["husb"]->getXref()) ; // pid = PID
+									echo $people["husb"]->getXref() ; // pid = PID
 								?>", "<?php
-									//echo PrintReady($people["husb"]->getFullName()); // nam = Name
-									echo PrintReady($fulln);
+									//echo $people["husb"]->getFullName(); // nam = Name
+									echo $fulln;
 								?>", "<?php
 								if ($people["husb"]->getLabel() == ".") {
-									echo PrintReady(WT_I18N::translate('Step-Father')); // label = Relationship
+									echo WT_I18N::translate('Step-Father'); // label = Relationship
 								} else {
-									echo PrintReady($people["husb"]->getLabel()); // label = Relationship
+									echo $people["husb"]->getLabel(); // label = Relationship
 								}
 								?>", "<?php
-									echo PrintReady($people["husb"]->getSex()); // gend = Gender
+									echo $people["husb"]->getSex(); // gend = Gender
 								?>", "<?php
 									if ($married>=0) {
 										echo "M"; // cond = Condition (Married)
@@ -512,17 +512,17 @@ if ($pid=="") {
 										echo "S"; // cond = Condition (Single)
 									}
 								?>", "<?php
-									echo PrintReady($people["husb"]->getbirthyear()); // yob = Year of Birth
+									echo $people["husb"]->getbirthyear(); // yob = Year of Birth
 								?>", "<?php
-									echo PrintReady($censyear-$people["husb"]->getbirthyear()); //  age = Census Date minus YOB
+									echo $censyear-$people["husb"]->getbirthyear(); //  age = Census Date minus YOB
 								?>", "<?php
 									echo "Y"; // YMD
 								?>", "<?php
 									echo ""; // occu = Occupation
 								?>", "<?php
-									echo PrintReady($people["husb"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+									echo $people["husb"]->getcensbirthplace(); //  birthpl = Census Place of Birth
 								?>");'>
-								<?php echo PrintReady($people["husb"]->getFullName()); // Name
+								<?php echo $people["husb"]->getFullName(); // Name
 								?>
 								</a>
 								<?php
@@ -559,8 +559,8 @@ if ($pid=="") {
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
-					if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
-					if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
+					if ($people["wife"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["wife"]->getDeathYear(); }
+					if ($people["wife"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["wife"]->getBirthYear(); }
 					?>
 					<tr>
 						<td width=75 align="left" class="optionbox">
@@ -583,22 +583,22 @@ if ($pid=="") {
 							if (($people["wife"]->canDisplayDetails())) {
 							?>
 							<a href='javaScript:opener.insertRowToTable("<?php
-									echo PrintReady($people["wife"]->getXref()) ; // pid = PID
+									echo $people["wife"]->getXref() ; // pid = PID
 								?>", "<?php
 								// if ($married>=0 && isset($nam[1])) {
-								// echo PrintReady($fulmn); // nam = Married Name
+								// echo $fulmn; // nam = Married Name
 								// } else {
-										//echo PrintReady($people["wife"]->getFullName()); // nam = Full Name
-										echo PrintReady($fulln);
+										//echo $people["wife"]->getFullName(); // nam = Full Name
+										echo $fulln;
 								// }
 								?>", "<?php
 								if ($people["wife"]->getLabel() == ".") {
-									echo PrintReady(WT_I18N::translate('Step-Mother')); // label = Relationship
+									echo WT_I18N::translate('Step-Mother'); // label = Relationship
 								} else {
-									echo PrintReady($people["wife"]->getLabel()); // label = Relationship
+									echo $people["wife"]->getLabel(); // label = Relationship
 								}
 								?>", "<?php
-									echo PrintReady($people["wife"]->getSex()); // gend = Gender
+									echo $people["wife"]->getSex(); // gend = Gender
 								?>", "<?php
 									if ($married>=0 && isset($nam[1])) {
 										echo "M"; // cond = Condition (Married)
@@ -606,21 +606,21 @@ if ($pid=="") {
 										echo "S"; // cond = Condition (Single)
 									}
 									?>", "<?php
-									echo PrintReady($people["wife"]->getbirthyear()); // yob = Year of Birth
+									echo $people["wife"]->getbirthyear(); // yob = Year of Birth
 								?>", "<?php
-									echo PrintReady($censyear-$people["wife"]->getbirthyear()); //  age = Census Date minus YOB
+									echo $censyear-$people["wife"]->getbirthyear(); //  age = Census Date minus YOB
 								?>", "<?php
 									echo "Y"; // YMD
 								?>", "<?php
 									echo ""; // occu = Occupation
 								?>", "<?php
-									echo PrintReady($people["wife"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+									echo $people["wife"]->getcensbirthplace(); //  birthpl = Census Place of Birth
 								?>");'>
 								<?php
 								//if ($married>=0 && isset($nam[1])) {
-								// echo PrintReady($fulmn); // Full Married Name
+								// echo $fulmn; // Full Married Name
 								//} else {
-									echo PrintReady($people["wife"]->getFullName()); // Full Name
+									echo $people["wife"]->getFullName(); // Full Name
 								//}
 								?>
 							</a>
@@ -652,8 +652,8 @@ if ($pid=="") {
 						$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 						$slabel .= $spouselinks;
 						$submenu = new WT_Menu($slabel);
-						$menu->addSubMenu($submenu); if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($child->getDeathYear()); }
-						if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($child->getBirthYear()); }
+						$menu->addSubMenu($submenu); if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
+						if ($child->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $child->getBirthYear(); }
 						?>
 						<tr>
 							<td width=75 align="left" class="optionbox">
@@ -676,28 +676,28 @@ if ($pid=="") {
 								if (($child->canDisplayDetails())) {
 								?>
 								<a href='javaScript:opener.insertRowToTable("<?php
-									echo PrintReady($child->getXref()) ; // pid = PID
+									echo $child->getXref() ; // pid = PID
 									?>", "<?php
-										//echo PrintReady($child->getFullName()); // nam = Name
-										echo PrintReady($fulln);
+										//echo $child->getFullName(); // nam = Name
+										echo $fulln;
 									?>", "<?php
-										echo PrintReady($child->getLabel()); // label = Relationship
+										echo $child->getLabel(); // label = Relationship
 									?>", "<?php
-										echo PrintReady($child->getSex()); // gend = Gender
+										echo $child->getSex(); // gend = Gender
 									?>", "<?php
 										echo ""; // cond = Condition (Married or Single)
 									?>", "<?php
-										echo PrintReady($child->getbirthyear()); // yob = Year of Birth
+										echo $child->getbirthyear(); // yob = Year of Birth
 									?>", "<?php
-										echo PrintReady($censyear-$child->getbirthyear()); //  age = Census Date minus YOB
+										echo $censyear-$child->getbirthyear(); //  age = Census Date minus YOB
 									?>", "<?php
 										echo "Y"; // YMD
 									?>", "<?php
 										echo ""; // occu = Occupation
 									?>", "<?php
-										echo PrintReady($child->getcensbirthplace()); //  birthpl = Census Place of Birth
+										echo $child->getcensbirthplace(); //  birthpl = Census Place of Birth
 									?>");'>
-										<?php echo PrintReady($child->getFullName()); // Name
+										<?php echo $child->getFullName(); // Name
 									?>
 								</a>
 								<?php
@@ -745,8 +745,8 @@ if ($pid=="") {
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
-					if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
-					if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
+					if ($people["husb"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["husb"]->getDeathYear(); }
+					if ($people["husb"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["husb"]->getBirthYear(); }
 					?>
 					<tr class="fact_value">
 						<td width=75 align="left" class="optionbox">
@@ -777,8 +777,8 @@ if ($pid=="") {
 							<a href='javaScript:opener.insertRowToTable("<?php
 									echo $people["husb"]->getXref() ; // pid = PID
 								?>", "<?php
-									//echo PrintReady($people["husb"]->getFullName()); // nam = Name
-									echo PrintReady($fulln);
+									//echo $people["husb"]->getFullName(); // nam = Name
+									echo $fulln;
 								?>", "<?php
 									if ($people["husb"]->getXref()==$pid) {
 										echo "Head"; // label = Relationship
@@ -786,7 +786,7 @@ if ($pid=="") {
 										echo $people["husb"]->getLabel(); // label = Relationship
 									}
 								?>", "<?php
-									echo PrintReady($people["husb"]->getSex()); // gend = Gender
+									echo $people["husb"]->getSex(); // gend = Gender
 								?>", "<?php
 									if ($married>=0) {
 										echo "M"; // cond = Condition (Married)
@@ -794,18 +794,18 @@ if ($pid=="") {
 										echo "S"; // cond = Condition (Single)
 									}
 								?>", "<?php
-									echo PrintReady($people["husb"]->getbirthyear()); // yob = Year of Birth
+									echo $people["husb"]->getbirthyear(); // yob = Year of Birth
 								?>", "<?php
-									echo PrintReady($censyear-$people["husb"]->getbirthyear()); //  age = Census Date minus YOB
+									echo $censyear-$people["husb"]->getbirthyear(); //  age = Census Date minus YOB
 								?>", "<?php
 									echo "Y"; // YMD
 								?>", "<?php
 									echo ""; // occu = Occupation
 								?>", "<?php
-									echo PrintReady($people["husb"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+									echo $people["husb"]->getcensbirthplace(); //  birthpl = Census Place of Birth
 								?>");'>
 								<?php
-									echo PrintReady($people["husb"]->getFullName()); // Name
+									echo $people["husb"]->getFullName(); // Name
 								?>
 							</a>
 							<?php
@@ -841,8 +841,8 @@ if ($pid=="") {
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
 					$menu->addSubMenu($submenu);
-					if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
-					if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
+					if ($people["wife"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["wife"]->getDeathYear(); }
+					if ($people["wife"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["wife"]->getBirthYear(); }
 					?>
 					<tr>
 						<td width=75 align="left" class="optionbox">
@@ -874,19 +874,19 @@ if ($pid=="") {
 										echo $people["wife"]->getXref() ; // pid = PID
 								?>", "<?php
 								// if ($married>=0 && isset($nam[1])) {
-								// echo PrintReady($fulmn); // nam = Full Married Name
+								// echo $fulmn; // nam = Full Married Name
 								// } else {
-										//echo PrintReady($people["wife"]->getFullName()); // nam = Full Name
-										echo PrintReady($fulln);
+										//echo $people["wife"]->getFullName(); // nam = Full Name
+										echo $fulln;
 								// }
 								?>", "<?php
 									if ($people["wife"]->getXref()==$pid) {
 										echo "Head"; // label = Head
 									} else {
-										echo PrintReady($people["wife"]->getLabel()); // label = Relationship
+										echo $people["wife"]->getLabel(); // label = Relationship
 									}
 								?>", "<?php
-									echo PrintReady($people["wife"]->getSex()); // gend = Gender
+									echo $people["wife"]->getSex(); // gend = Gender
 								?>", "<?php
 									if ($married>=0 && isset($nam[1])) {
 										echo "M"; // cond = Condition (Married)
@@ -894,21 +894,21 @@ if ($pid=="") {
 										echo "S"; // cond = Condition (Single)
 									}
 								?>", "<?php
-									echo PrintReady($people["wife"]->getbirthyear()); // yob = Year of Birth
+									echo $people["wife"]->getbirthyear(); // yob = Year of Birth
 								?>", "<?php
-									echo PrintReady($censyear-$people["wife"]->getbirthyear()); //  age = Census Date minus YOB
+									echo $censyear-$people["wife"]->getbirthyear(); //  age = Census Date minus YOB
 								?>", "<?php
 									echo "Y";  // YMD
 								?>", "<?php
 									echo ""; // occu = Occupation
 								?>", "<?php
-									echo PrintReady($people["wife"]->getcensbirthplace()); //  birthpl = Census Place of Birth
+									echo $people["wife"]->getcensbirthplace(); //  birthpl = Census Place of Birth
 								?>");'>
 									<?php
 									//if ($married>=0 && isset($nam[1])) {
-									// echo PrintReady($fulmn); // Full Married Name
+									// echo $fulmn; // Full Married Name
 									//} else {
-										echo PrintReady($people["wife"]->getFullName()); // Full Name
+										echo $people["wife"]->getFullName(); // Full Name
 									//}
 									?>
 								</a>
@@ -972,15 +972,15 @@ if ($pid=="") {
 									echo $child->getXref() ; // pid = PID
 								?>", "<?php
 								// if ($married>0 && isset($nam[1])) {
-								// echo PrintReady($fulmn); // nam = Full Married Name
+								// echo $fulmn; // nam = Full Married Name
 								// } else {
-										// echo PrintReady($child->getFullName()); // nam = Full Name
-										echo PrintReady($fulln); // nam = Full Name
+										// echo $child->getFullName(); // nam = Full Name
+										echo $fulln; // nam = Full Name
 								// }
 								?>", "<?php
-									echo PrintReady($child->getLabel()); // label = Relationship
+									echo $child->getLabel(); // label = Relationship
 								?>", "<?php
-									echo PrintReady($child->getSex()); // gend = Gender
+									echo $child->getSex(); // gend = Gender
 								?>", "<?php
 									if ($married>0) {
 										echo "M"; // cond = Condition (Married)
@@ -990,21 +990,21 @@ if ($pid=="") {
 										echo ""; // cond = Condition (Not Known)
 									}
 								?>", "<?php
-									echo PrintReady($child->getbirthyear()); // yob = Year of Birth
+									echo $child->getbirthyear(); // yob = Year of Birth
 								?>", "<?php
-									echo PrintReady($censyear-$child->getbirthyear()); //  age = Census Date minus YOB
+									echo $censyear-$child->getbirthyear(); //  age = Census Date minus YOB
 								?>", "<?php
 									echo "Y"; // YMD
 								?>", "<?php
 									echo ""; // occu = Occupation
 								?>", "<?php
-									echo PrintReady($child->getcensbirthplace()); //  birthpl = Census Place of Birth
+									echo $child->getcensbirthplace(); //  birthpl = Census Place of Birth
 								?>");'>
 									<?php
 								// if ($married>=0 && isset($nam[1])) {
-								// echo PrintReady($fulmn); // Full Married Name
+								// echo $fulmn; // Full Married Name
 								// } else {
-										echo PrintReady($child->getFullName()); // Full Name
+										echo $child->getFullName(); // Full Name
 								// }
 									?>
 							</a>
@@ -1124,26 +1124,26 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										$marn  = $nam[1]['surn'];
 									}
 									$parentlinks .= "<a href=\"javascript:opener.insertRowToTable(";
-									$parentlinks .= "'".PrintReady($husb->getXref())."', "; // pid = PID
-									$parentlinks .= "'".PrintReady($fulln)."', "; // nam = Name
+									$parentlinks .= "'".$husb->getXref()."', "; // pid = PID
+									$parentlinks .= "'".$fulln."', "; // nam = Name
 									if ($currpid=="Wife" || $currpid=="Husband") {
 										$parentlinks .= "'Father in Law', "; // label = 1st Gen Male Relationship
 									} else {
 										$parentlinks .= "'Grand-Father', "; // label = 2st Gen Male Relationship
 									}
-									$parentlinks .= "'".PrintReady($husb->getSex())."', "; // sex = Gender
+									$parentlinks .= "'".$husb->getSex()."', "; // sex = Gender
 									$parentlinks .= "''".", "; // cond = Condition (Married etc)
-									$parentlinks .= "'".PrintReady($husb->getbirthyear())."', "; // yob = Year of Birth
+									$parentlinks .= "'".$husb->getbirthyear()."', "; // yob = Year of Birth
 									if ($husb->getbirthyear()>=1) {
-										$parentlinks .= "'".PrintReady($censyear-$husb->getbirthyear())."', "; // age =  Census Year - Year of Birth
+										$parentlinks .= "'".$censyear-$husb->getbirthyear()."', "; // age =  Census Year - Year of Birth
 									} else {
 										$parentlinks .= "''".", "; // age =  Undefined
 									}
 									$parentlinks .= "'Y'".", "; // Y/M/D = Age in Years/Months/Days
 									$parentlinks .= "''".", "; // occu  = Occupation
-									$parentlinks .= "'".PrintReady($husb->getcensbirthplace())."'"; // birthpl = Birthplace
+									$parentlinks .= "'".$husb->getcensbirthplace()."'"; // birthpl = Birthplace
 									$parentlinks .= ");\">";
-									$parentlinks .= PrintReady($husb->getFullName());
+									$parentlinks .= $husb->getFullName();
 									$parentlinks .= "</a>";
 
 								} else {
@@ -1170,13 +1170,13 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										$marn  = $nam[1]['surname'];
 									}
 									$parentlinks .= "<a href=\"javascript:opener.insertRowToTable(";
-									$parentlinks .= "'".PrintReady($wife->getXref())."',"; // pid = PID
-									// $parentlinks .= "'".PrintReady($fulln)."',"; // nam = Name
+									$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
+									// $parentlinks .= "'".$fulln."',"; // nam = Name
 
 									//if ($married>=0 && isset($nam[1])) {
-									// $parentlinks .= "'".PrintReady($fulmn)."',"; // nam = Full Married Name
+									// $parentlinks .= "'".$fulmn."',"; // nam = Full Married Name
 									//} else {
-										$parentlinks .= "'".PrintReady($fulln)."',"; // nam = Full Name
+										$parentlinks .= "'".$fulln."',"; // nam = Full Name
 									//}
 
 									if ($currpid=="Wife" || $currpid=="Husband") {
@@ -1184,23 +1184,23 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									} else {
 										$parentlinks .= "'Grand-Mother',"; // label = 2st Gen Female Relationship
 									}
-									$parentlinks .= "'".PrintReady($wife->getSex())."',"; // sex = Gender
+									$parentlinks .= "'".$wife->getSex()."',"; // sex = Gender
 									$parentlinks .= "''".","; // cond = Condition (Married etc)
-									$parentlinks .= "'".PrintReady($wife->getbirthyear())."',"; // yob = Year of Birth
+									$parentlinks .= "'".$wife->getbirthyear()."',"; // yob = Year of Birth
 									if ($wife->getbirthyear()>=1) {
-										$parentlinks .= "'".PrintReady($censyear-$wife->getbirthyear())."',"; // age =  Census Year - Year of Birth
+										$parentlinks .= "'".$censyear-$wife->getbirthyear()."',"; // age =  Census Year - Year of Birth
 									} else {
 										$parentlinks .= "''".","; // age =  Undefined
 									}
 									$parentlinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
 									$parentlinks .= "''".","; // occu  = Occupation
-									$parentlinks .= "'".PrintReady($wife->getcensbirthplace())."'"; // birthpl = Birthplace
+									$parentlinks .= "'".$wife->getcensbirthplace()."'"; // birthpl = Birthplace
 									//$parentlinks .= ");\"><div id='wifePar'>";
 									$parentlinks .= ");\">";
 									//if ($married>=0 && isset($nam[1])) {
 									// $parentlinks .= $fulmn; // Full Married Name
 									//} else {
-										$parentlinks .= PrintReady($wife->getFullName()); // Full Name
+										$parentlinks .= $wife->getFullName(); // Full Name
 									//}
 									// $parentlinks .= "</div></a>";
 									$parentlinks .= "</a>";
@@ -1244,7 +1244,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										}
 
 										$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
-										$parentlinks .= PrintReady($husb->getFullName());
+										$parentlinks .= $husb->getFullName();
 										$parentlinks .= "</a>";
 									} else {
 										$parentlinks .= WT_I18N::translate('Private');
@@ -1272,7 +1272,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$marn  = $nam[1]['surname'];
 										}
 										$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
-										$parentlinks .= PrintReady($wife->getFullName());
+										$parentlinks .= $wife->getFullName();
 										$parentlinks .= "</a>";
 									} else {
 										$parentlinks .= WT_I18N::translate('Private');
@@ -1307,12 +1307,12 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										$marn  = $nam[1]['surname'];
 									}
 									$spouselinks .= "<a href=\"javascript:opener.insertRowToTable(";
-									$spouselinks .= "'".PrintReady($spouse->getXref())."',"; // pid = PID
-									//$spouselinks .= "'".PrintReady($fulln)."',"; // nam = Name
+									$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
+									//$spouselinks .= "'".$fulln."',"; // nam = Name
 									//if ($married>=0 && isset($nam[1])) {
-									// $spouselinks .= "'".PrintReady($fulmn)."',"; // Full Married Name
+									// $spouselinks .= "'".$fulmn."',"; // Full Married Name
 									//} else {
-										$spouselinks .= "'".PrintReady($spouse->getFullName())."',"; // Full Name
+										$spouselinks .= "'".$spouse->getFullName()."',"; // Full Name
 									//}
 									if ($currpid=="Son" || $currpid=="Daughter") {
 										if ($spouse->getSex()=="M") {
@@ -1327,23 +1327,23 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$spouselinks .= "'Sister in Law',"; // label = Female Relationship
 										}
 									}
-										$spouselinks .= "'".PrintReady($spouse->getSex())."',"; // sex = Gender
+										$spouselinks .= "'".$spouse->getSex()."',"; // sex = Gender
 										$spouselinks .= "''".","; // cond = Condition (Married etc)
-										$spouselinks .= "'".PrintReady($spouse->getbirthyear())."',"; // yob = Year of Birth
+										$spouselinks .= "'".$spouse->getbirthyear()."',"; // yob = Year of Birth
 										if ($spouse->getbirthyear()>=1) {
-											$spouselinks .= "'".PrintReady($censyear-$spouse->getbirthyear())."',"; // age =  Census Year - Year of Birth
+											$spouselinks .= "'".$censyear-$spouse->getbirthyear()."',"; // age =  Census Year - Year of Birth
 										} else {
 											$spouselinks .= "''".","; // age =  Undefined
 										}
 										$spouselinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
 										$spouselinks .= "''".","; // occu  = Occupation
-										$spouselinks .= "'".PrintReady($spouse->getcensbirthplace())."'"; // birthpl = Birthplace
+										$spouselinks .= "'".$spouse->getcensbirthplace()."'"; // birthpl = Birthplace
 										$spouselinks .= ");\">";
-										// $spouselinks .= PrintReady($fulln);
+										// $spouselinks .= $fulln;
 										//if ($married>=0 && isset($nam[1])) {
-										// $spouselinks .= "'".PrintReady($fulmn)."',"; // Full Married Name
+										// $spouselinks .= "'".$fulmn."',"; // Full Married Name
 										//} else {
-											$spouselinks .= PrintReady($spouse->getFullName()); // Full Name
+											$spouselinks .= $spouse->getFullName(); // Full Name
 										//}
 										$spouselinks .= "</a>";
 								} else {
@@ -1374,9 +1374,9 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										}
 										$spouselinks .= "<li>";
 										$spouselinks .= "<a href=\"javascript:opener.insertRowToTable(";
-										$spouselinks .= "'".PrintReady($child->getXref())."',"; // pid = PID
-										//$spouselinks .= "'".PrintReady($child->getFullName())."',"; // nam = Name
-										$spouselinks .= "'".PrintReady($fulln)."',"; // nam = Name
+										$spouselinks .= "'".$child->getXref()."',"; // pid = PID
+										//$spouselinks .= "'".$child->getFullName()."',"; // nam = Name
+										$spouselinks .= "'".$fulln."',"; // nam = Name
 									if ($currpid=="Son" || $currpid=="Daughter") {
 										if ($child->getSex()=="M") {
 											$spouselinks .= "'Grand-Son',"; // label = Male Relationship
@@ -1390,19 +1390,19 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$spouselinks .= "'Niece',"; // label  = Female Relationship
 										}
 									}
-									$spouselinks .= "'".PrintReady($child->getSex())."',"; // sex = Gender
+									$spouselinks .= "'".$child->getSex()."',"; // sex = Gender
 									$spouselinks .= "''".","; // cond = Condition (Married etc)
-									$spouselinks .= "'".PrintReady($child->getbirthyear())."',"; // yob = Year of Birth
+									$spouselinks .= "'".$child->getbirthyear()."',"; // yob = Year of Birth
 									if ($child->getbirthyear()>=1) {
-										$spouselinks .= "'".PrintReady($censyear-$child->getbirthyear())."',"; // age =  Census Year - Year of Birth
+										$spouselinks .= "'".$censyear-$child->getbirthyear()."',"; // age =  Census Year - Year of Birth
 									} else {
 										$spouselinks .= "''".","; // age =  Undefined
 									}
 									$spouselinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
 									$spouselinks .= "''".","; // occu  = Occupation
-									$spouselinks .= "'".PrintReady($child->getcensbirthplace())."'"; // birthpl = Birthplace
+									$spouselinks .= "'".$child->getcensbirthplace()."'"; // birthpl = Birthplace
 									$spouselinks .= ");\">";
-									$spouselinks .= PrintReady($child->getFullName()); // Full Name
+									$spouselinks .= $child->getFullName(); // Full Name
 									$spouselinks .= "</a>";
 									} else {
 										$spouselinks .= WT_I18N::translate('Private');

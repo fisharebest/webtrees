@@ -164,7 +164,7 @@ if ($changed_gedcoms) {
 				// version of the record.
 				$record=new WT_GedcomRecord($change->gedcom);
 			}
-			$output.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM().'<br />';
+			$output.='<b>'.$record->getFullName().'</b><br />';
 			$output.='<a href="javascript:;" onclick="return show_diff(\''.$record->getHtmlUrl().'\');">'.WT_I18N::translate('View the changes').'</a> | ';
 			$output.="<a href=\"javascript:show_gedcom_record('".$change->xref."');\">".WT_I18N::translate('View GEDCOM Record')."</a> | ";
 			$output.="<a href=\"javascript:;\" onclick=\"return edit_raw('".$change->xref."');\">".WT_I18N::translate('Edit raw GEDCOM record').'</a><br />';

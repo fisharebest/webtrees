@@ -170,7 +170,7 @@ function print_fams($person, $famid=null) {
 			}
 		$txt .=
 			$spouse->getSexImage().
-			'<a class="'.$class.'" href="'.$spouse->getHtmlUrl().'">'.PrintReady($spouse->getFullName()).' </a>';
+			'<a class="'.$class.'" href="'.$spouse->getHtmlUrl().'">'.$spouse->getFullName().' </a>';
 		}
 		echo $txt;
 		echo '<ol>';

@@ -586,7 +586,7 @@ function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
 
 	foreach ($list as $id=>$facts) {
 		$tmp=WT_GedcomRecord::GetInstance($id);
-		echo $tag1, '<a href="', $tmp->getHtmlUrl(), '">', PrintReady($tmp->getFullName()), '</a> ';
+		echo $tag1, '<a href="', $tmp->getHtmlUrl(), '">', $tmp->getFullName(), '</a> ';
 		if ($show_sex_symbols && $tmp->getType()=='INDI')
 			switch ($tmp->getSex()) {
 			case 'M':

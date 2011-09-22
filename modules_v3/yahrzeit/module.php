@@ -162,11 +162,11 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$name=$ind->getFullName();
 					$url=$ind->getHtmlUrl();
 					$content .= '<td class="list_value_wrap" align="'.get_align($name).'">';
-					$content .= '<a href="'.$url.'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.PrintReady($name).'</a>';
+					$content .= '<a href="'.$url.'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.$name.'</a>';
 					$content .= $ind->getSexImage();
 					$addname=$ind->getAddName();
 					if ($addname) {
-						$content .= '<br /><a href="'.$url.'" class="list_item">'.PrintReady($addname).'</a>';
+						$content .= '<br /><a href="'.$url.'" class="list_item">'.$addname.'</a>';
 					}
 					$content .= '</td>';
 

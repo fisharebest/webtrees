@@ -100,7 +100,7 @@ echo 'function showchanges() { window.location="', $controller->repository->getR
 echo WT_JS_END;
 
 echo '<div id="repo-details">';
-echo '<h2>', PrintReady(htmlspecialchars($controller->repository->getFullName())), '</h2>';
+echo '<h2>', $controller->repository->getFullName(), '</h2>';
 echo '<div id="repo-tabs">
 	<ul>
 		<li><a href="#repo-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';

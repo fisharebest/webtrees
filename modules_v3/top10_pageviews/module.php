@@ -84,7 +84,7 @@ class top10_pageviews_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($count_placement=='before') {
 					$content .= '<td dir="ltr" align="right">['.$count.']</td>';
 				}
-				$content .= '<td class="name2" ><a href="'.$record->getHtmlUrl().'">'.PrintReady($record->getFullName()).'</a></td>';
+				$content .= '<td class="name2" ><a href="'.$record->getHtmlUrl().'">'.$record->getFullName().'</a></td>';
 				if ($count_placement=='after') {
 					$content .= '<td dir="ltr" align="right">['.$count.']</td>';
 				}

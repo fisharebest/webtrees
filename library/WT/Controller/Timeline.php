@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -145,7 +145,7 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 			if (!is_null($this->people[$i])) {
 				if (!$this->people[$i]->canDisplayDetails()) {
 					if ($this->people[$i]->canDisplayName()) {
-						echo "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".PrintReady($this->people[$i]->getFullName())."</a>";
+						echo "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".$this->people[$i]->getFullName()."</a>";
 						print_privacy_error();
 						echo "<br />";
 						$printed = true;
@@ -269,8 +269,7 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 						$ct = preg_match("/2 _WTFS @(.*)@/", $factrec, $match);
 						if ($ct>0) {
 							echo " <a href=\"family.php?famid={$match[1]}&amp;ged=".WT_GEDURL."\">";
-							if ($event->getParentObject()->canDisplayName()) echo $event->getParentObject()->getFullName();
-							else echo WT_I18N::translate('Private');
+							echo $event->getParentObject()->getFullName();
 							echo "</a>";
 						}
 					}

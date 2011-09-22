@@ -85,7 +85,7 @@ if (!defined('WT_WEBTREES')) {
 								$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" />";
 								$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" alt=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" title=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" />";
 								global $tempStringHead;
-								$tempStringHead = PrintReady($headImg);
+								$tempStringHead = $headImg;
 								echo WT_I18N::translate('Click %s to choose person as Head of family.', $tempStringHead);
 								?>
 								</font>
@@ -182,7 +182,7 @@ if (!defined('WT_WEBTREES')) {
 									if (($people["husb"]->canDisplayDetails())) {
 									?>
 									<a href='javaScript:insertRowToTable("<?php
-											echo PrintReady($people["husb"]->getXref()) ; // pid = PID
+											echo $people["husb"]->getXref() ; // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
@@ -192,9 +192,9 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo PrintReady($people["husb"]->getLabel()); // label = Relationship
+											echo $people["husb"]->getLabel(); // label = Relationship
 										?>", "<?php
-											echo PrintReady($people["husb"]->getSex()); // gend = Gender
+											echo $people["husb"]->getSex(); // gend = Gender
 										?>", "<?php
 											if ($married>=0) {
 												echo "M"; // cond = Condition (Married)
@@ -208,35 +208,33 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ($people["husb"]->getBirthDate()->minJD()+$people["husb"]->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
 										?>", "<?php
-											echo PrintReady($censyear-$people["husb"]->getbirthyear()); // age = Census Date minus YOB
+											echo $censyear-$people["husb"]->getbirthyear(); // age = Census Date minus YOB
 										?>", "<?php
 											echo ($people["husb"]->getDeathDate()->minJD()+$people["husb"]->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo PrintReady(addslashes($people["husb"]->getBirthPlace())); //  birthpl = Husband Place of Birth
+											echo addslashes($people["husb"]->getBirthPlace()); //  birthpl = Husband Place of Birth
 										?>", "<?php
 											if (isset($HusbFBP)) {
-												echo PrintReady(addslashes($HusbFBP)); // fbirthpl = Husband Father's Place of Birth
+												echo addslashes($HusbFBP); // fbirthpl = Husband Father's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // fbirthpl = Husband Father's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Husband Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($HusbMBP)) {
-												echo PrintReady(addslashes($HusbMBP)); // mbirthpl = Husband Mother's Place of Birth
+												echo addslashes($HusbMBP); // mbirthpl = Husband Mother's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // mbirthpl = Husband Mother's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Husband Mother's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($chBLDarray) && $people["husb"]->getSex()=="F") {
 												$chBLDarray = implode("::", $chBLDarray);
-												echo PrintReady($chBLDarray); // Array of Children (name, birthdate, deathdate)
-											} else {
-												echo PrintReady('');
+												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 											}
 										?>");'>
 										<?php
-											echo PrintReady($people["husb"]->getFullName());  // Full Name (Link)
+											echo $people["husb"]->getFullName();  // Full Name (Link)
 										?>
 									</a>
 									<?php
@@ -326,9 +324,9 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo PrintReady($people["wife"]->getLabel()); // label = Relationship
+											echo $people["wife"]->getLabel(); // label = Relationship
 										?>", "<?php
-											echo PrintReady($people["wife"]->getSex()); // gend = Gender
+											echo $people["wife"]->getSex(); // gend = Gender
 										?>", "<?php
 											if ($married>=0 && isset($nam[1])) {
 												echo "M"; // cond = Condition (Married)
@@ -342,35 +340,33 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ($people["wife"]->getBirthDate()->minJD()+$people["wife"]->getBirthDate()->maxJD())/2;    // dob = Date of Birth (Julian)
 										?>", "<?php
-											echo PrintReady($censyear-$people["wife"]->getbirthyear()); // age = Census Date minus YOB
+											echo $censyear-$people["wife"]->getbirthyear(); // age = Census Date minus YOB
 										?>", "<?php
 											echo ($people["wife"]->getDeathDate()->minJD()+$people["wife"]->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo PrintReady(addslashes($people["wife"]->getBirthPlace())); //  birthpl = Wife Place of Birth
+											echo addslashes($people["wife"]->getBirthPlace()); //  birthpl = Wife Place of Birth
 										?>", "<?php
 											if (isset($WifeFBP)) {
-												echo PrintReady(addslashes($WifeFBP)); // fbirthpl = Wife Father's Place of Birth
+												echo addslashes($WifeFBP); // fbirthpl = Wife Father's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // fbirthpl = Wife Father's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Wife Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($WifeMBP)) {
-												echo PrintReady(addslashes($WifeMBP)); // mbirthpl = Wife Mother's Place of Birth
+												echo addslashes($WifeMBP); // mbirthpl = Wife Mother's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // mbirthpl = Wife Mother's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Wife Mother's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($chBLDarray) && $people["wife"]->getSex()=="F") {
 												$chBLDarray = implode("::", $chBLDarray);
-												echo PrintReady($chBLDarray); // Array of Children (name, birthdate, deathdate)
-											} else {
-												echo PrintReady('');
+												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 											}
 										?>");'>
 										<?php
-											echo PrintReady($people["wife"]->getFullName());  // Full Name (Link)
+											echo $people["wife"]->getFullName();  // Full Name (Link)
 										?>
 									</a>
 									<?php
@@ -479,17 +475,15 @@ if (!defined('WT_WEBTREES')) {
 														if ($child->getXref()==$pid) {
 															echo "Head"; // label = Head
 														} else {
-															echo PrintReady($child->getLabel()); // label = Relationship
+															echo $child->getLabel(); // label = Relationship
 														}
 													?>", "<?php
-														echo PrintReady($child->getSex()); // gend = Gender
+														echo $child->getSex(); // gend = Gender
 													?>", "<?php
 														if ($married>0) {
 															echo "M"; // cond = Condition (Married)
 														} else if ($married<0 || ($married=="0") ) {
 															echo "S"; // cond = Condition (Single)
-														} else {
-															echo ""; // cond = Condition (Not Known)
 														}
 													?>", "<?php
 														if ($marrdate) {
@@ -498,35 +492,33 @@ if (!defined('WT_WEBTREES')) {
 													?>", "<?php
 														echo ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
 													?>", "<?php
-														echo PrintReady($censyear-$child->getbirthyear()); // age = Census Date minus YOB
+														echo $censyear-$child->getbirthyear(); // age = Census Date minus YOB
 													?>", "<?php
 														echo ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
 													?>", "<?php
 														echo ""; // occu = Occupation
 													?>", "<?php
-														echo PrintReady(addslashes($child->getBirthPlace())); //  birthpl = Child Place of Birt
+														echo addslashes($child->getBirthPlace()); //  birthpl = Child Place of Birt
 													?>", "<?php
 														if (isset($people["husb"])) {
-															echo PrintReady(addslashes($people["husb"]->getBirthPlace())); // fbirthpl = Child Father's Place of Birth
+															echo addslashes($people["husb"]->getBirthPlace()); // fbirthpl = Child Father's Place of Birth
 														} else {
-															echo PrintReady('UNK, UNK, UNK, UNK'); // fbirthpl = Child Father's Place of Birth Not known
+															echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father's Place of Birth Not known
 														}
 													?>", "<?php
 														if (isset($people["wife"])) {
-															echo PrintReady(addslashes($people["wife"]->getBirthPlace())); // mbirthpl = Child Mother's Place of Birth
+															echo addslashes($people["wife"]->getBirthPlace()); // mbirthpl = Child Mother's Place of Birth
 														} else {
-															echo PrintReady('UNK, UNK, UNK, UNK'); // mbirthpl = Child Mother's Place of Birth Not known
+															echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother's Place of Birth Not known
 														}
 													?>", "<?php
 														if (isset($chBLDarray) && $child->getSex()=="F") {
 															$chBLDarray = implode("::", $chBLDarray);
-															echo PrintReady($chBLDarray); // Array of Children (name, birthdate, deathdate)
-														} else {
-															echo PrintReady('');
+															echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 														}
 													?>");'>
 													<?php
-														echo PrintReady($child->getFullName()); // Full Name (Link)
+														echo $child->getFullName(); // Full Name (Link)
 													?>
 												</a>
 												<?php
@@ -610,8 +602,8 @@ if (!defined('WT_WEBTREES')) {
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
-							if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
-							if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
+							if ($people["husb"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["husb"]->getDeathYear(); }
+							if ($people["husb"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["husb"]->getBirthYear(); }
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
@@ -634,7 +626,7 @@ if (!defined('WT_WEBTREES')) {
 									if (($people["husb"]->canDisplayDetails())) {
 									?>
 									<a href='javaScript:insertRowToTable("<?php
-											echo PrintReady($people["husb"]->getXref()); // pid = PID
+											echo $people["husb"]->getXref(); // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
@@ -645,12 +637,12 @@ if (!defined('WT_WEBTREES')) {
 											}
 										?>", "<?php
 										if ($people["husb"]->getLabel() == ".") {
-											echo PrintReady(WT_I18N::translate('Step-Father')); // label = Relationship
+											echo WT_I18N::translate('Step-Father'); // label = Relationship
 										} else {
-											echo PrintReady($people["husb"]->getLabel()); // label = Relationship
+											echo $people["husb"]->getLabel(); // label = Relationship
 										}
 										?>", "<?php
-											echo PrintReady($people["husb"]->getSex()); // gend = Gender
+											echo $people["husb"]->getSex(); // gend = Gender
 										?>", "<?php
 											if ($married>=0) {
 												echo "M"; // cond = Condition (Married)
@@ -664,35 +656,33 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ($people["husb"]->getBirthDate()->minJD()+$people["husb"]->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
 										?>", "<?php
-											echo PrintReady($censyear-$people["husb"]->getbirthyear()); // age = Census Date minus YOB
+											echo $censyear-$people["husb"]->getbirthyear(); // age = Census Date minus YOB
 										?>", "<?php
 											echo ($people["husb"]->getDeathDate()->minJD()+$people["husb"]->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo PrintReady(addslashes($people["husb"]->getBirthPlace())); //  birthpl = Step Husband Place of Birth
+											echo addslashes($people["husb"]->getBirthPlace()); //  birthpl = Step Husband Place of Birth
 										?>", "<?php
 											if (isset($HusbFBP)) {
-												echo PrintReady(addslashes($HusbFBP)); // fbirthpl = Step Husband Father's Place of Birth
+												echo addslashes($HusbFBP); // fbirthpl = Step Husband Father's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // fbirthpl = Step Husband Father's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Step Husband Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($HusbMBP)) {
-												echo PrintReady(addslashes($HusbMBP)); // mbirthpl = Step Husband Mother's Place of Birth
+												echo addslashes($HusbMBP); // mbirthpl = Step Husband Mother's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // mbirthpl = Step Husband Mother's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Step Husband Mother's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($chBLDarray) && $people["husb"]->getSex()=="F") {
 												$chBLDarray = implode("::", $chBLDarray);
-												echo PrintReady($chBLDarray); // Array of Children (name, birthdate, deathdate)
-											} else {
-												echo PrintReady('');
+												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 											}
 										?>");'>
 										<?php
-											echo PrintReady($people["husb"]->getFullName());  // Full Name (Link)
+											echo $people["husb"]->getFullName();  // Full Name (Link)
 										?>
 									</a>
 									<?php
@@ -756,8 +746,8 @@ if (!defined('WT_WEBTREES')) {
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
-							if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
-							if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
+							if ($people["wife"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["wife"]->getDeathYear(); }
+							if ($people["wife"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["wife"]->getBirthYear(); }
 							?>
 							<tr>
 								<td align="left" class="linkcell optionbox">
@@ -780,7 +770,7 @@ if (!defined('WT_WEBTREES')) {
 									if (($people["wife"]->canDisplayDetails())) {
 									?>
 									<a href='javaScript:insertRowToTable("<?php
-											echo PrintReady($people["wife"]->getXref()) ; // pid = PID
+											echo $people["wife"]->getXref() ; // pid = PID
 										?>", "<?php
 											echo addslashes($fulln); // nam = Full Name
 										?>", "<?php
@@ -791,12 +781,12 @@ if (!defined('WT_WEBTREES')) {
 											}
 										?>", "<?php
 										if ($people["wife"]->getLabel() == ".") {
-											echo PrintReady(WT_I18N::translate('Step-Mother')); // label = Relationship
+											echo WT_I18N::translate('Step-Mother'); // label = Relationship
 										} else {
-											echo PrintReady($people["wife"]->getLabel()); // label = Relationship
+											echo $people["wife"]->getLabel(); // label = Relationship
 										}
 										?>", "<?php
-											echo PrintReady($people["wife"]->getSex()); // gend = Gender
+											echo $people["wife"]->getSex(); // gend = Gender
 										?>", "<?php
 											if ($married>=0 && isset($nam[1])) {
 												echo "M"; // cond = Condition (Married)
@@ -810,35 +800,33 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ($people["wife"]->getBirthDate()->minJD()+$people["wife"]->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
 										?>", "<?php
-											echo PrintReady($censyear-$people["wife"]->getbirthyear()); // age = Census Date minus YOB
+											echo $censyear-$people["wife"]->getbirthyear(); // age = Census Date minus YOB
 										?>", "<?php
 											echo ($people["wife"]->getDeathDate()->minJD()+$people["wife"]->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo PrintReady(addslashes($people["wife"]->getBirthPlace())); //  birthpl = Step Wife Place of Birth
+											echo addslashes($people["wife"]->getBirthPlace()); //  birthpl = Step Wife Place of Birth
 										?>", "<?php
 											if (isset($WifeFBP)) {
-												echo PrintReady(addslashes($WifeFBP)); // fbirthpl = Step Wife Father's Place of Birth
+												echo addslashes($WifeFBP); // fbirthpl = Step Wife Father's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // fbirthpl = Step Wife Father's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Step Wife Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($WifeMBP)) {
-												echo PrintReady(addslashes($WifeMBP)); // mbirthpl = Step Wife Mother's Place of Birth
+												echo addslashes($WifeMBP); // mbirthpl = Step Wife Mother's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // mbirthpl = Step Wife Mother's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Step Wife Mother's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($chBLDarray) && $people["wife"]->getSex()=="F") {
 												$chBLDarray = implode("::", $chBLDarray);
-												echo PrintReady($chBLDarray); // Array of Children (name, birthdate, deathdate)
-											} else {
-												echo PrintReady('');
+												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 											}
 										?>");'>
 										<?php
-											echo PrintReady($people["wife"]->getFullName());  // Full Name (Link)
+											echo $people["wife"]->getFullName();  // Full Name (Link)
 										?>
 									</a>
 									<?php
@@ -892,8 +880,8 @@ if (!defined('WT_WEBTREES')) {
 								$slabel .= $spouselinks;
 								$submenu = new WT_Menu($slabel);
 								$menu->addSubMenu($submenu);
-								if (PrintReady($child->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($child->getDeathYear()); }
-								if (PrintReady($child->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($child->getBirthYear()); }
+								if ($child->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $child->getDeathYear(); }
+								if ($child->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $child->getBirthYear(); }
 								?>
 								<tr>
 									<td align="left" class="linkcell optionbox">
@@ -916,7 +904,7 @@ if (!defined('WT_WEBTREES')) {
 										if (($child->canDisplayDetails())) {
 										?>
 										<a href='javaScript:insertRowToTable("<?php
-												echo PrintReady($child->getXref()) ; // pid = PID
+												echo $child->getXref() ; // pid = PID
 											?>", "<?php
 												echo addslashes($fulln); // nam = Full Name
 											?>", "<?php
@@ -926,9 +914,9 @@ if (!defined('WT_WEBTREES')) {
 													echo addslashes($fulln); // mnam = Full Name
 												}
 											?>", "<?php
-												echo PrintReady($child->getLabel()); // label = Relationship
+												echo $child->getLabel(); // label = Relationship
 											?>", "<?php
-												echo PrintReady($child->getSex()); // gend = Gender
+												echo $child->getSex(); // gend = Gender
 											?>", "<?php
 												echo ""; // cond = Condition (Married or Single)
 											?>", "<?php
@@ -938,35 +926,33 @@ if (!defined('WT_WEBTREES')) {
 											?>", "<?php
 												echo ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
 											?>", "<?php
-												echo PrintReady($censyear-$child->getbirthyear()); // age = Census Date minus YOB
+												echo $censyear-$child->getbirthyear(); // age = Census Date minus YOB
 											?>", "<?php
 												echo ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
 											?>", "<?php
 												echo ""; // occu = Occupation
 											?>", "<?php
-												echo PrintReady(addslashes($child->getBirthPlace())); //  birthpl = Child Place of Birth
+												echo addslashes($child->getBirthPlace()); //  birthpl = Child Place of Birth
 											?>", "<?php
 												if (isset($people["husb"])) {
-													echo PrintReady(addslashes($people["husb"]->getBirthPlace())); // fbirthpl = Child Father's Place of Birth
+													echo addslashes($people["husb"]->getBirthPlace()); // fbirthpl = Child Father's Place of Birth
 												} else {
-													echo PrintReady('UNK, UNK, UNK, UNK'); // fbirthpl = Child Father's Place of Birth Not known
+													echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father's Place of Birth Not known
 												}
 											?>", "<?php
 												if (isset($people["wife"])) {
-													echo PrintReady(addslashes($people["wife"]->getBirthPlace())); // mbirthpl = Child Mother's Place of Birth
+													echo addslashes($people["wife"]->getBirthPlace()); // mbirthpl = Child Mother's Place of Birth
 												} else {
-													echo PrintReady('UNK, UNK, UNK, UNK'); // mbirthpl = Child Mother's Place of Birth Not known
+													echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother's Place of Birth Not known
 												}
 											?>", "<?php
 												if (isset($chBLDarray) && $child->getSex()=="F") {
 													$chBLDarray = implode("::", $chBLDarray);
-													echo PrintReady($chBLDarray); // Array of Children (name, birthdate, deathdate)
-												} else {
-													echo PrintReady('');
+													echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 												}
 											?>");'>
 											<?php
-												echo PrintReady($child->getFullName());  // Full Name (Link)
+												echo $child->getFullName();  // Full Name (Link)
 											?>
 										</a>
 										<?php
@@ -1046,8 +1032,8 @@ if (!defined('WT_WEBTREES')) {
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
-							if (PrintReady($people["husb"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["husb"]->getDeathYear()); }
-							if (PrintReady($people["husb"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["husb"]->getBirthYear()); }
+							if ($people["husb"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["husb"]->getDeathYear(); }
+							if ($people["husb"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["husb"]->getBirthYear(); }
 							?>
 							<tr class="fact_value">
 								<td align="left" nowrap="nowrap" class="linkcell optionbox">
@@ -1092,7 +1078,7 @@ if (!defined('WT_WEBTREES')) {
 												echo $people["husb"]->getLabel(); // label = Relationship
 											}
 										?>", "<?php
-											echo PrintReady($people["husb"]->getSex()); // gend = Gender
+											echo $people["husb"]->getSex(); // gend = Gender
 										?>", "<?php
 											if ($married>=0) {
 												echo "M"; // cond = Condition (Married)
@@ -1106,35 +1092,33 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ($people["husb"]->getBirthDate()->minJD()+$people["husb"]->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
 										?>", "<?php
-											echo PrintReady($censyear-$people["husb"]->getbirthyear()); // age = Census Date minus YOB
+											echo $censyear-$people["husb"]->getbirthyear(); // age = Census Date minus YOB
 										?>", "<?php
 											echo ($people["husb"]->getDeathDate()->minJD()+$people["husb"]->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo PrintReady(addslashes($people["husb"]->getBirthPlace())); //  birthpl = Husband Place of Birth
+											echo addslashes($people["husb"]->getBirthPlace()); //  birthpl = Husband Place of Birth
 										?>", "<?php
 											if (isset($HusbFBP)) {
-												echo PrintReady(addslashes($HusbFBP)); // fbirthpl = Husband Father's Place of Birth
+												echo addslashes($HusbFBP); // fbirthpl = Husband Father's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // fbirthpl = Husband Father's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Husband Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($HusbMBP)) {
-												echo PrintReady(addslashes($HusbMBP)); // mbirthpl = Husband Mother's Place of Birth
+												echo addslashes($HusbMBP); // mbirthpl = Husband Mother's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // mbirthpl = Husband Mother's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Husband Mother's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($chBLDarray) && $people["husb"]->getSex()=="F") {
 												$chBLDarray = implode("::", $chBLDarray);
-												echo PrintReady($chBLDarray); // Array of Children (name, birthdate, deathdate)
-											} else {
-												echo PrintReady('');
+												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 											}
 										?>");'>
 										<?php
-											echo PrintReady($people["husb"]->getFullName());  // Full Name (Link)
+											echo $people["husb"]->getFullName();  // Full Name (Link)
 										?>
 									</a>
 									<?php
@@ -1193,8 +1177,8 @@ if (!defined('WT_WEBTREES')) {
 							$slabel .= $parentlinks;
 							$submenu = new WT_Menu($slabel);
 							$menu->addSubMenu($submenu);
-							if (PrintReady($people["wife"]->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($people["wife"]->getDeathYear()); }
-							if (PrintReady($people["wife"]->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($people["wife"]->getBirthYear()); }
+							if ($people["wife"]->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $people["wife"]->getDeathYear(); }
+							if ($people["wife"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["wife"]->getBirthYear(); }
 							?>
 							<tr>
 								<td align="left" nowrap="nowrap" class="linkcell optionbox">
@@ -1236,10 +1220,10 @@ if (!defined('WT_WEBTREES')) {
 											if ($people["wife"]->getXref()==$pid) {
 												echo "Head"; // label = Head
 											} else {
-												echo PrintReady($people["wife"]->getLabel()); // label = Relationship
+												echo $people["wife"]->getLabel(); // label = Relationship
 											}
 										?>", "<?php
-											echo PrintReady($people["wife"]->getSex()); // gend = Gender
+											echo $people["wife"]->getSex(); // gend = Gender
 										?>", "<?php
 											if ($married>=0 && isset($nam[1])) {
 												echo "M"; // cond = Condition (Married)
@@ -1253,35 +1237,33 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ($people["wife"]->getBirthDate()->minJD()+$people["wife"]->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
 										?>", "<?php
-											echo PrintReady($censyear-$people["wife"]->getbirthyear()); // age = Census Date minus YOB
+											echo $censyear-$people["wife"]->getbirthyear(); // age = Census Date minus YOB
 										?>", "<?php
 											echo ($people["wife"]->getDeathDate()->minJD()+$people["wife"]->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo PrintReady(addslashes($people["wife"]->getBirthPlace())); //  birthpl = Wife Place of Birth
+											echo addslashes($people["wife"]->getBirthPlace()); //  birthpl = Wife Place of Birth
 										?>", "<?php
 											if (isset($WifeFBP)) {
-												echo PrintReady(addslashes($WifeFBP)); // fbirthpl = Wife Father's Place of Birth
+												echo addslashes($WifeFBP); // fbirthpl = Wife Father's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // fbirthpl = Wife Father's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Wife Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($WifeMBP)) {
-												echo PrintReady(addslashes($WifeMBP)); // mbirthpl = Wife Mother's Place of Birth
+												echo addslashes($WifeMBP); // mbirthpl = Wife Mother's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // mbirthpl = Wife Mother's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Wife Mother's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($chBLDarray) && $people["wife"]->getSex()=="F") {
 												$chBLDarray = implode("::", $chBLDarray);
-												echo PrintReady($chBLDarray); // Array of Children (name, birthdate, deathdate)
-											} else {
-												echo PrintReady('');
+												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 											}
 										?>");'>
 										<?php
-											echo PrintReady($people["wife"]->getFullName());  // Full Name (Link)
+											echo $people["wife"]->getFullName();  // Full Name (Link)
 										?>
 										</a>
 										<?php
@@ -1373,9 +1355,9 @@ if (!defined('WT_WEBTREES')) {
 												echo addslashes($fulln); // mnam = Full Name
 											}
 										?>", "<?php
-											echo PrintReady($child->getLabel()); // label = Relationship
+											echo $child->getLabel(); // label = Relationship
 										?>", "<?php
-											echo PrintReady($child->getSex()); // gend = Gender
+											echo $child->getSex(); // gend = Gender
 										?>", "<?php
 											if ($married>0) {
 												echo "M"; // cond = Condition (Married)
@@ -1391,35 +1373,33 @@ if (!defined('WT_WEBTREES')) {
 										?>", "<?php
 											echo ($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2; // dob = Date of Birth (Julian)
 										?>", "<?php
-											echo PrintReady($censyear-$child->getbirthyear()); //  age = Census Date minus YOB
+											echo $censyear-$child->getbirthyear(); //  age = Census Date minus YOB
 										?>", "<?php
 											echo ($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2; // dod = Date of Death (Julian)
 										?>", "<?php
 											echo ""; // occu = Occupation
 										?>", "<?php
-											echo PrintReady(addslashes($child->getBirthPlace())); //  birthpl = Child Place of Birth
+											echo addslashes($child->getBirthPlace()); //  birthpl = Child Place of Birth
 										?>", "<?php
 											if (isset($people["husb"])) {
-												echo PrintReady(addslashes($people["husb"]->getBirthPlace())); // fbirthpl = Child Father's Place of Birth
+												echo addslashes($people["husb"]->getBirthPlace()); // fbirthpl = Child Father's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // fbirthpl = Child Father's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // fbirthpl = Child Father's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($people["wife"])) {
-												echo PrintReady(addslashes($people["wife"]->getBirthPlace())); // mbirthpl = Child Mother's Place of Birth
+												echo addslashes($people["wife"]->getBirthPlace()); // mbirthpl = Child Mother's Place of Birth
 											} else {
-												echo PrintReady('UNK, UNK, UNK, UNK'); // mbirthpl = Child Mother's Place of Birth Not known
+												echo 'UNK, UNK, UNK, UNK'; // mbirthpl = Child Mother's Place of Birth Not known
 											}
 										?>", "<?php
 											if (isset($chBLDarray) && $child->getSex()=="F") {
 												$chBLDarray = implode("::", $chBLDarray);
-												echo PrintReady($chBLDarray); // Array of Children (name, birthdate, deathdate)
-											} else {
-												echo PrintReady('');
+												echo $chBLDarray; // Array of Children (name, birthdate, deathdate)
 											}
 										?>");'>
 										<?php
-											echo PrintReady($child->getFullName());  // Full Name (Link)
+											echo $child->getFullName();  // Full Name (Link)
 										?>
 									</a>
 									<?php
@@ -1574,7 +1554,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										}									
 									}
 									$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
-									$parentlinks .= "'".PrintReady($husb->getXref())."',"; // pid = PID
+									$parentlinks .= "'".$husb->getXref()."',"; // pid = PID
 									$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 									if (isset($fulmn)) {
 										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Married Name
@@ -1586,20 +1566,20 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									} else {
 										$parentlinks .= "'Grand-Father',"; // label = 2st Gen Male Relationship
 									}
-									$parentlinks .= "'".PrintReady($husb->getSex())."',"; // sex = Gender
+									$parentlinks .= "'".$husb->getSex()."',"; // sex = Gender
 									$parentlinks .= "''".","; // cond = Condition (Married etc)
 									if ($marrdate) {
 										$parentlinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
 									}
 									$parentlinks .= "'".(($husb->getBirthDate()->minJD()+$husb->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 									if ($husb->getbirthyear()>=1) {
-										$parentlinks .= "'".PrintReady($censyear-$husb->getbirthyear())."',"; // age =  Census Year - Year of Birth
+										$parentlinks .= "'".$censyear-$husb->getbirthyear()."',"; // age =  Census Year - Year of Birth
 									} else {
 										$parentlinks .= "''".","; // age =  Undefined
 									}
 									$parentlinks .= "'".(($husb->getDeathDate()->minJD()+$husb->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 									$parentlinks .= "''".","; // occu  = Occupation
-									$parentlinks .= "'".PrintReady(addslashes($husb->getBirthPlace()))."'".","; // birthpl = Individuals Birthplace
+									$parentlinks .= "'".addslashes($husb->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 									if (isset($pHusbFBP)) {
 										$parentlinks .= "'".addslashes($pHusbFBP)."'".","; // fbirthpl = Fathers Birthplace
 									} else {
@@ -1617,7 +1597,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										$parentlinks .= "''";
 									}
 									$parentlinks .= ");\">";
-									$parentlinks .= PrintReady($husb->getFullName()); // Full Name (Link)
+									$parentlinks .= $husb->getFullName(); // Full Name (Link)
 									$parentlinks .= "</a>";
 								} else {
 									$parentlinks .= WT_I18N::translate('Private');
@@ -1669,7 +1649,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									}
 									
 									$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
-									$parentlinks .= "'".PrintReady($wife->getXref())."',"; // pid = PID
+									$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
 									$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 									if (isset($fulmn)) {
 										$parentlinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
@@ -1681,20 +1661,20 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									} else {
 										$parentlinks .= "'Grand-Mother',"; // label = 2st Gen Female Relationship
 									}
-									$parentlinks .= "'".PrintReady($wife->getSex())."',"; // sex = Gender
+									$parentlinks .= "'".$wife->getSex()."',"; // sex = Gender
 									$parentlinks .= "''".","; // cond = Condition (Married etc)
 									if ($marrdate) {
 										$parentlinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
 									}
 									$parentlinks .= "'".(($wife->getBirthDate()->minJD()+$wife->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 									if ($wife->getbirthyear()>=1) {
-										$parentlinks .= "'".PrintReady($censyear-$wife->getbirthyear())."',"; // age =  Census Year - Year of Birth
+										$parentlinks .= "'".$censyear-$wife->getbirthyear()."',"; // age =  Census Year - Year of Birth
 									} else {
 										$parentlinks .= "''".","; // age =  Undefined
 									}
 									$parentlinks .= "'".(($wife->getDeathDate()->minJD()+$wife->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 									$parentlinks .= "''".","; // occu  = Occupation
-									$parentlinks .= "'".PrintReady(addslashes($wife->getBirthPlace()))."'".","; // birthpl = Individuals Birthplace
+									$parentlinks .= "'".addslashes($wife->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 									if (isset($pWifeFBP)) {
 										$parentlinks .= "'".addslashes($pWifeFBP)."'".","; // fbirthpl = Fathers Birthplace
 									} else {
@@ -1712,7 +1692,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										$parentlinks .= "''";
 									}
 									$parentlinks .= ");\">";
-									$parentlinks .= PrintReady($wife->getFullName()); // Full Name (Link)
+									$parentlinks .= $wife->getFullName(); // Full Name (Link)
 									$parentlinks .= "</a>";
 								} else {
 									$parentlinks .= WT_I18N::translate('Private');
@@ -1784,7 +1764,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											}									
 										}
 										$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
-										$parentlinks .= "'".PrintReady($husb->getXref())."',"; // pid = PID
+										$parentlinks .= "'".$husb->getXref()."',"; // pid = PID
 										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 										if (isset($fulmn)) {
 											$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // mnam = Full Married Name
@@ -1796,20 +1776,20 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										} else {
 											$parentlinks .= "'Step Grand-Father',"; // label = 2st Gen Male Relationship
 										}
-										$parentlinks .= "'".PrintReady($husb->getSex())."',"; // sex = Gender
+										$parentlinks .= "'".$husb->getSex()."',"; // sex = Gender
 										$parentlinks .= "''".","; // cond = Condition (Married etc)
 										if ($marrdate) {
 											$parentlinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
 										}
 										$parentlinks .= "'".(($husb->getBirthDate()->minJD()+$husb->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 										if ($husb->getbirthyear()>=1) {
-											$parentlinks .= "'".PrintReady($censyear-$husb->getbirthyear())."',"; // age =  Census Year - Year of Birth
+											$parentlinks .= "'".$censyear-$husb->getbirthyear()."',"; // age =  Census Year - Year of Birth
 										} else {
 											$parentlinks .= "''".","; // age =  Undefined
 										}
 										$parentlinks .= "'".(($husb->getDeathDate()->minJD()+$husb->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 										$parentlinks .= "''".","; // occu  = Occupation
-										$parentlinks .= "'".PrintReady(addslashes($husb->getBirthPlace()))."'".","; // birthpl = Individuals Birthplace
+										$parentlinks .= "'".addslashes($husb->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 										if (isset($pHusbFBP)) {
 											$parentlinks .= "'".addslashes($pHusbFBP)."'".","; // fbirthpl = Fathers Birthplace
 										} else {
@@ -1827,7 +1807,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$parentlinks .= "''";
 										}
 										$parentlinks .= ");\">";
-										$parentlinks .= PrintReady($husb->getFullName()); // Full Name (Link)
+										$parentlinks .= $husb->getFullName(); // Full Name (Link)
 										$parentlinks .= "</a>";
 									} else {
 										$parentlinks .= WT_I18N::translate('Private');
@@ -1882,7 +1862,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										}
 										
 										$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
-										$parentlinks .= "'".PrintReady($wife->getXref())."',"; // pid = PID
+										$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
 										$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 										if (isset($fulmn)) {
 											$parentlinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
@@ -1894,20 +1874,20 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										} else {
 											$parentlinks .= "'Step Grand-Mother',"; // label = 2st Gen Female Relationship
 										}
-										$parentlinks .= "'".PrintReady($wife->getSex())."',"; // sex = Gender
+										$parentlinks .= "'".$wife->getSex()."',"; // sex = Gender
 										$parentlinks .= "''".","; // cond = Condition (Married etc)
 										if ($marrdate) {
 											$parentlinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
 										}
 										$parentlinks .= "'".(($wife->getBirthDate()->minJD()+$wife->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 										if ($wife->getbirthyear()>=1) {
-											$parentlinks .= "'".PrintReady($censyear-$wife->getbirthyear())."',"; // age =  Census Year - Year of Birth
+											$parentlinks .= "'".$censyear-$wife->getbirthyear()."',"; // age =  Census Year - Year of Birth
 										} else {
 											$parentlinks .= "''".","; // age =  Undefined
 										}
 										$parentlinks .= "'".(($wife->getDeathDate()->minJD()+$wife->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 										$parentlinks .= "''".","; // occu  = Occupation
-										$parentlinks .= "'".PrintReady(addslashes($wife->getBirthPlace()))."'".","; // birthpl = Individuals Birthplace
+										$parentlinks .= "'".addslashes($wife->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 										if (isset($pWifeFBP)) {
 											$parentlinks .= "'".addslashes($pWifeFBP)."'".","; // fbirthpl = Fathers Birthplace
 										} else {
@@ -1925,7 +1905,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$parentlinks .= "''";
 										}
 										$parentlinks .= ");\">";
-										$parentlinks .= PrintReady($wife->getFullName()); // Full Name (Link)
+										$parentlinks .= $wife->getFullName(); // Full Name (Link)
 										$parentlinks .= "</a>";
 									} else {
 										$parentlinks .= WT_I18N::translate('Private');
@@ -2000,7 +1980,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									}
 
 									$spouselinks .= "<a href=\"javascript:insertRowToTable(";
-									$spouselinks .= "'".PrintReady($spouse->getXref())."',"; // pid = PID
+									$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
 									$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 									if (isset($fulmn)) {
 										$spouselinks .= "'".addslashes(strip_tags($fulmn))."',"; // mnam = Full Married Name
@@ -2020,20 +2000,20 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$spouselinks .= "'Sister in Law',"; // label = Female Relationship
 										}
 									}
-									$spouselinks .= "'".PrintReady($spouse->getSex())."',"; // sex = Gender
+									$spouselinks .= "'".$spouse->getSex()."',"; // sex = Gender
 									$spouselinks .= "''".","; // cond = Condition (Married etc)
 									if ($marrdate) {
 										$spouselinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
 									}
 									$spouselinks .= "'".(($spouse->getBirthDate()->minJD()+$spouse->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 									if ($spouse->getbirthyear()>=1) {
-										$spouselinks .= "'".PrintReady($censyear-$spouse->getbirthyear())."',"; // age =  Census Year - Year of Birth
+										$spouselinks .= "'".$censyear-$spouse->getbirthyear()."',"; // age =  Census Year - Year of Birth
 									} else {
 										$spouselinks .= "''".","; // age =  Undefined
 									}
 									$spouselinks .= "'".(($spouse->getDeathDate()->minJD()+$spouse->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 									$spouselinks .= "''".","; // occu  = Occupation
-									$spouselinks .= "'".PrintReady(addslashes($spouse->getBirthPlace()))."'".","; // birthpl = Individuals Birthplace
+									$spouselinks .= "'".addslashes($spouse->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 									if (isset($pSpouseFBP)) {
 										$spouselinks .= "'".addslashes($pSpouseFBP)."'".","; // fbirthpl = Fathers Birthplace
 									} else {
@@ -2051,7 +2031,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										$spouselinks .= "''";
 									}
 									$spouselinks .= ");\">";
-									$spouselinks .= PrintReady($spouse->getFullName()); // Full Name (Link)
+									$spouselinks .= $spouse->getFullName(); // Full Name (Link)
 									$spouselinks .= "</a>";
 								} else {
 									$spouselinks .= WT_I18N::translate('Private');
@@ -2138,7 +2118,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									}
 
 									$spouselinks .= "<a href=\"javascript:insertRowToTable(";
-									$spouselinks .= "'".PrintReady($child->getXref())."',"; // pid = PID
+									$spouselinks .= "'".$child->getXref()."',"; // pid = PID
 									$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 									if (isset($chfulmn)) {
 										$spouselinks .= "'".addslashes(strip_tags($chfulmn))."',"; // mnam = Full Married Name
@@ -2158,7 +2138,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 											$spouselinks .= "'Niece',"; // label = Female Relationship
 										}
 									}
-									$spouselinks .= "'".PrintReady($child->getSex())."',"; // sex = Gender
+									$spouselinks .= "'".$child->getSex()."',"; // sex = Gender
 									$spouselinks .= "''".","; // cond = Condition (Married etc)
 									if ($marrdate) {
 										$spouselinks .= "'".(($marrdate->minJD()+$marrdate->maxJD())/2)."',"; // dom = Date of Marriage (Julian)
@@ -2167,13 +2147,13 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									}
 									$spouselinks .= "'".(($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 									if ($child->getbirthyear()>=1) {
-										$spouselinks .= "'".PrintReady($censyear-$child->getbirthyear())."',"; // age =  Census Year - Year of Birth
+										$spouselinks .= "'".$censyear-$child->getbirthyear()."',"; // age =  Census Year - Year of Birth
 									} else {
 										$spouselinks .= "''".","; // age =  Undefined
 									}
 									$spouselinks .= "'".(($child->getDeathDate()->minJD()+$child->getDeathDate()->maxJD())/2)."',"; // dod = Date of Death
 									$spouselinks .= "''".","; // occu  = Occupation
-									$spouselinks .= "'".PrintReady(addslashes($child->getBirthPlace()))."'".","; // birthpl = Individuals Birthplace
+									$spouselinks .= "'".addslashes($child->getBirthPlace())."'".","; // birthpl = Individuals Birthplace
 									if (isset($ChildFBP)) {
 										$spouselinks .= "'".addslashes($ChildFBP)."'".","; // fbirthpl = Fathers Birthplace
 									} else {
@@ -2191,7 +2171,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										$spouselinks .= "''";
 									}
 									$spouselinks .= ");\">";
-									$spouselinks .= PrintReady($child->getFullName()); // Full Name (Link)
+									$spouselinks .= $child->getFullName(); // Full Name (Link)
 									$spouselinks .= "</a>";
 									$spouselinks .= "</li>";
 								} else {

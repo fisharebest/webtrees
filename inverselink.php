@@ -142,7 +142,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 				print_findindi_link("linktopid", "");
 			} else {
 				$record=WT_Person::getInstance($linktoid);
-				echo PrintReady($record->format_list('span', false, $record->getFullName()));
+				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}
 
@@ -154,7 +154,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 				print_findfamily_link("linktofamid");
 			} else {
 				$record=WT_Family::getInstance($linktoid);
-				echo PrintReady($record->format_list('span', false, $record->getFullName()));
+				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}
 
@@ -166,7 +166,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 				print_findsource_link("linktosid");
 			} else {
 				$record=WT_Source::getInstance($linktoid);
-				echo PrintReady($record->format_list('span', false, $record->getFullName()));
+				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}
 		if ($linkto == "repository") {
@@ -176,7 +176,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '" />';
 			} else {
 				$record=WT_Repository::getInstance($linktoid);
-				echo PrintReady($record->format_list('span', false, $record->getFullName()));
+				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}
 
@@ -187,7 +187,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '" />';
 			} else {
 				$record=WT_Note::getInstance($linktoid);
-				echo PrintReady($record->format_list('span', false, $record->getFullName()));
+				echo $record->format_list('span', false, $record->getFullName());
 			}
 		}
 

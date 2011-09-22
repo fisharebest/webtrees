@@ -123,7 +123,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 				foreach ($changes as $change) {
 					$record=WT_GedcomRecord::getInstance($change->xref);
 					if ($record->canDisplayDetails()) {
-						$content.='<b>'.PrintReady($record->getFullName()).'</b> '.getLRM().'('.$record->getXref().')'.getLRM();
+						$content.='<b>'.$record->getFullName();
 						switch ($record->getType()) {
 						case 'INDI':
 						case 'FAM':

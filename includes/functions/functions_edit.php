@@ -1747,7 +1747,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		if (($fact=="ASSO" || $fact=="SOUR" || $fact=="OBJE" || ($fact=="NOTE" && $islink)) && $value) {
 			$record=WT_GedcomRecord::getInstance($value);
 			if ($record) {
-				echo ' ', PrintReady($record->getFullName()), ' (', $value, ')';
+				echo ' ', $record->getFullName(), ' (', $value, ')';
 			}
 			else if ($value!="new") {
 				echo ' ', $value;
@@ -1761,7 +1761,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		if (($fact=="ASSO" || $fact=="SOUR" || $fact=="OBJE" || ($fact=="NOTE" && $islink)) && $value) {
 			$record=WT_GedcomRecord::getInstance($value);
 			if ($record) {
-				echo getRLM(), PrintReady($record->getFullName()), ' ', getLRM(), '(', $value, ') ', getLRM(), getRLM();
+				echo getRLM(), $record->getFullName(), ' ', getLRM(), '(', $value, ') ', getLRM(), getRLM();
 			}
 			else if ($value!="new") {
 				echo getRLM(), $value, ' ', getRLM();

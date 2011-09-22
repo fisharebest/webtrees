@@ -908,7 +908,7 @@ if ($action=="filter") {
 									echo WT_I18N::translate('View Object'), ' - ';
 									break;
 								}
-								echo PrintReady($record->getFullName()), '</a>';
+								echo $record->getFullName(), '</a>';
 							}
 						} else {
 							echo WT_I18N::translate('This media object is not linked to any GEDCOM record.');

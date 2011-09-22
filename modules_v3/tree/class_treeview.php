@@ -208,10 +208,10 @@ class TreeView {
 
     $r = '<div class="tv'.$person->getSex().' tv_person_expanded">';
     $r .= $this->getThumbnail($personGroup, $person);
-    $r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', htmlspecialchars(strip_tags($person->getFullName()))).'"><img src="'.$WT_IMAGES['tree'].'" class="tv_link tv_treelink" /></a>';
+    $r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'"><img src="'.$WT_IMAGES['tree'].'" class="tv_link tv_treelink" /></a>';
     $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$person->getBirthDate()->Display().' '.$person->getBirthPlace();
     if ($family) {
-      $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" class="tv_link tv_treelink" title="'.htmlspecialchars(strip_tags($family->getFullName())).'" /></a>'.$family->getMarriagePlace();
+      $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" class="tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'" /></a>'.$family->getMarriagePlace();
     }
     if ($person->isDead())
       $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('DEAT').'</b> '.$person->getDeathDate()->Display().' '.$person->getDeathPlace();
@@ -377,13 +377,13 @@ class TreeView {
     	if ($f) {
 				switch ($p->getSex()) {
 				case 'M':
-					$title=' title="'.htmlspecialchars(strip_tags(/* I18N: e.g. "Son of [father name & mother name]" */ WT_I18N::translate('Son of %s', $f->getFullName()))).'"';
+					$title=' title="'.strip_tags(/* I18N: e.g. "Son of [father name & mother name]" */ WT_I18N::translate('Son of %s', $f->getFullName())).'"';
 					break;
 				case 'F':
-					$title=' title="'.htmlspecialchars(strip_tags(/* I18N: e.g. "Daughter of [father name & mother name]" */ WT_I18N::translate('Daughter of %s', $f->getFullName()))).'"';
+					$title=' title="'.strip_tags(/* I18N: e.g. "Daughter of [father name & mother name]" */ WT_I18N::translate('Daughter of %s', $f->getFullName())).'"';
 					break;
 				case 'U':
-					$title=' title="'.htmlspecialchars(strip_tags(/* I18N: e.g. "Child of [father name & mother name]" */ WT_I18N::translate('Child of %s', $f->getFullName()))).'"';
+					$title=' title="'.strip_tags(/* I18N: e.g. "Child of [father name & mother name]" */ WT_I18N::translate('Child of %s', $f->getFullName())).'"';
 					break;
 				}
 			} else {
@@ -420,7 +420,7 @@ class TreeView {
 		$thumbnail="";
 		if ($SHOW_HIGHLIGHT_IMAGES) {
 			$object=$person->findHighlightedMedia();
-			$img_title=PrintReady(htmlspecialchars($person->getFullName()));
+			$img_title=strip_tags($person->getFullName());
 			if (!empty($object)) {
 				$mediaobject=WT_Media::getInstance($object['mid']);
 				$thumbnail=$mediaobject->displayMedia(array('display_type'=>'treeview','img_title'=>$img_title,'clearbox'=>'tvlb'.$personGroup->getXref()));

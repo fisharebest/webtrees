@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -374,8 +374,9 @@ class WT_Family extends WT_GedcomRecord {
 					if ($husb_name['type']!='_MARNM' && $wife_name['type']!='_MARNM' && $husb_name['script']==$wife_name['script']) {
 						$this->_getAllNames[]=array(
 							'type'=>$husb_name['type'],
-							'full'=>$husb_name['full'].' + '.$wife_name['full'],
 							'sort'=>$husb_name['sort'].' + '.$wife_name['sort'],
+							'full'=>$husb_name['full'].' + '.$wife_name['full'],
+							// No need for a fullNN entry - we do not currently store FAM names in the database
 						);
 					}
 				}
@@ -386,8 +387,9 @@ class WT_Family extends WT_GedcomRecord {
 					if ($husb_name['type']!='_MARNM' && $wife_name['type']!='_MARNM'  && $husb_name['script']!=$wife_name['script']) {
 						$this->_getAllNames[]=array(
 							'type'=>$husb_name['type'],
-							'full'=>$husb_name['full'].' + '.$wife_name['full'],
 							'sort'=>$husb_name['sort'].' + '.$wife_name['sort'],
+							'full'=>$husb_name['full'].' + '.$wife_name['full'],
+							// No need for a fullNN entry - we do not currently store FAM names in the database
 						);
 					}
 				}

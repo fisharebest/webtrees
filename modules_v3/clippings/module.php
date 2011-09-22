@@ -252,7 +252,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 							if ($record->getType()=="INDI") $out .=$record->getSexImage();
 							$out .= ' '.$record->getFullName().' ';
 							if ($record->getType()=="INDI" && $record->canDisplayDetails()) {
-								$out .= PrintReady(' ('.$record->getLifeSpan().')');
+								$out .= ' ('.$record->getLifeSpan().')';
 							}
 							$out .= '</a>';
 						}

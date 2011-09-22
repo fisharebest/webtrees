@@ -1601,7 +1601,7 @@ class WT_Person extends WT_GedcomRecord {
 	// 2 GIVN Carlos
 	// 2 SURN Vasquez,Sante
 	protected function _addName($type, $full, $gedrec) {
-		global $UNDERLINE_NAME_QUOTES, $UNKNOWN_NN, $UNKNOWN_PN;
+		global $UNDERLINE_NAME_QUOTES, $UNKNOWN_NN, $UNKNOWN_PN, $TEXT_DIRECTION;
 
 		////////////////////////////////////////////////////////////////////////////
 		// Extract the structured name parts - use for "sortable" names and indexes
@@ -1708,17 +1708,30 @@ class WT_Person extends WT_GedcomRecord {
 		// $fullNN keeps the @N.N. placeholders, for the database
 		// $full is for display on-screen
 		$fullNN=str_replace('/', '', $full);
-		$full='<span class="NAME">'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', $full).'</span>';
 
 		// Insert placeholders for any missing/unknown names
 		if (strpos($full, '@N.N.')!==false) {
-			$full=str_replace('@N.N.', $UNKNOWN_NN, $full   );
+			$full=str_replace('@N.N.', $UNKNOWN_NN, $full);
 		}
 		if (strpos($full, '@P.N.')!==false) {
 			$full=str_replace('@P.N.', $UNKNOWN_PN, $full);
 		}
+		// RTL names on LTR pages (and vice-versa) cause problems when they contain
+		// weakly-directional characters such as punctuation.  Add markup to fix this.
+		switch (utf8_direction($full)) {
+		case 'ltr':
+			$dir=($TEXT_DIRECTION=='rtl') ? ' dir="ltr"' : '';
+			break;
+		case 'rtl':
+			$dir=($TEXT_DIRECTION=='ltr') ? ' dir="ltr"' : '';
+			break;
+		case 'unknown':
+			$dir='';
+			break;
+		}
+		$full='<span class="NAME"'.$dir.'>'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', htmlspecialchars($full)).'</span>';
 
-		// Some people put preferred names in quotes
+		// Some people put preferred names in quotes.  This is wrong - quotes indicate NICK names.
 		if ($UNDERLINE_NAME_QUOTES) {
 			$full=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $full);
 		}
@@ -1739,13 +1752,13 @@ class WT_Person extends WT_GedcomRecord {
 			}
 
 			$this->_getAllNames[]=array(
-				'type'=>$type, 'full'=>$full, 'sort'=>$SURN.','.$GIVN,
-				// These extra parts used to populate the wt_name table and the indi list
-				// For these, we don't want to translate the @N.N. into local text
-				'fullNN'=>$fullNN,
-				'surname'=>$surname,
-				'givn'=>$GIVN,
-				'surn'=>$SURN
+				'type'=>$type,
+				'sort'=>$SURN.','.$GIVN,
+				'full'=>$full,       // This is used for display
+				'fullNN'=>$fullNN,   // This goes into the database
+				'surname'=>$surname, // This goes into the database
+				'givn'=>$GIVN,       // This goes into the database
+				'surn'=>$SURN,       // This goes into the database
 			);
 		}
 	}

@@ -146,7 +146,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		}
 		$out .= $person->getSexImage().' '.$person->getFullName().' ';
 		if ($person->canDisplayDetails()) {
-			$out .= PrintReady(' ('.$person->getLifeSpan().')');
+			$out .= ' ('.$person->getLifeSpan().')';
 		}
 		$out .= '</a> <a href="'.$person->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_indi'].'" border="0" alt="indi" /></a>';
 		if ($generations>0) {

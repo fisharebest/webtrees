@@ -492,7 +492,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		$dataleft  = $image . $event . addslashes($name);
 		$datamid   = " <span><a href='".$person->getHtmlUrl()."' id='alturl' title='" . WT_I18N::translate('Individual information') . "'>";
 		
-		if ($TEXT_DIRECTION == 'rtl') $datamid .= PrintReady('('.WT_I18N::translate('View Person').')');
+		if ($TEXT_DIRECTION == 'rtl') $datamid .= '('.WT_I18N::translate('View Person').')';
 		else $datamid .= '('.WT_I18N::translate('View Person').')';
 		$datamid  .= '</a></span>';
 		$dataright = '<br /><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .

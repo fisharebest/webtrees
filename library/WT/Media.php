@@ -480,7 +480,7 @@ class WT_Media extends WT_GedcomRecord {
 		$urltype = get_url_type($this->getLocalFilename());
 		$notes=($this->getNote()) ? htmlspecialchars(print_fact_notes("1 NOTE ".$this->getNote(), 1, true, true)) : '';
 		if (!$config['img_title']) {
-			$config['img_title']=PrintReady(htmlspecialchars($this->getFullName()));
+			$config['img_title']=strip_tags($this->getFullName());
 		}
 
 		// -- Determine the correct URL to open this media file
@@ -656,7 +656,7 @@ class WT_Media extends WT_GedcomRecord {
 			$alignstr=($config['align']=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
 			$stylestr=($config['show_full']) ? '' : ' style="display: none;" ';
 			if (!$config['img_title']) {
-				$config['img_title']=PrintReady(htmlspecialchars($this->getFullName()));
+				$config['img_title']=strip_tags($this->getFullName());
 			}
 			$sizestr='';
 			if ($config['class']=='thumbnail') {

@@ -132,7 +132,7 @@ if ($action == "choose" && $paramok) {
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
 		if ($title) {
-			echo '<b>', PrintReady($title), '</b>';
+			echo '<b>', $title, '</b>';
 		} else {
 			echo '<b>', $mediaid, '</b>';
 		}
@@ -210,7 +210,7 @@ if ($action == "choose" && $paramok) {
 		// ----
 	} else {
 		$record=WT_Person::getInstance($linktoid);
-		echo '<b>', PrintReady($record->getFullName()), '</b>';
+		echo '<b>', $record->getFullName(), '</b>';
 	}
 	echo '<table><tr><td>';
 		echo "<input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\" />";
