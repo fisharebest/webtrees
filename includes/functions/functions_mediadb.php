@@ -926,7 +926,7 @@ function display_silhouette(array $config = array()) {
 		$config['class']='pedigree_image_portrait';
 		$spacestr=' vspace="0" hspace="0" ';
 	}
-
+	$config['img_title']=strip_tags($config['img_title']);
 	$classstr='';
 	if ($config['class']) {
 		if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
