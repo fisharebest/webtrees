@@ -420,12 +420,11 @@ class TreeView {
 		$thumbnail="";
 		if ($SHOW_HIGHLIGHT_IMAGES) {
 			$object=$person->findHighlightedMedia();
-			$img_title=strip_tags($person->getFullName());
 			if (!empty($object)) {
 				$mediaobject=WT_Media::getInstance($object['mid']);
-				$thumbnail=$mediaobject->displayMedia(array('display_type'=>'treeview','img_title'=>$img_title,'clearbox'=>'tvlb'.$personGroup->getXref()));
+				$thumbnail=$mediaobject->displayMedia(array('display_type'=>'treeview','img_title'=>$person->getFullName(),'clearbox'=>'tvlb'.$personGroup->getXref()));
 			} else {
-				$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'treeview','img_title'=>$img_title)); // may return ''
+				$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'treeview','img_title'=>$person->getFullName())); // may return ''
 			}
 		}
 

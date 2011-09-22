@@ -226,18 +226,16 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$name = $person->getFullName();
 	if ($SHOW_HIGHLIGHT_IMAGES) {
 		$object=$person->findHighlightedMedia();
-		$img_title=strip_tags($name);
 		$img_id='box-'.$boxID.'.-thumb';
 		if (!empty($object)) {
 			$mediaobject=WT_Media::getInstance($object['mid']);
-			$thumbnail=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title,'show_full'=>$show_full));
+			$thumbnail=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name,'show_full'=>$show_full));
 		} else {
-			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$img_title,'show_full'=>$show_full)); // may return ''
+			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name,'show_full'=>$show_full)); // may return ''
 		}
 	}
 	//-- find additional name
 	$addname=$person->getAddName();
-	$name = PrintReady($name);
 
 	// add optional CSS style for each fact
 	$indirec = $person->getGedcomRecord();
