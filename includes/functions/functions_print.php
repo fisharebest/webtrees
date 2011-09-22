@@ -404,7 +404,7 @@ function print_header($title, $view='full') {
 
 	// The title often includes the names of records, which may have markup
 	// that cannot be used in the page title.
-	$title=strip_tags($title);
+	$title=htmlspecialchars_decode(strip_tags($title));
 
 	$META_TITLE=get_gedcom_setting(WT_GED_ID, 'META_TITLE');
 	if ($META_TITLE) {
