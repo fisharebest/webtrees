@@ -187,7 +187,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				$class='list_item';
 				$sex_image='';
 			}
-			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', PrintReady($name['full']), '</a>', $sex_image, '<br/>';
+			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
 		}
 		// Indi parents
 		echo $person->getPrimaryParentsNames("parents_$table_id details1", 'none');
@@ -247,7 +247,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				} else {
 					echo '<div align="', get_align($birth_place), '">';
 					echo '<a href="', get_place_url($birth_place), '" class="list_item" title="', $birth_place, '">';
-					echo PrintReady(get_place_short($birth_place)), '</a>';
+					echo highlight_search_hits(get_place_short($birth_place)), '</a>';
 					echo '</div>';
 				}
 			}
@@ -318,7 +318,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 				} else {
 					echo '<div align="', get_align($death_place), '">';
 					echo '<a href="', get_place_url($death_place), '" class="list_item" title="', $death_place, '">';
-					echo PrintReady(get_place_short($death_place)), '</a>';
+					echo highlight_search_hits(get_place_short($death_place)), '</a>';
 					echo '</div>';
 				}
 			}
@@ -532,10 +532,10 @@ function print_fam_table($datalist, $legend='', $option='') {
 		if (!$husb->isDead()) $tdclass .= ' alive';
 		if (!$husb->getChildFamilies()) $tdclass .= ' patriarch';
 		echo '<td class="', $tdclass, '" align="', get_align($names[$n1]['full']), '">';
-		echo '<a href="', $family->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', PrintReady($names[$n1]['full']), '</a>';
+		echo '<a href="', $family->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', highlight_search_hits($names[$n1]['full']), '</a>';
 		if ($tiny) echo $husb->getSexImage();
 		if ($n1!=$n2) {
-			echo '<br /><a href="', $family->getHtmlUrl(), '" class="list_item">', PrintReady($names[$n2]['full']), '</a>';
+			echo '<br /><a href="', $family->getHtmlUrl(), '" class="list_item">', highlight_search_hits($names[$n2]['full']), '</a>';
 		}
 		// Husband parents
 		echo $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
@@ -579,10 +579,10 @@ function print_fam_table($datalist, $legend='', $option='') {
 		if (!$wife->isDead()) $tdclass .= ' alive';
 		if (!$wife->getChildFamilies()) $tdclass .= ' patriarch';
 		echo '<td class="', $tdclass, '" align="', get_align($names[$n1]['full']), '">';
-		echo '<a href="', $family->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', PrintReady($names[$n1]['full']), '</a>';
+		echo '<a href="', $family->getHtmlUrl(), '" class="list_item name2" dir="', $TEXT_DIRECTION, '">', highlight_search_hits($names[$n1]['full']), '</a>';
 		if ($tiny) echo $wife->getSexImage();
 		if ($n1!=$n2) {
-			echo '<br /><a href="', $family->getHtmlUrl(), '" class="list_item">', PrintReady($names[$n2]['full']), '</a>';
+			echo '<br /><a href="', $family->getHtmlUrl(), '" class="list_item">', highlight_search_hits($names[$n2]['full']), '</a>';
 		}
 		// Wife parents
 		echo $wife->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
@@ -666,7 +666,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 				} else {
 					echo '<div align="', get_align($marriage_place), '">';
 					echo '<a href="', get_place_url($marriage_place), '" class="list_item" title="', $marriage_place, '">';
-					echo PrintReady(get_place_short($marriage_place)), '</a>';
+					echo highlight_search_hits(get_place_short($marriage_place)), '</a>';
 					echo '</div>';
 				}
 			}
@@ -865,11 +865,11 @@ function print_sour_table($datalist, $legend=null) {
 		echo '<tr>';
 		//-- Source name(s)
 		$tmp=$source->getFullName();
-		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
+		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits(htmlspecialchars($tmp)), '</a></td>';
 		// alternate title in a new column
 		$tmp=$source->getAddName();
 		if ($tmp) {
-			echo '<td class="t2" style="display:none;" align="', get_align($tmp), '"><a href="', $link_url, '">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
+			echo '<td class="t2" style="display:none;" align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits(htmlspecialchars($tmp)), '</a></td>';
 			$t2=true;
 		} else {
 			echo '<td class="t2" style="display:none;">&nbsp;</td>';
@@ -877,7 +877,7 @@ function print_sour_table($datalist, $legend=null) {
 		//-- Author
 		$tmp=$source->getAuth();
 		if ($tmp) {
-			echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', PrintReady(htmlspecialchars($tmp)), '</a></td>';
+			echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits(htmlspecialchars($tmp)), '</a></td>';
 		} else {
 			echo '<td>&nbsp;</td>';
 		}
@@ -1013,7 +1013,7 @@ function print_note_table($datalist, $legend=null) {
 		$link_url=$note->getHtmlUrl();
 		//-- Shared Note name(s)
 		$tmp=$note->getFullName();
-		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item name2">', PrintReady($tmp), '</a></td>';
+		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item name2">', highlight_search_hits($tmp), '</a></td>';
 		//-- Linked INDIs
 		$tmp=$note->countLinkedIndividuals();
 		echo '<td>', $tmp, '</td>';
@@ -1127,10 +1127,10 @@ function print_repo_table($repos, $legend='') {
 		echo '<tr>';
 		//-- Repository name(s)
 		$name = $repo->getFullName();
-		echo '<td align="', get_align($name), '"><a href="', $repo->getHtmlUrl(), '" class="list_item name2">', PrintReady(htmlspecialchars($name)), '</a>';
+		echo '<td align="', get_align($name), '"><a href="', $repo->getHtmlUrl(), '" class="list_item name2">', highlight_search_hits(htmlspecialchars($name)), '</a>';
 		$addname=$repo->getAddName();
 		if ($addname) {
-			echo '<br /><a href="', $repo->getHtmlUrl(), '" class="list_item">', PrintReady(htmlspecialchars($addname)), '</a>';
+			echo '<br /><a href="', $repo->getHtmlUrl(), '" class="list_item">', highlight_search_hits(htmlspecialchars($addname)), '</a>';
 		}
 		echo '</td>';
 		//-- Linked SOURces
@@ -1234,7 +1234,7 @@ function print_media_table($datalist, $legend) {
 			//-- Object name(s)
 			echo '<td align="', get_align($name), '">';
 			echo '<a href="', $media->getHtmlUrl(), '" class="list_item name2">';
-			echo PrintReady($name), '</a>';
+			echo highlight_search_hits($name), '</a>';
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT)
 				echo '<br /><a href="', $media->getHtmlUrl(), '">', basename($media->getFilename()), '</a>';
 			if ($media->getNote()) echo '<br />', print_fact_notes('1 NOTE '.$media->getNote(), 1);
@@ -1298,7 +1298,7 @@ function format_surname_table($surnames, $type) {
 		if (count($surns)==1) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
-				$html.='<a href="'.$url.'" class="list_item name1">'.PrintReady($spfxsurn).'</a>';
+				$html.='<a href="'.$url.'" class="list_item name1">'.htmlspecialchars($spfxsurn).'</a>';
 				$unique_surn[$spfxsurn]=true;
 				foreach (array_keys($indis) as $pid) {
 					$unique_indi[$pid]=true;
@@ -1307,7 +1307,7 @@ function format_surname_table($surnames, $type) {
 		} else {
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn=>$indis) {
-				$html.='<a href="'.$url.'" class="list_item name1">'.PrintReady($spfxsurn).'</a><br />';
+				$html.='<a href="'.$url.'" class="list_item name1">'.htmlspecialchars($spfxsurn).'</a><br />';
 				$unique_surn[$spfxsurn]=true;
 				foreach (array_keys($indis) as $pid) {
 					$unique_indi[$pid]=true;
@@ -1415,7 +1415,7 @@ function format_surname_list($surnames, $style, $totals, $type) {
 				$first_spfxsurn=$spfxsurn;
 			}
 		}
-		$subhtml='<a href="'.$url.'">'.implode(', ', array_keys($surns)).'</a>';
+		$subhtml='<a href="'.$url.'">'.htmlspecialchars(implode(', ', array_keys($surns))).'</a>';
 
 		if ($totals) {
 			$subtotal=0;
@@ -1424,7 +1424,7 @@ function format_surname_list($surnames, $style, $totals, $type) {
 			}
 			$subhtml.=' ['.$subtotal.']';
 		}
-		$html[]=PrintReady($subhtml);
+		$html[]=$subhtml;
 
 	}
 	switch ($style) {
@@ -1495,16 +1495,16 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
 	}
 	$return = '';
 	foreach ($arr as $value) {
-		$return .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item name2">' . PrintReady($value['record']->getFullName()) . '</a>';
+		$return .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item name2">' . $value['record']->getFullName() . '</a>';
 		$return .= '<div class="indent" style="margin-bottom:5px">';
 		if ($value['record']->getType() == 'INDI') {
 			if ($value['record']->getAddName()) {
-				$return .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . PrintReady($value['record']->getAddName()) . '</a>';
+				$return .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 			}
 			if ($SHOW_MARRIED_NAMES) {
 				foreach ($value['record']->getAllNames() as $name) {
 					if ($name['type'] == '_MARNM') {
-						$return .= '<div><a title="' . WT_Gedcom_Tag::getLabel('_MARNM') . '" href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . PrintReady($name['full']) . '</a></div>';
+						$return .= '<div><a title="' . WT_Gedcom_Tag::getLabel('_MARNM') . '" href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $name['full'] . '</a></div>';
 					}
 				}
 			}
@@ -1614,17 +1614,17 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
         //-- Record name(s)
         $name = $record->getFullName();
         $return .= "<td class='list_value_wrap' align='" . get_align($name) . "'>";
-        $return .= "<a href='" . $record->getHtmlUrl() . "' class='list_item name2' dir='" . $TEXT_DIRECTION . "'>" . PrintReady($name) . "</a>";
+        $return .= "<a href='" . $record->getHtmlUrl() . "' class='list_item name2' dir='" . $TEXT_DIRECTION . "'>" . $name . "</a>";
         if ($indi) {
             $return .= "<div class='indent'>";
             $addname = $record->getAddName();
             if ($addname) {
-                $return .= "<a href='" . $record->getHtmlUrl() . "' class='list_item'>" . PrintReady($addname) . "</a>";
+                $return .= "<a href='" . $record->getHtmlUrl() . "' class='list_item'>" . $addname . "</a>";
             }
             if ($SHOW_MARRIED_NAMES) {
                 foreach ($record->getAllNames() as $name) {
                     if ($name['type'] == '_MARNM') {
-                        $return .= "<div><a title='" . WT_Gedcom_Tag::getLabel('_MARNM') . "' href='" . $record->getHtmlUrl() . "' class='list_item'>" . PrintReady($name['full']) . "</a></div>";
+                        $return .= "<div><a title='" . WT_Gedcom_Tag::getLabel('_MARNM') . "' href='" . $record->getHtmlUrl() . "' class='list_item'>" . $name['full'] . "</a></div>";
                     }
                 }
             }
@@ -1764,7 +1764,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		//-- Record name(s)
 		$name = $value['name'];
 		$return .= '<td class="list_value_wrap" align="'.get_align($name).'">';
-		$return .= '<a href="'.$value['url'].'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.PrintReady($name).'</a>';
+		$return .= '<a href="'.$value['url'].'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.$name.'</a>';
 		if ($value['record']->getType()=="INDI") {
 			$return .= $value['sex'];
 			$return .= $value['record']->getPrimaryParentsNames("parents_$table_id details1", "none");
@@ -1914,7 +1914,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	}
 
 	foreach ($filtered_events as $value) {
-		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".PrintReady($value['name'])."</a>".$value['sex'];
+		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".$value['name']."</a>".$value['sex'];
 		$return .= "<br /><div class=\"indent\">";
 		$return .= WT_Gedcom_Tag::getLabel($value['fact']).' - '.$value['date']->Display(true);
 		if ($value['anniv']!=0) $return .= " (" . WT_I18N::translate('%s year anniversary', $value['anniv']).")";

@@ -962,14 +962,25 @@ function write_align_with_textdir_check($t_dir, $return=false)
 	echo $out;
 }
 
-function highlight_search_hits($string, $search_terms) {
-	$regex=array();
-	foreach ($search_terms as $search_term) {
-		$regex[]=preg_quote($search_term, '/');
+// When a user has searched for text, highlight any matches in
+// the displayed string.
+function highlight_search_hits($string) {
+	global $controller;
+	if ($controller instanceof WT_Controller_Search) {
+		// TODO: when a search contains multiple words, we search independently.
+		// e.g. searching for "FOO BAR" will find records containing both FOO and BAR.
+		// However, we only highlight the original search string, not the search terms.
+		// The controller needs to provide its "query_terms" array.
+		$regex=array();
+		foreach (array($controller->query) as $search_term) {
+			$regex[]=preg_quote($search_term, '/');
+		}
+		// Match these strings, provided they do not occur inside HTML tags
+		$regex='('.implode('|', $regex).')(?![^<]*>)';
+		return preg_replace('/'.$regex.'/i', '<span class="search_hit">$1</span>', $string);
+	} else {
+		return $string;
 	}
-	// Match these strings, provided they do not occur inside HTML tags
-	$regex='('.implode('|', $regex).')(?![^<]*>)';
-	return preg_replace('/'.$regex.'/i', '<span class="search_hit">$1</span>', $string);
 }
 
 /**
@@ -980,15 +991,8 @@ function highlight_search_hits($string, $search_terms) {
 */
 function PrintReady($text, $InHeaders=false, $trim=true) {
 	global $action, $firstname, $lastname, $place, $year;
-	global $TEXT_DIRECTION_array, $TEXT_DIRECTION, $controller;
-	// Check whether Search page highlighting should be done or not
-	if (isset($controller) && $controller instanceof WT_Controller_Search) {
-		// TODO: when a search contains multiple words, we search independently.
-		// e.g. searching for "FOO BAR" will find records containing both FOO and BAR.
-		// However, we only highlight the original search string, not the search terms.
-		// The controller needs to provide its "query_terms" array.
-		$text=highlight_search_hits($text, array($controller->query));
-	}
+	global $TEXT_DIRECTION_array, $TEXT_DIRECTION;
+
 	//-- convert all & to &amp;
 	$text = str_replace("&", "&amp;", $text);
 	//$text = preg_replace(array("/&/", "/</", "/>/"), array("&amp;", "&lt;", "&gt;"), $text);
