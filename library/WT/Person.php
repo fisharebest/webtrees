@@ -1737,7 +1737,7 @@ class WT_Person extends WT_GedcomRecord {
 		}
 
 		// The standards say you should use a suffix of '*'
-		$full=preg_replace('/([^\s>]*)\*/', '<span class="starredname">\\1</span>', $full);
+		$full=preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
 
 		// Remove prefered-name indicater - they don't go in the database
 		$GIVN  =str_replace('*', '', $GIVN);
