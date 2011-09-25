@@ -901,8 +901,7 @@ function print_sour_table($datalist, $legend=null) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$deletesource = explode("@", $source);
-			echo '<td><div title="', WT_I18N::translate('Delete source'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Source?'), '\')) return deletesource(\'', $deletesource[0],'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $source->getFullName())), '\')) return delete_source(\'', $source->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;"></td>';
 		}
@@ -1034,8 +1033,7 @@ function print_note_table($datalist, $legend=null) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$deletenote = explode("@", $note);
-			echo '<td><div title="', WT_I18N::translate('Delete shared note'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Shared Note?'), '\')) return deletenote(\'', $deletenote[0],'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $note->getFullName())), '\')) return delete_note(\'', $note->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;"></td>';
 		}
@@ -1144,8 +1142,7 @@ function print_repo_table($repos, $legend='') {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$deleterepo = explode("@", $repo);
-			echo '<td><div title="', WT_I18N::translate('Delete repository'), '" class="deleteicon" onclick="if (confirm(\'', WT_I18N::translate('Are you sure you want to delete this Repository?'), '\')) return deleterepository(\'', $deleterepo[0],'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $repo->getFullName())), '\')) return delete_repository(\'', $repo->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;"></td>';
 		}

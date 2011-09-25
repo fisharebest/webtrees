@@ -467,8 +467,8 @@ class WT_Controller_Individual extends WT_Controller_Base {
 
 		// delete
 		if (WT_USER_CAN_EDIT) {
-			$submenu = new WT_Menu(WT_I18N::translate('Delete this individual'), '#', 'menu-indi-del');
-			$submenu->addOnclick("return deleteperson('".$this->pid."');");
+			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-indi-del');
+			$submenu->addOnclick("if (confirm('".addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->indi->getFullName())))."')) return delete_person('".$this->indi->getXref()."'); else return false;");
 			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);

@@ -420,7 +420,6 @@ class WT_GedcomRecord {
 		// RTL names on LTR pages (and vice-versa) cause problems when they contain
 		// weakly-directional characters such as punctuation.  Add markup to fix this.
 		$dir=utf8_direction($value);
-		$value=htmlspecialchars($value);
 		if ($dir=='ltr' && $TEXT_DIRECTION=='rtl') {
 			$full='<span dir="ltr">'.htmlspecialchars($value).'</span>';
 		} elseif ($dir=='rtl' && $TEXT_DIRECTION=='ltr') {

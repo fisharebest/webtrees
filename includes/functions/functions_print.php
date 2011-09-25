@@ -447,8 +447,8 @@ function print_header($title, $view='full') {
 		arrows[2].src = "'.$WT_IMAGES["uarrow2"].'";
 		arrows[3] = new Image();
 		arrows[3].src = "'.$WT_IMAGES["darrow2"].'";
-	';
-	$javascript .= 'function delete_record(pid, linenum, mediaid) {
+	
+	function delete_record(pid, linenum, mediaid) {
 		if (!mediaid) mediaid="";
 		if (confirm(\''.WT_I18N::translate('Are you sure you want to delete this fact?').'\')) {
 			window.open(\'edit_interface.php?action=delete&pid=\'+pid+\'&linenum=\'+linenum+\'&mediaid=\'+mediaid+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
@@ -456,21 +456,6 @@ function print_header($title, $view='full') {
 		return false;
 	}
 
-	function deleteperson(pid) {
-		if (confirm(\''.WT_I18N::translate('Are you sure you want to delete this person?').'\')) {
-			window.open(\'edit_interface.php?action=deleteperson&pid=\'+pid+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
-		}
-		return false;
-	}
-
-	function deleterepository(pid) {
-		if (confirm(\''.WT_I18N::translate('Are you sure you want to delete this Repository?').'\')) {
-			window.open(\'edit_interface.php?action=deleterepo&pid=\'+pid+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
-		}
-		return false;
-	}
-	';
-	$javascript .= '
 	function message(username, method, url, subject) {
 		if ((!url)||(url=="")) url=\''.addslashes(get_query_url()).'\';
 		if ((!subject)||(subject=="")) subject="";
@@ -479,8 +464,9 @@ function print_header($title, $view='full') {
 	}
 
 	var whichhelp = \'help_'.WT_SCRIPT_NAME.'&action='.$action.'\';
-	//-->
-	'.WT_JS_END.'<script src="js/webtrees.js" type="text/javascript"></script>';
+	'.
+	WT_JS_END.
+	'<script src="js/webtrees.js" type="text/javascript"></script>';
 	require WT_ROOT.$headerfile;
 
 	// Allow the browser to format the header/menus while we generate the page

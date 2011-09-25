@@ -447,13 +447,22 @@ function delete_family(famid) {
 	return false;
 }
 
-function deletesource(pid) {
-	 window.open('edit_interface.php?action=deletesource&pid='+pid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+function delete_note(pid) {
+	 window.open('edit_interface.php?action=deletenote&pid='+pid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	 return false;
 }
 
-function deletenote(pid) {
-	 window.open('edit_interface.php?action=deletenote&pid='+pid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+function delete_person(pid) {
+	window.open('edit_interface.php?action=deleteperson&pid='+pid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');
+	return false;
+}
+
+function delete_repository(pid) {
+		window.open('edit_interface.php?action=deleterepo&pid='+pid+"&"+sessionname+"="+sessionid, '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');
+	return false;
+}
+function delete_source(pid) {
+	 window.open('edit_interface.php?action=deletesource&pid='+pid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	 return false;
 }
 
