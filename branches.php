@@ -107,7 +107,7 @@ function print_fams($person, $famid=null) {
 	// select person name according to searched surname
 	$person_name = "";
 	foreach ($person->getAllNames() as $n=>$name) {
-		list($surn1) = explode(", ", $name['sort']);
+		list($surn1) = explode(",", $name['sort']);
 		if (stripos($surn1, $surn)===false
 			&& stripos($surn, $surn1)===false
 			&& soundex_std($surn1)!==soundex_std($surn)
