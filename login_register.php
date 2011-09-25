@@ -38,7 +38,6 @@ $user_email     =safe_POST('user_email',      WT_REGEX_EMAIL);
 $user_password01=safe_POST('user_password01', WT_REGEX_PASSWORD);
 $user_password02=safe_POST('user_password02', WT_REGEX_PASSWORD);
 $user_language  =safe_POST('user_language', array_keys(WT_I18N::installed_languages()), WT_LOCALE);
-$user_gedcomid  =safe_POST('user_gedcomid');
 $user_comments  =safe_POST('user_comments');
 $user_password  =safe_POST('user_password',   WT_REGEX_UNSAFE); // Can use any password that was previously stored
 $user_hashcode  =safe_POST('user_hashcode');
@@ -276,9 +275,7 @@ switch ($action) {
 						echo '</td><td class="optionbox ', $TEXT_DIRECTION, '">';
 						echo edit_field_language('user_language', WT_LOCALE);
 						echo '</td></tr>';
-						if ($REQUIRE_AUTHENTICATION && $SHOW_LIVING_NAMES>=WT_PRIV_PUBLIC) { ?>
-						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_gedcomid"><?php echo WT_I18N::translate('Individual record'), '</label>', help_link('register_gedcomid'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>" valign="top" ><input type="text" size="10" name="user_gedcomid" id="user_gedcomid" value="" /><?php print_findindi_link("user_gedcomid",""); ?></td></tr>
-						<?php } ?>
+						?>
 						<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_comments"><?php echo WT_I18N::translate('Comments'), '</label>', help_link('register_comments'); ?></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>" valign="top" ><textarea cols="50" rows="5" id="user_comments" name="user_comments"><?php if (!$user_comments_false) echo $user_comments; ?></textarea> *</td></tr>
 						<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php echo WT_I18N::translate('Request new user account'); ?>" /></td></tr>
 						<tr><td align="left" colspan="2" ><?php echo WT_I18N::translate('Fields marked with * are mandatory.'); ?></td></tr>
@@ -344,10 +341,6 @@ switch ($action) {
 					set_user_setting($user_id, 'auto_accept',          0);
 					set_user_setting($user_id, 'canadmin',             0);
 					set_user_setting($user_id, 'sessiontime',          0);
-					if (!empty($user_gedcomid)) {
-						set_user_gedcom_setting($user_id, $GEDCOM, 'gedcomid', $user_gedcomid);
-						set_user_gedcom_setting($user_id, $GEDCOM, 'rootid',   $user_gedcomid);
-					}
 					$user_created_ok = true;
 				} else {
 					echo "<span class=\"warning\">".WT_I18N::translate('Unable to add user.  Please try again.')."<br /></span>";
