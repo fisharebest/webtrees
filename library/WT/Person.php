@@ -1723,7 +1723,7 @@ class WT_Person extends WT_GedcomRecord {
 			$dir=($TEXT_DIRECTION=='rtl') ? ' dir="ltr"' : '';
 			break;
 		case 'rtl':
-			$dir=($TEXT_DIRECTION=='ltr') ? ' dir="ltr"' : '';
+			$dir=($TEXT_DIRECTION=='ltr') ? ' dir="rtl"' : '';
 			break;
 		case 'unknown':
 			$dir='';
