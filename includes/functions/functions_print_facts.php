@@ -1353,7 +1353,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	echo '<em>';
 	foreach ($mediaobject->getAllNames() as $name) {
 		if ($name['type']!='TITL') echo '<br />'; 
-		echo htmlspecialchars($name['full']);
+		echo $name['full'];
 	}
 	echo '</em>';
 	if (empty($SEARCH_SPIDER)) {
