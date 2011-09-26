@@ -775,7 +775,7 @@ function print_sour_table($datalist, $legend=null) {
 	echo WT_JS_START;?>
 	jQuery(document).ready(function(){
 		jQuery('#<?php echo $table_id; ?>').dataTable( {
-			"sDom": '<"H"prf>t<"F"li>',
+			"sDom": '<"H"pl<"dt-clear">irf>t<"F"pl>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
 				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
@@ -877,7 +877,7 @@ function print_sour_table($datalist, $legend=null) {
 		//-- Author
 		$tmp=$source->getAuth();
 		if ($tmp) {
-			echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits(htmlspecialchars($tmp)), '</a></td>';
+			echo '<td align="', get_align($tmp), '">', highlight_search_hits(htmlspecialchars($tmp)), '</td>';
 		} else {
 			echo '<td>&nbsp;</td>';
 		}

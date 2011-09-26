@@ -1168,8 +1168,9 @@ html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 .dataTables_processing {float:left; margin:5px;}
 .dataTables_filter  {float:right; margin:4px;}
 .dataTables_info {float:left; margin:5px;}
-.dataTables_length {float:right;}
+.dataTables_length {float:right; margin:5px;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
+.dt-clear {clear:both;}
 #loading {text-align:center;}
 
 html[dir='rtl'] .css_right {float:right;}

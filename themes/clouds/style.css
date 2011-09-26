@@ -1809,6 +1809,7 @@ html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 .dataTables_info {float:left; margin:5px;}
 .dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
+.dt-clear {clear:both;}
 #loading {text-align:center;}
 
 html[dir='rtl'] .css_right {float:right;}
