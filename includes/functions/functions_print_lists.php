@@ -865,11 +865,11 @@ function print_sour_table($datalist, $legend=null) {
 		echo '<tr>';
 		//-- Source name(s)
 		$tmp=$source->getFullName();
-		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits(htmlspecialchars($tmp)), '</a></td>';
+		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits($tmp), '</a></td>';
 		// alternate title in a new column
 		$tmp=$source->getAddName();
 		if ($tmp) {
-			echo '<td class="t2" style="display:none;" align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits(htmlspecialchars($tmp)), '</a></td>';
+			echo '<td class="t2" style="display:none;" align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits($tmp), '</a></td>';
 			$t2=true;
 		} else {
 			echo '<td class="t2" style="display:none;">&nbsp;</td>';
@@ -901,7 +901,7 @@ function print_sour_table($datalist, $legend=null) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $source->getFullName())), '\')) return delete_source(\'', $source->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))), '\')) return delete_source(\'', $source->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;"></td>';
 		}
@@ -1033,7 +1033,7 @@ function print_note_table($datalist, $legend=null) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $note->getFullName())), '\')) return delete_note(\'', $note->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))), '\')) return delete_note(\'', $note->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;"></td>';
 		}
@@ -1142,7 +1142,7 @@ function print_repo_table($repos, $legend='') {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $repo->getFullName())), '\')) return delete_repository(\'', $repo->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))), '\')) return delete_repository(\'', $repo->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;"></td>';
 		}
