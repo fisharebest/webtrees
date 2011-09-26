@@ -1128,7 +1128,7 @@ function print_repo_table($repos, $legend='') {
 		echo '<td align="', get_align($name), '"><a href="', $repo->getHtmlUrl(), '" class="list_item name2">', highlight_search_hits(htmlspecialchars($name)), '</a>';
 		$addname=$repo->getAddName();
 		if ($addname) {
-			echo '<br /><a href="', $repo->getHtmlUrl(), '" class="list_item">', highlight_search_hits(htmlspecialchars($addname)), '</a>';
+			echo '<br /><a href="', $repo->getHtmlUrl(), '" class="list_item">', highlight_search_hits($addname), '</a>';
 		}
 		echo '</td>';
 		//-- Linked SOURces
