@@ -260,7 +260,7 @@ else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>" />
 </td>
 
 <td rowspan="4" class="topbottombar vmiddle">
-<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
+<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ WT_I18N::translate('View'); ?>" />
 </td></tr>
 
 <tr><td class="descriptionbox">
