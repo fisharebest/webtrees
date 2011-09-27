@@ -320,12 +320,12 @@ function showchanges() {
 <script src="js/webtrees.js" type="text/javascript"></script>
 <?php
 if (check_media_structure()) {
-	echo "<div id=\"uploadmedia\" style=\"display:none\">";
+	echo '<div id="uploadmedia" style="display:none">';
 	// Check if Standard Media Directory is writeable, doesn't matter if we upload to protected directory
 	if (!$is_std_media_writable && !$USE_MEDIA_FIREWALL) {
-		echo "<p class=\"error\"><b>";
-		echo WT_I18N::translate('Uploading media files is not allowed because the media directory is not writable.');
-		echo "</b></p>";
+		echo '<p class="ui-state-error">';
+		echo WT_I18N::translate('Uploading media files is not allowed because the media folder is not writable.');
+		echo '</p>';
 	} else {
 		show_mediaUpload_form(WT_SCRIPT_NAME, $showthumb); // We have the green light to upload media, echo the form
 	}

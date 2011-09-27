@@ -71,12 +71,12 @@ if ($action == "upload") {
 	process_uploadMedia_form();
 }
 
-// Check if Media Directory is writeable or if Media features are enabled
-// If one of these is not true then do not continue
+// Check if Media Directory is writeable.
+// If not, then do not continue
 if (!dir_is_writable($MEDIA_DIRECTORY)) {
-	echo "<span class=\"error\"><b>";
-	echo WT_I18N::translate('Uploading media files is not allowed because the media directory is not writable.');
-	echo "</b></span><br />";
+	echo '<p class="ui-state-error">';
+	echo WT_I18N::translate('Uploading media files is not allowed because the media folder is not writable.');
+	echo '</p>';
 } else {
 	show_mediaUpload_form(WT_SCRIPT_NAME, false); // We have the green light to upload media, print the form
 }
