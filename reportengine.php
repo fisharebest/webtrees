@@ -151,12 +151,6 @@ if ($action=='choose') {
 
 //-- setup report to run
 elseif ($action=='setup') {
-	print_header(WT_I18N::translate('Enter report values'));
-
-	if ($ENABLE_AUTOCOMPLETE) {
-		require_once WT_ROOT.'js/autocomplete.js.htm';
-	}
-
 	require_once WT_ROOT.'includes/reportheader.php';
 	$report_array = array();
 	//-- start the sax parser
@@ -179,6 +173,13 @@ elseif ($action=='setup') {
 		}
 	}
 	xml_parser_free($xml_parser);
+
+	print_header($report_array['title']);
+
+	if ($ENABLE_AUTOCOMPLETE) {
+		require_once WT_ROOT.'js/autocomplete.js.htm';
+	}
+
 	// Paste Found ID from a pop-up window
 	echo WT_JS_START;
 		?>
@@ -198,7 +199,6 @@ elseif ($action=='setup') {
 	echo '<tr><td class="topbottombar" colspan="2">', WT_I18N::translate('Enter report values'), '</td></tr>';
 	echo '<tr><td class="descriptionbox width30 wrap">', WT_I18N::translate('Selected Report'), '</td><td class="optionbox">', $report_array['title'], '<br/>', $report_array['description'], '</td></tr>';
 
-	$doctitle = trim($report_array['title']);
 	if (!isset($report_array['inputs'])) {
 		$report_array['inputs'] = array();
 	}
@@ -207,15 +207,6 @@ elseif ($action=='setup') {
 			// url forced default value ?
 			if (isset($_REQUEST[$input['name']])) {
 				$input['default']=$_REQUEST[$input['name']];
-				// update doc title for bookmarking
-				$doctitle .= ' ';
-				if (strpos($input['name'],'date2')!==false) {
-					$doctitle .= '-';
-				}
-				$doctitle .= $input['default'];
-				if (strpos($input['name'],'date1')!==false) {
-					$doctitle .= '-';
-				}
 			}
 			echo '<tr><td class="descriptionbox wrap">';
 			echo '<input type="hidden" name="varnames[]" value="', $input["name"], '" />';
@@ -325,10 +316,7 @@ elseif ($action=='setup') {
 	<?php
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo '<input type="submit" value="', WT_I18N::translate('Download report'), '" ;"/>';
-//	echo '<input type="submit" value="', WT_I18N::translate('Cancel'), '" onclick="document.setupreport.elements[\'action\'].value=\'setup\'; "/>';
-	echo '<input type="reset" title="', WT_I18N::translate('This will set all fields back to default values'), '" value="', WT_I18N::translate('Reset'), '" ;"/>';// This replaces the line above. Not sure what that was designed to do???? See https://bugs.launchpad.net/webtrees/+bug/827621
-	echo '</td></tr></table></form><br /><br />';
-	echo WT_JS_START, 'document.title = "', $doctitle, '";', WT_JS_END;
+	echo '</td></tr></table></form>';
 	print_footer();
 }
 //-- run the report
