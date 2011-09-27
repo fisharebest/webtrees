@@ -847,7 +847,16 @@ case 'addnewnote_assisted':
 	<div class="center font11" style="width:100%;">
 		<b><?php echo WT_I18N::translate('Create a new Shared Note using Assistant'); ?></b>
 		<?php
-			echo wiki_help_link(/* I18N: This is a page on http://wiki.webtrees.net/  Only translate this when a translated page exists on the wiki. */ WT_I18N::translate_c('http://wiki.webtrees.net/', 'Census_Assistant_module'));
+			// When more languages are added to the wiki, we can expand or redesign this
+			switch (WT_LOCALE) {
+			case 'fr':
+				echo wiki_help_link('fr:Module_Assistant_Recensement');
+				break;
+			case 'en':
+			default:
+				echo wiki_help_link('Census_Assistant_module');
+				break;
+			}
 		?>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
 			<input type="hidden" name="action" value="addnoteaction_assisted" />
