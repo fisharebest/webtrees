@@ -40,13 +40,6 @@ if (isset($_REQUEST['stateSelected'])) $stateSelected = $_REQUEST['stateSelected
 if (!isset($stateSelected)) $stateSelected='States';
 
 print_simple_header(WT_I18N::translate('Select flag'));
-if (!is_dir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/flags/')) {
-	echo WT_I18N::translate('The flags directory doesn\'t exist.'), '<br /><br />', WT_I18N::translate('To make the flags work make sure that %s directory exists and contains flags files. They can be downloaded from Addons section of webtrees site.', WT_MODULES_DIR.'googlemap/places/flags/'), '<br /><br />';
-	echo '<a href="', WT_WEBTREES_URL, 'en/add-ons/gmfiles">', WT_I18N::translate('Download flags'), '</a>';
-	echo '<br /><br /><div class="center"><a href="javascript:;" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></div><br />';
-	print_simple_footer();
-	return;
-}
 
 $country = array();
 $rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/flags/');
