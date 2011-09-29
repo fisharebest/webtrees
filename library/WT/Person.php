@@ -1733,7 +1733,8 @@ class WT_Person extends WT_GedcomRecord {
 
 		// Some people put preferred names in quotes.  This is wrong - quotes indicate NICK names.
 		if ($UNDERLINE_NAME_QUOTES) {
-			$full=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $full);
+			// Note that we have already called htmlspecialchars(), so match the HTML entities.
+			$full=preg_replace('/&quot;(.*)&quot;(?![^<]*>)/', '<span class="starredname">\\1</span>', $full);
 		}
 
 		// The standards say you should use a suffix of '*'
