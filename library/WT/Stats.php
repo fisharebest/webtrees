@@ -3772,8 +3772,8 @@ class WT_Stats {
 				if (is_array($params) && isset($params[0]) && $params[0] != '') {$datestamp = $params[0];} else {$datestamp = str_replace('%', '', $TIME_FORMAT);}
 				return date($datestamp, get_user_setting($user_id, 'reg_timestamp'));
 			case 'loggedin':
-				if (is_array($params) && isset($params[0]) && $params[0] != '') {$yes = $params[0];} else {$yes = WT_I18N::translate('Yes');}
-				if (is_array($params) && isset($params[1]) && $params[1] != '') {$no = $params[1];} else {$no = WT_I18N::translate('No');}
+				if (is_array($params) && isset($params[0]) && $params[0] != '') {$yes = $params[0];} else {$yes = WT_I18N::translate('yes');}
+				if (is_array($params) && isset($params[1]) && $params[1] != '') {$no = $params[1];} else {$no = WT_I18N::translate('no');}
 				return WT_DB::prepare("SELECT 1 FROM `##session` WHERE user_id=? LIMIT 1")->execute(array($user_id))->fetchOne() ? $yes : $no;
 		}
 	}
