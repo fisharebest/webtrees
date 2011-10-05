@@ -238,9 +238,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						$factdetail = explode(' ', trim($family->getMarriageRecord()));
 						if (isset($factdetail) && count($factdetail) == 3) {
 							if (strtoupper($factdetail[2]) == "Y") {
-								echo '<span class="details_label">', $marr_fact, ': </span>', WT_I18N::translate('Yes');
+								echo '<span class="details_label">', $marr_fact, ': </span>', WT_I18N::translate('yes');
 							} else if (strtoupper($factdetail[2]) == "N") {
-								echo '<span class="details_label">', $marr_fact, ': </span>', WT_I18N::translate('No');
+								echo '<span class="details_label">', $marr_fact, ': </span>', WT_I18N::translate('no');
 							}
 						} else {
 							echo '<span class="details_label">', $marr_fact, '</span>';
@@ -316,12 +316,12 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		if (isset($family) && $this->controller->indi->canEdit()) {
 			if ($type == "spouse") {
 				$child_u = WT_I18N::translate('Add a son or daughter');
-				$child_m = WT_I18N::translate('Son');
-				$child_f = WT_I18N::translate('Daughter');
+				$child_m = WT_I18N::translate('son');
+				$child_f = WT_I18N::translate('daughter');
 			} else {
 				$child_u = WT_I18N::translate('Add a brother or sister');
-				$child_m = WT_I18N::translate('Brother');
-				$child_f = WT_I18N::translate('Sister');
+				$child_m = WT_I18N::translate('brother');
+				$child_f = WT_I18N::translate('sister');
 			}
 		?>
 			<tr>
