@@ -98,16 +98,11 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				$personlinks .= "<a href=\"pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM)."\" $mouseAction1><b>".WT_I18N::translate('Pedigree')."</b></a>";
 
 				if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-					$personlinks .= "<br /><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Pedigree map')."</b></a>";
+					$personlinks .= '<br /><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid='.$pid.'&amp;ged='.WT_GEDURL.'" '.$mouseAction1.'><b>'.WT_I18N::translate('Pedigree map').'</b></a>';
 				}
-				$username = WT_USER_NAME;
-				if (!empty($username)) {
-					$myid=WT_USER_GEDCOM_ID;
-					if ($myid && $myid!=$pid) {
-						$personlinks .= "<br /><a href=\"relationship.php?show_full={$PEDIGREE_FULL_DETAILS}&amp;pid1={$myid}&amp;pid2={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;pretty=2&amp;followspouse=1&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Relationship to me')."</b></a>";
-					}
+				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
+					$personlinks .= '<br /><a href="relationship.php?show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pid1='.WT_USER_GEDCOM_ID.'&amp;pid2='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL.'" '.$mouseAction1.'><b>'.WT_I18N::translate('Relationship to me').'</b></a>';
 				}
-
 				$personlinks .= "<br /><a href=\"descendancy.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" $mouseAction1><b>".WT_I18N::translate('Descendants')."</b></a><br />";
 				$personlinks .= "<a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Ancestors')."</b></a><br />";
 				$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Compact tree')."</b></a><br />";
@@ -1260,7 +1255,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 		$factrec = str_replace("\nWT_NEW\n", '', $factrec);
 		$factdetail = explode(' ', trim($factrec));
 		if (isset($factdetail) && (count($factdetail) == 3 && strtoupper($factdetail[2]) == 'Y') || (count($factdetail) == 4 && $factdetail[2] == 'SOUR')) {
-			$html.=WT_I18N::translate('Yes');
+			$html.=WT_I18N::translate('yes');
 		}
 	}
 	// print gedcom ages

@@ -269,8 +269,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 		echo "<br />";
 		echo "<span class='nowrap font12'>";
 		echo "<a href=\"javascript:;\" onclick=\"return addnewchild('$famid','');\">" . WT_I18N::translate('Add a child to this family') . "</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','M');\">[".WT_Person::sexImage('M', 'small', '', WT_I18N::translate('Son'     ))."]</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','F');\">[".WT_Person::sexImage('F', 'small', '', WT_I18N::translate('Daughter'))."]</a>";
+		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','M');\">[".WT_Person::sexImage('M', 'small', '', WT_I18N::translate('son'     ))."]</a>";
+		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','F');\">[".WT_Person::sexImage('F', 'small', '', WT_I18N::translate('daughter'))."]</a>";
 		echo help_link('add_child');
 		echo "</span>";
 		echo "<br /><br />";

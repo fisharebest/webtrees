@@ -1392,7 +1392,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	if (WT_USER_GEDCOM_ADMIN) {
 		$prim=$mediaobject->isPrimary();
 		if ($prim) {
-			echo WT_Gedcom_Tag::getLabelValue('_PRIM', $prim=='Y' ? WT_I18N::translate('Yes') : WT_I18N::translate('No'));
+			echo WT_Gedcom_Tag::getLabelValue('_PRIM', $prim=='Y' ? WT_I18N::translate('yes') : WT_I18N::translate('no'));
 		}
 	}
 	print_fact_notes($mediaobject->getGedcomRecord(), 1);

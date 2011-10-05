@@ -280,7 +280,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 			if ($SHOW_EST_LIST_DATES) {
 				echo '<div>', str_replace('<a', '<a name="'.$death_jd.'"', $death_date->Display(!$SEARCH_SPIDER)), '</div>';
 			} else if ($person->isDead()) {
-				echo '<div>', WT_I18N::translate('Yes'), '<a name="9d', $death_jd, '"></a></div>';
+				echo '<div>', WT_I18N::translate('yes'), '<a name="9d', $death_jd, '"></a></div>';
 			} else {
 				echo '<span class="date"><a name="', $death_jd, '">&nbsp;</span>'; // span needed for alive-in-year filter
 			}
@@ -640,12 +640,14 @@ function print_fam_table($datalist, $legend='', $option='') {
 			$factdetail = explode(' ', trim($family->getMarriageRecord()));
 			if (isset($factdetail)) {
 				if (count($factdetail) >= 3) {
-					if (strtoupper($factdetail[2]) != "N")
-						echo '<div>', WT_I18N::translate('Yes'), '<a name="9999998"></a></div>';
-					else
-						echo '<div>', WT_I18N::translate('No'), '<a name="9999999"></a></div>';
+					if (strtoupper($factdetail[2]) != "N") {
+						echo '<div>', WT_I18N::translate('yes'), '<a name="9999998"></a></div>';
+					} else {
+						echo '<div>', WT_I18N::translate('no'), '<a name="9999999"></a></div>';
+					}
+				} else {
+					echo '&nbsp;';
 				}
-				else echo '&nbsp;';
 			}
 		}
 		echo '</td>';

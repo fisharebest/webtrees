@@ -1497,7 +1497,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			echo "<input type=\"checkbox\" ";
 			if ($value=="Y") echo " checked=\"checked\"";
 			echo " onclick=\"if (this.checked) ", $element_id, ".value='Y'; else ", $element_id, ".value=''; \" />";
-			echo WT_I18N::translate('Yes');
+			echo WT_I18N::translate('yes');
 		}
 /*
 		// If GEDFAct_assistant/_CENS/ module exists && we are on the INDI page && action is ADD a new CENS event
