@@ -174,10 +174,10 @@
 						<TextBox bgcolor="$fbbgcolor" border="1" newline="1" width="$width2">
 							<Text color="$tcolor" style="text">
 								<if condition="@desc=='Y'">
-									<var var="WT_I18N::translate('Yes')" />  <GedcomValue tag="@fact:PLAC"/>
+									<var var="WT_I18N::translate('yes')" />  <GedcomValue tag="@fact:PLAC"/>
 								</if>
 								<if condition="@desc=='N'">
-									<var var="WT_I18N::translate('No')" />  <GedcomValue tag="@fact:PLAC"/>
+									<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
 								</if>
 								<if condition="@desc!='Y' and @desc!='N'">
 									<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
