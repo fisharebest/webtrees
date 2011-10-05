@@ -1,32 +1,27 @@
 <?php
-/**
- * Batch Update module for phpGedView
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2008  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Module
- * @author Greg Roach
- * $Id$
- */
+// Batch update module
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2008  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -57,7 +52,7 @@ class batch_update {
 	function main() {
 		// HTML common to all pages
 		$html=
-			print_header(WT_I18N::translate('Batch Update')).
+			print_header(WT_I18N::translate('Batch update')).
 			self::getJavascript().
 			'<form id="batch_update_form" action="module.php" method="get">'.
 			'<input type="hidden" name="mod" value="batch_update">'.
@@ -67,14 +62,14 @@ class batch_update {
 			'<input type="hidden" name="data"   value="">'. // will be set by javascript for next update
 			'<table id="batch_update"><tr>'.
 			'<th>'.WT_I18N::translate('Family tree').'</th>'.
-			'<td><select name="GEDCOM" onchange="reset_reload();">';
+			'<td><select name="ged" onchange="reset_reload();">';
 
 		$all_gedcoms=get_all_gedcoms();
 		asort($all_gedcoms);
 		foreach ($all_gedcoms as $ged_id=>$gedcom) {
 			$html.='<option value="'.$gedcom.'"'.($ged_id==WT_GED_ID ? ' selected="selected"' : '').'>'.get_gedcom_setting($ged_id, 'title').'</option>';
 		}
-		$html.='</select></td></tr><tr><th>'.WT_I18N::translate('Batch Update').'</th><td><select name="plugin" onchange="reset_reload();">';
+		$html.='</select></td></tr><tr><th>'.WT_I18N::translate('Batch update').'</th><td><select name="plugin" onchange="reset_reload();">';
 		if (!$this->plugin) {
 			$html.='<option value="" selected="selected"></option>';
 		}
@@ -350,8 +345,8 @@ class base_plugin {
 		return
 			'<tr><th>'.WT_I18N::translate('Update the CHAN record').':</th>'.
 			'<td><select name="chan" onchange="this.form.submit();">'.
-			'<option value="no"' .($this->chan ? '' : ' selected="selected"').'>'.WT_I18N::translate('No') .'</option>'.
-			'<option value="yes"'.($this->chan ? ' selected="selected"' : '').'>'.WT_I18N::translate('Yes').'</option>'.
+			'<option value="no"' .($this->chan ? '' : ' selected="selected"').'>'.WT_I18N::translate('no') .'</option>'.
+			'<option value="yes"'.($this->chan ? ' selected="selected"' : '').'>'.WT_I18N::translate('yes').'</option>'.
 			'</select></td></tr>';
 	}
 
