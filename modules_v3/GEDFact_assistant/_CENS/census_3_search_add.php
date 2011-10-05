@@ -594,7 +594,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$menu = new WT_Menu();
 							if ($people["husb"]->getLabel() == ".") {
-								$menu->addLabel(WT_I18N::translate('Step-Father'));
+								$menu->addLabel(WT_I18N::translate_c('mother\'s husband', 'step-father'));
 							} else {
 								$menu->addLabel($people["husb"]->getLabel());
 							}
@@ -637,7 +637,7 @@ if (!defined('WT_WEBTREES')) {
 											}
 										?>", "<?php
 										if ($people["husb"]->getLabel() == ".") {
-											echo WT_I18N::translate('Step-Father'); // label = Relationship
+											echo WT_I18N::translate_c('mother\'s husband', 'step-father'); // label = Relationship
 										} else {
 											echo $people["husb"]->getLabel(); // label = Relationship
 										}
@@ -738,7 +738,7 @@ if (!defined('WT_WEBTREES')) {
 							}
 							$menu = new WT_Menu();
 							if ($people["wife"]->getLabel() == ".") {
-								$menu->addLabel(WT_I18N::translate('Step-Mother'));
+								$menu->addLabel(WT_I18N::translate_c('father\'s wife', 'step-mother'));
 							} else {
 								$menu->addLabel($people["wife"]->getLabel());
 							}
@@ -781,7 +781,7 @@ if (!defined('WT_WEBTREES')) {
 											}
 										?>", "<?php
 										if ($people["wife"]->getLabel() == ".") {
-											echo WT_I18N::translate('Step-Mother'); // label = Relationship
+											echo WT_I18N::translate_c('father\'s wife', 'step-mother'); // label = Relationship
 										} else {
 											echo $people["wife"]->getLabel(); // label = Relationship
 										}

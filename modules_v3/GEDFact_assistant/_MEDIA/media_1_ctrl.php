@@ -67,7 +67,7 @@ if ($pid=="") {
 
 	echo '<table width=400 class="facts_table center ', $TEXT_DIRECTION, '">';
 	echo '<tr><td class="topbottombar" colspan="1">';
-	echo '<b>', WT_I18N::translate('Family Navigator'), '</b>';
+	echo '<b>', WT_I18N::translate('Family navigator'), '</b>';
 	echo '</td></tr>';
 	echo '<tr>';
 	//echo '<td class="optionbox wrap" valign="top" align="left" width="50%" >';
@@ -460,7 +460,7 @@ if ($pid=="") {
 					}
 					$menu = new WT_Menu();
 					if ($people["husb"]->getLabel() == ".") {
-						$menu->addLabel("&nbsp;" . WT_I18N::translate('Step-Father'));
+						$menu->addLabel("&nbsp;" . WT_I18N::translate_c('mother\'s husband', 'step-father'));
 					} else {
 						$menu->addLabel("&nbsp;" . $people["husb"]->getLabel());
 					}
@@ -499,7 +499,7 @@ if ($pid=="") {
 									echo $fulln;
 								?>", "<?php
 								if ($people["husb"]->getLabel() == ".") {
-									echo WT_I18N::translate('Step-Father'); // label = Relationship
+									echo WT_I18N::translate_c('mother\'s husband', 'step-father'); // label = Relationship
 								} else {
 									echo $people["husb"]->getLabel(); // label = Relationship
 								}
@@ -550,7 +550,7 @@ if ($pid=="") {
 					}
 					$menu = new WT_Menu();
 					if ($people["husb"]->getLabel() == ".") {
-						$menu->addLabel("&nbsp;" . WT_I18N::translate('Step-Mother'));
+						$menu->addLabel("&nbsp;" . WT_I18N::translate_c('father\'s wife', 'step-mother'));
 					} else {
 						$menu->addLabel("&nbsp;" . $people["wife"]->getLabel());
 					}
@@ -593,7 +593,7 @@ if ($pid=="") {
 								// }
 								?>", "<?php
 								if ($people["wife"]->getLabel() == ".") {
-									echo WT_I18N::translate('Step-Mother'); // label = Relationship
+									echo WT_I18N::translate_c('father\'s wife', 'step-mother'); // label = Relationship
 								} else {
 									echo $people["wife"]->getLabel(); // label = Relationship
 								}
