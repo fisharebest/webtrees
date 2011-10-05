@@ -2011,46 +2011,46 @@ case 'changefamily':
 	if (count($children)>0) {
 		if (!is_null($father)) {
 			if ($father->getSex()=="F") {
-				$father->setLabel(WT_I18N::translate('Mother'));
+				$father->setLabel(WT_I18N::translate('mother'));
 			} else {
-				$father->setLabel(WT_I18N::translate('Father'));
+				$father->setLabel(WT_I18N::translate('father'));
 			}
 		}
 		if (!is_null($mother)) {
 			if ($mother->getSex()=="M") {
-				$mother->setLabel(WT_I18N::translate('Father'));
+				$mother->setLabel(WT_I18N::translate('father'));
 			} else {
-				$mother->setLabel(WT_I18N::translate('Mother'));
+				$mother->setLabel(WT_I18N::translate('mother'));
 			}
 		}
 		for ($i=0; $i<count($children); $i++) {
 			if (!is_null($children[$i])) {
 				if ($children[$i]->getSex()=="M") {
-					$children[$i]->setLabel(WT_I18N::translate('Son'));
+					$children[$i]->setLabel(WT_I18N::translate('son'));
 				} elseif ($children[$i]->getSex()=="F") {
-					$children[$i]->setLabel(WT_I18N::translate('Daughter'));
+					$children[$i]->setLabel(WT_I18N::translate('daughter'));
 				} else {
-					$children[$i]->setLabel(WT_I18N::translate('Child'));
+					$children[$i]->setLabel(WT_I18N::translate('child'));
 				}
 			}
 		}
 	} else {
 		if (!is_null($father)) {
 			if ($father->getSex()=="F") {
-				$father->setLabel(WT_I18N::translate('Wife'));
+				$father->setLabel(WT_I18N::translate('wife'));
 			} elseif ($father->getSex()=="M") {
-				$father->setLabel(WT_I18N::translate('Husband'));
+				$father->setLabel(WT_I18N::translate('husband'));
 			} else {
-				$father->setLabel(WT_I18N::translate('Spouse'));
+				$father->setLabel(WT_I18N::translate('spouse'));
 			}
 		}
 		if (!is_null($mother)) {
 			if ($mother->getSex()=="F") {
-				$mother->setLabel(WT_I18N::translate('Wife'));
+				$mother->setLabel(WT_I18N::translate('wife'));
 			} elseif ($mother->getSex()=="M") {
-				$mother->setLabel(WT_I18N::translate('Husband'));
+				$mother->setLabel(WT_I18N::translate('husband'));
 			} else {
-				$father->setLabel(WT_I18N::translate('Spouse'));
+				$father->setLabel(WT_I18N::translate('spouse'));
 			}
 		}
 	}
@@ -2083,7 +2083,7 @@ case 'changefamily':
 			<?php
 			} else {
 			?>
-				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo WT_I18N::translate('Spouse'); ?></b><input type="hidden" name="HUSB" value="" /></td>
+				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="HUSB" value="" /></td>
 				<td id="HUSBName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"></td>
 			<?php
 			}
@@ -2102,7 +2102,7 @@ case 'changefamily':
 			<?php
 			} else {
 			?>
-				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo WT_I18N::translate('Spouse'); ?></b><input type="hidden" name="WIFE" value="" /></td>
+				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="WIFE" value="" /></td>
 				<td id="WIFEName" class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>"></td>
 			<?php
 			}
@@ -2131,7 +2131,7 @@ case 'changefamily':
 			}
 				?>
 			<tr>
-				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo WT_I18N::translate('Add child'); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value="" /></td>
+				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>"><b><?php echo WT_I18N::translate('child'); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value="" /></td>
 				<td id="CHILName<?php echo $i; ?>" class="optionbox wrap"></td>
 				<td class="optionbox wrap <?php echo $TEXT_DIRECTION; ?>">
 					<a href="javascript:;" id="childrem<?php echo $i; ?>" style="display: none;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
