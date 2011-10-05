@@ -253,7 +253,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if (isset($people["husb"]) ) {
 				$menu = new WT_Menu();
 				if ($people["husb"]->getLabel() == ".") {
-					$menu->addLabel(WT_I18N::translate('Step-Father'));
+					$menu->addLabel(WT_I18N::translate_c('mother\'s husband', 'step-father'));
 				} else {
 					$menu->addLabel($people["husb"]->getLabel());
 				}
@@ -285,7 +285,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if (isset($people["wife"]) ) {
 				$menu = new WT_Menu();
 				if ($people["wife"]->getLabel() == ".") {
-					$menu->addLabel(WT_I18N::translate('Step-Mother'));
+					$menu->addLabel(WT_I18N::translate_c('father\'s wife', 'step-mother'));
 				} else {
 					$menu->addLabel($people["wife"]->getLabel());
 				}
