@@ -399,7 +399,7 @@ echo WT_JS_START;?>
 					<li><a href="#access-options"><span><?php echo WT_I18N::translate('Access'); ?></span></a></li>
 					<li><a href="#layout-options"><span><?php echo WT_I18N::translate('Layout'); ?></span></a></li>
 					<li><a href="#hide-show"><span><?php echo WT_I18N::translate('Hide &amp; Show'); ?></span></a></li>
-					<li><a href="#edit-options"><span><?php echo WT_I18N::translate('Edit Options'); ?></span></a></li>
+					<li><a href="#edit-options"><span><?php echo WT_I18N::translate('Edit options'); ?></span></a></li>
 				</ul>
 			<!-- GEDCOM BASICS -->
 			<div id="file-options">
