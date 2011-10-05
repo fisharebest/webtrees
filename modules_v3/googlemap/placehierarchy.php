@@ -33,8 +33,6 @@ if (file_exists(WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php')) {
 	require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 }
 
-$stats = new WT_Stats($GEDCOM);
-
 function place_id_to_hierarchy($id) {
 	$statement=
 		WT_DB::prepare("SELECT pl_parent_id, pl_place FROM `##placelocation` WHERE pl_id=?");
@@ -178,9 +176,9 @@ function create_map($placelevels) {
 			$placelevels=preg_replace('/, '.WT_I18N::translate('unknown').'/', ', ', $placelevels); // replace ", unknown" with ", " 
 			$placelevels=substr($placelevels, 2); // remove the leading ", "
 			if ($placelevels) {
-				$batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=exact&amp;GEDCOM='.WT_GEDCOM.'&amp;search='.urlencode($placelevels); // exact match
+				$batchupdate_url='module.php?mod=batch_update&amp;mod_action=admin_batch_update&amp;plugin=search_replace_bu_plugin&amp;method=exact&amp;ged='.WT_GEDCOM.'&amp;search='.urlencode($placelevels); // exact match
 				echo '&nbsp;|&nbsp;';
-				echo '<a href="'.$batchupdate_url.'">', WT_I18N::translate('Batch Update'), '</a>';
+				echo '<a href="'.$batchupdate_url.'">', WT_I18N::translate('Batch update'), '</a>';
 			}
 		}
 	}
@@ -294,7 +292,7 @@ function check_place($place_names, $place) {
 }
 
 function print_how_many_people($level, $parent) {
-	global $GEDCOM, $stats;
+	$stats = new WT_Stats(WT_GEDCOM);
 
 	$place_count_indi = 0;
 	$place_count_fam = 0;

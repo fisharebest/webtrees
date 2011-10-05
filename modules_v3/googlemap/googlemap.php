@@ -424,14 +424,14 @@ function build_indiv_map($indifacts, $famids) {
 										$i = $i + 1;
 										$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
 										if (strpos($srec, "\n1 SEX F")!==false) {
-											$markers[$i]['fact'] = WT_I18N::translate('Daughter');
+											$markers[$i]['fact'] = WT_I18N::translate('daughter');
 											$markers[$i]['class'] = 'person_boxF';
 										} else {
 											if (strpos($srec, "\n1 SEX M")!==false) {
-												$markers[$i]['fact'] = WT_I18N::translate('Son');
+												$markers[$i]['fact'] = WT_I18N::translate('son');
 												$markers[$i]['class'] = 'person_box';
 											} else {
-												$markers[$i]['fact']  = WT_Gedcom_Tag::getLabel('CHIL');
+												$markers[$i]['fact']  = WT_I18N::translate('child');
 												$markers[$i]['class'] = 'person_boxNN';
 											}
 										}
@@ -457,14 +457,14 @@ function build_indiv_map($indifacts, $famids) {
 										if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
 											$i = $i + 1;
 											$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
-											$markers[$i]['fact']	= WT_Gedcom_Tag::getLabel('CHIL');
+											$markers[$i]['fact']	= WT_I18N::translate('child');
 											$markers[$i]['class']	= 'option_boxNN';
 											if (strpos($srec, "\n1 SEX F")!==false) {
-												$markers[$i]['fact'] = WT_I18N::translate('Daughter');
+												$markers[$i]['fact'] = WT_I18N::translate('daughter');
 												$markers[$i]['class'] = 'person_boxF';
 											}
 											if (strpos($srec, "\n1 SEX M")!==false) {
-												$markers[$i]['fact'] = WT_I18N::translate('Son');
+												$markers[$i]['fact'] = WT_I18N::translate('son');
 												$markers[$i]['class'] = 'person_box';
 											}
 											$markers[$i]['icon'] = $latlongval['icon'];
