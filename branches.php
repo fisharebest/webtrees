@@ -166,7 +166,7 @@ function print_fams($person, $famid=null) {
 			}
 			else if ($family->getMarriage()) {
 				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<span class="details1" title="'.WT_I18N::translate('Yes').'">'.WT_ICON_RINGS.'</span></a>&nbsp;';
+				$txt .= '<span class="details1" title="'.WT_I18N::translate('yes').'">'.WT_ICON_RINGS.'</span></a>&nbsp;';
 			}
 		$txt .=
 			$spouse->getSexImage().
