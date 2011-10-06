@@ -394,22 +394,25 @@ case 'add':
 	}
 	echo '</table>';
 
-	if ($level0type=="SOUR" || $level0type=="REPO") {
-		if ($fact!="NOTE") print_add_layer("NOTE");
-	} else {
-		if ($fact!="OBJE") {
-			if ($fact!="SOUR" && $fact!="REPO" ) print_add_layer("SOUR");
-			if ($fact!="REPO") print_add_layer("OBJE");
-			if ($fact!="NOTE" && $fact!="SHARED_NOTE") print_add_layer("NOTE");
-			// Shared Note addition ------------
-			if ($fact!="SHARED_NOTE" && $fact!="NOTE") print_add_layer("SHARED_NOTE");
-			if ($fact!="ASSO" && $fact!="SOUR" && $fact!="REPO" && $fact!="SHARED_NOTE") print_add_layer("ASSO");
+	// Genealogical facts (e.g. for INDI and FAM records) can have 2 SOUR/NOTE/OBJE/ASSO/RESN ...
+	if ($level0type=='INDI' || $level0type=='FAM') {
+		// ... but not facts which are simply links to other records
+		if ($fact!='OBJE' && $fact!='SHARED_NOTE' && $fact!='OBJE' && $fact!='REPO' && $fact!='SOUR' && $fact!='ASSO') {
+			print_add_layer('SOUR');
+			print_add_layer('OBJE');
+			// Don't add notes to notes!
+			if ($fact!='NOTE') {
+				print_add_layer('NOTE');
+				print_add_layer('SHARED_NOTE');
+			}
+			print_add_layer('ASSO');
 			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($fact=="CHR" || $fact=="MARR") print_add_layer("ASSO2");
+			if ($fact=='CHR' || $fact=='MARR') {
+				print_add_layer('ASSO2');
+			}
+			print_add_layer('RESN');
 		}
 	}
-	// RESN can be added to all level 1 tags
-	print_add_layer("RESN");
 
 	echo '<br /><input type="submit" value="', WT_I18N::translate('Add'), '" /><br />';
 	echo '</form>';
