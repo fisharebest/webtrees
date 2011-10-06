@@ -725,6 +725,7 @@ class CellPDF extends Cell {
 				$this->top = $pdf->GetY();
 			}
 			$temptext = spanLTRRTL($temptext, "BOTH");
+//DumpString($temptext); //@@@
 		}
 		// HTML ready - last value is true
 		$pdf->MultiCell($this->width, $this->height, $temptext, $this->border, $this->align, $this->fill, $this->newline, $cX, $this->top, $this->reseth, $this->stretch, true);
@@ -785,6 +786,7 @@ class HtmlPDF extends Html {
 			return $this->text;
 		}
 		$pdf->writeHTML($this->text); //prints 2 empty cells in the Expanded Relatives report
+//@@	$pdf->writeHTML($this->text.'@1'); //@@
 		return 0;
 	}
 }
@@ -1053,7 +1055,13 @@ class TextBoxPDF extends TextBox {
 		unset($lw, $w, $match, $cE, $eH);
 		// Draw the border
 		if (!empty($cS)) {
-			$pdf->Rect($cX, $cY, $cW, $cH, $cS);
+			if (!$pdf->getRTL()) {
+				$cXM = $cX;	
+			} else {
+				$cXM=($pdf->getPageWidth())-$cX-$cW;
+			}
+			//echo "<br />cX=".$cX."  cXM=".$cXM."  cW=".$cW."  LW=".$pdf->getPageWidth()."  RW=".$pdf->getRemainingWidthPDF()."  MLW=".$pdf->getMaxLineWidth();
+			$pdf->Rect($cXM, $cY, $cW, $cH, $cS);
 		}
 		// Add cell padding if set and if any text (element) exist
 		if ($this->padding) {
@@ -1175,8 +1183,12 @@ class TextPDF extends Text {
 		} else {
 			$pdf->SetTextColor(0, 0, 0);
 		}
+//DumpString($temptext); //@@@
 		$temptext = spanLTRRTL($temptext, "BOTH");
-		$pdf->writeHTML($temptext, false, false, true, false, ""); //change height - line break etc.
+		$temptext = str_replace(array('<br /><span dir="rtl" >', '<br /><span dir="ltr" >', '> ',  ' <'), array('<span dir="rtl" ><br />', '<span dir="ltr" ><br />', '>&nbsp;', '&nbsp;<'), $temptext);
+//DumpString($temptext); //@@@
+ 		$pdf->writeHTML($temptext, false, false, true, false, ""); //change height - line break etc. - the form is mirror on rtl pages
+//@@	$pdf->writeHTML($temptext.'@2', false, false, true, false, ""); //@@
 		// Reset the text color to black or it will be inherited
 		$pdf->SetTextColor(0, 0, 0);
 	}
@@ -1309,8 +1321,6 @@ class FootnotePDF extends Footnote {
 			$pdf->setCurrentStyle($this->styleName);
 		}
 		$temptext = str_replace("#PAGENUM#", $pdf->PageNo(), $this->text);
-		// underline «title» part of Source item
-		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 		// Set the link to this y/page position
 		$pdf->SetLink($this->addlink, -1, -1);
 		// Print first the source number
@@ -1320,8 +1330,15 @@ class FootnotePDF extends Footnote {
 		} else {
 			$temptext = "<span>".$this->num.". </span>".$temptext;
 		}
-		$temptext = spanLTRRTL($temptext, "BOTH"); 
-		$pdf->writeHTML($temptext, true, false, true, false, '');
+//DumpString($temptext); //@@@
+//		$temptext = spanLTRRTL($temptext, "BOTH");
+		//do not add span to '<u>', '</u>' and to special characters (- . , : ?) What about + in phone numbers?. Day together with the rest of the date in page orientation.
+		$temptext = PrintReady($temptext); //@@ better than spanLTRRTL- not 100%
+		// underline «title» part of Source item
+		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
+//DumpString($temptext); //@@@
+		$pdf->writeHTML($temptext, true, false, true, false, ''); //@@Source-list
+//		$pdf->writeHTML($temptext.'@4', true, false, true, false, ''); //@@
 		//$pdf->Write($pdf->getCurrentStyleHeight(), $this->num.". ".$temptext."\n\n"); //@@ indi list of sources
 	}
 
@@ -1499,8 +1516,10 @@ class ImagePDF extends Image {
 		} else {
 			$pdf->SetY($this->y);
 		}
-
-		$pdf->Image($this->file, $this->x, $this->y, $this->width, $this->height, "", "", $this->line, false, 72, $this->align);
+		if ($pdf->getRTL())
+			$pdf->Image($this->file, $pdf->getPageWidth()-$this->x, $this->y, $this->width, $this->height, "", "", $this->line, false, 72, $this->align);
+		else
+			$pdf->Image($this->file, $this->x, $this->y, $this->width, $this->height, "", "", $this->line, false, 72, $this->align);
 		$lastpicpage = $pdf->PageNo();
 		$pdf->lastpicpage = $pdf->getPage();
 		$lastpicleft = $this->x;
@@ -1556,7 +1575,10 @@ class LinePDF extends Line {
 			$this->x2 = $pdf->getMaxLineWidth();
 		}
 		if ($this->y2 == ".") $this->y2=$pdf->GetY();
-
-		$pdf->Line($this->x1, $this->y1, $this->x2, $this->y2);
+		if ($pdf->getRTL())
+			$pdf->Line($pdf->getPageWidth()-$this->x1, $this->y1, $pdf->getPageWidth()-$this->x2, $this->y2);
+		else
+			$pdf->Line($this->x1, $this->y1, $this->x2, $this->y2);
+		//@@ pedigree report lines - family, deaths, cemeteries???
 	}
 }

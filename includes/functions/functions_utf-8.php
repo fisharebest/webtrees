@@ -251,29 +251,37 @@ function utf8_strcasecmp($string1, $string2) {
 function utf8_wordwrap($string, $width=75, $sep="\n", $cut=false) {
 	$out='';
 	while ($string) {
-		$sub=utf8_substr($string, 0, $width);
-		$spacepos=strrpos($sub, ' ');
-		if ($spacepos==false) {
-			// No space on line?
-			if ($cut) {
-				$out.=$sub.$sep;
-				$string=substr($string, strlen($sub));
-			} else {
-				$spacepos=strpos($string, ' ');
-				if ($spacepos==false) {
-					$out.=$string;
-					$string='';
-				} else {
-					$out.=substr($string, 0, $spacepos).$sep;
-					$string=substr($string, $spacepos+1);
-				}
-			}
+		if (utf8_strlen($string) <= $width){ //Do not wrap any text that is less than the output area.
+			$out.=$string;
+			$string='';
 		} else {
-			// Split at space;
-			$out.=substr($string, 0, $spacepos).$sep;
-			$string=substr($string, $spacepos+1);
+			$sub1=utf8_substr($string, 0, $width+1);
+			if (utf8_substr($string,utf8_strlen($sub1)-1,1)==' ') //include words that end by a space immediately after the area. 
+				$sub=$sub1;
+			else
+				$sub=utf8_substr($string, 0, $width);
+			$spacepos=strrpos($sub, ' ');
+			if ($spacepos==false) {
+				// No space on line?
+				if ($cut) {
+					$out.=$sub.$sep;
+					$string=utf8_substr($string, utf8_strlen($sub));
+				} else {
+					$spacepos=strpos($string, ' ');
+					if ($spacepos==false) {
+						$out.=$string;
+						$string='';
+					} else {
+						$out.=substr($string, 0, $spacepos).$sep;
+						$string=substr($string, $spacepos+1);
+					}
+				}
+			} else {
+				// Split at space;
+				$out.=substr($string, 0, $spacepos).$sep;
+				$string=substr($string, $spacepos+1);
+			}
 		}
-
 	}
 	return $out;
 }

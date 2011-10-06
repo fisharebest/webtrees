@@ -114,7 +114,7 @@
 										<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 									</Gedcom>
 									<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-									<GedcomValue tag="SOUR:DATA:TEXT" />
+									  <GedcomValue tag="SOUR:DATA:TEXT" />
 								</Footnote>
 								<SetVar name="source_exist" value="1"/>
 							</RepeatTag>
@@ -127,7 +127,7 @@
 										<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 									</Gedcom>
 									<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-									<GedcomValue tag="SOUR:DATA:TEXT" />
+									 <GedcomValue tag="SOUR:DATA:TEXT" />
 								</Footnote>
 								<SetVar name="source_exist" value="1" />
 							</RepeatTag>
@@ -147,7 +147,7 @@
 											<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 										</Gedcom>
 										<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-										<GedcomValue tag="SOUR:DATA:TEXT" />
+										 <GedcomValue tag="SOUR:DATA:TEXT" />
 									</Footnote>
 									<SetVar name="source_exist" value="1"/>
 								</RepeatTag>
@@ -174,7 +174,7 @@
 											<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 										</Gedcom>
 										<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-										<GedcomValue tag="SOUR:DATA:TEXT" />
+										 <GedcomValue tag="SOUR:DATA:TEXT" />
 									</Footnote>
 									<SetVar name="source_exist" value="1"/>
 								</RepeatTag>
@@ -202,7 +202,7 @@
 												<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 											</Gedcom>
 											<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-											<GedcomValue tag="SOUR:DATA:TEXT" />
+											 <GedcomValue tag="SOUR:DATA:TEXT" />
 										</Footnote>
 										<SetVar name="source_exist" value="1"/>
 									</RepeatTag>
@@ -231,7 +231,7 @@
 												<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 											</Gedcom>
 											<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-											<GedcomValue tag="SOUR:DATA:TEXT" />
+											 <GedcomValue tag="SOUR:DATA:TEXT" />
 										</Footnote>
 										<SetVar name="source_exist" value="1"/>
 									</RepeatTag>
@@ -265,7 +265,7 @@
 														<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 													</Gedcom>
 													<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-													<GedcomValue tag="SOUR:DATA:TEXT" />
+													 <GedcomValue tag="SOUR:DATA:TEXT" />
 												</Footnote>
 												<SetVar name="source_exist" value="1"/>
 											</RepeatTag>
@@ -296,7 +296,7 @@
 											<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 										</Gedcom>
 										<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-										<GedcomValue tag="SOUR:DATA:TEXT" />
+										 <GedcomValue tag="SOUR:DATA:TEXT" />
 									</Footnote>
 									<SetVar name="source_exist" value="1"/>
 								</RepeatTag>
@@ -321,7 +321,7 @@
 											<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 										</Gedcom>
 										<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-										<GedcomValue tag="SOUR:DATA:TEXT" />
+										 <GedcomValue tag="SOUR:DATA:TEXT" />
 									</Footnote>
 									<SetVar name="source_exist" value="1"/>
 								</RepeatTag>
@@ -352,7 +352,7 @@
 											<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 										</Gedcom>
 										<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-										<GedcomValue tag="SOUR:DATA:TEXT" />
+										 <GedcomValue tag="SOUR:DATA:TEXT" />
 									</Footnote>
 									<SetVar name="source_exist" value="1"/>
 								</RepeatTag>
@@ -374,7 +374,7 @@
 				</if>
 				<SetVar name="num" value="$num+1" />
 				<if condition="$children==1">
-					<!-- this section gets the children.-->
+					<!-- this section gets the children. -->
 					<RepeatTag tag="FAMS">
 						<SetVar name="individual" value="$cpid" />								
 						<SetVar name="spouse" value="$spid" />
@@ -424,7 +424,7 @@
 											<if condition="$familyChildNumber==20"><SetVar name="familyChildRoman" value="xx" /></if>
 											<TextBox left="25" height="20" newline="1">
 												<Text style="label1"><var var="familyChildRoman" /></Text>
-												<Text style="namech">  <GetPersonName id="" /><br/> </Text>
+												<Text style="namech">  <GetPersonName id="" /> </Text>
 												<if condition="$sources==1">
 													<RepeatTag tag="SOUR">
 														<Footnote>
@@ -433,15 +433,17 @@
 																«<GedcomValue tag="TITL" />»
 																<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 															</Gedcom>
+														<!-- </Footnote> -->
+															<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
+														 	<GedcomValue tag="SOUR:DATA:TEXT" />
 														</Footnote>
-														<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-														<GedcomValue tag="SOUR:DATA:TEXT" />
 														<SetVar name="source_exist" value="1"/>
 													</RepeatTag>
 												</if>
-												<!-- Start BIRT--> 
+												<Text style="label1" > <br /></Text>
+												<!-- Start BIRT -->
 												<Gedcom id="BIRT">
-													<Text style="label1" ><varLetter var="BIRT" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/><br/></Text>
+													<Text style="label1" > <varLetter var="BIRT" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
 												</Gedcom>
 												<if condition="@SEX=='M'"><SetVar name="gender" value="male" /></if>
 												<if condition="@SEX=='F'"><SetVar name="gender" value="female" /></if>
@@ -450,12 +452,12 @@
 														<Text style="label1"> <varLetter var="MARR" /> </Text>
 														<if condition="$gender=='male'"><Text style="namech"><GetPersonName id="@WIFE" /></Text></if>
 														<if condition="$gender=='female'"><Text style="namech"><GetPersonName id="@HUSB" /></Text></if>
-														<Text style="label1"><Gedcom id="MARR"><if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if><if condition="@PLAC!=''"> <GedcomValue tag="PLAC" level="2" /><br/></if></Gedcom></Text>
+														<Text style="label1"><Gedcom id="MARR"><if condition="@DATE!=''"> <GedcomValue tag="DATE" level="2" /></if><if condition="@PLAC!=''"> <GedcomValue tag="PLAC" level="2" /></if></Gedcom> <br /></Text>
 													</Gedcom>
 												</RepeatTag>
-												<!-- End BIRT start DEAT--> 
+												<!-- End BIRT start DEAT --> 
 												<Gedcom id="DEAT">
-													<Text style="label1"> <varLetter var="DEAT" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/><br/></Text>
+													<Text style="label1"> <varLetter var="DEAT" /> <GedcomValue tag="DATE" level="2"/> <GedcomValue tag="PLAC" level="2"/> <br /></Text>
 												</Gedcom>
 											</TextBox>
 										</Gedcom>

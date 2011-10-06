@@ -1955,7 +1955,12 @@ function GetPersonNameSHandler($attrs) {
 			$currentElement->addText(WT_I18N::translate('Private'));
 		} else {
 			$name = $record->getFullName();
-			$name = preg_replace("/<span class=\"starredname\">(.*)<\/span> ?/", "\\1* ", $name); //restores the * for underlining a given name
+/*
+echo "<br />";
+for ($ii=0; $ii<=strlen($name); $ii++)
+echo substr($name, $ii, 1)." ";
+*/
+			$name = preg_replace(array('/<span class="starredname">/','/<\/span><\/span>/','/<\/span>/'), array('«','','»'), $name);
 			if (!WT_RNEW) {
 				$name = strip_tags($name);
 			}
@@ -1981,9 +1986,14 @@ function GetPersonNameSHandler($attrs) {
 				}
 			} else {
 				$addname = $record->getAddName();
-				$addname = preg_replace("/<span class=\"starredname\">(.*)<\/span> ?/", "\\1* ", $addname); //@@ restores the * for underlining a given name
+/*
+echo "<br />".$addname."<br />";
+for ($ii=0; $ii<=strlen($addname); $ii++)
+echo substr($addname, $ii, 1)." ";
+*/
+				$addname = preg_replace(array('/<span class="starredname">/','/<\/span><\/span>/','/<\/span>/'), array('«','','»'), $addname);						
 				if (!WT_RNEW) {
-					$addname = strip_tags($addname);//@@
+					$addname = strip_tags($addname); //@@ unknown printed in other alignment with ... on wrong side
 				}
 				if (!empty($addname)) {
 					$name .= " ".$addname;
@@ -2041,6 +2051,7 @@ function GedcomValueSHandler($attrs) {
 			}
 			$tags = explode(":", $tag);
 			$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
+//@@ do we still need?			
 			if ($useBreak == "1") {
 				// Insert <br /> when multiple dates exist.
 				// This works around a TCPDF bug that incorrectly wraps RTL dates on LTR pages

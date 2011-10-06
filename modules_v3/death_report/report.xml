@@ -89,7 +89,7 @@
 								<if condition="@PUBL!=''"> (<GedcomValue tag="PUBL" />)</if>
 							</Gedcom>
 							<if condition="@PAGE!=''">: <GedcomValue tag="SOUR:PAGE" /></if>
-							<GedcomValue tag="SOUR:DATA:TEXT" />
+							 <GedcomValue tag="SOUR:DATA:TEXT" />
 							<SetVar name="usebr" value="1"/>
 						</RepeatTag>
 					</Text>
