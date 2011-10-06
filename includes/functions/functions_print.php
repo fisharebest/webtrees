@@ -1500,22 +1500,24 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	foreach ($addfacts as $addfact) {
 		$translated_addfacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
 	}
-	uasort($translated_addfacts, "factsort");
-	echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, "\">";
+	uasort($translated_addfacts, 'factsort');
+	echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, '">';
 	echo WT_I18N::translate('Add new fact');
-	echo help_link('add_facts'), "</td>";
-	echo "<td class=\"optionbox wrap ", $TEXT_DIRECTION, "\">";
+	echo help_link('add_facts'), '</td>';
+	echo '<td class="optionbox wrap ', $TEXT_DIRECTION, '">';
 	echo "<form method=\"get\" name=\"newfactform\" action=\"\" onsubmit=\"return false;\">";
-	echo "<select id=\"newfact\" name=\"newfact\">";
+	echo '<select id="newfact" name="newfact">';
 	foreach ($translated_addfacts as $fact=>$fact_name) {
-		echo '<option value="', $fact, '">', WT_I18N::translate('%1$s [%2$s]', $fact_name, $fact), '</option>';
+		echo '<option value="', $fact, '">', $fact_name, '</option>';
 	}
-	if (($type == "INDI") || ($type == "FAM")) echo "<option value=\"EVEN\">", WT_I18N::translate('Custom Event'), " [EVEN]</option>";
-	echo "</select>";
+	if ($type == 'INDI' || $type == 'FAM') {
+		echo '<option value="EVEN">', WT_I18N::translate('Custom Event'), '</option>';
+	}
+	echo '</select>';
 	echo "&nbsp;&nbsp;<input type=\"button\" value=\"", WT_I18N::translate('Add'), "\" onclick=\"add_record('$id', 'newfact');\" /> ";
 	foreach ($quickfacts as $fact) echo "&nbsp;<small><a href='javascript://$fact' onclick=\"add_new_record('$id', '$fact');return false;\">", WT_Gedcom_Tag::getLabel($fact), "</a></small>&nbsp;";
-	echo "</form>";
-	echo "</td></tr>";
+	echo '</form>';
+	echo '</td></tr>';
 }
 
 /**
