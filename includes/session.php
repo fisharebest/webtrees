@@ -239,7 +239,7 @@ define('WT_DATA_DIR', realpath(get_site_setting('INDEX_DIRECTORY', 'data')).DIRE
 // www.isp.com/~example), then redirect to it.
 $SERVER_URL=get_site_setting('SERVER_URL');
 if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
-	header('Location: '.$SERVER_URL.WT_SCRIPT_NAME.($QUERY_STRING ? '?'.$QUERY_STRING : ''), TRUE, 301);
+	header('Location: '.$SERVER_URL.WT_SCRIPT_NAME.($QUERY_STRING ? '?'.$QUERY_STRING : ''), true, 301);
 	exit;
 }
 
@@ -338,9 +338,6 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 if (isset($_REQUEST['ged'])) {
 	// .... from the URL or form action
 	$GEDCOM=$_REQUEST['ged'];
-} elseif (isset($_REQUEST['GEDCOM'])) {
-	// .... is this used ????
-	$GEDCOM=$_REQUEST['GEDCOM'];
 } elseif (isset($_SESSION['GEDCOM'])) {
 	// .... the most recently used one
 	$GEDCOM=$_SESSION['GEDCOM'];
@@ -432,7 +429,7 @@ if (isset($_GET['show_context_help'])) {
 if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
 
 if (WT_SCRIPT_NAME!='help_text.php') {
-	if (!get_gedcom_setting(WT_GED_ID, 'imported') && substr(WT_SCRIPT_NAME, 0, 5)!=='admin' && !in_array(WT_SCRIPT_NAME, array('help_text.php', 'downloadgedcom.php', 'login.php', 'login_register.php', 'gedcheck.php', 'export_gedcom.php', 'edit_changes.php', 'import.php', 'message.php', 'save.php'))) {
+	if (!get_gedcom_setting(WT_GED_ID, 'imported') && substr(WT_SCRIPT_NAME, 0, 5)!=='admin' && !in_array(WT_SCRIPT_NAME, array('help_text.php', 'downloadgedcom.php', 'login.php', 'login_register.php', 'export_gedcom.php', 'edit_changes.php', 'import.php', 'message.php', 'save.php'))) {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
 		exit;
 	}
