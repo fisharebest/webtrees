@@ -933,18 +933,7 @@ function printSourceStructure($textSOUR) {
 			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('DATA:DATE').':</span> <span class="field">'.$date->Display(false).'</span></div>';
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
-			if ($textSOUR['NOTE']) {
-				$noterec = find_gedcom_record(str_replace("@", "", $textSOUR['NOTE']), WT_GED_ID);
-				if (!empty($noterec)) {
-					$nt = preg_match("/0 ".$textSOUR['NOTE']." NOTE(.*)/", $noterec, $n1match);
-					if ($nt==1) {
-						$text.=print_note_record($n1match[1], 1, $noterec,  true, true);
-					}
-				}
-				$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field">'.$text.'</span></div>';
-			} else {
-				$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field">'.PrintReady(expand_urls($text)).'</span></div>';
-			}
+			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field">'.PrintReady(expand_urls($text)).'</span></div>';
 		}
 	}
 
