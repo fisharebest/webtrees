@@ -89,7 +89,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 			//This creates a Media Object from the getInstance method of the Media Class. It takes the Media ID ($this->mid) and creates the object.
 			$this->mediaobject = WT_Media::getInstance($this->mid);
 			//This sets the controller ID to be the Media ID
-			$this->pid = $this->mid;
+			$this->m_pid = $this->mid;
 		}
 
 		if (is_null($this->mediaobject)) return false;
@@ -116,9 +116,9 @@ class WT_Controller_Media extends WT_Controller_Base {
 			break;
 		case 'accept':
 			if (WT_USER_CAN_ACCEPT) {
-				accept_all_changes($this->pid, WT_GED_ID);
+				accept_all_changes($this->m_pid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
-				$mediarec = find_media_record($this->pid, WT_GED_ID);
+				$mediarec = find_media_record($this->m_pid, WT_GED_ID);
 				if (empty($mediarec)) {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 					exit;
@@ -129,8 +129,8 @@ class WT_Controller_Media extends WT_Controller_Base {
 			break;
 		case 'undo':
 			if (WT_USER_CAN_ACCEPT) {
-				reject_all_changes($this->pid, WT_GED_ID);
-				$mediarec = find_media_record($this->pid, WT_GED_ID);
+				reject_all_changes($this->m_pid, WT_GED_ID);
+				$mediarec = find_media_record($this->m_pid, WT_GED_ID);
 				//-- check if we just deleted the record and redirect to index
 				if (empty($mediarec)) {
 					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
@@ -169,7 +169,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 			return null;
 		}
 
-		$links = get_media_relations($this->pid);
+		$links = get_media_relations($this->m_pid);
 		$linktoid = "new";
 		foreach ($links as $linktoid => $type) {
 			break; // we're only interested in the key of the first list entry
@@ -182,7 +182,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'), '#', 'menu-obje-edit');
-			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->pid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')");
+			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->m_pid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')");
 			$submenu->addIcon('edit_media');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_media');
 			$menu->addSubmenu($submenu);
@@ -198,22 +198,22 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 			// GEDFact assistant Add Media Links =======================
 			if (WT_USER_GEDCOM_ADMIN && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-				$submenu->addOnclick("return ilinkitem('".$this->pid."','manage');");
+				$submenu->addOnclick("return ilinkitem('".$this->m_pid."','manage');");
 			} else {
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'), '#', 'menu-obje-link-indi');
-				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','person');");
+				$ssubmenu->addOnclick("return ilinkitem('".$this->m_pid."','person');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_indis');
 				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'), '#', 'menu-obje-link-fam');
-				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','family');");
+				$ssubmenu->addOnclick("return ilinkitem('".$this->m_pid."','family');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_cfamily');
 				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'), '#', 'menu-obje-link-sour');
-				$ssubmenu->addOnclick("return ilinkitem('".$this->pid."','source');");
+				$ssubmenu->addOnclick("return ilinkitem('".$this->m_pid."','source');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_menu_source');
 				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
@@ -224,7 +224,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-obje-editraw');
-			$submenu->addOnclick("return edit_raw('".$this->pid."');");
+			$submenu->addOnclick("return edit_raw('".$this->m_pid."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
@@ -244,7 +244,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		if (WT_USER_GEDCOM_ADMIN) {
 			$submenu = new WT_Menu(
 				WT_I18N::translate('Remove object'),
-				"admin_media.php?action=removeobject&amp;xref=".$this->pid,
+				"admin_media.php?action=removeobject&amp;xref=".$this->m_pid,
 				'menu-obje-del'
 			);
 			$submenu->addOnclick("return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."')");
@@ -294,7 +294,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		$mediaType = $this->mediaobject->getMediatype();
 		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->mediaobject, 0);
 
-		if (($newrec=find_updated_record($this->pid, WT_GED_ID))!==null) {
+		if (($newrec=find_updated_record($this->m_pid, WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
 			$newfacts = $newmedia->getFacts(array());
 			$newimgsize = $newmedia->getImageAttributes();
