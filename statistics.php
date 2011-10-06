@@ -186,7 +186,7 @@ if (isset($content) && $content==1) {
 					</tr>
 					<tr>
 						<td class="facts_value" align="center"><?php echo $stats->totalMarriages(); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalEventsDivorce(); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->totalDivorces(); ?></td>
 					</tr>
 					<tr>
 						<td class="facts_label"><?php echo WT_I18N::translate('Marriages by century'); ?></td>

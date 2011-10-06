@@ -916,8 +916,8 @@ if ($action=='update') {
 }
 
 print_simple_header(WT_I18N::translate('Statistics plot'));
-echo '<center><h2>', WT_I18N::translate('Statistics plot'), '</h2>';
-echo '</center><br />';
+echo '<h2 class="center">', WT_I18N::translate('Statistics plot'), '</h2>';
+echo '<br />';
 
 $nrpers = $_SESSION[$GEDCOM.'nrpers'];
 $nrfam = $_SESSION[$GEDCOM.'nrfam'];
