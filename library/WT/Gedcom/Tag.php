@@ -777,50 +777,6 @@ class WT_Gedcom_Tag {
 			case 'F': return /* I18N: gedcom tag _INTE */ WT_I18N::translate_c('FEMALE', 'Interred');
 			default:  return /* I18N: gedcom tag _INTE */ WT_I18N::translate('Interred');
 			}
-		case '_MARB_CHIL':
-			switch ($sex) {
-			case 'M': return WT_I18N::translate('Marriage Banns of a son');
-			case 'F': return WT_I18N::translate('Marriage Banns of a daughter');
-			default:  return WT_I18N::translate('Marriage Banns of a child');
-			}
-		case '_MARB_FAMC':
-			return /* I18N: ...to each other */ WT_I18N::translate('Marriage banns of parents');
-		case '_MARB_GCHI':
-			switch ($sex) {
-			case 'M': return WT_I18N::translate('Marriage Banns of a grandson');
-			case 'F': return WT_I18N::translate('Marriage Banns of a granddaughter');
-			default:  return WT_I18N::translate('Marriage Banns of a grandchild');
-			}
-		case '_MARB_GCH1':
-			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('daughter\'s son', 'Marriage banns of a grandson');
-			case 'F': return WT_I18N::translate_c('daughter\'s daughter','Marriage banns of a granddaughter');
-			default:  return WT_I18N::translate('Marriage Banns of a grandchild');
-			}
-		case '_MARB_GCH2':
-			switch ($sex) {
-			case 'M': return WT_I18N::translate_c('son\'s son',      'Marriage banns of a grandson');
-			case 'F': return WT_I18N::translate_c('son\'s daughter',     'Marriage banns of a granddaughter');
-			default:  return WT_I18N::translate('Marriage Banns of a grandchild');
-			}
-		case '_MARB_HSIB':
-			switch ($sex) {
-			case 'M': return WT_I18N::translate('Marriage Banns of a half-brother');
-			case 'F': return WT_I18N::translate('Marriage banns of a half-sister');
-			default:  return WT_I18N::translate('Marriage banns of a half-sibling');
-			}
-		case '_MARB_PARE':
-			switch ($sex) {
-			case 'M': return /* I18N: ...to another spouse */ WT_I18N::translate('Marriage banns of a father');
-			case 'F': return /* I18N: ...to another spouse */ WT_I18N::translate('Marriage banns of a mother');
-			default:  return /* I18N: ...to another spouse */ WT_I18N::translate('Marriage banns of a parent');
-			}
-		case '_MARB_SIBL':
-			switch ($sex) {
-			case 'M': return WT_I18N::translate('Marriage Banns of a brother');
-			case 'F': return WT_I18N::translate('Marriage banns of a sister');
-			default:  return WT_I18N::translate('Marriage banns of a sibling');
-			}
 		case '_MARI': return /* I18N: gedcom tag _MARI */ WT_I18N::translate('Marriage Intention');
 		case '_MARNM': return /* I18N: gedcom tag _MARNM */ WT_I18N::translate('Married Name');
 		case '_PRIM': return /* I18N: gedcom tag _PRIM */ WT_I18N::translate('Highlighted image');
