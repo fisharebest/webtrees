@@ -50,9 +50,14 @@ class relative_ext_report_WT_Module extends WT_Module implements WT_Module_Repor
 	public function getReportMenus() {
 		global $controller;
 
-		if ($controller && isset($controller->pid)) {
+		if ($controller instanceof WT_Controller_Family) {
+			// We are on a family page
+			$pid='&amp;famid='.$controller->famid;
+		} elseif ($controller instanceof WT_Controller_Individual) {
+			// We are on an individual page
 			$pid='&amp;pid='.$controller->pid;
 		} elseif ($controller && isset($controller->rootid)) {
+			// We are on a chart page
 			$pid='&amp;pid='.$controller->rootid;
 		} else {
 			$pid='';
