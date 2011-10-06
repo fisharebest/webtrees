@@ -61,7 +61,7 @@ class individual_report_WT_Module extends WT_Module implements WT_Module_Report 
 		$menus=array();
 		$menu=new WT_Menu(
 			$this->getTitle(),
-			'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml',
+			'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml'.$pid,
 			'menu-report-'.$this->getName()
 		);
 		$menu->addIcon('place');
