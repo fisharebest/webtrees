@@ -29,7 +29,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Definitions to simplify logic on pages with right-to-left languages
-// TODO: merge this into the trunk?
 if ($TEXT_DIRECTION=='ltr') {
 	define ('WT_CSS_ALIGN',         'left');
 	define ('WT_CSS_REVERSE_ALIGN', 'right');
@@ -45,33 +44,33 @@ echo
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link type="image/x-icon" rel="shortcut icon" href="favicon.ico" />';
+	'<link type="image/x-icon" rel="shortcut icon" href="', WT_STATIC_URL, 'favicon.ico" />';
 	
 echo
-	'<link type="text/css" rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" />',
+	'<link type="text/css" rel="stylesheet" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" />',
 	'<link type="text/css" rel="stylesheet" href="', $stylesheet, '" />';
 
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, $BROWSERTYPE, '.css" />';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css" />';
 	break;
 }
 
 if (WT_USE_LIGHTBOX) {
 	if ($TEXT_DIRECTION=='rtl') {
 		echo
-			'<link type="text/css" rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" />',
-			'<link type="text/css" rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" />';
+			'<link type="text/css" rel="stylesheet" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" />',
+			'<link type="text/css" rel="stylesheet" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" />';
 	} else {
 		echo
-			'<link type="text/css" rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" />',
-			'<link type="text/css" rel="stylesheet" href="', WT_MODULES_DIR, 'lightbox/css/album_page.css" />';
+			'<link type="text/css" rel="stylesheet" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" />',
+			'<link type="text/css" rel="stylesheet" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" />';
 	}
 }
 
 echo
-	'<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, 'modules.css" />',
+	'<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, 'modules.css" />',
 	$javascript,
 	'</head>',
 	'<body id="body">';

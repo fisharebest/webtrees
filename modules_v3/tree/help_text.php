@@ -1,29 +1,27 @@
 <?php
-/**
- * TreeView Module help text.
- *
- * This file is included from the application help_text.php script.
- * It simply needs to set $title and $text for the help topic $help_topic
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 Daniel Faivre
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA	02111-1307	USA
- *
- * @version $Id$
- */
+// TreeView Module help text.
+//
+// This file is included from the application help_text.php script.
+// It simply needs to set $title and $text for the help topic $help_topic
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA	02111-1307	USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -42,7 +40,7 @@ case 'TV_MODULE':
 		WT_I18N::translate('Zoom in : enlarge texts and person\'s boxes.').'</td></tr>'.
 		'<tr><td><img src="'.$WT_IMAGES['zoomout'].'"'.$imgStyle.' alt="zoomout" /></td><td>'.
 		WT_I18N::translate('Zoom out : reduce texts and person\'s boxes.').'</td></tr>'.
-		'<tr><td><img src="'.WT_MODULES_DIR.'/tree/images/zoom0.png"'.$imgStyle.' alt="nozoom" /></td><td>'.
+		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/zoom0.png"'.$imgStyle.' alt="nozoom" /></td><td>'.
 		WT_I18N::translate('No zoom.').'</td></tr>'.
 		'<tr><td><img src="'.$WT_IMAGES['ldarrow'].'"'.$imgStyle.'alt="alignLeft" /></td><td>'.
 		WT_I18N::translate('Align on top left corner. Useful before printing.').'</td></tr>'.
@@ -50,16 +48,16 @@ case 'TV_MODULE':
 		WT_I18N::translate('Center on the root person.').'</td></tr>'.
 		'<tr><td><img src="'.$WT_IMAGES['rdarrow'].'"'.$imgStyle.' alt="alignRight" /></td><td>'.
 		WT_I18N::translate('Align on top right corner.').'</td></tr>'.
-		'<tr><td><img src="'.WT_MODULES_DIR.'/tree/images/dates.png"'.$imgStyle.' alt="hide dates" /></td><td>'.
+		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/dates.png"'.$imgStyle.' alt="hide dates" /></td><td>'.
 		WT_I18N::translate('Hide/show dates on small boxes.').'</td></tr>'.
-		'<tr><td><img src="'.WT_MODULES_DIR.'/tree/images/compact.png"'.$imgStyle.' alt="c/e" /></td><td>'.
+		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/compact.png"'.$imgStyle.' alt="c/e" /></td><td>'.
 		WT_I18N::translate('Compact tree / fixed boxes : switch beetween fixed-width boxes and compact tree. <i>fixed-width</i> display one generation\'s boxes in one column, and <i>compact</i> display more persons on the same area.').'</td></tr>'.
 		// function not enabled yet
 		// '<tr><td><img src="'.$WT_IMAGES['media'].'"'.$imgStyle.' alt="open" /></td><td>'.
 		// WT_I18N::translate('Open details for all displayed boxes. Could be long.').'</td></tr>'.
 		'<tr><td><img src="'.$WT_IMAGES["fambook"].'"'.$imgStyle.' alt="close" /></td><td>'.
 		WT_I18N::translate('Close all opened boxes.').'</td></tr>'.			
-		'<tr><td><img src="'.WT_MODULES_DIR.'/tree/images/print.png"'.$imgStyle.' alt="print" /></td><td>'.
+		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/print.png"'.$imgStyle.' alt="print" /></td><td>'.
 		WT_I18N::translate('Download full resolution medias instead of thumbnails for opened person\'s boxes and open the print dialog when done.').'</td></tr>'.
 		'<tr><td><img src="'.$WT_IMAGES["sfamily"].'"'.$imgStyle.' alt="partners" /></td><td>'.
 		WT_I18N::translate('Show / hide multiples life partners or spouses.').'</td></tr>'.

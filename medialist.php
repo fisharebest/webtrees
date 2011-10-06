@@ -433,7 +433,7 @@ if ($show == 'yes') {
 					// ---------- Edit Media --------------------
 					echo '<td class="width33 wrap center font9" valign="top">';
 					echo "<a href=\"javascript:;\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
-					echo '<img src="'.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '" />&nbsp;&nbsp;&nbsp;';
+					echo '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '" />&nbsp;&nbsp;&nbsp;';
 					echo '<br />';
 					echo WT_I18N::translate('Edit Details') ;
 					echo '</a>';
@@ -446,7 +446,7 @@ if ($show == 'yes') {
 					echo '<td class="width33 wrap center font9" valign="top">';
 					echo '<a href="'.$mediaobject->getHtmlUrl().'" title="', WT_I18N::translate('View this Media Item\'s Details 
 Plus other Media Options - MediaViewer page'), '">';
-					echo '&nbsp;&nbsp;&nbsp;<img src="'.WT_MODULES_DIR.'lightbox/images/image_view.gif" alt="" class="icon" title="', WT_I18N::translate('View this Media Item\'s Details 
+					echo '&nbsp;&nbsp;&nbsp;<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_view.gif" alt="" class="icon" title="', WT_I18N::translate('View this Media Item\'s Details 
 Plus other Media Options - MediaViewer page'), '" />';
 					echo '<br />';
 					echo WT_I18N::translate('View Details') ;

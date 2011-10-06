@@ -176,7 +176,7 @@ function embedText($im, $text, $maxsize, $color, $font, $vpos, $hpos) {
 	if ($useTTF) {
 		// imagettftext is available, make sure the requested font exists
 		if (!isset($font)||($font=='')||!file_exists(WT_ROOT.'includes/fonts/'.$font)) {
-			$font = 'DejaVuSans.ttf'; // this font ships with PGV
+			$font = 'DejaVuSans.ttf'; // this font ships with webtrees
 			if (!file_exists(WT_ROOT.'includes/fonts/'.$font)) {
 				$useTTF = false;
 			}

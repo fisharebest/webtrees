@@ -317,7 +317,7 @@ function showchanges() {
 
 //-->
 </script>
-<script src="js/webtrees.js" type="text/javascript"></script>
+<script src="<?php echo WT_STATIC_URL; ?>js/webtrees.js" type="text/javascript"></script>
 <?php
 if (check_media_structure()) {
 	echo '<div id="uploadmedia" style="display:none">';

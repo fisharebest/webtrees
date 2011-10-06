@@ -371,7 +371,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo "<td></td>";
 	echo "<td class=\"list_label\">"; // NAME
 	if (count($unique_indis)>1) {
-		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
+		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="', WT_STATIC_URL, 'images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
 	}
 	echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", WT_I18N::translate('Show parents'), "</label><br />";
 	echo WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indis)));
@@ -728,7 +728,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	echo '<td></td>';
 	echo '<td class="list_label">'; // HUSB:NAME
 	if ($num>1) {
-		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
+		echo '<a href="javascript:;" onclick="sortByOtherCol(this, 1)"><img src="', WT_STATIC_URL, 'images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
 	}
 	echo "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">", WT_I18N::translate('Show parents'), '</label><br />';
 	echo  /* I18N: A count of families */ WT_I18N::translate('Total families: %s', WT_I18N::number($num));
@@ -736,7 +736,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	echo '<td style="display:none">HUSB:GIVN</td>';
 	echo '<td></td>'; // HUSB:AGE
 	echo '<td class="list_label" style="vertical-align: top;">'; // WIFE:NAME
-	echo '<a href="javascript:;" onclick="sortByOtherCol(this, 2)"><img src="images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
+	echo '<a href="javascript:;" onclick="sortByOtherCol(this, 2)"><img src="', WT_STATIC_URL, 'images/topdown.gif" alt="" border="0" /> ', WT_Gedcom_Tag::getLabel('GIVN'), '</a><br />';
 	echo '</td>';
 	echo '<td style="display:none">WIFE:GIVN</td>';
 	echo '<td></td>'; // WIFE:AGE
@@ -1540,7 +1540,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
             $aaSorting = "[4,'desc'], [5,'asc']";
     }
 ?>
-	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="<?php echo WT_STATIC_URL; ?>js/jquery/jquery.dataTables.min.js"></script>
     <script type="text/javascript">
         jQuery(document).ready(function(){
 				jQuery('#<?php echo $table_id; ?>').dataTable( {
@@ -1664,7 +1664,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	global $TEXT_DIRECTION, $WT_IMAGES;
 	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
 	?>
-	<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="<?php echo WT_STATIC_URL; ?>js/jquery/jquery.dataTables.min.js"></script>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
 			jQuery('#<?php echo $table_id; ?>').dataTable( {

@@ -40,7 +40,7 @@ if (!defined('WT_WEBTREES')) {
 global $TEXT_DIRECTION, $WT_IMAGES;
 $mediaid=$media['XREF'];
 if (!isset($WT_IMAGES['image_link'])) {
-	$WT_IMAGES['image_link']=WT_MODULES_DIR.'lightbox/images/image_link.gif';
+	$WT_IMAGES['image_link']=WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_link.gif';
 }
 $classSuffix = '';
 if ($TEXT_DIRECTION=='rtl') $classSuffix = '_rtl';

@@ -114,7 +114,7 @@ jQuery('#main').toggleClass('use-sidebar'); // Toggle
 var tabCache = new Array();
 
 jQuery(document).ready(function() {
-	jQuery('#tabs').tabs({ spinner: '<img src="images/loading.gif" height="18" border="0" alt="" />' });
+	jQuery('#tabs').tabs({ spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" border="0" alt="" />' });
 	jQuery("#tabs").tabs({ cache: true });
 	var $tabs = jQuery('#tabs');
 	jQuery('#tabs').bind('tabsshow', function(event, ui) {

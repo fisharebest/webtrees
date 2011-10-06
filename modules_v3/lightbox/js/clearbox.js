@@ -271,7 +271,7 @@
 		Megadja a ClearBox-hoz tartoz? k?pek el?r?si ?tj?t. Amennyiben megv?ltoztatod, a clearbox.css-ben se felejtsd el
 		v?grehajtani a sz?ks?ges v?ltoztat?sokat! Mindenk?ppen haszn?ld a ' ' jeleket.
 */
-		var CB_PicDir=WT_MODULES_DIR+'lightbox/pic';
+		var CB_PicDir=WT_STATIC_URL+WT_MODULES_DIR+'lightbox/pic';
 //		var CB_MusicDir='../music';
 
 /*
@@ -344,7 +344,7 @@
 // Slideshow music configurable options ---------------------------------------------------------
 	var foreverLoop 				= 0;	// Set 0 if want to stop on the last image or Set it to 1 for Infinite loop feature
 	var loopMusic					= true; //loops music if it is shorter then slideshow
-	var SoundBridgeSWF 				=  WT_MODULES_DIR+"lightbox/js/SoundBridge.swf";	
+	var SoundBridgeSWF 				=  WT_STATIC_URL+WT_MODULES_DIR+"lightbox/js/SoundBridge.swf";	
 	
 // Music variables ---------------------------------------------------------
 	var slideshowMusic = null;

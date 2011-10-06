@@ -121,7 +121,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 			$table_id = "ID".floor(microtime()*1000000); // sorttable requires a unique ID
 			?>
-			<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+			<script type="text/javascript" src="<?php echo WT_STATIC_URL; ?>js/jquery/jquery.dataTables.min.js"></script>
 			<script type="text/javascript">
 				jQuery(document).ready(function(){
 					jQuery('#<?php echo $table_id; ?>').dataTable( {
@@ -205,7 +205,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			// table footer
 			$content .= '</tbody><tfoot><tr class="sortbottom">';
 			$content .= '<td class="list_label">';
-			$content .= '<a href="javascript:;" onclick="sortByOtherCol(this,1)"><img src="images/topdown.gif" alt="" border="0" /> '.WT_Gedcom_Tag::getLabel('GIVN').'</a><br />';
+			$content .= '<a href="javascript:;" onclick="sortByOtherCol(this,1)"><img src="'.WT_STATIC_URL.'images/topdown.gif" alt="" border="0" /> '.WT_Gedcom_Tag::getLabel('GIVN').'</a><br />';
 			$content .= WT_I18N::translate('Total individuals: %s', WT_I18N::number($count));
 			$content .= '</td>';
 			$content .= '<td style="display:none">GIVN</td>';

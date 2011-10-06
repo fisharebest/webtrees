@@ -105,8 +105,8 @@ if ($action == "choose" && $paramok) {
 	var GEDFact_assist = "installed";
 //-->
 	</script>
-	<script src="webtrees.js" type="text/javascript"></script>
-	<link href ="<?php echo WT_MODULES_DIR; ?>GEDFact_assistant/css/media_0_inverselink.css" rel="stylesheet" type="text/css" media="screen" />
+	<script src="<?php echo WT_STATIC_URL; ?>webtrees.js" type="text/javascript"></script>
+	<link href ="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>GEDFact_assistant/css/media_0_inverselink.css" rel="stylesheet" type="text/css" media="screen" />
 
 	<?php
 	echo '<form name="link" method="get" action="inverselink.php">';

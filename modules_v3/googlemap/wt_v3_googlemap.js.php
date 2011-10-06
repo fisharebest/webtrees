@@ -117,11 +117,11 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		
 		// === Use flag icon (if defined) instead of regular marker icon ===
 		if (marker_icon) {
-			var icon_image = new google.maps.MarkerImage('<?php echo WT_MODULES_DIR; ?>googlemap/'+marker_icon,
+			var icon_image = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/'+marker_icon,
 				new google.maps.Size(25, 15),
 				new google.maps.Point(0,0),
 				new google.maps.Point(0, 44));
-			var icon_shadow = new google.maps.MarkerImage('<?php echo WT_MODULES_DIR; ?>googlemap/images/flag_shadow.png',
+			var icon_shadow = new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/flag_shadow.png',
 				new google.maps.Size(35, 45),	// Shadow size
 				new google.maps.Point(0,0),		// Shadow origin
 				new google.maps.Point(1, 45)	// Shadow anchor is base of flagpole				
@@ -595,7 +595,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 			// === Employ of image tab function using an information image =====
 			if (media == null || media == '') {
-				media = WT_MODULES_DIR+'googlemap/images/facts/v3_image_info.png';
+				media = WT_STATIC_URL+WT_MODULES_DIR+'googlemap/images/facts/v3_image_info.png';
 			} else {
 				media = media;
 			}

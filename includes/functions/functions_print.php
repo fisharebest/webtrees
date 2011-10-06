@@ -404,13 +404,14 @@ function print_header($title, $view='full') {
 		$title.=' - '.$META_TITLE;
 	}
 	$javascript=
-		'<script type="text/javascript" src="js/jquery/jquery.min.js"></script>'.
-		'<script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>'.
-		'<script type="text/javascript" src="js/jquery/jquery.jeditable.min.js"></script>'.
-		'<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>'.
-		'<script type="text/javascript" src="js/jquery/jquery.cookie.js"></script>'.
+		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.min.js"></script>'.
+		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery-ui.min.js"></script>'.
+		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.jeditable.min.js"></script>'.
+		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js"></script>'.
+		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.cookie.js"></script>'.
 		WT_JS_START.'
 		// Give JavaScript access to some PHP constants
+		var WT_STATIC_URL  = "'.WT_STATIC_URL.'";
 		var WT_THEME_DIR   = "'.WT_THEME_DIR.'";
 		var WT_MODULES_DIR = "'.WT_MODULES_DIR.'";
 		var textDirection = "'.$TEXT_DIRECTION.'";
@@ -461,7 +462,7 @@ function print_header($title, $view='full') {
 	var whichhelp = \'help_'.WT_SCRIPT_NAME.'&action='.$action.'\';
 	'.
 	WT_JS_END.
-	'<script src="js/webtrees.js" type="text/javascript"></script>';
+	'<script src="'.WT_STATIC_URL.'js/webtrees.js" type="text/javascript"></script>';
 	require WT_ROOT.$headerfile;
 
 	// Allow the browser to format the header/menus while we generate the page

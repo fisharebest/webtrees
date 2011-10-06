@@ -121,8 +121,9 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$title=$this->getTitle();
 
 		if ($ENABLE_AUTOCOMPLETE) {
-			$content = '<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
-			<script type="text/javascript" src="js/jquery/jquery.autocomplete.js"></script>
+			// TODO: do we really need to load jquery again?
+			$content = '<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.min.js"></script>
+			<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.autocomplete.js"></script>
 			<script type="text/javascript">
 			jQuery(document).ready(function($) {
 				$("input[name^=gid]").autocomplete("autocomplete.php", {

@@ -376,7 +376,7 @@ class WT_MenuBar {
 				$link = 'module.php?ged='.WT_GEDURL.'&amp;mod=googlemap&amp;mod_action=pedigree_map';
 				if ($rootid) $link .= '&amp;rootid='.$rootid;
 				$submenu = new WT_Menu($menuName, $link, 'menu-chart-pedigree_map');
-				$WT_IMAGES['pedigree_map']=WT_MODULES_DIR.'googlemap/images/pedigree_map.gif';
+				$WT_IMAGES['pedigree_map']=WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/pedigree_map.gif';
 				$submenu->addIcon('pedigree_map');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_map');
 				$menu->addSubmenu($submenu);

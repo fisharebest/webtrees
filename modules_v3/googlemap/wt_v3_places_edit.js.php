@@ -1,33 +1,27 @@
 <?php
-/**
- * Included script file for Interface to edit place locations
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Edit
- * @version $Id$
- *
- * @author Brian Holland (windmillway)
- */
+// Included script file for Interface to edit place locations
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
  
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -37,8 +31,8 @@ if (!defined('WT_WEBTREES')) {
 
 <head>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-	<script type="text/javascript" src="<?php echo WT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
-	<link type="text/css" href="<?php echo WT_MODULES_DIR; ?>googlemap/css/wt_v3_places_edit.css" rel="stylesheet" />
+	<script type="text/javascript" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
+	<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_places_edit.css" rel="stylesheet" />
 
 	<script type="text/javascript">
 	var map;
@@ -247,12 +241,12 @@ if (!defined('WT_WEBTREES')) {
 		// Create the Main Location Marker
 		<?php 
 		if ($level < 3 && $place_icon != '') {	
-			echo 'var image = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/',$place_icon,'",';
+			echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/',$place_icon,'",';
 				echo 'new google.maps.Size(25, 15),';	// Image size
 				echo 'new google.maps.Point(0, 0),';	// Image origin
 				echo 'new google.maps.Point(0, 44)';	// Image anchor
 			echo ');';
-			echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
+			echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
 				echo 'new google.maps.Size(35, 45),';	// Shadow size
 				echo 'new google.maps.Point(0,0),';		// Shadow origin
 				echo 'new google.maps.Point(1, 45)';	// Shadow anchor is base of flagpole				
@@ -358,12 +352,12 @@ if (!defined('WT_WEBTREES')) {
 	function createMarker(i, point, name) {	
 		var contentString = '<div id="iwcontent">'+name+'<\/div>';
 		<?php
-		echo 'var image = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
+		echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
 			echo 'new google.maps.Size(20, 34),';	// Image size
 			echo 'new google.maps.Point(0, 0),';	// Image origin
 			echo 'new google.maps.Point(10, 34)';	// Image anchor
 		echo ');';
-		echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/shadow50.png",';
+		echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png",';
 			echo 'new google.maps.Size(37, 34),';	// Shadow size
 			echo 'new google.maps.Point(0, 0),';	// Shadow origin
 			echo 'new google.maps.Point(10, 34)';	// Shadow anchor is base of image

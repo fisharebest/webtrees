@@ -49,7 +49,7 @@ if ($action=='update' && !isset($security_user)) {
 }
 
 $LB_SS_SPEED=get_module_setting('lightbox', 'LB_SS_SPEED', '6');     // SlideShow speed in seconds.  [Min 2  max 25]
-$LB_MUSIC_FILE=get_module_setting('lightbox', 'LB_MUSIC_FILE', WT_MODULES_DIR.'lightbox/music/music.mp3');  // The music file. [mp3 only]
+$LB_MUSIC_FILE=get_module_setting('lightbox', 'LB_MUSIC_FILE', WT_STATIC_URL.WT_MODULES_DIR.'lightbox/music/music.mp3');  // The music file. [mp3 only]
 $LB_TRANSITION=get_module_setting('lightbox', 'LB_TRANSITION', 'warp');   // Next or Prvious Image Transition effect
           // Set to 'none'  No transtion effect.
           // Set to 'normal'  Normal transtion effect.

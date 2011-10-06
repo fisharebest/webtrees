@@ -34,9 +34,15 @@ define('WT_WEBTREES',        'webtrees');
 define('WT_VERSION',         '1.2.4');
 define('WT_VERSION_RELEASE', 'svn'); // 'svn', 'beta', 'rc1', '', etc.
 define('WT_VERSION_TEXT',    trim(WT_VERSION.' '.WT_VERSION_RELEASE));
+
+// External URLs
 define('WT_WEBTREES_URL',    'http://webtrees.net/');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
 define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
+
+// To load static content (.CSS, .JS, .PNG, etc.) from a content delivery network,
+// specify it here.  E.g. "http://1a2b3c4d.cloudfront.net/webtrees-x.y.z/"
+define('WT_STATIC_URL', '');
 
 // Location of our modules and themes.  These are used as URLs and directory paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update the build script when this changes
@@ -502,7 +508,8 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		$_SESSION['theme_dir']=$THEME_DIR;
 	}
 }
-
+// If we have specified a CDN, use it for static theme resources
+define('WT_THEME_URL', WT_STATIC_URL.WT_THEME_DIR);
 
 require WT_ROOT.WT_THEME_DIR.'theme.php';
 

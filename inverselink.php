@@ -96,7 +96,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 		}
 		//-->
 		</script>
-	<script src="js/webtrees.js" type="text/javascript"></script>
+	<script src="<?php echo WT_STATIC_URL; ?>js/webtrees.js" type="text/javascript"></script>
 
 		<?php
 		echo '<form name="link" method="get" action="inverselink.php">';

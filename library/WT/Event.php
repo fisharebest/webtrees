@@ -282,10 +282,10 @@ class WT_Event {
 		$tag=$this->getTag();
 		$file=$tag.'.png';
 		if (file_exists($dir.$file)) {
-			return '<img src="'.$dir.$file.'" title="'.WT_Gedcom_Tag::getLabel($tag).'" align="middle"/>';
+			return '<img src="'.WT_STATIC_URL.$dir.$file.'" title="'.WT_Gedcom_Tag::getLabel($tag).'" align="middle"/>';
 		} elseif (file_exists($dir.'NULL.png')) {
 			// Spacer image - for alignment - until we move to a sprite.
-			return '<img src="'.$dir.'NULL.png" align="middle" />';
+			return '<img src="'.WT_STATIC_URL.$dir.'NULL.png" align="middle" />';
 		} else {
 			return '';
 		}

@@ -114,7 +114,8 @@ echo WT_JS_END;
 if ($ctype=='user') {
 	echo '<h1 align="center">', WT_I18N::translate('My page'), '</h1>';
 }
-echo '<script src="js/jquery/jquery.min.js" type="text/javascript"></script>';
+// TODO: do we really need to load jquery again?
+echo '<script src="', WT_STATIC_URL, 'js/jquery/jquery.min.js" type="text/javascript"></script>';
 echo '<script type="text/javascript">jQuery.noConflict();</script>';
 if ($blocks['main']) {
 	if ($blocks['side']) {
@@ -130,7 +131,7 @@ if ($blocks['main']) {
 			$module->getBlock($block_id);
 		} else {
 			// Load the block asynchronously
-			echo '<div id="block_', $block_id, '"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/></div>';
+			echo '<div id="block_', $block_id, '"><img src="', WT_STATIC_URL, 'images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/></div>';
 			echo WT_JS_START, "jQuery('#block_{$block_id}').load('index.php?ctype={$ctype}&action=ajax&block_id={$block_id}');", WT_JS_END;
 		}
 	}
@@ -151,7 +152,7 @@ if ($blocks['side']) {
 			$module->getBlock($block_id);
 		} else {
 			// Load the block asynchronously
-			echo '<div id="block_', $block_id, '"><img src="images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/></div>';
+			echo '<div id="block_', $block_id, '"><img src="', WT_STATIC_URL, 'images/loading.gif" alt="', htmlspecialchars(WT_I18N::translate('Loading...')),  '"/></div>';
 			echo WT_JS_START, "jQuery('#block_{$block_id}').load('index.php?ctype={$ctype}&action=ajax&block_id={$block_id}');", WT_JS_END;
 		}
 	}

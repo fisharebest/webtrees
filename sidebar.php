@@ -73,7 +73,7 @@ if ($sb_action!='none') {
 				if ($counter==0) {
 					echo $mod->getSidebarContent();
 				} else {
-					echo '<img src="', WT_THEME_DIR, 'images/loading.gif" />';
+					echo '<img src="', WT_THEME_URL, 'images/loading.gif" />';
 				}
 				echo '</div>';
 				$counter++;

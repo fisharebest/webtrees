@@ -609,7 +609,7 @@ foreach ($placelist as $place) {
 			echo '<img src="http://labs.google.com/ridefinder/images/mm_20_red.png">';
 		}
 	} else {
-		echo '<img src="', WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
+		echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
 	}
 	echo '</td>';
 	echo '<td class="narrow"><a href="javascript:;" onclick="edit_place_location(', $place['place_id'], ');return false;"><img src="', $WT_IMAGES['edit'], '" border="0" alt="', WT_I18N::translate("Edit"), '" /></a></td>';

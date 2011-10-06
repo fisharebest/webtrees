@@ -34,29 +34,32 @@ echo
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
-	'<link rel="stylesheet" href="js/jquery/css/jquery-ui.custom.css" type="text/css"  />',	'<link rel="stylesheet" href="', WT_THEME_DIR, 'css/colors.css" type="text/css" />',
+	'<link rel="shortcut icon" href="', WT_STATIC_URL, 'favicon.ico" type="image/x-icon" />',
+	'<link rel="stylesheet" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" type="text/css"  />',
+	'<link rel="stylesheet" href="', WT_THEME_URL, 'css/colors.css" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
 
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_DIR, $BROWSERTYPE, '.css" />';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css" />';
 	break;
 }
 
 // Additional css files required (Only if Lightbox installed)
 if (WT_USE_LIGHTBOX) {
 	if ($TEXT_DIRECTION=='rtl') {
-		echo	'<link rel="stylesheet" type="text/css" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" />',
-		    	'<link rel="stylesheet" type="text/css" href="', WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" media="screen" />';
+		echo
+			'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" />',
+			'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" media="screen" />';
 	} else {
-		echo	'<link rel="stylesheet" type="text/css" href="', WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" />',
-			'<link rel="stylesheet" type="text/css" href="', WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen" />';
+		echo
+			'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" />',
+			'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen" />';
 	}
 }
 echo
-	'<link rel="stylesheet" type="text/css" href="', WT_THEME_DIR, 'modules.css" />',
+	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'modules.css" />',
 	$javascript,
 	'</head>',
 	'<body id="body">';
@@ -146,7 +149,7 @@ if ($SEARCH_SPIDER) {
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
 			'<input type="text" name="query" size="10" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
-			'<input type="image" src="', WT_THEME_DIR, 'images/go.png', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
+			'<input type="image" src="', WT_THEME_URL, 'images/go.png', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
 			'</form>',
 		'</li>',
 	'</ul>',

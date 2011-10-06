@@ -71,7 +71,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$title.=$this->getTitle().help_link('todo', $this->getName());
 		$table_id = "ID".floor(microtime()*1000000); // create a unique ID
 		?>
-		<script type="text/javascript" src="js/jquery/jquery.dataTables.min.js"></script>
+		<script type="text/javascript" src="<?php echo WT_STATIC_URL; ?>js/jquery/jquery.dataTables.min.js"></script>
 		<script type="text/javascript">
 			jQuery(document).ready(function(){
 				jQuery('#<?php echo $table_id; ?>').dataTable( {

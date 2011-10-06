@@ -27,7 +27,7 @@
 
 $controller = new WT_Controller_Individual();
 $controller->init();
-echo '<link href="'.WT_MODULES_DIR.'GEDFact_assistant/css/gf_styles.css" rel="stylesheet" type="text/css" media="screen" />';
+echo '<link href="'.WT_STATIC_URL.WT_MODULES_DIR.'GEDFact_assistant/css/gf_styles.css" rel="stylesheet" type="text/css" media="screen" />';
 
 global $tabno, $linkToID, $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
 global $WT_IMAGES, $SHOW_AGE_DIFF;

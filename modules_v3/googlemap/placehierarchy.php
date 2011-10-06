@@ -148,7 +148,7 @@ function create_map($placelevels) {
 	} else {
 		echo '<div id="place_map" style="border:1px solid gray; width: ', $GOOGLEMAP_PH_XSIZE, 'px; height: ', $GOOGLEMAP_PH_YSIZE, 'px;" ';	
 	}
-	echo "background-image: url('images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
+	echo "background-image: url('", WT_STATIC_URL, "images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
 	echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
 	echo '</td>';
 	
@@ -242,7 +242,7 @@ function create_map($placelevels) {
 				$_streetview = /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View');
 			?>
 			<div>
-			<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="<?php echo WT_MODULES_DIR; ?>googlemap/wt_v3_street_view.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>&z=18&t=2&c=1&s=1&b=<?php echo $sv_dir; ?>&p=<?php echo $sv_pitch; ?>&m=<?php echo $sv_zoom; ?>&j=1&k=1&v=1&map=<?php echo $_map; ?>&reset=<?php echo $_reset; ?>&streetview=<?php echo $_streetview; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+			<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_street_view.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>&z=18&t=2&c=1&s=1&b=<?php echo $sv_dir; ?>&p=<?php echo $sv_pitch; ?>&m=<?php echo $sv_zoom; ?>&j=1&k=1&v=1&map=<?php echo $_map; ?>&reset=<?php echo $_reset; ?>&streetview=<?php echo $_streetview; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 			</div>
 			
 			<?php			
@@ -318,8 +318,8 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 	
 	if (($place2['lati'] == NULL) || ($place2['long'] == NULL) || (($place2['lati'] == "0") && ($place2['long'] == "0"))) {
 		echo 'var icon_type = new google.maps.MarkerImage();\n';
-		echo 'icon_type.image = "', WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
-		echo 'icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
+		echo 'icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png";';
+		echo 'icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/shadow50.png";';
 		echo 'icon_type.iconSize = google.maps.Size(20, 34);\n';
 		echo 'icon_type.shadowSize = google.maps.Size(37, 34);\n';
 		echo 'var point = new google.maps.LatLng(0, 0);\n';
@@ -331,7 +331,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			else echo addslashes($place2['place']), "'><br />";
 		}
 		if (($place2["icon"] != NULL) && ($place2['icon'] != "")) {
-			echo '<img src=\"', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
+			echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);
@@ -397,8 +397,8 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			echo "var icon_type = new google.maps.MarkerImage();\n";
 		} else {
 			echo "var icon_type = new google.maps.MarkerImage();\n";
-			echo ' icon_type.image = "', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
-			echo ' icon_type.shadow = "', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png";';
+			echo ' icon_type.image = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '";';
+			echo ' icon_type.shadow = "', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png";';
 			echo " icon_type.iconSize = new google.maps.Size(25, 15);\n";
 			echo " icon_type.shadowSize = new google.maps.Size(35, 45);\n";
 		}
@@ -414,7 +414,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		}
 		if (($place2['icon'] != NULL) && ($place2['icon'] != "")) {
-			echo '<img src=\"', WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
+			echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
 		}
 		if ($lastlevel) {
 			$placename = substr($placelevels, 2);
@@ -473,7 +473,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	echo "<script> var mapLevel = '".$level."';</script>";
 	echo "<script> var placezoom = '", $plzoom, "';</script>";
 	
-	echo '<link type="text/css" href ="', WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
+	echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
 	?>
 	<script type="text/javascript">	
 	// <![CDATA[
@@ -523,12 +523,12 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		// Choose icon and shadow ============
 		<?php
 		echo "if (icon.image && $level<=3) {";
-			echo "if (icon.image!='", WT_MODULES_DIR, "googlemap/images/marker_yellow.png') {";
+			echo "if (icon.image!='", WT_STATIC_URL, WT_MODULES_DIR, "googlemap/images/marker_yellow.png') {";
 				echo 'var iconImage = new google.maps.MarkerImage(icon.image,'; 
 				echo 'new google.maps.Size(25, 15),';
 				echo 'new google.maps.Point(0,0),';
 				echo 'new google.maps.Point(1, 45));';
-				echo 'var iconShadow = new google.maps.MarkerImage("', WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
+				echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
 				echo 'new google.maps.Size(35, 45),';
 				echo 'new google.maps.Point(0,0),';
 				echo 'new google.maps.Point(1, 45));';
