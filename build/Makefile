@@ -27,13 +27,7 @@ default: clean webtrees
 	rm -Rf webtrees_tmp/*
 	find webtrees/modules_v3 -name "*.xml" | while read file; do sed -e 's~\(WT_I18N::[^)]*[)]\)~<?php echo \1; ?>~g' $$file > webtrees_tmp/$$(echo $$file.php | cut -c 10- | tr / _); done
 	find webtrees webtrees_tmp -name "*.php" | xargs xgettext --package-name=webtrees --package-version=1.0 --msgid-bugs-address=i18n@webtrees.net --output=webtrees.pot --no-wrap --language=PHP --add-comments=I18N --from-code=utf-8 --keyword --keyword=translate:1 --keyword=translate_c:1c,2 --keyword=plural:1,2 --keyword=noop:1
-	rm -Rf webtrees_tmp
-	# Strip out all non-static files
-	rm -R webtrees/{data,includes,language,library,media}
-	rm webtrees/js/scriptaculous/{CHANGELOG,MIT-LICENSE,README}
-	find webtrees \( -name "*.htm" -o -name "*.html" -o -name "*.pack" -o -name "*.php" -o -name "*.rng" -o -name "*.txt" -o -name "*.TXT"  -o -name "*.xml" \) -exec rm {} \;
-	find webtrees -depth -empty -exec rmdir {} \;
-	zip -qr webtrees-static.zip webtrees
+	rm -Rf webtrees_tmp webtrees
 
 ################################################################################
 # Remove temporary and intermediate files
@@ -94,3 +88,16 @@ $(MO_DIR)/en_US.mo: en_US.po
 
 $(MO_DIR)/%.mo: $(PO_DIR)/%.po
 	msgfmt --output=$@ $<
+
+################################################################################
+# Extract the static files, for use on a content-delivery-network.
+# Minify the CSS and JS files if a suitable tool is available.
+################################################################################
+static:
+	rm -Rf webtrees-static
+	mkdir webtrees-static
+	cd .. && tar cf - $$(find . -name "*.css" -o -name "*.gif" -o -name "*.html" -o -name "*.ico" -o -name "*.jpg" -o -name "*.js" -o -name "*.mp3" -o -name "*.png" -o -name "*.swf" -o -name "*.xaml") | (cd build/webtrees-static && tar xfp -)
+	# Minify CSS using the YUI compressor
+	if [ -f ~/bin/yuicompressor-2.4.6.jar ]; then find webtrees-static -name "*.css" | while read FILE; do java -jar ~/bin/yuicompressor-2.4.6.jar --charset UTF-8 --verbose -o tmp.css $$FILE && mv tmp.css $$FILE; done; fi
+	# Minify JS using Google's closure compiler
+	if [ -f ~/bin/compiler.jar ]; then find webtrees-static -name "*.js" | while read FILE; do java -jar ~/bin/compiler.jar --js $$FILE --js_output_file tmp.js && mv tmp.js $$FILE; done; fi
