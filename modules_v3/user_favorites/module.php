@@ -82,7 +82,6 @@ class user_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					self::addFavorite($favorite);
 				}
 			}
-			$url=safe_GET('url');
 			if ($url) {
 				if (empty($favtitle)) $favtitle = $url;
 				$favorite = array();
