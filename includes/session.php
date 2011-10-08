@@ -40,23 +40,28 @@ define('WT_WEBTREES_URL',    'http://webtrees.net/');
 define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
 define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
 
-// To load static content (.CSS, .JS, .PNG, etc.) from a content delivery network,
-// specify it here.  E.g. "http://1a2b3c4d.cloudfront.net/webtrees-x.y.z/"
-define('WT_STATIC_URL', '');
+// Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
+// For example, "http://my.cdn.com/webtrees-static-1.2.3/"
+// Note that some servers (e.g. Amazon S3) require separate compressed/uncompressed data.
+if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')!==false) {
+	// Pre-compressed resources, served with a "Content-encoding: gzip" header.
+	define('WT_STATIC_URL', ''); // For example, "http://my.cdn.com/webtrees-static-1.2.3z/"
+} else {
+	// Uncompressed resources, served without a "Content-encoding: gzip" header.
+	define('WT_STATIC_URL', ''); // For example, "http://my.cdn.com/webtrees-static-1.2.3/"
+}
 
-// To load major js libraries from a cdn like Google API
-// specify it here.
-define ('GOOGLE_API', false); // set to true, if you want to load from Google
-
-if (GOOGLE_API == true) {
-	define('WT_JQUERY_URL', 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js');
-	define('WT_JQUERYUI_URL', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
-	define('WT_PROTOTYPE_URL', 'https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js');
+// Optionally, load major JS libraries from Google's public CDN
+define ('WT_USE_GOOGLE_API', false);
+if (WT_USE_GOOGLE_API) {
+	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js');
+	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
+	define('WT_PROTOTYPE_URL',     'https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js');
 	define('WT_SCRIPTACULOUS_URL', 'https://ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/');
 } else {
-	define('WT_JQUERY_URL', WT_STATIC_URL.'js/jquery/jquery.min.js');
-	define('WT_JQUERYUI_URL', WT_STATIC_URL.'js/jquery/jquery-ui.min.js');
-	define('WT_PROTOTYPE_URL', WT_STATIC_URL.'js/prototype/prototype.js');
+	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery/jquery.min.js');
+	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery/jquery-ui.min.js');
+	define('WT_PROTOTYPE_URL',     WT_STATIC_URL.'js/prototype/prototype.js');
 	define('WT_SCRIPTACULOUS_URL', WT_STATIC_URL.'js/scriptaculous/');
 }
 
