@@ -46,14 +46,19 @@ define('WT_STATIC_URL', '');
 
 // To load major js libraries from a cdn like Google API
 // specify it here.
-define('WT_JQUERY_URL', WT_STATIC_URL.'js/jquery/jquery.min.js');
-// define('WT_JQUERY_URL', 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js');
-define('WT_JQUERYUI_URL', WT_STATIC_URL.'js/jquery/jquery-ui.min.js');
-// define('WT_JQUERYUI_URL', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
-define('WT_PROTOTYPE_URL', WT_STATIC_URL.'js/prototype/prototype.js');
-// define('WT_PROTOTYPE_URL', 'https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js');
-define('WT_SCRIPTACULOUS_URL', WT_STATIC_URL.'js/scriptaculous/');
-// define('WT_SCRIPTACULOUS_URL', 'https://ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/');
+define ('GOOGLE_API', false); // set to true, if you want to load from Google
+
+if (GOOGLE_API == true) {
+	define('WT_JQUERY_URL', 'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js');
+	define('WT_JQUERYUI_URL', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
+	define('WT_PROTOTYPE_URL', 'https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js');
+	define('WT_SCRIPTACULOUS_URL', 'https://ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/');
+} else {
+	define('WT_JQUERY_URL', WT_STATIC_URL.'js/jquery/jquery.min.js');
+	define('WT_JQUERYUI_URL', WT_STATIC_URL.'js/jquery/jquery-ui.min.js');
+	define('WT_PROTOTYPE_URL', WT_STATIC_URL.'js/prototype/prototype.js');
+	define('WT_SCRIPTACULOUS_URL', WT_STATIC_URL.'js/scriptaculous/');
+}
 
 // Location of our modules and themes.  These are used as URLs and directory paths.
 define('WT_MODULES_DIR', 'modules_v3/'); // Update the build script when this changes
