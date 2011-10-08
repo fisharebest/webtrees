@@ -115,7 +115,7 @@ if ($ctype=='user') {
 	echo '<h1 align="center">', WT_I18N::translate('My page'), '</h1>';
 }
 // TODO: do we really need to load jquery again?
-echo '<script src="', WT_STATIC_URL, 'js/jquery/jquery.min.js" type="text/javascript"></script>';
+echo '<script src="', WT_JQUERY_URL, '" type="text/javascript"></script>';
 echo '<script type="text/javascript">jQuery.noConflict();</script>';
 if ($blocks['main']) {
 	if ($blocks['side']) {
