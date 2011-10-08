@@ -404,8 +404,8 @@ function print_header($title, $view='full') {
 		$title.=' - '.$META_TITLE;
 	}
 	$javascript=
-		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.min.js"></script>'.
-		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery-ui.min.js"></script>'.
+		'<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script>'.
+		'<script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>'.
 		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.jeditable.min.js"></script>'.
 		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js"></script>'.
 		'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.cookie.js"></script>'.
