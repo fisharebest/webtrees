@@ -122,7 +122,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if (WT_USER_IS_ADMIN && $ENABLE_AUTOCOMPLETE) {
 			// TODO: do we really need to load jquery again?
-			$content = '<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.min.js"></script>
+			$content = '<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script>
 			<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.autocomplete.js"></script>
 			<script type="text/javascript">
 			jQuery(document).ready(function($) {
