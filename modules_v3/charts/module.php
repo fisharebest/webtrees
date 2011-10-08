@@ -135,7 +135,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$mod=new tree_WT_Module;
 				$nav=new TreeView;
 				$content .= '<td>';
-				$content .= '<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.min.js"></script><script type="text/javascript" src="js/jquery/jquery-ui.min.js"></script>';
+				$content .= '<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script><script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>';
 
 				$content .= $mod->css;
 				$content .= $mod->headers;
