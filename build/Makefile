@@ -90,14 +90,20 @@ $(MO_DIR)/%.mo: $(PO_DIR)/%.po
 	msgfmt --output=$@ $<
 
 ################################################################################
-# Extract the static files, for use on a content-delivery-network.
-# Minify the CSS and JS files if a suitable tool is available.
+# Extract the static files for use on a content-delivery-network.
+# Minify the CSS and JS files, if a suitable tool is available.
 ################################################################################
 static:
-	rm -Rf webtrees-static
-	mkdir webtrees-static
-	cd .. && tar cf - $$(find . -name "*.css" -o -name "*.gif" -o -name "*.html" -o -name "*.ico" -o -name "*.jpg" -o -name "*.js" -o -name "*.mp3" -o -name "*.png" -o -name "*.swf" -o -name "*.xaml") | (cd build/webtrees-static && tar xfp -)
+	rm -Rf webtrees-static*
+	mkdir webtrees-static-$(SVNVERSION)
+	cd .. && find . "(" -name "*.css" -o -name "*.gif" -o -name "*.html" -o -name "*.ico" -o -name "*.jpg" -o -name "*.js" -o -name "*.mp3" -o -name "*.png" -o -name "*.swf" ")" -print0 | xargs -0 tar cf - | (cd build/webtrees-static-$(SVNVERSION) && tar xfp -)
 	# Minify CSS using the YUI compressor
-	if [ -f ~/bin/yuicompressor-2.4.6.jar ]; then find webtrees-static -name "*.css" | while read FILE; do java -jar ~/bin/yuicompressor-2.4.6.jar --charset UTF-8 --verbose -o tmp.css $$FILE && mv tmp.css $$FILE; done; fi
+	if [ -f ~/bin/yuicompressor-2.4.6.jar ]; then find webtrees-static-$(SVNVERSION) -name "*.css" | while read FILE; do java -jar ~/bin/yuicompressor-2.4.6.jar --charset UTF-8 --verbose -o tmp.css "$$FILE" && mv tmp.css "$$FILE"; done; fi
 	# Minify JS using Google's closure compiler
-	if [ -f ~/bin/compiler.jar ]; then find webtrees-static -name "*.js" | while read FILE; do java -jar ~/bin/compiler.jar --js $$FILE --js_output_file tmp.js && mv tmp.js $$FILE; done; fi
+	if [ -f ~/bin/compiler.jar ]; then find webtrees-static-$(SVNVERSION) -name "*.js" | while read FILE; do java -jar ~/bin/compiler.jar --js "$$FILE" --js_output_file tmp.js && mv tmp.js "$$FILE"; done; fi
+	# Create a second copy, with compressed CSS and JS files, for servers such as Amazon S3
+	cp -pR webtrees-static-$(SVNVERSION) webtrees-static-$(SVNVERSION)z
+	find webtrees-static-$(SVNVERSION)z "(" -name "*.js" -o -name "*.css" ")" -exec gzip {} \; -exec mv {}.gz {} \;
+	# Package the files, for distribution
+	zip -qrTm webtrees-static-$(SVNVERSION).zip webtrees-static-$(SVNVERSION)
+	zip -qrTm webtrees-static-$(SVNVERSION)z.zip webtrees-static-$(SVNVERSION)z
