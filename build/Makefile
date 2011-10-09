@@ -133,4 +133,4 @@ static-S3: webtrees-static-$(WT_VERSION) webtrees-static-$(WT_VERSION)z
 	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --guess-mime-type webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
 	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --guess-mime-type "--rexclude=(css|js)$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
 	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --mime-type=text/css --add-header=Content-Encoding:gzip "--rinclude=css$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
-	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --mime-type=application/javascript --add-header=Content-Encoding:gzip "--rinclude=css$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
+	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --mime-type=application/javascript --add-header=Content-Encoding:gzip "--rinclude=js$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
