@@ -34,7 +34,7 @@ echo
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link rel="shortcut icon" href="', WT_STATIC_URL, 'favicon.ico" type="image/x-icon" />',
+	'<link rel="shortcut icon" href="', WT_THEME_URL, 'favicon.ico" type="image/x-icon" />',
 	'<link rel="stylesheet" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" type="text/css"  />',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'css/colors.css" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
