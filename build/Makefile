@@ -130,7 +130,7 @@ static: webtrees-static-$(WT_VERSION)z.zip webtrees-static-$(WT_VERSION).zip
 # Set the bucket using, for example, "export S3_BUCKET=my_bucket".
 ################################################################################
 static-S3: webtrees-static-$(WT_VERSION) webtrees-static-$(WT_VERSION)z
-	s3cmd sync --acl-public --add-header=Cache-Control:public,max-age=864000 --no-delete-removed --guess-mime-type webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
-	s3cmd sync --acl-public --add-header=Cache-Control:public,max-age=864000 --no-delete-removed --guess-mime-type "--rexclude=(css|js)$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
-	s3cmd sync --acl-public --add-header=Cache-Control:public,max-age=864000 --no-delete-removed --mime-type=text/css "--rinclude=css$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
-	s3cmd sync --acl-public --add-header=Cache-Control:public,max-age=864000 --no-delete-removed --mime-type=application/javascript "--rinclude=css$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
+	s3cmd sync --acl-private --add-header=Cache-Control:public,max-age=864000 --no-delete-removed --guess-mime-type webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
+	s3cmd sync --acl-private --add-header=Cache-Control:public,max-age=864000 --no-delete-removed --guess-mime-type "--rexclude=(css|js)$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
+	s3cmd sync --acl-private --add-header=Cache-Control:public,max-age=864000 --no-delete-removed --mime-type=text/css "--rinclude=css$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
+	s3cmd sync --acl-private --add-header=Cache-Control:public,max-age=864000 --no-delete-removed --mime-type=application/javascript "--rinclude=css$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
