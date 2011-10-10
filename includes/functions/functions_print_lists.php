@@ -1202,7 +1202,7 @@ function print_media_table($datalist, $legend) {
 	//--table wrapper
 	echo '<div id="media-list">';
 	//-- table header
-	echo '<table id="media_list_table"><thead><tr>';
+	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Media'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
