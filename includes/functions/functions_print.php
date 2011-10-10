@@ -1023,6 +1023,8 @@ function PrintReady($text, $InHeaders=false, $trim=true) {
 
 // Print the associations from the associated individuals in $event to the individuals in $record
 function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
+	global $SEARCH_SPIDER;
+
 	// To whom is this record an assocate?
 	if ($record instanceof WT_Person) {
 		// On an individual page, we just show links to the person
@@ -1066,7 +1068,11 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 				if ($record instanceof WT_Family) {
 					$label=$associate->getSexImage().$label;
 				}
-				$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label.'</a>';
+				if ($SEARCH_SPIDER) {
+					$html[]=$label; // Search engines cannot use the relationship chart.
+				} else {
+					$html[]='<a href="relationship.php?pid1='.$associate->getXref().'&amp;pid2='.$person->getXref().'&amp;ged='.WT_GEDURL.'">'.$label.'</a>';
+				}
 			}
 		}
 		$html=array_unique($html);
