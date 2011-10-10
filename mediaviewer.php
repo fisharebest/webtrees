@@ -101,7 +101,7 @@ echo WT_JS_END;
 
 /* Note:
  *  if $controller->getLocalFilename() is not set, then an invalid MID was passed in
- *  if $controller->pid is not set, then a filename was passed in that is not in the gedcom
+ *  if $controller->m_pid is not set, then a filename was passed in that is not in the gedcom
  */
 $filename = $controller->getLocalFilename();
 
@@ -218,7 +218,7 @@ function openImageView() {
 function show_gedcom_record(shownew) {
 	fromfile="";
 	if (shownew=="yes") fromfile='&fromfile=1';
-	var recwin = window.open("gedrecord.php?pid=<?php echo $controller->pid; ?>"+fromfile, "_blank", "top=50, left=50, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
+	var recwin = window.open("gedrecord.php?pid=<?php echo $controller->m_pid; ?>"+fromfile, "_blank", "top=50, left=50, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
 }
 
 function ilinkitem(mediaid, type) {
