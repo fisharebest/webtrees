@@ -1775,13 +1775,26 @@ html[dir='rtl'] .dataTables_length {float:left;}
 
 /* ========= List styles ================= */
 #source-list, #note-list, #repo-list, #media-list  {margin:auto; text-align:center; visibility:hidden; width:98%;}
-#source-list table, #note-list table, #repo-list table, #media-list table  {width:100%;}
-#source-list th, #note-list th, #repo-list th, #media-list th {cursor:pointer; cursor:hand; white-space: nowrap;}
+#indi-list  {margin: 5px auto; visibility:hidden; width:100%;}
+#source-list table, #note-list table, #repo-list table, #media-list table, #indi-list table  {width:100%;}
+#source-list td, #note-list td, #repo-list td, #media-list td, #indi-list td{padding:2px 5px;}
+#indi-list td {color:#555;}
+#indi-list .stats {margin:0 auto; width:auto;}
+#source-list th, #note-list th, #repo-list th, #media-list th, #indi-list th {cursor:pointer; cursor:hand; white-space: nowrap;}
 #source-list th:last-child, #note-list th:last-child, #repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
 #source-details h2, #note-details h2, #repo-details h2, #media-details h2 {margin-bottom:20px; text-align:center;}
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto; visibility:hidden; width:80%;}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
 #media-list img {display:block; height:40px; margin:3px auto;}
+#SEX_M, #SEX_F, #SEX_U {height:20px;}
+#SEX_M img, #SEX_F img, #SEX_U img {vertical-align:top;}
+#gender, #aliveinyear, #years, #given, #parents, #charts, #reset {background-color:lightgrey; display:inline; margin:0 6px 0 0; padding:0 0 1px 0;}
+#gender{padding:2px 0;}
+#aliveyear{background-color:#EEE8AA;}
+#aliveinyear button, #years button, #given button, #parents input, #charts input, #reset button {margin: 1px; padding:1px 6px;}
+
+html[dir='rtl'] #source-list th:last-child, html[dir='rtl'] #note-list th:last-child, html[dir='rtl'] #repo-list th:last-child {margin:0 1px 1px -2px;}
+html[dir='rtl'] #gender, html[dir='rtl'] #aliveinyear, html[dir='rtl'] #years, html[dir='rtl'] #given, html[dir='rtl'] #parents, html[dir='rtl'] #charts, html[dir='rtl'] #reset {margin:0 0 0 6px;}
 
 /* ========= Sidebar ============== */
 
