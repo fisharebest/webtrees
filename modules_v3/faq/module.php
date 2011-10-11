@@ -312,7 +312,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				$row_color = ($row_count % 2) ? 'odd' : 'even';
 				// NOTE: Print the header of the current item
 				echo '<tr class="', $row_color, '"><td style="padding: 5px;">';
-				echo '<a href="#faq', $id, '">', $id+1, ' ', $faq->header, '</a>';
+				echo '<a href="#faq', $id, '">', $faq->header, '</a>';
 				echo '</td></tr>';
 				$row_count++;
 			}
