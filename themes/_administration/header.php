@@ -31,7 +31,7 @@ echo
 	'<head>',
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
+	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png" />',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery/jquery-ui_theme.css" type="text/css" />',
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
 	'<meta name="robots" content="noindex,nofollow" />';

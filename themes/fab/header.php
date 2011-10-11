@@ -44,7 +44,7 @@ echo
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />',
+	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png" />';
 	
 echo
 	'<link type="text/css" rel="stylesheet" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" />',

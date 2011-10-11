@@ -34,7 +34,7 @@ echo
 	'<head>',
 	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />';
+	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png" />';
 
 if (!empty($LINK_CANONICAL)) {
 	echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
