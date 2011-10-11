@@ -89,17 +89,17 @@ function print_indi_table($datalist, $legend="", $option="") {
 		oTable.fnSortListener('#GIVEN_SORT',1);
 		
 	   /* Add event listeners for filtering inputs */
-		jQuery('#SEX_M').click( function() { oTable.fnFilter( 'M', 13 );});
-		jQuery('#SEX_F').click( function() { oTable.fnFilter( 'F', 13 );});
-		jQuery('#SEX_U').click( function() { oTable.fnFilter( 'U', 13 );});
-		jQuery('#BIRT_YES').click( function() { oTable.fnFilter( 'YES', 14 );});
-		jQuery('#BIRT_Y100').click( function() { oTable.fnFilter( 'Y100', 14 );});
-		jQuery('#DEAT_N').click( function() { oTable.fnFilter( 'N', 15 );});
-		jQuery('#DEAT_Y').click( function() { oTable.fnFilter( '^Y', 15, true, false );});
-		jQuery('#DEAT_YES').click( function() { oTable.fnFilter( 'YES', 15 );});
-		jQuery('#DEAT_Y100').click( function() { oTable.fnFilter( 'Y100', 15 );});
-		jQuery('#TREE_R').click( function() { oTable.fnFilter( 'R', 16 );});
-		jQuery('#TREE_L').click( function() { oTable.fnFilter( 'L', 16 );});	
+		jQuery('#SEX_M').click( function() { oTable.fnFilter( 'M', 17 );});
+		jQuery('#SEX_F').click( function() { oTable.fnFilter( 'F', 17 );});
+		jQuery('#SEX_U').click( function() { oTable.fnFilter( 'U', 17 );});
+		jQuery('#BIRT_YES').click( function() { oTable.fnFilter( 'YES', 18 );});
+		jQuery('#BIRT_Y100').click( function() { oTable.fnFilter( 'Y100', 18 );});
+		jQuery('#DEAT_N').click( function() { oTable.fnFilter( 'N', 19 );});
+		jQuery('#DEAT_Y').click( function() { oTable.fnFilter( '^Y', 19, true, false );});
+		jQuery('#DEAT_YES').click( function() { oTable.fnFilter( 'YES', 19 );});
+		jQuery('#DEAT_Y100').click( function() { oTable.fnFilter( 'Y100', 19 );});
+		jQuery('#TREE_R').click( function() { oTable.fnFilter( 'R', 20 );});
+		jQuery('#TREE_L').click( function() { oTable.fnFilter( 'L', 20 );});	
 		
 		jQuery('#RESET').click( function() {
 			for(i = 0; i < 17; i++){oTable.fnFilter( '', i );};
