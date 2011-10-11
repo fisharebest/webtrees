@@ -1236,7 +1236,7 @@ html[dir='rtl'] .use-sidebar #separator {background: #ccc url('images/indi_sprit
 .flyout2 a:hover{color:#ff0000;}
 .flyout4 {color:#000000;	text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
 .flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
-.famnav_link {font-size:12px; padding:0px; width:100%;}
+.famnav_link div {font-size:12px; padding:0px; width:100%;}
 
 html[dir='rtl'] .flyout {text-align:right; left:210px;}
 html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
