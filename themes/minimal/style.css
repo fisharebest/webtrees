@@ -824,7 +824,7 @@ right:10px;
 
 /*-- descendancy chart specific stylesheets --*/
 #descendancy_chart ul {
-	background-image: url(images/vline.gif);
+	background-image: url(images/vline.png);
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style: none;
@@ -863,7 +863,7 @@ html[dir='rtl'] #relationship_chart {
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart ul {
-	background-image: url(images/vline.gif);
+	background-image: url(images/vline.png);
 	background-repeat: repeat-y;
 	background-position: left top;
 	list-style:none;
@@ -875,7 +875,7 @@ html[dir='rtl'] #relationship_chart {
 }
 
 #ancestry_chart li {
-	list-style: url(images/spacer.gif);
+	list-style: url(images/spacer.png);
 	margin: 0px 0px 2px -13px; /* top right bottom left */
 	padding-top: 0px;
 	padding-right: 0px;
@@ -1279,7 +1279,7 @@ a.showit:hover > span {
 }
 
 .ac_loading {
-	background: white url(../../images/indicator.gif) right center no-repeat;
+	background: white url(images/indicator.png) right center no-repeat;
 }
 
 .ac_odd {
@@ -1658,7 +1658,7 @@ html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0px;}
 
 /* Individuals, Families */
-.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.gif');}
+.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.png');}
 .name_tree_div li, .name_tree_div_visible li {white-space:normal;}
 .name_tree_div {	display:none;}
 .name_tree_div li,  .name_tree_div_visible li {list-style:none; margin:0px; padding:0px;}
