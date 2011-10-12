@@ -387,7 +387,7 @@ html[dir='rtl'] #story_module2 th, html[dir='rtl'] #story_module2 td {text-align
 .ac_results {padding:0px; border:1px solid black;	background-color:white; overflow:hidden; z-index:99999;}
 .ac_results ul {width:100%;	list-style-position:outside; list-style:none;	padding:0;	margin:0;}
 .ac_results li {margin:0px;	padding:2px 5px;	cursor:default; display:block; font:menu;font-size:12px; line-height:14px;	overflow:hidden;}
-.ac_loading {background:white url(../../images/indicator.gif) right center no-repeat;}
+.ac_loading {background:white url(images/indicator.gif) right center no-repeat;}
 .ac_odd {background-color:#eee;}
 .ac_over {background-color:#0A246A;	color:white;}
 
