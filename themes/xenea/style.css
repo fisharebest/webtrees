@@ -1568,7 +1568,7 @@ a.showit:hover > span {
 }
 
 .ac_loading {
-	background: white url(../../images/indicator.gif) right center no-repeat;
+	background: white url(images/indicator.gif) right center no-repeat;
 }
 
 .ac_odd {
@@ -1914,7 +1914,7 @@ html[dir='rtl'] .use-sidebar #separator {background: #c3dfff url('images/indi_sp
 
 html[dir='rtl'] .flyout {text-align:right; left:210px;}
 html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
-html[dir='rtl'] .flyout3 {text-align:right;}.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.gif');white-space:nowrap;}
+html[dir='rtl'] .flyout3 {text-align:right;}.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.png');white-space:nowrap;}
 
 /* Descendancy */
 #sb_desc_content {margin-left:3px; font-size:0.8em;}
