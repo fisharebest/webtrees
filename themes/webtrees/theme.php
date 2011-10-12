@@ -97,8 +97,8 @@ $WT_IMAGES=array(
 	'wiki'=>WT_THEME_URL.'images/w_22.png',
 	'itree'=>WT_THEME_URL.'images/tree.png',
 	// - Interactive Chart Icons
-	'fscreen'=>WT_THEME_URL.'images/fscreen.gif',
-	'center'=>WT_THEME_URL.'images/center.gif',
+	'fscreen'=>WT_THEME_URL.'images/fscreen.png',
+	'center'=>WT_THEME_URL.'images/center.png',
 	'itree'=>WT_THEME_URL.'images/tree.png',
 
 	//- buttons for data entry pages
