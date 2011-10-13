@@ -3089,7 +3089,7 @@ function ListSHandler($attrs) {
 					* Place any other filter before these filters because they will pick up any filters that has not been processed
 					* Also, do not unset() these two filters. These are just the first primary filters to reduce the returned list from the DB
 					*/
-					elseif (($listname=="individual") and (preg_match('/^(\w*):*(\w*) CONTAINS (.*)$/', $value, $match))) {
+					elseif (($listname=="individual") and (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match))) {
 						$query = "";
 						// Level 1 tag
 						if ($match[1] != "") $query .= "%1 {$match[1]}%";
@@ -3098,8 +3098,7 @@ function ListSHandler($attrs) {
 						// Contains what?
 						if ($match[3] != "") $query .= "%{$match[3]}%";
 						$sql_where[] = "i_gedcom LIKE ".WT_DB::quote(utf8_strtoupper($query));
-						unset($query);
-					} elseif (($listname=="family") and (preg_match('/^(\w*):*(\w*) CONTAINS (.*)$/', $value, $match))) {
+					} elseif (($listname=="family") and (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match))) {
 						$query = "";
 						// Level 1 tag
 						if ($match[1] != "") $query .= "%1 {$match[1]}%";
@@ -3108,7 +3107,6 @@ function ListSHandler($attrs) {
 						// Contains what?
 						if ($match[3] != "") $query .= "%{$match[3]}%";
 						$sql_where[] = "f_gedcom LIKE ".WT_DB::quote(utf8_strtoupper($query));
-						unset($query);
 					} else {
 						// TODO: what other filters can we apply in SQL?
 					}
