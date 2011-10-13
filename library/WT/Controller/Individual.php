@@ -47,7 +47,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	var $globalfacts = null;
 
 	function init() {
-		global $USE_RIN, $MAX_ALIVE_AGE;
+		global $USE_RIN, $MAX_ALIVE_AGE, $SEARCH_SPIDER;
 		global $DEFAULT_PIN_STATE, $DEFAULT_SB_CLOSED_STATE;
 		global $Fam_Navigator;
 
@@ -158,9 +158,14 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$tab = 0;
 			if (isset($_REQUEST['module'])) {
 				$tabname = $_REQUEST['module'];
+				if ($SEARCH_SPIDER) {
+					// Search engines should not make AJAX requests
+					header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+					exit;
+				}
 				if (!array_key_exists($tabname, $this->tabs)) {
 					// An AJAX request for a non-existant tab?
-					header('HTTP/1.0 404 Not Found');
+					header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
 					exit;
 				}
 				header("Content-Type: text/html; charset=UTF-8"); //AJAX calls do not have the meta tag headers and need this set
@@ -175,11 +180,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 					}
 					echo WT_JS_END;
 				}
-			}
-
-			if (isset($_REQUEST['pin'])) {
-				if ($_REQUEST['pin']=='true') $_SESSION['WT_pin'] = true;
-				else $_SESSION['WT_pin'] = false;
 			}
 
 			if (isset($_REQUEST['sb_closed'])) {
