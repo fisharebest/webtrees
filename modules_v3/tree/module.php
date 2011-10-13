@@ -79,7 +79,9 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
-		return true;
+		global $SEARCH_SPIDER;
+			
+		return !$SEARCH_SPIDER;
 	}
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
