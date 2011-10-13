@@ -518,7 +518,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 	// Implement WT_Module_Tab
 	public function canLoadAjax() {
-		return true;
+		global $SEARCH_SPIDER;
+
+		return !$SEARCH_SPIDER; // Search engines cannot use AJAX
 	}
 
 	// Implement WT_Module_Tab

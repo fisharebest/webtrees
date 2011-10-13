@@ -161,6 +161,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	// Implement WT_Module_Tab
 	public function hasTabContent() {
 		global $SEARCH_SPIDER;
+
 		return !$SEARCH_SPIDER && (array_key_exists('googlemap', WT_Module::getActiveModules()) || WT_USER_IS_ADMIN);
 	}
 
