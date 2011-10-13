@@ -77,63 +77,53 @@ echo
 
 if ($view!='simple') { // Use "simple" headers for popup windows
 	echo '<div id="header" class="block">';
-	// Print the user links
-	if ($SEARCH_SPIDER) {
-		// Search engines get a reduced menu
-		$menu_items=array(
-			WT_MenuBar::getGedcomMenu(),
-			WT_MenuBar::getListsMenu(),
-			WT_MenuBar::getCalendarMenu()
-		);
+	echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
+	if (WT_USER_ID) {
+		echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+			echo ' <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+		}
 	} else {
-		// Options for real users
-		echo '<div style="float:', WT_CSS_REVERSE_ALIGN, ';"><ul class="makeMenu">';
-		if (WT_USER_ID) {
-			echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
-			if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-				echo ' <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
-			}
-		} else {
-			echo '<li>', login_link(), '</li> ';
-		}
-		$menu=WT_MenuBar::getFavoritesMenu();
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-		$menu=WT_MenuBar::getLanguageMenu();
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-		$menu=WT_MenuBar::getThemeMenu();
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-		echo
-			'<li><form style="display:inline;" action="search.php" method="get">',
-			'<input type="hidden" name="action" value="general" />',
-			'<input type="hidden" name="topsearch" value="yes" />',
-			'<input type="text" name="query" size="20" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
-			'</form></li>',
-			'</ul></div>';
-		$menu_items=array(
-			WT_MenuBar::getGedcomMenu(),
-			WT_MenuBar::getMyPageMenu(),
-			WT_MenuBar::getChartsMenu(),
-			WT_MenuBar::getListsMenu(),
-			WT_MenuBar::getCalendarMenu(),
-			WT_MenuBar::getReportsMenu(),
-			WT_MenuBar::getSearchMenu(),
-		);
-		foreach (WT_MenuBar::getModuleMenus() as $menu) {
-			$menu_items[]=$menu;
-		}
-		$menu_items[]=WT_MenuBar::getHelpMenu();
-
-		echo
-			'<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;">',
-			htmlspecialchars($GEDCOM_TITLE),
-			'</div>';
+		echo '<li>', login_link(), '</li> ';
 	}
+	$menu=WT_MenuBar::getFavoritesMenu();
+	if ($menu) {
+		echo $menu->getMenuAsList();
+	}
+	$menu=WT_MenuBar::getLanguageMenu();
+	if ($menu) {
+		echo $menu->getMenuAsList();
+	}
+	$menu=WT_MenuBar::getThemeMenu();
+	if ($menu) {
+		echo $menu->getMenuAsList();
+	}
+	echo
+		'<li><form style="display:inline;" action="search.php" method="get">',
+		'<input type="hidden" name="action" value="general" />',
+		'<input type="hidden" name="topsearch" value="yes" />',
+		'<input type="text" name="query" size="20" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
+		'</form></li>',
+		'</ul></div>';
+	$menu_items=array(
+		WT_MenuBar::getGedcomMenu(),
+		WT_MenuBar::getMyPageMenu(),
+		WT_MenuBar::getChartsMenu(),
+		WT_MenuBar::getListsMenu(),
+		WT_MenuBar::getCalendarMenu(),
+		WT_MenuBar::getReportsMenu(),
+		WT_MenuBar::getSearchMenu(),
+	);
+	foreach (WT_MenuBar::getModuleMenus() as $menu) {
+		$menu_items[]=$menu;
+	}
+	$menu_items[]=WT_MenuBar::getHelpMenu();
+
+	echo
+		'<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;">',
+		htmlspecialchars($GEDCOM_TITLE),
+		'</div>';
+
 	// Print the menu bar
 	echo '<div id="topMenu"><ul class="makeMenu">';
 	foreach ($menu_items as $menu) {

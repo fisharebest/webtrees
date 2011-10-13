@@ -562,18 +562,29 @@ function execution_stats() {
 
 // Generate a login link
 function login_link($extra='') {
+	global $SEARCH_SPIDER;
 
-	if (WT_SCRIPT_NAME=='login.php') {
-		$href='#';
+	if ($SEARCH_SPIDER) {
+		return '';
 	} else {
-		$href=get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url());
+		if (WT_SCRIPT_NAME=='login.php') {
+			$href='#';
+		} else {
+			$href=get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url());
+		}
+		return '<a href="' . $href . '" ' . $extra . ' class="link">' . WT_I18N::translate('Login') . '</a>';
 	}
-	return '<a href="' . $href . '" ' . $extra . ' class="link">' . WT_I18N::translate('Login') . '</a>';
 }
 
 // Generate a logout link
 function logout_link($extra='') {
-	return '<a href="index.php?logout=1" ' . $extra . ' class="link">' . WT_I18N::translate('Logout') . '</a>';
+	global $SEARCH_SPIDER;
+
+	if ($SEARCH_SPIDER) {
+		return '';
+	} else {
+		return '<a href="index.php?logout=1" ' . $extra . ' class="link">' . WT_I18N::translate('Logout') . '</a>';
+	}
 }
 
 // Print a link to allow email/messaging contact with a user

@@ -302,16 +302,6 @@ if (!empty($_SERVER['HTTP_USER_AGENT'])) {
 //-- load up the code to check for spiders
 require WT_ROOT.'includes/session_spider.php';
 
-// Search engines are only allowed to see certain pages.
-if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME , array(
-	'family.php', 'famlist.php', 'index.php', 'indilist.php', 'individual.php',
-	'medialist.php', 'note.php', 'notelist.php', 'repo.php', 'repolist.php',
-	'search_engine.php', 'site-unavailable.php', 'source.php', 'sourcelist.php'
-))) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'search_engine.php');
-	exit;
-}
-
 // Store our session data in the database.
 // NOTE: this causes problems for sites using PHP/APC
 // For APC sites, we skip this, and rely on default
@@ -552,3 +542,15 @@ if (substr(PHP_SAPI, 0, 3) == 'cgi') {  // cgi-mode, should only be writable by 
 
 // Lightbox needs custom integration in many places.  Only check for the module once.
 define('WT_USE_LIGHTBOX', !$SEARCH_SPIDER && array_key_exists('lightbox', WT_Module::getActiveModules()));
+
+// Search engines are only allowed to see certain pages.
+if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME , array(
+	'index.php', 'site-unavailable.php', 'indilist.php',
+	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
+))) {
+	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+	print_header(WT_I18N::translate('Search engine'));
+	echo '<p class="ui-state-error">', WT_I18N::translate('You do not have permission to view this page.'), '</p>';
+	print_footer();
+	exit;
+}

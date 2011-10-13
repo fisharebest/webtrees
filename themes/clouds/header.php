@@ -62,33 +62,7 @@ echo
 	'</head>',
 	'<body id="body">';
 
-// begin header section -->
-if ($SEARCH_SPIDER) {
-	echo '<div id="header"><span class="title">';
-		print_gedcom_title_link(TRUE);
-	echo '</span></div>';
-
-	$menu_items=array(
-		WT_MenuBar::getGedcomMenu(),
-		WT_MenuBar::getListsMenu(),
-		WT_MenuBar::getCalendarMenu()
-	);
-
-	echo
-	'<div id="topMenu">',
-	'<ul id="main-menu">'; 
-	foreach ($menu_items as $menu) {
-		if ($menu) {
-		echo $menu->getMenuAsList();
-		}
-	}
-	unset($menu_items, $menu);
-	echo 
-	'</ul><div>';
-
-// Regular headers
-
-} elseif  ($view!='simple') { // Use "simple" headers for popup windows
+if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo 
 	'<div id="clouds-container">',
 		'<div id="header">',

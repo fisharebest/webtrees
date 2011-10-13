@@ -46,9 +46,8 @@ if (file_exists(WT_DATA_DIR.'offline.txt')) {
 	exit;
 }
 
-
 header('Content-Type: text/html; charset=UTF-8');
-header($_SERVER["SERVER_PROTOCOL"].' 503 Service Temporarily Unavailable');
+header($_SERVER['SERVER_PROTOCOL'].' 503 Service Temporarily Unavailable');
 
 echo
 	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
