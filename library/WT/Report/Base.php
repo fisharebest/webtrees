@@ -3089,7 +3089,7 @@ function ListSHandler($attrs) {
 					* Place any other filter before these filters because they will pick up any filters that has not been processed
 					* Also, do not unset() these two filters. These are just the first primary filters to reduce the returned list from the DB
 					*/
-					elseif (($listname=="individual") and (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match))) {
+					elseif ($listname=="individual" && preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
 						$query = "";
 						// Level 1 tag
 						if ($match[1] != "") $query .= "%1 {$match[1]}%";
@@ -3098,7 +3098,7 @@ function ListSHandler($attrs) {
 						// Contains what?
 						if ($match[3] != "") $query .= "%{$match[3]}%";
 						$sql_where[] = "i_gedcom LIKE ".WT_DB::quote(utf8_strtoupper($query));
-					} elseif (($listname=="family") and (preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match))) {
+					} elseif ($listname=="family" && preg_match('/^(\w*):*(\w*) CONTAINS (.+)$/', $value, $match)) {
 						$query = "";
 						// Level 1 tag
 						if ($match[1] != "") $query .= "%1 {$match[1]}%";
@@ -3157,43 +3157,43 @@ function ListSHandler($attrs) {
 						$val = $vars[$match[1]]['id'];
 						$val = trim($val);
 					}
-					$searchstr = "";
-					$tags = explode(":", $tag);
-					//-- only limit to a level number if we are specifically looking at a level
-					if (count($tags)>1) {
-						$level = 1;
-						foreach ($tags as $t) {
-							if (!empty($searchstr)) {
-								$searchstr.="[^\n]*(\n[2-9][^\n]*)*\n";
+					if ($val) {
+						$searchstr = "";
+						$tags = explode(":", $tag);
+						//-- only limit to a level number if we are specifically looking at a level
+						if (count($tags)>1) {
+							$level = 1;
+							foreach ($tags as $t) {
+								if (!empty($searchstr)) {
+									$searchstr.="[^\n]*(\n[2-9][^\n]*)*\n";
+								}
+								//-- search for both EMAIL and _EMAIL... silly double gedcom standard
+								if ($t=="EMAIL" || $t=="_EMAIL") {
+									$t="_?EMAIL";
+								}
+								$searchstr .= $level." ".$t;
+								$level++;
 							}
-							//-- search for both EMAIL and _EMAIL... silly double gedcom standard
-							if ($t=="EMAIL" || $t=="_EMAIL") {
-								$t="_?EMAIL";
+						} else {
+							if ($tag=="EMAIL" || $tag=="_EMAIL") {
+								$tag="_?EMAIL";
 							}
-							$searchstr .= $level." ".$t;
-							$level++;
+							$t = $tag;
+							$searchstr = "1 ".$tag;
 						}
-					} else {
-						if ($tag=="EMAIL" || $tag=="_EMAIL") {
-							$tag="_?EMAIL";
-						}
-						$t = $tag;
-						$searchstr = "1 ".$tag;
-					}
-					switch ($expr) {
-						case "CONTAINS":
-							if ($t=="PLAC") {
-								$searchstr.="[^\n]*[, ]*".$val;
-							} else {
-								$searchstr.="[^\n]*".$val;
-							}
-							$filters[] = $searchstr;
-							break;
-						default:
-							if (!empty($val)) {
+						switch ($expr) {
+							case "CONTAINS":
+								if ($t=="PLAC") {
+									$searchstr.="[^\n]*[, ]*".$val;
+								} else {
+									$searchstr.="[^\n]*".$val;
+								}
+								$filters[] = $searchstr;
+								break;
+							default:
 								$filters2[] = array("tag"=>$tag, "expr"=>$expr, "val"=>$val);
-							}
-							break;
+								break;
+						}
 					}
 				}
 			}
