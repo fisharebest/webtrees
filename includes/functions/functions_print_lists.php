@@ -39,11 +39,11 @@ require_once WT_ROOT.'includes/functions/functions_places.php';
  * @param array $datalist contain individuals that were extracted from the database.
  * @param string $legend optional legend of the fieldset
  */
-function print_indi_table($datalist, $legend="", $option="") {
+function print_indi_table($datalist, $legend='', $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE;
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
-	if ($option=="MARR_PLAC") return;
+	if ($option=='MARR_PLAC') return;
 	if (count($datalist)<1) return;
 	$tiny = (count($datalist)<=500);
 	echo WT_JS_START;?>
@@ -104,7 +104,6 @@ function print_indi_table($datalist, $legend="", $option="") {
 		/* show table once prepared */
 	   	jQuery('.indi-list').css('visibility', 'visible');
 
-
 	});
 	<?php echo WT_JS_END;
 
@@ -120,12 +119,12 @@ function print_indi_table($datalist, $legend="", $option="") {
 	//--table wrapper
 	echo '<div class="indi-list">';
 	//-- fieldset
-	if ($option=="BIRT_PLAC" || $option=="DEAT_PLAC") {
+	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') {
 		$filter=$legend;
 		$legend=WT_Gedcom_Tag::getLabel(substr($option, 0, 4))." @ ".$legend;
 	}
-	if ($legend == "") $legend = WT_I18N::translate('Individuals');
-	if (isset($WT_IMAGES["indi-list"])) $legend = "<img src=\"".$WT_IMAGES["indi-list"]."\" alt=\"\" align=\"middle\" /> ".$legend;
+	if ($legend == '') $legend = WT_I18N::translate('Individuals');
+	if (isset($WT_IMAGES['indi-list'])) $legend = '<img src="'.$WT_IMAGES['indi-list'].'" alt="" align="middle" /> '.$legend;
 	echo '<fieldset id="fieldset_indi"><legend>', $legend, '</legend>';
 	
 	//-- filter buttons
@@ -168,28 +167,28 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo '<th style="display:none;">SOSA</th>';
 	}
 	if (WT_USER_IS_ADMIN) {
-		echo '<th><img src="', $WT_IMAGES["user"], '" alt="', WT_I18N::translate('User role'), '" title="', WT_I18N::translate('User role'), '" border="0" /></th>';
+		echo '<th><img src="', $WT_IMAGES['user'], '" alt="', WT_I18N::translate('User role'), '" title="', WT_I18N::translate('User role'), '" border="0" /></th>';
 	} else {
 		echo '<th style="display:none">&nbsp;</th>';
 	}
 	echo '<th>', WT_Gedcom_Tag::getLabel('BIRT'), '</th>';
 	echo '<th style="display:none;">SORT_BIRT</th>';
 	if ($tiny) {
-		echo '<th><img src="', $WT_IMAGES["reminder"], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
+		echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	} else {
 		echo '<th style="display:none;"></th>';
 	}
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
 	echo '<th style="display:none;">BIRT_PLAC_SORT</th>';
 	if ($tiny) {
-		echo '<th><img src="', $WT_IMAGES["children"], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '" border="0" /></th>';
+		echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '" border="0" /></th>';
 	} else {
 		echo '<th style="display:none;"></th>';
 	}
 	echo '<th>', WT_Gedcom_Tag::getLabel('DEAT'), '</th>';
 	echo '<th style="display:none;">SORT_DEAT</th>';
 	if ($tiny) {
-		echo '<th><img src="', $WT_IMAGES["reminder"], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
+		echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	} else {
 		echo '<th style="display:none;"></th>';
 	}
@@ -219,19 +218,19 @@ function print_indi_table($datalist, $legend="", $option="") {
 			$person = WT_Person::getInstance($value);
 		} else { // Array of search results
 			$gid = $key;
-			if (isset($value["gid"])) $gid = $value["gid"]; // from indilist
+			if (isset($value['gid'])) $gid = $value['gid']; // from indilist
 			if (isset($value[4])) $gid = $value[4]; // from indilist ALL
 			$person = WT_Person::getInstance($gid);
 		}
 		/* @var $person Person */
 		if (is_null($person)) continue;
-		if ($person->getType() !== "INDI") continue;
+		if ($person->getType() !== 'INDI') continue;
 		if (!$person->canDisplayName()) {
 			continue;
 		}
 		//-- place filtering
-		if ($option=="BIRT_PLAC" && strstr($person->getBirthPlace(), $filter)===false) continue;
-		if ($option=="DEAT_PLAC" && strstr($person->getDeathPlace(), $filter)===false) continue;
+		if ($option=='BIRT_PLAC' && strstr($person->getBirthPlace(), $filter)===false) continue;
+		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
 		echo '<tr>';
 		//-- Indi name(s)
 		$tdclass = '';
@@ -298,20 +297,23 @@ function print_indi_table($datalist, $legend="", $option="") {
 				$user_name=get_user_name($user_id);
 				$user_level=get_user_gedcom_setting($user_id, WT_GED_ID, 'canedit');
 				if (get_user_setting($user_id, 'canadmin')) {
-					echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Administrator').'">5</a></td>';			
+					echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Administrator').'">5</a></td>';
 				} else {
 					switch ($user_level) {
 						case 'access':
-							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member').'">1</a></td>';			
+							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member').'">1</a></td>';
 							break;
 						case 'edit':
-							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Editor').'">2</a></td>';			
+							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Editor').'">2</a></td>';
 							break;
 						case 'accept':
-							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Moderator').'">3</a></td>';			
+							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Moderator').'">3</a></td>';
 							break;
 						case 'admin':
-							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Manager').'">4</a></td>';			
+							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Manager').'">4</a></td>';
+							break;
+						default:
+							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Visitor').'">0</a></td>';
 							break;
 					}
 				}
