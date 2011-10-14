@@ -41,17 +41,13 @@ require_once WT_ROOT.'includes/functions/functions_places.php';
  */
 function print_indi_table($datalist, $legend="", $option="") {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE;
-
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
-	
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	if ($option=="MARR_PLAC") return;
 	if (count($datalist)<1) return;
 	$tiny = (count($datalist)<=500);
-
 	echo WT_JS_START;?>
 	var oTable;
-
 	jQuery(document).ready(function(){
 		/* Initialise datatables */
 		oTable = jQuery('#<?php echo $table_id; ?>').dataTable( {
@@ -77,35 +73,36 @@ function print_indi_table($datalist, $legend="", $option="") {
 			"bRetrieve": true,
 			"bStateSave": true,
 			"aoColumnDefs": [
-				{"iDataSort": 5, "aTargets": [ 4 ] },
-				{"iDataSort": 8, "aTargets": [ 7 ] },
-				{"iDataSort": 11, "aTargets": [ 10 ] },
-				{"iDataSort": 15, "aTargets": [ 14 ] }
+				{ "sType": "html", "aTargets": [ 4 ] },
+				{"iDataSort": 6, "aTargets": [ 5 ] },
+				{"iDataSort": 9, "aTargets": [ 8 ] },
+				{"iDataSort": 12, "aTargets": [ 11 ] },
+				{"iDataSort": 16, "aTargets": [ 15 ] }
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
 		
-		oTable.fnSortListener('#GIVEN_SORT',1);
+		oTable.fnSortListener('#GIVEN_SORT_<?php echo $table_id; ?>',1);
 		
 	   /* Add event listeners for filtering inputs */
-		jQuery('#SEX_M').click( function() { oTable.fnFilter( 'M', 17 );});
-		jQuery('#SEX_F').click( function() { oTable.fnFilter( 'F', 17 );});
-		jQuery('#SEX_U').click( function() { oTable.fnFilter( 'U', 17 );});
-		jQuery('#BIRT_YES').click( function() { oTable.fnFilter( 'YES', 18 );});
-		jQuery('#BIRT_Y100').click( function() { oTable.fnFilter( 'Y100', 18 );});
-		jQuery('#DEAT_N').click( function() { oTable.fnFilter( 'N', 19 );});
-		jQuery('#DEAT_Y').click( function() { oTable.fnFilter( '^Y', 19, true, false );});
-		jQuery('#DEAT_YES').click( function() { oTable.fnFilter( 'YES', 19 );});
-		jQuery('#DEAT_Y100').click( function() { oTable.fnFilter( 'Y100', 19 );});
-		jQuery('#TREE_R').click( function() { oTable.fnFilter( 'R', 20 );});
-		jQuery('#TREE_L').click( function() { oTable.fnFilter( 'L', 20 );});	
+		jQuery('#SEX_M_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'M', 18 );});
+		jQuery('#SEX_F_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'F', 18 );});
+		jQuery('#SEX_U_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'U', 18 );});
+		jQuery('#BIRT_YES_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'YES', 19 );});
+		jQuery('#BIRT_Y100_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'Y100', 19 );});
+		jQuery('#DEAT_N_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'N', 20 );});
+		jQuery('#DEAT_Y_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( '^Y', 20, true, false );});
+		jQuery('#DEAT_YES_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'YES', 20 );});
+		jQuery('#DEAT_Y100_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'Y100', 20 );});
+		jQuery('#TREE_R_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'R', 21 );});
+		jQuery('#TREE_L_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'L', 21 );});	
 		
-		jQuery('#RESET').click( function() {
-			for(i = 0; i < 17; i++){oTable.fnFilter( '', i );};
+		jQuery('#RESET_<?php echo $table_id; ?>').click( function() {
+			for(i = 0; i < 22; i++){oTable.fnFilter( '', i );};
 		});
 		/* show table once prepared */
-	   	jQuery('#indi-list').css('visibility', 'visible');
+	   	jQuery('.indi-list').css('visibility', 'visible');
 
 
 	});
@@ -120,6 +117,8 @@ function print_indi_table($datalist, $legend="", $option="") {
 	for ($age=0; $age<=$max_age; $age++) $deat_by_age[$age]="";
 	for ($year=1550; $year<2030; $year+=10) $birt_by_decade[$year]="";
 	for ($year=1550; $year<2030; $year+=10) $deat_by_decade[$year]="";
+	//--table wrapper
+	echo '<div class="indi-list">';
 	//-- fieldset
 	if ($option=="BIRT_PLAC" || $option=="DEAT_PLAC") {
 		$filter=$legend;
@@ -130,37 +129,33 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo '<fieldset id="fieldset_indi"><legend>', $legend, '</legend>';
 	
 	//-- filter buttons
-	echo '<fieldset id="gender"><button type="button" id="SEX_M" title="', WT_I18N::translate('Show only males.'), '" >';
+	echo '<fieldset class="gender"><button type="button" id="SEX_M_'.$table_id.'" class="SEX_M" title="', WT_I18N::translate('Show only males.'), '" >';
 	echo WT_Person::sexImage('M', 'large'), '&nbsp;</button> ';
-	echo '<button type="button" id="SEX_F" title="', WT_I18N::translate('Show only females.'), '" >';
+	echo '<button type="button" id="SEX_F_'.$table_id.'" class="SEX_F" title="', WT_I18N::translate('Show only females.'), '" >';
 	echo WT_Person::sexImage('F', 'large'), '&nbsp;</button> ';
-	echo '<button type="button" id="SEX_U" title="', WT_I18N::translate('Show only persons of whom the gender is not known.'), '" >';
+	echo '<button type="button" id="SEX_U_'.$table_id.'" class="SEX_U" title="', WT_I18N::translate('Show only persons of whom the gender is not known.'), '" >';
 	echo WT_Person::sexImage('U', 'large'), '&nbsp;</button></fieldset>';
-	echo '<fieldset id="aliveinyear"><button type="button" class="alive_in_year" title="', WT_I18N::translate('Show persons alive in the indicated year.'), '" >';
+	echo '<fieldset class="aliveinyear"><button type="button" id="alive_in_year_'.$table_id.'" class="alive_in_year" title="', WT_I18N::translate('Show persons alive in the indicated year.'), '" >';
 	echo WT_I18N::translate('Alive in Year'), '</button>';
-	echo '<input type="text" size="4" id="aliveyear" value="', date('Y'), '" /></fieldset>';
-	echo '<fieldset id="years"><button type="button" id="DEAT_N" title="', WT_I18N::translate('Show people who are alive or couples where both partners are alive.'), '" >';
+	echo '<input type="text" size="4" id="aliveyear_'.$table_id.'"" class="aliveyear" value="', date('Y'), '" /></fieldset>';
+	echo '<fieldset class="years"><button type="button" id="DEAT_N_'.$table_id.'" class="DEAT_N" title="', WT_I18N::translate('Show people who are alive or couples where both partners are alive.'), '" >';
 	echo WT_I18N::translate('Alive '), '</button> ';
-	echo '<button type="button" id="DEAT_Y" title="', WT_I18N::translate('Show people who are dead or couples where both partners are deceased.'), '" >';
+	echo '<button type="button" id="DEAT_Y_'.$table_id.'" class="DEAT_Y" title="', WT_I18N::translate('Show people who are dead or couples where both partners are deceased.'), '" >';
 	echo WT_I18N::translate('Dead '), '</button> ';
-	echo '<button type="button" id="TREE_R" title="', WT_I18N::translate('Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database.'), '" >';
+	echo '<button type="button" id="TREE_R_'.$table_id.'" class="TREE_R" title="', WT_I18N::translate('Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database.'), '" >';
 	echo WT_I18N::translate('Roots'), '</button> ';
-	echo '<button type="button" id="TREE_L" title="', WT_I18N::translate('Show «leaves» couples or individuals.  These are individuals who are alive but have no children recorded in the database.'), '" >';
+	echo '<button type="button" id="TREE_L_'.$table_id.'" class="TREE_L" title="', WT_I18N::translate('Show «leaves» couples or individuals.  These are individuals who are alive but have no children recorded in the database.'), '" >';
 	echo WT_I18N::translate('Leaves'), '</button> ';
-//	echo '<br />';
-	echo '<button type="button" id="BIRT_YES" title="', WT_I18N::translate('Show persons born more than 100 years ago.'), '" >';
+	echo '<button type="button" id="BIRT_YES_'.$table_id.'" class="BIRT_YES" title="', WT_I18N::translate('Show persons born more than 100 years ago.'), '" >';
 	echo WT_Gedcom_Tag::getLabel('BIRT'), '&gt;100</button> ';
-	echo '<button type="button" id="BIRT_Y100" title="', WT_I18N::translate('Show persons born within the last 100 years.'), '" >';
+	echo '<button type="button" id="BIRT_Y100_'.$table_id.'" class="BIRT_Y100" title="', WT_I18N::translate('Show persons born within the last 100 years.'), '" >';
 	echo WT_Gedcom_Tag::getLabel('BIRT'), '&lt;=100</button> ';
-	echo '<button type="button" id="DEAT_YES" title="', WT_I18N::translate('Show people who died more than 100 years ago.'), '" >';
+	echo '<button type="button" id="DEAT_YES_'.$table_id.'" class="DEAT_YES" title="', WT_I18N::translate('Show people who died more than 100 years ago.'), '" >';
 	echo WT_Gedcom_Tag::getLabel('DEAT'), '&gt;100</button> ';
-	echo '<button type="button" id="DEAT_Y100" title="', WT_I18N::translate('Show people who died within the last 100 years.'), '" >';
+	echo '<button type="button" id="DEAT_Y100_'.$table_id.'" class="DEAT_Y100" title="', WT_I18N::translate('Show people who died within the last 100 years.'), '" >';
 	echo WT_Gedcom_Tag::getLabel('DEAT'), '&lt;=100</button></fieldset>';
-	echo '<fieldset id="reset"><button type="button" id="RESET" title="', WT_I18N::translate('Reset to the list defaults.'), '" >';
+	echo '<fieldset class="reset"><button type="button" id="RESET_'.$table_id.'" class="RESET" title="', WT_I18N::translate('Reset to the list defaults.'), '" >';
 	echo WT_I18N::translate('Reset'), '</button></fieldset>';
-
-	//--table wrapper
-	echo '<div id="indi-list">';
 
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
@@ -171,6 +166,11 @@ function print_indi_table($datalist, $legend="", $option="") {
 		echo '<th class="list_label">', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
 	} else {
 		echo '<th style="display:none;">SOSA</th>';
+	}
+	if (WT_USER_IS_ADMIN) {
+		echo '<th><img src="', $WT_IMAGES["user"], '" alt="', WT_I18N::translate('User role'), '" title="', WT_I18N::translate('User role'), '" border="0" /></th>';
+	} else {
+		echo '<th style="display:none">&nbsp;</th>';
 	}
 	echo '<th>', WT_Gedcom_Tag::getLabel('BIRT'), '</th>';
 	echo '<th style="display:none;">SORT_BIRT</th>';
@@ -210,7 +210,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 	echo '<tbody>';
 	$n = 0;
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
-	$dateY = date("Y");
+	$dateY = date('Y');
 	$unique_indis=array(); // Don't double-count indis with multiple names.
 	foreach ($datalist as $key => $value) {
 		if (is_object($value)) { // Array of objects
@@ -276,7 +276,7 @@ function print_indi_table($datalist, $legend="", $option="") {
 			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
 		}
 		// Indi parents
-		echo $person->getPrimaryParentsNames("parents_indi_list_table details1", 'none');
+		echo $person->getPrimaryParentsNames("parents_indi_list_table_".$table_id." details1", 'none');
 		echo '</td>';
 		//-- GIVN/SURN
 		echo '<td style="display:none">', $givn, ',', $surn, '</td>';
@@ -291,6 +291,36 @@ function print_indi_table($datalist, $legend="", $option="") {
 		} else {
 			echo '<td style="display:none">&nbsp;</td>';
 		}
+		//-- User ID
+		if (WT_USER_IS_ADMIN) {
+			$user_id=get_user_from_gedcom_xref(WT_GED_ID, $person->getXref());
+			if ($user_id) {
+				$user_name=get_user_name($user_id);
+				$user_level=get_user_gedcom_setting($user_id, WT_GED_ID, 'canedit');
+				if (get_user_setting($user_id, 'canadmin')) {
+					echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Administrator').'">5</a></td>';			
+				} else {
+					switch ($user_level) {
+						case 'access':
+							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member').'">1</a></td>';			
+							break;
+						case 'edit':
+							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Editor').'">2</a></td>';			
+							break;
+						case 'accept':
+							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Moderator').'">3</a></td>';			
+							break;
+						case 'admin':
+							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Manager').'">4</a></td>';			
+							break;
+					}
+				}
+			} else {
+				echo '<td>&nbsp;</td>';
+			}
+		} else {
+			echo '<td style="display:none">0</td>';
+		}		
 		//-- Birth date
 		echo '<td>';
 		if ($birth_dates=$person->getAllBirthDates()) {
@@ -474,15 +504,15 @@ function print_indi_table($datalist, $legend="", $option="") {
 	}
 	echo '</tbody>';
 	//-- table footer
-	echo '<tfoot><tr><td colspan="18">';
-	echo '<fieldset id="given"><button type="button" id="GIVEN_SORT" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></fieldset>';
-	echo '<fieldset id="parents"><input id="cb_parents_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'parents_indi_list_table\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/></fieldset>';
-	echo '<fieldset id="charts"><input id="charts_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'indi_list_table-charts\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/></fieldset>';
+	echo '<tfoot><tr><td colspan="19">';
+	echo '<fieldset class="given"><button type="button" id="GIVEN_SORT_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></fieldset>';
+	echo '<fieldset class="parents"><input id="cb_parents_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'parents_indi_list_table_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/></fieldset>';
+	echo '<fieldset class="charts"><input id="charts_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'indi_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/></fieldset>';
 	echo '</td></tr></tfoot>';
 	echo '</table>';
 	echo '</div>'; // Close "indi-list"
 	//-- charts
-	echo "<div class=\"indi_list_table-charts\" style=\"display:none\">";
+	echo "<div class=\"indi_list_table-charts_".$table_id."\" style=\"display:none\">";
 	echo "<table class=\"list_table center\">";
 	echo "<tr><td class=\"list_value_wrap\">";
 	print_chart_by_decade($birt_by_decade, WT_I18N::translate('Decade of birth'));
@@ -886,11 +916,11 @@ function print_sour_table($datalist, $legend=null) {
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
-	   	jQuery("#source-list").css('visibility', 'visible');
+	   	jQuery(".source-list").css('visibility', 'visible');
 	});
 	<?php echo WT_JS_END;
 	//--table wrapper
-	echo '<div id="source-list">';
+	echo '<div class="source-list">';
 	echo '<fieldset><legend><img src="', $WT_IMAGES['source'], '" align="middle" alt="" /> ';
 	if ($legend) {
 		echo $legend;
@@ -1055,11 +1085,11 @@ function print_note_table($datalist, $legend=null) {
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
-	   	jQuery("#note-list").css('visibility', 'visible');
+	   	jQuery(".note-list").css('visibility', 'visible');
 	});
 	<?php echo WT_JS_END;
 	//--table wrapper
-	echo '<div id="note-list">';
+	echo '<div class="note-list">';
 	echo '<fieldset><legend><img src="', $WT_IMAGES['note'], '" align="middle" alt="" /> ';
 	if ($legend) {
 		echo $legend;
@@ -1171,11 +1201,11 @@ function print_repo_table($repos, $legend='') {
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
-	   	jQuery("#repo-list").css('visibility', 'visible');
+	   	jQuery(".repo-list").css('visibility', 'visible');
 	});
 	<?php echo WT_JS_END;
 	//--table wrapper
-	echo '<div id="repo-list">';
+	echo '<div class="repo-list">';
 	echo '<fieldset><legend><img src="', $WT_IMAGES['repository'], '" align="middle" alt="" /> ';
 	if ($legend) {
 		echo $legend;
@@ -1278,11 +1308,11 @@ function print_media_table($datalist, $legend) {
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
-	   	jQuery("#media-list").css('visibility', 'visible');
+	   	jQuery(".media-list").css('visibility', 'visible');
 	});
 	<?php echo WT_JS_END;
 	//--table wrapper
-	echo '<div id="media-list">';
+	echo '<div class="media-list">';
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Media'), '</th>';

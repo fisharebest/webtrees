@@ -93,6 +93,7 @@ $WT_IMAGES=array(
 	'target'=>WT_THEME_URL.'images/buttons/target.png',
 	'timeline'=>WT_THEME_URL.'images/timeline.png',
 	'tree'=>WT_THEME_URL.'images/tree.png',
+	'user'=>WT_THEME_URL.'images/user.png',
 	'warning'=>WT_THEME_URL.'images/warning.png',
 	'wiki'=>WT_THEME_URL.'images/w_22.png',
 	'itree'=>WT_THEME_URL.'images/tree.png',
