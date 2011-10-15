@@ -87,35 +87,7 @@ class WT_GedcomRecord {
 
 		// Look for the record in the database
 		if (!is_array($data)) {
-			if (version_compare(PHP_VERSION, '5.3', '>=')) {
-				// If we know what sort of object we are, we can query the table directly.
-				switch (get_called_class()) {
-				case 'WT_Person':
-					$data=fetch_person_record($pid, $ged_id);
-					break;
-				case 'WT_Family':
-					$data=fetch_family_record($pid, $ged_id);
-					break;
-				case 'WT_Source':
-					$data=fetch_source_record($pid, $ged_id);
-					break;
-				case 'WT_Media':
-					$data=fetch_media_record($pid, $ged_id);
-					break;
-				case 'WT_Repository':
-				case 'WT_Note':
-					$data=fetch_other_record($pid, $ged_id);
-					break;
-				default:
-					// Type unknown - try each of the five tables in turn....
-					$data=fetch_gedcom_record($pid, $ged_id);
-					break;
-				}
-			} else {
-				// Late-static-binding is unavailable in PHP 5.2, so we do not what what
-				// sort of object we are - try each of the five tables in turn....
-				$data=fetch_gedcom_record($pid, $ged_id);
-			}
+			$data=self::fetchGedcomRecord($pid, $ged_id);
 
 			// If we didn't find the record in the database, it may be new/pending
 			if (!$data && WT_USER_CAN_EDIT && ($data=find_updated_record($pid, $ged_id, true))!='') {
@@ -170,6 +142,45 @@ class WT_GedcomRecord {
 		// Store it in the cache
 		$gedcom_record_cache[$object->xref][$object->ged_id]=&$object;
 		return $object;
+	}
+
+	private static function fetchGedcomRecord($xref, $ged_id) {
+		static $statement=null;
+
+		// We don't know what type of object this is.  Try each one in turn.
+		$row=WT_Person::fetchGedcomRecord($xref, $ged_id);
+		if ($row) {
+			return $row;
+		}
+		$row=WT_Family::fetchGedcomRecord($xref, $ged_id);
+		if ($row) {
+			return $row;
+		}
+		$row=WT_Source::fetchGedcomRecord($xref, $ged_id);
+		if ($row) {
+			return $row;
+		}
+		$row=WT_Repository::fetchGedcomRecord($xref, $ged_id);
+		if ($row) {
+			return $row;
+		}
+		$row=WT_Media::fetchGedcomRecord($xref, $ged_id);
+		if ($row) {
+			return $row;
+		}
+		$row=WT_Note::fetchGedcomRecord($xref, $ged_id);
+		if ($row) {
+			return $row;
+		}
+		// Some other type of record...
+		if (is_null($statement)) {
+			$statement=WT_DB::prepare(
+				"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec ".
+				"FROM `##other` WHERE o_id=? AND o_file=? AND o_type NOT IN ('REPO', 'NOTE')"
+			);
+		}
+		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
+
 	}
 
 	/**

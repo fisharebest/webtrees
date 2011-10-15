@@ -38,11 +38,11 @@ class WT_Family extends WT_GedcomRecord {
 	function __construct($data) {
 		if (is_array($data)) {
 			// Construct from a row from the database
-			if ($data['f_husb']) {
-				$this->husb=WT_Person::getInstance($data['f_husb']);
+			if (preg_match('/^1 HUSB @(.+)@/m', $data['gedrec'], $match)) {
+				$this->husb=WT_Person::getInstance($match[1]);
 			}
-			if ($data['f_wife']) {
-				$this->wife=WT_Person::getInstance($data['f_wife']);
+			if (preg_match('/^1 WIFE @(.+)@/m', $data['gedrec'], $match)) {
+				$this->wife=WT_Person::getInstance($match[1]);
 			}
 		} else {
 			// Construct from raw GEDCOM data
@@ -76,6 +76,19 @@ class WT_Family extends WT_GedcomRecord {
 			}
 		}
 		return $rec;
+	}
+
+	// Fetch the record from the database
+	protected static function fetchGedcomRecord($xref, $ged_id) {
+		static $statement=null;
+
+		if ($statement===null) {
+			$statement=WT_DB::prepare(
+				"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec ".
+				"FROM `##families` WHERE f_id=? AND f_file=?"
+			);
+		}
+		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
 	}
 
 	/**

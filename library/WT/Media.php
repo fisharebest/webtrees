@@ -79,6 +79,19 @@ class WT_Media extends WT_GedcomRecord {
 		return parent::_canDisplayDetailsByType($access_level);
 	}
 
+	// Fetch the record from the database
+	protected static function fetchGedcomRecord($xref, $ged_id) {
+		static $statement=null;
+
+		if ($statement===null) {
+			$statement=WT_DB::prepare(
+				"SELECT 'OBJE' AS type, m_media AS xref, m_gedfile AS ged_id, m_gedrec AS gedrec, m_titl, m_file ".
+				"FROM `##media` WHERE m_media=? AND m_gedfile=?"
+			);
+		}
+		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
+	}
+
 	/**
 	 * get the media note from the gedcom
 	 * @return string

@@ -29,6 +29,19 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Repository extends WT_GedcomRecord {
+	// Fetch the record from the database
+	protected static function fetchGedcomRecord($xref, $ged_id) {
+		static $statement=null;
+
+		if ($statement===null) {
+			$statement=WT_DB::prepare(
+				"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec ".
+				"FROM `##other` WHERE o_id=? AND o_file=? AND o_type='REPO'"
+			);
+		}
+		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
+	}
+	
 	// Generate a URL to this record, suitable for use in HTML
 	public function getHtmlUrl() {
 		return parent::_getLinkUrl('repo.php?rid=', '&amp;');

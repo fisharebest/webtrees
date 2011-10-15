@@ -49,6 +49,18 @@ class WT_Source extends WT_GedcomRecord {
 		return "0 @".$this->xref."@ ".$this->type."\n1 TITL ".WT_I18N::translate('Private');
 	}
 
+	// Fetch the record from the database
+	protected static function fetchGedcomRecord($xref, $ged_id) {
+		static $statement=null;
+
+		if ($statement===null) {
+			$statement=WT_DB::prepare(
+				"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec ".
+				"FROM `##other` WHERE o_id=? AND o_file=? AND o_type='REPO'"
+			);
+		}
+	}
+
 	public function getAuth() {
 		return get_gedcom_value('AUTH', 1, $this->getGedcomRecord(), '', false);
 	}

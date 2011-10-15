@@ -133,6 +133,19 @@ class WT_Person extends WT_GedcomRecord {
 		return $rec;
 	}
 
+	// Fetch the record from the database
+	protected static function fetchGedcomRecord($xref, $ged_id) {
+		static $statement=null;
+
+		if ($statement===null) {
+			$statement=WT_DB::prepare(
+				"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec ".
+				"FROM `##individuals` WHERE i_id=? AND i_file=?"
+			);
+		}
+		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
+	}
+
 	// Static helper function to sort an array of people by birth date
 	static function CompareBirtDate($x, $y) {
 		return WT_Date::Compare($x->getEstimatedBirthDate(), $y->getEstimatedBirthDate());
