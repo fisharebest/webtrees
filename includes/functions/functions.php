@@ -1266,7 +1266,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 	}
 
 	$time_limit=ini_get('max_execution_time');
-	$indirec = find_person_record($pid2, WT_GED_ID);
+	$indi = WT_Person::getInstance($pid2);
 	//-- check the cache
 	if (!$ignore_cache) {
 		if (isset($NODE_CACHE["$pid1-$pid2"])) {
@@ -1277,35 +1277,26 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				return false;
 		}
 		//-- check the cache for person 2's children
-		$famids = array();
-		$ct = preg_match_all("/1 FAMS @(.*)@/", $indirec, $match, PREG_SET_ORDER);
-		for ($i=0; $i<$ct; $i++) {
-			$famids[$i]=$match[$i][1];
-		}
-		foreach ($famids as $indexval => $fam) {
-			$famrec = find_family_record($fam, WT_GED_ID);
-			$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
-			for ($i=0; $i<$ct; $i++) {
-				$child = $match[$i][1];
-				if (!empty($child)) {
-					if (isset($NODE_CACHE["$pid1-$child"])) {
-						if (($maxlength==0)||(count($NODE_CACHE["$pid1-$child"]["path"])+1<=$maxlength)) {
-							$node1 = $NODE_CACHE["$pid1-$child"];
-							if ($node1!="NOT FOUND") {
-								$node1["path"][] = $pid2;
-								$node1["pid"] = $pid2;
-								if (strpos($indirec, "1 SEX F")!==false)
-									$node1["relations"][] = "mother";
-								else
-									$node1["relations"][] = "father";
+		foreach ($indi->getSpouseFamilies() as $fam) {
+			foreach ($fam->getChildren() as $child) {
+				if (isset($NODE_CACHE["$pid1-".$child->getXref()])) {
+					if (($maxlength==0)||(count($NODE_CACHE["$pid1-".$child->getXref()]["path"])+1<=$maxlength)) {
+						$node1 = $NODE_CACHE["$pid1-".$child->getXref()];
+						if ($node1!="NOT FOUND") {
+							$node1["path"][] = $pid2;
+							$node1["pid"] = $pid2;
+							if ($child->getSex()=='F') {
+								$node1["relations"][] = "mother";
+							} else {
+								$node1["relations"][] = "father";
 							}
-							$NODE_CACHE["$pid1-$pid2"] = $node1;
-							if ($node1=="NOT FOUND")
-								return false;
-							return $node1;
-						} else
+						}
+						$NODE_CACHE["$pid1-$pid2"] = $node1;
+						if ($node1=="NOT FOUND")
 							return false;
-					}
+						return $node1;
+					} else
+						return false;
 				}
 			}
 		}
@@ -1317,36 +1308,8 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 	}
 	//-- end cache checking
 
-	//-- get the birth year of p2 for calculating heuristics
-	$birthrec = get_sub_record(1, "1 BIRT", $indirec);
-	$byear2 = -1;
-	if ($birthrec!==false) {
-		$dct = preg_match("/2 DATE .*(\d\d\d\d)/", $birthrec, $match);
-		if ($dct>0)
-			$byear2 = $match[1];
-	}
-	if ($byear2==-1) {
-		$numfams = preg_match_all("/1 FAMS @(.*)@/", $indirec, $fmatch, PREG_SET_ORDER);
-		for ($j=0; $j<$numfams; $j++) {
-			// Get the family record
-			$famrec = find_family_record($fmatch[$j][1], WT_GED_ID);
-
-			// Get the set of children
-			$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $cmatch, PREG_SET_ORDER);
-			for ($i=0; $i<$ct; $i++) {
-				// Get each child's record
-				$childrec = find_person_record($cmatch[$i][1], WT_GED_ID);
-				$birthrec = get_sub_record(1, "1 BIRT", $childrec);
-				if ($birthrec!==false) {
-					$dct = preg_match("/2 DATE .*(\d\d\d\d)/", $birthrec, $bmatch);
-					if ($dct>0)
-						$byear2 = $bmatch[1]-25;
-						if ($byear2>2100) $byear2-=3760; // Crude conversion from Jewish to gregorian
-				}
-			}
-		}
-	}
-	//-- end of approximating birth year
+	//-- get the birth date of p2 for calculating heuristics
+	$bdate2=$indi->getEstimatedBirthDate();
 
 	//-- current path nodes
 	$p1nodes = array();
@@ -1422,17 +1385,10 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				$childh = 3;
 
 				//-- generate heuristic values based on the birthdates of the current node and p2
-				$indirec = find_person_record($node["pid"], WT_GED_ID);
-				$byear1 = -1;
-				$birthrec = get_sub_record(1, "1 BIRT", $indirec);
-				if ($birthrec!==false) {
-					$dct = preg_match("/2 DATE .*(\d\d\d\d)/", $birthrec, $match);
-					if ($dct>0)
-						$byear1 = $match[1];
-						if ($byear1>2100) $byear1-=3760; // Crude conversion from Jewish to gregorian
-				}
-				if (($byear1!=-1)&&($byear2!=-1)) {
-					$yeardiff = $byear1-$byear2;
+				$indi = WT_Person::getInstance($node['pid']);
+				$bdate1=$indi->getEstimatedBirthDate();
+				if ($bdate1->isOK() && $bdate2->isOK()) {
+					$yeardiff = ($bdate1->minJD() - $bdate2->minJD()) / 365;
 					if ($yeardiff < -140) {
 						$fatherh = 20;
 						$motherh = 20;
@@ -1490,60 +1446,34 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 											}
 				}
 				//-- check all parents and siblings of this node
-				$famids = array();
-				$ct = preg_match_all("/1 FAMC @(.*)@/", $indirec, $match, PREG_SET_ORDER);
-				for ($i=0; $i<$ct; $i++) {
-					if (!isset($visited[$match[$i][1]]))
-						$famids[$i]=$match[$i][1];
-				}
-				foreach ($famids as $indexval => $fam) {
-					$visited[$fam] = true;
-					$famrec = find_family_record($fam, WT_GED_ID);
-					$parents = find_parents_in_record($famrec);
-					if ((!empty($parents["HUSB"]))&&(!isset($visited[$parents["HUSB"]]))) {
-						$node1 = $node;
-						$node1["length"]+=$fatherh;
-						$node1["path"][] = $parents["HUSB"];
-						$node1["pid"] = $parents["HUSB"];
-						$node1["relations"][] = "parent";
-						$p1nodes[] = $node1;
-						if ($node1["pid"]==$pid2) {
-							if ($path_to_find>0)
-								$path_to_find--;
-							else {
-								$found=true;
-								$resnode = $node1;
-							}
-						} else
-							$visited[$parents["HUSB"]] = true;
-						$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
+				foreach ($indi->getChildFamilies() as $fam) {
+					$visited[$fam->getXref()] = true;
+					foreach ($fam->getSpouses() as $spouse) {
+						if (!isset($visited[$spouse->getXref()])) {
+							$node1 = $node;
+							$node1["length"]+=$fatherh;
+							$node1["path"][] = $spouse->getXref();
+							$node1["pid"] = $spouse->getXref();
+							$node1["relations"][] = "parent";
+							$p1nodes[] = $node1;
+							if ($node1["pid"]==$pid2) {
+								if ($path_to_find>0)
+									$path_to_find--;
+								else {
+									$found=true;
+									$resnode = $node1;
+								}
+							} else
+								$visited[$spouse->getXref()] = true;
+							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
+						}
 					}
-					if ((!empty($parents["WIFE"]))&&(!isset($visited[$parents["WIFE"]]))) {
-						$node1 = $node;
-						$node1["length"]+=$motherh;
-						$node1["path"][] = $parents["WIFE"];
-						$node1["pid"] = $parents["WIFE"];
-						$node1["relations"][] = "parent";
-						$p1nodes[] = $node1;
-						if ($node1["pid"]==$pid2) {
-							if ($path_to_find>0)
-								$path_to_find--;
-							else {
-								$found=true;
-								$resnode = $node1;
-							}
-						} else
-							$visited[$parents["WIFE"]] = true;
-						$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
-					}
-					$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
-					for ($i=0; $i<$ct; $i++) {
-						$child = $match[$i][1];
-						if ((!empty($child))&&(!isset($visited[$child]))) {
+					foreach ($fam->getChildren() as $child) {
+						if (!isset($visited[$child->getXref()])) {
 							$node1 = $node;
 							$node1["length"]+=$siblingh;
-							$node1["path"][] = $child;
-							$node1["pid"] = $child;
+							$node1["path"][] = $child->getXref();
+							$node1["pid"] = $child->getXref();
 							$node1["relations"][] = "sibling";
 							$p1nodes[] = $node1;
 							if ($node1["pid"]==$pid2) {
@@ -1554,67 +1484,42 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 									$resnode = $node1;
 								}
 							} else
-								$visited[$child] = true;
+								$visited[$child->getXref()] = true;
 							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 						}
 					}
 				}
 				//-- check all spouses and children of this node
-				$famids = array();
-				$ct = preg_match_all("/1 FAMS @(.*)@/", $indirec, $match, PREG_SET_ORDER);
-				for ($i=0; $i<$ct; $i++) {
-					$famids[$i]=$match[$i][1];
-				}
-				foreach ($famids as $indexval => $fam) {
-					$visited[$fam] = true;
-					$famrec = find_family_record($fam, WT_GED_ID);
+				foreach ($indi->getSpouseFamilies() as $fam) {
+					$visited[$fam->getXref()] = true;
 					if ($followspouse) {
-						$parents = find_parents_in_record($famrec);
-						if ((!empty($parents["HUSB"]))&&((!in_arrayr($parents["HUSB"], $node1))||(!isset($visited[$parents["HUSB"]])))) {
-							$node1 = $node;
-							$node1["length"]+=$spouseh;
-							$node1["path"][] = $parents["HUSB"];
-							$node1["pid"] = $parents["HUSB"];
-							$node1["relations"][] = "spouse";
-							$p1nodes[] = $node1;
-							if ($node1["pid"]==$pid2) {
-								if ($path_to_find>0)
-									$path_to_find--;
-								else {
-									$found=true;
-									$resnode = $node1;
-								}
-							} else
-								$visited[$parents["HUSB"]] = true;
-							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
-						}
-						if ((!empty($parents["WIFE"]))&&((!in_arrayr($parents["WIFE"], $node1))||(!isset($visited[$parents["WIFE"]])))) {
-							$node1 = $node;
-							$node1["length"]+=$spouseh;
-							$node1["path"][] = $parents["WIFE"];
-							$node1["pid"] = $parents["WIFE"];
-							$node1["relations"][] = "spouse";
-							$p1nodes[] = $node1;
-							if ($node1["pid"]==$pid2) {
-								if ($path_to_find>0)
-									$path_to_find--;
-								else {
-									$found=true;
-									$resnode = $node1;
-								}
-							} else
-								$visited[$parents["WIFE"]] = true;
-							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
+						foreach ($fam->getSpouses() as $spouse) {
+							if (!in_arrayr($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
+								$node1 = $node;
+								$node1["length"]+=$spouseh;
+								$node1["path"][] = $spouse->getXref();
+								$node1["pid"] = $spouse->getXref();
+								$node1["relations"][] = "spouse";
+								$p1nodes[] = $node1;
+								if ($node1["pid"]==$pid2) {
+									if ($path_to_find>0)
+										$path_to_find--;
+									else {
+										$found=true;
+										$resnode = $node1;
+									}
+								} else
+									$visited[$spouse->getXref()] = true;
+								$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
+							}
 						}
 					}
-					$ct = preg_match_all("/1 CHIL @(.*)@/", $famrec, $match, PREG_SET_ORDER);
-					for ($i=0; $i<$ct; $i++) {
-						$child = $match[$i][1];
-						if ((!empty($child))&&(!isset($visited[$child]))) {
+					foreach ($fam->getChildren() as $child) {
+						if (!isset($visited[$child->getXref()])) {
 							$node1 = $node;
 							$node1["length"]+=$childh;
-							$node1["path"][] = $child;
-							$node1["pid"] = $child;
+							$node1["path"][] = $child->getXref();
+							$node1["pid"] = $child->getXref();
 							$node1["relations"][] = "child";
 							$p1nodes[] = $node1;
 							if ($node1["pid"]==$pid2) {
@@ -1625,7 +1530,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 									$resnode = $node1;
 								}
 							} else {
-								$visited[$child] = true;
+								$visited[$child->getXref()] = true;
 							}
 							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 						}
