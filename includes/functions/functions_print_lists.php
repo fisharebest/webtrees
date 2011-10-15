@@ -47,10 +47,10 @@ function print_indi_table($datalist, $legend='', $option='') {
 	if (count($datalist)<1) return;
 	$tiny = (count($datalist)<=500);
 	echo WT_JS_START;?>
-	var oTable;
+	var oTable<?php echo $table_id; ?>;
 	jQuery(document).ready(function(){
 		/* Initialise datatables */
-		oTable = jQuery('#<?php echo $table_id; ?>').dataTable( {
+		oTable<?php echo $table_id; ?> = jQuery('#<?php echo $table_id; ?>').dataTable( {
 			"sDom": '<"H"pf<"dt-clear">irl>t<"F"pl>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
@@ -73,34 +73,35 @@ function print_indi_table($datalist, $legend='', $option='') {
 			"bRetrieve": true,
 			"bStateSave": true,
 			"aoColumnDefs": [
-				{ "sType": "html", "aTargets": [ 4 ] },
-				{"iDataSort": 6, "aTargets": [ 5 ] },
-				{"iDataSort": 9, "aTargets": [ 8 ] },
-				{"iDataSort": 12, "aTargets": [ 11 ] },
-				{"iDataSort": 16, "aTargets": [ 15 ] }
+				{"iDataSort": 2, "aTargets": [ 0 ] },
+				{"iDataSort": 5, "aTargets": [ 4 ] },
+				{"iDataSort": 8, "aTargets": [ 7 ] },
+				{"iDataSort": 11, "aTargets": [ 10 ] },
+				{"iDataSort": 15, "aTargets": [ 14 ] }
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
 		
-		oTable.fnSortListener('#GIVEN_SORT_<?php echo $table_id; ?>',1);
+		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_<?php echo $table_id; ?>',1);
 		
 	   /* Add event listeners for filtering inputs */
-		jQuery('#SEX_M_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'M', 18 );});
-		jQuery('#SEX_F_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'F', 18 );});
-		jQuery('#SEX_U_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'U', 18 );});
-		jQuery('#BIRT_YES_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'YES', 19 );});
-		jQuery('#BIRT_Y100_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'Y100', 19 );});
-		jQuery('#DEAT_N_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'N', 20 );});
-		jQuery('#DEAT_Y_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( '^Y', 20, true, false );});
-		jQuery('#DEAT_YES_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'YES', 20 );});
-		jQuery('#DEAT_Y100_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'Y100', 20 );});
-		jQuery('#TREE_R_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'R', 21 );});
-		jQuery('#TREE_L_<?php echo $table_id; ?>').click( function() { oTable.fnFilter( 'L', 21 );});	
+		jQuery('#SEX_M_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'M', 17 );});
+		jQuery('#SEX_F_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'F', 17 );});
+		jQuery('#SEX_U_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'U', 17 );});
+		jQuery('#BIRT_YES_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'YES', 18 );});
+		jQuery('#BIRT_Y100_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'Y100', 18 );});
+		jQuery('#DEAT_N_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'N', 19 );});
+		jQuery('#DEAT_Y_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( '^Y', 19, true, false );});
+		jQuery('#DEAT_YES_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'YES', 19 );});
+		jQuery('#DEAT_Y100_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'Y100', 19 );});
+		jQuery('#TREE_R_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'R', 20 );});
+		jQuery('#TREE_L_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'L', 20 );});	
 		
 		jQuery('#RESET_<?php echo $table_id; ?>').click( function() {
-			for(i = 0; i < 22; i++){oTable.fnFilter( '', i );};
+			for(i = 0; i < 21; i++){oTable<?php echo $table_id; ?>.fnFilter( '', i );};
 		});
+		
 		/* show table once prepared */
 	   	jQuery('.indi-list').css('visibility', 'visible');
 
@@ -165,11 +166,6 @@ function print_indi_table($datalist, $legend='', $option='') {
 		echo '<th class="list_label">', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
 	} else {
 		echo '<th style="display:none;">SOSA</th>';
-	}
-	if (WT_USER_IS_ADMIN) {
-		echo '<th><img src="', $WT_IMAGES['user'], '" alt="', WT_I18N::translate('User role'), '" title="', WT_I18N::translate('User role'), '" border="0" /></th>';
-	} else {
-		echo '<th style="display:none">&nbsp;</th>';
 	}
 	echo '<th>', WT_Gedcom_Tag::getLabel('BIRT'), '</th>';
 	echo '<th style="display:none;">SORT_BIRT</th>';
@@ -290,39 +286,6 @@ function print_indi_table($datalist, $legend='', $option='') {
 		} else {
 			echo '<td style="display:none">&nbsp;</td>';
 		}
-		//-- User ID
-		if (WT_USER_IS_ADMIN) {
-			$user_id=get_user_from_gedcom_xref(WT_GED_ID, $person->getXref());
-			if ($user_id) {
-				$user_name=get_user_name($user_id);
-				$user_level=get_user_gedcom_setting($user_id, WT_GED_ID, 'canedit');
-				if (get_user_setting($user_id, 'canadmin')) {
-					echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Administrator').'">5</a></td>';
-				} else {
-					switch ($user_level) {
-						case 'access':
-							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Member').'">1</a></td>';
-							break;
-						case 'edit':
-							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Editor').'">2</a></td>';
-							break;
-						case 'accept':
-							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Moderator').'">3</a></td>';
-							break;
-						case 'admin':
-							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Manager').'">4</a></td>';
-							break;
-						default:
-							echo '<td class="center"><a href="admin_users.php?action=edituser&amp;username='.$user_name.'" title="'.  /* I18N: Listbox entry; name of a role */ WT_I18N::translate('Visitor').'">0</a></td>';
-							break;
-					}
-				}
-			} else {
-				echo '<td>&nbsp;</td>';
-			}
-		} else {
-			echo '<td style="display:none">0</td>';
-		}		
 		//-- Birth date
 		echo '<td>';
 		if ($birth_dates=$person->getAllBirthDates()) {
