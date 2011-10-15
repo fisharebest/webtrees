@@ -1812,8 +1812,8 @@ function get_relationship_name_from_path($path, $pid1, $pid2) {
 		// TODO: Update all the "3 RELA " values in class_person
 		return '<span class="error">'.$path.'</span>';
 	}
-	$person1=WT_Person::GetInstance($pid1);
-	$person2=WT_Person::GetInstance($pid2);
+	$person1=$pid1 ? WT_Person::GetInstance($pid1) : null;
+	$person2=$pid2 ? WT_Person::GetInstance($pid2) : null;
 	// The path does not include the starting person.  In some languages, the
 	// translation for a man's (relative) is different to a woman's (relative),
 	// due to inflection.
