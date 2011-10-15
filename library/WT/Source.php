@@ -55,10 +55,11 @@ class WT_Source extends WT_GedcomRecord {
 
 		if ($statement===null) {
 			$statement=WT_DB::prepare(
-				"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec ".
-				"FROM `##other` WHERE o_id=? AND o_file=? AND o_type='REPO'"
+				"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec ".
+				"FROM `##sources` WHERE s_id=? AND s_file=?"
 			);
 		}
+		return $statement->execute(array($xref, $ged_id))->fetchOneRow(PDO::FETCH_ASSOC);
 	}
 
 	public function getAuth() {
