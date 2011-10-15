@@ -87,7 +87,13 @@ class WT_GedcomRecord {
 
 		// Look for the record in the database
 		if (!is_array($data)) {
-			$data=self::fetchGedcomRecord($pid, $ged_id);
+			if (version_compare(PHP_VERSION, '5.3', '>')) {
+				// PHP 5.3 supports late static binding
+				$data=static::fetchGedcomRecord($pid, $ged_id);
+			} else {
+				// PHP 5.2 does not - use a (slower) fallback.
+				$data=self::fetchGedcomRecord($pid, $ged_id);
+			}
 
 			// If we didn't find the record in the database, it may be new/pending
 			if (!$data && WT_USER_CAN_EDIT && ($data=find_updated_record($pid, $ged_id, true))!='') {
