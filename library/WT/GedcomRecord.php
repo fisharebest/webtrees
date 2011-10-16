@@ -36,7 +36,9 @@ class WT_GedcomRecord {
 	private   $gedrec     =null;  // Raw gedcom text (privatised)
 	protected $facts      =null;
 	protected $changeEvent=null;
-	private   $disp       =null;  // Can we display details of this object
+	private   $disp_public=null;  // Can we display details of this record to WT_PRIV_PUBLIC
+	private   $disp_user  =null;  // Can we display details of this record to WT_PRIV_USER
+	private   $disp_hidden=null;  // Can we display details of this record to WT_PRIV_NONE
 	private   $changed    =false; // Is this a new record, pending approval
 
 	// Cached results from various functions.
@@ -361,18 +363,28 @@ class WT_GedcomRecord {
 
 	// Can the details of this record be shown?
 	public function canDisplayDetails($access_level=WT_USER_ACCESS_LEVEL) {
-		// CACHING: this function can take four different parameters, 
-		// and therefore needs four different caches for the result.
-		// However, when we use a non-default value for $access_level,
-		// we use that access level exclusively.  This happens in
-		// 1) downloading a gedcom with privacy filtering
-		// 2) downloading a clipping cart with privacy filtering
-		// 3) generating a sitemap
-		// As a result, we currently need only the one cached value.
-		if ($this->disp===null) {
-			$this->disp=$this->_canDisplayDetails($access_level);
+		// CACHING: this function can take three different parameters, 
+		// and therefore needs three different caches for the result.
+		switch ($access_level) {
+		case WT_PRIV_PUBLIC: // visitor
+			if ($this->disp_public===null) {
+				$this->disp_public=$this->_canDisplayDetails(WT_PRIV_PUBLIC);
+			}
+			return $this->disp_public;
+		case WT_PRIV_USER: // member
+			if ($this->disp_user===null) {
+				$this->disp_user=$this->_canDisplayDetails(WT_PRIV_USER);
+			}
+			return $this->disp_user;
+		case WT_PRIV_NONE: // admin
+			if ($this->disp_none===null) {
+				$this->disp_none=$this->_canDisplayDetails(WT_PRIV_NONE);
+			}
+			return $this->disp_none;
+		default:
+			// Should never get here.
+			return false;
 		}
-		return $this->disp;
 	}
 
 	// Can the name of this record be shown?
