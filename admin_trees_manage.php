@@ -181,8 +181,6 @@ case 'importform':
 		} else {
 			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
 			echo '</form>';
-			echo '<br /><br />';
-			echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', WT_I18N::translate('Cancel'), '" /></form>';
 			print_footer();
 			exit;
 		}
@@ -191,7 +189,6 @@ case 'importform':
 	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
 	echo '<br /><br /><input type="submit" value="', WT_I18N::translate('Save'), '" /></form>';
 	echo '</form>';
-	echo '<form name="cancel" method="get" action="', WT_SCRIPT_NAME, '"><input type="submit" value="', WT_I18N::translate('Cancel'), '" /></form>';
 	print_footer();
 	exit;
 }
