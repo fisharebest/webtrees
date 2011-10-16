@@ -68,31 +68,28 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$favtitle=safe_GET('favtitle');
 
 			if ($gid) {
-				$indirec = find_gedcom_record($gid, WT_GED_ID);
-				$ct = preg_match('/0 @(.*)@ (.*)/', $indirec, $match);
-				if ($indirec && $ct>0) {
-					$favorite = array();
-					$favorite['username'] = WT_GEDCOM;
-					$favorite['gid'] = $gid;
-					$favorite['type'] = trim($match[2]);
-					$favorite['file'] = WT_GEDCOM;
-					$favorite['url'] = '';
-					$favorite['note'] = $favnote;
-					$favorite['title'] = '';
-					self::addFavorite($favorite);
+				$record=WT_GedcomRecord::getInstance($gid);
+				if ($record && $record->canDisplayDetails()) {
+					self::addFavorite(array(
+						'username'=>WT_GEDCOM,
+						'gid'     =>$record->getXref(),
+						'type'    =>$record->getType(),
+						'file'    =>WT_GEDCOM,
+						'url'     =>'',
+						'note'    =>$favnote,
+						'title'   =>$favtitle,
+					));
 				}
-			}
-			if ($url) {
-				if (empty($favtitle)) $favtitle = $url;
-				$favorite = array();
-				$favorite['username'] = WT_GEDCOM;
-				$favorite['gid'] = '';
-				$favorite['type'] = 'URL';
-				$favorite['file'] = WT_GEDCOM;
-				$favorite['url'] = $url;
-				$favorite['note'] = $favnote;
-				$favorite['title'] = $favtitle;
-				self::addFavorite($favorite);
+			} elseif ($url) {
+				self::addFavorite(array(
+					'username'=>WT_GEDCOM,
+					'gid'     =>'',
+					'type'    =>'URL',
+					'file'    =>WT_GEDCOM,
+					'url'     =>$url,
+					'note'    =>$favnote,
+					'title'   =>$favtitle ? $favtitle : $url,
+				));
 			}
 			unset($_GET['action']);
 			break;
