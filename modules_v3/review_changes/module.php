@@ -118,7 +118,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 				foreach ($changes as $change) {
 					$record=WT_GedcomRecord::getInstance($change->xref);
 					if ($record->canDisplayDetails()) {
-						$content.='<b>'.$record->getFullName();
+						$content.='<b>'.$record->getFullName().'</b>';
 						switch ($record->getType()) {
 						case 'INDI':
 						case 'FAM':
