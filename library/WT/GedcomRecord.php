@@ -38,7 +38,7 @@ class WT_GedcomRecord {
 	protected $changeEvent=null;
 	private   $disp_public=null;  // Can we display details of this record to WT_PRIV_PUBLIC
 	private   $disp_user  =null;  // Can we display details of this record to WT_PRIV_USER
-	private   $disp_hidden=null;  // Can we display details of this record to WT_PRIV_NONE
+	private   $disp_none  =null;  // Can we display details of this record to WT_PRIV_NONE
 	private   $changed    =false; // Is this a new record, pending approval
 
 	// Cached results from various functions.
