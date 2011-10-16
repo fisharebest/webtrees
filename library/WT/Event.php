@@ -246,7 +246,17 @@ class WT_Event {
 		if ($abbreviate) {
 			return WT_Gedcom_Tag::getAbbreviation($this->tag);
 		} else {
-			return WT_Gedcom_Tag::getLabel($this->tag, $this->parentObject);
+			switch($this->tag) {
+			case 'EVEN':
+			case 'FACT':
+				if ($this->getType()) {
+					// Custom FACT/EVEN - with a TYPE
+					return WT_I18N::translate(htmlspecialchars($this->type));
+				}
+				// no break - drop into next case
+			default:
+				return WT_Gedcom_Tag::getLabel($this->tag, $this->parentObject);
+			}
 		}
 	}
 
@@ -264,7 +274,7 @@ class WT_Event {
 		if ($this->gedcomRecord != "1 DEAT") {
 		   $data .= "<span class=\"details_label\">".$this->getLabel($ABBREVIATE_CHART_LABELS)."</span> ";
 		}
-		$emptyfacts = array("BIRT","CHR","DEAT","BURI","CREM","ADOP","BAPM","BARM","BASM","BLES","CHRA","CONF","FCOM","ORDN","NATU","EMIG","IMMI","CENS","PROB","WILL","GRAD","RETI","BAPL","CONL","ENDL","SLGC","EVEN","MARR","SLGS","MARL","ANUL","CENS","DIV","DIVF","ENGA","MARB","MARC","MARS","OBJE","CHAN","_SEPR","RESI", "DATA", "MAP");
+		$emptyfacts = array("BIRT","CHR","DEAT","BURI","CREM","ADOP","BAPM","BARM","BASM","BLES","CHRA","CONF","FCOM","ORDN","NATU","EMIG","IMMI","CENS","PROB","WILL","GRAD","RETI","BAPL","CONL","ENDL","SLGC","MARR","SLGS","MARL","ANUL","CENS","DIV","DIVF","ENGA","MARB","MARC","MARS","OBJE","CHAN","_SEPR","RESI", "DATA", "MAP");
 		if (!in_array($this->tag, $emptyfacts))
 			$data .= PrintReady($this->detail);
 		if (!$this->dest)
