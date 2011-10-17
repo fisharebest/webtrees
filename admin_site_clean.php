@@ -161,18 +161,9 @@ echo
 	'  }',
 	' }',
 	'}',
-	'function removeAll() {',
-	' var elements = document.getElementsByName("to_delete[]");',
-	' for(i=0; i<elements.length; i++) {',
-	'  node = elements[i];',
-	'  node.checked = true;',
-	' }',
-	' document.delete_form.submit();',
-	'}',
 	WT_JS_END,
 	'<button type="submit">', WT_I18N::translate('Delete'), '</button>',
 	'<button type="button" onclick="ul_clear(); return false;">', WT_I18N::translate('Cancel'), '</button><br /><br />',
-	'<button type="button" onclick="removeAll(); return false;">', WT_I18N::translate('Remove all nonessential files'), '</button>',
 	'</td></tr></table></form>';
 
 print_footer();
