@@ -1,30 +1,25 @@
 <?php
-/**
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @author Dparker
- * @package webtrees
- * @subpackage Admin
- * @version $Id$
- */
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// version $Id$
 
 define('WT_SCRIPT_NAME', 'admin_site_clean.php');
 require './includes/session.php';
@@ -105,7 +100,8 @@ if (isset($_REQUEST['to_delete'])) {
 require_once WT_ROOT.'js/prototype.js.htm';
 require_once WT_ROOT.'js/scriptaculous.js.htm';
 
-echo '<form name="delete_form" method="post" action=""><table id="cleanup"><tr><td>';
+echo '<form name="delete_form" method="post" action="">';
+echo '<div id="cleanup"><ul>';
 
 $dir=dir(WT_DATA_DIR);
 $entries=array();
@@ -113,7 +109,6 @@ while (false !== ($entry=$dir->read())) {
 	$entries[]=$entry;
 }
 sort($entries);
-echo '<div id="cleanup2"><ul id="reorder_list">';
 foreach ($entries as $entry) {
 	if ($entry[0] != '.') {
 		if (in_array($entry, $locked_by_context)) {
@@ -127,31 +122,11 @@ foreach ($entries as $entry) {
 		echo '</li>';
 	}
 }
-echo '</ul></div>';
 $dir->close();
 echo
-	'</td><td valign="top" id="trash" class="facts_value02">',
-	'<div id="cleanup3">',
-	'<table><tr><td>',
-	'<div class="icon-trashcan">&nbsp;</div>',
-	'</td>',
-	'<td><ul id="trashlist">',
-	'</ul></td></tr></table>',
-	'</div>',
-	WT_JS_START;
-	foreach($element as $val) {
-		echo "new Draggable('".$val."', {revert:true});";
-	}
-echo
-	'Droppables.add("trash", {',
-	'hoverclass: "facts_valuered",',
-	'onDrop: function(element) {',
-	' $("trashlist").innerHTML +=',
-	'  \'<li class="facts_value">\'+ element.attributes.name.value +\'<input type="hidden" name="to_delete[]" value="\'+element.attributes.name.value+\'"/></li>\' ;',
-	'  element.style.display = \'none\';',
-	'}});',
-	WT_JS_END,
+	'</ul>',
 	'<button type="submit">', WT_I18N::translate('Delete'), '</button>',
-	'</td></tr></table></form>';
+	'</div>',
+	'</form>';
 
 print_footer();
