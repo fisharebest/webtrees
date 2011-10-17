@@ -116,16 +116,19 @@ img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img  {
 .person_box {
 	background-color:#edf7fd;
 	border:solid #81a9cb 1px;
+	padding: 2px;
 }
 
 .person_boxF {
 	background-color:#e9daf1;
 	border:1px solid #ff2080;
+	padding: 2px; 
 }
 
 .person_boxNN {
 	background-color:white;
 	border:dashed #81a9cb 1px;
+	padding: 2px; 
 }
 
 .person_box:target, .news_box:target, #gedcom_stats:target {

@@ -57,7 +57,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	if (!isset($talloffset)) $talloffset = $PEDIGREE_LAYOUT;
 	// NOTE: Start div out-rand()
 	if (!$person) {
-		echo "<div id=\"out-", rand(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; padding: 2px; overflow: hidden;\">";
+		echo "<div id=\"out-", rand(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; overflow: hidden;\">";
 		echo "<br />";
 		echo "</div>";
 		return false;
@@ -136,7 +136,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				$personlinks .= "</td></tr></table>";
 			}
 			// NOTE: Start div out-$pid.$personcount.$count
-			if ($style==1) $outBoxAdd .= " class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; padding: 2px; overflow: hidden; z-index:-1;\"";
+			if ($style==1) $outBoxAdd .= " class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden; z-index:-1;\"";
 			else $outBoxAdd .= " class=\"person_box$isF\" style=\"padding: 2px;\"";
 			// NOTE: Zoom
 			if (($ZOOM_BOXES!="disabled")&&(!$show_full)) {
@@ -201,9 +201,9 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		}
 		else {
 			if ($style==1) {
-				$outBoxAdd .= "class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; padding: 2px; overflow: hidden;\"";
+				$outBoxAdd .= "class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden;\"";
 			} else {
-				$outBoxAdd .= "class=\"person_box$isF\" style=\"padding: 2px; overflow: hidden;\"";
+				$outBoxAdd .= "class=\"person_box$isF\" style=\"overflow: hidden;\"";
 			}
 			// NOTE: Zoom
 			if (($ZOOM_BOXES!="disabled")&&(empty($SEARCH_SPIDER))) {
@@ -214,8 +214,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		}
 	}
 	else {
-		if ($style==1) $outBoxAdd .= "class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; padding: 2px; overflow: hidden;\"";
-		else $outBoxAdd .= "class=\"person_box$isF\" style=\"padding: 2px; overflow: hidden;\"";
+		if ($style==1) $outBoxAdd .= "class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden;\"";
+		else $outBoxAdd .= "class=\"person_box$isF\" style=\" overflow: hidden;\"";
 	}
 	//-- find the name
 	$name = $person->getFullName();
