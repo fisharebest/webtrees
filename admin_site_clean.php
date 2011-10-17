@@ -150,20 +150,8 @@ echo
 	'  \'<li class="facts_value">\'+ element.attributes.name.value +\'<input type="hidden" name="to_delete[]" value="\'+element.attributes.name.value+\'"/></li>\' ;',
 	'  element.style.display = \'none\';',
 	'}});',
-	'function ul_clear() {',
-	' $("trashlist").innerHTML = "";',
-	' list = document.getElementById("reorder_list");',
-	' children = list.childNodes;',
-	' for(i=0; i<children.length; i++) {',
-	'  node = children[i];',
-	'  if (node.tagName=="li" || node.tagName=="LI") {',
-	'   node.style.display="list-item";',
-	'  }',
-	' }',
-	'}',
 	WT_JS_END,
 	'<button type="submit">', WT_I18N::translate('Delete'), '</button>',
-	'<button type="button" onclick="ul_clear(); return false;">', WT_I18N::translate('Cancel'), '</button><br /><br />',
 	'</td></tr></table></form>';
 
 print_footer();
