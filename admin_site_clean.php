@@ -79,7 +79,7 @@ print_header(WT_I18N::translate('Cleanup data directory'));
 echo
 	'<h3>', WT_I18N::translate('Cleanup data directory'), '</h3>',
 	'<p>',
-	WT_I18N::translate('To delete a file or subdirectory from the data directory drag it to the wastebasket or select its checkbox.  Click the Delete button to permanently remove the indicated files.'),
+	WT_I18N::translate('To delete a file or subdirectory from the data directory select its checkbox.  Click the Delete button to permanently remove the indicated files.'),
 	'</p><p>',
 	WT_I18N::translate('Files marked with %s are required for proper operation and cannot be removed.', '<img src="./images/RESN_confidential.gif" alt="" />'),
 	'</p>';
