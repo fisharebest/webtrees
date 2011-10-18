@@ -2878,7 +2878,7 @@ function ImageSHandler($attrs) {
 			$filename = $MEDIA_DIRECTORY.$filename;
 			$filename = trim($filename);
 			if (!empty($filename)) {
-				if (preg_match("/(jpg)|(jpeg)|(png)$/i", $filename)) {
+				if (preg_match("/(jpg|jpeg|png|gif)$/i", $filename)) {
 					if (file_exists($filename)) {
 						$size = findImageSize($filename);
 						if (($width > 0) and ($height == 0)) {
@@ -2900,7 +2900,7 @@ function ImageSHandler($attrs) {
 	}
 	else {
 		$filename = $file;
-		if (preg_match("/(jpg)|(jpeg)|(png)|(gif)$/i", $filename)) {
+		if (preg_match("/(jpg|jpeg|png|gif)$/i", $filename)) {
 			if (file_exists($filename)) {
 				$size = findImageSize($filename);
 				if (($width>0) and ($height==0)) {
