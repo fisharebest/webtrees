@@ -672,11 +672,6 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	border: solid black 1px;
 }
 
-.news_box {
-	background-color: white;
-	border: solid black 1px;
-}
-
 .news_title {
 	font-weight:bold; font-size:14px;
 }
@@ -764,7 +759,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .blockcontent {
-	margin-left:auto;
+	margin-left:5px;
 	margin-right:5px;
 	margin-bottom:10px;
 	font-size: 13px;
