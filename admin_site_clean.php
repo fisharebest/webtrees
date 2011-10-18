@@ -112,10 +112,10 @@ sort($entries);
 foreach ($entries as $entry) {
 	if ($entry[0] != '.') {
 		if (in_array($entry, $locked_by_context)) {
-			echo "<li class=\"facts_value\" name=\"$entry\" style=\"margin-bottom:2px;\" id=\"lock_$entry\" >";
+			echo "<li class=\"facts_value\" name=\"$entry\" id=\"lock_$entry\" >";
 			echo '<img src="./images/RESN_confidential.gif" alt="" /> <span>', $entry, '</span>';
 		} else {
-			echo "<li class=\"facts_value\" name=\"$entry\" style=\"cursor:move;margin-bottom:2px;\" id=\"li_$entry\" >";
+			echo "<li class=\"facts_value\" name=\"$entry\" id=\"li_$entry\" >";
 			echo '<input type="checkbox" name="to_delete[]" value="', $entry, '" />', $entry;
 			$element[] = "li_".$entry;
 		}

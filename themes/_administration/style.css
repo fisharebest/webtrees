@@ -203,6 +203,7 @@ html[dir='rtl'] #merge3 th {text-align:right;}
 
 /* CLEANUP */
 #cleanup {background:OldLace; border:1px inset #D9D6C4; padding:5px 15px; display:inline-block;}
+#cleanup li {margin-bottom:5px;}
 
 /* MANAGE FAMILY TREES */
 table.gedcom_table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; padding:5px; width:100%;}
