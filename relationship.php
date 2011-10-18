@@ -351,9 +351,12 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				$linex = $xoffset;
 				$liney = $yoffset;
 				$mfstyle = "NN";
-				$indirec = find_person_record($pid, WT_GED_ID);
-				if (strpos($indirec, "1 SEX F")!==false) $mfstyle="F";
-				if (strpos($indirec, "1 SEX M")!==false) $mfstyle="";
+				$person=WT_Person::getInstance($pid);
+				switch ($person->getSex()) {
+				case 'M': $mfstyle='';   break;
+				case 'F': $mfstyle='F';  break;
+				case 'U': $mfstyle='NN'; break;
+				}
 				$arrow_img = $WT_IMAGES["darrow"];
 				if ($node["relations"][$index]=="father" || $node["relations"][$index]=="mother" || $node["relations"][$index]=="parent") {
 					$line = $WT_IMAGES["vline"];
