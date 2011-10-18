@@ -594,7 +594,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .news_box {
 	background-color:#edf7fd;
-	border:solid #81a9cb 1px;
+	border-top:solid #81a9cb 1px;
 }
 
 .news_title {
