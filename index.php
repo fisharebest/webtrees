@@ -114,9 +114,6 @@ echo WT_JS_END;
 if ($ctype=='user') {
 	echo '<h1 align="center">', WT_I18N::translate('My page'), '</h1>';
 }
-// TODO: do we really need to load jquery again?
-echo '<script src="', WT_JQUERY_URL, '" type="text/javascript"></script>';
-echo '<script type="text/javascript">jQuery.noConflict();</script>';
 if ($blocks['main']) {
 	if ($blocks['side']) {
 		echo '<div id="index_main_blocks">';
