@@ -29,6 +29,8 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // The "user favorites" module is almost identical to the "gedcom favorites" module
+require_once WT_ROOT.WT_MODULES_DIR.'gedcom_favorites/module.php';
+
 class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 	// Extend class WT_Module
 	public function getDescription() {
