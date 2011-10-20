@@ -1,9 +1,6 @@
 <?php
 // RTL Functions
 //
-// The functions in this file are common to all webtrees pages and include date conversion
-// routines and sorting functions.
-//
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
 //
@@ -1071,128 +1068,6 @@ function unhtmlentities($string)  {
 	$trans_tbl['&lrm;']=WT_UTF8_LRM;
 	$trans_tbl['&rlm;']=WT_UTF8_RLM;
 	return preg_replace('/&#(\d+);/e', "chr(\\1)", strtr($string, $trans_tbl));
-}
-
-/**
- * process a string according to bidirectional rules
- *
- * this function will take a text string and reverse it for RTL languages
- * according to bidi rules.
- * @param string $text String to change
- * @return string the new bidi string
- * @todo add other RTL langauges
- */
-function bidi_text($text) {
-	global $RTLOrd;
-
-	// דו"ח אישי
-	//קראטוןםפ שדגכעיחלךף זסבה� מצתץ עברי איתה מאיה (אתקה) שם משפחה ‎
-	//מספר מזהה (SSN)
-
-	$found = false;
-	foreach ($RTLOrd as $indexval => $ord) {
-		if (strpos($text, chr($ord))!==false) $found=true;
-	}
-	if (!$found) return $text;
-
-	$special_chars = array(' ','"','\'','(',')','[',']',':',"\n");
-	$newtext = "";
-	$parts = array();
-	$temp = "";
-	$state = 0;
-	$p = 0;
-	for ($i=0; $i<strlen($text); $i++) {
-		$letter = $text{$i};
-		//print $letter.ord($letter).",";
-		//-- handle Hebrew chars
-		if (in_array(ord($letter),$RTLOrd)) {
-			if (!empty($temp)) {
-				//-- just in case the $temp is a Hebrew char push it onto the stack
-				if (in_array(ord($temp{0}),$RTLOrd));
-				//-- if the $temp starts with a char in the special_chars array then remove the space and push it onto the stack seperately
-				else if (in_array($temp{strlen($temp)-1}, $special_chars)) {
-					$char = substr($temp, strlen($temp)-1);
-					$temp = substr($temp, 0, strlen($temp)-1);
-					if ($char=="[") $char = "]";
-					else if ($char=="(") $char = ")";
-					array_push($parts, $temp);
-					array_push($parts, $char);
-				}
-				//-- otherwise push it onto the begining of the stack
-				else array_unshift($parts, $temp);
-			}
-			$temp = $letter . $text{$i+1};
-			$i++;
-			if ($i < strlen($text)-1) {
-				$l = $text{$i+1};
-				if (in_array($l, $special_chars)) {
-					if ($l=="]") $l = "[";
-					else if ($l==")") $l = "(";
-					$temp = $l . $temp;
-					$i++;
-				}
-			}
-			array_push($parts, $temp);
-			$temp = "";
-		}
-		else if (ord($letter)==226) {
-			if ($i < strlen($text)-2) {
-				$l = $letter.$text{$i+1}.$text{$i+2};
-				$i += 2;
-				if (($l==WT_UTF8_LRM)||($l==WT_UTF8_RLM)) {
-					if (!empty($temp)) {
-						$last = array_pop($parts);
-						if ($temp{0}==")") $last = '(' . $last;
-						else if ($temp{0}=="(") $last = ')' . $last;
-						else if ($temp{0}=="]") $last = '[' . $last;
-						else if ($temp{0}=="[") $last = ']' . $last;
-						array_push($parts, $last);
-						$temp = "";
-					}
-				}
-			}
-		}
-		else $temp .= $letter;
-	}
-	if (!empty($temp)) {
-		if (in_array(ord($temp{0}),$RTLOrd)) array_push($parts, $temp);
-		else array_push($parts, $temp);
-	}
-
-	//-- loop through and check if parenthesis are correct... if parenthesis were broken by
-	//-- rtl text then they need to be reversed
-	for ($i=0; $i<count($parts); $i++) {
-		$bef = "";
-		$aft = "";
-		$wt = preg_match("/^(\s*).*(\s*)$/", $parts[$i], $match);
-		if ($wt>0) {
-			$bef = $match[1];
-			$aft = $match[2];
-		}
-		$temp = trim($parts[$i]);
-		if (!empty($temp)) {
-			if ($temp{0}=="(" && $temp{strlen($temp)-1}!=")") $parts[$i] = $bef.substr($temp, 1).")".$aft;
-			if ($temp{0}=="[" && $temp{strlen($temp)-1}!="]") $parts[$i] = $bef.substr($temp, 1)."]".$aft;
-			if ($temp{0}!="(" && $temp{strlen($temp)-1}==")") $parts[$i] = $bef."(".substr($temp, 0, strlen($temp)-1).$aft;
-			if ($temp{0}!="[" && $temp{strlen($temp)-1}=="]") $parts[$i] = $bef."[".substr($temp, 0, strlen($temp)-1).$aft;
-		}
-	}
-	//print_r($parts);
-	$parts = array_reverse($parts);
-	$newtext = implode("", $parts);
-	return $newtext;
-}
-
-/**
- * Verify if text is a RtL character
- *
- * This will verify if text is a RtL character
- * @param string $text to verify
- */
-function oneRTLText($text) {
-	global $RTLOrd;
-	//--- What if gedcom in ANSI?
-	return (strlen($text)==2 && in_array(ord($text),$RTLOrd));
 }
 
 /**
