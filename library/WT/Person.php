@@ -226,7 +226,7 @@ class WT_Person extends WT_GedcomRecord {
 				// Check grandchildren
 				foreach ($child->getSpouseFamilies() as $child_family) {
 					foreach ($child_family->getChildren() as $grandchild) {
-						preg_match_all('/\n2 DATE (.+)/', $grandchild->getGedcomRecord(), $date_matches);
+						preg_match_all('/\n2 DATE (.+)/', $grandchild->_gedrec, $date_matches);
 						// Assume grandchildren born after age of 30
 						foreach ($date_matches[1] as $date_match) {
 							$date=new WT_Date($date_match);
