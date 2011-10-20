@@ -49,7 +49,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $WT_IMAGES, $TEXT_DIRECTION, $ctype;
+		global $ctype, $WT_IMAGES, $TEXT_DIRECTION;
 
 		switch (safe_GET('action')) {
 		case 'deletenews':
@@ -59,6 +59,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			break;
 		}
+		$block=get_block_setting($block_id, 'block', true);
 
 		if (isset($_REQUEST['gedcom_news_archive'])) {
 			$limit='nolimit';
@@ -78,7 +79,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 		}
-
 		$usernews = getUserNews(WT_GEDCOM);
 
 		$id=$this->getName().$block_id;
@@ -87,16 +87,14 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			$title.="<a href=\"javascript: configure block\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
 			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
 		}
-		$title .= $this->getTitle();
+		$title.=$this->getTitle();
 		$content = "";
-		if (count($usernews) == 0)
-		{
-			$content .= WT_I18N::translate('No News articles have been submitted.').'<br />';
+		if (count($usernews)==0) {
+			$content .= WT_I18N::translate('No News articles have been submitted.');
 		}
 		$c = 0;
 		$td = time();
-		foreach ($usernews as $news)
-		{
+		foreach ($usernews as $news) {
 			if ($limit=='count') {
 				if ($c >= $flag) {
 					break;
@@ -109,9 +107,8 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 			$content .= "<div class=\"news_box\" id=\"{$news['anchor']}\">";
-			$newsTitle = $news['title'];
-			$content .= "<div class=\"news_title\">".PrintReady($newsTitle)."</div>";
-			$content .= "<div class=\"news_date\">".format_timestamp($news['date'])."</div>";
+			$content .= "<div class=\"news_title\">".PrintReady($news['title']).'</div>';
+			$content .= "<div class=\"news_date\">".format_timestamp($news['date']).'</div>';
 			if ($news["text"]==strip_tags($news["text"])) {
 				// No HTML?
 				$news["text"]=nl2br($news["text"]);
