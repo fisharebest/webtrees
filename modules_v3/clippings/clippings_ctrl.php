@@ -212,7 +212,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 				$access_level=WT_PRIV_PUBLIC;
 				break;
 			case 'none':
-				$access_level=WT_USER_ACCESS_LEVEL;
+				$access_level=WT_PRIV_HIDE;
 				break;
 			}
 
@@ -220,11 +220,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 				$clipping = $cart[$i];
 				if ($clipping['gedcom'] == WT_GEDCOM) {
 					$object=WT_GedcomRecord::getInstance($clipping['id']);
-					if ($this->privatize_export=='none') {
-						$record=find_gedcom_record($clipping['id'], WT_GED_ID);
-					} else {
-						list($record)=$object->privatizeGedcom($access_level);
-					}
+					list($record)=$object->privatizeGedcom($access_level);
 					// Remove links to objects that aren't in the cart
 					preg_match_all('/\n1 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@/', $record, $matches, PREG_SET_ORDER);
 					foreach ($matches as $match) {

@@ -408,16 +408,11 @@ class WT_GedcomRecord {
 	public function privatizeGedcom($access_level) {
 		global $global_facts, $person_facts;
 
-		if ($this->canDisplayDetails($access_level)) {
+		if ($access_level==WT_PRIV_HIDE) {
+			// We may need the original record, for example when downloading a GEDCOM or clippings cart
+			return array($this->_gedrec, '');
+		} elseif ($this->canDisplayDetails($access_level)) {
 			// The record is not private, but the individual facts may be.
-			if (
-				!strpos($this->_gedrec, "\n2 RESN") &&
-				!isset($person_facts[$this->xref]) &&
-				!preg_match('/\n1 (?:'.implode('|', array_keys($global_facts)).')/', $this->_gedrec)
-			) {
-				// Nothing to indicate fact privacy needed
-				return array($this->_gedrec, '');
-			}
 
 			// Include the entire first line (for NOTE records)
 			list($gedrec)=explode("\n", $this->_gedrec, 2);
@@ -434,6 +429,8 @@ class WT_GedcomRecord {
 			}
 			return array($gedrec, $private_gedrec);
 		} else {
+			// We cannot display the details, but we may be able to display
+			// limited data, such as links to other records.
 			return array($this->createPrivateGedcomRecord($access_level), '');
 		}
 	}
