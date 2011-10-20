@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
-
 class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Sidebar {
 	// Extend class WT_Module
 	public function getTitle() {
@@ -126,6 +124,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Impelement WT_Module_Sidebar
 	public function getSidebarContent() {
+		require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 		global $WT_IMAGES, $cart;
 
 		$out = '';
@@ -157,6 +156,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Impelement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
+		require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 		global $cart;
 		$controller = new WT_Controller_Clippings();
 		$this->controller = $controller;
