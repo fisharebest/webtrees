@@ -84,11 +84,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return "";
 	}
 
-	// TODO: These functions aren't really part of the WT_Module_Tab interface, as
+	// TODO: This function isn't part of the WT_Module_Tab interface, as
 	// this module no longer provides a tab.
-	public function hasTabContent() {
-		return true;
-	}
 	public function getTabContent() {
 		$out = '';
 		ob_start();
