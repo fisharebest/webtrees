@@ -28,14 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Create tables, if not already present
-try {
-	WT_DB::updateSchema(WT_MODULES_DIR, 'user_favorites/db_schema/', 'FV_SCHEMA_VERSION', 1);
-} catch (PDOException $ex) {
-	// The schema update scripts should never fail.  If they do, there is no clean recovery.
-	die($ex);
-}
-
 // The "user favorites" module is almost identical to the "gedcom favorites" module
 class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 	// Extend class WT_Module

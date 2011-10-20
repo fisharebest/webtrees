@@ -28,14 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Create tables, if not already present
-try {
-	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 1);
-} catch (PDOException $ex) {
-	// The schema update scripts should never fail.  If they do, there is no clean recovery.
-	die($ex);
-}
-
 // Note that the user favorites module simply extends this module, so ensure that the
 // logic works for both.
 class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
@@ -53,6 +45,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $WT_IMAGES, $ctype, $TEXT_DIRECTION;
 		global $show_full, $PEDIGREE_FULL_DETAILS, $BROWSERTYPE, $ENABLE_AUTOCOMPLETE;
+
+		self::updateSchema(); // make sure the favorites table has been created
 
 		$action=safe_GET('action');
 		switch ($action) {
@@ -325,11 +319,23 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Get favorites for a user or family tree
 	public static function getUserFavorites($username) {
+		self::updateSchema(); // make sure the favorites table has been created
+
 		return
 			WT_DB::prepare(
 				"SELECT fv_id AS id, fv_username AS username, fv_gid AS gid, fv_type AS type, fv_file AS file, fv_title AS title, fv_note AS note, fv_url AS url".
 				" FROM `##favorites` WHERE fv_username=? AND fv_file=?")
 			->execute(array($username, WT_GEDCOM))
 			->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	private static function updateSchema() {
+		// Create tables, if not already present
+		try {
+			WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 1);
+		} catch (PDOException $ex) {
+			// The schema update scripts should never fail.  If they do, there is no clean recovery.
+			die($ex);
+		}
 	}
 }
