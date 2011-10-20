@@ -2036,27 +2036,8 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	return $return;
 }
 
-/**
- * print a chart by age using Google chart API
- *
- * @param array $data
- * @param string $title
- */
+// print a chart by age using Google chart API
 function print_chart_by_age($data, $title) {
-	global $GEDCOM;
-	global $stylesheet;
-
-	require_once WT_ROOT.'includes/cssparser.inc.php';
-	$css = new cssparser(false);
-	$css->Parse($stylesheet);
-	$color = $css->Get("body", "background-color");
-	$color = str_replace("#", "", $color);
-	switch(strtoupper($color)) {
-	case "": case "FFFFFF": case "WHITE":
-	case "002540": case "004025": case "400025": // simply themes needs bright backgound
-		$color="FFFFFF99"; // opacity
-		break;
-	}
 	$count = 0;
 	$agemax = 0;
 	$vmax = 0;
@@ -2073,7 +2054,7 @@ function print_chart_by_age($data, $title) {
 	$chart_url = "http://chart.apis.google.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=725x150"; // size
 	$chart_url .= "&amp;chbh=3,2,2"; // bvg : 4,1,2
-	$chart_url .= "&amp;chf=bg,s,".$color; //background color
+	$chart_url .= "&amp;chf=bg,s,FFFFFF99"; //background color
 	$chart_url .= "&amp;chco=0000FF,FFA0CB,FF0000"; // bar color
 	$chart_url .= "&amp;chdl=".WT_I18N::translate('Males')."|".WT_I18N::translate('Females')."|".WT_I18N::translate('Average age').": ".$avg; // legend & average age
 	$chart_url .= "&amp;chtt=".urlencode($title); // title
@@ -2111,26 +2092,8 @@ function print_chart_by_age($data, $title) {
 	echo "<img src=\"", $chart_url, "\" alt=\"", $title, "\" title=\"", $title, "\" class=\"gchart\" />";
 }
 
-/**
- * print a chart by decade using Google chart API
- *
- * @param array $data
- * @param string $title
- */
+// print a chart by decade using Google chart API
 function print_chart_by_decade($data, $title) {
-	global $stylesheet;
-
-	require_once WT_ROOT.'includes/cssparser.inc.php';
-	$css = new cssparser(false);
-	$css->Parse($stylesheet);
-	$color = $css->Get("body", "background-color");
-	$color = str_replace("#", "", $color);
-	switch(strtoupper($color)) {
-	case "": case "FFFFFF": case "WHITE":
-	case "002540": case "004025": case "400025": // simply themes needs bright backgound
-		$color="FFFFFF99"; // opacity
-		break;
-	}
 	$count = 0;
 	$vmax = 0;
 	foreach ($data as $age=>$v) {
@@ -2142,7 +2105,7 @@ function print_chart_by_decade($data, $title) {
 	$chart_url = "http://chart.apis.google.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=360x150"; // size
 	$chart_url .= "&amp;chbh=3,3"; // bvg : 4,1,2
-	$chart_url .= "&amp;chf=bg,s,".$color; //background color
+	$chart_url .= "&amp;chf=bg,s,FFFFFF99"; //background color
 	$chart_url .= "&amp;chco=0000FF,FFA0CB"; // bar color
 	$chart_url .= "&amp;chtt=".urlencode($title); // title
 	$chart_url .= "&amp;chxt=x,y,r"; // axis labels specification
