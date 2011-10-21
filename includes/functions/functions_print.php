@@ -453,7 +453,7 @@ function print_header($title, $view='full') {
 	}
 
 	function message(username, method, url, subject) {
-		if ((!url)||(url=="")) url=\''.addslashes(get_query_url()).'\';
+		if ((!url)||(url=="")) url=\''.addslashes(urlencode(get_query_url())).'\';
 		if ((!subject)||(subject=="")) subject="";
 		window.open(\'message.php?to=\'+username+\'&method=\'+method+\'&url=\'+url+\'&subject=\'+subject+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
 		return false;
@@ -720,17 +720,17 @@ function print_favorite_selector($option=0) {
 function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false, $npage=false) {
 	global $WT_IMAGES, $EXPAND_SOURCES, $EXPAND_NOTES;
 
-	$elementID = "N-".floor(microtime()*1000000);
+	$elementID = 'N-'.floor(microtime()*1000000);
 	$text = trim($text);
 
 	// Check if Shared Note and if so enable url link on title -------------------
 	if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
-		$centitl  = str_replace("~~", "", $text);
-		$centitl  = str_replace("<br />", "", $centitl);
-		if (preg_match("/@N([0-9])+@/", $nrec, $match_nid)) {
-			$nid = str_replace("@", "", $match_nid[0]);
+		$centitl  = str_replace('~~', '', $text);
+		$centitl  = str_replace('<br />', '', $centitl);
+		if (preg_match('/@N([0-9])+@/', $nrec, $match_nid)) {
+			$nid = str_replace('@', '', $match_nid[0]);
 			if (!$npage) {
-				$centitl = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
+				$centitl = '<a href="note.php?nid='.$nid.'">'.$centitl.'</a>';
 			}
 		}
 		if ($textOnly) {
@@ -742,9 +742,9 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 	} else {
 		$text .= get_cont($nlevel, $nrec);
 	}
-	$text = str_replace("~~", "<br />", $text);
+	$text = str_replace('~~', '<br />', $text);
 	$text = trim(expand_urls(stripLRMRLM($text)));
-	$data = "";
+	$data = '';
 
 	if (!empty($text) || !empty($centitl)) {
 		$text = PrintReady($text);
@@ -764,34 +764,34 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 			}
 		}
 
-		$brpos = strpos($text, "<br />");
+		$brpos = strpos($text, '<br />');
 		if (!$npage) {
-			$data .= "<div class=\"fact_NOTE\"><span class=\"label\">";
+			$data .= '<div class="fact_NOTE"><span class="label">';
 			if ($brpos !== false) {
-				if ($EXPAND_NOTES) $plusminus="minus"; else $plusminus="plus";
-				$data .= "<a href=\"javascript:;\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus]."\" border=\"0\" width=\"11\" height=\"11\" alt=\"";
-				if ($plusminus=="plus") $data .= WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\" /></a> ";
-				else $data .= WT_I18N::translate('Hide Details')."\" title=\"".WT_I18N::translate('Hide Details')."\" /></a> ";
+				if ($EXPAND_NOTES) $plusminus='minus'; else $plusminus='plus';
+				$data .= '<a href="javascript:;" onclick="expand_layer(\''.$elementID.'\'); return false;"><img id="'.$elementID.'_img" src="'.$WT_IMAGES[$plusminus].'" border="0" width="11" height="11" alt="';
+				if ($plusminus=='plus') $data .= WT_I18N::translate('Show Details').'" title="'.WT_I18N::translate('Show Details').'" /></a> ';
+				else $data .= WT_I18N::translate('Hide Details').'" title="'.WT_I18N::translate('Hide Details').'" /></a> ';
 			}
 
 			// Check if Shared Note -----------------------------
 			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
-				$data .= WT_I18N::translate('Shared note').": </span> ";
+				$data .= WT_I18N::translate('Shared note').': </span> ';
 			} else {
-				$data .= WT_I18N::translate('Note').": </span>";
+				$data .= WT_I18N::translate('Note').': </span>';
 			}
 		}
 
 		if ($brpos !== false) {
-			$data .= substr($text, 0, $brpos);
+			$data .= '<span class="field">'.substr($text, 0, $brpos).'</span>';
 			if ($npage) {
 				$data .= substr($text, $brpos + 6) . "</div>";
 			} else {
-				$data .= "<div id=\"$elementID\"";
-				if ($EXPAND_NOTES) $data .= " style=\"display:block\"";
-				$data .= " class=\"note_details font11\">";
+				$data .= '<div id="'.$elementID.'"';
+				if ($EXPAND_NOTES) $data .= ' style="display:block"';
+				$data .= ' class="note_details font11">';
 				$data .= substr($text, $brpos + 6);
-				$data .= "</div>";
+				$data .= '</div>';
 			}
 		} else {
 			$data .= '<span class="field">'.$text. '</span>';
@@ -804,7 +804,6 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		} else {
 			return $data;
 		}
-
 	}
 	return false;
 }

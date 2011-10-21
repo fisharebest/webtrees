@@ -137,8 +137,13 @@ if (($action=='send')&&(isset($_SESSION['good_to_send']))&&($_SESSION['good_to_s
 			$message['body'] = $body;
 			$message['created'] = $time;
 			$message['method'] = $method;
+			$message['url'] = $url;
 			if ($i>0) $message['no_from'] = true;
-			if (addMessage($message)) {
+			if ($message['from']==$message['to']) {
+				//-- do not allow users to send a message to themselves
+				echo WT_I18N::translate('It is not allowed to send messages to yourself.'), '<br />';
+				AddToLog('Unable to send message.  TO:'.$to.' FROM:'.$from, 'error');
+			} else if (addMessage($message)) {
 				$to_user_id=get_user_id($to);
 				if ($to_user_id) {
 					echo WT_I18N::translate('Message successfully sent to %s', '<b>'.getUserFullName($to_user_id).'</b>');
