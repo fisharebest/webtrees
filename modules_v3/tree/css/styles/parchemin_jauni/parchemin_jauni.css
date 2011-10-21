@@ -35,22 +35,13 @@ table#tvTreeBorder td#tv_tree_bottomright {
 #tv_tree div.tv_box {
   border: thin outset #6f2f00;
   border-radius: 8px; 
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px; 
-  -khtml-border-radius: 8px; 
   box-shadow: 1px 1px 2px #cfcf8f; 
-  -webkit-box-shadow: 1px 1px 2px #cfcf8f; 
-  -moz-box-shadow: 1px 1px 2px #cfcf8f;
-  -khtml-box-shadow: 1px 1px 2px #dfdcfcf8ff00;
   filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcf8f, offX=1, offY=1, positive=true);
 }
 #tv_tree div.tv_box div.tvM, #tv_tree div.tv_box div.tvF {
 	font-family: Times new Roman, Times, serif;
 	font-size: 120%;
   border-radius: 8px; 
-  -moz-border-radius: 8px;
-  -webkit-border-radius: 8px; 
-  -khtml-border-radius: 8px;
   background: url(papier.jpg);
   color: #180000;
 }

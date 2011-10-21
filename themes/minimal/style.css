@@ -1615,7 +1615,7 @@ html[dir='rtl'] .gender, html[dir='rtl'] .aliveinyear, html[dir='rtl'] .years, h
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {	width:20%;}
 .use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float:right;}
-#separator {	display: block; background: #DDD url('images/indi_sprite.png') no-repeat -26px 100px; min-width:6px; max-width:10px; width:0.75%; border: 1px solid #888; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; margin-top:5px;}
+#separator {	display: block; background: #DDD url('images/indi_sprite.png') no-repeat -26px 100px; min-width:6px; max-width:10px; width:0.75%; border: 1px solid #888; border-top-left-radius: 3px; border-top-right-radius: 3px; margin-top:5px;}
 .use-sidebar #separator { background: #DDD url('images/indi_sprite.png') no-repeat -1px 100px;}
 
 html[dir='rtl'] #indi_left {float:right;}

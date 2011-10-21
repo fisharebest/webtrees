@@ -380,8 +380,6 @@ color:#f50;
 .person0,  .person1,  .person2,  .person3,  .person4,  .person5, #sidebar,
 .topbottombar {
 	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
 }
 
 #pid {
@@ -1844,7 +1842,7 @@ html[dir='rtl'] .gender, html[dir='rtl'] .aliveinyear, html[dir='rtl'] .years, h
 /* ========= Sidebar ============== */
 #indi_left {float:left; width:98%;}
 #main {min-width:600px; width:100%}
-#separator {background:#ACF url('images/general_sprite.png') no-repeat -26px 100px; float:right; display:block; width:0.75%; min-width: 6px; max-width:10px; border:1px solid #8FBCFF; -moz-border-radius-topleft:3px; -moz-border-radius-topright:3px; margin-top:5px;}
+#separator {background:#ACF url('images/general_sprite.png') no-repeat -26px 100px; float:right; display:block; width:0.75%; min-width: 6px; max-width:10px; border:1px solid #8FBCFF; border-top-left-radius:3px; border-top-right-radius:3px; margin-top:5px;}
 #sidebar {border-color:#8FBCFF; display:none; margin:5px 2px 0 0; height:auto;}
 #tabs {background-color:#FFF; border-color:#8FBCFF; float:left; width:100%; overflow:auto;}
 .sidebar-at-right #sidebar { width:20%;}

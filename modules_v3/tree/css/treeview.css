@@ -157,13 +157,7 @@ table#tvTreeBorder td#tv_tree_bottomright {
   cursor: help; /* customizable */
   border-collapse: collapse; /* required */
   border-radius: 4px; /* customizable */
-  -moz-border-radius: 4px; /* customizable */
-  -webkit-border-radius: 4px; /* customizable */
-  -khtml-border-radius: 4px; /* customizable */
   box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -webkit-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -moz-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -khtml-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
   filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcfdf, offX=1, offY=1, positive=true); /* customizable */
 }
 #tv_tree div.boxExpanded {
@@ -179,7 +173,7 @@ table#tvTreeBorder td#tv_tree_bottomright {
 }
 #tv_tree div.tv_box span.tvSexSymbol {
 	font-weight: bold;
-	font-family: x-large, serif; /*Arial Unicode MS, monospace; /* customizable, BUT test required for ALL browsers */
+	font-family: x-large, serif; /*Arial Unicode MS, monospace; customizable, BUT test required for ALL browsers */
   vertical-align: top;
   margin: 1px;
 }
@@ -197,9 +191,6 @@ table#tvTreeBorder td#tv_tree_bottomright {
   padding-left: 4px;
   padding-right: 4px;
   border-radius: 4px; /* customizable */
-  -moz-border-radius: 4px; /* customizable */
-  -webkit-border-radius: 4px; /* customizable */
-  -khtml-border-radius: 4px; /* customizable */
 }
 #tv_tree div.tv_box i.dates {
 	float: right;
@@ -242,14 +233,8 @@ table#tvTreeBorder td#tv_tree_bottomright {
   z-index: 90; /* should be < 100 because 100 is the z-index of WT menus */
   background-color: #efefef; /* customizable */
   border: 1px outset #dfdfdf; /* customizable */
-  -moz-border-radius: 4px; /* customizable */
-  -webkit-border-radius: 4px; /* customizable */
-  -khtml-border-radius: 4px; /* customizable */
   border-radius: 4px; /* customizable */
   box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -webkit-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -moz-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -khtml-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
   filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcfdf, offX=1, offY=1, positive=true); /* customizable */  
 }
 
@@ -277,9 +262,6 @@ table#tvTreeBorder td#tv_tree_bottomright {
   vertical-align: middle;
   border: thin solid #efefef; /* customizable */
   background-color: #efefef; /* customizable */
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -khtml-border-radius: 4px;
   border-radius: 4px;
 }
 #tvStylesSubmenu li.tv_button {
