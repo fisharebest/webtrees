@@ -50,7 +50,7 @@ html[dir='rtl'] .indent {padding-right:15px;}
 /* jQuery styling over-rides */
 .ui-widget-content a {text-decoration:none;}
 .ui-widget-content a.current {color:#E17009; font-weight:bold;}
-.ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:red; cursor:hand; cursor:pointer;}
+.ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:red; cursor:pointer;}
 .ui-widget-header {padding:5px;}
 .ui-progressbar-value {height:60%!important;}
 .ui-accordion .ui-accordion-content-active {display:block;}
@@ -60,7 +60,7 @@ html[dir='rtl'] input {padding-right:3px; padding-left:0px;}
 
 /* jEditable styling over-rides */
 .editable {width:100%; display:block}
-.editable:hover {color:red; cursor:pointer; cursor:hand;} /* both cursors needed for cross-browser support */
+.editable:hover {color:red; cursor:pointer;} /* both cursors needed for cross-browser support */
 .editable input, select {padding:0;}
 .editable input {font-size:90%; height:18px !important;}
 .editable button {font-size:85%; padding:0;}
@@ -243,7 +243,7 @@ html[dir='rtl'] #access {float:right; margin-right:20px;}
 #access td+td+td+td {text-align:center;}
 td.details {background-color:#D1CFD0;border:2px solid #A19B9E;}
 td.details:hover {color:black;}
-.icon-email {cursor:hand; cursor:pointer;}
+.icon-email {cursor:pointer;}
 
 /* USER ADD & EDIT */
 table#adduser {width:100%;}
