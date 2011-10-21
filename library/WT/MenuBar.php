@@ -440,7 +440,7 @@ class WT_MenuBar {
 			$link=$page.'?ged='.WT_GEDURL;
 			switch ($page) {
 			case 'indilist.php':
-				if ($surname) $link .= '&amp;surname='.$surname;
+				if ($surname) $link .= '&amp;surname='.rawurlencode($surname);
 				$submenu = new WT_Menu($name, $link, 'menu-list-indi');
 				$submenu->addIcon('indis');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_indis');
@@ -448,7 +448,7 @@ class WT_MenuBar {
 				break;
 
 			case 'famlist.php':
-				if ($surname) $link .= '&amp;surname='.$surname;
+				if ($surname) $link .= '&amp;surname='.rawurlencode($surname);
 				$submenu = new WT_Menu($name, $link, 'menu-list-fam');
 				$submenu->addIcon('cfamily');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_cfamily');
@@ -456,7 +456,7 @@ class WT_MenuBar {
 				break;
 
 			case 'branches.php':
-				if ($surname) $link .= '&amp;surn='.$surname;
+				if ($surname) $link .= '&amp;surn='.rawurlencode($surname);
 				$submenu = new WT_Menu($name, $link, 'menu-branches');
 				$submenu->addIcon('patriarch');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_patriarch');

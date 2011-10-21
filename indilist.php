@@ -1,59 +1,39 @@
 <?php
-/**
- * Individual List
- *
- * The individual list shows all individuals from a chosen gedcom file. The list is
- * setup in two sections. The alphabet bar and the details.
- *
- * The alphabet bar shows all the available letters users can click. The bar is built
- * up from the lastnames first letter. Added to this bar is the symbol @, which is
- * shown as a translated version of the variable <var>pgv_lang["NN"]</var>, and a
- * translated version of the word ALL by means of variable <var>WT_I18N::translate('All')</var>.
- *
- * The details can be shown in two ways, with surnames or without surnames. By default
- * the user first sees a list of surnames of the chosen letter and by clicking on a
- * surname a list with names of people with that chosen surname is displayed.
- *
- * Beneath the details list is the option to skip the surname list or show it.
- * Depending on the current status of the list.
- *
- * NOTE: indilist.php and famlist.php contain mostly identical code.
- * Updates to one file almost certainly need to be made to the other one as well.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Lists
- * @version $Id$
- */
+// Individual List
+//
+// NOTE: indilist.php and famlist.php contain mostly identical code.
+// Updates to one file almost certainly need to be made to the other one as well.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'indilist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$SUBLIST_TRIGGER_I=get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I');
-
-// We show three different lists:
-$alpha   =safe_GET('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
-$surname =safe_GET('surname', '[^<>&%{};]*'); // All indis with this surname.  NB - allow ' and "
+// We show three different lists: initials, surnames and individuals
+// Note that the data may contain special chars, such as surname="<unknown>",
+$alpha   =safe_GET('alpha', WT_REGEX_UNSAFE); // All surnames beginning with this letter where "@"=unknown and ","=none
+$surname =safe_GET('surname', WT_REGEX_UNSAFE); // All indis with this surname.  NB - allow ' and "
 $show_all=safe_GET('show_all', array('no','yes'), 'no'); // All indis
 
 // Don't show the list until we have some filter criteria
@@ -103,7 +83,7 @@ if ($show_all=='yes') {
 	if ($surname=='@N.N.') {
 		$legend=$UNKNOWN_NN;
 	} else {
-		$legend=$surname;
+		$legend=htmlspecialchars($surname);
 	}
 	switch($falpha) {
 	case '':
@@ -112,7 +92,7 @@ if ($show_all=='yes') {
 		$legend.=', '.$UNKNOWN_PN;
 		break;
 	default:
-		$legend.=', '.$falpha;
+		$legend.=', '.htmlspecialchars($falpha);
 		break;
 	}
 	$surname_sublist='no';
@@ -128,7 +108,7 @@ if ($show_all=='yes') {
 		$legend=WT_I18N::translate('None');
 		$surname_sublist='no';
 	} else {
-		$legend=$alpha;
+		$legend=htmlspecialchars($alpha);
 	}
 	$url='indilist.php?alpha='.rawurlencode($alpha);
 }
@@ -145,11 +125,8 @@ foreach ($initials as $letter=>$count) {
 	case ',':
 		$html=WT_I18N::translate('None');
 		break;
-	case ' ':
-		$html='&nbsp;';
-		break;
 	default:
-		$html=$letter;
+		$html=htmlspecialchars($letter);
 		break;
 	}
 	if ($count) {
@@ -230,13 +207,13 @@ if ($showList) {
 			}
 		}
 		// Don't sublists short lists.
-		if ($count<$SUBLIST_TRIGGER_I) {
+		if ($count<get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I')) {
 			$falpha='';
 			$show_all_firstnames='no';
 		} else {
 			$givn_initials=WT_Query_Name::givenAlpha($surname, $alpha, $SHOW_MARRIED_NAMES, false, WT_GED_ID);
 			// Break long lists by initial letter of given name
-			if (($surname || $show_all=='yes') && $count>$SUBLIST_TRIGGER_I) {
+			if ($surname || $show_all=='yes') {
 				// Don't show the list until we have some filter criteria
 				$showList=($falpha || $show_all_firstnames=='yes');
 				$list=array();
@@ -246,14 +223,14 @@ if ($showList) {
 						$html=$UNKNOWN_PN;
 						break;
 					default:
-						$html=$givn_initial;
+						$html=htmlspecialchars($givn_initial);
 						break;
 					}
 					if ($count) {
 						if ($showList && $givn_initial==$falpha && $show_all_firstnames=='no') {
 							$html='<span class="warning" title="'.$count.'">'.$html.'</span>';
 						} else {
-							$html='<a href="'.$url.'&amp;falpha='.$givn_initial.'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
+							$html='<a href="'.$url.'&amp;falpha='.rawurlencode($givn_initial).'&amp;ged='.WT_GEDURL.'" title="'.$count.'">'.$html.'</a>';
 						}
 					}
 					$list[]=$html;

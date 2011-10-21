@@ -274,8 +274,8 @@ function print_indi_table($datalist, $legend='', $option='') {
 		echo $person->getPrimaryParentsNames("parents_indi_list_table_".$table_id." details1", 'none');
 		echo '</td>';
 		//-- GIVN/SURN
-		echo '<td style="display:none">', $givn, ',', $surn, '</td>';
-		echo '<td style="display:none">', $surn, ',', $givn, '</td>';
+		echo '<td style="display:none">', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
+		echo '<td style="display:none">', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
 		//-- SOSA
 		if ($option=='sosa') {
 			echo
@@ -619,8 +619,8 @@ function print_fam_table($datalist, $legend='', $option='') {
 		echo '</td>';
 		//-- Husb GIVN
 		list($surn, $givn)=explode(',', $husb->getSortName());
-		echo '<td style="display:none">', $givn, ',', $surn, '</td>';
-		echo '<td style="display:none">', $surn, ',', $givn, '</td>';
+		echo '<td style="display:none">', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
+		echo '<td style="display:none">', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Husband age
 		echo '<td class="list_value_wrap">';
@@ -666,8 +666,8 @@ function print_fam_table($datalist, $legend='', $option='') {
 		echo '</td>';
 		//-- Wife GIVN
 		list($surn, $givn)=explode(',', $wife->getSortName());
-		echo '<td style="display:none">', $givn, ',', $surn, '</td>';
-		echo '<td style="display:none">', $surn, ',', $givn, '</td>';
+		echo '<td style="display:none">', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
+		echo '<td style="display:none">', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Wife age
 		echo '<td class="list_value_wrap">';
