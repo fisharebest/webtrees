@@ -1,15 +1,8 @@
-/*
- * @version $Id$
- */
+/* $Id$ */
 
-.makeMenu li ul {
-	top: 2px!important; 
-	z-index: 9000;
-}
-.rela {
-	filter: alpha(opacity=67);
-}
-#content 		{ *margin-top: 50px;}
-#fav-menu 		{ *left: 30px;}
-html[dir='rtl'] #fav-menu 	{ *right: 30px;}
+.makeMenu li ul {top: 2px!important; z-index: 9000;}
+.rela {filter: alpha(opacity=67);}
+#content {*margin-top: 50px;}
+#fav-menu {*left: 30px;}
+html[dir='rtl'] #fav-menu {*right: 30px;}
 

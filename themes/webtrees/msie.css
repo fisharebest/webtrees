@@ -1,19 +1,19 @@
 /* $Id$ */
- 
-form { 
+
+form {
 	margin-top: 0px; margin-bottom: 0px;
 }
 
 .small_inner_block {
-	height: expression( this.scrollHeight > 199 ? "200px" : "auto" ); 
+	height: expression( this.scrollHeight > 199 ? "200px" : "auto" );
 }
 
 .normal_inner_block {
 	width: 100%;
 }
 
-/* 
- * The following style definitions can be removed when IE supports the "opacity" 
+/*
+ * The following style definitions can be removed when IE supports the "opacity"
  * specification in place of its proprietary and non-standard method.
  */
 .rela {

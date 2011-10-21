@@ -1,27 +1,9 @@
 /* $Id$ */
-.small_inner_block {
-	height: expression( this.scrollHeight > 199 ? "200px" : "auto" ); 
-}
 
-.normal_inner_block {
-	width: 100%;
-}
-
-a.showit:hover > span {
-	filter: alpha(opacity=85);
-}
-
-form { margin-top: 0px; margin-bottom: 0px; }
-
-.favorites_form {
-	*top:1.7em;
-}
-
-html[dir='rtl'] .favorites_form {
-	*top:1.7em;
-}
-
-.makeMenu { 
-*clear: both;
-*width: 750px;
-}
+.small_inner_block {height: expression( this.scrollHeight > 199 ? "200px" : "auto" );}
+.normal_inner_block {width: 100%;}
+a.showit:hover > span {filter: alpha(opacity=85);}
+form {margin-top: 0px; margin-bottom: 0px;}
+.favorites_form {*top:1.7em;}
+html[dir='rtl'] .favorites_form {*top:1.7em;}
+.makeMenu {*clear: both; *width: 750px;}

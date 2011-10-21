@@ -29,12 +29,12 @@ body {font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size:12
 input.ui-button {padding:1px 3px;}
 input, textarea, select {color:black; font:inherit; padding:0 3px;}
 fieldset {margin:8px 8px 4px 8px;}
-legend {font-style:italic; font-weight:bold;	padding:0 5px 5px; align:top;}
+legend {font-style:italic; font-weight:bold; padding:0 5px 5px; align:top;}
 img {border:none; vertical-align:middle;}
 h3 {margin:0;}
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 td {vertical-align:top;}
-.icon {border:none;	padding-left:0;padding-right:5pt;}
+.icon {border:none; padding-left:0;padding-right:5pt;}
 .warning, .error, .red {font-weight:bold; color:red;}
 .accepted, a.accepted {font-weight:bold; color:green;}
 .center {text-align:center;}
@@ -85,9 +85,9 @@ html[dir='rtl'] .dataTables_length {float:left;}
 .sortme {cursor:move;}
 
 /* Page Help links */
-#page_help{margin:-5px 0 15px; text-align:right;}
-html[dir='rtl'] #page_help{text-align:left;}
-#page_help a img{display:none; height:24px; margin:-5px; padding:0; width:24px;}
+#page_help {margin:-5px 0 15px; text-align:right;}
+html[dir='rtl'] #page_help {text-align:left;}
+#page_help a img {display:none; height:24px; margin:-5px; padding:0; width:24px;}
 
 /* HEADER */
 #admin_head {position:relative; height:70px; margin-bottom:10px; min-width:1070px; z-index:1000;}
@@ -109,11 +109,11 @@ html[dir='rtl'] #links li ul {left:auto; right:0;}
 #admin_content {min-width:830px;}
 
 /* SIDE MENU */
-#admin_menu {padding:10px 0 10px 5px;top:92px; left:10px; right:auto; width:200px; float:left; position:absolute;	color:#2E6E9E; white-space:nowrap; overflow:hidden;}
-html[dir='rtl'] #admin_menu {top:92px; left:auto; right:10px; padding:10px 5px 10px 0;	float:right;}
-#admin_menu ul {list-style:none outside none;	margin:0 0 0 -30px;}
+#admin_menu {padding:10px 0 10px 5px;top:92px; left:10px; right:auto; width:200px; float:left; position:absolute; color:#2E6E9E; white-space:nowrap; overflow:hidden;}
+html[dir='rtl'] #admin_menu {top:92px; left:auto; right:10px; padding:10px 5px 10px 0; float:right;}
+#admin_menu ul {list-style:none outside none; margin:0 0 0 -30px;}
 html[dir='rtl'] #admin_menu ul {margin:0 -30px 0 0;}
-#admin_menu li ul {	margin:0 0 0 -20px;}
+#admin_menu li ul {margin:0 0 0 -20px;}
 html[dir='rtl'] #admin_menu li ul {margin:0 -20px 0 0;}
 #admin_menu li span {font-style:italic;}
 #admin_menu ul {list-style:none outside none;}
@@ -165,10 +165,10 @@ table#log_list {width:100%}
 
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
-#readme 	h1 {font-size:16px; font-weight:bold; margin-top:0;}
-#readme 	h2 {font-size:14px; font-weight:bold; margin-top:0;}
-#readme 	h3 {font-size:14px; font-weight:bold; margin:14px 0;}
-#readme	li {line-height:150%;}
+#readme  h1 {font-size:16px; font-weight:bold; margin-top:0;}
+#readme  h2 {font-size:14px; font-weight:bold; margin-top:0;}
+#readme  h3 {font-size:14px; font-weight:bold; margin:14px 0;}
+#readme li {line-height:150%;}
 #readme .back {float:right;}
 html[dir='rtl'] #readme .back {float:left;}
 
@@ -382,20 +382,20 @@ html[dir='rtl'] #story_module2 th, html[dir='rtl'] #story_module2 td {text-align
 
 /* Autocomplete styles */
 .ac_input {background-color:#EEE8AA;}
-.ac_results {padding:0; border:1px solid black;	background-color:white; overflow:hidden; z-index:99999;}
-.ac_results ul {width:100%;	list-style-position:outside; list-style:none;	padding:0;	margin:0;}
-.ac_results li {margin:0;	padding:2px 5px;	cursor:default; display:block; font:menu;font-size:12px; line-height:14px;	overflow:hidden;}
+.ac_results {padding:0; border:1px solid black; background-color:white; overflow:hidden; z-index:99999;}
+.ac_results ul {width:100%; list-style-position:outside; list-style:none; padding:0; margin:0;}
+.ac_results li {margin:0; padding:2px 5px; cursor:default; display:block; font:menu;font-size:12px; line-height:14px; overflow:hidden;}
 .ac_loading {background:white url(images/indicator.gif) right center no-repeat;}
 .ac_odd {background-color:#eee;}
-.ac_over {background-color:#0A246A;	color:white;}
+.ac_over {background-color:#0A246A; color:white;}
 
 /* IMAGE SPRITE */
-.icon-email, .icon-help-24, .icon-zoomout, .icon-zoomin, 
-.icon-larrow2, .icon-rarrow, .icon-larrow, .icon-rarrow2, .icon-darrow, 
-.icon-ddarrow, .icon-uarrow2, .icon-ldarrow, .icon-darrow2, .icon-udarrow, 
-.icon-rdarrow, .icon-uarrow, .icon-edit, .icon-source, .icon-delete-grey, 
-.icon-delete, .icon-bullet, .icon-yes, .icon-media, .icon-find-facts, 
-.icon-note, .icon-family, .icon-repository, .icon-help-15, .icon-indi, 
+.icon-email, .icon-help-24, .icon-zoomout, .icon-zoomin,
+.icon-larrow2, .icon-rarrow, .icon-larrow, .icon-rarrow2, .icon-darrow,
+.icon-ddarrow, .icon-uarrow2, .icon-ldarrow, .icon-darrow2, .icon-udarrow,
+.icon-rdarrow, .icon-uarrow, .icon-edit, .icon-source, .icon-delete-grey,
+.icon-delete, .icon-bullet, .icon-yes, .icon-media, .icon-find-facts,
+.icon-note, .icon-family, .icon-repository, .icon-help-15, .icon-indi,
 .icon-open, .icon-close
 {display:block; background:url('images/admin_icon_sprite.png') no-repeat;}
 

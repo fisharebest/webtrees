@@ -1,8 +1,8 @@
-/**
+/*
  * Theme specific module CSS for PHPGedView
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2010 PGV Development Team.  All rights reserved.
@@ -21,21 +21,19 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
- * @package webtrees
- * @subpackage module themes
- * @version $Id$
+ * $Id$
  */
- 
+
 /* GEDFact_assistant - Census - module ===================================== */
 /* Date Drop-down menu (census_asst_date.php) */
 .UK {
-	background-color:#aaffaa; 
+	background-color:#aaffaa;
 	color:black;
- }
+}
 .USA {
-	background-color:#aaccff; 
+	background-color:#aaccff;
 	color:black;
- }
+}
 /* Indi Page - Shared Note column headers (census_note_decode.php) */
 .note1 {
 	margin-left: -0.05em;
@@ -50,12 +48,12 @@
 }
 /* Navigator */
 .cens_search {
-	position: relative; 
+	position: relative;
 	float: left;
 	margin: 0.5em 0 0 0.5em;
 	width: 23.1em;
 	height: 34.25em;
-	overflow: auto; 
+	overflow: auto;
 	/*border: 1px solid red; */
 }
 #navenclose {
@@ -64,19 +62,19 @@
 	margin-bottom: -0.3em;
 	border-bottom: 0px;
 	width: 22.3em;
-	/* border: 1px solid green; */ 
+	/* border: 1px solid green; */
 }
-.linkcell a { 
+.linkcell a {
 	display: block;
 	padding:  0.3em 0.3em 0.6em 0.3em;
-	margin: -0.3em -0.3em -0.6em -0.3em; 
-} 
-.linkcell a:hover{ 
-	/* background: #888888; */ 
+	margin: -0.3em -0.3em -0.6em -0.3em;
+}
+.linkcell a:hover {
+	/* background: #888888; */
 }
 a.linka {
 	padding: 0 0 0 0;
-	margin: 0 0 0 0; 
+	margin: 0 0 0 0;
 }
 .ltrnav {
 	position: absolute;
@@ -163,7 +161,7 @@ a.linka {
 }
 .cens_sour_year {
 	float: left;
-	width: 3.6em; 
+	width: 3.6em;
 	text-align: left;
 	margin-left: .25em;
 	padding-bottom: .2em;
@@ -240,7 +238,7 @@ textarea#NOTE {
 	/*border: 0em outset;*/
 	float: left;
 	margin: 0;
-	width: 69.8em; 
+	width: 69.8em;
 }
 /* Census data Input area */
 .cens_data {
@@ -256,5 +254,5 @@ textarea#NOTE {
 }
 
 /* xxxxxxxxxx - module ===================================================== */
- 
+
 /* yyyyyyyyyy - module ===================================================== */

@@ -44,59 +44,59 @@ body {
 	border: 1px solid #003399;
 }
 
-#content { padding:10px; }
+#content {padding:10px;}
 
-* { margin:0; padding:0; }
+* {margin:0; padding:0;}
 
 /* ================= */
 /*   Header Layout   */
 
-#header { height: 29px; background-image:url(images/clouds.png); }
-.title {display: block; float: left; margin-top: 5px; margin-left: 12px; font-size: 24px; vertical-align:bottom; width: 70%; text-decoration: none; }
+#header {height: 29px; background-image:url(images/clouds.png);}
+.title {display: block; float: left; margin-top: 5px; margin-left: 12px; font-size: 24px; vertical-align:bottom; width: 70%; text-decoration: none;}
 .hsearch {display: block; float: right; padding-top: 5px; padding-right: 10px;}
-.title .gedcomtitle { text-decoration:none; color: #003399; }
+.title .gedcomtitle {text-decoration:none; color: #003399;}
 
 /* set up div container for main menu and options menu */
 
-#topMenu {  clear: both; height:31px; width: 100%; background: #aaccff;  }
-#menu-right { float: right;  margin-right: 20px;}
+#topMenu {clear: both; height:31px; width: 100%; background: #aaccff;}
+#menu-right {float: right;  margin-right: 20px;}
 
 /* LTR to TRL Translation */
 html[dir='rtl'] .title {float: right; margin-right: 12px;}
-html[dir='rtl'] .hsearch { float: left; padding-left: 10px;}
-html[dir='rtl'] #menu-right { float: left; margin-left: 20px;}
+html[dir='rtl'] .hsearch {float: left; padding-left: 10px;}
+html[dir='rtl'] #menu-right {float: left; margin-left: 20px;}
 
 
 /* ====================== */
 /* Layout Left Main menu  */
 
-#topMenu  ul { margin: 0; padding: 0; list-style: none; position:relative;  }
-#topMenu > ul li { display: block; list-style:none; width: auto; float:left; position:relative; }
-#topMenu > ul li a {margin: auto;display: block;font-size: 14px; text-align: center;padding: 5px 0 5px 10px;text-decoration: none; }
+#topMenu  ul {margin: 0; padding: 0; list-style: none; position:relative;}
+#topMenu > ul li {display: block; list-style:none; width: auto; float:left; position:relative;}
+#topMenu > ul li a {margin: auto;display: block;font-size: 14px; text-align: center;padding: 5px 0 5px 10px;text-decoration: none;}
 
-html[dir='rtl'] #topMenu > ul li { float: right;}
-html[dir='rtl'] #topMenu > ul li a { padding: 5px 10px 5px 0;}
+html[dir='rtl'] #topMenu > ul li {float: right;}
+html[dir='rtl'] #topMenu > ul li a {padding: 5px 10px 5px 0;}
 
 /* Subnavigation section */
-#topMenu ul ul { background: none; display:none; position:absolute; z-index:2001; top: 22px; left:0; right: auto; width: auto;  background: #fff; text-align: left; border: 1px solid #ccc; white-space: nowrap;}
+#topMenu ul ul {background: none; display:none; position:absolute; z-index:2001; top: 22px; left:0; right: auto; width: auto;  background: #fff; text-align: left; border: 1px solid #ccc; white-space: nowrap;}
 #topMenu ul ul li {left:auto; margin:0; clear:left; text-align:left; width:100%}
-#topMenu > ul ul li a {font-size: 12px; padding: 5px 5px 5px 5px; text-align: left; white-space: nowrap; }
+#topMenu > ul ul li a {font-size: 12px; padding: 5px 5px 5px 5px; text-align: left; white-space: nowrap;}
 
 html[dir='rtl'] #topMenu ul ul {right: 0; left: auto; text-align: right;}
-html[dir='rtl'] #topMenu ul ul li { right:auto; clear:right; text-align:right;}
-html[dir='rtl'] #topMenu > ul ul li a { text-align: right; padding-right: 30px;}
- 
+html[dir='rtl'] #topMenu ul ul li {right:auto; clear:right; text-align:right;}
+html[dir='rtl'] #topMenu > ul ul li a {text-align: right; padding-right: 30px;}
+
 /* Submenu horizontal */
-#topMenu  ul ul ul{ display:none !important; } /* Sub menus are hiden by default */
+#topMenu  ul ul ul {display:none !important;} /* Sub menus are hiden by default */
 
 /* Set up hover layout and style */
-#topMenu ul li:hover ul { display: block; }
-#topMenu ul li:hover li { float: none; }
-#topMenu ul li:hover li a { text-decoration: none; }   
-#topMenu ul li li a:hover {	width: auto; }
-#topMenu ul  ul li:hover ul{display:block !important;position: absolute;margin-left: 118px;margin-top: -35px;  } 
+#topMenu ul li:hover ul {display: block;}
+#topMenu ul li:hover li {float: none;}
+#topMenu ul li:hover li a {text-decoration: none;}
+#topMenu ul li li a:hover {width: auto;}
+#topMenu ul  ul li:hover ul {display:block !important;position: absolute;margin-left: 118px;margin-top: -35px;}
 
-html[dir='rtl'] #topMenu ul  ul li:hover ul { margin-left: auto; margin-right: 118px; } 
+html[dir='rtl'] #topMenu ul  ul li:hover ul {margin-left: auto; margin-right: 118px;}
 
 /*  Mainmenu Icons*/
 #topMenu > ul > li {background-image:url(images/sprites-top-menu.png);background-repeat:no-repeat;width: 22px; height: 22px;line-height: 22px; text-indent: 32px; margin: 5px 0 0 10px;}
@@ -104,224 +104,224 @@ html[dir='rtl'] #topMenu ul  ul li:hover ul { margin-left: auto; margin-right: 1
 html[dir='rtl'] #topMenu > ul > li {margin: 5px 10px 0 0; left: auto;}
 
 /*  Submenu Icons */
-#main-menu li ul li{background-image:url(images/sprites-sub-menu.png);background-repeat:no-repeat;height: 22px;line-height: 15px;text-indent: 22px; margin: 2px 0 2px 5px;}
+#main-menu li ul li {background-image:url(images/sprites-sub-menu.png);background-repeat:no-repeat;height: 22px;line-height: 15px;text-indent: 22px; margin: 2px 0 2px 5px;}
 
-html[dir='rtl'] #main-menu li ul li{ text-indent: 0;}
+html[dir='rtl'] #main-menu li ul li {text-indent: 0;}
 
 /*  Delete tag from mainmenu icons */
 #topMenu > ul >  li  > a {color: #2A2B2D;width: 17px; height: 17px;line-height: 60px;overflow: hidden;}
 
 /********************Menu Top Row Icons **********************/
 
-#menu-tree      { background-position:0   -0px; } 
-#menu-chart     { background-position:0  -29px; }    
-#menu-list      { background-position:0  -59px; } 
-#menu-calendar  { background-position:0  -88px; } 
-#menu-report    { background-position:0 -117px; } 
-#menu-search    { background-position:0 -146px; } 
-#menu-help      { background-position:0 -175px; }
-#menu-mymenu    { background-position:0 -204px; }
-#menu-clippings { background-position:0 -233px; }
-#menu-indi      { background-position:0 -261px; }
-#menu-sour      { background-position:0 -320px; }
-#menu-fam       { background-position:0 -291px; }
-#menu-note      { background-position:0 -348px; }
-#menu-obje      { background-position:0 -378px; }
-#menu-repo      { background-position:0 -407px; }
-#menu-story     { background-position:0 -435px; }
-     
+#menu-tree      {background-position:0   -0px;}
+#menu-chart     {background-position:0  -29px;}
+#menu-list      {background-position:0  -59px;}
+#menu-calendar  {background-position:0  -88px;}
+#menu-report    {background-position:0 -117px;}
+#menu-search    {background-position:0 -146px;}
+#menu-help      {background-position:0 -175px;}
+#menu-mymenu    {background-position:0 -204px;}
+#menu-clippings {background-position:0 -233px;}
+#menu-indi      {background-position:0 -261px;}
+#menu-sour      {background-position:0 -320px;}
+#menu-fam       {background-position:0 -291px;}
+#menu-note      {background-position:0 -348px;}
+#menu-obje      {background-position:0 -378px;}
+#menu-repo      {background-position:0 -407px;}
+#menu-story     {background-position:0 -435px;}
+
 /*******************Menu submenu Icons**********************/
 /* Chart Icons */
-#menu-chart-ancestry		{ background-position:left   -0px; } html[dir=rtl] #menu-chart-ancestry			{ background-position:right   -0px; } 
-#menu-chart-fanchart		{ background-position:left  -23px; } html[dir=rtl] #menu-chart-fanchart			{ background-position:right  -23px; }
-#menu-chart-compact			{ background-position:left   -0px; } html[dir=rtl] #menu-chart-compact			{ background-position:right   -0px; }
-#menu-chart-descendancy		{ background-position:left  -69px; } html[dir=rtl] #menu-chart-descendancy		{ background-position:right  -69px; } 
-#menu-chart-familybook		{ background-position:left  -92px; } html[dir=rtl] #menu-chart-familybook		{ background-position:right  -92px; }
-#menu-chart-hourglass		{ background-position:left -115px; } html[dir=rtl] #menu-chart-hourglass		{ background-position:right -115px; }
-#menu-chart-tree			{ background-position:left -138px; } html[dir=rtl] #menu-chart-tree				{ background-position:right -138px; } 
-#menu-chart-lifespan		{ background-position:left -161px; } html[dir=rtl] #menu-chart-lifespan			{ background-position:right -161px; }
-#menu-chart-pedigree		{ background-position:left -184px; } html[dir=rtl] #menu-chart-pedigree			{ background-position:right -184px; }
-#menu-chart-pedigree_map	{ background-position:left -207px; } html[dir=rtl] #menu-chart-pedigree_map		{ background-position:right -207px; }
-#menu-chart-relationship	{ background-position:left -230px; } html[dir=rtl] #menu-chart-relationship		{ background-position:right -230px; }
-#menu-chart-relationship li { background-position:left -230px; } html[dir=rtl] #menu-chart-relationship li	{ background-position:right -230px; }
-#menu-chart-statistics		{ background-position:left -253px; } html[dir=rtl] #menu-chart-statistics		{ background-position:right -253px; }
-#menu-chart-timeline		{ background-position:left -276px; } html[dir=rtl] #menu-chart-timeline			{ background-position:right -276px; }
-#menu-chart-timeline li		{ background-position:left -276px; } html[dir=rtl] #menu-chart-timeline li		{ background-position:right -276px; }
+#menu-chart-ancestry        {background-position:left   -0px;} html[dir=rtl] #menu-chart-ancestry        {background-position:right   -0px;}
+#menu-chart-fanchart        {background-position:left  -23px;} html[dir=rtl] #menu-chart-fanchart        {background-position:right  -23px;}
+#menu-chart-compact         {background-position:left   -0px;} html[dir=rtl] #menu-chart-compact         {background-position:right   -0px;}
+#menu-chart-descendancy     {background-position:left  -69px;} html[dir=rtl] #menu-chart-descendancy     {background-position:right  -69px;}
+#menu-chart-familybook      {background-position:left  -92px;} html[dir=rtl] #menu-chart-familybook      {background-position:right  -92px;}
+#menu-chart-hourglass       {background-position:left -115px;} html[dir=rtl] #menu-chart-hourglass       {background-position:right -115px;}
+#menu-chart-tree            {background-position:left -138px;} html[dir=rtl] #menu-chart-tree            {background-position:right -138px;}
+#menu-chart-lifespan        {background-position:left -161px;} html[dir=rtl] #menu-chart-lifespan        {background-position:right -161px;}
+#menu-chart-pedigree        {background-position:left -184px;} html[dir=rtl] #menu-chart-pedigree        {background-position:right -184px;}
+#menu-chart-pedigree_map    {background-position:left -207px;} html[dir=rtl] #menu-chart-pedigree_map    {background-position:right -207px;}
+#menu-chart-relationship    {background-position:left -230px;} html[dir=rtl] #menu-chart-relationship    {background-position:right -230px;}
+#menu-chart-relationship li {background-position:left -230px;} html[dir=rtl] #menu-chart-relationship li {background-position:right -230px;}
+#menu-chart-statistics      {background-position:left -253px;} html[dir=rtl] #menu-chart-statistics      {background-position:right -253px;}
+#menu-chart-timeline        {background-position:left -276px;} html[dir=rtl] #menu-chart-timeline        {background-position:right -276px;}
+#menu-chart-timeline li     {background-position:left -276px;} html[dir=rtl] #menu-chart-timeline li     {background-position:right -276px;}
 
 /* Lists Icons */
-#menu-list-obje		{ background-position:left -299px; } html[dir=rtl] #menu-list-obje		{ background-position:right -299px; }
-#menu-list-plac		{ background-position:left -322px; } html[dir=rtl] #menu-list-plac		{ background-position:right -322px; }
-#menu-list-repo		{ background-position:left -345px; } html[dir=rtl] #menu-list-repo		{ background-position:right -345px; }
-#menu-list-note		{ background-position:left -368px; } html[dir=rtl] #menu-list-note		{ background-position:right -368px; } 
-#menu-list-sour		{ background-position:left -391px; } html[dir=rtl] #menu-list-sour		{ background-position:right -391px; }
-#menu-branches		{ background-position:left -414px; } html[dir=rtl] #menu-branches		{ background-position:right -414px; }
-#menu-list-fam 		{ background-position:left -437px; } html[dir=rtl] #menu-list-fam		{ background-position:right -437px; }
-#menu-list-indi		{ background-position:left -460px; } html[dir=rtl] #menu-list-indi		{ background-position:right -460px; }
+#menu-list-obje       {background-position:left -299px;} html[dir=rtl] #menu-list-obje       {background-position:right -299px;}
+#menu-list-plac       {background-position:left -322px;} html[dir=rtl] #menu-list-plac       {background-position:right -322px;}
+#menu-list-repo       {background-position:left -345px;} html[dir=rtl] #menu-list-repo       {background-position:right -345px;}
+#menu-list-note       {background-position:left -368px;} html[dir=rtl] #menu-list-note       {background-position:right -368px;}
+#menu-list-sour       {background-position:left -391px;} html[dir=rtl] #menu-list-sour       {background-position:right -391px;}
+#menu-branches        {background-position:left -414px;} html[dir=rtl] #menu-branches        {background-position:right -414px;}
+#menu-list-fam        {background-position:left -437px;} html[dir=rtl] #menu-list-fam        {background-position:right -437px;}
+#menu-list-indi       {background-position:left -460px;} html[dir=rtl] #menu-list-indi       {background-position:right -460px;}
 
 /* Report Icons */
-#menu-report li		{ background-position:left -483px; } html[dir=rtl] #menu-report li		{ background-position:right -483px; }
+#menu-report li       {background-position:left -483px;} html[dir=rtl] #menu-report li       {background-position:right -483px;}
 
 /* Calendar Icons */
-#menu-calendar-day		{ background-position:left -506px; } html[dir=rtl] #menu-calendar-day		{ background-position:right -506px; }
-#menu-calendar-month	{ background-position:left -506px; } html[dir=rtl] #menu-calendar-month		{ background-position:right -506px; }
-#menu-calendar-year		{ background-position:left -506px; } html[dir=rtl] #menu-calendar-year		{ background-position:right -506px; }
+#menu-calendar-day    {background-position:left -506px;} html[dir=rtl] #menu-calendar-day    {background-position:right -506px;}
+#menu-calendar-month  {background-position:left -506px;} html[dir=rtl] #menu-calendar-month  {background-position:right -506px;}
+#menu-calendar-year   {background-position:left -506px;} html[dir=rtl] #menu-calendar-year   {background-position:right -506px;}
 
 /* Search Icons */
-#menu-search-general	{ background-position:left -529px; } html[dir=rtl] #menu-search-general		{ background-position:right -529px; }
-#menu-search-soundex	{ background-position:left -529px; } html[dir=rtl] #menu-search-soundex		{ background-position:right -529px; }
-#menu-search-advanced	{ background-position:left -529px; } html[dir=rtl] #menu-search-advanced	{ background-position:right -529px; } 
-#menu-search-replace	{ background-position:left -529px; } html[dir=rtl] #menu-search-replace		{ background-position:right -529px; }
+#menu-search-general  {background-position:left -529px;} html[dir=rtl] #menu-search-general  {background-position:right -529px;}
+#menu-search-soundex  {background-position:left -529px;} html[dir=rtl] #menu-search-soundex  {background-position:right -529px;}
+#menu-search-advanced {background-position:left -529px;} html[dir=rtl] #menu-search-advanced {background-position:right -529px;}
+#menu-search-replace  {background-position:left -529px;} html[dir=rtl] #menu-search-replace  {background-position:right -529px;}
 
 /* Help Icons */
-#menu-help-genealogy	{ background-position:left -552px; } html[dir=rtl] #menu-help-genealogy		{ background-position:right -552px; }
-#menu-help-show			{ background-position:left -552px; } html[dir=rtl] #menu-help-show			{ background-position:right -552px; } 
-#menu-help-contents		{ background-position:left -552px; } html[dir=rtl] #menu-help-contents		{ background-position:right -552px; }
-#menu-help-hide			{ background-position:left -552px; } html[dir=rtl] #menu-help-hide			{ background-position:right -552px; }
-#menu-help-faq			{ background-position:left -552px; } html[dir=rtl] #menu-help-faq			{ background-position:right -552px; }
-#menu-help-wiki			{ background-position:left -575px; } html[dir=rtl] #menu-help-wiki			{ background-position:right -575px; }
-#menu-help-technical	{ background-position:left -598px; } html[dir=rtl] #menu-help-technical		{ background-position:right -598px; }
+#menu-help-genealogy  {background-position:left -552px;} html[dir=rtl] #menu-help-genealogy  {background-position:right -552px;}
+#menu-help-show       {background-position:left -552px;} html[dir=rtl] #menu-help-show       {background-position:right -552px;}
+#menu-help-contents   {background-position:left -552px;} html[dir=rtl] #menu-help-contents   {background-position:right -552px;}
+#menu-help-hide       {background-position:left -552px;} html[dir=rtl] #menu-help-hide       {background-position:right -552px;}
+#menu-help-faq        {background-position:left -552px;} html[dir=rtl] #menu-help-faq        {background-position:right -552px;}
+#menu-help-wiki       {background-position:left -575px;} html[dir=rtl] #menu-help-wiki       {background-position:right -575px;}
+#menu-help-technical  {background-position:left -598px;} html[dir=rtl] #menu-help-technical  {background-position:right -598px;}
 
 /* MyPage Icons */
-#menu-mypage		{ background-position:left -598px; } html[dir=rtl] #menu-mypage			{ background-position:right -598px; }
-#menu-myaccount		{ background-position:left -598px; } html[dir=rtl] #menu-myaccount		{ background-position:right -598px; }
-#menu-mypedigree	{ background-position:left -828px; } html[dir=rtl] #menu-mypedigree		{ background-position:right -828px; }  
-#menu-myrecord		{ background-position:left -460px; } html[dir=rtl] #menu-myrecord		{ background-position:right -460px; }
-#menu-admin			{ background-position:left -644px; } html[dir=rtl] #menu-admin			{ background-position:right -644px; }
-#menu-tree li		{ background-position:left -667px; } html[dir=rtl] #menu-tree li		{ background-position:right -667px; }
+#menu-mypage          {background-position:left -598px;} html[dir=rtl] #menu-mypage          {background-position:right -598px;}
+#menu-myaccount       {background-position:left -598px;} html[dir=rtl] #menu-myaccount       {background-position:right -598px;}
+#menu-mypedigree      {background-position:left -828px;} html[dir=rtl] #menu-mypedigree      {background-position:right -828px;}
+#menu-myrecord        {background-position:left -460px;} html[dir=rtl] #menu-myrecord        {background-position:right -460px;}
+#menu-admin           {background-position:left -644px;} html[dir=rtl] #menu-admin           {background-position:right -644px;}
+#menu-tree li         {background-position:left -667px;} html[dir=rtl] #menu-tree li         {background-position:right -667px;}
 
 /* Family Icons  */
-#menu-fam-addchil		{ background-position:left -759px; } html[dir=rtl] #menu-fam-addchil		{ background-position:right -759px; }
-#menu-fam-addfav		{ background-position:left -736px; } html[dir=rtl] #menu-fam-addfav			{ background-position:right -736px; }
-#menu-fam-change 		{ background-position:left -759px; } html[dir=rtl] #menu-fam-change			{ background-position:right -759px; }
-#menu-fam-del			{ background-position:left -713px; } html[dir=rtl] #menu-fam-del			{ background-position:right -713px; }
-#menu-fam-editraw		{ background-position:left -667px; } html[dir=rtl] #menu-fam-editraw		{ background-position:right -667px; }
-#menu-fam-orderchil		{ background-position:left -759px; } html[dir=rtl] #menu-fam-orderchil		{ background-position:right -759px; }
+#menu-fam-addchil     {background-position:left -759px;} html[dir=rtl] #menu-fam-addchil     {background-position:right -759px;}
+#menu-fam-addfav      {background-position:left -736px;} html[dir=rtl] #menu-fam-addfav      {background-position:right -736px;}
+#menu-fam-change      {background-position:left -759px;} html[dir=rtl] #menu-fam-change      {background-position:right -759px;}
+#menu-fam-del         {background-position:left -713px;} html[dir=rtl] #menu-fam-del         {background-position:right -713px;}
+#menu-fam-editraw     {background-position:left -667px;} html[dir=rtl] #menu-fam-editraw     {background-position:right -667px;}
+#menu-fam-orderchil   {background-position:left -759px;} html[dir=rtl] #menu-fam-orderchil   {background-position:right -759px;}
 
 /* Clipping Icons */
-#menu-clippingscart		{ background-position:left -621px; } html[dir=rtl] #menu-clippingscart		{ background-position:right -621px; }
-#menu-clippingsadd		{ background-position:left -621px; } html[dir=rtl] #menu-clippingsadd		{ background-position:right -621px; } 
+#menu-clippingscart   {background-position:left -621px;} html[dir=rtl] #menu-clippingscart   {background-position:right -621px;}
+#menu-clippingsadd    {background-position:left -621px;} html[dir=rtl] #menu-clippingsadd    {background-position:right -621px;}
 
 /* Edit Icons */
-#menu-indi-editraw		{ background-position:left -667px; } html[dir=rtl] #menu-indi-editraw		{ background-position:right -667px; }
-#menu-indi-addname		{ background-position:left -690px; } html[dir=rtl] #menu-indi-addname		{ background-position:right -690px; }
-#menu-indi-editsex		{ background-position:left -690px; } html[dir=rtl] #menu-indi-editsex		{ background-position:right -690px; }
-#menu-indi-del			{ background-position:left -713px; } html[dir=rtl] #menu-indi-del			{ background-position:right -713px; }
-#menu-indi-addfav		{ background-position:left -736px; } html[dir=rtl] #menu-indi-addfav		{ background-position:right -736px; }
+#menu-indi-editraw    {background-position:left -667px;} html[dir=rtl] #menu-indi-editraw    {background-position:right -667px;}
+#menu-indi-addname    {background-position:left -690px;} html[dir=rtl] #menu-indi-addname    {background-position:right -690px;}
+#menu-indi-editsex    {background-position:left -690px;} html[dir=rtl] #menu-indi-editsex    {background-position:right -690px;}
+#menu-indi-del        {background-position:left -713px;} html[dir=rtl] #menu-indi-del        {background-position:right -713px;}
+#menu-indi-addfav     {background-position:left -736px;} html[dir=rtl] #menu-indi-addfav     {background-position:right -736px;}
 
 /* Edit Notes  */
-#menu-note-addfav		{ background-position:left -736px; } html[dir=rtl] #menu-note-fav			{ background-position:right -736px; }
-#menu-note-del			{ background-position:left -713px; } html[dir=rtl] #menu-note-del			{ background-position:right -713px; }
-#menu-note-edit			{ background-position:left -805px; } html[dir=rtl] #menu-note-edit			{ background-position:right -805px; }
-#menu-note-editraw		{ background-position:left -667px; } html[dir=rtl] #menu-note-editraw		{ background-position:right -667px; }
+#menu-note-addfav     {background-position:left -736px;} html[dir=rtl] #menu-note-fav        {background-position:right -736px;}
+#menu-note-del        {background-position:left -713px;} html[dir=rtl] #menu-note-del        {background-position:right -713px;}
+#menu-note-edit       {background-position:left -805px;} html[dir=rtl] #menu-note-edit       {background-position:right -805px;}
+#menu-note-editraw    {background-position:left -667px;} html[dir=rtl] #menu-note-editraw    {background-position:right -667px;}
 
 /* Objects  */
-#menu-obje-addfav		{ background-position:left -736px; } html[dir=rtl] #menu-obje-addfav		{ background-position:right -736px; }
-#menu-obje-del			{ background-position:left -713px; } html[dir=rtl] #menu-obje-del			{ background-position:right -713px; }
-#menu-obje-edit			{ background-position:left -852px; } html[dir=rtl] #menu-obje-edit			{ background-position:right -852px; }
-#menu-obje-editraw		{ background-position:left -667px; } html[dir=rtl] #menu-obje-editraw		{ background-position:right -667px; }
-#menu-obje-link			{ background-position:left -875px; } html[dir=rtl] #menu-obje-link			{ background-position:right -875px; }
-#menu-obje-linkfam		{ background-position:left -437px; } html[dir=rtl] #menu-obje-linkfam		{ background-position:right -437px; }
-#menu-obje-link-ind		{ background-position:left -460px; } html[dir=rtl] #menu-obje-link-ind		{ background-position:right -460px; }
-#menu-obje-link-sour	{ background-position:left -391px; } html[dir=rtl] #menu-obje-link-sour		{ background-position:right -391px; }
+#menu-obje-addfav     {background-position:left -736px;} html[dir=rtl] #menu-obje-addfav     {background-position:right -736px;}
+#menu-obje-del        {background-position:left -713px;} html[dir=rtl] #menu-obje-del        {background-position:right -713px;}
+#menu-obje-edit       {background-position:left -852px;} html[dir=rtl] #menu-obje-edit       {background-position:right -852px;}
+#menu-obje-editraw    {background-position:left -667px;} html[dir=rtl] #menu-obje-editraw    {background-position:right -667px;}
+#menu-obje-link       {background-position:left -875px;} html[dir=rtl] #menu-obje-link       {background-position:right -875px;}
+#menu-obje-linkfam    {background-position:left -437px;} html[dir=rtl] #menu-obje-linkfam    {background-position:right -437px;}
+#menu-obje-link-ind   {background-position:left -460px;} html[dir=rtl] #menu-obje-link-ind   {background-position:right -460px;}
+#menu-obje-link-sour  {background-position:left -391px;} html[dir=rtl] #menu-obje-link-sour  {background-position:right -391px;}
 
 /* Repository */
-#menu-repo-addfav		{ background-position:left -736px; } html[dir=rtl] #menu-repo-addfav		{ background-position:right -736px; }
-#menu-repo-del			{ background-position:left -713px; } html[dir=rtl] #menu-repo-del			{ background-position:right -713px; }
-#menu-repo-edit			{ background-position:left -897px; } html[dir=rtl] #menu-repo-edit			{ background-position:right -897px; }
-#menu-repo-editraw		{ background-position:left -667px; } html[dir=rtl] #menu-repo-editraw		{ background-position:right -667px; }
+#menu-repo-addfav     {background-position:left -736px;} html[dir=rtl] #menu-repo-addfav     {background-position:right -736px;}
+#menu-repo-del        {background-position:left -713px;} html[dir=rtl] #menu-repo-del        {background-position:right -713px;}
+#menu-repo-edit       {background-position:left -897px;} html[dir=rtl] #menu-repo-edit       {background-position:right -897px;}
+#menu-repo-editraw    {background-position:left -667px;} html[dir=rtl] #menu-repo-editraw    {background-position:right -667px;}
 
 /*  Source  */
-#menu-sour-addfav		{ background-position:left -736px; } html[dir=rtl] #menu-sour-addfav		{ background-position:right -736px; }
-#menu-sour-del			{ background-position:left -713px; } html[dir=rtl] #menu-sour-del			{ background-position:right -713px; }
-#menu-sour-edit			{ background-position:left -782px; } html[dir=rtl] #menu-sour-edit			{ background-position:right -782px; }
-#menu-sour-editraw		{ background-position:left -667px; } html[dir=rtl] #menu-sour-editraw		{ background-position:right -667px; }
+#menu-sour-addfav     {background-position:left -736px;} html[dir=rtl] #menu-sour-addfav     {background-position:right -736px;}
+#menu-sour-del        {background-position:left -713px;} html[dir=rtl] #menu-sour-del        {background-position:right -713px;}
+#menu-sour-edit       {background-position:left -782px;} html[dir=rtl] #menu-sour-edit       {background-position:right -782px;}
+#menu-sour-editraw    {background-position:left -667px;} html[dir=rtl] #menu-sour-editraw    {background-position:right -667px;}
 
 /*  Stories  */
-#menu-story-sub			{ background-position:left -920px; } html[dir=rtl] #menu-story-sub			{ background-position:right -920px; }
+#menu-story-sub       {background-position:left -920px;} html[dir=rtl] #menu-story-sub       {background-position:right -920px;}
 
-#menu-language li 		{text-align:left;} /* The language menu is always LTR, even on RTL pages */
-#menu-theme    li 		{text-align:left;} /* The theme menu is always LTR, even on RTL pages */
+#menu-language li     {text-align:left;} /* The language menu is always LTR, even on RTL pages */
+#menu-theme    li     {text-align:left;} /* The theme menu is always LTR, even on RTL pages */
 
 
 /* =================================================== */
 /* ***********Right Options Menu ***********************/
 
-.makeMenu li 					{ z-index: 100; display:inline; position:relative; white-space:nowrap; }
-.makeMenu li:before 			{ content:" | "; }
-.makeMenu li ul li:before 		{ content:""; }
-.makeMenu li:first-child:before { content:""; }
-.makeMenu li ul 				{ display:none; position:absolute; left:10px; top: 1.1em !important; background-color:#EEE; border:thin solid #AAA; z-index:999; }
-.makeMenu li ul li 				{ display:block; text-align:left; }
-.makeMenu li ul li a 			{ color: #333; }
-.makeMenu, .makeMenu li ul 		{ list-style:none; top: 5px; margin-left: 0 !important; padding:1px; }
-.makeMenu li:hover > ul 		{ display:block; }
-.makeMenu li a 					{color: #003399;}
-.makeMenu li a:hover 			{color: #f5003d;}
-.makeMenu ul li a 				{ background-color: #fff; padding: 0 5px 0 5px !important; display: block; }
-.makeMenu ul li a:hover  		{ background: #c8e7ff; color: #000; }
-li a.link 						{ font-size: 13px; margin-right: 5px; margin-left: 5px; }
+.makeMenu li {z-index: 100; display:inline; position:relative; white-space:nowrap;}
+.makeMenu li:before {content:" | ";}
+.makeMenu li ul li:before {content:"";}
+.makeMenu li:first-child:before {content:"";}
+.makeMenu li ul {display:none; position:absolute; left:10px; top: 1.1em !important; background-color:#EEE; border:thin solid #AAA; z-index:999;}
+.makeMenu li ul li {display:block; text-align:left;}
+.makeMenu li ul li a {color: #333;}
+.makeMenu, .makeMenu li ul {list-style:none; top: 5px; margin-left: 0 !important; padding:1px;}
+.makeMenu li:hover > ul {display:block;}
+.makeMenu li a {color: #003399;}
+.makeMenu li a:hover {color: #f5003d;}
+.makeMenu ul li a {background-color: #fff; padding: 0 5px 0 5px !important; display: block;}
+.makeMenu ul li a:hover {background: #c8e7ff; color: #000;}
+li a.link {font-size: 13px; margin-right: 5px; margin-left: 5px;}
 
-html[dir='rtl'] .makeMenu li ul 	{ left:auto; right: -10px !important; }
-html[dir='rtl'] .makeMenu li ul li 	{ text-align:right; }
+html[dir='rtl'] .makeMenu li ul {left:auto; right: -10px !important;}
+html[dir='rtl'] .makeMenu li ul li {text-align:right;}
 
-/*	Define Tbl hdrs and Light Text Colors	*/
+/* Define Tbl hdrs and Light Text Colors */
 
 .descriptionbox,
 .topbottombar,
 .topbottombar a,
-.list_label, 
+.list_label,
 .list_label a,
 .facts_label,
 .facts_label a,
 .facts_label .date,
 .facts_label03,
 .facts_table h2,
-.facts_table .ltr .descriptionbox a, 
+.facts_table .ltr .descriptionbox a,
 .blockcontent .facts_label {
 	background:#95B8E0;
 	color: #003399;
 }
-/*	Define Menu Color				*/
+/* Define Menu Color */
 
 #toplinks {
 background:#aaccff;
 }
 
-/*	Define Base Color					*/
+/* Define Base Color */
 
 .descriptionbox .submenu a,
-.blockcontent, 
-.list_value, 
-.list_value_wrap, 
-.tab_cell_active, 
+.blockcontent,
+.list_value,
+.list_value_wrap,
+.tab_cell_active,
 .news_box, optionbox,
 .person0,  .center .person_box,
-.small_inner_block .person_box, 
+.small_inner_block .person_box,
 .submenuitem_hover {
 	background:#fff;
 }
 
-/*	Define Link Color					*/
+/* Define Link Color */
 
-a { color: #003399; text-decoration: none; }
-a:link, a:visited, a:active, a:hover, .menuitem a, .nameZoom { color:#003399; }
-a:hover, .blanco a.link:hover { color: red; text-decoration: none; }
+a {color: #003399; text-decoration: none;}
+a:link, a:visited, a:active, a:hover, .menuitem a, .nameZoom {color:#003399;}
+a:hover, .blanco a.link:hover {color: red; text-decoration: none;}
 
-/*	Define Alert Color					*/
+/* Define Alert Color */
 
-.error, .warning, .red { color: red; }
-.facts_labelred, .facts_valuered { border: solid red 2px; }
+.error, .warning, .red {color: red;}
+.facts_labelred, .facts_valuered {border: solid red 2px;}
 
-/*	Define Dark Text Color 				*/
+/* Define Dark Text Color */
 
-input,button,textarea { border-color:#fff #000066 #000066 #fff; }
-body, .subheaders { color:#000066; }
+input,button,textarea {border-color:#fff #000066 #000066 #fff;}
+body, .subheaders {color:#000066;}
 
 /*   Edit Facts */
-td.descriptionbox div a { color: white; }
-td.descriptionbox .submenu a { color: #000; }
-td.descriptionbox div div div a { color: #000; }
-td.descriptionbox div div div a:hover { color: red; }
+td.descriptionbox div a {color: white;}
+td.descriptionbox .submenu a {color: #000;}
+td.descriptionbox div div div a {color: #000;}
+td.descriptionbox div div div a:hover {color: red;}
 
 /*   End Edit Facts  */
 
@@ -342,8 +342,8 @@ p.center a {
 font-size: 13px;
 }
 
-p.center a:hover, 
-p.center span.warning, 
+p.center a:hover,
+p.center span.warning,
 td.list_label span.warning {
 font-size: 13px;
 color:#f50;
@@ -370,10 +370,10 @@ color:#f50;
 
 /* Rounded corners on boxes */
 .block,  .descriptionbox,
-.facts_label, .facts_label02, 
+.facts_label, .facts_label02,
 .facts_label03, .facts_value,
 .lifespan_outer, .subbar,
-.list_label, .list_label_wrap, 
+.list_label, .list_label_wrap,
 .list_value, .list_value_wrap,
 .messagebox, .optionbox,
 .person_box, .person_boxF, .person_boxNN,
@@ -429,7 +429,7 @@ margin-bottom: 5px;
 padding: 1px;
 }
 
-img.block { height: 25px; }
+img.block {height: 25px;}
 
 div.blockcontent {
 border: solid #999 1px;
@@ -452,9 +452,9 @@ width:26px;
 height:24px;
 }
 
-html[dir='rtl'] .blockh1 { background-image: url(images/right1B.png); }
+html[dir='rtl'] .blockh1 {background-image: url(images/right1B.png);}
 
-.blockh2 { 
+.blockh2 {
 background-image:url(images/left2.png);
 background-repeat:repeat-x;
 font-size: 13px;
@@ -468,7 +468,7 @@ width:8px;
 height:24px;
 }
 
-html[dir='rtl'] .blockh3 { background-image: url(images/right3.png); }
+html[dir='rtl'] .blockh3 {background-image: url(images/right3.png);}
 
 .blockhc {
 padding-right:15px;
@@ -503,11 +503,11 @@ height:auto;
 width:99%;
 }
 
-#random_picture .blockheader .ltr{
+#random_picture .blockheader .ltr {
 text-align:left;
 }
 
-#random_picture .blockheader .rtl{
+#random_picture .blockheader .rtl {
 text-align:right;
 }
 
@@ -515,7 +515,7 @@ text-align:right;
 position:relative;
 top:-200px;
 left:0;
-z-index: 1; 
+z-index: 1;
 }
 
 html[dir='rtl'] #pedigree_chart {
@@ -628,7 +628,7 @@ width: 60px;
 border:1px solid #999;
 margin:0;
 width:99%;
- }
+}
 
 .person_box {
 background:#ddf;
@@ -648,8 +648,8 @@ border:1px solid #CCC;
 padding:3px;
 }
 
-.person_box:target, 
-.news_box:target, 
+.person_box:target,
+.news_box:target,
 #gedcom_stats:target {
 background:#ffc;
 }
@@ -658,7 +658,7 @@ background:#ffc;
 margin:0 auto;
 }
 
-.list_label, .list_label_wrap, .list_value, .list_value_wrap { border:1px solid #999; }
+.list_label, .list_label_wrap, .list_value, .list_value_wrap {border:1px solid #999;}
 
 .list_label, .list_label_wrap {
 font-weight: bold;
@@ -674,7 +674,7 @@ padding:1px;
 vertical-align:top;
 }
 
-html[dir=rtl] .list_value,  html[dir=rtl] .list_value_wrap { text-align:right; }
+html[dir=rtl] .list_value,  html[dir=rtl] .list_value_wrap {text-align:right;}
 
 .list_label, .list_value {
 white-space: nowrap;
@@ -804,7 +804,7 @@ color:#7af;
 font-weight: bold;
 }
 
-a:hover .name1, a:hover.name2,  a:hover .nameZoom  { color: #f00; font-weight: bold }
+a:hover .name1, a:hover.name2,  a:hover .nameZoom  {color: #f00; font-weight: bold}
 
 .details1 {
 text-decoration:none;
@@ -816,7 +816,7 @@ color: #006;
 font-weight: bold;
 }
 
-a:hover .name1, a:hover.name2,  a:hover .nameZoom  { color: #f00; font-weight: bold }
+a:hover .name1, a:hover.name2,  a:hover .nameZoom  {color: #f00; font-weight: bold}
 
 .details1 {
 font-size: 10px;
@@ -880,7 +880,7 @@ padding: 5px;
 margin-right: 15px;
 }
 
-html[dir='rtl'] .image { margin-right: 0; margin-left: 15px; }
+html[dir='rtl'] .image {margin-right: 0; margin-left: 15px;}
 
 .gender_image {
 padding-left: 3px;
@@ -1129,8 +1129,8 @@ padding-left: 3px;
 padding-right: 3px;
 }
 
-.optionbox > input { margin-left: 5px;} 
-html[dir="rtl"] .optionbox > input { margin-right: 5px;} 
+.optionbox > input {margin-left: 5px;}
+html[dir="rtl"] .optionbox > input {margin-right: 5px;}
 
 select {
 border:1px solid #ccc;
@@ -1232,13 +1232,13 @@ fieldset ol, fieldset li {
 margin:2px 0 0 5px;
 }
 
-html[dir='rtl'] fieldset ol, fieldset li { margin:2px 5px 0 0; }
+html[dir='rtl'] fieldset ol, fieldset li {margin:2px 5px 0 0;}
 
 div.blockhc a:hover {
 background: transparent;
 }
 
-legend{
+legend {
 font-weight:bold;
 }
 .details_label {
@@ -1315,7 +1315,7 @@ text-align: left;
 
 .rtl {
 text-align:right;
-direction: rtl; 
+direction: rtl;
 }
 
 .width10 {width:10%;}
@@ -1539,7 +1539,7 @@ color:#fff;
 
 .sublinks_cell .submenuitem {
 background: #fff;
-} 
+}
 
 .nowrap {
 white-space: nowrap;
@@ -1553,18 +1553,18 @@ ul.clist {
 list-style-image: none;
 }
 
-.statistics_chart{
+.statistics_chart {
 text-align: center;
-} 
+}
 
-.gchart{
-border: 1px solid #999;   
-} 
+.gchart {
+border: 1px solid #999;
+}
 
 .execution_stats {
 padding: 12px 12px;
 text-align: center;
-} 
+}
 
 .tag_cloud a {
 white-space:nowrap;
@@ -1579,10 +1579,10 @@ margin:0;
 }
 
 dt {
-float:left; 
+float:left;
 font-weight:bold;
 margin-right:10px;
-clear:both; 
+clear:both;
 }
 html[dir="rtl"] dt {
 	float:right;
@@ -1695,19 +1695,19 @@ html[dir='rtl'] .faq_edit {float:left;}
 ul.clist {
 	list-style-image: none;
 	text-decoration:none;
-	color:#000; 
+	color:#000;
 	margin: 0;
 	margin-left: 0;
 }
 
 /* ========= Positioning edit, copy, delete links ============= */
-.editfacts {clear:left;	padding-top:15px;} /* a container for the following three links */
-.editlink, .copylink, .deletelink 	{float:left;}
+.editfacts {clear:left; padding-top:15px;} /* a container for the following three links */
+.editlink, .copylink, .deletelink {float:left;}
 span.link_text  {display:none;}
 
 html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelink {float:right;}
 
-/* =========== Indi header ================== */ 
+/* =========== Indi header ================== */
 
 #dates {color: #333333; float:right;}
 #header_accordion1 {float:right;}
@@ -1727,7 +1727,7 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelin
 #indi_mainimage {float:left;}
 #indi_mainimage a img {float:left; padding:0;}
 
-#indi_name_details {	margin:0; overflow: hidden !important; padding: 5px;}
+#indi_name_details {margin:0; overflow: hidden !important; padding: 5px;}
 #indi_name_details .warning {color:#f00; font-size:1em;}
 #indi_name_details dt:after {content:":";}
 
@@ -1744,7 +1744,7 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelin
 .indi_table {clear:left;}
 dd .editlink, dd .deletelink  {float:right;}
 
-html[dir='rtl'] #dates { float:left;}
+html[dir='rtl'] #dates {float:left;}
 html[dir='rtl'] #indi_header h3 .header_age {padding:5px 5px 5px 0; float:left;}
 html[dir='rtl'] #sex {float:left;}
 html[dir='rtl'] dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
@@ -1760,15 +1760,15 @@ html[dir='rtl'] .indi_table {clear:right;}
 /* General sprite */
 .male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display: block; background-color: transparent; background: url('images/general_sprite.png') no-repeat left 0;}
 
-.editicon 	{background-position:  -40px -32px; width: 24px; height:16px;}
-.copyicon 	{background-position:  -70px -32px; width: 24px; height:16px;}
+.editicon {background-position:  -40px -32px; width: 24px; height:16px;}
+.copyicon {background-position:  -70px -32px; width: 24px; height:16px;}
 .deleteicon {background-position: -100px -32px; width: 24px; height:16px;}
 
-.female_gender 	{background-position: -45px 3px; width: 24px;}
-.male_gender 	{background-position: -72px 3px; width: 24px;}
+.female_gender {background-position: -45px 3px; width: 24px;}
+.male_gender {background-position: -72px 3px; width: 24px;}
 .unknown_gender {background-position: -100px 4px; width: 24px;}
 
-/* =========== Indi tabs ================== */ 
+/* =========== Indi tabs ================== */
 /* Facts & Events tab */
 #personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR {margin: 5px 3px 5px 0;}
 #media-display-image {float:left;}
@@ -1783,17 +1783,17 @@ html[dir='rtl'] .indi_table {clear:right;}
 .ui-tabs {padding:0;}
 span.link_text  {display:none;}
 
-.ui-state-active, .ui-widget-content .ui-state-active {border:0 solid #8FBCFF; font-weight:normal; color:#000; outline:none; background:#ACF; }
-.ui-state-active a:link { color: #fff;}
-.ui-state-default a:link { color: #000;}
-.us-state-hover a, .ui-state-hover a:hover { color: #000;}
+.ui-state-active, .ui-widget-content .ui-state-active {border:0 solid #8FBCFF; font-weight:normal; color:#000; outline:none; background:#ACF;}
+.ui-state-active a:link {color: #fff;}
+.ui-state-default a:link {color: #000;}
+.us-state-hover a, .ui-state-hover a:hover {color: #000;}
 .ui-state-highlight a {color: #f00;}
 
 .ui-widget-header {border: 1px solid #fff;}
 
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
 html[dir='rtl'] .ui-tabs {direction:rtl;}
-html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-tabs-selected, 
+html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 
 /* ========= jQuery.datatable styling over-rides ============ */
@@ -1820,7 +1820,7 @@ html[dir='rtl'] .dataTables_length {float:left;}
 /* ========= List styles ================= */
 .source-list, .note-list, .repo-list, .media-list, .indi-list  {margin:5px auto; visibility:hidden; text-align:center; width:98%;}
 .source-list table, .note-list table, .repo-list table, .media-list table, .indi-list table  {width:100%;}
-.source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td{padding:2px 5px;}
+.source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td {padding:2px 5px;}
 .indi-list td {color:#555;}
 .indi-list .stats {margin:0 auto; width:auto;}
 .source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th {cursor:pointer; white-space: nowrap;}
@@ -1832,8 +1832,8 @@ html[dir='rtl'] .dataTables_length {float:left;}
 .SEX_M, .SEX_F, .SEX_U {height:20px;}
 .SEX_M img, .SEX_F img, .SEX_U img {vertical-align:top;}
 .gender, .aliveinyear, .years, .given, .parents, .charts, .reset {background-color:lightgrey; display:inline; margin:0 6px 0 0; padding:0 0 1px 0;}
-.gender{padding:2px 0;}
-.aliveyear{background-color:#EEE8AA;}
+.gender {padding:2px 0;}
+.aliveyear {background-color:#EEE8AA;}
 .aliveinyear button, .years button, .given button, .parents input, .charts input, .reset button {margin: 1px; padding:1px 6px;}
 
 html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-child, html[dir='rtl'] .repo-list th:last-child {margin:0 1px 1px -2px;}
@@ -1845,7 +1845,7 @@ html[dir='rtl'] .gender, html[dir='rtl'] .aliveinyear, html[dir='rtl'] .years, h
 #separator {background:#ACF url('images/general_sprite.png') no-repeat -26px 100px; float:right; display:block; width:0.75%; min-width: 6px; max-width:10px; border:1px solid #8FBCFF; border-top-left-radius:3px; border-top-right-radius:3px; margin-top:5px;}
 #sidebar {border-color:#8FBCFF; display:none; margin:5px 2px 0 0; height:auto;}
 #tabs {background-color:#FFF; border-color:#8FBCFF; float:left; width:100%; overflow:auto;}
-.sidebar-at-right #sidebar { width:20%;}
+.sidebar-at-right #sidebar {width:20%;}
 
 .use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}
@@ -1882,7 +1882,7 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 #sb_desc_content {margin-left:3px; font-size:0.8em;}
 #sb_desc_content ul {padding:0; margin:0;}
 
-.desc_tree_div { display:none;}
+.desc_tree_div {display:none;}
 .desc_tree_div ul {padding:0; margin-left:10px;margin-top:0; margin-right:0;}
 .sb_desc_indi_li {list-style-type:none; white-space:nowrap;}
 
@@ -1893,7 +1893,7 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}
 /* Individuals, Families */
 #sb_content_individuals, #sb_content_families {margin-top:5px;}
 
-.name_tree_div { display:none;}
+.name_tree_div {display:none;}
 .name_tree_div li, .name_tree_div_visible li {list-style:none; margin:0; padding:0;}
 .name_tree_div ul, .name_tree_div_visible ul {padding:0;margin:0;}
 .sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.png');}
@@ -1913,8 +1913,8 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}
 
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 
-@media print { 
-#topMenu, #header select, #header input, #footer select, #backprint, #sidebar { display:none; }
+@media print {
+#topMenu, #header select, #header input, #footer select, #backprint, #sidebar {display:none;}
 
 #header, #footer, .noprint {display:none !important;}
 
@@ -1935,7 +1935,7 @@ form, button, input {display: none;} /* buttons and input are used out of forms 
         top: -60px;
         z-index:1;
 }
-#content {padding: 0 }
-#clouds-container {	border: 0;}
+#content {padding: 0}
+#clouds-container {border: 0;}
 
 }
