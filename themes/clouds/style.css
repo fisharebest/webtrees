@@ -46,7 +46,7 @@ body {
 
 #content { padding:10px; }
 
-* { margin:0px; padding:0px; }
+* { margin:0; padding:0; }
 
 /* ================= */
 /*   Header Layout   */
@@ -72,41 +72,41 @@ html[dir='rtl'] #menu-right { float: left; margin-left: 20px;}
 
 #topMenu  ul { margin: 0; padding: 0; list-style: none; position:relative;  }
 #topMenu > ul li { display: block; list-style:none; width: auto; float:left; position:relative; }
-#topMenu > ul li a {margin: auto;display: block;font-size: 14px; text-align: center;padding: 5px 0px 5px 10px;text-decoration: none; }
+#topMenu > ul li a {margin: auto;display: block;font-size: 14px; text-align: center;padding: 5px 0 5px 10px;text-decoration: none; }
 
 html[dir='rtl'] #topMenu > ul li { float: right;}
-html[dir='rtl'] #topMenu > ul li a { padding: 5px 10px 5px 0px;}
+html[dir='rtl'] #topMenu > ul li a { padding: 5px 10px 5px 0;}
 
 /* Subnavigation section */
 #topMenu ul ul { background: none; display:none; position:absolute; z-index:2001; top: 22px; left:0; right: auto; width: auto;  background: #fff; text-align: left; border: 1px solid #ccc; white-space: nowrap;}
 #topMenu ul ul li {left:auto; margin:0; clear:left; text-align:left; width:100%}
 #topMenu > ul ul li a {font-size: 12px; padding: 5px 5px 5px 5px; text-align: left; white-space: nowrap; }
 
-html[dir='rtl'] #topMenu ul ul {right: 0px; left: auto; text-align: right;}
+html[dir='rtl'] #topMenu ul ul {right: 0; left: auto; text-align: right;}
 html[dir='rtl'] #topMenu ul ul li { right:auto; clear:right; text-align:right;}
 html[dir='rtl'] #topMenu > ul ul li a { text-align: right; padding-right: 30px;}
  
 /* Submenu horizontal */
-#topMenu  ul ul ul{ display:none!important; } /* Sub menus are hiden by default */
+#topMenu  ul ul ul{ display:none !important; } /* Sub menus are hiden by default */
 
 /* Set up hover layout and style */
 #topMenu ul li:hover ul { display: block; }
 #topMenu ul li:hover li { float: none; }
 #topMenu ul li:hover li a { text-decoration: none; }   
 #topMenu ul li li a:hover {	width: auto; }
-#topMenu ul  ul li:hover ul{display:block!important;position: absolute;margin-left: 118px;margin-top: -35px;  } 
+#topMenu ul  ul li:hover ul{display:block !important;position: absolute;margin-left: 118px;margin-top: -35px;  } 
 
 html[dir='rtl'] #topMenu ul  ul li:hover ul { margin-left: auto; margin-right: 118px; } 
 
 /*  Mainmenu Icons*/
-#topMenu > ul > li {background-image:url(images/sprites-top-menu.png);background-repeat:no-repeat;width: 22px; height: 22px;line-height: 22px; text-indent: 32px; margin: 5px 0px 0px 10px;}
+#topMenu > ul > li {background-image:url(images/sprites-top-menu.png);background-repeat:no-repeat;width: 22px; height: 22px;line-height: 22px; text-indent: 32px; margin: 5px 0 0 10px;}
 
-html[dir='rtl'] #topMenu > ul > li {margin: 5px 10px 0px 0px; left: auto;}
+html[dir='rtl'] #topMenu > ul > li {margin: 5px 10px 0 0; left: auto;}
 
 /*  Submenu Icons */
-#main-menu li ul li{background-image:url(images/sprites-sub-menu.png);background-repeat:no-repeat;height: 22px;line-height: 15px;text-indent: 22px; margin: 2px 0px 2px 5px;}
+#main-menu li ul li{background-image:url(images/sprites-sub-menu.png);background-repeat:no-repeat;height: 22px;line-height: 15px;text-indent: 22px; margin: 2px 0 2px 5px;}
 
-html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
+html[dir='rtl'] #main-menu li ul li{ text-indent: 0;}
 
 /*  Delete tag from mainmenu icons */
 #topMenu > ul >  li  > a {color: #2A2B2D;width: 17px; height: 17px;line-height: 60px;overflow: hidden;}
@@ -250,18 +250,18 @@ html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
 .makeMenu li:before 			{ content:" | "; }
 .makeMenu li ul li:before 		{ content:""; }
 .makeMenu li:first-child:before { content:""; }
-.makeMenu li ul 				{ display:none; position:absolute; left:10px; top: 1.1em!important; background-color:#EEE; border:thin solid #AAA; z-index:999; }
+.makeMenu li ul 				{ display:none; position:absolute; left:10px; top: 1.1em !important; background-color:#EEE; border:thin solid #AAA; z-index:999; }
 .makeMenu li ul li 				{ display:block; text-align:left; }
 .makeMenu li ul li a 			{ color: #333; }
-.makeMenu, .makeMenu li ul 		{ list-style:none; top: 5px; margin-left: 0px!important; padding:1px; }
+.makeMenu, .makeMenu li ul 		{ list-style:none; top: 5px; margin-left: 0 !important; padding:1px; }
 .makeMenu li:hover > ul 		{ display:block; }
 .makeMenu li a 					{color: #003399;}
 .makeMenu li a:hover 			{color: #f5003d;}
-.makeMenu ul li a 				{ background-color: #fff; padding: 0px 5px 0px 5px!important; display: block; }
+.makeMenu ul li a 				{ background-color: #fff; padding: 0 5px 0 5px !important; display: block; }
 .makeMenu ul li a:hover  		{ background: #c8e7ff; color: #000; }
 li a.link 						{ font-size: 13px; margin-right: 5px; margin-left: 5px; }
 
-html[dir='rtl'] .makeMenu li ul 	{ left:auto; right: -10px!important; }
+html[dir='rtl'] .makeMenu li ul 	{ left:auto; right: -10px !important; }
 html[dir='rtl'] .makeMenu li ul li 	{ text-align:right; }
 
 /*	Define Tbl hdrs and Light Text Colors	*/
@@ -356,7 +356,7 @@ background: inherit;
 table.header {
 width:100%;
 padding:0 10px;
-margin:0px 0px 0px 0px;
+margin:0;
 }
 
 div.error {
@@ -514,13 +514,13 @@ text-align:right;
 #pedigree_chart {
 position:relative;
 top:-200px;
-left:0px;
+left:0;
 z-index: 1; 
 }
 
 html[dir='rtl'] #pedigree_chart {
 left:auto;
-right:0px;
+right:0;
 }
 
 #descendancy_chart ul {
@@ -528,23 +528,23 @@ background-image:url(images/vline.png);
 background-repeat:repeat-y;
 background-position:left top;
 list-style:none;
-margin:0px 0px 5px 15px;
-padding-top: 0px;
-padding-right: 0px;
-padding-bottom: 0px;
+margin:0 0 5px 15px;
+padding-top: 0;
+padding-right: 0;
+padding-bottom: 0;
 }
 
 #descendancy_chart li {
 list-style: none;
-margin: 0px 0px 2px -15px;
-padding-top: 0px;
-padding-right: 0px;
-padding-bottom: 0px;
+margin: 0 0 2px -15px;
+padding-top: 0;
+padding-right: 0;
+padding-bottom: 0;
 }
 
 html[dir='rtl'] #descendancy_chart ul {
 background-position:right top;
-margin:0px 15px 0px 0px;
+margin:0 15px 0 0;
 left:auto;
 }
 
@@ -558,7 +558,7 @@ width:98%;
 
 html[dir='rtl'] #relationship_chart {
 left:auto;
-right:0px;
+right:0;
 }
 
 #ancestry_chart ul {
@@ -568,28 +568,28 @@ background-position:left top;
 list-style:none;
 display: block;
 margin:0 0 0 15px;
-padding-top:0px;
-padding-right:0px;
-padding-bottom:0px;
+padding-top:0;
+padding-right:0;
+padding-bottom:0;
 }
 
 #ancestry_chart li {
 list-style: none;
 margin:0 0 2px -15px;
-padding-top:0px;
-padding-right:0px;
-padding-bottom:0px;
+padding-top:0;
+padding-right:0;
+padding-bottom:0;
 }
 
 html[dir='rtl'] #ancestry_chart ul {
 background-position:right top;
-margin:0px 15px 0px 0px;
+margin:0 15px 0 0;
 left:auto;
 }
 
 html[dir='rtl'] #ancestry_chart li {
-margin:0px 0px 0px 0px;
-padding:0px 2px 0px 0px;
+margin:0;
+padding:0 2px 0 0;
 left:auto;
 }
 
@@ -880,7 +880,7 @@ padding: 5px;
 margin-right: 15px;
 }
 
-html[dir='rtl'] .image { margin-right: 0px; margin-left: 15px; }
+html[dir='rtl'] .image { margin-right: 0; margin-left: 15px; }
 
 .gender_image {
 padding-left: 3px;
@@ -1046,7 +1046,7 @@ font-size:11px;
 background-color:#fff;
 border: 1px solid #ccc;
 white-space:nowrap;
-padding:3px 3px 0px 3px;
+padding:3px 3px 0 3px;
 }
 
 .news_box {
@@ -1070,7 +1070,7 @@ margin-bottom: 12px;
 #timeline_chart {
 position: relative;
 top: 50px;
-left: 0px;
+left: 0;
 }
 
 .person0 {
@@ -1229,10 +1229,10 @@ text-align:left;
 html[dir='rtl'] fieldset {text-align:right;}
 
 fieldset ol, fieldset li {
-margin:2px 0px 0px 5px;
+margin:2px 0 0 5px;
 }
 
-html[dir='rtl'] fieldset ol, fieldset li { margin:2px 5px 0px 0px; }
+html[dir='rtl'] fieldset ol, fieldset li { margin:2px 5px 0 0; }
 
 div.blockhc a:hover {
 background: transparent;
@@ -1696,8 +1696,8 @@ ul.clist {
 	list-style-image: none;
 	text-decoration:none;
 	color:#000; 
-	margin: 0px;
-	margin-left: 0px;
+	margin: 0;
+	margin-left: 0;
 }
 
 /* ========= Positioning edit, copy, delete links ============= */
@@ -1734,7 +1734,7 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelin
 #indi_note {margin:0 0 5px 0;}
 #indi_note .note_details {font-size:100%;}
 #indi_note .fact_NOTE {float:left; margin:0 5px 0 0;}
-#indi_note .fact_SOUR {margin: 3px 0}
+#indi_note .fact_SOUR {margin: 3px 0;}
 #indi_note .fact_SOUR a {font-size:100%;}
 #main_name {color:#555; float:left; font-size:2em; margin:10px; font-weight:bold;}
 #name1 {}
@@ -1770,7 +1770,7 @@ html[dir='rtl'] .indi_table {clear:right;}
 
 /* =========== Indi tabs ================== */ 
 /* Facts & Events tab */
-#personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR {margin: 5px 3px 5px 0}
+#personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR {margin: 5px 3px 5px 0;}
 #media-display-image {float:left;}
 #media-display-title {float:left; font-style:italic; margin:10px;}
 
@@ -1783,7 +1783,7 @@ html[dir='rtl'] .indi_table {clear:right;}
 .ui-tabs {padding:0;}
 span.link_text  {display:none;}
 
-.ui-state-active, .ui-widget-content .ui-state-active {border:0px solid #8FBCFF; font-weight:normal; color:#000; outline:none; background:#ACF; }
+.ui-state-active, .ui-widget-content .ui-state-active {border:0 solid #8FBCFF; font-weight:normal; color:#000; outline:none; background:#ACF; }
 .ui-state-active a:link { color: #fff;}
 .ui-state-default a:link { color: #000;}
 .us-state-hover a, .ui-state-hover a:hover { color: #000;}
@@ -1866,9 +1866,9 @@ html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar
 
 .flyout {color:#000; text-align:left; margin-top:-20px; right:210px; padding:3px;}
 .flyout2 {color:#000; text-align:left;margin-top:-2px; left:40px; padding:3px; background: #fff; border: 1px solid #ccc;}
-.flyout2 a:hover{color:#2f416f; text-decoration:underline!important;}
-.flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
-.flyout4 {color:#000; text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
+.flyout2 a:hover {color:#2f416f; text-decoration:underline !important;}
+.flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0; left:0; padding:0;}
+.flyout4 {color:#000; text-align:left; margin-top:0;margin-left:0; padding:3px;}
 
 .nam a:hover {color:#f00;}
 .nav_content {width:100%; padding:0;}
@@ -1880,27 +1880,27 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 /* Descendancy */
 #sb_content_descendancy {margin-top:5px;}
 #sb_desc_content {margin-left:3px; font-size:0.8em;}
-#sb_desc_content ul {padding:0px; margin:0px;}
+#sb_desc_content ul {padding:0; margin:0;}
 
 .desc_tree_div { display:none;}
-.desc_tree_div ul {padding:0px; margin-left:10px;margin-top:0px; margin-right:0px;}
+.desc_tree_div ul {padding:0; margin-left:10px;margin-top:0; margin-right:0;}
 .sb_desc_indi_li {list-style-type:none; white-space:nowrap;}
 
 html[dir='rtl'] #sb_desc_content {margin-right:3px;}
-html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0px;}
+html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}
 
 
 /* Individuals, Families */
 #sb_content_individuals, #sb_content_families {margin-top:5px;}
 
 .name_tree_div { display:none;}
-.name_tree_div li, .name_tree_div_visible li {list-style:none; margin:0px; padding:0px;}
-.name_tree_div ul, .name_tree_div_visible ul {padding:0px;margin:0px;}
+.name_tree_div li, .name_tree_div_visible li {list-style:none; margin:0; padding:0;}
+.name_tree_div ul, .name_tree_div_visible ul {padding:0;margin:0;}
 .sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.png');}
 
 /* Clippings */
-#sb_clippings_content li {list-style:none; margin:0px; padding:0px;}
-#sb_clippings_content ul {padding:0px; margin:0px;}
+#sb_clippings_content li {list-style:none; margin:0; padding:0;}
+#sb_clippings_content ul {padding:0; margin:0;}
 #sb_content_clippings {margin-top:5px;}
 
 /* References */
@@ -1936,6 +1936,6 @@ form, button, input {display: none;} /* buttons and input are used out of forms 
         z-index:1;
 }
 #content {padding: 0 }
-#clouds-container {	border: 0px;}
+#clouds-container {	border: 0;}
 
 }

@@ -31,10 +31,10 @@ input, textarea, select {color:black; font:inherit; padding:0 3px;}
 fieldset {margin:8px 8px 4px 8px;}
 legend {font-style:italic; font-weight:bold;	padding:0 5px 5px; align:top;}
 img {border:none; vertical-align:middle;}
-h3 {margin:0}
+h3 {margin:0;}
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
 td {vertical-align:top;}
-.icon {border:none;	padding-left:0pt;padding-right:5pt;}
+.icon {border:none;	padding-left:0;padding-right:5pt;}
 .warning, .error, .red {font-weight:bold; color:red;}
 .accepted, a.accepted {font-weight:bold; color:green;}
 .center {text-align:center;}
@@ -52,11 +52,11 @@ html[dir='rtl'] .indent {padding-right:15px;}
 .ui-widget-content a.current {color:#E17009; font-weight:bold;}
 .ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:red; cursor:pointer;}
 .ui-widget-header {padding:5px;}
-.ui-progressbar-value {height:60%!important;}
+.ui-progressbar-value {height:60% !important;}
 .ui-accordion .ui-accordion-content-active {display:block;}
 .css_right {float:right;}
 html[dir='rtl'] .css_right {float:left;}
-html[dir='rtl'] input {padding-right:3px; padding-left:0px;}
+html[dir='rtl'] input {padding-right:3px; padding-left:0;}
 
 /* jEditable styling over-rides */
 .editable {width:100%; display:block}
@@ -97,8 +97,8 @@ html[dir='rtl'] #info {right:auto; left:10px; text-align:left;}
 #links {position:absolute; left:10px; bottom:0; display:inline; margin-bottom:5px; white-space:nowrap;}
 html[dir='rtl'] #links {left:auto; right:10px;}
 #links li {display:inline; position:relative;}
-#links li ul {display:none; position:absolute; left:0px; top:1.2em; background:url("jquery/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border:1px solid #D9D6C4;z-index:999;}
-html[dir='rtl'] #links li ul {left:auto; right:0px;}
+#links li ul {display:none; position:absolute; left:0; top:1.2em; background:url("jquery/images/ui-bg_fine-grain_10_eceadf_60x60.png") repeat scroll 50% 50% #ECEADF; border:1px solid #D9D6C4;z-index:999;}
+html[dir='rtl'] #links li ul {left:auto; right:0;}
 #links li ul li {display:block; padding:0 5px; text-align:left;}
  html[dir='rtl'] #links li ul li {text-align:right;}
 #links, #links li ul {list-style:none; margin:0; padding:1px;}
@@ -128,9 +128,9 @@ html[dir='rtl'] #admin_content {margin:0 220px 0 0;}
 /* DASHBOARD BLOCKS */
 #content_container {background:OldLace; padding:5px; border:1px inset #D9D6C4; height:570px; overflow:auto;}
 #users {white-space:nowrap;}
-#users ul {list-style-type:none; padding:0px; margin:0 0 0 20px;}
+#users ul {list-style-type:none; padding:0; margin:0 0 0 20px;}
 html[dir='rtl'] #users ul {margin:0 20px 0 0;}
-#users ul li {background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0px 0px; padding:0 0 0 14px;}
+#users ul li {background-image:url(images/bullet.png); background-repeat:no-repeat; background-position:0 0; padding:0 0 0 14px;}
 html[dir='rtl'] #users ul li {padding:0 14px 0 0;}
 #users td {padding:0 10px 0 0;}
 html[dir='rtl'] #users td {padding:0 0 0 10px;}
@@ -382,9 +382,9 @@ html[dir='rtl'] #story_module2 th, html[dir='rtl'] #story_module2 td {text-align
 
 /* Autocomplete styles */
 .ac_input {background-color:#EEE8AA;}
-.ac_results {padding:0px; border:1px solid black;	background-color:white; overflow:hidden; z-index:99999;}
+.ac_results {padding:0; border:1px solid black;	background-color:white; overflow:hidden; z-index:99999;}
 .ac_results ul {width:100%;	list-style-position:outside; list-style:none;	padding:0;	margin:0;}
-.ac_results li {margin:0px;	padding:2px 5px;	cursor:default; display:block; font:menu;font-size:12px; line-height:14px;	overflow:hidden;}
+.ac_results li {margin:0;	padding:2px 5px;	cursor:default; display:block; font:menu;font-size:12px; line-height:14px;	overflow:hidden;}
 .ac_loading {background:white url(images/indicator.gif) right center no-repeat;}
 .ac_odd {background-color:#eee;}
 .ac_over {background-color:#0A246A;	color:white;}

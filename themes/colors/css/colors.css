@@ -30,7 +30,7 @@
 
 body { font: 12px tahoma, arial, helvetica, sans-serif;}
 
-* { margin:0px; padding:0px; }
+* { margin:0; padding:0; }
 
 /* Rounded corners on boxes */
 .block,  .descriptionbox,
@@ -51,17 +51,17 @@ body { font: 12px tahoma, arial, helvetica, sans-serif;}
 
 #header {height: 65px;}
 .title {display: block; float: left; margin-top: 30px; margin-left: 12px; font-size: 24px; vertical-align:bottom; }
-.makeMenu {display: block; float: right;  margin: 40px 10px 0px 0px; }
+.makeMenu {display: block; float: right;  margin: 40px 10px 0 0; }
 
 html[dir='rtl'] .title {float: right; margin-right: 12px; }
-html[dir='rtl'] .makeMenu {display: block; float: left;  margin: 40px 0px 0px 10px; }
+html[dir='rtl'] .makeMenu {display: block; float: left;  margin: 40px 0 0 10px; }
 html[dir='rtl'] .topMenu_right {float: left;} 
 
 /* ====================== */
 /* Layout Main menu  */
 
 /* set up div container for menu */
-#topMenu { clear: both; height:51px; float: left; width: 100%; margin:0; padding:0; margin-top: 0px;}
+#topMenu { clear: both; height:51px; float: left; width: 100%; margin:0; padding:0; margin-top: 0;}
 
 /* Top Menu */
 
@@ -79,13 +79,13 @@ html[dir='rtl'] #topMenu ul li { float: right;}
 #topMenu ul ul li 	{ left:auto;  margin:0;  clear:left;  text-align:left;  width:100% }
 #topMenu ul ul li a	{ font-size: 12px;  padding: 5px 5px 5px 5px; text-align: left; white-space: nowrap; }
 
-html[dir='rtl'] #topMenu ul ul 	{right: 0px; left: auto; }
+html[dir='rtl'] #topMenu ul ul 	{right: 0; left: auto; }
 html[dir='rtl'] #topMenu ul ul li 	{ right:auto; clear:right; text-align:right;}
 html[dir='rtl'] #topMenu ul ul li a	{ text-align: right; float: right; padding-right: 30px;}
  
 /* Submenu two */
 
-#topMenu ul ul ul{ display:none!important; } 
+#topMenu ul ul ul{ display:none !important; } 
 
 /* Hover Layout */
 
@@ -93,7 +93,7 @@ html[dir='rtl'] #topMenu ul ul li a	{ text-align: right; float: right; padding-r
 #topMenu ul li:hover li		{ float: none; }
 #topMenu ul li:hover li a 	{ text-decoration: none; }   
 #topMenu ul li li a:hover	{ width: auto; }
-#topMenu ul  ul li:hover ul	{ display:block!important; position: absolute; margin-left: 118px; margin-top: -35px; } 
+#topMenu ul  ul li:hover ul	{ display:block !important; position: absolute; margin-left: 118px; margin-top: -35px; } 
 
 html[dir='rtl'] #topMenu ul  ul li:hover ul { margin-left: auto; margin-right: 118px; } 
 
@@ -106,9 +106,9 @@ html[dir='rtl'] #topMenu ul  ul li:hover ul { margin-left: auto; margin-right: 1
 	height: 40px; /* actual height of image  27 x 27 */
 	line-height: 40px;
 	text-indent: 32px;
-	margin: 7px 0px 0px 16px;
+	margin: 7px 0 0 16px;
 }
-html[dir='rtl'] #topMenu > ul > li {margin: 7px 16px 0px 0px; left: auto;}
+html[dir='rtl'] #topMenu > ul > li {margin: 7px 16px 0 0; left: auto;}
 
 /*  Submenu Icons */
 #main-menu li ul li{
@@ -117,14 +117,14 @@ html[dir='rtl'] #topMenu > ul > li {margin: 7px 16px 0px 0px; left: auto;}
 	height: 22px;
 	line-height: 15px;
 	text-indent: 22px;
-	margin: 5px 0px 5px 0px;
+	margin: 5px 0 5px 0;
 }
-html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
+html[dir='rtl'] #main-menu li ul li{ text-indent: 0;}
 
 #main-menu > li > ul > li:first-child {
     border-bottom: 2px solid #ddd;
     font-weight: bold;
-    text-align: center!important;
+    text-align: center !important;
     text-indent: 0;
     background-image: none;
 }
@@ -271,16 +271,16 @@ html[dir='rtl'] #main-menu li ul li{ text-indent: 0px;}
 .makeMenu li ul 				{ display:none; position:absolute; left:10px; background-color:#EEE; border:thin solid #AAA; z-index:999; }
 .makeMenu li ul li 				{ display:block; text-align:left; }
 .makeMenu li ul li a 			{ color: #333; }
-.makeMenu, .makeMenu li ul 		{ color: #fff; list-style:none; top: 5px; margin-left: 0px!important; padding:1px; }
+.makeMenu, .makeMenu li ul 		{ color: #fff; list-style:none; top: 5px; margin-left: 0 !important; padding:1px; }
 .makeMenu li:hover > ul 		{ display:block; }
 .makeMenu li a:hover 			{ color: #f5003d;}
-.makeMenu ul li a 				{ background-color: #fff; padding: 0px 5px 0px 2px; display: block; }
+.makeMenu ul li a 				{ background-color: #fff; padding: 0 5px 0 2px; display: block; }
 .makeMenu ul li a:hover  		{ color: #000; }
 li a.link 						{ font-size: 13px; margin-right: 5px; margin-left: 5px; }
 
 html[dir='rtl'] .toplinks_right { float: left; padding: 13px 10px 10px 10px; }
-html[dir='rtl'] .makeMenu li ul { left:auto; right:0px; }
-html[dir='rtl'] .makeMenu li ul li { text-align:right!important; }
+html[dir='rtl'] .makeMenu li ul { left:auto; right:0; }
+html[dir='rtl'] .makeMenu li ul li { text-align:right !important; }
 
 /* ================ */
 /*  Standard style  */
@@ -339,7 +339,7 @@ background: inherit;
 table.header {
 width:100%;
 padding:0 10px;
-margin:8px 0px 0px 0px;
+margin:8px 0 0 0;
 }
 
 div.error {
@@ -448,7 +448,7 @@ padding-top: 3px;
 
 #content {
 clear: both;
-padding:10px 10px 0px 10px;
+padding:10px 10px 0 10px;
 }
 
 #index_small_blocks .person_box .pedigree_image_portrait,
@@ -490,13 +490,13 @@ text-align:right;
 #pedigree_chart {
 position:relative;
 top:-200px;
-left:0px;
+left:0;
 z-index: 1; 
 }
 
 html[dir='rtl'] #pedigree_chart {
 left:auto;
-right:0px;
+right:0;
 }
 
 #descendancy_chart ul {
@@ -504,23 +504,23 @@ background-image:url(../images/vline.png);
 background-repeat:repeat-y;
 background-position:left top;
 list-style:none;
-margin:0px 0px 5px 15px;
-padding-top: 0px;
-padding-right: 0px;
-padding-bottom: 0px;
+margin:0 0 5px 15px;
+padding-top: 0;
+padding-right: 0;
+padding-bottom: 0;
 }
 
 #descendancy_chart li {
 list-style: none;
-margin: 0px 0px 0px -15px;
-padding-top: 0px;
-padding-right: 0px;
-padding-bottom: 0px;
+margin: 0 0 0 -15px;
+padding-top: 0;
+padding-right: 0;
+padding-bottom: 0;
 }
 
 html[dir='rtl'] #descendancy_chart ul {
 background-position:right top;
-margin:0px 15px 0px 0px;
+margin:0 15px 0 0;
 left:auto;
 }
 
@@ -534,7 +534,7 @@ width: 98%;
 
 html[dir='rtl'] #relationship_chart {
 left:auto;
-right:0px;
+right:0;
 }
 
 #ancestry_chart ul {
@@ -543,28 +543,28 @@ background-repeat:repeat-y;
 background-position:left top;
 list-style:none;
 margin:0 0 0 15px;
-padding-top:0px;
-padding-right:0px;
-padding-bottom:0px;
+padding-top:0;
+padding-right:0;
+padding-bottom:0;
 }
 
 #ancestry_chart li {
 list-style: none;
-margin:0px 0px 2px -13px;
-padding-top:0px;
-padding-right:0px;
-padding-bottom:0px;
+margin:0 0 2px -13px;
+padding-top:0;
+padding-right:0;
+padding-bottom:0;
 }
 
 html[dir='rtl'] #ancestry_chart ul {
 background-position:right top;
-margin:0px 15px 0px 0px;
+margin:0 15px 0 0;
 left:auto;
 }
 
 html[dir='rtl'] #ancestry_chart li {
-margin:0px 0px 0px 0px;
-padding:0px 2px 0px 0px;
+margin:0;
+padding:0 2px 0 0;
 left:auto;
 }
 
@@ -995,7 +995,7 @@ font-size:11px;
 background-color:#fff;
 border: 1px solid #ccc;
 white-space:nowrap;
-padding:3px 3px 0px 3px;
+padding:3px 3px 0 3px;
 }
 
 .news_box {
@@ -1018,8 +1018,8 @@ margin-bottom: 12px;
 
 #timeline_chart {
 position: relative;
-top: 0px;
-left: 0px;
+top: 0;
+left: 0;
 }
 
 .person0 {
@@ -1074,11 +1074,11 @@ border-width:1px;
 }
 
 input, textarea {
-padding-left: 0px;
+padding-left: 0;
 padding-right: 3px;
 }
 
-html[dir="rtl"] input, textarea { padding-left: 10px; padding-right: 0px;}
+html[dir="rtl"] input, textarea { padding-left: 10px; padding-right: 0;}
 
 .optionbox > input { margin-left: 5px;} 
 html[dir="rtl"] .optionbox > input { margin-right: 5px;} 
@@ -1174,10 +1174,10 @@ text-align:left;
 html[dir='rtl'] fieldset {text-align:right;}
 
 fieldset ol, fieldset li {
-margin:2px 0px 0px 5px;
+margin:2px 0 0 5px;
 }
 
-html[dir='rtl'] fieldset ol, fieldset li { margin:2px 5px 0px 0px; }
+html[dir='rtl'] fieldset ol, fieldset li { margin:2px 5px 0 0; }
 
 #header td {
 vertical-align:bottom;
@@ -1643,8 +1643,8 @@ ul.clist {
 	list-style-image: none;
 	text-decoration:none;
 	color:#000; 
-	margin: 0px;
-	margin-left: 0px;
+	margin: 0;
+	margin-left: 0;
 }
 
 /* ========= Positioning edit, copy, delete links ============= */
@@ -1686,13 +1686,13 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 
 #indi_note .note_details {font-size:100%;}
 #indi_note {margin:0 0 5px 0;}
-#indi_note .fact_SOUR a {font-size:100%; margin: 3px 0}
+#indi_note .fact_SOUR a {font-size:100%; margin: 3px 0;}
 #main_name {color:#555; float:left; font-size:2em; margin:10px; font-weight:bold;}
 #name1 {}
 #sex {float:right;}
 
 #indi_note .fact_NOTE {float:left; margin:0 5px 0 0;}
-#indi_note .fact_SOUR {margin: 3px 0}
+#indi_note .fact_SOUR {margin: 3px 0;}
 
 .indi_table {clear:left;}
 dd .editlink, dd .deletelink  {float:right;}
@@ -1723,7 +1723,7 @@ html[dir='rtl'] .indi_table {clear:right;}
 
 /* =========== Indi tabs ================== */ 
 /* Facts & Events tab */
-#personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR {margin: 5px 3px 5px 0}
+#personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR {margin: 5px 3px 5px 0;}
 #media-display-image {float:left;}
 #media-display-title {float:left; font-style:italic; margin:10px;}
 
@@ -1739,7 +1739,7 @@ html[dir='rtl'] .indi_table {clear:right;}
 .ui-tabs {padding:0;}
 span.link_text  {display:none;}
 
-.ui-state-active, .ui-widget-content .ui-state-active {border:0px solid #999; font-weight:normal; color:#000; outline:none; }
+.ui-state-active, .ui-widget-content .ui-state-active {border:0 solid #999; font-weight:normal; color:#000; outline:none; }
 .ui-state-default a:link { color: #000;}
 .ui-state-highlight a {color: #f00;}
 
@@ -1822,9 +1822,9 @@ html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar
 
 .flyout {color:#000; text-align:left; margin-top:-20px; right:210px; padding:3px;}
 .flyout2 {color:#000; text-align:left;margin-top:-2px; left:40px; padding:3px; background: #fff; border: 1px solid #ccc;}
-.flyout2 a:hover{color:#2f416f; text-decoration:underline!important;}
-.flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0px; left:0px; padding:0px;}
-.flyout4 {color:#000; text-align:left; margin-top:0px;margin-left:0px; padding:3px;}
+.flyout2 a:hover {color:#2f416f; text-decoration:underline !important;}
+.flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0; left:0; padding:0;}
+.flyout4 {color:#000; text-align:left; margin-top:0;margin-left:0; padding:3px;}
 
 .nam a:hover {color:#f00;}
 .nav_content {width:100%; padding:0;}
@@ -1836,27 +1836,27 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 /* Descendancy */
 #sb_content_descendancy {margin-top:5px;}
 #sb_desc_content {margin-left:3px; font-size:0.8em;}
-#sb_desc_content ul {padding:0px; margin:0px;}
+#sb_desc_content ul {padding:0; margin:0;}
 
 .desc_tree_div { display:none;}
-.desc_tree_div ul {padding:0px; margin-left:10px; margin-top:0px; margin-right:0px;}
+.desc_tree_div ul {padding:0; margin-left:10px; margin-top:0; margin-right:0;}
 .sb_desc_indi_li {list-style-type:none;}
 
 html[dir='rtl'] #sb_desc_content {margin-right:3px;}
-html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0px;}
+html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}
 
 
 /* Individuals, Families */
 #sb_content_individuals, #sb_content_families {margin-top:5px;}
 
 .name_tree_div { display:none;}
-.name_tree_div li, .name_tree_div_visible li {list-style:none; margin:0px; padding:0px;}
-.name_tree_div ul, .name_tree_div_visible ul {padding:0px;margin:0px;}
+.name_tree_div li, .name_tree_div_visible li {list-style:none; margin:0; padding:0;}
+.name_tree_div ul, .name_tree_div_visible ul {padding:0;margin:0;}
 .sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('../images/plus.png');}
 
 /* Clippings */
-#sb_clippings_content li {list-style:none; margin:0px; padding:0px;}
-#sb_clippings_content ul {padding:0px; margin:0px;}
+#sb_clippings_content li {list-style:none; margin:0; padding:0;}
+#sb_clippings_content ul {padding:0; margin:0;}
 #sb_content_clippings {margin-top:5px;}
 
 /* Extra Info */
