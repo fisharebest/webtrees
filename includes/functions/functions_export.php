@@ -149,22 +149,32 @@ function remove_custom_tags($gedrec) {
 	return preg_replace('/\n\d _(WT|THUM ).*/', '', $gedrec);
 }
 
-/**
- * Convert media path by:
- * - removing current media directory
- * - adding a new prefix
- * - making directory name separators consistent
- */
+// Convert media path by:
+// - removing current media directory
+// - adding a new prefix
+// - making directory name separators consistent
 function convert_media_path($rec, $path, $slashes) {
 	global $MEDIA_DIRECTORY;
 
-	$file = get_gedcom_value("FILE", 1, $rec);
-	if (preg_match("~^https?://~i", $file)) return $rec; // don't modify URLs
-
-	$rec = str_replace('FILE '.$MEDIA_DIRECTORY, 'FILE '.trim($path).'/', $rec);
-	$rec = str_replace('\\', '/', $rec);
-	$rec = str_replace('//', '/', $rec);
-	if ($slashes=='backward') $rec = str_replace('/', '\\', $rec);
+	if (preg_match('/\n1 FILE (.+)/', $rec, $match)) {
+		$old_file_name=$match[1];
+		if (!preg_match('~^(https?|ftp):~', $old_file_name)) { // Don't modify external links
+			if (strpos($old_file_name, $MEDIA_DIRECTORY)===0) {
+				$new_file_name=substr_replace($old_file_name, $path, 0, strlen($MEDIA_DIRECTORY));
+			} else {
+				$new_file_name=$old_file_name;
+			}
+			switch ($slashes) {
+			case 'backward':
+				$new_file_name=preg_replace('~/+~', '\\', $new_file_name);
+				break;
+			case 'forward':
+				$new_file_name=preg_replace('~\\+~', '/', $new_file_name);
+				break;
+			}
+			$rec=str_replace('\n1 FILE '.$old_file_name, '\n1 FILE '.$new_file_name, $rec);
+		}
+	}
 	return $rec;
 }
 
