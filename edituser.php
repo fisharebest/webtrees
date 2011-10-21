@@ -51,7 +51,6 @@ $form_rootid        =safe_POST('form_rootid',         WT_REGEX_XREF,            
 $form_theme         =safe_POST('form_theme',          $ALL_THEME_DIRS);
 $form_language      =safe_POST('form_language',       array_keys(WT_I18N::installed_languages()), WT_LOCALE          );
 $form_contact_method=safe_POST('form_contact_method');
-$form_default_tab   =safe_POST('form_default_tab',    array_keys(WT_Module::getActiveTabs()),  get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'));
 $form_visible_online=safe_POST_bool('form_visible_online');
 
 // Respond to form action
@@ -78,7 +77,6 @@ if ($form_action=='update') {
 		$_SESSION['locale']=$form_language; // switch to the new language right away
 		set_user_setting(WT_USER_ID, 'contactmethod', $form_contact_method);
 		set_user_setting(WT_USER_ID, 'visibleonline', $form_visible_online);
-		set_user_setting(WT_USER_ID, 'defaulttab',    $form_default_tab);
 		set_user_gedcom_setting(WT_USER_ID, WT_GED_ID, 'rootid', $form_rootid);
 
 		// Change username
@@ -213,11 +211,6 @@ echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline');
 echo '</td><td class="optionbox">';
 echo checkbox('form_visible_online', get_user_setting(WT_USER_ID, 'visibleonline'));
-echo '</td></tr>';
-
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Default Tab to show on Individual Information page'), help_link('edituser_user_default_tab'), '</td><td class="optionbox">';
-echo edit_field_default_tab('form_default_tab', get_user_setting(WT_USER_ID, 'defaulttab'));
 echo '</td></tr>';
 
 echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Save'), '" /></td></tr>';

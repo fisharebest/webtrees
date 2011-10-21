@@ -1439,11 +1439,6 @@ case 'FULL_SOURCES':
 	$text=WT_I18N::translate('Source citations can include fields to record the quality of the data (primary, secondary, etc.) and the date the event was recorded in the source.  If you don\'t use these fields, you can disable them when creating new source citations.');
 	break;
 
-case 'GEDCOM_DEFAULT_TAB':
-	$title=WT_I18N::translate('Default tab to show on individual page');
-	$text=WT_I18N::translate('This option allows you to choose which tab opens automatically on the Individual page when that page is accessed.');
-	break;
-
 case 'GEDCOM_ID_PREFIX':
 	$title=WT_I18N::translate('Individual ID prefix');
 	$text=WT_I18N::translate('When a new individual record is added online in <b>webtrees</b>, a new ID for that individual will be generated automatically. The individual ID will have this prefix.');
@@ -2395,11 +2390,6 @@ case 'edituser_rootid':
 	$text=WT_I18N::translate('This is the starting (Root) person of all your charts.<br /><br />If, for example, you were to click the link to the Pedigree, you would see this root person in the leftmost box.  This root person does not have to be you; you can start with any person (your grandfather or your mother\'s aunt, for instance), as long you have the rights to see that person.<br /><br />This changes the default Root person for most charts.  You can change the Root person on many charts, but that is just for that page at that particular invocation.');
 	break;
 
-case 'edituser_user_default_tab':
-	$title=WT_I18N::translate('Default tab setting');
-	$text=WT_I18N::translate('This setting allows you to specify which tab is opened automatically when you access the Individual Information page.');
-	break;
-
 case 'edituser_username':
 	$title=WT_I18N::translate('Username');
 	$text=WT_I18N::translate('You can change your username by updating it here.  Usernames are case insensitive and ignore accented letters, so that "chloe", "chlo&euml;" and "CHLOE" are considered to be the same.  Usernames may not contain the following characters: &lt;&gt;"%%{};');
@@ -2900,11 +2890,6 @@ case 'useradmin_gedcomid':
 case 'useradmin_rootid':
 	$title=WT_I18N::translate('Pedigree chart root person');
 	$text=WT_I18N::translate('For each genealogical database, you can designate a <b>Root Person</b> for the user.<br /><br />This Root Person does not need to be the user himself; it can be anybody.  The user will probably want to start the Pedigree chart with himself.  You control that, as well as the default Root person on other charts, here.<br /><br />If the user has Edit rights to his own account information, he can change this setting himself.');
-	break;
-
-case 'useradmin_user_default_tab':
-	$title=WT_I18N::translate('User default tab setting');
-	$text=WT_I18N::translate('This setting allows you to specify which tab is opened automatically when this user accesses the Individual Information page.  If allowed to edit their account, the user can change this setting later.');
 	break;
 
 case 'useradmin_verification':

@@ -312,15 +312,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		"  WHEN 'themes/simplyred/'   THEN 'colors'".
 		"  WHEN 'themes/xenea/'       THEN 'xenea'".
 		"  ELSE 'themes/webtrees/'". // ocean, simplyred/blue/green, standard, wood
-		" END".
-		" WHEN 'defaulttab' THEN".
-		"  CASE setting_value".
-		"  WHEN '1' THEN 'notes'".
-		"  WHEN '2' THEN 'sources_tab'".
-		"  WHEN '3' THEN 'media'".
-		"  WHEN '4' THEN 'relatives'".
-		"  ELSE 'personal_facts'". // -1=all and -2=last are not supported
-		" END".
+		"  END".
 		" ELSE".
 		"  CASE".
 		"  WHEN setting_value IN ('Y', 'yes') THEN 1 WHEN setting_value IN ('N', 'no') THEN 0 ELSE setting_value END".
@@ -471,11 +463,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
 			" UNION ALL".
-			" SELECT user_id, 'defaulttab', ".
-			" CASE u_defaulttab WHEN 1 THEN 'notes' WHEN 2 THEN 'sources_tab' WHEN 3 THEN 'media' WHEN 4 THEN 'relatives' ELSE 'personal_facts' END".
-			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
-			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
-			" UNION ALL".
 			" SELECT user_id, 'comment', u_comment".
 			" FROM `{$DBNAME}`.`{$TBLPREFIX}users`".
 			" JOIN `##user` ON (user_name=CONVERT(u_username USING utf8) COLLATE utf8_unicode_ci)".
@@ -607,7 +594,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'FAM_FACTS_UNIQUE',             $FAM_FACTS_UNIQUE);
 	@set_gedcom_setting($ged_id, 'FAM_ID_PREFIX',                $FAM_ID_PREFIX);
 	@set_gedcom_setting($ged_id, 'FULL_SOURCES',                 $FULL_SOURCES);
-	@set_gedcom_setting($ged_id, 'GEDCOM_DEFAULT_TAB',           $GEDCOM_DEFAULT_TAB);
 	@set_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX',             $GEDCOM_ID_PREFIX);
 	@set_gedcom_setting($ged_id, 'GENERATE_UIDS',                $GENERATE_UIDS);
 	@set_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS',           $HIDE_GEDCOM_ERRORS);

@@ -250,12 +250,12 @@ foreach ($controller->tabs as $tab) {
 		$greyed_out='';
 	}
 	if ($tab->hasTabContent()) {
-		if ($tab->getName()==$controller->default_tab || !$tab->canLoadAjax()) {
-			// The default tab and non-AJAX tabs load immediately
-			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
-		} else {
+		if ($tab->canLoadAjax()) {
 			// AJAX tabs load only when selected
 			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="',$controller->indi->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
+		} else {
+			// Non-AJAX tabs load immediately
+			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
 		}
 		echo '<span title="', $tab->getTitle(), '">', $tab->getTitle(), '</span></a></li>';
 	}
@@ -263,7 +263,7 @@ foreach ($controller->tabs as $tab) {
 echo '</ul>';
 foreach ($controller->tabs as $tab) {
 	if ($tab->hasTabContent()) {
-		if ($tab->getName()==$controller->default_tab || !$tab->canLoadAjax()) {
+		if (!$tab->canLoadAjax()) {
 			echo '<div id="', $tab->getName(), '">', $tab->getTabContent(), '</div>';
 		}
 	}

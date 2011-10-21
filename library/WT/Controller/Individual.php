@@ -35,8 +35,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 	var $pid = '';
 	var $indi = null;
 	var $diffindi = null;
-	var $default_tab = '';
-
 	var $name_count = 0;
 	var $total_names = 0;
 	var $SEX_COUNT = 0;
@@ -61,14 +59,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		}
 		if (empty($gedrec)) {
 			$gedrec = "0 @".$this->pid."@ INDI\n";
-		}
-
-		if (WT_USER_ID) {
-			// Start with the user's default tab
-			$this->default_tab=get_user_setting(WT_USER_ID, 'defaulttab');
-		} else {
-			// Start with the gedcom's default tab
-			$this->default_tab=get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB');
 		}
 
 		if (find_person_record($this->pid, WT_GED_ID) || find_updated_record($this->pid, WT_GED_ID)!==null) {
@@ -140,11 +130,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		$this->tabs = WT_Module::getActiveTabs();
 		foreach ($this->tabs as $mod) {
 			$mod->setController($this);
-			if ($mod->hasTabContent()) {
-				if (empty($this->default_tab)) {
-					$this->default_tab=$mod->getName();
-				}
-			}
 		}
 
 		if (!isset($_SESSION['WT_pin']) && $DEFAULT_PIN_STATE)

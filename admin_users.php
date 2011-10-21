@@ -64,7 +64,6 @@ $emailaddress            =safe_POST('emailaddress', WT_REGEX_EMAIL);
 $user_theme              =safe_POST('user_theme',               $ALL_THEME_DIRS);
 $user_language           =safe_POST('user_language',            array_keys(WT_I18N::installed_languages()), WT_LOCALE);
 $new_contact_method      =safe_POST('new_contact_method');
-$new_default_tab         =safe_POST('new_default_tab',          array_keys(WT_Module::getActiveTabs()), get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB'));
 $new_comment             =safe_POST('new_comment',              WT_REGEX_UNSAFE);
 $new_auto_accept         =safe_POST_bool('new_auto_accept');
 $canadmin                =safe_POST_bool('canadmin');
@@ -224,9 +223,6 @@ case 'load1row':
 	echo '<dt>', WT_I18N::translate('Theme'), '</dt>';
 	echo '<dd>', select_edit_control_inline('user_setting-'.$user_id.'-theme', array_flip(get_theme_names()), WT_I18N::translate('<default theme>'), get_user_setting($user_id, 'theme')), '</dd>';
 
-	echo '<dt>', WT_I18N::translate('Default Tab to show on Individual Information page'), '</dt>';
-	echo '<dd>', edit_field_default_tab_inline('user_setting-'.$user_id.'-defaulttab', get_user_setting($user_id, 'defaulttab', 'personal_facts')), '</dd>';
-
 	echo '<dt>', WT_I18N::translate('Visible to other users when online'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-visibleonline', get_user_setting($user_id, 'visibleonline')), '</dd>';
 
@@ -313,7 +309,6 @@ if ($action=='createuser' || $action=='edituser2') {
 			set_user_setting($user_id, 'theme',                $user_theme);
 			set_user_setting($user_id, 'language',             $user_language);
 			set_user_setting($user_id, 'contactmethod',        $new_contact_method);
-			set_user_setting($user_id, 'defaulttab',           $new_default_tab);
 			set_user_setting($user_id, 'comment',              $new_comment);
 			set_user_setting($user_id, 'auto_accept',          $new_auto_accept);
 			set_user_setting($user_id, 'canadmin',             $canadmin);
@@ -499,12 +494,6 @@ case 'createform':
 					</td>
 				</tr>
 			<?php } ?>
-			<tr>
-				<td><?php echo WT_I18N::translate('Default Tab to show on Individual Information page'), help_link('useradmin_user_default_tab'); ?></td>
-				<td colspan="3">
-					<?php echo edit_field_default_tab('new_default_tab', get_gedcom_setting(WT_GED_ID, 'GEDCOM_DEFAULT_TAB')); ?>
-				</td>
-			</tr>
 			<!-- access and relationship path details -->
 			<tr>
 				<th colspan="4"><?php print WT_I18N::translate('Family tree access and settings'); ?></th>

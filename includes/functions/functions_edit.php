@@ -289,22 +289,6 @@ function edit_field_rela($name, $selected='', $extra='') {
 	return select_edit_control($name, $rela_codes, '', $selected, $extra);
 }
 
-// Print an edit control for a default tab field
-function edit_field_default_tab($name, $selected='', $extra='') {
-	$tabs=array();
-	foreach (WT_Module::getActiveTabs() as $module) {
-		$tabs[$module->getName()]=$module->getTitle();
-	}
-	return select_edit_control($name, $tabs, null, $selected, $extra);
-}
-function edit_field_default_tab_inline($name, $selected='', $extra='') {
-	$tabs=array();
-	foreach (WT_Module::getActiveTabs() as $module) {
-		$tabs[$module->getName()]=$module->getTitle();
-	}
-	return select_edit_control_inline($name, $tabs, null, $selected, $extra);
-}
-
 /**
 * Check if the given gedcom record has changed since the last session access
 * This is used to check if the gedcom record changed between the time the user
