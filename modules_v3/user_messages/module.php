@@ -69,20 +69,20 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$title=WT_I18N::plural('%s message', '%s messages',count($usermessages), count($usermessages));
-		$content = "";
+		$content = '';
 		$content .= "<form name=\"messageform\" action=\"index.php?ctype={$ctype}\" method=\"get\" onsubmit=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">";
 		if (get_user_count()>1) {
 			$content .= '<br />'.WT_I18N::translate('Send Message')." <select name=\"touser\">";
 			$content .= '<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
-					$content .= "<option value=\"".$user_name."\">".PrintReady(getUserFullName($user_id))." ";
-					if ($TEXT_DIRECTION=="ltr") {
-						$content .= stripLRMRLM(getLRM()." - ".$user_name.getLRM());
+					$content .= "<option value=\"".$user_name."\">".PrintReady(getUserFullName($user_id)).' ';
+					if ($TEXT_DIRECTION=='ltr') {
+						$content .= stripLRMRLM(getLRM().' - '.$user_name.getLRM());
 					} else {
-						$content .= stripLRMRLM(getRLM()." - ".$user_name.getRLM());
+						$content .= stripLRMRLM(getRLM().' - '.$user_name.getRLM());
 					}
-					$content .= "</option>";
+					$content .= '</option>';
 				}
 			}
 			$content .= "</select> <input type=\"button\" value=\"".WT_I18N::translate('Send')."\" onclick=\"message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, 'messaging2', ''); return false;\" /><br /><br />";
@@ -92,56 +92,56 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$content .= WT_JS_START.'function select_all() {';
 			foreach ($usermessages as $message) {
-				$content .= 'var cb=document.getElementById("cb_message'.$message["id"].'");';
+				$content .= 'var cb=document.getElementById("cb_message'.$message['id'].'");';
 				$content .= 'cb.checked=!cb.checked;';
 			}
 			$content .= 'return false;}'.WT_JS_END;
-			$content .= "<input type=\"hidden\" name=\"action\" value=\"deletemessage\" />";
-			$content .= "<table class=\"list_table\"><tr>";
-			$content .= "<td class=\"list_label\">".WT_I18N::translate('Delete')."<br /><a href=\"javascript:;\" onclick=\"return select_all();\">".WT_I18N::translate('All')."</a></td>";
-			$content .= "<td class=\"list_label\">".WT_I18N::translate('Subject:')."</td>";
-			$content .= "<td class=\"list_label\">".WT_I18N::translate('Date Sent:')."</td>";
-			$content .= "<td class=\"list_label\">".WT_I18N::translate('Email Address:')."</td>";
-			$content .= "</tr>";
+			$content .= '<input type="hidden" name="action" value="deletemessage" />';
+			$content .= '<table class="list_table"><tr>';
+			$content .= '<td class="list_label">'.WT_I18N::translate('Delete')."<br /><a href=\"javascript:;\" onclick=\"return select_all();\">".WT_I18N::translate('All').'</a></td>';
+			$content .= '<td class="list_label">'.WT_I18N::translate('Subject:').'</td>';
+			$content .= '<td class="list_label">'.WT_I18N::translate('Date Sent:').'</td>';
+			$content .= '<td class="list_label">'.WT_I18N::translate('Email Address:').'</td>';
+			$content .= '</tr>';
 			foreach ($usermessages as $key=>$message) {
-				if (isset($message["id"])) $key = $message["id"];
-				$content .= "<tr>";
+				if (isset($message['id'])) $key = $message['id'];
+				$content .= '<tr>';
 				$content .= "<td class=\"list_value_wrap\"><input type=\"checkbox\" id=\"cb_message$key\" name=\"message_id[]\" value=\"$key\" /></td>";
-				$showmsg=preg_replace("/(\w)\/(\w)/","\$1/<span style=\"font-size:1px;\"> </span>\$2",PrintReady($message["subject"]));
+				$showmsg=preg_replace("/(\w)\/(\w)/","\$1/<span style=\"font-size:1px;\"> </span>\$2",PrintReady($message['subject']));
 				$showmsg=str_replace("@","@<span style=\"font-size:1px;\"> </span>",$showmsg);
-				$content .= "<td class=\"list_value_wrap\"><a href=\"javascript:;\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"".WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\" /> <b>".$showmsg."</b></a></td>";
-				$content .= "<td class=\"list_value_wrap\">".format_timestamp($message['created'])."</td>";
-				$content .= "<td class=\"list_value_wrap\">";
-				$user_id=get_user_id($message["from"]);
+				$content .= "<td class=\"list_value_wrap\"><a href=\"javascript:;\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGES['plus']."\" border=\"0\" alt=\"".WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\" /> <b>".$showmsg."</b></a></td>";
+				$content .= '<td class="list_value_wrap">'.format_timestamp($message['created']).'</td>';
+				$content .= '<td class="list_value_wrap">';
+				$user_id=get_user_id($message['from']);
 				if ($user_id) {
 					$content .= PrintReady(getUserFullName($user_id));
-					if ($TEXT_DIRECTION=="ltr") {
-						$content .= " " . getLRM() . " - ".htmlspecialchars(getUserEmail($user_id)) . getLRM();
+					if ($TEXT_DIRECTION=='ltr') {
+						$content .= ' '.getLRM().' - '.htmlspecialchars(getUserEmail($user_id)) . getLRM();
 					} else {
-						$content .= " " . getRLM() . " - ".htmlspecialchars(getUserEmail($user_id)) . getRLM();
+						$content .= ' '.getRLM().' - '.htmlspecialchars(getUserEmail($user_id)) . getRLM();
 					}
 				} else {
-					$content .= "<a href=\"mailto:".$message["from"]."\">".str_replace("@","@<span style=\"font-size:1px;\"> </span>",$message["from"])."</a>";
+					$content .= "<a href=\"mailto:".$message['from']."\">".str_replace("@","@<span style=\"font-size:1px;\"> </span>",$message['from']).'</a>';
 				}
-				$content .= "</td>";
-				$content .= "</tr>";
+				$content .= '</td>';
+				$content .= '</tr>';
 				$content .= "<tr><td class=\"list_value_wrap\" colspan=\"5\"><div id=\"message$key\" style=\"display: none;\">";
-				$message["body"] = nl2br(htmlspecialchars($message["body"]));
-				$message["body"] = expand_urls($message["body"]);
+				$message['body'] = nl2br(htmlspecialchars($message['body']));
+				$message['body'] = expand_urls($message['body']);
 
-				$content .= PrintReady($message["body"])."<br /><br />";
-				if (strpos($message["subject"], "RE:")===false) {
-					$message["subject"]="RE:".$message["subject"];
+				$content .= PrintReady($message['body']).'<br /><br />';
+				if (strpos($message['subject'], /* I18N: Shortcut for answer the message */ WT_I18N::translate('RE:'))===false) {
+					$message['subject']= /* I18N: Shortcut for answer the message */ WT_I18N::translate('RE:').$message['subject'];
 				}
 				if ($user_id) {
-					$content .= "<a href=\"javascript:;\" onclick=\"reply('".$user_id."', '".$message["subject"]."'); return false;\">".WT_I18N::translate('Reply')."</a> | ";
+					$content .= "<a href=\"javascript:;\" onclick=\"reply('".addslashes($message['from'])."', '".addslashes($message['subject'])."'); return false;\">".WT_I18N::translate('Reply').'</a> | ';
 				}
-				$content .= "<a href=\"index.php?action=deletemessage&amp;message_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">".WT_I18N::translate('Delete')."</a></div></td></tr>";
+				$content .= "<a href=\"index.php?action=deletemessage&amp;message_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">".WT_I18N::translate('Delete').'</a></div></td></tr>';
 			}
-			$content .= "</table>";
-			$content .= "<input type=\"submit\" value=\"".WT_I18N::translate('Delete Selected Messages')."\" /><br />";
+			$content .= '</table>';
+			$content .= '<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'" /><br />';
 		}
-		$content .= "</form>";
+		$content .= '</form>';
 
 		if ($template) {
 			if ($block) {
