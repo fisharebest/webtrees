@@ -53,8 +53,6 @@ fieldset,
 	padding:3px;
 	border:1px solid DarkGray;
 	border-radius:3px;
-	-moz-border-radius:3px;
-	-webkit-border-radius:3px;
 	font-family:inherit;
 }
 
@@ -97,8 +95,6 @@ body {
 	font:12px sans-serif; /* Use the browser's default font - give control to the user */
 	margin:0px;
 }
-
-.ui-widget { font-family:inherit; } /* We have one jQuery-UI CSS file for (all* themes.  Don't let it override our font */
 
 img {
 	border:0;
@@ -1214,7 +1210,7 @@ html[dir='rtl'] .gender, html[dir='rtl'] .aliveinyear, html[dir='rtl'] .years, h
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {	width:20%;}
 .use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float:right;}
-#separator {float:right; display: block; background: #ccc url('images/indi_sprite.png') no-repeat -26px 100px; min-width:6px; max-width:10px; width:0.75%; border: 1px solid darkGray; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; margin-top:5px;}
+#separator {float:right; display: block; background: #ccc url('images/indi_sprite.png') no-repeat -26px 100px; min-width:6px; max-width:10px; width:0.75%; border: 1px solid darkGray; border-radius-topleft:3px; border-radius-topright:3px; margin-top:5px;}
 .use-sidebar #separator { background: #ccc url('images/indi_sprite.png') no-repeat -1px 100px;}
 
 html[dir='rtl'] #indi_left {float:right;}
