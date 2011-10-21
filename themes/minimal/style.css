@@ -66,7 +66,6 @@ a:hover {
 	right:4px;
 	top:1.4em;
 	z-index:2000;
-	*top:1.7em; /* For IE7 */
 }
 html[dir='rtl'] .title, html[dir='rtl'] .hlogin, html[dir='rtl'] .htheme {float: right;}
 html[dir='rtl'] .hsearch {float: left;}
@@ -77,7 +76,6 @@ html[dir='rtl'] .favorites_form {
 	left:4px;
 	top:1.4em;
 	z-index:2000;
-	*top:1.7em; /* For IE7 */
 }
 
 /* Layout for header menu */
