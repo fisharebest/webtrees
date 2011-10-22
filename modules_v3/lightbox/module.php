@@ -27,6 +27,8 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+// prevents the error where image on Lightbox fails to close - How? I don't know
+require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
