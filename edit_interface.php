@@ -1168,9 +1168,16 @@ case 'update':
 		$tmp=new WT_GedcomRecord($gedrec);
 		list($gedrec, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 			
-		// add or remove Y
-		if ($text[0]=="Y" or $text[0]=="y") $text[0]="";
-		if (in_array($tag[0], $emptyfacts) && array_unique($text)==array("") && !$islink[0]) $text[0]="Y";
+		// If the fact has a DATE or PLAC, then delete any value of Y
+		if ($text[0]=='Y') {
+			for ($n=1; $n<count($tag); ++$n) {
+				if ($glevels[$n]==2 && ($tag[$n]=='DATE' || $tag[$n]=='PLAC') && $text[$n]) {
+					$text[0]='';
+					break;
+				}
+			}
+		}
+
 		//-- check for photo update
 		if (count($_FILES)>0) {
 			if (isset($_REQUEST['folder'])) $folder = $_REQUEST['folder'];

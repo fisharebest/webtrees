@@ -1471,15 +1471,13 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		}		
 	}
 
-	if (in_array($fact, $emptyfacts)&& (empty($value) || $value=="y" || $value=="Y")) {
-		$value = strtoupper($value);
-		//-- don't default anything to Y when adding events through people
-		//-- default to Y when specifically adding one of these events
-		if ($level==1) $value="Y"; // default YES
+	if (in_array($fact, $emptyfacts) && ($value=='' || $value=='Y' || $value=='y')) {
 		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", $value, "\" />";
 		if ($level<=1) {
-			echo "<input type=\"checkbox\" ";
-			if ($value=="Y") echo " checked=\"checked\"";
+			echo '<input type="checkbox" ';
+			if ($value) {
+				echo ' checked="checked"';
+			}
 			echo " onclick=\"if (this.checked) ", $element_id, ".value='Y'; else ", $element_id, ".value=''; \" />";
 			echo WT_I18N::translate('yes');
 		}
@@ -2289,7 +2287,7 @@ function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
 * @param string $fact the new fact we are adding
 */
 function create_add_form($fact) {
-	global $tags, $FULL_SOURCES;
+	global $tags, $FULL_SOURCES, $emptyfacts;
 
 	$tags = array();
 
@@ -2314,7 +2312,11 @@ function create_add_form($fact) {
 		if (in_array($fact, array('ASSO'))) {
 			$fact.=' @';
 		}
-		add_simple_tag("1 ".$fact);
+		if (in_array($fact, $emptyfacts)) {
+			add_simple_tag('1 '.$fact.' Y');
+		} else {
+			add_simple_tag('1 '.$fact);
+		}
 		insert_missing_subtags($tags[0]);
 		//-- handle the special SOURce case for level 1 sources [ 1759246 ]
 		if ($fact=="SOUR") {
