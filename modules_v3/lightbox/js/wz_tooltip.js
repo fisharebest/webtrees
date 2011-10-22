@@ -102,9 +102,6 @@ config. Width			= 0 		// Tooltip width; 0 for automatic adaption to tooltip cont
 									// -1: tooltip width confined to the width required for the titlebar
 //=======  END OF TOOLTIP CONFIG, DO NOT CHANGE ANYTHING BELOW  ==============//
 
-
-
-
 //=====================  PUBLIC  =============================================//
 var CB_tt="";
 function TipTog()
@@ -665,7 +662,7 @@ function tt_MkTipSubDivs()
 				('<td align="right" style="' + sCss
 				+ 'text-align:right;">'
 				+ '<span id="WzClOsE" style="position:relative;left:2px;padding-left:2px;padding-right:2px;'
-				+ 'cursor:' + (tt_ie ? 'hand' : 'pointer')
+				+ 'cursor:pointer'
 				+ ';" onmouseover="tt_OnCloseBtnOver(1)" onmouseout="tt_OnCloseBtnOver(0)" onclick="tt_HideInit()">'
 				+ tt_aV[CLOSEBTNTEXT]
 				+ '</span></td>')
@@ -906,7 +903,7 @@ function tt_OpDeHref(el)
 			el.t_href = el.getAttribute("href");
 			el.t_stats = window.status;
 			el.removeAttribute("href");
-			el.style.cursor = "hand";
+			el.style.cursor = "pointer";
 			tt_AddEvtFnc(el, "mousedown", tt_OpReHref);
 			window.status = el.t_href;
 			tt_elDeHref = el;

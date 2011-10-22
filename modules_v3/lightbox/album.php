@@ -102,4 +102,4 @@ lightbox_print_media($pid, 0, true, 3); // electronic, fiche, film
 lightbox_print_media($pid, 0, true, 4); // audio, book, coat, video, other
 lightbox_print_media($pid, 0, true, 5); // footnotes
 echo '</td>';
-echo '</tr></table>';
+echo '</tr></table><br /><br /><br /><br />'; // <br /> are needed to see the all submenu items

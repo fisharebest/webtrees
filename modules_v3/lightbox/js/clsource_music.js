@@ -1,7 +1,5 @@
 /* clsource_music.js - Author Brian Holland .... email webman@windmillway.f2s.com	-  (modified from Clsource.js - Author Pyro ... email pyrex@chello.hu)
- * @package webtrees
- * @subpackage Module
- * @version $Id$
+ * @$Id$
  * @author Brian Holland
 */
 
@@ -221,7 +219,6 @@ var CB_Close_Win		= CB_Close_Win;
 	}
 // End function keyboard ----------------------------------------------
 
-
 // Mousewheel for zooming ---------------------------------------------
 // if (zoomSet == 2) {
 	function handle(delta) {
@@ -264,7 +261,6 @@ var CB_Close_Win		= CB_Close_Win;
 	window.onmousewheel = document.onmousewheel = wheel;
 //}
 // End Mousewheel for zooming ---------------------------------------------
-
 
 // Music Player Class ----------------------------------------------
 	function Player () {
@@ -684,7 +680,6 @@ var CB_Close_Win		= CB_Close_Win;
 
 	OnLoad("load", CB_Init);
 
-
 	function CB_Init() {
 		//BH --------------- Changed following lines for IE7 arrow keys -------------
 		if (navigator.appVersion.indexOf("MSIE")!=-1){
@@ -957,7 +952,6 @@ var CB_Close_Win		= CB_Close_Win;
 			CB_Close();
 		}
 	}
-
 
 	function CB_ClickURL(a) {
 		CB_iFr.src = "";
@@ -1331,8 +1325,10 @@ var CB_Close_Win		= CB_Close_Win;
 				if (notey != "&lt;br /&gt;" && notey) {
 					CB_Txt3.innerHTML = "<a href=\"JavaScript:void(0);\" onclick=\"TipTog('<font color=#008800><b>" + CB_ImgNotes2 + ":</b></font><br />" + notey + "', CENTERWINDOW, false, DELAY, 0, TEXTALIGN, '" + CB_Alignm + "', WIDTH, -450, BGCOLOR, '#fffbcc', BALLOON, true, BALLOONSTEMWIDTH, 0, ABOVE, false, BORDERCOLOR, '', TITLEBGCOLOR, '', CLOSEBTNTEXT, 'X', CLOSEBTN, false, CLOSEBTNCOLORS, ['#ff0000', '#ffffff', '#ffffff', '#ff0000'], OFFSETY, -25, OFFSETX, 40, STICKY, true, PADDING, 6, CLICKCLOSE, true );\" ></a>";
 					CB_Txt3a.innerHTML = "<a href=\"JavaScript:void(0);\" onclick=\"TipTog('<font color=#008800><b>" + CB_ImgNotes2 + ":</b></font><br />" + notey + "', CENTERWINDOW, false, DELAY, 0, TEXTALIGN, '" + CB_Alignm + "', WIDTH, -450, BGCOLOR, '#fffbcc', BALLOON, true, BALLOONSTEMWIDTH, 0, ABOVE, false, BORDERCOLOR, '', TITLEBGCOLOR, '', CLOSEBTNTEXT, 'X', CLOSEBTN, false, CLOSEBTNCOLORS, ['#ff0000', '#ffffff', '#ffffff', '#ff0000'], OFFSETY, -25, OFFSETX, 40, STICKY, true, PADDING, 6, CLICKCLOSE, true );\" ><img id=\"CB_PicNotes\" title=\"" + CB_ImgNotes + "\" src=\"" + CB_PicDir + CB_PictureNotes + "\" alt=\"\" /></a>";
-
-					}
+				} else {
+					CB_Txt3.innerHTML = "";
+					CB_Txt3a.innerHTML = "";
+				}
 				CB_Txt2.onclick  = function () { window.location.href = 'mediaviewer.php?mid='+MIDa+'&ged='+GEDCOMa; return false; };
 				CB_Txt2a.onclick = function () { window.location.href = 'mediaviewer.php?mid='+MIDa+'&ged='+GEDCOM; return false; };
 			} else {
@@ -1521,8 +1517,6 @@ var CB_Close_Win		= CB_Close_Win;
 		return;
 	}
 
-
-
 	function closeZoom() {
 		CB_ImgWidthOld = CB_ImgWidthOrig;
 		CB_ImgHeightOld = CB_ImgHeightOrig;
@@ -1639,6 +1633,9 @@ var CB_Close_Win		= CB_Close_Win;
 			//  ENABLE NOTES DISPLAY DURING SLIDESHOW (Remove the comment on the following line)
 			//	Tip(decode_htmlspecialchars(notey1), CENTERWINDOW, true, DELAY, 0, TEXTALIGN, CB_Alignm, WIDTH, CB_ImgWidth-30, BGCOLOR, '#fffbcc', BALLOON, true, BALLOONSTEMWIDTH, 0, ABOVE, true, BORDERCOLOR, '', TITLEBGCOLOR, '', CLOSEBTNTEXT, 'X', CLOSEBTN, false, CLOSEBTNCOLORS, ['#ff0000', '#ffffff', '#ffffff', '#ff0000'], OFFSETY, -10-((DocSizeY-BrSizeY)/2)+(CB_ImgHeight/2)-(spacer), OFFSETX, 0, STICKY, true, PADDING, 6, CLICKCLOSE, true );
 
+				} else {
+					CB_Txt3.innerHTML = "";
+					CB_Txt3a.innerHTML = "";
 				}
 		} else {
 			if (CB_ShowImgURL == "be") {
@@ -1661,6 +1658,9 @@ var CB_Close_Win		= CB_Close_Win;
 					// alert(brs + " - " + spacer);
 					CB_Txt3.innerHTML = "<a href=\"JavaScript:void(0);\" onclick=\"TipTog('<font color=#008800><b>" + CB_ImgNotes2 + ":</b></font><br />" + notey2 + "', CENTERWINDOW, true, DELAY, 0, TEXTALIGN, '" + CB_Alignm + "', WIDTH, "+CB_ImgWidth+"-30, BGCOLOR, '#fffbcc', BALLOON, true , BALLOONSTEMWIDTH, 0, ABOVE, true, BORDERCOLOR, '', TITLEBGCOLOR, '', CLOSEBTNTEXT, 'X', CLOSEBTN, false, CLOSEBTNCOLORS, ['#ff0000', '#ffffff', '#ffffff', '#ff0000'], OFFSETY, 150-" + ((DocSizeY-BrSizeY)/2) + ", OFFSETX, 0, STICKY, true, PADDING, 6, CLICKCLOSE, true );\" ></a>";
 					CB_Txt3a.innerHTML = "<a href=\"JavaScript:void(0);\" onclick=\"TipTog('<font color=#008800><b>" + CB_ImgNotes2 + ":</b></font><br />" + notey2 + "', CENTERWINDOW, true, DELAY, 0, TEXTALIGN, '" + CB_Alignm + "', WIDTH, "+CB_ImgWidth+"-30, BGCOLOR, '#fffbcc', BALLOON, true, BALLOONSTEMWIDTH, 0, ABOVE, true, BORDERCOLOR, '', TITLEBGCOLOR, '', CLOSEBTNTEXT, 'X', CLOSEBTN, false, CLOSEBTNCOLORS, ['#ff0000', '#ffffff', '#ffffff', '#ff0000'], OFFSETY, -10-" + ((DocSizeY-BrSizeY)/2) + "+" +(CB_ImgHeight/2)+ "-" +(spacer)+ ", OFFSETX, 0, STICKY, true, PADDING, 6, CLICKCLOSE, true );\" ><img id=\"CB_PicNotes\" title=\"" + CB_ImgNotes + "\" src=\"" + CB_PicDir + CB_PictureNotes + "\" alt=\"\" /></a>";
+				} else {
+					CB_Txt3.innerHTML = "";
+					CB_Txt3a.innerHTML = "";
 				}
 			}
 		}
@@ -1736,12 +1736,10 @@ var CB_Close_Win		= CB_Close_Win;
 			CB_Txt2.onclick  = function () { window.location.href = 'mediaviewer.php?mid='+MID+'&ged='+GEDCOM; return false; };
 			CB_Txt2a.onclick = function () { window.location.href = 'mediaviewer.php?mid='+MID+'&ged='+GEDCOM; return false; };
 			//CB_Txt3.onclick = function () { alert(CB_Gallery[CB_ActImgId][5]); };
-
 		}else{
 			CB_Txt2.onclick  = function () { CB_Close(); };
 			CB_Txt2a.onclick = function () { CB_Close(); };
 		}
-
 		return true;
 	}
 
@@ -2054,8 +2052,6 @@ var CB_Close_Win		= CB_Close_Win;
 			}
 		}
 	}
-
-
 // ---------------------------------------------------
 
 function showFlash(){
@@ -2071,7 +2067,6 @@ function showFlash(){
 }
 
 // ---------------------------------------------------
-
 
 function hideFlash(){
 	var flashObjects = document.getElementsByTagName("object");
@@ -2213,7 +2208,6 @@ dragDrop = {
 
 	},
 
-
 	releaseElement: function() {
 		removeEventSimple(document,'mousemove',dragDrop.dragMouse);
 		removeEventSimple(document,'mouseup',dragDrop.releaseElement);
@@ -2224,7 +2218,6 @@ dragDrop = {
 		dragDrop.draggedObject = null;
 	}
 }
-
 
 function addEventSimple(obj,evt,fn) {
 	if (obj.addEventListener)
@@ -2239,5 +2232,4 @@ function removeEventSimple(obj,evt,fn) {
 	else if (obj.detachEvent)
 		obj.detachEvent('on'+evt,fn);
 }
-
 // --------------------------------------------------------------------------------------
