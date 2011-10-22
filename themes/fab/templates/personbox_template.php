@@ -3,7 +3,7 @@
  * Template for drawing person boxes
  *
  * This template expects that the following variables will be set
- *  $pid, $boxID, $personlinks, $icons, $GEDCOM, $style,
+ *  $pid, $boxID, $icons, $GEDCOM, $style,
  * $name, $classfacts, $genderImage, $BirthDeath, $isF, $outBoxAdd,
  * $addname, $showid, $float
  *
@@ -34,7 +34,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 echo
-	'<div id="I', $boxID, 'links" style="position:absolute;left:0px;top:0px;width:', $lbwidth, 'px;visibility:hidden;z-index:100;">', $personlinks, '</div>',
 	'<div id="out-', $boxID, '" ', $outBoxAdd, '>',
 		'<div class="noprint" id="icons-', $boxID, '" style="', $iconsStyleAdd, 'width:25px;height:50px;">', $icons, '</div>',
 		$thumbnail,

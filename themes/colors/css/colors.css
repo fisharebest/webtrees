@@ -403,7 +403,7 @@ div.blockcontent {
 	margin-left:auto;
 	margin-right:2px;  /* changed from auto for right side match to header */
 	margin-bottom:10px;
-	overflow:auto;
+	overflow:visible;
 	padding: 5px;
 }
 
@@ -1543,6 +1543,31 @@ display: inline;
 margin: 0;
 }
 
+.itr {
+	position: absolute;
+	display: inline-block;
+	top: 3em;
+	line-height: 1.05;
+}
+
+.block .itr, #relatives_content .itr {
+	position: relative;
+	top: 0;
+}
+
+.popup{
+	display: none;
+}
+.itr:hover .popup{
+	display: block;
+	position: absolute;
+	width: 16em;
+	padding: 0.5em;
+	left: 0.5em;
+	top: 0.5em;
+	z-index: 9999;
+}
+
 /* styles for FindFacts pop-up */
 #layDefinedTags, #tabDefinedTagsShow {
 	width:450px;
@@ -1796,7 +1821,7 @@ html[dir='rtl'] .gender, html[dir='rtl'] .aliveinyear, html[dir='rtl'] .years, h
 #separator {float:right; display:block; width:0.75%; min-width: 6px; max-width:10px; border:1px solid #999; border-top-left-radius:3px; border-top-right-radius:3px; margin-top:5px;}
 #separator {background-image: url('../images/general_sprite.png'); background-repeat: no-repeat; background-position: -26px 100px;}
 #sidebar {border-color:#ddd; display:none; margin:5px 2px 0 0; height:auto;}
-#tabs {background-color:#fff; border-color:#DDD; float:left; width:100%; overflow:auto;}
+#tabs {background-color:#fff; border-color:#DDD; float:left; width:100%; overflow:visible;}
 .sidebar-at-right #sidebar {width:20%;}
 .use-sidebar #separator {background-image: url('../images/general_sprite.png'); background-repeat: no-repeat; background-position: -1px 100px;}
 

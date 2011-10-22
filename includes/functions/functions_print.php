@@ -184,19 +184,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 					$whichID=$pid;
 				}
 
-				$icons .= "<a href=\"$click_link\" ";
-				// NOTE: Zoom
-				if ($LINK_ICONS=="mouseover") $icons .= "onmouseover=\"show_family_box('".$boxID."', '";
-				if ($LINK_ICONS=="click") $icons .= "onclick=\"toggle_family_box('".$boxID."', '";
-				if ($style==1) $icons .= "box$pid";
-				else $icons .= "relatives";
-				$icons .= "');";
-				$icons .= " return false;\" ";
-				// NOTE: Zoom
-				$icons .= "onmouseout=\"family_box_timeout('".$boxID."');";
-				$icons .= " return false;\"";
-				if (($click_link=="#")&&($LINK_ICONS!="click")) $icons .= "onclick=\"return false;\"";
-				$icons .= "><img src=\"".$WT_IMAGES["pedigree"]."\" border=\"0\" vspace=\"0\" hspace=\"0\" alt=\"".WT_I18N::translate('Links to charts, families, and close relatives of this person. Click this icon to view this page, starting at this person.')."\" title=\"".WT_I18N::translate('Links to charts, families, and close relatives of this person. Click this icon to view this page, starting at this person.')."\" /></a>";
+				$icons .= '<a class="itr" href="#"'.
+						'><img src="'.$WT_IMAGES['pedigree'].'" alt="" title="" /><span class="popup">'.$personlinks.'</span></a>';
 			}
 		}
 		else {

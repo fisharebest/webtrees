@@ -2,12 +2,12 @@
 /**
  * Template for drawing person boxes
  * This template expects that the following variables will be set
- *  $pid, $boxID, $personlinks, $icons, $GEDCOM, $style,
+ *  $pid, $boxID, $icons, $GEDCOM, $style,
  * $name, $classfacts, $genderImage, $BirthDeath, $isF, $outBoxAdd,
  * $addname, $showid, $float
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -26,8 +26,6 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @package webtrees
- * @subpackage Themes
  * @version $Id$
  */
 
@@ -35,11 +33,7 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-
 ?>
-<div id="I<?php echo $boxID; ?>links"
-	style="position:absolute; left:0px; top:0px; width:<?php echo $lbwidth; ?>px; visibility:hidden; z-index:100;">
-<?php echo $personlinks; ?></div>
 <div id="out-<?php echo $boxID; ?>" <?php echo $outBoxAdd; ?>>
 <!--  table helps to maintain spacing -->
 <table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td valign="top">

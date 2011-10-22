@@ -1326,6 +1326,31 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 .place {padding-top:5px;}
 .logo {text-align:center;}
 
+.itr {
+	position: absolute;
+	display: inline-block;
+	top: 3em;
+	line-height: 1.05;
+}
+
+.block .itr, #relatives_content .itr {
+	position: relative;
+	top: 0;
+}
+
+.popup{
+	display: none;
+}
+.itr:hover .popup{
+	display: block;
+	position: absolute;
+	width: 16em;
+	padding: 0.5em;
+	left: 0.5em;
+	top: 0.5em;
+	z-index: 9999;
+}
+
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {width:450px;}
 #tabDefinedTags {width:430px;}
@@ -1370,7 +1395,7 @@ html[dir='rtl'] .gender, html[dir='rtl'] .aliveinyear, html[dir='rtl'] .years, h
 .small_inner_block {max-height:200px; overflow:auto; font-size:10px;}
 .normal_inner_block {overflow:auto;}
 .block {background-color:#edf7fd; border:solid #81a9cb 1px; color:#000000; font-size:12px; margin-top:10px; padding:3px; vertical-align:top;}
-.blockcontent {margin:5px; font-size:13px; overflow:auto;}
+.blockcontent {margin:5px; font-size:13px; overflow:visible;}
 .blockcontent .list_table {border-spacing:0; border:solid #81a9cb 1px; border-right:0;}
 .blockcontent .list_value, .blockcontent  .list_value_wrap {border:0; border-top:solid #81a9cb 1px; border-right:solid #81a9cb 1px;}
 
@@ -1649,7 +1674,7 @@ html[dir='rtl'] .dataTables_length {float:left;}
 /* ========= Sidebar ============== */
 #main {min-width:600px; width:100%}
 #indi_left {float:left; width:98%;}
-#tabs {background-color:#ffffff; border-color:#dddddd; float:left; width:100%; overflow:auto;}
+#tabs {background-color:#ffffff; border-color:#dddddd; float:left; width:100%; overflow:visible;}
 #sidebar {border-color:#dddddd; display:none; margin:5px 2px 0 0; height:auto;}
 .use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}

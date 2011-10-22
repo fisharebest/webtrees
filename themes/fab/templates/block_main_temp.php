@@ -7,7 +7,7 @@
  * $title - the title of the block
  * $content - the content of the block
  *
- * Copyright (c) 2010 Greg Roach
+ * Copyright (c) 2011 Greg Roach
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,4 +32,4 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-echo '<div id="', $id, '" class="block"><b>', $title, '</b><br /><div style="overflow:hidden;">', $content, '</div></div>';
+echo '<div id="', $id, '" class="block"><b>', $title, '</b><br /><div style="overflow:visible;">', $content, '</div></div>';
