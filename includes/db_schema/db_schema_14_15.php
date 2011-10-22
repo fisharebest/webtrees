@@ -1,6 +1,7 @@
 <?php
 // Update the database schema from version 14 to 15
 // - delete old config settings
+// - update existing ones - we changed the default, but there is no GUI to edit it
 //
 // The script should assume that it can be interrupted at
 // any point, and be able to continue by re-running the script.
@@ -36,6 +37,9 @@ if (!defined('WT_WEBTREES')) {
 // Remove the i_isdead column
 self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name='GEDCOM_DEFAULT_TAB'");
 self::exec("DELETE FROM `##user_setting` WHERE setting_name='default'");
+
+// There is no way to add a RESN tag to NOTE objects
+self::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
 
 // Update the version to indicate success
 set_site_setting($schema_name, $next_version);
