@@ -343,21 +343,46 @@ case 'edit':
 		echo '</td></tr>';
 	}
 	echo '</table>';
-	if ($level0type=="SOUR" || $level0type=="REPO" || $level0type=="OBJE") {
-		if ($level1type!="NOTE") print_add_layer("NOTE");
-	} else {
-		if ($level1type!="SEX") {
-			if ($level1type!="SOUR" && $level1type!="REPO") print_add_layer("SOUR");
-			if ($level1type!="OBJE" && $level1type!="REPO") print_add_layer("OBJE");
-			if ($level1type!="NOTE") print_add_layer("NOTE");
-			// Shared Note addition ------------
-			if ($level1type!="SHARED_NOTE" && $level1type!="NOTE") print_add_layer("SHARED_NOTE");
-			if ($level1type!="ASSO" && $level1type!="REPO" && $level1type!="NOTE") print_add_layer("ASSO");
-			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
-			if ($level1type=="CHR" || $level1type=="MARR") print_add_layer("ASSO2");
-			// RESN can be added to all level 1 tags
-			print_add_layer("RESN");
+	switch ($level0type) {
+	case 'OBJE':
+	case 'NOTE':
+		// OBJE and NOTE "facts" are all special, and none can take lower-level links
+		break;
+	case 'SOUR':
+	case 'REPO':
+		// SOUR and REPO "facts" may only take a NOTE
+		if ($level1type!='NOTE') {
+			print_add_layer('NOTE');
 		}
+		break;
+	case 'FAM':
+	case 'INDI':
+		// FAM and INDI records have "real facts".  They can take NOTE/SOUR/OBJE/etc.
+		if ($level1type!='SEX') {
+			if ($level1type!='SOUR' && $level1type!='REPO') {
+				print_add_layer('SOUR');
+			}
+			if ($level1type!='OBJE' && $level1type!='REPO') {
+				print_add_layer('OBJE');
+			}
+			if ($level1type!='NOTE') {
+				print_add_layer('NOTE');
+			}
+			// Shared Note addition ------------
+			if ($level1type!='SHARED_NOTE' && $level1type!='NOTE') {
+				print_add_layer('SHARED_NOTE');
+			}
+			if ($level1type!='ASSO' && $level1type!='REPO' && $level1type!='NOTE') {
+				print_add_layer('ASSO');
+			}
+			// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
+			if ($level1type=='CHR' || $level1type=='MARR') {
+				print_add_layer('ASSO2');
+			}
+			// RESN can be added to all level 1 tags
+			print_add_layer('RESN');
+		}
+		break;
 	}
 
 	echo '<br /><input type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
