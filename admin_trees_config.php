@@ -728,19 +728,17 @@ echo WT_JS_START;?>
 				if ($row->xref) {
 					$record=WT_GedcomRecord::getInstance($row->xref);
 					if ($record) {
-						$name=$record->getFullName();
+						echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
 					} else {
-						$name=WT_I18N::translate('this record does not exist');
+						echo WT_I18N::translate('this record does not exist');
 					}
-					// I18N: e.g. John DOE (I1234)
-					echo WT_I18N::translate('%1$s (%2$s)', $name, $row->xref);
 				} else {
 					echo '&nbsp;';
 				}
 				echo '</td><td width="*">';
 				if ($row->tag_type) {
 					// I18N: e.g. Marriage (MARR)
-					echo WT_I18N::translate('%1$s [%2$s]', WT_Gedcom_Tag::getLabel($row->tag_type), $row->tag_type);
+					echo WT_Gedcom_Tag::getLabel($row->tag_type);
 				} else {
 					echo '&nbsp;';
 				}
