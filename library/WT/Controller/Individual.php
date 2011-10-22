@@ -273,6 +273,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 
 		echo '<div id="name1">';
 		echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
+		$dummy->setPrimaryName(0);
 		echo '<dd class="field">', $dummy->getFullName();
 		if ($this->name_count == 1) {
 			if (WT_USER_IS_ADMIN) {
