@@ -500,10 +500,10 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				echo "<table class=\"tabs_table $TEXT_DIRECTION width90\"><tr>";
 				// Get the famrecs with hits on names from the family table
 				// Get the famrecs with hits in the gedcom record from the family table
-				$myfamlist = wt_array_merge(
+				$myfamlist = array_unique(array_merge(
 					search_fams_names($filter_array, array(WT_GED_ID), 'AND'),
 					search_fams($filter_array, array(WT_GED_ID), 'AND', true)
-				);
+				));
 				if ($myfamlist) {
 					$curged = $GEDCOM;
 					echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";

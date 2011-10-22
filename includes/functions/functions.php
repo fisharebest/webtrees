@@ -2754,20 +2754,6 @@ function filename_encode($filename) {
 }
 
 /**
- * array merge function for PGV
- * the PHP array_merge function will reindex all numerical indexes
- * This function should only be used for associative arrays
- * @param array $array1
- * @param array $array2
- */
-function wt_array_merge($array1, $array2) {
-	foreach ($array2 as $key=>$value) {
-		$array1[$key] = $value;
-	}
-	return $array1;
-}
-
-/**
  * checks if the value is in an array recursively
  * @param string $needle
  * @param array $haystack
