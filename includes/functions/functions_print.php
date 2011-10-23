@@ -903,7 +903,7 @@ function write_align_with_textdir_check($t_dir, $return=false)
 // the displayed string.
 function highlight_search_hits($string) {
 	global $controller;
-	if ($controller instanceof WT_Controller_Search) {
+	if ($controller instanceof WT_Controller_Search && $controller->query) {
 		// TODO: when a search contains multiple words, we search independently.
 		// e.g. searching for "FOO BAR" will find records containing both FOO and BAR.
 		// However, we only highlight the original search string, not the search terms.
