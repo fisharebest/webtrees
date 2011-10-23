@@ -432,7 +432,6 @@ border: solid #999 1px;
 margin-left:auto;
 margin-right:2px;  /* changed from auto for right side match to header */
 margin-bottom:10px;
-font-size: 13px;
 overflow:visible;
 padding: 5px;
 }
@@ -717,6 +716,7 @@ text-align:center;
 background:#fff;
 border:1pt solid #999;
 padding:4px;
+color: #003399;
 }
 
 .facts_value02 {
