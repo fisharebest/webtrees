@@ -41,7 +41,7 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 * @param int $count on some charts it is important to keep a count of how many boxes were printed
 */
 function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
-	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $GEDCOM;
+	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $GEDCOM;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
 	global $WT_IMAGES, $ABBREVIATE_CHART_LABELS;
@@ -84,127 +84,83 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$disp=$person->canDisplayDetails();
 	$uniqueID = floor(microtime() * 1000000);
 	$boxID = $pid.".".$personcount.".".$count.".".$uniqueID;
-	$mouseAction1 = "onmouseover=\"clear_family_box_timeout('".$boxID."');\" onmouseout=\"family_box_timeout('".$boxID."');\"";
-	$mouseAction2 = " onmouseover=\"expandbox('".$boxID."', $style); return false;\" onmouseout=\"restorebox('".$boxID."', $style); return false;\"";
-	$mouseAction3 = " onmousedown=\"expandbox('".$boxID."', $style); return false;\" onmouseup=\"restorebox('".$boxID."', $style); return false;\"";
 	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
 	if ($person->canDisplayName()) {
 		if (empty($SEARCH_SPIDER)) {
-			if ($LINK_ICONS!="disabled") {
-				//-- draw a box for the family popup
-				// NOTE: Start div I.$pid.$personcount.$count.links
-				$personlinks .= "<table class=\"person_box$isF\"><tr><td class=\"details1\">";
-				// NOTE: Zoom
-				$personlinks .= "<a href=\"pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM)."\" $mouseAction1><b>".WT_I18N::translate('Pedigree')."</b></a>";
+			//-- draw a box for the family popup
+			// NOTE: Start div I.$pid.$personcount.$count.links
+			$personlinks .= "<table class=\"person_box$isF\"><tr><td class=\"details1\">";
+			// NOTE: Zoom
+			$personlinks .= "<a href=\"pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Pedigree')."</b></a>";
 
-				if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-					$personlinks .= '<br /><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid='.$pid.'&amp;ged='.WT_GEDURL.'" '.$mouseAction1.'><b>'.WT_I18N::translate('Pedigree map').'</b></a>';
-				}
-				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
-					$personlinks .= '<br /><a href="relationship.php?show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pid1='.WT_USER_GEDCOM_ID.'&amp;pid2='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL.'" '.$mouseAction1.'><b>'.WT_I18N::translate('Relationship to me').'</b></a>';
-				}
-				$personlinks .= "<br /><a href=\"descendancy.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" $mouseAction1><b>".WT_I18N::translate('Descendants')."</b></a><br />";
-				$personlinks .= "<a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Ancestors')."</b></a><br />";
-				$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Compact tree')."</b></a><br />";
-				if (function_exists("imagettftext")) {
-					$personlinks .= "<a href=\"fanchart.php?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;ged=".rawurlencode($GEDCOM)."\" ".$mouseAction1."><b>".WT_I18N::translate('Fan chart')."</b></a><br />";
-				}
-				$personlinks .= "<a href=\"hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."&amp;show_spouse={$show_spouse}\" ".$mouseAction1."><b>".WT_I18N::translate('Hourglass chart')."</b></a><br />";
-				if (array_key_exists('tree', WT_Module::getActiveModules())) {
-					$personlinks .= '<a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid.'" '.$mouseAction1.'><b>'.WT_I18N::translate('Interactive tree').'</b></a><br />';
-				}
-
-				foreach ($person->getSpouseFamilies() as $family) {
-					$spouse = $family->getSpouse($person);
-
-					$children = $family->getChildren();
-					$num = count($children);
-					if ((!empty($spouse))||($num>0)) {
-						$personlinks .= "<a href=\"".$family->getHtmlUrl()."&amp;show_full=1\" ".$mouseAction1."><b>".WT_I18N::translate('Family with spouse')."</b></a><br />";
-						if (!empty($spouse)) {
-							$personlinks .= "<a href=\"".$spouse->getHtmlUrl()."\" $mouseAction1>";
-							$personlinks .= $spouse->getFullName();
-							$personlinks .= "</a><br />";
-						}
-					}
-					foreach ($children as $child) {
-						$personlinks .= "&nbsp;&nbsp;<a href=\"".$child->getHtmlUrl()."\" $mouseAction1>";
-						$personlinks .= $child->getFullName();
-						$personlinks .= "<br /></a>";
-					}
-				}
-				$personlinks .= "</td></tr></table>";
+			if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
+				$personlinks .= '<br /><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid='.$pid.'&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Pedigree map').'</b></a>';
 			}
+			if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
+				$personlinks .= '<br /><a href="relationship.php?show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pid1='.WT_USER_GEDCOM_ID.'&amp;pid2='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Relationship to me').'</b></a>';
+			}
+			$personlinks .= "<br /><a href=\"descendancy.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Descendants')."</b></a><br />";
+			$personlinks .= "<a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Ancestors')."</b></a><br />";
+			$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Compact tree')."</b></a><br />";
+			if (function_exists("imagettftext")) {
+				$personlinks .= "<a href=\"fanchart.php?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Fan chart')."</b></a><br />";
+			}
+			$personlinks .= "<a href=\"hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."&amp;show_spouse={$show_spouse}\"><b>".WT_I18N::translate('Hourglass chart')."</b></a><br />";
+			if (array_key_exists('tree', WT_Module::getActiveModules())) {
+				$personlinks .= '<a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid.'"><b>'.WT_I18N::translate('Interactive tree').'</b></a><br />';
+			}
+
+			foreach ($person->getSpouseFamilies() as $family) {
+				$spouse = $family->getSpouse($person);
+
+				$children = $family->getChildren();
+				$num = count($children);
+				if ((!empty($spouse))||($num>0)) {
+					$personlinks .= "<a href=\"".$family->getHtmlUrl()."&amp;show_full=1\"><b>".WT_I18N::translate('Family with spouse')."</b></a><br />";
+					if (!empty($spouse)) {
+						$personlinks .= "<a href=\"".$spouse->getHtmlUrl()."\">";
+						$personlinks .= $spouse->getFullName();
+						$personlinks .= "</a><br />";
+					}
+				}
+				foreach ($children as $child) {
+					$personlinks .= "&nbsp;&nbsp;<a href=\"".$child->getHtmlUrl()."\">";
+					$personlinks .= $child->getFullName();
+					$personlinks .= "<br /></a>";
+				}
+			}
+			$personlinks .= "</td></tr></table>";
 			// NOTE: Start div out-$pid.$personcount.$count
 			if ($style==1) $outBoxAdd .= " class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden; z-index:-1;\"";
 			else $outBoxAdd .= " class=\"person_box$isF\" style=\"padding: 2px;\"";
 			// NOTE: Zoom
-			if (($ZOOM_BOXES!="disabled")&&(!$show_full)) {
-				if ($ZOOM_BOXES=="mouseover") $outBoxAdd .= $mouseAction2;
-				if ($ZOOM_BOXES=="mousedown") $outBoxAdd .= $mouseAction3;
-				if (($ZOOM_BOXES=="click")) $outBoxAdd .= $mouseAction4;
-			}
-			// NOTE: Zoom
-			if (($ZOOM_BOXES!="disabled")&&($show_full)) {
+			if (!$show_full) {
+				$outBoxAdd .= $mouseAction4;
+			} else {
 				$icons .= "<a href=\"javascript:;\"";
-				if ($ZOOM_BOXES=="mouseover") $icons .= $mouseAction2;
-				if ($ZOOM_BOXES=="mousedown") $icons .= $mouseAction3;
-				if ($ZOOM_BOXES=="click") $icons .= $mouseAction4;
+				$icons .= $mouseAction4;
 				$icons .= "><img id=\"iconz-$boxID\" src=\"".$WT_IMAGES["zoomin"]."\" border=\"0\" alt=\"".WT_I18N::translate('Zoom in/out on this box.')."\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\" /></a>";
 			}
-			if ($LINK_ICONS!="disabled") {
-				$click_link="javascript:;";
-				if (WT_SCRIPT_NAME=='pedigree.php') {
-					$click_link="pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM);
-					$whichID=$pid;
-				}
 
-				if (WT_SCRIPT_NAME=='hourglass.php') {
-					$click_link="hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM);
-					$whichID=$pid;
-				}
-
-				if (WT_SCRIPT_NAME=='ancestry.php') {
-					$click_link="ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM);
-					$whichID=$pid;
-				}
-
-				if (WT_SCRIPT_NAME=='descendancy.php') {
-					$click_link="descendancy.php?show_full={$PEDIGREE_FULL_DETAILS}&amp;pid={$pid}&amp;generations={$generations}&box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM);
-					$whichID=$pid;
-				}
-
-				if (WT_SCRIPT_NAME=='family.php' && !empty($famid)) {
-					$click_link="family.php?famid={$famid}&amp;show_full=1&amp;ged=".rawurlencode($GEDCOM);
-					$whichID=$famid;
-				}
-
-				if (WT_SCRIPT_NAME=='individual.php') {
-					$click_link="individual.php?pid={$pid}&amp;ged=".rawurlencode($GEDCOM);
-					$whichID=$pid;
-				}
-
-				$icons .= '<a class="itr" href="#"'.
-						'><img src="'.$WT_IMAGES['pedigree'].'" alt="" title="" /><span class="popup">'.$personlinks.'</span></a>';
-			}
-		}
-		else {
+			$icons .= '<a class="itr" href="#"'.
+					'><img src="'.$WT_IMAGES['pedigree'].'" alt="" title="" /><span class="popup">'.$personlinks.'</span></a>';
+		} else {
 			if ($style==1) {
 				$outBoxAdd .= "class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden;\"";
 			} else {
 				$outBoxAdd .= "class=\"person_box$isF\" style=\"overflow: hidden;\"";
 			}
 			// NOTE: Zoom
-			if (($ZOOM_BOXES!="disabled")&&(empty($SEARCH_SPIDER))) {
-				if ($ZOOM_BOXES=="mouseover") $outBoxAdd .= $mouseAction2;
-				if ($ZOOM_BOXES=="mousedown") $outBoxAdd .= $mouseAction3;
-				if (($ZOOM_BOXES=="click")) $outBoxAdd .= $mouseAction4;
+			if (!$SEARCH_SPIDER) {
+				$outBoxAdd .= $mouseAction4;
 			}
 		}
-	}
-	else {
-		if ($style==1) $outBoxAdd .= "class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden;\"";
-		else $outBoxAdd .= "class=\"person_box$isF\" style=\" overflow: hidden;\"";
+	} else {
+		if ($style==1) {
+			$outBoxAdd .= "class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden;\"";
+		} else {
+			$outBoxAdd .= "class=\"person_box$isF\" style=\" overflow: hidden;\"";
+		}
 	}
 	//-- find the name
 	$name = $person->getFullName();
@@ -268,7 +224,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			// Show DEAT or equivalent event
 			foreach (explode('|', WT_EVENTS_DEAT) as $deattag) {
 			$event = $person->getFactByType($deattag);
-			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
+			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace() || $event->getDetail()=='Y') && $event->canShow()) {
 				$BirthDeath .= $event->print_simple_fact(true);
 					if (in_array($deattag, $opt_tags)) {
 						unset ($opt_tags[array_search($deattag, $opt_tags)]);

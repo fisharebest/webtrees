@@ -568,7 +568,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	} // End public function getTabContent()
 
 	function print_pedigree_person_nav($pid, $style=1, $count=0, $personcount="1") {
-		global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS, $SCRIPT_NAME, $GEDCOM;
+		global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $SCRIPT_NAME, $GEDCOM;
 		global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 		global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
 		global $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
@@ -600,141 +600,137 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$step_parentlinks   = "";
 		$disp=$person->canDisplayDetails();
 
-		if ($person->canDisplayName()) {
-			if (empty($SEARCH_SPIDER)) {
-				if ($LINK_ICONS!="disabled") {
-					//-- draw a box for the family flyout
-					$parentlinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Parents')."</b></span><br />";
-					$step_parentlinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Parents')."</b></span><br />";
-					$spouselinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Family')."</b></span><br />";
+		if ($person->canDisplayName() && !$SEARCH_SPIDER) {
+			//-- draw a box for the family flyout
+			$parentlinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Parents')."</b></span><br />";
+			$step_parentlinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Parents')."</b></span><br />";
+			$spouselinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Family')."</b></span><br />";
 
-					$persons = "";
-					$person_parent = "";
-					$person_step = "";
+			$persons = "";
+			$person_parent = "";
+			$person_step = "";
 
-					//-- parent families --------------------------------------
-					$fams = $person->getChildFamilies();
-					foreach ($fams as $famid=>$family) {
+			//-- parent families --------------------------------------
+			$fams = $person->getChildFamilies();
+			foreach ($fams as $famid=>$family) {
 
-						if (!is_null($family)) {
-							$husb = $family->getHusband($person);
-							$wife = $family->getWife($person);
-							// $spouse = $family->getSpouse($person);
-							$children = $family->getChildren();
-							$num = count($children);
+				if (!is_null($family)) {
+					$husb = $family->getHusband($person);
+					$wife = $family->getWife($person);
+					// $spouse = $family->getSpouse($person);
+					$children = $family->getChildren();
+					$num = count($children);
 
-							// Husband ------------------------------
-							if ($husb || $num>0) {
-								if ($husb) {
-									$person_parent="Yes";
-									$parentlinks .= "<a class=\"flyout3\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
-									$parentlinks .= "&nbsp;".$husb->getFullName();
-									$parentlinks .= "</a>";
-									$parentlinks .= "<br />";
-									$natdad = "yes";
-								}
-							}
-
-							// Wife ------------------------------
-							if ($wife || $num>0) {
-								if ($wife) {
-									$person_parent="Yes";
-									$parentlinks .= "<a class=\"flyout3\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
-									$parentlinks .= "&nbsp;".$wife->getFullName();
-									$parentlinks .= "</a>";
-									$parentlinks .= "<br />";
-									$natmom = "yes";
-								}
-							}
+					// Husband ------------------------------
+					if ($husb || $num>0) {
+						if ($husb) {
+							$person_parent="Yes";
+							$parentlinks .= "<a class=\"flyout3\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
+							$parentlinks .= "&nbsp;".$husb->getFullName();
+							$parentlinks .= "</a>";
+							$parentlinks .= "<br />";
+							$natdad = "yes";
 						}
 					}
 
-					//-- step families -----------------------------------------
-					$fams = $person->getChildStepFamilies();
-					foreach ($fams as $famid=>$family) {
-						if (!is_null($family)) {
-							$husb = $family->getHusband($person);
-							$wife = $family->getWife($person);
-							// $spouse = $family->getSpouse($person);
-							$children = $family->getChildren();
-							$num = count($children);
-
-							if ($natdad == "yes") {
-							} else {
-								// Husband -----------------------
-								if ($husb || $num>0) {
-									if ($husb) {
-										$person_step="Yes";
-										$parentlinks .= "<a class=\"flyout3\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
-										$parentlinks .= "&nbsp;".$husb->getFullName();
-										$parentlinks .= "</a>";
-										$parentlinks .= "<br />";
-									}
-								}
-							}
-
-							if ($natmom != "yes") {
-								// Wife ----------------------------
-								if ($wife || $num>0) {
-									if ($wife) {
-										$person_step="Yes";
-										$parentlinks .= "<a class=\"flyout3\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
-										$parentlinks .= "&nbsp;".$wife->getFullName();
-										$parentlinks .= "</a>";
-										$parentlinks .= "<br />";
-									}
-								}
-							}
+					// Wife ------------------------------
+					if ($wife || $num>0) {
+						if ($wife) {
+							$person_parent="Yes";
+							$parentlinks .= "<a class=\"flyout3\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
+							$parentlinks .= "&nbsp;".$wife->getFullName();
+							$parentlinks .= "</a>";
+							$parentlinks .= "<br />";
+							$natmom = "yes";
 						}
-					}
-
-					// Spouse Families -------------------------------------- @var $family Family
-					foreach ($person->getSpouseFamilies() as $family) {
-						$spouse = $family->getSpouse($person);
-						$children = $family->getChildren();
-						$num = count($children);
-
-						// Spouse ------------------------------
-						if ($spouse || $num>0) {
-							if ($spouse) {
-								$spouselinks .= "<a class=\"flyout3\" href=\"".$spouse->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$spouse->getHtmlUrl()."');\">";
-								$spouselinks .= "&nbsp;".$spouse->getFullName();
-								$spouselinks .= "</a>";
-								$spouselinks .= "<br />";
-								if ($spouse->getFullName() != "") {
-									$persons = "Yes";
-								}
-							}
-						}
-
-						// Children ------------------------------   @var $child Person
-						$hasChildren = false;
-						foreach ($children as $c=>$child) {
-							if ($child) {
-								if (!$hasChildren) {
-									$hasChildren = true;
-								}
-								$persons="Yes";
-								$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
-								$spouselinks .= "<li class=\"flyout3\">";
-								$spouselinks .= "<a href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
-								$spouselinks .= $child->getFullName();
-								$spouselinks .= "</a>";
-								$spouselinks .= "</li>";
-								$spouselinks .= "</ul>";
-							}
-						}
-					}
-					if ($persons != "Yes") {
-						$spouselinks  .= "&nbsp;(".WT_I18N::translate('none').")";
-					}
-					if ($person_parent != "Yes") {
-						$parentlinks .= "&nbsp;(".WT_I18N::translate_c('unknown family', 'unknown').")";
-					}
-					if ($person_step != "Yes") {
-						$step_parentlinks .= "&nbsp;(".WT_I18N::translate_c('unknown family', 'unknown').")";
 					}
 				}
+			}
+
+			//-- step families -----------------------------------------
+			$fams = $person->getChildStepFamilies();
+			foreach ($fams as $famid=>$family) {
+				if (!is_null($family)) {
+					$husb = $family->getHusband($person);
+					$wife = $family->getWife($person);
+					// $spouse = $family->getSpouse($person);
+					$children = $family->getChildren();
+					$num = count($children);
+
+					if ($natdad == "yes") {
+					} else {
+						// Husband -----------------------
+						if ($husb || $num>0) {
+							if ($husb) {
+								$person_step="Yes";
+								$parentlinks .= "<a class=\"flyout3\" href=\"".$husb->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$husb->getHtmlUrl()."');\">";
+								$parentlinks .= "&nbsp;".$husb->getFullName();
+								$parentlinks .= "</a>";
+								$parentlinks .= "<br />";
+							}
+						}
+					}
+
+					if ($natmom != "yes") {
+						// Wife ----------------------------
+						if ($wife || $num>0) {
+							if ($wife) {
+								$person_step="Yes";
+								$parentlinks .= "<a class=\"flyout3\" href=\"".$wife->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$wife->getHtmlUrl()."');\">";
+								$parentlinks .= "&nbsp;".$wife->getFullName();
+								$parentlinks .= "</a>";
+								$parentlinks .= "<br />";
+							}
+						}
+					}
+				}
+			}
+
+			// Spouse Families -------------------------------------- @var $family Family
+			foreach ($person->getSpouseFamilies() as $family) {
+				$spouse = $family->getSpouse($person);
+				$children = $family->getChildren();
+				$num = count($children);
+
+				// Spouse ------------------------------
+				if ($spouse || $num>0) {
+					if ($spouse) {
+						$spouselinks .= "<a class=\"flyout3\" href=\"".$spouse->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$spouse->getHtmlUrl()."');\">";
+						$spouselinks .= "&nbsp;".$spouse->getFullName();
+						$spouselinks .= "</a>";
+						$spouselinks .= "<br />";
+						if ($spouse->getFullName() != "") {
+							$persons = "Yes";
+						}
+					}
+				}
+
+				// Children ------------------------------   @var $child Person
+				$hasChildren = false;
+				foreach ($children as $c=>$child) {
+					if ($child) {
+						if (!$hasChildren) {
+							$hasChildren = true;
+						}
+						$persons="Yes";
+						$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
+						$spouselinks .= "<li class=\"flyout3\">";
+						$spouselinks .= "<a href=\"".$child->getHtmlUrl()."\" onclick=\"return familyNavLoad('".$child->getHtmlUrl()."');\">";
+						$spouselinks .= $child->getFullName();
+						$spouselinks .= "</a>";
+						$spouselinks .= "</li>";
+						$spouselinks .= "</ul>";
+					}
+				}
+			}
+			if ($persons != "Yes") {
+				$spouselinks  .= "&nbsp;(".WT_I18N::translate('none').")";
+			}
+			if ($person_parent != "Yes") {
+				$parentlinks .= "&nbsp;(".WT_I18N::translate_c('unknown family', 'unknown').")";
+			}
+			if ($person_step != "Yes") {
+				$step_parentlinks .= "&nbsp;(".WT_I18N::translate_c('unknown family', 'unknown').")";
 			}
 		}
 	}

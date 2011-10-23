@@ -230,7 +230,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $KEEP_ALIVE_YEARS_BIRTH;       $KEEP_ALIVE_YEARS_BIRTH       =get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_BIRTH');
 	global $KEEP_ALIVE_YEARS_DEATH;       $KEEP_ALIVE_YEARS_DEATH       =get_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_DEATH');
 	global $LANGUAGE;                     $LANGUAGE                     =get_gedcom_setting($ged_id, 'LANGUAGE');
-	global $LINK_ICONS;                   $LINK_ICONS                   =get_gedcom_setting($ged_id, 'LINK_ICONS');
 	global $MAX_ALIVE_AGE;                $MAX_ALIVE_AGE                =get_gedcom_setting($ged_id, 'MAX_ALIVE_AGE');
 	global $MAX_DESCENDANCY_GENERATIONS;  $MAX_DESCENDANCY_GENERATIONS  =get_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS');
 	global $MAX_PEDIGREE_GENERATIONS;     $MAX_PEDIGREE_GENERATIONS     =get_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS');
@@ -289,7 +288,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $WELCOME_TEXT_AUTH_MODE;       $WELCOME_TEXT_AUTH_MODE       =get_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE');
 	global $WELCOME_TEXT_CUST_HEAD;       $WELCOME_TEXT_CUST_HEAD       =get_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD');
 	global $WORD_WRAPPED_NOTES;           $WORD_WRAPPED_NOTES           =get_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES');
-	global $ZOOM_BOXES;                   $ZOOM_BOXES                   =get_gedcom_setting($ged_id, 'ZOOM_BOXES');
 
 	global $person_privacy; $person_privacy=array();
 	global $person_facts;   $person_facts  =array();

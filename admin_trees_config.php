@@ -195,7 +195,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_BIRTH',       safe_POST('KEEP_ALIVE_YEARS_BIRTH', WT_REGEX_INTEGER, 0));
 	set_gedcom_setting(WT_GED_ID, 'KEEP_ALIVE_YEARS_DEATH',       safe_POST('KEEP_ALIVE_YEARS_DEATH', WT_REGEX_INTEGER, 0));
 	set_gedcom_setting(WT_GED_ID, 'LANGUAGE',                     safe_POST('GEDCOMLANG'));
-	set_gedcom_setting(WT_GED_ID, 'LINK_ICONS',                   safe_POST('NEW_LINK_ICONS'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_ALIVE_AGE',                safe_POST('MAX_ALIVE_AGE', WT_REGEX_INTEGER, 100));
 	set_gedcom_setting(WT_GED_ID, 'MAX_DESCENDANCY_GENERATIONS',  safe_POST('NEW_MAX_DESCENDANCY_GENERATIONS'));
 	set_gedcom_setting(WT_GED_ID, 'MAX_PEDIGREE_GENERATIONS',     safe_POST('NEW_MAX_PEDIGREE_GENERATIONS'));
@@ -269,7 +268,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE, safe_POST('NEW_WELCOME_TEXT_AUTH_MODE_4', WT_REGEX_UNSAFE));
 	set_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_CUST_HEAD',       safe_POST_bool('NEW_WELCOME_TEXT_CUST_HEAD'));
 	set_gedcom_setting(WT_GED_ID, 'WORD_WRAPPED_NOTES',           safe_POST_bool('NEW_WORD_WRAPPED_NOTES'));
-	set_gedcom_setting(WT_GED_ID, 'ZOOM_BOXES',                   safe_POST('NEW_ZOOM_BOXES'));
 	if (safe_POST('gedcom_title', WT_REGEX_UNSAFE)) {
 		set_gedcom_setting(WT_GED_ID, 'title',                        safe_POST('gedcom_title', WT_REGEX_UNSAFE));
 	}
@@ -1127,31 +1125,6 @@ echo WT_JS_START;?>
 						</td>
 						<td>
 							<input type="text" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php echo $SHOW_PEDIGREE_PLACES; ?>" size="5" maxlength="2" />
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Zoom boxes on charts'), help_link('ZOOM_BOXES'); ?>
-						</td>
-						<td>
-							<select name="NEW_ZOOM_BOXES">
-								<option value="disabled" <?php if ($ZOOM_BOXES=='disabled') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Disabled'); ?></option>
-								<option value="mouseover" <?php if ($ZOOM_BOXES=='mouseover') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('On Mouse Over'); ?></option>
-								<option value="mousedown" <?php if ($ZOOM_BOXES=='mousedown') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('On Mouse Down'); ?></option>
-								<option value="click" <?php if ($ZOOM_BOXES=='click') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('On Mouse Click'); ?></option>
-							</select>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('PopUp links on charts'), help_link('LINK_ICONS'); ?>
-						</td>
-						<td>
-							<select name="NEW_LINK_ICONS">
-								<option value="disabled" <?php if ($LINK_ICONS=='disabled') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Disabled'); ?></option>
-								<option value="mouseover" <?php if ($LINK_ICONS=='mouseover') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('On Mouse Over'); ?></option>
-								<option value="click" <?php if ($LINK_ICONS=='click') echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('On Mouse Click'); ?></option>
-							</select>
 						</td>
 					</tr>
 					<tr>

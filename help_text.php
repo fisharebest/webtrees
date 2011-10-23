@@ -1501,11 +1501,6 @@ case 'LANGUAGE':
 	$text=WT_I18N::translate('If a visitor to the site has not specified a preferred language in their browser configuration, or they have specified an unsupported language, then this language will be used.  Typically, this setting applies to search engines.');
 	break;
 
-case 'LINK_ICONS':
-	$title=WT_I18N::translate('PopUp links on charts');
-	$text=WT_I18N::translate('Allows the user to select links to other charts and close relatives of the person.<br /><br />Set to <b>Disabled</b> to disable this feature.  Set to <b>On Mouse Over</b> to popup the links when the user mouses over the icon in the box.  Set to <b>On Mouse Click</b> to popup the links when the user clicks on the icon in the box.');
-	break;
-
 case 'LOGIN_URL':
 	$title=WT_I18N::translate('Login URL');
 	$text=WT_I18N::translate('You only need to enter a Login URL if you want to redirect to a different site or location when your users login.  This is very useful if you need to switch from http to https when your users login.  Include the full URL to <i>login.php</i>.  For example, https://www.yourserver.com/webtrees/login.php .');
@@ -2044,11 +2039,6 @@ case 'WELCOME_TEXT_AUTH_MODE':
 case 'WORD_WRAPPED_NOTES':
 	$title=WT_I18N::translate('Add spaces where notes were wrapped');
 	$text=WT_I18N::translate('Some genealogy programs wrap notes at word boundaries while others wrap notes anywhere.  This can cause <b>webtrees</b> to run words together.  Setting this to <b>Yes</b> will add a space between words where they are wrapped in the original GEDCOM during the import process. If you have already imported the file you will need to re-import it.');
-	break;
-
-case 'ZOOM_BOXES':
-	$title=WT_I18N::translate('Zoom boxes on charts');
-	$text=WT_I18N::translate('Allows a user to zoom boxes on charts to get more information.<br /><br />Set to <b>Disabled</b> to disable this feature.  Set to <b>On Mouse Over</b> to zoom boxes when the user mouses over the icon in the box.  Set to <b>On Mouse Click</b> to zoom boxes when the user clicks on the icon in the box.');
 	break;
 
 	//////////////////////////////////////////////////////////////////////////////

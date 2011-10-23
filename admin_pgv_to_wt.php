@@ -624,7 +624,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	case 'russian':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'ru'); break;
 	default:           @set_gedcom_setting($ged_id, 'LANGUAGE', 'en_US'); break;
 	}
-	@set_gedcom_setting($ged_id, 'LINK_ICONS',                   $LINK_ICONS);
 	@set_gedcom_setting($ged_id, 'MAX_ALIVE_AGE',                $MAX_ALIVE_AGE);
 	@set_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS',  $MAX_DESCENDANCY_GENERATIONS);
 	@set_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS',     $MAX_PEDIGREE_GENERATIONS);
@@ -720,7 +719,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE, $WELCOME_TEXT_AUTH_MODE_4);
 	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD',       $WELCOME_TEXT_CUST_HEAD);
 	@set_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES',           $WORD_WRAPPED_NOTES);
-	@set_gedcom_setting($ged_id, 'ZOOM_BOXES',                   $ZOOM_BOXES);
 
 	// TODO import whatever privacy settings as are compatible with the new system
 

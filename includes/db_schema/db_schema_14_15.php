@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Remove the i_isdead column
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name='GEDCOM_DEFAULT_TAB'");
+self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name='GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES'");
 self::exec("DELETE FROM `##user_setting` WHERE setting_name='default'");
 
 // There is no way to add a RESN tag to NOTE objects

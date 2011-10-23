@@ -66,7 +66,6 @@ set_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE',            '');
 set_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_BIRTH',       '');
 set_gedcom_setting($ged_id, 'KEEP_ALIVE_YEARS_DEATH',       '');
 set_gedcom_setting($ged_id, 'LANGUAGE',                     WT_LOCALE); // Defualt to the current admin's language`
-set_gedcom_setting($ged_id, 'LINK_ICONS',                   'click');
 set_gedcom_setting($ged_id, 'MAX_ALIVE_AGE',                120);
 set_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS',  '15');
 set_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS',     '10');
@@ -150,7 +149,6 @@ set_gedcom_setting($ged_id, 'WEBTREES_EMAIL',               '');
 set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE',       '1');
 set_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD',       false);
 set_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES',           false);
-set_gedcom_setting($ged_id, 'ZOOM_BOXES',                   'click');
 set_gedcom_setting($ged_id, 'imported',                     0);
 set_gedcom_setting($ged_id, 'title',                        WT_I18N::translate('Genealogy from [%s]', $ged_name));
 

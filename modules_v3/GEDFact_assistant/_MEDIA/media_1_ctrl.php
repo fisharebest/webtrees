@@ -1042,7 +1042,7 @@ if ($pid=="") {
  * @param int $count on some charts it is important to keep a count of how many boxes were printed
  */
 function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", $currpid, $censyear) {
-	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $ZOOM_BOXES, $LINK_ICONS;
+	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT, $MEDIA_DIRECTORY;
 	global $WT_IMAGES, $ABBREVIATE_CHART_LABELS, $USE_MEDIA_VIEWER;
@@ -1074,365 +1074,361 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 	$step_parentlinks   = "";
 	$disp=$person->canDisplayDetails();
 
-	if ($person->canDisplayName()) {
-		if (empty($SEARCH_SPIDER)) {
-			if ($LINK_ICONS!="disabled") {
-				//-- draw a box for the family popup
-				if ($TEXT_DIRECTION=="rtl") {
-				$spouselinks .= "<table id=\"flyoutFamRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
-				$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
-				$parentlinks .= "<table id=\"flyoutParRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
-				$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
-				$step_parentlinks .= "<table id=\"flyoutStepRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
-				$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
-				} else {
-				$spouselinks .= "<table id=\"flyoutFam\" class=\"person_box$isF\"><tr><td class=\"name2 font9 ltr\">";
-				$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
-				$parentlinks .= "<table id=\"flyoutPar\" class=\"person_box$isF\"><tr><td class=\"name2 font9 ltr\">";
-				$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
-				$step_parentlinks .= "<table id=\"flyoutStep\" class=\"person_box$isF\"><tr><td class=\"name2 font9 ltr\">";
-				$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
-				}
-				$persons       = "";
-				$person_parent = "";
-				$person_step   = "";
+	if ($person->canDisplayName() && !$SEARCH_SPIDER) {
+		//-- draw a box for the family popup
+		if ($TEXT_DIRECTION=="rtl") {
+			$spouselinks .= "<table id=\"flyoutFamRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
+			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
+			$parentlinks .= "<table id=\"flyoutParRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
+			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+			$step_parentlinks .= "<table id=\"flyoutStepRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
+			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+		} else {
+			$spouselinks .= "<table id=\"flyoutFam\" class=\"person_box$isF\"><tr><td class=\"name2 font9 ltr\">";
+			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
+			$parentlinks .= "<table id=\"flyoutPar\" class=\"person_box$isF\"><tr><td class=\"name2 font9 ltr\">";
+			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+			$step_parentlinks .= "<table id=\"flyoutStep\" class=\"person_box$isF\"><tr><td class=\"name2 font9 ltr\">";
+			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+		}
+		$persons       = '';
+		$person_parent = '';
+		$person_step   = '';
 
-				//-- parent families --------------------------------------
-				foreach ($person->getChildFamilies() as $family) {
+		//-- parent families --------------------------------------
+		foreach ($person->getChildFamilies() as $family) {
 
-					if (!is_null($family)) {
-						$husb = $family->getHusband($person);
-						$wife = $family->getWife($person);
-						// $spouse = $family->getSpouse($person);
-						$children = $family->getChildren();
-						$num = count($children);
-						$marrdate = $family->getMarriageDate();
+			if (!is_null($family)) {
+				$husb = $family->getHusband($person);
+				$wife = $family->getWife($person);
+				// $spouse = $family->getSpouse($person);
+				$children = $family->getChildren();
+				$num = count($children);
+				$marrdate = $family->getMarriageDate();
 
-						// Husband ------------------------------
-						if ($husb || $num>0) {
-							if ($husb) {
-								$person_parent="Yes";
-								$tmp=$husb->getXref();
-								if ($husb->canDisplayName()) {
-									$nam   = $husb->getAllNames();
-									// $fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surn'];
-									$fulln = $husb->getFullName();
-									$givn  = rtrim($nam[0]['givn'],'*');
-									$surn  = $nam[0]['surn'];
-									if (isset($nam[1]) ) {
-										$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surn'];
-										$marn  = $nam[1]['surn'];
-									}
-									$parentlinks .= "<a href=\"javascript:opener.insertRowToTable(";
-									$parentlinks .= "'".$husb->getXref()."', "; // pid = PID
-									$parentlinks .= "'".$fulln."', "; // nam = Name
-									if ($currpid=="Wife" || $currpid=="Husband") {
-										$parentlinks .= "'Father in Law', "; // label = 1st Gen Male Relationship
-									} else {
-										$parentlinks .= "'Grand-Father', "; // label = 2st Gen Male Relationship
-									}
-									$parentlinks .= "'".$husb->getSex()."', "; // sex = Gender
-									$parentlinks .= "''".", "; // cond = Condition (Married etc)
-									$parentlinks .= "'".$husb->getbirthyear()."', "; // yob = Year of Birth
-									if ($husb->getbirthyear()>=1) {
-										$parentlinks .= "'".$censyear-$husb->getbirthyear()."', "; // age =  Census Year - Year of Birth
-									} else {
-										$parentlinks .= "''".", "; // age =  Undefined
-									}
-									$parentlinks .= "'Y'".", "; // Y/M/D = Age in Years/Months/Days
-									$parentlinks .= "''".", "; // occu  = Occupation
-									$parentlinks .= "'".$husb->getcensbirthplace()."'"; // birthpl = Birthplace
-									$parentlinks .= ");\">";
-									$parentlinks .= $husb->getFullName();
-									$parentlinks .= "</a>";
-
-								} else {
-									$parentlinks .= WT_I18N::translate('Private');
-								}
-								$natdad = "yes";
+				// Husband ------------------------------
+				if ($husb || $num>0) {
+					if ($husb) {
+						$person_parent="Yes";
+						$tmp=$husb->getXref();
+						if ($husb->canDisplayName()) {
+							$nam   = $husb->getAllNames();
+							// $fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surn'];
+							$fulln = $husb->getFullName();
+							$givn  = rtrim($nam[0]['givn'],'*');
+							$surn  = $nam[0]['surn'];
+							if (isset($nam[1]) ) {
+								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surn'];
+								$marn  = $nam[1]['surn'];
 							}
-						}
-
-						// Wife ------------------------------
-						if ($wife || $num>0) {
-							if ($wife) {
-								$person_parent="Yes";
-								$tmp=$wife->getXref();
-								if ($wife->canDisplayName()) {
-									$married = WT_Date::Compare($censdate, $marrdate);
-									$nam   = $wife->getAllNames();
-									$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
-									$givn  = rtrim($nam[0]['givn'],'*');
-									$surn  = $nam[0]['surname'];
-									if (isset($nam[1])) {
-										//$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-										$fulmn = $nam[1]['fullNN'];
-										$marn  = $nam[1]['surname'];
-									}
-									$parentlinks .= "<a href=\"javascript:opener.insertRowToTable(";
-									$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
-									// $parentlinks .= "'".$fulln."',"; // nam = Name
-
-									//if ($married>=0 && isset($nam[1])) {
-									// $parentlinks .= "'".$fulmn."',"; // nam = Full Married Name
-									//} else {
-										$parentlinks .= "'".$fulln."',"; // nam = Full Name
-									//}
-
-									if ($currpid=="Wife" || $currpid=="Husband") {
-										$parentlinks .= "'Mother in Law',"; // label = 1st Gen Female Relationship
-									} else {
-										$parentlinks .= "'Grand-Mother',"; // label = 2st Gen Female Relationship
-									}
-									$parentlinks .= "'".$wife->getSex()."',"; // sex = Gender
-									$parentlinks .= "''".","; // cond = Condition (Married etc)
-									$parentlinks .= "'".$wife->getbirthyear()."',"; // yob = Year of Birth
-									if ($wife->getbirthyear()>=1) {
-										$parentlinks .= "'".$censyear-$wife->getbirthyear()."',"; // age =  Census Year - Year of Birth
-									} else {
-										$parentlinks .= "''".","; // age =  Undefined
-									}
-									$parentlinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
-									$parentlinks .= "''".","; // occu  = Occupation
-									$parentlinks .= "'".$wife->getcensbirthplace()."'"; // birthpl = Birthplace
-									//$parentlinks .= ");\"><div id='wifePar'>";
-									$parentlinks .= ");\">";
-									//if ($married>=0 && isset($nam[1])) {
-									// $parentlinks .= $fulmn; // Full Married Name
-									//} else {
-										$parentlinks .= $wife->getFullName(); // Full Name
-									//}
-									// $parentlinks .= "</div></a>";
-									$parentlinks .= "</a>";
-								} else {
-									$parentlinks .= WT_I18N::translate('Private');
-								}
-								$parentlinks .= "<br />";
-								$natmom = "yes";
+							$parentlinks .= "<a href=\"javascript:opener.insertRowToTable(";
+							$parentlinks .= "'".$husb->getXref()."', "; // pid = PID
+							$parentlinks .= "'".$fulln."', "; // nam = Name
+							if ($currpid=="Wife" || $currpid=="Husband") {
+								$parentlinks .= "'Father in Law', "; // label = 1st Gen Male Relationship
+							} else {
+								$parentlinks .= "'Grand-Father', "; // label = 2st Gen Male Relationship
 							}
-						}
-					}
-				}
+							$parentlinks .= "'".$husb->getSex()."', "; // sex = Gender
+							$parentlinks .= "''".", "; // cond = Condition (Married etc)
+							$parentlinks .= "'".$husb->getbirthyear()."', "; // yob = Year of Birth
+							if ($husb->getbirthyear()>=1) {
+								$parentlinks .= "'".$censyear-$husb->getbirthyear()."', "; // age =  Census Year - Year of Birth
+							} else {
+								$parentlinks .= "''".", "; // age =  Undefined
+							}
+							$parentlinks .= "'Y'".", "; // Y/M/D = Age in Years/Months/Days
+							$parentlinks .= "''".", "; // occu  = Occupation
+							$parentlinks .= "'".$husb->getcensbirthplace()."'"; // birthpl = Birthplace
+							$parentlinks .= ");\">";
+							$parentlinks .= $husb->getFullName();
+							$parentlinks .= "</a>";
 
-				//-- step families -----------------------------------------
-				$fams = $person->getChildStepFamilies();
-				foreach ($fams as $family) {
-					if (!is_null($family)) {
-						$husb = $family->getHusband($person);
-						$wife = $family->getWife($person);
-						// $spouse = $family->getSpouse($person);
-						$children = $family->getChildren();
-						$num = count($children);
-						$marrdate = $family->getMarriageDate();
-
-						if ($natdad == "yes") {
 						} else {
-							// Husband -----------------------
-							if (($husb || $num>0) && $husb->getLabel() != ".") {
-								if ($husb) {
-									$person_step="Yes";
-									$tmp=$husb->getXref();
-									if ($husb->canDisplayName()) {
-										$nam   = $husb->getAllNames();
-										$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
-										//$fulln = $husb->getFullName();
-										$givn  = rtrim($nam[0]['givn'],'*');
-										$surn  = $nam[0]['surname'];
-										if (isset($nam[1])) {
-											$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-											$marn  = $nam[1]['surname'];
-										}
-
-										$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
-										$parentlinks .= $husb->getFullName();
-										$parentlinks .= "</a>";
-									} else {
-										$parentlinks .= WT_I18N::translate('Private');
-									}
-									$parentlinks .= "<br />";
-								}
-							}
+							$parentlinks .= WT_I18N::translate('Private');
 						}
+						$natdad = "yes";
+					}
+				}
 
-						if ($natmom == "yes") {
+				// Wife ------------------------------
+				if ($wife || $num>0) {
+					if ($wife) {
+						$person_parent="Yes";
+						$tmp=$wife->getXref();
+						if ($wife->canDisplayName()) {
+							$married = WT_Date::Compare($censdate, $marrdate);
+							$nam   = $wife->getAllNames();
+							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
+							$givn  = rtrim($nam[0]['givn'],'*');
+							$surn  = $nam[0]['surname'];
+							if (isset($nam[1])) {
+								//$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
+								$fulmn = $nam[1]['fullNN'];
+								$marn  = $nam[1]['surname'];
+							}
+							$parentlinks .= "<a href=\"javascript:opener.insertRowToTable(";
+							$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
+							// $parentlinks .= "'".$fulln."',"; // nam = Name
+
+							//if ($married>=0 && isset($nam[1])) {
+							// $parentlinks .= "'".$fulmn."',"; // nam = Full Married Name
+							//} else {
+								$parentlinks .= "'".$fulln."',"; // nam = Full Name
+							//}
+
+							if ($currpid=="Wife" || $currpid=="Husband") {
+								$parentlinks .= "'Mother in Law',"; // label = 1st Gen Female Relationship
+							} else {
+								$parentlinks .= "'Grand-Mother',"; // label = 2st Gen Female Relationship
+							}
+							$parentlinks .= "'".$wife->getSex()."',"; // sex = Gender
+							$parentlinks .= "''".","; // cond = Condition (Married etc)
+							$parentlinks .= "'".$wife->getbirthyear()."',"; // yob = Year of Birth
+							if ($wife->getbirthyear()>=1) {
+								$parentlinks .= "'".$censyear-$wife->getbirthyear()."',"; // age =  Census Year - Year of Birth
+							} else {
+								$parentlinks .= "''".","; // age =  Undefined
+							}
+							$parentlinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
+							$parentlinks .= "''".","; // occu  = Occupation
+							$parentlinks .= "'".$wife->getcensbirthplace()."'"; // birthpl = Birthplace
+							//$parentlinks .= ");\"><div id='wifePar'>";
+							$parentlinks .= ");\">";
+							//if ($married>=0 && isset($nam[1])) {
+							// $parentlinks .= $fulmn; // Full Married Name
+							//} else {
+								$parentlinks .= $wife->getFullName(); // Full Name
+							//}
+							// $parentlinks .= "</div></a>";
+							$parentlinks .= "</a>";
 						} else {
-							// Wife ----------------------------
-							if ($wife || $num>0) {
-								if ($wife) {
-									$person_step="Yes";
-									$tmp=$wife->getXref();
-									if ($wife->canDisplayName()) {
-										$married = WT_Date::Compare($censdate, $marrdate);
-										$nam   = $wife->getAllNames();
-										$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
-										$givn  = rtrim($nam[0]['givn'],'*');
-										$surn  = $nam[0]['surname'];
-										if (isset($nam[1])) {
-											$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-											$marn  = $nam[1]['surname'];
-										}
-										$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
-										$parentlinks .= $wife->getFullName();
-										$parentlinks .= "</a>";
-									} else {
-										$parentlinks .= WT_I18N::translate('Private');
-									}
-									$parentlinks .= "<br />";
-								}
-							}
+							$parentlinks .= WT_I18N::translate('Private');
 						}
+						$parentlinks .= "<br />";
+						$natmom = "yes";
 					}
-				}
-
-				// Spouse Families -------------------------------------- @var $family Family
-				foreach ($person->getSpouseFamilies() as $family) {
-					if (!is_null($family)) {
-						$spouse = $family->getSpouse($person);
-						$children = $family->getChildren();
-						$num = count($children);
-						$marrdate = $family->getMarriageDate();
-
-						// Spouse ------------------------------
-						if ($spouse || $num>0) {
-							if ($spouse) {
-								$tmp=$spouse->getXref();
-								if ($spouse->canDisplayName()) {
-									$married = WT_Date::Compare($censdate, $marrdate);
-									$nam   = $spouse->getAllNames();
-									$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
-									$givn  = rtrim($nam[0]['givn'],'*');
-									$surn  = $nam[0]['surname'];
-									if (isset($nam[1])) {
-										$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-										$marn  = $nam[1]['surname'];
-									}
-									$spouselinks .= "<a href=\"javascript:opener.insertRowToTable(";
-									$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
-									//$spouselinks .= "'".$fulln."',"; // nam = Name
-									//if ($married>=0 && isset($nam[1])) {
-									// $spouselinks .= "'".$fulmn."',"; // Full Married Name
-									//} else {
-										$spouselinks .= "'".$spouse->getFullName()."',"; // Full Name
-									//}
-									if ($currpid=="Son" || $currpid=="Daughter") {
-										if ($spouse->getSex()=="M") {
-											$spouselinks .= "'Son in Law',"; // label = Male Relationship
-										} else {
-											$spouselinks .= "'Daughter in Law',"; // label = Female Relationship
-										}
-									} else {
-										if ($spouse->getSex()=="M") {
-											$spouselinks .= "'Brother in Law',"; // label = Male Relationship
-										} else {
-											$spouselinks .= "'Sister in Law',"; // label = Female Relationship
-										}
-									}
-										$spouselinks .= "'".$spouse->getSex()."',"; // sex = Gender
-										$spouselinks .= "''".","; // cond = Condition (Married etc)
-										$spouselinks .= "'".$spouse->getbirthyear()."',"; // yob = Year of Birth
-										if ($spouse->getbirthyear()>=1) {
-											$spouselinks .= "'".$censyear-$spouse->getbirthyear()."',"; // age =  Census Year - Year of Birth
-										} else {
-											$spouselinks .= "''".","; // age =  Undefined
-										}
-										$spouselinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
-										$spouselinks .= "''".","; // occu  = Occupation
-										$spouselinks .= "'".$spouse->getcensbirthplace()."'"; // birthpl = Birthplace
-										$spouselinks .= ");\">";
-										// $spouselinks .= $fulln;
-										//if ($married>=0 && isset($nam[1])) {
-										// $spouselinks .= "'".$fulmn."',"; // Full Married Name
-										//} else {
-											$spouselinks .= $spouse->getFullName(); // Full Name
-										//}
-										$spouselinks .= "</a>";
-								} else {
-									$spouselinks .= WT_I18N::translate('Private');
-								}
-								$spouselinks .= "</a>";
-								if ($spouse->getFullName() != "") {
-									$persons = "Yes";
-								}
-							}
-						}
-
-						// Children ------------------------------   @var $child Person
-						$spouselinks .= "<div id='spouseFam'>";
-						$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
-						foreach ($children as $c=>$child) {
-							$cpid = $child->getXref();
-							if ($child) {
-								$persons="Yes";
-									if ($child->canDisplayName()) {
-										$nam   = $child->getAllNames();
-										$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
-										$givn  = rtrim($nam[0]['givn'],'*');
-										$surn  = $nam[0]['surname'];
-										if (isset($nam[1])) {
-											$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
-											$marn  = $nam[1]['surname'];
-										}
-										$spouselinks .= "<li>";
-										$spouselinks .= "<a href=\"javascript:opener.insertRowToTable(";
-										$spouselinks .= "'".$child->getXref()."',"; // pid = PID
-										//$spouselinks .= "'".$child->getFullName()."',"; // nam = Name
-										$spouselinks .= "'".$fulln."',"; // nam = Name
-									if ($currpid=="Son" || $currpid=="Daughter") {
-										if ($child->getSex()=="M") {
-											$spouselinks .= "'Grand-Son',"; // label = Male Relationship
-										} else {
-											$spouselinks .= "'Grand-Daughter',"; // label = Female Relationship
-										}
-									} else {
-										if ($child->getSex()=="M") {
-											$spouselinks .= "'Nephew',"; // label = Male Relationship
-										} else {
-											$spouselinks .= "'Niece',"; // label  = Female Relationship
-										}
-									}
-									$spouselinks .= "'".$child->getSex()."',"; // sex = Gender
-									$spouselinks .= "''".","; // cond = Condition (Married etc)
-									$spouselinks .= "'".$child->getbirthyear()."',"; // yob = Year of Birth
-									if ($child->getbirthyear()>=1) {
-										$spouselinks .= "'".$censyear-$child->getbirthyear()."',"; // age =  Census Year - Year of Birth
-									} else {
-										$spouselinks .= "''".","; // age =  Undefined
-									}
-									$spouselinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
-									$spouselinks .= "''".","; // occu  = Occupation
-									$spouselinks .= "'".$child->getcensbirthplace()."'"; // birthpl = Birthplace
-									$spouselinks .= ");\">";
-									$spouselinks .= $child->getFullName(); // Full Name
-									$spouselinks .= "</a>";
-									} else {
-										$spouselinks .= WT_I18N::translate('Private');
-									}
-									$spouselinks .= "</li>";
-							}
-						}
-						$spouselinks .= "</ul>";
-						$spouselinks .= "</div>";
-					}
-				}
-
-				if ($persons != "Yes") {
-					$spouselinks  .= "(" . WT_I18N::translate('none') . ")</td></tr></table>";
-				} else {
-					$spouselinks  .= "</td></tr></table>";
-				}
-
-				if ($person_parent != "Yes") {
-					$parentlinks .= "(" . WT_I18N::translate_c('unknown family', 'unknown') . ")</td></tr></table>";
-				} else {
-					$parentlinks .= "</td></tr></table>";
-				}
-
-				if ($person_step != "Yes") {
-					$step_parentlinks .= "(" . WT_I18N::translate_c('unknown family', 'unknown') . ")</td></tr></table>";
-				} else {
-					$step_parentlinks .= "</td></tr></table>";
 				}
 			}
+		}
+
+		//-- step families -----------------------------------------
+		$fams = $person->getChildStepFamilies();
+		foreach ($fams as $family) {
+			if (!is_null($family)) {
+				$husb = $family->getHusband($person);
+				$wife = $family->getWife($person);
+				// $spouse = $family->getSpouse($person);
+				$children = $family->getChildren();
+				$num = count($children);
+				$marrdate = $family->getMarriageDate();
+
+				if ($natdad == "yes") {
+				} else {
+					// Husband -----------------------
+					if (($husb || $num>0) && $husb->getLabel() != ".") {
+						if ($husb) {
+							$person_step="Yes";
+							$tmp=$husb->getXref();
+							if ($husb->canDisplayName()) {
+								$nam   = $husb->getAllNames();
+								$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
+								//$fulln = $husb->getFullName();
+								$givn  = rtrim($nam[0]['givn'],'*');
+								$surn  = $nam[0]['surname'];
+								if (isset($nam[1])) {
+									$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
+									$marn  = $nam[1]['surname'];
+								}
+
+								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
+								$parentlinks .= $husb->getFullName();
+								$parentlinks .= "</a>";
+							} else {
+								$parentlinks .= WT_I18N::translate('Private');
+							}
+							$parentlinks .= "<br />";
+						}
+					}
+				}
+
+				if ($natmom == "yes") {
+				} else {
+					// Wife ----------------------------
+					if ($wife || $num>0) {
+						if ($wife) {
+							$person_step="Yes";
+							$tmp=$wife->getXref();
+							if ($wife->canDisplayName()) {
+								$married = WT_Date::Compare($censdate, $marrdate);
+								$nam   = $wife->getAllNames();
+								$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
+								$givn  = rtrim($nam[0]['givn'],'*');
+								$surn  = $nam[0]['surname'];
+								if (isset($nam[1])) {
+									$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
+									$marn  = $nam[1]['surname'];
+								}
+								$parentlinks .= "<a href=\"individual.php?pid={$tmp}&amp;tab={$tabno}&amp;gedcom=".WT_GEDURL."\">";
+								$parentlinks .= $wife->getFullName();
+								$parentlinks .= "</a>";
+							} else {
+								$parentlinks .= WT_I18N::translate('Private');
+							}
+							$parentlinks .= "<br />";
+						}
+					}
+				}
+			}
+		}
+
+		// Spouse Families -------------------------------------- @var $family Family
+		foreach ($person->getSpouseFamilies() as $family) {
+			if (!is_null($family)) {
+				$spouse = $family->getSpouse($person);
+				$children = $family->getChildren();
+				$num = count($children);
+				$marrdate = $family->getMarriageDate();
+
+				// Spouse ------------------------------
+				if ($spouse || $num>0) {
+					if ($spouse) {
+						$tmp=$spouse->getXref();
+						if ($spouse->canDisplayName()) {
+							$married = WT_Date::Compare($censdate, $marrdate);
+							$nam   = $spouse->getAllNames();
+							$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
+							$givn  = rtrim($nam[0]['givn'],'*');
+							$surn  = $nam[0]['surname'];
+							if (isset($nam[1])) {
+								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
+								$marn  = $nam[1]['surname'];
+							}
+							$spouselinks .= "<a href=\"javascript:opener.insertRowToTable(";
+							$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
+							//$spouselinks .= "'".$fulln."',"; // nam = Name
+							//if ($married>=0 && isset($nam[1])) {
+							// $spouselinks .= "'".$fulmn."',"; // Full Married Name
+							//} else {
+								$spouselinks .= "'".$spouse->getFullName()."',"; // Full Name
+							//}
+							if ($currpid=="Son" || $currpid=="Daughter") {
+								if ($spouse->getSex()=="M") {
+									$spouselinks .= "'Son in Law',"; // label = Male Relationship
+								} else {
+									$spouselinks .= "'Daughter in Law',"; // label = Female Relationship
+								}
+							} else {
+								if ($spouse->getSex()=="M") {
+									$spouselinks .= "'Brother in Law',"; // label = Male Relationship
+								} else {
+									$spouselinks .= "'Sister in Law',"; // label = Female Relationship
+								}
+							}
+								$spouselinks .= "'".$spouse->getSex()."',"; // sex = Gender
+								$spouselinks .= "''".","; // cond = Condition (Married etc)
+								$spouselinks .= "'".$spouse->getbirthyear()."',"; // yob = Year of Birth
+								if ($spouse->getbirthyear()>=1) {
+									$spouselinks .= "'".$censyear-$spouse->getbirthyear()."',"; // age =  Census Year - Year of Birth
+								} else {
+									$spouselinks .= "''".","; // age =  Undefined
+								}
+								$spouselinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
+								$spouselinks .= "''".","; // occu  = Occupation
+								$spouselinks .= "'".$spouse->getcensbirthplace()."'"; // birthpl = Birthplace
+								$spouselinks .= ");\">";
+								// $spouselinks .= $fulln;
+								//if ($married>=0 && isset($nam[1])) {
+								// $spouselinks .= "'".$fulmn."',"; // Full Married Name
+								//} else {
+									$spouselinks .= $spouse->getFullName(); // Full Name
+								//}
+								$spouselinks .= "</a>";
+						} else {
+							$spouselinks .= WT_I18N::translate('Private');
+						}
+						$spouselinks .= "</a>";
+						if ($spouse->getFullName() != "") {
+							$persons = "Yes";
+						}
+					}
+				}
+
+				// Children ------------------------------   @var $child Person
+				$spouselinks .= "<div id='spouseFam'>";
+				$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
+				foreach ($children as $c=>$child) {
+					$cpid = $child->getXref();
+					if ($child) {
+						$persons="Yes";
+							if ($child->canDisplayName()) {
+								$nam   = $child->getAllNames();
+								$fulln = rtrim($nam[0]['givn'],'*')."&nbsp;".$nam[0]['surname'];
+								$givn  = rtrim($nam[0]['givn'],'*');
+								$surn  = $nam[0]['surname'];
+								if (isset($nam[1])) {
+									$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
+									$marn  = $nam[1]['surname'];
+								}
+								$spouselinks .= "<li>";
+								$spouselinks .= "<a href=\"javascript:opener.insertRowToTable(";
+								$spouselinks .= "'".$child->getXref()."',"; // pid = PID
+								//$spouselinks .= "'".$child->getFullName()."',"; // nam = Name
+								$spouselinks .= "'".$fulln."',"; // nam = Name
+							if ($currpid=="Son" || $currpid=="Daughter") {
+								if ($child->getSex()=="M") {
+									$spouselinks .= "'Grand-Son',"; // label = Male Relationship
+								} else {
+									$spouselinks .= "'Grand-Daughter',"; // label = Female Relationship
+								}
+							} else {
+								if ($child->getSex()=="M") {
+									$spouselinks .= "'Nephew',"; // label = Male Relationship
+								} else {
+									$spouselinks .= "'Niece',"; // label  = Female Relationship
+								}
+							}
+							$spouselinks .= "'".$child->getSex()."',"; // sex = Gender
+							$spouselinks .= "''".","; // cond = Condition (Married etc)
+							$spouselinks .= "'".$child->getbirthyear()."',"; // yob = Year of Birth
+							if ($child->getbirthyear()>=1) {
+								$spouselinks .= "'".$censyear-$child->getbirthyear()."',"; // age =  Census Year - Year of Birth
+							} else {
+								$spouselinks .= "''".","; // age =  Undefined
+							}
+							$spouselinks .= "'Y'".","; // Y/M/D = Age in Years/Months/Days
+							$spouselinks .= "''".","; // occu  = Occupation
+							$spouselinks .= "'".$child->getcensbirthplace()."'"; // birthpl = Birthplace
+							$spouselinks .= ");\">";
+							$spouselinks .= $child->getFullName(); // Full Name
+							$spouselinks .= "</a>";
+							} else {
+								$spouselinks .= WT_I18N::translate('Private');
+							}
+							$spouselinks .= "</li>";
+					}
+				}
+				$spouselinks .= "</ul>";
+				$spouselinks .= "</div>";
+			}
+		}
+
+		if ($persons != "Yes") {
+			$spouselinks  .= "(" . WT_I18N::translate('none') . ")</td></tr></table>";
+		} else {
+			$spouselinks  .= "</td></tr></table>";
+		}
+
+		if ($person_parent != "Yes") {
+			$parentlinks .= "(" . WT_I18N::translate_c('unknown family', 'unknown') . ")</td></tr></table>";
+		} else {
+			$parentlinks .= "</td></tr></table>";
+		}
+
+		if ($person_step != "Yes") {
+			$step_parentlinks .= "(" . WT_I18N::translate_c('unknown family', 'unknown') . ")</td></tr></table>";
+		} else {
+			$step_parentlinks .= "</td></tr></table>";
 		}
 	}
 }
