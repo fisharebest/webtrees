@@ -133,7 +133,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		$imgheight = $imgsize[1]+150;
 
 		// Get the tooltip link for source
-		$sour = get_gedcom_value('SOUR', 1, $rowm['m_gedrec']);
+		$sour = WT_Source::getInstance(get_gedcom_value('SOUR', 1, $rowm['m_gedrec']));
 
 		//Get media item Notes
 		$haystack = $rowm['m_gedrec'];
@@ -234,8 +234,8 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			$submenu->addClass($submenu_class, $submenu_hoverclass);
 			$menu->addSubMenu($submenu);
 			//View Source
-			if (strpos($rowm['m_gedrec'], "\n1 SOUR") && WT_Source::getInstance($sour)->canDisplayDetails()) {
-				$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('View Source') . "&nbsp;&nbsp;", WT_SERVER_NAME.WT_SCRIPT_PATH . "source.php?sid=" . $sour, "right");
+			if ($sour && $sour->canDisplayDetails()) {
+				$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('View Source') . "&nbsp;&nbsp;", $sour->getHtmlUrl(), "right");
 				$submenu->addClass($submenu_class, $submenu_hoverclass);
 				$menu->addSubMenu($submenu);
 			}
