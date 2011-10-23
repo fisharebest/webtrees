@@ -28,8 +28,8 @@
 html {overflow-y:scroll;}
 
 body {
-	color:#000000;
-	background-color:#ffffff;
+	color:#000;
+	background-color:#fff;
 	font:12px tahoma, arial, helvetica, sans-serif;
 	margin:1px;
 	padding-left:5px;
@@ -46,12 +46,12 @@ legend {
 }
 
 a {
-	color:#555555;
+	color:#555;
 	text-decoration:none;
 }
 
 a:hover {
-	color:#ff0000;
+	color:#f00;
 	text-decoration:none;
 }
 
@@ -95,7 +95,7 @@ img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img  {
 
 #footer {
 	clear:both;
-	color:#000000;
+	color:#000;
 	font-size:12px;
 	padding-top:10px;
 	text-align:center;
@@ -126,13 +126,13 @@ img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img  {
 }
 
 .person_boxNN {
-	background-color:#ffffff;
+	background-color:#fff;
 	border:dashed #81a9cb 1px;
 	padding:2px;
 }
 
 .person_box:target, .news_box:target, #gedcom_stats:target {
-	background-color:#ffffcc;
+	background-color:#ffc;
 }
 
 .list_table {
@@ -150,7 +150,7 @@ table.center {
 }
 
 .list_label, .list_label_wrap {
-	color:#ffffff;
+	color:#fff;
 	background-color:#81a9cb;
 	font-weight:bold;
 	font-size:12px;
@@ -159,7 +159,7 @@ table.center {
 
 .list_value, .list_value_wrap {
 	background-color:#edf7f9;
-	color:#555555;
+	color:#555;
 	border:solid #81a9cb 1px;
 	font-size:12px;
 	vertical-align:top;
@@ -182,7 +182,7 @@ table.center {
 }
 
 .facts_label {
-	color:#ffffff;
+	color:#fff;
 	background-color:#81a9cb;
 	font-size:12px;
 	padding:4px 4px 4px 4px;
@@ -191,9 +191,9 @@ table.center {
 }
 
 .facts_label02, .facts_label03 {
-	color:#ffffff;
+	color:#fff;
 	font-size:12px;
-	padding:4px 4px 4px 4px;
+	padding:4px;
 	text-align:center;
 	font-weight:bold;
 }
@@ -208,42 +208,42 @@ table.center {
 
 .facts_value {
 	background-color:#edf7fd;
-	color:#000000;
+	color:#000;
 	border:solid #81a9cb 1px;
 	font-size:12px;
-	padding:4px 4px 4px 4px;
+	padding:4px;
 }
 
 .facts_value02 {
 	background-color:#edf7fd;
-	color:#000000;
+	color:#000;
 	border:solid #81a9cb 1px;
 	font-size:12px;
 	padding:5px;
 }
 
 .facts_labelred, .facts_labelblue {
-	color:#ffffff;
+	color:#fff;
 	background-color:#81a9cb;
 	font-size:12px;
-	padding:4px 4px 4px 4px;
+	padding:4px;
 	width:20%;
 	text-align:center;
 }
 
 .facts_valuered, .facts_valueblue {
 	background-color:#edf7fd;
-	color:#000000;
+	color:#000;
 	font-size:12px;
-	padding:4px 4px 4px 4px;
+	padding:4px;
 }
 
 .facts_labelred, .facts_valuered {
-	border:solid #ff0000 2px;
+	border:solid #f00 2px;
 }
 
 .facts_labelblue, .facts_valueblue {
-	border:solid #0000ff 2px;
+	border:solid #00f 2px;
 }
 
 .tabs_table {
@@ -251,7 +251,7 @@ table.center {
 }
 
 .tab_cell_active {
-	background-color:#ffffff;
+	background-color:#fff;
 	border-left:outset #81a9cb 2px;
 	border-top:outset #81a9cb 2px;
 	border-right:outset #81a9cb 2px;
@@ -281,14 +281,11 @@ table.center {
 }
 
 .tab_cell_inactive_empty a {
-	color:#999999;
+	color:#999;
 }
 
 .tab_active_bottom {
-	border-top:none;
-	border-bottom:none;
-	border-left:none;
-	border-right:none;
+	border:none;
 	height:5px;
 }
 
@@ -308,28 +305,28 @@ table.center {
 }
 
 .name1 {
-	color:#333333;
+	color:#333;
 	font-weight:bold; font-size:11px;
 }
 
 a:hover .name1 {
-	color:#ff0000;
+	color:#f00;
 	font-weight:bold; font-size:11px;
 }
 
 a:hover .name2 {
-	color:#ff0000;
+	color:#f00;
 	font-weight:bold; font-size:12px;
 }
 
 a:hover .nameZoom {
-	color:#ff0000;
+	color:#f00;
 	font-weight:bold; font-size:14px;
 }
 
 
 .name2 {
-	color:#333333;
+	color:#333;
 	font-weight:bold; font-size:12px;
 }
 
@@ -342,7 +339,7 @@ a:hover .nameZoom {
 }
 
 .nameZoom {
-	color:#333333;
+	color:#333;
 	font-weight:bold; font-size:14px;
 }
 
@@ -356,7 +353,7 @@ a:hover .nameZoom {
 }
 
 .name_head {
-	color:#333333;
+	color:#333;
 	font-weight:bold; font-size:16px;
 	letter-spacing:.2px;
 	line-height:2;
@@ -364,7 +361,7 @@ a:hover .nameZoom {
 }
 
 .date {
-	color:#333377;
+	color:#337;
 }
 
 .field {
@@ -375,18 +372,18 @@ a:hover .nameZoom {
 }
 
 .error {
-	color:#dd0000;
+	color:#d00;
 	font-weight:bold;
 }
 
 .largeError {
-	color:#dd0000;
+	color:#d00;
 	font-size:large;
 	font-weight:bold;
 }
 
 .warning {
-	color:#ff0000;
+	color:#f00;
 	font-weight:bold;
 }
 
@@ -492,7 +489,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .parentdeath {
-	border:thin solid #808080;
+	border:thin solid #888;
 	padding:1px;
 }
 
@@ -518,13 +515,13 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .hit-counter {
-	background:#000000;
-	color:#ffffff;
+	background:#000;
+	color:#fff;
 	font-weight:bold;
 }
 
 .border1 {
-	border:solid #000000 1px;
+	border:solid #000 1px;
 }
 
 .header_select {
@@ -541,21 +538,21 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 .menuitem {
-	color:#555555;
+	color:#555;
 	text-decoration:none;
 	font-size:11px;
 	padding:1px;
 }
 
 .menuitem_hover {
-	color:#000000;
+	color:#000;
 	text-decoration:none;
 	font-size:11px;
 	padding:1px;
 }
 
 .submenu {
-	color:#000000;
+	color:#000;
 	text-decoration:none;
 	font-size:11px;
 	background-color:#edf7fd;
@@ -569,7 +566,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .submenuitem {
 	vertical-align:middle;
 	height:20px;
-	color:#555555;
+	color:#555;
 	text-decoration:none;
 	font-size:11px;
 	background-color:#edf7fd;
@@ -580,7 +577,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .submenuitem_hover {
 	vertical-align:middle;
 	height:20px;
-	color:#000000;
+	color:#000;
 	font-size:11px;
 	background-color:#e6f0fa;
 	white-space:nowrap;
@@ -599,11 +596,11 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 .news_title {
 	font-weight:bold; font-size:14px;
-	color:#000000;
+	color:#000;
 }
 
 .news_date {
-	color:#000000;
+	color:#000;
 	margin-bottom:12px;
 }
 
@@ -620,7 +617,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 .rtl_cal_day {
 	direction:rtl;
 	float:right;
-	color:#0000ff;
+	color:#00f;
 	font-weight:bold;
 }
 
@@ -637,19 +634,19 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	margin:10px;
 	font-size:18px;
 	font-weight:bold;
-	color:#000000;
+	color:#000;
 }
 
 .helpstart {
 	margin:10px;
 	font-weight:bold; font-size:14px;
-	color:#0000ff;
+	color:#00f;
 	text-decoration:none;
 }
 
 .helptext {
 	font-size:12px;
-	color:#000000;
+	color:#000;
 }
 
 /*-- pedigree chart specific stylesheets --*/
@@ -661,8 +658,8 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 
 /*-- pedigree chart rtl specific stylesheets --*/
 html[dir='rtl'] #pedigree_chart {
-left:auto;
-right:10px;
+	left:auto;
+	right:10px;
 }
 
 /*-- descendancy chart specific stylesheets --*/
@@ -687,9 +684,9 @@ right:10px;
 
 /*-- descendancy chart rtl specific stylesheets --*/
 html[dir='rtl'] #descendancy_chart ul {
-background-position:right top;
-margin:0 15px 0 0;
-left:auto;
+	background-position:right top;
+	margin:0 15px 0 0;
+	left:auto;
 }
 
 /*-- relationship chart specific stylesheets --*/
@@ -727,15 +724,15 @@ html[dir='rtl'] #relationship_chart {
 
 /*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {
-background-position:right top;
-margin:0 15px 0 0;
-left:auto;
+	background-position:right top;
+	margin:0 15px 0 0;
+	left:auto;
 }
 
 html[dir='rtl'] #ancestry_chart li {
-margin:0;
-padding:0 2px 0 0;
-left:auto;
+	margin:0;
+	padding:0 2px 0 0;
+	left:auto;
 }
 
 /*-- timeline chart specific styles --*/
@@ -749,56 +746,53 @@ left:auto;
 }
 
 .person0 {
-	background-color:#aaaaff;
-	border:outset #aaaaff 1px;
+	background-color:#aaf;
+	border:outset #aaf 1px;
 	vertical-align:top;
 }
 
 .person1 {
-	background-color:#aaffaa;
-	border:outset #aaffaa 1px;
+	background-color:#afa;
+	border:outset #afa 1px;
 	vertical-align:top;
 }
 
 .person2 {
-	background-color:#ffaaaa;
-	border:outset #ffaaaa 1px;
+	background-color:#faa;
+	border:outset #faa 1px;
 	vertical-align:top;
 }
 
 .person3 {
-	background-color:#5555ff;
-	border:outset #5555ff 1px;
+	background-color:#55f;
+	border:outset #55f 1px;
 	vertical-align:top;
 }
 
 .person4 {
-	background-color:#ff5555;
-	border:outset #ff5555 1px;
+	background-color:#f55;
+	border:outset #f55 1px;
 	vertical-align:top;
 }
 
 .person5 {
-	background-color:#55ff55;
-	border:outset #55ff55 1px;
+	background-color:#5f5;
+	border:outset #5f5 1px;
 	vertical-align:top;
 }
 
 .listlog {
 	line-height:20pt;
-	color:#555555;
+	color:#555;
 }
 
 input, button, textarea {
-	border-top-color:#ffffff;
-	border-left-color:#ffffff;
-	border-right-color:#000066;
-	border-bottom-color:#000066;
-	border-top-width:1px;
-	border-left-width:1px;
-	border-bottom-width:1px;
+	border-top-color:#fff;
+	border-left-color:#fff;
+	border-right-color:#006;
+	border-bottom-color:#006;
+	border-width:1px;
 	font-size:12px;
-	border-right-width:1px;
 }
 
 input, textarea {
@@ -815,15 +809,8 @@ input.image {
 }
 
 select {
-	border-top-color:#84beff;
-	border-left-color:#84beff;
-	border-right-color:#84beff;
-	border-bottom-color:#84beff;
-	border-top-width:1px;
-	border-left-width:1px;
-	border-bottom-width:1px;
+	border:solid #84beff 1px;
 	font-size:12px;
-	border-right-width:1px;
 }
 
 form {
@@ -831,12 +818,12 @@ form {
 }
 
 h2 {
-	color:#000066;
+	color:#066;
 	font-weight:bold; font-size:18px;
 }
 
 h4 {
-	color:#000066;
+	color:#006;
 	font-weight:bold; font-size:12px;
 }
 
@@ -849,7 +836,7 @@ h4 {
 }
 
 .search_hit {
-	background-color:#ffff00;
+	background-color:#ff0;
 }
 
 .title {
@@ -881,7 +868,7 @@ html[dir='rtl'] .header_search {
 
 /* Style for the top and bottom bar */
 .topbottombar {
-	color:#ffffff;
+	color:#fff;
 	background-color:#81a9cb;
 	font-weight:bold; font-size:12px;
 	padding:4px;
@@ -892,7 +879,7 @@ html[dir='rtl'] .header_search {
 /* facts_value */
 .subbar {
 	background-color:#d1d9ef;
-	color:#000000;
+	color:#000;
 	border:solid #81a9cb 1px;
 	font-size:11px;
 	vertical-align:top;
@@ -902,7 +889,7 @@ html[dir='rtl'] .header_search {
 
 /* Style for the descriptionbox */
 .descriptionbox {
-	color:#ffffff;
+	color:#fff;
 	background-color:#81a9cb;
 	font-size:12px;
 	vertical-align:top;
@@ -917,7 +904,7 @@ html[dir='rtl'] .header_search {
 /* Style for the optionbox */
 .optionbox {
 	background-color:#d1d9ef;
-	color:#000000;
+	color:#000;
 	border:solid #81a9cb 1px;
 	font-size:12px;
 	vertical-align:top;
@@ -931,7 +918,7 @@ html[dir='rtl'] .header_search {
 
 /* Colors */
 .red {
-	color:#ff0000;
+	color:#f00;
 }
 
 .rela {
@@ -1027,11 +1014,11 @@ html[dir='rtl'] .header_search {
 
 /* Pending edits */
 .change_new, .nameblue {
-	border:solid #0000ff 2px !important;
+	border:solid #00f 2px !important;
 }
 
 .change_old, .namered {
-	color:#000000 !important;
+	color:#000 !important;
 	text-decoration:line-through !important;
 }
  /* ====== */
@@ -1043,7 +1030,7 @@ html[dir='rtl'] .header_search {
 a.showit {
 	position:relative;
 	z-index:24;
-	color:#000000;
+	color:#000;
 	text-decoration:none;
 }
 
@@ -1066,11 +1053,11 @@ a.showit:hover > span {
 	border-style:outset;
 	border-left:15px outset #1f1f1f;
 	border-top:2px solid #1f1f1f;
-	border-bottom:2px solid #000000;
-	border-right:2px solid #000000;
+	border-bottom:2px solid #000;
+	border-right:2px solid #000;
 	padding:3px;
 	background:#4f4f4f;
-	color:#ffffff;
+	color:#fff;
 	font-size:15px;
 	text-align:left;
 	opacity:.85;
@@ -1088,15 +1075,15 @@ a.showit:hover > span {
 	width:99.5%;
 	height:600px;
 	overflow:hidden;
-	border:solid #0000ff 1px;
+	border:solid #00f 1px;
 }
 
 .lifespan_outer a {
-	color:#000000;
+	color:#000;
 }
 
 .lifespan_outer a:hover {
-	color:#ff0000;
+	color:#f00;
 	text-decoration:none;
 }
 
@@ -1106,7 +1093,7 @@ a.showit:hover > span {
 	left:-10px;
 	top:-65px;
 	z-index:2;
-	background-color:#ffffff;
+	background-color:#fff;
 }
 
 .lifespan_people {
@@ -1118,7 +1105,7 @@ a.showit:hover > span {
 }
 .iwstyle {
 	width:360px;
-	/*background-color:#ffffff;*/
+	/*background-color:#fff;*/
 }
 .iwstyle a {
 }
@@ -1151,26 +1138,26 @@ a.showit:hover > span {
 	width:70px;
 	text-align:center;
 	padding:2px;
-	border:1px solid #000000;
+	border:1px solid #000;
 	cursor:pointer;
 	float:left;
 	margin-left:2px;
 }
 #map_type li.non_active
 {
-	background:#ffffff;
-	color:#000000;
+	background:#fff;
+	color:#000;
 	font-weight:normal;
 }
 #map_type li.active
 {
-	background:#808080;
-	color:#ffffff;
+	background:#888;
+	color:#fff;
 	font-weight:bold;
 }
 #map_type li:hover
 {
-	background:#dddddd;
+	background:#ddd;
 }
 
 .tag_cloud {
@@ -1187,8 +1174,8 @@ a.showit:hover > span {
 
 .ac_results {
 	padding:0;
-	border:1px solid #000000;
-	background-color:#ffffff;
+	border:1px solid #000;
+	background-color:#fff;
 	overflow:hidden;
 	z-index:99999;
 }
@@ -1222,16 +1209,16 @@ a.showit:hover > span {
 }
 
 .ac_loading {
-	background:#ffffff url(../../images/indicator.gif) right center no-repeat;
+	background:#fff url(../../images/indicator.gif) right center no-repeat;
 }
 
 .ac_odd {
-	background-color:#eeeeee;
+	background-color:#eee;
 }
 
 .ac_over {
 	background-color:#0a246a;
-	color:#ffffff;
+	color:#fff;
 }
 /* End of Autocomplete styles*/
 
@@ -1271,7 +1258,7 @@ form, button, input {display:none;} /* buttons and input are used out of forms i
 ul.clist {
 	list-style-image:none;
 	text-decoration:none;
-	color:#000000;
+	color:#000;
 	margin:0;
 }
 
@@ -1322,33 +1309,33 @@ dd {
 	clear:both;
 }
 
-td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when it is a link as when not */
+td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it is a link as when not */
 .place {padding-top:5px;}
 .logo {text-align:center;}
 
 .itr {
-	position: absolute;
-	display: inline-block;
-	top: 3em;
-	line-height: 1.05;
+	position:absolute;
+	display:inline-block;
+	top:3em;
+	line-height:1.05;
 }
 
 .block .itr, #relatives_content .itr {
-	position: relative;
-	top: 0;
+	position:relative;
+	top:0;
 }
 
 .popup{
-	display: none;
+	display:none;
 }
 .itr:hover .popup{
-	display: block;
-	position: absolute;
-	width: 16em;
-	padding: 0.5em;
-	left: 0.5em;
-	top: 0.5em;
-	z-index: 9999;
+	display:block;
+	position:absolute;
+	width:16em;
+	padding:0.5em;
+	left:0.5em;
+	top:0.5em;
+	z-index:9999;
 }
 
 /* styles for FindFacts pop-up */
@@ -1356,10 +1343,10 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 #tabDefinedTags {width:430px;}
 #layDefinedTags {margin-left:auto;margin-right:auto; height:285px;overflow:auto; border:inset 2px buttonface;}
 #tabDefinedTags {border-collapse:collapse;}
-#tabDefinedTags th,#tabDefinedTags td {border:solid 1px #000000;margin:0; padding:3px;}
+#tabDefinedTags th,#tabDefinedTags td {border:solid 1px #000;margin:0; padding:3px;}
 #tabDefinedTags tbody th {text-align:left;font-weight:bold;}
-#tabDefinedTags tr.sel {background-color:#d1d9ef;color:#888888;}
-#tabDefinedTags tr.unsel {background-color:#ffffff;color:#888888;}
+#tabDefinedTags tr.sel {background-color:#d1d9ef;color:#888;}
+#tabDefinedTags tr.unsel {background-color:#fff;color:#888;}
 #tabDefinedTagsShow {margin-left:auto;margin-right:auto;}
 #tabDefinedTagsShow td {width:50%;text-align:center;}
 #tabFilterAndCustom {margin-left:auto;margin-right:auto;}
@@ -1370,7 +1357,7 @@ td.descriptionbox  a {color:#ffffff;}/* this keeps the tag color the same when i
 .source-list, .note-list, .repo-list, .media-list, .indi-list  {margin:5px auto; visibility:hidden; text-align:center; width:98%;}
 .source-list table, .note-list table, .repo-list table, .media-list table, .indi-list table  {width:100%;}
 .source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td {padding:2px 5px;}
-.indi-list td {color:#555555;}
+.indi-list td {color:#555;}
 .indi-list .stats {margin:0 auto; width:auto;}
 .source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th {cursor:pointer; font-weight:600; padding:2px 4px; white-space:nowrap;}
 .source-list th:last-child, .note-list th:last-child, .repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
@@ -1394,7 +1381,7 @@ html[dir='rtl'] .gender, html[dir='rtl'] .aliveinyear, html[dir='rtl'] .years, h
 #random_picture {text-align:center;}
 .small_inner_block {max-height:200px; overflow:auto; font-size:10px;}
 .normal_inner_block {overflow:auto;}
-.block {background-color:#edf7fd; border:solid #81a9cb 1px; color:#000000; font-size:12px; margin-top:10px; padding:3px; vertical-align:top;}
+.block {background-color:#edf7fd; border:solid #81a9cb 1px; color:#000; font-size:12px; margin-top:10px; padding:3px; vertical-align:top;}
 .blockcontent {margin:5px; font-size:13px; overflow:visible;}
 .blockcontent .list_table {border-spacing:0; border:solid #81a9cb 1px; border-right:0;}
 .blockcontent .list_value, .blockcontent  .list_value_wrap {border:0; border-top:solid #81a9cb 1px; border-right:solid #81a9cb 1px;}
@@ -1422,7 +1409,7 @@ html[dir='rtl'] .faq_edit {float:left;}
 #main-menu   li:hover > ul {display:block; position:absolute; top:0; left:100%; right:auto;}
 #main-menu > li:hover > ul {left:0; right:auto; top:66px;}
 #main-menu   a {display:block; white-space:nowrap; overflow:hidden;}
-#main-menu   ul {position:absolute; display:none; background:#ffffff; border:thin solid #aaaaaa; padding:5px 0; z-index:999;}
+#main-menu   ul {position:absolute; display:none; background:#fff; border:thin solid #aaa; padding:5px 0; z-index:999;}
 #main-menu li a {margin:auto; padding-top:52px; width:100%;}
 #main-menu  li li a {display:block; position:relative; float:left; font-size:11px; line-height:1.5; padding:1px 10px 1px 5px;}
 
@@ -1543,10 +1530,10 @@ html[dir='rtl'] #main-menu  li li a {float:right;padding:1px 5px 1px 10px;}
 #extra-menu {float:right;white-space:nowrap; margin:20px 10px 0 0;}
 #extra-menu.makeMenu li ul {left:auto; right:0;}
 #extra-menu a {background:none; display:inline;}
-.makeMenu {color:#555555; font-weight:bold;}
+.makeMenu {color:#555; font-weight:bold;}
 .makeMenu li {display:inline; position:relative; white-space:nowrap; border-left:2px solid; padding:0 5px;}
 .makeMenu li:first-child, .makeMenu li ul li  {border:none;}
-.makeMenu li ul {display:none; font-weight:normal; position:absolute; left:0; right:auto; top:1.1em; background-color:#ffffff; border:thin solid #aaaaaa; z-index:999;}
+.makeMenu li ul {display:none; font-weight:normal; position:absolute; left:0; right:auto; top:1.1em; background-color:#fff; border:thin solid #aaa; z-index:999;}
 .makeMenu li ul li {padding:2px; display:block; text-align:left;}
 .makeMenu, .makeMenu li ul {list-style:none; margin:0; padding:1px;}
 .makeMenu li:hover > ul {display:block;}
@@ -1571,22 +1558,22 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 
 /* =========== Indi header ================== */
 #indi_header {float:left; width:98%; border-radius:3px; border:1px solid #b2c7d7; margin:5px 0; padding:10px;}
-#indi_header h3 {color:#555555; font-size:90%; font-weight:bold; margin:0; padding:0 10px 0 30px; text-align:left;}
+#indi_header h3 {color:#555; font-size:90%; font-weight:bold; margin:0; padding:0 10px 0 30px; text-align:left;}
 #indi_header h3.name_one {overflow:hidden; position:relative; font-size:1.5em;}
 #indi_header h3 .details1 {font-size:1.0em;}
 #indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border:1px solid #2694e8;}
 #indi_header h3 .header_age {padding:5px 0 5px 5px; float:right; font-weight:normal; font-size:65%;}
 #indi_header h3 a {display:inline;}
-#indi_header a {color:#333377; font-size:0.75em; font-weight:normal;}
-#indi_header a:hover {color:#ff0000;}
+#indi_header a {color:#337; font-size:0.75em; font-weight:normal;}
+#indi_header a:hover {color:#f00;}
 
-#main_name {color:#555555; float:left; font-size:2em; margin:10px; font-weight:bold;}
+#main_name {color:#555; float:left; font-size:2em; margin:10px; font-weight:bold;}
 
 #indi_mainimage {float:left;}
 #indi_mainimage a img {float:left; padding:0;}
 
 #indi_name_details {margin:0; overflow:hidden !important; padding:5px;}
-#indi_name_details .warning {color:#ff0000; font-size:1em;}
+#indi_name_details .warning {color:#f00; font-size:1em;}
 #indi_name_details dt:after {content:":";}
 
 #name1 {}
@@ -1596,7 +1583,7 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 
 .indi_table {clear:left;}
 #sex {float:right;}
-#dates {color:#555555; float:right;}
+#dates {color:#555; float:right;}
 
 dd .editlink, dd .deletelink  {float:right;}
 #indi_note .fact_NOTE {float:left; margin:0 5px 0 0;}
@@ -1643,7 +1630,7 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .ui-accordion .ui-accordion-header {text-align:center; margin-top:0;}
 .ui-accordion .ui-accordion-header a {padding:2px;}
 .ui-helper-reset {line-height:1.5;}
-.ui-state-highlight a {color:#ff0000;}
+.ui-state-highlight a {color:#f00;}
 .ui-widget-header {padding:3px;}
 
 html[dir='rtl'] .ui-tabs {direction:rtl;}
@@ -1652,7 +1639,7 @@ html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 
 /* jQuery.datatable styling general over-rides */
 .odd {background-color:#ccdbe4;}
-.even {background-color:#eeffee;}
+.even {background-color:#efe;}
 .css_right {float:left;}
 .fg-button {padding:2px 6px;}
 .dataTables_paginate  {float:left; margin-bottom:3px;}
@@ -1674,8 +1661,8 @@ html[dir='rtl'] .dataTables_length {float:left;}
 /* ========= Sidebar ============== */
 #main {min-width:600px; width:100%}
 #indi_left {float:left; width:98%;}
-#tabs {background-color:#ffffff; border-color:#dddddd; float:left; width:100%; overflow:visible;}
-#sidebar {border-color:#dddddd; display:none; margin:5px 2px 0 0; height:auto;}
+#tabs {background-color:#fff; border-color:#ddd; float:left; width:100%; overflow:visible;}
+#sidebar {border-color:#ddd; display:none; margin:5px 2px 0 0; height:auto;}
 .use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {width:20%;}
@@ -1694,12 +1681,12 @@ html[dir='rtl'] .use-sidebar #separator {background:#99c2ff url('images/general_
 /* Family navigator */
 #sb_content_family_nav {padding:0;}
 #sb_family_nav_content {margin-top:8px;}
-.nam a:hover {color:#ff0000;}
+.nam a:hover {color:#f00;}
 .nav_content {width:100%; padding:0;}
-.flyout {color:#000000; text-align:left; margin-top:-20px; right:210px; padding:3px;}
-.flyout2 {color:#000000; text-align:left;margin-top:-2px; left:40px; padding:3px;}
-.flyout2 a:hover {color:#ff0000;}
-.flyout4 {color:#000000; text-align:left; margin-top:0;margin-left:0; padding:3px;}
+.flyout {color:#000; text-align:left; margin-top:-20px; right:210px; padding:3px;}
+.flyout2 {color:#000; text-align:left;margin-top:-2px; left:40px; padding:3px;}
+.flyout2 a:hover {color:#f00;}
+.flyout4 {color:#000; text-align:left; margin-top:0;margin-left:0; padding:3px;}
 .flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0; left:0; padding:0;}
 
 html[dir='rtl'] .flyout {text-align:right; left:210px;}
