@@ -121,10 +121,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 
 		//  Get the title of the media
 		$media=WT_Media::getInstance($rowm['m_media']);
-		$rawTitle = $rowm['m_titl'];
-		if (empty($rawTitle)) $rawTitle = get_gedcom_value('TITL', 2, $rowm['mm_gedrec']);
-		if (empty($rawTitle)) $rawTitle = basename($rowm['m_file']);
-		$mediaTitle = PrintReady(htmlspecialchars($rawTitle));
+		$mediaTitle = $media->getFullName();
 
 		$mainMedia = check_media_depth($rowm['m_file'], 'NOTRUNC');
 		$mainFileExists = true;
@@ -187,20 +184,23 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		}
 		$menu = new WT_Menu();
 		// Truncate media title to 13 chars (45 chars if Streetview) and add ellipsis
-		$mtitle = $rawTitle;
+		$mtitle = $mediaTitle;
 		if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
-			if (utf8_strlen($rawTitle)>16) $mtitle = utf8_substr($rawTitle, 0, 45).WT_I18N::translate('…');
+			if (utf8_strlen($mtitle)>16) {
+				$mtitle = utf8_substr($rowm['m_file'], 0, 45).WT_I18N::translate('…');
+			}
 		} else {
-			if (utf8_strlen($rawTitle)>16) $mtitle = utf8_substr($rawTitle, 0, 13).WT_I18N::translate('…');
+			if (utf8_strlen($mtitle)>16) {
+				$mtitle = utf8_substr($mtitle, 0, 13).WT_I18N::translate('…');
+			}
 		}
-		$mtitle = PrintReady(htmlspecialchars($mtitle));
 
 		// Continue menu construction
 		// If media file is missing from 'media' directory, but is referenced in Gedcom
 		if (!media_exists($rowm['m_file']) && !media_exists($mainMedia)) {
 			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\" />" . WT_I18N::translate('Edit')." (". $rowm['m_media'].")", 'right');
 		} else {
-			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\" />" . PrintReady($mtitle), 'right');
+			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\" />" . $mtitle, 'right');
 		}
 		// Next line removed to avoid gallery thumbnail duplication
 		// $menu['link'] = mediaInfo['url'];
