@@ -1344,7 +1344,8 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 	position:absolute;
 	width:16em;
 	padding:0.5em;
-	left:0.5em;
+	white-space:normal;
+	left:-8em;
 	top:0.5em;
 	z-index:9999;
 }

@@ -28,17 +28,17 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 // -- array of GEDCOM elements that will be found but should not be displayed
-$nonfacts[] = "FAMS";
-$nonfacts[] = "FAMC";
-$nonfacts[] = "MAY";
-$nonfacts[] = "BLOB";
-$nonfacts[] = "CHIL";
-$nonfacts[] = "HUSB";
-$nonfacts[] = "WIFE";
-$nonfacts[] = "RFN";
-$nonfacts[] = "";
-$nonfamfacts[] = "UID";
-$nonfamfacts[] = "";
+$nonfacts[] = 'FAMS';
+$nonfacts[] = 'FAMC';
+$nonfacts[] = 'MAY';
+$nonfacts[] = 'BLOB';
+$nonfacts[] = 'CHIL';
+$nonfacts[] = 'HUSB';
+$nonfacts[] = 'WIFE';
+$nonfacts[] = 'RFN';
+$nonfacts[] = '';
+$nonfamfacts[] = 'UID';
+$nonfamfacts[] = '';
 
 $controller=new WT_Controller_Descendancy();
 $controller->init();
@@ -132,11 +132,13 @@ case 0: //-- list
 	echo '</ul>';
 	break;
 case 1: //-- booklet
+	echo '<div id="descendancy_chart">';
 	if ($show_full==0) {
 		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
 	}
 	$show_cousins = true;
 	$controller->print_child_family($controller->descPerson, $controller->generations);
+	echo '</div>';
 	break;
 case 2: //-- Individual list
 	$descendants=indi_desc($controller->descPerson, $controller->generations, array());

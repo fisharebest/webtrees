@@ -30,17 +30,17 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 // -- array of GEDCOM elements that will be found but should not be displayed
-$nonfacts[] = "FAMS";
-$nonfacts[] = "FAMC";
-$nonfacts[] = "MAY";
-$nonfacts[] = "BLOB";
-$nonfacts[] = "CHIL";
-$nonfacts[] = "HUSB";
-$nonfacts[] = "WIFE";
-$nonfacts[] = "RFN";
-$nonfacts[] = "";
-$nonfamfacts[] = "UID";
-$nonfamfacts[] = "";
+$nonfacts[] = 'FAMS';
+$nonfacts[] = 'FAMC';
+$nonfacts[] = 'MAY';
+$nonfacts[] = 'BLOB';
+$nonfacts[] = 'CHIL';
+$nonfacts[] = 'HUSB';
+$nonfacts[] = 'WIFE';
+$nonfacts[] = 'RFN';
+$nonfacts[] = '';
+$nonfamfacts[] = 'UID';
+$nonfamfacts[] = '';
 
 $controller=new WT_Controller_Ancestry();
 $controller->init();
@@ -191,10 +191,10 @@ case 0:
 case 1:
 	// TODO: this should be a parameter to a function, not a global
 	$show_cousins=$controller->show_cousins;
-
+	echo '<div id="ancestry_chart">';
 	// Booklet
 	// first page : show indi facts
-	print_pedigree_person(WT_Person::getInstance($controller->rootid), 2, 1);
+	print_pedigree_person(WT_Person::getInstance($controller->rootid), 1, 1);
 	// expand the layer
 	echo WT_JS_START, 'expandbox("', $controller->rootid, '.1", 2);', WT_JS_END;
 	// process the tree
@@ -209,6 +209,7 @@ case 1:
 			}
 		}
 	}
+	echo '</div>';
 	break;
 case 2:
 	// Individual list

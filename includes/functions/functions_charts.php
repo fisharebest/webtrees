@@ -659,7 +659,7 @@ function print_cousins($famid, $personcount=1) {
 	$kids = count($fchildren);
 	$save_show_full = $show_full;
 	if ($save_show_full) {
-		$bheight/=4;
+		$bheight=$bheight/4+10;
 		$bwidth-=40;
 	}
 	$show_full = false;
@@ -692,7 +692,7 @@ function print_cousins($famid, $personcount=1) {
 	}
 	$show_full = $save_show_full;
 	if ($save_show_full) {
-		$bheight*=4;
+		$bheight=($bheight-10)*4;
 		$bwidth+=40;
 	}
 	echo '</td>';
