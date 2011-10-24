@@ -141,6 +141,9 @@ img {
 	background-color:#EEE;
 	clear:none;
 }
+.blockheader {
+	font-weight:bold;
+}
 
 /* Pending edits */
 .change_new, .nameblue {
