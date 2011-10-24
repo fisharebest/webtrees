@@ -63,7 +63,7 @@
 			</TextBox>
 		</Header>
 		<Body>
-			<List list="individual" filter1="OCCU CONTAINS $occupation" sortby="$sortby">
+			<List list="individual" filter1="OCCU CONTAINS $occupation" filter2="REGEXP /\n1 OCCU/" sortby="$sortby">
 				<SetVar name="moreoccupation" value="0" />
 				<!-- Printed List counter -->
 				<SetVar name="printedoccupation" value="$printedoccupation + 1" />
