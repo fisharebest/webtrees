@@ -403,7 +403,7 @@ div.blockcontent {
 	margin-left:auto;
 	margin-right:2px;  /* changed from auto for right side match to header */
 	margin-bottom:10px;
-	overflow:visible;
+	overflow:auto;
 	padding: 5px;
 }
 
@@ -1550,9 +1550,20 @@ margin: 0;
 	line-height: 1.05;
 }
 
-.block .itr, #relatives_content .itr {
+.block .itr, #family_page .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {
 	position: relative;
 	top: 0;
+}
+
+.user_favorites_block,
+.charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
+#family_page .person_box, #family_page .person_boxF, #family_page .person_boxNN,
+#ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
+#descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,
+#familybook_chart .person_box, #familybook_chart .person_boxF, #familybook_chart .person_boxNN,
+#hourglass_chart .person_box, #hourglass_chart .person_boxF, #hourglass_chart .person_boxNN,
+#relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN {
+	overflow: visible !important;
 }
 
 .popup{

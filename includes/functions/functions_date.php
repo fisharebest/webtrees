@@ -42,6 +42,10 @@ if (!defined('WT_WEBTREES')) {
 * @see http://homepages.rootsweb.com/~pmcbride/gedcom/55gcch2.htm#AGE_AT_EVENT
 */
 function get_age_at_event($agestring, $show_years) {
+	switch (WT_LOCALE) {
+		case 'pl':
+			$show_years = true;
+	}
 	return preg_replace(
 		array(
 			'/\bchi(ld)?\b/i',

@@ -44,6 +44,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		global $TEXT_DIRECTION;
 
 		$id=$this->getName().$block_id;
+		$class=$this->getName().'_block';
 		if (WT_USER_ID) {
 			$title = WT_I18N::translate('Logout');
 

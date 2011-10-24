@@ -110,6 +110,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		if (!is_array($userfavs)) $userfavs = array();
 
 		$id=$this->getName().$block_id;
+		$class=$this->getName().'_block';
 		$title=$this->getTitle();
 
 		if (WT_USER_ID && $ENABLE_AUTOCOMPLETE) {

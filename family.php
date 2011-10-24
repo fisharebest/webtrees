@@ -107,7 +107,7 @@ echo WT_JS_END;
 		</td>
 	</tr>
 </table>
-<table align="center" width="95%">
+<table id="family_page" align="center" width="95%">
 	<tr valign="top">
 		<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->
 			<?php print_family_children($controller->getFamilyID()); ?>

@@ -179,6 +179,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				return false;
 			}
 			$id=$this->getName().$block_id;
+			$class=$this->getName().'_block';
 			$title='';
 			$content = '';
 			if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {

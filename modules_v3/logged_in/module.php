@@ -53,6 +53,7 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		$id=$this->getName().$block_id;
+		$class=$this->getName().'_block';
 		$title=$this->getTitle();
 		$content='<table>';
 		$LoginUsers=count($loggedusers);

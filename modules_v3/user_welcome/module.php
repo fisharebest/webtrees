@@ -44,6 +44,7 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 		global $WT_IMAGES, $hitCount, $SHOW_COUNTER;
 
 		$id=$this->getName().$block_id;
+		$class=$this->getName().'_block';
 		$title=/* I18N: A greeting; %s is the user's name */ WT_I18N::translate('Welcome %s', getUserFullName(WT_USER_ID));
 
 		$content = "<table style=\"margin:auto;\"><tr>";

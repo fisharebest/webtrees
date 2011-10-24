@@ -70,16 +70,17 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 		$usernews = getUserNews(WT_USER_ID);
 
 		$id=$this->getName().$block_id;
+		$class=$this->getName().'_block';
 		$title='';
 		$title.=$this->getTitle();
-		$content = "";
+		$content = '';
 		if (count($usernews)==0) {
 			$content .= WT_I18N::translate('You have not created any Journal items.');
 		}
 		foreach ($usernews as $key=>$news) {
-			$day = date("j", $news["date"]);
-			$mon = date("M", $news["date"]);
-			$year = date("Y", $news["date"]);
+			$day = date('j', $news['date']);
+			$mon = date('M', $news['date']);
+			$year = date('Y', $news['date']);
 			$content .= "<div class=\"person_box\">";
 			$content .= "<div class=\"news_title\">".$news['title'].'</div>';
 			$content .= "<div class=\"news_date\">".format_timestamp($news['date']).'</div>';

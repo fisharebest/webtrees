@@ -44,6 +44,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		global $hitCount, $SHOW_COUNTER;
 
 		$id=$this->getName().$block_id;
+		$class=$this->getName().'_block';
 		$title=get_gedcom_setting(WT_GED_ID, 'title');
 		$content = "<div class=\"center\">";
 		$content .= "<br />".format_timestamp(client_time())."<br />";

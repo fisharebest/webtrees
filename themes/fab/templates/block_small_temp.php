@@ -4,6 +4,7 @@
 // This template expects that the following variables will be set
 // $id - the DOM id for the block div
 // $title - the title of the block
+// $class - the additional class of the block
 // $content - the content of the block
 //
 // webtrees: Web based Family History software
@@ -32,5 +33,5 @@ if (!defined('WT_WEBTREES')) {
 ?>
 <div id="<?php echo $id; ?>" class="block">
 	<div class="blockheader"><?php echo $title; ?></div>
-	<div class="blockcontent" style="max-height:240px; overflow:auto;"><?php echo $content; ?></div>
+	<div class="blockcontent <?php echo $class; ?>" style="max-height:240px; overflow:auto;"><?php echo $content; ?></div>
 </div>
