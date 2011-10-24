@@ -219,7 +219,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	case 'PHON': // Not valid as a level 1 tag...
 	case 'FAX': // Not valid as a level 1 tag...
 		// These tags always(?) contain LTR data.  Make sure they render correctly on RTL pages.
-		echo '<div class="field"><span dir="ltr">', htmlspecialchars($fact->getDetail()), '</span></div>';
+		echo '<div class="field" dir="ltr">', htmlspecialchars($fact->getDetail()), '</div>';
 		break;
 	case 'EMAIL':
 	case 'EMAI':
@@ -253,6 +253,9 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			break;
 		}
 		echo '</div>';
+		break;
+	case 'PUBL': // Publication details might contain URLs.
+		echo '<div class="field">', expand_urls(htmlspecialchars($fact->getDetail())), '</div>';
 		break;
 	case 'REPO':
 		if (preg_match('/^@('.WT_REGEX_XREF.')@$/', $fact->getDetail(), $match)) {
