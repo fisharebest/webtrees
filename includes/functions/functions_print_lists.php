@@ -135,9 +135,6 @@ function print_indi_table($datalist, $legend='', $option='') {
 	echo WT_Person::sexImage('F', 'large'), '&nbsp;</button> ';
 	echo '<button type="button" id="SEX_U_'.$table_id.'" class="SEX_U" title="', WT_I18N::translate('Show only persons of whom the gender is not known.'), '" >';
 	echo WT_Person::sexImage('U', 'large'), '&nbsp;</button></fieldset>';
-	echo '<fieldset class="aliveinyear"><button type="button" id="alive_in_year_'.$table_id.'" class="alive_in_year" title="', WT_I18N::translate('Show persons alive in the indicated year.'), '" >';
-	echo WT_I18N::translate('Alive in Year'), '</button>';
-	echo '<input type="text" size="4" id="aliveyear_'.$table_id.'"" class="aliveyear" value="', date('Y'), '" /></fieldset>';
 	echo '<fieldset class="years"><button type="button" id="DEAT_N_'.$table_id.'" class="DEAT_N" title="', WT_I18N::translate('Show people who are alive or couples where both partners are alive.'), '" >';
 	echo WT_I18N::translate('Alive '), '</button> ';
 	echo '<button type="button" id="DEAT_Y_'.$table_id.'" class="DEAT_Y" title="', WT_I18N::translate('Show people who are dead or couples where both partners are deceased.'), '" >';
@@ -2193,7 +2190,6 @@ function load_behaviour() {
 				if (!temp) return true;
 				var table = temp.id;
 				var args = this.className.split('_'); // eg: BIRT_YES
-				if (args[0]=="alive") return table_filter_alive(table);
 				if (args[0]=="reset") return table_filter(table, "", "");
 				if (args[1].length) return table_filter(table, args[0], args[1]);
 				return false;

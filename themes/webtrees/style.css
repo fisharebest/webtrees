@@ -1367,12 +1367,11 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 .media-list img {display:block; height:40px; margin:3px auto;}
 .SEX_M, .SEX_F, .SEX_U {height:20px;}
 .SEX_M img, .SEX_F img, .SEX_U img {vertical-align:top;}
-.gender, .aliveinyear, .years, .given, .parents, .charts, .reset {background-color:#d3d3d3; display:inline; margin:0 6px 0 0; padding:0 0 1px 0;}
+.gender, .years, .given, .parents, .charts, .reset {background-color:#d3d3d3; display:inline; margin:0 6px 0 0; padding:0 0 1px 0;}
 .gender {padding:2px 0;}
-.aliveyear {background-color:#eee8aa;}
 
 html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-child, html[dir='rtl'] .repo-list th:last-child {margin:0 1px 1px -2px;}
-html[dir='rtl'] .gender, html[dir='rtl'] .aliveinyear, html[dir='rtl'] .years, html[dir='rtl'] .given, html[dir='rtl'] .parents, html[dir='rtl'] .charts, html[dir='rtl'] .reset {margin:0 0 0 6px;}
+html[dir='rtl'] .gender, html[dir='rtl'] .years, html[dir='rtl'] .given, html[dir='rtl'] .parents, html[dir='rtl'] .charts, html[dir='rtl'] .reset {margin:0 0 0 6px;}
 
 /* ======= Block styles ========== */
 #index_main_blocks {clear:none; width:66%; float:left; padding:3px;}

@@ -3,7 +3,7 @@
  * Additional filtering functions for sorttable.js
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2011 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2007  John Finlay and Others
@@ -22,10 +22,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
  *
- * @see sorttable.js
- * @package webtrees
- * @subpackage Display
- * @version $Id$
+ * $Id$
  */
 
 function table_filter(id, keyword, filter) {
@@ -69,65 +66,6 @@ function table_renum(id) {
 		// count only visible rows
 		if (row.style.display!='none') row.cells[0].innerHTML = count++;
 	}
-}
-
-function table_filter_alive(id) {
-	var table = document.getElementById(id);
-	var year = document.getElementById("aliveyear").value;
-	if (year>2500) // Approximate conversion of hebrew to gregorian year
-		year-=3761;
-
-	// Calculate Julian Day numbers for 1st Jan and 31st Dec
-	var jd_1jan=1721061+365*year+Math.floor((year-1)/4)-Math.floor((year-1)/100)+Math.floor((year-1)/400);
-	var jd_31dec=1721425+365*year+Math.floor(year/4)-Math.floor(year/100)+Math.floor(year/400);
-
-	// get birth and death column number => search for <span class="date"
-	var BCOL = -1;
-	var DCOL = -1;
-	var firstRow = table.rows[1];
-	var key;
-	for (var c=0;c<firstRow.cells.length;c++) {
-		key = firstRow.cells[c].getElementsByTagName("SPAN");
-		if (key.length && key[0].className && key[0].className.indexOf('date') != -1) {
-			if (BCOL<0)
-				BCOL=c;
-			else {
-				DCOL=c;
-				break;
-			}
-		}
-	}
-	if (BCOL<0 || DCOL<0) return;
-
-	// apply filter
-	for (var r=1;r<table.rows.length;r++) {
-		var row = table.rows[r];
-		// don't do sortbottom last rows
-		if (row.className && (row.className.indexOf('sortbottom') != -1)) break;
-		// get jd of birth/death
-		b_jd=0;
-		key=row.cells[BCOL].getElementsByTagName("a");
-		if (key.length) b_jd=parseInt(key[0].name,10);
-		d_jd=0;
-		key=row.cells[DCOL].getElementsByTagName("a");
-		if (key.length) d_jd=parseInt(key[0].name,10);
-		// assume birth/death based on max age of 100 years
-		if (b_jd==0 && d_jd>0)
-			b_jd=d_jd-36525;
-		if (d_jd==0 && b_jd>0)
-			d_jd=b_jd+36525;
-		// hide/show
-		if (b_jd<=jd_31dec && d_jd>=jd_1jan) {
-			if (document.all && !window.opera)
-				row.style.display="inline"; // IE
-			else
-				row.style.display="table-row";
-		} else
-			row.style.display="none";
-	}
-	// Resequence row numbers
-	table_renum(id);
-	return false;
 }
 
 function sortByOtherCol(node, offset) {
