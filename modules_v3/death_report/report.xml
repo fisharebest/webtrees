@@ -54,7 +54,7 @@
 		</Header>
 
 		<Body>
-			<List list="individual" filter1="DEAT:PLAC CONTAINS $deathplace" filter2="DEAT:DATE GTE $deathdate1" filter3="DEAT:DATE LTE $deathdate2" filter4="NAME CONTAINS $name" sortby="$sortby">
+			<List list="individual" filter1="DEAT:PLAC CONTAINS $deathplace" filter2="DEAT:DATE GTE $deathdate1" filter3="DEAT:DATE LTE $deathdate2" filter4="NAME CONTAINS $name" filter5="REGEXP /\n1 DEAT/" sortby="$sortby">
 				<TextBox width="200">
 					<Text style="text"><GetPersonName id="" />
 						<if condition="$adlist=='_MARNM'">

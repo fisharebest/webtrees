@@ -63,7 +63,7 @@
 			</TextBox>
 		</Header>
 		<Body>
-			<List list="individual" filter1="BURI:PLAC CONTAINS $deathplace" sortby="$sortby">
+			<List list="individual" filter1="BURI:PLAC CONTAINS $deathplace" filter2="REGEXP /\n1 BURI/" sortby="$sortby">
 				<Cell style="text" width="$namewidth"><GetPersonName id="" />
 					<if condition="$adlist=='_MARNM'">
 						<RepeatTag tag="NAME:_MARNM">

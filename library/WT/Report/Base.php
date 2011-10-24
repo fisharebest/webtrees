@@ -3067,6 +3067,9 @@ function ListSHandler($attrs) {
 							}
 						}
 						unset($attrs[$attr]); // This filter has been fully processed
+					} elseif (($listname=="individual") && (preg_match('/^REGEXP \/(.+)\//', $value, $match))) {
+						$sql_where[]="i_gedcom REGEXP '".$match[1]."'";
+						unset($attrs[$attr]); // This filter has been fully processed
 					} elseif (($listname=="family") && (preg_match('/^NAME CONTAINS (.+)$/', $value, $match))) {
 						// Eventually, family "names" will be stored in wt_name.  Until then, an extra is needed....
 						$sql_join[]="JOIN `##link` AS {$attr}a ON ({$attr}a.l_file={$sql_col_prefix}file AND {$attr}a.l_from={$sql_col_prefix}id)";
