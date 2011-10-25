@@ -1628,9 +1628,8 @@ dd {
 
 .itr {
 	position: absolute;
-	display: inline-block;
 	top: 3em;
-	line-height: 1.05;
+	line-height: 1.5;
 }
 
 .block .itr, #family_page .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {
@@ -1649,19 +1648,36 @@ dd {
 	overflow: visible !important;
 }
 
-.popup{
-	display: none;
+.popup {
+	display:none;
 }
-.itr:hover .popup{
+
+.popup dl {
+	padding:5px;
+	font-size:9px;
+}
+
+.popup dt {
+	float:none;
+}
+
+.popup dd {
+	display: block;
+	margin-left:10px;
+}
+
+.itr:hover .popup {
 	display: block;
 	position: absolute;
-	width: 16em;
-	padding: 0.5em;
-	white-space:normal;
-	left:-8em;
-	top: 0.5em;
+	width: 12em;
+	right: 0;
 	z-index: 9999;
 }
+
+
+html[dir='rtl'] .popup dd {margin-right:10px;}
+html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
+html[dir='rtl'] .popup dt {float:none;}
 
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {

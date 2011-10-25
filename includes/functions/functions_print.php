@@ -89,47 +89,47 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		if (empty($SEARCH_SPIDER)) {
 			//-- draw a box for the family popup
 			// NOTE: Start div I.$pid.$personcount.$count.links
-			$personlinks .= "<table class=\"person_box$isF\"><tr><td class=\"details1\">";
-			// NOTE: Zoom
-			$personlinks .= "<a href=\"pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Pedigree')."</b></a>";
+			$personlinks .= "<dl class=\"person_box$isF\">";
+			$personlinks .= "<dt><a href=\"pedigree.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;talloffset={$talloffset}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Pedigree')."</b></a></dt>";
 
 			if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-				$personlinks .= '<br /><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid='.$pid.'&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Pedigree map').'</b></a>';
+				$personlinks .= '<dt><a href="module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid='.$pid.'&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Pedigree map').'</b></a></dt>';
 			}
 			if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
-				$personlinks .= '<br /><a href="relationship.php?show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pid1='.WT_USER_GEDCOM_ID.'&amp;pid2='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Relationship to me').'</b></a>';
+				$personlinks .= '<dt><a href="relationship.php?show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pid1='.WT_USER_GEDCOM_ID.'&amp;pid2='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Relationship to me').'</b></a></dt>';
 			}
-			$personlinks .= "<br /><a href=\"descendancy.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Descendants')."</b></a><br />";
-			$personlinks .= "<a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Ancestors')."</b></a><br />";
-			$personlinks .= "<a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Compact tree')."</b></a><br />";
+			$personlinks .= "<dt><a href=\"descendancy.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;generations={$generations}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Descendants')."</b></a></dt>";
+			$personlinks .= "<dt><a href=\"ancestry.php?rootid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Ancestors')."</b></a></dt>";
+			$personlinks .= "<dt><a href=\"compact.php?rootid={$pid}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Compact tree')."</b></a></dt>";
 			if (function_exists("imagettftext")) {
-				$personlinks .= "<a href=\"fanchart.php?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Fan chart')."</b></a><br />";
+				$personlinks .= "<dt><a href=\"fanchart.php?rootid={$pid}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;ged=".rawurlencode($GEDCOM)."\"><b>".WT_I18N::translate('Fan chart')."</b></a></dt>";
 			}
-			$personlinks .= "<a href=\"hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."&amp;show_spouse={$show_spouse}\"><b>".WT_I18N::translate('Hourglass chart')."</b></a><br />";
+			$personlinks .= "<dt><a href=\"hourglass.php?pid={$pid}&amp;show_full={$PEDIGREE_FULL_DETAILS}&amp;chart_style={$chart_style}&amp;PEDIGREE_GENERATIONS={$OLD_PGENS}&amp;box_width={$box_width}&amp;ged=".rawurlencode($GEDCOM)."&amp;show_spouse={$show_spouse}\"><b>".WT_I18N::translate('Hourglass chart')."</b></a></dt>";
 			if (array_key_exists('tree', WT_Module::getActiveModules())) {
-				$personlinks .= '<a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid.'"><b>'.WT_I18N::translate('Interactive tree').'</b></a><br />';
+				$personlinks .= '<dt><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid.'"><b>'.WT_I18N::translate('Interactive tree').'</b></a></dt>';
 			}
 
 			foreach ($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
-
 				$children = $family->getChildren();
 				$num = count($children);
+				$personlinks .= '<dt>';
 				if ((!empty($spouse))||($num>0)) {
-					$personlinks .= "<a href=\"".$family->getHtmlUrl()."&amp;show_full=1\"><b>".WT_I18N::translate('Family with spouse')."</b></a><br />";
+					$personlinks .= '<a href="'.$family->getHtmlUrl().'&amp;show_full=1"><b>'.WT_I18N::translate('Family with spouse').'</b></a><br />';
 					if (!empty($spouse)) {
 						$personlinks .= "<a href=\"".$spouse->getHtmlUrl()."\">";
 						$personlinks .= $spouse->getFullName();
-						$personlinks .= "</a><br />";
+						$personlinks .= "</a>";
 					}
 				}
+				$personlinks .= "</dt>";
 				foreach ($children as $child) {
-					$personlinks .= "&nbsp;&nbsp;<a href=\"".$child->getHtmlUrl()."\">";
+					$personlinks .= "<dd><a href=\"".$child->getHtmlUrl()."\">";
 					$personlinks .= $child->getFullName();
-					$personlinks .= "<br /></a>";
+					$personlinks .= "</a></dd>";
 				}
 			}
-			$personlinks .= "</td></tr></table>";
+			$personlinks .= "</dl>";
 			// NOTE: Start div out-$pid.$personcount.$count
 			if ($style==1) $outBoxAdd .= " class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden; z-index:-1;\"";
 			else $outBoxAdd .= " class=\"person_box$isF\" style=\"padding: 2px;\"";
@@ -142,8 +142,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				$icons .= "><img id=\"iconz-$boxID\" src=\"".$WT_IMAGES["zoomin"]."\" border=\"0\" alt=\"".WT_I18N::translate('Zoom in/out on this box.')."\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\" /></a>";
 			}
 
-			$icons .= '<a class="itr" href="#"'.
-					'><img src="'.$WT_IMAGES['pedigree'].'" alt="" title="" /><span class="popup">'.$personlinks.'</span></a>';
+			$icons .= '<div class="itr"><img src="'.$WT_IMAGES['pedigree'].'" alt="" title="" /><div class="popup">'.$personlinks.'</div></div>';
 		} else {
 			if ($style==1) {
 				$outBoxAdd .= "class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden;\"";
