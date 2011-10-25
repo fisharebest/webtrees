@@ -37,7 +37,7 @@ $rootid=check_rootid($rootid);
 $person =WT_Person::getInstance($rootid);
 $name   =$person->getFullName();
 $addname=$person->getAddName();
-$title = /* I18N: %s is a person's name */ WT_I18N::translate('Fan chart of %s', $person->getFullName());
+$title = /* I18N: %s is a person's name */ WT_I18N::translate('Compact tree of %s', $person->getFullName());
 
 print_header($title);
 
