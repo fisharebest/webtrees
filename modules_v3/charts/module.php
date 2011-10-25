@@ -44,7 +44,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		global $ctype, $WT_IMAGES, $PEDIGREE_ROOT_ID, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
 
 		$details=get_block_setting($block_id, 'details', false);
-		$type   =get_block_setting($block_id, 'type', 'treenav');
+		$type   =get_block_setting($block_id, 'type', 'pedigree');
 		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 		$block  =get_block_setting($block_id, 'block');
 		if ($cfg) {
