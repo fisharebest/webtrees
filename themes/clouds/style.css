@@ -796,11 +796,14 @@ font-size: 20px;
 color:#7af;
 }
 
+.name1 {font-size:11px;}
+
 .name1, .name2, .nameZoom {
 font-weight: bold;
 }
 
 a:hover .name1, a:hover.name2,  a:hover .nameZoom  {color: #f00; font-weight: bold}
+
 
 .details1 {
 text-decoration:none;
@@ -1784,7 +1787,7 @@ html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelin
 #indi_note .fact_SOUR {margin: 3px 0;}
 #indi_note .fact_SOUR a {font-size:100%;}
 #main_name {color:#555; float:left; font-size:2em; margin:10px; font-weight:bold;}
-#name1 {}
+.name1 {font-size:11px;}
 #sex {float:right;}
 
 

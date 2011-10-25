@@ -250,6 +250,10 @@ html[dir='rtl'] .makeMenu li ul li {
 	height:56px;
 }
 
+.person_box img{background-color:#DDF;}
+.person_boxF img{background-color:#FDD;}
+.person_boxNN img{background-color:#DFD;}
+
 /* index.php */
 #index_main_blocks {
 	width:60%;

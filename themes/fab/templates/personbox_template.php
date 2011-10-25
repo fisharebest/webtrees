@@ -38,6 +38,6 @@ echo
 		'<div class="noprint" id="icons-', $boxID, '" style="', $iconsStyleAdd, 'width:25px;height:50px;">', $icons, '</div>',
 		$thumbnail,
 		'<a class="name', $style, ' ', $classfacts, '" onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">', $name.$addname, '</a>',
-		'<div id="inout2-', $boxID, '" class="details', $style, '" style="display:block;">', $BirthDeath, '</div>',
+		'<div id="inout2-', $boxID, '" class="details', $style, '" style="display:block; overflow:hidden; max-height: ', $bheight-20, 'px">', $BirthDeath, '</div>',
 		'<div id="inout-', $boxID, '" style="display:none;"><div id="LOADING-inout-', $boxID, '"></div></div>',
 	'</div>';
