@@ -382,16 +382,18 @@ $rootid = check_rootid($rootid);
 $person =WT_Person::getInstance($rootid);
 $name   =$person->getFullName();
 $addname=$person->getAddName();
+$title = /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is a person's name */ WT_I18N::translate('Fan chart of %s', $person->getFullName());
 
 // -- print html header information
-print_header(/* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is a person's name */ WT_I18N::translate('Fan chart of %s', $person->getFullName()));
+print_header($title);
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
-if (strlen($name)<30) $cellwidth="420";
-else $cellwidth=(strlen($name)*14);
+/*if (strlen($title)<30) $cellwidth="420";
+else $cellwidth=(strlen($title)*7);*/
+$cellwidth = max(strlen($title)*4, "420");
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"".$cellwidth."px\" valign=\"top\">";
-echo '<h2>', WT_I18N::translate('Fan chart of %s', $person->getFullName()), '</h2>';
+echo '<h2>', $title, '</h2>';
 
 // -- print the form to change the number of displayed generations
 echo WT_JS_START;
