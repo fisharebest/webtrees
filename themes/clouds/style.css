@@ -427,10 +427,10 @@ padding: 1px;
 
 img.block {height: 25px;}
 
-div.blockcontent {
+.blockcontent {
 border: solid #999 1px;
 margin-left:auto;
-margin-right:2px;  /* changed from auto for right side match to header */
+margin-right:2px;
 margin-bottom:10px;
 overflow:auto;
 padding: 5px;
