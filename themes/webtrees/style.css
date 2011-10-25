@@ -1305,9 +1305,9 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 .place {padding-top:5px;}
 .logo {text-align:center;}
 
-.itr {position:absolute;	top:3em;line-height:1.5;}
+.itr {position:absolute; top:3em;line-height:1.5;}
 
-.block .itr, #family_page .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {	position:relative;top:0;}
+.block .itr, #family_page .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #familybook_chart_rtl .itr, #hourglass_chart .itr, #hourglass_chart_rtl .itr, #relatives_content .itr {position:relative;top:0;}
 
 .user_favorites_block,
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
@@ -1315,14 +1315,17 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
 #descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,
 #familybook_chart .person_box, #familybook_chart .person_boxF, #familybook_chart .person_boxNN,
+#familybook_chart_rtl .person_box, #familybook_chart_rtl .person_boxF, #familybook_chart_rtl .person_boxNN,
 #hourglass_chart .person_box, #hourglass_chart .person_boxF, #hourglass_chart .person_boxNN,
+#hourglass_chart_rtl .person_box, #hourglass_chart_rtl .person_boxF, #hourglass_chart_rtl .person_boxNN,
 #relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN {overflow: visible !important;}
 
-.popup {	display:none;}
+.popup {display:none;}
 .popup dl {padding:5px; font-size:9px;}
 .popup dt {float:none;}
 .popup dd {display: block; margin-left:10px;}
 .itr:hover .popup {display:block; position:absolute; width:12em;right:0; z-index: 9999;}
+html[dir='rtl'] .popup dt {float:none;}
 html[dir='rtl'] .popup dd {margin-right:10px;}
 html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
 
