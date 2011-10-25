@@ -581,8 +581,9 @@ right:10px;
 	list-style:none;
 	margin:0 0 5px 15px; /* top right bottom left */
 	padding-top:0;
-	padding-right:0;
+	padding-right:15px;
 	padding-bottom:0;
+	padding-left:15px;
 }
 
 #descendancy_chart li {
@@ -627,8 +628,9 @@ html[dir='rtl'] #relationship_chart {
 	display:block;
 	margin:0 0 0 15px; /* top right bottom left */
 	padding-top:0;
-	padding-right:0;
+	padding-right:15px;
 	padding-bottom:0;
+	padding-left:15px;
 }
 
 #ancestry_chart li {
