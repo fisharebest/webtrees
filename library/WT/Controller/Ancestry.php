@@ -149,7 +149,9 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 			echo '&nbsp;<span dir="ltr" class="person_boxF">&nbsp;', ($sosa*2+1), '&nbsp;</span>&nbsp;';
 			$marriage = $family->getMarriage();
 			if ($marriage->canShow()) {
+				echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
 				$marriage->print_simple_fact();
+				echo '</a>';
 			}
 			echo '</span>';
 			// display parents recursively - or show empty boxes
