@@ -483,7 +483,7 @@ function addnewnote(field) {
 }
 function addnewnote_assisted(field, iid) {
 	pastefield = field;
-	window.open('edit_interface.php?action=addnewnote_assisted&noteid=newnote&pid='+iid, '_blank', 'top=70,left=70,width=870,height=726,scrollbars=no,resizable=no');
+	window.open('edit_interface.php?action=addnewnote_assisted&noteid=newnote&pid='+iid, '_blank', 'top=70,left=70,width=900,height=750,scrollbars=no,resizable=no');
 	return false;
 }
 function addmedia_links(field, iid, iname) {

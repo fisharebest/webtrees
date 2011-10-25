@@ -57,7 +57,6 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo
-	'<link rel="stylesheet" type="text/css" href="', WT_THEME_URL, 'modules.css" />',
 	$javascript,
 	'</head>',
 	'<body id="body">';
