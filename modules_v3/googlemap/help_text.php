@@ -121,7 +121,7 @@ case 'GOOGLEMAP_COORD':
 
 case 'PLE_PLACES':
 	$title=WT_I18N::translate('Enter place name');
-	$text=WT_I18N::translate('Here you can enter or change the name of the place.<br />The \'Search on this level\' option allow to search the latitude and longitude of entered place name only among the places with that level.<br />The \'Search on this level\' option allow to search the latitude and longitude of all places having entered name. Some the lower levels places can not be displayed with this method of search.');
+	$text=WT_I18N::translate('Here you can enter or change the name of the place and find it\'s position on the map.').'<br />'.WT_I18N::translate('The “Search on this level” option allow to search the latitude and longitude of entered place name only among the places with that level').'<br />'.WT_I18N::translate('The “Search all” option allow to search the latitude and longitude of all places having entered name. Some the lower levels places can not be displayed with this method of search.');
 	break;
 
 case 'PLE_PRECISION':
