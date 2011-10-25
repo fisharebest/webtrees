@@ -986,8 +986,7 @@ dd {
 	top: 0;
 }
 
-.user_favorites_block,
-.charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
+.user_favorites_block, .gedcom_favorites_block,
 #family_page .person_box, #family_page .person_boxF, #family_page .person_boxNN,
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
 #descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,

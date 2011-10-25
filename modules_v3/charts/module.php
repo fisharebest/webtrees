@@ -186,14 +186,14 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'details', safe_POST_bool('details'));
-			set_block_setting($block_id, 'type',    safe_POST('type', array('pedigree', 'descendants', 'hourglass', 'treenav'), 'treenav'));
+			set_block_setting($block_id, 'type',    safe_POST('type', array('pedigree', 'descendants', 'hourglass', 'treenav'), 'pedigree'));
 			set_block_setting($block_id, 'pid',     safe_POST('pid', WT_REGEX_XREF));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 
 		$details=get_block_setting($block_id, 'details', false);
-		$type   =get_block_setting($block_id, 'type',    'treenav');
+		$type   =get_block_setting($block_id, 'type',    'pedigree');
 		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
 		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
