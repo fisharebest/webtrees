@@ -507,7 +507,7 @@ th {
 
 a:hover .name1 {
 	color:red;
-	font-weight:bold; font-size:10px;
+	font-weight:bold; font-size:11px;
 }
 
 a:hover .name2 {
@@ -1644,9 +1644,7 @@ dd {
 #descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,
 #familybook_chart .person_box, #familybook_chart .person_boxF, #familybook_chart .person_boxNN,
 #hourglass_chart .person_box, #hourglass_chart .person_boxF, #hourglass_chart .person_boxNN,
-#relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN {
-	overflow: visible !important;
-}
+#relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN {overflow: visible !important;}
 
 .popup {
 	display:none;
