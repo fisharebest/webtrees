@@ -872,7 +872,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	echo '<td>&nbsp;</td>';
 	echo '<td><fieldset class="given"><button type="button" id="GIVEN_SORT_F_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></fieldset></td>';
 	echo '<td colspan="8">';
-	echo '<fieldset class="parents"><input id="cb_parents_', $tableid, '" type="button" onclick="toggleByClassName(\'DIV\', \'parents_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/></fieldset>';
+	echo '<fieldset class="parents"><input id="cb_parents_', $table_id, '" type="button" onclick="toggleByClassName(\'DIV\', \'parents_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/></fieldset>';
 	echo '<fieldset class="charts"><input id="charts_fam_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/></fieldset>';
 	echo '</td></tr></tfoot>';
 	echo '</table>';
