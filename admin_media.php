@@ -1292,7 +1292,6 @@ echo WT_JS_START; ?>
 						break;
 					}
 				}
-				if ($passCount==1 && !$isExternal && $printDone) echo "<tr><td class=\"\" colspan=\"3\">&nbsp;</td></tr>";
 			}
 			?>
 		</tbody>
