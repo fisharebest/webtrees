@@ -48,16 +48,9 @@ case 'msie':
 
 // Additional css files required (Only if Lightbox installed)
 if (WT_USE_LIGHTBOX) {
-	if ($TEXT_DIRECTION=='rtl') {
-		echo
-			'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/clearbox_music_RTL.css" />',
-			'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page_RTL_ff.css" media="screen" />';
-	} else {
-		echo
-			'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/clearbox_music.css" />',
-			'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen" />';
-	}
+		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen" />';
 }
+
 echo
 	$javascript,
 	'</head>',
