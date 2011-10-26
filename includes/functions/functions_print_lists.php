@@ -1041,17 +1041,7 @@ function print_sour_table($datalist, $legend=null) {
 	echo '</div>';
 	// show TITLE2 col if not empty
 	if ($t2) {
-		echo <<< T2
-		<script type="text/javascript">
-			var table = document.getElementById("#source_list_table");
-			cells = table.getElementsByTagName('td, th');
-			for (i=0;i<cells.length;i++) {
-				if (cells[i].className && (cells[i].className.indexOf('t2') != -1)) {
-					cells[i].style.display="";
-				}
-			}
-		</script>
-T2;
+		echo WT_JS_START, '$("#',$table_id,' .t2, ").show();', WT_JS_END;
 	}
 }
 
