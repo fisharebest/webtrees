@@ -23,13 +23,13 @@
  *
  * @package webtrees
  * @subpackage GEDFact_assistant
- * @version $Id: cens_styles.css 10696 2011-02-04 21:27:30Z lukasz $
+ * @version $Id$
  */
  
 .cens_header {text-align:left; margin:5px; height:40px;}
-.cens_container {float:left; width:575px; margin:5px; padding:0;}
+.cens_container {float:left; width:575px; margin:5px 0; padding:0;}
 .cens_container span {margin:0 3px;}
-.cens_search {position:relative; float:right; margin:5px; width:275px; height:410px; overflow:auto;}
+.cens_search {position:relative; float:right; margin:5px 0; width:275px; height:410px; overflow:auto;}
 .cens_sour {font-weight:bold; font-size:10px; text-align:left; margin-bottom :5px; overflow: hidden;}
 .cens_sour_country {float:left; width:60px;}
 .cens_sour_year {float: left; width:20px;}
@@ -45,9 +45,10 @@ textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
 .cens_textinput {clear:both; float:left; margin:5px; width:860px;}
 .cens_textinput_left  {float:left; width:90%; text-align:center;}
 .cens_textinput_right  {float:right; font-size:12px; margin:5px;}
-.cens_addrows {clear:both; float:left;}
-.cens_data {	height:170px; overflow-y:scroll;}
-.cens_data table {width:845px;}
+.cens_addrows {clear:both; float:left; width:860px;}
+.cens_data {	height:170px; overflow-y:scroll;width:850px;}
+.cens_data table {width:100%;}
+.cens_data .descriptionbox {min-width:0; padding:3px;}
 #navenclose {margin:-4px; width:270px;}
 .ltrnav {position:absolute; top:-15px; left:40px;}
 .rtlnav {position:absolute; top:-15px; right:40px;}
