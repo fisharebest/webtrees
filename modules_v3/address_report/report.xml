@@ -68,7 +68,7 @@
 						<SetVar name="email" value="" />
 					</if>
 				</if>
-				<List list="individual" filter1="$addrfilter" filter2="$addrfilter2" filter3="$email" sortby="NAME">
+				<List list="individual" filter1="$addrfilter" filter2="$addrfilter2" filter3="$email" filter4="REGEXP /\n[12] ADDR/" sortby="NAME">
 					<TextBox width="40" height="52" border="1">
 						<Text style="text"><GedcomValue tag="@id" /></Text>
 					</TextBox>
