@@ -142,6 +142,11 @@ if (($action=='send')&&(isset($_SESSION['good_to_send']))&&($_SESSION['good_to_s
 			if ($message['from']==$message['to']) {
 				//-- do not allow users to send a message to themselves
 				echo WT_I18N::translate('It is not allowed to send messages to yourself.'), '<br />';
+				echo WT_I18N::translate('Message was not sent'), '<br />';
+				AddToLog('Unable to send message.  TO:'.$to.' FROM:'.$from, 'error');
+			} else if (get_user_id($to)) {
+				echo WT_I18N::translate('Invalid user identifier: %s.', get_user_id($to)), '<br />';
+				echo WT_I18N::translate('Message was not sent'), '<br />';
 				AddToLog('Unable to send message.  TO:'.$to.' FROM:'.$from, 'error');
 			} else if (addMessage($message)) {
 				$to_user_id=get_user_id($to);

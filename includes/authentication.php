@@ -329,10 +329,11 @@ function addMessage($message) {
 		$fromFullName = $message['from'];
 	} else {
 		$fromFullName = getUserFullName($user_id_from);
-		if (!get_site_setting('SMTP_SIMPLE_MAIL'))
-			$from = hex4email($fromFullName, 'UTF-8'). " <".getUserEmail($user_id_from).">";
-		else
+		if (!get_site_setting('SMTP_SIMPLE_MAIL')) {
+			$from = hex4email($fromFullName, 'UTF-8')." <".getUserEmail($user_id_from).">";
+		} else {
 			$from = getUserEmail($user_id_from);
+		}
 		$toFullName=getUserFullName($user_id_to);
 		$email2 = WT_I18N::translate('You sent the following message to a webtrees user:').' '.$toFullName."\r\n\r\n".$email2;
 
@@ -357,7 +358,7 @@ function addMessage($message) {
 			if (!$user_id_from) {
 				$header2 = $WEBTREES_EMAIL;
 			} else {
-				$header2 = getUserEmail($user_id_to);;
+				$header2 = getUserEmail($user_id_to);
 			}
 			if (!empty($header2)) {
 				if (!webtreesMail($from, $header2, $subject2, $email2)) {
@@ -397,15 +398,11 @@ function addMessage($message) {
 			$email1 = WT_I18N::translate('The following message has been sent to your webtrees user account from ');
 			$email1 .= $fromFullName."\r\n\r\n".$message['body'];
 		}
-		if (!$user_id_to) {
-			//-- the to user must be a valid user in the system before it will send any mails
-			return false;
+		$toFullName=getUserFullName($user_id_to);
+		if (!get_site_setting('SMTP_SIMPLE_MAIL')) {
+			$to = hex4email($toFullName, 'UTF-8'). " <".getUserEmail($user_id_to).">";
 		} else {
-			$toFullName=getUserFullName($user_id_to);
-			if (!get_site_setting('SMTP_SIMPLE_MAIL'))
-				$to = hex4email($toFullName, 'UTF-8'). " <".getUserEmail($user_id_to).">";
-			else
-				$to = getUserEmail($user_id_to);
+			$to = getUserEmail($user_id_to);
 		}
 		if (getUserEmail($user_id_to)) {
 			if (!webtreesMail($to, $from, $subject1, $email1)) {
