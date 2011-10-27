@@ -130,14 +130,14 @@ function webtreesMail($to, $from, $subject, $message) {
 			$mail_object->Username = $SMTP_AUTH_USER;
 			$mail_object->Password = $SMTP_AUTH_PASS;
 		}
+		$mail_object->Host = $SMTP_HOST;
+		$mail_object->Port = $SMTP_PORT;
+		$mail_object->Hostname = $SMTP_HELO;
 		if ($SMTP_SSL=='ssl') {
 			$mail_object->SMTPSecure = 'ssl';
 		} else if ($SMTP_SSL=='tls') {
 			$mail_object->SMTPSecure = 'tls';
 		}
-		$mail_object->Host = $SMTP_HOST;
-		$mail_object->Port = $SMTP_PORT;
-		$mail_object->Hostname = $SMTP_HELO;
 		$from_name = '';
 		if (!get_site_setting('SMTP_SIMPLE_MAIL')) {
 			preg_match('/<(.*)>/', $to, $matches);
@@ -148,7 +148,7 @@ function webtreesMail($to, $from, $subject, $message) {
 				$from = $matches[1];
 			}
 		}
-		$mail_object->From = $from;
+		$mail_object->SetFrom($from, $from_name);
 		if ((!empty($SMTP_FROM_NAME) && $from!=$SMTP_AUTH_USER) || !empty($from_name)) {
 			if (!empty($from_name)) {
 				$mail_object->FromName = $from_name.' - '.$SMTP_FROM_NAME;
@@ -184,7 +184,14 @@ function webtreesMail($to, $from, $subject, $message) {
 		}
 	} elseif ($SMTP_ACTIVE=='internal') {
 		// use original PHP mail sending function
-		mail($to, hex4email($subject, 'UTF-8'), $message, $extraHeaders);
+		if (!mail($to, hex4email($subject, 'UTF-8'), $message, $extraHeaders)) {
+			echo WT_I18N::translate('Message was not sent'), '<br />';
+			echo /* I18N: %s is an error message */ WT_I18N::translate('Mailer error: PHP mail() failed'), '<br />';
+			return false;
+		} else {
+			// original PHP mail sending function OK
+			return true;
+		}
 	}
 }
 

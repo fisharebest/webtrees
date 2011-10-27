@@ -145,6 +145,7 @@ if (($action=='send')&&(isset($_SESSION['good_to_send']))&&($_SESSION['good_to_s
 				echo WT_I18N::translate('Message was not sent'), '<br />';
 				AddToLog('Unable to send message.  TO:'.$to.' FROM:'.$from, 'error');
 			} else if (!get_user_id($to)) {
+				//-- the to user must be a valid user in the system before it will send any mails
 				echo WT_I18N::translate('Invalid user identifier: %s.', get_user_id($to)), '<br />';
 				echo WT_I18N::translate('Message was not sent'), '<br />';
 				AddToLog('Unable to send message.  TO:'.$to.' FROM:'.$from, 'error');
