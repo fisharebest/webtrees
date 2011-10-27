@@ -1826,7 +1826,7 @@ html[dir='rtl'] .DataTables_sort_wrapper {margin-right:20px;}
 html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0; margin-right:-20px;}
 
 /* ========= List styles ================= */
-.source-list, .note-list, .repo-list, .media-list, .indi-list, .fam-list  {margin:5px auto; text-align:center; width:98%;}
+.source-list, .note-list, .repo-list, .media-list, .indi-list, .fam-list  {margin:5px auto; text-align:center; visibility:hidden; width:98%;}
 .source-list table, .note-list table, .repo-list table, .media-list table, .indi-list table, .fam-list table  {width:100%;}
 .source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td, .fam-list td {padding:2px 5px;}
 .indi-list td, .fam-list td {color:#555;}
@@ -1840,6 +1840,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0; margin-right:
 .filters {margin-bottom:4px}
 .filters img {margin-bottom:2px;}
 .filters .ui-state-default {margin: 0 2px;padding: 2px;}
+.loading-image{background:#fff url(../../images/loading.gif) 50% 50% no-repeat; height:50px; margin:50px;}
 
 html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-child, html[dir='rtl'] .repo-list th:last-child {margin:0 1px 1px -2px;}
 
