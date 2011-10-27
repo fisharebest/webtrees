@@ -2515,32 +2515,35 @@ class WT_Stats {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '200x250';}
 			$sizes = explode('x', $size);
-			$rows=self::_runSQL(''
-				.' SELECT'
-					.' ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age,'
-					.' ROUND((married.d_year+49.1)/100) AS century,'
-					.' indi.i_sex AS sex'
-				.' FROM'
-					." `##families` AS fam"
-				.' LEFT JOIN'
-					." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
-				.' LEFT JOIN'
-					." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-				.' LEFT JOIN'
-					." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
-				.' WHERE'
-					.' birth.d_gid = indi.i_id AND'
-					.' married.d_gid = fam.f_id AND'
-					." (indi.i_id = fam.f_wife OR"
-					." indi.i_id = fam.f_husb) AND"
-					." fam.f_file = {$this->_ged_id} AND"
-					." birth.d_fact = 'BIRT' AND"
-					." married.d_fact = 'MARR' AND"
-					.' birth.d_julianday1 <> 0 AND'
-					." birth.d_type='@#DGREGORIAN@' AND"
-					." married.d_type='@#DGREGORIAN@' AND"
-					.' married.d_julianday2 > birth.d_julianday1'
-				.' GROUP BY century, sex ORDER BY century, sex');
+			$rows=self::_runSQL(
+				"SELECT ".
+				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
+				" ROUND((married.d_year+49.1)/100) AS century, ".
+				" 'M' AS sex ".
+				"FROM `wt_dates` AS married ".
+				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
+				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
+				"WHERE ".
+				" '{$sex}' IN ('M', 'BOTH') AND ".
+				" married.d_file={$this->_ged_id} AND married.d_type='@#DGREGORIAN@' AND married.d_fact='MARR' AND ".
+				" birth.d_type='@#DGREGORIAN@' AND birth.d_fact='BIRT' AND ".
+				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
+				"GROUP BY century, sex ".
+				"UNION ALL ".
+				"SELECT ".
+				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
+				" ROUND((married.d_year+49.1)/100) AS century, ".
+				" 'F' AS sex ".
+				"FROM `wt_dates` AS married ".
+				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
+				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
+				"WHERE ".
+				" '{$sex}' IN ('F', 'BOTH') AND ".
+				" married.d_file={$this->_ged_id} AND married.d_type='@#DGREGORIAN@' AND married.d_fact='MARR' AND ".
+				" birth.d_type='@#DGREGORIAN@' AND birth.d_fact='BIRT' AND ".
+				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
+				" GROUP BY century, sex"
+			);
 			if (empty($rows)) return'';
 			$max = 0;
 			foreach ($rows as $values) {
@@ -2605,47 +2608,38 @@ class WT_Stats {
 			}
 			return "<img src=\""."http://chart.apis.google.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chm=D,FF0000,2,0,3,1|{$chmm}{$chmf}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt=".rawurlencode($chtt)."&amp;chd={$chd}&amp;chco=0000FF,FFA0CB,FF0000&amp;chbh=20,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."&amp;chdl=".rawurlencode(WT_I18N::translate('Males')."|".WT_I18N::translate('Females')."|".WT_I18N::translate('Average age'))."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Average age in century of marriage')."\" title=\"".WT_I18N::translate('Average age in century of marriage')."\" />";
 		} else {
-			$years = '';
 			if ($year1>=0 && $year2>=0) {
-				$years = " AND married.d_year BETWEEN '{$year1}' AND '{$year2}'";
+				$years=" married.d_year BETWEEN {$year1} AND {$year2} AND ";
+			} else {
+				$years='';
 			}
-			if ($sex == 'F') {
-				$sex_field = 'fam.f_wife,';
-				$sex_field2 = " indi.i_id = fam.f_wife AND";
-				$sex_search = " AND i_sex='F'";
-			}
-			else if ($sex == 'M') {
-				$sex_field = 'fam.f_husb,';
-				$sex_field2 = " indi.i_id = fam.f_husb AND";
-				$sex_search = " AND i_sex='M'";
-			}
-			$rows=self::_runSQL(''
-				.' SELECT'
-					.' fam.f_id,'
-					.$sex_field
-					.' married.d_julianday2-birth.d_julianday1 AS age,'
-					.' indi.i_id AS indi'
-				.' FROM'
-					." `##families` AS fam"
-				.' LEFT JOIN'
-					." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
-				.' LEFT JOIN'
-					." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-				.' LEFT JOIN'
-					." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
-				.' WHERE'
-					.' birth.d_gid = indi.i_id AND'
-					.' married.d_gid = fam.f_id AND'
-					.$sex_field2
-					." fam.f_file = {$this->_ged_id} AND"
-					." birth.d_fact = 'BIRT' AND"
-					." married.d_fact = 'MARR' AND"
-					.' birth.d_julianday1 <> 0 AND'
-					.' married.d_julianday2 > birth.d_julianday1'
-					.$sex_search
-					.$years
-				.' ORDER BY indi, age ASC');
-			if (!isset($rows)) {return 0;}
+			$rows=self::_runSQL(
+				"SELECT ".
+				" fam.f_id, ".
+				" birth.d_gid, ".
+				" married.d_julianday2-birth.d_julianday1 AS age ".
+				"FROM `wt_dates` AS married ".
+				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
+				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
+				"WHERE ".
+				" '{$sex}' IN ('M', 'BOTH') AND {$years} ".
+				" married.d_file={$this->_ged_id} AND married.d_type='@#DGREGORIAN@' AND married.d_fact='MARR' AND ".
+				" birth.d_type='@#DGREGORIAN@' AND birth.d_fact='BIRT' AND ".
+				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
+				"UNION ALL ".
+				"SELECT ".
+				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
+				" ROUND((married.d_year+49.1)/100) AS century, ".
+				" 'F' AS sex ".
+				"FROM `wt_dates` AS married ".
+				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
+				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
+				"WHERE ".
+				" '{$sex}' IN ('F', 'BOTH') AND {$years} ".
+				" married.d_file={$this->_ged_id} AND married.d_type='@#DGREGORIAN@' AND married.d_fact='MARR' AND ".
+				" birth.d_type='@#DGREGORIAN@' AND birth.d_fact='BIRT' AND ".
+				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 "
+			);
 			return $rows;
 		}
 	}
