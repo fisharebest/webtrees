@@ -519,7 +519,7 @@ function valid_date(datefield) {
 	}
 
 	// e.g. 17.11.1860, 03/04/2005 or 1999-12-31.  Use locale settings where DMY order is ambiguous.
-	var qsearch = /(.*)(\d+)[^\d](\d+)[^\d](\d+)(.*)/i;
+	var qsearch = /^([^\d]*)(\d+)[^\d](\d+)[^\d](\d+)$/i;
  	if (qsearch.exec(datestr)) {
  		var f0=RegExp.$1;
 		var f1=parseInt(RegExp.$2, 10);
@@ -534,11 +534,11 @@ function valid_date(datefield) {
 		var yy=yyyy % 100;
 		var cc=yyyy - yy;
 	 	if (dmy=='DMY' && f1<=31 && f2<=12 || f1>13 && f1<=31 && f2<=12 && f3>31)
-			datestr=f0+f1+" "+months[f2-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100))+f4;
+			datestr=f0+f1+" "+months[f2-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100));
 		else if (dmy=='MDY' && f1<=12 && f2<=31 || f2>13 && f2<=31 && f1<=12 && f3>31)
-			datestr=f0+f2+" "+months[f1-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100))+f4;
+			datestr=f0+f2+" "+months[f1-1]+" "+(f3>=100?f3:(f3<=yy?f3+cc:f3+cc-100));
 		else if (dmy=='YMD' && f2<=12 && f3<=31 || f3>13 && f3<=31 && f2<=12 && f1>31)
-			datestr=f0+f3+" "+months[f2-1]+" "+(f1>=100?f1:(f1<=yy?f1+cc:f1+cc-100))+f4;
+			datestr=f0+f3+" "+months[f2-1]+" "+(f1>=100?f1:(f1<=yy?f1+cc:f1+cc-100));
 	}
 
 	// Shortcuts for date ranges
