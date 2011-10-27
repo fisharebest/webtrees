@@ -51,7 +51,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 	jQuery(document).ready(function(){
 		/* Initialise datatables */
 		oTable<?php echo $table_id; ?> = jQuery('#<?php echo $table_id; ?>').dataTable( {
-			"sDom": '<"H"<"filters"><"dt-clear">pf<"dt-clear">irl>t<"F"pl>',
+			"sDom": '<"H"<"filtersH"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF">>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
 				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
@@ -83,7 +83,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 			"sPaginationType": "full_numbers"
 	   });
 	   
-	   jQuery("div.filters").html(
+	   jQuery("div.filtersH").html(
 			'<button type="button" id="SEX_M_<?php echo $table_id; ?>" class="ui-state-default SEX_M" title="<?php echo WT_I18N::translate('Show only males.'); ?>" ><?php echo WT_Person::sexImage('M', 'small'); ?>&nbsp;</button>'+
 			'<button type="button" id="SEX_F_<?php echo $table_id; ?>" class="ui-state-default SEX_F" title="<?php echo WT_I18N::translate('Show only females.'); ?>" ><?php echo WT_Person::sexImage('F', 'small'); ?>&nbsp;</button>'+
 			'<button type="button" id="SEX_U_<?php echo $table_id; ?>" class="ui-state-default SEX_U" title="<?php echo WT_I18N::translate('Show only persons of whom the gender is not known.'); ?>" ><?php echo WT_Person::sexImage('U', 'small'); ?>&nbsp;</button>'+
@@ -98,8 +98,14 @@ function print_indi_table($datalist, $legend='', $option='') {
 			'<button type="button" id="RESET_<?php echo $table_id; ?>" class="ui-state-default RESET" title="<?php echo WT_I18N::translate('Reset to the list defaults.'); ?>" ><?php echo WT_I18N::translate('Reset'); ?></button>'
 		);
 
-	   oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_<?php echo $table_id; ?>',1);
+	   jQuery("div.filtersF").html(
+			'<button class="ui-state-default" type="button" id="GIVEN_SORT_<?php echo $table_id; ?>" title="<?php echo WT_I18N::translate('Sort by given names'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?></button>'+
+			'<input class="ui-state-default" id="cb_parents_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'parents_indi_list_table_<?php echo $table_id; ?>\');" value="<?php echo WT_I18N::translate('Show parents'); ?>" title="<?php echo WT_I18N::translate('Show parents'); ?>"/>'+
+			'<input class="ui-state-default" id="charts_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'indi_list_table-charts_<?php echo $table_id; ?>\');" value="<?php echo WT_I18N::translate('Show statistics charts'); ?>" title="<?php echo WT_I18N::translate('Show statistics charts'); ?>"/>'
+		);
 		
+	   oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_<?php echo $table_id; ?>',1);
+
 	   /* Add event listeners for filtering inputs */
 		jQuery('#SEX_M_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'M', 17 );});
 		jQuery('#SEX_F_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'F', 17 );});
@@ -116,6 +122,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 		jQuery('#RESET_<?php echo $table_id; ?>').click( function() {
 			for(i = 0; i < 21; i++){oTable<?php echo $table_id; ?>.fnFilter( '', i );};
 		});
+
 		jQuery(".indi-list").css('visibility', 'visible');
 		jQuery(".loading-image").css('display', 'none');
 	});
@@ -452,12 +459,6 @@ function print_indi_table($datalist, $legend='', $option='') {
 		++$n;
 	}
 	echo '</tbody>';
-	//-- table footer
-	echo '<tfoot><tr><td colspan="19">';
-	echo '<button class="ui-state-default "type="button" id="GIVEN_SORT_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button>';
-	echo '<input class="ui-state-default id="cb_parents_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'parents_indi_list_table_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/>';
-	echo '<input class="ui-state-default id="charts_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'indi_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/>';
-	echo '</td></tr></tfoot>';
 	echo '</table>';
 	echo '</div>'; // Close "indi-list"
 	//-- charts
@@ -492,7 +493,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	jQuery(document).ready(function(){
 		/* Initialise datatables */
 		oTable<?php echo $table_id; ?> = jQuery('#<?php echo $table_id; ?>').dataTable( {
-			"sDom": '<"H"<"filters"><"dt-clear">pf<"dt-clear">irl>t<"F"pl>',
+			"sDom": '<"H"<"filtersH"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF">>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
 				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
@@ -524,7 +525,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 			"sPaginationType": "full_numbers"
 	   });
 
-	   jQuery("div.filters").html(
+	   jQuery("div.filtersH").html(
 			'<button type="button" id="DEAT_N_<?php echo $table_id; ?>" class="ui-state-default DEAT_N" title="<?php echo WT_I18N::translate('Show people who are alive or couples where both partners are alive.'); ?>" ><?php echo WT_I18N::translate('Both alive '); ?></button>'+
 			'<button type="button" id="DEAT_W_<?php echo $table_id; ?>" class="ui-state-default DEAT_W" title="<?php echo WT_I18N::translate('Show couples where only the female partner is deceased.'); ?>" ><?php echo WT_I18N::translate('Widower'); ?></button>'+
 			'<button type="button" id="DEAT_H_<?php echo $table_id; ?>" class="ui-state-default DEAT_H" title="<?php echo WT_I18N::translate('Show couples where only the male partner is deceased.'); ?>" ><?php echo WT_I18N::translate('Widow'); ?></button>'+
@@ -536,6 +537,13 @@ function print_fam_table($datalist, $legend='', $option='') {
 			'<button type="button" id="MARR_Y100_<?php echo $table_id; ?>" class="ui-state-default MARR_Y100" title="<?php echo WT_I18N::translate('Show couples who married within the last 100 years.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('MARR'); ?>&lt;=100</button>'+
 			'<button type="button" id="MARR_DIV_<?php echo $table_id; ?>" class="ui-state-default MARR_DIV" title="<?php echo WT_I18N::translate('Show divorced couples.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('DIV'); ?></button>'+
 			'<button type="button" id="RESET_<?php echo $table_id; ?>" class="ui-state-default RESET" title="<?php echo WT_I18N::translate('Reset to the list defaults.'); ?>" ><?php echo WT_I18N::translate('Reset'); ?></button>'
+		);
+
+	   jQuery("div.filtersF").html(
+			'<button class="ui-state-default" type="button" id="GIVEN_SORT_M_<?php echo $table_id; ?>" title="<?php echo WT_I18N::translate('Sort by given names'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?></button>'+
+			'<button class="ui-state-default" type="button" id="GIVEN_SORT_F_<?php echo $table_id; ?>" title="<?php echo WT_I18N::translate('Sort by given names'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?></button>'+
+			'<input class="ui-state-default" type="button" id="cb_parents_<?php echo $table_id; ?>" onclick="toggleByClassName(\'DIV\', \'parents_<?php echo $table_id; ?>\');" value="<?php echo WT_I18N::translate('Show parents'); ?>" title="<?php echo WT_I18N::translate('Show parents'); ?>"/>'+
+			'<input class="ui-state-default" type="button" id="charts_fam_list_table" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_<?php echo $table_id; ?>\');" value="<?php echo WT_I18N::translate('Show statistics charts'); ?>" title="<?php echo WT_I18N::translate('Show statistics charts'); ?>"/>'
 		);
 		
 		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_M_<?php echo $table_id; ?>',1);
@@ -850,15 +858,15 @@ function print_fam_table($datalist, $legend='', $option='') {
 	}
 	echo '</tbody>';
 	//-- table footer
-	echo '<tfoot><tr>';
-	echo '<td><button class="ui-state-default" type="button" id="GIVEN_SORT_M_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></td>';
-	echo '<td colspan="2" style="display:none;">&nbsp;</td>';
-	echo '<td>&nbsp;</td>';
-	echo '<td><button class="ui-state-default" type="button" id="GIVEN_SORT_F_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></td>';
-	echo '<td colspan="8">';
-	echo '<input class="ui-state-default" id="cb_parents_', $table_id, '" type="button" onclick="toggleByClassName(\'DIV\', \'parents_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/>';
-	echo '<input class="ui-state-default" id="charts_fam_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/>';
-	echo '</td></tr></tfoot>';
+//	echo '<tfoot><tr>';
+//	echo '<td><button class="ui-state-default" type="button" id="GIVEN_SORT_M_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></td>';
+//	echo '<td colspan="2" style="display:none;">&nbsp;</td>';
+//	echo '<td>&nbsp;</td>';
+//	echo '<td><button class="ui-state-default" type="button" id="GIVEN_SORT_F_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></td>';
+//	echo '<td colspan="8">';
+//	echo '<input class="ui-state-default" id="cb_parents_', $table_id, '" type="button" onclick="toggleByClassName(\'DIV\', \'parents_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/>';
+//	echo '<input class="ui-state-default" id="charts_fam_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/>';
+//	echo '</td></tr></tfoot>';
 	echo '</table>';
 	echo '</div>'; // Close "fam-list"
 	//-- charts
