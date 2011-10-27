@@ -1259,35 +1259,35 @@ echo WT_JS_START; ?>
 						}
 
 
-							if ($media["EXISTS"]) {
-								echo "<br />";
-								switch ($media["EXISTS"]) {
-								case 1:
-									echo "<br />".WT_I18N::translate('This media object is located on an external server');
-									break;
-								case 2:
-									echo "<br />".WT_I18N::translate('This media object is in the standard media directory');
-									break;
-								case 3:
-									echo "<br />".WT_I18N::translate('This media object is in the protected media directory');
-									break;
-								}
-								echo '<br />';
+						echo '<br />';
+						if ($media["EXISTS"]) {
+							echo '<br />';
+							switch ($media["EXISTS"]) {
+							case 1:
+								echo WT_I18N::translate('This media object is located on an external server');
+								break;
+							case 2:
+								echo WT_I18N::translate('This media object is in the standard media directory');
+								break;
+							case 3:
+								echo WT_I18N::translate('This media object is in the protected media directory');
+								break;
 							}
-							if ($media["THUMBEXISTS"]) {
-								switch ($media["THUMBEXISTS"]) {
-								case 1:
-									echo WT_I18N::translate('This thumbnail is located on an external server');
-									break;
-								case 2:
-									echo WT_I18N::translate('This thumbnail is in the standard media directory');
-									break;
-								case 3:
-									echo WT_I18N::translate('This thumbnail is in the protected media directory');
-									break;
-								}
-								echo '<br />';
+						}
+						if ($media["THUMBEXISTS"]) {
+							echo '<br />';
+							switch ($media["THUMBEXISTS"]) {
+							case 1:
+								echo WT_I18N::translate('This thumbnail is located on an external server');
+								break;
+							case 2:
+								echo WT_I18N::translate('This thumbnail is in the standard media directory');
+								break;
+							case 3:
+								echo WT_I18N::translate('This thumbnail is in the protected media directory');
+								break;
 							}
+						}
 						echo "</td></tr>";
 						break;
 					}

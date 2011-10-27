@@ -265,6 +265,11 @@ if (!$excludeLinks) {
 			$medialist[$key]["LINKS"][$sour->getXref()]='SOUR';
 			$medialist[$key]["LINKED"]=true;
 		}
+		// Notes cannot link to media objects directly - but source citations may link to them.
+		foreach (fetch_linked_note($media["XREF"], 'OBJE', WT_GED_ID) as $note) {
+			$medialist[$key]["LINKS"][$note->getXref()]='NOTE';
+			$medialist[$key]["LINKED"]=true;
+		}
 	}
 }
 	// Search the list of GEDCOM changes pending approval.  There may be some new
@@ -1841,7 +1846,13 @@ function PrintMediaLinks($links, $size = "small") {
 				$linkItem['record']=$record;
 				$linkList[] = $linkItem;
 				break;
-
+			case 'NOTE':
+				// Notes cannot link to media objects directly - but source citations may link to them.
+				$linkItem = array ();
+				$linkItem['name']='D'.$record->getSortName();
+				$linkItem['record']=$record;
+				$linkList[] = $linkItem;
+				break;
 			}
 		}
 	}
@@ -1870,6 +1881,10 @@ function PrintMediaLinks($links, $size = "small") {
 			break;
 		case 'SOUR':
 			echo WT_I18N::translate('View Source');
+			break;
+		case 'NOTE':
+			// Notes cannot link to media objects directly - but source citations may link to them.
+			echo WT_I18N::translate('View Note');
 			break;
 		}
 		echo ' -- ';
