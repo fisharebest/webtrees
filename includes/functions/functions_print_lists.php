@@ -51,7 +51,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 	jQuery(document).ready(function(){
 		/* Initialise datatables */
 		oTable<?php echo $table_id; ?> = jQuery('#<?php echo $table_id; ?>').dataTable( {
-			"sDom": '<"H"pf<"dt-clear">irl>t<"F"pl>',
+			"sDom": '<"H"<"filters"><"dt-clear">pf<"dt-clear">irl>t<"F"pl>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
 				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
@@ -82,8 +82,23 @@ function print_indi_table($datalist, $legend='', $option='') {
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
-		
-		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_<?php echo $table_id; ?>',1);
+	   
+	   jQuery("div.filters").html(
+			'<button type="button" id="SEX_M_<?php echo $table_id; ?>" class="ui-state-default SEX_M" title="<?php echo WT_I18N::translate('Show only males.'); ?>" ><?php echo WT_Person::sexImage('M', 'small'); ?>&nbsp;</button>'+
+			'<button type="button" id="SEX_F_<?php echo $table_id; ?>" class="ui-state-default SEX_F" title="<?php echo WT_I18N::translate('Show only females.'); ?>" ><?php echo WT_Person::sexImage('F', 'small'); ?>&nbsp;</button>'+
+			'<button type="button" id="SEX_U_<?php echo $table_id; ?>" class="ui-state-default SEX_U" title="<?php echo WT_I18N::translate('Show only persons of whom the gender is not known.'); ?>" ><?php echo WT_Person::sexImage('U', 'small'); ?>&nbsp;</button>'+
+			'<button type="button" id="DEAT_N_<?php echo $table_id; ?>" class="ui-state-default DEAT_N" title="<?php echo WT_I18N::translate('Show people who are alive or couples where both partners are alive.'); ?>" ><?php echo WT_I18N::translate('Alive'); ?></button>'+
+			'<button type="button" id="DEAT_Y_<?php echo $table_id; ?>" class="ui-state-default DEAT_Y" title="<?php echo WT_I18N::translate('Show people who are dead or couples where both partners are deceased.'); ?>" ><?php echo WT_I18N::translate('Dead'); ?></button> '+
+			'<button type="button" id="DEAT_YES_<?php echo $table_id; ?>" class="ui-state-default DEAT_YES" title="<?php echo WT_I18N::translate('Show people who died more than 100 years ago.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('DEAT'); ?>&gt100 </button>'+
+			'<button type="button" id="DEAT_Y100_<?php echo $table_id; ?>" class="ui-state-default DEAT_Y100" title="<?php echo WT_I18N::translate('Show people who died within the last 100 years.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('DEAT'); ?>&lt=100 </button>'+
+			'<button type="button" id="BIRT_YES_<?php echo $table_id; ?>" class="ui-state-default BIRT_YES" title="<?php echo WT_I18N::translate('Show persons born more than 100 years ago.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('BIRT'); ?>&gt100</button>'+
+			'<button type="button" id="BIRT_Y100_<?php echo $table_id; ?>" class="ui-state-default BIRT_Y100" title="<?php echo WT_I18N::translate('Show persons born within the last 100 years.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('BIRT'); ?>&lt=100</button>'+
+			'<button type="button" id="TREE_R_<?php echo $table_id; ?>" class="ui-state-default TREE_R" title="<?php echo WT_I18N::translate('Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database.'); ?>" ><?php echo WT_I18N::translate('Roots'); ?></button>'+
+			'<button type="button" id="TREE_L_<?php echo $table_id; ?>" class="ui-state-default TREE_L" title="<?php echo WT_I18N::translate('Show «leaves» couples or individuals.  These are individuals who are alive but have no children recorded in the database.'); ?>" ><?php echo WT_I18N::translate('Leaves'); ?></button>'+
+			'<button type="button" id="RESET_<?php echo $table_id; ?>" class="ui-state-default RESET" title="<?php echo WT_I18N::translate('Reset to the list defaults.'); ?>" ><?php echo WT_I18N::translate('Reset'); ?></button>'
+		);
+
+	   oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_<?php echo $table_id; ?>',1);
 		
 	   /* Add event listeners for filtering inputs */
 		jQuery('#SEX_M_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'M', 17 );});
@@ -102,6 +117,10 @@ function print_indi_table($datalist, $legend='', $option='') {
 			for(i = 0; i < 21; i++){oTable<?php echo $table_id; ?>.fnFilter( '', i );};
 		});
 	});
+
+
+
+
 	<?php echo WT_JS_END;
 
 	$stats = new WT_Stats($GEDCOM);
@@ -123,33 +142,6 @@ function print_indi_table($datalist, $legend='', $option='') {
 	if ($legend == '') $legend = WT_I18N::translate('Individuals');
 	if (isset($WT_IMAGES['indi-list'])) $legend = '<img src="'.$WT_IMAGES['indi-list'].'" alt="" align="middle" /> '.$legend;
 	echo '<fieldset id="fieldset_indi"><legend>', $legend, '</legend>';
-	
-	//-- filter buttons
-	echo '<fieldset class="gender"><button type="button" id="SEX_M_'.$table_id.'" class="SEX_M" title="', WT_I18N::translate('Show only males.'), '" >';
-	echo WT_Person::sexImage('M', 'large'), '&nbsp;</button>';
-	echo '<button type="button" id="SEX_F_'.$table_id.'" class="SEX_F" title="', WT_I18N::translate('Show only females.'), '" >';
-	echo WT_Person::sexImage('F', 'large'), '&nbsp;</button>';
-	echo '<button type="button" id="SEX_U_'.$table_id.'" class="SEX_U" title="', WT_I18N::translate('Show only persons of whom the gender is not known.'), '" >';
-	echo WT_Person::sexImage('U', 'large'), '&nbsp;</button></fieldset>';
-	echo '<fieldset class="years"><button type="button" id="DEAT_N_'.$table_id.'" class="DEAT_N" title="', WT_I18N::translate('Show people who are alive or couples where both partners are alive.'), '" >';
-	echo WT_I18N::translate('Alive '), '</button>';
-	echo '<button type="button" id="DEAT_Y_'.$table_id.'" class="DEAT_Y" title="', WT_I18N::translate('Show people who are dead or couples where both partners are deceased.'), '" >';
-	echo WT_I18N::translate('Dead '), '</button> ';
-	echo '<button type="button" id="DEAT_YES_'.$table_id.'" class="DEAT_YES" title="', WT_I18N::translate('Show people who died more than 100 years ago.'), '" >';
-	echo WT_Gedcom_Tag::getLabel('DEAT'), '&gt;100</button>';
-	echo '<button type="button" id="DEAT_Y100_'.$table_id.'" class="DEAT_Y100" title="', WT_I18N::translate('Show people who died within the last 100 years.'), '" >';
-	echo WT_Gedcom_Tag::getLabel('DEAT'), '&lt;=100</button></fieldset>';
-	echo '<fieldset class="years"><button type="button" id="BIRT_YES_'.$table_id.'" class="BIRT_YES" title="', WT_I18N::translate('Show persons born more than 100 years ago.'), '" >';
-	echo WT_Gedcom_Tag::getLabel('BIRT'), '&gt;100</button>';
-	echo '<button type="button" id="BIRT_Y100_'.$table_id.'" class="BIRT_Y100" title="', WT_I18N::translate('Show persons born within the last 100 years.'), '" >';
-	echo WT_Gedcom_Tag::getLabel('BIRT'), '&lt;=100</button></fieldset>';
-	echo '<fieldset class="years"><button type="button" id="TREE_R_'.$table_id.'" class="TREE_R" title="', WT_I18N::translate('Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database.'), '" >';
-	echo WT_I18N::translate('Roots'), '</button>';
-	echo '<button type="button" id="TREE_L_'.$table_id.'" class="TREE_L" title="', WT_I18N::translate('Show «leaves» couples or individuals.  These are individuals who are alive but have no children recorded in the database.'), '" >';
-	echo WT_I18N::translate('Leaves'), '</button></fieldset>';
-	echo '<fieldset class="reset"><button type="button" id="RESET_'.$table_id.'" class="RESET" title="', WT_I18N::translate('Reset to the list defaults.'), '" >';
-	echo WT_I18N::translate('Reset'), '</button></fieldset>';
-
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
@@ -463,9 +455,9 @@ function print_indi_table($datalist, $legend='', $option='') {
 	echo '</tbody>';
 	//-- table footer
 	echo '<tfoot><tr><td colspan="19">';
-	echo '<fieldset class="given"><button type="button" id="GIVEN_SORT_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></fieldset>';
-	echo '<fieldset class="parents"><input id="cb_parents_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'parents_indi_list_table_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/></fieldset>';
-	echo '<fieldset class="charts"><input id="charts_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'indi_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/></fieldset>';
+	echo '<button class="ui-state-default "type="button" id="GIVEN_SORT_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button>';
+	echo '<input class="ui-state-default id="cb_parents_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'parents_indi_list_table_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/>';
+	echo '<input class="ui-state-default id="charts_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'indi_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/>';
 	echo '</td></tr></tfoot>';
 	echo '</table>';
 	echo '</div>'; // Close "indi-list"
@@ -501,7 +493,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	jQuery(document).ready(function(){
 		/* Initialise datatables */
 		oTable<?php echo $table_id; ?> = jQuery('#<?php echo $table_id; ?>').dataTable( {
-			"sDom": '<"H"pf<"dt-clear">irl>t<"F"pl>',
+			"sDom": '<"H"<"filters"><"dt-clear">pf<"dt-clear">irl>t<"F"pl>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
 				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
@@ -532,6 +524,20 @@ function print_fam_table($datalist, $legend='', $option='') {
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 	   });
+
+	   jQuery("div.filters").html(
+			'<button type="button" id="DEAT_N_<?php echo $table_id; ?>" class="ui-state-default DEAT_N" title="<?php echo WT_I18N::translate('Show people who are alive or couples where both partners are alive.'); ?>" ><?php echo WT_I18N::translate('Both alive '); ?></button>'+
+			'<button type="button" id="DEAT_W_<?php echo $table_id; ?>" class="ui-state-default DEAT_W" title="<?php echo WT_I18N::translate('Show couples where only the female partner is deceased.'); ?>" ><?php echo WT_I18N::translate('Widower'); ?></button>'+
+			'<button type="button" id="DEAT_H_<?php echo $table_id; ?>" class="ui-state-default DEAT_H" title="<?php echo WT_I18N::translate('Show couples where only the male partner is deceased.'); ?>" ><?php echo WT_I18N::translate('Widow'); ?></button>'+
+			'<button type="button" id="DEAT_Y_<?php echo $table_id; ?>" class="ui-state-default DEAT_Y" title="<?php echo WT_I18N::translate('Show people who are dead or couples where both partners are deceased.'); ?>" ><?php echo WT_I18N::translate('Both dead '); ?></button>'+
+			'<button type="button" id="TREE_R_<?php echo $table_id; ?>" class="ui-state-default TREE_R" title="<?php echo WT_I18N::translate('Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database.'); ?>" ><?php echo WT_I18N::translate('Roots'); ?></button>'+
+			'<button type="button" id="TREE_L_<?php echo $table_id; ?>" class="ui-state-default TREE_L" title="<?php echo WT_I18N::translate('Show «leaves» couples or individuals.  These are individuals who are alive but have no children recorded in the database.'); ?>" ><?php echo WT_I18N::translate('Leaves'); ?></button>'+
+			'<button type="button" id="MARR_U_<?php echo $table_id; ?>" class="ui-state-default MARR_U" title="<?php echo WT_I18N::translate('Show couples with an unknown marriage date.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('MARR'); ?> ?</button>'+
+			'<button type="button" id="MARR_YES_<?php echo $table_id; ?>" class="ui-state-default MARR_YES" title="<?php echo WT_I18N::translate('Show couples who married more than 100 years ago.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('MARR'); ?>&gt;100</button>'+
+			'<button type="button" id="MARR_Y100_<?php echo $table_id; ?>" class="ui-state-default MARR_Y100" title="<?php echo WT_I18N::translate('Show couples who married within the last 100 years.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('MARR'); ?>&lt;=100</button>'+
+			'<button type="button" id="MARR_DIV_<?php echo $table_id; ?>" class="ui-state-default MARR_DIV" title="<?php echo WT_I18N::translate('Show divorced couples.'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('DIV'); ?></button>'+
+			'<button type="button" id="RESET_<?php echo $table_id; ?>" class="ui-state-default RESET" title="<?php echo WT_I18N::translate('Reset to the list defaults.'); ?>" ><?php echo WT_I18N::translate('Reset'); ?></button>'
+		);
 		
 		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_M_<?php echo $table_id; ?>',1);
 		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_F_<?php echo $table_id; ?>',5);
@@ -571,31 +577,6 @@ function print_fam_table($datalist, $legend='', $option='') {
 	if ($legend == '') $legend = WT_I18N::translate('Families');
 	if (isset($WT_IMAGES['fam-list'])) $legend = '<img src="'.$WT_IMAGES['fam-list'].'" alt="" align="middle" /> '.$legend;
 	echo '<fieldset id="fieldset_fam"><legend>', $legend, '</legend>';
-	
-	//-- filter buttons
-	echo '<fieldset class="fam-filters"><button type="button" id="DEAT_N_'.$table_id.'" class="DEAT_N" title="', WT_I18N::translate('Show people who are alive or couples where both partners are alive.'), '" >';
-	echo WT_I18N::translate('Both alive '), '</button>';
-	echo '<button type="button" id="DEAT_W_'.$table_id.'" class="DEAT_W" title="', WT_I18N::translate('Show couples where only the female partner is deceased.'), '" >';
-	echo WT_I18N::translate('Widower'), '</button>';
-	echo '<button type="button" id="DEAT_H_'.$table_id.'" class="DEAT_H" title="', WT_I18N::translate('Show couples where only the male partner is deceased.'), '" >';
-	echo WT_I18N::translate('Widow'), '</button>';
-	echo '<button type="button" id="DEAT_Y_'.$table_id.'" class="DEAT_Y" title="', WT_I18N::translate('Show people who are dead or couples where both partners are deceased.'), '" >';
-	echo WT_I18N::translate('Both dead '), '</button></fieldset>';
-	echo '<fieldset class="fam-filters"><button type="button" id="TREE_R_'.$table_id.'" class="TREE_R" title="', WT_I18N::translate('Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database.'), '" >';
-	echo WT_I18N::translate('Roots'), '</button>';
-	echo '<button type="button" id="TREE_L_'.$table_id.'" class="TREE_L" title="', WT_I18N::translate('Show «leaves» couples or individuals.  These are individuals who are alive but have no children recorded in the database.'), '" >';
-	echo WT_I18N::translate('Leaves'), '</button></fieldset>';
-	echo '<fieldset class="fam-filters"><button type="button" id="MARR_U_'.$table_id.'" class="MARR_U" title="', WT_I18N::translate('Show couples with an unknown marriage date.'), '" >';
-	echo WT_Gedcom_Tag::getLabel('MARR'), ' ?</button>';
-	echo '<button type="button" id="MARR_YES_'.$table_id.'" class="MARR_YES" title="', WT_I18N::translate('Show couples who married more than 100 years ago.'), '" >';
-	echo WT_Gedcom_Tag::getLabel('MARR'), '&gt;100</button>';
-	echo '<button type="button" id="MARR_Y100_'.$table_id.'" class="MARR_Y100" title="', WT_I18N::translate('Show couples who married within the last 100 years.'), '" >';
-	echo WT_Gedcom_Tag::getLabel('MARR'), '&lt;=100</button>';
-	echo '<button type="button" id="MARR_DIV_'.$table_id.'" class="MARR_DIV" title="', WT_I18N::translate('Show divorced couples.'), '" >';
-	echo WT_Gedcom_Tag::getLabel('DIV'), '</button></fieldset>';
-	echo '<fieldset class="reset"><button type="button" id="RESET_'.$table_id.'" class="RESET" title="', WT_I18N::translate('Reset to the list defaults.'), '" >';
-	echo WT_I18N::translate('Reset'), '</button></fieldset>';
-
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
@@ -867,13 +848,13 @@ function print_fam_table($datalist, $legend='', $option='') {
 	echo '</tbody>';
 	//-- table footer
 	echo '<tfoot><tr>';
-	echo '<td><fieldset class="given"><button type="button" id="GIVEN_SORT_M_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></fieldset></td>';
+	echo '<td><button class="ui-state-default" type="button" id="GIVEN_SORT_M_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></td>';
 	echo '<td colspan="2" style="display:none;">&nbsp;</td>';
 	echo '<td>&nbsp;</td>';
-	echo '<td><fieldset class="given"><button type="button" id="GIVEN_SORT_F_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></fieldset></td>';
+	echo '<td><button class="ui-state-default" type="button" id="GIVEN_SORT_F_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></td>';
 	echo '<td colspan="8">';
-	echo '<fieldset class="parents"><input id="cb_parents_', $table_id, '" type="button" onclick="toggleByClassName(\'DIV\', \'parents_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/></fieldset>';
-	echo '<fieldset class="charts"><input id="charts_fam_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/></fieldset>';
+	echo '<input class="ui-state-default" id="cb_parents_', $table_id, '" type="button" onclick="toggleByClassName(\'DIV\', \'parents_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/>';
+	echo '<input class="ui-state-default" id="charts_fam_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/>';
 	echo '</td></tr></tfoot>';
 	echo '</table>';
 	echo '</div>'; // Close "fam-list"
