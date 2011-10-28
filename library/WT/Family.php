@@ -31,7 +31,6 @@ if (!defined('WT_WEBTREES')) {
 class WT_Family extends WT_GedcomRecord {
 	private $husb = null;
 	private $wife = null;
-	private $_children = null;
 	private $marriage = null;
 
 	// Create a Family object from either raw GEDCOM data or a database row
@@ -168,17 +167,15 @@ class WT_Family extends WT_GedcomRecord {
 	function getChildren($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
 
-		if ($this->_children===null) {
-			$this->_children=array();
-			preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->getGedcomRecord(), $match);
-			foreach ($match[1] as $pid) {
-				$child=WT_Person::getInstance($pid);
-				if ($SHOW_PRIVATE_RELATIONSHIPS || $child && $child->canDisplayDetails($access_level)) {
-					$this->_children[]=$child;
-				}
+		$children=array();
+		preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
+		foreach ($match[1] as $pid) {
+			$child=WT_Person::getInstance($pid);
+			if ($SHOW_PRIVATE_RELATIONSHIPS || $child && $child->canDisplayDetails($access_level)) {
+				$children[]=$child;
 			}
 		}
-		return $this->_children;
+		return $children;
 	}
 
 	// Static helper function to sort an array of families by marriage date
