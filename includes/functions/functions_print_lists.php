@@ -857,16 +857,6 @@ function print_fam_table($datalist, $legend='', $option='') {
 		echo '</tr>';
 	}
 	echo '</tbody>';
-	//-- table footer
-//	echo '<tfoot><tr>';
-//	echo '<td><button class="ui-state-default" type="button" id="GIVEN_SORT_M_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></td>';
-//	echo '<td colspan="2" style="display:none;">&nbsp;</td>';
-//	echo '<td>&nbsp;</td>';
-//	echo '<td><button class="ui-state-default" type="button" id="GIVEN_SORT_F_'.$table_id.'" title="', WT_I18N::translate('Sort by given names'), '" >', WT_Gedcom_Tag::getLabel('GIVN'), '</button></td>';
-//	echo '<td colspan="8">';
-//	echo '<input class="ui-state-default" id="cb_parents_', $table_id, '" type="button" onclick="toggleByClassName(\'DIV\', \'parents_'.$table_id.'\');" value="', WT_I18N::translate('Show parents'), '" title="', WT_I18N::translate('Show parents'), '"/>';
-//	echo '<input class="ui-state-default" id="charts_fam_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_'.$table_id.'\');" value="', WT_I18N::translate('Show statistics charts'), '" title="', WT_I18N::translate('Show statistics charts'), '"/>';
-//	echo '</td></tr></tfoot>';
 	echo '</table>';
 	echo '</div>'; // Close "fam-list"
 	//-- charts
@@ -931,7 +921,10 @@ function print_sour_table($datalist, $legend=null) {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="source-list">';
-	echo '<fieldset><legend><img src="', $WT_IMAGES['source'], '" align="middle" alt="" /> ';
+	echo '<fieldset><legend>';
+	if (isset($WT_IMAGES['source-list'])) {
+		echo '<img src="'.$WT_IMAGES['source-list'].'" alt="" align="middle" /> ';
+	}
 	if ($legend) {
 		echo $legend;
 	} else {
@@ -1092,7 +1085,10 @@ function print_note_table($datalist, $legend=null) {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="note-list">';
-	echo '<fieldset><legend><img src="', $WT_IMAGES['note'], '" align="middle" alt="" /> ';
+	echo '<fieldset><legend>';
+	if (isset($WT_IMAGES['note-list'])) {
+		echo '<img src="'.$WT_IMAGES['note-list'].'" alt="" align="middle" /> ';
+	}
 	if ($legend) {
 		echo $legend;
 	} else {
@@ -1210,7 +1206,10 @@ function print_repo_table($repos, $legend='') {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="repo-list">';
-	echo '<fieldset><legend><img src="', $WT_IMAGES['repository'], '" align="middle" alt="" /> ';
+	echo '<fieldset><legend>';
+	if (isset($WT_IMAGES['repo-list'])) {
+		echo '<img src="'.$WT_IMAGES['repo-list'].'" alt="" align="middle" /> ';
+	}
 	if ($legend) {
 		echo $legend;
 	} else {
@@ -1319,6 +1318,16 @@ function print_media_table($datalist, $legend) {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="media-list">';
+	echo '<fieldset><legend>';
+	if (isset($WT_IMAGES['media-list'])) {
+		echo '<img src="'.$WT_IMAGES['media-list'].'" alt="" align="middle" /> ';
+	}
+	if ($legend) {
+		echo $legend;
+	} else {
+		echo WT_I18N::translate('Media objects');
+	}
+	echo '</legend>';
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Media'), '</th>';
