@@ -72,9 +72,10 @@ html[dir='rtl'] input {padding-right:3px; padding-left:0;}
 .dataTables_paginate  {float:left;}
 .dataTables_processing {float:left;}
 .dataTables_filter {float:right;}
-.dataTables_info {float:left;}
+.dataTables_info {float:left;margin-top:5px;font-weight:normal;}
 .dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
+.dt-clear {clear:both;}
 html[dir='rtl'] .dataTables_paginate {float:right;}
 html[dir='rtl'] .dataTables_processing {float:right;}
 html[dir='rtl'] .dataTables_filter {float:left;}
@@ -161,7 +162,7 @@ table.site_logs {background:OldLace; border-collapse:separate; border-spacing:0;
 input.log-date {text-align:center; width:60px;}
 input.log-filter {width:120px;}
 table#log_list {width:100%}
-#log_list th {min-width:80px;}
+#log_list th {min-width:80px;white-space:nowrap;}
 
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
