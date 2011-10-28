@@ -1307,7 +1307,8 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 	//-- end cache checking
 
 	//-- get the birth date of p2 for calculating heuristics
-	$bdate2=$indi->getEstimatedBirthDate();
+	// removed (temporarily) to fix #880475
+	//$bdate2=$indi->getBirthDate();
 
 	//-- current path nodes
 	$p1nodes = array();
@@ -1382,67 +1383,68 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				$spouseh = 2;
 				$childh = 3;
 
-				//-- generate heuristic values based on the birthdates of the current node and p2
-				$indi = WT_Person::getInstance($node['pid']);
-				$bdate1=$indi->getEstimatedBirthDate();
-				if ($bdate1->isOK() && $bdate2->isOK()) {
-					$yeardiff = ($bdate1->minJD() - $bdate2->minJD()) / 365;
-					if ($yeardiff < -140) {
-						$fatherh = 20;
-						$motherh = 20;
-						$siblingh = 15;
-						$spouseh = 15;
-						$childh = 1;
-					} else
-						if ($yeardiff < -100) {
-							$fatherh = 15;
-							$motherh = 15;
-							$siblingh = 10;
-							$spouseh = 10;
-							$childh = 1;
-						} else
-							if ($yeardiff < -60) {
-								$fatherh = 10;
-								$motherh = 10;
-								$siblingh = 5;
-								$spouseh = 5;
-								$childh = 1;
-							} else
-								if ($yeardiff < -20) {
-									$fatherh = 5;
-									$motherh = 5;
-									$siblingh = 3;
-									$spouseh = 3;
-									$childh = 1;
-								} else
-									if ($yeardiff<20) {
-										$fatherh = 3;
-										$motherh = 3;
-										$siblingh = 1;
-										$spouseh = 1;
-										$childh = 5;
-									} else
-										if ($yeardiff<60) {
-											$fatherh = 1;
-											$motherh = 1;
-											$siblingh = 5;
-											$spouseh = 2;
-											$childh = 10;
-										} else
-											if ($yeardiff<100) {
-												$fatherh = 1;
-												$motherh = 1;
-												$siblingh = 10;
-												$spouseh = 3;
-												$childh = 15;
-											} else {
-												$fatherh = 1;
-												$motherh = 1;
-												$siblingh = 15;
-												$spouseh = 4;
-												$childh = 20;
-											}
-				}
+	// removed (temporarily) to fix #880475
+	//			//-- generate heuristic values based on the birthdates of the current node and p2
+	//			$indi = WT_Person::getInstance($node['pid']);
+	//			$bdate1=$indi->getBirthDate();
+	//			if ($bdate1->isOK() && $bdate2->isOK()) {
+	//				$yeardiff = ($bdate1->minJD() - $bdate2->minJD()) / 365;
+	//				if ($yeardiff < -140) {
+	//					$fatherh = 20;
+	//					$motherh = 20;
+	//					$siblingh = 15;
+	//					$spouseh = 15;
+	//					$childh = 1;
+	//				} else
+	//					if ($yeardiff < -100) {
+	//						$fatherh = 15;
+	//						$motherh = 15;
+	//						$siblingh = 10;
+	//						$spouseh = 10;
+	//						$childh = 1;
+	//					} else
+	//						if ($yeardiff < -60) {
+	//							$fatherh = 10;
+	//							$motherh = 10;
+	//							$siblingh = 5;
+	//							$spouseh = 5;
+	//							$childh = 1;
+	//						} else
+	//							if ($yeardiff < -20) {
+	//								$fatherh = 5;
+	//								$motherh = 5;
+	//								$siblingh = 3;
+	//								$spouseh = 3;
+	//								$childh = 1;
+	//							} else
+	//								if ($yeardiff<20) {
+	//									$fatherh = 3;
+	//									$motherh = 3;
+	//									$siblingh = 1;
+	//									$spouseh = 1;
+	//									$childh = 5;
+	//								} else
+	//									if ($yeardiff<60) {
+	//										$fatherh = 1;
+	//										$motherh = 1;
+	//										$siblingh = 5;
+	//										$spouseh = 2;
+	//										$childh = 10;
+	//									} else
+	//										if ($yeardiff<100) {
+	//											$fatherh = 1;
+	//											$motherh = 1;
+	//											$siblingh = 10;
+	//											$spouseh = 3;
+	//											$childh = 15;
+	//										} else {
+	//											$fatherh = 1;
+	//											$motherh = 1;
+	//											$siblingh = 15;
+	//											$spouseh = 4;
+	//											$childh = 20;
+	//										}
+	//			}
 				//-- check all parents and siblings of this node
 				foreach ($indi->getChildFamilies() as $fam) {
 					$visited[$fam->getXref()] = true;
