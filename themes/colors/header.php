@@ -75,7 +75,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	// Top row left
 	'<div id="header">',
 	'<span class="title">';
-		print_gedcom_title_link(TRUE);
+		print_gedcom_title_link();
 	echo 
 	'</span>';
 

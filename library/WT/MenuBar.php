@@ -35,7 +35,7 @@ class WT_MenuBar {
 		global $WT_IMAGES;
 
 		//-- main menu
-		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom', 'menu-tree', 'down');
+		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree', 'down');
 		if (!empty($WT_IMAGES['home'])) {
 			$menu->addIcon('home');
 		}
@@ -46,7 +46,7 @@ class WT_MenuBar {
 		foreach ($gedcom_titles as $gedcom_title) {
 			if ($gedcom_title->gedcom_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new WT_Menu(
-					PrintReady($gedcom_title->gedcom_title, true),
+					PrintReady($gedcom_title->gedcom_title),
 					'index.php?ctype=gedcom&amp;ged='.rawurlencode($gedcom_title->gedcom_name),
 					'menu-tree-'.$gedcom_title->gedcom_id // Cannot use name - it must be a CSS identifier
 				);

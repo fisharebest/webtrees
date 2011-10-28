@@ -622,7 +622,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						print_indi_table($datalist, WT_I18N::translate('Individuals').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
+						print_indi_table($datalist, WT_I18N::translate('Individuals').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')));
 					}
 				}
 				// Split families by gedcom
@@ -638,7 +638,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						print_fam_table($datalist, WT_I18N::translate('Families').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
+						print_fam_table($datalist, WT_I18N::translate('Families').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')));
 					}
 				}
 				// Split sources by gedcom
@@ -654,7 +654,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						print_sour_table($datalist, WT_I18N::translate('Sources').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
+						print_sour_table($datalist, WT_I18N::translate('Sources').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')));
 					}
 				}
 				// Split notes by gedcom
@@ -670,7 +670,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						print_note_table($datalist, WT_I18N::translate('Notes').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title'), true));
+						print_note_table($datalist, WT_I18N::translate('Notes').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')));
 					}
 				}
 				$GEDCOM=WT_GEDCOM;

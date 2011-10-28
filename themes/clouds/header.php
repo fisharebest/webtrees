@@ -61,7 +61,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		'<div id="header">',
 			'<div class="header" >',
 				'<span class="title">';
-				print_gedcom_title_link(TRUE);
+				print_gedcom_title_link();
 				echo 
 				'</span>',
 				'<div class="hsearch">',

@@ -809,9 +809,10 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 * gedcom Home Page
 * @author John Finlay
 */
-function print_gedcom_title_link($InHeader=FALSE) {
+function print_gedcom_title_link() {
 	global $GEDCOM_TITLE;
-	echo "<a href=\"index.php?ctype=gedcom\" class=\"gedcomtitle\">", PrintReady($GEDCOM_TITLE, $InHeader), "</a>";
+
+	echo '<a href="index.php?ctype=gedcom&amp;ged=', WT_GEDURL,'" class="gedcomtitle">', PrintReady($GEDCOM_TITLE), '</a>';
 }
 
 //-- function to print a privacy error with contact method
@@ -922,16 +923,12 @@ function highlight_search_hits($string) {
 *
 * @param string $text to be printed
 */
-function PrintReady($text, $InHeaders=false, $trim=true) {
-	global $action, $firstname, $lastname, $place, $year;
-	global $TEXT_DIRECTION_array, $TEXT_DIRECTION;
-
+function PrintReady($text) {
 	//-- convert all & to &amp;
 	$text = str_replace("&", "&amp;", $text);
 	//$text = preg_replace(array("/&/", "/</", "/>/"), array("&amp;", "&lt;", "&gt;"), $text);
 	//-- make sure we didn't double convert existing HTML entities like so:  &foo; to &amp;foo;
 	$text = preg_replace("/&amp;(\w+);/", "&$1;", $text);
-	if ($trim) $text = trim($text);
 
 	// Look for strings enclosed in parentheses, braces, or brackets.
 	//

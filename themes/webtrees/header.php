@@ -80,7 +80,7 @@ if ($view!='simple') {
 		echo $menu->GetMenuAsList();
 	}
 	echo '</ul><div class="title">';
-	print_gedcom_title_link(true);
+	print_gedcom_title_link();
 	echo
 		'</div>',
 		'<div class="header_search">',

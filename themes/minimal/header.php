@@ -73,7 +73,7 @@ if ($view!='simple') {
 	echo 
 		'<div id="header" class="', $TEXT_DIRECTION, '">',
 		'<span class="title">';
-	print_gedcom_title_link(TRUE);
+	print_gedcom_title_link();
 	echo
 		'</span>',
 		'<span class="hlogin">';
