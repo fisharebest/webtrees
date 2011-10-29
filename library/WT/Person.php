@@ -95,8 +95,7 @@ class WT_Person extends WT_GedcomRecord {
 		}
 		// Consider relationship privacy (unless an admin is applying download restrictions)
 		if (WT_USER_GEDCOM_ID && WT_USER_PATH_LENGTH && $this->getGedId()==WT_GED_ID && $access_level=WT_USER_ACCESS_LEVEL) {
-			$relationship=get_relationship(WT_USER_GEDCOM_ID, $this->getXref(), true, WT_USER_PATH_LENGTH);
-			return $relationship!==false;
+			return get_relationship(WT_USER_GEDCOM_ID, $this->getXref(), true, WT_USER_PATH_LENGTH)!==false;
 		}
 		// No restriction found - show living people to members only:
 		return WT_PRIV_USER>=$access_level;
@@ -122,7 +121,7 @@ class WT_Person extends WT_GedcomRecord {
 		preg_match_all('/\n1 (?:FAMC|FAMS) @('.WT_REGEX_XREF.')@/', $this->_gedrec, $matches, PREG_SET_ORDER);
 		foreach ($matches as $match) {
 			$rela=WT_Family::getInstance($match[1]);
-			if ($SHOW_PRIVATE_RELATIONSHIPS || $rela && $rela->canDisplayDetails($access_level)) {
+			if ($rela && ($SHOW_PRIVATE_RELATIONSHIPS || $rela->canDisplayDetails($access_level))) {
 				$rec.=$match[0];
 			}
 		}
@@ -183,16 +182,10 @@ class WT_Person extends WT_GedcomRecord {
 		// If we found no dates then check the dates of close relatives.
 
 		// Check parents (birth and adopted)
-		preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->_gedrec, $cf_matches);
-		foreach ($cf_matches[1] as $cf_xref) {
-			$family=WT_Family::getInstance($cf_xref);
-			if (!$family) continue;
-			preg_match_all('/\n1 (?:HUSB|WIFE) @('.WT_REGEX_XREF.')@/', $family->_gedrec, $cfs_matches);
-			foreach ($cfs_matches[1] as $cfs_xref) {
-				$spouse=WT_Person::getInstance($cfs_xref);
-				if (!$spouse) continue;
+		foreach ($this->getChildFamilies(WT_PRIV_HIDE) as $family) {
+			foreach ($family->getSpouses(WT_PRIV_HIDE) as $parent) {
 				// Assume parents are no more than 45 years older than their children
-				preg_match_all('/\n2 DATE (.+)/', $spouse->_gedrec, $date_matches);
+				preg_match_all('/\n2 DATE (.+)/', $parent->_gedrec, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
 					$date=new WT_Date($date_match);
 					if ($date->isOK() && $date->MaxJD() <= WT_SERVER_JD - 365*($MAX_ALIVE_AGE+45)) {
@@ -203,10 +196,7 @@ class WT_Person extends WT_GedcomRecord {
 		}
 
 		// Check spouses
-		preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->_gedrec, $sf_matches);
-		foreach ($sf_matches[1] as $sf_xref) {
-			$family=WT_Family::getInstance($sf_xref);
-			if (!$family) continue;
+		foreach ($this->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
 			preg_match_all('/\n2 DATE (.+)/', $family->_gedrec, $date_matches);
 			foreach ($date_matches[1] as $date_match) {
 				$date=new WT_Date($date_match);
@@ -216,7 +206,7 @@ class WT_Person extends WT_GedcomRecord {
 				}
 			}
 			// Check spouse dates
-			$spouse=$family->getSpouse($this);
+			$spouse=$family->getSpouse($this, WT_PRIV_HIDE);
 			if ($spouse) {
 				preg_match_all('/\n2 DATE (.+)/', $spouse->_gedrec, $date_matches);
 				foreach ($date_matches[1] as $date_match) {
@@ -228,10 +218,7 @@ class WT_Person extends WT_GedcomRecord {
 				}
 			}
 			// Check child dates
-			preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $family->_gedrec, $cf_matches);
-			foreach ($cf_matches[1] as $cf_xref) {
-				$child=WT_Person::getInstance($cf_xref);
-				if (!$child) continue;
+			foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
 				preg_match_all('/\n2 DATE (.+)/', $child->_gedrec, $date_matches);
 				// Assume children born after age of 15
 				foreach ($date_matches[1] as $date_match) {
@@ -241,14 +228,8 @@ class WT_Person extends WT_GedcomRecord {
 					}
 				}
 				// Check grandchildren
-				preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $child->_gedrec, $cfs_matches);
-				foreach ($cfs_matches[1] as $cfs_xref) {
-					$family=WT_Family::getInstance($cfs_xref);
-					if (!$family) continue;
-					preg_match_all('/\n1 CHIL @('.WT_REGEX_XREF.')@/', $family->_gedrec, $cfsf_matches);
-					foreach ($cfsf_matches[1] as $cfsf_xref) {
-						$grandchild=WT_Person::getInstance($cfsf_xref);
-						if (!$grandchild) continue;
+				foreach ($child->getSpouseFamilies(WT_PRIV_HIDE) as $child_family) {
+					foreach ($child_family->getChildren(WT_PRIV_HIDE) as $grandchild) {
 						preg_match_all('/\n2 DATE (.+)/', $grandchild->_gedrec, $date_matches);
 						// Assume grandchildren born after age of 30
 						foreach ($date_matches[1] as $date_match) {
@@ -736,15 +717,28 @@ class WT_Person extends WT_GedcomRecord {
 	}
 
 	// Get a list of this person's spouse families
-	function getSpouseFamilies() {
+	function getSpouseFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
+
+		if ($access_level==WT_PRIV_HIDE) {
+			// special case, (temporary - cannot make this generic as other code depends on the private cached values)
+			$families=array();
+			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
+			foreach ($match[1] as $pid) {
+				$family=WT_Family::getInstance($pid);
+				if ($family) {
+					$families[]=$family;
+				}
+			}
+			return $families;
+		}
 
 		if ($this->_spouseFamilies===null) {
 			$this->_spouseFamilies=array();
 			preg_match_all('/\n1 FAMS @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
-				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canDisplayDetails())) {
+				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canDisplayDetails($access_level))) {
 					$this->_spouseFamilies[]=$family;
 				}
 			}
@@ -784,15 +778,28 @@ class WT_Person extends WT_GedcomRecord {
 	}
 
 	// Get a list of this person's child families (i.e. their parents)
-	function getChildFamilies() {
+	function getChildFamilies($access_level=WT_USER_ACCESS_LEVEL) {
 		global $SHOW_PRIVATE_RELATIONSHIPS;
+
+		if ($access_level==WT_PRIV_HIDE) {
+			// special case, (temporary - cannot make this generic as other code depends on the private cached values)
+			$families=array();
+			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
+			foreach ($match[1] as $pid) {
+				$family=WT_Family::getInstance($pid);
+				if ($family) {
+					$families[]=$family;
+				}
+			}
+			return $families;
+		}
 
 		if ($this->_childFamilies===null) {
 			$this->_childFamilies=array();
 			preg_match_all('/\n1 FAMC @('.WT_REGEX_XREF.')@/', $this->_gedrec, $match);
 			foreach ($match[1] as $pid) {
 				$family=WT_Family::getInstance($pid);
-				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canDisplayDetails())) {
+				if ($family && ($SHOW_PRIVATE_RELATIONSHIPS || $family->canDisplayDetails($access_level))) {
 					$this->_childFamilies[]=$family;
 				}
 			}
@@ -1186,7 +1193,7 @@ class WT_Person extends WT_GedcomRecord {
 									$tmp_rec="1 _".$sEvent->getTag()."_PARE\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 								}
 								// Create a new event
-								$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$parent->getXref()."@\n2 ASSO @".$sfamily->getSpouseId($parent->getXref()).'@', $sfamily, 0);
+								$this->indifacts[]=new WT_Event($tmp_rec."\n2 ASSO @".$parent->getXref()."@\n2 ASSO @".$sEvent->getSpouseId().'@', $sfamily, 0);
 							}
 						}
 					}
@@ -1305,7 +1312,7 @@ class WT_Person extends WT_GedcomRecord {
 								$tmp_rec=preg_replace('/^1 ('.WT_EVENTS_MARR.')/', '1 _$1'.$option, $sEvent->getGedcomRecord()); // Full
 								$tmp_rec="1 _".$sEvent->getTag().$option."\n2 DATE ".$sEvent->getValue('DATE')."\n2 PLAC ".$sEvent->getValue('PLAC'); // Abbreviated
 							}
-							$event=new WT_Event($tmp_rec."\n2 ASSO @".$child->getXref()."@\n2 ASSO @".$sfamily->getSpouseId($child->getXref())."@", $child, 0);
+							$event=new WT_Event($tmp_rec."\n2 ASSO @".$child->getXref()."@\n2 ASSO @".$sEvent->getSpouseId()."@", $child, 0);
 							if (!in_array($event, $this->indifacts)) {
 								$this->indifacts[]=$event;
 							}
