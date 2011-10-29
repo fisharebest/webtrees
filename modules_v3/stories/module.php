@@ -393,7 +393,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				if ($indi->canDisplayDetails()) {
 					echo '<tr>
 						<td class="list_value">', get_block_setting($story->block_id, 'title'), '</td>
-						<td class="list_value_wrap">', $name, '</td>
+						<td class="list_value wrap">', $name, '</td>
 						</tr>';
 				}
 			}
