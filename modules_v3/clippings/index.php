@@ -282,7 +282,7 @@ if ($ct==0) {
 			if ($tag=='FAM' ) $icon = "sfamily";
 			if ($tag=='SOUR') $icon = "source";
 			if ($tag=='REPO') $icon = "repository";
-			if ($tag=='NOTE') $icon = "notes";
+			if ($tag=='NOTE') $icon = "note";
 			if ($tag=='OBJE') $icon = "media";
 			?>
 			<tr><td class="list_value">

@@ -150,7 +150,6 @@ $WT_IMAGES=array(
 	'larrow2'=>WT_THEME_URL.'images/larrow2.png',
 	'ldarrow'=>WT_THEME_URL.'images/ldarrow.png',
 	'minus'=>WT_THEME_URL.'images/minus.png',
-	'note'=>WT_THEME_URL.'images/notes.png',
 	'plus'=>WT_THEME_URL.'images/plus.png',
 	'rarrow'=>WT_THEME_URL.'images/rarrow.png',
 	'rarrow2'=>WT_THEME_URL.'images/rarrow2.png',

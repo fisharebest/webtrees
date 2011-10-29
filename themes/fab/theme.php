@@ -115,7 +115,6 @@ $WT_IMAGES=array(
 	'mypage'              =>WT_THEME_URL.'images/mypage.png',
 	'note'                =>WT_THEME_URL.'images/notes.png',
 	'note-list'           =>WT_THEME_URL.'images/notes.png',
-	'notes'               =>WT_THEME_URL.'images/notes.png',
 	'patriarch'           =>WT_THEME_URL.'images/patriarch.png',
 	'pedigree'            =>WT_THEME_URL.'images/pedigree.png',
 	'pin-in'              =>WT_THEME_URL.'images/pin-in.png',

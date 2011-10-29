@@ -239,7 +239,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					if ($tag=='FAM' ) $icon = "sfamily";
 					//if ($tag=='SOUR') $icon = "source";
 					//if ($tag=='REPO') $icon = "repository";
-					//if ($tag=='NOTE') $icon = "notes";
+					//if ($tag=='NOTE') $icon = "note";
 					//if ($tag=='OBJE') $icon = "media";
 					if (!empty($icon)) {
 						$out .= '<li>';
