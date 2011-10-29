@@ -1385,7 +1385,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 
 	// removed (temporarily) to fix #880475
 	//			//-- generate heuristic values based on the birthdates of the current node and p2
-	//			$indi = WT_Person::getInstance($node['pid']);
+				$indi = WT_Person::getInstance($node['pid']);
 	//			$bdate1=$indi->getBirthDate();
 	//			if ($bdate1->isOK() && $bdate2->isOK()) {
 	//				$yeardiff = ($bdate1->minJD() - $bdate2->minJD()) / 365;
