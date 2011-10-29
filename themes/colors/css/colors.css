@@ -769,11 +769,14 @@ a:hover .name1, a:hover.name2,  a:hover .nameZoom  {color: #f00; font-weight: bo
 
 .details1 {
 text-decoration:none;
+font-size: 10px;
 }
 
 .details2 {
 font-size: 11px;
 text-decoration:none;
+color: #006;
+font-weight: bold;
 }
 
 .nameZoom {
