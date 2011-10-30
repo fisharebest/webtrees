@@ -672,6 +672,12 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	border: solid black 1px;
 }
 
+.journal_box {
+	padding: 3pt;
+	border:thin solid #AAA;
+	overflow:visible;
+}
+
 .news_title {
 	font-weight:bold; font-size:14px;
 }

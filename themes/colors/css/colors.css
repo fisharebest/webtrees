@@ -606,6 +606,8 @@ border:1px solid #999;
 padding:3px;
 }
 
+div > .person_box {background: #ddf!important;}
+
 .person_boxF {
 background:#fdd;
 border:1px solid #f28;
@@ -997,9 +999,16 @@ white-space:nowrap;
 padding:3px 3px 0 3px;
 }
 
+.journal_box {
+padding: 3pt;
+border:thin solid #AAA;
+overflow:visible;
+}
+
 .news_box {
 padding: 3pt;
 }
+
 
 .news_title {
 color: #000;

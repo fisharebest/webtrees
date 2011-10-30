@@ -81,7 +81,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			$day = date('j', $news['date']);
 			$mon = date('M', $news['date']);
 			$year = date('Y', $news['date']);
-			$content .= "<div class=\"person_box\">";
+			$content .= "<div class=\"journal_box\">";
 			$content .= "<div class=\"news_title\">".$news['title'].'</div>';
 			$content .= "<div class=\"news_date\">".format_timestamp($news['date']).'</div>';
 			if ($news["text"]==strip_tags($news["text"])) {

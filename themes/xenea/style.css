@@ -894,6 +894,12 @@ html[dir='rtl'] .themesubmenu {margin-right:0;}
 	padding:1px;
 }
 
+.journal_box {
+	padding: 3pt;
+	border:thin solid #AAA;
+	overflow:visible;
+}
+
 .news_box {
 	background-color:#F0F9FF;
 	border:1px solid #84BEFF;

@@ -360,6 +360,12 @@ right:10px;
 	background-color:#DDD;
 }
 
+.journal_box {
+	padding: 3pt;
+	border:thin solid #AAA;
+	overflow:visible;
+}
+
 .news_title {
 	font-size:1.10em;
 	font-weight:bold;
