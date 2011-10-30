@@ -238,10 +238,6 @@ html[dir='rtl'] .makeMenu li ul li {
 	height:56px;
 }
 
-td > .person_box {
-	height:76px;
-}
-
 .person_boxF {
 	background-color:#FDD;
 	overflow:visible;
