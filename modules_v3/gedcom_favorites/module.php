@@ -157,7 +157,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 					$record=WT_GedcomRecord::getInstance($favorite['gid']);
 					if ($record && $record->canDisplayDetails()) {
 						if ($record->getType()=='INDI') {
-							$content .= "<div id=\"box".$favorite["gid"].".0\" class=\"person_box";
+							$content .= "<div id=\"box".$favorite["gid"].".0\" class=\"person_box action_header";
 							switch($record->getsex()) {
 								case 'M':
 									break;
