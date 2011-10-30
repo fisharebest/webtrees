@@ -246,6 +246,7 @@ html[dir='rtl'] .makeMenu li ul li {
 
 .action_header, .action_headerF {
 	height:76px;
+	background: #eee;
 }
 
 .person_boxNN {
