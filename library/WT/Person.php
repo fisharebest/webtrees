@@ -1090,8 +1090,11 @@ class WT_Person extends WT_GedcomRecord {
 						if (!is_null($spouse)) $factrec.="\n2 _WTS @".$spouse->getXref().'@';
 						$factrec.="\n2 _WTFS @".$family->getXref()."@\n";
 						$event->gedcomRecord = $factrec;
-						if ($fact!='OBJE') $this->indifacts[] = $event;
-						else $this->otherfacts[]=$event;
+						if ($fact!='OBJE') {
+							$this->indifacts[]=$event;
+						} else {
+							$this->otherfacts[]=$event;
+						}
 					}
 				}
 			}
