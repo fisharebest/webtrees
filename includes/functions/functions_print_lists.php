@@ -2201,16 +2201,3 @@ function get_align($txt) {
 		if ($TEXT_DIRECTION=="rtl") return "right";
 		return "left";
 }
-
-/**
- * load behaviour js data
- * to be called at the end just before </body> tag
- *
- * @see http://bennolan.com/behaviour/
- * @param none
- */
-function load_behaviour() {
-	require_once WT_ROOT.'js/prototype.js.htm';
-	require_once WT_ROOT.'js/behaviour.js.htm';
-	require_once WT_ROOT.'js/overlib.js.htm';
-}

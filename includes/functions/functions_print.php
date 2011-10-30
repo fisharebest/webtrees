@@ -438,9 +438,6 @@ function print_footer($view='full') {
 		else $footer_count++;
 		echo "<!-- begin footer -->";
 		require WT_ROOT.$footerfile;
-		if (function_exists("load_behaviour")) {
-			load_behaviour();  // @see function_print_lists.php
-		}
 	} else {
 		if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
 			echo execution_stats();

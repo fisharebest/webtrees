@@ -97,9 +97,6 @@ if (isset($_REQUEST['to_delete'])) {
 	}
 }
 
-require_once WT_ROOT.'js/prototype.js.htm';
-require_once WT_ROOT.'js/scriptaculous.js.htm';
-
 echo '<form name="delete_form" method="post" action="">';
 echo '<div id="cleanup"><ul>';
 
