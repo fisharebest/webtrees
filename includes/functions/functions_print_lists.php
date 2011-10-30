@@ -98,9 +98,9 @@ function print_indi_table($datalist, $legend='', $option='') {
 		);
 
 	   jQuery("div.filtersF").html(
-			'<button class="ui-state-default" type="button" id="GIVEN_SORT_<?php echo $table_id; ?>" title="<?php echo WT_I18N::translate('Sort by given names'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?></button>'+
-			'<input class="ui-state-default" id="cb_parents_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'parents_indi_list_table_<?php echo $table_id; ?>\');" value="<?php echo WT_I18N::translate('Show parents'); ?>" title="<?php echo WT_I18N::translate('Show parents'); ?>"/>'+
-			'<input class="ui-state-default" id="charts_indi_list_table" type="button" onclick="toggleByClassName(\'DIV\', \'indi_list_table-charts_<?php echo $table_id; ?>\');" value="<?php echo WT_I18N::translate('Show statistics charts'); ?>" title="<?php echo WT_I18N::translate('Show statistics charts'); ?>"/>'
+			'<button type="button" class="ui-state-default" id="GIVEN_SORT_<?php echo $table_id; ?>"><?php echo WT_I18N::translate('Sort by given names'); ?></button>'+
+			'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="toggleByClassName(\'DIV\', \'parents_indi_list_table_<?php echo $table_id; ?>\');"><?php echo WT_I18N::translate('Show parents'); ?></button>'+
+			'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="toggleByClassName(\'DIV\', \'indi_list_table-charts_<?php echo $table_id; ?>\');"><?php echo WT_I18N::translate('Show statistics charts'); ?></button>'
 		);
 		
 	   oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_<?php echo $table_id; ?>',1);
@@ -538,10 +538,10 @@ function print_fam_table($datalist, $legend='', $option='') {
 		);
 
 	   jQuery("div.filtersF").html(
-			'<button class="ui-state-default" type="button" id="GIVEN_SORT_M_<?php echo $table_id; ?>" title="<?php echo WT_I18N::translate('Sort by given names'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?></button>'+
-			'<button class="ui-state-default" type="button" id="GIVEN_SORT_F_<?php echo $table_id; ?>" title="<?php echo WT_I18N::translate('Sort by given names'); ?>" ><?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?></button>'+
-			'<input class="ui-state-default" type="button" id="cb_parents_<?php echo $table_id; ?>" onclick="toggleByClassName(\'DIV\', \'parents_<?php echo $table_id; ?>\');" value="<?php echo WT_I18N::translate('Show parents'); ?>" title="<?php echo WT_I18N::translate('Show parents'); ?>"/>'+
-			'<input class="ui-state-default" type="button" id="charts_fam_list_table" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_<?php echo $table_id; ?>\');" value="<?php echo WT_I18N::translate('Show statistics charts'); ?>" title="<?php echo WT_I18N::translate('Show statistics charts'); ?>"/>'
+			'<button type="button" class="ui-state-default" id="GIVEN_SORT_M_<?php echo $table_id; ?>"><?php echo WT_I18N::translate('Sort by given names'); ?></button>'+
+			'<button type="button" class="ui-state-default" id="GIVEN_SORT_F_<?php echo $table_id; ?>"><?php echo WT_I18N::translate('Sort by given names'); ?></button>'+
+			'<button type="button" class="ui-state-default" id="cb_parents_<?php echo $table_id; ?>" onclick="toggleByClassName(\'DIV\', \'parents_<?php echo $table_id; ?>\');"><?php echo WT_I18N::translate('Show parents'); ?></button>'+
+			'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_<?php echo $table_id; ?>\');"><?php echo WT_I18N::translate('Show statistics charts'); ?></button>'
 		);
 		
 		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_M_<?php echo $table_id; ?>',1);
@@ -2213,49 +2213,4 @@ function load_behaviour() {
 	require_once WT_ROOT.'js/prototype.js.htm';
 	require_once WT_ROOT.'js/behaviour.js.htm';
 	require_once WT_ROOT.'js/overlib.js.htm';
-?>
-	<script type="text/javascript">
-	// <![CDATA[
-	var myrules = {
-		'fieldset button' : function(element) {
-			element.onmouseover = function() { // show helptext
-				helptext = this.title;
-				if (helptext=='') helptext = this.value;
-				if (helptext=='' || helptext==undefined) helptext = 'Help text : button_'+this.className;
-				this.title = helptext; if (document.all) return; // IE = title
-				this.value = helptext; this.title = ''; // Firefox = value
-				return overlib(helptext, BGCOLOR, "#000000", FGCOLOR, "#FFFFE0");
-			}
-			element.onmouseout = nd; // hide helptext
-			element.onmousedown = function() { // show active button
-				var buttons = this.parentNode.getElementsByTagName("button");
-				for (var i=0; i<buttons.length; i++) buttons[i].style.opacity = 1;
-				this.style.opacity = 0.67;
-			}
-			element.onclick = function() { // apply filter
-				var temp = this.parentNode.getElementsByTagName("table")[0];
-				if (!temp) return true;
-				var table = temp.id;
-				var args = this.className.split('_'); // eg: BIRT_YES
-				if (args[0]=="reset") return table_filter(table, "", "");
-				if (args[1].length) return table_filter(table, args[0], args[1]);
-				return false;
-			}
-		}/**,
-		'.sortable th' : function(element) {
-			element.onmouseout = nd; // hide helptext
-			element.onmouseover = function() { // show helptext
-				helptext = this.title;
-				if (helptext=='') helptext = this.value;
-				if (helptext=='' || helptext==undefined) helptext = <?php echo "'", WT_I18N::translate('Sort by this column.'), "'"; ?>;
-				this.title = helptext; if (document.all) return; // IE = title
-				this.value = helptext; this.title = ''; // Firefox = value
-				return overlib(helptext, BGCOLOR, "#000000", FGCOLOR, "#FFFFE0");
-			}
-		}**/
-	}
-	Behaviour.register(myrules);
-	// ]]>
-	</script>
-<?php
 }
