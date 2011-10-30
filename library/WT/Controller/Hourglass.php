@@ -440,14 +440,10 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 		if ($depth > $this->generations) return $depth;
 		$person = WT_Person::getInstance($pid);
 		if (is_null($person)) return $depth;
-		$famids = $person->getSpouseFamilies();
-		if ($person->getNumberOfChildren()==0) return $depth-1;
 		$maxdc = $depth;
-		foreach ($famids as $family) {
-			$ct = preg_match_all("/1 CHIL @(.*)@/", $family->getGedcomRecord(), $match, PREG_SET_ORDER);
-			for ($i=0; $i<$ct; $i++) {
-				$chil = trim($match[$i][1]);
-				$dc = $this->max_descendency_generations($chil, $depth+1);
+		foreach ($person->getSpouseFamilies() as $family) {
+			foreach ($family->getChildren() as $child) {
+				$dc = $this->max_descendency_generations($child->getXref(), $depth+1);
 				if ($dc >= $this->generations) return $dc;
 				if ($dc > $maxdc) $maxdc = $dc;
 			}

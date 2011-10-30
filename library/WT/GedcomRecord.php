@@ -381,6 +381,10 @@ class WT_GedcomRecord {
 				$this->disp_none=$this->_canDisplayDetails(WT_PRIV_NONE);
 			}
 			return $this->disp_none;
+		case WT_PRIV_HIDE: // hidden from admins
+			// We use this value to bypass privacy checks.  For example,
+			// when downloading data or when calculating privacy itself.
+			return true;
 		default:
 			// Should never get here.
 			return false;

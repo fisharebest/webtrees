@@ -1263,7 +1263,6 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 		$NODE_CACHE=array();
 	}
 
-	$time_limit=ini_get('max_execution_time');
 	$indi = WT_Person::getInstance($pid2);
 	//-- check the cache
 	if (!$ignore_cache) {
@@ -1275,8 +1274,8 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				return false;
 		}
 		//-- check the cache for person 2's children
-		foreach ($indi->getSpouseFamilies() as $fam) {
-			foreach ($fam->getChildren() as $child) {
+		foreach ($indi->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
+			foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
 				if (isset($NODE_CACHE["$pid1-".$child->getXref()])) {
 					if (($maxlength==0)||(count($NODE_CACHE["$pid1-".$child->getXref()]["path"])+1<=$maxlength)) {
 						$node1 = $NODE_CACHE["$pid1-".$child->getXref()];
@@ -1339,14 +1338,6 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 				flush();
 		}
 		$count++;
-		$end_time = microtime(true);
-		$exectime = $end_time - $start_time;
-		if (($time_limit>1)&&($exectime > $time_limit-1)) {
-			echo '<div>';
-			echo "<span class=\"error\">", WT_I18N::translate('The script timed out before a relationship could be found.'), "</span>";
-			echo '</div>';
-			return false;
-		}
 		if (count($p1nodes)==0) {
 			if ($maxlength!=0) {
 				if (!isset($NODE_CACHE_LENGTH)) {
@@ -1446,9 +1437,9 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 	//										}
 	//			}
 				//-- check all parents and siblings of this node
-				foreach ($indi->getChildFamilies() as $fam) {
-					$visited[$fam->getXref()] = true;
-					foreach ($fam->getSpouses() as $spouse) {
+				foreach ($indi->getChildFamilies(WT_PRIV_HIDE) as $family) {
+					$visited[$family->getXref()] = true;
+					foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
 						if (!isset($visited[$spouse->getXref()])) {
 							$node1 = $node;
 							$node1["length"]+=$fatherh;
@@ -1468,7 +1459,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 							$NODE_CACHE["$pid1-".$node1["pid"]] = $node1;
 						}
 					}
-					foreach ($fam->getChildren() as $child) {
+					foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
 						if (!isset($visited[$child->getXref()])) {
 							$node1 = $node;
 							$node1["length"]+=$siblingh;
@@ -1490,10 +1481,10 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 					}
 				}
 				//-- check all spouses and children of this node
-				foreach ($indi->getSpouseFamilies() as $fam) {
-					$visited[$fam->getXref()] = true;
+				foreach ($indi->getSpouseFamilies(WT_PRIV_HIDE) as $family) {
+					$visited[$family->getXref()] = true;
 					if ($followspouse) {
-						foreach ($fam->getSpouses() as $spouse) {
+						foreach ($family->getSpouses(WT_PRIV_HIDE) as $spouse) {
 							if (!in_arrayr($spouse->getXref(), $node1) || !isset($visited[$spouse->getXref()])) {
 								$node1 = $node;
 								$node1["length"]+=$spouseh;
@@ -1514,7 +1505,7 @@ function get_relationship($pid1, $pid2, $followspouse=true, $maxlength=0, $ignor
 							}
 						}
 					}
-					foreach ($fam->getChildren() as $child) {
+					foreach ($family->getChildren(WT_PRIV_HIDE) as $child) {
 						if (!isset($visited[$child->getXref()])) {
 							$node1 = $node;
 							$node1["length"]+=$childh;
