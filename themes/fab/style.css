@@ -244,6 +244,10 @@ html[dir='rtl'] .makeMenu li ul li {
 	height:56px;
 }
 
+.action_header, .action_headerF {
+	height:76px;
+}
+
 .person_boxNN {
 	background-color:#DFD;
 	overflow:visible;
