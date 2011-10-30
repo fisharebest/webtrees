@@ -514,7 +514,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 			"bStateSave": true,
 			"aoColumnDefs": [
 				{"iDataSort": 2, "aTargets": [ 0 ] },
-				{"iDataSort": 5, "aTargets": [ 4 ] },
+				{"iDataSort": 6, "aTargets": [ 4 ] },
 				{"iDataSort": 8, "aTargets": [ 7 ] },
 				{"iDataSort": 11, "aTargets": [ 10 ] },
 				{"iDataSort": 15, "aTargets": [ 14 ] }
@@ -592,7 +592,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	echo '<th style="display:none;">HUSB:GIVN_SURN</th>';
 	echo '<th style="display:none;">HUSB:SURN_GIVN</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
-	echo '<th><a href="javascript:;" onclick="sortByOtherCol(this, 2)">', WT_Gedcom_Tag::getLabel('NAME'), '</a></th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
 	echo '<th style="display:none;">WIFE:GIVN_SURN</th>';
 	echo '<th style="display:none;">WIFE:SURN_GIVN</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
