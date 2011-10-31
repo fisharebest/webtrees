@@ -349,7 +349,7 @@ class WT_Query_Name {
 			($marnm ? "" : " AND n_type!='_MARNM'");
 			
 		if ($surn) {
-			$sql.=" AND n_surn=".WT_DB::quote($surn)." COLLATE '".WT_I18N::$collation."'";
+			$sql.=" AND n_surn COLLATE '".WT_I18N::$collation."' =".WT_DB::quote($surn);
 		} elseif ($salpha==',') {
 			$sql.=" AND n_surn=''";
 		} elseif ($salpha=='@') {
@@ -392,7 +392,7 @@ class WT_Query_Name {
 			($marnm ? "" : "AND n_type!='_MARNM'");
 	
 		if ($surn) {
-			$sql.=" AND n_surn=".WT_DB::quote($surn);
+			$sql.=" AND n_surn COLLATE '".WT_I18N::$collation."'=".WT_DB::quote($surn);
 		} elseif ($salpha==',') {
 			$sql.=" AND n_surn=''";
 		} elseif ($salpha=='@') {
