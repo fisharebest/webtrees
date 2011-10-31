@@ -362,7 +362,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		ob_start();
 		?>
 		<table class="facts_table"><tr><td colspan="2" class="descriptionbox rela">
-		<input id="checkbox_elder" type="checkbox" onclick="toggleByClassName('DIV', 'elderdate');" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\""; ?>/>
+		<input id="checkbox_elder" type="checkbox" onclick="jQuery('div.elderdate').toggle();" <?php if ($SHOW_AGE_DIFF) echo "checked=\"checked\""; ?>/>
 		<label for="checkbox_elder"><?php echo WT_I18N::translate('Show date differences'), help_link('age_differences'); ?></label>
 		</td></tr></table>
 		<?php
@@ -424,17 +424,13 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo '</table>';
 		}
 
-		?>
-		<script type="text/javascript">
-		<!--
-			<?php if (!$SHOW_AGE_DIFF) echo "toggleByClassName('DIV', 'elderdate');"; ?>
-		//-->
-		</script>
-		<br />
-		<?php
+		if (!$SHOW_AGE_DIFF) {
+			echo WT_JS_START, "jQuery('DIV.elderdate').toggle();", WT_JS_END;
+		}
+
 		if ($this->controller->indi->canEdit()) {
 		?>
-		<table class="facts_table">
+		<br/><table class="facts_table">
 		<?php
 			if (count($families)>1) { ?>
 			<tr>

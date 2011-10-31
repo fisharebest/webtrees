@@ -100,8 +100,8 @@ function print_indi_table($datalist, $legend='', $option='') {
 
 		jQuery("div.filtersF").html('<?php echo addcslashes(
 			'<button type="button" class="ui-state-default" id="GIVEN_SORT_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
-			'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="toggleByClassName(\'DIV\', \'parents_indi_list_table_'.$table_id.'\');">'.WT_I18N::translate('Show parents').'</button>'.
-			'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="toggleByClassName(\'DIV\', \'indi_list_table-charts_'.$table_id.'\');">'.WT_I18N::translate('Show statistics charts').'</button>',
+			'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="jQuery(\'div.parents_indi_list_table_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show parents').'</button>'.
+			'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show statistics charts').'</button>',
 			"'");
 		?>');
 
@@ -542,8 +542,8 @@ function print_fam_table($datalist, $legend='', $option='') {
 	   jQuery("div.filtersF").html('<?php echo addcslashes(
 			'<button type="button" class="ui-state-default" id="GIVEN_SORT_M_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
 			'<button type="button" class="ui-state-default" id="GIVEN_SORT_F_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
-			'<button type="button" class="ui-state-default" id="cb_parents_'.$table_id.'" onclick="toggleByClassName(\'DIV\', \'parents_'.$table_id.'\');">'.WT_I18N::translate('Show parents').'</button>'.
-			'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="toggleByClassName(\'DIV\', \'fam_list_table-charts_'.$table_id.'\');">'. WT_I18N::translate('Show statistics charts').'</button>',
+			'<button type="button" class="ui-state-default" id="cb_parents_'.$table_id.'" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show parents').'</button>'.
+			'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle();">'. WT_I18N::translate('Show statistics charts').'</button>',
 			"'");
 		?>');		
 		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_M_<?php echo $table_id; ?>',1);
@@ -1924,7 +1924,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		//-- table footer
 		$return .= '</tbody><tfoot><tr class="sortbottom">';
 		$return .= '<td class="list_label">';
-		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"toggleByClassName('DIV', 'parents_$table_id');\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents').'</label><br />';
+		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"jQuery('div.parents_$table_id').toggle();\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents').'</label><br />';
 		$return .= '</td><td class="list_label">';
 		$return .= /* I18N: A count of events */ WT_I18N::translate('Total events: %s', WT_I18N::number($output));
 		$return .= '</td>';

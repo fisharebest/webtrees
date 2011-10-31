@@ -50,9 +50,6 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getTabContent() {
 		global $FACT_COUNT, $SHOW_LEVEL2_NOTES, $NAV_SOURCES;
 
-		/*if (isset($_COOKIE['row_sour2'])) $SHOW_LEVEL2_SOURCES = ($_COOKIE['row_sour2']);
-		else*/ $SHOW_LEVEL2_SOURCES = $SHOW_LEVEL2_NOTES;
-
 		ob_start();
 		?>
 		<table class="facts_table">
@@ -65,7 +62,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		?>
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
-					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_SOURCES) echo " checked=\"checked\""; ?> onclick="toggleByClassName('TR', 'row_sour2');" />
+					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_sour2').toggle();" />
 					<label for="checkbox_sour2"><?php echo WT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
 				</td>
 			</tr>
@@ -98,14 +95,8 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		</table>
 		<br />
 		<?php
-		if (!$SHOW_LEVEL2_SOURCES) {
-		?>
-			<script type="text/javascript">
-			<!--
-			toggleByClassName('TR', 'row_sour2');
-			//-->
-			</script>
-	<?php
+		if (!$SHOW_LEVEL2_NOTES) {
+			echo WT_JS_START, 'jQuery("tr.row_sour2").toggle();', WT_JS_END;
 		}
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}

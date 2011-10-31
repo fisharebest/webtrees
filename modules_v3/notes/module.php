@@ -52,80 +52,72 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		ob_start();
 		?>
-<table class="facts_table">
-<?php
-if (!$this->controller->indi->canDisplayDetails()) {
-	echo "<tr><td class=\"facts_value\">";
-	print_privacy_error();
-	echo "</td></tr>";
-} else {
-	?>
-	<tr>
-		<td colspan="2" class="descriptionbox rela"><input id="checkbox_note2"
-			type="checkbox"
-			<?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?>
-			onclick="toggleByClassName('TR', 'row_note2');" /> <label
-			for="checkbox_note2"><?php echo WT_I18N::translate('Show all notes'); ?></label>
-			<?php echo help_link('show_fact_sources'); ?>
-		</td>
-	</tr>
-	<?php
-	$globalfacts = $this->controller->getGlobalFacts();
-	foreach ($globalfacts as $key => $event) {
-		$fact = $event->getTag();
-		if ($fact=="NAME") {
-			print_main_notes($event->getGedcomRecord(), 2, $this->controller->pid, $event->getLineNumber(), true);
+		<table class="facts_table">
+		<?php
+		if (!$this->controller->indi->canDisplayDetails()) {
+			echo "<tr><td class=\"facts_value\">";
+			print_privacy_error();
+			echo "</td></tr>";
+		} else {
+			?>
+			<tr>
+				<td colspan="2" class="descriptionbox rela">
+					<input id="checkbox_note2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_note2').toggle();" />
+					<label for="checkbox_note2"><?php echo WT_I18N::translate('Show all notes'); ?></label>
+					<?php echo help_link('show_fact_sources'); ?>
+				</td>
+			</tr>
+			<?php
+			$globalfacts = $this->controller->getGlobalFacts();
+			foreach ($globalfacts as $key => $event) {
+				$fact = $event->getTag();
+				if ($fact=="NAME") {
+					print_main_notes($event->getGedcomRecord(), 2, $this->controller->pid, $event->getLineNumber(), true);
+				}
+				$FACT_COUNT++;
+			}
+			$otherfacts = $this->controller->getOtherFacts();
+			foreach ($otherfacts as $key => $event) {
+				$fact = $event->getTag();
+				if ($fact=="NOTE") {
+					print_main_notes($event->getGedcomRecord(), 1, $this->controller->pid, $event->getLineNumber());
+				}
+				$FACT_COUNT++;
+			}
+			// 2nd to 5th level notes/sources
+			$this->controller->indi->add_family_facts(false);
+			foreach ($this->controller->getIndiFacts() as $key => $factrec) {
+				for ($i=2; $i<6; $i++) {
+					print_main_notes($factrec->getGedcomRecord(), $i, $this->controller->pid, $factrec->getLineNumber(), true);
+				}
+			}
+			if ($this->get_note_count()==0) echo "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Notes for this individual.')."</td></tr>";
+			//-- New Note Link
+			if ($this->controller->indi->canEdit()) {
+				?>
+			<tr>
+				<td class="facts_label"><?php echo WT_I18N::translate('Add Note'), help_link('add_note'); ?></td>
+				<td class="facts_value"><a href="javascript:;"
+					onclick="add_new_record('<?php echo $this->controller->pid; ?>','NOTE'); return false;"><?php echo WT_I18N::translate('Add a new note'); ?></a>
+				<br />
+				</td>
+			</tr>
+			<tr>
+				<td class="facts_label"><?php echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
+				<td class="facts_value"><a href="javascript:;"
+					onclick="add_new_record('<?php echo $this->controller->pid; ?>','SHARED_NOTE'); return false;"><?php echo WT_I18N::translate('Add a new shared note'); ?></a>
+				<br />
+				</td>
+			</tr>
+			<?php
+			}
 		}
-		$FACT_COUNT++;
-	}
-	$otherfacts = $this->controller->getOtherFacts();
-	foreach ($otherfacts as $key => $event) {
-		$fact = $event->getTag();
-		if ($fact=="NOTE") {
-			print_main_notes($event->getGedcomRecord(), 1, $this->controller->pid, $event->getLineNumber());
-		}
-		$FACT_COUNT++;
-	}
-	// 2nd to 5th level notes/sources
-	$this->controller->indi->add_family_facts(false);
-	foreach ($this->controller->getIndiFacts() as $key => $factrec) {
-		for ($i=2; $i<6; $i++) {
-			print_main_notes($factrec->getGedcomRecord(), $i, $this->controller->pid, $factrec->getLineNumber(), true);
-		}
-	}
-	if ($this->get_note_count()==0) echo "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Notes for this individual.')."</td></tr>";
-	//-- New Note Link
-	if ($this->controller->indi->canEdit()) {
 		?>
-	<tr>
-		<td class="facts_label"><?php echo WT_I18N::translate('Add Note'), help_link('add_note'); ?></td>
-		<td class="facts_value"><a href="javascript:;"
-			onclick="add_new_record('<?php echo $this->controller->pid; ?>','NOTE'); return false;"><?php echo WT_I18N::translate('Add a new note'); ?></a>
+		</table>
 		<br />
-		</td>
-	</tr>
-	<tr>
-		<td class="facts_label"><?php echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
-		<td class="facts_value"><a href="javascript:;"
-			onclick="add_new_record('<?php echo $this->controller->pid; ?>','SHARED_NOTE'); return false;"><?php echo WT_I18N::translate('Add a new shared note'); ?></a>
-		<br />
-		</td>
-	</tr>
-	<?php
-	}
-}
-?>
-</table>
-<br />
-<?php
-if (!$SHOW_LEVEL2_NOTES) {
-	?>
-<script type="text/javascript">
-			<!--
-			toggleByClassName('TR', 'row_note2');
-			//-->
-			</script>
-	<?php
+		<?php
+		if (!$SHOW_LEVEL2_NOTES)  {
+			echo WT_JS_START, 'jQuery("tr.row_note2").toggle();', WT_JS_END;
 		}
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}

@@ -1336,33 +1336,6 @@ function findFact(field, ged) {
 	return false;
 }
 
-function toggleByClassName(tagName, className) {
-	var disp = "";
-	var elements = document.getElementsByTagName(tagName.toUpperCase());
-	for (var i = 0; i < elements.length; i++) {
-		var ecn = elements[i].className;
-		if (ecn && ecn.match(new RegExp("(^|\\s)" + className + "(\\s|$)"))) {
-			disp = elements[i].style.display;
-			if (disp == "none") {
-				if (tagName == "TR") {
-					disp = "table-row";
-					if (document.all && !window.opera) disp = "inline"; // IE
-				}
-				else disp = "block";
-				if (tagName == "SPAN") disp = "inline";
-			}
-			else disp = "none";
-			elements[i].style.display = disp;
-		}
-	}
-	// save status in a cookie
-	/*if (!navigator.cookieEnabled) return;
-	var cookieName = className;
-	var cookieValue = (disp=="none")? 0 : 1;
-	var cookieDate = new Date(2020,0,1);
-	document.cookie = cookieName+"="+cookieValue+"; expires="+cookieDate.toGMTString();*/
-}
-
 /**
  * Load a CSS file from the body of a document
  *

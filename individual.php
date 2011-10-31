@@ -268,21 +268,18 @@ foreach ($controller->tabs as $tab) {
 		}
 	}
 }
-echo '</div>', // close #tabs
-	'</div>';//close indi_left
-// ===================================== sidebar area
-echo '<div id="sidebar">'; // sidebar code
+echo
+	'</div>', // close #tabs
+	'</div>', //close indi_left
+	'<div id="sidebar">'; // sidebar code
 require './sidebar.php';
 echo
 	'</div>',  // close #sidebar
 	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></a>',//clickable element to open/close sidebar
 	'<div style="clear:both;">&nbsp;</div></div>', // close #main	
-// =======================================footer and other items 
-WT_JS_START,
-'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}',
-'if (typeof toggleByClassName == "undefined") {',
-'alert("webtrees.js: A javascript function is missing.  Please clear your Web browser cache");',
-'}',
-'jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});', // scroll the page to top
-WT_JS_END;
+	// =======================================footer and other items 
+	WT_JS_START,
+	'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}',
+	'jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});', // scroll the page to top
+	WT_JS_END;
 print_footer();
