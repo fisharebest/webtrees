@@ -51,7 +51,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 	jQuery(document).ready(function(){
 		/* Initialise datatables */
 		oTable<?php echo $table_id; ?> = jQuery('#<?php echo $table_id; ?>').dataTable( {
-			"sDom": '<"H"<"filtersH"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF">>',
+			"sDom": '<"H"<"filtersH_<?php echo $table_id; ?>"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_<?php echo $table_id; ?>">>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
 				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
@@ -82,7 +82,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 			"sPaginationType": "full_numbers"
 		});
 	   
-		jQuery("div.filtersH").html('<?php echo addcslashes(
+		jQuery("div.filtersH_<?php echo $table_id; ?>").html('<?php echo addcslashes(
 			'<button type="button" id="SEX_M_'.$table_id.'" class="ui-state-default SEX_M" title="'.WT_I18N::translate('Show only males.').'">&nbsp;'.WT_Person::sexImage('M', 'small').'&nbsp;</button>'.
 			'<button type="button" id="SEX_F_'.$table_id.'" class="ui-state-default SEX_F" title="'.WT_I18N::translate('Show only females.').'">&nbsp;'.WT_Person::sexImage('F', 'small').'&nbsp;</button>'.
 			'<button type="button" id="SEX_U_'.$table_id.'" class="ui-state-default SEX_U" title="'.WT_I18N::translate('Show only persons of whom the gender is not known.').'">&nbsp;'.WT_Person::sexImage('U', 'small').'&nbsp;</button>'.
@@ -98,7 +98,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 			"'");
 		?>');
 
-		jQuery("div.filtersF").html('<?php echo addcslashes(
+		jQuery("div.filtersF_<?php echo $table_id; ?>").html('<?php echo addcslashes(
 			'<button type="button" class="ui-state-default" id="GIVEN_SORT_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
 			'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="jQuery(\'div.parents_indi_list_table_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show parents').'</button>'.
 			'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show statistics charts').'</button>',
@@ -461,7 +461,6 @@ function print_indi_table($datalist, $legend='', $option='') {
 	}
 	echo '</tbody>';
 	echo '</table>';
-	echo '</div>'; // Close "indi-list"
 	//-- charts
 	echo "<div class=\"indi_list_table-charts_".$table_id."\" style=\"display:none\">";
 	echo "<table class=\"list_table center\">";
@@ -473,6 +472,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 	print_chart_by_age($deat_by_age, WT_I18N::translate('Age related to death year'));
 	echo "</td></tr></table>";
 	echo "</div>";
+	echo '</div>'; // Close "indi-list"
 	echo "</fieldset>";
 }
 
@@ -494,7 +494,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	jQuery(document).ready(function(){
 		/* Initialise datatables */
 		oTable<?php echo $table_id; ?> = jQuery('#<?php echo $table_id; ?>').dataTable( {
-			"sDom": '<"H"<"filtersH"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF">>',
+			"sDom": '<"H"<"filtersH_<?php echo $table_id; ?>"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_<?php echo $table_id; ?>">>',
 			"oLanguage": {
 				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
 				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
@@ -525,11 +525,14 @@ function print_fam_table($datalist, $legend='', $option='') {
 			"sPaginationType": "full_numbers"
 	   });
 
-	   jQuery("div.filtersH").html('<?php echo addcslashes(
+		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_M_<?php echo $table_id; ?>',1);
+		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_F_<?php echo $table_id; ?>',5);
+
+		jQuery("div.filtersH_<?php echo $table_id; ?>").html('<?php echo addcslashes(
 			'<button type="button" id="DEAT_N_'.$table_id.'" class="ui-state-default DEAT_N" title="'.WT_I18N::translate('Show people who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Both alive ').'</button>'.
 			'<button type="button" id="DEAT_W_'.$table_id.'" class="ui-state-default DEAT_W" title="'.WT_I18N::translate('Show couples where only the female partner is deceased.').'">'.WT_I18N::translate('Widower').'</button>'.
 			'<button type="button" id="DEAT_H_'.$table_id.'" class="ui-state-default DEAT_H" title="'.WT_I18N::translate('Show couples where only the male partner is deceased.').'">'.WT_I18N::translate('Widow').'</button>'.
-			'<button type="button" id="DEAT_Y_'.$table_id.'" class="ui-state-default DEAT_Y" title="'.WT_I18N::translate('Show people who are dead or couples where both partners are deceased.').'">'.WT_I18N::translate('Both dead ').'</button>'.
+			'<button type="button" id="DEAT_Y_'.$table_id.'" class="ui-state-default DEAT_Y" title="'.WT_I18N::translate('Show people who are dead or couples where both partners are deceased.').'">'.WT_I18N::translate('Both dead').'</button>'.
 			'<button type="button" id="TREE_R_'.$table_id.'" class="ui-state-default TREE_R" title="'.WT_I18N::translate('Show «roots» couples or individuals.  These people may also be called «patriarchs».  They are individuals who have no parents recorded in the database.').'">'.WT_I18N::translate('Roots').'</button>'.
 			'<button type="button" id="TREE_L_'.$table_id.'" class="ui-state-default TREE_L" title="'.WT_I18N::translate('Show «leaves» couples or individuals.  These are individuals who are alive but have no children recorded in the database.').'">'.WT_I18N::translate('Leaves').'</button>'.
 			'<button type="button" id="MARR_U_'.$table_id.'" class="ui-state-default MARR_U" title="'.WT_I18N::translate('Show couples with an unknown marriage date.').'">'.WT_Gedcom_Tag::getLabel('MARR').'</button>'.
@@ -539,15 +542,13 @@ function print_fam_table($datalist, $legend='', $option='') {
 			'<button type="button" id="RESET_'.$table_id.'" class="ui-state-default RESET" title="'.WT_I18N::translate('Reset to the list defaults.').'">'.WT_I18N::translate('Reset').'</button>',
 			"'");
 		?>');
-	   jQuery("div.filtersF").html('<?php echo addcslashes(
+	   jQuery("div.filtersF_<?php echo $table_id; ?>").html('<?php echo addcslashes(
 			'<button type="button" class="ui-state-default" id="GIVEN_SORT_M_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
 			'<button type="button" class="ui-state-default" id="GIVEN_SORT_F_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
 			'<button type="button" class="ui-state-default" id="cb_parents_'.$table_id.'" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show parents').'</button>'.
 			'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle();">'. WT_I18N::translate('Show statistics charts').'</button>',
 			"'");
 		?>');		
-		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_M_<?php echo $table_id; ?>',1);
-		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_F_<?php echo $table_id; ?>',5);
 		
 	   /* Add event listeners for filtering inputs */
 		jQuery('#DEAT_N_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'N', 14 );});
@@ -858,7 +859,6 @@ function print_fam_table($datalist, $legend='', $option='') {
 	}
 	echo '</tbody>';
 	echo '</table>';
-	echo '</div>'; // Close "fam-list"
 	//-- charts
 	echo "<div class=\"fam_list_table-charts_".$table_id."\" style=\"display:none\">";
 //	echo '<div class="', $table_id, '-charts" style="display:none;">';
@@ -871,6 +871,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	print_chart_by_age($marr_by_age, WT_I18N::translate('Age in year of marriage'));
 	echo '</td></tr></table>';
 	echo '</div>';
+	echo '</div>'; // Close "fam-list"
 	echo '</fieldset>';
 }
 
