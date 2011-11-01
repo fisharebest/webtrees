@@ -160,8 +160,10 @@ if ($view!='simple') {
 		'</ul>',
 		'</div>',
 		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />';
-} 
-?>
-<!-- end menu section -->
-<!-- begin content section -->
-<div id="content">
+	// Display feedback from asynchronous actions
+	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
+		echo '<p class="ui-state-highlight">', $message, '</p>';
+	}
+	echo '</div>'; // <div id="header">
+}
+echo '<div id="content">';

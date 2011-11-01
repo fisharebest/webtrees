@@ -120,7 +120,11 @@ if ($view!='simple') {
 	echo
 		'</ul>',  // <ul id="main-menu">
 		'</div>', // <div id="topMenu">
-		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
-		'</div>', // <div id="header">
-		'<div id="content">';
+		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />';
+	// Display feedback from asynchronous actions
+	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
+		echo '<p class="ui-state-highlight">', $message, '</p>';
+	}
+	echo '</div>'; // <div id="header">
 }
+echo '<div id="content">';

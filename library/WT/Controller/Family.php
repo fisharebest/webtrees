@@ -64,51 +64,6 @@ class WT_Controller_Family extends WT_Controller_Base {
 
 		$this->famid=$this->family->getXref(); // Correct upper/lower case mismatch
 
-		//-- perform the desired action
-		switch($this->action) {
-		case 'addfav':
-			if (WT_USER_ID && !empty($_REQUEST['gid']) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-				$favorite = array(
-					'username' => WT_USER_NAME,
-					'gid'      => $_REQUEST['gid'],
-					'type'     => 'FAM',
-					'file'     => WT_GEDCOM,
-					'url'      => '',
-					'note'     => '',
-					'title'    => ''
-				);
-				user_favorites_WT_Module::addFavorite($favorite);
-			}
-			unset($_GET['action']);
-			break;
-		case 'accept':
-			if (WT_USER_CAN_ACCEPT) {
-				accept_all_changes($this->famid, WT_GED_ID);
-				//-- check if we just deleted the record and redirect to index
-				$gedrec = find_family_record($this->famid, WT_GED_ID);
-				if (empty($gedrec)) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-					exit;
-				}
-				$this->family = new WT_Family($gedrec);
-			}
-			unset($_GET['action']);
-			break;
-		case 'undo':
-			if (WT_USER_CAN_ACCEPT) {
-				reject_all_changes($this->famid, WT_GED_ID);
-				$gedrec = find_family_record($this->famid, WT_GED_ID);
-				//-- check if we just deleted the record and redirect to index
-				if (empty($gedrec)) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-					exit;
-				}
-				$this->family = new WT_Family($gedrec);
-			}
-			unset($_GET['action']);
-			break;
-		}
-
 		//-- if the user can edit and there are changes then get the new changes
 		if (WT_USER_CAN_EDIT) {
 			$newrec = find_updated_record($this->famid, WT_GED_ID);
@@ -219,9 +174,10 @@ class WT_Controller_Family extends WT_Controller_Base {
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(
 				/* I18N: Menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
-				$this->family->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->getFamilyID(),
+				'#',
 				'menu-fam-addfav'
 			);
+			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->family->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('favorites');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);

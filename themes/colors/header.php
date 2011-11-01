@@ -141,7 +141,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 
 	// Print the menu bar
 	echo
-	'<div id="topMenu">',
+		'<div id="topMenu">',
 		'<ul id="main-menu">'; 
 		foreach ($menu_items as $menu) {
 			if ($menu) {
@@ -150,14 +150,13 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		}
 	unset($menu_items, $menu);
 	echo
-	'</ul>';
-
-
-echo 
-	'</div>'; // close topMenu
+		'</ul>',
+		'</div>', // <div id="topMenu">
+		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />';
+	// Display feedback from asynchronous actions
+	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
+		echo '<p class="ui-state-highlight">', $message, '</p>';
+	}
+	echo '</div>'; // <div id="header">
 }
-// end header section -->
-?>
-<!-- end menu section -->
-<!-- begin content section -->
-<div id="content">
+echo '<div id="content">';

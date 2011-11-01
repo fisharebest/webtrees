@@ -70,51 +70,6 @@ class WT_Controller_Individual extends WT_Controller_Base {
 
 		$this->pid=$this->indi->getXref(); // Correct upper/lower case mismatch
 
-		//-- perform the desired action
-		switch($this->action) {
-		case 'addfav':
-			if (WT_USER_ID && !empty($_REQUEST['gid']) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-				$favorite = array(
-					'username' => WT_USER_NAME,
-					'gid'      => $_REQUEST['gid'],
-					'type'     => 'INDI',
-					'file'     => WT_GEDCOM,
-					'url'      => '',
-					'note'     => '',
-					'title'    => ''
-				);
-				user_favorites_WT_Module::addFavorite($favorite);
-			}
-			unset($_GET['action']);
-			break;
-		case 'accept':
-			if (WT_USER_CAN_ACCEPT) {
-				accept_all_changes($this->pid, WT_GED_ID);
-				//-- check if we just deleted the record and redirect to index
-				$gedrec = find_person_record($this->pid, WT_GED_ID);
-				if (empty($gedrec)) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-					exit;
-				}
-				$this->indi = new WT_Person($gedrec);
-			}
-			unset($_GET['action']);
-			break;
-		case 'undo':
-			if (WT_USER_CAN_ACCEPT) {
-				reject_all_changes($this->pid, WT_GED_ID);
-				$gedrec = find_person_record($this->pid, WT_GED_ID);
-				//-- check if we just deleted the record and redirect to index
-				if (empty($gedrec)) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-					exit;
-				}
-				$this->indi = new WT_Person($gedrec);
-			}
-			unset($_GET['action']);
-			break;
-		}
-
 		//-- if the user can edit and there are changes then get the new changes
 		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 			$newrec = find_updated_record($this->pid, WT_GED_ID);
@@ -463,10 +418,11 @@ class WT_Controller_Individual extends WT_Controller_Base {
 		// add to favorites
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(
-				WT_I18N::translate('Add to favorites'),
-				$this->indi->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->pid,
-				'menu-indi-addfav'
+				/* I18N: Menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
+				'#',
+				'menu-fam-addfav'
 			);
+			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->indi->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('favorites');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);

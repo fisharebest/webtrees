@@ -57,50 +57,6 @@ class WT_Controller_Source extends WT_Controller_Base {
 			}
 		}
 
-		//-- perform the desired action
-		switch($this->action) {
-		case 'addfav':
-			if (WT_USER_ID && !empty($_REQUEST['gid']) && array_key_exists('user_favorites', WT_Module::getActiveModules())) {
-				$favorite = array(
-					'username' => WT_USER_NAME,
-					'gid'      => $_REQUEST['gid'],
-					'type'     => 'SOUR',
-					'file'     => WT_GEDCOM,
-					'url'      => '',
-					'note'     => '',
-					'title'    => ''
-				);
-				user_favorites_WT_Module::addFavorite($favorite);
-			}
-			unset($_GET['action']);
-			break;
-		case 'accept':
-			if (WT_USER_CAN_ACCEPT) {
-				accept_all_changes($this->sid, WT_GED_ID);
-				$gedrec=find_source_record($this->sid, WT_GED_ID);
-				$newrec=null;
-				if ($gedrec===null) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-					exit;
-				}
-				$this->source = new WT_Source($gedrec);
-			}
-			unset($_GET['action']);
-			break;
-		case 'undo':
-			if (WT_USER_CAN_ACCEPT) {
-				reject_all_changes($this->sid, WT_GED_ID);
-				$gedrec=find_source_record($this->sid, WT_GED_ID);
-				$newrec=null;
-				if ($gedrec===null) {
-					header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-					exit;
-				}
-			}
-			unset($_GET['action']);
-			break;
-		}
-
 		$this->source = new WT_Source($gedrec);
 
 		// If there are pending changes, merge them in.
@@ -178,10 +134,11 @@ class WT_Controller_Source extends WT_Controller_Base {
 		// add to favorites
 		if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 			$submenu = new WT_Menu(
-				WT_I18N::translate('Add to favorites'),
-				$this->source->getHtmlUrl()."&amp;action=addfav&amp;gid=".$this->sid,
-				'menu-sour-addfav'
+				/* I18N: Menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
+				'#',
+				'menu-fam-addfav'
 			);
+			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->source->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('favorites');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);

@@ -1173,7 +1173,6 @@ function accept_all_changes($xref, $ged_id) {
 			" WHERE status='pending' AND xref=? AND gedcom_id=?"
 		)->execute(array($xref, $ged_id));
 		AddToLog("Accepted change {$change->change_id} for {$xref} / {$change->gedcom_name} into database", 'edit');
-		//Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('The changes have been accepted.'));
 	}
 }
 
