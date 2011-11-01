@@ -133,11 +133,9 @@ echo '<div id="sidebarAccordion">';
 foreach ($sidebarmods as $mod) {
 	if (isset($controller)) $mod->setController($controller);
 	if ($mod->hasSidebarContent()) {
-//		if ($mod->getName()!="extra_info") {
 			echo '<h3 id="', $mod->getName(), '"><a href="#">', $mod->getTitle(), '</a></h3>',
 				'<div id="sb_content_', $mod->getName(), '">', $mod->getSidebarContent(), '</div>';
 			$counter++;
-//		}
 	}
 }
 echo '</div>';
