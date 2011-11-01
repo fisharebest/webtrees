@@ -1728,61 +1728,6 @@ case 'addopfchildaction':
 	}
 	break;
 //------------------------------------------------------------------------------
-case 'deleteperson':
-	if (delete_person($pid, $gedrec)) {
-		$success=true;
-	}
-	break;
-//------------------------------------------------------------------------------
-case 'deletefamily':
-	if (delete_family($famid, $gedrec)) {
-		$success=true;
-	}
-	break;
-
-
-//----------------------------------------------------------------------------------
-// This case will now delete Shared notes as well, as $pid is passed with call
-// from source_ctrl.php or note_ctrl.php (line 208  submenu->addOnclick ..... etc)
-// ---------------------------------------------------------------------------------
-case 'deletenote':
-case 'deletesource':
-case 'deleterepo':
-
-if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
-
-	if (!empty($gedrec)) {
-		// Delete links to this record
-		foreach (fetch_all_links($pid, WT_GED_ID) as $xref) {
-			$gedrec=find_gedcom_record($xref, WT_GED_ID, true);
-			$lines = explode("\n", $gedrec);
-			$newrec = "";
-			$skipline = false;
-			$glevel = 0;
-			foreach ($lines as $indexval => $line) {
-				if ((preg_match("/^\d ".WT_REGEX_TAG." @$pid@/", $line)==0)&&(!$skipline)) {
-					$newrec .= $line."\n";
-				} else {
-					if (!$skipline) {
-						$glevel = $line{0};
-						$skipline = true;
-					} else {
-						if ($line{0}<=$glevel) {
-							$skipline = false;
-							$newrec .= $line."\n";
-						}
-					}
-				}
-			}
-			if (replace_gedrec($xref, WT_GED_ID, $newrec, $update_CHAN)) {
-				$success=true;
-			}
-		}
-		delete_gedrec($pid, WT_GED_ID);
-		$success=true;
-	}
-	break;
-//------------------------------------------------------------------------------
 case 'editname':
 	// Hide the private data
 	$tmp=new WT_GedcomRecord($gedrec);

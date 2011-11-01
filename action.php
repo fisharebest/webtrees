@@ -56,6 +56,40 @@ case 'accept-changes':
 	}	
 	break;
 
+case 'delete-family':
+case 'delete-individual':
+case 'delete-media':
+case 'delete-note':
+case 'delete-repository':
+case 'delete-source':
+	require WT_ROOT.'includes/functions/functions_edit.php';
+	$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+	if ($record && WT_USER_CAN_EDIT && $record->canDisplayDetails() && $record->canEdit()) {
+		// Delete links to this record
+		foreach (fetch_all_links($record->getXref(), $record->getGedId()) as $xref) {
+			// Fetch the latest version, including any pending changes
+			$gedrec=find_gedcom_record($xref, $record->getGedId(), true);
+			// Delete the links, plus any sub-tags of the links
+			$gedrec=preg_replace('/\n1 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[2-9].*)*/', '', $gedrec);
+			$gedrec=preg_replace('/\n2 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[3-9].*)*/', '', $gedrec);
+			$gedrec=preg_replace('/\n3 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[4-9].*)*/', '', $gedrec);
+			$gedrec=preg_replace('/\n4 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[5-9].*)*/', '', $gedrec);
+			$gedrec=preg_replace('/\n5 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[6-9].*)*/', '', $gedrec);
+			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) /', $gedrec)<2) {
+				// Families cease to exist when they have less than 2 members
+				delete_gedrec($xref, $record->getGedId());
+			} else {
+				// Just remove the links
+				replace_gedrec($xref, $record->getGedId(), $gedrec, false);
+			}
+		}
+		// Delete the record itself
+		delete_gedrec($record->getXref(), $record->getGedId());
+	} else {
+		header('HTTP/1.0 406 Not Acceptable');
+	}	
+	break;
+
 case 'reject-changes':
 	// Reject all the pending changes for a record
 	require WT_ROOT.'includes/functions/functions_edit.php';
