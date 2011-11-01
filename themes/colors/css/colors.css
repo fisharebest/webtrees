@@ -600,13 +600,13 @@ margin:0;
 width:99%;
 }
 
+/* person boxes are used in various charts */
+
 .person_box {
 background:#ddf;
 border:1px solid #999;
 padding:3px;
 }
-
-div > .person_box {background: #ddf!important;}
 
 .person_boxF {
 background:#fdd;
@@ -620,11 +620,8 @@ border:1px solid #CCC;
 padding:3px;
 }
 
-.person_box:target,
-.news_box:target,
-#gedcom_stats:target {
-background:#ffc;
-}
+.action_headerF {background: #FDD;}
+.action_header {background: #DDF;}
 
 .list_table {
 margin:0 auto;

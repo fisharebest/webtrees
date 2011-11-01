@@ -295,8 +295,7 @@ background:#aaccff;
 .list_value_wrap,
 .tab_cell_active,
 .news_box, optionbox,
-.person0,  .center .person_box,
-.small_inner_block .person_box,
+.person0,  
 .submenuitem_hover {
 	background:#fff;
 }
@@ -624,6 +623,7 @@ border:1px solid #999;
 margin:0;
 width:99%;
 }
+/* person boxes are used in various charts */
 
 .person_box {
 background:#ddf;
@@ -643,11 +643,8 @@ border:1px solid #CCC;
 padding:3px;
 }
 
-.person_box:target,
-.news_box:target,
-#gedcom_stats:target {
-background:#ffc;
-}
+.action_headerF {background: #FDD;}
+.action_header {background: #DDF;}
 
 .list_table {
 margin:0 auto;
