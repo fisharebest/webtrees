@@ -525,9 +525,6 @@ function print_fam_table($datalist, $legend='', $option='') {
 			"sPaginationType": "full_numbers"
 	   });
 
-		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_M_<?php echo $table_id; ?>',1);
-		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_F_<?php echo $table_id; ?>',5);
-
 		jQuery("div.filtersH_<?php echo $table_id; ?>").html('<?php echo addcslashes(
 			'<button type="button" id="DEAT_N_'.$table_id.'" class="ui-state-default DEAT_N" title="'.WT_I18N::translate('Show people who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Both alive ').'</button>'.
 			'<button type="button" id="DEAT_W_'.$table_id.'" class="ui-state-default DEAT_W" title="'.WT_I18N::translate('Show couples where only the female partner is deceased.').'">'.WT_I18N::translate('Widower').'</button>'.
@@ -550,6 +547,9 @@ function print_fam_table($datalist, $legend='', $option='') {
 			"'");
 		?>');		
 		
+		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_M_<?php echo $table_id; ?>',1);
+		oTable<?php echo $table_id; ?>.fnSortListener('#GIVEN_SORT_F_<?php echo $table_id; ?>',5);
+
 	   /* Add event listeners for filtering inputs */
 		jQuery('#DEAT_N_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'N', 14 );});
 		jQuery('#DEAT_W_<?php echo $table_id; ?>').click( function() { oTable<?php echo $table_id; ?>.fnFilter( 'W', 14 );});
