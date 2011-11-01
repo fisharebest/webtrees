@@ -63,7 +63,6 @@ if ($export) {
 		$exportOptions = array();
 		$exportOptions['privatize'] = 'none';
 		$exportOptions['toANSI'] = 'no';
-		$exportOptions['noCustomTags'] = 'no';
 		$exportOptions['path'] = $MEDIA_DIRECTORY;
 		$exportOptions['slashes'] = 'forward';
 

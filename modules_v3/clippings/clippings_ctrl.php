@@ -81,7 +81,6 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 
 		$this->action = safe_GET("action");
 		$this->id = safe_GET('id');
-		$remove = safe_GET('remove',"yes","no");
 		$convert = safe_GET('convert',"yes","no");
 		$this->Zip = safe_GET('Zip');
 		$this->IncludeMedia = safe_GET('IncludeMedia');
@@ -229,9 +228,6 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 						}
 					}
 					$record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
-					if ($remove=='yes') {
-						$record=remove_custom_tags($record);
-					}
 					$savedRecord = $record; // Save this for the "does this file exist" check
 					if ($convert=='yes') {
 						$record=utf8_decode($record);

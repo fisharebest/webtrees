@@ -160,10 +160,10 @@ if ($ct==0) {
 		<table>
 		<tr><td colspan="2" class="topbottombar"><h2><?php echo WT_I18N::translate('File Information'); ?></h2></td></tr>
 		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Zip File(s)'), help_link('zip'); ?></td>
-		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" checked="checked" /></td></tr>
+		<td class="optionbox"><input type="checkbox" name="Zip" value="yes" /></td></tr>
 
 		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Include media (automatically zips files)'), help_link('include_media'); ?></td>
-		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked="checked" /></td></tr>
+		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" /></td></tr>
 
 		<?php
 		// Determine the Privatize options available to this user
@@ -192,17 +192,19 @@ if ($ct==0) {
 
 		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
 		<td class="list_value">
-		<input type="radio" name="privatize_export" value="visitor" <?php echo $radioPrivatizeVisitor; ?>/>&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
-		<input type="radio" name="privatize_export" value="user" <?php echo $radioPrivatizeUser; ?>/>&nbsp;<?php echo WT_I18N::translate('Member'); ?><br />
-		<input type="radio" name="privatize_export" value="gedadmin" <?php echo $radioPrivatizeGedadmin; ?>/>&nbsp;<?php echo WT_I18N::translate('Manager'); ?>
-		<input type="radio" name="privatize_export" value="none" <?php echo $radioPrivatizeNone; ?>/>&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
+		<?php if (WT_USER_IS_ADMIN) { ?>
+			<input type="radio" name="privatize_export" value="none" checked="checked" />&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
+			<input type="radio" name="privatize_export" value="visitor" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
+		<?php } else { ?>
+			<input type="radio" name="privatize_export" value="none" DISABLED />&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
+			<input type="radio" name="privatize_export" value="visitor" checked="checked" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
+		<?php } ?>
+		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Member'); ?><br />
+		<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Manager'); ?><br />
 		</td></tr>
 
 		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes" /></td></tr>
-
-		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Remove custom webtrees tags? (eg. _WT_USER, _THUM)'), help_link('remove_tags'); ?></td>
-		<td class="optionbox"><input type="checkbox" name="remove" value="yes" checked="checked" /></td></tr>
 
 		<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media path to'), help_link('convertPath'); ?></td>
 		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo getLRM(), $controller->conv_path, getLRM(); ?>" /></td></tr>

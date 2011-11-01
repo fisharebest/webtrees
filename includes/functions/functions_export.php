@@ -142,13 +142,6 @@ function gedcom_header($gedfile) {
 	return $HEAD.$SOUR.$DEST.$DATE.$GEDC.$CHAR.$FILE.$COPR.$LANG.$PLAC.$SUBN.$SUBM."\n";
 }
 
-// Remove cuustom webtrees tags from the record.
-// _WT*
-// _THUM
-function remove_custom_tags($gedrec) {
-	return preg_replace('/\n\d _(WT|THUM ).*/', '', $gedrec);
-}
-
 // Convert media path by:
 // - removing current media directory
 // - adding a new prefix
@@ -187,7 +180,6 @@ function convert_media_path($rec, $path, $slashes) {
  * $exportOptions:  array of options for this Export operation as follows:
  *  'privatize':    which Privacy rules apply?  (none, visitor, user, manager)
  *  'toANSI':       should the output be produced in ANSI instead of UTF-8?  (yes, no)
- *  'noCustomTags': should custom tags be removed?  (yes, no)
  *  'path':         what constant should prefix all media file paths?  (eg: media/  or c:\my pictures\my family
  *  'slashes':      what folder separators apply to media file paths?  (forward, backward)
  */
@@ -229,9 +221,6 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
 		list($rec)=WT_Person::getInstance($row)->privatizeGedcom($access_level);
-		if ($exportOptions['noCustomTags']=='yes') {
-			$rec=remove_custom_tags($rec);
-		}
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -248,9 +237,6 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
 		list($rec)=WT_Family::getInstance($row)->privatizeGedcom($access_level);
-		if ($exportOptions['noCustomTags']=='yes') {
-			$rec=remove_custom_tags($rec);
-		}
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -267,9 +253,6 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
 		list($rec)=WT_Source::getInstance($row)->privatizeGedcom($access_level);
-		if ($exportOptions['noCustomTags']=='yes') {
-			$rec=remove_custom_tags($rec);
-		}
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -286,9 +269,6 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	)->execute(array($ged_id, 'HEAD', 'TRLR'))->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($rows as $row) {
 		list($rec)=WT_GedcomRecord::getInstance($row)->privatizeGedcom($access_level);
-		if ($exportOptions['noCustomTags']=='yes') {
-			$rec=remove_custom_tags($rec);
-		}
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
@@ -306,9 +286,6 @@ function export_gedcom($gedcom, $gedout, $exportOptions) {
 	foreach ($rows as $row) {
 		list($rec)=WT_Media::getInstance($row)->privatizeGedcom($access_level);
 		$rec = convert_media_path($rec, $exportOptions['path'], $exportOptions['slashes']);
-		if ($exportOptions['noCustomTags']=='yes') {
-			$rec=remove_custom_tags($rec);
-		}
 		if ($exportOptions['toANSI']=="yes") {
 			$rec=utf8_decode($rec);
 		}
