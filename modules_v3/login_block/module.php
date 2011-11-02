@@ -74,7 +74,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<tr><td ";
 			$content .= write_align_with_textdir_check("right", true);
 			$content .= " class=\"{$TEXT_DIRECTION} wrap width50\">";
-			$content .= WT_I18N::translate('User name');
+			$content .= WT_I18N::translate('Username');
 			$content .= help_link('username');
 			$content .= "</td><td ";
 			$content .= write_align_with_textdir_check("left", true);

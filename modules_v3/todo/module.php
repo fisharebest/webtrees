@@ -92,7 +92,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= '<th class="list_label" style="cursor:pointer;">'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
 		$content .= '<th class="list_label" style="cursor:pointer;">'.WT_I18N::translate('Record').'</th>';
 		if ($show_unassigned || $show_other) {
-			$content .= '<th class="list_label" style="cursor:pointer;">'.WT_I18N::translate('User name').'</th>';
+			$content .= '<th class="list_label" style="cursor:pointer;">'.WT_I18N::translate('Username').'</th>';
 		}
 		$content .= '<th class="list_label" style="cursor:pointer;">'.WT_Gedcom_Tag::getLabel('TEXT').'</th>';
 		$content .= '</tr></thead><tbody>';

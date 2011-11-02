@@ -426,7 +426,7 @@ case 'createform':
 		<!--table-->
 		<table id="adduser">
 			<tr>
-				<td><?php echo WT_I18N::translate('User name'), help_link('useradmin_username'); ?></td>
+				<td><?php echo WT_I18N::translate('Username'), help_link('useradmin_username'); ?></td>
 				<td colspan="3" ><input type="text" name="username" autofocus /></td>
 			</tr>
 			<tr>
@@ -678,7 +678,7 @@ default:
 				'<tr>',
 					'<th style="margin:0 -2px 1px 1px; padding:6px 0 5px;"> </th>',
 					'<th> user-id </th>',
-					'<th>', WT_I18N::translate('User name'), '</th>',
+					'<th>', WT_I18N::translate('Username'), '</th>',
 					'<th>', WT_I18N::translate('Real name'), '</th>',
 					'<th>', WT_I18N::translate('Email'), '</th>',
 					'<th> </th>', /* COLSPAN does not work? */

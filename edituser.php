@@ -143,7 +143,7 @@ echo '<table class="list_table center ', $TEXT_DIRECTION, '">';
 echo '<tr><td class="topbottombar" colspan="2"><h2>', WT_I18N::translate('My account'), '</h2></td></tr>';
 
 echo '<tr><td class="descriptionbox width20 wrap">';
-echo WT_I18N::translate('User name'), help_link('edituser_username'), '</td><td class="optionbox">';
+echo WT_I18N::translate('Username'), help_link('edituser_username'), '</td><td class="optionbox">';
 echo '<input type="text" name="form_username" value="', WT_USER_NAME, '" autofocus />';
 echo '</td></tr>';
 

@@ -72,7 +72,7 @@ switch ($action) {
 			<span class="warning"><?php echo $message; ?></span>
 			<table class="center facts_table width25">
 				<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Lost password request'), help_link('pls_note11'); ?></td></tr>
-				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="username"><?php echo WT_I18N::translate('User name'); ?></label></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="username" name="user_name" value="" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="username"><?php echo WT_I18N::translate('Username'); ?></label></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="username" name="user_name" value="" /></td></tr>
 				<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php echo WT_I18N::translate('Lost password request'); ?>" /></td></tr>
 			</table>
 			</form>
@@ -117,7 +117,7 @@ switch ($action) {
 				$mail_body = '';
 				$mail_body .= WT_I18N::translate('Hello %s ...', $newuserName) . "\r\n\r\n";
 				$mail_body .= WT_I18N::translate('A new password was requested for your user name.') . "\r\n\r\n";
-				$mail_body .= WT_I18N::translate('User name') . ": " . $user_name . "\r\n";
+				$mail_body .= WT_I18N::translate('Username') . ": " . $user_name . "\r\n";
 
 				$mail_body .= WT_I18N::translate('Password') . ": " . $user_new_pw . "\r\n\r\n";
 				$mail_body .= WT_I18N::translate('Recommendation:') . "\r\n";
@@ -364,7 +364,7 @@ switch ($action) {
 				$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH . "login_register.php?user_name=".urlencode($user_name)."&user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode'))."&action=userverify";
 				if ($TEXT_DIRECTION=='rtl') $mail_body .= "</a>";
 				$mail_body .= "\r\n";
-				$mail_body .= WT_I18N::translate('User name') . " " . $user_name . "\r\n";
+				$mail_body .= WT_I18N::translate('Username') . " " . $user_name . "\r\n";
 				$mail_body .= WT_I18N::translate('Verification code:') . " " . get_user_setting($user_id, 'reg_hashcode') . "\r\n\r\n";
 				$mail_body .= WT_I18N::translate('Comments').": " . $user_comments . "\r\n\r\n";
 				$mail_body .= WT_I18N::translate('If you didn\'t request an account, you can just delete this message.') . "  ";
@@ -380,7 +380,7 @@ switch ($action) {
 				$mail_body = '';
 				$mail_body .= WT_I18N::translate('Hello Administrator ...') . "\r\n\r\n";
 				$mail_body .= WT_I18N::translate('A prospective user has registered with webtrees at %s.', get_gedcom_setting(WT_GED_ID, 'title').' - '.WT_SERVER_NAME.WT_SCRIPT_PATH) . "\r\n\r\n";
-				$mail_body .= WT_I18N::translate('User name') . " " . $user_name . "\r\n";
+				$mail_body .= WT_I18N::translate('Username') . " " . $user_name . "\r\n";
 				$mail_body .= WT_I18N::translate('Real name') . " " . $user_realname . "\r\n";
 				$mail_body .= WT_I18N::translate('Email Address:') . " " . $user_email . "\r\n\r\n";
 				$mail_body .= WT_I18N::translate('Comments').": " . $user_comments . "\r\n\r\n";
@@ -443,7 +443,7 @@ switch ($action) {
 			<input type="hidden" name="time" value="" />
 			<table class="center facts_table width25">
 				<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('User verification'), help_link('pls_note07'); ?></td></tr>
-				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="username"><?php echo WT_I18N::translate('User name'); ?></label></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="username" name="user_name" value="<?php echo $user_name; ?>" /></td></tr>
+				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="username"><?php echo WT_I18N::translate('Username'); ?></label></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="username" name="user_name" value="<?php echo $user_name; ?>" /></td></tr>
 				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_password"><?php echo WT_I18N::translate('Password'); ?></label></td><td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" id="user_password" name="user_password" value="" /></td></tr>
 				<tr><td class="descriptionbox wrap <?php echo $TEXT_DIRECTION; ?>"><label for="user_hashcode"><?php echo WT_I18N::translate('Verification code:'); ?></label></td><td class="facts_value <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="user_hashcode" name="user_hashcode" value="<?php echo $user_hashcode; ?>" /></td></tr>
 				<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php echo WT_I18N::translate('Send'); ?>" /></td></tr>
