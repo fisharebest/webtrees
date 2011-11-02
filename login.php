@@ -52,7 +52,20 @@ if (empty($url)) {
 $message='';
 
 if ($action=='login') {
-	if ($user_id=authenticateUser($username, $password)) {
+	$user_id=authenticateUser($username, $password);
+	switch ($user_id) {
+	case -1: // not validated
+		$message=WT_I18N::translate('This account has not been verified.  Please check your email for a verification message.');
+		break;
+	case -2: // not approved
+		$message=WT_I18N::translate('This account has not been approved.  Please wait for an administrator to approve it.');
+		break;
+	case -3: // bad password
+	case -4: // bad username
+		$message=WT_I18N::translate('The username or password is incorrect.');
+		break;
+
+	default: // Success
 		if ($usertime) {
 			$_SESSION['usertime']=@strtotime($usertime);
 		} else {
@@ -105,10 +118,9 @@ if ($action=='login') {
 		$url .= "&ged=".$ged;
 		$url = str_replace(array("&&", ".php&", ".php?&"), array("&", ".php?", ".php?"), $url);
 
+		// Redirect to the target URL
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
 		exit;
-	} else {
-		$message = WT_I18N::translate('Unable to authenticate user.');
 	}
 } else {
 	$tSERVER_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), WT_SERVER_NAME.WT_SCRIPT_PATH);
