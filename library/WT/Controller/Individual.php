@@ -420,7 +420,7 @@ class WT_Controller_Individual extends WT_Controller_Base {
 			$submenu = new WT_Menu(
 				/* I18N: Menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
 				'#',
-				'menu-fam-addfav'
+				'menu-indi-addfav'
 			);
 			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->indi->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('favorites');

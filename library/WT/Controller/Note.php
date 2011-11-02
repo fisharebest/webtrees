@@ -136,7 +136,7 @@ class WT_Controller_Note extends WT_Controller_Base {
 			$submenu = new WT_Menu(
 				/* I18N: Menu option.  Add [the current page] to the list of favorites */ WT_I18N::translate('Add to favorites'),
 				'#',
-				'menu-fam-addfav'
+				'menu-note-addfav'
 			);
 			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->note->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('favorites');
