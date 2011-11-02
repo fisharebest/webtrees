@@ -362,11 +362,8 @@ function print_indi_table($datalist, $legend='', $option='') {
 					$deat_by_age[max(0, min($max_age, $age))] .= $person->getSex();
 				}
 			} else {
-				echo '&nbsp;';
+				echo '<a name="-1">&nbsp;</a>';
 			}
-		} else {
-			echo '<a name="-1">&nbsp;</a>';
-		}
 		echo '</td>';
 		//-- Death place
 		echo '<td>';
