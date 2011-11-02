@@ -454,26 +454,26 @@ function print_indi_table($datalist, $legend='', $option='') {
 		} elseif (!$person->isDead() && $person->getNumberOfChildren()<1) {
 			echo 'L'; // leaves
 		}
-		echo '</td>';
-		echo '</tr>', "\n";
+		echo '</td>',
+			'</tr>', "\n";
 		$unique_indis[$person->getXref()]=true;
 		++$n;
 	}
-	echo '</tbody>';
-	echo '</table>';
+	echo '</tbody>',
+		'</table>';
 	//-- charts
-	echo "<div class=\"indi_list_table-charts_".$table_id."\" style=\"display:none\">";
-	echo "<table class=\"list_table center\">";
-	echo "<tr><td class=\"list_value_wrap\">";
-	print_chart_by_decade($birt_by_decade, WT_I18N::translate('Decade of birth'));
-	echo "</td><td class=\"list_value_wrap\">";
-	print_chart_by_decade($deat_by_decade, WT_I18N::translate('Decade of death'));
-	echo "</td></tr><tr><td colspan=\"2\" class=\"list_value_wrap\">";
-	print_chart_by_age($deat_by_age, WT_I18N::translate('Age related to death year'));
-	echo "</td></tr></table>";
-	echo "</div>";
-	echo '</div>'; // Close "indi-list"
-	echo "</fieldset>";
+	echo '<div class="indi_list_table-charts_', $table_id, '" style="display:none">',
+		'<table class="list_table center">',
+		'<tr><td class="list_value_wrap">',
+		print_chart_by_decade($birt_by_decade, WT_I18N::translate('Decade of birth')),
+		'</td><td class="list_value_wrap">',
+		print_chart_by_decade($deat_by_decade, WT_I18N::translate('Decade of death')),
+		'</td></tr><tr><td colspan="2" class="list_value_wrap">',
+		print_chart_by_age($deat_by_age, WT_I18N::translate('Age related to death year')),
+		'</td></tr></table>',
+		'</div>',
+		'</fieldset>',
+		'</div>'; // Close "indi-list"
 }
 
 /**
@@ -854,25 +854,24 @@ function print_fam_table($datalist, $legend='', $option='') {
 		} elseif (!$husb->isDead() && !$wife->isDead() && $family->getNumberOfChildren()<1) {
 			echo 'L'; // leaves
 		}
-		echo '</td>';
-		echo '</tr>';
+		echo '</td>',
+			'</tr>';
 	}
-	echo '</tbody>';
-	echo '</table>';
+	echo '</tbody>',
+		'</table>';
 	//-- charts
-	echo "<div class=\"fam_list_table-charts_".$table_id."\" style=\"display:none\">";
-//	echo '<div class="', $table_id, '-charts" style="display:none;">';
-	echo '<table class="list_table center">';
-	echo '<tr><td class="list_value_wrap">';
-	print_chart_by_decade($birt_by_decade, WT_I18N::translate('Decade of birth'));
-	echo '</td><td class="list_value_wrap">';
-	print_chart_by_decade($marr_by_decade, WT_I18N::translate('Decade of marriage'));
-	echo '</td></tr><tr><td colspan="2" class="list_value_wrap">';
-	print_chart_by_age($marr_by_age, WT_I18N::translate('Age in year of marriage'));
-	echo '</td></tr></table>';
-	echo '</div>';
-	echo '</div>'; // Close "fam-list"
-	echo '</fieldset>';
+	echo '<div class="fam_list_table-charts_', $table_id, '" style="display:none">',
+		'<table class="list_table center">',
+		'<tr><td class="list_value_wrap">',
+		print_chart_by_decade($birt_by_decade, WT_I18N::translate('Decade of birth')),
+		'</td><td class="list_value_wrap">',
+		print_chart_by_decade($marr_by_decade, WT_I18N::translate('Decade of marriage')),
+		'</td></tr><tr><td colspan="2" class="list_value_wrap">',
+		print_chart_by_age($marr_by_age, WT_I18N::translate('Age in year of marriage')),
+		'</td></tr></table>',
+		'</div>',
+		'</fieldset>',
+		'</div>'; // Close "fam-list"
 }
 
 /**
@@ -1022,19 +1021,17 @@ function print_sour_table($datalist, $legend=null) {
 		} else {
 			echo '<td style="display:none;"></td>';
 		}
-		echo "</tr>";
+		echo '</tr>';
 	}
-	echo '</tbody>';
-	echo '</table></fieldset>';
-	echo '</div>';
+	echo '</tbody>',
+		'</table></fieldset>',
+		'</div>';
 	// show TITLE2 col if not empty
 	if ($t2) {
 		echo WT_JS_START, '$("#',$table_id,' .t2, ").show();', WT_JS_END;
 	}
 }
 
-
-// BH print a sortable list of Shared Notes
 /**
  * print a sortable table of shared notes
  *
@@ -1047,7 +1044,7 @@ function print_note_table($datalist, $legend=null) {
 	if (count($datalist)<1) {
 		return;
 	}
-	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	echo WT_JS_START;?>
 	jQuery(document).ready(function(){
 		jQuery('#<?php echo $table_id; ?>').dataTable( {
@@ -1148,11 +1145,11 @@ function print_note_table($datalist, $legend=null) {
 		} else {
 			echo '<td style="display:none;"></td>';
 		}
-		echo "</tr>";
+		echo '</tr>';
 	}
-	echo '</tbody>';
-	echo '</table></fieldset>';
-	echo '</div>';
+	echo '</tbody>',
+		'</table></fieldset>',
+		'</div>';
 }
 
 /**
@@ -1167,7 +1164,7 @@ function print_repo_table($repos, $legend='') {
 	if (!$repos) {
 		return;
 	}
-	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	echo WT_JS_START;?>
 	jQuery(document).ready(function(){
 		jQuery('#<?php echo $table_id; ?>').dataTable( {
@@ -1263,9 +1260,9 @@ function print_repo_table($repos, $legend='') {
 		}
 		echo '</tr>';
 	}
-	echo '</tbody>';
-	echo '</table></fieldset>';
-	echo '</div>';
+	echo '</tbody>',
+		'</table></fieldset>',
+		'</div>';
 }
 
 /**
@@ -1278,7 +1275,7 @@ function print_media_table($datalist, $legend) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES;
 
 	if (count($datalist)<1) return;
-	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	echo WT_JS_START;?>
 	jQuery(document).ready(function(){
 		jQuery('#<?php echo $table_id; ?>').dataTable( {
@@ -1381,9 +1378,9 @@ function print_media_table($datalist, $legend) {
 			echo '</tr>';
 		}
 	}
-	echo '</tbody>';
-	echo '</table>';
-	echo '</div>';
+	echo '</tbody>',
+		'</table>',
+		'</div>';
 }
 
 // Print a table of surnames.
