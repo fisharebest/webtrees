@@ -2370,19 +2370,9 @@ case 'edituser_realname':
 	$text=WT_I18N::translate('In this box you can change your real name.  This is the name that other users see when you are logged in.<br /><br />Although the choice of what to put into this field is yours, you should inform the administrator when you change it.  When others see an unknown person on-line, they might wonder and ask questions.  The admin can find out without having received your notice, but you should save him that unnecessary work.');
 	break;
 
-case 'edituser_password':
-	$title=WT_I18N::translate('Password');
-	$text=WT_I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that "s3CR#t" is different to "S3CR#t".');
-	break;
-
 case 'edituser_rootid':
 	$title=WT_I18N::translate('Pedigree chart root ID');
 	$text=WT_I18N::translate('This is the starting (Root) person of all your charts.<br /><br />If, for example, you were to click the link to the Pedigree, you would see this root person in the leftmost box.  This root person does not have to be you; you can start with any person (your grandfather or your mother\'s aunt, for instance), as long you have the rights to see that person.<br /><br />This changes the default Root person for most charts.  You can change the Root person on many charts, but that is just for that page at that particular invocation.');
-	break;
-
-case 'edituser_username':
-	$title=WT_I18N::translate('Username');
-	$text=WT_I18N::translate('You can change your username by updating it here.  Usernames are case insensitive and ignore accented letters, so that "chloe", "chlo&euml;" and "CHLOE" are considered to be the same.  Usernames may not contain the following characters: &lt;&gt;"%%{};');
 	break;
 
 case 'export_gedcom':
@@ -2574,7 +2564,7 @@ case 'oldest_top':
 
 case 'password':
 	$title=WT_I18N::translate('Password');
-	$text=WT_I18N::translate('In this box you type your password.<br /><br /><b>The password is case sensitive.</b>  This means that <b>MyPassword</b> is <u>not</u> the same as <b>mypassword</b> or <b>MYPASSWORD</b>.');
+	$text=WT_I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.');
 	break;
 
 case 'pedigree_tree':
@@ -2900,7 +2890,12 @@ case 'useradmin_visibleonline':
 
 case 'username':
 	$title=WT_I18N::translate('Username');
-	$text=WT_I18N::translate('<br />In this box you type your user name.<br /><br /><b>The user name is case sensitive.</b>  This means that <b>MyName</b> is <u>not</u> the same as <b>myname</b> or <b>MYNAME</b>.');
+	$text=
+		'<p>'.
+		WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.').
+		'</p><p>'.
+		WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; " %% { } ;')
+		'</p>';
 	break;
 
 case 'utf8_ansi':

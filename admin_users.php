@@ -426,7 +426,7 @@ case 'createform':
 		<!--table-->
 		<table id="adduser">
 			<tr>
-				<td><?php echo WT_I18N::translate('Username'), help_link('useradmin_username'); ?></td>
+				<td><?php echo WT_I18N::translate('Username'), help_link('username'); ?></td>
 				<td colspan="3" ><input type="text" name="username" autofocus /></td>
 			</tr>
 			<tr>
@@ -434,7 +434,7 @@ case 'createform':
 				<td colspan="3" ><input type="text" name="realname" size="50" /></td>
 			</tr>
 			<tr>
-				<td><?php echo WT_I18N::translate('Password'), help_link('useradmin_password'); ?></td>
+				<td><?php echo WT_I18N::translate('Password'), help_link('password'); ?></td>
 				<td ><input type="password" name="pass1" /></td>
 				<td><?php echo WT_I18N::translate('Confirm password'), help_link('useradmin_conf_password'); ?></td>
 				<td ><input type="password" name="pass2" /></td>

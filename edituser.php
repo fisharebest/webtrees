@@ -143,7 +143,7 @@ echo '<table class="list_table center ', $TEXT_DIRECTION, '">';
 echo '<tr><td class="topbottombar" colspan="2"><h2>', WT_I18N::translate('My account'), '</h2></td></tr>';
 
 echo '<tr><td class="descriptionbox width20 wrap">';
-echo WT_I18N::translate('Username'), help_link('edituser_username'), '</td><td class="optionbox">';
+echo WT_I18N::translate('Username'), help_link('username'), '</td><td class="optionbox">';
 echo '<input type="text" name="form_username" value="', WT_USER_NAME, '" autofocus />';
 echo '</td></tr>';
 
@@ -171,8 +171,8 @@ if ($person) {
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Password'), '</td><td class="optionbox">';
-echo '<input type="password" name="form_pass1" /> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), help_link('edituser_password'), '</td></tr>';
+echo WT_I18N::translate('Password'), help_link('password'), '</td><td class="optionbox">';
+echo '<input type="password" name="form_pass1" /> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Confirm password'), help_link('edituser_conf_password'), '</td><td class="optionbox">';
