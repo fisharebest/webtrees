@@ -65,7 +65,7 @@ if ($action == 'download') {
 }
 
 if ($action == "download" && $zip == "yes") {
-//	require WT_ROOT.'library/pclzip.lib.php';
+	require WT_ROOT.'library/pclzip.lib.php';
 
 	$temppath = get_site_setting('INDEX_DIRECTORY') . "tmp/";
 	$fileName = $ged;
