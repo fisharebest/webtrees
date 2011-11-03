@@ -2328,11 +2328,6 @@ case 'edituser_change_lang':
 	$text=WT_I18N::translate('Here you can change the language in which <b>webtrees</b> will display all its pages and messages after you have logged in.<br /><br />When you first access the site, <b>webtrees</b> assumes that you want to see everything in the language configured as the Preferred Language in your browser.  If that assumption is incorrect, you would override it here.  For example, your browser might be set to English because that is the most prevalent language on the Internet.  However, for genealogical purposes, you would prefer to see everything in Finnish or Hebrew.  Here\'s where you do that.<br /><br />The administrator controls what language choices are available to you.  If your preference isn\'t listed, you need to contact the administrator.<br /><br />Please remember that <b>webtrees</b> is very much a project staffed by an international team of unpaid volunteers.  Experts come and go.  Consequently, support for languages other than English is sometimes not as good as it should be.<br /><br />If you see something that has not been translated, has been translated incorrectly, or could be phrased better, let your administrator know.  The administrator will know how to get in touch with the <b>webtrees</b> developer team to have your concerns addressed.  Better still, volunteer some of your time.  We can use the help.');
 	break;
 
-case 'edituser_conf_password':
-	$title=WT_I18N::translate('Confirm password');
-	$text=WT_I18N::translate('If you have changed your password, you need to confirm it as well.  This is just to make sure that you did not make a typing error in the password field.<br /><br />If the password and its confirmation are not identical, you will get a suitable error message.  You will have to re-type both the original password and its confirmation.');
-	break;
-
 case 'edituser_contact_meth':
 	$title=WT_I18N::translate('Preferred contact method');
 	$text=WT_I18N::translate('<b>webtrees</b> has several different contact methods.  The administrator determines which method will be used to contact him.  You have control over the method to be used to contact <u>you</u>.  Depending on site configuration, some of the listed methods may not be available to you.');
@@ -2355,24 +2350,19 @@ case 'edituser_contact_meth':
 	$text.='</dd></dl>';
 	break;
 
-case 'edituser_email':
-	$title=WT_I18N::translate('Email address');
-	$text=WT_I18N::translate('Your correct email address is important to us to keep in touch with you.<br /><br />If you get a new email address, as usually happens when you change your Internet provider, please do not forget to change the address here as well.  You won\'t get a confirmation message from this site when you change this address, but any future messages directed to you will go this new address.');
-	break;
-
 case 'edituser_gedcomid':
 	$title=WT_I18N::translate('Individual record');
 	$text=WT_I18N::translate('This is a link to your own record in the family tree.  If this is the wrong person, contact an administrator.');
 	break;
 
-case 'edituser_realname':
-	$title=WT_I18N::translate('Real name');
-	$text=WT_I18N::translate('In this box you can change your real name.  This is the name that other users see when you are logged in.<br /><br />Although the choice of what to put into this field is yours, you should inform the administrator when you change it.  When others see an unknown person on-line, they might wonder and ask questions.  The admin can find out without having received your notice, but you should save him that unnecessary work.');
-	break;
-
 case 'edituser_rootid':
 	$title=WT_I18N::translate('Pedigree chart root ID');
 	$text=WT_I18N::translate('This is the starting (Root) person of all your charts.<br /><br />If, for example, you were to click the link to the Pedigree, you would see this root person in the leftmost box.  This root person does not have to be you; you can start with any person (your grandfather or your mother\'s aunt, for instance), as long you have the rights to see that person.<br /><br />This changes the default Root person for most charts.  You can change the Root person on many charts, but that is just for that page at that particular invocation.');
+	break;
+
+case 'email':
+	$title=WT_I18N::translate('Email address');
+	$text=WT_I18N::translate('This will be used to send you password reminders, site notifications, and messages from other family members who register on the site.');
 	break;
 
 case 'export_gedcom':
@@ -2542,11 +2532,6 @@ case 'new_user':
 	$text=WT_I18N::translate('If you are a visitor to this site and wish to request a user account, you can click this link.<br /><br />You will be taken to the "Register" page.');
 	break;
 
-case 'new_user_realname':
-	$title=WT_I18N::translate('Real name');
-	$text=WT_I18N::translate('In this box you have to type your real name.<br /><br />We need your first and last names to determine whether you qualify for an account at this site, and what your rights should be.  This name will be visible to other logged-in family members and users.');
-	break;
-
 case 'next_path':
 	$title=WT_I18N::translate('Find next relationship path');
 	$text=WT_I18N::translate('You can click this button to see whether there is another relationship path between the two people.  Previously found paths can be displayed again by clicking the link with the path number.');
@@ -2565,6 +2550,11 @@ case 'oldest_top':
 case 'password':
 	$title=WT_I18N::translate('Password');
 	$text=WT_I18N::translate('Passwords must be at least 6 characters long and are case-sensitive, so that “secret” is different to “SECRET”.');
+	break;
+
+case 'password_confirm':
+	$title=WT_I18N::translate('Confirm password');
+	$text=WT_I18N::translate('Type your password again, to make sure you have typed it correctly.');
 	break;
 
 case 'pedigree_tree':
@@ -2644,6 +2634,11 @@ case 'random_media_persons_or_all':
 case 'random_media_start_slide':
 	$title=WT_I18N::translate('Start slide show on page load?');
 	$text=WT_I18N::translate('Should the slideshow start automatically when the page is loaded.<br /><br />The slideshow changes the contents of the block without preloading information from the server and without reloading the entire page.');
+	break;
+
+case 'real_name':
+	$title=WT_I18N::translate('Real name');
+	$text=WT_I18N::translate('This is your real name, as you would like it displayed on screen.');
 	break;
 
 case 'register_comments':

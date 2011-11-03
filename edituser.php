@@ -175,7 +175,7 @@ echo WT_I18N::translate('Password'), help_link('password'), '</td><td class="opt
 echo '<input type="password" name="form_pass1" /> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Confirm password'), help_link('edituser_conf_password'), '</td><td class="optionbox">';
+echo WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</td><td class="optionbox">';
 echo '<input type="password" name="form_pass2" /></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
@@ -185,7 +185,7 @@ echo edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Email address'), help_link('edituser_email'), '</td><td class="optionbox" valign="top">';
+echo WT_I18N::translate('Email address'), help_link('email'), '</td><td class="optionbox" valign="top">';
 echo '<input type="text" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50" /></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';

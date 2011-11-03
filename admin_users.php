@@ -430,18 +430,18 @@ case 'createform':
 				<td colspan="3" ><input type="text" name="username" autofocus /></td>
 			</tr>
 			<tr>
-				<td><?php echo WT_I18N::translate('Real name'), help_link('useradmin_realname'); ?></td>
+				<td><?php echo WT_I18N::translate('Real name'), help_link('real_name'); ?></td>
 				<td colspan="3" ><input type="text" name="realname" size="50" /></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Password'), help_link('password'); ?></td>
 				<td ><input type="password" name="pass1" /></td>
-				<td><?php echo WT_I18N::translate('Confirm password'), help_link('useradmin_conf_password'); ?></td>
+				<td><?php echo WT_I18N::translate('Confirm password'), help_link('password_confirm'); ?></td>
 				<td ><input type="password" name="pass2" /></td>
 			</tr>
 			<tr>
 			<tr>
-				<td><?php echo WT_I18N::translate('Email address'), help_link('useradmin_email'); ?></td>
+				<td><?php echo WT_I18N::translate('Email address'), help_link('email'); ?></td>
 				<td ><input type="text" name="emailaddress" value="" size="50" /></td>
 				<td><?php echo WT_I18N::translate('Preferred contact method'), help_link('useradmin_user_contact'); ?></td>
 				<td >
