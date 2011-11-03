@@ -31,7 +31,7 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Repository();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
-	print_header($controller->getPageTitle());
+	$controller->pageHeader();
 	if ($controller->record->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
@@ -71,9 +71,8 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 	}
 } else {
 	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
-	print_header($controller->getPageTitle());
+	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This repository does not exist or you do not have permission to view it.'), '</p>';
-	print_footer();
 	exit;
 }
 
@@ -142,5 +141,3 @@ echo '<div id="repo-tabs">
 
 echo '</div>'; //close div "repo-tabs"
 echo '</div>'; //close div "repo-details"
-
-print_footer();

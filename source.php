@@ -31,7 +31,7 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Source();
 
 if ($controller->record && $controller->record->canDisplayDetails()) {
-	print_header($controller->getPageTitle());
+	$controller->pageHeader();
 	if ($controller->record->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
@@ -71,9 +71,8 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 	}
 } else {
 	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
-	print_header(WT_I18N::translate('Source'));
+	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This source does not exist or you do not have permission to view it.'), '</p>';
-	print_footer();
 	exit;
 }
 
@@ -166,4 +165,3 @@ echo '<div id="source-tabs">
 	}
 echo '</div>'; //close div "source-tabs"
 echo '</div>'; //close div "source-details"
-print_footer();

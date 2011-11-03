@@ -150,6 +150,9 @@ class WT_Controller_Base {
 
 		// Allow the browser to format the header/menus while we generate the page
 		flush();
+
+		// We've displayed the header - display the footer automatically
+		$this->page_header=true;
 	}
 
 	// Print the page footer, using the theme
