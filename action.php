@@ -75,7 +75,7 @@ case 'delete-source':
 			$gedrec=preg_replace('/\n3 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[4-9].*)*/', '', $gedrec);
 			$gedrec=preg_replace('/\n4 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[5-9].*)*/', '', $gedrec);
 			$gedrec=preg_replace('/\n5 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[6-9].*)*/', '', $gedrec);
-			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) /', $gedrec)<2) {
+			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) /', $gedrec, $dummy)<2) {
 				// Families cease to exist when they have less than 2 members
 				delete_gedrec($xref, $record->getGedId());
 			} else {
