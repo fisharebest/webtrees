@@ -28,19 +28,18 @@
 define('WT_SCRIPT_NAME', 'family.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Family();
-$controller->init();
+$controller=new WT_Controller_Family();
 
-if ($controller->family && $controller->family->canDisplayDetails()) {
-	print_header($controller->getPageTitle());
-	if ($controller->family->isMarkedDeleted()) {
+if ($controller->record && $controller->record->canDisplayDetails()) {
+	$controller->pageHeader();
+	if ($controller->record->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
 					'This family has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->family->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->family->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -51,14 +50,14 @@ if ($controller->family && $controller->family->canDisplayDetails()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif (find_updated_record($controller->family->getXref(), WT_GED_ID)!==null) {
+	} elseif (find_updated_record($controller->record->getXref(), WT_GED_ID)!==null) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
 					'This family has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->family->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->family->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -70,20 +69,16 @@ if ($controller->family && $controller->family->canDisplayDetails()) {
 				'</p>';
 		}
 	}
-} elseif ($controller->family && $SHOW_PRIVATE_RELATIONSHIPS) {
-	print_header($controller->getPageTitle());
+} elseif ($controller->record && $SHOW_PRIVATE_RELATIONSHIPS) {
+	$controller->pageHeader();
 	// Continue - to display the children/parents/grandparents.
 	// We'll check for showing the details again later
 } else {
-	header('HTTP/1.0 403 Forbidden');
-	print_header(WT_I18N::translate('Family'));
+	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This family does not exist or you do not have permission to view it.'), '</p>';
-	print_footer();
 	exit;
 }
-
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
 
 if (WT_USE_LIGHTBOX) {
 	require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
@@ -94,23 +89,23 @@ $show_full = "1";
 
 echo WT_JS_START;
 echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->family->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
+echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
 echo '}';
-echo 'function showchanges() { window.location="'.$controller->family->getRawUrl().'"; }';
+echo 'function showchanges() { window.location="'.$controller->record->getRawUrl().'"; }';
 echo WT_JS_END;
 
 ?>
 <table align="center" width="95%">
 	<tr>
 		<td>
-			<p class="name_head"><?php echo $controller->family->getFullName(); ?></p>
+			<p class="name_head"><?php echo $controller->record->getFullName(); ?></p>
 		</td>
 	</tr>
 </table>
 <table id="family_page" align="center" width="95%">
 	<tr valign="top">
 		<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->
-			<?php print_family_children($controller->getFamilyID()); ?>
+			<?php print_family_children($controller->record->getXref()); ?>
 		</td>
 		<td> <!--//parents pedigree chart and Family Details//-->
 			<table width="100%">
@@ -122,23 +117,23 @@ echo WT_JS_END;
 					<td colspan="2">
 						<table><tr><td> <!--//parents pedigree chart //-->
 						<?php
-						echo print_family_parents($controller->getFamilyID());
+						echo print_family_parents($controller->record->getXref());
 						if (WT_USER_CAN_EDIT) {
-							if ($controller->difffam) {
-								$husb=$controller->difffam->getHusband();
+							if ($controller->diff_record) {
+								$husb=$controller->diff_record->getHusband();
 							} else {
-								$husb=$controller->family->getHusband();
+								$husb=$controller->record->getHusband();
 							}
 							if (!$husb) {
-								echo '<a href="javascript: ', WT_I18N::translate('Add a new father'), '" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->famid, '\');">', WT_I18N::translate('Add a new father'), help_link('edit_add_parent'), '</a><br />';
+								echo '<a href="javascript: ', WT_I18N::translate('Add a new father'), '" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new father'), help_link('edit_add_parent'), '</a><br />';
 							}
-							if ($controller->difffam) {
-								$wife=$controller->difffam->getWife();
+							if ($controller->diff_record) {
+								$wife=$controller->diff_record->getWife();
 							} else {
-								$wife=$controller->family->getWife();
+								$wife=$controller->record->getWife();
 							}
 							if (!$wife)  {
-								echo '<a href="javascript: ', WT_I18N::translate('Add a new mother'), '" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->famid, '\');">', WT_I18N::translate('Add a new mother'), help_link('edit_add_parent'), '</a><br />';
+								echo '<a href="javascript: ', WT_I18N::translate('Add a new mother'), '" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new mother'), help_link('edit_add_parent'), '</a><br />';
 							}
 						}
 						?>
@@ -148,8 +143,8 @@ echo WT_JS_END;
 				<tr>
 					<td colspan="2">
 						<?php
-							if ($controller->family->canDisplayDetails()) {
-								print_family_facts($controller->family);
+							if ($controller->record->canDisplayDetails()) {
+								print_family_facts($controller->record);
 							} else {
 								echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this family are private.'), '</p>';
 							}
@@ -160,6 +155,3 @@ echo WT_JS_END;
 		</td>
 	</tr>
 </table>
-<br />
-<?php
-print_footer();

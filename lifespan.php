@@ -23,22 +23,19 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 define('WT_SCRIPT_NAME', 'lifespan.php');
 require './includes/session.php';
 
 // GEDCOM elements that will be found but should not be displayed
-$nonfacts = array("FAMS", "FAMC", "MAY", "BLOB", "OBJE", "SEX", "NAME", "SOUR", "NOTE", "BAPL", "ENDL", "SLGC", "SLGS", "_TODO", "_WT_OBJE_SORT", "CHAN", "HUSB", "WIFE", "CHIL", "BIRT", "DEAT", "BURI");// DEATH OF SIBLING:  DEATH OF HALF SIBLING DEATH OF MOTHER DEATH OF FATHER DEATH OF CHILD
-$nonfamfacts = array("CHAN", "HUSB", "WIFE", "CHIL");
+$nonfacts=array("FAMS", "FAMC", "MAY", "BLOB", "OBJE", "SEX", "NAME", "SOUR", "NOTE", "BAPL", "ENDL", "SLGC", "SLGS", "_TODO", "_WT_OBJE_SORT", "CHAN", "HUSB", "WIFE", "CHIL", "BIRT", "DEAT", "BURI");// DEATH OF SIBLING:  DEATH OF HALF SIBLING DEATH OF MOTHER DEATH OF FATHER DEATH OF CHILD
+$nonfamfacts=array("CHAN", "HUSB", "WIFE", "CHIL");
 
-$controller = new WT_Controller_Lifespan();
-$controller->init();
+$zoomfactor=10;
 
-$zoomfactor = 10;
-//if peeps !null then pass new array for zooming
-
-print_header(WT_I18N::translate('Lifespans'));
+$controller=new WT_Controller_Lifespan();
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 ?>
@@ -358,5 +355,3 @@ var maxX = <?php if (!isset($maxX)) $maxX = 0; echo $maxX; ?>;  // Sets the boun
 
 //-->
 </script>
-
-<?php print_footer();

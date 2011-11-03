@@ -248,93 +248,42 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 * This function should be called by every page, except popups, before anything is output.
 *
 * Popup pages, because of their different format, should invoke function print_simple_header() instead.
-*
-* @param string $title the title to put in the <TITLE></TITLE> header tags
 */
 function print_header($title, $view='full') {
+	// Import global variables into the local scope, for the theme's header.php
 	global $bwidth, $BROWSERTYPE, $SEARCH_SPIDER, $cart;
 	global $GEDCOM, $GEDCOM_TITLE, $action, $query;
 	global $stylesheet, $print_stylesheet, $headerfile, $print_headerfile;
 	global $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
 	global $controller;
 
-	$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
-	$META_DESCRIPTION='';
-	$META_ROBOTS='noindex,nofollow';
-	$META_GENERATOR='';
-	$LINK_CANONICAL='';
-
-	$index_this_page=false;
-	$access_denied=false;
-
-	if (isset($controller) && (in_array(WT_SCRIPT_NAME, array('family.php', 'individual.php', 'note.php', 'repo.php', 'source.php' )))) {
-		switch (get_class($controller)) {
-		case 'WT_Controller_Family':
-			// family.php
-			if ($controller->family) {
-				$LINK_CANONICAL=$controller->family->getHtmlUrl();
-				if ($controller->family->canDisplayDetails()) $index_this_page=true; else $access_denied=true; 
-			}
-			break;
-		case 'WT_Controller_Individual':
-			// individual.php
-			if ($controller->indi) {
-				$LINK_CANONICAL=$controller->indi->getHtmlUrl();
-				if ($controller->indi->canDisplayDetails()) $index_this_page=true; else $access_denied=true;
-			}
-			break;
-		case 'WT_Controller_Note':
-			// note.php
-			if ($controller->note) {
-				$LINK_CANONICAL=$controller->note->getHtmlUrl();
-				if ($controller->note->canDisplayDetails()) $index_this_page=true; else $access_denied=true;
-			}
-			break;
-		case 'WT_Controller_Repository':
-			// repo.php
-			if ($controller->repository) {
-				$LINK_CANONICAL=$controller->repository->getHtmlUrl();
-				if ($controller->repository->canDisplayDetails()) $index_this_page=true; else $access_denied=true;
-			}
-			break;
-		case 'WT_Controller_Source':
-			// source.php
-			if ($controller->source) {
-				$LINK_CANONICAL=$controller->source->getHtmlUrl();
-				if ($controller->source->canDisplayDetails()) $index_this_page=true; else $access_denied=true;
-			}
-			break;
-		default:
-			break;
+	// Initialise variables for the theme's header.php
+	if ($controller instanceof WT_Controller_GedcomRecord) {
+		$LINK_CANONICAL=$controller->getCanonicalUrl();
+		$META_ROBOTS=$controller->getMetaRobots();
+		if ($controller->record && !$controller->record->canDisplayName()) {
+			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
 		}
-	}
-	
-	if (WT_SCRIPT_NAME=='index.php') {
+	} elseif (WT_SCRIPT_NAME=='index.php') {
 		$LINK_CANONICAL='index.php?ctype=gedcom&amp;ged='.WT_GEDURL;
-		$index_this_page=true;
-	}
-
-	// listing pages 
-	if (in_array(WT_SCRIPT_NAME, array('famlist.php', 'indilist.php', 'notelist.php', 'repolist.php', 'sourcelist.php'))) {
-		$index_this_page=true;
-	}
-
-	if ($index_this_page) {
 		$META_ROBOTS='index,follow';
-	}
-
+	} elseif (in_array(WT_SCRIPT_NAME, array('famlist.php', 'indilist.php', 'notelist.php', 'repolist.php', 'sourcelist.php'))) {
+		$LINK_CANONICAL='';
+		$META_ROBOTS='index,follow';
+	} else {
+		$LINK_CANONICAL='';
+		$META_ROBOTS='noindex,nofollow';
+	}	
+	$GEDCOM_TITLE = get_gedcom_setting(WT_GED_ID, 'title');
 	if ($view=='full') {
-		$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION');
-		if (empty($META_DESCRIPTION)) {
-			$META_DESCRIPTION=$GEDCOM_TITLE;
-		}
+		$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION', $GEDCOM_TITLE);
 		$META_GENERATOR=WT_WEBTREES.' - '.WT_WEBTREES_URL;
+	} else {
+		$META_DESCRIPTION='';
+		$META_GENERATOR='';
 	}
 
 	header('Content-Type: text/html; charset=UTF-8');
-	if ($access_denied) {
-		header($_SERVER["SERVER_PROTOCOL"].' 403 Forbidden');
-	}
 
 	// The title often includes the names of records, which may have markup
 	// that cannot be used in the page title.

@@ -65,7 +65,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGES;
+		global $WT_IMAGES, $controller;
 
 		$out = '<script type="text/javascript">
 		<!--
@@ -112,25 +112,9 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		</script>
 		<form method="post" action="sidebar.php" onsubmit="return false;">
 		<input type="text" name="sb_desc_name" id="sb_desc_name" value="'.WT_I18N::translate('Search').'" />';
-		$out .= '</form><div id="sb_desc_content">';
-
-		if ($this->controller) {
-			$root = null;
-			if ($this->controller->pid) {
-				$root = WT_Person::getInstance($this->controller->pid);
-			} elseif ($this->controller->famid) {
-				$fam = WT_Family::getInstance($this->controller->famid);
-				if ($fam) {
-					$root = $fam->getHusband();
-				}
-				if (!$root) {
-					$root = $fam->getWife();
-				}
-			}
-			if ($root) {
-				$out .= '<ul>'.$this->getPersonLi($root, 1).'</ul>';
-			}
-		}
+		$out .= '</form>';
+		$out .= '<div id="sb_desc_content">';
+		$out .= '<ul>'.$this->getPersonLi($controller->record, 1).'</ul>';
 		$out .= '</div>';
 		return $out;
 	}

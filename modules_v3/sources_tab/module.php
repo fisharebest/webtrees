@@ -48,13 +48,13 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $FACT_COUNT, $SHOW_LEVEL2_NOTES, $NAV_SOURCES;
+		global $FACT_COUNT, $SHOW_LEVEL2_NOTES, $NAV_SOURCES, $controller;
 
 		ob_start();
 		?>
 		<table class="facts_table">
 		<?php
-		if (!$this->controller->indi->canDisplayDetails()) {
+		if (!$controller->record->canDisplayDetails()) {
 			echo "<tr><td class=\"facts_value\">";
 			print_privacy_error();
 			echo "</td></tr>";
@@ -67,25 +67,25 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 			</tr>
 			<?php
-			$otheritems = $this->controller->getOtherFacts();
+			$otheritems = $controller->getOtherFacts();
 				foreach ($otheritems as $key => $event) {
-					if ($event->getTag()=="SOUR") print_main_sources($event->getGedcomRecord(), 1, $this->controller->pid, $event->getLineNumber());
+					if ($event->getTag()=="SOUR") print_main_sources($event->getGedcomRecord(), 1, $controller->record->getXref(), $event->getLineNumber());
 				$FACT_COUNT++;
 			}
 		}
 			// 2nd level sources [ 1712181 ]
-			$this->controller->indi->add_family_facts(false);
-			foreach ($this->controller->getIndiFacts() as $key => $factrec) {
-					print_main_sources($factrec->getGedcomRecord(), 2, $this->controller->pid, $factrec->getLineNumber(), true);
+			$controller->record->add_family_facts(false);
+			foreach ($controller->getIndiFacts() as $key => $factrec) {
+					print_main_sources($factrec->getGedcomRecord(), 2, $controller->record->getXref(), $factrec->getLineNumber(), true);
 			}
 			if ($this->get_source_count()==0) echo "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Source citations for this individual.')."</td></tr>";
 			//-- New Source Link
-			if ($this->controller->indi->canEdit()) {
+			if ($controller->record->canEdit()) {
 			?>
 				<tr>
 					<td class="facts_label"><?php echo WT_I18N::translate('Add Source Citation'), help_link('add_source'); ?></td>
 					<td class="facts_value">
-					<a href="javascript:;" onclick="add_new_record('<?php echo $this->controller->pid; ?>','SOUR'); return false;"><?php echo WT_I18N::translate('Add a new source citation'); ?></a>
+					<a href="javascript:;" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;"><?php echo WT_I18N::translate('Add a new source citation'); ?></a>
 					<br />
 					</td>
 				</tr>
@@ -102,9 +102,11 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	function get_source_count() {
+		global $controller;
+
 		if ($this->sourceCount===null) {
-			$ct = preg_match_all("/\d SOUR @(.*)@/", $this->controller->indi->getGedcomRecord(), $match, PREG_SET_ORDER);
-			foreach ($this->controller->indi->getSpouseFamilies() as $sfam)
+			$ct = preg_match_all("/\d SOUR @(.*)@/", $controller->record->getGedcomRecord(), $match, PREG_SET_ORDER);
+			foreach ($controller->record->getSpouseFamilies() as $sfam)
 				$ct += preg_match("/\d SOUR /", $sfam->getGedcomRecord());
 			$this->sourceCount = $ct;
 		}

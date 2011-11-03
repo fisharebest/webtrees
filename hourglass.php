@@ -28,10 +28,8 @@
 define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Hourglass();
-$controller->init();
-
-print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Hourglass chart of %s', $controller->name));
+$controller=new WT_Controller_Hourglass();
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -146,5 +144,3 @@ $controller->print_person_pedigree(WT_Person::getInstance($controller->pid), 1);
 sizeLines();
 //-->
 </script>
-<?php
-print_footer();

@@ -1,5 +1,4 @@
 <?php
-//
 // Callback function for inline editing.
 //
 // webtrees: Web based Family History software
@@ -19,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 define('WT_SCRIPT_NAME', 'save.php');
 require './includes/session.php';

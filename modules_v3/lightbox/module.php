@@ -74,11 +74,13 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
+		global $controller;
+
 		ob_start();
 		require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_head.php';
 
 		$media_found = false;
-		if (!$this->controller->indi->canDisplayDetails()) {
+		if (!$controller->record->canDisplayDetails()) {
 			echo '<table class="facts_table" cellpadding="0">';
 			echo '<tr><td class="facts_value">';
 			print_privacy_error();
@@ -112,9 +114,11 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 	protected $mediaCount = null;
 
 	private function get_media_count() {
+		global $controller;
+
 		if ($this->mediaCount===null) {
-			$ct = preg_match("/\d OBJE/", $this->controller->indi->getGedcomRecord());
-			foreach ($this->controller->indi->getSpouseFamilies() as $sfam)
+			$ct = preg_match("/\d OBJE/", $controller->record->getGedcomRecord());
+			foreach ($controller->record->getSpouseFamilies() as $sfam)
 				$ct += preg_match("/\d OBJE/", $sfam->getGedcomRecord());
 			$this->mediaCount = $ct;
 		}

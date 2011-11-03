@@ -50,31 +50,17 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGES, $FACT_COUNT, $SHOW_COUNTER;
+		global $WT_IMAGES, $FACT_COUNT, $SHOW_COUNTER, $controller;
 		
-		//$reftags = array ('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID');// list of tags that can be displayed in this sidebar block
-
-		$root = WT_Person::getInstance($this->controller->pid);
-		if ($root!=null) {
-			$this->controller = new WT_Controller_Individual();
-			$this->controller->indi=$root;
-			$this->controller->pid=$root->getXref();
-			$this->setController($this->controller);
+		$indifacts = $controller->getIndiFacts();
+		if (count($indifacts)==0) {
+			echo WT_I18N::translate('There are no Facts for this individual.');
 		}
-
-		if (!$this->controller->indi->canDisplayDetails()) {
-			print_privacy_error();
-		} else {
-			$indifacts = $this->controller->getIndiFacts();
-			if (count($indifacts)==0) {
-				echo WT_I18N::translate('There are no Facts for this individual.');
+		foreach ($indifacts as $fact) {
+			if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
+				print_fact($fact, $controller->record);
 			}
-			foreach ($indifacts as $fact) {
-				if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
-					print_fact($fact, $this->controller->indi);
-				}
-				$FACT_COUNT++;
-			}
+			$FACT_COUNT++;
 		}
 
 		echo '<tr><td><div id="hitcounter">';

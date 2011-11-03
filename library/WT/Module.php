@@ -105,11 +105,6 @@ abstract class WT_Module {
 		return str_replace('_WT_Module', '', get_class($this));
 	}
 
-	// Some modules may use the page's controller
-	protected $controller;
-	public function &getController()   { return $this->controller; }
-	public function setController(&$c) { $this->controller=$c;     }
-
 	// Run an action specified on the URL through module.php?mod=FOO&mod_action=BAR
 	public function modAction($mod_action) {
 	}

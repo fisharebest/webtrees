@@ -1,5 +1,5 @@
 <?php
-// Controller for the Source Page
+// Controller for the source page
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -31,17 +31,13 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-class WT_Controller_Source extends WT_Controller_Base {
-	var $sid;
-	var $source = null;
-	var $diffsource = null;
+class WT_Controller_Source extends WT_Controller_GedcomRecord {
+	public function __construct() {
+		$xref=safe_GET_xref('sid');
 
-	function init() {
-		$this->sid=safe_GET_xref('sid');
-
-		$gedrec=find_source_record($this->sid, WT_GED_ID);
+		$gedrec=find_source_record($xref, WT_GED_ID);
 		if (WT_USER_CAN_EDIT) {
-			$newrec=find_updated_record($this->sid, WT_GED_ID);
+			$newrec=find_updated_record($xref, WT_GED_ID);
 		} else {
 			$newrec=null;
 		}
@@ -57,26 +53,13 @@ class WT_Controller_Source extends WT_Controller_Base {
 			}
 		}
 
-		$this->source = new WT_Source($gedrec);
+		$this->record = new WT_Source($gedrec);
 
 		// If there are pending changes, merge them in.
 		if ($newrec!==null) {
-			$this->diffsource=new WT_Source($newrec);
-			$this->diffsource->setChanged(true);
-			$this->source->diffMerge($this->diffsource);
-		}
-		$this->sid=$this->source->getXref(); // We may have requested X1234, but found x1234
-	}
-
-	/**
-	* get the title for this page
-	* @return string
-	*/
-	function getPageTitle() {
-		if ($this->source) {
-			return $this->source->getFullName();
-		} else {
-			return WT_I18N::translate('Source');
+			$diff_record=new WT_Source($newrec);
+			$diff_record->setChanged(true);
+			$this->record->diffMerge($this->diff_record);
 		}
 	}
 
@@ -86,7 +69,7 @@ class WT_Controller_Source extends WT_Controller_Base {
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
-		if (!$this->source || $this->source->isMarkedDeleted()) {
+		if (!$this->record || $this->record->isMarkedDeleted()) {
 			return null;
 		}
 
@@ -97,7 +80,7 @@ class WT_Controller_Source extends WT_Controller_Base {
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit source'), '#', 'menu-sour-edit');
-			$submenu->addOnclick('return edit_source(\''.$this->sid.'\');');
+			$submenu->addOnclick('return edit_source(\''.$this->record->getXref().'\');');
 			$submenu->addIcon('edit_sour');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_source');
 			$menu->addSubmenu($submenu);
@@ -106,7 +89,7 @@ class WT_Controller_Source extends WT_Controller_Base {
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-sour-editraw');
-			$submenu->addOnclick("return edit_raw('".$this->sid."');");
+			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
@@ -125,7 +108,7 @@ class WT_Controller_Source extends WT_Controller_Base {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-sour-del');
-			$submenu->addOnclick("if (confirm('".addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $this->source->getFullName()))."')) jQuery.post('action.php',{action:'delete-source',xref:'".$this->source->getXref()."'},function(){location.reload();})");
+			$submenu->addOnclick("if (confirm('".addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $this->record->getFullName()))."')) jQuery.post('action.php',{action:'delete-source',xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
@@ -138,7 +121,7 @@ class WT_Controller_Source extends WT_Controller_Base {
 				'#',
 				'menu-sour-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->source->getXref()."'},function(){location.reload();})");
+			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('favorites');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);

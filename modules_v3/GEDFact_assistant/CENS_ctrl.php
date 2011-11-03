@@ -25,25 +25,22 @@
 //
 // $Id$
 
-$controller = new WT_Controller_Individual();
-$controller->init();
+$controller=new WT_Controller_Individual();
 
 global $tabno, $linkToID, $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
 global $WT_IMAGES, $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS;
 global $show_full, $famid;
 echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/css/cens_style.css" rel="stylesheet" />';
 
-$summary=$controller->indi->format_first_major_fact(WT_EVENTS_BIRT, 2);
-if (!($controller->indi->isDead())) {
+$summary=$controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2);
+if (!($controller->record->isDead())) {
 	// If alive display age
-	$bdate=$controller->indi->getBirthDate();
+	$bdate=$controller->record->getBirthDate();
 	$age = WT_Date::GetAgeGedcom($bdate);
 	if ($age!="") {
 		$summary.= "<span class=\"label\">".WT_I18N::translate('Age').":</span><span class=\"field\"> ".get_age_at_event($age, true)."</span>";
 	}
 }
-$summary.=$controller->indi->format_first_major_fact(WT_EVENTS_DEAT, 2);
+$summary.=$controller->record->format_first_major_fact(WT_EVENTS_DEAT, 2);
 
 $controller->census_assistant();
-
-// print_footer();

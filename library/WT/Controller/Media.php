@@ -1,5 +1,5 @@
 <?php
-// Controller for the Media Page
+// Controller for the media page
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -31,17 +31,15 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-class WT_Controller_Media extends WT_Controller_Base {
-	var $mid;
-	var $mediaobject;
+class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
-	function init() {
+	public function __construct() {
 		global $MEDIA_DIRECTORY;
 
 		$filename = safe_GET('filename');
-		$this->mid = safe_GET_xref('mid');
+		$xref = safe_GET_xref('mid');
 
-		if (empty($filename) && empty($this->mid)) {
+		if (empty($filename) && empty($xref)) {
 			// this section used by mediafirewall.php to determine what media file was requested
 
 			if (isset($_SERVER['REQUEST_URI'])) {
@@ -73,45 +71,25 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 		//Checks to see if the filename ($filename) exists
 		if (!empty($filename)) {
-			//If the filename ($filename) is set, then it will call the method to get the Media ID ($this->mid) from the filename ($filename)
-			$this->mid = get_media_id_from_file($filename);
-			if (!$this->mid) {
+			//If the filename ($filename) is set, then it will call the method to get the Media ID ($xref) from the filename ($filename)
+			$xref = get_media_id_from_file($filename);
+			if (!$xref) {
 				//This will set the Media ID to be false if the File given doesn't match to anything in the database
-				$this->mid = false;
+				$xref = false;
 				// create a very basic gedcom record for this file so that the functions of the media object will work
 				// this is used by the media firewall when requesting an object that exists in the media firewall directory but not in the gedcom
-				$this->mediaobject = new WT_Media("0 @"."0"."@ OBJE\n1 FILE ".$filename);
+				$this->record = new WT_Media("0 @"."0"."@ OBJE\n1 FILE ".$filename);
 			}
 		}
 
-		//checks to see if the Media ID ($this->mid) is set. If the Media ID isn't set then there isn't any information avaliable for that picture the picture doesn't exist.
-		if ($this->mid) {
-			//This creates a Media Object from the getInstance method of the Media Class. It takes the Media ID ($this->mid) and creates the object.
-			$this->mediaobject = WT_Media::getInstance($this->mid);
-			//This sets the controller ID to be the Media ID
-			$this->m_pid = $this->mid;
+		//checks to see if the Media ID ($xref) is set. If the Media ID isn't set then there isn't any information avaliable for that picture the picture doesn't exist.
+		if ($xref) {
+			//This creates a Media Object from the getInstance method of the Media Class. It takes the Media ID ($xref) and creates the object.
+			$this->record = WT_Media::getInstance($xref);
 		}
 
-		if (is_null($this->mediaobject)) return false;
-		$this->mediaobject->ged_id=WT_GED_ID; // This record is from a file
-
-		$this->mid=$this->mediaobject->getXref(); // Correct upper/lower case mismatch
-	}
-
-	/**
-	* return the title of this page
-	* @return string the title of the page to go in the <title> tags
-	*/
-	function getPageTitle() {
-		if ($this->mediaobject) {
-			return $this->mediaobject->getFullName();
-		} else {
-			return WT_I18N::translate('Media object');
-		}
-	}
-
-	function canDisplayDetails() {
-		return $this->mediaobject->canDisplayDetails();
+		if (is_null($this->record)) return false;
+		$this->record->ged_id=WT_GED_ID; // This record is from a file
 	}
 
 	/**
@@ -120,11 +98,11 @@ class WT_Controller_Media extends WT_Controller_Base {
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
-		if (!$this->mediaobject || $this->mediaobject->isMarkedDeleted()) {
+		if (!$this->record || $this->record->isMarkedDeleted()) {
 			return null;
 		}
 
-		$links = get_media_relations($this->m_pid);
+		$links = get_media_relations($this->record->getXref());
 		$linktoid = "new";
 		foreach ($links as $linktoid => $type) {
 			break; // we're only interested in the key of the first list entry
@@ -137,7 +115,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'), '#', 'menu-obje-edit');
-			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->m_pid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')");
+			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->record->getXref()}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')");
 			$submenu->addIcon('edit_media');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_media');
 			$menu->addSubmenu($submenu);
@@ -153,22 +131,22 @@ class WT_Controller_Media extends WT_Controller_Base {
 
 			// GEDFact assistant Add Media Links =======================
 			if (WT_USER_GEDCOM_ADMIN && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-				$submenu->addOnclick("return ilinkitem('".$this->m_pid."','manage');");
+				$submenu->addOnclick("return ilinkitem('".$this->record->getXref()."','manage');");
 			} else {
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'), '#', 'menu-obje-link-indi');
-				$ssubmenu->addOnclick("return ilinkitem('".$this->m_pid."','person');");
+				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','person');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_indis');
 				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'), '#', 'menu-obje-link-fam');
-				$ssubmenu->addOnclick("return ilinkitem('".$this->m_pid."','family');");
+				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','family');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_cfamily');
 				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'), '#', 'menu-obje-link-sour');
-				$ssubmenu->addOnclick("return ilinkitem('".$this->m_pid."','source');");
+				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','source');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_menu_source');
 				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
@@ -179,7 +157,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-obje-editraw');
-			$submenu->addOnclick("return edit_raw('".$this->m_pid."');");
+			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
@@ -199,7 +177,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 		if (WT_USER_GEDCOM_ADMIN) {
 			$submenu = new WT_Menu(
 				WT_I18N::translate('Remove object'),
-				"admin_media.php?action=removeobject&amp;xref=".$this->m_pid,
+				"admin_media.php?action=removeobject&amp;xref=".$this->record->getXref(),
 				'menu-obje-del'
 			);
 			$submenu->addOnclick("return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."')");
@@ -215,7 +193,7 @@ class WT_Controller_Media extends WT_Controller_Base {
 				'#',
 				'menu-obje-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->mediaobject->getXref()."'},function(){location.reload();})");
+			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('favorites');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);
@@ -230,34 +208,24 @@ class WT_Controller_Media extends WT_Controller_Base {
 	}
 
 	/**
-	* check if we can show the gedcom record
-	* @return boolean
-	*/
-	function canShowGedcomRecord() {
-		global $SHOW_GEDCOM_RECORD;
-		if ($SHOW_GEDCOM_RECORD && $this->mediaobject->canDisplayDetails())
-			return true;
-	}
-
-	/**
 	* return a list of facts
 	* @return array
 	*/
 	function getFacts($includeFileName=true) {
-		$facts = $this->mediaobject->getFacts(array());
+		$facts = $this->record->getFacts(array());
 		sort_facts($facts);
-		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->mediaobject->getFilename(), $this->mediaobject, 0);
-		$mediaType = $this->mediaobject->getMediatype();
-		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->mediaobject, 0);
+		//if ($includeFileName) $facts[] = new WT_Event("1 FILE ".$this->record->getFilename(), $this->record, 0);
+		$mediaType = $this->record->getMediatype();
+		$facts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->record, 0);
 
-		if (($newrec=find_updated_record($this->m_pid, WT_GED_ID))!==null) {
+		if (($newrec=find_updated_record($this->record->getXref(), WT_GED_ID))!==null) {
 			$newmedia = new WT_Media($newrec);
 			$newfacts = $newmedia->getFacts(array());
 			$newimgsize = $newmedia->getImageAttributes();
-			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->mediaobject, 0);
-			$newfacts[] = new WT_Event("1 FORM ".$newimgsize['ext'], $this->mediaobject, 0);
+			if ($includeFileName) $newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->record, 0);
+			$newfacts[] = new WT_Event("1 FORM ".$newimgsize['ext'], $this->record, 0);
 			$mediaType = $newmedia->getMediatype();
-			$newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->mediaobject, 0);
+			$newfacts[] = new WT_Event("1 TYPE ".WT_Gedcom_Tag::getFileFormTypeValue($mediaType), $this->record, 0);
 			//-- loop through new facts and add them to the list if they are any changes
 			//-- compare new and old facts of the Personal Fact and Details tab 1
 			for ($i=0; $i<count($facts); $i++) {
@@ -287,14 +255,14 @@ class WT_Controller_Media extends WT_Controller_Base {
 			}
 		}
 
-		if ($this->mediaobject->fileExists()) {
+		if ($this->record->fileExists()) {
 			// get height and width of image, when available
-			$imgsize = $this->mediaobject->getImageAttributes();
+			$imgsize = $this->record->getImageAttributes();
 			if (!empty($imgsize['WxH'])) {
-				$facts[] = new WT_Event('1 __IMAGE_SIZE__ '.$imgsize['WxH'], $this->mediaobject, 0);
+				$facts[] = new WT_Event('1 __IMAGE_SIZE__ '.$imgsize['WxH'], $this->record, 0);
 			}
 			//Prints the file size
-			$facts[] = new WT_Event('1 __FILE_SIZE__ '.$this->mediaobject->getFilesize(), $this->mediaobject, 0);
+			$facts[] = new WT_Event('1 __FILE_SIZE__ '.$this->record->getFilesize(), $this->record, 0);
 		}
 
 		sort_facts($facts);
@@ -306,8 +274,8 @@ class WT_Controller_Media extends WT_Controller_Base {
 	* @return string
 	*/
 	function getLocalFilename() {
-		if ($this->mediaobject) {
-			return $this->mediaobject->getLocalFilename();
+		if ($this->record) {
+			return $this->record->getLocalFilename();
 		} else {
 			return false;
 		}
@@ -318,8 +286,8 @@ class WT_Controller_Media extends WT_Controller_Base {
 	* @return string
 	*/
 	function getServerFilename() {
-		if ($this->mediaobject) {
-			return $this->mediaobject->getServerFilename();
+		if ($this->record) {
+			return $this->record->getServerFilename();
 		} else {
 			return false;
 		}

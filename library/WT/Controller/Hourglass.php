@@ -1,5 +1,5 @@
 <?php
-// Controller for the Hourglass Page
+// Controller for the hourglass chart
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -43,7 +43,7 @@ $nonfacts[] = "";
 $nonfamfacts[] = "UID";
 $nonfamfacts[] = "";
 
-class WT_Controller_Hourglass extends WT_Controller_Base {
+class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $pid = "";
 
 	var $canedit = false;
@@ -60,12 +60,8 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 	var $ARID;
 	var $arrwidth;
 	var $arrheight;
-	///////////////////////////////////////
 
-	/**
-	 * Initialization function
-	 */
-	function init($rootid='', $show_full=1, $generations=3) {
+	function __construct($rootid='', $show_full=1, $generations=3) {
 		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bheight, $bwidth, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $WT_IMAGES, $TEXT_DIRECTION, $show_full;
 
@@ -79,7 +75,6 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 		// This is passed as a global.  A parameter would be better...
 		$show_full=$this->show_full;
 
-		if (!empty($_REQUEST["action"])) $this->action = $_REQUEST["action"];
 		if (!empty($rootid)) $this->pid = $rootid;
 
 		//-- flip the arrows for RTL languages
@@ -111,6 +106,11 @@ class WT_Controller_Hourglass extends WT_Controller_Base {
 		//Checks how many generations of descendency is for the person for formatting purposes
 		$this->dgenerations = $this->max_descendency_generations($this->pid, 0);
 		if ($this->dgenerations<1) $this->dgenerations=1;
+	}
+
+	// What should this page show in the browser's title bar?
+	public function getPageTitle() {
+		return /* I18N: %s is a person's name */ WT_I18N::translate('Hourglass chart of %s', $this->name);
 	}
 
 	/**

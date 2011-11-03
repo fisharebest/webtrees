@@ -34,8 +34,7 @@ require './includes/session.php';
  * label the pair as a pair.
  */
 
-$controller = new WT_Controller_Hourglass();
-$controller->init();
+$controller=new WT_Controller_Hourglass();
 
 header('Content-type: text/html; charset=UTF-8');
 // -- print html header information

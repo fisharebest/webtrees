@@ -41,8 +41,7 @@ global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $
 $hideflags = safe_GET('hideflags');
 $hidelines = safe_GET('hidelines');
 
-$controller = new WT_Controller_Pedigree();
-$controller->init();
+$controller=new WT_Controller_Pedigree();
 
 // Default of 5
 $clustersize = 5;
@@ -283,5 +282,3 @@ echo "</div>";
 <?php
 echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
 require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_pedigree_map.js.php';
-
-print_footer();

@@ -27,11 +27,8 @@ define('WT_SCRIPT_NAME', 'search.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-$controller = new WT_Controller_Search();
-$controller->init();
-
-// Print the top header
-print_header(WT_I18N::translate('Search'));
+$controller=new WT_Controller_Search();
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 ?>
@@ -418,5 +415,3 @@ if (!$somethingPrinted) {
 	</script>
 <?php
 }
-
-print_footer();

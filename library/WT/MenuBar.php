@@ -99,7 +99,7 @@ class WT_MenuBar {
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_pedigree');
 			$menu->addSubmenu($submenu);
 			//-- my_indi submenu
-			$submenu = new WT_Menu(WT_I18N::translate('My individual record'), 'individual.php?ged='.WT_GEDURL.'&amp;pid='.WT_USER_GEDCOM_ID, 'menu-myrecord');
+			$submenu = new WT_Menu(WT_I18N::translate('My individual record'), 'individual.php?pid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL, 'menu-myrecord');
 			$submenu->addIcon('indis');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_indis');
 			$menu->addSubmenu($submenu);
@@ -114,18 +114,17 @@ class WT_MenuBar {
 		return $menu;
 	}
 
-	public static function getChartsMenu($rootid='') {
+	public static function getChartsMenu() {
 		global $WT_IMAGES, $SEARCH_SPIDER, $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $controller;
 
-		if (isset($controller)) {
-			if (!$rootid) {
-				if (isset($controller->pid)) $rootid = $controller->pid;
-				if (isset($controller->rootid)) $rootid = $controller->rootid;
-			}
+		if ($SEARCH_SPIDER) {
+			return null;
 		}
 
-		if (!empty($SEARCH_SPIDER)) {
-			return null;
+		if ($controller) {
+			$rootid=$controller->getSignificantIndividual()->getXref();
+		} else {
+			$rootid='';
 		}
 
 		$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
@@ -389,15 +388,10 @@ class WT_MenuBar {
 	public static function getListsMenu() {
 		global $SEARCH_SPIDER, $controller;
 
-		$surname='';
-		if (isset($controller)) {
-			if (isset($controller->indi)) {
-				list($surname)=explode(',', $controller->indi->getSortName());
-			}
-			if (isset($controller->rootid)) {
-				$person = WT_Person::getInstance($controller->rootid);
-				list($surname)=explode(',', $person->getSortName());
-			}
+		if ($controller) {
+			list($surname)=explode(',', $controller->getSignificantIndividual()->getSortName());
+		} else {
+			$surname='';
 		}
 
 		// The top level menu shows the individual list
@@ -536,7 +530,7 @@ class WT_MenuBar {
 	* @return WT_Menu the menu item
 	*/
 	public static function getReportsMenu($pid='', $famid='') {
-		global $SEARCH_SPIDER, $controller;
+		global $SEARCH_SPIDER;
 
 		$active_reports=WT_Module::getActiveReports();
 		if ($SEARCH_SPIDER || !$active_reports) {
@@ -754,34 +748,9 @@ class WT_MenuBar {
 		}
 
 		if ($show_user_favs) {
-			if ($controller instanceof WT_Controller_Individual && $controller->indi) {
+			if (isset($controller->record) && $controller->record instanceof WT_GedcomRecord) {
 				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
-				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->indi->getXref()."'},function(){location.reload();})");
-				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-				$menu->addSubMenu($submenu);
-			} else if ($controller instanceof WT_Controller_Family && $controller->family) {
-				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
-				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->family->getXref()."'},function(){location.reload();})");
-				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-				$menu->addSubMenu($submenu);
-			} else if ($controller instanceof WT_Controller_Source && $controller->source) {
-				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
-				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->source->getXref()."'},function(){location.reload();})");
-				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-				$menu->addSubMenu($submenu);
-			} else if ($controller instanceof WT_Controller_Repository && $controller->repository) {
-				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
-				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->repository->getXref()."'},function(){location.reload();})");
-				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-				$menu->addSubMenu($submenu);
-			} else if ($controller instanceof WT_Controller_Media && $controller->mediaobject) {
-				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
-				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->mediaobject->getXref()."'},function(){location.reload();})");
-				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
-				$menu->addSubMenu($submenu);
-			} else if ($controller instanceof WT_Controller_Note && $controller->note) {
-				$submenu=new WT_Menu(WT_I18N::translate('Add to favorites'), '#');
-				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->note->getXref()."'},function(){location.reload();})");
+				$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$controller->record->getXref()."'},function(){location.reload();})");
 				$submenu->addClass('favsubmenuitem', 'favsubmenuitem_hover');
 				$menu->addSubMenu($submenu);
 			} 

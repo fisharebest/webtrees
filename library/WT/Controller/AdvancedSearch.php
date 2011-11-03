@@ -1,5 +1,5 @@
 <?php
-// Controller for the Advanced Search Page
+// Controller for the advanced search page
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -36,12 +36,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 
 	function __construct() {
 		parent::__construct();
-	}
-	/**
-	 * Initialization function
-	 */
-	function init() {
-		parent :: init();
 		if (empty($_REQUEST['action'])) {
 			$this->action="advanced";
 		}

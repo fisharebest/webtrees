@@ -558,7 +558,7 @@ function build_indiv_map($indifacts, $famids) {
 		$gmarks = $markers;
 
 		global $controller;
-		$pid=$controller->indi->getXref();
+		$pid=$controller->record->getXref();
 
 		// === Include css and js files ============================================================
 		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';

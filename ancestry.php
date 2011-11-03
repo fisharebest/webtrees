@@ -43,9 +43,7 @@ $nonfamfacts[] = 'UID';
 $nonfamfacts[] = '';
 
 $controller=new WT_Controller_Ancestry();
-$controller->init();
-
-print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Ancestors of %s', $controller->name));
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -236,4 +234,3 @@ case 3:
 	echo '</div>';
 	break;
 }
-print_footer();

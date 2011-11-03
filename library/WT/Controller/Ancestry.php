@@ -1,5 +1,5 @@
 <?php
-// Controller for the Ancestry Page
+// Controller for the ancestry chart
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-class WT_Controller_Ancestry extends WT_Controller_Base {
+class WT_Controller_Ancestry extends WT_Controller_Chart {
 	var $pid = '';
 	var $user = false;
 	var $show_cousins;
@@ -42,10 +42,7 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 	var $show_full;
 	var $cellwidth;
 
-	/**
-	 * Initialization function
-	 */
-	function init() {
+	function __construct() {
 		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bwidth, $bheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $DEFAULT_PEDIGREE_GENERATIONS, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;
 		global $show_full;
@@ -86,6 +83,11 @@ class WT_Controller_Ancestry extends WT_Controller_Base {
 
 		if (strlen($this->name)<30) $this->cellwidth="420";
 		else $this->cellwidth=(strlen($this->name)*14);
+	}
+
+	// What should this page show in the browser's title bar?
+	public function getPageTitle() {
+		return /* I18N: %s is a person's name */ WT_I18N::translate('Ancestors of %s', $this->name);
 	}
 
 	/**

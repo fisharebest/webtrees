@@ -1,5 +1,5 @@
 <?php
-// Controller for the Search Page
+// Controller for the search page
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -21,7 +21,6 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-//
 // $Id$
 
 if (!defined('WT_WEBTREES')) {
@@ -30,6 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Controller_Search extends WT_Controller_Base {
+	var $action;
 	var $isPostBack = false;
 	var $topsearch;
 	var $srfams;
@@ -84,10 +84,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 	var $replacePlacesWord = false;
 	var $printplace = array();
 
-	/**
-	 * Initialization function
-	 */
-	function init() {
+	function __construct() {
 		global $GEDCOM;
 
 		if ($this->action=='') {

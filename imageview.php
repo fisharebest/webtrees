@@ -26,13 +26,9 @@
 define('WT_SCRIPT_NAME', 'imageview.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Media();
-$controller->init();
+$controller=new WT_Controller_Media();
 
 print_simple_header(WT_I18N::translate('Image viewer'));
-
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
 
 if (!$controller->mediaobject) {
 	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
@@ -207,5 +203,5 @@ if (!$controller->mediaobject->isExternal() && !$controller->mediaobject->fileEx
 echo "</form>";
 echo "<div style=\"position: relative; \">";
 echo "</div>";
-echo "<div class=\"center\"><br /><a href=\"javascript:;\" onclick=\"window.close();\">".WT_I18N::translate('Close Window')."</a></div><br />";
+echo "<div class=\"center\"><br /><a href=\"javascript:;\" onclick=\"window.close();\">".WT_I18N::translate('Close Window')."</a></div>";
 print_simple_footer();

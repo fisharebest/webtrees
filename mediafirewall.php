@@ -23,16 +23,12 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 define('WT_SCRIPT_NAME', 'mediafirewall.php');
 require './includes/session.php';
 
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
-
-$controller = new WT_Controller_Media();
-$controller->init();
+$controller=new WT_Controller_Media();
 
 $debug_mediafirewall   = 0; // set to 1 if you want to see media firewall values displayed instead of images
 $debug_watermark       = 0; // set to 1 if you want to see error messages from the watermark module instead of broken images
@@ -315,7 +311,7 @@ if (!$serverFilename) {
 	$exp = explode("?", $requestedfile);
 	$pathinfo = pathinfo($exp[0]);
 	$ext = @strtolower($pathinfo['extension']);
-	// have to exit even if debug_mediafirewall is enabled because $controller->mediaobject doesn't exist and is required below
+	// have to exit even if debug_mediafirewall is enabled because $controller->record doesn't exist and is required below
 	sendErrorAndExit($ext, WT_I18N::translate('The media file was not found in this family tree'), $requestedfile);
 }
 
@@ -325,11 +321,11 @@ if (strpos($_SERVER['REQUEST_URI'], '/thumbs/') || safe_GET_bool('thumb')) {
 	// display the thumbnail file instead of the main file
 	// NOTE: since this script was called when a 404 error occured, we know the requested file
 	// does not exist in the main media directory.  just check the media firewall directory
-	$serverFilename = $controller->mediaobject->getServerFilename('thumb');
+	$serverFilename = $controller->record->getServerFilename('thumb');
 	$which = 'thumb';
 }
 
-$imgsize = $controller->mediaobject->getImageAttributes($which);
+$imgsize = $controller->record->getImageAttributes($which);
 if (!file_exists($serverFilename)) {
 	// the requested file MAY be in the gedcom, but it does NOT exist on the server.  bail.
 	// Note: the 404 error status is still in effect.
@@ -347,14 +343,14 @@ if (empty($controller->pid)) {
 }
 
 // check PGV permissions
-if (!$controller->mediaobject->canDisplayDetails()) {
+if (!$controller->record->canDisplayDetails()) {
 	// if no permissions, bail
 	// Note: the 404 error status is still in effect
 	if (!$debug_mediafirewall) sendErrorAndExit($imgsize['ext'], WT_I18N::translate('The media file was not found in this family tree'));
 }
 
 $protocol = $_SERVER["SERVER_PROTOCOL"];  // determine if we are using HTTP/1.0 or HTTP/1.1
-$filetime = $controller->mediaobject->getFiletime($which);
+$filetime = $controller->record->getFiletime($which);
 $filetimeHeader = gmdate("D, d M Y H:i:s", $filetime).' GMT';
 $expireOffset = 3600 * 24;  // tell browser to cache this image for 24 hours
 if (safe_GET('cb')) $expireOffset = $expireOffset * 7; // if cb parameter was sent, cache for 7 days 
@@ -401,7 +397,7 @@ if ($usewatermark) {
 	}
 }
 
-$etag = $controller->mediaobject->getEtag($which);
+$etag = $controller->record->getEtag($which);
 $mimetype = $imgsize['mime'];
 $disposition = 'inline';
 if (safe_GET('dl')) {
@@ -433,17 +429,17 @@ if ($debug_mediafirewall) {
 	echo  '<tr><td>$controller->pid</td><td>', $controller->pid, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>Requested URL</td><td>', urldecode($_SERVER['REQUEST_URI']), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>serverFilename</td><td>', $serverFilename, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>controller->mediaobject->getFilename()</td><td>', $controller->mediaobject->getFilename(), '</td><td>this is direct from the gedcom</td></tr>';
-	echo  '<tr><td>controller->mediaobject->getLocalFilename()</td><td>', $controller->mediaobject->getLocalFilename(), '</td><td></td></tr>';
-	echo  '<tr><td>controller->mediaobject->getServerFilename()</td><td>', $controller->mediaobject->getServerFilename(), '</td><td></td></tr>';
-	echo  '<tr><td>controller->mediaobject->fileExists()</td><td>', $controller->mediaobject->fileExists(), '</td><td></td></tr>';
+	echo  '<tr><td>controller->record->getFilename()</td><td>', $controller->record->getFilename(), '</td><td>this is direct from the gedcom</td></tr>';
+	echo  '<tr><td>controller->record->getLocalFilename()</td><td>', $controller->record->getLocalFilename(), '</td><td></td></tr>';
+	echo  '<tr><td>controller->record->getServerFilename()</td><td>', $controller->record->getServerFilename(), '</td><td></td></tr>';
+	echo  '<tr><td>controller->record->fileExists()</td><td>', $controller->record->fileExists(), '</td><td></td></tr>';
 	echo  '<tr><td>mimetype</td><td>', $mimetype, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>disposition</td><td>', $disposition, '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>controller->mediaobject->getFilesize()</td><td>', $controller->mediaobject->getFilesize(), '</td><td>cannot use this</td></tr>';
+	echo  '<tr><td>controller->record->getFilesize()</td><td>', $controller->record->getFilesize(), '</td><td>cannot use this</td></tr>';
 	echo  '<tr><td>filesize</td><td>', @filesize($serverFilename), '</td><td>this is right</td></tr>';
-	echo  '<tr><td>controller->mediaobject->getThumbnail()</td><td>', $controller->mediaobject->getThumbnail(), '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>controller->mediaobject->canDisplayDetails()</td><td>', $controller->mediaobject->canDisplayDetails(), '</td><td>&nbsp;</td></tr>';
-	echo  '<tr><td>controller->mediaobject->getFullName()</td><td>', $controller->mediaobject->getFullName(), '</td><td>&nbsp;</td></tr>';
+	echo  '<tr><td>controller->record->getThumbnail()</td><td>', $controller->record->getThumbnail(), '</td><td>&nbsp;</td></tr>';
+	echo  '<tr><td>controller->record->canDisplayDetails()</td><td>', $controller->record->canDisplayDetails(), '</td><td>&nbsp;</td></tr>';
+	echo  '<tr><td>controller->record->getFullName()</td><td>', $controller->record->getFullName(), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>basename($serverFilename)</td><td>', basename($serverFilename), '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>filetime</td><td>', $filetime, '</td><td>&nbsp;</td></tr>';
 	echo  '<tr><td>filetimeHeader</td><td>', $filetimeHeader, '</td><td>&nbsp;</td></tr>';
@@ -465,7 +461,7 @@ if ($debug_mediafirewall) {
 
 	echo '<pre>';
 	print_r (@getimagesize($serverFilename));
-	print_r ($controller->mediaobject);
+	print_r ($controller->record);
 	print_r (WT_GEDCOM);
 	echo '</pre>';
 
@@ -566,4 +562,3 @@ if (function_exists('readfile')) {
 	}
 	fclose($fp);
 }
-

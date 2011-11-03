@@ -1,11 +1,8 @@
 <?php
-// Parses gedcom file and displays a list of the sources in the file.
+// Base controller for all chart pages
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,12 +20,10 @@
 //
 // $Id$
 
-define('WT_SCRIPT_NAME', 'sourcelist.php');
-require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_print_lists.php';
+if (!defined('WT_WEBTREES')) {
+	header('HTTP/1.0 403 Forbidden');
+	exit;
+}
 
-print_header(WT_I18N::translate('Sources'));
-echo '<div class="center"><h2>', WT_I18N::translate('Sources'), '</h2>';
-print_sour_table(get_source_list(WT_GED_ID));
-echo '</div>';
-print_footer();
+class WT_Controller_Chart extends WT_Controller_Base {
+}

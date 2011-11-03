@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -34,7 +34,7 @@ function compare_people($a, $b) {
 	return WT_Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
 }
 
-class WT_Controller_Lifespan extends WT_Controller_Base {
+class WT_Controller_Lifespan extends WT_Controller_Chart {
 	var $pids = array ();
 	var $people = array();
 	var $scale = 2;
@@ -66,10 +66,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 	var $startDate;
 	var $currentsex;
 
-	/**
-	* Initialization function
-	*/
-	function init() {
+	function __construct() {
 		global $GEDCOM_ID_PREFIX;
 		$this->colorindex = 0;
 		$this->Fcolorindex = 0;
@@ -195,6 +192,11 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 			$this->timelineMinYear = date("Y") - 101;
 			$this->timelineMaxYear = date("Y");
 		}
+	}
+
+	// What should this page show in the browser's title bar?
+	public function getPageTitle() {
+		return WT_I18N::translate('Lifespans');
 	}
 
 	// Add a person (and optionally their immediate family members) to the pids array

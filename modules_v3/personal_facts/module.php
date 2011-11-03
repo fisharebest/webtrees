@@ -51,33 +51,33 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $FACT_COUNT, $EXPAND_RELATIVES_EVENTS;
+		global $FACT_COUNT, $EXPAND_RELATIVES_EVENTS, $controller;
 
 		/*if (isset($_COOKIE['row_rela'])) $EXPAND_RELATIVES_EVENTS = ($_COOKIE['row_rela']);
 		if (isset($_COOKIE['row_histo'])) $EXPAND_HISTO_EVENTS = ($_COOKIE['row_histo']);
 		else*/ $EXPAND_HISTO_EVENTS = false;
 
 		//-- only need to add family facts on this tab
-		if (!isset($this->controller->skipFamilyFacts)) {
-			$this->controller->indi->add_family_facts();
+		if (!isset($controller->skipFamilyFacts)) {
+			$controller->record->add_family_facts();
 		}
 
 		ob_start();
 		?>
 		<table class="facts_table" style="margin-top:-2px;" cellpadding="0">
-		<?php if (!$this->controller->indi->canDisplayDetails()) {
+		<?php if (!$controller->record->canDisplayDetails()) {
 			echo '<tr><td class="facts_value" colspan="2">';
 			print_privacy_error();
 			echo '</td></tr>';
 		} else {
-			$indifacts = $this->controller->getIndiFacts();
+			$indifacts = $controller->getIndiFacts();
 			if (count($indifacts)==0) { ?>
 				<tr>
 					<td id="no_tab1" colspan="2" class="facts_value"><?php echo WT_I18N::translate('There are no Facts for this individual.'); ?>
 					</td>
 				</tr>
 			<?php }
-			if (!isset($this->controller->skipFamilyFacts)) {
+			if (!isset($controller->skipFamilyFacts)) {
 			?>
 			<tr id="row_top">
 				<td colspan="2" class="descriptionbox rela">
@@ -93,25 +93,25 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 			}
 			$yetdied=false;
 			foreach ($indifacts as $fact) {
-				if (strstr(WT_EVENTS_DEAT, $fact->getTag()) && $fact->getParentObject()->getXref()==$this->controller->indi->getXref()) {
+				if (strstr(WT_EVENTS_DEAT, $fact->getTag()) && $fact->getParentObject()->getXref()==$controller->record->getXref()) {
 					$yetdied = true;
 				}
 				if (!is_null($fact->getFamilyId())) {
 					if (!$yetdied) {
-						print_fact($fact, $this->controller->indi);
+						print_fact($fact, $controller->record);
 					}
 				} else {
 					//$reftags = array ('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID');// list of tags used in "Extra information" sidebar module
 					if (!in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !array_key_exists('extra_info', WT_Module::getActiveSidebars())) {
-						print_fact($fact, $this->controller->indi);
+						print_fact($fact, $controller->record);
 					}
 				}
 				$FACT_COUNT++;
 			}
 		}
 		//-- new fact link
-		if ($this->controller->indi->canEdit()) {
-			print_add_new_fact($this->controller->pid, $indifacts, 'INDI');
+		if ($controller->record->canEdit()) {
+			print_add_new_fact($controller->record->getXref(), $indifacts, 'INDI');
 		}
 		echo '</table><br />';
 		echo WT_JS_START;

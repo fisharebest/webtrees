@@ -29,18 +29,17 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $controller=new WT_Controller_Note();
-$controller->init();
 
-if ($controller->note && $controller->note->canDisplayDetails()) {
+if ($controller->record && $controller->record->canDisplayDetails()) {
 	print_header($controller->getPageTitle());
-	if ($controller->note->isMarkedDeleted()) {
+	if ($controller->record->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
 					'This note has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->note->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->note->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -51,14 +50,14 @@ if ($controller->note && $controller->note->canDisplayDetails()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif (find_updated_record($controller->note->getXref(), WT_GED_ID)!==null) {
+	} elseif (find_updated_record($controller->record->getXref(), WT_GED_ID)!==null) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
 					'This note has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->note->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->note->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -71,27 +70,24 @@ if ($controller->note && $controller->note->canDisplayDetails()) {
 		}
 	}
 } else {
-	header('HTTP/1.0 403 Forbidden');
-	print_header(WT_I18N::translate('Note'));
+	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+	print_header($controller->getPageTitle());
 	echo '<p class="ui-state-error">', WT_I18N::translate('This note does not exist or you do not have permission to view it.'), '</p>';
 	print_footer();
 	exit;
 }
 
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
-
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 
-$linkToID=$controller->nid; // Tell addmedia.php what to link to
+$linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
 echo WT_JS_START;
 echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->note->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
+echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
 echo '}';
-echo 'function showchanges() { window.location="', $controller->note->getRawUrl(), '"; }';
+echo 'function showchanges() { window.location="', $controller->record->getRawUrl(), '"; }';
 echo 'function edit_note() {';
 echo ' var win04 = window.open("edit_interface.php?action=editnote&pid=', $linkToID, '", "win04", "top=70, left=70, width=620, height=500, resizable=1, scrollbars=1");';
 echo ' if (window.focus) {win04.focus();}';
@@ -104,27 +100,27 @@ echo '}';
 echo WT_JS_END;
 
 echo '<div id="note-details">';
-echo '<h2>', $controller->note->getFullName(), '</h2>';
+echo '<h2>', $controller->record->getFullName(), '</h2>';
 echo '<div id="note-tabs">
 	<ul>
 		<li><a href="#note-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';
-		if ($controller->note->countLinkedIndividuals()) {
+		if ($controller->record->countLinkedIndividuals()) {
 			echo '<li><a href="#indi-note"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
 		}
-		if ($controller->note->countLinkedFamilies()) {
+		if ($controller->record->countLinkedFamilies()) {
 			echo '<li><a href="#fam-note"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';
 		}
-		if ($controller->note->countLinkedMedia()) {
+		if ($controller->record->countLinkedMedia()) {
 			echo '<li><a href="#media-note"><span id="mediasource">', WT_I18N::translate('Media objects'), '</span></a></li>';
 		}
-		if ($controller->note->countLinkedSources()) {
+		if ($controller->record->countLinkedSources()) {
 			echo '<li><a href="#source-note"><span id="notesource">', WT_I18N::translate('Sources'), '</span></a></li>';
 		}
 		echo '</ul>';
 
 	// Shared Note details ---------------------
-	$noterec=$controller->note->getGedcomRecord();
-	preg_match("/0 @{$controller->nid}@ NOTE(.*)/", $noterec, $n1match);
+	$noterec=$controller->record->getGedcomRecord();
+	preg_match("/0 @".$controller->record->getXref()."@ NOTE(.*)/", $noterec, $n1match);
 	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
 
 	echo '<div id="note-edit">';
@@ -146,43 +142,43 @@ echo '<div id="note-tabs">
 				echo "<br />";
 			echo "</td></tr>";
 
-			$notefacts=$controller->note->getFacts();
+			$notefacts=$controller->record->getFacts();
 			foreach ($notefacts as $fact) {
 				if ($fact->getTag()!='CONT') {
-					print_fact($fact, $controller->note);
+					print_fact($fact, $controller->record);
 				}
 			}
 			// Print media
-			print_main_media($controller->nid);
+			print_main_media($controller->record->getXref());
 			// new fact link
-			if ($controller->note->canEdit()) {
-				print_add_new_fact($controller->nid, $notefacts, 'NOTE');
+			if ($controller->record->canEdit()) {
+				print_add_new_fact($controller->record->getXref(), $notefacts, 'NOTE');
 			}
 		echo '</table>
 	</div>'; // close "note-edit"
 
 	// Individuals linked to this shared note
-	if ($controller->note->countLinkedIndividuals()) {
+	if ($controller->record->countLinkedIndividuals()) {
 		echo '<div id="indi-note">';
-		print_indi_table($controller->note->fetchLinkedIndividuals(), $controller->note->getFullName());
+		print_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
 		echo '</div>'; //close "indi-note"
 	}
 	// Families linked to this shared note
-	if ($controller->note->countLinkedFamilies()) {
+	if ($controller->record->countLinkedFamilies()) {
 		echo '<div id="fam-note">';
-		print_fam_table($controller->note->fetchLinkedFamilies(), $controller->note->getFullName());
+		print_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
 		echo '</div>'; //close "fam-note"
 	}
 	// Media Items linked to this shared note
-	if ($controller->note->countLinkedMedia()) {
+	if ($controller->record->countLinkedMedia()) {
 		echo '<div id="media-note">';
-		print_media_table($controller->note->fetchLinkedMedia(), $controller->note->getFullName());
+		print_media_table($controller->record->fetchLinkedMedia(), $controller->record->getFullName());
 		echo '</div>'; //close "media-note"
 	}
 	// Sources linked to this shared note
-	if ($controller->note->countLinkedSources()) {
+	if ($controller->record->countLinkedSources()) {
 		echo '<div id="source-note">';
-		print_sour_table($controller->note->fetchLinkedSources(), $controller->note->getFullName());
+		print_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
 		echo '</div>'; //close "source-note"
 	}
 echo '</div>'; //close div "note-tabs"

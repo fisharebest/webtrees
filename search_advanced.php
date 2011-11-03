@@ -28,10 +28,8 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $controller=new WT_Controller_AdvancedSearch();
-$controller->init();
+$controller->pageHeader();
 
-// Print the top header
-print_header(WT_I18N::translate('Advanced search'));
 echo WT_JS_START;
 ?>
 	function checknames(frm) {
@@ -312,6 +310,3 @@ if (!$somethingPrinted ) {
 	</script>
 <?php
 }
-//-- somewhere the session gedcom gets changed, so we will change it back
-$_SESSION['GEDCOM'] = $GEDCOM;
-print_footer();

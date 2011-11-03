@@ -69,7 +69,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @return html table rows
 	*/
 	function printParentsRows($family, $people, $type) {
-		global $personcount, $WT_IMAGES, $SHOW_PEDIGREE_PLACES;
+		global $personcount, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $controller;
 
 		$elderdate = "";
 		//-- new father/husband
@@ -79,7 +79,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_labelblue"><?php echo $people["newhusb"]->getLabel(); ?></td>
-				<td class="<?php echo $this->controller->getPersonStyle($people["newhusb"]); ?>">
+				<td class="<?php echo $controller->getPersonStyle($people["newhusb"]); ?>">
 					<?php print_pedigree_person($people["newhusb"], 2, 0, $personcount++); ?>
 				</td>
 			</tr>
@@ -91,7 +91,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label<?php echo $styleadd; ?>"><?php echo $people["husb"]->getLabel(); ?></td>
-				<td class="<?php echo $this->controller->getPersonStyle($people["husb"]); ?>">
+				<td class="<?php echo $controller->getPersonStyle($people["husb"]); ?>">
 					<?php print_pedigree_person($people["husb"], 2, 0, $personcount++); ?>
 				</td>
 			</tr>
@@ -100,18 +100,18 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		//-- missing father
 		if ($type=="parents" && !isset($people["husb"]) && !isset($people["newhusb"])) {
-			if ($this->controller->indi->canEdit()) {
+			if ($controller->record->canEdit()) {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo WT_I18N::translate('Add a new father'); ?></td>
-					<td class="facts_value"><a href="javascript <?php echo WT_I18N::translate('Add a new father'); ?>" onclick="return addnewparentfamily('<?php echo $this->controller->pid; ?>', 'HUSB', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a new father'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
+					<td class="facts_value"><a href="javascript <?php echo WT_I18N::translate('Add a new father'); ?>" onclick="return addnewparentfamily('<?php echo $controller->record->getXref(); ?>', 'HUSB', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a new father'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
 				</tr>
 				<?php
 			}
 		}
 		//-- missing husband
 		if ($type=="spouse" && !isset($people["husb"]) && !isset($people["newhusb"])) {
-			if ($this->controller->indi->canEdit()) {
+			if ($controller->record->canEdit()) {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo WT_I18N::translate('Add husband'); ?></td>
@@ -127,7 +127,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_labelblue"><?php echo $people["newwife"]->getLabel($elderdate); ?></td>
-				<td class="<?php echo $this->controller->getPersonStyle($people["newwife"]); ?>">
+				<td class="<?php echo $controller->getPersonStyle($people["newwife"]); ?>">
 					<?php print_pedigree_person($people["newwife"], 2, 0, $personcount++); ?>
 				</td>
 			</tr>
@@ -138,7 +138,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label<?php echo $styleadd; ?>"><?php echo $people["wife"]->getLabel($elderdate); ?></td>
-				<td class="<?php echo $this->controller->getPersonStyle($people["wife"]); ?>">
+				<td class="<?php echo $controller->getPersonStyle($people["wife"]); ?>">
 					<?php print_pedigree_person($people["wife"], 2, 0, $personcount++); ?>
 				</td>
 			</tr>
@@ -146,18 +146,18 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		//-- missing mother
 		if ($type=="parents" && !isset($people["wife"]) && !isset($people["newwife"])) {
-			if ($this->controller->indi->canEdit()) {
+			if ($controller->record->canEdit()) {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo WT_I18N::translate('Add a new mother'); ?></td>
-					<td class="facts_value"><a href="javascript:;" onclick="return addnewparentfamily('<?php echo $this->controller->pid; ?>', 'WIFE', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a new mother'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
+					<td class="facts_value"><a href="javascript:;" onclick="return addnewparentfamily('<?php echo $controller->record->getXref(); ?>', 'WIFE', '<?php echo $family->getXref(); ?>');"><?php echo WT_I18N::translate('Add a new mother'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
 				</tr>
 				<?php
 			}
 		}
 		//-- missing wife
 		if ($type=="spouse" && !isset($people["wife"]) && !isset($people["newwife"])) {
-			if ($this->controller->indi->canEdit()) {
+			if ($controller->record->canEdit()) {
 				?>
 				<tr>
 					<td class="facts_label"><?php echo WT_I18N::translate('Add wife'); ?></td>
@@ -232,7 +232,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						if (empty($wife) && !empty($husb)) echo WT_Gedcom_Tag::getLabel('_NMAR', $husb);
 						else if (empty($husb) && !empty($wife)) echo WT_Gedcom_Tag::getLabel('_NMAR', $wife);
 						else echo WT_Gedcom_Tag::getLabel('_NMAR');
-					} else if ($family->getMarriageRecord()=="" && $this->controller->indi->canEdit()) {
+					} else if ($family->getMarriageRecord()=="" && $controller->record->canEdit()) {
 						echo "<a href=\"#\" onclick=\"return add_new_record('".$famid."', 'MARR');\">".WT_I18N::translate('Add marriage details')."</a>";
 					} else {
 						$factdetail = explode(' ', trim($family->getMarriageRecord()));
@@ -261,7 +261,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @return html table rows
 	*/
 	function printChildrenRows($family, $people, $type) {
-		global $personcount, $WT_IMAGES;
+		global $personcount, $WT_IMAGES, $controller;
 
 		$elderdate = $family->getMarriageDate();
 		$key=0;
@@ -271,7 +271,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
-				<td class="<?php echo $this->controller->getPersonStyle($child); ?>">
+				<td class="<?php echo $controller->getPersonStyle($child); ?>">
 				<?php
 				print_pedigree_person($child, 2, 0, $personcount++);
 				?>
@@ -287,7 +287,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
-				<td class="<?php echo $this->controller->getPersonStyle($child); ?>">
+				<td class="<?php echo $controller->getPersonStyle($child); ?>">
 				<?php
 				print_pedigree_person($child, 2, 0, $personcount++);
 				?>
@@ -303,7 +303,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			?>
 			<tr>
 				<td class="facts_label<?php echo $styleadd; ?>"><?php if ($styleadd=="red") echo $child->getLabel(); else echo $child->getLabel($elderdate, $key+1); ?></td>
-				<td class="<?php echo $this->controller->getPersonStyle($child); ?>">
+				<td class="<?php echo $controller->getPersonStyle($child); ?>">
 				<?php
 				print_pedigree_person($child, 2, 0, $personcount++);
 				?>
@@ -313,7 +313,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			$elderdate = $child->getBirthDate();
 			++$key;
 		}
-		if (isset($family) && $this->controller->indi->canEdit()) {
+		if (isset($family) && $controller->record->canEdit()) {
 			if ($type == "spouse") {
 				$child_u = WT_I18N::translate('Add a son or daughter');
 				$child_m = WT_I18N::translate('son');
@@ -351,7 +351,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $WT_IMAGES, $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount;
+		global $WT_IMAGES, $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount, $controller;
 
 		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here
 		$show_full = 1;
@@ -367,16 +367,16 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		</td></tr></table>
 		<?php
 		$personcount=0;
-		$families = $this->controller->indi->getChildFamilies();
+		$families = $controller->record->getChildFamilies();
 		if (count($families)==0) {
-			if ($this->controller->indi->canEdit()) {
+			if ($controller->record->canEdit()) {
 				?>
 				<table class="facts_table">
 					<tr>
-						<td class="facts_value"><a href="javascript:;" onclick="return addnewparent('<?php echo $this->controller->pid; ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a new father'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
+						<td class="facts_value"><a href="javascript:;" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'HUSB');"><?php echo WT_I18N::translate('Add a new father'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value"><a href="javascript:;" onclick="return addnewparent('<?php echo $this->controller->pid; ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a new mother'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
+						<td class="facts_value"><a href="javascript:;" onclick="return addnewparent('<?php echo $controller->record->getXref(); ?>', 'WIFE');"><?php echo WT_I18N::translate('Add a new mother'); ?></a><?php echo help_link('edit_add_parent'); ?></td>
 					</tr>
 				</table>
 				<?php
@@ -385,8 +385,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 		// parents
 		foreach ($families as $family) {
-			$people = $this->controller->buildFamilyList($family, "parents");
-			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getChildFamilyLabel($family));
+			$people = $controller->buildFamilyList($family, "parents");
+			$this->printFamilyHeader($family->getHtmlUrl(), $controller->record->getChildFamilyLabel($family));
 			echo '<table class="facts_table">';
 			$this->printParentsRows($family, $people, "parents");
 			$this->printChildrenRows($family, $people, "parents");
@@ -394,9 +394,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		// step-parents
-		foreach ($this->controller->indi->getChildStepFamilies() as $family) {
-			$people = $this->controller->buildFamilyList($family, "step-parents");
-			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getStepFamilyLabel($family));
+		foreach ($controller->record->getChildStepFamilies() as $family) {
+			$people = $controller->buildFamilyList($family, "step-parents");
+			$this->printFamilyHeader($family->getHtmlUrl(), $controller->record->getStepFamilyLabel($family));
 			echo '<table class="facts_table">';
 			$this->printParentsRows($family, $people, "parents");
 			$this->printChildrenRows($family, $people, "parents");
@@ -404,10 +404,10 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		// spouses
-		$families = $this->controller->indi->getSpouseFamilies();
+		$families = $controller->record->getSpouseFamilies();
 		foreach ($families as $family) {
-			$people = $this->controller->buildFamilyList($family, "spouse");
-			$this->printFamilyHeader($family->getHtmlUrl(), $this->controller->indi->getSpouseFamilyLabel($family));
+			$people = $controller->buildFamilyList($family, "spouse");
+			$this->printFamilyHeader($family->getHtmlUrl(), $controller->record->getSpouseFamilyLabel($family));
 			echo '<table class="facts_table">';
 			$this->printParentsRows($family, $people, "spouse");
 			$this->printChildrenRows($family, $people, "spouse");
@@ -415,8 +415,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		// step-children
-		foreach ($this->controller->indi->getSpouseStepFamilies() as $family) {
-			$people = $this->controller->buildFamilyList($family, "step-children");
+		foreach ($controller->record->getSpouseStepFamilies() as $family) {
+			$people = $controller->buildFamilyList($family, "step-children");
 			$this->printFamilyHeader($family->getHtmlUrl(), $family->getFullName());
 			echo '<table class="facts_table">';
 			$this->printParentsRows($family, $people, "spouse");
@@ -428,67 +428,67 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo WT_JS_START, "jQuery('DIV.elderdate').toggle();", WT_JS_END;
 		}
 
-		if ($this->controller->indi->canEdit()) {
+		if ($controller->record->canEdit()) {
 		?>
 		<br/><table class="facts_table">
 		<?php
 			if (count($families)>1) { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return reorder_families('<?php echo $this->controller->pid; ?>');"><?php echo WT_I18N::translate('Reorder families'); ?></a>
+				<a href="javascript:;" onclick="return reorder_families('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Reorder families'); ?></a>
 				<?php echo help_link('reorder_families'); ?>
 				</td>
 			</tr>
 		<?php } ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return add_famc('<?php echo $this->controller->pid; ?>');"><?php echo WT_I18N::translate('Link this person to an existing family as a child'); ?></a>
+				<a href="javascript:;" onclick="return add_famc('<?php echo $controller->record->getXref(); ?>');"><?php echo WT_I18N::translate('Link this person to an existing family as a child'); ?></a>
 				<?php echo help_link('link_child'); ?>
 				</td>
 			</tr>
-			<?php if ($this->controller->indi->getSex()!="F") { ?>
+			<?php if ($controller->record->getSex()!="F") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return addspouse('<?php echo $this->controller->pid; ?>','WIFE');"><?php echo WT_I18N::translate('Add a new wife'); ?></a>
+				<a href="javascript:;" onclick="return addspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a new wife'); ?></a>
 				<?php echo help_link('add_wife'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return linkspouse('<?php echo $this->controller->pid; ?>','WIFE');"><?php echo WT_I18N::translate('Add a wife using an existing person'); ?></a>
+				<a href="javascript:;" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Add a wife using an existing person'); ?></a>
 				<?php echo help_link('link_new_wife'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return add_fams('<?php echo $this->controller->pid; ?>','HUSB');"><?php echo WT_I18N::translate('Link this person to an existing family as a husband'); ?></a>
+				<a href="javascript:;" onclick="return add_fams('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Link this person to an existing family as a husband'); ?></a>
 				<?php echo help_link('link_new_husb'); ?>
 				</td>
 			</tr>
 			<?php }
-			if ($this->controller->indi->getSex()!="M") { ?>
+			if ($controller->record->getSex()!="M") { ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return addspouse('<?php echo $this->controller->pid; ?>','HUSB');"><?php echo WT_I18N::translate('Add a new husband'); ?></a>
+				<a href="javascript:;" onclick="return addspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a new husband'); ?></a>
 				<?php echo help_link('add_husband'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return linkspouse('<?php echo $this->controller->pid; ?>','HUSB');"><?php echo WT_I18N::translate('Add a husband using an existing person'); ?></a>
+				<a href="javascript:;" onclick="return linkspouse('<?php echo $controller->record->getXref(); ?>','HUSB');"><?php echo WT_I18N::translate('Add a husband using an existing person'); ?></a>
 				<?php echo help_link('link_husband'); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return add_fams('<?php echo $this->controller->pid; ?>','WIFE');"><?php echo WT_I18N::translate('Link this person to an existing family as a wife'); ?></a>
+				<a href="javascript:;" onclick="return add_fams('<?php echo $controller->record->getXref(); ?>','WIFE');"><?php echo WT_I18N::translate('Link this person to an existing family as a wife'); ?></a>
 				<?php echo help_link('link_wife'); ?>
 				</td>
 			</tr>
 			<?php } ?>
 			<tr>
 				<td class="facts_value">
-				<a href="javascript:;" onclick="return addopfchild('<?php echo $this->controller->pid; ?>','U');"><?php echo WT_I18N::translate('Add a child to create a one-parent family'); ?></a>
+				<a href="javascript:;" onclick="return addopfchild('<?php echo $controller->record->getXref(); ?>','U');"><?php echo WT_I18N::translate('Add a child to create a one-parent family'); ?></a>
 				<?php echo help_link('add_opf_child'); ?>
 				</td>
 			</tr>

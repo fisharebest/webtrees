@@ -35,18 +35,21 @@ $nonfacts = array('FAMS', 'FAMC', 'MAY', 'BLOB', 'CHIL', 'HUSB', 'WIFE', 'RFN', 
 $nonfamfacts = array(/*'NCHI',*/ 'UID', '');
 
 $controller=new WT_Controller_Individual();
-$controller->init();
 
-if ($controller->indi && $controller->indi->canDisplayDetails()) {
-	print_header($controller->getPageTitle());
-	if ($controller->indi->isMarkedDeleted()) {
+if ($controller->record && $controller->record->canDisplayDetails()) {
+	if (safe_GET('action')=='ajax') {
+		$controller->ajaxRequest();
+		exit;
+	}
+	$controller->pageHeader();
+	if ($controller->record->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
 					'This individual has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->indi->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->indi->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -57,14 +60,14 @@ if ($controller->indi && $controller->indi->canDisplayDetails()) {
 				' ', help_link('pending_changes'),
 				'</p>';
 		}
-	} elseif (find_updated_record($controller->indi->getXref(), WT_GED_ID)!==null) {
+	} elseif (find_updated_record($controller->record->getXref(), WT_GED_ID)!==null) {
 		if (WT_USER_CAN_ACCEPT) {
 			echo
 				'<p class="ui-state-highlight">',
 				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
 					'This individual has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->indi->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->indi->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onClick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
 				),
 				' ', help_link('pending_changes'),
 				'</p>';
@@ -76,34 +79,29 @@ if ($controller->indi && $controller->indi->canDisplayDetails()) {
 				'</p>';
 		}
 	}
-} elseif ($controller->indi && $controller->indi->canDisplayName()) {
+} elseif ($controller->record && $controller->record->canDisplayName()) {
 	// Just show the name.
-	print_header($controller->getPageTitle());
-	echo '<h2>', $controller->indi->getFullName(), '</h2>';
+	$controller->pageHeader();
+	echo '<h2>', $controller->record->getFullName(), '</h2>';
 	echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this individual are private.'), '</p>';
-	print_footer();
 	exit;
 } else {
-	header('HTTP/1.0 403 Forbidden');
-	print_header(WT_I18N::translate('Individual'));
+	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
-	print_footer();
 	exit;
 }
-
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
 
 // tell tabs that use jquery that it is already loaded
 define('WT_JQUERY_LOADED', 1);
 
-$linkToID=$controller->pid; // -- Tell addmedia.php what to link to
+$linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link to
 
 echo WT_JS_START;
 echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->indi->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
+echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
 echo '}';
-echo 'function showchanges() { window.location="'.$controller->indi->getRawUrl().'"; }';
+echo 'function showchanges() { window.location="'.$controller->record->getRawUrl().'"; }';
 
 ?>
 
@@ -190,7 +188,7 @@ echo
 	'<div id="main" class="use-sidebar sidebar-at-right" style="visibility:hidden;">', //overall page container
 	'<div id="indi_left">',
 	'<div id="indi_header">';
-if ($controller->indi->canDisplayDetails()) {
+if ($controller->record->canDisplayDetails()) {
 	echo '<div id="indi_mainimage">'; // Display highlight image
 	if ($controller->canShowHighlightedObject()) {
 		echo $controller->getHighlightedObject();
@@ -198,11 +196,11 @@ if ($controller->indi->canDisplayDetails()) {
 	echo '</div>'; // close #indi_mainimage
 	$globalfacts=$controller->getGlobalFacts();
 	echo '<div id="header_accordion1">'; // contain accordions for names
-	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->indi), '"><span>', $controller->indi->getFullName(), '</span>'; // First name accordion header
-	$bdate=$controller->indi->getBirthDate();
-	$ddate=$controller->indi->getDeathDate();
+	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header
+	$bdate=$controller->record->getBirthDate();
+	$ddate=$controller->record->getDeathDate();
 	echo '<span class="header_age">';
-	if ($bdate->isOK() && !$controller->indi->isDead()) {
+	if ($bdate->isOK() && !$controller->record->isDead()) {
 		// If living display age
 		echo strip_tags(WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true)), '<span>');
 	} elseif ($bdate->isOK() && $ddate->isOK()) {
@@ -211,7 +209,7 @@ if ($controller->indi->canDisplayDetails()) {
 	}
 	echo '</span>';
 	// Display summary birth/death info.
-	echo '<span id="dates">', $controller->indi->getLifeSpan(), '</span>';
+	echo '<span id="dates">', $controller->record->getLifeSpan(), '</span>';
 	//Display gender icon
 	foreach ($globalfacts as $key=>$value) {
 		$fact = $value->getTag();
@@ -252,7 +250,7 @@ foreach ($controller->tabs as $tab) {
 	if ($tab->hasTabContent()) {
 		if ($tab->canLoadAjax()) {
 			// AJAX tabs load only when selected
-			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="',$controller->indi->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
+			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="',$controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
 		} else {
 			// Non-AJAX tabs load immediately
 			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
@@ -282,4 +280,3 @@ echo
 	'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}',
 	'jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});', // scroll the page to top
 	WT_JS_END;
-print_footer();

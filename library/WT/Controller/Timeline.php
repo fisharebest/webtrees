@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-class WT_Controller_Timeline extends WT_Controller_Base {
+class WT_Controller_Timeline extends WT_Controller_Chart {
 	var $bheight = 30;
 	var $placements = array();
 	var $familyfacts = array();
@@ -47,10 +47,7 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 	// GEDCOM elements that may have DATE data, but should not be displayed
 	var $nonfacts = array("BAPL","ENDL","SLGC","SLGS","_TODO","CHAN");
 
-	/**
-	* Initialization function
-	*/
-	function init() {
+	function __construct() {
 		$this->baseyear = date("Y");
 		//-- new pid
 		$newpid=safe_GET_xref('newpid');
@@ -136,6 +133,12 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 		$this->baseyear -= 5;
 		$this->topyear += 5;
 	}
+
+	// What should this page show in the browser's title bar?
+	public function getPageTitle() {
+		return WT_I18N::translate('Timeline');
+	}
+
 	/**
 	* check the privacy of the incoming people to make sure they can be shown
 	*/

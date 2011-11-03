@@ -68,8 +68,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$PEDIGREE_FULL_DETAILS = $show_full;
 
 		if ($type!='treenav') {
-			$controller = new WT_Controller_Hourglass();
-			$controller->init($pid,0,3);
+			$controller=new WT_Controller_Hourglass($pid,0,3);
 			$controller->setupJavascript();
 		}
 

@@ -1,4 +1,6 @@
 <?php
+//	Controller for the pedigree chart
+//
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
 //
@@ -19,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -28,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-class WT_Controller_Pedigree extends WT_Controller_Base {
+class WT_Controller_Pedigree extends WT_Controller_Chart {
 	var $log2;
 	var $rootid;
 	var $name;
@@ -48,10 +50,7 @@ class WT_Controller_Pedigree extends WT_Controller_Base {
 	var $offsetarray;
 	var $minyoffset;
 
-	/**
-	 * Initialization function
-	 */
-	function init() {
+	public function __construct() {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $MAX_PEDIGREE_GENERATIONS;
 		global $DEFAULT_PEDIGREE_GENERATIONS, $SHOW_EMPTY_BOXES;
 		global $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
@@ -244,6 +243,11 @@ class WT_Controller_Pedigree extends WT_Controller_Base {
 
 		$ydiff = $baseyoffset+35-$minyoffset;
 		$this->adjust_subtree(0, $ydiff);
+	}
+
+	// What should this page show in the browser's title bar?
+	public function getPageTitle() {
+		return /* I18N: %s is a person's name */ WT_I18N::translate('Pedigree tree of %s', $this->name);
 	}
 
 	function getPersonName() {

@@ -95,6 +95,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement class WT_Module_Tab
 	public function getTabContent() {
+		global $controller;
+
 		$block_ids=
 			WT_DB::prepare(
 				"SELECT block_id".
@@ -104,7 +106,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				" AND gedcom_id=?"
 			)->execute(array(
 				$this->getName(),
-				$xref=$this->controller->indi->getXref(),
+				$xref=$controller->record->getXref(),
 				WT_GED_ID
 			))->fetchOneColumn();
 
@@ -123,7 +125,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		}
 		if (WT_USER_GEDCOM_ADMIN && !$html) {
 			$html.='<div class="news_title center">'.$this->getTitle().'</div>';
-			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$this->controller->indi->getXref().'">';
+			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$controller->record->getXref().'">';
 			$html.=WT_I18N::translate('Add story').'</a>'.help_link('add_story', $this->getName()).'</div><br />';
 		}
 		return $html;
@@ -136,6 +138,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Implement WT_Module_Tab
 	public function isGrayedOut() {
+		global $controller;
+
 		$count_of_stories=
 			WT_DB::prepare(
 				"SELECT COUNT(block_id)".
@@ -145,7 +149,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				" AND gedcom_id=?"
 			)->execute(array(
 				$this->getName(),
-				$xref=$this->controller->indi->getXref(),
+				$xref=$controller->record->getXref(),
 				WT_GED_ID
 			))->fetchOne();
 			

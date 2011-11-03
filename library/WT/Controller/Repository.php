@@ -1,5 +1,5 @@
 <?php
-// Controller for the Repository Page
+// Controller for the repository page
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -31,17 +31,13 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
-class WT_Controller_Repository extends WT_Controller_Base {
-	var $rid;
-	var $repository = null;
-	var $diffrepository = null;
+class WT_Controller_Repository extends WT_Controller_GedcomRecord {
+	public function __construct() {
+		$xref = safe_GET_xref('rid');
 
-	function init() {
-		$this->rid = safe_GET_xref('rid');
-
-		$gedrec=find_other_record($this->rid, WT_GED_ID);
+		$gedrec=find_other_record($xref, WT_GED_ID);
 		if (WT_USER_CAN_EDIT) {
-			$newrec=find_updated_record($this->rid, WT_GED_ID);
+			$newrec=find_updated_record($xref, WT_GED_ID);
 		} else {
 			$newrec=null;
 		}
@@ -57,26 +53,13 @@ class WT_Controller_Repository extends WT_Controller_Base {
 			}
 		}
 
-		$this->repository = new WT_Repository($gedrec);
+		$this->record = new WT_Repository($gedrec);
 
 		// If there are pending changes, merge them in.
 		if ($newrec!==null) {
-			$this->diffrepository=new WT_Repository($newrec);
-			$this->diffrepository->setChanged(true);
-			$this->repository->diffMerge($this->diffrepository);
-		}
-		$this->rid=$this->repository->getXref(); // We may have requested X1234, but found x1234
-	}
-
-	/**
-	* get the title for this page
-	* @return string
-	*/
-	function getPageTitle() {
-		if ($this->repository) {
-			return $this->repository->getFullName();
-		} else {
-			return WT_I18N::translate('Repository');
+			$diff_record=new WT_Repository($newrec);
+			$diff_record->setChanged(true);
+			$this->record->diffMerge($diff_record);
 		}
 	}
 
@@ -86,7 +69,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 	function getEditMenu() {
 		$SHOW_GEDCOM_RECORD=get_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD');
 
-		if (!$this->repository || $this->repository->isMarkedDeleted()) {
+		if (!$this->record || $this->record->isMarkedDeleted()) {
 			return null;
 		}
 
@@ -97,7 +80,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit repository'), '#', 'menu-repo-edit');
-			$submenu->addOnclick('return edit_source(\''.$this->rid.'\');');
+			$submenu->addOnclick('return edit_source(\''.$this->record->getXref().'\');');
 			$submenu->addIcon('edit_repo');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_repo');
 			$menu->addSubmenu($submenu);
@@ -106,7 +89,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		// edit/view raw gedcom
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-repo-editraw');
-			$submenu->addOnclick("return edit_raw('".$this->rid."');");
+			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
 			$submenu->addIcon('gedcom');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
@@ -125,7 +108,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 		// delete
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-repo-del');
-			$submenu->addOnclick("if (confirm('".addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $this->repository->getFullName()))."')) jQuery.post('action.php',{action:'delete-repository',xref:'".$this->repository->getXref()."'},function(){location.reload();})");
+			$submenu->addOnclick("if (confirm('".addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', $this->record->getFullName()))."')) jQuery.post('action.php',{action:'delete-repository',xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('remove');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
@@ -138,7 +121,7 @@ class WT_Controller_Repository extends WT_Controller_Base {
 				'#',
 				'menu-repo-addfav'
 			);
-			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->repository->getXref()."'},function(){location.reload();})");
+			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
 			$submenu->addIcon('favorites');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);

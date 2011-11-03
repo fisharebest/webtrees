@@ -1,5 +1,5 @@
 <?php
-// Base controller for all controller classes
+// Base controller for all other controllers
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -29,9 +29,176 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Controller_Base {
-	var $action      =null;
+	private $page_header=false; // Used to automatically print the footer
 
-	function __construct() {
-		$this->action      =safe_GET('action');
+	// Startup activity
+	public function __construct() {
+	}
+
+	// Shutdown activity
+	public function __destruct() {
+		// If we printed a header, automatically print a footer
+		if ($this->page_header) {
+			$this->pageFooter();
+		}
+	}
+
+	// What should this page show in the browser's title bar?
+	public function getPageTitle() {
+		return '';
+	}
+
+	// What is the preferred URL for this page?
+	public function getCanonicalUrl() {
+		return '';
+	}
+
+	// How should robots index this page?
+	public function getMetaRobots() {
+		// Most pages are not designed for search engines
+		return 'noindex,nofollow';
+	}
+
+	// Print the page header, using the theme
+	public function pageHeader() {
+		// Once we've displayed the header, we should no longer write session data.
+		Zend_Session::writeClose();
+
+		// Import global variables into the local scope, for the theme's header.php
+		global $BROWSERTYPE, $SEARCH_SPIDER, $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
+		global $stylesheet, $headerfile;
+
+		// The title often includes the names of records, which may have markup
+		// that cannot be used in the page title.
+		$title=htmlspecialchars_decode(strip_tags($this->getPageTitle()));
+
+		// Initialise variables for the theme's header.php
+		$LINK_CANONICAL  =$this->getCanonicalUrl();
+		$META_ROBOTS     =$this->getMetaRobots();
+		$GEDCOM_TITLE    =get_gedcom_setting(WT_GED_ID, 'title');
+		$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION', $GEDCOM_TITLE);
+		$META_GENERATOR  =WT_WEBTREES.'-'.WT_VERSION_TEXT.' - '.WT_WEBTREES_URL;
+		$META_TITLE      =get_gedcom_setting(WT_GED_ID, 'META_TITLE');
+		if ($META_TITLE) {
+			$title.=' - '.$META_TITLE;
+		}
+
+		$javascript=
+			'<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script>'.
+			'<script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>'.
+			'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.jeditable.min.js"></script>'.
+			'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js"></script>'.
+			'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.cookie.js"></script>'.
+			WT_JS_START.'
+			// Give JavaScript access to some PHP constants
+			var WT_STATIC_URL  = "'.WT_STATIC_URL.'";
+			var WT_THEME_DIR   = "'.WT_THEME_DIR.'";
+			var WT_MODULES_DIR = "'.WT_MODULES_DIR.'";
+			var textDirection = "'.$TEXT_DIRECTION.'";
+			var browserType = "'.$BROWSERTYPE.'";
+			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
+			var WT_LOCALE = "'.WT_LOCALE.'";
+			/* keep the session id when opening new windows */
+			var sessionid = "'.Zend_Session::getId().'";
+			var sessionname = "'.WT_SESSION_NAME.'";
+			var accesstime = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
+			var plusminus = new Array();
+			plusminus[0] = new Image();
+			plusminus[0].src = "'.$WT_IMAGES["plus"].'";
+			plusminus[0].title = "'.WT_I18N::translate('Show Details').'";
+			plusminus[1] = new Image();
+			plusminus[1].src = "'.$WT_IMAGES["minus"].'";
+			plusminus[1].title = "'.WT_I18N::translate('Hide Details').'";
+			var zoominout = new Array();
+			zoominout[0] = new Image();
+			zoominout[0].src = "'.$WT_IMAGES["zoomin"].'";
+			zoominout[1] = new Image();
+			zoominout[1].src = "'.$WT_IMAGES["zoomout"].'";
+			var arrows = new Array();
+			arrows[0] = new Image();
+			arrows[0].src = "'.$WT_IMAGES["larrow2"].'";
+			arrows[1] = new Image();
+			arrows[1].src = "'.$WT_IMAGES["rarrow2"].'";
+			arrows[2] = new Image();
+			arrows[2].src = "'.$WT_IMAGES["uarrow2"].'";
+			arrows[3] = new Image();
+			arrows[3].src = "'.$WT_IMAGES["darrow2"].'";
+	
+		function delete_record(pid, linenum, mediaid) {
+			if (!mediaid) mediaid="";
+			if (confirm(\''.WT_I18N::translate('Are you sure you want to delete this fact?').'\')) {
+				window.open(\'edit_interface.php?action=delete&pid=\'+pid+\'&linenum=\'+linenum+\'&mediaid=\'+mediaid+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
+			}
+			return false;
+		}
+
+		function message(username, method, url, subject) {
+			if ((!url)||(url=="")) url=\''.addslashes(urlencode(get_query_url())).'\';
+			if ((!subject)||(subject=="")) subject="";
+			window.open(\'message.php?to=\'+username+\'&method=\'+method+\'&url=\'+url+\'&subject=\'+subject+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
+			return false;
+		}
+
+		var whichhelp = \'help_'.WT_SCRIPT_NAME.'\';
+		'.
+		WT_JS_END.
+		'<script src="'.WT_STATIC_URL.'js/webtrees.js" type="text/javascript"></script>';
+		
+		header('Content-Type: text/html; charset=UTF-8');
+		$view='full';
+		require WT_ROOT.$headerfile;
+
+		// Allow the browser to format the header/menus while we generate the page
+		flush();
+	}
+
+	// Print the page footer, using the theme
+	protected function pageFooter() {
+		global $footerfile, $WT_IMAGES, $TEXT_DIRECTION;
+
+		$view='full';
+		require WT_ROOT.$footerfile;
+
+		if (WT_DEBUG_SQL) {
+			echo WT_DB::getQueryLog();
+		}
+		echo WT_JS::render();
+		echo '</body></html>';
+	}
+
+	// Get significant information from this page, to allow other pages such as
+	// charts and reports to initialise with the same records
+	public function getSignificantIndividual() {
+		global $PEDIGREE_ROOT_ID;
+
+		$individual=WT_Person::getInstance(WT_USER_GEDCOM_ID);
+		if (!$individual) {
+			$individual=WT_Person::getInstance(WT_USER_ROOT_ID);
+		}
+		if (!$individual) {
+			$individual=WT_Person::getInstance(
+				WT_DB::prepare(
+					"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
+				)->execute(array(WT_GED_ID))->fetchOne()
+			);
+		}
+		if (!$individual) {
+			// always return a record
+			$individual=new WT_Person('0 @I@ INDI');
+		}
+		return $individual;
+	}
+	public function getSignificantFamily() {
+		$individual=$this->getSignificantIndividual();
+		if ($individual) {
+			foreach ($individual->getChildFamilies() as $family) {
+				return $family;
+			}
+			foreach ($individual->getSpouseFamilies() as $family) {
+				return $family;
+			}
+		}
+		// always return a record
+		return new WT_Family('0 @F@ FAM');
 	}
 }

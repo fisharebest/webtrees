@@ -1,5 +1,5 @@
 <?php
-// Controller for the Descendancy Page
+// Controller for the descendancy chart
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
@@ -21,7 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-class WT_Controller_Descendancy extends WT_Controller_Base {
+class WT_Controller_Descendancy extends WT_Controller_Chart {
 	var $pid = "";
 	var $descPerson = null;
 
@@ -56,49 +56,49 @@ class WT_Controller_Descendancy extends WT_Controller_Base {
 	var $cellwidth;
 	var $show_cousins;
 
-	/**
-	 * Initialization function
-	 */
-	function init() {
-	global $USE_RIN, $MAX_ALIVE_AGE, $bwidth, $bheight, $pbwidth, $pbheight, $GEDCOM, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
+	function __construct() {
+		global $USE_RIN, $MAX_ALIVE_AGE, $bwidth, $bheight, $pbwidth, $pbheight, $GEDCOM, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
 
-	// Extract parameters from form
-	$this->pid        =safe_GET_xref('pid');
-	$this->show_full  =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
-	$this->chart_style=safe_GET_integer('chart_style', 0, 3, 0);
-	$this->generations=safe_GET_integer('generations', 2, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
-	$this->box_width  =safe_GET_integer('box_width',   50, 300, 100);
+		// Extract parameters from form
+		$this->pid        =safe_GET_xref('pid');
+		$this->show_full  =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
+		$this->chart_style=safe_GET_integer('chart_style', 0, 3, 0);
+		$this->generations=safe_GET_integer('generations', 2, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
+		$this->box_width  =safe_GET_integer('box_width',   50, 300, 100);
 
-	// This is passed as a global.  A parameter would be better...
-	$show_full=$this->show_full;
+		// This is passed as a global.  A parameter would be better...
+		$show_full=$this->show_full;
 
-	if (!isset($this->personcount)) $this->personcount = 1;
+		if (!isset($this->personcount)) $this->personcount = 1;
 
-	$this->Dbwidth*=$this->box_width/100;
+		$this->Dbwidth*=$this->box_width/100;
 
-	if (!$this->show_full) {
-		$bwidth *= $this->box_width / 150;
-	} else {
-		$bwidth*=$this->box_width/100;
+		if (!$this->show_full) {
+			$bwidth *= $this->box_width / 150;
+		} else {
+			$bwidth*=$this->box_width/100;
+		}
+
+		if (!$this->show_full) {
+			$bheight = $bheight / 1.5;
+		}
+
+		$pbwidth = $bwidth+12;
+		$pbheight = $bheight+14;
+
+		// Validate form variables
+		$this->pid=check_rootid($this->pid);
+
+		if (strlen($this->name)<30) $this->cellwidth="420";
+		else $this->cellwidth=(strlen($this->name)*14);
+
+		$this->descPerson = WT_Person::getInstance($this->pid);
+		$this->name=$this->descPerson->getFullName();
 	}
 
-	if (!$this->show_full) {
-		$bheight = $bheight / 1.5;
-	}
-
-	$pbwidth = $bwidth+12;
-	$pbheight = $bheight+14;
-
-	$this->action      =safe_GET('action');
-
-	// Validate form variables
-	$this->pid=check_rootid($this->pid);
-
-	if (strlen($this->name)<30) $this->cellwidth="420";
-	else $this->cellwidth=(strlen($this->name)*14);
-
-	$this->descPerson = WT_Person::getInstance($this->pid);
-	$this->name=$this->descPerson->getFullName();
+	// What should this page show in the browser's title bar?
+	public function getPageTitle() {
+		return /* I18N: %s is a person's name */ WT_I18N::translate('Descendants of %s', $this->name);
 	}
 
 	/**

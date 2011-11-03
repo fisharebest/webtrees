@@ -30,10 +30,8 @@ define('WT_SCRIPT_NAME', 'pedigree.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-$controller = new WT_Controller_Pedigree();
-$controller->init();
-
-print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree tree of %s', $controller->name));
+$controller=new WT_Controller_Pedigree();
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -428,5 +426,3 @@ $maxyoffset+=30;
 		content_div.style.height = <?php echo $maxyoffset; ?> + "px";
 	}
 </script>
-<?php
-print_footer();

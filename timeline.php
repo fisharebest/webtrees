@@ -28,10 +28,8 @@
 define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
 
-$controller = new WT_Controller_Timeline();
-$controller->init();
-
-print_header(WT_I18N::translate('Timeline'));
+$controller=new WT_Controller_Timeline();
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 ?>
@@ -423,5 +421,3 @@ if (count($controller->people)>0) {
 	if (timeline_chart_div) timeline_chart_div.style.height = '<?php echo $baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale*1.1); ?>px';
 //-->
 </script>
-<?php
-print_footer();

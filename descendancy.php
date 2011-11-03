@@ -41,9 +41,7 @@ $nonfamfacts[] = 'UID';
 $nonfamfacts[] = '';
 
 $controller=new WT_Controller_Descendancy();
-$controller->init();
-
-print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Descendants of %s', $controller->name));
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -153,7 +151,6 @@ case 3: //-- Family list
 	echo '</div>';
 	break;
 }
-print_footer();
 
 function indi_desc($person, $n, $array) {
 	if ($n<1) {
@@ -182,5 +179,3 @@ function fam_desc($person, $n, $array) {
 	}
 	return $array;
 }
-
-?>

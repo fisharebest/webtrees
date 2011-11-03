@@ -98,7 +98,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $SEARCH_SPIDER, $WT_IMAGES;
+		global $SEARCH_SPIDER, $WT_IMAGES, $controller;
 		global $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM, $GEDCOM;
 		global $GOOGLEMAP_XSIZE, $GOOGLEMAP_YSIZE, $SHOW_LIVING_NAMES;
 		global $TEXT_DIRECTION, $GM_DEFAULT_TOP_VALUE, $GOOGLEMAP_COORD, $GOOGLEMAP_PH_CONTROLS;
@@ -109,7 +109,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
 		echo '<table border="0" width="100%"><tr><td>';
-		if (!$this->controller->indi->canDisplayName()) {
+		if (!$controller->record->canDisplayName()) {
 			echo '<table class="facts_table">';
 			echo '<tr><td class="facts_value">';
 			print_privacy_error();
@@ -140,13 +140,12 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			echo '<td valign="top" width="30%">';
 			echo '<div id="map_content">';
 			$famids = array();
-			$families = $this->controller->indi->getSpouseFamilies();
+			$families = $controller->record->getSpouseFamilies();
 			foreach ($families as $family) {
 				$famids[] = $family->getXref();
 			}
-			$this->controller->indi->add_family_facts(false);
-//			create_indiv_buttons();
-			build_indiv_map($this->controller->indi->getIndiFacts(), $famids);
+			$controller->record->add_family_facts(false);
+			build_indiv_map($controller->record->getIndiFacts(), $famids);
 			echo '</div>';
 			echo '</td>';
 			echo '</tr></table>';

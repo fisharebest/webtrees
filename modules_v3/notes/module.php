@@ -48,13 +48,13 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $FACT_COUNT, $SHOW_LEVEL2_NOTES, $NAV_NOTES;
+		global $FACT_COUNT, $SHOW_LEVEL2_NOTES, $NAV_NOTES, $controller;
 
 		ob_start();
 		?>
 		<table class="facts_table">
 		<?php
-		if (!$this->controller->indi->canDisplayDetails()) {
+		if (!$controller->record->canDisplayDetails()) {
 			echo "<tr><td class=\"facts_value\">";
 			print_privacy_error();
 			echo "</td></tr>";
@@ -68,44 +68,44 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 				</td>
 			</tr>
 			<?php
-			$globalfacts = $this->controller->getGlobalFacts();
+			$globalfacts = $controller->getGlobalFacts();
 			foreach ($globalfacts as $key => $event) {
 				$fact = $event->getTag();
 				if ($fact=="NAME") {
-					print_main_notes($event->getGedcomRecord(), 2, $this->controller->pid, $event->getLineNumber(), true);
+					print_main_notes($event->getGedcomRecord(), 2, $controller->record->getXref(), $event->getLineNumber(), true);
 				}
 				$FACT_COUNT++;
 			}
-			$otherfacts = $this->controller->getOtherFacts();
+			$otherfacts = $controller->getOtherFacts();
 			foreach ($otherfacts as $key => $event) {
 				$fact = $event->getTag();
 				if ($fact=="NOTE") {
-					print_main_notes($event->getGedcomRecord(), 1, $this->controller->pid, $event->getLineNumber());
+					print_main_notes($event->getGedcomRecord(), 1, $controller->record->getXref(), $event->getLineNumber());
 				}
 				$FACT_COUNT++;
 			}
 			// 2nd to 5th level notes/sources
-			$this->controller->indi->add_family_facts(false);
-			foreach ($this->controller->getIndiFacts() as $key => $factrec) {
+			$controller->record->add_family_facts(false);
+			foreach ($controller->getIndiFacts() as $key => $factrec) {
 				for ($i=2; $i<6; $i++) {
-					print_main_notes($factrec->getGedcomRecord(), $i, $this->controller->pid, $factrec->getLineNumber(), true);
+					print_main_notes($factrec->getGedcomRecord(), $i, $controller->record->getXref(), $factrec->getLineNumber(), true);
 				}
 			}
 			if ($this->get_note_count()==0) echo "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Notes for this individual.')."</td></tr>";
 			//-- New Note Link
-			if ($this->controller->indi->canEdit()) {
+			if ($controller->record->canEdit()) {
 				?>
 			<tr>
 				<td class="facts_label"><?php echo WT_I18N::translate('Add Note'), help_link('add_note'); ?></td>
 				<td class="facts_value"><a href="javascript:;"
-					onclick="add_new_record('<?php echo $this->controller->pid; ?>','NOTE'); return false;"><?php echo WT_I18N::translate('Add a new note'); ?></a>
+					onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;"><?php echo WT_I18N::translate('Add a new note'); ?></a>
 				<br />
 				</td>
 			</tr>
 			<tr>
 				<td class="facts_label"><?php echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
 				<td class="facts_value"><a href="javascript:;"
-					onclick="add_new_record('<?php echo $this->controller->pid; ?>','SHARED_NOTE'); return false;"><?php echo WT_I18N::translate('Add a new shared note'); ?></a>
+					onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;"><?php echo WT_I18N::translate('Add a new shared note'); ?></a>
 				<br />
 				</td>
 			</tr>
@@ -123,9 +123,11 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	function get_note_count() {
+		global $controller;
+
 		if ($this->noteCount===null) {
-			$ct = preg_match_all("/\d NOTE /", $this->controller->indi->getGedcomRecord(), $match, PREG_SET_ORDER);
-			foreach ($this->controller->indi->getSpouseFamilies() as $sfam)
+			$ct = preg_match_all("/\d NOTE /", $controller->record->getGedcomRecord(), $match, PREG_SET_ORDER);
+			foreach ($controller->record->getSpouseFamilies() as $sfam)
 			$ct += preg_match("/\d NOTE /", $sfam->getGedcomRecord());
 			$this->noteCount = $ct;
 		}

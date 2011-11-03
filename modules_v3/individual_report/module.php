@@ -50,12 +50,12 @@ class individual_report_WT_Module extends WT_Module implements WT_Module_Report 
 	public function getReportMenus() {
 		global $controller;
 
-		if ($controller instanceof WT_Controller_Family) {
+		if ($controller instanceof WT_Controller_Family && $controller->record instanceof WT_Family) {
 			// We are on a family page
-			$pid='&amp;famid='.$controller->famid;
-		} elseif ($controller instanceof WT_Controller_Individual) {
+			$pid='&amp;famid='.$controller->record->getXref();
+		} elseif ($controller instanceof WT_Controller_Individual && $controller->record instanceof WT_Individual) {
 			// We are on an individual page
-			$pid='&amp;pid='.$controller->pid;
+			$pid='&amp;pid='.$controller->record->getXref();
 		} elseif ($controller && isset($controller->rootid)) {
 			// We are on a chart page
 			$pid='&amp;pid='.$controller->rootid;

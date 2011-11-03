@@ -71,9 +71,11 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
+		global $controller;
+
 		require_once WT_MODULES_DIR.$this->getName().'/class_treeview.php';
     $tv = new TreeView('tvTab');
-    $r = $tv->drawViewport($this->controller->pid, 3, $this->style);
+    $r = $tv->drawViewport($controller->record->getXref(), 3, $this->style);
 		return $r;
 	}
 

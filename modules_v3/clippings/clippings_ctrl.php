@@ -49,7 +49,7 @@ function same_group($a, $b) {
 /**
 * Main controller class for the Clippings page.
 */
-class WT_Controller_Clippings extends WT_Controller_Base {
+class WT_Controller_Clippings {
 
 	var $download_data;
 	var $media_list = array();
@@ -66,14 +66,8 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	var $level2;
 	var $level3; // number of levels of descendents
 
-	/**
-	 * @param string $thing the id of the person
-	 */
-	function __construct() {
+	public function __construct() {
 		parent::__construct();
-	}
-	//----------------beginning of function definitions for WT_Controller_Clippings
-	function init() {
 		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $GEDCOM, $cart;
 
 		if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
@@ -298,6 +292,11 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			}
 		}
 		return false;
+	}
+	//
+	// What should this page show in the browser's title bar?
+	public function getPageTitle() {
+		return WT_I18N::translate('Clippings cart');
 	}
 
 	/**

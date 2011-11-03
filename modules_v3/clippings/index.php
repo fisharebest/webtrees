@@ -25,15 +25,17 @@
 //
 // $Id$
 
+if (!defined('WT_WEBTREES')) {
+	header('HTTP/1.0 403 Forbidden');
+	exit;
+}
+
 global $ENABLE_AUTOCOMPLETE, $cart, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $GEDCOM, $WT_IMAGES;
 
 require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
-$controller = new WT_Controller_Clippings();
-$controller->init();
-
-// -- print html header information
-print_header(WT_I18N::translate('Clippings cart'));
+$controller=new WT_Controller_Clippings();
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -307,5 +309,3 @@ if ($ct==0) {
 	</td></tr></table>
 <?php
 }
-if (isset($_SESSION["cart"])) $_SESSION["cart"]=$cart;
-print_footer();
