@@ -76,7 +76,8 @@ function print_indi_table($datalist, $legend='', $option='') {
 				{"iDataSort": 8, "aTargets": [ 7 ] },
 				{"iDataSort": 11, "aTargets": [ 10 ] },
 				{"iDataSort": 15, "aTargets": [ 14 ] },
-				{"sType": "numeric", "aTargets": [ 6, 12, 13 ] }
+				{"bSortable": false, "aTargets": [ 6, 12 ] },
+				{"sType": "numeric", "aTargets": [ 13 ] }
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -183,11 +184,10 @@ function print_indi_table($datalist, $legend='', $option='') {
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
-	$n = 0;
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
 	$dateY = date('Y');
 	$unique_indis=array(); // Don't double-count indis with multiple names.
-	foreach ($datalist as $key => $value) {
+	foreach ($datalist as $key=>$value) {
 		if (is_object($value)) { // Array of objects
 			$person=$value;
 		} elseif (!is_array($value)) { // Array of IDs
@@ -198,7 +198,6 @@ function print_indi_table($datalist, $legend='', $option='') {
 			if (isset($value[4])) $gid = $value[4]; // from indilist ALL
 			$person = WT_Person::getInstance($gid);
 		}
-		/* @var $person Person */
 		if (is_null($person)) continue;
 		if ($person->getType() !== 'INDI') continue;
 		if (!$person->canDisplayName()) {
@@ -262,7 +261,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 				'<td class="list_value_wrap"><a href="',
 				'relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(),
 				'" title="', WT_I18N::translate('Relationships'), '"',
-				' name="', $key, '" class="list_item name2">', $key, '</a></td>';
+				' class="list_item name2">', $key, '</a></td>';
 		} else {
 			echo '<td style="display:none">&nbsp;</td>';
 		}
@@ -271,10 +270,9 @@ function print_indi_table($datalist, $legend='', $option='') {
 		if ($birth_dates=$person->getAllBirthDates()) {
 			foreach ($birth_dates as $num=>$birth_date) {
 				if ($num) {
-					echo '<div>', $birth_date->Display(!$SEARCH_SPIDER), '</div>';
-				} else {
-					echo '<div>', str_replace('<a', '<a name="'.$birth_date->MinJD().'"', $birth_date->Display(!$SEARCH_SPIDER)), '</div>';
+					echo '<br/>';
 				}
+				echo $birth_date->Display(!$SEARCH_SPIDER);
 			}
 			if ($birth_dates[0]->gregorianYear()>=1550 && $birth_dates[0]->gregorianYear()<2030 && !isset($unique_indis[$person->getXref()])) {
 				$birt_by_decade[floor($birth_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
@@ -283,9 +281,9 @@ function print_indi_table($datalist, $legend='', $option='') {
 			$birth_date=$person->getEstimatedBirthDate();
 			$birth_jd=$birth_date->JD();
 			if ($SHOW_EST_LIST_DATES) {
-				echo '<div>', str_replace('<a', '<a name="'.$birth_jd.'"', $birth_date->Display(!$SEARCH_SPIDER)), '</div>';
+				echo $birth_date->Display(!$SEARCH_SPIDER);
 			} else {
-				echo '<span class="date"><a name="', $birth_jd, '"/>&nbsp;</span>'; // span needed for alive-in-year filter
+				echo '&nbsp;';
 			}
 			$birth_dates[0]=new WT_Date('');
 		}
@@ -328,10 +326,9 @@ function print_indi_table($datalist, $legend='', $option='') {
 		if ($death_dates=$person->getAllDeathDates()) {
 			foreach ($death_dates as $num=>$death_date) {
 				if ($num) {
-					echo '<div>', $death_date->Display(!$SEARCH_SPIDER), '</div>';
-				} else if ($death_date->MinJD()!=0) {
-					echo '<div>', str_replace('<a', '<a name="'.$death_date->MinJD().'"', $death_date->Display(!$SEARCH_SPIDER)), '</div>';
+					echo '<br/>';
 				}
+				echo $death_date->Display(!$SEARCH_SPIDER);
 			}
 			if ($death_dates[0]->gregorianYear()>=1550 && $death_dates[0]->gregorianYear()<2030 && !isset($unique_indis[$person->getXref()])) {
 				$deat_by_decade[floor($death_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
@@ -340,11 +337,11 @@ function print_indi_table($datalist, $legend='', $option='') {
 			$death_date=$person->getEstimatedDeathDate();
 			$death_jd=$death_date->JD();
 			if ($SHOW_EST_LIST_DATES) {
-				echo '<div>', str_replace('<a', '<a name="'.$death_jd.'"', $death_date->Display(!$SEARCH_SPIDER)), '</div>';
+				echo $death_date->Display(!$SEARCH_SPIDER);
 			} else if ($person->isDead()) {
-				echo '<div>', WT_I18N::translate('yes'), '<a name="9d', $death_jd, '"></a></div>';
+				echo WT_I18N::translate('yes');
 			} else {
-				echo '<span class="date"><a name="', $death_jd, '">&nbsp;</span>'; // span needed for alive-in-year filter
+				echo '&nbsp;';
 			}
 			$death_dates[0]=new WT_Date('');
 		}
@@ -364,7 +361,9 @@ function print_indi_table($datalist, $legend='', $option='') {
 					$deat_by_age[max(0, min($max_age, $age))] .= $person->getSex();
 				}
 			} else {
-				echo '&nbsp;';
+				// &nbsp; is required for validation (empty <td></td> not allowed), but
+				// it breaks numeric sorting in datatables.
+				//echo '&nbsp;';
 			}
 		echo '</td>';
 		//-- Death place
@@ -423,9 +422,8 @@ function print_indi_table($datalist, $legend='', $option='') {
 			elseif (!$person->isDead() && $person->getNumberOfChildren()<1) { echo 'L'; } // leaves
 			else { echo '&nbsp;'; }
 		echo '</td>';
-		echo '</tr>', "\n";
+		echo '</tr>';
 		$unique_indis[$person->getXref()]=true;
-		++$n;
 	}
 	echo '</tbody>',
 		'</table>';
