@@ -1332,10 +1332,7 @@ function print_media_table($datalist, $legend) {
 // @param $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
 // @param $type string, indilist or famlist
 function format_surname_table($surnames, $type) {
-	global $GEDCOM;
-
-	$html='<table class="sortable list_table center">';
-	$html.='<th>&nbsp;</th>';
+	$html='<table class="list_table center">';
 	$html.='<th class="list_label">'.WT_Gedcom_Tag::getLabel('SURN').'</th>';
 	$html.='<th class="list_label">';
 	if ($type=='famlist') {
@@ -1347,17 +1344,15 @@ function format_surname_table($surnames, $type) {
 
 	$unique_surn=array();
 	$unique_indi=array();
-	$row_num=0;
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indi/fam surname list
 		if ($surn) {
-			$url=$type.'.php?surname='.urlencode($surn).'&amp;ged='.WT_GEDURL;
+			$url=$type.'.php?surname='.rawurlencode($surn).'&amp;ged='.WT_GEDURL;
 		} else {
 			$url=$type.'.php?alpha=,&amp;ged='.WT_GEDURL;
 		}
 		// Row counter
-		++$row_num;
-		$html.='<tr><td class="rela list_item">'.$row_num.'</td>';
+		$html.='<tr>';
 		// Surname
 		$html.='<td class="list_value_wrap" align="'.get_align($surn).'">';
 		if (count($surns)==1) {
@@ -1400,7 +1395,6 @@ function format_surname_table($surnames, $type) {
 		$html.='</td></tr>';
 	}
 	//-- table footer
-	$html.='<tr class="sortbottom"><td class="list_item">&nbsp;</td>';
 	$html.='<td class="list_item">&nbsp;</td>';
 	$html.='<td class="list_label name2">'. /* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi)));
 	$html.='<br/>'. /* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).'</td></tr></table>';
