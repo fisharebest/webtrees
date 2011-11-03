@@ -61,9 +61,6 @@ class WT_Controller_Base {
 
 	// Print the page header, using the theme
 	public function pageHeader() {
-		// Once we've displayed the header, we should no longer write session data.
-		Zend_Session::writeClose();
-
 		// Import global variables into the local scope, for the theme's header.php
 		global $BROWSERTYPE, $SEARCH_SPIDER, $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
 		global $stylesheet, $headerfile;
@@ -147,6 +144,9 @@ class WT_Controller_Base {
 		header('Content-Type: text/html; charset=UTF-8');
 		$view='full';
 		require WT_ROOT.$headerfile;
+
+		// Once we've displayed the header, we should no longer write session data.
+		Zend_Session::writeClose();
 
 		// Allow the browser to format the header/menus while we generate the page
 		flush();
