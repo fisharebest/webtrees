@@ -75,7 +75,8 @@ function print_indi_table($datalist, $legend='', $option='') {
 				{"iDataSort": 5, "aTargets": [ 4 ] },
 				{"iDataSort": 8, "aTargets": [ 7 ] },
 				{"iDataSort": 11, "aTargets": [ 10 ] },
-				{"iDataSort": 15, "aTargets": [ 14 ] }
+				{"iDataSort": 15, "aTargets": [ 14 ] },
+				{"sType": "numeric", "aTargets": [ 6, 12, 13 ] }
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -294,7 +295,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 		//-- Birth anniversary
 		echo '<td class="center">';
 			$bage =WT_Date::GetAgeYears($birth_dates[0]);
-			if (empty($bage)) { echo ''; } else { echo $bage; }
+			if (empty($bage)) { echo '&nbsp;'; } else { echo $bage; }
 		echo '</td>';
 		//-- Birth place
 		echo '<td>';
@@ -315,10 +316,12 @@ function print_indi_table($datalist, $legend='', $option='') {
 			}
 		echo '</td>';
 		//-- Birth place (sortable)hidden by datatables code
-		echo '<td style="display:none">', $birth_place, '</td>';
+		echo '<td style="display:none">';
+			if (empty($birth_place)) { echo '&nbsp;'; } else { echo $birth_place; }
+		echo '</td>';
 		//-- Number of children
 		echo '<td class="center">';
-			echo '<a href="', $person->getHtmlUrl(), '" class="list_item" name="', $person->getNumberOfChildren(), '">', $person->getNumberOfChildren(), '</a>';
+			echo $person->getNumberOfChildren();
 		echo '</td>';
 		//-- Death date
 		echo '<td>';
@@ -350,19 +353,18 @@ function print_indi_table($datalist, $legend='', $option='') {
 		echo '<td style="display:none">', $death_date->JD(), '</td>';
 		//-- Death anniversary
 		echo '<td class="center">';
-			if ($death_dates[0]->isOK()) {echo WT_Date::GetAgeYears($death_dates[0]);} else {echo '';}
+			if ($death_dates[0]->isOK()) { echo WT_Date::GetAgeYears($death_dates[0]); } else { echo '&nbsp;'; }
 		echo '</td>';
 		//-- Age at death
 		echo '<td class="center">';
 			if ($birth_dates[0]->isOK() && $death_dates[0]->isOK()) {
 				$age = WT_Date::GetAgeYears($birth_dates[0], $death_dates[0]);
-				$age_jd = $death_dates[0]->MinJD()-$birth_dates[0]->MinJD();
 				echo $age;
 				if (!isset($unique_indis[$person->getXref()])) {
 					$deat_by_age[max(0, min($max_age, $age))] .= $person->getSex();
 				}
 			} else {
-				echo '<a name="-1">&nbsp;</a>';
+				echo '&nbsp;';
 			}
 		echo '</td>';
 		//-- Death place
@@ -417,11 +419,9 @@ function print_indi_table($datalist, $legend='', $option='') {
 		echo '</td>';
 		//-- Roots or Leaves ?
 		echo '<td style="display:none">';
-			if (!$person->getChildFamilies()) {
-				echo 'R'; // roots
-			} elseif (!$person->isDead() && $person->getNumberOfChildren()<1) {
-				echo 'L'; // leaves
-			}
+			if (!$person->getChildFamilies()) { echo 'R'; }  // roots
+			elseif (!$person->isDead() && $person->getNumberOfChildren()<1) { echo 'L'; } // leaves
+			else { echo '&nbsp;'; }
 		echo '</td>';
 		echo '</tr>', "\n";
 		$unique_indis[$person->getXref()]=true;
@@ -481,6 +481,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 			"bRetrieve": true,
 			"bStateSave": true,
 			"aoColumnDefs": [
+				{"sType": "numeric", "aTargets": [ 9 ] },
 				{"iDataSort": 2, "aTargets": [ 0 ] },
 				{"iDataSort": 6, "aTargets": [ 4 ] },
 				{"iDataSort": 9, "aTargets": [ 8 ] }
@@ -742,7 +743,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 		//-- Marriage anniversary
 		echo '<td class="center">';
 			$mage=WT_Date::GetAgeYears($mdate);
-			if (empty($mage)) { echo '';} else { echo $mage; }
+			if (empty($mage)) { echo '&nbsp;';} else { echo $mage; }
 		echo '</td>';
 		//-- Marriage place
 		echo '<td>';
@@ -801,13 +802,11 @@ function print_fam_table($datalist, $legend='', $option='') {
 		echo '</td>';
 		//-- Roots or Leaves
 		echo '<td style="display:none;">';
-			if (!$husb->getChildFamilies() && !$wife->getChildFamilies()) {
-				echo 'R'; // roots
-			} elseif (!$husb->isDead() && !$wife->isDead() && $family->getNumberOfChildren()<1) {
-				echo 'L'; // leaves
-			}
+			if (!$husb->getChildFamilies() && !$wife->getChildFamilies()) { echo 'R'; } // roots
+			elseif (!$husb->isDead() && !$wife->isDead() && $family->getNumberOfChildren()<1) { echo 'L'; } // leaves
+			else { echo '&nbsp;'; }
 		echo '</td>',
-			'</tr>';
+		'</tr>';
 	}
 	echo '</tbody>',
 		'</table>';
