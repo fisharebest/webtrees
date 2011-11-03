@@ -458,7 +458,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Email address'), '</td><td>',
 		'<input type="text" name="wtemail" value="', htmlspecialchars($_POST['wtemail']), '"></td><td>',
-		WT_I18N::translate('This will be used to send you password reminders, site notifications, and messages from other family members who register on the site.'),
+		WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.'),
 		'</td></tr><tr><td>',
 		'</td></tr></table>',
 		'</fieldset>',

@@ -2362,7 +2362,7 @@ case 'edituser_rootid':
 
 case 'email':
 	$title=WT_I18N::translate('Email address');
-	$text=WT_I18N::translate('This will be used to send you password reminders, site notifications, and messages from other family members who register on the site.');
+	$text=WT_I18N::translate('This email address will be used to send you password reminders, site notifications, and messages from other family members who are registered on the site.');
 	break;
 
 case 'export_gedcom':
