@@ -491,7 +491,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 	   });
 
 		jQuery("div.filtersH_<?php echo $table_id; ?>").html('<?php echo addcslashes(
-			'<button type="button" id="DEAT_N_'.$table_id.'" class="ui-state-default DEAT_N" title="'.WT_I18N::translate('Show people who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Both alive ').'</button>'.
+			'<button type="button" id="DEAT_N_'.$table_id.'" class="ui-state-default DEAT_N" title="'.WT_I18N::translate('Show people who are alive or couples where both partners are alive.').'">'.WT_I18N::translate('Both alive').'</button>'.
 			'<button type="button" id="DEAT_W_'.$table_id.'" class="ui-state-default DEAT_W" title="'.WT_I18N::translate('Show couples where only the female partner is deceased.').'">'.WT_I18N::translate('Widower').'</button>'.
 			'<button type="button" id="DEAT_H_'.$table_id.'" class="ui-state-default DEAT_H" title="'.WT_I18N::translate('Show couples where only the male partner is deceased.').'">'.WT_I18N::translate('Widow').'</button>'.
 			'<button type="button" id="DEAT_Y_'.$table_id.'" class="ui-state-default DEAT_Y" title="'.WT_I18N::translate('Show people who are dead or couples where both partners are deceased.').'">'.WT_I18N::translate('Both dead').'</button>'.
