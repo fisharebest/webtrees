@@ -75,11 +75,13 @@ case 'delete-source':
 			$gedrec=preg_replace('/\n3 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[4-9].*)*/', '', $gedrec);
 			$gedrec=preg_replace('/\n4 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[5-9].*)*/', '', $gedrec);
 			$gedrec=preg_replace('/\n5 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[6-9].*)*/', '', $gedrec);
+			$tmp=WT_GedcomRecord::getInstance($xref);
 			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) /', $gedrec, $dummy)<2) {
-				// Families cease to exist when they have less than 2 members
+				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a family, e.g. Husband name + Wife name" */ WT_I18N::translate('The family “%s” has been deleted automatically, as it only has one member.', $tmp->getFullName()));
 				delete_gedrec($xref, $record->getGedId());
 			} else {
 				// Just remove the links
+				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('Deleting links from “%1$s” to “%2$s”.', $tmp->getFullName(), $record->getFullName()));
 				replace_gedrec($xref, $record->getGedId(), $gedrec, false);
 			}
 		}
