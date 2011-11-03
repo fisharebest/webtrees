@@ -479,7 +479,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 			"bRetrieve": true,
 			"bStateSave": true,
 			"aoColumnDefs": [
-				{"sType": "numeric", "aTargets": [ 9 ] },
+				{"bSortable": false, "aTargets": [ 9 ] },
 				{"iDataSort": 2, "aTargets": [ 0 ] },
 				{"iDataSort": 6, "aTargets": [ 4 ] },
 				{"iDataSort": 9, "aTargets": [ 8 ] }
@@ -703,10 +703,9 @@ function print_fam_table($datalist, $legend='', $option='') {
 			if ($marriage_dates=$family->getAllMarriageDates()) {
 				foreach ($marriage_dates as $n=>$marriage_date) {
 					if ($n) {
-						echo '<div>', $marriage_date->Display(!$SEARCH_SPIDER), '</div>';
-					} else if ($marriage_date->MinJD()!=0) {
-						echo '<div>', str_replace('<a', '<a name="'.$marriage_date->MinJD().'"', $marriage_date->Display(!$SEARCH_SPIDER)), '</div>';
+						echo '<br/>';
 					}
+					echo '<div>', $marriage_date->Display(!$SEARCH_SPIDER), '</div>';
 				}
 				if ($marriage_dates[0]->gregorianYear()>=1550 && $marriage_dates[0]->gregorianYear()<2030) {
 					$marr_by_decade[floor($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
@@ -728,9 +727,9 @@ function print_fam_table($datalist, $legend='', $option='') {
 				if (isset($factdetail)) {
 					if (count($factdetail) >= 3) {
 						if (strtoupper($factdetail[2]) != "N") {
-							echo '<div>', WT_I18N::translate('yes'), '<a name="9999998"></a></div>';
+							echo WT_I18N::translate('yes');
 						} else {
-							echo '<div>', WT_I18N::translate('no'), '<a name="9999999"></a></div>';
+							echo WT_I18N::translate('no');
 						}
 					} else {
 						echo '&nbsp;';
@@ -761,10 +760,7 @@ function print_fam_table($datalist, $legend='', $option='') {
 			}
 		echo '</td>';
 		//-- Number of children
-		echo '<td class="center">';
-			$mage=WT_Date::GetAgeYears($mdate);
-			if (empty($mage)){ echo '&nbsp;';} else { echo $family->getNumberOfChildren();}
-		echo '</td>';
+		echo '<td class="center">', $family->getNumberOfChildren(), '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>', $family->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
@@ -1390,7 +1386,7 @@ function format_surname_table($surnames, $type) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal=count($indis);
-				$html.='<a name="'.$subtotal.'">'.WT_I18N::number($subtotal).'</a>';
+				$html.=WT_I18N::number($subtotal);
 			}
 		} else {
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
@@ -1399,7 +1395,7 @@ function format_surname_table($surnames, $type) {
 				$subtotal+=count($indis);
 				$html.=WT_I18N::number(count($indis)).'<br />';
 			}
-			$html.='<a name="'.$subtotal.'">'.WT_I18N::number($subtotal).'</a>';
+			$html.=WT_I18N::number($subtotal);
 		}
 		$html.='</td></tr>';
 	}
@@ -1845,7 +1841,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= '</td>';
 		//-- Event date
 		$return .= '<td class="list_value_wrap">';
-		$return .= str_replace('<a', '<a name="'.$value['jd'].'"', $value['date']->Display(empty($SEARCH_SPIDER)));
+		$return .= $value['date']->Display(empty($SEARCH_SPIDER));
 		$return .= '</td>';
 		//-- Event date (sortable)
 		$return .= '<td style="display:none;">'; //hidden by datables code
@@ -1854,9 +1850,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		//-- Anniversary
 		$return .= '<td class="list_value_wrap">';
 		$anniv = $value['anniv'];
-//		if ($anniv==0) $return .= '<a name="-1">&nbsp;</a>';
 		if ($anniv==0) $return .= '&nbsp;';
-//		else $return .= "<a name=\"{$anniv}\">{$anniv}</a>";
 		else $return .= $anniv;
 		$return .= '</td>';
 		//-- Event name
