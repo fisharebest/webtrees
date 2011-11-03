@@ -2894,7 +2894,7 @@ case 'username':
 		'<p>'.
 		WT_I18N::translate('Usernames are case-insensitive and ignore accented letters, so that “chloe”, “chloë”, and “Chloe” are considered to be the same.').
 		'</p><p>'.
-		WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; " %% { } ;')
+		WT_I18N::translate('Usernames may not contain the following characters: &lt; &gt; " %% { } ;').
 		'</p>';
 	break;
 
