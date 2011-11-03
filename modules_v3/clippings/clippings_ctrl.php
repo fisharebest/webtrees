@@ -49,7 +49,7 @@ function same_group($a, $b) {
 /**
 * Main controller class for the Clippings page.
 */
-class WT_Controller_Clippings {
+class WT_Controller_Clippings extends WT_Controller_Base {
 
 	var $download_data;
 	var $media_list = array();
