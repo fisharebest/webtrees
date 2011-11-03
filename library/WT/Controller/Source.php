@@ -59,7 +59,7 @@ class WT_Controller_Source extends WT_Controller_GedcomRecord {
 		if ($newrec!==null) {
 			$diff_record=new WT_Source($newrec);
 			$diff_record->setChanged(true);
-			$this->record->diffMerge($this->diff_record);
+			$this->record->diffMerge($diff_record);
 		}
 	}
 
