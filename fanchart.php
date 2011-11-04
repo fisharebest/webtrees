@@ -249,7 +249,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				// print text
 				ImageTtfText($image, (double)$fanChart['size'], $tangle, $tx, $ty, $color, $fanChart['font'], $text);
 
-				$imagemap .= "<area shape=\"poly\" coords=\"";
+				$imagemap .= '<area shape="poly" coords="';
 				// plot upper points
 				$mr=$rx/2;
 				$deg=$deg1;
@@ -257,7 +257,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 					$rad=deg2rad($deg);
 					$tx=round($cx + ($mr) * cos($rad));
 					$ty=round($cy - $mr * -sin($rad));
-					$imagemap .= "$tx, $ty, ";
+					$imagemap .= "$tx,$ty,";
 					$deg+=($deg2-$deg1)/6;
 				}
 				// plot lower points
@@ -436,12 +436,12 @@ echo "<select name=\"PEDIGREE_GENERATIONS\">";
 // Can only show 9 generations (256 ancestors) as graphics library has integer degree resolution
 for ($i=2; $i<=min(9,$MAX_PEDIGREE_GENERATIONS); $i++) {
 echo "<option value=\"".$i."\"" ;
-if ($i == $PEDIGREE_GENERATIONS) echo "selected=\"selected\" ";
-	echo ">".$i."</option>";
+if ($i == $PEDIGREE_GENERATIONS) echo ' selected="selected"';
+	echo '>'.$i.'</option>';
 }
-echo "</select>";
-echo "</td>";
-echo "</tr><tr>";
+echo '</select>';
+echo '</td>';
+echo '</tr><tr>';
 // NOTE: fan width
 echo "<td class=\"descriptionbox\">";
 echo WT_I18N::translate('Width'), help_link('fan_width');
