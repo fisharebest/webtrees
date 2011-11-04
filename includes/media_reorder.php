@@ -166,7 +166,7 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 </ul>
 <?php
 ?>
-	<script type="text/javascript" language="javascript">
+	<script type="text/javascript">
 	// <![CDATA[
 		new Effect.BlindDown('reorder_media_list', {duration: .5});
 		Sortable.create('reorder_media_list',

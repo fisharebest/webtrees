@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 global $GEDCOM;
 $reorder=safe_get('reorder', '1', '0');
 ?>
-<script language="javascript" type="text/javascript">
+<script type="text/javascript">
 <!--
 	function reorder_media() {
 		var win02 = window.open(

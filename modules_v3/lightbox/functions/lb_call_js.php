@@ -35,7 +35,7 @@ require_once WT_ROOT.'js/prototype.js.htm';
 global $TEXT_DIRECTION;
 $LB_MUSIC_FILE=get_module_setting('lightbox', 'LB_MUSIC_FILE', WT_STATIC_URL.WT_MODULES_DIR.'lightbox/music/music.mp3');
 ?>
-<script language="javascript" type="text/javascript">
+<script type="text/javascript">
 	var CB_ImgDetails = "<?php echo WT_I18N::translate('Details'); ?>";
 	var CB_Detail_Info = "<?php echo WT_I18N::translate('View image details'); ?>";
 	var CB_ImgNotes = "<?php echo WT_I18N::translate('Notes'); ?>";

@@ -365,7 +365,6 @@
 			}
 		}
 		document.write('<' + 'script');
-		document.write(' language="javascript"');
 		document.write(' type="text/javascript"');
 		document.write(' src="'+CB_jsdir+'clsource_music.js">');
 		document.write('</' + 'script' + '>');

@@ -235,7 +235,7 @@ if ($action == "choose" && $paramok) {
 	echo '<br /><br />';
 	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID" />';
 ?>
-<script language="javascript">
+<script type="text/javascript">
 
 	function addlinks(iname) {
 		// iid=document.getElementById('gid').value;
@@ -272,7 +272,7 @@ if ($action == "choose" && $paramok) {
 <?php
 
 // Various JavaScript variables required --------------------------------- ?>
-<script language="javascript" type="text/javascript">
+<script type="text/javascript">
 	var ifamily = "<?php echo WT_I18N::translate('Open Family Navigator'); ?>";
 	var remove = "<?php echo WT_I18N::translate('Remove'); ?>";
 	var linkExists = "<?php echo WT_I18N::translate('This link already exists'); ?>";

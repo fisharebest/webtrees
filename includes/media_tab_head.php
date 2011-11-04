@@ -33,7 +33,7 @@ global $gedrec, $pid;
 require_once WT_ROOT.'js/prototype.js.htm';
 require_once WT_ROOT.'js/scriptaculous.js.htm';
 ?>
-<script language="javascript" type="text/javascript">
+<script type="text/javascript">
 <!--
 	function reorder_media() {
 	var win02 = window.open("edit_interface.php?action=reorder_media&pid=<?php echo $pid; ?>", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, height=840, width=450 ");

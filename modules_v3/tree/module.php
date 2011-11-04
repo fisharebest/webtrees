@@ -35,7 +35,7 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	function __construct() {
 		// define the module inclusions for the page header
   	$this->headers = '<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview.css" />';
-  	$this->js = '<script type="text/javascript" language="javascript" src="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/treeview.js"></script>';
+  	$this->js = '<script type="text/javascript" src="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/treeview.js"></script>';
   	
 		// Retrieve the user's personalized style
     if (isset($_COOKIE['tvStyle'])) {
