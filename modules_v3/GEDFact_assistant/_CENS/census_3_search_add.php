@@ -104,9 +104,9 @@ if (!defined('WT_WEBTREES')) {
 
 					//-- Build Parents Family --------------------------------------
 					$personcount=0;
-					$families = $this->indi->getChildFamilies();
+					$families = $this->record->getChildFamilies();
 					foreach ($families as $famid=>$family) {
-						$label = $this->indi->getChildFamilyLabel($family);
+						$label = $this->record->getChildFamilyLabel($family);
 						$people = $this->buildFamilyList($family, "parents", false);
 						$marrdate = $family->getMarriageDate();
 
@@ -539,8 +539,8 @@ if (!defined('WT_WEBTREES')) {
 					//-- Step families ---------------------------------------------------------
 
 					//-- Build step families ---------------------------------------------------
-					foreach ($this->indi->getChildStepFamilies() as $famid=>$family) {
-						$label = $this->indi->getStepFamilyLabel($family);
+					foreach ($this->record->getChildStepFamilies() as $famid=>$family) {
+						$label = $this->record->getStepFamilyLabel($family);
 						$people = $this->buildFamilyList($family, "step-parents", false);
 						if ($people) {
 							echo "<tr><td><br /></td><td></td></tr>";
@@ -972,11 +972,11 @@ if (!defined('WT_WEBTREES')) {
 					echo "<tr><td><font size=1><br /></font></td></tr>";
 
 					//-- Build Spouse Family ---------------------------------------------------
-					$families = $this->indi->getSpouseFamilies();
+					$families = $this->record->getSpouseFamilies();
 					//$personcount = 0;
 					foreach ($families as $family) {
 						$people = $this->buildFamilyList($family, "spouse", false);
-						if ($this->indi->equals($people["husb"])) {
+						if ($this->record->equals($people["husb"])) {
 							$spousetag = 'WIFE';
 						} else {
 							$spousetag = 'HUSB';
