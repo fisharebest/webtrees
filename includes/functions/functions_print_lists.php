@@ -2053,15 +2053,15 @@ function print_chart_by_age($data, $title) {
 	$chart_url .= "&amp;chbh=3,2,2"; // bvg : 4,1,2
 	$chart_url .= "&amp;chf=bg,s,FFFFFF99"; //background color
 	$chart_url .= "&amp;chco=0000FF,FFA0CB,FF0000"; // bar color
-	$chart_url .= "&amp;chdl=".WT_I18N::translate('Males')."|".WT_I18N::translate('Females')."|".WT_I18N::translate('Average age').": ".$avg; // legend & average age
-	$chart_url .= "&amp;chtt=".urlencode($title); // title
+	$chart_url .= "&amp;chdl=".rawurlencode(WT_I18N::translate('Males'))."|".rawurlencode(WT_I18N::translate('Females'))."|".rawurlencode(WT_I18N::translate('Average age').": ".$avg); // legend & average age
+	$chart_url .= "&amp;chtt=".rawurlencode($title); // title
 	$chart_url .= "&amp;chxt=x,y,r"; // axis labels specification
 	$chart_url .= "&amp;chm=V,FF0000,0,".($avg-0.3).",1"; // average age line marker
 	$chart_url .= "&amp;chxl=0:|"; // label
 	for ($age=0; $age<=$agemax; $age+=5) {
 		$chart_url .= $age."|||||"; // x axis
 	}
-	$chart_url .= "|1:||".sprintf("%1.0f", $vmax/$count*100)." %"; // y axis
+	$chart_url .= "|1:||".rawurlencode(WT_I18N::percentage($vmax/$count)); // y axis
 	$chart_url .= "|2:||";
 	$step = $vmax;
 	for ($d=floor($vmax); $d>0; $d--) {
@@ -2075,7 +2075,7 @@ function print_chart_by_age($data, $title) {
 	for ($n=$step; $n<$vmax; $n+=$step) {
 		$chart_url .= $n."|";
 	}
-	$chart_url .= $vmax." / ".$count; // r axis
+	$chart_url .= rawurlencode($vmax." / ".$count); // r axis
 	$chart_url .= "&amp;chg=100,".round(100*$step/$vmax, 1).",1,5"; // grid
 	$chart_url .= "&amp;chd=s:"; // data : simple encoding from A=0 to 9=61
 	$CHART_ENCODING61 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -2104,13 +2104,13 @@ function print_chart_by_decade($data, $title) {
 	$chart_url .= "&amp;chbh=3,3"; // bvg : 4,1,2
 	$chart_url .= "&amp;chf=bg,s,FFFFFF99"; //background color
 	$chart_url .= "&amp;chco=0000FF,FFA0CB"; // bar color
-	$chart_url .= "&amp;chtt=".urlencode($title); // title
+	$chart_url .= "&amp;chtt=".rawurlencode($title); // title
 	$chart_url .= "&amp;chxt=x,y,r"; // axis labels specification
 	$chart_url .= "&amp;chxl=0:|&lt;|||"; // <1570
 	for ($y=1600; $y<2030; $y+=50) {
 		$chart_url .= $y."|||||"; // x axis
 	}
-	$chart_url .= "|1:||".sprintf("%1.0f", $vmax/$count*100)." %"; // y axis
+	$chart_url .= "|1:||".rawurlencode(WT_I18N::percentage($vmax/$count)); // y axis
 	$chart_url .= "|2:||";
 	$step = $vmax;
 	for ($d=floor($vmax); $d>0; $d--) {
@@ -2124,7 +2124,7 @@ function print_chart_by_decade($data, $title) {
 	for ($n=$step; $n<$vmax; $n+=$step) {
 		$chart_url .= $n."|";
 	}
-	$chart_url .= $vmax." / ".$count; // r axis
+	$chart_url .= rawurlencode($vmax." / ".$count); // r axis
 	$chart_url .= "&amp;chg=100,".round(100*$step/$vmax, 1).",1,5"; // grid
 	$chart_url .= "&amp;chd=s:"; // data : simple encoding from A=0 to 9=61
 	$CHART_ENCODING61 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
