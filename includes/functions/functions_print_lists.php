@@ -1329,20 +1329,23 @@ function print_media_table($datalist, $legend) {
 		'</div>';
 }
 
-// Print a table of surnames.
-// @param $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
-// @param $type string, indilist or famlist
+// Print a table of surnames, for the top surnames block, the indi/fam lists, etc.
+// $surnames - array (of SURN, of array of SPFX_SURN, of array of PID)
+// $type     - "indilist" (counts of individuals) or "famlist" (counts of spouses)
 function format_surname_table($surnames, $type) {
-	$html='<table class="list_table center">';
-	$html.='<th class="list_label">'.WT_Gedcom_Tag::getLabel('SURN').'</th>';
-	$html.='<th class="list_label">';
 	if ($type=='famlist') {
-		$html.=WT_I18N::translate('Spouses');
+		$col_heading=WT_I18N::translate('Spouses');
 	} else {
-		$html.=WT_I18N::translate('Individuals');
+		$col_heading=WT_I18N::translate('Individuals');
 	}
-	$html.='</th></tr>';
 
+	$thead=
+		'<tr>'.
+		'<th class="list_label">'.WT_Gedcom_Tag::getLabel('SURN').'</th>'.
+		'<th class="list_label">'.$col_heading.'</th>'.
+		'</tr>';
+
+	$tbody='';
 	$unique_surn=array();
 	$unique_indi=array();
 	foreach ($surnames as $surn=>$surns) {
@@ -1353,13 +1356,13 @@ function format_surname_table($surnames, $type) {
 			$url=$type.'.php?alpha=,&amp;ged='.WT_GEDURL;
 		}
 		// Row counter
-		$html.='<tr>';
+		$tbody.='<tr>';
 		// Surname
-		$html.='<td class="list_value_wrap" align="'.get_align($surn).'">';
+		$tbody.='<td class="list_value" align="'.get_align($surn).'">';
 		if (count($surns)==1) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
-				$html.='<a href="'.$url.'" class="list_item name1">'.htmlspecialchars($spfxsurn).'</a>';
+				$tbody.='<a href="'.$url.'" class="list_item name1">'.htmlspecialchars($spfxsurn).'</a>';
 				$unique_surn[$spfxsurn]=true;
 				foreach (array_keys($indis) as $pid) {
 					$unique_indi[$pid]=true;
@@ -1368,38 +1371,50 @@ function format_surname_table($surnames, $type) {
 		} else {
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn=>$indis) {
-				$html.='<a href="'.$url.'" class="list_item name1">'.htmlspecialchars($spfxsurn).'</a><br />';
+				$tbody.='<a href="'.$url.'" class="list_item name1">'.htmlspecialchars($spfxsurn).'</a><br />';
 				$unique_surn[$spfxsurn]=true;
 				foreach (array_keys($indis) as $pid) {
 					$unique_indi[$pid]=true;
 				}
 			}
 		}
-		$html.='</td>';
+		$tbody.='</td>';
 		// Surname count
-		$html.='<td class="list_value_wrap">';
+		$tbody.='<td class="list_value center">';
 		if (count($surns)==1) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal=count($indis);
-				$html.=WT_I18N::number($subtotal);
+				$tbody.=WT_I18N::number($subtotal);
 			}
 		} else {
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			$subtotal=0;
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal+=count($indis);
-				$html.=WT_I18N::number(count($indis)).'<br />';
+				$tbody.=WT_I18N::number(count($indis)).'<br />';
 			}
-			$html.=WT_I18N::number($subtotal);
+			$tbody.=WT_I18N::number($subtotal);
 		}
-		$html.='</td></tr>';
+		$tbody.='</td></tr>';
 	}
-	//-- table footer
-	$html.='<td class="list_item">&nbsp;</td>';
-	$html.='<td class="list_label name2">'. /* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi)));
-	$html.='<br/>'. /* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).'</td></tr></table>';
-	return $html;
+
+	$tfoot=
+		'<tr>'.
+		'<td class="list_item">&nbsp;</td>'.
+		'<td class="list_label name2">'.
+		/* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi))).
+		'<br/>'.
+		/* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).
+		'</td>'.
+		'</tr>';
+
+	return
+		'<table class="list_table surname-list">'.
+		'<thead>'.$thead.'</thead>'.
+		'<tfoot>'.$tfoot.'</tfoot>'.
+		'<tbody>'.$tbody.'</tbody>'.
+		'</table>';
 }
 
 // Print a tagcloud of surnames.
