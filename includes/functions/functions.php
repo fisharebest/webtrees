@@ -2779,7 +2779,7 @@ function get_query_url($overwrite=null) {
 			$query_string.='&amp;' . rawurlencode($key) . '=' . rawurlencode($value);
 		} else {
 			foreach ($value as $k=>$v) {
-				$query_string.='&amp;' . rawurlencode($key) . '[' . rawurlencode($k) . ']=' . rawurlencode($v);
+				$query_string.='&amp;' . rawurlencode($key) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
 			}
 		}
 	}
