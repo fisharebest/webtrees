@@ -121,7 +121,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
-					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php echo $controller->getPersonStyle($people["husb"]); ?> nam">
@@ -145,7 +145,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
-					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php echo $controller->getPersonStyle($people["wife"]); ?> nam">
@@ -173,7 +173,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					}
 					?>
 					<tr>
-						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+						<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 							<?php
 							if ($pid == $child->getXref() ) {
 								echo $child->getLabel();
@@ -240,7 +240,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
-					<td class="facts_label<?php echo $styleadd; ?>"  nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php echo $controller->getPersonStyle($people["husb"]); ?> nam">
@@ -273,7 +273,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
-					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php echo $controller->getPersonStyle($people["wife"]); ?> nam">
@@ -299,7 +299,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$menu->addSubMenu($submenu);
 					?>
 					<tr>
-						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+						<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 							<?php echo $menu->getMenu(); ?>
 						</td>
 						<td align="center" class="<?php echo $controller->getPersonStyle($child); ?> nam">
@@ -349,7 +349,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
-					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php echo $controller->getPersonStyle($people["husb"]); ?> nam">
@@ -380,7 +380,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
-					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php echo $controller->getPersonStyle($people["wife"]); ?> nam">
@@ -413,7 +413,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$menu->addSubmenu($submenu);
 					?>
 					<tr>
-						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+						<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 							<?php echo $menu->getMenu(); ?>
 						</td>
 						<td align="center" class="<?php echo $controller->getPersonStyle($child); ?> nam">
@@ -461,7 +461,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
-					<td class="facts_label<?php echo $styleadd; ?>"  nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php echo $controller->getPersonStyle($people["husb"]); ?> nam">
@@ -488,7 +488,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$menu->addSubMenu($submenu);
 				?>
 				<tr>
-					<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+					<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 						<?php echo $menu->getMenu(); ?>
 					</td>
 					<td align="center" class="<?php echo $controller->getPersonStyle($people["wife"]); ?> nam">
@@ -514,7 +514,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$menu->addSubMenu($submenu);
 					?>
 					<tr>
-						<td class="facts_label<?php echo $styleadd; ?>" nowrap="nowrap" style="width:75px;">
+						<td class="facts_label<?php echo $styleadd; ?> nowrap" style="width:75px;">
 							<?php echo $menu->getMenu(); ?>
 						</td>
 						<td align="center" class="<?php echo $controller->getPersonStyle($child); ?> nam">

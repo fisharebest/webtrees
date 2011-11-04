@@ -994,7 +994,7 @@ global $TEXT_DIRECTION;
 		</script>
 
 		<div>
-			<table><tr><td nowrap="nowrap">
+			<table><tr><td class="nowrap">
 			<br />
 			<?php
 				// echo "&nbsp;".WT_I18N::translate('Date').":&nbsp;&nbsp;";

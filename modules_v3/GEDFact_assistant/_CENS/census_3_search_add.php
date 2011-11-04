@@ -176,7 +176,7 @@ if (!defined('WT_WEBTREES')) {
 										?>
 									</font>
 								</td>
-								<td align="left" class="facts_value" nowrap="nowrap">
+								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
 									if (($people["husb"]->canDisplayDetails())) {
@@ -308,7 +308,7 @@ if (!defined('WT_WEBTREES')) {
 										?>
 									</font>
 								</td>
-								<td align="left" class="facts_value" nowrap="nowrap">
+								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
 									if (($people["wife"]->canDisplayDetails())) {
@@ -456,7 +456,7 @@ if (!defined('WT_WEBTREES')) {
 												?>
 											</font>
 										</td>
-										<td align="left" class="facts_value" nowrap="nowrap">
+										<td align="left" class="facts_value nowrap">
 											<font size=1>
 											<?php
 											if (($child->canDisplayDetails())) {
@@ -620,7 +620,7 @@ if (!defined('WT_WEBTREES')) {
 										?>
 									</font>
 								</td>
-								<td align="left" class="facts_value" nowrap="nowrap">
+								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
 									if (($people["husb"]->canDisplayDetails())) {
@@ -764,7 +764,7 @@ if (!defined('WT_WEBTREES')) {
 										?>
 									</font>
 								</td>
-								<td align="left" class="facts_value" nowrap="nowrap">
+								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
 									if (($people["wife"]->canDisplayDetails())) {
@@ -898,7 +898,7 @@ if (!defined('WT_WEBTREES')) {
 											?>
 										</font>
 									</td>
-									<td align="left" class="facts_value" nowrap="nowrap">
+									<td align="left" class="facts_value nowrap">
 										<font size=1>
 										<?php
 										if (($child->canDisplayDetails())) {
@@ -1036,7 +1036,7 @@ if (!defined('WT_WEBTREES')) {
 							if ($people["husb"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["husb"]->getBirthYear(); }
 							?>
 							<tr class="fact_value">
-								<td align="left" nowrap="nowrap" class="linkcell optionbox">
+								<td align="left" class="linkcell optionbox nowrap">
 									<font size=1>
 										<?php
 										if ($people["husb"]->getXref()==$pid) {
@@ -1056,7 +1056,7 @@ if (!defined('WT_WEBTREES')) {
 										?>
 									</font>
 								</td>
-								<td align="left" class="facts_value" nowrap="nowrap">
+								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
 									if (($people["husb"]->canDisplayDetails())) {
@@ -1181,7 +1181,7 @@ if (!defined('WT_WEBTREES')) {
 							if ($people["wife"]->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $people["wife"]->getBirthYear(); }
 							?>
 							<tr>
-								<td align="left" nowrap="nowrap" class="linkcell optionbox">
+								<td align="left" class="linkcell optionbox nowrap">
 									<font size=1>
 										<?php
 										if ($people["wife"]->getXref()==$pid) {
@@ -1201,7 +1201,7 @@ if (!defined('WT_WEBTREES')) {
 										?>
 									</font>
 								</td>
-								<td align="left" class="facts_value" nowrap="nowrap">
+								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
 									if (($people["wife"]->canDisplayDetails())) {
@@ -1339,7 +1339,7 @@ if (!defined('WT_WEBTREES')) {
 										?>
 									</font>
 								</td>
-								<td align="left" class="facts_value" nowrap="nowrap">
+								<td align="left" class="facts_value nowrap">
 									<font size=1>
 									<?php
 									if (($child->canDisplayDetails())) {
@@ -1474,18 +1474,18 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 		//-- draw a box for the family popup
 
 		if ($TEXT_DIRECTION=="rtl") {
-		$spouselinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2\" nowrap=\"nowrap\">";
+		$spouselinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
 		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
-		$parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2\" nowrap=\"nowrap\">";
+		$parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
 		$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
-		$step_parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2\" nowrap=\"nowrap\">";
+		$step_parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
 		$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
 		} else {
-		$spouselinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2\" nowrap=\"nowrap\">";
+		$spouselinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
 		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
-		$parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2\" nowrap=\"nowrap\">";
+		$parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
 		$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
-		$step_parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2\" nowrap=\"nowrap\">";
+		$step_parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
 		$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
 		}
 
