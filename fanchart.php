@@ -278,9 +278,8 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				$ty=round($cy - $mr * -sin($rad));
 				$imagemap .= "$tx, $ty";
 				// add action url
-				$tempURL = $person->getHtmlUrl();
-				$imagemap .= "\" href=\"$tempURL\" ";
-				$tempURL = "fanchart.php?rootid={$pid}&PEDIGREE_GENERATIONS={$PEDIGREE_GENERATIONS}&fan_width={$fan_width}&fan_style={$fan_style}&amp;ged=".WT_GEDURL;
+				$imagemap .= '" href="'.$person->getHtmlUrl().'"'
+				$tempURL = 'fanchart.php?rootid='.$pid.'&amp;PEDIGREE_GENERATIONS='.$PEDIGREE_GENERATIONS.'&amp;fan_width='.$fan_width.'&amp;fan_style='.$fan_style.'&amp;ged='.WT_GEDURL;
 				$count=0;
 				$lbwidth=200;
 				echo "<div id=\"I".$pid.".".$count."links\" style=\"position:absolute; >";
@@ -289,9 +288,9 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				echo "<a href=\"".$person->getHtmlUrl()."\" class=\"name1\">" . $name;
 				if (!empty($addname)) echo "<br />" . $addname;
 				echo "</a>";
-				echo "<br /><a href=\"pedigree.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree')."</a>";
+				echo "<br /><a href=\"pedigree.php?rootid=$pid&amp;amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree')."</a>";
 				if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-					echo "<br /><a href=\"module.php?mod=googlemap&mod_action=pedigree_map&rootid=".$pid."&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Pedigree map')."</a>";
+					echo "<br /><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=".$pid."&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Pedigree map')."</a>";
 				}
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
 					echo "<br /><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Relationship to me')."</a>";
@@ -342,7 +341,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 		$gen--;
 	}
 
-	$imagemap .= "</map>";
+	$imagemap .= '</map>';
 	echo $imagemap;
 
 	ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_SERVER_NAME.WT_SCRIPT_PATH, $color);
