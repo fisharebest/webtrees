@@ -150,7 +150,7 @@ if ($display=='hierarchy') {
 						$ppart = rawurlencode($ppart);
 					}
 					$ppart = preg_replace('/amp\%3B/', '', trim($ppart));
-						echo '&amp;parent[', $j, ']=', $ppart;
+					echo '&amp;parent%5B', $j, '%5D=', $ppart;
 				}
 			}
 			echo '">';
@@ -231,7 +231,7 @@ if ($display=='hierarchy') {
 		}
 
 		echo '<li type="square"><a href="?action=', $action, '&amp;level=', $level+1, $linklevels;
-		echo '&amp;parent[', $level, ']=', urlencode($value), '" class="list_item">';
+		echo '&amp;parent%5B', $level, '%5D=', urlencode($value), '" class="list_item">';
 
 		if (trim($value)=='') echo WT_I18N::translate('unknown');
 		else echo PrintReady($value);
@@ -270,7 +270,7 @@ if ($display=='hierarchy') {
 			echo ' style="text-align: center;">';
 			echo '<a href="?action=show&amp;level=', $level;
 			foreach ($parent as $key=>$value) {
-				echo '&amp;parent[', $key, ']=', urlencode(trim($value));
+				echo '&amp;parent%5B', $key, '%5D=', urlencode(trim($value));
 			}
 			echo '"><span class="formField">';
 			if (trim($value)=='') {
@@ -350,7 +350,7 @@ if ($display=='list') {
 			$revplace = '';
 			foreach ($levels as $indexval => $place) {
 				$place = trim($place);
-				$linklevels .= '&amp;parent['.$level.']='.urlencode($place);
+				$linklevels .= '&amp;parent%5B'.$level.'%5D='.urlencode($place);
 				$level++;
 				if ($level>1) $revplace .= ', ';
 				if ($place=='') $revplace .= WT_I18N::translate('unknown');
