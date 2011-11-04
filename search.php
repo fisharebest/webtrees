@@ -130,19 +130,19 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		<td class="list_value" style="padding: 5px;">
 			<input type="checkbox"<?php
 	if (isset ($controller->srindi) || !$controller->isPostBack)
-		echo ' checked="checked" '; ?>value="yes" id="srindi" name="srindi" />
+		echo ' checked="checked"'; ?> value="yes" id="srindi" name="srindi" />
 				<label for="srindi"><?php echo WT_I18N::translate('Individuals'); ?></label><br />
 			<input type="checkbox"<?php
 	if (isset ($controller->srfams))
-		echo ' checked="checked" '; ?>value="yes" id="srfams" name="srfams" />
+		echo ' checked="checked"'; ?> value="yes" id="srfams" name="srfams" />
 				<label for="srfams"><?php echo WT_I18N::translate('Families'); ?></label><br />
 			<input type="checkbox"<?php
 	if (isset ($controller->srsour))
-		echo ' checked="checked" '; ?>value="yes" id="srsour" name="srsour" />
+		echo ' checked="checked"'; ?> value="yes" id="srsour" name="srsour" />
 				<label for="srsour"><?php echo WT_I18N::translate('Sources'); ?></label><br />
 			<input type="checkbox"<?php
 	if (isset ($controller->srnote))
-		echo ' checked="checked" '; ?>value="yes" id="srnote" name="srnote" />
+		echo ' checked="checked"'; ?> value="yes" id="srnote" name="srnote" />
 				<label for="srnote"><?php echo WT_I18N::translate('Shared notes'); ?></label><br />
 		</td>
 	</tr>
