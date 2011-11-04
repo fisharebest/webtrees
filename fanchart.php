@@ -267,7 +267,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 					$rad=deg2rad($deg);
 					$tx=round($cx + ($mr) * cos($rad));
 					$ty=round($cy - $mr * -sin($rad));
-					$imagemap .= "$tx, $ty, ";
+					$imagemap .= "$tx,$ty,";
 					$deg-=($deg2-$deg1)/6;
 				}
 				// join first point
@@ -276,7 +276,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				$rad=deg2rad($deg);
 				$tx=round($cx + ($mr) * cos($rad));
 				$ty=round($cy - $mr * -sin($rad));
-				$imagemap .= "$tx, $ty";
+				$imagemap .= "$tx,$ty";
 				// add action url
 				$imagemap .= '" href="'.$person->getHtmlUrl().'"';
 				$tempURL = 'fanchart.php?rootid='.$pid.'&amp;PEDIGREE_GENERATIONS='.$PEDIGREE_GENERATIONS.'&amp;fan_width='.$fan_width.'&amp;fan_style='.$fan_style.'&amp;ged='.WT_GEDURL;
