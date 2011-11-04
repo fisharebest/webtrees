@@ -87,7 +87,7 @@ class WT_Controller_Timeline extends WT_Controller_Chart {
 		foreach ($this->people as $p=>$indi) {
 			if (!is_null($indi) && $indi->canDisplayDetails()) {
 				//-- setup string of valid pids for links
-				$this->pidlinks .= "pids[]=".$indi->getXref()."&amp;";
+				$this->pidlinks .= "pids%5B%5D=".$indi->getXref()."&amp;";
 				$bdate = $indi->getBirthDate();
 				if ($bdate->isOK()) {
 					$date = $bdate->MinDate();

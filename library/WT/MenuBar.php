@@ -298,7 +298,7 @@ class WT_MenuBar {
 			case 'lifespan':
 				//-- lifespan
 				$link = 'lifespan.php?ged='.WT_GEDURL;
-				if ($rootid) $link .= "&amp;pids&#x5B;&#x5D;={$rootid}&amp;addFamily=1";
+				if ($rootid) $link .= "&amp;pids%5B%5D={$rootid}&amp;addFamily=1";
 				$submenu = new WT_Menu($menuName, $link, 'menu-chart-lifespan');
 				$submenu->addIcon('timeline');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_timeline');
