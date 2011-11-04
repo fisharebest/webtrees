@@ -278,7 +278,7 @@ function print_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				$ty=round($cy - $mr * -sin($rad));
 				$imagemap .= "$tx, $ty";
 				// add action url
-				$imagemap .= '" href="'.$person->getHtmlUrl().'"'
+				$imagemap .= '" href="'.$person->getHtmlUrl().'"';
 				$tempURL = 'fanchart.php?rootid='.$pid.'&amp;PEDIGREE_GENERATIONS='.$PEDIGREE_GENERATIONS.'&amp;fan_width='.$fan_width.'&amp;fan_style='.$fan_style.'&amp;ged='.WT_GEDURL;
 				$count=0;
 				$lbwidth=200;
