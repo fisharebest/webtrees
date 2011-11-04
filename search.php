@@ -100,7 +100,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		document.searchform.query.value+=value;
 	}
 </script>
-<table class="list_table $TEXT_DIRECTION" width="35%" border="0">
+<table class="list_table" width="35%">
 	<tr>
 
 <!-- /**************************************************** General search Form *************************************************************/ -->
@@ -131,7 +131,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 			<input type="checkbox"<?php
 	if (isset ($controller->srindi) || !$controller->isPostBack)
 		echo ' checked="checked"'; ?> value="yes" id="srindi" name="srindi" />
-				<label for="srindi"><?php echo WT_I18N::translate('Individuals'); ?></label><br />
+				<label for="srindi"><?php echo WT_I18N::translate('Individuals'); ?></label><br >
 			<input type="checkbox"<?php
 	if (isset ($controller->srfams))
 		echo ' checked="checked"'; ?> value="yes" id="srfams" name="srfams" />
