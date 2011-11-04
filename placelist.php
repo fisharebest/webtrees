@@ -230,7 +230,7 @@ if ($display=='hierarchy') {
 			echo '</td></tr><tr><td class="list_value"><ul>';
 		}
 
-		echo '<li type="square"><a href="?action=', $action, '&amp;level=', $level+1, $linklevels;
+		echo '<li><a href="?action=', $action, '&amp;level=', $level+1, $linklevels;
 		echo '&amp;parent%5B', $level, '%5D=', urlencode($value), '" class="list_item">';
 
 		if (trim($value)=='') echo WT_I18N::translate('unknown');
@@ -356,7 +356,7 @@ if ($display=='list') {
 				if ($place=='') $revplace .= WT_I18N::translate('unknown');
 				else $revplace .= $place;
 			}
-			echo '<li type="square"><a href="?action=show&amp;display=hierarchy&amp;level=', $level, $linklevels, '">';
+			echo '<li><a href="?action=show&amp;display=hierarchy&amp;level=', $level, $linklevels, '">';
 			echo PrintReady($revplace), '</a></li>';
 			$i++;
 			if ($ct > 20) {
