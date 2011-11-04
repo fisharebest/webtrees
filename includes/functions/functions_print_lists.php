@@ -82,8 +82,8 @@ function print_indi_table($datalist, $legend='', $option='') {
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
 		});
-	   
-		jQuery("div.filtersH_<?php echo $table_id; ?>").html('<?php echo addcslashes(
+
+			jQuery("div.filtersH_<?php echo $table_id; ?>").html('<?php echo addcslashes(
 			'<button type="button" id="SEX_M_'.$table_id.'" class="ui-state-default SEX_M" title="'.WT_I18N::translate('Show only males.').'">&nbsp;'.WT_Person::sexImage('M', 'small').'&nbsp;</button>'.
 			'<button type="button" id="SEX_F_'.$table_id.'" class="ui-state-default SEX_F" title="'.WT_I18N::translate('Show only females.').'">&nbsp;'.WT_Person::sexImage('F', 'small').'&nbsp;</button>'.
 			'<button type="button" id="SEX_U_'.$table_id.'" class="ui-state-default SEX_U" title="'.WT_I18N::translate('Show only persons of whom the gender is not known.').'">&nbsp;'.WT_Person::sexImage('U', 'small').'&nbsp;</button>'.
@@ -128,6 +128,7 @@ function print_indi_table($datalist, $legend='', $option='') {
 		jQuery(".indi-list").css('visibility', 'visible');
 		jQuery(".loading-image").css('display', 'none');
 	});
+
 	<?php echo WT_JS_END;
 
 	$stats = new WT_Stats($GEDCOM);
@@ -962,7 +963,7 @@ function print_sour_table($datalist, $legend=null) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))), '\')) return delete_source(\'', $source->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+		echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\'', $source->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;">DEL</td>';
 		}
@@ -1086,7 +1087,7 @@ function print_note_table($datalist, $legend=null) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))), '\')) return delete_note(\'', $note->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-note\',xref:\'', $note->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;">DEL</td>';
 		}
@@ -1199,7 +1200,7 @@ function print_repo_table($repos, $legend='') {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))), '\')) return delete_repository(\'', $repo->getXref(),'\'); else return false;"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-repository\',xref:\'', $repo->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td style="display:none;">DEL</td>';
 		}
