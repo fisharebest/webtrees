@@ -501,7 +501,7 @@ function build_indiv_map($indifacts, $famids) {
 		echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('No map data for this person');
 		echo '</td></tr>';
 		if (WT_USER_IS_ADMIN) {
-			echo '<tr><td align="center" colspan="2">';
+			echo '<tr><td class="center" colspan="2">';
 			echo '<a href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
 			echo '</td></tr>';
 		}

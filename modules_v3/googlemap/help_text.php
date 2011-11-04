@@ -1,29 +1,27 @@
 <?php
-/**
- * Googlemap Module help text.
- *
- * This file is included from the application help_text.php script.
- * It simply needs to set $title and $text for the help topic $help_topic
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @version $Id$
- */
+// Googlemap Module help text.
+//
+// This file is included from the application help_text.php script.
+// It simply needs to set $title and $text for the help topic $help_topic
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 if (!defined('WT_WEBTREES') || !defined('WT_SCRIPT_NAME') || WT_SCRIPT_NAME!='help_text.php') {
 	header('HTTP/1.0 403 Forbidden');
@@ -206,19 +204,19 @@ case 'PLACECHECK_KEY':
 	$text=
 		'<table border="1" cellspacing="0" cellpadding="3"><tr><td style="color:red;">'.
 		WT_Gedcom_Tag::getLabel('PLAC').
-		'</td><td style="color:red;" align="center"><strong>X</strong></td><td align="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
+		'</td><td style="color:red;" class="center"><strong>X</strong></td><td class="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
 		WT_I18N::translate('This place and its coordinates do not exist in the GoogleMap tables.').
 		'</td></tr><tr><td style="color:blue;">'.
 		WT_Gedcom_Tag::getLabel('PLAC').
-		'</td><td style="color:red;" align="center"><strong>X</strong></td><td align="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
+		'</td><td style="color:red;" class="center"><strong>X</strong></td><td class="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
 		WT_I18N::translate('This place exists in the GoogleMap tables, but has no coordinates.').
 		'</td></tr><tr><td><strong>'.
 		WT_I18N::translate('unknown').
-		'</td><td style="color:red;" align="center"><strong>X</strong></td><td align="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
+		'</td><td style="color:red;" class="center"><strong>X</strong></td><td class="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
 		WT_I18N::translate('This place level is blank in your GEDCOM file. It should be added to GoogleMap places as "unknown" with coordinates from its parent level before you add any place to the next level.').
 		'</td></tr><tr><td style="color:blue;">'.
 		WT_I18N::translate('unknown').
-		'</td><td align="center">N55.0</td><td align="center">W85.0</td><td style="font-size:85%; white-space:normal;">'.
+		'</td><td class="center">N55.0</td><td class="center">W85.0</td><td style="font-size:85%; white-space:normal;">'.
 		WT_I18N::translate('This place level is blank in your GEDCOM file, but exists as "unknown" in the GoogleMap places table with coordinates. No action required until the missing level can be entered.').
 		'</td></tr></table>';
 
