@@ -199,8 +199,13 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if ($person->canDisplayDetails()) {
 			foreach($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
+				$children = $family->getChildren();
 				if ($spouse) {
 					$out .= $this->getFamilyLi($family, $spouse, $generations-1);
+				} else if (count($children)>0) {
+					foreach($children as $child) {
+						$out .= $this->getPersonLi($child, $generations-1);
+					}
 				}
 			}
 		}
