@@ -166,6 +166,14 @@ case 4:
 	}
 	break;
 }
+
+if (!isset($_COOKIE[WT_SESSION_NAME])) {
+	echo
+		'<p class="ui-state-error">'.
+		WT_I18N::translate('This site uses cookies to keep track of your login status.<br /><br />Cookies do not appear to be enabled in your browser. You must enable cookies for this site before you can login.  You can consult your browser\'s help documentation for information on enabling cookies.').
+		'</p>';
+}
+
 echo '</td></tr></table><br /><br />';
 	?>
 	<form name="loginform" method="post" action="<?php echo get_site_setting('LOGIN_URL'); ?>" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds(); return true;">
@@ -197,8 +205,6 @@ echo '</td></tr></table><br /><br />';
 		</table>
 </form><br /><br />
 <?php
-
-if (!isset($_COOKIE[WT_SESSION_NAME])) echo "<center><div class=\"error width50\">".WT_I18N::translate('This site uses cookies to keep track of your login status.<br /><br />Cookies do not appear to be enabled in your browser. You must enable cookies for this site before you can login.  You can consult your browser\'s help documentation for information on enabling cookies.')."</div></center><br /><br />";
 
 if (get_site_setting('USE_REGISTRATION_MODULE')) { ?>
 	<table class="center facts_table width50">
