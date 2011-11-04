@@ -38,7 +38,7 @@ function get_place_url($gedcom_place) {
 	$level = count($exp);
 	$url = "placelist.php?action=show&amp;level=".$level;
 	for ($i=0; $i<$level; $i++) {
-		$url .= "&amp;parent[".$i."]=".rawurlencode($exp[$level-$i-1]);
+		$url .= "&amp;parent%5B".$i."%5D=".rawurlencode($exp[$level-$i-1]);
 	}
 	$url .= "&amp;ged=".rawurlencode($GEDCOM);
 	return $url;
