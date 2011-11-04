@@ -58,7 +58,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
-		return "";
+		return '';
 	}
 
 	// TODO: This function isn't part of the WT_Module_Tab interface, as
@@ -68,15 +68,8 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$out = '';
 		ob_start();
-		// -----------------------------------------------------------------------------
-		// Function Family Nav for PHPGedView - called by individual_ctrl.php
-		// -----------------------------------------------------------------------------
-		// function family_nav() {
-		// ------------------------------------------------------------------------------
 
-		global $edit, $tabno, $GEDCOM, $pid;
-		$edit=$edit;
-		global $show_full, $tabno;
+		global $show_full, $edit, $GEDCOM, $pid;
 		$show_full="1";
 
 		// =====================================================================
@@ -85,12 +78,11 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		echo 'function familyNavLoad(url) {
 			window.location = url+"#"+jQuery("#tabs li:eq("+jQuery("#tabs").tabs("option", "selected")+") a").attr("title");
 			return false;
-		}
-		';
+			}';
 		echo WT_JS_END;
 
 		// Start Family Nav Table ----------------------------
-		echo "<table class=\"nav_content\">";
+		echo '<table class="nav_content">';
 		global $WT_IMAGES, $spouselinks, $parentlinks, $TEXT_DIRECTION;
 
 		$personcount=0;
