@@ -366,39 +366,37 @@ if ($action=='createuser' || $action=='edituser2') {
 switch ($action) {
 case 'createform':
 	init_calendar_popup();
-	?>
-	<script type="text/javascript">
-	<!--
+	$controller->addInlineJavaScript('
 		function checkform(frm) {
 			if (frm.username.value=="") {
-				alert("<?php echo WT_I18N::translate('You must enter a user name.'); ?>");
+				alert("'.WT_I18N::translate('You must enter a user name.').'");
 				frm.username.focus();
 				return false;
 			}
 			if (frm.realname.value=="") {
-				alert("<?php echo WT_I18N::translate('You must enter a real name.'); ?>");
+				alert("'.WT_I18N::translate('You must enter a real name.').'");
 				frm.realname.focus();
 				return false;
 			}
 			if (frm.pass1.value=="") {
-				alert("<?php echo WT_I18N::translate('You must enter a password.'); ?>");
+				alert("'.WT_I18N::translate('You must enter a password.').'");
 				frm.pass1.focus();
 				return false;
 			}
 			if (frm.pass2.value=="") {
-				alert("<?php echo WT_I18N::translate('You must confirm the password.'); ?>");
+				alert("'.WT_I18N::translate('You must confirm the password.').'");
 				frm.pass2.focus();
 				return false;
 			}
 			if (frm.pass1.value.length < 6) {
-				alert("<?php echo WT_I18N::translate('Passwords must contain at least 6 characters.'); ?>");
+				alert("'.WT_I18N::translate('Passwords must contain at least 6 characters.').'");
 				frm.pass1.value = "";
 				frm.pass2.value = "";
 				frm.pass1.focus();
 				return false;
 			}
 			if (frm.emailaddress.value.indexOf("@")==-1) {
-				alert("<?php echo WT_I18N::translate('You must enter an email address.'); ?>");
+				alert("'.WT_I18N::translate('You must enter an email address.').'");
 				frm.emailaddress.focus();
 				return false;
 			}
@@ -408,21 +406,18 @@ case 'createform':
 		function paste_id(value) {
 			pastefield.value=value;
 		}
-		jQuery(document).ready(function() {
-			jQuery('.relpath').change(function() {
-				var fieldIDx = jQuery(this).attr('id');
-				var idNum = fieldIDx.replace('RELATIONSHIP_PATH_LENGTH','');
-				var newIDx = "gedcomid"+idNum;
-				if (jQuery('#'+newIDx).val()=='') {
-					alert("<?php echo WT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.'); ?>");
-					jQuery(this).val('');
-				}
-			});
+		jQuery(".relpath").change(function() {
+			var fieldIDx = jQuery(this).attr("id");
+			var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");
+			var newIDx = "gedcomid"+idNum;
+			if (jQuery("#"+newIDx).val()=="") {
+				alert("'.WT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.').'");
+				jQuery(this).val("");
+			}
 		});
-		
-	//-->
-	</script>
+	');
 
+	?>
 	<form name="newform" method="post" action="admin_users.php?action=createuser" onsubmit="return checkform(this);">
 		<!--table-->
 		<table id="adduser">

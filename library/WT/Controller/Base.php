@@ -120,15 +120,15 @@ class WT_Controller_Base {
 	}
 
 	// Make a list of inline JavaScript, so we can render them in the footer
-	// NOTE: there is no need to use document.ready(), etc. as the JS won't be
-	// inserted until the very end of the page.
+	// NOTE: there is no need to use "jQuery(document).ready(function(){...})", etc.
+	// as this JavaScript won't be inserted until the very end of the page.
 	public function addInlineJavaScript($script, $priority=self::JS_PRIORITY_NORMAL) {
 		if (WT_DEBUG) {
 			/* Show where the JS was added */
 			$backtrace=debug_backtrace();
 			$script='/* '.$backtrace[0]['file'].':'.$backtrace[0]['line'].' */'.PHP_EOL.$script;
 		}
-		$tmp=&$this->$inline_javascript[$priority];
+		$tmp=&$this->inline_javascript[$priority];
 		$tmp[]=$script;
 		return $this;
 	}
