@@ -26,15 +26,12 @@
 define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
-
-if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin.php');
-	exit;
-}
 
 $controller=new WT_Controller_Base();
+$controller->requireManagerLogin();
 $controller->setPageTitle(WT_I18N::translate('Family tree configuration'));
+
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 /**
  * find the name of the first GEDCOM file in a zipfile

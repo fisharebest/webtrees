@@ -27,13 +27,8 @@
 define('WT_SCRIPT_NAME', 'gedcheck.php');
 require './includes/session.php';
 
-// Must be an admin user to use this module
-if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
-
 $controller=new WT_Controller_Base();
+$controller->requireManagerLogin();
 $controller->setPageTitle('GEDCOM checker').' - '.$GEDCOM);
 $controller->pageHeader();
 
