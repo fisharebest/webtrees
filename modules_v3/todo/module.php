@@ -41,7 +41,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $WT_IMAGES;
+		global $ctype, $WT_IMAGES, $controller;
 
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
@@ -71,11 +71,10 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$title.=$this->getTitle().help_link('todo', $this->getName());
 		$table_id = 'ID'.floor(microtime()*1000000); // create a unique ID
-		?>
-		<script type="text/javascript" src="<?php echo WT_STATIC_URL; ?>js/jquery/jquery.dataTables.min.js"></script>
-		<script type="text/javascript">
-			jQuery(document).ready(function(){
-				jQuery('#<?php echo $table_id; ?>').dataTable( {
+		$controller
+			->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+			->addInlineJavaScript('
+				jQuery("#'.$table_id.'").dataTable( {
 				"bAutoWidth":false,
 				"bPaginate": false,
 				"bLengthChange": false,
@@ -83,9 +82,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 				"bInfo": false,
 				"bJQueryUI": false
 				});		
-			});
-		</script>
-		<?php
+			');
 		$content='';
 		$content .= '<table id="'.$table_id.'" class="list_table center">';
 		$content .= '<thead><tr>';

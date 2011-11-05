@@ -41,7 +41,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_MARRIED_NAMES;
+		global $ctype, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_MARRIED_NAMES, $controller;
 
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php'; // for get_align()
 
@@ -122,19 +122,18 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		case 'table':
 		default:
 			$table_id = "ID".floor(microtime()*1000000); // table requires a unique ID
-			?>
-			<script type="text/javascript" src="<?php echo WT_STATIC_URL; ?>js/jquery/jquery.dataTables.min.js"></script>
-			<script type="text/javascript">
-				jQuery(document).ready(function(){
-					jQuery('#<?php echo $table_id; ?>').dataTable( {
-						"sDom": '<"F"li>',
+			$controller
+				->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+				->addInlineJavaScript('
+					jQuery("#'.$table_id.'").dataTable({
+						"sDom": \'<"F"li>\',
 						"bAutoWidth":false,
 						"bPaginate": false,
 						"bLengthChange": false,
 						"bFilter": false,
 						"bInfo": false,
 						"bJQueryUI": false,
-						"aaSorting": [[5,'asc']],
+						"aaSorting": [[5,"asc"]],
 						"aoColumns": [
 							/* 0-NAME */ null,
 							/* 1-DATE */ { "iDataSort": 2 },
@@ -143,10 +142,8 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 							/* 4-YART */ { "iDataSort": 5 },
 							/* 5-YART */ { "bVisible": false }
 						]
-					});		
-				});
-			</script>
-			<?php
+					});
+				');
 			$content .= '<table id="'.$table_id.'" class="list_table center width100">';
 			$content .= '<thead style="cursor:pointer;"><tr>';
 			$content .= '<th class="list_label">'.WT_Gedcom_Tag::getLabel('NAME').'</th>';
@@ -205,7 +202,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function loadAjax() {
-		return true;
+		return false;
 	}
 
 	// Implement class WT_Module_Block
