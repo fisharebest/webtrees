@@ -49,8 +49,9 @@ if (!WT_USER_CAN_EDIT) {
 }
 
 $controller=new WT_Controller_Base();
-$controller->setPageTitle(WT_I18N::translate('Upload media files'));
-$controller->pageHeader();
+$controller
+	->setPageTitle(WT_I18N::translate('Upload media files'))
+	->pageHeader();
 
 ?>
 <script type="text/javascript">

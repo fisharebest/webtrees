@@ -24,8 +24,9 @@ define('WT_SCRIPT_NAME', 'admin_module_tabs.php');
 require 'includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('Module administration'));
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('Module administration'));
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 

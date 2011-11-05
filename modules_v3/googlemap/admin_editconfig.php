@@ -88,9 +88,10 @@ function print_level_config_table($level) {
 }
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('Google Maps configuration'));
-$controller->pageHeader();
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('Google Maps configuration'))
+	->pageHeader();
 
 echo '<table id="gm_config"><tr>',
 	'<th><a ', (safe_GET('mod_action')=="admin_editconfig" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>', '</th>',

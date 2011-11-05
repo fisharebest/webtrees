@@ -45,6 +45,7 @@ class WT_Controller_Simple extends WT_Controller_Base {
 			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
 			exit;
 		}
+		return $this;
 	}
 	
 	// Restrict access
@@ -53,6 +54,7 @@ class WT_Controller_Simple extends WT_Controller_Base {
 			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
 			exit;
 		}
+		return $this;
 	}
 	
 	// Restrict access
@@ -61,5 +63,6 @@ class WT_Controller_Simple extends WT_Controller_Base {
 			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
 			exit;
 		}
+		return $this;
 	}
 }

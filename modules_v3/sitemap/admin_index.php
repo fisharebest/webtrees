@@ -31,8 +31,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('Generate Sitemap files'));
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('Generate Sitemap files'));
 
 global $GEDCOM, $SHOW_MARRIED_NAMES;
 

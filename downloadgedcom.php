@@ -27,8 +27,9 @@ define('WT_SCRIPT_NAME', 'downloadgedcom.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireManagerLogin();
-$controller->setPageTitle(WT_I18N::translate('Download GEDCOM'));
+$controller
+	->requireManagerLogin()
+	->setPageTitle(WT_I18N::translate('Download GEDCOM'));
 
 require_once WT_ROOT.'includes/functions/functions_export.php';
 

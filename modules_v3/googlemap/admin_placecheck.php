@@ -69,9 +69,10 @@ if ($show_changes && !empty($_SESSION['placecheck_state'])) {
 }
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('Place Check'));
-$controller->pageHeader();
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('Place Check'))
+	->pageHeader();
 
 $target=$openinnew ? 'target="_blank"' : '';
 

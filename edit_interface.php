@@ -27,9 +27,10 @@ define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Simple();
-$controller->requireUserLogin();
-$controller->setPageTitle(WT_I18N::translate('Edit'));
-$controller->pageHeader();
+$controller
+	->requireUserLogin()
+	->setPageTitle(WT_I18N::translate('Edit'))
+	->pageHeader();
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 

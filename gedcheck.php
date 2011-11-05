@@ -28,9 +28,10 @@ define('WT_SCRIPT_NAME', 'gedcheck.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireManagerLogin();
-$controller->setPageTitle('GEDCOM checker').' - '.$GEDCOM);
-$controller->pageHeader();
+$controller
+	->requireManagerLogin()
+	->setPageTitle(WT_I18N::translate('GEDCOM checker').' - '.$GEDCOM)
+	->pageHeader();
 
 ////////////////////////////////////////////////////////////////////////////////
 // Scan the data directory for gedcom files

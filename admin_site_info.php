@@ -29,9 +29,10 @@ define('WT_SCRIPT_NAME', 'admin_site_info.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('PHP information'));
-$controller->pageHeader();
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('PHP information'))
+	->pageHeader();
 
 ob_start();
 

@@ -28,8 +28,9 @@ define('WT_SCRIPT_NAME', 'admin_trees_config.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireManagerLogin();
-$controller->setPageTitle(WT_I18N::translate('Family tree configuration'));
+$controller
+	->requireManagerLogin()
+	->setPageTitle(WT_I18N::translate('Family tree configuration'));
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 

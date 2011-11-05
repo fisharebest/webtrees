@@ -30,9 +30,10 @@ if (WT_GED_ID || get_user_count()>1) {
 }
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));
-$controller->pageHeader();
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'))
+	->pageHeader();
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 

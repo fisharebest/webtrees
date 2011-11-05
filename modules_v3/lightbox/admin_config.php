@@ -29,9 +29,10 @@ if (!defined('WT_WEBTREES')) {
 }
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('Lightbox-Album Configuration'));
-$controller->pageHeader();
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('Lightbox-Album Configuration'))
+	->pageHeader();
 
 $action = safe_POST('action');
 

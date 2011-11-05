@@ -29,9 +29,10 @@ define('WT_SCRIPT_NAME', 'admin_site_ipaddress.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('Manage sites'));
-$controller->pageHeader();
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('Manage sites'))
+	->pageHeader();
 
 require_once WT_ROOT.'includes/functions/functions.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';

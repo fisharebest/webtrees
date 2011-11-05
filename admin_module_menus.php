@@ -24,9 +24,10 @@ define('WT_SCRIPT_NAME', 'admin_module_menus.php');
 require 'includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('Module administration'));
-$controller->pageHeader();
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('Module administration'))
+	->pageHeader();
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 

@@ -102,7 +102,7 @@ if ($ctype=='user') {
 if ($ctype=='user') {
 	$controller->setPageTitle(WT_I18N::translate('My page'));
 } else {
-	$controller->setPageTitle(WT_I18N::translate(get_gedcom_setting(WT_GED_ID, 'title'));
+	$controller->setPageTitle(WT_I18N::translate(get_gedcom_setting(WT_GED_ID, 'title')));
 }
 $controller->pageHeader();
 

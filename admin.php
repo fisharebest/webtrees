@@ -26,9 +26,10 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireManagerLogin();
-$controller->setPageTitle(WT_I18N::translate('Administration'));
-$controller->pageHeader();
+$controller
+	->requireManagerLogin()
+	->setPageTitle(WT_I18N::translate('Administration'))
+	->pageHeader();
 
 // Check for updates
 $latest_version_txt=fetch_latest_version();

@@ -24,8 +24,9 @@ define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireManagerLogin();
-$controller->setPageTitle(WT_I18N::translate('Family trees'));
+$controller
+	->requireManagerLogin()
+	->setPageTitle(WT_I18N::translate('Family trees'));
 
 // Don't allow the user to cancel the request.  We do not want to be left
 // with an incomplete transaction.

@@ -67,6 +67,7 @@ class WT_Controller_Base {
 	// What should this page show in the browser's title bar?
 	public function setPageTitle($page_title) {
 		$this->page_title=$page_title;
+		return $this;
 	}
 	// Some pages will want to display this as <h2> $page_title </h2>
 	public function getPageTitle() {
@@ -76,11 +77,13 @@ class WT_Controller_Base {
 	// What is the preferred URL for this page?
 	public function setCanonicalUrl($canonical_url) {
 		$this->canonical_url=$canonical_url;
+		return $this;
 	}
 
 	// Should robots index this page?
 	public function setMetaRobots($meta_robots) {
 		$this->meta_robots=$meta_robots;
+		return $this;
 	}
 
 	// Restrict access
@@ -89,6 +92,7 @@ class WT_Controller_Base {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 			exit;
 		}
+		return $this;
 	}
 
 	// Restrict access
@@ -97,6 +101,7 @@ class WT_Controller_Base {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 			exit;
 		}
+		return $this;
 	}
 
 	// Restrict access
@@ -105,11 +110,13 @@ class WT_Controller_Base {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 			exit;
 		}
+		return $this;
 	}
 
 	// Make a list of external JavaScript, so we can render them in the footer
 	public function addExternalJavaScript($script_name) {
 		$this->external_javascript[$script_name]=true;
+		return $this;
 	}
 
 	// Make a list of inline JavaScript, so we can render them in the footer
@@ -123,6 +130,7 @@ class WT_Controller_Base {
 		}
 		$tmp=&$this->$inline_javascript[$priority];
 		$tmp[]=$script;
+		return $this;
 	}
 
 	// We've collected up JavaScript fragments while rendering the page.
@@ -242,6 +250,7 @@ class WT_Controller_Base {
 
 		// We've displayed the header - display the footer automatically
 		$this->page_header=true;
+		return $this;
 	}
 
 	// Print the page footer, using the theme

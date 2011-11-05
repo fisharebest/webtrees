@@ -24,9 +24,10 @@ define('WT_SCRIPT_NAME', 'admin_site_readme.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('README documentation'));
-$controller->pageHeader();
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('README documentation'))
+	->pageHeader();
 
 function get_tag($txt,$tag){
 	$offset = 0;

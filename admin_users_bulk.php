@@ -29,9 +29,10 @@ define('WT_SCRIPT_NAME', 'admin_users_bulk.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
-$controller->setPageTitle(WT_I18N::translate('Send broadcast messages'));
-$controller->pageHeader();
+$controller
+	->requireAdminLogin()
+	->setPageTitle(WT_I18N::translate('Send broadcast messages'))
+	->pageHeader();
 
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
