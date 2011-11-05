@@ -182,7 +182,6 @@ class WT_Controller_Base {
 			'<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script>'.
 			'<script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>'.
 			'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.jeditable.min.js"></script>'.
-			'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js"></script>'.
 			'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.cookie.js"></script>'.
 			WT_JS_START.'
 			// Give JavaScript access to some PHP constants
