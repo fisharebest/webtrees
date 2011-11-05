@@ -28,7 +28,7 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Simple();
 $controller
-	->requireUserLogin()
+	->requireMemberLogin()
 	->setPageTitle(WT_I18N::translate('Edit'))
 	->pageHeader();
 
