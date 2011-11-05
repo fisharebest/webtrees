@@ -51,6 +51,9 @@ class WT_Controller_Base {
 
 	// Startup activity
 	public function __construct() {
+		// Every page uses jQuery and jQueryUI
+		//$this->addExternalJavaScript(WT_JQUERY_URL);
+		//$this->addExternalJavaScript(WT_JQUERYUI_URL);
 	}
 
 	// Shutdown activity
@@ -126,7 +129,11 @@ class WT_Controller_Base {
 		// Load external libraries first
 		$html=PHP_EOL;
 		foreach (array_keys($this->external_javascript) as $script_name) {
-			$html.='<script type="text/javascript" src="'.htmlspecialchars($script_name).'?v='.rawurlencode(WT_VERSION_TEXT).'"></script>'.PHP_EOL;
+			if (!WT_STATIC_URL) {
+				// Force scripts to be reloaded after an upgrade.
+				$script_name.='?v='.rawurlencode(WT_VERSION_TEXT);
+			}
+			$html.='<script type="text/javascript" src="'.htmlspecialchars($script_name).'"></script>'.PHP_EOL;
 		}
 		// Process the scripts, in priority order
 		$html.=self::JS_START;
