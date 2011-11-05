@@ -33,46 +33,33 @@ $controller->requireAdminLogin();
 $controller->setPageTitle(WT_I18N::translate('PHP information'));
 $controller->pageHeader();
 
-if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
+ob_start();
 
-if (!isset($action)) $action = "";
+phpinfo();
+$php_info = ob_get_contents();
 
-if ($action == "phpinfo") {
-	$helpindex = "phpinfo_help";
+ob_end_clean();
 
-	// "Help for this page" link
-	echo '<div id="page_help">', help_link('phpinfo'), '</div>';
+$php_info    = str_replace(" width=\"600\"", " width=\"\"", $php_info);
+$php_info    = str_replace("</body></html>", "", $php_info);
+$php_info    = str_replace("<table", "<table class=\"php_info ltr\"", $php_info);
+$php_info    = str_replace("td class=\"e\"", "td", $php_info);
+$php_info    = str_replace("td class=\"v\"", "td", $php_info);
+$php_info    = str_replace("tr class=\"v\"", "tr", $php_info);
+$php_info    = str_replace("tr class=\"h\"", "tr", $php_info);
 
-	echo '<div class="php_info">';
+$php_info    = str_replace(";", "; ", $php_info);
+$php_info    = str_replace(",", ", ", $php_info);
 
-	ob_start();
+// Put logo in table header
+$logo_offset = strpos($php_info, "<td>");
+$php_info = substr_replace($php_info, "<td colspan=\"3\" class=\"center\">", $logo_offset, 4);
+$logo_width_offset = strpos($php_info, "width=\"\"");
+$php_info = substr_replace($php_info, "", $logo_width_offset, 8);
+$php_info = str_replace(" width=\"\"", "", $php_info);
 
-	phpinfo();
-	$php_info = ob_get_contents();
+$offset = strpos($php_info, "<table");
+$php_info = substr($php_info, $offset);
 
-	ob_end_clean();
-
-	$php_info    = str_replace(" width=\"600\"", " width=\"\"", $php_info);
-	$php_info    = str_replace("</body></html>", "", $php_info);
-	$php_info    = str_replace("<table", "<table class=\"php_info ltr\"", $php_info);
-	$php_info    = str_replace("td class=\"e\"", "td", $php_info);
-	$php_info    = str_replace("td class=\"v\"", "td", $php_info);
-	$php_info    = str_replace("tr class=\"v\"", "tr", $php_info);
-	$php_info    = str_replace("tr class=\"h\"", "tr", $php_info);
-
-	$php_info    = str_replace(";", "; ", $php_info);
-	$php_info    = str_replace(",", ", ", $php_info);
-
-	// Put logo in table header
-	$logo_offset = strpos($php_info, "<td>");
-	$php_info = substr_replace($php_info, "<td colspan=\"3\" class=\"center\">", $logo_offset, 4);
-	$logo_width_offset = strpos($php_info, "width=\"\"");
-	$php_info = substr_replace($php_info, "", $logo_width_offset, 8);
-	$php_info = str_replace(" width=\"\"", "", $php_info);
-
-	$offset = strpos($php_info, "<table");
-	$php_info = substr($php_info, $offset);
-
-	echo $php_info;
-	echo '</div>';
-}
+echo '<div id="page_help">', help_link('phpinfo'), '</div>';
+echo '<div class="php_info">', $php_info, '</div>';
