@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-global $ENABLE_AUTOCOMPLETE, $cart, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $GEDCOM, $WT_IMAGES;
+global $ENABLE_AUTOCOMPLETE, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $GEDCOM, $WT_IMAGES;
 
 require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
@@ -43,7 +43,7 @@ echo WT_JS_START;
 echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
 echo WT_JS_END;
 
-if (count($cart)==0) { ?>
+if (count($_SESSION['cart'])==0) { ?>
 <h2><?php echo WT_I18N::translate('Family Tree Clippings Cart'); ?></h2>
 <?php }
 
@@ -105,7 +105,7 @@ if ($controller->action=='add') {
 		</form>
 	<?php }
 	}
-$ct = count($cart);
+$ct = count($_SESSION['cart']);
 
 if ($controller->privCount>0) {
 	echo "<span class=\"error\">".WT_I18N::translate('Some items could not be added due to privacy restrictions')."</span><br /><br />";
@@ -277,7 +277,7 @@ if ($ct==0) {
 		</tr>
 <?php
 	for ($i=0; $i<$ct; $i++) {
-		$clipping = $cart[$i];
+		$clipping = $_SESSION['cart'][$i];
 		$tag = strtoupper(substr($clipping['type'], 0, 4)); // source => SOUR
 		//print_r($clipping);
 		//-- don't show clippings from other gedcoms
@@ -309,4 +309,3 @@ if ($ct==0) {
 	</td></tr></table>
 <?php
 }
-if (isset($_SESSION["cart"])) $_SESSION["cart"]=$cart;

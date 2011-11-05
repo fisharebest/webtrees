@@ -67,7 +67,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	var $level3; // number of levels of descendents
 
 	public function __construct() {
-		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $GEDCOM, $cart;
+		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $GEDCOM;
 		
 		parent::__construct();
 
@@ -89,7 +89,6 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		$this->level3 = safe_GET('level3', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$others = safe_GET('others');
 		$item = safe_GET('item');
-		if (!isset($cart)) $cart = $_SESSION['cart'];
 		$this->type = safe_GET('type');
 
 		$this->conv_path = stripLRMRLM($this->conv_path);
@@ -161,21 +160,20 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			}
 		} else
 		if ($this->action == 'remove') {
-			$ct = count($cart);
+			$ct = count($_SESSION['cart']);
 			for ($i = $item +1; $i < $ct; $i++) {
-				$cart[$i -1] = $cart[$i];
+				$_SESSION['cart'][$i -1] = $_SESSION['cart'][$i];
 			}
-			unset ($cart[$ct -1]);
+			unset ($_SESSION['cart'][$ct -1]);
 		} else
 		if ($this->action == 'empty') {
-			$cart = array ();
-			$_SESSION["cart"] = $cart;
+			$_SESSION['cart'] = array();
 		} else
 		if ($this->action == 'download') {
-			usort($cart, "same_group");
+			usort($_SESSION['cart'], "same_group");
 			$media = array ();
 			$mediacount = 0;
-			$ct = count($cart);
+			$ct = count($_SESSION['cart']);
 			$filetext = gedcom_header(WT_GEDCOM);
 			// Include SUBM/SUBN records, if they exist
 			$subn=
@@ -213,7 +211,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			}
 
 			for ($i = 0; $i < $ct; $i++) {
-				$clipping = $cart[$i];
+				$clipping = $_SESSION['cart'][$i];
 				if ($clipping['gedcom'] == WT_GEDCOM) {
 					$object=WT_GedcomRecord::getInstance($clipping['id']);
 					list($record)=$object->privatizeGedcom($access_level);
@@ -286,10 +284,10 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	}
 
 	public static function id_in_cart($id) {
-		global $cart, $GEDCOM;
-		$ct = count($cart);
+		global $GEDCOM;
+		$ct = count($_SESSION['cart']);
 		for ($i = 0; $i < $ct; $i++) {
-			$temp = $cart[$i];
+			$temp = $_SESSION['cart'][$i];
 			if ($temp['id'] == $id && $temp['gedcom'] == $GEDCOM) {
 				return true;
 			}
@@ -355,7 +353,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	 * @param
 	 */
 	function add_clipping($clipping) {
-		global $cart, $GEDCOM;
+		global $GEDCOM;
 
 		if (!$clipping || !$clipping->canDisplayName()) {
 			return;
@@ -372,7 +370,7 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			$ged_id=get_id_from_gedcom($GEDCOM);
 			$gedrec=WT_GedcomRecord::getInstance($clipping['id']);
 			if ($gedrec->canDisplayName()) {
-				$cart[] = $clipping;
+				$_SESSION['cart'][] = $clipping;
 				$this->addCount++;
 			} else {
 				$this->privCount++;

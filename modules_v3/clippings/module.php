@@ -100,7 +100,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	public function getSidebarContent() {
 		require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
-		global $WT_IMAGES, $cart, $controller;
+		global $WT_IMAGES, $controller;
 
 		$out = '';
 
@@ -129,7 +129,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	public function getSidebarAjaxContent() {
 		require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
-		global $cart, $controller;
+		global $controller;
 
 		$controller = new WT_Controller_Clippings();
 		$add = safe_GET_xref('add','');
@@ -145,7 +145,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				$controller->id=$record->getXref();
 				$controller->type=$record->getType();
 				$ret = $controller->add_clipping($record);
-				if (isset($_SESSION["cart"])) $_SESSION["cart"]=$cart;
 				if ($ret) return $this->askAddOptions($record);
 			}
 		} elseif (!empty($add1)) {
@@ -176,32 +175,32 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			}
 		}
 		else if ($remove!=-1) {
-			$ct = count($cart);
+			$ct = count($_SESSION['cart']);
 			for ($i = $remove +1; $i < $ct; $i++) {
-				$cart[$i -1] = $cart[$i];
+				$_SESSION['cart'][$i -1] = $_SESSION['cart'][$i];
 			}
-			unset ($cart[$ct -1]);
+			unset ($_SESSION['cart'][$ct -1]);
 		}
 		else if (isset($_REQUEST['empty'])) {
-			$cart = array ();
-			$_SESSION["cart"] = $cart;
+			$_SESSION['cart'] = array ();
+			$_SESSION["cart"] = $_SESSION['cart'];
 		}
 		else if (isset($_REQUEST['download'])) {
 			return $this->downloadForm();
 		}
-		if (isset($_SESSION["cart"])) $_SESSION["cart"]=$cart;
+		if (isset($_SESSION["cart"])) $_SESSION["cart"]=$_SESSION['cart'];
 		return $this->getCartList();
 	}
 
 	public function getCartList() {
-		global $WT_IMAGES, $cart;
+		global $WT_IMAGES;
 
 		$out ='<ul>';
-		$ct = count($cart);
+		$ct = count($_SESSION['cart']);
 		if ($ct==0) $out .= '<br /><br />'.WT_I18N::translate('Your Clippings Cart is empty.').'<br /><br />';
 		else {
 			for ($i=0; $i<$ct; $i++) {
-				$clipping = $cart[$i];
+				$clipping = $_SESSION['cart'][$i];
 				$tag = strtoupper(substr($clipping['type'], 0, 4)); // source => SOUR
 				//print_r($clipping);
 				//-- don't show clippings from other gedcoms
@@ -236,7 +235,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			}
 		}
 		$out .= '</ul>';
-		if (count($cart)>0) {
+		if (count($_SESSION['cart'])>0) {
 			$out .= '<a href="sidebar.php?sb_action=clippings&amp;empty=true" class="remove_cart">'.WT_I18N::translate('Empty Cart').'</a>'.help_link('empty_cart', $this->getName());
 			$out .= '<br /><a href="sidebar.php?sb_action=clippings&amp;download=true" class="add_cart">'.WT_I18N::translate('Download Now').'</a>';
 		}
@@ -315,7 +314,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	public function downloadForm() {
 		global $TEXT_DIRECTION, $controller;
 
-		$controller = $controller;
 		$out = WT_JS_START;
 		$out .= 'function cancelDownload() {
 				var link = "sidebar.php?sb_action=clippings";
