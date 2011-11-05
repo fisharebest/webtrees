@@ -56,9 +56,13 @@ define ('WT_USE_GOOGLE_API', false);
 if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js');
 	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
+	define('WT_PROTOTYPE_URL',     'https://ajax.googleapis.com/ajax/libs/prototype/1.7.0.0/prototype.js');
+	define('WT_SCRIPTACULOUS_URL', 'https://ajax.googleapis.com/ajax/libs/scriptaculous/1.9.0/');
 } else {
 	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery/jquery.min.js');
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery/jquery-ui.min.js');
+	define('WT_PROTOTYPE_URL',     WT_STATIC_URL.'js/prototype/prototype.js');
+	define('WT_SCRIPTACULOUS_URL', WT_STATIC_URL.'js/scriptaculous/');
 }
 
 // Location of our modules and themes.  These are used as URLs and directory paths.
