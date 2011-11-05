@@ -27,6 +27,8 @@ define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
+$controller=new WT_Controller_Base();
+
 /**
  * split and center text by lines
  *
@@ -383,8 +385,8 @@ $name   =$person->getFullName();
 $addname=$person->getAddName();
 $title = /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is a person's name */ WT_I18N::translate('Fan chart of %s', $person->getFullName());
 
-// -- print html header information
-print_header($title);
+$controller->setPageTitle($title);
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -392,7 +394,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 else $cellwidth=(strlen($title)*7);*/
 $cellwidth = max(strlen($title)*4, "420");
 echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"".$cellwidth."px\" valign=\"top\">";
-echo '<h2>', $title, '</h2>';
+echo '<h2>', $controller->getPageTitle(), '</h2>';
 
 // -- print the form to change the number of displayed generations
 echo WT_JS_START;
@@ -454,5 +456,3 @@ echo "</td></tr></table>";
 
 $treeid = ancestry_array($rootid);
 print_fan_chart($treeid, 640*$fan_width/100, $fan_style*90);
-
-print_footer();

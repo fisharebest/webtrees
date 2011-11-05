@@ -27,8 +27,10 @@ define('WT_SCRIPT_NAME', 'notelist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
-print_header(WT_I18N::translate('Shared notes'));
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('Shared notes'));
+$controller->pageHeader();
+
 echo '<div class="center"><h2>', WT_I18N::translate('Shared notes'), '</h2>';
 print_note_table(get_note_list(WT_GED_ID));
 echo '</div>';
-print_footer();

@@ -30,6 +30,8 @@ define('WT_SCRIPT_NAME', 'indilist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
+$controller=new WT_Controller_Base();
+
 // We show three different lists: initials, surnames and individuals
 // Note that the data may contain special chars, such as surname="<unknown>",
 $alpha   =safe_GET('alpha', WT_REGEX_UNSAFE); // All surnames beginning with this letter where "@"=unknown and ","=none
@@ -113,7 +115,9 @@ if ($show_all=='yes') {
 	$url='indilist.php?alpha='.rawurlencode($alpha);
 }
 
-print_header(WT_I18N::translate('Individuals').' : '.$legend);
+$controller->setPageTitle(WT_I18N::translate('Individuals').' : '.$legend);
+$controller->pageHeader();
+
 echo '<h2 class="center">', WT_I18N::translate('Individuals'), '</h2>';
 
 // Print a selection list of initial letters
@@ -263,5 +267,3 @@ if ($showList) {
 		}
 	}
 }
-
-print_footer();

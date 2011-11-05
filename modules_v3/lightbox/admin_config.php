@@ -28,15 +28,12 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+$controller->setPageTitle(WT_I18N::translate('Lightbox-Album Configuration'));
+$controller->pageHeader();
+
 $action = safe_POST('action');
-
-print_header(WT_I18N::translate('Lightbox-Album Configuration'));
-
-if (!WT_USER_IS_ADMIN) {
-	echo'<div class="warning">', WT_I18N::translate('Page only for Administrators'), '</div>';
-	print_footer();
-	exit;
-}
 
 if ($action=='update' && !isset($security_user)) {
 	set_module_setting('lightbox', 'LB_MUSIC_FILE',     $_POST['NEW_LB_MUSIC_FILE']);
@@ -117,4 +114,3 @@ $LB_URL_HEIGHT=get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'); //  URL W
 	&nbsp;&nbsp;
 	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
 </form>
-<?php print_footer();

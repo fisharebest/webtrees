@@ -28,6 +28,8 @@
 define('WT_SCRIPT_NAME', 'reportengine.php');
 require './includes/session.php';
 
+$controller=new WT_Controller_Base();
+
 $famid=safe_GET('famid');
 $pid  =safe_GET('pid');
 
@@ -130,7 +132,8 @@ if (!empty($report)) {
 
 //-- choose a report to run
 if ($action=='choose') {
-	print_header(WT_I18N::translate('Choose a report to run'));
+	$controller->setPageTitle(WT_I18N::translate('Choose a report to run'));
+	$controller->pageHeader();
 
 	echo '<br /><br /><form name="choosereport" method="get" action="reportengine.php">';
 	echo '<input type="hidden" name="action" value="setup" />';
@@ -145,8 +148,6 @@ if ($action=='choose') {
 	echo '</select></td></tr>';
 	echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Click here to continue'), '" /></td></tr>';
 	echo '</table></form><br /><br />';
-
-	print_footer();
 }
 
 //-- setup report to run
@@ -174,7 +175,8 @@ elseif ($action=='setup') {
 	}
 	xml_parser_free($xml_parser);
 
-	print_header($report_array['title']);
+	$controller->setPageTitle($report_array['title']);
+	$controller->pageHeader();
 
 	if ($ENABLE_AUTOCOMPLETE) {
 		require_once WT_ROOT.'js/autocomplete.js.htm';
@@ -317,13 +319,9 @@ elseif ($action=='setup') {
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo '<input type="submit" value="', WT_I18N::translate('Download report'), '" ;"/>';
 	echo '</td></tr></table></form>';
-	print_footer();
 }
 //-- run the report
 elseif ($action=='run') {
-	// We have finished writing session data, so release the lock
-	Zend_Session::writeClose();
-
 	if (strstr($report, 'report_singlepage.xml')!==false) {
 		$DEBUG=false;
 		$pedigree=new ReportPedigree();

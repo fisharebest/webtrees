@@ -1,37 +1,37 @@
 <?php
-/**
- * Creates some statistics out of the GEDCOM information.
- * We will start with the following possibilities
- * number of persons -> periodes of 50 years from 1700-2000
- * age -> periodes of 10 years (different for 0-1,1-5,5-10,10-20 etc)
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @version $Id$
- * @package webtrees
- * @subpackage Lists
- */
+// Creates some statistics out of the GEDCOM information.
+// We will start with the following possibilities
+// number of persons -> periodes of 50 years from 1700-2000
+// age -> periodes of 10 years (different for 0-1,1-5,5-10,10-20 etc)
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'statisticsplot.php');
 require './includes/session.php';
+
+$controller=new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('Statistics plot'));
+$controller->pageHeader();
 
 $stats = new WT_Stats($GEDCOM);
 
@@ -915,7 +915,6 @@ if ($action=='update') {
 	unset($savedInput);
 }
 
-print_simple_header(WT_I18N::translate('Statistics plot'));
 echo '<h2 class="center">', WT_I18N::translate('Statistics plot'), '</h2>';
 echo '<br />';
 
@@ -995,4 +994,3 @@ default:
 echo '<br /><div class ="center noprint">';
 echo '<input type="button" value="', WT_I18N::translate('Close Window'), '" onclick="window.close()" /><br /><br />';
 echo '</div>';
-print_simple_footer();

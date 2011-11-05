@@ -34,6 +34,10 @@ if (!get_user_setting(WT_USER_ID, 'editaccount')) {
 	exit;
 }
 
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('User administration'));
+
+
 // Valid values for form variables
 $ALL_THEMES_DIRS=array();
 foreach (get_theme_names() as $themename=>$themedir) {
@@ -56,10 +60,10 @@ $form_visible_online=safe_POST_bool('form_visible_online');
 // Respond to form action
 if ($form_action=='update') {
 	if ($form_username!=WT_USER_NAME && get_user_id($form_username)) {
-		print_header(WT_I18N::translate('User administration'));
+		$controller->pageHeader();
 		echo '<span class="error">', WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), '</span><br />';
 	} elseif ($form_email!=getUserEmail(WT_USER_ID) && get_user_by_email($form_email)) {
-		print_header(WT_I18N::translate('User administration'));
+		$controller->pageHeader();
 		echo '<span class="error">', WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), '</span><br />';
 	} else {
 		// Change password
@@ -89,7 +93,7 @@ if ($form_action=='update') {
 		exit;
 	}
 } else {
-	print_header(WT_I18N::translate('User administration'));
+	$controller->pageHeader();
 
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 }
@@ -216,5 +220,3 @@ echo '</td></tr>';
 echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Save'), '" /></td></tr>';
 
 echo '</table></form>';
-
-print_footer();

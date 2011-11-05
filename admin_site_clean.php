@@ -23,12 +23,13 @@
 
 define('WT_SCRIPT_NAME', 'admin_site_clean.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
 
-if (!WT_USER_IS_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+$controller->setPageTitle(WT_I18N::translate('Cleanup data directory'));
+$controller->pageHeader();
+
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 function full_rmdir($dir) {
 	if (!is_writable($dir)) {
@@ -75,7 +76,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	}
 }
 
-print_header(WT_I18N::translate('Cleanup data directory'));
 echo
 	'<h3>', WT_I18N::translate('Cleanup data directory'), '</h3>',
 	'<p>',
@@ -125,5 +125,3 @@ echo
 	'<button type="submit">', WT_I18N::translate('Delete'), '</button>',
 	'</div>',
 	'</form>';
-
-print_footer();

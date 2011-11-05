@@ -26,7 +26,9 @@
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 
-print_simple_header(WT_I18N::translate('webtrees Message'));
+$controller=new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('webtrees Message'));
+$controller->pageHeader();
 
 $subject   =isset($_REQUEST['subject'   ]) ? $_REQUEST['subject'   ] : '';
 $url       =isset($_REQUEST['url'       ]) ? $_REQUEST['url'       ] : '';
@@ -42,12 +44,10 @@ $method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : '';
 
 if (empty($to)) {
 	echo '<p class="ui-state-error">'.WT_I18N::translate('No recipient user was provided.  Cannot continue.').'</p>';
-	print_simple_footer();
 	exit;
 }
 if ($to=='all' && !WT_USER_IS_ADMIN) {
 	echo '<p class="ui-state-error">'.WT_I18N::translate('No recipient user was provided.  Cannot continue.').'</p>';
-	print_simple_footer();
 	exit;
 }
 // Do not allow anonymous visitors to include links to external sites
@@ -78,8 +78,6 @@ if (($action=='send')&&(isset($_SESSION['good_to_send']))&&($_SESSION['good_to_s
 					if ($ip === false) {
 						echo '<p class="ui-state-error">'.WT_I18N::translate('Please enter a valid email address.').'</p>';
 						$action='compose';
-						//print_simple_footer();
-						//exit;
 					}
 				}
 			}
@@ -233,5 +231,3 @@ else if ($action=='delete') {
 	if (deleteMessage($id)) echo WT_I18N::translate('Message Deleted');
 }
 echo '<center><br /><br /><a href="javascript:;" onclick="if (window.opener.refreshpage) window.opener.refreshpage(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
-
-print_simple_footer();

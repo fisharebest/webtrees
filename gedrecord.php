@@ -24,6 +24,8 @@
 define('WT_SCRIPT_NAME', 'gedrecord.php');
 require './includes/session.php';
 
+$controller=new WT_Controller_Base();
+
 $obj=WT_GedcomRecord::getInstance(safe_GET_xref('pid'));
 
 if (
@@ -37,10 +39,12 @@ if (
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$obj->getRawUrl());
 	exit;
 } elseif (!$obj || !$obj->canDisplayDetails()) {
-	print_header(WT_I18N::translate('Private'));
+	$controller->setPageTitle(WT_I18N::translate('Private'));
+	$controller->pageHeader();
 	print_privacy_error();
 } else {
-	print_header($obj->getFullName());
+	$controller->setPageTitle($obj->getFullName());
+	$controller->pageHeader();
 	echo
 		'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
 		preg_replace(
@@ -49,4 +53,3 @@ if (
 		),
 		'</pre>';
 }
-print_footer();

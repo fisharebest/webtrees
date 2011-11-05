@@ -25,13 +25,12 @@
 
 define('WT_SCRIPT_NAME', 'admin_users.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_edit.php';
 
-// Only admin users can access this page
-if (!WT_USER_IS_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+$controller->setPageTitle(WT_I18N::translate('User administration'));
+
+require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 // Valid values for form variables
 $ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'edituser', 'edituser2', 'listusers', 'loadrows', 'load1row');
@@ -267,7 +266,8 @@ case 'load1row':
 	exit;
 }
 
-print_header(WT_I18N::translate('User administration'));
+$controller->pageHeader();
+
 // Save new user info to the database
 if ($action=='createuser' || $action=='edituser2') {
 	if (($action=='createuser' || $action=='edituser2' && $username!=$oldusername) && get_user_id($username)) {
@@ -781,5 +781,3 @@ default:
 	echo WT_JS_END;
 	break;
 }
-
-print_footer();

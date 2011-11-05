@@ -26,6 +26,8 @@
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
 
+$controller=new WT_Controller_Simple();
+
 $ctype=safe_REQUEST($_REQUEST, 'ctype', array('user', 'gedcom'));
 
 if (!$ctype) {
@@ -43,10 +45,9 @@ if (isset($_REQUEST['name'])) $name = $_REQUEST['name'];
 //-- make sure that they have user status before they can use this page
 //-- otherwise have them login again
 if (!WT_USER_ID) {
-	print_simple_header('');
+	$controller->pageHeader();
 	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
 	echo '<div class="center"><a href="javascript:;" onclick="self.close();">', WT_I18N::translate('Close Window').'</a></div>';
-	print_simple_footer();
 	exit;
 }
 if (!WT_USER_IS_ADMIN) $setdefault=false;
@@ -99,10 +100,11 @@ if ($ctype=='user') {
 }
 
 if ($ctype=='user') {
-	print_simple_header(WT_I18N::translate('My page'));
+	$controller->setPageTitle(WT_I18N::translate('My page'));
 } else {
-	print_simple_header(get_gedcom_setting(WT_GED_ID, 'title'));
+	$controller->setPageTitle(WT_I18N::translate(get_gedcom_setting(WT_GED_ID, 'title'));
 }
+$controller->pageHeader();
 
 if ($action=='update') {
 	foreach (array('main', 'side') as $location) {

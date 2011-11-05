@@ -1,40 +1,33 @@
 <?php
-/**
- * Log viewer.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Admin
- * @version $Id$
- */
+// Log viewer.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'admin_site_logs.php');
-
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
 
-// Only managers can access this page
-if (!WT_USER_GEDCOM_ADMIN) {
-	// TODO: Check if we are a manager in *any* gedcom, not just the current one
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
+$controller=new WT_Controller_Base();
+$controller->requireManagerLogin();
+$controller->setPageTitle(WT_I18N::translate('Logs'));
+
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $earliest=WT_DB::prepare("SELECT DATE(MIN(log_time)) FROM `##log`")->execute(array())->fetchOne();
 $latest  =WT_DB::prepare("SELECT DATE(MAX(log_time)) FROM `##log`")->execute(array())->fetchOne();
@@ -181,7 +174,7 @@ case 'load_json':
 	exit;
 }
 
-print_header(WT_I18N::translate('Logs'));
+$controller->pageHeader();
 echo WT_JS_START;
 
 ?>
@@ -285,5 +278,3 @@ if ($action) {
 	 	'</tbody>',
 		'</table>';
 }
-
-print_footer();

@@ -32,12 +32,15 @@ if (!WT_USER_CAN_ACCEPT) {
 	exit;
 }
 
+$controller=new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('Pending changes'));
+$controller->pageHeader();
+
 $action   =safe_GET('action');
 $change_id=safe_GET('change_id');
 $index    =safe_GET('index');
 $ged      =safe_GET('ged');
 
-print_simple_header(WT_I18N::translate('Pending changes'));
 echo WT_JS_START;
 ?>
 	function show_gedcom_record(xref) {
@@ -242,4 +245,3 @@ if ($changed_gedcoms) {
 }
 
 echo '</div>';
-print_simple_footer();

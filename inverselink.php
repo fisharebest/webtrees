@@ -29,6 +29,10 @@ define('WT_SCRIPT_NAME', 'inverselink.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
+$controller=new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('Link media')." ".$toitems);
+$controller->pageHeader();
+
 //-- page parameters and checking
 $linktoid = safe_GET_xref('linktoid');
 $mediaid  = safe_GET_xref('mediaid');
@@ -62,8 +66,6 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 			break;
 		}
 	}
-
-	print_simple_header(WT_I18N::translate('Link media')." ".$toitems);
 
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -196,14 +198,11 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 		echo '</table>';
 		echo '</form>';
 		echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
-		print_simple_footer();
 	} elseif ($action == "update" && $paramok) {
 		linkMedia($mediaid, $linktoid);
 		echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
-		print_simple_footer();
 	} else {
 		echo '<center>nothing to do<center>';
 		echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
-		print_simple_footer();
 	}
 }

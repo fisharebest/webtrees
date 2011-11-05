@@ -28,7 +28,6 @@ require './includes/session.php';
 
 // Extract query parameters
 $url         =safe_POST('url',      WT_REGEX_URL);
-$type        =safe_POST('type',     array('full', 'simple'));
 $action      =safe_POST('action');
 $username    =safe_POST('username', WT_REGEX_USERNAME);
 $password    =safe_POST('password', WT_REGEX_UNSAFE); // Can use any password that was previously stored
@@ -39,7 +38,6 @@ $help_message=safe_GET('help_message');
 
 // Some variables can come from the URL as well as the form
 if (!$url)    $url   =safe_GET('url',  WT_REGEX_URL);
-if (!$type)   $type  =safe_GET('type', array('full', 'simple'), 'full');
 if (!$action) $action=safe_GET('action');
 
 if (empty($url)) {
@@ -141,11 +139,10 @@ if ($action=='login') {
 	}
 }
 
-if ($type=="full") {
-	print_header(WT_I18N::translate('webtrees user login'));
-} else {
-	print_simple_header(WT_I18N::translate('webtrees user login'));
-}
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('webtrees user login'));
+$controller->pageHeader();
+
 echo '<div class="center">';
 
 echo '<table class="center width60"><tr><td>';
@@ -181,7 +178,6 @@ echo '</td></tr></table><br /><br />';
 		<input type="hidden" name="url" value="<?php echo htmlspecialchars($url); ?>" />
 		<input type="hidden" name="ged" value="<?php if (isset($ged)) echo htmlspecialchars($ged); else echo htmlentities($GEDCOM); ?>" />
 		<input type="hidden" name="pid" value="<?php if (isset($pid)) echo htmlspecialchars($pid); ?>" />
-		<input type="hidden" name="type" value="<?php echo htmlspecialchars($type); ?>" />
 		<input type="hidden" name="usertime" value="" />
 		<?php
 		if (!empty($message)) echo "<span class='error'><br /><b>$message</b><br /><br /></span>";
@@ -222,9 +218,3 @@ echo "</div><br /><br />";
 <script type="text/javascript">
 	document.loginform.username.focus();
 </script>
-<?php
-if ($type=="full") {
-	print_footer();
-} else {
-	print_simple_footer();
-}

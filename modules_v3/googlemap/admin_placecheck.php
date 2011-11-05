@@ -29,11 +29,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-if (!WT_USER_IS_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin.php');
-	exit;
-}
-
 $action   =safe_POST     ('action'                                              );
 $gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID );
 $openinnew=safe_POST_bool('openinnew'                                           );
@@ -73,12 +68,10 @@ if ($show_changes && !empty($_SESSION['placecheck_state'])) {
 	$_SESSION['placecheck_state'] = $state;
 }
 
-// Must be an admin user to use this module
-if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=placelist.php');
-	exit;
-}
-print_header(WT_I18N::translate('Place Check').' - '.WT_GEDCOM);
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+$controller->setPageTitle(WT_I18N::translate('Place Check'));
+$controller->pageHeader();
 
 $target=$openinnew ? 'target="_blank"' : '';
 
@@ -374,6 +367,3 @@ default:
 	echo "<div class=\"gm_check_top accepted\">", WT_I18N::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), "</div>";
 	break;
 }
-
-//echo footers
-print_footer();

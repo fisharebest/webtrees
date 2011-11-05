@@ -27,6 +27,10 @@
 
 define('WT_SCRIPT_NAME', 'admin_site_merge.php');
 require './includes/session.php';
+
+$controller=new WT_Controller_Base;
+$controller->setPageTitle(WT_I18N::translate('Merge records'));
+
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
@@ -40,7 +44,7 @@ $keep2=safe_POST('keep2', WT_REGEX_UNSAFE);
 if (empty($keep1)) $keep1=array();
 if (empty($keep2)) $keep2=array();
 
-print_header(WT_I18N::translate('Merge records'));
+$controller->pageHeader();
 
 if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
@@ -49,7 +53,6 @@ if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple
 //-- make sure they have accept access privileges
 if (!WT_USER_CAN_ACCEPT) {
 	echo '<span class="error">', WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.'), '</span>';
-	print_footer();
 	exit;
 }
 
@@ -326,4 +329,3 @@ if ($action=='choose') {
 		<input type="submit" value="', WT_I18N::translate('Merge records'), '" tabindex="3" />
 		</form></div>';
 }
-print_footer();

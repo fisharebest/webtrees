@@ -18,18 +18,16 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @version $Id$
+// $Id$
 
 define('WT_SCRIPT_NAME', 'admin_module_reports.php');
-
 require 'includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
 
-// Only admin users can access this page
-if (!WT_USER_IS_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+$controller->setPageTitle(WT_I18N::translate('Module administration'));
+
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 // New modules may have been added...
 $installed_modules=WT_Module::getInstalledModules();
@@ -65,7 +63,7 @@ if ($action=='update_mods') {
 	}
 }
 
-print_header(WT_I18N::translate('Module administration'));
+$controller->pageHeader();
 ?>
 
 <div align="center">
@@ -120,5 +118,3 @@ print_header(WT_I18N::translate('Module administration'));
 		</form>
 	</div>
 </div>
-<?php
-print_footer();

@@ -22,7 +22,6 @@
 
 define('WT_SCRIPT_NAME', 'admin_pgv_to_wt.php');
 require './includes/session.php';
-require WT_ROOT.'includes/functions/functions_edit.php';
 
 // We can only import into an empty system, so deny access if we have already created a gedcom or added users.
 if (WT_GED_ID || get_user_count()>1) {
@@ -30,13 +29,12 @@ if (WT_GED_ID || get_user_count()>1) {
 	exit;
 }
 
-// Must be logged in as an admin
-if (!WT_USER_IS_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+$controller->setPageTitle(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));
+$controller->pageHeader();
 
-print_header(WT_I18N::translate('PhpGedView to webtrees transfer wizard'));
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 echo
 	'<style type="text/css">

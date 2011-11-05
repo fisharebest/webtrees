@@ -36,6 +36,19 @@ class WT_Controller_Base {
 	private $page_header  =false;              // Have we printed a page header?
 	private $page_title   =WT_WEBTREES;        // <head><title> $page_title </title></head>
 
+	// The controller accumulates JavaScript (inline and external), and renders it in the footer
+	const JS_START="\n<script type=\"text/javascript\">\n//<![CDATA[\n";
+	const JS_END  ="\n//]]>\n</script>\n";
+	const JS_PRIORITY_HIGH   = 0;
+	const JS_PRIORITY_NORMAL = 1;
+	const JS_PRIORITY_LOW    = 2;
+	private $inline_javascript=array(
+		self::JS_PRIORITY_HIGH  =>array(),
+		self::JS_PRIORITY_NORMAL=>array(),
+		self::JS_PRIORITY_LOW   =>array(),
+	);
+	private $external_javascript=array();
+
 	// Startup activity
 	public function __construct() {
 	}
@@ -65,6 +78,66 @@ class WT_Controller_Base {
 	// Should robots index this page?
 	public function setMetaRobots($meta_robots) {
 		$this->meta_robots=$meta_robots;
+	}
+
+	// Restrict access
+	public function requireAdminLogin() {
+		if (!WT_USER_IS_ADMIN) {
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
+			exit;
+		}
+	}
+
+	// Restrict access
+	public function requireManagerLogin() {
+		if (!WT_USER_GEDCOM_ADMIN) {
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
+			exit;
+		}
+	}
+
+	// Restrict access
+	public function requireMemberLogin() {
+		if (!WT_USER_ID) {
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
+			exit;
+		}
+	}
+
+	// Make a list of external JavaScript, so we can render them in the footer
+	public function addExternalJavaScript($script_name) {
+		$this->external_javascript[$script_name]=true;
+	}
+
+	// Make a list of inline JavaScript, so we can render them in the footer
+	public function addInlineJavaScript($script, $priority=self::JS_PRIORITY_NORMAL) {
+		if (WT_DEBUG) {
+			/* Show where the JS was added */
+			$backtrace=debug_backtrace();
+			$script='/* '.$backtrace[0]['file'].':'.$backtrace[0]['line'].' */'.PHP_EOL.$script;
+		}
+		$tmp=&$this->$inline_javascript[$priority];
+		$tmp[]=$script;
+	}
+
+	// We've collected up JavaScript fragments while rendering the page.
+	// Now display them.
+	private function getJavaScript() {
+		// Load external libraries first
+		$html=PHP_EOL;
+		foreach (array_keys($this->external_javascript) as $script_name) {
+			$html.='<script type="text/javascript" src="'.htmlspecialchars($script_name).'?v='.rawurlencode(WT_VERSION_TEXT).'"></script>'.PHP_EOL;
+		}
+		// Process the scripts, in priority order
+		$html.=self::JS_START;
+		foreach ($this->inline_javascript as $scripts) {
+			foreach ($scripts as $script) {
+				$html.=$script.PHP_EOL;
+			}
+		}
+		$html.=self::JS_END;
+
+		return $html;
 	}
 
 	// Print the page header, using the theme
@@ -167,13 +240,14 @@ class WT_Controller_Base {
 	protected function pageFooter() {
 		global $footerfile, $WT_IMAGES, $TEXT_DIRECTION;
 
+		echo $this->getJavaScript();
+
 		$view='full';
 		require WT_ROOT.$footerfile;
 
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();
 		}
-		echo WT_JS::render();
 		echo '</body></html>';
 	}
 

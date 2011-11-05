@@ -35,14 +35,15 @@ $action=safe_REQUEST($_REQUEST, 'action');
 if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
 
-print_simple_header(WT_I18N::translate('Edit geographic place locations'));
+$controller=new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('Edit geographic place locations'));
+$controller->pageHeader();
 
 if (!WT_USER_IS_ADMIN) {
 	echo "<table class=\"facts_table\">\n";
 	echo "<tr><td colspan=\"2\" class=\"facts_value\">", WT_I18N::translate('Page only for Administrators');
 	echo "</td></tr></table>\n";
 	echo "<br /><br /><br />\n";
-	print_simple_footer();
 	exit;
 }
 echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
@@ -102,7 +103,6 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('');\n//-->\n</script>";
 	}
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
-	print_simple_footer();
 	exit;
 }
 
@@ -121,7 +121,6 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('');\n//-->\n</script>";
 	}
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
-	print_simple_footer();
 	exit;
 }
 
@@ -142,7 +141,6 @@ if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
-	print_simple_footer();
 	exit;
 }
 
@@ -363,5 +361,3 @@ $api="v3";
 </form>
 <?php
 echo "<center><a href=\"javascript:;\" onclick=\"edit_close('')\">", WT_I18N::translate('Close Window'), "</a><br /></center>\n";
-
-print_simple_footer();

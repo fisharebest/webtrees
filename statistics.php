@@ -29,6 +29,9 @@
 define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
 
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('Statistics'));
+
 // check for on demand content loading
 if (isset($_REQUEST['tab'])) {
 	$tab = $_REQUEST['tab'];
@@ -719,7 +722,8 @@ if (isset($content) && $content==1) {
 		</div>
 	<?php }
 } else {
-	print_header(WT_I18N::translate('Statistics'));
+	$controller->pageHeader();
+
 	$ble = false;
 	?>
 	<h2 class="center"><?php echo WT_I18N::translate('Statistics'); ?></h2>
@@ -778,5 +782,4 @@ if (isset($content) && $content==1) {
 	<?php
 	$ble = true;
 	echo '<br/><br/>';
-	print_footer();
 }

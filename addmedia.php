@@ -28,6 +28,10 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
+$controller=new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('Add a new media object'));
+$controller->pageHeader();
+
 // TODO use GET/POST, rather than $_REQUEST
 // TODO decide what validation is required on these input parameters
 $pid        =safe_REQUEST($_REQUEST, 'pid',         WT_REGEX_XREF);
@@ -49,7 +53,6 @@ $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
 $success=false; // If successful, we close this window automatically
 
-print_simple_header(WT_I18N::translate('Add a new media object'));
 $disp = true;
 if (empty($pid) && !empty($mid)) $pid = $mid;
 if (!empty($pid)) {
@@ -80,7 +83,6 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 		}
 	}
 	echo '<br /><br /><div class="center"><a href="javascript: ', WT_I18N::translate('Close Window'), '" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a></div>';
-	print_simple_footer();
 	exit;
 }
 
@@ -630,4 +632,3 @@ if ($success && !WT_DEBUG) {
 	echo '<div class="center"><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">'.WT_I18N::translate('Close Window').'</a></div>';
 	echo '<br />';
 }
-print_simple_footer();

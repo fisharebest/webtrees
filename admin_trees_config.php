@@ -33,6 +33,9 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	exit;
 }
 
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('Family tree configuration'));
+
 /**
  * find the name of the first GEDCOM file in a zipfile
  * @param string $zipfile the path and filename
@@ -361,7 +364,9 @@ default:
 	break;
 
 }
-print_header(WT_I18N::translate('Family tree configuration'));
+
+$controller->pageHeader();
+
 if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
 }
@@ -1607,5 +1612,3 @@ echo WT_JS_START;?>
 	</tr>
 </table>
 </form>
-<?php
-print_footer();

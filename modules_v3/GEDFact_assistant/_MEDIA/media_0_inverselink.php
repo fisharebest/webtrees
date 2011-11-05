@@ -50,12 +50,6 @@ if (empty($linktoid) || empty($linkto)) {
 		break;
 	}
 }
-if (WT_USER_IS_ADMIN) {
-	print_simple_header(WT_I18N::translate('Link media')." ".$toitems);
-} else {
-	print_simple_header(WT_I18N::translate('Administration'));
-	echo WT_I18N::translate('Unable to authenticate user.');
-}
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -699,7 +693,6 @@ function shiftlinks() {
 	echo '</table>';
 	echo '</form>';
 	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br /></center>';
-	// print_simple_footer();
 
 } elseif ($action == "update" && $paramok) {
 
@@ -744,10 +737,7 @@ function shiftlinks() {
 	}
 
 	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br /></center>';
-	print_simple_footer();
-
 } else {
 	// echo '<center>You must be logged in as an Administrator<center>';
 	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
-	//print_simple_footer();
 }

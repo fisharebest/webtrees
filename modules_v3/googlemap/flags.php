@@ -31,6 +31,10 @@ if (!defined('WT_WEBTREES')) {
 require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
+$controller=new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('Select flag'));
+$controller->pageHeader();
+
 $countries=WT_Stats::get_all_countries();
 $action=safe_REQUEST($_REQUEST, 'action');
 
@@ -38,8 +42,6 @@ if (isset($_REQUEST['countrySelected'])) $countrySelected = $_REQUEST['countrySe
 if (!isset($countrySelected)) $countrySelected='Countries';
 if (isset($_REQUEST['stateSelected'])) $stateSelected = $_REQUEST['stateSelected'];
 if (!isset($stateSelected)) $stateSelected='States';
-
-print_simple_header(WT_I18N::translate('Select flag'));
 
 $country = array();
 $rep = opendir(WT_ROOT.WT_MODULES_DIR.'googlemap/places/flags/');
@@ -102,7 +104,6 @@ if ($action == 'ChangeFlag') {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close();\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
-	print_simple_footer();
 	exit;
 }
 else {
@@ -244,5 +245,3 @@ else {
 </form>
 <?php
 echo '<div class="center"><a href="javascript:;" onclick="edit_close();">', WT_I18N::translate('Close Window'), '</a></div><br />';
-
-print_simple_footer();

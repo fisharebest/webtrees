@@ -170,7 +170,9 @@ if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 	exit;
 }
 
-print_header(WT_I18N::translate('Edit geographic place locations'));
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('Edit geographic place locations'));
+$controller->pageHeader();
 
 echo '<table id="gm_config"><tr>',
 	'<th><a ', (safe_GET('mod_action')=='admin_editconfig' ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>', '</th>',
@@ -344,7 +346,6 @@ if ($action=='ImportFile') {
 	<input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>" /><br />
 </form>
 <?php
-	print_footer();
 	exit;
 }
 
@@ -653,7 +654,6 @@ foreach ($placelist as $place) {
 	echo help_link('PL_EXPORT_ALL_FILE','googlemap');
 	echo '</td></tr></table>';
 if (empty($SEARCH_SPIDER)) {
-	print_footer();
 } else {
 	echo WT_I18N::translate('Search Engine Spider Detected'), ': ', $SEARCH_SPIDER;
 	echo '</div></body></html>';

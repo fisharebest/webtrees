@@ -25,14 +25,10 @@ define('WT_SCRIPT_NAME', 'admin.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-// Only managers can access this page
-if (!WT_USER_GEDCOM_ADMIN) {
-	// TODO: Check if we are a manager in *any* gedcom, not just the current one
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
-
-print_header(WT_I18N::translate('Administration'));
+$controller=new WT_Controller_Base();
+$controller->requireManagerLogin();
+$controller->setPageTitle(WT_I18N::translate('Administration'));
+$controller->pageHeader();
 
 // Check for updates
 $latest_version_txt=fetch_latest_version();
@@ -288,7 +284,6 @@ echo
 	WT_JS_END,
 	'</div>'; //id = content_container
 
-print_footer();
 
 // This is a list of old files and directories, from earlier versions of webtrees, that can be deleted
 // It was generated with the help of a command like this

@@ -40,6 +40,10 @@ class batch_update_WT_Module extends WT_Module implements WT_Module_Config{
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'admin_batch_update':
+			$controller=new WT_Controller_Base();
+			$controller->setPageTitle(WT_I18N::translate('Batch update')).
+			$controller->pageHeader();
+
 			// TODO: these files should be methods in this class
 			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
 			$mod=new batch_update;

@@ -26,4 +26,40 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Controller_Simple extends WT_Controller_Base {
+
+	// Popup windows don't always need a title
+	public function __construct() {
+		$this->setTitle(WT_WEBTREES);
+	}
+
+	// Simple (i.e. popup) windows are deprecated.
+	public function pageHeader() {
+		global $view;
+		$view='simple';
+		parent::pageHeader();
+	}
+	
+	// Restrict access
+	public function requireAdminLogin() {
+		if (!WT_USER_IS_ADMIN) {
+			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
+			exit;
+		}
+	}
+	
+	// Restrict access
+	public function requireManagerLogin() {
+		if (!WT_USER_GEDCOM_ADMIN) {
+			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
+			exit;
+		}
+	}
+	
+	// Restrict access
+	public function requireMemberLogin() {
+		if (!WT_USER_ID) {
+			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
+			exit;
+		}
+	}
 }

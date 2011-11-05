@@ -39,7 +39,9 @@ $name   =$person->getFullName();
 $addname=$person->getAddName();
 $title = /* I18N: %s is a person's name */ WT_I18N::translate('Compact tree of %s', $person->getFullName());
 
-print_header($title);
+$controller=new WT_Controller_Base();
+$controller->setPageTitle($title);
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -274,8 +276,6 @@ echo "</tr>";
 
 echo "</table>";
 echo "<br />";
-
-print_footer();
 
 function print_td_person($n) {
 	global $treeid, $WT_IMAGES;

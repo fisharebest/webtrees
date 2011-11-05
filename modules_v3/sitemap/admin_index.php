@@ -30,17 +30,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-//-- make sure that they have admin status before they can use this page
-//-- otherwise have them login again
-if (!WT_USER_IS_ADMIN) {
-	if (WT_USER_ID) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
-		exit;
-	} else {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=module.php?mod=sitemap');
-		exit;
-	}
-}
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+$controller->setPageTitle(WT_I18N::translate('Generate Sitemap files'));
 
 global $GEDCOM, $SHOW_MARRIED_NAMES;
 
@@ -181,7 +173,7 @@ if ($action=="sendIndex") {
 	exit;
 }
 
-print_header(WT_I18N::translate('Generate Sitemap files'));
+$controller->pageHeader();
 
 if ($action=="generate") {
 	echo "<h3>";
@@ -400,4 +392,3 @@ if ($action=="") {
 
 <?php
 }
-print_footer();

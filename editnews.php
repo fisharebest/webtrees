@@ -26,11 +26,12 @@
 define('WT_SCRIPT_NAME', 'editnews.php');
 require './includes/session.php';
 
-print_simple_header(WT_I18N::translate('Add/edit journal/news entry'));
+$controller=new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('Add/edit journal/news entry'));
+$controller->pageHeader();
 
 if (!WT_USER_ID) {
 	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
-	print_simple_footer();
 	exit;
 }
 
@@ -117,5 +118,3 @@ if ($action=="compose") {
 	if (deleteNews($news_id)) echo WT_I18N::translate('The news/journal entry has been deleted.');
 }
 echo "<center><br /><br /><a href=\"javascript:;\" onclick=\"if (window.opener.refreshpage) window.opener.refreshpage(); window.close();\">".WT_I18N::translate('Close Window')."</a><br /></center>";
-
-print_simple_footer();

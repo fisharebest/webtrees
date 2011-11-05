@@ -1,10 +1,9 @@
 <?php
-//
 // Check a GEDCOM file for compliance with the 5.5.1 specification
 // and other common errors.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2006-2009 Greg Roach, all rights reserved
@@ -23,11 +22,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @author Greg Roach
-// @package webtrees
-// @subpackage Admin
-// @version $Id$
-//
+//$Id$
 
 define('WT_SCRIPT_NAME', 'gedcheck.php');
 require './includes/session.php';
@@ -37,7 +32,10 @@ if (!WT_USER_GEDCOM_ADMIN) {
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
 	exit;
 }
-print_header(WT_I18N::translate('GEDCOM checker').' - '.$GEDCOM);
+
+$controller=new WT_Controller_Base();
+$controller->setPageTitle('GEDCOM checker').' - '.$GEDCOM);
+$controller->pageHeader();
 
 ////////////////////////////////////////////////////////////////////////////////
 // Scan the data directory for gedcom files
@@ -123,7 +121,6 @@ echo '</table></form><hr />';
 // Instead, show some useful help info.
 if (!isset($_POST['action'])) {
 	echo '<p>', WT_I18N::translate('This module checks the format of a GEDCOM file against the <a href="http://phpgedview.sourceforge.net/ged551-5.pdf">5.5.1 GEDCOM Specification</a>.  It also checks for a number of common errors in your data.  Note that there are lots of versions, extensions and variations on the specification so you should not be concerned with any issues other than those flagged as "Critical".  The explanation for all the line-by-line errors can be found in the specification, so please check there before asking for help.'), '</p><hr />';
-	print_footer();
 	exit();
 }
 
@@ -942,5 +939,3 @@ if (isset($last_err_num)) {
 	echo WT_I18N::translate('No errors found at this level.');
 }
 echo '</div>'; // language/direction/alignment
-
-print_footer();

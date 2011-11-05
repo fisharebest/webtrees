@@ -35,8 +35,6 @@ global $GEDCOM, $ABBREVIATE_CHART_LABELS;
 global $show_full;
 global $famid, $censyear, $censdate;
 
-// print_simple_header("Census");
-
 $summary=$controller->record->format_first_major_fact(WT_EVENTS_BIRT, 2);
 if (!($controller->record->isDead())) {
 	// If alive display age

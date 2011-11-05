@@ -29,6 +29,10 @@ define('WT_SCRIPT_NAME', 'calendar.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('Anniversary calendar'));
+$controller->pageHeader();
+
 if (isset($_REQUEST['cal'])) $cal = $_REQUEST['cal'];
 if (isset($_REQUEST['day'])) $day = $_REQUEST['day'];
 if (isset($_REQUEST['month'])) $month = $_REQUEST['month'];
@@ -103,9 +107,6 @@ $today_month=$today->Format('%O');
 // Invalid dates?  Go to monthly view, where they'll be found.
 if ($cal_date->d>$days_in_month && $action=='today')
 	$action='calendar';
-
-// Print the header stuff
-print_header(WT_I18N::translate('Anniversary calendar'));
 echo "<div>";
 
 // Calendar form
@@ -526,7 +527,6 @@ case 'calendar':
 	break;
 }
 echo '</div><br />';
-print_footer();
 
 /////////////////////////////////////////////////////////////////////////////////
 // Filter a list of facts

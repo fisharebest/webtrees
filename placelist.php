@@ -27,6 +27,8 @@ define('WT_SCRIPT_NAME', 'placelist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
+$controller=new WT_Controller_Base();
+
 $use_googlemap = array_key_exists('googlemap', WT_Module::getActiveModules()) && get_module_setting('googlemap', 'GM_PLACE_HIERARCHY');
 
 if ($use_googlemap) {
@@ -50,10 +52,11 @@ if (empty($action)) $action = 'find';
 if (empty($display)) $display = 'hierarchy';
 
 if ($display=='hierarchy') {
-	print_header(WT_I18N::translate('Place hierarchy'));
+	$controller->setPageTitle(WT_I18N::translate('Place hierarchy'));
 } else {
-	print_header(WT_I18N::translate('Place List'));
+	$controller->setPageTitle(WT_I18N::translate('Place List'));
 }
+$controller->pageHeader();
 
 echo '<div class="center"><h2>';
 if ($display=='hierarchy' && $level == 0)  {
@@ -393,4 +396,3 @@ echo '</a></div>';
 if ($use_googlemap && $display=='hierarchy') {
 	map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
 }
-print_footer();

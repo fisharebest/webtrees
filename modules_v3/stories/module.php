@@ -207,8 +207,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				$this->config();
 			} else {
 				$block_id=safe_GET('block_id');
+
+				$controller=new WT_Controller_Base();
 				if ($block_id) {
-					print_header(WT_I18N::translate('Edit story'));
+					$controller->setPageTitle(WT_I18N::translate('Edit story'));
 					$title=get_block_setting($block_id, 'title');
 					$story_body=get_block_setting($block_id, 'story_body');
 					$gedcom_id=WT_DB::prepare(
@@ -218,12 +220,13 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 						"SELECT xref FROM `##block` WHERE block_id=?"
 					)->execute(array($block_id))->fetchOne();
 				} else {
-					print_header(WT_I18N::translate('Add story'));
+					$controller->setPageTitle(WT_I18N::translate('Add story'));
 					$title='';
 					$story_body='';
 					$gedcom_id=WT_GED_ID;
 					$xref=safe_GET('xref', WT_REGEX_XREF);
 				}
+				$controller->pageHeader();
 				?>
 				<script type="text/javascript">
 					var pastefield;
@@ -288,7 +291,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</p>';
 				echo '</form>';
 
-				print_footer();
 				exit;
 			}
 		} else {
@@ -322,7 +324,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		global $WT_IMAGES, $TEXT_DIRECTION;
 
 		if (WT_USER_GEDCOM_ADMIN) {
-			print_header($this->getTitle());
+
+			$controller=new WT_Controller_Base();
+			$controller->setPageTitle($this->getTitle());
+			$controller->pageHeader();
 
 			$stories=WT_DB::prepare(
 				"SELECT block_id, xref".
@@ -360,7 +365,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					</tr>';
 			}
 			echo '</table>';
-			print_footer();
 		} else {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 			exit;
@@ -370,39 +374,40 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	private function show_list() {
 		global $WT_IMAGES, $TEXT_DIRECTION;
 
-			print_header($this->getTitle());
+		$controller=new WT_Controller_Base();
+		$controller->setPageTitle($this->getTitle());
+		$controller->pageHeader();
 
-			$stories=WT_DB::prepare(
-				"SELECT block_id, xref".
-				" FROM `##block` b".
-				" WHERE module_name=?".
-				" AND gedcom_id=?".
-				" ORDER BY xref"
-			)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+		$stories=WT_DB::prepare(
+			"SELECT block_id, xref".
+			" FROM `##block` b".
+			" WHERE module_name=?".
+			" AND gedcom_id=?".
+			" ORDER BY xref"
+		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
 
-			echo '<table class="list_table width90">';
-			if (count($stories)>0) {
+		echo '<table class="list_table width90">';
+		if (count($stories)>0) {
+			echo '<tr>
+				<th class="list_label">', WT_I18N::translate('Story title'), '</th>
+				<th class="list_label">', WT_I18N::translate('Individual'), '</th>
+				</tr>';
+		}
+		foreach ($stories as $story) {
+			$indi=WT_Person::getInstance($story->xref);
+			if ($indi) {
+				$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
+			} else {
+				$name=$story->xref;
+			}
+			if ($indi->canDisplayDetails()) {
 				echo '<tr>
-					<th class="list_label">', WT_I18N::translate('Story title'), '</th>
-					<th class="list_label">', WT_I18N::translate('Individual'), '</th>
+					<td class="list_value">', get_block_setting($story->block_id, 'title'), '</td>
+					<td class="list_value wrap">', $name, '</td>
 					</tr>';
 			}
-			foreach ($stories as $story) {
-				$indi=WT_Person::getInstance($story->xref);
-				if ($indi) {
-					$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
-				} else {
-					$name=$story->xref;
-				}
-				if ($indi->canDisplayDetails()) {
-					echo '<tr>
-						<td class="list_value">', get_block_setting($story->block_id, 'title'), '</td>
-						<td class="list_value wrap">', $name, '</td>
-						</tr>';
-				}
-			}
-			echo '</table>';
-			print_footer();
+		}
+		echo '</table>';
 	}
 
 		// Implement WT_Module_Menu

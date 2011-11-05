@@ -134,8 +134,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			$this->config();
 		} else {
 			$block_id=safe_GET('block_id');
+			$controller=new WT_Controller_Base();
 			if ($block_id) {
-				print_header(WT_I18N::translate('Edit FAQ item'));
+				$controller->setPageTitle(WT_I18N::translate('Edit FAQ item'));
 				$header=get_block_setting($block_id, 'header');
 				$faqbody=get_block_setting($block_id, 'faqbody');
 				$block_order=WT_DB::prepare(
@@ -145,7 +146,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 					"SELECT gedcom_id FROM `##block` WHERE block_id=?"
 				)->execute(array($block_id))->fetchOne();
 			} else {
-				print_header(WT_I18N::translate('Add FAQ item'));
+				$controller->setPageTitle(WT_I18N::translate('Add FAQ item'));
 				$header='';
 				$faqbody='';
 				$block_order=WT_DB::prepare(
@@ -153,6 +154,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				)->execute(array($this->getName()))->fetchOne();
 				$gedcom_id=WT_GED_ID;
 			}
+			$controller->pageHeader();
 
 			// "Help for this page" link
 			echo '<div id="page_help">', help_link('add_faq_item', $this->getName()), '</div>';
@@ -203,8 +205,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5"/>';
 			echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" /></p>';
 			echo '</form>';
-
-			print_footer();
 			exit;
 		}
 	}
@@ -276,7 +276,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	}
 
 	private function show() {
-		print_header($this->getTitle());
+		$controller=new WT_Controller_Base();
+		$controller->setPageTitle($this->getTitle());
+		$controller->pageHeader();
 
 		$faqs=WT_DB::prepare(
 			"SELECT block_id, bs1.setting_value AS header, bs2.setting_value AS body".
@@ -334,13 +336,14 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				echo '<hr />';
 			}
 		}
-		print_footer();
 	}
 
 	private function config() {
 		global $WT_IMAGES;
 
-		print_header($this->getTitle());
+		$controller=new WT_Controller_Base();
+		$controller->setPageTitle($this->getTitle());
+		$controller->pageHeader();
 
 		$faqs=WT_DB::prepare(
 			"SELECT block_id, block_order, gedcom_id, bs1.setting_value AS header, bs2.setting_value AS faqbody".
@@ -410,6 +413,5 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			}
 			echo '</table>';
 		}
-		print_footer();
 	}
 }

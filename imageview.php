@@ -28,17 +28,16 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Media();
 
-print_simple_header(WT_I18N::translate('Image viewer'));
+$view='simple'; // TODO, this is a "full screen" controller, but this is a "simple" page.
+$controller->pageHeader();
 
 if (!$controller->mediaobject) {
-	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b><br /><br />';
-	print_footer();
+	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b>';
 	exit;
 }
 
 if (!$controller->mediaobject->canDisplayDetails()) {
 	print_privacy_error();
-	print_footer();
 	exit;
 }
 ?>
@@ -204,4 +203,3 @@ echo "</form>";
 echo "<div style=\"position: relative; \">";
 echo "</div>";
 echo "<div class=\"center\"><br /><a href=\"javascript:;\" onclick=\"window.close();\">".WT_I18N::translate('Close Window')."</a></div>";
-print_simple_footer();

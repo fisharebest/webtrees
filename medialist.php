@@ -27,6 +27,9 @@ define('WT_SCRIPT_NAME', 'medialist.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('Media objects'));
+
 $action = safe_GET('action');
 $search = safe_GET('search');
 $sortby = safe_GET('sortby', 'file', 'title');
@@ -165,12 +168,9 @@ if ($build == 'yes') {
 	$WT_SESSION->Medialist_user=WT_USER_ID;
 }
 
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
-// ************************  END = 'Build the medialist array' ************************
+$controller->pageHeader();
 
-print_header(WT_I18N::translate('Media objects'));
-echo '<div class="center"><h2>', WT_I18N::translate('Media objects'), '</h2></div>';
+echo '<div class="center"><h2>', $controller->getPageTitle(), '</h2></div>';
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
@@ -563,5 +563,3 @@ Plus other Media Options - MediaViewer page'), '" />';
   }
   echo '</div>';
 }
-// ************************  END = 'Print the medialist array' ************************
-print_footer();

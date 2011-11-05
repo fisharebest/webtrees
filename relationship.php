@@ -27,6 +27,8 @@ define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
+$controller=new WT_Controller_Base();
+
 $show_full=$PEDIGREE_FULL_DETAILS;
 if (isset($_REQUEST['show_full'])) $show_full = $_REQUEST['show_full'];
 if (!isset($_REQUEST['path_to_find'])) {
@@ -95,7 +97,8 @@ if (!empty($_SESSION["pid2"]) && $_SESSION["pid2"]!=$pid2) {
 	$path_to_find=0;
 }
 // -- print html header information
-print_header($title_string);
+$controller->setPageTitle($title_string);
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -282,8 +285,7 @@ function paste_id(value) {
 </div>
 <?php
 if ($check_node===false) {
-	print_footer();
-	return;
+	exit;
 }
 if ($show_full==0) {
 	echo '<br /><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
@@ -508,5 +510,3 @@ $maxyoffset += 100;
 		relationship_chart_div.style.width = "100%";
 	}
 </script>
-<?php
-print_footer();

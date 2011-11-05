@@ -51,8 +51,10 @@ if ($surn=='*') {
 	$surn = array_rand(WT_Query_Name::surnames('', '', false, true, WT_GED_ID));
 }
 
-//-- form
-print_header(WT_I18N::translate('Branches').' - '.$surn);
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('Branches').' - '.$surn);
+$controller->pageHeader();
+
 if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'/js/autocomplete.js.htm';
 }
@@ -100,7 +102,6 @@ if ($surn) {
 	echo '</ol>';
 	echo '</fieldset>';
 }
-print_footer();
 
 function print_fams($person, $famid=null) {
 	global $UNKNOWN_NN, $surn, $surn_script, $TEXT_DIRECTION, $user_ancestors;

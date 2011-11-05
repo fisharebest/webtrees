@@ -23,6 +23,8 @@
 //
 // $Id$
 
+$controller=new WT_Controller_Simple();
+
 global $MEDIA_DIRECTORY, $MEDIA_DIRECTORY_LEVELS, $TEXT_DIRECTION, $ABBREVIATE_CHART_LABELS; 
 
 $type           =safe_GET('type', WT_REGEX_ALPHA, 'indi');
@@ -108,43 +110,44 @@ require WT_ROOT.'includes/specialchars.php';
 
 switch ($type) {
 case "indi":
-	print_simple_header(WT_I18N::translate('Find individual ID'));
+	$controller->setPageTitle(WT_I18N::translate('Find individual ID'));
 	break;
 case "fam":
-	print_simple_header(WT_I18N::translate('Find Family List'));
+	$controller->setPageTitle(WT_I18N::translate('Find Family List'));
 	break;
 case "media":
-	print_simple_header(WT_I18N::translate('Find media'));
+	$controller->setPageTitle(WT_I18N::translate('Find media'));
 	$action="filter";
 	break;
 case "place":
-	print_simple_header(WT_I18N::translate('Find Place'));
+	$controller->setPageTitle(WT_I18N::translate('Find Place'));
 	$action="filter";
 	break;
 case "repo":
-	print_simple_header(WT_I18N::translate('Repositories'));
+	$controller->setPageTitle(WT_I18N::translate('Repositories'));
 	$action="filter";
 	break;
 case "note":
-	print_simple_header(WT_I18N::translate('Find Shared Note'));
+	$controller->setPageTitle(WT_I18N::translate('Find Shared Note'));
 	$action="filter";
 	break;
 case "source":
-	print_simple_header(WT_I18N::translate('Find Source'));
+	$controller->setPageTitle(WT_I18N::translate('Find Source'));
 	$action="filter";
 	break;
 case "specialchar":
-	print_simple_header(WT_I18N::translate('Find Special Characters'));
+	$controller->setPageTitle(WT_I18N::translate('Find Special Characters'));
 	$action="filter";
 	break;
 case "facts":
-	print_simple_header(WT_I18N::translate('Find fact tags'));
+	$controller->setPageTitle(WT_I18N::translate('Find fact tags'));
 	echo
 		WT_JS_START,
 		'jQuery(document).ready(function(){ initPickFact(); });',
 		WT_JS_END;
 	break;
 }
+$controller->pageHeader();
 
 echo WT_JS_START;
 ?>
@@ -1081,5 +1084,3 @@ echo "</div>"; // Close div that centers table
 
 // Set focus to the input field
 if ($type!='facts') echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
-
-print_simple_footer();

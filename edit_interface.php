@@ -25,6 +25,12 @@
 
 define('WT_SCRIPT_NAME', 'edit_interface.php');
 require './includes/session.php';
+
+$controller=new WT_Controller_Simple();
+$controller->requireUserLogin();
+$controller->setPageTitle(WT_I18N::translate('Edit'));
+$controller->pageHeader();
+
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 // TODO work out whether to use GET/POST for these
@@ -54,8 +60,6 @@ $pids_array_edit=safe_REQUEST($_REQUEST, 'pids_array_edit', WT_REGEX_XREF);
 $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
-
-print_simple_header(WT_I18N::translate('Edit'));
 
 if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'js/autocomplete.js.htm';
@@ -169,7 +173,6 @@ if (!empty($pid)) {
 	}
 } elseif (($action!="addchild")&&($action!="addchildaction")&&($action!="addnewsource")&&($action!="mod_edit_fact")&&($action!="addnewnote")&&($action!="addmedia_links")&&($action!="addnoteaction")&&($action!="addnoteaction_assisted")) {
 	// No $pid?  Internal error of some sort
-	print_simple_footer();
 	$edit = true;
 } else {
 	$edit = true;
@@ -179,7 +182,6 @@ if (!WT_USER_CAN_EDIT || !$edit || !$ALLOW_EDIT_GEDCOM) {
 	echo
 		'<p class="error">', WT_I18N::translate('Privacy settings prevent you from editing this record.'), '</p>',
 		'<p><a href="javascript: ', WT_I18N::translate('Close Window'), '" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
-	print_simple_footer();
 	exit;
 }
 
@@ -2398,8 +2400,6 @@ if ($action == 'addmedia_links' || $action == 'addnewnote_assisted' ) {
 	echo "<br /><div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div>';
 } elseif (isset($closeparent) && $closeparent=="yes" ) {
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div><br />';
-	print_simple_footer();
 } else {
 	echo "<div class=\"center\"><a href=\"javascript:;\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div><br />';
-	print_simple_footer();
 }

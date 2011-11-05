@@ -318,7 +318,6 @@ function checkChangeTime($pid, $gedrec, $last_time) {
 		echo "<span class=\"error\">", WT_I18N::translate('The record with id %s was changed by another user since you last accessed it.', $pid), "<br /><br />";
 		if (!empty($changeUser)) echo /* I18N: %s placeholders are a user-ID and a timestamp */ WT_I18N::translate('This record was last changed by <i>%s</i> at %s', $changeUser, date("d M Y H:i:s", $changeTime)), "<br /><br />";
 		echo WT_I18N::translate('Please reload the previous page to make sure you are working with the most recent record.'), "</span>";
-		print_simple_footer();
 		exit;
 	}
 }

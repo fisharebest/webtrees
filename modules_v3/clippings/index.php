@@ -35,7 +35,7 @@ global $ENABLE_AUTOCOMPLETE, $cart, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, 
 require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 
 $controller=new WT_Controller_Clippings();
-print_header(WT_I18N::translate('Clippings cart'));
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -310,4 +310,3 @@ if ($ct==0) {
 <?php
 }
 if (isset($_SESSION["cart"])) $_SESSION["cart"]=$cart;
-print_footer();

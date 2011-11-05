@@ -21,14 +21,11 @@
 // $Id$
 
 define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
-
 require './includes/session.php';
 
-// The gedcom admin page is for managers only!
-if (!WT_USER_GEDCOM_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
+$controller=new WT_Controller_Base();
+$controller->requireManagerLogin();
+$controller->setPageTitle(WT_I18N::translate('Family trees'));
 
 // Don't allow the user to cancel the request.  We do not want to be left
 // with an incomplete transaction.
@@ -131,7 +128,7 @@ case 'replace_import':
 
 $gedcoms=get_all_gedcoms();
 
-print_header(WT_I18N::translate('Family trees'));
+$controller->pageHeader();
 
 // "Help for this page" link
 echo '<div id="page_help">', help_link('gedcom_administration'), '</div>';
@@ -181,7 +178,6 @@ case 'importform':
 		} else {
 			echo '<p>', WT_I18N::translate('No GEDCOM files found.  You need to copy files to the <b>%s</b> directory on your server.', WT_DATA_DIR);
 			echo '</form>';
-			print_footer();
 			exit;
 		}
 	}
@@ -189,7 +185,6 @@ case 'importform':
 	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
 	echo '<br /><br /><input type="submit" value="', WT_I18N::translate('Save'), '" /></form>';
 	echo '</form>';
-	print_footer();
 	exit;
 }
 
@@ -289,4 +284,3 @@ if (WT_USER_IS_ADMIN) {
 				'</div>';
 		}
 }
-print_footer();

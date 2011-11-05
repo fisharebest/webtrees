@@ -48,7 +48,10 @@ if (!WT_USER_CAN_EDIT) {
 	exit;
 }
 
-print_header(WT_I18N::translate('Upload media files'));
+$controller=new WT_Controller_Base();
+$controller->setPageTitle(WT_I18N::translate('Upload media files'));
+$controller->pageHeader();
+
 ?>
 <script type="text/javascript">
 <!--
@@ -80,4 +83,3 @@ if (!dir_is_writable($MEDIA_DIRECTORY)) {
 } else {
 	show_mediaUpload_form(WT_SCRIPT_NAME, false); // We have the green light to upload media, print the form
 }
-print_footer();

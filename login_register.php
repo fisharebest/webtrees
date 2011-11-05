@@ -27,6 +27,8 @@ define('WT_SCRIPT_NAME', 'login_register.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
+$controller=new WT_Controller_Base();
+
 $REQUIRE_ADMIN_AUTH_REGISTRATION=get_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION');
 
 $action         =safe_POST('action');
@@ -49,7 +51,8 @@ $message='';
 
 switch ($action) {
 	case 'pwlost' :
-		print_header(WT_I18N::translate('Lost password request'));
+		$controller->setPageTitle(WT_I18N::translate('Lost password request'));
+		$controller->pageHeader();
 		?>
 		<script type="text/javascript">
 		<!--
@@ -84,7 +87,8 @@ switch ($action) {
 		break;
 
 	case 'requestpw' :
-		print_header(WT_I18N::translate('Lost password request'));
+		$controller->setPageTitle(WT_I18N::translate('Lost password request'));
+		$controller->pageHeader();
 		echo '<div class="center">';
 		$user_id=get_user_id($user_name);
 		if (!$user_id) {
@@ -188,7 +192,8 @@ switch ($action) {
 
 		if ($user_name_false == false && $user_password01_false == false && $user_password02_false == false && $user_realname_false == false && $user_email_false == false && $user_language_false == false && $user_comments_false == false && $password_mismatch == false) $action = 'registernew';
 		else {
-			print_header(WT_I18N::translate('Request new user account'));
+			$controller->setPageTitle(WT_I18N::translate('Request new user account'));
+			$controller->pageHeader();
 			// Empty user array in case any details might be left
 			// and faulty users are requested and created
 			$user = array();
@@ -315,7 +320,8 @@ switch ($action) {
 			$_SESSION['good_to_send'] = false;
 
 		if (isset($user_name)) {
-			print_header(WT_I18N::translate('New Account confirmation'));
+			$controller->setPageTitle(WT_I18N::translate('New Account confirmation'));
+			$controller->pageHeader();
 			echo '<div class="center">';
 			$user_created_ok = false;
 
@@ -435,7 +441,9 @@ switch ($action) {
 		$user_id=get_user_id($user_name);
 		WT_I18N::init(get_user_setting($user_id, 'language'));
 
-		print_header(WT_I18N::translate('User verification'));
+		$controller->setPageTitle(WT_I18N::translate('User verification'));
+		$controller->pageHeader();
+
 		echo '<div class="center">';
 		?>
 		<form name="verifyform" method="post" action="" onsubmit="t = new Date(); document.verifyform.time.value=t.toUTCString();">
@@ -467,7 +475,8 @@ switch ($action) {
 		$user_id=get_user_id($user_name);
 		WT_I18N::init(get_user_setting($user_id, 'language'));
 
-		print_header(WT_I18N::translate('User verification')); // <-- better verification of authentication code
+		$controller->setPageTitle(WT_I18N::translate('User verification'));
+		$controller->pageHeader();
 		echo '<div class="center">';
 		echo '<table class="center facts_table wrap '.$TEXT_DIRECTION.'">';
 		echo '<tr><td class="topbottombar">'.WT_I18N::translate('User verification').'</td></tr>';
@@ -547,5 +556,3 @@ switch ($action) {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
 		break;
 }
-
-print_footer();

@@ -42,25 +42,23 @@
 
 define('WT_SCRIPT_NAME', 'admin_media.php');
 require './includes/session.php';
+
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+$controller->setPageTitle(WT_I18N::translate('Manage multimedia'));
+
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
 require_once WT_ROOT.'includes/functions/functions_mediadb.php';
 
-// Only admin users can access this page
-if (!WT_USER_IS_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
-
 // editing must be enabled
 if (!$ALLOW_EDIT_GEDCOM) {
-	print_header(WT_I18N::translate('Manage multimedia'));
+	$controller->pageHeader();
 	echo "<span class=\"error\"><b>";
 	echo WT_I18N::translate('Media management features are not available when online editing is disabled.');
 	echo "</b></span><br />";
-	print_footer();
 	exit;
 }
 
@@ -271,7 +269,7 @@ if (WT_USER_IS_ADMIN) {
 }
 
 // echo the header of the page
-print_header(WT_I18N::translate('Manage multimedia'));
+$controller->pageHeader();
 ?>
 <script type="text/javascript">
 <!--
@@ -1303,4 +1301,3 @@ echo WT_JS_START; ?>
 } else {
 	echo WT_I18N::translate('The media folder is corrupted.');
 }
-print_footer();

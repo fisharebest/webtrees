@@ -26,19 +26,16 @@
 // $Id$
 
 define('WT_SCRIPT_NAME', 'admin_site_ipaddress.php');
-
 require './includes/session.php';
+
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+$controller->setPageTitle(WT_I18N::translate('Manage sites'));
+$controller->pageHeader();
+
 require_once WT_ROOT.'includes/functions/functions.php';
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
-
-// Only admin users can access this page
-if (!WT_USER_IS_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
-
-print_header(WT_I18N::translate('Manage sites'));
 
 $action = safe_GET('action');
 if (empty($action)) $action = safe_POST('action');
@@ -107,61 +104,60 @@ echo
 	'<tr><td>',
 	'<form name="searchengineform" action="', WT_SCRIPT_NAME, '" method="post">',
 	'<table>',
-		'<tr><th>', WT_I18N::translate('Manually mark Search Engines by IP'). help_link('help_manual_search_engines'), '</th></tr>',
-		'<tr>',
-		'<td>',
-			'<table>';
+	'<tr><th>', WT_I18N::translate('Manually mark Search Engines by IP'). help_link('help_manual_search_engines'), '</th></tr>',
+	'<tr>',
+	'<td>',
+	'<table>';
 
-			$sql="SELECT ip_address, comment FROM `##ip_address` WHERE category='search-engine' ORDER BY INET_ATON(ip_address)";
-			$index=0;
-			$search_engines=WT_DB::prepare($sql)->fetchAssoc();
-			foreach ($search_engines as $ip_address=>$ip_comment) {
-				echo '<tr><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>';
-				echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td><td class="button">';
-				echo '<button name="deleteSearch" value="', $ip_address, '" type="submit">', WT_I18N::translate('Remove'), '</button>';
-				echo '</td></tr>';
-			}
-			echo '<tr><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorSearch) ? '':$address, '" /></span></td>';
-			echo '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />';
-			echo '<br />', WT_I18N::translate('You may enter a comment here.'), '</td><td class="button" valign="top"><input name="action" type="hidden" value="addSearch"/>';
-				echo '<input type="submit" value="', WT_I18N::translate('Add'), '" />';
-			echo '</td></tr>';
+$sql="SELECT ip_address, comment FROM `##ip_address` WHERE category='search-engine' ORDER BY INET_ATON(ip_address)";
+$index=0;
+$search_engines=WT_DB::prepare($sql)->fetchAssoc();
+foreach ($search_engines as $ip_address=>$ip_comment) {
+	echo '<tr><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>';
+	echo '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td><td class="button">';
+	echo '<button name="deleteSearch" value="', $ip_address, '" type="submit">', WT_I18N::translate('Remove'), '</button>';
+	echo '</td></tr>';
+}
+echo '<tr><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorSearch) ? '':$address, '" /></span></td>';
+echo '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />';
+echo '<br />', WT_I18N::translate('You may enter a comment here.'), '</td><td class="button" valign="top"><input name="action" type="hidden" value="addSearch"/>';
+echo '<input type="submit" value="', WT_I18N::translate('Add'), '" />';
+echo '</td></tr>';
 
-			if (!empty($errorSearch)) {
-				echo '<tr><td colspan="2"><span class="warning">';
-				echo $errorSearch;
-				echo '</span></td></tr>';
-				$errorSearch = '';
-			}
-	echo '</table></td></tr></table></form></td></tr></table>';
+if (!empty($errorSearch)) {
+	echo '<tr><td colspan="2"><span class="warning">';
+	echo $errorSearch;
+	echo '</span></td></tr>';
+	$errorSearch = '';
+}
+echo '</table></td></tr></table></form></td></tr></table>';
 
 
 // Banned IP address table 
 echo '<table class="sites">',
-	 '<tr><td><form name="banIPform" action="', WT_SCRIPT_NAME, '" method="post">',
-	 '<table>',
-	 '<tr><th>', WT_I18N::translate('Ban Sites by IP').help_link('help_banning'), '</th></tr>',
-	 '<tr><td>',
-	 '<table>';
-		$sql="SELECT ip_address, comment FROM `##ip_address` WHERE category='banned' ORDER BY INET_ATON(ip_address)";
-		$banned=WT_DB::prepare($sql)->fetchAssoc();
-		foreach ($banned as $ip_address=>$ip_comment) {
-			echo '<tr><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>',
-				 '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td><td class="button">',
-				 '<button name="deleteBanned" value="', $ip_address, '" type="submit">', WT_I18N::translate('Remove'), '</button>',
-				 '</td></tr>';
-		}
-		echo '<tr><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorBanned) ? '':$address, '" /></span></td>',
-			 '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />',
-			 '<br />', WT_I18N::translate('You may enter a comment here.'), '</td><td class="button" valign="top"><input name="action" type="hidden" value="addBanned"/>',
-			 '<input type="submit" value="', WT_I18N::translate('Add'), '" />',
-			 '</td></tr>';
+	'<tr><td><form name="banIPform" action="', WT_SCRIPT_NAME, '" method="post">',
+	'<table>',
+	'<tr><th>', WT_I18N::translate('Ban Sites by IP').help_link('help_banning'), '</th></tr>',
+	'<tr><td>',
+	'<table>';
+$sql="SELECT ip_address, comment FROM `##ip_address` WHERE category='banned' ORDER BY INET_ATON(ip_address)";
+$banned=WT_DB::prepare($sql)->fetchAssoc();
+foreach ($banned as $ip_address=>$ip_comment) {
+	echo '<tr><td><span dir="ltr"><input type="text" name="address', ++$index, '" size="16" value="', $ip_address, '" readonly /></span></td>',
+		 '<td><input type="text" name="comment', ++$index, '" size="60" value="', $ip_comment, '" readonly /></td><td class="button">',
+		 '<button name="deleteBanned" value="', $ip_address, '" type="submit">', WT_I18N::translate('Remove'), '</button>',
+		 '</td></tr>';
+}
+echo '<tr><td valign="top"><span dir="ltr"><input type="text" id="txtAddIp" name="address" size="16"  value="', empty($errorBanned) ? '':$address, '" /></span></td>',
+	 '<td><input type="text" id="txtAddComment" name="comment" size="60"  value="" />',
+	 '<br />', WT_I18N::translate('You may enter a comment here.'), '</td><td class="button" valign="top"><input name="action" type="hidden" value="addBanned"/>',
+	 '<input type="submit" value="', WT_I18N::translate('Add'), '" />',
+	 '</td></tr>';
 
-		if (!empty($errorBanned)) {
-			echo '<tr><td colspan="2"><span class="warning">';
-			echo $errorBanned;
-			echo '</span></td></tr>';
-			$errorBanned = '';
-		}
-	echo '</table></td></tr></table></form></td></tr></table>';
-print_footer();
+if (!empty($errorBanned)) {
+	echo '<tr><td colspan="2"><span class="warning">';
+	echo $errorBanned;
+	echo '</span></td></tr>';
+	$errorBanned = '';
+}
+echo '</table></td></tr></table></form></td></tr></table>';

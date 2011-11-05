@@ -25,10 +25,9 @@
 // $Id$
 
 define('WT_SCRIPT_NAME', 'index.php');
-if (defined ('WT_ROOT')) {
-	require WT_ROOT.'includes/session.php';
-} else
-	require './includes/session.php';
+require './includes/session.php';
+
+$controller=new WT_Controller_Base();
 
 // The only option for action is "ajax"
 $action=safe_REQUEST($_REQUEST, 'action', 'ajax');
@@ -80,13 +79,11 @@ if ($action=='ajax') {
 }
 
 if ($ctype=='user') {
-	print_header(WT_I18N::translate('My page'));
+	$controller->setPageTitle(WT_I18N::translate('My page'));
 } else {
-	print_header(get_gedcom_setting(WT_GED_ID, 'title'));
+	$controller->setPageTitle(get_gedcom_setting(WT_GED_ID, 'title'));
 }
-
-// We have finished writing session data, so release the lock
-Zend_Session::writeClose();
+$controller->pageHeader();
 
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
@@ -167,5 +164,3 @@ if (WT_USER_IS_ADMIN && $ctype=='gedcom' && !in_array('gedcom_block', $blocks['m
 	echo "<a href=\"javascript:;\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1');\">".WT_I18N::translate('Change the blocks on this page').'</a>';
 	echo '</div>';
 }
-
-print_footer();

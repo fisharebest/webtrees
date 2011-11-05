@@ -27,6 +27,8 @@ define('WT_SCRIPT_NAME', 'familybook.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
+$controller=new WT_Controller_Base();
+
 // Extract form variables
 $pid        =safe_GET_xref('pid');
 $show_full  =safe_GET('show_full',     array('0', '1'), $PEDIGREE_FULL_DETAILS);
@@ -208,7 +210,8 @@ function print_family_book($person, $descent) {
 	}
 }
 
-print_header(/* I18N: %s is a person's name */ WT_I18N::translate('Family book of %s', $person->getFullName()));
+$controller->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Family book of %s', $person->getFullName()));
+$controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -316,4 +319,3 @@ echo
 print_family_book($person, $descent);
 
 echo '</div>';
-print_footer();

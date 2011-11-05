@@ -113,7 +113,11 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
         $tv = new TreeView('tv');
 				ob_start();
 				$person=WT_Person::getInstance($rootid);
-	       print_header(WT_I18N::translate('Interactive tree of %s', $person->getFullName()));
+
+				$controller=new WT_Controller_Base();
+				$controller->setPageTitle(WT_I18N::translate('Interactive tree of %s', $person->getFullName()));
+				$controller->pageHeader();
+
         if (WT_USE_LIGHTBOX) {
         	require WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 				}
@@ -128,7 +132,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
        	$header = str_replace('</head>', $this->js.$this->css.'</head>', $header);
         echo $header;
         echo $tv->drawViewport($rootid, 4, $this->style);
-        print_footer();
         break;
 
       case 'getDetails':

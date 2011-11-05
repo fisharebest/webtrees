@@ -29,8 +29,9 @@
 // $Id$
 
 define('WT_SCRIPT_NAME', 'help_text.php');
-
 require './includes/session.php';
+
+$controller=new WT_Controller_Simple();
 
 $help=safe_GET('help');
 switch ($help) {
@@ -2922,7 +2923,9 @@ default:
 	break;
 }
 
-print_simple_header($title);
+$controller->setPageTitle($title);
+$controller->pageHeader();
+
 echo '<div class="helpheader">', $title, '</div>';
 echo '<div class="helpcontent">', $text,'</div>';
 echo '<div class="helpfooter">';
@@ -2931,4 +2934,3 @@ if ($help!='help_contents_help') {
 }
 echo '<a href="javascript:;" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a>';
 echo '</div>';
-print_simple_footer();

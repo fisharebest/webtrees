@@ -1,57 +1,47 @@
 <?php
-
-/**
- * Allow an admin user to download the entire gedcom file.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @package webtrees
- * @subpackage Admin
- * @version $Id$
- */
+// Allow an admin user to download the entire gedcom file.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// Derived from PhpGedView
+// Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'downloadgedcom.php');
 require './includes/session.php';
+
+$controller=new WT_Controller_Base();
+$controller->requireManagerLogin();
+$controller->setPageTitle(WT_I18N::translate('Download GEDCOM'));
+
 require_once WT_ROOT.'includes/functions/functions_export.php';
 
 // Validate user parameters
-if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
-if (!isset($_SESSION['exportConvSlashes'])) $_SESSION['exportConvSlashes'] = 'forward';
-
 $ged              = safe_GET('ged',              preg_quote_array(get_all_gedcoms()));
 $action           = safe_GET('action',           'download');
 $convert          = safe_GET('convert',          'yes', 'no');
 $zip              = safe_GET('zip',              'yes', 'no');
-$conv_path        = safe_GET('conv_path',        WT_REGEX_NOSCRIPT, $_SESSION['exportConvPath']);
-$conv_slashes     = safe_GET('conv_slashes',     array('forward', 'backward'), $_SESSION['exportConvSlashes']);
+$conv_path        = safe_GET('conv_path',        WT_REGEX_NOSCRIPT);
+$conv_slashes     = safe_GET('conv_slashes',     array('forward', 'backward'));
 $privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
 
 $conv_path = stripLRMRLM($conv_path);
-$_SESSION['exportConvPath'] = $conv_path; // remember this for the next Download
-$_SESSION['exportConvSlashes'] = $conv_slashes;
-
-if (!WT_USER_GEDCOM_ADMIN || !$ged) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
-	exit;
-}
 
 if ($action == 'download') {
 	$conv_path = rtrim(str_replace('\\', '/', trim($conv_path)), '/').'/'; // make sure we have a trailing slash here
@@ -111,7 +101,7 @@ if ($action == "download") {
 	exit;
 }
 
-print_header(WT_I18N::translate('Download GEDCOM'));
+$controller->pageHeader();
 
 ?>
 <div class="center"><h2><?php echo WT_I18N::translate('Download GEDCOM'); ?></h2></div>
@@ -149,6 +139,3 @@ print_header(WT_I18N::translate('Download GEDCOM'));
 	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_trees_manage.php';"/></td></tr>
 	</table>
 </form>
-<?php
-
-print_footer();
