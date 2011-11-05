@@ -67,8 +67,11 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	var $level3; // number of levels of descendents
 
 	public function __construct() {
-		parent::__construct();
 		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $GEDCOM, $cart;
+		
+		parent::__construct();
+
+		$this->setPageTitle(WT_I18N::translate('Clippings cart'));
 
 		if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
 		if (!isset($_SESSION['exportConvSlashes'])) $_SESSION['exportConvSlashes'] = 'forward';
@@ -292,11 +295,6 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			}
 		}
 		return false;
-	}
-	//
-	// What should this page show in the browser's title bar?
-	public function getPageTitle() {
-		return WT_I18N::translate('Clippings cart');
 	}
 
 	/**

@@ -87,6 +87,8 @@ class WT_Controller_Search extends WT_Controller_Base {
 	function __construct() {
 		global $GEDCOM;
 
+		parent::__construct();
+
 		if ($this->action=='') {
 			$this->action='general';
 		}
@@ -252,25 +254,17 @@ class WT_Controller_Search extends WT_Controller_Base {
 		// If we want to show associated persons, build the list
 		switch ($this->action) {
 		case 'general':
+			$this->setPageTitle(WT_I18N::translate('General search'));
 			$this->GeneralSearch();
 			break;
 		case 'soundex':
+			$this->setPageTitle(WT_I18N::translate('Phonetic search'));
 			$this->SoundexSearch();
 			break;
 		case 'replace':
+			$this->setPageTitle(WT_I18N::translate('Search and replace'));
 			$this->SearchAndReplace();
 			return;
-		}
-	}
-
-	function getPageTitle() {
-		switch ($this->action) {
-		case 'general':
-			return WT_I18N::translate('General search');
-		case 'soundex':
-			return WT_I18N::translate('Phonetic search');
-		case 'replace':
-			return WT_I18N::translate('Search and replace');
 		}
 	}
 

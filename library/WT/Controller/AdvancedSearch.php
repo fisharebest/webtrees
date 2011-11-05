@@ -36,6 +36,9 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 
 	function __construct() {
 		parent::__construct();
+
+		$this->setPageTitle(WT_I18N::translate('Advanced search'));
+		
 		if (empty($_REQUEST['action'])) {
 			$this->action="advanced";
 		}
@@ -110,11 +113,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			}
 		}
 		return $ofields;
-	}
-
-	function getPageTitle() {
-		if ($this->action=="advanced") return WT_I18N::translate('Advanced search');
-		else parent :: getPageTitle();
 	}
 
 	function getValue($i) {

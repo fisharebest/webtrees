@@ -65,6 +65,9 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bheight, $bwidth, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $WT_IMAGES, $TEXT_DIRECTION, $show_full;
 
+		parent::__construct();
+		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Hourglass chart of %s', $this->name));
+
 		// Extract parameters from from
 		$this->pid        =safe_GET_xref('pid');
 		$this->show_full  =safe_GET('show_full',   array('0', '1'), $PEDIGREE_FULL_DETAILS);
@@ -106,11 +109,6 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		//Checks how many generations of descendency is for the person for formatting purposes
 		$this->dgenerations = $this->max_descendency_generations($this->pid, 0);
 		if ($this->dgenerations<1) $this->dgenerations=1;
-	}
-
-	// What should this page show in the browser's title bar?
-	public function getPageTitle() {
-		return /* I18N: %s is a person's name */ WT_I18N::translate('Hourglass chart of %s', $this->name);
 	}
 
 	/**

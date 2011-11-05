@@ -72,6 +72,8 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 				$this->record->diffMerge($this->diff_record);
 			}
 		}
+
+		parent::__construct();
 	}
 
 	// Get significant information from this page, to allow other pages such as

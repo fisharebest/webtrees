@@ -47,6 +47,9 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		global $DEFAULT_PEDIGREE_GENERATIONS, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;
 		global $show_full;
 
+		parent::__construct();
+		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Ancestors of %s', $this->name));
+
 		// Extract form parameters
 		$this->rootid        =safe_GET_xref('rootid');
 		$this->show_full     =safe_GET('show_full',    array('0', '1'), $PEDIGREE_FULL_DETAILS);
@@ -83,11 +86,6 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 
 		if (strlen($this->name)<30) $this->cellwidth="420";
 		else $this->cellwidth=(strlen($this->name)*14);
-	}
-
-	// What should this page show in the browser's title bar?
-	public function getPageTitle() {
-		return /* I18N: %s is a person's name */ WT_I18N::translate('Ancestors of %s', $this->name);
 	}
 
 	/**

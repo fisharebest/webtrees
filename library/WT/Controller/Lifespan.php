@@ -68,6 +68,10 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 
 	function __construct() {
 		global $GEDCOM_ID_PREFIX;
+
+		parent::__construct();
+		$this->setPageTitle(WT_I18N::translate('Lifespans'));
+
 		$this->colorindex = 0;
 		$this->Fcolorindex = 0;
 		$this->Mcolorindex = 0;
@@ -192,11 +196,6 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 			$this->timelineMinYear = date("Y") - 101;
 			$this->timelineMaxYear = date("Y");
 		}
-	}
-
-	// What should this page show in the browser's title bar?
-	public function getPageTitle() {
-		return WT_I18N::translate('Lifespans');
 	}
 
 	// Add a person (and optionally their immediate family members) to the pids array

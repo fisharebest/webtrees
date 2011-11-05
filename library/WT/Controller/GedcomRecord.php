@@ -28,33 +28,25 @@ if (!defined('WT_WEBTREES')) {
 class WT_Controller_GedcomRecord extends WT_Controller_Base {
 	public $record; // individual, source, repository, etc.
 
-	// What should this page show in the browser's title bar?
-	public function getPageTitle() {
+	public function __construct() {
+		parent::__construct();
+		
+		// We want robots to index this page
+		$this->setMetaRobots('index,follow');
+	
+		// Set a page title
 		if ($this->record) {
+			$this->setCanonicalUrl($this->record->getHtmlUrl());
 			if ($this->record->canDisplayName()) {
 				// e.g. "John Doe" or "1881 Census of Wales"
-				return $this->record->getFullName();
+				$this->setPageTitle($this->record->getFullName());
 			} else {
 				// e.g. "Individual" or "Source"
-				return WT_Gedcom_Tag::getLabel($this->record->getType());
+				$this->setPageTitle(WT_Gedcom_Tag::getLabel($this->record->getType()));
 			}
 		} else {
 			// No such record
-			return WT_I18N::translate('Not found');
+			$this->setPageTitle(WT_I18N::translate('Not found'));
 		}
-	}
-
-	// What is the preferred URL for this page?
-	public function getCanonicalUrl() {
-		if ($this->record) {
-			return $this->record->getHtmlUrl();
-		} else {
-			return parent::getCanonicalUrl();
-		}
-	}
-
-	// How should robots index this page?
-	public function getMetaRobots() {
-		return 'index,follow';
 	}
 }

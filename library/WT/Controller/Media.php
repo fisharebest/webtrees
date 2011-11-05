@@ -90,6 +90,8 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
 		if (is_null($this->record)) return false;
 		$this->record->ged_id=WT_GED_ID; // This record is from a file
+
+		parent::__construct();
 	}
 
 	/**

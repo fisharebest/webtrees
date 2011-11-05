@@ -76,14 +76,13 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 
 		$this->tabs=WT_Module::getActiveTabs();
-	}
 
-	// Page title
-	function getPageTitle() {
+		// Our parent needs $this->record
+		parent::__construct();
+
+		// If we can display the details, add them to the page header		
 		if ($this->record && $this->record->canDisplayDetails()) {
-			return parent::getPageTitle().' '.$this->record->getLifespan();
-		} else {
-			return parent::getPageTitle();
+			$this->setPageTitle($this->record->getFullName().' '.$this->record->getLifespan());
 		}
 	}
 

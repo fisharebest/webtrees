@@ -29,7 +29,12 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Controller_Base {
-	private $page_header=false; // Used to automatically print the footer
+	// Page header information
+	const   DOCTYPE       ='<!DOCTYPE html>';  // HTML5
+	private $canonical_url='';
+	private $meta_robots  ='noindex,nofollow'; // Most pages are not intended for robots
+	private $page_header  =false;              // Have we printed a page header?
+	private $page_title   =WT_WEBTREES;        // <head><title> $page_title </title></head>
 
 	// Startup activity
 	public function __construct() {
@@ -44,19 +49,22 @@ class WT_Controller_Base {
 	}
 
 	// What should this page show in the browser's title bar?
+	public function setPageTitle($page_title) {
+		$this->page_title=$page_title;
+	}
+	// Some pages will want to display this as <h2> $page_title </h2>
 	public function getPageTitle() {
-		return '';
+		return $this->page_title;
 	}
 
 	// What is the preferred URL for this page?
-	public function getCanonicalUrl() {
-		return '';
+	public function setCanonicalUrl($canonical_url) {
+		$this->canonical_url=$canonical_url;
 	}
 
-	// How should robots index this page?
-	public function getMetaRobots() {
-		// Most pages are not designed for search engines
-		return 'noindex,nofollow';
+	// Should robots index this page?
+	public function setMetaRobots($meta_robots) {
+		$this->meta_robots=$meta_robots;
 	}
 
 	// Print the page header, using the theme
@@ -67,11 +75,11 @@ class WT_Controller_Base {
 
 		// The title often includes the names of records, which may have markup
 		// that cannot be used in the page title.
-		$title=htmlspecialchars_decode(strip_tags($this->getPageTitle()));
+		$title=htmlspecialchars_decode(strip_tags($this->page_title));
 
 		// Initialise variables for the theme's header.php
-		$LINK_CANONICAL  =$this->getCanonicalUrl();
-		$META_ROBOTS     =$this->getMetaRobots();
+		$LINK_CANONICAL  =$this->canonical_url;
+		$META_ROBOTS     =$this->meta_robots;
 		$GEDCOM_TITLE    =get_gedcom_setting(WT_GED_ID, 'title');
 		$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION', $GEDCOM_TITLE);
 		$META_GENERATOR  =WT_WEBTREES.'-'.WT_VERSION_TEXT.' - '.WT_WEBTREES_URL;

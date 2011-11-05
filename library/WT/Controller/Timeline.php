@@ -48,6 +48,10 @@ class WT_Controller_Timeline extends WT_Controller_Chart {
 	var $nonfacts = array("BAPL","ENDL","SLGC","SLGS","_TODO","CHAN");
 
 	function __construct() {
+		parent::__construct();
+
+		$this->setPageTitle(WT_I18N::translate('Timeline'));
+	
 		$this->baseyear = date("Y");
 		//-- new pid
 		$newpid=safe_GET_xref('newpid');
@@ -132,11 +136,6 @@ class WT_Controller_Timeline extends WT_Controller_Chart {
 		if ($this->scale<2) $this->scale=2;
 		$this->baseyear -= 5;
 		$this->topyear += 5;
-	}
-
-	// What should this page show in the browser's title bar?
-	public function getPageTitle() {
-		return WT_I18N::translate('Timeline');
 	}
 
 	/**
