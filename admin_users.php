@@ -369,34 +369,34 @@ case 'createform':
 	$controller->addInlineJavaScript('
 		function checkform(frm) {
 			if (frm.username.value=="") {
-				alert("'.WT_I18N::translate('You must enter a user name.').'");
+				alert("'.addslashes(WT_I18N::translate('You must enter a user name.')).'");
 				frm.username.focus();
 				return false;
 			}
 			if (frm.realname.value=="") {
-				alert("'.WT_I18N::translate('You must enter a real name.').'");
+				alert("'.addslashes(WT_I18N::translate('You must enter a real name.')).'");
 				frm.realname.focus();
 				return false;
 			}
 			if (frm.pass1.value=="") {
-				alert("'.WT_I18N::translate('You must enter a password.').'");
+				alert("'.addslashes(WT_I18N::translate('You must enter a password.')).'");
 				frm.pass1.focus();
 				return false;
 			}
 			if (frm.pass2.value=="") {
-				alert("'.WT_I18N::translate('You must confirm the password.').'");
+				alert("'.addslashes(WT_I18N::translate('You must confirm the password.')).'");
 				frm.pass2.focus();
 				return false;
 			}
 			if (frm.pass1.value.length < 6) {
-				alert("'.WT_I18N::translate('Passwords must contain at least 6 characters.').'");
+				alert("'.addslashes(WT_I18N::translate('Passwords must contain at least 6 characters.')).'");
 				frm.pass1.value = "";
 				frm.pass2.value = "";
 				frm.pass1.focus();
 				return false;
 			}
 			if (frm.emailaddress.value.indexOf("@")==-1) {
-				alert("'.WT_I18N::translate('You must enter an email address.').'");
+				alert("'.addslashes(WT_I18N::translate('You must enter an email address.')).'");
 				frm.emailaddress.focus();
 				return false;
 			}
@@ -411,7 +411,7 @@ case 'createform':
 			var idNum = fieldIDx.replace("RELATIONSHIP_PATH_LENGTH","");
 			var newIDx = "gedcomid"+idNum;
 			if (jQuery("#"+newIDx).val()=="") {
-				alert("'.WT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.').'");
+				alert("'.addslashes(WT_I18N::translate('You must specify an individual record before you can restrict the user to their immediate family.')).'");
 				jQuery(this).val("");
 			}
 		});
