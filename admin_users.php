@@ -691,33 +691,34 @@ default:
 			'<tbody>',
 			'</tbody>',
 		'</table>';
-	echo WT_JS_START;
-	?>
-		jQuery(document).ready(function(){
-			var oTable = jQuery('#list').dataTable( {
+	
+	$controller
+		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavaScript('
+			var oTable = jQuery("#list").dataTable({
+				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				"oLanguage": {
-					"sLengthMenu": '<?php echo /* I18N: %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="500">500</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
-					"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
-					"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
-					"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
-					"sInfoFiltered": '<?php echo /* I18N: %s  is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
-					"sProcessing": '<?php echo WT_I18N::translate('Loading...');?>',
-					"sSearch": '<?php echo WT_I18N::translate('Filter');?>',					"oPaginate": {
-						"sFirst": '<?php echo WT_I18N::translate_c('first page', 'first');?>',
-						"sLast": '<?php echo WT_I18N::translate('last');?>',
-						"sNext": '<?php echo WT_I18N::translate('next');?>',
-						"sPrevious": '<?php echo WT_I18N::translate('previous');?>'
+				"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"25\">25</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"500\">500</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
+				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
+				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
+				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
+				"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
+				"sSearch": "'.WT_I18N::translate('Filter').'",
+				"oPaginate": {
+						"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
+						"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
+						"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
+						"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
 					}
 				},
-				"sDom"			  : '<"H"pf<"dt-clear">irl>t<"F"pl>',
 				"bProcessing"     : true,
 				"bServerSide"     : true,
-				"sAjaxSource"     : "<?php echo WT_SCRIPT_NAME.'?action=loadrows'; ?>",
+				"sAjaxSource"     : "'.WT_SCRIPT_NAME.'?action=loadrows",
 				"bJQueryUI": true,
 				"bAutoWidth":false,
-				"iDisplayLength": <?php echo get_user_setting(WT_USER_ID, 'admin_users_page_size', 10); ?>,
+				"iDisplayLength": '.get_user_setting(WT_USER_ID, 'admin_users_page_size', 10).',
 				"sPaginationType": "full_numbers",
-				"aaSorting": [[2,'asc']],
+				"aaSorting": [[2,"asc"]],
 				"aoColumns": [
 					/* details           */ { bSortable:false, sClass:"icon-open" },
 					/* user-id           */ { bVisible:false },
@@ -738,42 +739,37 @@ default:
 					// Our JSON responses include JavaScript as well as HTML.  This does not get
 					// executed (except for some versions of Firefox?).  So, extract it, and add
 					// it to its own DOM element
-					jQuery('#list script').each(function() {
-						var script=document.createElement('script');
-						script.type='text/javascript';
-						jQuery('#list script').appendTo('body'); 
+					jQuery("#list script").each(function() {
+						var script=document.createElement("script");
+						script.type="text/javascript";
+						jQuery("#list script").appendTo("body"); 
 						document.body.appendChild(script);
 					}).remove();
-					//
-				}
-				
+				}				
 			});
 			
 			/* When clicking on the +/- icon, we expand/collapse the details block */
-			jQuery('#list tbody td.icon-close').live('click', function () {
+			jQuery("#list tbody td.icon-close").live("click", function () {
 				var nTr=this.parentNode;
 				jQuery(this).removeClass("icon-close");
 				oTable.fnClose(nTr);
 				jQuery(this).addClass("icon-open");
 			});
-			jQuery('#list tbody td.icon-open').live('click', function () {
+			jQuery("#list tbody td.icon-open").live("click", function () {
 				var nTr=this.parentNode;
 				jQuery(this).removeClass("icon-open");
 				var aData=oTable.fnGetData(nTr);
-				jQuery.get("<?php echo WT_SCRIPT_NAME.'?action=load1row&user_id='; ?>"+aData[1], function(data) {
+				jQuery.get("'.WT_SCRIPT_NAME.'?action=load1row&user_id="+aData[1], function(data) {
 					oTable.fnOpen(nTr, data, "details");
 				});
 				jQuery(this).addClass("icon-close");
 			});
-			
-			/* Filter immediately for single user name */
-			<?php if ($action=='edituser') { $username=safe_GET('username'); ?>
-				oTable = jQuery('#list').dataTable();			
-				oTable.fnFilter( '<?php echo $username; ?>' );
-			<?php } ?>
-	
-		});
-	<?php
-	echo WT_JS_END;
+		');
+
+	/* Filter immediately for single user name */
+	if ($action=='edituser') {
+		$username=safe_GET('username');
+		$controller->addInlineJavaScript('oTable.fnFilter("'.$username.'");');
+	}	
 	break;
 }

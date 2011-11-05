@@ -175,39 +175,37 @@ case 'load_json':
 	exit;
 }
 
-$controller->pageHeader();
-echo WT_JS_START;
-
-?>
-	jQuery(document).ready(function(){
-		var oTable = jQuery('#log_list').dataTable( {
-			"sDom": '<"H"pf<"dt-clear">irl>t<"F"pl>',
+$controller
+	->pageHeader()
+	->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+	->addInlineJavaScript('
+		var oTable=jQuery("#log_list").dataTable( {
+			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"bProcessing": true,
 			"bServerSide": true,
-			"sAjaxSource": "<?php echo WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from=', $from,'&to=', $to, '&type=', $type, '&text=', rawurlencode($text), '&ip=', rawurlencode($ip), '&user=', rawurlencode($user), '&gedc=', rawurlencode($gedc); ?>",
+			"sAjaxSource": "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&text='.rawurlencode($text).'&ip='.rawurlencode($ip).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
 			"oLanguage": {
-				"sLengthMenu": '<?php echo /* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10<option value="20">20</option><option value="50">50</option><option value="100">100</option><option value="500">500</option><option value="1000">1000</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
-				"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
-				"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
-				"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
-				"sInfoFiltered": '<?php echo /* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
-				"sProcessing": '<?php echo WT_I18N::translate('Loading...');?>',
-				"sSearch": '<?php echo WT_I18N::translate('Filter');?>',				"oPaginate": {
-					"sFirst":    '<?php echo /* I18N: button label, first page    */ WT_I18N::translate('first');    ?>',
-					"sLast":     '<?php echo /* I18N: button label, last page     */ WT_I18N::translate('last');     ?>',
-					"sNext":     '<?php echo /* I18N: button label, next page     */ WT_I18N::translate('next');     ?>',
-					"sPrevious": '<?php echo /* I18N: button label, previous page */ WT_I18N::translate('previous'); ?>'
+				"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"20\">20</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"500\">500</option><option value=\"1000\">1000</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
+				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
+				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
+				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
+				"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
+				"sProcessing": "'.WT_I18N::translate('Loading...').'",
+				"sSearch": "'.WT_I18N::translate('Filter').'",
+				"oPaginate": {
+					"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
+					"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
+					"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
+					"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
 				}
 			},
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"aaSorting": [[ 0, "desc" ]],
-			"iDisplayLength": <?php echo get_user_setting(WT_USER_ID, 'admin_site_log_page_size', 20); ?>,
+			"iDisplayLength": '.get_user_setting(WT_USER_ID, 'admin_site_log_page_size', 20).',
 			"sPaginationType": "full_numbers"
 		});
-	});
-
-<?php
+	');
 
 $url=
 	WT_SCRIPT_NAME.'?from='.rawurlencode($from).
@@ -226,7 +224,6 @@ $users_array=array_combine(get_all_users(), get_all_users());
 uksort($users_array, 'strnatcasecmp');
 
 echo
-	WT_JS_END,
 	'<form name="logs" method="get" action="'.WT_SCRIPT_NAME.'">',
 		'<input type="hidden" name="action", value="show"/>',
 		'<table class="site_logs">',

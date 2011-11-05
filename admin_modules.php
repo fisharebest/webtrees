@@ -79,58 +79,53 @@ case 'delete_module':
 	break;
 }
 
-$controller->pageHeader();
+$controller
+	->pageHeader()
+	->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+	->addInlineJavaScript('
+	  function reindexMods(id) {
+			jQuery("#"+id+" input").each(
+				function (index, value) {
+					value.value = index+1;
+				});
+	  }
+
+		var oTable = jQuery("#installed_table").dataTable( {
+			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
+			"oLanguage": {
+				"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"25\">25</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
+				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
+				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
+				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
+				"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
+				"sSearch": "'.WT_I18N::translate('Filter').'",
+				"oPaginate": {
+					"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
+					"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
+					"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
+					"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
+				}
+			},
+			"bJQueryUI": true,
+			"bAutoWidth":false,
+			"aaSorting": [[ 1, "asc" ]],
+			"iDisplayLength": 10,
+			"sPaginationType": "full_numbers",
+			"aoColumns" : [
+				{ bSortable: false, sClass: "center" },
+				null,
+				null,
+				{ sClass: "center" },
+				{ sClass: "center" },
+				{ sClass: "center" },
+				{ sClass: "center" },
+				{ sClass: "center", bVisible: false }, // The WT_Module system does not yet include charts
+				{ sClass: "center" },
+				{ sClass: "center", bVisible: false } // The WT_Module system does not yet include themes
+			]
+		});
+	');
 ?>
-<script type="text/javascript">
-//<![CDATA[
-
-  function reindexMods(id) {
-		jQuery('#'+id+' input').each(
-			function (index, value) {
-				value.value = index+1;
-			});
-  }
-
-  jQuery(document).ready(function() {
-  
-	var oTable = jQuery('#installed_table').dataTable( {
-		"oLanguage": {
-			"sLengthMenu": '<?php echo /* I18N: %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option><option value="-1">'.WT_I18N::translate('All').'</option></select>'); ?>',
-			"sZeroRecords": '<?php echo WT_I18N::translate('No records to display');?>',
-			"sInfo": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_'); ?>',
-			"sInfoEmpty": '<?php echo /* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0'); ?>',
-			"sInfoFiltered": '<?php echo /* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_'); ?>',
-			"sSearch": '<?php echo WT_I18N::translate('Filter');?>',
-			"oPaginate": {
-				"sFirst": '<?php echo /* I18N: button label, first page    */ WT_I18N::translate('first'); ?>',
-				"sLast": '<?php echo /* I18N: button label, last page     */ WT_I18N::translate('last'); ?>',
-				"sNext": '<?php echo /* I18N: button label, next page     */ WT_I18N::translate('next'); ?>',
-				"sPrevious": '<?php echo /* I18N: button label, previous page */ WT_I18N::translate('previous'); ?>'
-			}
-		},
-		"sDom": '<"H"pf<"dt-clear">irl>t<"F"pl>',
-		"bJQueryUI": true,
-		"bAutoWidth":false,
-		"aaSorting": [[ 1, "asc" ]],
-		"iDisplayLength": 10,
-		"sPaginationType": "full_numbers",
-		"aoColumns" : [
-			{ bSortable: false, sClass: "center" },
-			null,
-			null,
-			{ sClass: "center" },
-			{ sClass: "center" },
-			{ sClass: "center" },
-			{ sClass: "center" },
-			{ sClass: "center", bVisible: false }, // The WT_Module system does not yet include charts
-			{ sClass: "center" },
-			{ sClass: "center", bVisible: false } // The WT_Module system does not yet include themes
-		]
-	});
-});
-//]]>
-</script>
-
 <div align="center">
 	<div id="tabs">
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
