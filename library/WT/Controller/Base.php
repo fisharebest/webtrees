@@ -151,7 +151,7 @@ class WT_Controller_Base {
 	public function pageHeader() {
 		// Import global variables into the local scope, for the theme's header.php
 		global $BROWSERTYPE, $SEARCH_SPIDER, $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
-		global $stylesheet, $headerfile;
+		global $stylesheet, $headerfile, $view;
 
 		// The title often includes the names of records, which may have markup
 		// that cannot be used in the page title.
@@ -230,7 +230,6 @@ class WT_Controller_Base {
 		'<script src="'.WT_STATIC_URL.'js/webtrees.js" type="text/javascript"></script>';
 		
 		header('Content-Type: text/html; charset=UTF-8');
-		$view='full';
 		require WT_ROOT.$headerfile;
 
 		// Once we've displayed the header, we should no longer write session data.

@@ -29,7 +29,7 @@ class WT_Controller_Simple extends WT_Controller_Base {
 
 	// Popup windows don't always need a title
 	public function __construct() {
-		$this->setTitle(WT_WEBTREES);
+		$this->setPageTitle(WT_WEBTREES);
 	}
 
 	// Simple (i.e. popup) windows are deprecated.
