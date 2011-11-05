@@ -50,9 +50,10 @@ header('Content-Type: text/html; charset=UTF-8');
 header($_SERVER['SERVER_PROTOCOL'].' 503 Service Temporarily Unavailable');
 
 echo
-	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '>',
+	'<!DOCTYPE html>',
+	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
+	'<meta charset="UTF-8">',
 	'<title>Site Unavailable - webtrees</title>',
 	'<meta name="robots" content="noindex,follow" />',
 	'<style type="text/css">

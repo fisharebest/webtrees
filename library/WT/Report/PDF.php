@@ -73,7 +73,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		parent::setup();
 
 		// Setup the PDF class with custom size pages because WT supports more page sizes. If WT sends an unknown size name then the default would be A4
-		$this->pdf = new PDF($this->orientation, parent::unit, array($this->pagew, $this->pageh), self::unicode, $this->charset, self::diskcache);
+		$this->pdf = new PDF($this->orientation, parent::unit, array($this->pagew, $this->pageh), self::unicode, "UTF-8", self::diskcache);
 
 		// Setup the PDF margins
 		$this->pdf->setMargins($this->leftmargin, $this->topmargin, $this->rightmargin);

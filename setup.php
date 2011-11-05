@@ -65,9 +65,10 @@ header('Content-Type: text/html; charset=UTF-8');
 if (version_compare(PHP_VERSION, '5.2')<0) {
 	// Our translation system requires PHP 5.2, so we cannot translate this message :-(
 	echo
-		'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-		'<html xmlns="http://www.w3.org/1999/xhtml">',
+		'<!DOCTYPE html>',
+		'<html lang="en" dir="ltr">',
 		'<head>',
+		'<meta charset="UTF-8">',
 		'<title>webtrees setup wizard</title>',
 		'<h1>Sorry, the setup wizard cannot start.</h1>',
 		'<p>This server is running PHP version ', PHP_VERSION, '</p>',
@@ -94,8 +95,8 @@ require 'includes/functions/functions_edit.php';
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
 echo
-	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '>',
+	'<!DOCTYPE html>',
+	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
 	'<title>webtrees setup wizard</title>',
 	'<style type="text/css">

@@ -26,10 +26,10 @@ if (!defined('WT_WEBTREES')) {
 }
 
 echo
-	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '>',
+	'<!DOCTYPE html>',
+	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
-	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
+	'<meta charset="UTF-8">',
 	'<title>', htmlspecialchars($title), '</title>',
 	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png" />',
 	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery/jquery-ui_theme.css" type="text/css" />',

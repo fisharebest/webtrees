@@ -178,10 +178,10 @@ class WT_Report_HTML extends WT_Report_Base {
 		global $stylesheet, $TEXT_DIRECTION;
 
 		echo "
-<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">
-<html xmlns=\"http://www.w3.org/1999/xhtml\" ", WT_I18N::html_markup(), ">
+<!DOCTYPE html>
+<html ", WT_I18N::html_markup(), ">
 <head>
-<meta http-equiv=\"Content-Type\" content=\"text/html; charset=", $this->charset, "\" />
+<meta charset=\"UTF-8\">
 <meta name=\"generator\" content=\"", WT_WEBTREES, ' ', WT_VERSION_TEXT, "\" />
 <meta name=\"keywords\" content=\"", $this->rkeywords, "\" />
 <meta name=\"description\" content=\"", $this->rsubject, "\" />

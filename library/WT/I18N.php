@@ -208,7 +208,7 @@ class WT_I18N {
 		$localeData=Zend_Locale_Data::getList(self::$locale, 'layout');
 		$dir=$localeData['characters']=='right-to-left' ? 'rtl' : 'ltr';
 		list($lang)=explode('_', self::$locale);
-		return 'lang="'.$lang.'" xml:lang="'.$lang.'" dir="'.$dir.'"';
+		return 'lang="'.$lang.'" dir="'.$dir.'"';
 	}
 
 	// Add I18N features to sprintf()

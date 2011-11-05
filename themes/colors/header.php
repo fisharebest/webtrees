@@ -28,10 +28,10 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 echo
-	'<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">',
-	'<html xmlns="http://www.w3.org/1999/xhtml" ', WT_I18N::html_markup(), '>',
+	'<!DOCTYPE html>',
+	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
-	'<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />',
+	'<meta charset="UTF-8">',
 	'<title>', htmlspecialchars($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
 	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png" />',
@@ -115,7 +115,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 			'<form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general" />',
 			'<input type="hidden" name="topsearch" value="yes" />',
-			'<input type="text" name="query" size="10" value="', WT_I18N::translate('Search'), '" onfocus="if (this.value==\'', WT_I18N::translate('Search'), '\') this.value=\'\'; focusHandler();" onblur="if (this.value==\'\') this.value=\'', WT_I18N::translate('Search'), '\';" />',
+			'<input type="text" name="query" size="10" placeholder="', WT_I18N::translate('Search'), '"/>',
 			'<input type="image" src="', WT_THEME_URL, 'images/go.png', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
 			'</form>',
 		'</li>',
