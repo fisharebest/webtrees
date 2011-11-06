@@ -56,6 +56,34 @@ case 'accept-changes':
 	}	
 	break;
 
+case 'copy-fact':
+	// Copy a fact to the clipboard
+	// The calling page may want to reload, to refresh its "paste" buffer
+	require WT_ROOT.'includes/functions/functions_edit.php';
+	$fact=new WT_Event(rawurldecode(safe_POST('factgedcom', WT_REGEX_UNSAFE)));
+	// Where can we paste this?
+	if (preg_match('/^(NOTE|SOUR|OBJE)$/', $fact->getTag())) {
+		// Some facts can be pasted to any record
+		$type='all';
+	} else {
+		// Other facts can only be pasted records of the same type
+		$type=safe_POST('type', array('INDI','FAM','SOUR','REPO','OBJE','NOTE'));
+	}
+	if (!is_array($_SESSION['clipboard'])) {
+		$_SESSION['clipboard']=array();
+	}
+	$_SESSION['clipboard'][]=array(
+		'type'   =>$type,
+		'factrec'=>$fact->getGedcomRecord(),
+		'fact'   =>$fact->getTag()
+		);
+	// The clipboard only holds 10 facts
+	while (count($WT_SESSION->clipboard)>10) {
+		array_pop($WT_SESSION->clipboard);
+	}
+	Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('Record copied to clipboard'));
+	break;
+
 case 'delete-family':
 case 'delete-individual':
 case 'delete-media':

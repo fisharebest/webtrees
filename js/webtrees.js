@@ -412,11 +412,6 @@ function addnewparentfamily(pid, famtag, famid) {
 	return false;
 }
 
-function copy_record(pid, linenum) {
-	window.open('edit_interface.php?action=copy&pid='+pid+'&linenum='+linenum+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
-	return false;
-}
-
 function reorder_children(famid) {
 	window.open('edit_interface.php?action=reorder_children&pid='+famid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;

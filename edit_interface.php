@@ -1752,38 +1752,6 @@ case 'addname':
 	print_indi_form("update", "", "new", "NEW");
 	break;
 //------------------------------------------------------------------------------
-case 'copy':
-	//-- handle media differently now :P
-	if ($linenum=='media') {
-		$factrec = "1 OBJE @".$pid."@";
-		$type="all";
-		echo "<br />";
-	} else {
-		$gedlines = explode("\n", trim($gedrec));
-		$fields = explode(' ', $gedlines[$linenum]);
-		$glevel = $fields[0];
-		$i = $linenum+1;
-		$factrec = $gedlines[$linenum];
-		while (($i<count($gedlines))&&($gedlines[$i]{0}>$glevel)) {
-			$factrec.="\n".$gedlines[$i];
-			$i++;
-		}
-	}
-	if (!isset($_SESSION["clipboard"])) $_SESSION["clipboard"] = array();
-	$ft = preg_match("/1 (_?[A-Z]{3,5})(.*)/", $factrec, $match);
-	if ($ft>0) {
-		$fact = trim($match[1]);
-		if ($fact=="EVEN" || $fact=="FACT") {
-			$ct = preg_match("/2 TYPE (.*)/", $factrec, $match);
-			if ($ct>0) $fact = trim($match[1]);
-		}
-		if (count($_SESSION["clipboard"])>9) array_pop($_SESSION["clipboard"]);
-		$_SESSION["clipboard"][] = array("type"=>$type, "factrec"=>$factrec, "fact"=>$fact);
-		echo "<b>", WT_I18N::translate('Record copied to clipboard'), "</b>";
-		$success = true;
-	}
-	break;
-//------------------------------------------------------------------------------
 case 'paste':
 	$gedrec .= "\n".$_SESSION["clipboard"][$fact]["factrec"]."\n";
 	if (replace_gedrec($pid, WT_GED_ID, $gedrec, $NO_UPDATE_CHAN)) {

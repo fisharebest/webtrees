@@ -1177,7 +1177,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 					echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="" onsubmit="return false;">';
 					echo '<select id="newClipboardFact" name="newClipboardFact">';
 				}
-				$fact_type=WT_I18N::translate($fact['fact']);
+				$fact_type=WT_Gedcom_Tag::getLabel($fact['fact']);
 				echo '<option value="clipboard_', $key, '">', $fact_type;
 				// TODO use the event class to store/parse the clipboard events
 				if (preg_match('/^2 DATE (.+)/m', $fact['factrec'], $match)) {
