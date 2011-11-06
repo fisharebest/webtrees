@@ -66,7 +66,6 @@ function print_indi_table($datalist, $legend='', $option='') {
 				"bAutoWidth":false,
 				"bProcessing": true,
 				"bRetrieve": true,
-				"bStateSave": true,
 				"aoColumnDefs": [
 					{"iDataSort": 2, "aTargets": [ 0 ] },
 					{"iDataSort": 5, "aTargets": [ 4 ] },
@@ -473,7 +472,6 @@ function print_fam_table($datalist, $legend='', $option='') {
 				"bAutoWidth":false,
 				"bProcessing": true,
 				"bRetrieve": true,
-				"bStateSave": true,
 				"aoColumnDefs": [
 					{"bSortable": false, "aTargets": [ 9 ] },
 					{"iDataSort": 2, "aTargets": [ 0 ] },
@@ -859,7 +857,6 @@ function print_sour_table($datalist, $legend=null) {
 				"bJQueryUI": true,
 				"bAutoWidth":false,
 				"bProcessing": true,
-				"bStateSave": true,
 				"aoColumnDefs": [
 					{"bSortable": false, "aTargets": [ 8 ]},
 					{"sType": "numeric", "aTargets": [3, 4, 5, 6]}
@@ -1017,7 +1014,6 @@ function print_note_table($datalist, $legend=null) {
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
-			"bStateSave": true,
 			"aoColumnDefs": [
 				{"bSortable": false, "aTargets": [ 6 ]},
 				{"sType": "numeric", "aTargets": [1, 2, 3, 4]}
@@ -1134,7 +1130,6 @@ function print_repo_table($repos, $legend='') {
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
-			"bStateSave": true,
 			"aoColumnDefs": [
 				{"bSortable": false, "aTargets": [ 3 ]},
 				{"sType": "numeric", "aTargets": [ 1 ]}
@@ -1242,7 +1237,6 @@ function print_media_table($datalist, $legend) {
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
-			"bStateSave": true,
 			"aoColumnDefs": [
 				{"bSortable": false, "aTargets": [ 0 ]},
 				{"sType": "numeric", "aTargets": [2, 3, 4]}
