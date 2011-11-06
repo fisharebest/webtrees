@@ -36,6 +36,9 @@ $nonfamfacts = array(/*'NCHI',*/ 'UID', '');
 
 $controller=new WT_Controller_Individual();
 
+// This page uses jquery.cookie.js to record the sidebar state
+$controller->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.cookie.js');
+
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	if (safe_GET('action')=='ajax') {
 		$controller->ajaxRequest();
@@ -149,13 +152,13 @@ jQuery(document).ready(function() {
 	function showSidebar(){
 		objMain.addClass('use-sidebar');
 		objSeparator.css('height', objBar.outerHeight() + 'px');
-		jQuery.cookie('sidebar-pref', 'use-sidebar', { expires: 30 });
+		jQuery.cookie('hide-sb', null);
 	}
 	// Hide sidebar
 	function hideSidebar(){
 		objMain.removeClass('use-sidebar');
 		objSeparator.css('height', objTabs.outerHeight() + 'px');
-		jQuery.cookie('sidebar-pref', null, { expires: 30 });
+		jQuery.cookie('hide-sb', '1');
 	}
 	// Sidebar separator
 	objSeparator.click(function(e){
@@ -170,11 +173,10 @@ jQuery(document).ready(function() {
 	});
 
 	// Load preference
-	if ( jQuery.cookie('sidebar-pref') == null ){
-		objMain.addClass('use-sidebar');
-		objSeparator.css('height', objTabs.outerHeight() + 'px');
+	if (jQuery.cookie('hide-sb')=='1'){
+		hideSidebar();
 	} else {
-		objSeparator.css('height', objBar.outerHeight() + 'px');
+		showSidebar();
 	}
 	
 	adjHeader();
