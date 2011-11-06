@@ -60,7 +60,7 @@ case 'copy-fact':
 	// Copy a fact to the clipboard
 	// The calling page may want to reload, to refresh its "paste" buffer
 	require WT_ROOT.'includes/functions/functions_edit.php';
-	$fact=new WT_Event(rawurldecode(safe_POST('factgedcom', WT_REGEX_UNSAFE)));
+	$fact=new WT_Event(rawurldecode(safe_POST('factgedcom', WT_REGEX_UNSAFE)), null, 0);
 	// Where can we paste this?
 	if (preg_match('/^(NOTE|SOUR|OBJE)$/', $fact->getTag())) {
 		// Some facts can be pasted to any record
