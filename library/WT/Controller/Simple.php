@@ -37,6 +37,7 @@ class WT_Controller_Simple extends WT_Controller_Base {
 		global $view;
 		$view='simple';
 		parent::pageHeader();
+		return $this;
 	}
 	
 	// Restrict access

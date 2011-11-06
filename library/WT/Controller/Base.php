@@ -88,8 +88,9 @@ class WT_Controller_Base {
 
 	// Restrict access
 	public function requireAdminLogin() {
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_IS_ADMIN) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -97,8 +98,9 @@ class WT_Controller_Base {
 
 	// Restrict access
 	public function requireManagerLogin() {
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_GEDCOM_ADMIN) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -106,8 +108,9 @@ class WT_Controller_Base {
 
 	// Restrict access
 	public function requireMemberLogin() {
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_ID) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -262,6 +265,7 @@ class WT_Controller_Base {
 		}
 		echo $this->getJavaScript();
 		echo '</body></html>';
+		return $this;
 	}
 
 	// Get significant information from this page, to allow other pages such as

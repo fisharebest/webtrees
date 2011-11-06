@@ -28,8 +28,8 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Base();
 $controller
-	->requireManagerLogin()
-	->setPageTitle(WT_I18N::translate('Download GEDCOM'));
+	->setPageTitle(WT_I18N::translate('Download GEDCOM'))
+	->requireManagerLogin();
 
 require_once WT_ROOT.'includes/functions/functions_export.php';
 
