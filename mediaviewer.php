@@ -209,12 +209,6 @@ function openImageView() {
 	window.open("imageview.php?filename=<?php echo urlencode($filename); ?>", "Image View");
 	return false;
 }
-// javascript function to open a window with the raw gedcom in it
-function show_gedcom_record(shownew) {
-	fromfile="";
-	if (shownew=="yes") fromfile='&fromfile=1';
-	var recwin = window.open("gedrecord.php?pid=<?php echo $controller->m_pid; ?>"+fromfile, "_blank", "top=50, left=50, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
-}
 
 function ilinkitem(mediaid, type) {
 	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&'+sessionname+'='+sessionid, '_blank', 'top=50, left=50, width=570, height=630, resizable=1, scrollbars=1');
