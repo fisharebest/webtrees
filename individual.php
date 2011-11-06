@@ -109,11 +109,15 @@ echo 'function showchanges() { window.location="'.$controller->record->getRawUrl
 ?>
 
 jQuery(document).ready(function() {
-	jQuery('#tabs').tabs({
-		spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" border="0" alt="" />',
+	jQuery("#tabs").tabs({
+		spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" border="0" alt="">',
 		cache: true
 	});
-	jQuery('#tabs').bind('tabsshow', function(event, ui) {
+	jQuery("#tabs").tabs("select",jQuery.cookie("indi-tab"));
+	jQuery("#tabs").bind("tabsshow", function(event, ui) {
+		if (ui.tab.match(/#(.*)$/)) {
+			jQuery.cookie("indi-tab", RegExp.$1);
+		}
 		<?php
 		foreach ($controller->tabs as $tab) {
 			echo $tab->getJSCallback()."\n";
@@ -123,40 +127,40 @@ jQuery(document).ready(function() {
 
 	// sidebar settings 
 	// Variables
-	var objMain			= jQuery('#main');
-	var objTabs			= jQuery('#indi_left');
-	var objBar			= jQuery('#sidebar');
-	var objSeparator	= jQuery('#separator');
+	var objMain			= jQuery("#main");
+	var objTabs			= jQuery("#indi_left");
+	var objBar			= jQuery("#sidebar");
+	var objSeparator	= jQuery("#separator");
 	// Adjust header dimensions
 	function adjHeader(){
-		var indi_header_div = document.getElementById('indi_header').offsetWidth - 20;
-		var indi_mainimage_div = document.getElementById('indi_mainimage').offsetWidth +20;
-		var header_accordion_div = document.getElementById('header_accordion1');
-		header_accordion_div.style.width = indi_header_div - indi_mainimage_div +'px';
+		var indi_header_div = document.getElementById("indi_header").offsetWidth - 20;
+		var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth +20;
+		var header_accordion_div = document.getElementById("header_accordion1");
+		header_accordion_div.style.width = indi_header_div - indi_mainimage_div +"px";
 
 		jQuery(window).bind("resize", function(){
-			var indi_header_div = document.getElementById('indi_header').offsetWidth - 20;
-			var indi_mainimage_div = document.getElementById('indi_mainimage').offsetWidth +20;
-			var header_accordion_div = document.getElementById('header_accordion1');
-			header_accordion_div.style.width = indi_header_div - indi_mainimage_div +'px';
+			var indi_header_div = document.getElementById("indi_header").offsetWidth - 20;
+			var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth +20;
+			var header_accordion_div = document.getElementById("header_accordion1");
+			header_accordion_div.style.width = indi_header_div - indi_mainimage_div +"px";
 		 });
 	}
 	// Show sidebar
 	function showSidebar(){
-		objMain.addClass('use-sidebar');
-		objSeparator.css('height', objBar.outerHeight() + 'px');
-		jQuery.cookie('hide-sb', null);
+		objMain.addClass("use-sidebar");
+		objSeparator.css("height", objBar.outerHeight() + "px");
+		jQuery.cookie("hide-sb", null);
 	}
 	// Hide sidebar
 	function hideSidebar(){
-		objMain.removeClass('use-sidebar');
-		objSeparator.css('height', objTabs.outerHeight() + 'px');
-		jQuery.cookie('hide-sb', '1');
+		objMain.removeClass("use-sidebar");
+		objSeparator.css("height", objTabs.outerHeight() + "px");
+		jQuery.cookie("hide-sb", "1");
 	}
 	// Sidebar separator
 	objSeparator.click(function(e){
 		e.preventDefault();
-		if ( objMain.hasClass('use-sidebar') ){
+		if ( objMain.hasClass("use-sidebar") ){
 			hideSidebar();
 			adjHeader();
 		} else {
@@ -166,14 +170,14 @@ jQuery(document).ready(function() {
 	});
 
 	// Load preference
-	if (jQuery.cookie('hide-sb')=='1'){
+	if (jQuery.cookie("hide-sb")=="1"){
 		hideSidebar();
 	} else {
 		showSidebar();
 	}
 	
 	adjHeader();
-	jQuery("#main").css('visibility', 'visible');
+	jQuery("#main").css("visibility", "visible");
 });
 <?php
 echo WT_JS_END;
@@ -273,5 +277,4 @@ echo
 	// =======================================footer and other items 
 	WT_JS_START,
 	'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}',
-	'jQuery("html, body").animate({scrollTop: jQuery("#header").offset().top});', // scroll the page to top
 	WT_JS_END;
