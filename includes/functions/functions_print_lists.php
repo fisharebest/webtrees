@@ -604,8 +604,15 @@ function print_fam_table($datalist, $legend='', $option='') {
 		//-- place filtering
 		if ($option=='MARR_PLAC' && strstr($family->getMarriagePlace(), $filter)===false) continue;
 		echo '<tr>';
+		
+		$sort_names=explode(' + ', $family->getSortName());
+		if (count($sort_names)>1) {
+			list($husb_name, $wife_name)=$sort_names;
+		} else {
+			$husb_name=$husb->getSortName();
+			$wife_name=$wife->getSortName();
+		}
 		//-- Husband name(s)
-		$husb_name=$husb->getSortName();
 		$names=$husb->getAllNames();
 		// The husband's primary/secondary name might not be the family's primary name
 		foreach ($names as $n=>$name) {
@@ -653,7 +660,6 @@ function print_fam_table($datalist, $legend='', $option='') {
 			}
 		echo '</td>';
 		//-- Wife name(s)
-		$wife_name=$wife->getSortName();
 		$names=$wife->getAllNames();
 		// The husband's primary/secondary name might not be the family's primary name
 		foreach ($names as $n=>$name) {
