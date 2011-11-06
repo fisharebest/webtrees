@@ -113,7 +113,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 
 	echo
 		'<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;">',
-		htmlspecialchars($GEDCOM_TITLE),
+			htmlspecialchars($GEDCOM_TITLE),
 		'</div>';
 
 	// Print the menu bar

@@ -72,9 +72,8 @@ echo
 if ($view!='simple') {
 	echo 
 		'<div id="header" class="', $TEXT_DIRECTION, '">',
-		'<span class="title">';
-	print_gedcom_title_link();
-	echo
+		'<span class="title">',
+			htmlspecialchars($GEDCOM_TITLE),
 		'</span>',
 		'<span class="hlogin">';
 	if (WT_USER_ID) {

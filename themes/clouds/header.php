@@ -60,9 +60,8 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	'<div id="clouds-container">',
 		'<div id="header">',
 			'<div class="header" >',
-				'<span class="title">';
-				print_gedcom_title_link();
-				echo 
+				'<span class="title">',
+					htmlspecialchars($GEDCOM_TITLE),
 				'</span>',
 				'<div class="hsearch">',
 					'<form style="display:inline;" action="search.php" method="get">',

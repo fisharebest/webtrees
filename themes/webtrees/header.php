@@ -79,9 +79,8 @@ if ($view!='simple') {
 	if ($menu) {
 		echo $menu->GetMenuAsList();
 	}
-	echo '</ul><div class="title">';
-	print_gedcom_title_link();
-	echo
+	echo '</ul><div class="title">',
+		htmlspecialchars($GEDCOM_TITLE),
 		'</div>',
 		'<div class="header_search">',
 		'<form action="search.php" method="post">',
