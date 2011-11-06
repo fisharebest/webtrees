@@ -253,16 +253,14 @@ class WT_Controller_Base {
 
 	// Print the page footer, using the theme
 	protected function pageFooter() {
-		global $footerfile, $WT_IMAGES, $TEXT_DIRECTION;
+		global $footerfile, $WT_IMAGES, $TEXT_DIRECTION, $view;
 
-		echo $this->getJavaScript();
-
-		$view='full';
 		require WT_ROOT.$footerfile;
 
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();
 		}
+		echo $this->getJavaScript();
 		echo '</body></html>';
 	}
 

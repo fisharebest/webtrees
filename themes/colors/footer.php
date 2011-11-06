@@ -29,20 +29,22 @@ if (!defined('WT_WEBTREES')) {
 }
 
 echo '</div>'; // <div id="content">
-echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
-echo '<br />';
-echo contact_links();
-echo '<br />';
-echo '<p class="logo">';
-echo '<a href="', WT_WEBTREES_URL, '" target="_blank">';
-echo '<img src="', $WT_IMAGES['webtrees'], '" width="100" border="0" alt="', WT_WEBTREES, '" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '" /></a>';
-echo '</p>';
-if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
-	echo execution_stats();
+if ($view!='simple') {
+	echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
+	echo '<br />';
+	echo contact_links();
+	echo '<br />';
+	echo '<p class="logo">';
+	echo '<a href="', WT_WEBTREES_URL, '" target="_blank">';
+	echo '<img src="', $WT_IMAGES['webtrees'], '" width="100" border="0" alt="', WT_WEBTREES, '" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '" /></a>';
+	echo '</p>';
+	if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
+		echo execution_stats();
+	}
+	if (exists_pending_change()) {
+		echo '<a href="javascript:;" onclick="window.open(\'edit_changes.php\', \'_blank\', \'width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
+		echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
+		echo '</a>';
+	}
+	echo '</div>'; // <div id="footer">
 }
-if (exists_pending_change()) {
-	echo '<a href="javascript:;" onclick="window.open(\'edit_changes.php\', \'_blank\', \'width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
-	echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
-	echo '</a>';
-}
-echo '</div>'; // <div id="footer">

@@ -28,9 +28,11 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '</div><div id="footer"><div class="block">', contact_links();
-
-if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
-	echo execution_stats();
+echo '</div>'; // <div id="content">
+if ($view!='simple') {
+	echo '<div id="footer"><div class="block">', contact_links();
+	if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
+		echo execution_stats();
+	}
+	echo '</div><a style="font-size:150%; color:#888;" href="', WT_WEBTREES_URL, '" title="', WT_WEBTREES , ' - ', WT_VERSION_TEXT, '">', WT_WEBTREES, '</a></div>';
 }
-echo '</div><a style="font-size:150%; color:#888;" href="', WT_WEBTREES_URL, '" title="', WT_WEBTREES , ' - ', WT_VERSION_TEXT, '">', WT_WEBTREES, '</a></div>';
