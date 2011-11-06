@@ -249,12 +249,12 @@ foreach ($controller->tabs as $tab) {
 	if ($tab->hasTabContent()) {
 		if ($tab->canLoadAjax()) {
 			// AJAX tabs load only when selected
-			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="',$controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
+			echo '<li class="'.$greyed_out.'"><a id="', $tab->getName(), '_tab" href="',$controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
 		} else {
 			// Non-AJAX tabs load immediately
-			echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="#', $tab->getName(), '">';
+			echo '<li class="'.$greyed_out.'"><a id="', $tab->getName(), '_tab" href="#', $tab->getName(), '">';
 		}
-		echo '<span title="', $tab->getTitle(), '">', $tab->getTitle(), '</span></a></li>';
+		echo $tab->getTitle(), '</a></li>';
 	}
 }
 echo '</ul>';
