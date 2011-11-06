@@ -108,24 +108,17 @@ echo 'function showchanges() { window.location="'.$controller->record->getRawUrl
 
 ?>
 
-jQuery('#main').addClass('use-sidebar'); // Show
-jQuery('#main').removeClass('use-sidebar'); // Hide
-jQuery('#main').toggleClass('use-sidebar'); // Toggle
-
-var tabCache = new Array();
-
 jQuery(document).ready(function() {
-	jQuery('#tabs').tabs({ spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" border="0" alt="" />' });
-	jQuery("#tabs").tabs({ cache: true });
-	var $tabs = jQuery('#tabs');
+	jQuery('#tabs').tabs({
+		spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" border="0" alt="" />',
+		cache: true
+	});
 	jQuery('#tabs').bind('tabsshow', function(event, ui) {
-		var selectedTab = ui.tab.name;
-		tabCache[selectedTab] = true;
-	<?php
-	foreach ($controller->tabs as $tab) {
-		echo $tab->getJSCallback()."\n";
-	}
-	?>
+		<?php
+		foreach ($controller->tabs as $tab) {
+			echo $tab->getJSCallback()."\n";
+		}
+		?>
 	});
 
 	// sidebar settings 

@@ -737,22 +737,11 @@ if (isset($content) && $content==1) {
 	</script>
 	<script type="text/javascript">
 	//<![CDATA[
-	var selectedTab = '';
-	if (selectedTab != '' && selectedTab != 'undefined' && selectedTab != null) {
-		var selectedTab = selectedTab;
-	} else {
-		var selectedTab = <?php echo $tab; ?>;
-	}
-	var tabCache = new Array();
-
 	jQuery(document).ready(function() {
 		// TODO: change images directory when the common images will be deleted.
 		jQuery('#tabs').tabs({ spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" border="0" />' });
-		jQuery("#tabs").tabs({ cache: true, selected: selectedTab });
-		var $tabs = jQuery('#tabs');
+		jQuery("#tabs").tabs({ cache: true });
 		jQuery('#tabs').bind('tabsshow', function(event, ui) {
-			selectedTab = ui.tab.name;
-			tabCache[selectedTab] = true;
 		});
 	});
 	//]]>
