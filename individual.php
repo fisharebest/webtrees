@@ -254,7 +254,7 @@ foreach ($controller->tabs as $tab) {
 			// Non-AJAX tabs load immediately
 			echo '<li class="'.$greyed_out.'"><a id="', $tab->getName(), '_tab" href="#', $tab->getName(), '">';
 		}
-		echo $tab->getTitle(), '</a></li>';
+		echo '<span title="', $tab->getDescription(), '">', $tab->getTitle(), '</span></a></li>';
 	}
 }
 echo '</ul>';
