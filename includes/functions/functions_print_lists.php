@@ -120,7 +120,13 @@ function print_indi_table($datalist, $legend='', $option='') {
 					oTable'.$table_id.'.fnFilter("", i );
 				};
 			});
-	
+
+			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
+			jQuery("th span:eq(6)").css("display", "none");
+			jQuery("th div:eq(6)").css("margin", "auto").css("text-align", "center");
+			jQuery("th span:eq(12)").css("display", "none");
+			jQuery("th div:eq(12)").css("margin", "auto").css("text-align", "center");
+			
 			jQuery(".indi-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 		');
@@ -520,7 +526,11 @@ function print_fam_table($datalist, $legend='', $option='') {
 					oTable'.$table_id.'.fnFilter("", i );
 				};
 			});
-		
+
+			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
+			jQuery("th span:eq(9)").css("display", "none");
+			jQuery("th div:eq(9)").css("margin", "auto").css("text-align", "center");
+			
 			jQuery(".fam-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
 	');
