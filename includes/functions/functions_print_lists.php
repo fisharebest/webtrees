@@ -1533,7 +1533,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 		');
 
 		//-- table header
-		$return .= "<table id='" . $table_id . "' class='list_table center width100'>";
+		$return .= "<table id='" . $table_id . "' class='list_table width100'>";
 		$return .= "<thead><tr>";
 		$return .= "<th class='list_label'></th>";
 		$return .= "<th style='cursor:pointer;' class='list_label'>" . WT_I18N::translate('Record') . "</th>";
