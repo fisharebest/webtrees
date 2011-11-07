@@ -58,7 +58,7 @@ if ($display=='hierarchy') {
 }
 $controller->pageHeader();
 
-echo '<div class="center"><h2>';
+echo '<div><h2 class="center">';
 if ($display=='hierarchy' && $level == 0)  {
 	echo WT_I18N::translate('Place hierarchy');
 } else if ($display=='hierarchy' && $level > 0) {
@@ -126,6 +126,7 @@ if ($display=='hierarchy') {
 	echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
 
 	// -- echo the breadcrumb hierarchy
+	echo '<h4 class="center">';
 	$numls=0;
 	if ($level>0) {
 		//-- link to search results
@@ -180,7 +181,8 @@ if ($display=='hierarchy') {
 	if ($level==0 || ($numls>=0 && (($TEXT_DIRECTION=='rtl' && hasRtLText($parent[$numls])) || ($TEXT_DIRECTION=='ltr' && !hasRtLText($parent[$numls]))))) {
 		echo WT_I18N::translate('Top Level');
 	}
-	echo '</a>';
+	echo '</a>',
+		'</h4>';
 
 
 	//-- create a string to hold the variable links and place names
@@ -316,15 +318,28 @@ if ($level > 0) {
 			$title = $v.', '.$title;
 		}
 		$title = PrintReady(substr($title, 0, -2)).' ';
-		// Sort each of the tables by Name
-		usort($myindilist,   array('WT_GedcomRecord', 'Compare'));
-		usort($myfamlist,    array('WT_GedcomRecord', 'Compare'));
-		usort($mysourcelist, array('WT_GedcomRecord', 'Compare'));
-		// echo each of the tables
-		print_indi_table($myindilist,   WT_I18N::translate('Individuals').' @ '.$title);
-		print_fam_table ($myfamlist,    WT_I18N::translate('Families'   ).' @ '.$title);
-		print_sour_table($mysourcelist, WT_I18N::translate('Sources'    ).' @ '.$title);
-	}
+
+		//-- display results
+		echo WT_JS_START;
+		?>	jQuery(document).ready(function() {
+				jQuery("#places-tabs").tabs();
+				jQuery("#places-tabs").css("visibility", "visible");
+				jQuery(".loading-image").css("display", "none");
+			});
+		<?php
+		echo WT_JS_END;
+		echo '<div class="loading-image">&nbsp;</div>';
+		echo '<div id="places-tabs">
+			<ul>';
+				if (!empty($myindilist)) {echo '<li><a href="#places-indi"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';}
+				if (!empty($myfamlist)) {echo '<li><a href="#places-fam"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';}
+				if (!empty($mysourcelist)) {echo '<li><a href="#places-source"><span id="mediasource">', WT_I18N::translate('Sources'), '</span></a></li>';}
+			echo '</ul>';
+		if (!empty($myindilist)) {echo '<div id="places-indi">', print_indi_table($myindilist), '</div>';}
+		if (!empty($myfamlist)) {echo '<div id="places-fam">', print_fam_table($myfamlist), '</div>';}
+		if (!empty($mysourcelist)) {echo '<div id="places-source">', print_sour_table($mysourcelist), '</div>';}
+		echo '</div>';//close #places-tabs
+		}
 }
 
 //-- list type display

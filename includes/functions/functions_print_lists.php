@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_places.php';
 
 // print a table of individuals
-function print_indi_table($datalist, $legend='', $option='') {
+function print_indi_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
 
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
@@ -142,14 +142,6 @@ function print_indi_table($datalist, $legend='', $option='') {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="indi-list">';
-	//-- fieldset
-	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') {
-		$filter=$legend;
-		$legend=WT_Gedcom_Tag::getLabel(substr($option, 0, 4))." @ ".$legend;
-	}
-	if ($legend == '') $legend = WT_I18N::translate('Individuals');
-	if (isset($WT_IMAGES['indi-list'])) $legend = '<img src="'.$WT_IMAGES['indi-list'].'" alt="" align="middle" /> '.$legend;
-	echo '<fieldset id="fieldset_indi"><legend>', $legend, '</legend>';
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
@@ -438,12 +430,11 @@ function print_indi_table($datalist, $legend='', $option='') {
 		print_chart_by_age($deat_by_age, WT_I18N::translate('Age related to death year')),
 		'</td></tr></table>',
 		'</div>',
-		'</fieldset>',
 		'</div>'; // Close "indi-list"
 }
 
 // print a table of families
-function print_fam_table($datalist, $legend='', $option='') {
+function print_fam_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $controller;
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
@@ -543,14 +534,6 @@ function print_fam_table($datalist, $legend='', $option='') {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="fam-list">';
-	//-- fieldset
-	if ($option=='MARR_PLAC') {
-		$filter=$legend;
-		$legend=WT_Gedcom_Tag::getLabel('MARR').' @ '.$legend;
-	}
-	if ($legend == '') $legend = WT_I18N::translate('Families');
-	if (isset($WT_IMAGES['fam-list'])) $legend = '<img src="'.$WT_IMAGES['fam-list'].'" alt="" align="middle" /> '.$legend;
-	echo '<fieldset id="fieldset_fam"><legend>', $legend, '</legend>';
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
@@ -825,12 +808,11 @@ function print_fam_table($datalist, $legend='', $option='') {
 		print_chart_by_age($marr_by_age, WT_I18N::translate('Age in year of marriage')),
 		'</td></tr></table>',
 		'</div>',
-		'</div>', // Close "fam-list"
-		'</fieldset>';
+		'</div>'; // Close "fam-list"
 }
 
 // print a table of sources
-function print_sour_table($datalist, $legend=null) {
+function print_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $controller;
 
 	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
@@ -871,16 +853,6 @@ function print_sour_table($datalist, $legend=null) {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="source-list">';
-	echo '<fieldset><legend>';
-	if (isset($WT_IMAGES['source-list'])) {
-		echo '<img src="'.$WT_IMAGES['source-list'].'" alt="" align="middle" /> ';
-	}
-	if ($legend) {
-		echo $legend;
-	} else {
-		echo WT_I18N::translate('Sources');
-	}
-	echo '</legend>';
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
@@ -975,7 +947,7 @@ function print_sour_table($datalist, $legend=null) {
 		echo '</tr>';
 	}
 	echo '</tbody>',
-		'</table></fieldset>',
+		'</table>',
 		'</div>';
 	// show TITLE2 col if not empty
 	if ($t2) {
@@ -984,7 +956,7 @@ function print_sour_table($datalist, $legend=null) {
 }
 
 // print a table of shared notes
-function print_note_table($datalist, $legend=null) {
+function print_note_table($datalist) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $controller;
 
 	if (count($datalist)<1) {
@@ -1028,16 +1000,6 @@ function print_note_table($datalist, $legend=null) {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="note-list">';
-	echo '<fieldset><legend>';
-	if (isset($WT_IMAGES['note-list'])) {
-		echo '<img src="'.$WT_IMAGES['note-list'].'" alt="" align="middle" /> ';
-	}
-	if ($legend) {
-		echo $legend;
-	} else {
-		echo WT_I18N::translate('Shared notes');
-	}
-	echo '</legend>';
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
@@ -1095,12 +1057,12 @@ function print_note_table($datalist, $legend=null) {
 		echo '</tr>';
 	}
 	echo '</tbody>',
-		'</table></fieldset>',
+		'</table>',
 		'</div>';
 }
 
 // print a table of repositories
-function print_repo_table($repos, $legend='') {
+function print_repo_table($repos) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $controller;
 
 	if (!$repos) {
@@ -1144,17 +1106,6 @@ function print_repo_table($repos, $legend='') {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="repo-list">';
-	echo '<fieldset><legend>';
-	if (isset($WT_IMAGES['repo-list'])) {
-		echo '<img src="'.$WT_IMAGES['repo-list'].'" alt="" align="middle" /> ';
-	}
-	if ($legend) {
-		echo $legend;
-	} else {
-		echo WT_I18N::translate('Repositories');
-	}
-	echo '</legend>';
-
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Repository name'), '</th>';
@@ -1204,12 +1155,12 @@ function print_repo_table($repos, $legend='') {
 		echo '</tr>';
 	}
 	echo '</tbody>',
-		'</table></fieldset>',
+		'</table>',
 		'</div>';
 }
 
 // print a table of media objects
-function print_media_table($datalist, $legend) {
+function print_media_table($datalist) {
 	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $controller;
 
 	if (count($datalist)<1) return;
@@ -1251,16 +1202,6 @@ function print_media_table($datalist, $legend) {
 	//--table wrapper
 	echo '<div class="loading-image">&nbsp;</div>';
 	echo '<div class="media-list">';
-	echo '<fieldset><legend>';
-	if (isset($WT_IMAGES['media-list'])) {
-		echo '<img src="'.$WT_IMAGES['media-list'].'" alt="" align="middle" /> ';
-	}
-	if ($legend) {
-		echo $legend;
-	} else {
-		echo WT_I18N::translate('Media objects');
-	}
-	echo '</legend>';
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Media'), '</th>';

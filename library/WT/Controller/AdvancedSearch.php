@@ -433,15 +433,13 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 		$ret = true;
 		if (count($this->myindilist)>0) {
-			echo '<br /><div class="center">';
 			uasort($this->myindilist, array('WT_GedcomRecord', 'Compare'));
-			print_indi_table($this->myindilist, WT_I18N::translate('Individuals')." @ ".PrintReady(get_gedcom_setting(WT_GEDCOM, 'title')));
-			echo "</div>";
+			print_indi_table($this->myindilist);
 		}
 		else {
 			$ret = false;
 			if ($this->isPostBack) {
-				echo '<br /><div class="warning" style=" text-align: center;"><em>', WT_I18N::translate('No results found.'), '</em><br /></div>';
+				echo '<br /><div class="warning center"><em>', WT_I18N::translate('No results found.'), '</em><br /></div>';
 			}
 		}
 		return $ret;

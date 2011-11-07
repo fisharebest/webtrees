@@ -599,195 +599,131 @@ class WT_Controller_Search extends WT_Controller_Base {
 		if ($this->action=="general" || $this->action=="soundex" || $this->action=="replace") {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
 				echo '<br />';
+			echo WT_JS_START;
+			?>	jQuery(document).ready(function() {
+					jQuery("#search-result-tabs").tabs();
+					jQuery("#search-result-tabs").css("visibility", "visible");
+					jQuery(".loading-image").css("display", "none");
+				});
+			<?php
+			echo WT_JS_END;
+			echo '<div class="loading-image">&nbsp;</div>';
+			echo '<div id="search-result-tabs">
+				<ul>';
+					if ($this->myindilist) {echo '<li><a href="#searchAccordion-indi"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';}
+					if ($this->myfamlist) {echo '<li><a href="#searchAccordion-fam"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';}
+					if ($this->mysourcelist) {echo '<li><a href="#searchAccordion-source"><span id="mediasource">', WT_I18N::translate('Sources'), '</span></a></li>';}
+					if ($this->mynotelist) {echo '<li><a href="#searchAccordion-note"><span id="notesource">', WT_I18N::translate('Notes'), '</span></a></li>';}
+				echo '</ul>';
 
-				// Split individuals by gedcom
-				foreach ($this->sgeds as $ged_id=>$gedcom) {
-					$datalist = array();
-					foreach ($this->myindilist as $individual) {
-						if ($individual->getGedId()==$ged_id) {
-							$datalist[]=$individual;
+				// individual results
+				echo '<div id="searchAccordion-indi">';
+					// Split individuals by gedcom
+					foreach ($this->sgeds as $ged_id=>$gedcom) {
+						$datalist = array();
+						foreach ($this->myindilist as $individual) {
+							if ($individual->getGedId()==$ged_id) {
+								$datalist[]=$individual;
+							}
+						}
+						if ($datalist) {
+							$somethingPrinted = true;
+							usort($datalist, array('WT_GedcomRecord', 'Compare'));
+							$GEDCOM=$gedcom;
+							load_gedcom_settings($ged_id);
+							echo '<h3 class="indi-acc-header"><a href="#">&laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
+								<div class="indi-acc_content">';
+								print_indi_table($datalist);
+							echo '</div>';//indi-acc_content
 						}
 					}
-					if ($datalist) {
-						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
-						$GEDCOM=$gedcom;
-						load_gedcom_settings($ged_id);
-						print_indi_table($datalist, WT_I18N::translate('Individuals').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')));
-					}
-				}
-				// Split families by gedcom
-				foreach ($this->sgeds as $ged_id=>$gedcom) {
-					$datalist = array();
-					foreach ($this->myfamlist as $family) {
-						if ($family->getGedId()==$ged_id) {
-							$datalist[]=$family;
+				echo '</div>';//#searchAccordion-indi
+				echo WT_JS_START,'jQuery("#searchAccordion-indi").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
+
+				// family results
+				echo '<div id="searchAccordion-fam">';
+					// Split families by gedcom
+					foreach ($this->sgeds as $ged_id=>$gedcom) {
+						$datalist = array();
+						foreach ($this->myfamlist as $family) {
+							if ($family->getGedId()==$ged_id) {
+								$datalist[]=$family;
+							}
+						}
+						if ($datalist) {
+							$somethingPrinted = true;
+							usort($datalist, array('WT_GedcomRecord', 'Compare'));
+							$GEDCOM=$gedcom;
+							load_gedcom_settings($ged_id);
+							echo '<h3 class="fam-acc-header"><a href="#">&laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
+								<div class="fam-acc_content">';
+								print_fam_table($datalist);
+							echo '</div>';//fam-acc_content
 						}
 					}
-					if ($datalist) {
-						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
-						$GEDCOM=$gedcom;
-						load_gedcom_settings($ged_id);
-						print_fam_table($datalist, WT_I18N::translate('Families').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')));
-					}
-				}
-				// Split sources by gedcom
-				foreach ($this->sgeds as $ged_id=>$gedcom) {
-					$datalist = array();
-					foreach ($this->mysourcelist as $source) {
-						if ($source->getGedId()==$ged_id) {
-							$datalist[]=$source;
+				echo '</div>';//#searchAccordion-fam
+				echo WT_JS_START,'jQuery("#searchAccordion-fam").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
+
+				// source results
+				echo '<div id="searchAccordion-source">';
+					// Split sources by gedcom
+					foreach ($this->sgeds as $ged_id=>$gedcom) {
+						$datalist = array();
+						foreach ($this->mysourcelist as $source) {
+							if ($source->getGedId()==$ged_id) {
+								$datalist[]=$source;
+							}
+						}
+						if ($datalist) {
+							$somethingPrinted = true;
+							usort($datalist, array('WT_GedcomRecord', 'Compare'));
+							$GEDCOM=$gedcom;
+							load_gedcom_settings($ged_id);
+							echo '<h3 class="source-acc-header"><a href="#">&laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
+								<div class="source-acc_content">';
+								print_sour_table($datalist);
+							echo '</div>';//fam-acc_content
 						}
 					}
-					if ($datalist) {
-						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
-						$GEDCOM=$gedcom;
-						load_gedcom_settings($ged_id);
-						print_sour_table($datalist, WT_I18N::translate('Sources').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')));
-					}
-				}
-				// Split notes by gedcom
-				foreach ($this->sgeds as $ged_id=>$gedcom) {
-					$datalist = array();
-					foreach ($this->mynotelist as $note) {
-						if ($note->getGedId()==$ged_id) {
-							$datalist[]=$note;
+				echo '</div>';//#searchAccordion-source
+				echo WT_JS_START,'jQuery("#searchAccordion-source").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
+
+				// note results
+				echo '<div id="searchAccordion-note">';
+					// Split notes by gedcom
+					foreach ($this->sgeds as $ged_id=>$gedcom) {
+						$datalist = array();
+						foreach ($this->mynotelist as $note) {
+							if ($note->getGedId()==$ged_id) {
+								$datalist[]=$note;
+							}
+						}
+						if ($datalist) {
+							$somethingPrinted = true;
+							usort($datalist, array('WT_GedcomRecord', 'Compare'));
+							$GEDCOM=$gedcom;
+							load_gedcom_settings($ged_id);
+							echo '<h3 class="note-acc-header"><a href="#">&laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
+								<div class="note-acc_content">';
+								print_note_table($datalist);
+							echo '</div>';//note-acc_content
 						}
 					}
-					if ($datalist) {
-						$somethingPrinted = true;
-						usort($datalist, array('WT_GedcomRecord', 'Compare'));
-						$GEDCOM=$gedcom;
-						load_gedcom_settings($ged_id);
-						print_note_table($datalist, WT_I18N::translate('Notes').' : &laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')));
-					}
-				}
+				echo '</div>';//#searchAccordion-note
+				echo WT_JS_START,'jQuery("#searchAccordion-note").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
+
 				$GEDCOM=WT_GEDCOM;
 				load_gedcom_settings(WT_GED_ID);
 			} else
 			if (isset ($this->query)) {
-				echo "<br /><div class=\"warning\" style=\" text-align: center;\"><em>".WT_I18N::translate('No results found.')."</em><br />";
+				echo '<br /><div class="warning center"><em>'.WT_I18N::translate('No results found.').'</em><br />';
 				if (!isset ($this->srindi) && !isset ($this->srfams) && !isset ($this->srsour) && !isset ($this->srnote)) {
-					echo "<em>".WT_I18N::translate('Be sure to select an option to search for.')."</em><br />";
+					echo '<em>'.WT_I18N::translate('Be sure to select an option to search for.').'</em><br />';
 				}
 				echo '</div>';
 			}
-			// Prints the Paged Results: << 1 2 3 4 >> links if there are more than $this->resultsPerPage results
-			if ($this->resultsPerPage >= 1 && $this->totalGeneralResults > $this->resultsPerPage) {
-				$this->printPageResultsLinks($this->inputFieldNames, $this->totalGeneralResults, $this->resultsPerPage);
-			}
+			echo '</div>';//#search-result-tabs
 		}
 		return $somethingPrinted; // whether anything printed
-	}
-
-	/************************************************   Helper Methods ****************************************************************/
-
-	/**
-	 * Function that returns only the results for the current page
-	 * i.e. if $controller->resultsPageNum == 2 and $resultsPerPage == 10 this
-	 * function would return results 11 - 20.
-	 *
-	 * @param array() $results - the original results.
-	 * @param int $resultsPerPage - If $results count is less
-	 * than $resultsPerPage it will simply return $results.
-	 * @return array - the filtered results i.e. 11-20.
-		*/
-	function getPagedResults($results, $resultsPerPage) {
-		$len = count($results);
-		if ($len <= $resultsPerPage) {
-			if ($this->resultsPageNum==0) return $results;
-			else return array();
-		}
-		$pagedResults = array ();
-		$startPosition = $this->resultsPageNum * $resultsPerPage;
-		$endPosition = ($this->resultsPageNum + 1) * $resultsPerPage;
-		$i = 0;
-		if (isset ($results) && $len > 0) {
-			foreach ($results as $key => $value) {
-				if ($i >= $startPosition)
-				$pagedResults[$key] = $value;
-				$i ++;
-				if ($i >= $endPosition)
-				break;
-			}
-			return $pagedResults;
-		}
-		return array();
-	}
-
-	/**
-	 * prints out the paging links for a page with many results i.e.  Result Page:   << 1 2 3 4 5 >>
-	 *
-	 * @param $this->inputFieldNames - an array of strings representing the names of the variables to include
-	 * in the query string usually from input values in a form i.e. 'action', 'query', 'showasso' etc.
-	 */
-	function printPageResultsLinks($inputFieldNames, $totalResults, $resultsPerPage) {
-		echo "<br /><table align='center'><tr><td>".WT_I18N::translate('Result Page')." &nbsp;&nbsp;";
-		// Prints the '<<' linking to the previous page if it's not on the first page
-		if ($this->resultsPageNum > 0) {
-			echo " <a href='";
-			$this->printQueryString($inputFieldNames, 0);
-			echo "'>&lt;&lt;</a> ";
-			echo " <a href='";
-			$this->printQueryString($inputFieldNames, ($this->resultsPageNum - 1));
-			echo "'>&lt;</a>";
-		}
-
-		// Prints out each number linking to that page number.
-		// If it's on that page number it is printed out bold instead of a link
-		for ($i = 1; $i < (($totalResults / $resultsPerPage) + 1); $i ++) {
-			if ($i != $this->resultsPageNum + 1) {
-				echo " <a href='";
-				$this->printQueryString($inputFieldNames, ($i -1));
-				echo "'>".$i."</a>";
-			} else
-			echo " <b>".$i."</b>";
-		}
-
-		// Prints the '>>' linking to the next page if it's not on the last page
-		if ($this->resultsPageNum < (($totalResults / $resultsPerPage) - 1)) {
-			echo " <a href='";
-			$this->printQueryString($inputFieldNames, ($this->resultsPageNum + 1));
-			echo "'>&gt;</a>";
-			echo " <a href='";
-			$this->printQueryString($inputFieldNames, (int)($totalResults / $resultsPerPage));
-			echo "'>&gt;&gt;</a>";
-		}
-
-		echo "</td></tr></table>";
-	}
-
-	/**
-	 * Prints the query string that goes ... <a href'  HERE   '> for each paging result link
-	 *
-	 * @param $inputFieldNames - an array of strings representing the names of the variables to include
-	 * in the query string usually from input values in a form i.e. 'action', 'query', 'showasso' etc.
-	 * @param $pageNum - the page number to link to in the paged results
-		*/
-	function printQueryString($inputFieldNames, $pageNum) {
-		global $GEDCOM;
-		$tempURL = "search.php?ged=".rawurlencode($GEDCOM);
-		foreach ($inputFieldNames as $key => $value) {
-			$controllerVar = $this->getValue($value);
-			if (!empty ($controllerVar)) {
-				$tempURL .= "&amp;{$value}={$controllerVar}";
-			}
-		}
-		$tempURL .= "&amp;resultsPageNum={$pageNum}";
-		foreach ($this->sgeds as $i=>$key) {
-			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $key);
-			$tempURL .= "&amp;{$str}=yes";
-		}
-		echo $tempURL;
-	}
-
-	function getValue($varName) {
-		if (isset ($this-> $varName)) {
-			$value = $this-> $varName;
-			return $value;
-		} else
-		return "";
 	}
 }
