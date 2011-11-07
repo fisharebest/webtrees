@@ -842,7 +842,11 @@ function print_sour_table($datalist) {
 	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
 	echo '<th>', WT_I18N::translate('Shared notes'), '</th>';
 	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '<th style="display:none;">DEL</th>';
+	if (WT_USER_GEDCOM_ADMIN) {
+		echo '<th>&nbsp;</th>';//delete
+	} else {
+		echo '<th style="display:none;">DEL</th>';
+	}
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
@@ -977,7 +981,11 @@ function print_note_table($datalist) {
 	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
 	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '<th style="display:none;">DEL</th>';
+	if (WT_USER_GEDCOM_ADMIN) {
+		echo '<th>&nbsp;</th>';//delete
+	} else {
+		echo '<th style="display:none;">DEL</th>';
+	}
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
