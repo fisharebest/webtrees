@@ -43,8 +43,6 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $WT_IMAGES, $controller;
 
-		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
-
 		$show_unassigned=get_block_setting($block_id, 'show_unassigned', true);
 		$show_other     =get_block_setting($block_id, 'show_other',      true);
 		$show_future    =get_block_setting($block_id, 'show_future',     true);
@@ -104,12 +102,12 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 					$content.='<tr valign="top">';
 					$content.='<td class="list_value_wrap">'.str_replace('<a', '<a name="'.$todo['date']->MinJD().'"', $todo['date']->Display(false)).'</td>';
 					$name=$record->getFullName();
-					$content.='<td class="list_value_wrap" align="'.get_align(WT_GEDCOM).'"><a href="'.$record->getHtmlUrl().'">'.PrintReady($name).'</a></td>';
+					$content.='<td class="list_value_wrap"><a href="'.$record->getHtmlUrl().'">'.PrintReady($name).'</a></td>';
 					if ($show_unassigned || $show_other) {
 						$content.='<td class="list_value_wrap">'.$user_name.'</td>';
 					}
 					$text=get_gedcom_value('_TODO', 1, $todo['factrec']);
-					$content.='<td class="list_value_wrap" align="'.get_align($text).'">'.PrintReady($text).'</td>';
+					$content.='<td class="list_value_wrap">'.PrintReady($text).'</td>';
 					$content.='</tr>';
 					$found=true;
 				}

@@ -204,7 +204,7 @@ function print_indi_table($datalist, $option='') {
 		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
 		echo '<tr>';
 		//-- Indi name(s)
-		echo '<td align="', get_align($person->getFullName()), '">';
+		echo '<td>';
 		list($surn, $givn)=explode(',', $person->getSortName());
 		// If we're showing search results, then the highlighted name is not
 		// necessarily the person's primary name.
@@ -595,7 +595,7 @@ function print_fam_table($datalist, $option='') {
 		}
 		$n1=$husb->getPrimaryName();
 		$n2=$husb->getSecondaryName();
-		echo '<td align="', get_align($names[$n1]['full']), '">';
+		echo '<td>';
 		echo '<a href="', $family->getHtmlUrl(), '" class="name2" dir="', $TEXT_DIRECTION, '">', highlight_search_hits($names[$n1]['full']), '</a>';
 		echo $husb->getSexImage();
 		if ($n1!=$n2) {
@@ -633,7 +633,7 @@ function print_fam_table($datalist, $option='') {
 		}
 		$n1=$wife->getPrimaryName();
 		$n2=$wife->getSecondaryName();
-		echo '<td align="', get_align($names[$n1]['full']), '">';
+		echo '<td>';
 		echo '<a href="', $family->getHtmlUrl(), '" class="name2" dir="', $TEXT_DIRECTION, '">', highlight_search_hits($names[$n1]['full']), '</a>';
 		echo $wife->getSexImage();
 		if ($n1!=$n2) {
@@ -1192,7 +1192,7 @@ function print_media_table($datalist) {
 			//-- Object thumbnail
 			echo '<td><img src="', $media->getThumbnail(), '" alt="', $name, '" /></td>';
 			//-- Object name(s)
-			echo '<td align="', get_align($name), '">';
+			echo '<td>';
 			echo '<a href="', $media->getHtmlUrl(), '" class="list_item name2">';
 			echo highlight_search_hits($name), '</a>';
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT)
@@ -1252,7 +1252,7 @@ function format_surname_table($surnames, $type) {
 		// Row counter
 		$tbody.='<tr>';
 		// Surname
-		$tbody.='<td class="list_value" align="'.get_align($surn).'">';
+		$tbody.='<td class="list_value">';
 		if (count($surns)==1) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
@@ -1570,7 +1570,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 		++$n;
 		//-- Record name(s)
 		$name = $record->getFullName();
-		$return .= "<td class='wrap' align='" . get_align($name) . "'>";
+		$return .= '<td class="wrap">';
 		$return .= "<a href='" . $record->getHtmlUrl() . "' class='name2' dir='" . $TEXT_DIRECTION . "'>" . $name . "</a>";
 		if ($indi) {
 			$return .= "<div class='indent'>";
@@ -1713,7 +1713,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "<tr>";
 		//-- Record name(s)
 		$name = $value['name'];
-		$return .= '<td class="list_value_wrap" align="'.get_align($name).'">';
+		$return .= '<td class="list_value_wrap">';
 		$return .= '<a href="'.$value['url'].'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.$name.'</a>';
 		if ($value['record']->getType()=="INDI") {
 			$return .= $value['sex'];
@@ -2011,21 +2011,4 @@ function print_chart_by_decade($data, $title) {
 		$chart_url .= $CHART_ENCODING61[floor(substr_count($data[$y], "F")*61/$vmax)];
 	}
 	echo "<img src=\"", $chart_url, "\" alt=\"", $title, "\" title=\"", $title, "\" class=\"gchart\" />";
-}
-
-/**
- * check string align direction depending on language and rtl config
- *
- * @param string $txt string argument
- * @return string left|right
- */
-function get_align($txt) {
-		global $TEXT_DIRECTION;
-
-		if (!empty($txt)) {
-			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($txt) && hasLTRText($txt)) return "left";
-			if ($TEXT_DIRECTION=="ltr" && hasRTLText($txt) && !hasLTRText($txt)) return "right";
-		}
-		if ($TEXT_DIRECTION=="rtl") return "right";
-		return "left";
 }

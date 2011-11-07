@@ -43,8 +43,6 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 	public function getBlock($block_id, $template=true, $cfg=null) {
 		global $ctype, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_MARRIED_NAMES, $controller;
 
-		require_once WT_ROOT.'includes/functions/functions_print_lists.php'; // for get_align()
-
 		$days=get_block_setting($block_id, 'days', 7);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
 		$block=get_block_setting($block_id, 'block', true);
@@ -161,7 +159,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					// Individual name(s)
 					$name=$ind->getFullName();
 					$url=$ind->getHtmlUrl();
-					$content .= '<td align="'.get_align($name).'">';
+					$content .= '<td>';
 					$content .= '<a href="'.$url.'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.$name.'</a>';
 					$content .= $ind->getSexImage();
 					$addname=$ind->getAddName();
