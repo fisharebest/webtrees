@@ -52,7 +52,6 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo
-	$javascript,
 	'</head>',
 	'<body id="body">';
 
@@ -124,4 +123,5 @@ if ($view!='simple') {
 	}
 	echo '</div>'; // <div id="header">
 }
-echo '<div id="content">';
+echo $javascript, '<div id="content">';
+

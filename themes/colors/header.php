@@ -52,7 +52,6 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo
-	$javascript,
 	'</head>',
 	'<body id="body">';
 ?>
@@ -158,4 +157,4 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	}
 	echo '</div>'; // <div id="header">
 }
-echo '<div id="content">';
+echo $javascript, '<div id="content">';
