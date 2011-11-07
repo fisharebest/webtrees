@@ -1686,7 +1686,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 		if ($output==1) {
 			//-- First table row:  start table headers, etc. first
-			$return .= '<table id="'.$table_id.'" class="list_table center width100">';
+			$return .= '<table id="'.$table_id.'" class="list_table width100">';
 			$return .= '<thead><tr>';
 			$return .= '<th style="cursor:pointer;" class="list_label">'.WT_I18N::translate('Record').'</th>';
 			$return .= '<th style="display:none;">NAME</th>'; //hidden by datables code
