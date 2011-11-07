@@ -873,15 +873,18 @@ function print_sour_table($datalist) {
 		$link_url=$source->getHtmlUrl();
 		echo '<tr>';
 		//-- Source name(s)
-		$tmp=$source->getFullName();
-		echo '<td><a href="', $link_url, '">';
+		echo '<td>';
 		foreach ($source->getAllNames() as $n=>$name) {
 			if ($n) {
 				echo '<br/>';
 			}
-			echo highlight_search_hits($name['full']);
+			if ($n==$source->getPrimaryName()) {
+				echo '<a class="name2" href="', $link_url, '">', highlight_search_hits($name['full']), '</a>';
+			} else {
+				echo '<a href="', $link_url, '">', highlight_search_hits($name['full']), '</a>';
+			}
 		}	
-		echo '</a></td>';
+		echo '</td>';
 		// Sortable name
 		echo '<td>', strip_tags($source->getFullName()), '</td>';
 		//-- Author
@@ -948,13 +951,12 @@ function print_note_table($datalist) {
 			"bAutoWidth":false,
 			"bProcessing": true,
 			"aoColumns": [
-				/* 0 title  */ {"iDataSort": 1},
-				/* 1 TITL   */ {"bVisible": false, "sType": "unicode"},
-				/* 2 #indi  */ {"sType": "numeric", "sClass": "center"},
-				/* 3 #fam   */ {"sType": "numeric", "sClass": "center"},
-				/* 4 #obje  */ {"sType": "numeric", "sClass": "center"},
-				/* 5 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 6 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				/* 0 title  */ {"sType": "unicode"},
+				/* 1 #indi  */ {"sType": "numeric", "sClass": "center"},
+				/* 2 #fam   */ {"sType": "numeric", "sClass": "center"},
+				/* 3 #obje  */ {"sType": "numeric", "sClass": "center"},
+				/* 4 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 5 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -985,7 +987,7 @@ function print_note_table($datalist) {
 		echo '<tr>';
 		//-- Shared Note name
 		$tmp=$note->getFullName();
-		echo '<td><a href="', $note->getHtmlUrl(), '">', highlight_search_hits($tmp), '</a></td>';
+		echo '<td><a class="name2" href="', $note->getHtmlUrl(), '">', highlight_search_hits($tmp), '</a></td>';
 		// Sortable name
 		echo '<td>', strip_tags($note->getFullName()), '</td>';
 		//-- Linked INDIs
@@ -1088,12 +1090,17 @@ function print_repo_table($repos) {
 		}
 		echo '<tr>';
 		//-- Repository name(s)
-		$name = $repo->getFullName();
-		echo '<td align="', get_align($name), '"><a href="', $repo->getHtmlUrl(), '" class="list_item name2">', highlight_search_hits(htmlspecialchars($name)), '</a>';
-		$addname=$repo->getAddName();
-		if ($addname) {
-			echo '<br /><a href="', $repo->getHtmlUrl(), '" class="list_item">', highlight_search_hits($addname), '</a>';
-		}
+		echo '<td>';
+		foreach ($repo->getAllNames() as $n=>$name) {
+			if ($n) {
+				echo '<br/>';
+			}
+			if ($n==$repo->getPrimaryName()) {
+				echo '<a class="name2" href="', $link_url, '">', highlight_search_hits($name['full']), '</a>';
+			} else {
+				echo '<a href="', $link_url, '">', highlight_search_hits($name['full']), '</a>';
+			}
+		}	
 		echo '</td>';
 		//-- Linked SOURces
 		$tmp=$repo->countLinkedSources();
