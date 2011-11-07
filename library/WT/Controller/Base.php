@@ -142,10 +142,6 @@ class WT_Controller_Base {
 		// Load external libraries first
 		$html=PHP_EOL;
 		foreach (array_keys($this->external_javascript) as $script_name) {
-			if (!WT_STATIC_URL) {
-				// Force scripts to be reloaded after an upgrade.
-				$script_name.='?v='.rawurlencode(WT_VERSION_TEXT);
-			}
 			$html.='<script type="text/javascript" src="'.htmlspecialchars($script_name).'"></script>'.PHP_EOL;
 		}
 		// Process the scripts, in priority order
@@ -156,6 +152,13 @@ class WT_Controller_Base {
 			}
 		}
 		$html.=self::JS_END;
+
+		$this->inline_javascript=array(
+			self::JS_PRIORITY_HIGH  =>array(),
+			self::JS_PRIORITY_NORMAL=>array(),
+			self::JS_PRIORITY_LOW   =>array(),
+		);
+		$this->external_javascript=array();
 
 		return $html;
 	}
@@ -272,6 +275,7 @@ class WT_Controller_Base {
 		}
 		echo $this->getJavaScript();
 		echo '</body></html>';
+
 		return $this;
 	}
 
