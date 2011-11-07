@@ -28,6 +28,10 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+$SpecialChar = array(' ','.',',','"','\'','/','\\','|',':',';','+','&','#','@','-','=','*','%','!','?','$','<','>',"\n");
+$SpecialPar = array('(',')','[',']','{','}');
+$SpecialNum  = array('0','1','2','3','4','5','6','7','8','9');
+$RTLOrd = array(215,216,217,218,219);
 
 $openPar  = '([{';
 $closePar = ')]}';
