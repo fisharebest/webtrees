@@ -31,6 +31,5 @@ $controller=new WT_Controller_Base();
 $controller->setPageTitle(WT_I18N::translate('Sources'));
 $controller->pageHeader();
 
-echo '<div class="center"><h2>', WT_I18N::translate('Sources'), '</h2>';
+echo '<h2>', WT_I18N::translate('Sources'), '</h2>';
 print_sour_table(get_source_list(WT_GED_ID));
-echo '</div>';
