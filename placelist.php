@@ -58,7 +58,7 @@ if ($display=='hierarchy') {
 }
 $controller->pageHeader();
 
-echo '<div><h2 class="center">';
+echo '<div id="place-heirarchy"><h2>';
 if ($display=='hierarchy' && $level == 0)  {
 	echo WT_I18N::translate('Place hierarchy');
 } else if ($display=='hierarchy' && $level > 0) {
@@ -126,7 +126,7 @@ if ($display=='hierarchy') {
 	echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
 
 	// -- echo the breadcrumb hierarchy
-	echo '<h4 class="center">';
+	echo '<h4>';
 	$numls=0;
 	if ($level>0) {
 		//-- link to search results
@@ -400,13 +400,13 @@ if ($display=='list') {
 	}
 }
 
-echo '<br /><a href="?display=';
+echo '<h4><a href="?display=';
 if ($display=='list') {
 	echo 'hierarchy">', WT_I18N::translate('Show Places in Hierarchy');
 } else {
 	echo 'list">', WT_I18N::translate('Show All Places in a List');
 }
-echo '</a></div>';
+echo '</a></h4></div>';
 
 if ($use_googlemap && $display=='hierarchy') {
 	map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
