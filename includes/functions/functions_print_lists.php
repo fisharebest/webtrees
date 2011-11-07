@@ -955,8 +955,9 @@ function print_note_table($datalist) {
 				/* 1 #indi  */ {"sType": "numeric", "sClass": "center"},
 				/* 2 #fam   */ {"sType": "numeric", "sClass": "center"},
 				/* 3 #obje  */ {"sType": "numeric", "sClass": "center"},
-				/* 4 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 5 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				/* 4 #sour  */ {"sType": "numeric", "sClass": "center"},
+				/* 5 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 6 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -986,37 +987,31 @@ function print_note_table($datalist) {
 		}
 		echo '<tr>';
 		//-- Shared Note name
-		$tmp=$note->getFullName();
-		echo '<td><a class="name2" href="', $note->getHtmlUrl(), '">', highlight_search_hits($tmp), '</a></td>';
-		// Sortable name
-		echo '<td>', strip_tags($note->getFullName()), '</td>';
+		echo '<td><a class="name2" href="', $note->getHtmlUrl(), '">', highlight_search_hits($note->getFullName()), '</a></td>';
 		//-- Linked INDIs
-		$tmp=$note->countLinkedIndividuals();
-		echo '<td>', $tmp, '</td>';
+		echo '<td>', $note->countLinkedIndividuals(), '</td>';
 		//-- Linked FAMs
-		$tmp=$note->countLinkedfamilies();
-		echo '<td>', $tmp, '</td>';
+		echo '<td>', $note->countLinkedfamilies(), '</td>';
 		//-- Linked OBJEcts
-		$tmp=$note->countLinkedMedia();
-		echo '<td>', $tmp, '</td>';
+		echo '<td>', $note->countLinkedMedia(), '</td>';
 		//-- Linked SOURs
-		$tmp=$note->countLinkedSources();
-		echo '<td>', $tmp, '</td>';
+		echo '<td>', $note->countLinkedSources(), '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 		} else {
-			echo '<td>CHAN</td>';
+			echo '<td></td>';
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
 			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-note\',xref:\'', $note->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
-			echo '<td style="display:none;">DEL</td>';
+			echo '<td></td>';
 		}
 		echo '</tr>';
 	}
-	echo '</tbody>',
+	echo
+		'</tbody>',
 		'</table>',
 		'</div>';
 }
