@@ -718,7 +718,7 @@ function print_fam_table($datalist, $option='') {
 		echo '</td>';
 		//-- Marriage place
 		echo '<td>';
-		foreach ($person->getAllMarriagePlaces() as $n=>$marriage_place) {
+		foreach ($family->getAllMarriagePlaces() as $n=>$marriage_place) {
 			if ($n) {
 				echo '<br>';
 			}
