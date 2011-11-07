@@ -372,7 +372,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	private function show_list() {
-		global $WT_IMAGES, $TEXT_DIRECTION;
+		global $controller, $WT_IMAGES, $TEXT_DIRECTION;
 
 		$controller=new WT_Controller_Base();
 		$controller->setPageTitle($this->getTitle());
