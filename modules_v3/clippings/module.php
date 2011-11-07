@@ -366,8 +366,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)').help_link('utf8_ansi').'</td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes" /></td></tr>
 
-		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Remove custom webtrees tags? (eg. _WT_USER, _THUM)').help_link('remove_tags').'</td>
-		<td class="optionbox"><input type="checkbox" name="remove" value="yes" checked="checked" />
 		<input type="hidden" name="conv_path" value="'.getLRM(). $controller->conv_path. getLRM().'" /></td></tr>
 
 		<tr><td class="topbottombar" colspan="2">
