@@ -1552,6 +1552,8 @@ display: inline;
 margin: 0;
 }
 
+.helpcontent dt {clear:both;}
+
 .itr {
 	position: absolute;
 	top: 3em;

@@ -565,6 +565,7 @@ right:10px;
 	margin-left:10px;
 	margin-right:10px;
 }
+.helpcontent dt {clear:both;}
 
 .helpfooter {
 	margin:10px;

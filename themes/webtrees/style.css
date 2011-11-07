@@ -631,6 +631,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	margin-left:10px;
 	margin-right:10px;
 }
+.helpcontent dt {clear:both;}
 
 .helpfooter {
 	margin:10px;
