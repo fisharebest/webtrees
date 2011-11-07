@@ -45,8 +45,8 @@ function print_indi_table($datalist, $option='') {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
-			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.localeCompare(b)};
-			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.localeCompare(a)};
+			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			var oTable'.$table_id.' = jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				"oLanguage": {
@@ -76,20 +76,18 @@ function print_indi_table($datalist, $option='') {
 					/*  4 birt date */ {"iDataSort": 5},
 					/*  5 BIRT:DATE */ {"bVisible": false},
 					/*  6 anniv     */ {"bSortable": false, "sClass": "center"},
-					/*  7 birt plac */ {"iDataSort": 8},
-					/*  8 BIRT:PLAC */ {"sType": "unicode", "bVisible": false},
-					/*  9 children  */ {"sClass": "center"},
-					/* 10 deat date */ {"iDataSort": 11},
-					/* 11 DEAT:DATE */ {"bVisible": false},
-					/* 12 anniv     */ {"bSortable": false, "sClass": "center"},
-					/* 13 age       */ {"sType": "numeric", "sClass": "center"},
-					/* 14 deat plac */ {"iDataSort": 15},
-					/* 15 DEAT:PLAC */ {"sType": "unicode", "bVisible": false},
-					/* 16 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 17 SEX       */ {"bVisible": false},
-					/* 18 BIRT      */ {"bVisible": false},
-					/* 19 DEAT      */ {"bVisible": false},
-					/* 20 TREE      */ {"bVisible": false}
+					/*  7 birt plac */ {"sType": "unicode"},
+					/*  8 children  */ {"sClass": "center"},
+					/*  9 deat date */ {"iDataSort": 11},
+					/* 10 DEAT:DATE */ {"bVisible": false},
+					/* 11 anniv     */ {"bSortable": false, "sClass": "center"},
+					/* 12 age       */ {"sType": "numeric", "sClass": "center"},
+					/* 13 deat plac */ {"sType": "unicode"},
+					/* 14 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 15 SEX       */ {"bVisible": false},
+					/* 16 BIRT      */ {"bVisible": false},
+					/* 17 DEAT      */ {"bVisible": false},
+					/* 18 TREE      */ {"bVisible": false}
 				],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
@@ -168,14 +166,12 @@ function print_indi_table($datalist, $option='') {
 	echo '<th style="display:none">SORT_BIRT</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-	echo '<th style="display:none">BIRT_PLAC_SORT</th>';
 	echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('DEAT'), '</th>';
 	echo '<th style="display:none">SORT_DEAT</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-	echo '<th style="display:none">DEAT_PLAC_SORT</th>';
 	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th style="display:none">SEX</th>';
 	echo '<th style="display:none">BIRT</th>';
@@ -290,25 +286,17 @@ function print_indi_table($datalist, $option='') {
 		echo '</td>';
 		//-- Birth place
 		echo '<td>';
-			$birth_place = '';
-			if ($birth_places=$person->getAllBirthPlaces()) {
-				foreach ($birth_places as $birth_place) {
-					if ($SEARCH_SPIDER) {
-						echo get_place_short($birth_place), ' ';
-					} else {
-						echo '<div align="', get_align($birth_place), '">';
-						echo '<a href="', get_place_url($birth_place), '" title="', $birth_place, '">';
-						echo highlight_search_hits(get_place_short($birth_place)), '</a>';
-						echo '</div>';
-					}
-				}
-			} else {
-				echo '&nbsp;';
+		foreach ($person->getAllBirthPlaces() as $n=>$birth_place) {
+			if ($n) {
+				echo '<br>';
 			}
-		echo '</td>';
-		//-- Birth place (sortable)hidden by datatables code
-		echo '<td>';
-			if (empty($birth_place)) { echo '&nbsp;'; } else { echo $birth_place; }
+			if ($SEARCH_SPIDER) {
+				echo get_place_short($birth_place), ' ';
+			} else {
+				echo '<a href="', get_place_url($birth_place), '" title="', $birth_place, '">';
+				echo highlight_search_hits(get_place_short($birth_place)), '</a>';
+			}
+		}
 		echo '</td>';
 		//-- Number of children
 		echo '<td>', $person->getNumberOfChildren(), '</td>';
@@ -359,24 +347,18 @@ function print_indi_table($datalist, $option='') {
 		echo '</td>';
 		//-- Death place
 		echo '<td>';
-			$death_place = '';
-			if ($death_places=$person->getAllDeathPlaces()) {
-				foreach ($death_places as $death_place) {
-					if ($SEARCH_SPIDER) {
-						echo get_place_short($death_place), ' ';
-					} else {
-						echo '<div align="', get_align($death_place), '">';
-						echo '<a href="', get_place_url($death_place), '" title="', $death_place, '">';
-						echo highlight_search_hits(get_place_short($death_place)), '</a>';
-						echo '</div>';
-					}
-				}
-			} else {
-				echo '&nbsp;';
+		foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
+			if ($n) {
+				echo '<br>';
 			}
+			if ($SEARCH_SPIDER) {
+				echo get_place_short($death_place), ' ';
+			} else {
+				echo '<a href="', get_place_url($death_place), '" title="', $death_place, '">';
+				echo highlight_search_hits(get_place_short($death_place)), '</a>';
+			}
+		}
 		echo '</td>';
-		//-- Death place (sortable)hidden by datatables code
-		echo '<td>', $death_place, '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>', $person->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
@@ -441,8 +423,8 @@ function print_fam_table($datalist, $option='') {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
-			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.localeCompare(b)};
-			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.localeCompare(a)};
+			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			var oTable'.$table_id.'=jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				"oLanguage": {
@@ -475,8 +457,7 @@ function print_fam_table($datalist, $option='') {
 					/*  7 age       */ {"sType": "numeric", "sClass": "center"},
 					/*  8 marr date */ {},
 					/*  9 anniv     */ {"bSortable": false, "sClass": "center"},
-					/* 10 marr plac */ {"iDataSort": 11},
-					/* 11 MARR:PLAC */ {"sType": "unicode", "bVisible": false},
+					/* 10 marr plac */ {"sType": "unicode"},
 					/* 12 children  */ {"sType": "numeric", "sClass": "center"},
 					/* 13 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
 					/* 14 MARR      */ {"bVisible": false},
@@ -561,7 +542,6 @@ function print_fam_table($datalist, $option='') {
 	echo '<th>', WT_Gedcom_Tag::getLabel('MARR'), '</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-	echo '<th>MARR_PLAC</th>';
 	echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '" border="0" /></th>';
 	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th style="display:none;">MARR</th>';
@@ -738,24 +718,18 @@ function print_fam_table($datalist, $option='') {
 		echo '</td>';
 		//-- Marriage place
 		echo '<td>';
-		$marriage_place='';
-		if ($marriage_places=$family->getAllMarriagePlaces()) {
-			foreach ($marriage_places as $marriage_place) {
-				if ($SEARCH_SPIDER) {
-					echo get_place_short($marriage_place), ' ';
-				} else {
-					echo '<div align="', get_align($marriage_place), '">';
-					echo '<a href="', get_place_url($marriage_place), '" title="', $marriage_place, '">';
-					echo highlight_search_hits(get_place_short($marriage_place)), '</a>';
-					echo '</div>';
-				}
+		foreach ($person->getAllMarriagePlaces() as $n=>$marriage_place) {
+			if ($n) {
+				echo '<br>';
 			}
-		} else {
-			echo '&nbsp;';
+			if ($SEARCH_SPIDER) {
+				echo get_place_short($marriage_place), ' ';
+			} else {
+				echo '<a href="', get_place_url($marriage_place), '" title="', $marriage_place, '">';
+				echo highlight_search_hits(get_place_short($marriage_place)), '</a>';
+			}
 		}
 		echo '</td>';
-		// Sortable marriage date
-		echo '<td>', $marriage_place, '</td>';
 		//-- Number of children
 		echo '<td>', $family->getNumberOfChildren(), '</td>';
 		//-- Last change
@@ -827,8 +801,8 @@ function print_sour_table($datalist) {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
-			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.localeCompare(b)};
-			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.localeCompare(a)};
+			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				"oLanguage": {
@@ -852,8 +826,6 @@ function print_sour_table($datalist) {
 				"aoColumns": [
 					/*  0 title  */ {"iDataSort": 1},
 					/*  1 TITL   */ {"bVisible": false, "sType": "unicode"},
-					/*  2 title2 */ {"iDataSort": 3},
-					/*  3 TITL 2 */ {"bVisible": false, "sType": "unicode"},
 					/*  4 author */ {"sType": "unicode"},
 					/*  5 #indi  */ {"sType": "numeric", "sClass": "center"},
 					/*  6 #fam   */ {"sType": "numeric", "sClass": "center"},
@@ -876,8 +848,6 @@ function print_sour_table($datalist) {
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
 	echo '<th style="display:none;">TITL</th>';
-	echo '<th class="t2">', WT_Gedcom_Tag::getLabel('TITL'), ' 2</th>';
-	echo '<th style="display:none;">TITL2</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
@@ -888,7 +858,6 @@ function print_sour_table($datalist) {
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
-	$t2=false;
 	$n=0;
 	foreach ($datalist as $key=>$value) {
 		if (is_object($value)) { // Array of objects
@@ -917,37 +886,26 @@ function print_sour_table($datalist) {
 		echo '<tr>';
 		//-- Source name(s)
 		$tmp=$source->getFullName();
-		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits($tmp), '</a></td>';
+		echo '<td><a href="', $link_url, '">';
+		foreach ($source->getAllNames() as $n=>$name) {
+			if ($n) {
+				echo '<br/>';
+			}
+			echo highlight_search_hits($name['full']);
+		}	
+		echo '</a></td>';
 		// Sortable name
 		echo '<td>', strip_tags($source->getFullName()), '</td>';
-		// alternate title in a new column
-		$tmp=$source->getAddName();
-		if ($tmp) {
-			echo '<td class="t2" align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits($tmp), '</a></td>';
-			$t2=true;
-		} else {
-			echo '<td class="t2">&nbsp;</td>';
-		}
-		echo '<td>', strip_tags($source->getAddName()), '</td>';
 		//-- Author
-		$tmp=$source->getAuth();
-		if ($tmp) {
-			echo '<td align="', get_align($tmp), '">', highlight_search_hits(htmlspecialchars($tmp)), '</td>';
-		} else {
-			echo '<td>&nbsp;</td>';
-		}
+		echo '<td>', highlight_search_hits(htmlspecialchars($source->getAuth())), '</td>';
 		//-- Linked INDIs
-		$tmp=$source->countLinkedIndividuals();
-		echo '<td>', $tmp, '</td>';
+		echo '<td>', $source->countLinkedIndividuals(), '</td>';
 		//-- Linked FAMs
-		$tmp=$source->countLinkedfamilies();
-		echo '<td>', $tmp, '</td>';
+		echo '<td>', $source->countLinkedfamilies(), '</td>';
 		//-- Linked OBJEcts
-		$tmp=$source->countLinkedMedia();
-		echo '<td>', $tmp, '</td>';
+		echo '<td>', $source->countLinkedMedia(), '</td>';
 		//-- Linked NOTEs
-		$tmp=$source->countLinkedNotes();
-		echo '<td>', $tmp, '</td>';
+		echo '<td>', $source->countLinkedNotes(), '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
@@ -956,19 +914,16 @@ function print_sour_table($datalist) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-		echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\'', $source->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\'', $source->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
 			echo '<td>&nbsp;</td>';
 		}
 		echo '</tr>';
 	}
-	echo '</tbody>',
+	echo
+		'</tbody>',
 		'</table>',
 		'</div>';
-	// show TITLE2 col if not empty
-	if (!$t2) {
-		echo WT_JS_START, '$("#',$table_id,' .t2, ").hide();', WT_JS_END;
-	}
 }
 
 // print a table of shared notes
@@ -982,8 +937,8 @@ function print_note_table($datalist) {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
-			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.localeCompare(b)};
-			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.localeCompare(a)};
+			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"oLanguage": {
@@ -1010,9 +965,8 @@ function print_note_table($datalist) {
 				/* 2 #indi  */ {"sType": "numeric", "sClass": "center"},
 				/* 3 #fam   */ {"sType": "numeric", "sClass": "center"},
 				/* 4 #obje  */ {"sType": "numeric", "sClass": "center"},
-				/* 5 #note  */ {"sType": "numeric", "sClass": "center"},
-				/* 6 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 7 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				/* 5 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 6 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1036,16 +990,14 @@ function print_note_table($datalist) {
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
-	$n=0;
 	foreach ($datalist as $note) {
 		if (!$note->canDisplayDetails()) {
 			continue;
 		}
 		echo '<tr>';
-		$link_url=$note->getHtmlUrl();
-		//-- Shared Note name(s)
+		//-- Shared Note name
 		$tmp=$note->getFullName();
-		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits($tmp), '</a></td>';
+		echo '<td><a href="', $note->getHtmlUrl(), '">', highlight_search_hits($tmp), '</a></td>';
 		// Sortable name
 		echo '<td>', strip_tags($note->getFullName()), '</td>';
 		//-- Linked INDIs
@@ -1064,7 +1016,7 @@ function print_note_table($datalist) {
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 		} else {
-			echo '<td style="display:none;">CHAN</td>';
+			echo '<td>CHAN</td>';
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
