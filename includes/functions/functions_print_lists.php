@@ -612,20 +612,14 @@ function print_fam_table($datalist, $option='') {
 		//-- Husband age
 		echo '<td>';
 		$hdate=$husb->getBirthDate();
-		if ($hdate->isOK()) {
+		if ($hdate->isOK() && $mdate->isOK()) {
 			if ($hdate->gregorianYear()>=1550 && $hdate->gregorianYear()<2030) {
 				$birt_by_decade[floor($hdate->gregorianYear()/10)*10] .= $husb->getSex();
 			}
-			if ($mdate->isOK()) {
-				$hage=WT_Date::GetAgeYears($hdate, $mdate);
-				$hage_jd = $mdate->MinJD()-$hdate->MinJD();
-				echo $hage;
-				$marr_by_age[max(0, min($max_age, $hage))] .= $husb->getSex();
-			} else {
-				echo '&nbsp;';
-			}
-		} else {
-			echo '&nbsp;';
+			$hage=WT_Date::GetAgeYears($hdate, $mdate);
+			$hage_jd = $mdate->MinJD()-$hdate->MinJD();
+			echo $hage;
+			$marr_by_age[max(0, min($max_age, $hage))] .= $husb->getSex();
 		}
 		echo '</td>';
 		//-- Wife name(s)
@@ -656,20 +650,14 @@ function print_fam_table($datalist, $option='') {
 		//-- Wife age
 		echo '<td>';
 		$wdate=$wife->getBirthDate();
-		if ($wdate->isOK()) {
+		if ($wdate->isOK() && $mdate->isOK()) {
 			if ($wdate->gregorianYear()>=1550 && $wdate->gregorianYear()<2030) {
 				$birt_by_decade[floor($wdate->gregorianYear()/10)*10] .= $wife->getSex();
 			}
-			if ($mdate->isOK()) {
-				$wage=WT_Date::GetAgeYears($wdate, $mdate);
-				$wage_jd = $mdate->MinJD()-$wdate->MinJD();
-				echo $wage;
-				$marr_by_age[max(0, min($max_age, $wage))] .= $wife->getSex();
-			} else {
-				echo '&nbsp;';
-			}
-		} else {
-			echo '&nbsp;';
+			$wage=WT_Date::GetAgeYears($wdate, $mdate);
+			$wage_jd = $mdate->MinJD()-$wdate->MinJD();
+			echo $wage;
+			$marr_by_age[max(0, min($max_age, $wage))] .= $wife->getSex();
 		}
 		echo '</td>';
 		//-- Marriage date
