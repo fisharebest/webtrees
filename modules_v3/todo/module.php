@@ -107,7 +107,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 						$content.='<td class="list_value_wrap">'.$user_name.'</td>';
 					}
 					$text=get_gedcom_value('_TODO', 1, $todo['factrec']);
-					$content.='<td class="list_value_wrap">'.PrintReady($text).'</td>';
+					$content.='<td class="list_value_wrap">'.$text.'</td>';
 					$content.='</tr>';
 					$found=true;
 				}

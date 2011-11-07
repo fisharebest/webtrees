@@ -160,7 +160,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$name=$ind->getFullName();
 					$url=$ind->getHtmlUrl();
 					$content .= '<td>';
-					$content .= '<a href="'.$url.'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.$name.'</a>';
+					$content .= '<a href="'.$url.'" class="list_item name2">'.$name.'</a>';
 					$content .= $ind->getSexImage();
 					$addname=$ind->getAddName();
 					if ($addname) {
