@@ -45,6 +45,8 @@ function print_indi_table($datalist, $option='') {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
+			jQuery.fn.dataTableExt.oSort["utf8_unicode_ci-asc" ]=function(a,b) {return a.localeCompare(b)};
+			jQuery.fn.dataTableExt.oSort["utf8_unicode_ci-desc"]=function(a,b) {return b.localeCompare(a)};
 			var oTable'.$table_id.' = jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				"oLanguage": {
@@ -66,14 +68,28 @@ function print_indi_table($datalist, $option='') {
 				"bAutoWidth":false,
 				"bProcessing": true,
 				"bRetrieve": true,
-				"aoColumnDefs": [
-					{"iDataSort": 2, "aTargets": [ 0 ] },
-					{"iDataSort": 5, "aTargets": [ 4 ] },
-					{"iDataSort": 8, "aTargets": [ 7 ] },
-					{"iDataSort": 11, "aTargets": [ 10 ] },
-					{"iDataSort": 15, "aTargets": [ 14 ] },
-					{"bSortable": false, "aTargets": [ 6, 12 ] },
-					{"sType": "numeric", "aTargets": [ 13 ] }
+				"aoColumns": [
+					/*  0 name      */ {"iDataSort": 2},
+					/*  1 GIVN,SURN */ {"sType": "utf8_unicode_ci", "bVisible": false},
+					/*  2 SURN,GIVN */ {"sType": "utf8_unicode_ci", "bVisible": false},
+					/*  3 sosa      */ {"bVisible": '.($option=='sosa'?'true':'false').'},
+					/*  4 d.o.b.    */ {"iDataSort": 5},
+					/*  5 BIRT:DATE */ {"bVisible": false},
+					/*  6 anniv     */ {"bSortable": false, "sClass": "center"},
+					/*  7 p.o.b.    */ {"iDataSort": 8},
+					/*  8 BIRT:PLAC */ {"sType": "utf8_unicode_ci", "bVisible": false},
+					/*  9 children  */ {"bVisible": false, "sClass": "center"},
+					/* 10 d.o.d.    */ {"iDataSort": 11},
+					/* 11 DEAT:DATE */ {"bVisible": false},
+					/* 12 anniv     */ {"bSortable": false, "sClass": "center"},
+					/* 13 age       */ {"sType": "numeric", "sClass": "center"},
+					/* 14 p.o.d.    */ {"iDataSort": 15},
+					/* 15 DEAT:PLAC */ {"sType": "utf8_unicode_ci", "bVisible": false},
+					/* 16 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 17 SEX       */ {"bVisible": false},
+					/* 18 BIRT      */ {"bVisible": false},
+					/* 19 DEAT      */ {"bVisible": false},
+					/* 20 TREE      */ {"bVisible": false}
 				],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
@@ -147,28 +163,20 @@ function print_indi_table($datalist, $option='') {
 	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
 	echo '<th style="display:none">GIVN</th>';
 	echo '<th style="display:none">SURN</th>';
-	if ($option=="sosa") {
-		echo '<th class="list_label">', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
-	} else {
-		echo '<th style="display:none;">SOSA</th>';
-	}
+	echo '<th ',($option=='sosa'?'':' style="display:none"'),'>', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('BIRT'), '</th>';
-	echo '<th style="display:none;">SORT_BIRT</th>';
+	echo '<th style="display:none">SORT_BIRT</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-	echo '<th style="display:none;">BIRT_PLAC_SORT</th>';
+	echo '<th style="display:none">BIRT_PLAC_SORT</th>';
 	echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('DEAT'), '</th>';
-	echo '<th style="display:none;">SORT_DEAT</th>';
+	echo '<th style="display:none">SORT_DEAT</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-	echo '<th style="display:none;">DEAT_PLAC_SORT</th>';
-	if ($SHOW_LAST_CHANGE) {
-		echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	} else {
-		echo '<th style="display:none;">CHAN</th>';
-	}
+	echo '<th style="display:none">DEAT_PLAC_SORT</th>';
+	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th style="display:none">SEX</th>';
 	echo '<th style="display:none">BIRT</th>';
 	echo '<th style="display:none">DEAT</th>';
@@ -200,10 +208,7 @@ function print_indi_table($datalist, $option='') {
 		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
 		echo '<tr>';
 		//-- Indi name(s)
-		$tdclass = '';
-		if (!$person->isDead()) $tdclass .= ' alive';
-		if (!$person->getChildFamilies()) $tdclass .= ' patriarch';
-		echo '<td class="', $tdclass, '" align="', get_align($person->getFullName()), '">';
+		echo '<td align="', get_align($person->getFullName()), '">';
 		list($surn, $givn)=explode(',', $person->getSortName());
 		// If we're showing search results, then the highlighted name is not
 		// necessarily the person's primary name.
@@ -232,30 +237,26 @@ function print_indi_table($datalist, $option='') {
 				$title='';
 			}
 			if ($num==$primary) {
-				$class='list_item name2';
+				$class=' class="name2"';
 				$sex_image=$person->getSexImage();
 				list($surn, $givn)=explode(',', $name['sort']);
 			} else {
-				$class='list_item';
+				$class='';
 				$sex_image='';
 			}
-			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '" class="', $class, '">', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
+			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
 		}
 		// Indi parents
 		echo $person->getPrimaryParentsNames("parents_indi_list_table_".$table_id." details1", 'none');
 		echo '</td>';
 		//-- GIVN/SURN
-		echo '<td style="display:none">', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
-		echo '<td style="display:none">', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
+		echo '<td>', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
+		echo '<td>', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
 		//-- SOSA
 		if ($option=='sosa') {
-			echo
-				'<td class="list_value_wrap"><a href="',
-				'relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(),
-				'" title="', WT_I18N::translate('Relationships'), '"',
-				' class="list_item name2">', $key, '</a></td>';
+			echo '<td><a href="relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(), '" title="', WT_I18N::translate('Relationships'), '" class="name2">', $key, '</a></td>';
 		} else {
-			echo '<td style="display:none">&nbsp;</td>';
+			echo '<td>&nbsp;</td>';
 		}
 		//-- Birth date
 		echo '<td>';
@@ -281,9 +282,9 @@ function print_indi_table($datalist, $option='') {
 		}
 		echo '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		echo '<td style="display:none">', $birth_date->JD(), '</td>';
+		echo '<td>', $birth_date->JD(), '</td>';
 		//-- Birth anniversary
-		echo '<td class="center">';
+		echo '<td>';
 			$bage =WT_Date::GetAgeYears($birth_dates[0]);
 			if (empty($bage)) { echo '&nbsp;'; } else { echo $bage; }
 		echo '</td>';
@@ -296,7 +297,7 @@ function print_indi_table($datalist, $option='') {
 						echo get_place_short($birth_place), ' ';
 					} else {
 						echo '<div align="', get_align($birth_place), '">';
-						echo '<a href="', get_place_url($birth_place), '" class="list_item" title="', $birth_place, '">';
+						echo '<a href="', get_place_url($birth_place), '" title="', $birth_place, '">';
 						echo highlight_search_hits(get_place_short($birth_place)), '</a>';
 						echo '</div>';
 					}
@@ -306,13 +307,11 @@ function print_indi_table($datalist, $option='') {
 			}
 		echo '</td>';
 		//-- Birth place (sortable)hidden by datatables code
-		echo '<td style="display:none">';
+		echo '<td>';
 			if (empty($birth_place)) { echo '&nbsp;'; } else { echo $birth_place; }
 		echo '</td>';
 		//-- Number of children
-		echo '<td class="center">';
-			echo $person->getNumberOfChildren();
-		echo '</td>';
+		echo '<td>', $person->getNumberOfChildren(), '</td>';
 		//-- Death date
 		echo '<td>';
 		if ($death_dates=$person->getAllDeathDates()) {
@@ -339,13 +338,13 @@ function print_indi_table($datalist, $option='') {
 		}
 		echo '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		echo '<td style="display:none">', $death_date->JD(), '</td>';
+		echo '<td>', $death_date->JD(), '</td>';
 		//-- Death anniversary
-		echo '<td class="center">';
+		echo '<td>';
 			if ($death_dates[0]->isOK()) { echo WT_Date::GetAgeYears($death_dates[0]); } else { echo '&nbsp;'; }
 		echo '</td>';
 		//-- Age at death
-		echo '<td class="center">';
+		echo '<td>';
 			if ($birth_dates[0]->isOK() && $death_dates[0]->isOK()) {
 				$age = WT_Date::GetAgeYears($birth_dates[0], $death_dates[0]);
 				echo $age;
@@ -367,7 +366,7 @@ function print_indi_table($datalist, $option='') {
 						echo get_place_short($death_place), ' ';
 					} else {
 						echo '<div align="', get_align($death_place), '">';
-						echo '<a href="', get_place_url($death_place), '" class="list_item" title="', $death_place, '">';
+						echo '<a href="', get_place_url($death_place), '" title="', $death_place, '">';
 						echo highlight_search_hits(get_place_short($death_place)), '</a>';
 						echo '</div>';
 					}
@@ -377,42 +376,42 @@ function print_indi_table($datalist, $option='') {
 			}
 		echo '</td>';
 		//-- Death place (sortable)hidden by datatables code
-		echo '<td style="display:none">', $death_place, '</td>';
+		echo '<td>', $death_place, '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>', $person->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
 		} else {
-			echo '<td style="display:none">&nbsp;</td>';
+			echo '<td>&nbsp;</td>';
 		}
 		//-- Sorting by gender
-		echo '<td style="display:none">';
-			echo $person->getSex();
-			echo '</td>';
-			//-- Filtering by birth date
-			echo '<td style="display:none">';
-			if (!$person->canDisplayDetails() || WT_Date::Compare($birth_dates[0], $d100y)>0) {
+		echo '<td>';
+		echo $person->getSex();
+		echo '</td>';
+		//-- Filtering by birth date
+		echo '<td>';
+		if (!$person->canDisplayDetails() || WT_Date::Compare($birth_dates[0], $d100y)>0) {
+			echo 'Y100';
+		} else {
+			echo 'YES';
+		}
+		echo '</td>';
+		//-- Filtering by death date
+		echo '<td>';
+		if ($person->isDead()) {
+			if (WT_Date::Compare($death_dates[0], $d100y)>0) {
 				echo 'Y100';
 			} else {
 				echo 'YES';
 			}
-		echo '</td>';
-		//-- Filtering by death date
-		echo '<td style="display:none">';
-			if ($person->isDead()) {
-				if (WT_Date::Compare($death_dates[0], $d100y)>0) {
-					echo 'Y100';
-				} else {
-					echo 'YES';
-				}
-			} else {
-				echo 'N';
-			}
+		} else {
+			echo 'N';
+		}
 		echo '</td>';
 		//-- Roots or Leaves ?
-		echo '<td style="display:none">';
-			if (!$person->getChildFamilies()) { echo 'R'; }  // roots
-			elseif (!$person->isDead() && $person->getNumberOfChildren()<1) { echo 'L'; } // leaves
-			else { echo '&nbsp;'; }
+		echo '<td>';
+		if (!$person->getChildFamilies()) { echo 'R'; }  // roots
+		elseif (!$person->isDead() && $person->getNumberOfChildren()<1) { echo 'L'; } // leaves
+		else { echo '&nbsp;'; }
 		echo '</td>';
 		echo '</tr>';
 		$unique_indis[$person->getXref()]=true;
