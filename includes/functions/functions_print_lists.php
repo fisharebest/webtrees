@@ -982,6 +982,8 @@ function print_note_table($datalist) {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
+			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.localeCompare(b)};
+			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.localeCompare(a)};
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"oLanguage": {
@@ -1002,9 +1004,15 @@ function print_note_table($datalist) {
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
-			"aoColumnDefs": [
-				{"bSortable": false, "aTargets": [ 6 ]},
-				{"sType": "numeric", "aTargets": [1, 2, 3, 4]}
+			"aoColumns": [
+				/* 0 title  */ {"iDataSort": 1},
+				/* 1 TITL   */ {"bVisible": false, "sType": "unicode"},
+				/* 2 #indi  */ {"sType": "numeric", "sClass": "center"},
+				/* 3 #fam   */ {"sType": "numeric", "sClass": "center"},
+				/* 4 #obje  */ {"sType": "numeric", "sClass": "center"},
+				/* 5 #note  */ {"sType": "numeric", "sClass": "center"},
+				/* 6 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 7 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1023,16 +1031,8 @@ function print_note_table($datalist) {
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
 	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	if ($SHOW_LAST_CHANGE) {
-		echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	} else {
-		echo '<th style="display:none;">CHAN</th>';
-	}
-	if (WT_USER_GEDCOM_ADMIN) {
-		echo '<th>&nbsp;</th>';//delete
-	} else {
-		echo '<th style="display:none;">DEL</th>';
-	}
+	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th style="display:none;">DEL</th>';
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
@@ -1045,7 +1045,9 @@ function print_note_table($datalist) {
 		$link_url=$note->getHtmlUrl();
 		//-- Shared Note name(s)
 		$tmp=$note->getFullName();
-		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '" class="list_item name2">', highlight_search_hits($tmp), '</a></td>';
+		echo '<td align="', get_align($tmp), '"><a href="', $link_url, '">', highlight_search_hits($tmp), '</a></td>';
+		// Sortable name
+		echo '<td>', strip_tags($note->getFullName()), '</td>';
 		//-- Linked INDIs
 		$tmp=$note->countLinkedIndividuals();
 		echo '<td>', $tmp, '</td>';
