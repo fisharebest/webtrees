@@ -1064,6 +1064,49 @@ function unhtmlentities($string)  {
 	$trans_tbl['&rlm;']=WT_UTF8_RLM;
 	return preg_replace('/&#(\d+);/e', "chr(\\1)", strtr($string, $trans_tbl));
 }
+
+/**
+ * Verify if text is RtL
+ *
+ * This will verify if text has RtL characters
+ * @param string $text to verify
+ */
+function hasRTLText($text) {
+	global $RTLOrd;
+	//--- What if gedcom in ANSI?
+	// if (!(strpos($text, chr(215))=== false)) return true;  // OK?
+	for ($i=0; $i<strlen($text); $i++) {
+		if (in_array(ord(substr(trim($text),$i,2)),$RTLOrd)) return true;
+	}
+	return false;
+
+}
+
+/**
+ * Verify if text is LtR
+ *
+ * This will verify if text has LtR characters that are not special characters
+ * @param string $text to verify
+ */
+function hasLTRText($text) {
+	global $SpecialChar, $SpecialPar, $SpecialNum, $RTLOrd;
+	//--- What if gedcom in ANSI?
+	//--- Should have one fullspecial characters array in PGV -
+
+	for ($i=0; $i<strlen($text); $i++) {
+		if (in_array(ord(substr(trim($text),$i,2)),$RTLOrd) || in_array(ord(substr(trim($text),$i-1,2)),$RTLOrd)) $i++;
+		else {
+			if (substr($text,$i,26)=='<span class="starredname">') $i+=25;
+			else if (substr($text,$i,7)=="</span>") $i+=6;
+			else {
+				$byte = substr(trim($text),$i,1);
+				if (!in_array($byte,$SpecialChar) && !in_array($byte,$SpecialPar) && !in_array($byte,$SpecialNum)) return true;
+			}
+		}
+	}
+	return false;
+}
+
 /*
  * Function to reverse RTL text for proper appearance on charts.
  *
