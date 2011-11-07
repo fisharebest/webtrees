@@ -1635,7 +1635,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 				"bFilter": false,
 				"bInfo": false,
 				"bJQueryUI": false,
-				//"aaSorting": [[ '.($sort_by=='alpha' ? 0 : 3).', "asc"]],
+				"aaSorting": [[ '.($sort_by=='alpha' ? 1 : 3).', "asc"]],
 				"aoColumns": [
 					/* 0-Record */ { "iDataSort": 1 },
 					/* 1-NAME */   { "bVisible": false },
@@ -1705,16 +1705,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$value['sex'] = '';
 		}
 		$filtered_events[] = $value;
-	}
-
-	// Now we've filtered the list, we can sort by event, if required
-	switch ($sort_by) {
-	case 'anniv':
-		uasort($filtered_events, 'event_sort');
-		break;
-	case 'alpha':
-		uasort($filtered_events, 'event_sort_name');
-		break;
 	}
 
 	foreach ($filtered_events as $n=>$value) {
