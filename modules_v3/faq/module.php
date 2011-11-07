@@ -276,6 +276,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	}
 
 	private function show() {
+		global $controller;
 		$controller=new WT_Controller_Base();
 		$controller->setPageTitle($this->getTitle());
 		$controller->pageHeader();
