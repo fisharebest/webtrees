@@ -142,7 +142,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 						]
 					});
 				');
-			$content .= '<table id="'.$table_id.'" class="list_table center width100">';
+			$content .= '<table id="'.$table_id.'" class="list_tabler width100">';
 			$content .= '<thead style="cursor:pointer;"><tr>';
 			$content .= '<th class="list_label">'.WT_Gedcom_Tag::getLabel('NAME').'</th>';
 			$content .= '<th class="list_label">'.WT_Gedcom_Tag::getLabel('DEAT').'</th>';
