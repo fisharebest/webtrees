@@ -75,6 +75,7 @@ html[dir='rtl'] input {padding-right:3px; padding-left:0;}
 .dataTables_info {float:left;margin-top:5px;font-weight:normal;}
 .dataTables_length {float:right;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
+.dataTables_wrapper th  {white-space:nowrap;}
 .dt-clear {clear:both;}
 html[dir='rtl'] .dataTables_paginate {float:right;}
 html[dir='rtl'] .dataTables_processing {float:right;}
