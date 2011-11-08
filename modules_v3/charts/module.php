@@ -133,14 +133,15 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				require_once WT_MODULES_DIR.'tree/module.php';
 				require_once WT_MODULES_DIR.'tree/class_treeview.php';
 				$mod=new tree_WT_Module;
-				$nav=new TreeView;
+				$tv=new TreeView;
 				$content .= '<td>';
 				$content .= '<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script><script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>';
 
 				$content .= $mod->css;
 				$content .= $mod->headers;
-				$content .= $mod->js;
-				$content .= $nav->drawViewport($person->getXref(), 2, '');
+				$content .= '<script type="text/javascript" src="'.$mod->js.'"></script>';
+		    list($html, $js) = $tv->drawViewport($person->getXref(), 2, '');
+				$content .= $html.WT_JS_START.$js.WT_JS_END;
 				$content .= '</td>';
 			}
 			$content .= "</tr></table>";

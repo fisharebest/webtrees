@@ -61,7 +61,7 @@ class TreeView {
   * @param int $generations number of generations to draw
 	*/
 	public function drawViewport($rootPersonId, $generations, $style) {
-		global $GEDCOM, $WT_IMAGES;
+		global $GEDCOM, $WT_IMAGES, $controller;
 
     $rootPersonId = check_rootid($rootPersonId);
     $rootPerson = WT_Person::getInstance($rootPersonId);
@@ -128,8 +128,10 @@ class TreeView {
     $parent = null;
     $r.=$this->drawPerson($rootPerson, $generations, 0, $parent, '', true);
     $r.='</div></div>'; // Close the tv_in and the tv_out div
-		$r.='<script type="text/javascript">var '.$this->name.'Handler = new TreeViewHandler("'.$this->name.'", '.($this->allPartners ? 'true' : 'false').', '.$nbStyles.');</script>';
-    return $r;
+		return array(
+			$r,
+			'var '.$this->name.'Handler = new TreeViewHandler("'.$this->name.'", '.($this->allPartners ? 'true' : 'false').', '.$nbStyles.');'
+		);
 	}
 
   /**
