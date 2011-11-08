@@ -1,6 +1,8 @@
 <?php
 // Controller for the Clippings Page
 //
+// NOTE THAT THIS IS NOT A PAGE CONTROLLER, AND DOES NOT EXTEND WT_CONTROLLER_BASE
+//
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.
 //
@@ -32,24 +34,10 @@ require_once WT_ROOT.'includes/functions/functions.php';
 require_once WT_ROOT.'includes/functions/functions_export.php';
 require_once WT_ROOT.'library/pclzip.lib.php';
 
-function same_group($a, $b) {
-	if ($a['type'] == $b['type'])
-	return strnatcasecmp($a['id'], $b['id']);
-	if ($a['type'] == 'source')
-	return 1;
-	if ($a['type'] == 'indi')
-	return -1;
-	if ($b['type'] == 'source')
-	return -1;
-	if ($b['type'] == 'indi')
-	return 1;
-	return 0;
-}
-
 /**
 * Main controller class for the Clippings page.
 */
-class WT_Controller_Clippings extends WT_Controller_Base {
+class WT_Controller_Clippings {
 
 	var $download_data;
 	var $media_list = array();
@@ -67,11 +55,15 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 	var $level3; // number of levels of descendents
 
 	public function __construct() {
-		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $GEDCOM;
+		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $WT_SESSION;
 		
-		parent::__construct();
-
-		$this->setPageTitle(WT_I18N::translate('Clippings cart'));
+		// Our cart is an array of items in the session
+		if (empty($WT_SESSION->cart)) {
+			$WT_SESSION->cart=array();
+		}
+		if (!array_key_exists(WT_GED_ID, $WT_SESSION->cart)) {
+			$WT_SESSION->cart[WT_GED_ID]=array();
+		}
 
 		if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
 		if (!isset($_SESSION['exportConvSlashes'])) $_SESSION['exportConvSlashes'] = 'forward';
@@ -88,7 +80,6 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		$this->level2 = safe_GET('level2', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$this->level3 = safe_GET('level3', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$others = safe_GET('others');
-		$item = safe_GET('item');
 		$this->type = safe_GET('type');
 
 		$this->conv_path = stripLRMRLM($this->conv_path);
@@ -126,54 +117,39 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 				if ($others == 'parents') {
 					$this->add_clipping($obj->getHusband());
 					$this->add_clipping($obj->getWife());
-				} else
-				if ($others == "members") {
+				} elseif ($others == "members") {
 					$this->add_family_members(WT_Family::getInstance($this->id));
-				} else
-				if ($others == "descendants") {
+				} elseif ($others == "descendants") {
 					$this->add_family_descendancy(WT_Family::getInstance($this->id));
 				}
-			} else
-			if ($this->type == 'indi') {
+			} elseif ($this->type == 'indi') {
 				if ($others == 'parents') {
 					foreach (WT_Person::getInstance($this->id)->getChildFamilies() as $family) {
 						$this->add_family_members($family);
 					}
-				} else
-				if ($others == 'ancestors') {
+				} elseif ($others == 'ancestors') {
 					$this->add_ancestors_to_cart(WT_Person::getInstance($this->id), $this->level1);
-				} else
-				if ($others == 'ancestorsfamilies') {
+				} elseif ($others == 'ancestorsfamilies') {
 					$this->add_ancestors_to_cart_families(WT_Person::getInstance($this->id), $this->level2);
-				} else
-				if ($others == 'members') {
+				} elseif ($others == 'members') {
 					foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
 						$this->add_family_members($family);
 					}
-				} else
-				if ($others == 'descendants') {
+				} elseif ($others == 'descendants') {
 					foreach (WT_Person::getInstance($this->id)->getSpouseFamilies() as $family) {
 						$this->add_clipping($family);
 						$this->add_family_descendancy($family, $this->level3);
 					}
 				}
+				uksort($WT_SESSION->cart[WT_GED_ID], array('WT_Controller_Clippings', 'compare_clippings'));
 			}
-		} else
-		if ($this->action == 'remove') {
-			$ct = count($_SESSION['cart']);
-			for ($i = $item +1; $i < $ct; $i++) {
-				$_SESSION['cart'][$i -1] = $_SESSION['cart'][$i];
-			}
-			unset ($_SESSION['cart'][$ct -1]);
-		} else
-		if ($this->action == 'empty') {
-			$_SESSION['cart'] = array();
-		} else
-		if ($this->action == 'download') {
-			usort($_SESSION['cart'], "same_group");
+		} elseif ($this->action == 'remove') {
+			unset ($WT_SESSION->cart[WT_GED_ID][$this->id]);
+		} elseif ($this->action == 'empty') {
+			$WT_SESSION->cart[WT_GED_ID]=array();
+		} elseif ($this->action == 'download') {
 			$media = array ();
 			$mediacount = 0;
-			$ct = count($_SESSION['cart']);
 			$filetext = gedcom_header(WT_GEDCOM);
 			// Include SUBM/SUBN records, if they exist
 			$subn=
@@ -210,65 +186,61 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 				break;
 			}
 
-			for ($i = 0; $i < $ct; $i++) {
-				$clipping = $_SESSION['cart'][$i];
-				if ($clipping['gedcom'] == WT_GEDCOM) {
-					$object=WT_GedcomRecord::getInstance($clipping['id']);
-					list($record)=$object->privatizeGedcom($access_level);
-					// Remove links to objects that aren't in the cart
-					preg_match_all('/\n1 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@/', $record, $matches, PREG_SET_ORDER);
-					foreach ($matches as $match) {
-						if (!self::id_in_cart($match[1])) {
-							$record=str_replace($match[0], '', $record);
-						}
+			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
+				$object=WT_GedcomRecord::getInstance($xref);
+				list($record)=$object->privatizeGedcom($access_level);
+				// Remove links to objects that aren't in the cart
+				preg_match_all('/\n1 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@(\n[2-9].*)*/', $record, $matches, PREG_SET_ORDER);
+				foreach ($matches as $match) {
+					if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
+						$record=str_replace($match[0], '', $record);
 					}
-					$record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
-					$savedRecord = $record; // Save this for the "does this file exist" check
-					if ($convert=='yes') {
-						$record=utf8_decode($record);
-					}
-					switch ($clipping['type']) {
-					case 'indi':
-						$filetext .= $record."\n";
-						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
-						break;
-					case 'fam':
-						$filetext .= $record."\n";
-						$filetext .= "1 SOUR @WEBTREES@\n";
-						$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
-						break;
-					case 'source':
-						$filetext .= $record."\n";
-						$filetext .= "1 NOTE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
-						break;
-					default:
-						$ft = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
-						for ($k = 0; $k < $ft; $k++) {
-							$filename = $MEDIA_DIRECTORY.extract_filename($match[$k][1]);
+				}
+				$record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
+				$savedRecord = $record; // Save this for the "does this file exist" check
+				if ($convert=='yes') {
+					$record=utf8_decode($record);
+				}
+				switch ($object->getType()) {
+				case 'INDI':
+					$filetext .= $record."\n";
+					$filetext .= "1 SOUR @WEBTREES@\n";
+					$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
+					break;
+				case 'FAM':
+					$filetext .= $record."\n";
+					$filetext .= "1 SOUR @WEBTREES@\n";
+					$filetext .= "2 PAGE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
+					break;
+				case 'SOUR':
+					$filetext .= $record."\n";
+					$filetext .= "1 NOTE ".WT_SERVER_NAME.WT_SCRIPT_PATH.$object->getRawUrl()."\n";
+					break;
+				default:
+					$ft = preg_match_all("/\n\d FILE (.+)/", $savedRecord, $match, PREG_SET_ORDER);
+					for ($k = 0; $k < $ft; $k++) {
+						$filename = $MEDIA_DIRECTORY.extract_filename($match[$k][1]);
+						if (file_exists($filename)) {
+							$media[$mediacount] = array (PCLZIP_ATT_FILE_NAME => $filename);
+							$mediacount++;
+						} else {
+							$filename = $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.extract_filename($match[$k][1]);
 							if (file_exists($filename)) {
-								$media[$mediacount] = array (PCLZIP_ATT_FILE_NAME => $filename);
+								// Don't include firewall directory in zipfile.  It may start ../
+								$media[$mediacount] = array (
+									PCLZIP_ATT_FILE_NAME => $filename,
+									PCLZIP_ATT_FILE_NEW_FULL_NAME => $MEDIA_DIRECTORY.extract_filename($match[$k][1])
+								);
 								$mediacount++;
-							} else {
-								$filename = $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY.extract_filename($match[$k][1]);
-								if (file_exists($filename)) {
-									// Don't include firewall directory in zipfile.  It may start ../
-									$media[$mediacount] = array (
-										PCLZIP_ATT_FILE_NAME => $filename,
-										PCLZIP_ATT_FILE_NEW_FULL_NAME => $MEDIA_DIRECTORY.extract_filename($match[$k][1])
-									);
-									$mediacount++;
-								}
 							}
 						}
-						$filetext .= trim($record) . "\n";
-						break;
 					}
+					$filetext .= trim($record) . "\n";
+					break;
 				}
 			}
 
-			if ($this->IncludeMedia == "yes")
-			{
+			if ($this->IncludeMedia == "yes") {
 				$this->media_list = $media;
 			}
 			$filetext .= "0 @WEBTREES@ SOUR\n1 TITL ".WT_SERVER_NAME.WT_SCRIPT_PATH."\n";
@@ -283,27 +255,11 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		}
 	}
 
-	public static function id_in_cart($id) {
-		global $GEDCOM;
-		$ct = count($_SESSION['cart']);
-		for ($i = 0; $i < $ct; $i++) {
-			$temp = $_SESSION['cart'][$i];
-			if ($temp['id'] == $id && $temp['gedcom'] == $GEDCOM) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
-	 * Loads everything in the clippings cart into a zip file.
-	 */
-	function zip_cart()
-	{
+	// Loads everything in the clippings cart into a zip file.
+	function zip_cart() {
 		$tempFileName = 'clipping'.rand().'.ged';
 		$fp = fopen(WT_DATA_DIR.$tempFileName, "wb");
-		if ($fp)
-		{
+		if ($fp) {
 			flock($fp,LOCK_EX);
 			fwrite($fp,$this->download_data);
 			flock($fp,LOCK_UN);
@@ -315,24 +271,22 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 			// add the ged file to the root of the zip file (strip off the index_directory)
 			$this->media_list[]= array (PCLZIP_ATT_FILE_NAME => WT_DATA_DIR.$tempFileName, PCLZIP_ATT_FILE_NEW_FULL_NAME => $tempFileName);
 			$v_list = $archive->create($this->media_list, PCLZIP_OPT_COMMENT, $comment);
-			if ($v_list == 0) echo "Error : ".$archive->errorInfo(true)."</td></tr>";
-			else {
+			if ($v_list == 0) {
+				echo "Error : ".$archive->errorInfo(true)."</td></tr>";
+			} else {
 				$openedFile = fopen($fname,"rb");
 				$this->download_data = fread($openedFile,filesize($fname));
 				fclose($openedFile);
 				unlink($fname);
 			}
 			unlink(WT_DATA_DIR.$tempFileName);
-		}
-		else
-		{
+		} else {
 			echo WT_I18N::translate('Cannot create')." ".WT_DATA_DIR."$tempFileName ".WT_I18N::translate('Check access rights on this directory.')."<br /><br />";
 		}
 	}
-	/**
-	 * Brings up the download dialog box and allows the user to download the file
-	 * based on the options he or she selected
-	 */
+
+	// Brings up the download dialog box and allows the user to download the file
+	// based on the options he or she selected
 	function download_clipping() {
 		if ($this->IncludeMedia == "yes" || $this->Zip == "yes") {
 			header('Content-Type: application/zip');
@@ -347,58 +301,19 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 		print_r ($this->download_data);
 		exit;
 	}
-	/**
-	 * Inserts a clipping into the clipping cart
-	 *
-	 * @param
-	 */
-	function add_clipping($clipping) {
-		global $GEDCOM;
 
-		if (!$clipping || !$clipping->canDisplayName()) {
-			return;
-		}
+	// Inserts a clipping into the clipping cart
+	function add_clipping($record) {
+		global $WT_SESSION;
 
-		$clipping=array(
-			'type'  =>strtolower($clipping->getType()),
-			'id'    =>$clipping->getXref(),
-			'gedcom'=>get_id_from_gedcom($clipping->getGedId())
-		);
-
-		if (!self::id_in_cart($clipping['id'])) {
-			$clipping['gedcom'] = $GEDCOM;
-			$ged_id=get_id_from_gedcom($GEDCOM);
-			$gedrec=WT_GedcomRecord::getInstance($clipping['id']);
-			if ($gedrec->canDisplayName()) {
-				$_SESSION['cart'][] = $clipping;
-				$this->addCount++;
-			} else {
-				$this->privCount++;
-				return false;
-			}
-			//-- look in the gedcom record for any linked SOUR, NOTE, or OBJE and also add them to the
-			//- clippings cart
-			$st = preg_match_all("/\d SOUR @(.*)@/", $gedrec->getGedcomRecord(), $match, PREG_SET_ORDER);
-			for ($i = 0; $i < $st; $i++) {
-				// add SOUR
-				$this->add_clipping(WT_Source::getInstance($match[$i][1]));
-				// add REPO
-				$sourec = find_gedcom_record($match[$i][1], WT_GED_ID);
-				$rt = preg_match_all("/\d REPO @(.*)@/", $sourec, $rmatch, PREG_SET_ORDER);
-				for ($j = 0; $j < $rt; $j++) {
-					$this->add_clipping(WT_Repository::getInstance($rmatch[$j][1]));
-				}
-			}
-			$nt = preg_match_all("/\d NOTE @(.*)@/", $gedrec->getGedcomRecord(), $match, PREG_SET_ORDER);
-			for ($i = 0; $i < $nt; $i++) {
-				$this->add_clipping(WT_Note::getInstance($match[$i][1]));
-			}
-			$nt = preg_match_all("/\d OBJE @(.*)@/", $gedrec->getGedcomRecord(), $match, PREG_SET_ORDER);
-			for ($i = 0; $i < $nt; $i++) {
-				$this->add_clipping(WT_Media::getInstance($match[$i][1]));
+		if ($record->canDisplayName()) {
+			$WT_SESSION->cart[WT_GED_ID][$record->getXref()]=true;
+			// Add directly linked records
+			preg_match_all('/\n\d (?:OBJE|NOTE|SOUR|REPO) @('.WT_REGEX_XREF.')@/', $record->getGedcomRecord(), $matches);
+			foreach ($matches[1] as $match) {
+				$WT_SESSION->cart[WT_GED_ID][$match]=true;
 			}
 		}
-		return true;
 	}
 
 	// --------------------------------- Recursive function to traverse the tree
@@ -458,6 +373,39 @@ class WT_Controller_Clippings extends WT_Controller_Base {
 				$this->add_ancestors_to_cart_families($family->getHusband(), $level-1);
 				$this->add_ancestors_to_cart_families($family->getWife(), $level-1);
 			}
+		}
+	}
+
+	// Helper function to sort records by type/name
+	function compare_clippings($a, $b) {
+		$a=WT_GedcomRecord::getInstance($a);
+		$b=WT_GedcomRecord::getInstance($b);
+		if ($a && $b) {
+			switch ($a->getType()) {
+			case 'INDI': $t1=1; break;
+			case 'FAM':  $t1=2; break;
+			case 'SOUR': $t1=3; break;
+			case 'REPO': $t1=4; break;
+			case 'OBJE': $t1=5; break;
+			case 'NOTE': $t1=6; break;
+			default:     $t1=7; break;
+			}
+			switch ($b->getType()) {
+			case 'INDI': $t2=1; break;
+			case 'FAM':  $t2=2; break;
+			case 'SOUR': $t2=3; break;
+			case 'REPO': $t2=4; break;
+			case 'OBJE': $t2=5; break;
+			case 'NOTE': $t2=6; break;
+			default:     $t2=7; break;
+			}
+			if ($t1!=$t2) {
+				return $t1-$t2;
+			} else {
+				return WT_GedcomRecord::compare($a, $b);
+			}
+		} else {
+			return 0;
 		}
 	}
 }

@@ -461,12 +461,6 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 		exit;
 	}
 
-	// -- setup session information for tree clippings cart features
-	if ((!isset($_SESSION['cart'])) || (!empty($_SESSION['last_spider_name']))) { // reset cart everytime for spiders
-		$_SESSION['cart'] = array();
-	}
-	$cart = $_SESSION['cart'];
-
 	if (!isset($_SESSION['timediff'])) {
 		$_SESSION['timediff'] = 0;
 	}
