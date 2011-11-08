@@ -135,10 +135,10 @@ function print_indi_table($datalist, $option='') {
 			});
 
 			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
+			jQuery("th div span:eq(2)").css("display", "none");
+			jQuery("th div:eq(2)").css("margin", "auto").css("text-align", "center");
 			jQuery("th span:eq(6)").css("display", "none");
 			jQuery("th div:eq(6)").css("margin", "auto").css("text-align", "center");
-			jQuery("th span:eq(12)").css("display", "none");
-			jQuery("th div:eq(12)").css("margin", "auto").css("text-align", "center");
 			
 			jQuery(".indi-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
