@@ -66,7 +66,6 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		global $WT_IMAGES, $TEXT_DIRECTION, $show_full;
 
 		parent::__construct();
-		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Hourglass chart of %s', $this->name));
 
 		// Extract parameters from from
 		$this->pid        =safe_GET_xref('pid');
@@ -109,6 +108,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		//Checks how many generations of descendency is for the person for formatting purposes
 		$this->dgenerations = $this->max_descendency_generations($this->pid, 0);
 		if ($this->dgenerations<1) $this->dgenerations=1;
+
+		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Hourglass chart of %s', $this->name));
 	}
 
 	/**
