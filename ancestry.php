@@ -213,7 +213,7 @@ case 2:
 	// Individual list
 	$treeid=ancestry_array($controller->rootid, $PEDIGREE_GENERATIONS);
 	echo '<div class="center">';
-	print_indi_table($treeid, WT_I18N::translate('Ancestors of %s', $controller->name), 'sosa');
+	print_indi_table($treeid, 'sosa');
 	echo '</div>';
 	break;
 case 3:
