@@ -104,7 +104,6 @@ if ($view!='simple') {
 	$menu_items[]=WT_MenuBar::getHelpMenu();
 	// Print the menu bar
 	echo
-		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />',
 		'<div id="topMenu">',
 		'<ul id="main-menu">';
 	foreach ($menu_items as $menu) {
@@ -115,8 +114,7 @@ if ($view!='simple') {
 	unset($menu_items, $menu);
 	echo
 		'</ul>',  // <ul id="main-menu">
-		'</div>', // <div id="topMenu">
-		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />';
+		'</div>'; // <div id="topMenu">
 	// Display feedback from asynchronous actions
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';

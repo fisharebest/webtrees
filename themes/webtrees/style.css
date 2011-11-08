@@ -1351,7 +1351,7 @@ html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-c
 
 /* ======= Block styles ========== */
 #index_main_blocks {clear:none; width:66%; float:left;}
-#index_small_blocks {clear:none; width:33%; float:right; padding-right: 5px;}
+#index_small_blocks {clear:none; width:33%; float:right;}
 #index_full_blocks {clear:none; width:100%;}
 #random_picture {text-align:center;}
 .small_inner_block {max-height:200px; overflow:auto; font-size:10px;}
@@ -1374,7 +1374,7 @@ html[dir='rtl'] .faq_top {float:left;}
 html[dir='rtl'] .faq_edit {float:left;}
 
 /* ======= Header menu styles  ========== */
-#topMenu {float:left; width:100%; padding:5px 0; position:relative;}
+#topMenu {border-top: 2px solid #81A9CB; border-bottom: 2px solid #81A9CB; float:left; margin-top: 3px; padding:5px 0; position:relative; width:100%;}
 #main-menu  {clear:both; position:relative; z-index:500; float:right; right:50%;}
 #main-menu,
 #main-menu   ul  {padding:0; margin:0; list-style-type:none;}
