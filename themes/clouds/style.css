@@ -1745,6 +1745,11 @@ ul.clist {
 	margin-left: 0;
 }
 
+/* Find special characters */
+.largechars {
+	font-family: monospace;
+	font-size: 200%;
+}
 /* ========= Positioning edit, copy, delete links ============= */
 .editfacts {clear:left; padding-top:15px;} /* a container for the following three links */
 .editlink, .copylink, .deletelink {float:left;}

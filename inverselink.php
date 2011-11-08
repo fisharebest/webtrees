@@ -78,9 +78,6 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 		<script type="text/javascript">
 		<!--
 		var pastefield;
-		var language_filter, magnify;
-		language_filter = "";
-		magnify = "";
 
 		function openerpasteid(id) {
 			window.opener.paste_id(id);
@@ -91,10 +88,8 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 			pastefield.value = value;
 		}
 
-		function paste_char(value, lang, mag) {
+		function paste_char(value) {
 			pastefield.value += value;
-			language_filter = lang;
-			magnify = mag;
 		}
 		//-->
 		</script>

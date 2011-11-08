@@ -123,10 +123,8 @@ echo WT_JS_START;
 		pastefield.value = value;
 	}
 
-	function paste_char(value, lang, mag) {
+	function paste_char(value) {
 		pastefield.value += value;
-		language_filter = lang;
-		magnify = mag;
 		if (pastefield.id=='NPFX' || pastefield.id=='GIVN' || pastefield.id=='SPFX' || pastefield.id=='SURN' || pastefield.id=='NSFX') {
 			updatewholename();
 		}

@@ -96,7 +96,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 <input type="hidden" name="action" value="<?php echo $controller->action; ?>" />
 <input type="hidden" name="isPostBack" value="true" />
 <script type="text/javascript">
-	function paste_char(value,lang,mag) {
+	function paste_char(value) {
 		document.searchform.query.value+=value;
 	}
 </script>

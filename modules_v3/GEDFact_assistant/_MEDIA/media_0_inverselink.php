@@ -68,9 +68,6 @@ if ($action == "choose" && $paramok) {
 	var id_empty = "<?php echo WT_I18N::translate('When adding a Link, the ID field cannot be empty.'); ?>";
 
 	var pastefield;
-	var language_filter, magnify;
-	language_filter = "";
-	magnify = "";
 
 	function openerpasteid(id) {
 		window.opener.paste_id(id);
@@ -81,10 +78,8 @@ if ($action == "choose" && $paramok) {
 		pastefield.value = value;
 	}
 
-	function paste_char(value, lang, mag) {
+	function paste_char(value) {
 		pastefield.value += value;
-		language_filter = lang;
-		magnify = mag;
 	}
 
 	function blankwin() {

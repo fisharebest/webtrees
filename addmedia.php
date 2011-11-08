@@ -95,10 +95,7 @@ echo WT_JS_START;
 		findwin = window.open('find.php?type=note', '_blank', 'left=50, top=50, width=600, height=520, resizable=1, scrollbars=1');
 		return false;
 	}
-	var language_filter, magnify;
 	var pastefield;
-	language_filter = "";
-	magnify = "";
 	function openerpasteid(id) {
 		window.opener.paste_id(id);
 		window.close();
@@ -106,10 +103,8 @@ echo WT_JS_START;
 	function paste_id(value) {
 		pastefield.value = value;
 	}
-	function paste_char(value, lang, mag) {
+	function paste_char(value) {
 		pastefield.value += value;
-		language_filter = lang;
-		magnify = mag;
 	}
 	function checkpath(folder) {
 		value = folder.value;

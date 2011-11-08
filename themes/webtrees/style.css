@@ -1276,6 +1276,12 @@ html[dir="rtl"] dt {
 
 dd {display:inline; margin:0;}
 
+/* Find special characters */
+.largechars {
+	font-family: monospace;
+	font-size: 200%;
+}
+
 #facts_content dd {float:left;width:70%;}
 
 .clearfloat {clear:both;}

@@ -86,6 +86,11 @@ html[dir='rtl'] .dataTables_length {float:left;}
 /* Drag-n-drop sorting for modules, etc. */
 .sortme {cursor:move;}
 
+/* Find special characters */
+.largechars {
+	font-family: monospace;
+	font-size: 200%;
+}
 /* Page Help links */
 #page_help {margin:-5px 0 15px; text-align:right;}
 html[dir='rtl'] #page_help {text-align:left;}

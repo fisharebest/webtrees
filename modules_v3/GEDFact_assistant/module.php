@@ -77,8 +77,6 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$subclick       =safe_GET('subclick');
 		$choose         =safe_GET('choose', WT_REGEX_NOSCRIPT, '0all');
 		$level          =safe_GET('level', WT_REGEX_INTEGER, 0);
-		$language_filter=safe_GET('language_filter');
-		$magnify        =safe_GET_bool('magnify');
 		
 		if ($showthumb) {
 			$thumbget='&showthumb=true';
@@ -113,14 +111,6 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		}
 		// End variables for find media
 		
-		// Variables for Find Special Character
-		if (empty($language_filter)) {
-			if (!empty($_SESSION["language_filter"])) {
-				$language_filter=$_SESSION["language_filter"];
-			} else {
-				$language_filter=WT_LOCALE;
-			}
-		}
 		require WT_ROOT.'includes/specialchars.php';
 		// End variables for Find Special Character
 		
@@ -188,15 +178,6 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					if (window.opener.pastename) window.opener.pastename(name);
 					<?php if (!$multiple) echo "window.close();"; ?>
 				}
-			}
-			var language_filter;
-			function paste_char(selected_char, language_filter, magnify) {
-				window.opener.paste_char(selected_char, language_filter, magnify);
-				return false;
-			}
-			function setMagnify() {
-				document.filterspecialchar.magnify.value = '<?php echo !$magnify; ?>';
-				document.filterspecialchar.submit();
 			}
 			function checknames(frm) {
 				if (document.forms[0].subclick) button = document.forms[0].subclick.value;
@@ -782,45 +763,18 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 			if ($type == "specialchar") {
 				echo "<table class=\"tabs_table $TEXT_DIRECTION width90\"><tr><td class=\"list_value center wrap\" dir=\"$TEXT_DIRECTION\"><br/>";
 				// lower case special characters
-				if ($magnify) {
-					echo '<span class="largechars">';
-				}
 				foreach ($lcspecialchars as $key=>$value) {
-					$value = str_replace("'", "\'", $value);
-					echo "<a href=\"javascript:;\" onclick=\"return paste_char('$value', '$language_filter', '$magnify');\">";
-					echo $key;
-					echo "</span></a> ";
-				}
-				if ($magnify) {
-					echo '<span class="largechars">';
+					echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
 				}
 				echo '<br/><br/>';
 				//upper case special characters
-				if ($magnify) {
-					echo '<span class="largechars">';
-				}
 				foreach ($ucspecialchars as $key=>$value) {
-					$value = str_replace("'", "\'", $value);
-					echo "<a href=\"javascript:;\" onclick=\"return paste_char('$value', '$language_filter', '$magnify');\">";
-					echo $key;
-					echo "</span></a> ";
-				}
-				if ($magnify) {
-					echo '<span class="largechars">';
+					echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
 				}
 				echo '<br/><br/>';
 				// other special characters (not letters)
-				if ($magnify) {
-					echo '<span class="largechars">';
-				}
 				foreach ($otherspecialchars as $key=>$value) {
-					$value = str_replace("'", "\'", $value);
-					echo "<a href=\"javascript:;\" onclick=\"return paste_char('$value', '$language_filter', '$magnify');\">";
-					echo $key;
-					echo "</span></a> ";
-				}
-				if ($magnify) {
-					echo '<span class="largechars">';
+					echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
 				}
 				echo '<br/><br/></td></tr></table>';
 			}

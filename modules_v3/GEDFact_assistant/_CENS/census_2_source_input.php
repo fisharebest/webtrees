@@ -124,10 +124,8 @@ global $TEXT_DIRECTION;
 		pastefield.value = value;
 	}
 
-	function paste_char(value,lang,mag) {
+	function paste_char(value) {
 		pastefield.value += value;
-		language_filter = lang;
-		magnify = mag;
 	}
 
 	function edit_close(newurl) {

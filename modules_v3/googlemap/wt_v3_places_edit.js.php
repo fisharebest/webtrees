@@ -444,10 +444,8 @@ if (!defined('WT_WEBTREES')) {
 		geocoder.geocode({'address': address}, addAddressToMap);
 	}
 
-	function paste_char(value, lang, mag) {
+	function paste_char(value) {
 		document.editplaces.NEW_PLACE_NAME.value += value;
-		language_filter = lang;
-		magnify = mag;
 	}
 </script>
 </head>
