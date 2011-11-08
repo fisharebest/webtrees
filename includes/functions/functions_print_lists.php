@@ -45,8 +45,10 @@ function print_indi_table($datalist, $option='') {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
-			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
-			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-asc"  ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-desc" ]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["num-html-asc" ]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a<b) ? -1 : (a>b ? 1 : 0);};
+			jQuery.fn.dataTableExt.oSort["num-html-desc"]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a>b) ? -1 : (a<b ? 1 : 0);};
 			var oTable'.$table_id.' = jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				"oLanguage": {
@@ -72,7 +74,7 @@ function print_indi_table($datalist, $option='') {
 					/*  0 name      */ {"iDataSort": 2},
 					/*  1 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
 					/*  2 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
-					/*  3 sosa      */ {"bVisible": '.($option=='sosa'?'true':'false').'},
+					/*  3 sosa      */ {"sType": "num-html", "bVisible": '.($option=='sosa'?'true':'false').'},
 					/*  4 birt date */ {"iDataSort": 5},
 					/*  5 BIRT:DATE */ {"bVisible": false},
 					/*  6 anniv     */ {"bSortable": false, "sClass": "center"},
