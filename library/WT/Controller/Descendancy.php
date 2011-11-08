@@ -60,7 +60,6 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		global $USE_RIN, $MAX_ALIVE_AGE, $bwidth, $bheight, $pbwidth, $pbheight, $GEDCOM, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
 
 		parent::__construct();
-		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Descendants of %s', $this->name));
 
 		// Extract parameters from form
 		$this->pid        =safe_GET_xref('pid');
@@ -97,6 +96,8 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 
 		$this->descPerson = WT_Person::getInstance($this->pid);
 		$this->name=$this->descPerson->getFullName();
+
+		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Descendants of %s', $this->name));
 	}
 
 	/**
