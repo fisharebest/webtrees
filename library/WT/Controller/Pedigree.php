@@ -57,8 +57,6 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		global $TEXT_DIRECTION, $BROWSER_TYPE, $show_full, $talloffset;
 
 		parent::__construct();
-		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree tree of %s', $this->name));
-
 		$this->log2 = log(2);
 
 		$this->rootid    =safe_GET_xref('rootid');
@@ -91,6 +89,8 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		if (is_null($this->rootPerson)) $this->rootPerson = new WT_Person('');
 		$this->name     = $this->rootPerson->getFullName();
 		$this->addname  = $this->rootPerson->getAddName();
+
+		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree tree of %s', $this->name));
 
 		//-- adjustments for hide details
 		if ($this->show_full==false) {
