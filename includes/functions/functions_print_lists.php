@@ -1101,7 +1101,7 @@ function print_repo_table($repos) {
 				echo '<br/>';
 			}
 			if ($n==$repo->getPrimaryName()) {
-				echo '<a class="name2" href="', $link_url, '">', highlight_search_hits($name['full']), '</a>';
+				echo '<a class="name2" href="', $repo->getHtmlUrl(), '">', highlight_search_hits($name['full']), '</a>';
 			} else {
 				echo '<a href="', $link_url, '">', highlight_search_hits($name['full']), '</a>';
 			}
