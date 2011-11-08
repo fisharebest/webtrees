@@ -438,7 +438,7 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 					echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
 					echo WT_Gedcom_Tag::getAbbreviation('BIRT');
 					echo '</b><span>', $value->getSexImage(), $indiName, '<br/>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->Display(false)), ' ', $value->getBirthPlace(), '</span></a></div>',
-						'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, ':  ', $lifespan, ' </a></td>' ,
+						'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, '  ', $lifespan, ' </a></td>' ,
 						'<td width="15">';
 					if ($value->isDead()) {
 						if ($deathReal || $value->isDead()) {
