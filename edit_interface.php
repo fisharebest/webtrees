@@ -1753,7 +1753,7 @@ case 'addname':
 	break;
 //------------------------------------------------------------------------------
 case 'paste':
-	$gedrec .= "\n".$_SESSION["clipboard"][$fact]["factrec"]."\n";
+	$gedrec .= "\n".$WT_SESSION->clipboard[$fact]["factrec"]."\n";
 	if (replace_gedrec($pid, WT_GED_ID, $gedrec, $NO_UPDATE_CHAN)) {
 		$success=true;
 	}

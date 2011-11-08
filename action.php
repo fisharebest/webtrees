@@ -69,10 +69,10 @@ case 'copy-fact':
 		// Other facts can only be pasted records of the same type
 		$type=safe_POST('type', array('INDI','FAM','SOUR','REPO','OBJE','NOTE'));
 	}
-	if (!is_array($_SESSION['clipboard'])) {
-		$_SESSION['clipboard']=array();
+	if (!is_array($WT_SESSION->clipboard)) {
+		$WT_SESSION->clipboard=array();
 	}
-	$_SESSION['clipboard'][]=array(
+	$WT_SESSION->clipboard[]=array(
 		'type'   =>$type,
 		'factrec'=>$fact->getGedcomRecord(),
 		'fact'   =>$fact->getTag()
