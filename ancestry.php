@@ -212,7 +212,7 @@ case 1:
 case 2:
 	// Individual list
 	$treeid=ancestry_array($controller->rootid, $PEDIGREE_GENERATIONS);
-	echo '<div class="center">';
+	echo '<div id="ancestry-list">';
 	print_indi_table($treeid, 'sosa');
 	echo '</div>';
 	break;
