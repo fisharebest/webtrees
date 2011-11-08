@@ -1199,7 +1199,7 @@ function print_media_table($datalist) {
 			$name = $media->getFullName();
 			echo "<tr>";
 			//-- Object thumbnail
-			echo '<td><img src="', $media->getThumbnail(), '" alt="', $name, '" /></td>';
+			echo '<td><img src="', $media->getThumbnail(), '" alt="', htmlspecialchars(strip_tags($name)), '" /></td>';
 			//-- Object name(s)
 			echo '<td>';
 			echo '<a href="', $media->getHtmlUrl(), '" class="list_item name2">';
