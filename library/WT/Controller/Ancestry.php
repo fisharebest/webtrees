@@ -48,7 +48,6 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		global $show_full;
 
 		parent::__construct();
-		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Ancestors of %s', $this->name));
 
 		// Extract form parameters
 		$this->rootid        =safe_GET_xref('rootid');
@@ -83,6 +82,8 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		$this->ancestry = WT_Person::getInstance($this->rootid);
 		$this->name     = $this->ancestry->getFullName();
 		$this->addname  = $this->ancestry->getAddName();
+
+		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Ancestors of %s', $this->name));
 
 		if (strlen($this->name)<30) $this->cellwidth="420";
 		else $this->cellwidth=(strlen($this->name)*14);
