@@ -1350,8 +1350,8 @@ html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
 html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-child, html[dir='rtl'] .repo-list th:last-child {margin:0 1px 1px -2px;}
 
 /* ======= Block styles ========== */
-#index_main_blocks {clear:none; width:66%; float:left; padding:3px;}
-#index_small_blocks {clear:none; width:33%; float:right;}
+#index_main_blocks {clear:none; width:66%; float:left;}
+#index_small_blocks {clear:none; width:33%; float:right; padding-right: 5px;}
 #index_full_blocks {clear:none; width:100%;}
 #random_picture {text-align:center;}
 .small_inner_block {max-height:200px; overflow:auto; font-size:10px;}
