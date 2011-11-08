@@ -53,7 +53,8 @@ if (WT_USE_LIGHTBOX) {
 
 echo
 	'</head>',
-	'<body id="body">';
+	'<body id="body">',
+	$javascript;
 ?>
 <!-- Remove submenu from home -->
 <script type="text/javascript">
