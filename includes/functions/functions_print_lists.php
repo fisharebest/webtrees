@@ -117,17 +117,17 @@ function print_indi_table($datalist, $option='') {
 			oTable'.$table_id.'.fnSortListener("#GIVEN_SORT_'.$table_id.'",1);
 	
 			/* Add event listeners for filtering inputs */
-			jQuery("#SEX_M_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("M", 17 );});
-			jQuery("#SEX_F_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("F", 17 );});
-			jQuery("#SEX_U_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("U", 17 );});
-			jQuery("#BIRT_YES_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 18 );});
-			jQuery("#BIRT_Y100_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 18 );});
-			jQuery("#DEAT_N_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("N", 19 );});
-			jQuery("#DEAT_Y_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("^Y", 19, true, false );});
-			jQuery("#DEAT_YES_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 19 );});
-			jQuery("#DEAT_Y100_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 19 );});
-			jQuery("#TREE_R_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("R", 20 );});
-			jQuery("#TREE_L_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("L", 20 );});	
+			jQuery("#SEX_M_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("M", 15 );});
+			jQuery("#SEX_F_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("F", 15 );});
+			jQuery("#SEX_U_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("U", 15 );});
+			jQuery("#BIRT_YES_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 16 );});
+			jQuery("#BIRT_Y100_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 16 );});
+			jQuery("#DEAT_N_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("N", 17 );});
+			jQuery("#DEAT_Y_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("^Y", 17, true, false );});
+			jQuery("#DEAT_YES_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 17 );});
+			jQuery("#DEAT_Y100_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 17 );});
+			jQuery("#TREE_R_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("R", 18 );});
+			jQuery("#TREE_L_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("L", 18 );});	
 			jQuery("#RESET_'.    $table_id.'").click( function() {
 				for (i=0; i<21; i++){
 					oTable'.$table_id.'.fnFilter("", i );
@@ -458,11 +458,11 @@ function print_fam_table($datalist, $option='') {
 					/*  8 marr date */ {},
 					/*  9 anniv     */ {"bSortable": false, "sClass": "center"},
 					/* 10 marr plac */ {"sType": "unicode"},
-					/* 12 children  */ {"sType": "numeric", "sClass": "center"},
-					/* 13 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 14 MARR      */ {"bVisible": false},
-					/* 15 DEAT      */ {"bVisible": false},
-					/* 16 TREE      */ {"bVisible": false}
+					/* 11 children  */ {"sType": "numeric", "sClass": "center"},
+					/* 12 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 13 MARR      */ {"bVisible": false},
+					/* 14 DEAT      */ {"bVisible": false},
+					/* 15 TREE      */ {"bVisible": false}
 				],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
@@ -494,18 +494,18 @@ function print_fam_table($datalist, $option='') {
 			oTable'.$table_id.'.fnSortListener("#GIVEN_SORT_F_'.$table_id.'",5);
 
 			/* Add event listeners for filtering inputs */
-			jQuery("#DEAT_N_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("N", 14);});
-			jQuery("#DEAT_W_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("W", 14);});
-			jQuery("#DEAT_H_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("H", 14);});
-			jQuery("#DEAT_Y_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y", 14);});
-			jQuery("#TREE_R_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("R", 15);});
-			jQuery("#TREE_L_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("L", 15);});	
-			jQuery("#MARR_U_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("U", 13);});
-			jQuery("#MARR_YES_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 13);});
-			jQuery("#MARR_Y100_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 13);});
-			jQuery("#MARR_DIV_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("DIV", 13);});
-			jQuery("#MULTI_MARR_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("MULTI", 13);});
-			jQuery("#RESET_'.$table_id.'").click( function() {
+			jQuery("#MARR_U_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("U", 13);});
+			jQuery("#MARR_YES_'.  $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 13);});
+			jQuery("#MARR_Y100_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 13);});
+			jQuery("#MARR_DIV_'.  $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("D", 13);});
+			jQuery("#MULTI_MARR_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("M", 13);});
+			jQuery("#DEAT_N_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("N", 14);});
+			jQuery("#DEAT_W_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("W", 14);});
+			jQuery("#DEAT_H_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("H", 14);});
+			jQuery("#DEAT_Y_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y", 14);});
+			jQuery("#TREE_R_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("R", 15);});
+			jQuery("#TREE_L_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("L", 15);});	
+			jQuery("#RESET_'.     $table_id.'").click( function() {
 				for (i=0; i<17; i++) {
 					oTable'.$table_id.'.fnFilter("", i );
 				};
@@ -738,10 +738,10 @@ function print_fam_table($datalist, $option='') {
 			}
 		}
 		if ($family->isDivorced()) {
-			echo 'DIV';
+			echo 'D';
 		}
 		if (count($husb->getSpouseFamilies())>1 || count($wife->getSpouseFamilies())>1) {
-			echo 'MULTI';
+			echo 'M';
 		}
 		echo '</td>';
 		//-- Sorting alive/dead
