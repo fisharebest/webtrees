@@ -51,7 +51,6 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo
-	$javascript,
 	'</head>',
 	'<body id="body">';
 
@@ -135,7 +134,4 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		echo '<p class="ui-state-highlight">', $message, '</p>';
 	}
 }
-?>
-<!-- end menu section -->
-<!-- begin content section -->
-<div id="content">
+echo $javascript, '<div id="content">';
