@@ -876,7 +876,6 @@ function print_sour_table($datalist) {
 		if (!$source || !$source->canDisplayDetails()) {
 			continue;
 		}
-		$link_url=$source->getHtmlUrl();
 		echo '<tr>';
 		//-- Source name(s)
 		echo '<td>';
@@ -885,9 +884,9 @@ function print_sour_table($datalist) {
 				echo '<br/>';
 			}
 			if ($n==$source->getPrimaryName()) {
-				echo '<a class="name2" href="', $link_url, '">', highlight_search_hits($name['full']), '</a>';
+				echo '<a class="name2" href="', $source->getHtmlUrl(), '">', highlight_search_hits($name['full']), '</a>';
 			} else {
-				echo '<a href="', $link_url, '">', highlight_search_hits($name['full']), '</a>';
+				echo '<a href="', $source->getHtmlUrl(), '">', highlight_search_hits($name['full']), '</a>';
 			}
 		}	
 		echo '</td>';
@@ -1103,7 +1102,7 @@ function print_repo_table($repos) {
 			if ($n==$repo->getPrimaryName()) {
 				echo '<a class="name2" href="', $repo->getHtmlUrl(), '">', highlight_search_hits($name['full']), '</a>';
 			} else {
-				echo '<a href="', $link_url, '">', highlight_search_hits($name['full']), '</a>';
+				echo '<a href="', $repo->getHtmlUrl(), '">', highlight_search_hits($name['full']), '</a>';
 			}
 		}	
 		echo '</td>';
