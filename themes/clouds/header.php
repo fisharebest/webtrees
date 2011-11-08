@@ -51,6 +51,7 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo
+	$javascript,
 	'</head>',
 	'<body id="body">';
 
@@ -128,12 +129,13 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 		'</ul>',
 		'</div>', // <div id="menu-right">
-		'</div>', // <div id="topMenu">
-		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />';
-	// Display feedback from asynchronous actions
+		'</div>'; // <div id="topMenu">
+// Display feedback from asynchronous actions
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';
 	}
-	echo '</div>'; // <div id="header">
 }
-echo $javascript, '<div id="content">';
+?>
+<!-- end menu section -->
+<!-- begin content section -->
+<div id="content">
