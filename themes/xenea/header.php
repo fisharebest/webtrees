@@ -73,8 +73,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 			'<input type="text" name="query" size="12" placeholder="', WT_I18N::translate('Search'), '"/>',
 			'<input type="submit" name="search" value="&gt;" />',
 			'</form>',
-		'</div>',
-	'</div>';
+		'</div>';
 	echo
 	'<div id="optionsmenu">',
 		'<div id="theme-menu">',
