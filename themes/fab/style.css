@@ -240,23 +240,16 @@ html[dir='rtl'] .makeMenu li ul li {
 .person_box {
 background-color:#DDF;
 	overflow:visible;
-	height:56px;
 }
 
 .person_boxF {
 	background-color:#FDD;
 	overflow:visible;
-	height:56px;
 }
 
 .person_boxNN {
 	background-color:#DFD;
 	overflow:visible;
-	height:56px;
-}
-
-.action_header, .action_headerF {
-	height:76px;
 }
 
 .action_headerF {background: #FDD;}
