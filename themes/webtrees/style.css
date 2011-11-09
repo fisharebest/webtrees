@@ -1356,10 +1356,10 @@ html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-c
 #index_small_blocks {clear:none; width:33%; float:right;}
 #index_full_blocks {clear:none; width:100%;}
 #random_picture {text-align:center;}
-.small_inner_block {max-height:200px; overflow:auto; /*font-size:10px;*/}
+.small_inner_block {max-height:200px; overflow:auto;}
 .normal_inner_block {overflow:auto;}
-.block {/*background-color:#edf7fd;*/ border:solid #81a9cb 1px;/* font-size:12px;*/ margin-top:10px; padding:3px; vertical-align:top;}
-.blockcontent {margin:5px;/* font-size:13px;*/ overflow:auto;}
+.block {background-color:#edf7fd; border:solid #81a9cb 1px; margin-top:10px; padding:3px; vertical-align:top;}
+.blockcontent {margin:5px; overflow:auto;}
 .blockcontent .list_table {border-spacing:0; border:solid #81a9cb 1px; border-right:0;}
 .blockcontent .list_value, .blockcontent  .list_value_wrap {border:0; border-top:solid #81a9cb 1px; border-right:solid #81a9cb 1px;}
 
