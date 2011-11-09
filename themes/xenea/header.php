@@ -73,37 +73,38 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 			'<input type="text" name="query" size="12" placeholder="', WT_I18N::translate('Search'), '"/>',
 			'<input type="submit" name="search" value="&gt;" />',
 			'</form>',
-		'</div>';
+		'</div>',
+	'</div>'; // <div id="header">
 	echo
 	'<div id="optionsmenu">',
 		'<div id="theme-menu">',
 			'<ul class="makeMenu">';
-	$menu=WT_MenuBar::getThemeMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
+				$menu=WT_MenuBar::getThemeMenu();
+				if ($menu) {
+					echo $menu->getMenuAsList();
+				}
 	echo
 			'</ul>',
 		'</div>',
 		'<div id="fav-menu">',
 			'<ul class="makeMenu">';
-	$menu=WT_MenuBar::getFavoritesMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
+				$menu=WT_MenuBar::getFavoritesMenu();
+				if ($menu) {
+					echo $menu->getMenuAsList();
+				}
 	echo
 			'</ul>',
 		'</div>',
 		'<div id="login-menu">',
 			'<ul class="makeMenu">';
-			if (WT_USER_ID) {
-				echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
-				if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-					echo ' <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+				if (WT_USER_ID) {
+					echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+					if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+						echo ' <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+					}
+				} else {
+					echo '<li>', login_link(), '</li> ';
 				}
-			} else {
-				echo '<li>', login_link(), '</li> ';
-			}
 	echo	
 			'</ul>',
 		'</div>';
@@ -137,20 +138,19 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 	// Print the menu bar
 	echo
 		'<div id="topMenu">',
-		'<ul id="main-menu">';
-	foreach ($menu_items as $menu) {
-		if ($menu) {
-			echo $menu->getMenuAsList();
-		}
-	}
-	unset($menu_items, $menu);
+			'<ul id="main-menu">';
+				foreach ($menu_items as $menu) {
+					if ($menu) {
+						echo $menu->getMenuAsList();
+					}
+				}
+				unset($menu_items, $menu);
 	echo
-		'</ul>',  // <ul id="main-menu">
+			'</ul>',  // <ul id="main-menu">
 		'</div>'; // <div id="topMenu">
 	// Display feedback from asynchronous actions
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';
 	}
-	echo '</div>'; // <div id="header">
 }
 echo $javascript, '<div id="content">';
