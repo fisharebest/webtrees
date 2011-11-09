@@ -138,7 +138,7 @@ class WT_Controller_Base {
 
 	// We've collected up JavaScript fragments while rendering the page.
 	// Now display them.
-	private function getJavaScript() {
+	public function getJavaScript() {
 		// Load external libraries first
 		$html=PHP_EOL;
 		foreach (array_keys($this->external_javascript) as $script_name) {
@@ -313,5 +313,8 @@ class WT_Controller_Base {
 		}
 		// always return a record
 		return new WT_Family('0 @F@ FAM');
+	}
+	public function getSignificantSurname() {
+		return '';
 	}
 }

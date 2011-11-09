@@ -747,6 +747,17 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		return $people;
 	}
 
+	// Get significant information from this page, to allow other pages such as
+	// charts and reports to initialise with the same records
+	public function getSignificantSurname() {
+		if ($this->record) {
+			list($surn, $givn)=explode(',', $this->record->getSortname());
+			return $surn;
+		} else {
+			return '';
+		}
+	}
+
 // -----------------------------------------------------------------------------
 // Functions for GedFact Assistant
 // -----------------------------------------------------------------------------

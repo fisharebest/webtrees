@@ -194,4 +194,15 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		}
 		return $menu;
 	}
+
+	// Get significant information from this page, to allow other pages such as
+	// charts and reports to initialise with the same records
+	public function getSignificantSurname() {
+		if ($this->record && $this->record->getHusband()) {
+			list($surn, $givn)=explode(',', $this->record->getHusband()->getSortname());
+			return $surn;
+		} else {
+			return '';
+		}
+	}
 }
