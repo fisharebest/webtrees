@@ -88,7 +88,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 //-->
 </script>
-
+<div id="search-page">
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 <?php $somethingPrinted = $controller->printResults(); ?>
 <!-- /*************************************************** Search Form Outer Table **************************************************/ -->
@@ -404,7 +404,7 @@ if ($controller->action == "general") {
 <br />
 <?php
 
-echo '<br /><br /><br />';
+echo '</div>';//close search-page
 // set the focus on the first field unless some search results have been printed
 if (!$somethingPrinted) {
 ?>
