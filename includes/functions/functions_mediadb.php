@@ -1144,7 +1144,7 @@ function get_media_folders() {
 
 	$folderList[1] = get_media_firewall_path($MEDIA_DIRECTORY);  // look in both the standard and protected directories
 	$currentFolderNum = 0;
-	$nextFolderNum = 1;
+	$nextFolderNum = 2;
 	while ($currentFolderNum < count($folderList)) {
 		$currentFolder = $folderList[$currentFolderNum];
 		$currentFolderNum++;
