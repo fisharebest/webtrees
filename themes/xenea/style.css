@@ -966,6 +966,7 @@ html[dir='rtl'] .themesubmenu {margin-right:0;}
 }
 
 #content {
+	clear: both;
 	margin-left:1px;
 }
 
