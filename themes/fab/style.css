@@ -137,13 +137,9 @@ img {
 }
 
 /* Block level objects, such as header, footer, etc. */
-.block {
-	background-color:#EEE;
-	clear:none;
-}
-.blockheader {
-	font-weight:bold;
-}
+.block {background-color:#EEE; clear:none;}
+.blockheader {font-weight:bold;}
+.charts_block {overflow:auto;}
 
 /* Pending edits */
 .change_new, .nameblue {
@@ -1009,7 +1005,9 @@ dd {
 }
 
 .gedcom_favorites_block  .person_box, .gedcom_favorites_block  .person_boxF, .gedcom_favorites_block  .person_boxNN {height:auto;}
+.user_favorites_block  .person_box, .user_favorites_block  .person_boxF, .user_favorites_block  .person_boxNN {height:auto;}
 .gedcom_favorites_block  .person_box .details2, .gedcom_favorites_block  .person_boxF.details2, .gedcom_favorites_block  .person_boxNN.details2 {min-height:40px;}
+.user_favorites_block  .person_box .details2, .user_favorites_block  .person_boxF.details2, .user_favorites_block  .person_boxNN.details2 {min-height:40px;}
 
 .popup {
 	display:none;
