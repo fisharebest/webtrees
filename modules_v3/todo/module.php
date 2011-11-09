@@ -73,23 +73,33 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 			->addInlineJavaScript('
 				jQuery("#'.$table_id.'").dataTable( {
+				"sDom": \'t<"F"i>\',
 				"bAutoWidth":false,
 				"bPaginate": false,
 				"bLengthChange": false,
 				"bFilter": false,
-				"bInfo": false,
-				"bJQueryUI": false
+				"bInfo": true,
+				"bJQueryUI": true,
+				"aoColumns": [
+					/* 0-DATE */   		{ "bVisible": false },
+					/* 1-Date */		{ "iDataSort": 0 },
+					/* 1-Record */ 		{},
+					/* 2-Username */	{},
+					/* 3-Text */		{}
+				]
 				});		
+			jQuery("#'.$table_id.'").css("visibility", "visible");
 			');
 		$content='';
-		$content .= '<table id="'.$table_id.'" class="list_table">';
+		$content .= '<table id="'.$table_id.'" style="visibility:hidden;">';
 		$content .= '<thead><tr>';
-		$content .= '<th class="list_label" style="cursor:pointer;">'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
-		$content .= '<th class="list_label" style="cursor:pointer;">'.WT_I18N::translate('Record').'</th>';
+		$content .= '<th>DATE</th>'; //hidden by datables code
+		$content .= '<th>'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
+		$content .= '<th>'.WT_I18N::translate('Record').'</th>';
 		if ($show_unassigned || $show_other) {
-			$content .= '<th class="list_label" style="cursor:pointer;">'.WT_I18N::translate('Username').'</th>';
+			$content .= '<th>'.WT_I18N::translate('Username').'</th>';
 		}
-		$content .= '<th class="list_label" style="cursor:pointer;">'.WT_Gedcom_Tag::getLabel('TEXT').'</th>';
+		$content .= '<th>'.WT_Gedcom_Tag::getLabel('TEXT').'</th>';
 		$content .= '</tr></thead><tbody>';
 
 		$found=false;
@@ -99,15 +109,19 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($record && $record->canDisplayDetails()) {
 				$user_name=get_gedcom_value('_WT_USER', 2, $todo['factrec']);
 				if ($user_name==WT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {
-					$content.='<tr valign="top">';
-					$content.='<td class="list_value_wrap">'.str_replace('<a', '<a name="'.$todo['date']->MinJD().'"', $todo['date']->Display(false)).'</td>';
+					$content.='<tr>';
+					//-- Event date (sortable)
+					$content .= '<td>'; //hidden by datables code
+					$content .= $todo['date']->JD();
+					$content .= '</td>';
+					$content.='<td class="wrap">'. $todo['date']->Display(empty($SEARCH_SPIDER)).'</td>';
 					$name=$record->getFullName();
-					$content.='<td class="list_value_wrap"><a href="'.$record->getHtmlUrl().'">'.PrintReady($name).'</a></td>';
+					$content.='<td class="wrap"><a href="'.$record->getHtmlUrl().'">'.PrintReady($name).'</a></td>';
 					if ($show_unassigned || $show_other) {
-						$content.='<td class="list_value_wrap">'.$user_name.'</td>';
+						$content.='<td class="wrap">'.$user_name.'</td>';
 					}
 					$text=get_gedcom_value('_TODO', 1, $todo['factrec']);
-					$content.='<td class="list_value_wrap">'.$text.'</td>';
+					$content.='<td class="wrap">'.$text.'</td>';
 					$content.='</tr>';
 					$found=true;
 				}

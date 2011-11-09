@@ -1512,18 +1512,19 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
 			jQuery("#'.$table_id.'").dataTable({
-				"bAutoWidth":false,
+				"sDom": \'t<"F"i>\',
 				"bPaginate": false,
+				"bAutoWidth":false,
 				"bLengthChange": false,
 				"bFilter": false,
-				"bInfo": false,
 				"oLanguage": {
 					"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
+					"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'"
 				},
-				"bJQueryUI": false,
+				"bJQueryUI": true,
 				"aaSorting": ['.$aaSorting.'],
 				"aoColumns": [
-					/* 0-Sex */     { "bSortable" : false },
+					/* 0-Sex */     { "bSortable" : false, "sClass": "center" },
 					/* 1-Record */  { "iDataSort" : 5 },
 					/* 2-Change */  { "iDataSort" : 4 },
 					/* 3=By */      null,
@@ -1531,20 +1532,21 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 					/* 5-SORTNAME */{ "bVisible" : false }
 				]
 			});
+			jQuery("#'.$table_id.'").css("visibility", "visible");
 		');
 
 		//-- table header
-		$return .= "<table id='" . $table_id . "' class='list_table width100'>";
+		$return .= "<table id='" . $table_id . "' class='width100' style='visibility:hidden;'>";
 		$return .= "<thead><tr>";
-		$return .= "<th class='list_label'></th>";
-		$return .= "<th style='cursor:pointer;' class='list_label'>" . WT_I18N::translate('Record') . "</th>";
-		$return .= "<th style='cursor:pointer;' class='list_label'>" . WT_Gedcom_Tag::getLabel('CHAN') . "</th>";
-		$return .= "<th style='cursor:pointer;' class='list_label'>" . WT_Gedcom_Tag::getLabel('_WT_USER') . "</th>";
-		$return .= "<th style='display:none;'>DATE</th>";     //hidden by datatables code
-		$return .= "<th style='display:none;'>SORTNAME</th>"; //hidden by datatables code
+		$return .= "<th>&nbsp;</th>";
+		$return .= "<th>" . WT_I18N::translate('Record') . "</th>";
+		$return .= "<th>" . WT_Gedcom_Tag::getLabel('CHAN') . "</th>";
+		$return .= "<th>" . WT_Gedcom_Tag::getLabel('_WT_USER') . "</th>";
+		$return .= "<th>DATE</th>";     //hidden by datatables code
+		$return .= "<th>SORTNAME</th>"; //hidden by datatables code
 		$return .= "</tr></thead><tbody>";
-		//-- table body
 
+		//-- table body
 		foreach ($change_ids as $change_id) {
 		$record = WT_GedcomRecord::getInstance($change_id);
 		if (!$record || !$record->canDisplayDetails()) {
@@ -1580,24 +1582,24 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 		//-- Record name(s)
 		$name = $record->getFullName();
 		$return .= '<td class="wrap">';
-		$return .= "<a href='" . $record->getHtmlUrl() . "' class='name2' dir='" . $TEXT_DIRECTION . "'>" . $name . "</a>";
+		$return .= '<a href="'. $record->getHtmlUrl() . $name . '</a>';
 		if ($indi) {
-			$return .= "<div class='indent'>";
+			$return .= '<div class="indent">';
 			$addname = $record->getAddName();
 			if ($addname) {
-				$return .= "<a href='" . $record->getHtmlUrl() . "' class=''>" . $addname . "</a>";
+				$return .= '<a href="'. $record->getHtmlUrl() . $addname . '</a>';
 			}
 			if ($SHOW_MARRIED_NAMES) {
 				foreach ($record->getAllNames() as $name) {
 					if ($name['type'] == '_MARNM') {
-						$return .= "<div><a title='" . WT_Gedcom_Tag::getLabel('_MARNM') . "' href='" . $record->getHtmlUrl() . "' class=''>" . $name['full'] . "</a></div>";
+						$return .= '<div><a title="'. WT_Gedcom_Tag::getLabel('_MARNM') . '" href="'. $record->getHtmlUrl() . $name['full'] . '</a></div>';
 					}
 				}
 			}
 			if ($show_parents) {
 				$return .= $record->getPrimaryParentsNames("parents_$table_id details1");
 			}
-			$return .= "</div>"; //class='indent'
+			$return .= '</div>'; //class='indent'
 		}
 		$return .= "</td>";
 		//-- Last change date/time
@@ -1605,17 +1607,12 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 		//-- Last change user
 		$return .= "<td class='wrap'>" . $record->LastChangeUser() . "</td>";
 		//-- change date (sortable) hidden by datatables code
-		$return .= "<td  style='display:none;'>" . $record->LastChangeTimestamp(false, true) . "</td>";
+		$return .= "<td>" . $record->LastChangeTimestamp(false, true) . "</td>";
 		//-- names (sortable) hidden by datatables code
-		$return .= "<td  style='display:none;'>" . $record->getSortName() . "</td></tr>";
+		$return .= "<td>" . $record->getSortName() . "</td></tr>";
 	}
 
-	//-- table footer
-	$return .= "</tbody>";
-	$return .= "</table>";
-	if ($n>0) {
-		$return .= WT_I18N::translate('Showing %1$s to %2$s of %3$s', 1, $n, $n);
-	}
+	$return .= '</tbody></table>';
 	return $return;
 }
 
@@ -1629,23 +1626,30 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
 			jQuery("#'.$table_id.'").dataTable({
-				"sDom": \'<"F"li>\',
+				"sDom": \'t<"F"i<"filtersF_'.$table_id.'">>\',
+				"oLanguage": {"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'"},
 				"bAutoWidth":false,
 				"bPaginate": false,
 				"bLengthChange": false,
 				"bFilter": false,
-				"bInfo": false,
-				"bJQueryUI": false,
+				"bInfo": true,
+				"bJQueryUI": true,
 				"aaSorting": [[ '.($sort_by=='alpha' ? 1 : 3).', "asc"]],
 				"aoColumns": [
-					/* 0-Record */ { "iDataSort": 1 },
+					/* 0-Record */ { "iDataSort": 1},
 					/* 1-NAME */   { "bVisible": false },
 					/* 2-Date */   { "iDataSort": 3 },
 					/* 3-DATE */   { "bVisible": false },
-					/* 4-Anniv. */  null,
-					/* 5-Event */   null
+					/* 4-Anniv. */ { "sClass": "center" },
+					/* 5-Event */  { "sClass": "center" }
 				]
 			});		
+
+			jQuery("div.filtersF_'.$table_id.'").html("'.addslashes(
+				'<button type="button" class="ui-state-default" id="cb_parents_table" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle(\'slow\');">'.WT_I18N::translate('Show parents').'</button>'
+			).'");
+
+			 jQuery("#'.$table_id.'").css("visibility", "visible");
 		');
 
 	// Did we have any output?  Did we skip anything?
@@ -1687,14 +1691,14 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 		if ($output==1) {
 			//-- First table row:  start table headers, etc. first
-			$return .= '<table id="'.$table_id.'" class="list_table width100">';
+			$return .= '<table id="'.$table_id.'" class="width100" style="visibility:hidden;">';
 			$return .= '<thead><tr>';
-			$return .= '<th style="cursor:pointer;" class="list_label">'.WT_I18N::translate('Record').'</th>';
-			$return .= '<th style="display:none;">NAME</th>'; //hidden by datables code
-			$return .= '<th style="cursor:pointer;" class="list_label">'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
-			$return .= '<th style="display:none;">DATE</th>'; //hidden by datables code
-			$return .= '<th style="cursor:pointer;" class="list_label"><img src="'.$WT_IMAGES["reminder"].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
-			$return .= '<th style="cursor:pointer;" class="list_label">'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
+			$return .= '<th>'.WT_I18N::translate('Record').'</th>';
+			$return .= '<th>NAME</th>'; //hidden by datables code
+			$return .= '<th>'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
+			$return .= '<th>DATE</th>'; //hidden by datables code
+			$return .= '<th><img src="'.$WT_IMAGES["reminder"].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
+			$return .= '<th>'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
 			$return .= '</tr></thead><tbody>'."\n";
 		}
 
@@ -1712,50 +1716,41 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= "<tr>";
 		//-- Record name(s)
 		$name = $value['name'];
-		$return .= '<td class="list_value_wrap">';
-		$return .= '<a href="'.$value['url'].'" class="list_item name2" dir="'.$TEXT_DIRECTION.'">'.$name.'</a>';
+		$return .= '<td class="wrap">';
+		$return .= '<a href="'.$value['url'].'">'.$name.'</a>';
 		if ($value['record']->getType()=="INDI") {
 			$return .= $value['sex'];
-			$return .= $value['record']->getPrimaryParentsNames("parents_$table_id details1", "none");
+			$return .= $value['record']->getPrimaryParentsNames("parents_".$table_id." details1", "none");
 		}
 		$return .= '</td>';
 		//-- NAME
-		$return .= '<td style="display:none;">'; //hidden by datables code
+		$return .= '<td>'; //hidden by datables code
 		$return .= $value['record']->getSortName();
 		$return .= '</td>';
 		//-- Event date
-		$return .= '<td class="list_value_wrap">';
+		$return .= '<td class="wrap">';
 		$return .= $value['date']->Display(empty($SEARCH_SPIDER));
 		$return .= '</td>';
 		//-- Event date (sortable)
-		$return .= '<td style="display:none;">'; //hidden by datables code
+		$return .= '<td>'; //hidden by datables code
 		$return .= $n;
 		$return .= '</td>';
 		//-- Anniversary
-		$return .= '<td class="list_value_wrap">';
+		$return .= '<td class="center">';
 		$anniv = $value['anniv'];
 		if ($anniv==0) $return .= '&nbsp;';
 		else $return .= $anniv;
 		$return .= '</td>';
 		//-- Event name
-		$return .= '<td class="list_value_wrap">';
-		$return .= '<a href="'.$value['url'].'" class="list_item">'.WT_Gedcom_Tag::getLabel($value['fact']).'</a>';
+		$return .= '<td class="wrap">';
+		$return .= '<a href="'.$value['url'].'">'.WT_Gedcom_Tag::getLabel($value['fact']).'</a>';
 		$return .= '&nbsp;</td>';
 
 		$return .= '</tr>'."\n";
 	}
 
 	if ($output!=0) {
-		//-- table footer
-		$return .= '</tbody><tfoot><tr class="sortbottom">';
-		$return .= '<td class="list_label">';
-		$return .= "<input id=\"cb_parents_$table_id\" type=\"checkbox\" onclick=\"jQuery('div.parents_$table_id').toggle();\" /><label for=\"cb_parents_$table_id\">&nbsp;&nbsp;".WT_I18N::translate('Show parents').'</label><br />';
-		$return .= '</td><td class="list_label">';
-		$return .= /* I18N: A count of events */ WT_I18N::translate('Total events: %s', WT_I18N::number($output));
-		$return .= '</td>';
-		$return .= '<td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td><td class="list_label">&nbsp;</td>';//DataTables cannot work with colspan
-		$return .= '</tr></tfoot>';
-		$return .= '</table>';
+		$return .= '</tbody></table>';
 	}
 
 	// Print a final summary message about restricted/filtered facts

@@ -124,31 +124,32 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 				->addInlineJavaScript('
 					jQuery("#'.$table_id.'").dataTable({
-						"sDom": \'<"F"li>\',
+						"sDom": \'t<"F"i>\',
 						"bAutoWidth":false,
 						"bPaginate": false,
 						"bLengthChange": false,
 						"bFilter": false,
-						"bInfo": false,
-						"bJQueryUI": false,
+						"bInfo": true,
+						"bJQueryUI": true,
 						"aaSorting": [[5,"asc"]],
 						"aoColumns": [
-							/* 0-NAME */ null,
+							/* 0-NAME */ {},
 							/* 1-DATE */ { "iDataSort": 2 },
 							/* 2-DATE */ { "bVisible": false },
-							/* 3-Aniv */ null,
+							/* 3-Aniv */ { "sClass": "center"},
 							/* 4-YART */ { "iDataSort": 5 },
 							/* 5-YART */ { "bVisible": false }
 						]
 					});
+					jQuery("#'.$table_id.'").css("visibility", "visible");
 				');
-			$content .= '<table id="'.$table_id.'" class="list_tabler width100">';
-			$content .= '<thead style="cursor:pointer;"><tr>';
-			$content .= '<th class="list_label">'.WT_Gedcom_Tag::getLabel('NAME').'</th>';
-			$content .= '<th class="list_label">'.WT_Gedcom_Tag::getLabel('DEAT').'</th>';
+			$content .= '<table id="'.$table_id.'" class="width100" style="visibility:hidden;">';
+			$content .= '<thead><tr>';
+			$content .= '<th>'.WT_Gedcom_Tag::getLabel('NAME').'</th>';
+			$content .= '<th>'.WT_Gedcom_Tag::getLabel('DEAT').'</th>';
 			$content .= '<th>DEAT</th>';
-			$content .= '<th class="list_label"><img src="'.$WT_IMAGES['reminder'].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
-			$content .= '<th class="list_label">'.WT_Gedcom_Tag::getLabel('_YART').'</th>';
+			$content .= '<th><img src="'.$WT_IMAGES['reminder'].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
+			$content .= '<th>'.WT_Gedcom_Tag::getLabel('_YART').'</th>';
 			$content .= '<th>_YART</th>';
 			$content .= '</tr></thead><tbody>';
 
@@ -160,16 +161,17 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$name=$ind->getFullName();
 					$url=$ind->getHtmlUrl();
 					$content .= '<td>';
-					$content .= '<a href="'.$url.'" class="list_item name2">'.$name.'</a>';
+					$content .= '<a href="'.$url.'">'.$name.'</a>';
 					$content .= $ind->getSexImage();
 					$addname=$ind->getAddName();
 					if ($addname) {
-						$content .= '<br /><a href="'.$url.'" class="list_item">'.$addname.'</a>';
+						$content .= '<br /><a href="'.$url.'">'.$addname.'</a>';
 					}
 					$content .= '</td>';
 
 					// death/yahrzeit event date
-					$content .= '<td>'.$yahrzeit['date']->Display().'</td><td>'.$yahrzeit['date']->minJD().'</td>';
+					$content .= '<td>'.$yahrzeit['date']->Display().'</td>';
+					$content .= '<td>'.$yahrzeit['date']->minJD().'</td>';// sortable date
 
 					// Anniversary
 					$content .= '<td>'.$yahrzeit['anniv'].'</td>';
@@ -177,12 +179,13 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					// upcomming yahrzeit dates
 					$today=new WT_Date_Jewish($yahrzeit['jd']);
 					$td=new WT_Date($today->Format('%@ %A %O %E'));
-					$content .= '<td>'.$td->Display().'</td><td>'.$td->minJD().'</td>';
+					$content .= '<td>'.$td->Display().'</td>';
+					$content .= '<td>'.$td->minJD().'</td>';// sortable date
 
 					$content .= '</tr>';
 				}
 			}
-			$content .= '</table>';
+			$content .= '</tbody></table>';
 
 			break;
 		}

@@ -103,7 +103,7 @@ html[dir='rtl'] #extra-menu {text-align:left;}
 html[dir='rtl'] #extra-menu.makeMenu li ul {left:0; right:auto;}
 
 /* ======= Main menu items ========== */
-#topMenu                   {float:left; width:100%; height:45px; padding:5px 0; position:relative;}
+#topMenu                   {border-bottom: 2px solid #0073CF; float:left; height:45px; margin-bottom: 10px; padding:5px 0 10px 0; position:relative; width:100%;}
 #main-menu                 {clear:both; position:relative; z-index:500; float:right; right:50%; margin-top:5px;}
 #main-menu,
 #main-menu ul              {padding:0; list-style-type:none;}
@@ -980,7 +980,6 @@ html[dir='rtl'] .themesubmenu {margin-right:0;}
 .small_inner_block {
 	max-height:190px;
 	overflow:auto;
-	font-size:10px;
 	text-decoration:none;
 }
 
@@ -1903,6 +1902,9 @@ html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 .dataTables_processing {float:left; margin:5px;}
 .dataTables_filter {float:right; margin:4px;}
 .dataTables_info {float:left; margin:5px;}
+.recent_changes_block .dataTables_info, .upcoming_events_block .dataTables_info, .todays_events_block .dataTables_info, .todo_block .dataTables_info, .yahrzeit_block .dataTables_info {padding: 0;}
+.upcoming_events_block .dataTables_info, .todays_events_block .dataTables_info {padding: 2px 0 0 0;}
+.upcoming_events_block  button, .todays_events_block  button {margin: 5px 20px;}
 .dataTables_length {float:right; margin:5px;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
 .ui-widget-header {font-weight:normal;}
@@ -1926,7 +1928,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0; margin-right:
 .source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td, .fam-list td {padding:2px 5px;}
 .indi-list td, .fam-list td {color:#555;}
 .indi-list .stats, .fam-list .stats {margin:0 auto; width:auto;}
-.source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th, .fam-list th {cursor:pointer; white-space:nowrap;}
+.source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th, .fam-list th, .recent_changes_block th, .upcoming_events_block th, .todays_events_block th, .todo_block th, .yahrzeit_block th {cursor:pointer; white-space:nowrap;}
 .source-list th:last-child, .note-list th:last-child, .repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
 #source-details h2, #note-details h2, #repo-details h2, #media-details h2 {margin-bottom:20px; text-align:center;}
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto; visibility:hidden; width:80%;}

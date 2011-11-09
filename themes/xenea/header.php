@@ -147,8 +147,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 	unset($menu_items, $menu);
 	echo
 		'</ul>',  // <ul id="main-menu">
-		'</div>', // <div id="topMenu">
-		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />';
+		'</div>'; // <div id="topMenu">
 	// Display feedback from asynchronous actions
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';

@@ -1330,11 +1330,12 @@ html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
 
 /* ======= List styles =========== */
 .source-list, .note-list, .repo-list, .media-list, .indi-list, .fam-list  {margin:5px auto; width:98%; visibility:hidden;}
+.recent_changes_block, .upcoming_events_block, .todays_events_block, .todo_block  {width:99%;}
 .source-list table, .note-list table, .repo-list table, .media-list table, .indi-list table, .fam-list table  {width:100%;}
 .source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td, .fam-list td{padding:2px 5px;}
 .indi-list td, .fam-list td {}
 .indi-list .stats, .fam-list .stats {margin:0 auto; width:auto;}
-.source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th, .fam-list th{cursor:pointer; font-weight: 600; padding: 2px 4px; white-space: nowrap;}
+.source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th, .fam-list th, .recent_changes_block th, .upcoming_events_block th, .todays_events_block th, .todo_block th, .yahrzeit_block th {cursor:pointer; font-weight: 600; padding: 2px 4px; white-space: nowrap;}
 .source-list th:last-child, .note-list th:last-child, .repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
 #source-details h2, #note-details h2, #repo-details h2, #media-details h2  {margin-bottom:20px; text-align:center;}
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto; visibility:hidden; width:80%;}
@@ -1354,10 +1355,10 @@ html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-c
 #index_small_blocks {clear:none; width:33%; float:right;}
 #index_full_blocks {clear:none; width:100%;}
 #random_picture {text-align:center;}
-.small_inner_block {max-height:200px; overflow:auto; font-size:10px;}
+.small_inner_block {max-height:200px; overflow:auto; /*font-size:10px;*/}
 .normal_inner_block {overflow:auto;}
-.block {background-color:#edf7fd; border:solid #81a9cb 1px; font-size:12px; margin-top:10px; padding:3px; vertical-align:top;}
-.blockcontent {margin:5px; font-size:13px; overflow:auto;}
+.block {/*background-color:#edf7fd;*/ border:solid #81a9cb 1px;/* font-size:12px;*/ margin-top:10px; padding:3px; vertical-align:top;}
+.blockcontent {margin:5px;/* font-size:13px;*/ overflow:auto;}
 .blockcontent .list_table {border-spacing:0; border:solid #81a9cb 1px; border-right:0;}
 .blockcontent .list_value, .blockcontent  .list_value_wrap {border:0; border-top:solid #81a9cb 1px; border-right:solid #81a9cb 1px;}
 
@@ -1613,20 +1614,24 @@ html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected, html[dir='rtl'] .ui-ta
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 
 /* jQuery.datatable styling general over-rides */
-.odd {background-color:#d1d9ef;}
-.even {}
+.odd {background-color:#E7EEF3 ;}
+.even {background-color:#E6E6E6;}
 .css_right {float:left;}
 .fg-button {padding:2px 6px;}
 .dataTables_paginate  {float:left; margin-bottom:3px;}
 .dataTables_processing {float:left;}
 .dataTables_filter {float:right; font-weight:normal;}
 .dataTables_info {float:left; font-weight:normal; padding:4px;}
+.recent_changes_block .dataTables_info, .upcoming_events_block .dataTables_info, .todays_events_block .dataTables_info, .todo_block .dataTables_info, .yahrzeit_block .dataTables_info {padding: 0;}
+.upcoming_events_block .dataTables_info, .todays_events_block .dataTables_info {padding: 2px 0 0 0;}
+.upcoming_events_block  button, .todays_events_block  button {margin: 0 20px;}
 .dataTables_length {float:right; font-weight:normal;}
 .dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
 .dt-clear {clear:both;}
 #loading {text-align:center;}
 .DataTables_sort_wrapper {position:relative;margin-left:20px;}
 .DataTables_sort_wrapper span {left:0; margin-left:-20px; margin-top:-8px; position:absolute; top:50%;}
+.dataTables_wrapper {margin-bottom:10px;}
 
 html[dir='rtl'] .css_right {float:right;}
 html[dir='rtl'] .dataTables_paginate {float:right;}
