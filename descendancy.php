@@ -146,7 +146,7 @@ case 2: //-- Individual list
 	break;
 case 3: //-- Family list
 	$descendants=fam_desc($controller->descPerson, $controller->generations, array());
-	echo '<div class="center">';
+	echo '<div id="descendancy-list">';
 	print_fam_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
 	echo '</div>';
 	break;

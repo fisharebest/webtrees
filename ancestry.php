@@ -67,7 +67,7 @@ echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=va
 	<td class="descriptionbox"><?php echo WT_I18N::translate('Root Person ID'), help_link('rootid'); ?></td>
 <td class="optionbox">
 <input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo htmlspecialchars($controller->rootid); ?>" />
-<?php print_findindi_link("rootid", ""); ?>
+<?php print_findindi_link('rootid', ''); ?>
 </td>
 
 <!-- // NOTE: Box width -->
@@ -80,13 +80,13 @@ echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=va
 <td rowspan="2" class="optionbox">
 <input type="radio" name="chart_style" value="0"
 <?php
-if ($controller->chart_style=="0") {
+if ($controller->chart_style==0) {
 	echo ' checked="checked"';
 }
 echo ' onclick="statusDisable(\'cousins\');';
 echo '" />', WT_I18N::translate('List');
 echo '<br /><input type="radio" name="chart_style" value="1"';
-if ($controller->chart_style=="1") {
+if ($controller->chart_style==1) {
 	echo ' checked="checked"';
 }
 echo ' onclick="statusEnable(\'cousins\');';
@@ -97,7 +97,7 @@ echo '" />', WT_I18N::translate('Booklet');
 <br />
 <?php
 echo '<input ';
-if ($controller->chart_style=="0") {
+if ($controller->chart_style==0) {
 	echo 'disabled="disabled" ';
 }
 echo 'id="cousins" type="checkbox" value="';
@@ -110,14 +110,14 @@ echo ' />';
 echo WT_I18N::translate('Show cousins');
 
 echo '<br /><input type="radio" name="chart_style" value="2"';
-if ($controller->chart_style=="2") {
+if ($controller->chart_style==2) {
 	echo ' checked="checked" ';
 }
 echo ' onclick="statusDisable(\'cousins\');"';
 echo ' />', WT_I18N::translate('Individuals');
 echo '<br /><input type="radio" name="chart_style" value="3"';
 echo ' onclick="statusDisable(\'cousins\');"';
-if ($controller->chart_style=="3") {
+if ($controller->chart_style==3) {
 	echo ' checked="checked" ';
 }
 echo ' />', WT_I18N::translate('Families');
@@ -146,11 +146,8 @@ if ($i==$OLD_PGENS) {
 }
 ?>
 </select>
-
 </td>
-
 <!-- // NOTE: show full -->
-
 <td class="descriptionbox">
 <?php
 echo WT_I18N::translate('Show Details'), help_link('show_full');
@@ -169,9 +166,7 @@ if ($controller->show_full) {
 </td></tr>
 </table>
 </form>
-
 </td></tr></table>
-
 <?php
 if ($show_full==0) {
 	echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
@@ -229,7 +224,7 @@ case 3:
 			$famlist[$famc->getXref()]=$famc;
 		}
 	}
-	echo '<div class="center">';
+	echo '<div id="ancestry-list">';
 	print_fam_table($famlist, WT_I18N::translate('Ancestors of %s', $controller->name));
 	echo '</div>';
 	break;
