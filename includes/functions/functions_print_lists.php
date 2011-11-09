@@ -1524,7 +1524,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 				"bJQueryUI": true,
 				"aaSorting": ['.$aaSorting.'],
 				"aoColumns": [
-					/* 0-Sex */     { "bSortable" : false, "sClass": "center" },
+					/* 0-Type */     { "bSortable" : false, "sClass": "center" },
 					/* 1-Record */  { "iDataSort" : 5 },
 					/* 2-Change */  { "iDataSort" : 4 },
 					/* 3=By */      null,
@@ -1575,6 +1575,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 				$return .= '<img src="' . $WT_IMAGES['repository'] . '" title="" alt="" height="12" />';
 				break;
 			default:
+				$return .= '&nbsp;';
 				break;
 		}
 		$return .= "</td>";
@@ -1582,17 +1583,17 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 		//-- Record name(s)
 		$name = $record->getFullName();
 		$return .= '<td class="wrap">';
-		$return .= '<a href="'. $record->getHtmlUrl() . $name . '</a>';
+		$return .= '<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
 		if ($indi) {
 			$return .= '<div class="indent">';
 			$addname = $record->getAddName();
 			if ($addname) {
-				$return .= '<a href="'. $record->getHtmlUrl() . $addname . '</a>';
+				$return .= '<a href="'. $record->getHtmlUrl() .'">'. $addname . '</a>';
 			}
 			if ($SHOW_MARRIED_NAMES) {
 				foreach ($record->getAllNames() as $name) {
 					if ($name['type'] == '_MARNM') {
-						$return .= '<div><a title="'. WT_Gedcom_Tag::getLabel('_MARNM') . '" href="'. $record->getHtmlUrl() . $name['full'] . '</a></div>';
+						$return .= '<div><a title="'. WT_Gedcom_Tag::getLabel('_MARNM') . '" href="'. $record->getHtmlUrl() .'">'. $name['full'] . '</a></div>';
 					}
 				}
 			}
