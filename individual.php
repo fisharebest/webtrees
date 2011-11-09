@@ -39,11 +39,17 @@ $controller=new WT_Controller_Individual();
 // This page uses jquery.cookie.js to record the sidebar state
 $controller->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.cookie.js');
 
+$controller->addInlineJavaScript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}');
+	
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	if (safe_GET('action')=='ajax') {
 		$controller->ajaxRequest();
 		exit;
 	}
+	// Generate the sidebar content *before* we display the page header,
+	// as the clippings cart needs to have write access to the session.
+	$sidebar_html=$controller->getSideBarContent();
+
 	$controller->pageHeader();
 	if ($controller->record->isMarkedDeleted()) {
 		if (WT_USER_CAN_ACCEPT) {
@@ -268,13 +274,6 @@ foreach ($controller->tabs as $tab) {
 echo
 	'</div>', // close #tabs
 	'</div>', //close indi_left
-	'<div id="sidebar">'; // sidebar code
-require './sidebar.php';
-echo
-	'</div>',  // close #sidebar
+	$sidebar_html,
 	'<a href="#" id="separator" title="', WT_I18N::translate('Click here to open or close the sidebar'), '"></a>',//clickable element to open/close sidebar
-	'<div style="clear:both;">&nbsp;</div></div>', // close #main	
-	// =======================================footer and other items 
-	WT_JS_START,
-	'var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}',
-	WT_JS_END;
+	'<div style="clear:both;">&nbsp;</div></div>'; // close #main

@@ -758,6 +758,37 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 	}
 
+	// Get the contents of sidebar.
+	// TODO?? - only load one block immediately - load the others by AJAX.
+	public function getSideBarContent() {
+		global $controller;
+
+		$html='';
+		foreach (WT_Module::getActiveSidebars() as $mod) {
+			if ($mod->hasSidebarContent()) {
+				$html.='<h3 id="'.$mod->getName().'"><a href="#">'.$mod->getTitle().'</a></h3>';
+				$html.='<div id="sb_content_'.$mod->getName().'">'.$mod->getSidebarContent().'</div>';
+			}
+		}
+
+		$controller
+			->addInlineJavaScript('
+				jQuery("#sidebarAccordion").accordion({
+					active:"#family_nav",
+					autoHeight: false,
+					collapsible: true,
+					icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }
+				});
+				//jQuery code to remove table elements from INDI facts
+				jQuery("#sb_content_extra_info table").replaceWith(function() { return jQuery(this).contents(); });
+				jQuery("#sb_content_extra_info tbody").replaceWith(function() { return jQuery(this).contents(); });
+				jQuery("#sb_content_extra_info tr").replaceWith(function() { return jQuery(this).contents();	});
+				jQuery("#sb_content_extra_info td").replaceWith(function() { return jQuery(this).contents();	});
+			');
+
+		return '<div id="sidebar"><div id="sidebarAccordion">'.$html.'</div></div>';
+	}
+
 // -----------------------------------------------------------------------------
 // Functions for GedFact Assistant
 // -----------------------------------------------------------------------------

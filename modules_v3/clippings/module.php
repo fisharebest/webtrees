@@ -371,13 +371,16 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 	// Impelement WT_Module_Sidebar
 	public function hasSidebarContent() {
+		require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
+
+		// Creating a controller has the side effect of initialising the cart
+		$clip_ctrl=new WT_Controller_Clippings();
+
 		return true;
 	}
 
 	// Impelement WT_Module_Sidebar
 	public function getSidebarContent() {
-		require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
-
 		return
 			WT_JS_START.'		 	
 			jQuery(document).ready(function() {
@@ -389,7 +392,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			WT_JS_END.
 			'<div id="sb_clippings_content">'.
 			$this->getCartList().
-'</div>';
+			'</div>';
 	}
 
 	// Impelement WT_Module_Sidebar
@@ -399,6 +402,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		global $WT_SESSION;
 
 		$clip_ctrl = new WT_Controller_Clippings();
+
 		$add = safe_GET_xref('add','');
 		$add1 = safe_GET_xref('add1','');
 		$remove = safe_GET('remove', WT_REGEX_XREF);

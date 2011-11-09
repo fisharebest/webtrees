@@ -52,6 +52,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function getSidebarContent() {
 		global $WT_IMAGES, $FACT_COUNT, $SHOW_COUNTER, $controller;
 		
+		ob_start();
 		$indifacts = $controller->getIndiFacts();
 		if (count($indifacts)==0) {
 			echo WT_I18N::translate('There are no Facts for this individual.');
@@ -63,18 +64,18 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$FACT_COUNT++;
 		}
 
-		echo '<tr><td><div id="hitcounter">';
+		echo '<div id="hitcounter">';
 		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
 			//print indi counter only if displaying a non-private person
 			require WT_ROOT.'includes/hitcount.php';
 			echo WT_I18N::translate('Hit Count:'). ' '. $hitCount;
 		}
-		echo '</div></td></tr>';// close #hitcounter
+		echo '</div>';// close #hitcounter
+		return ob_get_clean();
 	}
 	
 	// Implement WT_Module_Sidebar
 	public function getSidebarAjaxContent() {
 		return '';
 	}
-
 }
