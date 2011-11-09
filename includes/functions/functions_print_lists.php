@@ -1512,7 +1512,7 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
 			jQuery("#'.$table_id.'").dataTable({
-				"sDom": \'t<"F"i>\',
+				"sDom": \'t\',
 				"bPaginate": false,
 				"bAutoWidth":false,
 				"bLengthChange": false,
@@ -1627,7 +1627,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
 			jQuery("#'.$table_id.'").dataTable({
-				"sDom": \'t<"F"i<"filtersF_'.$table_id.'">>\',
+				"sDom": \'t\',
 				"oLanguage": {"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'"},
 				"bAutoWidth":false,
 				"bPaginate": false,
@@ -1645,10 +1645,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 					/* 5-Event */  { "sClass": "center" }
 				]
 			});		
-
-			jQuery("div.filtersF_'.$table_id.'").html("'.addslashes(
-				'<button type="button" class="ui-state-default" id="cb_parents_table" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle(\'slow\');">'.WT_I18N::translate('Show parents').'</button>'
-			).'");
 
 			 jQuery("#'.$table_id.'").css("visibility", "visible");
 		');
@@ -1721,7 +1717,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= '<a href="'.$value['url'].'">'.$name.'</a>';
 		if ($value['record']->getType()=="INDI") {
 			$return .= $value['sex'];
-			$return .= $value['record']->getPrimaryParentsNames("parents_".$table_id." details1", "none");
 		}
 		$return .= '</td>';
 		//-- NAME
