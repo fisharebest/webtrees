@@ -133,18 +133,20 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 						"bJQueryUI": true,
 						"aaSorting": [[5,"asc"]],
 						"aoColumns": [
-							/* 0-NAME */ {},
-							/* 1-DATE */ { "iDataSort": 2 },
-							/* 2-DATE */ { "bVisible": false },
-							/* 3-Aniv */ { "sClass": "center"},
-							/* 4-YART */ { "iDataSort": 5 },
-							/* 5-YART */ { "bVisible": false }
+							/* 0-name */ { "iDataSort": 1 },
+							/* 1-NAME */ { "bVisible": false },
+							/* 2-date */ { "iDataSort": 3 },
+							/* 3-DATE */ { "bVisible": false },
+							/* 4-Aniv */ { "sClass": "center"},
+							/* 5-yart */ { "iDataSort": 6 },
+							/* 6-YART */ { "bVisible": false }
 						]
 					});
 					jQuery("#'.$table_id.'").css("visibility", "visible");
 				');
 			$content .= '<table id="'.$table_id.'" class="width100" style="visibility:hidden;">';
 			$content .= '<thead><tr>';
+			$content .= '<th>'.WT_Gedcom_Tag::getLabel('NAME').'</th>';
 			$content .= '<th>'.WT_Gedcom_Tag::getLabel('NAME').'</th>';
 			$content .= '<th>'.WT_Gedcom_Tag::getLabel('DEAT').'</th>';
 			$content .= '<th>DEAT</th>';
@@ -168,6 +170,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 						$content .= '<br /><a href="'.$url.'">'.$addname.'</a>';
 					}
 					$content .= '</td>';
+					$content .= '<td>'.$ind->getSortName().'</td>';
 
 					// death/yahrzeit event date
 					$content .= '<td>'.$yahrzeit['date']->Display().'</td>';
