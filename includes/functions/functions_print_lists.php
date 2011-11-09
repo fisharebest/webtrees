@@ -1438,7 +1438,7 @@ function format_surname_list($surnames, $style, $totals, $type) {
 
 
 // print a list of recent changes
-function print_changes_list($change_ids, $sort, $show_parents=false) {
+function print_changes_list($change_ids, $sort) {
 	global $SHOW_MARRIED_NAMES;
 	$n = 0;
 	$arr=array();
@@ -1480,9 +1480,6 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
 					}
 				}
 			}
-			if ($show_parents) {
-				$return .= $value['record']->getPrimaryParentsNames('details1');
-			}
 		}
 		$return .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(false), $value['record']->LastChangeUser());
 		$return .= '</div>';
@@ -1491,7 +1488,7 @@ function print_changes_list($change_ids, $sort, $show_parents=false) {
 }
 
 // print a table of recent changes
-function print_changes_table($change_ids, $sort, $show_parents=false) {
+function print_changes_table($change_ids, $sort) {
 	global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES, $controller;
 
 	$return = '';
@@ -1596,9 +1593,6 @@ function print_changes_table($change_ids, $sort, $show_parents=false) {
 						$return .= '<div><a title="'. WT_Gedcom_Tag::getLabel('_MARNM') . '" href="'. $record->getHtmlUrl() .'">'. $name['full'] . '</a></div>';
 					}
 				}
-			}
-			if ($show_parents) {
-				$return .= $record->getPrimaryParentsNames("parents_$table_id details1");
 			}
 			$return .= '</div>'; //class='indent'
 		}
