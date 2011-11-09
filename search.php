@@ -88,7 +88,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 //-->
 </script>
-
+<div id="search-page">
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 <?php $somethingPrinted = $controller->printResults(); ?>
 <!-- /*************************************************** Search Form Outer Table **************************************************/ -->
@@ -356,22 +356,6 @@ if ($controller->action == "general" || $controller->action == "soundex") {
 	}
 }
 ?>
-<!--  not currently used
-	<tr>
-		<td class="list_label" style="padding: 5px;" >
-			<?php echo WT_I18N::translate('Results per page'); ?>
-		</td>
-		<td class="list_value" style="padding: 5px;" colspan="2">
-			<select name="resultsPerPage">
-				<option value="10" <?php if ($controller->resultsPerPage == 10) echo ' selected="selected"'; ?> >10</option>
-				<option value="20" <?php if ($controller->resultsPerPage == 20) echo ' selected="selected"'; ?> >20</option>
-				<option value="30" <?php if ($controller->resultsPerPage == 30) echo ' selected="selected"'; ?> >30</option>
-				<option value="50" <?php if ($controller->resultsPerPage == 50) echo ' selected="selected"'; ?> >50</option>
-				<option value="100"<?php if ($controller->resultsPerPage == 100)echo ' selected="selected"'; ?>>100</option>
-			</select>
-		</td>
-	</tr>
-	-->
 	<tr>
 		<td class="list_label" style="padding: 5px;" >
 			<?php echo WT_I18N::translate('Other Searches'); ?>
@@ -401,4 +385,4 @@ if ($controller->action == "general") {
 	</tr>
 </table>
 </form>
-</div>
+</div> <!-- close div id "search-page" -->
