@@ -88,7 +88,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 //-->
 </script>
-<div id="search-page">
+
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 <?php $somethingPrinted = $controller->printResults(); ?>
 <!-- /*************************************************** Search Form Outer Table **************************************************/ -->
@@ -115,7 +115,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 			<label for="firstfocus"><?php echo WT_I18N::translate('Enter search terms'); ?></label>
 		</td>
 		<td class="list_value" style="padding: 5px;">
-			<input tabindex="1" id="firstfocus" type="text" name="query" value="<?php if (isset($controller->myquery)) echo $controller->myquery; ?>" size="40" />
+			<input tabindex="1" id="firstfocus" type="text" name="query" value="<?php if (isset($controller->myquery)) echo $controller->myquery; ?>" size="40" autofocus/>
 			<?php print_specialchar_link('firstfocus', false); ?>
 		</td>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="4">
@@ -188,7 +188,7 @@ if ($controller->action == "replace")
 	<!-- // search terms -->
 	<tr>
 		<td class="list_label" style="padding: 5px;"><?php echo WT_I18N::translate('Search for'); ?></td>
-		<td class="list_value" style="padding: 5px;"><input tabindex="1" id="firstfocus" name="query" value="" type="text"/></td>
+		<td class="list_value" style="padding: 5px;"><input tabindex="1" id="firstfocus" name="query" value="" type="text" autofocus/></td>
 			<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="3">
 			<input tabindex="2" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>" />
 		</td>
@@ -245,7 +245,7 @@ if ($controller->action == "soundex") {
 			<?php echo WT_I18N::translate('Given name'); ?>
 		</td>
 		<td class="list_value">
-			<input tabindex="3" type="text" id="firstfocus" name="firstname" value="<?php echo $controller->myfirstname; ?>" />
+			<input tabindex="3" type="text" id="firstfocus" name="firstname" value="<?php echo $controller->myfirstname; ?>" autofocus/>
 		</td>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="6">
 			<input tabindex="7" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>" />
@@ -401,17 +401,4 @@ if ($controller->action == "general") {
 	</tr>
 </table>
 </form>
-<br />
-<?php
-
-echo '</div>';//close search-page
-// set the focus on the first field unless some search results have been printed
-if (!$somethingPrinted) {
-?>
-	<script type="text/javascript">
-	<!--
-		document.getElementById('firstfocus').focus();
-	//-->
-	</script>
-<?php
-}
+</div>
