@@ -104,8 +104,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 			'</form>',
 		'</li>',
 	'</ul>',
-	'</div>',
-	'</div>'; // end header
+	'</div>';
 
 	// Second Row menu and palette selection
 	// Menu

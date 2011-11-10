@@ -133,5 +133,6 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';
 	}
+	'</div>'; // <div id="clouds-container">
 }
 echo $javascript, '<div id="content">';

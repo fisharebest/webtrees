@@ -81,11 +81,12 @@ html[dir='rtl'] .favorites_form {
 /* Layout for header menu */
 
 #topMenu { /* set up container for menu */
+	border-bottom: 1px solid;
 	clear: both;
 	float: left;
 	width: 100%;
-	margin:0;
-	padding:0;
+	margin:10px 0 0 0;
+	padding:0 0 10px 0;
 	margin-top: 18px;
 	z-index:2000;
 	position: relative;
@@ -734,6 +735,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 }
 
 #content {
+	clear:both;
 	margin-left: 1px;
 }
 

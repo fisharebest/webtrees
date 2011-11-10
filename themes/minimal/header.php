@@ -101,7 +101,7 @@ if ($view!='simple') {
 		'</form>';
 	print_favorite_selector();
 	echo 
-		'</div></div>';
+		'</div>';
 	
 	//  begin top links section
 	echo 
@@ -156,8 +156,7 @@ if ($view!='simple') {
 	}
 	echo 
 		'</ul>',
-		'</div>',
-		'<img src="', $WT_IMAGES['hline'], '" width="100%" height="3" alt="" />';
+		'</div>';
 	// Display feedback from asynchronous actions
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';

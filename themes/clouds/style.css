@@ -58,7 +58,7 @@ body {
 
 /* set up div container for main menu and options menu */
 
-#topMenu {clear: both; height:31px; width: 100%; background: #aaccff;}
+#topMenu {border-bottom: 1px solid #003399; clear: both; height:31px; width: 100%; background: #aaccff;}
 #menu-right {float: right;  margin-right: 20px;}
 
 /* LTR to TRL Translation */
