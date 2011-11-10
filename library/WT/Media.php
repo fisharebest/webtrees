@@ -635,13 +635,11 @@ class WT_Media extends WT_GedcomRecord {
 			$output=$this->getHtmlForStreetview();
 		} else {
 
-			$spacestr='';
 			if ($config['display_type']=='pedigree_person') {
 				// 
 				$config['align']='none';
 				$config['uselightbox_fallback']=false;
 				$config['clearbox']='general_2';        
-				$spacestr=' vspace="0" hspace="0" ';
 				$imgsizeped=$this->getImageAttributes('thumb');
 				$config['class']='pedigree_image_'.$imgsizeped['aspect'];
 				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
@@ -650,7 +648,6 @@ class WT_Media extends WT_GedcomRecord {
 				// 
 				$config['align']='none';
 				$config['uselightbox_fallback']=false;
-				$spacestr=' vspace="0" hspace="0" ';
 				$imgsizeped=$this->getImageAttributes('thumb');
 				$config['class']='tv_link pedigree_image_'.$imgsizeped['aspect'];
 				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
@@ -660,7 +657,6 @@ class WT_Media extends WT_GedcomRecord {
 				$config['align']='none';
 				$config['oktolink']=false;
 				$config['addslashes']=true;
-				$spacestr=' vspace="0" hspace="0" ';
 				$imgsizeped=$this->getImageAttributes('thumb');
 				$config['class']='pedigree_image_'.$imgsizeped['aspect'];
 				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
@@ -685,7 +681,7 @@ class WT_Media extends WT_GedcomRecord {
 			$output='';
 			if ($config['oktolink'] && $mainexists) $output .= '<a href="'.$this->getHtmlUrlSnippet($config).'">';
 			$output .= '<img '.$idstr.' src="'.$this->getHtmlUrlDirect('thumb').'" '.$sizestr.' class="'.$config['class'].'"';
-			$output .= $spacestr.' '.$alignstr.' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.' />';
+			$output .= ' '.$alignstr.' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.' />';
 			if ($config['oktolink'] && $mainexists) {
 				$output .= '</a>';
 				if ($config['download'] && $SHOW_MEDIA_DOWNLOAD) {

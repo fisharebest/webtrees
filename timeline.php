@@ -366,7 +366,7 @@ if (count($controller->people)>0) {
 			<table cellspacing="0" cellpadding="0">
 				<tr>
 					<td>
-						<img src="<?php echo $WT_IMAGES["hline"]; ?>" name="ageline<?php echo $p; ?>" id="ageline<?php echo $p; ?>" align="left" hspace="0" vspace="0" width="25" height="3" alt="" />
+						<img src="<?php echo $WT_IMAGES["hline"]; ?>" name="ageline<?php echo $p; ?>" id="ageline<?php echo $p; ?>" align="left" width="25" height="3" alt="" />
 					</td>
 					<td valign="top">
 						<?php

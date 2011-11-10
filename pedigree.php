@@ -262,7 +262,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" dir=\"$TEXT_DIRECTION\">";
 		if (($talloffset < 2) && ($curgen > $talloffset) && ($curgen < $controller->PEDIGREE_GENERATIONS)) {
 			echo "<tr><td>";
-			echo "<img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" hspace=\"0\" vspace=\"0\" alt=\"\" />";
+			echo "<img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" alt=\"\" />";
 			echo "</td><td width=\"100%\">";
 		} else {
 			echo "<tr><td width=\"100%\">";

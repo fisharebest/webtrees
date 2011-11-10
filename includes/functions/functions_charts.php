@@ -619,7 +619,7 @@ function print_url_arrow($id, $url, $label, $dir=2) {
 	$array_style=array("larrow", "rarrow", "uarrow", "darrow");
 	$astyle=$array_style[$adir];
 
-	echo "<a href=\"$url\" onmouseover=\"swap_image('".$astyle.$id."',$adir); window.status ='" . $label . "'; return true;\" onmouseout=\"swap_image('".$astyle.$id."',$adir); window.status=''; return true;\"><img id=\"".$astyle.$id."\" src=\"".$WT_IMAGES[$astyle]."\" hspace=\"0\" vspace=\"0\" border=\"0\" alt=\"$label\" title=\"$label\" /></a>";
+	echo "<a href=\"$url\" onmouseover=\"swap_image('".$astyle.$id."',$adir); window.status ='" . $label . "'; return true;\" onmouseout=\"swap_image('".$astyle.$id."',$adir); window.status=''; return true;\"><img id=\"".$astyle.$id."\" src=\"".$WT_IMAGES[$astyle]."\" border=\"0\" alt=\"$label\" title=\"$label\" /></a>";
 }
 
 /**
