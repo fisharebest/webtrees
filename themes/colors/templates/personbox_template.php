@@ -51,7 +51,7 @@ if (!defined('WT_WEBTREES')) {
 		<span class="name<?php echo $style; ?>"> <?php echo $genderImage; ?></span>
 		<?php echo $showid; ?> </a>
 		<div id="fontdef-<?php echo $boxID; ?>" class="details<?php echo $style; ?>">
-			<div id="inout2-<?php echo $boxID; ?>" style="display: block; overflow:hidden; max-height: <?php echo $bheight-25; ?>px;"><?php echo $BirthDeath; ?></div>
+			<div id="inout2-<?php echo $boxID; ?>" style="display: block; overflow:hidden; max-height: <?php echo $bheight-30; ?>px;"><?php echo $BirthDeath; ?></div>
 		</div>
 		<div id="inout-<?php echo $boxID; ?>" style="display: none;">
 			<div id="LOADING-inout-<?php echo $boxID; ?>"><?php echo WT_I18N::translate('Loading...'); ?></div>
