@@ -207,34 +207,13 @@ function print_indi_table($datalist, $option='') {
 		echo '<tr>';
 		//-- Indi name(s)
 		echo '<td>';
-		list($surn, $givn)=explode(',', $person->getSortName());
-		// If we're showing search results, then the highlighted name is not
-		// necessarily the person's primary name.
-		$primary=$person->getPrimaryName();
-		$names=$person->getAllNames();
-		foreach ($names as $num=>$name) {
-			// Exclude duplicate names, which can occur when individuals have
-			// multiple surnames, such as in Spain/Portugal
-			$dupe_found=false;
-			foreach ($names as $dupe_num=>$dupe_name) {
-				if ($dupe_num>$num && $dupe_name['type']==$name['type'] && $dupe_name['full']==$name['full']) {
-					// Take care not to skip the "primary" name
-					if ($num==$primary) {
-						$primary=$dupe_num;
-					}
-					$dupe_found=true;
-					break;
-				}
-			}
-			if ($dupe_found) {
-				continue;
-			}
-			if ($name['type']!='NAME') {
-				$title='title="'.WT_Gedcom_Tag::getLabel($name['type'], $person).'"';
-			} else {
+		foreach ($person->getAllNames() as $num=>$name) {
+			if ($name['type']=='NAME') {
 				$title='';
+			} else {
+				$title='title="'.WT_Gedcom_Tag::getLabel($name['type'], $person).'"';
 			}
-			if ($num==$primary) {
+			if ($num==$person->getPrimaryName()) {
 				$class=' class="name2"';
 				$sex_image=$person->getSexImage();
 				list($surn, $givn)=explode(',', $name['sort']);
@@ -578,36 +557,31 @@ function print_fam_table($datalist, $option='') {
 		//-- place filtering
 		if ($option=='MARR_PLAC' && strstr($family->getMarriagePlace(), $filter)===false) continue;
 		echo '<tr>';
-		
-		$sort_names=explode(' + ', $family->getSortName());
-		if (count($sort_names)>1) {
-			list($husb_name, $wife_name)=$sort_names;
-		} else {
-			$husb_name=$husb->getSortName();
-			$wife_name=$wife->getSortName();
-		}
 		//-- Husband name(s)
-		$names=$husb->getAllNames();
-		// The husband's primary/secondary name might not be the family's primary name
-		foreach ($names as $n=>$name) {
-			if ($name['sort']==$husb_name) {
-				$husb->setPrimaryName($n);
-				break;
-			}
-		}
-		$n1=$husb->getPrimaryName();
-		$n2=$husb->getSecondaryName();
 		echo '<td>';
-		echo '<a href="', $family->getHtmlUrl(), '" class="name2" dir="', $TEXT_DIRECTION, '">', highlight_search_hits($names[$n1]['full']), '</a>';
-		echo $husb->getSexImage();
-		if ($n1!=$n2) {
-			echo '<br /><a href="', $family->getHtmlUrl(), '">', highlight_search_hits($names[$n2]['full']), '</a>';
+		foreach ($husb->getAllNames() as $num=>$name) {
+			if ($name['type']=='NAME') {
+				$title='';
+			} else {
+				$title='title="'.WT_Gedcom_Tag::getLabel($name['type'], $husb).'"';
+			}
+			if ($num==$husb->getPrimaryName()) {
+				$class=' class="name2"';
+				$sex_image=$husb->getSexImage();
+				list($surn, $givn)=explode(',', $name['sort']);
+			} else {
+				$class='';
+				$sex_image='';
+			}
+			// Only show married names if they are the name we are filtering by.
+			if ($name['type']!='_MARNM' || $num==$husb->getPrimaryName()) {
+				echo '<a ', $title, ' href="', $husb->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
+			}
 		}
 		// Husband parents
 		echo $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
 		echo '</td>';
 		//-- Husb GIVN
-		list($surn, $givn)=explode(',', $husb->getSortName());
 		echo '<td>', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
 		echo '<td>', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
 		$mdate=$family->getMarriageDate();
@@ -625,27 +599,30 @@ function print_fam_table($datalist, $option='') {
 		}
 		echo '</td>';
 		//-- Wife name(s)
-		$names=$wife->getAllNames();
-		// The husband's primary/secondary name might not be the family's primary name
-		foreach ($names as $n=>$name) {
-			if ($name['sort']==$wife_name) {
-				$wife->setPrimaryName($n);
-				break;
-			}
-		}
-		$n1=$wife->getPrimaryName();
-		$n2=$wife->getSecondaryName();
 		echo '<td>';
-		echo '<a href="', $family->getHtmlUrl(), '" class="name2" dir="', $TEXT_DIRECTION, '">', highlight_search_hits($names[$n1]['full']), '</a>';
-		echo $wife->getSexImage();
-		if ($n1!=$n2) {
-			echo '<br /><a href="', $family->getHtmlUrl(), '">', highlight_search_hits($names[$n2]['full']), '</a>';
+		foreach ($wife->getAllNames() as $num=>$name) {
+			if ($name['type']=='NAME') {
+				$title='';
+			} else {
+				$title='title="'.WT_Gedcom_Tag::getLabel($name['type'], $wife).'"';
+			}
+			if ($num==$wife->getPrimaryName()) {
+				$class=' class="name2"';
+				$sex_image=$wife->getSexImage();
+				list($surn, $givn)=explode(',', $name['sort']);
+			} else {
+				$class='';
+				$sex_image='';
+			}
+			// Only show married names if they are the name we are filtering by.
+			if ($name['type']!='_MARNM' || $num==$wife->getPrimaryName()) {
+				echo '<a ', $title, ' href="', $wife->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
+			}
 		}
 		// Wife parents
 		echo $wife->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
 		echo '</td>';
 		//-- Wife GIVN
-		list($surn, $givn)=explode(',', $wife->getSortName());
 		echo '<td>', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
 		echo '<td>', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
 		$mdate=$family->getMarriageDate();
