@@ -53,22 +53,7 @@ if (WT_USE_LIGHTBOX) {
 
 echo
 	'</head>',
-	'<body id="body">',
-	$javascript;
-?>
-<!-- Remove submenu from home -->
-<script type="text/javascript">
-jQuery(document).ready(function() {
-	var obj = {};
-	var num = 0;
-    var num = jQuery('#menu-tree ul li').length; 
-	if(num == 2) { 
-		jQuery('#menu-tree ul').remove();
-	}
-});
-</script>
-<!-- begin header section -->
-<?php
+	'<body id="body">';
 
 if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
@@ -157,4 +142,9 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	}
 	echo '</div>'; // <div id="header">
 }
+// Remove submenu from home
+$javascript;
+$this->addInlineJavaScript(
+	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree ul").remove();'
+);
 echo $javascript, '<div id="content">';
