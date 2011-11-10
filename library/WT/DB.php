@@ -225,6 +225,21 @@ class WT_DB {
 			// It will only be a problem if we can't subsequently create it.
 			$current_version=0;
 		}
+
+		//
+		$need_to_update_config_data=false;
+		$need_to_update_stored_procedures=false;
+		
+		// -1 is set during installation to indicate that the DB schema is up-to-date,
+		// but that we still need to update config data and stored procedures.
+		if ($current_version==-1) {
+			$need_config_data=true;
+			//$need_stored_procedures=true;
+			$current_version=$target_version;
+		}
+
+		// 
+
 		if ($current_version<$target_version) {
 			while ($current_version<$target_version) {
 				$next_version=$current_version+1;
@@ -239,6 +254,13 @@ class WT_DB {
 			if (file_exists($schema_dir.'delete_old_files.php')) {
 				require $schema_dir.'delete_old_files.php';
 			}
+		}
+
+		if ($need_to_update_config_data) {
+			require $schema_dir.'config_data.php';
+		}
+		if ($need_to_update_stored_procedures) {
+			require $schema_dir.'stored_procedures.php';
 		}
 	}
 }

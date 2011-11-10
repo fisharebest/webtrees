@@ -735,7 +735,12 @@ case 'NSFX':
 
 case 'OBJE':
 	$title=WT_Gedcom_Tag::getLabel('OBJE');
-	$text='';
+	$text=
+		'<p>'.
+		WT_I18N::translate('A media object is a record in the family tree that contains information about a media file.  This information may include a title, a copyright notice, a transcript, privacy restictions, etc.  The actual media file, such as a photo or video, is stored externally.  This file can be either be stored locally on this webserver or remotely on a file-sharing webserver.').
+		'<p></p>'.
+		WT_I18N::translate('Thumbnails will be created automatically from images.  You may wish to specify your own thumbnail, such as a still image from a video or a photograph of the speaker in an audio recording.  Thumbnails must be stored locally.  You cannot specify a location on a remote webserver.').
+		'</p>';
 	break;
 
 case 'OCCU':

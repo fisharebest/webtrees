@@ -687,6 +687,8 @@ try {
 		" xref            VARCHAR(20)                                            NULL,".
 		" tag_type        VARCHAR(15)                                            NULL,".
 		" resn            ENUM ('none', 'privacy', 'confidential', 'hidden') NOT NULL,".
+		" comment         VARCHAR(255)                                           NULL,".
+		" updated         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
 		" PRIMARY KEY     (default_resn_id),".
 		" UNIQUE  KEY ux1 (gedcom_id, xref, tag_type),".
 		" FOREIGN KEY fk1 (gedcom_id)  REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id)".
@@ -952,6 +954,20 @@ try {
 		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
+	$dbh->exec(
+		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}language` (".
+		" language_tag       VARCHAR(16)                      NOT NULL,".
+		" iso15924_code      CHAR(4)                          NOT NULL,".
+		" cldr_code          VARCHAR(16)                      NOT NULL,".
+		" launchpad_code     VARCHAR(16)                      NOT NULL,".
+		" collation          VARCHAR(16)                      NOT NULL,".
+		" language_name      VARCHAR(64)                      NOT NULL,".
+		" language_name_base VARCHAR(64)                      NOT NULL,".
+		" enabled            ENUM ('yes', 'no') DEFAULT 'yes' NOT NULL,".
+		" PRIMARY KEY        (language_tag),".
+		" INDEX              (language_name_base, language_name)"
+		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	);
 
 	$dbh->prepare(
 		"INSERT IGNORE INTO `{$TBLPREFIX}user` (user_id, user_name, real_name, email, password) VALUES ".
@@ -975,7 +991,7 @@ try {
 
 	$dbh->prepare(
 		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
-		"('WT_SCHEMA_VERSION',               '12'),".
+		"('WT_SCHEMA_VERSION',               '-1'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".

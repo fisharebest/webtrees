@@ -39,6 +39,20 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		return /* I18N: Description of the "Families" module */ WT_I18N::translate('A sidebar showing an alphabetic list of all the families in the family tree.');
 	}
 
+	// Implement WT_Module
+	public function modAction($modAction) {
+		switch ($modAction) {
+		case 'ajax':
+			header('Content-Type: text/html; charset=UTF-8');
+			echo $this->getSidebarAjaxContent();
+			break;
+		default:
+			header('HTTP/1.0 404 Not Found');
+			break;
+		}
+		exit;
+	}
+
 	// Implement WT_Module_Sidebar
 	public function defaultSidebarOrder() {
 		return 50;
@@ -83,7 +97,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		function fsearchQ() {
 			var query = jQuery("#sb_fam_name").attr("value");
 			if (query.length>1) {
-				jQuery("#sb_fam_content").load("sidebar.php?sb_action=families&search="+query);
+				jQuery("#sb_fam_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=families&search="+query);
 			}
 		}
 
@@ -105,7 +119,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 				if (!famloadedNames[surname]) {
 					jQuery.ajax({
-					  url: "sidebar.php?sb_action=families&alpha="+alpha+"&surname="+surname,
+					  url: "module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=families&alpha="+alpha+"&surname="+surname,
 					  cache: false,
 					  success: function(html) {
 					    jQuery("#sb_fam_"+surname+" div").html(html);
@@ -130,7 +144,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		});
 		//-->
 		</script>
-		<form method="post" action="sidebar.php" onsubmit="return false;">
+		<form method="post" action="module.php?mod='.$this->getName().'&mod_action=ajax" onsubmit="return false;">
 		<input type="text" name="sb_fam_name" id="sb_fam_name" value="'.WT_I18N::translate('Search').'" />
 		<p>';
 		foreach ($initials as $letter=>$count) {
@@ -148,7 +162,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$html=$letter;
 					break;
 			}
-			$html='<a href="sidebar.php?sb_action=families&amp;alpha='.urlencode($letter).'" class="sb_fam_letter">'.PrintReady($html).'</a>';
+			$html='<a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=families&amp;alpha='.urlencode($letter).'" class="sb_fam_letter">'.PrintReady($html).'</a>';
 			$out .= $html." ";
 		}
 

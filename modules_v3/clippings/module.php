@@ -47,6 +47,10 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	// Extend WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
+		case 'ajax':
+			header('Content-Type: text/html; charset=UTF-8');
+			echo $this->getSidebarAjaxContent();
+			break;
 		case 'index':
 			global $ENABLE_AUTOCOMPLETE, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $WT_IMAGES, $controller, $WT_SESSION;
 
@@ -332,6 +336,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
+			break;
 		}
 	}
 
@@ -489,7 +494,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 							$out .= ' ('.$record->getLifeSpan().')';
 						}
 						$out .= '</a>';
-						$out .= '<a class="remove_cart" href="sidebar.php?sb_action=clippings&amp;remove='.$xref.'&amp;pid='.$pid.'">
+						$out .= '<a class="remove_cart" href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&amp;remove='.$xref.'&amp;pid='.$pid.'">
 						<img src="'. $WT_IMAGES["remove"].'" border="0" alt="'.WT_I18N::translate('Remove').'" title="'.WT_I18N::translate('Remove').'" /></a>';
 						$out .='</li>';
 					}
@@ -500,17 +505,17 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 		if ($WT_SESSION->cart[WT_GED_ID]) {
 			$out.=
-				'<br><a href="sidebar.php?sb_action=clippings&amp;empty=true&amp;pid='.$pid.'" class="remove_cart">'.
+				'<br><a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&amp;empty=true&amp;pid='.$pid.'" class="remove_cart">'.
 				WT_I18N::translate('Empty Cart').
 				'</a>'.help_link('empty_cart', $this->getName()).
 				'<br />'.
-				'<a href="sidebar.php?sb_action=clippings&amp;download=true&amp;pid='.$pid.'" class="add_cart">'.
+				'<a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&amp;download=true&amp;pid='.$pid.'" class="add_cart">'.
 				WT_I18N::translate('Download Now').
 				'</a>';
 		}
 		$record=WT_Person::getInstance($pid);
 		if ($record && !array_key_exists($record->getXref(), $WT_SESSION->cart[WT_GED_ID])) {
-			$out .= '<br><a href="sidebar.php?sb_action=clippings&amp;add='.$pid.'&amp;pid='.$pid.'" class="add_cart"><img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.WT_I18N::translate('Add %s to cart', $record->getFullName()).'</a>';
+			$out .= '<br><a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&amp;add='.$pid.'&amp;pid='.$pid.'" class="add_cart"><img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.WT_I18N::translate('Add %s to cart', $record->getFullName()).'</a>';
 		}
 		return $out;
 	}
@@ -521,7 +526,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		$out .= 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}
 			function continueAjax(frm) {
 				var others = jQuery("input[name=\'others\']:checked").val();
-				var link = "sidebar.php?sb_action=clippings&add1="+frm.pid.value+"&others="+others+"&level1="+frm.level1.value+"&level2="+frm.level2.value+"&level3="+frm.level3.value;
+				var link = "module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&add1="+frm.pid.value+"&others="+others+"&level1="+frm.level1.value+"&level2="+frm.level2.value+"&level3="+frm.level3.value;
 				jQuery("#sb_clippings_content").load(link);
 			}';
 		$out .= WT_JS_END;
@@ -589,7 +594,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 		$out = WT_JS_START;
 		$out .= 'function cancelDownload() {
-				var link = "sidebar.php?sb_action=clippings&pid='.$pid.'";
+				var link = "module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&pid='.$pid.'";
 				jQuery("#sb_clippings_content").load(link);
 			}';
 		$out .= WT_JS_END;

@@ -227,7 +227,6 @@ Disallow: /search.php
 Disallow: /search_advanced.php
 Allow:    /search_engine.php
 Disallow: /setup.php
-Disallow: /sidebar.php
 Allow:    /site-unavailable.php
 Allow:    /source.php
 Allow:    /sourcelist.php
