@@ -161,24 +161,24 @@ function print_indi_table($datalist, $option='') {
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
-	echo '<th style="display:none">GIVN</th>';
-	echo '<th style="display:none">SURN</th>';
-	echo '<th ',($option=='sosa'?'':' style="display:none"'),'>', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
+	echo '<th>GIVN</th>';
+	echo '<th>SURN</th>';
+	echo '<th ',($option=='sosa'?'':''),'>', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('BIRT'), '</th>';
-	echo '<th style="display:none">SORT_BIRT</th>';
+	echo '<th>SORT_BIRT</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
 	echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('DEAT'), '</th>';
-	echo '<th style="display:none">SORT_DEAT</th>';
+	echo '<th>SORT_DEAT</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '<th style="display:none">SEX</th>';
-	echo '<th style="display:none">BIRT</th>';
-	echo '<th style="display:none">DEAT</th>';
-	echo '<th style="display:none">TREE</th>';
+	echo '<th ',($SHOW_LAST_CHANGE?'':''),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th>SEX</th>';
+	echo '<th>BIRT</th>';
+	echo '<th>DEAT</th>';
+	echo '<th>TREE</th>';
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
@@ -534,21 +534,21 @@ function print_fam_table($datalist, $option='') {
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
-	echo '<th style="display:none;">HUSB:GIVN_SURN</th>';
-	echo '<th style="display:none;">HUSB:SURN_GIVN</th>';
+	echo '<th>HUSB:GIVN_SURN</th>';
+	echo '<th>HUSB:SURN_GIVN</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
-	echo '<th style="display:none;">WIFE:GIVN_SURN</th>';
-	echo '<th style="display:none;">WIFE:SURN_GIVN</th>';
+	echo '<th>WIFE:GIVN_SURN</th>';
+	echo '<th>WIFE:SURN_GIVN</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('MARR'), '</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '" border="0" /></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
 	echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '" border="0" /></th>';
-	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '<th style="display:none;">MARR</th>';
-	echo '<th style="display:none;">DEAT</th>';
-	echo '<th style="display:none;">TREE</th>';
+	echo '<th ',($SHOW_LAST_CHANGE?'':''),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th>MARR</th>';
+	echo '<th>DEAT</th>';
+	echo '<th>TREE</th>';
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
@@ -837,18 +837,14 @@ function print_sour_table($datalist) {
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
-	echo '<th style="display:none;">TITL</th>';
+	echo '<th>TITL</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
 	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
 	echo '<th>', WT_I18N::translate('Shared notes'), '</th>';
-	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	if (WT_USER_GEDCOM_ADMIN) {
-		echo '<th>&nbsp;</th>';//delete
-	} else {
-		echo '<th style="display:none;">DEL</th>';
-	}
+	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th>&nbsp;</th>';//delete
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
@@ -981,12 +977,8 @@ function print_note_table($datalist) {
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
 	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	echo '<th ',($SHOW_LAST_CHANGE?'':' style="display:none"'),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	if (WT_USER_GEDCOM_ADMIN) {
-		echo '<th>&nbsp;</th>';//delete
-	} else {
-		echo '<th style="display:none;">DEL</th>';
-	}
+	echo '<th ',WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th>&nbsp;</th>';//delete
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
@@ -1074,16 +1066,8 @@ function print_repo_table($repos) {
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Repository name'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	if ($SHOW_LAST_CHANGE) {
-		echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	} else {
-		echo '<th style="display:none;">CHAN</th>';
-	}
-	if (WT_USER_GEDCOM_ADMIN) {
-		echo '<th>&nbsp;</th>';//delete
-	} else {
-		echo '<th style="display:none;">DEL</th>';
-	}
+	echo '<th ',WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th>&nbsp;</th>';//delete
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
@@ -1113,13 +1097,13 @@ function print_repo_table($repos) {
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>', $repo->LastChangeTimestamp(!$SEARCH_SPIDER), '</td>';
 		} else {
-			echo '<td style="display:none;">CHAN</td>';
+			echo '<td>&nbsp;</td>';
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
 			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-repository\',xref:\'', $repo->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
 		} else {
-			echo '<td style="display:none;">DEL</td>';
+			echo '<td>&nbsp;</td>';
 		}
 		echo '</tr>';
 	}
@@ -1178,11 +1162,7 @@ function print_media_table($datalist) {
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	if ($SHOW_LAST_CHANGE) {
-		echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	} else {
-		echo '<th style="display:none;">CHAN</th>';
-	}
+	echo '<th ',WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
@@ -1222,7 +1202,7 @@ function print_media_table($datalist) {
 			if ($SHOW_LAST_CHANGE) {
 				echo '<td>'.$media->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
 			} else {
-				echo '<td style="display:none;">CHAN</td>';
+				echo '<td>&nbsp;</td>';
 			}
 			echo '</tr>';
 		}
