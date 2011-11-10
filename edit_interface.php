@@ -1762,8 +1762,6 @@ case 'paste':
 
 //------------------------------------------------------------------------------
 case 'reorder_media': // Sort page using Popup
-	require_once WT_ROOT.'js/prototype.js.htm';
-	require_once WT_ROOT.'js/scriptaculous.js.htm';
 	require_once WT_ROOT.'includes/media_reorder.php';
 	break;
 
@@ -2269,8 +2267,6 @@ case 'reorder_update':
 	break;
 //------------------------------------------------------------------------------
 case 'reorder_fams':
-	require_once WT_ROOT.'js/prototype.js.htm';
-	require_once WT_ROOT.'js/scriptaculous.js.htm';
 	echo "<br /><b>", WT_I18N::translate('Reorder families'), "</b>", help_link('reorder_families');
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
@@ -2296,7 +2292,6 @@ case 'reorder_fams':
 		?>
 		</ul>
 		<?php echo WT_JS_START; ?>
-
 		  jQuery(document).ready(function() {
 			jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
 
@@ -2309,8 +2304,6 @@ case 'reorder_fams':
 					);
 				});
 			});
-
-
 			<?php echo WT_JS_END; ?>
 		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
 		<button type="submit" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of marriage'); ?></button>
