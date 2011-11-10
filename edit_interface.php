@@ -1873,8 +1873,20 @@ case 'al_reorder_media_update': // Update sort using Album Page
 
 //------------------------------------------------------------------------------
 case 'reorder_children':
-	require_once WT_ROOT.'js/prototype.js.htm';
-	require_once WT_ROOT.'js/scriptaculous.js.htm';
+	echo WT_JS_START; ?>
+	  jQuery(document).ready(function() {
+		jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
+
+		//-- update the order numbers after drag-n-drop sorting is complete
+		jQuery('#reorder_list').bind('sortupdate', function(event, ui) {
+				jQuery('#'+jQuery(this).attr('id')+' input').each(
+					function (index, value) {
+						value.value = index+1;
+					}
+				);
+			});
+		});
+	<?php echo WT_JS_END;
 	echo '<br /><b>', WT_I18N::translate('Re-order children'), '</b>', help_link('reorder_children');
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
@@ -1883,7 +1895,7 @@ case 'reorder_children':
 		<input type="hidden" name="option" value="bybirth" />
 		<ul id="reorder_list">
 		<?php
-			// reorder children in modified families [ 1840895 ]
+			// reorder children in modified families
 			$family = WT_Family::getInstance($pid);
 			$ids = array();
 			foreach ($family->getChildren() as $child) {
@@ -1906,28 +1918,15 @@ case 'reorder_children':
 			$i=0;
 			$show_full = 1; // Force details to show for each child
 			foreach ($children as $id=>$child) {
-				echo "<li style=\"cursor:move; margin-bottom:2px;\"";
-				if (!in_array($id, $ids)) echo " class=\"facts_valueblue\"";
-				echo " id=\"li_$id\" >";
+				echo '<li style="cursor:move; margin-bottom:2px; position:relative;"';
+				if (!in_array($id, $ids)) echo ' class="facts_valueblue"';
+				echo ' id="li_',$id,'" >';
 				print_pedigree_person(WT_Person::getInstance($id), 2);
-				echo "<input type=\"hidden\" name=\"order[$id]\" value=\"$i\"/>";
-				echo "</li>";
+				echo '<input type="hidden" name="order[',$id,']" value="',$i,'"/>';
+				echo '</li>';
 				$i++;
 			}
-		?>
-		</ul>
-		<?php echo WT_JS_START; ?>
-			new Effect.BlindDown('reorder_list', {duration: 1});
-			Sortable.create('reorder_list',
-				{
-					scroll:window,
-					onUpdate : function() {
-						inputs = $('reorder_list').getElementsByTagName("input");
-						for (var i = 0; i < inputs.length; i++) inputs[i].value = i;
-					}
-				}
-			);
-		<?php echo WT_JS_END;
+		echo '</ul>';
 		if (WT_USER_IS_ADMIN) {
 			echo "<center><table width=93%><tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
 			echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">";
@@ -2267,6 +2266,20 @@ case 'reorder_update':
 	break;
 //------------------------------------------------------------------------------
 case 'reorder_fams':
+	echo WT_JS_START; ?>
+	  jQuery(document).ready(function() {
+		jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
+
+		//-- update the order numbers after drag-n-drop sorting is complete
+		jQuery('#reorder_list').bind('sortupdate', function(event, ui) {
+				jQuery('#'+jQuery(this).attr('id')+' input').each(
+					function (index, value) {
+						value.value = index+1;
+					}
+				);
+			});
+		});
+	<?php echo WT_JS_END;
 	echo "<br /><b>", WT_I18N::translate('Reorder families'), "</b>", help_link('reorder_families');
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
@@ -2291,20 +2304,6 @@ case 'reorder_fams':
 			}
 		?>
 		</ul>
-		<?php echo WT_JS_START; ?>
-		  jQuery(document).ready(function() {
-			jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
-
-			//-- update the order numbers after drag-n-drop sorting is complete
-			jQuery('#reorder_list').bind('sortupdate', function(event, ui) {
-					jQuery('#'+jQuery(this).attr('id')+' input').each(
-						function (index, value) {
-							value.value = index+1;
-						}
-					);
-				});
-			});
-			<?php echo WT_JS_END; ?>
 		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
 		<button type="submit" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of marriage'); ?></button>
 		<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>

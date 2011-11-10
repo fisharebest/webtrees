@@ -29,6 +29,20 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+echo WT_JS_START; ?>
+  jQuery(document).ready(function() {
+	jQuery("#reorder_media_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
+
+	//-- update the order numbers after drag-n-drop sorting is complete
+	jQuery('#reorder_media_list').bind('sortupdate', function(event, ui) {
+			jQuery('#'+jQuery(this).attr('id')+' input').each(
+				function (index, value) {
+					value.value = index+1;
+				}
+			);
+		});
+	});
+<?php echo WT_JS_END;
 
 	echo "<br /><b>".WT_I18N::translate('Re-order media')."</b>";
 	echo "&nbsp --- &nbsp;" . WT_I18N::translate('Click a row, then drag-and-drop to re-order media ');
@@ -164,20 +178,6 @@ require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 	}
 	?>
 </ul>
-	<?php echo WT_JS_START; ?>
-	  jQuery(document).ready(function() {
-		jQuery("#reorder_media_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
-
-		//-- update the order numbers after drag-n-drop sorting is complete
-		jQuery('#reorder_media_list').bind('sortupdate', function(event, ui) {
-				jQuery('#'+jQuery(this).attr('id')+' input').each(
-					function (index, value) {
-						value.value = index+1;
-					}
-				);
-			});
-		});
-	<?php echo WT_JS_END; ?>
 	<center>
 	<?php
 	if (WT_USER_IS_ADMIN) {
