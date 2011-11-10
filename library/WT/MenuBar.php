@@ -408,35 +408,35 @@ class WT_MenuBar {
 				break;
 
 			case 'sourcelist.php':
-				$submenu = new WT_Menu($name, $page.'&amp;ged='.WT_GEDURL, 'menu-list-sour');
+				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-sour');
 				$submenu->addIcon('menu_source');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_source');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'notelist.php':
-				$submenu = new WT_Menu($name, $page.'&amp;ged='.WT_GEDURL, 'menu-list-note');
+				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-note');
 				$submenu->addIcon('menu_note');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_notes');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'repolist.php':
-				$submenu = new WT_Menu($name, $page.'&amp;ged='.WT_GEDURL, 'menu-list-repo');
+				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-repo');
 				$submenu->addIcon('menu_repository');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_repository');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'placelist.php':
-				$submenu = new WT_Menu($name, $page.'&amp;ged='.WT_GEDURL, 'menu-list-plac');
+				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-plac');
 				$submenu->addIcon('place');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_place');
 				$menu->addSubmenu($submenu);
 				break;
 
 			case 'medialist.php':
-				$submenu = new WT_Menu($name, $page.'&amp;ged='.WT_GEDURL, 'menu-list-obje');
+				$submenu = new WT_Menu($name, $page.'?ged='.WT_GEDURL, 'menu-list-obje');
 				$submenu->addIcon('menu_media');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_media');
 				$menu->addSubmenu($submenu);
