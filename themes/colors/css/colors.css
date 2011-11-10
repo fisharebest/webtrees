@@ -129,9 +129,7 @@ html[dir='rtl'] #main-menu li ul li {text-indent: 0;}
     background-image: none;
 }
 
-
 /********************Menu Top Row Icons **********************/
-
 #menu-tree      {background-position:center    0;}
 #menu-chart     {background-position:center  -41px;}
 #menu-list      {background-position:center  -82px;}
@@ -263,7 +261,6 @@ html[dir='rtl'] #main-menu li ul li {text-indent: 0;}
 
 /* ============================================= */
 /* Options Menu, language, theme, palette, login */
-
 .makeMenu li {z-index: 100; display:inline; position:relative; white-space:nowrap;}
 .makeMenu li:before {content:" | ";}
 .makeMenu li ul li:before {content:"";}
@@ -305,8 +302,6 @@ color: #000;
 td.descriptionbox div div div a:hover {
 color: #f00;
 }
-
-/*   End Edit Facts  */
 
 .facts_label .submenu a {
 background: #fff;
@@ -358,60 +353,19 @@ clear: both;
 width: 99%;
 }
 
-#index_main_blocks {
-clear:none;
-
-width:66%;
-float:left;
-}
-
-#index_small_blocks {
-clear:none;
-width:33%;
-float:right;
-}
-
-#index_full_blocks {
-clear:none;
-width:100%;
-}
-
-#index_small_blocks .name1 {
-color:#333;
-}
-
-.small_inner_block {
-max-height: 200px;
-overflow: auto;
-}
-
-img {
-    border: 0 none;
-}
-
-.block {
-	color: #000;
-	vertical-align: top;
-	margin-bottom: 5px;
-	padding: 1px;
-}
-
-img.block {height: 25px;}
-
-.blockcontent {
-	border: solid #999 1px;
-	margin-left:auto;
-	margin-right:2px;
-	margin-bottom:10px;
-	overflow:auto;
-	padding: 5px;
-}
-
+/* ======= Block styles ========== */
+#index_main_blocks {clear:none; width:66%; float:left;}
+#index_small_blocks {clear:none; width:33%; float:right;}
+#index_full_blocks {clear:none; width:100%; }
+#index_small_blocks .name1 {color:#333;}
+.small_inner_block {max-height: 200px; overflow: auto;}
+.block {color: #000; vertical-align: top; margin-bottom: 5px; padding: 1px;}
+.blockcontent {border: solid #999 1px; margin-left:auto; margin-right:2px; margin-bottom:10px; overflow:auto; padding: 5px;}
 .blockcontent p {font-size: 13px;}
+.blockheader {width:100%;}
 
-.blockheader {
-	width:100%;
-}
+img {border: 0 none;}
+img.block {height: 25px;}
 
 .blockh1 {
 background-image:url(../images/left1B.png);
@@ -801,11 +755,6 @@ letter-spacing: .2px;
 .date {
 color: #333;
 }
-
-/* .label, .field {
-font-size: 11px;
-}
-*/
 
 .label {
 font-weight: bold;
@@ -1610,86 +1559,28 @@ html[dir='rtl'] .popup dd {margin-right:10px;}
 html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
 
 /* styles for FindFacts pop-up */
-#layDefinedTags, #tabDefinedTagsShow {
-	width:450px;
-}
-#tabDefinedTags {
-	width:430px;
-	border-collapse:collapse;
-}
-#layDefinedTags {
-	margin-left:auto;
-	margin-right:auto;
-	height:285px;
-	overflow:auto;
-	border:inset 2px buttonface;
-}
-#tabDefinedTags th,#tabDefinedTags td {
-	border:solid 1px #000;
-	margin:0;
-	padding:3px;
-}
-#tabDefinedTags tbody th {
-	text-align:left;
-	font-weight:bold;
-}
-#tabDefinedTags tr.sel {
-	background-color:#D1D9EF;
-	color:#888;
-}
-#tabDefinedTags tr.unsel {
-	background-color:#fff;
-	color:#888;
-}
-#tabDefinedTagsShow {
-	margin-left:auto;
-	margin-right:auto;
-}
-#tabDefinedTagsShow td {
-	width:50%;
-	text-align:center;
-}
-#tabFilterAndCustom {
-	margin-left:auto;
-	margin-right:auto;
-}
-#tabAction {
-	margin-left:auto;
-	margin-right:auto;
-}
-#tabAction td {
-	width:50%;
-	text-align:center;
-}
+#layDefinedTags, #tabDefinedTagsShow {width:450px;}
+#tabDefinedTags {width:430px; border-collapse:collapse;}
+#layDefinedTags {margin-left:auto; margin-right:auto; height:285px; overflow:auto; border:inset 2px buttonface;}
+#tabDefinedTags th,#tabDefinedTags td {border:solid 1px #000; margin:0; padding:3px;}
+#tabDefinedTags tbody th {text-align:left; font-weight:bold;}
+#tabDefinedTags tr.sel {background-color:#D1D9EF; color:#888;}
+#tabDefinedTags tr.unsel {background-color:#fff; color:#888;}
+#tabDefinedTagsShow {margin-left:auto; margin-right:auto;}
+#tabDefinedTagsShow td {width:50%; text-align:center;}
+#tabFilterAndCustom {margin-left:auto; margin-right:auto;}
+#tabAction {margin-left:auto; margin-right:auto;}
+#tabAction td {width:50%; text-align:center;}
+
 /* FAQ table styles */
-table.faq   {
-background-color: #eee;
-margin:5px 0 50px 5px;
-width: 98%;
-}
-table.faq  tr.odd td {
-background-color:#eee;
-}
-div.faq_title {
-background-color: #eee;
-margin: 1em 0;
-padding: .25em;
-font-weight:bold;
-width: 98%;
-}
-div.faq_body {
-clear:both;
-margin: 1em 0;
-padding: 1em;
-}
-.faq_italic {
-font-style: italic;
-font-weight: bold;
-font-size: 10px;
-padding: 0 10px;
-}
+table.faq   {background-color: #eee; margin:5px 0 50px 5px; width: 98%;}
+table.faq  tr.odd td {background-color:#eee;}
+div.faq_title {background-color: #eee; margin: 1em 0; padding: .25em; font-weight:bold; width: 98%;}
+div.faq_body {clear:both; margin: 1em 0; padding: 1em;}
+.faq_italic {font-style: italic; font-weight: bold; font-size: 10px; padding: 0 10px;}
 .faq_top {float:right;}
 .faq_edit {float:right;}
+
 html[dir='rtl'] .faq_top {float:left;}
 html[dir='rtl'] .faq_edit {float:left;}
 
@@ -1854,7 +1745,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0; margin-right:
 .indi-list .stats, .fam-list .stats {margin:0 auto; width:auto;}
 .source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th, .fam-list th, .recent_changes_block th, .upcoming_events_block th, .todays_events_block th, .todo_block th, .yahrzeit_block th {cursor:pointer; white-space:nowrap;}
 .source-list th:last-child, .note-list th:last-child, .repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
-#source-details h2, #source-list-page h2, #note-details h2, #note-list-page h2, #repo-details h2, #repo-list-page h2, #media-details h2, #media-list-page h2  {margin-bottom:20px; text-align:center;}
+#source-details h2, #note-details h2, #repo-details h2, #media-details h2 {margin-bottom:20px; text-align:center;}
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto; visibility:hidden; width:80%;}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
 .media-list td img {display:block; height:40px; margin:3px auto;}
