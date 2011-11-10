@@ -1018,6 +1018,8 @@ html[dir='rtl'] .themesubmenu {margin-right:0;}
 	border-right:solid #84BEFF 1px;
 }
 
+.blockheader {font-weight:bold;}
+
 img.block {
 	border:none;
 	height:20px;
