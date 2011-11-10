@@ -29,9 +29,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 global $gedrec, $pid;
-
-require_once WT_ROOT.'js/prototype.js.htm';
-require_once WT_ROOT.'js/scriptaculous.js.htm';
 ?>
 <script type="text/javascript">
 <!--
@@ -44,7 +41,7 @@ require_once WT_ROOT.'js/scriptaculous.js.htm';
 
 <?php
 	// Find if indi and family associated media exists and then count them ( $tot_med_ct)
-	require 'includes/media_reorder_count.php';
+	require WT_ROOT.'includes/media_reorder_count.php';
 
 	$gedrec = find_gedcom_record($pid, WT_GED_ID);
 	$regexp = "/OBJE @(.*)@/";
@@ -52,12 +49,6 @@ require_once WT_ROOT.'js/scriptaculous.js.htm';
 
 	// If media exists and is greater than 1 item ---------------------
 	if ($tot_med_ct>1) {
-		echo "<table border=\"0\" width=\"100%\"><tr>";
-		// echo "<td class=\"width10 center wrap\" valign=\"top\"></td>";
 			//Popup Reorder Media
-			echo "<td class=\"width15 center wrap\" valign=\"top\">";
 			echo "<button type=\"button\" title=\"". WT_I18N::translate('Re-order media')."\" onclick=\"reorder_media();\">". WT_I18N::translate('Re-order media') ."</button>";
-		echo "</td>";
-		//echo "<td width=\"5%\">&nbsp;</td>";
-		echo "</tr></table>";
 	}

@@ -61,16 +61,13 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		global $NAV_MEDIA, $controller;
 
 		ob_start();
+		echo '<table class="facts_table">';
 		// For Reorder media ------------------------------------
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo "<center>";
-			require_once './includes/media_tab_head.php';
-			echo "</center>";
+			echo '<tr><td colspan="2">';
+			require_once WT_ROOT.'includes/media_tab_head.php';
+			echo '</td></tr>';
 		}
-		?>
-		<div id="media_content">
-		<table class="facts_table">
-		<?php
 		$media_found = false;
 		if (!$controller->record->canDisplayDetails()) {
 			echo "<tr><td class=\"facts_value\">";
@@ -95,7 +92,6 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		?>
 		</table>
-			</div>
 	<?php
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
