@@ -2296,17 +2296,22 @@ case 'reorder_fams':
 		?>
 		</ul>
 		<?php echo WT_JS_START; ?>
-			new Effect.BlindDown('reorder_list', {duration: 1});
-			Sortable.create('reorder_list',
-				{
-					scroll:window,
-					onUpdate : function() {
-						inputs = $('reorder_list').getElementsByTagName("input");
-						for (var i = 0; i < inputs.length; i++) inputs[i].value = i;
-					}
-				}
-			);
-		<?php echo WT_JS_END; ?>
+
+		  jQuery(document).ready(function() {
+			jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
+
+			//-- update the order numbers after drag-n-drop sorting is complete
+			jQuery('#reorder_list').bind('sortupdate', function(event, ui) {
+					jQuery('#'+jQuery(this).attr('id')+' input').each(
+						function (index, value) {
+							value.value = index+1;
+						}
+					);
+				});
+			});
+
+
+			<?php echo WT_JS_END; ?>
 		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
 		<button type="submit" onclick="document.reorder_form.action.value='reorder_fams'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of marriage'); ?></button>
 		<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
