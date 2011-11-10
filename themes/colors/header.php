@@ -142,7 +142,6 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo '</div>'; // <div id="header">
 }
 // Remove submenu from home
-$javascript;
 $this->addInlineJavaScript(
 	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree ul").remove();'
 );
