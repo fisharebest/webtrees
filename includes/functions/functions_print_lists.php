@@ -1665,9 +1665,9 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= '<table id="'.$table_id.'" class="width100" style="visibility:hidden;">';
 			$return .= '<thead><tr>';
 			$return .= '<th>'.WT_I18N::translate('Record').'</th>';
-			$return .= '<th>NAME</th>'; //hidden by datables code
+			$return .= '<th>NAME</th>'; //hidden by datatables code
 			$return .= '<th>'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
-			$return .= '<th>DATE</th>'; //hidden by datables code
+			$return .= '<th>DATE</th>'; //hidden by datatables code
 			$return .= '<th><img src="'.$WT_IMAGES["reminder"].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
 			$return .= '<th>'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
 			$return .= '</tr></thead><tbody>'."\n";
@@ -1694,7 +1694,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		}
 		$return .= '</td>';
 		//-- NAME
-		$return .= '<td>'; //hidden by datables code
+		$return .= '<td>'; //hidden by datatables code
 		$return .= $value['record']->getSortName();
 		$return .= '</td>';
 		//-- Event date
@@ -1702,7 +1702,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= $value['date']->Display(empty($SEARCH_SPIDER));
 		$return .= '</td>';
 		//-- Event date (sortable)
-		$return .= '<td>'; //hidden by datables code
+		$return .= '<td>'; //hidden by datatables code
 		$return .= $n;
 		$return .= '</td>';
 		//-- Anniversary
