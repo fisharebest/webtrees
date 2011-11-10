@@ -170,7 +170,7 @@ if ($build == 'yes') {
 
 $controller->pageHeader();
 
-echo '<div class="center"><h2>', $controller->getPageTitle(), '</h2></div>';
+echo '<div id="media-list-page"><h2>', $controller->getPageTitle(), '</h2></div>';
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
