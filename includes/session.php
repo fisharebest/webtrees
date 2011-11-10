@@ -427,7 +427,8 @@ define('WT_USER_ROOT_ID',      getUserRootId     (WT_USER_ID, WT_GED_ID));
 define('WT_USER_PATH_LENGTH',  get_user_gedcom_setting(WT_USER_ID, WT_GED_ID, 'RELATIONSHIP_PATH_LENGTH'));
 
 // If we are logged in, and logout=1 has been added to the URL, log out
-if (WT_USER_ID && safe_GET_bool('logout')) {
+// If we were logged in, but our account has been deleted, log out.
+if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {
 	userLogout(WT_USER_ID);
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 	exit;
