@@ -116,15 +116,10 @@ $controller->pageHeader();
 		<td class="list_value"><input type="checkbox" name="zip" value="yes" /></td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
 		<td class="list_value">
-		<?php if (WT_USER_IS_ADMIN) { ?>
-			<input type="radio" name="privatize_export" value="none" checked="checked" />&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
-			<input type="radio" name="privatize_export" value="visitor" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
-		<?php } else { ?>
-			<input type="radio" name="privatize_export" value="none" DISABLED />&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
-			<input type="radio" name="privatize_export" value="visitor" checked="checked" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
-		<?php } ?>
-		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Member'); ?><br />
+		<input type="radio" name="privatize_export" value="none" checked="checked" />&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
 		<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Manager'); ?><br />
+		<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Member'); ?><br />
+		<input type="radio" name="privatize_export" value="visitor" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
 		</td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 		<td class="list_value"><input type="checkbox" name="convert" value="yes" /></td></tr>

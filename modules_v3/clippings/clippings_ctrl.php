@@ -75,12 +75,19 @@ class WT_Controller_Clippings {
 		$this->IncludeMedia = safe_GET('IncludeMedia');
 		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT, $_SESSION['exportConvPath']);
 		$this->conv_slashes = safe_GET('conv_slashes', array('forward', 'backward'), $_SESSION['exportConvSlashes']);
-		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
+		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'), 'visitor');
 		$this->level1 = safe_GET('level1', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$this->level2 = safe_GET('level2', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$this->level3 = safe_GET('level3', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$others = safe_GET('others');
 		$this->type = safe_GET('type');
+
+		if (($this->privatize_export=='none' || $this->privatize_export=='none') && !WT_USER_GEDCOM_ADMIN) {
+			$this->privatize_export='visitor';
+		}
+		if ($this->privatize_export=='user' && !WT_USER_CAN_ACCESS) {
+			$this->privatize_export='visitor';
+		}
 
 		$this->conv_path = stripLRMRLM($this->conv_path);
 		$_SESSION['exportConvPath'] = $this->conv_path; // remember this for the next Download

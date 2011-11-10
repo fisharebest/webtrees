@@ -198,43 +198,21 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Include media (automatically zips files)'), help_link('include_media'); ?></td>
 					<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" /></td></tr>
 
-					<?php
-					// Determine the Privatize options available to this user
-					if (WT_USER_IS_ADMIN) {
-						$radioPrivatizeVisitor = '';
-						$radioPrivatizeUser = '';
-						$radioPrivatizeGedadmin = '';
-						$radioPrivatizeNone = 'checked="checked" ';
-					} else if (WT_USER_GEDCOM_ADMIN) {
-						$radioPrivatizeVisitor = '';
-						$radioPrivatizeUser = '';
-						$radioPrivatizeGedadmin = 'checked="checked" ';
-						$radioPrivatizeNone = 'DISABLED ';
-					} else if (WT_USER_ID) {
-						$radioPrivatizeVisitor = '';
-						$radioPrivatizeUser = 'checked="checked" ';
-						$radioPrivatizeGedadmin = 'DISABLED ';
-						$radioPrivatizeNone = 'DISABLED ';
-					} else {
-						$radioPrivatizeVisitor = 'checked="checked" ';
-						$radioPrivatizeUser = 'DISABLED ';
-						$radioPrivatizeGedadmin = 'DISABLED ';
-						$radioPrivatizeNone = 'DISABLED ';
-					}
-					?>
-
-					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
-					<td class="list_value">
-					<?php if (WT_USER_IS_ADMIN) { ?>
-						<input type="radio" name="privatize_export" value="none" checked="checked" />&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
-						<input type="radio" name="privatize_export" value="visitor" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
-					<?php } else { ?>
-						<input type="radio" name="privatize_export" value="none" DISABLED />&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br />
-						<input type="radio" name="privatize_export" value="visitor" checked="checked" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br />
+					<?php if (WT_USER_GEDCOM_ADMIN) {	?>
+						<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
+						<td class="list_value">
+							<input type="radio" name="privatize_export" value="none" checked="checked"> <?php echo WT_I18N::translate('None'); ?><br>
+							<input type="radio" name="privatize_export" value="gedadmin"> <?php echo WT_I18N::translate('Manager'); ?><br>
+							<input type="radio" name="privatize_export" value="user"> <?php echo WT_I18N::translate('Member'); ?><br>
+							<input type="radio" name="privatize_export" value="visitor"> <?php echo WT_I18N::translate('Visitor'); ?>
+						</td></tr>
+					<?php } elseif (WT_USER_CAN_ACCESS) {	?>
+						<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
+						<td class="list_value">
+							<input type="radio" name="privatize_export" value="user" checked="checked"> <?php echo WT_I18N::translate('Member'); ?><br>
+							<input type="radio" name="privatize_export" value="visitor"> <?php echo WT_I18N::translate('Visitor'); ?>
+						</td></tr>
 					<?php } ?>
-					<input type="radio" name="privatize_export" value="user" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Member'); ?><br />
-					<input type="radio" name="privatize_export" value="gedadmin" />&nbsp;&nbsp;<?php echo WT_I18N::translate('Manager'); ?><br />
-					</td></tr>
 
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 					<td class="optionbox"><input type="checkbox" name="convert" value="yes" /></td></tr>
@@ -612,36 +590,24 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<td class="optionbox"><input type="checkbox" name="IncludeMedia" value="yes" checked="checked" /></td></tr>
 		';
 
-		// Determine the Privatize options available to this user
-		if (WT_USER_IS_ADMIN) {
-			$radioPrivatizeVisitor = '';
-			$radioPrivatizeUser = '';
-			$radioPrivatizeGedadmin = '';
-			$radioPrivatizeNone = 'checked="checked" ';
-		} else if (WT_USER_GEDCOM_ADMIN) {
-			$radioPrivatizeVisitor = '';
-			$radioPrivatizeUser = '';
-			$radioPrivatizeGedadmin = 'checked="checked" ';
-			$radioPrivatizeNone = 'DISABLED ';
-		} else if (WT_USER_ID) {
-			$radioPrivatizeVisitor = '';
-			$radioPrivatizeUser = 'checked="checked" ';
-			$radioPrivatizeGedadmin = 'DISABLED ';
-			$radioPrivatizeNone = 'DISABLED ';
-		} else {
-			$radioPrivatizeVisitor = 'checked="checked" ';
-			$radioPrivatizeUser = 'DISABLED ';
-			$radioPrivatizeGedadmin = 'DISABLED ';
-			$radioPrivatizeNone = 'DISABLED ';
+		if (WT_USER_GEDCOM_ADMIN) {
+			$out.=
+				'<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Apply privacy settings?').help_link('apply_privacy').'</td>'.
+				'<td class="list_value">'.
+				'	<input type="radio" name="privatize_export" value="none" checked="checked"> '.WT_I18N::translate('None').'<br>'.
+				'	<input type="radio" name="privatize_export" value="gedadmin"> '.WT_I18N::translate('Manager').'<br>'.
+				'	<input type="radio" name="privatize_export" value="user"> '.WT_I18N::translate('Member').'<br>'.
+				'	<input type="radio" name="privatize_export" value="visitor"> '.WT_I18N::translate('Visitor').
+				'</td></tr>';
+		} elseif (WT_USER_CAN_ACCESS) {
+				'<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Apply privacy settings?').help_link('apply_privacy').'</td>'.
+				'<td class="list_value">'.
+				'	<input type="radio" name="privatize_export" value="user" checked="checked"> '.WT_I18N::translate('Member').'<br>'.
+				'	<input type="radio" name="privatize_export" value="visitor"> '.WT_I18N::translate('Visitor').
+				'</td></tr>';
 		}
-		$out .= '
-		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Apply privacy settings?').help_link('apply_privacy').'</td>
-		<td class="list_value">
-		<input type="radio" name="privatize_export" value="visitor" '.$radioPrivatizeVisitor.'/>&nbsp;'.WT_I18N::translate('Visitor').'<br />
-		<input type="radio" name="privatize_export" value="user" '.$radioPrivatizeUser.'/>&nbsp;'.WT_I18N::translate('Member').'<br />
-		<input type="radio" name="privatize_export" value="gedadmin" '.$radioPrivatizeGedadmin.'/>&nbsp;'.WT_I18N::translate('Administrator').'<br />
-		<input type="radio" name="privatize_export" value="none" '.$radioPrivatizeNone.'/>&nbsp;'.WT_I18N::translate('None').'</td></tr>
 
+		$out .='
 		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)').help_link('utf8_ansi').'</td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes" /></td></tr>
 
