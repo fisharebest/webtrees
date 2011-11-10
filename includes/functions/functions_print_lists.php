@@ -1487,9 +1487,11 @@ function print_changes_table($change_ids, $sort) {
 				]
 			});
 			jQuery("#'.$table_id.'").css("visibility", "visible");
+			jQuery(".loading-image").css("display", "none");
 		');
 
 		//-- table header
+		$return .= '<div class="loading-image">&nbsp;</div>';
 		$return .= "<table id='" . $table_id . "' class='width100' style='visibility:hidden;'>";
 		$return .= "<thead><tr>";
 		$return .= "<th>&nbsp;</th>";
@@ -1597,7 +1599,8 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 				]
 			});		
 
-			 jQuery("#'.$table_id.'").css("visibility", "visible");
+			jQuery("#'.$table_id.'").css("visibility", "visible");
+			jQuery(".loading-image").css("display", "none");
 		');
 
 	// Did we have any output?  Did we skip anything?
@@ -1638,7 +1641,8 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$output ++;
 
 		if ($output==1) {
-			//-- First table row:  start table headers, etc. first
+			//-- table body
+			$return .= '<div class="loading-image">&nbsp;</div>';
 			$return .= '<table id="'.$table_id.'" class="width100" style="visibility:hidden;">';
 			$return .= '<thead><tr>';
 			$return .= '<th>'.WT_I18N::translate('Record').'</th>';

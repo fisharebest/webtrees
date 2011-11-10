@@ -89,8 +89,10 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 				]
 				});		
 			jQuery("#'.$table_id.'").css("visibility", "visible");
+			jQuery(".loading-image").css("display", "none");
 			');
 		$content='';
+		$content .= '<div class="loading-image">&nbsp;</div>';
 		$content .= '<table id="'.$table_id.'" style="visibility:hidden;">';
 		$content .= '<thead><tr>';
 		$content .= '<th>DATE</th>'; //hidden by datables code
