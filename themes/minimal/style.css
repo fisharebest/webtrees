@@ -784,6 +784,8 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	border-right:solid black 1px;
 }
 
+.blockheader {font-weight:bold;}
+
 img.block {
 	border: none;
 	height: 20px;
