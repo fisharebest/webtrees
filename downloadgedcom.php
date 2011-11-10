@@ -39,7 +39,7 @@ $action           = safe_GET('action',           'download');
 $convert          = safe_GET('convert',          'yes', 'no');
 $zip              = safe_GET('zip',              'yes', 'no');
 $conv_path        = safe_GET('conv_path',        WT_REGEX_NOSCRIPT);
-$conv_slashes     = safe_GET('conv_slashes',     array('forward', 'backward'));
+$conv_slashes     = safe_GET('conv_slashes',     array('forward', 'backward'), 'forward');
 $privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
 
 $conv_path = stripLRMRLM($conv_path);

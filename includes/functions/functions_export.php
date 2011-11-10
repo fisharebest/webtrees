@@ -165,7 +165,7 @@ function convert_media_path($rec, $path, $slashes) {
 				$new_file_name=preg_replace('~\\+~', '/', $new_file_name);
 				break;
 			}
-			$rec=str_replace('\n1 FILE '.$old_file_name, '\n1 FILE '.$new_file_name, $rec);
+			$rec=str_replace("\n1 FILE ".$old_file_name, "\n1 FILE ".$new_file_name, $rec);
 		}
 	}
 	return $rec;
