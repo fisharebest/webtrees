@@ -558,6 +558,9 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	} else {
 		$config=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
 	}
+	if (substr($config, 0, 1)=='.') {
+		$config=$PGV_PATH.'/'.$config;
+	}
 	if (is_readable($config)) {
 		require $config;
 	}
@@ -566,6 +569,9 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	$privacy=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $privacy);
 	} else {
 		$privacy=str_replace($INDEX_DIRECTORY, $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $privacy);
+	}
+	if (substr($config, 0, 1)=='.') {
+		$privacy=$PGV_PATH.'/'.$privacy;
 	}
 	if (is_readable($privacy)) {
 		require $privacy;
@@ -694,7 +700,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I',            $SUBLIST_TRIGGER_I);
 	@set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           $SURNAME_LIST_STYLE);
 	@set_gedcom_setting($ged_id, 'SURNAME_TRADITION',            $SURNAME_TRADITION);
-	switch ($THEME_DIR) {
+	switch (@$THEME_DIR) {
 	case '':                   @set_gedcom_setting($ged_id, 'THEME_DIR', '');
 	case 'themes/cloudy/':     @set_gedcom_setting($ged_id, 'THEME_DIR', 'clouds');
 	case 'themes/minimal/':    @set_gedcom_setting($ged_id, 'THEME_DIR', 'minimal');
