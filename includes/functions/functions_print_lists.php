@@ -211,7 +211,7 @@ function print_indi_table($datalist, $option='') {
 			if ($name['type']=='NAME') {
 				$title='';
 			} else {
-				$title='title="'.WT_Gedcom_Tag::getLabel($name['type'], $person).'"';
+				$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $person)).'"';
 			}
 			if ($num==$person->getPrimaryName()) {
 				$class=' class="name2"';
@@ -563,7 +563,7 @@ function print_fam_table($datalist, $option='') {
 			if ($name['type']=='NAME') {
 				$title='';
 			} else {
-				$title='title="'.WT_Gedcom_Tag::getLabel($name['type'], $husb).'"';
+				$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $husb)).'"';
 			}
 			if ($num==$husb->getPrimaryName()) {
 				$class=' class="name2"';
@@ -604,7 +604,7 @@ function print_fam_table($datalist, $option='') {
 			if ($name['type']=='NAME') {
 				$title='';
 			} else {
-				$title='title="'.WT_Gedcom_Tag::getLabel($name['type'], $wife).'"';
+				$title='title="'.strip_tags(WT_Gedcom_Tag::getLabel($name['type'], $wife)).'"';
 			}
 			if ($num==$wife->getPrimaryName()) {
 				$class=' class="name2"';
