@@ -131,8 +131,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 			$height="100%";
 			echo "<tr>";
-			echo "<td valign=\"bottom\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\" /></td>";
-			echo "<td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
+			echo "<td valign=\"bottom\"><img class=\"line3\" name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\" /></td>";
+			echo "<td><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 			echo "<td>";
 			//-- print the father box
 			print_pedigree_person($family->getHusband());
@@ -240,7 +240,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						if ($i==0) {
 							//-- adjust for the number of kids
 							$h = ($bhalfheight+3)*$numkids;
-							echo "<td valign=\"bottom\"><img name=\"tvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$h\" alt=\"\" /></td>";
+							echo "<td valign=\"bottom\"><img class=\"line1\" name=\"tvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$h\" alt=\"\" /></td>";
 						} else if ($i==$ct-1) {
 							$h = ($bhalfheight+3)*$kids;
 							if ($count<$this->dgenerations-1) {
@@ -295,7 +295,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 		echo "<table id=\"table2_$pid\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td>";
 		print_pedigree_person($person);
-		echo "</td><td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" />";
+		echo "</td><td><img class=\"line2\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" />";
 
 		//----- Print the spouse
 		if ($this->show_spouse) {
@@ -508,7 +508,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
-			var newHeight = Math.abs(hline.offsetHeight - (hline2.offsetTop + <?php echo $bhalfheight+2; ?>));
+			var newHeight = Math.abs(hline.offsetHeight - (hline2.offsetTop + <?php echo $bhalfheight+9; ?>));
 			vlines[i].style.height=newHeight+'px';
 		}
 
@@ -517,7 +517,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
-			vlines[i].style.height=(hline.offsetTop+hline2.offsetTop + <?php echo $bhalfheight+2; ?>)+'px';
+			vlines[i].style.height=(hline.offsetTop+hline2.offsetTop + <?php echo $bhalfheight+9; ?>)+'px';
 		}
 
 		vlines = document.getElementsByName("pvline");

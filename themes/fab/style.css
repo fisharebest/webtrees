@@ -61,6 +61,10 @@ img.block {
 	height:20px;
 	vertical-align:middle;
 }
+.line1 {vertical-align:bottom;} 
+.line2 {vertical-align:middle;}
+.line3 {vertical-align:bottom;}
+.line4 {vertical-align:middle;} 
 
 legend {
 	font-weight:bold;

@@ -399,6 +399,15 @@ width: 99%;
 img {border: 0 none;}
 img.block {height: 25px;}
 
+.line1 {vertical-align:bottom;} 
+.line2 {vertical-align:bottom;}
+.line3 {vertical-align:bottom;}
+.line4 {vertical-align:middle;} 
+
+
+
+
+
 .blockh1 {
 background-image:url(images/left1B.png);
 background-repeat: no-repeat;

@@ -1026,6 +1026,11 @@ img.block {
 	vertical-align:middle;
 }
 
+.line1 {vertical-align:bottom;} 
+.line2 {vertical-align:bottom;}
+.line3 {vertical-align:bottom;}
+.line4 {vertical-align:middle;}
+
 #index_main_blocks {
 	clear:none;
 	width:66%;

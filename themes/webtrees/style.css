@@ -85,6 +85,16 @@ img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img  {
 	vertical-align:middle;
 }
 
+
+.line1 {vertical-align:bottom;} 
+.line2 {vertical-align:bottom;}
+.line3 {vertical-align:bottom;}
+.line4 {vertical-align:middle;} 
+
+
+
+
+
 #mycart a img  {
 	height:15px;
 }
