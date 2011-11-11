@@ -954,20 +954,20 @@ try {
 		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}language` (".
-		" language_tag       VARCHAR(16)                      NOT NULL,".
-		" iso15924_code      CHAR(4)                          NOT NULL,".
-		" cldr_code          VARCHAR(16)                      NOT NULL,".
-		" launchpad_code     VARCHAR(16)                      NOT NULL,".
-		" collation          VARCHAR(16)                      NOT NULL,".
-		" language_name      VARCHAR(64)                      NOT NULL,".
-		" language_name_base VARCHAR(64)                      NOT NULL,".
-		" enabled            ENUM ('yes', 'no') DEFAULT 'yes' NOT NULL,".
-		" PRIMARY KEY        (language_tag),".
-		" INDEX              (language_name_base, language_name)"
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
+	//$dbh->exec(
+	//	"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}language` (".
+	//	" language_tag       VARCHAR(16)                      NOT NULL,".
+	//	" iso15924_code      CHAR(4)                          NOT NULL,".
+	//	" cldr_code          VARCHAR(16)                      NOT NULL,".
+	//	" launchpad_code     VARCHAR(16)                      NOT NULL,".
+	//	" collation          VARCHAR(16)                      NOT NULL,".
+	//	" language_name      VARCHAR(64)                      NOT NULL,".
+	//	" language_name_base VARCHAR(64)                      NOT NULL,".
+	//	" enabled            ENUM ('yes', 'no') DEFAULT 'yes' NOT NULL,".
+	//	" PRIMARY KEY        (language_tag),".
+	//	" INDEX              (language_name_base, language_name)".
+	//	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
+	//);
 
 	$dbh->prepare(
 		"INSERT IGNORE INTO `{$TBLPREFIX}user` (user_id, user_name, real_name, email, password) VALUES ".
