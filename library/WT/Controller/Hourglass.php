@@ -143,7 +143,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 				//-- print an Ajax arrow on the last generation of the adult male
 				if ($count==$this->generations-1 && $family->getHusband()->getChildFamilies()) {
-					echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /></a> ";
+					echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["rarrow"]."\" alt=\"\"></a> ";
 				}
 				//-- recursively get the father's family
 				$this->print_person_pedigree($family->getHusband(), $count+1);
@@ -162,7 +162,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 				//-- print an ajax arrow on the last generation of the adult female
 				if ($count==$this->generations-1 && $family->getWife()->getChildFamilies()) {
-					echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\"><img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /></a> ";
+					echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\"><img src=\"".$WT_IMAGES["rarrow"]."\" alt=\"\"></a> ";
 				}
 	
 				//-- recursively print the mother's family
