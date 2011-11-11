@@ -7,7 +7,6 @@
 
 .rela {filter: alpha(opacity=67);}
 a.showit:hover > span {filter: alpha(opacity=85);}
-.makeMenu li ul {top: 0px!important;}
 div.blockcontent {*margin-top: 10px!important;}
 #menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px}
 div.blockcontent {*margin-top: -2px;}
