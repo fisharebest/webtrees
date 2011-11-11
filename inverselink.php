@@ -30,7 +30,7 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('Link media')." ".$toitems);
+$controller->setPageTitle(WT_I18N::translate('Link media'));
 $controller->pageHeader();
 
 //-- page parameters and checking
@@ -43,29 +43,6 @@ $action   = safe_GET     ('action', WT_REGEX_ALPHA, 'choose');
 if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_0_inverselink.php';
 } else {
-
-	if (empty($linktoid) || empty($linkto)) {
-		$paramok = false;
-		$toitems = "";
-	} else {
-		switch ($linkto) {
-		case 'person':
-			$toitems = WT_I18N::translate('To Person');
-			break;
-		case 'family':
-			$toitems = WT_I18N::translate('To Family');
-			break;
-		case 'source':
-			$toitems = WT_I18N::translate('To Source');
-			break;
-		case 'repository':
-			$toitems = WT_I18N::translate('To Repository');
-			break;
-		case 'note':
-			$toitems = WT_I18N::translate('To Shared Note');
-			break;
-		}
-	}
 
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -108,7 +85,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 		echo '<input type="hidden" name="ged" value="', $GEDCOM, '" />';
 		echo '<table class="facts_table center ', $TEXT_DIRECTION, '">';
 		echo '<tr><td class="topbottombar" colspan="2">';
-		echo WT_I18N::translate('Link media'), help_link('add_media_linkid'), ' ', $toitems;
+		echo WT_I18N::translate('Link media'), help_link('add_media_linkid');
 		echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media'), '</td>';
 		echo '<td class="optionbox wrap">';
 		if (!empty($mediaid)) {

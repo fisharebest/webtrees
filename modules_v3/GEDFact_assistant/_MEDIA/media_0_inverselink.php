@@ -33,26 +33,7 @@ $exist_links = safe_REQUEST($_REQUEST, 'exist_links', WT_REGEX_UNSAFE);
 $gid = safe_GET_xref('gid');
 $update_CHAN = safe_REQUEST($_REQUEST, 'preserve_last_changed', WT_REGEX_UNSAFE);
 
-
-if (empty($linktoid) || empty($linkto)) {
-	$paramok = false;
-	$toitems = "";
-} else {
-	switch ($linkto) {
-	case 'person':
-		$toitems = WT_I18N::translate('To Person');
-		break;
-	case 'family':
-		$toitems = WT_I18N::translate('To Family');
-		break;
-	case 'source':
-		$toitems = WT_I18N::translate('To Source');
-		break;
-	}
-}
-
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
-
 
 //-- check for admin
 //$paramok =  WT_USER_CAN_EDIT;
@@ -111,7 +92,7 @@ if ($action == "choose" && $paramok) {
 	echo '<input type="hidden" name="ged" value="', $GEDCOM, '" />';
 	echo '<table class="facts_table center ', $TEXT_DIRECTION, '">';
 	echo '<tr><td class="topbottombar" colspan="2">';
-	echo WT_I18N::translate('Link media'), ' ', $toitems, help_link('add_media_linkid');
+	echo WT_I18N::translate('Link media'), help_link('add_media_linkid');
 	echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media'), '</td>';
 	echo '<td class="optionbox wrap">';
 	if (!empty($mediaid)) {
