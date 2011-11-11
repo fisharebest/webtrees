@@ -72,7 +72,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		ob_start();
 		echo '<table class="facts_table">';
 		// Reorder media ------------------------------------
-		if (WT_USER_GEDCOM_ADMIN && $this->mediaCount>1) {
+		if (WT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
 			echo '<tr><td colspan="2" class="descriptionbox rela">';
 			echo '<span><a href="#" onclick="reorder_media()">';
 			if (isset($WT_IMAGES['reorder'])) {echo '<img src="', $WT_IMAGES['reorder'],'" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '" />';}
