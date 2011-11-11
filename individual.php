@@ -116,7 +116,7 @@ echo 'function showchanges() { window.location="'.$controller->record->getRawUrl
 
 jQuery(document).ready(function() {
 	jQuery("#tabs").tabs({
-		spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" border="0" alt="">',
+		spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" alt="">',
 		cache: true
 	});
 	jQuery("#tabs").tabs("select",jQuery.cookie("indi-tab"));

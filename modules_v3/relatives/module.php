@@ -50,7 +50,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		echo '<table>
 			<tr>';
 			if (isset($WT_IMAGES["cfamily"])) {
-				echo '<td><img src="', $WT_IMAGES["cfamily"], '" border="0" class="icon" alt="" /></td>';
+				echo '<td><img src="', $WT_IMAGES["cfamily"], '" class="icon" alt=""></td>';
 			}
 			echo '<td><span class="subheaders">', $label, '</span>';
 			if (empty($SEARCH_SPIDER)) {
@@ -327,7 +327,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label">
 					<?php if (WT_USER_CAN_EDIT && isset($people["children"][1])) { ?>
-					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><img src="<?php echo WT_STATIC_URL; ?>images/topdown.gif" alt="" border="0" /> <?php echo WT_I18N::translate('Re-order children'); ?></a>
+					<a href="#" onclick="reorder_children('<?php echo $family->getXref(); ?>');tabswitch(5);"><img src="<?php echo WT_STATIC_URL; ?>images/topdown.gif" alt="" > <?php echo WT_I18N::translate('Re-order children'); ?></a>
 					<?php } ?>
 				</td>
 				<td class="facts_value">

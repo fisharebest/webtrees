@@ -153,7 +153,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<th>'.WT_Gedcom_Tag::getLabel('NAME').'</th>';
 			$content .= '<th>'.WT_Gedcom_Tag::getLabel('DEAT').'</th>';
 			$content .= '<th>DEAT</th>';
-			$content .= '<th><img src="'.$WT_IMAGES['reminder'].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'" border="0" /></th>';
+			$content .= '<th><img src="'.$WT_IMAGES['reminder'].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'"></th>';
 			$content .= '<th>'.WT_Gedcom_Tag::getLabel('_YART').'</th>';
 			$content .= '<th>_YART</th>';
 			$content .= '</tr></thead><tbody>';

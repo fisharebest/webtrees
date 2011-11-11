@@ -226,7 +226,7 @@ if ($display=='hierarchy') {
 				echo 'colspan="2"';
 			}
 			echo '>&nbsp;';
-			echo '<img src="', $WT_IMAGES['place'], '" border="0" title="', WT_I18N::translate('Place'), '" alt="', WT_I18N::translate('Place'), '" />&nbsp;&nbsp;';
+			echo '<img src="', $WT_IMAGES['place'], '" title="', WT_I18N::translate('Place'), '" alt="', WT_I18N::translate('Place'), '">&nbsp;&nbsp;';
 			if ($level>0) {
 				echo /* I18N: %s is a country or region */WT_I18N::translate('Places in %s', $num_place);
 			} else {
@@ -356,7 +356,7 @@ if ($display=='list') {
 		echo '><tr><td class="list_label" ';
 		$ct = count($placelist);
 		echo ' colspan="', $ct>20 ? 3 : 2, '">&nbsp;';
-		echo '<img src="', $WT_IMAGES['place'], '" border="0" title="', WT_I18N::translate('Place'), '" alt="', WT_I18N::translate('Place'), '" />&nbsp;&nbsp;';
+		echo '<img src="', $WT_IMAGES['place'], '" title="', WT_I18N::translate('Place'), '" alt="', WT_I18N::translate('Place'), '">&nbsp;&nbsp;';
 		echo WT_I18N::translate('Place List');
 		echo help_link('ppp_placelist');
 		echo '</td></tr><tr><td class="list_value_wrap"><ul>';

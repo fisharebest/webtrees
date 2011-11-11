@@ -661,7 +661,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	//$title = strstr($mytitle, '|', true);
 	$title = substr($mytitle, 0, strpos($mytitle, '|'));
 	echo '<center><div class="statistics_chart">';
-	echo '<img src="', $imgurl, '" width="950" height="300" border="0" alt="', htmlspecialchars($title), '" title="', htmlspecialchars($title), '"/>';
+	echo '<img src="', $imgurl, '" width="950" height="300" alt="', htmlspecialchars($title), '" title="', htmlspecialchars($title), '">';
 	echo '</div></center><br /><br />';
 }
 

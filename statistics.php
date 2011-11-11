@@ -739,7 +739,7 @@ if (isset($content) && $content==1) {
 	//<![CDATA[
 	jQuery(document).ready(function() {
 		// TODO: change images directory when the common images will be deleted.
-		jQuery('#tabs').tabs({ spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" border="0" />' });
+		jQuery('#tabs').tabs({ spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18">' });
 		jQuery("#tabs").tabs({ cache: true });
 		jQuery('#tabs').bind('tabsshow', function(event, ui) {
 		});

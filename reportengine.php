@@ -288,7 +288,7 @@ elseif ($action=='setup') {
 				} elseif ($input['lookup']=='DATE') {
 					$text = WT_I18N::translate('Select a date');
 					if (isset($WT_IMAGES['button_calendar'])) {
-						$Link = '<img src="'.$WT_IMAGES['button_calendar'].'" name="a_'.$input['name'].'" id="a_'.$input['name'].'" alt="'.$text.'" title="'.$text.'" border="0" align="middle" />';
+						$Link = '<img src="'.$WT_IMAGES['button_calendar'].'" name="a_'.$input['name'].'" id="a_'.$input['name'].'" alt="'.$text.'" title="'.$text.'" align="middle">';
 					} else {
 						$Link = $text;
 					}

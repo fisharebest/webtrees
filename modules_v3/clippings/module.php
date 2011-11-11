@@ -295,13 +295,13 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						if ($tag=='OBJE') $icon = "media";
 						?>
 						<tr><td class="list_value">
-							<?php if (!empty($icon)) { ?><img src="<?php echo $WT_IMAGES[$icon]; ?>" border="0" alt="<?php echo $tag; ?>" title="<?php echo $tag; ?>" /><?php } ?>
+							<?php if (!empty($icon)) { ?><img src="<?php echo $WT_IMAGES[$icon]; ?>" alt="<?php echo $tag; ?>" title="<?php echo $tag; ?>"><?php } ?>
 						<?php
 						$record=WT_GedcomRecord::getInstance($xref);
 						if ($record) echo '<a href="', $record->getHtmlUrl(), '">', $record->getFullName(), '</a>';
 						?>
 						</td>
-						<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?php echo $xref; ?>"><img src="<?php echo $WT_IMAGES["remove"]; ?>" border="0" alt="<?php echo WT_I18N::translate('Remove'); ?>" title="<?php echo WT_I18N::translate('Remove'); ?>" /></a></td>
+						<td class="list_value center vmiddle"><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=remove&amp;id=<?php echo $xref; ?>"><img src="<?php echo $WT_IMAGES["remove"]; ?>" alt="<?php echo WT_I18N::translate('Remove'); ?>" title="<?php echo WT_I18N::translate('Remove'); ?>"></a></td>
 					</tr>
 					<?php
 					}
@@ -463,7 +463,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					if (!empty($icon)) {
 						$out .= '<li>';
 						if (!empty($icon)) {
-							$out .= '<img src="'.$WT_IMAGES[$icon].'" border="0" alt="'.$tag.'" title="'.$tag.'" width="20" />';
+							$out .= '<img src="'.$WT_IMAGES[$icon].'" alt="'.$tag.'" title="'.$tag.'" width="20">';
 						}
 						$out .= '<a href="'.$record->getHtmlUrl().'">';
 						if ($record->getType()=="INDI") $out .=$record->getSexImage();
@@ -473,7 +473,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 						}
 						$out .= '</a>';
 						$out .= '<a class="remove_cart" href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&amp;remove='.$xref.'&amp;pid='.$pid.'">
-						<img src="'. $WT_IMAGES["remove"].'" border="0" alt="'.WT_I18N::translate('Remove').'" title="'.WT_I18N::translate('Remove').'" /></a>';
+						<img src="'. $WT_IMAGES["remove"].'" alt="'.WT_I18N::translate('Remove').'" title="'.WT_I18N::translate('Remove').'"></a>';
 						$out .='</li>';
 					}
 				}

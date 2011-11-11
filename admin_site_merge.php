@@ -294,11 +294,11 @@ if ($action=='choose') {
 		echo '>', PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), '</option>';
 	}
 	$inditext = WT_I18N::translate('Find individual ID');
-	if (isset($WT_IMAGES['button_indi'])) $inditext = '<img src="'.$WT_IMAGES['button_indi'].'" alt="'.$inditext.'" title="'.$inditext.'" border="0" align="middle" />';
+	if (isset($WT_IMAGES['button_indi'])) $inditext = '<img src="'.$WT_IMAGES['button_indi'].'" alt="'.$inditext.'" title="'.$inditext.'" align="middle">';
 	$famtext = WT_I18N::translate('Find Family ID');
-	if (isset($WT_IMAGES['button_family'])) $famtext = '<img src="'.$WT_IMAGES['button_family'].'" alt="'.$famtext.'" title="'.$famtext.'" border="0" align="middle" />';
+	if (isset($WT_IMAGES['button_family'])) $famtext = '<img src="'.$WT_IMAGES['button_family'].'" alt="'.$famtext.'" title="'.$famtext.'" align="middle">';
 	$sourtext = WT_I18N::translate('Find Source ID');
-	if (isset($WT_IMAGES['button_source'])) $sourtext = '<img src="'.$WT_IMAGES['button_source'].'" alt="'.$sourtext.'" title="'.$sourtext.'" border="0" align="middle" />';
+	if (isset($WT_IMAGES['button_source'])) $sourtext = '<img src="'.$WT_IMAGES['button_source'].'" alt="'.$sourtext.'" title="'.$sourtext.'" align="middle">';
 	echo
 		'</select>
 		<a href="#" onclick="iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6">', $inditext, '</a>

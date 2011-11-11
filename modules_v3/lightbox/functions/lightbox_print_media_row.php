@@ -52,19 +52,19 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="82px" alt=""></img>';
 			echo '</td>';
 			echo '<td class="description_box nowrap" valign="top" colspan="3">';
-			echo '<center><br /><img src="', WT_THEME_URL, 'images/media.gif" height="30" border="0" />';
+			echo '<center><br /><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
 			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_file']), '</p>';
 			echo '</td>';
 			echo '</tr>';
 		} else if (!file_exists($rowm['m_file'])) {
 			echo '<li class="li_norm" >';
-			echo '<table class="pic" width="50px" border="0" >';
+			echo '<table class="pic" width="50px" border="0">';
 			echo '<tr>';
 			echo '<td valign="top" rowspan="2" >';
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
 			echo '</td>';
 			echo '<td class="description_box nowrap" valign="top" colspan="3">';
-			echo '<center><br /><img src="', WT_THEME_URL, 'images/media.gif" height="30" border="0" />';
+			echo '<center><br /><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
 			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_file']), '</p>';
 			echo '</td>';
 			echo '</tr>';

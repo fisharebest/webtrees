@@ -613,15 +613,15 @@ foreach ($placelist as $place) {
 		echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
 	}
 	echo '</td>';
-	echo '<td class="narrow"><a href="#" onclick="edit_place_location(', $place['place_id'], ');return false;"><img src="', $WT_IMAGES['edit'], '" border="0" alt="', WT_I18N::translate("Edit"), '" /></a></td>';
+	echo '<td class="narrow"><a href="#" onclick="edit_place_location(', $place['place_id'], ');return false;"><img src="', $WT_IMAGES['edit'], '" alt="', WT_I18N::translate("Edit"), '"></a></td>';
 	$noRows=
 		WT_DB::prepare("SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id=?")
 		->execute(array($place['place_id']))
 		->fetchOne();
 	if ($noRows==0) { ?>
-	<td><a href="#" onclick="delete_place(<?php echo $place['place_id'], ');return false;">'; ?><img src="<?php echo $WT_IMAGES['remove'];?>" border="0" alt="<?php echo WT_I18N::translate('Remove'); ?>" /></a></td>
+	<td><a href="#" onclick="delete_place(<?php echo $place['place_id'], ');return false;">'; ?><img src="<?php echo $WT_IMAGES['remove'];?>" alt="<?php echo WT_I18N::translate('Remove'); ?>"></a></td>
 <?php       } else { ?>
-		<td><img src="<?php echo $WT_IMAGES['remove_grey'];?>" border="0" alt="" /> </td>
+		<td><img src="<?php echo $WT_IMAGES['remove_grey'];?>" alt=""> </td>
 <?php       } ?>
 	</tr>
 	<?php

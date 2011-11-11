@@ -342,10 +342,10 @@ if ($show == 'yes') {
   if ($ct>0) {
 	$currentPage = ((int) ($start / $max)) + 1;
 	$lastPage = (int) (($ct + $max - 1) / $max);
-	$IconRarrow = '<img src="'.$WT_IMAGES['rarrow'].'" width="20" height="20" border="0" alt="" />';
-	$IconLarrow = '<img src="'.$WT_IMAGES['larrow'].'" width="20" height="20" border="0" alt="" />';
-	$IconRDarrow = '<img src="'.$WT_IMAGES['rdarrow'].'" width="20" height="20" border="0" alt="" />';
-	$IconLDarrow = '<img src="'.$WT_IMAGES['ldarrow'].'" width="20" height="20" border="0" alt="" />';
+	$IconRarrow = '<img src="'.$WT_IMAGES['rarrow'].'" width="20" height="20" alt="">';
+	$IconLarrow = '<img src="'.$WT_IMAGES['larrow'].'" width="20" height="20" alt="">';
+	$IconRDarrow = '<img src="'.$WT_IMAGES['rdarrow'].'" width="20" height="20" alt="">';
+	$IconLDarrow = '<img src="'.$WT_IMAGES['ldarrow'].'" width="20" height="20" alt="">';
 
 	echo '<table class="list_table">';
 	// echo page back, page number, page forward controls

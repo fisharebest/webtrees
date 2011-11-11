@@ -491,9 +491,9 @@ function print_fact_sources($factrec, $level, $return=false) {
 					$plusminus='plus';
 				}
 				if ($lt>0) {
-					$data .= "<a href=\"#\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus].'" border="0" width="11" height="11" alt="';
-					if ($plusminus=='plus') $data .= WT_I18N::translate('Show Details').'" title="'.WT_I18N::translate('Show Details').'" /></a> ';
-					else $data .= WT_I18N::translate('Hide Details').'" title="'.WT_I18N::translate('Hide Details').'" /></a> ';
+					$data .= "<a href=\"#\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus].'" width="11" height="11" alt="';
+					if ($plusminus=='plus') $data .= WT_I18N::translate('Show Details').'" title="'.WT_I18N::translate('Show Details').'"></a> ';
+					else $data .= WT_I18N::translate('Hide Details').'" title="'.WT_I18N::translate('Hide Details').'"></a> ';
 				}
 				$data .= WT_I18N::translate('Source').':</span> <span class="field">';
 				$data .= '<a href="'.$source->getHtmlUrl().'">'.$source->getFullName().'</a>';
@@ -596,7 +596,7 @@ function print_media_links($factrec, $level, $pid='') {
 					echo '<a href="mediaviewer.php?mid=', $media_id, '">';
 				}
 
-				echo '<img src="', $thumbnail, '" border="0" align="' , $TEXT_DIRECTION== 'rtl'?'right':'left', '" class="thumbnail"';
+				echo '<img src="', $thumbnail, '" align="' , $TEXT_DIRECTION== 'rtl'?'right':'left', '" class="thumbnail"';
 				if (strpos($mainMedia, 'http://maps.google.')===0) {
 					// Do not print Streetview title here (PF&D tab)
 				} else {
@@ -610,7 +610,7 @@ function print_media_links($factrec, $level, $pid='') {
 					echo'title="', basename($row['m_file']), '"';
 				}
 				// ---------------------------------------------------------------------------------------------
-				echo '/>';
+				echo '>';
 				echo '</a>';
 			}
 			echo '</div>'; // close div "media-display-image"

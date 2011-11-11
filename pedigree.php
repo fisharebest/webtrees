@@ -234,7 +234,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 				}
 				echo '<a href=pedigree.php?PEDIGREE_GENERATIONS=', $controller->PEDIGREE_GENERATIONS, '&amp;rootid=', $controller->treeid[$did], '&amp;show_full=', $controller->show_full, '&amp;talloffset=', $controller->talloffset, ' ';
 				echo "onmouseover=\"swap_image('arrow$i', 2);\" onmouseout=\"swap_image('arrow$i', 2);\">";
-				echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["uarrow"], '" border="0" alt="" />';
+				echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["uarrow"], '" alt="">';
 				echo '</a>';
 			}
 			echo "</div>";

@@ -138,15 +138,15 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$out = '<li id="sb_desc_'.$person->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=descendancy&amp;pid='.$person->getXref().'" title="'.$person->getXref().'" class="sb_desc_indi">';
 		if ($generations>0) {
-			$out .= '<img src="'.$WT_IMAGES['minus'].'" border="0" class="plusminus" alt="" />';
+			$out .= '<img src="'.$WT_IMAGES['minus'].'" class="plusminus" alt="">';
 		} else {
-			$out .= '<img src="'.$WT_IMAGES['plus'].'" border="0" class="plusminus" alt="" />';
+			$out .= '<img src="'.$WT_IMAGES['plus'].'" class="plusminus" alt="">';
 		}
 		$out .= $person->getSexImage().' '.$person->getFullName().' ';
 		if ($person->canDisplayDetails()) {
 			$out .= ' ('.$person->getLifeSpan().')';
 		}
-		$out .= '</a> <a href="'.$person->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_indi'].'" border="0" alt="indi" /></a>';
+		$out .= '</a> <a href="'.$person->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_indi'].'" alt="indi"></a>';
 		if ($generations>0) {
 			$out .= '<div class="desc_tree_div_visible">';
 			$out .= $this->loadSpouses($person->getXref());
@@ -163,15 +163,15 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		global $WT_IMAGES;
 
 		$out = '<li id="sb_desc_'.$family->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=descendancy&amp;famid='.$family->getXref().'" title="'.$family->getXref().'" class="sb_desc_indi">';
-		$out .= '<img src="'.$WT_IMAGES['minus'].'" border="0" class="plusminus" alt="" />';
+		$out .= '<img src="'.$WT_IMAGES['minus'].'" class="plusminus" alt="">';
 		$out .= $person->getSexImage().$person->getFullName();
 
 		$marryear = $family->getMarriageYear();
 		if (!empty($marryear)) {
 			$out .= ' ('.WT_Gedcom_Tag::getLabel('MARR').' '.$marryear.')';
 		}
-		$out .= '</a> <a href="'.$person->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_indi'].'" border="0" alt="indi" /></a>';
-		$out .= '<a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" border="0" alt="family" /></a>';
+		$out .= '</a> <a href="'.$person->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_indi'].'" alt="indi"></a>';
+		$out .= '<a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" alt="family"></a>';
 		$out .= '<div class="desc_tree_div_visible">';
 		$out .= $this->loadChildren($family->getXref(), $generations);
 		$out .= '</div><script type="text/javascript">dloadedNames["'.$family->getXref().'"]=2;</script>';
