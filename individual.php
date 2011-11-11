@@ -121,9 +121,7 @@ jQuery(document).ready(function() {
 	});
 	jQuery("#tabs").tabs("select",jQuery.cookie("indi-tab"));
 	jQuery("#tabs").bind("tabsshow", function(event, ui) {
-		if (ui.tab.match(/#(.*)$/)) {
-			jQuery.cookie("indi-tab", RegExp.$1);
-		}
+		jQuery.cookie("indi-tab", ui.panel.id);
 		<?php
 		foreach ($controller->tabs as $tab) {
 			echo $tab->getJSCallback()."\n";
