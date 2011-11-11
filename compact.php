@@ -51,8 +51,8 @@ if (WT_USE_LIGHTBOX) {
 }
 // ==========================================================================================
 
-$cellwidth = max(strlen($title)*4, "420");
-echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"{$cellwidth}px\" valign=\"top\">";
+$cellwidth = max(strlen($title)*4, '420');
+echo '<table class="list_table"><tr><td width="', $cellwidth, 'px" valign="top">';
 echo '<h2>', $title, '</h2>';
 
 // -- print the form
@@ -66,37 +66,37 @@ function paste_id(value) {
 //-->
 </script>
 <?php
-echo "</td><td><form name=\"people\" id=\"people\" method=\"get\" action=\"?\">";
-echo "<table class=\"list_table $TEXT_DIRECTION\">";
-echo "<tr>";
+echo '</td><td><form name="people" id="people" method="get" action="', WT_SCRIPT_NAME, '">';
+echo '<table class="list_table">';
+echo '<tr>';
 
 // NOTE: Root ID
-echo "<td class=\"descriptionbox\">";
-echo WT_I18N::translate('Root Person ID'), help_link('rootid'), "</td>";
-echo "<td class=\"optionbox vmiddle\">";
-echo "<input class=\"pedigree_form\" type=\"text\" name=\"rootid\" id=\"rootid\" size=\"3\" value=\"$rootid\" />";
-print_findindi_link("rootid","");
-echo "</td>";
+echo '<td class="descriptionbox">';
+echo WT_I18N::translate('Root Person ID'), help_link('rootid'), '</td>';
+echo '<td class="optionbox vmiddle">';
+echo '<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="', $rootid, '" />';
+print_findindi_link('rootid','');
+echo '</td>';
 
 // NOTE: submit
-echo "<td class=\"facts_label03\" rowspan=\"3\">";
-echo "<input type=\"submit\" value=\"".WT_I18N::translate('View')."\" />";
-echo "</td></tr>";
+echo '<td class="facts_label03" ', ($SHOW_HIGHLIGHT_IMAGES ? 'rowspan="2"' : ''), '>';
+echo '<input type="submit" value="'.WT_I18N::translate('View').'" />';
+echo '</td></tr>';
 
 if ($SHOW_HIGHLIGHT_IMAGES) {
-	echo "<tr>";
-	echo "<td class=\"descriptionbox\">";
+	echo '<tr>';
+	echo '<td class="descriptionbox">';
 	echo WT_I18N::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES');
-	echo "</td>";
-	echo "<td class=\"optionbox\">";
-	echo "<input name=\"showthumbs\" type=\"checkbox\" value=\"1\"";
-	if ($showthumbs) echo " checked=\"checked\"";
-	echo " /></td></tr>";
+	echo '</td>';
+	echo '<td class="optionbox">';
+	echo '<input name="showthumbs" type="checkbox" value="1"';
+	if ($showthumbs) echo ' checked="checked"';
+	echo ' /></td></tr>';
 }
 
-echo "</table>";
-echo "</form>";
-echo "</td></tr></table>";
+echo '</table>';
+echo '</form>';
+echo '</td></tr></table>';
 
 // process the tree
 $treeid = ancestry_array($rootid, 5);
@@ -366,13 +366,13 @@ function print_arrow_person($n, $arrow_dir) {
 		$indi=WT_Person::getInstance($pid);
 		$title=WT_I18N::translate('Compact tree of %s', $indi->getFullName());
 		$title=htmlspecialchars(strip_tags($title));
-		$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='$title' title='$title' />";
+		$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' align='middle' alt='$title' title='$title'>";
 		$text .= "<a href=\"?rootid=".$pid;
 		if ($showthumbs) $text .= "&amp;showthumbs=".$showthumbs;
 		$text .= "\" onmouseover=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" onmouseout=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" >";
 		$text .= $arrow_img."</a>";
 	}
 	// -- arrow to empty box does not have a url attached.
-	else $text = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' border='0' align='middle' alt='".WT_I18N::translate('Compact tree')."' title='".WT_I18N::translate('Compact tree')."' style='visibility:hidden;' />";
+	else $text = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' align='middle' alt='".WT_I18N::translate('Compact tree')."' title='".WT_I18N::translate('Compact tree')."' style='visibility:hidden;'>";
 	echo $text;
 }
