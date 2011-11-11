@@ -714,15 +714,14 @@ class WT_Controller_Search extends WT_Controller_Base {
 
 				$GEDCOM=WT_GEDCOM;
 				load_gedcom_settings(WT_GED_ID);
-			} else
-			if (isset ($this->query)) {
+				echo '</div>'; //#search-result-tabs
+			} elseif (isset ($this->query)) {
 				echo '<br /><div class="warning center"><em>'.WT_I18N::translate('No results found.').'</em><br />';
 				if (!isset ($this->srindi) && !isset ($this->srfams) && !isset ($this->srsour) && !isset ($this->srnote)) {
 					echo '<em>'.WT_I18N::translate('Be sure to select an option to search for.').'</em><br />';
 				}
 				echo '</div>';
 			}
-			echo '</div>';//#search-result-tabs
 		}
 		return $somethingPrinted; // whether anything printed
 	}
