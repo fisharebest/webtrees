@@ -92,14 +92,6 @@ if (WT_USE_LIGHTBOX) {
 // TODO: these should be moved to their respective module/block
 echo WT_JS_START;
 ?>
-  jQuery(document).ready(function() {
-	jQuery("#index_full_blocks").sortable({placeholder: 'ui-state-highlight', forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move'});
-	jQuery("#index_small_blocks").sortable({placeholder: 'ui-state-highlight', forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', connectWith: '#index_main_blocks'});
-	jQuery("#index_main_blocks").sortable({placeholder: 'ui-state-highlight', forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', connectWith: '#index_small_blocks'});
-
-	jQuery( "#index_full_blocks", "#index_small_blocks", "#index_main_blocks" ).disableSelection();
-	});
-
 	function refreshpage() {
 		window.location = 'index.php?ctype=<?php echo $ctype; ?>';
 	}

@@ -45,13 +45,8 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-			$title='';
+		$title='';
 		$title .=/* I18N: A greeting; %s is the user's name */ WT_I18N::translate('Welcome %s', getUserFullName(WT_USER_ID));
-
-		if (WT_USER_GEDCOM_ADMIN) {
-				$title .= "<div class=\"deleteicon\"  style=\"float:right;\"><span class=\"link_text\">". WT_I18N::translate('Delete').'</span></a></div>';
-			}
-
 		$content = "<table style=\"margin:auto;\"><tr>";
 		$content .= "<td class=\"tab_active_bottom\" colspan=\"3\" ></td></tr><tr>";
 		if (get_user_setting(WT_USER_ID, 'editaccount')) {
