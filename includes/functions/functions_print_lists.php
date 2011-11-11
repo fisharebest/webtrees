@@ -1043,7 +1043,7 @@ function print_repo_table($repos) {
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Repository name'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	echo '<th ',WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th> ',WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th>&nbsp;</th>';//delete
 	echo '</tr></thead>';
 	//-- table body
