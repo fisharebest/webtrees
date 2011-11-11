@@ -75,7 +75,7 @@ if (isset($reorder) && $reorder==1) {
 			echo WT_I18N::translate('Link to an existing media object');
 			echo '</a></span>';
 		}
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (WT_USER_GEDCOM_ADMIN && $this->mediaCount>1) {
 			// Popup Reorder Media
 			echo '<span><a href="#" onclick="reorder_media()">';
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '" />';
