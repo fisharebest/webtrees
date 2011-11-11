@@ -347,8 +347,9 @@ class WT_Controller_Clippings {
 			return;
 		}
 		$this->add_clipping($family);
-		$this->add_clipping($family->getHusband());
-		$this->add_clipping($family->getWife());
+		foreach ($family->getSpouses() as $spouse) {
+			$this->add_clipping($spouse);
+		}
 		foreach ($family->getChildren() as $child) {
 			$this->add_clipping($child);
 		}
