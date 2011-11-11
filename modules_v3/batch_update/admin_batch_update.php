@@ -434,7 +434,7 @@ class base_plugin {
 	static function createEditLinks($gedrec) {
 		return preg_replace(
 			"/@([^#@\n]+)@/m",
-			'<a href="javascript:;" onclick="return edit_raw(\'\\1\');">@\\1@</a>',
+			'<a href="#" onclick="return edit_raw(\'\\1\');">@\\1@</a>',
 			$gedrec
 		);
 	}

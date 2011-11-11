@@ -57,7 +57,7 @@ if (!defined('WT_WEBTREES')) {
 				</script>
 				<?php
 				echo "<input id=personid type=\"text\" size=\"20\" STYLE=\"color: #000000;\" value=\"\" />";
-				echo "<a href=\"javascript: onclick=findindi()\">" ;
+				echo "<a href=\"#\" onclick=\"findindi()\">" ;
 				echo "&nbsp;<font size=\"2\">&nbsp;".WT_I18N::translate('Search')."</font>";
 				echo '</a>';
 				?>
@@ -1551,7 +1551,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
 								}									
 							}
-							$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
+							$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
 							$parentlinks .= "'".$husb->getXref()."',"; // pid = PID
 							$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 							if (isset($fulmn)) {
@@ -1646,7 +1646,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}									
 							}
 							
-							$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
+							$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
 							$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
 							$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 							if (isset($fulmn)) {
@@ -1761,7 +1761,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 										$fulmn = rtrim($nam[$i]['givn'],'*')."&nbsp;".$nam[$i]['surname'];
 									}									
 								}
-								$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
+								$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
 								$parentlinks .= "'".$husb->getXref()."',"; // pid = PID
 								$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 								if (isset($fulmn)) {
@@ -1859,7 +1859,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									}									
 								}
 								
-								$parentlinks .= "<a class=\"linka\" href=\"javascript:insertRowToTable(";
+								$parentlinks .= "<a class=\"linka\" href=\"#\" onclick=\"insertRowToTable(";
 								$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
 								$parentlinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 								if (isset($fulmn)) {
@@ -1977,7 +1977,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 							}
 
-							$spouselinks .= "<a href=\"javascript:insertRowToTable(";
+							$spouselinks .= "<a href=\"#\" onclick=\"insertRowToTable(";
 							$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
 							$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 							if (isset($fulmn)) {
@@ -2115,7 +2115,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}									
 							}
 
-							$spouselinks .= "<a href=\"javascript:insertRowToTable(";
+							$spouselinks .= "<a href=\"#\" onclick=\"insertRowToTable(";
 							$spouselinks .= "'".$child->getXref()."',"; // pid = PID
 							$spouselinks .= "'".addslashes(strip_tags($fulln))."',"; // nam = Name
 							if (isset($chfulmn)) {

@@ -261,7 +261,7 @@ function create_map($placelevels) {
 			echo "<tr><td>\n";
 			echo "<form style=\"text-align:left; margin-left:5px; font:11px verdana; color:blue;\" method=\"post\" action=\"\">";
 			echo $list_latlon;
-			echo "<input type=\"submit\" name=\"Submit\" onClick=\"update_sv_params($placeid);\" value=\"", WT_I18N::translate('Save'), "\">";
+			echo "<input type=\"submit\" name=\"Submit\" onclick=\"update_sv_params($placeid);\" value=\"", WT_I18N::translate('Save'), "\">";
 			echo "</form>";
 			echo "</td></tr>\n";
 			echo "</table>\n";	

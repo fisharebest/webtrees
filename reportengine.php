@@ -294,7 +294,7 @@ elseif ($action=='setup') {
 					}
 
 					?>
-					<a href="javascript: <?php echo $input['name']; ?>" onclick="cal_toggleDate('div_<?php echo $input['name']; ?>', '<?php echo $input['name']; ?>'); return false;">
+					<a href="#" onclick="cal_toggleDate('div_<?php echo $input['name']; ?>', '<?php echo $input['name']; ?>'); return false;">
 					<?php echo $Link; ?>
 					</a>
 					<div id="div_<?php echo $input['name']; ?>" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>

@@ -400,7 +400,7 @@ function createMarker(point, name, html, mhtml, icontype) {
 	// save the info we need to use later for the side_bar
 	gmarkers[i] = marker;
 	// add a line to the side_bar html
-	side_bar_html += '<br /><div id="'+linkid+'"><a href="javascript:myclick(' + i + ')">' + html +'</a><br></div>';
+	side_bar_html += '<br /><div id="'+linkid+'"><a href="#" onclick="myclick(' + i + ')">' + html +'</a><br></div>';
 	i++;
 	return marker;	
 };
@@ -614,11 +614,11 @@ document.getElementById('side_bar').innerHTML = side_bar_html;
 // === create the context menu div ===
 var contextmenu = document.createElement('div');
 	contextmenu.style.visibility='hidden';
-	contextmenu.innerHTML = '<a href="javascript:zoomIn()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom in'); ?>&nbsp;&nbsp;</div></a>'
-						  + '<a href="javascript:zoomOut()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom out'); ?>&nbsp;&nbsp;</div></a>'
-						  + '<a href="javascript:zoomInHere()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom in here'); ?>&nbsp;&nbsp;</div></a>'
-						  + '<a href="javascript:zoomOutHere()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom out here'); ?>&nbsp;&nbsp;</div></a>'
-						  + '<a href="javascript:centreMapHere()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Center map here'); ?>&nbsp;&nbsp;</div></a>';
+	contextmenu.innerHTML = '<a href="#" onclick="zoomIn()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom in'); ?>&nbsp;&nbsp;</div></a>'
+						  + '<a href="#" onclick="zoomOut()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom out'); ?>&nbsp;&nbsp;</div></a>'
+						  + '<a href="#" onclick="zoomInHere()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom in here'); ?>&nbsp;&nbsp;</div></a>'
+						  + '<a href="#" onclick="zoomOutHere()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Zoom out here'); ?>&nbsp;&nbsp;</div></a>'
+						  + '<a href="#" onclick="centreMapHere()"><div class="optionbox">&nbsp;&nbsp;<?php echo WT_I18N::translate('Center map here'); ?>&nbsp;&nbsp;</div></a>';
 //BH pm_map.getContainer().appendChild(contextmenu);
 
 // === listen for singlerightclick ===

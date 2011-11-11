@@ -268,9 +268,9 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	if ($sosa==0 && WT_USER_CAN_EDIT) {
 		echo "<br />";
 		echo "<span class='nowrap font12'>";
-		echo "<a href=\"javascript:;\" onclick=\"return addnewchild('$famid','');\">" . WT_I18N::translate('Add a child to this family') . "</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','M');\">[".WT_Person::sexImage('M', 'small', '', WT_I18N::translate('son'     ))."]</a>";
-		echo " <a href=\"javascript:;\" onclick=\"return addnewchild('$famid','F');\">[".WT_Person::sexImage('F', 'small', '', WT_I18N::translate('daughter'))."]</a>";
+		echo "<a href=\"#\" onclick=\"return addnewchild('$famid','');\">" . WT_I18N::translate('Add a child to this family') . "</a>";
+		echo " <a href=\"#\" onclick=\"return addnewchild('$famid','M');\">[".WT_Person::sexImage('M', 'small', '', WT_I18N::translate('son'     ))."]</a>";
+		echo " <a href=\"#\" onclick=\"return addnewchild('$famid','F');\">[".WT_Person::sexImage('F', 'small', '', WT_I18N::translate('daughter'))."]</a>";
 		echo help_link('add_child');
 		echo "</span>";
 		echo "<br /><br />";
@@ -462,14 +462,14 @@ function print_family_facts($family) {
 			echo '<tr><td class="descriptionbox">';
 			echo WT_I18N::translate('Add Note'), help_link('add_note');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','NOTE');\">", WT_I18N::translate('Add a new note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return add_new_record('$famid','NOTE');\">", WT_I18N::translate('Add a new note'), '</a>';
 			echo '</td></tr>';
 
 			// -- new shared note
 			echo '<tr><td class="descriptionbox">';
 			echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SHARED_NOTE');\">", WT_I18N::translate('Add a new shared note'), '</a>';
+			echo "<a href=\"#\" onclick=\"return add_new_record('$famid','SHARED_NOTE');\">", WT_I18N::translate('Add a new shared note'), '</a>';
 			echo '</td></tr>';
 
 			// -- new media
@@ -477,9 +477,9 @@ function print_family_facts($family) {
 				echo '<tr><td class="descriptionbox">';
 				echo WT_I18N::translate('Add media'), help_link('add_media');
 				echo '</td><td class="optionbox">';
-				echo "<a href=\"javascript:;\" onclick=\"window.open('addmedia.php?action=showmediaform&linktoid={$famid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">", WT_I18N::translate('Add a new media object'), '</a>';
+				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&linktoid={$famid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">", WT_I18N::translate('Add a new media object'), '</a>';
 				echo '<br />';
-				echo "<a href=\"javascript:;\" onclick=\"window.open('inverselink.php?linktoid={$famid}&linkto=family', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;\">", WT_I18N::translate('Link to an existing media object'), '</a>';
+				echo "<a href=\"#\" onclick=\"window.open('inverselink.php?linktoid={$famid}&linkto=family', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;\">", WT_I18N::translate('Link to an existing media object'), '</a>';
 				echo '</td></tr>';
 			}
 
@@ -487,7 +487,7 @@ function print_family_facts($family) {
 			echo '<tr><td class="descriptionbox">';
 			echo WT_I18N::translate('Add Source Citation'), help_link('add_source');
 			echo '</td><td class="optionbox">';
-			echo "<a href=\"javascript:;\" onclick=\"return add_new_record('$famid','SOUR');\">", WT_I18N::translate('Add a new source citation'), '</a>';
+			echo "<a href=\"#\" onclick=\"return add_new_record('$famid','SOUR');\">", WT_I18N::translate('Add a new source citation'), '</a>';
 			echo '</td></tr>';
 			// -- end new objects
 		}

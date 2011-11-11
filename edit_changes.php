@@ -168,9 +168,9 @@ if ($changed_gedcoms) {
 				$record=new WT_GedcomRecord($change->gedcom);
 			}
 			$output.='<b>'.$record->getFullName().'</b><br />';
-			$output.='<a href="javascript:;" onclick="return show_diff(\''.$record->getHtmlUrl().'\');">'.WT_I18N::translate('View the changes').'</a> | ';
-			$output.="<a href=\"javascript:show_gedcom_record('".$change->xref."');\">".WT_I18N::translate('View GEDCOM Record')."</a> | ";
-			$output.="<a href=\"javascript:;\" onclick=\"return edit_raw('".$change->xref."');\">".WT_I18N::translate('Edit raw GEDCOM record').'</a><br />';
+			$output.='<a href="#" onclick="return show_diff(\''.$record->getHtmlUrl().'\');">'.WT_I18N::translate('View the changes').'</a> | ';
+			$output.="<a href=\"#\" onclick=\"show_gedcom_record('".$change->xref."');\">".WT_I18N::translate('View GEDCOM Record')."</a> | ";
+			$output.="<a href=\"#\" onclick=\"return edit_raw('".$change->xref."');\">".WT_I18N::translate('Edit raw GEDCOM record').'</a><br />';
 			$output.='<div class="indent">';
 			$output.=WT_I18N::translate('The following changes were made to this record:').'<br />';
 			$output.='<table class="list_table"><tr>';
@@ -192,7 +192,7 @@ if ($changed_gedcoms) {
 			$output.=WT_I18N::translate('Replace record');
 		}
 		echo '</b></td>';
-		$output .= "<td class=\"list_value\"><a href=\"javascript:;\" onclick=\"return reply('".$change->user_name."', '".WT_I18N::translate('Moderate pending changes')."')\" alt=\"".WT_I18N::translate('Send Message')."\">";
+		$output .= "<td class=\"list_value\"><a href=\"#\" onclick=\"return reply('".$change->user_name."', '".WT_I18N::translate('Moderate pending changes')."')\" alt=\"".WT_I18N::translate('Send Message')."\">";
 		$output .= PrintReady($change->real_name);
 		$output .= PrintReady('&nbsp;('.$change->user_name.')').'</a></td>';
 		$output .= '<td class="list_value">'.$change->change_time.'</td>';
@@ -232,7 +232,7 @@ if ($changed_gedcoms) {
 
 	echo
 		$output2, $output, $output2, '<br /><br />',
-		'<a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">',
+		'<a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">',
 		WT_I18N::translate('Close Window'),
 		'</a>';
 } else {

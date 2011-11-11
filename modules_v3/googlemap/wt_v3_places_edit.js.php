@@ -391,7 +391,7 @@ if (!defined('WT_WEBTREES')) {
 
 	function remove_icon() {
 		document.editplaces.icon.value = '';
-		document.getElementById('flagsDiv').innerHTML = '<a href="javascript:;" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>';
+		document.getElementById('flagsDiv').innerHTML = '<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>';
 	}
 	
 	function addAddressToMap(response) {
@@ -402,7 +402,7 @@ if (!defined('WT_WEBTREES')) {
 			if (response.length > 0) {
 				for (i=0; i<response.length; i++) {					
 					var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br /> '+response[i].geometry.location+''
-						name +=	'<br /><a href="javascript:;" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo PrintReady(WT_I18N::translate('Use this value')); ?></div></a>'
+						name +=	'<br /><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo PrintReady(WT_I18N::translate('Use this value')); ?></div></a>'
 						name += '</div>'
 					var point = response[i].geometry.location;
 					var marker = createMarker(i, point, name);	

@@ -224,8 +224,8 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 		}
 		if ($this->record->canEdit() && !strpos($factrec, "\nWT_OLD")) {
-			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"javascript:;\" onclick=\"delete_record('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
-			echo "<div class=\"editlink\"><a href=\"javascript:;\" class=\"font9 editicon\" onclick=\"edit_name('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
+			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"#\" onclick=\"delete_record('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
+			echo "<div class=\"editlink\"><a href=\"#\" class=\"font9 editicon\" onclick=\"edit_name('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
 		}
 		echo '</dd>';
 		echo '</dl>';
@@ -303,10 +303,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			if ($this->SEX_COUNT>1) {
 				if ($this->record->canEdit() && strpos($factrec, "\nWT_OLD")===false) {
 					if ($event->getLineNumber()=="new") {
-						echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"add_new_record('".$this->record->getXref()."', 'SEX'); return false;\">".WT_I18N::translate('Edit')."</a>";
+						echo "<a class=\"font9\" href=\"#\" onclick=\"add_new_record('".$this->record->getXref()."', 'SEX'); return false;\">".WT_I18N::translate('Edit')."</a>";
 					} else {
-							echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"edit_record('".$this->record->getXref()."', ".$event->getLineNumber()."); return false;\">".WT_I18N::translate('Edit')."</a> | ";
-							echo "<a class=\"font9\" href=\"javascript:;\" onclick=\"delete_record('".$this->record->getXref()."', ".$event->getLineNumber()."); return false;\">".WT_I18N::translate('Delete')."</a>";
+							echo "<a class=\"font9\" href=\"#\" onclick=\"edit_record('".$this->record->getXref()."', ".$event->getLineNumber()."); return false;\">".WT_I18N::translate('Edit')."</a> | ";
+							echo "<a class=\"font9\" href=\"#\" onclick=\"delete_record('".$this->record->getXref()."', ".$event->getLineNumber()."); return false;\">".WT_I18N::translate('Delete')."</a>";
 					}
 				}
 			}

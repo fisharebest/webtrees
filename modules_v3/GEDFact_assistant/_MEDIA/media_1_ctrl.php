@@ -104,7 +104,7 @@ if ($pid=="") {
 				</script>
 				<?php
 				echo '<input id="personid" type="text" value="" />';
-				echo '<a href="javascript: onclick=findindi()">' ;
+				echo '<a href="#" onclick="onclick=findindi()">' ;
 				echo '&nbsp;<font size="2">&nbsp;', WT_I18N::translate('Search'), '</font>';
 				echo '</a>';
 				?>
@@ -1121,7 +1121,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surn'];
 								$marn  = $nam[1]['surn'];
 							}
-							$parentlinks .= "<a href=\"javascript:opener.insertRowToTable(";
+							$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 							$parentlinks .= "'".$husb->getXref()."', "; // pid = PID
 							$parentlinks .= "'".$fulln."', "; // nam = Name
 							if ($currpid=="Wife" || $currpid=="Husband") {
@@ -1167,7 +1167,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								$fulmn = $nam[1]['fullNN'];
 								$marn  = $nam[1]['surname'];
 							}
-							$parentlinks .= "<a href=\"javascript:opener.insertRowToTable(";
+							$parentlinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 							$parentlinks .= "'".$wife->getXref()."',"; // pid = PID
 							// $parentlinks .= "'".$fulln."',"; // nam = Name
 
@@ -1304,7 +1304,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								$fulmn = rtrim($nam[1]['givn'],'*')."&nbsp;".$nam[1]['surname'];
 								$marn  = $nam[1]['surname'];
 							}
-							$spouselinks .= "<a href=\"javascript:opener.insertRowToTable(";
+							$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 							$spouselinks .= "'".$spouse->getXref()."',"; // pid = PID
 							//$spouselinks .= "'".$fulln."',"; // nam = Name
 							//if ($married>=0 && isset($nam[1])) {
@@ -1371,7 +1371,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 									$marn  = $nam[1]['surname'];
 								}
 								$spouselinks .= "<li>";
-								$spouselinks .= "<a href=\"javascript:opener.insertRowToTable(";
+								$spouselinks .= "<a href=\"#\" onclick=\"opener.insertRowToTable(";
 								$spouselinks .= "'".$child->getXref()."',"; // pid = PID
 								//$spouselinks .= "'".$child->getFullName()."',"; // nam = Name
 								$spouselinks .= "'".$fulln."',"; // nam = Name

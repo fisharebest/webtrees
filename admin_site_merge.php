@@ -301,9 +301,9 @@ if ($action=='choose') {
 	if (isset($WT_IMAGES['button_source'])) $sourtext = '<img src="'.$WT_IMAGES['button_source'].'" alt="'.$sourtext.'" title="'.$sourtext.'" border="0" align="middle" />';
 	echo
 		'</select>
-		<a href="javascript:iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6">', $inditext, '</a>
-		<a href="javascript:fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8">', $famtext, '</a>
-		<a href="javascript:sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10">', $sourtext, '</a>
+		<a href="#" onclick="iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6">', $inditext, '</a>
+		<a href="#" onclick="fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8">', $famtext, '</a>
+		<a href="#" onclick="sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10">', $sourtext, '</a>
 		</td></tr><tr><td>',
 		WT_I18N::translate('Merge From ID:'),
 		'</td><td>
@@ -322,9 +322,9 @@ if ($action=='choose') {
 	}
 	echo
 		'</select>
-		<a href="javascript:iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7">', $inditext, '</a>
-		<a href="javascript:fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9">', $famtext, '</a>
-		<a href="javascript:sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11">',  $sourtext, '</a>
+		<a href="#" onclick="iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7">', $inditext, '</a>
+		<a href="#" onclick="fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9">', $famtext, '</a>
+		<a href="#" onclick="sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11">',  $sourtext, '</a>
 		</td></tr></table>
 		<input type="submit" value="', WT_I18N::translate('Merge records'), '" tabindex="3" />
 		</form></div>';

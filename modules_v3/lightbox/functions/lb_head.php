@@ -68,19 +68,19 @@ if (isset($reorder) && $reorder==1) {
 		echo '<td class="descriptionbox rela">';
 		// Add a new media object
 		if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-			echo '<span><a href="javascript: album_add()">';
+			echo '<span><a href="#" onclick="album_add()">';
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/image_add.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Add a new media object'), '" alt="', WT_I18N::translate('Add a new media object'), '" />';
 			echo WT_I18N::translate('Add a new media object');
 			echo '</a></span>';
 			// Link to an existing item
-			echo '<span><a href="javascript: album_link()">';
+			echo '<span><a href="#" onclick="album_link()">';
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/image_link.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Link to an existing media object'), '" alt="', WT_I18N::translate('Link to an existing media object'), '" />';
 			echo WT_I18N::translate('Link to an existing media object');
 			echo '</a></span>';
 		}
 		if (WT_USER_GEDCOM_ADMIN) {
 			// Popup Reorder Media
-			echo '<span><a href="javascript: reorder_media()">';
+			echo '<span><a href="#" onclick="reorder_media()">';
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '" />';
 			echo WT_I18N::translate('Re-order media');
 			echo '</a></span>';

@@ -278,8 +278,8 @@ case 'go':
 		$id=0;
 		$level=0;
 		$matched[$x]=0;// used to exclude places where the gedcom place is matched at all levels
-		$mapstr_edit="<a href=\"javascript:;\" onclick=\"edit_place_location('";
-		$mapstr_add="<a href=\"javascript:;\" onclick=\"add_place_location('";
+		$mapstr_edit="<a href=\"#\" onclick=\"edit_place_location('";
+		$mapstr_add="<a href=\"#\" onclick=\"add_place_location('";
 		$mapstr3="";
 		$mapstr4="";
 		$mapstr5="')\" title='";

@@ -350,15 +350,15 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			if (gmarkers[i].getVisible()) {
 				// if (x==gmarkers[i].myindex) {
 				if (x==i ) {
-					html += '<a style="text-decoration:none; color:black; background:white; " href="javascript:myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
+					html += '<a style="text-decoration:none; color:black; background:white; " href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
 				} else if (gmarkers[i].mycategory=='theatre') {
-					html += '<a style="text-decoration:none; color:red;" href="javascript:myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
+					html += '<a style="text-decoration:none; color:red;" href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
 				} else if (gmarkers[i].mycategory=='golf') {
-					html += '<a style="text-decoration:none; color:green;" href="javascript:myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
+					html += '<a style="text-decoration:none; color:green;" href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
 				} else if (gmarkers[i].mycategory=='info') {
-					html += '<a style="text-decoration:none; color:yellow;" href="javascript:myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
+					html += '<a style="text-decoration:none; color:yellow;" href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">' + gmarkers[i].myevent + '<\/a><br>';
 				} else {
-					html += '<a style="text-decoration:none; color:black;" href="javascript:myclick('+i+', '+gmarkers[i].mytab+')">'+ gmarkers[i].myevent + '<\/a><br>';
+					html += '<a style="text-decoration:none; color:black;" href="#" onclick="myclick('+i+', '+gmarkers[i].mytab+')">'+ gmarkers[i].myevent + '<\/a><br>';
 				}
 			}
 		}

@@ -571,7 +571,7 @@ function build_indiv_map($indifacts, $famids) {
 		foreach($markers as $marker) {
 			echo '<tr>';
 			echo '<td class="facts_label">';
-			echo '<a href="javascript:myclick(', $z, ', ', $marker['index'], ', ', $marker['tabindex'], ')">', $marker['fact'], '</a></td>';
+			echo '<a href="#" onclick="myclick(', $z, ', ', $marker['index'], ', ', $marker['tabindex'], ')">', $marker['fact'], '</a></td>';
 			$z++;
 			echo '<td class="', $marker['class'], '" style="white-space: normal">';
 			if (!empty($marker['info'])) {

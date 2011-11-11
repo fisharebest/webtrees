@@ -124,7 +124,6 @@ class WT_Menu {
 				$link .= ' target="'.$this->target.'"';
 			}
 			if ($this->link=='#') {
-				$this->link = "javascript:;";
 				if ($this->onclick !== null) {
 					$link .= ' onclick="'.$this->onclick.'"';
 				}
@@ -181,7 +180,6 @@ class WT_Menu {
 		$id = $menucount.rand();
 		$c = count($this->submenus);
 		$output = "<div id=\"menu{$id}\" class=\"{$this->class}\">\n";
-		if ($this->link=="#") $this->link = "javascript:;";
 		$link = "<a href=\"{$this->link}\" onmouseover=\"";
 		if ($c >= 0) {
 			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}', '{$this->flyout}');";

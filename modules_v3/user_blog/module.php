@@ -89,12 +89,12 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 				$news["text"]=nl2br($news["text"]);
 			}
 			$content .= $news["text"]."<br /><br />";
-			$content .= "<a href=\"javascript:;\" onclick=\"editnews('$key'); return false;\">".WT_I18N::translate('Edit')."</a> | ";
+			$content .= "<a href=\"#\" onclick=\"editnews('$key'); return false;\">".WT_I18N::translate('Edit')."</a> | ";
 			$content .= "<a href=\"index.php?action=deletenews&amp;news_id={$key}&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this Journal entry?')."');\">".WT_I18N::translate('Delete')."</a><br />";
 			$content .= "</div><br />";
 		}
 		if (WT_USER_ID) {
-			$content .= "<br /><a href=\"javascript:;\" onclick=\"addnews('".WT_USER_ID."'); return false;\">".WT_I18N::translate('Add a new Journal entry')."</a>";
+			$content .= "<br /><a href=\"#\" onclick=\"addnews('".WT_USER_ID."'); return false;\">".WT_I18N::translate('Add a new Journal entry')."</a>";
 		}
 
 		if ($template) {

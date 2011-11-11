@@ -165,7 +165,7 @@ if ($action == "choose" && $paramok) {
 	
 			if ($record->getType()=='INDI') {
 				?>
-				<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $link; ?>');" /></a></td>
+				<td align="center"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $link; ?>');" /></td>
 				<?php
 			} elseif ($record->getType()=='FAM') {
 				if ($record->getHusband()) {
@@ -176,7 +176,7 @@ if ($action == "choose" && $paramok) {
 					$head='';
 				}
 				?>
-				<td align="center"><a href="#"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="javascript:openFamNav('<?php echo $head; ?>');" /></a></td>
+				<td align="center"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $head; ?>');" /></td>
 				<?php
 			} else {
 				echo '<td></td>';
@@ -207,9 +207,9 @@ if ($action == "choose" && $paramok) {
 	echo '</td><td style=" padding-bottom:2px; vertical-align:middle">';
 		echo '&nbsp;';
 		if (isset($WT_IMAGES["add"])) {
-			echo '<a href="#"><img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', WT_I18N::translate('Add'), ' "title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onClick="javascript:blankwin(); return false;" />';
+			echo '<img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', WT_I18N::translate('Add'), ' "title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;" />';
 			} else {
-			echo '<button name="addLink" value="" type="button" onClick="javascript:blankwin(); return false;">', WT_I18N::translate('Add'), '</button>';
+			echo '<button name="addLink" value="" type="button" onclick="blankwin(); return false;">', WT_I18N::translate('Add'), '</button>';
 		}
 		echo '&nbsp;&nbsp;&nbsp;&nbsp;';
 		print_findindi_link("gid", "");
@@ -612,7 +612,7 @@ function openInNewWindow(frm)
 	echo '<tr><td colspan="2">';
 	echo '</td></tr>';
 	echo '<tr><td class="topbottombar" colspan="2">';
-	echo '<center><input type="submit" value="', WT_I18N::translate('Save'), '" onclick="javascript:shiftlinks();" />';
+	echo '<center><input type="submit" value="', WT_I18N::translate('Save'), '" onclick="shiftlinks();" />';
 	echo '</center></td></tr>';
 ?>
 <script>
@@ -687,7 +687,7 @@ function shiftlinks() {
 <?php
 	echo '</table>';
 	echo '</form>';
-	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br /></center>';
+	echo '<br/><br/><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br /></center>';
 
 } elseif ($action == "update" && $paramok) {
 
@@ -731,8 +731,8 @@ function shiftlinks() {
 		echo '<br />';
 	}
 
-	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br /></center>';
+	echo '<br/><br/><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br /></center>';
 } else {
 	// echo '<center>You must be logged in as an Administrator<center>';
-	echo '<br/><br/><center><a href="javascript:;" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
+	echo '<br/><br/><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
 }

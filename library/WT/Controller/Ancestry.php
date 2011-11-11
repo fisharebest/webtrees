@@ -145,7 +145,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		if ($family && $new && $depth>0) {
 			// print marriage info
 			echo '<span class="details1" style="white-space: nowrap;" >';
-			echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', $Dindent, '" border="0" align="middle" alt="" /><a href="javascript: ', WT_I18N::translate('View Family'), '" onclick="expand_layer(\'sosa_', $sosa, '\'); return false;" class="top"><img id="sosa_', $sosa, '_img" src="', $WT_IMAGES['minus'], '" align="middle" hspace="0" vspace="3" border="0" alt="', WT_I18N::translate('View Family'), '" /></a>';
+			echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', $Dindent, '" border="0" align="middle" alt="" /><a href="#" onclick="expand_layer(\'sosa_', $sosa, '\'); return false;" class="top"><img id="sosa_', $sosa, '_img" src="', $WT_IMAGES['minus'], '" align="middle" hspace="0" vspace="3" border="0" alt="', WT_I18N::translate('View Family'), '" /></a>';
 			echo '&nbsp;<span dir="ltr" class="person_box">&nbsp;', ($sosa*2), '&nbsp;</span>&nbsp;', WT_I18N::translate('and');
 			echo '&nbsp;<span dir="ltr" class="person_boxF">&nbsp;', ($sosa*2+1), '&nbsp;</span>&nbsp;';
 			$marriage = $family->getMarriage();

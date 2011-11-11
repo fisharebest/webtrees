@@ -329,10 +329,10 @@ switch ($action) {
 
 			if (get_user_id($user_name)) {
 				echo '<span class="warning">', WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), '</span><br /><br />';
-				echo '<a href="javascript:history.back()">', WT_I18N::translate('Back'), '</a><br />';
+				echo '<a href="#" onclick="history.back()">', WT_I18N::translate('Back'), '</a><br />';
 			} elseif (get_user_by_email($user_email)) {
 				echo '<span class="warning">', WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), '</span><br /><br />';
-				echo '<a href="javascript:history.back()">', WT_I18N::translate('Back'), '</a><br />';
+				echo '<a href="#" onclick="history.back()">', WT_I18N::translate('Back'), '</a><br />';
 			} elseif ($user_password01 == $user_password02) {
 				if ($user_id=create_user($user_name, $user_realname, $user_email, $user_password01)) {
 					set_user_setting($user_id, 'language',            $user_language);
@@ -349,11 +349,11 @@ switch ($action) {
 					$user_created_ok = true;
 				} else {
 					echo '<span class="warning">', WT_I18N::translate('Unable to add user.  Please try again.'), '<br /></span>';
-					echo '<a href="javascript:history.back()">', WT_I18N::translate('Back'), '</a><br />';
+					echo '<a href="#" onclick="history.back()">', WT_I18N::translate('Back'), '</a><br />';
 				}
 			} else {
 				echo '<span class="warning">', WT_I18N::translate('Passwords do not match.'), '</span><br />';
-				echo '<a href="javascript:history.back()">', WT_I18N::translate('Back'), '</a><br />';
+				echo '<a href="#" onclick="history.back()">', WT_I18N::translate('Back'), '</a><br />';
 			}
 			if ($user_created_ok) {
 				// switch to the user's language

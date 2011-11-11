@@ -47,7 +47,7 @@ if (isset($_REQUEST['name'])) $name = $_REQUEST['name'];
 if (!WT_USER_ID) {
 	$controller->pageHeader();
 	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
-	echo '<div class="center"><a href="javascript:;" onclick="self.close();">', WT_I18N::translate('Close Window').'</a></div>';
+	echo '<div class="center"><a href="#" onclick="self.close();">', WT_I18N::translate('Close Window').'</a></div>';
 	exit;
 }
 if (!WT_USER_IS_ADMIN) $setdefault=false;

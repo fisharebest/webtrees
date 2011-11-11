@@ -82,7 +82,7 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 			echo '<br />', WT_I18N::translate('You have no access to'), ' pid ', $pid;
 		}
 	}
-	echo '<br /><br /><div class="center"><a href="javascript: ', WT_I18N::translate('Close Window'), '" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a></div>';
+	echo '<br /><br /><div class="center"><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a></div>';
 	exit;
 }
 
@@ -415,7 +415,7 @@ if ($action=='newentry') {
 				AddToLog('Media ID '.$media_id." successfully added to $linktoid.", 'edit');
 				$success=true;
 			} else {
-				echo "<a href=\"javascript://OBJE $mediaid\" onclick=\"openerpasteid('$mediaid'); return false;\">", WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$mediaid</b></a><br /><br />";
+				echo "<a href=\"#\" onclick=\"openerpasteid('$mediaid'); return false;\">", WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$mediaid</b></a><br /><br />";
 				echo WT_JS_START;
 				echo "openerpasteid('", $mediaid, "');";
 				echo WT_JS_END;

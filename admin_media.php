@@ -802,7 +802,7 @@ if (check_media_structure()) {
 				<?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".WT_I18N::translate('Upload media files')."</a>". help_link('upload_media'); ?>
 			</td>-->
 			<td class="wrap">
-				<a href="javascript:;" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media object')."</a>". help_link('add_media'); ?>
+				<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media object')."</a>". help_link('add_media'); ?>
 			</td>
 				<?php
 					$tempURL = WT_SCRIPT_NAME.'?';
@@ -1124,11 +1124,11 @@ if (check_media_structure()) {
 							} else {
 								$tempURL .= 'showmediaform&amp;filename='.rawurlencode($media['FILE']).'&amp;linktoid=new';
 							}
-							echo "<a href=\"javascript:", WT_I18N::translate('Edit'), "\" onclick=\"window.open('", $tempURL, "', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;\">", WT_I18N::translate('Edit'), "</a><br />";
+							echo "<a href=\"#\" onclick=\"window.open('", $tempURL, "', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;\">", WT_I18N::translate('Edit'), "</a><br />";
 
 							// Edit Raw
 							if ($media["XREF"] != "") {
-								echo "<a href=\"javascript:".WT_I18N::translate('Edit raw GEDCOM record')."\" onclick=\"return edit_raw('".$media['XREF']."');\">".WT_I18N::translate('Edit raw GEDCOM record')."</a><br />";
+								echo "<a href=\"#\" onclick=\"return edit_raw('".$media['XREF']."');\">".WT_I18N::translate('Edit raw GEDCOM record')."</a><br />";
 							}
 
 							// Delete File

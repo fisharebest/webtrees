@@ -182,10 +182,10 @@ echo "<form name=\"zoomform\" onsubmit=\"setzoom(document.getElementById('zoomva
 if (!$controller->mediaobject->isExternal() && !$controller->mediaobject->fileExists() ) {
 	echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $controller->mediaobject->getLocalFilename()), '</p>';
 } else {
-	echo "<center><font size=\"6\"><a href=\"javascript:;\" onclick=\"zoomin(); return false;\">+</a> <a href=\"javascript:;\" onclick=\"zoomout();\">&ndash;</a> </font>";
+	echo "<center><font size=\"6\"><a href=\"#\" onclick=\"zoomin(); return false;\">+</a> <a href=\"#\" onclick=\"zoomout();\">&ndash;</a> </font>";
 	echo "<input type=\"text\" size=\"2\" name=\"zoomval\" id=\"zoomval\" value=\"100\" />%";
 	echo "<input type=\"button\" value=\"".WT_I18N::translate('Reset')."\" onclick=\"resetimage(); return false;\" />";
-	echo "<br /><a href=\"javascript:;\" onclick=\"window.opener.location='".$controller->mediaobject->getRawUrl()."'; window.close();\">".WT_I18N::translate('View image details')."</a>";
+	echo "<br /><a href=\"#\" onclick=\"window.opener.location='".$controller->mediaobject->getRawUrl()."'; window.close();\">".WT_I18N::translate('View image details')."</a>";
 	echo "</center>";
 	$imgsize = $controller->mediaobject->getImageAttributes('main',2,2);
 	$imgwidth = $imgsize['adjW'];
@@ -202,4 +202,4 @@ if (!$controller->mediaobject->isExternal() && !$controller->mediaobject->fileEx
 echo "</form>";
 echo "<div style=\"position: relative; \">";
 echo "</div>";
-echo "<div class=\"center\"><br /><a href=\"javascript:;\" onclick=\"window.close();\">".WT_I18N::translate('Close Window')."</a></div>";
+echo "<div class=\"center\"><br /><a href=\"#\" onclick=\"window.close();\">".WT_I18N::translate('Close Window')."</a></div>";

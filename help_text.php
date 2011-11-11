@@ -2932,5 +2932,5 @@ echo '<div class="helpfooter">';
 if ($help!='help_contents_help') {
 	echo '<a href="help_text.php?help=help_contents_help">', WT_I18N::translate('Help contents'), '</a><br />';
 }
-echo '<a href="javascript:;" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a>';
+echo '<a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a>';
 echo '</div>';

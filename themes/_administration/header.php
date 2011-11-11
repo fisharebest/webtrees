@@ -61,7 +61,7 @@ echo
 		}
 	echo '</span>';
 	if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
-	echo ' | <li><a href="javascript:;" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+	echo ' | <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',\'width=600,height=500,resizable=1,scrollbars=1\'); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
 	}
 	echo '</div>',
 	'<div id="info">',

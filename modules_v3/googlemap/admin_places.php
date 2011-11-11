@@ -613,13 +613,13 @@ foreach ($placelist as $place) {
 		echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
 	}
 	echo '</td>';
-	echo '<td class="narrow"><a href="javascript:;" onclick="edit_place_location(', $place['place_id'], ');return false;"><img src="', $WT_IMAGES['edit'], '" border="0" alt="', WT_I18N::translate("Edit"), '" /></a></td>';
+	echo '<td class="narrow"><a href="#" onclick="edit_place_location(', $place['place_id'], ');return false;"><img src="', $WT_IMAGES['edit'], '" border="0" alt="', WT_I18N::translate("Edit"), '" /></a></td>';
 	$noRows=
 		WT_DB::prepare("SELECT COUNT(pl_id) FROM `##placelocation` WHERE pl_parent_id=?")
 		->execute(array($place['place_id']))
 		->fetchOne();
 	if ($noRows==0) { ?>
-	<td><a href="javascript:;" onclick="delete_place(<?php echo $place['place_id'], ');return false;">'; ?><img src="<?php echo $WT_IMAGES['remove'];?>" border="0" alt="<?php echo WT_I18N::translate('Remove'); ?>" /></a></td>
+	<td><a href="#" onclick="delete_place(<?php echo $place['place_id'], ');return false;">'; ?><img src="<?php echo $WT_IMAGES['remove'];?>" border="0" alt="<?php echo WT_I18N::translate('Remove'); ?>" /></a></td>
 <?php       } else { ?>
 		<td><img src="<?php echo $WT_IMAGES['remove_grey'];?>" border="0" alt="" /> </td>
 <?php       } ?>
@@ -631,7 +631,7 @@ foreach ($placelist as $place) {
 </div>
 <table id="gm_manage">
 	<tr>
-		<td colspan="3"><a href="javascript:;" onclick="add_place_location(<?php echo $parent; ?>);return false;"><?php echo WT_I18N::translate('Add place'); ?></a><?php echo help_link('PL_ADD_LOCATION','googlemap'); ?></td>
+		<td colspan="3"><a href="#" onclick="add_place_location(<?php echo $parent; ?>);return false;"><?php echo WT_I18N::translate('Add place'); ?></a><?php echo help_link('PL_ADD_LOCATION','googlemap'); ?></td>
 	</tr>
 	<tr>
 		<td><a href="module.php?mod=googlemap&mod_action=admin_places&action=ImportGedcom&mode=curr"><?php echo WT_I18N::translate('Import from current GEDCOM'); ?></a><?php echo help_link('PL_IMPORT_GEDCOM','googlemap'); ?></td>

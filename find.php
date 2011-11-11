@@ -305,7 +305,7 @@ if ($type == 'media') {
 	echo "<tr><td class=\"list_label width10\" wstyle=\"padding: 5px;\">";
 	echo "<input type=\"checkbox\" name=\"showthumb\" value=\"true\"";
 	if ($showthumb) echo "checked=\"checked\"";
-	echo "onclick=\"javascript: this.form.submit();\" />", WT_I18N::translate('Show thumbnails');
+	echo "onclick=\"#\" onclick=\"this.form.submit();\" />", WT_I18N::translate('Show thumbnails');
 	echo "</td></tr>";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
 	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\" />&nbsp;";
@@ -605,7 +605,7 @@ echo "</td></tr>";
 echo "</table>"; // Close table with find options
 
 echo "<br />";
-echo "<a href=\"javascript:;\" onclick=\"if (window.opener.showchanges) window.opener.showchanges(); window.close();\">", WT_I18N::translate('Close Window'), "</a><br />";
+echo "<a href=\"#\" onclick=\"if (window.opener.showchanges) window.opener.showchanges(); window.close();\">", WT_I18N::translate('Close Window'), "</a><br />";
 echo "<br />";
 
 if ($action=="filter") {
@@ -748,7 +748,7 @@ if ($action=="filter") {
 						//-- thumbnail field
 						if ($showthumb) {
 							echo "<td class=\"list_value $TEXT_DIRECTION width10\">";
-							if (isset($media["THUMB"])) echo "<a href=\"javascript:;\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\"><img src=\"", filename_decode($media["THUMB"]), "\" border=\"0\" width=\"50\" alt=\"\" /></a>";
+							if (isset($media["THUMB"])) echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\"><img src=\"", filename_decode($media["THUMB"]), "\" border=\"0\" width=\"50\" alt=\"\" /></a>";
 							else echo "&nbsp;";
 						}
 
@@ -762,10 +762,10 @@ if ($action=="filter") {
 							echo "<br />";
 						}
 						if (!$embed) {
-							echo "<a href=\"javascript:;\" onclick=\"pasteid('", addslashes($media["FILE"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
+							echo "<a href=\"#\" onclick=\"pasteid('", addslashes($media["FILE"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
 						}
-						else echo "<a href=\"javascript:;\" onclick=\"pasteid('", $media["XREF"], "', '", addslashes($media["TITL"]), "', '", addslashes($media["THUMB"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
-						echo "<a href=\"javascript:;\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\">", WT_I18N::translate('View'), "</a><br />";
+						else echo "<a href=\"#\" onclick=\"pasteid('", $media["XREF"], "', '", addslashes($media["TITL"]), "', '", addslashes($media["THUMB"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
+						echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\">", WT_I18N::translate('View'), "</a><br />";
 						if (!$media["EXISTS"] && !isFileExternal($media["FILE"])) echo $media["FILE"], "<br /><span class=\"error\">", WT_I18N::translate('The filename entered does not exist.'), "</span><br />";
 						else if (!isFileExternal($media["FILE"]) && !empty($imgsize[0])) {
 							echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize[0].' × '.$imgsize[1]);
@@ -832,7 +832,7 @@ if ($action=="filter") {
 				uasort($revplacelist, "utf8_strcasecmp");
 				echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
 				foreach ($revplacelist as $place) {
-					echo "<li><a href=\"javascript:;\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", PrintReady($place), "</a></li>";
+					echo "<li><a href=\"#\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", PrintReady($place), "</a></li>";
 				}
 				echo "</ul></td></tr>";
 				echo "<tr><td class=\"list_label\">", WT_I18N::translate('Places found'), " ", $ctplace;
