@@ -92,6 +92,14 @@ if (WT_USE_LIGHTBOX) {
 // TODO: these should be moved to their respective module/block
 echo WT_JS_START;
 ?>
+  jQuery(document).ready(function() {
+	jQuery("#index_full_blocks").sortable({placeholder: 'ui-state-highlight', forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move'});
+	jQuery("#index_small_blocks").sortable({placeholder: 'ui-state-highlight', forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', connectWith: '#index_main_blocks'});
+	jQuery("#index_main_blocks").sortable({placeholder: 'ui-state-highlight', forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', connectWith: '#index_small_blocks'});
+
+	jQuery( "#index_full_blocks", "#index_small_blocks", "#index_main_blocks" ).disableSelection();
+	});
+
 	function refreshpage() {
 		window.location = 'index.php?ctype=<?php echo $ctype; ?>';
 	}
@@ -108,6 +116,7 @@ echo WT_JS_START;
 <?php
 echo WT_JS_END;
 //-- start of main content section
+echo '<div id="home-page">';
 if ($ctype=='user') {
 	echo '<h1 align="center">', WT_I18N::translate('My page'), '</h1>';
 }
@@ -131,7 +140,6 @@ if ($blocks['main']) {
 	}
 	echo '</div>';
 }
-
 if ($blocks['side']) {
 	if ($blocks['main']) {
 		echo '<div id="index_small_blocks">';
@@ -163,4 +171,5 @@ if (WT_USER_IS_ADMIN && $ctype=='gedcom' && !in_array('gedcom_block', $blocks['m
 	echo '<div align="center">';
 	echo "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1');\">".WT_I18N::translate('Change the blocks on this page').'</a>';
 	echo '</div>';
+	echo '</div>';//close 'home-page'
 }

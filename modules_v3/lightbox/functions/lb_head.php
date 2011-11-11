@@ -54,9 +54,6 @@ $reorder=safe_get('reorder', '1', '0');
 </script>
 
 <?php
-// Find if indi and family associated media exists and then count them ( $tot_med_ct)
-require_once WT_ROOT.'includes/media_reorder_count.php';
-
 // If in re-order mode do not show header links, but instead, show drag and drop title.
 if (isset($reorder) && $reorder==1) {
 	echo '<center><b>', WT_I18N::translate('Drag-and-drop thumbnails to re-order media items'), '</b></center>';

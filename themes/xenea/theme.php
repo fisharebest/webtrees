@@ -107,6 +107,7 @@ $WT_IMAGES=array(
 	'relationship'=>WT_THEME_URL.'images/relationship.png',
 	'reminder'=>WT_THEME_URL.'images/reminder.png',
 	'remove'=>WT_THEME_URL.'images/delete.png',
+	'reorder'=>WT_THEME_URL.'images/reorder_images.png',
 	'reports'=>WT_THEME_URL.'images/report.png',
 	'repository'=>WT_THEME_URL.'images/repository.png',
 	'repo-list'=>WT_THEME_URL.'images/repository.png',
