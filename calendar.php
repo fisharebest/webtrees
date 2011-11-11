@@ -417,10 +417,10 @@ case 'today':
 	echo "<table class=\"center {$TEXT_DIRECTION} width100\"><tr>";
 	// Table headings
 	echo "<td class=\"descriptionbox center width50\">";
-		if (isset($WT_IMAGES['indis'])) echo "<img id=\"calendar_img_indi\" src=\"{$WT_IMAGES['indis']}\" border=\"0\" title=\"", WT_I18N::translate('Individuals'), "\" alt=\"", WT_I18N::translate('Individuals'), "\" />&nbsp;&nbsp;&nbsp;";
+		if (isset($WT_IMAGES['indis'])) echo "<img id=\"calendar_img_indi\" src=\"{$WT_IMAGES['indis']}\" title=\"", WT_I18N::translate('Individuals'), "\" alt=\"", WT_I18N::translate('Individuals'), "\">&nbsp;&nbsp;&nbsp;";
 		echo WT_I18N::translate('Individuals'), "</td>";
 	echo "<td class=\"descriptionbox center width50\">";
-		if (isset($WT_IMAGES['cfamily'])) echo "<img id=\"calendar_img_fam\" src=\"{$WT_IMAGES['cfamily']}\" border=\"0\" title=\"", WT_I18N::translate('Families'), "\" alt=\"", WT_I18N::translate('Families'), "\" />&nbsp;&nbsp;&nbsp;";
+		if (isset($WT_IMAGES['cfamily'])) echo "<img id=\"calendar_img_fam\" src=\"{$WT_IMAGES['cfamily']}\" title=\"", WT_I18N::translate('Families'), "\" alt=\"", WT_I18N::translate('Families'), "\">&nbsp;&nbsp;&nbsp;";
 		echo WT_I18N::translate('Families'), "</td>";
 	echo "</tr><tr>";
 	// Table rows
