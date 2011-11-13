@@ -1205,7 +1205,8 @@ function format_surname_table($surnames, $type) {
 			"aaSorting": [],
 			"aoColumns": [
 				/*  0 name      */ {},
-				/*  1 count		*/ {"sClass": "center"}
+				/*  1 count		*/ {"sClass": "center"},
+				/*  2 SORT		*/ {"bVisible": false}
 			],
 			});
 			jQuery(".surname-list").css("visibility", "visible");
@@ -1222,6 +1223,7 @@ function format_surname_table($surnames, $type) {
 		'<tr>'.
 		'<th>'.WT_Gedcom_Tag::getLabel('SURN').'</th>'.
 		'<th>'.$col_heading.'</th>'.
+		'<th>&nbsp;</th>'.
 		'</tr>';
 
 	$tbody='';
@@ -1264,20 +1266,25 @@ function format_surname_table($surnames, $type) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal=count($indis);
-				$tbody.=WT_I18N::number($subtotal);
+				$tbody.= WT_I18N::number($subtotal);
 			}
 		} else {
-			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			$subtotal=0;
+			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal+=count($indis);
 				$tbody.=WT_I18N::number(count($indis)).'<br />';
 			}
 			$tbody.=WT_I18N::number($subtotal);
 		}
-		$tbody.='</td></tr>';
+		$tbody.='</td>';
+		// add hidden numeric sort column
+		$tbody.='<td>'. $subtotal. '</td></tr>';
 	}
 
+	
+	
+	
 //	$tfoot=
 //		'<tr>'.
 //		'<td class="list_item">&nbsp;</td>'.
