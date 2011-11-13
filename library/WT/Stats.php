@@ -3557,7 +3557,7 @@ class WT_Stats {
 			}
 			switch ($type) {
 			case 'table':
-				$common[] = '<tr><td class="optionbox">'.PrintReady(utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1))).'</td><td class="optionbox">'.$total.'</td></tr>';
+				$common[] = '<tr><td>'.PrintReady(utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1))).'</td><td>'.$total.'</td></tr>';
 				break;
 			case 'list':
 				$common[] = "\t<li>{$totL}".PrintReady(utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1)))."{$totR}</li>\n";
@@ -3571,7 +3571,7 @@ class WT_Stats {
 			switch ($type) {
 			case 'table':
 				$lookup=array('M'=>WT_I18N::translate('Male'), 'F'=>WT_I18N::translate('Female'), 'U'=>WT_I18N::translate_c('unknown gender', 'Unknown'), 'B'=>WT_I18N::translate('All'));
-				return '<table><tr><td colspan="2" class="descriptionbox center">'.$lookup[$sex].'</td></tr><tr><td class="descriptionbox center">'.WT_Gedcom_Tag::getLabel('GIVN').'</td><td class="descriptionbox center">'.WT_I18N::translate('Count').'</td></tr>'.join('', $common).'</table>';
+				return '<table class="givn-list"><thead><tr><th class="ui-state-default" colspan="2">'.$lookup[$sex].'</th></tr><tr><th>'.WT_I18N::translate('Name').'</th><th>'.WT_I18N::translate('Count').'</th></tr></thead><tbody>'.join('', $common).'</tbody></table>';
 			case 'list':
 				return "<ul>\n".join("\n", $common)."</ul>\n";
 			case 'nolist':

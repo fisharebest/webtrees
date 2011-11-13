@@ -41,7 +41,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $TEXT_DIRECTION, $ctype, $WT_IMAGES;
+		global $TEXT_DIRECTION, $ctype, $WT_IMAGES, $controller;
 
 		$num=get_block_setting($block_id, 'num', 10);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
@@ -91,13 +91,32 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			break;
 		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
+			$controller
+				->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+				->addInlineJavaScript('
+					jQuery(".givn-list").dataTable({
+						"sDom": \'t\',
+						"bAutoWidth":false,
+						"bPaginate": false,
+						"bLengthChange": false,
+						"bFilter": false,
+						"bInfo": false,
+						"bJQueryUI": true,
+						"aaSorting": [[1,"desc"]],
+						"aoColumns": [
+							/* 0-name */ {},
+							/* 1-count */ { "sClass": "center"}
+						]
+					});
+					jQuery(".givn-list").css("visibility", "visible");
+					jQuery(".loading-image").css("display", "none");
+				');
 			$params=array(1,$num,'rcount');
-			$content.='<table class="center">
-						<tr valign="top"><td>'.$stats->commonGivenFemaleTable($params).'</td>
+			$content.='<div class="loading-image">&nbsp;</div>
+						<table style="margin:auto;">
+						<tr valign="top">
+						<td>'.$stats->commonGivenFemaleTable($params).'</td>
 						<td>'.$stats->commonGivenMaleTable($params).'</td>';
-			if ($showUnknown) {
-				$content.='<td>'.$stats->commonGivenUnknownTable($params).'</td>';
-			}
 			$content.='</tr></table>';
 			break;
 		}
@@ -134,7 +153,6 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'num', safe_POST_integer('num', 1, 10000, 10));
 			set_block_setting($block_id, 'infoStyle', safe_POST('infoStyle', array('list', 'table'), 'table'));
-			set_block_setting($block_id, 'showUnknown', safe_POST_bool('showUnknown'));
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
@@ -154,13 +172,6 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		echo WT_I18N::translate('Presentation style');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('infoStyle', array('list'=>WT_I18N::translate('list'), 'table'=>WT_I18N::translate('table')), null, $infoStyle, '');
-		echo '</td></tr>';
-
-		$showUnknown=get_block_setting($block_id, 'showUnknown', true);
-		echo '<tr><td class="descriptionbox wrap width33">';
-		echo /* I18N: label for yes/no option */ WT_I18N::translate('Include people whose gender is unknown');
-		echo '</td><td class="optionbox">';
-		echo edit_field_yes_no('showUnknown', $showUnknown);
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', false);
