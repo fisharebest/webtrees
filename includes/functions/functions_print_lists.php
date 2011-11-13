@@ -1193,6 +1193,25 @@ function print_media_table($datalist) {
 // $surnames - array (of SURN, of array of SPFX_SURN, of array of PID)
 // $type     - "indilist" (counts of individuals) or "famlist" (counts of spouses)
 function format_surname_table($surnames, $type) {
+	global $controller;
+	$controller
+		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavaScript('
+			jQuery(".surname-list").dataTable( {
+			"sDom": \'t\',
+			"bJQueryUI": true,
+			"bAutoWidth":false,
+			"bPaginate": false,
+			"aaSorting": [],
+			"aoColumns": [
+				/*  0 name      */ {},
+				/*  1 count		*/ {"sClass": "center"}
+			],
+			});
+			jQuery(".surname-list").css("visibility", "visible");
+			jQuery(".loading-image").css("display", "none");
+		');
+
 	if ($type=='famlist') {
 		$col_heading=WT_I18N::translate('Spouses');
 	} else {
@@ -1201,8 +1220,8 @@ function format_surname_table($surnames, $type) {
 
 	$thead=
 		'<tr>'.
-		'<th class="list_label">'.WT_Gedcom_Tag::getLabel('SURN').'</th>'.
-		'<th class="list_label">'.$col_heading.'</th>'.
+		'<th>'.WT_Gedcom_Tag::getLabel('SURN').'</th>'.
+		'<th>'.$col_heading.'</th>'.
 		'</tr>';
 
 	$tbody='';
@@ -1218,11 +1237,11 @@ function format_surname_table($surnames, $type) {
 		// Row counter
 		$tbody.='<tr>';
 		// Surname
-		$tbody.='<td class="list_value">';
+		$tbody.='<td>';
 		if (count($surns)==1) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
-				$tbody.='<a href="'.$url.'" class="list_item name1">'.htmlspecialchars($spfxsurn).'</a>';
+				$tbody.='<a href="'.$url.'">'.htmlspecialchars($spfxsurn).'</a>';
 				$unique_surn[$spfxsurn]=true;
 				foreach (array_keys($indis) as $pid) {
 					$unique_indi[$pid]=true;
@@ -1231,7 +1250,7 @@ function format_surname_table($surnames, $type) {
 		} else {
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn=>$indis) {
-				$tbody.='<a href="'.$url.'" class="list_item name1">'.htmlspecialchars($spfxsurn).'</a><br />';
+				$tbody.='<a href="'.$url.'">'.htmlspecialchars($spfxsurn).'</a><br />';
 				$unique_surn[$spfxsurn]=true;
 				foreach (array_keys($indis) as $pid) {
 					$unique_indi[$pid]=true;
@@ -1240,7 +1259,7 @@ function format_surname_table($surnames, $type) {
 		}
 		$tbody.='</td>';
 		// Surname count
-		$tbody.='<td class="list_value center">';
+		$tbody.='<td>';
 		if (count($surns)==1) {
 			// Single surname variant
 			foreach ($surns as $spfxsurn=>$indis) {
@@ -1259,21 +1278,22 @@ function format_surname_table($surnames, $type) {
 		$tbody.='</td></tr>';
 	}
 
-	$tfoot=
-		'<tr>'.
-		'<td class="list_item">&nbsp;</td>'.
-		'<td class="list_label name2">'.
-		/* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi))).
-		'<br/>'.
-		/* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).
-		'</td>'.
-		'</tr>';
+//	$tfoot=
+//		'<tr>'.
+//		'<td class="list_item">&nbsp;</td>'.
+//		'<td class="list_label name2">'.
+//		/* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi))).
+//		'<br/>'.
+//		/* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).
+//		'</td>'.
+//		'</tr>';
 
 	return
-		'<table class="list_table surname-list">'.
+		'<div class="loading-image">&nbsp;</div>'.
+		'<table class="surname-list">'.
 		'<thead>'.$thead.'</thead>'.
-		'<tfoot>'.$tfoot.'</tfoot>'.
 		'<tbody>'.$tbody.'</tbody>'.
+//		'<tfoot>'.$tfoot.'</tfoot>'.
 		'</table>';
 }
 
