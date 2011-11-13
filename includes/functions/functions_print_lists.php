@@ -1205,7 +1205,7 @@ function format_surname_table($surnames, $type) {
 			"aaSorting": [],
 			"aoColumns": [
 				/*  0 name      */ {},
-				/*  1 count		*/ {"sClass": "center"},
+				/*  1 count		*/ {"iDataSort": 2, "sClass": "center"},
 				/*  2 SORT		*/ {"bVisible": false}
 			],
 			});
