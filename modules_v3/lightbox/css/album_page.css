@@ -45,6 +45,8 @@ li.li_old{border:2px solid red;}
 #thumblist_1 a img,#thumblist_2 a img,#thumblist_3 a img,#thumblist_4 a img,#thumblist_5 a img,#thumblist_1a a img,#thumblist_2a a img,#thumblist_3a a img,#thumblist_4a a img,#thumblist_5a a img{border:1px; border-style:none; padding:1px;}
 #thumblist_1 a:hover img,#thumblist_2 a:hover img,#thumblist_3 a:hover img,#thumblist_4 a:hover img,#thumblist_5 a:hover img,#thumblist_1a a:hover img,#thumblist_2a a:hover img,#thumblist_3a a:hover img,#thumblist_4a a:hover img,#thumblist_5a a:hover img{background-color:#BDB071; border:0; border-style:none; padding:1px;}
 .clearlist:after{clear:both; content:"."; display:block; height:0; visibility:hidden;}
+#lightbox_content span {padding:10px;}
+#lightbox_content span img {vertical-align:top;}
 /* Hides from IE-mac \ */
 * html .clearfix{height:1%;}
 #clearlist{display:block;}
