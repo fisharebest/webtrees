@@ -167,7 +167,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function loadAjax() {
-		return false;
+		return true;
 	}
 
 	// Implement class WT_Module_Block
