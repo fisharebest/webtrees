@@ -51,7 +51,7 @@ body {
 /* ================= */
 /*   Header Layout   */
 
-#header {height: 29px; background-image:url(images/clouds.png);}
+#header {height: 30px; background-image:url(images/clouds.png);}
 .title {display: block; float: left; margin-top: 5px; margin-left: 12px; font-size: 24px; vertical-align:bottom; width: 70%; text-decoration: none;}
 .hsearch {display: block; float: right; padding-top: 5px; padding-right: 10px;}
 .title .gedcomtitle {text-decoration:none; color: #003399;}
