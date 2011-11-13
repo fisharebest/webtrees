@@ -45,15 +45,15 @@ function utf8_script($string) {
 		}
 		// Try language-specific conversion before generic conversion
 		if (strpos(WT_UTF8_LATIN_CHARACTERS, $chr)!==false) {
-			return 'latin';
+			return 'Latn';
 		} elseif (strpos(WT_UTF8_CYRILLIC_CHARACTERS, $chr)!==false) {
-			return 'cyrillic';
+			return 'Cyrl';
 		} elseif (strpos(WT_UTF8_HEBREW_CHARACTERS, $chr)!==false) {
-			return 'hebrew';
+			return 'Hebr';
 		} elseif (strpos(WT_UTF8_GREEK_CHARACTERS, $chr)!==false) {
-			return 'greek';
+			return 'Grek';
 		} elseif (strpos(WT_UTF8_ARABIC_CHARACTERS, $chr)!==false) {
-			return 'arabic';
+			return 'Arab';
 		}
 		$pos+=$chrlen;
 	}
@@ -64,12 +64,12 @@ function utf8_script($string) {
 // Determine whether a string contains LTR or RTL characters
 function utf8_direction($string) {
 	switch (utf8_script($string)) {
-	case 'latin':
-	case 'cyrillic':
-	case 'greek':
+	case 'Latn':
+	case 'Cyrl':
+	case 'Grek':
 		return 'ltr';
-	case 'arabic':
-	case 'hebrew':
+	case 'Arab':
+	case 'Hebr':
 		return 'rtl';
 	default:
 		return 'unknown';

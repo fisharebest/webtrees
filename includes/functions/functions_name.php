@@ -164,7 +164,7 @@ function DMSoundex($name) {
 
 	// Initialize
 	$name_script = utf8_script($name);
-	if ($name_script == 'hebrew' || $name_script == 'arabic') $noVowels = true;
+	if ($name_script == 'Hebr' || $name_script == 'Arab') $noVowels = true;
 	else $noVowels = false;
 	$lastPos = strlen($name) - 1;
 	$currPos = 0;

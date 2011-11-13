@@ -392,7 +392,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 		}
 		$textSpan = stripLRMRLM(substr($result, $lenStart+3, $spanEnd-$lenStart-3));
 		$langSpan = utf8_script($textSpan);
-		if ($langSpan == 'hebrew' || $langSpan == 'arabic') {
+		if ($langSpan == 'Hebr' || $langSpan == 'Arab') {
 			break;
 		}
 		$result = $startLTR . substr($result, $lenStart, $spanEnd-$lenStart) . substr($result, $spanEnd+$lenStart+$lenEnd);
@@ -1126,7 +1126,7 @@ function reverseText($text) {
 	$text = strip_tags(html_entity_decode($text,ENT_COMPAT,'UTF-8'));
 	$text = str_replace(array('&lrm;', '&rlm;', WT_UTF8_LRM, WT_UTF8_RLM), '', $text);
 	$textLanguage = utf8_script($text);
-	if ($textLanguage!='hebrew' && $textLanguage!='arabic') return $text;
+	if ($textLanguage!='Hebr' && $textLanguage!='Arab') return $text;
 
 	$reversedText = '';
 	$numbers = '';

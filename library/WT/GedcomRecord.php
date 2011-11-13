@@ -526,7 +526,7 @@ class WT_GedcomRecord {
 				switch (WT_LOCALE) {
 				case 'el':
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='greek') {
+						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Grek') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
@@ -534,7 +534,7 @@ class WT_GedcomRecord {
 					break;
 				case 'ru':
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='russian') {
+						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Cyrl') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
@@ -542,7 +542,7 @@ class WT_GedcomRecord {
 					break;
 				case 'he':
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='hebrew') {
+						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Hebr') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
@@ -550,7 +550,7 @@ class WT_GedcomRecord {
 					break;
 				case 'ar':
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='arabic') {
+						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Arab') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
@@ -558,7 +558,7 @@ class WT_GedcomRecord {
 					break;
 				default:
 					foreach ($this->getAllNames() as $n=>$name) {
-						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='latin') {
+						if ($name['type']!='_MARNM' && utf8_script($name['sort'])=='Latn') {
 							$this->_getPrimaryName=$n;
 							break;
 						}
