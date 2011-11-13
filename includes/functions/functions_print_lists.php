@@ -1423,7 +1423,6 @@ function format_surname_list($surnames, $style, $totals, $type) {
 
 // print a list of recent changes
 function print_changes_list($change_ids, $sort) {
-	global $SHOW_MARRIED_NAMES;
 	$n = 0;
 	$arr=array();
 	foreach ($change_ids as $change_id) {
@@ -1457,13 +1456,6 @@ function print_changes_list($change_ids, $sort) {
 			if ($value['record']->getAddName()) {
 				$return .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 			}
-			if ($SHOW_MARRIED_NAMES) {
-				foreach ($value['record']->getAllNames() as $name) {
-					if ($name['type'] == '_MARNM') {
-						$return .= '<div><a title="' . WT_Gedcom_Tag::getLabel('_MARNM') . '" href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $name['full'] . '</a></div>';
-					}
-				}
-			}
 		}
 		$return .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(false), $value['record']->LastChangeUser());
 		$return .= '</div>';
@@ -1473,7 +1465,7 @@ function print_changes_list($change_ids, $sort) {
 
 // print a table of recent changes
 function print_changes_table($change_ids, $sort) {
-	global $SHOW_MARRIED_NAMES, $TEXT_DIRECTION, $WT_IMAGES, $controller;
+	global $TEXT_DIRECTION, $WT_IMAGES, $controller;
 
 	$return = '';
 	$n = 0;
@@ -1568,19 +1560,10 @@ function print_changes_table($change_ids, $sort) {
 		$return .= '<td class="wrap">';
 		$return .= '<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
 		if ($indi) {
-			$return .= '<div class="indent">';
 			$addname = $record->getAddName();
 			if ($addname) {
-				$return .= '<a href="'. $record->getHtmlUrl() .'">'. $addname . '</a>';
+				$return .= '<div class="indent"><a href="'. $record->getHtmlUrl() .'">'. $addname . '</a></div>';
 			}
-			if ($SHOW_MARRIED_NAMES) {
-				foreach ($record->getAllNames() as $name) {
-					if ($name['type'] == '_MARNM') {
-						$return .= '<div><a title="'. WT_Gedcom_Tag::getLabel('_MARNM') . '" href="'. $record->getHtmlUrl() .'">'. $name['full'] . '</a></div>';
-					}
-				}
-			}
-			$return .= '</div>'; //class='indent'
 		}
 		$return .= "</td>";
 		//-- Last change date/time
