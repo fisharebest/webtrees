@@ -27,8 +27,6 @@
 define('WT_SCRIPT_NAME', 'index.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Base();
-
 // The only option for action is "ajax"
 $action=safe_REQUEST($_REQUEST, 'action', 'ajax');
 
@@ -52,9 +50,12 @@ $all_blocks=WT_Module::getActiveBlocks();
 
 // We generate individual blocks using AJAX
 if ($action=='ajax') {
-	// We have finished writing session data, so release the lock
-	Zend_Session::writeClose();
-	header('Content-Type: text/html; charset=UTF-8');
+	$controller=new WT_Controller_Ajax();
+	$controller
+		->pageHeader()
+		->addExternalJavaScript(WT_JQUERY_URL)
+		->addExternalJavaScript(WT_JQUERYUI_URL);
+
 	// Check we're displaying an allowable block.
 	$block_id=safe_GET('block_id');
 	if (array_key_exists($block_id, $blocks['main'])) {
@@ -77,6 +78,8 @@ if ($action=='ajax') {
 	}
 	exit;
 }
+
+$controller=new WT_Controller_Base();
 
 if ($ctype=='user') {
 	$controller->setPageTitle(WT_I18N::translate('My page'));

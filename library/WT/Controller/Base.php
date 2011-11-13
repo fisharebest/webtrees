@@ -30,11 +30,11 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Controller_Base {
 	// Page header information
-	const   DOCTYPE       ='<!DOCTYPE html>';  // HTML5
-	private $canonical_url='';
-	private $meta_robots  ='noindex,nofollow'; // Most pages are not intended for robots
-	private $page_header  =false;              // Have we printed a page header?
-	private $page_title   =WT_WEBTREES;        // <head><title> $page_title </title></head>
+	const     DOCTYPE       ='<!DOCTYPE html>';  // HTML5
+	private   $canonical_url='';
+	private   $meta_robots  ='noindex,nofollow'; // Most pages are not intended for robots
+	protected $page_header  =false;              // Have we printed a page header?
+	private   $page_title   =WT_WEBTREES;        // <head><title> $page_title </title></head>
 
 	// The controller accumulates JavaScript (inline and external), and renders it in the footer
 	const JS_START="\n<script type=\"text/javascript\">\n//<![CDATA[\n";
@@ -140,18 +140,20 @@ class WT_Controller_Base {
 	// Now display them.
 	public function getJavaScript() {
 		// Load external libraries first
-		$html=PHP_EOL;
+		$html='';
 		foreach (array_keys($this->external_javascript) as $script_name) {
-			$html.='<script type="text/javascript" src="'.htmlspecialchars($script_name).'"></script>'.PHP_EOL;
+			$html.=PHP_EOL.'<script type="text/javascript" src="'.htmlspecialchars($script_name).'"></script>';
 		}
 		// Process the scripts, in priority order
-		$html.=self::JS_START;
-		foreach ($this->inline_javascript as $scripts) {
-			foreach ($scripts as $script) {
-				$html.=$script.PHP_EOL;
+		if ($this->inline_javascript) {
+			$html.=self::JS_START;
+			foreach ($this->inline_javascript as $scripts) {
+				foreach ($scripts as $script) {
+					$html.=$script.PHP_EOL;
+				}
 			}
+			$html.=self::JS_END;
 		}
-		$html.=self::JS_END;
 
 		$this->inline_javascript=array(
 			self::JS_PRIORITY_HIGH  =>array(),
