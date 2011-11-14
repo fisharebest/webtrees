@@ -45,10 +45,9 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$num=get_block_setting($block_id, 'num', 10);
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');
-		$showUnknown=get_block_setting($block_id, 'showUnknown', true);
 		$block=get_block_setting($block_id, 'block', false);
 		if ($cfg) {
-			foreach (array('num', 'infoStyle', 'showUnknown', 'block') as $name) {
+			foreach (array('num', 'infoStyle', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name=$cfg[$name];
 				}
@@ -83,11 +82,6 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			$totals=$stats->commonGivenMaleTotals($params);
 			if ($totals) {
 				$content.='<b>'.WT_I18N::translate('Males').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
-			}
-			//List Unknown names
-			$totals=$stats->commonGivenUnknownTotals($params);
-			if ($totals && $showUnknown) {
-				$content.='<b>'.WT_I18N::translate('Unknown').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
 			}
 			break;
 		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
