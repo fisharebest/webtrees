@@ -174,7 +174,6 @@ if (!$SEARCH_SPIDER) {
 	}
 	echo '</p>';
 }
-echo '</div>';
 
 if ($show=='indi' || $show=='surn') {
 	$surns=WT_Query_Name::surnames($surname, $alpha, $show_marnm, true, WT_GED_ID);
