@@ -675,7 +675,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'SHOW_LEVEL2_NOTES',            $SHOW_LEVEL2_NOTES);
 	@set_gedcom_setting($ged_id, 'SHOW_LIST_PLACES',             $SHOW_LIST_PLACES);
 	@set_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES',            $SHOW_LIVING_NAMES);
-	@set_gedcom_setting($ged_id, 'SHOW_MARRIED_NAMES',           $SHOW_MARRIED_NAMES);
 	@set_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD',          $SHOW_MEDIA_DOWNLOAD);
 	@set_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE',             $SHOW_PARENTS_AGE);
 	@set_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES',         $SHOW_PEDIGREE_PLACES);

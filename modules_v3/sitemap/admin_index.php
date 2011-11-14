@@ -35,7 +35,7 @@ $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Generate Sitemap files'));
 
-global $GEDCOM, $SHOW_MARRIED_NAMES;
+global $GEDCOM;
 
 $action = safe_REQUEST($_REQUEST, 'action', WT_REGEX_XREF);
 $welcome = safe_REQUEST($_REQUEST, 'welcome', WT_REGEX_XREF);
@@ -123,7 +123,7 @@ if ($action=="sendFiles") {
 	}
 
 	if (isset($fam_lists)) {
-		foreach (WT_Query_Name::surnameAlpha($SHOW_MARRIED_NAMES, true, $index) as $letter=>$count) {
+		foreach (WT_Query_Name::surnameAlpha(true, true, $index) as $letter=>$count) {
 			if ($letter!='@') {
 				echo " <url>\n";
 				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "famlist.php?alpha=", urlencode($letter), "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";
@@ -135,7 +135,7 @@ if ($action=="sendFiles") {
 	}
 
 	if (isset($indi_lists)) {
-		foreach (WT_Query_Name::surnameAlpha($SHOW_MARRIED_NAMES, false, $index) as $letter=>$count) {
+		foreach (WT_Query_Name::surnameAlpha(true, false, $index) as $letter=>$count) {
 			if ($letter!='@') {
 				echo " <url>\n";
 				echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "indilist.php?alpha=", urlencode($letter), "&amp;ged=", rawurlencode($gedcom_name), "</loc>\n";

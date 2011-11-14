@@ -1852,11 +1852,6 @@ case 'SHOW_LIVING_NAMES':
 	$text=WT_I18N::translate('Should the names of living people be shown to visitors?');
 	break;
 
-case 'SHOW_MARRIED_NAMES':
-	$title=WT_I18N::translate('Show married names on individual list');
-	$text=WT_I18N::translate('This option will show the married names of females on the Individual list.  This option requires that you calculate the married names when you import the GEDCOM file.');
-	break;
-
 case 'SHOW_MEDIA_DOWNLOAD':
 	$title=WT_I18N::translate('Show download link in media viewer');
 	$text=WT_I18N::translate('The Media Viewer can show a link which, when clicked, will download the Media file to the local PC.<br /><br />You may want to hide the download link for security reasons.');
@@ -2129,18 +2124,6 @@ case 'add_wife':
 case 'age_differences':
 	$title=WT_I18N::translate('Show date differences');
 	$text=WT_I18N::translate('When this option box is checked, the «Close Relatives» tab will show date differences as follows:<br /><ul><li>birth dates of partners.<br />A negative value indicates that the second partner is older than the first.<br /><br /></li><li>marriage date and birth date of the first child.<br />A negative value here indicates that the child was born before the marriage date or that either the birth date or the marriage date is wrong.<br /><br /></li><li>birth dates of siblings.<br />A negative value here indicates that either the order of the children is wrong or that one of the birth dates is wrong.</li></ul>');
-	break;
-
-case 'alpha':
-	$title=
-		/* I18N: Replace A-Z with the first/last letters from your own alphabet. */
-		WT_I18N::translate('A-Z list of names');
-	$text=
-		/* I18N: Replace A-Z with the first/last letters from your own alphabet. Note "…" and "None" should be the same as your translation of these individual terms. */
-		WT_I18N::translate('The A-Z list allows you to select all names beginning with a certain letter.  Unknown names are listed under “…” and people who do not have a surname are listed under “None”.').
-		'</p><p>'.
-		WT_I18N::translate('If a person’s name is not known, it should be left blank.  If you enter “Unknown” as a name, it will be listed under “U”.').
-		'</p>';
 	break;
 
 case 'ancestry_chart':
@@ -2733,11 +2716,6 @@ case 'show_full':
 	$text=WT_I18N::translate('With this option you can either show or hide all details in the Name boxes.  You can display more boxes on one screen when the details are hidden.<br /><br />When all details are hidden, the Zoom icon described below is not shown.  However, if the administrator has enabled the Zoom function, the entire box will act like a Zoom icon to reveal full details about the person.<br /><br />When the details are not hidden and the Zoom function, identified by a magnifying glass icon, has been enabled by the administrator, you can reveal even more details about that person.  If you normally have to click on the Zoom icon to zoom in, you can reveal additional hidden details by clicking that icon here.  Similarly, if you can zoom in by hovering over the Zoom icon, hidden details will be revealed by hovering over that icon here.<br /><br />If you have clicked on the Zoom icon to reveal more details, you can restore the box to its normal level of detail by clicking on the Zoom icon again.  If you have revealed more details by simply moving the mouse pointer over the Zoom icon, the box will be restored to its normal level of detail when you move the mouse pointer away from the Zoom icon.');
 	break;
 
-case 'show_marnm':
-	$title=WT_I18N::translate('Include married names');
-	$text=WT_I18N::translate('The individual and family list pages can either include or exclude married names.  This option can be helpful when searching for individuals or families where you only know the married name.  Married names can only be included if they already exist in the database.<br /><br />On the family list, this value defaults to exclude.  On the individual list, the default value is set in the GEDCOM Configuration page.<br /><br />When you change this option, your selection will be remembered until you log off or your session ends.');
-	break;
-
 case 'show_spouse':
 	$title=WT_I18N::translate('Show spouses');
 	$text=WT_I18N::translate('By default this chart does not show spouses for the descendants because it makes the chart harder to read and understand.  Turning this option on will show spouses on the chart.');
@@ -2746,11 +2724,6 @@ case 'show_spouse':
 case 'simple_filter':
 	$title=WT_I18N::translate('Simple search filter');
 	$text=WT_I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.');
-	break;
-
-case 'skip_sublist':
-	$title=WT_I18N::translate('Skip surname lists');
-	$text=WT_I18N::translate('The standard setting is that, after you have clicked a letter of the Alphabetical index, you will get a sub-list with surnames.  If you click this link, all individuals with surnames that have the currently selected initial letter will be displayed immediately. Thereafter, the list of individuals will be displayed directly whenever you click on a new initial letter in the Alphabetical list.<br /><br />To reverse this action, click on the Show Surname lists link.');
 	break;
 
 case 'stat_gax':

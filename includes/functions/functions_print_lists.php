@@ -1191,8 +1191,8 @@ function print_media_table($datalist) {
 
 // Print a table of surnames, for the top surnames block, the indi/fam lists, etc.
 // $surnames - array (of SURN, of array of SPFX_SURN, of array of PID)
-// $type     - "indilist" (counts of individuals) or "famlist" (counts of spouses)
-function format_surname_table($surnames, $type) {
+// $type     - "indilist.php" (counts of individuals) or "famlist.php" (counts of spouses)
+function format_surname_table($surnames, $script) {
 	global $controller;
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1213,7 +1213,7 @@ function format_surname_table($surnames, $type) {
 			jQuery(".loading-image").css("display", "none");
 		');
 
-	if ($type=='famlist') {
+	if ($script=='famlist.php') {
 		$col_heading=WT_I18N::translate('Spouses');
 	} else {
 		$col_heading=WT_I18N::translate('Individuals');
@@ -1232,9 +1232,9 @@ function format_surname_table($surnames, $type) {
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indi/fam surname list
 		if ($surn) {
-			$url=$type.'.php?surname='.rawurlencode($surn).'&amp;ged='.WT_GEDURL;
+			$url=$script.'?surname='.rawurlencode($surn).'&amp;ged='.WT_GEDURL;
 		} else {
-			$url=$type.'.php?alpha=,&amp;ged='.WT_GEDURL;
+			$url=$script.'?alpha=,&amp;ged='.WT_GEDURL;
 		}
 		// Row counter
 		$tbody.='<tr>';
@@ -1252,7 +1252,7 @@ function format_surname_table($surnames, $type) {
 		} else {
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn=>$indis) {
-				$tbody.='<a href="'.$url.'">'.htmlspecialchars($spfxsurn).'</a><br />';
+				$tbody.='<a href="'.$url.'">'.htmlspecialchars($spfxsurn).'</a><br>';
 				$unique_surn[$spfxsurn]=true;
 				foreach (array_keys($indis) as $pid) {
 					$unique_indi[$pid]=true;
@@ -1273,7 +1273,7 @@ function format_surname_table($surnames, $type) {
 			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal+=count($indis);
-				$tbody.=WT_I18N::number(count($indis)).'<br />';
+				$tbody.=WT_I18N::number(count($indis)).'<br>';
 			}
 			$tbody.=WT_I18N::number($subtotal);
 		}
@@ -1308,7 +1308,7 @@ function format_surname_table($surnames, $type) {
 // @param $surnames array (of SURN, of array of SPFX_SURN, of array of PID)
 // @param $type string, indilist or famlist
 // @param $totals, boolean, show totals after each name
-function format_surname_tagcloud($surnames, $type, $totals) {
+function format_surname_tagcloud($surnames, $script, $totals) {
 	$cloud=new Zend_Tag_Cloud(
 		array(
 			'tagDecorator'=>array(
@@ -1339,8 +1339,8 @@ function format_surname_tagcloud($surnames, $type, $totals) {
 				'weight'=>count($indis),
 				'params'=>array(
 					'url'=>$surn ?
-						$type.'.php?surname='.urlencode($surn).'&amp;ged='.WT_GEDURL :
-						$type.'.php?alpha=,&amp;ged='.WT_GEDURL
+						$script.'?surname='.urlencode($surn).'&amp;ged='.WT_GEDURL :
+						$script.'?alpha=,&amp;ged='.WT_GEDURL
 				)
 			));
 		}
@@ -1353,16 +1353,16 @@ function format_surname_tagcloud($surnames, $type, $totals) {
 // @param $style, 1=bullet list, 2=semicolon-separated list, 3=tabulated list with up to 4 columns
 // @param $totals, boolean, show totals after each name
 // @param $type string, indilist or famlist
-function format_surname_list($surnames, $style, $totals, $type) {
+function format_surname_list($surnames, $style, $totals, $script) {
 	global $TEXT_DIRECTION, $GEDCOM;
 
 	$html=array();
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indilist
 		if ($surn) {
-			$url=$type.'.php?surname='.urlencode($surn).'&amp;ged='.rawurlencode($GEDCOM);
+			$url=$script.'?surname='.urlencode($surn).'&amp;ged='.rawurlencode($GEDCOM);
 		} else {
-			$url=$type.'.php?alpha=,&amp;ged='.rawurlencode($GEDCOM);
+			$url=$script.'?alpha=,&amp;ged='.rawurlencode($GEDCOM);
 		}
 		// If all the surnames are just case variants, then merge them into one
 		// Comment out this block if you want SMITH listed separately from Smith

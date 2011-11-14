@@ -85,10 +85,10 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $SHOW_MARRIED_NAMES, $WT_IMAGES, $UNKNOWN_NN;
+		global $WT_IMAGES, $UNKNOWN_NN;
 
 		// Fetch a list of the initial letters of all surnames in the database
-		$initials=WT_Query_Name::surnameAlpha($SHOW_MARRIED_NAMES, false, WT_GED_ID);
+		$initials=WT_Query_Name::surnameAlpha(true, false, WT_GED_ID);
 
 		$out = '<script type="text/javascript">
 		<!--
@@ -188,8 +188,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function getAlphaSurnames($alpha, $surname1='') {
-		global $SHOW_MARRIED_NAMES;
-		$surns=WT_Query_Name::surnames('', $alpha, $SHOW_MARRIED_NAMES, false, WT_GED_ID);
+		$surns=WT_Query_Name::surnames('', $alpha, true, false, WT_GED_ID);
 		$out = '<ul>';
 		foreach ($surns as $surname=>$surns) {
 			$out .= '<li id="sb_indi_'.$surname.'" class="sb_indi_surname_li"><a href="'.$surname.'" title="'.$surname.'" alt="'.$alpha.'" class="sb_indi_surname">'.$surname.'</a>';
@@ -207,8 +206,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function getSurnameIndis($alpha, $surname) {
-		global $SHOW_MARRIED_NAMES;
-		$indis=WT_Query_Name::individuals($surname, $alpha, '', $SHOW_MARRIED_NAMES, false, WT_GED_ID);
+		$indis=WT_Query_Name::individuals($surname, $alpha, '', true, false, WT_GED_ID);
 		$out = '<ul>';
 		foreach ($indis as $person) {
 			if ($person->canDisplayName()) {

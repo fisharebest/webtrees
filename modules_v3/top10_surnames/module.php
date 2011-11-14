@@ -90,20 +90,20 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 		switch ($infoStyle) {
 		case 'tagcloud':
 			uksort($all_surnames,'utf8_strcasecmp');
-			$content=format_surname_tagcloud($all_surnames, 'indilist', true);
+			$content=format_surname_tagcloud($all_surnames, 'indilist.php', true);
 			break;
 		case 'list':
 			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content=format_surname_list($all_surnames, '1', true, 'indilist');
+			$content=format_surname_list($all_surnames, '1', true, 'indilist.php');
 			break;
 		case 'array':
 			uasort($all_surnames,array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content=format_surname_list($all_surnames, '2', true, 'indilist');
+			$content=format_surname_list($all_surnames, '2', true, 'indilist.php');
 			break;
 		case 'table':
 		default:
 			uasort($all_surnames, array('top10_surnames_WT_Module', 'top_surname_sort'));
-			$content=format_surname_table($all_surnames, 'indilist');
+			$content=format_surname_table($all_surnames, 'indilist.php');
 			break;
 		}
 
