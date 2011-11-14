@@ -31,7 +31,6 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
 class WT_Controller_Descendancy extends WT_Controller_Chart {
-	var $pid = "";
 	var $descPerson = null;
 
 	var $diffindi = null;
@@ -62,7 +61,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract parameters from form
-		$this->pid        =safe_GET_xref('pid');
+		$this->rootid     =safe_GET_xref('rootid');
 		$this->show_full  =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
 		$this->chart_style=safe_GET_integer('chart_style', 0, 3, 0);
 		$this->generations=safe_GET_integer('generations', 2, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
@@ -89,12 +88,12 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		$pbheight = $bheight+14;
 
 		// Validate form variables
-		$this->pid=check_rootid($this->pid);
+		$this->rootid=check_rootid($this->rootid);
 
 		if (strlen($this->name)<30) $this->cellwidth="420";
 		else $this->cellwidth=(strlen($this->name)*14);
 
-		$this->descPerson = WT_Person::getInstance($this->pid);
+		$this->descPerson = WT_Person::getInstance($this->rootid);
 		$this->name=$this->descPerson->getFullName();
 
 		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Descendants of %s', $this->name));
