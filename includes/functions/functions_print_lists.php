@@ -1384,7 +1384,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal+=count($indis);
 			}
-			$subhtml.=' ['.$subtotal.']';
+			$subhtml.=' ('.$subtotal.')';
 		}
 		$html[]=$subhtml;
 

@@ -406,8 +406,8 @@ class WT_Stats {
 		$chd = self::_array_to_extended_encoding(array($tot_sindi_per, 100-$tot_sindi_per));
 		$chl =  WT_I18N::translate('With sources').' - '.round($tot_sindi_per,1).'%|'.
 				WT_I18N::translate('Without sources').' - '.round($tot_indi_per,1).'%';
-		$chart_title =  WT_I18N::translate('With sources').' ['.round($tot_sindi_per,1).'%], '.
-						WT_I18N::translate('Without sources').' ['.round($tot_indi_per,1).'%]';
+		$chart_title =  WT_I18N::translate('With sources').' ('.round($tot_sindi_per,1).'%), '.
+						WT_I18N::translate('Without sources').' ('.round($tot_indi_per,1).'%)';
 		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 	}
 
@@ -445,8 +445,8 @@ class WT_Stats {
 		$chd = self::_array_to_extended_encoding(array($tot_sfam_per, 100-$tot_sfam_per));
 		$chl =  WT_I18N::translate('With sources').' - '.round($tot_sfam_per,1).'%|'.
 				WT_I18N::translate('Without sources').' - '.round($tot_fam_per,1).'%';
-		$chart_title =  WT_I18N::translate('With sources').' ['.round($tot_sfam_per,1).'%], '.
-						WT_I18N::translate('Without sources').' ['.round($tot_fam_per,1).'%]';
+		$chart_title =  WT_I18N::translate('With sources').' ('.round($tot_sfam_per,1).'%), '.
+						WT_I18N::translate('Without sources').' ('.round($tot_fam_per,1).'%)';
 		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 	}
 
@@ -656,17 +656,17 @@ class WT_Stats {
 				WT_I18N::translate('Females').' - '.round($tot_f,1).'%|'.
 				WT_I18N::translate('Males').' - '.round($tot_m,1).'%';
 			$chart_title =
-				WT_I18N::translate('Males').' ['.round($tot_m,1).'%], '.
-				WT_I18N::translate('Females').' ['.round($tot_f,1).'%], '.
-				WT_I18N::translate_c('unknown people', 'Unknown').' ['.round($tot_u,1).'%]';
+				WT_I18N::translate('Males').' ('.round($tot_m,1).'%), '.
+				WT_I18N::translate('Females').' ('.round($tot_f,1).'%), '.
+				WT_I18N::translate_c('unknown people', 'Unknown').' ('.round($tot_u,1).'%)';
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
 			$chd = self::_array_to_extended_encoding(array($tot_f, $tot_m));
 			$chl =
 				WT_I18N::translate('Females').' - '.round($tot_f,1).'%|'.
 				WT_I18N::translate('Males').' - '.round($tot_m,1).'%';
-			$chart_title =  WT_I18N::translate('Males').' ['.round($tot_m,1).'%], '.
-							WT_I18N::translate('Females').' ['.round($tot_f,1).'%]';
+			$chart_title =  WT_I18N::translate('Males').' ('.round($tot_m,1).'%), '.
+							WT_I18N::translate('Females').' ('.round($tot_f,1).'%)';
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		}
 	}
@@ -714,8 +714,8 @@ class WT_Stats {
 			$chl =
 				WT_I18N::translate('Living').' - '.round($tot_l,1).'%|'.
 				WT_I18N::translate('Dead').' - '.round($tot_d,1).'%|';
-			$chart_title =  WT_I18N::translate('Living').' ['.round($tot_l,1).'%], '.
-							WT_I18N::translate('Dead').' ['.round($tot_d,1).'%]';
+			$chart_title =  WT_I18N::translate('Living').' ('.round($tot_l,1).'%), '.
+							WT_I18N::translate('Dead').' ('.round($tot_d,1).'%)';
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		}
 	}
@@ -831,7 +831,7 @@ class WT_Stats {
 		foreach ($media as $type=>$count) {
 			$mediaCounts[] = round(100 * $count / $tot, 0);
 			$mediaTypes .= WT_Gedcom_Tag::getFileFormTypeValue($type).' - '.$count.'|';
-			$chart_title .= WT_Gedcom_Tag::getFileFormTypeValue($type).' ['.$count.'], ';
+			$chart_title .= WT_Gedcom_Tag::getFileFormTypeValue($type).' ('.$count.'), ';
 		}
 		$chart_title = substr($chart_title,0,-2);
 		$chd = self::_array_to_extended_encoding($mediaCounts);

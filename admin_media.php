@@ -100,15 +100,15 @@ function move_file($src, $dest) {
 	if (!is_dir($destdir)) {
 		@mkdirs($destdir);
 		if (!is_dir($destdir)) {
-			echo "<div class=\"error\">".WT_I18N::translate('Directory could not be created')." [".$destdir."]</div>";
+			echo '<div class="error">', WT_I18N::translate('Directory could not be created'), ' (', $destdir, ')</div>';
 			return false;
 		}
 	}
 	if (!rename($src, $dest)) {
-		echo "<div class=\"error\">".WT_I18N::translate('Media file could not be moved.')." [".$src."]</div>";
+		echo '<div class="error">', WT_I18N::translate('Media file could not be moved.'), ' (', $src, ')</div>';
 		return false;
 	}
-	echo "<div>".WT_I18N::translate('Media file moved.')." [".$src."]</div>";
+	echo '<div>', WT_I18N::translate('Media file moved.'), ' (', $src, ')</div>';
 	return true;
 }
 
@@ -190,21 +190,21 @@ function set_perms($path) {
 				return;
 			}
 			// do not set perms on certain files...
-			if ($element!= "." && $element!= ".." && $element!=".svn") {
-				$fullpath = $path."/".$element;
+			if ($element!= '.' && $element!= '..' && $element!='.svn') {
+				$fullpath = $path.'/'.$element;
 				if (is_dir($fullpath)) {
 					if (@chmod($fullpath, WT_PERM_EXE)) {
-						echo "<div>".WT_I18N::translate('Permissions Set')." [".decoct(WT_PERM_EXE)."] [".$fullpath."]</div>";
+						echo '<div>', WT_I18N::translate('Permissions Set'), ' (', decoct(WT_PERM_EXE), ') (', $fullpath, ')</div>';
 					} else {
-						echo "<div>".WT_I18N::translate('Permissions Not Set')." [".decoct(WT_PERM_EXE)."] [".$fullpath."]</div>";
+						echo '<div>', WT_I18N::translate('Permissions Not Set'), ' (', decoct(WT_PERM_EXE), ') (', $fullpath, ')</div>';
 					}
 					// call this function recursively on this directory
 					set_perms($fullpath);
 				} else {
 					if (@chmod($fullpath, WT_PERM_FILE)) {
-						echo "<div>".WT_I18N::translate('Permissions Set')." [".decoct(WT_PERM_FILE)."] [".$fullpath."]</div>";
+						echo '<div>', WT_I18N::translate('Permissions Set'), ' (', decoct(WT_PERM_FILE), ') (', $fullpath, ')</div>';
 					} else {
-						echo "<div>".WT_I18N::translate('Permissions Not Set')." [".decoct(WT_PERM_FILE)."] [".$fullpath."]</div>";
+						echo '<div>', WT_I18N::translate('Permissions Not Set'), ' (', decoct(WT_PERM_FILE), ') (', $fullpath, ')</div>';
 					}
 					$operation_count++;
 					if ($operation_count % 10) {
@@ -245,8 +245,8 @@ if (count($_POST) == 0) $showthumb = true;
 
 $is_std_media_writable = dir_is_writable($MEDIA_DIRECTORY);
 
-$thumbget = "";
-if ($showthumb) $thumbget = "&amp;showthumb=true";
+$thumbget = '';
+if ($showthumb) $thumbget = '&amp;showthumb=true';
 
 //-- prevent script from accessing an area outside of the media directory
 //-- and keep level consistency
@@ -258,7 +258,7 @@ if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
 	$level = 0;
 }
 
-$thumbdir = str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $directory);
+$thumbdir = str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $directory);
 $directory_fw = get_media_firewall_path($directory);
 $thumbdir_fw = get_media_firewall_path($thumbdir);
 
