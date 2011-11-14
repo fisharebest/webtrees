@@ -1117,4 +1117,6 @@ WT_DB::prepare(
 
 WT_DB::exec("COMMIT");
 
-echo '<p><b><a href="admin_trees_manage.php">', WT_I18N::translate('Click here to continue'), '</a></b></p>';
+// Log out - replacing the wt_user table means our current user-id may not
+// exist, or belong to someone else.
+echo '<p><b><a href="index.php?logout=1">', WT_I18N::translate('Click here to continue'), '</a></b></p>';
