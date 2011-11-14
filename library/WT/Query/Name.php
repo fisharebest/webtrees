@@ -361,6 +361,9 @@ class WT_Query_Name {
 			$sql.=" AND n_surn NOT IN ('', '@N.N.')";
 		}
 		$sql.=" GROUP BY n_surn COLLATE '".WT_I18N::$collation."', n_file) n2 ON (n1.n_surn=n2.n_surn COLLATE '".WT_I18N::$collation."' AND n1.n_file=n2.n_file)";
+		if (!$marnm) {
+			$sql.=" AND n_type!='_MARNM'";
+		}
 	
 		$list=array();
 		foreach (WT_DB::prepare($sql)->fetchAll() as $row) {
