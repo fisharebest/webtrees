@@ -251,7 +251,7 @@ class WT_Controller_Base {
 		// Flush the output, so the browser can render the header and load javascript
 		// while we are preparing data for the page
 		flush();
-		if (ob_get_level()) {
+		if (ini_get('output_buffering')) {
 			ob_flush();
 		}
 

@@ -170,7 +170,11 @@ WT_DB::exec("DELETE FROM `##user`                WHERE user_id>0");
 
 ////////////////////////////////////////////////////////////////////////////////
 if (ob_get_level() == 0) ob_start();
-echo '<p>', $INDEX_DIRECTORY, DIRECTORY_SEPARATOR, 'config.php => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
+echo '<p>', $INDEX_DIRECTORY, DIRECTORY_SEPARATOR, 'config.php => wt_site_setting ...</p>';
+flush();
+if (ini_get('output_buffering')) {
+	ob_flush();
+}
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
 @set_site_setting('STORE_MESSAGES',                  $PGV_STORE_MESSAGES);
 @set_site_setting('SMTP_SIMPLE_MAIL',                $PGV_SIMPLE_MAIL);
@@ -191,7 +195,11 @@ echo '<p>', $INDEX_DIRECTORY, DIRECTORY_SEPARATOR, 'config.php => wt_site_settin
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_site_setting => wt_site_setting ...</p>'; ob_flush(); flush(); usleep(50000);
+echo '<p>pgv_site_setting => wt_site_setting ...</p>';
+flush();
+if (ini_get('output_buffering')) {
+	ob_flush();
+}
 WT_DB::prepare(
 	"REPLACE INTO `##site_setting` (setting_name, setting_value)".
 	" SELECT site_setting_name, site_setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}site_setting`".
@@ -201,13 +209,21 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 if ($PGV_SCHEMA_VERSION>=12) {
-	echo '<p>pgv_gedcom => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_gedcom => wt_gedcom ...</p>';
+	flush();
+	if (ini_get('output_buffering')) {
+		ob_flush();
+	}
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom` (gedcom_id, gedcom_name)".
 		" SELECT gedcom_id, gedcom_name FROM `{$DBNAME}`.`{$TBLPREFIX}gedcom`"
 	)->execute();
 
-	echo '<p>pgv_gedcom_setting => wt_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_gedcom_setting => wt_gedcom_setting ...</p>';
+	flush();
+	if (ini_get('output_buffering')) {
+		ob_flush();
+	}
 	WT_DB::prepare(
 		"INSERT INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value)".
 		" SELECT gedcom_id, setting_name,".
@@ -254,7 +270,11 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		" WHERE setting_name NOT IN ('HOME_SITE_TEXT', 'HOME_SITE_URL')"
 	)->execute();
 
-	echo '<p>pgv_user => wt_user ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_user => wt_user ...</p>';
+	flush();
+	if (ini_get('output_buffering')) {
+		ob_flush();
+	}
 	try {
 		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
 		WT_DB::prepare(
@@ -271,7 +291,11 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		// Ignore duplicates
 	}
 
-	echo '<p>pgv_user_setting => wt_user_setting ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_user_setting => wt_user_setting ...</p>';
+	flush();
+	if (ini_get('output_buffering')) {
+		ob_flush();
+	}
 	WT_DB::prepare(
 		"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
 		" SELECT user_id, setting_name,".
@@ -321,7 +345,11 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		" WHERE setting_name NOT IN ('email', 'firstname', 'lastname', 'loggedin')"
 	)->execute();
 
-	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_user_gedcom_setting => wt_user_gedcom_setting ...</p>';
+	flush();
+	if (ini_get('output_buffering')) {
+		ob_flush();
+	}
 	WT_DB::prepare(
 		"INSERT INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value)".
 		" SELECT user_id, gedcom_id, setting_name, setting_value FROM `{$DBNAME}`.`{$TBLPREFIX}user_gedcom_setting`".
@@ -333,7 +361,11 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	if (file_exists("{$INDEX_DIRECTORY}/gedcoms.php")) {
 		require_once "{$INDEX_DIRECTORY}/gedcoms.php";
 		$file=$INDEX_DIRECTORY.'/gedcoms.php';
-		echo '<p>', $file, ' => wt_gedcom ...</p>'; ob_flush(); flush(); usleep(50000);
+		echo '<p>', $file, ' => wt_gedcom ...</p>';
+		flush();
+		if (ini_get('output_buffering')) {
+			ob_flush();
+		}
 		if (isset($GEDCOMS) && is_array($GEDCOMS)) {
 			foreach ($GEDCOMS as $array) {
 				try {
@@ -358,7 +390,11 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	}
 
 	// Migrate the data from pgv_users into pgv_user/pgv_user_setting/pgv_user_gedcom_setting
-	echo '<p>pgv_users => wt_user ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_users => wt_user ...</p>';
+	flush();
+	if (ini_get('output_buffering')) {
+		ob_flush();
+	}
 	try {
 		// "INSERT IGNORE" is needed to allow for PGV users with duplicate emails.  Only the first will be imported.
 		WT_DB::prepare(
@@ -370,7 +406,11 @@ if ($PGV_SCHEMA_VERSION>=12) {
 		// a) we've already done it (upgrade)
 		// b) it doesn't exist (new install)
 	}
-	echo '<p>pgv_users => wt_user_setting ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_users => wt_user_setting ...</p>';
+	flush();
+	if (ini_get('output_buffering')) {
+		ob_flush();
+	}
 	try {
 		WT_DB::prepare(
 			"INSERT INTO `##user_setting` (user_id, setting_name, setting_value)".
@@ -489,7 +529,11 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	WT_DB::prepare(
 		"UPDATE `##user_setting` SET setting_value=UNIX_TIMESTAMP(setting_value) WHERE setting_name='reg_timestamp' AND setting_value like '____-__-__ __:__:__'"
 	)->execute();
-	echo '<p>pgv_users => wt_user_gedcom_setting ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_users => wt_user_gedcom_setting ...</p>';
+	flush();
+	if (ini_get('output_buffering')) {
+		ob_flush();
+	}
 	try {
 		$user_gedcom_settings=
 			WT_DB::prepare(
@@ -758,7 +802,11 @@ WT_DB::exec(
 ////////////////////////////////////////////////////////////////////////////////
 
 if ($PGV_SCHEMA_VERSION>=13) {
-	echo '<p>pgv_hit_counter => wt_hit_counter ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_hit_counter => wt_hit_counter ...</p>';
+	flush();
+	if (ini_get('output_buffering')) {
+		ob_flush();
+	}
 	WT_DB::prepare(
 		"REPLACE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count)".
 		" SELECT gedcom_id, page_name, page_parameter, page_count FROM `{$DBNAME}`.`{$TBLPREFIX}hit_counter`"
@@ -770,7 +818,11 @@ if ($PGV_SCHEMA_VERSION>=13) {
 	foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
 		// Caution these files might be quite large...
 		$file=$INDEX_DIRECTORY.'/'.$ged_name.'pgv_counters.txt';
-		echo '<p>', $file, ' => wt_hit_counter ...</p>'; ob_flush(); flush(); usleep(50000);
+		echo '<p>', $file, ' => wt_hit_counter ...</p>';
+		flush();
+		if (ini_get('output_buffering')) {
+			ob_flush();
+		}
 		if (file_exists($file)) {
 			foreach (file($file) as $line) {
 				if (preg_match('/(@([A-Za-z0-9:_-]+)@ )?(\d+)/', $line, $match)) {
@@ -795,7 +847,7 @@ if ($PGV_SCHEMA_VERSION>=13) {
 ////////////////////////////////////////////////////////////////////////////////
 
 if ($PGV_SCHEMA_VERSION>=14) {
-	echo '<p>pgv_ip_address => wt_ip_address ...</p>'; ob_flush(); flush(); usleep(50000);
+	echo '<p>pgv_ip_address => wt_ip_address ...</p>'; flush(); if (ini_get('output_buffering')) { ob_flush(); }
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##ip_address` (ip_address, category, comment)".
 		" SELECT ip_address, category, comment FROM `{$DBNAME}`.`{$TBLPREFIX}ip_address`"
