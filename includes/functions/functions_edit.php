@@ -1630,7 +1630,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	// NAME TYPE : hide text field and show a selection list
 	else if ($fact=='TYPE' && $level==0) {
-		$extra = "onchange=\"document.getElementById('".$element_id."').value=this.value;";
+		$extra = 'onchange="document.getElementById(\''.$element_id.'\').value=this.value;"';
 		switch (WT_Person::getInstance($pid)->getSex()) {
 			case 'M': echo edit_field_name_type_m($element_name, $value, $extra); break;
 			case 'F': echo edit_field_name_type_f($element_name, $value, $extra); break;
