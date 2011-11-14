@@ -279,6 +279,21 @@ function edit_field_pedi_m($name, $selected='', $extra='') {
 	return select_edit_control($name, WT_Gedcom_Code_Pedi::getValues(new WT_Person("0 @XXX@ INDI\n1 SEX M")), '', $selected, $extra);
 }
 
+// Print an edit control for a NAME TYPE field
+function edit_field_name_type_u($name, $selected='', $extra='') {
+	return select_edit_control($name, WT_Gedcom_Code_Name::getValues(), '', $selected, $extra);
+}
+
+// Print an edit control for a female NAME TYPE field
+function edit_field_name_type_f($name, $selected='', $extra='') {
+	return select_edit_control($name, WT_Gedcom_Code_Name::getValues(new WT_Person("0 @XXX@ INDI\n1 SEX F")), '', $selected, $extra);
+}
+
+// Print an edit control for a male NAME TYPE field
+function edit_field_name_type_m($name, $selected='', $extra='') {
+	return select_edit_control($name, WT_Gedcom_Code_Name::getValues(new WT_Person("0 @XXX@ INDI\n1 SEX M")), '', $selected, $extra);
+}
+
 // Print an edit control for a RELA field
 function edit_field_rela($name, $selected='', $extra='') {
 	$rela_codes=WT_Gedcom_Code_Rela::getValues();
@@ -550,9 +565,13 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 
 	// When adding a new child, specify the pedigree
 	if ($nextaction=='addchildaction') {
-		add_simple_tag("0 PEDI");
+		add_simple_tag('0 PEDI');
 	}
 
+	if ($nextaction=='update') {
+		$name_type=get_gedcom_value('TYPE', 2, $namerec);
+		add_simple_tag('0 TYPE '.$name_type);
+	}
 	// Populate the standard NAME field and subfields
 	$name_fields=array();
 	foreach ($STANDARD_NAME_FACTS as $tag) {
@@ -745,6 +764,9 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		$adv_name_fields['_MARNM']='';
 	}
 	$person = WT_Person::getInstance($pid);
+	if (isset($adv_name_fields['TYPE'])) {
+		unset($adv_name_fields['TYPE']);
+	}
 	foreach ($adv_name_fields as $tag=>$dummy) {
 		// Edit existing tags
 		if (preg_match_all("/2 $tag (.+)/", $namerec, $match))
@@ -803,7 +825,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 				$level = $fields[0];
 				if (isset($fields[1])) $type = $fields[1];
 			}
-		} while (($level>$glevel)&&($i<count($gedlines)));
+		} while (($level>$glevel)&&($i<count($gedlines))&&($type!='TYPE'));
 	}
 
 	// If we are adding a new individual, add the basic details
@@ -1591,9 +1613,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	// MARRiage TYPE : hide text field and show a selection list
 	if ($fact=='TYPE' && $level==2 && $tags[0]=='MARR') {
-		echo "<script type='text/javascript'>";
+		echo WT_JS_START;
 		echo "document.getElementById('", $element_id, "').style.display='none'";
-		echo "</script>";
+		echo WT_JS_END;
 		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >";
 		foreach (array("Unknown", "Civil", "Religious", "Partners") as $indexval => $key) {
 			if ($key=="Unknown") echo "<option value=\"\"";
@@ -1605,6 +1627,18 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			echo ">", WT_Gedcom_Tag::getLabel($tmp), "</option>";
 		}
 		echo "</select>";
+	}
+	// NAME TYPE : hide text field and show a selection list
+	else if ($fact=='TYPE' && $level==0) {
+		$extra = "onchange=\"document.getElementById('".$element_id."').value=this.value;";
+		switch (WT_Person::getInstance($pid)->getSex()) {
+			case 'M': echo edit_field_name_type_m($element_name, $value, $extra); break;
+			case 'F': echo edit_field_name_type_f($element_name, $value, $extra); break;
+			default:  echo edit_field_name_type_u($element_name, $value, $extra); break;
+		}
+		echo WT_JS_START;
+		echo "document.getElementById('", $element_id, "').style.display='none';";
+		echo WT_JS_END;
 	}
 
 	// popup links
