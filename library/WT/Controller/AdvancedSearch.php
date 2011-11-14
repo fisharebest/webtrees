@@ -187,7 +187,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			$parts = preg_split("/:/", $field);
 			//-- handle names seperately
 			if ($parts[0]=="NAME") {
-				// The pgv_name table contains both names and soundex values
+				// The wt_name table contains both names and soundex values
 				if (!$namesTable) {
 					$sqltables.=" JOIN `##name` ON (i_file=n_file AND i_id=n_id) ";
 					$namesTable = true;

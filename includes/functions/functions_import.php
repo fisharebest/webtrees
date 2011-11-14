@@ -1187,7 +1187,7 @@ function reject_all_changes($xref, $ged_id) {
 }
 
 // Find a string in a file, preceded by a any form of line-ending.
-// Although PGV always writes them as WT_EOL, it is possible that the file was
+// Although webtrees always writes them as WT_EOL, it is possible that the file was
 // edited externally by an editor that uses different endings.
 function find_newline_string($haystack, $needle, $offset=0) {
 	if ($pos=strpos($haystack, "\r\n{$needle}", $offset)) {

@@ -1,7 +1,7 @@
 <?php
 // Report Engine
 //
-// Processes PGV XML Reports and generates a report
+// Processes webtrees XML Reports and generates a report
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2011 webtrees development team.

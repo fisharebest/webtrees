@@ -1077,13 +1077,10 @@ function unhtmlentities($string)  {
  */
 function hasRTLText($text) {
 	global $RTLOrd;
-	//--- What if gedcom in ANSI?
-	// if (!(strpos($text, chr(215))=== false)) return true;  // OK?
 	for ($i=0; $i<strlen($text); $i++) {
 		if (in_array(ord(substr(trim($text),$i,2)),$RTLOrd)) return true;
 	}
 	return false;
-
 }
 
 /**
@@ -1094,8 +1091,6 @@ function hasRTLText($text) {
  */
 function hasLTRText($text) {
 	global $SpecialChar, $SpecialPar, $SpecialNum, $RTLOrd;
-	//--- What if gedcom in ANSI?
-	//--- Should have one fullspecial characters array in PGV -
 
 	for ($i=0; $i<strlen($text); $i++) {
 		if (in_array(ord(substr(trim($text),$i,2)),$RTLOrd) || in_array(ord(substr(trim($text),$i-1,2)),$RTLOrd)) $i++;

@@ -342,7 +342,7 @@ if (empty($controller->pid)) {
 	}
 }
 
-// check PGV permissions
+// check webtrees permissions
 if (!$controller->record->canDisplayDetails()) {
 	// if no permissions, bail
 	// Note: the 404 error status is still in effect

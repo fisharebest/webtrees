@@ -740,7 +740,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_NAME_FACTS, $match))
 		foreach ($match[1] as $tag)
 			$adv_name_fields[$tag]='';
-	// This is a custom tag, but PGV uses it extensively.
+	// This is a custom tag, but webtrees uses it extensively.
 	if ($SURNAME_TRADITION=='paternal' || $SURNAME_TRADITION=='polish' || $SURNAME_TRADITION=='lithuanian' || (strpos($namerec, '2 _MARNM')!==false)) {
 		$adv_name_fields['_MARNM']='';
 	}

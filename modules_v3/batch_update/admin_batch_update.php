@@ -48,7 +48,7 @@ class batch_update {
 	var $next_xref=null; // The next xref to process
 	var $record   =null; // A GedcomRecord object corresponding to $curr_xref
 
-	// Main entry point - called by the PGV framework in response to module.php?mod=batch_update
+	// Main entry point - called by the webtrees framework in response to module.php?mod=batch_update
 	function main() {
 		// HTML common to all pages
 		$html=

@@ -99,9 +99,9 @@ function userUpdateLogin($user_id) {
  *
  * Returns 0 and NULL if we are not logged in.
  *
- * If you want to embed PGV within a content management system, you would probably
+ * If you want to embed webtrees within a content management system, you would probably
  * rewrite these functions to extract the data from the parent system, and then
- * populate PGV's user/user_setting/user_gedcom_setting tables as appropriate.
+ * populate webtrees' user/user_setting/user_gedcom_setting tables as appropriate.
  *
  */
 
@@ -261,8 +261,8 @@ function getUserGedcomId($user_id, $ged_id) {
 }
 
 // add a message into the log-file
-// Note that while transfering data from PGV to WT, we delete the WT users and
-// replace with PGV users.  Hence the current user_id is not always available.
+// Note that while transfering data from PhpGedView to WT, we delete the WT users and
+// replace with PhpGedView users.  Hence the current user_id is not always available.
 function AddToLog($log_message, $log_type='error') {
 	WT_DB::prepare(
 		"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES (?, ?, ?, ?, ?)"

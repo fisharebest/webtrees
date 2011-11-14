@@ -308,7 +308,7 @@ if (!$real) {
 //   they are not automatically detected above.   Setting his own IP address
 //   in the ip_address table allows him to see exactly what the search engine receives.
 //   To return to normal, the admin MUST use a different IP to get to admin
-//   mode or update the table pgv_ip_address directly.
+//   mode or update the table wt_ip_address directly.
 try {
 	$search_engine=WT_DB::prepare(
 		"SELECT ip_address, comment FROM `##ip_address`".
