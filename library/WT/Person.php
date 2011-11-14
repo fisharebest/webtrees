@@ -1680,13 +1680,6 @@ class WT_Person extends WT_GedcomRecord {
 			$full=$full;
 		}
 
-		// GEDCOM uses "//" to indicate an unknown surname
-		// Some people use /---/ or /___/ or /???/ to indicate an unknown surname
-		$full=preg_replace('/\/(|_{3,}|\?{3,}|-{3,})\//', '/@N.N./', $full);
-
-		// Some people use --- or ___ or ??? to indicate an unknown given name
-		$full=preg_replace('/(_{3,}|\?{3,}|-{3,})/', '/@P.N./', $full);
-
 		// Extract the surname.
 		// Note, there may be multiple surnames, e.g. Jean /Vasquez/ y /Cortes/
 		if (preg_match('/\/.*\//', $full, $match)) {
