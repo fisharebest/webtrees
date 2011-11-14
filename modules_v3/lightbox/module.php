@@ -117,9 +117,9 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		global $controller;
 
 		if ($this->mediaCount===null) {
-			$ct = preg_match("/\d OBJE/", $controller->record->getGedcomRecord());
+			$ct = preg_match_all("/\d OBJE/", $controller->record->getGedcomRecord(), $match);
 			foreach ($controller->record->getSpouseFamilies() as $sfam)
-				$ct += preg_match("/\d OBJE/", $sfam->getGedcomRecord());
+				$ct += preg_match_all("/\d OBJE/", $sfam->getGedcomRecord(), $match);
 			$this->mediaCount = $ct;
 		}
 		return $this->mediaCount;
