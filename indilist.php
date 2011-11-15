@@ -45,11 +45,15 @@ $show_marnm=get_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm');
 switch (safe_GET('show_marnm', array('no','yes'))) {
 case 'no':
 	$show_marnm=false;
-	set_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+	if (WT_USER_ID) {
+		set_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+	}
 	break;
 case 'yes':
 	$show_marnm=true;
-	set_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+	if (WT_USER_ID) {
+		set_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm', $show_marnm);
+	}
 	break;
 }
 
