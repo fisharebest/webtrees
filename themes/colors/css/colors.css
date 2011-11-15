@@ -371,8 +371,6 @@ img.block {height: 25px;}
 .line3 {vertical-align:bottom;}
 .line4 {vertical-align:middle;} 
 
-
-
 .blockh1 {
 background-image:url(../images/left1B.png);
 background-repeat: no-repeat;
@@ -720,8 +718,9 @@ font-size: 20px;
 color:#7af;
 }
 
-.name1, .name2, .nameZoom {
+.NAME, .name1, .name2, .nameZoom {
 font-weight: bold;
+overflow: hidden;
 }
 
 a:hover .name1, a:hover.name2,  a:hover .nameZoom  {color: #f00; font-weight: bold}
@@ -1606,6 +1605,8 @@ ul.clist {
 	margin-left: 0;
 }
 
+
+
 /* Find special characters */
 .largechars {
 	font-family: monospace;
@@ -1815,6 +1816,7 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .desc_tree_div {display:none;}
 .desc_tree_div ul {padding:0; margin-left:10px; margin-top:0; margin-right:0;}
 .sb_desc_indi_li {list-style-type:none;}
+div .noprint{max-height: 0px; width: 0;}
 
 html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}

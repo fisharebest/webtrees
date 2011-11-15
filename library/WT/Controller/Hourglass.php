@@ -460,8 +460,32 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	function setupJavascript() {
 		global $bhalfheight;
 ?>
+// code to fix chart lines in block
 <script type="text/javascript">
-<!--
+
+		var vlines;
+		vlines = document.getElementsByName("tvertline");
+		for (i=0; i < vlines.length; i++) {
+			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
+			var hline = document.getElementById("table_"+pid);
+			var hline2 = document.getElementById("table2_"+pid);
+			var newHeight = Math.abs(hline.offsetHeight - (hline2.offsetTop + <?php echo $bhalfheight+9; ?>));
+			vlines[i].style.height=newHeight+'px';
+		}
+
+		vlines = document.getElementsByName("bvertline");
+		for (i=0; i < vlines.length; i++) {
+			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
+			var hline = document.getElementById("table_"+pid);
+			var hline2 = document.getElementById("table2_"+pid);
+			vlines[i].style.height=(hline.offsetTop+hline2.offsetTop + <?php echo $bhalfheight+9; ?>)+'px';
+		}
+
+		vlines = document.getElementsByName("pvline");
+		for (i=0; i < vlines.length; i++) {
+			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
+		}
+
 	var pastefield;
 	function paste_id(value) {
 		pastefield.value=value;

@@ -404,10 +404,6 @@ img.block {height: 25px;}
 .line3 {vertical-align:bottom;}
 .line4 {vertical-align:middle;} 
 
-
-
-
-
 .blockh1 {
 background-image:url(images/left1B.png);
 background-repeat: no-repeat;
@@ -1851,6 +1847,7 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .desc_tree_div {display:none;}
 .desc_tree_div ul {padding:0; margin-left:10px;margin-top:0; margin-right:0;}
 .sb_desc_indi_li {list-style-type:none; white-space:nowrap;}
+div .noprint{max-height: 0px; width: 0;}
 
 html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}
