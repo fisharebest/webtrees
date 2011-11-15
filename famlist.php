@@ -161,7 +161,7 @@ if (!$SEARCH_SPIDER) {
 		if ($show_marnm) {
 			echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=no">', WT_I18N::translate('Exclude individuals with “%s” as a married name', $legend), '</a>';
 		} else {
-			echo '<a href="', $url, '&amp;show='.$show.';&amp;show_marnm=yes">', WT_I18N::translate('Include individuals with “%s” as a married name', $legend), '</a>';
+			echo '<a href="', $url, '&amp;show='.$show.'&amp;show_marnm=yes">', WT_I18N::translate('Include individuals with “%s” as a married name', $legend), '</a>';
 		}
 
 		if ($alpha!='@' && $alpha!=',' && !$surname) {
