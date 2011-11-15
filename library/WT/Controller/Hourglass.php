@@ -460,9 +460,9 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	function setupJavascript() {
 		global $bhalfheight;
 ?>
-// code to fix chart lines in block
-<script type="text/javascript">
 
+<script type="text/javascript">
+		// code to fix chart lines in block
 		var vlines;
 		vlines = document.getElementsByName("tvertline");
 		for (i=0; i < vlines.length; i++) {
