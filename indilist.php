@@ -60,7 +60,13 @@ case 'yes':
 // Make sure selections are consistent.
 // i.e. can't specify show_all and surname at the same time.
 if ($show_all=='yes') {
-	if ($falpha) {
+	if ($show_all_firstnames=='yes') {
+		$alpha='';
+		$surname='';
+		$legend=WT_I18N::translate('All');
+		$url=WT_SCRIPT_NAME.'?show_all=yes&amp;ged='.WT_GEDURL;
+		$show='indi';
+	} else	if ($falpha) {
 		$alpha='';
 		$surname='';
 		$legend=WT_I18N::translate('All').', '.htmlspecialchars($falpha).'…';
