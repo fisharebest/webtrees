@@ -485,7 +485,7 @@ class WT_GedcomRecord {
 				if (preg_match_all("/^{$level} ({$fact}) (.+)((\n[{$sublevel}-9].+)*)/m", $this->getGedcomRecord(), $matches, PREG_SET_ORDER)) {
 					foreach ($matches as $match) {
 						// Treat 1 NAME / 2 TYPE married the same as _MARNM
-						if ($match[1]=='NAME' && $match[3]=="\n2 TYPE married") {
+						if ($match[1]=='NAME' && strpos($match[3], "\n2 TYPE married")!==false) {
 							$this->_addName('_MARNM', $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
 						} else {
 							$this->_addName($match[1], $match[2] ? $match[2] : $this->getFallBackName(), $match[0]);
