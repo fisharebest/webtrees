@@ -184,7 +184,7 @@ class WT_MenuBar {
 				break;
 
 			case 'fanchart':
-				$submenu = new WT_Menu($menuName, '.fanchart.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-fanchart');
+				$submenu = new WT_Menu($menuName, 'fanchart.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-fanchart');
 				$submenu->addIcon('fanchart');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_fanchart');
 				$menu->addSubmenu($submenu);
