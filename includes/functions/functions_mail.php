@@ -186,7 +186,7 @@ function webtreesMail($to, $from, $subject, $message) {
 		// use original PHP mail sending function
 		if (!mail($to, hex4email($subject, 'UTF-8'), $message, $extraHeaders)) {
 			echo WT_I18N::translate('Message was not sent'), '<br />';
-			echo /* I18N: %s is an error message */ WT_I18N::translate('Mailer error: PHP mail() failed'), '<br />';
+			echo WT_I18N::translate('Mailer error: %s', 'PHP mail() failed'), '<br />';
 			return false;
 		} else {
 			// original PHP mail sending function OK
