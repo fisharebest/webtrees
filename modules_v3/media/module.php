@@ -81,30 +81,23 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 			echo '</td></tr>';
 		}
 		$media_found = false;
-		if (!$controller->record->canDisplayDetails()) {
-			echo "<tr><td class=\"facts_value\">";
-			print_privacy_error();
-			echo "</td></tr>";
-		}
-		else {
-			$media_found = print_main_media($controller->record->getXref(), 0, true);
-			if (!$media_found) echo "<tr><td id=\"no_tab4\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no media objects for this individual.')."</td></tr>";
-			//-- New Media link
-			if (WT_USER_CAN_EDIT && $controller->record->canDisplayDetails() && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+		$media_found = print_main_media($controller->record->getXref(), 0, true);
+		if (!$media_found) echo "<tr><td id=\"no_tab4\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no media objects for this individual.')."</td></tr>";
+		//-- New Media link
+		if (WT_USER_CAN_EDIT && $controller->record->canDisplayDetails() && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 		?>
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Add media'), help_link('add_media'); ?></td>
-					<td class="facts_value">
-						<a href="#" onclick="window.open('addmedia.php?action=showmediaform&linktoid=<?php echo $controller->record->getXref(); ?>', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media object'); ?></a><br />
-						<a href="#" onclick="window.open('inverselink.php?linktoid=<?php echo $controller->record->getXref(); ?>&linkto=person', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;"><?php echo WT_I18N::translate('Link to an existing media object'); ?></a>
-					</td>
-				</tr>
-			<?php
-			}
+			<tr>
+				<td class="facts_label"><?php echo WT_I18N::translate('Add media'), help_link('add_media'); ?></td>
+				<td class="facts_value">
+					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&linktoid=<?php echo $controller->record->getXref(); ?>', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media object'); ?></a><br />
+					<a href="#" onclick="window.open('inverselink.php?linktoid=<?php echo $controller->record->getXref(); ?>&linkto=person', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;"><?php echo WT_I18N::translate('Link to an existing media object'); ?></a>
+				</td>
+			</tr>
+		<?php
 		}
 		?>
 		</table>
-	<?php
+		<?php
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 

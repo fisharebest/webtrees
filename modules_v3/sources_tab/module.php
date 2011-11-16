@@ -53,13 +53,6 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		ob_start();
 		?>
 		<table class="facts_table">
-		<?php
-		if (!$controller->record->canDisplayDetails()) {
-			echo "<tr><td class=\"facts_value\">";
-			print_privacy_error();
-			echo "</td></tr>";
-		} else {
-		?>
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
 					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_sour2').toggle();" />
@@ -72,7 +65,6 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 					if ($event->getTag()=="SOUR") print_main_sources($event->getGedcomRecord(), 1, $controller->record->getXref(), $event->getLineNumber());
 				$FACT_COUNT++;
 			}
-		}
 			// 2nd level sources [ 1712181 ]
 			$controller->record->add_family_facts(false);
 			foreach ($controller->getIndiFacts() as $key => $factrec) {

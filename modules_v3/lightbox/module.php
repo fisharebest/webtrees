@@ -80,15 +80,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_head.php';
 
 		$media_found = false;
-		if (!$controller->record->canDisplayDetails()) {
-			echo '<table class="facts_table" cellpadding="0">';
-			echo '<tr><td class="facts_value">';
-			print_privacy_error();
-			echo '</td></tr>';
-			echo '</table>';
-		} else {
-			require WT_ROOT.WT_MODULES_DIR.'lightbox/album.php';
-		}
+		require WT_ROOT.WT_MODULES_DIR.'lightbox/album.php';
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 

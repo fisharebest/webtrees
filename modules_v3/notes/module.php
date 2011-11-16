@@ -53,13 +53,6 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		ob_start();
 		?>
 		<table class="facts_table">
-		<?php
-		if (!$controller->record->canDisplayDetails()) {
-			echo "<tr><td class=\"facts_value\">";
-			print_privacy_error();
-			echo "</td></tr>";
-		} else {
-			?>
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
 					<input id="checkbox_note2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_note2').toggle();" />
@@ -67,50 +60,49 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 					<?php echo help_link('show_fact_sources'); ?>
 				</td>
 			</tr>
-			<?php
-			$globalfacts = $controller->getGlobalFacts();
-			foreach ($globalfacts as $key => $event) {
-				$fact = $event->getTag();
-				if ($fact=="NAME") {
-					print_main_notes($event->getGedcomRecord(), 2, $controller->record->getXref(), $event->getLineNumber(), true);
-				}
-				$FACT_COUNT++;
+		<?php
+		$globalfacts = $controller->getGlobalFacts();
+		foreach ($globalfacts as $key => $event) {
+			$fact = $event->getTag();
+			if ($fact=="NAME") {
+				print_main_notes($event->getGedcomRecord(), 2, $controller->record->getXref(), $event->getLineNumber(), true);
 			}
-			$otherfacts = $controller->getOtherFacts();
-			foreach ($otherfacts as $key => $event) {
-				$fact = $event->getTag();
-				if ($fact=="NOTE") {
-					print_main_notes($event->getGedcomRecord(), 1, $controller->record->getXref(), $event->getLineNumber());
-				}
-				$FACT_COUNT++;
+			$FACT_COUNT++;
+		}
+		$otherfacts = $controller->getOtherFacts();
+		foreach ($otherfacts as $key => $event) {
+			$fact = $event->getTag();
+			if ($fact=="NOTE") {
+				print_main_notes($event->getGedcomRecord(), 1, $controller->record->getXref(), $event->getLineNumber());
 			}
-			// 2nd to 5th level notes/sources
-			$controller->record->add_family_facts(false);
-			foreach ($controller->getIndiFacts() as $key => $factrec) {
-				for ($i=2; $i<6; $i++) {
-					print_main_notes($factrec->getGedcomRecord(), $i, $controller->record->getXref(), $factrec->getLineNumber(), true);
-				}
+			$FACT_COUNT++;
+		}
+		// 2nd to 5th level notes/sources
+		$controller->record->add_family_facts(false);
+		foreach ($controller->getIndiFacts() as $key => $factrec) {
+			for ($i=2; $i<6; $i++) {
+				print_main_notes($factrec->getGedcomRecord(), $i, $controller->record->getXref(), $factrec->getLineNumber(), true);
 			}
-			if ($this->get_note_count()==0) echo "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Notes for this individual.')."</td></tr>";
-			//-- New Note Link
-			if ($controller->record->canEdit()) {
-				?>
-			<tr>
-				<td class="facts_label"><?php echo WT_I18N::translate('Add Note'), help_link('add_note'); ?></td>
-				<td class="facts_value"><a href="#"
-					onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;"><?php echo WT_I18N::translate('Add a new note'); ?></a>
-				<br />
-				</td>
-			</tr>
-			<tr>
-				<td class="facts_label"><?php echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
-				<td class="facts_value"><a href="#"
-					onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;"><?php echo WT_I18N::translate('Add a new shared note'); ?></a>
-				<br />
-				</td>
-			</tr>
-			<?php
-			}
+		}
+		if ($this->get_note_count()==0) echo "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Notes for this individual.')."</td></tr>";
+		//-- New Note Link
+		if ($controller->record->canEdit()) {
+			?>
+		<tr>
+			<td class="facts_label"><?php echo WT_I18N::translate('Add Note'), help_link('add_note'); ?></td>
+			<td class="facts_value"><a href="#"
+				onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;"><?php echo WT_I18N::translate('Add a new note'); ?></a>
+			<br />
+			</td>
+		</tr>
+		<tr>
+			<td class="facts_label"><?php echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
+			<td class="facts_value"><a href="#"
+				onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;"><?php echo WT_I18N::translate('Add a new shared note'); ?></a>
+			<br />
+			</td>
+		</tr>
+		<?php
 		}
 		?>
 		</table>
