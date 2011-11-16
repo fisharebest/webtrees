@@ -131,8 +131,8 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$message['body'] = expand_urls($message['body']);
 
 				$content .= PrintReady($message['body']).'<br /><br />';
-				if (strpos($message['subject'], /* I18N: Shortcut for answer the message */ WT_I18N::translate('RE:'))===false) {
-					$message['subject']= /* I18N: Shortcut for answer the message */ WT_I18N::translate('RE:').$message['subject'];
+				if (strpos($message['subject'], /* I18N: When replying to an email, the subject becomes "RE: <subject>" */ WT_I18N::translate('RE: '))!==0) {
+					$message['subject']= WT_I18N::translate('RE: ').$message['subject'];
 				}
 				if ($user_id) {
 					$content .= "<a href=\"#\" onclick=\"reply('".addslashes($message['from'])."', '".addslashes($message['subject'])."'); return false;\">".WT_I18N::translate('Reply').'</a> | ';
