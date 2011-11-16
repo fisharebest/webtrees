@@ -1880,7 +1880,7 @@ function PrintMediaLinks($links, $size = "small") {
 			break;
 		case 'NOTE':
 			// Notes cannot link to media objects directly - but source citations may link to them.
-			echo WT_I18N::translate('View Note');
+			echo WT_I18N::translate('View Notes');
 			break;
 		}
 		echo ' -- ';
