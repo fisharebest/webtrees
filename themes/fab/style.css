@@ -142,6 +142,7 @@ img {
 
 /* Block level objects, such as header, footer, etc. */
 .block {background-color:#EEE; clear:none;}
+.blockcontent .noprint {max-height:0; width:0;}
 .blockheader {font-weight:bold;}
 .charts_block {overflow:auto;}
 
@@ -1338,7 +1339,6 @@ html[dir='rtl'] .flyout3 {text-align:right;}
 .sb_desc_indi_li {list-style-type:none;}
 .desc_tree_div {display:none;}
 .desc_tree_div ul {padding:0; margin-left:10px; margin-top:0; margin-right:0;}
-.blockcontent .noprint{max-height: 0px; width: 0;}
 
 html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}

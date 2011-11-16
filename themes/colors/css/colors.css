@@ -362,6 +362,7 @@ width: 99%;
 .block {color: #000; vertical-align: top; margin-bottom: 5px; padding: 1px;}
 .blockcontent {border: solid #999 1px; margin-left:auto; margin-right:2px; margin-bottom:10px; overflow:auto; padding: 5px;}
 .blockcontent p {font-size: 13px;}
+.blockcontent .noprint {max-height:0; width:0;}
 .blockheader {width:100%;}
 
 img {border: 0 none;}
@@ -1816,7 +1817,6 @@ html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
 .desc_tree_div {display:none;}
 .desc_tree_div ul {padding:0; margin-left:10px; margin-top:0; margin-right:0;}
 .sb_desc_indi_li {list-style-type:none;}
-.blockcontent .noprint{max-height: 0px; width: 0;}
 
 html[dir='rtl'] #sb_desc_content {margin-right:3px;}
 html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}
