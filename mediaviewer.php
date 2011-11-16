@@ -190,25 +190,9 @@ echo '</div>'; //close div "media-tabs"
 echo '</div>'; //close div "media-details"
 
 
-// These JavaScript functions are needed for the code to work properly with the menu.
 ?>
 <script type="text/javascript">
 <!--
-
-// javascript function to open the lightbox view
-function lightboxView() {
-// var string = "<?php echo $tmb; ?>";
-// alert(string);
-// document.write(string);
-// <?php echo $tmb; ?>
-	return false;
-}
-
-// javascript function to open the original imageviewer.php page
-function openImageView() {
-	window.open("imageview.php?filename=<?php echo urlencode($filename); ?>", "Image View");
-	return false;
-}
 
 function ilinkitem(mediaid, type) {
 	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&'+sessionname+'='+sessionid, '_blank', 'top=50, left=50, width=570, height=630, resizable=1, scrollbars=1');

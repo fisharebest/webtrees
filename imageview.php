@@ -31,12 +31,12 @@ $controller=new WT_Controller_Media();
 $view='simple'; // TODO, this is a "full screen" controller, but this is a "simple" page.
 $controller->pageHeader();
 
-if (!$controller->mediaobject) {
+if (!$controller->record) {
 	echo '<b>', WT_I18N::translate('Unable to find record with ID'), '</b>';
 	exit;
 }
 
-if (!$controller->mediaobject->canDisplayDetails()) {
+if (!$controller->record->canDisplayDetails()) {
 	print_privacy_error();
 	exit;
 }
@@ -179,15 +179,15 @@ if (!$controller->mediaobject->canDisplayDetails()) {
 <?php
 
 echo "<form name=\"zoomform\" onsubmit=\"setzoom(document.getElementById('zoomval').value); return false;\" action=\"imageview.php\">";
-if (!$controller->mediaobject->isExternal() && !$controller->mediaobject->fileExists() ) {
-	echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $controller->mediaobject->getLocalFilename()), '</p>';
+if (!$controller->record->isExternal() && !$controller->record->fileExists() ) {
+	echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $controller->record->getLocalFilename()), '</p>';
 } else {
 	echo "<center><font size=\"6\"><a href=\"#\" onclick=\"zoomin(); return false;\">+</a> <a href=\"#\" onclick=\"zoomout();\">&ndash;</a> </font>";
 	echo "<input type=\"text\" size=\"2\" name=\"zoomval\" id=\"zoomval\" value=\"100\" />%";
 	echo "<input type=\"button\" value=\"".WT_I18N::translate('Reset')."\" onclick=\"resetimage(); return false;\" />";
-	echo "<br /><a href=\"#\" onclick=\"window.opener.location='".$controller->mediaobject->getRawUrl()."'; window.close();\">".WT_I18N::translate('View image details')."</a>";
+	echo "<br /><a href=\"#\" onclick=\"window.opener.location='".$controller->record->getRawUrl()."'; window.close();\">".WT_I18N::translate('View image details')."</a>";
 	echo "</center>";
-	$imgsize = $controller->mediaobject->getImageAttributes('main',2,2);
+	$imgsize = $controller->record->getImageAttributes('main',2,2);
 	$imgwidth = $imgsize['adjW'];
 	$imgheight = $imgsize['adjH'];
 	echo "<script language=\"JavaScript\" type=\"text/javascript\">";
@@ -196,7 +196,7 @@ if (!$controller->mediaobject->isExternal() && !$controller->mediaobject->fileEx
 	echo "if (imgwidth > imgheight) landscape = true;";
 	echo "</script>";
 	echo '<br /><center><div id="imagecropper" style="position: relative; border: outset white 3px; background-color: black; overflow: auto; vertical-align: middle; text-align: center; width: '.$imgwidth.'px; height: '.$imgheight.'px; ">';
-	echo "<img id=\"theimage\" src=\"".$controller->mediaobject->getHtmlUrlDirect()."\" style=\"position: absolute; left: 1px; top: 1px; cursor: move;\" onmousedown=\"panimage(); return false;\" alt=\"\" />";
+	echo "<img id=\"theimage\" src=\"".$controller->record->getHtmlUrlDirect()."\" style=\"position: absolute; left: 1px; top: 1px; cursor: move;\" onmousedown=\"panimage(); return false;\" alt=\"\" />";
 	echo '</div></center>';
 }
 echo "</form>";
