@@ -46,7 +46,7 @@ class WT_Controller_GedcomRecord extends WT_Controller_Base {
 			}
 		} else {
 			// No such record
-			$this->setPageTitle(WT_I18N::translate('Not found'));
+			$this->setPageTitle(WT_I18N::translate('Private'));
 		}
 	}
 }

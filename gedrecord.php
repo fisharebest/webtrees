@@ -39,11 +39,9 @@ if (
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$obj->getRawUrl());
 	exit;
 } elseif (!$obj || !$obj->canDisplayDetails()) {
-	$controller->setPageTitle(WT_I18N::translate('Private'));
 	$controller->pageHeader();
 	print_privacy_error();
 } else {
-	$controller->setPageTitle($obj->getFullName());
 	$controller->pageHeader();
 	echo
 		'<pre style="white-space:pre-wrap; word-wrap:break-word;">',
