@@ -1266,7 +1266,7 @@ function format_surname_table($surnames, $script) {
 		}
 		$tbody.='</td>';
 		// Sort column for name
-		$tbody.='<td>'.$n++.'<?td>';
+		$tbody.='<td>'.$n++.'</td>';
 		// Surname count
 		$tbody.='<td>';
 		if (count($surns)==1) {
