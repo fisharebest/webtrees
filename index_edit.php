@@ -170,6 +170,9 @@ if ($action=="configure") {
 	echo '</td></tr>';
 	echo '</table>';
 	echo '</form>';
+	echo WT_JS_START;
+	echo 'var pastefield; function paste_id(value) {pastefield.value=value;}';
+	echo WT_JS_END;
 } else { ?>
 	<script type="text/javascript">
 	<!--
