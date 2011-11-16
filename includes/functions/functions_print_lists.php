@@ -1197,6 +1197,8 @@ function format_surname_table($surnames, $script) {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
+			jQuery.fn.dataTableExt.oSort["num-asc" ]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a<b) ? -1 : (a>b ? 1 : 0);};
+			jQuery.fn.dataTableExt.oSort["num-desc"]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a>b) ? -1 : (a<b ? 1 : 0);};
 			jQuery(".surname-list").dataTable( {
 			"sDom": \'t\',
 			"bJQueryUI": true,
@@ -1204,9 +1206,10 @@ function format_surname_table($surnames, $script) {
 			"bPaginate": false,
 			"aaSorting": [],
 			"aoColumns": [
-				/*  0 name      */ {},
-				/*  1 count		*/ {"iDataSort": 2, "sClass": "center"},
-				/*  2 SORT		*/ {"bVisible": false}
+				/*  0 name  */ {iDataSort:1},
+				/*  1 NAME  */ {bVisible:false, sType:"num"},
+				/*  2 count */ {iDataSort:3, sClass:"center"},
+				/*  3 COUNT */ {bVisible:false}
 			],
 			});
 			jQuery(".surname-list").css("visibility", "visible");
@@ -1222,6 +1225,7 @@ function format_surname_table($surnames, $script) {
 	$thead=
 		'<tr>'.
 		'<th>'.WT_Gedcom_Tag::getLabel('SURN').'</th>'.
+		'<th>&nbsp;</th>'.
 		'<th>'.$col_heading.'</th>'.
 		'<th>&nbsp;</th>'.
 		'</tr>';
@@ -1229,6 +1233,7 @@ function format_surname_table($surnames, $script) {
 	$tbody='';
 	$unique_surn=array();
 	$unique_indi=array();
+	$n=0; // We have already sorted the data - use this as a surrogate sort key
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indi/fam surname list
 		if ($surn) {
@@ -1260,6 +1265,8 @@ function format_surname_table($surnames, $script) {
 			}
 		}
 		$tbody.='</td>';
+		// Sort column for name
+		$tbody.='<td>'.$n++.'<?td>';
 		// Surname count
 		$tbody.='<td>';
 		if (count($surns)==1) {
@@ -1282,25 +1289,11 @@ function format_surname_table($surnames, $script) {
 		$tbody.='<td>'. $subtotal. '</td></tr>';
 	}
 
-	
-	
-	
-//	$tfoot=
-//		'<tr>'.
-//		'<td class="list_item">&nbsp;</td>'.
-//		'<td class="list_label name2">'.
-//		/* I18N: A count of individuals */ WT_I18N::translate('Total individuals: %s', WT_I18N::number(count($unique_indi))).
-//		'<br/>'.
-//		/* I18N: A count of surnames */ WT_I18N::translate('Total surnames: %s', WT_I18N::number(count($unique_surn))).
-//		'</td>'.
-//		'</tr>';
-
 	return
 		'<div class="loading-image">&nbsp;</div>'.
 		'<table class="surname-list">'.
 		'<thead>'.$thead.'</thead>'.
 		'<tbody>'.$tbody.'</tbody>'.
-//		'<tfoot>'.$tfoot.'</tfoot>'.
 		'</table>';
 }
 
