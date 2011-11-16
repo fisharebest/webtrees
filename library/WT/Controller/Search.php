@@ -631,7 +631,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 							usort($datalist, array('WT_GedcomRecord', 'Compare'));
 							$GEDCOM=$gedcom;
 							load_gedcom_settings($ged_id);
-							echo '<h3 class="indi-acc-header"><a href="#">&laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
+							echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item">'.$this->myquery.'</span>&nbsp;@&nbsp;'.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
 								<div class="indi-acc_content">';
 								print_indi_table($datalist);
 							echo '</div>';//indi-acc_content

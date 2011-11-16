@@ -1233,6 +1233,7 @@ h4 {
 .search_hit {
 	background-color:yellow;
 }
+.search_item{font-weight:600;}
 
 .details_label {
 	font-weight:bold;

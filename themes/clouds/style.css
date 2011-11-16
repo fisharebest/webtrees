@@ -1110,6 +1110,7 @@ text-decoration:underline;
 background:#FF0;
 color:#000;
 }
+.search_item{font-weight:600;}
 
 .title {
 font-size: 20px;

@@ -836,6 +836,7 @@ h4 {
 .search_hit {
 	background-color:#ff0;
 }
+.search_item{font-weight:600;}
 
 .title {
 	clear:both;

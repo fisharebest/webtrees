@@ -712,6 +712,7 @@ left:auto;
 .search_hit {
 	background-color:yellow;
 }
+.search_item{font-weight:600;}
 
 .title {
 	font-size:150%;

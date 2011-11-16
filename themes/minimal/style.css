@@ -972,6 +972,7 @@ left:auto;
 .search_hit {
 	background-color: #cccccc;
 }
+.search_item{font-weight:600;}
 
 .title {
 	font-size:20px;
