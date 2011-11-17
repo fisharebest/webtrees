@@ -533,21 +533,89 @@ function print_fam_table($datalist, $option='') {
 			).'");
 			
 			/* Add event listeners for filtering inputs */
-			jQuery("#MARR_U_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("U", 15);});
-			jQuery("#MARR_YES_'.  $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 15);});
-			jQuery("#MARR_Y100_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 15);});
-			jQuery("#MARR_DIV_'.  $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("D", 15);});
-			jQuery("#MULTI_MARR_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("M", 15);});
-			jQuery("#DEAT_N_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("N", 16);});
-			jQuery("#DEAT_W_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("W", 16);});
-			jQuery("#DEAT_H_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("H", 16);});
-			jQuery("#DEAT_Y_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y", 16);});
-			jQuery("#TREE_R_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("R", 17);});
-			jQuery("#TREE_L_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("L", 17);});	
+			jQuery("#MARR_U_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("U", 16);
+				jQuery("#MARR_U_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_DIV_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#MARR_YES_'.  $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("YES", 16);
+				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_YES_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_DIV_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#MARR_Y100_'. $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("Y100", 16);
+				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_Y100_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#MARR_DIV_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#MARR_DIV_'.  $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("D", 16);
+				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_DIV_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#MULTI_MARR_'.$table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("M", 16);
+				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#MARR_DIV_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#MULTI_MARR_'.$table_id.'").addClass("ui-state-active");
+			});
+			jQuery("#DEAT_N_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("N", 17);
+				jQuery("#DEAT_N_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#DEAT_W_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_H_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#DEAT_W_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("W", 17);
+				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_W_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#DEAT_H_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#DEAT_H_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("H", 17);
+				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_W_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_H_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#DEAT_Y_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("Y", 17);
+				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_W_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_H_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_Y_'.$table_id.'").addClass("ui-state-active");
+			});
+			jQuery("#TREE_R_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("R", 18);
+				jQuery("#TREE_R_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#TREE_L_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#TREE_L_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("L", 18);
+				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
+			});	
 			jQuery("#RESET_'.     $table_id.'").click( function() {
 				for (i=15; i<=17; i++) {
 					oTable'.$table_id.'.fnFilter("", i );
 				};
+				jQuery("div.filtersH_'.$table_id.' button").removeClass("ui-state-active");
 			});
 
 			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
