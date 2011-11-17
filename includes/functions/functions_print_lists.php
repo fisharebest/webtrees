@@ -284,11 +284,11 @@ function print_indi_table($datalist, $option='') {
 		// Dummy column to match colspan in header
 		echo '<td style="display:none;"></td>';
 		//-- GIVN/SURN
-		// Use "AAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
+		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
-		echo '<td>', htmlspecialchars($givn), ' AAA ', htmlspecialchars(str_replace('@N.N.', '', $surn)), '</td>';
-		echo '<td>', htmlspecialchars($surn), ' AAA ', htmlspecialchars(str_replace('@P.N.', '', $givn)), '</td>';
+		echo '<td>', htmlspecialchars($givn), 'AAAA', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), '</td>';
+		echo '<td>', htmlspecialchars($surn), 'AAAA', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), '</td>';
 		//-- SOSA
 		if ($option=='sosa') {
 			echo '<td><a href="relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(), '" title="', WT_I18N::translate('Relationships'), '" class="name2">', $key, '</a></td>';
