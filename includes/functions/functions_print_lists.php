@@ -570,7 +570,7 @@ function print_fam_table($datalist, $option='') {
 				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
-				jQuery("#MARR_DIV_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#MARR_DIV_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MULTI_MARR_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#DEAT_N_'.    $table_id.'").click( function() {
