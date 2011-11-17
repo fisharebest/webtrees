@@ -251,14 +251,25 @@ foreach ($controller->tabs as $tab) {
 		$greyed_out='';
 	}
 	if ($tab->hasTabContent()) {
+		// jQueryUI/tabs.  The title attribute is used to uniquely identify each
+		// tab.  We need this identifier, so that we can remember/restore the last
+		// tab used.  Hence we must use the tab's name (not a numeric index, which
+		// will change from page to page).  But the title must also be a valid CSS
+		// id, which means that we cannot use the tab's title/description.  (The
+		// documentation suggests simply replacing spaces with underscores, but
+		// this will only work for English.)  We can wrap the tab's title in its
+		// own <div title="">, but jQueryUI gives the <a> element padding, which
+		// shows the correct title on the text but the wrong title on the padding.
+		// So,... move the padding from the <a> to the internal <div>
+		echo '<li class="'.$greyed_out.'"><a style="padding:0;" title="', $tab->getName(), '" href="';
 		if ($tab->canLoadAjax()) {
 			// AJAX tabs load only when selected
-			echo '<li class="'.$greyed_out.'"><a id="', $tab->getName(), '_tab" href="',$controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName(), '">';
+			echo $controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName();
 		} else {
 			// Non-AJAX tabs load immediately
-			echo '<li class="'.$greyed_out.'"><a id="', $tab->getName(), '_tab" href="#', $tab->getName(), '">';
+			echo '#', $tab->getName();
 		}
-		echo '<span title="', $tab->getDescription(), '">', $tab->getTitle(), '</span></a></li>';
+		echo '"><div style="padding:0.5em 1em;" title="', $tab->getDescription(), '">', $tab->getTitle(), '</div></a></li>';
 	}
 }
 echo '</ul>';
