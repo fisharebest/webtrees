@@ -71,25 +71,26 @@ function print_indi_table($datalist, $option='') {
 				"bProcessing": true,
 				"bRetrieve": true,
 				"aoColumns": [
-					/*  0 name      */ {"iDataSort": 2},
-					/*  1 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
-					/*  2 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
-					/*  3 sosa      */ {"sType": "num-html", "bVisible": '.($option=='sosa'?'true':'false').'},
-					/*  4 birt date */ {"iDataSort": 5},
-					/*  5 BIRT:DATE */ {"bVisible": false},
-					/*  6 anniv     */ {"bSortable": false, "sClass": "center"},
-					/*  7 birt plac */ {"sType": "unicode"},
-					/*  8 children  */ {"sClass": "center"},
-					/*  9 deat date */ {"iDataSort": 11},
-					/* 10 DEAT:DATE */ {"bVisible": false},
-					/* 11 anniv     */ {"bSortable": false, "sClass": "center"},
-					/* 12 age       */ {"sType": "numeric", "sClass": "center"},
-					/* 13 deat plac */ {"sType": "unicode"},
-					/* 14 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 15 SEX       */ {"bVisible": false},
-					/* 16 BIRT      */ {"bVisible": false},
-					/* 17 DEAT      */ {"bVisible": false},
-					/* 18 TREE      */ {"bVisible": false}
+					/*  0 givnn     */ {"iDataSort": 2},
+					/*  1 surn      */ {"iDataSort": 3},
+					/*  2 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
+					/*  3 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
+					/*  4 sosa      */ {"sType": "num-html", "bVisible": '.($option=='sosa'?'true':'false').'},
+					/*  5 birt date */ {"iDataSort": 6},
+					/*  6 BIRT:DATE */ {"bVisible": false},
+					/*  7 anniv     */ {"bSortable": false, "sClass": "center"},
+					/*  8 birt plac */ {"sType": "unicode"},
+					/*  9 children  */ {"sClass": "center"},
+					/* 10 deat date */ {"iDataSort": 11},
+					/* 11 DEAT:DATE */ {"bVisible": false},
+					/* 12 anniv     */ {"bSortable": false, "sClass": "center"},
+					/* 13 age       */ {"sType": "numeric", "sClass": "center"},
+					/* 14 deat plac */ {"sType": "unicode"},
+					/* 15 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 16 SEX       */ {"bVisible": false},
+					/* 17 BIRT      */ {"bVisible": false},
+					/* 18 DEAT      */ {"bVisible": false},
+					/* 19 TREE      */ {"bVisible": false}
 				],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
@@ -111,82 +112,79 @@ function print_indi_table($datalist, $option='') {
 			).'");
 	
 			jQuery("div.filtersF_'.$table_id.'").html("'.addslashes(
-				'<button type="button" class="ui-state-default" id="GIVEN_SORT_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
 				'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="jQuery(\'div.parents_indi_list_table_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
 				'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
 	
-			oTable'.$table_id.'.fnSortListener("#GIVEN_SORT_'.$table_id.'",1);
-	
 			/* Add event listeners for filtering inputs */
 			jQuery("#SEX_M_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("M", 15 );
+				oTable'.$table_id.'.fnFilter("M", 16 );
 				jQuery("#SEX_M_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#SEX_F_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("F", 15 );
+				oTable'.$table_id.'.fnFilter("F", 16 );
 				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#SEX_U_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("U", 15 );
+				oTable'.$table_id.'.fnFilter("U", 16 );
 				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#BIRT_YES_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 16 );
+				oTable'.$table_id.'.fnFilter("YES", 17 );
 				jQuery("#BIRT_YES_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#BIRT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#BIRT_Y100_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 16 );
+				oTable'.$table_id.'.fnFilter("Y100", 17 );
 				jQuery("#BIRT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#BIRT_Y100_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#DEAT_N_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("N", 17 );
+				oTable'.$table_id.'.fnFilter("N", 18 );
 				jQuery("#DEAT_N_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_Y_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("^Y", 17, true, false );
+				oTable'.$table_id.'.fnFilter("^Y", 18, true, false );
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_YES_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 17 );
+				oTable'.$table_id.'.fnFilter("YES", 18 );
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_Y100_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 17 );
+				oTable'.$table_id.'.fnFilter("Y100", 18 );
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#TREE_R_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("R", 18 );
+				oTable'.$table_id.'.fnFilter("R", 19 );
 				jQuery("#TREE_R_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#TREE_L_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("L", 18 );
+				oTable'.$table_id.'.fnFilter("L", 19 );
 				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
 			});	
 			jQuery("#RESET_'.    $table_id.'").click( function() {
-				for (i=15; i<=18; i++){
+				for (i=16; i<=19; i++){
 					oTable'.$table_id.'.fnFilter("", i );
 				};
 				jQuery("div.filtersH_'.$table_id.' button").removeClass("ui-state-active");
@@ -216,7 +214,8 @@ function print_indi_table($datalist, $option='') {
 	echo '<div class="indi-list">';
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('GIVN'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('SURN'), '</th>';
 	echo '<th>GIVN</th>';
 	echo '<th>SURN</th>';
 	echo '<th ',($option=='sosa'?'':''),'>', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
@@ -262,7 +261,7 @@ function print_indi_table($datalist, $option='') {
 		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
 		echo '<tr>';
 		//-- Indi name(s)
-		echo '<td>';
+		echo '<td colspan="2">';
 		foreach ($person->getAllNames() as $num=>$name) {
 			if ($name['type']=='NAME') {
 				$title='';
@@ -282,9 +281,14 @@ function print_indi_table($datalist, $option='') {
 		// Indi parents
 		echo $person->getPrimaryParentsNames("parents_indi_list_table_".$table_id." details1", 'none');
 		echo '</td>';
+		// Dummy column to match colspan in header
+		echo '<td style="display:none;"></td>';
 		//-- GIVN/SURN
-		echo '<td>', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
-		echo '<td>', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
+		// Use "AAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
+		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
+		// Similarly, @N.N. would sort as NN.
+		echo '<td>', htmlspecialchars($givn), ' AAA ', htmlspecialchars(str_replace('@N.N.', '', $surn)), '</td>';
+		echo '<td>', htmlspecialchars($surn), ' AAA ', htmlspecialchars(str_replace('@P.N.', '', $givn)), '</td>';
 		//-- SOSA
 		if ($option=='sosa') {
 			echo '<td><a href="relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(), '" title="', WT_I18N::translate('Relationships'), '" class="name2">', $key, '</a></td>';
