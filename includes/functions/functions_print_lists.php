@@ -287,8 +287,8 @@ function print_indi_table($datalist, $option='') {
 		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
-		echo '<td>', htmlspecialchars($givn), 'AAAA', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), '</td>';
-		echo '<td>', htmlspecialchars($surn), 'AAAA', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), '</td>';
+		echo '<td>', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), 'AAAA', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), '</td>';
+		echo '<td>', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), 'AAAA', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), '</td>';
 		//-- SOSA
 		if ($option=='sosa') {
 			echo '<td><a href="relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(), '" title="', WT_I18N::translate('Relationships'), '" class="name2">', $key, '</a></td>';
@@ -488,22 +488,25 @@ function print_fam_table($datalist, $option='') {
 				"bProcessing": true,
 				"bRetrieve": true,
 				"aoColumns": [
-					/*  0 husb name */ {"iDataSort": 2},
-					/*  1 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
-					/*  2 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
-					/*  3 age       */ {"sType": "numeric", "sClass": "center"},
-					/*  4 wife name */ {"iDataSort": 6},
-					/*  5 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
-					/*  6 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
-					/*  7 age       */ {"sType": "numeric", "sClass": "center"},
-					/*  8 marr date */ {},
-					/*  9 anniv     */ {"bSortable": false, "sClass": "center"},
-					/* 10 marr plac */ {"sType": "unicode"},
-					/* 11 children  */ {"sType": "numeric", "sClass": "center"},
-					/* 12 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 13 MARR      */ {"bVisible": false},
-					/* 14 DEAT      */ {"bVisible": false},
-					/* 15 TREE      */ {"bVisible": false}
+					/*  0 husb givn */ {"iDataSort": 2},
+					/*  1 husb surn */ {"iDataSort": 3},
+					/*  2 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
+					/*  3 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
+					/*  4 age       */ {"sType": "numeric", "sClass": "center"},
+					/*  5 wife givn */ {"iDataSort": 7},
+					/*  6 wife surn */ {"iDataSort": 8},
+					/*  7 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
+					/*  8 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
+					/*  9 age       */ {"sType": "numeric", "sClass": "center"},
+					/* 10 marr date */ {"iDataSort": 11},
+					/* 11 MARR:DATE */ {"bVisible": false},
+					/* 12 anniv     */ {"bSortable": false, "sClass": "center"},
+					/* 13 marr plac */ {"sType": "unicode"},
+					/* 14 children  */ {"sType": "numeric", "sClass": "center"},
+					/* 15 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 16 MARR      */ {"bVisible": false},
+					/* 17 DEAT      */ {"bVisible": false},
+					/* 18 TREE      */ {"bVisible": false}
 				],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
@@ -525,29 +528,24 @@ function print_fam_table($datalist, $option='') {
 			).'");
 
 			jQuery("div.filtersF_'.$table_id.'").html("'.addslashes(
-				'<button type="button" class="ui-state-default" id="GIVEN_SORT_M_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
-				'<button type="button" class="ui-state-default" id="GIVEN_SORT_F_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
 				'<button type="button" class="ui-state-default" id="cb_parents_'.$table_id.'" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show parents').'</button>'.
 				'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle();">'. WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
 			
-			oTable'.$table_id.'.fnSortListener("#GIVEN_SORT_M_'.$table_id.'",1);
-			oTable'.$table_id.'.fnSortListener("#GIVEN_SORT_F_'.$table_id.'",5);
-
 			/* Add event listeners for filtering inputs */
-			jQuery("#MARR_U_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("U", 13);});
-			jQuery("#MARR_YES_'.  $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 13);});
-			jQuery("#MARR_Y100_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 13);});
-			jQuery("#MARR_DIV_'.  $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("D", 13);});
-			jQuery("#MULTI_MARR_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("M", 13);});
-			jQuery("#DEAT_N_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("N", 14);});
-			jQuery("#DEAT_W_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("W", 14);});
-			jQuery("#DEAT_H_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("H", 14);});
-			jQuery("#DEAT_Y_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y", 14);});
-			jQuery("#TREE_R_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("R", 15);});
-			jQuery("#TREE_L_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("L", 15);});	
+			jQuery("#MARR_U_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("U", 15);});
+			jQuery("#MARR_YES_'.  $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 15);});
+			jQuery("#MARR_Y100_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 15);});
+			jQuery("#MARR_DIV_'.  $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("D", 15);});
+			jQuery("#MULTI_MARR_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("M", 15);});
+			jQuery("#DEAT_N_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("N", 16);});
+			jQuery("#DEAT_W_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("W", 16);});
+			jQuery("#DEAT_H_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("H", 16);});
+			jQuery("#DEAT_Y_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y", 16);});
+			jQuery("#TREE_R_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("R", 17);});
+			jQuery("#TREE_L_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("L", 17);});	
 			jQuery("#RESET_'.     $table_id.'").click( function() {
-				for (i=13; i<=15; i++) {
+				for (i=15; i<=17; i++) {
 					oTable'.$table_id.'.fnFilter("", i );
 				};
 			});
@@ -572,15 +570,18 @@ function print_fam_table($datalist, $option='') {
 	echo '<div class="fam-list">';
 	//-- table header
 	echo '<table id="', $table_id, '"><thead><tr>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('GIVN'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('SURN'), '</th>';
 	echo '<th>HUSB:GIVN_SURN</th>';
 	echo '<th>HUSB:SURN_GIVN</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('NAME'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('GIVN'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('SURN'), '</th>';
 	echo '<th>WIFE:GIVN_SURN</th>';
 	echo '<th>WIFE:SURN_GIVN</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('MARR'), '</th>';
+	echo '<th>MARR:DATE</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '"></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
 	echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '"></th>';
@@ -618,7 +619,7 @@ function print_fam_table($datalist, $option='') {
 		if ($option=='MARR_PLAC' && strstr($family->getMarriagePlace(), $filter)===false) continue;
 		echo '<tr>';
 		//-- Husband name(s)
-		echo '<td>';
+		echo '<td colspan="2">';
 		foreach ($husb->getAllNames() as $num=>$name) {
 			if ($name['type']=='NAME') {
 				$title='';
@@ -641,9 +642,14 @@ function print_fam_table($datalist, $option='') {
 		// Husband parents
 		echo $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
 		echo '</td>';
+		// Dummy column to match colspan in header
+		echo '<td style="display:none;"></td>';
 		//-- Husb GIVN
-		echo '<td>', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
-		echo '<td>', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
+		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
+		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
+		// Similarly, @N.N. would sort as NN.
+		echo '<td>', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), 'AAAA', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), '</td>';
+		echo '<td>', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), 'AAAA', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Husband age
 		echo '<td>';
@@ -659,7 +665,7 @@ function print_fam_table($datalist, $option='') {
 		}
 		echo '</td>';
 		//-- Wife name(s)
-		echo '<td>';
+		echo '<td colspan="2">';
 		foreach ($wife->getAllNames() as $num=>$name) {
 			if ($name['type']=='NAME') {
 				$title='';
@@ -682,9 +688,15 @@ function print_fam_table($datalist, $option='') {
 		// Wife parents
 		echo $wife->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
 		echo '</td>';
+		// Dummy column to match colspan in header
+		echo '<td style="display:none;"></td>';
 		//-- Wife GIVN
-		echo '<td>', htmlspecialchars($givn), ',', htmlspecialchars($surn), '</td>';
-		echo '<td>', htmlspecialchars($surn), ',', htmlspecialchars($givn), '</td>';
+		//-- Husb GIVN
+		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
+		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
+		// Similarly, @N.N. would sort as NN.
+		echo '<td>', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), 'AAAA', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), '</td>';
+		echo '<td>', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), 'AAAA', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Wife age
 		echo '<td>';
@@ -738,6 +750,8 @@ function print_fam_table($datalist, $option='') {
 			}
 		}
 		echo '</td>';
+		//-- Event date (sortable)hidden by datatables code
+		echo '<td>', $marriage_date->JD(), '</td>';
 		//-- Marriage anniversary
 		echo '<td>';
 			$mage=WT_Date::GetAgeYears($mdate);
