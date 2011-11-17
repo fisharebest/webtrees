@@ -263,16 +263,19 @@ input, textarea {
 .person_box {
 	background-color: white;
 	border: solid black 1px;
+	padding:3px;
 }
 
 .person_boxF {
 	background-color: white;
 	border: solid black 1px;
+	padding:3px;
 }
 
 .person_boxNN {
 	background-color: white;
 	border: 1px dashed gray;
+	padding:3px;
 }
 
 .person_box:target, .news_box:target, #gedcom_stats:target {

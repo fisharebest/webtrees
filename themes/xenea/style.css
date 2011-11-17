@@ -325,16 +325,19 @@ th {
 .person_box {
 	background-color:#F0F9FF;
 	border:1px solid #84BEFF;
+	padding:3px;
 }
 
 .person_boxF {
 	background-color:#FFF0F0;
 	border:1px solid #FF2080;
+	padding:3px;
 }
 
 .person_boxNN {
 	background-color:white;
 	border:dashed #008080 1px;
+	padding:3px;
 }
 
 .person_box:target, .news_box:target, #gedcom_stats:target {
