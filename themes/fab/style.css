@@ -1291,6 +1291,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0; margin-right:
 .filtersH .ui-state-default,.filtersF .ui-state-default {margin:0 2px; padding:2px;}
 .loading-image{background:transparent url(../../images/loading.gif) 50% 50% no-repeat; height:50px; margin:50px;}
 #search-result-tabs, #places-tabs {margin:auto; width:98%; visibility:hidden;}
+#search-result-tabs h3 {text-align:center;}
 #searchAccordion-indi, #searchAccordion-fam, #searchAccordion-source, #searchAccordion-note {margin:auto; width:99%;}
 #place-heirarchy h2, #place-heirarchy h4 {text-align:center;}
 

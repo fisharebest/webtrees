@@ -655,7 +655,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 							usort($datalist, array('WT_GedcomRecord', 'Compare'));
 							$GEDCOM=$gedcom;
 							load_gedcom_settings($ged_id);
-							echo '<h3 class="fam-acc-header"><a href="#">&laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
+							echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item">'.$this->myquery.'</span>&nbsp;@&nbsp;'.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
 								<div class="fam-acc_content">';
 								print_fam_table($datalist);
 							echo '</div>';//fam-acc_content
@@ -679,7 +679,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 							usort($datalist, array('WT_GedcomRecord', 'Compare'));
 							$GEDCOM=$gedcom;
 							load_gedcom_settings($ged_id);
-							echo '<h3 class="source-acc-header"><a href="#">&laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
+							echo '<h3 class="source-acc-header"><a href="#"><span class="search_item">'.$this->myquery.'</span>&nbsp;@&nbsp;'.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
 								<div class="source-acc_content">';
 								print_sour_table($datalist);
 							echo '</div>';//fam-acc_content
@@ -703,7 +703,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 							usort($datalist, array('WT_GedcomRecord', 'Compare'));
 							$GEDCOM=$gedcom;
 							load_gedcom_settings($ged_id);
-							echo '<h3 class="note-acc-header"><a href="#">&laquo;'.$this->myquery.'&raquo; @ '.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
+							echo '<h3 class="note-acc-header"><a href="#"><span class="search_item">'.$this->myquery.'</span>&nbsp;@&nbsp;'.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
 								<div class="note-acc_content">';
 								print_note_table($datalist);
 							echo '</div>';//note-acc_content
