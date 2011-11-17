@@ -71,7 +71,7 @@ function print_indi_table($datalist, $option='') {
 				"bProcessing": true,
 				"bRetrieve": true,
 				"aoColumns": [
-					/*  0 givnn     */ {"iDataSort": 2},
+					/*  0 givn      */ {"iDataSort": 2},
 					/*  1 surn      */ {"iDataSort": 3},
 					/*  2 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
 					/*  3 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
@@ -191,10 +191,10 @@ function print_indi_table($datalist, $option='') {
 			});
 
 			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
-			jQuery("th div span:eq(2)").css("display", "none");
-			jQuery("th div:eq(2)").css("margin", "auto").css("text-align", "center");
-			jQuery("th span:eq(6)").css("display", "none");
-			jQuery("th div:eq(6)").css("margin", "auto").css("text-align", "center");
+			jQuery("th div span:eq(3)").css("display", "none");
+			jQuery("th div:eq(3)").css("margin", "auto").css("text-align", "center");
+			jQuery("th span:eq(7)").css("display", "none");
+			jQuery("th div:eq(7)").css("margin", "auto").css("text-align", "center");
 			
 			jQuery(".indi-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
