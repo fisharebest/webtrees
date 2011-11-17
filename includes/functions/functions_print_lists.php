@@ -528,8 +528,8 @@ function print_fam_table($datalist, $option='') {
 			).'");
 
 			jQuery("div.filtersF_'.$table_id.'").html("'.addslashes(
-				'<button type="button" class="ui-state-default" id="cb_parents_'.$table_id.'" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle();">'. WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="ui-state-default" id="cb_parents_'.$table_id.'" onclick="jQuery(\'div.parents_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" id="charts_fam_list_table" onclick="jQuery(\'div.fam_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'. WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
 			
 			/* Add event listeners for filtering inputs */
