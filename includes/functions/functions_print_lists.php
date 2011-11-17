@@ -819,7 +819,13 @@ function print_fam_table($datalist, $option='') {
 		}
 		echo '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		echo '<td>', $marriage_date->JD(), '</td>';
+		echo '<td>';
+		if ($marriage_date->JD()) {
+			echo $marriage_date->JD();
+		} else {
+			echo 0;
+		}
+		echo '</td>';
 		//-- Marriage anniversary
 		echo '<td>';
 			$mage=WT_Date::GetAgeYears($mdate);
