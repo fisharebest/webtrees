@@ -112,28 +112,84 @@ function print_indi_table($datalist, $option='') {
 	
 			jQuery("div.filtersF_'.$table_id.'").html("'.addslashes(
 				'<button type="button" class="ui-state-default" id="GIVEN_SORT_'.$table_id.'">'.WT_I18N::translate('Sort by given names').'</button>'.
-				'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="jQuery(\'div.parents_indi_list_table_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show parents').'</button>'.
-				'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle();">'.WT_I18N::translate('Show statistics charts').'</button>'
+				'<button type="button" class="ui-state-default" id="cb_parents_indi_list_table" onclick="jQuery(\'div.parents_indi_list_table_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show parents').'</button>'.
+				'<button type="button" class="ui-state-default" id="charts_indi_list_table" onclick="jQuery(\'div.indi_list_table-charts_'.$table_id.'\').toggle(); jQuery(this).toggleClass(\'ui-state-active\');">'.WT_I18N::translate('Show statistics charts').'</button>'
 			).'");
 	
 			oTable'.$table_id.'.fnSortListener("#GIVEN_SORT_'.$table_id.'",1);
 	
 			/* Add event listeners for filtering inputs */
-			jQuery("#SEX_M_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("M", 15 );});
-			jQuery("#SEX_F_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("F", 15 );});
-			jQuery("#SEX_U_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("U", 15 );});
-			jQuery("#BIRT_YES_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 16 );});
-			jQuery("#BIRT_Y100_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 16 );});
-			jQuery("#DEAT_N_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("N", 17 );});
-			jQuery("#DEAT_Y_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("^Y", 17, true, false );});
-			jQuery("#DEAT_YES_'. $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("YES", 17 );});
-			jQuery("#DEAT_Y100_'.$table_id.'").click( function() { oTable'.$table_id.'.fnFilter("Y100", 17 );});
-			jQuery("#TREE_R_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("R", 18 );});
-			jQuery("#TREE_L_'.   $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("L", 18 );});	
+			jQuery("#SEX_M_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("M", 15 );
+				jQuery("#SEX_M_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#SEX_F_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("F", 15 );
+				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#SEX_F_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#SEX_U_'.    $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("U", 15 );
+				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#SEX_U_'.$table_id.'").addClass("ui-state-active");
+			});
+			jQuery("#BIRT_YES_'. $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("YES", 16 );
+				jQuery("#BIRT_YES_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#BIRT_Y100_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#BIRT_Y100_'.$table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("Y100", 16 );
+				jQuery("#BIRT_YES_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#BIRT_Y100_'.$table_id.'").addClass("ui-state-active");
+			});
+			jQuery("#DEAT_N_'.   $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("N", 17 );
+				jQuery("#DEAT_N_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#DEAT_Y_'.   $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("^Y", 17, true, false );
+				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_Y_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#DEAT_YES_'. $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("YES", 17 );
+				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_YES_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#DEAT_Y100_'.$table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("Y100", 17 );
+				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#DEAT_Y100_'.$table_id.'").addClass("ui-state-active");
+			});
+			jQuery("#TREE_R_'.   $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("R", 18 );
+				jQuery("#TREE_R_'.$table_id.'").addClass("ui-state-active");
+				jQuery("#TREE_L_'.$table_id.'").removeClass("ui-state-active");
+			});
+			jQuery("#TREE_L_'.   $table_id.'").click( function() {
+				oTable'.$table_id.'.fnFilter("L", 18 );
+				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
+				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
+			});	
 			jQuery("#RESET_'.    $table_id.'").click( function() {
-				for (i=0; i<21; i++){
+				for (i=15; i<=18; i++){
 					oTable'.$table_id.'.fnFilter("", i );
 				};
+				jQuery("div.filtersH_'.$table_id.' button").removeClass("ui-state-active");
 			});
 
 			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
@@ -487,7 +543,7 @@ function print_fam_table($datalist, $option='') {
 			jQuery("#TREE_R_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("R", 15);});
 			jQuery("#TREE_L_'.    $table_id.'").click( function() { oTable'.$table_id.'.fnFilter("L", 15);});	
 			jQuery("#RESET_'.     $table_id.'").click( function() {
-				for (i=0; i<17; i++) {
+				for (i=13; i<=15; i++) {
 					oTable'.$table_id.'.fnFilter("", i );
 				};
 			});
