@@ -820,7 +820,7 @@ function print_fam_table($datalist, $option='') {
 		echo '</td>';
 		//-- Event date (sortable)hidden by datatables code
 		echo '<td>';
-		if ($marriage_date->JD()) {
+		if ($marriage_dates) {
 			echo $marriage_date->JD();
 		} else {
 			echo 0;
