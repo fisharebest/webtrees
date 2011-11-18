@@ -92,6 +92,7 @@ function print_indi_table($datalist, $option='') {
 					/* 18 DEAT      */ {"bVisible": false},
 					/* 19 TREE      */ {"bVisible": false}
 				],
+				"aaSorting": [[1, "asc"]],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
 			});
@@ -508,6 +509,7 @@ function print_fam_table($datalist, $option='') {
 					/* 17 DEAT      */ {"bVisible": false},
 					/* 18 TREE      */ {"bVisible": false}
 				],
+				"aaSorting": [[1, "asc"]],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
 		   });
