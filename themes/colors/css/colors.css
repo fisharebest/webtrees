@@ -724,8 +724,6 @@ font-weight: bold;
 overflow: hidden;
 }
 
-span .NAME {display: block; max-height: 30px; overflow: hidden;}
-
 a:hover .name1, a:hover.name2,  a:hover .nameZoom  {color: #f00; font-weight: bold}
 
 .details1 {
