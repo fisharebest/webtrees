@@ -510,13 +510,13 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			break;
 		case 'spouse':
 			if ($family->isNotMarried()) {
-				$labels["parent"] = WT_I18N::translate('Partner');
-				$labels["mother"] = WT_I18N::translate('Partner');
-				$labels["father"] = WT_I18N::translate('Partner');
+				$labels["parent"] = /* I18N: A life partner - like a husband/wife, but not married */ WT_I18N::translate_c('MALE/FEMALE', 'partner');
+				$labels["mother"] = /* I18N: A life partner - like a husband/wife, but not married */ WT_I18N::translate_c('FEMALE',      'partner');
+				$labels["father"] = /* I18N: A life partner - like a husband/wife, but not married */ WT_I18N::translate_c('MALE',        'partner');
 			} elseif ($family->isDivorced()) {
-				$labels["parent"] = WT_I18N::translate('Ex-Spouse');
-				$labels["mother"] = WT_I18N::translate('Ex-Wife');
-				$labels["father"] = WT_I18N::translate('Ex-Husband');
+				$labels["parent"] = /* I18N: A previous spouse, now divorced  */ WT_I18N::translate('ex-spouse');
+				$labels["mother"] = /* I18N: A previous wife, now divorced    */ WT_I18N::translate('ex-wife');
+				$labels["father"] = /* I18N: A previous husband, now divorced */ WT_I18N::translate('ex-husband');
 			} else {
 				$marr_rec = $family->getMarriageRecord();
 				if (!empty($marr_rec)) {
@@ -526,9 +526,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 						$labels["mother"] = get_relationship_name_from_path('wif', null, null);
 						$labels["father"] = get_relationship_name_from_path('hus', null, null);
 					} else {
-						$labels["parent"] = WT_I18N::translate('Partner');
-						$labels["mother"] = WT_I18N::translate('Partner');
-						$labels["father"] = WT_I18N::translate('Partner');
+						$labels["parent"] = /* I18N: Like a husband/wife, but not married */ WT_I18N::translate_c('MALE/FEMALE', 'partner');
+						$labels["mother"] = /* I18N: Like a husband/wife, but not married */ WT_I18N::translate_c('FEMALE',      'partner');
+						$labels["father"] = /* I18N: Like a husband/wife, but not married */ WT_I18N::translate_c('MALE',        'partner');
 					}
 				} else {
 					$labels["parent"] = get_relationship_name_from_path('spo', null, null);
