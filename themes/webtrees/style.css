@@ -140,6 +140,12 @@ img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img  {
 	padding:2px;
 }
 
+.person_box .NAME, .person_boxF .NAME {
+	display: block; 
+	max-height: 40px; 
+	overflow: hidden; 
+}
+
 .person_box:target, .news_box:target, #gedcom_stats:target {
 	background-color:#ffc;
 }

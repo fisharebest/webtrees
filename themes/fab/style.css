@@ -253,6 +253,12 @@ background-color:#DDF;
 	overflow:visible;
 }
 
+.person_box .NAME, .person_boxF .NAME {
+	display: block; 
+	max-height: 40px; 
+	overflow: hidden; 
+}
+
 .action_headerF {background: #FDD;}
 .action_header {background: #DDF;}
 

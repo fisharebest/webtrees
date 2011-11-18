@@ -43,7 +43,7 @@ if (!$show_full) $bwidth = ($bwidth / 1.5);
 $bwidth = (int) ($bwidth * $box_width/100);
 
 if ($show_full==false) {
-	$bheight = (int) ($bheight / 2.5);
+	$bheight = 40;
 }
 $bhalfheight = (int) ($bheight / 2);
 
