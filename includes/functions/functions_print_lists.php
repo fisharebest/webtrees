@@ -1025,7 +1025,7 @@ function print_sour_table($datalist) {
 		echo '<td>', $source->countLinkedNotes(), '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td>'.$source->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+			echo '<td>', $source->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
 		} else {
 			echo '<td>&nbsp;</td>';
 		}
@@ -1102,7 +1102,7 @@ function print_note_table($datalist) {
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
 	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	echo '<th ',WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th>&nbsp;</th>';//delete
 	echo '</tr></thead>';
 	//-- table body
@@ -1124,7 +1124,7 @@ function print_note_table($datalist) {
 		echo '<td>', $note->countLinkedSources(), '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td>'.$note->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+			echo '<td>', $note->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
 		} else {
 			echo '<td></td>';
 		}
@@ -1153,7 +1153,9 @@ function print_repo_table($repos) {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
-			jQuery("#'.$table_id.'").dataTable( {
+			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
+			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"oLanguage": {
 				"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"20\">20</option><option value=\"30\">30</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
@@ -1173,9 +1175,11 @@ function print_repo_table($repos) {
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
-			"aoColumnDefs": [
-				{"bSortable": false, "aTargets": [ 3 ]},
-				{"sType": "numeric", "aTargets": [ 1 ]}
+			"aoColumns": [
+				/* 0 name  */ {"sType": "unicode"},
+				/* 1 #sour  */ {"sType": "numeric", "sClass": "center"},
+				/* 2 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 3 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1191,7 +1195,7 @@ function print_repo_table($repos) {
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Repository name'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	echo '<th> ',WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th>&nbsp;</th>';//delete
 	echo '</tr></thead>';
 	//-- table body
@@ -1216,8 +1220,7 @@ function print_repo_table($repos) {
 		}	
 		echo '</td>';
 		//-- Linked SOURces
-		$tmp=$repo->countLinkedSources();
-		echo '<td>', $tmp, '</td>';
+		echo '<td>', $repo->countLinkedSources(), '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>', $repo->LastChangeTimestamp(!$SEARCH_SPIDER), '</td>';
@@ -1246,7 +1249,9 @@ function print_media_table($datalist) {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
-			jQuery("#'.$table_id.'").dataTable( {
+			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
+			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"oLanguage": {
 				"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"20\">20</option><option value=\"30\">30</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
@@ -1266,9 +1271,13 @@ function print_media_table($datalist) {
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
-			"aoColumnDefs": [
-				{"bSortable": false, "aTargets": [ 0 ]},
-				{"sType": "numeric", "aTargets": [2, 3, 4]}
+			"aoColumns": [
+				/* 0 media  */ {"bSortable": false},
+				/* 1 title  */ {"sType": "unicode"},
+				/* 2 #indi  */ {"sType": "numeric", "sClass": "center"},
+				/* 3 #fam   */ {"sType": "numeric", "sClass": "center"},
+				/* 4 #sour  */ {"sType": "numeric", "sClass": "center"},
+				/* 5 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1287,7 +1296,7 @@ function print_media_table($datalist) {
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	echo '<th ',WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
+	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '</tr></thead>';
 	//-- table body
 	echo '<tbody>';
@@ -1315,17 +1324,14 @@ function print_media_table($datalist) {
 			echo '</td>';
 
 			//-- Linked INDIs
-			$tmp=$media->countLinkedIndividuals();
-			echo '<td>', $tmp, '</td>';
+			echo '<td>', $media->countLinkedIndividuals(), '</td>';
 			//-- Linked FAMs
-			$tmp=$media->countLinkedfamilies();
-			echo '<td>', $tmp, '</td>';
+			echo '<td>', $media->countLinkedfamilies(), '</td>';
 			//-- Linked SOURces
-			$tmp=$media->countLinkedSources();
-			echo '<td>', $tmp, '</td>';
+			echo '<td>', $media->countLinkedSources(), '</td>';
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {
-				echo '<td>'.$media->LastChangeTimestamp(empty($SEARCH_SPIDER)).'</td>';
+				echo '<td>', $media->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
 			} else {
 				echo '<td>&nbsp;</td>';
 			}
