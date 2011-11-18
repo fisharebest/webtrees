@@ -112,7 +112,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	<!-- // search terms -->
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<label for="firstfocus"><?php echo WT_I18N::translate('Enter search terms'); ?></label>
+			<label for="firstfocus"><?php echo WT_I18N::translate('Search for'); ?></label>
 		</td>
 		<td class="list_value" style="padding: 5px;">
 			<input tabindex="1" id="firstfocus" type="text" name="query" value="<?php if (isset($controller->myquery)) echo $controller->myquery; ?>" size="40" autofocus/>
@@ -125,7 +125,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	<!-- // Choice where to search -->
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<?php echo WT_I18N::translate('Search for'); ?>
+			<?php echo WT_I18N::translate('Search'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;">
 			<input type="checkbox"<?php
