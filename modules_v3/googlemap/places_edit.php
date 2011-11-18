@@ -267,17 +267,36 @@ $api="v3";
 
 	<table class="facts_table">
 	<tr>
-		<td class="optionbox" colspan="2">
+		<td class="optionbox" colspan="3">
 		<center><div id="map_pane" style="width: 100%; height: 300px"></div></center>
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'), help_link('PLE_PLACES','googlemap'); ?></td>
+		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
 		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input" />
 		<div id="INDI_PLAC_pop" style="display: inline;">
-		<?php print_specialchar_link("NEW_PLACE_NAME", false); ?></div>
-		<label for="new_pl_name"><a href="#" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search on this level'); ?></a></label>&nbsp;&nbsp;|
-	  <label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search all'); ?></a></label>
+		<?php print_specialchar_link("NEW_PLACE_NAME", false); ?></div></td><td class="optionbox">
+		<?php
+		$tmp='';
+		foreach ($where_am_i as $place) {
+			if ($tmp) {
+				$tmp=', '.$tmp;
+			}
+			$tmp=htmlspecialchars($place).$tmp;
+			echo
+				'<a href="#" onclick="return showLocation(\''.$tmp.'\')">',
+				/* I18N: %s is a place name */ WT_I18N::translate('Find “%s” on the map', $tmp),
+				'</a><br>';
+		}
+		// Although we have already put this place in the hierarchy, the hierarchy may be
+		// wrong - so allow the option to find this place anywhere in the world.
+		if (count($where_am_i)>1) {
+			echo
+				'<a href="#" onclick="return showLocation(\''.htmlspecialchars($place_name).'\')">',
+				/* I18N: %s is a place name */ WT_I18N::translate('Find all places called “%s” on the map', htmlspecialchars($place_name)),
+				'</a>';
+		}
+		?>
 		</td>
 	</tr>
 	<tr>
@@ -301,7 +320,7 @@ $api="v3";
 				$precision = 5;
 			}
 		?>
-		<td class="optionbox">
+		<td class="optionbox" colspan="2">
 			<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_0) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_0; ?>" />
 			<label for="new_prec_0"><?php echo WT_I18N::translate('Country'); ?></label>
 			<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_1) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_1; ?>" />
@@ -317,33 +336,33 @@ $api="v3";
 		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LATI'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
-		<td class="optionbox">
+		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LATI'); ?></td>
+		<td class="optionbox" colspan="2">
+			<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ WT_I18N::translate('degrees') ?>" value="<?php if ($place_lati != null) echo abs($place_lati); ?>" size="20" onchange="updateMap();" />
 			<select name="LATI_CONTROL" onchange="updateMap();">
-				<option value="" <?php if ($place_lati == null) echo " selected=\"selected\""; ?>></option>
-				<option value="PL_N" <?php if ($place_lati > 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate_c('North', 'N'); ?></option>
-				<option value="PL_S" <?php if ($place_lati < 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate_c('South', 'S'); ?></option>
+				<option value="PL_N" <?php if ($place_lati > 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('north'); ?></option>
+				<option value="PL_S" <?php if ($place_lati < 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('south'); ?></option>
 			</select>
-			<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" value="<?php if ($place_lati != null) echo abs($place_lati); ?>" size="20" onchange="updateMap();" /></td>
+		</td>
 	</tr>
 	<tr>
-		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LONG'), help_link('PLE_LATLON_CTRL','googlemap'); ?></td>
-		<td class="optionbox">
+		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LONG'); ?></td>
+		<td class="optionbox" colspan="2">
+			<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo WT_I18N::translate('degrees') ?>" value="<?php if ($place_long != null) echo abs($place_long); ?>" size="20" onchange="updateMap();" />
 			<select name="LONG_CONTROL" onchange="updateMap();">
-				<option value="" <?php if ($place_long == null) echo " selected=\"selected\""; ?>></option>
-				<option value="PL_E" <?php if ($place_long > 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate_c('East', 'E'); ?></option>
-				<option value="PL_W" <?php if ($place_long < 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate_c('West', 'W'); ?></option>
+				<option value="PL_E" <?php if ($place_long > 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('east'); ?></option>
+				<option value="PL_W" <?php if ($place_long < 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('west'); ?></option>
 			</select>
-			<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" value="<?php if ($place_long != null) echo abs($place_long); ?>" size="20" onchange="updateMap();" /></td>
+		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox"><?php echo WT_I18N::translate('Zoom factor'), help_link('PLE_ZOOM','googlemap'); ?></td>
-		<td class="optionbox">
+		<td class="optionbox" colspan="2">
 			<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();" /></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox"><?php echo WT_I18N::translate('Flag'), help_link('PLE_ICON','googlemap'); ?></td>
-		<td class="optionbox">
+		<td class="optionbox" colspan="2">
 			<div id="flagsDiv">
 <?php
 		if (($place_icon == NULL) || ($place_icon == "")) { ?>

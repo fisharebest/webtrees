@@ -117,19 +117,9 @@ case 'GOOGLEMAP_COORD':
 
 // Help texts for places_edit.php
 
-case 'PLE_PLACES':
-	$title=WT_I18N::translate('Enter place name');
-	$text=WT_I18N::translate('Here you can enter or change the name of the place and find it\'s position on the map.').'<br />'.WT_I18N::translate('The “Search on this level” option allow to search the latitude and longitude of entered place name only among the places with that level').'<br />'.WT_I18N::translate('The “Search all” option allow to search the latitude and longitude of all places having entered name. Some the lower levels places can not be displayed with this method of search.');
-	break;
-
 case 'PLE_PRECISION':
 	$title=WT_I18N::translate('Enter precision');
 	$text=WT_I18N::translate('Here you can enter the precision. Based on this setting the number of digits that will be used in the latitude and longitude is determined.');
-	break;
-
-case 'PLE_LATLON_CTRL':
-	$title=WT_I18N::translate('Enter latitude or Longitude');
-	$text=WT_I18N::translate('Here the latitude and longitude can be entered. First select the area you want to set (E/W or N/S). Next enter the value for latitude or longitude. This should be a decimal value.<br />The decimal value can be determined by converting the minutes and seconds using the following formula:<br />degrees_decimal = ((seconds / 60) + minutes) / 60 + degrees.');
 	break;
 
 case 'PLE_ZOOM':
