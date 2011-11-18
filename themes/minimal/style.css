@@ -278,12 +278,6 @@ input, textarea {
 	padding:3px;
 }
 
-.person_box .NAME, .person_boxF .NAME {
-	display: block; 
-	max-height: 40px; 
-	overflow: hidden; 
-}
-
 .person_box:target, .news_box:target, #gedcom_stats:target {
 	background-color: #ffffcc;
 }

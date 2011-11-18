@@ -239,24 +239,21 @@ html[dir='rtl'] .makeMenu li ul li {
 .person_boxNN img{background-color:#DFD;}
 
 .person_box {
-background-color:#DDF;
+	background-color:#DDF;
 	overflow:visible;
+	font: 13px  arial;
 }
 
 .person_boxF {
 	background-color:#FDD;
+	font: 13px  arial;
 	overflow:visible;
 }
 
 .person_boxNN {
 	background-color:#DFD;
 	overflow:visible;
-}
-
-.person_box .NAME, .person_boxF .NAME {
-	display: block; 
-	max-height: 40px; 
-	overflow: hidden; 
+	font: 13px  arial;
 }
 
 .action_headerF {background: #FDD;}
