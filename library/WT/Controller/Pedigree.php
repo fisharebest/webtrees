@@ -62,6 +62,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->rootid    =safe_GET_xref('rootid');
 		$this->show_full =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
 		$this->talloffset=safe_GET('talloffset', array('0', '1', '2', '3'), $PEDIGREE_LAYOUT);
+		$this->box_width  =safe_GET_integer('box_width',   50, 300, 100);
 		$this->PEDIGREE_GENERATIONS=safe_GET_integer('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
 
 		if ($this->talloffset==1) $this->talloffset=1; // Make SURE this is an integer
@@ -71,6 +72,13 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		// Passing a function parameter would be much better.
 		global $PEDIGREE_GENERATIONS;
 		$PEDIGREE_GENERATIONS=$this->PEDIGREE_GENERATIONS;
+		
+			// -- Sets the sizes of the boxes
+		if (!$this->show_full) $bwidth *= $this->box_width / 150;
+		else $bwidth*=$this->box_width/100;
+
+		if (!$this->show_full) $bheight = (int)($bheight / 2);
+		$bhalfheight = (int)($bheight / 2);
 
 		// This is passed as a global.  A parameter would be better...
 		$this->show_full = ($this->show_full) ? 1 : 0; // Make SURE this is an integer
@@ -91,15 +99,16 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->addname  = $this->rootPerson->getAddName();
 
 		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree tree of %s', $this->name));
+		
 
 		//-- adjustments for hide details
 		if ($this->show_full==false) {
-			$bheight=30;
+			$bheight=40;
 			if ($this->talloffset < 2) {
-				$bwidth-=30;
+				$bwidth=140;
 			}
 			else {
-				$bwidth-=50;
+				$bwidth=140;
 			}
 		}
 		//-- adjustments for portrait mode
