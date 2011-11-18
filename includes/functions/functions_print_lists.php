@@ -1633,6 +1633,8 @@ function print_changes_table($change_ids, $sort) {
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
+			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
+			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
 				"sDom": \'t\',
 				"bPaginate": false,
@@ -1646,12 +1648,12 @@ function print_changes_table($change_ids, $sort) {
 				"bJQueryUI": true,
 				"aaSorting": ['.$aaSorting.'],
 				"aoColumns": [
-					/* 0-Type */     { "bSortable" : false, "sClass": "center" },
-					/* 1-Record */  { "iDataSort" : 5 },
-					/* 2-Change */  { "iDataSort" : 4 },
-					/* 3=By */      null,
-					/* 4-DATE */    { "bVisible" : false },
-					/* 5-SORTNAME */{ "bVisible" : false }
+					/* 0-Type */    {"bSortable": false, "sClass": "center"},
+					/* 1-Record */  {"iDataSort": 5},
+					/* 2-Change */  {"iDataSort": 4},
+					/* 3-By */      null,
+					/* 4-DATE */    {"bVisible": false},
+					/* 5-SORTNAME */{"sType": "unicode", "bVisible": false}
 				]
 			});
 			jQuery("#'.$table_id.'").css("visibility", "visible");
@@ -1707,7 +1709,7 @@ function print_changes_table($change_ids, $sort) {
 		//-- Record name(s)
 		$name = $record->getFullName();
 		$return .= '<td class="wrap">';
-		$return .= '<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
+		$return .= '<a href="'. $record->getHtmlUrl() .'" class="name2">'. $name . '</a>';
 		if ($indi) {
 			$addname = $record->getAddName();
 			if ($addname) {
