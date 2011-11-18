@@ -612,7 +612,7 @@ function print_fam_table($datalist, $option='') {
 				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
 			});	
 			jQuery("#RESET_'.     $table_id.'").click( function() {
-				for (i=15; i<=17; i++) {
+				for (i=16; i<=18; i++) {
 					oTable'.$table_id.'.fnFilter("", i );
 				};
 				jQuery("div.filtersH_'.$table_id.' button").removeClass("ui-state-active");
