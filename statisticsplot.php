@@ -392,38 +392,38 @@ function agma1() {
 		$num = $stats->_statsMarrAge(false, 'M');
 		$indi=array();
 		foreach ($num as $values) {
-			if (!in_array($values['indi'], $indi)) {
+			if (!in_array($values['d_gid'], $indi)) {
 				fill_ydata(0, floor($values['age']/365.25), 1);
 				$n1++;
-				$indi[]=$values['indi'];
+				$indi[]=$values['d_gid'];
 			}
 		}
 		$num = $stats->_statsMarrAge(false, 'F');
 		$indi=array();
 		foreach ($num as $values) {
-			if (!in_array($values['indi'], $indi)) {
+			if (!in_array($values['d_gid'], $indi)) {
 				fill_ydata(0, floor($values['age']/365.25), 1);
 				$n1++;
-				$indi[]=$values['indi'];
+				$indi[]=$values['d_gid'];
 			}
 		}
 	} else if ($z_as == 301) {
 		$num = $stats->_statsMarrAge(false, 'M');
 		$indi=array();
 		foreach ($num as $values) {
-			if (!in_array($values['indi'], $indi)) {
+			if (!in_array($values['d_gid'], $indi)) {
 				fill_ydata(0, floor($values['age']/365.25), 1);
 				$n1++;
-				$indi[]=$values['indi'];
+				$indi[]=$values['d_gid'];
 			}
 		}
 		$num = $stats->_statsMarrAge(false, 'F');
 		$indi=array();
 		foreach ($num as $values) {
-			if (!in_array($values['indi'], $indi)) {
+			if (!in_array($values['d_gid'], $indi)) {
 				fill_ydata(1, floor($values['age']/365.25), 1);
 				$n1++;
-				$indi[]=$values['indi'];
+				$indi[]=$values['d_gid'];
 			}
 		}
 	} else {
@@ -432,18 +432,18 @@ function agma1() {
 		foreach ($zgrenzen as $boundary) {
 			$num = $stats->_statsMarrAge(false, 'M', $zstart, $boundary);
 			foreach ($num as $values) {
-				if (!in_array($values['indi'], $indi)) {
+				if (!in_array($values['d_gid'], $indi)) {
 					fill_ydata($boundary, floor($values['age']/365.25), 1);
 					$n1++;
-					$indi[]=$values['indi'];
+					$indi[]=$values['d_gid'];
 				}
 			}
 			$num = $stats->_statsMarrAge(false, 'F', $zstart, $boundary);
 			foreach ($num as $values) {
-				if (!in_array($values['indi'], $indi)) {
+				if (!in_array($values['d_gid'], $indi)) {
 					fill_ydata($boundary, floor($values['age']/365.25), 1);
 					$n1++;
-					$indi[]=$values['indi'];
+					$indi[]=$values['d_gid'];
 				}
 			}
 			$zstart=$boundary+1;
