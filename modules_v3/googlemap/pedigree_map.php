@@ -42,6 +42,7 @@ global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $
 $hideflags = safe_GET('hideflags');
 $hidelines = safe_GET('hidelines');
 
+global $controller;
 $controller=new WT_Controller_Pedigree();
 
 // Default of 5
