@@ -1443,6 +1443,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	} else {
 		echo WT_I18N::translate('Edit media object');
 	}
+	echo help_link('OBJE');
 	echo "</td></tr>";
 	echo "<tr><td colspan=\"2\" class=\"descriptionbox\"><input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" /></td></tr>";
 	if ($linktoid == "new" || ($linktoid == "" && $action != "update")) {

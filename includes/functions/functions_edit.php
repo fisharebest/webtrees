@@ -1892,7 +1892,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	if ($tag=="OBJE") {
 		//-- Add new obje to fact
 		echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><img id=\"newobje_img\" src=\"", $WT_IMAGES["plus"], "\" border=\"0\" width=\"11\" height=\"11\" alt=\"\" title=\"\" /> ", WT_I18N::translate('Add a new media object'), "</a>";
-		echo help_link('add_media');
+		echo help_link('OBJE');
 		echo "<br />";
 		echo "<div id=\"newobje\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";

@@ -475,7 +475,7 @@ function print_family_facts($family) {
 			// -- new media
 			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 				echo '<tr><td class="descriptionbox">';
-				echo WT_I18N::translate('Add media'), help_link('add_media');
+				echo WT_I18N::translate('Add media'), help_link('OBJE');
 				echo '</td><td class="optionbox">';
 				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&linktoid={$famid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">", WT_I18N::translate('Add a new media object'), '</a>';
 				echo '<br />';
