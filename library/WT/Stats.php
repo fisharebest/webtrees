@@ -2581,7 +2581,6 @@ class WT_Stats {
 					$chmm .= 't0,000000,0,'.$i.',11,1|';
 				}
 				$i++;
-				echo $century,'-';
 			}
 			$countsm = substr($countsm,0,-1);
 			$countsf = substr($countsf,0,-1);
