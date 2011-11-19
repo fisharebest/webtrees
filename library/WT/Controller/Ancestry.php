@@ -65,15 +65,16 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		// Validate form parameters
 		$this->rootid = check_rootid($this->rootid);
 
-		// -- size of the boxes
-		$Dbwidth*=$box_width/100;
+		// -- size of the detailed boxes based upon optional width parameter
+		$Dbwidth=($box_width*$bwidth)/100;
+		$Dbheight=($box_width*$bheight)/100;
 		$bwidth=$Dbwidth;
+		$bheight=$Dbheight;
+		
+		// -- adjust size of the non-detailed boxes
 		if (!$this->show_full) {
 			$bwidth = $bwidth / 1.5;
-		}
-		$bheight=$Dbheight;
-		if (!$this->show_full) {
-			$bheight = $bheight / 1.5;
+			$bheight = $bheight / 2 ;
 		}
 
 		$pbwidth = $bwidth+12;

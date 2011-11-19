@@ -73,6 +73,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		$this->show_spouse=safe_GET('show_spouse', array('0', '1'), '0');
 		$this->generations=safe_GET_integer('generations', 2, $MAX_DESCENDANCY_GENERATIONS, 3);
 		$this->box_width  =safe_GET_integer('box_width',   50, 300, 100);
+		$box_width           =safe_GET_integer('box_width',            50, 300, 100);
 
 		// This is passed as a global.  A parameter would be better...
 		$show_full=$this->show_full;
@@ -91,14 +92,21 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			$this->arrwidth = $temp[0];
 			$this->arrheight= $temp[1];
 		}
+		
+		// -- size of the detailed boxes based upon optional width parameter
+		$Dbwidth=($box_width*$bwidth)/100;
+		$Dbheight=($box_width*$bheight)/100;
+		$bwidth=$Dbwidth;
+		$bheight=$Dbheight;
+		
+		// -- adjust size of the non-detailed boxes
+		if (!$this->show_full) {
+			$bwidth = $bwidth / 1.5;
+			$bheight = $bheight / 2 ;
+		}
 
-		// -- Sets the sizes of the boxes
-		if (!$this->show_full) $bwidth *= $this->box_width / 150;
-		else $bwidth*=$this->box_width/100;
-
-		if (!$this->show_full) $bheight = (int)($bheight / 2);
 		$bhalfheight = (int)($bheight / 2);
-
+		
 		// Validate parameters
 		$this->pid=check_rootid($this->pid);
 

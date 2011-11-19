@@ -37,15 +37,17 @@ $descent    =safe_GET_integer('descent',       0, 9, 5);
 $generations=safe_GET_integer('generations',   2, $MAX_DESCENDANCY_GENERATIONS, 2);
 $box_width  =safe_GET_integer('box_width',     50, 300, 100);
 
-
-// -- size of the boxes
-if (!$show_full) $bwidth = ($bwidth / 1.5);
-$bwidth = (int) ($bwidth * $box_width/100);
-
+// -- size of the detailed boxes based upon optional width parameter
+$Dbwidth=($box_width*$bwidth)/100;
+$Dbheight=($box_width*$bheight)/100;
+$bwidth=$Dbwidth;
+$bheight=$Dbheight;
+		
+// -- adjust size of the non-detailed boxes
 if ($show_full==false) {
-	$bheight = 40;
+	$bwidth = $bwidth / 1.5;
+	$bheight = $bheight / 2 ;
 }
-$bhalfheight = (int) ($bheight / 2);
 
 // -- root id
 $pid   =check_rootid($pid);

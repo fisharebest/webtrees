@@ -46,12 +46,11 @@ $Dbasexoffset = 0;
 $Dbaseyoffset = 0;
 
 if ($show_full==false) {
+	$bwidth = $bwidth / 1.5;
+	$bheight = $bheight / 2 ;
 	$Dbheight=25;
 	$Dbwidth-=40;
 }
-
-$bwidth = $Dbwidth;
-$bheight = $Dbheight;
 
 $title_string = "";
 

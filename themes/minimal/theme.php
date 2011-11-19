@@ -162,13 +162,14 @@ $byspacing = 5; // -- vertical spacing between boxes on the pedigree chart
 $brborder = 1; // -- box right border thickness
 
 // -- global variables for the descendancy chart
-$Dbaseyoffset = 0; // -- position the entire descendancy tree relative to the top of the page
-$Dbasexoffset = 0; // -- position the entire descendancy tree relative to the left of the page
+$Dbaseyoffset = 20; // -- position the entire descendancy tree relative to the top of the page
+$Dbasexoffset = 20; // -- position the entire descendancy tree relative to the left of the page
 $Dbxspacing = 0; // -- horizontal spacing between boxes
-$Dbyspacing = 1; // -- vertical spacing between boxes
-$Dbwidth = 270; // -- width of DIV layer boxes
-$Dbheight = 80; // -- height of DIV layer boxes
+$Dbyspacing = 10; // -- vertical spacing between boxes
+$Dbwidth = 250; // -- width of DIV layer boxes
+$Dbheight = 78; // -- height of DIV layer boxes
 $Dindent = 15; // -- width to indent descendancy boxes
+$Darrowwidth = 30; // -- additional width to include for the up arrows
 $Darrowwidth = 15; // -- additional width to include for the up arrows
 
 $CHARTS_CLOSE_HTML = true; //-- should the charts, pedigree, descendacy, etc close the HTML on the page
