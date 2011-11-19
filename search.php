@@ -125,7 +125,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 	<!-- // Choice where to search -->
 	<tr>
 		<td class="list_label" style="padding: 5px;">
-			<?php echo WT_I18N::translate('Search'); ?>
+			<?php echo /* I18N: Genealogy records, such as Individual, Source, Repository */ WT_I18N::translate('Records'); ?>
 		</td>
 		<td class="list_value" style="padding: 5px;">
 			<input type="checkbox"<?php
