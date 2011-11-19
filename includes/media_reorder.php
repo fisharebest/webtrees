@@ -48,7 +48,7 @@ echo WT_JS_START; ?>
 	echo "&nbsp --- &nbsp;" . WT_I18N::translate('Click a row, then drag-and-drop to re-order media ');
 
 	global $MEDIA_EXTERNAL, $MEDIATYPE;
-	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGES, $TEXT_DIRECTION;
+	global $WORD_WRAPPED_NOTES, $MEDIA_DIRECTORY, $WT_IMAGES;
 	global $is_media, $cntm1, $cntm2, $cntm3, $cntm4, $t, $mgedrec;
 	global $edit, $tabno, $currtab;
 	global $ids, $pid, $related, $level, $gedrec, $media_data, $order, $order1, $order2, $j;
@@ -181,8 +181,8 @@ echo WT_JS_START; ?>
 	<center>
 	<?php
 	if (WT_USER_IS_ADMIN) {
-		echo "<table width=97%><tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
-		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox ", $TEXT_DIRECTION, " wrap\">";
+		echo "<table width=97%><tr><td class=\"descriptionbox wrap width25\">";
+		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
 			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
 		} else {

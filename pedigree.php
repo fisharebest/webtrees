@@ -54,7 +54,7 @@ echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), help_
 	</script>
 	</td><td width="50px">&nbsp;</td><td><form name="people" id="people" method="get" action="?">
 	<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>" />
-		<table class="list_table <?php echo $TEXT_DIRECTION; ?>" width="500" align="center">
+		<table class="list_table" width="500" align="center">
 			<tr>
 				<td colspan="4" class="topbottombar" style="text-align:center; ">
 					<?php echo WT_I18N::translate('Options:'); ?>

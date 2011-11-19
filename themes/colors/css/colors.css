@@ -434,11 +434,11 @@ height:auto;
 width:99%;
 }
 
-#random_picture .blockheader .ltr {
+#random_picture .blockheader {
 text-align:left;
 }
 
-#random_picture .blockheader .rtl {
+#random_picture .blockheader {
 text-align:right;
 }
 
@@ -1157,10 +1157,6 @@ font-weight:bold;
 font-weight:bold;
 }
 
-form .rtl {
-text-align:right;
-}
-
 /* Standard Markup */
 
 .favmenuitem {
@@ -1221,15 +1217,6 @@ text-decoration:none;
 background:#fff;
 white-space:nowrap;
 text-align:left;
-}
-
-.ltr {
-text-align: left;
-}
-
-.rtl {
-text-align:right;
-direction: rtl;
 }
 
 .width10 {width:10%;}

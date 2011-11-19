@@ -180,7 +180,7 @@ if (WT_USE_LIGHTBOX) {
 <form action="medialist.php" method="get">
 	<input type="hidden" name="action" value="filter" />
 	<input type="hidden" name="search" value="yes" />
-	<table class="list-table center width75 <?php echo $TEXT_DIRECTION; ?>">
+	<table class="list-table width75">
 	<!-- Build the form cells -->
 	<tr>
 <!-- // NOTE: Row 1, left: -->
@@ -352,7 +352,7 @@ if ($show == 'yes') {
 	echo '<tr><td colspan="2">';
 	echo '<table class="list_table width100">';
 	echo '<tr>';
-	echo '<td class="width30" align="', $TEXT_DIRECTION == 'ltr'?'left':'right', '">';
+	echo '<td class="width30">';
 	if ($TEXT_DIRECTION=='ltr') {
 		if ($ct>$max) {
 			if ($currentPage > 1) {
@@ -379,7 +379,7 @@ if ($show == 'yes') {
 	}
 	echo '</td>';
 	echo '<td align="center">', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
-	echo '<td class="width30" align="', $TEXT_DIRECTION == 'ltr'?'right':'left', '">';
+	echo '<td class="width30">';
 	if ($TEXT_DIRECTION=='ltr') {
 		if ($ct>$max) {
 			if ($start+$max < $ct) {
@@ -420,7 +420,7 @@ if ($show == 'yes') {
 		if ($columns == '1') echo '<td class="list_value_wrap" width="80%">';
 		if ($columns == '2') echo '<td class="list_value_wrap" width="50%">';
 
-		echo '<table class="', $TEXT_DIRECTION, '"><tr><td valign="top" style="white-space: normal;">';
+		echo '<table><tr><td valign="top" style="white-space: normal;">';
 
 		//-- Thumbnail field
 		if ($show_thumbnail) {
@@ -504,7 +504,7 @@ Plus other Media Options - MediaViewer page'), '" />';
 	echo '<tr><td colspan="2">';
 	echo '<table class="list_table width100">';
 	echo '<tr>';
-	echo '<td class="width30" align="', $TEXT_DIRECTION == 'ltr'?'left':'right', '">';
+	echo '<td class="width30">';
 	if ($TEXT_DIRECTION=='ltr') {
 		if ($ct>$max) {
 			if ($currentPage > 1) {
@@ -531,7 +531,7 @@ Plus other Media Options - MediaViewer page'), '" />';
 	}
 	echo '</td>';
 	echo '<td align="center">', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
-	echo '<td class="width30" align="', $TEXT_DIRECTION == 'ltr'?'right':'left', '">';
+	echo '<td class="width30">';
 	if ($TEXT_DIRECTION=='ltr') {
 		if ($ct>$max) {
 			if ($start+$max < $ct) {

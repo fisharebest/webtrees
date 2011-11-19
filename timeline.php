@@ -244,7 +244,7 @@ document.onmouseup = MU;
 <?php
 $controller->checkPrivacy();
 ?>
-<table class="<?php echo $TEXT_DIRECTION; ?>">
+<table>
 	<tr>
 	<?php
 	$i=0;

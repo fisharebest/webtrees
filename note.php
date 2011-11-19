@@ -124,7 +124,7 @@ echo '<div id="note-tabs">
 
 	echo '<div id="note-edit">';
 		echo '<table class="facts_table">';
-			echo '<tr><td align="left" class="descriptionbox ', $TEXT_DIRECTION, '">';
+			echo '<tr><td align="left" class="descriptionbox">';
 				if (WT_USER_CAN_EDIT) {
 					echo '<a href="#" onclick="edit_note()" title="', WT_I18N::translate('Edit'), '">';
 					if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top" />';
@@ -136,7 +136,7 @@ echo '<div id="note-tabs">
 					if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top" />';
 					echo WT_I18N::translate('Shared note');
 				}
-				echo '</td><td class="optionbox wrap width80 ', $TEXT_DIRECTION, '">';
+				echo '</td><td class="optionbox wrap width80">';
 				echo $note;
 				echo "<br />";
 			echo "</td></tr>";

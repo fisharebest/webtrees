@@ -97,7 +97,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	 * @param int $depth the ascendancy depth to show
 	 */
 	function print_child_ascendancy($person, $sosa, $depth) {
-		global $TEXT_DIRECTION, $OLD_PGENS, $WT_IMAGES, $Dindent, $SHOW_EMPTY_BOXES, $pidarr, $box_width;
+		global $OLD_PGENS, $WT_IMAGES, $Dindent, $SHOW_EMPTY_BOXES, $pidarr, $box_width;
 
 		if ($person) {
 			$pid=$person->getXref();

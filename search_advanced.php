@@ -133,7 +133,7 @@ echo WT_JS_END;
 <form method="post" name="searchform" onsubmit="return checknames(this);" action="search_advanced.php">
 <input type="hidden" name="action" value="<?php echo $controller->action; ?>" />
 <input type="hidden" name="isPostBack" value="true" />
-<table id="field_table" class="list_table <?php echo $TEXT_DIRECTION; ?>" width="35%" border="0">
+<table id="field_table" class="list_table" width="35%" border="0">
 	<tr>
 		<td colspan="4" class="facts_label03" style="text-align:center;">
 			<?php echo WT_I18N::translate('Advanced search'); ?>

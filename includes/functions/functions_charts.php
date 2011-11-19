@@ -76,7 +76,7 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
 function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="", $personcount="1") {
-	global $show_full, $TEXT_DIRECTION, $SHOW_EMPTY_BOXES, $pbwidth, $pbheight, $WT_IMAGES, $GEDCOM;
+	global $show_full, $SHOW_EMPTY_BOXES, $pbwidth, $pbheight, $WT_IMAGES, $GEDCOM;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 

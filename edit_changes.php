@@ -156,7 +156,7 @@ if ($changed_gedcoms) {
 			}
 			$prev_xref     =$change->xref;
 			$prev_gedcom_id=$change->gedcom_id;
-			$output.='<tr><td class="list_value '.$TEXT_DIRECTION.'">';
+			$output.='<tr><td class="list_value">';
 			$GEDCOM=$change->gedcom_name;
 			$record=WT_GedcomRecord::getInstance($change->xref);
 			if (!$record) {

@@ -186,12 +186,12 @@ echo '</td></tr></table><br /><br />';
 		<table class="center facts_table width50">
 			<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Login'); ?></td></tr>
 			<tr>
-				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><label for="username"><?php echo WT_I18N::translate('Username'), '</label>', help_link('username'); ?></td>
-				<td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" size="20" class="formField" /></td>
+				<td class="descriptionbox wrap width50"><label for="username"><?php echo WT_I18N::translate('Username'), '</label>', help_link('username'); ?></td>
+				<td class="optionbox"><input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" size="20" class="formField" /></td>
 			</tr>
 			<tr>
-				<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><label for="password"><?php echo WT_I18N::translate('Password'), '</label>', help_link('password'); ?></td>
-				<td class="optionbox <?php echo $TEXT_DIRECTION; ?>"><input type="password" id="password" name="password" size="20" class="formField" /></td>
+				<td class="descriptionbox wrap width50"><label for="password"><?php echo WT_I18N::translate('Password'), '</label>', help_link('password'); ?></td>
+				<td class="optionbox"><input type="password" id="password" name="password" size="20" class="formField" /></td>
 			</tr>
 			<tr>
 				<td class="topbottombar" colspan="2">
@@ -205,10 +205,10 @@ echo '</td></tr></table><br /><br />';
 if (get_site_setting('USE_REGISTRATION_MODULE')) { ?>
 	<table class="center facts_table width50">
 	<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Account Information'); ?></td></tr>
-	<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo WT_I18N::translate('No account?'), help_link('new_user'); ?></td>
-	<td class="optionbox <?php echo $TEXT_DIRECTION; ?> wrap"><a href="login_register.php?action=register"><?php echo WT_I18N::translate('Request new user account'); ?></a></td></tr>
-	<tr><td class="descriptionbox <?php echo $TEXT_DIRECTION; ?> wrap width50"><?php echo WT_I18N::translate('Lost your password?'), help_link('new_password'); ?></td>
-	<td class="optionbox <?php echo $TEXT_DIRECTION; ?> wrap"><a href="login_register.php?action=pwlost"><?php echo WT_I18N::translate('Request new password'); ?></a></td></tr>
+	<tr><td class="descriptionbox wrap width50"><?php echo WT_I18N::translate('No account?'), help_link('new_user'); ?></td>
+	<td class="optionbox wrap"><a href="login_register.php?action=register"><?php echo WT_I18N::translate('Request new user account'); ?></a></td></tr>
+	<tr><td class="descriptionbox wrap width50"><?php echo WT_I18N::translate('Lost your password?'), help_link('new_password'); ?></td>
+	<td class="optionbox wrap"><a href="login_register.php?action=pwlost"><?php echo WT_I18N::translate('Request new password'); ?></a></td></tr>
 	<tr><td class="topbottombar" colspan="2">&nbsp;</td></tr>
 	</table>
 <?php

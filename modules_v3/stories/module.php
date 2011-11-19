@@ -173,7 +173,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Action from the configuration page
 	private function edit() {
-		global $TEXT_DIRECTION, $ENABLE_AUTOCOMPLETE;
+		global $ENABLE_AUTOCOMPLETE;
 
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
@@ -272,7 +272,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<th>', WT_I18N::translate('Show this block for which languages?'), '</th>';
 				echo '</tr>';
 				echo '<tr>';
-				echo '<td class="optionbox ', $TEXT_DIRECTION, '">';
+				echo '<td class="optionbox">';
 				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'" />';
 				print_findindi_link("pid", "xref");
 				if ($xref) {
@@ -283,7 +283,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 				echo '</td>';
 				$languages=get_block_setting($block_id, 'languages');
-				echo '<td class="optionbox ', $TEXT_DIRECTION, '">';
+				echo '<td class="optionbox">';
 				echo edit_language_checkboxes('lang_', $languages);
 				echo '</td></tr></table>';
 				echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5"/>';
@@ -321,7 +321,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	private function config() {
-		global $WT_IMAGES, $TEXT_DIRECTION;
+		global $WT_IMAGES;
 
 		if (WT_USER_GEDCOM_ADMIN) {
 
@@ -372,7 +372,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 	}
 
 	private function show_list() {
-		global $controller, $WT_IMAGES, $TEXT_DIRECTION;
+		global $controller, $WT_IMAGES;
 
 		$controller=new WT_Controller_Base();
 		$controller->setPageTitle($this->getTitle());

@@ -43,7 +43,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $WT_IMAGES, $ctype, $TEXT_DIRECTION;
+		global $WT_IMAGES, $ctype;
 		global $show_full, $PEDIGREE_FULL_DETAILS, $BROWSERTYPE, $ENABLE_AUTOCOMPLETE;
 
 		self::updateSchema(); // make sure the favorites table has been created
@@ -142,7 +142,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$cellSpacing = '3px';
 		}
 		if ($userfavs) {
-			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center $TEXT_DIRECTION\">";
+			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center\">";
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
 				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype={$ctype}&amp;action=deletefav&amp;fv_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".WT_I18N::translate('Remove')."</a><br />";
@@ -204,7 +204,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<input type=\"hidden\" name=\"action\" value=\"addfav\" />";
 			$content .= "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\" />";
 			$content .= "<input type=\"hidden\" name=\"ged\" value=\"".WT_GEDCOM."\" />";
-			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center {$TEXT_DIRECTION}\">";
+			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center\">";
 			$content .= "<tr><td>".WT_I18N::translate('Enter a Person, Family, or Source ID')." <br />";
 			$content .= "<input class=\"pedigree_form\" type=\"text\" name=\"gid\" id=\"gid{$uniqueID}\" size=\"5\" value=\"\" />";
 

@@ -71,7 +71,7 @@ if (!defined('WT_WEBTREES')) {
 
 				<?php
 				//-- Add Family Members to Census  -------------------------------------------
-				global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $TEXT_DIRECTION;
+				global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr;
 				?>
 
 				<tr>
@@ -2042,7 +2042,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 				}
 
 				// Children -------------------------------------
-				$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
+				$spouselinks .= "<ul class=\"clist\">";
 				foreach ($children as $c=>$child) {
 					$cpid = $child->getXref();
 					if ($child) {

@@ -1183,11 +1183,10 @@ function get_media_folders() {
 * process the form for uploading media files
 */
 function process_uploadMedia_form() {
-	global $TEXT_DIRECTION;
 	global $MEDIA_DIRECTORY, $USE_MEDIA_FIREWALL, $MEDIA_FIREWALL_THUMBS, $MEDIATYPE;
 	global $thumbnail, $whichFile1, $whichFile2;
 
-	echo "<table class=\"list_table $TEXT_DIRECTION width100\">";
+	echo "<table class=\"list_table width100\">";
 	echo "<tr><td class=\"messagebox wrap\">";
 	for ($i=1; $i<6; $i++) {
 		if (!empty($_FILES['mediafile'.$i]["name"]) || !empty($_FILES['thumbnail'.$i]["name"])) {
@@ -1307,7 +1306,7 @@ function process_uploadMedia_form() {
 * @param bool   $showthumb the setting of the "show thumbnail" option (required by admin_media.php)
 */
 function show_mediaUpload_form($URL, $showthumb=false) {
-	global $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
+	global $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY;
 
 	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
 
@@ -1340,48 +1339,48 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 
 	// Print 5 forms for uploading images
 	for ($i=1; $i<6; $i++) {
-		echo '<table class="upload_media ', $TEXT_DIRECTION, '">';
+		echo '<table class="upload_media">';
 		echo '<tr><th>', WT_I18N::translate('Media file'), ':&nbsp;&nbsp;', $i, '</th></tr>';
-		echo '<tr><td class="', $TEXT_DIRECTION, '">';
+		echo '<tr><td>';
 		echo WT_I18N::translate('Media file to upload'), help_link('upload_media_file');
 		echo '</td>';
-		echo '<td class="', $TEXT_DIRECTION, '">';
+		echo '<td>';
 		echo '<input name="mediafile', $i, '" type="file" size="40" />';
 		echo '</td></tr>';
 
 		if ($thumbSupport != "") {
-			echo '<tr><td class="', $TEXT_DIRECTION, '">';
+			echo '<tr><td>';
 			echo WT_I18N::translate('Automatic thumbnail'), help_link('generate_thumb');
-			echo '</td><td class="', $TEXT_DIRECTION, '">';
+			echo '</td><td>';
 			echo '<input type="checkbox" name="genthumb', $i, '" value="yes" checked="checked" />';
 			echo '&nbsp;&nbsp;&nbsp;', WT_I18N::translate('Generate thumbnail automatically from '), $thumbSupport;
 			echo '</td></tr>';
 		}
 
-		echo '<tr><td class="', $TEXT_DIRECTION, '">';
+		echo '<tr><td>';
 		echo WT_I18N::translate('Thumbnail to upload'), help_link('upload_thumbnail_file');
 		echo '</td>';
-		echo '<td class="', $TEXT_DIRECTION, '">';
+		echo '<td>';
 		echo '<input name="thumbnail', $i, '" type="file" size="40" />';
 		echo '</td></tr>';
 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<tr><td class="', $TEXT_DIRECTION, '">';
+			echo '<tr><td>';
 			echo WT_I18N::translate('File name on server'), help_link('upload_server_file');
 			echo '</td>';
-			echo '<td class="', $TEXT_DIRECTION, '">';
+			echo '<td>';
 			echo '<input name="filename', $i, '" type="text" size="40" />';
 			if ($i==1) echo "<br /><sub>", WT_I18N::translate('Do not change to keep original file name.'), "</sub>";
 			echo '</td></tr>';
 		} else {
-			echo '<tr style="display:none;"><td class="', $TEXT_DIRECTION, '"><input type="hidden" name="filename', $i, '" value="" /></td></tr>';
+			echo '<tr style="display:none;"><td><input type="hidden" name="filename', $i, '" value="" /></td></tr>';
 		}
 
 		if (WT_USER_GEDCOM_ADMIN && $MEDIA_DIRECTORY_LEVELS>0) {
-			echo '<tr><td class="', $TEXT_DIRECTION, '">';
+			echo '<tr><td>';
 			echo WT_I18N::translate('Folder name on server'), help_link('upload_server_folder');
 			echo '</td>';
-			echo '<td class="', $TEXT_DIRECTION, '">';
+			echo '<td>';
 
 			echo '<span dir="ltr"><select name="folder_list', $i, '" onchange="document.uploadmedia.folder', $i, '.value=this.options[this.selectedIndex].value;">';
 			echo '<option';
@@ -1423,7 +1422,7 @@ function show_mediaUpload_form($URL, $showthumb=false) {
 * @param int    $line  The line number in the GEDCOM record where this media item belongs
 */
 function show_media_form($pid, $action = "newentry", $filename = "", $linktoid = "", $level = 1, $line = 0) {
-	global $TEXT_DIRECTION, $WORD_WRAPPED_NOTES, $ADVANCED_NAME_FACTS, $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH, $NO_UPDATE_CHAN;
+	global $WORD_WRAPPED_NOTES, $ADVANCED_NAME_FACTS, $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $THUMBNAIL_WIDTH, $NO_UPDATE_CHAN;
 
 	$AUTO_GENERATE_THUMBS=get_gedcom_setting(WT_GED_ID, 'AUTO_GENERATE_THUMBS');
 
@@ -1436,7 +1435,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		echo "<input type=\"hidden\" name=\"linktoid\" value=\"", $linktoid, "\" />";
 	}
 	echo "<input type=\"hidden\" name=\"level\" value=\"", $level, "\" />";
-	echo "<table class=\"facts_table center ", $TEXT_DIRECTION, "\">";
+	echo "<table class=\"facts_table center\">";
 	echo "<tr><td class=\"topbottombar\" colspan=\"2\">";
 	if ($action == "newentry") {
 		echo WT_I18N::translate('Add a new media object');
@@ -1447,7 +1446,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	echo "</td></tr>";
 	echo "<tr><td colspan=\"2\" class=\"descriptionbox\"><input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" /></td></tr>";
 	if ($linktoid == "new" || ($linktoid == "" && $action != "update")) {
-		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, "wrap width25\">";
+		echo "<tr><td class=\"descriptionbox wrap width25\">";
 		echo WT_I18N::translate('Enter a Person, Family, or Source ID'), help_link('add_media_linkid');
 		echo "</td><td class=\"optionbox wrap\"><input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\" />";
 		print_findindi_link("gid", "");
@@ -1477,7 +1476,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	}
 	if ($gedfile == "FILE") {
 		// Box for user to choose to upload file from local computer
-		echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
+		echo "<tr><td class=\"descriptionbox wrap width25\">";
 		echo WT_I18N::translate('Media file to upload').help_link('upload_media_file')."</td><td class=\"optionbox wrap\"><input type=\"file\" name=\"mediafile\" onchange=\"updateFormat(this.value);\" size=\"40\" /></td></tr>";
 		// Check for thumbnail generation support
 		if (WT_USER_GEDCOM_ADMIN) {
@@ -1495,14 +1494,14 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 
 			if ($thumbSupport != "") {
 				$thumbSupport = substr($thumbSupport, 2); // Trim off first ", "
-				echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
+				echo "<tr><td class=\"descriptionbox wrap width25\">";
 				echo WT_I18N::translate('Automatic thumbnail'), help_link('generate_thumb');
 				echo "</td><td class=\"optionbox wrap\">";
 				echo "<input type=\"checkbox\" name=\"genthumb\" value=\"yes\" checked=\"checked\" />";
 				echo "&nbsp;&nbsp;&nbsp;" . WT_I18N::translate('Generate thumbnail automatically from ') . $thumbSupport;
 				echo "</td></tr>";
 			}
-			echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
+			echo "<tr><td class=\"descriptionbox wrap width25\">";
 			echo WT_I18N::translate('Thumbnail to upload').help_link('upload_thumbnail_file')."</td><td class=\"optionbox wrap\"><input type=\"file\" name=\"thumbnail\" size=\"40\" /></td></tr>";
 		}
 		else echo "<input type=\"hidden\" name=\"genthumb\" value=\"yes\" />";
@@ -1528,11 +1527,11 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		}
 
 		echo "<tr>";
-		echo "<td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
+		echo "<td class=\"descriptionbox wrap width25\">";
 		echo "<input name=\"oldFilename\" type=\"hidden\" value=\"" . htmlspecialchars($fileName) . "\" />";
 		echo WT_I18N::translate('File name on server'), help_link('upload_server_file');
 		echo "</td>";
-		echo "<td class=\"optionbox wrap $TEXT_DIRECTION wrap\">";
+		echo "<td class=\"optionbox wrap wrap\">";
 		if (WT_USER_GEDCOM_ADMIN) {
 			echo "<input name=\"filename\" type=\"text\" value=\"" . htmlspecialchars($fileName) . "\" size=\"40\"";
 			if ($isExternal)
@@ -1542,7 +1541,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		} else {
 /*   $thumbnail = thumbnail_file($fileName, true, false, $pid);
 			if (!empty($thumbnail)) {
-				echo "<img src=\"".$thumbnail."\" border=\"0\" align=\"" . ($TEXT_DIRECTION== "rtl"?"right": "left") . "\" class=\"thumbnail\"";
+				echo "<img src=\"".$thumbnail."\" border=\"0\" class=\"thumbnail\"";
 				if ($isExternal) echo " width=\"".$THUMBNAIL_WIDTH."\"";
 				echo " alt=\"\" title=\"\" />";
 			} */
@@ -1556,7 +1555,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 
 	// Box for user to choose the folder to store the image
 	if (!$isExternal && $MEDIA_DIRECTORY_LEVELS > 0) {
-		echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, 'wrap width25">';
+		echo '<tr><td class="descriptionbox wrap width25">';
 		if (empty($folder)) {
 			if (!empty($_SESSION['upload_folder'])) $folder = $_SESSION['upload_folder'];
 			else $folder = '';
@@ -1747,7 +1746,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		}
 	}
 	if (WT_USER_IS_ADMIN) {
-		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
+		echo "<tr><td class=\"descriptionbox wrap width25\">";
 		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
 			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
@@ -1811,8 +1810,6 @@ function findImageSize($file) {
 */
 
 function PrintMediaLinks($links, $size = "small") {
-	global $TEXT_DIRECTION;
-
 	if (count($links) == 0)
 		return false;
 

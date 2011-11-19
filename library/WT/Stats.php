@@ -631,7 +631,7 @@ class WT_Stats {
 	}
 
 	function chartSex($params=null) {
-		global $TEXT_DIRECTION, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_female = strtolower($params[1]);} else {$color_female = 'ffd1dc';}
@@ -693,7 +693,7 @@ class WT_Stats {
 	}
 
 	function chartMortality($params=null) {
-		global $TEXT_DIRECTION, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_living = strtolower($params[1]);} else {$color_living = 'ffffff';}
@@ -776,7 +776,7 @@ class WT_Stats {
 	function totalMediaUnknown() {return $this->_totalMediaType('unknown');}
 
 	function chartMedia($params=null) {
-		global $TEXT_DIRECTION, $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
+		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 		if ($params === null) {$params = array();}
 		if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = $WT_STATS_S_CHART_X."x".$WT_STATS_S_CHART_Y;}
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
@@ -838,7 +838,7 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _mortalityQuery($type='full', $life_dir='ASC', $birth_death='BIRT') {
-		global $listDir, $TEXT_DIRECTION;
+		global $listDir;
 		if ($birth_death == 'MARR') {
 			//$query_field = "'".str_replace('|', "','", WT_EVENTS_MARR)."'";
 			$query_field = "'MARR'";
@@ -1160,7 +1160,6 @@ class WT_Stats {
 	}
 
 	function commonCountriesList() {
-		global $TEXT_DIRECTION;
 		$countries = $this->_statsPlaces();
 		if (!is_array($countries)) return '';
 		$top10 = array();
@@ -1202,7 +1201,6 @@ class WT_Stats {
 	}
 
 	function commonBirthPlacesList() {
-		global $TEXT_DIRECTION;
 		$places = $this->_statsPlaces('INDI', 'BIRT');
 		$top10 = array();
 		$i = 1;
@@ -1217,7 +1215,6 @@ class WT_Stats {
 	}
 
 	function commonDeathPlacesList() {
-		global $TEXT_DIRECTION;
 		$places = $this->_statsPlaces('INDI', 'DEAT');
 		$top10 = array();
 		$i = 1;
@@ -1232,7 +1229,6 @@ class WT_Stats {
 	}
 
 	function commonMarriagePlacesList() {
-		global $TEXT_DIRECTION;
 		$places = $this->_statsPlaces('FAM', 'MARR');
 		$top10 = array();
 		$i = 1;
@@ -3371,7 +3367,7 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	static function _commonSurnamesQuery($type='list', $show_tot=false, $params=null) {
-		global $TEXT_DIRECTION, $SURNAME_LIST_STYLE, $GEDCOM;
+		global $SURNAME_LIST_STYLE, $GEDCOM;
 
 		$ged_id=get_id_from_gedcom($GEDCOM);
 		if (is_array($params) && isset($params[0]) && $params[0] != '') {$threshold = strtolower($params[0]);} else {$threshold = get_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD');}

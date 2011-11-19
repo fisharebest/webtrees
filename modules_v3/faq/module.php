@@ -98,8 +98,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 
 	// Action from the configuration page
 	private function edit() {
-		global $TEXT_DIRECTION;
-
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 		if (safe_POST_bool('save')) {
@@ -377,7 +375,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			foreach ($faqs as $faq) {
 				echo '<tr>';
 				// NOTE: Print the position of the current item
-				echo '<td class="descriptionbox width20 $TEXT_DIRECTION">';
+				echo '<td class="descriptionbox width20">';
 				echo WT_I18N::translate('Position item'), ': ', $faq->block_order, ', ';
 				if ($faq->gedcom_id==null) {
 					echo WT_I18N::translate('All');

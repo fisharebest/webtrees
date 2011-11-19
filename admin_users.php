@@ -559,7 +559,7 @@ case 'createform':
 case 'cleanup':
 	?>
 	<form name="cleanupform" method="post" action="admin_users.php?action=cleanup2">
-	<table id="clean" class="<?php echo $TEXT_DIRECTION; ?>">
+	<table id="clean">
 	<?php
 	// Check for idle users
 	//if (!isset($month)) $month = 1;

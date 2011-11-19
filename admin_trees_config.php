@@ -387,7 +387,7 @@ echo WT_JS_START;?>
 	$i = 0;
 ?>
 
-<table class="center <?php echo $TEXT_DIRECTION; ?>">
+<table class="center">
 	<tr>
 		<td colspan="2">
 			<div id="tabs" style="display:none">

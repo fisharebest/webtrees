@@ -543,7 +543,7 @@ function remove_subline($oldrecord, $linenum) {
 function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag="CHIL", $sextag='') {
 	global $pid, $WT_IMAGES, $WORD_WRAPPED_NOTES;
 	global $NPFX_accept, $SPFX_accept, $NSFX_accept, $FILE_FORM_accept;
-	global $bdm, $TEXT_DIRECTION, $STANDARD_NAME_FACTS, $REVERSED_NAME_FACTS, $ADVANCED_NAME_FACTS, $ADVANCED_PLAC_FACTS;
+	global $bdm, $STANDARD_NAME_FACTS, $REVERSED_NAME_FACTS, $ADVANCED_NAME_FACTS, $ADVANCED_PLAC_FACTS;
 	global $QUICK_REQUIRED_FACTS, $QUICK_REQUIRED_FAMFACTS, $NO_UPDATE_CHAN;
 
 	$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
@@ -865,7 +865,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		}
 	}
 	if (WT_USER_IS_ADMIN) {
-		echo "<tr><td class=\"descriptionbox ", $TEXT_DIRECTION, " wrap width25\">";
+		echo "<tr><td class=\"descriptionbox wrap width25\">";
 		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
 			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
@@ -1397,9 +1397,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	echo " >";
 
 	if (in_array($fact, $subnamefacts) || $fact=="LATI" || $fact=="LONG") {
-		echo "<td class=\"optionbox $TEXT_DIRECTION wrap width25\">";
+		echo "<td class=\"optionbox wrap width25\">";
 	} else {
-		echo "<td class=\"descriptionbox $TEXT_DIRECTION wrap width25\">";
+		echo "<td class=\"descriptionbox wrap width25\">";
 	}
 
 
@@ -1814,7 +1814,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newsource\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center $TEXT_DIRECTION\">";
+		echo "<table class=\"facts_table center\">";
 		// 2 SOUR
 		$source = "SOUR @";
 		add_simple_tag("$level $source");
@@ -1851,7 +1851,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 			echo "<div id=\"newasso2\" style=\"display: none;\">";
 		}
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center $TEXT_DIRECTION\">";
+		echo "<table class=\"facts_table center\">";
 		// 2 ASSO
 		add_simple_tag(($level)." ASSO @");
 		// 3 RELA
@@ -1870,7 +1870,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newnote\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center $TEXT_DIRECTION\">";
+		echo "<table class=\"facts_table center\">";
 		// 2 NOTE
 		add_simple_tag(($level)." NOTE ".$text);
 		echo "</table></div>";
@@ -1883,7 +1883,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newshared_note\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center $TEXT_DIRECTION\">";
+		echo "<table class=\"facts_table center\">";
 		// 2 SHARED NOTE
 		add_simple_tag(($level)." SHARED_NOTE ");
 
@@ -1896,7 +1896,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newobje\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center $TEXT_DIRECTION\">";
+		echo "<table class=\"facts_table center\">";
 		add_simple_tag($level." OBJE");
 		echo "</table></div>";
 	}
@@ -1908,7 +1908,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newresn\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center $TEXT_DIRECTION\">";
+		echo "<table class=\"facts_table center\">";
 		// 2 RESN
 		add_simple_tag(($level)." RESN ".$text);
 		echo "</table></div>";
@@ -2373,7 +2373,7 @@ function create_add_form($fact) {
 function create_edit_form($gedrec, $linenum, $level0type) {
 	global $WORD_WRAPPED_NOTES;
 	global $pid, $tags, $ADVANCED_PLAC_FACTS, $date_and_time;
-	global $FULL_SOURCES, $TEXT_DIRECTION;
+	global $FULL_SOURCES;
 
 	$tags=array();
 	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record

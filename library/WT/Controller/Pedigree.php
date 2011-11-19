@@ -54,7 +54,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $MAX_PEDIGREE_GENERATIONS;
 		global $DEFAULT_PEDIGREE_GENERATIONS, $SHOW_EMPTY_BOXES;
 		global $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
-		global $TEXT_DIRECTION, $BROWSER_TYPE, $show_full, $talloffset;
+		global $BROWSER_TYPE, $show_full, $talloffset;
 
 		parent::__construct();
 		$this->log2 = log(2);

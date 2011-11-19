@@ -119,7 +119,7 @@ echo "<input type=\"hidden\" name=\"action\" value=\"{$action}\" />";
 echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\" />";
 echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\" />";
 echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\" />";
-echo '<table class="facts_table '.$TEXT_DIRECTION.' width100">';
+echo '<table class="facts_table width100">';
 echo '<tr><td class="facts_label" colspan="4"><h2>';
 
 // All further uses of $cal are to generate URLs
@@ -278,7 +278,7 @@ echo '</select>';
 
 echo '</td></tr>';
 echo '</table></form>';
-echo "<table class=\"center {$TEXT_DIRECTION} width100\">";
+echo "<table class=\"center width100\">";
 
 // Day/Month/Year and calendar selector
 echo '<tr><td class="topbottombar width50">';
@@ -414,7 +414,7 @@ case 'calendar':
 switch ($action) {
 case 'year':
 case 'today':
-	echo "<table class=\"center {$TEXT_DIRECTION} width100\"><tr>";
+	echo "<table class=\"center width100\"><tr>";
 	// Table headings
 	echo "<td class=\"descriptionbox center width50\">";
 		if (isset($WT_IMAGES['indis'])) echo "<img id=\"calendar_img_indi\" src=\"{$WT_IMAGES['indis']}\" title=\"", WT_I18N::translate('Individuals'), "\" alt=\"", WT_I18N::translate('Individuals'), "\">&nbsp;&nbsp;&nbsp;";
@@ -427,7 +427,7 @@ case 'today':
 	$males=0;
 	$females=0;
 	$numfams=0;
-	echo "<td class=\"optionbox {$TEXT_DIRECTION} wrap\">";
+	echo "<td class=\"optionbox wrap\">";
 
 	// Avoid an empty unordered list
 	ob_start();
@@ -438,7 +438,7 @@ case 'today':
 	}
 
 	echo '</td>';
-	echo "<td class=\"optionbox {$TEXT_DIRECTION} wrap\">";
+	echo "<td class=\"optionbox wrap\">";
 
 	// Avoid an empty unordered list
 	ob_start();
@@ -470,7 +470,7 @@ case 'calendar':
 	if ($days_in_week==10) {
 		$week_start=0;
 	}
-	echo "<table class=\"list_table width100 $TEXT_DIRECTION\"><tr>";
+	echo "<table class=\"list_table width100\"><tr>";
 	for ($week_day=0; $week_day<$days_in_week; ++$week_day) {
 		$day_name=$cal_date->LONG_DAYS_OF_WEEK(($week_day+$week_start) % $days_in_week);
 		echo "<td class=\"descriptionbox\" width=\"".floor(100/$days_in_week)."%\">{$day_name}</td>";

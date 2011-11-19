@@ -218,7 +218,7 @@ if ($display=='hierarchy') {
 	// -- echo the array
 	foreach ($placelist as $key => $value) {
 		if ($i==0) {
-			echo '<table id="place_hierarchy" class="list_table ', $TEXT_DIRECTION, '" ';
+			echo '<table id="place_hierarchy" class="list_table" ';
 			echo '><tr><td class="list_label" ';
 			if ($ct1 > 20) {
 				echo 'colspan="3"';
@@ -352,7 +352,7 @@ if ($display=='list') {
 	if (count($placelist)==0) {
 		echo '<b>', WT_I18N::translate('No results found.'), '</b><br />';
 	} else {
-		echo '<table class="list_table ', $TEXT_DIRECTION, '"';
+		echo '<table class="list_table"';
 		echo '><tr><td class="list_label" ';
 		$ct = count($placelist);
 		echo ' colspan="', $ct>20 ? 3 : 2, '">&nbsp;';

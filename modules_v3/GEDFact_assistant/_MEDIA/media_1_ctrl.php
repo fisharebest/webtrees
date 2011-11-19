@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
-global $summary, $TEXT_DIRECTION, $censyear, $censdate;
+global $summary, $censyear, $censdate;
 
 $pid = safe_get('pid');
 
@@ -65,7 +65,7 @@ if ($pid=="") {
 	}
 	$currpid=$pid;
 
-	echo '<table width=400 class="facts_table center ', $TEXT_DIRECTION, '">';
+	echo '<table width=400 class="facts_table center">';
 	echo '<tr><td class="topbottombar" colspan="1">';
 	echo '<b>', WT_I18N::translate('Family navigator'), '</b>';
 	echo '</td></tr>';
@@ -118,7 +118,7 @@ if ($pid=="") {
 	
 		<?php
 		//-- Add Family Members to Census  -------------------------------------------
-		global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $TEXT_DIRECTION, $censyear, $censdate;
+		global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $censyear, $censdate;
 		// echo "CENS = " . $censyear;
 		?>
 		<tr>
@@ -1356,7 +1356,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 				// Children ------------------------------   @var $child Person
 				$spouselinks .= "<div id='spouseFam'>";
-				$spouselinks .= "<ul class=\"clist ".$TEXT_DIRECTION."\">";
+				$spouselinks .= "<ul class=\"clist\">";
 				foreach ($children as $c=>$child) {
 					$cpid = $child->getXref();
 					if ($child) {

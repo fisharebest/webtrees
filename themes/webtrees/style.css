@@ -923,16 +923,6 @@ html[dir='rtl'] .header_search {
 	opacity:0.67;
 }
 
-/* Text direction */
-.ltr {
-	text-align:left;
-}
-
-.rtl {
-	text-align:right;
-	direction:rtl;
-}
-
 /* Width settings */
 .width10 {
 	width:10%;

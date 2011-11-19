@@ -52,7 +52,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			echo $this->getSidebarAjaxContent();
 			break;
 		case 'index':
-			global $ENABLE_AUTOCOMPLETE, $MAX_PEDIGREE_GENERATIONS, $TEXT_DIRECTION, $WT_IMAGES, $controller, $WT_SESSION;
+			global $ENABLE_AUTOCOMPLETE, $MAX_PEDIGREE_GENERATIONS, $WT_IMAGES, $controller, $WT_SESSION;
 
 			require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 			require_once WT_ROOT.'includes/functions/functions_export.php';

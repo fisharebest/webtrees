@@ -1110,17 +1110,15 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 * @param string $key indi pid
 */
 function format_first_major_fact($key, $majorfacts = array("BIRT", "CHR", "BAPM", "DEAT", "BURI", "BAPL", "ADOP")) {
-	global $TEXT_DIRECTION;
-
 	$html='';
 	$person = WT_GedcomRecord::getInstance($key);
 	if (is_null($person)) return;
 	foreach ($majorfacts as $indexval => $fact) {
 		$event = $person->getFactByType($fact);
 		if (!is_null($event) && $event->hasDatePlace() && $event->canShow()) {
-			$html.='<span dir="'.$TEXT_DIRECTION.'"><br /><em>';
+			$html.='<br /><em>';
 			$html .= $event->getLabel();
-			$html.=' '.format_fact_date($event, $person, false, false).format_fact_place($event).'</em></span>';
+			$html.=' '.format_fact_date($event, $person, false, false).format_fact_place($event).'</em>';
 			break;
 		}
 	}
@@ -1162,7 +1160,7 @@ function CheckFactUnique($uniquefacts, $recfacts, $type) {
 * @param string $type the type of record INDI, FAM, SOUR etc
 */
 function print_add_new_fact($id, $usedfacts, $type) {
-	global $TEXT_DIRECTION, $WT_SESSION;
+	global $WT_SESSION;
 
 	// -- Add from clipboard
 	if ($WT_SESSION->clipboard) {
@@ -1171,7 +1169,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 			if ($fact["type"]==$type || $fact["type"]=='all') {
 				if ($newRow) {
 					$newRow = false;
-					echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, '">';
+					echo '<tr><td class="descriptionbox">';
 					echo help_link('add_from_clipboard');
 					echo WT_I18N::translate('Add from clipboard'), '</td>';
 					echo '<td class="optionbox wrap"><form method="get" name="newFromClipboard" action="" onsubmit="return false;">';
@@ -1234,10 +1232,10 @@ function print_add_new_fact($id, $usedfacts, $type) {
 		$translated_addfacts[$addfact] = WT_Gedcom_Tag::getLabel($addfact);
 	}
 	uasort($translated_addfacts, 'factsort');
-	echo '<tr><td class="descriptionbox ', $TEXT_DIRECTION, '">';
+	echo '<tr><td class="descriptionbox">';
 	echo WT_I18N::translate('Add new fact');
 	echo help_link('add_facts'), '</td>';
-	echo '<td class="optionbox wrap ', $TEXT_DIRECTION, '">';
+	echo '<td class="optionbox wrap">';
 	echo "<form method=\"get\" name=\"newfactform\" action=\"\" onsubmit=\"return false;\">";
 	echo '<select id="newfact" name="newfact">';
 	foreach ($translated_addfacts as $fact=>$fact_name) {

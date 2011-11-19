@@ -1284,10 +1284,6 @@ h4 {
 	white-space:nowrap;
 }
 
-.ltr {
-	text-align:left;
-}
-
 .vmiddle {
 	vertical-align:middle;
 }
@@ -1299,16 +1295,6 @@ h4 {
 
 .rela {
 	opacity:0.67;
-}
-
-/* Text direction */
-.ltr {
-	text-align:left;
-}
-
-.rtl {
-	text-align:right;
-	direction:rtl;
 }
 
 /* Width settings */

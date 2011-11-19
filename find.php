@@ -205,7 +205,7 @@ $options["form"][]= "formsource";
 $options["form"][]= "formspecialchar";
 
 echo "<div align=\"center\">";
-echo "<table class=\"list_table $TEXT_DIRECTION width90\" border=\"0\">";
+echo "<table class=\"list_table width90\" border=\"0\">";
 echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">"; // start column for find text header
 
 switch ($type) {
@@ -251,7 +251,7 @@ if ($type == "indi") {
 	echo "<input type=\"hidden\" name=\"action\" value=\"filter\" />";
 	echo "<input type=\"hidden\" name=\"type\" value=\"indi\" />";
 	echo "<input type=\"hidden\" name=\"multiple\" value=\"$multiple\" />";
-	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
+	echo "<table class=\"list_table width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
 	echo WT_I18N::translate('Name contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
@@ -271,7 +271,7 @@ if ($type == "fam") {
 	echo "<input type=\"hidden\" name=\"type\" value=\"fam\" />";
 	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\" />";
 	echo "<input type=\"hidden\" name=\"multiple\" value=\"$multiple\" />";
-	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
+	echo "<table class=\"list_table width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
 	echo WT_I18N::translate('Name contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
@@ -295,7 +295,7 @@ if ($type == 'media') {
 	echo "<input type=\"hidden\" name=\"type\" value=\"media\" />";
 	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\" />";
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
+	echo "<table class=\"list_table width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
 	echo WT_I18N::translate('Media contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
@@ -322,7 +322,7 @@ if ($type == "place") {
 	echo "<input type=\"hidden\" name=\"type\" value=\"place\" />";
 	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\" />";
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
+	echo "<table class=\"list_table width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
 	echo WT_I18N::translate('Place contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
@@ -343,7 +343,7 @@ if ($type == "repo") {
 	echo "<input type=\"hidden\" name=\"type\" value=\"repo\" />";
 	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\" />";
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
+	echo "<table class=\"list_table width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
 	echo WT_I18N::translate('Repository contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
@@ -364,7 +364,7 @@ if ($type == "note") {
 	echo "<input type=\"hidden\" name=\"type\" value=\"note\" />";
 	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\" />";
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
+	echo "<table class=\"list_table width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
 	echo WT_I18N::translate('Shared Note contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
@@ -385,7 +385,7 @@ if ($type == "source") {
 	echo "<input type=\"hidden\" name=\"type\" value=\"source\" />";
 	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\" />";
 	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
+	echo "<table class=\"list_table width100\" border=\"0\">";
 	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
 	echo WT_I18N::translate('Source contains:'), " <input type=\"text\" name=\"filter\" value=\"";
 	if ($filter) echo $filter;
@@ -430,8 +430,8 @@ if ($type == "facts") {
 	echo "<input type=\"hidden\" name=\"type\" value=\"facts\" />";
 	echo "<input type=\"hidden\" name=\"tags\" value=\"$qs\" />";
 	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\" />";
-	echo "<table class=\"list_table $TEXT_DIRECTION width100\" border=\"0\">";
-	echo "<tr><td class=\"list_label $TEXT_DIRECTION\" style=\"padding: 5px; font-weight: normal; white-space: normal;\">";
+	echo "<table class=\"list_table width100\" border=\"0\">";
+	echo "<tr><td class=\"list_label\" style=\"padding: 5px; font-weight: normal; white-space: normal;\">";
 	getPreselectedTags($preselDefault, $preselCustom);
 	?>
 	<?php echo WT_JS_START; ?>
@@ -614,10 +614,10 @@ if ($action=="filter") {
 
 	// Output Individual
 	if ($type == "indi") {
-		echo "<table class=\"tabs_table $TEXT_DIRECTION width90\"><tr>";
+		echo "<table class=\"tabs_table width90\"><tr>";
 		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
-			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
+			echo "<td class=\"list_value_wrap\"><ul>";
 			usort($myindilist, array('WT_GedcomRecord', 'Compare'));
 			foreach ($myindilist as $indi) {
 				echo $indi->format_list('li', true);
@@ -633,7 +633,7 @@ if ($action=="filter") {
 
 	// Output Family
 	if ($type == "fam") {
-		echo "<table class=\"tabs_table $TEXT_DIRECTION width90\"><tr>";
+		echo "<table class=\"tabs_table width90\"><tr>";
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
@@ -643,7 +643,7 @@ if ($action=="filter") {
 
 		if ($myfamlist) {
 			$curged = $GEDCOM;
-			echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
+			echo "<td class=\"list_value_wrap\"><ul>";
 			usort($myfamlist, array('WT_GedcomRecord', 'Compare'));
 			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
@@ -663,7 +663,7 @@ if ($action=="filter") {
 
 		$medialist = get_medialist(true, $directory);
 
-		echo "<table class=\"tabs_table $TEXT_DIRECTION width90\">";
+		echo "<table class=\"tabs_table width90\">";
 		// Show link to previous folder
 		if ($level>0) {
 			$levels = explode("/", $directory);
@@ -676,7 +676,7 @@ if ($action=="filter") {
 		}
 
 		// Start of media directory table
-		echo "<table class=\"list_table $TEXT_DIRECTION width90\">";
+		echo "<table class=\"list_table width90\">";
 
 		// Tell the user where he is
 		echo "<tr>";
@@ -691,19 +691,19 @@ if ($action=="filter") {
 		if (count($dirs) || $level) {
 			sort($dirs);
 			if ($level) {
-				echo "<tr><td class=\"list_value $TEXT_DIRECTION\" colspan=\"2\">";
+				echo "<tr><td class=\"list_value\" colspan=\"2\">";
 				echo $uplink, "</td></tr>";
 			}
-			echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION\" colspan=\"2\">";
+			echo "<tr><td class=\"descriptionbox\" colspan=\"2\">";
 			echo "<a href=\"find.php?directory={$directory}&amp;thumbdir=".str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $directory)."&amp;level={$level}{$thumbget}&amp;external_links=http&amp;type=media&amp;choose={$choose}\">", WT_I18N::translate('External objects'), "</a>";
 			echo "</td></tr>";
 			foreach ($dirs as $indexval => $dir) {
-				echo "<tr><td class=\"list_value $TEXT_DIRECTION\" colspan=\"2\">";
+				echo "<tr><td class=\"list_value\" colspan=\"2\">";
 				echo "<a href=\"find.php?directory={$directory}{$dir}/&amp;thumbdir={$directory}{$dir}/&amp;level=".($level+1)."{$thumbget}&amp;type=media&amp;choose={$choose}\"><span dir=\"ltr\">", $dir, "</span></a>";
 				echo "</td></tr>";
 			}
 		}
-		echo "<tr><td class=\"descriptionbox $TEXT_DIRECTION\" colspan=\"2\"></td></tr>";
+		echo "<tr><td class=\"descriptionbox\" colspan=\"2\"></td></tr>";
 
 		/**
 		 * This action generates a thumbnail for the file
@@ -747,19 +747,15 @@ if ($action=="filter") {
 
 						//-- thumbnail field
 						if ($showthumb) {
-							echo "<td class=\"list_value $TEXT_DIRECTION width10\">";
+							echo "<td class=\"list_value width10\">";
 							if (isset($media["THUMB"])) echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\"><img src=\"", filename_decode($media["THUMB"]), "\" border=\"0\" width=\"50\" alt=\"\" /></a>";
 							else echo "&nbsp;";
 						}
 
 						//-- name and size field
-						echo "<td class=\"list_value $TEXT_DIRECTION\">";
+						echo "<td class=\"list_value\">";
 						if ($media["TITL"] != "") {
-							echo "<b>", PrintReady($media["TITL"]), "</b>&nbsp;&nbsp;";
-							if ($TEXT_DIRECTION=="rtl") echo getRLM();
-							echo "(", $media["XREF"], ")";
-							if ($TEXT_DIRECTION=="rtl") echo getRLM();
-							echo "<br />";
+							echo "<b>", PrintReady($media["TITL"]), "</b><br>";
 						}
 						if (!$embed) {
 							echo "<a href=\"#\" onclick=\"pasteid('", addslashes($media["FILE"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
@@ -810,7 +806,7 @@ if ($action=="filter") {
 
 	// Output Places
 	if ($type == "place") {
-		echo "<table class=\"tabs_table $TEXT_DIRECTION width90\"><tr>";
+		echo "<table class=\"tabs_table width90\"><tr>";
 		$placelist = array();
 		if ($all || $filter) {
 			$placelist=find_place_list($filter);
@@ -830,7 +826,7 @@ if ($action=="filter") {
 					$revplacelist[] = $placetext;
 				}
 				uasort($revplacelist, "utf8_strcasecmp");
-				echo "<td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
+				echo "<td class=\"list_value_wrap\"><ul>";
 				foreach ($revplacelist as $place) {
 					echo "<li><a href=\"#\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", PrintReady($place), "</a></li>";
 				}
@@ -839,7 +835,7 @@ if ($action=="filter") {
 				echo "</td></tr>";
 			}
 			else {
-				echo "<tr><td class=\"list_value_wrap $TEXT_DIRECTION\"><ul>";
+				echo "<tr><td class=\"list_value_wrap\"><ul>";
 				echo WT_I18N::translate('No results found.');
 				echo "</td></tr>";
 			}
@@ -849,7 +845,7 @@ if ($action=="filter") {
 
 	// Output Repositories
 	if ($type == "repo") {
-		echo "<table class=\"tabs_table $TEXT_DIRECTION width90\"><tr>";
+		echo "<table class=\"tabs_table width90\"><tr>";
 		$repo_list = get_repo_list(WT_GED_ID);
 		if ($repo_list) {
 			echo "<td class=\"list_value_wrap\"><ul>";
@@ -870,7 +866,7 @@ if ($action=="filter") {
 
 	// Output Shared Notes
 	if ($type=="note") {
-		echo '<table class="tabs_table ', $TEXT_DIRECTION, ' width90">';
+		echo '<table class="tabs_table width90">';
 		if ($filter) {
 			$mynotelist = search_notes($filter_array, array(WT_GED_ID), 'AND', true);
 		} else {
@@ -892,7 +888,7 @@ if ($action=="filter") {
 
 	// Output Sources
 	if ($type=="source") {
-		echo '<table class="tabs_table ', $TEXT_DIRECTION, ' width90">';
+		echo '<table class="tabs_table width90">';
 		if ($filter) {
 			$mysourcelist = search_sources($filter_array, array(WT_GED_ID), 'AND', true);
 		} else {
@@ -914,7 +910,7 @@ if ($action=="filter") {
 
 	// Output Special Characters
 	if ($type == "specialchar") {
-		echo "<table class=\"tabs_table $TEXT_DIRECTION width90\"><tr><td class=\"list_value center wrap\" dir=\"$TEXT_DIRECTION\"><br/>";
+		echo "<table class=\"tabs_table width90\"><tr><td class=\"list_value center wrap\"><br>";
 		// lower case special characters
 		foreach ($lcspecialchars as $key=>$value) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';

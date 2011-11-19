@@ -89,8 +89,8 @@ $controller->pageHeader();
 							echo '<tr class="rela">';
 						}
 					?>
-						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getTitle(); ?></td>
-						<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
+						<td><?php echo $module->getTitle(); ?></td>
+						<td><?php echo $module->getDescription(); ?></td>
 						<td>
 							<table class="modules_table2">
 								<?php

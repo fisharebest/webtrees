@@ -197,7 +197,7 @@ elseif ($action=='setup') {
 	echo '<input type="hidden" name="action" value="run" />';
 	echo '<input type="hidden" name="report" value="', $report, '" />';
 
-	echo '<table class="facts_table width50 center ', $TEXT_DIRECTION, ' ">';
+	echo '<table class="facts_table width50 center">';
 	echo '<tr><td class="topbottombar" colspan="2">', WT_I18N::translate('Enter report values'), '</td></tr>';
 	echo '<tr><td class="descriptionbox width30 wrap">', WT_I18N::translate('Selected Report'), '</td><td class="optionbox">', $report_array['title'], '<br/>', $report_array['description'], '</td></tr>';
 

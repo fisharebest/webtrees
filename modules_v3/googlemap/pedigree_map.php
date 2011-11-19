@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 
 require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
-global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES, $TEXT_DIRECTION;
+global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $SHOW_HIGHLIGHT_IMAGES, $WT_IMAGES;
 
 
 // Default is show for both of these.
@@ -85,7 +85,7 @@ echo '<h2>', $controller->getPageTitle(), '</h2>';
 	  <form name="people" method="get" action="module.php?ged=<?php echo WT_GEDURL; ?>&amp;mod=googlemap&amp;mod_action=pedigree_map">
 		<input type="hidden" name="mod" value="googlemap" />
 		<input type="hidden" name="mod_action" value="pedigree_map" />
-		<table class="pedigree_table <?php echo $TEXT_DIRECTION; ?>" width="555">
+		<table class="pedigree_table" width="555">
 			<tr>
 				<td class="descriptionbox wrap">
 					<?php echo WT_I18N::translate('Root Person ID'), help_link('rootid'); ?>

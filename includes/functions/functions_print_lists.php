@@ -35,7 +35,7 @@ require_once WT_ROOT.'includes/functions/functions_places.php';
 
 // print a table of individuals
 function print_indi_table($datalist, $option='') {
-	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
 
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
@@ -458,7 +458,7 @@ function print_indi_table($datalist, $option='') {
 
 // print a table of families
 function print_fam_table($datalist, $option='') {
-	global $GEDCOM, $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $controller;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $controller;
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
 	if (count($datalist)<1) return;
@@ -912,7 +912,7 @@ function print_fam_table($datalist, $option='') {
 
 // print a table of sources
 function print_sour_table($datalist) {
-	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $controller;
+	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
 
 	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1047,7 +1047,7 @@ function print_sour_table($datalist) {
 
 // print a table of shared notes
 function print_note_table($datalist) {
-	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $controller;
+	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
 
 	if (count($datalist)<1) {
 		return;
@@ -1146,7 +1146,7 @@ function print_note_table($datalist) {
 
 // print a table of repositories
 function print_repo_table($repos) {
-	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $SEARCH_SPIDER, $controller;
+	global $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $controller;
 
 	if (!$repos) {
 		return;
@@ -1244,7 +1244,7 @@ function print_repo_table($repos) {
 
 // print a table of media objects
 function print_media_table($datalist) {
-	global $SHOW_LAST_CHANGE, $TEXT_DIRECTION, $WT_IMAGES, $controller;
+	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
 
 	if (count($datalist)<1) return;
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
@@ -1503,7 +1503,7 @@ function format_surname_tagcloud($surnames, $script, $totals) {
 // @param $totals, boolean, show totals after each name
 // @param $type string, indilist or famlist
 function format_surname_list($surnames, $style, $totals, $script) {
-	global $TEXT_DIRECTION, $GEDCOM;
+	global $GEDCOM;
 
 	$html=array();
 	foreach ($surnames as $surn=>$surns) {
@@ -1614,7 +1614,7 @@ function print_changes_list($change_ids, $sort) {
 
 // print a table of recent changes
 function print_changes_table($change_ids, $sort) {
-	global $TEXT_DIRECTION, $WT_IMAGES, $controller;
+	global $WT_IMAGES, $controller;
 
 	$return = '';
 	$n = 0;
@@ -1734,7 +1734,7 @@ function print_changes_table($change_ids, $sort) {
 
 // print a table of events
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
-	global $TEXT_DIRECTION, $WT_IMAGES, $controller;
+	global $WT_IMAGES, $controller;
 
 	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
 	$controller
@@ -1909,8 +1909,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
  * This performs the same function as print_events_table(), but formats the output differently.
  */
 function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
-	global $TEXT_DIRECTION;
-
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
 	$filter = 0;
@@ -1968,7 +1966,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	}
 
 	foreach ($filtered_events as $value) {
-		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\" dir=\"".$TEXT_DIRECTION."\">".$value['name']."</a>".$value['sex'];
+		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\">".$value['name']."</a>".$value['sex'];
 		$return .= "<br /><div class=\"indent\">";
 		$return .= WT_Gedcom_Tag::getLabel($value['fact']).' - '.$value['date']->Display(true);
 		if ($value['anniv']!=0) $return .= " (" . WT_I18N::translate('%s year anniversary', $value['anniv']).")";

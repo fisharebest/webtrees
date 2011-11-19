@@ -138,7 +138,7 @@ echo '</ul>';
 					<table width="100%">
 						<tr>
 							<td>
-								<table class="facts_table', $TEXT_DIRECTION=='ltr'?'':'_rtl', '">';
+								<table class="facts_table">';
 										$facts = $controller->getFacts(WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT);
 										foreach ($facts as $f=>$fact) {
 											print_fact($fact, $controller->record);

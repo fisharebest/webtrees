@@ -41,8 +41,6 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $TEXT_DIRECTION;
-
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		if (WT_USER_ID) {
@@ -73,23 +71,23 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			// Row 1: Userid
 			$content .= "<tr><td ";
 			$content .= write_align_with_textdir_check("right", true);
-			$content .= " class=\"{$TEXT_DIRECTION} wrap width50\">";
+			$content .= " class=\"wrap width50\">";
 			$content .= WT_I18N::translate('Username');
 			$content .= help_link('username');
 			$content .= "</td><td ";
 			$content .= write_align_with_textdir_check("left", true);
-			$content .= " class=\"{$TEXT_DIRECTION}\"><input type=\"text\" name=\"username\"  size=\"20\" class=\"formField\" />";
+			$content .= "><input type=\"text\" name=\"username\"  size=\"20\" class=\"formField\" />";
 			$content .= "</td></tr>";
 
 			// Row 2: Password
 			$content .= "<tr><td ";
 			$content .= write_align_with_textdir_check("right", true);
-			$content .= " class=\"{$TEXT_DIRECTION} wrap width50\">";
+			$content .= " wrap width50\">";
 			$content .= WT_I18N::translate('Password');
 			$content .= help_link('password');
 			$content .= "</td><td ";
 			$content .= write_align_with_textdir_check("left", true);
-			$content .= " class=\"{$TEXT_DIRECTION}\"><input type=\"password\" name=\"password\"  size=\"20\" class=\"formField\" />";
+			$content .= "><input type=\"password\" name=\"password\"  size=\"20\" class=\"formField\" />";
 			$content .= "</td></tr>";
 
 			// Row 3: "Login" link
@@ -102,12 +100,12 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 				// Row 4: "Request Account" link
 				$content .= "<tr><td ";
 				$content .= write_align_with_textdir_check("right", true);
-				$content .= " class=\"{$TEXT_DIRECTION} wrap width50\"><br />";
+				$content .= " class=\"wrap width50\"><br />";
 				$content .= WT_I18N::translate('No account?');
 				$content .= help_link('new_user');
 				$content .= "</td><td ";
 				$content .= write_align_with_textdir_check("left", true);
-				$content .= " class=\"{$TEXT_DIRECTION}\"><br />";
+				$content .= "><br>";
 				$content .= "<a href=\"login_register.php?action=register\">";
 				$content .= WT_I18N::translate('Request new user account');
 				$content .= "</a>";
@@ -116,12 +114,12 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 				// Row 5: "Lost Password" link
 				$content .= "<tr><td ";
 				$content .= write_align_with_textdir_check("right", true);
-				$content .= " class=\"{$TEXT_DIRECTION} wrap width50\">";
+				$content .= " wrap width50\">";
 				$content .= WT_I18N::translate('Lost your password?');
 				$content .= help_link('new_password');
 				$content .= "</td><td ";
 				$content .= write_align_with_textdir_check("left", true);
-				$content .= " class=\"{$TEXT_DIRECTION}\">";
+				$content .= ">";
 				$content .= "<a href=\"login_register.php?action=pwlost\">";
 				$content .= WT_I18N::translate('Request new password');
 				$content .= "</a>";

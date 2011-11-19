@@ -95,7 +95,7 @@ function split_align_text($data, $maxlen) {
  * @param int $fandeg fan size in deg (default=270)
  */
 function generate_fan_chart($treeid, $fanw=640, $fandeg=270) {
-	global $PEDIGREE_GENERATIONS, $fan_width, $fan_style, $name, $TEXT_DIRECTION;
+	global $PEDIGREE_GENERATIONS, $fan_width, $fan_style, $name;
 	global $WT_IMAGES, $GEDCOM, $fanChart;
 
 	$html='';
@@ -399,7 +399,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 /*if (strlen($title)<30) $cellwidth="420";
 else $cellwidth=(strlen($title)*7);*/
 $cellwidth = max(strlen($title)*4, "420");
-echo "<table class=\"list_table $TEXT_DIRECTION\"><tr><td width=\"".$cellwidth."px\" valign=\"top\">";
+echo "<table class=\"list_table\"><tr><td width=\"".$cellwidth."px\" valign=\"top\">";
 echo '<h2>', $controller->getPageTitle(), '</h2>';
 
 // -- print the form to change the number of displayed generations
@@ -407,7 +407,7 @@ echo WT_JS_START;
 echo "var pastefield; function paste_id(value) { pastefield.value=value; }";
 echo WT_JS_END;
 echo "</td><td><form name=\"people\" method=\"get\" action=\"?\">";
-echo "<table class=\"list_table $TEXT_DIRECTION\"><tr>";
+echo "<table class=\"list_table\"><tr>";
 
 // NOTE: rootid
 echo "<td class=\"descriptionbox\">";

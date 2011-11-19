@@ -314,7 +314,7 @@ if ($show_spouse) echo " checked=\"checked\""; ?> />
 echo
 	'<div id="familybook_chart',
 	($TEXT_DIRECTION=="ltr")?"":"_rtl",
-	'" style="width:98%; direction:"', $TEXT_DIRECTION, ';z-index:1;">';
+	'" style="width:98%; z-index:1;">';
 
 print_family_book($person, $descent);
 

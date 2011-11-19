@@ -83,7 +83,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 		}
 		echo '<input type="hidden" name="linkto" value="', $linkto, '" />';
 		echo '<input type="hidden" name="ged" value="', $GEDCOM, '" />';
-		echo '<table class="facts_table center ', $TEXT_DIRECTION, '">';
+		echo '<table class="facts_table center">';
 		echo '<tr><td class="topbottombar" colspan="2">';
 		echo WT_I18N::translate('Link media'), help_link('add_media_linkid');
 		echo '</td></tr><tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Media'), '</td>';

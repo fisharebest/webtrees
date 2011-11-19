@@ -59,7 +59,7 @@ echo WT_JS_END;
 $gencount=0;
 echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">';
 echo '<input type="hidden" name="show_full" value="', $controller->show_full, '" />';
-echo '<table class="list_table ', $TEXT_DIRECTION, '">';
+echo '<table class="list_table">';
 echo '<tr><td class="descriptionbox">';
 echo WT_I18N::translate('Root Person ID'), help_link('desc_rootid'), '</td>';
 echo '<td class="optionbox">';

@@ -60,7 +60,7 @@ echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=va
 </td><td width="50px">&nbsp;</td><td><form name="people" id="people" method="get" action="?">
 <input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>" />
 <input type="hidden" name="show_cousins" value="<?php echo $controller->show_cousins; ?>" />
-<table class="list_table <?php echo $TEXT_DIRECTION; ?>">
+<table class="list_table">
 
 	<!-- // NOTE: Root ID -->
 <tr>

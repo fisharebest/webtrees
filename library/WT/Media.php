@@ -323,7 +323,7 @@ class WT_Media extends WT_GedcomRecord {
 	 * @return array
 	 */
 	public function getImageAttributes($which='main',$addWidth=0,$addHeight=0) {
-		global $THUMBNAIL_WIDTH, $TEXT_DIRECTION;
+		global $THUMBNAIL_WIDTH;
 		$var=$which.'imagesize';
 		if (!empty($this->$var)) return $this->$var;
 		$imgsize = array();

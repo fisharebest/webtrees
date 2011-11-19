@@ -43,7 +43,7 @@ if (!defined('WT_WEBTREES')) {
 	<span><b><?php echo WT_I18N::translate('Proposed Census Text&nbsp;&nbsp;'); ?></b></span>
 	<span><input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="caSave();" /></span>
 	<br /><br />
-	<span class="descriptionbox width15 nowrap <?php $TEXT_DIRECTION; ?>">
+	<span class="descriptionbox width15 nowrap">
 		<?php
 			echo WT_I18N::translate('Shared note'), help_link('SHARED_NOTE');
 		?>

@@ -462,7 +462,7 @@ if (check_media_structure()) {
  * @name $action->thumbnail
  */
 	if ($action == "thumbnail") {
-		echo "<table class=\"media_items $TEXT_DIRECTION\">";
+		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		// TODO: add option to generate thumbnails for all images on page
 		// Cycle through $medialist and skip all exisiting thumbs
@@ -511,7 +511,7 @@ if (check_media_structure()) {
 
 	// Move single file and optionally its corresponding thumbnail to protected dir
 	if ($action == "moveprotected") {
-		echo "<table class=\"media_items $TEXT_DIRECTION\">";
+		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
 			// don't allow user to access directories outside of media dir
@@ -533,7 +533,7 @@ if (check_media_structure()) {
 
 	// Move single file and its corresponding thumbnail to standard dir
 	if ($action == "movestandard") {
-		echo "<table class=\"media_items $TEXT_DIRECTION\">";
+		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		if (strpos($filename, "../") !== false) {
 			// don't allow user to access directories outside of media dir
@@ -553,7 +553,7 @@ if (check_media_structure()) {
 
 	// Move entire dir and all subdirs to protected dir
 	if ($action == "movedirprotected") {
-		echo "<table class=\"media_items $TEXT_DIRECTION\">";
+		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		echo "<strong>".WT_I18N::translate('Move to protected')."<br />";
 		move_files(substr($directory, 0, -1), true);
@@ -563,7 +563,7 @@ if (check_media_structure()) {
 
 	// Move entire dir and all subdirs to standard dir
 	if ($action == "movedirstandard") {
-		echo "<table class=\"media_items $TEXT_DIRECTION\">";
+		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		echo "<strong>".WT_I18N::translate('Move to standard')."<br />";
 		move_files(substr(get_media_firewall_path($directory), 0, -1), false);
@@ -572,7 +572,7 @@ if (check_media_structure()) {
 	}
 
 	if ($action == "setpermsfix") {
-		echo "<table class=\"media_items $TEXT_DIRECTION\">";
+		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		echo "<strong>".WT_I18N::translate('Correct read/write/execute permissions')."<br />";
 		set_perms(substr($directory, 0, -1));
@@ -606,7 +606,7 @@ if (check_media_structure()) {
 
 	// Delete file
 	if ($action == "deletefile") {
-		echo "<table class=\"media_items $TEXT_DIRECTION\">";
+		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
 		$xrefs = array($xref);
 		$onegedcom = true;
@@ -786,7 +786,7 @@ if (check_media_structure()) {
 	<input type="hidden" name="level" value="<?php echo $level; ?>" />
 	<input type="hidden" name="all" value="true" />
 	<input type="hidden" name="subclick" value="<?php echo $subclick; ?>"/>
-	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">
+	<table class="media_items">
 		<tr align="center">
 			<td class="wrap"><?php echo /* I18N: Label for list of sort options */ WT_I18N::translate('Sort order'); ?>
 				<select name="sortby">
@@ -816,7 +816,7 @@ if (check_media_structure()) {
 		</tr>
 <!--	</table>
 
-	<table class="media_items <?php echo $TEXT_DIRECTION; ?>">-->
+	<table class="media_items">-->
 		<tr align="center">
 			<td colspan="2">
 				<?php echo WT_I18N::translate('Folder')."</td><td>". WT_I18N::translate('Filter'), help_link('simple_filter'); ?>
@@ -854,7 +854,7 @@ if (check_media_structure()) {
 		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
 
 		// Start of media directory table
-		echo "<table class=\"media_items $TEXT_DIRECTION\">";
+		echo "<table class=\"media_items\">";
 		// Tell the user where he is
 		echo "<tr>";
 		echo "<td colspan=\"4\">";
@@ -984,7 +984,7 @@ if (check_media_structure()) {
 					echo "<td class=\" center\" width=\"10\">";
 						echo $uplink2;
 					echo "</td>";
-					echo "<td class=\"$TEXT_DIRECTION\">";
+					echo "<td>";
 						echo $uplink;
 					echo "</td>";
 				echo "</tr>";
@@ -1011,7 +1011,7 @@ if (check_media_structure()) {
 
 						echo "</form>";
 			//	echo "</td>";
-					echo "<td class=\"$TEXT_DIRECTION\">";
+					echo "<td>";
 						echo "<a href=\"".WT_SCRIPT_NAME."?directory=".rawurlencode($directory.$dir)."/&amp;sortby={$sortby}&amp;level=".($level+1).$thumbget."&amp;subclick={$subclick}\">";
 						if ($TEXT_DIRECTION=="rtl") echo getRLM();
 						echo $dir;
@@ -1108,7 +1108,7 @@ if (check_media_structure()) {
 
 						// Show column with file operations options
 						$printDone = true;
-						echo "<tr><td class=\" $changeClass $TEXT_DIRECTION\">";
+						echo "<tr><td>";
 
 						if ($media["CHANGE"]!="delete") {
 							// Edit File
@@ -1220,7 +1220,7 @@ if (check_media_structure()) {
 
 						//-- Thumbnail field
 						if ($showthumb) {
-							echo "<td class=\" $changeClass $TEXT_DIRECTION\">";
+							echo "<td>";
 							// if Streetview object
 							if (strpos($media["FILE"], 'http://maps.google.')===0) {
 								echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $media["FILE"], '&amp;output=svembed"></iframe>';
@@ -1234,7 +1234,7 @@ if (check_media_structure()) {
 						}
 
 						//-- name and size field
-						echo "<td class=\" $changeClass $TEXT_DIRECTION wrap\">";
+						echo "<td>";
 						if ($media["TITL"]!="") echo "<b>".PrintReady($media["TITL"])."</b><br />";
 						if (!$isExternal && !$media["EXISTS"]) echo "<span dir=\"ltr\">".PrintReady($media["FILE"])."</span><br /><span class=\"error\">".WT_I18N::translate('The filename entered does not exist.')."</span><br />";
 						else {

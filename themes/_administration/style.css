@@ -38,8 +38,6 @@ td {vertical-align:top;}
 .warning, .error, .red {font-weight:bold; color:red;}
 .accepted, a.accepted {font-weight:bold; color:green;}
 .center {text-align:center;}
-.ltr {text-align:left;}
-.rtl {text-align:right;}
 .nowrap {white-space:nowrap;}
 .indent {padding-left:15px;}
 html[dir='rtl'] .indent {padding-right:15px;}

@@ -142,7 +142,7 @@ function paste_id(value) {
 $tab=0;
 echo '<form name="editform" method="post" action="" onsubmit="return checkform(this);">';
 echo '<input type="hidden" name="form_action" value="update" />';
-echo '<table class="list_table center ', $TEXT_DIRECTION, '">';
+echo '<table class="list_table center">';
 
 echo '<tr><td class="topbottombar" colspan="2"><h2>', WT_I18N::translate('My account'), '</h2></td></tr>';
 

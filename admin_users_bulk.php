@@ -37,7 +37,7 @@ $controller
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 ?>
-<div id="users_bulk" class="<?php echo $TEXT_DIRECTION; ?>">
+<div id="users_bulk">
 	<p><a href="#" onclick="message('all', 'messaging2', '', ''); return false;"><?php echo WT_I18N::translate('Send message to all users'); ?></a></p>
 	<p><a href="#" onclick="message('never_logged', 'messaging2', '', ''); return false;"><?php echo WT_I18N::translate('Send message to users who have never logged in'); ?></a></p>
 	<p><a href="#" onclick="message('last_6mo', 'messaging2', '', ''); return false;"><?php echo WT_I18N::translate('Send message to users who have not logged in for 6 months'); ?></a></p>

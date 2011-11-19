@@ -121,7 +121,7 @@ function paste_id(value) {
 	<form name="people" method="get" action="relationship.php">
 	<input type="hidden" name="path_to_find" value="<?php echo $path_to_find; ?>" />
 
-	<table class="list_table <?php echo $TEXT_DIRECTION; ?>" style="text-align:<?php echo ($TEXT_DIRECTION=="ltr"?"left":"right"); ?>; margin:0;">
+	<table class="list_table">
 
 	<!-- // Relationship header -->
 	<tr><td colspan="2" class="topbottombar center">

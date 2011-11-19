@@ -678,7 +678,7 @@ class WT_Person extends WT_GedcomRecord {
 	* @return string
 	*/
 	function getLabel($elderdate='', $counter=0) {
-		global $TEXT_DIRECTION, $WT_IMAGES;
+		global $WT_IMAGES;
 
 		$label = '';
 		$gap = 0;
@@ -686,7 +686,7 @@ class WT_Person extends WT_GedcomRecord {
 			$p2 = $this->getBirthDate();
 			if ($p2->isOK()) {
 				$gap = $p2->MinJD()-$elderdate->MinJD(); // days
-				$label .= "<div class=\"elderdate age $TEXT_DIRECTION\">";
+				$label .= "<div class=\"elderdate age\">";
 				// warning if negative gap : wrong order
 				if ($gap<0 && $counter>0) $label .= '<img alt="" src="'.$WT_IMAGES['warning'].'" /> ';
 				// warning if gap<6 months
@@ -710,7 +710,7 @@ class WT_Person extends WT_GedcomRecord {
 			}
 		}
 		// I18N: This is an abbreviation for a number.  i.e. #7 means number 7
-		if ($counter) $label .= '<div class="'.$TEXT_DIRECTION.'">'.WT_I18N::translate('#%d', $counter).'</div>';
+		if ($counter) $label .= '<div>'.WT_I18N::translate('#%d', $counter).'</div>';
 		$label .= $this->label;
 		if ($gap!=0 && $counter<1) $label .= '<br />&nbsp;';
 		return $label;

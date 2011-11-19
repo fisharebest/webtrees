@@ -273,7 +273,7 @@ if ($action=='choose') {
 		<form method="post" name="merge" action="admin_site_merge.php">
 		<input type="hidden" name="action" value="select" />
 		<p>', WT_I18N::translate('Select two GEDCOM records to merge.  The records must be of the same type.'), '</p>
-		<table class="', $TEXT_DIRECTION, '"><tr>
+		<table><tr>
 		<td>',
 		WT_I18N::translate('Merge To ID:'),
 		'</td><td>

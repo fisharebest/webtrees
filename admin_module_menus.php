@@ -109,8 +109,8 @@ echo WT_JS_START; ?>
 							echo '<tr class="sortme rela">';
 						}
 						?>
-							<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getTitle(); ?></td>
-							<td class="<?php echo $TEXT_DIRECTION; ?>" ><?php echo $module->getDescription(); ?></td>
+							<td><?php echo $module->getTitle(); ?></td>
+							<td><?php echo $module->getDescription(); ?></td>
 							<td><input type="text" size="3" value="<?php echo $order; ?>" name="menuorder-<?php echo $module->getName(); ?>" />
 							</td>
 							<td>

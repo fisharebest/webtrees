@@ -82,7 +82,7 @@ $context_lines=safe_POST('context_lines','[0-5]', '2');    // Lines of context t
 $showall      =safe_POST('showall',      '[01]',  '0');    // Show details of records with no problems
 
 echo '<form method="post" name="gedcheck" action="gedcheck.php">';
-echo '<table class="list_table ', $TEXT_DIRECTION, '">';
+echo '<table class="list_table">';
 echo '<tr><td class="list_label">', WT_I18N::translate('GEDCOM File:'), '</td>';
 echo '<td class="optionbox"><select name="ged">';
 foreach ($all_geds as $key=>$value) {

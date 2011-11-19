@@ -62,9 +62,9 @@ if ($ENABLE_AUTOCOMPLETE) {
 <form name="surnlist" id="surnlist" action="?">
 	<table class="center facts_table width50">
 		<tr>
-			<td class="descriptionbox <?php echo $TEXT_DIRECTION; ?>">
+			<td class="descriptionbox">
 				<?php echo WT_Gedcom_Tag::getLabel('SURN'), help_link('surname'); ?></td>
-			<td class="optionbox <?php echo $TEXT_DIRECTION; ?>">
+			<td class="optionbox">
 				<input type="text" name="surn" id="SURN" value="<?php echo $surn; ?>" />
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" />
 				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
@@ -104,7 +104,7 @@ if ($surn) {
 }
 
 function print_fams($person, $famid=null) {
-	global $UNKNOWN_NN, $surn, $surn_script, $TEXT_DIRECTION, $user_ancestors;
+	global $UNKNOWN_NN, $surn, $surn_script, $user_ancestors;
 	// select person name according to searched surname
 	$person_name = "";
 	foreach ($person->getAllNames() as $n=>$name) {
