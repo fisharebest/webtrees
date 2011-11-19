@@ -277,8 +277,6 @@ $Dbheight = 78; // -- height of DIV layer boxes
 $Dindent = 15; // -- width to indent descendancy boxes
 $Darrowwidth = 30; // -- additional width to include for the up arrows
 
-$CHARTS_CLOSE_HTML = true;                //-- should the charts, pedigree, descendacy, etc close the HTML on the page
-
 // --  The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
 $WT_STATS_S_CHART_X = "440";
 $WT_STATS_S_CHART_Y = "125";
