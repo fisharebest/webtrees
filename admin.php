@@ -73,7 +73,7 @@ if (WT_USER_IS_ADMIN && $latest_version && version_compare(WT_VERSION, $latest_v
 		'<div>',
 		'<h3>', WT_I18N::translate('Upgrade instructions'), '</h3>',
 		'<ul>',
-		'<li>', /* I18N: %s is a URL/link to a .ZIP file */ WT_I18n::translate('Download %s and extract the files.', '<a class="current" href="'.$download_url.'">'.basename($download_url).'</a>'), '</li>';
+		'<li>', /* I18N: %s is a URL/link to a .ZIP file */ WT_I18N::translate('Download %s and extract the files.', '<a class="current" href="'.$download_url.'">'.basename($download_url).'</a>'), '</li>';
 	if (version_compare(WT_VERSION, $earliest_version)<0) {
 		echo '<li>', WT_I18N::translate('Accept or reject any pending changes.'), '</li>';
 		echo '<li>', WT_I18N::translate('Save all your family trees to disk, by using the "export" function for each one.'), '</li>';
