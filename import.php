@@ -1,34 +1,32 @@
 <?php
-/**
- * Perform an incremental import of a gedcom file.
- *
- * For each gedcom that needs importing, admin_trees_manage.php will create
- * a <div id="importNNN"></div>, where NNN is the gedcom ID.
- * It will then call import.php to load the div's contents using AJAX.
- *
- * We import small blocks of data from wt_gedcom_chunks, working for
- * a couple of seconds.  When each block is loaded, we set its status
- * flag.
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- *
- * @version $Id$
- */
+// Perform an incremental import of a gedcom file.
+//
+// For each gedcom that needs importing, admin_trees_manage.php will create
+// a <div id="importNNN"></div>, where NNN is the gedcom ID.
+// It will then call import.php to load the div's contents using AJAX.
+//
+// We import small blocks of data from wt_gedcom_chunks, working for
+// a couple of seconds.  When each block is loaded, we set its status
+// flag.
+//
+// webtrees: Web based Family History software
+// Copyright (C) 2011 webtrees development team.
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
+// $Id$
 
 define('WT_SCRIPT_NAME', 'import.php');
 require './includes/session.php';
