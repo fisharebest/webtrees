@@ -261,7 +261,7 @@ foreach ($controller->tabs as $tab) {
 		// own <div title="">, but jQueryUI gives the <a> element padding, which
 		// shows the correct title on the text but the wrong title on the padding.
 		// So,... move the padding from the <a> to the internal <div>
-		echo '<li class="'.$greyed_out.'"><a style="padding:0;" title="', $tab->getName(), '" href="';
+		echo '<li class="'.$greyed_out.'"><a title="', $tab->getName(), '" href="';
 		if ($tab->canLoadAjax()) {
 			// AJAX tabs load only when selected
 			echo $controller->record->getHtmlUrl(),'&amp;action=ajax&amp;module=', $tab->getName();
@@ -269,7 +269,7 @@ foreach ($controller->tabs as $tab) {
 			// Non-AJAX tabs load immediately
 			echo '#', $tab->getName();
 		}
-		echo '"><div style="padding:0.5em 1em;" title="', $tab->getDescription(), '">', $tab->getTitle(), '</div></a></li>';
+		echo '"><div title="', $tab->getDescription(), '">', $tab->getTitle(), '</div></a></li>';
 	}
 }
 echo '</ul>';
