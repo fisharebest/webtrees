@@ -36,7 +36,7 @@ if (!defined('WT_WEBTREES')) {
  * @param string $pid        The record id this media item was attached to
  */
 function media_reorder_row($rtype, $rowm, $pid) {
-	global $WT_IMAGES, $MEDIA_DIRECTORY, $TEXT_DIRECTION;
+	global $WT_IMAGES, $MEDIA_DIRECTORY;
 	global $GEDCOM, $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
 	global $SEARCH_SPIDER;
 	global $t, $n, $item, $items, $p, $edit, $reorder, $note, $rowm;

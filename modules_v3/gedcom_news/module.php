@@ -49,7 +49,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $WT_IMAGES, $TEXT_DIRECTION;
+		global $ctype, $WT_IMAGES;
 
 		switch (safe_GET('action')) {
 		case 'deletenews':

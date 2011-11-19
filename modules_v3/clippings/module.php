@@ -567,7 +567,6 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	}
 
 	public function downloadForm($clip_ctrl) {
-		global $TEXT_DIRECTION;
 		$pid=safe_GET_xref('pid');
 
 		$out = WT_JS_START;
