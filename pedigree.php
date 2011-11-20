@@ -155,17 +155,17 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 				}
 				$linexoffset = $xoffset;
 				if ($talloffset < 2) {
-					echo '<div id="line' .$i . '" dir="';
+					echo '<div id="line', $i, '" dir="';
 					if ($TEXT_DIRECTION=="rtl") {
 						echo 'rtl" style="position:absolute; right:';
 					} else {
 						echo 'ltr" style="position:absolute; left:';
 					}
 					echo $linexoffset, 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;">';
-					echo '<img src="', $WT_IMAGES["vline"], '" width="', $linesize, '" height="', ($vlength-1), '\" alt="" />';
+					echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($vlength-1), '" alt="" >';
 					echo '</div>';
 				} else {
-					echo '<div id="vline$i" dir="';
+					echo '<div id="vline', $i, '" dir="';
 					if ($TEXT_DIRECTION=="rtl") {
 						echo 'rtl" style="position:absolute; right:';
 					} else {
@@ -173,20 +173,20 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 					}
 					if ($talloffset > 2) {
 						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1-$controller->pbheight/2), 'px; z-index: 0;">';
-						echo '<img src="', $WT_IMAGES["vline"], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" />';
+						echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" >';
 					} else {
-						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset+1+$controller->pbheight/2), "px; z-index: 0;\">";
-						echo '<img src="', $WT_IMAGES["vline"], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" />';
+						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;">';
+						echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" >';
 					}
 					echo '</div>';
-					echo '<div id="line$i" dir="';
+					echo '<div id="line', $i, '" dir="';
 					if ($TEXT_DIRECTION=="rtl") {
 						echo 'rtl" style="position:absolute; right:';
 					} else {
 						echo 'ltr" style="position:absolute; left:';
 					}
 					echo ($linexoffset+$controller->pbwidth), 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;\">';
-					echo '<img src="', $WT_IMAGES["hline"], '" width="', ($vlength-$controller->pbwidth), '" height="', $linesize, '" alt="" />';
+					echo '<img src="', $WT_IMAGES['hline'], '" width="', ($vlength-$controller->pbwidth), '" height="', $linesize, '" alt="" />';
 					echo '</div>';
 				}
 			}
