@@ -94,10 +94,10 @@ function print_descendency($person, $count) {
 					if (count($children)==1) {
 						$twidth+=3;
 					}
-					echo "<td rowspan=\"$rowspan\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"$twidth\" height=\"3\" alt=\"\" /></td>";
+					echo "<td rowspan=\"$rowspan\"><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"$twidth\" height=\"3\" alt=\"\" /></td>";
 					if (count($children)>1) {
 						if ($i==0) {
-							echo "<td height=\"".($bhalfheight+3)."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr>";
+							echo "<td height=\"".($bhalfheight+3)."\"><img class=\"lineb\" src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr>";
 							echo "<tr><td height=\"".($bhalfheight+3)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
 						}
 						else if ($i==count($children)-1) {
@@ -154,7 +154,7 @@ function print_person_pedigree($person, $count) {
 		echo "<tr>";
 		if ($count<$generations-1) {
 			echo "<td height=\"".$hheight."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
-			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
+			echo "<td rowspan=\"2\"> src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 		}
 		echo "<td rowspan=\"2\">";
 		print_pedigree_person($family->getHusband());

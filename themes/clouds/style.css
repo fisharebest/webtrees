@@ -400,10 +400,9 @@ width: 99%;
 img {border: 0 none;}
 img.block {height: 25px;}
 
-.line1 {vertical-align:bottom;} 
-.line2 {vertical-align:bottom;}
-.line3 {vertical-align:bottom;}
-.line4 {vertical-align:middle;} 
+.line1, .line2, .line3 {vertical-align:bottom;} 
+.line4 {vertical-align:middle;}
+.line5 {vertical-align:top;}
 
 .blockh1 {
 background-image:url(images/left1B.png);
