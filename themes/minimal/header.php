@@ -158,9 +158,11 @@ if ($view!='simple') {
 		'</ul>',
 		'</div>';
 	// Display feedback from asynchronous actions
+	echo '<div id="flash-messages">';
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';
 	}
+	echo '</div>'; // <div id="flash-messages">
 	echo '</div>'; // <div id="header">
 }
 echo $javascript, '<div id="content">';

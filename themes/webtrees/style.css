@@ -864,6 +864,8 @@ html[dir='rtl'] .header_search {
 	float:left;
 }
 
+#flash-messages { clear:both; }
+
 /* Styles for the option boxes */
 
 /* Style for the top and bottom bar */

@@ -57,6 +57,8 @@ html[dir='rtl'] .title {float: right; margin-right: 12px;}
 html[dir='rtl'] .makeMenu {display: block; float: left;  margin: 40px 0 0 10px;}
 html[dir='rtl'] .topMenu_right {float: left;}
 
+#flash-messages { clear:both; }
+
 /* ====================== */
 /* Layout Main menu  */
 

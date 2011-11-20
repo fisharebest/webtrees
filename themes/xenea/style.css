@@ -60,6 +60,8 @@ html[dir='rtl'] .hsearch {float:left; padding-left:10px;}
 
 #header, .gedcomtitle {color:#ffffff;}
 
+#flash-messages { clear:both; }
+
 /* Options Menu Layout */
 #optionsmenu {
 	background:#84beff;

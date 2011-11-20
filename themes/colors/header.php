@@ -135,11 +135,16 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 		'</ul>',
 		'</div>'; // <div id="topMenu">
+	echo '</div>'; // <div id="header">
+
+	// NOTE: in other themes, the flash-messages are inside #header.
+	// However, in this theme, it causes them to overlap with #content.
 	// Display feedback from asynchronous actions
+	echo '<div id="flash-messages">';
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';
 	}
-	echo '</div>'; // <div id="header">
+	echo '</div>'; // <div id="flash-messages">
 }
 // Remove submenu from home
 $this->addInlineJavaScript(

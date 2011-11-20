@@ -78,6 +78,8 @@ html[dir='rtl'] .favorites_form {
 	z-index:2000;
 }
 
+#flash-messages { clear:both; }
+
 /* Layout for header menu */
 
 #topMenu { /* set up container for menu */

@@ -129,10 +129,12 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 		'</ul>',
 		'</div>', // <div id="menu-right">
 		'</div>'; // <div id="topMenu">
-// Display feedback from asynchronous actions
+	// Display feedback from asynchronous actions
+	echo '<div id="flash-messages">';
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';
 	}
+	echo '</div>'; // <div id="flash-messages">
 	'</div>'; // <div id="clouds-container">
 }
 echo $javascript, '<div id="content">';
