@@ -195,14 +195,16 @@ class WT_Controller_Base {
 			var WT_STATIC_URL  = "'.WT_STATIC_URL.'";
 			var WT_THEME_DIR   = "'.WT_THEME_DIR.'";
 			var WT_MODULES_DIR = "'.WT_MODULES_DIR.'";
-			var textDirection = "'.$TEXT_DIRECTION.'";
-			var browserType = "'.$BROWSERTYPE.'";
+			var WT_GEDCOM      = "'.WT_GEDCOM.'";
+			var WT_USER_ID     = "'.WT_USER_ID.'";
+			var textDirection  = "'.$TEXT_DIRECTION.'";
+			var browserType    = "'.$BROWSERTYPE.'";
 			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
-			var WT_LOCALE = "'.WT_LOCALE.'";
+			var WT_LOCALE      = "'.WT_LOCALE.'";
 			/* keep the session id when opening new windows */
-			var sessionid = "'.Zend_Session::getId().'";
+			var sessionid   = "'.Zend_Session::getId().'";
 			var sessionname = "'.WT_SESSION_NAME.'";
-			var accesstime = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
+			var accesstime  = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
 			var plusminus = new Array();
 			plusminus[0] = new Image();
 			plusminus[0].src = "'.$WT_IMAGES["plus"].'";

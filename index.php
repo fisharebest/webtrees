@@ -90,25 +90,6 @@ if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 
-// TODO: these should be moved to their respective module/block
-echo WT_JS_START;
-?>
-	function refreshpage() {
-		window.location = 'index.php?ctype=<?php echo $ctype; ?>';
-	}
-	function addnews(uname) {
-		window.open('editnews.php?username='+uname, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
-	}
-	function editnews(news_id) {
-		window.open('editnews.php?news_id='+news_id, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
-	}
-	var pastefield;
-	function paste_id(value) {
-		pastefield.value=value;
-	}
-<?php
-echo WT_JS_END;
-//-- start of main content section
 echo '<div id="home-page">';
 if ($ctype=='user') {
 	echo '<h1 align="center">', WT_I18N::translate('My page'), '</h1>';

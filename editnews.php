@@ -117,4 +117,4 @@ if ($action=="compose") {
 } else if ($action=="delete") {
 	if (deleteNews($news_id)) echo WT_I18N::translate('The news/journal entry has been deleted.');
 }
-echo "<center><br /><br /><a href=\"#\" onclick=\"if (window.opener.refreshpage) window.opener.refreshpage(); window.close();\">".WT_I18N::translate('Close Window')."</a><br /></center>";
+echo "<center><br /><br /><a href=\"#\" onclick=\"window.opener.location.reload(); window.close();\">".WT_I18N::translate('Close Window')."</a><br /></center>";

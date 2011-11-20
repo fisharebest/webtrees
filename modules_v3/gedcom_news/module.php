@@ -118,14 +118,14 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			// Print Admin options for this News item
 			if (WT_USER_GEDCOM_ADMIN) {
 				$content .= "<hr size=\"1\" />"
-				."<a href=\"#\" onclick=\"editnews('".$news['id']."'); return false;\">".WT_I18N::translate('Edit')."</a> | "
+				."<a href=\"#\" onclick=\"window.open('editnews.php?news_id='+".$news['id'].", '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">".WT_I18N::translate('Edit')."</a> | "
 				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this News entry?')."');\">".WT_I18N::translate('Delete')."</a><br />";
 			}
 			$content .= "</div>";
 		}
 		$printedAddLink = false;
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .= "<a href=\"#\" onclick=\"addnews('".WT_GEDURL."'); return false;\">".WT_I18N::translate('Add a News article')."</a>";
+			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?username='+WT_GEDCOM, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">".WT_I18N::translate('Add a News article')."</a>";
 			$printedAddLink = true;
 		}
 		if ($limit=='date' || $limit=='count') {
