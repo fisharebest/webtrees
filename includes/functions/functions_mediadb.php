@@ -1435,7 +1435,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		echo "<input type=\"hidden\" name=\"linktoid\" value=\"", $linktoid, "\" />";
 	}
 	echo "<input type=\"hidden\" name=\"level\" value=\"", $level, "\" />";
-	echo "<table class=\"facts_table center\">";
+	echo "<table class=\"facts_table\">";
 	echo "<tr><td class=\"topbottombar\" colspan=\"2\">";
 	if ($action == "newentry") {
 		echo WT_I18N::translate('Add a new media object');
