@@ -364,18 +364,16 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			"SELECT MAX(block_order) FROM `##block` WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
 
-		echo '<table class="list_table width100">';
-		echo '<tr><td class="width20 list_label" colspan="5">';
 		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add FAQ item'), '</a>';
 		echo help_link('add_faq_item', $this->getName());
-		echo '</td></tr>';
+
+		echo '<table id="faq_edit">';
 		if (empty($faqs)) {
-			echo '<tr><td class="error center">', WT_I18N::translate('The FAQ list is empty.'), '</td></tr></table>';
+			echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('The FAQ list is empty.'), '</td></tr></table>';
 		} else {
 			foreach ($faqs as $faq) {
-				echo '<tr>';
 				// NOTE: Print the position of the current item
-				echo '<td class="descriptionbox width20">';
+				echo '<tr class="faq_edit_pos"><td>';
 				echo WT_I18N::translate('Position item'), ': ', $faq->block_order, ', ';
 				if ($faq->gedcom_id==null) {
 					echo WT_I18N::translate('All');
@@ -383,32 +381,34 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 					echo get_gedcom_from_id($faq->gedcom_id);
 				}
 				echo '</td>';
-				echo '<td class="descriptionbox">', $faq->header, '</td>';
-				echo '<tr>';
 				// NOTE: Print the edit options of the current item
-				echo '<td class="optionbox center">';
+				echo '<td>';
 				if ($faq->block_order==$min_block_order) {
 					echo '&nbsp;';
 				} else {
 					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["uarrow"], '" alt=""></a>';
 					echo help_link('moveup_faq_item', $this->getName());
 				}
-				echo '</td><td class="optionbox center">';
+				echo '</td><td>';
 				if ($faq->block_order==$max_block_order) {
 					echo '&nbsp;';
 				} else {
 					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["darrow"], '" alt=""></a>';
 					echo help_link('movedown_faq_item', $this->getName());
 				}
-				echo '</td><td class="optionbox center">';
+				echo '</td><td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $faq->block_id, '">', WT_I18N::translate('Edit'), '</a>';
 				echo help_link('edit_faq_item', $this->getName());
-				echo '</td><td class="optionbox center">';
+				echo '</td><td>';
 				echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $faq->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this FAQ entry?'), '\');">', WT_I18N::translate('Delete'), '</a>';
 				echo help_link('delete_faq_item', $this->getName());
-				echo '</td>';
+				echo '</td></tr>';
+				// NOTE: Print the title text of the current item
+				echo '<tr><td colspan="5">';
+				echo '<div class="faq_edit_item">';
+				echo '<div  class="faq_edit_title">', $faq->header, '</div>';
 				// NOTE: Print the body text of the current item
-				echo '<td class="list_value_wrap">', substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody), '</td></tr>';
+				echo '<div>', substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody), '</div></div></td></tr>';
 			}
 			echo '</table>';
 		}

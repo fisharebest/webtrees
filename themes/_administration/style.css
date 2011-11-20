@@ -330,6 +330,13 @@ html[dir='rtl'] #batch_update2 td+td {text-align:right;}
 table#faq_module, table#faq_module2 {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:918px;}
 #faq_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 #faq_module2 th, #faq_module2 td {vertical-align:top; text-align:left;}
+table#faq_edit  {border:1px solid; border-radius:5px;  margin-top:30px; padding:5px;}
+#faq_edit td {padding: 0 10px 10px 10px; vertical-align:top;}
+#faq_edit td p {margin:0;}
+.faq_edit_pos td {white-space:nowrap;}
+.faq_edit_pos td:first-child {width:80%;}
+.faq_edit_title {border-bottom: 1px solid; margin-bottom:10px;}
+.faq_edit_item {background: none repeat scroll 0 0 OldLace; border: 1px inset #D9D6C4; padding: 5px;}
 html[dir='rtl'] #faq_module2 th, html[dir='rtl'] #faq_module2 td {text-align:right;}
 
 /* GOOGLEMAP MODULE*/
