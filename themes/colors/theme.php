@@ -258,19 +258,19 @@ $fanChart = array(
 	'bgFColor' => '#e9daf1'
 );
 
-//-- This section defines variables for the pedigree chart
-$bwidth = 240; // -- width of boxes on pedigree chart
-$bheight = 80; // -- height of boxes on pedigree chart
-$baseyoffset = 10; // -- position the entire pedigree tree relative to the top of the page
+//-- This section defines variables for the charts
+$bwidth = 260; // -- width of boxes on all person-box based charts
+$bheight = 80; // -- height of boxes on all person-box based chart
+$baseyoffset = 10; // -- position the entire pedigree tree relative to the top of the page** NO EFFECT
 $basexoffset = 10; // -- position the entire pedigree tree relative to the left of the page
 $bxspacing = 4; // -- horizontal spacing between boxes on the pedigree chart
 $byspacing = 5; // -- vertical spacing between boxes on the pedigree chart
-$brborder = 1; // -- box right border thickness
+$brborder = 1; // -- box right border thickness 
 
 // -- global variables for the descendancy chart
-$Dbaseyoffset = 20; // -- position the entire descendancy tree relative to the top of the page
-$Dbasexoffset = 20; // -- position the entire descendancy tree relative to the left of the page
-$Dbxspacing = 0; // -- horizontal spacing between boxes
+$Dbaseyoffset = 20; // -- position the entire descendancy tree relative to the top of the page** NO EFFECT
+$Dbasexoffset = 20; // -- position the entire descendancy tree relative to the left of the page** NO EFFECT
+$Dbxspacing = 0; // -- horizontal spacing between boxes ** NO EFFECT
 $Dbyspacing = 10; // -- vertical spacing between boxes
 $Dbwidth = 250; // -- width of DIV layer boxes
 $Dbheight = 78; // -- height of DIV layer boxes

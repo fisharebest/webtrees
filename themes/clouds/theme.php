@@ -183,9 +183,9 @@ $fanChart = array(
 	'bgFColor' => '#e9daf1'
 );
 
-//-- This section defines variables for the pedigree chart
-$bwidth = 240; // -- width of boxes on pedigree chart
-$bheight = 80; // -- height of boxes on pedigree chart
+//-- This section defines variables for the charts
+$bwidth = 260; // -- width of boxes on all person-box based charts
+$bheight = 80; // -- height of boxes on all person-box based chart
 $baseyoffset = 10; // -- position the entire pedigree tree relative to the top of the page
 $basexoffset = 10; // -- position the entire pedigree tree relative to the left of the page
 $bxspacing = 4; // -- horizontal spacing between boxes on the pedigree chart

@@ -313,7 +313,7 @@ a:hover, .blanco a.link:hover {color: red; text-decoration: none;}
 /* Define Dark Text Color */
 
 input,button,textarea {border-color:#fff #000066 #000066 #fff;}
-body, .subheaders {color:#000066;}
+.subheaders {color:#000066;}
 
 /*   Edit Facts */
 td.descriptionbox div a {color: white;}
@@ -766,7 +766,7 @@ a:hover .name1, a:hover.name2,  a:hover .nameZoom  {color: #f00; font-weight: bo
 
 .details1 {
 text-decoration:none;
-font-size: 10px;
+font-size: 11px;
 }
 
 .details2 {

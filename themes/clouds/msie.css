@@ -1,4 +1,4 @@
-/* version $Id$ */
+/* $Id$ */
 
 /*
  * The following style definitions can be removed when IE supports the "opacity"
@@ -7,9 +7,10 @@
 
 .rela {filter: alpha(opacity=67);}
 a.showit:hover > span {filter: alpha(opacity=85);}
-div.blockcontent {*margin-top: 10px!important;}
-#menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px}
-div.blockcontent {*margin-top: -2px;}
-#topMenu {position: relative; z-index: 2001;}
-#header {position: relative; z-index: 2002;}
-div.blockcontent {*margin-top: -2px;}
+.ltr {text-align: left;}
+
+#menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px;}
+div.blockcontent {*margin-top:-2px;}
+#topMenu {*position: relative; *z-index: 1;}
+#header {*position: relative; *z-index: 2002; *height: 120px;}
+.makeMenu li ul { *top: 8px;}
