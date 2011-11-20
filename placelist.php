@@ -352,8 +352,8 @@ if ($display=='list') {
 	if (count($placelist)==0) {
 		echo '<b>', WT_I18N::translate('No results found.'), '</b><br />';
 	} else {
-		echo '<table class="list_table"';
-		echo '><tr><td class="list_label" ';
+		echo '<table class="list_table">';
+		echo '<tr><td class="list_label" ';
 		$ct = count($placelist);
 		echo ' colspan="', $ct>20 ? 3 : 2, '">&nbsp;';
 		echo '<img src="', $WT_IMAGES['place'], '" title="', WT_I18N::translate('Place'), '" alt="', WT_I18N::translate('Place'), '">&nbsp;&nbsp;';

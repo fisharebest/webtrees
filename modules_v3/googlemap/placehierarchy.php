@@ -133,7 +133,7 @@ function create_map($placelevels) {
 	$parent = safe_GET('parent');
 	
 	// create the map
-	echo '<table class="center" style="margin-top:20px;"><tr valign="top"><td>';
+	echo '<table style="margin:20px auto 0 auto;"><tr valign="top"><td>';
 	//<!-- start of map display -->
 	echo '<table><tr valign="top">';
 	echo '<td class="center" width="200px">';
