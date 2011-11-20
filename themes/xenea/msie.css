@@ -2,6 +2,8 @@
 
 
 .rela {filter: alpha(opacity=67);}
+.ltr {text-align: left;}
+
 #content {*margin-top: 50px;}
 #fav-menu {*left: 30px;}
 html[dir='rtl'] #fav-menu {*right: 30px;}

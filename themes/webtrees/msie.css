@@ -11,7 +11,7 @@ form {
 .normal_inner_block {
 	width: 100%;
 }
-
+.ltr {text-align: left;}
 /*
  * The following style definitions can be removed when IE supports the "opacity"
  * specification in place of its proprietary and non-standard method.
