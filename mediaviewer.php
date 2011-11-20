@@ -99,31 +99,10 @@ echo WT_JS_END;
  *  if $controller->m_pid is not set, then a filename was passed in that is not in the gedcom
  */
 $filename = $controller->getLocalFilename();
-
 global $tmb;
-
 echo '<div id="media-details">';
 echo '<h2>', $controller->record->getFullName(), ' ', $controller->record->getAddName(), '</h2>';
-echo '<div id="media-tabs">
-	<ul>
-		<li><a href="#media-edit"><span>', WT_I18N::translate('Details'), '</span></a></li>';
-		if ($controller->record->countLinkedIndividuals()) {
-			echo '<li><a href="#indi-media"><span id="indimedia">', WT_I18N::translate('Individuals'), '</span></a></li>';
-		}
-		if ($controller->record->countLinkedFamilies()) {
-			echo '<li><a href="#fam-media"><span id="fammedia">', WT_I18N::translate('Families'), '</span></a></li>';
-		}
-		if ($controller->record->countLinkedSources()) {
-			echo '<li><a href="#sources-media"><span id="sourcemedia">', WT_I18N::translate('Sources'), '</span></a></li>';
-		}
-		if ($controller->record->countLinkedRepositories()) {
-			echo '<li><a href="#repo-media"><span id="repomedia">', WT_I18N::translate('Repositories'), '</span></a></li>';
-		}
-		if ($controller->record->countLinkedNotes()) {
-			echo '<li><a href="#notes-media"><span id="notemedia">', WT_I18N::translate('Notes'), '</span></a></li>';
-		}
-echo '</ul>';
-
+echo '<div id="media-tabs">';
 	// Media Object details ---------------------
 	echo '<div id="media-edit">';
 		echo '<table class="facts_table">
@@ -151,7 +130,24 @@ echo '</ul>';
 			</tr>
 		</table>
 	</div>'; // close "media-edit"
-	
+	echo '<ul>';
+		if ($controller->record->countLinkedIndividuals()) {
+			echo '<li><a href="#indi-media"><span id="indimedia">', WT_I18N::translate('Individuals'), '</span></a></li>';
+		}
+		if ($controller->record->countLinkedFamilies()) {
+			echo '<li><a href="#fam-media"><span id="fammedia">', WT_I18N::translate('Families'), '</span></a></li>';
+		}
+		if ($controller->record->countLinkedSources()) {
+			echo '<li><a href="#sources-media"><span id="sourcemedia">', WT_I18N::translate('Sources'), '</span></a></li>';
+		}
+		if ($controller->record->countLinkedRepositories()) {
+			echo '<li><a href="#repo-media"><span id="repomedia">', WT_I18N::translate('Repositories'), '</span></a></li>';
+		}
+		if ($controller->record->countLinkedNotes()) {
+			echo '<li><a href="#notes-media"><span id="notemedia">', WT_I18N::translate('Notes'), '</span></a></li>';
+		}
+	echo '</ul>';
+
 	// Individuals linked to this media object
 	if ($controller->record->countLinkedIndividuals()) {
 		echo '<div id="indi-media">';

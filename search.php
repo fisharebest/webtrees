@@ -90,7 +90,6 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 </script>
 <div id="search-page">
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
-<?php $somethingPrinted = $controller->printResults(); ?>
 <!-- /*************************************************** Search Form Outer Table **************************************************/ -->
 <form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php">
 <input type="hidden" name="action" value="<?php echo $controller->action; ?>" />
@@ -385,4 +384,7 @@ if ($controller->action == "general") {
 	</tr>
 </table>
 </form>
+
+<?php $somethingPrinted = $controller->printResults(); ?>
+
 </div> <!-- close div id "search-page" -->
