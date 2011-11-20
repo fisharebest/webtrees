@@ -1814,7 +1814,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newsource\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center\">";
+		echo "<table class=\"facts_table\">";
 		// 2 SOUR
 		$source = "SOUR @";
 		add_simple_tag("$level $source");
@@ -1851,7 +1851,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 			echo "<div id=\"newasso2\" style=\"display: none;\">";
 		}
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center\">";
+		echo "<table class=\"facts_table\">";
 		// 2 ASSO
 		add_simple_tag(($level)." ASSO @");
 		// 3 RELA
@@ -1870,7 +1870,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newnote\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center\">";
+		echo "<table class=\"facts_table\">";
 		// 2 NOTE
 		add_simple_tag(($level)." NOTE ".$text);
 		echo "</table></div>";
@@ -1883,7 +1883,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newshared_note\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center\">";
+		echo "<table class=\"facts_table\">";
 		// 2 SHARED NOTE
 		add_simple_tag(($level)." SHARED_NOTE ");
 
@@ -1896,7 +1896,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newobje\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center\">";
+		echo "<table class=\"facts_table\">";
 		add_simple_tag($level." OBJE");
 		echo "</table></div>";
 	}
@@ -1908,7 +1908,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 		echo "<br />";
 		echo "<div id=\"newresn\" style=\"display: none;\">";
 		if ($printSaveButton) echo "<input type=\"submit\" value=\"", WT_I18N::translate('Save'), "\" />";
-		echo "<table class=\"facts_table center\">";
+		echo "<table class=\"facts_table\">";
 		// 2 RESN
 		add_simple_tag(($level)." RESN ".$text);
 		echo "</table></div>";
