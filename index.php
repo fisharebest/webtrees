@@ -80,13 +80,11 @@ if ($action=='ajax') {
 }
 
 $controller=new WT_Controller_Base();
-
-if ($ctype=='user') {
-	$controller->setPageTitle(WT_I18N::translate('My page'));
-} else {
-	$controller->setPageTitle(get_gedcom_setting(WT_GED_ID, 'title'));
-}
-$controller->pageHeader();
+$controller
+	->pageHeader()
+	->setPageTitle($ctype=='user' ? WT_I18N::translate('My page') : get_gedcom_setting(WT_GED_ID, 'title'))
+	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
+	->addInlineJavaScript('jQuery.ajaxSetup({cache:true});');
 
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
@@ -130,7 +128,9 @@ if ($blocks['main']) {
 		} else {
 			// Load the block asynchronously
 			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
-			echo WT_JS_START, "jQuery('#block_{$block_id}').load('index.php?ctype={$ctype}&action=ajax&block_id={$block_id}');", WT_JS_END;
+			$controller->addInlineJavaScript(
+				'jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'");'
+			);
 		}
 	}
 	echo '</div>';
@@ -150,7 +150,9 @@ if ($blocks['side']) {
 		} else {
 			// Load the block asynchronously
 			echo '<div id="block_', $block_id, '"><div class="loading-image">&nbsp;</div></div>';
-			echo WT_JS_START, "jQuery('#block_{$block_id}').load('index.php?ctype={$ctype}&action=ajax&block_id={$block_id}');", WT_JS_END;
+			$controller->addInlineJavaScript(
+				'jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'");'
+			);
 		}
 	}
 	echo '</div>';
