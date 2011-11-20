@@ -660,7 +660,7 @@ left:auto;
 }
 
 html[dir='rtl'] #ancestry_chart li {
-margin:0 25px 0 0;
+margin:0 -13px 0 0;
 padding:0 2px 0 0;
 left:auto;
 }
