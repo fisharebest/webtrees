@@ -97,13 +97,13 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
 				$personlinks .= '<dt><a href="relationship.php?show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pid1='.WT_USER_GEDCOM_ID.'&amp;pid2='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('Relationship to me').'</b></a></dt>';
 			}			
-			$personlinks .= '<dt><a href="descendancy.php?pid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;generations='.$generations.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Descendants').'</b></a></dt>';			
+			$personlinks .= '<dt><a href="descendancy.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;generations='.$generations.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Descendants').'</b></a></dt>';			
 			$personlinks .= '<dt><a href="ancestry.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;chart_style='.$chart_style.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Ancestors').'</b></a></dt>';			
 			$personlinks .= '<dt><a href="compact.php?rootid='.$pid.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Compact tree').'</b></a></dt>';			
 			if (function_exists("imagettftext")) {
 				$personlinks .= '<dt><a href="fanchart.php?rootid='.$pid.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;ged='.rawurlencode($GEDCOM).'"><b>'.WT_I18N::translate('Fan chart').'</b></a></dt>';
 			}			
-			$personlinks .= '<dt><a href="hourglass.php?pid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;chart_style='.$chart_style.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'&amp;show_spouse='.$show_spouse.'"><b>'.WT_I18N::translate('Hourglass chart').'</b></a></dt>';			
+			$personlinks .= '<dt><a href="hourglass.php?rootid='.$pid.'&amp;show_full='.$PEDIGREE_FULL_DETAILS.'&amp;chart_style='.$chart_style.'&amp;PEDIGREE_GENERATIONS='.$OLD_PGENS.'&amp;box_width='.$box_width.'&amp;ged='.rawurlencode($GEDCOM).'&amp;show_spouse='.$show_spouse.'"><b>'.WT_I18N::translate('Hourglass chart').'</b></a></dt>';			
 			if (array_key_exists('tree', WT_Module::getActiveModules())) {
 				$personlinks .= '<dt><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid.'"><b>'.WT_I18N::translate('Interactive tree').'</b></a></dt>';
 			}			

@@ -299,11 +299,11 @@ function generate_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
 					$html.= "<br /><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Relationship to me')."</a>";
 				}
-				$html.= "<br /><a href=\"descendancy.php?pid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Descendants')."</a>";
+				$html.= "<br /><a href=\"descendancy.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Descendants')."</a>";
 				$html.= "<br /><a href=\"ancestry.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Ancestors')."</a>";
 				$html.= "<br /><a href=\"compact.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Compact tree')."</a>";
 				$html.= "<br /><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Fan chart')."</a>";
-				$html.= "<br /><a href=\"hourglass.php?pid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Hourglass chart')."</a>";
+				$html.= "<br /><a href=\"hourglass.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Hourglass chart')."</a>";
 				if (array_key_exists('tree', WT_Module::getActiveModules())) {
 					$html.= '<br /><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Interactive tree')."</a>";
 				}

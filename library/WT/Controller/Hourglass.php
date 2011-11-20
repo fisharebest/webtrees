@@ -68,7 +68,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract parameters from from
-		$this->pid        =safe_GET_xref('pid');
+		$this->pid        =safe_GET_xref('rootid');
 		$this->show_full  =safe_GET('show_full',   array('0', '1'), $PEDIGREE_FULL_DETAILS);
 		$this->show_spouse=safe_GET('show_spouse', array('0', '1'), '0');
 		$this->generations=safe_GET_integer('generations', 2, $MAX_DESCENDANCY_GENERATIONS, 3);
@@ -357,7 +357,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						$spouse = $family->getSpouse($person);
 						if (!empty($spouse)) {
 							$spid = $spouse->getXref();
-							echo "<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+							echo "<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 							$name = $spouse->getFullName();
 							if (hasRTLText($name)) echo 'class="name2">';
 							else echo 'class="name1">';
@@ -369,7 +369,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						$children = $family->getChildren();
 						foreach ($children as $id=>$child) {
 							$cid = $child->getXref();
-							echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+							echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 							$name = $child->getFullName();
 							if (hasRTLText($name)) echo 'class="name2">';
 							else echo 'class="name1">';
@@ -387,7 +387,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 							$husb = $family->getHusband();
 							if (!empty($husb)) {
 								$spid = $husb->getXref();
-								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $husb->getFullName();
 								$name = rtrim($name);
 								if (hasRTLText($name)) echo 'class="name2">';
@@ -398,7 +398,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 							$husb = $family->getWife();
 							if (!empty($husb)) {
 								$spid = $husb->getXref();
-								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $husb->getFullName();
 								$name = rtrim($name);
 								if (hasRTLText($name)) echo 'class="name2">';
@@ -414,7 +414,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						foreach ($children as $id=>$child) {
 							$cid = $child->getXref();
 							if ($cid!=$pid) {
-								echo "&nbsp;&nbsp;<a href=\"hourglass.php?pid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
+								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $child->getFullName();
 								$name = rtrim($name);
 								if (hasRTLText($name)) echo 'class="name2">';
@@ -503,7 +503,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	function ChangeDiv(div_id, ARID, full, spouse, width) {
 		var divelement = document.getElementById(div_id);
 		var oXmlHttp = createXMLHttp();
-		oXmlHttp.open("get", "hourglass_ajax.php?show_full="+full+"&pid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
+		oXmlHttp.open("get", "hourglass_ajax.php?show_full="+full+"&rootid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
 		oXmlHttp.onreadystatechange=function()
 		{
 			if (oXmlHttp.readyState==4)
@@ -520,7 +520,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	function ChangeDis(div_id, ARID, full, spouse, width) {
 		var divelement = document.getElementById(div_id);
 		var oXmlHttp = createXMLHttp();
-		oXmlHttp.open("get", "hourglass_ajax.php?type=desc&show_full="+full+"&pid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
+		oXmlHttp.open("get", "hourglass_ajax.php?type=desc&show_full="+full+"&rootid="+ ARID + "&generations=1&box_width="+width+"&show_spouse="+spouse, true);
 		oXmlHttp.onreadystatechange=function()
 		{
 			if (oXmlHttp.readyState==4)

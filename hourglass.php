@@ -56,7 +56,7 @@ $gencount=0;
 	<?php echo WT_I18N::translate('Root Person ID'), help_link('desc_rootid'); ?>
 	</td>
 	<td class="optionbox">
-	<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php echo $controller->pid; ?>" />
+	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>" />
 	<?php print_findindi_link("pid",""); ?>
 	</td>
 
