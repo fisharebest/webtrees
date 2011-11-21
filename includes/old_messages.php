@@ -69,6 +69,8 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Include married names');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Include people whose gender is unknown');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Links to charts, families, and close relatives of this person. Click this icon to view this page, starting at this person.');
+/* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Manage multimedia');
+/* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Multimedia');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('On Mouse Click');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('On Mouse Down');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('On Mouse Over');

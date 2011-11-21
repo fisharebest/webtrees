@@ -46,7 +46,7 @@ require './includes/session.php';
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('Manage multimedia'));
+	->setPageTitle(WT_I18N::translate('Media'));
 
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
