@@ -57,7 +57,7 @@ echo WT_JS_START;
 	}
 <?php
 echo WT_JS_END;
-echo '<div class="center"><span class="subheaders">', WT_I18N::translate('Pending changes'), '</span><br /><br />';
+echo '<div id="pending"><h2>', WT_I18N::translate('Pending changes'), '</h2>';
 
 switch ($action) {
 case 'undo':
@@ -231,7 +231,8 @@ if ($changed_gedcoms) {
 	$output2 .= '</td></tr></table>';
 
 	echo
-		$output2, $output, $output2, '<br /><br />',
+		$output2, $output, $output2,
+		'<h3>',
 		'<a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">',
 		WT_I18N::translate('Close Window'),
 		'</a>';
@@ -241,7 +242,8 @@ if ($changed_gedcoms) {
 		WT_JS_START,
 		'if (window.opener.showchanges)	window.opener.showchanges();',
 		'window.close();',
-		WT_JS_END;
+		WT_JS_END,
+		'</h3>';
 }
 
 echo '</div>';

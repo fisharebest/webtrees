@@ -1290,6 +1290,9 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 
 .block .itr, #family_page .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #familybook_chart_rtl .itr, #hourglass_chart .itr, #hourglass_chart_rtl .itr, #relatives_content .itr {position:relative;top:0;}
 
+#pending h2 {text-align:center; margin-bottom:20px;}
+#pending h3 {text-align:center; margin-top:20px;}
+
 .user_favorites_block, .gedcom_favorites_block,
 #family_page .person_box, #family_page .person_boxF, #family_page .person_boxNN,
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,

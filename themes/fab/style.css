@@ -990,6 +990,9 @@ dd {
 	top: 0;
 }
 
+#pending h2 {text-align:center; margin-bottom:20px;}
+#pending h3 {text-align:center; margin-top:20px;}
+
 .user_favorites_block, .gedcom_favorites_block,
 #family_page .person_box, #family_page .person_boxF, #family_page .person_boxNN,
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
