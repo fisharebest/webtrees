@@ -279,8 +279,8 @@ if (isset($content) && $content==1) {
 						<td class="facts_label"><?php echo WT_I18N::translate('Number of families without children'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->averageChildren(); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->noChildrenFamilies(); ?></td>
+						<td class="facts_value" align="center"><?php echo WT_I18N::number($stats->averageChildren(), 2); ?></td>
+						<td class="facts_value" align="center"><?php echo WT_I18N::number($stats->noChildrenFamilies()); ?></td>
 					</tr>
 					<tr>
 						<td class="facts_value statistics_chart"><?php echo $stats->statsChildren(); ?></td>
