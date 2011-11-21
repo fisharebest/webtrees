@@ -706,7 +706,7 @@ function print_fam_table($datalist, $option='') {
 			}
 			// Only show married names if they are the name we are filtering by.
 			if ($name['type']!='_MARNM' || $num==$husb->getPrimaryName()) {
-				echo '<a ', $title, ' href="', $husb->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
+				echo '<a ', $title, ' href="', $family->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
 			}
 		}
 		// Husband parents
@@ -752,7 +752,7 @@ function print_fam_table($datalist, $option='') {
 			}
 			// Only show married names if they are the name we are filtering by.
 			if ($name['type']!='_MARNM' || $num==$wife->getPrimaryName()) {
-				echo '<a ', $title, ' href="', $wife->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
+				echo '<a ', $title, ' href="', $family->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
 			}
 		}
 		// Wife parents
