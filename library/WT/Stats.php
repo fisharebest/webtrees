@@ -3560,10 +3560,32 @@ class WT_Stats {
 		if ($common) {
 			switch ($type) {
 			case 'table':
+			global $controller;
+				$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+				$controller
+				->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+				->addInlineJavaScript('
+					jQuery("#'.$table_id.'").dataTable({
+						"sDom": \'t\',
+						"bAutoWidth":false,
+						"bPaginate": false,
+						"bLengthChange": false,
+						"bFilter": false,
+						"bInfo": false,
+						"bJQueryUI": true,
+						"aaSorting": [[1,"desc"]],
+						"aoColumns": [
+							/* 0-name */ {},
+							/* 1-count */ { "sClass": "center"}
+						]
+					});
+					jQuery("#'.$table_id.'").css("visibility", "visible");
+					jQuery(".loading-image").css("display", "none");
+				');
 				$lookup=array('M'=>WT_I18N::translate('Male'), 'F'=>WT_I18N::translate('Female'), 'U'=>WT_I18N::translate_c('unknown gender', 'Unknown'), 'B'=>WT_I18N::translate('All'));
-				return '<table class="givn-list"><thead><tr><th class="ui-state-default" colspan="2">'.$lookup[$sex].'</th></tr><tr><th>'.WT_I18N::translate('Name').'</th><th>'.WT_I18N::translate('Count').'</th></tr></thead><tbody>'.join('', $common).'</tbody></table>';
+				return '<table id="'.$table_id.'"><thead><tr><th class="ui-state-default" colspan="2">'.$lookup[$sex].'</th></tr><tr><th>'.WT_I18N::translate('Name').'</th><th>'.WT_I18N::translate('Count').'</th></tr></thead><tbody>'.join('', $common).'</tbody></table>';
 			case 'list':
-				return "<ul>\n".join("\n", $common)."</ul>\n";
+				return '<ul>\n'.join("\n", $common).'</ul>\n';
 			case 'nolist':
 				return join(';&nbsp; ', $common);
 			}

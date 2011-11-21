@@ -85,26 +85,6 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			break;
 		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
-			$controller
-				->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-				->addInlineJavaScript('
-					jQuery(".givn-list").dataTable({
-						"sDom": \'t\',
-						"bAutoWidth":false,
-						"bPaginate": false,
-						"bLengthChange": false,
-						"bFilter": false,
-						"bInfo": false,
-						"bJQueryUI": true,
-						"aaSorting": [[1,"desc"]],
-						"aoColumns": [
-							/* 0-name */ {},
-							/* 1-count */ { "sClass": "center"}
-						]
-					});
-					jQuery(".givn-list").css("visibility", "visible");
-					jQuery(".loading-image").css("display", "none");
-				');
 			$params=array(1,$num,'rcount');
 			$content.='<div class="loading-image">&nbsp;</div>
 						<table style="margin:auto;">
