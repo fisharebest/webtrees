@@ -429,10 +429,10 @@ height:24px;
 
 html[dir='rtl'] .blockh3 {background-image: url(images/right3.png);}
 
-.blockhc {
-padding-right:15px;
-padding-top: 2px;
-}
+.blockhc img {padding-right: 3px;}
+
+html[dir='rtl'] .blockhc {padding:3px 0 0 3px;}
+html[dir='rtl'] .blockhc img {padding-left:3px;}
 
 #index_small_blocks .person_box .pedigree_image_portrait,
 #index_small_blocks .person_boxF .pedigree_image_portrait,
