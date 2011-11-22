@@ -2176,11 +2176,6 @@ case 'box_width':
 	$text=WT_I18N::translate('Here you can change the box width from 50 percent to 300 percent.  At 100 percent each box is about 270 pixels wide.');
 	break;
 
-case 'chart_style':
-	$title=WT_I18N::translate('Chart style');
-	$text=WT_I18N::translate('Two chart styles are available:<ul><li><b>List</b><br />Vertical tree, with collapsible/expandable families.</li><li><b>Booklet</b><br />One family per page, with parents, grandparents, and all recorded children.<br /><br />This format is easy to print to give to your relatives.</li></ul>');
-	break;
-
 case 'chart_type':
 	$title=WT_I18N::translate('Chart type');
 	$text=WT_I18N::translate('Select what you want to see on the map chart. You can choose:<p style="padding-left: 25px"><b>Individual distribution chart</b>&nbsp;&nbsp;shows the countries in which persons from this database occur.<br /><b>Surname distribution chart</b>&nbsp;&nbsp;shows the countries in which the specified surname occurs.</p>');

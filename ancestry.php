@@ -76,7 +76,7 @@ echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=va
 </td>
 
 <!-- // NOTE: chart style -->
-<td rowspan="2" class="descriptionbox"><?php echo WT_I18N::translate('Layout'), help_link('chart_style'); ?></td>
+<td rowspan="2" class="descriptionbox"><?php echo WT_I18N::translate('Layout'); ?></td>
 <td rowspan="2" class="optionbox">
 <input type="radio" name="chart_style" value="0"
 <?php
