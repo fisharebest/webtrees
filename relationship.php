@@ -46,6 +46,7 @@ $Dbasexoffset = 0;
 $Dbaseyoffset = 0;
 
 if ($show_full==false) {
+	$Dbwidth = $Dbwidth - 50;
 	$bwidth = $bwidth / 1.5;
 	$bheight = $bheight / 2 ;
 	$Dbheight=25;
