@@ -142,7 +142,7 @@ echo '<option value="', $i, '"';
 if ($i==$OLD_PGENS) {
 	echo ' selected="selected"';
 }
-	echo '>', $i, '</option>';
+	echo '>', WT_I18N::number($i), '</option>';
 }
 ?>
 </select>
