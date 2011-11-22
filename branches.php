@@ -86,8 +86,9 @@ if ($surn) {
 	$surn_script = utf8_script($surn);
 	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', PrintReady($surn), '</legend>';
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
-	echo '<ol>';
-	foreach ($indis as $person) {
+	$roots = array();
+	$sort_criteria = array();
+	foreach ($indis as $xref=>$person) {
 		$famc = $person->getPrimaryChildFamily();
 		// Don't show INDIs with parents in the list, as they will be shown twice.
 		if ($famc) {
@@ -97,9 +98,17 @@ if ($surn) {
 				}
 			}
 		}
-		print_fams($person);
+		$roots[] = $xref;
+		$sort_criteria[] = $person->getBirthDate()->MinJD();
 	}
-	echo '</ol>';
+	// sort by birth date
+	array_multisort($sort_criteria, SORT_NUMERIC, $roots);
+	// output
+	echo "<ol>";
+	foreach ($roots as $k=>$xref) {
+		print_fams($indis[$xref]);
+	}
+	echo "</ol>";
 	echo '</fieldset>';
 }
 
@@ -123,7 +132,7 @@ function print_fams($person, $famid=null) {
 		break;
 	}
 	if (empty($person_name)) {
-		echo '<li title="', strip_tags($person->getFullName()), '">', $person->getSexImage(), '…</li>';
+		echo '<span title="', strip_tags($person->getFullName()), '">', $person->getSexImage(), '…</span>';
 		return;
 	}
 	$person_script = utf8_script($person_name);
