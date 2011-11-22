@@ -150,7 +150,7 @@ if ($i==$OLD_PGENS) {
 <!-- // NOTE: show full -->
 <td class="descriptionbox">
 <?php
-echo WT_I18N::translate('Show Details'), help_link('show_full');
+echo WT_I18N::translate('Show Details');
 ?>
 </td>
 <td class="optionbox">

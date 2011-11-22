@@ -62,7 +62,7 @@ $gencount=0;
 
 	<!-- // NOTE: Show Details -->
 	<td class="descriptionbox">
-	<?php echo WT_I18N::translate('Show Details'), help_link('show_full'); ?>
+	<?php echo WT_I18N::translate('Show Details'); ?>
 	</td>
 	<td class="optionbox">
 	<input type="checkbox" value="

@@ -255,7 +255,7 @@ $gencount=0;
 </td>
 
 <td class="descriptionbox">
-<?php echo WT_I18N::translate('Show Details'), help_link('show_full'); ?>
+<?php echo WT_I18N::translate('Show Details'); ?>
 </td>
 <td class="optionbox">
 <input type="hidden" name="show_full" value="<?php echo $show_full; ?>" />

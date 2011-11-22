@@ -71,7 +71,7 @@ echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), help_
 					<?php echo WT_I18N::translate('Orientation'), help_link('talloffset'); ?>
 				</td>
 				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Show Details'), help_link('show_full'); ?>
+					<?php echo WT_I18N::translate('Show Details'); ?>
 				</td>
 			</tr>
 

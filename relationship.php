@@ -150,7 +150,7 @@ function paste_id(value) {
 
 	<!-- // Show details -->
 	<td class="descriptionbox">
-	<?php echo WT_I18N::translate('Show Details'), help_link('show_full'); ?>
+	<?php echo WT_I18N::translate('Show Details'); ?>
 	</td>
 	<td class="optionbox vmiddle">
 	<input type="hidden" name="show_full" value="<?php echo $show_full; ?>" />
