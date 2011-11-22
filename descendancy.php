@@ -104,7 +104,7 @@ for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 	if ($i==$controller->generations) {
 		echo ' selected="selected"';
 	}
-	echo '>', $i, '</option>';
+	echo '>', WT_I18N::number($i), '</option>';
 }
 echo '</select></td><td class="descriptionbox">';
 echo WT_I18N::translate('Show Details'), help_link('show_full');
