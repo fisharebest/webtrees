@@ -105,6 +105,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('This option controls the appearance of the diagram.<ul><li><b>1/2</b><br />Half circle 180&deg; diagram</li><li><b>3/4</b><br />Three-quarter 270&deg; diagram, sometimes called <i>Angel wing</i></li><li><b>4/4</b><br />Full circle 360&deg; diagram</li></ul>');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('This option will show the married names of females on the Individual list.  This option requires that you calculate the married names when you import the GEDCOM file.');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('This will be used to send you password reminders, site notifications and messages from other family members who register on your site.');
+/* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('To delete a file or subdirectory from the data directory select its checkbox.  Click the Delete button to permanently remove the indicated files.');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('To Repository');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('To Shared Note');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Total events: %s');
