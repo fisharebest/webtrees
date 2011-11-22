@@ -42,6 +42,16 @@ function print_indi_table($datalist, $option='') {
 	if ($option=='MARR_PLAC') return;
 	if (count($datalist)<1) return;
 
+	$pagination=
+		'<select>'.
+		'<option value="10">'.WT_I18N::number('10').'</option>'.
+		'<option value="20">'.WT_I18N::number('20').'</option>'.
+		'<option value="30">'.WT_I18N::number('30').'</option>'.
+		'<option value="50">'.WT_I18N::number('50').'</option>'.
+		'<option value="100">'.WT_I18N::number('100').'</option>'.
+		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
+		'</select>';
+
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
@@ -52,7 +62,7 @@ function print_indi_table($datalist, $option='') {
 			var oTable'.$table_id.' = jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				"oLanguage": {
-					"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"20\">20</option><option value=\"30\">30</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
+					"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ addslashes(WT_I18N::translate('Display %s', $pagination)).'",
 					"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
 					"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
 					"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
@@ -75,22 +85,25 @@ function print_indi_table($datalist, $option='') {
 					/*  1 surn      */ {"iDataSort": 3},
 					/*  2 GIVN,SURN */ {"sType": "unicode", "bVisible": false},
 					/*  3 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
-					/*  4 sosa      */ {"sType": "num-html", "bVisible": '.($option=='sosa'?'true':'false').'},
-					/*  5 birt date */ {"iDataSort": 6},
-					/*  6 BIRT:DATE */ {"bVisible": false},
-					/*  7 anniv     */ {"bSortable": false, "sClass": "center"},
-					/*  8 birt plac */ {"sType": "unicode"},
-					/*  9 children  */ {"sClass": "center"},
-					/* 10 deat date */ {"iDataSort": 11},
-					/* 11 DEAT:DATE */ {"bVisible": false},
-					/* 12 anniv     */ {"bSortable": false, "sClass": "center"},
-					/* 13 age       */ {"sType": "numeric", "sClass": "center"},
-					/* 14 deat plac */ {"sType": "unicode"},
-					/* 15 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 16 SEX       */ {"bVisible": false},
-					/* 17 BIRT      */ {"bVisible": false},
-					/* 18 DEAT      */ {"bVisible": false},
-					/* 19 TREE      */ {"bVisible": false}
+					/*  4 sosa      */ {"iDataSort": 5, "sClass": "center", "bVisible": '.($option=='sosa'?'true':'false').'},
+					/*  5 SOSA      */ {"sType": "numeric", "bVisible": false},
+					/*  6 birt date */ {"iDataSort": 7},
+					/*  7 BIRT:DATE */ {"bVisible": false},
+					/*  8 anniv     */ {"bSortable": false, "sClass": "center"},
+					/*  9 birt plac */ {"sType": "unicode"},
+					/* 10 children  */ {"iDataSort": 11, "sClass": "center"},
+					/* 11 children  */ {"sType": "numeric", "bVisible": false},
+					/* 12 deat date */ {"iDataSort": 13},
+					/* 13 DEAT:DATE */ {"bVisible": false},
+					/* 14 anniv     */ {"bSortable": false, "sClass": "center"},
+					/* 15 age       */ {"iDataSort": 16, "sClass": "center"},
+					/* 16 AGE       */ {"sType": "numeric", "bVisible": false},
+					/* 17 deat plac */ {"sType": "unicode"},
+					/* 18 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 19 SEX       */ {"bVisible": false},
+					/* 20 BIRT      */ {"bVisible": false},
+					/* 21 DEAT      */ {"bVisible": false},
+					/* 22 TREE      */ {"bVisible": false}
 				],
 				"aaSorting": [[1, "asc"]],
 				"iDisplayLength": 20,
@@ -119,73 +132,73 @@ function print_indi_table($datalist, $option='') {
 	
 			/* Add event listeners for filtering inputs */
 			jQuery("#SEX_M_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("M", 16 );
+				oTable'.$table_id.'.fnFilter("M", 19 );
 				jQuery("#SEX_M_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#SEX_F_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("F", 16 );
+				oTable'.$table_id.'.fnFilter("F", 19 );
 				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#SEX_U_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("U", 16 );
+				oTable'.$table_id.'.fnFilter("U", 19 );
 				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#BIRT_YES_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 17 );
+				oTable'.$table_id.'.fnFilter("YES", 20 );
 				jQuery("#BIRT_YES_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#BIRT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#BIRT_Y100_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 17 );
+				oTable'.$table_id.'.fnFilter("Y100", 20 );
 				jQuery("#BIRT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#BIRT_Y100_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#DEAT_N_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("N", 18 );
+				oTable'.$table_id.'.fnFilter("N", 21 );
 				jQuery("#DEAT_N_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_Y_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("^Y", 18, true, false );
+				oTable'.$table_id.'.fnFilter("^Y", 21, true, false );
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_YES_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 18 );
+				oTable'.$table_id.'.fnFilter("YES", 21 );
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_Y100_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 18 );
+				oTable'.$table_id.'.fnFilter("Y100", 21 );
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#TREE_R_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("R", 19 );
+				oTable'.$table_id.'.fnFilter("R", 22 );
 				jQuery("#TREE_R_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#TREE_L_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("L", 19 );
+				oTable'.$table_id.'.fnFilter("L", 22 );
 				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
 			});	
 			jQuery("#RESET_'.    $table_id.'").click( function() {
-				for (i=16; i<=19; i++){
+				for (i=19; i<=22; i++){
 					oTable'.$table_id.'.fnFilter("", i );
 				};
 				jQuery("div.filtersH_'.$table_id.' button").removeClass("ui-state-active");
@@ -194,8 +207,8 @@ function print_indi_table($datalist, $option='') {
 			/* This code is a temporary fix for Datatables bug http://www.datatables.net/forums/discussion/4730/datatables_sort_wrapper-being-added-to-columns-with-bsortable-false/p1*/
 			jQuery("th div span:eq(3)").css("display", "none");
 			jQuery("th div:eq(3)").css("margin", "auto").css("text-align", "center");
-			jQuery("th span:eq(7)").css("display", "none");
-			jQuery("th div:eq(7)").css("margin", "auto").css("text-align", "center");
+			jQuery("th span:eq(8)").css("display", "none");
+			jQuery("th div:eq(8)").css("margin", "auto").css("text-align", "center");
 			
 			jQuery(".indi-list").css("visibility", "visible");
 			jQuery(".loading-image").css("display", "none");
@@ -219,16 +232,19 @@ function print_indi_table($datalist, $option='') {
 	echo '<th>', WT_Gedcom_Tag::getLabel('SURN'), '</th>';
 	echo '<th>GIVN</th>';
 	echo '<th>SURN</th>';
-	echo '<th ',($option=='sosa'?'':''),'>', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
+	echo '<th>', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
+	echo '<th>SOSA</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('BIRT'), '</th>';
 	echo '<th>SORT_BIRT</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '"></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
 	echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '"></th>';
+	echo '<th>NCHI</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('DEAT'), '</th>';
 	echo '<th>SORT_DEAT</th>';
 	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '"></th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
+	echo '<th>AGE</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
 	echo '<th ',($SHOW_LAST_CHANGE?'':''),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th>SEX</th>';
@@ -292,9 +308,9 @@ function print_indi_table($datalist, $option='') {
 		echo '<td>', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), 'AAAA', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), '</td>';
 		//-- SOSA
 		if ($option=='sosa') {
-			echo '<td><a href="relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(), '" title="', WT_I18N::translate('Relationships'), '" class="name2">', $key, '</a></td>';
+			echo '<td><a href="relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(), '" title="', WT_I18N::translate('Relationships'), '">', WT_I18N::number($key), '</a></td><td>', $key, '</td>';
 		} else {
-			echo '<td>&nbsp;</td>';
+			echo '<td>&nbsp;</td><td>0</td>';
 		}
 		//-- Birth date
 		echo '<td>';
@@ -323,8 +339,11 @@ function print_indi_table($datalist, $option='') {
 		echo '<td>', $birth_date->JD(), '</td>';
 		//-- Birth anniversary
 		echo '<td>';
-			$bage =WT_Date::GetAgeYears($birth_dates[0]);
-			if (empty($bage)) { echo '&nbsp;'; } else { echo $bage; }
+		if ($birth_dates[0]->isOK()) {
+			echo WT_I18N::number(WT_Date::GetAgeYears($birth_dates[0]));
+		} else {
+			echo '&nbsp;';
+		}
 		echo '</td>';
 		//-- Birth place
 		echo '<td>';
@@ -341,7 +360,8 @@ function print_indi_table($datalist, $option='') {
 		}
 		echo '</td>';
 		//-- Number of children
-		echo '<td>', $person->getNumberOfChildren(), '</td>';
+		$nchi=$person->getNumberOfChildren();
+		echo '<td>', WT_I18N::number($nchi), '</td><td>', $nchi, '</td>';
 		//-- Death date
 		echo '<td>';
 		if ($death_dates=$person->getAllDeathDates()) {
@@ -371,22 +391,23 @@ function print_indi_table($datalist, $option='') {
 		echo '<td>', $death_date->JD(), '</td>';
 		//-- Death anniversary
 		echo '<td>';
-			if ($death_dates[0]->isOK()) { echo WT_Date::GetAgeYears($death_dates[0]); } else { echo '&nbsp;'; }
+		if ($death_dates[0]->isOK()) {
+			echo WT_I18N::number(WT_Date::GetAgeYears($death_dates[0]));
+		} else {
+			echo '&nbsp;';
+		}
 		echo '</td>';
 		//-- Age at death
-		echo '<td>';
-			if ($birth_dates[0]->isOK() && $death_dates[0]->isOK()) {
-				$age = WT_Date::GetAgeYears($birth_dates[0], $death_dates[0]);
-				echo $age;
-				if (!isset($unique_indis[$person->getXref()])) {
-					$deat_by_age[max(0, min($max_age, $age))] .= $person->getSex();
-				}
-			} else {
-				// &nbsp; is required for validation (empty <td></td> not allowed), but
-				// it breaks numeric sorting in datatables.
-				//echo '&nbsp;';
+		if ($birth_dates[0]->isOK() && $death_dates[0]->isOK()) {
+			$age=WT_Date::GetAgeYears($birth_dates[0], $death_dates[0]);
+			if (!isset($unique_indis[$person->getXref()])) {
+				$deat_by_age[max(0, min($max_age, $age))] .= $person->getSex();
 			}
-		echo '</td>';
+		} else {
+			$age='';
+		}
+		// Need both display and sortable age
+		echo '<td>', WT_I18N::number($age), '</td><td>', $age, '</td>';
 		//-- Death place
 		echo '<td>';
 		foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
