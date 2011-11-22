@@ -147,7 +147,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo "<td>";
 		foreach ($person->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow($parent->getXref().$personcount.$person->getXref(), "?pid=".$parent->getXref()."&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
+				print_url_arrow($parent->getXref().$personcount.$person->getXref(), "?rootid=".$parent->getXref()."&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
 				$personcount++;
 				// only show the arrow for one of the parents
 				break;
@@ -225,7 +225,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo "<td>";
 		foreach ($spouse->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow($parent->getXref().$personcount.$person->getXref(), "?pid=".$parent->getXref()."&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
+				print_url_arrow($parent->getXref().$personcount.$person->getXref(), "?rootid=".$parent->getXref()."&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
 				$personcount++;
 				// only show the arrow for one of the parents
 				break;
