@@ -1331,7 +1331,7 @@ html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
 /* ======= List styles =========== */
 .source-list, .note-list, .repo-list, .media-list, .indi-list, .fam-list  {margin:5px auto; width:98%; visibility:hidden;}
 .recent_changes_block, .upcoming_events_block, .todays_events_block, .todo_block  {width:99%;}
-.surname-list, .givn-list  {margin:5px auto; visibility:hidden;}
+.surname-list, .givn-list  {margin:5px auto;}
 .source-list table, .note-list table, .repo-list table, .media-list table, .indi-list table, .fam-list table  {width:100%;}
 .source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td, .fam-list td, .recent_changes_block td, .upcoming_events_block td, .surname-list td, .givn-list td {padding:2px 5px;}
 .indi-list td, .fam-list td {}

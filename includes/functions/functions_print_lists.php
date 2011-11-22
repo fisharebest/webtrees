@@ -1368,8 +1368,6 @@ function format_surname_table($surnames, $script) {
 				/*  3 COUNT */ {bVisible:false}
 			],
 			});
-			jQuery(".surname-list").css("visibility", "visible");
-			jQuery(".loading-image").css("display", "none");
 		');
 
 	if ($script=='famlist.php') {
@@ -1446,7 +1444,6 @@ function format_surname_table($surnames, $script) {
 	}
 
 	return
-		'<div class="loading-image">&nbsp;</div>'.
 		'<table class="surname-list">'.
 		'<thead>'.$thead.'</thead>'.
 		'<tbody>'.$tbody.'</tbody>'.
@@ -1656,13 +1653,10 @@ function print_changes_table($change_ids, $sort) {
 					/* 5-SORTNAME */{"sType": "unicode", "bVisible": false}
 				]
 			});
-			jQuery("#'.$table_id.'").css("visibility", "visible");
-			jQuery(".loading-image").css("display", "none");
 		');
 
 		//-- table header
-		$return .= '<div class="loading-image">&nbsp;</div>';
-		$return .= "<table id='" . $table_id . "' class='width100' style='visibility:hidden;'>";
+		$return .= "<table id='" . $table_id . "' class='width100'>";
 		$return .= "<thead><tr>";
 		$return .= "<th>&nbsp;</th>";
 		$return .= "<th>" . WT_I18N::translate('Record') . "</th>";
@@ -1759,9 +1753,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 					/* 5-Event */  { "sClass": "center" }
 				]
 			});		
-
-			jQuery("#'.$table_id.'").css("visibility", "visible");
-			jQuery(".loading-image").css("display", "none");
 		');
 
 	// Did we have any output?  Did we skip anything?
@@ -1803,8 +1794,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 		if ($output==1) {
 			//-- table body
-			$return .= '<div class="loading-image">&nbsp;</div>';
-			$return .= '<table id="'.$table_id.'" class="width100" style="visibility:hidden;">';
+			$return .= '<table id="'.$table_id.'" class="width100">';
 			$return .= '<thead><tr>';
 			$return .= '<th>'.WT_I18N::translate('Record').'</th>';
 			$return .= '<th>NAME</th>'; //hidden by datatables code
