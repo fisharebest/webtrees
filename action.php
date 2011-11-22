@@ -105,11 +105,11 @@ case 'delete-source':
 			$gedrec=preg_replace('/\n5 '.WT_REGEX_TAG.' @'.$record->getXref().'@(\n[6-9].*)*/', '', $gedrec);
 			$tmp=WT_GedcomRecord::getInstance($xref);
 			if (preg_match('/^0 @'.WT_REGEX_XREF.'@ FAM/', $gedrec) && preg_match_all('/\n1 (HUSB|WIFE|CHIL) /', $gedrec, $dummy)<2) {
-				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a family, e.g. Husband name + Wife name" */ WT_I18N::translate('The family “%s” has been deleted automatically, as it only has one member.', $tmp->getFullName()));
+				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a family, e.g. Husband name + Wife name" */ WT_I18N::translate('The family “%s” has been deleted, as it only has one member.', $tmp->getFullName()));
 				delete_gedrec($xref, $record->getGedId());
 			} else {
 				// Just remove the links
-				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('Deleting links from “%1$s” to “%2$s”.', $tmp->getFullName(), $record->getFullName()));
+				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s are names of records, such as sources, repositories or individuals */ WT_I18N::translate('The link from “%1$s” to “%2$s” has been deleted.', $tmp->getFullName(), $record->getFullName()));
 				replace_gedrec($xref, $record->getGedId(), $gedrec, false);
 			}
 		}
@@ -130,5 +130,20 @@ case 'reject-changes':
 	} else {
 		header('HTTP/1.0 406 Not Acceptable');
 	}	
+	break;
+
+case 'theme':
+	// Change the current theme
+	$theme_dir=safe_POST('theme');
+	if (get_site_setting('ALLOW_USER_THEMES') && in_array($theme_dir, get_theme_names())) {
+		$WT_SESSION->theme_dir=$theme_dir;
+		if (WT_USER_ID) {
+			// Remember our selection
+			set_user_setting(WT_USER_ID, 'theme', $theme_dir);
+		}
+	} else {
+		// Request for a non-existant theme.
+		header('HTTP/1.0 406 Not Acceptable');
+	}
 	break;
 }
