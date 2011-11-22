@@ -439,7 +439,7 @@ echo '</tr><tr>';
 
 // NOTE: generations
 echo '<td class="descriptionbox">';
-echo WT_I18N::translate('Generations'), help_link('PEDIGREE_GENERATIONS');
+echo WT_I18N::translate('Generations');
 echo '</td><td class="optionbox">';
 echo '<select name="PEDIGREE_GENERATIONS">';
 // Can only show 9 generations (256 ancestors) as graphics library has integer degree resolution

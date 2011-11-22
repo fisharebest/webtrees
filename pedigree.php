@@ -65,7 +65,7 @@ echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), help_
 					<?php echo WT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Generations'), help_link('PEDIGREE_GENERATIONS'); ?>
+					<?php echo WT_I18N::translate('Generations'); ?>
 				</td>
 				<td class="descriptionbox wrap">
 					<?php echo WT_I18N::translate('Orientation'), help_link('talloffset'); ?>

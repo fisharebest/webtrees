@@ -132,7 +132,7 @@ echo ' />', WT_I18N::translate('Families');
 <!-- // NOTE: generations -->
 <tr><td class="descriptionbox">
 <?php
-echo WT_I18N::translate('Generations'), help_link('PEDIGREE_GENERATIONS'); ?></td>
+echo WT_I18N::translate('Generations'); ?></td>
 
 <td class="optionbox">
 <select name="PEDIGREE_GENERATIONS">

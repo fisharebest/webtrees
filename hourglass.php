@@ -79,7 +79,7 @@ $gencount=0;
 
 	<!-- // NOTE: Generations -->
 	<tr><td class="descriptionbox" >
-	<?php echo WT_I18N::translate('Generations'), help_link('desc_generations'); ?>
+	<?php echo WT_I18N::translate('Generations'); ?>
 	</td>
 	<td class="optionbox">
 	<select name="generations">

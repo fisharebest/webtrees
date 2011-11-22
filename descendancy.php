@@ -97,7 +97,7 @@ echo '</td><td rowspan="2" class="topbottombar">';
 echo '<input type="submit" value="', WT_I18N::translate('View'), '" />';
 echo '</td></tr>';
 echo '<tr><td class="descriptionbox">';
-echo WT_I18N::translate('Generations'), help_link('desc_generations'), '</td>';
+echo WT_I18N::translate('Generations'), '</td>';
 echo '<td class="optionbox"><select name="generations">';
 for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 	echo '<option value="', $i, '"';

@@ -269,7 +269,7 @@ else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>" />
 </td></tr>
 
 <tr><td class="descriptionbox">
-<?php echo WT_I18N::translate('Generations'), help_link('desc_generations'); ?>
+<?php echo WT_I18N::translate('Generations'); ?>
 </td>
 <td class="optionbox">
 <select name="generations">
