@@ -404,6 +404,8 @@ define('WT_USER_ID', getUserId());
 
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', WT_I18N::init());
+// Non-latin languages may need non-latin digits
+define('WT_NUMBERING_SYSTEM', Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnumberingsystem'));
 
 // Application configuration data - things that aren't (yet?) user-editable
 require WT_ROOT.'includes/config_data.php';

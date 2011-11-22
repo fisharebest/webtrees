@@ -259,9 +259,9 @@ class WT_I18N {
 	static public function number($n, $precision=0) {
 		// Add "punctuation"
 		$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
-		// Convert digits
-		if (WT_LOCALE=='ar' || WT_LOCALE=='fa') {
-			$n=Zend_Locale_Format::convertNumerals($n, 'Latn', 'Arab');
+		// Convert digits.
+		if (WT_NUMBERING_SYSTEM!='latn') {
+			$n=Zend_Locale_Format::convertNumerals($n, 'latn', WT_NUMBERING_SYSTEM);
 		}
 		return $n;
 	}
