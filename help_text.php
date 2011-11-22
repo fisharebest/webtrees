@@ -1622,11 +1622,6 @@ case 'PEDIGREE_FULL_DETAILS':
 	$text=WT_I18N::translate('This option controls whether or not to show the Birth and Death details of an individual on charts.');
 	break;
 
-case 'PEDIGREE_GENERATIONS':
-	$title=WT_I18N::translate('Number of generations');
-	$text=WT_I18N::translate('Here you can set the number of generations to display on this page.<br /><br />The right number for you depends of the size of your screen and whether you show details or not.  Processing time will increase as you increase the number of generations.');
-	break;
-
 case 'PEDIGREE_LAYOUT':
 	$title=WT_I18N::translate('Default pedigree chart layout');
 	$text=WT_I18N::translate('This option indicates whether the Pedigree chart should be generated in landscape or portrait mode.');
@@ -2209,11 +2204,6 @@ case 'day_month':
 case 'default_gedcom':
 	$title=WT_I18N::translate('Default family tree');
 	$text=WT_I18N::translate('This option selects the family tree that is shown to visitors when they first arrive at the site.');
-	break;
-
-case 'desc_generations':
-	$title=WT_I18N::translate('Number of generations');
-	$text=WT_I18N::translate('Here you can set the number of generations to display on this page.<br /><br />The right number for you depends of the size of your screen and whether you show details or not.  Processing time will increase as you increase the number of generations.');
 	break;
 
 case 'download_gedcom':
