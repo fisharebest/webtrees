@@ -268,9 +268,9 @@ $byspacing = 5; // -- vertical spacing between boxes on the pedigree chart
 $brborder = 1; // -- pedigree chart box right border thickness 
 
 //-- Other settings that should not be touched
-$Dbxspacing = 0; // -- position vertical line between boxes in relationship chart
+$Dbxspacing = 5; // -- position vertical line between boxes in relationship chart
 $Dbyspacing = 10; // -- position vertical spacing between boxes in relationship chart
-$Dbwidth = 250; // -- horizontal spacing between boxes in all charts
+$Dbwidth = 260; // -- horizontal spacing between boxes in all charts
 $Dbheight = 78; // -- horizontal spacing between boxes in all charts
 $Dindent = 15; // -- width to indent ancestry and descendancy charts boxes
 $Darrowwidth = 300; // -- not used that I can see ***
