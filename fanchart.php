@@ -396,67 +396,65 @@ $controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
-/*if (strlen($title)<30) $cellwidth="420";
+/*if (strlen($title)<30) $cellwidth='420';
 else $cellwidth=(strlen($title)*7);*/
-$cellwidth = max(strlen($title)*4, "420");
-echo "<table class=\"list_table\"><tr><td width=\"".$cellwidth."px\" valign=\"top\">";
+$cellwidth = max(strlen($title)*4, '420');
+echo '<table class="list_table"><tr><td width="'.$cellwidth.'px" valign="top">';
 echo '<h2>', $controller->getPageTitle(), '</h2>';
 
 // -- print the form to change the number of displayed generations
 echo WT_JS_START;
-echo "var pastefield; function paste_id(value) { pastefield.value=value; }";
+echo 'var pastefield; function paste_id(value) { pastefield.value=value; }';
 echo WT_JS_END;
-echo "</td><td><form name=\"people\" method=\"get\" action=\"?\">";
-echo "<table class=\"list_table\"><tr>";
+echo '</td><td><form name="people" method="get" action="#">';
+echo '<table class="list_table"><tr>';
 
 // NOTE: rootid
-echo "<td class=\"descriptionbox\">";
-echo WT_I18N::translate('Root Person ID'), help_link('rootid');
-echo "</td><td class=\"optionbox\">";
-echo "<input class=\"pedigree_form\" type=\"text\" name=\"rootid\" id=\"rootid\" size=\"3\" value=\"$rootid\" />";
-print_findindi_link("rootid","");
-echo "</td>";
+echo '<td class="descriptionbox">';
+echo WT_I18N::translate('Individual'), help_link('rootid');
+echo '</td><td class="optionbox">';
+echo '<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="', $rootid, '" />';
+print_findindi_link('rootid', '');
+echo '</td>';
 
 // NOTE: fan style
-echo "<td rowspan=\"3\" class=\"descriptionbox\">";
-echo WT_I18N::translate('Circle diagram'), help_link('fan_style');
-echo "</td><td rowspan=\"3\" class=\"optionbox\">";
-echo "<input type=\"radio\" name=\"fan_style\" value=\"2\"";
-if ($fan_style==2) echo " checked=\"checked\"";
-echo " /> 1/2";
-echo "<br /><input type=\"radio\" name=\"fan_style\" value=\"3\"";
-if ($fan_style==3) echo " checked=\"checked\"";
-echo " /> 3/4";
-echo "<br /><input type=\"radio\" name=\"fan_style\" value=\"4\"";
-if ($fan_style==4) echo " checked=\"checked\"";
-echo " /> 4/4";
+echo '<td class="descriptionbox">';
+echo WT_I18N::translate('Layout');
+echo '</td><td class="optionbox">';
+echo '<select name="fan_style">';
+echo '<option value="2"', ($fan_style==2 ? ' selected="selected"' : ''), '>';
+echo /* I18N: layout option for the fan chart */ WT_I18N::translate('half circle');
+echo '<option value="3"', ($fan_style==3 ? ' selected="selected"' : ''), '>';
+echo /* I18N: layout option for the fan chart */ WT_I18N::translate('three-quarter circle');
+echo '<option value="4"', ($fan_style==4 ? ' selected="selected"' : ''), '>';
+echo /* I18N: layout option for the fan chart */ WT_I18N::translate('full circle');
+echo '<option></td>';
 
 // NOTE: submit
-echo "</td><td rowspan=\"3\" class=\"topbottombar vmiddle\">";
-echo "<input type=\"submit\" value=\"" . WT_I18N::translate('View') . "\" />";
-echo "</td></tr>";
+echo '<td rowspan="2" class="topbottombar vmiddle">';
+echo '<input type="submit" value="', WT_I18N::translate('View'), '" />';
+echo '</td>';
+
+echo '</tr><tr>';
 
 // NOTE: generations
-echo "<tr><td class=\"descriptionbox\">";
+echo '<td class="descriptionbox">';
 echo WT_I18N::translate('Generations'), help_link('PEDIGREE_GENERATIONS');
-echo "</td><td class=\"optionbox\">";
-echo "<select name=\"PEDIGREE_GENERATIONS\">";
+echo '</td><td class="optionbox">';
+echo '<select name="PEDIGREE_GENERATIONS">';
 // Can only show 9 generations (256 ancestors) as graphics library has integer degree resolution
 for ($i=2; $i<=min(9,$MAX_PEDIGREE_GENERATIONS); $i++) {
-echo "<option value=\"".$i."\"" ;
+echo '<option value="', $i, '"';
 if ($i == $PEDIGREE_GENERATIONS) echo ' selected="selected"';
-	echo '>'.$i.'</option>';
+	echo '>'.WT_I18N::number($i).'</option>';
 }
 echo '</select>';
 echo '</td>';
-echo '</tr><tr>';
 // NOTE: fan width
-echo "<td class=\"descriptionbox\">";
+echo '<td class="descriptionbox">';
 echo WT_I18N::translate('Width'), help_link('fan_width');
-echo "</td><td class=\"optionbox\">";
-echo "<input type=\"text\" size=\"3\" name=\"fan_width\" value=\"$fan_width\" /> <b>%</b> ";
-echo "</td>";
-echo "</tr></table>";
-echo "</form><br />";
-echo "</td></tr></table>";
+echo '</td><td class="optionbox">';
+echo '<input type="text" size="3" name="fan_width" value="', $fan_width, '" /> <b>%</b>';
+echo '</td>';
+echo '</tr></table></form></tr></table>';
 echo $html;
