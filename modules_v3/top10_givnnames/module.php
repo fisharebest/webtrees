@@ -86,8 +86,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			break;
 		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
 			$params=array(1,$num,'rcount');
-			$content.='<div class="loading-image">&nbsp;</div>
-						<table style="margin:auto;">
+			$content.='<table style="margin:auto;">
 						<tr valign="top">
 						<td>'.$stats->commonGivenFemaleTable($params).'</td>
 						<td>'.$stats->commonGivenMaleTable($params).'</td>';
