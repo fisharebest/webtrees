@@ -30,7 +30,7 @@ require_once WT_ROOT.'includes/functions/functions_charts.php';
 $controller=new WT_Controller_Base();
 
 // Extract form variables
-$pid        =safe_GET_xref('pid');
+$pid        =safe_GET_xref('rootid');
 $show_full  =safe_GET('show_full',     array('0', '1'), $PEDIGREE_FULL_DETAILS);
 $show_spouse=safe_GET('show_spouse',   '1', '0');
 $descent    =safe_GET_integer('descent',       0, 9, 5);
@@ -250,7 +250,7 @@ $gencount=0;
 	<?php echo WT_I18N::translate('Root Person ID'), help_link('desc_rootid'); ?>
 </td>
 <td class="optionbox">
-	<input class="pedigree_form" type="text" name="pid" id="pid" size="3" value="<?php echo $pid; ?>" />
+	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $pid; ?>" />
 	<?php print_findindi_link("pid",""); ?>
 </td>
 
