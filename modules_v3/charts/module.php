@@ -217,7 +217,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			</td>
 		</tr>
 		<tr>
-			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Root Person ID'); ?></td>
+			<td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Individual'); ?></td>
 			<td class="optionbox">
 				<input type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5" />
 				<?php

@@ -411,7 +411,7 @@ echo '<table class="list_table"><tr>';
 
 // NOTE: rootid
 echo '<td class="descriptionbox">';
-echo WT_I18N::translate('Individual'), help_link('rootid');
+echo WT_I18N::translate('Individual');
 echo '</td><td class="optionbox">';
 echo '<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="', $rootid, '" />';
 print_findindi_link('rootid', '');

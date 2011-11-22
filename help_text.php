@@ -2216,11 +2216,6 @@ case 'desc_generations':
 	$text=WT_I18N::translate('Here you can set the number of generations to display on this page.<br /><br />The right number for you depends of the size of your screen and whether you show details or not.  Processing time will increase as you increase the number of generations.');
 	break;
 
-case 'desc_rootid':
-	$title=WT_I18N::translate('Root individual');
-	$text=WT_I18N::translate('If you want to display a chart with a new starting (root) person, the ID of that new starting person is typed here.<br /><br />If you don\'t know the ID of that person, use the <b>Find ID</b> link.<br /><br /><b>ID NUMBER</b><br />The ID numbers used inside <b>webtrees</b> are <u>not</u> the identification numbers issued by various governments (driving permit or passport numbers, for instance).  The ID number referred to here is simply a number used within the database to uniquely identify each individual; it was assigned by the ancestry program that created the GEDCOM file which was imported into <b>webtrees</b>.');
-	break;
-
 case 'download_gedcom':
 	$title=WT_I18N::translate('Download family tree');
 	$text=WT_I18N::translate('This option will download the family tree to a GEDCOM file on your computer.');
@@ -2674,11 +2669,6 @@ case 'role':
 		'<dt>'.WT_I18N::translate('Administrator').'</dt><dd>'.
 		WT_I18N::translate('This role has all the permissions of the manager role in all family trees, plus permission to change the settings/configuration of the site, users and modules.').
 		'</dd>';
-	break;
-
-case 'rootid':
-	$title=WT_I18N::translate('Pedigree chart root person');
-	$text=WT_I18N::translate('If you want to display a chart with a new starting (root) person, the ID of that new starting person is typed here.<br /><br />If you don\'t know the ID of that person, use the <b>Find ID</b> link.<br /><br /><b>ID NUMBER</b><br />The ID numbers used inside <b>webtrees</b> are <u>not</u> the identification numbers issued by various governments (driving permit or passport numbers, for instance).  The ID number referred to here is simply a number used within the database to uniquely identify each individual; it was assigned by the ancestry program that created the GEDCOM file which was imported into <b>webtrees</b>.');
 	break;
 
 case 'search_exclude_tags':

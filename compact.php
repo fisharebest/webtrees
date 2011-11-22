@@ -72,7 +72,7 @@ echo '<tr>';
 
 // NOTE: Root ID
 echo '<td class="descriptionbox">';
-echo WT_I18N::translate('Root Person ID'), help_link('rootid'), '</td>';
+echo WT_I18N::translate('Individual'), '</td>';
 echo '<td class="optionbox vmiddle">';
 echo '<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="', $rootid, '" />';
 print_findindi_link('rootid','');

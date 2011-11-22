@@ -247,7 +247,7 @@ $gencount=0;
 <table><tr>
 
 <td class="descriptionbox">
-	<?php echo WT_I18N::translate('Root Person ID'), help_link('desc_rootid'); ?>
+	<?php echo WT_I18N::translate('Individual'); ?>
 </td>
 <td class="optionbox">
 	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $pid; ?>" />

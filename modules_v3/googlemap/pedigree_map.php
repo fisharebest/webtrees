@@ -88,7 +88,7 @@ echo '<h2>', $controller->getPageTitle(), '</h2>';
 		<table class="pedigree_table" width="555">
 			<tr>
 				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Root Person ID'), help_link('rootid'); ?>
+					<?php echo WT_I18N::translate('Individual'); ?>
 				</td>
 				<td class="descriptionbox wrap">
 					<?php echo WT_I18N::translate('Generations'), help_link('PEDIGREE_GENERATIONS'); ?>

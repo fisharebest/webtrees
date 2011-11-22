@@ -61,7 +61,7 @@ echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" acti
 echo '<input type="hidden" name="show_full" value="', $controller->show_full, '" />';
 echo '<table class="list_table">';
 echo '<tr><td class="descriptionbox">';
-echo WT_I18N::translate('Root Person ID'), help_link('desc_rootid'), '</td>';
+echo WT_I18N::translate('Individual'), '</td>';
 echo '<td class="optionbox">';
 echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="', $controller->rootid, '" />';
 print_findindi_link("rootid", "");
