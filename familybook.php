@@ -277,7 +277,7 @@ else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>" />
 for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 	echo "<option value=\"".$i."\"" ;
 	if ($i == $generations) echo " selected=\"selected\"";
-	echo ">".$i."</option>";
+	echo ">".WT_I18N::number($i)."</option>";
 }
 ?>
 </select>
