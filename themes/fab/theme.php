@@ -183,7 +183,7 @@ $brborder=1;     // box right border thickness
 // -- descendancy - relationship chart variables
 $Dbaseyoffset=20; // -- position the entire descendancy tree relative to the top of the page
 $Dbasexoffset=20; // -- position the entire descendancy tree relative to the left of the page
-$Dbxspacing=0;   // -- horizontal spacing between boxes
+$Dbxspacing=5;   // -- horizontal spacing between boxes
 $Dbyspacing=10;   // -- vertical spacing between boxes
 $Dbwidth=250;    // -- width of DIV layer boxes
 $Dbheight=85;    // -- height of DIV layer boxes
