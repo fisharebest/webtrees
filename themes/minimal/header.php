@@ -157,6 +157,7 @@ if ($view!='simple') {
 	echo 
 		'</ul>',
 		'</div>';
+	echo '</div>'; // <div id="header">
 	// Display feedback from asynchronous actions
 	echo '<div id="flash-messages">';
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
