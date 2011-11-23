@@ -1141,13 +1141,17 @@ function print_note_table($datalist) {
 			"bAutoWidth":false,
 			"bProcessing": true,
 			"aoColumns": [
-				/* 0 title  */ {"sType": "unicode"},
-				/* 1 #indi  */ {"sType": "numeric", "sClass": "center"},
-				/* 2 #fam   */ {"sType": "numeric", "sClass": "center"},
-				/* 3 #obje  */ {"sType": "numeric", "sClass": "center"},
-				/* 4 #sour  */ {"sType": "numeric", "sClass": "center"},
-				/* 5 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 6 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				/*  0 title  */ {"sType": "unicode"},
+				/*  1 #indi  */ {"iDataSort": 2, "sClass": "center"},
+				/*  2 #INDI  */ {"sType": "numeric", "bVisible": false},
+				/*  3 #fam   */ {"iDataSort": 4, "sClass": "center"},
+				/*  4 #FAM   */ {"sType": "numeric", "bVisible": false},
+				/*  5 #obje  */ {"iDataSort": 6, "sClass": "center"},
+				/*  6 #OBJE  */ {"sType": "numeric", "bVisible": false},
+				/*  7 #sour  */ {"iDataSort": 8, "sClass": "center"},
+				/*  8 #SOUR  */ {"sType": "numeric", "bVisible": false},
+				/*  9 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 10 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1163,9 +1167,13 @@ function print_note_table($datalist) {
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
+	echo '<th>#INDI</th>';
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
+	echo '<th>#FAM</th>';
 	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
+	echo '<th>#OBJE</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
+	echo '<th>#SOUR</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th>&nbsp;</th>';//delete
 	echo '</tr></thead>';
@@ -1179,13 +1187,17 @@ function print_note_table($datalist) {
 		//-- Shared Note name
 		echo '<td><a class="name2" href="', $note->getHtmlUrl(), '">', highlight_search_hits($note->getFullName()), '</a></td>';
 		//-- Linked INDIs
-		echo '<td>', $note->countLinkedIndividuals(), '</td>';
+		$num=$note->countLinkedIndividuals();
+		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 		//-- Linked FAMs
-		echo '<td>', $note->countLinkedfamilies(), '</td>';
+		$num=$note->countLinkedfamilies();
+		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 		//-- Linked OBJEcts
-		echo '<td>', $note->countLinkedMedia(), '</td>';
+		$num=$note->countLinkedMedia();
+		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 		//-- Linked SOURs
-		echo '<td>', $note->countLinkedSources(), '</td>';
+		$num=$note->countLinkedSources();
+		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>', $note->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
