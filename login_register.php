@@ -68,18 +68,18 @@ switch ($action) {
 			}
 		//-->
 		</script>
-		<div class="center">
+			<div id="register-page">
 			<form name="requestpwform" action="login_register.php" method="post" onsubmit="t = new Date(); document.requestpwform.time.value=t.toUTCString(); return checkform(this);">
 			<input type="hidden" name="time" value="" />
 			<input type="hidden" name="action" value="requestpw" />
 			<span class="warning"><?php echo $message; ?></span>
-			<table class="center facts_table width25">
+			<table class="facts_table width25">
 				<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Lost password request'), help_link('pls_note11'); ?></td></tr>
 				<tr><td class="descriptionbox wrap"><label for="username"><?php echo WT_I18N::translate('Username'); ?></label></td><td class="optionbox"><input type="text" id="username" name="user_name" value="" /></td></tr>
 				<tr><td class="topbottombar" colspan="2"><input type="submit" value="<?php echo WT_I18N::translate('Lost password request'); ?>" /></td></tr>
 			</table>
 			</form>
-		</div>
+			</div>
 		<script type="text/javascript">
 			document.requestpwform.user_name.focus();
 		</script>
@@ -89,7 +89,7 @@ switch ($action) {
 	case 'requestpw' :
 		$controller->setPageTitle(WT_I18N::translate('Lost password request'));
 		$controller->pageHeader();
-		echo '<div class="center">';
+		echo '<div id="register-page">';
 		$user_id=get_user_id($user_name);
 		if (!$user_id) {
 			AddToLog('New password requests for user '.$user_name.' that does not exist', 'auth');
@@ -135,7 +135,7 @@ switch ($action) {
 				webtreesMail(getUserEmail($user_id), $WEBTREES_EMAIL, WT_I18N::translate('Data request at %s', get_gedcom_setting(WT_GED_ID, 'title').' - '.WT_SERVER_NAME.WT_SCRIPT_PATH), $mail_body);
 
 				?>
-				<table class="center facts_table">
+				<table class="facts_table width50">
 				<tr><td class="wrap"><?php echo WT_I18N::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', $user_name); ?></td></tr>
 				</table>
 				<?php
@@ -255,19 +255,19 @@ switch ($action) {
 			}
 			//-->
 			</script>
+			<div id="register-page">
 			<?php
 				if ($SHOW_REGISTER_CAUTION) {
-					echo '<center><table class="width50"><tr><td>';
+					echo '<table class="width50"><tr><td>';
 					echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
 					echo '<br />';
-					echo '</td></tr></table></center>';
+					echo '</td></tr></table>';
 				}
 			?>
-			<div class="center">
 				<form name="registerform" method="post" action="login_register.php" onsubmit="t = new Date(); document.registerform.time.value=t.toUTCString(); return checkform(this);">
 					<input type="hidden" name="action" value="register" />
 					<input type="hidden" name="time" value="" />
-					<table class="center facts_table width50">
+					<table class="facts_table width50">
 						<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Request new user account'); ?><br /><?php if (strlen($message) > 0) echo $message; ?></td></tr>
 						<tr><td class="descriptionbox wrap"><label for="user_realname"><?php echo WT_I18N::translate('Real name'), '</label>', help_link('real_name'); ?></td><td class="optionbox"><input type="text" id="user_realname" name="user_realname" value="<?php if (!$user_realname_false) echo $user_realname; ?>" /> *</td></tr>
 						<tr><td class="descriptionbox wrap"><label for="user_email"><?php echo WT_I18N::translate('Email address'), '</label>', help_link('email'); ?></td><td class="optionbox"><input type="text" size="30" id="user_email" name="user_email" value="<?php if (!$user_email_false) echo $user_email; ?>"  /> *</td></tr>
@@ -322,7 +322,7 @@ switch ($action) {
 		if (isset($user_name)) {
 			$controller->setPageTitle(WT_I18N::translate('New Account confirmation'));
 			$controller->pageHeader();
-			echo '<div class="center">';
+			echo '<div id="register-page"><table><tr><td>';
 			$user_created_ok = false;
 
 			AddToLog('User registration requested for: '.$user_name, 'auth');
@@ -413,7 +413,7 @@ switch ($action) {
 				// switch language to user's settings
 				WT_I18N::init($user_language);
 				?>
-				<table class="center facts_table">
+				<table class="facts_table width50">
 					<tr><td class="wrap <?php echo $TEXT_DIRECTION; ?>"><?php echo WT_I18N::translate('Hello %s ...<br />Thank you for your registration.', $user_realname); ?><br /><br />
 					<?php
 					if ($REQUIRE_ADMIN_AUTH_REGISTRATION) echo WT_I18N::translate('We will now send a confirmation email to the address <b>%s</b>. You must verify your account request by following instructions in the confirmation email. If you do not confirm your account request within seven days, your application will be rejected automatically.  You will have to apply again.<br /><br />After you have followed the instructions in the confirmation email, the administrator still has to approve your request before your account can be used.<br /><br />To login to this site, you will need to know your user name and password.', $user_email);
@@ -424,7 +424,7 @@ switch ($action) {
 				<?php
 				WT_I18N::init(WT_LOCALE); // Reset language
 			}
-			echo '</div>';
+			echo '</td></tr></table></div>';
 		} else {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php'));
 			exit;
@@ -444,7 +444,7 @@ switch ($action) {
 		$controller->setPageTitle(WT_I18N::translate('User verification'));
 		$controller->pageHeader();
 
-		echo '<div class="center">';
+		echo '<div id="register-page">';
 		?>
 		<form name="verifyform" method="post" action="" onsubmit="t = new Date(); document.verifyform.time.value=t.toUTCString();">
 			<input type="hidden" name="action" value="verify_hash" />
@@ -477,8 +477,8 @@ switch ($action) {
 
 		$controller->setPageTitle(WT_I18N::translate('User verification'));
 		$controller->pageHeader();
-		echo '<div class="center">';
-		echo '<table class="center facts_table wrap '.$TEXT_DIRECTION.'">';
+		echo '<div id="register-page">';
+		echo '<table class="facts_table wrap width50">';
 		echo '<tr><td class="topbottombar">'.WT_I18N::translate('User verification').'</td></tr>';
 		echo '<tr><td class="optionbox">';
 		echo WT_I18N::translate('The data for the user <b>%s</b> was checked.', $user_name);

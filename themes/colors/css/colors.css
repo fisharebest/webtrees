@@ -1528,6 +1528,9 @@ margin: 0;
 	overflow: visible !important;
 }
 
+#register-page table{margin:auto;}
+#register-page table a {display:block; text-align:center;}
+
 .popup {
 	display:none;
 }

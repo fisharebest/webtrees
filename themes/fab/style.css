@@ -1007,6 +1007,9 @@ dd {
 	overflow: visible !important;
 }
 
+#register-page table{margin:auto;}
+#register-page table a {display:block; text-align:center;}
+
 .gedcom_favorites_block  .person_box, .gedcom_favorites_block  .person_boxF, .gedcom_favorites_block  .person_boxNN {height:auto;}
 .user_favorites_block  .person_box, .user_favorites_block  .person_boxF, .user_favorites_block  .person_boxNN {height:auto;}
 .gedcom_favorites_block  .person_box .details2, .gedcom_favorites_block  .person_boxF.details2, .gedcom_favorites_block  .person_boxNN.details2 {min-height:40px;}
