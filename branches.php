@@ -59,8 +59,9 @@ if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'/js/autocomplete.js.htm';
 }
 ?>
+<div id="branches-page">
 <form name="surnlist" id="surnlist" action="?">
-	<table class="center facts_table width50">
+	<table class="facts_table width50">
 		<tr>
 			<td class="descriptionbox">
 				<?php echo WT_Gedcom_Tag::getLabel('SURN'), help_link('surname'); ?></td>
@@ -110,6 +111,7 @@ if ($surn) {
 	}
 	echo '</ol>';
 	echo '</fieldset>';
+	echo '</div>'; // close branches-page
 }
 
 function print_fams($person, $famid=null) {
