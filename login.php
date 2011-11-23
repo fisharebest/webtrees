@@ -44,7 +44,7 @@ if (empty($url)) {
 	// If we came here by means of a URL like http://mysite.com/foo/login.php
 	// we don't have a proper login URL, and session cookies haven't been set yet
 	// We'll re-load the page to properly determine cookie support
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url=index.php');
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?url=index.php');
 }
 
 $message='';
@@ -105,7 +105,7 @@ if ($action=='login') {
 		}
 
 		// If we've clicked login from the login page, we don't want to go back there.
-		if (substr($url, 0, 9)=='login.php') {
+		if (strpos($url, WT_SCRIPT_NAME)===0) {
 			$url='index.php';
 		}
 

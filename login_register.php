@@ -426,7 +426,7 @@ switch ($action) {
 			}
 			echo '</div>';
 		} else {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php');
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php'));
 			exit;
 		}
 		break;

@@ -27,14 +27,11 @@ define('WT_SCRIPT_NAME', 'edit_changes.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
-if (!WT_USER_CAN_ACCEPT) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
-
 $controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('Pending changes'));
-$controller->pageHeader();
+$controller
+	->requireAcceptLogin()
+	->setPageTitle(WT_I18N::translate('Pending changes'))
+	->pageHeader();
 
 $action   =safe_GET('action');
 $change_id=safe_GET('change_id');

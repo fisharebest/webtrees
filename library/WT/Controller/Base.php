@@ -90,7 +90,7 @@ class WT_Controller_Base {
 	public function requireAdminLogin() {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_IS_ADMIN) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode(get_query_url()));
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -100,7 +100,27 @@ class WT_Controller_Base {
 	public function requireManagerLogin() {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_GEDCOM_ADMIN) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode(get_query_url()));
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
+			exit;
+		}
+		return $this;
+	}
+
+	// Restrict access
+	public function requireAcceptLogin() {
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		if (!WT_USER_CAN_ACCEPT) {
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
+			exit;
+		}
+		return $this;
+	}
+
+	// Restrict access
+	public function requireEditorLogin() {
+		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
+		if (!WT_USER_CAN_EDIT) {
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -110,7 +130,7 @@ class WT_Controller_Base {
 	public function requireMemberLogin() {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_ID) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode(get_query_url()));
+			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;

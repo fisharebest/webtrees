@@ -33,14 +33,8 @@ $action=safe_REQUEST($_REQUEST, 'action', 'ajax');
 // The default view depends on whether we are logged in
 $ctype=safe_REQUEST($_REQUEST, 'ctype', array('gedcom', 'user'), WT_USER_ID ? 'user' : 'gedcom');
 
-// A request to see a user page, but not logged in?
-if (!WT_USER_ID && $ctype=='user') {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.rawurlencode('index.php?ctype=user'));
-	exit;
-}
-
 //-- get the blocks list
-if ($ctype=='user') {
+if (WT_USER_ID && $ctype=='user') {
 	$blocks=get_user_blocks(WT_USER_ID);
 } else {
 	$blocks=get_gedcom_blocks(WT_GED_ID);
@@ -80,6 +74,9 @@ if ($action=='ajax') {
 }
 
 $controller=new WT_Controller_Base();
+if ($ctype=='user') {
+	$controller->requireMemberLogin();
+}
 $controller
 	->setPageTitle($ctype=='user' ? WT_I18N::translate('My page') : get_gedcom_setting(WT_GED_ID, 'title'))
 	->pageHeader()

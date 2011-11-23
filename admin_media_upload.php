@@ -43,13 +43,10 @@ function dir_is_writable($dir) {
 	return($err_write);
 }
 
-if (!WT_USER_CAN_EDIT) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php?url='.WT_SCRIPT_NAME);
-	exit;
-}
-
 $controller=new WT_Controller_Base();
 $controller
+	->requireManagerLogin()
+	->requireEditorLogin() /* Why this check? */
 	->setPageTitle(WT_I18N::translate('Upload media files'))
 	->pageHeader();
 
