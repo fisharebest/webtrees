@@ -40,7 +40,6 @@ function print_indi_table($datalist, $option='') {
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	if ($option=='MARR_PLAC') return;
-	if (count($datalist)<1) return;
 
 	$pagination=
 		'<select>'.
@@ -62,7 +61,7 @@ function print_indi_table($datalist, $option='') {
 			var oTable'.$table_id.' = jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
 				"oLanguage": {
-					"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ addslashes(WT_I18N::translate('Display %s', $pagination)).'",
+					"sLengthMenu": "'.addslashes(/* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', $pagination)).'",
 					"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
 					"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
 					"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
@@ -482,7 +481,6 @@ function print_fam_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $controller;
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
-	if (count($datalist)<1) return;
 
 	$pagination=
 		'<select>'.
@@ -961,6 +959,16 @@ function print_fam_table($datalist, $option='') {
 function print_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
 
+	$pagination=
+		'<select>'.
+		'<option value="10">'.WT_I18N::number('10').'</option>'.
+		'<option value="20">'.WT_I18N::number('20').'</option>'.
+		'<option value="30">'.WT_I18N::number('30').'</option>'.
+		'<option value="50">'.WT_I18N::number('50').'</option>'.
+		'<option value="100">'.WT_I18N::number('100').'</option>'.
+		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
+		'</select>';
+
 	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -970,7 +978,7 @@ function print_sour_table($datalist) {
 			jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 				"oLanguage": {
-					"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"20\">20</option><option value=\"30\">30</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
+					"sLengthMenu": "'.addslashes(WT_I18N::translate('Display %s', $pagination)).'",
 					"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
 					"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
 					"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
@@ -1096,9 +1104,16 @@ function print_sour_table($datalist) {
 function print_note_table($datalist) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
 
-	if (count($datalist)<1) {
-		return;
-	}
+	$pagination=
+		'<select>'.
+		'<option value="10">'.WT_I18N::number('10').'</option>'.
+		'<option value="20">'.WT_I18N::number('20').'</option>'.
+		'<option value="30">'.WT_I18N::number('30').'</option>'.
+		'<option value="50">'.WT_I18N::number('50').'</option>'.
+		'<option value="100">'.WT_I18N::number('100').'</option>'.
+		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
+		'</select>';
+
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1108,7 +1123,7 @@ function print_note_table($datalist) {
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"oLanguage": {
-				"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"20\">20</option><option value=\"30\">30</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
+				"sLengthMenu": "'.addslashes(WT_I18N::translate('Display %s', $pagination)).'",
 				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
 				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
 				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
@@ -1195,9 +1210,16 @@ function print_note_table($datalist) {
 function print_repo_table($repos) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $controller;
 
-	if (!$repos) {
-		return;
-	}
+	$pagination=
+		'<select>'.
+		'<option value="10">'.WT_I18N::number('10').'</option>'.
+		'<option value="20">'.WT_I18N::number('20').'</option>'.
+		'<option value="30">'.WT_I18N::number('30').'</option>'.
+		'<option value="50">'.WT_I18N::number('50').'</option>'.
+		'<option value="100">'.WT_I18N::number('100').'</option>'.
+		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
+		'</select>';
+
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1207,7 +1229,7 @@ function print_repo_table($repos) {
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"oLanguage": {
-				"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"20\">20</option><option value=\"30\">30</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
+				"sLengthMenu": "'.addslashes(WT_I18N::translate('Display %s', $pagination)).'",
 				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
 				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
 				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
@@ -1293,7 +1315,16 @@ function print_repo_table($repos) {
 function print_media_table($datalist) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
 
-	if (count($datalist)<1) return;
+	$pagination=
+		'<select>'.
+		'<option value="10">'.WT_I18N::number('10').'</option>'.
+		'<option value="20">'.WT_I18N::number('20').'</option>'.
+		'<option value="30">'.WT_I18N::number('30').'</option>'.
+		'<option value="50">'.WT_I18N::number('50').'</option>'.
+		'<option value="100">'.WT_I18N::number('100').'</option>'.
+		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
+		'</select>';
+
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1303,7 +1334,7 @@ function print_media_table($datalist) {
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"oLanguage": {
-				"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"20\">20</option><option value=\"30\">30</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
+				"sLengthMenu": "'.addslashes(WT_I18N::translate('Display %s', $pagination)).'",
 				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
 				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
 				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
