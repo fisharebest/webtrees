@@ -184,21 +184,7 @@ $controller
 			"bProcessing": true,
 			"bServerSide": true,
 			"sAjaxSource": "'.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?action=load_json&from='.$from.'&to='.$to.'&type='.$type.'&text='.rawurlencode($text).'&ip='.rawurlencode($ip).'&user='.rawurlencode($user).'&gedc='.rawurlencode($gedc).'",
-			"oLanguage": {
-				"sLengthMenu": "'./* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', '<select><option value=\"10\">10<option value=\"20\">20</option><option value=\"50\">50</option><option value=\"100\">100</option><option value=\"500\">500</option><option value=\"1000\">1000</option><option value=\"-1\">'.WT_I18N::translate('All').'</option></select>').'",
-				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
-				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
-				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
-				"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
-				"sProcessing": "'.WT_I18N::translate('Loading...').'",
-				"sSearch": "'.WT_I18N::translate('Filter').'",
-				"oPaginate": {
-					"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
-					"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
-					"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
-					"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
-				}
-			},
+			'.WT_I18N::datatablesI18N(array(10,20,50,100,500,1000,-1)).',
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"aaSorting": [[ 0, "desc" ]],

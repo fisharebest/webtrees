@@ -41,16 +41,6 @@ function print_indi_table($datalist, $option='') {
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	if ($option=='MARR_PLAC') return;
 
-	$pagination=
-		'<select>'.
-		'<option value="10">'.WT_I18N::number('10').'</option>'.
-		'<option value="20">'.WT_I18N::number('20').'</option>'.
-		'<option value="30">'.WT_I18N::number('30').'</option>'.
-		'<option value="50">'.WT_I18N::number('50').'</option>'.
-		'<option value="100">'.WT_I18N::number('100').'</option>'.
-		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
-		'</select>';
-
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
@@ -60,21 +50,7 @@ function print_indi_table($datalist, $option='') {
 			jQuery.fn.dataTableExt.oSort["num-html-desc"]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a>b) ? -1 : (a<b ? 1 : 0);};
 			var oTable'.$table_id.' = jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
-				"oLanguage": {
-					"sLengthMenu": "'.addslashes(/* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', $pagination)).'",
-					"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
-					"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
-					"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
-					"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
-					"sProcessing": "'.WT_I18N::translate('Loading...').'",
-					"sSearch": "'.WT_I18N::translate('Filter').'",
-					"oPaginate": {
-						"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
-						"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
-						"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
-						"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
-					}
-				},
+				'.WT_I18N::datatablesI18N().',
 				"bJQueryUI": true,
 				"bAutoWidth":false,
 				"bProcessing": true,
@@ -482,16 +458,6 @@ function print_fam_table($datalist, $option='') {
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
 
-	$pagination=
-		'<select>'.
-		'<option value="10">'.WT_I18N::number('10').'</option>'.
-		'<option value="20">'.WT_I18N::number('20').'</option>'.
-		'<option value="30">'.WT_I18N::number('30').'</option>'.
-		'<option value="50">'.WT_I18N::number('50').'</option>'.
-		'<option value="100">'.WT_I18N::number('100').'</option>'.
-		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
-		'</select>';
-
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
@@ -499,21 +465,7 @@ function print_fam_table($datalist, $option='') {
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			var oTable'.$table_id.'=jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"<"filtersH_'.$table_id.'"><"dt-clear">pf<"dt-clear">irl>t<"F"pl<"dt-clear"><"filtersF_'.$table_id.'">>\',
-				"oLanguage": {
-					"sLengthMenu": "'.addslashes(WT_I18N::translate('Display %s', $pagination)).'",
-					"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
-					"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
-					"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
-					"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
-					"sProcessing": "'.WT_I18N::translate('Loading...').'",
-					"sSearch": "'.WT_I18N::translate('Filter').'",
-					"oPaginate": {
-						"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
-						"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
-						"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
-						"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
-					}
-				},
+				'.WT_I18N::datatablesI18N().',
 				"bJQueryUI": true,
 				"bAutoWidth":false,
 				"bProcessing": true,
@@ -959,16 +911,6 @@ function print_fam_table($datalist, $option='') {
 function print_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
 
-	$pagination=
-		'<select>'.
-		'<option value="10">'.WT_I18N::number('10').'</option>'.
-		'<option value="20">'.WT_I18N::number('20').'</option>'.
-		'<option value="30">'.WT_I18N::number('30').'</option>'.
-		'<option value="50">'.WT_I18N::number('50').'</option>'.
-		'<option value="100">'.WT_I18N::number('100').'</option>'.
-		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
-		'</select>';
-
 	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -977,21 +919,7 @@ function print_sour_table($datalist) {
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-				"oLanguage": {
-					"sLengthMenu": "'.addslashes(WT_I18N::translate('Display %s', $pagination)).'",
-					"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
-					"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
-					"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
-					"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
-					"sProcessing": "'.WT_I18N::translate('Loading...').'",
-					"sSearch": "'.WT_I18N::translate('Filter').'",
-					"oPaginate": {
-						"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
-						"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
-						"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
-						"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
-					}
-				},
+				'.WT_I18N::datatablesI18N().',
 				"bJQueryUI": true,
 				"bAutoWidth":false,
 				"bProcessing": true,
@@ -1116,16 +1044,6 @@ function print_sour_table($datalist) {
 function print_note_table($datalist) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
 
-	$pagination=
-		'<select>'.
-		'<option value="10">'.WT_I18N::number('10').'</option>'.
-		'<option value="20">'.WT_I18N::number('20').'</option>'.
-		'<option value="30">'.WT_I18N::number('30').'</option>'.
-		'<option value="50">'.WT_I18N::number('50').'</option>'.
-		'<option value="100">'.WT_I18N::number('100').'</option>'.
-		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
-		'</select>';
-
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1134,21 +1052,7 @@ function print_note_table($datalist) {
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			"oLanguage": {
-				"sLengthMenu": "'.addslashes(WT_I18N::translate('Display %s', $pagination)).'",
-				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
-				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
-				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
-				"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
-				"sProcessing": "'.WT_I18N::translate('Loading...').'",
-				"sSearch": "'.WT_I18N::translate('Filter').'",
-				"oPaginate": {
-					"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
-					"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
-					"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
-					"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
-				}
-			},
+			'.WT_I18N::datatablesI18N().',
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
@@ -1234,16 +1138,6 @@ function print_note_table($datalist) {
 function print_repo_table($repos) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $controller;
 
-	$pagination=
-		'<select>'.
-		'<option value="10">'.WT_I18N::number('10').'</option>'.
-		'<option value="20">'.WT_I18N::number('20').'</option>'.
-		'<option value="30">'.WT_I18N::number('30').'</option>'.
-		'<option value="50">'.WT_I18N::number('50').'</option>'.
-		'<option value="100">'.WT_I18N::number('100').'</option>'.
-		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
-		'</select>';
-
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1252,21 +1146,7 @@ function print_repo_table($repos) {
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			"oLanguage": {
-				"sLengthMenu": "'.addslashes(WT_I18N::translate('Display %s', $pagination)).'",
-				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
-				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
-				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
-				"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
-				"sProcessing": "'.WT_I18N::translate('Loading...').'",
-				"sSearch": "'.WT_I18N::translate('Filter').'",
-				"oPaginate": {
-					"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
-					"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
-					"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
-					"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
-				}
-			},
+			'.WT_I18N::datatablesI18N().',
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
@@ -1342,16 +1222,6 @@ function print_repo_table($repos) {
 function print_media_table($datalist) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
 
-	$pagination=
-		'<select>'.
-		'<option value="10">'.WT_I18N::number('10').'</option>'.
-		'<option value="20">'.WT_I18N::number('20').'</option>'.
-		'<option value="30">'.WT_I18N::number('30').'</option>'.
-		'<option value="50">'.WT_I18N::number('50').'</option>'.
-		'<option value="100">'.WT_I18N::number('100').'</option>'.
-		'<option value="-1">'.WT_I18N::translate('All').'</option>'.
-		'</select>';
-
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1360,21 +1230,7 @@ function print_media_table($datalist) {
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
-			"oLanguage": {
-				"sLengthMenu": "'.addslashes(WT_I18N::translate('Display %s', $pagination)).'",
-				"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
-				"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",
-				"sInfoEmpty": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '0', '0', '0').'",
-				"sInfoFiltered": "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",
-				"sProcessing": "'.WT_I18N::translate('Loading...').'",
-				"sSearch": "'.WT_I18N::translate('Filter').'",
-				"oPaginate": {
-					"sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",
-					"sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",
-					"sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",
-					"sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"
-				}
-			},
+			'.WT_I18N::datatablesI18N().',
 			"bJQueryUI": true,
 			"bAutoWidth":false,
 			"bProcessing": true,
@@ -1752,10 +1608,7 @@ function print_changes_table($change_ids, $sort) {
 				"bAutoWidth":false,
 				"bLengthChange": false,
 				"bFilter": false,
-				"oLanguage": {
-					"sZeroRecords": "'.WT_I18N::translate('No records to display').'",
-					"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'"
-				},
+				'.WT_I18N::datatablesI18N().',
 				"bJQueryUI": true,
 				"aaSorting": ['.$aaSorting.'],
 				"aoColumns": [
@@ -1850,7 +1703,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		->addInlineJavaScript('
 			jQuery("#'.$table_id.'").dataTable({
 				"sDom": \'t\',
-				"oLanguage": {"sInfo": "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'"},
+				'.WT_I18N::datatablesI18N().',
 				"bAutoWidth":false,
 				"bPaginate": false,
 				"bLengthChange": false,

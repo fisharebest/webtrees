@@ -452,4 +452,46 @@ class WT_I18N {
 			return WT_I18N::plural('%d second ago', '%d seconds ago', $seconds, $seconds);
 		}
 	}
+
+	// Generate consistent I18N for datatables.js
+	static function datatablesI18N(array $lengths=null) {
+		if ($lengths===null) {
+			$lengths=array(10, 20, 30, 50, 100, -1);
+		}
+
+		$length_menu='';
+		foreach ($lengths as $length) {
+			$length_menu.=
+				'<option value="'.$length.'">'.
+				($length==-1 ? /* I18N: listbox option, e.g. "10,25,50,100,all" */ WT_I18N::translate('All') : WT_I18N::number($length)).
+				'</option>';
+		}
+		$length_menu='<select>'.$length_menu.'</select>';
+		$length_menu=/* I18N: Display %s [records per page], %s is a placeholder for listbox containing numeric options */ WT_I18N::translate('Display %s', $length_menu);
+
+		// Which symbol is used for separating numbers into groups
+		$symbols = Zend_Locale_Data::getList(WT_LOCALE, 'symbols');
+
+		return
+			'"oLanguage": {'.
+			' "oPaginate": {'.
+			'  "sFirst":    "'./* I18N: button label, first page    */ WT_I18N::translate('first').'",'.
+			'  "sLast":     "'./* I18N: button label, last page     */ WT_I18N::translate('last').'",'.
+			'  "sNext":     "'./* I18N: button label, next page     */ WT_I18N::translate('next').'",'.
+			'  "sPrevious": "'./* I18N: button label, previous page */ WT_I18N::translate('previous').'"'.
+			' },'.
+			' "sEmptyTable":     "'.WT_I18N::translate('No records to display').'",'.
+			' "sInfo":           "'./* I18N: %s are placeholders for numbers */ WT_I18N::translate('Showing %1$s to %2$s of %3$s', '_START_', '_END_', '_TOTAL_').'",'.
+			' "sInfoEmpty":      "'.WT_I18N::translate('Showing %1$s to %2$s of %3$s', 0, 0, 0).'",'.
+			' "sInfoFiltered":   "'./* I18N: %s is a placeholder for a number */ WT_I18N::translate('(filtered from %s total entries)', '_MAX_').'",'.
+			' "sInfoPostfix":    "",'.
+			' "sInfoThousands":  "'.$symbols['group'].'",'.
+			' "sLengthMenu":     "'.addslashes($length_menu).'",'.
+			' "sLoadingRecords": "'.WT_I18N::translate('Loading...').'",'.
+			' "sProcessing":     "'.WT_I18N::translate('Loading...').'",'.
+			' "sSearch":         "'.WT_I18N::translate('Filter').'",'.
+			' "sUrl":            "",'.
+			' "sZeroRecords":    "'.WT_I18N::translate('No records to display').'"'.
+			'}';
+	}
 }
