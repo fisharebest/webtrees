@@ -1390,7 +1390,7 @@ dd {
 	overflow: visible !important;
 }
 
-#register-page table{margin:auto;}
+#register-page table, #login-page table {margin:auto;}
 #register-page table a {display:block; text-align:center;}
 
 .popup {

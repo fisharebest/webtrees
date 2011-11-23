@@ -1007,7 +1007,7 @@ dd {
 	overflow: visible !important;
 }
 
-#register-page table{margin:auto;}
+#register-page table, #login-page table {margin:auto;}
 #register-page table a {display:block; text-align:center;}
 
 .gedcom_favorites_block  .person_box, .gedcom_favorites_block  .person_boxF, .gedcom_favorites_block  .person_boxNN {height:auto;}

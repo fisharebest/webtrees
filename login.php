@@ -143,9 +143,9 @@ $controller=new WT_Controller_Base();
 $controller->setPageTitle(WT_I18N::translate('webtrees user login'));
 $controller->pageHeader();
 
-echo '<div class="center">';
+echo '<div id="login-page">';
 
-echo '<table class="center width60"><tr><td>';
+echo '<table class="width60"><tr><td>';
 switch ($WELCOME_TEXT_AUTH_MODE) {
 case 1:
 	echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
@@ -183,7 +183,7 @@ echo '</td></tr></table><br /><br />';
 		if (!empty($message)) echo "<span class='error'><br /><b>$message</b><br /><br /></span>";
 		?>
 		<!--table-->
-		<table class="center facts_table width50">
+		<table class="facts_table width50">
 			<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Login'); ?></td></tr>
 			<tr>
 				<td class="descriptionbox wrap width50"><label for="username"><?php echo WT_I18N::translate('Username'), '</label>', help_link('username'); ?></td>
@@ -203,7 +203,7 @@ echo '</td></tr></table><br /><br />';
 <?php
 
 if (get_site_setting('USE_REGISTRATION_MODULE')) { ?>
-	<table class="center facts_table width50">
+	<table class="facts_table width50">
 	<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Account Information'); ?></td></tr>
 	<tr><td class="descriptionbox wrap width50"><?php echo WT_I18N::translate('No account?'), help_link('new_user'); ?></td>
 	<td class="optionbox wrap"><a href="login_register.php?action=register"><?php echo WT_I18N::translate('Request new user account'); ?></a></td></tr>
