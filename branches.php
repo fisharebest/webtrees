@@ -32,7 +32,7 @@ define('WT_ICON_RINGS', '<img src="'.$WT_IMAGES['rings'].'" alt="'.WT_Gedcom_Tag
 define('WT_ICON_BRANCHES', '<img src="'.$WT_IMAGES['patriarch'].'" alt="" align="middle" />');
 
 //-- args
-$surn = safe_GET('surn', '[^<>&%{};]*');
+$surn = safe_GET('surname', '[^<>&%{};]*');
 $surn = utf8_strtoupper($surn);
 $soundex_std = safe_GET_bool('soundex_std');
 $soundex_dm = safe_GET_bool('soundex_dm');
@@ -65,7 +65,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 			<td class="descriptionbox">
 				<?php echo WT_Gedcom_Tag::getLabel('SURN'), help_link('surname'); ?></td>
 			<td class="optionbox">
-				<input type="text" name="surn" id="SURN" value="<?php echo $surn; ?>" />
+				<input type="text" name="surname" id="SURN" value="<?php echo $surn; ?>" />
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" />
 				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
 				<input type="submit" value="<?php echo WT_I18N::translate('Random surname'); ?>" onclick="document.surnlist.surn.value='*';" />
@@ -104,11 +104,11 @@ if ($surn) {
 	// sort by birth date
 	array_multisort($sort_criteria, SORT_NUMERIC, $roots);
 	// output
-	echo "<ol>";
+	echo '<ol>';
 	foreach ($roots as $k=>$xref) {
 		print_fams($indis[$xref]);
 	}
-	echo "</ol>";
+	echo '</ol>';
 	echo '</fieldset>';
 }
 
