@@ -88,6 +88,6 @@ if ($page_parameter) {
 	$hitCount=1;
 }
 
-$hitCount="<span class=\"hit-counter\">{$hitCount}</span>";
+$hitCount='<span class="hit-counter">'.WT_I18N::number($hitCount).'</span>';
 
 unset($page_name, $page_parameter);
