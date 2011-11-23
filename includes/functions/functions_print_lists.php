@@ -34,13 +34,13 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_places.php';
 
 // print a table of individuals
-function print_indi_table($datalist, $option='') {
+function format_indi_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
 
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	if ($option=='MARR_PLAC') return;
-
+	$html = '';
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
@@ -199,36 +199,36 @@ function print_indi_table($datalist, $option='') {
 	for ($year=1550; $year<2030; $year+=10) $birt_by_decade[$year]="";
 	for ($year=1550; $year<2030; $year+=10) $deat_by_decade[$year]="";
 	//--table wrapper
-	echo '<div class="loading-image">&nbsp;</div>';
-	echo '<div class="indi-list">';
+	$html .= '<div class="loading-image">&nbsp;</div>';
+	$html .= '<div class="indi-list">';
 	//-- table header
-	echo '<table id="', $table_id, '"><thead><tr>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('GIVN'), '</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('SURN'), '</th>';
-	echo '<th>GIVN</th>';
-	echo '<th>SURN</th>';
-	echo '<th>', /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'), '</th>';
-	echo '<th>SOSA</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('BIRT'), '</th>';
-	echo '<th>SORT_BIRT</th>';
-	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '"></th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-	echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '"></th>';
-	echo '<th>NCHI</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('DEAT'), '</th>';
-	echo '<th>SORT_DEAT</th>';
-	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '"></th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
-	echo '<th>AGE</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-	echo '<th ',($SHOW_LAST_CHANGE?'':''),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '<th>SEX</th>';
-	echo '<th>BIRT</th>';
-	echo '<th>DEAT</th>';
-	echo '<th>TREE</th>';
-	echo '</tr></thead>';
+	$html .= '<table id="'. $table_id. '"><thead><tr>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('GIVN'). '</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('SURN'). '</th>';
+	$html .= '<th>GIVN</th>';
+	$html .= '<th>SURN</th>';
+	$html .= '<th>'. /* I18N: Abbreviation for "Sosa-Stradonitz number".  This is a person's surname, so may need transliterating into non-latin alphabets. */ WT_I18N::translate('Sosa'). '</th>';
+	$html .= '<th>SOSA</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('BIRT'). '</th>';
+	$html .= '<th>SORT_BIRT</th>';
+	$html .= '<th><img src="'. $WT_IMAGES['reminder']. '" alt="'. WT_I18N::translate('Anniversary'). '" title="'. WT_I18N::translate('Anniversary'). '"></th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('PLAC'). '</th>';
+	$html .= '<th><img src="'. $WT_IMAGES['children']. '" alt="'. WT_I18N::translate('Children'). '" title="'. WT_I18N::translate('Children'). '"></th>';
+	$html .= '<th>NCHI</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('DEAT'). '</th>';
+	$html .= '<th>SORT_DEAT</th>';
+	$html .= '<th><img src="'. $WT_IMAGES['reminder']. '" alt="'. WT_I18N::translate('Anniversary'). '" title="'. WT_I18N::translate('Anniversary'). '"></th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('AGE'). '</th>';
+	$html .= '<th>AGE</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('PLAC'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th>SEX</th>';
+	$html .= '<th>BIRT</th>';
+	$html .= '<th>DEAT</th>';
+	$html .= '<th>TREE</th>';
+	$html .= '</tr></thead>';
 	//-- table body
-	echo '<tbody>';
+	$html .= '<tbody>';
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
 	$dateY = date('Y');
 	$unique_indis=array(); // Don't double-count indis with multiple names.
@@ -251,9 +251,9 @@ function print_indi_table($datalist, $option='') {
 		//-- place filtering
 		if ($option=='BIRT_PLAC' && strstr($person->getBirthPlace(), $filter)===false) continue;
 		if ($option=='DEAT_PLAC' && strstr($person->getDeathPlace(), $filter)===false) continue;
-		echo '<tr>';
+		$html .= '<tr>';
 		//-- Indi name(s)
-		echo '<td colspan="2">';
+		$html .= '<td colspan="2">';
 		foreach ($person->getAllNames() as $num=>$name) {
 			if ($name['type']=='NAME') {
 				$title='';
@@ -268,33 +268,33 @@ function print_indi_table($datalist, $option='') {
 				$class='';
 				$sex_image='';
 			}
-			echo '<a ', $title, ' href="', $person->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
+			$html .= '<a '. $title. ' href="'. $person->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br/>';
 		}
 		// Indi parents
-		echo $person->getPrimaryParentsNames("parents_indi_list_table_".$table_id." details1", 'none');
-		echo '</td>';
+		$html .= $person->getPrimaryParentsNames("parents_indi_list_table_".$table_id." details1", 'none');
+		$html .= '</td>';
 		// Dummy column to match colspan in header
-		echo '<td style="display:none;"></td>';
+		$html .= '<td style="display:none;"></td>';
 		//-- GIVN/SURN
 		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
-		echo '<td>', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), 'AAAA', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), '</td>';
-		echo '<td>', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), 'AAAA', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), '</td>';
+		$html .= '<td>'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
+		$html .= '<td>'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		//-- SOSA
 		if ($option=='sosa') {
-			echo '<td><a href="relationship.php?pid1=', $datalist[1], '&amp;pid2=', $person->getXref(), '" title="', WT_I18N::translate('Relationships'), '">', WT_I18N::number($key), '</a></td><td>', $key, '</td>';
+			$html .= '<td><a href="relationship.php?pid1='. $datalist[1]. '&amp;pid2='. $person->getXref(). '" title="'. WT_I18N::translate('Relationships'). '">'. WT_I18N::number($key). '</a></td><td>'. $key. '</td>';
 		} else {
-			echo '<td>&nbsp;</td><td>0</td>';
+			$html .= '<td>&nbsp;</td><td>0</td>';
 		}
 		//-- Birth date
-		echo '<td>';
+		$html .= '<td>';
 		if ($birth_dates=$person->getAllBirthDates()) {
 			foreach ($birth_dates as $num=>$birth_date) {
 				if ($num) {
-					echo '<br/>';
+					$html .= '<br/>';
 				}
-				echo $birth_date->Display(!$SEARCH_SPIDER);
+				$html .= $birth_date->Display(!$SEARCH_SPIDER);
 			}
 			if ($birth_dates[0]->gregorianYear()>=1550 && $birth_dates[0]->gregorianYear()<2030 && !isset($unique_indis[$person->getXref()])) {
 				$birt_by_decade[floor($birth_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
@@ -303,48 +303,48 @@ function print_indi_table($datalist, $option='') {
 			$birth_date=$person->getEstimatedBirthDate();
 			$birth_jd=$birth_date->JD();
 			if ($SHOW_EST_LIST_DATES) {
-				echo $birth_date->Display(!$SEARCH_SPIDER);
+				$html .= $birth_date->Display(!$SEARCH_SPIDER);
 			} else {
-				echo '&nbsp;';
+				$html .= '&nbsp;';
 			}
 			$birth_dates[0]=new WT_Date('');
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		echo '<td>', $birth_date->JD(), '</td>';
+		$html .= '<td>'. $birth_date->JD(). '</td>';
 		//-- Birth anniversary
-		echo '<td>';
+		$html .= '<td>';
 		if ($birth_dates[0]->isOK()) {
-			echo WT_I18N::number(WT_Date::GetAgeYears($birth_dates[0]));
+			$html .= WT_I18N::number(WT_Date::GetAgeYears($birth_dates[0]));
 		} else {
-			echo '&nbsp;';
+			$html .= '&nbsp;';
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Birth place
-		echo '<td>';
+		$html .= '<td>';
 		foreach ($person->getAllBirthPlaces() as $n=>$birth_place) {
 			if ($n) {
-				echo '<br>';
+				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				echo get_place_short($birth_place), ' ';
+				$html .= get_place_short($birth_place). ' ';
 			} else {
-				echo '<a href="', get_place_url($birth_place), '" title="', $birth_place, '">';
-				echo highlight_search_hits(get_place_short($birth_place)), '</a>';
+				$html .= '<a href="'. get_place_url($birth_place). '" title="'. $birth_place. '">';
+				$html .= highlight_search_hits(get_place_short($birth_place)). '</a>';
 			}
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Number of children
 		$nchi=$person->getNumberOfChildren();
-		echo '<td>', WT_I18N::number($nchi), '</td><td>', $nchi, '</td>';
+		$html .= '<td>'. WT_I18N::number($nchi). '</td><td>'. $nchi. '</td>';
 		//-- Death date
-		echo '<td>';
+		$html .= '<td>';
 		if ($death_dates=$person->getAllDeathDates()) {
 			foreach ($death_dates as $num=>$death_date) {
 				if ($num) {
-					echo '<br/>';
+					$html .= '<br/>';
 				}
-				echo $death_date->Display(!$SEARCH_SPIDER);
+				$html .= $death_date->Display(!$SEARCH_SPIDER);
 			}
 			if ($death_dates[0]->gregorianYear()>=1550 && $death_dates[0]->gregorianYear()<2030 && !isset($unique_indis[$person->getXref()])) {
 				$deat_by_decade[floor($death_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
@@ -353,25 +353,25 @@ function print_indi_table($datalist, $option='') {
 			$death_date=$person->getEstimatedDeathDate();
 			$death_jd=$death_date->JD();
 			if ($SHOW_EST_LIST_DATES) {
-				echo $death_date->Display(!$SEARCH_SPIDER);
+				$html .= $death_date->Display(!$SEARCH_SPIDER);
 			} else if ($person->isDead()) {
-				echo WT_I18N::translate('yes');
+				$html .= WT_I18N::translate('yes');
 			} else {
-				echo '&nbsp;';
+				$html .= '&nbsp;';
 			}
 			$death_dates[0]=new WT_Date('');
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		echo '<td>', $death_date->JD(), '</td>';
+		$html .= '<td>'. $death_date->JD(). '</td>';
 		//-- Death anniversary
-		echo '<td>';
+		$html .= '<td>';
 		if ($death_dates[0]->isOK()) {
-			echo WT_I18N::number(WT_Date::GetAgeYears($death_dates[0]));
+			$html .= WT_I18N::number(WT_Date::GetAgeYears($death_dates[0]));
 		} else {
-			echo '&nbsp;';
+			$html .= '&nbsp;';
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Age at death
 		if ($birth_dates[0]->isOK() && $death_dates[0]->isOK()) {
 			$age=WT_Date::GetAgeYears($birth_dates[0], $death_dates[0]);
@@ -382,74 +382,74 @@ function print_indi_table($datalist, $option='') {
 			$age='';
 		}
 		// Need both display and sortable age
-		echo '<td>', WT_I18N::number($age), '</td><td>', $age, '</td>';
+		$html .= '<td>'. WT_I18N::number($age). '</td><td>'. $age. '</td>';
 		//-- Death place
-		echo '<td>';
+		$html .= '<td>';
 		foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
 			if ($n) {
-				echo '<br>';
+				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				echo get_place_short($death_place), ' ';
+				$html .= get_place_short($death_place). ' ';
 			} else {
-				echo '<a href="', get_place_url($death_place), '" title="', $death_place, '">';
-				echo highlight_search_hits(get_place_short($death_place)), '</a>';
+				$html .= '<a href="'. get_place_url($death_place). '" title="'. $death_place. '">';
+				$html .= highlight_search_hits(get_place_short($death_place)). '</a>';
 			}
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td>', $person->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
+			$html .= '<td>'. $person->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
 		} else {
-			echo '<td>&nbsp;</td>';
+			$html .= '<td>&nbsp;</td>';
 		}
 		//-- Sorting by gender
-		echo '<td>';
-		echo $person->getSex();
-		echo '</td>';
+		$html .= '<td>';
+		$html .= $person->getSex();
+		$html .= '</td>';
 		//-- Filtering by birth date
-		echo '<td>';
+		$html .= '<td>';
 		if (!$person->canDisplayDetails() || WT_Date::Compare($birth_dates[0], $d100y)>0) {
-			echo 'Y100';
+			$html .= 'Y100';
 		} else {
-			echo 'YES';
+			$html .= 'YES';
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Filtering by death date
-		echo '<td>';
+		$html .= '<td>';
 		if ($person->isDead()) {
 			if (WT_Date::Compare($death_dates[0], $d100y)>0) {
-				echo 'Y100';
+				$html .= 'Y100';
 			} else {
-				echo 'YES';
+				$html .= 'YES';
 			}
 		} else {
-			echo 'N';
+			$html .= 'N';
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Roots or Leaves ?
-		echo '<td>';
-		if (!$person->getChildFamilies()) { echo 'R'; }  // roots
-		elseif (!$person->isDead() && $person->getNumberOfChildren()<1) { echo 'L'; } // leaves
-		else { echo '&nbsp;'; }
-		echo '</td>';
-		echo '</tr>';
+		$html .= '<td>';
+		if (!$person->getChildFamilies()) { $html .= 'R'; }  // roots
+		elseif (!$person->isDead() && $person->getNumberOfChildren()<1) { $html .= 'L'; } // leaves
+		else { $html .= '&nbsp;'; }
+		$html .= '</td>';
+		$html .= '</tr>';
 		$unique_indis[$person->getXref()]=true;
 	}
-	echo '</tbody>',
-		'</table>';
+	$html .= '</tbody></table>';
 	//-- charts
-	echo '<div class="indi_list_table-charts_', $table_id, '" style="display:none">',
-		'<table class="list_table center">',
-		'<tr><td class="list_value_wrap">',
-		print_chart_by_decade($birt_by_decade, WT_I18N::translate('Decade of birth')),
-		'</td><td class="list_value_wrap">',
-		print_chart_by_decade($deat_by_decade, WT_I18N::translate('Decade of death')),
-		'</td></tr><tr><td colspan="2" class="list_value_wrap">',
-		print_chart_by_age($deat_by_age, WT_I18N::translate('Age related to death year')),
-		'</td></tr></table>',
-		'</div>',
-		'</div>'; // Close "indi-list"
+	$html .= '<div class="indi_list_table-charts_'. $table_id. '" style="display:none">
+		<table class="list-charts"><tr><td>'.
+		print_chart_by_decade($birt_by_decade, WT_I18N::translate('Decade of birth')).
+		'</td><td>'.
+		print_chart_by_decade($deat_by_decade, WT_I18N::translate('Decade of death')).
+		'</td></tr><tr><td colspan="2">'.
+		print_chart_by_age($deat_by_age, WT_I18N::translate('Age related to death year')).
+		'</td></tr></table>
+		</div>
+		</div>'; // Close "indi-list"
+		
+	return $html;
 }
 
 // print a table of families
@@ -2021,7 +2021,8 @@ function print_chart_by_age($data, $title) {
 	for ($age=0; $age<=$agemax; $age++) {
 		$chart_url .= $CHART_ENCODING61[floor(substr_count($data[$age], "F")*61/$vmax)];
 	}
-	echo "<img src=\"", $chart_url, "\" alt=\"", $title, "\" title=\"", $title, "\" class=\"gchart\" />";
+	$html = '<img src="'. $chart_url. '" alt="'. $title. '" title="'. $title. '" class="gchart" />';
+	return $html;
 }
 
 // print a chart by decade using Google chart API
@@ -2070,5 +2071,6 @@ function print_chart_by_decade($data, $title) {
 	for ($y=1570; $y<2030; $y+=10) {
 		$chart_url .= $CHART_ENCODING61[floor(substr_count($data[$y], "F")*61/$vmax)];
 	}
-	echo "<img src=\"", $chart_url, "\" alt=\"", $title, "\" title=\"", $title, "\" class=\"gchart\" />";
+	$html = '<img src="'. $chart_url. '" alt="'. $title. '" title="'. $title. '" class="gchart" />';
+	return $html;
 }

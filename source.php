@@ -142,7 +142,7 @@ echo '<div id="source-tabs">
 	// Individuals linked to this source
 	if ($controller->record->countLinkedIndividuals()) {
 		echo '<div id="indi-sources">';
-		print_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
+		echo format_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
 		echo '</div>'; //close "indi-sources"
 	}
 	// Families linked to this source

@@ -151,7 +151,7 @@ echo '<div id="media-tabs">';
 	// Individuals linked to this media object
 	if ($controller->record->countLinkedIndividuals()) {
 		echo '<div id="indi-media">';
-		print_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
+		echo format_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
 		echo '</div>'; //close "indi-media"
 	}
 

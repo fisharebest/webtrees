@@ -159,7 +159,7 @@ echo '<div id="note-tabs">
 	// Individuals linked to this shared note
 	if ($controller->record->countLinkedIndividuals()) {
 		echo '<div id="indi-note">';
-		print_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
+		echo format_indi_table($controller->record->fetchLinkedIndividuals(), $controller->record->getFullName());
 		echo '</div>'; //close "indi-note"
 	}
 	// Families linked to this shared note

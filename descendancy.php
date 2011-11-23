@@ -141,7 +141,7 @@ case 1: //-- booklet
 case 2: //-- Individual list
 	$descendants=indi_desc($controller->descPerson, $controller->generations, array());
 	echo '<div id="descendancy-list">';
-	print_indi_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
+	echo format_indi_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
 	echo '</div>';
 	break;
 case 3: //-- Family list

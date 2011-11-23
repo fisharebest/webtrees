@@ -434,7 +434,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		$ret = true;
 		if (count($this->myindilist)>0) {
 			uasort($this->myindilist, array('WT_GedcomRecord', 'Compare'));
-			print_indi_table($this->myindilist);
+			echo format_indi_table($this->myindilist);
 		}
 		else {
 			$ret = false;
