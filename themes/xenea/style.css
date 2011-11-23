@@ -1937,6 +1937,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0; margin-right:
 .indi-list .stats, .fam-list .stats {margin:0 auto; width:auto;}
 .source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th, .fam-list th, .recent_changes_block th, .upcoming_events_block th, .todays_events_block th, .todo_block th, .yahrzeit_block th, .surname-list th, .givn-list th {cursor:pointer; white-space:nowrap;}
 .source-list th:last-child, .note-list th:last-child, .repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
+.givn-list th{cursor:pointer;white-space: nowrap;padding:2px;text-align:center;}
 #source-details h2,#source-list-page h2, #note-details h2, #note-list-page h2, #repo-details h2, #repo-list-page h2, #media-details h2, #media-list-page h2  {margin-bottom:20px; text-align:center;}
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto; visibility:hidden; width:80%;}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}

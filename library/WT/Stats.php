@@ -3582,7 +3582,7 @@ class WT_Stats {
 					jQuery("#'.$table_id.'").css("visibility", "visible");
 				');
 				$lookup=array('M'=>WT_I18N::translate('Male'), 'F'=>WT_I18N::translate('Female'), 'U'=>WT_I18N::translate_c('unknown gender', 'Unknown'), 'B'=>WT_I18N::translate('All'));
-				return '<table id="'.$table_id.'"><thead><tr><th class="ui-state-default" colspan="2">'.$lookup[$sex].'</th></tr><tr><th>'.WT_I18N::translate('Name').'</th><th>'.WT_I18N::translate('Count').'</th></tr></thead><tbody>'.join('', $common).'</tbody></table>';
+				return '<table id="'.$table_id.'" class="givn-list"><thead><tr><th class="ui-state-default" colspan="2">'.$lookup[$sex].'</th></tr><tr><th>'.WT_I18N::translate('Name').'</th><th>'.WT_I18N::translate('Count').'</th></tr></thead><tbody>'.join('', $common).'</tbody></table>';
 			case 'list':
 				return '<ul>\n'.join("\n", $common).'</ul>\n';
 			case 'nolist':
