@@ -998,13 +998,17 @@ function print_sour_table($datalist) {
 				"aoColumns": [
 					/*  0 title  */ {"iDataSort": 1},
 					/*  1 TITL   */ {"bVisible": false, "sType": "unicode"},
-					/*  4 author */ {"sType": "unicode"},
-					/*  5 #indi  */ {"sType": "numeric", "sClass": "center"},
-					/*  6 #fam   */ {"sType": "numeric", "sClass": "center"},
-					/*  7 #obje  */ {"sType": "numeric", "sClass": "center"},
-					/*  8 #note  */ {"sType": "numeric", "sClass": "center"},
-					/*  9 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 10 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+					/*  2 author */ {"sType": "unicode"},
+					/*  3 #indi  */ {"iDataSort": 4, "sClass": "center"},
+					/*  4 #INDI  */ {"sType": "numeric", "bVisible": false},
+					/*  5 #fam   */ {"iDataSort": 6, "sClass": "center"},
+					/*  6 #FAM   */ {"sType": "numeric", "bVisible": false},
+					/*  7 #obje  */ {"iDataSort": 8, "sClass": "center"},
+					/*  8 #OBJE  */ {"sType": "numeric", "bVisible": false},
+					/*  9 #note  */ {"iDataSort": 10, "sClass": "center"},
+					/* 10 #NOTE  */ {"sType": "numeric", "bVisible": false},
+					/* 11 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 12 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 				],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
@@ -1022,9 +1026,13 @@ function print_sour_table($datalist) {
 	echo '<th>TITL</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
+	echo '<th>#INDI</th>';
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
+	echo '<th>#FAM</th>';
 	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
+	echo '<th>#OBJE</th>';
 	echo '<th>', WT_I18N::translate('Shared notes'), '</th>';
+	echo '<th>#NOTE</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th>&nbsp;</th>';//delete
 	echo '</tr></thead>';
@@ -1073,13 +1081,17 @@ function print_sour_table($datalist) {
 		//-- Author
 		echo '<td>', highlight_search_hits(htmlspecialchars($source->getAuth())), '</td>';
 		//-- Linked INDIs
-		echo '<td>', $source->countLinkedIndividuals(), '</td>';
+		$num=$source->countLinkedIndividuals();
+		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 		//-- Linked FAMs
-		echo '<td>', $source->countLinkedfamilies(), '</td>';
+		$num=$source->countLinkedfamilies();
+		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 		//-- Linked OBJEcts
-		echo '<td>', $source->countLinkedMedia(), '</td>';
+		$num=$source->countLinkedMedia();
+		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 		//-- Linked NOTEs
-		echo '<td>', $source->countLinkedNotes(), '</td>';
+		$num=$source->countLinkedNotes();
+		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>', $source->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
@@ -1259,10 +1271,11 @@ function print_repo_table($repos) {
 			"bAutoWidth":false,
 			"bProcessing": true,
 			"aoColumns": [
-				/* 0 name  */ {"sType": "unicode"},
-				/* 1 #sour  */ {"sType": "numeric", "sClass": "center"},
-				/* 2 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 3 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				/* 0 name   */ {"sType": "unicode"},
+				/* 1 #sour  */ {"iDataSort": 2, "sClass": "center"},
+				/* 2 #SOUR  */ {"sType": "numeric", "bVisible": false},
+				/* 3 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 4 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1278,6 +1291,7 @@ function print_repo_table($repos) {
 	echo '<table id="', $table_id, '"><thead><tr>';
 	echo '<th>', WT_I18N::translate('Repository name'), '</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
+	echo '<th>#SOUR</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '<th>&nbsp;</th>';//delete
 	echo '</tr></thead>';
@@ -1303,7 +1317,8 @@ function print_repo_table($repos) {
 		}	
 		echo '</td>';
 		//-- Linked SOURces
-		echo '<td>', $repo->countLinkedSources(), '</td>';
+		$num=$repo->countLinkedSources();
+		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			echo '<td>', $repo->LastChangeTimestamp(!$SEARCH_SPIDER), '</td>';
@@ -1366,10 +1381,13 @@ function print_media_table($datalist) {
 			"aoColumns": [
 				/* 0 media  */ {"bSortable": false},
 				/* 1 title  */ {"sType": "unicode"},
-				/* 2 #indi  */ {"sType": "numeric", "sClass": "center"},
-				/* 3 #fam   */ {"sType": "numeric", "sClass": "center"},
-				/* 4 #sour  */ {"sType": "numeric", "sClass": "center"},
-				/* 5 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 2 #indi  */ {"iDataSort": 3, "sClass": "center"},
+				/* 3 #INDI  */ {"sType": "numeric", "bVisible": false},
+				/* 4 #fam   */ {"iDataSort": 5, "sClass": "center"},
+				/* 5 #FAM   */ {"sType": "numeric", "bVisible": false},
+				/* 6 #sour  */ {"iDataSort": 7, "sClass": "center"},
+				/* 7 #SOUR  */ {"sType": "numeric", "bVisible": false},
+				/* 8 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1386,8 +1404,11 @@ function print_media_table($datalist) {
 	echo '<th>', WT_I18N::translate('Media'), '</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
 	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
+	echo '<th>#INDI</th>';
 	echo '<th>', WT_I18N::translate('Families'), '</th>';
+	echo '<th>#FAM</th>';
 	echo '<th>', WT_I18N::translate('Sources'), '</th>';
+	echo '<th>#SOUR</th>';
 	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
 	echo '</tr></thead>';
 	//-- table body
@@ -1416,11 +1437,14 @@ function print_media_table($datalist) {
 			echo '</td>';
 
 			//-- Linked INDIs
-			echo '<td>', $media->countLinkedIndividuals(), '</td>';
+			$num=$media->countLinkedIndividuals();
+			echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 			//-- Linked FAMs
-			echo '<td>', $media->countLinkedfamilies(), '</td>';
+			$num=$media->countLinkedfamilies();
+			echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 			//-- Linked SOURces
-			echo '<td>', $media->countLinkedSources(), '</td>';
+			$num=$media->countLinkedSources();
+			echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {
 				echo '<td>', $media->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
