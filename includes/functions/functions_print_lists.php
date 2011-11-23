@@ -1863,8 +1863,9 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 					/* 1-NAME */   { "bVisible": false },
 					/* 2-Date */   { "iDataSort": 3 },
 					/* 3-DATE */   { "bVisible": false },
-					/* 4-Anniv. */ { "sClass": "center" },
-					/* 5-Event */  { "sClass": "center" }
+					/* 4-Anniv. */ { "iDataSort": 5, "sClass": "center"},
+					/* 5-ANNIV  */ { "sType": "numeric", "bVisible": false},
+					/* 6-Event */  { "sClass": "center" }
 				]
 			});		
 		');
@@ -1915,6 +1916,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$return .= '<th>'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
 			$return .= '<th>DATE</th>'; //hidden by datatables code
 			$return .= '<th><img src="'.$WT_IMAGES["reminder"].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'"></th>';
+			$return .= '<th>ANNIV</th>';
 			$return .= '<th>'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
 			$return .= '</tr></thead><tbody>'."\n";
 		}
@@ -1952,11 +1954,8 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		$return .= $n;
 		$return .= '</td>';
 		//-- Anniversary
-		$return .= '<td class="center">';
 		$anniv = $value['anniv'];
-		if ($anniv==0) $return .= '&nbsp;';
-		else $return .= $anniv;
-		$return .= '</td>';
+		$return .= '<td>'.($anniv ? WT_I18N::number($anniv) : '&nbsp;').'</td><td>'.$anniv.'</td>';
 		//-- Event name
 		$return .= '<td class="wrap">';
 		$return .= '<a href="'.$value['url'].'">'.WT_Gedcom_Tag::getLabel($value['fact']).'</a>';
