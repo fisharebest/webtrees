@@ -97,30 +97,43 @@ function parse_time($timestr)
 function format_timestamp($time) {
 	global $DATE_FORMAT, $TIME_FORMAT;
 
-	// PHP time formatting is english only.
-/* TODO: cannot use this yet - the "a" in "a.m." gets refomatted by date()
- * Need to handle all of the time codes ourselves.
-	if (strpos('%a', $TIME_FORMAT)!==false || strpos('%A', $TIME_FORMAT)!==false) {
-		$fmt=date('His', $time);
-		if ($fmt=='000000') {
-			$TIME_FORMAT=str_replace('%A', WT_I18N::translate('MIDNIGHT'), $TIME_FORMAT);
-			$TIME_FORMAT=str_replace('%a', WT_I18N::translate('midnight'), $TIME_FORMAT);
-		} elseif ($fmt=='120000') {
-			$TIME_FORMAT=str_replace('%A', WT_I18N::translate('NOON'), $TIME_FORMAT);
-			$TIME_FORMAT=str_replace('%a', WT_I18N::translate('noon'), $TIME_FORMAT);
-		} elseif ($fmt>'120000') {
-			$TIME_FORMAT=str_replace('%A', WT_I18N::translate('P.M.'), $TIME_FORMAT);
-			$TIME_FORMAT=str_replace('%a', WT_I18N::translate('p.m.'), $TIME_FORMAT);
-		} else {
-			$TIME_FORMAT=str_replace('%A', WT_I18N::translate('A.M.'), $TIME_FORMAT);
-			$TIME_FORMAT=str_replace('%a', WT_I18N::translate('a.m.'), $TIME_FORMAT);
+	$time_fmt=$TIME_FORMAT;
+	// PHP::date() doesn't do I18N.  Do it ourselves....
+	preg_match_all('/%[^%]/', $time_fmt, $matches);
+	foreach ($matches[0] as $match) {
+		switch ($match) {
+		case '%a':
+			$t=date('His', $time);
+			if ($t=='000000') {
+				$time_fmt=str_replace($match, /* I18N: time format "%a" - exactly 00:00:00 */ WT_I18N::translate('midnight'), $time_fmt);
+			} elseif ($t<'120000') {
+				$time_fmt=str_replace($match, /* I18N: time format "%a" - between 00:00:01 and 11:59:59 */ WT_I18N::translate('a.m.'), $time_fmt);
+			} elseif ($t=='120000') {
+				$time_fmt=str_replace($match, /* I18N: time format "%a" - exactly 12:00:00 */ WT_I18N::translate('noon'), $time_fmt);
+			} else {
+				$time_fmt=str_replace($match, /* I18N: time format "%a" - between 12:00:01 and 23:59:59 */ WT_I18N::translate('p.m.'), $time_fmt);
+			}
+			break;
+		case '%A':
+			$t=date('His', $time);
+			if ($t=='000000') {
+				$time_fmt=str_replace($match, /* I18N: time format "%A" - exactly 00:00:00 */ WT_I18N::translate('Midnight'), $time_fmt);
+			} elseif ($t<'120000') {
+				$time_fmt=str_replace($match, /* I18N: time format "%A" - between 00:00:01 and 11:59:59 */ WT_I18N::translate('A.M.'), $time_fmt);
+			} elseif ($t=='120000') {
+				$time_fmt=str_replace($match, /* I18N: time format "%A" - exactly 12:00:00 */ WT_I18N::translate('Noon'), $time_fmt);
+			} else {
+				$time_fmt=str_replace($match, /* I18N: time format "%A" - between 12:00:01 and 23:59:59 */ WT_I18N::translate('P.M.'), $time_fmt);
+			}
+				break;
+		default:
+			$time_fmt=str_replace($match, WT_I18N::number(date(substr($match, -1), $time)), $time_fmt);
 		}
 	}
-*/
 
 	return
 		PrintReady(timestamp_to_gedcom_date($time)->Display(false, $DATE_FORMAT).
-		'<span class="date"> - '.date(str_replace('%', '', $TIME_FORMAT), $time).'</span>');
+		'<span class="date"> - '.$time_fmt.'</span>');
 }
 
 ////////////////////////////////////////////////////////////////////////////////
