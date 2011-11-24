@@ -172,7 +172,7 @@ echo '<div id="media-tabs">';
 	// Repositories linked to this media object
 	if ($controller->record->countLinkedRepositories()) {
 		echo '<div id="repo-media">';
-		print_repo_table($controller->record->fetchLinkedRepositories(), $controller->record->getFullName());
+		echo format_repo_table($controller->record->fetchLinkedRepositories(), $controller->record->getFullName());
 		echo '</div>'; //close "repo-media"
 	}
 

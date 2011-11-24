@@ -1135,9 +1135,9 @@ function format_note_table($datalist) {
 }
 
 // print a table of repositories
-function print_repo_table($repos) {
+function format_repo_table($repos) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $controller;
-
+	$html = '';
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1165,57 +1165,57 @@ function print_repo_table($repos) {
 		');
 		
 	//--table wrapper
-	echo '<div class="loading-image">&nbsp;</div>';
-	echo '<div class="repo-list">';
+	$html .= '<div class="loading-image">&nbsp;</div>';
+	$html .= '<div class="repo-list">';
 	//-- table header
-	echo '<table id="', $table_id, '"><thead><tr>';
-	echo '<th>', WT_I18N::translate('Repository name'), '</th>';
-	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	echo '<th>#SOUR</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '<th>&nbsp;</th>';//delete
-	echo '</tr></thead>';
+	$html .= '<table id="'. $table_id. '"><thead><tr>';
+	$html .= '<th>'. WT_I18N::translate('Repository name'). '</th>';
+	$html .= '<th>'. WT_I18N::translate('Sources'). '</th>';
+	$html .= '<th>#SOUR</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th>&nbsp;</th>';//delete
+	$html .= '</tr></thead>';
 	//-- table body
-	echo '<tbody>';
+	$html .= '<tbody>';
 	$n=0;
 	foreach ($repos as $repo) {
 		if (!$repo->canDisplayDetails()) {
 			continue;
 		}
-		echo '<tr>';
+		$html .= '<tr>';
 		//-- Repository name(s)
-		echo '<td>';
+		$html .= '<td>';
 		foreach ($repo->getAllNames() as $n=>$name) {
 			if ($n) {
-				echo '<br/>';
+				$html .= '<br/>';
 			}
 			if ($n==$repo->getPrimaryName()) {
-				echo '<a class="name2" href="', $repo->getHtmlUrl(), '">', highlight_search_hits($name['full']), '</a>';
+				$html .= '<a class="name2" href="'. $repo->getHtmlUrl(). '">'. highlight_search_hits($name['full']). '</a>';
 			} else {
-				echo '<a href="', $repo->getHtmlUrl(), '">', highlight_search_hits($name['full']), '</a>';
+				$html .= '<a href="'. $repo->getHtmlUrl(). '">'. highlight_search_hits($name['full']). '</a>';
 			}
 		}	
-		echo '</td>';
+		$html .= '</td>';
 		//-- Linked SOURces
 		$num=$repo->countLinkedSources();
-		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td>', $repo->LastChangeTimestamp(!$SEARCH_SPIDER), '</td>';
+			$html .= '<td>'. $repo->LastChangeTimestamp(!$SEARCH_SPIDER). '</td>';
 		} else {
-			echo '<td>&nbsp;</td>';
+			$html .= '<td>&nbsp;</td>';
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-repository\',xref:\'', $repo->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($repo->getFullName()))). '\')) jQuery.post(\'action.php\'.{action:\'delete-repository\'.xref:\''. $repo->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
-			echo '<td>&nbsp;</td>';
+			$html .= '<td>&nbsp;</td>';
 		}
-		echo '</tr>';
+		$html .= '</tr>';
 	}
-	echo '</tbody>',
-		'</table>',
-		'</div>';
+	$html .= '</tbody</table></div>';
+	
+	return $html;
 }
 
 // print a table of media objects
