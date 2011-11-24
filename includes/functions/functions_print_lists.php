@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Functions for printing lists
 //
 // Various printing functions for printing lists
@@ -910,9 +910,9 @@ function format_fam_table($datalist, $option='') {
 }
 
 // print a table of sources
-function print_sour_table($datalist) {
+function format_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
-
+	$html = '';
 	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -948,26 +948,26 @@ function print_sour_table($datalist) {
 		');
 
 	//--table wrapper
-	echo '<div class="loading-image">&nbsp;</div>';
-	echo '<div class="source-list">';
+	$html .= '<div class="loading-image">&nbsp;</div>';
+	$html .= '<div class="source-list">';
 	//-- table header
-	echo '<table id="', $table_id, '"><thead><tr>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
-	echo '<th>TITL</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('AUTH'), '</th>';
-	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
-	echo '<th>#INDI</th>';
-	echo '<th>', WT_I18N::translate('Families'), '</th>';
-	echo '<th>#FAM</th>';
-	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
-	echo '<th>#OBJE</th>';
-	echo '<th>', WT_I18N::translate('Shared notes'), '</th>';
-	echo '<th>#NOTE</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '<th>&nbsp;</th>';//delete
-	echo '</tr></thead>';
+	$html .= '<table id="'. $table_id. '"><thead><tr>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('TITL'). '</th>';
+	$html .= '<th>TITL</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('AUTH'). '</th>';
+	$html .= '<th>'. WT_I18N::translate('Individuals'). '</th>';
+	$html .= '<th>#INDI</th>';
+	$html .= '<th>'. WT_I18N::translate('Families'). '</th>';
+	$html .= '<th>#FAM</th>';
+	$html .= '<th>'. WT_I18N::translate('Media objects'). '</th>';
+	$html .= '<th>#OBJE</th>';
+	$html .= '<th>'. WT_I18N::translate('Shared notes'). '</th>';
+	$html .= '<th>#NOTE</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th>&nbsp;</th>';//delete
+	$html .= '</tr></thead>';
 	//-- table body
-	echo '<tbody>';
+	$html .= '<tbody>';
 	$n=0;
 	foreach ($datalist as $key=>$value) {
 		if (is_object($value)) { // Array of objects
@@ -992,54 +992,53 @@ function print_sour_table($datalist) {
 		if (!$source || !$source->canDisplayDetails()) {
 			continue;
 		}
-		echo '<tr>';
+		$html .= '<tr>';
 		//-- Source name(s)
-		echo '<td>';
+		$html .= '<td>';
 		foreach ($source->getAllNames() as $n=>$name) {
 			if ($n) {
-				echo '<br/>';
+				$html .= '<br/>';
 			}
 			if ($n==$source->getPrimaryName()) {
-				echo '<a class="name2" href="', $source->getHtmlUrl(), '">', highlight_search_hits($name['full']), '</a>';
+				$html .= '<a class="name2" href="'. $source->getHtmlUrl(). '">'. highlight_search_hits($name['full']). '</a>';
 			} else {
-				echo '<a href="', $source->getHtmlUrl(), '">', highlight_search_hits($name['full']), '</a>';
+				$html .= '<a href="'. $source->getHtmlUrl(). '">'. highlight_search_hits($name['full']). '</a>';
 			}
 		}	
-		echo '</td>';
+		$html .= '</td>';
 		// Sortable name
-		echo '<td>', strip_tags($source->getFullName()), '</td>';
+		$html .= '<td>'. strip_tags($source->getFullName()). '</td>';
 		//-- Author
-		echo '<td>', highlight_search_hits(htmlspecialchars($source->getAuth())), '</td>';
+		$html .= '<td>'. highlight_search_hits(htmlspecialchars($source->getAuth())). '</td>';
 		//-- Linked INDIs
 		$num=$source->countLinkedIndividuals();
-		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked FAMs
 		$num=$source->countLinkedfamilies();
-		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked OBJEcts
 		$num=$source->countLinkedMedia();
-		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked NOTEs
 		$num=$source->countLinkedNotes();
-		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td>', $source->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
+			$html .= '<td>'. $source->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
 		} else {
-			echo '<td>&nbsp;</td>';
+			$html .= '<td>&nbsp;</td>';
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\'', $source->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?'. strip_tags($source->getFullName()))). '\')) jQuery.post(\'action.php\'.{action:\'delete-source\'.xref:\''. $source->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
-			echo '<td>&nbsp;</td>';
+			$html .= '<td>&nbsp;</td>';
 		}
-		echo '</tr>';
+		$html .= '</tr>';
 	}
-	echo
-		'</tbody>',
-		'</table>',
-		'</div>';
+	$html .= '</tbody></table></div>';
+		
+	return $html;
 }
 
 // print a table of shared notes

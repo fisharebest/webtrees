@@ -177,7 +177,7 @@ echo '<div id="note-tabs">
 	// Sources linked to this shared note
 	if ($controller->record->countLinkedSources()) {
 		echo '<div id="source-note">';
-		print_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
+		echo format_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
 		echo '</div>'; //close "source-note"
 	}
 echo '</div>'; //close div "note-tabs"

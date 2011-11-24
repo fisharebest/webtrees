@@ -681,7 +681,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 							load_gedcom_settings($ged_id);
 							echo '<h3 class="source-acc-header"><a href="#"><span class="search_item">'.$this->myquery.'</span>&nbsp;@&nbsp;'.PrintReady(get_gedcom_setting($ged_id, 'title')), '</a></h3>
 								<div class="source-acc_content">';
-								print_sour_table($datalist);
+								echo format_sour_table($datalist);
 							echo '</div>';//fam-acc_content
 						}
 					}

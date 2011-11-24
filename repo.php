@@ -135,7 +135,7 @@ echo '<div id="repo-tabs">
 	// Sources linked to this repository
 	if ($controller->record->countLinkedSources()) {
 		echo '<div id="source-repo">';
-		print_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
+		echo format_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
 		echo '</div>'; //close "source-repo"
 	}
 

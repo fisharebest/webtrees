@@ -165,7 +165,7 @@ echo '<div id="media-tabs">';
 	// Sources linked to this media object
 	if ($controller->record->countLinkedSources()) {
 		echo '<div id="sources-media">';
-		print_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
+		echo format_sour_table($controller->record->fetchLinkedSources(), $controller->record->getFullName());
 		echo '</div>'; //close "source-media"
 	}
 
