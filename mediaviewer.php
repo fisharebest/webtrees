@@ -158,7 +158,7 @@ echo '<div id="media-tabs">';
 	// Families linked to this media object
 	if ($controller->record->countLinkedFamilies()) {
 		echo '<div id="fam-media">';
-		print_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
+		echo format_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
 		echo '</div>'; //close "fam-media"
 	}
 

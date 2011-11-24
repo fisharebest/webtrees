@@ -336,7 +336,7 @@ if ($level > 0) {
 				if (!empty($mysourcelist)) {echo '<li><a href="#places-source"><span id="mediasource">', WT_I18N::translate('Sources'), '</span></a></li>';}
 			echo '</ul>';
 		if (!empty($myindilist)) {echo '<div id="places-indi">', format_indi_table($myindilist), '</div>';}
-		if (!empty($myfamlist)) {echo '<div id="places-fam">', print_fam_table($myfamlist), '</div>';}
+		if (!empty($myfamlist)) {echo '<div id="places-fam">', echo format_fam_table($myfamlist), '</div>';}
 		if (!empty($mysourcelist)) {echo '<div id="places-source">', print_sour_table($mysourcelist), '</div>';}
 		echo '</div>';//close #places-tabs
 		}

@@ -148,7 +148,7 @@ echo '<div id="source-tabs">
 	// Families linked to this source
 	if ($controller->record->countLinkedFamilies()) {
 		echo '<div id="fam-sources">';
-		print_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
+		echo format_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
 		echo '</div>'; //close "fam-sources"
 	}
 	// Media Items linked to this source

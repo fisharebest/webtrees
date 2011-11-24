@@ -255,7 +255,7 @@ if ($show=='indi' || $show=='surn') {
 			}
 		}
 		if ($show=='indi') {
-			print_fam_table(
+			echo format_fam_table(
 				WT_Query_Name::families($surname, $alpha, $falpha, $show_marnm, WT_GED_ID)
 			);
 		}

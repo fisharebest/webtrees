@@ -271,7 +271,7 @@ function format_indi_table($datalist, $option='') {
 			$html .= '<a '. $title. ' href="'. $person->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br/>';
 		}
 		// Indi parents
-		$html .= $person->getPrimaryParentsNames("parents_indi_list_table_".$table_id." details1", 'none');
+		$html .= $person->getPrimaryParentsNames('parents_indi_list_table_'.$table_id.' details1', 'none');
 		$html .= '</td>';
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
@@ -453,10 +453,11 @@ function format_indi_table($datalist, $option='') {
 }
 
 // print a table of families
-function print_fam_table($datalist, $option='') {
+function format_fam_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $controller;
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
+	$html = '';
 
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -621,35 +622,35 @@ function print_fam_table($datalist, $option='') {
 	for ($year=1550; $year<2030; $year+=10) $birt_by_decade[$year]='';
 	for ($year=1550; $year<2030; $year+=10) $marr_by_decade[$year]='';
 	//--table wrapper
-	echo '<div class="loading-image">&nbsp;</div>';
-	echo '<div class="fam-list">';
+	$html .= '<div class="loading-image">&nbsp;</div>';
+	$html .= '<div class="fam-list">';
 	//-- table header
-	echo '<table id="', $table_id, '"><thead><tr>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('GIVN'), '</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('SURN'), '</th>';
-	echo '<th>HUSB:GIVN_SURN</th>';
-	echo '<th>HUSB:SURN_GIVN</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
-	echo '<th>AGE</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('GIVN'), '</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('SURN'), '</th>';
-	echo '<th>WIFE:GIVN_SURN</th>';
-	echo '<th>WIFE:SURN_GIVN</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('AGE'), '</th>';
-	echo '<th>AGE</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('MARR'), '</th>';
-	echo '<th>MARR:DATE</th>';
-	echo '<th><img src="', $WT_IMAGES['reminder'], '" alt="', WT_I18N::translate('Anniversary'), '" title="', WT_I18N::translate('Anniversary'), '"></th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th>';
-	echo '<th><img src="', $WT_IMAGES['children'], '" alt="', WT_I18N::translate('Children'), '" title="', WT_I18N::translate('Children'), '"></th>';
-	echo '<th>NCHI</th>';
-	echo '<th ',($SHOW_LAST_CHANGE?'':''),'>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '<th>MARR</th>';
-	echo '<th>DEAT</th>';
-	echo '<th>TREE</th>';
-	echo '</tr></thead>';
+	$html .= '<table id="'. $table_id. '"><thead><tr>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('GIVN'). '</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('SURN'). '</th>';
+	$html .= '<th>HUSB:GIVN_SURN</th>';
+	$html .= '<th>HUSB:SURN_GIVN</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('AGE'). '</th>';
+	$html .= '<th>AGE</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('GIVN'). '</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('SURN'). '</th>';
+	$html .= '<th>WIFE:GIVN_SURN</th>';
+	$html .= '<th>WIFE:SURN_GIVN</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('AGE'). '</th>';
+	$html .= '<th>AGE</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('MARR'). '</th>';
+	$html .= '<th>MARR:DATE</th>';
+	$html .= '<th><img src="'. $WT_IMAGES['reminder']. '" alt="'. WT_I18N::translate('Anniversary'). '" title="'. WT_I18N::translate('Anniversary'). '"></th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('PLAC'). '</th>';
+	$html .= '<th><img src="'. $WT_IMAGES['children']. '" alt="'. WT_I18N::translate('Children'). '" title="'. WT_I18N::translate('Children'). '"></th>';
+	$html .= '<th>NCHI</th>';
+	$html .= '<th '.($SHOW_LAST_CHANGE?'':'').'>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th>MARR</th>';
+	$html .= '<th>DEAT</th>';
+	$html .= '<th>TREE</th>';
+	$html .= '</tr></thead>';
 	//-- table body
-	echo '<tbody>';
+	$html .= '<tbody>';
 	$num = 0;
 	$d100y=new WT_Date(date('Y')-100);  // 100 years ago
 	foreach ($datalist as $key => $value) {
@@ -675,9 +676,9 @@ function print_fam_table($datalist, $option='') {
 		}
 		//-- place filtering
 		if ($option=='MARR_PLAC' && strstr($family->getMarriagePlace(), $filter)===false) continue;
-		echo '<tr>';
+		$html .= '<tr>';
 		//-- Husband name(s)
-		echo '<td colspan="2">';
+		$html .= '<td colspan="2">';
 		foreach ($husb->getAllNames() as $num=>$name) {
 			if ($name['type']=='NAME') {
 				$title='';
@@ -694,23 +695,23 @@ function print_fam_table($datalist, $option='') {
 			}
 			// Only show married names if they are the name we are filtering by.
 			if ($name['type']!='_MARNM' || $num==$husb->getPrimaryName()) {
-				echo '<a ', $title, ' href="', $family->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
+				$html .= '<a '. $title. ' href="'. $family->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br/>';
 			}
 		}
 		// Husband parents
-		echo $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
-		echo '</td>';
+		$html .= $husb->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
+		$html .= '</td>';
 		// Dummy column to match colspan in header
-		echo '<td style="display:none;"></td>';
+		$html .= '<td style="display:none;"></td>';
 		//-- Husb GIVN
 		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
-		echo '<td>', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), 'AAAA', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), '</td>';
-		echo '<td>', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), 'AAAA', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), '</td>';
+		$html .= '<td>'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
+		$html .= '<td>'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Husband age
-		echo '<td>';
+		$html .= '<td>';
 		$hdate=$husb->getBirthDate();
 		if ($hdate->isOK() && $mdate->isOK()) {
 			if ($hdate->gregorianYear()>=1550 && $hdate->gregorianYear()<2030) {
@@ -718,14 +719,14 @@ function print_fam_table($datalist, $option='') {
 			}
 			$hage=WT_Date::GetAgeYears($hdate, $mdate);
 			$hage_jd = $mdate->MinJD()-$hdate->MinJD();
-			echo WT_I18N::number($hage);
+			$html .= WT_I18N::number($hage);
 			$marr_by_age[max(0, min($max_age, $hage))] .= $husb->getSex();
 		} else {
 			$hage=0;
 		}
-		echo '</td><td>', $hage, '</td>';
+		$html .= '</td><td>'. $hage. '</td>';
 		//-- Wife name(s)
-		echo '<td colspan="2">';
+		$html .= '<td colspan="2">';
 		foreach ($wife->getAllNames() as $num=>$name) {
 			if ($name['type']=='NAME') {
 				$title='';
@@ -742,24 +743,24 @@ function print_fam_table($datalist, $option='') {
 			}
 			// Only show married names if they are the name we are filtering by.
 			if ($name['type']!='_MARNM' || $num==$wife->getPrimaryName()) {
-				echo '<a ', $title, ' href="', $family->getHtmlUrl(), '"', $class. '>', highlight_search_hits($name['full']), '</a>', $sex_image, '<br/>';
+				$html .= '<a '. $title. ' href="'. $family->getHtmlUrl(). '"'. $class. '>'. highlight_search_hits($name['full']). '</a>'. $sex_image. '<br/>';
 			}
 		}
 		// Wife parents
-		echo $wife->getPrimaryParentsNames('parents_'.$table_id.' details1', 'none');
-		echo '</td>';
+		$html .= $wife->getPrimaryParentsNames("parents_".$table_id." details1", 'none');
+		$html .= '</td>';
 		// Dummy column to match colspan in header
-		echo '<td style="display:none;"></td>';
+		$html .= '<td style="display:none;"></td>';
 		//-- Wife GIVN
 		//-- Husb GIVN
 		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
-		echo '<td>', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), 'AAAA', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), '</td>';
-		echo '<td>', htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)), 'AAAA', htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)), '</td>';
+		$html .= '<td>'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
+		$html .= '<td>'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Wife age
-		echo '<td>';
+		$html .= '<td>';
 		$wdate=$wife->getBirthDate();
 		if ($wdate->isOK() && $mdate->isOK()) {
 			if ($wdate->gregorianYear()>=1550 && $wdate->gregorianYear()<2030) {
@@ -767,20 +768,20 @@ function print_fam_table($datalist, $option='') {
 			}
 			$wage=WT_Date::GetAgeYears($wdate, $mdate);
 			$wage_jd = $mdate->MinJD()-$wdate->MinJD();
-			echo WT_I18N::number($wage);
+			$html .= WT_I18N::number($wage);
 			$marr_by_age[max(0, min($max_age, $wage))] .= $wife->getSex();
 		} else {
 			$wage=0;
 		}
-		echo '</td><td>', $wage, '</td>';
+		$html .= '</td><td>'. $wage. '</td>';
 		//-- Marriage date
-		echo '<td>';
+		$html .= '<td>';
 		if ($marriage_dates=$family->getAllMarriageDates()) {
 			foreach ($marriage_dates as $n=>$marriage_date) {
 				if ($n) {
-					echo '<br/>';
+					$html .= '<br/>';
 				}
-				echo '<div>', $marriage_date->Display(!$SEARCH_SPIDER), '</div>';
+				$html .= '<div>'. $marriage_date->Display(!$SEARCH_SPIDER). '</div>';
 			}
 			if ($marriage_dates[0]->gregorianYear()>=1550 && $marriage_dates[0]->gregorianYear()<2030) {
 				$marr_by_decade[floor($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
@@ -788,123 +789,124 @@ function print_fam_table($datalist, $option='') {
 		} else if (get_sub_record(1, '1 _NMR', $family->getGedcomRecord())) {
 			$hus = $family->getHusband();
 			$wif = $family->getWife();
-			if (empty($wif) && !empty($hus)) echo WT_Gedcom_Tag::getLabel('_NMR', $hus);
-			else if (empty($hus) && !empty($wif)) echo WT_Gedcom_Tag::getLabel('_NMR', $wif);
-			else echo WT_Gedcom_Tag::getLabel('_NMR');
+			if (empty($wif) && !empty($hus)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $hus);
+			else if (empty($hus) && !empty($wif)) $html .= WT_Gedcom_Tag::getLabel('_NMR', $wif);
+			else $html .= WT_Gedcom_Tag::getLabel('_NMR');
 		} else if (get_sub_record(1, '1 _NMAR', $family->getGedcomRecord())) {
 			$hus = $family->getHusband();
 			$wif = $family->getWife();
-			if (empty($wif) && !empty($hus)) echo WT_Gedcom_Tag::getLabel('_NMAR', $hus);
-			else if (empty($hus) && !empty($wif)) echo WT_Gedcom_Tag::getLabel('_NMAR', $wif);
-			else echo WT_Gedcom_Tag::getLabel('_NMAR');
+			if (empty($wif) && !empty($hus)) $html .= WT_Gedcom_Tag::getLabel('_NMAR', $hus);
+			else if (empty($hus) && !empty($wif)) $html .= WT_Gedcom_Tag::getLabel('_NMAR', $wif);
+			else $html .= WT_Gedcom_Tag::getLabel('_NMAR');
 		} else {
 			$factdetail = explode(' ', trim($family->getMarriageRecord()));
 			if (isset($factdetail)) {
 				if (count($factdetail) >= 3) {
 					if (strtoupper($factdetail[2]) != "N") {
-						echo WT_I18N::translate('yes');
+						$html .= WT_I18N::translate('yes');
 					} else {
-						echo WT_I18N::translate('no');
+						$html .= WT_I18N::translate('no');
 					}
 				} else {
-					echo '&nbsp;';
+					$html .= '&nbsp;';
 				}
 			}
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Event date (sortable)hidden by datatables code
-		echo '<td>';
+		$html .= '<td>';
 		if ($marriage_dates) {
-			echo $marriage_date->JD();
+			$html .= $marriage_date->JD();
 		} else {
-			echo 0;
+			$html .= 0;
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Marriage anniversary
-		echo '<td>';
+		$html .= '<td>';
 		$mage=WT_Date::GetAgeYears($mdate);
 		if ($mage) {
-			echo WT_I18N::number($mage);
+			$html .= WT_I18N::number($mage);
 		} else {
-			echo '&nbsp;';
+			$html .= '&nbsp;';
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Marriage place
-		echo '<td>';
+		$html .= '<td>';
 		foreach ($family->getAllMarriagePlaces() as $n=>$marriage_place) {
 			if ($n) {
-				echo '<br>';
+				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				echo get_place_short($marriage_place), ' ';
+				$html .= get_place_short($marriage_place). ' ';
 			} else {
-				echo '<a href="', get_place_url($marriage_place), '" title="', $marriage_place, '">';
-				echo highlight_search_hits(get_place_short($marriage_place)), '</a>';
+				$html .= '<a href="'. get_place_url($marriage_place). '" title="'. $marriage_place. '">';
+				$html .= highlight_search_hits(get_place_short($marriage_place)). '</a>';
 			}
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Number of children
 		$nchi=$family->getNumberOfChildren();
-		echo '<td>', WT_I18N::number($nchi), '</td><td>', $nchi, '</td>';
+		$html .= '<td>'. WT_I18N::number($nchi). '</td><td>'. $nchi. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td>', $family->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
+			$html .= '<td>'. $family->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
 		} else {
-			echo '<td>&nbsp;</td>';
+			$html .= '<td>&nbsp;</td>';
 		}
 		//-- Sorting by marriage date
-		echo '<td>';
+		$html .= '<td>';
 		if (!$family->canDisplayDetails() || !$mdate->isOK()) {
-			echo 'U';
+			$html .= 'U';
 		} else {
 			if (WT_Date::Compare($mdate, $d100y)>0) {
-				echo 'Y100';
+				$html .= 'Y100';
 			} else {
-				echo 'YES';
+				$html .= 'YES';
 			}
 		}
 		if ($family->isDivorced()) {
-			echo 'D';
+			$html .= 'D';
 		}
 		if (count($husb->getSpouseFamilies())>1 || count($wife->getSpouseFamilies())>1) {
-			echo 'M';
+			$html .= 'M';
 		}
-		echo '</td>';
+		$html .= '</td>';
 		//-- Sorting alive/dead
-		echo '<td>';
-			if ($husb->isDead() && $wife->isDead()) echo 'Y';
+		$html .= '<td>';
+			if ($husb->isDead() && $wife->isDead()) $html .= 'Y';
 			if ($husb->isDead() && !$wife->isDead()) {
-				if ($wife->getSex()=='F') echo 'H';
-				if ($wife->getSex()=='M') echo 'W'; // male partners
+				if ($wife->getSex()=='F') $html .= 'H';
+				if ($wife->getSex()=='M') $html .= 'W'; // male partners
 			}
 			if (!$husb->isDead() && $wife->isDead()) {
-				if ($husb->getSex()=='M') echo 'W';
-				if ($husb->getSex()=='F') echo 'H'; // female partners
+				if ($husb->getSex()=='M') $html .= 'W';
+				if ($husb->getSex()=='F') $html .= 'H'; // female partners
 			}
-			if (!$husb->isDead() && !$wife->isDead()) echo 'N';
-		echo '</td>';
+			if (!$husb->isDead() && !$wife->isDead()) $html .= 'N';
+		$html .= '</td>';
 		//-- Roots or Leaves
-		echo '<td>';
-			if (!$husb->getChildFamilies() && !$wife->getChildFamilies()) { echo 'R'; } // roots
-			elseif (!$husb->isDead() && !$wife->isDead() && $family->getNumberOfChildren()<1) { echo 'L'; } // leaves
-			else { echo '&nbsp;'; }
-		echo '</td>',
-		'</tr>';
+		$html .= '<td>';
+			if (!$husb->getChildFamilies() && !$wife->getChildFamilies()) { $html .= 'R'; } // roots
+			elseif (!$husb->isDead() && !$wife->isDead() && $family->getNumberOfChildren()<1) { $html .= 'L'; } // leaves
+			else { $html .= '&nbsp;'; }
+		$html .= '</td>
+		</tr>';
 	}
-	echo '</tbody>',
+	$html .= '</tbody>'.
 		'</table>';
 	//-- charts
-	echo '<div class="fam_list_table-charts_', $table_id, '" style="display:none">',
-		'<table class="list_table center">',
-		'<tr><td class="list_value_wrap">',
-		print_chart_by_decade($birt_by_decade, WT_I18N::translate('Decade of birth')),
-		'</td><td class="list_value_wrap">',
-		print_chart_by_decade($marr_by_decade, WT_I18N::translate('Decade of marriage')),
-		'</td></tr><tr><td colspan="2" class="list_value_wrap">',
-		print_chart_by_age($marr_by_age, WT_I18N::translate('Age in year of marriage')),
-		'</td></tr></table>',
-		'</div>',
-		'</div>'; // Close "fam-list"
+	$html .= '<div class="fam_list_table-charts_'. $table_id. '" style="display:none">
+		<table class="list-charts"><tr><td>'.
+		print_chart_by_decade($birt_by_decade, WT_I18N::translate('Decade of birth')).
+		'</td><td>'.
+		print_chart_by_decade($marr_by_decade, WT_I18N::translate('Decade of marriage')).
+		'</td></tr><tr><td colspan="2">'.
+		print_chart_by_age($marr_by_age, WT_I18N::translate('Age in year of marriage')).
+		'</td></tr></table>
+		</div>
+		</div>'; // Close "fam-list"
+	
+	return $html;
 }
 
 // print a table of sources

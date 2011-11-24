@@ -165,7 +165,7 @@ echo '<div id="note-tabs">
 	// Families linked to this shared note
 	if ($controller->record->countLinkedFamilies()) {
 		echo '<div id="fam-note">';
-		print_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
+		echo format_fam_table($controller->record->fetchLinkedFamilies(), $controller->record->getFullName());
 		echo '</div>'; //close "fam-note"
 	}
 	// Media Items linked to this shared note

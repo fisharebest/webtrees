@@ -225,7 +225,7 @@ case 3:
 		}
 	}
 	echo '<div id="ancestry-list">';
-	print_fam_table($famlist, WT_I18N::translate('Ancestors of %s', $controller->name));
+	echo format_fam_table($famlist, WT_I18N::translate('Ancestors of %s', $controller->name));
 	echo '</div>';
 	break;
 }
