@@ -329,15 +329,26 @@ if ($level > 0) {
 		<?php
 		echo WT_JS_END;
 		echo '<div class="loading-image">&nbsp;</div>';
-		echo '<div id="places-tabs">
-			<ul>';
-				if (!empty($myindilist)) {echo '<li><a href="#places-indi"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';}
-				if (!empty($myfamlist)) {echo '<li><a href="#places-fam"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';}
-				if (!empty($mysourcelist)) {echo '<li><a href="#places-source"><span id="mediasource">', WT_I18N::translate('Sources'), '</span></a></li>';}
-			echo '</ul>';
-		if (!empty($myindilist)) {echo '<div id="places-indi">', format_indi_table($myindilist), '</div>';}
-		if (!empty($myfamlist)) {echo '<div id="places-fam">', echo format_fam_table($myfamlist), '</div>';}
-		if (!empty($mysourcelist)) {echo '<div id="places-source">', format_sour_table($mysourcelist), '</div>';}
+		echo '<div id="places-tabs"><ul>';
+		if ($myindilist) {
+			echo '<li><a href="#places-indi"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
+		}
+		if ($myfamlist) {
+			echo '<li><a href="#places-fam"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';
+		}
+		if ($mysourcelist) {
+			echo '<li><a href="#places-source"><span id="mediasource">', WT_I18N::translate('Sources'), '</span></a></li>';
+		}
+		echo '</ul>';
+		if ($myindilist) {
+			echo '<div id="places-indi">', format_indi_table($myindilist), '</div>';
+		}
+		if ($myfamlist) {
+			echo '<div id="places-fam">', format_fam_table($myfamlist), '</div>';
+		}
+		if ($mysourcelist) {
+			echo '<div id="places-source">', format_sour_table($mysourcelist), '</div>';
+		}
 		echo '</div>';//close #places-tabs
 		}
 }
