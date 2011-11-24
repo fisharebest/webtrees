@@ -391,6 +391,7 @@ width: 99%;
 #index_small_blocks {clear:none; float:right; width:33%;}
 #index_full_blocks {clear:none; width:100%;}
 #index_small_blocks .name1 {color:#333;}
+#random_picture {text-align:center;}
 .small_inner_block {max-height: 200px; overflow: auto;}
 .block {color: #000;vertical-align: top;margin-bottom: 5px;padding: 1px;}
 .blockcontent {border: solid #999 1px; margin-left:auto; margin-right:2px; margin-bottom:10px; overflow:auto;padding: 5px;}
@@ -453,22 +454,6 @@ visibility:visible;
 
 #index_title {
 float: left;
-}
-
-#random_picture {
-height:auto;
-}
-
-#random_picture_box {
-width:99%;
-}
-
-#random_picture .blockheader .ltr {
-text-align:left;
-}
-
-#random_picture .blockheader .rtl {
-text-align:right;
 }
 
 #pedigree_chart {
