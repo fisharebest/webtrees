@@ -1219,9 +1219,9 @@ function format_repo_table($repos) {
 }
 
 // print a table of media objects
-function print_media_table($datalist) {
+function format_media_table($datalist) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
-
+	$html = '';
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1253,22 +1253,22 @@ function print_media_table($datalist) {
 		');
 		
 	//--table wrapper
-	echo '<div class="loading-image">&nbsp;</div>';
-	echo '<div class="media-list">';
+	$html .= '<div class="loading-image">&nbsp;</div>';
+	$html .= '<div class="media-list">';
 	//-- table header
-	echo '<table id="', $table_id, '"><thead><tr>';
-	echo '<th>', WT_I18N::translate('Media'), '</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
-	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
-	echo '<th>#INDI</th>';
-	echo '<th>', WT_I18N::translate('Families'), '</th>';
-	echo '<th>#FAM</th>';
-	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	echo '<th>#SOUR</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '</tr></thead>';
+	$html .= '<table id="'. $table_id. '"><thead><tr>';
+	$html .= '<th>'. WT_I18N::translate('Media'). '</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('TITL'). '</th>';
+	$html .= '<th>'. WT_I18N::translate('Individuals'). '</th>';
+	$html .= '<th>#INDI</th>';
+	$html .= '<th>'. WT_I18N::translate('Families'). '</th>';
+	$html .= '<th>#FAM</th>';
+	$html .= '<th>'. WT_I18N::translate('Sources'). '</th>';
+	$html .= '<th>#SOUR</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '</tr></thead>';
 	//-- table body
-	echo '<tbody>';
+	$html .= '<tbody>';
 	$n = 0;
 	foreach ($datalist as $key => $value) {
 		if (is_object($value)) { // Array of objects
@@ -1280,39 +1280,39 @@ function print_media_table($datalist) {
 		}
 		if ($media->canDisplayDetails()) {
 			$name = $media->getFullName();
-			echo "<tr>";
+			$html .= "<tr>";
 			//-- Object thumbnail
-			echo '<td><img src="', $media->getThumbnail(), '" alt="', htmlspecialchars(strip_tags($name)), '" /></td>';
+			$html .= '<td><img src="'. $media->getThumbnail(). '" alt="'. htmlspecialchars(strip_tags($name)). '" /></td>';
 			//-- Object name(s)
-			echo '<td>';
-			echo '<a href="', $media->getHtmlUrl(), '" class="list_item name2">';
-			echo highlight_search_hits($name), '</a>';
+			$html .= '<td>';
+			$html .= '<a href="'. $media->getHtmlUrl(). '" class="list_item name2">';
+			$html .= highlight_search_hits($name). '</a>';
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT)
-				echo '<br /><a href="', $media->getHtmlUrl(), '">', basename($media->getFilename()), '</a>';
-			if ($media->getNote()) echo '<br />', print_fact_notes('1 NOTE '.$media->getNote(), 1);
-			echo '</td>';
+				$html .= '<br /><a href="'. $media->getHtmlUrl(). '">'. basename($media->getFilename()). '</a>';
+			if ($media->getNote()) $html .= '<br />'. print_fact_notes('1 NOTE ', $media->getNote(), 1);
+			$html .= '</td>';
 
 			//-- Linked INDIs
 			$num=$media->countLinkedIndividuals();
-			echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 			//-- Linked FAMs
 			$num=$media->countLinkedfamilies();
-			echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 			//-- Linked SOURces
 			$num=$media->countLinkedSources();
-			echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {
-				echo '<td>', $media->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
+				$html .= '<td>'. $media->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
 			} else {
-				echo '<td>&nbsp;</td>';
+				$html .= '<td>&nbsp;</td>';
 			}
-			echo '</tr>';
+			$html .= '</tr>';
 		}
 	}
-	echo '</tbody>',
-		'</table>',
-		'</div>';
+	$html .= '</tbody></table></div>';
+	
+	return $html;
 }
 
 // Print a table of surnames, for the top surnames block, the indi/fam lists, etc.

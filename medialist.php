@@ -170,7 +170,7 @@ if ($build == 'yes') {
 
 $controller->pageHeader();
 
-echo '<div id="media-list-page"><h2>', $controller->getPageTitle(), '</h2></div>';
+echo '<div id="media-list-page"><h2>', $controller->getPageTitle(), '</h2>';
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
@@ -561,5 +561,6 @@ Plus other Media Options - MediaViewer page'), '" />';
 	echo '</tr></table></td></tr>';
 	echo '</table><br />';
   }
-  echo '</div>';
+  echo '</div>
+  </div>';// close media-list-page
 }

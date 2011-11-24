@@ -171,7 +171,7 @@ echo '<div id="note-tabs">
 	// Media Items linked to this shared note
 	if ($controller->record->countLinkedMedia()) {
 		echo '<div id="media-note">';
-		print_media_table($controller->record->fetchLinkedMedia(), $controller->record->getFullName());
+		echo format_media_table($controller->record->fetchLinkedMedia(), $controller->record->getFullName());
 		echo '</div>'; //close "media-note"
 	}
 	// Sources linked to this shared note
