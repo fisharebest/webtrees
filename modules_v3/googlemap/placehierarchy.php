@@ -472,8 +472,10 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	echo "<script> var numMarkers = '".$numfound."';</script>";
 	echo "<script> var mapLevel = '".$level."';</script>";
 	echo "<script> var placezoom = '", $plzoom, "';</script>";
-	
-	echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
+
+// echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
+echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
+
 	?>
 	<script type="text/javascript">	
 	// <![CDATA[

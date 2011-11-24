@@ -270,3 +270,56 @@ margin-left:-130px; */
 .icon_deat { background-position: -0px -120px; width: 60px; height: 60px; }
 .icon_occu { background-position: -60px -120px; width: 60px; height: 60px; }
 .icon_birt { background-position: -120px -120px; width: 60px; height: 60px; }
+
+
+/* === places_edit === */
+#gname {
+	vertical-align: text-middle;
+	margin-top: 0px;
+	white-space:pre-wrap; 
+	width:200px; 
+	height: 60px;
+
+#namelink {
+	padding-bottom: 5px;
+}
+
+
+/* === googlemap_style === */
+#map_type
+{
+	margin: 0;
+	padding: 0;
+	font-family: Arial;
+	font-size: 10px;
+	list-style: none;
+}
+#map_type li
+{
+	display: block;
+	width: 70px;
+	text-align: center;
+	padding: 2px;
+	border: 1px solid black;
+	cursor: pointer;
+	float: left;
+	margin-left: 2px;
+}
+#map_type li.non_active
+{
+	background: white;
+	color: black;
+	font-weight: normal;
+}
+#map_type li.active
+{
+	background: gray;
+	color: white;
+	font-weight: bold;
+}
+#map_type li:hover
+{
+	background: #ddd;
+}
+
+#googlemap_left{margin-top: -14px!important;}
