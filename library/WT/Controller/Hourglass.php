@@ -236,7 +236,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 					$person2 = $children[$i];
 					$chil = $person2->getXref();
 					echo "<tr>";
-					echo "<td id=\"td_$chil\" class=\"$TEXT_DIRECTION\" align=\"$tablealign\">";
+					echo "<td id=\"td_$chil\" class=\"$TEXT_DIRECTION\" align=\"$otablealign\">";
 					$kids = $this->print_descendency($person2, $count+1);
 					$numkids += $kids;
 					echo "</td>";
