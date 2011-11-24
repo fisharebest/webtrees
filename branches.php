@@ -46,11 +46,6 @@ if (WT_USER_GEDCOM_ID) {
 	load_ancestors_array(WT_Person::getInstance(WT_USER_GEDCOM_ID), 1);
 }
 
-//-- random surname
-if ($surn=='*') {
-	$surn = array_rand(WT_Query_Name::surnames('', '', false, true, WT_GED_ID));
-}
-
 $controller=new WT_Controller_Base();
 $controller->setPageTitle(WT_I18N::translate('Branches').' - '.$surn);
 $controller->pageHeader();
@@ -69,7 +64,6 @@ if ($ENABLE_AUTOCOMPLETE) {
 				<input type="text" name="surname" id="SURN" value="<?php echo $surn; ?>" />
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" />
 				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
-				<input type="submit" value="<?php echo WT_I18N::translate('Random surname'); ?>" onclick="document.surnlist.surname.value='*';" />
 				<p class="details1">
 					<?php echo WT_I18N::translate('Phonetic search'); ?><br />
 					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo ' checked="checked"'; ?> />

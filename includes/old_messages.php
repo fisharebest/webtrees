@@ -87,6 +87,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Pedigree chart root person');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('PopUp links on charts');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Remove custom tags');
+/* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Random surname');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Remove custom webtrees tags? (eg. _WT_USER, _THUM)');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Result Page');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Results per page');
