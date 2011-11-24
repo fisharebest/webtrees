@@ -81,7 +81,7 @@ if ($surn) {
 	$surn_script = utf8_script($surn);
 	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', PrintReady($surn), '</legend>';
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
-	usort($indis, array('WT_Person', 'CompareBirtDate'));
+	uasort($indis, array('WT_Person', 'CompareBirtDate'));
 	echo '<ol>';
 	foreach ($indis as $person) {
 		$famc = $person->getPrimaryChildFamily();
