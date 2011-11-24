@@ -471,6 +471,29 @@ class WT_I18N {
 
 		// Which symbol is used for separating numbers into groups
 		$symbols = Zend_Locale_Data::getList(WT_LOCALE, 'symbols');
+		// Which digits are used for numbers
+		$numbering_system=Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnumberingsystem');
+		$digits=Zend_Locale_Data::getContent(WT_LOCALE, 'numberingsystem', $numbering_system);
+
+		if ($digits=='0123456789') {
+			$callback='';
+		} else {
+			$callback=',
+				"fnInfoCallback": function(oSettings, iStart, iEnd, iMax, iTotal, sPre) {
+					return sPre
+						.replace(/0/g, "'.utf8_substr($digits, 0, 1).'")
+						.replace(/1/g, "'.utf8_substr($digits, 1, 1).'")
+						.replace(/2/g, "'.utf8_substr($digits, 2, 1).'")
+						.replace(/3/g, "'.utf8_substr($digits, 3, 1).'")
+						.replace(/4/g, "'.utf8_substr($digits, 4, 1).'")
+						.replace(/5/g, "'.utf8_substr($digits, 5, 1).'")
+						.replace(/6/g, "'.utf8_substr($digits, 6, 1).'")
+						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
+						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
+						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
+    			}
+			';
+		}
 
 		return
 			'"oLanguage": {'.
@@ -492,6 +515,7 @@ class WT_I18N {
 			' "sSearch":         "'.WT_I18N::translate('Filter').'",'.
 			' "sUrl":            "",'.
 			' "sZeroRecords":    "'.WT_I18N::translate('No records to display').'"'.
-			'}';
+			'}'.
+			$callback;
 	}
 }
