@@ -1528,7 +1528,7 @@ margin: 0;
 	overflow: visible !important;
 }
 
-#register-page table, #login-page table, #branches-page table {margin:auto;}
+#register-page table, #login-page table, #branches-page table, #media-list-page .list_table  {margin:auto;}
 #register-page table a {display:block; text-align:center;}
 
 .popup {
