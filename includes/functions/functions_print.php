@@ -641,39 +641,6 @@ function wiki_help_link($topic) {
 	}
 }
 
-//-------------------------------------------------------------------------------------------------------------
-// switches between left and rigth align on chosen text direction
-//-------------------------------------------------------------------------------------------------------------
-function write_align_with_textdir_check($t_dir, $return=false)
-{
-	global $TEXT_DIRECTION;
-	$out = "";
-	if ($t_dir == "left")
-	{
-		if ($TEXT_DIRECTION == "ltr")
-		{
-			$out .= " style=\"text-align:left; \" ";
-		}
-		else
-		{
-			$out .= " style=\"text-align:right; \" ";
-		}
-	}
-	else
-	{
-		if ($TEXT_DIRECTION == "ltr")
-		{
-			$out .= " style=\"text-align:right; \" ";
-		}
-		else
-		{
-			$out .= " style=\"text-align:left; \" ";
-		}
-	}
-	if ($return) return $out;
-	echo $out;
-}
-
 // When a user has searched for text, highlight any matches in
 // the displayed string.
 function highlight_search_hits($string) {

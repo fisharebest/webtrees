@@ -66,27 +66,20 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "\" />";
 			$content .= "<input type=\"hidden\" name=\"usertime\" value=\"\" />";
 			$content .= "<input type=\"hidden\" name=\"action\" value=\"login\" />";
-			$content .= "<table class=\"center tabs_table\">";
+			$content .= "<table class=\"center\">";
 
 			// Row 1: Userid
-			$content .= "<tr><td ";
-			$content .= write_align_with_textdir_check("right", true);
-			$content .= " class=\"wrap width50\">";
+			$content .= "<tr><td>";
 			$content .= WT_I18N::translate('Username');
 			$content .= help_link('username');
-			$content .= "</td><td ";
-			$content .= write_align_with_textdir_check("left", true);
-			$content .= "><input type=\"text\" name=\"username\"  size=\"20\" class=\"formField\" />";
+			$content .= "</td><td><input type=\"text\" name=\"username\"  size=\"20\" class=\"formField\" />";
 			$content .= "</td></tr>";
 
 			// Row 2: Password
-			$content .= "<tr><td ";
-			$content .= write_align_with_textdir_check("right", true);
-			$content .= " wrap width50\">";
+			$content .= "<tr><td>";
 			$content .= WT_I18N::translate('Password');
 			$content .= help_link('password');
 			$content .= "</td><td ";
-			$content .= write_align_with_textdir_check("left", true);
 			$content .= "><input type=\"password\" name=\"password\"  size=\"20\" class=\"formField\" />";
 			$content .= "</td></tr>";
 
@@ -94,32 +87,25 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<tr><td colspan=\"2\" class=\"center\">";
 			$content .= "<input type=\"submit\" value=\"".WT_I18N::translate('Login')."\" />&nbsp;";
 			$content .= "</td></tr>";
+			$content .= "</table><table class=\"center\">";
 
 			if (get_site_setting('USE_REGISTRATION_MODULE')) {
 
 				// Row 4: "Request Account" link
-				$content .= "<tr><td ";
-				$content .= write_align_with_textdir_check("right", true);
-				$content .= " class=\"wrap width50\"><br />";
+				$content .= "<tr><td><br />";
 				$content .= WT_I18N::translate('No account?');
 				$content .= help_link('new_user');
-				$content .= "</td><td ";
-				$content .= write_align_with_textdir_check("left", true);
-				$content .= "><br>";
+				$content .= "</td><td><br>";
 				$content .= "<a href=\"login_register.php?action=register\">";
 				$content .= WT_I18N::translate('Request new user account');
 				$content .= "</a>";
 				$content .= "</td></tr>";
 
 				// Row 5: "Lost Password" link
-				$content .= "<tr><td ";
-				$content .= write_align_with_textdir_check("right", true);
-				$content .= " wrap width50\">";
+				$content .= "<tr><td>";
 				$content .= WT_I18N::translate('Lost your password?');
 				$content .= help_link('new_password');
-				$content .= "</td><td ";
-				$content .= write_align_with_textdir_check("left", true);
-				$content .= ">";
+				$content .= "</td><td>";
 				$content .= "<a href=\"login_register.php?action=pwlost\">";
 				$content .= WT_I18N::translate('Request new password');
 				$content .= "</a>";
