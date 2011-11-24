@@ -179,7 +179,7 @@ echo '<div id="media-tabs">';
 	// medias linked to this media object
 	if ($controller->record->countLinkedNotes()) {
 		echo '<div id="notes-media">';
-		print_note_table($controller->record->fetchLinkedNotes(), $controller->record->getFullName());
+		echo format_note_table($controller->record->fetchLinkedNotes(), $controller->record->getFullName());
 		echo '</div>'; //close "notes-media"
 	}
 echo '</div>'; //close div "media-tabs"

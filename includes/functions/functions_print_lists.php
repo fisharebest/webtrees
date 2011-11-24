@@ -1030,7 +1030,7 @@ function format_sour_table($datalist) {
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?'. strip_tags($source->getFullName()))). '\')) jQuery.post(\'action.php\'.{action:\'delete-source\'.xref:\''. $source->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))). '\')) jQuery.post(\'action.php\'.{action:\'delete-source\'.xref:\''. $source->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1042,9 +1042,9 @@ function format_sour_table($datalist) {
 }
 
 // print a table of shared notes
-function print_note_table($datalist) {
+function format_note_table($datalist) {
 	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
-
+	$html = '';
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1078,61 +1078,60 @@ function print_note_table($datalist) {
 		');
 		
 	//--table wrapper
-	echo '<div class="loading-image">&nbsp;</div>';
-	echo '<div class="note-list">';
+	$html .= '<div class="loading-image">&nbsp;</div>';
+	$html .= '<div class="note-list">';
 	//-- table header
-	echo '<table id="', $table_id, '"><thead><tr>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('TITL'), '</th>';
-	echo '<th>', WT_I18N::translate('Individuals'), '</th>';
-	echo '<th>#INDI</th>';
-	echo '<th>', WT_I18N::translate('Families'), '</th>';
-	echo '<th>#FAM</th>';
-	echo '<th>', WT_I18N::translate('Media objects'), '</th>';
-	echo '<th>#OBJE</th>';
-	echo '<th>', WT_I18N::translate('Sources'), '</th>';
-	echo '<th>#SOUR</th>';
-	echo '<th>', WT_Gedcom_Tag::getLabel('CHAN'), '</th>';
-	echo '<th>&nbsp;</th>';//delete
-	echo '</tr></thead>';
+	$html .= '<table id="'. $table_id. '"><thead><tr>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('TITL'). '</th>';
+	$html .= '<th>'. WT_I18N::translate('Individuals'). '</th>';
+	$html .= '<th>#INDI</th>';
+	$html .= '<th>'. WT_I18N::translate('Families'). '</th>';
+	$html .= '<th>#FAM</th>';
+	$html .= '<th>'. WT_I18N::translate('Media objects'). '</th>';
+	$html .= '<th>#OBJE</th>';
+	$html .= '<th>'. WT_I18N::translate('Sources'). '</th>';
+	$html .= '<th>#SOUR</th>';
+	$html .= '<th>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th>&nbsp;</th>';//delete
+	$html .= '</tr></thead>';
 	//-- table body
-	echo '<tbody>';
+	$html .= '<tbody>';
 	foreach ($datalist as $note) {
 		if (!$note->canDisplayDetails()) {
 			continue;
 		}
-		echo '<tr>';
+		$html .= '<tr>';
 		//-- Shared Note name
-		echo '<td><a class="name2" href="', $note->getHtmlUrl(), '">', highlight_search_hits($note->getFullName()), '</a></td>';
+		$html .= '<td><a class="name2" href="'. $note->getHtmlUrl(). '">'. highlight_search_hits($note->getFullName()). '</a></td>';
 		//-- Linked INDIs
 		$num=$note->countLinkedIndividuals();
-		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked FAMs
 		$num=$note->countLinkedfamilies();
-		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked OBJEcts
 		$num=$note->countLinkedMedia();
-		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Linked SOURs
 		$num=$note->countLinkedSources();
-		echo '<td>', WT_I18N::number($num), '</td><td>', $num, '</td>';
+		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			echo '<td>', $note->LastChangeTimestamp(empty($SEARCH_SPIDER)), '</td>';
+			$html .= '<td>'. $note->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
 		} else {
-			echo '<td></td>';
+			$html .= '<td></td>';
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
-			echo '<td><div title="', WT_I18N::translate('Delete'), '" class="deleteicon" onclick="if (confirm(\'', addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($note->getFullName()))), '\')) jQuery.post(\'action.php\',{action:\'delete-note\',xref:\'', $note->getXref(), '\'},function(){location.reload();})"><span class="link_text">', WT_I18N::translate('Delete'), '</span></div></td>';
+			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?'. strip_tags($note->getFullName()))). '\')) jQuery.post(\'action.php\'.{action:\'delete-note\'.xref:\''. $note->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
 		} else {
-			echo '<td></td>';
+			$html .= '<td></td>';
 		}
-		echo '</tr>';
+		$html .= '</tr>';
 	}
-	echo
-		'</tbody>',
-		'</table>',
-		'</div>';
+	$html .= '</tbody></table></div>';
+		
+	return $html;
 }
 
 // print a table of repositories

@@ -160,7 +160,7 @@ echo '<div id="source-tabs">
 	// Shared Notes linked to this source
 	if ($controller->record->countLinkedNotes()) {
 		echo '<div id="note-sources">';
-		print_note_table($controller->record->fetchLinkedNotes(), $controller->record->getFullName());
+		echo format_note_table($controller->record->fetchLinkedNotes(), $controller->record->getFullName());
 		echo '</div>'; //close "note-sources"
 	}
 echo '</div>'; //close div "source-tabs"
