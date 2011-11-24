@@ -255,7 +255,7 @@ if ($show=='indi' || $show=='surn') {
 			}
 		}
 		if ($show=='indi') {
-			echo echo format_indi_table(
+			echo format_indi_table(
 				WT_Query_Name::individuals($surname, $alpha, $falpha, $show_marnm, false, WT_GED_ID)
 			);
 		}
