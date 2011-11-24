@@ -69,7 +69,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 				<input type="text" name="surname" id="SURN" value="<?php echo $surn; ?>" />
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" />
 				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
-				<input type="submit" value="<?php echo WT_I18N::translate('Random surname'); ?>" onclick="document.surnlist.surn.value='*';" />
+				<input type="submit" value="<?php echo WT_I18N::translate('Random surname'); ?>" onclick="document.surnlist.surname.value='*';" />
 				<p class="details1">
 					<?php echo WT_I18N::translate('Phonetic search'); ?><br />
 					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo ' checked="checked"'; ?> />
@@ -87,9 +87,9 @@ if ($surn) {
 	$surn_script = utf8_script($surn);
 	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', PrintReady($surn), '</legend>';
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
-	$roots = array();
-	$sort_criteria = array();
-	foreach ($indis as $xref=>$person) {
+	usort($indis, array('WT_Person', 'CompareBirtDate'));
+	echo '<ol>';
+	foreach ($indis as $person) {
 		$famc = $person->getPrimaryChildFamily();
 		// Don't show INDIs with parents in the list, as they will be shown twice.
 		if ($famc) {
@@ -99,15 +99,7 @@ if ($surn) {
 				}
 			}
 		}
-		$roots[] = $xref;
-		$sort_criteria[] = $person->getBirthDate()->MinJD();
-	}
-	// sort by birth date
-	array_multisort($sort_criteria, SORT_NUMERIC, $roots);
-	// output
-	echo '<ol>';
-	foreach ($roots as $k=>$xref) {
-		print_fams($indis[$xref]);
+		print_fams($person);
 	}
 	echo '</ol>';
 	echo '</fieldset>';
@@ -134,7 +126,7 @@ function print_fams($person, $famid=null) {
 		break;
 	}
 	if (empty($person_name)) {
-		echo '<span title="', strip_tags($person->getFullName()), '">', $person->getSexImage(), '…</span>';
+		echo '<li title="', strip_tags($person->getFullName()), '">', $person->getSexImage(), '…</li>';
 		return;
 	}
 	$person_script = utf8_script($person_name);
