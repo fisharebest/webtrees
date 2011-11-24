@@ -38,8 +38,12 @@ $alpha   =safe_GET('alpha', WT_REGEX_UNSAFE); // All surnames beginning with thi
 $surname =safe_GET('surname', WT_REGEX_UNSAFE); // All indis with this surname.  NB - allow ' and "
 $show_all=safe_GET('show_all', array('no','yes'), 'no'); // All indis
 // Long lists can be broken down by given name
-$falpha=safe_GET('falpha'); // All first names beginning with this letter
 $show_all_firstnames=safe_GET('show_all_firstnames', array('no','yes'), 'no');
+if ($show_all_firstnames=='yes') {
+	$falpha='';
+} else {
+	$falpha=safe_GET('falpha'); // All first names beginning with this letter
+}
 
 $show_marnm=get_user_setting(WT_USER_ID, WT_SCRIPT_NAME.'_show_marnm');
 switch (safe_GET('show_marnm', array('no','yes'))) {
