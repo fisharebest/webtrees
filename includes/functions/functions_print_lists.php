@@ -1562,19 +1562,19 @@ function print_changes_list($change_ids, $sort) {
 	case 'date_desc':
 		uasort($arr, 'event_sort');
 	}
-	$return = '';
+	$html = '';
 	foreach ($arr as $value) {
-		$return .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item name2">' . $value['record']->getFullName() . '</a>';
-		$return .= '<div class="indent" style="margin-bottom:5px">';
+		$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item name2">' . $value['record']->getFullName() . '</a>';
+		$html .= '<div class="indent" style="margin-bottom:5px">';
 		if ($value['record']->getType() == 'INDI') {
 			if ($value['record']->getAddName()) {
-				$return .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
+				$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 			}
 		}
-		$return .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(false), $value['record']->LastChangeUser());
-		$return .= '</div>';
+		$html .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(false), $value['record']->LastChangeUser());
+		$html .= '</div>';
 	}
-	return $return;
+	return $html;
 }
 
 // print a table of recent changes
@@ -1595,6 +1595,7 @@ function print_changes_table($change_ids, $sort) {
 		$aaSorting = "[4,'desc'], [5,'asc']";
 		break;
 	}
+	$html = '';
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavaScript('
@@ -1621,15 +1622,15 @@ function print_changes_table($change_ids, $sort) {
 		');
 
 		//-- table header
-		$return .= "<table id='" . $table_id . "' class='width100'>";
-		$return .= "<thead><tr>";
-		$return .= "<th>&nbsp;</th>";
-		$return .= "<th>" . WT_I18N::translate('Record') . "</th>";
-		$return .= "<th>" . WT_Gedcom_Tag::getLabel('CHAN') . "</th>";
-		$return .= "<th>" . WT_Gedcom_Tag::getLabel('_WT_USER') . "</th>";
-		$return .= "<th>DATE</th>";     //hidden by datatables code
-		$return .= "<th>SORTNAME</th>"; //hidden by datatables code
-		$return .= "</tr></thead><tbody>";
+		$html .= "<table id='" . $table_id . "' class='width100'>";
+		$html .= "<thead><tr>";
+		$html .= "<th>&nbsp;</th>";
+		$html .= "<th>" . WT_I18N::translate('Record') . "</th>";
+		$html .= "<th>" . WT_Gedcom_Tag::getLabel('CHAN') . "</th>";
+		$html .= "<th>" . WT_Gedcom_Tag::getLabel('_WT_USER') . "</th>";
+		$html .= "<th>DATE</th>";     //hidden by datatables code
+		$html .= "<th>SORTNAME</th>"; //hidden by datatables code
+		$html .= "</tr></thead><tbody>";
 
 		//-- table body
 		foreach ($change_ids as $change_id) {
@@ -1637,64 +1638,64 @@ function print_changes_table($change_ids, $sort) {
 		if (!$record || !$record->canDisplayDetails()) {
 			continue;
 		}
-		$return .= "<tr><td>";
+		$html .= '<tr><td>';
 		$indi = false;
 		switch ($record->getType()) {
 			case "INDI":
-				$return .= $record->getSexImage('small', '', '', false);
+				$html .= $record->getSexImage('small', '', '', false);
 				$indi = true;
 				break;
 			case "FAM":
-				$return .= '<img src="' . $WT_IMAGES['cfamily'] . '" title="" alt="" height="12" />';
+				$html .= '<img src="' . $WT_IMAGES['cfamily'] . '" title="" alt="" height="12" />';
 				break;
 			case "OBJE":
-				$return .= '<img src="' . $record->getMediaIcon() . '" title="" alt="" height="12" />';
+				$html .= '<img src="' . $record->getMediaIcon() . '" title="" alt="" height="12" />';
 				break;
 			case "NOTE":
-				$return .= '<img src="' . $WT_IMAGES['note'] . '" title="" alt="" height="12" />';
+				$html .= '<img src="' . $WT_IMAGES['note'] . '" title="" alt="" height="12" />';
 				break;
 			case "SOUR":
-				$return .= '<img src="' . $WT_IMAGES['source'] . '" title="" alt="" height="12" />';
+				$html .= '<img src="' . $WT_IMAGES['source'] . '" title="" alt="" height="12" />';
 				break;
 			case "REPO":
-				$return .= '<img src="' . $WT_IMAGES['repository'] . '" title="" alt="" height="12" />';
+				$html .= '<img src="' . $WT_IMAGES['repository'] . '" title="" alt="" height="12" />';
 				break;
 			default:
-				$return .= '&nbsp;';
+				$html .= '&nbsp;';
 				break;
 		}
-		$return .= "</td>";
+		$html .= "</td>";
 		++$n;
 		//-- Record name(s)
 		$name = $record->getFullName();
-		$return .= '<td class="wrap">';
-		$return .= '<a href="'. $record->getHtmlUrl() .'" class="name2">'. $name . '</a>';
+		$html .= '<td class="wrap">';
+		$html .= '<a href="'. $record->getHtmlUrl() .'" class="name2">'. $name . '</a>';
 		if ($indi) {
 			$addname = $record->getAddName();
 			if ($addname) {
-				$return .= '<div class="indent"><a href="'. $record->getHtmlUrl() .'">'. $addname . '</a></div>';
+				$html .= '<div class="indent"><a href="'. $record->getHtmlUrl() .'">'. $addname . '</a></div>';
 			}
 		}
-		$return .= "</td>";
+		$html .= "</td>";
 		//-- Last change date/time
-		$return .= "<td class='wrap'>" . $record->LastChangeTimestamp(empty($SEARCH_SPIDER)) . "</td>";
+		$html .= "<td class='wrap'>" . $record->LastChangeTimestamp(empty($SEARCH_SPIDER)) . "</td>";
 		//-- Last change user
-		$return .= "<td class='wrap'>" . $record->LastChangeUser() . "</td>";
+		$html .= "<td class='wrap'>" . $record->LastChangeUser() . "</td>";
 		//-- change date (sortable) hidden by datatables code
-		$return .= "<td>" . $record->LastChangeTimestamp(false, true) . "</td>";
+		$html .= "<td>" . $record->LastChangeTimestamp(false, true) . "</td>";
 		//-- names (sortable) hidden by datatables code
-		$return .= "<td>" . $record->getSortName() . "</td></tr>";
+		$html .= "<td>" . $record->getSortName() . "</td></tr>";
 	}
 
-	$return .= '</tbody></table>';
-	return $return;
+	$html .= '</tbody></table>';
+	return $html;
 }
 
 
 // print a table of events
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
 	global $WT_IMAGES, $controller;
-
+	$html = '';
 	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
@@ -1724,9 +1725,6 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
 	$filter = 0;
-
-	$return = '';
-
 	$filtered_events = array();
 
 	foreach (get_events_list($startjd, $endjd, $events) as $value) {
@@ -1760,16 +1758,16 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 
 		if ($output==1) {
 			//-- table body
-			$return .= '<table id="'.$table_id.'" class="width100">';
-			$return .= '<thead><tr>';
-			$return .= '<th>'.WT_I18N::translate('Record').'</th>';
-			$return .= '<th>NAME</th>'; //hidden by datatables code
-			$return .= '<th>'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
-			$return .= '<th>DATE</th>'; //hidden by datatables code
-			$return .= '<th><img src="'.$WT_IMAGES["reminder"].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'"></th>';
-			$return .= '<th>ANNIV</th>';
-			$return .= '<th>'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
-			$return .= '</tr></thead><tbody>'."\n";
+			$html .= '<table id="'.$table_id.'" class="width100">';
+			$html .= '<thead><tr>';
+			$html .= '<th>'.WT_I18N::translate('Record').'</th>';
+			$html .= '<th>NAME</th>'; //hidden by datatables code
+			$html .= '<th>'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
+			$html .= '<th>DATE</th>'; //hidden by datatables code
+			$html .= '<th><img src="'.$WT_IMAGES["reminder"].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'"></th>';
+			$html .= '<th>ANNIV</th>';
+			$html .= '<th>'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
+			$html .= '</tr></thead><tbody>'."\n";
 		}
 
 		$value['name'] = $record->getFullName();
@@ -1783,40 +1781,40 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	}
 
 	foreach ($filtered_events as $n=>$value) {
-		$return .= "<tr>";
+		$html .= "<tr>";
 		//-- Record name(s)
 		$name = $value['name'];
-		$return .= '<td class="wrap">';
-		$return .= '<a href="'.$value['url'].'">'.$name.'</a>';
+		$html .= '<td class="wrap">';
+		$html .= '<a href="'.$value['url'].'">'.$name.'</a>';
 		if ($value['record']->getType()=="INDI") {
-			$return .= $value['sex'];
+			$html .= $value['sex'];
 		}
-		$return .= '</td>';
+		$html .= '</td>';
 		//-- NAME
-		$return .= '<td>'; //hidden by datatables code
-		$return .= $value['record']->getSortName();
-		$return .= '</td>';
+		$html .= '<td>'; //hidden by datatables code
+		$html .= $value['record']->getSortName();
+		$html .= '</td>';
 		//-- Event date
-		$return .= '<td class="wrap">';
-		$return .= $value['date']->Display(empty($SEARCH_SPIDER));
-		$return .= '</td>';
+		$html .= '<td class="wrap">';
+		$html .= $value['date']->Display(empty($SEARCH_SPIDER));
+		$html .= '</td>';
 		//-- Event date (sortable)
-		$return .= '<td>'; //hidden by datatables code
-		$return .= $n;
-		$return .= '</td>';
+		$html .= '<td>'; //hidden by datatables code
+		$html .= $n;
+		$html .= '</td>';
 		//-- Anniversary
 		$anniv = $value['anniv'];
-		$return .= '<td>'.($anniv ? WT_I18N::number($anniv) : '&nbsp;').'</td><td>'.$anniv.'</td>';
+		$html .= '<td>'.($anniv ? WT_I18N::number($anniv) : '&nbsp;').'</td><td>'.$anniv.'</td>';
 		//-- Event name
-		$return .= '<td class="wrap">';
-		$return .= '<a href="'.$value['url'].'">'.WT_Gedcom_Tag::getLabel($value['fact']).'</a>';
-		$return .= '&nbsp;</td>';
+		$html .= '<td class="wrap">';
+		$html .= '<a href="'.$value['url'].'">'.WT_Gedcom_Tag::getLabel($value['fact']).'</a>';
+		$html .= '&nbsp;</td>';
 
-		$return .= '</tr>'."\n";
+		$html .= '</tr>'."\n";
 	}
 
 	if ($output!=0) {
-		$return .= '</tbody></table>';
+		$html .= '</tbody></table>';
 	}
 
 	// Print a final summary message about restricted/filtered facts
@@ -1851,10 +1849,10 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 		}
 	}
 	if ($summary!="") {
-		$return .= '<strong>'. $summary. '</strong>';
+		$html .= '<strong>'. $summary. '</strong>';
 	}
 
-	return $return;
+	return $html;
 }
 
 /**
@@ -1866,11 +1864,8 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	// Did we have any output?  Did we skip anything?
 	$output = 0;
 	$filter = 0;
-
-	$return = '';
-
 	$filtered_events = array();
-
+	$html = '';
 	foreach (get_events_list($startjd, $endjd, $events) as $value) {
 		$record = WT_GedcomRecord::getInstance($value['id']);
 		//-- only living people ?
@@ -1920,12 +1915,12 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 	}
 
 	foreach ($filtered_events as $value) {
-		$return .= "<a href=\"".$value['url']."\" class=\"list_item name2\">".$value['name']."</a>".$value['sex'];
-		$return .= "<br /><div class=\"indent\">";
-		$return .= WT_Gedcom_Tag::getLabel($value['fact']).' - '.$value['date']->Display(true);
-		if ($value['anniv']!=0) $return .= " (" . WT_I18N::translate('%s year anniversary', $value['anniv']).")";
-		if (!empty($value['plac'])) $return .= " - <a href=\"".get_place_url($value['plac'])."\">".$value['plac']."</a>";
-		$return .= "</div>";
+		$html .= "<a href=\"".$value['url']."\" class=\"list_item name2\">".$value['name']."</a>".$value['sex'];
+		$html .= "<br /><div class=\"indent\">";
+		$html .= WT_Gedcom_Tag::getLabel($value['fact']).' - '.$value['date']->Display(true);
+		if ($value['anniv']!=0) $html .= " (" . WT_I18N::translate('%s year anniversary', $value['anniv']).")";
+		if (!empty($value['plac'])) $html .= " - <a href=\"".get_place_url($value['plac'])."\">".$value['plac']."</a>";
+		$html .= "</div>";
 	}
 
 	// Print a final summary message about restricted/filtered facts
@@ -1960,10 +1955,10 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		}
 	}
 	if ($summary) {
-		$return .= "<b>". $summary. "</b>";
+		$html .= "<b>". $summary. "</b>";
 	}
 
-	return $return;
+	return $html;
 }
 
 // print a chart by age using Google chart API
