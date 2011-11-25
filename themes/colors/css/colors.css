@@ -1501,6 +1501,7 @@ margin: 0;
 #pending h2 {text-align:center; margin-bottom:20px;}
 #pending h3 {text-align:center; margin-top:20px;}
 
+/*
 .user_favorites_block, .gedcom_favorites_block,
 #family_page .person_box, #family_page .person_boxF, #family_page .person_boxNN,
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
@@ -1513,7 +1514,7 @@ margin: 0;
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN {
 	overflow: visible !important;
 }
-
+*/
 
 #register-page table, #login-page table, #branches-page table, #media-list-page .list_table  {margin:auto;}
 #register-page table a {display:block; text-align:center;}
