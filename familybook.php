@@ -154,7 +154,7 @@ function print_person_pedigree($person, $count) {
 		echo "<tr>";
 		if ($count<$generations-1) {
 			echo "<td height=\"".$hheight."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
-			echo "<td rowspan=\"2\"> src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
+			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
 		}
 		echo "<td rowspan=\"2\">";
 		print_pedigree_person($family->getHusband());
