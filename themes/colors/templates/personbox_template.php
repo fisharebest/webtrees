@@ -46,7 +46,8 @@ if (!defined('WT_WEBTREES')) {
 		<span class="name<?php echo $style; ?>"> <?php echo $genderImage; ?></span>
 		<?php echo $showid; ?> </a>
 		<div id="fontdef-<?php echo $boxID; ?>" class="details<?php echo $style; ?>">
-			<div id="inout2-<?php echo $boxID; ?>" style="display: block; overflow:hidden; "><?php echo $BirthDeath; ?></div>
+		<!--  Set box height so the birth and death fields have 1/2 the block size plus an extra 10px for longe locations-->
+		<div id="inout2-<?php echo $boxID; ?>" style="display: block; overflow:hidden; max-height: <?php echo $bheight/2+10; ?>px;"><?php echo $BirthDeath; ?></div>
 		</div>
 		<div id="inout-<?php echo $boxID; ?>" style="display: none;">
 			<div id="LOADING-inout-<?php echo $boxID; ?>"><?php echo WT_I18N::translate('Loading...'); ?></div>
