@@ -75,14 +75,14 @@ class WT_Gedcom_Tag {
 		'_DBID', '_DEAT_CHIL', '_DEAT_GCHI', '_DEAT_GCH1', '_DEAT_GCH2', '_DEAT_GPAR', '_DEAT_GPA1', '_DEAT_GPA2',
 		'_DEAT_HSIB', '_DEAT_PARE', '_DEAT_SIBL', '_DEAT_SPOU', '_DEG', '_DETS',
 		'_EMAIL', '_EYEC', '_FA1', '_FA2', '_FA3', '_FA4', '_FA5', '_FA6', '_FA7', '_FA8',
-		'_FA9', '_FA10', '_FA11', '_FA12', '_FA13', '_FNRL', '_FREL', '_GEDF', '_HAIR',
+		'_FA9', '_FA10', '_FA11', '_FA12', '_FA13', '_FNRL', '_FREL', '_GEDF', '_GODP', '_HAIR',
 		'_HEB', '_HEIG', '_HNM', '_HOL', '_INTE', '_MARB_CHIL', '_MARB_FAMC', '_MARB_GCHI',
 		'_MARB_GCH1', '_MARB_GCH2', '_MARB_HSIB', '_MARB_PARE', '_MARB_SIBL', '_MARI',
 		'_MARNM', '_PRIM', '_MARNM_SURN', '_MARR_CHIL', '_MARR_FAMC', '_MARR_GCHI',
 		'_MARR_GCH1', '_MARR_GCH2', '_MARR_HSIB', '_MARR_PARE', '_MARR_SIBL', '_MBON',
 		'_MDCL', '_MEDC', '_MEND', '_MILI', '_MILT', '_MREL', '_MSTAT', '_NAME', '_NAMS',
 		'_NLIV', '_NMAR', '_NMR', '_WT_USER', '_PRMN', '_SCBK', '_SEPR', '_SSHOW', '_STAT',
-		'_SUBQ', '_TODO', '_TYPE', '_UID', '_URL', '_WEIG', '_YART', '__BRTM_CHIL',
+		'_SUBQ', '_TODO', '_TYPE', '_UID', '_URL', '_WEIG', '_WITN', '_YART', '__BRTM_CHIL',
 		'__BRTM_GCHI', '__BRTM_GCH1', '__BRTM_GCH2', '__BRTM_HSIB', '__BRTM_SIBL',
 		// These pseudo-tags are generated dynamically to display media object attributes
 		'__FILE_SIZE__', '__IMAGE_SIZE__',
@@ -766,6 +766,7 @@ class WT_Gedcom_Tag {
 		case '_FNRL': return /* I18N: gedcom tag _FNRL */ WT_I18N::translate('Funeral');
 		case '_FREL': return /* I18N: gedcom tag _FREL */ WT_I18N::translate('Relationship to father');
 		case '_GEDF': return /* I18N: gedcom tag _GEDF */ WT_I18N::translate('GEDCOM file');
+		case '_GODP': return /* I18N: gedcom tag _GODP */ WT_I18N::translate('Godparent');
 		case '_HAIR': return /* I18N: gedcom tag _HAIR */ WT_I18N::translate('Hair color');
 		case '_HEB': return /* I18N: gedcom tag _HEB */ WT_I18N::translate('Hebrew');
 		case '_HEIG': return /* I18N: gedcom tag _HEIG */ WT_I18N::translate('Height');
@@ -860,6 +861,7 @@ class WT_Gedcom_Tag {
 		case '_UID':   return /* I18N: gedcom tag _UID */   WT_I18N::translate('Globally unique identifier');
 		case '_URL':   return /* I18N: gedcom tag _URL */   WT_I18N::translate('Web URL');
 		case '_WEIG':  return /* I18N: gedcom tag _WEIG */  WT_I18N::translate('Weight');
+		case '_WITN':  return /* I18N: gedcom tag _WITN */  WT_I18N::translate('Witness');
 		case '_YART':  return /* I18N: gedcom tag _YART */  WT_I18N::translate('Yahrzeit');
 		// Brit milah applies only to males, no need for male/female translations
 		case '__BRTM_CHIL': return WT_I18N::translate  ('Brit milah of a son');
