@@ -249,10 +249,13 @@
 									<if condition="@desc=='N'">
 										<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
 									</if>
-									<if condition="@desc!='Y' and @desc!='N'">
+									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N'">
 										<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
 									</if>
 								</Text>
+								<Gedcom id="@ASSO">
+									<GetPersonName id=""/>
+								</Gedcom>
 							</TextBox>
 						</if>
 						<if condition="@desc==''">
@@ -406,10 +409,13 @@
 										<if condition="@desc=='N'">
 											<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
 										</if>
-										<if condition="@desc!='Y' and @desc!='N'">
+										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N'">
 											<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
 										</if>
 									</Text>
+									<Gedcom id="@ASSO">
+										<GetPersonName id=""/>
+									</Gedcom>
 								</TextBox>
 							</if>
 							<if condition="@desc==''">
@@ -566,10 +572,13 @@
 									<if condition="@desc=='N'">
 										<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
 									</if>
-									<if condition="@desc!='Y' and @desc!='N'">
+									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N'">
 										<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
 									</if>
 								</Text>
+								<Gedcom id="@ASSO">
+									<GetPersonName id=""/>
+								</Gedcom>
 							</TextBox>
 						</if>
 						<if condition="@desc==''">
@@ -893,10 +902,13 @@
 										<if condition="@desc=='N'">
 											<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
 										</if>
-										<if condition="@desc!='Y' and @desc!='N'">
+										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N'">
 											<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
 										</if>
 									</Text>
+									<Gedcom id="@ASSO">
+										<GetPersonName id=""/>
+									</Gedcom>
 								</TextBox>
 							</if>
 							<if condition="@desc==''">

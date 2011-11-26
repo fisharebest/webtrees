@@ -174,10 +174,13 @@
 								<if condition="@desc=='N'">
 									<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
 								</if>
-								<if condition="@desc!='Y' and @desc!='N'">
+								<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N'">
 									<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
 								</if>
 							</Text>
+							<Gedcom id="@ASSO">
+								<GetPersonName id=""/>
+							</Gedcom>
 							<Gedcom id="@_PGVS">
 								<if condition="@SEX=='M'">
 									<Text color="$tcolor" style="fact">  <var var="WT_I18N::translate('Husband')"/></Text>
