@@ -530,7 +530,6 @@ text-align:center;
 table.center {
 margin-left: auto;
 margin-right: auto;
-/* border:1px solid #999; */
 }
 
 th {
@@ -948,7 +947,6 @@ overflow:visible;
 .news_box {
 padding: 3pt;
 }
-
 
 .news_title {
 color: #000;
@@ -1588,8 +1586,6 @@ ul.clist {
 	margin: 0;
 	margin-left: 0;
 }
-
-
 
 /* Find special characters */
 .largechars {
