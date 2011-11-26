@@ -794,7 +794,7 @@ margin-right: 3px;
 .pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
 float: right;
 max-height: 50px;
-max-width: 50px;
+max-width: 37px;
 margin-left: 3px;
 }
 
@@ -1501,20 +1501,18 @@ margin: 0;
 #pending h2 {text-align:center; margin-bottom:20px;}
 #pending h3 {text-align:center; margin-top:20px;}
 
-/*
+.gedcom_favorites_block  .person_box .details2, .gedcom_favorites_block  .person_boxF.details2, .gedcom_favorites_block  .person_boxNN.details2 {min-height:40px;}
+.user_favorites_block  .person_box .details2, .user_favorites_block  .person_boxF.details2, .user_favorites_block  .person_boxNN.details2 {min-height:40px;}
+
 .user_favorites_block, .gedcom_favorites_block,
-#family_page .person_box, #family_page .person_boxF, #family_page .person_boxNN,
-#ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
-#descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,
-#familybook_chart .person_box, #familybook_chart .person_boxF, #familybook_chart .person_boxNN,
-#familybook_chart_rtl .person_box, #familybook_chart_rtl .person_boxF, #familybook_chart_rtl .person_boxNN,
-#hourglass_chart .person_box, #hourglass_chart .person_boxF, #hourglass_chart .person_boxNN,
-#hourglass_chart_rtl .person_box, #hourglass_chart_rtl .person_boxF, #hourglass_chart_rtl .person_boxNN,
-#relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN,
-.charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN {
+#ancestry_chart .person_box, #ancestry_chart .person_boxF,
+#descendancy_chart .person_box, #descendancy_chart .person_boxF,
+#familybook_chart .person_box, #familybook_chart .person_boxF,
+#familybook_chart_rtl .person_box, #familybook_chart_rtl .person_boxF,
+#hourglass_chart .person_box, #hourglass_chart .person_boxF,
+#hourglass_chart_rtl .person_box, #hourglass_chart_rtl .person_boxF {
 	overflow: visible !important;
 }
-*/
 
 #register-page table, #login-page table, #branches-page table, #media-list-page .list_table  {margin:auto;}
 #register-page table a {display:block; text-align:center;}
