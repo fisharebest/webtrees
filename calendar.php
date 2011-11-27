@@ -278,7 +278,7 @@ echo '</select>';
 
 echo '</td></tr>';
 echo '</table></form>';
-echo "<table class=\"center width100\">";
+echo "<table class=\"width100\">";
 
 // Day/Month/Year and calendar selector
 echo '<tr><td class="topbottombar width50">';
@@ -414,9 +414,9 @@ case 'calendar':
 switch ($action) {
 case 'year':
 case 'today':
-	echo "<table class=\"center width100\"><tr>";
+	echo "<table class=\"width100\"><tr>";
 	// Table headings
-	echo "<td class=\"descriptionbox center width50\">";
+	echo "<td class=\"descriptionbox width50\">";
 		if (isset($WT_IMAGES['indis'])) echo "<img id=\"calendar_img_indi\" src=\"{$WT_IMAGES['indis']}\" title=\"", WT_I18N::translate('Individuals'), "\" alt=\"", WT_I18N::translate('Individuals'), "\">&nbsp;&nbsp;&nbsp;";
 		echo WT_I18N::translate('Individuals'), "</td>";
 	echo "<td class=\"descriptionbox center width50\">";
