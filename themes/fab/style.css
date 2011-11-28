@@ -141,7 +141,6 @@ img {
 
 /* Block level objects, such as header, footer, etc. */
 .block {background-color:#EEE; clear:none;}
-.blockcontent .noprint {max-height:0; width:0;}
 .blockheader {font-weight:bold;}
 .charts_block {overflow:auto;}
 

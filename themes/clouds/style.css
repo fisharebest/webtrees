@@ -395,7 +395,6 @@ width: 99%;
 .small_inner_block {max-height: 200px; overflow: auto;}
 .block {color: #000;vertical-align: top;margin-bottom: 5px;padding: 1px;}
 .blockcontent {border: solid #999 1px; margin-left:auto; margin-right:2px; margin-bottom:10px; overflow:auto;padding: 5px;}
-.blockcontent .noprint {max-height:0; width:0;}
 .blockheader {width:100%;}
 
 img {border: 0 none;}

@@ -791,7 +791,6 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	border-right:solid black 1px;
 }
 
-.blockcontent .noprint {max-height:0; width:0;}
 .blockheader {font-weight:bold;}
 
 img.block {

@@ -1373,7 +1373,6 @@ html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-c
 .blockcontent {margin:5px; overflow:auto;}
 .blockcontent .list_table {border-spacing:0; border:solid #81a9cb 1px; border-right:0;}
 .blockcontent .list_value, .blockcontent  .list_value_wrap {border:0; border-top:solid #81a9cb 1px; border-right:solid #81a9cb 1px;}
-.blockcontent .noprint {max-height:0; width:0;}
 .blockheader {font-weight:bold;}
 
 /* ======= FAQ table styles ========== */
