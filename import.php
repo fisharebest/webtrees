@@ -35,9 +35,7 @@ require_once WT_ROOT.'includes/functions/functions_import.php';
 $controller=new WT_Controller_Ajax();
 $controller
 	->requireManagerLogin()
-	->pageHeader()
-	->addExternalJavaScript(WT_JQUERY_URL)
-	->addExternalJavaScript(WT_JQUERYUI_URL);
+	->pageHeader();
 
 // Don't use ged=XX as we want to be able to run without changing the current gedcom.
 // This will let us load several gedcoms together, or to edit one while loading another.
