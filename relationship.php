@@ -41,6 +41,9 @@ if ($path_to_find == -1) {
 	unset($_SESSION["relationships"]);
 }
 
+$Dbxspacing = ($bwidth-240)/2;
+
+
 //-- previously these variables were set in theme.php, now they are no longer required to be set there
 $Dbasexoffset = 0;
 $Dbaseyoffset = 0;
