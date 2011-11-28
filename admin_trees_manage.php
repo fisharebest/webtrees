@@ -207,12 +207,21 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=0 LIMIT 1"
 		)->execute(array($gedcom_id))->fetchOne();
 		if ($importing) {
-			echo
-				'<div id="import', $gedcom_id, '"></div>',
-				WT_JS_START,
-				'jQuery("#import', $gedcom_id, '").load("import.php?gedcom_id=', $gedcom_id, '&keep_media=', safe_POST('keep_media'.$gedcom_id), '");',
-				WT_JS_END,
-				'<table border="0" width="100%" id="actions', $gedcom_id, '" style="display:none">';
+			$in_progress=WT_DB::prepare(
+				"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=1 LIMIT 1"
+			)->execute(array($gedcom_id))->fetchOne();
+			if (!$in_progress) {
+				echo '<div id="import', $gedcom_id, '"><div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
+			$controller->addInlineJavaScript(
+				'jQuery("#progressbar'.$gedcom_id.'").progressbar({value: 0});'
+			);
+			} else {
+				echo '<div id="import', $gedcom_id, '"></div>';
+			}
+			$controller->addInlineJavaScript(
+				'jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'&keep_media='.safe_POST('keep_media'.$gedcom_id).'");'
+			);
+			echo '<table border="0" width="100%" id="actions', $gedcom_id, '" style="display:none">';
 		} else {
 			echo '<table border="0" width="100%" id="actions', $gedcom_id, '">';
 		}

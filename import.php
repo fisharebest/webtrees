@@ -78,7 +78,6 @@ echo '<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $
 $controller->addInlineJavaScript(
 	'jQuery("#progressbar'.$gedcom_id.'").progressbar({value: '.round($percent, 1).'});'
 );
-flush();
 
 $first_time=($row->import_offset==0);
 // Run for one second.  This keeps the resource requirements low.
@@ -111,7 +110,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		if (substr($data->chunk_data, 0, 6)!='0 HEAD') {
 			WT_DB::exec("ROLLBACK");
 			echo WT_I18N::translate('Invalid GEDCOM file - no header record found.');
-			echo WT_JS_START, 'jQuery("#actions', $gedcom_id, '").toggle();', WT_JS_END;
+			$controller->addInlineJavaScript('jQuery("#actions'.$gedcom_id.'").toggle();');
 			exit;
 		}
 		// What character set is this?  Need to convert it to UTF8
@@ -187,7 +186,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 		default:
 			WT_DB::exec("ROLLBACK");
 			echo '<span class="error">',  WT_I18N::translate('Error: converting GEDCOM files from %s encoding to UTF-8 encoding not currently supported.', $charset), '</span>';
-			echo WT_JS_START, 'jQuery("#actions', $gedcom_id, '").toggle();', WT_JS_END;
+			$controller->addInlineJavaScript('jQuery("#actions'.$gedcom_id.'").toggle();');
 			exit;
 		}
 		$first_time=false;
@@ -218,17 +217,11 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			// "SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction"
 			// The documentation says that if you get this error, wait and try again.....
 			sleep(1);
-			echo
-				WT_JS_START,
-				'jQuery("#import', $gedcom_id, '").load("import.php?gedcom_id=', $gedcom_id, '");',
-				WT_JS_END;
+			$controller->addInlineJavaScript('jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'");');
 		} else {
 			// A fatal error.  Nothing we can do?
-			echo
-				'<span class="error">', $ex->getMessage(), '</span>',
-				WT_JS_START,
-				'jQuery("#actions', $gedcom_id, '").toggle();',
-				WT_JS_END;
+			echo '<span class="error">', $ex->getMessage(), '</span>';
+			$controller->addInlineJavaScript('jQuery("#actions'.$gedcom_id.'").toggle();');
 		}
 		exit;
 	}
@@ -237,7 +230,4 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 WT_DB::exec("COMMIT");
 
 // Reload.....
-echo
-	WT_JS_START,
-	'jQuery("#import', $gedcom_id, '").load("import.php?gedcom_id=', $gedcom_id, '");',
-	WT_JS_END;
+$controller->addInlineJavaScript('jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'");');
