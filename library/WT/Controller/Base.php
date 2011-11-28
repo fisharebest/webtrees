@@ -97,9 +97,12 @@ class WT_Controller_Base {
 	}
 
 	// Restrict access
-	public function requireManagerLogin() {
+	public function requireManagerLogin($ged_id=WT_GED_ID) {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
-		if (!WT_USER_GEDCOM_ADMIN) {
+		if (
+			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
+			$ged_id!=WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
+		) {
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
 			exit;
 		}

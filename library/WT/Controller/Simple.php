@@ -50,8 +50,11 @@ class WT_Controller_Simple extends WT_Controller_Base {
 	}
 	
 	// Restrict access
-	public function requireManagerLogin() {
-		if (!WT_USER_GEDCOM_ADMIN) {
+	public function requireManagerLogin($ged_id=WT_GED_ID) {
+		if (
+			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
+			$ged_id!=WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
+		) {
 			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
 			exit;
 		}

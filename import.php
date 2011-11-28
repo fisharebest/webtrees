@@ -30,20 +30,18 @@
 
 define('WT_SCRIPT_NAME', 'import.php');
 require './includes/session.php';
-
 require_once WT_ROOT.'includes/functions/functions_import.php';
+
+$controller=new WT_Controller_Ajax();
+$controller
+	->requireManagerLogin()
+	->pageHeader()
+	->addExternalJavaScript(WT_JQUERY_URL)
+	->addExternalJavaScript(WT_JQUERYUI_URL);
 
 // Don't use ged=XX as we want to be able to run without changing the current gedcom.
 // This will let us load several gedcoms together, or to edit one while loading another.
 $gedcom_id=safe_GET('gedcom_id');
-
-if (!userGedcomAdmin(WT_USER_ID, $gedcom_id)) {
-	header('HTTP/1.0 403 Forbidden');
-	exit;
-}
-
-// AJAX responses require a header
-header('Content-type: text/html; charset=UTF-8');
 
 // Don't allow the user to cancel the request.  We do not want to be left
 // with an incomplete transaction.
@@ -67,11 +65,10 @@ if ($row->import_offset==$row->import_total) {
 	set_gedcom_setting($gedcom_id, 'imported', true);
 	// Finished?  Show the maintenance links, similar to admin_trees_manage.php
 	WT_DB::exec("COMMIT");
-	echo
-		WT_JS_START,
-		'jQuery("#import',  $gedcom_id, '").toggle();',
-		'jQuery("#actions', $gedcom_id, '").toggle();',
-		WT_JS_END;
+	$controller->addInlineJavaScript(
+		'jQuery("#import'. $gedcom_id.'").toggle();'.
+		'jQuery("#actions'.$gedcom_id.'").toggle();'
+	);
 	exit;
 }
 
@@ -79,11 +76,10 @@ if ($row->import_offset==$row->import_total) {
 $percent=100*(($row->import_offset) / $row->import_total);
 $status=WT_I18N::translate('Loading data from GEDCOM: %.1f%%', $percent);
 
-echo
-	'<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>',
-	WT_JS_START,
-	' jQuery("#progressbar', $gedcom_id, '").progressbar({value: ', round($percent, 1), '});',
-	WT_JS_END;
+echo '<div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', $status, '</div></div>';
+$controller->addInlineJavaScript(
+	'jQuery("#progressbar'.$gedcom_id.'").progressbar({value: '.round($percent, 1).'});'
+);
 flush();
 
 $first_time=($row->import_offset==0);
@@ -148,10 +144,9 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 			)->execute(array($gedcom_id));
 			break;
 		case 'ANSI': // ANSI could be anything.  Most applications seem to treat it as latin1.
-			echo
-				WT_JS_START,
-				'alert("', /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ WT_I18N::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'), '");',
-				WT_JS_END;
+			$controller->addInlineJavaScript(
+				'alert("', /* I18N: %1$s and %2$s are the names of character encodings, such as ISO-8859-1 or ASCII */ WT_I18N::translate('This GEDCOM is encoded using %1$s.  Assume this to mean %2$s.', $charset, 'ISO-8859-1'), '");'
+			);
 		case 'WINDOWS':
 		case 'CP1252':
 		case 'ISO8859-1':
