@@ -81,7 +81,7 @@ if ($surn) {
 	$surn_script = utf8_script($surn);
 	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', PrintReady($surn), '</legend>';
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
-	uasort($indis, array('WT_Person', 'CompareBirtDate'));
+	usort($indis, array('WT_Person', 'CompareBirtDate'));
 	echo '<ol>';
 	foreach ($indis as $person) {
 		$famc = $person->getPrimaryChildFamily();
@@ -194,28 +194,28 @@ function load_ancestors_array($person, $sosa=1) {
 
 function indis_array($surn, $soundex_std, $soundex_dm) {
 	$sql=
-		'SELECT DISTINCT n_id'.
-		' FROM `##name`'.
-		' WHERE n_file=?'.
-		' AND n_type!=?'.
-		' AND (n_surn=? OR n_surname=?';
+		"SELECT DISTINCT n_id".
+		" FROM `##name`".
+		" WHERE n_file=?".
+		" AND n_type!=?".
+		" AND (n_surn=? OR n_surname=?";
 	$args=array(WT_GED_ID, '_MARNM', $surn, $surn);
 	if ($soundex_std) {
-		$sql .= ' OR n_soundex_surn_std=?';
+		$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 		$args[]=soundex_std($surn);
 	}
 	if ($soundex_dm) {
-		$sql .= ' OR n_soundex_surn_dm=?';
+		$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 		$args[]=soundex_dm($surn);
 	}
-	$sql .= ') ORDER BY n_sort';
+	$sql .= ')';
 	$rows=
 		WT_DB::prepare($sql)
 		->execute($args)
 		->fetchAll();
 	$data=array();
 	foreach ($rows as $row) {
-		$data[$row->n_id]=WT_Person::getInstance($row->n_id);
+		$data[]=WT_Person::getInstance($row->n_id);
 	}
 	return $data;
 }
