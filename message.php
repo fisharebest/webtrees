@@ -161,7 +161,7 @@ if ($action=='send' && $good_to_send) {
 				echo WT_I18N::translate('Message was not sent'), '<br />';
 				AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (recipient does not exist)', 'error');
 			} else if (addMessage($message)) {
-				echo WT_I18N::translate('Message successfully sent to %s', '<b>'.getUserFullName($to_user_id).'</b>');
+				echo WT_I18N::translate('Message successfully sent to %s', '<b>'.$to.'</b>');
 			} else {
 				echo WT_I18N::translate('Message was not sent'), '<br />';
 				AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)', 'error');
