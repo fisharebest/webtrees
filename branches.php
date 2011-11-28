@@ -64,8 +64,8 @@ if ($ENABLE_AUTOCOMPLETE) {
 				<input type="text" name="surname" id="SURN" value="<?php echo $surn; ?>" />
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" />
 				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
-				<p class="details1">
-					<?php echo WT_I18N::translate('Phonetic search'); ?><br />
+				<p><?php echo WT_I18N::translate('Phonetic search'); ?></p>
+				<p>
 					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo ' checked="checked"'; ?> />
 					<label for="soundex_std"><?php echo WT_I18N::translate('Russell'); ?></label>
 					<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php if ($soundex_dm) echo ' checked="checked"'; ?> />
