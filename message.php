@@ -26,10 +26,6 @@
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('webtrees Message'));
-$controller->pageHeader();
-
 $subject   =isset($_REQUEST['subject'   ]) ? $_REQUEST['subject'   ] : '';
 $url       =isset($_REQUEST['url'       ]) ? $_REQUEST['url'       ] : '';
 $method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : 'messaging2';
@@ -41,6 +37,26 @@ $action    =isset($_REQUEST['action'    ]) ? $_REQUEST['action'    ] : 'compose'
 $from      =isset($_REQUEST['from'      ]) ? $_REQUEST['from'      ] : '';
 $time      =isset($_REQUEST['time'      ]) ? $_REQUEST['time'      ] : '';
 $method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : '';
+
+// Ensure the user always visits this page twice - once to compose and again to send it.
+// This makes it harder for spammers.
+// We must write all session variables *before* we display the page header.
+switch ($action) {
+case 'compose':
+	$WT_SESSION->good_to_send=true;
+	break;
+case 'send':
+	$good_to_send=$WT_SESSION->good_to_send;
+	unset($WT_SESSION->good_to_send);
+	break;
+default:
+	unset($WT_SESSION->good_to_send);
+	break;
+}
+
+$controller=new WT_Controller_Simple();
+$controller->setPageTitle(WT_I18N::translate('webtrees Message'));
+$controller->pageHeader();
 
 if (empty($to)) {
 	echo '<p class="ui-state-error">'.WT_I18N::translate('No recipient user was provided.  Cannot continue.').'</p>';
@@ -63,8 +79,7 @@ if (!WT_USER_ID) {
 	}
 }
 
-if (($action=='send')&&(isset($_SESSION['good_to_send']))&&($_SESSION['good_to_send']===true)) {
-	$_SESSION['good_to_send'] = false;
+if ($action=='send' && $good_to_send) {
 	if (!empty($from_email)) $from = $from_email;
 	if (!get_user_id($from)) {
 		$mt = preg_match("/(.+)@(.+)/", $from, $match);
@@ -139,25 +154,17 @@ if (($action=='send')&&(isset($_SESSION['good_to_send']))&&($_SESSION['good_to_s
 			if ($i>0) $message['no_from'] = true;
 			if ($message['from']==$message['to']) {
 				//-- do not allow users to send a message to themselves
-				echo WT_I18N::translate('It is not allowed to send messages to yourself.'), '<br />';
 				echo WT_I18N::translate('Message was not sent'), '<br />';
-				AddToLog('Unable to send message.  TO:'.$to.' FROM:'.$from, 'error');
+				AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (sender is same as recipient)', 'error');
 			} else if (!get_user_id($to)) {
 				//-- the to user must be a valid user in the system before it will send any mails
-				echo WT_I18N::translate('Invalid user identifier: %s.', get_user_id($to)), '<br />';
 				echo WT_I18N::translate('Message was not sent'), '<br />';
-				AddToLog('Unable to send message.  TO:'.$to.' FROM:'.$from, 'error');
+				AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (recipient does not exist)', 'error');
 			} else if (addMessage($message)) {
-				$to_user_id=get_user_id($to);
-				if ($to_user_id) {
-					echo WT_I18N::translate('Message successfully sent to %s', '<b>'.getUserFullName($to_user_id).'</b>');
-					echo '<br />';
-				} else {
-					AddToLog('Invalid TO user.'.$to.' Possible spam attack.', 'auth');
-				}
+				echo WT_I18N::translate('Message successfully sent to %s', '<b>'.getUserFullName($to_user_id).'</b>');
 			} else {
 				echo WT_I18N::translate('Message was not sent'), '<br />';
-				AddToLog('Unable to send message.  TO:'.$to.' FROM:'.$from, 'error');
+				AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)', 'error');
 			}
 			$i++;
 		}
@@ -166,7 +173,6 @@ if (($action=='send')&&(isset($_SESSION['good_to_send']))&&($_SESSION['good_to_s
 
 if ($action=='compose') {
 	echo '<span class="subheaders">', WT_I18N::translate('Send Message'), '</span>';
-	$_SESSION['good_to_send'] = true;
 	?>
 	<script type="text/javascript">
 		function validateEmail(email) {
