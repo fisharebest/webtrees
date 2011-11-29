@@ -516,6 +516,8 @@ left:auto;
 html[dir='rtl'] #ancestry_chart > .person_box  {margin: 0 10px 10px 0;}
 html[dir='rtl'] #ancestry_chart > .person_boxF {margin: 0 10px 10px 0;}
 
+#familybook_chart {margin-left: 10px;}
+html[dir='rtl'] #familybook_chart {margin-right: 10px;}
 
 .topheader {
 color:#888;
