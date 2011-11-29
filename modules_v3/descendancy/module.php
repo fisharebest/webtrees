@@ -69,12 +69,15 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$pid   =safe_GET('pid', WT_REGEX_XREF);
 		$famid =safe_GET('famid', WT_REGEX_XREF);
 
-		$last = array('search'=>$search);
-		$_SESSION['sb_descendancy_last'] = $last;
-
-		if (!empty($search)) return $this->search($search);
-		else if (!empty($pid)) return $this->loadSpouses($pid, 1);
-		else if (!empty($famid)) return $this->loadChildren($famid, 1);
+		if ($search) {
+			return $this->search($search);
+		} elseif ($pid) {
+			return $this->loadSpouses($pid, 1);
+		} elseif ($famid) {
+			return $this->loadChildren($famid, 1);
+		} else {
+			return '';
+		}
 	}
 
 	// Implement WT_Module_Sidebar
