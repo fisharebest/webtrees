@@ -1213,7 +1213,7 @@ function format_repo_table($repos) {
 		}
 		$html .= '</tr>';
 	}
-	$html .= '</tbody</table></div>';
+	$html .= '</tbody></table></div>';
 	
 	return $html;
 }
