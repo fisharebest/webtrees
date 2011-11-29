@@ -88,7 +88,7 @@ if ($surn) {
 		// Don't show INDIs with parents in the list, as they will be shown twice.
 		if ($famc) {
 			foreach ($famc->getSpouses() as $parent) {
-				if (array_key_exists($parent->getXref(), $indis)) {
+				if (in_array($parent, $indis)) {
 					continue 2;
 				}
 			}
