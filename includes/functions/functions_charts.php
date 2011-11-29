@@ -665,7 +665,7 @@ function print_cousins($famid, $personcount=1) {
 	echo '<td valign="middle" height="100%">';
 	if ($kids) {
 		echo '<table cellspacing="0" cellpadding="0" border="0" ><tr valign="middle">';
-		if ($kids>1) echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight+15)*($kids-1)), 'px" src="', $WT_IMAGES["vline"], '" alt="" /></td>';
+		if ($kids>1) echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight+5)*($kids-1)), 'px" src="', $WT_IMAGES["vline"], '" alt="" /></td>';
 		$ctkids = count($fchildren);
 		$i = 1;
 		foreach ($fchildren as $fchil) {
