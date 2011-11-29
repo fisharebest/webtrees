@@ -525,6 +525,8 @@ padding-right:0;
 padding-bottom:0;
 }
 
+#ancestry_chart > .person_box, #ancestry_chart > .person_boxF {margin: 0 0 10px 0px;}
+
 html[dir='rtl'] #ancestry_chart ul {
 background-position:right top;
 margin:0 15px 0 0;
@@ -1182,8 +1184,16 @@ background: transparent;
 legend {
 font-weight:bold;
 }
+
 .details_label {
 font-weight:bold;
+}
+
+.name_head {
+color:#333;
+font-weight:bold; font-size:16px;
+line-height:2;
+padding:0 5px;
 }
 
 form .rtl {
