@@ -40,6 +40,8 @@ class WT_I18N {
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
 	static public function init($locale=null) {
+		global $WT_SESSION;
+
 		// The translation libraries work much faster with a cache.  Try to create one.
 		if (!is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
 			// We may not have permission - especially during setup, before we instruct
@@ -63,9 +65,9 @@ class WT_I18N {
 				if (WT_USER_ID) {
 					set_user_setting(WT_USER_ID, 'language', $locale);
 				}
-			} elseif (isset($_SESSION['locale']) && array_key_exists($_SESSION['locale'], $installed_languages)) {
+			} elseif (array_key_exists($WT_SESSION->locale, $installed_languages)) {
 				// Rembered from a previous visit?
-				$locale=$_SESSION['locale'];
+				$locale=$WT_SESSION->locale;
 			} else {
 				// Browser preference takes priority over gedcom default
 				if (!empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
@@ -104,7 +106,7 @@ class WT_I18N {
 			}
 		}
 		// We now have a valid locale.  Remember it.
-		$_SESSION['locale']=$locale;
+		$WT_SESSION->locale=$locale;
 
 		// Load the translation file
 		$translate=new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);

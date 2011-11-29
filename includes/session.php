@@ -485,8 +485,8 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		$THEME_DIR=safe_GET('theme', get_theme_names());
 		unset($_GET['theme']);
 		// Last theme used?
-		if (!$THEME_DIR && isset($_SESSION['theme_dir']) && in_array($_SESSION['theme_dir'], get_theme_names())) {
-			$THEME_DIR=$_SESSION['theme_dir'];
+		if (!$THEME_DIR && in_array($WT_SESSION->theme_dir, get_theme_names())) {
+			$THEME_DIR=$WT_SESSION->theme_dir;
 		}
 	} else {
 		$THEME_DIR='';
@@ -511,7 +511,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 	define('WT_THEME_DIR', WT_THEMES_DIR.$THEME_DIR.'/');
 	// Remember this setting
 	if (WT_THEME_DIR!=WT_THEMES_DIR.'_administration/') {
-		$_SESSION['theme_dir']=$THEME_DIR;
+		$WT_SESSION->theme_dir=$THEME_DIR;
 	}
 }
 // If we have specified a CDN, use it for static theme resources
