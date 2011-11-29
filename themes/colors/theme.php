@@ -87,9 +87,9 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 		set_site_setting('DEFAULT_COLOR_PALETTE', $subColor);
 	}
 	unset($_GET['themecolor']);
-} elseif (isset($_SESSION['themecolor']))  {
+} elseif ($WT_SESSION->themecolor)  {
 	// Previously selected color
-	$subColor=$_SESSION['themecolor'];
+	$subColor=$WT_SESSION->themecolor;
 } else {
 	if (WT_USER_ID) {
 		$subColor=get_user_setting(WT_USER_ID, 'themecolor');
@@ -101,7 +101,7 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 	}
 }
 
-$_SESSION['themecolor']=$subColor;
+$WT_SESSION->themecolor=$subColor;
 
 $theme_name       = "colors"; // need double quotes, as file is scanned/parsed by script
 $footerfile       = WT_THEME_DIR . 'footer.php';
