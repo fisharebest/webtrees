@@ -546,7 +546,7 @@ class WT_MenuBar {
 	}
 
 	public static function getHelpMenu() {
-		global $SEARCH_SPIDER, $helpindex;
+		global $SEARCH_SPIDER, $helpindex, $WT_SESSION;
 
 		if (!empty($SEARCH_SPIDER)) {
 			return null;
@@ -590,7 +590,7 @@ class WT_MenuBar {
 			$menu->addSubmenu($submenu);
 		}
 		//-- add show/hide context_help
-		if ($_SESSION['show_context_help']) {
+		if ($WT_SESSION->show_context_help) {
 			$submenu = new WT_Menu(WT_I18N::translate('Hide contextual help'), get_query_url(array('show_context_help'=>'no')), 'menu-help-hide');
 		} else {
 			$submenu = new WT_Menu(WT_I18N::translate('Show contextual help'), get_query_url(array('show_context_help'=>'yes')), 'menu-help-show');
