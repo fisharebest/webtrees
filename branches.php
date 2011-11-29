@@ -97,8 +97,8 @@ if ($surn) {
 	}
 	echo '</ol>';
 	echo '</fieldset>';
-	echo '</div>'; // close branches-page
 }
+echo '</div>'; // close branches-page
 
 function print_fams($person, $famid=null) {
 	global $UNKNOWN_NN, $surn, $surn_script, $user_ancestors;
