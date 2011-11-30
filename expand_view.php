@@ -69,13 +69,12 @@ foreach ($events as $event) {
 			break;
 		case 'ASSO':
 			// Associates
-			echo '<div>';
-			print_asso_rela_record($event, $person);
-			echo '</div>';
+			echo '<div><span class="details_label">', $event->getLabel(), '</span> ';
+			echo print_asso_rela_record($event, $person), '</div>';
+			break;
 		default:
 			// Simple version of print_fact()
 			echo '<div>';
-			$details=$event->getDetail();
 			echo '<span class="details_label">', $event->getLabel(), '</span> ';
 			$details=$event->getDetail();
 			if ($details!='Y' && $details!='N') {
@@ -89,7 +88,7 @@ foreach ($events as $event) {
 			}
 			$family=WT_Family::getInstance($event->getFamilyId());
 			if ($family) {
-				echo '<a href="', $family->getHtmlUrl(), '">',WT_I18N::translate('View Family'), '</a>';
+				echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
 			}
 			echo format_fact_place($event, true, true);
 			echo '</div>';
