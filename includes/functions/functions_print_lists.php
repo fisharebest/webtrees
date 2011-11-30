@@ -382,7 +382,12 @@ function format_indi_table($datalist, $option='') {
 			$age='';
 		}
 		// Need both display and sortable age
-		$html .= '<td>'. WT_I18N::number($age). '</td><td>'. $age. '</td>';
+		// For negative ages, we get a warning triangle
+		if (is_numeric($age)) {
+			$html .= '<td>'. WT_I18N::number($age). '</td><td>'. $age. '</td>';
+		} else {
+			$html .= '<td>'. $age. '</td><td>-1</td>';
+		}
 		//-- Death place
 		$html .= '<td>';
 		foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
