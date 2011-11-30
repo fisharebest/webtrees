@@ -259,11 +259,13 @@ class WT_I18N {
 	// fr: 12 345,67
 	// de: 12.345,67
 	static public function number($n, $precision=0) {
-		// Add "punctuation"
-		$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
-		// Convert digits.
-		if (WT_NUMBERING_SYSTEM!='latn') {
-			$n=Zend_Locale_Format::convertNumerals($n, 'latn', WT_NUMBERING_SYSTEM);
+		if (is_numeric($n)) {
+			// Add "punctuation"
+			$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
+			// Convert digits.
+			if (WT_NUMBERING_SYSTEM!='latn') {
+				$n=Zend_Locale_Format::convertNumerals($n, 'latn', WT_NUMBERING_SYSTEM);
+			}
 		}
 		return $n;
 	}
