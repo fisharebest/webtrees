@@ -146,5 +146,5 @@ if (WT_USER_IS_ADMIN && $ctype=='gedcom' && !in_array('gedcom_block', $blocks['m
 	echo '<div align="center">';
 	echo "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1');\">".WT_I18N::translate('Change the blocks on this page').'</a>';
 	echo '</div>';
-	echo '</div>';//close 'home-page'
 }
+echo '</div>'; // <div id="home-page">
