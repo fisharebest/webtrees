@@ -148,7 +148,7 @@ case 'PLIF_LOCALFILE':
 	break;
 
 case 'PLIF_CLEAN':
-	$title=WT_I18N::translate('Clear placelocation database');
+	$title=WT_I18N::translate('Clear all place-locations before import?');
 	$text=WT_I18N::translate('When this option is selected the placelocation database will be cleared. This means that only the location stored in this table will be deleted. This will not change anything in the GEDCOM.');
 	break;
 

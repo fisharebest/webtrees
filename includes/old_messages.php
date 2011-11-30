@@ -50,6 +50,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Choose a letter to show individuals who have a given name which starts with that letter.');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Choose a letter to show individuals whose family name starts with that letter.');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Circle diagram');
+/* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Clean placelocation database');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Dead ');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Disabled');
 /* I18N: This message is deleted in webtrees-1.2.5  */ WT_I18N::translate('Enter latitude or Longitude');
