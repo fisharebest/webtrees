@@ -1669,7 +1669,7 @@ function print_changes_table($change_ids, $sort) {
 		//-- Record name(s)
 		$name = $record->getFullName();
 		$html .= '<td class="wrap">';
-		$html .= '<a href="'. $record->getHtmlUrl() .'" class="name2">'. $name . '</a>';
+		$html .= '<a href="'. $record->getHtmlUrl() .'">'. $name . '</a>';
 		if ($indi) {
 			$addname = $record->getAddName();
 			if ($addname) {
