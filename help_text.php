@@ -397,8 +397,8 @@ case 'DATE':
 		'<table border="1">'.
 		'<tr><th>'.WT_I18N::translate('Date period').'</th><th>'.WT_I18N::translate('Format').'</th><th>'.WT_I18N::translate('Shortcut').'</th></tr>'.
 		'<tr><td>'.$dates['FROM 1900 TO 1910'].'</td><td><tt dir="ltr" lang="en">FROM 1900 TO 1910</tt></td><td><tt dir="ltr" lang="en">1900~1910</tt></td></tr>'.
-		'<tr><td>'.$dates['FROM 1900'].'</td><td><tt dir="ltr" lang="en">FROM 1900</tt></td><td><tt dir="ltr" lang="en">-1900</tt></td></tr>'.
-		'<tr><td>'.$dates['TO 1910'].'</td><td><tt dir="ltr" lang="en">TO 1910</tt></td><td><tt dir="ltr" lang="en">1900-</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM 1900'].'</td><td><tt dir="ltr" lang="en">FROM 1900</tt></td><td><tt dir="ltr" lang="en">1900-</tt></td></tr>'.
+		'<tr><td>'.$dates['TO 1910'].'</td><td><tt dir="ltr" lang="en">TO 1910</tt></td><td><tt dir="ltr" lang="en">-1900</tt></td></tr>'.
 		'</table>'.
 		'<p>'.WT_I18N::translate('Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous.').'</p>'.
 		'<table border="1">'.
