@@ -373,80 +373,80 @@ case 'DATE':
 		'<p>'.WT_I18N::translate('Dates are stored using English abbreviations and keywords.  Shortcuts are available as alternatives to these abbreviations and keywords.').'</p>'.
 		'<table border="1">'.
 		'<tr><th>'.WT_I18N::translate('Date').'</th><th>'.WT_I18N::translate('Format').'</th><th>'.WT_I18N::translate('Shortcut').'</th></tr>'.
-		'<tr><td>'.$dates['1900'].'</td><td><tt>1900</tt></td><td>&nbsp;</td></tr>'.
-		'<tr><td>'.$dates['JAN 1900'].'<br/>'.$dates['FEB 1900'].'<br/>'.$dates['MAR 1900'].'<br/>'.$dates['APR 1900'].'<br/>'.$dates['MAY 1900'].'<br/>'.$dates['JUN 1900'].'<br/>'.$dates['JUL 1900'].'<br/>'.$dates['AUG 1900'].'<br/>'.$dates['SEP 1900'].'<br/>'.$dates['OCT 1900'].'<br/>'.$dates['NOV 1900'].'<br/>'.$dates['DEC 1900'].'</td><td><tt>JAN 1900<br/>FEB 1900<br/>MAR 1900<br/>APR 1900<br/>MAY 1900<br/>JUN 1900<br/>JUL 1900<br/>AUG 1900<br/>SEP 1900<br/>OCT 1900<br/>NOV 1900<br/>DEC 1900</tt></td><td>&nbsp;</td></tr>'.
-		'<tr><td>'.$dates['11 DEC 1913'].'</td><td><tt>11 DEC 1913</tt></td><td><tt>'.$example1.'</tt></td></tr>'.
-		'<tr><td>'.$dates['01 FEB 2003'].'</td><td><tt>01 FEB 2003</tt></td><td><tt>'.$example2.'</tt></td></tr>'.
-		'<tr><td>'.$dates['ABT 1900'].'</td><td><tt>ABT 1900</tt></td><td><tt>~1900</tt></td></tr>'.
-		'<tr><td>'.$dates['EST 1900'].'</td><td><tt>EST 1900</tt></td><td><tt>*1900</tt></td></tr>'.
-		'<tr><td>'.$dates['CAL 1900'].'</td><td><tt>CAL 1900</tt></td><td><tt>#1900</tt></td></tr>'.
-		'<tr><td>'.$dates['INT 1900 (...)'].'</td><td><tt>INT 1900 (...)</tt></td><td>&nbsp;</td></tr>'.
+		'<tr><td>'.$dates['1900'].'</td><td><tt dir="ltr" lang="en">1900</tt></td><td>&nbsp;</td></tr>'.
+		'<tr><td>'.$dates['JAN 1900'].'<br/>'.$dates['FEB 1900'].'<br/>'.$dates['MAR 1900'].'<br/>'.$dates['APR 1900'].'<br/>'.$dates['MAY 1900'].'<br/>'.$dates['JUN 1900'].'<br/>'.$dates['JUL 1900'].'<br/>'.$dates['AUG 1900'].'<br/>'.$dates['SEP 1900'].'<br/>'.$dates['OCT 1900'].'<br/>'.$dates['NOV 1900'].'<br/>'.$dates['DEC 1900'].'</td><td><tt dir="ltr" lang="en">JAN 1900<br/>FEB 1900<br/>MAR 1900<br/>APR 1900<br/>MAY 1900<br/>JUN 1900<br/>JUL 1900<br/>AUG 1900<br/>SEP 1900<br/>OCT 1900<br/>NOV 1900<br/>DEC 1900</tt></td><td>&nbsp;</td></tr>'.
+		'<tr><td>'.$dates['11 DEC 1913'].'</td><td><tt dir="ltr" lang="en">11 DEC 1913</tt></td><td><tt dir="ltr" lang="en">'.$example1.'</tt></td></tr>'.
+		'<tr><td>'.$dates['01 FEB 2003'].'</td><td><tt dir="ltr" lang="en">01 FEB 2003</tt></td><td><tt dir="ltr" lang="en">'.$example2.'</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT 1900'].'</td><td><tt dir="ltr" lang="en">ABT 1900</tt></td><td><tt dir="ltr" lang="en">~1900</tt></td></tr>'.
+		'<tr><td>'.$dates['EST 1900'].'</td><td><tt dir="ltr" lang="en">EST 1900</tt></td><td><tt dir="ltr" lang="en">*1900</tt></td></tr>'.
+		'<tr><td>'.$dates['CAL 1900'].'</td><td><tt dir="ltr" lang="en">CAL 1900</tt></td><td><tt dir="ltr" lang="en">#1900</tt></td></tr>'.
+		'<tr><td>'.$dates['INT 1900 (...)'].'</td><td><tt dir="ltr" lang="en">INT 1900 (...)</tt></td><td>&nbsp;</td></tr>'.
 		'</table>'.
 		'<p>'.WT_I18N::translate('Date ranges are used to indicate that an event, such as a birth, happened on a unknown date within a possible range.').'</p>'.
 		'<table border="1">'.
 		'<tr><th>'.WT_I18N::translate('Date range').'</th><th>'.WT_I18N::translate('Format').'</th><th>'.WT_I18N::translate('Shortcut').'</th></tr>'.
-		'<tr><td>'.$dates['BET 1900 AND 1910'].'</td><td><tt>BET 1900 AND 1910</tt></td><td><tt>1900-1910</tt></td></tr>'.
-		'<tr><td>'.$dates['AFT 1900'].'</td><td><tt>AFT 1900</tt></td><td><tt>&gt;1900</tt></td></tr>'.
-		'<tr><td>'.$dates['BEF 1910'].'</td><td><tt>BEF 1910</tt></td><td><tt>&lt;1910</tt></td></tr>'.
-		'<tr><td>'.$dates['BET JAN 1900 AND MAR 1900'].'</td><td><tt>BET JAN 1900 AND MAR 1900</tt></td><td><tt>Q1 1900</tt></td></tr>'.
-		'<tr><td>'.$dates['BET APR 1900 AND JUN 1900'].'</td><td><tt>BET APR 1900 AND JUN 1900</tt></td><td><tt>Q2 1900</tt></td></tr>'.
-		'<tr><td>'.$dates['BET JUL 1900 AND SEP 1900'].'</td><td><tt>BET JUL 1900 AND SEP 1900</tt></td><td><tt>Q3 1900</tt></td></tr>'.
-		'<tr><td>'.$dates['BET OCT 1900 AND DEC 1900'].'</td><td><tt>BET OCT 1900 AND DEC 1900</tt></td><td><tt>Q4 1900</tt></td></tr>'.
+		'<tr><td>'.$dates['BET 1900 AND 1910'].'</td><td><tt dir="ltr" lang="en">BET 1900 AND 1910</tt></td><td><tt dir="ltr" lang="en">1900-1910</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT 1900'].'</td><td><tt dir="ltr" lang="en">AFT 1900</tt></td><td><tt dir="ltr" lang="en">&gt;1900</tt></td></tr>'.
+		'<tr><td>'.$dates['BEF 1910'].'</td><td><tt dir="ltr" lang="en">BEF 1910</tt></td><td><tt dir="ltr" lang="en">&lt;1910</tt></td></tr>'.
+		'<tr><td>'.$dates['BET JAN 1900 AND MAR 1900'].'</td><td><tt dir="ltr" lang="en">BET JAN 1900 AND MAR 1900</tt></td><td><tt dir="ltr" lang="en">Q1 1900</tt></td></tr>'.
+		'<tr><td>'.$dates['BET APR 1900 AND JUN 1900'].'</td><td><tt dir="ltr" lang="en">BET APR 1900 AND JUN 1900</tt></td><td><tt dir="ltr" lang="en">Q2 1900</tt></td></tr>'.
+		'<tr><td>'.$dates['BET JUL 1900 AND SEP 1900'].'</td><td><tt dir="ltr" lang="en">BET JUL 1900 AND SEP 1900</tt></td><td><tt dir="ltr" lang="en">Q3 1900</tt></td></tr>'.
+		'<tr><td>'.$dates['BET OCT 1900 AND DEC 1900'].'</td><td><tt dir="ltr" lang="en">BET OCT 1900 AND DEC 1900</tt></td><td><tt dir="ltr" lang="en">Q4 1900</tt></td></tr>'.
 		'</table>'.
 		'<p>'.WT_I18N::translate('Date periods are used to indicate that a fact, such as an occupation, continued for a period of time.').'</p>'.
 		'<table border="1">'.
 		'<tr><th>'.WT_I18N::translate('Date period').'</th><th>'.WT_I18N::translate('Format').'</th><th>'.WT_I18N::translate('Shortcut').'</th></tr>'.
-		'<tr><td>'.$dates['FROM 1900 TO 1910'].'</td><td><tt>FROM 1900 TO 1910</tt></td><td><tt>1900~1910</tt></td></tr>'.
-		'<tr><td>'.$dates['FROM 1900'].'</td><td><tt>FROM 1900</tt></td><td><tt>-1900</tt></td></tr>'.
-		'<tr><td>'.$dates['TO 1910'].'</td><td><tt>TO 1910</tt></td><td><tt>1900-</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM 1900 TO 1910'].'</td><td><tt dir="ltr" lang="en">FROM 1900 TO 1910</tt></td><td><tt dir="ltr" lang="en">1900~1910</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM 1900'].'</td><td><tt dir="ltr" lang="en">FROM 1900</tt></td><td><tt dir="ltr" lang="en">-1900</tt></td></tr>'.
+		'<tr><td>'.$dates['TO 1910'].'</td><td><tt dir="ltr" lang="en">TO 1910</tt></td><td><tt dir="ltr" lang="en">1900-</tt></td></tr>'.
 		'</table>'.
 		'<p>'.WT_I18N::translate('Simple dates are assumed to be in the gregorian calendar.  To specify a date in another calendar, add a keyword before the date.  This keyword is optional if the month or year format make the date unambiguous.').'</p>'.
 		'<table border="1">'.
 		'<tr><th>'.WT_I18N::translate('Date').'</th><th>'.WT_I18N::translate('Format').'</th></tr>'.
 		'<tr><td colspan="2" align="center">'.WT_I18N::translate('Julian').'</td></tr>'.
-		'<tr><td>'.$dates['@#DJULIAN@ 14 JAN 1700'].'</td><td><tt>@#DJULIAN@ 14 JAN 1700</tt></td></tr>'.
-		'<tr><td>'.$dates['@#DJULIAN@ 44 B.C.'].'</td><td><tt>@#DJULIAN@ 44 B.C.</tt></td></tr>'.
-		'<tr><td>'.$dates['@#DJULIAN@ 20 FEB 1742/43'].'</td><td><tt>@#DJULIAN@ 20 FEB 1742/43</tt></td></tr>'.
-		'<tr><td>'.$dates['BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'].'</td><td><tt>BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DJULIAN@ 14 JAN 1700'].'</td><td><tt dir="ltr" lang="en">@#DJULIAN@ 14 JAN 1700</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DJULIAN@ 44 B.C.'].'</td><td><tt dir="ltr" lang="en">@#DJULIAN@ 44 B.C.</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DJULIAN@ 20 FEB 1742/43'].'</td><td><tt dir="ltr" lang="en">@#DJULIAN@ 20 FEB 1742/43</tt></td></tr>'.
+		'<tr><td>'.$dates['BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752'].'</td><td><tt dir="ltr" lang="en">BET @#DJULIAN@ 01 SEP 1752 AND @#DGREGORIAN@ 30 SEP 1752</tt></td></tr>'.
 		'<tr><td colspan="2" align="center">'.WT_I18N::translate('Jewish').'</td></tr>'.
-		'<tr><td>'.$dates['@#DHEBREW@ 5481'].'</td><td><tt>@#DHEBREW@ 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['@#DHEBREW@ TSH 5481'].'</td><td><tt>@#DHEBREW@ TSH 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['ABT @#DHEBREW@ CSH 5481'].'</td><td><tt>ABT @#DHEBREW@ CSH 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'].'</td><td><tt>BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'].'</td><td><tt>FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['AFT @#DHEBREW@ ADR 5481'].'</td><td><tt>AFT @#DHEBREW@ ADR 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['AFT @#DHEBREW@ ADS 5480'].'</td><td><tt>AFT @#DHEBREW@ ADS 5480</tt></td></tr>'.
-		'<tr><td>'.$dates['BEF @#DHEBREW@ NSN 5481'].'</td><td><tt>BEF @#DHEBREW@ NSN 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['ABT @#DHEBREW@ IYR 5481'].'</td><td><tt>ABT @#DHEBREW@ IYR 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['FROM @#DHEBREW@ SVN 5481'].'</td><td><tt>FROM @#DHEBREW@ SVN 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['TO @#DHEBREW@ TMZ 5481'].'</td><td><tt>TO @#DHEBREW@ TMZ 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['EST @#DHEBREW@ AAV 5481'].'</td><td><tt>EST @#DHEBREW@ AAV 5481</tt></td></tr>'.
-		'<tr><td>'.$dates['@#DHEBREW@ 03 ELL 5481'].'</td><td><tt>@#DHEBREW@ 03 ELL 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHEBREW@ 5481'].'</td><td><tt dir="ltr" lang="en">@#DHEBREW@ 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHEBREW@ TSH 5481'].'</td><td><tt dir="ltr" lang="en">@#DHEBREW@ TSH 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DHEBREW@ CSH 5481'].'</td><td><tt dir="ltr" lang="en">ABT @#DHEBREW@ CSH 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481'].'</td><td><tt dir="ltr" lang="en">BET @#DHEBREW@ KSL 5481 AND @#DHEBREW@ TVT 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481'].'</td><td><tt dir="ltr" lang="en">FROM @#DHEBREW@ SHV 5481 TO @#DHEBREW@ ADR 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT @#DHEBREW@ ADR 5481'].'</td><td><tt dir="ltr" lang="en">AFT @#DHEBREW@ ADR 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT @#DHEBREW@ ADS 5480'].'</td><td><tt dir="ltr" lang="en">AFT @#DHEBREW@ ADS 5480</tt></td></tr>'.
+		'<tr><td>'.$dates['BEF @#DHEBREW@ NSN 5481'].'</td><td><tt dir="ltr" lang="en">BEF @#DHEBREW@ NSN 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DHEBREW@ IYR 5481'].'</td><td><tt dir="ltr" lang="en">ABT @#DHEBREW@ IYR 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DHEBREW@ SVN 5481'].'</td><td><tt dir="ltr" lang="en">FROM @#DHEBREW@ SVN 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['TO @#DHEBREW@ TMZ 5481'].'</td><td><tt dir="ltr" lang="en">TO @#DHEBREW@ TMZ 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['EST @#DHEBREW@ AAV 5481'].'</td><td><tt dir="ltr" lang="en">EST @#DHEBREW@ AAV 5481</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHEBREW@ 03 ELL 5481'].'</td><td><tt dir="ltr" lang="en">@#DHEBREW@ 03 ELL 5481</tt></td></tr>'.
 		'<tr><td colspan="2" align="center">'.WT_I18N::translate('Hijri').'</td></tr>'.
-		'<tr><td>'.$dates['@#DHIJRI@ 1497'].'</td><td><tt>@#DHIJRI@ 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['@#DHIJRI@ MUHAR 1497'].'</td><td><tt>@#DHIJRI@ MUHAR 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['ABT @#DHIJRI@ SAFAR 1497'].'</td><td><tt>ABT @#DHIJRI@ SAFAR 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'].'</td><td><tt>BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'].'</td><td><tt>FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['AFT @#DHIJRI@ RAJAB 1497'].'</td><td><tt>AFT @#DHIJRI@ RAJAB 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['BEF @#DHIJRI@ SHAAB 1497'].'</td><td><tt>BEF @#DHIJRI@ SHAAB 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['ABT @#DHIJRI@ RAMAD 1497'].'</td><td><tt>ABT @#DHIJRI@ RAMAD 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['FROM @#DHIJRI@ SHAWW 1497'].'</td><td><tt>FROM @#DHIJRI@ SHAWW 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['TO @#DHIJRI@ DHUAQ 1497'].'</td><td><tt>TO @#DHIJRI@ DHUAQ 1497</tt></td></tr>'.
-		'<tr><td>'.$dates['@#DHIJRI@ 03 DHUAH 1497'].'</td><td><tt>@#DHIJRI@ 03 DHUAH 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHIJRI@ 1497'].'</td><td><tt dir="ltr" lang="en">@#DHIJRI@ 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHIJRI@ MUHAR 1497'].'</td><td><tt dir="ltr" lang="en">@#DHIJRI@ MUHAR 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DHIJRI@ SAFAR 1497'].'</td><td><tt dir="ltr" lang="en">ABT @#DHIJRI@ SAFAR 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497'].'</td><td><tt dir="ltr" lang="en">BET @#DHIJRI@ RABIA 1497 AND @#DHIJRI@ RABIT 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497'].'</td><td><tt dir="ltr" lang="en">FROM @#DHIJRI@ JUMAA 1497 TO @#DHIJRI@ JUMAT 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT @#DHIJRI@ RAJAB 1497'].'</td><td><tt dir="ltr" lang="en">AFT @#DHIJRI@ RAJAB 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['BEF @#DHIJRI@ SHAAB 1497'].'</td><td><tt dir="ltr" lang="en">BEF @#DHIJRI@ SHAAB 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DHIJRI@ RAMAD 1497'].'</td><td><tt dir="ltr" lang="en">ABT @#DHIJRI@ RAMAD 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DHIJRI@ SHAWW 1497'].'</td><td><tt dir="ltr" lang="en">FROM @#DHIJRI@ SHAWW 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['TO @#DHIJRI@ DHUAQ 1497'].'</td><td><tt dir="ltr" lang="en">TO @#DHIJRI@ DHUAQ 1497</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DHIJRI@ 03 DHUAH 1497'].'</td><td><tt dir="ltr" lang="en">@#DHIJRI@ 03 DHUAH 1497</tt></td></tr>'.
 		'<tr><td colspan="2" align="center">'.WT_I18N::translate('French').'</td></tr>'.
-		'<tr><td>'.$dates['@#DFRENCH R@ 12'].'</td><td><tt>@#DFRENCH R@ 12</tt></td></tr>'.
-		'<tr><td>'.$dates['@#DFRENCH R@ VEND 12'].'</td><td><tt>@#DFRENCH R@ VEND 12</tt></td></tr>'.
-		'<tr><td>'.$dates['ABT @#DFRENCH R@ BRUM 12'].'</td><td><tt>ABT @#DFRENCH R@ BRUM 12</tt></td></tr>'.
-		'<tr><td>'.$dates['BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'].'</td><td><tt>BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12</tt></td></tr>'.
-		'<tr><td>'.$dates['FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'].'</td><td><tt>FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12</tt></td></tr>'.
-		'<tr><td>'.$dates['AFT @#DFRENCH R@ GERM 12'].'</td><td><tt>AFT @#DFRENCH R@ GERM 12</tt></td></tr>'.
-		'<tr><td>'.$dates['BEF @#DFRENCH R@ FLOR 12'].'</td><td><tt>BEF @#DFRENCH R@ FLOR 12</tt></td></tr>'.
-		'<tr><td>'.$dates['ABT @#DFRENCH R@ PRAI 12'].'</td><td><tt>ABT @#DFRENCH R@ PRAI 12</tt></td></tr>'.
-		'<tr><td>'.$dates['FROM @#DFRENCH R@ MESS 12'].'</td><td><tt>FROM @#DFRENCH R@ MESS 12</tt></td></tr>'.
-		'<tr><td>'.$dates['TO @#DFRENCH R@ THER 12'].'</td><td><tt>TO @#DFRENCH R@ THER 12</tt></td></tr>'.
-		'<tr><td>'.$dates['EST @#DFRENCH R@ FRUC 12'].'</td><td><tt>EST @#DFRENCH R@ FRUC 12</tt></td></tr>'.
-		'<tr><td>'.$dates['@#DFRENCH R@ 03 COMP 12'].'</td><td><tt>@#DFRENCH R@ 03 COMP 12</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DFRENCH R@ 12'].'</td><td><tt dir="ltr" lang="en">@#DFRENCH R@ 12</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DFRENCH R@ VEND 12'].'</td><td><tt dir="ltr" lang="en">@#DFRENCH R@ VEND 12</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DFRENCH R@ BRUM 12'].'</td><td><tt dir="ltr" lang="en">ABT @#DFRENCH R@ BRUM 12</tt></td></tr>'.
+		'<tr><td>'.$dates['BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12'].'</td><td><tt dir="ltr" lang="en">BET @#DFRENCH R@ FRIM 12 AND @#DFRENCH R@ NIVO 12</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12'].'</td><td><tt dir="ltr" lang="en">FROM @#DFRENCH R@ PLUV 12 TO @#DFRENCH R@ VENT 12</tt></td></tr>'.
+		'<tr><td>'.$dates['AFT @#DFRENCH R@ GERM 12'].'</td><td><tt dir="ltr" lang="en">AFT @#DFRENCH R@ GERM 12</tt></td></tr>'.
+		'<tr><td>'.$dates['BEF @#DFRENCH R@ FLOR 12'].'</td><td><tt dir="ltr" lang="en">BEF @#DFRENCH R@ FLOR 12</tt></td></tr>'.
+		'<tr><td>'.$dates['ABT @#DFRENCH R@ PRAI 12'].'</td><td><tt dir="ltr" lang="en">ABT @#DFRENCH R@ PRAI 12</tt></td></tr>'.
+		'<tr><td>'.$dates['FROM @#DFRENCH R@ MESS 12'].'</td><td><tt dir="ltr" lang="en">FROM @#DFRENCH R@ MESS 12</tt></td></tr>'.
+		'<tr><td>'.$dates['TO @#DFRENCH R@ THER 12'].'</td><td><tt dir="ltr" lang="en">TO @#DFRENCH R@ THER 12</tt></td></tr>'.
+		'<tr><td>'.$dates['EST @#DFRENCH R@ FRUC 12'].'</td><td><tt dir="ltr" lang="en">EST @#DFRENCH R@ FRUC 12</tt></td></tr>'.
+		'<tr><td>'.$dates['@#DFRENCH R@ 03 COMP 12'].'</td><td><tt dir="ltr" lang="en">@#DFRENCH R@ 03 COMP 12</tt></td></tr>'.
 		'</table>';
 	break;
 
@@ -1553,11 +1553,11 @@ case 'MEDIA_DIRECTORY':
 	$text=
 		'<p>'.
 		/* I18N: %1$s is an example media directory, such as "media/", %2$s is an example URL, such as "http://localhost/webtrees/media/img123.jpg", and %3$s is an example file path, such as "/home/greg/public_html/webtrees/media/img123.jpg" */
-		WT_I18N::translate('The media directory is used to create URLs for your media items.  It is also the sub-directory in which the media items are stored.  For example, a media directory of %1$s will create URLs of the form %2$s and store these items as %3$s.', '<tt style="white-space:nowrap; color:#0000ff; font-weight:bold;">'.$MEDIA_DIRECTORY.'</tt>', '<tt style="white-space:nowrap; font-weight:bold;">'.WT_SERVER_NAME.WT_SCRIPT_PATH.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span>img123.jpg</tt>', '<tt style="white-space:nowrap; font-weight:bold;">'.WT_ROOT.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span>img123.jpg</tt>').
+		WT_I18N::translate('The media directory is used to create URLs for your media items.  It is also the sub-directory in which the media items are stored.  For example, a media directory of %1$s will create URLs of the form %2$s and store these items as %3$s.', '<tt dir="ltr" lang="en" style="white-space:nowrap; color:#0000ff; font-weight:bold;">'.$MEDIA_DIRECTORY.'</tt>', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_SERVER_NAME.WT_SCRIPT_PATH.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span>img123.jpg</tt>', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_ROOT.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span>img123.jpg</tt>').
 		'</p><p>'.
-		/* I18N: %1$s and %2$s are both directory names */ WT_I18N::translate('If your server supports it, you can enable the media firewall.  This changes the location of the media directory from the public directory %1$s to a private directory such as %2$s.  This allows webtrees to apply privacy filtering to media items.', '<tt style="white-space:nowrap; font-weight:bold;">'.WT_ROOT.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span></tt>', '<tt style="white-space:nowrap; font-weight:bold;">'.WT_DATA_DIR.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span></tt>').
+		/* I18N: %1$s and %2$s are both directory names */ WT_I18N::translate('If your server supports it, you can enable the media firewall.  This changes the location of the media directory from the public directory %1$s to a private directory such as %2$s.  This allows webtrees to apply privacy filtering to media items.', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_ROOT.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span></tt>', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_DATA_DIR.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span></tt>').
 		'</p><p>'.
-		/* I18N: %s is a directory name */ WT_I18N::translate('The media directory %s must exist, and the webserver must have read and write access to it.', '<tt style="white-space:nowrap; font-weight:bold;">'.WT_ROOT.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span></tt>').
+		/* I18N: %s is a directory name */ WT_I18N::translate('The media directory %s must exist, and the webserver must have read and write access to it.', '<tt dir="ltr" lang="en" style="white-space:nowrap; font-weight:bold;">'.WT_ROOT.'<span style="color:#0000ff;">'.$MEDIA_DIRECTORY.'</span></tt>').
 		'</p><p>'.
 		WT_I18N::translate('If two family trees share the same media directory, then they will be able to share media items.  If they use different media directories, then they will be able to use the same filename to access different media items.').
 		'</p>';
