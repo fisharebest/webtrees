@@ -1571,7 +1571,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							}
 							$parentlinks .= "'".(($husb->getBirthDate()->minJD()+$husb->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 							if ($husb->getbirthyear()>=1) {
-								$parentlinks .= "'".$censyear-$husb->getbirthyear()."',"; // age =  Census Year - Year of Birth
+								$parentlinks .= "'".($censyear-$husb->getbirthyear())."',"; // age =  Census Year - Year of Birth
 							} else {
 								$parentlinks .= "''".","; // age =  Undefined
 							}
@@ -1666,7 +1666,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							}
 							$parentlinks .= "'".(($wife->getBirthDate()->minJD()+$wife->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 							if ($wife->getbirthyear()>=1) {
-								$parentlinks .= "'".$censyear-$wife->getbirthyear()."',"; // age =  Census Year - Year of Birth
+								$parentlinks .= "'".($censyear-$wife->getbirthyear())."',"; // age =  Census Year - Year of Birth
 							} else {
 								$parentlinks .= "''".","; // age =  Undefined
 							}
@@ -1781,7 +1781,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 								$parentlinks .= "'".(($husb->getBirthDate()->minJD()+$husb->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 								if ($husb->getbirthyear()>=1) {
-									$parentlinks .= "'".$censyear-$husb->getbirthyear()."',"; // age =  Census Year - Year of Birth
+									$parentlinks .= "'".($censyear-$husb->getbirthyear())."',"; // age =  Census Year - Year of Birth
 								} else {
 									$parentlinks .= "''".","; // age =  Undefined
 								}
@@ -1879,7 +1879,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 								}
 								$parentlinks .= "'".(($wife->getBirthDate()->minJD()+$wife->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 								if ($wife->getbirthyear()>=1) {
-									$parentlinks .= "'".$censyear-$wife->getbirthyear()."',"; // age =  Census Year - Year of Birth
+									$parentlinks .= "'".($censyear-$wife->getbirthyear())."',"; // age =  Census Year - Year of Birth
 								} else {
 									$parentlinks .= "''".","; // age =  Undefined
 								}
@@ -2005,7 +2005,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							}
 							$spouselinks .= "'".(($spouse->getBirthDate()->minJD()+$spouse->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 							if ($spouse->getbirthyear()>=1) {
-								$spouselinks .= "'".$censyear-$spouse->getbirthyear()."',"; // age =  Census Year - Year of Birth
+								$spouselinks .= "'".($censyear-$spouse->getbirthyear())."',"; // age =  Census Year - Year of Birth
 							} else {
 								$spouselinks .= "''".","; // age =  Undefined
 							}
@@ -2145,7 +2145,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							}
 							$spouselinks .= "'".(($child->getBirthDate()->minJD()+$child->getBirthDate()->maxJD())/2)."',"; // dob = Date of Birth
 							if ($child->getbirthyear()>=1) {
-								$spouselinks .= "'".$censyear-$child->getbirthyear()."',"; // age =  Census Year - Year of Birth
+								$spouselinks .= "'".($censyear-$child->getbirthyear())."',"; // age =  Census Year - Year of Birth
 							} else {
 								$spouselinks .= "''".","; // age =  Undefined
 							}
