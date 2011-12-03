@@ -519,6 +519,7 @@ class WT_I18N {
 			' "sSearch":         "'.WT_I18N::translate('Filter').'",'.
 			' "sUrl":            "",'.
 			' "sZeroRecords":    "'.WT_I18N::translate('No records to display').'"'.
+			' "sEmptyTable":    "'.WT_I18N::translate('No data available in table').'"'.
 			'}'.
 			$callback;
 	}
