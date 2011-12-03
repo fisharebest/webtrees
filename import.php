@@ -91,7 +91,7 @@ for ($end_time=microtime(true)+1.0; microtime(true)<$end_time; ) {
 	)->execute(array($gedcom_id))->fetchOneRow();
 	// If we are at the start position, do some tidying up
 	if ($first_time) {
-		$keep_media=safe_GET_bool('keep_media');
+		$keep_media=safe_GET_bool('keep_media'.$gedcom_id);
 		// Delete any existing genealogical data
 		empty_database($gedcom_id, $keep_media);
 		set_gedcom_setting($gedcom_id, 'imported', false);

@@ -114,7 +114,7 @@ case 'replace_upload':
 			}
 		}
 	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
 	exit;
 case 'replace_import':
 	$gedcom_id=safe_POST('gedcom_id');
@@ -123,7 +123,7 @@ case 'replace_import':
 		$ged_name=basename(safe_POST('ged_name'));
 		import_gedcom_file($gedcom_id, WT_DATA_DIR.$ged_name, $ged_name);
 	}
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
 	exit;
 }
 
@@ -219,7 +219,7 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 				echo '<div id="import', $gedcom_id, '"></div>';
 			}
 			$controller->addInlineJavaScript(
-				'jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'&keep_media='.safe_POST('keep_media'.$gedcom_id).'");'
+				'jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'&keep_media'.$gedcom_id.'='.safe_GET('keep_media'.$gedcom_id).'");'
 			);
 			echo '<table border="0" width="100%" id="actions', $gedcom_id, '" style="display:none">';
 		} else {
