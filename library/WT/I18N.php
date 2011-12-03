@@ -518,7 +518,7 @@ class WT_I18N {
 			' "sProcessing":     "'.WT_I18N::translate('Loading...').'",'.
 			' "sSearch":         "'.WT_I18N::translate('Filter').'",'.
 			' "sUrl":            "",'.
-			' "sZeroRecords":    "'.WT_I18N::translate('No records to display').'"'.
+			' "sZeroRecords":    "'.WT_I18N::translate('No records to display').'",'.
 			' "sEmptyTable":    "'.WT_I18N::translate('No data available in table').'"'.
 			'}'.
 			$callback;
