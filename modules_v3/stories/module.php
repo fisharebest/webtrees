@@ -344,24 +344,27 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			echo '</td></tr>';
 			if (count($stories)>0) {
 				echo '<tr>
-					<th class="list_label center width50">', WT_I18N::translate('Story title'), help_link('story_title', $this->getName()), '</th>
-					<th class="list_label center width30">', WT_I18N::translate('Individual'), '</th>
-					<th class="list_label center width10">', WT_I18N::translate('Edit story'), help_link('edit_story', $this->getName()), '</th>
-					<th class="list_label center width10">', WT_I18N::translate('Delete'), help_link('delete_story', $this->getName()), '</th>
+					<th class="center width50">', WT_I18N::translate('Story title'), '</th>
+					<th class="center width30">', WT_I18N::translate('Individual'), '</th>
+					<th class="center width10">', WT_I18N::translate('Edit story'), '</th>
+					<th class="center width10">', WT_I18N::translate('Delete'), '</th>
 					</tr>';
 			}
 			foreach ($stories as $story) {
+				$story_title = get_block_setting($story->block_id, 'title');
 				$indi=WT_Person::getInstance($story->xref);
 				if ($indi) {
+					$title="<a href=\"".$indi->getHtmlUrl()."#stories\">".$story_title."</a>";
 					$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
 				} else {
+					$title=$story_title;
 					$name=$story->xref;
 				}
 				echo '<tr>
-					<td class="optionbox">',get_block_setting($story->block_id, 'title'), '</td>
-					<td class="list_value_wrap">', $name, '</td>
-					<td class="optionbox"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '">', WT_I18N::translate('Edit'), '</a></td>
-					<td class="optionbox"><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this story?'), '\');">', WT_I18N::translate('Delete'), '</a></td>
+					<td>',$title, '</td>
+					<td>', $name, '</td>
+					<td><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit&amp;block_id=', $story->block_id, '">', WT_I18N::translate('Edit'), '</a></td>
+					<td><a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_delete&amp;block_id=', $story->block_id, '" onclick="return confirm(\'', WT_I18N::translate('Are you sure you want to delete this story?'), '\');">', WT_I18N::translate('Delete'), '</a></td>
 					</tr>';
 			}
 			echo '</table>';
@@ -395,14 +398,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		}
 		foreach ($stories as $story) {
 			$indi=WT_Person::getInstance($story->xref);
+			$story_title = get_block_setting($story->block_id, 'title');
 			if ($indi) {
+				$title="<a href=\"".$indi->getHtmlUrl()."#stories\">".$story_title."</a>";
 				$name="<a href=\"".$indi->getHtmlUrl()."#stories\">".$indi->getFullName()."</a>";
 			} else {
+				$title=$story_title;
 				$name=$story->xref;
 			}
 			if ($indi->canDisplayDetails()) {
 				echo '<tr>
-					<td class="list_value">', get_block_setting($story->block_id, 'title'), '</td>
+					<td class="list_value">', $title, '</td>
 					<td class="list_value wrap">', $name, '</td>
 					</tr>';
 			}
