@@ -73,13 +73,6 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		global $PEDIGREE_GENERATIONS;
 		$PEDIGREE_GENERATIONS=$this->PEDIGREE_GENERATIONS;
 		
-			// -- Sets the sizes of the boxes
-		if (!$this->show_full) $bwidth *= $this->box_width / 150;
-		else $bwidth*=$this->box_width/100;
-
-		if (!$this->show_full) $bheight = (int)($bheight / 2);
-		$bhalfheight = (int)($bheight / 2);
-
 		// This is passed as a global.  A parameter would be better...
 		$this->show_full = ($this->show_full) ? 1 : 0; // Make SURE this is an integer
 		if ($this->talloffset>3) {
@@ -103,18 +96,19 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 
 		//-- adjustments for hide details
 		if ($this->show_full==false) {
-			$bheight=40;
+			$bheight=$bheight/2;
 			if ($this->talloffset < 2) {
-				$bwidth=140;
+				$bwidth=$bwidth/1.5; 
 			}
 			else {
-				$bwidth=140;
+				$bwidth = $bwidth/1.5; //Problem item correct vaoue is -=50  offset #3
+
 			}
 		}
 		//-- adjustments for portrait mode
 		if ($this->talloffset==0) {
 			$bxspacing+=12;
-			$bwidth+=20;
+			//$bwidth+=20;
 			$baseyoffset -= 20*($this->PEDIGREE_GENERATIONS-1);
 		}
 

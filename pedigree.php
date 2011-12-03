@@ -172,10 +172,10 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 						echo 'ltr" style="position:absolute; left:';
 					}
 					if ($talloffset > 2) {
-						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1-$controller->pbheight/2), 'px; z-index: 0;">';
+						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1-$controller->pbheight/2+10), 'px; z-index: 0;">';
 						echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" >';
 					} else {
-						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;">';
+						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1+$controller->pbheight/2+10), 'px; z-index: 0;">';
 						echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" >';
 					}
 					echo '</div>';
@@ -239,6 +239,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 			}
 			echo "</div>";
 		}
+		// beginning of box setup and display
 		echo "<div id=\"box";
 		if (empty($controller->treeid[$i])) {
 			echo "$iref";
@@ -255,6 +256,15 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 			$zindex = $PEDIGREE_GENERATIONS-$curgen;
 		} else {
 			$zindex = 0;
+		}
+		//Correct box spacing for Oldest on bottom
+		if (($talloffset == 3) && ($curgen ==1)) {
+			$yoffset +=25;
+
+		}
+		
+		if (($talloffset == 3) && ($curgen ==2)) {
+			$yoffset +=10;
 		}
 
 		echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth+$widthadd), "px; height:", $controller->pbheight, "px; ";
