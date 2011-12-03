@@ -714,7 +714,7 @@ font-size: 20px;
 color:#7af;
 }
 
-.NAME, .name1, .name2, .nameZoom {
+.name1, .name2, .nameZoom {
 font-weight: bold;
 overflow: hidden;
 }
