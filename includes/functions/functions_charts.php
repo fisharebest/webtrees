@@ -651,7 +651,6 @@ function print_cousins($famid, $personcount=1) {
 	global $show_full, $bheight, $bwidth, $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
-
 	$family=WT_Family::getInstance($famid);
 	$fchildren=$family->getChildren();
 
@@ -660,16 +659,21 @@ function print_cousins($famid, $personcount=1) {
 	if ($save_show_full) {
 		$bheight=$bheight/4+10;
 		$bwidth-=40;
-	}
+	} 
+	
 	$show_full = false;
 	echo '<td valign="middle" height="100%">';
 	if ($kids) {
 		echo '<table cellspacing="0" cellpadding="0" border="0" ><tr valign="middle">';
-		if ($kids>1) echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight+5)*($kids-1)), 'px" src="', $WT_IMAGES["vline"], '" alt="" /></td>';
+		if ($kids>1) echo '<td rowspan="', $kids, '" valign="middle" align="right"><img width="3px" height="', (($bheight+9)*($kids-1)), 'px" src="', $WT_IMAGES["vline"], '" alt="" /></td>';
 		$ctkids = count($fchildren);
 		$i = 1;
 		foreach ($fchildren as $fchil) {
+			if ($i==1) {
+			echo '<td><img width="10px" height="3px" align="top" style="padding-';
+		} else {
 			echo '<td><img width="10px" height="3px" style="padding-';
+		}
 			if ($TEXT_DIRECTION=='ltr') echo 'right';
 			else echo 'left';
 			echo ': 2px;" src="', $WT_IMAGES["hline"], '" alt="" /></td><td>';
