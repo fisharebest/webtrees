@@ -58,6 +58,7 @@ echo '<h2>', WT_I18N::translate('Ancestors of %s', $controller->name), help_link
 echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=value;}', WT_JS_END;
 ?>
 </td><td width="50px">&nbsp;</td><td><form name="people" id="people" method="get" action="?">
+<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>" />
 <input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>" />
 <input type="hidden" name="show_cousins" value="<?php echo $controller->show_cousins; ?>" />
 <table class="list_table">

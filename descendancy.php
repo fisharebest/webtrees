@@ -58,6 +58,7 @@ echo WT_JS_END;
 
 $gencount=0;
 echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">';
+echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '" />';
 echo '<input type="hidden" name="show_full" value="', $controller->show_full, '" />';
 echo '<table class="list_table">';
 echo '<tr><td class="descriptionbox">';

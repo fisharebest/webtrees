@@ -124,6 +124,7 @@ function paste_id(value) {
 <?php
 	$Dbaseyoffset += 110; ?>
 	<form name="people" method="get" action="relationship.php">
+	<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>" />
 	<input type="hidden" name="path_to_find" value="<?php echo $path_to_find; ?>" />
 
 	<table class="list_table">
