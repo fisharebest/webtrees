@@ -55,6 +55,7 @@ html[dir='rtl'] .indent {padding-right:15px;}
 .css_right {float:right;}
 html[dir='rtl'] .css_right {float:left;}
 html[dir='rtl'] input {padding-right:3px; padding-left:0;}
+html[dir='rtl'] .ui-tabs .ui-tabs-nav li {float: right;}
 
 /* jEditable styling over-rides */
 .editable {width:100%; display:block}
@@ -151,12 +152,12 @@ html[dir='rtl'] #tree_stats td, html[dir='rtl'] #recent td {padding:0 0 0 10px; 
 #x h2, #x h3 {padding:0 25px;}
 
 /*SITE CONFIG */
-#site table, #mail table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
+ #site table, #mail table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
 .site_config h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}
-.site_config dl {float:left;margin:0 0 0 20px;line-height:21px;}
+.site_config dl {float:left;margin:0 0 0 20px;line-height:21px;max-width: 600px;}
 .site_config dt {clear:left; float:left; min-width:170px; margin:0; padding:5px 5px 5px 0; border-bottom:1px solid #999; font-weight:bold;}
 .site_config dd {border-bottom:1px solid #999; margin-left:370px; min-width:370px; padding:5px;}
-html[dir='rtl'] .site_config dl {float:right;margin:0 20px 0;}
+html[dir='rtl'] .site_config dl {float:right;margin:0 20px 0; max-width: 600px;}
 html[dir='rtl'] .site_config dt {clear:right; float:right; padding:5px 0 5px 5px;}
 html[dir='rtl'] .site_config dd {margin-right:370px;}
 
