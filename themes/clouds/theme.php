@@ -184,7 +184,7 @@ $fanChart = array(
 );
 
 //-- This section defines variables for the charts
-$bwidth = 240; // -- width of boxes on all person-box based charts
+$bwidth = 250; // -- width of boxes on all person-box based charts
 $bheight = 80; // -- height of boxes on all person-box based chart
 $baseyoffset = 10; // -- position the timeline chart relative to the top of the page
 $basexoffset = 10; // -- position the pedigree and timeline charts relative to the left of the page
