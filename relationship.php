@@ -129,6 +129,11 @@ function paste_id(value) {
 	<table class="list_table">
 
 	<!-- // Relationship header -->
+	<?php if (!$pid1) {
+		$pid1=$pid2; 
+		$pid2='';
+	}?>
+
 	<tr><td colspan="2" class="topbottombar center">
 	<?php echo WT_I18N::translate('Relationships'); ?>
 	</td>
