@@ -33,11 +33,16 @@ if (!defined('WT_WEBTREES')) {
 }
 ?>
 <div id="out-<?php echo $boxID; ?>" <?php echo $outBoxAdd; ?>>
+<!--  table helps to maintain spacing -->
 <table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td valign="top">
-		<div class="noprint" id="icons-<?php echo $boxID; ?>"
-			style="<?php echo $iconsStyleAdd; ?> width: 25px; height: 50px;"><?php echo $icons; ?>
-		</div>
-		<?php echo $thumbnail; ?>
+<?php	
+	if ($show_full) { 
+			echo '<div class="noprint" id="icons-',$boxID,'"';
+			echo 'style="',$iconsStyleAdd,' width: 25px; height: 50px">';
+			echo $icons;
+			echo '</div>';
+	}	
+		echo $thumbnail; ?>
 		<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php echo $pid; ?>&amp;ged=<?php echo rawurlencode($GEDCOM); ?>">
 		<span id="namedef-<?php echo $boxID; ?>" class="name<?php echo $style; ?> <?php echo $classfacts; ?>">
 			<?php echo $name.$addname; ?>
@@ -45,7 +50,8 @@ if (!defined('WT_WEBTREES')) {
 		<span class="name<?php echo $style; ?>"> <?php echo $genderImage; ?></span>
 		<?php echo $showid; ?> </a>
 		<div id="fontdef-<?php echo $boxID; ?>" class="details<?php echo $style; ?>">
-			<div id="inout2-<?php echo $boxID; ?>" style="display: block; overflow:hidden; max-height: <?php echo $bheight*.9; ?>px;"><?php echo $BirthDeath; ?></div>
+		<!--  Set box height so the birth and death fields have 1/2 the block size plus an extra 10px for longe locations-->
+		<div id="inout2-<?php echo $boxID; ?>" style="display: block; overflow:hidden; max-height: <?php echo $bheight*.9; ?>px;"><?php echo $BirthDeath; ?></div>
 		</div>
 		<div id="inout-<?php echo $boxID; ?>" style="display: none;">
 			<div id="LOADING-inout-<?php echo $boxID; ?>"><?php echo WT_I18N::translate('Loading...'); ?></div>
