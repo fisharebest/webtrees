@@ -484,7 +484,7 @@ function format_fam_table($datalist, $option='') {
 					/*  9 SURN,GIVN */ {"sType": "unicode", "bVisible": false},
 					/* 10 age       */ {"iDataSort": 11, "sClass": "center"},
 					/* 11 AGE       */ {"sType": "numeric", "bVisible": false},
-					/* 12 marr date */ {"iDataSort": 11},
+					/* 12 marr date */ {"iDataSort": 13},
 					/* 13 MARR:DATE */ {"bVisible": false},
 					/* 14 anniv     */ {"bSortable": false, "sClass": "center"},
 					/* 15 marr plac */ {"sType": "unicode"},
