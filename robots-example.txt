@@ -182,7 +182,7 @@ Disallow: /expand_view.php
 Disallow: /export_gedcom.php
 Allow:    /family.php
 Disallow: /familybook.php
-Allow:    /famlist.php
+Disallow: /famlist.php
 Disallow: /fanchart.php
 Disallow: /find.php
 Disallow: /gedcheck.php
@@ -214,13 +214,13 @@ Disallow: /message.php
 Disallow: /module.php
 Disallow: /modules
 Allow:    /note.php
-Allow:    /notelist.php
+Disallow: /notelist.php
 Disallow: /pedigree.php
 Disallow: /placelist.php
 Disallow: /places/
 Disallow: /relationship.php
 Allow:    /repo.php
-Allow:    /repolist.php
+Disallow: /repolist.php
 Disallow: /reportengine.php
 Disallow: /save.php
 Disallow: /search.php
@@ -229,7 +229,7 @@ Allow:    /search_engine.php
 Disallow: /setup.php
 Allow:    /site-unavailable.php
 Allow:    /source.php
-Allow:    /sourcelist.php
+Disallow: /sourcelist.php
 Disallow: /statistics.php
 Disallow: /statisticsplot.php
 Disallow: /themes/
