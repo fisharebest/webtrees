@@ -50,23 +50,10 @@ class relative_ext_report_WT_Module extends WT_Module implements WT_Module_Repor
 	public function getReportMenus() {
 		global $controller;
 
-		if ($controller instanceof WT_Controller_Family && $controller->record instanceof WT_Family) {
-			// We are on a family page
-			$pid='&amp;famid='.$controller->record->getXref();
-		} elseif ($controller instanceof WT_Controller_Individual && $controller->record instanceof WT_Individual) {
-			// We are on an individual page
-			$pid='&amp;pid='.$controller->record->getXref();
-		} elseif ($controller && isset($controller->rootid)) {
-			// We are on a chart page
-			$pid='&amp;pid='.$controller->rootid;
-		} else {
-			$pid='';
-		}
-
 		$menus=array();
 		$menu=new WT_Menu(
 			$this->getTitle(),
-			'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml'.$pid,
+			'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml&amp;pid='.$controller->getSignificantIndividual()->getXref(),
 			'menu-report-'.$this->getName()
 		);
 		$menu->addIcon('place');
