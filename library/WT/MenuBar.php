@@ -273,7 +273,7 @@ class WT_MenuBar {
 			case 'relationship':
 				if ($indi_xref) {
 					// Pages focused on a specific person - from the person, to me
-					$pid2=WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;;
+					$pid1=WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : WT_USER_ROOT_ID;;
 					$pid1=$indi_xref;
 					if ($pid1==$pid2) {
 						$pid2='';
