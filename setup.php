@@ -286,7 +286,7 @@ if (empty($_POST['dbuser']) || !$dbh || !$db_version_ok) {
 		'<fieldset><legend>', WT_I18N::translate('Database connection'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Server name'), '</td><td>',
-		'<input type="text" name="dbhost" value="', htmlspecialchars($_POST['dbhost']), '"></td><td>',
+		'<input type="text" name="dbhost" value="', htmlspecialchars($_POST['dbhost']), '" dir="ltr"></td><td>',
 		WT_I18N::translate('Most sites are configured to use localhost.  This means that your database runs on the same computer as your web server.'),
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Port number'), '</td><td>',

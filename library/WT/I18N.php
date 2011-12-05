@@ -33,6 +33,10 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_I18N {
+	const UTF8_RLE="\xE2\x80\xAA"; // U+202A  (Left to Right embedding: treat everything following as LTR text)
+	const UTF8_LRE="\xE2\x80\xAB"; // U+202B  (Right to Left embedding: treat everything following as RTL text)
+	const UTF8_PDF="\xE2\x80\xAC"; // U+202C  (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
+
 	static private $locale='';
 	static private $dir='';
 	static public  $collation;
@@ -241,11 +245,11 @@ class WT_I18N {
 					// markup is not permitted.
 					if (self::$dir=='ltr') {
 						if (utf8_direction($arg)=='rtl') {
-							$arg=WT_UTF8_RLE.$arg.WT_UTF8_PDF;
+							$arg=self::UTF8_RLE.$arg.self::UTF8_PDF;
 						}
 					} else {
 						if (utf8_direction($arg)=='ltr') {
-							$arg=WT_UTF8_LRE.$arg.WT_UTF8_PDF;
+							$arg=self::UTF8_LRE.$arg.self::UTF8_PDF;
 						}
 					}
 				}
