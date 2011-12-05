@@ -41,7 +41,7 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo '<table><tr><td valign="middle">';
-echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), help_link('pedigree_tree'), '</h2>';
+echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), '</h2>';
 // -- echo the form to change the number of displayed generations
 ?>
 	<script type="text/javascript">

@@ -224,7 +224,7 @@ if (WT_USE_LIGHTBOX) {
 // ==========================================================================================
 
 echo '<table><tr><td valign="top">';
-echo '<h2>'.WT_I18N::translate('Family book of %s', $person->getFullName()), help_link('family_book_chart'), '</h2>';
+echo '<h2>'.WT_I18N::translate('Family book of %s', $person->getFullName()), '</h2>';
 ?>
 
 <script type="text/javascript">

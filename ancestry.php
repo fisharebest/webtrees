@@ -53,7 +53,7 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo '<table><tr><td valign="middle">';
-echo '<h2>', WT_I18N::translate('Ancestors of %s', $controller->name), help_link('ancestry_chart'), '</h2>';
+echo '<h2>', WT_I18N::translate('Ancestors of %s', $controller->name), '</h2>';
 // -- print the form to change the number of displayed generations
 echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=value;}', WT_JS_END;
 ?>

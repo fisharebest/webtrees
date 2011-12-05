@@ -34,7 +34,7 @@ $controller->pageHeader();
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 echo '<table><tr><td valign="top">';
-echo '<h2>', WT_I18N::translate('Hourglass chart of %s', $controller->name), help_link('hourglass_chart'), '</h2>';
+echo '<h2>', WT_I18N::translate('Hourglass chart of %s', $controller->name), '</h2>';
 
 $controller->setupJavascript();
 

@@ -239,7 +239,7 @@ document.onmousemove = MM;
 document.onmouseup = MU;
 //-->
 </script>
-<h2><?php echo WT_I18N::translate('Timeline'), help_link('timeline_chart'); ?></h2>
+<h2><?php echo WT_I18N::translate('Timeline'); ?></h2>
 <form name="people" action="timeline.php">
 <?php
 $controller->checkPrivacy();
