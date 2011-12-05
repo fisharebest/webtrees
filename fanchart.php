@@ -380,10 +380,11 @@ $fan_style=safe_GET_integer('fan_style',  2,  4,  3);
 $fan_width=safe_GET_integer('fan_width',  50, 300, 100);
 $PEDIGREE_GENERATIONS=safe_GET_integer('PEDIGREE_GENERATIONS', 2, $MAX_PEDIGREE_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
 
-// Validate form parameters
-$rootid = check_rootid($rootid);
-
 $person =WT_Person::getInstance($rootid);
+if (!$person) {
+	$person=$controller->getSignificantIndividual();
+	$rootid=$person->getXref();
+}
 $name   =$person->getFullName();
 $addname=$person->getAddName();
 $title = /* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is a person's name */ WT_I18N::translate('Fan chart of %s', $person->getFullName());

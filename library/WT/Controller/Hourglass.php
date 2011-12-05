@@ -108,9 +108,12 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		$bhalfheight = (int)($bheight / 2);
 		
 		// Validate parameters
-		$this->pid=check_rootid($this->pid);
-
 		$this->hourPerson = WT_Person::getInstance($this->pid);
+		if (!$this->hourPerson) {
+			$this->hourPerson=$this->getSignificantIndividual();
+			$this->pid=$this->hourPerson->getXref();
+		}
+		
 		$this->name=$this->hourPerson->getFullName();
 
 		//Checks how many generations of descendency is for the person for formatting purposes

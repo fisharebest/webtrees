@@ -50,9 +50,11 @@ if ($show_full==false) {
 }
 
 // -- root id
-$pid   =check_rootid($pid);
 $person=WT_Person::getInstance($pid);
-$name  =$person->getFullName();
+if (!$person) {
+	$person=$controller->getSignificantIndividual();
+}
+$name=$person->getFullName();
 
 function print_descendency($person, $count) {
 	global $show_spouse, $dgenerations, $bwidth, $bheight, $bhalfheight;

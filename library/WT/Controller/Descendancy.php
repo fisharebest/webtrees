@@ -89,12 +89,17 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		$pbheight = $bheight+14;
 
 		// Validate form variables
-		$this->rootid=check_rootid($this->rootid);
-
-		if (strlen($this->name)<30) $this->cellwidth="420";
-		else $this->cellwidth=(strlen($this->name)*14);
+		if (strlen($this->name)<30) {
+			$this->cellwidth=420;
+		} else {
+			$this->cellwidth=(strlen($this->name)*14);
+		}
 
 		$this->descPerson = WT_Person::getInstance($this->rootid);
+		if (!$this->descPerson) {
+			$this->descPerson=$this->getSignificantIndividual();
+			$this->rootid=$this->descPerson->getXref();
+		}
 		$this->name=$this->descPerson->getFullName();
 
 		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Descendants of %s', $this->name));

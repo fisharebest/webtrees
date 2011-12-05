@@ -224,21 +224,14 @@ elseif ($action=='setup') {
 					if (!empty($pid)) {
 						$input['default'] = $pid;
 					} else {
-						$input['default'] = check_rootid($input['default']);
+						$input['default'] = $controller->getSignificantIndividual()->getXref();
 					}
 				}
 				if ($input['lookup']=='FAM') {
 					if (!empty($famid)) {
 						$input['default'] = $famid;
 					} else {
-						// Default the FAM to the first spouse family of the default INDI
-						$person=WT_Person::getInstance(check_rootid($input['default']));
-						if ($person) {
-							$sfams=$person->getSpouseFamilies();
-							if ($sfams) {
-								$input['default'] = reset($sfams)->getXref();
-							}
-						}
+						$input['default'] = $controller->getSignificantFamily()->getXref();
 					}
 				}
 				if ($input['lookup']=='SOUR') {

@@ -27,21 +27,24 @@ define('WT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
+$controller=new WT_Controller_Base();
+
 // Extract form variables
 $rootid    =safe_GET_xref('rootid');
 $showthumbs=safe_GET('showthumbs', '1', '0');
 
-// Validate form variables
-$rootid=check_rootid($rootid);
-
 $person =WT_Person::getInstance($rootid);
+if (!$person) {
+	$person=$controller->getSignificantIndividual();
+	$rootid=$person->getXref();
+}
 $name   =$person->getFullName();
 $addname=$person->getAddName();
 $title = /* I18N: %s is a person's name */ WT_I18N::translate('Compact tree of %s', $person->getFullName());
 
-$controller=new WT_Controller_Base();
-$controller->setPageTitle($title);
-$controller->pageHeader();
+$controller
+	->setPageTitle($title)
+	->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 

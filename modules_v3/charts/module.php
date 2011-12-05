@@ -41,7 +41,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $WT_IMAGES, $PEDIGREE_ROOT_ID, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
+		global $ctype, $WT_IMAGES, $PEDIGREE_FULL_DETAILS, $show_full, $bwidth, $bheight;
+
+		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
 		$details=get_block_setting($block_id, 'details', false);
 		$type   =get_block_setting($block_id, 'type', 'pedigree');
@@ -73,7 +75,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		$person = WT_Person::getInstance($pid);
-		if ($person==null) {
+		if (!$person) {
 			$pid = $PEDIGREE_ROOT_ID;
 			set_block_setting($block_id, 'pid', $pid);
 			$person = WT_Person::getInstance($pid);
@@ -182,7 +184,9 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
-		global $ctype, $PEDIGREE_ROOT_ID, $ENABLE_AUTOCOMPLETE;
+		global $ctype, $ENABLE_AUTOCOMPLETE;
+
+		$PEDIGREE_ROOT_ID=get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID');
 
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'details', safe_POST_bool('details'));

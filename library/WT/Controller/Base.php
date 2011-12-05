@@ -309,11 +309,16 @@ class WT_Controller_Base {
 	// Get significant information from this page, to allow other pages such as
 	// charts and reports to initialise with the same records
 	public function getSignificantIndividual() {
-		global $PEDIGREE_ROOT_ID;
+		static $individual; // Only query the DB once.
 
-		$individual=WT_Person::getInstance(WT_USER_GEDCOM_ID);
-		if (!$individual) {
+		if (!$individual && WT_USER_GEDCOM_ID) {
+			$individual=WT_Person::getInstance(WT_USER_GEDCOM_ID);
+		}
+		if (!$individual && WT_USER_ROOT_ID) {
 			$individual=WT_Person::getInstance(WT_USER_ROOT_ID);
+		}
+		if (!$individual) {
+			$individual=WT_Person::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
 		}
 		if (!$individual) {
 			$individual=WT_Person::getInstance(

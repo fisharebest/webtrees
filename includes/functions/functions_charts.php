@@ -519,40 +519,6 @@ function print_sosa_family($famid, $childid, $sosa, $label="", $parid="", $gpari
 	echo "</td></tr></table>";
 	echo "<br />";
 }
-/**
- * check root id for pedigree tree
- *
- * @param string $rootid root ID
- * @return string $rootid validated root ID
- */
-function check_rootid($rootid) {
-	global $PEDIGREE_ROOT_ID, $USE_RIN;
-	// -- if the $rootid is not already there then find the first person in the file and make him the root
-	if (!find_person_record($rootid, WT_GED_ID)) {
-		if (find_person_record(WT_USER_ROOT_ID, WT_GED_ID)) {
-			$rootid=WT_USER_ROOT_ID;
-		} else {
-			if (find_person_record(WT_USER_GEDCOM_ID, WT_GED_ID)) {
-				$rootid=WT_USER_GEDCOM_ID;
-			} else {
-				if (find_person_record($PEDIGREE_ROOT_ID, WT_GED_ID)) {
-					$rootid=trim($PEDIGREE_ROOT_ID);
-				} else {
-					$rootid=WT_DB::prepare(
-						"SELECT MIN(i_id) FROM `##individuals` WHERE i_file=?"
-					)->execute(array(WT_GED_ID))->fetchOne();
-				}
-			}
-		}
-	}
-
-	if ($USE_RIN) {
-		$indirec = find_person_record($rootid, WT_GED_ID);
-		if ($indirec == false) $rootid = find_rin_id($rootid);
-	}
-
-	return $rootid;
-}
 
 /**
  * creates an array with all of the individual ids to be displayed on an ascendancy chart

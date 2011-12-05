@@ -63,7 +63,6 @@ class TreeView {
 	public function drawViewport($rootPersonId, $generations, $style) {
 		global $GEDCOM, $WT_IMAGES, $controller;
 
-    $rootPersonId = check_rootid($rootPersonId);
     $rootPerson = WT_Person::getInstance($rootPersonId);
     if (is_null($rootPerson))
       $rootPerson = new WT_Person('');

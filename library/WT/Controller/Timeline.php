@@ -72,7 +72,7 @@ class WT_Controller_Timeline extends WT_Controller_Chart {
 		if (!empty($newpid) && !in_array($newpid, $this->pids)) {
 			$this->pids[] = $newpid;
 		}
-		if (count($this->pids)==0) $this->pids[] = check_rootid("");
+		if (count($this->pids)==0) $this->pids[] = $this->getSignificantIndividual()->getXref();
 		$remove = safe_GET_xref('remove');
 		//-- cleanup user input
 		$newpids = array();

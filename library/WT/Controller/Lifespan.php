@@ -115,7 +115,7 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 				$person=WT_Person::getInstance($newpid);
 				$this->addFamily($person, $addfam);
 			} elseif (!$this->pids) {
-				$this->addFamily(WT_Person::getInstance(check_rootid("")), false);
+				$this->addFamily($this->getSignificantIndividual(), false);
 			}
 		}
 		$_SESSION['timeline_pids']=$this->pids;

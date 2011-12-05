@@ -83,11 +83,11 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$show_full = $this->show_full;
 		$talloffset = $this->talloffset;
 
-		// Validate parameters
-		$this->rootid=check_rootid($this->rootid);
-
 		$this->rootPerson = WT_Person::getInstance($this->rootid);
-		if (is_null($this->rootPerson)) $this->rootPerson = new WT_Person('');
+		if (!$this->rootPerson) {
+			$this->rootPerson=$this->getSignificantIndividual();
+			$this->rootid=$this->rootPerson->getXref();
+		}
 		$this->name     = $this->rootPerson->getFullName();
 		$this->addname  = $this->rootPerson->getAddName();
 

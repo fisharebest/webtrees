@@ -62,9 +62,6 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 
 		$OLD_PGENS = $PEDIGREE_GENERATIONS;
 
-		// Validate form parameters
-		$this->rootid = check_rootid($this->rootid);
-
 		// -- size of the detailed boxes based upon optional width parameter
 		$Dbwidth=($box_width*$bwidth)/100;
 		$Dbheight=($box_width*$bheight)/100;
@@ -81,6 +78,10 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		$pbheight = $bheight+14;
 
 		$this->ancestry = WT_Person::getInstance($this->rootid);
+		if (!$this->ancestry) {
+			$this->ancestry=$this->getSignificantIndividual();
+			$this->rootid=$this->ancestry->getXref();
+		}
 		$this->name     = $this->ancestry->getFullName();
 		$this->addname  = $this->ancestry->getAddName();
 
