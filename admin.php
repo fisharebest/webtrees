@@ -1235,6 +1235,26 @@ function old_paths() {
 		WT_ROOT.'themes/xenea/images/pixel.gif',
 		WT_ROOT.'themes/xenea/images/remove.gif',
 		WT_ROOT.'themes/xenea/modules.css',
+		// Removed in 1.2.5
+		WT_ROOT.'includes/media_reorder_count.php',
+		WT_ROOT.'includes/media_tab_head.php',
+		WT_ROOT.'js/behaviour.js.htm',
+		WT_ROOT.'js/bennolan',
+		WT_ROOT.'js/bosrup',
+		WT_ROOT.'js/kryogenix',
+		WT_ROOT.'js/overlib.js.htm',
+		WT_ROOT.'js/scriptaculous',
+		WT_ROOT.'js/scriptaculous.js.htm',
+		WT_ROOT.'js/sorttable.js.htm',
+		WT_ROOT.'library/WT/JS.php',
+		WT_ROOT.'modules_v3/clippings/index.php',
+		WT_ROOT.'modules_v3/googlemap/css/googlemap_style.css',
+		WT_ROOT.'modules_v3/googlemap/css/wt_v3_places_edit.css',
+		WT_ROOT.'modules_v3/googlemap/index.php',
+		WT_ROOT.'modules_v3/lightbox/index.php',
+		WT_ROOT.'modules_v3/recent_changes/help_text.php',
+		WT_ROOT.'modules_v3/todays_events/help_text.php',
+		WT_ROOT.'sidebar.php',
 	);
 }
 
