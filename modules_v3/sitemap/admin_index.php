@@ -166,7 +166,7 @@ if ($action=="sendIndex") {
 			$xml_name = str_ireplace(".ged",".xml", $ged_name);
 			echo " <sitemap>\n";
 			echo " <loc>", WT_SERVER_NAME, WT_SCRIPT_PATH, "SM_", $xml_name, "</loc>\n";
-			echo " <lastmod>", date("%Y-%m-%d"), "</lastmod>\n ";
+			echo " <lastmod>", date("Y-m-d"), "</lastmod>\n ";
 			echo " </sitemap>\n";
 		}
 	}
