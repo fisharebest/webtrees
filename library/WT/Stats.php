@@ -345,47 +345,51 @@ class WT_Stats {
 		switch($type) {
 			default:
 			case 'all':
-				$type = $this->totalIndividuals() + $this->totalFamilies() + $this->totalSources() + $this->totalOtherRecords();
+				$type = $this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources() + $this->_totalOtherRecords();
 				break;
 			case 'individual':
-				$type = $this->totalIndividuals();
+				$type = $this->_totalIndividuals();
 				break;
 			case 'family':
-				$type = $this->totalFamilies();
+				$type = $this->_totalFamilies();
 				break;
 			case 'source':
-				$type = $this->totalSources();
+				$type = $this->_totalSources();
 				break;
 			case 'note':
-				$type = $this->totalNotes();
+				$type = $this->_totalNotes();
 				break;
 			case 'other':
-				$type = $this->totalOtherRecords();
+				$type = $this->_totalOtherRecords();
 				break;
 			default:
 				return WT_I18N::percentage(0, 1);
 		}
 		if ($type==0) {
-			return WT_I18N::percentage(0.0, 1);
+			return WT_I18N::percentage(0, 1);
 		} else {
 			return WT_I18N::percentage($total / $type, 1);
 		}
 	}
 
 	function totalRecords() {
-		return ($this->totalIndividuals() + $this->totalFamilies() + $this->totalSources() + $this->totalOtherRecords());
+		return WT_I18N::number($this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources() + $this->_totalOtherRecords());
 	}
 
-	function totalIndividuals() {
+	function _totalIndividuals() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
+	function totalIndividuals() {
+		return WT_I18N::number($this->_totalIndividuals());
+	}
+
 	function totalIndisWithSources() {
 		$rows=self::_runSQL("SELECT COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
-		return $rows[0]['tot'];
+		return WT_I18N::number($rows[0]['tot']);
 	}
 
 	function chartIndisWithSources($params=null) {
@@ -395,7 +399,7 @@ class WT_Stats {
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		$sizes = explode('x', $size);
-		$tot_indi = $this->totalIndividuals();
+		$tot_indi = $this->_totalIndividuals();
 		if ($tot_indi==0) {
 			return '';
 		} else {
@@ -409,19 +413,23 @@ class WT_Stats {
 	}
 
 	function totalIndividualsPercentage() {
-		return $this->_getPercentage($this->totalIndividuals(), 'all');
+		return $this->_getPercentage($this->_totalIndividuals(), 'all');
 	}
 
-	function totalFamilies() {
+	function _totalFamilies() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##families` WHERE f_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
+	function totalFamilies() {
+		return WT_I18N::number($this->_totalFamilies());
+	}
+
 	function totalFamsWithSources() {
 		$rows=self::_runSQL("SELECT COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
-		return $rows[0]['tot'];
+		return WT_I18N::number($rows[0]['tot']);
 	}
 
 	function chartFamsWithSources($params=null) {
@@ -431,7 +439,7 @@ class WT_Stats {
 		if (isset($params[1]) && $params[1] != '') {$color_from = strtolower($params[1]);} else {$color_from = $WT_STATS_CHART_COLOR1;}
 		if (isset($params[2]) && $params[2] != '') {$color_to = strtolower($params[2]);} else {$color_to = $WT_STATS_CHART_COLOR2;}
 		$sizes = explode('x', $size);
-		$tot_fam = $this->totalFamilies();
+		$tot_fam = $this->_totalFamilies();
 		if ($tot_fam==0) {
 			return '';
 		} else {
@@ -445,51 +453,67 @@ class WT_Stats {
 	}
 
 	function totalFamiliesPercentage() {
-		return $this->_getPercentage($this->totalFamilies(), 'all');
+		return $this->_getPercentage($this->_totalFamilies(), 'all');
 	}
 
-	function totalSources() {
+	function _totalSources() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##sources` WHERE s_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
-	function totalSourcesPercentage() {
-		return $this->_getPercentage($this->totalSources(), 'all');
+	function totalSources() {
+		return WT_I18N::number($this->_totalSources());
 	}
 
-	function totalNotes() {
+	function totalSourcesPercentage() {
+		return $this->_getPercentage($this->_totalSources(), 'all');
+	}
+
+	function _totalNotes() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type='NOTE' AND o_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
-	function totalNotesPercentage() {
-		return $this->_getPercentage($this->totalNotes(), 'all');
+	function totalNotes() {
+		return WT_I18N::number($this->_totalNotes());
 	}
 
-	function totalRepositories() {
+	function totalNotesPercentage() {
+		return $this->_getPercentage($this->_totalNotes(), 'all');
+	}
+
+	function _totalRepositories() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type='REPO' AND o_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
-	function totalRepositoriesPercentage() {
-		return $this->_getPercentage($this->totalRepositories(), 'all');
+	function totalRepositories() {
+		return WT_I18N::number($this->_totalRepositories());
 	}
 
-	function totalOtherRecords() {
+	function totalRepositoriesPercentage() {
+		return $this->_getPercentage($this->_totalRepositories(), 'all');
+	}
+
+	function _totalOtherRecords() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type NOT IN ('NOTE', 'REPO') AND o_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
+	function totalOtherRecords() {
+		return WT_I18N::number($this->_totalOtherRecords());
+	}
+
 	function totalOtherPercentage() {
-		return $this->_getPercentage($this->totalOtherRecords(), 'all');
+		return $this->_getPercentage($this->_totalOtherRecords(), 'all');
 	}
 
 	function totalSurnames($params = null) {
@@ -504,13 +528,14 @@ class WT_Stats {
 			$distinct='DISTINCT';
 		}
 		$vars[]=$this->_ged_id;
-		return (int)
+		$total=
 			WT_DB::prepare(
 				"SELECT COUNT({$distinct} n_surn COLLATE '".WT_I18N::$collation."')".
 				" FROM `##name`".
 				" WHERE n_surn COLLATE '".WT_I18N::$collation."' {$opt} AND n_file=?")
 			->execute($vars)
 			->fetchOne();
+		return WT_I18N::number($total);
 	}
 
 	function totalGivennames($params = null) {
@@ -525,10 +550,11 @@ class WT_Stats {
 			$distinct='DISTINCT';
 		}
 		$vars[]=$this->_ged_id;
-		return (int)
+		$total=
 			WT_DB::prepare("SELECT COUNT({$distinct} n_givn) FROM `##name` WHERE n_givn {$opt} AND n_file=?")
 			->execute($vars)
 			->fetchOne();
+		return WT_I18N::number($total);
 	}
 
 	function totalEvents($params = null) {
@@ -552,7 +578,7 @@ class WT_Stats {
 		}
 		$sql.=' AND d_fact NOT IN ('.implode(', ', array_fill(0, count($no_types), '?')).')';
 		$vars=array_merge($vars, $no_types);
-		return WT_DB::prepare($sql)->execute($vars)->fetchOne();
+		return WT_I18N::number(WT_DB::prepare($sql)->execute($vars)->fetchOne());
 	}
 
 	function totalEventsBirth() {
@@ -597,37 +623,49 @@ class WT_Stats {
 		return $this->totalEvents($no_facts);
 	}
 
-	function totalSexMales() {
+	function _totalSexMales() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 			->execute(array($this->_ged_id, 'M'))
 			->fetchOne();
 	}
 
+	function totalSexMales() {
+		return WT_I18N::number($this->_totalSexMales());
+	}
+
 	function totalSexMalesPercentage() {
 		return $this->_getPercentage($this->totalSexMales(), 'individual');
 	}
 
-	function totalSexFemales() {
+	function _totalSexFemales() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 			->execute(array($this->_ged_id, 'F'))
 			->fetchOne();
 	}
 
-	function totalSexFemalesPercentage() {
-		return $this->_getPercentage($this->totalSexFemales(), 'individual');
+	function totalSexFemales() {
+		return WT_I18N::number($this->_totalSexFemales());
 	}
 
-	function totalSexUnknown() {
+	function totalSexFemalesPercentage() {
+		return $this->_getPercentage($this->_totalSexFemales(), 'individual');
+	}
+
+	function _totalSexUnknown() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_sex=?")
 			->execute(array($this->_ged_id, 'U'))
 			->fetchOne();
 	}
 
+	function totalSexUnknown() {
+		return WT_I18N::number($this->_totalSexUnknown());
+	}
+
 	function totalSexUnknownPercentage() {
-		return $this->_getPercentage($this->totalSexUnknown(), 'individual');
+		return $this->_getPercentage($this->_totalSexUnknown(), 'individual');
 	}
 
 	function chartSex($params=null) {
@@ -670,22 +708,30 @@ class WT_Stats {
 	// than MAX_ALIVE_AGE years ago, and who have no DEAT record.
 	// A good reason to run the "Add missing DEAT records" batch-update!
 	// However, SQL cannot provide the same logic used by Person::isDead().
-	function totalLiving() {
+	function _totalLiving() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom NOT REGEXP '\\n1 (".WT_EVENTS_DEAT.")'")
 			->execute(array($this->_ged_id))
 			->fetchOne();
 	}
 
+	function totalLiving() {
+		return WT_I18N::number($this->_totalLiving());
+	}
+
 	function totalLivingPercentage() {
 		return $this->_getPercentage($this->totalLiving(), 'individual');
 	}
 
-	function totalDeceased() {
+	function _totalDeceased() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=? AND i_gedcom REGEXP '\\n1 (".WT_EVENTS_DEAT.")'")
 			->execute(array($this->_ged_id))
 			->fetchOne();
+	}
+
+	function totalDeceased() {
+		return WT_I18N::number($this->_totalDeceased());
 	}
 
 	function totalDeceasedPercentage() {
@@ -716,18 +762,19 @@ class WT_Stats {
 
 	static function totalUsers($params=null) {
 		if (!empty($params[0])) {
-			return get_user_count() + (int)$params[0];
+			$total=get_user_count() + (int)$params[0];
 		} else {
-			return get_user_count();
+			$total=get_user_count();
 		}
+		return WT_I18N::number($total);
 	}
 
 	static function totalAdmins() {
-		return get_admin_user_count();
+		return WT_I18N::number(get_admin_user_count());
 	}
 
 	static function totalNonAdmins() {
-		return get_non_admin_user_count();
+		return WT_I18N::number(get_non_admin_user_count());
 	}
 
 	function _totalMediaType($type='all') {
@@ -754,26 +801,26 @@ class WT_Stats {
 		return WT_DB::prepare($sql)->execute($vars)->fetchOne();
 	}
 
-	function totalMedia() {return $this->_totalMediaType('all');}
-	function totalMediaAudio() {return $this->_totalMediaType('audio');}
-	function totalMediaBook() {return $this->_totalMediaType('book');}
-	function totalMediaCard() {return $this->_totalMediaType('card');}
-	function totalMediaCertificate() {return $this->_totalMediaType('certificate');}
-	function totalMediaCoatOfArms() {return $this->_totalMediaType('coat');}
-	function totalMediaDocument() {return $this->_totalMediaType('document');}
-	function totalMediaElectronic() {return $this->_totalMediaType('electronic');}
-	function totalMediaMagazine() {return $this->_totalMediaType('magazine');}
-	function totalMediaManuscript() {return $this->_totalMediaType('manuscript');}
-	function totalMediaMap() {return $this->_totalMediaType('map');}
-	function totalMediaFiche() {return $this->_totalMediaType('fiche');}
-	function totalMediaFilm() {return $this->_totalMediaType('film');}
-	function totalMediaNewspaper() {return $this->_totalMediaType('newspaper');}
-	function totalMediaPainting() {return $this->_totalMediaType('painting');}
-	function totalMediaPhoto() {return $this->_totalMediaType('photo');}
-	function totalMediaTombstone() {return $this->_totalMediaType('tombstone');}
-	function totalMediaVideo() {return $this->_totalMediaType('video');}
-	function totalMediaOther() {return $this->_totalMediaType('other');}
-	function totalMediaUnknown() {return $this->_totalMediaType('unknown');}
+	function totalMedia()            {return WT_I18N::number($this->_totalMediaType('all'));}
+	function totalMediaAudio()       {return WT_I18N::number($this->_totalMediaType('audio'));}
+	function totalMediaBook()        {return WT_I18N::number($this->_totalMediaType('book'));}
+	function totalMediaCard()        {return WT_I18N::number($this->_totalMediaType('card'));}
+	function totalMediaCertificate() {return WT_I18N::number($this->_totalMediaType('certificate'));}
+	function totalMediaCoatOfArms()  {return WT_I18N::number($this->_totalMediaType('coat'));}
+	function totalMediaDocument()    {return WT_I18N::number($this->_totalMediaType('document'));}
+	function totalMediaElectronic()  {return WT_I18N::number($this->_totalMediaType('electronic'));}
+	function totalMediaMagazine()    {return WT_I18N::number($this->_totalMediaType('magazine'));}
+	function totalMediaManuscript()  {return WT_I18N::number($this->_totalMediaType('manuscript'));}
+	function totalMediaMap()         {return WT_I18N::number($this->_totalMediaType('map'));}
+	function totalMediaFiche()       {return WT_I18N::number($this->_totalMediaType('fiche'));}
+	function totalMediaFilm()        {return WT_I18N::number($this->_totalMediaType('film'));}
+	function totalMediaNewspaper()   {return WT_I18N::number($this->_totalMediaType('newspaper'));}
+	function totalMediaPainting()    {return WT_I18N::number($this->_totalMediaType('painting'));}
+	function totalMediaPhoto()       {return WT_I18N::number($this->_totalMediaType('photo'));}
+	function totalMediaTombstone()   {return WT_I18N::number($this->_totalMediaType('tombstone'));}
+	function totalMediaVideo()       {return WT_I18N::number($this->_totalMediaType('video'));}
+	function totalMediaOther()       {return WT_I18N::number($this->_totalMediaType('other'));}
+	function totalMediaUnknown()     {return WT_I18N::number($this->_totalMediaType('unknown'));}
 
 	function chartMedia($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
@@ -824,7 +871,7 @@ class WT_Stats {
 		asort($media);
 		foreach ($media as $type=>$count) {
 			$mediaCounts[] = round(100 * $count / $tot, 0);
-			$mediaTypes .= WT_Gedcom_Tag::getFileFormTypeValue($type).' - '.$count.'|';
+			$mediaTypes .= WT_Gedcom_Tag::getFileFormTypeValue($type).' - '.WT_I18N::number($count).'|';
 			$chart_title .= WT_Gedcom_Tag::getFileFormTypeValue($type).' ('.$count.'), ';
 		}
 		$chart_title = substr($chart_title,0,-2);
@@ -1021,11 +1068,15 @@ class WT_Stats {
 		}
 	}
 
-	function totalPlaces() {
+	function _totalPlaces() {
 		return
 			WT_DB::prepare("SELECT COUNT(*) FROM `##places` WHERE p_file=?")
 			->execute(array($this->_ged_id))
 			->fetchOne();
+	}
+
+	function totalPlaces() {
+		return WT_I18n::number($this->_totalPlaces());
 	}
 
 	function chartDistribution($params = null) {
@@ -1034,10 +1085,9 @@ class WT_Stats {
 		if ($params !== null && isset($params[1])) {$chart_type = $params[1];} else {$chart_type='';}
 		if ($params !== null && isset($params[2])) {$surname = $params[2];} else {$surname='';}
 
-		if ($this->totalPlaces()==0) {
+		if ($this->_totalPlaces()==0) {
 			return '';
 		}
-
 		// Get the country names for each language
 		$country_to_iso3166=array();
 		foreach (WT_I18N::installed_languages() as $code=>$lang) {
@@ -1207,7 +1257,7 @@ class WT_Stats {
 		arsort($places);
 		foreach ($places as $place=>$count) {
 			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
-			$top10[]="\t<li>".$place." ".PrintReady("[".$count."]")."</li>\n";
+			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
 		}
 		$top10=join("\n", $top10);
@@ -1221,7 +1271,7 @@ class WT_Stats {
 		arsort($places);
 		foreach ($places as $place=>$count) {
 			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
-			$top10[]="\t<li>".$place." ".PrintReady("[".$count."]")."</li>\n";
+			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
 		}
 		$top10=join("\n", $top10);
@@ -1290,10 +1340,10 @@ class WT_Stats {
 			$centuries = "";
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= WT_I18N::century_name($values['century']).' - '.$values['total'].'|';
+				$centuries .= WT_I18N::century_name($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
-			$chl = substr($centuries,0,-1);
+			$chl = rawurlencode(substr($centuries,0,-1));
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Births by century')."\" title=\"".WT_I18N::translate('Births by century')."\" />";
 		}
 		if (!isset($rows)) return 0;
@@ -1348,10 +1398,10 @@ class WT_Stats {
 			$centuries = "";
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= WT_I18N::century_name($values['century']).' - '.$values['total'].'|';
+				$centuries .= WT_I18N::century_name($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
-			$chl = substr($centuries,0,-1);
+			$chl = rawurlencode(substr($centuries,0,-1));
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Deaths by century')."\" title=\"".WT_I18N::translate('Deaths by century')."\" />";
 		}
 		if (!isset($rows)) {return 0;}
@@ -1362,15 +1412,15 @@ class WT_Stats {
 	// Birth
 	//
 
-	function firstBirth() {return $this->_mortalityQuery('full', 'ASC', 'BIRT');}
-	function firstBirthYear() {return $this->_mortalityQuery('year', 'ASC', 'BIRT');}
-	function firstBirthName() {return $this->_mortalityQuery('name', 'ASC', 'BIRT');}
-	function firstBirthPlace() {return $this->_mortalityQuery('place', 'ASC', 'BIRT');}
+	function firstBirth()      { return $this->_mortalityQuery('full',  'ASC', 'BIRT'); }
+	function firstBirthYear()  { return $this->_mortalityQuery('year',  'ASC', 'BIRT'); }
+	function firstBirthName()  { return $this->_mortalityQuery('name',  'ASC', 'BIRT'); }
+	function firstBirthPlace() { return $this->_mortalityQuery('place', 'ASC', 'BIRT'); }
 
-	function lastBirth() {return $this->_mortalityQuery('full', 'DESC', 'BIRT');}
-	function lastBirthYear() {return $this->_mortalityQuery('year', 'DESC', 'BIRT');}
-	function lastBirthName() {return $this->_mortalityQuery('name', 'DESC', 'BIRT');}
-	function lastBirthPlace() {return $this->_mortalityQuery('place', 'DESC', 'BIRT');}
+	function lastBirth()       { return $this->_mortalityQuery('full',  'DESC', 'BIRT'); }
+	function lastBirthYear()   { return $this->_mortalityQuery('year',  'DESC', 'BIRT'); }
+	function lastBirthName()   { return $this->_mortalityQuery('name',  'DESC', 'BIRT'); }
+	function lastBirthPlace()  { return $this->_mortalityQuery('place', 'DESC', 'BIRT'); }
 
 	function statsBirth($params=null) {return $this->_statsBirth(true, false, -1, -1, $params);}
 
@@ -1378,17 +1428,17 @@ class WT_Stats {
 	// Death
 	//
 
-	function firstDeath() {return $this->_mortalityQuery('full', 'ASC', 'DEAT');}
-	function firstDeathYear() {return $this->_mortalityQuery('year', 'ASC', 'DEAT');}
-	function firstDeathName() {return $this->_mortalityQuery('name', 'ASC', 'DEAT');}
-	function firstDeathPlace() {return $this->_mortalityQuery('place', 'ASC', 'DEAT');}
+	function firstDeath()      { return $this->_mortalityQuery('full',  'ASC', 'DEAT'); }
+	function firstDeathYear()  { return $this->_mortalityQuery('year',  'ASC', 'DEAT'); }
+	function firstDeathName()  { return $this->_mortalityQuery('name',  'ASC', 'DEAT'); }
+	function firstDeathPlace() { return $this->_mortalityQuery('place', 'ASC', 'DEAT'); }
 
-	function lastDeath() {return $this->_mortalityQuery('full', 'DESC', 'DEAT');}
-	function lastDeathYear() {return $this->_mortalityQuery('year', 'DESC', 'DEAT');}
-	function lastDeathName() {return $this->_mortalityQuery('name', 'DESC', 'DEAT');}
-	function lastDeathPlace() {return $this->_mortalityQuery('place', 'DESC', 'DEAT');}
+	function lastDeath()       { return $this->_mortalityQuery('full',  'DESC', 'DEAT'); }
+	function lastDeathYear()   { return $this->_mortalityQuery('year',  'DESC', 'DEAT'); }
+	function lastDeathName()   { return $this->_mortalityQuery('name',  'DESC', 'DEAT'); }
+	function lastDeathPlace()  { return $this->_mortalityQuery('place', 'DESC', 'DEAT'); }
 
-	function statsDeath($params=null) {return $this->_statsDeath(true, false, -1, -1, $params);}
+	function statsDeath($params=null) { return $this->_statsDeath(true, false, -1, -1, $params); }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Lifespan                                                                  //
@@ -1484,7 +1534,7 @@ class WT_Stats {
 				}
 				break;
 			case 'age':
-				$result=floor($row['age']/365.25);
+				$result=WT_I18N::number(floor($row['age']/365.25));
 				break;
 			case 'name':
 				$result="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a>";
@@ -1788,40 +1838,43 @@ class WT_Stats {
 	// Both Sexes
 	function statsAge($params=null) {return $this->_statsAge(true, 'BIRT', 'BOTH', -1, -1, $params);}
 
-	function longestLife() {return $this->_longlifeQuery('full', 'BOTH');}
-	function longestLifeAge() {return $this->_longlifeQuery('age', 'BOTH');}
-	function longestLifeName() {return $this->_longlifeQuery('name', 'BOTH');}
+	function longestLife()     { return $this->_longlifeQuery('full', 'BOTH'); }
+	function longestLifeAge()  { return $this->_longlifeQuery('age',  'BOTH'); }
+	function longestLifeName() { return $this->_longlifeQuery('name', 'BOTH'); }
 
-	function topTenOldest($params=null) {return $this->_topTenOldest('nolist', 'BOTH', $params);}
-	function topTenOldestList($params=null) {return $this->_topTenOldest('list', 'BOTH', $params);}
-	function topTenOldestAlive($params=null) {return $this->_topTenOldestAlive('nolist', 'BOTH', $params);}
-	function topTenOldestListAlive($params=null) {return $this->_topTenOldestAlive('list', 'BOTH', $params);}
+	function topTenOldest($params=null)          { return $this->_topTenOldest('nolist', 'BOTH', $params); }
+	function topTenOldestList($params=null)      { return $this->_topTenOldest('list',   'BOTH', $params); }
 
-	function averageLifespan($show_years=false) {return $this->_averageLifespanQuery('BOTH', $show_years);}
+	function topTenOldestAlive($params=null)     { return $this->_topTenOldestAlive('nolist', 'BOTH', $params); }
+	function topTenOldestListAlive($params=null) { return $this->_topTenOldestAlive('list',   'BOTH', $params); }
+
+	function averageLifespan($show_years=false)  { return $this->_averageLifespanQuery('BOTH', $show_years); }
 
 	// Female Only
 
-	function longestLifeFemale() {return $this->_longlifeQuery('full', 'F');}
-	function longestLifeFemaleAge() {return $this->_longlifeQuery('age', 'F');}
-	function longestLifeFemaleName() {return $this->_longlifeQuery('name', 'F');}
+	function longestLifeFemale()     { return $this->_longlifeQuery('full', 'F'); }
+	function longestLifeFemaleAge()  { return $this->_longlifeQuery('age',  'F'); }
+	function longestLifeFemaleName() { return $this->_longlifeQuery('name', 'F'); }
 
-	function topTenOldestFemale($params=null) {return $this->_topTenOldest('nolist', 'F', $params);}
-	function topTenOldestFemaleList($params=null) {return $this->_topTenOldest('list', 'F', $params);}
-	function topTenOldestFemaleAlive($params=null) {return $this->_topTenOldestAlive('nolist', 'F', $params);}
-	function topTenOldestFemaleListAlive($params=null) {return $this->_topTenOldestAlive('list', 'F', $params);}
+	function topTenOldestFemale($params=null)     { return $this->_topTenOldest('nolist', 'F', $params); }
+	function topTenOldestFemaleList($params=null) { return $this->_topTenOldest('list',   'F', $params); }
 
-	function averageLifespanFemale($show_years=false) {return $this->_averageLifespanQuery('F', $show_years);}
+	function topTenOldestFemaleAlive($params=null)     { return $this->_topTenOldestAlive('nolist', 'F', $params); }
+	function topTenOldestFemaleListAlive($params=null) { return $this->_topTenOldestAlive('list',   'F', $params); }
+
+	function averageLifespanFemale($show_years=false) { return $this->_averageLifespanQuery('F', $show_years); }
 
 	// Male Only
 
-	function longestLifeMale() {return $this->_longlifeQuery('full', 'M');}
-	function longestLifeMaleAge() {return $this->_longlifeQuery('age', 'M');}
-	function longestLifeMaleName() {return $this->_longlifeQuery('name', 'M');}
+	function longestLifeMale()     { return $this->_longlifeQuery('full', 'M'); }
+	function longestLifeMaleAge()  { return $this->_longlifeQuery('age',  'M'); }
+	function longestLifeMaleName() { return $this->_longlifeQuery('name', 'M'); }
 
-	function topTenOldestMale($params=null) {return $this->_topTenOldest('nolist', 'M', $params);}
-	function topTenOldestMaleList($params=null) {return $this->_topTenOldest('list', 'M', $params);}
-	function topTenOldestMaleAlive($params=null) {return $this->_topTenOldestAlive('nolist', 'M', $params);}
-	function topTenOldestMaleListAlive($params=null) {return $this->_topTenOldestAlive('list', 'M', $params);}
+	function topTenOldestMale($params=null)     { return $this->_topTenOldest('nolist', 'M', $params); }
+	function topTenOldestMaleList($params=null) { return $this->_topTenOldest('list',   'M', $params); }
+
+	function topTenOldestMaleAlive($params=null)     { return $this->_topTenOldestAlive('nolist', 'M', $params); }
+	function topTenOldestMaleListAlive($params=null) { return $this->_topTenOldestAlive('list',   'M', $params); }
 
 	function averageLifespanMale($show_years=false) {return $this->_averageLifespanQuery('M', $show_years);}
 
@@ -2387,7 +2440,7 @@ class WT_Stats {
 			$counts=array();
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= WT_I18N::century_name($values['century']).' - '.$values['total'].'|';
+				$centuries .= WT_I18N::century_name($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
@@ -2475,29 +2528,29 @@ class WT_Stats {
 	//
 	// Marriage
 	//
-	function firstMarriage() {return $this->_mortalityQuery('full', 'ASC', 'MARR');}
-	function firstMarriageYear() {return $this->_mortalityQuery('year', 'ASC', 'MARR');}
-	function firstMarriageName() {return $this->_mortalityQuery('name', 'ASC', 'MARR');}
-	function firstMarriagePlace() {return $this->_mortalityQuery('place', 'ASC', 'MARR');}
+	function firstMarriage()      { return $this->_mortalityQuery('full',  'ASC', 'MARR'); }
+	function firstMarriageYear()  { return $this->_mortalityQuery('year',  'ASC', 'MARR'); }
+	function firstMarriageName()  { return $this->_mortalityQuery('name',  'ASC', 'MARR'); }
+	function firstMarriagePlace() { return $this->_mortalityQuery('place', 'ASC', 'MARR'); }
 
-	function lastMarriage() {return $this->_mortalityQuery('full', 'DESC', 'MARR');}
-	function lastMarriageYear() {return $this->_mortalityQuery('year', 'DESC', 'MARR');}
-	function lastMarriageName() {return $this->_mortalityQuery('name', 'DESC', 'MARR');}
-	function lastMarriagePlace() {return $this->_mortalityQuery('place', 'DESC', 'MARR');}
+	function lastMarriage()      { return $this->_mortalityQuery('full',  'DESC', 'MARR'); }
+	function lastMarriageYear()  { return $this->_mortalityQuery('year',  'DESC', 'MARR'); }
+	function lastMarriageName()  { return $this->_mortalityQuery('name',  'DESC', 'MARR'); }
+	function lastMarriagePlace() { return $this->_mortalityQuery('place', 'DESC', 'MARR'); }
 
 	function statsMarr($params=null) {return $this->_statsMarr(true, false, -1, -1, $params);}
 	//
 	// Divorce
 	//
-	function firstDivorce() {return $this->_mortalityQuery('full', 'ASC', 'DIV');}
-	function firstDivorceYear() {return $this->_mortalityQuery('year', 'ASC', 'DIV');}
-	function firstDivorceName() {return $this->_mortalityQuery('name', 'ASC', 'DIV');}
-	function firstDivorcePlace() {return $this->_mortalityQuery('place', 'ASC', 'DIV');}
+	function firstDivorce()      { return $this->_mortalityQuery('full',  'ASC', 'DIV'); }
+	function firstDivorceYear()  { return $this->_mortalityQuery('year',  'ASC', 'DIV'); }
+	function firstDivorceName()  { return $this->_mortalityQuery('name',  'ASC', 'DIV'); }
+	function firstDivorcePlace() { return $this->_mortalityQuery('place', 'ASC', 'DIV'); }
 
-	function lastDivorce() {return $this->_mortalityQuery('full', 'DESC', 'DIV');}
-	function lastDivorceYear() {return $this->_mortalityQuery('year', 'DESC', 'DIV');}
-	function lastDivorceName() {return $this->_mortalityQuery('name', 'DESC', 'DIV');}
-	function lastDivorcePlace() {return $this->_mortalityQuery('place', 'DESC', 'DIV');}
+	function lastDivorce()      { return $this->_mortalityQuery('full',  'DESC', 'DIV'); }
+	function lastDivorceYear()  { return $this->_mortalityQuery('year',  'DESC', 'DIV'); }
+	function lastDivorceName()  { return $this->_mortalityQuery('name',  'DESC', 'DIV'); }
+	function lastDivorcePlace() { return $this->_mortalityQuery('place', 'DESC', 'DIV'); }
 	
 	function statsDiv($params=null) {return $this->_statsDiv(true, false, -1, -1, $params);}
 
@@ -2637,64 +2690,61 @@ class WT_Stats {
 	//
 	// Female only
 	//
-	function youngestMarriageFemale() {return $this->_marriageQuery('full', 'ASC', 'F');}
-	function youngestMarriageFemaleName() {return $this->_marriageQuery('name', 'ASC', 'F');}
-	function youngestMarriageFemaleAge($show_years=false) {return $this->_marriageQuery('age', 'ASC', 'F', $show_years);}
+	function youngestMarriageFemale()                     { return $this->_marriageQuery('full', 'ASC', 'F'); }
+	function youngestMarriageFemaleName()                 { return $this->_marriageQuery('name', 'ASC', 'F'); }
+	function youngestMarriageFemaleAge($show_years=false) { return $this->_marriageQuery('age',  'ASC', 'F', $show_years); }
 
-	function oldestMarriageFemale() {return $this->_marriageQuery('full', 'DESC', 'F');}
-	function oldestMarriageFemaleName() {return $this->_marriageQuery('name', 'DESC', 'F');}
-	function oldestMarriageFemaleAge($show_years=false) {return $this->_marriageQuery('age', 'DESC', 'F', $show_years);}
+	function oldestMarriageFemale()                     { return $this->_marriageQuery('full', 'DESC', 'F'); }
+	function oldestMarriageFemaleName()                 { return $this->_marriageQuery('name', 'DESC', 'F'); }
+	function oldestMarriageFemaleAge($show_years=false) { return $this->_marriageQuery('age',  'DESC', 'F', $show_years); }
 
 	//
 	// Male only
 	//
-	function youngestMarriageMale() {return $this->_marriageQuery('full', 'ASC', 'M');}
-	function youngestMarriageMaleName() {return $this->_marriageQuery('name', 'ASC', 'M');}
-	function youngestMarriageMaleAge($show_years=false) {return $this->_marriageQuery('age', 'ASC', 'M', $show_years);}
+	function youngestMarriageMale()                     { return $this->_marriageQuery('full', 'ASC', 'M'); }
+	function youngestMarriageMaleName()                 { return $this->_marriageQuery('name', 'ASC', 'M'); }
+	function youngestMarriageMaleAge($show_years=false) { return $this->_marriageQuery('age',  'ASC', 'M', $show_years); }
 
-	function oldestMarriageMale() {return $this->_marriageQuery('full', 'DESC', 'M');}
-	function oldestMarriageMaleName() {return $this->_marriageQuery('name', 'DESC', 'M');}
-	function oldestMarriageMaleAge($show_years=false) {return $this->_marriageQuery('age', 'DESC', 'M', $show_years);}
+	function oldestMarriageMale()                     { return $this->_marriageQuery('full', 'DESC', 'M'); }
+	function oldestMarriageMaleName()                 { return $this->_marriageQuery('name', 'DESC', 'M'); }
+	function oldestMarriageMaleAge($show_years=false) { return $this->_marriageQuery('age',  'DESC', 'M', $show_years); }
 	
-	function statsMarrAge($params=null) {return $this->_statsMarrAge(true, 'BOTH', -1, -1, $params);}
+	function statsMarrAge($params=null) { return $this->_statsMarrAge(true, 'BOTH', -1, -1, $params); }
 
-	function ageBetweenSpousesMF($params=null) {return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='DESC', $params=null);}
-	function ageBetweenSpousesMFList($params=null) {return $this->_ageBetweenSpousesQuery($type='list', $age_dir='DESC', $params=null);}
+	function ageBetweenSpousesMF    ($params=null) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='DESC', $params=null); }
+	function ageBetweenSpousesMFList($params=null) { return $this->_ageBetweenSpousesQuery($type='list',   $age_dir='DESC', $params=null); }
+	function ageBetweenSpousesFM    ($params=null) { return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='ASC',  $params=null); }
+	function ageBetweenSpousesFMList($params=null) { return $this->_ageBetweenSpousesQuery($type='list',   $age_dir='ASC',  $params=null); }
 
-	function ageBetweenSpousesFM($params=null) {return $this->_ageBetweenSpousesQuery($type='nolist', $age_dir='ASC', $params=null);}
-	function ageBetweenSpousesFMList($params=null) {return $this->_ageBetweenSpousesQuery($type='list', $age_dir='ASC', $params=null);}
+	function topAgeOfMarriageFamily()                   { return $this->_ageOfMarriageQuery('name',   'DESC', array('1')); }
+	function topAgeOfMarriage()                         { return $this->_ageOfMarriageQuery('age',    'DESC', array('1')); }
+	function topAgeOfMarriageFamilies($params=null)     { return $this->_ageOfMarriageQuery('nolist', 'DESC', $params);    }
+	function topAgeOfMarriageFamiliesList($params=null) { return $this->_ageOfMarriageQuery('list',   'DESC', $params);    }
 
-	function topAgeOfMarriageFamily() {return $this->_ageOfMarriageQuery('name', 'DESC', array('1'));}
-	function topAgeOfMarriage() {return $this->_ageOfMarriageQuery('age', 'DESC', array('1'));}
-	function topAgeOfMarriageFamilies($params=null) {return $this->_ageOfMarriageQuery('nolist', 'DESC', $params);}
-	function topAgeOfMarriageFamiliesList($params=null) {return $this->_ageOfMarriageQuery('list', 'DESC', $params);}
-
-	function minAgeOfMarriageFamily() {return $this->_ageOfMarriageQuery('name', 'ASC', array('1'));}
-	function minAgeOfMarriage() {return $this->_ageOfMarriageQuery('age', 'ASC', array('1'));}
-	function minAgeOfMarriageFamilies($params=null) {return $this->_ageOfMarriageQuery('nolist', 'ASC', $params);}
-	function minAgeOfMarriageFamiliesList($params=null) {return $this->_ageOfMarriageQuery('list', 'ASC', $params);}
+	function minAgeOfMarriageFamily()                   { return $this->_ageOfMarriageQuery('name',   'ASC', array('1')); }
+	function minAgeOfMarriage()                         { return $this->_ageOfMarriageQuery('age',    'ASC', array('1')); }
+	function minAgeOfMarriageFamilies    ($params=null) { return $this->_ageOfMarriageQuery('nolist', 'ASC', $params); }
+	function minAgeOfMarriageFamiliesList($params=null) { return $this->_ageOfMarriageQuery('list',   'ASC', $params); }
 
 	//
 	// Mother only
 	//
-	function youngestMother() {return $this->_parentsQuery('full', 'ASC', 'F');}
-	function youngestMotherName() {return $this->_parentsQuery('name', 'ASC', 'F');}
-	function youngestMotherAge($show_years=false) {return $this->_parentsQuery('age', 'ASC', 'F', $show_years);}
-
-	function oldestMother() {return $this->_parentsQuery('full', 'DESC', 'F');}
-	function oldestMotherName() {return $this->_parentsQuery('name', 'DESC', 'F');}
-	function oldestMotherAge($show_years=false) {return $this->_parentsQuery('age', 'DESC', 'F', $show_years);}
+	function youngestMother()                     { return $this->_parentsQuery('full', 'ASC',  'F'); }
+	function youngestMotherName()                 { return $this->_parentsQuery('name', 'ASC',  'F'); }
+	function youngestMotherAge($show_years=false) { return $this->_parentsQuery('age',  'ASC',  'F', $show_years); }
+	function oldestMother()                       { return $this->_parentsQuery('full', 'DESC', 'F'); }
+	function oldestMotherName()                   { return $this->_parentsQuery('name', 'DESC', 'F'); }
+	function oldestMotherAge($show_years=false)   { return $this->_parentsQuery('age',  'DESC', 'F', $show_years); }
 
 	//
 	// Father only
 	//
-	function youngestFather() {return $this->_parentsQuery('full', 'ASC', 'M');}
-	function youngestFatherName() {return $this->_parentsQuery('name', 'ASC', 'M');}
-	function youngestFatherAge($show_years=false) {return $this->_parentsQuery('age', 'ASC', 'M', $show_years);}
-
-	function oldestFather() {return $this->_parentsQuery('full', 'DESC', 'M');}
-	function oldestFatherName() {return $this->_parentsQuery('name', 'DESC', 'M');}
-	function oldestFatherAge($show_years=false) {return $this->_parentsQuery('age', 'DESC', 'M', $show_years);}
+	function youngestFather()                     { return $this->_parentsQuery('full', 'ASC',  'M'); }
+	function youngestFatherName()                 { return $this->_parentsQuery('name', 'ASC',  'M'); }
+	function youngestFatherAge($show_years=false) { return $this->_parentsQuery('age',  'ASC',  'M', $show_years); }
+	function oldestFather()                       { return $this->_parentsQuery('full', 'DESC', 'M'); }
+	function oldestFatherName()                   { return $this->_parentsQuery('name', 'DESC', 'M'); }
+	function oldestFatherAge($show_years=false)   { return $this->_parentsQuery('age',  'DESC', 'M', $show_years); }
 
 	function totalMarriedMales() {
 		$rows = WT_DB::prepare("SELECT f_gedcom AS ged, f_husb AS husb FROM `##families` WHERE f_file=?")
@@ -2707,7 +2757,7 @@ class WT_Stats {
 				$husb[] = $row->husb."<br />";
 			}
 		}
-		return count(array_unique($husb));
+		return WT_I18N::number(count(array_unique($husb)));
 	}
 
 	function totalMarriedFemales() {
@@ -2721,7 +2771,7 @@ class WT_Stats {
 				$wife[] = $row->wife."<br />";
 			}
 		}
-		return count(array_unique($wife));
+		return WT_I18N::number(count(array_unique($wife)));
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -2756,7 +2806,7 @@ class WT_Stats {
 				}
 				break;
 			case 'size':
-				$result=$row['tot'];
+				$result=WT_I18N::number($row['tot']);
 				break;
 			case 'name':
 				$result="<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName().'</a>';
@@ -3034,12 +3084,12 @@ class WT_Stats {
 		return $rows;
 	}
 
-	function largestFamily() {return $this->_familyQuery('full');}
-	function largestFamilySize() {return $this->_familyQuery('size');}
-	function largestFamilyName() {return $this->_familyQuery('name');}
+	function largestFamily()     { return $this->_familyQuery('full'); }
+	function largestFamilySize() { return $this->_familyQuery('size'); }
+	function largestFamilyName() { return $this->_familyQuery('name'); }
 
-	function topTenLargestFamily($params=null) {return $this->_topTenFamilyQuery('nolist', $params);}
-	function topTenLargestFamilyList($params=null) {return $this->_topTenFamilyQuery('list', $params);}
+	function topTenLargestFamily    ($params=null) { return $this->_topTenFamilyQuery('nolist', $params); }
+	function topTenLargestFamilyList($params=null) { return $this->_topTenFamilyQuery('list',   $params); }
 
 	function chartLargestFamilies($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_L_CHART_X, $WT_STATS_S_CHART_Y;
@@ -3075,10 +3125,10 @@ class WT_Stats {
 					$per = round(100 * $row['tot'] / $tot, 0);
 				}
 				$chd .= self::_array_to_extended_encoding(array($per));
-				$chl[] = rawurlencode(strip_tags(unhtmlentities($family->getFullName())).' - '.$row['tot']);
+				$chl[] = strip_tags(unhtmlentities($family->getFullName())).' - '.WT_I18N::number($row['tot']);
 			}
 		}
-		$chl = join('|', $chl);
+		$chl = rawurlencode(join('|', $chl));
 
 		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Largest families')."\" title=\"".WT_I18N::translate('Largest families')."\" />";
 	}
@@ -3086,14 +3136,13 @@ class WT_Stats {
 	function totalChildren() {
 		$rows=self::_runSQL("SELECT SUM(f_numchil) AS tot FROM `##families` WHERE f_file={$this->_ged_id}");
 		$row=$rows[0];
-		return $row['tot'];
+		return WT_I18N::number($row['tot']);
 	}
-
 
 	function averageChildren() {
 		$rows=self::_runSQL("SELECT AVG(f_numchil) AS tot FROM `##families` WHERE f_file={$this->_ged_id}");
 		$row=$rows[0];
-		return sprintf('%.2f', $row['tot']);
+		return WT_I18N::number($row['tot'], 2);
 	}
 
 	function _statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null) {
@@ -3179,10 +3228,10 @@ class WT_Stats {
 
 	function statsChildren($params=null) {return $this->_statsChildren($simple=true, $sex='BOTH', $year1=-1, $year2=-1, $params=null);}
 
-	function topAgeBetweenSiblingsName($params=null) {return $this->_ageBetweenSiblingsQuery($type='name', $params=null);}
-	function topAgeBetweenSiblings($params=null) {return $this->_ageBetweenSiblingsQuery($type='age', $params=null);}
-	function topAgeBetweenSiblingsFullName($params=null) {return $this->_ageBetweenSiblingsQuery($type='nolist', $params=null);}
-	function topAgeBetweenSiblingsList($params=null) {return $this->_ageBetweenSiblingsQuery($type='list', $params=null);}
+	function topAgeBetweenSiblingsName    ($params=null) { return $this->_ageBetweenSiblingsQuery($type='name',   $params=null); }
+	function topAgeBetweenSiblings        ($params=null) { return $this->_ageBetweenSiblingsQuery($type='age',    $params=null); }
+	function topAgeBetweenSiblingsFullName($params=null) { return $this->_ageBetweenSiblingsQuery($type='nolist', $params=null); }
+	function topAgeBetweenSiblingsList    ($params=null) { return $this->_ageBetweenSiblingsQuery($type='list',   $params=null); }
 
 	function noChildrenFamilies() {
 		$rows=self::_runSQL(''
@@ -3407,10 +3456,10 @@ class WT_Stats {
 		return array_shift($surnames);
 	}
 
-	static function commonSurnames($params=array('','','alpha')) {return self::_commonSurnamesQuery('nolist', false, $params);}
-	static function commonSurnamesTotals($params=array('','','rcount')) {return self::_commonSurnamesQuery('nolist', true, $params);}
-	static function commonSurnamesList($params=array('','','alpha')) {return self::_commonSurnamesQuery('list', false, $params);}
-	static function commonSurnamesListTotals($params=array('','','rcount')) {return self::_commonSurnamesQuery('list', true, $params);}
+	static function commonSurnames          ($params=array('','','alpha' )) { return self::_commonSurnamesQuery('nolist', false, $params); }
+	static function commonSurnamesTotals    ($params=array('','','rcount')) { return self::_commonSurnamesQuery('nolist', true,  $params); }
+	static function commonSurnamesList      ($params=array('','','alpha' )) { return self::_commonSurnamesQuery('list',   false, $params); }
+	static function commonSurnamesListTotals($params=array('','','rcount')) { return self::_commonSurnamesQuery('list',   true,  $params); }
 
 	function chartCommonSurnames($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
@@ -3421,7 +3470,7 @@ class WT_Stats {
 		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
 		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);} else {$maxtoshow = 7;}
 		$sizes = explode('x', $size);
-		$tot_indi = $this->totalIndividuals();
+		$tot_indi = $this->_totalIndividuals();
 		$surnames = get_common_surnames($threshold);
 		if (count($surnames) <= 0) {return '';}
 		$SURNAME_TRADITION=get_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION');
@@ -3460,7 +3509,7 @@ class WT_Stats {
 			$per = round(100 * $count_per / $tot_indi, 0);
 			$chd .= self::_array_to_extended_encoding($per);
 			//ToDo: RTL names are often printed LTR when also LTR names are present
-			$chl[] = $top_name.' - '.$count_per;
+			$chl[] = $top_name.' - '.WT_I18N::number($count_per);
 			$chart_title .= $top_name.' - '.$count_per.WT_I18N::$list_separator;
 
 		}
@@ -3593,29 +3642,29 @@ class WT_Stats {
 		}
 	}
 
-	static function commonGiven($params=array(1,10,'alpha')) {return self::_commonGivenQuery('B', 'nolist', false, $params);}
-	static function commonGivenTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('B', 'nolist', true, $params);}
-	static function commonGivenList($params=array(1,10,'alpha')) {return self::_commonGivenQuery('B', 'list', false, $params);}
-	static function commonGivenListTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('B', 'list', true, $params);}
-	static function commonGivenTable($params=array(1,10,'rcount')) {return self::_commonGivenQuery('B', 'table', false, $params);}
+	static function commonGiven                 ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('B', 'nolist', false, $params); }
+	static function commonGivenTotals           ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('B', 'nolist', true,  $params); }
+	static function commonGivenList             ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('B', 'list',   false, $params); }
+	static function commonGivenListTotals       ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('B', 'list',   true,  $params); }
+	static function commonGivenTable            ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('B', 'table',  false, $params); }
 
-	static function commonGivenFemale($params=array(1,10,'alpha')) {return self::_commonGivenQuery('F', 'nolist', false, $params);}
-	static function commonGivenFemaleTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('F', 'nolist', true, $params);}
-	static function commonGivenFemaleList($params=array(1,10,'alpha')) {return self::_commonGivenQuery('F', 'list', false, $params);}
-	static function commonGivenFemaleListTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('F', 'list', true, $params);}
-	static function commonGivenFemaleTable($params=array(1,10,'rcount')) {return self::_commonGivenQuery('F', 'table', false, $params);}
+	static function commonGivenFemale           ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('F', 'nolist', false, $params); }
+	static function commonGivenFemaleTotals     ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('F', 'nolist', true,  $params); }
+	static function commonGivenFemaleList       ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('F', 'list',   false, $params); }
+	static function commonGivenFemaleListTotals ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('F', 'list',   true,  $params); }
+	static function commonGivenFemaleTable      ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('F', 'table',  false, $params); }
 
-	static function commonGivenMale($params=array(1,10,'alpha')) {return self::_commonGivenQuery('M', 'nolist', false, $params);}
-	static function commonGivenMaleTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('M', 'nolist', true, $params);}
-	static function commonGivenMaleList($params=array(1,10,'alpha')) {return self::_commonGivenQuery('M', 'list', false, $params);}
-	static function commonGivenMaleListTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('M', 'list', true, $params);}
-	static function commonGivenMaleTable($params=array(1,10,'rcount')) {return self::_commonGivenQuery('M', 'table', false, $params);}
+	static function commonGivenMale             ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('M', 'nolist', false, $params); }
+	static function commonGivenMaleTotals       ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('M', 'nolist', true,  $params); }
+	static function commonGivenMaleList         ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('M', 'list',   false, $params); }
+	static function commonGivenMaleListTotals   ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('M', 'list',   true,  $params); }
+	static function commonGivenMaleTable        ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('M', 'table',  false, $params); }
 
-	static function commonGivenUnknown($params=array(1,10,'alpha')) {return self::_commonGivenQuery('U', 'nolist', false, $params);}
-	static function commonGivenUnknownTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('U', 'nolist', true, $params);}
-	static function commonGivenUnknownList($params=array(1,10,'alpha')) {return self::_commonGivenQuery('U', 'list', false, $params);}
-	static function commonGivenUnknownListTotals($params=array(1,10,'rcount')) {return self::_commonGivenQuery('U', 'list', true, $params);}
-	static function commonGivenUnknownTable($params=array(1,10,'rcount')) {return self::_commonGivenQuery('U', 'table', false, $params);}
+	static function commonGivenUnknown          ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('U', 'nolist', false, $params); }
+	static function commonGivenUnknownTotals    ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('U', 'nolist', true,  $params); }
+	static function commonGivenUnknownList      ($params=array(1,10,'alpha' )) { return self::_commonGivenQuery('U', 'list',   false, $params); }
+	static function commonGivenUnknownListTotals($params=array(1,10,'rcount')) { return self::_commonGivenQuery('U', 'list',   true,  $params); }
+	static function commonGivenUnknownTable     ($params=array(1,10,'rcount')) { return self::_commonGivenQuery('U', 'table',  false, $params); }
 
 	function chartCommonGiven($params=null) {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
@@ -3626,7 +3675,7 @@ class WT_Stats {
 		if (isset($params[3]) && $params[3] != '') {$threshold = strtolower($params[3]);} else {$threshold = get_gedcom_setting($this->_ged_id, 'COMMON_NAMES_THRESHOLD');}
 		if (isset($params[4]) && $params[4] != '') {$maxtoshow = strtolower($params[4]);} else {$maxtoshow = 7;}
 		$sizes = explode('x', $size);
-		$tot_indi = $this->totalIndividuals();
+		$tot_indi = $this->_totalIndividuals();
 		$given = self::_commonGivenQuery('B', 'chart');
 		if (!is_array($given)) return '';
 		$given = array_slice($given, 0, $maxtoshow);
@@ -3733,12 +3782,12 @@ class WT_Stats {
 		else {return $visible + $anon;}
 	}
 
-	static function usersLoggedIn() {return self::_usersLoggedIn('nolist');}
-	static function usersLoggedInList() {return self::_usersLoggedIn('list');}
+	static function usersLoggedIn    () { return self::_usersLoggedIn('nolist'); }
+	static function usersLoggedInList() { return self::_usersLoggedIn('list'  ); }
 
-	static function usersLoggedInTotal() {return self::_usersLoggedInTotal('all');}
-	static function usersLoggedInTotalAnon() {return self::_usersLoggedInTotal('anon');}
-	static function usersLoggedInTotalVisible() {return self::_usersLoggedInTotal('visible');}
+	static function usersLoggedInTotal       () { return self::_usersLoggedInTotal('all'    ); }
+	static function usersLoggedInTotalAnon   () { return self::_usersLoggedInTotal('anon'   ); }
+	static function usersLoggedInTotalVisible() { return self::_usersLoggedInTotal('visible'); }
 
 	static function userID() {return getUserId();}
 	static function userName($params=null) {
@@ -3783,12 +3832,12 @@ class WT_Stats {
 		}
 	}
 
-	static function latestUserId() {return self::_getLatestUserData('userid');}
-	static function latestUserName() {return self::_getLatestUserData('username');}
-	static function latestUserFullName() {return self::_getLatestUserData('fullname');}
-	static function latestUserRegDate($params=null) {return self::_getLatestUserData('regdate', $params);}
-	static function latestUserRegTime($params=null) {return self::_getLatestUserData('regtime', $params);}
-	static function latestUserLoggedin($params=null) {return self::_getLatestUserData('loggedin', $params);}
+	static function latestUserId      ()             { return self::_getLatestUserData('userid'           ); }
+	static function latestUserName    ()             { return self::_getLatestUserData('username'         ); }
+	static function latestUserFullName()             { return self::_getLatestUserData('fullname'         ); }
+	static function latestUserRegDate ($params=null) { return self::_getLatestUserData('regdate',  $params); }
+	static function latestUserRegTime ($params=null) { return self::_getLatestUserData('regtime',  $params); }
+	static function latestUserLoggedin($params=null) { return self::_getLatestUserData('loggedin', $params); }
 
 ///////////////////////////////////////////////////////////////////////////////
 // Contact                                                                   //
@@ -3801,21 +3850,17 @@ class WT_Stats {
 // Date & Time                                                               //
 ///////////////////////////////////////////////////////////////////////////////
 
-	static function serverDate() {return timestamp_to_gedcom_date(time())->Display(false);}
+	static function serverDate     () { return timestamp_to_gedcom_date(time())->Display(false);}
 
-	static function serverTime() {return date('g:i a');}
+	static function serverTime     () { return date('g:i a');}
+	static function serverTime24   () { return date('G:i');}
+	static function serverTimezone () { return date('T');}
 
-	static function serverTime24() {return date('G:i');}
+	static function browserDate    () { return timestamp_to_gedcom_date(client_time())->Display(false);}
 
-	static function serverTimezone() {return date('T');}
-
-	static function browserDate() {return timestamp_to_gedcom_date(client_time())->Display(false);}
-
-	static function browserTime() {return date('g:i a', client_time());}
-
-	static function browserTime24() {return date('G:i', client_time());}
-
-	static function browserTimezone() {return date('T', client_time());}
+	static function browserTime    () { return date('g:i a', client_time());}
+	static function browserTime24  () { return date('G:i',   client_time());}
+	static function browserTimezone() { return date('T',     client_time());}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Tools                                                                     //
@@ -3851,7 +3896,7 @@ class WT_Stats {
 			"SELECT page_count FROM `##hit_counter`".
 			" WHERE gedcom_id=? AND page_name=? AND page_parameter=?"
 		)->execute(array(WT_GED_ID, $page_name, $page_parameter))->fetchOne();
-		return '<span class="hit-counter">'.$count.'</span>';
+		return '<span class="hit-counter">'.WT_I18N::number($count).'</span>';
 	}
 
 	static function hitCount    ($params=null) {return self::_getHitCount(null,             $params);}
@@ -3979,9 +4024,10 @@ class WT_Stats {
 		return $content;
 	}
 
-	function totalUserMessages() {return count(getUserMessages(WT_USER_NAME));}
-	function totalUserJournal() { return count(getUserNews(WT_USER_ID));}
-	function totalGedcomNews() {  return count(getUserNews(WT_GEDCOM));}
+	function totalUserMessages() { return WT_I18N::number(count(getUserMessages(WT_USER_NAME))); }
+
+	function totalUserJournal()  { return WT_I18N::number(count(getUserNews(WT_USER_ID))); }
+	function totalGedcomNews()   { return WT_I18N::number(count(getUserNews(WT_GEDCOM)));  }
 
 	//////////////////////////////////////////////////////////////////////////////
 	// Country lookup data

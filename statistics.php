@@ -279,8 +279,8 @@ if (isset($content) && $content==1) {
 						<td class="facts_label"><?php echo WT_I18N::translate('Number of families without children'); ?></td>
 					</tr>
 					<tr>
-						<td class="facts_value" align="center"><?php echo WT_I18N::number($stats->averageChildren(), 2); ?></td>
-						<td class="facts_value" align="center"><?php echo WT_I18N::number($stats->noChildrenFamilies()); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->averageChildren(); ?></td>
+						<td class="facts_value" align="center"><?php echo $stats->noChildrenFamilies(); ?></td>
 					</tr>
 					<tr>
 						<td class="facts_value statistics_chart"><?php echo $stats->statsChildren(); ?></td>
@@ -474,10 +474,10 @@ if (isset($content) && $content==1) {
 			$nrfemale = $_SESSION[$GEDCOM.'nrfemale'];
 		}
 
-		$_SESSION[$GEDCOM.'nrpers'] = $stats->totalIndividuals();
-		$_SESSION[$GEDCOM.'nrfam'] = $stats->totalFamilies();
-		$_SESSION[$GEDCOM.'nrmale'] = $stats->totalSexMales();
-		$_SESSION[$GEDCOM.'nrfemale'] = $stats->totalSexFemales();
+		$_SESSION[$GEDCOM.'nrpers'] = $stats->_totalIndividuals();
+		$_SESSION[$GEDCOM.'nrfam'] = $stats->_totalFamilies();
+		$_SESSION[$GEDCOM.'nrmale'] = $stats->_totalSexMales();
+		$_SESSION[$GEDCOM.'nrfemale'] = $stats->_totalSexFemales();
 
 		echo '<form method="post" name="form" action="statisticsplot.php?action=newform" target="_popup" onsubmit="return openPopup()">';
 		echo '<input type="hidden" name="action" value="update" />';
