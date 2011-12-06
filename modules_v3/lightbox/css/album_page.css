@@ -39,7 +39,7 @@
 #lb_icons{text-align:justify;}
 #thumblist_1,#thumblist_2,#thumblist_3,#thumblist_4,#thumblist_5,#thumblist_1a,#thumblist_2a,#thumblist_3a,#thumblist_4a,#thumblist_5a{display:block; float:left; list-style-type:none;}
 #thumblist_1 li,#thumblist_2 li,#thumblist_3 li,#thumblist_4 li,#thumblist_5 li,#thumblist_1a li,#thumblist_2a li,#thumblist_3a li,#thumblist_4a li,#thumblist_5a li{display:block; float:left; list-style-type:none; margin-right:5px; padding-bottom:0; padding-left:4px; padding-right:4px;}
-li.li_norm{border:2px solid transparent;}
+li.li_norm{border:2px solid transparent; height:112px;}
 li.li_new{border:2px solid #00f;}
 li.li_old{border:2px solid red;}
 #thumblist_1 a img,#thumblist_2 a img,#thumblist_3 a img,#thumblist_4 a img,#thumblist_5 a img,#thumblist_1a a img,#thumblist_2a a img,#thumblist_3a a img,#thumblist_4a a img,#thumblist_5a a img{border:1px; border-style:none; padding:1px;}
