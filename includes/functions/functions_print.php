@@ -983,11 +983,10 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 	$ct = preg_match("/2 PLAC (.*)/", $factrec, $match);
 	if ($ct>0) {
 		$html.=' ';
-		$levels = explode(', ', $match[1]);
+		// reverse the array so that we get the top level first
+		$levels = array_reverse(explode(', ', $match[1]));
 		if ($anchor && (empty($SEARCH_SPIDER))) {
 			$place = trim($match[1]);
-			// reverse the array so that we get the top level first
-			$levels = array_reverse($levels);
 			$tempURL = "placelist.php?action=show&amp;";
 			foreach ($levels as $pindex=>$ppart) {
 				$tempURL .= "parent[{$pindex}]=".rawurlencode($ppart).'&amp;';
@@ -998,12 +997,12 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 			if (!$SEARCH_SPIDER) {
 				$html.=' -- ';
 			}
-			for ($level=0; $level<$SHOW_PEDIGREE_PLACES; $level++) {
+			for ($level=$SHOW_PEDIGREE_PLACES-1; $level>=0; $level--) {
 				if (!empty($levels[$level])) {
+					$html.=PrintReady($levels[$level]);
 					if ($level>0) {
 						$html.=", ";
 					}
-					$html.=PrintReady($levels[$level]);
 				}
 			}
 		}
