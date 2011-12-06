@@ -40,6 +40,7 @@ class WT_I18N {
 	static private $locale='';
 	static private $dir='';
 	static public  $collation;
+	static public  $list_separator;
 
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
@@ -160,6 +161,9 @@ class WT_I18N {
 		self::$locale=$locale;
 		self::$dir=$TEXT_DIRECTION;
 
+		// I18N: This punctuation is used to separate lists of items.
+		self::$list_separator=WT_I18N::translate(', ');
+
 		// I18N: This is the name of the MySQL collation that applies to your language.  A list is available at http://dev.mysql.com/doc/refman/5.0/en/charset-unicode-sets.html
 		self::$collation=WT_I18N::translate('utf8_unicode_ci');
 
@@ -234,7 +238,7 @@ class WT_I18N {
 						$arg=$arg[0];
 					default:
 						// TODO: add LTR/RTL markup to each element?
-						$arg=implode(', ', $arg);
+						$arg=implode(self::$list_separator, $arg);
 					}
 				} else {
 					// For each embedded string, if the text-direction is the opposite of the

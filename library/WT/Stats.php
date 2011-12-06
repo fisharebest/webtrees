@@ -650,8 +650,8 @@ class WT_Stats {
 				WT_I18N::translate('Females').' - '.$tot_f.'|'.
 				WT_I18N::translate('Males').' - '.$tot_m;
 			$chart_title =
-				WT_I18N::translate('Males').' - '.$tot_m.', '.
-				WT_I18N::translate('Females').' - '.$tot_f.', '.
+				WT_I18N::translate('Males').' - '.$tot_m.WT_I18N::$list_separator.
+				WT_I18N::translate('Females').' - '.$tot_f.WT_I18N::$list_separator.
 				WT_I18N::translate_c('unknown people', 'Unknown').' - '.$tot_u;
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
@@ -659,7 +659,7 @@ class WT_Stats {
 			$chl =
 				WT_I18N::translate('Females').' - '.$tot_f.'|'.
 				WT_I18N::translate('Males').' - '.$tot_m;
-			$chart_title =  WT_I18N::translate('Males').' - '.$tot_m.', '.
+			$chart_title =  WT_I18N::translate('Males').' - '.$tot_m.WT_I18N::$list_separator.
 							WT_I18N::translate('Females').' - '.$tot_f;
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		}
@@ -708,7 +708,7 @@ class WT_Stats {
 			$chl =
 				WT_I18N::translate('Living').' - '.$tot_l.'|'.
 				WT_I18N::translate('Dead').' - '.$tot_d.'|';
-			$chart_title =  WT_I18N::translate('Living').' - '.$tot_l.', '.
+			$chart_title =  WT_I18N::translate('Living').' - '.$tot_l.WT_I18N::$list_separator.
 							WT_I18N::translate('Dead').' - '.$tot_d;
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		}
@@ -3461,7 +3461,7 @@ class WT_Stats {
 			$chd .= self::_array_to_extended_encoding($per);
 			//ToDo: RTL names are often printed LTR when also LTR names are present
 			$chl[] = $top_name.' - '.$count_per;
-			$chart_title .= $top_name.' - '.$count_per.', ';
+			$chart_title .= $top_name.' - '.$count_per.WT_I18N::$list_separator;
 
 		}
 		$per = round(100 * ($tot_indi-$tot) / $tot_indi, 0);
@@ -3645,7 +3645,7 @@ class WT_Stats {
 			$chd .= self::_array_to_extended_encoding($per);
 			//ToDo: RTL names are often printed LTR when also LTR names are present
 			$chl[] = $givn.' - '.$count;
-			$chart_title .= $givn.' - '.$count.', ';
+			$chart_title .= $givn.' - '.$count.WT_I18N::$list_separator;
 
 		}
 		$per = round(100 * ($tot_indi-$tot) / $tot_indi, 0);

@@ -773,7 +773,7 @@ function print_asso_rela_record(WT_Event $event, WT_GedcomRecord $record) {
 			'<div class="fact_ASSO">',
 			'<a href="', $person->getHtmlUrl().'">', $person->getFullName(), '</a>',
 			' - ',
-			implode(', ', $html);
+			implode(WT_I18N::$list_separator, $html);
 			echo '</div>';
 	}
 }

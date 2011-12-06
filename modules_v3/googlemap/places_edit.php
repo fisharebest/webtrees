@@ -195,7 +195,7 @@ if ($action=="update") {
 
 	$success = false;
 
-	echo "<b>", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(', ', array_reverse($where_am_i, true)))), "</b><br />\n";
+	echo "<b>", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), "</b><br />\n";
 }
 
 if ($action=="add") {
@@ -244,7 +244,7 @@ if ($action=="add") {
 	if (!isset($place_name) || $place_name=="") echo "<b>", WT_I18N::translate('unknown');
 	else echo "<b>", $place_name;
 	if (count($where_am_i)>0)
-		echo ", ", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(', ', array_reverse($where_am_i, true)))), "</b><br />\n";
+		echo ", ", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), "</b><br />\n";
 	echo "</b><br />";
 }
 
@@ -281,7 +281,7 @@ $api="v3";
 		$tmp='';
 		foreach ($where_am_i as $place) {
 			if ($tmp) {
-				$tmp=', '.$tmp;
+				$tmp=WT_I18N::$list_separator.$tmp;
 			}
 			$tmp=htmlspecialchars($place).$tmp;
 			echo

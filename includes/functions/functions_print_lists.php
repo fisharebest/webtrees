@@ -1491,7 +1491,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 				$first_spfxsurn=$spfxsurn;
 			}
 		}
-		$subhtml='<a href="'.$url.'">'.htmlspecialchars(implode(', ', array_keys($surns))).'</a>';
+		$subhtml='<a href="'.$url.'">'.htmlspecialchars(implode(WT_I18N::$list_separator, array_keys($surns))).'</a>';
 
 		if ($totals) {
 			$subtotal=0;
