@@ -1760,6 +1760,22 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}
 #sb_content_extra_info #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
 
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
+
+
+/* ============== Branches list ============== */
+#branches-page h2 {text-align:center;}
+#branches-page ul {counter-reset: section;} /* instigate the "d'Aboville" numbering system */
+#branches-page ul li {counter-increment: section;} /* instigate the "d'Aboville" numbering system */
+#branches-page ul li:before  {content: counters(section, ".") ". "; } /* instigate the "d'Aboville" numbering system */
+#branch-list {visibility:hidden;}
+p.branches  {display:inline;}
+.treeview {margin:40px; list-style: none;}
+.treeview ul {padding: 0;	margin: 0; list-style: none;}
+.treeview li {padding: 8px 30px;}
+.treeview .expandable-hitarea {background: url(images/bullet-open.png) 0 no-repeat; height: 16px; width: 16px; margin-left: -16px; float: left; cursor: pointer;}
+.treeview .collapsable-hitarea {background: url(images/bullet-close.png) 0 no-repeat; height: 16px; width: 16px; margin-left: -16px; float: left; cursor: pointer;}
+#treecontrol {margin:auto;text-align:center;}
+
 @media print {
 #backprint, #header, #topMenu {
 	display:none;

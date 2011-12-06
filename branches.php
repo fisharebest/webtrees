@@ -53,51 +53,70 @@ $controller->pageHeader();
 if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'/js/autocomplete.js.htm';
 }
-?>
-<div id="branches-page">
-<form name="surnlist" id="surnlist" action="?">
-	<table class="facts_table width50">
-		<tr>
-			<td class="descriptionbox">
-				<?php echo WT_Gedcom_Tag::getLabel('SURN'), help_link('surname'); ?></td>
-			<td class="optionbox">
-				<input type="text" name="surname" id="SURN" value="<?php echo $surn; ?>" />
-				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>" />
-				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
-				<p><?php echo WT_I18N::translate('Phonetic search'); ?></p>
-				<p>
-					<input type="checkbox" name="soundex_std" id="soundex_std" value="1" <?php if ($soundex_std) echo ' checked="checked"'; ?> />
-					<label for="soundex_std"><?php echo WT_I18N::translate('Russell'); ?></label>
-					<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1" <?php if ($soundex_dm) echo ' checked="checked"'; ?> />
-					<label for="soundex_dm"><?php echo WT_I18N::translate('Daitch-Mokotoff'); ?></label>
-				</p>
-			</td>
-		</tr>
-	</table>
-</form>
-<?php
-//-- results
-if ($surn) {
-	$surn_script = utf8_script($surn);
-	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', PrintReady($surn), '</legend>';
-	$indis = indis_array($surn, $soundex_std, $soundex_dm);
-	usort($indis, array('WT_Person', 'CompareBirtDate'));
-	echo '<ol>';
-	foreach ($indis as $person) {
-		$famc = $person->getPrimaryChildFamily();
-		// Don't show INDIs with parents in the list, as they will be shown twice.
-		if ($famc) {
-			foreach ($famc->getSpouses() as $parent) {
-				if (in_array($parent, $indis)) {
-					continue 2;
+
+echo '<div id="branches-page">
+	<form name="surnlist" id="surnlist" action="?">
+		<table class="facts_table width50">
+			<tr>
+				<td class="descriptionbox">', WT_Gedcom_Tag::getLabel('SURN'), help_link('surname'), '</td>
+				<td class="optionbox">
+					<input type="text" name="surname" id="SURN" value="',$surn, '" />
+					<input type="hidden" name="ged" id="ged" value="', $ged, '" />
+					<input type="submit" value="', WT_I18N::translate('View'), '" />
+					<p>', WT_I18N::translate('Phonetic search'), '</p>
+					<p>
+						<input type="checkbox" name="soundex_std" id="soundex_std" value="1"';
+							if ($soundex_std) echo ' checked="checked"';
+						echo ' />
+						<label for="soundex_std">', WT_I18N::translate('Russell'), '</label>
+						<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1"';
+							if ($soundex_dm) echo ' checked="checked"';
+						echo ' />
+						<label for="soundex_dm">', WT_I18N::translate('Daitch-Mokotoff'), '</label>
+					</p>
+				</td>
+			</tr>
+		</table>
+	</form>';
+	$controller
+		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.treeview.js')
+		->addInlineJavaScript('
+			jQuery(document).ready(function() {						
+				jQuery("#branch-list").treeview({
+					collapsed: true,
+					animated: "slow",
+					control:"#treecontrol"
+				});
+				jQuery("#branch-list").css("visibility", "visible");
+				jQuery(".loading-image").css("display", "none");
+			});
+		');
+	//-- results
+	if ($surn) {
+		$surn_script = utf8_script($surn);
+		echo '<h2>', WT_I18N::translate('Branches of '), PrintReady($surn), '</h2>
+			<div id="treecontrol">
+				<a href="#">', WT_I18N::translate('Collapse all'), '</a> | <a href="#">', WT_I18N::translate('Expand all'), '</a>
+			</div>
+			<div class="loading-image">&nbsp;</div>';
+		$indis = indis_array($surn, $soundex_std, $soundex_dm);
+		usort($indis, array('WT_Person', 'CompareBirtDate'));
+		echo '<ul id="branch-list">';
+		foreach ($indis as $person) {
+			$famc = $person->getPrimaryChildFamily();
+			// Don't show INDIs with parents in the list, as they will be shown twice.
+			if ($famc) {
+				foreach ($famc->getSpouses() as $parent) {
+					if (in_array($parent, $indis)) {
+						continue 2;
+					}
 				}
 			}
+			print_fams($person);
 		}
-		print_fams($person);
+		echo '</ul>';
+		echo '</fieldset>';
 	}
-	echo '</ol>';
-	echo '</fieldset>';
-}
 echo '</div>'; // close branches-page
 
 function print_fams($person, $famid=null) {
@@ -132,17 +151,14 @@ function print_fams($person, $famid=null) {
 		$class = 'search_hit';
 		$sosa = '<a target="_blank" dir="ltr" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
 	}
-	$current = $person->getSexImage().
-		'<a target="_blank" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
-		$person->getLifeSpan().' '.$sosa;
+	$current = $person->getSexImage().'<a target="_blank" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.$person->getLifeSpan().' '.$sosa;
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
-		$sex = $person->getSex();
 		$famcrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $person->getGedcomRecord());
 		$pedi = get_gedcom_value('PEDI', 2, $famcrec, '', false);
 		if ($pedi) {
 			$label = WT_Gedcom_Code_Pedi::getValue($pedi, $person);
 		}
-		$current = '<span class="red">'.$label.'</span> '.$current;
+		$current .= '<p class="branches red">'.$label.'</p>';
 	}
 	// spouses and children
 	if (count($person->getSpouseFamilies())<1) {
@@ -160,22 +176,22 @@ function print_fams($person, $famid=null) {
 			}
 			if ($family->getMarriageYear()) {
 				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<span class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</span></a>&nbsp;';
+				$txt .= '<p class="branches details1" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</p></a>&nbsp;';
 			}
 			else if ($family->getMarriage()) {
 				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<span class="details1" title="'.WT_I18N::translate('yes').'">'.WT_ICON_RINGS.'</span></a>&nbsp;';
+				$txt .= '<p class="branches details1" title="'.WT_I18N::translate('yes').'">'.WT_ICON_RINGS.'</p></a>&nbsp;';
 			}
 		$txt .=
 			$spouse->getSexImage().
 			'<a class="'.$class.'" href="'.$spouse->getHtmlUrl().'">'.$spouse->getFullName().' </a>'.$spouse->getLifeSpan().' '.$sosa2;
 		}
 		echo $txt;
-		echo '<ol>';
+		echo '<ul>';
 		foreach ($family->getChildren() as $c=>$child) {
 			print_fams($child, $family->getXref());
 		}
-		echo '</ol>';
+		echo '</ul>';
 	}
 	echo '</li>';
 }
