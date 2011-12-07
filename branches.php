@@ -33,7 +33,6 @@ define('WT_ICON_BRANCHES', '<img src="'.$WT_IMAGES['patriarch'].'" alt="" align=
 
 //-- args
 $surn = safe_GET('surname', '[^<>&%{};]*');
-$surn = utf8_strtoupper($surn);
 $soundex_std = safe_GET_bool('soundex_std');
 $soundex_dm = safe_GET_bool('soundex_dm');
 $ged = safe_GET('ged');
@@ -47,7 +46,11 @@ if (WT_USER_GEDCOM_ID) {
 }
 
 $controller=new WT_Controller_Base();
-$controller->setPageTitle(WT_I18N::translate('Branches').' - '.$surn);
+if ($surn) {
+	$controller->setPageTitle(/* %s is a surname */ WT_I18N::translate('Branches of the %s family', $surn));
+} else {
+	$controller->setPageTitle(WT_I18N::translate('Branches'));
+}
 $controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) {
@@ -94,7 +97,7 @@ echo '<div id="branches-page">
 	//-- results
 	if ($surn) {
 		$surn_script = utf8_script($surn);
-		echo '<h2>', WT_I18N::translate('Branches of '), PrintReady($surn), '</h2>
+		echo '<h2>', $controller->getPageTitle(), '</h2>
 			<div id="treecontrol">
 				<a href="#">', WT_I18N::translate('Collapse all'), '</a> | <a href="#">', WT_I18N::translate('Expand all'), '</a>
 			</div>
@@ -107,7 +110,7 @@ echo '<div id="branches-page">
 			// Don't show INDIs with parents in the list, as they will be shown twice.
 			if ($famc) {
 				foreach ($famc->getSpouses() as $parent) {
-					if (in_array($parent, $indis)) {
+					if (in_array($parent, $indis, true)) {
 						continue 2;
 					}
 				}
@@ -175,12 +178,12 @@ function print_fams($person, $famid=null) {
 				$sosa2 = '<a target="_blank" dir="ltr" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
 			}
 			if ($family->getMarriageYear()) {
-				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<p class="branches details1" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</p></a>&nbsp;';
+				$txt .= ' <p class="branches details1">';
+				$txt .= '<a href="'.$family->getHtmlUrl().'" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</a></p>&nbsp;';
 			}
 			else if ($family->getMarriage()) {
-				$txt .= '&nbsp;<a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<p class="branches details1" title="'.WT_I18N::translate('yes').'">'.WT_ICON_RINGS.'</p></a>&nbsp;';
+				$txt .= ' <p class="branches details1">';
+				$txt .= '<a href="'.$family->getHtmlUrl().'" title="'.WT_I18N::translate('yes').'">'.WT_ICON_RINGS.'</a></p>&nbsp;';
 			}
 		$txt .=
 			$spouse->getSexImage().
