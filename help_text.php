@@ -1841,8 +1841,9 @@ case 'SHOW_LIST_PLACES':
 	break;
 
 case 'SHOW_LIVING_NAMES':
-	$title=WT_I18N::translate('Show living names');
-	$text=WT_I18N::translate('Should the names of living people be shown to visitors?');
+	$title=WT_I18N::translate('Names of private individuals');
+	$text=WT_I18N::translate('This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record.');
+
 	break;
 
 case 'SHOW_MEDIA_DOWNLOAD':

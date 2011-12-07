@@ -648,7 +648,7 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Show living names'), help_link('SHOW_LIVING_NAMES'); ?>
+							<?php echo WT_I18N::translate('Names of private individuals'), help_link('SHOW_LIVING_NAMES'); ?>
 						</td>
 						<td>
 							<?php echo edit_field_access_level("SHOW_LIVING_NAMES", get_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES')); ?>
