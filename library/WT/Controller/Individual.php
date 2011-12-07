@@ -103,7 +103,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				return $family;
 			}
 		}
-		return parent::getSignifcantFamily();
+		return parent::getSignificantFamily();
 	}
 
 	// Handle AJAX requests - to generate the tab content
