@@ -135,11 +135,9 @@ case "specialchar":
 	$action="filter";
 	break;
 case "facts":
-	$controller->setPageTitle(WT_I18N::translate('Find fact tags'));
-	echo
-		WT_JS_START,
-		'jQuery(document).ready(function(){ initPickFact(); });',
-		WT_JS_END;
+	$controller
+		->setPageTitle(WT_I18N::translate('Find fact tags'))
+		->addInlineJavaScript('initPickFact();');
 	break;
 }
 $controller->pageHeader();
