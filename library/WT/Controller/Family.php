@@ -93,7 +93,7 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		if ($this->record) {
 			return $this->record;
 		}
-		return parent::getSignifcantFamily();
+		return parent::getSignificantFamily();
 	}
 
 	// $tags is an array of HUSB/WIFE/CHIL
