@@ -2554,26 +2554,6 @@ case 'ppp_view_records':
 	$text=WT_I18N::translate('Clicking on this link will show you a list of all of the individuals and families that have events occurring in this place.  When you get to the end of a place hierarchy, which is normally a town or city, the name list will be shown automatically.');
 	break;
 
-case 'random_media_ajax_controls':
-	$title=WT_I18N::translate('Show slideshow controls?');
-	$text=WT_I18N::translate('You can use this setting to show or hide the slideshow controls of the Random Media block.<br /><br />These controls allow the user to jump to another random object or to play through randomly selected media like a slideshow. The slideshow changes the contents of the block without preloading information from the server and without reloading the entire page.');
-	break;
-
-case 'random_media_filter':
-	$title=WT_I18N::translate('Media filter');
-	$text=WT_I18N::translate('You can restrict what the Random Media block is permitted to show according to the format and type of media item.  When a given checkbox is checked, the Random Media block is allowed to display media items of that format or type.<br /><br />Format or Type codes that exist in your database but are not in these checkbox lists are assumed to have the corresponding checkbox checked.  For example, if your database contains Media objects of format <b><i>pdf</i></b>, the Random Media block is always permitted to display them.  Similarly, if your database contains Media objects of type <b><i>special</i></b>, the Random Media block is always permitted to display them.');
-	break;
-
-case 'random_media_persons_or_all':
-	$title=WT_I18N::translate('Show only persons, events, or all?');
-	$text=WT_I18N::translate('This option lets you determine the type of media to show.<br /><br />When you select <b>Persons</b>, only media associated with persons will be shown.  Usually, this would be a person\'s photograph.  When you select <b>Events</b>, only media associated with facts or events will be shown.  This might be an image of a certificate.  When you select <b>ALL</b>, this block will show all types of media.');
-	break;
-
-case 'random_media_start_slide':
-	$title=WT_I18N::translate('Start slide show on page load?');
-	$text=WT_I18N::translate('Should the slideshow start automatically when the page is loaded.<br /><br />The slideshow changes the contents of the block without preloading information from the server and without reloading the entire page.');
-	break;
-
 case 'real_name':
 	$title=WT_I18N::translate('Real name');
 	$text=WT_I18N::translate('This is your real name, as you would like it displayed on screen.');
