@@ -324,12 +324,13 @@ class WT_Controller_Clippings {
 	}
 
 	// --------------------------------- Recursive function to traverse the tree
-	function add_family_descendancy($family, $level) {
+	function add_family_descendancy($family, $level=PHP_INT_MAX) {
 		if (!$family) {
 			return;
 		}
-		$this->add_clipping($family->getHusband());
-		$this->add_clipping($family->getWife());
+		foreach ($family->getSpouses() as $spouse) {
+			$this->add_clipping($spouse);
+		}
 		foreach ($family->getChildren() as $child) {
 			$this->add_clipping($child);
 			foreach ($child->getSpouseFamilies() as $child_family) {
