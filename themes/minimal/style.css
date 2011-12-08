@@ -1394,6 +1394,10 @@ dd {
 
 #register-page table, #login-page table, #branches-page table, #media-list-page .list_table  {margin:auto;}
 #register-page table a {display:block; text-align:center;}
+#reports-page table {margin:20px auto;}
+#reports-page .report-type {overflow:hidden; margin:auto; width:180px;}
+#reports-page .report-type div {float:left;margin: 0 20px;}
+#reports-page .report-type p {margin: 0; text-align:center;}
 
 .popup {
 	display:none;
