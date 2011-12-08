@@ -120,8 +120,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				));
 				$block_id=WT_DB::getInstance()->lastInsertId();
 			}
-			set_block_setting($block_id, 'header', safe_POST('header', WT_REGEX_UNSAFE));
-			set_block_setting($block_id, 'faqbody',   safe_POST('faqbody', WT_REGEX_UNSAFE)); // allow html
+			set_block_setting($block_id, 'header',  safe_POST('header',  WT_REGEX_UNSAFE));
+			set_block_setting($block_id, 'faqbody', safe_POST('faqbody', WT_REGEX_UNSAFE)); // allow html
 			$languages=array();
 			foreach (WT_I18N::installed_languages() as $code=>$name) {
 				if (safe_POST_bool('lang_'.$code)) {
@@ -386,14 +386,14 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				if ($faq->block_order==$min_block_order) {
 					echo '&nbsp;';
 				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["uarrow"], '" alt=""></a>';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES['uarrow'], '" alt=""></a>';
 					echo help_link('moveup_faq_item', $this->getName());
 				}
 				echo '</td><td>';
 				if ($faq->block_order==$max_block_order) {
 					echo '&nbsp;';
 				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES["darrow"], '" alt=""></a>';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES['darrow'], '" alt=""></a>';
 					echo help_link('movedown_faq_item', $this->getName());
 				}
 				echo '</td><td>';
@@ -406,7 +406,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				// NOTE: Print the title text of the current item
 				echo '<tr><td colspan="5">';
 				echo '<div class="faq_edit_item">';
-				echo '<div  class="faq_edit_title">', $faq->header, '</div>';
+				echo '<div class="faq_edit_title">', $faq->header, '</div>';
 				// NOTE: Print the body text of the current item
 				echo '<div>', substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody), '</div></div></td></tr>';
 			}

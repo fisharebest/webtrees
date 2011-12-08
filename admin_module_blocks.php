@@ -83,34 +83,36 @@ $controller->pageHeader();
 					<?php
 					$order = 1;
 					foreach (WT_Module::getInstalledBlocks() as $module) {
-						if (array_key_exists($module->getName(), $module->getActiveModules())) {
-							echo '<tr>';
-						} else {
-							echo '<tr class="rela">';
-						}
-					?>
-						<td><?php echo $module->getTitle(); ?></td>
-						<td><?php echo $module->getDescription(); ?></td>
-						<td>
-							<table class="modules_table2">
-								<?php
-								foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-									$varname = 'blockaccess-'.$module->getName().'-'.$ged_id;
-									$access_level=WT_DB::prepare(
-										"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='block'"
-									)->execute(array($ged_id, $module->getName()))->fetchOne();
-									if ($access_level===null) {
-										$access_level=$module->defaultAccessLevel();
-									}
-									echo '<tr><td>',  WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td><td>';
-									echo edit_field_access_level($varname, $access_level);
-								}
+						if ($module->isUserBlock() || $module->isGedcomBlock()) {
+							if (array_key_exists($module->getName(), $module->getActiveModules())) {
+								echo '<tr>';
+							} else {
+								echo '<tr class="rela">';
+							}
 							?>
-							</table>
-						</td>
-					</tr>
-					<?php
-					$order++;
+							<td><?php echo $module->getTitle(); ?></td>
+							<td><?php echo $module->getDescription(); ?></td>
+							<td>
+								<table class="modules_table2">
+									<?php
+									foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+										$varname = 'blockaccess-'.$module->getName().'-'.$ged_id;
+										$access_level=WT_DB::prepare(
+											"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='block'"
+										)->execute(array($ged_id, $module->getName()))->fetchOne();
+										if ($access_level===null) {
+											$access_level=$module->defaultAccessLevel();
+										}
+										echo '<tr><td>',  WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td><td>';
+										echo edit_field_access_level($varname, $access_level);
+									}
+								?>
+								</table>
+							</td>
+							</tr>
+							<?php
+							$order++;
+						}
 					}
 					?>
 				</tbody>
