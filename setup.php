@@ -422,7 +422,6 @@ if (empty($_POST['smtpport'  ])) $_POST['smtpport'  ]='25';
 if (empty($_POST['smtpusepw' ])) $_POST['smtpusepw' ]=1;
 if (empty($_POST['smtpuser'  ])) $_POST['smtpuser'  ]='';
 if (empty($_POST['smtppass'  ])) $_POST['smtppass'  ]='';
-if (empty($_POST['smtpsmpl'  ])) $_POST['smtpsmpl'  ]=0;
 if (empty($_POST['smtpsecure'])) $_POST['smtpsecure']='none';
 if (empty($_POST['smtpfrom'  ])) $_POST['smtpfrom'  ]='webmaster@localhost';
 if (empty($_POST['smtpsender'])) $_POST['smtpsender']=$_POST['smtpfrom'];
@@ -471,7 +470,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'<fieldset><legend>', WT_I18N::translate('SMTP mail server'), '</legend>',
 		'<table border="0"><tr><td>',
 		WT_I18N::translate('Messages'), '</td><td>',
-		'<select name="smtpuse" onchange="document.config.smtpserv.disabled=(this.value!=\'external\');document.config.smtpport.disabled=(this.value!=\'external\');document.config.smtpusepw.disabled=(this.value!=\'external\');document.config.smtpuser.disabled=(this.value!=\'external\');document.config.smtppass.disabled=(this.value!=\'external\');document.config.smtpsmpl.disabled=(this.value!=\'external\');document.config.smtpsecure.disabled=(this.value!=\'external\');document.config.smtpfrom.disabled=(this.value!=\'external\');document.config.smtpsender.disabled=(this.value!=\'external\');">',
+		'<select name="smtpuse" onchange="document.config.smtpserv.disabled=(this.value!=\'external\');document.config.smtpport.disabled=(this.value!=\'external\');document.config.smtpusepw.disabled=(this.value!=\'external\');document.config.smtpuser.disabled=(this.value!=\'external\');document.config.smtppass.disabled=(this.value!=\'external\');document.config.smtpsecure.disabled=(this.value!=\'external\');document.config.smtpfrom.disabled=(this.value!=\'external\');document.config.smtpsender.disabled=(this.value!=\'external\');">',
 		'<option value="internal" ',
 		$_POST['smtpuse']=='internal' ? 'selected="selected"' : '',
 		'>', WT_I18N::translate('Use PHP mail to send messages'), '</option>',
@@ -510,16 +509,6 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		WT_I18N::translate('Password'), '</td><td>',
 		'<input type="password" name="smtppass" value="', htmlspecialchars($_POST['smtppass']), '"', $_POST['smtpuse']=='exernal' ? '' : 'disabled', ' /></td><td>',
 		'&nbsp;',
-		'</td></tr><tr><td>',
-		WT_I18N::translate('Use simple mail headers'), '</td><td>',
-		'<select name="smtpsmpl"', $_POST['smtpuse']=='exernal' ? '' : 'disabled', '>',
-		'<option value="yes" ',
-		$_POST['smtpsmpl'] ? 'selected="selected"' : '',
-		'>', WT_I18N::translate('yes'), '</option>',
-		'<option value="no" ',
-		!$_POST['smtpsmpl'] ? 'selected="selected"' : '',
-		'>', WT_I18N::translate('no'), '</option>',
-		'</select></td><td>',
 		'</td></tr><tr><td>',
 		WT_I18N::translate('Security'), '</td><td>',
 		'<select name="smtpsecure"', $_POST['smtpuse']=='exernal' ? '' : 'disabled', '>',
@@ -1009,11 +998,10 @@ try {
 		"('SMTP_AUTH_USER',                  ?),".
 		"('SMTP_AUTH_PASS',                  ?),".
 		"('SMTP_SSL',                        ?),".
-		"('SMTP_SIMPLE_MAIL',                ?),".
 		"('SMTP_FROM_NAME',                  ?)"
 	)->execute(array(
 		$_POST['smtpuse'], $_POST['smtpserv'], $_POST['smtpsender'], $_POST['smtpport'], $_POST['smtpusepw'],
-		$_POST['smtpuser'], $_POST['smtppass'], $_POST['smtpsecure'], $_POST['smtpsmpl'], $_POST['smtpfrom']
+		$_POST['smtpuser'], $_POST['smtppass'], $_POST['smtpsecure'], $_POST['smtpfrom']
 	));
 
 	echo

@@ -177,7 +177,6 @@ if (ini_get('output_buffering')) {
 }
 // TODO May need to set 'DATA_DIRECTORY' to $INDEX_DIRECTORY when dealing with media??
 @set_site_setting('STORE_MESSAGES',                  $PGV_STORE_MESSAGES);
-@set_site_setting('SMTP_SIMPLE_MAIL',                $PGV_SIMPLE_MAIL);
 @set_site_setting('USE_REGISTRATION_MODULE',         $USE_REGISTRATION_MODULE);
 @set_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION', $REQUIRE_ADMIN_AUTH_REGISTRATION);
 @set_site_setting('ALLOW_USER_THEMES',               $ALLOW_USER_THEMES);

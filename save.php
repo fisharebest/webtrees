@@ -85,7 +85,6 @@ case 'site_setting':
 	case 'REQUIRE_ADMIN_AUTH_REGISTRATION':
 	case 'ALLOW_USER_THEMES':
 	case 'ALLOW_CHANGE_GEDCOM':
-	case 'SMTP_SIMPLE_MAIL':
 	case 'SMTP_AUTH':
 		$value=(int)$value;
 		break;

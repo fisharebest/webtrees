@@ -1671,13 +1671,15 @@ case 'SMTP_AUTH':
 	break;
 
 case 'SMTP_FROM_NAME':
-	$title=WT_I18N::translate('Sender name');
-	$text=WT_I18N::translate('Enter the name to be used in the &laquo;From:&raquo; field of e-mails originating at this site.<br /><br />For example, if your name is <b>John Smith</b> and you are the site administrator for a site that is  known as <b>Jones Genealogy</b>, you could enter something like <b>John Smith</b> or <b>Jones Genealogy</b> or even <b>John Smith, Administrator: Jones Genealogy</b>.  You may enter whatever you wish, but HTML is not permitted.');
+	$title=WT_I18N::translate('From email address');
+	// This text also exists in setup.php
+	$text=WT_I18N::translate('This is used in the "From:" header when sending mails.');
 	break;
 
 case 'SMTP_HELO':
-	$title=WT_I18N::translate('Sending domain name');
-	$text=WT_I18N::translate('This is the domain part of a valid e-mail address on the SMTP server.<br /><br />For example, if you have an e-mail account such as <b>yourname@abc.xyz.com</b>, you would enter <b>abc.xyz.com</b> here.');
+	$title=WT_I18N::translate('Sender email address');
+	// This text also exists in setup.php
+	$text=WT_I18N::translate('This is used in the "Sender:" header when sending mails.  It is often the same as the "From:" header.');
 	break;
 
 case 'SMTP_HOST':
@@ -1688,11 +1690,6 @@ case 'SMTP_HOST':
 case 'SMTP_PORT':
 	$title=WT_I18N::translate('SMTP port');
 	$text=WT_I18N::translate('The port number to be used for connections to the SMTP server.  Generally, this is port <b>25</b>.');
-	break;
-
-case 'SMTP_SIMPLE_MAIL':
-	$title=WT_I18N::translate('Use simple mail headers in external mails');
-	$text=WT_I18N::translate('In normal mail headers for external mails, the email address as well as the name are used. Some mail systems will not accept this. When set to <b>Yes</b>, only the email address will be used.');
 	break;
 
 case 'SMTP_SSL':

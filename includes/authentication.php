@@ -325,11 +325,7 @@ function addMessage($message) {
 		$fromFullName = $message['from'];
 	} else {
 		$fromFullName = getUserFullName($user_id_from);
-		if (!get_site_setting('SMTP_SIMPLE_MAIL')) {
-			$from = hex4email($fromFullName, 'UTF-8')." <".getUserEmail($user_id_from).">";
-		} else {
-			$from = getUserEmail($user_id_from);
-		}
+		$from = hex4email($fromFullName, 'UTF-8')." <".getUserEmail($user_id_from).">";
 		$toFullName=getUserFullName($user_id_to);
 		$copy_email = WT_I18N::translate('You sent the following message to a webtrees user:').' '.$toFullName."\r\n\r\n".$copy_email;
 
@@ -393,11 +389,7 @@ function addMessage($message) {
 			$oryginal_email .= $fromFullName."\r\n\r\n".$message['body'];
 		}
 		$toFullName=getUserFullName($user_id_to);
-		if (!get_site_setting('SMTP_SIMPLE_MAIL')) {
-			$to = hex4email($toFullName, 'UTF-8'). " <".getUserEmail($user_id_to).">";
-		} else {
-			$to = getUserEmail($user_id_to);
-		}
+		$to = hex4email($toFullName, 'UTF-8'). " <".getUserEmail($user_id_to).">";
 		if (getUserEmail($user_id_to)) {
 			// send the original message
 			if (!webtreesMail($to, $from, $oryginal_subject, $oryginal_email)) {
