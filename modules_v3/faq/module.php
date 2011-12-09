@@ -210,10 +210,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 	private function delete() {
 		$block_id=safe_GET('block_id');
 
-		$block_order=WT_DB::prepare(
-			"SELECT block_order FROM `##block` WHERE block_id=?"
-		)->execute(array($block_id))->fetchOne();
-
 		WT_DB::prepare(
 			"DELETE FROM `##block_setting` WHERE block_id=?"
 		)->execute(array($block_id));
@@ -235,9 +231,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			" FROM `##block`".
 			" WHERE block_order=(".
 			"  SELECT MAX(block_order) FROM `##block` WHERE block_order < ? AND module_name=?".
-			" )".
+			" ) AND module_name=?".
 			" LIMIT 1"
-		)->execute(array($block_order, $this->getName()))->fetchOneRow();
+		)->execute(array($block_order, $this->getName(), $this->getName()))->fetchOneRow();
 		if ($swap_block) {
 			WT_DB::prepare(
 				"UPDATE `##block` SET block_order=? WHERE block_id=?"
@@ -260,9 +256,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			" FROM `##block`".
 			" WHERE block_order=(".
 			"  SELECT MIN(block_order) FROM `##block` WHERE block_order>? AND module_name=?".
-			" )".
+			" ) AND module_name=?".
 			" LIMIT 1"
-		)->execute(array($block_order, $this->getName()))->fetchOneRow();
+		)->execute(array($block_order, $this->getName(), $this->getName()))->fetchOneRow();
 		if ($swap_block) {
 			WT_DB::prepare(
 				"UPDATE `##block` SET block_order=? WHERE block_id=?"
@@ -378,7 +374,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				if ($faq->gedcom_id==null) {
 					echo WT_I18N::translate('All');
 				} else {
-					echo get_gedcom_from_id($faq->gedcom_id);
+					echo WT_I18N::translate('%s', get_gedcom_setting($faq->gedcom_id, 'title'));
 				}
 				echo '</td>';
 				// NOTE: Print the edit options of the current item
