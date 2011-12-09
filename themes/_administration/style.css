@@ -392,6 +392,8 @@ table#story_module, table#story_module2 {background:OldLace; border:1px inset #D
 html[dir='rtl'] #story_module th {text-align:right;}
 #story_module2 th, #story_module2 td {vertical-align:top; text-align:left;}
 html[dir='rtl'] #story_module2 th, html[dir='rtl'] #story_module2 td {text-align:right;}
+table#story_table {width:100%}
+#story_table_wrapper  {margin-top: 20px;}
 
 /* Autocomplete styles */
 .ac_input {background-color:#EEE8AA;}
