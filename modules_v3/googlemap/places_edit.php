@@ -275,29 +275,11 @@ $api="v3";
 	<tr>
 		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
 		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input" />
-		<div id="INDI_PLAC_pop" style="display: inline;">
-		<?php print_specialchar_link("NEW_PLACE_NAME", false); ?></div></td><td class="optionbox">
-		<?php
-		$tmp='';
-		foreach ($where_am_i as $place) {
-			if ($tmp) {
-				$tmp=WT_I18N::$list_separator.$tmp;
-			}
-			$tmp=htmlspecialchars($place).$tmp;
-			echo
-				'<a href="#" onclick="return showLocation(\''.$tmp.'\')">',
-				/* I18N: %s is a place name */ WT_I18N::translate('Find “%s” on the map', $tmp),
-				'</a><br>';
-		}
-		// Although we have already put this place in the hierarchy, the hierarchy may be
-		// wrong - so allow the option to find this place anywhere in the world.
-		if (count($where_am_i)>1) {
-			echo
-				'<a href="#" onclick="return showLocation(\''.htmlspecialchars($place_name).'\')">',
-				/* I18N: %s is a place name */ WT_I18N::translate('Find all places called “%s” on the map', htmlspecialchars($place_name)),
-				'</a>';
-		}
-		?>
+			<div id="INDI_PLAC_pop" style="display: inline;">
+			<?php print_specialchar_link("NEW_PLACE_NAME", false); ?></div></td><td class="optionbox">
+			<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search worldwide'); ?></a></label>
+			&nbsp;&nbsp;|&nbsp;&nbsp;
+			<label for="new_pl_name"><a href="#" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search locally'); ?></a></label>
 		</td>
 	</tr>
 	<tr>

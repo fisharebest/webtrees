@@ -436,9 +436,13 @@ if (!defined('WT_WEBTREES')) {
 		}
 	}
 
-	function showLocation(address) {
+	function showLocation_level(address) {
+		address += '<?php if ($level>0) echo ', ', addslashes(PrintReady(implode(', ', array_reverse($where_am_i, true)))); ?>';
 		geocoder.geocode({'address': address}, addAddressToMap);
-		return false;
+	}
+
+	function showLocation_all(address) {
+		geocoder.geocode({'address': address}, addAddressToMap);
 	}
 
 	function paste_char(value) {
