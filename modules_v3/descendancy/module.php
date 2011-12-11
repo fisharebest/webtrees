@@ -84,8 +84,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function getSidebarContent() {
 		global $WT_IMAGES, $controller;
 
-		$out = '<script type="text/javascript">
-		<!--
+		$out = '<script type="text/javascript"><![CDATA[
 		var dloadedNames = new Array();
 
 		function dsearchQ() {
@@ -125,8 +124,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				return false;
 			});
 		});
-		//-->
-		</script>
+		]]></script>
 		<form method="post" action="module.php?mod='.$this->getName().'&mod_action=ajax" onsubmit="return false;">
 		<input type="text" name="sb_desc_name" id="sb_desc_name" value="'.WT_I18N::translate('Search').'" />';
 		$out .= '</form>';

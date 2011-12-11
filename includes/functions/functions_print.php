@@ -137,7 +137,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			} else {
 				$icons .= "<a href=\"#\"";
 				$icons .= $mouseAction4;
-				$icons .= "><img id=\"iconz-$boxID\" src=\"".$WT_IMAGES["zoomin"]."\" alt=\"".WT_I18N::translate('Zoom in/out on this box.')."\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\"></a>";
+				$icons .= "><img id=\"iconz-$boxID\" src=\"".$WT_IMAGES["zoomin"]."\" alt=\"".WT_I18N::translate('Zoom in/out on this box.')."\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\"/></a>";
 				$icons .= '<div class="itr"><img src="'.$WT_IMAGES['pedigree'].'" alt="" title="" /><div class="popup">'.$personlinks.'</div></div>';
 			}
 		} else {
