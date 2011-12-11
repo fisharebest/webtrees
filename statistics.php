@@ -49,7 +49,6 @@ if (isset($content) && $content==1) {
 	$stats = new WT_Stats($GEDCOM);
 
 	if ($tab==0) { ?>
-		<div id="pagetab0">
 		<fieldset>
 			<legend><?php echo WT_I18N::translate('Total individuals: %s', $stats->totalIndividuals()); ?></legend>
 				<table class="facts_table">
@@ -174,11 +173,8 @@ if (isset($content) && $content==1) {
 					</tr>
 				</table>
 			</fieldset>
-		<br />
-		</div>
 	<?php }
 	if ($tab==1) { ?>
-		<div id="pagetab1">
 		<fieldset>
 			<legend><?php echo WT_I18N::translate('Total families: %s', $stats->totalFamilies()); ?></legend>
 				<b><?php echo WT_I18N::translate('Events'); ?></b>
@@ -319,11 +315,8 @@ if (isset($content) && $content==1) {
 					</tr>
 				</table>
 		</fieldset>
-		<br />
-		</div>
 	<?php }
 	else if ($tab==2) { ?>
-		<div id="pagetab2">
 		<fieldset>
 			<legend><?php echo WT_I18N::translate('Records'), ': ', $stats->totalRecords(); ?></legend>
 				<table class="facts_table">
@@ -408,11 +401,8 @@ if (isset($content) && $content==1) {
 				</tr>
 			</table>
 		</fieldset>
-		<br />
-		</div>
 	<?php }
 	else if ($tab==3) { ?>
-		<div id="pagetab3">
 		<fieldset>
 		<legend><?php echo WT_I18N::translate('Create your own chart'); ?></legend>
 		<?php
@@ -718,8 +708,6 @@ if (isset($content) && $content==1) {
 		$_SESSION['plotnp']=$plotnp;
 		?>
 		</fieldset>
-		<br />
-		</div>
 	<?php }
 } else {
 	$controller->pageHeader();
@@ -750,16 +738,16 @@ if (isset($content) && $content==1) {
 		<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
 		<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab0" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=0"><div title="<?php echo WT_I18N::translate('Individuals'); ?>"><?php echo WT_I18N::translate('Individuals'); ?></div></a>
+				<a href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=0"><div title="<?php echo WT_I18N::translate('Individuals'); ?>"><?php echo WT_I18N::translate('Individuals'); ?></div></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab1" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=1"><div title="<?php echo WT_I18N::translate('Families'); ?>"><?php echo WT_I18N::translate('Families'); ?></div></a>
+				<a href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=1"><div title="<?php echo WT_I18N::translate('Families'); ?>"><?php echo WT_I18N::translate('Families'); ?></div></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab2" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=2"><div title="<?php echo WT_I18N::translate('Others'); ?>"><?php echo WT_I18N::translate('Others'); ?></div></a>
+				<a href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=2"><div title="<?php echo WT_I18N::translate('Others'); ?>"><?php echo WT_I18N::translate('Others'); ?></div></a>
 			</li>
 			<li class="ui-state-default ui-corner-top">
-				<a name="pagetab3" href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=3"><div title="<?php echo WT_I18N::translate('Own charts'); ?>"><?php echo WT_I18N::translate('Own charts'); ?></div></a>
+				<a href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=3"><div title="<?php echo WT_I18N::translate('Own charts'); ?>"><?php echo WT_I18N::translate('Own charts'); ?></div></a>
 			</li>
 		</ul>
 		</div> <!-- tabs -->
