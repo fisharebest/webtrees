@@ -2665,7 +2665,7 @@ case 'stat_gwx':
 	break;
 
 case 'stat_gwz':
-	$title=WT_I18N::translate('Boundaries for Z axis');
+	$title=WT_I18N::translate('Boundaries for date periods');
 	$text=WT_I18N::translate('Select the desired starting year and interval<br /><br />For example, <b>from 1700 interval 50 years</b> describes the following set of date ranges:<div style="padding-left:30px;">before 1700<br />1700 to 1749<br />1750 to 1799<br />1800 to 1849<br />1850 to 1899<br />1900 to 1949<br />1950 to 1999<br />2000 or later</div>');
 	break;
 
