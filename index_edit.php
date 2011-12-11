@@ -396,7 +396,7 @@ if ($action=="configure") {
 		echo WT_I18N::translate('Use these blocks as the default block configuration for all users?'), '<input type="checkbox" name="setdefault" value="1" /><br /><br />';
 	}*/
 
-	echo '<input type="button" value="', WT_I18N::translate('Reset to Default Blocks'), '" onclick="window.location=\'index_edit.php?ctype=$ctype&amp;action=reset&amp;name=', addslashes($name), '\';" />';
+	echo '<input type="button" value="', WT_I18N::translate('Reset to Default Blocks'), '" onclick="window.location=\'index_edit.php?ctype=', $ctype, '&amp;action=reset&amp;name=', addslashes($name), '\';" />';
 	echo '&nbsp;&nbsp;';
 	echo '<input type="button" value="', WT_I18N::translate('Save'), '" onclick="select_options(); save_form();" />';
 	echo '&nbsp;&nbsp;';
