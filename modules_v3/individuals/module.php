@@ -85,25 +85,21 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGES, $UNKNOWN_NN;
+		global $WT_IMAGES, $UNKNOWN_NN, $controller;
 
 		// Fetch a list of the initial letters of all surnames in the database
 		$initials=WT_Query_Name::surnameAlpha(true, false, WT_GED_ID);
 
-		$out = '<script type="text/javascript">
-		<!--
-		var loadedNames = new Array();
+		$controller->addInlineJavaScript('
+			var loadedNames = new Array();
 
-		function isearchQ() {
-			var query = jQuery("#sb_indi_name").attr("value");
-			if (query.length>1) {
-				jQuery("#sb_indi_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=individuals&search="+query);
+			function isearchQ() {
+				var query = jQuery("#sb_indi_name").attr("value");
+				if (query.length>1) {
+					jQuery("#sb_indi_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=individuals&search="+query);
+				}
 			}
-		}
 
-		jQuery(document).ready(function() {
-			jQuery("#sb_indi_name").focus(function() {this.select();});
-			jQuery("#sb_indi_name").blur(function() {if (this.value=="") this.value="'.WT_I18N::translate('Search').'";});
 			var timerid = null;
 			jQuery("#sb_indi_name").keyup(function(e) {
 				if (timerid) window.clearTimeout(timerid);
@@ -141,11 +137,12 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				return false;
 			});
-		});
-		//-->
-		</script>
+		');
+
+		
+		$out='
 		<form method="post" action="module.php?mod='.$this->getName().'&mod_action=ajax" onsubmit="return false;">
-		<input type="text" name="sb_indi_name" id="sb_indi_name" value="'.WT_I18N::translate('Search').'" />
+		<input type="text" name="sb_indi_name" id="sb_indi_name" placeholder="'.WT_I18N::translate('Search').'" />
 		<p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {

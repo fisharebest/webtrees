@@ -58,7 +58,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	// NOTE: Start div out-rand()
 	if (!$person) {
 		echo "<div id=\"out-", rand(), "\" class=\"person_boxNN\" style=\"width: ", $bwidth, "px; height: ", $bheight, "px; overflow: hidden;\">";
-		echo "<br />";
+		echo "<br>";
 		echo "</div>";
 		return false;
 	}
@@ -113,7 +113,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				$num = count($children);
 				$personlinks .= '<dt>';
 				if ((!empty($spouse))||($num>0)) {
-					$personlinks .= '<a href="'.$family->getHtmlUrl().'&amp;show_full=1"><b>'.WT_I18N::translate('Family with spouse').'</b></a><br />';
+					$personlinks .= '<a href="'.$family->getHtmlUrl().'&amp;show_full=1"><b>'.WT_I18N::translate('Family with spouse').'</b></a><br>';
 					if (!empty($spouse)) {
 						$personlinks .= '<a href="'.$spouse->getHtmlUrl().'">';
 						$personlinks .= $spouse->getFullName();
@@ -137,8 +137,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			} else {
 				$icons .= "<a href=\"#\"";
 				$icons .= $mouseAction4;
-				$icons .= "><img id=\"iconz-$boxID\" src=\"".$WT_IMAGES["zoomin"]."\" alt=\"".WT_I18N::translate('Zoom in/out on this box.')."\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\"/></a>";
-				$icons .= '<div class="itr"><img src="'.$WT_IMAGES['pedigree'].'" alt="" title="" /><div class="popup">'.$personlinks.'</div></div>';
+				$icons .= "><img id=\"iconz-$boxID\" src=\"".$WT_IMAGES["zoomin"]."\" alt=\"".WT_I18N::translate('Zoom in/out on this box.')."\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\"></a>";
+				$icons .= '<div class="itr"><img src="'.$WT_IMAGES['pedigree'].'" alt="" title=""><div class="popup">'.$personlinks.'</div></div>';
 			}
 		} else {
 			if ($style==1) {
@@ -185,7 +185,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	if (strlen($addname) > 0) {
 		$tempStyle = $style;
 		if (hasRTLText($addname) && $style=='1') $tempStyle = '2';
-		$addname = "<br /><span id=\"addnamedef-$boxID\" class=\"name$tempStyle\"> ".PrintReady($addname)."</span>";
+		$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name$tempStyle\"> ".PrintReady($addname)."</span>";
 	}
 	if ($SHOW_LDS_AT_GLANCE) {
 		$addname = ' <span class="details$style">'.get_lds_glance($indirec).'</span>' . $addname;
@@ -367,7 +367,7 @@ function contact_links($ged_id=WT_GED_ID) {
 		if ($supportLink) {
 			$returnText .= WT_I18N::translate('For technical support and information contact').' '.$supportLink;
 			if ($contactLink) {
-				$returnText .= '<br />';
+				$returnText .= '<br>';
 			}
 		}
 		if ($contactLink) {
@@ -445,7 +445,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 	// Check if Shared Note and if so enable url link on title -------------------
 	if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
 		$centitl  = str_replace('~~', '', $text);
-		$centitl  = str_replace('<br />', '', $centitl);
+		$centitl  = str_replace('<br>', '', $centitl);
 		if (preg_match('/@N([0-9])+@/', $nrec, $match_nid)) {
 			$nid = str_replace('@', '', $match_nid[0]);
 			if (!$npage) {
@@ -461,7 +461,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 	} else {
 		$text .= get_cont($nlevel, $nrec);
 	}
-	$text = str_replace('~~', '<br />', $text);
+	$text = str_replace('~~', '<br>', $text);
 	$text = trim(expand_urls(stripLRMRLM($text)));
 	$data = '';
 
@@ -483,7 +483,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 			}
 		}
 
-		$brpos = strpos($text, '<br />');
+		$brpos = strpos($text, '<br>');
 		if (!$npage) {
 			$data .= '<div class="fact_NOTE"><span class="label">';
 			if ($brpos !== false) {
@@ -620,7 +620,7 @@ function help_link($help_topic, $module='') {
 	if ($WT_SESSION->show_context_help) {
 		return
 			'<a class="help icon-help-15" href="#" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
-			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="" />' : WT_I18N::translate('?')).
+			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
 			'&nbsp;</a>';
 	} else {
 		return '';
@@ -634,7 +634,7 @@ function wiki_help_link($topic) {
 	if ($WT_SESSION->show_context_help) {
 		return
 			'<a class="help icon-help-15" href="'.WT_WEBTREES_WIKI.$topic.'" target="_new">&nbsp;'.
-			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="" />' : WT_I18N::translate('?')).
+			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
 			'&nbsp;</a>';
 	} else {
 		return '';
@@ -1031,7 +1031,7 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 			$cts = preg_match('/\d LATI (.*)/', $placerec, $match);
 			if ($cts>0) {
 				$map_lati=$match[1];
-				$html.='<br /><span class="label">'.WT_Gedcom_Tag::getLabel('LATI').': </span>'.$map_lati;
+				$html.='<br><span class="label">'.WT_Gedcom_Tag::getLabel('LATI').': </span>'.$map_lati;
 			}
 			$map_long="";
 			$cts = preg_match('/\d LONG (.*)/', $placerec, $match);
@@ -1050,7 +1050,7 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 			if (preg_match('/\d NOTE (.*)/', $placerec, $match)) {
 				ob_start();
 				print_fact_notes($placerec, 3);
-				$html.='<br />'.ob_get_contents();
+				$html.='<br>'.ob_get_contents();
 				ob_end_clean();
 			}
 		}
@@ -1058,10 +1058,10 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 	if ($lds) {
 		if (preg_match('/2 TEMP (.*)/', $factrec, $match)) {
 			$tcode=trim($match[1]);
-			$html.='<br/>'.WT_I18N::translate('LDS Temple').': '.WT_Gedcom_Code_Temp::templeName($match[1]);
+			$html.='<br>'.WT_I18N::translate('LDS Temple').': '.WT_Gedcom_Code_Temp::templeName($match[1]);
 		}
 		if (preg_match('/2 STAT (.*)/', $factrec, $match)) {
-			$html.='<br />'.WT_I18N::translate('Status').': '.WT_Gedcom_Code_Stat::statusName($match[1]);
+			$html.='<br>'.WT_I18N::translate('Status').': '.WT_Gedcom_Code_Stat::statusName($match[1]);
 			if (preg_match('/3 DATE (.*)/', $factrec, $match)) {
 				$date=new WT_Date($match[1]);
 				$html.=', '.WT_Gedcom_Tag::getLabel('STAT:DATE').': '.$date->Display(false);
@@ -1082,7 +1082,7 @@ function format_first_major_fact($key, $majorfacts = array("BIRT", "CHR", "BAPM"
 	foreach ($majorfacts as $indexval => $fact) {
 		$event = $person->getFactByType($fact);
 		if (!is_null($event) && $event->hasDatePlace() && $event->canShow()) {
-			$html.='<br /><em>';
+			$html.='<br><em>';
 			$html .= $event->getLabel();
 			$html.=' '.format_fact_date($event, $person, false, false).format_fact_place($event).'</em>';
 			break;
@@ -1505,7 +1505,7 @@ function DumpString($input) {
 	$haveByte2 = (trim($hex2L)!='');
 
 	// We're ready: now output everything
-	echo '<br /><code><span dir="ltr">';
+	echo '<br><code><span dir="ltr">';
 	while (true) {
 		$lineLength = $lastPos - $pos;
 		if ($lineLength>100) $lineLength = 100;
@@ -1513,7 +1513,7 @@ function DumpString($input) {
 		// Line 1: ruler
 		$thisLine = substr('      '.$pos, -6).' ';
 		$thisLine .= substr('........10........20........30........40........50........60........70........80........90.......100', 0, $lineLength);
-		echo str_replace(' ', '&nbsp;', $thisLine), '<br />';
+		echo str_replace(' ', '&nbsp;', $thisLine), '<br>';
 
 		// Line 2: UTF8 character string
 		$thisLine = '';
@@ -1544,51 +1544,51 @@ function DumpString($input) {
 			//$thisLine .= WT_UTF8_LRM;
 			$thisLine .= $thisChar;
 		}
-		//echo '&nbsp;&nbsp;UTF8&nbsp;', $thisLine, '<br />';
-		echo '&nbsp;&nbsp;UTF8&nbsp;', WT_UTF8_LRO, $thisLine, WT_UTF8_PDF, '<br />';
+		//echo '&nbsp;&nbsp;UTF8&nbsp;', $thisLine, '<br>';
+		echo '&nbsp;&nbsp;UTF8&nbsp;', WT_UTF8_LRO, $thisLine, WT_UTF8_PDF, '<br>';
 
 		// Line 3:  First hexadecimal byte
 		$thisLine = 'Byte 1 ';
 		$thisLine .= substr($hex1L, $pos, $lineLength);
-		$thisLine .= '<br />';
+		$thisLine .= '<br>';
 		$thisLine .= '       ';
 		$thisLine .= substr($hex1R, $pos, $lineLength);
-		$thisLine .= '<br />';
-		echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br />'), $thisLine);
+		$thisLine .= '<br>';
+		echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br>'), $thisLine);
 
 		// Line 4:  Second hexadecimal byte
 		if ($haveByte2) {
 			$thisLine = 'Byte 2 ';
 			$thisLine .= substr($hex2L, $pos, $lineLength);
-			$thisLine .= '<br />';
+			$thisLine .= '<br>';
 			$thisLine .= '       ';
 			$thisLine .= substr($hex2R, $pos, $lineLength);
-			$thisLine .= '<br />';
-			echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br />'), $thisLine);
+			$thisLine .= '<br>';
+			echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br>'), $thisLine);
 		}
 
 		// Line 5:  Third hexadecimal byte
 		if ($haveByte3) {
 			$thisLine = 'Byte 3 ';
 			$thisLine .= substr($hex3L, $pos, $lineLength);
-			$thisLine .= '<br />';
+			$thisLine .= '<br>';
 			$thisLine .= '       ';
 			$thisLine .= substr($hex3R, $pos, $lineLength);
-			$thisLine .= '<br />';
-			echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br />'), $thisLine);
+			$thisLine .= '<br>';
+			echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br>'), $thisLine);
 		}
 
 		// Line 6:  Fourth hexadecimal byte
 		if ($haveByte4) {
 			$thisLine = 'Byte 4 ';
 			$thisLine .= substr($hex4L, $pos, $lineLength);
-			$thisLine .= '<br />';
+			$thisLine .= '<br>';
 			$thisLine .= '       ';
 			$thisLine .= substr($hex4R, $pos, $lineLength);
-			$thisLine .= '<br />';
-			echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br />'), $thisLine);
+			$thisLine .= '<br>';
+			echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br>'), $thisLine);
 		}
-		echo '<br />';
+		echo '<br>';
 		$pos += $lineLength;
 		if ($pos >= $lastPos) break;
 	}

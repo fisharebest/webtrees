@@ -276,7 +276,7 @@ echo '</ul>';
 foreach ($controller->tabs as $tab) {
 	if ($tab->hasTabContent()) {
 		if (!$tab->canLoadAjax()) {
-			echo '<span style="display:block;" id="', $tab->getName(), '">', $tab->getTabContent(), '</span>';
+			echo '<div id="', $tab->getName(), '">', $tab->getTabContent(), '</div>';
 		}
 	}
 }

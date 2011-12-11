@@ -1771,7 +1771,7 @@ class WT_Person extends WT_GedcomRecord {
 			$dir='';
 			break;
 		}
-		$full='<div style="display:inline;" class="NAME"'.$dir.'>'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', htmlspecialchars($full)).'</div>';
+		$full='<span class="NAME"'.$dir.'>'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', htmlspecialchars($full)).'</span>';
 
 		// Some people put preferred names in quotes.  This is wrong - quotes indicate NICK names.
 		if ($UNDERLINE_NAME_QUOTES) {

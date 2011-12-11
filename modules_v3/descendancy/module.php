@@ -84,17 +84,16 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function getSidebarContent() {
 		global $WT_IMAGES, $controller;
 
-		$out = '<script type="text/javascript"><![CDATA[
-		var dloadedNames = new Array();
+		$controller->addInlineJavaScript('
+			var dloadedNames = new Array();
 
-		function dsearchQ() {
-			var query = jQuery("#sb_desc_name").attr("value");
-			if (query.length>1) {
-				jQuery("#sb_desc_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=descendancy&search="+query);
+			function dsearchQ() {
+				var query = jQuery("#sb_desc_name").attr("value");
+				if (query.length>1) {
+					jQuery("#sb_desc_content").load("module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=descendancy&search="+query);
+				}
 			}
-		}
 
-		jQuery(document).ready(function(){
 			jQuery("#sb_desc_name").focus(function(){this.select();});
 			jQuery("#sb_desc_name").blur(function(){if (this.value=="") this.value="'.WT_I18N::translate('Search').'";});
 			var dtimerid = null;
@@ -123,15 +122,15 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				}
 				return false;
 			});
-		});
-		]]></script>
-		<form method="post" action="module.php?mod='.$this->getName().'&mod_action=ajax" onsubmit="return false;">
-		<input type="text" name="sb_desc_name" id="sb_desc_name" value="'.WT_I18N::translate('Search').'" />';
-		$out .= '</form>';
-		$out .= '<div id="sb_desc_content">';
-		$out .= '<ul>'.$this->getPersonLi($controller->record, 1).'</ul>';
-		$out .= '</div>';
-		return $out;
+		');
+
+		return
+			'<form method="post" action="module.php?mod='.$this->getName().'&mod_action=ajax" onsubmit="return false;">'.
+			'<input type="text" name="sb_desc_name" id="sb_desc_name" placeholder="'.WT_I18N::translate('Search').'">'.
+			'</form>'.
+			'<div id="sb_desc_content">'.
+			'<ul>'.$this->getPersonLi($controller->record, 1).'</ul>'.
+			'</div>';
 	}
 
 	public function getPersonLi(WT_Person $person, $generations=0) {
