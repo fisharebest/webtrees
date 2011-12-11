@@ -965,7 +965,7 @@ if (check_media_structure()) {
 		$pdir = '';
 		for ($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i].'/';
 		if ($pdir != '') {
-			$uplink = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;amp;sortby={$sortby}&amp;amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\">";
+			$uplink = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&ampsortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\">";
 			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
 			$uplink .= $pdir;
 			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
@@ -1274,7 +1274,7 @@ if (check_media_structure()) {
 								break;
 							}
 						}
-						echo "</td></tr>";
+						echo '</td></tr>';
 						break;
 					}
 				}
