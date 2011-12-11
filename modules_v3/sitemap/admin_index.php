@@ -189,7 +189,7 @@ if ($action=="generate") {
 	if (isset($_POST["fam_recs"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Family information'), "</td></tr>\n";
 	if (isset($_POST["fam_list"])) echo "<tr><td class=\"optionbox\">", WT_I18N::translate('Family list'), "</td></tr>\n";
 
-	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('GEDCOMs to store in Sitemap:'), "</td></tr>\n";
+	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('Family trees to store in Sitemap'), "</td></tr>\n";
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 		if (isset($_POST["GEDCOM_{$ged_id}"])) echo "<tr><td class=\"optionbox\">", get_gedcom_setting($ged_id, 'title'), "</td></tr>\n";
 	}
@@ -218,9 +218,9 @@ if ($action=="generate") {
 		}
 		echo "\">SitemapIndex.xml</a></td></tr>\n";
 	}
-	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('Place all the files in the root of your webtrees installation.'), "</td></tr>\n";
-	echo "</table>\n";
-	echo "<br />\n";
+	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('Place all the files in the root of your webtrees installation.'), "</td></tr>";
+	echo "</table>";
+	echo "<br />";
 }
 
 if ($action=="") {
@@ -233,11 +233,11 @@ if ($action=="") {
 	<input type="hidden" name="action" value="generate" />
 	<table id="site_map">
 		<tr>
-			<th><?php echo WT_I18N::translate('GEDCOMs to store in Sitemap:'), help_link('SM_GEDCOM_SELECT','sitemap'); ?></th>
+			<th><?php echo WT_I18N::translate('Family trees to store in Sitemap'), help_link('SM_GEDCOM_SELECT','sitemap'); ?></th>
 			<td colspan="3">
 <?php
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-		echo " <input type=\"checkbox\" name=\"GEDCOM_", $ged_id, "\" value=\"", $ged_id, "\" checked>", get_gedcom_setting($ged_id, 'title'), "<br />\n";
+		echo ' <input type="checkbox" name="GEDCOM_', $ged_id, '" value="', $ged_id, '" checked>', get_gedcom_setting($ged_id, 'title'), '<br />';
 	}
 ?>
 			</td>

@@ -63,8 +63,8 @@ case 'SITEMAP':
 	break;
 
 case 'SM_GEDCOM_SELECT':
-	$title=WT_I18N::translate('Select GEDCOMs');
-	$text=WT_I18N::translate('Select the GEDCOMs for which you want to create a Sitemap file. You must select at least one.<br /><br />When the <b>No links to private information</b> option is selected, only links to data that is publicly available will be included.');
+	$title=WT_I18N::translate('Family trees to store in Sitemap');
+	$text=WT_I18N::translate('Select the family trees for which you want to create a Sitemap file. You must select at least one.');
 	break;
 
 case 'SM_ITEM_SELECT':
