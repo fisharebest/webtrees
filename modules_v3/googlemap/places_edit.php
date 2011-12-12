@@ -43,11 +43,11 @@ if (!WT_USER_IS_ADMIN) {
 	echo "<table class=\"facts_table\">\n";
 	echo "<tr><td colspan=\"2\" class=\"facts_value\">", WT_I18N::translate('Page only for Administrators');
 	echo "</td></tr></table>\n";
-	echo "<br /><br /><br />\n";
+	echo "<br><br><br>\n";
 	exit;
 }
-// echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
-echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
+// echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet">';
+echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 ?>
 <script type="text/javascript">
 <!--
@@ -103,7 +103,7 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('');\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>\n";
 	exit;
 }
 
@@ -121,27 +121,27 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('');\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>\n";
 	exit;
 }
 
 // Update placelocation STREETVIEW fields ----------------------------------------------------------
 if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {	
 	echo "Google Street View parameters updated";
-	echo "<br /><br />";
-	echo "LATI = ".$_REQUEST['svlati']."<br />";
-	echo "LONG = ".$_REQUEST['svlong']."<br />";
-	echo "BEAR = ".$_REQUEST['svbear']."<br />";
-	echo "ELEV = ".$_REQUEST['svelev']."<br />";
-	echo "ZOOM = ".$_REQUEST['svzoom']."<br />";
-	echo "<br /><br />";	
+	echo "<br><br>";
+	echo "LATI = ".$_REQUEST['svlati']."<br>";
+	echo "LONG = ".$_REQUEST['svlong']."<br>";
+	echo "BEAR = ".$_REQUEST['svbear']."<br>";
+	echo "ELEV = ".$_REQUEST['svelev']."<br>";
+	echo "ZOOM = ".$_REQUEST['svzoom']."<br>";
+	echo "<br><br>";	
 	$statement=
 		WT_DB::prepare("UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?");		
 	$statement->execute(array(stripLRMRLM($_REQUEST['svlati']), $_REQUEST['svlong'], $_REQUEST['svbear'], $_REQUEST['svelev'], $_REQUEST['svzoom'], $placeid));
 	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>\n";
 	exit;
 }
 
@@ -195,7 +195,7 @@ if ($action=="update") {
 
 	$success = false;
 
-	echo "<b>", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), "</b><br />\n";
+	echo "<b>", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), "</b><br>\n";
 }
 
 if ($action=="add") {
@@ -244,8 +244,8 @@ if ($action=="add") {
 	if (!isset($place_name) || $place_name=="") echo "<b>", WT_I18N::translate('unknown');
 	else echo "<b>", $place_name;
 	if (count($where_am_i)>0)
-		echo ", ", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), "</b><br />\n";
-	echo "</b><br />";
+		echo ", ", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), "</b><br>\n";
+	echo "</b><br>";
 }
 
 echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
@@ -255,16 +255,16 @@ $api="v3";
 ?>
 
 <form method="post" id="editplaces" name="editplaces" action="module.php?mod=googlemap&amp;mod_action=places_edit">
-	<input type="hidden" name="action" value="<?php echo $action; ?>record" />
-	<input type="hidden" name="placeid" value="<?php echo $placeid; ?>" />
-	<input type="hidden" name="level" value="<?php echo $level; ?>" />
-	<input type="hidden" name="icon" value="<?php echo $place_icon; ?>" />
-	<input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>" />
-	<input type="hidden" name="place_long" value="<?php echo $place_long; ?>" />
-	<input type="hidden" name="place_lati" value="<?php echo $place_lati; ?>" />
-	<input type="hidden" name="parent_long" value="<?php echo $parent_long; ?>" />
-	<input type="hidden" name="parent_lati" value="<?php echo $parent_lati; ?>" />
-	<input name="save1" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" /><br />
+	<input type="hidden" name="action" value="<?php echo $action; ?>record">
+	<input type="hidden" name="placeid" value="<?php echo $placeid; ?>">
+	<input type="hidden" name="level" value="<?php echo $level; ?>">
+	<input type="hidden" name="icon" value="<?php echo $place_icon; ?>">
+	<input type="hidden" name="parent_id" value="<?php echo $parent_id; ?>">
+	<input type="hidden" name="place_long" value="<?php echo $place_long; ?>">
+	<input type="hidden" name="place_lati" value="<?php echo $place_lati; ?>">
+	<input type="hidden" name="parent_long" value="<?php echo $parent_long; ?>">
+	<input type="hidden" name="parent_lati" value="<?php echo $parent_lati; ?>">
+	<input name="save1" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
 
 	<table class="facts_table">
 	<tr>
@@ -274,7 +274,7 @@ $api="v3";
 	</tr>
 	<tr>
 		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
-		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input" />
+		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input">
 			<div id="INDI_PLAC_pop" style="display: inline;">
 			<?php print_specialchar_link("NEW_PLACE_NAME", false); ?></div></td><td class="optionbox">
 			<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search globally'); ?></a></label>
@@ -304,24 +304,24 @@ $api="v3";
 			}
 		?>
 		<td class="optionbox" colspan="2">
-			<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_0) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_0; ?>" />
+			<input type="radio" id="new_prec_0" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_0) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_0; ?>">
 			<label for="new_prec_0"><?php echo WT_I18N::translate('Country'); ?></label>
-			<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_1) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_1; ?>" />
+			<input type="radio" id="new_prec_1" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_1) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_1; ?>">
 			<label for="new_prec_1"><?php echo WT_I18N::translate('State'); ?></label>
-			<input type="radio" id="new_prec_2" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_2) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_2; ?>" />
+			<input type="radio" id="new_prec_2" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_2) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_2; ?>">
 			<label for="new_prec_2"><?php echo WT_I18N::translate('City'); ?></label>
-			<input type="radio" id="new_prec_3" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_3) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_3; ?>" />
+			<input type="radio" id="new_prec_3" name="NEW_PRECISION" onchange="updateMap();" <?php if ($precision==$GOOGLEMAP_PRECISION_3) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_3; ?>">
 			<label for="new_prec_3"><?php echo WT_I18N::translate('Neighborhood'); ?></label>
-			<input type="radio" id="new_prec_4" name="NEW_PRECISION" onchange="updateMap();"<?php if ($precision==$GOOGLEMAP_PRECISION_4) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_4; ?>" />
+			<input type="radio" id="new_prec_4" name="NEW_PRECISION" onchange="updateMap();"<?php if ($precision==$GOOGLEMAP_PRECISION_4) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_4; ?>">
 			<label for="new_prec_4"><?php echo WT_I18N::translate('House'); ?></label>
-			<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();"<?php if ($precision>$GOOGLEMAP_PRECISION_4) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_5; ?>" />
+			<input type="radio" id="new_prec_5" name="NEW_PRECISION" onchange="updateMap();"<?php if ($precision>$GOOGLEMAP_PRECISION_4) echo "checked=\"checked\""; ?> value="<?php echo $GOOGLEMAP_PRECISION_5; ?>">
 			<label for="new_prec_5"><?php echo WT_I18N::translate('Max'); ?></label>
 		</td>
 	</tr>
 	<tr>
 		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LATI'); ?></td>
 		<td class="optionbox" colspan="2">
-			<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ WT_I18N::translate('degrees') ?>" value="<?php if ($place_lati != null) echo abs($place_lati); ?>" size="20" onchange="updateMap();" />
+			<input type="text" id="NEW_PLACE_LATI" name="NEW_PLACE_LATI" placeholder="<?php echo /* I18N: Measure of latitude/longitude */ WT_I18N::translate('degrees') ?>" value="<?php if ($place_lati != null) echo abs($place_lati); ?>" size="20" onchange="updateMap();">
 			<select name="LATI_CONTROL" onchange="updateMap();">
 				<option value="PL_N" <?php if ($place_lati > 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('north'); ?></option>
 				<option value="PL_S" <?php if ($place_lati < 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('south'); ?></option>
@@ -331,7 +331,7 @@ $api="v3";
 	<tr>
 		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('LONG'); ?></td>
 		<td class="optionbox" colspan="2">
-			<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo WT_I18N::translate('degrees') ?>" value="<?php if ($place_long != null) echo abs($place_long); ?>" size="20" onchange="updateMap();" />
+			<input type="text" id="NEW_PLACE_LONG" name="NEW_PLACE_LONG" placeholder="<?php echo WT_I18N::translate('degrees') ?>" value="<?php if ($place_long != null) echo abs($place_long); ?>" size="20" onchange="updateMap();">
 			<select name="LONG_CONTROL" onchange="updateMap();">
 				<option value="PL_E" <?php if ($place_long > 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('east'); ?></option>
 				<option value="PL_W" <?php if ($place_long < 0) echo " selected=\"selected\""; echo ">", WT_I18N::translate('west'); ?></option>
@@ -341,7 +341,7 @@ $api="v3";
 	<tr>
 		<td class="descriptionbox"><?php echo WT_I18N::translate('Zoom factor'), help_link('PLE_ZOOM','googlemap'); ?></td>
 		<td class="optionbox" colspan="2">
-			<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();" /></td>
+			<input type="text" id="NEW_ZOOM_FACTOR" name="NEW_ZOOM_FACTOR" value="<?php echo $zoomfactor; ?>" size="20" onchange="updateMap();"></td>
 	</tr>
 	<tr>
 		<td class="descriptionbox"><?php echo WT_I18N::translate('Flag'), help_link('PLE_ICON','googlemap'); ?></td>
@@ -352,14 +352,14 @@ $api="v3";
 				<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>
 <?php   }
 		else { ?>
-				<img alt="<?php echo /* I18N: The emblem of a country or region */ WT_I18N::translate('Flag'); ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon; ?>"/>&nbsp;&nbsp;
+				<img alt="<?php echo /* I18N: The emblem of a country or region */ WT_I18N::translate('Flag'); ?>" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place_icon; ?>">&nbsp;&nbsp;
 				<a href="#" onclick="change_icon();return false;"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;
 				<a href="#" onclick="remove_icon();return false;"><?php echo WT_I18N::translate('Remove flag'); ?></a>
 <?php   } ?>
 			</div></td>
 	</tr>
 	</table>
-	<input name="save2" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" /><br />
+	<input name="save2" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
 </form>
 <?php
-echo "<center><a href=\"#\" onclick=\"edit_close('')\">", WT_I18N::translate('Close Window'), "</a><br /></center>\n";
+echo "<center><a href=\"#\" onclick=\"edit_close('')\">", WT_I18N::translate('Close Window'), "</a><br></center>\n";

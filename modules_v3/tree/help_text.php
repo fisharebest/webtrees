@@ -34,32 +34,32 @@ switch ($help) {
 case 'TV_MODULE':
 	$title = WT_I18N::translate('Interactive tree');
 	$text = WT_I18N::translate('An interactive tree showing all the ancestors and descendants of a person.').
-		'<br /><br />'.
-		WT_I18N::translate('Commands').':'.'<br /><table><tbody>'.
-		'<tr><td><img src="'.$WT_IMAGES['zoomin'].'"'.$imgStyle.' alt="zoomin" /></td><td>'.
+		'<br><br>'.
+		WT_I18N::translate('Commands').':'.'<br><table><tbody>'.
+		'<tr><td><img src="'.$WT_IMAGES['zoomin'].'"'.$imgStyle.' alt="zoomin"></td><td>'.
 		WT_I18N::translate('Zoom in : enlarge texts and person\'s boxes.').'</td></tr>'.
-		'<tr><td><img src="'.$WT_IMAGES['zoomout'].'"'.$imgStyle.' alt="zoomout" /></td><td>'.
+		'<tr><td><img src="'.$WT_IMAGES['zoomout'].'"'.$imgStyle.' alt="zoomout"></td><td>'.
 		WT_I18N::translate('Zoom out : reduce texts and person\'s boxes.').'</td></tr>'.
-		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/zoom0.png"'.$imgStyle.' alt="nozoom" /></td><td>'.
+		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/zoom0.png"'.$imgStyle.' alt="nozoom"></td><td>'.
 		WT_I18N::translate('No zoom.').'</td></tr>'.
-		'<tr><td><img src="'.$WT_IMAGES['ldarrow'].'"'.$imgStyle.'alt="alignLeft" /></td><td>'.
+		'<tr><td><img src="'.$WT_IMAGES['ldarrow'].'"'.$imgStyle.'alt="alignLeft"></td><td>'.
 		WT_I18N::translate('Align on top left corner. Useful before printing.').'</td></tr>'.
-		'<tr><td><img src="'.$WT_IMAGES['patriarch'].'"'.$imgStyle.' alt="center" /></td><td>'.
+		'<tr><td><img src="'.$WT_IMAGES['patriarch'].'"'.$imgStyle.' alt="center"></td><td>'.
 		WT_I18N::translate('Center on the root person.').'</td></tr>'.
-		'<tr><td><img src="'.$WT_IMAGES['rdarrow'].'"'.$imgStyle.' alt="alignRight" /></td><td>'.
+		'<tr><td><img src="'.$WT_IMAGES['rdarrow'].'"'.$imgStyle.' alt="alignRight"></td><td>'.
 		WT_I18N::translate('Align on top right corner.').'</td></tr>'.
-		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/dates.png"'.$imgStyle.' alt="hide dates" /></td><td>'.
+		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/dates.png"'.$imgStyle.' alt="hide dates"></td><td>'.
 		WT_I18N::translate('Hide/show dates on small boxes.').'</td></tr>'.
-		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/compact.png"'.$imgStyle.' alt="c/e" /></td><td>'.
+		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/compact.png"'.$imgStyle.' alt="c/e"></td><td>'.
 		WT_I18N::translate('Compact tree / fixed boxes : switch beetween fixed-width boxes and compact tree. <i>fixed-width</i> display one generation\'s boxes in one column, and <i>compact</i> display more persons on the same area.').'</td></tr>'.
 		// function not enabled yet
-		// '<tr><td><img src="'.$WT_IMAGES['media'].'"'.$imgStyle.' alt="open" /></td><td>'.
+		// '<tr><td><img src="'.$WT_IMAGES['media'].'"'.$imgStyle.' alt="open"></td><td>'.
 		// WT_I18N::translate('Open details for all displayed boxes. Could be long.').'</td></tr>'.
-		'<tr><td><img src="'.$WT_IMAGES["fambook"].'"'.$imgStyle.' alt="close" /></td><td>'.
+		'<tr><td><img src="'.$WT_IMAGES["fambook"].'"'.$imgStyle.' alt="close"></td><td>'.
 		WT_I18N::translate('Close all opened boxes.').'</td></tr>'.			
-		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/print.png"'.$imgStyle.' alt="print" /></td><td>'.
+		'<tr><td><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'/tree/images/print.png"'.$imgStyle.' alt="print"></td><td>'.
 		WT_I18N::translate('Download full resolution medias instead of thumbnails for opened person\'s boxes and open the print dialog when done.').'</td></tr>'.
-		'<tr><td><img src="'.$WT_IMAGES["sfamily"].'"'.$imgStyle.' alt="partners" /></td><td>'.
+		'<tr><td><img src="'.$WT_IMAGES["sfamily"].'"'.$imgStyle.' alt="partners"></td><td>'.
 		WT_I18N::translate('Show / hide multiples life partners or spouses.').'</td></tr>'.
 		'</tbody></table>'.
 		WT_I18N::translate('

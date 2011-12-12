@@ -52,7 +52,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="82px" alt=""></img>';
 			echo '</td>';
 			echo '<td class="description_box nowrap" valign="top" colspan="3">';
-			echo '<center><br /><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
+			echo '<center><br><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
 			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_file']), '</p>';
 			echo '</td>';
 			echo '</tr>';
@@ -64,7 +64,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
 			echo '</td>';
 			echo '<td class="description_box nowrap" valign="top" colspan="3">';
-			echo '<center><br /><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
+			echo '<center><br><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
 			echo '<p class="ui-state-error">', WT_I18N::translate('The file “%s” does not exist.', $rowm['m_file']), '</p>';
 			echo '</td>';
 			echo '</tr>';
@@ -198,9 +198,9 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		// Continue menu construction
 		// If media file is missing from 'media' directory, but is referenced in Gedcom
 		if (!media_exists($rowm['m_file']) && !media_exists($mainMedia)) {
-			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\" />" . WT_I18N::translate('Edit')." (". $rowm['m_media'].")", 'right');
+			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\">" . WT_I18N::translate('Edit')." (". $rowm['m_media'].")", 'right');
 		} else {
-			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\" />" . $mtitle, 'right');
+			$menu->addLabel("<img src=\"{$thumbnail}\" style=\"display:none;\" alt=\"\" title=\"\">" . $mtitle, 'right');
 		}
 		// Next line removed to avoid gallery thumbnail duplication
 		// $menu['link'] = mediaInfo['url'];
@@ -218,7 +218,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				$sonclick  = 'TipTog(';
 				// Contents of Notes
 				$sonclick .= "'";
-				$sonclick .= "&lt;font color=#008800>&lt;b>" . WT_I18N::translate('Notes') . ":&lt;/b>&lt;/font>&lt;br />";
+				$sonclick .= "&lt;font color=#008800>&lt;b>" . WT_I18N::translate('Notes') . ":&lt;/b>&lt;/font>&lt;br>";
 				$sonclick .= $notes;
 				$sonclick .= "'";
 				// Notes Tooltip Parameters
@@ -325,7 +325,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo "<img src=\"{$mediaInfo['thumb']}\" border=\"0\" height=\"{$height}\"" ;
 
 			// print browser tooltips associated with image ----------------------------------------
-			echo " alt=\"\" title=\"" . Printready(strip_tags($mediaTitle)) . "\"  />";
+			echo " alt=\"\" title=\"" . Printready(strip_tags($mediaTitle)) . "\">";
 
 			// Close anchor --------------------------------------------------------------
 			if ($mainFileExists) {
@@ -362,7 +362,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	//close off the table
 	echo '</table>';
 	$media_data = $rowm['m_media'];
-	echo '<input type="hidden" name="order1[', $media_data, ']" value="', $sort_i, '" />';
+	echo '<input type="hidden" name="order1[', $media_data, ']" value="', $sort_i, '">';
 	$sort_i++;
 	echo '</li>';
 	return true;

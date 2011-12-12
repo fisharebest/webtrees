@@ -209,7 +209,7 @@ class WT_Menu {
 		$link .= "\">";
 		if ($this->icon !== null) {
 			$tempTitle = str_replace("\"", '', $this->label);
-			$MenuIcon = "<img id=\"menu{$id}_icon\" src=\"{$this->icon}\" class=\"icon\" alt=\"{$tempTitle}\" title=\"{$tempTitle}\" />";
+			$MenuIcon = "<img id=\"menu{$id}_icon\" src=\"{$this->icon}\" class=\"icon\" alt=\"{$tempTitle}\" title=\"{$tempTitle}\">";
 			switch ($this->labelpos) {
 			case "right":
 				$output .= $link;
@@ -226,14 +226,14 @@ class WT_Menu {
 			case "down":
 				$output .= $link;
 				$output .= $MenuIcon;
-				$output .= "<br />";
+				$output .= "<br>";
 				$output .= $this->label;
 				$output .= "</a>";
 				break;
 			case "up":
 				$output .= $link;
 				$output .= $this->label;
-				$output .= "<br />";
+				$output .= "<br>";
 				$output .= $MenuIcon;
 				$output .= "</a>";
 				break;

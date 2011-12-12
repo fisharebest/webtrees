@@ -47,12 +47,12 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$class=$this->getName().'_block';
 		$title=get_gedcom_setting(WT_GED_ID, 'title');
 		$content = "<div class=\"center\">";
-		$content .= "<br />".format_timestamp(client_time())."<br />";
+		$content .= "<br>".format_timestamp(client_time())."<br>";
 		if ($SHOW_COUNTER)
-			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount."<br />";
-		$content .=  "<br />";
+			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount."<br>";
+		$content .=  "<br>";
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .=  "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".WT_I18N::translate('Change the blocks on this page')."</a><br />";
+			$content .=  "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".WT_I18N::translate('Change the blocks on this page')."</a><br>";
 		}
 		$content .=  "</div>";
 

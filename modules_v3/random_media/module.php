@@ -81,7 +81,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			'video'      =>get_block_setting($block_id, 'filter_video', false),
 		);
 		if (WT_DEBUG) {
-			echo "<br />";print_r($filters);echo "<br />\n";
+			echo "<br>";print_r($filters);echo "<br>\n";
 		}
 		if ($cfg) {
 			foreach (array('filter', 'controls', 'start', 'filter_avi', 'filter_bmp', 'filter_gif', 'filter_jpeg', 'filter_mp3', 'filter_ole', 'filter_pcx', 'filter_pdf', 'filter_png', 'filter_tiff', 'filter_wav', 'filter_audio', 'filter_book', 'filter_card', 'filter_certificate', 'filter_coat', 'filter_document', 'filter_electronic', 'filter_fiche', 'filter_film', 'filter_magazine', 'filter_manuscript', 'filter_map', 'filter_newspaper', 'filter_other', 'filter_painting', 'filter_photo', 'filter_tombstone', 'filter_video', 'block') as $name) {
@@ -105,29 +105,29 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				$value = array_rand($medialist);
 				$mediaobject = WT_Media::getInstance($medialist[$value]["XREF"]);
 				if (WT_DEBUG) {
-					echo "<br />";print_r($medialist[$value]);echo "<br />\n";
+					echo "<br>";print_r($medialist[$value]);echo "<br>\n";
 					$mediaobject->fileExists('main');
 					$mediaobject->fileExists('thumb');
-					echo "<br />";print_r($mediaobject);echo "<br />\n";
-					echo "Trying ".$mediaobject->getXref()."<br />\n";
+					echo "<br>";print_r($mediaobject);echo "<br>\n";
+					echo "Trying ".$mediaobject->getXref()."<br>\n";
 				}
 				$links = $medialist[$value]["LINKS"];
 				$disp = ($mediaobject->fileExists('main') || $mediaobject->isExternal())&& $medialist[$value]["LINKED"] && $medialist[$value]["CHANGE"]!="delete" ;
 				if (WT_DEBUG && !$disp && !$error) {
 					$error = true;
-					echo "<span class=\"error\">".$mediaobject->getXref()." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br />";
+					echo "<span class=\"error\">".$mediaobject->getXref()." File does not exist, or is not linked to anyone, or is marked for deletion.</span><br>";
 				}
 
 				$disp = $disp && $mediaobject->canDisplayDetails();
 				if (WT_DEBUG && !$disp && !$error) {
 					$error = true;
-					echo "<span class=\"error\">".$mediaobject->getXref()." Failed to pass privacy</span><br />";
+					echo "<span class=\"error\">".$mediaobject->getXref()." Failed to pass privacy</span><br>";
 				}
 
 				if ($block && !$mediaobject->isExternal()) {
 					$disp = $disp && $mediaobject->fileExists('thumb'); // external files are ok w/o thumb
 				}
-				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." thumbnail file could not be found</span><br />";}
+				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." thumbnail file could not be found</span><br>";}
 
 				$mediaformat=strtolower($mediaobject->getMediaFormat());
 				if ($mediaformat) {
@@ -141,7 +141,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 						$disp=false;
 					}
 				}
-				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed Format or Type filters</span><br />";}
+				if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed Format or Type filters</span><br>";}
 
 				if ($disp && count($links) != 0) {
 					if ($disp && $filter!="all") {
@@ -156,7 +156,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 								$objectRefLevel = $match2[1];
 								if ($filter=="indi" && $objectRefLevel!="1") $disp = false;
 								if ($filter=="event" && $objectRefLevel=="1") $disp = false;
-								if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed to pass config filter</span><br />";}
+								if (WT_DEBUG && !$disp && !$error) {$error = true; echo "<span class=\"error\">".$mediaobject->getXref()." failed to pass config filter</span><br>";}
 							}
 							else $disp = false;
 						}
@@ -168,7 +168,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 				//-- otherwise remove the private media item from the list
 				else {
-					if (WT_DEBUG) echo "<span class=\"error\">".$mediaobject->getXref()." Will not be shown</span><br />";
+					if (WT_DEBUG) echo "<span class=\"error\">".$mediaobject->getXref()." Will not be shown</span><br>";
 					unset($medialist[$value]);
 				}
 				//-- if there are no more media items, then try to get some more
@@ -184,7 +184,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content = '';
 			if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
 				$title .= "<a href=\"#\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGES['admin']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure').'" /></a>';
+				$title .= "<img class=\"adminicon\" src=\"{$WT_IMAGES['admin']}\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure').'"></a>';
 			}
 			$title .= $this->getTitle();
 			$content = "<div id=\"random_picture_container$block_id\">";
@@ -194,12 +194,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				} else {
 					$image = "rarrow";
 				}
-				$linkNextImage = "<a href=\"#\" onclick=\"jQuery('#block_{$block_id}').load('index.php?ctype={$ctype}&amp;action=ajax&amp;block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']}\" border=\"0\" alt=\"".WT_I18N::translate('Next image')."\" title=\"".WT_I18N::translate('Next image')."\" /></a>";
+				$linkNextImage = "<a href=\"#\" onclick=\"jQuery('#block_{$block_id}').load('index.php?ctype={$ctype}&amp;action=ajax&amp;block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']}\" border=\"0\" alt=\"".WT_I18N::translate('Next image')."\" title=\"".WT_I18N::translate('Next image')."\"></a>";
 
-				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br />";
+				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br>";
 				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
 				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\">";
-				if (isset($WT_IMAGES[$image])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGES[$image]}\" border=\"0\" alt=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop')."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop')."\" />";
+				if (isset($WT_IMAGES[$image])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGES[$image]}\" border=\"0\" alt=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop')."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop')."\">";
 				else $content .= WT_I18N::translate('Play')."/".WT_I18N::translate('Stop');
 				$content .= "</a>";
 				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
@@ -242,14 +242,14 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= " >";
 			$content .= $mediaobject->displayMedia(array('align'=>'none', 'uselightbox'=>false, 'uselightbox_fallback'=>false));
 
-			if ($block) $content .= '<br />';
+			if ($block) $content .= '<br>';
 			else $content .= '</td><td class="details2">';
-			$content .= '<a href="'.$mediaobject->getHtmlUrl().'"><b>'. $mediaobject->getFullName() .'</b></a><br />';
+			$content .= '<a href="'.$mediaobject->getHtmlUrl().'"><b>'. $mediaobject->getFullName() .'</b></a><br>';
 
 			ob_start();
 			$content .= $mediaobject->printLinkedRecords('normal');
 			$content .= ob_get_clean();
-			$content .= "<br /><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
+			$content .= "<br><div class=\"indent" . ($TEXT_DIRECTION=="rtl"?"_rtl":"") . "\">";
 			$content .= print_fact_notes($mediaobject->getGedcomRecord(), "1", false, true);
 			$content .= "</div>";
 			$content .= "</td></tr></table>";
@@ -368,48 +368,48 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				<tr>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_avi"
-				<?php if ($filters['avi']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;avi&nbsp;&nbsp;</td>
+				<?php if ($filters['avi']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;avi&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_bmp"
-				<?php if ($filters['bmp']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;bmp&nbsp;&nbsp;</td>
+				<?php if ($filters['bmp']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;bmp&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_gif"
-				<?php if ($filters['gif']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;gif&nbsp;&nbsp;</td>
+				<?php if ($filters['gif']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;gif&nbsp;&nbsp;</td>
 				</tr>
 		<tr>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_jpeg"
-				<?php if ($filters['jpeg']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;jpeg&nbsp;&nbsp;</td>
+				<?php if ($filters['jpeg']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;jpeg&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_mp3"
-				<?php if ($filters['mp3']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;mp3&nbsp;&nbsp;</td>
+				<?php if ($filters['mp3']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;mp3&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_ole"
-				<?php if ($filters['ole']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;ole&nbsp;&nbsp;</td>
+				<?php if ($filters['ole']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;ole&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_pcx"
-				<?php if ($filters['pcx']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;pcx&nbsp;&nbsp;</td>
+				<?php if ($filters['pcx']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;pcx&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_pdf"
-				<?php if ($filters['pdf']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;pdf&nbsp;&nbsp;</td>
+				<?php if ($filters['pdf']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;pdf&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_png"
-				<?php if ($filters['png']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;png&nbsp;&nbsp;</td>
+				<?php if ($filters['png']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;png&nbsp;&nbsp;</td>
 		</tr>
 		<tr>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_tiff"
-				<?php if ($filters['tiff']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;tiff&nbsp;&nbsp;</td>
+				<?php if ($filters['tiff']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;tiff&nbsp;&nbsp;</td>
 			<td class="width33"><input type="checkbox" value="yes"
 				name="filter_wav"
-				<?php if ($filters['wav']) echo " checked=\"checked\""; ?> />&nbsp;&nbsp;wav&nbsp;&nbsp;</td>
+				<?php if ($filters['wav']) echo " checked=\"checked\""; ?>>&nbsp;&nbsp;wav&nbsp;&nbsp;</td>
 					<td class="width33">&nbsp;</td>
 					<td class="width33">&nbsp;</td>
 				</tr>
 			</table>
-			<br />
+			<br>
 			<center><b><?php echo WT_Gedcom_Tag::getLabel('TYPE'); ?></b></center>
 			<table class="width100">
 				<tr>
@@ -424,7 +424,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 					}
 					echo "<td class=\"width33\"><input type=\"checkbox\" value=\"yes\" name=\"filter_".$typeName."\"";
 					if ($filters[$typeName]) echo " checked=\"checked\"";
-					echo " />&nbsp;&nbsp;".$typeValue."&nbsp;&nbsp;</td>";
+					echo ">&nbsp;&nbsp;".$typeValue."&nbsp;&nbsp;</td>";
 				}
 				?>
 				</tr>

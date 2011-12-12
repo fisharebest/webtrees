@@ -60,7 +60,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
-			$title="<a href=\"#\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\"><img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
+			$title="<a href=\"#\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\"><img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\"></a>";
 		} else {
 			$title='';
 		}
@@ -170,7 +170,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= $ind->getSexImage();
 					$addname=$ind->getAddName();
 					if ($addname) {
-						$content .= '<br /><a href="'.$url.'">'.$addname.'</a>';
+						$content .= '<br><a href="'.$url.'">'.$addname.'</a>';
 					}
 					$content .= '</td>';
 					$content .= '<td>'.$ind->getSortName().'</td>';
@@ -238,7 +238,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Number of days to show');
 		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="days" size="2" value="'.$days.'" />';
+		echo '<input type="text" name="days" size="2" value="'.$days.'">';
 		echo ' <em>', WT_I18N::plural('maximum %d day', 'maximum %d days', 30, 30) ,'</em>';
 		echo '</td></tr>';
 

@@ -266,18 +266,18 @@ case 'editraw':
 	$tmp=new WT_GedcomRecord($gedrec);
 	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 
-	echo '<br /><b>', WT_I18N::translate('Edit raw GEDCOM record'), '</b>', help_link('edit_edit_raw');
+	echo '<br><b>', WT_I18N::translate('Edit raw GEDCOM record'), '</b>', help_link('edit_edit_raw');
 	echo '<form method="post" action="edit_interface.php">';
-	echo '<input type="hidden" name="action" value="updateraw" />';
-	echo '<input type="hidden" name="pid" value="', $pid, '" />';
-	echo '<input id="savebutton2" type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
+	echo '<input type="hidden" name="action" value="updateraw">';
+	echo '<input type="hidden" name="pid" value="', $pid, '">';
+	echo '<input id="savebutton2" type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 	// Remove the first line of the gedrec - things go wrong when users
 	// change either the TYPE or XREF
 	// Notes are special - they may contain data on the first line
 	$gedrec=preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
 	list($gedrec1, $gedrec2)=explode("\n", $gedrec, 2);
-	echo '<textarea name="newgedrec1" rows="1"  cols="80" dir="ltr" readonly="readonly">', $gedrec1, '</textarea><br />';
-	echo '<textarea name="newgedrec2" rows="20" cols="80" dir="ltr">', $gedrec2, "</textarea><br />";
+	echo '<textarea name="newgedrec1" rows="1"  cols="80" dir="ltr" readonly="readonly">', $gedrec1, '</textarea><br>';
+	echo '<textarea name="newgedrec2" rows="20" cols="80" dir="ltr">', $gedrec2, "</textarea><br>";
 	if (WT_USER_IS_ADMIN) {
 		echo '<table class="facts_table">';
 		echo '<tr><td class="descriptionbox  wrap width25">';
@@ -286,7 +286,7 @@ case 'editraw':
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
-		echo ' />';
+		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
@@ -294,8 +294,8 @@ case 'editraw':
 		echo '</table>';
 	}
 	print_specialchar_link("newgedrec", true);
-	echo '<br />';
-	echo '<input id="savebutton" type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
+	echo '<br>';
+	echo '<input id="savebutton" type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 	echo '</form>';
 	echo WT_JS_START;
 	echo "textbox = document.getElementById('newgedrec');";
@@ -314,11 +314,11 @@ case 'edit':
 
 	init_calendar_popup();
 	echo '<form name="editform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="action" value="update" />';
-	echo '<input type="hidden" name="linenum" value="', $linenum, '" />';
-	echo '<input type="hidden" name="pid" value="', $pid, '" />';
-	echo '<input type="hidden" id="pids_array_edit" name="pids_array_edit" value="no_array" />';
-	echo '<br /><input type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
+	echo '<input type="hidden" name="action" value="update">';
+	echo '<input type="hidden" name="linenum" value="', $linenum, '">';
+	echo '<input type="hidden" name="pid" value="', $pid, '">';
+	echo '<input type="hidden" id="pids_array_edit" name="pids_array_edit" value="no_array">';
+	echo '<br><input type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 
 	echo "<table class=\"facts_table\">";
 	$level1type = create_edit_form($gedrec, $linenum, $level0type);
@@ -329,7 +329,7 @@ case 'edit':
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
-		echo ' />';
+		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
@@ -378,7 +378,7 @@ case 'edit':
 		break;
 	}
 
-	echo '<br /><input type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
+	echo '<br><input type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 	echo '</form>';
 	break;
 //------------------------------------------------------------------------------
@@ -388,11 +388,11 @@ case 'add':
 	//
 	init_calendar_popup();
 	echo '<form name="addform" method="post" action="edit_interface.php" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="action" value="update" />';
-	echo '<input type="hidden" name="linenum" value="new" />';
-	echo '<input type="hidden" name="pid" value="', $pid, '" />';
-	echo '<input type="hidden" id="pids_array_add" name="pids_array_add" value="no_array" />';
-	echo '<br /><input type="submit" value="', WT_I18N::translate('Add'), '" /><br />';
+	echo '<input type="hidden" name="action" value="update">';
+	echo '<input type="hidden" name="linenum" value="new">';
+	echo '<input type="hidden" name="pid" value="', $pid, '">';
+	echo '<input type="hidden" id="pids_array_add" name="pids_array_add" value="no_array">';
+	echo '<br><input type="submit" value="', WT_I18N::translate('Add'), '"><br>';
 	echo '<table class="facts_table">';
 
 	create_add_form($fact);
@@ -404,7 +404,7 @@ case 'add':
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
-		echo ' />';
+		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
@@ -432,7 +432,7 @@ case 'add':
 		}
 	}
 
-	echo '<br /><input type="submit" value="', WT_I18N::translate('Add'), '" /><br />';
+	echo '<br><input type="submit" value="', WT_I18N::translate('Add'), '"><br>';
 	echo '</form>';
 // }
 	break;
@@ -455,12 +455,12 @@ case 'addopfchild':
 //------------------------------------------------------------------------------
 case 'addfamlink':
 	echo '<form method="post" name="addchildform" action="edit_interface.php">';
-	echo '<input type="hidden" name="action" value="linkfamaction" />';
-	echo '<input type="hidden" name="pid" value="', $pid, '" />';
-	echo '<input type="hidden" name="famtag" value="', $famtag, '" />';
+	echo '<input type="hidden" name="action" value="linkfamaction">';
+	echo '<input type="hidden" name="pid" value="', $pid, '">';
+	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
 	echo '<table class="facts_table">';
 	echo '<tr><td class="facts_label">', WT_I18N::translate('Family'), '</td>';
-	echo '<td class="facts_value"><input type="text" id="famid" name="famid" size="8" />';
+	echo '<td class="facts_value"><input type="text" id="famid" name="famid" size="8">';
 	print_findfamily_link('famid');
 	echo '</td></tr>';
 	if ($famtag=='CHIL') {
@@ -479,24 +479,24 @@ case 'addfamlink':
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
-		echo ' />';
+		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
 	}
 	echo '</table>';
-	echo '<input type="submit" value="', WT_I18N::translate('Set link'), '" /><br />';
+	echo '<input type="submit" value="', WT_I18N::translate('Set link'), '"><br>';
 	echo '</form>';
 	break;
 //------------------------------------------------------------------------------
 case 'linkspouse':
 	init_calendar_popup();
 	echo '<form method="post" name="addchildform" action="edit_interface.php">';
-	echo '<input type="hidden" name="action" value="linkspouseaction" />';
-	echo '<input type="hidden" name="pid" value="', $pid, '" />';
-	echo '<input type="hidden" name="famid" value="new" />';
-	echo '<input type="hidden" name="famtag" value="', $famtag, '" />';
+	echo '<input type="hidden" name="action" value="linkspouseaction">';
+	echo '<input type="hidden" name="pid" value="', $pid, '">';
+	echo '<input type="hidden" name="famid" value="new">';
+	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
 	echo '<table class="facts_table">';
 	echo '<tr><td class="facts_label">';
 	if ($famtag=="WIFE") {
@@ -505,7 +505,7 @@ case 'linkspouse':
 		echo WT_I18N::translate('Husband');
 	}
 	echo '</td>';
-	echo '<td class="facts_value"><input id="spouseid" type="text" name="spid" size="8" /> ';
+	echo '<td class="facts_value"><input id="spouseid" type="text" name="spid" size="8"> ';
 	print_findindi_link("spouseid", "");
 	echo '</td></tr>';
 	add_simple_tag("0 MARR Y");
@@ -518,7 +518,7 @@ case 'linkspouse':
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
-		echo ' />';
+		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
@@ -533,7 +533,7 @@ case 'linkspouse':
 	// allow to add godfather and godmother for CHR fact or best man and bridesmaid  for MARR fact in one window
 	print_add_layer("ASSO2");
 	print_add_layer("RESN");
-	echo '<input type="submit" value="', WT_I18N::translate('Set link'), '" /><br />';
+	echo '<input type="submit" value="', WT_I18N::translate('Set link'), '"><br>';
 	echo '</form>';
 	break;
 //------------------------------------------------------------------------------
@@ -638,29 +638,29 @@ case 'addnewsource':
 	?>
 	<b><?php echo WT_I18N::translate('Create a new source'); ?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-		<input type="hidden" name="action" value="addsourceaction" />
-		<input type="hidden" name="pid" value="newsour" />
+		<input type="hidden" name="action" value="addsourceaction">
+		<input type="hidden" name="pid" value="newsour">
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ABBR'), help_link('ABBR'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255" /> <?php print_specialchar_link("ABBR", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php print_specialchar_link("ABBR", false); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('TITL'), help_link('TITL'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="TITL" id="TITL" value="" size="60" /> <?php print_specialchar_link("TITL", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="TITL" id="TITL" value="" size="60"> <?php print_specialchar_link("TITL", false); ?></td></tr>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60" /> <?php print_specialchar_link("_HEB", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60"> <?php print_specialchar_link("_HEB", false); ?></td></tr>
 			<?php } ?>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN")!==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
-			<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60" /> <?php print_specialchar_link("ROMN", false); ?></td></tr>
+			<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60"> <?php print_specialchar_link("ROMN", false); ?></td></tr>
 			<?php } ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('AUTH'), help_link('AUTH'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="AUTH" id="AUTH" value="" size="40" maxlength="255" /> <?php print_specialchar_link("AUTH", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="AUTH" id="AUTH" value="" size="40" maxlength="255"> <?php print_specialchar_link("AUTH", false); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PUBL'), help_link('PUBL'); ?></td>
-			<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5" cols="60"></textarea><br /><?php print_specialchar_link("PUBL", true); ?></td></tr>
+			<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5" cols="60"></textarea><br><?php print_specialchar_link("PUBL", true); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('REPO'), help_link('REPO'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="REPO" id="REPO" value="" size="10" /> <?php print_findrepository_link("REPO"); echo help_link('REPO'); print_addnewrepository_link("REPO"); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="REPO" id="REPO" value="" size="10"> <?php print_findrepository_link("REPO"); echo help_link('REPO'); print_addnewrepository_link("REPO"); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('CALN'), help_link('CALN'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value="" /></td></tr>
+			<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value=""></td></tr>
 		<?php
 			if (WT_USER_IS_ADMIN) {
 				echo '<tr><td class="descriptionbox wrap width25">';
@@ -669,7 +669,7 @@ case 'addnewsource':
 				if ($NO_UPDATE_CHAN) {
 					echo ' checked="checked"';
 				} 
-				echo ' />';
+				echo '>';
 				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 				echo '</td></tr>';
 			}
@@ -703,8 +703,8 @@ case 'addnewsource':
 			?>
 			</table>
 			</div>
-		<br /><br />
-		<input type="submit" value="<?php echo WT_I18N::translate('Create a new source'); ?>" />
+		<br><br>
+		<input type="submit" value="<?php echo WT_I18N::translate('Create a new source'); ?>">
 	</form>
 	<?php
 	break;
@@ -751,7 +751,7 @@ case 'addsourceaction':
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
 	$link = "source.php?sid=$xref";
 	if ($xref) {
-		echo '<br /><br />', WT_I18N::translate('New source created successfully.'), '<br /><br />';
+		echo '<br><br>', WT_I18N::translate('New source created successfully.'), '<br><br>';
 		echo "<a href=\"#\" onclick=\"openerpasteid('$xref'); return false;\">", WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$xref</b></a>";
 	}
 	break;
@@ -761,9 +761,9 @@ case 'addnewnote':
 	?>
 	<b><?php echo WT_I18N::translate('Create a new Shared Note'); ?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-		<input type="hidden" name="action" value="addnoteaction" />
-		<input type="hidden" name="noteid" value="newnote" />
-		<!-- <input type="hidden" name="pid" value="$pid" /> -->
+		<input type="hidden" name="action" value="addnoteaction">
+		<input type="hidden" name="noteid" value="newnote">
+		<!-- <input type="hidden" name="pid" value="$pid"> -->
 		<?php
 			echo '<table class="facts_table">';
 				echo '<tr>';
@@ -781,13 +781,13 @@ case 'addnewnote':
 				if ($NO_UPDATE_CHAN) {
 					echo ' checked="checked"';
 				} 
-				echo ' />';
+				echo '>';
 				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 				echo "</td></tr>";
 			}
 			echo '</table>';
-			echo '<br /><br />';
-			echo '<input type="submit" value="', WT_I18N::translate('Save'), '" />';
+			echo '<br><br>';
+			echo '<input type="submit" value="', WT_I18N::translate('Save'), '">';
 		?>
 	</form>
 	<?php
@@ -852,10 +852,10 @@ case 'addnoteaction':
 	$link = "note.php?nid=$xref";
 
 	if ($xref != "none") {
-		echo "<br /><br />".WT_I18N::translate('New Shared Note created successfully.')." (".$xref.")<br /><br />";
+		echo "<br><br>".WT_I18N::translate('New Shared Note created successfully.')." (".$xref.")<br><br>";
 		echo "<a href=\"#\" onclick=\"openerpasteid('$xref'); return false;\">".WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record ')." <b>$xref</b></a>";
-		echo "<br /><br /><br /><br />";
-		echo "<br /><br /><br /><br />";
+		echo "<br><br><br><br>";
+		echo "<br><br><br><br>";
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -880,10 +880,10 @@ case 'addnewnote_assisted':
 			}
 		?>
 		<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-			<input type="hidden" name="action" value="addnoteaction_assisted" />
-			<input type="hidden" name="noteid" value="newnote" />
-			<input id="pid_array" type="hidden" name="pid_array" value="none" />
-			<input id="pid" type="hidden" name="pid" value=<?php echo $pid; ?> />
+			<input type="hidden" name="action" value="addnoteaction_assisted">
+			<input type="hidden" name="noteid" value="newnote">
+			<input id="pid_array" type="hidden" name="pid_array" value="none">
+			<input id="pid" type="hidden" name="pid" value=<?php echo $pid; ?>>
 			<?php
 				require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/CENS_ctrl.php';
 			?>
@@ -904,8 +904,8 @@ case 'addmedia_links':
 	?>
 	<!-- <form method="post" action="edit_interface.php" onsubmit="return check_form(this);"> -->
 	<form method="post" action="edit_interface.php?pid=<?php echo $pid; ?>" onsubmit="findindi()">
-		<input type="hidden" name="action" value="addmedia_links" />
-		<input type="hidden" name="noteid" value="newnote" />
+		<input type="hidden" name="action" value="addmedia_links">
+		<input type="hidden" name="noteid" value="newnote">
 		<?php
 		require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/MEDIA_ctrl.php';
 		?>
@@ -921,9 +921,9 @@ case 'editsource':
 	
 	init_calendar_popup();
 	echo '<form method="post" action="edit_interface.php" enctype="multipart/form-data">';
-	echo '<input type="hidden" name="action" value="update" />';
-	echo '<input type="hidden" name="pid" value="', $pid, '" />';
-	echo '<br /><input type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
+	echo '<input type="hidden" name="action" value="update">';
+	echo '<input type="hidden" name="pid" value="', $pid, '">';
+	echo '<br><input type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 
 	echo '<table class="facts_table">';
 	$gedlines = explode("\n", $gedrec); // -- find the number of lines in the record
@@ -940,7 +940,7 @@ case 'editsource':
 		$fields = explode(' ', $gedlines[$i]);
 		if ((substr($gedlines[$i], 0, 1)<2) && $fields[1]!="CHAN") {
 			$level1type = create_edit_form($gedrec, $i, $level0type);
-			echo '<input type="hidden" name="linenum[]" value="', $i, '" />';
+			echo '<input type="hidden" name="linenum[]" value="', $i, '">';
 			$usedfacts[]=$fields[1];
 			foreach ($uniquefacts as $key=>$fact) {
 				if ($fact==$fields[1]) unset($uniquefacts[$key]);
@@ -950,7 +950,7 @@ case 'editsource':
 	foreach ($uniquefacts as $key=>$fact) {
 		$gedrec.="\n1 ".$fact;
 		$level1type = create_edit_form($gedrec, $lines++, $level0type);
-		echo '<input type="hidden" name="linenum[]" value="', $i, '" />';
+		echo '<input type="hidden" name="linenum[]" value="', $i, '">';
 	}
 
 	if (WT_USER_IS_ADMIN) {
@@ -960,7 +960,7 @@ case 'editsource':
 		if ($NO_UPDATE_CHAN) {
 			echo ' checked="checked"';
 		} 
-		echo ' />';
+		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
@@ -971,7 +971,7 @@ case 'editsource':
 	print_add_layer("NOTE");
 	print_add_layer("SHARED_NOTE");
 	print_add_layer("RESN");
-	echo '<br /><input type="submit" value="', WT_I18N::translate('Save'), '" /><br />';
+	echo '<br><input type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 	echo '</form>';
 	break;
 //------------------------------------------------------------------------------
@@ -982,10 +982,10 @@ case 'editnote':
 	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 	
 	?>
-	<b><?php echo WT_I18N::translate('Edit Shared Note'), "&nbsp;&nbsp;(" . $pid . ")"; ?></b><br /><br />
+	<b><?php echo WT_I18N::translate('Edit Shared Note'), "&nbsp;&nbsp;(" . $pid . ")"; ?></b><br><br>
 	<form method="post" action="edit_interface.php" >
-		<input type="hidden" name="action" value="update" />
-		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
+		<input type="hidden" name="action" value="update">
+		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 
 		<?php
 		if (preg_match("/^0 @$pid@ NOTE ?(.*)/", $gedrec, $n1match)) {
@@ -1006,7 +1006,7 @@ case 'editnote':
 				<td class="optionbox wrap">
 					<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?php
 						echo htmlspecialchars($note_content);
-					?></textarea><br /><?php print_specialchar_link("NOTE", true); ?>
+					?></textarea><br><?php print_specialchar_link("NOTE", true); ?>
 				</td>
 			</tr>
 			<?php
@@ -1017,7 +1017,7 @@ case 'editnote':
 					if ($NO_UPDATE_CHAN) {
 						echo ' checked="checked"';
 					} 
-					echo ' />';
+					echo '>';
 					echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 					echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
 					echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
@@ -1025,9 +1025,9 @@ case 'editnote':
 				}
 			?>
 		</table>
-		<br /><br />
-		<input type="hidden" name="num_note_lines" value="<?php echo $num_note_lines; ?>" />
-		<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" />
+		<br><br>
+		<input type="hidden" name="num_note_lines" value="<?php echo $num_note_lines; ?>">
+		<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
 	</form>
 	<?php
 	break;
@@ -1050,29 +1050,29 @@ case 'addnewrepository':
 	<b><?php echo WT_I18N::translate('Create Repository');
 	?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
-		<input type="hidden" name="action" value="addrepoaction" />
-		<input type="hidden" name="pid" value="newrepo" />
+		<input type="hidden" name="action" value="addrepoaction">
+		<input type="hidden" name="pid" value="newrepo">
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Repository name'), help_link('edit_REPO_NAME'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="NAME" id="NAME" value="" size="40" maxlength="255" /> <?php print_specialchar_link("NAME", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="NAME" id="NAME" value="" size="40" maxlength="255"> <?php print_specialchar_link("NAME", false); ?></td></tr>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255" /> <?php print_specialchar_link("_HEB", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php print_specialchar_link("_HEB", false); ?></td></tr>
 			<?php } ?>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN")!==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255" /> <?php print_specialchar_link("ROMN", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255"> <?php print_specialchar_link("ROMN", false); ?></td></tr>
 			<?php } ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ADDR'), help_link('ADDR'); ?></td>
 			<td class="optionbox wrap"><textarea name="ADDR" id="ADDR" rows="5" cols="60"></textarea><?php print_specialchar_link("ADDR", true); ?> </td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PHON'), help_link('PHON'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="PHON" id="PHON" value="" size="40" maxlength="255" /> </td></tr>
+			<td class="optionbox wrap"><input type="text" name="PHON" id="PHON" value="" size="40" maxlength="255"> </td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('FAX'), help_link('FAX'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="FAX" id="FAX" value="" size="40" /></td></tr>
+			<td class="optionbox wrap"><input type="text" name="FAX" id="FAX" value="" size="40"></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('EMAIL'), help_link('EMAIL'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="EMAIL" id="EMAIL" value="" size="40" maxlength="255" /></td></tr>
+			<td class="optionbox wrap"><input type="text" name="EMAIL" id="EMAIL" value="" size="40" maxlength="255"></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('WWW'), help_link('URL'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="WWW" id="WWW" value="" size="40" maxlength="255" /> </td></tr>
+			<td class="optionbox wrap"><input type="text" name="WWW" id="WWW" value="" size="40" maxlength="255"> </td></tr>
 		<?php
 			if (WT_USER_IS_ADMIN) {
 				echo '<tr><td class="descriptionbox wrap width25">';
@@ -1081,13 +1081,13 @@ case 'addnewrepository':
 				if ($NO_UPDATE_CHAN) {
 					echo ' checked="checked"';
 				} 
-				echo ' />';
+				echo '>';
 				echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 				echo '</td></tr>';
 			}
 		?>
 		</table>
-		<input type="submit" value="<?php echo WT_I18N::translate('Create Repository'); ?>" />
+		<input type="submit" value="<?php echo WT_I18N::translate('Create Repository'); ?>">
 	</form>
 	<?php
 	break;
@@ -1126,7 +1126,7 @@ case 'addrepoaction':
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
 	$link = "repo.php?rid=$xref";
 	if ($xref) {
-		echo '<br /><br />', WT_I18N::translate('New Repository created'), '<br /><br />';
+		echo '<br><br>', WT_I18N::translate('New Repository created'), '<br><br>';
 		echo "<a href=\"#\" onclick=\"openerpasteid('$xref'); return false;\">", WT_I18N::translate('Paste the following Repository ID into your editing fields to reference this Repository '), " <b>$xref</b></a>";
 	}
 	break;
@@ -1205,7 +1205,7 @@ case 'update':
 			foreach ($_FILES as $upload) {
 				if (!empty($upload['tmp_name'])) {
 					if (!move_uploaded_file($upload['tmp_name'], $MEDIA_DIRECTORY.$folder.basename($upload['name']))) {
-						$error .= "<br />".WT_I18N::translate('There was an error uploading your file.')."<br />".file_upload_error_text($upload['error']);
+						$error .= "<br>".WT_I18N::translate('There was an error uploading your file.')."<br>".file_upload_error_text($upload['error']);
 						$uploaded_files[] = "";
 					} else {
 						$filename = $MEDIA_DIRECTORY.$folder.basename($upload['name']);
@@ -1412,7 +1412,7 @@ case 'addchildaction':
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref";
 	if ($xref) {
-		echo "<br /><br />", WT_I18N::translate('Update successful');
+		echo "<br><br>", WT_I18N::translate('Update successful');
 		$gedrec = "";
 		if (!empty($famid)) {
 			// Insert new child at the right place [ 1686246 ]
@@ -1467,7 +1467,7 @@ case 'addspouseaction':
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref";
 	if ($xref) {
-		echo "<br /><br />", WT_I18N::translate('Update successful');
+		echo "<br><br>", WT_I18N::translate('Update successful');
 	} else {
 		exit;
 	}
@@ -1615,7 +1615,7 @@ case 'addnewparentaction':
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref";
 	if ($xref) {
-		echo "<br /><br />", WT_I18N::translate('Update successful');
+		echo "<br><br>", WT_I18N::translate('Update successful');
 	} else {
 		exit;
 	}
@@ -1717,7 +1717,7 @@ case 'addopfchildaction':
 		}
 		append_gedrec($gedrec, WT_GED_ID);
 		append_gedrec($famrec, WT_GED_ID);
-		echo '<br /><br />', WT_I18N::translate('Update successful');
+		echo '<br><br>', WT_I18N::translate('Update successful');
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -1788,7 +1788,7 @@ case 'reorder_media_update': // Update sort using popup
 	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
 		$success=true;
 	}
-	echo "<br />", WT_I18N::translate('Update successful'), "<br /><br />";
+	echo "<br>", WT_I18N::translate('Update successful'), "<br><br>";
 
 	if ($currtab=="album") {
 		$link = "individual.php?pid=$pid#lightbox";
@@ -1813,7 +1813,7 @@ case 'al_reset_media_update': // Reset sort using Album Page
 	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
 		$success=true;
 	}
-	echo "<br />", WT_I18N::translate('Update successful'), "<br /><br />";
+	echo "<br>", WT_I18N::translate('Update successful'), "<br><br>";
 	if ($currtab=="album") {
 		$link = "individual.php?pid=$pid#lightbox";
 	} else {
@@ -1879,12 +1879,12 @@ case 'reorder_children':
 			});
 		});
 	<?php echo WT_JS_END;
-	echo '<br /><b>', WT_I18N::translate('Re-order children'), '</b>', help_link('reorder_children');
+	echo '<br><b>', WT_I18N::translate('Re-order children'), '</b>', help_link('reorder_children');
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
-		<input type="hidden" name="action" value="reorder_update" />
-		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
-		<input type="hidden" name="option" value="bybirth" />
+		<input type="hidden" name="action" value="reorder_update">
+		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+		<input type="hidden" name="option" value="bybirth">
 		<ul id="reorder_list">
 		<?php
 			// reorder children in modified families
@@ -1914,7 +1914,7 @@ case 'reorder_children':
 				if (!in_array($id, $ids)) echo ' class="facts_valueblue"';
 				echo ' id="li_',$id,'" >';
 				print_pedigree_person(WT_Person::getInstance($id), 2);
-				echo '<input type="hidden" name="order[',$id,']" value="',$i,'"/>';
+				echo '<input type="hidden" name="order[',$id,']" value="',$i,'">';
 				echo '</li>';
 				$i++;
 			}
@@ -1926,18 +1926,18 @@ case 'reorder_children':
 			if ($NO_UPDATE_CHAN) {
 				echo ' checked="checked"';
 			} 
-			echo ' />';
+			echo '>';
 			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
 			echo WT_Gedcom_Tag::getLabelValue('DATE', $family->LastChangeTimestamp(false));
 			echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $family->LastChangeUser());
-			echo '</td></tr></table></center><br />';
+			echo '</td></tr></table></center><br>';
 		}
 		?>
 		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
 		<button type="submit" onclick="document.reorder_form.action.value='reorder_children'; document.reorder_form.submit();"><?php echo WT_I18N::translate('sort by date of birth'); ?></button>
 		<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
 	</form>
-	<br />
+	<br>
 	<?php
 	break;
 //------------------------------------------------------------------------------
@@ -2005,49 +2005,49 @@ case 'changefamily':
 			}
 		}
 	<?php echo WT_JS_END; ?>
-	<br /><br />
+	<br><br>
 	<?php echo WT_I18N::translate('Use this page to change or remove family members.<br /><br />For each member in the family, you can use the Change link to choose a different person to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes.'); ?>
 	<form name="changefamform" method="post" action="edit_interface.php">
-		<input type="hidden" name="action" value="changefamily_update" />
-		<input type="hidden" name="famid" value="<?php echo $famid; ?>" />
+		<input type="hidden" name="action" value="changefamily_update">
+		<input type="hidden" name="famid" value="<?php echo $famid; ?>">
 		<table class="width50">
 			<tr><td colspan="3" class="topbottombar"><?php echo WT_I18N::translate('Change Family Members'); ?></td></tr>
 			<tr>
 			<?php
 			if (!is_null($father)) {
 			?>
-				<td class="descriptionbox"><b><?php echo $father->getLabel(); ?></b><input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>" /></td>
+				<td class="descriptionbox"><b><?php echo $father->getLabel(); ?></b><input type="hidden" name="HUSB" value="<?php echo $father->getXref(); ?>"></td>
 				<td id="HUSBName" class="optionbox wrap"><?php echo $father->getFullName(); ?></td>
 			<?php
 			} else {
 			?>
-				<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="HUSB" value="" /></td>
+				<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="HUSB" value=""></td>
 				<td id="HUSBName" class="optionbox wrap"></td>
 			<?php
 			}
 			?>
 				<td class="optionbox wrap">
 					<a href="#" id="husbrem" style="display: <?php echo is_null($father) ? 'none':'block'; ?>;" onclick="document.changefamform.HUSB.value=''; document.getElementById('HUSBName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-					<a href="#" onclick="nameElement = document.getElementById('HUSBName'); remElement = document.getElementById('husbrem'); return findIndi(document.changefamform.HUSB);"><?php echo WT_I18N::translate('Change'); ?></a><br />
+					<a href="#" onclick="nameElement = document.getElementById('HUSBName'); remElement = document.getElementById('husbrem'); return findIndi(document.changefamform.HUSB);"><?php echo WT_I18N::translate('Change'); ?></a><br>
 				</td>
 			</tr>
 			<tr>
 			<?php
 			if (!is_null($mother)) {
 			?>
-				<td class="descriptionbox"><b><?php echo $mother->getLabel(); ?></b><input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>" /></td>
+				<td class="descriptionbox"><b><?php echo $mother->getLabel(); ?></b><input type="hidden" name="WIFE" value="<?php echo $mother->getXref(); ?>"></td>
 				<td id="WIFEName" class="optionbox wrap"><?php echo $mother->getFullName(); ?></td>
 			<?php
 			} else {
 			?>
-				<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="WIFE" value="" /></td>
+				<td class="descriptionbox"><b><?php echo WT_I18N::translate('spouse'); ?></b><input type="hidden" name="WIFE" value=""></td>
 				<td id="WIFEName" class="optionbox wrap"></td>
 			<?php
 			}
 			?>
 				<td class="optionbox wrap">
 					<a href="#" id="wiferem" style="display: <?php echo is_null($mother) ? 'none':'block'; ?>;" onclick="document.changefamform.WIFE.value=''; document.getElementById('WIFEName').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-					<a href="#" onclick="nameElement = document.getElementById('WIFEName'); remElement = document.getElementById('wiferem'); return findIndi(document.changefamform.WIFE);"><?php echo WT_I18N::translate('Change'); ?></a><br />
+					<a href="#" onclick="nameElement = document.getElementById('WIFEName'); remElement = document.getElementById('wiferem'); return findIndi(document.changefamform.WIFE);"><?php echo WT_I18N::translate('Change'); ?></a><br>
 				</td>
 			</tr>
 			<?php
@@ -2056,11 +2056,11 @@ case 'changefamily':
 				if (!is_null($child)) {
 				?>
 			<tr>
-				<td class="descriptionbox"><b><?php echo $child->getLabel(); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>" /></td>
+				<td class="descriptionbox"><b><?php echo $child->getLabel(); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value="<?php echo $child->getXref(); ?>"></td>
 				<td id="CHILName<?php echo $i; ?>" class="optionbox wrap"><?php echo $child->getFullName(); ?></td>
 				<td class="optionbox wrap">
 					<a href="#" id="childrem<?php echo $i; ?>" style="display: block;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-					<a href="#" onclick="nameElement = document.getElementById('CHILName<?php echo $i; ?>'); remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>);"><?php echo WT_I18N::translate('Change'); ?></a><br />
+					<a href="#" onclick="nameElement = document.getElementById('CHILName<?php echo $i; ?>'); remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>);"><?php echo WT_I18N::translate('Change'); ?></a><br>
 				</td>
 			</tr>
 				<?php
@@ -2069,17 +2069,17 @@ case 'changefamily':
 			}
 				?>
 			<tr>
-				<td class="descriptionbox"><b><?php echo WT_I18N::translate('child'); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value="" /></td>
+				<td class="descriptionbox"><b><?php echo WT_I18N::translate('child'); ?></b><input type="hidden" name="CHIL<?php echo $i; ?>" value=""></td>
 				<td id="CHILName<?php echo $i; ?>" class="optionbox wrap"></td>
 				<td class="optionbox wrap">
 					<a href="#" id="childrem<?php echo $i; ?>" style="display: none;" onclick="document.changefamform.CHIL<?php echo $i; ?>.value=''; document.getElementById('CHILName<?php echo $i; ?>').innerHTML=''; this.style.display='none'; return false;"><?php echo WT_I18N::translate('Remove'); ?></a>
-					<a href="#" onclick="nameElement = document.getElementById('CHILName<?php echo $i; ?>'); remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>);"><?php echo WT_I18N::translate('Add'); ?></a><br />
+					<a href="#" onclick="nameElement = document.getElementById('CHILName<?php echo $i; ?>'); remElement = document.getElementById('childrem<?php echo $i; ?>'); return findIndi(document.changefamform.CHIL<?php echo $i; ?>);"><?php echo WT_I18N::translate('Add'); ?></a><br>
 				</td>
 			</tr>
 		</table>
-		<!-- <a href="#" onclick="addnewchild(''); return false;"><?php echo WT_I18N::translate('Add an unlinked person'); ?></a><br />-->
-		<br />
-		<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" /><input type="button" value="<?php echo WT_I18N::translate('Cancel'); ?>" onclick="window.close();" />
+		<!-- <a href="#" onclick="addnewchild(''); return false;"><?php echo WT_I18N::translate('Add an unlinked person'); ?></a><br>-->
+		<br>
+		<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"><input type="button" value="<?php echo WT_I18N::translate('Cancel'); ?>" onclick="window.close();">
 	</form>
 	<?php
 	break;
@@ -2272,12 +2272,12 @@ case 'reorder_fams':
 			});
 		});
 	<?php echo WT_JS_END;
-	echo "<br /><b>", WT_I18N::translate('Reorder families'), "</b>", help_link('reorder_families');
+	echo "<br><b>", WT_I18N::translate('Reorder families'), "</b>", help_link('reorder_families');
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
-		<input type="hidden" name="action" value="reorder_fams_update" />
-		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
-		<input type="hidden" name="option" value="bymarriage" />
+		<input type="hidden" name="action" value="reorder_fams_update">
+		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+		<input type="hidden" name="option" value="bymarriage">
 		<ul id="reorder_list">
 		<?php
 			$person = WT_Person::getInstance($pid);
@@ -2288,9 +2288,9 @@ case 'reorder_fams':
 			$i=0;
 			foreach ($fams as $family) {
 				echo '<li class="facts_value" style="cursor:move;margin-bottom:2px;" id="li_', $family->getXref(), '" >';
-				echo '<span class="name2">', $family->getFullName(), '</span><br />';
+				echo '<span class="name2">', $family->getFullName(), '</span><br>';
 				echo $family->format_first_major_fact(WT_EVENTS_MARR, 2);
-				echo '<input type="hidden" name="order[', $family->getXref(), ']" value="', $i, '"/>';
+				echo '<input type="hidden" name="order[', $family->getXref(), ']" value="', $i, '">';
 				echo '</li>';
 				$i++;
 			}
@@ -2320,7 +2320,7 @@ case 'reorder_fams_update':
 	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
 		$success=true;
 	}
-	echo "<br /><br />", WT_I18N::translate('Update successful');
+	echo "<br><br>", WT_I18N::translate('Update successful');
 	break;
 }
 
@@ -2353,9 +2353,9 @@ if ($success && !WT_DEBUG ) {
 // Decide whether to print footer or not
 if ($action == 'addmedia_links' || $action == 'addnewnote_assisted' ) {
 	// Do not print footer.
-	echo "<br /><div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div>';
+	echo "<br><div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div>';
 } elseif (isset($closeparent) && $closeparent=="yes" ) {
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div><br />';
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div><br>';
 } else {
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div><br />';
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div><br>';
 }

@@ -59,7 +59,7 @@ if (!$ALLOW_EDIT_GEDCOM) {
 	$controller->pageHeader();
 	echo "<span class=\"error\"><b>";
 	echo WT_I18N::translate('Media management features are not available when online editing is disabled.');
-	echo "</b></span><br />";
+	echo "</b></span><br>";
 	exit;
 }
 
@@ -485,7 +485,7 @@ if (check_media_structure()) {
 							echo "</span>";
 							AddToLog("Thumbnail {$thumbnail} could not be generated automatically.", 'edit');
 						}
-						echo "<br />";
+						echo "<br>";
 					}
 				}
 			}
@@ -555,7 +555,7 @@ if (check_media_structure()) {
 	if ($action == "movedirprotected") {
 		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
-		echo "<strong>".WT_I18N::translate('Move to protected')."<br />";
+		echo "<strong>".WT_I18N::translate('Move to protected')."<br>";
 		move_files(substr($directory, 0, -1), true);
 		echo "</td></tr></table>";
 		$action="filter";
@@ -565,7 +565,7 @@ if (check_media_structure()) {
 	if ($action == "movedirstandard") {
 		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
-		echo "<strong>".WT_I18N::translate('Move to standard')."<br />";
+		echo "<strong>".WT_I18N::translate('Move to standard')."<br>";
 		move_files(substr(get_media_firewall_path($directory), 0, -1), false);
 		echo "</td></tr></table>";
 		$action="filter";
@@ -574,7 +574,7 @@ if (check_media_structure()) {
 	if ($action == "setpermsfix") {
 		echo "<table class=\"media_items\">";
 		echo "<tr><td class=\"messagebox wrap\">";
-		echo "<strong>".WT_I18N::translate('Correct read/write/execute permissions')."<br />";
+		echo "<strong>".WT_I18N::translate('Correct read/write/execute permissions')."<br>";
 		set_perms(substr($directory, 0, -1));
 		set_perms(substr(get_media_firewall_path($directory), 0, -1));
 		echo "</td></tr></table>";
@@ -646,11 +646,11 @@ if (check_media_structure()) {
 		$finalResult = true;
 		if ($allowDelete) {
 			if (!$onegedcom) {
-				echo "<span class=\"error\">".WT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.')."<br /><br /><b>".WT_I18N::translate('Media file could not be deleted.')."</b></span><br />";
+				echo "<span class=\"error\">".WT_I18N::translate('This file is linked to another genealogical database on this server.  It cannot be deleted, moved, or renamed until these links have been removed.')."<br><br><b>".WT_I18N::translate('Media file could not be deleted.')."</b></span><br>";
 				$finalResult = false;
 			}
 			if (isFileExternal($filename)) {
-				echo "<span class=\"error\">".WT_I18N::translate('This media object does not exist as a file on this server.  It cannot be deleted, moved, or renamed.')."<br /><br /><b>".WT_I18N::translate('Media file could not be deleted.')."</b></span><br />";
+				echo "<span class=\"error\">".WT_I18N::translate('This media object does not exist as a file on this server.  It cannot be deleted, moved, or renamed.')."<br><br><b>".WT_I18N::translate('Media file could not be deleted.')."</b></span><br>";
 				$finalResult = false;
 			}
 			if ($finalResult) {
@@ -658,11 +658,11 @@ if (check_media_structure()) {
 				$server_filename = get_server_filename($filename);
 				if (file_exists($server_filename) && $allowDelete) {
 					if (@unlink($server_filename)) {
-						echo WT_I18N::translate('Media file successfully deleted.')."<br />";
+						echo WT_I18N::translate('Media file successfully deleted.')."<br>";
 						AddToLog($server_filename." -- ".WT_I18N::translate('Media file successfully deleted.'), 'edit');
 					} else {
 						$finalResult = false;
-						echo "<span class=\"error\">".WT_I18N::translate('Media file could not be deleted.')."</span><br />";
+						echo "<span class=\"error\">".WT_I18N::translate('Media file could not be deleted.')."</span><br>";
 						AddToLog($server_filename." -- ".WT_I18N::translate('Media file could not be deleted.'), 'edit');
 					}
 				}
@@ -672,11 +672,11 @@ if (check_media_structure()) {
 				$server_thumbnail = get_server_filename($thumbnail);
 				if (file_exists($server_thumbnail) && $allowDelete) {
 					if (@unlink($server_thumbnail)) {
-						echo WT_I18N::translate('Thumbnail file successfully deleted.')."<br />";
+						echo WT_I18N::translate('Thumbnail file successfully deleted.')."<br>";
 						AddToLog($server_thumbnail." -- ".WT_I18N::translate('Thumbnail file successfully deleted.'), 'edit');
 					} else {
 						$finalResult = false;
-						echo "<span class=\"error\">".WT_I18N::translate('Thumbnail file could not be deleted.')."</span><br />";
+						echo "<span class=\"error\">".WT_I18N::translate('Thumbnail file could not be deleted.')."</span><br>";
 						AddToLog($server_thumbnail." -- ".WT_I18N::translate('Thumbnail file could not be deleted.'), 'edit');
 					}
 				}
@@ -693,15 +693,15 @@ if (check_media_structure()) {
 					$gedrec = find_gedcom_record($pid, WT_GED_ID, true);
 					$gedrec = remove_subrecord($gedrec, "OBJE", $xref, -1);
 					replace_gedrec($pid, WT_GED_ID, $gedrec);
-					echo WT_I18N::translate('Record %s successfully updated.', $pid), '<br />';
+					echo WT_I18N::translate('Record %s successfully updated.', $pid), '<br>';
 				}
 
 				// Remove media object from gedcom
 				if (find_gedcom_record($xref, WT_GED_ID)) {
 					delete_gedrec($xref, WT_GED_ID);
-					echo WT_I18N::translate('Record %s successfully removed from GEDCOM.', $xref), '<br />';
+					echo WT_I18N::translate('Record %s successfully removed from GEDCOM.', $xref), '<br>';
 				} else {
-					echo "<span class=\"error\">".WT_I18N::translate('This media object does not exist as a file on this server.  It cannot be deleted, moved, or renamed.')."</span><br />";
+					echo "<span class=\"error\">".WT_I18N::translate('This media object does not exist as a file on this server.  It cannot be deleted, moved, or renamed.')."</span><br>";
 					$finalResult = false;
 				}
 
@@ -724,7 +724,7 @@ if (check_media_structure()) {
 						echo WT_I18N::translate('Record %s could not be added to GEDCOM.', $xref);
 						echo "</span>";
 					}
-					echo "<br />";
+					echo "<br>";
 				}
 */
 			}
@@ -782,10 +782,10 @@ if (check_media_structure()) {
 	echo '<div id="page_help">', help_link('manage_media'), '</div>';
 ?>
 	<form name="managemedia" id="managemedia" method="post" onsubmit="return checknames(this);" action="<?php echo WT_SCRIPT_NAME; ?>">
-	<input type="hidden" name="thumbdir" value="<?php echo $thumbdir; ?>" />
-	<input type="hidden" name="level" value="<?php echo $level; ?>" />
-	<input type="hidden" name="all" value="true" />
-	<input type="hidden" name="subclick" value="<?php echo $subclick; ?>"/>
+	<input type="hidden" name="thumbdir" value="<?php echo $thumbdir; ?>">
+	<input type="hidden" name="level" value="<?php echo $level; ?>">
+	<input type="hidden" name="all" value="true">
+	<input type="hidden" name="subclick" value="<?php echo $subclick; ?>">
 	<table class="media_items">
 		<tr align="center">
 			<td class="wrap"><?php echo /* I18N: Label for list of sort options */ WT_I18N::translate('Sort order'); ?>
@@ -796,7 +796,7 @@ if (check_media_structure()) {
 			</td>
 			<td class="wrap">
 				<?php echo WT_I18N::translate('Show thumbnails'); ?>
-				<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();" />
+				<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();">
 			</td>
 			<!--<td class="wrap">
 				<?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".WT_I18N::translate('Upload media files')."</a>". help_link('upload_media'); ?>
@@ -822,7 +822,7 @@ if (check_media_structure()) {
 				<?php echo WT_I18N::translate('Folder')."</td><td>". WT_I18N::translate('Filter'), help_link('simple_filter'); ?>
 			</td>
 			<td rowspan="2">
-				<input type="submit" name="all" value="<?php echo WT_I18N::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name" />
+				<input type="submit" name="all" value="<?php echo WT_I18N::translate('Display all'); ?>" onclick="this.form.subclick.value=this.name">
 			</td>
 		</tr>
 		<tr align="center">	
@@ -841,10 +841,10 @@ if (check_media_structure()) {
 						echo ">".$f."</option>";
 					}
 					echo "</select></td>";
-				} else echo "<td><input name=\"directory\" type=\"hidden\" value=\"ALL\" /></td>";
+				} else echo "<td><input name=\"directory\" type=\"hidden\" value=\"ALL\"></td>";
 			?>
 			<!-- Text field for filter -->
-			<td><input type="text" name="filter" value="<?php if ($filter) echo $filter; ?>" /><input type="submit" name="search" value="<?php echo WT_I18N::translate('Filter'); ?>" onclick="this.form.subclick.value=this.name" /></td>
+			<td><input type="text" name="filter" value="<?php if ($filter) echo $filter; ?>"><input type="submit" name="search" value="<?php echo WT_I18N::translate('Filter'); ?>" onclick="this.form.subclick.value=this.name"></td>
 		</tr>
 		</table>
 </form>
@@ -863,7 +863,7 @@ if (check_media_structure()) {
 //			if ($USE_MEDIA_FIREWALL) { echo $MEDIA_FIREWALL_ROOTDIR; }
 
 			echo PrintReady(substr($directory, 0, -1));
-			echo "<br />";
+			echo "<br>";
 
 			// Calculation to determine whether files are protected or not -------------------------
 			// Check if media directory and thumbs directory are empty
@@ -913,29 +913,29 @@ if (check_media_structure()) {
 			$protected_files = count($files_fw);
 			$standard_files = count($files);
 
-//			echo "<br />";
+//			echo "<br>";
 			echo "<form name=\"blah3\" action=\"".WT_SCRIPT_NAME."\" method=\"post\">";
-			echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\" />";
-			echo "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
-			echo "<input type=\"hidden\" name=\"dir\" value=\"".$directory."\" />";
-			echo "<input type=\"hidden\" name=\"action\" value=\"\" />";
-			echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
-			echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
+			echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory."\">";
+			echo "<input type=\"hidden\" name=\"level\" value=\"".($level)."\">";
+			echo "<input type=\"hidden\" name=\"dir\" value=\"".$directory."\">";
+			echo "<input type=\"hidden\" name=\"action\" value=\"\">";
+			echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\">";
+			echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\">";
 
 			if ($USE_MEDIA_FIREWALL && $is_std_media_writable) {
 				if ($protected_files < $standard_files) {
 					echo '<div class="error">';
-					echo WT_I18N::translate('Some of your media files are not in the protected media directory.').'<br />';
-					echo WT_I18N::translate('You should click the "Move ALL to Protected" button to move your media to the protected directory').'<br />';
+					echo WT_I18N::translate('Some of your media files are not in the protected media directory.').'<br>';
+					echo WT_I18N::translate('You should click the "Move ALL to Protected" button to move your media to the protected directory').'<br>';
 					echo '</div>';
 				}
-				echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \" />";
-				echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\" />";
+				echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to standard')."\" onclick=\"this.form.action.value='movedirstandard'; \">";
+				echo "<input type=\"submit\" value=\"".WT_I18N::translate('Move ALL to protected')."\" onclick=\"this.form.action.value='movedirprotected';\">";
 				echo help_link('move_mediadirs');
 				echo "&nbsp;&nbsp;&nbsp;";
 			}
 
-			echo "<input type=\"submit\" value=\"".WT_I18N::translate('Correct read/write/execute permissions')."\" onclick=\"this.form.action.value='setpermsfix';\" />";
+			echo "<input type=\"submit\" value=\"".WT_I18N::translate('Correct read/write/execute permissions')."\" onclick=\"this.form.action.value='setpermsfix';\">";
 			echo help_link('setperms');
 			echo "</form>";
 			echo "</td>";
@@ -973,7 +973,7 @@ if (check_media_structure()) {
 
 			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\"><img class=\"icon-larrow\" src=\"";
 			$uplink2 .= $WT_IMAGES["larrow"];
-			$uplink2 .= "\" alt=\"".WT_I18N::translate('Back')."\" title=\"".WT_I18N::translate('Back')."\" /></a>";
+			$uplink2 .= "\" alt=\"".WT_I18N::translate('Back')."\" title=\"".WT_I18N::translate('Back')."\"></a>";
 		}
 
 		// display the directory list
@@ -996,17 +996,17 @@ if (check_media_structure()) {
 					echo "<td class=\" center\" width=\"10\">";
 						// directory options
 						echo "<form name=\"blah\" action=\"".WT_SCRIPT_NAME."\" method=\"post\">";
-						echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory.$dir."/\" />";
-						echo "<input type=\"hidden\" name=\"parentdir\" value=\"".$directory."\" />";
-						echo "<input type=\"hidden\" name=\"level\" value=\"".($level)."\" />";
-						echo "<input type=\"hidden\" name=\"dir\" value=\"".$dir."\" />";
-						echo "<input type=\"hidden\" name=\"action\" value=\"\" />";
-						echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\" />";
-						echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\" />";
-						echo "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".WT_I18N::translate('Delete')."\" title=\"".WT_I18N::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".WT_I18N::translate('Are you sure you want to delete this folder?')."');\" /></td>";
+						echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory.$dir."/\">";
+						echo "<input type=\"hidden\" name=\"parentdir\" value=\"".$directory."\">";
+						echo "<input type=\"hidden\" name=\"level\" value=\"".($level)."\">";
+						echo "<input type=\"hidden\" name=\"dir\" value=\"".$dir."\">";
+						echo "<input type=\"hidden\" name=\"action\" value=\"\">";
+						echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\">";
+						echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\">";
+						echo "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".WT_I18N::translate('Delete')."\" title=\"".WT_I18N::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".WT_I18N::translate('Are you sure you want to delete this folder?')."');\"></td>";
 						if ($USE_MEDIA_FIREWALL && $is_std_media_writable) {
-							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\" /></td>";
-							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\" /></td>";
+							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\"></td>";
+							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\"></td>";
 						}
 
 						echo "</form>";
@@ -1023,7 +1023,7 @@ if (check_media_structure()) {
 			}
 		}
 		echo "</table>\n";
-		echo "<br />";
+		echo "<br>";
 
 		// display the images
 		if (count($medialist) && ($subclick=='search' || $subclick=='all')) {
@@ -1111,11 +1111,11 @@ if (check_media_structure()) {
 							} else {
 								$tempURL .= 'showmediaform&amp;filename='.rawurlencode($media['FILE']).'&amp;linktoid=new';
 							}
-							echo "<a href=\"#\" onclick=\"window.open('", $tempURL, "', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;\">", WT_I18N::translate('Edit'), "</a><br />";
+							echo "<a href=\"#\" onclick=\"window.open('", $tempURL, "', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;\">", WT_I18N::translate('Edit'), "</a><br>";
 
 							// Edit Raw
 							if ($media["XREF"] != "") {
-								echo "<a href=\"#\" onclick=\"return edit_raw('".$media['XREF']."');\">".WT_I18N::translate('Edit raw GEDCOM record')."</a><br />";
+								echo "<a href=\"#\" onclick=\"return edit_raw('".$media['XREF']."');\">".WT_I18N::translate('Edit raw GEDCOM record')."</a><br>";
 							}
 
 							// Delete File
@@ -1132,7 +1132,7 @@ if (check_media_structure()) {
 								$tempURL = WT_SCRIPT_NAME.'?';
 								if (!empty($filter)) $tempURL.= "filter=".rawurlencode($filter)."&amp;";
 								$tempURL .= "action=deletefile&amp;showthumb={$showthumb}&amp;sortby={$sortby}&amp;filter={$filter}&amp;subclick={$subclick}&amp;filename=".rawurlencode($media['FILE'])."&amp;directory={$directory}&amp;level={$level}&amp;xref={$media['XREF']}&amp;gedfile={$media['GEDFILE']}";
-								echo "<a href=\"".$tempURL."\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this file?')."');\">".WT_I18N::translate('Delete file')."</a><br />";
+								echo "<a href=\"".$tempURL."\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this file?')."');\">".WT_I18N::translate('Delete file')."</a><br>";
 							}
 
 							// Remove Object
@@ -1140,7 +1140,7 @@ if (check_media_structure()) {
 								$tempURL = WT_SCRIPT_NAME.'?';
 								if (!empty($filter)) $tempURL .= "filter={$filter}&amp;";
 								$tempURL .= "action=removeobject&amp;showthumb={$showthumb}&amp;sortby={$sortby}&amp;filter={$filter}&amp;subclick={$subclick}&amp;filename=".rawurlencode($media['FILE'])."&amp;directory={$directory}&amp;level={$level}&amp;xref={$media['XREF']}&amp;gedfile={$media['GEDFILE']}";
-								echo "<a href=\"".$tempURL."\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."');\">".WT_I18N::translate('Remove object')."</a><br />";
+								echo "<a href=\"".$tempURL."\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."');\">".WT_I18N::translate('Remove object')."</a><br>";
 							}
 
 							// Remove links
@@ -1169,7 +1169,7 @@ if (check_media_structure()) {
 									$message=WT_I18N::translate('Move to standard directory');
 								}
 								$tempURL .= "&amp;showthumb={$showthumb}&amp;sortby={$sortby}&amp;filename=".rawurlencode($media['FILE'])."&amp;directory=".rawurlencode($directory)."&amp;level={$level}&amp;xref={$media['XREF']}&amp;gedfile=".rawurlencode($media["GEDFILE"]);
-								echo "<a href=\"".$tempURL."\">".$message."</a><br />";
+								echo "<a href=\"".$tempURL."\">".$message."</a><br>";
 							}
 
 							// Generate thumbnail
@@ -1194,7 +1194,7 @@ if (check_media_structure()) {
 						$needle   = "1 NOTE";
 						$before   = substr($haystack, 0, strpos($haystack, $needle));
 						$after    = substr(strstr($haystack, $needle), strlen($needle));
-						$worked   = str_replace("1 NOTE", "1 NOTE<br />", $after);
+						$worked   = str_replace("1 NOTE", "1 NOTE<br>", $after);
 						$final    = $before.$needle.$worked;
 						$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true))));
 
@@ -1215,22 +1215,22 @@ if (check_media_structure()) {
 								echo '<center><a href="', $mediaInfo['url'], '">';
 								//echo '<center><a href="'.$url2.'">';
 								echo '<img src="', $mediaInfo['thumb'], '" align="middle" class="thumbnail"', $mediaInfo['width'];
-								echo ' title="', $name, '" /></a></center>';
+								echo ' title="', $name, '"></a></center>';
 							}
 							echo '</td>';
 						}
 
 						//-- name and size field
 						echo "<td>";
-						if ($media["TITL"]!="") echo "<b>".PrintReady($media["TITL"])."</b><br />";
-						if (!$isExternal && !$media["EXISTS"]) echo "<span dir=\"ltr\">".PrintReady($media["FILE"])."</span><br /><span class=\"error\">".WT_I18N::translate('The filename entered does not exist.')."</span><br />";
+						if ($media["TITL"]!="") echo "<b>".PrintReady($media["TITL"])."</b><br>";
+						if (!$isExternal && !$media["EXISTS"]) echo "<span dir=\"ltr\">".PrintReady($media["FILE"])."</span><br><span class=\"error\">".WT_I18N::translate('The filename entered does not exist.')."</span><br>";
 						else {
 							if (substr($mediaInfo['type'], 0, 4) == 'url_') $tempText = 'URL';
 							else $tempText = PrintReady($media["FILE"]);
 							if (!empty($media["XREF"])) {
-								echo '<a href="', 'mediaviewer.php?mid=', $media["XREF"], '"><span dir="ltr">', $tempText, '</span></a><br />';
+								echo '<a href="', 'mediaviewer.php?mid=', $media["XREF"], '"><span dir="ltr">', $tempText, '</span></a><br>';
 							} else {
-								echo '<span dir="ltr">', $tempText, '</span><br />';
+								echo '<span dir="ltr">', $tempText, '</span><br>';
 							}
 						}
 						if (substr($mediaInfo['type'], 0, 4) != 'url_' && !empty($imgsize[0])) {
@@ -1241,13 +1241,13 @@ if (check_media_structure()) {
 						if ($media["LINKED"]) {
 							PrintMediaLinks($media["LINKS"], "normal");
 						} else {
-							echo "<br />".WT_I18N::translate('This media object is not linked to any GEDCOM record.');
+							echo "<br>".WT_I18N::translate('This media object is not linked to any GEDCOM record.');
 						}
 
 
-						echo '<br />';
+						echo '<br>';
 						if ($media["EXISTS"]) {
-							echo '<br />';
+							echo '<br>';
 							switch ($media["EXISTS"]) {
 							case 1:
 								echo WT_I18N::translate('This media object is located on an external server');
@@ -1261,7 +1261,7 @@ if (check_media_structure()) {
 							}
 						}
 						if ($media["THUMBEXISTS"]) {
-							echo '<br />';
+							echo '<br>';
 							switch ($media["THUMBEXISTS"]) {
 							case 1:
 								echo WT_I18N::translate('This thumbnail is located on an external server');

@@ -132,7 +132,7 @@ echo '<div id="source-tabs">
 				echo WT_I18N::translate('Add media'), help_link('OBJE');
 				echo '</td><td class="optionbox">';
 				echo '<a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&amp;linktoid=', $controller->record->getXref(), '\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Add a new media object'), '</a>';		
-				echo '<br />';
+				echo '<br>';
 				echo '<a href="#" onclick="window.open(\'inverselink.php?linktoid=', $controller->record->getXref(), '&amp;linkto=source\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">', WT_I18N::translate('Link to an existing media object'), '</a>';
 				echo '</td></tr>';
 			}

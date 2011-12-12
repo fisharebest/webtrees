@@ -70,7 +70,7 @@ $controller->pageHeader();
 <div align="center">
 	<div id="tabs">
 		<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
-			<input type="hidden" name="action" value="update_mods" />
+			<input type="hidden" name="action" value="update_mods">
 			<table id="blocks_table" class="modules_table">
 				<thead>
 					<tr>
@@ -117,7 +117,7 @@ $controller->pageHeader();
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" />
+			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
 		</form>
 	</div>
 </div>

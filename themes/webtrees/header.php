@@ -35,20 +35,20 @@ echo
 	'<meta charset="UTF-8">',
 	'<title>', htmlspecialchars($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png" />',
-	'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" />',
-	'<link rel="stylesheet" type="text/css" href="', $stylesheet, '" />';
+	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
+	'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css">',
+	'<link rel="stylesheet" type="text/css" href="', $stylesheet, '">';
 
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css" />';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
 	break;
 }
 
 // Additional css files required (Only if Lightbox installed)
 if (WT_USE_LIGHTBOX) {
-		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen" />';
+		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
 }
 
 echo
@@ -59,7 +59,7 @@ echo
 if ($view!='simple') {
 	echo
 		'<div id="header">',
-		'<div class="header_img"><img src="', WT_THEME_URL, 'images/webtrees.png" width="242" height="50" alt="', WT_WEBTREES, '" /></div>',
+		'<div class="header_img"><img src="', WT_THEME_URL, 'images/webtrees.png" width="242" height="50" alt="', WT_WEBTREES, '"></div>',
 		'<ul id="extra-menu" class="makeMenu">';
 	if (WT_USER_ID) {
 		echo '<li><a href="edituser.php">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
@@ -83,10 +83,10 @@ if ($view!='simple') {
 		'</div>',
 		'<div class="header_search">',
 		'<form action="search.php" method="post">',
-		'<input type="hidden" name="action" value="general" />',
-		'<input type="hidden" name="topsearch" value="yes" />',
-		'<input type="text" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '"/>',
-		'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
+		'<input type="hidden" name="action" value="general">',
+		'<input type="hidden" name="topsearch" value="yes">',
+		'<input type="text" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '">',
+		'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
 		'</form>',
 		'</div>';
 	$menu_items=array(

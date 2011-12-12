@@ -55,7 +55,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		<table class="facts_table">
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
-					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_sour2').toggle();" />
+					<input id="checkbox_sour2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_sour2').toggle();">
 					<label for="checkbox_sour2"><?php echo WT_I18N::translate('Show all sources'), help_link('show_fact_sources'); ?></label>
 				</td>
 			</tr>
@@ -78,14 +78,14 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 					<td class="facts_label"><?php echo WT_I18N::translate('Add Source Citation'), help_link('add_source'); ?></td>
 					<td class="facts_value">
 					<a href="#" onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SOUR'); return false;"><?php echo WT_I18N::translate('Add a new source citation'); ?></a>
-					<br />
+					<br>
 					</td>
 				</tr>
 			<?php
 			}
 		?>
 		</table>
-		<br />
+		<br>
 		<?php
 		if (!$SHOW_LEVEL2_NOTES) {
 			echo WT_JS_START, 'jQuery("tr.row_sour2").toggle();', WT_JS_END;

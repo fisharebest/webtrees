@@ -143,7 +143,7 @@ if ($changed_gedcoms) {
 		" ORDER BY gedcom_id, c.xref, c.change_id"
 	)->fetchAll();
 
-	$output = '<br /><br /><table class="list_table">';
+	$output = '<br><br><table class="list_table">';
 	$prev_xref=null;
 	$prev_gedcom_id=null;
 	foreach ($changes as $change) {
@@ -164,12 +164,12 @@ if ($changed_gedcoms) {
 				// version of the record.
 				$record=new WT_GedcomRecord($change->gedcom);
 			}
-			$output.='<b>'.$record->getFullName().'</b><br />';
+			$output.='<b>'.$record->getFullName().'</b><br>';
 			$output.='<a href="#" onclick="return show_diff(\''.$record->getHtmlUrl().'\');">'.WT_I18N::translate('View the changes').'</a> | ';
 			$output.="<a href=\"#\" onclick=\"show_gedcom_record('".$change->xref."');\">".WT_I18N::translate('View GEDCOM Record')."</a> | ";
-			$output.="<a href=\"#\" onclick=\"return edit_raw('".$change->xref."');\">".WT_I18N::translate('Edit raw GEDCOM record').'</a><br />';
+			$output.="<a href=\"#\" onclick=\"return edit_raw('".$change->xref."');\">".WT_I18N::translate('Edit raw GEDCOM record').'</a><br>';
 			$output.='<div class="indent">';
-			$output.=WT_I18N::translate('The following changes were made to this record:').'<br />';
+			$output.=WT_I18N::translate('The following changes were made to this record:').'<br>';
 			$output.='<table class="list_table"><tr>';
 			$output.='<td class="list_label">'.WT_I18N::translate('Accept').'</td>';
 			$output.='<td class="list_label">'.WT_I18N::translate('Type').'</td>';
@@ -200,7 +200,7 @@ if ($changed_gedcoms) {
 	$output .= '</table></td></tr></td></tr></table>';
 
 	//-- Now for the global Action bar:
-	$output2 = '<br /><table class="list_table">';
+	$output2 = '<br><table class="list_table">';
 	// Row 1 column 1: title "Accept all"
 	$output2 .= '<tr><td class="list_label">'.WT_I18N::translate('Approve all changes').'</td>';
 	// Row 1 column 2: title "Undo all"
@@ -210,7 +210,7 @@ if ($changed_gedcoms) {
 	$output2 .= '<tr><td class="list_value">';
 	$count = 0;
 	foreach ($changed_gedcoms as $gedcom_name) {
-		if ($count!=0) $output2.='<br />';
+		if ($count!=0) $output2.='<br>';
 		$output2 .= '<a href="edit_changes.php?action=acceptall&amp;ged='.rawurlencode($gedcom_name).'">'.$gedcom_name.' - '.WT_I18N::translate('Approve all changes').'</a>';
 		$count ++;
 	}
@@ -220,7 +220,7 @@ if ($changed_gedcoms) {
 	$count = 0;
 	foreach ($changed_gedcoms as $gedcom_name) {
 		if ($count!=0) {
-			$output2.='<br />';
+			$output2.='<br>';
 		}
 		$output2 .= '<a href="edit_changes.php?action=undoall&amp;ged='.rawurlencode($gedcom_name)."\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to undo all of the changes for this GEDCOM?')."');\">$gedcom_name - ".WT_I18N::translate('Undo all changes').'</a>';
 		$count++;

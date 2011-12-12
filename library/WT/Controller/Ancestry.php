@@ -128,7 +128,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		echo '</td><td class="details1">';
 		$relation ='';
 		$new=($pid=='' or !isset($pidarr[$pid]));
-		if (!$new) $relation = '<br />[=<a href="#sosa'.$pidarr[$pid].'">'.$pidarr[$pid].'</a> - '.get_sosa_name($pidarr[$pid]).']';
+		if (!$new) $relation = '<br>[=<a href="#sosa'.$pidarr[$pid].'">'.$pidarr[$pid].'</a> - '.get_sosa_name($pidarr[$pid]).']';
 		else $pidarr[$pid]=$sosa;
 		echo get_sosa_name($sosa).$relation;
 		echo '</td>';

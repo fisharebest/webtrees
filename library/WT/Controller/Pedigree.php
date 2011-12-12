@@ -274,7 +274,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 	function collapse_tree($index, $curgen, $diff) {
 		global $offsetarray, $treeid, $log2, $talloffset,$boxspacing, $mdiff, $minyoffset;
 
-		//print "$index:$curgen:$diff<br />\n";
+		//print "$index:$curgen:$diff<br>\n";
 		$f = ($index*2)+1; //-- father index
 		$m = $f+1; //-- mother index
 		if (empty($treeid[$index])) {
@@ -291,19 +291,19 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		}
 		if ($curgen==$this->PEDIGREE_GENERATIONS) {
 			$offsetarray[$index]["y"] -= $boxspacing*$diff;
-			//print "UP $index BY $diff<br />\n";
+			//print "UP $index BY $diff<br>\n";
 			return $diff;
 		}
 		$odiff=$diff;
 		$fdiff = collapse_tree($f, $curgen+1, $diff);
 		if (($curgen<($this->PEDIGREE_GENERATIONS-1))||($index%2==1)) $diff=$fdiff;
 		if (isset($offsetarray[$index]["y"])) $offsetarray[$index]["y"] -= $boxspacing*$diff;
-		//print "UP $index BY $diff<br />\n";
+		//print "UP $index BY $diff<br>\n";
 		$mdiff = collapse_tree($m, $curgen+1, $diff);
 		$zdiff = $mdiff - $fdiff;
 		if (($zdiff>0)&&($curgen<$this->PEDIGREE_GENERATIONS-2)) {
 			$offsetarray[$index]["y"] -= $boxspacing*$zdiff/2;
-			//print "UP $index BY ".($zdiff/2)."<br />\n";
+			//print "UP $index BY ".($zdiff/2)."<br>\n";
 			if ((empty($treeid[$m]))&&(!empty($treeid[$f]))) adjust_subtree($f, -1*($boxspacing*$zdiff/4));
 			$diff+=($zdiff/2);
 		}

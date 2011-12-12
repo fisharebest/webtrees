@@ -142,8 +142,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 			$height="100%";
 			echo "<tr>";
-			echo "<td valign=\"bottom\"><img class=\"line3\" name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\" /></td>";
-			echo "<td><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
+			echo "<td valign=\"bottom\"><img class=\"line3\" name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
+			echo "<td><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
 			echo "<td>";
 			//-- print the father box
 			print_pedigree_person($family->getHusband());
@@ -161,8 +161,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				echo "</td>";
 			}
 			echo "</tr><tr>";
-			echo "<td valign=\"top\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\" /></td>";
-			echo "<td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
+			echo "<td valign=\"top\"><img name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
+			echo "<td><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
 			echo "<td>";
 			//-- print the mother box
 			print_pedigree_person($family->getWife());
@@ -209,7 +209,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		}
 		//-- put a space between families on the last generation
 		if ($count==$this->dgenerations-1) {
-			if (isset($lastGenSecondFam)) echo "<br />";
+			if (isset($lastGenSecondFam)) echo "<br>";
 			$lastGenSecondFam = true;
 		}
 
@@ -251,16 +251,16 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						if ($i==0) {
 							//-- adjust for the number of kids
 							$h = ($bhalfheight+3)*$numkids;
-							echo "<td valign=\"bottom\"><img class=\"line1\" name=\"tvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$h\" alt=\"\" /></td>";
+							echo "<td valign=\"bottom\"><img class=\"line1\" name=\"tvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$h\" alt=\"\"></td>";
 						} else if ($i==$ct-1) {
 							$h = ($bhalfheight+3)*$kids;
 							if ($count<$this->dgenerations-1) {
 								if ($this->show_spouse) $h-=15;
 								else $h += 15;
 							}
-							echo "<td valign=\"top\"><img name=\"bvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"".$h."\" alt=\"\" /></td>";
+							echo "<td valign=\"top\"><img name=\"bvertline\" id=\"vline_$chil\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"".$h."\" alt=\"\"></td>";
 						} else {
-							echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+							echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
 						}
 					}
 					echo "</tr>";
@@ -278,16 +278,16 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			$numkids = 1;
 			$tbwidth = $bwidth+16;
 			for ($j=$count; $j<$this->dgenerations; $j++) {
-				echo "<div style=\"width: ".($tbwidth)."px;\"><br /></div></td><td width=\"$bwidth\">";
+				echo "<div style=\"width: ".($tbwidth)."px;\"><br></div></td><td width=\"$bwidth\">";
 			}
 			$kcount = 0;
 			foreach ($families as $family) {
 				$kcount+=$family->getNumberOfChildren();
 			}
 			if ($kcount==0) {
-				echo "<div style=\"width: ".($this->arrwidth)."px;\"><br /></div></td><td width=\"$bwidth\">";
+				echo "<div style=\"width: ".($this->arrwidth)."px;\"><br></div></td><td width=\"$bwidth\">";
 			} else {
-				echo "<div style=\"width: ".($this->arrwidth)."px;\"><a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["larrow"]."\" border=\"0\" alt=\"\" /></a></div>";
+				echo "<div style=\"width: ".($this->arrwidth)."px;\"><a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["larrow"]."\" border=\"0\" alt=\"\"></a></div>";
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					foreach ($families as $family) {
@@ -295,7 +295,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						if (!is_null($family)) {
 							$spouse = $family->getSpouse($person);
 							if ($spouse!=null) {
-								echo "<br /><br /><br />";
+								echo "<br><br><br>";
 							}
 						}
 					}
@@ -306,7 +306,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 		echo "<table id=\"table2_$pid\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td>";
 		print_pedigree_person($person);
-		echo "</td><td><img class=\"line2\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" />";
+		echo "</td><td><img class=\"line2\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\">";
 
 		//----- Print the spouse
 		if ($this->show_spouse) {
@@ -330,7 +330,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				}
 			}
 			//-- add offset divs to make things line up better
-			if ($count==$this->dgenerations) echo "<tr><td colspan\"2\"><div style=\"height: ".($bhalfheight/2)."px; width: ".$bwidth."px;\"><br /></div>";
+			if ($count==$this->dgenerations) echo "<tr><td colspan\"2\"><div style=\"height: ".($bhalfheight/2)."px; width: ".$bwidth."px;\"><br></div>";
 		}
 		echo "</td></tr></table>";
 
@@ -351,8 +351,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 					echo "<div class=\"center\" id=\"childarrow\" dir=\"".$TEXT_DIRECTION."\"";
 					echo " style=\"position:absolute; width:".$bwidth."px; \">";
 					echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow',3);\" onmouseout=\"swap_image('larrow',3);\">";
-					echo "<img id=\"larrow\" src=\"".$WT_IMAGES["darrow"]."\" border=\"0\" alt=\"\" />";
-					echo "</a><br />";
+					echo "<img id=\"larrow\" src=\"".$WT_IMAGES["darrow"]."\" border=\"0\" alt=\"\">";
+					echo "</a><br>";
 					echo "<div id=\"childbox\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
 					echo "<table class=\"person_box\"><tr><td>";
 
@@ -365,7 +365,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 							if (hasRTLText($name)) echo 'class="name2">';
 							else echo 'class="name1">';
 							echo $name;
-							echo "<br /></span></a>";
+							echo "<br></span></a>";
 
 						}
 
@@ -376,17 +376,17 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 							$name = $child->getFullName();
 							if (hasRTLText($name)) echo 'class="name2">';
 							else echo 'class="name1">';
-							echo '<img src="'.$WT_IMAGES["larrow"].'" height="10" alt="" />  ', $name;
-							echo "<br /></span></a>";
+							echo '<img src="'.$WT_IMAGES["larrow"].'" height="10" alt="">  ', $name;
+							echo "<br></span></a>";
 						}
 					}
 					//-- do we need to print this arrow?
-					echo "<img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\" /> ";
+					echo "<img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\"> ";
 
 					//-- print the siblings
 					foreach ($cfamids as $family) {
 						if (!is_null($family->getHusband()) || !is_null($family->getWife())) {
-							echo "<span class=\"name1\"><br />".WT_I18N::translate('Parents')."<br /></span>";
+							echo "<span class=\"name1\"><br>".WT_I18N::translate('Parents')."<br></span>";
 							$husb = $family->getHusband();
 							if (!empty($husb)) {
 								$spid = $husb->getXref();
@@ -396,7 +396,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 								if (hasRTLText($name)) echo 'class="name2">';
 								else echo 'class="name1">';
 								echo $name;
-								echo "<br /></span></a>";
+								echo "<br></span></a>";
 							}
 							$husb = $family->getWife();
 							if (!empty($husb)) {
@@ -407,13 +407,13 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 								if (hasRTLText($name)) echo 'class="name2">';
 								else echo 'class="name1">';
 								echo $name;
-								echo "<br /></span></a>";
+								echo "<br></span></a>";
 							}
 						}
 						$children = $family->getChildren();
 						$num = $family->getNumberOfChildren();
-						if ($num>2) echo "<span class=\"name1\"><br />".WT_I18N::translate('Siblings')."<br /></span>";
-						if ($num==2) echo "<span class=\"name1\"><br />".WT_I18N::translate('Sibling')."<br /></span>";
+						if ($num>2) echo "<span class=\"name1\"><br>".WT_I18N::translate('Siblings')."<br></span>";
+						if ($num==2) echo "<span class=\"name1\"><br>".WT_I18N::translate('Sibling')."<br></span>";
 						foreach ($children as $id=>$child) {
 							$cid = $child->getXref();
 							if ($cid!=$pid) {
@@ -423,7 +423,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 								if (hasRTLText($name)) echo 'class="name2">';
 								else echo 'class="name1">';
 								echo $name;
-								echo "<br /></span></a>";
+								echo "<br></span></a>";
 							}
 						}
 					}

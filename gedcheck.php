@@ -97,8 +97,8 @@ for ($i=0; $i<count($levels); $i++) {
 echo '</select></td></tr>';
 echo '<tr><td class="list_label">', WT_I18N::translate('Open links in'), '</td>';
 echo '<td class="optionbox"><select name="openinnew">';
-echo '<option value="0"', $openinnew==0?' selected="selected"':'', '/>', WT_I18N::translate('Same tab/window'), '</option>';
-echo '<option value="1"', $openinnew==1?' selected="selected"':'', '/>', WT_I18N::translate('New tab/window'), '</option>';
+echo '<option value="0"', $openinnew==0?' selected="selected"':'', '>', WT_I18N::translate('Same tab/window'), '</option>';
+echo '<option value="1"', $openinnew==1?' selected="selected"':'', '>', WT_I18N::translate('New tab/window'), '</option>';
 echo '</select></td></tr>';
 echo '<tr><td class="list_label">', WT_I18N::translate('Lines of GEDCOM context'), '</td>';
 echo '<td class="optionbox"><select name="context_lines">';
@@ -112,18 +112,18 @@ echo '<option value="0"', $showall==0?' selected="selected"':'', '>', WT_I18N::t
 echo '<option value="1"', $showall==1?' selected="selected"':'', '>', WT_I18N::translate('All records'), '</option>';
 echo '</select></td></tr>';
 echo '<tr><td colspan="2" class="list_label"><input type="submit" value="', WT_I18N::translate('Show'), '"><input type="hidden" name="action" value="go"></td></tr>';
-echo '</table></form><hr />';
+echo '</table></form><hr>';
 // Do not run until user clicks "show", as default page may take a while to load.
 // Instead, show some useful help info.
 if (!isset($_POST['action'])) {
-	echo '<p>', WT_I18N::translate('This module checks the format of a GEDCOM file against the <a href="http://phpgedview.sourceforge.net/ged551-5.pdf">5.5.1 GEDCOM Specification</a>.  It also checks for a number of common errors in your data.  Note that there are lots of versions, extensions and variations on the specification so you should not be concerned with any issues other than those flagged as "Critical".  The explanation for all the line-by-line errors can be found in the specification, so please check there before asking for help.'), '</p><hr />';
+	echo '<p>', WT_I18N::translate('This module checks the format of a GEDCOM file against the <a href="http://phpgedview.sourceforge.net/ged551-5.pdf">5.5.1 GEDCOM Specification</a>.  It also checks for a number of common errors in your data.  Note that there are lots of versions, extensions and variations on the specification so you should not be concerned with any issues other than those flagged as "Critical".  The explanation for all the line-by-line errors can be found in the specification, so please check there before asking for help.'), '</p><hr>';
 	exit();
 }
 
 // If we're checking a gedcom that is imported into the database, check that the file is synchronised
 if ($ged==WT_GEDCOM) {
 	$ged_link='href="#" onclick="window.open(\''."export_gedcom.php?export=".rawurlencode($ged).'\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');"';
-	echo '<div class="error">', WT_I18N::translate('Edits made to the database are not synchronized to the file %s.  The file contents may be out-of-date.  You can synchronize it with the database now by performing an <b><a "%s">export</a></b>.', $ged, $ged_link), '</div><hr/>';
+	echo '<div class="error">', WT_I18N::translate('Edits made to the database are not synchronized to the file %s.  The file contents may be out-of-date.  You can synchronize it with the database now by performing an <b><a "%s">export</a></b>.', $ged, $ged_link), '</div><hr>';
 }
 
 // Special cases.  Other facts link to themselves; SUBN, SUBN, OBJE, NOTE, REPO, SOUR

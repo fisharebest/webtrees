@@ -72,5 +72,5 @@
 		<option value=""></option>
 	</select>
 
-	<input type="hidden" id="setctry" name="setctry" value="" />
-	<input type="hidden" id="setyear" name="setyear" value="" />
+	<input type="hidden" id="setctry" name="setctry" value="">
+	<input type="hidden" id="setyear" name="setyear" value="">

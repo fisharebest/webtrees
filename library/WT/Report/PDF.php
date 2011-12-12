@@ -847,7 +847,7 @@ class TextBoxPDF extends TextBox {
 					} else {
 						// Checking if the Text has the same style
 						if ($element->getStyleName() == $lastelement->getStyleName()) {
-							$lastelement->addText(str_replace("\n", "<br />", $element->getValue()));
+							$lastelement->addText(str_replace("\n", "<br>", $element->getValue()));
 						} elseif (!empty($lastelement)) {
 							$newelements[] = $lastelement;
 							$lastelement = $element;
@@ -1060,7 +1060,7 @@ class TextBoxPDF extends TextBox {
 			} else {
 				$cXM=($pdf->getPageWidth())-$cX-$cW;
 			}
-			//echo "<br />cX=".$cX."  cXM=".$cXM."  cW=".$cW."  LW=".$pdf->getPageWidth()."  RW=".$pdf->getRemainingWidthPDF()."  MLW=".$pdf->getMaxLineWidth();
+			//echo "<br>cX=".$cX."  cXM=".$cXM."  cW=".$cW."  LW=".$pdf->getPageWidth()."  RW=".$pdf->getRemainingWidthPDF()."  MLW=".$pdf->getMaxLineWidth();
 			$pdf->Rect($cXM, $cY, $cW, $cH, $cS);
 		}
 		// Add cell padding if set and if any text (element) exist
@@ -1185,7 +1185,7 @@ class TextPDF extends Text {
 		}
 //DumpString($temptext); //@@@
 		$temptext = spanLTRRTL($temptext, "BOTH");
-		$temptext = str_replace(array('<br /><span dir="rtl" >', '<br /><span dir="ltr" >', '> ',  ' <'), array('<span dir="rtl" ><br />', '<span dir="ltr" ><br />', '>&nbsp;', '&nbsp;<'), $temptext);
+		$temptext = str_replace(array('<br><span dir="rtl" >', '<br><span dir="ltr" >', '> ',  ' <'), array('<span dir="rtl" ><br>', '<span dir="ltr" ><br>', '>&nbsp;', '&nbsp;<'), $temptext);
 //DumpString($temptext); //@@@
  		$pdf->writeHTML($temptext, false, false, true, false, ""); //change height - line break etc. - the form is mirror on rtl pages
 //@@	$pdf->writeHTML($temptext.'@2', false, false, true, false, ""); //@@

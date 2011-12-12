@@ -157,12 +157,12 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			// "Help for this page" link
 			echo '<div id="page_help">', help_link('add_faq_item', $this->getName()), '</div>';
 			echo '<form name="faq" method="post" action="#">';
-			echo '<input type="hidden" name="save" value="1" />';
-			echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
+			echo '<input type="hidden" name="save" value="1">';
+			echo '<input type="hidden" name="block_id" value="', $block_id, '">';
 			echo '<table id="faq_module">';
 			echo '<tr><th>';
 			echo WT_I18N::translate('Question');
-			echo '</th></tr><tr><td><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"/></td></tr>';
+			echo '</th></tr><tr><td><input type="text" name="header" size="90" tabindex="1" value="'.htmlspecialchars($header).'"></td></tr>';
 			echo '<tr><th>';
 			echo WT_I18N::translate('Answer');
 			echo '</th></tr><tr><td>';
@@ -191,17 +191,17 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			$languages=get_block_setting($block_id, 'languages');
 			echo edit_language_checkboxes('lang_', $languages);
 			echo '</td><td>';
-			echo '<input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '" /></td>';
+			echo '<input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '"></td>';
 			echo '</td><td>';
-				echo '<select name="gedcom_id" tabindex="4" />';
+				echo '<select name="gedcom_id" tabindex="4">';
 					echo '<option value="">', WT_I18N::translate('All'), '</option>';
 					echo '<option value="', WT_GED_ID, '" selected="selected">', WT_I18N::translate('%s', get_gedcom_setting(WT_GED_ID, 'title')), '</option';
 				echo '</select>';
 			echo '</td></tr>';
 			echo '</table>';
 
-			echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5"/>';
-			echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" /></p>';
+			echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5">';
+			echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6"></p>';
 			echo '</form>';
 			exit;
 		}
@@ -328,7 +328,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 				echo '</div>';
 				echo '</div>';
 				echo '<div class="faq_body">', substr($faqbody, 0, 1)=='<' ? $faqbody : nl2br($faqbody), '</div>';
-				echo '<hr />';
+				echo '<hr>';
 			}
 		}
 	}

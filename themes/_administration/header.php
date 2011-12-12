@@ -31,15 +31,15 @@ echo
 	'<head>',
 	'<meta charset="UTF-8">',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png" />',
-	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery/jquery-ui_theme.css" type="text/css" />',
-	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />',
-	'<meta name="robots" content="noindex,nofollow" />';
+	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
+	'<link rel="stylesheet" href="', WT_THEME_URL, 'jquery/jquery-ui_theme.css" type="text/css">',
+	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all">',
+	'<meta name="robots" content="noindex,nofollow">';
 	
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css" />';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
 	break;
 }
 
@@ -49,7 +49,7 @@ echo
 	'<body id="body">',
 // Header
 	'<div id="admin_head" class="ui-widget-content">',
-	'<img src="', $WT_IMAGES['webtrees'], '" alt="', WT_WEBTREES, '"/>',
+	'<img src="', $WT_IMAGES['webtrees'], '" alt="', WT_WEBTREES, '">',
 	'<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>',
 	'<div id="links">',
 	'<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
@@ -66,9 +66,9 @@ echo
 	echo '</div>',
 	'<div id="info">',
 	WT_WEBTREES, ' ', WT_VERSION_TEXT,
-	'<br />',
+	'<br>',
 	WT_I18N::translate('Current Server Time:'), ' ', format_timestamp(time()),
-	'<br />',
+	'<br>',
 	WT_I18N::translate('Current User Time:'), ' ', format_timestamp(client_time()),
 	'</div>',
 	'</div>',

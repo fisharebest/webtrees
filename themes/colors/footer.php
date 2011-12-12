@@ -31,12 +31,12 @@ if (!defined('WT_WEBTREES')) {
 echo '</div>'; // <div id="content">
 if ($view!='simple') {
 	echo '<div id="footer" class="', $TEXT_DIRECTION, '">';
-	echo '<br />';
+	echo '<br>';
 	echo contact_links();
-	echo '<br />';
+	echo '<br>';
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank">';
-	echo '<img src="', $WT_IMAGES['webtrees'], '" width="100" height="21" alt="', WT_WEBTREES, '" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '" /></a>';
+	echo '<img src="', $WT_IMAGES['webtrees'], '" width="100" height="21" alt="', WT_WEBTREES, '" title="', WT_WEBTREES, ' ', WT_VERSION_TEXT, '"></a>';
 	echo '</p>';
 	if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
 		echo execution_stats();

@@ -127,7 +127,7 @@ if ($build == 'yes') {
 		// Display when this Media object isn't restricted
 		$disp &= canDisplayFact($mediaobject->getXref(), $mediaobject->ged_id, $mediaobject->getGedcomRecord());
 		if (!$disp) {
-			// echo "removing $key - disp<br />";
+			// echo "removing $key - disp<br>";
 			unset($medialist[$key]);
 			continue;
 		}
@@ -140,12 +140,12 @@ if ($build == 'yes') {
 
 			if ($filter_type == $or) {
 				if (!$found1 && !$found2) {
-					// echo "removing $key - OR<br />";
+					// echo "removing $key - OR<br>";
 					unset($medialist[$key]);
 				}
 			} else {
 				if (!$found1 || !$found2) {
-					// echo "removing $key - AND<br />";
+					// echo "removing $key - AND<br>";
 					unset($medialist[$key]);
 				}
 			}
@@ -178,8 +178,8 @@ if (WT_USE_LIGHTBOX) {
 // A form for filtering the media items
 ?>
 <form action="medialist.php" method="get">
-	<input type="hidden" name="action" value="filter" />
-	<input type="hidden" name="search" value="yes" />
+	<input type="hidden" name="action" value="filter">
+	<input type="hidden" name="search" value="yes">
 	<table class="list-table width75">
 	<!-- Build the form cells -->
 	<tr>
@@ -204,8 +204,8 @@ if (WT_USE_LIGHTBOX) {
 					else echo $f;
 					echo '</option>';
 				}
-				echo '</select></span><br />';
-		//} else echo $MEDIA_DIRECTORY, '<input name="folder" type="hidden" value="ALL" />';
+				echo '</select></span><br>';
+		//} else echo $MEDIA_DIRECTORY, '<input name="folder" type="hidden" value="ALL">';
 					?>
 			</td>
 	<!-- // end select media folders -->
@@ -238,7 +238,7 @@ if (WT_USE_LIGHTBOX) {
 				<?php echo WT_I18N::translate('Include subdirectories'), help_link('medialist_recursive'); ?>
 			</td>
 			<td class="optionbox wrap width25">
-				<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?> />
+				<input type="checkbox" id="subdirs" name="subdirs" <?php if (!$currentdironly) { ?>checked="checked"<?php } ?>>
 			</td>
 				<?php // } ?>
 	<!-- // end subdirectories -->
@@ -267,7 +267,7 @@ if (WT_USE_LIGHTBOX) {
 			</td>
 			<td class="optionbox wrap width25">
 		<!-- // begin Text field for filter and "submit" button -->
-				<input id="filter1" name="filter1" value="<?php echo PrintReady($filter1); ?>" size="14" />
+				<input id="filter1" name="filter1" value="<?php echo PrintReady($filter1); ?>" size="14">
 				<select name="filter_type">
 					<?php
 					foreach (array($or, $and) as $selectEntry) {
@@ -276,15 +276,15 @@ if (WT_USE_LIGHTBOX) {
 						echo '>', $selectEntry, '</option>';
 					}
 					?>
-				</select><br />
-				<input id="filter2" name="filter2" value="<?php echo PrintReady($filter2); ?>" size="14" />
+				</select><br>
+				<input id="filter2" name="filter2" value="<?php echo PrintReady($filter2); ?>" size="14">
 			</td>
 	<!-- // end search filter -->
 <!-- // NOTE: Row 3 right:-->
 	<!-- // begin columns per page -->
 			<td class="descriptionbox wrap width25">
 				<?php echo WT_I18N::translate('Columns per page'), help_link('media_columns_pp'); ?>
-				<br />
+				<br>
 			<?php echo WT_I18N::translate('Show thumbnails'), help_link('media_thumbs'); ?>
 			</td>
 			<td class="optionbox wrap width25">
@@ -297,8 +297,8 @@ if (WT_USE_LIGHTBOX) {
 					}
 					?>
 				</select>
-				<br /><input type="checkbox" id="thumbnail" name="thumbnail"
-				<?php if ($show_thumbnail) { ?>checked="checked"<?php } ?> />
+				<br><input type="checkbox" id="thumbnail" name="thumbnail"
+				<?php if ($show_thumbnail) { ?>checked="checked"<?php } ?>>
 			</td>
 
 	<!-- // end columns per page -->
@@ -308,8 +308,8 @@ if (WT_USE_LIGHTBOX) {
 			<td class="descriptionbox wrap width25">
 			</td>
 			<td class="optionbox wrap width25">
-				<input type="submit" name="apply_filter" value="<?php echo WT_I18N::translate('Search'); ?>" />
-				<input type="submit" name="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
+				<input type="submit" name="apply_filter" value="<?php echo WT_I18N::translate('Search'); ?>">
+				<input type="submit" name="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
 			</td>
 	<!-- // end search buttons  -->
 <!-- // NOTE: Row 4 right:-->
@@ -337,7 +337,7 @@ if ($show == 'yes') {
 		$ct = '0';
 	}
 
-	echo '<div align="center">', WT_I18N::translate('Media Objects found'), ' ', $ct, ' <br /><br />';
+	echo '<div align="center">', WT_I18N::translate('Media Objects found'), ' ', $ct, ' <br><br>';
 
   if ($ct>0) {
 	$currentPage = ((int) ($start / $max)) + 1;
@@ -433,8 +433,8 @@ if ($show == 'yes') {
 					// ---------- Edit Media --------------------
 					echo '<td class="width33 wrap center font9" valign="top">';
 					echo "<a href=\"#\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."&amp;linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
-					echo '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '" />&nbsp;&nbsp;&nbsp;';
-					echo '<br />';
+					echo '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '">&nbsp;&nbsp;&nbsp;';
+					echo '<br>';
 					echo WT_I18N::translate('Edit Details') ;
 					echo '</a>';
 					echo '</td>';
@@ -447,14 +447,14 @@ if ($show == 'yes') {
 					echo '<a href="'.$mediaobject->getHtmlUrl().'" title="', WT_I18N::translate('View this Media Item\'s Details 
 Plus other Media Options - MediaViewer page'), '">';
 					echo '&nbsp;&nbsp;&nbsp;<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_view.gif" alt="" class="icon" title="', WT_I18N::translate('View this Media Item\'s Details 
-Plus other Media Options - MediaViewer page'), '" />';
-					echo '<br />';
+Plus other Media Options - MediaViewer page'), '">';
+					echo '<br>';
 					echo WT_I18N::translate('View Details') ;
 					echo '</a>';
 					echo '</td>';
 					echo '</tr></table>';
 					// ------------ Linespace ---------------------
-					echo '<br />';
+					echo '<br>';
 				}
 			}
 		}
@@ -487,7 +487,7 @@ Plus other Media Options - MediaViewer page'), '" />';
 				echo '<p class="ui-state-error">', /* I18N: %s is a filename */ WT_I18N::translate('The file “%s” does not exist.', $mediaobject->getLocalFilename()), '</p>';
 			}
 		}
-		echo '<br />';
+		echo '<br>';
 		echo '<div style="white-space: normal; width: 95%;">';
 		print_fact_sources($mediaobject->getGedcomRecord(), 1);
 		print_fact_notes($mediaobject->getGedcomRecord(), 1);
@@ -559,7 +559,7 @@ Plus other Media Options - MediaViewer page'), '" />';
 	}
 	echo '</td>';
 	echo '</tr></table></td></tr>';
-	echo '</table><br />';
+	echo '</table><br>';
   }
   echo '</div>
   </div>';// close media-list-page

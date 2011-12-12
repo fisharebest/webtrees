@@ -53,7 +53,7 @@ echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), '</h2
 	//-->
 	</script>
 	</td><td width="50px">&nbsp;</td><td><form name="people" id="people" method="get" action="?">
-	<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>" />
+	<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
 		<table class="list_table" width="500" align="center">
 			<tr>
 				<td colspan="4" class="topbottombar" style="text-align:center; ">
@@ -77,7 +77,7 @@ echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), '</h2
 
 			<tr>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>" />
+					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
 					<?php print_findindi_link("rootid", ""); ?>
 				</td>
 				<td class="optionbox">
@@ -97,19 +97,19 @@ echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), '</h2
 				<td class="optionbox">
 					<input type="checkbox" value="<?php
 					if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
-					else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>"/>
+					else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
 				</td>
 			</tr>
 			<tr>
 				<td class="topbottombar" colspan="4">
-					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
+					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
 				</td>
 			</tr>
 		</table>
 	</form>
 <?php
 	if ($show_full==0) {
-		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
+		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br>';
 	}
 ?>
 	</td></tr>
@@ -186,7 +186,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 						echo 'ltr" style="position:absolute; left:';
 					}
 					echo ($linexoffset+$controller->pbwidth), 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;\">';
-					echo '<img src="', $WT_IMAGES['hline'], '" width="', ($vlength-$controller->pbwidth), '" height="', $linesize, '" alt="" />';
+					echo '<img src="', $WT_IMAGES['hline'], '" width="', ($vlength-$controller->pbwidth), '" height="', $linesize, '" alt="">';
 					echo '</div>';
 				}
 			}
@@ -272,7 +272,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" dir=\"$TEXT_DIRECTION\">";
 		if (($talloffset < 2) && ($curgen > $talloffset) && ($curgen < $controller->PEDIGREE_GENERATIONS)) {
 			echo "<tr><td>";
-			echo "<img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" alt=\"\" />";
+			echo "<img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" alt=\"\">";
 			echo "</td><td width=\"100%\">";
 		} else {
 			echo "<tr><td width=\"100%\">";
@@ -290,16 +290,16 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 				echo "</td></tr><tr><td align=\"center\">";
 				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$controller->talloffset}\" ";
 				echo "onmouseover=\"swap_image('arrow$i', 3);\" onmouseout=\"swap_image('arrow$i', 3);\">";
-				echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["darrow"], "\" border=\"0\" alt=\"\" />";
+				echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["darrow"], "\" border=\"0\" alt=\"\">";
 			} elseif ($talloffset < 2) {
 				echo "</td><td valign=\"middle\">";
 				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\" ";
 				if ($TEXT_DIRECTION=="rtl") {
 					echo "onmouseover=\"swap_image('arrow$i', 0);\" onmouseout=\"swap_image('arrow$i', 0);\">";
-					echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["larrow"], "\" border=\"0\" alt=\"\" />";
+					echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["larrow"], "\" border=\"0\" alt=\"\">";
 				} else {
 					echo "onmouseover=\"swap_image('arrow$i', 1);\" onmouseout=\"swap_image('arrow$i', 1);\">";
-					echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["rarrow"], "\" border=\"0\" alt=\"\" />";
+					echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["rarrow"], "\" border=\"0\" alt=\"\">";
 				}
 				echo "</a>";
 			}
@@ -331,10 +331,10 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			echo $addxoffset, "px; top:", $yoffset, "px; width:10px; height:10px; \">";
 			if ($TEXT_DIRECTION=="rtl") {
 				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 1);\" onmouseout=\"swap_image('larrow', 1);\">";
-				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["rarrow"], "\" border=\"0\" alt=\"\" />";
+				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["rarrow"], "\" border=\"0\" alt=\"\">";
 			} else {
 				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 0);\" onmouseout=\"swap_image('larrow', 0);\">";
-				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["larrow"], "\" border=\"0\" alt=\"\" />";
+				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["larrow"], "\" border=\"0\" alt=\"\">";
 			}
 			break;
 		case 1:
@@ -342,21 +342,21 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			echo $basexoffset, "px; top:", $yoffset, "px; width:10px; height:10px; \">";
 			if ($TEXT_DIRECTION=="rtl") {
 				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 1);\" onmouseout=\"swap_image('larrow', 1);\">";
-				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["rarrow"], "\" border=\"0\" alt=\"\" />";
+				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["rarrow"], "\" border=\"0\" alt=\"\">";
 			} else {
 				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 0);\" onmouseout=\"swap_image('larrow', 0);\">";
-				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["larrow"], "\" border=\"0\" alt=\"\" />";
+				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["larrow"], "\" border=\"0\" alt=\"\">";
 			}
 			break;
 		case 2:
 			echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset+$controller->pbheight/2+10), "px; width:10px; height:10px; \">";
 			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('darrow', 3);\" onmouseout=\"swap_image('darrow', 3);\">";
-			echo "<img id=\"darrow\" src=\"", $WT_IMAGES["darrow"], "\" border=\"0\" alt=\"\" />";
+			echo "<img id=\"darrow\" src=\"", $WT_IMAGES["darrow"], "\" border=\"0\" alt=\"\">";
 			break;
 		case 3:
 			echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset-$controller->pbheight/2-10), "px; width:10px; height:10px; \">";
 			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('uarrow', 2);\" onmouseout=\"swap_image('uarrow', 2);\">";
-			echo "<img id=\"uarrow\" src=\"", $WT_IMAGES["uarrow"], "\" border=\"0\" alt=\"\" />";
+			echo "<img id=\"uarrow\" src=\"", $WT_IMAGES["uarrow"], "\" border=\"0\" alt=\"\">";
 			break;
 		}
 		echo "</a>";
@@ -381,7 +381,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 					echo 'class="name1">';
 				}
 				echo $name;
-				echo '<br /></span></a>';
+				echo '<br></span></a>';
 			}
 
 			$children = $family->getChildren();
@@ -394,7 +394,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 					echo "class=\"name1\">&lt; ";
 				}
 				echo $name;
-				echo '<br /></span></a>';
+				echo '<br></span></a>';
 			}
 		}
 		//-- echo the siblings
@@ -402,10 +402,10 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			if ($family!=null) {
 				$children = $family->getChildren();
 				if (count($children)>2) {
-					echo '<span class="name1"><br />', WT_I18N::translate('Siblings'), '<br /></span>';
+					echo '<span class="name1"><br>', WT_I18N::translate('Siblings'), '<br></span>';
 				}
 				if (count($children)==2) {
-					echo '<span class="name1"><br />', WT_I18N::translate('Sibling'), '<br /></span>';
+					echo '<span class="name1"><br>', WT_I18N::translate('Sibling'), '<br></span>';
 				}
 				foreach ($children as $child) {
 					if (!$controller->rootPerson->equals($child) && !is_null($child)) {
@@ -417,7 +417,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 							echo 'class="name1"> ';
 						}
 						echo $name;
-						echo '<br /></span></a>';
+						echo '<br></span></a>';
 					}
 				}
 			}

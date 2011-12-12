@@ -86,7 +86,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		$title='';
 		if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
 			$title.="<a href=\"#\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
+			$title.="<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\"></a>";
 		}
 		$title.=$this->getTitle();
 		$content = '';
@@ -117,9 +117,9 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= $news["text"];
 			// Print Admin options for this News item
 			if (WT_USER_GEDCOM_ADMIN) {
-				$content .= "<hr size=\"1\" />"
+				$content .= "<hr size=\"1\">"
 				."<a href=\"#\" onclick=\"window.open('editnews.php?news_id='+".$news['id'].", '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">".WT_I18N::translate('Edit')."</a> | "
-				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this News entry?')."');\">".WT_I18N::translate('Delete')."</a><br />";
+				."<a href=\"index.php?action=deletenews&amp;news_id=".$news['id']."&amp;ctype={$ctype}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this News entry?')."');\">".WT_I18N::translate('Delete')."</a><br>";
 			}
 			$content .= "</div>";
 		}
@@ -131,7 +131,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($limit=='date' || $limit=='count') {
 			if ($printedAddLink) $content .= "&nbsp;&nbsp;|&nbsp;&nbsp;";
 			$content .= "<a href=\"index.php?gedcom_news_archive=yes&amp;ctype={$ctype}\">".WT_I18N::translate('View archive')."</a>";
-			$content .= help_link('gedcom_news_archive').'<br />';
+			$content .= help_link('gedcom_news_archive').'<br>';
 		}
 
 		if ($template) {
@@ -184,6 +184,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		$flag=get_block_setting($block_id, 'flag', 0);
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Limit:'), help_link('gedcom_news_flag');
-		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="'.$flag.'" /></td></tr>';
+		echo '</td><td class="optionbox"><input type="text" name="flag" size="4" maxlength="4" value="'.$flag.'"></td></tr>';
 	}
 }

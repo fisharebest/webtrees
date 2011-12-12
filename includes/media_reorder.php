@@ -44,7 +44,7 @@ echo WT_JS_START; ?>
 	});
 <?php echo WT_JS_END;
 
-	echo "<br /><b>".WT_I18N::translate('Re-order media')."</b>";
+	echo "<br><b>".WT_I18N::translate('Re-order media')."</b>";
 	echo "&nbsp --- &nbsp;" . WT_I18N::translate('Click a row, then drag-and-drop to re-order media ');
 
 	global $MEDIA_EXTERNAL, $MEDIATYPE;
@@ -55,10 +55,10 @@ echo WT_JS_START; ?>
 
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
-		<input type="hidden" name="action" value="reorder_media_update" />
-		<input type="hidden" name="pid" value="<?php echo $pid; ?>" />
-		<input type="hidden" name="currtab" value="<?php echo $currtab; ?>" />
-<!-- <input type="hidden" name="option" value="bybirth" /> -->
+		<input type="hidden" name="action" value="reorder_media_update">
+		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
+		<input type="hidden" name="currtab" value="<?php echo $currtab; ?>">
+<!-- <input type="hidden" name="option" value="bybirth"> -->
 
 		<p><center>
 		<button type="submit" title="<?php echo WT_I18N::translate('Saves the sorted media to the database'); ?>"><?php echo WT_I18N::translate('Save'); ?></button>
@@ -184,14 +184,14 @@ echo WT_JS_START; ?>
 		echo "<table width=97%><tr><td class=\"descriptionbox wrap width25\">";
 		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\">";
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
 		}
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), "<br />";
+		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), "<br>";
 		$event = new WT_Event(get_sub_record(1, "1 CHAN", $gedrec), null, 0);
 		echo format_fact_date($event, new WT_Person(''), false, true);
-		echo "</td></tr></table><br />";
+		echo "</td></tr></table><br>";
 	}
 	?>
 	<button type="submit" title="<?php echo WT_I18N::translate('Saves the sorted media to the database'); ?>"><?php echo WT_I18N::translate('Save'); ?></button>

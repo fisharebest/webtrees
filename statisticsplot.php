@@ -662,7 +662,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	$title = substr($mytitle, 0, strpos($mytitle, '|'));
 	echo '<center><div class="statistics_chart">';
 	echo '<img src="', $imgurl, '" width="950" height="300" alt="', htmlspecialchars($title), '" title="', htmlspecialchars($title), '">';
-	echo '</div></center><br /><br />';
+	echo '</div></center><br><br>';
 }
 
 function calc_axis($xas_grenzen) {
@@ -833,15 +833,15 @@ function print_sources_stats_chart($type) {
 	switch ($type) {
 	case '9':
 		echo '<div id="google_charts" class="center">';
-		echo '<b>', WT_I18N::translate('Individuals with sources'), '</b><br /><br />';
+		echo '<b>', WT_I18N::translate('Individuals with sources'), '</b><br><br>';
 		echo $stats->chartIndisWithSources($params);
-		echo '</div><br />';
+		echo '</div><br>';
 		break;
 	case '8':
 		echo '<div id="google_charts" class="center">';
-		echo '<b>', WT_I18N::translate('Families with sources'), '</b><br /><br />';
+		echo '<b>', WT_I18N::translate('Families with sources'), '</b><br><br>';
 		echo $stats->chartFamsWithSources($params);
-		echo '</div><br />';
+		echo '</div><br>';
 		break;
 	}
 }
@@ -916,7 +916,7 @@ if ($action=='update') {
 }
 
 echo '<h2 class="center">', WT_I18N::translate('Statistics plot'), '</h2>';
-echo '<br />';
+echo '<br>';
 
 $nrpers = $_SESSION[$GEDCOM.'nrpers'];
 $nrfam = $_SESSION[$GEDCOM.'nrfam'];
@@ -925,11 +925,11 @@ $nrfemale = $_SESSION[$GEDCOM.'nrfemale'];
 
 //-- out of range values
 if (($y_as < 201) || ($y_as > 202)) {
-	echo WT_I18N::translate('%s not implemented', $y_as), '<br/>';
+	echo WT_I18N::translate('%s not implemented', $y_as), '<br>';
 	exit;
 }
 if (($z_as < 300) || ($z_as > 302)) {
-	echo WT_I18N::translate('%s not implemented', $z_as), '<br/>';
+	echo WT_I18N::translate('%s not implemented', $z_as), '<br>';
 	exit;
 }
 
@@ -988,9 +988,9 @@ case '9':
 	print_sources_stats_chart($x_as);
 	break;
 default:
-	echo WT_I18N::translate('%s not implemented', $x_as), '<br/>';
+	echo WT_I18N::translate('%s not implemented', $x_as), '<br>';
 	exit;
 }
-echo '<br /><div class ="center noprint">';
-echo '<input type="button" value="', WT_I18N::translate('Close Window'), '" onclick="window.close()" /><br /><br />';
+echo '<br><div class ="center noprint">';
+echo '<input type="button" value="', WT_I18N::translate('Close Window'), '" onclick="window.close()"><br><br>';
 echo '</div>';

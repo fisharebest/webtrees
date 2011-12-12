@@ -106,7 +106,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = $html;
 
 		if (get_block_setting($block_id, 'show_timestamp', false)) {
-			$content.='<br/>'.format_timestamp(get_block_setting($block_id, 'timestamp', time()));
+			$content.='<br>'.format_timestamp(get_block_setting($block_id, 'timestamp', time()));
 		}
 
 		if ($template) {
@@ -165,7 +165,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 
 			WT_I18N::translate('GEDCOM statistics')=>
 			'<div class="gedcom_stats">
-				<span style="font-weight: bold"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br />
+				<span style="font-weight: bold"><a href="index.php?command=gedcom">#gedcomTitle#</a></span><br>
 				'.WT_I18N::translate('This GEDCOM was created using <b>%1$s</b> on <b>%2$s</b>.', '#gedcomCreatedSoftware#', '#gedcomDate#').'
 				<table id="keywords">
 					<tr>
@@ -177,11 +177,11 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Males').'</td>
-									<td class="facts_value" align="right">#totalSexMales#<br />#totalSexMalesPercentage#</td>
+									<td class="facts_value" align="right">#totalSexMales#<br>#totalSexMalesPercentage#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Females').'</td>
-									<td class="facts_value" align="right">#totalSexFemales#<br />#totalSexFemalesPercentage#</td>
+									<td class="facts_value" align="right">#totalSexFemales#<br>#totalSexFemalesPercentage#</td>
 								</tr>
 								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Total surnames').'</td>
@@ -217,7 +217,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 								</tr>
 							</table>
 						</td>
-						<td><br /></td>
+						<td><br></td>
 						<td valign="top">
 							<table cellspacing="1" cellpadding="0" border="0">
 								<tr>
@@ -263,8 +263,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 							</table>
 						</td>
 					</tr>
-				</table><br />
-				<span style="font-weight: bold">'.WT_I18N::translate('Most Common Surnames').'</span><br />
+				</table><br>
+				<span style="font-weight: bold">'.WT_I18N::translate('Most Common Surnames').'</span><br>
 				#commonSurnames#
 			</div>'
 		);
@@ -274,7 +274,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		// title
 		echo '<tr><td class="descriptionbox wrap width33">',
 			WT_Gedcom_Tag::getLabel('TITL'),
-			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', htmlspecialchars($title), '" /></td></tr>';
+			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', htmlspecialchars($title), '"></td></tr>';
 
 		// templates
 		echo '<tr><td class="descriptionbox wrap width33">',
@@ -322,7 +322,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">',
 			WT_I18N::translate('Content'),
 			help_link('block_html_content', $this->getName()),
-			'<br /><br /></td>',
+			'<br><br></td>',
 			'<td class="optionbox">';
 		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 			// use CKeditor module

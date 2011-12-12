@@ -79,7 +79,7 @@ class search_replace_bu_plugin extends base_plugin {
 			$ct=-1;
 			$ct=@preg_match('/'.$this->search.'/', '');
 			if ($ct==-1) {
-				$this->error='<br/><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can\'t be used.').'</span>';
+				$this->error='<br><span class="error">'.WT_I18N::translate('The regex appears to contain an error.  It can\'t be used.').'</span>';
 			}
 			break;
 		}
@@ -110,12 +110,12 @@ class search_replace_bu_plugin extends base_plugin {
 			'<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Whole words only')    .'</option>'.
 			'<option value="wildcards"'.($this->method=='wildcards' ? ' selected="selected"' : '').'>'.WT_I18N::translate('Wildcards').'</option>'.
 			'<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Regular expression')    .'</option>'.
-			'</select><br/><em>'.$descriptions[$this->method].'</em>'.$this->error.'</td></tr>'.
+			'</select><br><em>'.$descriptions[$this->method].'</em>'.$this->error.'</td></tr>'.
 
 			'<tr><th>'.WT_I18N::translate('Case insensitive').':</th>'.
 			'<td>'.
 			'<input type="checkbox" name="case" value="i" '.($this->case=='i' ? 'checked="checked"' : '').'" onchange="this.form.submit();">'.
-			'<br/><em>'.WT_I18N::translate('Tick this box to match both upper and lower case letters.').'</em></td></tr>'.
+			'<br><em>'.WT_I18N::translate('Tick this box to match both upper and lower case letters.').'</em></td></tr>'.
 			parent::getOptionsForm();
 	}
 }

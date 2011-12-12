@@ -12,7 +12,7 @@
 		var searchArray = searchStr.substring(1,searchStr.length).split('&');
 		var htmlOutput = '';
 		for (var i=0; i<searchArray.length; i++) {
-			htmlOutput += searchArray[i] + '<br />';
+			htmlOutput += searchArray[i] + '<br>';
 		}
 		return(htmlOutput);
 	}
@@ -23,7 +23,7 @@
 
 <body>
 <b>Census Assistant - Help window</b>
-<br /><br />
+<br><br>
 Here will be the help for the Census Assistant window:
 <p>
 <script type="text/javascript">

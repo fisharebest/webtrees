@@ -131,8 +131,8 @@ echo WT_JS_END;
 <?php $somethingPrinted = $controller->PrintResults(); ?>
 <!-- /*************************************************** Search Form Outer Table **************************************************/ -->
 <form method="post" name="searchform" onsubmit="return checknames(this);" action="search_advanced.php">
-<input type="hidden" name="action" value="<?php echo $controller->action; ?>" />
-<input type="hidden" name="isPostBack" value="true" />
+<input type="hidden" name="action" value="<?php echo $controller->action; ?>">
+<input type="hidden" name="isPostBack" value="true">
 <table id="field_table" class="list_table" width="35%" border="0">
 	<tr>
 		<td colspan="4" class="facts_label03" style="text-align:center;">
@@ -155,7 +155,7 @@ echo WT_JS_END;
 			$currentFieldSearch = $controller->getField($i); // Get this field's name and the search criterion
 			$currentField = substr($currentFieldSearch, 0, strrpos($currentFieldSearch, ':')); // Get the actual field name
 			?>
-			<input tabindex="<?php echo $i+1; ?>" type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo $controller->getValue($i); ?>" />
+			<input tabindex="<?php echo $i+1; ?>" type="text" id="value<?php echo $i; ?>" name="values[<?php echo $i; ?>]" value="<?php echo $controller->getValue($i); ?>">
 			<?php if (preg_match("/^NAME:/", $currentFieldSearch)>0) {
 				?>
 				<select name="fields[<?php echo $i; ?>]">
@@ -165,7 +165,7 @@ echo WT_JS_END;
 					<option value="<?php echo $currentField; ?>:SDX"<?php if (preg_match("/:SDX$/", $currentFieldSearch)>0) echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Sounds like'); ?></option>
 				</select>
 			<?php } else { ?>
-			<input type="hidden" name="fields[<?php echo $i; ?>]" value="<?php echo $controller->getField($i); ?>" />
+			<input type="hidden" name="fields[<?php echo $i; ?>]" value="<?php echo $controller->getField($i); ?>">
 			<?php }
 			if (preg_match("/:DATE$/", $currentFieldSearch)>0) {
 				?>
@@ -219,7 +219,7 @@ echo WT_JS_END;
 							<?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?>
 						</td>
 						<td class="list_value">
-							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:'.$fatherGivnOption)); ?>" />
+							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:'.$fatherGivnOption)); ?>">
 							<select name="fields[<?php echo $j; ?>]">
 								<option value="FAMC:HUSB:NAME:GIVN:EXACT"<?php if ($fatherGivnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
 								<option value="FAMC:HUSB:NAME:GIVN:BEGINS"<?php if ($fatherGivnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
@@ -234,7 +234,7 @@ echo WT_JS_END;
 							<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?>
 						</td>
 						<td class="list_value">
-							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:'.$fatherSurnOption)); ?>" />
+							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:SURN:'.$fatherSurnOption)); ?>">
 							<select name="fields[<?php echo $j; ?>]">
 								<option value="FAMC:HUSB:NAME:SURN:EXACT"<?php if ($fatherSurnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
 								<option value="FAMC:HUSB:NAME:SURN:BEGINS"<?php if ($fatherSurnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
@@ -256,7 +256,7 @@ echo WT_JS_END;
 							<?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?>
 						</td>
 						<td class="list_value">
-							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:'.$motherGivnOption)); ?>" />
+							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:GIVN:'.$motherGivnOption)); ?>">
 							<select name="fields[<?php echo $j; ?>]">
 								<option value="FAMC:WIFE:NAME:GIVN:EXACT"<?php if ($motherGivnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
 								<option value="FAMC:WIFE:NAME:GIVN:BEGINS"<?php if ($motherGivnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
@@ -271,7 +271,7 @@ echo WT_JS_END;
 							<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?>
 						</td>
 						<td class="list_value">
-							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:SURN:'.$motherSurnOption)); ?>" />
+							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:WIFE:NAME:SURN:'.$motherSurnOption)); ?>">
 							<select name="fields[<?php echo $j; ?>]">
 								<option value="FAMC:WIFE:NAME:SURN:EXACT"<?php if ($motherSurnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
 								<option value="FAMC:WIFE:NAME:SURN:BEGINS"<?php if ($motherSurnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
@@ -293,12 +293,12 @@ echo WT_JS_END;
 	<tr>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  colspan="10">
 			<a href="#" onclick="addFields();"><?php echo WT_I18N::translate('Add More Fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>" />
+			<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>">
 		</td>
 	</tr>
 </table>
 </form>
-<br /><br /><br /><br />
+<br><br><br><br>
 <?php
 // set the focus on the first field unless multisite or some search results have been printed
 if (!$somethingPrinted ) {

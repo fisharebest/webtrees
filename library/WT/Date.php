@@ -216,7 +216,7 @@ class WT_Date {
 						if ($CALENDAR_FORMAT!="none") {
 							$conv1.=' <span dir="'.$TEXT_DIRECTION.'">(<a href="'.$d1conv->CalendarURL($date_fmt).'">'.$d1tmp.'</a>)</span>';
 						} else {
-							$conv1.=' <span dir="'.$TEXT_DIRECTION.'"><br /><a href="'.$d1conv->CalendarURL($date_fmt).'">'.$d1tmp.'</a></span>';
+							$conv1.=' <span dir="'.$TEXT_DIRECTION.'"><br><a href="'.$d1conv->CalendarURL($date_fmt).'">'.$d1tmp.'</a></span>';
 						}
 					} else {
 						$conv1.=' <span dir="'.$TEXT_DIRECTION.'">('.$d1tmp.')</span>';

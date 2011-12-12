@@ -182,11 +182,11 @@ class WT_Report_HTML extends WT_Report_Base {
 <html ", WT_I18N::html_markup(), ">
 <head>
 <meta charset=\"UTF-8\">
-<meta name=\"generator\" content=\"", WT_WEBTREES, ' ', WT_VERSION_TEXT, "\" />
-<meta name=\"keywords\" content=\"", $this->rkeywords, "\" />
-<meta name=\"description\" content=\"", $this->rsubject, "\" />
+<meta name=\"generator\" content=\"", WT_WEBTREES, ' ', WT_VERSION_TEXT, "\">
+<meta name=\"keywords\" content=\"", $this->rkeywords, "\">
+<meta name=\"description\" content=\"", $this->rsubject, "\">
 <title>", $this->title, "</title>
-<link rel=\"stylesheet\" href=\"", $stylesheet, "\" type=\"text/css\" media=\"all\" />";
+<link rel=\"stylesheet\" href=\"", $stylesheet, "\" type=\"text/css\" media=\"all\">";
 
 		// Setting up the styles
 		echo "\n<style type=\"text/css\">\n";
@@ -325,10 +325,10 @@ class WT_Report_HTML extends WT_Report_Base {
 
 	/**
 	* Update the Page Number and set a new Y if max Y is larger - WT_Report_HTML
-	* @todo add page break - <p style='page-break-before:always' />
+	* @todo add page break - <p style='page-break-before:always'>
 	*/
 	function AddPage() {
-		//echo("\n\n<p style=\"page-break-before:always;\" /><p/>\n");
+		//echo("\n\n<p style=\"page-break-before:always;\"><p>\n");
 		$this->pageN++;
 		// Add a little margin to max Y "between pages"
 		$this->maxY += 10;
@@ -560,8 +560,8 @@ class WT_Report_HTML extends WT_Report_Base {
 		
 //??if ($TEXT_DIRECTION!="ltr") $text=spanLTRRTL($text,"BOTH"); //@@	needed for IDs in the missing data report - ruins other reports
 		$htmlcode .= ">$text</span>";
-//@@	$htmlcode = str_replace(array("\n", "> ", " <", "+", ","), array("<br />", ">&nbsp;", "&nbsp;<", $this->entityRTL."+", $this->entityRTL.","), $htmlcode);
- 		$htmlcode = str_replace(array("\n", "> ", " <"), array("<br />", ">&nbsp;", "&nbsp;<"), $htmlcode);
+//@@	$htmlcode = str_replace(array("\n", "> ", " <", "+", ","), array("<br>", ">&nbsp;", "&nbsp;<", $this->entityRTL."+", $this->entityRTL.","), $htmlcode);
+ 		$htmlcode = str_replace(array("\n", "> ", " <"), array("<br>", ">&nbsp;", "&nbsp;<"), $htmlcode);
 //DumpString($htmlcode); //@@@ ??
 		//@@ do we need the +? + on rtl pages does not work for phone numbers
 		echo $htmlcode;
@@ -829,7 +829,7 @@ class HtmlHTML extends Html {
 		}
 
 		echo $this->text;
-//echo "<br />XX"; //@@
+//echo "<br>XX"; //@@
 		if ($inat) {
 			echo "</div>\n";
 		}
@@ -871,7 +871,7 @@ class TextBoxHTML extends TextBox {
 					} else {
 						// Checking if the Text has the same style
 						if ($element->getStyleName() == $lastelement->getStyleName()) {
-							$lastelement->addText(str_replace("\n", "<br />", $element->getValue()));
+							$lastelement->addText(str_replace("\n", "<br>", $element->getValue()));
 						} elseif (!empty($lastelement)) {
 							$newelements[] = $lastelement;
 							$lastelement = $element;
@@ -1156,12 +1156,12 @@ class TextHTML extends Text {
 						$html->SetY($startY);
 						$html->write($line, $this->color);
 						echo "</div>\n";
-//echo "<br />CC"; //@@
+//echo "<br>CC"; //@@
 					}
 				} else {
 					echo "<div style=\"position:absolute; top:", $startY, "pt; ", $html->alignRTL, ":", $startX, "pt; width:", $width, "pt;\">";
 					$html->write($temptext, $this->color);
-//echo "<br />DD"; //@@
+//echo "<br>DD"; //@@
 					echo "</div>\n";
 					$html->SetX($startX + $html->GetStringWidth($temptext));
 					if ($html->countLines($temptext) != 1) {
@@ -1491,18 +1491,18 @@ class ImageHTML extends Image {
 		switch($this->align) {
 			case "L":
 				echo "<div style=\"position:absolute; top:", $this->y, "pt; left:0pt; width:", $html->getRemainingWidth(), "pt; text-align:left;\">\n";
-				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\" />\n</div>\n";
+				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
 				break;
 			case "C":
 				echo "<div style=\"position:absolute; top:", $this->y, "pt; left:0pt; width:", $html->getRemainingWidth(), "pt; text-align:center;\">\n";
-				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\" />\n</div>\n";
+				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
 				break;
 			case "R":
 				echo "<div style=\"position:absolute; top:", $this->y, "pt; left:0pt; width:", $html->getRemainingWidth(), "pt; text-align:right;\">\n";
-				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\" />\n</div>\n";
+				echo "<img src=\"", $this->file, "\" style=\"width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\">\n</div>\n";
 				break;
 			default:
-				echo "<img src=\"", $this->file, "\" style=\"position:absolute; ", $html->alignRTL, ":", $this->x, "pt; top:", $this->y, "pt; width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\" />\n";
+				echo "<img src=\"", $this->file, "\" style=\"position:absolute; ", $html->alignRTL, ":", $this->x, "pt; top:", $this->y, "pt; width:", $this->width, "pt; height:", $this->height, "pt;\" alt=\"\">\n";
 		}
 
 		$lastpicpage = $html->PageNo();
@@ -1573,6 +1573,6 @@ class LineHTML extends Line {
 		// One or the other will be higher... lasy mans way...
 		$html->addMaxY($this->y1);
 		$html->addMaxY($this->y2);
-//echo "<br />AA";//@@		
+//echo "<br>AA";//@@		
 	}
 } //-- END Line

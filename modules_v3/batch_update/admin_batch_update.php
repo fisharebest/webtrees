@@ -78,7 +78,7 @@ class batch_update {
 		}
 		$html.='</select>';
 		if ($this->PLUGIN) {
-			$html.='<br/><em>'.$this->PLUGIN->getDescription().'</em>';
+			$html.='<br><em>'.$this->PLUGIN->getDescription().'</em>';
 		}
 		$html.='</td></tr>';
 
@@ -105,7 +105,7 @@ class batch_update {
 						'</td><th><a href="'.$object->getHtmlUrl().'">'.$object->getFullName().'</a>'.
 						'</th>'.
 						'</tr><tr><td valign="top">'.
-						'<br/>'.implode('<br/>',$this->PLUGIN->getActionButtons($this->curr_xref, $this->record)).'<br/>'.
+						'<br>'.implode('<br>',$this->PLUGIN->getActionButtons($this->curr_xref, $this->record)).'<br>'.
 						'</td><td dir="ltr" align="left">'.
 						$this->PLUGIN->getActionPreview($this->curr_xref, $this->record);
 						'</td></tr>';

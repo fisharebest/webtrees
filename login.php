@@ -171,35 +171,35 @@ if (!isset($_COOKIE[WT_SESSION_NAME])) {
 		'</p>';
 }
 
-echo '</td></tr></table><br /><br />';
+echo '</td></tr></table><br><br>';
 	?>
 	<form name="loginform" method="post" action="<?php echo get_site_setting('LOGIN_URL'); ?>" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds(); return true;">
-		<input type="hidden" name="action" value="login" />
-		<input type="hidden" name="url" value="<?php echo htmlspecialchars($url); ?>" />
-		<input type="hidden" name="ged" value="<?php if (isset($ged)) echo htmlspecialchars($ged); else echo htmlentities($GEDCOM); ?>" />
-		<input type="hidden" name="pid" value="<?php if (isset($pid)) echo htmlspecialchars($pid); ?>" />
-		<input type="hidden" name="usertime" value="" />
+		<input type="hidden" name="action" value="login">
+		<input type="hidden" name="url" value="<?php echo htmlspecialchars($url); ?>">
+		<input type="hidden" name="ged" value="<?php if (isset($ged)) echo htmlspecialchars($ged); else echo htmlentities($GEDCOM); ?>">
+		<input type="hidden" name="pid" value="<?php if (isset($pid)) echo htmlspecialchars($pid); ?>">
+		<input type="hidden" name="usertime" value="">
 		<?php
-		if (!empty($message)) echo "<span class='error'><br /><b>$message</b><br /><br /></span>";
+		if (!empty($message)) echo "<span class='error'><br><b>$message</b><br><br></span>";
 		?>
 		<!--table-->
 		<table class="facts_table width50">
 			<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Login'); ?></td></tr>
 			<tr>
 				<td class="descriptionbox wrap width50"><label for="username"><?php echo WT_I18N::translate('Username'), '</label>', help_link('username'); ?></td>
-				<td class="optionbox"><input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" size="20" class="formField" /></td>
+				<td class="optionbox"><input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" size="20" class="formField"></td>
 			</tr>
 			<tr>
 				<td class="descriptionbox wrap width50"><label for="password"><?php echo WT_I18N::translate('Password'), '</label>', help_link('password'); ?></td>
-				<td class="optionbox"><input type="password" id="password" name="password" size="20" class="formField" /></td>
+				<td class="optionbox"><input type="password" id="password" name="password" size="20" class="formField"></td>
 			</tr>
 			<tr>
 				<td class="topbottombar" colspan="2">
-					<input type="submit" value="<?php echo WT_I18N::translate('Login'); ?>" />
+					<input type="submit" value="<?php echo WT_I18N::translate('Login'); ?>">
 				</td>
 			</tr>
 		</table>
-</form><br /><br />
+</form><br><br>
 <?php
 
 if (get_site_setting('USE_REGISTRATION_MODULE')) { ?>
@@ -213,7 +213,7 @@ if (get_site_setting('USE_REGISTRATION_MODULE')) { ?>
 	</table>
 <?php
 }
-echo "</div><br /><br />";
+echo "</div><br><br>";
 ?>
 <script type="text/javascript">
 	document.loginform.username.focus();

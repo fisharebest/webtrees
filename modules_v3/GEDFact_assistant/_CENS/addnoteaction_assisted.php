@@ -99,19 +99,19 @@ if ($pid_array != '') {
 	$xref = append_gedrec($newgedrec, WT_GED_ID);
 } else {
 	$xref='none';
-	echo '<br /><br /><br />';
+	echo '<br><br><br>';
 	echo '<div class="indent"> No individuals entered, close and try again </div>';
-	echo '<br /><br /><br />';
+	echo '<br><br><br>';
 }
 
 if ($xref != "none") {
-	echo "<br /><br />\n".WT_I18N::translate('New Shared Note created successfully.')." (".$xref.")<br /><br />";
-	echo '<br /><br />';
+	echo "<br><br>".WT_I18N::translate('New Shared Note created successfully.')." (".$xref.")<br><br>";
+	echo '<br><br>';
 	echo " &nbsp;&nbsp;&nbsp; The Census event (when saved) will be linked to Indi id's: &nbsp;&nbsp;&nbsp;&nbsp; ". $pid_array;
-	echo '<br /><br />';
-	echo '<br /><br />';
+	echo '<br><br>';
+	echo '<br><br>';
 	echo "&nbsp;&nbsp;&nbsp; <a href=\"#\" onclick=\"openerpasteid('$xref'); return false;\">".WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record ')." <b>$xref</b></a>\n";
-	echo '<br /><br /><br /><br />';
+	echo '<br><br><br><br>';
 
 	?>
 	<script>
@@ -133,5 +133,5 @@ if ($xref != "none") {
 	}
 	</script>
 	<?php
-	echo '<br /><br /><br /><br />';
+	echo '<br><br><br><br>';
 }

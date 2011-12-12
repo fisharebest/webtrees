@@ -414,7 +414,7 @@ function autocomplete_OBJE($FILTER) {
 				$media->getXref().
 				"\" src=\"".
 				$media->getThumbnail().
-				"\" width=\"40\" /> ".
+				"\" width=\"40\"> ".
 				$media->getFullName();
 		}
 	}

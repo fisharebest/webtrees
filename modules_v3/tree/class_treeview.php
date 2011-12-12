@@ -76,14 +76,14 @@ class TreeView {
     // Read styles (20 maxi) in a hidden list
     $sd = WT_MODULES_DIR.'tree/css/styles/';
     $rs = '<ul id="tvStylesSubmenu">';
-    $cs = '<img src="'.WT_STATIC_URL.$sd.'default/button.gif" alt="d"  onclick="'.$this->name.'Handler.style(\''.$sd.'\', \'default\', this);" title="'.WT_I18N::translate('Style').'" />';
+    $cs = '<img src="'.WT_STATIC_URL.$sd.'default/button.gif" alt="d"  onclick="'.$this->name.'Handler.style(\''.$sd.'\', \'default\', this);" title="'.WT_I18N::translate('Style').'">';
     $rs .= '<li class="tv_button'.($style == '' || $style=='default' ? ' tvPressed' : '').'">'.$cs.'</li>';    
     $nbStyles = 1;
     if (@is_dir($sd) && @is_readable($sd) && ($d=@opendir($sd))) {    	
     	while (($s = readdir($d)) !== false && ($nbStyles < 20)) {
     		if ($s[0] == '.' || $s=='default' || !is_dir($sd.$s))
 					continue;
-        $sHTML = '<img src="'.WT_STATIC_URL.$sd.$s.'/button.gif" alt="'.$s[0].'"  onclick="'.$this->name.'Handler.style(\''.$sd.'\', \''.$s.'\', this);" title="'.WT_I18N::translate('Style').'" />';
+        $sHTML = '<img src="'.WT_STATIC_URL.$sd.$s.'/button.gif" alt="'.$s[0].'"  onclick="'.$this->name.'Handler.style(\''.$sd.'\', \''.$s.'\', this);" title="'.WT_I18N::translate('Style').'">';
         if ($s == $style) {
         	$cs = $sHTML;
         	$pressedState = ' tvPressed';
@@ -101,27 +101,27 @@ class TreeView {
 			'<div id="tv_tools"><ul>'.
 			// TODO: can we change the toolbar's orientation automatically, when it is dragged to a vertical/horizontal edge?
 			'<li id="tvToolsHandler" title="'.WT_I18N::translate('Move the toolbar').'"></li>'.
-			'<li id="tvbZoomIn" class="tv_button"><img src="'.$WT_IMAGES['zoomin'].'" alt="'.WT_I18N::translate('Zoom in').'" title="'.WT_I18N::translate('Zoom in').'" /></li>'.
-			'<li id="tvbZoomOut" class="tv_button"><img src="'.$WT_IMAGES['zoomout'].'" alt="'.WT_I18N::translate('Zoom out').'" title="'.WT_I18N::translate('Zoom out').'" /></li>'.
-			'<li id="tvbNoZoom" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/zoom0.png" alt="'.WT_I18N::translate('Reset').'" title="'.WT_I18N::translate('Reset').'" /></li>'.
-			'<li id="tvbLeft" class="tv_button"><img src="'.$WT_IMAGES['ldarrow'].'" alt="'.WT_I18N::translate('Align left').'" title="'.WT_I18N::translate('Align left').'" /></li>'.
-			'<li id="tvbCenter" class="tv_button"><img src="'.$WT_IMAGES['center'].'" alt="'./* I18N: verb/action */ WT_I18N::translate('Center').'" title="'.WT_I18N::translate('Center').'" /></li>'.
-			'<li id="tvbRight" class="tv_button"><img src="'.$WT_IMAGES['rdarrow'].'" alt="'.WT_I18N::translate('Align right').'" title="'.WT_I18N::translate('Align right').'" /></li>'.
-			'<li id="tvbDates" class="tv_button tvPressed"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/dates.png" alt="'.WT_I18N::translate('Show year of birth and death').'" title="'.WT_I18N::translate('Show year of birth and death').'" /></li>'.
-			'<li id="tvbCompact" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/compact.png" alt="'.WT_I18N::translate('Use compact layout').'" title="'.WT_I18N::translate('Use compact layout').'" /></li>'.
+			'<li id="tvbZoomIn" class="tv_button"><img src="'.$WT_IMAGES['zoomin'].'" alt="'.WT_I18N::translate('Zoom in').'" title="'.WT_I18N::translate('Zoom in').'"></li>'.
+			'<li id="tvbZoomOut" class="tv_button"><img src="'.$WT_IMAGES['zoomout'].'" alt="'.WT_I18N::translate('Zoom out').'" title="'.WT_I18N::translate('Zoom out').'"></li>'.
+			'<li id="tvbNoZoom" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/zoom0.png" alt="'.WT_I18N::translate('Reset').'" title="'.WT_I18N::translate('Reset').'"></li>'.
+			'<li id="tvbLeft" class="tv_button"><img src="'.$WT_IMAGES['ldarrow'].'" alt="'.WT_I18N::translate('Align left').'" title="'.WT_I18N::translate('Align left').'"></li>'.
+			'<li id="tvbCenter" class="tv_button"><img src="'.$WT_IMAGES['center'].'" alt="'./* I18N: verb/action */ WT_I18N::translate('Center').'" title="'.WT_I18N::translate('Center').'"></li>'.
+			'<li id="tvbRight" class="tv_button"><img src="'.$WT_IMAGES['rdarrow'].'" alt="'.WT_I18N::translate('Align right').'" title="'.WT_I18N::translate('Align right').'"></li>'.
+			'<li id="tvbDates" class="tv_button tvPressed"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/dates.png" alt="'.WT_I18N::translate('Show year of birth and death').'" title="'.WT_I18N::translate('Show year of birth and death').'"></li>'.
+			'<li id="tvbCompact" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/compact.png" alt="'.WT_I18N::translate('Use compact layout').'" title="'.WT_I18N::translate('Use compact layout').'"></li>'.
 			// TODO: this is temporarily disabled (as it sends a flood of AJAX requests?)
-			//'<li id="tvbOpen" class="tv_button"><img src="'.$WT_IMAGES["media"].'" alt="o" title="'.WT_I18N::translate('Show all details').'" /></li>'.
-			//'<li id="tvbClose" class="tv_button"><img src="'.$WT_IMAGES["fambook"].'" alt="f" title="'.WT_I18N::translate('Hide all details').'" /></li>'.
+			//'<li id="tvbOpen" class="tv_button"><img src="'.$WT_IMAGES["media"].'" alt="o" title="'.WT_I18N::translate('Show all details').'"></li>'.
+			//'<li id="tvbClose" class="tv_button"><img src="'.$WT_IMAGES["fambook"].'" alt="f" title="'.WT_I18N::translate('Hide all details').'"></li>'.
 			// If the position/order of the style button moves, update TreeViewHandler() in treeview.js
 			'<li id="tvStyleButton" class="tv_button">'.$cs.'</li>'.
-			'<li id="tvbPrint" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'./* I18N: verb/action */ WT_I18N::translate('Print').'" /></li>'.
-			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show all spouses and ancestors').'" title="'.WT_I18N::translate('Show all spouses and ancestors').'" /></a></li>';
+			'<li id="tvbPrint" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'./* I18N: verb/action */ WT_I18N::translate('Print').'"></li>'.
+			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show all spouses and ancestors').'" title="'.WT_I18N::translate('Show all spouses and ancestors').'"></a></li>';
     if (safe_GET('mod_action') != 'treeview') {
-			$r.='<li class="tv_button"><a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid='.$rootPerson->getXref().'#tv_content" title="'. /* I18N: Button label - view this chart in full-screen mode */ WT_I18N::translate('Full screen').'"><img src="'.$WT_IMAGES["fscreen"].'" alt="full screen" /></a></li>';
+			$r.='<li class="tv_button"><a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid='.$rootPerson->getXref().'#tv_content" title="'. /* I18N: Button label - view this chart in full-screen mode */ WT_I18N::translate('Full screen').'"><img src="'.$WT_IMAGES["fscreen"].'" alt="full screen"></a></li>';
 		}
     // Help, and hidden loading image
 		$r.='<li class="tv_button">'.help_link("TV_MODULE", 'tree').'</li>
-  <li class="tv_button" id="'.$this->name.'_loading"><img src="'.WT_STATIC_URL.'images/loading.gif" alt="Loading..." /></li>
+  <li class="tv_button" id="'.$this->name.'_loading"><img src="'.WT_STATIC_URL.'images/loading.gif" alt="Loading..."></li>
 </ul>'.$rs;
 		$r.='</div><div id="'.$this->name.'_in" class="tv_in">';
     $parent = null;
@@ -209,13 +209,13 @@ class TreeView {
 
     $r = '<div class="tv'.$person->getSex().' tv_person_expanded">';
     $r .= $this->getThumbnail($personGroup, $person);
-    $r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&amp;rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'"><img src="'.$WT_IMAGES['tree'].'" class="tv_link tv_treelink" /></a>';
-    $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$person->getBirthDate()->Display().' '.$person->getBirthPlace();
+    $r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&amp;rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'"><img src="'.$WT_IMAGES['tree'].'" class="tv_link tv_treelink"></a>';
+    $r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$person->getBirthDate()->Display().' '.$person->getBirthPlace();
     if ($family) {
-      $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" class="tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'" /></a>'.$family->getMarriagePlace();
+      $r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" class="tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'"></a>'.$family->getMarriagePlace();
     }
     if ($person->isDead())
-      $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('DEAT').'</b> '.$person->getDeathDate()->Display().' '.$person->getDeathPlace();
+      $r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('DEAT').'</b> '.$person->getDeathDate()->Display().' '.$person->getDeathPlace();
     $r.= '</div>';
     return $r;
   }

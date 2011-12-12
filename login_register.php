@@ -279,7 +279,7 @@ case 'register' :
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap"><label for="user_email"><?php echo WT_I18N::translate('Email address'), '</label>', help_link('email'); ?></td>
-						<td class="optionbox"><input type="text" size="30" id="user_email" name="user_email" value="<?php if (!$user_email_false) echo $user_email; ?>"/> *</td>
+						<td class="optionbox"><input type="text" size="30" id="user_email" name="user_email" value="<?php if (!$user_email_false) echo $user_email; ?>"> *</td>
 					</tr>
 					<tr>
 						<td class="descriptionbox wrap"><label for="username"><?php echo WT_I18N::translate('Desired user name'), '</label>', help_link('username'); ?></td>

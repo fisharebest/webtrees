@@ -32,8 +32,8 @@ if (!defined('WT_WEBTREES')) {
 <head>
 	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 	<script type="text/javascript" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
-	<!-- <link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_places_edit.css" rel="stylesheet" /> -->
-	<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />
+	<!-- <link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_places_edit.css" rel="stylesheet"> -->
+	<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_googlemap.css" rel="stylesheet">
 
 	<script type="text/javascript">
 	var map;
@@ -402,8 +402,8 @@ if (!defined('WT_WEBTREES')) {
 		} else {	
 			if (response.length > 0) {
 				for (i=0; i<response.length; i++) {					
-					var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br /> '+response[i].geometry.location+''
-						name +=	'<br /><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo PrintReady(WT_I18N::translate('Use this value')); ?></div></a>'
+					var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br> '+response[i].geometry.location+''
+						name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo PrintReady(WT_I18N::translate('Use this value')); ?></div></a>'
 						name += '</div>'
 					var point = response[i].geometry.location;
 					var marker = createMarker(i, point, name);	

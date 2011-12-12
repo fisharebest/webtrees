@@ -149,12 +149,12 @@ class WT_Controller_Timeline extends WT_Controller_Chart {
 					if ($this->people[$i]->canDisplayName()) {
 						echo "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".$this->people[$i]->getFullName()."</a>";
 						print_privacy_error();
-						echo "<br />";
+						echo "<br>";
 						$printed = true;
 					}
 					else if (!$printed) {
 						print_privacy_error();
-						echo "<br />";
+						echo "<br>";
 					}
 				}
 			}
@@ -213,7 +213,7 @@ class WT_Controller_Timeline extends WT_Controller_Chart {
 				echo "<img src=\"".$WT_IMAGES["hline"]."\" name=\"boxline$factcount\" id=\"boxline$factcount\" height=\"3\" align=\"left\" width=\"10\" alt=\"\" style=\"padding-";
 				if ($TEXT_DIRECTION=="ltr") echo "left";
 				else echo "right";
-				echo ": 3px;\" />";
+				echo ": 3px;\">";
 				$col = $event->temp % 6;
 				echo "</td><td valign=\"top\" class=\"person".$col."\">";
 				if (count($this->pids) > 6) echo $event->getParentObject()->getFullName()." - ";

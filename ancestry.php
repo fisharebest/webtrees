@@ -58,22 +58,22 @@ echo '<h2>', WT_I18N::translate('Ancestors of %s', $controller->name), '</h2>';
 echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=value;}', WT_JS_END;
 ?>
 </td><td width="50px">&nbsp;</td><td><form name="people" id="people" method="get" action="?">
-<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>" />
-<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>" />
-<input type="hidden" name="show_cousins" value="<?php echo $controller->show_cousins; ?>" />
+<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
+<input type="hidden" name="show_cousins" value="<?php echo $controller->show_cousins; ?>">
 <table class="list_table">
 
 	<!-- // NOTE: Root ID -->
 <tr>
 	<td class="descriptionbox"><?php echo WT_I18N::translate('Individual'); ?></td>
 <td class="optionbox">
-<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo htmlspecialchars($controller->rootid); ?>" />
+<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo htmlspecialchars($controller->rootid); ?>">
 <?php print_findindi_link('rootid', ''); ?>
 </td>
 
 <!-- // NOTE: Box width -->
 <td class="descriptionbox"><?php echo WT_I18N::translate('Box width'), help_link('box_width'); ?></td>
-<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo htmlspecialchars($box_width); ?>" /> <b>%</b>
+<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo htmlspecialchars($box_width); ?>"> <b>%</b>
 </td>
 
 <!-- // NOTE: chart style -->
@@ -85,17 +85,17 @@ if ($controller->chart_style==0) {
 	echo ' checked="checked"';
 }
 echo ' onclick="statusDisable(\'cousins\');';
-echo '" />', WT_I18N::translate('List');
-echo '<br /><input type="radio" name="chart_style" value="1"';
+echo '">', WT_I18N::translate('List');
+echo '<br><input type="radio" name="chart_style" value="1"';
 if ($controller->chart_style==1) {
 	echo ' checked="checked"';
 }
 echo ' onclick="statusEnable(\'cousins\');';
-echo '" />', WT_I18N::translate('Booklet');
+echo '">', WT_I18N::translate('Booklet');
 ?>
 
 <!-- // NOTE: show cousins -->
-<br />
+<br>
 <?php
 echo '<input ';
 if ($controller->chart_style==0) {
@@ -107,27 +107,27 @@ if ($controller->show_cousins) {
 } else {
 	echo '0" onclick="document.people.show_cousins.value=\'1\';"';
 }
-echo ' />';
+echo '>';
 echo WT_I18N::translate('Show cousins');
 
-echo '<br /><input type="radio" name="chart_style" value="2"';
+echo '<br><input type="radio" name="chart_style" value="2"';
 if ($controller->chart_style==2) {
 	echo ' checked="checked" ';
 }
 echo ' onclick="statusDisable(\'cousins\');"';
-echo ' />', WT_I18N::translate('Individuals');
-echo '<br /><input type="radio" name="chart_style" value="3"';
+echo '>', WT_I18N::translate('Individuals');
+echo '<br><input type="radio" name="chart_style" value="3"';
 echo ' onclick="statusDisable(\'cousins\');"';
 if ($controller->chart_style==3) {
 	echo ' checked="checked" ';
 }
-echo ' />', WT_I18N::translate('Families');
+echo '>', WT_I18N::translate('Families');
 ?>
 </td>
 
 <!-- // NOTE: submit -->
 <td rowspan="2" class="facts_label03">
-<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
+<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
 </td></tr>
 
 <!-- // NOTE: generations -->
@@ -163,14 +163,14 @@ if ($controller->show_full) {
 	echo '0" onclick="document.people.show_full.value=\'1\';';
 }
 ?>"
-/>
+>
 </td></tr>
 </table>
 </form>
 </td></tr></table>
 <?php
 if ($show_full==0) {
-	echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
+	echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br><br>';
 }
 
 switch ($controller->chart_style) {
@@ -180,7 +180,7 @@ case 0:
 	echo '<ul id="ancestry_chart">';
 	$controller->print_child_ascendancy(WT_Person::getInstance($controller->rootid), 1, $OLD_PGENS-1);
 	echo '</ul>';
-	echo '<br />';
+	echo '<br>';
 	break;
 case 1:
 	// TODO: this should be a parameter to a function, not a global

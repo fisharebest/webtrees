@@ -126,9 +126,9 @@ case 'compose':
 	echo $errors;
 
 	if (!WT_USER_ID) {
-		echo '<br /><br />', WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead persons may also be private.  If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.');
+		echo '<br><br>', WT_I18N::translate('<b>Please Note:</b> Private information of living individuals will only be given to family relatives and close friends.  You will be asked to verify your relationship before you will receive any private data.  Sometimes information of dead persons may also be private.  If this is the case, it is because there is not enough information known about the person to determine whether they are alive or not and we probably do not have more information on this person.<br /><br />Before asking a question, please verify that you are inquiring about the correct person by checking dates, places, and close relatives.  If you are submitting changes to the genealogical data, please include the sources where you obtained the data.');
 	}
-	echo '<br /><form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); ';
+	echo '<br><form name="messageform" method="post" action="message.php" onsubmit="t = new Date(); document.messageform.time.value=t.toUTCString(); ';
 	if (!WT_USER_ID) {
 		echo 'return validateEmail(document.messageform.from_email);';
 	} else {
@@ -136,22 +136,22 @@ case 'compose':
 	}
 	echo '">';
 	echo '<table>';
-	echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>'.getUserFullName($to_user_id).'</b>'), '<br />';
+	echo '<tr><td></td><td>', WT_I18N::translate('This message will be sent to %s', '<b>'.getUserFullName($to_user_id).'</b>'), '<br>';
 	echo /* I18N: %s is the name of a language */ WT_I18N::translate('This user prefers to receive messages in %s', Zend_Locale::getTranslation(get_user_setting($to_user_id, 'language'), 'language', WT_LOCALE)), '</td></tr>';
 	if (!WT_USER_ID) {
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';
-		echo '<td><input type="text" name="from_name" size="40" value="', addslashes($from_name), '" /></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="text" name="from_email" size="40" value="', addslashes($from_email), '" /><br />', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br /><br /></td></tr>';
+		echo '<td><input type="text" name="from_name" size="40" value="', addslashes($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="text" name="from_email" size="40" value="', addslashes($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
 	}
 	echo '<tr><td align="right">', WT_I18N::translate('Subject:'), '</td>';
 	echo '<td>';
-	echo '<input type="hidden" name="action" value="send" />';
-	echo '<input type="hidden" name="to" value="', $to, '" />';
-	echo '<input type="hidden" name="time" value="" />';
-	echo '<input type="hidden" name="method" value="', $method, '" />';
-	echo '<input type="hidden" name="url" value="', $url, '" />';
-	echo '<input type="text" name="subject" size="50" value="', $subject, '" /><br /></td></tr>';
-	echo '<tr><td valign="top" align="right">', WT_I18N::translate('Body:'), '<br /></td><td><textarea name="body" cols="50" rows="7">', $body, '</textarea><br /></td></tr>';
-	echo '<tr><td></td><td><input type="submit" value="', WT_I18N::translate('Send'), '" /></td></tr>';
+	echo '<input type="hidden" name="action" value="send">';
+	echo '<input type="hidden" name="to" value="', $to, '">';
+	echo '<input type="hidden" name="time" value="">';
+	echo '<input type="hidden" name="method" value="', $method, '">';
+	echo '<input type="hidden" name="url" value="', $url, '">';
+	echo '<input type="text" name="subject" size="50" value="', $subject, '"><br></td></tr>';
+	echo '<tr><td valign="top" align="right">', WT_I18N::translate('Body:'), '<br></td><td><textarea name="body" cols="50" rows="7">', $body, '</textarea><br></td></tr>';
+	echo '<tr><td></td><td><input type="submit" value="', WT_I18N::translate('Send'), '"></td></tr>';
 	echo '</table>';
 	echo '</form>';
 	if ($method=='messaging2') {

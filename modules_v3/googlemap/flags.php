@@ -103,7 +103,7 @@ if ($action == 'ChangeFlag') {
 	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close();\">", WT_I18N::translate('Close Window'), "</a></div><br />\n";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close();\">", WT_I18N::translate('Close Window'), "</a></div><br>\n";
 	exit;
 }
 else {
@@ -171,10 +171,10 @@ else {
 ?>
 
 <form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected; ?>&amp;stateSelected=<?php echo $stateSelected; ?>">
-	<input type="hidden" name="action" value="ChangeFlag" />
-	<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>" />
-	<input type="hidden" name="selstate" value="<?php echo $stateSelected; ?>" />
-	<input id="savebutton" name="save1" type="submit" disabled="true" value="<?php echo WT_I18N::translate('Save'); ?>" /><br />
+	<input type="hidden" name="action" value="ChangeFlag">
+	<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>">
+	<input type="hidden" name="selstate" value="<?php echo $stateSelected; ?>">
+	<input id="savebutton" name="save1" type="submit" disabled="true" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
 	<table class="facts_table">
 		<tr>
 			<td class="optionbox" colspan="4">
@@ -241,7 +241,7 @@ else {
 ?>
 		</tr>
 	</table>
-	<input id="savebutton" name="save2" type="submit" disabled="true" value="<?php echo WT_I18N::translate('Save'); ?>" /><br />
+	<input id="savebutton" name="save2" type="submit" disabled="true" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
 </form>
 <?php
-echo '<div class="center"><a href="#" onclick="edit_close();">', WT_I18N::translate('Close Window'), '</a></div><br />';
+echo '<div class="center"><a href="#" onclick="edit_close();">', WT_I18N::translate('Close Window'), '</a></div><br>';

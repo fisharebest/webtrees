@@ -194,7 +194,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$label = $controller->record->getStepFamilyLabel($family);
 			$people = $controller->buildFamilyList($family, "step-parents");
 			if ($people) {
-				echo "<tr><td><br /></td><td></td></tr>";
+				echo "<tr><td><br></td><td></td></tr>";
 			}
 			$styleadd = "";
 			$elderdate = "";
@@ -305,7 +305,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		//-- spouse and children --------------------------------------------------
 		$families = $controller->record->getSpouseFamilies();
 		foreach ($families as $family) {
-			echo "<tr><td><br /></td><td></td></tr>";
+			echo "<tr><td><br></td><td></td></tr>";
 			?>
 			<tr>
 				<td style="padding-bottom: 4px;" class="center" colspan="2">
@@ -420,7 +420,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$label = $family->getFullName();
 			$people = $controller->buildFamilyList($family, "step-children");
 			if ($people) {
-				echo "<tr><td><br /></td><td></td></tr>";
+				echo "<tr><td><br></td><td></td></tr>";
 			}
 			$styleadd = "";
 			$elderdate = "";
@@ -566,9 +566,9 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		if ($person->canDisplayName() && !$SEARCH_SPIDER) {
 			//-- draw a box for the family flyout
-			$parentlinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Parents')."</b></span><br />";
-			$step_parentlinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Parents')."</b></span><br />";
-			$spouselinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Family')."</b></span><br />";
+			$parentlinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Parents')."</b></span><br>";
+			$step_parentlinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Parents')."</b></span><br>";
+			$spouselinks .= "<span class=\"flyout4\"><b>".WT_I18N::translate('Family')."</b></span><br>";
 
 			$persons = "";
 			$person_parent = "";
@@ -592,7 +592,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							$parentlinks .= "<a class=\"flyout3\" href=\"".$husb->getHtmlUrl()."\">";
 							$parentlinks .= "&nbsp;".$husb->getFullName();
 							$parentlinks .= "</a>";
-							$parentlinks .= "<br />";
+							$parentlinks .= "<br>";
 							$natdad = "yes";
 						}
 					}
@@ -604,7 +604,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 							$parentlinks .= "<a class=\"flyout3\" href=\"".$wife->getHtmlUrl()."\">";
 							$parentlinks .= "&nbsp;".$wife->getFullName();
 							$parentlinks .= "</a>";
-							$parentlinks .= "<br />";
+							$parentlinks .= "<br>";
 							$natmom = "yes";
 						}
 					}
@@ -630,7 +630,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 								$parentlinks .= "<a class=\"flyout3\" href=\"".$husb->getHtmlUrl()."\">";
 								$parentlinks .= "&nbsp;".$husb->getFullName();
 								$parentlinks .= "</a>";
-								$parentlinks .= "<br />";
+								$parentlinks .= "<br>";
 							}
 						}
 					}
@@ -643,7 +643,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 								$parentlinks .= "<a class=\"flyout3\" href=\"".$wife->getHtmlUrl()."\">";
 								$parentlinks .= "&nbsp;".$wife->getFullName();
 								$parentlinks .= "</a>";
-								$parentlinks .= "<br />";
+								$parentlinks .= "<br>";
 							}
 						}
 					}
@@ -662,7 +662,7 @@ class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 						$spouselinks .= "<a class=\"flyout3\" href=\"".$spouse->getHtmlUrl()."\">";
 						$spouselinks .= "&nbsp;".$spouse->getFullName();
 						$spouselinks .= "</a>";
-						$spouselinks .= "<br />";
+						$spouselinks .= "<br>";
 						if ($spouse->getFullName() != "") {
 							$persons = "Yes";
 						}

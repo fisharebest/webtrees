@@ -116,7 +116,7 @@ if ($action!='choose') {
 				if ($action=='select') {
 					echo '<div id="merge2"><h3>', WT_I18N::translate('Merge Step 2 of 3'), '</h3>';
 					echo '<form method="post" action="admin_site_merge.php">';
-					echo WT_I18N::translate('The following facts were exactly the same in both records and will be merged automatically.'), '<br />';
+					echo WT_I18N::translate('The following facts were exactly the same in both records and will be merged automatically.'), '<br>';
 					echo '<input type="hidden" name="gid1" value="', $gid1, '">';
 					echo '<input type="hidden" name="gid2" value="', $gid2, '">';
 					echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
@@ -133,14 +133,14 @@ if ($action!='choose') {
 								$skip2[] = $j;
 								$equal_count++;
 								echo '<tr><td>', WT_I18N::translate($fact1['fact']);
-								echo '<input type="hidden" name="keep1[]" value="', $i, '" /></td><td>', nl2br($fact1['subrec']), '</td></tr>';
+								echo '<input type="hidden" name="keep1[]" value="', $i, '"></td><td>', nl2br($fact1['subrec']), '</td></tr>';
 							}
 						}
 					}
 					if ($equal_count==0) {
 						echo '<tr><td>', WT_I18N::translate('No matching facts found'), '</td></tr>';
 					}
-					echo '</table><br />';
+					echo '</table><br>';
 					echo WT_I18N::translate('The following facts did not match.  Select the information you would like to keep.');
 					echo '<table>';
 					echo '<tr><th>', WT_I18N::translate('Record'), ' ', $gid1, '</th><th>', WT_I18N::translate('Record'), ' ', $gid2, '</th></tr>';
@@ -148,7 +148,7 @@ if ($action!='choose') {
 					echo '<table>';
 					foreach ($facts1 as $i=>$fact1) {
 						if (($fact1['fact']!='CHAN')&&(!in_array($i, $skip1))) {
-							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $i, '" checked="checked" /></td>';
+							echo '<tr><td><input type="checkbox" name="keep1[]" value="', $i, '" checked="checked"></td>';
 							echo '<td>', nl2br($fact1['subrec']), '</td></tr>';
 						}
 					}
@@ -157,7 +157,7 @@ if ($action!='choose') {
 					echo '<table>';
 					foreach ($facts2 as $j=>$fact2) {
 						if (($fact2['fact']!='CHAN')&&(!in_array($j, $skip2))) {
-							echo '<tr><td><input type="checkbox" name="keep2[]" value="', $j, '" checked="checked" /></td>';
+							echo '<tr><td><input type="checkbox" name="keep2[]" value="', $j, '" checked="checked"></td>';
 							echo '<td>', nl2br($fact2['subrec']), '</td></tr>';
 						}
 					}
@@ -172,13 +172,13 @@ if ($action!='choose') {
 					if ($GEDCOM==$ged2) {
 						$success = delete_gedrec($gid2, WT_GED_ID);
 						if ($success) {
-							echo '<br />', WT_I18N::translate('GEDCOM record successfully deleted.'), '<br />';
+							echo '<br>', WT_I18N::translate('GEDCOM record successfully deleted.'), '<br>';
 						}
 						//-- replace all the records that linked to gid2
 						$ids=fetch_all_links($gid2, WT_GED_ID);
 						foreach ($ids as $id) {
 							$record=find_gedcom_record($id, WT_GED_ID, true);
-							echo WT_I18N::translate('Updating linked record'), ' ', $id, '<br />';
+							echo WT_I18N::translate('Updating linked record'), ' ', $id, '<br>';
 							$newrec=str_replace("@$gid2@", "@$gid1@", $record);
 							$newrec=preg_replace(
 								'/(\n1.*@.+@.*(?:(?:\n[2-9].*)*))((?:\n1.*(?:\n[2-9].*)*)*\1)/',
@@ -217,25 +217,25 @@ if ($action!='choose') {
 						if (isset($facts1[$i])) {
 							if (in_array($i, $keep1)) {
 								$newgedrec .= $facts1[$i]['subrec']."\n";
-								echo WT_I18N::translate('Adding'), " ", $facts1[$i]['fact'], ' ', WT_I18N::translate('from'), ' ', $gid1, '<br />';
+								echo WT_I18N::translate('Adding'), " ", $facts1[$i]['fact'], ' ', WT_I18N::translate('from'), ' ', $gid1, '<br>';
 							}
 						}
 						if (isset($facts2[$i])) {
 							if (in_array($i, $keep2)) {
 								$newgedrec .= $facts2[$i]['subrec']."\n";
-								echo WT_I18N::translate('Adding'), ' ', $facts2[$i]['fact'], ' ', WT_I18N::translate('from'), ' ', $gid2, '<br />';
+								echo WT_I18N::translate('Adding'), ' ', $facts2[$i]['fact'], ' ', WT_I18N::translate('from'), ' ', $gid2, '<br>';
 							}
 						}
 					}
 
 					replace_gedrec($gid1, WT_GED_ID, $newgedrec);
 					$rec=WT_GedcomRecord::getInstance($gid1);
-					echo '<br />', WT_I18N::translate('Record %s successfully updated.', $rec->getXrefLink()), '<br />';
+					echo '<br>', WT_I18N::translate('Record %s successfully updated.', $rec->getXrefLink()), '<br>';
 					$fav_count=update_favorites($gid2, $gid1);
 					if ($fav_count > 0) {
-						echo '<br />', $fav_count, ' ', WT_I18N::translate('favorites updated.'), '<br />';
+						echo '<br>', $fav_count, ' ', WT_I18N::translate('favorites updated.'), '<br>';
 					}
-					echo '<br /><a href="admin_site_merge.php?action=choose">', WT_I18N::translate('Merge more records.'), '</a><br />';
+					echo '<br><a href="admin_site_merge.php?action=choose">', WT_I18N::translate('Merge more records.'), '</a><br>';
 					echo '</div>';
 				}
 			}
@@ -271,13 +271,13 @@ if ($action=='choose') {
 	echo 
 		'<div id="merge"><h3>', WT_I18N::translate('Merge Step 1 of 3'), '</h3>
 		<form method="post" name="merge" action="admin_site_merge.php">
-		<input type="hidden" name="action" value="select" />
+		<input type="hidden" name="action" value="select">
 		<p>', WT_I18N::translate('Select two GEDCOM records to merge.  The records must be of the same type.'), '</p>
 		<table><tr>
 		<td>',
 		WT_I18N::translate('Merge To ID:'),
 		'</td><td>
-		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" />
+		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1">
 		<script type="text/javascript">document.getElementById("gid1").focus();</script>',
 		'<select name="ged" tabindex="4"';
 	if (get_gedcom_count()==1) {
@@ -307,7 +307,7 @@ if ($action=='choose') {
 		</td></tr><tr><td>',
 		WT_I18N::translate('Merge From ID:'),
 		'</td><td>
-		<input type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2" />&nbsp;',
+		<input type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2">&nbsp;',
 		'<select name="ged2" tabindex="5"';
 	if (get_gedcom_count()==1) {
 		echo 'style="width:1px;visibility:hidden;"';
@@ -326,6 +326,6 @@ if ($action=='choose') {
 		<a href="#" onclick="fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9">', $famtext, '</a>
 		<a href="#" onclick="sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11">',  $sourtext, '</a>
 		</td></tr></table>
-		<input type="submit" value="', WT_I18N::translate('Merge records'), '" tabindex="3" />
+		<input type="submit" value="', WT_I18N::translate('Merge records'), '" tabindex="3">
 		</form></div>';
 }

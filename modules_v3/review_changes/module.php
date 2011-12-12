@@ -98,16 +98,16 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 				$title='';
 				if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
 					$title .= "<a href=\"#\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-					$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
+					$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\"></a>";
 				}
 				$title.=$this->getTitle().help_link('review_changes', $this->getName());
 				$content = "";
 				if (WT_USER_CAN_ACCEPT) {
-					$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".WT_I18N::translate('There are pending changes for you to moderate.')."</a><br />";
+					$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".WT_I18N::translate('There are pending changes for you to moderate.')."</a><br>";
 				}
 				if ($sendmail=="yes") {
-					$content .= WT_I18N::translate('Last email reminder was sent ').format_timestamp($LAST_CHANGE_EMAIL)."<br />";
-					$content .= WT_I18N::translate('Next email reminder will be sent after ').format_timestamp($LAST_CHANGE_EMAIL+(60*60*24*$days))."<br /><br />";
+					$content .= WT_I18N::translate('Last email reminder was sent ').format_timestamp($LAST_CHANGE_EMAIL)."<br>";
+					$content .= WT_I18N::translate('Next email reminder will be sent after ').format_timestamp($LAST_CHANGE_EMAIL+(60*60*24*$days))."<br><br>";
 				}
 				$changes=WT_DB::prepare(
 					"SELECT xref".
@@ -125,11 +125,11 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 						case 'FAM':
 						case 'SOUR':
 						case 'OBJE':
-							$content.=$block ? '<br />' : ' ';
+							$content.=$block ? '<br>' : ' ';
 							$content.='<a href="'.$record->getHtmlUrl().'">'.WT_I18N::translate('View the changes').'</a>';
 							break;
 						}
-						$content.='<br />';
+						$content.='<br>';
 					}
 				}
 
@@ -179,8 +179,8 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		echo WT_I18N::translate('Send out reminder emails?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('sendmail', $sendmail);
-		echo '<br />';
-		echo WT_I18N::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$days."' size='2' />";
+		echo '<br>';
+		echo WT_I18N::translate('Reminder email frequency (days)')."&nbsp;<input type='text' name='days' value='".$days."' size='2'>";
 		echo '</td></tr>';
 
 		$block=get_block_setting($block_id, 'block', true);

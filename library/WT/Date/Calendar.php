@@ -309,7 +309,7 @@ class WT_Date_Calendar {
 			return $full?'':'0';
 		}
 		if ($warn_on_negative && $jd<$this->minJD) {
-			return '<img alt="" src="'.$WT_IMAGES['warning'].'" />';
+			return '<img alt="" src="'.$WT_IMAGES['warning'].'">';
 		}
 		list($y,$m,$d)=$this->JDtoYMD($jd);
 		$dy=$y-$this->y;

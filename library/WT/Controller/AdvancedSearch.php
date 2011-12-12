@@ -439,7 +439,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		else {
 			$ret = false;
 			if ($this->isPostBack) {
-				echo '<br /><div class="warning center"><em>', WT_I18N::translate('No results found.'), '</em><br /></div>';
+				echo '<br><div class="warning center"><em>', WT_I18N::translate('No results found.'), '</em><br></div>';
 			}
 		}
 		return $ret;

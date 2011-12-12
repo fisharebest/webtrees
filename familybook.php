@@ -96,18 +96,18 @@ function print_descendency($person, $count) {
 					if (count($children)==1) {
 						$twidth+=3;
 					}
-					echo "<td rowspan=\"$rowspan\"><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"$twidth\" height=\"3\" alt=\"\" /></td>";
+					echo "<td rowspan=\"$rowspan\"><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"$twidth\" height=\"3\" alt=\"\"></td>";
 					if (count($children)>1) {
 						if ($i==0) {
-							echo "<td height=\"".($bhalfheight+3)."\"><img class=\"lineb\" src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr>";
-							echo "<tr><td height=\"".($bhalfheight+3)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+							echo "<td height=\"".($bhalfheight+3)."\"><img class=\"lineb\" src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td></tr>";
+							echo "<tr><td height=\"".($bhalfheight+3)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
 						}
 						else if ($i==count($children)-1) {
-							echo "<td height=\"".($bhalfheight+4)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr>";
-							echo "<tr><td height=\"".($bhalfheight+4)."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+							echo "<td height=\"".($bhalfheight+4)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td></tr>";
+							echo "<tr><td height=\"".($bhalfheight+4)."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
 						}
 						else {
-							echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
+							echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
 						}
 					}
 					echo "</tr>";
@@ -129,14 +129,14 @@ function print_descendency($person, $count) {
 	//-- add offset divs to make things line up better
 	if ($show_spouse) {
 		foreach ($sfamilies as $family) {
-			echo '<br /><div style="height:', $bheight, 'px;width:', $bwidth, 'px;"><br /></div>';
+			echo '<br><div style="height:', $bheight, 'px;width:', $bwidth, 'px;"><br></div>';
 		}
 	}
 	print_pedigree_person($person);
 
 	if ($show_spouse) {
 		foreach ($sfamilies as $family) {
-			echo '<br/>', $family->getMarriage()->print_simple_fact();
+			echo '<br>', $family->getMarriage()->print_simple_fact();
 			print_pedigree_person($family->getSpouse($person));
 		}
 	}
@@ -155,8 +155,8 @@ function print_person_pedigree($person, $count) {
 		$height="100%";
 		echo "<tr>";
 		if ($count<$generations-1) {
-			echo "<td height=\"".$hheight."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
-			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
+			echo "<td height=\"".$hheight."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
+			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
 		}
 		echo "<td rowspan=\"2\">";
 		print_pedigree_person($family->getHusband());
@@ -168,10 +168,10 @@ function print_person_pedigree($person, $count) {
 		if ($count<$generations-1) {
 			echo " style=\"background: url('".$WT_IMAGES["vline"]."');\" ";
 		}
-		echo "><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr><tr>";
+		echo "><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td></tr><tr>";
 		if ($count<$generations-1) {
-			echo "<td height=\"".$hheight."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td>";
-			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\" /></td>";
+			echo "<td height=\"".$hheight."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
+			echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
 		}
 		echo "<td rowspan=\"2\">";
 		print_pedigree_person($family->getWife());
@@ -181,7 +181,7 @@ function print_person_pedigree($person, $count) {
 		echo "</td>";
 		echo "</tr>";
 		if ($count<$generations-1) {
-			echo "<tr><td height=\"".$hheight."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\" /></td></tr>";
+			echo "<tr><td height=\"".$hheight."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td></tr>";
 		}
 		echo "</table>";
 	}
@@ -204,7 +204,7 @@ function print_family_book($person, $descent) {
 		print_descendency($person, 1);
 		echo '</td><td valign="middle">';
 		print_person_pedigree($person, 1);
-		echo '</td></tr></table><br /><br /><hr style="page-break-after:always;"/><br /><br />';
+		echo '</td></tr></table><br><br><hr style="page-break-after:always;"><br><br>';
 
 		foreach ($families as $family) {
 			foreach ($family->getChildren() as $child) {
@@ -252,7 +252,7 @@ $gencount=0;
 	<?php echo WT_I18N::translate('Individual'); ?>
 </td>
 <td class="optionbox">
-	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $pid; ?>" />
+	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $pid; ?>">
 	<?php print_findindi_link("pid",""); ?>
 </td>
 
@@ -260,14 +260,14 @@ $gencount=0;
 <?php echo WT_I18N::translate('Show Details'); ?>
 </td>
 <td class="optionbox">
-<input type="hidden" name="show_full" value="<?php echo $show_full; ?>" />
+<input type="hidden" name="show_full" value="<?php echo $show_full; ?>">
 <input type="checkbox" value="<?php
 	if ($show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
-else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>" />
+else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
 </td>
 
 <td rowspan="4" class="topbottombar vmiddle">
-<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ WT_I18N::translate('View'); ?>" />
+<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ WT_I18N::translate('View'); ?>">
 </td></tr>
 
 <tr><td class="descriptionbox">
@@ -291,13 +291,13 @@ for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 <td class="optionbox">
 <input type="checkbox" value="1" name="show_spouse"
 <?php
-if ($show_spouse) echo " checked=\"checked\""; ?> />
+if ($show_spouse) echo " checked=\"checked\""; ?>>
 </td></tr>
 
 <tr><td class="descriptionbox">
 	<?php echo WT_I18N::translate('Box width'), help_link('box_width'); ?>
 </td>
-<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $box_width; ?>" />
+<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $box_width; ?>">
 <b>%</b>
 </td>
 
@@ -306,7 +306,7 @@ if ($show_spouse) echo " checked=\"checked\""; ?> />
 <tr><td class="descriptionbox">
 	<?php echo WT_I18N::translate('Descent Steps'), help_link('fambook_descent'); ?>
 </td>
-<td class="optionbox"><input type="text" size="3" name="descent" value="<?php echo $descent; ?>" />
+<td class="optionbox"><input type="text" size="3" name="descent" value="<?php echo $descent; ?>">
 </td>
 
 <td class="descriptionbox">&nbsp;</td><td class="optionbox">&nbsp;</td></tr>

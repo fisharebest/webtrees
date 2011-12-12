@@ -55,7 +55,7 @@ function print_level_config_table($level) {
 					<?php echo WT_I18N::translate('Prefix'), help_link('GM_NAME_PREFIX','googlemap'); ?>
 				</td>
 				<td>
-					<input type="text" name="NEW_GM_PREFIX_<?php echo $level; ?>" value="<?php echo $GM_PREFIX[$level]; ?>" size="20" />
+					<input type="text" name="NEW_GM_PREFIX_<?php echo $level; ?>" value="<?php echo $GM_PREFIX[$level]; ?>" size="20">
 				</td>
 			</tr>
 			<tr>
@@ -63,7 +63,7 @@ function print_level_config_table($level) {
 					<?php echo WT_I18N::translate('Postfix'), help_link('GM_NAME_POSTFIX','googlemap'); ?>
 				</td>
 				<td>
-					<input type="text" name="NEW_GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $GM_POSTFIX[$level]; ?>" size="20" />
+					<input type="text" name="NEW_GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $GM_POSTFIX[$level]; ?>" size="20">
 				</td>
 			</tr>
 			<tr>
@@ -205,7 +205,7 @@ echo '<div id="tabs">',
 		'</ul>';
 ?>		
 <form method="post" name="configform" action="module.php?mod=googlemap&mod_action=admin_editconfig">
-<input type="hidden" name="action" value="update" />
+<input type="hidden" name="action" value="update">
 
 <div id="gm_basic">
 <table class="gm_edit_config">
@@ -228,9 +228,9 @@ echo '<div id="tabs">',
 		<th><?php echo WT_I18N::translate('Size of map (in pixels)'), help_link('GOOGLEMAP_MAP_SIZE','googlemap'); ?></th>
 		<td>
 			<?php echo WT_I18N::translate('Width'); ?>
-			<input type="text" name="NEW_GM_XSIZE" value="<?php echo $GOOGLEMAP_XSIZE; ?>" size="10" />
+			<input type="text" name="NEW_GM_XSIZE" value="<?php echo $GOOGLEMAP_XSIZE; ?>" size="10">
 			<?php echo WT_I18N::translate('Height'); ?>
-			<input type="text" name="NEW_GM_YSIZE" value="<?php echo $GOOGLEMAP_YSIZE; ?>" size="10" />
+			<input type="text" name="NEW_GM_YSIZE" value="<?php echo $GOOGLEMAP_YSIZE; ?>" size="10">
 		</td>
 	</tr>
 	<tr>
@@ -241,9 +241,9 @@ echo '<div id="tabs">',
 		<th><?php echo WT_I18N::translate('Size of Place Hierarchy map (in pixels)'), help_link('GOOGLEMAP_PH_MAP_SIZE','googlemap'); ?></th>
 		<td>
 			<?php echo WT_I18N::translate('Width'); ?>
-			<input type="text" name="NEW_GM_PH_XSIZE" value="<?php echo $GOOGLEMAP_PH_XSIZE; ?>" size="10" />
+			<input type="text" name="NEW_GM_PH_XSIZE" value="<?php echo $GOOGLEMAP_PH_XSIZE; ?>" size="10">
 			<?php echo WT_I18N::translate('Height'); ?>
-			<input type="text" name="NEW_GM_PH_YSIZE" value="<?php echo $GOOGLEMAP_PH_YSIZE; ?>" size="10" />
+			<input type="text" name="NEW_GM_PH_YSIZE" value="<?php echo $GOOGLEMAP_PH_YSIZE; ?>" size="10">
 		</td>
 	</tr>
 	<tr>
@@ -354,7 +354,7 @@ echo '<div id="tabs">',
 	</tr>
 	<tr>
 		<th><?php echo WT_I18N::translate('Default value for top-level'), help_link('GM_DEFAULT_LEVEL_0','googlemap'); ?></th>
-		<td><input type="text" name="NEW_GM_DEFAULT_TOP_LEVEL" value="<?php echo $GM_DEFAULT_TOP_VALUE; ?>" size="20" /></td>
+		<td><input type="text" name="NEW_GM_DEFAULT_TOP_LEVEL" value="<?php echo $GM_DEFAULT_TOP_VALUE; ?>" size="20"></td>
 	</tr>
 	<tr>
 		<th><?php echo WT_I18N::translate('Number of levels'), help_link('GM_NOF_LEVELS','googlemap'); ?></th>
@@ -389,9 +389,9 @@ echo '<div id="tabs">',
 </div>
 </div>
 <p>
-	<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="closeHelp();" />
+	<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="closeHelp();">
 	&nbsp;&nbsp;
-	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
+	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
 </p>
 </form>
 <?php

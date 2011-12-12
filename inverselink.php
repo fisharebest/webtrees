@@ -74,15 +74,15 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 
 		<?php
 		echo '<form name="link" method="get" action="inverselink.php">';
-		echo '<input type="hidden" name="action" value="update" />';
+		echo '<input type="hidden" name="action" value="update">';
 		if (!empty($mediaid)) {
-			echo '<input type="hidden" name="mediaid" value="', $mediaid, '" />';
+			echo '<input type="hidden" name="mediaid" value="', $mediaid, '">';
 		}
 		if (!empty($linktoid)) {
-			echo '<input type="hidden" name="linktoid" value="', $linktoid, '" />';
+			echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
 		}
-		echo '<input type="hidden" name="linkto" value="', $linkto, '" />';
-		echo '<input type="hidden" name="ged" value="', $GEDCOM, '" />';
+		echo '<input type="hidden" name="linkto" value="', $linkto, '">';
+		echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
 		echo '<table class="facts_table center">';
 		echo '<tr><td class="topbottombar" colspan="2">';
 		echo WT_I18N::translate('Link media'), help_link('add_media_linkid');
@@ -100,7 +100,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 				echo '<b>', $mediaid, '</b>';
 			}
 		} else {
-			echo '<input type="text" name="mediaid" id="mediaid" size="5" />';
+			echo '<input type="text" name="mediaid" id="mediaid" size="5">';
 			print_findmedia_link("mediaid", "1media");
 			echo "</td></tr>";
 		}
@@ -112,7 +112,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 			echo WT_I18N::translate('Individual'), "</td>";
 			echo '<td class="optionbox wrap">';
 			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '" />';
+				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktopid" size="3" value="', $linktoid, '">';
 				print_findindi_link("linktopid", "");
 			} else {
 				$record=WT_Person::getInstance($linktoid);
@@ -124,7 +124,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 			echo WT_I18N::translate('Family'), '</td>';
 			echo '<td class="optionbox wrap">';
 			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="', $linktoid, '" />';
+				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktofamid" size="3" value="', $linktoid, '">';
 				print_findfamily_link("linktofamid");
 			} else {
 				$record=WT_Family::getInstance($linktoid);
@@ -136,7 +136,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 			echo WT_I18N::translate('Source'), "</td>";
 			echo '<td  class="optionbox wrap">';
 			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="', $linktoid, '" />';
+				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktosid" size="3" value="', $linktoid, '">';
 				print_findsource_link("linktosid");
 			} else {
 				$record=WT_Source::getInstance($linktoid);
@@ -147,7 +147,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 			echo WT_I18N::translate('Repository'), "</td>";
 			echo '<td  class="optionbox wrap">';
 			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '" />';
+				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktorid" size="3" value="', $linktoid, '">';
 			} else {
 				$record=WT_Repository::getInstance($linktoid);
 				echo $record->format_list('span', false, $record->getFullName());
@@ -158,7 +158,7 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 			echo WT_I18N::translate('Shared note'), "</td>";
 			echo '<td  class="optionbox wrap">';
 			if ($linktoid=="") {
-				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '" />';
+				echo '<input class="pedigree_form" type="text" name="linktoid" id="linktonid" size="3" value="', $linktoid, '">';
 			} else {
 				$record=WT_Note::getInstance($linktoid);
 				echo $record->format_list('span', false, $record->getFullName());
@@ -166,15 +166,15 @@ if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant
 		}
 
 		echo '</td></tr>';
-		echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Set link'), '" /></td></tr>';
+		echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Set link'), '"></td></tr>';
 		echo '</table>';
 		echo '</form>';
-		echo '<br/><br/><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
+		echo '<br><br><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br></center>';
 	} elseif ($action == "update" && $paramok) {
 		linkMedia($mediaid, $linktoid);
-		echo '<br/><br/><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
+		echo '<br><br><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br></center>';
 	} else {
 		echo '<center>nothing to do<center>';
-		echo '<br/><br/><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
+		echo '<br><br><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a><br></center>';
 	}
 }

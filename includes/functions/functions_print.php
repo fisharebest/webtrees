@@ -247,14 +247,14 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 function header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL) {
 	$header_links='';
 	if (!empty($LINK_CANONICAL)) {
-		$header_links.= '<link rel="canonical" href="'. $LINK_CANONICAL. '" />';
+		$header_links.= '<link rel="canonical" href="'. $LINK_CANONICAL. '">';
 	}
 	if (!empty($META_DESCRIPTION)) {
-		$header_links.= '<meta name="description" content="'. htmlspecialchars($META_DESCRIPTION). '" />';
+		$header_links.= '<meta name="description" content="'. htmlspecialchars($META_DESCRIPTION). '">';
 	}
-	$header_links.= '<meta name="robots" content="'. $META_ROBOTS. '" />';
+	$header_links.= '<meta name="robots" content="'. $META_ROBOTS. '">';
 	if (!empty($META_GENERATOR)) {
-		$header_links.= '<meta name="generator" content="'. $META_GENERATOR. '" />';
+		$header_links.= '<meta name="generator" content="'. $META_GENERATOR. '">';
 	}
 	return $header_links;
 }
@@ -1156,7 +1156,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 		}
 		if (!$newRow) {
 			echo '</select>';
-			echo '&nbsp;&nbsp;<input type="button" value="', WT_I18N::translate('Add'), "\" onclick=\"addClipboardRecord('$id', 'newClipboardFact');\" /> ";
+			echo '&nbsp;&nbsp;<input type="button" value="', WT_I18N::translate('Add'), "\" onclick=\"addClipboardRecord('$id', 'newClipboardFact');\"> ";
 			echo '</form></td></tr>', "\n";
 		}
 	}
@@ -1211,7 +1211,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 		echo '<option value="EVEN">', WT_I18N::translate('Custom Event'), '</option>';
 	}
 	echo '</select>';
-	echo "&nbsp;&nbsp;<input type=\"button\" value=\"", WT_I18N::translate('Add'), "\" onclick=\"add_record('$id', 'newfact');\" /> ";
+	echo "&nbsp;&nbsp;<input type=\"button\" value=\"", WT_I18N::translate('Add'), "\" onclick=\"add_record('$id', 'newfact');\"> ";
 	foreach ($quickfacts as $fact) echo "&nbsp;<small><a href='#' onclick=\"add_new_record('$id', '$fact');return false;\">", WT_Gedcom_Tag::getLabel($fact), "</a></small>&nbsp;";
 	echo '</form>';
 	echo '</td></tr>';
@@ -1554,7 +1554,7 @@ function DumpString($input) {
 		$thisLine .= '       ';
 		$thisLine .= substr($hex1R, $pos, $lineLength);
 		$thisLine .= '<br>';
-		echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br>'), $thisLine);
+		echo str_replace(array(' ', '<br&nbsp;>'), array('&nbsp;', '<br>'), $thisLine);
 
 		// Line 4:  Second hexadecimal byte
 		if ($haveByte2) {
@@ -1564,7 +1564,7 @@ function DumpString($input) {
 			$thisLine .= '       ';
 			$thisLine .= substr($hex2R, $pos, $lineLength);
 			$thisLine .= '<br>';
-			echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br>'), $thisLine);
+			echo str_replace(' ', '&nbsp;', $thisLine);
 		}
 
 		// Line 5:  Third hexadecimal byte
@@ -1575,7 +1575,7 @@ function DumpString($input) {
 			$thisLine .= '       ';
 			$thisLine .= substr($hex3R, $pos, $lineLength);
 			$thisLine .= '<br>';
-			echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br>'), $thisLine);
+			echo str_replace(' ', '&nbsp;', $thisLine);
 		}
 
 		// Line 6:  Fourth hexadecimal byte
@@ -1586,7 +1586,7 @@ function DumpString($input) {
 			$thisLine .= '       ';
 			$thisLine .= substr($hex4R, $pos, $lineLength);
 			$thisLine .= '<br>';
-			echo str_replace(array(' ', '<br&nbsp;/>'), array('&nbsp;', '<br>'), $thisLine);
+			echo str_replace(' ', '&nbsp;', $thisLine);
 		}
 		echo '<br>';
 		$pos += $lineLength;

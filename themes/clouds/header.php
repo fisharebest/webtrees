@@ -34,20 +34,20 @@ echo
 	'<meta charset="UTF-8">',
 	'<title>', htmlspecialchars($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png" />',
-	'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" />',
-	'<link rel="stylesheet" type="text/css" href="', $stylesheet, '" />';
+	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
+	'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css">',
+	'<link rel="stylesheet" type="text/css" href="', $stylesheet, '">';
 
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css" />';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
 	break;
 }
 
 // Additional css files required (Only if Lightbox installed)
 if (WT_USE_LIGHTBOX) {
-		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen" />';
+		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
 }
 
 echo
@@ -64,10 +64,10 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 				'</span>',
 				'<div class="hsearch">',
 					'<form style="display:inline;" action="search.php" method="get">',
-						'<input type="hidden" name="action" value="general" />',
-						'<input type="hidden" name="topsearch" value="yes" />',
-						'<input type="text" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '"/>',
-						'<input type="image" src="', WT_THEME_URL, 'images/go.png', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '" />',
+						'<input type="hidden" name="action" value="general">',
+						'<input type="hidden" name="topsearch" value="yes">',
+						'<input type="text" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '">',
+						'<input type="image" src="', WT_THEME_URL, 'images/go.png', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
 					'</form>',
 				'</div>',
 			'</div>',

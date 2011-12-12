@@ -172,7 +172,7 @@ case 'loadrows':
 		}
 		// $aData[9] is the sortable last-login timestamp
 		if ($aData[9]) {
-			$aData[10]=format_timestamp($aData[9]).'<br />'.WT_I18N::time_ago(time() - $aData[9]);
+			$aData[10]=format_timestamp($aData[9]).'<br>'.WT_I18N::time_ago(time() - $aData[9]);
 		} else {
 			$aData[10]=WT_I18N::translate('Never');
 		}
@@ -272,12 +272,12 @@ $controller->pageHeader();
 // Save new user info to the database
 if ($action=='createuser' || $action=='edituser2') {
 	if (($action=='createuser' || $action=='edituser2' && $username!=$oldusername) && get_user_id($username)) {
-		echo "<span class=\"error\">", WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), "</span><br />";
+		echo "<span class=\"error\">", WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), "</span><br>";
 	} elseif (($action=='createuser' || $action=='edituser2' && $emailaddress!=$oldemailaddress) && get_user_by_email($emailaddress)) {
-		echo "<span class=\"error\">", WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), "</span><br />";
+		echo "<span class=\"error\">", WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), "</span><br>";
 	} else {
 		if ($pass1!=$pass2) {
-			echo "<span class=\"error\">", WT_I18N::translate('Passwords do not match.'), "</span><br />";
+			echo "<span class=\"error\">", WT_I18N::translate('Passwords do not match.'), "</span><br>";
 		} else {
 			// New user
 			if ($action=='createuser') {
@@ -423,22 +423,22 @@ case 'createform':
 		<table id="adduser">
 			<tr>
 				<td><?php echo WT_I18N::translate('Username'), help_link('username'); ?></td>
-				<td colspan="3" ><input type="text" name="username" autofocus /></td>
+				<td colspan="3" ><input type="text" name="username" autofocus></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Real name'), help_link('real_name'); ?></td>
-				<td colspan="3" ><input type="text" name="realname" size="50" /></td>
+				<td colspan="3" ><input type="text" name="realname" size="50"></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Password'), help_link('password'); ?></td>
-				<td ><input type="password" name="pass1" /></td>
+				<td ><input type="password" name="pass1"></td>
 				<td><?php echo WT_I18N::translate('Confirm password'), help_link('password_confirm'); ?></td>
-				<td ><input type="password" name="pass2" /></td>
+				<td ><input type="password" name="pass2"></td>
 			</tr>
 			<tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Email address'), help_link('email'); ?></td>
-				<td ><input type="text" name="emailaddress" value="" size="50" /></td>
+				<td ><input type="text" name="emailaddress" value="" size="50"></td>
 				<td><?php echo WT_I18N::translate('Preferred contact method'), help_link('useradmin_user_contact'); ?></td>
 				<td >
 					<?php
@@ -448,21 +448,21 @@ case 'createform':
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Email verified'), help_link('useradmin_verification'); ?></td>
-				<td ><input type="checkbox" name="verified" value="1" checked="checked" /></td>
+				<td ><input type="checkbox" name="verified" value="1" checked="checked"></td>
 				<td><?php echo WT_I18N::translate('Approved by administrator'), help_link('useradmin_verification'); ?></td>
-				<td ><input type="checkbox" name="verified_by_admin" value="1" checked="checked" /></td>
+				<td ><input type="checkbox" name="verified_by_admin" value="1" checked="checked"></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Automatically approve changes made by this user'), help_link('useradmin_auto_accept'); ?></td>
-				<td ><input type="checkbox" name="new_auto_accept" value="1" /></td>
+				<td ><input type="checkbox" name="new_auto_accept" value="1"></td>
 				<td><?php echo WT_I18N::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'); ?></td>
-				<td ><input type="checkbox" name="editaccount" value="1" <?php echo "checked=\"checked\""; ?> /></td>
+				<td ><input type="checkbox" name="editaccount" value="1" checked="checked"></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Administrator'), help_link('role'); ?></td>
-				<td ><input type="checkbox" name="canadmin" value="1" /></td>
+				<td ><input type="checkbox" name="canadmin" value="1"></td>
 				<td><?php echo WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'); ?></td>
-				<td ><input type="checkbox" name="visibleonline" value="1" <?php echo "checked=\"checked\""; ?> /></td>
+				<td ><input type="checkbox" name="visibleonline" value="1" checked="checked"></td>
 			</tr>
 			<?php if (WT_USER_IS_ADMIN) { ?>
 			<tr>
@@ -511,12 +511,12 @@ case 'createform':
 									//Pedigree root person
 									'<td >';
 										$varname='rootid'.$ged_id;
-										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="" />', print_findindi_link($varname, "", false, false, $ged_name),
+										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="">', print_findindi_link($varname, "", false, false, $ged_name),
 									'</td>',						
 									// GEDCOM INDI Record ID
 									'<td >';
 										$varname='gedcomid'.$ged_id;
-										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="" />' ,print_findindi_link($varname, "", false, false, $ged_name),
+										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="">' ,print_findindi_link($varname, "", false, false, $ged_name),
 									'</td>',
 									'<td >';
 										$varname='canedit'.$ged_id;
@@ -533,7 +533,7 @@ case 'createform':
 									//Relationship path
 									'<td>';
 										$varname = 'RELATIONSHIP_PATH_LENGTH'.$ged_id;
-										echo '<select name="', $varname, '" id="', $varname, '" class="relpath" />';
+										echo '<select name="', $varname, '" id="', $varname, '" class="relpath">';
 											for ($n=0; $n<=10; ++$n) {
 												echo
 													'<option value="', $n, '">',
@@ -549,7 +549,7 @@ case 'createform':
 				</td>
 			</tr>
 				<td colspan="4">
-					<input type="submit" value="<?php echo WT_I18N::translate('Create User'); ?>" />
+					<input type="submit" value="<?php echo WT_I18N::translate('Create User'); ?>">
 				</td>
 			</tr>	
 		</table>
@@ -587,7 +587,7 @@ case 'cleanup':
 			?><tr><td><?php echo $user_name, " - <p>", $userName, "</p>", WT_I18N::translate('User\'s account has been inactive too long: ');
 			echo timestamp_to_gedcom_date($datelogin)->Display(false);
 			$ucnt++;
-			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1" /></td></tr><?php
+			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1"></td></tr><?php
 		}
 	}
 
@@ -597,7 +597,7 @@ case 'cleanup':
 			$userName = getUserFullName($user_id);
 			?><tr><td><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User didn\'t verify within 7 days.');
 			$ucnt++;
-			?></td><td><input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $user_name); ?>" value="1" /></td></tr><?php
+			?></td><td><input type="checkbox" checked="checked" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_",  "_", "_"), $user_name); ?>" value="1"></td></tr><?php
 		}
 	}
 
@@ -606,7 +606,7 @@ case 'cleanup':
 		if (!get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'verified')) {
 			$userName = getUserFullName($user_id);
 			?><tr><td><?php echo $user_name, " - ", $userName, ":&nbsp;&nbsp;", WT_I18N::translate('User not verified by administrator.');
-			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1" /></td></tr><?php
+			?></td><td><input type="checkbox" name="<?php echo "del_", str_replace(array(".", "-", " "), array("_", "_", "_"), $user_name); ?>" value="1"></td></tr><?php
 			$ucnt++;
 		}
 	}
@@ -618,9 +618,9 @@ case 'cleanup':
 	<p>
 	<?php
 	if ($ucnt >0) {
-		?><input type="submit" value="<?php echo WT_I18N::translate('Continue'); ?>" />&nbsp;&nbsp;<?php
+		?><input type="submit" value="<?php echo WT_I18N::translate('Continue'); ?>">&nbsp;&nbsp;<?php
 	} ?>
-	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_users.php';"/>
+	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_users.php';">
 	</p>
 	</form><?php
 	break;
@@ -630,7 +630,7 @@ case 'cleanup2':
 		if (safe_POST($var)=='1') {
 			delete_user($user_id);
 			AddToLog("deleted user ->{$user_name}<-", 'auth');
-			echo WT_I18N::translate('Deleted user: '); echo $user_name, "<br />";
+			echo WT_I18N::translate('Deleted user: '); echo $user_name, "<br>";
 		} else {
 			$tempArray = unserialize(get_user_setting($user_id, 'canedit'));
 			if (is_array($tempArray)) {
@@ -638,7 +638,7 @@ case 'cleanup2':
 					$var = "delg_".str_replace(array(".", "-", " "), "_", $gedid);
 					if (safe_POST($var)=='1' && get_user_gedcom_setting($user_id, $gedid, 'canedit')) {
 						set_user_gedcom_setting($user_id, $gedid, 'canedit', null);
-						echo $gedid, ":&nbsp;&nbsp;", WT_I18N::translate('Unset GEDCOM rights for '), $user_name, "<br />";
+						echo $gedid, ":&nbsp;&nbsp;", WT_I18N::translate('Unset GEDCOM rights for '), $user_name, "<br>";
 					}
 				}
 			}
@@ -648,7 +648,7 @@ case 'cleanup2':
 					$var = "delg_".str_replace(array(".", "-", " "), "_", $gedid);
 					if (safe_POST($var)=='1' && get_user_gedcom_setting($user_id, $gedid, 'rootid')) {
 						set_user_gedcom_setting($user_id, $gedid, 'rootid', null);
-						echo $gedid, ":&nbsp;&nbsp;", WT_I18N::translate('Unset root ID for '), $user_name, "<br />";
+						echo $gedid, ":&nbsp;&nbsp;", WT_I18N::translate('Unset root ID for '), $user_name, "<br>";
 					}
 				}
 			}
@@ -658,7 +658,7 @@ case 'cleanup2':
 					$var = "delg_".str_replace(array(".", "-", " "), "_", $gedid);
 					if (safe_POST($var)=='1' && get_user_gedcom_setting($user_id, $gedid, 'gedcomid')) {
 						set_user_gedcom_setting($user_id, $gedid, 'gedcomid', null);
-						echo $gedid, ":&nbsp;&nbsp;", WT_I18N::translate('Unset GEDCOM ID for '), $user_name, "<br />";
+						echo $gedid, ":&nbsp;&nbsp;", WT_I18N::translate('Unset GEDCOM ID for '), $user_name, "<br>";
 					}
 				}
 			}

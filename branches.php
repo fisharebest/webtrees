@@ -28,8 +28,8 @@ require './includes/session.php';
 
 //-- const
 $fact='MARR';
-define('WT_ICON_RINGS', '<img src="'.$WT_IMAGES['rings'].'" alt="'.WT_Gedcom_Tag::getLabel('MARR').'" title="'.WT_Gedcom_Tag::getLabel('MARR').'" />');
-define('WT_ICON_BRANCHES', '<img src="'.$WT_IMAGES['patriarch'].'" alt="" align="middle" />');
+define('WT_ICON_RINGS', '<img src="'.$WT_IMAGES['rings'].'" alt="'.WT_Gedcom_Tag::getLabel('MARR').'" title="'.WT_Gedcom_Tag::getLabel('MARR').'">');
+define('WT_ICON_BRANCHES', '<img src="'.$WT_IMAGES['patriarch'].'" alt="" align="middle">');
 
 //-- args
 $surn = safe_GET('surname', '[^<>&%{};]*');
@@ -63,18 +63,18 @@ echo '<div id="branches-page">
 			<tr>
 				<td class="descriptionbox">', WT_Gedcom_Tag::getLabel('SURN'), help_link('surname'), '</td>
 				<td class="optionbox">
-					<input type="text" name="surname" id="SURN" value="',$surn, '" />
-					<input type="hidden" name="ged" id="ged" value="', $ged, '" />
-					<input type="submit" value="', WT_I18N::translate('View'), '" />
+					<input type="text" name="surname" id="SURN" value="',$surn, '">
+					<input type="hidden" name="ged" id="ged" value="', $ged, '">
+					<input type="submit" value="', WT_I18N::translate('View'), '">
 					<p>', WT_I18N::translate('Phonetic search'), '</p>
 					<p>
 						<input type="checkbox" name="soundex_std" id="soundex_std" value="1"';
 							if ($soundex_std) echo ' checked="checked"';
-						echo ' />
+						echo '>
 						<label for="soundex_std">', WT_I18N::translate('Russell'), '</label>
 						<input type="checkbox" name="soundex_dm" id="soundex_dm" value="1"';
 							if ($soundex_dm) echo ' checked="checked"';
-						echo ' />
+						echo '>
 						<label for="soundex_dm">', WT_I18N::translate('Daitch-Mokotoff'), '</label>
 					</p>
 				</td>

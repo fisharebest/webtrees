@@ -111,14 +111,14 @@ echo "<div>";
 
 // Calendar form
 echo '<form name="dateform" method="get" action="calendar.php">';
-echo "<input type=\"hidden\" name=\"cal\" value=\"{$cal}\" />";
-echo "<input type=\"hidden\" name=\"day\" value=\"{$cal_date->d}\" />";
-echo "<input type=\"hidden\" name=\"month\" value=\"{$cal_month}\" />";
-echo "<input type=\"hidden\" name=\"year\" value=\"{$cal_date->y}\" />";
-echo "<input type=\"hidden\" name=\"action\" value=\"{$action}\" />";
-echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\" />";
-echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\" />";
-echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\" />";
+echo "<input type=\"hidden\" name=\"cal\" value=\"{$cal}\">";
+echo "<input type=\"hidden\" name=\"day\" value=\"{$cal_date->d}\">";
+echo "<input type=\"hidden\" name=\"month\" value=\"{$cal_month}\">";
+echo "<input type=\"hidden\" name=\"year\" value=\"{$cal_date->y}\">";
+echo "<input type=\"hidden\" name=\"action\" value=\"{$action}\">";
+echo "<input type=\"hidden\" name=\"filterev\" value=\"{$filterev}\">";
+echo "<input type=\"hidden\" name=\"filtersx\" value=\"{$filtersx}\">";
+echo "<input type=\"hidden\" name=\"filterof\" value=\"{$filterof}\">";
 echo '<table class="facts_table width100">';
 echo '<tr><td class="facts_label" colspan="4"><h2>';
 
@@ -127,13 +127,13 @@ $cal=rawurlencode($cal);
 
 switch ($action) {
 case 'today':
-	echo WT_I18N::translate('On This Day ...').'<br/>'.$ged_date->Display(false);
+	echo WT_I18N::translate('On This Day ...').'<br>'.$ged_date->Display(false);
 	break;
 case 'calendar':
-	echo WT_I18N::translate('In This Month ...').'<br/>'.$ged_date->Display(false, '%F %Y');
+	echo WT_I18N::translate('In This Month ...').'<br>'.$ged_date->Display(false, '%F %Y');
 	break;
 case 'year':
-	echo WT_I18N::translate('In This Year ...').'<br/>'.$ged_date->Display(false, '%Y');
+	echo WT_I18N::translate('In This Year ...').'<br>'.$ged_date->Display(false, '%Y');
 	break;
 }
 echo '</h2></td></tr>';
@@ -176,7 +176,7 @@ echo '<tr><td class="descriptionbox vmiddle">';
 echo WT_I18N::translate('Year'), help_link('annivers_year_select'), '</td>';
 echo '<td class="optionbox vmiddle">';
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==1?-1:$cal_date->y-1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">-1</a>";
-echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"4\" /> ";
+echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"4\"> ";
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==-1?1:$cal_date->y+1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">+1</a>";
 echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%Y')."</b></a>";
 echo '</td> ';
@@ -226,7 +226,7 @@ else {
 
 	echo '&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;';
 
-	echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\" />";
+	echo "<input type=\"hidden\" name=\"filterev\" value=\"$filterev\">";
 echo '<select class="list_value" name="filterev" onchange="document.dateform.submit();">';
 echo '<option value="bdm"';
 if ($filterev == "bdm") echo ' selected="selected"';
@@ -385,13 +385,13 @@ case 'today':
 			if (empty($indis[$fact['id']]))
 				$indis[$fact['id']]=$fact_text;
 			else
-				$indis[$fact['id']].='<br/>'.$fact_text;
+				$indis[$fact['id']].='<br>'.$fact_text;
 			break;
 		case 'FAM':
 			if (empty($fams[$fact['id']]))
 				$fams[$fact['id']]=$fact_text;
 			else
-				$fams[$fact['id']].='<br/>'.$fact_text;
+				$fams[$fact['id']].='<br>'.$fact_text;
 			break;
 		}
 	}
@@ -405,7 +405,7 @@ case 'calendar':
 			if (empty($cal_facts[$d][$id]))
 				$cal_facts[$d][$id]=calendar_fact_text($fact, false);
 			else
-				$cal_facts[$d][$id].='<br/>'.calendar_fact_text($fact, false);
+				$cal_facts[$d][$id].='<br>'.calendar_fact_text($fact, false);
 		}
 	}
 	break;
@@ -452,7 +452,7 @@ case 'today':
 	echo "</tr><tr>";
 	// Table footers
 	echo '<td class="descriptionbox">', WT_I18N::translate('Total individuals: %s', count($indis));
-	echo '<br />';
+	echo '<br>';
 	echo WT_Person::sexImage('M', 'small', 'vertical-align: middle', WT_I18N::translate('Males')), "&nbsp;{$males}&nbsp;&nbsp;&nbsp;&nbsp;";
 	echo WT_Person::sexImage('F', 'small', 'vertical-align: middle', WT_I18N::translate('Females')), "&nbsp;{$females}&nbsp;&nbsp;&nbsp;&nbsp;";
 	if (count($indis)!=$males+$females)
@@ -490,7 +490,7 @@ case 'calendar':
 			echo "<td class=\"optionbox wrap\">";
 		if ($d<1 || $d>$days_in_month)
 			if (count($cal_facts[0])>0) {
-				echo "<span class=\"cal_day\">", WT_I18N::translate('Day not set'), "</span><br style=\"clear: both\" />";
+				echo "<span class=\"cal_day\">", WT_I18N::translate('Day not set'), "</span><br style=\"clear: both\">";
 				echo "<div class=\"details1\" style=\"height: 150px; overflow: auto;\">";
 				echo calendar_list_text($cal_facts[0], "", "", false);
 				echo "</div>";
@@ -514,7 +514,7 @@ case 'calendar':
 					break;
 				}
 			}
-			echo '<br style="clear: both" /><div class="details1" style="height: 150px; overflow: auto;">';
+			echo '<br style="clear: both"><div class="details1" style="height: 150px; overflow: auto;">';
 			echo calendar_list_text($cal_facts[$d], "", "", false);
 			echo '</div>';
 		}
@@ -526,7 +526,7 @@ case 'calendar':
 	echo '</table>';
 	break;
 }
-echo '</div><br />';
+echo '</div>';
 
 /////////////////////////////////////////////////////////////////////////////////
 // Filter a list of facts

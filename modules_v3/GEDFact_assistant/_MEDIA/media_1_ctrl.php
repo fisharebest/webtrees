@@ -48,9 +48,9 @@ $married=-1;
 
 // Test to see if Base pid is filled in ============================
 if ($pid=="") {
-	echo "<br /><br />";
+	echo "<br><br>";
 	echo "<b><font color=\"red\">YOU MUST enter a Base individual ID to be able to \"ADD\" Individual Links</font></b>";
-	echo "<br /><br />";
+	echo "<br><br>";
 } else {
 
 	$person=WT_Person::getInstance($pid);
@@ -103,7 +103,7 @@ if ($pid=="") {
 					}
 				</script>
 				<?php
-				echo '<input id="personid" type="text" value="" />';
+				echo '<input id="personid" type="text" value="">';
 				echo '<a href="#" onclick="onclick=findindi()">' ;
 				echo '&nbsp;<font size="2">&nbsp;', WT_I18N::translate('Search'), '</font>';
 				echo '</a>';
@@ -112,7 +112,7 @@ if ($pid=="") {
 		</tr>
 		<tr>
 			<td class="transparent;">
-				<br />
+				<br>
 			</td>
 		</tr>
 	
@@ -128,19 +128,19 @@ if ($pid=="") {
 				<td align="center" colspan=3 class="descriptionbox wrap font9">
 					<?php
 					// Header text with "Head" button =================================================
-					$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" />";
-					$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" alt=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" title=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" />";
+					$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["button_head"]."\">";
+					$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" alt=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" title=\"".WT_I18N::translate('Click to choose person as Head of family.')."\">";
 					global $tempStringHead;
 					echo WT_I18N::translate('Click %s to choose person as Head of family.', $headImg);
 					?>
-					<br /><br />
+					<br><br>
 					<?php echo WT_I18N::translate('Click Name to add person to Add Links List.'); ?>
 				</td>
 			</tr>
 	
 			<tr>
 				<td class="font9">
-					<br />
+					<br>
 				</td>
 			</tr>
 	
@@ -442,7 +442,7 @@ if ($pid=="") {
 				$label = $this->record->getStepFamilyLabel($family);
 				$people = $this->buildFamilyList($family, "step-parents");
 				if ($people) {
-					echo "<tr><td><br /></td><td></td></tr>";
+					echo "<tr><td><br></td><td></td></tr>";
 				}
 				$marrdate = $family->getMarriageDate();
 	
@@ -714,7 +714,7 @@ if ($pid=="") {
 				}
 			}
 	
-			echo "<tr><td><font size=1><br /></font></td></tr>";
+			echo "<tr><td><font size=1><br></font></td></tr>";
 	
 			//-- Build Spouse Family ---------------------------------------------------
 			$families = $this->record->getSpouseFamilies();
@@ -1018,7 +1018,7 @@ if ($pid=="") {
 					</tr>
 					<?php
 				}
-				echo "<tr><td><font size=1><br /></font></td></tr>";
+				echo "<tr><td><font size=1><br></font></td></tr>";
 			}
 			?>
 	
@@ -1078,18 +1078,18 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 		//-- draw a box for the family popup
 		if ($TEXT_DIRECTION=="rtl") {
 			$spouselinks .= "<table id=\"flyoutFamRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
-			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
+			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
 			$parentlinks .= "<table id=\"flyoutParRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
-			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 			$step_parentlinks .= "<table id=\"flyoutStepRTL\" class=\"person_box$isF\"><tr><td class=\"name2 font9 rtl\">";
-			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		} else {
 			$spouselinks .= "<table id=\"flyoutFam\" class=\"person_box$isF\"><tr><td class=\"name2 font9 ltr\">";
-			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
+			$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
 			$parentlinks .= "<table id=\"flyoutPar\" class=\"person_box$isF\"><tr><td class=\"name2 font9 ltr\">";
-			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+			$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 			$step_parentlinks .= "<table id=\"flyoutStep\" class=\"person_box$isF\"><tr><td class=\"name2 font9 ltr\">";
-			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+			$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		}
 		$persons       = '';
 		$person_parent = '';
@@ -1205,7 +1205,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 						} else {
 							$parentlinks .= WT_I18N::translate('Private');
 						}
-						$parentlinks .= "<br />";
+						$parentlinks .= "<br>";
 						$natmom = "yes";
 					}
 				}
@@ -1247,7 +1247,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							} else {
 								$parentlinks .= WT_I18N::translate('Private');
 							}
-							$parentlinks .= "<br />";
+							$parentlinks .= "<br>";
 						}
 					}
 				}
@@ -1275,7 +1275,7 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 							} else {
 								$parentlinks .= WT_I18N::translate('Private');
 							}
-							$parentlinks .= "<br />";
+							$parentlinks .= "<br>";
 						}
 					}
 				}

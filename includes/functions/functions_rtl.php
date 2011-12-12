@@ -82,10 +82,10 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 	$debug = false; // false for normal operation (no calls of the DumpString function)
 
 	$spanNumber ++;
-	if ($debug) {echo '<br /><b>Input ', $spanNumber, ':</b>'; DumpString($inputText);}
+	if ($debug) {echo '<br><b>Input ', $spanNumber, ':</b>'; DumpString($inputText);}
 
-	$workingText = str_replace("\n", '<br />', $inputText);
-	$workingText = str_replace(array('<span class="starredname"><br />', '<span<br />class="starredname">'), '<br /><span class="starredname">',$workingText); // Reposition some incorrectly placed line breaks
+	$workingText = str_replace("\n", '<br>', $inputText);
+	$workingText = str_replace(array('<span class="starredname"><br>', '<span<br>class="starredname">'), '<br><span class="starredname">',$workingText); // Reposition some incorrectly placed line breaks
 	$workingText = stripLRMRLM($workingText); // Get rid of any existing UTF8 control codes
 
 //	$nothing  = '&zwnj;'; // Zero Width Non-Joiner  (not sure whether this is still needed to work around a TCPDF bug)
@@ -123,7 +123,7 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 			$currentLen += $endPos;
 			$element = substr($workingText, 0, $currentLen);
 			$temp = strtolower(substr($element, 0, 3));
-			if (strlen($element < 7) && $temp == '<br') { // assume we have '<br />' or a variant thereof
+			if (strlen($element < 7) && $temp == '<br') { // assume we have '<br>' or a variant thereof
 				if ($numberState) {
 					$numberState = false;
 					if ($currentState == 'RTL') {
@@ -404,45 +404,45 @@ function spanLTRRTL($inputText, $direction='BOTH', $class='') {
 		$result = str_replace(WT_UTF8_PDF.'.'.$endRTL, WT_UTF8_PDF.$endRTL.$startRTL.'.'.$endRTL, $result);
 	}
 
-	// Trim trailing blanks preceding <br /> in LTR text
+	// Trim trailing blanks preceding <br> in LTR text
 	while ($previousState != 'RTL') {
-		if (strpos($result, ' <LTRbr />') !== false) {
-			$result = str_replace(' <LTRbr />', '<LTRbr />', $result);
+		if (strpos($result, ' <LTRbr>') !== false) {
+			$result = str_replace(' <LTRbr>', '<LTRbr>', $result);
 			continue;
 		}
-		if (strpos($result, '&nbsp;<LTRbr />') !== false) {
-			$result = str_replace('&nbsp;<LTRbr />', '<LTRbr />', $result);
+		if (strpos($result, '&nbsp;<LTRbr>') !== false) {
+			$result = str_replace('&nbsp;<LTRbr>', '<LTRbr>', $result);
 			continue;
 		}
-		if (strpos($result, ' <br />') !== false) {
-			$result = str_replace(' <br />', '<br />', $result);
+		if (strpos($result, ' <br>') !== false) {
+			$result = str_replace(' <br>', '<br>', $result);
 			continue;
 		}
-		if (strpos($result, '&nbsp;<br />') !== false) {
-			$result = str_replace('&nbsp;<br />', '<br />', $result);
+		if (strpos($result, '&nbsp;<br>') !== false) {
+			$result = str_replace('&nbsp;<br>', '<br>', $result);
 			continue;
 		}
 		break; // Neither space nor &nbsp; : we're done
 	}
 
-	// Trim trailing blanks preceding <br /> in RTL text
+	// Trim trailing blanks preceding <br> in RTL text
 	while (true) {
-		if (strpos($result, ' <RTLbr />') !== false) {
-			$result = str_replace(' <RTLbr />', '<RTLbr />', $result);
+		if (strpos($result, ' <RTLbr>') !== false) {
+			$result = str_replace(' <RTLbr>', '<RTLbr>', $result);
 			continue;
 		}
-		if (strpos($result, '&nbsp;<RTLbr />') !== false) {
-			$result = str_replace('&nbsp;<RTLbr />', '<RTLbr />', $result);
+		if (strpos($result, '&nbsp;<RTLbr>') !== false) {
+			$result = str_replace('&nbsp;<RTLbr>', '<RTLbr>', $result);
 			continue;
 		}
 		break; // Neither space nor &nbsp; : we're done
 	}
 
-	// Convert '<LTRbr />' and '<RTLbr /'
-	$result = str_replace(array('<LTRbr />', '<RTLbr />'), array($endLTR.'<br />'.$startLTR, $endRTL.'<br />'.$startRTL), $result);
+	// Convert '<LTRbr>' and '<RTLbr /'
+	$result = str_replace(array('<LTRbr>', '<RTLbr>'), array($endLTR.'<br>'.$startLTR, $endRTL.'<br>'.$startRTL), $result);
 
 	// Include leading indeterminate directional text in whatever follows
-	if (substr($result."\n", 0, $lenStart) != $startLTR && substr($result."\n", 0, $lenStart) != $startRTL && substr($result."\n", 0, 6) != '<br />') {
+	if (substr($result."\n", 0, $lenStart) != $startLTR && substr($result."\n", 0, $lenStart) != $startRTL && substr($result."\n", 0, 6) != '<br>') {
 		$leadingText = '';
 		while (true) {
 			if ($result == '') {
@@ -556,16 +556,16 @@ function getChar($text, $offset) {
 }
 
 /**
- * Insert <br /> into current span
+ * Insert <br> into current span
  */
 function breakCurrentSpan(&$result) {
 	global $currentState, $waitingText;
 
-	// Interrupt the current span, insert that <br />, and then continue the current span
+	// Interrupt the current span, insert that <br>, and then continue the current span
 	$result .= $waitingText;
 	$waitingText = '';
 
-	$breakString = '<' . $currentState . 'br />';
+	$breakString = '<' . $currentState . 'br>';
 	$result .= $breakString;
 
 	return;
@@ -721,7 +721,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 		}
 
 		$savedSpan = $textSpan;
-		// Move any trailing <br />, optionally preceded or followed by blanks, outside this LTR span
+		// Move any trailing <br>, optionally preceded or followed by blanks, outside this LTR span
 		while ($textSpan != '') {
 			if (substr($textSpan, -1) == ' ') {
 				$trailingBlanks = ' ' . $trailingBlanks;
@@ -735,8 +735,8 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			}
 			break;
 		}
-		while (substr($textSpan, -9) == '<LTRbr />') {
-			$trailingBreaks = '<br />' . $trailingBreaks; // Plain <br /> because it's outside a span
+		while (substr($textSpan, -9) == '<LTRbr>') {
+			$trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it's outside a span
 			$textSpan = substr($textSpan, 0, -9);
 		}
 		if ($trailingBreaks != '') {
@@ -868,13 +868,13 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 		// We're done: finish the span
 		$textSpan = starredName($textSpan, 'LTR'); // Wrap starred name in <u> and </u> tags
 		while (true) {
-			// Remove blanks that precede <LTRbr />
-			if (strpos($textSpan, ' <LTRbr />') !== false) {
-				$textSpan = str_replace(' <LTRbr />', '<LTRbr />', $textSpan);
+			// Remove blanks that precede <LTRbr>
+			if (strpos($textSpan, ' <LTRbr>') !== false) {
+				$textSpan = str_replace(' <LTRbr>', '<LTRbr>', $textSpan);
 				continue;
 			}
-			if (strpos($textSpan, '&nbsp;<LTRbr />') !== false) {
-				$textSpan = str_replace('&nbsp;<LTRbr />', '<LTRbr />', $textSpan);
+			if (strpos($textSpan, '&nbsp;<LTRbr>') !== false) {
+				$textSpan = str_replace('&nbsp;<LTRbr>', '<LTRbr>', $textSpan);
 				continue;
 			}
 			break;
@@ -892,7 +892,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 	if ($currentState == 'RTL') {
 		$savedSpan = $textSpan;
 
-		// Move any trailing <br />, optionally followed by blanks, outside this RTL span
+		// Move any trailing <br>, optionally followed by blanks, outside this RTL span
 		while ($textSpan != '') {
 			if (substr($textSpan, -1) == ' ') {
 				$trailingBlanks = ' ' . $trailingBlanks;
@@ -906,8 +906,8 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 			}
 			break;
 		}
-		while (substr($textSpan, -9) == '<RTLbr />') {
-			$trailingBreaks = '<br />' . $trailingBreaks; // Plain <br /> because it's outside a span
+		while (substr($textSpan, -9) == '<RTLbr>') {
+			$trailingBreaks = '<br>' . $trailingBreaks; // Plain <br> because it's outside a span
 			$textSpan = substr($textSpan, 0, -9);
 		}
 		if ($trailingBreaks != '') {
@@ -971,12 +971,12 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 		}
 
 		while ($TEXT_DIRECTION == 'rtl') {
-			// Look for " - " preceding <RTLbr /> and relocate it to the front of the string
-			$posDashString = strpos($textSpan, ' - <RTLbr />');
+			// Look for " - " preceding <RTLbr> and relocate it to the front of the string
+			$posDashString = strpos($textSpan, ' - <RTLbr>');
 			if ($posDashString === false) break;
-			$posStringStart = strrpos(substr($textSpan, 0, $posDashString), '<RTLbr />');
+			$posStringStart = strrpos(substr($textSpan, 0, $posDashString), '<RTLbr>');
 			if ($posStringStart === false) $posStringStart = 0;
-			else $posStringStart += 9; // Point to the first char following the last <RTLbr />
+			else $posStringStart += 9; // Point to the first char following the last <RTLbr>
 
 			$textSpan = substr($textSpan, 0, $posStringStart) . ' - ' . substr($textSpan, $posStringStart, $posDashString-$posStringStart) . substr($textSpan, $posDashString+3);
 		}
@@ -1016,9 +1016,9 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 		// Look for trailing " -", reverse it, and relocate it to the front of the string
 		if (substr($textSpan, -2) == ' -') {
 			$posDashString = strlen($textSpan) - 2;
-			$posStringStart = strrpos(substr($textSpan, 0, $posDashString), '<RTLbr />');
+			$posStringStart = strrpos(substr($textSpan, 0, $posDashString), '<RTLbr>');
 			if ($posStringStart === false) $posStringStart = 0;
-			else $posStringStart += 9; // Point to the first char following the last <RTLbr />
+			else $posStringStart += 9; // Point to the first char following the last <RTLbr>
 
 			$textSpan = substr($textSpan, 0, $posStringStart) . '- ' . substr($textSpan, $posStringStart, $posDashString-$posStringStart) . substr($textSpan, $posDashString+2);
 		}
@@ -1049,7 +1049,7 @@ function finishCurrentSpan(&$result, $theEnd=false) {
 		$result = $result . $textSpan;
 	}
 
-	$result .= $trailingBreaks; // Get rid of any waiting <br />
+	$result .= $trailingBreaks; // Get rid of any waiting <br>
 
 	return;
 }

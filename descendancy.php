@@ -58,18 +58,18 @@ echo WT_JS_END;
 
 $gencount=0;
 echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">';
-echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '" />';
-echo '<input type="hidden" name="show_full" value="', $controller->show_full, '" />';
+echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';
+echo '<input type="hidden" name="show_full" value="', $controller->show_full, '">';
 echo '<table class="list_table">';
 echo '<tr><td class="descriptionbox">';
 echo WT_I18N::translate('Individual'), '</td>';
 echo '<td class="optionbox">';
-echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="', $controller->rootid, '" />';
+echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="', $controller->rootid, '">';
 print_findindi_link("rootid", "");
 echo '</td>';
 echo '<td class="descriptionbox">';
 echo WT_I18N::translate('Box width'), help_link('box_width'), '</td>';
-echo '<td class="optionbox"><input type="text" size="3" name="box_width" value="', $controller->box_width, '" />';
+echo '<td class="optionbox"><input type="text" size="3" name="box_width" value="', $controller->box_width, '">';
 echo '<b>%</b></td>';
 echo '<td rowspan="2" class="descriptionbox">';
 echo WT_I18N::translate('Layout');
@@ -78,24 +78,24 @@ echo '<input type="radio" name="chart_style" value="0"';
 if ($controller->chart_style==0) {
 	echo ' checked="checked"';
 }
-echo '/>', WT_I18N::translate('List');
-echo '<br /><input type="radio" name="chart_style" value="1"';
+echo '>', WT_I18N::translate('List');
+echo '<br><input type="radio" name="chart_style" value="1"';
 if ($controller->chart_style==1) {
 	echo ' checked="checked"';
 }
-echo '/>', WT_I18N::translate('Booklet');
-echo '<br /><input type="radio" name="chart_style" value="2"';
+echo '>', WT_I18N::translate('Booklet');
+echo '<br><input type="radio" name="chart_style" value="2"';
 if ($controller->chart_style==2) {
 	echo ' checked="checked"';
 }
-echo ' />', WT_I18N::translate('Individuals');
-echo '<br /><input type="radio" name="chart_style" value="3"';
+echo '>', WT_I18N::translate('Individuals');
+echo '<br><input type="radio" name="chart_style" value="3"';
 if ($controller->chart_style==3) {
 	echo ' checked="checked"';
 }
-echo ' />', WT_I18N::translate('Families');
+echo '>', WT_I18N::translate('Families');
 echo '</td><td rowspan="2" class="topbottombar">';
-echo '<input type="submit" value="', WT_I18N::translate('View'), '" />';
+echo '<input type="submit" value="', WT_I18N::translate('View'), '">';
 echo '</td></tr>';
 echo '<tr><td class="descriptionbox">';
 echo WT_I18N::translate('Generations'), '</td>';
@@ -115,7 +115,7 @@ if ($controller->show_full) {
 } else {
 	echo '0" onclick="document.people.show_full.value=\'1\';"';
 }
-echo '/></td></tr></table></form>';
+echo '></td></tr></table></form>';
 echo '</td></tr></table>';
 if (is_null($controller->descPerson)) {
 	echo '<span class="error">', WT_I18N::translate('The requested GEDCOM record could not be found.  This could be caused by a link to an invalid person or by a corrupt GEDCOM file.'), '</span>';
@@ -124,7 +124,7 @@ if (is_null($controller->descPerson)) {
 switch ($controller->chart_style) {
 case 0: //-- list
 	if ($show_full==0) {
-		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
+		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br><br>';
 	}
 	echo '<ul style="list-style: none; display: block;" id="descendancy_chart">';
 	$controller->print_child_descendancy($controller->descPerson, $controller->generations);
@@ -133,7 +133,7 @@ case 0: //-- list
 case 1: //-- booklet
 	echo '<div id="descendancy_chart">';
 	if ($show_full==0) {
-		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br /><br />';
+		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br><br>';
 	}
 	$show_cousins = true;
 	$controller->print_child_family($controller->descPerson, $controller->generations);

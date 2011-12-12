@@ -73,7 +73,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '';
 		$content .= "<form name=\"messageform\" action=\"index.php?ctype={$ctype}\" method=\"get\" onsubmit=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">";
 		if (get_user_count()>1) {
-			$content .= '<br />'.WT_I18N::translate('Send Message')." <select name=\"touser\">";
+			$content .= '<br>'.WT_I18N::translate('Send Message')." <select name=\"touser\">";
 			$content .= '<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
@@ -86,10 +86,10 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= '</option>';
 				}
 			}
-			$content .= "</select> <input type=\"button\" value=\"".WT_I18N::translate('Send')."\" onclick=\"message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, 'messaging2', ''); return false;\" /><br /><br />";
+			$content .= "</select> <input type=\"button\" value=\"".WT_I18N::translate('Send')."\" onclick=\"message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, 'messaging2', ''); return false;\"><br><br>";
 		}
 		if (count($usermessages)==0) {
-			$content .= WT_I18N::translate('You have no pending messages.')."<br />";
+			$content .= WT_I18N::translate('You have no pending messages.')."<br>";
 		} else {
 			$content .= WT_JS_START.'function select_all() {';
 			foreach ($usermessages as $message) {
@@ -97,9 +97,9 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= 'cb.checked=!cb.checked;';
 			}
 			$content .= 'return false;}'.WT_JS_END;
-			$content .= '<input type="hidden" name="action" value="deletemessage" />';
+			$content .= '<input type="hidden" name="action" value="deletemessage">';
 			$content .= '<table class="list_table"><tr>';
-			$content .= '<td class="list_label">'.WT_I18N::translate('Delete')."<br /><a href=\"#\" onclick=\"return select_all();\">".WT_I18N::translate('All').'</a></td>';
+			$content .= '<td class="list_label">'.WT_I18N::translate('Delete')."<br><a href=\"#\" onclick=\"return select_all();\">".WT_I18N::translate('All').'</a></td>';
 			$content .= '<td class="list_label">'.WT_I18N::translate('Subject:').'</td>';
 			$content .= '<td class="list_label">'.WT_I18N::translate('Date Sent:').'</td>';
 			$content .= '<td class="list_label">'.WT_I18N::translate('Email Address:').'</td>';
@@ -107,10 +107,10 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			foreach ($usermessages as $key=>$message) {
 				if (isset($message['id'])) $key = $message['id'];
 				$content .= '<tr>';
-				$content .= "<td class=\"list_value_wrap\"><input type=\"checkbox\" id=\"cb_message$key\" name=\"message_id[]\" value=\"$key\" /></td>";
+				$content .= "<td class=\"list_value_wrap\"><input type=\"checkbox\" id=\"cb_message$key\" name=\"message_id[]\" value=\"$key\"></td>";
 				$showmsg=preg_replace("/(\w)\/(\w)/","\$1/<span style=\"font-size:1px;\"> </span>\$2",PrintReady($message['subject']));
 				$showmsg=str_replace("@","@<span style=\"font-size:1px;\"> </span>",$showmsg);
-				$content .= "<td class=\"list_value_wrap\"><a href=\"#\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGES['plus']."\" border=\"0\" alt=\"".WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\" /> <b>".$showmsg."</b></a></td>";
+				$content .= "<td class=\"list_value_wrap\"><a href=\"#\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGES['plus']."\" border=\"0\" alt=\"".WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\"> <b>".$showmsg."</b></a></td>";
 				$content .= '<td class="list_value_wrap">'.format_timestamp($message['created']).'</td>';
 				$content .= '<td class="list_value_wrap">';
 				$user_id=get_user_id($message['from']);
@@ -130,7 +130,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$message['body'] = nl2br(htmlspecialchars($message['body']));
 				$message['body'] = expand_urls($message['body']);
 
-				$content .= PrintReady($message['body']).'<br /><br />';
+				$content .= PrintReady($message['body']).'<br><br>';
 				if (strpos($message['subject'], /* I18N: When replying to an email, the subject becomes "RE: <subject>" */ WT_I18N::translate('RE: '))!==0) {
 					$message['subject']= WT_I18N::translate('RE: ').$message['subject'];
 				}
@@ -140,7 +140,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "<a href=\"index.php?action=deletemessage&amp;message_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">".WT_I18N::translate('Delete').'</a></div></td></tr>';
 			}
 			$content .= '</table>';
-			$content .= '<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'" /><br />';
+			$content .= '<input type="submit" value="'.WT_I18N::translate('Delete Selected Messages').'"><br>';
 		}
 		$content .= '</form>';
 

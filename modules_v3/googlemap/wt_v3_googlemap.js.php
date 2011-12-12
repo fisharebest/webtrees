@@ -453,23 +453,23 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				if (!empty($this_person)) {
 					$class = 'pedigree_image_portrait';
 					if ($gmark['fact'] == 'Census') {
-						$image = "<img class='icon_cens' src='././images/pix1.gif' />";
+						$image = "<img class='icon_cens' src='././images/pix1.gif'>";
 					} else if ($gmark['fact'] == 'Birth') {
-						$image = "<img class='icon_birt' src='././images/pix1.gif' />";
+						$image = "<img class='icon_birt' src='././images/pix1.gif'>";
 					} else if ($gmark['fact'] == 'Baptism' || $gmark['fact'] == 'Christening') {
-						$image = "<img class='icon_bapm' src='././images/pix1.gif' />";
+						$image = "<img class='icon_bapm' src='././images/pix1.gif'>";
 					} else if ($gmark['fact'] == 'Military') {
-						$image = "<img class='icon_mili' src='././images/pix1.gif' />";
+						$image = "<img class='icon_mili' src='././images/pix1.gif'>";
 					} else if ($gmark['fact'] == 'Occupation') {
-						$image = "<img class='icon_occu' src='././images/pix1.gif' />";
+						$image = "<img class='icon_occu' src='././images/pix1.gif'>";
 					} else if ($gmark['fact'] == 'Residence') {
-						$image = "<img class='icon_resi' src='././images/pix1.gif' />";
+						$image = "<img class='icon_resi' src='././images/pix1.gif'>";
 					} else if ($gmark['fact'] == 'Death') {
-						$image = "<img class='icon_deat' src='././images/pix1.gif' />";
+						$image = "<img class='icon_deat' src='././images/pix1.gif'>";
 					} else if ($gmark['fact'] == 'Burial' || $gmark['fact'] == 'Cremation') {
-						$image = "<img class='icon_buri' src='././images/pix1.gif' />";
+						$image = "<img class='icon_buri' src='././images/pix1.gif'>";
 					} else if ($gmark['fact'] == 'Retirement' ) {
-						$image = "<img class='icon_reti' src='././images/pix1.gif' />";
+						$image = "<img class='icon_reti' src='././images/pix1.gif'>";
 					} else {
 						$indirec = $this_person->getGedcomRecord();
 						$image = '';
@@ -621,16 +621,16 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						tabcontid=npo[n][x];
 						// If a fact with a persons name and extra info---
 						if (locations[tabcontid][4] && locations[tabcontid][5]) {
-							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][12]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][4]+'<br /><b>'+locations[tabcontid][5]+'<\/b><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
+							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][12]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br>'+locations[tabcontid][4]+'<br><b>'+locations[tabcontid][5]+'<\/b><br>'+locations[tabcontid][3]+'<br><\/p><\/td><\/tr><\/table>' ];
 						// or if a fact with a persons name ---
 						} else if (locations[tabcontid][5]) {
-							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][12]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br /><b>'+locations[tabcontid][5]+'<\/b><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
+							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][12]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br><b>'+locations[tabcontid][5]+'<\/b><br>'+locations[tabcontid][3]+'<br><\/p><\/td><\/tr><\/table>' ];
 						// or if a fact with extra info ---
 						} else if (locations[tabcontid][4]) {
-							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][4]+'<br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
+							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br>'+locations[tabcontid][4]+'<br>'+locations[tabcontid][3]+'<br><\/p><\/td><\/tr><\/table>' ];
 						// or just a simple fact ---
 						} else {
-							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br />'+locations[tabcontid][3]+'<br /><\/p><\/td><\/tr><\/table>' ];
+							event_tab+= [ '<table><tr><td class="highlt_img">'+locations[tabcontid][13]+'<\/td><td><p><span id="sp1">'+locations[tabcontid][0]+'<\/span><br>'+locations[tabcontid][3]+'<br><\/p><\/td><\/tr><\/table>' ];
 						}
 					}
 				}
@@ -668,15 +668,15 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						//	'<div id = "pane3">',
 						//		divhead,
 						//		'<div id = "pane3_text">',
-						//			'<img style="margin-left: -10px; margin-top: 1px;" src="'+media+'" height= "216px" width= "298px" />',
+						//			'<img style="margin-left: -10px; margin-top: 1px;" src="'+media+'" height= "216px" width= "298px">',
 						//		'<\/div>',
 						//	'<\/div>',
 						//	'<div id = "pane4">',
 						//		divhead,
 						//		'<div id = "pane4_text">',
-						//			'<br />',
-						//			'<br /> Spare Tab Content',
-						//			'<br />',
+						//			'<br>',
+						//			'<br> Spare Tab Content',
+						//			'<br>',
 						//		'<\/div>',
 						//	'<\/div>',
 						// =====================================================

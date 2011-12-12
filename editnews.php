@@ -66,7 +66,7 @@ if ($action=="compose") {
 		}
 	</script>
 	<?php
-	echo "<br /><form name=\"messageform\" method=\"post\" action=\"editnews.php?action=save&news_id=".$news_id."\" onsubmit=\"return checkForm(this);";
+	echo "<br><form name=\"messageform\" method=\"post\" action=\"editnews.php?action=save&news_id=".$news_id."\" onsubmit=\"return checkForm(this);";
 	echo "\">";
 	if ($news_id) {
 		$news = getNewsItem($news_id);
@@ -77,11 +77,11 @@ if ($action=="compose") {
 		$news["title"] = "";
 		$news["text"] = "";
 	}
-	echo "<input type=\"hidden\" name=\"username\" value=\"".$news["username"]."\" />";
-	echo "<input type=\"hidden\" name=\"date\" value=\"".$news["date"]."\" />";
+	echo "<input type=\"hidden\" name=\"username\" value=\"".$news["username"]."\">";
+	echo "<input type=\"hidden\" name=\"date\" value=\"".$news["date"]."\">";
 	echo "<table>";
-	echo "<tr><td align=\"right\">".WT_I18N::translate('Title:')."</td><td><input type=\"text\" name=\"title\" size=\"50\" value=\"".$news["title"]."\" /><br /></td></tr>";
-	echo "<tr><td valign=\"top\" align=\"right\">".WT_I18N::translate('Entry Text:')."<br /></td>";
+	echo "<tr><td align=\"right\">".WT_I18N::translate('Title:')."</td><td><input type=\"text\" name=\"title\" size=\"50\" value=\"".$news["title"]."\"><br></td></tr>";
+	echo "<tr><td valign=\"top\" align=\"right\">".WT_I18N::translate('Entry Text:')."<br></td>";
 	echo "<td>";
 	if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
 		require_once WT_ROOT.WT_MODULES_DIR.'ckeditor/ckeditor.php';
@@ -95,8 +95,8 @@ if ($action=="compose") {
 	} else { //use standard textarea
 		echo "<textarea name=\"text\" cols=\"80\" rows=\"10\">".$news["text"]."</textarea>";
 	}
-	echo "<br /></td></tr>";
-	echo "<tr><td></td><td><input type=\"submit\" value=\"".WT_I18N::translate('Save')."\" /></td></tr>";
+	echo "<br></td></tr>";
+	echo "<tr><td></td><td><input type=\"submit\" value=\"".WT_I18N::translate('Save')."\"></td></tr>";
 	echo "</table>";
 	echo "</form>";
 } else if ($action=="save") {
@@ -117,4 +117,4 @@ if ($action=="compose") {
 } else if ($action=="delete") {
 	if (deleteNews($news_id)) echo WT_I18N::translate('The news/journal entry has been deleted.');
 }
-echo "<center><br /><br /><a href=\"#\" onclick=\"window.opener.location.reload(); window.close();\">".WT_I18N::translate('Close Window')."</a><br /></center>";
+echo "<center><br><br><a href=\"#\" onclick=\"window.opener.location.reload(); window.close();\">".WT_I18N::translate('Close Window')."</a><br></center>";

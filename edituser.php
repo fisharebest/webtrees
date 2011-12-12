@@ -61,10 +61,10 @@ $form_visible_online=safe_POST_bool('form_visible_online');
 if ($form_action=='update') {
 	if ($form_username!=WT_USER_NAME && get_user_id($form_username)) {
 		$controller->pageHeader();
-		echo '<span class="error">', WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), '</span><br />';
+		echo '<span class="error">', WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), '</span><br>';
 	} elseif ($form_email!=getUserEmail(WT_USER_ID) && get_user_by_email($form_email)) {
 		$controller->pageHeader();
-		echo '<span class="error">', WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), '</span><br />';
+		echo '<span class="error">', WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), '</span><br>';
 	} else {
 		// Change password
 		if (!empty($form_pass1)) {
@@ -141,19 +141,19 @@ function paste_id(value) {
 // show the form to edit a user account details
 $tab=0;
 echo '<form name="editform" method="post" action="" onsubmit="return checkform(this);">';
-echo '<input type="hidden" name="form_action" value="update" />';
+echo '<input type="hidden" name="form_action" value="update">';
 echo '<table class="list_table">';
 
 echo '<tr><td class="topbottombar" colspan="2"><h2>', WT_I18N::translate('My account'), '</h2></td></tr>';
 
 echo '<tr><td class="descriptionbox width20 wrap">';
 echo WT_I18N::translate('Username'), help_link('username'), '</td><td class="optionbox">';
-echo '<input type="text" name="form_username" value="', WT_USER_NAME, '" autofocus />';
+echo '<input type="text" name="form_username" value="', WT_USER_NAME, '" autofocus>';
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Real name'), help_link('edituser_realname'), '</td><td class="optionbox">';
-echo '<input type="text" name="form_realname" value="', getUserFullName(WT_USER_ID), '" />';
+echo '<input type="text" name="form_realname" value="', getUserFullName(WT_USER_ID), '">';
 echo '</td></tr>';
 
 $person=WT_Person::getInstance(WT_USER_GEDCOM_ID);
@@ -167,8 +167,8 @@ if ($person) {
 $person=WT_Person::getInstance(WT_USER_ROOT_ID);
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Pedigree chart root person'), help_link('edituser_rootid'), '</td><td class="optionbox">';
-echo '<input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '" />';
-echo print_findindi_link('rootid', '', true), '<br/>';
+echo '<input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '">';
+echo print_findindi_link('rootid', '', true), '<br>';
 if ($person) {
 	echo $person->format_list('span');
 }
@@ -176,11 +176,11 @@ echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Password'), help_link('password'), '</td><td class="optionbox">';
-echo '<input type="password" name="form_pass1" /> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</td></tr>';
+echo '<input type="password" name="form_pass1"> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</td><td class="optionbox">';
-echo '<input type="password" name="form_pass2" /></td></tr>';
+echo '<input type="password" name="form_pass2"></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Language'), help_link('edituser_change_lang');
@@ -190,7 +190,7 @@ echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Email address'), help_link('email'), '</td><td class="optionbox" valign="top">';
-echo '<input type="text" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50" /></td></tr>';
+echo '<input type="text" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50"></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Theme'), help_link('THEME'), '</td><td class="optionbox" valign="top">';
@@ -217,6 +217,6 @@ echo '</td><td class="optionbox">';
 echo checkbox('form_visible_online', get_user_setting(WT_USER_ID, 'visibleonline'));
 echo '</td></tr>';
 
-echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Save'), '" /></td></tr>';
+echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Save'), '"></td></tr>';
 
 echo '</table></form>';

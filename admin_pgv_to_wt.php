@@ -95,7 +95,7 @@ if ($PGV_PATH) {
 				$error=
 					/* I18N: %s is a database name/identifier */
 					WT_I18N::translate('<b>webtrees</b> cannot connect to the PhpGedView database: %s.', $DBNAME.'@'.$DBHOST).
-					'<br/>'.
+					'<br>'.
 					/* I18N: %s is an error message */
 					WT_I18N::translate('MySQL gave the error: %s', $ex->getMessage());
 			}
@@ -868,7 +868,7 @@ if ($PGV_SCHEMA_VERSION>=14) {
 						$statement->execute(array($value, 'banned', ''));
 					}
 				} catch (PDOException $ex) {
-					echo $ex, '<br/>';
+					echo $ex, '<br>';
 				}
 			}
 		}
@@ -887,7 +887,7 @@ if ($PGV_SCHEMA_VERSION>=14) {
 						$statement->execute(array($value, 'search-engine', ''));
 					}
 				} catch (PDOException $ex) {
-					echo $ex, '<br/>';
+					echo $ex, '<br>';
 				}
 			}
 		}

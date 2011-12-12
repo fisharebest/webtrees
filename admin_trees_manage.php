@@ -148,12 +148,12 @@ case 'importform':
 	// the javascript in the next line strips any path associated with the file before comparing it to the current GEDCOM name (both Chrome and IE8 include c:\fakepath\ in the filename).  
 	$previous_gedcom_filename=get_gedcom_setting($gedcom_id, 'gedcom_filename');
 	echo '<form name="replaceform" method="post" enctype="multipart/form-data" action="', WT_SCRIPT_NAME, '" onsubmit="var newfile = document.replaceform.ged_name.value; newfile = newfile.substr(newfile.lastIndexOf(\'\\\\\')+1); if (newfile!=\'', htmlspecialchars($previous_gedcom_filename), '\' && \'\' != \'', htmlspecialchars($previous_gedcom_filename), '\') return confirm(\'', htmlspecialchars(WT_I18N::translate('You have selected a GEDCOM with a different name.  Is this correct?')), '\'); else return true;">';
-	echo '<input type="hidden" name="gedcom_id" value="', $gedcom_id, '" />';
+	echo '<input type="hidden" name="gedcom_id" value="', $gedcom_id, '">';
 	if (safe_GET('action')=='uploadform') {
-		echo '<input type="hidden" name="action" value="replace_upload" />';
-		echo '<input type="file" name="ged_name" />';
+		echo '<input type="hidden" name="action" value="replace_upload">';
+		echo '<input type="file" name="ged_name">';
 	} else {
-		echo '<input type="hidden" name="action" value="replace_import" />';
+		echo '<input type="hidden" name="action" value="replace_import">';
 		$d=opendir(WT_DATA_DIR);
 		$files=array();
 		while (($f=readdir($d))!==false) {
@@ -167,7 +167,7 @@ case 'importform':
 			}
 		}
 		if ($files) {
-			echo WT_DATA_DIR, '<select name="ged_name" />';
+			echo WT_DATA_DIR, '<select name="ged_name">';
 			foreach ($files as $file) {
 				echo '<option value="', htmlspecialchars($file), '"';
 				if ($file==$previous_gedcom_filename) {
@@ -182,9 +182,9 @@ case 'importform':
 			exit;
 		}
 	}
-	echo '<br /><br /><input type="checkbox" name="keep_media', $gedcom_id, '" value="1">';
+	echo '<br><br><input type="checkbox" name="keep_media', $gedcom_id, '" value="1">';
 	echo WT_I18N::translate('If you have created media objects in webtrees, and have edited your gedcom off-line using a program that deletes media objects, then check this box to merge the current media objects with the new GEDCOM.');
-	echo '<br /><br /><input type="submit" value="', WT_I18N::translate('Continue'), '" />';
+	echo '<br><br><input type="submit" value="', WT_I18N::translate('Continue'), '">';
 	echo '</form>';
 	exit;
 }
@@ -246,7 +246,7 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 			// delete
 			'<td><a href="', WT_SCRIPT_NAME, '?action=delete&amp;ged=', rawurlencode($gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom_name)),'\');">', WT_I18N::translate('Delete'), '</a>',
 			help_link('delete_gedcom'),
-			'</td></tr></table></td></tr></table><br />';
+			'</td></tr></table></td></tr></table><br>';
 	}
 }
 
@@ -260,7 +260,7 @@ if (WT_USER_IS_ADMIN) {
 	if (count($gedcoms)>1) {
 		echo
 			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
-			'<input type="hidden" name="action" value="setdefault" />',
+			'<input type="hidden" name="action" value="setdefault">',
 			'<select name="default_ged" class="header_select" onchange="document.defaultform.submit();">';
 		$DEFAULT_GEDCOM=get_site_setting('DEFAULT_GEDCOM');
 		if (empty($DEFAULT_GEDCOM)) {
@@ -276,12 +276,12 @@ if (WT_USER_IS_ADMIN) {
 	echo
 		'<td class="button">',
 		'<form name="createform" method="post" action="', WT_SCRIPT_NAME, '">',
-		'<input type="hidden" name="action" value="new_ged" />',
-		'<input name="ged_name" />',
-		' <input type="submit" value="', WT_I18N::translate('Save') , '"/>',
+		'<input type="hidden" name="action" value="new_ged">',
+		'<input name="ged_name">',
+		' <input type="submit" value="', WT_I18N::translate('Save') , '">',
 		'</form>',
 		'</td>',
-		'</tr></table><br/>';
+		'</tr></table><br>';
 
 		// display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
 		if (count($gedcoms)==0 && get_user_count()==1) {

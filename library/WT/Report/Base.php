@@ -455,7 +455,7 @@ class Element {
 			}
 		}
 		$t = trim($t, "\r\n\t");
-		$t = str_replace(array("<br />", "&nbsp;"), array("\n", " "), $t);
+		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		if (!WT_RNEW) {
 			$t = strip_tags($t);
 			$t = unhtmlentities($t);
@@ -972,7 +972,7 @@ class Footnote extends Element {
 			}
 		}
 		$t = trim($t, "\r\n\t");
-		$t = str_replace(array("<br />", "&nbsp;"), array("\n", " "), $t);
+		$t = str_replace(array("<br>", "&nbsp;"), array("\n", " "), $t);
 		if (!WT_RNEW) {
 			$t = strip_tags($t);
 			$t = unhtmlentities($t);
@@ -1947,7 +1947,7 @@ function GetPersonNameSHandler($attrs) {
 		} else {
 			$name = $record->getFullName();
 /*
-echo "<br />";
+echo "<br>";
 for ($ii=0; $ii<=strlen($name); $ii++)
 echo substr($name, $ii, 1)." ";
 */
@@ -1978,7 +1978,7 @@ echo substr($name, $ii, 1)." ";
 			} else {
 				$addname = $record->getAddName();
 /*
-echo "<br />".$addname."<br />";
+echo "<br>".$addname."<br>";
 for ($ii=0; $ii<=strlen($addname); $ii++)
 echo substr($addname, $ii, 1)." ";
 */
@@ -2044,12 +2044,12 @@ function GedcomValueSHandler($attrs) {
 			$value = get_gedcom_value($tag, $level, $gedrec, $truncate);
 //@@ do we still need?			
 			if ($useBreak == "1") {
-				// Insert <br /> when multiple dates exist.
+				// Insert <br> when multiple dates exist.
 				// This works around a TCPDF bug that incorrectly wraps RTL dates on LTR pages
-				$value = str_replace('(', '<br />(', $value);
-				$value = str_replace('<span dir="ltr"><br />', '<br /><span dir="ltr">', $value);
-				$value = str_replace('<span dir="rtl"><br />', '<br /><span dir="rtl">', $value);
-				if (substr($value, 0, 6) == '<br />') {
+				$value = str_replace('(', '<br>(', $value);
+				$value = str_replace('<span dir="ltr"><br>', '<br><span dir="ltr">', $value);
+				$value = str_replace('<span dir="rtl"><br>', '<br><span dir="rtl">', $value);
+				if (substr($value, 0, 6) == '<br>') {
 					$value = substr($value, 6);
 				}
 			}
@@ -2723,7 +2723,7 @@ function AgeAtDeathSHandler() {
 */
 function brSHandler() {
 	global $printData, $currentElement, $processGedcoms;
-	if ($printData && ($processGedcoms==0)) $currentElement->addText("<br />");
+	if ($printData && ($processGedcoms==0)) $currentElement->addText("<br>");
 }
 
 /**

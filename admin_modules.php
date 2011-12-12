@@ -116,7 +116,7 @@ $controller
 <div align="center">
 	<div id="tabs">
 	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
-			<input type="hidden" name="action" value="update_mods" />
+			<input type="hidden" name="action" value="update_mods">
 			<table id="installed_table" border="0" cellpadding="0" cellspacing="1">
 				<thead>
 					<tr>
@@ -162,7 +162,7 @@ $controller
 					?>
 				</tbody>
 			</table>
-			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" />
+			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
 		</form>
 	</div>
 </div>

@@ -63,19 +63,19 @@ $block_id=safe_REQUEST($_REQUEST, 'block_id');
 
 // Define all the icons we're going to use
 if($TEXT_DIRECTION=='ltr') {
-	$IconUarrow = '<img src="'.$WT_IMAGES['uarrow'].'" width="20" height="20" alt="" />';
-	$IconDarrow = '<img src="'.$WT_IMAGES['darrow'].'" width="20" height="20" alt="" />';
-	$IconRarrow = '<img src="'.$WT_IMAGES['rarrow'].'" width="20" height="20" alt="" />';
-	$IconLarrow = '<img src="'.$WT_IMAGES['larrow'].'" width="20" height="20" alt="" />';
-	$IconRDarrow = '<img src="'.$WT_IMAGES['rdarrow'].'" width="20" height="20" alt="" />';
-	$IconLDarrow = '<img src="'.$WT_IMAGES['ldarrow'].'" width="20" height="20" alt="" />';
+	$IconUarrow = '<img src="'.$WT_IMAGES['uarrow'].'" width="20" height="20" alt="">';
+	$IconDarrow = '<img src="'.$WT_IMAGES['darrow'].'" width="20" height="20" alt="">';
+	$IconRarrow = '<img src="'.$WT_IMAGES['rarrow'].'" width="20" height="20" alt="">';
+	$IconLarrow = '<img src="'.$WT_IMAGES['larrow'].'" width="20" height="20" alt="">';
+	$IconRDarrow = '<img src="'.$WT_IMAGES['rdarrow'].'" width="20" height="20" alt="">';
+	$IconLDarrow = '<img src="'.$WT_IMAGES['ldarrow'].'" width="20" height="20" alt="">';
 } else {
-	$IconUarrow = '<img src="'.$WT_IMAGES['uarrow'].'" width="20" height="20" alt="" />';
-	$IconDarrow = '<img src="'.$WT_IMAGES['darrow'].'" width="20" height="20" alt="" />';
-	$IconRarrow = '<img src="'.$WT_IMAGES['larrow'].'" width="20" height="20" alt="" />';
-	$IconLarrow = '<img src="'.$WT_IMAGES['rarrow'].'" width="20" height="20" alt="" />';
-	$IconRDarrow = '<img src="'.$WT_IMAGES['ldarrow'].'" width="20" height="20" alt="" />';
-	$IconLDarrow = '<img src="'.$WT_IMAGES['rdarrow'].'" width="20" height="20" alt="" />';
+	$IconUarrow = '<img src="'.$WT_IMAGES['uarrow'].'" width="20" height="20" alt="">';
+	$IconDarrow = '<img src="'.$WT_IMAGES['darrow'].'" width="20" height="20" alt="">';
+	$IconRarrow = '<img src="'.$WT_IMAGES['larrow'].'" width="20" height="20" alt="">';
+	$IconLarrow = '<img src="'.$WT_IMAGES['rarrow'].'" width="20" height="20" alt="">';
+	$IconRDarrow = '<img src="'.$WT_IMAGES['ldarrow'].'" width="20" height="20" alt="">';
+	$IconLDarrow = '<img src="'.$WT_IMAGES['rdarrow'].'" width="20" height="20" alt="">';
 }
 
 $all_blocks=array();
@@ -161,12 +161,12 @@ if ($action=="configure") {
 	echo '</td></tr>';
 	echo '</table>';
 	echo '<form name="block" method="post" action="index_edit.php?action=configure&amp;ctype=', $ctype, '&amp;block_id=', $block_id, '">';
-	echo '<input type="hidden" name="save" value="1" />';
+	echo '<input type="hidden" name="save" value="1">';
 	echo '<table border="0" class="facts_table">';
 	$block->configureBlock($block_id);
 	echo '<tr><td colspan="2" class="topbottombar">';
-	echo '<input type="button" value="', WT_I18N::translate('Save'), '" onclick="document.block.submit();" />';
-	echo '&nbsp;&nbsp;<input type ="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.close()" />';
+	echo '<input type="button" value="', WT_I18N::translate('Save'), '" onclick="document.block.submit();">';
+	echo '&nbsp;&nbsp;<input type ="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.close()">';
 	echo '</td></tr>';
 	echo '</table>';
 	echo '</form>';
@@ -303,9 +303,9 @@ if ($action=="configure") {
 	//-->
 	</script>
 	<form name="config_setup" method="post" action="index_edit.php">
-	<input type="hidden" name="ctype" value="<?php echo $ctype; ?>" />
-	<input type="hidden" name="action" value="update" />
-	<input type="hidden" name="name" value="<?php echo $name; ?>" />
+	<input type="hidden" name="ctype" value="<?php echo $ctype; ?>">
+	<input type="hidden" name="action" value="update">
+	<input type="hidden" name="name" value="<?php echo $name; ?>">
 	<table border="1" width="400px">
 	<tr><td class="topbottombar" colspan="7">
 	<?php
@@ -327,9 +327,9 @@ if ($action=="configure") {
 	// NOTE: Row 2 column 1: Up/Down buttons for left (main) block list
 	echo '<td class="optionbox width20px center vmiddle">';
 		echo '<a onclick="move_up_block(\'main_select\');" title="', WT_I18N::translate('Move up'), '">', $IconUarrow, '</a>';
-		echo '<br />';
+		echo '<br>';
 		echo '<a onclick="move_down_block(\'main_select\');" title="', WT_I18N::translate('Move down'), '">', $IconDarrow, '</a>';
-		echo '<br /><br />';
+		echo '<br><br>';
 		echo help_link('block_move_up');
 	echo '</td>';
 	// NOTE: Row 2 column 2: Left (Main) block list
@@ -343,11 +343,11 @@ if ($action=="configure") {
 	// NOTE: Row 2 column 3: Left/Right buttons for left (main) block list
 	echo '<td class="optionbox width20 vmiddle">';
 		echo '<a onclick="move_left_right_block(\'main_select\', \'right_select\');" title="', WT_I18N::translate('Move Right'), '">', $IconRDarrow, '</a>';
-		echo '<br />';
+		echo '<br>';
 		echo '<a onclick="move_left_right_block(\'main_select\', \'available_select\');" title="', WT_I18N::translate('Remove'), '">', $IconRarrow, '</a>';
-		echo '<br />';
+		echo '<br>';
 		echo '<a onclick="move_left_right_block(\'available_select\', \'main_select\');" title="', WT_I18N::translate('Add'), '">', $IconLarrow, '</a>';
-		echo '<br /><br />';
+		echo '<br><br>';
 		echo help_link('block_move_right');
 	echo '</td>';
 	// Row 2 column 4: Middle (Available) block list
@@ -361,11 +361,11 @@ if ($action=="configure") {
 	// NOTE: Row 2 column 5: Left/Right buttons for right block list
 	echo '<td class="optionbox width20 vmiddle">';
 		echo '<a onclick="move_left_right_block(\'right_select\', \'main_select\');" title="', WT_I18N::translate('Move Left'), '">', $IconLDarrow, '</a>';
-		echo '<br />';
+		echo '<br>';
 		echo '<a onclick="move_left_right_block(\'right_select\', \'available_select\');" title="', WT_I18N::translate('Remove'), '">', $IconLarrow, '</a>';
-		echo '<br />';
+		echo '<br>';
 		echo '<a onclick="move_left_right_block(\'available_select\', \'right_select\');" title="', WT_I18N::translate('Add'), '">', $IconRarrow, '</a>';
-		echo '<br /><br />';
+		echo '<br><br>';
 		echo help_link('block_move_right');
 	echo '</td>';
 	// NOTE: Row 2 column 6: Right block list
@@ -379,9 +379,9 @@ if ($action=="configure") {
 	// NOTE: Row 2 column 7: Up/Down buttons for right block list
 	echo '<td class="optionbox width20 vmiddle">';
 		echo '<a onclick="move_up_block(\'right_select\');" title="', WT_I18N::translate('Move up'), '">', $IconUarrow, '</a>';
-		echo '<br />';
+		echo '<br>';
 		echo '<a onclick="move_down_block(\'right_select\');" title="', WT_I18N::translate('Move down'), '">', $IconDarrow. '</a>';
-		echo '<br /><br />';
+		echo '<br><br>';
 		echo help_link('block_move_up');
 	echo '</td>';
 	echo '</tr>';
@@ -393,14 +393,14 @@ if ($action=="configure") {
 
 	/* This section temporarily removed as it does not work (kiwi - 15/08/2011)
 	if (WT_USER_IS_ADMIN && $ctype=='user') {
-		echo WT_I18N::translate('Use these blocks as the default block configuration for all users?'), '<input type="checkbox" name="setdefault" value="1" /><br /><br />';
+		echo WT_I18N::translate('Use these blocks as the default block configuration for all users?'), '<input type="checkbox" name="setdefault" value="1"><br><br>';
 	}*/
 
-	echo '<input type="button" value="', WT_I18N::translate('Reset to Default Blocks'), '" onclick="window.location=\'index_edit.php?ctype=', $ctype, '&amp;action=reset&amp;name=', addslashes($name), '\';" />';
+	echo '<input type="button" value="', WT_I18N::translate('Reset to Default Blocks'), '" onclick="window.location=\'index_edit.php?ctype=', $ctype, '&amp;action=reset&amp;name=', addslashes($name), '\';">';
 	echo '&nbsp;&nbsp;';
-	echo '<input type="button" value="', WT_I18N::translate('Save'), '" onclick="select_options(); save_form();" />';
+	echo '<input type="button" value="', WT_I18N::translate('Save'), '" onclick="select_options(); save_form();">';
 	echo '&nbsp;&nbsp;';
-	echo '<input type ="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.close();" />';
+	echo '<input type ="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.close();">';
 	echo '</td></tr></table>';
 	echo '</form>';
 }

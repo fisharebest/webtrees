@@ -246,7 +246,7 @@ if ($action=='ImportGedcom') {
 				$placelistUniq[$j-1]['lati'] = $place['lati'];
 				$placelistUniq[$j-1]['long'] = $place['long'];
 			} else if (($place['lati'] != '0') || ($place['long'] != '0')) {
-				echo 'Difference: previous value = ', $prevPlace, ', ', $prevLati, ', ', $prevLong, ' current = ', $place['place'], ', ', $place['lati'], ', ', $place['long'], '<br />';
+				echo 'Difference: previous value = ', $prevPlace, ', ', $prevLati, ', ', $prevLong, ' current = ', $place['place'], ', ', $place['lati'], ', ', $place['long'], '<br>';
 			}
 		}
 		$prevPlace = $place['place'];
@@ -278,7 +278,7 @@ if ($action=='ImportGedcom') {
 					$highestIndex++;
 					WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_zoom) VALUES (?, ?, ?, ?, ?)")
 						->execute(array($highestIndex, $parent_id, $i, $escparent, $default_zoom_level[$i]));
-					echo htmlspecialchars($escparent), '<br />';
+					echo htmlspecialchars($escparent), '<br>';
 					$parent_id=$highestIndex;
 				} else {
 					$parent_id=$row->pl_id;
@@ -289,12 +289,12 @@ if ($action=='ImportGedcom') {
 					$highestIndex++;
 					WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom) VALUES (?, ?, ?, ?, ?, ?, ?)")
 						->execute(array($highestIndex, $parent_id, $i, $escparent, $place['long'], $place['lati'], $default_zoom_level[$i]));
-					echo htmlspecialchars($escparent), '<br />';
+					echo htmlspecialchars($escparent), '<br>';
 				} else {
 					if (empty($row->pl_long) && empty($row->pl_lati) && $place['lati']!='0' && $place['long']!='0') {
 						WT_DB::prepare("UPDATE `##placelocation` SET pl_lati=?, pl_long=? WHERE pl_id=?")
 							->execute(array($place['lati'], $place['long'], $row->pl_id));
-						echo htmlspecialchars($escparent), '<br />';
+						echo htmlspecialchars($escparent), '<br>';
 					}
 				}
 			}
@@ -309,7 +309,7 @@ if ($action=='ImportFile') {
 	sort($placefiles);
 ?>
 <form method="post" enctype="multipart/form-data" id="importfile" name="importfile" action="module.php?mod=googlemap&mod_action=admin_places">
-	<input type="hidden" name="action" value="ImportFile2" />
+	<input type="hidden" name="action" value="ImportFile2">
 	<table class="gm_plac_edit">
 		<tr>
 			<th><?php echo WT_I18N::translate('File containing places (CSV)'), help_link('PLIF_FILENAME','googlemap'); ?></th>
@@ -343,7 +343,7 @@ if ($action=='ImportFile') {
 			<td><input type="checkbox" name="overwritedata"></td>
 		</tr>
 	</table>
-	<input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>" /><br />
+	<input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Continue Adding'); ?>"><br>
 </form>
 <?php
 	exit;
@@ -426,7 +426,7 @@ if ($action=='ImportFile2') {
 				$placelistUniq[$j-1]['zoom'] = $place['zoom'];
 				$placelistUniq[$j-1]['icon'] = $place['icon'];
 			} else if (($place['lati'] != '0') || ($place['long'] != '0')) {
-				echo 'Difference: previous value = ', $prevPlace, ', ', $prevLati, ', ', $prevLong, ' current = ', $place['place'], ', ', $place['lati'], ', ', $place['long'], '<br />';
+				echo 'Difference: previous value = ', $prevPlace, ', ', $prevLati, ', ', $prevLong, ' current = ', $place['place'], ', ', $place['lati'], ', ', $place['long'], '<br>';
 			}
 		}
 		$prevPlace = $place['place'];

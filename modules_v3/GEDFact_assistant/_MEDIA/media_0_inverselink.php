@@ -76,20 +76,20 @@ if ($action == "choose" && $paramok) {
 //-->
 	</script>
 	<script src="<?php echo WT_STATIC_URL; ?>webtrees.js" type="text/javascript"></script>
-	<link href ="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>GEDFact_assistant/css/media_0_inverselink.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href ="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>GEDFact_assistant/css/media_0_inverselink.css" rel="stylesheet" type="text/css" media="screen">
 
 	<?php
 	echo '<form name="link" method="get" action="inverselink.php">';
-	// echo '<input type="hidden" name="action" value="choose" />';
-	echo '<input type="hidden" name="action" value="update" />';
+	// echo '<input type="hidden" name="action" value="choose">';
+	echo '<input type="hidden" name="action" value="update">';
 	if (!empty($mediaid)) {
-		echo '<input type="hidden" name="mediaid" value="', $mediaid, '" />';
+		echo '<input type="hidden" name="mediaid" value="', $mediaid, '">';
 	}
 	if (!empty($linktoid)) {
-		echo '<input type="hidden" name="linktoid" value="', $linktoid, '" />';
+		echo '<input type="hidden" name="linktoid" value="', $linktoid, '">';
 	}
-	echo '<input type="hidden" name="linkto" value="', $linkto, '" />';
-	echo '<input type="hidden" name="ged" value="', $GEDCOM, '" />';
+	echo '<input type="hidden" name="linkto" value="', $linkto, '">';
+	echo '<input type="hidden" name="ged" value="', $GEDCOM, '">';
 	echo '<table class="facts_table center">';
 	echo '<tr><td class="topbottombar" colspan="2">';
 	echo WT_I18N::translate('Link media'), help_link('add_media_linkid');
@@ -114,7 +114,7 @@ if ($action == "choose" && $paramok) {
 			->fetchOne();
 		$filename = str_replace(" ", "%20", $filename);
 		$thumbnail = thumbnail_file($filename, false);
-		echo '<img src = ', $thumbnail, ' class="thumbheight" />';
+		echo '<img src = ', $thumbnail, ' class="thumbheight">';
 		echo '</td></tr></table>';
 		echo '</td></tr>';
 		echo '<tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Links'), '</td>';
@@ -141,12 +141,12 @@ if ($action == "choose" && $paramok) {
 			echo "</td><td>";
 			echo $record->getFullName();
 			echo "</td>";
-			echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $link, "_off' name='", $link, "' checked /></td>";
-			echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $link, "_on'  name='", $link, "' /></td>";
+			echo "<td align='center'><input alt='", WT_I18N::translate('Keep Link in list'), "', title='", WT_I18N::translate('Keep Link in list'), "' type='radio' id='", $link, "_off' name='", $link, "' checked></td>";
+			echo "<td align='center'><input alt='", WT_I18N::translate('Remove Link from list'), "', title='", WT_I18N::translate('Remove Link from list'), "' type='radio' id='", $link, "_on'  name='", $link, "'></td>";
 	
 			if ($record->getType()=='INDI') {
 				?>
-				<td align="center"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $link; ?>');" /></td>
+				<td align="center"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $link; ?>');"></td>
 				<?php
 			} elseif ($record->getType()=='FAM') {
 				if ($record->getHusband()) {
@@ -157,7 +157,7 @@ if ($action == "choose" && $paramok) {
 					$head='';
 				}
 				?>
-				<td align="center"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $head; ?>');" /></td>
+				<td align="center"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $head; ?>');"></td>
 				<?php
 			} else {
 				echo '<td></td>';
@@ -167,7 +167,7 @@ if ($action == "choose" && $paramok) {
 	
 		echo "</table>";
 		echo "</td></tr></table>";
-		echo "<br />";
+		echo "<br>";
 		echo '</td></tr>';
 	}
 
@@ -183,12 +183,12 @@ if ($action == "choose" && $paramok) {
 		echo '<b>', $record->getFullName(), '</b>';
 	}
 	echo '<table><tr><td>';
-		echo "<input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\" />";
+		echo "<input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\">";
 		// echo ' Enter Name or ID &nbsp; &nbsp; &nbsp; <b>OR</b> &nbsp; &nbsp; &nbsp;Search for ID ';
 	echo '</td><td style=" padding-bottom:2px; vertical-align:middle">';
 		echo '&nbsp;';
 		if (isset($WT_IMAGES["add"])) {
-			echo '<img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', WT_I18N::translate('Add'), ' "title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;" />';
+			echo '<img style="border-style:none;" src="', $WT_IMAGES["add"], '" alt="', WT_I18N::translate('Add'), ' "title="', WT_I18N::translate('Add'), '" align="middle" name="addLink" value="" onclick="blankwin(); return false;">';
 			} else {
 			echo '<button name="addLink" value="" type="button" onclick="blankwin(); return false;">', WT_I18N::translate('Add'), '</button>';
 		}
@@ -202,8 +202,8 @@ if ($action == "choose" && $paramok) {
 	echo "<sub>" . WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.') . "</sub>";
 
 
-	echo '<br /><br />';
-	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID" />';
+	echo '<br><br>';
+	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID">';
 ?>
 <script type="text/javascript">
 
@@ -580,20 +580,20 @@ function openInNewWindow(frm)
 		echo "<tr><td class=\"descriptionbox wrap width25\">";
 		echo WT_Gedcom_Tag::getLabel('CHAN'), "</td><td class=\"optionbox wrap\">";
 		if ($NO_UPDATE_CHAN) {
-			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\" />";
+			echo "<input type=\"checkbox\" checked=\"checked\" name=\"preserve_last_changed\">";
 		} else {
-			echo "<input type=\"checkbox\" name=\"preserve_last_changed\" />";
+			echo "<input type=\"checkbox\" name=\"preserve_last_changed\">";
 		}
-		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br /><br />';
+		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN'), '<br><br>';
 		echo "</td></tr>";
 	}
 	echo '</tr>';
-	echo '<input type="hidden" name="more_links" value="No_Values" />';
-	echo '<input type="hidden" name="exist_links" value="No_Values" />';
+	echo '<input type="hidden" name="more_links" value="No_Values">';
+	echo '<input type="hidden" name="exist_links" value="No_Values">';
 	echo '<tr><td colspan="2">';
 	echo '</td></tr>';
 	echo '<tr><td class="topbottombar" colspan="2">';
-	echo '<center><input type="submit" value="', WT_I18N::translate('Save'), '" onclick="shiftlinks();" />';
+	echo '<center><input type="submit" value="', WT_I18N::translate('Save'), '" onclick="shiftlinks();">';
 	echo '</center></td></tr>';
 ?>
 <script>
@@ -668,11 +668,11 @@ function shiftlinks() {
 <?php
 	echo '</table>';
 	echo '</form>';
-	echo '<br/><br/><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br /></center>';
+	echo '<br><br><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br></center>';
 
 } elseif ($action == "update" && $paramok) {
 
-	echo "<b>", $mediaid, "</b><br/><br />";
+	echo "<b>", $mediaid, "</b><br><br>";
 
 	// Unlink records indicated by radio button =========
 	if (isset($exist_links) && $exist_links!="No_Values") {
@@ -680,14 +680,14 @@ function shiftlinks() {
 		$rem_exist_links = (explode(", ", $exist_links));
 		foreach ($rem_exist_links as $remLinkId) {
 			echo WT_I18N::translate('Link to %s deleted', $remLinkId);
-			echo '<br />';
+			echo '<br>';
 			if ($update_CHAN=='no_change') {
 				unlinkMedia($remLinkId, 'OBJE', $mediaid, 1, false);
 			} else {
 				unlinkMedia($remLinkId, 'OBJE', $mediaid, 1, true);
 			}
 		}
-		echo '<br />';
+		echo '<br>';
 	} else {
 		// echo nothing and do nothing
 	}
@@ -702,18 +702,18 @@ function shiftlinks() {
 			} else {
 				linkMedia($mediaid, $addLinkId, 1, true);
 			}
-			echo '<br />';
+			echo '<br>';
 		}
-		echo '<br />';
+		echo '<br>';
 	}
 
 	if ($update_CHAN=='no_change') {
 		echo WT_I18N::translate('No CHAN (Last Change) records were updated');
-		echo '<br />';
+		echo '<br>';
 	}
 
-	echo '<br/><br/><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br /></center>';
+	echo '<br><br><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br></center>';
 } else {
 	// echo '<center>You must be logged in as an Administrator<center>';
-	echo '<br/><br/><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close();">', WT_I18N::translate('Close Window'), '</a><br /></center>';
+	echo '<br><br><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close();">', WT_I18N::translate('Close Window'), '</a><br></center>';
 }

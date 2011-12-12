@@ -83,7 +83,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$stats=new WT_Stats(WT_GEDCOM);
 
-		$content = "<b><a href=\"index.php?ctype=gedcom\">".PrintReady(strip_tags(get_gedcom_setting(WT_GED_ID, 'title')))."</a></b><br />";
+		$content = "<b><a href=\"index.php?ctype=gedcom\">".PrintReady(strip_tags(get_gedcom_setting(WT_GED_ID, 'title')))."</a></b><br>";
 
 		if ($show_last_update) {
 			$content .= '<div>'./* I18N: %s is a date */ WT_I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())).'</div>';
@@ -92,8 +92,8 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$content .= '<table><tr><td valign="top" class="width20"><table class="facts_table">';
 		if ($stat_indi) {
 			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Individuals').'</td><td class="facts_value" align="right"><a href="'."indilist.php?surname_sublist=no&amp;ged=".WT_GEDURL.'">'.$stats->totalIndividuals().'</a></td></tr>';
-			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Males').'</td><td class="facts_value" align="right">'.$stats->totalSexMales().'<br />'.$stats->totalSexMalesPercentage().'</td></tr>';
-			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Females').'</td><td class="facts_value" align="right">'.$stats->totalSexFemales().'<br />'.$stats->totalSexFemalesPercentage().'</td></tr>';
+			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Males').'</td><td class="facts_value" align="right">'.$stats->totalSexMales().'<br>'.$stats->totalSexMalesPercentage().'</td></tr>';
+			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Females').'</td><td class="facts_value" align="right">'.$stats->totalSexFemales().'<br>'.$stats->totalSexFemalesPercentage().'</td></tr>';
 		}
 		if ($stat_surname) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total surnames').'</td><td class="facts_value" align="right"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged='.WT_GEDURL.'">'.$stats->totalSurnames().'</a></td></tr>';
@@ -126,7 +126,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '</td></tr>';
 		}
 		if (!$block) {
-			$content .= '</table></td><td><br /></td><td valign="top"><table cellspacing="1" cellpadding="1" border="0">';
+			$content .= '</table></td><td><br></td><td valign="top"><table cellspacing="1" cellpadding="1" border="0">';
 		}
 		if ($stat_first_birth) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Earliest birth year').'</td><td class="facts_value" align="right">'.$stats->firstBirthYear().'</td>';
@@ -189,14 +189,14 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$content .= '</table></td></tr></table>';
 		if ($stat_link) {
-			$content .= '<a href="statistics.php?ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('View statistics as graphs').'</b></a><br />';
+			$content .= '<a href="statistics.php?ged='.WT_GEDURL.'"><b>'.WT_I18N::translate('View statistics as graphs').'</b></a><br>';
 		}
 		// NOTE: Print the most common surnames
 		if ($show_common_surnames) {
 			$surnames = get_common_surnames(get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'));
 			if (count($surnames)>0) {
-				$content .= '<br /><b>'.WT_I18N::translate('Most Common Surnames').'</b>';
-				$content .= '<br />';
+				$content .= '<br><b>'.WT_I18N::translate('Most Common Surnames').'</b>';
+				$content .= '<br>';
 				$i=0;
 				foreach ($surnames as $indexval => $surname) {
 					if (stristr($surname['name'], '@N.N')===false) {
@@ -300,71 +300,71 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 	<table>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_indi"
-			<?php if ($stat_indi) echo ' checked="checked"'; ?> />
+			<?php if ($stat_indi) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Individuals'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_first_birth"
-			<?php if ($stat_first_birth) echo ' checked="checked"'; ?> />
+			<?php if ($stat_first_birth) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Earliest birth year'); ?></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_surname"
-			<?php if ($stat_surname) echo ' checked="checked"'; ?> />
+			<?php if ($stat_surname) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Total surnames'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_last_birth"
-			<?php if ($stat_last_birth) echo ' checked="checked"'; ?> />
+			<?php if ($stat_last_birth) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Latest birth year'); ?></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_fam"
-			<?php if ($stat_fam) echo ' checked="checked"'; ?> />
+			<?php if ($stat_fam) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Families'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_first_death"
-			<?php if ($stat_first_death) echo ' checked="checked"'; ?> />
+			<?php if ($stat_first_death) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Earliest death year'); ?></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_sour"
-			<?php if ($stat_sour) echo ' checked="checked"'; ?> />
+			<?php if ($stat_sour) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Sources'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_last_death"
-			<?php if ($stat_last_death) echo ' checked="checked"'; ?> />
+			<?php if ($stat_last_death) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Latest death year'); ?></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_media"
-			<?php if ($stat_media) echo ' checked="checked"'; ?> />
+			<?php if ($stat_media) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Media objects'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_long_life"
-			<?php if ($stat_long_life) echo ' checked="checked"'; ?> />
+			<?php if ($stat_long_life) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Person who lived the longest'); ?></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_repo"
-			<?php if ($stat_repo) echo ' checked="checked"'; ?> />
+			<?php if ($stat_repo) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Repositories'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_avg_life"
-			<?php if ($stat_avg_life) echo ' checked="checked"'; ?> />
+			<?php if ($stat_avg_life) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Average age at death'); ?></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_other"
-			<?php if ($stat_other) echo ' checked="checked"'; ?> />
+			<?php if ($stat_other) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Other records'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_most_chil"
-			<?php if ($stat_most_chil) echo ' checked="checked"'; ?> />
+			<?php if ($stat_most_chil) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Family with the most children'); ?></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_events"
-			<?php if ($stat_events) echo ' checked="checked"'; ?> />
+			<?php if ($stat_events) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Total events'); ?></td>
 			<td><input type="checkbox" value="yes" name="stat_avg_chil"
-			<?php if ($stat_avg_chil) echo ' checked="checked"'; ?> />
+			<?php if ($stat_avg_chil) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Average number of children per family'); ?></td>
 		</tr>
 		<tr>
 			<td><input type="checkbox" value="yes" name="stat_users"
-			<?php if ($stat_users) echo ' checked="checked"'; ?> />
+			<?php if ($stat_users) echo ' checked="checked"'; ?>>
 			<?php echo WT_I18N::translate('Total users'); ?></td>
 			<td>&nbsp;</td>
 		</tr>

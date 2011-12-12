@@ -174,12 +174,12 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 
 	switch ($fact->getTag()) {
 	case '_BIRT_CHIL':
-		echo '<br />', WT_I18N::translate('#%d', ++$n_chil);
+		echo '<br>', WT_I18N::translate('#%d', ++$n_chil);
 		break;
 	case '_BIRT_GCHI':
 	case '_BIRT_GCH1':
 	case '_BIRT_GCH2':
-		echo '<br />', WT_I18N::translate('#%d', ++$n_gchi);
+		echo '<br>', WT_I18N::translate('#%d', ++$n_gchi);
 		break;
 	}
 
@@ -201,7 +201,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		if ($family) {
 			if ($spouse) echo ' - ';
 			echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
-			echo '<br />';
+			echo '<br>';
 		}
 	}
 
@@ -237,16 +237,16 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		case 'none':
 			// Note: "1 RESN none" is not valid gedcom, and the GUI will not let you add it.
 			// However, webtrees privacy rules will interpret it as "show an otherwise private record to public".
-			echo '<img src="', WT_STATIC_URL, 'images/RESN_none.gif" align="middle"/> ', WT_I18N::translate('Show to visitors');
+			echo '<img src="', WT_STATIC_URL, 'images/RESN_none.gif" align="middle"> ', WT_I18N::translate('Show to visitors');
 			break;
 		case 'privacy':
-			echo '<img src="', WT_STATIC_URL, 'images/RESN_privacy.gif" align="middle"/> ', WT_I18N::translate('Show to members');
+			echo '<img src="', WT_STATIC_URL, 'images/RESN_privacy.gif" align="middle"> ', WT_I18N::translate('Show to members');
 			break;
 		case 'confidential':
-			echo '<img src="', WT_STATIC_URL, 'images/RESN_confidential.gif" align="middle"/> ', WT_I18N::translate('Show to managers');
+			echo '<img src="', WT_STATIC_URL, 'images/RESN_confidential.gif" align="middle"> ', WT_I18N::translate('Show to managers');
 			break;
 		case 'locked':
-			echo '<img src="', WT_STATIC_URL, 'images/RESN_locked.gif" align="middle"/> ', WT_I18N::translate('Only managers can edit');
+			echo '<img src="', WT_STATIC_URL, 'images/RESN_locked.gif" align="middle"> ', WT_I18N::translate('Only managers can edit');
 			break;
 		default:
 			echo htmlspecialchars($fact->getDetail());
@@ -390,16 +390,16 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 			case 'none':
 				// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
 				// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-				echo WT_Gedcom_Tag::getLabelValue('RESN', '<img src="'.WT_STATIC_URL.'images/RESN_none.gif" /> '.WT_I18N::translate('Show to visitors'));
+				echo WT_Gedcom_Tag::getLabelValue('RESN', '<img src="'.WT_STATIC_URL.'images/RESN_none.gif"> '.WT_I18N::translate('Show to visitors'));
 				break;
 			case 'privacy':
-				echo WT_Gedcom_Tag::getLabelValue('RESN', '<img src="'.WT_STATIC_URL.'images/RESN_privacy.gif" /> '.WT_I18N::translate('Show to members'));
+				echo WT_Gedcom_Tag::getLabelValue('RESN', '<img src="'.WT_STATIC_URL.'images/RESN_privacy.gif"> '.WT_I18N::translate('Show to members'));
 				break;
 			case 'confidential':
-				echo WT_Gedcom_Tag::getLabelValue('RESN', '<img src="'.WT_STATIC_URL.'images/RESN_confidential.gif" /> '.WT_I18N::translate('Show to managers'));
+				echo WT_Gedcom_Tag::getLabelValue('RESN', '<img src="'.WT_STATIC_URL.'images/RESN_confidential.gif"> '.WT_I18N::translate('Show to managers'));
 				break;
 			case 'locked':
-				echo WT_Gedcom_Tag::getLabelValue('RESN', '<img src="'.WT_STATIC_URL.'images/RESN_locked.gif" /> '.WT_I18N::translate('Only managers can edit'));
+				echo WT_Gedcom_Tag::getLabelValue('RESN', '<img src="'.WT_STATIC_URL.'images/RESN_locked.gif"> '.WT_I18N::translate('Only managers can edit'));
 				break;
 			default:
 				echo WT_Gedcom_Tag::getLabelValue('RESN', htmlspecialchars($match[2]));
@@ -435,9 +435,9 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 function print_repository_record($xref) {
 	$repository=WT_Repository::getInstance($xref);
 	if ($repository && $repository->canDisplayDetails()) {
-		echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br />';
+		echo '<a class="field" href="', $repository->getHtmlUrl(), '">', $repository->getFullName(), '</a><br>';
 		print_address_structure($repository->getGedcomRecord(), 1);
-		echo '<br />';
+		echo '<br>';
 		print_fact_notes($repository->getGedcomRecord(), 1);
 	}
 }
@@ -463,7 +463,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 		if (strpos($match[$j][1], '@')===false) {
 			$srec = get_sub_record($level, "$level SOUR ", $factrec, $j+1);
 			$srec = substr($srec, 6); // remove "2 SOUR"
-			$srec = str_replace("\n".($level+1)." CONT ", '<br/>', $srec); // remove n+1 CONT
+			$srec = str_replace("\n".($level+1)." CONT ", '<br>', $srec); // remove n+1 CONT
 			$data .= '<div="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').':</span> <span class="field">'.PrintReady($srec).'</span></div>';
 		}
 	}
@@ -569,7 +569,7 @@ function print_media_links($factrec, $level, $pid='') {
 			$imgsize = findImageSize($mainMedia);
 			$imgwidth = $imgsize[0]+40;
 			$imgheight = $imgsize[1]+150;
-			if ($objectNum > 0) echo '<br clear="all" />';
+			if ($objectNum > 0) echo '<br clear="all">';
 			echo '<div id="media-display">
 				<div id="media-display-image">';;
 			if ($isExternal || media_exists($thumbnail)) {
@@ -687,18 +687,18 @@ function print_address_structure($factrec, $level) {
 	for ($i=0; $i<$ct; $i++) {
 		$arec = get_sub_record($level, "$level ADDR", $factrec, $i+1);
 		$resultText = "";
-		if ($level>1) $resultText .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('ADDR').": </span><br /><div class=\"indent\">";
+		if ($level>1) $resultText .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('ADDR').": </span><br><div class=\"indent\">";
 		$cn = preg_match("/$nlevel _NAME (.*)/", $arec, $cmatch);
-		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1])."<br />";
+		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1])."<br>";
 		$resultText .= PrintReady(trim($omatch[$i][1]));
 		$cont = get_cont($nlevel, $arec);
 		if (!empty($cont)) $resultText .= str_replace(array(" ", "<br&nbsp;"), array("&nbsp;", "<br "), PrintReady($cont));
 		else {
-			if (strlen(trim($omatch[$i][1])) > 0) echo '<br />';
+			if (strlen(trim($omatch[$i][1])) > 0) echo '<br>';
 			$cs = preg_match("/$nlevel ADR1 (.*)/", $arec, $cmatch);
 			if ($cs>0) {
 				if ($cn==0) {
-					$resultText .= '<br />';
+					$resultText .= '<br>';
 					$cn=0;
 				}
 				$resultText .= PrintReady($cmatch[1]);
@@ -706,7 +706,7 @@ function print_address_structure($factrec, $level) {
 			$cs = preg_match("/$nlevel ADR2 (.*)/", $arec, $cmatch);
 			if ($cs>0) {
 				if ($cn==0) {
-					$resultText .= '<br />';
+					$resultText .= '<br>';
 					$cn=0;
 				}
 				$resultText .= PrintReady($cmatch[1]);
@@ -715,7 +715,7 @@ function print_address_structure($factrec, $level) {
 			if (!$POSTAL_CODE) {
 				$cs = preg_match("/$nlevel POST (.*)/", $arec, $cmatch);
 				if ($cs>0) {
-					$resultText .= "<br />".PrintReady($cmatch[1]);
+					$resultText .= "<br>".PrintReady($cmatch[1]);
 				}
 				$cs = preg_match("/$nlevel CITY (.*)/", $arec, $cmatch);
 				if ($cs>0) {
@@ -729,7 +729,7 @@ function print_address_structure($factrec, $level) {
 			else {
 				$cs = preg_match("/$nlevel CITY (.*)/", $arec, $cmatch);
 				if ($cs>0) {
-					$resultText .= "<br />".PrintReady($cmatch[1]);
+					$resultText .= "<br>".PrintReady($cmatch[1]);
 				}
 				$cs = preg_match("/$nlevel STAE (.*)/", $arec, $cmatch);
 				if ($cs>0) {
@@ -743,7 +743,7 @@ function print_address_structure($factrec, $level) {
 
 			$cs = preg_match("/$nlevel CTRY (.*)/", $arec, $cmatch);
 			if ($cs>0) {
-				$resultText .= "<br />".PrintReady($cmatch[1]);
+				$resultText .= "<br>".PrintReady($cmatch[1]);
 			}
 		}
 		if ($level>1) $resultText .= "</div>";
@@ -837,7 +837,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			if (!$noedit && WT_USER_CAN_EDIT && !FactEditRestricted($pid, $factrec) && $styleadd!="red") {
 				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), '">';
 					if ($SHOW_FACT_ICONS) {
-						if ($level==1) echo '<img class="icon" src="', $WT_IMAGES['source'], '" alt="" />';
+						if ($level==1) echo '<img class="icon" src="', $WT_IMAGES['source'], '" alt="">';
 					}
 					echo WT_Gedcom_Tag::getLabel($factname, $parent), '</a>';
 					echo '<div class="editfacts">';
@@ -856,27 +856,27 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 				// PUBL
 				$text = get_gedcom_value('PUBL', '1', $source->getGedcomRecord());
 				if (!empty($text)) {
-					echo '<br /><span class="label">', WT_Gedcom_Tag::getLabel('PUBL'), ': </span>';
+					echo '<br><span class="label">', WT_Gedcom_Tag::getLabel('PUBL'), ': </span>';
 					echo $text;
 				}
 				// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
 				if (preg_match_all("/\n2 RESN (.+)/", $factrec, $rmatches)) {
 					foreach ($rmatches[1] as $rmatch) {
-						echo '<br/><span class="label">', WT_Gedcom_Tag::getLabel('RESN'), ':</span> <span class="field">';
+						echo '<br><span class="label">', WT_Gedcom_Tag::getLabel('RESN'), ':</span> <span class="field">';
 						switch ($rmatch) {
 						case 'none':
 							// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
 							// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-							echo '<img src="', WT_STATIC_URL, 'images/RESN_none.gif" /> ', WT_I18N::translate('Show to visitors');
+							echo '<img src="', WT_STATIC_URL, 'images/RESN_none.gif"> ', WT_I18N::translate('Show to visitors');
 							break;
 						case 'privacy':
-							echo '<img src="', WT_STATIC_URL, 'images/RESN_privacy.gif" /> ', WT_I18N::translate('Show to members');
+							echo '<img src="', WT_STATIC_URL, 'images/RESN_privacy.gif"> ', WT_I18N::translate('Show to members');
 							break;
 						case 'confidential':
-							echo '<img src="', WT_STATIC_URL, 'images/RESN_confidential.gif" /> ', WT_I18N::translate('Show to managers');
+							echo '<img src="', WT_STATIC_URL, 'images/RESN_confidential.gif"> ', WT_I18N::translate('Show to managers');
 							break;
 						case 'locked':
-							echo '<img src="', WT_STATIC_URL, 'images/RESN_locked.gif" /> ', WT_I18N::translate('Only managers can edit');
+							echo '<img src="', WT_STATIC_URL, 'images/RESN_locked.gif"> ', WT_I18N::translate('Only managers can edit');
 							break;
 						default:
 							echo $rmatch;
@@ -887,9 +887,9 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 				}
 				$cs = preg_match("/$nlevel EVEN (.*)/", $srec, $cmatch);
 				if ($cs>0) {
-					echo '<br /><span class="label">', WT_Gedcom_Tag::getLabel('EVEN'), ' </span><span class="field">', $cmatch[1], '</span>';
+					echo '<br><span class="label">', WT_Gedcom_Tag::getLabel('EVEN'), ' </span><span class="field">', $cmatch[1], '</span>';
 					$cs = preg_match("/".($nlevel+1)." ROLE (.*)/", $srec, $cmatch);
-					if ($cs>0) echo '<br />&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">', WT_Gedcom_Tag::getLabel('ROLE'), ' </span><span class="field">', $cmatch[1], '</span>';
+					if ($cs>0) echo '<br>&nbsp;&nbsp;&nbsp;&nbsp;<span class="label">', WT_Gedcom_Tag::getLabel('ROLE'), ' </span><span class="field">', $cmatch[1], '</span>';
 				}
 				echo printSourceStructure(getSourceStructure($srec));
 				echo '<div class="indent">';
@@ -984,7 +984,7 @@ function getSourceStructure($srec) {
 					$i--;
 					break;
 				}
-				if ($nextTag=='CONT') $text .= '<br />';
+				if ($nextTag=='CONT') $text .= '<br>';
 				$text .= rtrim(substr($subrecords[$i], 7));
 			}
 			if ($tag=='TEXT') {
@@ -1038,7 +1038,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), '\">';
 			if ($level<2) {
 				if ($SHOW_FACT_ICONS) {
-					echo '<img class="icon" src="', $WT_IMAGES['note'], '" alt="" />';
+					echo '<img class="icon" src="', $WT_IMAGES['note'], '" alt="">';
 				}
 				if (strstr($factrec, "1 NOTE @" )) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
@@ -1055,7 +1055,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 		} else {
 			if ($level<2) {
 				if ($SHOW_FACT_ICONS) {
-					echo '<img class="icon" src="', $WT_IMAGES['note'], '" alt="" />';
+					echo '<img class="icon" src="', $WT_IMAGES['note'], '" alt="">';
 				}
 				if (strstr($factrec, "1 NOTE @" )) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
@@ -1084,7 +1084,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 		echo '</td>';
 			if ($nt==0) {
 				//-- print embedded note records
-				$text = preg_replace("/~~/", "<br />", trim($match[$j][1]));
+				$text = preg_replace("/~~/", "<br>", trim($match[$j][1]));
 				$text .= get_cont($nlevel, $nrec);
 				$text = expand_urls($text);
 				$text = PrintReady($text);
@@ -1100,15 +1100,15 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 						// If Census assistant installed, enable hotspot link on shared note title ---------------------
 						if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 							$centitl  = str_replace("~~", "", trim($n1match[1]));
-							$centitl  = str_replace("<br />", "", $centitl);
+							$centitl  = str_replace("<br>", "", $centitl);
 							$centitl  = "<a href=\"note.php?nid=$nid\">".$centitl."</a>";
 						} else {
-							$text = preg_replace("/~~/", "<br />", trim($n1match[1]));
+							$text = preg_replace("/~~/", "<br>", trim($n1match[1]));
 						}
 					}
 					$text .= get_cont(1, $noterec);
 					$text = expand_urls($text);
-					$text = PrintReady($text).' <br />';
+					$text = PrintReady($text).' <br>';
 					// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
 					if (strstr($text, '|') && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
@@ -1127,21 +1127,21 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			// 2 RESN tags.  Note, there can be more than one, such as "privacy" and "locked"
 			if (preg_match_all("/\n2 RESN (.+)/", $factrec, $matches)) {
 				foreach ($matches[1] as $match) {
-					echo '<br/><span class="label">', WT_Gedcom_Tag::getLabel('RESN'), ':</span> <span class="field">';
+					echo '<br><span class="label">', WT_Gedcom_Tag::getLabel('RESN'), ':</span> <span class="field">';
 					switch ($match) {
 					case 'none':
 						// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
 						// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-						echo '<img src="', WT_STATIC_URL, 'images/RESN_none.gif" /> ', WT_I18N::translate('Show to visitors');
+						echo '<img src="', WT_STATIC_URL, 'images/RESN_none.gif"> ', WT_I18N::translate('Show to visitors');
 						break;
 					case 'privacy':
-						echo '<img src="', WT_STATIC_URL, 'images/RESN_privacy.gif" /> ', WT_I18N::translate('Show to members');
+						echo '<img src="', WT_STATIC_URL, 'images/RESN_privacy.gif"> ', WT_I18N::translate('Show to members');
 						break;
 					case 'confidential':
-						echo '<img src="', WT_STATIC_URL, 'images/RESN_confidential.gif" /> ', WT_I18N::translate('Show to managers');
+						echo '<img src="', WT_STATIC_URL, 'images/RESN_confidential.gif"> ', WT_I18N::translate('Show to managers');
 						break;
 					case 'locked':
-						echo '<img src="', WT_STATIC_URL, 'images/RESN_locked.gif" /> ', WT_I18N::translate('Only managers can edit');
+						echo '<img src="', WT_STATIC_URL, 'images/RESN_locked.gif"> ', WT_I18N::translate('Only managers can edit');
 						break;
 					default:
 						echo $match;
@@ -1150,7 +1150,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					echo '</span>';
 				}
 			}
-			echo '<br />';
+			echo '<br>';
 			print_fact_sources($nrec, $nlevel);
 		}
 		echo '</td></tr>';
@@ -1338,7 +1338,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!='change_old') && $rowm['m_gedrec']!='') {
 		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=", $mediaobject->getXref(), "&amp;linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
 		if ($SHOW_FACT_ICONS) {
-			echo '<img class="icon" src="', $WT_IMAGES['media'], '" alt="" />';
+			echo '<img class="icon" src="', $WT_IMAGES['media'], '" alt="">';
 		}
 		echo WT_Gedcom_Tag::getLabel('OBJE'), '</a>';
 		echo '<div class="editfacts">';
@@ -1357,7 +1357,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	}
 	echo '<em>';
 	foreach ($mediaobject->getAllNames() as $name) {
-		if ($name['type']!='TITL') echo '<br />'; 
+		if ($name['type']!='TITL') echo '<br>'; 
 		echo $name['full'];
 	}
 	echo '</em>';
@@ -1390,7 +1390,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 			if ($spouse) {
 				echo '<a href="', $spouse->getHtmlUrl(), '">', $spouse->getFullName(), '</a> - ';
 			}
-			echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br />';
+			echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a><br>';
 		}
 	}
 	//-- don't show _PRIM option to regular users

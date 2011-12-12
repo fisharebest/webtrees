@@ -220,7 +220,7 @@ if ($action=="generate") {
 	}
 	echo "<tr><td class=\"topbottombar\">", WT_I18N::translate('Place all the files in the root of your webtrees installation.'), "</td></tr>";
 	echo "</table>";
-	echo "<br />";
+	echo "<br>";
 }
 
 if ($action=="") {
@@ -230,14 +230,14 @@ if ($action=="") {
 <div id="page_help"><?php echo  help_link('SITEMAP','sitemap'); ?></div>
 
 <form method="post" enctype="multipart/form-data" id="sitemap" name="sitemap" action="module.php?mod=sitemap&amp;mod_action=admin_index">
-	<input type="hidden" name="action" value="generate" />
+	<input type="hidden" name="action" value="generate">
 	<table id="site_map">
 		<tr>
 			<th><?php echo WT_I18N::translate('Family trees to store in Sitemap'), help_link('SM_GEDCOM_SELECT','sitemap'); ?></th>
 			<td colspan="3">
 <?php
 	foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-		echo ' <input type="checkbox" name="GEDCOM_', $ged_id, '" value="', $ged_id, '" checked>', get_gedcom_setting($ged_id, 'title'), '<br />';
+		echo ' <input type="checkbox" name="GEDCOM_', $ged_id, '" value="', $ged_id, '" checked>', get_gedcom_setting($ged_id, 'title'), '<br>';
 	}
 ?>
 			</td>
@@ -388,7 +388,7 @@ if ($action=="") {
 			</td>
 		</tr>
 	</table>
-	<input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Generate'); ?>" />
+	<input id="savebutton" type="submit" value="<?php echo WT_I18N::translate('Generate'); ?>">
 </form>
 
 <?php

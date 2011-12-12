@@ -103,12 +103,12 @@ function generate_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	// check for GD 2.x library
 	if (!defined("IMG_ARC_PIE")) {
 		$html.= "<span class=\"error\">".WT_I18N::translate('PHP server misconfiguration: GD 2.x library required to use image functions.')."</span>";
-		$html.= " <a href=\"" . WT_I18N::translate('http://www.php.net/gd') . "\"><img src=\"".$WT_IMAGES["help"]."\" class=\"icon\" alt=\"\" /></a><br /><br />";
+		$html.= " <a href=\"" . WT_I18N::translate('http://www.php.net/gd') . "\"><img src=\"".$WT_IMAGES["help"]."\" class=\"icon\" alt=\"\"></a><br><br>";
 		return false;
 	}
 	if (!function_exists("ImageTtfBbox")) {
 		$html.= "<span class=\"error\">".WT_I18N::translate('PHP server misconfiguration: FreeType library required to use TrueType fonts.')."</span>";
-		$html.= " <a href=\"" . WT_I18N::translate('http://www.php.net/gd') . "\"><img src=\"".$WT_IMAGES["help"]."\" class=\"icon\" alt=\"\" /></a><br /><br />";
+		$html.= " <a href=\"" . WT_I18N::translate('http://www.php.net/gd') . "\"><img src=\"".$WT_IMAGES["help"]."\" class=\"icon\" alt=\"\"></a><br><br>";
 		return false;
 	}
 
@@ -290,44 +290,44 @@ function generate_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				$html.= "left:".$tx."px; top:".$ty."px; width: ".($lbwidth)."px; visibility:hidden; z-index:'100';\">";
 				$html.= "<table class=\"person_box\"><tr><td class=\"details1\">";
 				$html.= "<a href=\"".$person->getHtmlUrl()."\" class=\"name1\">" . $name;
-				if (!empty($addname)) $html.= "<br />" . $addname;
+				if (!empty($addname)) $html.= "<br>" . $addname;
 				$html.= "</a>";
-				$html.= "<br /><a href=\"pedigree.php?rootid=$pid&amp;amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree')."</a>";
+				$html.= "<br><a href=\"pedigree.php?rootid=$pid&amp;amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Pedigree')."</a>";
 				if (array_key_exists('googlemap', WT_Module::getActiveModules())) {
-					$html.= "<br /><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=".$pid."&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Pedigree map')."</a>";
+					$html.= "<br><a href=\"module.php?mod=googlemap&amp;mod_action=pedigree_map&amp;rootid=".$pid."&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Pedigree map')."</a>";
 				}
 				if (WT_USER_GEDCOM_ID && WT_USER_GEDCOM_ID!=$pid) {
-					$html.= "<br /><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Relationship to me')."</a>";
+					$html.= "<br><a href=\"relationship.php?pid1=".WT_USER_GEDCOM_ID."&amp;pid2={$pid}&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Relationship to me')."</a>";
 				}
-				$html.= "<br /><a href=\"descendancy.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Descendants')."</a>";
-				$html.= "<br /><a href=\"ancestry.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Ancestors')."</a>";
-				$html.= "<br /><a href=\"compact.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Compact tree')."</a>";
-				$html.= "<br /><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Fan chart')."</a>";
-				$html.= "<br /><a href=\"hourglass.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Hourglass chart')."</a>";
+				$html.= "<br><a href=\"descendancy.php?rootid=$pid&amp;ged=".WT_GEDURL."\" >".WT_I18N::translate('Descendants')."</a>";
+				$html.= "<br><a href=\"ancestry.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Ancestors')."</a>";
+				$html.= "<br><a href=\"compact.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Compact tree')."</a>";
+				$html.= "<br><a href=\"".$tempURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Fan chart')."</a>";
+				$html.= "<br><a href=\"hourglass.php?rootid=$pid&amp;ged=".WT_GEDURL."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Hourglass chart')."</a>";
 				if (array_key_exists('tree', WT_Module::getActiveModules())) {
-					$html.= '<br /><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Interactive tree')."</a>";
+					$html.= '<br><a href="module.php?mod=tree&amp;mod_action=treeview&amp;ged='.WT_GEDURL.'&amp;rootid='.$pid."\" onmouseover=\"clear_family_box_timeout('".$pid.".".$count."');\" onmouseout=\"family_box_timeout('".$pid.".".$count."');\">".WT_I18N::translate('Interactive tree')."</a>";
 				}
 				// spouse(s) and children
 				foreach ($person->getSpouseFamilies() as $family) {
 					$spouse=$family->getSpouse($person);
 					if ($spouse) {
-						$html.= '<br /><a href="'.$spouse->getHtmlUrl().'" class="name1">'.$spouse->getFullName().'</a>';
+						$html.= '<br><a href="'.$spouse->getHtmlUrl().'" class="name1">'.$spouse->getFullName().'</a>';
 					}
 					foreach ($family->getChildren() as $child) {
-						$html.= '<br />&nbsp;&nbsp;<a href="'.$child->getHtmlUrl().'" class="name1">&lt; '.$child->getFullName().'</a>';
+						$html.= '<br>&nbsp;&nbsp;<a href="'.$child->getHtmlUrl().'" class="name1">&lt; '.$child->getFullName().'</a>';
 					}
 				}
 				// siblings
 				foreach ($person->getChildFamilies() as $family) {
 					$children=$family->getChildren();
 					if (count($children)>2) {
-						$html.= '<br /><span class="name1">'.WT_I18N::translate('Siblings').'</span>';
+						$html.= '<br><span class="name1">'.WT_I18N::translate('Siblings').'</span>';
 					} elseif (count($children)==2) {
-						$html.= '<br /><span class="name1">'.WT_I18N::translate('Sibling').'</span>';
+						$html.= '<br><span class="name1">'.WT_I18N::translate('Sibling').'</span>';
 					}
 					foreach ($children as $sibling) {
 						if (!$sibling->equals($person)) {
-							$html.= '<br />&nbsp;&nbsp;<a href="'.$sibling->getHtmlUrl().'" class="name1"> '.$sibling->getFullName().'</a>';
+							$html.= '<br>&nbsp;&nbsp;<a href="'.$sibling->getHtmlUrl().'" class="name1"> '.$sibling->getFullName().'</a>';
 						}
 					}
 				}
@@ -335,7 +335,7 @@ function generate_fan_chart($treeid, $fanw=640, $fandeg=270) {
 				$html.= '</div>';
 				$imagemap .= " onclick=\"show_family_box('".$pid.".".$count."', 'relatives'); return false;\"";
 				$imagemap .= " onmouseout=\"family_box_timeout('".$pid.".".$count."'); return false;\"";
-				$imagemap .= " alt=\"".htmlspecialchars(strip_tags($name))."\" title=\"".htmlspecialchars(strip_tags($name))."\" />";
+				$imagemap .= " alt=\"".htmlspecialchars(strip_tags($name))."\" title=\"".htmlspecialchars(strip_tags($name))."\">";
 			}
 			$deg1-=$angle;
 			$deg2-=$angle;
@@ -368,7 +368,7 @@ function generate_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	unset($_SESSION[$image_name]); // statisticsplot.php uses this to hold a filename to send to browser
 	$image_title=preg_replace("~<.*>~", "", $name) . " " . WT_I18N::translate('Fan chart');
 	$html.= "<p align=\"center\" >";
-	$html.= "<img src=\"imageflush.php?image_type=png&amp;image_name=$image_name&amp;height=$fanh&amp;width=$fanw\" width=\"$fanw\" height=\"$fanh\" border=\"0\" alt=\"$image_title\" title=\"$image_title\" usemap=\"#fanmap\" />";
+	$html.= "<img src=\"imageflush.php?image_type=png&amp;image_name=$image_name&amp;height=$fanh&amp;width=$fanw\" width=\"$fanw\" height=\"$fanh\" border=\"0\" alt=\"$image_title\" title=\"$image_title\" usemap=\"#fanmap\">";
 	$html.= "</p>";
 	ImageDestroy($image);
 	return $html;
@@ -414,7 +414,7 @@ echo '<table class="list_table"><tr>';
 echo '<td class="descriptionbox">';
 echo WT_I18N::translate('Individual');
 echo '</td><td class="optionbox">';
-echo '<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="', $rootid, '" />';
+echo '<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="', $rootid, '">';
 print_findindi_link('rootid', '');
 echo '</td>';
 
@@ -433,7 +433,7 @@ echo '<option></td>';
 
 // NOTE: submit
 echo '<td rowspan="2" class="topbottombar vmiddle">';
-echo '<input type="submit" value="', WT_I18N::translate('View'), '" />';
+echo '<input type="submit" value="', WT_I18N::translate('View'), '">';
 echo '</td>';
 
 echo '</tr><tr>';
@@ -455,7 +455,7 @@ echo '</td>';
 echo '<td class="descriptionbox">';
 echo WT_I18N::translate('Width'), help_link('fan_width');
 echo '</td><td class="optionbox">';
-echo '<input type="text" size="3" name="fan_width" value="', $fan_width, '" /> <b>%</b>';
+echo '<input type="text" size="3" name="fan_width" value="', $fan_width, '"> <b>%</b>';
 echo '</td>';
 echo '</tr></table></form></tr></table>';
 echo $html;

@@ -120,25 +120,25 @@ echo '<div id="note-tabs">
 	// Shared Note details ---------------------
 	$noterec=$controller->record->getGedcomRecord();
 	preg_match("/0 @".$controller->record->getXref()."@ NOTE(.*)/", $noterec, $n1match);
-	$note = print_note_record("<br />".$n1match[1], 1, $noterec, false, true, true);
+	$note = print_note_record("<br>".$n1match[1], 1, $noterec, false, true, true);
 
 	echo '<div id="note-edit">';
 		echo '<table class="facts_table">';
 			echo '<tr><td align="left" class="descriptionbox">';
 				if (WT_USER_CAN_EDIT) {
 					echo '<a href="#" onclick="edit_note()" title="', WT_I18N::translate('Edit'), '">';
-					if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top" />';
+					if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top">';
 					echo WT_I18N::translate('Shared note'), '</a>';
 					echo '<div class="editfacts">';
 						echo '<div class="editlink"><a class="editicon" href="#" onclick="edit_note()" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
 					echo '</div>';
 				} else { 
-					if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top" />';
+					if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top">';
 					echo WT_I18N::translate('Shared note');
 				}
 				echo '</td><td class="optionbox wrap width80">';
 				echo $note;
-				echo "<br />";
+				echo "<br>";
 			echo "</td></tr>";
 
 			$notefacts=$controller->record->getFacts();

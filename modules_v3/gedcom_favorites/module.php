@@ -145,13 +145,13 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\">";
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
-				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype={$ctype}&amp;action=deletefav&amp;fv_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".WT_I18N::translate('Remove')."</a><br />";
+				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype={$ctype}&amp;action=deletefav&amp;fv_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".WT_I18N::translate('Remove')."</a><br>";
 				$content .= '<tr><td>';
 				if ($favorite['type']=='URL') {
 					$content .= "<div id=\"boxurl".$key.".0\" class=\"person_box\">";
 					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
 					$content .= "<a href=\"".$favorite['url']."\"><b>".PrintReady($favorite['title']).'</b></a>';
-					$content .= '<br />'.PrintReady($favorite['note']);
+					$content .= '<br>'.PrintReady($favorite['note']);
 					$content .= '</div>';
 				} else {
 					$record=WT_GedcomRecord::getInstance($favorite['gid']);
@@ -184,7 +184,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 							} else {
 								$content.=WT_I18N::translate('No such ID exists in this GEDCOM file.');
 							}
-							$content .= '<br />'.PrintReady($favorite['note']);
+							$content .= '<br>'.PrintReady($favorite['note']);
 							$content .= '</div>';
 						}
 					}
@@ -196,17 +196,17 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
 			$content .=
 			WT_JS_START.'var pastefield; function paste_id(value) {pastefield.value=value;}'.WT_JS_END.
-			'<br />';
+			'<br>';
 			$uniqueID = floor(microtime() * 1000000); // This block can theoretically appear multiple times, so use a unique ID.
-			$content .= "<b><a href=\"#\" onclick=\"expand_layer('add_fav{$uniqueID}'); return false;\"><img id=\"add_fav{$uniqueID}_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"\" />&nbsp;".WT_I18N::translate('Add a new favorite')."</a></b>";
-			$content .= "<br /><div id=\"add_fav{$uniqueID}\" style=\"display: none;\">";
+			$content .= "<b><a href=\"#\" onclick=\"expand_layer('add_fav{$uniqueID}'); return false;\"><img id=\"add_fav{$uniqueID}_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"\">&nbsp;".WT_I18N::translate('Add a new favorite')."</a></b>";
+			$content .= "<br><div id=\"add_fav{$uniqueID}\" style=\"display: none;\">";
 			$content .= "<form name=\"addfavform\" method=\"get\" action=\"index.php\">";
-			$content .= "<input type=\"hidden\" name=\"action\" value=\"addfav\" />";
-			$content .= "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\" />";
-			$content .= "<input type=\"hidden\" name=\"ged\" value=\"".WT_GEDCOM."\" />";
+			$content .= "<input type=\"hidden\" name=\"action\" value=\"addfav\">";
+			$content .= "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\">";
+			$content .= "<input type=\"hidden\" name=\"ged\" value=\"".WT_GEDCOM."\">";
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center\">";
-			$content .= "<tr><td>".WT_I18N::translate('Enter a Person, Family, or Source ID')." <br />";
-			$content .= "<input class=\"pedigree_form\" type=\"text\" name=\"gid\" id=\"gid{$uniqueID}\" size=\"5\" value=\"\" />";
+			$content .= "<tr><td>".WT_I18N::translate('Enter a Person, Family, or Source ID')." <br>";
+			$content .= "<input class=\"pedigree_form\" type=\"text\" name=\"gid\" id=\"gid{$uniqueID}\" size=\"5\" value=\"\">";
 
 			$content .= print_findindi_link("gid{$uniqueID}",'',true);
 			$content .= print_findfamily_link("gid{$uniqueID}",'',true);
@@ -215,15 +215,15 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= print_findnote_link("gid{$uniqueID}",'',true);
 			$content .= print_findmedia_link("gid{$uniqueID}",'1','',true);
 
-			$content .= "<br />".WT_I18N::translate('OR<br />Enter a URL and a title');
-			$content .= "<table><tr><td>".WT_Gedcom_Tag::getLabel('URL')."</td><td><input type=\"text\" name=\"url\" size=\"40\" value=\"\" /></td></tr>";
-			$content .= "<tr><td>".WT_I18N::translate('Title:')."</td><td><input type=\"text\" name=\"favtitle\" size=\"40\" value=\"\" /></td></tr></table>";
-			if ($block) $content .= "</td></tr><tr><td><br />";
+			$content .= "<br>".WT_I18N::translate('OR<br>Enter a URL and a title');
+			$content .= "<table><tr><td>".WT_Gedcom_Tag::getLabel('URL')."</td><td><input type=\"text\" name=\"url\" size=\"40\" value=\"\"></td></tr>";
+			$content .= "<tr><td>".WT_I18N::translate('Title:')."</td><td><input type=\"text\" name=\"favtitle\" size=\"40\" value=\"\"></td></tr></table>";
+			if ($block) $content .= "</td></tr><tr><td><br>";
 			else $content .= "</td><td>";
 			$content .= WT_I18N::translate('Enter an optional note about this favorite');
-			$content .= "<br /><textarea name=\"favnote\" rows=\"6\" cols=\"50\"></textarea>";
+			$content .= "<br><textarea name=\"favnote\" rows=\"6\" cols=\"50\"></textarea>";
 			$content .= "</td></tr></table>";
-			$content .= "<br /><input type=\"submit\" value=\"".WT_I18N::translate('Add')."\" style=\"font-size: 8pt; \" />";
+			$content .= "<br><input type=\"submit\" value=\"".WT_I18N::translate('Add')."\" style=\"font-size: 8pt; \">";
 			$content .= "</form></div>";
 		}
 

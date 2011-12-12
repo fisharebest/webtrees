@@ -123,7 +123,7 @@ if ($display=='hierarchy') {
 		$action='show';
 	}
 	
-	echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
+	echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 
 	// -- echo the breadcrumb hierarchy
 	echo '<h4>';
@@ -205,7 +205,7 @@ if ($display=='hierarchy') {
 	if ($use_googlemap) {
 		create_map($placelevels);
 	} else {
-		echo '<br /><br />';
+		echo '<br><br>';
 		if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 			// show clickable map if found
 			places_assistant_WT_Module::display_map($level, $parent);
@@ -312,7 +312,7 @@ if ($level > 0) {
 				break;
 			}
 		}
-		echo '<br />';
+		echo '<br>';
 		$title = '';
 		foreach ($parent as $k=>$v) {
 			$title = $v.', '.$title;
@@ -361,7 +361,7 @@ if ($display=='list') {
 	$placelist = array_unique($placelist);
 	uasort($placelist, 'utf8_strcasecmp');
 	if (count($placelist)==0) {
-		echo '<b>', WT_I18N::translate('No results found.'), '</b><br />';
+		echo '<b>', WT_I18N::translate('No results found.'), '</b><br>';
 	} else {
 		echo '<table class="list_table">';
 		echo '<tr><td class="list_label" ';

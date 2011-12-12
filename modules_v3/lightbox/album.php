@@ -74,9 +74,9 @@ if ($reorder==1) {
 	//-->
 	</script>
 	<form name="reorder_form" method="post" action="edit_interface.php">
-		<input type="hidden" name="action" value="al_reorder_media_update" />
-		<input type="hidden" name="pid" value="<?php echo $controller->record->getXref(); ?>" />
-		<input type="hidden" id="ord2" name="order2" value="" />
+		<input type="hidden" name="action" value="al_reorder_media_update">
+		<input type="hidden" name="pid" value="<?php echo $controller->record->getXref(); ?>">
+		<input type="hidden" id="ord2" name="order2" value="">
 		<center>
 			<button type="submit" title="<?php echo WT_I18N::translate('Saves the sorted media to the database'); ?>" onclick="saveOrder();" ><?php echo WT_I18N::translate('Save'); ?></button>&nbsp;
 			<button type="submit" title="<?php echo WT_I18N::translate('Reset to the original order'); ?>" onclick="document.reorder_form.action.value='al_reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>&nbsp;

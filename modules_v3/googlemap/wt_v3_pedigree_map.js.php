@@ -400,7 +400,7 @@ function createMarker(point, name, html, mhtml, icontype) {
 	// save the info we need to use later for the side_bar
 	gmarkers[i] = marker;
 	// add a line to the side_bar html
-	side_bar_html += '<br /><div id="'+linkid+'"><a href="#" onclick="myclick(' + i + ')">' + html +'</a><br></div>';
+	side_bar_html += '<br><div id="'+linkid+'"><a href="#" onclick="myclick(' + i + ')">' + html +'</a><br></div>';
 	i++;
 	return marker;	
 };
@@ -494,8 +494,8 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		
 		$datamid .= '('.WT_I18N::translate('View Person').')';
 		$datamid  .= '</a></span>';
-		$dataright = '<br /><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .
-				addslashes($bdate->Display(false)).'<br />'.$bplace;
+		$dataright = '<br><strong>'. WT_I18N::translate('Birth:') . '&nbsp;</strong>' .
+				addslashes($bdate->Display(false)).'<br>'.$bplace;
 
 		$latlongval[$i] = get_lati_long_placelocation($person->getBirthPlace());
 		if ($latlongval[$i] != NULL) {

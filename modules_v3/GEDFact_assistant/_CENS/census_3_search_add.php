@@ -56,7 +56,7 @@ if (!defined('WT_WEBTREES')) {
 					}
 				</script>
 				<?php
-				echo "<input id=personid type=\"text\" size=\"20\" STYLE=\"color: #000000;\" value=\"\" />";
+				echo "<input id=personid type=\"text\" size=\"20\" STYLE=\"color: #000000;\" value=\"\">";
 				echo "<a href=\"#\" onclick=\"findindi()\">" ;
 				echo "&nbsp;<font size=\"2\">&nbsp;".WT_I18N::translate('Search')."</font>";
 				echo '</a>';
@@ -65,7 +65,7 @@ if (!defined('WT_WEBTREES')) {
 		</tr>
 		<tr>
 			<td style="border: 0px solid transparent;">
-				<br />
+				<br>
 			</td>
 		</tr>
 
@@ -82,8 +82,8 @@ if (!defined('WT_WEBTREES')) {
 								<font size=1>
 								<?php
 								// Header text with "Head" button =================================================
-								$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" />";
-								$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" alt=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" title=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" />";
+								$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["button_head"]."\">";
+								$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" alt=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" title=\"".WT_I18N::translate('Click to choose person as Head of family.')."\">";
 								global $tempStringHead;
 								$tempStringHead = $headImg;
 								echo WT_I18N::translate('Click %s to choose person as Head of family.', $tempStringHead);
@@ -94,7 +94,7 @@ if (!defined('WT_WEBTREES')) {
 
 							<tr>
 								<td>
-									<font size=1><br /></font>
+									<font size=1><br></font>
 								</td>
 							</tr>
 
@@ -543,7 +543,7 @@ if (!defined('WT_WEBTREES')) {
 						$label = $this->record->getStepFamilyLabel($family);
 						$people = $this->buildFamilyList($family, "step-parents", false);
 						if ($people) {
-							echo "<tr><td><br /></td><td></td></tr>";
+							echo "<tr><td><br></td><td></td></tr>";
 						}
 						$marrdate = $family->getMarriageDate();
 
@@ -969,7 +969,7 @@ if (!defined('WT_WEBTREES')) {
 						}
 					}
 
-					echo "<tr><td><font size=1><br /></font></td></tr>";
+					echo "<tr><td><font size=1><br></font></td></tr>";
 
 					//-- Build Spouse Family ---------------------------------------------------
 					$families = $this->record->getSpouseFamilies();
@@ -1413,12 +1413,12 @@ if (!defined('WT_WEBTREES')) {
 							<?php
 						}
 
-					echo "<tr><td><font size=1><br /></font></td></tr>";
+					echo "<tr><td><font size=1><br></font></td></tr>";
 					}
 					?>
 
 						</table>
-					<br /><br /><br />&nbsp;</td>
+					<br><br><br>&nbsp;</td>
 				</tr>
 			</table>
 
@@ -1475,18 +1475,18 @@ function print_pedigree_person_nav2($pid, $style=1, $count=0, $personcount="1", 
 
 		if ($TEXT_DIRECTION=="rtl") {
 		$spouselinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
+		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
 		$parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+		$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		$step_parentlinks .= "<table class=\"rtlnav person_box$isF\"><tr><td align=\"right\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+		$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		} else {
 		$spouselinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br />";
+		$spouselinks .= "<b>" . WT_I18N::translate('Family') . "</b> (" .$person->getFullName(). ")<br>";
 		$parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+		$parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		$step_parentlinks .= "<table class=\"ltrnav person_box$isF\"><tr><td align=\"left\" style=\"font-size:10px;font-weight:normal;\" class=\"name2 nowrap\">";
-		$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br />";
+		$step_parentlinks .= "<b>" . WT_I18N::translate('Parents') . "</b> (" .$person->getFullName(). ")<br>";
 		}
 
 		$persons       = "";

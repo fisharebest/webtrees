@@ -68,7 +68,7 @@ $LB_MUSIC_FILE=get_module_setting('lightbox', 'LB_MUSIC_FILE', WT_STATIC_URL.WT_
 	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/Sound.js"  type="text/javascript"></script>
 	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/clearbox.js"  type="text/javascript"></script>
 	<!--[if lte IE 7]>
-	<link href ="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/css/album_page_RTL.css"  rel="stylesheet" type="text/css" media="screen" />
+	<link href ="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/css/album_page_RTL.css"  rel="stylesheet" type="text/css" media="screen">
 	<![endif]-->
 <?php } else { ?>
 	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/Sound.js"  type="text/javascript"></script>

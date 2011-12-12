@@ -247,11 +247,11 @@ function create_map($placelevels) {
 			
 			<?php			
 			$list_latlon = (
-				WT_Gedcom_Tag::getLabel('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lat."' />".
-				WT_Gedcom_Tag::getLabel('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lng."' />".
-				/* I18N: Compass bearing (in degrees), for street-view mapping */ WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:46px; background:none; border:none;' value='".$sv_dir."' />".
-				/* I18N: Angle of elevation (in degrees), for street-view mapping */ WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px; background:none; border:none;' value='".$sv_pitch."'	/>".
-				WT_I18N::translate('Zoom')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='".$sv_zoom."' />
+				WT_Gedcom_Tag::getLabel('LATI')."<input name='sv_latiText' id='sv_latiText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lat."'>".
+				WT_Gedcom_Tag::getLabel('LONG')."<input name='sv_longText' id='sv_longText' type='text' style='width:42px; background:none; border:none;' value='".$sv_lng."'>".
+				/* I18N: Compass bearing (in degrees), for street-view mapping */ WT_I18N::translate('Bearing')."<input name='sv_bearText' id='sv_bearText' type='text' style='width:46px; background:none; border:none;' value='".$sv_dir."'>".
+				/* I18N: Angle of elevation (in degrees), for street-view mapping */ WT_I18N::translate('Elevation')."<input name='sv_elevText' id='sv_elevText' type='text' style='width:30px; background:none; border:none;' value='".$sv_pitch."'>".
+				WT_I18N::translate('Zoom')."<input name='sv_zoomText' id='sv_zoomText' type='text' style='width:30px; background:none; border:none;' value='".$sv_zoom."'>
 			");
 			if (WT_USER_IS_ADMIN) {
 				echo "<table align=\"center\" style=\"margin-left:6px; border:solid 1px black; width:522px; margin-top:-28px; background:#cccccc; \">";
@@ -310,7 +310,7 @@ function print_how_many_people($level, $parent) {
 			$place_count_fam=$place['tot'];
 		}
 	}
-	echo "<br /><br />", WT_I18N::translate('Individuals'), ": ", $place_count_indi, ", ", WT_I18N::translate('Families'), ": ", $place_count_fam;
+	echo "<br><br>", WT_I18N::translate('Individuals'), ": ", $place_count_indi, ", ", WT_I18N::translate('Families'), ": ", $place_count_fam;
 }
 
 function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $placelevels, $lastlevel=false) {
@@ -324,11 +324,11 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 		echo 'var point = new google.maps.LatLng(0, 0);';
 		if ($lastlevel)
-			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br>";
 		else {
 			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", ($level+1), $linklevels, "&amp;parent[{$level}]=";
-			if ($place2['place'] == "Unknown") echo "'><br />";
-			else echo addslashes($place2['place']), "'><br />";
+			if ($place2['place'] == "Unknown") echo "'><br>";
+			else echo addslashes($place2['place']), "'><br>";
 		}
 		if (($place2['icon'] != NULL) && ($place2['icon'] != '')) {
 			echo '<img src=\"', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place2['icon'], '\">&nbsp;&nbsp;';
@@ -373,9 +373,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 				print_how_many_people($level+1, $parent);
 			}
 		}
-		echo '<br />', WT_I18N::translate('This place has no coordinates');
+		echo '<br>', WT_I18N::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
-			echo "<br /><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
+			echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
 		echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);
@@ -404,13 +404,13 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		}
 		echo "var point = new google.maps.LatLng({$lati}, {$long});";
 		if ($lastlevel) {
-			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br />";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br>";
 		} else {
 			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", ($level+1), $linklevels, "&amp;parent[{$level}]=";
 			if ($place2['place'] == 'Unknown') {
-				echo "'><br />";
+				echo "'><br>";
 			} else {
-				echo addslashes($place2['place']), "'><br />";
+				echo addslashes($place2['place']), "'><br>";
 			}
 		}
 		if (($place2['icon'] != NULL) && ($place2['icon'] != "")) {
@@ -459,9 +459,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		$temp=addslashes($place2['place']);
 		$temp=str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), $temp);
 		if (!$GOOGLEMAP_COORD) {
-			echo "<br /><br /></div>\", icon_type, \"", $temp, "\");";
+			echo "<br><br></div>\", icon_type, \"", $temp, "\");";
 		} else {
-			echo "<br /><br />", $place2['lati'], ", ", $place2['long'], "</div>\", icon_type, \"", $temp, "\");";
+			echo "<br><br>", $place2['lati'], ", ", $place2['long'], "</div>\", icon_type, \"", $temp, "\");";
 		}
 	}
 }
@@ -473,8 +473,8 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	echo "<script> var mapLevel = '".$level."';</script>";
 	echo "<script> var placezoom = '", $plzoom, "';</script>";
 
-// echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet" />';
-echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
+// echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet">';
+echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 
 	?>
 	<script type="text/javascript">	

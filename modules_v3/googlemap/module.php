@@ -113,7 +113,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '<table width="100%" border="0" class="facts_table">';
 		echo '<tr><td valign="top">';
 		echo '<div id="googlemap_left">';
-		echo '<img src="', $WT_IMAGES['hline'], '" width="', $GOOGLEMAP_XSIZE, '" height="0" alt="" />';
+		echo '<img src="', $WT_IMAGES['hline'], '" width="', $GOOGLEMAP_XSIZE, '" height="0" alt="">';
 		echo '<div id="map_pane" style="border: 1px solid gray; color: black; width: 100%; height: ', $GOOGLEMAP_YSIZE, 'px"></div>';
 		if (WT_USER_IS_ADMIN) {
 			echo '<table width="100%"><tr>';
@@ -143,7 +143,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '</td>';
 		echo '</tr></table>';
 		// start
-		echo '<img src="', $WT_IMAGES['spacer'], '" id="marker6" width="1" height="1" alt="" />';
+		echo '<img src="', $WT_IMAGES['spacer'], '" id="marker6" width="1" height="1" alt="">';
 		// end
 		echo '</td></tr></table>';
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';

@@ -273,55 +273,55 @@ $controller->checkPrivacy();
 				echo $indi->getSexImage('large', '', WT_I18N::translate_c('unknown gender', 'Unknown'));
 			}
 		?>
-			<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo $indi->getFullName(); ?><br />
-			<?php echo $indi->getAddName(); ?><br />
+			<a href="<?php echo $indi->getHtmlUrl(); ?>">&nbsp;<?php echo $indi->getFullName(); ?><br>
+			<?php echo $indi->getAddName(); ?><br>
 			</a>
-			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>" />
+			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>">
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
 				<span class="details1"><?php echo WT_I18N::translate('Remove person'); ?></span></a>
 			<?php if (!empty($controller->birthyears[$pid])) { ?>
-				<span class="details1"><br />
+				<span class="details1"><br>
 				<?php echo /* I18N: an age indicator, which can be dragged around the screen */ WT_I18N::translate('Show an age cursor?'); ?>
-				<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="showhide('agebox<?php echo $p; ?>', this);" />
+				<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="showhide('agebox<?php echo $p; ?>', this);">
 				</span>
 			<?php }
 			?>
-			<br />
+			<br>
 		<?php
 		} else {
 			print_privacy_error();
 			?>
-			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>" />
-				<br />
+			<input type="hidden" name="pids[<?php echo $p; ?>]" value="<?php echo htmlspecialchars($pid); ?>">
+				<br>
 				<a href="timeline.php?<?php echo $controller->pidlinks; ?>&amp;scale=<?php echo $controller->scale; ?>&amp;remove=<?php echo $pid; ?>&amp;ged=<?php echo WT_GEDURL; ?>" >
 				<span class="details1"><?php echo WT_I18N::translate('Remove person'); ?></span></a>
-			<br />
+			<br>
 		<?php } ?>
 		</td>
 	<?php }
 		if (!isset($col)) $col = 0;
 		?>
 		<td class="person<?php echo $col; ?>" style="padding: 5px" valign="top">
-			<?php echo WT_I18N::translate('Add another person to the chart'), '<br/>'; ?>
-			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid" />
+			<?php echo WT_I18N::translate('Add another person to the chart'), '<br>'; ?>
+			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid">
 			<?php print_findindi_link("newpid",""); ?>
-			<br />
-			<br />
-			<div style="text-align: center"><input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>" /></div>
+			<br>
+			<br>
+			<div style="text-align: center"><input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>"></div>
 		</td>
 	<?php
 	if (count($controller->people)>0) {
 		$scalemod = round($controller->scale*.2) + 1;
 		?>
 		<td class="list_value" style="padding: 5px">
-			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale+$scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>"><img src="<?php echo $WT_IMAGES['zoomin']; ?>" title="<?php echo WT_I18N::translate('Zoom in'); ?>" alt="<?php echo WT_I18N::translate('Zoom in'); ?>"></a><br />
-			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale-$scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>"><img src="<?php echo $WT_IMAGES['zoomout']; ?>" title="<?php echo WT_I18N::translate('Zoom out'); ?>" alt="<?php echo WT_I18N::translate('Zoom out'); ?>"></a><br />
-			<input type="button" value="<?php echo WT_I18N::translate('Clear Chart'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo WT_GEDURL; ?>&amp;clear=1';" />
+			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale+$scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>"><img src="<?php echo $WT_IMAGES['zoomin']; ?>" title="<?php echo WT_I18N::translate('Zoom in'); ?>" alt="<?php echo WT_I18N::translate('Zoom in'); ?>"></a><br>
+			<a href="<?php echo WT_SCRIPT_NAME."?".$controller->pidlinks."scale=".($controller->scale-$scalemod); ?>&amp;ged=<?php echo WT_GEDURL; ?>"><img src="<?php echo $WT_IMAGES['zoomout']; ?>" title="<?php echo WT_I18N::translate('Zoom out'); ?>" alt="<?php echo WT_I18N::translate('Zoom out'); ?>"></a><br>
+			<input type="button" value="<?php echo WT_I18N::translate('Clear Chart'); ?>" onclick="window.location = 'timeline.php?ged=<?php echo WT_GEDURL; ?>&amp;clear=1';">
 		</td>
 	<?php } ?>
 	</tr>
 </table>
-<br /><a href="lifespan.php?ged=<?php echo WT_GEDURL; ?>"><b><?php echo WT_I18N::translate('Show lifespans'); ?></b></a>
+<br><a href="lifespan.php?ged=<?php echo WT_GEDURL; ?>"><b><?php echo WT_I18N::translate('Show lifespans'); ?></b></a>
 </form>
 <?php
 if (count($controller->people)>0) {
@@ -329,7 +329,7 @@ if (count($controller->people)>0) {
 <div id="timeline_chart">
 	<!-- print the timeline line image -->
 	<div id="line" style="position:absolute; <?php echo $TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+22):"right: ".($basexoffset+22); ?>px; top: <?php echo $baseyoffset; ?>px; ">
-		<img src="<?php echo $WT_IMAGES["vline"]; ?>" width="3" height="<?php echo ($baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale)); ?>" alt="" />
+		<img src="<?php echo $WT_IMAGES["vline"]; ?>" width="3" height="<?php echo ($baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale)); ?>" alt="">
 	</div>
 	<!-- print divs for the grid -->
 	<div id="scale<?php echo $controller->baseyear; ?>" style="font-family: Arial; position:absolute; <?php echo ($TEXT_DIRECTION =="ltr"?"left: $basexoffset":"right: $basexoffset"); ?>px; top: <?php echo ($baseyoffset-5); ?>px; font-size: 7pt; text-align: <?php echo ($TEXT_DIRECTION =="ltr"?"left":"right"); ?>;">
@@ -366,7 +366,7 @@ if (count($controller->people)>0) {
 			<table cellspacing="0" cellpadding="0">
 				<tr>
 					<td>
-						<img src="<?php echo $WT_IMAGES["hline"]; ?>" name="ageline<?php echo $p; ?>" id="ageline<?php echo $p; ?>" align="left" width="25" height="3" alt="" />
+						<img src="<?php echo $WT_IMAGES["hline"]; ?>" name="ageline<?php echo $p; ?>" id="ageline<?php echo $p; ?>" align="left" width="25" height="3" alt="">
 					</td>
 					<td valign="top">
 						<?php
@@ -389,8 +389,8 @@ if (count($controller->people)>0) {
 						<?php } ?>
 					</td>
 				</tr>
-			</table><br /><br /><br />
-		</div><br /><br /><br /><br />
+			</table><br><br><br>
+		</div><br><br><br><br>
 	<?php } ?>
 	<script type="text/javascript">
 	<!--

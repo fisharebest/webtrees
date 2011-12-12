@@ -125,7 +125,7 @@ echo WT_JS_END;
 								$husb=$controller->record->getHusband();
 							}
 							if (!$husb) {
-								echo '<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new father'), help_link('edit_add_parent'), '</a><br />';
+								echo '<a href="#" onclick="return addnewparentfamily(\'\', \'HUSB\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new father'), help_link('edit_add_parent'), '</a><br>';
 							}
 							if ($controller->diff_record) {
 								$wife=$controller->diff_record->getWife();
@@ -133,7 +133,7 @@ echo WT_JS_END;
 								$wife=$controller->record->getWife();
 							}
 							if (!$wife)  {
-								echo '<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new mother'), help_link('edit_add_parent'), '</a><br />';
+								echo '<a href="#" onclick="return addnewparentfamily(\'\', \'WIFE\', \'', $controller->record->getXref(), '\');">', WT_I18N::translate('Add a new mother'), help_link('edit_add_parent'), '</a><br>';
 							}
 						}
 						?>

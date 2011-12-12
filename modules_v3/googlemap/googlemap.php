@@ -67,16 +67,16 @@ function print_address_structure_map($factrec, $level) {
 		$arec = get_sub_record($level, "$level ADDR", $factrec, $i+1);
 		$resultText = '';
 		$cn = preg_match("/$nlevel _NAME (.*)/", $arec, $cmatch);
-		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1]).'<br />';
+		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1]).'<br>';
 		$resultText .= PrintReady(trim($omatch[$i][1]));
 		$cont = get_cont($nlevel, $arec);
 		if (!empty($cont)) $resultText .= str_replace(array(' ', "<br&nbsp;"), array("&nbsp;", "<br "), PrintReady($cont));
 		else {
-			if (strlen(trim($omatch[$i][1])) > 0) echo '<br />';
+			if (strlen(trim($omatch[$i][1])) > 0) echo '<br>';
 				$cs = preg_match("/$nlevel ADR1 (.*)/", $arec, $cmatch);
 			if ($cs>0) {
 				if ($cn==0) {
-					$resultText .= '<br />';
+					$resultText .= '<br>';
 					$cn=0;
 				}
 				$resultText .= PrintReady($cmatch[1]);
@@ -84,7 +84,7 @@ function print_address_structure_map($factrec, $level) {
 			$cs = preg_match("/$nlevel ADR2 (.*)/", $arec, $cmatch);
 			if ($cs>0) {
 				if ($cn==0) {
-					$resultText .= '<br />';
+					$resultText .= '<br>';
 					$cn=0;
 				}
 				$resultText .= PrintReady($cmatch[1]);
@@ -96,10 +96,10 @@ function print_address_structure_map($factrec, $level) {
 				if (preg_match("/$nlevel STAE (.*)/", $arec, $cmatch))
 					$resultText.=', '.PrintReady($cmatch[1]);
 				if (preg_match("/$nlevel POST (.*)/", $arec, $cmatch))
-					$resultText.='<br />'.PrintReady($cmatch[1]);
+					$resultText.='<br>'.PrintReady($cmatch[1]);
 			} else {
 				if (preg_match("/$nlevel POST (.*)/", $arec, $cmatch))
-					$resultText.='<br />'.PrintReady($cmatch[1]);
+					$resultText.='<br>'.PrintReady($cmatch[1]);
 				if (preg_match("/$nlevel CITY (.*)/", $arec, $cmatch))
 					$resultText.=' '.PrintReady($cmatch[1]);
 				if (preg_match("/$nlevel STAE (.*)/", $arec, $cmatch))
@@ -107,8 +107,8 @@ function print_address_structure_map($factrec, $level) {
 			}
 		}
 		if (preg_match("/$nlevel CTRY (.*)/", $arec, $cmatch))
-			$resultText.='<br />'.PrintReady($cmatch[1]);
-		$resultText.= '<br />';
+			$resultText.='<br>'.PrintReady($cmatch[1]);
+		$resultText.= '<br>';
 		// Here we can examine the resultant text and remove empty tags
 		echo str_replace(chr(10), ' ' , $resultText);
 	}
@@ -561,7 +561,7 @@ function build_indiv_map($indifacts, $famids) {
 		$pid=$controller->record->getXref();
 
 		// === Include css and js files ============================================================
-		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet" />';
+		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_googlemap.js.php';
 
 		// === Create the normal googlemap sidebar of events and children ==========================
@@ -575,28 +575,28 @@ function build_indiv_map($indifacts, $famids) {
 			$z++;
 			echo '<td class="', $marker['class'], '" style="white-space: normal">';
 			if (!empty($marker['info'])) {
-				echo '<span class="field">', $marker['info'], '</span><br />';
+				echo '<span class="field">', $marker['info'], '</span><br>';
 			}
 			if (!empty($marker['name'])) {
 				$person=WT_Person::getInstance($marker['name']);
 				if ($person) {
 					echo '<a href="', $person->getHtmlUrl(), '">', $person->getFullName(), '</a>';
 				}
-				echo '<br />';
+				echo '<br>';
 			}
 			if (preg_match("/2 PLAC (.*)/", $marker['placerec']) == 0) {
 				print_address_structure_map($marker['placerec'], 1);
 			} else {
-				echo print_fact_place_map($marker['placerec']), '<br />';
+				echo print_fact_place_map($marker['placerec']), '<br>';
 			}
 			if (!empty($marker['date'])) {
 				$date=new WT_Date($marker['date']);
-				echo $date->Display(true), '<br />';
+				echo $date->Display(true), '<br>';
 			}
 			echo '</td>';
 			echo '</tr>';
 		}
-		echo '</table></div><br />';
+		echo '</table></div><br>';
 	} // end prepare markers array =================================================================
 
 	// ======= More V3 api stuff (not displayed now) but will be sorted later ==========
@@ -612,19 +612,19 @@ function build_indiv_map($indifacts, $famids) {
 		<tr>
 			<td style="width: 360px; text-align:center;">
 				<form style="width: 360px;" id="form1" action="#">
-					<!-- Event Map:<input 	name= "radio1" type="checkbox" id="theatrebox" onclick="boxclick(this,'theatre')" checked /> &nbsp; -->
-					Street View Only:<input name= "radio2" type="checkbox" id="golfbox" onclick="boxclick(this,'golf')" /> &nbsp;
-					<!-- Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')" /> -->
+					<!-- Event Map:<input 	name= "radio1" type="checkbox" id="theatrebox" onclick="boxclick(this,'theatre')" checked> &nbsp; -->
+					Street View Only:<input name= "radio2" type="checkbox" id="golfbox" onclick="boxclick(this,'golf')"> &nbsp;
+					<!-- Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')"> -->
 
 					<?php
 					// --------- Maybe for later use ---------------
 					/*
-					 Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')" />
-					<b>Pedigree Map:</b><input id="sel2" name="select" type=radio />
+					 Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')">
+					<b>Pedigree Map:</b><input id="sel2" name="select" type=radio>
 					&nbsp;&nbsp;
-					Parents: <input type="checkbox" id="parentsbox" onclick="boxclick(this,'gen1')" /> &nbsp;&nbsp;
-					Grandparents: <input type="checkbox" id="gparentsbox" onclick="boxclick(this,'gen2')" /> &nbsp;&nbsp;
-					Great Grandparents: <input type="checkbox" id="ggparentsbox" onclick="boxclick(this,'gen3')" /><br />
+					Parents: <input type="checkbox" id="parentsbox" onclick="boxclick(this,'gen1')"> &nbsp;&nbsp;
+					Grandparents: <input type="checkbox" id="gparentsbox" onclick="boxclick(this,'gen2')"> &nbsp;&nbsp;
+					Great Grandparents: <input type="checkbox" id="ggparentsbox" onclick="boxclick(this,'gen3')"><br>
 					*/
 					?>
 				</form>
@@ -635,6 +635,6 @@ function build_indiv_map($indifacts, $famids) {
 	</table>
 	<?php
 	// =================================================================================
-	echo '<br />';
+	echo '<br>';
 	return $i;
 } // end build_indiv_map function

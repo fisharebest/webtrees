@@ -161,7 +161,7 @@ echo '</td>';
 echo '</tr>';
 echo '</form>';
 echo '</table>';
-echo '<hr />';
+echo '<hr>';
 
 switch ($action) {
 case 'go':

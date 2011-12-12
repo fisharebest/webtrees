@@ -77,13 +77,13 @@ echo '<tr>';
 echo '<td class="descriptionbox">';
 echo WT_I18N::translate('Individual'), '</td>';
 echo '<td class="optionbox vmiddle">';
-echo '<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="', $rootid, '" />';
+echo '<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="', $rootid, '">';
 print_findindi_link('rootid','');
 echo '</td>';
 
 // NOTE: submit
 echo '<td class="facts_label03" ', ($SHOW_HIGHLIGHT_IMAGES ? 'rowspan="2"' : ''), '>';
-echo '<input type="submit" value="'.WT_I18N::translate('View').'" />';
+echo '<input type="submit" value="'.WT_I18N::translate('View').'">';
 echo '</td></tr>';
 
 if ($SHOW_HIGHLIGHT_IMAGES) {
@@ -94,7 +94,7 @@ if ($SHOW_HIGHLIGHT_IMAGES) {
 	echo '<td class="optionbox">';
 	echo '<input name="showthumbs" type="checkbox" value="1"';
 	if ($showthumbs) echo ' checked="checked"';
-	echo ' /></td></tr>';
+	echo '></td></tr>';
 }
 
 echo '</table>';
@@ -103,7 +103,7 @@ echo '</td></tr></table>';
 
 // process the tree
 $treeid = ancestry_array($rootid, 5);
-echo "<br />";
+echo "<br>";
 echo "<table width='100%' border='0' cellpadding='0' cellspacing='0'>";
 
 // 1
@@ -278,7 +278,7 @@ print_td_person(31);
 echo "</tr>";
 
 echo "</table>";
-echo "<br />";
+echo "<br>";
 
 function print_td_person($n) {
 	global $treeid, $WT_IMAGES;
@@ -309,9 +309,9 @@ function print_td_person($n) {
 
 		$text .= "<a class=\"name1\" href=\"".$indi->getHtmlUrl()."\">";
 		$text .= $name;
-		if ($addname) $text .= "<br />" . $addname;
+		if ($addname) $text .= "<br>" . $addname;
 		$text .= "</a>";
-		$text .= "<br />";
+		$text .= "<br>";
 		if ($indi->canDisplayDetails()) {
 			$text.="<span class='details1'>";
 			$text.=$indi->getLifeSpan();
@@ -325,7 +325,7 @@ function print_td_person($n) {
 
 	// -- empty box
 	if (empty($text)) {
-		$text = "&nbsp;<br />&nbsp;<br />";
+		$text = "&nbsp;<br>&nbsp;<br>";
 	}
 	// -- box color
 	$isF="";

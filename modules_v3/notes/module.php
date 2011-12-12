@@ -55,7 +55,7 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		<table class="facts_table">
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
-					<input id="checkbox_note2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_note2').toggle();" />
+					<input id="checkbox_note2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_note2').toggle();">
 					<label for="checkbox_note2"><?php echo WT_I18N::translate('Show all notes'); ?></label>
 					<?php echo help_link('show_fact_sources'); ?>
 				</td>
@@ -92,21 +92,21 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			<td class="facts_label"><?php echo WT_I18N::translate('Add Note'), help_link('add_note'); ?></td>
 			<td class="facts_value"><a href="#"
 				onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','NOTE'); return false;"><?php echo WT_I18N::translate('Add a new note'); ?></a>
-			<br />
+			<br>
 			</td>
 		</tr>
 		<tr>
 			<td class="facts_label"><?php echo WT_I18N::translate('Add Shared Note'), help_link('add_shared_note'); ?></td>
 			<td class="facts_value"><a href="#"
 				onclick="add_new_record('<?php echo $controller->record->getXref(); ?>','SHARED_NOTE'); return false;"><?php echo WT_I18N::translate('Add a new shared note'); ?></a>
-			<br />
+			<br>
 			</td>
 		</tr>
 		<?php
 		}
 		?>
 		</table>
-		<br />
+		<br>
 		<?php
 		if (!$SHOW_LEVEL2_NOTES)  {
 			echo WT_JS_START, 'jQuery("tr.row_note2").toggle();', WT_JS_END;

@@ -288,7 +288,7 @@ class WT_Controller_Clippings {
 			}
 			unlink(WT_DATA_DIR.$tempFileName);
 		} else {
-			echo WT_I18N::translate('Cannot create')." ".WT_DATA_DIR."$tempFileName ".WT_I18N::translate('Check access rights on this directory.')."<br /><br />";
+			echo WT_I18N::translate('Cannot create')." ".WT_DATA_DIR."$tempFileName ".WT_I18N::translate('Check access rights on this directory.')."<br><br>";
 		}
 	}
 

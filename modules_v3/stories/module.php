@@ -116,17 +116,17 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$languages=get_block_setting($block_id, 'languages');
 			if (!$languages || in_array(WT_LOCALE, explode(',', $languages))) {
 				$html.='<div class="news_title center">'.get_block_setting($block_id, 'title').'</div>';
-				$html.='<div>'.get_block_setting($block_id, 'story_body').'</div><br />';
+				$html.='<div>'.get_block_setting($block_id, 'story_body').'</div><br>';
 				if (WT_USER_CAN_EDIT) {
 					$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;block_id='.$block_id.'">';
-					$html.=WT_I18N::translate('Edit story').'</a></div><br />';
+					$html.=WT_I18N::translate('Edit story').'</a></div><br>';
 				}
 			}
 		}
 		if (WT_USER_GEDCOM_ADMIN && !$html) {
 			$html.='<div class="news_title center">'.$this->getTitle().'</div>';
 			$html.='<div><a href="module.php?mod='.$this->getName().'&amp;mod_action=admin_edit&amp;xref='.$controller->record->getXref().'">';
-			$html.=WT_I18N::translate('Add story').'</a>'.help_link('add_story', $this->getName()).'</div><br />';
+			$html.=WT_I18N::translate('Add story').'</a>'.help_link('add_story', $this->getName()).'</div><br>';
 		}
 		return $html;
 	}
@@ -241,9 +241,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				// "Help for this page" link
 				echo '<div id="page_help">', help_link('add_story', $this->getName()), '</div>';
 				echo '<form name="story" method="post" action="#">';
-				echo '<input type="hidden" name="save" value="1" />';
-				echo '<input type="hidden" name="block_id" value="', $block_id, '" />';
-				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '" />';
+				echo '<input type="hidden" name="save" value="1">';
+				echo '<input type="hidden" name="block_id" value="', $block_id, '">';
+				echo '<input type="hidden" name="gedcom_id" value="', WT_GED_ID, '">';
 				echo '<table id="story_module">';
 				echo '<tr><th>';
 				echo WT_I18N::translate('Story title'), help_link('story_title', $this->getName());
@@ -273,7 +273,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td class="optionbox">';
-				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'" />';
+				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
 				print_findindi_link("pid", "xref");
 				if ($xref) {
 					$person=WT_Person::getInstance($xref);
@@ -286,8 +286,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<td class="optionbox">';
 				echo edit_language_checkboxes('lang_', $languages);
 				echo '</td></tr></table>';
-				echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5"/>';
-				echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6" />';
+				echo '<p><input type="submit" value="', WT_I18N::translate('Save'), '" tabindex="5">';
+				echo '&nbsp;<input type="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.location=\''.$this->getConfigLink().'\';" tabindex="6">';
 				echo '</p>';
 				echo '</form>';
 

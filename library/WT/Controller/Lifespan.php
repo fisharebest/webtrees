@@ -267,7 +267,7 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 		$timelineTick = $totalYears / $yearSpan; //calculates the length of the timeline
 
 		for ($i = 0; $i < $timelineTick; $i ++) { //prints the timeline
-			echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear<img src=\"images/timelineChunk.gif\"  alt=\"\" /></div>";  //onclick="zoomToggle('100px', '100px', '200px', '200px', this);"
+			echo "<div class=\"sublinks_cell\" style=\"text-align: left; position: absolute; top: ", $top, "px; left: ", $leftPosition, "px; width: ", $tickDistance, "px;\">$newStartYear<img src=\"images/timelineChunk.gif\"  alt=\"\"></div>";  //onclick="zoomToggle('100px', '100px', '200px', '200px', this);"
 			$leftPosition += $tickDistance;
 			$newStartYear += $yearSpan;
 
@@ -416,9 +416,9 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 						$place = $val->getPlace();
 						$trans = WT_Gedcom_Tag::getLabel($fact);
 						if (isset($eventinformation[$evntwdth])) {
-							$eventinformation[$evntwdth] .= "<br />".$trans."<br />".strip_tags($date->Display(false, '', NULL, false))." ".$place;
+							$eventinformation[$evntwdth] .= "<br>".$trans."<br>".strip_tags($date->Display(false, '', NULL, false))." ".$place;
 						} else {
-							$eventinformation[$evntwdth]= $fact."-fact, ".$trans."<br />".strip_tags($date->Display(false, '', NULL, false))." ".$place;
+							$eventinformation[$evntwdth]= $fact."-fact, ".$trans."<br>".strip_tags($date->Display(false, '', NULL, false))." ".$place;
 						}
 					}
 				}
@@ -437,7 +437,7 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 					$indiName = $value->getFullName();
 					echo '<table><tr><td width="15"><a class="showit" href="#"><b>';
 					echo WT_Gedcom_Tag::getAbbreviation('BIRT');
-					echo '</b><span>', $value->getSexImage(), $indiName, '<br/>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->Display(false)), ' ', $value->getBirthPlace(), '</span></a></div>',
+					echo '</b><span>', $value->getSexImage(), $indiName, '<br>', WT_Gedcom_Tag::getLabel('BIRT'), ' ', strip_tags($bdate->Display(false)), ' ', $value->getBirthPlace(), '</span></a></div>',
 						'<td align="left" width="100%"><a href="', $value->getHtmlUrl(), '">', $value->getSexImage(), $indiName, '  ', $lifespan, ' </a></td>' ,
 						'<td width="15">';
 					if ($value->isDead()) {
@@ -445,7 +445,7 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 							echo '<a class="showit" href="#"><b>';
 							echo WT_Gedcom_Tag::getAbbreviation('DEAT');
 							if (!$deathReal) echo '*';
-							echo '</b><span>'.$value->getSexImage().$indiName.'<br/>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
+							echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
 						}
 					}
 					echo '</td></tr></table>';
@@ -465,7 +465,7 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 						echo '<table dir="ltr"><tr><td width="15"><a class="showit" href="#"><b>';
 						echo WT_Gedcom_Tag::getAbbreviation('BIRT');
 						if (!$birthReal) echo '*';
-						echo '</b><span>'.$value->getSexImage().$indiName.'<br/>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'</span></a></td>'.
+						echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'</span></a></td>'.
 						'<td align="left" width="100%"><a href="'.$value->getHtmlUrl().'">'.$value->getSexImage().$indiName.'</a></td>'.
 						'<td width="15">';
 						if ($value->isDead()) {
@@ -473,7 +473,7 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 								echo '<a class="showit" href="#"><b>';
 								echo WT_Gedcom_Tag::getAbbreviation('DEAT');
 								if (!$deathReal) echo "*";
-								echo '</b><span>'.$value->getSexImage().$indiName.'<br/>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
+								echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('DEAT').' '.strip_tags($ddate->Display(false)).' '.$value->getDeathPlace().'</span></a>';
 							}
 						}
 						echo '</td></tr></table>';
@@ -483,11 +483,11 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 						$indiName = $value->getFullName();
 						echo '<a class="showit" href="'.$value->getHtmlUrl().'"><b>';
 						echo WT_Gedcom_Tag::getAbbreviation('BIRT');
-						echo '</b><span>'.$value->getSexImage().$indiName.'<br/>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'<br/>';
+						echo '</b><span>'.$value->getSexImage().$indiName.'<br>'.WT_Gedcom_Tag::getLabel('BIRT').' '.strip_tags($bdate->Display(false)).' '.$value->getBirthPlace().'<br>';
 						foreach ($eventinformation as $evtwidth=>$val) {
 							$text = explode('-fact,', $val);
 							$val = $text[1];
-							echo $val."<br />";
+							echo $val."<br>";
 						}
 						if ($value->isDead() && $deathReal) echo WT_Gedcom_Tag::getLabel('DEAT')." ".strip_tags($ddate->Display(false))." ".$value->getDeathPlace();
 						echo '</span></a>';
@@ -514,12 +514,12 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 					$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $this->people[$i]->getFullName()));
 					echo "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".$indiName."</a>";
 					print_privacy_error();
-					echo "<br />";
+					echo "<br>";
 					$printed = true;
 				} else
 					if (!$printed) {
 						print_privacy_error();
-						echo "<br />";
+						echo "<br>";
 					}
 			}
 		}

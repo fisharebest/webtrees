@@ -61,7 +61,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		$title='';
 		if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
 			$title .= "<a href=\"#\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\" /></a>";
+			$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\"></a>";
 		}
 		// I18N: There are separate lists of male/female names, containing %d names each
 		$title .= WT_I18N::plural('Top given name', 'Top %d given names', $num, $num);
@@ -76,12 +76,12 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 			//List Female names
 			$totals=$stats->commonGivenFemaleTotals($params);
 			if ($totals) {
-				$content.='<b>'.WT_I18N::translate('Females').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
+				$content.='<b>'.WT_I18N::translate('Females').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br>';
 			}
 			//List Male names
 			$totals=$stats->commonGivenMaleTotals($params);
 			if ($totals) {
-				$content.='<b>'.WT_I18N::translate('Males').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br />';
+				$content.='<b>'.WT_I18N::translate('Males').'</b><div class="wrap" style="'.$padding.'">'.$totals.'</div><br>';
 			}
 			break;
 		case "table": // Style 2: Tabular format.  Narrow, 2 or 3 column table, good on right side of page
@@ -137,7 +137,7 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Number of items to show');
 		echo '</td><td class="optionbox">';
-		echo '<input type="text" name="num" size="2" value="', $num, '" />';
+		echo '<input type="text" name="num" size="2" value="', $num, '">';
 		echo '</td></tr>';
 
 		$infoStyle=get_block_setting($block_id, 'infoStyle', 'table');

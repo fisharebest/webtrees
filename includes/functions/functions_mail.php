@@ -110,7 +110,7 @@ function webtreesMail($to, $from, $subject, $message) {
 		$htmlMessage .= "<body dir=\"$TEXT_DIRECTION\"><pre>";
 		$htmlMessage .= $message; //add message
 		$htmlMessage .= "</pre>";
-		$htmlMessage .= "<img src=\"cid:wtlogo@wtserver\" alt=\"\" style=\"border: 0px; display: block; margin-left: auto; margin-right: auto;\" />";
+		$htmlMessage .= "<img src=\"cid:wtlogo@wtserver\" alt=\"\" style=\"border: 0px; display: block; margin-left: auto; margin-right: auto;\">";
 		$htmlMessage .= "</body>";
 		$htmlMessage .= "</html>";
 		$htmlMessage .= "\n--$boundary2--\n";
@@ -173,8 +173,8 @@ function webtreesMail($to, $from, $subject, $message) {
 		$mail_object->Body = $message;
 		// attempt to send mail
 		if (!$mail_object->Send()) {
-			echo WT_I18N::translate('Message was not sent'), '<br />';
-			echo /* I18N: %s is an error message */ WT_I18N::translate('Mailer error: %s',  $mail_object->ErrorInfo), '<br />';
+			echo WT_I18N::translate('Message was not sent'), '<br>';
+			echo /* I18N: %s is an error message */ WT_I18N::translate('Mailer error: %s',  $mail_object->ErrorInfo), '<br>';
 			return false;
 		} else {
 			// SMTP OK
@@ -183,8 +183,8 @@ function webtreesMail($to, $from, $subject, $message) {
 	} elseif ($SMTP_ACTIVE=='internal') {
 		// use original PHP mail sending function
 		if (!mail($to, hex4email($subject, 'UTF-8'), $message, $extraHeaders)) {
-			echo WT_I18N::translate('Message was not sent'), '<br />';
-			echo WT_I18N::translate('Mailer error: %s', 'PHP mail() failed'), '<br />';
+			echo WT_I18N::translate('Message was not sent'), '<br>';
+			echo WT_I18N::translate('Mailer error: %s', 'PHP mail() failed'), '<br>';
 			return false;
 		} else {
 			// original PHP mail sending function OK

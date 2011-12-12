@@ -75,7 +75,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		if (WT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
 			echo '<tr><td colspan="2" class="descriptionbox rela">';
 			echo '<span><a href="#" onclick="reorder_media()">';
-			if (isset($WT_IMAGES['reorder'])) {echo '<img src="', $WT_IMAGES['reorder'],'" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '" />';}
+			if (isset($WT_IMAGES['reorder'])) {echo '<img src="', $WT_IMAGES['reorder'],'" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '">';}
 			echo WT_I18N::translate('Re-order media');
 			echo '</a></span>';
 			echo '</td></tr>';
@@ -89,7 +89,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label"><?php echo WT_I18N::translate('Add media'), help_link('OBJE'); ?></td>
 				<td class="facts_value">
-					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?php echo $controller->record->getXref(); ?>', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media object'); ?></a><br />
+					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?php echo $controller->record->getXref(); ?>', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media object'); ?></a><br>
 					<a href="#" onclick="window.open('inverselink.php?linktoid=<?php echo $controller->record->getXref(); ?>&amp;linkto=person', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;"><?php echo WT_I18N::translate('Link to an existing media object'); ?></a>
 				</td>
 			</tr>

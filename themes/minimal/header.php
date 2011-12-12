@@ -34,33 +34,33 @@ echo
 	'<head>',
 	'<meta charset="UTF-8">',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png" />';
+	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">';
 
 if (!empty($LINK_CANONICAL)) {
-	echo '<link rel="canonical" href="', $LINK_CANONICAL, '" />';
+	echo '<link rel="canonical" href="', $LINK_CANONICAL, '">';
 }
 if (!empty($META_DESCRIPTION)) {
-	echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '" />';
+	echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '">';
 }
-echo '<meta name="robots" content="', $META_ROBOTS, '" />';
+echo '<meta name="robots" content="', $META_ROBOTS, '">';
 if (!empty($META_GENERATOR)) {
-	echo '<meta name="generator" content="', $META_GENERATOR, '" />';
+	echo '<meta name="generator" content="', $META_GENERATOR, '">';
 }
 
 echo
-	'<link type="text/css" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" rel="Stylesheet" />',
-	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all" />';
+	'<link type="text/css" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" rel="Stylesheet">',
+	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all">';
 
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
 case 'msie':
-	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css" />';
+	echo '<link type="text/css" rel="stylesheet" href="', WT_THEME_URL, $BROWSERTYPE, '.css">';
 	break;
 }
 
 // Additional css files required (Only if Lightbox installed)
 if (WT_USE_LIGHTBOX) {
-		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen" />';
+		echo '<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/css/album_page.css" media="screen">';
 }
 
 echo
@@ -94,10 +94,10 @@ if ($view!='simple') {
 		'</span>',
 		'<div class="hsearch">',
 		'<form style="display:inline;" action="search.php" method="get">',
-		'<input type="hidden" name="action" value="general" />',
-		'<input type="hidden" name="topsearch" value="yes" />',
-		'<input type="text" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '"/>',
-		'<input type="submit" name="search" value=" &gt; " />',
+		'<input type="hidden" name="action" value="general">',
+		'<input type="hidden" name="topsearch" value="yes">',
+		'<input type="text" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '">',
+		'<input type="submit" name="search" value=" &gt; ">',
 		'</form>';
 	print_favorite_selector();
 	echo 

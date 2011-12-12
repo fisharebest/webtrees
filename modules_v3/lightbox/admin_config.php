@@ -58,7 +58,7 @@ $LB_URL_HEIGHT=get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'); //  URL W
 
 ?>
 <form method="post" name="configform" action="module.php?mod=lightbox&amp;mod_action=admin_config">
-<input type="hidden" name="action" value="update" />
+<input type="hidden" name="action" value="update">
 	<table id="album_config">
 		<tr>
 			<td><?php echo WT_I18N::translate('Slide Show speed'); ?><?php echo help_link('lb_ss_speed', $this->getName()); ?></td>
@@ -84,7 +84,7 @@ $LB_URL_HEIGHT=get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'); //  URL W
 		<tr>
 			<td><?php echo WT_I18N::translate('Slideshow sound track'); ?><?php echo help_link('lb_music_file', $this->getName()); ?><p><?php echo WT_I18N::translate('(mp3 only)'); ?></p></td>
 			<td>
-				<input type="text" name="NEW_LB_MUSIC_FILE" value="<?php echo $LB_MUSIC_FILE; ?>" size="60" /><br />
+				<input type="text" name="NEW_LB_MUSIC_FILE" value="<?php echo $LB_MUSIC_FILE; ?>" size="60"><br>
 			<?php echo WT_I18N::translate('Location of sound track file (Leave blank for no sound track)'); ?>
 			</td>
 		</tr>
@@ -102,16 +102,16 @@ $LB_URL_HEIGHT=get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'); //  URL W
 		<tr>
 			<td><?php echo WT_I18N::translate('URL Window dimensions'); ?><b><?php echo help_link('lb_url_dimensions', $this->getName()); ?></td>
 			<td>
-				<input type="text" name="NEW_LB_URL_WIDTH"  value="<?php echo $LB_URL_WIDTH; ?>"  size="4" />
+				<input type="text" name="NEW_LB_URL_WIDTH"  value="<?php echo $LB_URL_WIDTH; ?>"  size="4">
 				<?php echo WT_I18N::translate('Width'); ?>
 				&nbsp;&nbsp;&nbsp;
-				<input type="text" name="NEW_LB_URL_HEIGHT" value="<?php echo $LB_URL_HEIGHT; ?>" size="4" />
-				<?php echo WT_I18N::translate('Height'); ?><br />
+				<input type="text" name="NEW_LB_URL_HEIGHT" value="<?php echo $LB_URL_HEIGHT; ?>" size="4">
+				<?php echo WT_I18N::translate('Height'); ?><br>
 			<?php echo WT_I18N::translate('Width and height of URL window in pixels'); ?>
 			</td>
 		</tr>
 	</table>
-	<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="closeHelp();" />
+	<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="closeHelp();">
 	&nbsp;&nbsp;
-	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>" />
+	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
 </form>

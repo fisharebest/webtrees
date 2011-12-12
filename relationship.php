@@ -119,13 +119,13 @@ function paste_id(value) {
 }
 </script>
 <div id="relationship_chart_options" style="position: relative; z-index:90; width:98%;">
-<h2><?php echo PrintReady($title_string); ?></h2><br />
+<h2><?php echo PrintReady($title_string); ?></h2><br>
 <!-- // Print the form to change the number of displayed generations -->
 <?php
 	$Dbaseyoffset += 110; ?>
 	<form name="people" method="get" action="relationship.php">
-	<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>" />
-	<input type="hidden" name="path_to_find" value="<?php echo $path_to_find; ?>" />
+	<input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">
+	<input type="hidden" name="path_to_find" value="<?php echo $path_to_find; ?>">
 
 	<table class="list_table">
 
@@ -147,7 +147,7 @@ function paste_id(value) {
 	<?php echo WT_I18N::translate('Person 1'); ?>
 	</td>
 	<td class="optionbox vmiddle">
-	<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>" />
+	<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>">
 	<?php
 	print_findindi_link("pid1",""); ?>
 	</td>
@@ -160,11 +160,11 @@ function paste_id(value) {
 	<?php echo WT_I18N::translate('Show Details'); ?>
 	</td>
 	<td class="optionbox vmiddle">
-	<input type="hidden" name="show_full" value="<?php echo $show_full; ?>" />
+	<input type="hidden" name="show_full" value="<?php echo $show_full; ?>">
 		<?php
 	echo "<input tabindex=\"3\" type=\"checkbox\" name=\"showfull\" value=\"0\"";
 	if ($show_full) echo " checked=\"checked\"";
-	echo " onclick=\"document.people.show_full.value='".(!$show_full)."';\" />"; ?>
+	echo " onclick=\"document.people.show_full.value='".(!$show_full)."';\">"; ?>
 	</td></tr>
 
 	<!-- // Person 2 -->
@@ -172,7 +172,7 @@ function paste_id(value) {
 	<?php echo WT_I18N::translate('Person 2'); ?>
 	</td>
 	<td class="optionbox vmiddle">
-	<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>" />
+	<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>">
 		<?php
 		print_findindi_link("pid2",""); ?>
 	</td>
@@ -185,7 +185,7 @@ function paste_id(value) {
 	<?php echo WT_I18N::translate('Show oldest top'), help_link('oldest_top'); ?>
 	</td><td class="optionbox">
 	<input tabindex="4" type="checkbox" name="asc" value="-1"
-	<?php if ($asc==-1) echo " checked=\"checked\""; ?> />
+	<?php if ($asc==-1) echo " checked=\"checked\""; ?>>
 	</td></tr>
 
 	<!-- // Show path -->
@@ -245,7 +245,7 @@ function paste_id(value) {
 	if ($followspouse) {
 		echo " checked=\"checked\"";
 	}
-	echo " onclick=\"document.people.path_to_find.value='-1';\""; ?> />
+	echo " onclick=\"document.people.path_to_find.value='-1';\""; ?>>
 	</td>
 	<?php
 	if ($person1 && $person2 && $disp) {
@@ -254,9 +254,9 @@ function paste_id(value) {
 			echo "<td class=\"topbottombar wrap vmiddle center\" colspan=\"2\">";
 			if (isset($_SESSION["relationships"])) {
 				if ($path_to_find==0) {
-					echo "<span class=\"error\">", WT_I18N::translate('No link between the two individuals could be found.'), "</span><br />";
+					echo "<span class=\"error\">", WT_I18N::translate('No link between the two individuals could be found.'), "</span><br>";
 				} else {
-					echo "<span class=\"error\">", WT_I18N::translate('No other link between the two individuals could be found.'), "</span><br />";
+					echo "<span class=\"error\">", WT_I18N::translate('No other link between the two individuals could be found.'), "</span><br>";
 				}
 			}
 			if (!$followspouse) {
@@ -265,11 +265,11 @@ function paste_id(value) {
 				document.getElementById("followspousebox").className='facts_valuered';
 				</script>
 				<?php
-				echo "<input class=\"error\" type=\"submit\" value=\"", WT_I18N::translate('Check relationships by marriage'), "\" onclick=\"people.followspouse.checked='checked';\"/>";
+				echo "<input class=\"error\" type=\"submit\" value=\"", WT_I18N::translate('Check relationships by marriage'), "\" onclick=\"people.followspouse.checked='checked';\">";
 			}
 			echo '</td>';
 		} else {
-			echo "<td class=\"topbottombar vmiddle center\" colspan=\"2\"><input type=\"submit\" value=\"", WT_I18N::translate('Find next path'), "\" onclick=\"document.people.path_to_find.value='", $path_to_find+1, "';\" />";
+			echo "<td class=\"topbottombar vmiddle center\" colspan=\"2\"><input type=\"submit\" value=\"", WT_I18N::translate('Find next path'), "\" onclick=\"document.people.path_to_find.value='", $path_to_find+1, "';\">";
 			echo help_link('next_path');
 			echo '</td>';
 		}
@@ -283,7 +283,7 @@ function paste_id(value) {
 
 	<!-- // View button -->
 	<td class="topbottombar vmiddle center" colspan="2">
-	<input tabindex="7" type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
+	<input tabindex="7" type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
 	</td></tr>
 
 
@@ -294,7 +294,7 @@ if ($check_node===false) {
 	exit;
 }
 if ($show_full==0) {
-	echo '<br /><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
+	echo '<br><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br>';
 }
 ?>
 <div id="relationship_chart">
@@ -392,11 +392,11 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 						if ($asc==-1) $liney=$yoffset+$Dbheight; else $liney=$yoffset-$lh;
 						$joinx = $xoffset-$xs;
 						$joiny = $liney-2-($asc-1)/2*$lh;
-						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>";
+						echo "<div id=\"joina", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
 						$joinw = $xs/2+2;
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny+$asc*$lh;
-						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\" /></div>";
+						echo "<div id=\"joinb", $index, "\" style=\"position:absolute; ", $TEXT_DIRECTION=="ltr"?"left":"right", ":", $joinx + $Dbxspacing, "px; top:", $joiny + $Dbyspacing, "px; z-index:-100; \" align=\"center\"><img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" width=\"", $joinw, "\" height=\"", $joinh, "\" alt=\"\"></div>";
 					}
 					$previous2=$previous;
 					$previous="parent";
@@ -458,11 +458,11 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 						if ($asc==1) $liney=$yoffset+$Dbheight; else $liney=$yoffset-($lh+$Dbyspacing);
 						$joinx = $xoffset-$xs;
 						$joiny = $liney-2+($asc+1)/2*$lh;
-						echo "<div id=\"joina$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>";
+						echo "<div id=\"joina$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\"></div>";
 						$joinw = $xs/2+2;
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny-$asc*$lh;
-						echo "<div id=\"joinb$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\" /></div>";
+						echo "<div id=\"joinb$index\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($joinx+$Dbxspacing)."px; top:".($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\"></div>";
 					}
 					$previous2=$previous;
 					$previous="child";
@@ -477,16 +477,16 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				if ($index>0) {
 					if ($TEXT_DIRECTION=="rtl" && $line!=$WT_IMAGES["hline"]) {
 						echo "<div id=\"line$index\" dir=\"ltr\" style=\"background:none; position:absolute; right:".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"right\">";
-						echo "<img src=\"$line\" align=\"right\" width=\"$lw\" height=\"$lh\" alt=\"\" />";
-						echo "<br />";
+						echo "<img src=\"$line\" align=\"right\" width=\"$lw\" height=\"$lh\" alt=\"\">";
+						echo "<br>";
 						echo WT_I18N::translate($node["relations"][$index])."";
-						echo "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
+						echo "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\">";
 					}
 					else {
-						echo "<div id=\"line$index\" style=\"background:none;  position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"".($lh==3?"center":"left")."\"><img src=\"$line\" align=\"left\" width=\"$lw\" height=\"$lh\" alt=\"\" />";
-						echo "<br />";
-						echo "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\" />";
-						if ($lh == 3) echo "<br />"; // note: $lh==3 means horiz arrow
+						echo "<div id=\"line$index\" style=\"background:none;  position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".($plinex+$Dbxspacing)."px; top:".($liney+$Dbyspacing)."px; width:".($lw+$lh*2)."px; z-index:-100; \" align=\"".($lh==3?"center":"left")."\"><img src=\"$line\" align=\"left\" width=\"$lw\" height=\"$lh\" alt=\"\">";
+						echo "<br>";
+						echo "<img src=\"$arrow_img\" border=\"0\" align=\"middle\" alt=\"\">";
+						if ($lh == 3) echo "<br>"; // note: $lh==3 means horiz arrow
 						echo WT_I18N::translate($node["relations"][$index])."";
 					}
 					echo "</div>";

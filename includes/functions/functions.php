@@ -323,7 +323,7 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 		if (stristr($errstr, "by reference")==true) {
 			return;
 		}
-		$fmt_msg="<br />ERROR {$errno}: {$errstr}<br />";
+		$fmt_msg="<br>ERROR {$errno}: {$errstr}<br>";
 		$log_msg="ERROR {$errno}: {$errstr};";
 		// Although debug_backtrace should always exist in PHP5, without this check, PHP sometimes crashes.
 		// Possibly calling it generates an error, which causes infinite recursion??
@@ -349,7 +349,7 @@ function wt_error_handler($errno, $errstr, $errfile, $errline) {
 					$fmt_msg.=" in function <b>".$backtrace[$i+1]['function']."</b>";
 					$log_msg.=" in function ".$backtrace[$i+1]['function'];
 				}
-				$fmt_msg.="<br />";
+				$fmt_msg.="<br>";
 			}
 		}
 		echo $fmt_msg;
@@ -619,7 +619,7 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='', $convert=true) {
 			$value .= get_cont($level+1, $subrec);
 		}
 		$value = preg_replace("'\n'", "", $value);
-		$value = preg_replace("'<br />'", "\n", $value);
+		$value = preg_replace("'<br>'", "\n", $value);
 		$value = trim($value);
 		//-- if it is a date value then convert the date
 		if ($convert && $t=="DATE") {
@@ -742,7 +742,7 @@ function get_cont($nlevel, $nrec, $tobr=true) {
 	global $WORD_WRAPPED_NOTES;
 	$text = "";
 	if ($tobr) {
-		$newline = "<br />";
+		$newline = "<br>";
 	} else {
 		$newline = "\n";
 	}

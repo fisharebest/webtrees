@@ -49,7 +49,7 @@ echo
 	'<head>',
 	'<meta charset="UTF-8">',
 	'<title>Site Unavailable - webtrees</title>',
-	'<meta name="robots" content="noindex,follow" />',
+	'<meta name="robots" content="noindex,follow">',
 	'<style type="text/css">
 		body {color: gray; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
 		a {color: #81A9CB; font-weight: bold; text-decoration: none;}

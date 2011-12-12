@@ -162,7 +162,7 @@ class WT_DB {
 
 	// Display the query log as a table, for debugging
 	public static function getQueryLog() {
-		$html='<table border="1"><col span="3"/><col align="char"/><thead><tr><th>#</th><th>Query</th><th>Rows</th><th>Time (ms)</th></tr><tbody/>'.implode('', self::$log).'</table>';
+		$html='<table border="1"><col span="3"><col align="char"><thead><tr><th>#</th><th>Query</th><th>Rows</th><th>Time (ms)</th></tr></thead><tbody>'.implode('', self::$log).'</tbody></table>';
 		self::$log=array();
 		return $html;
 	}

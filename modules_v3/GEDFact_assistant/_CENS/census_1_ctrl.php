@@ -95,11 +95,11 @@ echo '</div>';
 ?>
 <div class="optionbox cens_textinput">
 	<div class="cens_textinput_left">
-		<input type="button" value="<?php echo WT_I18N::translate('Add/Insert Blank Row'); ?>" onclick="insertRowToTable('', '', '', '', '', '', '', '', 'Age', '', '', '', '', '', '');" />
+		<input type="button" value="<?php echo WT_I18N::translate('Add/Insert Blank Row'); ?>" onclick="insertRowToTable('', '', '', '', '', '', '', '', 'Age', '', '', '', '', '', '');">
 	</div>
 	<div class="cens_textinput_right">
 		<?php echo WT_I18N::translate('Add'); ?>
-		<input  type="radio" name="totallyrad" value="0" checked="checked" />
+		<input  type="radio" name="totallyrad" value="0" checked="checked">
 	</div>
 	<?php
 	//-- Census Add Rows Area =========================================================

@@ -58,16 +58,16 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 		?>
 	<table>
 		<tr><td class="person<?php echo $col; ?>" style="padding: 5px" valign="top">
-			<?php echo WT_I18N::translate('Add another person to the chart'), '<br/>'; ?>
-			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid" />
+			<?php echo WT_I18N::translate('Add another person to the chart'), '<br>'; ?>
+			<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid">
 			<?php print_findindi_link("newpid",""); ?>
-			<br />
-			<div style="text-align: center"><?php echo WT_I18N::translate('Include the person\'s immediate family?'); ?><input type="checkbox" checked="checked" value="yes" name="addFamily"/></div>
-			<br />
-			<div style="text-align: center"><input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>" /></div>
+			<br>
+			<div style="text-align: center"><?php echo WT_I18N::translate('Include the person\'s immediate family?'); ?><input type="checkbox" checked="checked" value="yes" name="addFamily"></div>
+			<br>
+			<div style="text-align: center"><input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>"></div>
 		</td></tr>
 	</table>
-	<?php if (count($controller->pids)<11) { ?><br /><a href="timeline.php"><b><?php echo WT_I18N::translate('Show timeline'); ?></b></a><br /><br /><?php } ?>
+	<?php if (count($controller->pids)<11) { ?><br><a href="timeline.php"><b><?php echo WT_I18N::translate('Show timeline'); ?></b></a><br><br><?php } ?>
 
 </form>
 <script type="text/javascript">
@@ -305,16 +305,16 @@ var oldMx = 0;
 				<option value="1">4</option>
 
 				</select></td>
-			<td><input type="text" name="beginYear" size="5" value="<?php if (isset($beginYear)) echo $beginYear; ?>" /></td>
-			<td><input type="text" name="endYear" size="5" value="<?php if (isset($endYear)) echo $endYear; ?>" /></td>
-			<td><input type="text" name="place" size="15" value="<?php if (isset($place)) echo $place; ?>"/></td>
-			<td><input type="submit" name="search" value="<?php echo WT_I18N::translate('Search'); ?>" /></td>
-		<td><input type="button" value="<?php echo WT_I18N::translate('Clear Chart'); ?>" onclick="window.location = 'lifespan.php?clear=1';" /></td>
+			<td><input type="text" name="beginYear" size="5" value="<?php if (isset($beginYear)) echo $beginYear; ?>"></td>
+			<td><input type="text" name="endYear" size="5" value="<?php if (isset($endYear)) echo $endYear; ?>"></td>
+			<td><input type="text" name="place" size="15" value="<?php if (isset($place)) echo $place; ?>"></td>
+			<td><input type="submit" name="search" value="<?php echo WT_I18N::translate('Search'); ?>"></td>
+		<td><input type="button" value="<?php echo WT_I18N::translate('Clear Chart'); ?>" onclick="window.location = 'lifespan.php?clear=1';"></td>
 		</tr>
 	</table>
 	<?php
 	$people = count($controller->people);
-	echo "<br /><b>".WT_I18N::plural('%d Individual', '%d Individuals', $people, $people)."</b>";
+	echo "<br><b>".WT_I18N::plural('%d Individual', '%d Individuals', $people, $people)."</b>";
 	?>
 </form>
 </td></tr></table>

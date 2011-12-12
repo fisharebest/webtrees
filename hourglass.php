@@ -48,7 +48,7 @@ $gencount=0;
 ?>
 <!-- // NOTE: Start form and table -->
 	</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">
-	<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>" />
+	<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
 	<table><tr>
 
 		<!-- // NOTE: Root ID -->
@@ -56,7 +56,7 @@ $gencount=0;
 	<?php echo WT_I18N::translate('Individual'); ?>
 	</td>
 	<td class="optionbox">
-	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>" />
+	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>">
 	<?php print_findindi_link("pid",""); ?>
 	</td>
 
@@ -69,12 +69,12 @@ $gencount=0;
 	<?php
 	if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
 	else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>"
-	/>
+	>
 	</td>
 
 	<!-- // NOTE: Submit button -->
 	<td rowspan="3" class="topbottombar vmiddle">
-	<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>" />
+	<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
 	</td></tr>
 
 	<!-- // NOTE: Generations -->
@@ -100,14 +100,14 @@ $gencount=0;
 	<td class="optionbox">
 	<input type="checkbox" value="1" name="show_spouse"
 	<?php
-	if ($controller->show_spouse) echo " checked=\"checked\""; ?> />
+	if ($controller->show_spouse) echo " checked=\"checked\""; ?>>
 	</td></tr>
 
 	<!-- // NOTE: Box width -->
 	<tr><td class="descriptionbox">
 	<?php echo WT_I18N::translate('Box width'), help_link('box_width'); ?>
 	</td>
-	<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>" />
+	<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>">
 	<b>%</b>
 	</td>
 
@@ -121,7 +121,7 @@ $gencount=0;
 	</td></tr></table>
 <?php
 	if ($show_full==0) {
-		echo '<br /><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br />';
+		echo '<br><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br>';
 	}
 ?>
 <div id="hourglass_chart<?php if ($TEXT_DIRECTION=="rtl") echo "_rtl"; ?>" <?php echo "style=\"width:98%; direction:".$TEXT_DIRECTION."; z-index:1;\""; ?> >
@@ -138,7 +138,7 @@ $controller->print_person_pedigree(WT_Person::getInstance($controller->pid), 1);
 </td>
 </tr></table>
 </div>
-<br /><br />
+<br><br>
 <script type="text/javascript">
 <!--
 sizeLines();

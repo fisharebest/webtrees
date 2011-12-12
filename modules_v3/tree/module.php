@@ -34,19 +34,19 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	
 	function __construct() {
 		// define the module inclusions for the page header
-  	$this->headers= '<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview.css" />';
+  	$this->headers= '<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview.css">';
   	$this->js = WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/treeview.js';
   	
 		// Retrieve the user's personalized style
     if (isset($_COOKIE['tvStyle'])) {
     	$this->style = $_COOKIE['tvStyle'];
-    	$this->css = '<link id="tvCSS" rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/styles/'.$this->style.'/'.$this->style.'.css" />';
+    	$this->css = '<link id="tvCSS" rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/styles/'.$this->style.'/'.$this->style.'.css">';
     }
     else {
     	$this->style = false;
     	$this->css = '';
     }
-    $this->css .= '<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview_print.css" media="print" />';
+    $this->css .= '<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview_print.css" media="print">';
 	}
 	
 	// Extend WT_Module. This title should be normalized when this module will be added officially

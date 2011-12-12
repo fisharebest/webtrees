@@ -950,7 +950,7 @@ if (!defined('WT_WEBTREES')) {
 
 <div class="optionbox cens_sour">
 	<div class="cens_sour_country">
-		<span><?php echo WT_I18N::translate('Country'); ?><br /></span>
+		<span><?php echo WT_I18N::translate('Country'); ?><br></span>
 		<select id="censCtry" name="censCtry" >
 			<option id="UKOPT" name="UKOPT" value="UK">UK</option>
 			<option id="USOPT" name="USOPT" value="USA">USA</option>
@@ -989,14 +989,14 @@ if (!defined('WT_WEBTREES')) {
 
 		<div>
 			<table><tr><td class="nowrap">
-			<br />
+			<br>
 			<?php
 				// echo "&nbsp;".WT_I18N::translate('Date').":&nbsp;&nbsp;";
 				echo "<font size=2>";
 			// Input renamed as type=hidden to hide the date field ----- //
 			// Note Input field is still required ---------------------- //
 			?>
-				<input type="hidden" style="width:6em; background:#bbddff;" id="censDate" name="censDate" type="text" value="<?php echo ""; ?>" READONLY/>
+				<input type="hidden" style="width:6em; background:#bbddff;" id="censDate" name="censDate" type="text" value="<?php echo ""; ?>" readonly="readonly">
 			</font>
 			</td></tr></table>
 		</div>
@@ -1005,34 +1005,34 @@ if (!defined('WT_WEBTREES')) {
 	</div>
 
 	<div class="cens_sour_year">
-		<span><?php echo WT_I18N::translate('Year'); ?><br /></span>
+		<span><?php echo WT_I18N::translate('Year'); ?><br></span>
 		<select style = "background:#ffaaaa;";
 				onchange = "if (this.options[this.selectedIndex].value!='') {
 								changeYear(this.options[this.selectedIndex].value);
 							}"
 				id="censYear" name="censYear">
 		</select>
-		<input type="hidden" id="prevYear" name="prevYear" value="" />&nbsp;&nbsp;&nbsp;
+		<input type="hidden" id="prevYear" name="prevYear" value="">&nbsp;&nbsp;&nbsp;
 	</div>
 
 	<div class="cens_sour_scs">
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_I18N::translate('Title'); ?></div>
 			<script type="text/javascript">
-				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo WT_I18N::translate('Census transcript'),' - ',$wholename, ' - ', WT_I18N::translate('Household'); ?>" />');
+				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo WT_I18N::translate('Census transcript'),' - ',$wholename, ' - ', WT_I18N::translate('Household'); ?>">');
 			</script>
 		</div>
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_Gedcom_Tag::getLabel('PAGE'); ?></div>
-			<input id="citation" name="citation" type="text" value="<?php echo ""; ?>" />
+			<input id="citation" name="citation" type="text" value="<?php echo ""; ?>">
 		</div>
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_I18N::translate('Place'); ?></div>
-			<input id="locality" name="locality" type="text" value="<?php echo ""; ?>" />
+			<input id="locality" name="locality" type="text" value="<?php echo ""; ?>">
 		</div>
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_I18N::translate('Notes'); ?></div>
-			<input id="notes" name="notes" type="text" value="<?php echo ""; ?>" />
+			<input id="notes" name="notes" type="text" value="<?php echo ""; ?>">
 		</div>
 	</div>
 </div>
