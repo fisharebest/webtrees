@@ -445,10 +445,10 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		// get lost after ajax updates
 		$pid=safe_GET_xref('pid');
 
-		$out ='<ul>';
 		if (!$WT_SESSION->cart[WT_GED_ID]) {
-			$out .= WT_I18N::translate('Your Clippings Cart is empty.');
+			$out=WT_I18N::translate('Your Clippings Cart is empty.');
 		} else {
+			$out='<ul>';
 			foreach (array_keys($WT_SESSION->cart[WT_GED_ID]) as $xref) {
 				$record=WT_GedcomRecord::getInstance($xref);
 				if ($record) {
@@ -478,8 +478,8 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					}
 				}
 			}
+			$out.='</ul>';
 		}
-		$out .= '</ul>';
 
 		if ($WT_SESSION->cart[WT_GED_ID]) {
 			$out.=
