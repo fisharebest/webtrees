@@ -242,7 +242,7 @@ function create_map($placelevels) {
 				$_streetview = /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View');
 			?>
 			<div>
-			<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_street_view.php?x=<?php echo $sv_lng; ?>&y=<?php echo $sv_lat; ?>&z=18&t=2&c=1&s=1&b=<?php echo $sv_dir; ?>&p=<?php echo $sv_pitch; ?>&m=<?php echo $sv_zoom; ?>&j=1&k=1&v=1&map=<?php echo $_map; ?>&reset=<?php echo $_reset; ?>&streetview=<?php echo $_streetview; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
+			<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_street_view.php?x=<?php echo $sv_lng; ?>&amp;y=<?php echo $sv_lat; ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir; ?>&amp;p=<?php echo $sv_pitch; ?>&amp;m=<?php echo $sv_zoom; ?>&amp;j=1&amp;k=1&amp;v=1&amp;map=<?php echo $_map; ?>&amp;reset=<?php echo $_reset; ?>&amp;streetview=<?php echo $_streetview; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
 			</div>
 			
 			<?php			
@@ -375,7 +375,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		}
 		echo '<br />', WT_I18N::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
-			echo "<br /><a href='module.php?mod=googlemap&mod_action=admin_places&parent=", $levelm, "&display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
+			echo "<br /><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
 		echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);

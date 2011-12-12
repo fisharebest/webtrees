@@ -125,7 +125,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		');
 
 		return
-			'<form method="post" action="module.php?mod='.$this->getName().'&mod_action=ajax" onsubmit="return false;">'.
+			'<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;">'.
 			'<input type="text" name="sb_desc_name" id="sb_desc_name" placeholder="'.WT_I18N::translate('Search').'">'.
 			'</form>'.
 			'<div id="sb_desc_content">'.
@@ -136,7 +136,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function getPersonLi(WT_Person $person, $generations=0) {
 		global $WT_IMAGES;
 
-		$out = '<li id="sb_desc_'.$person->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=descendancy&amp;pid='.$person->getXref().'" title="'.$person->getXref().'" class="sb_desc_indi">';
+		$out = '<li id="sb_desc_'.$person->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=descendancy&amp;pid='.$person->getXref().'" title="'.$person->getXref().'" class="sb_desc_indi">';
 		if ($generations>0) {
 			$out .= '<img src="'.$WT_IMAGES['minus'].'" class="plusminus" alt="">';
 		} else {
@@ -162,7 +162,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function getFamilyLi(WT_Family $family, WT_Person $person, $generations=0) {
 		global $WT_IMAGES;
 
-		$out = '<li id="sb_desc_'.$family->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=descendancy&amp;famid='.$family->getXref().'" title="'.$family->getXref().'" class="sb_desc_indi">';
+		$out = '<li id="sb_desc_'.$family->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=descendancy&amp;famid='.$family->getXref().'" title="'.$family->getXref().'" class="sb_desc_indi">';
 		$out .= '<img src="'.$WT_IMAGES['minus'].'" class="plusminus" alt="">';
 		$out .= $person->getSexImage().$person->getFullName();
 

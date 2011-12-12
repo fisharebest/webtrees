@@ -79,7 +79,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		$level          =safe_GET('level', WT_REGEX_INTEGER, 0);
 		
 		if ($showthumb) {
-			$thumbget='&showthumb=true';
+			$thumbget='&amp;showthumb=true';
 		} else {
 			$thumbget='';
 		}

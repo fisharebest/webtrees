@@ -68,9 +68,9 @@ class TreeView {
       $rootPerson = new WT_Person('');
 
     if (WT_SCRIPT_NAME == 'individual.php')
-      $path = 'individual.php?pid='.$rootPerson->getXref().'&ged='.$GEDCOM.'&allPartners='.($this->allPartners ? "false" : "true").'#tree';
+      $path = 'individual.php?pid='.$rootPerson->getXref().'&amp;ged='.$GEDCOM.'&allPartners='.($this->allPartners ? "false" : "true").'#tree';
     else
-      $path = 'module.php?mod=tree&mod_action=treeview&rootid='.$rootPerson->getXref().'&allPartners='.($this->allPartners ? "false" : "true");
+      $path = 'module.php?mod=tree&amp;mod_action=treeview&amp;rootid='.$rootPerson->getXref().'&amp;allPartners='.($this->allPartners ? "false" : "true");
     $r = '<a name="tv_content"></a><div id="'.$this->name.'_out" dir="ltr" class="tv_out">';
     
     // Read styles (20 maxi) in a hidden list
@@ -117,7 +117,7 @@ class TreeView {
 			'<li id="tvbPrint" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'./* I18N: verb/action */ WT_I18N::translate('Print').'" /></li>'.
 			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show all spouses and ancestors').'" title="'.WT_I18N::translate('Show all spouses and ancestors').'" /></a></li>';
     if (safe_GET('mod_action') != 'treeview') {
-			$r.='<li class="tv_button"><a href="module.php?mod=tree&mod_action=treeview&rootid='.$rootPerson->getXref().'#tv_content" title="'. /* I18N: Button label - view this chart in full-screen mode */ WT_I18N::translate('Full screen').'"><img src="'.$WT_IMAGES["fscreen"].'" alt="full screen" /></a></li>';
+			$r.='<li class="tv_button"><a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid='.$rootPerson->getXref().'#tv_content" title="'. /* I18N: Button label - view this chart in full-screen mode */ WT_I18N::translate('Full screen').'"><img src="'.$WT_IMAGES["fscreen"].'" alt="full screen" /></a></li>';
 		}
     // Help, and hidden loading image
 		$r.='<li class="tv_button">'.help_link("TV_MODULE", 'tree').'</li>
@@ -209,7 +209,7 @@ class TreeView {
 
     $r = '<div class="tv'.$person->getSex().' tv_person_expanded">';
     $r .= $this->getThumbnail($personGroup, $person);
-    $r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'"><img src="'.$WT_IMAGES['tree'].'" class="tv_link tv_treelink" /></a>';
+    $r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&amp;rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'"><img src="'.$WT_IMAGES['tree'].'" class="tv_link tv_treelink" /></a>';
     $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$person->getBirthDate()->Display().' '.$person->getBirthPlace();
     if ($family) {
       $r .= '<br /><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" class="tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'" /></a>'.$family->getMarriagePlace();

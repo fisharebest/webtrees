@@ -139,7 +139,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			});
 		');
 		$out=
-			'<form method="post" action="module.php?mod='.$this->getName().'&mod_action=ajax" onsubmit="return false;">'.
+			'<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;">'.
 			'<input type="text" name="sb_fam_name" id="sb_fam_name" placeholder="'.WT_I18N::translate('Search').'" />'.
 			'<p>';
 		foreach ($initials as $letter=>$count) {
@@ -157,7 +157,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$html=$letter;
 					break;
 			}
-			$html='<a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=families&amp;alpha='.urlencode($letter).'" class="sb_fam_letter">'.PrintReady($html).'</a>';
+			$html='<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=families&amp;alpha='.urlencode($letter).'" class="sb_fam_letter">'.PrintReady($html).'</a>';
 			$out .= $html." ";
 		}
 

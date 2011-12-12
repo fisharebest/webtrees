@@ -63,7 +63,7 @@ function getPreselectedTags(&$preselDefault, &$preselCustom) {
 }
 
 if ($showthumb) {
-	$thumbget='&showthumb=true';
+	$thumbget='&amp;showthumb=true';
 } else {
 	$thumbget='';
 }

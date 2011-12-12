@@ -170,7 +170,7 @@ else {
 	}
 ?>
 
-<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $countrySelected; ?>&stateSelected=<?php echo $stateSelected; ?>">
+<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected; ?>&amp;stateSelected=<?php echo $stateSelected; ?>">
 	<input type="hidden" name="action" value="ChangeFlag" />
 	<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>" />
 	<input type="hidden" name="selstate" value="<?php echo $stateSelected; ?>" />

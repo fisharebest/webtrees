@@ -211,7 +211,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		print_address_structure($fact->getGedcomRecord(), 1);
 		break;
 	case 'AFN':
-		echo '<div class="field"><a href="http://www.familysearch.org/Eng/Search/customsearchresults.asp?LDS=0&file_number=', rawurlencode($fact->getDetail()), '" target="new">', htmlspecialchars($fact->getDetail()), '</a></div>';
+		echo '<div class="field"><a href="http://www.familysearch.org/Eng/Search/customsearchresults.asp?LDS=0&amp;file_number=', rawurlencode($fact->getDetail()), '" target="new">', htmlspecialchars($fact->getDetail()), '</a></div>';
 		break;
 	case 'ASSO':
 		// we handle this later, in print_asso_rela_record()
@@ -1336,13 +1336,13 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	$linenum = 0;
 	echo '<tr><td class="descriptionbox', $styleadd,' width20">';
 	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!='change_old') && $rowm['m_gedrec']!='') {
-		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&pid=", $mediaobject->getXref(), "&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
+		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=", $mediaobject->getXref(), "&amp;linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
 		if ($SHOW_FACT_ICONS) {
 			echo '<img class="icon" src="', $WT_IMAGES['media'], '" alt="" />';
 		}
 		echo WT_Gedcom_Tag::getLabel('OBJE'), '</a>';
 		echo '<div class="editfacts">';
-		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&pid=".$mediaobject->getXref()."&linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
+		echo "<div class=\"editlink\"><a class=\"editicon\" onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."&amp;linktoid={$rowm['mm_gid']}', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');\" href=\"#\" title=\"".WT_I18N::translate('Edit')."\"><span class=\"link_text\">".WT_I18N::translate('Edit')."</span></a></div>";
 		echo '<div class="copylink"><a class="copyicon" href="#" onclick="jQuery.post(\'action.php\',{action:\'copy-fact\', type:\'\', factgedcom:\'1 OBJE @'.$mediaobject->getXref().'@\'},function(){location.reload();})" title="'.WT_I18N::translate('Copy').'"><span class="link_text">'.WT_I18N::translate('Copy').'</span></a></div>';
 		echo "<div class=\"deletelink\"><a class=\"deleteicon\" onclick=\"return delete_record('$pid', 'OBJE', '".$mediaobject->getXref()."');\" href=\"#\" title=\"".WT_I18N::translate('Delete')."\"><span class=\"link_text\">".WT_I18N::translate('Delete')."</span></a></div>";
 		echo '</div>';

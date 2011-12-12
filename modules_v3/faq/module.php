@@ -293,7 +293,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 		echo '<div class="faq_italic">', WT_I18N::translate('Click on a title to go straight to it, or scroll down to read them all');
 			if (WT_USER_GEDCOM_ADMIN) {
 				echo '<div class="faq_edit">',
-						'<a href="module.php?mod=faq&mod_action=admin_config">', WT_I18N::translate('Click here to Add, Edit, or Delete'), '</a>',
+						'<a href="module.php?mod=faq&amp;mod_action=admin_config">', WT_I18N::translate('Click here to Add, Edit, or Delete'), '</a>',
 				'</div>';
 			}
 		echo '</div>';

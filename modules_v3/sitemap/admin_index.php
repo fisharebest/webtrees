@@ -200,12 +200,12 @@ if ($action=="generate") {
 		if (isset($_POST["GEDCOM_{$ged_id}"])) {
 			$filecounter += 1;
 			$sitemapFilename = "SM_".str_ireplace(".ged",".xml",$gedcom);
-			echo "<tr><td class=\"optionbox\"><a href=\"module.php?mod=sitemap&amp;mod_action=admin_index&amp;action=sendFiles&amp;index=", $ged_id, "&amp;gedcom_name=", rawurlencode($gedcom), "&filename=", $sitemapFilename;
-			if (isset($_POST["welcome_page"])) echo "&welcome=true&welcome_priority=", $welcome_priority, "&welcome_update=", $welcome_update;
-			if (isset($_POST["indi_recs"])) echo "&indi_rec=true&indirec_priority=", $indirec_priority, "&indirec_update=", $indirec_update;
-			if (isset($_POST["indi_list"])) echo "&indi_lists=true&indilist_priority=", $indilist_priority, "&indilist_update=", $indilist_update;
-			if (isset($_POST["fam_recs"])) echo "&fam_rec=true&famrec_priority=", $famrec_priority, "&famrec_update=", $famrec_update;
-			if (isset($_POST["fam_list"])) echo "&fam_lists=true&famlist_priority=", $famlist_priority, "&famlist_update=", $famlist_update;
+			echo "<tr><td class=\"optionbox\"><a href=\"module.php?mod=sitemap&amp;mod_action=admin_index&amp;action=sendFiles&amp;index=", $ged_id, "&amp;gedcom_name=", rawurlencode($gedcom), "&amp;filename=", $sitemapFilename;
+			if (isset($_POST["welcome_page"])) echo "&amp;welcome=true&amp;welcome_priority=", $welcome_priority, "&amp;welcome_update=", $welcome_update;
+			if (isset($_POST["indi_recs"])) echo "&amp;indi_rec=true&indirec_priority=", $indirec_priority, "&amp;indirec_update=", $indirec_update;
+			if (isset($_POST["indi_list"])) echo "&amp;indi_lists=true&indilist_priority=", $indilist_priority, "&amp;indilist_update=", $indilist_update;
+			if (isset($_POST["fam_recs"])) echo "&amp;fam_rec=true&amp;famrec_priority=", $famrec_priority, "&amp;famrec_update=", $famrec_update;
+			if (isset($_POST["fam_list"])) echo "&amp;fam_lists=true&amp;famlist_priority=", $famlist_priority, "&amp;famlist_update=", $famlist_update;
 			echo "\"><b>", $sitemapFilename, "</b></a></td></tr>\n";
 		}
 	}

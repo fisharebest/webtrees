@@ -472,7 +472,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 							$out .= ' ('.$record->getLifeSpan().')';
 						}
 						$out .= '</a>';
-						$out .= '<a class="remove_cart" href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&amp;remove='.$xref.'&amp;pid='.$pid.'">
+						$out .= '<a class="remove_cart" href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=clippings&amp;remove='.$xref.'&amp;pid='.$pid.'">
 						<img src="'. $WT_IMAGES["remove"].'" alt="'.WT_I18N::translate('Remove').'" title="'.WT_I18N::translate('Remove').'"></a>';
 						$out .='</li>';
 					}
@@ -483,17 +483,17 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 
 		if ($WT_SESSION->cart[WT_GED_ID]) {
 			$out.=
-				'<br><a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&amp;empty=true&amp;pid='.$pid.'" class="remove_cart">'.
+				'<br><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=clippings&amp;empty=true&amp;pid='.$pid.'" class="remove_cart">'.
 				WT_I18N::translate('Empty Cart').
 				'</a>'.help_link('empty_cart', $this->getName()).
 				'<br />'.
-				'<a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&amp;download=true&amp;pid='.$pid.'" class="add_cart">'.
+				'<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=clippings&amp;download=true&amp;pid='.$pid.'" class="add_cart">'.
 				WT_I18N::translate('Download Now').
 				'</a>';
 		}
 		$record=WT_Person::getInstance($pid);
 		if ($record && !array_key_exists($record->getXref(), $WT_SESSION->cart[WT_GED_ID])) {
-			$out .= '<br><a href="module.php?mod='.$this->getName().'&mod_action=ajax&sb_action=clippings&amp;add='.$pid.'&amp;pid='.$pid.'" class="add_cart"><img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.WT_I18N::translate('Add %s to cart', $record->getFullName()).'</a>';
+			$out .= '<br><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=clippings&amp;add='.$pid.'&amp;pid='.$pid.'" class="add_cart"><img src="'.$WT_IMAGES['clippings'].'" width="20" /> '.WT_I18N::translate('Add %s to cart', $record->getFullName()).'</a>';
 		}
 		return $out;
 	}

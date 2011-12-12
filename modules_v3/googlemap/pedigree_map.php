@@ -225,13 +225,13 @@ echo " background-image: url('", WT_STATIC_URL, "images/loading.gif'); backgroun
 if (WT_USER_IS_ADMIN) {
 	echo "<table width=\"100%\">";
 	echo "<tr><td align=\"left\">\n";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps configuration'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps configuration'), "</a>";
 	echo "</td>\n";
 	echo "<td align=\"center\">\n";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_places\">", WT_I18N::translate('Edit geographic place locations'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_places\">", WT_I18N::translate('Edit geographic place locations'), "</a>";
 	echo "</td>\n";
 	echo "<td align=\"right\">\n";
-	echo "<a href=\"module.php?mod=googlemap&mod_action=admin_placecheck\">", WT_I18N::translate('Place Check'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_placecheck\">", WT_I18N::translate('Place Check'), "</a>";
 	echo "</td></tr>\n";
 	echo "</table>\n";
 }
