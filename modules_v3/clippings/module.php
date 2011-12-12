@@ -493,7 +493,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		}
 		$record=WT_Person::getInstance($pid);
 		if ($record && !array_key_exists($record->getXref(), $WT_SESSION->cart[WT_GED_ID])) {
-			$out .= '<br><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=clippings&amp;add='.$pid.'&amp;pid='.$pid.'" class="add_cart"><img src="'.$WT_IMAGES['clippings'].'" width="20"> '.WT_I18N::translate('Add %s to cart', $record->getFullName()).'</a>';
+			$out .= '<br><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=clippings&amp;add='.$pid.'&amp;pid='.$pid.'" class="add_cart"><img src="'.$WT_IMAGES['clippings'].'" alt="'.WT_I18N::translate('Clippings cart').'" width="20"> '.WT_I18N::translate('Add %s to cart', $record->getFullName()).'</a>';
 		}
 		return $out;
 	}
