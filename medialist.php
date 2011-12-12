@@ -420,16 +420,16 @@ if ($show == 'yes') {
 		if ($columns == '1') echo '<td class="list_value_wrap" width="80%">';
 		if ($columns == '2') echo '<td class="list_value_wrap" width="50%">';
 
-		echo '<table><tr><td valign="top" style="white-space: normal;">';
+		echo '<table><tr><td valign="top" style="white-space:normal;">';
 
 		//-- Thumbnail field
 		if ($show_thumbnail) {
 			echo $mediaobject->displayMedia(array());
-			echo '</td><td class="list_value_wrap" style="border: none;" width="100%">';
+			echo '</td><td class="list_value_wrap" style="border:none;" width="100%">';
 
 			if (WT_USE_LIGHTBOX) {
 				if (WT_USER_CAN_EDIT) {
-					echo '<table border=0><tr>';
+					echo '<table><tr>';
 					// ---------- Edit Media --------------------
 					echo '<td class="width33 wrap center font9" valign="top">';
 					echo "<a href=\"#\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."&amp;linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
