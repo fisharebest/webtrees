@@ -593,14 +593,14 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	$numls = count($parent)-1;
 	$levelo=check_were_am_i($numls, $levelm);
 	if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))) {
-		echo "map.maxZoom=6;";
+		$controller->addInlineJavaScript('map.maxZoom=6;');
 		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+5);\n";
 	} else if ($numfound<2 && !isset($levelo[($level-2)])) {
 		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+6);\n";
 	} else if ($level==2) {
-		echo "map.maxZoom=10;";
+		$controller->addInlineJavaScript('map.maxZoom=10');
 		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
 	} else if ($numfound<2 && $level>1) {
@@ -609,6 +609,9 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+18);\n";
 	} 
 	//create markers
+
+	ob_start(); // TODO: rewrite print_gm_markers, and the functions called therein, to either return text or add JS directly.
+
 	if ($numfound==0 && $level>0) {
 		if (isset($levelo[($level-1)])) {  // ** BH not sure yet what this if statement is for ... TODO **
 			// show the current place on the map
@@ -663,4 +666,5 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			print_gm_markers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
 		}
 	}
+	$controller->addInlineJavaScript(ob_get_clean());
 }
