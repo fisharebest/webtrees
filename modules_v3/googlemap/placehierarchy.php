@@ -465,137 +465,128 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 }
 
 function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names) {
-	global $GOOGLEMAP_MAP_TYPE, $GM_MAX_NOF_LEVELS, $GOOGLEMAP_PH_WHEEL, $GOOGLEMAP_PH_CONTROLS, $GOOGLEMAP_PH_MARKER, $plzoom;
-	
-	echo "<script> var numMarkers = '".$numfound."';</script>";
-	echo "<script> var mapLevel = '".$level."';</script>";
-	echo "<script> var placezoom = '", $plzoom, "';</script>";
+	global $GOOGLEMAP_MAP_TYPE, $GM_MAX_NOF_LEVELS, $GOOGLEMAP_PH_WHEEL, $GOOGLEMAP_PH_CONTROLS, $GOOGLEMAP_PH_MARKER, $plzoom, $controller;
 
-// echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet">';
-echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-
-	?>
-	<script type="text/javascript">	
-	// <![CDATA[
-	
-	var infowindow = new google.maps.InfoWindow( { 
-		// size: new google.maps.Size(150,50),
-		// maxWidth: 600
-	});
-
-	var map_center = new google.maps.LatLng(0,0);
-	var map = "";
-	var bounds = new google.maps.LatLngBounds ();
-	var markers = [];
-	var gmarkers = [];
-	var i = 0;
-	
-	// Create the map and mapOptions
-	var mapOptions = {
-		zoom: 8,
-		center: map_center,
-		mapTypeId: google.maps.MapTypeId.<?php echo $GOOGLEMAP_MAP_TYPE; ?>,	// ROADMAP, SATELLITE, HYBRID, TERRAIN
-		mapTypeControlOptions: {
-			style: google.maps.MapTypeControlStyle.DROPDOWN_MENU	// DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
-		},
-		navigationControl: true,
-		navigationControlOptions: {
-			position: google.maps.ControlPosition.TOP_RIGHT,		// BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
-			style: google.maps.NavigationControlStyle.SMALL			// ANDROID, DEFAULT, SMALL, ZOOM_PAN
-		},
-		streetViewControl: false,									// Show Pegman or not
-		scrollwheel: false
-	};
-	map = new google.maps.Map(document.getElementById("place_map"), mapOptions);
-
-	// Close any infowindow when map is clicked
-	google.maps.event.addListener(map, 'click', function() {
-		infowindow.close();
-	});
-	
-	// If only one marker, set zoom level to that of place in database
-	if (mapLevel != 0) {
-		var pointZoom = placezoom;
-	}
-	
-	// Creates a marker whose info window displays the given name
-	function createMarker(point, html, icon, name) {	
-		// Choose icon and shadow ============
-		<?php
-		echo "if (icon.image && $level<=3) {";
-			echo "if (icon.image!='", WT_STATIC_URL, WT_MODULES_DIR, "googlemap/images/marker_yellow.png') {";
-				echo 'var iconImage = new google.maps.MarkerImage(icon.image,'; 
-				echo 'new google.maps.Size(25, 15),';
-				echo 'new google.maps.Point(0,0),';
-				echo 'new google.maps.Point(1, 45));';
-				echo 'var iconShadow = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/flag_shadow.png",';
-				echo 'new google.maps.Size(35, 45),';
-				echo 'new google.maps.Point(0,0),';
-				echo 'new google.maps.Point(1, 45));';
-			echo " } else { ";
-				echo 'var iconImage = new google.maps.MarkerImage(icon.image,';
-				echo 'new google.maps.Size(20, 34),';
-				echo 'new google.maps.Point(0,0),';
-				echo 'new google.maps.Point(9, 34));';
-				echo 'var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",';
-				echo 'new google.maps.Size(37, 34),';
-				echo 'new google.maps.Point(0,0),';
-				echo 'new google.maps.Point(9, 34));';
-			echo "}";	
-		//	*** Clickable area of icon - To be refined later *** ===================================
-		//	echo 'var iconShape = {';
-		//	echo 'coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],';
-		//	echo 'type: "poly"';
-		//	echo '};'; 
-		echo " } else { ";
-			echo 'var iconImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker.png",';
-			echo 'new google.maps.Size(20, 34),';
-			echo 'new google.maps.Point(0,0),';
-			echo 'new google.maps.Point(9, 34));';
-			echo 'var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",';
-			echo 'new google.maps.Size(37, 34),';
-			echo 'new google.maps.Point(0,0),';
-			echo 'new google.maps.Point(9, 34));';
-		//	*** Clickable area of icon - To be refined later *** ===================================
-		//	echo 'var iconShape = {';
-		//	echo 'coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],';
-		//	echo 'type: "poly"';
-		//	echo '};'; 
-		echo "}";	
-		?>
-		var posn = new google.maps.LatLng(0,0);
-		var marker = new google.maps.Marker({
-			position: point,
-			icon: iconImage,
-			shadow: iconShadow,
-			map: map,
-			title: name
-		});		
-		// Show this markers name in the info window when it is clicked
-		google.maps.event.addListener(marker, 'click', function() {
-			infowindow.close();
-			infowindow.setContent(html);
-			infowindow.open(map, marker);
+	$controller->addInlineJavaScript('
+		jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/css/wt_v3_googlemap.css" />\');
+		var numMarkers = "'.$numfound.'";
+		var mapLevel   = "'.$level.   '";
+		var placezoom  = "'.$plzoom.  '";
+		var infowindow = new google.maps.InfoWindow({ 
+			// size: new google.maps.Size(150,50),
+			// maxWidth: 600
 		});
-		// === Store the tab, category and event info as marker properties ===
-		marker.mypoint = point;
-		marker.mytitle = name;
-		marker.myposn = posn;
-		gmarkers.push(marker); 
-		bounds.extend(marker.position);	
-		
-		// If only one marker use database place zoom level rather than fitBounds of markers		
-		if (numMarkers > 1) {
- 			map.fitBounds(bounds);
-		} else {
- 			map.setCenter(bounds.getCenter());
-  			map.setZoom(parseFloat(pointZoom));
-		}
-		
-		return marker;
-	}
+
+		var map_center = new google.maps.LatLng(0,0);
+		var map = "";
+		var bounds = new google.maps.LatLngBounds ();
+		var markers = [];
+		var gmarkers = [];
+		var i = 0;
 	
-	<?php
+		// Create the map and mapOptions
+		var mapOptions = {
+			zoom: 8,
+			center: map_center,
+			mapTypeId: google.maps.MapTypeId.'.$GOOGLEMAP_MAP_TYPE.', // ROADMAP, SATELLITE, HYBRID, TERRAIN
+			mapTypeControlOptions: {
+				style: google.maps.MapTypeControlStyle.DROPDOWN_MENU // DEFAULT, DROPDOWN_MENU, HORIZONTAL_BAR
+			},
+			navigationControl: true,
+			navigationControlOptions: {
+				position: google.maps.ControlPosition.TOP_RIGHT, // BOTTOM, BOTTOM_LEFT, LEFT, TOP, etc
+				style: google.maps.NavigationControlStyle.SMALL  // ANDROID, DEFAULT, SMALL, ZOOM_PAN
+			},
+			streetViewControl: false, // Show Pegman or not
+			scrollwheel: false
+		};
+		map = new google.maps.Map(document.getElementById("place_map"), mapOptions);
+	
+		// Close any infowindow when map is clicked
+		google.maps.event.addListener(map, "click", function() {
+			infowindow.close();
+		});
+	
+		// If only one marker, set zoom level to that of place in database
+		if (mapLevel != 0) {
+			var pointZoom = placezoom;
+		}
+	
+		// Creates a marker whose info window displays the given name
+		function createMarker(point, html, icon, name) {
+			// Choose icon and shadow ============
+			if (icon.image && '.$level.'<=3) {
+				if (icon.image!="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/marker_yellow.png") {
+					var iconImage = new google.maps.MarkerImage(icon.image,
+					new google.maps.Size(25, 15),
+					new google.maps.Point(0,0),
+					new google.maps.Point(1, 45));
+					var iconShadow = new google.maps.MarkerImage("'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/flag_shadow.png",
+					new google.maps.Size(35, 45),
+					new google.maps.Point(0,0),
+					new google.maps.Point(1, 45));
+				 } else {
+					var iconImage = new google.maps.MarkerImage(icon.image,
+					new google.maps.Size(20, 34),
+					new google.maps.Point(0,0),
+					new google.maps.Point(9, 34));
+					var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",
+					new google.maps.Size(37, 34),
+					new google.maps.Point(0,0),
+					new google.maps.Point(9, 34));
+				}
+				//	*** Clickable area of icon - To be refined later *** ===================================
+				//	var iconShape = {
+				//	coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],
+				//	type: "poly"
+				//	};
+			} else {
+				var iconImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker.png",
+				new google.maps.Size(20, 34),
+				new google.maps.Point(0,0),
+				new google.maps.Point(9, 34));
+				var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",
+				new google.maps.Size(37, 34),
+				new google.maps.Point(0,0),
+				new google.maps.Point(9, 34));
+				//	*** Clickable area of icon - To be refined later *** ===================================
+				//	var iconShape = {
+				//	coord: [9,0,6,1,4,2,2,4,0,8,0,12,1,14,2,16,5,19,7,23,8,26,9,30,9,34,11,34,11,30,12,26,13,24,14,21,16,18,18,16,20,12,20,8,18,4,16,2,15,1,13,0],
+				//	type: "poly"
+				//	};
+			}
+			var posn = new google.maps.LatLng(0,0);
+			var marker = new google.maps.Marker({
+				position: point,
+				icon: iconImage,
+				shadow: iconShadow,
+				map: map,
+				title: name
+			});
+			// Show this markers name in the info window when it is clicked
+			google.maps.event.addListener(marker, "click", function() {
+				infowindow.close();
+				infowindow.setContent(html);
+				infowindow.open(map, marker);
+			});
+			// === Store the tab, category and event info as marker properties ===
+			marker.mypoint = point;
+			marker.mytitle = name;
+			marker.myposn = posn;
+			gmarkers.push(marker); 
+			bounds.extend(marker.position);
+		
+			// If only one marker use database place zoom level rather than fitBounds of markers
+			if (numMarkers > 1) {
+				map.fitBounds(bounds);
+			} else {
+				map.setCenter(bounds.getCenter());
+				map.setZoom(parseFloat(pointZoom));
+			}
+			return marker;
+		}
+	');
+	
 	global $GOOGLEMAP_MAX_ZOOM;
 	$levelm = set_levelm($level, $parent);
 	if (isset($levelo[0])) $levelo[0]=0;
@@ -672,12 +663,4 @@ echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/
 			print_gm_markers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
 		}
 	}
-	
-	//end markers
-	?>
-	
-	//]]>
-	</script>
-	<?php
 }
-?>
