@@ -125,7 +125,7 @@ function set_levelm($level, $parent) {
 
 function create_map($placelevels) {
 	$level = safe_GET('level');
-	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $levelm, $plzoom;
+	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $levelm, $plzoom, $controller;
 	
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
 	$STREETVIEW = get_module_setting('googlemap', 'GM_USE_STREETVIEW');
@@ -185,27 +185,25 @@ function create_map($placelevels) {
 	echo '</td></tr></table>';
 	echo '</td>';
 	echo '<td style="margin-left:15px; float:right; ">';
-	
+
 	if ($STREETVIEW) {
-	?>
-		<script>
-		function update_sv_params(placeid) {
-			var svlati = document.getElementById('sv_latiText').value.slice(0, -1);
-			var svlong = document.getElementById('sv_longText').value.slice(0, -1);
-			var svbear = document.getElementById('sv_bearText').value.slice(0, -1);
-			var svelev = document.getElementById('sv_elevText').value.slice(0, -1);
-			var svzoom = document.getElementById('sv_zoomText').value;
-			win03 = window.open('module.php?mod=googlemap&mod_action=places_edit&action=update_sv_params&placeid='+placeid+"&"+sessionname+"="+sessionid+
-				'&svlati='+svlati+
-				'&svlong='+svlong+
-				'&svbear='+svbear+
-				'&svelev='+svelev+
-				'&svzoom='+svzoom, 
-			'win03', 'top=50, left=50, width=680, height=550, resizable=1, scrollbars=1' );	
-			if (window.focus) {win03.focus();}
-		}
-		</script>
-		<?php
+		$controller->addInlineJavaScript('
+			function update_sv_params(placeid) {
+				var svlati = document.getElementById("sv_latiText").value.slice(0, -1);
+				var svlong = document.getElementById("sv_longText").value.slice(0, -1);
+				var svbear = document.getElementById("sv_bearText").value.slice(0, -1);
+				var svelev = document.getElementById("sv_elevText").value.slice(0, -1);
+				var svzoom = document.getElementById("sv_zoomText").value;
+				win03 = window.open("module.php?mod=googlemap&mod_action=places_edit&action=update_sv_params&placeid="+placeid+"&"+sessionname+"="+sessionid+
+					"&svlati="+svlati+
+					"&svlong="+svlong+
+					"&svbear="+svbear+
+					"&svelev="+svelev+
+					"&svzoom="+svzoom, 
+				"win03", "top=50, left=50, width=680, height=550, resizable=1, scrollbars=1");	
+				if (window.focus) {win03.focus();}
+			}
+		');
 	
 		$parent = safe_GET('parent');
 		global $TBLPREFIX, $pl_lati, $pl_long;
