@@ -95,6 +95,7 @@ echo 'function showchanges() { window.location="'.$controller->record->getRawUrl
 echo WT_JS_END;
 
 ?>
+<div id="family-page">
 <table align="center" width="95%">
 	<tr>
 		<td>
@@ -102,7 +103,7 @@ echo WT_JS_END;
 		</td>
 	</tr>
 </table>
-<table id="family_page" align="center" width="95%">
+<table id="family-table" align="center" width="95%">
 	<tr valign="top">
 		<td valign="top" style="width: <?php echo $pbwidth+30; ?>px;"><!--//List of children//-->
 			<?php print_family_children($controller->record->getXref()); ?>
@@ -155,3 +156,4 @@ echo WT_JS_END;
 		</td>
 	</tr>
 </table>
+</div> <!-- Close <div id="family-page"> -->

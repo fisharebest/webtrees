@@ -1506,7 +1506,7 @@ margin: 0;
 	line-height: 1.5;
 }
 
-.block .itr, #family_page .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #familybook_chart_rtl .itr, #hourglass_chart .itr, #hourglass_chart_rtl .itr, #relatives_content .itr {
+.block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #familybook_chart_rtl .itr, #hourglass_chart .itr, #hourglass_chart_rtl .itr, #relatives_content .itr {
 	position: relative;
 	top: 0;
 }
@@ -1527,12 +1527,12 @@ margin: 0;
 	overflow: visible !important;
 }
 
-#register-page table, #login-page table, #branches-page table, #media-list-page .list_table  {margin:auto;}
-#register-page table a {display:block; text-align:center;}
-#reports-page table {margin:20px auto;}
-#reports-page .report-type {overflow:hidden; margin:auto; width:180px;}
-#reports-page .report-type div {float:left;margin: 0 20px;}
-#reports-page .report-type p {margin: 0; text-align:center;}
+#login-register-page table, #login-page table, #branches-page table, #medialist-page .list_table  {margin:auto;}
+#login-register-page table a {display:block; text-align:center;}
+#reportengine-page table {margin:20px auto;}
+#reportengine-page .report-type {overflow:hidden; margin:auto; width:180px;}
+#reportengine-page .report-type div {float:left;margin: 0 20px;}
+#reportengine-page .report-type p {margin: 0; text-align:center;}
 
 .popup {
 	display:none;
@@ -1687,7 +1687,7 @@ html[dir='rtl'] .indi_table {clear:right;}
 
 /* =========== Indi tabs ================== */
 /* Facts & Events tab */
-#personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR, #family_page .fact_NOTE, #family_page .fact_SOUR {margin: 5px 3px 5px 0; clear: both;}
+#personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR, #family-table .fact_NOTE, #family-table .fact_SOUR {margin: 5px 3px 5px 0; clear: both;}
 #media-display-image {float:left;}
 #media-display-title {float:left; font-style:italic; margin:10px;}
 

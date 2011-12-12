@@ -135,7 +135,7 @@ if ($action=='choose') {
 	$controller->setPageTitle(WT_I18N::translate('Choose a report to run'));
 	$controller->pageHeader();
 
-	echo '<div id="reports-page">
+	echo '<div id="reportengine-page">
 		<form name="choosereport" method="get" action="reportengine.php">
 		<input type="hidden" name="action" value="setup">
 		<input type="hidden" name="output" value="', $output, '">
@@ -194,7 +194,7 @@ elseif ($action=='setup') {
 	echo WT_JS_END;
 
 	init_calendar_popup();
-	echo '<div id="reports-page">
+	echo '<div id="reportengine-page">
 		<form name="setupreport" method="get" target="_blank" action="reportengine.php">
 		<input type="hidden" name="action" value="run">
 		<input type="hidden" name="report" value="', $report, '">

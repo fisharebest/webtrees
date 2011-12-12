@@ -31,7 +31,7 @@ $controller=new WT_Controller_Base();
 $controller->setPageTitle(WT_I18N::translate('Shared notes'));
 $controller->pageHeader();
 
-echo '<div id="note-list-page">',
+echo '<div id="notelist-page">',
 	'<h2>', WT_I18N::translate('Shared notes'), '</h2>',
 	format_note_table(get_note_list(WT_GED_ID));
 echo '</div>';
