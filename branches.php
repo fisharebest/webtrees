@@ -47,7 +47,7 @@ if (WT_USER_GEDCOM_ID) {
 
 $controller=new WT_Controller_Base();
 if ($surn) {
-	$controller->setPageTitle(/* %s is a surname */ WT_I18N::translate('Branches of the %s family', $surn));
+	$controller->setPageTitle(/* I18N: %s is a surname */ WT_I18N::translate('Branches of the %s family', $surn));
 } else {
 	$controller->setPageTitle(WT_I18N::translate('Branches'));
 }
