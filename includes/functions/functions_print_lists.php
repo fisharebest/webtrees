@@ -80,7 +80,7 @@ function format_indi_table($datalist, $option='') {
 					/* 21 DEAT      */ {"bVisible": false},
 					/* 22 TREE      */ {"bVisible": false}
 				],
-				"aaSorting": [[1, "asc"]],
+				"aaSorting": [['.($option=='sosa'?'4, "asc"':'1, "asc"').']],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
 			});
