@@ -1589,7 +1589,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		if (WT_USER_IS_ADMIN) {
 			echo '<br><span dir="ltr"><input type="text" name="folder" size="40" value="', $folder, '" onblur="checkpath(this)"></span>';
 			if ($MEDIA_DIRECTORY_LEVELS>0) {
-				echo '<br><sub>', WT_I18N::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br>Do not enter the &laquo;%s&raquo; part of the destination folder name.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY), '</sub>';
+				echo '<br><sub>', WT_I18N::translate('You can enter up to %s folder names to follow the default &laquo;%s&raquo;.<br />Do not enter the &laquo;%s&raquo; part of the destination folder name.', $MEDIA_DIRECTORY_LEVELS, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY), '</sub>';
 			}
 			if ($gedfile == "FILE") {
 				echo '<br><sub>', WT_I18N::translate('This entry is ignored if you have entered a URL into the file name field.'), '</sub>';

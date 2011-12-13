@@ -1011,8 +1011,8 @@ try {
 		// For Windows/XAMPP, defaults are fine
 		// For Windows/IIS, the defaults are probably fine.  Anyone confirm?
 		echo
-			'<p>', WT_I18N::translate('You should set the directory <b>%s</b> so that the webserver has read-write access.<br>This normally means setting the permissions to "777" or "drwxrwxrwx".', WT_DATA_DIR), '</p>',
-			'<p>', WT_I18N::translate('You should set the file <b>%s</b> so that the webserver has read-only access.<br>This normally means setting the permissions to "444" or "-r--r--r--".', WT_DATA_DIR.WT_CONFIG_FILE), '</p>',
+			'<p>', WT_I18N::translate('You should set the directory <b>%s</b> so that the webserver has read-write access.<br/>This normally means setting the permissions to "777" or "drwxrwxrwx".', WT_DATA_DIR), '</p>',
+			'<p>', WT_I18N::translate('You should set the file <b>%s</b> so that the webserver has read-only access.<br/>This normally means setting the permissions to "444" or "-r--r--r--".', WT_DATA_DIR.WT_CONFIG_FILE), '</p>',
 			'<p>', WT_I18N::translate('<b>webtrees</b> will check the permissions in the next step.'), '</p>';
 	}
 	echo

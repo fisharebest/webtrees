@@ -292,7 +292,7 @@ if ($controller->action == "soundex") {
 	<!-- Individuals' names to print options (Names with hit, All names) -->
 	<!-- <tr>
 		<td class="list_label">
-			<?php  echo WT_I18N::translate('Individuals\'<br/>names to print:'); ?>
+			<?php  echo WT_I18N::translate('Individuals\'<br />names to print:'); ?>
 		</td>
 		<td class="list_value">
 			<input type="radio" name="nameprt" value="hit"
