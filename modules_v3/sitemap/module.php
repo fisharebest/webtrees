@@ -122,9 +122,9 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	// A separate file for each family tree and each record type.
 	private function generate_file($ged_id, $rec_type, $volume) {
 		// Check the cache
-		$timestamp=get_module_setting($this->getName(), 'sitemap.timestamp');
+		$timestamp=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp');
 		if ($timestamp > time()-self::CACHE_LIFE) {
-			$data=get_module_setting($this->getName(), 'sitemap.xml');
+			$data=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml');
 		} else {
 			$data='';
 			$records=array();
