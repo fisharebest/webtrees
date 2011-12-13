@@ -358,22 +358,11 @@ class TreeView {
 			} else {
 				$title='';
 			}
-  	}
-  	else
-  		$title = '';
+  	} else {
+			$title = '';
+		}
 		$sex = $p->getSex();
-  	switch($sex) {
-  		case 'M':
-  			$sexSymbol = WT_UTF8_MALE;
-  			break;
-  		case 'F':
-  			$sexSymbol = WT_UTF8_FEMALE;
-  			break;
-  		default:
-  			$sexSymbol = WT_UTF8_NO_SEX;
-  			break;
-  	}
-  	$r = '<div class="tv'.$sex.'"'.$title.'><span class="dates">'.$p->getLifeSpan().'</span><a href="'.$p->getHtmlUrl().'"><span class="tvSexSymbol tv'.$sex.' tv_link">'.$sexSymbol.'</span></a>&nbsp;'.$p->getFullName().'</div>';
+  	$r = '<div class="tv'.$sex.'"'.$title.'><a href="'.$p->getHtmlUrl().'"></a>'.$p->getFullName().' <span class="dates">'.$p->getLifeSpan().'</span></div>';
   	return $r;
   }
 
