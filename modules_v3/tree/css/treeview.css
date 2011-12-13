@@ -171,18 +171,6 @@ table#tvTreeBorder td#tv_tree_bottomright {
   background:  #fff8f5; /* customizable */
   color: #000022; /* customizable */
 }
-#tv_tree div.tv_box span.tvSexSymbol {
-	font-weight: bold;
-	font-family: x-large, serif; /*Arial Unicode MS, monospace; customizable, BUT test required for ALL browsers */
-  vertical-align: top;
-  margin: 1px;
-}
-#tv_tree div.tv_box span.tvM {
-	color: #8f8fdf; /* customizable */
-}
-#tv_tree div.tv_box span.tvF {
-	color: #df8f8f; /* customizable */
-}
 
 #tv_tree div.tv_box div.tvM, #tv_tree .tv_box div.tvF {
   border: 0;
