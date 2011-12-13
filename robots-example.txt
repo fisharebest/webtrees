@@ -211,7 +211,7 @@ Disallow: /mediafirewall.php
 Disallow: /medialist.php
 Disallow: /mediaviewer.php
 Disallow: /message.php
-Disallow: /module.php
+Allow:    /module.php
 Disallow: /modules
 Allow:    /note.php
 Disallow: /notelist.php
