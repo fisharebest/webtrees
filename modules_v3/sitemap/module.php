@@ -266,18 +266,19 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			'<hr>';
 
 		if ($include_any) {
-			$site_map_url=WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap.xml';
+			$site_map_url1=WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap.xml';
+			$site_map_url2=rawurlencode(WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&mod_action=generate&file=sitemap.xml');
 			echo '<p>', WT_I18N::translate('To tell search engines that sitemaps are available, you should add the following line to your robots.txt file.'), '</p>';
 			echo
-				'<pre>Sitemap: ', $site_map_url, '</pre>',
+				'<pre>Sitemap: ', $site_map_url1, '</pre>',
 				'<hr>',
 				'<p>', WT_I18N::translate('To tell search engines that sitemaps are available, you can use the following links.'), '</p>',
 				'<ul>',
 				// This list comes from http://en.wikipedia.org/wiki/Sitemaps
-				'<li><a target="_new" href="http://submissions.ask.com/ping?sitemap='.$site_map_url.'">Ask</a></li>',
-				'<li><a target="_new" href="http://www.bing.com/webmaster/ping.aspx?siteMap='.$site_map_url.'">Bing</a></li>',
-				'<li><a target="_new" href="http://www.google.com/webmasters/tools/ping?sitemap='.$site_map_url.'">Google</a></li>',
-				'<li><a target="_new" href="http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=SitemapWriter&amp;url='.$site_map_url.'">Yahoo!</a></li>',
+				'<li><a target="_new" href="http://submissions.ask.com/ping?sitemap='.$site_map_url2.'">Ask</a></li>',
+				'<li><a target="_new" href="http://www.bing.com/webmaster/ping.aspx?siteMap='.$site_map_url2.'">Bing</a></li>',
+				'<li><a target="_new" href="http://www.google.com/webmasters/tools/ping?sitemap='.$site_map_url2.'">Google</a></li>',
+				'<li><a target="_new" href="http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=SitemapWriter&amp;url='.$site_map_url2.'">Yahoo!</a></li>',
 				'</ul>';
 
 		}
