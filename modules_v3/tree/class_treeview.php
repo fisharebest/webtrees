@@ -60,7 +60,7 @@ class TreeView {
   * @param string $rootPersonId the id of the root person
   * @param int $generations number of generations to draw
 	*/
-	public function drawViewport($rootPersonId, $generations, $style) {
+	public function drawViewport($rootPersonId, $generations) {
 		global $GEDCOM, $WT_IMAGES, $controller;
 
     $rootPerson = WT_Person::getInstance($rootPersonId);
@@ -73,34 +73,9 @@ class TreeView {
       $path = 'module.php?mod=tree&amp;mod_action=treeview&amp;rootid='.$rootPerson->getXref().'&amp;allPartners='.($this->allPartners ? "false" : "true");
     $r = '<a name="tv_content"></a><div id="'.$this->name.'_out" dir="ltr" class="tv_out">';
     
-    // Read styles (20 maxi) in a hidden list
-    $sd = WT_MODULES_DIR.'tree/css/styles/';
-    $rs = '<ul id="tvStylesSubmenu">';
-    $cs = '<img src="'.WT_STATIC_URL.$sd.'default/button.gif" alt="d"  onclick="'.$this->name.'Handler.style(\''.$sd.'\', \'default\', this);" title="'.WT_I18N::translate('Style').'">';
-    $rs .= '<li class="tv_button'.($style == '' || $style=='default' ? ' tvPressed' : '').'">'.$cs.'</li>';    
-    $nbStyles = 1;
-    if (@is_dir($sd) && @is_readable($sd) && ($d=@opendir($sd))) {    	
-    	while (($s = readdir($d)) !== false && ($nbStyles < 20)) {
-    		if ($s[0] == '.' || $s=='default' || !is_dir($sd.$s))
-					continue;
-        $sHTML = '<img src="'.WT_STATIC_URL.$sd.$s.'/button.gif" alt="'.$s[0].'"  onclick="'.$this->name.'Handler.style(\''.$sd.'\', \''.$s.'\', this);" title="'.WT_I18N::translate('Style').'">';
-        if ($s == $style) {
-        	$cs = $sHTML;
-        	$pressedState = ' tvPressed';
-        }
-        else
-        	$pressedState ='';
-        $rs .= '<li class="tv_button'.$pressedState.'">'.$sHTML.'</li>';
-        $nbStyles++;
-    	}
-    }
-    $rs .= '</ul>';
-
 		// Add the toolbar
 		$r.=
 			'<div id="tv_tools"><ul>'.
-			// TODO: can we change the toolbar's orientation automatically, when it is dragged to a vertical/horizontal edge?
-			'<li id="tvToolsHandler" title="'.WT_I18N::translate('Move the toolbar').'"></li>'.
 			'<li id="tvbZoomIn" class="tv_button"><img src="'.$WT_IMAGES['zoomin'].'" alt="'.WT_I18N::translate('Zoom in').'" title="'.WT_I18N::translate('Zoom in').'"></li>'.
 			'<li id="tvbZoomOut" class="tv_button"><img src="'.$WT_IMAGES['zoomout'].'" alt="'.WT_I18N::translate('Zoom out').'" title="'.WT_I18N::translate('Zoom out').'"></li>'.
 			'<li id="tvbNoZoom" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/zoom0.png" alt="'.WT_I18N::translate('Reset').'" title="'.WT_I18N::translate('Reset').'"></li>'.
@@ -112,19 +87,17 @@ class TreeView {
 			// TODO: this is temporarily disabled (as it sends a flood of AJAX requests?)
 			//'<li id="tvbOpen" class="tv_button"><img src="'.$WT_IMAGES["media"].'" alt="o" title="'.WT_I18N::translate('Show all details').'"></li>'.
 			//'<li id="tvbClose" class="tv_button"><img src="'.$WT_IMAGES["fambook"].'" alt="f" title="'.WT_I18N::translate('Hide all details').'"></li>'.
-			// If the position/order of the style button moves, update TreeViewHandler() in treeview.js
-			'<li id="tvStyleButton" class="tv_button">'.$cs.'</li>'.
 			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show all spouses and ancestors').'" title="'.WT_I18N::translate('Show all spouses and ancestors').'"></a></li>';
     // Hidden loading image
 		$r.='<li class="tv_button" id="'.$this->name.'_loading"><img src="'.WT_STATIC_URL.'images/loading.gif" alt="Loading..."></li>
-</ul>'.$rs;
+</ul>';
 		$r.='</div><div id="'.$this->name.'_in" class="tv_in">';
     $parent = null;
     $r.=$this->drawPerson($rootPerson, $generations, 0, $parent, '', true);
     $r.='</div></div>'; // Close the tv_in and the tv_out div
 		return array(
 			$r,
-			'var '.$this->name.'Handler = new TreeViewHandler("'.$this->name.'", '.($this->allPartners ? 'true' : 'false').', '.$nbStyles.');'
+			'var '.$this->name.'Handler = new TreeViewHandler("'.$this->name.'", '.($this->allPartners ? 'true' : 'false').');'
 		);
 	}
 

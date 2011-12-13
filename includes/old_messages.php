@@ -41,6 +41,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.6  */ WT_I18N::translate('Full screen');
 /* I18N: This message is deleted in webtrees-1.2.6  */ WT_I18N::translate('GEDCOMs to store in Sitemap:');
 /* I18N: This message is deleted in webtrees-1.2.6  */ WT_I18N::translate('In normal mail headers for external mails, the email address as well as the name are used. Some mail systems will not accept this. When set to <b>Yes</b>, only the email address will be used.');
+/* I18N: This message is deleted in webtrees-1.2.6  */ WT_I18N::translate('Move the toolbar');
 /* I18N: This message is deleted in webtrees-1.2.6  */ WT_I18N::translate('On this chart you can display one or more persons along a timeline.  You can, for example, visualize the status of two or more persons at a certain moment.<br /><br />If you click the <b>Time Line</b> link on an other page you will already see one person on the Time Line.  If you clicked the <b>Time Line</b> menu item in a page header, you have to supply the starting person\'s ID.');
 /* I18N: This message is deleted in webtrees-1.2.6  */ WT_I18N::translate('Print');
 /* I18N: This message is deleted in webtrees-1.2.6  */ WT_I18N::translate('Select GEDCOMs');

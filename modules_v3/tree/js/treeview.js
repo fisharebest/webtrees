@@ -6,13 +6,11 @@
  * - for loops are much faster than using each
  * - return false is required in functions
  */
-function TreeViewHandler(treeviewInstance, allPartners, nbStyles) {
+function TreeViewHandler(treeviewInstance, allPartners) {
   this.treeview = jQuery("#" + treeviewInstance + "_in");
   this.loadingImage = jQuery("#" + treeviewInstance + "_loading");
   this.toolbox = jQuery("#tv_tools");
   this.buttons = jQuery(".tv_button:first", this.toolbox);
-  this.toolboxOrientation = (this.toolbox.find("#tvToolsHandler").css("float") != "left") ? 'v' : 'h';
-  this.nbStyles = nbStyles;
   this.zoom = 100; // in percent
   this.boxWidth = this.treeview.find(".tv_box:first").width(); // store the initial box width
   if (isNaN(this.boxWidth))
@@ -43,14 +41,6 @@ function TreeViewHandler(treeviewInstance, allPartners, nbStyles) {
     createCookie("allPartners", allPartners, this.cookieDays);
 
   // Define the draggables
-  tv.toolbox.draggable({
-    handle: "#tvToolsHandler",
-    cursor: "move",
-    containment: "#" + treeviewInstance + "_out",
-    snap: "#" + treeviewInstance + "_out",
-    snapMode: "inner",
-    snapTolerance: 10
-  });
   tv.treeview.draggable({
     cursor: "move",
     stop: function(event, ui) {
@@ -58,53 +48,7 @@ function TreeViewHandler(treeviewInstance, allPartners, nbStyles) {
     }
   });
   
-  // define the toolbox submenu's functions
-  tv.toolbox.find("#tvStyleButton,#tvStylesSubmenu").each(function(index, tvStyleButton) {
-  	var submenu =  tv.toolbox.find("#tvStylesSubmenu");
-  	tvStyleButton.onmouseover = function() {
-  		tv.overLevel++;
-    	var bw = tv.buttons.outerWidth(true);
-    	var bm = (tv.buttons.outerWidth(true) - tv.buttons.outerWidth()) / 2;
-    	if (tv.toolboxOrientation != 'v') {
-    		var deltaX = 6 + 8 * bw; // align with the 8th button
-  			var deltaY = bw;
-    	}
-  		else {
-  			var deltaX = bw;
-  			var deltaY = 6 + 8 * (bw-bm); // align with the 8th button
-    	}
-  		submenu.css("left", deltaX);
-  		submenu.css("top", deltaY);
-  		submenu.css("display", "block");
-  	}
-  	tvStyleButton.onmouseout = function() {
-  		tv.overLevel--;
- 			window.setTimeout(function(){if (tv.overLevel < 1) jQuery(submenu).css("display", "none");}, 200);
-		}
-  });
   // Add click handlers to buttons
-  tv.toolbox.find("#tvToolsHandler").each(function(index, tvthandler) {
-  	tvthandler.ondblclick = function() {
-  		//tv.changeToolsOrientation();
-  	  var toolbox = "#tvToolsHandler, li.tv_button";
-  	  var submenu = tv.toolbox.find("#tvStylesSubmenu");
-  	  if (tv.toolbox.find(toolbox).css("float") == "left") {
-  	  	tv.toolbox.find(toolbox).css("float", "none");
-  	  	submenu.css("width", tv.nbStyles * tv.buttons.outerWidth(true));
-  	  	submenu.find("li.tv_button").css("float", "left");
-  	    jQuery("#tvToolsHandler", tv.toolbox).css("height", "2px").css("width", "22px");
-  	    tv.toolboxOrientation = 'v';
-  	  }
-  	  else {
-  	  	tv.toolbox.find(toolbox).css("float", "left");
-  	  	submenu.css("width", tv.buttons.outerWidth(true));
-  	  	submenu.find("li.tv_button").css("float", "none");
-  	    jQuery("#tvToolsHandler", tv.toolbox).css("height", "22px").css("width", "2px");
-  	    tv.toolboxOrientation = 'h';
-  	  }
-  	  return false;
-  	}
-  });
   tv.toolbox.find("#tvbZoomIn").each(function(index, tvbZoomIn) {
   	tvbZoomIn.onclick = function() {
   		tv.setZoom(1.1, tvbZoomIn);
@@ -396,20 +340,6 @@ TreeViewHandler.prototype.centerOnRoot = function() {
   if (!this.updating)
     this.updateTree(true);
   return false;
-}
-
-/**
- * Class TreeView style method
- * param string @style the style directory
- */
-TreeViewHandler.prototype.style = function(stylepath, style, el) {	
-	jQuery("#tvCSS").remove();
-	jQuery("#tvStylesSubmenu .tv_button").removeClass("tvPressed");
-	if (style)
-		jQuery("head").append('<link id="tvCSS" rel="stylesheet" type="text/css" href="' + stylepath + style + '/' + style + '.css">');
-	jQuery(el).parent().addClass("tvPressed");
-	jQuery("#tvStyleButton").html(jQuery(el).clone());
-	createCookie("tvStyle", style, this.cookieDays)
 }
 
 /**

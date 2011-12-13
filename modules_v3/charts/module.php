@@ -142,7 +142,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= $mod->css;
 				$content .= $mod->headers;
 				$content .= '<script type="text/javascript" src="'.$mod->js.'"></script>';
-		    list($html, $js) = $tv->drawViewport($person->getXref(), 2, '');
+		    list($html, $js) = $tv->drawViewport($person->getXref(), 2);
 				$content .= $html.WT_JS_START.$js.WT_JS_END;
 				$content .= '</td>';
 			}

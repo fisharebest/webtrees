@@ -301,17 +301,3 @@ table#tvTreeBorder td#tv_tree_bottomright {
   width: 15px;
   height: 15px;
 }
-
-#tvToolsHandler {
-	float: left;
-  cursor: move;
-  height: 22px;
-  width: 2px;
-  border: thin inset #f6f6f6; /* customizable */
-  margin: 2px;
-  overflow: hidden; /* required for IE */
-}
-
-#tvToolsHandler:hover {
-  border: thin outset #f6f6f6; /* customizable */
-}
