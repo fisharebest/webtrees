@@ -114,14 +114,9 @@ class TreeView {
 			//'<li id="tvbClose" class="tv_button"><img src="'.$WT_IMAGES["fambook"].'" alt="f" title="'.WT_I18N::translate('Hide all details').'"></li>'.
 			// If the position/order of the style button moves, update TreeViewHandler() in treeview.js
 			'<li id="tvStyleButton" class="tv_button">'.$cs.'</li>'.
-			'<li id="tvbPrint" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/print.png" alt="p" title="'./* I18N: verb/action */ WT_I18N::translate('Print').'"></li>'.
 			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show all spouses and ancestors').'" title="'.WT_I18N::translate('Show all spouses and ancestors').'"></a></li>';
-    if (safe_GET('mod_action') != 'treeview') {
-			$r.='<li class="tv_button"><a href="module.php?mod=tree&amp;mod_action=treeview&amp;rootid='.$rootPerson->getXref().'#tv_content" title="'. /* I18N: Button label - view this chart in full-screen mode */ WT_I18N::translate('Full screen').'"><img src="'.$WT_IMAGES["fscreen"].'" alt="full screen"></a></li>';
-		}
-    // Help, and hidden loading image
-		$r.='<li class="tv_button">'.help_link("TV_MODULE", 'tree').'</li>
-  <li class="tv_button" id="'.$this->name.'_loading"><img src="'.WT_STATIC_URL.'images/loading.gif" alt="Loading..."></li>
+    // Hidden loading image
+		$r.='<li class="tv_button" id="'.$this->name.'_loading"><img src="'.WT_STATIC_URL.'images/loading.gif" alt="Loading..."></li>
 </ul>'.$rs;
 		$r.='</div><div id="'.$this->name.'_in" class="tv_in">';
     $parent = null;

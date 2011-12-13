@@ -160,11 +160,6 @@ function TreeViewHandler(treeviewInstance, allPartners, nbStyles) {
   		tv.compact();
   	}
   });
-  tv.toolbox.find("#tvbPrint").each(function(index, tvbPrint) {
-  	tvbPrint.onclick = function() {
-  		tv.print(tvbPrint);
-  	}
-  });
   tv.toolbox.find("#tvbOpen").each(function(index, tvbOpen) {
   	var b = jQuery(tvbOpen, tv.toolbox);
   	tvbOpen.onclick = function() {
@@ -478,66 +473,6 @@ TreeViewHandler.prototype.expandBox = function(box, event) {
   // we must ajust the draggable treeview size to its content size
   this.getSize();
   return false;
-}
-
-/**
- * Class TreeView print method :load full resolution medias for opened details boxes, and open the print dialog after
- */
-TreeViewHandler.prototype.print = function() {
-	var tv = this;
-	var medias = this.treeview.find(".boxExpanded .pedigree_image_portrait, .boxExpanded .pedigree_image_landscape").not(".HiRes");
-	if (medias.length) {
-		var ml = new Array();
-		tv.img2load = new Array();
-		medias.each(function(index, media) {
-			var alt = jQuery(media).attr("alt");
-			if (alt.length) {
-				ml.push(jQuery(media).attr("alt"));
-				tv.img2load.push(media);
-			}
-		});
-    tv.updating = true;
-    tv.setLoading();
-    jQuery.ajax({
-      url: tv.ajaxUrl + "getMedias",
-      dataType: "json",
-      data: "q=" + ml.join(";"),
-      success: function(ret) {
-        var nb = tv.img2load.length;
-        for (var i=0;i<nb;i++) {
-        	tv.img2load[i].src = ret[i];
-        }
-      },
-      complete: function() {
-      	tv.printWhenLoaded();
-      },
-      timeout: function() {
-        tv.updating = false;
-        tv.setComplete();
-      }
-    });
-	}
-	else
-		window.print();
-}
-
-/**
- * Class TreeView printIfLoaded method :a callback function called when loading medias is pending
- */
-TreeViewHandler.prototype.printWhenLoaded = function() {
-	var tv = this;
-  var nb = nbImg = tv.img2load.length;
-  for (var i=0;i<nbImg;i++) {
-  	if (tv.img2load[i].complete) {
-  		jQuery(tv.img2load[i]).addClass("HiRes");
-  		nb--;
-  	}
-  }
-	if (nb > 0)
-		window.setTimeout(tv.printWhenLoaded(), 200);
-	tv.setComplete();
-	tv.updating = false;
-	window.print();
 }
 
 function createCookie(name,value,days) {

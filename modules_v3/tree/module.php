@@ -46,7 +46,6 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
     	$this->style = false;
     	$this->css = '';
     }
-    $this->css .= '<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview_print.css" media="print">';
 	}
 	
 	// Extend WT_Module. This title should be normalized when this module will be added officially

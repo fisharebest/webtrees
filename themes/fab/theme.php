@@ -78,7 +78,6 @@ $WT_IMAGES=array(
 	'fambook'             =>WT_THEME_URL.'images/fambook.png',
 	'fanchart'            =>WT_THEME_URL.'images/fanchart.png',
 	'favorites'           =>WT_THEME_URL.'images/favorites.png',
-	'fscreen'             =>WT_THEME_URL.'images/fscreen.png',
 	'gedcom'              =>WT_THEME_URL.'images/gedcom.png',
 	'help'                =>WT_THEME_URL.'images/help.png',
 	'hline'               =>WT_THEME_URL.'images/hline.png',
