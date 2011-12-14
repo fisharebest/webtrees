@@ -25,7 +25,7 @@
 //
 // $Id$
 
-	$text = "xCxAx<table cellpadding=\"0\"><tr><td>" . $text;
+	$text = "xCxAx  <table cellpadding=\"0\"><tr><td>" . $text;
 	$text = str_replace("<br>.start_formatted_area.<br>", "</td></tr></table><table cellpadding=\"0\"><tr><td class=\"notecell\">&nbsp;", $text);
 
 		// -- Create View Header Tooltip explanations (Use embolden) -----------
