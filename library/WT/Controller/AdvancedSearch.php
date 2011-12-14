@@ -129,10 +129,10 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			}
 		}
 		$fields=array();
+		uasort($fields, 'utf8_strcasecmp');
 		foreach ($ofields as $field) {
 			$fields[$field]=WT_Gedcom_Tag::GetLabel($field);
 		}
-		uasort($fields, 'utf8_strcasecmp');
 		return $fields;
 	}
 
