@@ -526,7 +526,11 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	}
 	// Some PGV installations store the u_reg_timestamp in the format "2010-03-07 21:41:07"
 	WT_DB::prepare(
-		"UPDATE `##user_setting` SET setting_value=UNIX_TIMESTAMP(setting_value) WHERE setting_name='reg_timestamp' AND setting_value like '____-__-__ __:__:__'"
+		"UPDATE `##user_setting` SET setting_value=UNIX_TIMESTAMP(setting_value) WHERE setting_name='reg_timestamp' AND setting_value LIKE '____-__-__ __:__:__'"
+	)->execute();
+	// Some PGV installations have empty/invalid values for reg_timestamp
+	WT_DB::prepare(
+		"UPDATE `##user_setting` SET setting_value=CAST(setting_value AS UNSIGNED) WHERE setting_name='reg_timestamp'"
 	)->execute();
 	echo '<p>pgv_users => wt_user_gedcom_setting ...</p>';
 	flush();
