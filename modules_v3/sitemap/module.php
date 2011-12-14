@@ -278,7 +278,6 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				'<li><a target="_new" href="http://submissions.ask.com/ping?sitemap='.$site_map_url2.'">Ask</a></li>',
 				'<li><a target="_new" href="http://www.bing.com/webmaster/ping.aspx?siteMap='.$site_map_url2.'">Bing</a></li>',
 				'<li><a target="_new" href="http://www.google.com/webmasters/tools/ping?sitemap='.$site_map_url2.'">Google</a></li>',
-				'<li><a target="_new" href="http://search.yahooapis.com/SiteExplorerService/V1/updateNotification?appid=SitemapWriter&amp;url='.$site_map_url2.'">Yahoo!</a></li>',
 				'</ul>';
 
 		}
