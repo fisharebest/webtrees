@@ -38,7 +38,6 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 
 	this.container = this.treeview.parent(); // Store the container element ("#" + treeviewInstance + "_out")
 	this.auto_box_width = false;
-	this.showDates = true; 
 	this.updating = false;
 	this.overLevel = 0; // internal var for handling submenus
 	
@@ -62,40 +61,6 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 	});
 	
 	// Add click handlers to buttons
-	tv.toolbox.find("#tvbLeft").each(function(index, tvLeft) {
-		var b = jQuery(tvLeft, tv.toolbox);
-		tvLeft.onclick = function() {
-			b.addClass("tvPressed");
-			tv.align("left", b);
-		}
-	});
-	tv.toolbox.find("#tvbCenter").each(function(index, tvCenter) {
-		tvCenter.onclick = function() {
-			tv.centerOnRoot();
-		}
-	});
-	tv.toolbox.find("#tvbRight").each(function(index, tvRight) {
-		var b = jQuery(tvRight, tv.toolbox);
-		tvRight.onclick = function() {
-			b.addClass("tvPressed");
-			tv.align("right", b);
-		}
-	});
-	tv.toolbox.find("#tvbDates").each(function(index, tvbDates) {
-		var b = jQuery(tvbDates, tv.toolbox);
-		tvbDates.onclick = function() {
-			if (tv.showDates) {
-				s = 'none';
-				b.removeClass("tvPressed");
-				tv.showDates = false;
-			} else {
-				s = 'inline';
-				b.addClass("tvPressed");
-				tv.showDates = true;
-			}
-			tv.treeview.find(".tv_box .dates").css("display", s);
-		}
-	});
 	tv.toolbox.find("#tvbCompact").each(function(index, tvCompact) {
 		tvCompact.onclick = function() {
 			tv.compact();
@@ -281,28 +246,6 @@ TreeViewHandler.prototype.compact = function() {
 		b.removeClass("tvPressed");
 	}
 	tv.setComplete();
-	return false;
-}
-
-
-/**
- * Class TreeView align method
- */
-TreeViewHandler.prototype.align = function(alignment, button) {
-	this.setLoading();
-	switch (alignment) {
-	case "left":
-		this.treeview.offset({left: this.container.offset().left, top: this.container.offset().top});
-		break;
-	case "right":
-		this.treeview.offset({left: this.container.offset().left + this.container.width() - this.treeview.width(), top: this.container.offset().top});
-		break;
-	default:
-		return false;
-	}
-	if (!this.updating) {
-		this.updateTree(false, button);
-	}
 	return false;
 }
 
