@@ -11,77 +11,88 @@
  * Look at the embedded samples in the /treeview/css/styles directory to learn how to make your own tree styles.
  */
 
-#tree-title {text-align: center; margin-bottom: 100px;}
-
 .tv_out {
   position: relative;
   overflow: hidden;
   height: 100%;
-  width: 99%;
-  border: thin solid #CCCCCC; /* customizable */
-  /*min-height: 500px;  customizable, not mandatory, but should be set to have allways something to display */
-  /*max-height: 10000px;  customizable, not mandatory, but should be set not too high to limit the size of ajax requests and not too low to enable whole big trees printing */
-  background: #E6E6E6; /* customizable */
-  height: 500px;
+  width: 100%;
+  border: thin solid #dfdfdf; /* customizable */
+  min-height: 500px; /* customizable, not mandatory, but should be set to have allways something to display */
+  max-height: 10000px; /* customizable, not mandatory, but should be set not too high to limit the size of ajax requests and not too low to enable whole big trees printing */
+  /* background: #fffff8; /* customizable */
 }
 .tv_out img {
   border: 0;
 }
 
 .tv_in {
-  clear: both;
+	clear: both;
   position: relative; /* required for re-calculating size on ajax updates */  
   left: 0;
   top: 0;
   cursor: move;
   display: inline-block; /* prevent from blinking on IE */
 }
-
 .tv_in table.tv_tree, .tv_in table.tv_tree tbody, .tv_in table.tv_tree tr, .tv_in table.tv_tree td {
   border: 0 none;
   padding: 0;
   margin: 0;
   background: none;
-  font-size:11px;
 }
 .tv_in table.tv_tree {	
   border-collapse: collapse;
 }
 
-/* Border (also have class table.tv_tree) */
+/* Border (also need, and have, class table.tv_tree) */
 table#tvTreeBorder td#tv_tree_topleft {
-   background: none;
+  height: 50px;
+  width: 50px;
+  background: url(treetopleft.gif); /* customizable */
 }
 table#tvTreeBorder td#tv_tree_top {
-   background: none;
+  height: 50px;
+  text-align: center;
+  vertical-align: bottom;
+  background: url(treetop.gif) repeat-x; /* customizable */
 }
 table#tvTreeBorder td#tv_tree_top div{
-  font-family: Arial, Verdana, sans-serif;
-  font-size: 18px;
+  font-family: Garamond, Times, serif; /* customizable */
+  font-size: 16px; /* customizable */
 }
 table#tvTreeBorder td#tv_tree_topright {
-   background: none;
+  height: 50px;
+  width: 50px;
+  background: url(treetopright.gif); /* customizable */
 }
 table#tvTreeBorder td#tv_tree_left {
-   background: none;
+  width: 50px;
+  min-width: 50px;
+  background: url(treeleft.gif) repeat-y; /* customizable */
 }
 table#tvTreeBorder td#tv_tree_right {
-   background: none;
+  width: 50px;
+  min-width: 50px;
+  background: url(treeright.gif) repeat-y; /* customizable */
 }
 table#tvTreeBorder td#tv_tree_bottomleft {
-   background: none;
+  height: 50px;
+  width: 50px;
+  background: url(treebottomleft.gif); /* customizable */
 }
 table#tvTreeBorder td#tv_tree_bottom {
-   background: none;
+  height: 50px;
+  background: url(treebottom.gif) repeat-x; /* customizable */
 }
 table#tvTreeBorder td#tv_tree_bottomright {
-   background: none;
-}
-/* tree */
-table#tvTreeBorder td, #tv_tree {
-   background: none;
+  height: 50px;
+  width: 50px;
+  background: url(treebottomright.gif); /* customizable */
 }
 
+/* tree */
+#tv_tree {
+  background: url(tree.jpg); /* customizable */
+}
 /* horizontal and vertical lines color */
 #tv_tree div.tv_vline, #tv_tree div.tv_hline {
   background-color:  #81A9CB; /* customizable : should be the same color than in background images of td.tv_vline_x */
@@ -146,13 +157,7 @@ table#tvTreeBorder td, #tv_tree {
   cursor: help; /* customizable */
   border-collapse: collapse; /* required */
   border-radius: 4px; /* customizable */
-  -moz-border-radius: 4px; /* customizable */
-  -webkit-border-radius: 4px; /* customizable */
-  -khtml-border-radius: 4px; /* customizable */
   box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -webkit-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -moz-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -khtml-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
   filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcfdf, offX=1, offY=1, positive=true); /* customizable */
 }
 #tv_tree div.boxExpanded {
@@ -166,30 +171,14 @@ table#tvTreeBorder td, #tv_tree {
   background:  #fff8f5; /* customizable */
   color: #000022; /* customizable */
 }
-#tv_tree div.tv_box span.tvSexSymbol {
-  font-weight: bold;
-  font-family: x-large, serif; /*Arial Unicode MS, monospace; /* customizable, BUT test required for ALL browsers */
-  vertical-align: top;
-  margin: 1px;
-}
-#tv_tree div.tv_box span.tvM {
-	color: #8f8fdf; /* customizable */
-}
-#tv_tree div.tv_box span.tvF {
-	color: #df8f8f; /* customizable */
-}
 
 #tv_tree div.tv_box div.tvM, #tv_tree .tv_box div.tvF {
-  clear: both;
   border: 0;
   margin: 0;
   padding: 1px;
   padding-left: 4px;
   padding-right: 4px;
   border-radius: 4px; /* customizable */
-  -moz-border-radius: 4px; /* customizable */
-  -webkit-border-radius: 4px; /* customizable */
-  -khtml-border-radius: 4px; /* customizable */
 }
 #tv_tree div.tv_box i.dates {
 	float: right;
@@ -232,14 +221,8 @@ table#tvTreeBorder td, #tv_tree {
   z-index: 90; /* should be < 100 because 100 is the z-index of WT menus */
   background-color: #efefef; /* customizable */
   border: 1px outset #dfdfdf; /* customizable */
-  -moz-border-radius: 4px; /* customizable */
-  -webkit-border-radius: 4px; /* customizable */
-  -khtml-border-radius: 4px; /* customizable */
   border-radius: 4px; /* customizable */
   box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -webkit-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -moz-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -khtml-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
   filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcfdf, offX=1, offY=1, positive=true); /* customizable */  
 }
 
@@ -267,9 +250,6 @@ table#tvTreeBorder td, #tv_tree {
   vertical-align: middle;
   border: thin solid #efefef; /* customizable */
   background-color: #efefef; /* customizable */
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -khtml-border-radius: 4px;
   border-radius: 4px;
 }
 #tvStylesSubmenu li.tv_button {
@@ -283,6 +263,9 @@ table#tvTreeBorder td, #tv_tree {
   background: #fffdfd; /* customizable */
   border: thin outset #fdfffd; /* customizable */
   cursor: pointer;
+}
+.tv_button a:hover, a:active {
+  background: #fffdfd; /* customizable */
 }
 #tv_tools li.tvPressed {
   border: thin inset #ffffff; /* customizable */
@@ -306,31 +289,3 @@ table#tvTreeBorder td, #tv_tree {
   width: 15px;
   height: 15px;
 }
-
-#tvToolsHandler {
-	float: left;
-  cursor: move;
-  height: 22px;
-  width: 2px;
-  border: thin inset #f6f6f6; /* customizable */
-  margin: 2px;
-  overflow: hidden; /* required for IE */
-}
-
-#tvToolsHandler:hover {
-  border: thin outset #f6f6f6; /* customizable */
-}
-
-
-#tv_tree div.tv_box div.tvM, #tv_tree div.tv_box div.tvF {
-	background: none;
-	color: #000;
-	border: 0;
-	margin: 0;
-	padding: 0;
-	padding-left: 4px;
-	padding-right: 4px;
-}
-
-.tvM { background-color: #DDF !important;}
-.tvF { background-color: #FDD !important;}
