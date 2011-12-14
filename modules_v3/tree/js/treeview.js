@@ -12,8 +12,8 @@ function TreeViewHandler(treeviewInstance, allPartners) {
   this.toolbox = jQuery("#tv_tools");
   this.buttons = jQuery(".tv_button:first", this.toolbox);
   this.zoom = 100; // in percent
-  this.boxWidth = this.treeview.find(".tv_box:first").width(); // store the initial box width
-  if (isNaN(this.boxWidth))
+ // this.boxWidth = this.treeview.find(".tv_box:first").width(); // store the initial box width
+//  if (isNaN(this.boxWidth))
     this.boxWidth = 180; // default family box width
   this.boxExpandedWidth = 250; // default expanded family box width
   this.cookieDays = 360; // lifetime of preferences memory, in days
