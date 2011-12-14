@@ -267,14 +267,14 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			$bind[]=WT_GED_ID;
 		}
 		if ($indi_plac) {
-			$sql.=" JOIN `##places`       i_p  ON (i_p.p_file  =? AND i_p.p_id=ind.i_id)";
-			$sql.=" JOIN `##place_links`  i_pl ON (i_pl.pl_file=? AND i_pl.pl_id=i_p.p_id)";
+			$sql.=" JOIN `##places`       i_p  ON (i_p.p_file  =? AND i_p.p_id   =ind.i_id)";
+			$sql.=" JOIN `##placelinks`   i_pl ON (i_pl.pl_file=? AND i_pl.pl_gid=i_p.p_id)";
 			$bind[]=WT_GED_ID;
 			$bind[]=WT_GED_ID;
 		}
 		if ($fam_plac) {
-			$sql.=" JOIN `##places`       f_p  ON (f_p.p_file  =? AND f_p.p_id=fam.f_id)";
-			$sql.=" JOIN `##place_links`  f_pl ON (f_pl.pl_file=? AND f_pl.pl_id=f_p.p_id)";
+			$sql.=" JOIN `##places`       f_p  ON (f_p.p_file  =? AND f_p.p_id   =fam.f_id)";
+			$sql.=" JOIN `##placelinks`   f_pl ON (f_pl.pl_file=? AND f_pl.pl_gid=f_p.p_id)";
 			$bind[]=WT_GED_ID;
 			$bind[]=WT_GED_ID;
 		}
