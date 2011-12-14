@@ -222,7 +222,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$indi_date=true;
 					}
 				} elseif (strpos($field, ':PLAC')!==false) {
-					if ($substr($field, 0, 4)=='MARR') {
+					if (substr($field, 0, 4)=='MARR') {
 						$fam_plac=true;
 						$spouse_family=true;
 					} else {
