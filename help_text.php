@@ -2167,11 +2167,6 @@ case 'box_width':
 	$text=WT_I18N::translate('Here you can change the box width from 50 percent to 300 percent.  At 100 percent each box is about 270 pixels wide.');
 	break;
 
-case 'chart_type':
-	$title=WT_I18N::translate('Chart type');
-	$text=WT_I18N::translate('Select what you want to see on the map chart. You can choose:<p style="padding-left: 25px"><b>Individual distribution chart</b>&nbsp;&nbsp;shows the countries in which persons from this database occur.<br /><b>Surname distribution chart</b>&nbsp;&nbsp;shows the countries in which the specified surname occurs.</p>');
-	break;
-
 case 'convertPath':
 	$title=WT_I18N::translate('Convert media path to');
 	$text=WT_I18N::translate('This option defines a constant path to be prefixed to all media paths in the output file.<br /><br />For example, if the media directory has been configured to be "/media" and if the media file being exported has a path "/media/pictures/xyz.jpg" and you have entered "c:\my pictures\my family" into this field, the resultant media path will be "c:\my pictures\my family/pictures/xyz.jpg".<br /><br />You will notice in this example:<ul><li>the current media directory name is stripped from the path</li><li>and the resultant path will not have correct folder name separators.</li></ul><br />If you wish to retain the media directory in media file paths of the output file, you will need to include that name in the <b>Convert media path to</b> field.<br /><br />You should also use the <b>Convert media folder separators to</b> option to ensure that the folder name separators are consistent and agree with the requirements of the receiving operating system.<br /><br />Media paths that are actually URLs will not be changed.');
@@ -2640,33 +2635,6 @@ case 'show_spouse':
 case 'simple_filter':
 	$title=WT_I18N::translate('Simple search filter');
 	$text=WT_I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.');
-	break;
-
-case 'stat_gax':
-	$title=WT_I18N::translate('Select the desired age interval');
-	$text=WT_I18N::translate('For example, <b>interval 10 years</b> describes the following set of age ranges:<div style="padding-left:30px;">younger than one year<br />one year to 5 years<br />6 to 10<br />11 to 20<br />21 to 30<br />31 to 40<br />41 to 50<br />51 to 60<br />61 to 70<br />71 to 80<br />81 to 90<br />91 to 100<br />older than 100 years</div>');
-	break;
-
-case 'stat_gbx':
-	$title=WT_I18N::translate('Select the desired age interval');
-	$text=WT_I18N::translate('For example, <b>interval 2 years</b> describes the following set of age ranges:<div style="padding-left:30px;">younger than 16 years<br />16 to 18<br />19 to 20<br />21 to 22<br />23 to 24<br />25 to 26<br />27 to 28<br />29 to 30<br />31 to 32<br />33 to 35<br />36 to 40<br />41 to 50<br />older than 50 years</div>');
-	break;
-
-case 'stat_gcx':
-	$title=WT_I18N::translate('Select the desired count interval');
-	$text=WT_I18N::translate('For example, <b>interval one child</b> describes the following set of child count ranges:<div style="padding-left:30px;">without children<br />one child<br />two children<br />3, 4, 5, 6, 7, 8, 9, 10 children<br />more than 10 children</div>');
-	break;
-
-case 'stat_gwx':
-	// Commented out due the bug #741367
-	// When the ststistics will be written it will be easy to restore
-	//$title=WT_I18N::translate('Select the desired age interval');
-	//$text=WT_I18N::translate('For example, <b>months after marriage</b> describes the following set of month ranges:<div style="padding-left:30px;">before the marriage<br />from the marriage to 8 months after<br />from 8 to 12<br />from 12 to 15<br />from 15 to 18<br />from 18 to 24<br />from 24 to 48<br />over 48 months after the marriage</div><br /><br />When you want to show quarters you have to choose: <b>quarters</b>');
-	break;
-
-case 'stat_gwz':
-	$title=WT_I18N::translate('Boundaries for date periods');
-	$text=WT_I18N::translate('Select the desired starting year and interval<br /><br />For example, <b>from 1700 interval 50 years</b> describes the following set of date ranges:<div style="padding-left:30px;">before 1700<br />1700 to 1749<br />1750 to 1799<br />1800 to 1849<br />1850 to 1899<br />1900 to 1949<br />1950 to 1999<br />2000 or later</div>');
 	break;
 
 case 'treenav':

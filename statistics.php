@@ -570,7 +570,7 @@ if (isset($content) && $content==1) {
 			<br>
 			<div id="x_years" style="display:none;">
 			<?php
-			echo WT_I18N::translate('boundaries for ages:'), help_link('stat_gax');
+			echo WT_I18N::translate('Select the desired age interval');
 			?>
 			<br><select id="xas-grenzen-leeftijden" name="xas-grenzen-leeftijden">
 				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected="selected"><?php
@@ -583,7 +583,7 @@ if (isset($content) && $content==1) {
 			</div>
 			<div id="x_years_m" style="display:none;">
 			<?php
-			echo WT_I18N::translate('boundaries for ages:'), help_link('stat_gbx');
+			echo WT_I18N::translate('Select the desired age interval');
 			?>
 			<br><select id="xas-grenzen-leeftijden_m" name="xas-grenzen-leeftijden_m">
 				<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected="selected"><?php
@@ -594,7 +594,7 @@ if (isset($content) && $content==1) {
 			</div>
 			<div id="x_months" style="display:none;">
 			<?php
-			echo WT_I18N::translate('boundaries for month:'), help_link('stat_gwx');
+			echo WT_I18N::translate('Select the desired age interval');
 			?>
 			<br><select id="xas-grenzen-maanden" name="xas-grenzen-maanden">
 				<option value="0,8,12,15,18,24,48" selected="selected"><?php echo WT_I18N::translate('months after marriage'); ?></option>
@@ -605,7 +605,7 @@ if (isset($content) && $content==1) {
 			</div>
 			<div id="x_numbers" style="display:none;">
 			<?php
-			echo WT_I18N::translate('boundaries for numbers:'), help_link('stat_gcx');
+			echo WT_I18N::translate('Select the desired count interval');
 			?>
 			<br><select id="xas-grenzen-aantallen" name="xas-grenzen-aantallen">
 				<option value="1,2,3,4,5,6,7,8,9,10" selected="selected"><?php echo WT_I18N::translate('interval one child'); ?></option>
@@ -616,7 +616,7 @@ if (isset($content) && $content==1) {
 			<div id="map_opt" style="display:none;">
 			<div id="chart_type">
 			<?php
-			echo WT_I18N::translate('Map type'), help_link('chart_type');
+			echo WT_I18N::translate('Chart type');
 			?>
 			<br><select name="chart_type" onchange="statusShowSurname(this);">
 				<option value="indi_distribution_chart" selected="selected">
@@ -660,7 +660,7 @@ if (isset($content) && $content==1) {
 			if ($plotshow == "302") echo ' checked="checked"';
 			echo " onclick=\"statusEnable('zas-grenzen-periode');";
 			echo '"><label for="z_time">', WT_I18N::translate('date periods'), '</label><br><br>';
-			echo WT_I18N::translate('boundaries for date periods:'), help_link('stat_gwz'), '<br>';
+			echo WT_I18N::translate('Date range'), '<br>';
 
 			?>
 			<select id="zas-grenzen-periode" name="zas-grenzen-periode">
