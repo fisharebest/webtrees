@@ -59,10 +59,10 @@ echo WT_JS_START;
 		};
 
 		// all of the field options
-		<?php foreach ($controller->getOtherFields() as $field) { ?>
+		<?php foreach ($controller->getOtherFields() as $field=>$label) { ?>
 		opt = document.createElement('option');
 		opt.value='<?php echo $field; ?>';
-		opt.text='<?php echo addslashes($controller->getLabel($field)); ?>';
+		opt.text='<?php echo addslashes($label); ?>';
 		sel.options.add(opt);
 		<?php } ?>
 		label.appendChild(sel);

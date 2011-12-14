@@ -112,7 +112,12 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				$ofields[]=$fact;
 			}
 		}
-		return $ofields;
+		$fields=array();
+		foreach ($ofields as $field) {
+			$fields[$field]=WT_Gedcom_Tag::GetLabel($field);
+		}
+		uasort($fields, 'utf8_strcasecmp');
+		return $fields;
 	}
 
 	function getValue($i) {
@@ -194,7 +199,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				} elseif (substr($field, 0, 4)=='NAME') {
 					$indi_name=true;
 				} elseif (strpos($field, ':DATE')!==false) {
-					if ($substr($field, 0, 4)=='MARR') {
+					if (substr($field, 0, 4)=='MARR') {
 						$fam_date=true;
 						$spouse_family=true;
 					} else {
@@ -238,7 +243,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			$bind[]=WT_GED_ID;
 		}
 		if ($indi_date) {
-			$sql.=" JOIN `##date`   i_d ON (i_d.d_file=? AND i_d.d_id=ind.i_id)";
+			$sql.=" JOIN `##dates`  i_d ON (i_d.d_file=? AND i_d.d_gid=ind.i_id)";
 			$bind[]=WT_GED_ID;
 		}
 		if ($fam_date) {
@@ -349,7 +354,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
-					$sql.=" i_d.d_type=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
+					$sql.=" AND i_d.d_type=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
 					$bind[]=$parts[0];
 					$bind[]=$jd1;
 					$bind[]=$jd2;
@@ -367,7 +372,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
-					$sql.=" f_d.d_type=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
+					$sql.=" AND f_d.d_type=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
 					$bind[]=$parts[1];
 					$bind[]=$jd1;
 					$bind[]=$jd2;
