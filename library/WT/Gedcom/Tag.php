@@ -34,7 +34,7 @@ class WT_Gedcom_Tag {
 		'BARM:DATE', 'BARM:PLAC', 'BARM:SOUR', 'BASM', 'BASM:DATE', 'BASM:PLAC',
 		'BASM:SOUR', 'BIRT', 'BIRT:DATE', 'BIRT:PLAC', 'BIRT:SOUR', 'BLES', 'BLES:DATE',
 		'BLES:PLAC', 'BLES:SOUR', 'BLOB', 'BURI', 'BURI:DATE', 'BURI:PLAC', 'BURI:SOUR',
-		'CALN', 'CAST', 'CAUS', 'CEME', 'CENS', 'CENS:DATE', 'CENS:PLAC', 'CHAN', 'CHAR',
+		'CALN', 'CAST', 'CAUS', 'CEME', 'CENS', 'CENS:DATE', 'CENS:PLAC', 'CHAN', 'CHAN:DATE', 'CHAR',
 		'CHIL', 'CHR', 'CHR:DATE', 'CHR:PLAC', 'CHR:SOUR', 'CHRA', 'CITN', 'CITY',
 		'COMM', 'CONC', 'CONT', 'CONF', 'CONF:DATE', 'CONF:PLAC', 'CONF:SOUR', 'CONL',
 		'COPR', 'CORP', 'CREM', 'CREM:DATE', 'CREM:PLAC', 'CREM:SOUR', 'CTRY', 'DATA',
@@ -167,6 +167,7 @@ class WT_Gedcom_Tag {
 		case 'CENS:DATE': return WT_I18N::translate('Census date');
 		case 'CENS:PLAC': return WT_I18N::translate('Census place');
 		case 'CHAN': return /* I18N: gedcom tag CHAN */ WT_I18N::translate('Last change');
+		case 'CHAN:DATE': return /* I18N: gedcom tag CHAN:DATE */ WT_I18N::translate('Date of last change');
 		case 'CHAR': return /* I18N: gedcom tag CHAR */ WT_I18N::translate('Character set');
 		case 'CHIL': return /* I18N: gedcom tag CHIL */ WT_I18N::translate('Child');
 		case 'CHR': return /* I18N: gedcom tag CHR */ WT_I18N::translate('Christening');

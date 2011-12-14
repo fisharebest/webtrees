@@ -75,30 +75,46 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	}
 
 	function getOtherFields() {
-		$ofields = array("ADDR","ADDR:CITY","ADDR:STAE","ADDR:CTRY","ADDR:POST",
-			"AFN","EMAIL","FAX",
-			"CHR:DATE","CHR:PLAC",
-			"_BRTM:DATE","_BRTM:PLAC",
-			"BURI:DATE","BURI:PLAC",
-			"CREM:DATE","CREM:PLAC",
+		$ofields = array(
+			"ADDR","ADDR:CITY","ADDR:STAE","ADDR:CTRY","ADDR:POST",
 			"ADOP:DATE","ADOP:PLAC",
-			"BAPM:DATE","BAPM:PLAC","BARM:DATE","BARM:PLAC","BASM:DATE","BASM:PLAC","BLES:DATE","BLES:PLAC",
-			"EVEN","EVEN:DATE","EVEN:PLAC",
-			"FCOM:DATE","FCOM:PLAC",
-			"_MILI","_MILI:DATE","_MILI:PLAC",
-			"ORDN:DATE","ORDN:PLAC",
-			"NATU:DATE","NATU:PLAC","EMIG:DATE","EMIG:PLAC","IMMI:DATE","IMMI:PLAC",
-			"CENS:DATE","CENS:PLAC",
-			"CAST","DSCR",
-			"NATI","OCCU","RELI","TITL",
-			"RESI","RESI:DATE","RESI:PLAC",
-			"NAME:NICK","NAME:_MARNM","NAME:_HEB","NAME:ROMN",
-			"FAMS:CENS:DATE","FAMS:CENS:PLAC","FAMS:DIV:DATE","FAMS:DIV:PLAC",
-			"NOTE","FAMS:NOTE",
+			"AFN",
 			"BAPL:DATE","BAPL:PLAC","BAPL:TEMP",
+			"BAPM:DATE","BAPM:PLAC",
+			"BARM:DATE","BARM:PLAC",
+			"BASM:DATE","BASM:PLAC",
+			"BLES:DATE","BLES:PLAC",
+			"BURI:DATE","BURI:PLAC",
+			"CAST",
+			"CENS:DATE","CENS:PLAC",
+			"CHAN:DATE",
+			"CHR:DATE","CHR:PLAC",
+			"CREM:DATE","CREM:PLAC",
+			"DSCR",
+			"EMAIL",
+			"EMIG:DATE","EMIG:PLAC",
 			"ENDL:DATE","ENDL:PLAC","ENDL:TEMP",
+			"EVEN",
+			"EVEN:DATE","EVEN:PLAC",
+			"FAMS:CENS:DATE","FAMS:CENS:PLAC",
+			"FAMS:DIV:DATE","FAMS:DIV:PLAC",
+			"FAMS:NOTE",
+			"FAMS:SLGS:DATE","FAMS:SLGS:PLAC","FAMS:SLGS:TEMP",
+			"FAX",
+			"FCOM:DATE","FCOM:PLAC",
+			"IMMI:DATE","IMMI:PLAC",
+			"NAME:NICK","NAME:_MARNM","NAME:_HEB","NAME:ROMN",
+			"NATI",
+			"NATU:DATE","NATU:PLAC",
+			"NOTE",
+			"OCCU",
+			"ORDN:DATE","ORDN:PLAC",
+			"RELI",
+			"RESI","RESI:DATE","RESI:PLAC",
 			"SLGC:DATE","SLGC:PLAC","SLGC:TEMP",
-			"FAMS:SLGS:DATE","FAMS:SLGS:PLAC","FAMS:SLGS:TEMP"
+			"TITL",
+			"_BRTM:DATE","_BRTM:PLAC",
+			"_MILI",
 		);
 		// Allow (some of) the user-specified fields to be selected
 		foreach (explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD')) as $fact) {
@@ -264,7 +280,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 
 		// Add the where clause
-		$sql.=" WHERE i_file=?";
+		$sql.=" WHERE ind.i_file=?";
 		$bind[]=WT_GED_ID;
 		for ($i=0; $i<$fct; $i++) {
 			$field = $this->fields[$i];
@@ -354,7 +370,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
-					$sql.=" AND i_d.d_type=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
+					$sql.=" AND i_d.d_fact=? AND i_d.d_julianday1>=? AND i_d.d_julianday2<=?";
 					$bind[]=$parts[0];
 					$bind[]=$jd1;
 					$bind[]=$jd2;
