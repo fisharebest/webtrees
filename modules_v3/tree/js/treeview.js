@@ -45,9 +45,6 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 	var tv = this; // Store "this" for usage within jQuery functions where "this" is not this ;-)
 
 	// Restore user preferences
-	if (readCookie("zoom") != null) {
-		tv.setZoom(parseInt(readCookie("zoom")) / 100);
-	}
 	if (readCookie("compact") == "true") {
 		tv.compact();
 	}
@@ -65,21 +62,6 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 	});
 	
 	// Add click handlers to buttons
-	tv.toolbox.find("#tvbZoomIn").each(function(index, tvbZoomIn) {
-		tvbZoomIn.onclick = function() {
-			tv.setZoom(1.1, tvbZoomIn);
-		}
-	});
-	tv.toolbox.find("#tvbZoomOut").each(function(index, tvbZoomOut) {
-		tvbZoomOut.onclick = function() {
-			tv.setZoom(0.9, tvbZoomOut);
-		}
-	});
-	tv.toolbox.find("#tvbNoZoom").each(function(index, tvbNoZoom) {
-		tvbNoZoom.onclick = function() {
-			tv.setZoom(0, tvbNoZoom);
-		}
-	});
 	tv.toolbox.find("#tvbLeft").each(function(index, tvLeft) {
 		var b = jQuery(tvLeft, tv.toolbox);
 		tvLeft.onclick = function() {
@@ -267,30 +249,6 @@ TreeViewHandler.prototype.updateTree = function(center, button) {
 		}
 		tv.setComplete();
 	}
-	return false;
-}
-
-/**
- * Class TreeView setZoom method
- */
-TreeViewHandler.prototype.setZoom = function(zoom, button) {
-	this.treeview.css("cursor", "wait");
-	jQuery(button).addClass("tvPressed");
-	if (zoom == 0) {
-		this.zoom = 100;
-	} else {
-		this.zoom *= zoom;
-	}
-	this.treeview.css("font-size", this.zoom + "%");
-
-	// we zoom the person boxes only if boxes width is fixed
-	if (!this.auto_box_width) {
-		jQuery(".tv_box:not(.expanded)", this.treeview).css("width", this.boxWidth * (this.zoom / 100) + "px");
-		jQuery(".boxExpanded", this.treeview).css("width", this.boxExpandedWidth * (this.zoom / 100) + "px");
-	}
-	createCookie("zoom", this.zoom.toString(), this.cookieDays);
-	jQuery(button).removeClass("tvPressed");
-	this.treeview.css("cursor", "move");
 	return false;
 }
 
