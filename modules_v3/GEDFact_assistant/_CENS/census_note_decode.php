@@ -25,8 +25,8 @@
 //
 // $Id$
 
-	$text = "xCxAx  <table cellpadding=\"0\"><tr><td>" . $text;
-	$text = str_replace("<br>.start_formatted_area.<br>", "</td></tr></table><table cellpadding=\"0\"><tr><td class=\"notecell\">&nbsp;", $text);
+	$text = "xCxAx<table><tr><td>" . $text;
+	$text = str_replace("<br>.start_formatted_area.<br>", "</td></tr></table><table><tr><td class=\"notecell\">", $text);
 
 		// -- Create View Header Tooltip explanations (Use embolden) -----------
 		$text = str_replace(".b.".'Name',   "<span class=\"note2\" alt=\"".'Full Name or Married name if married'."\"   title=\"".'Full Name or Married name if married'."\">  <b>".'Name'."</span>",   $text);
@@ -88,8 +88,8 @@
 		// Replace "pipe" with </td><td> ------------------------
 		$text = str_replace("|", "&nbsp;&nbsp;</td><td class=\"notecell\">", $text);
 
-	$text = str_replace(".end_formatted_area.<br>", "</td></tr></table><table cellpadding=\"0\"><tr><td>", $text);
-	$text = str_replace("<br>", "</td></tr><tr><td class=\"notecell\">&nbsp;", $text);
+	$text = str_replace(".end_formatted_area.<br>", "</td></tr></table><table><tr><td>", $text);
+	$text = str_replace("<br>", "</td></tr><tr><td class=\"notecell\">", $text);
 	$text = $text . "</td></tr></table>";
 	$text = str_replace("xCxAx", $centitl."<br>", $text);
 	$text = str_replace("Notes:", "<b>Notes:</b>", $text);
