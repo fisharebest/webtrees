@@ -1355,8 +1355,6 @@ function format_surname_table($surnames, $script) {
 		'<th>&nbsp;</th>'.
 		'</tr></thead>';
 
-	$unique_surn=array();
-	$unique_indi=array();
 	$n=0; // We have already sorted the data - use this as a surrogate sort key
 	$html .= '<tbody>';
 	foreach ($surnames as $surn=>$surns) {
@@ -1370,43 +1368,27 @@ function format_surname_table($surnames, $script) {
 		$html.='<tr>';
 		// Surname
 		$html.='<td>';
-		if (count($surns)==1) {
-			// Single surname variant
-			foreach ($surns as $spfxsurn=>$indis) {
-				$html.='<a href="'.$url.'">'.htmlspecialchars($spfxsurn).'</a>';
-				$unique_surn[$spfxsurn]=true;
-				foreach (array_keys($indis) as $pid) {
-					$unique_indi[$pid]=true;
-				}
-			}
-		} else {
-			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
-			foreach ($surns as $spfxsurn=>$indis) {
+		// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
+		foreach ($surns as $spfxsurn=>$indis) {
+			if ($spfxsurn) {
 				$html.='<a href="'.$url.'">'.htmlspecialchars($spfxsurn).'</a><br>';
-				$unique_surn[$spfxsurn]=true;
-				foreach (array_keys($indis) as $pid) {
-					$unique_indi[$pid]=true;
-				}
+			} else {
+				// No surname, but a value from "2 SURN"?  A common workaround for toponyms, etc.
+				$html.='<a href="'.$url.'">'.htmlspecialchars($surn).'</a><br>';
 			}
 		}
 		$html.='</td>';
-		// Sort column for name
+		// Surrogate sort column for name
 		$html.='<td>'.$n++.'</td>';
 		// Surname count
 		$html.='<td>';
-		if (count($surns)==1) {
-			// Single surname variant
-			foreach ($surns as $spfxsurn=>$indis) {
-				$subtotal=count($indis);
-				$html.= WT_I18N::number($subtotal);
-			}
-		} else {
-			$subtotal=0;
-			// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
-			foreach ($surns as $spfxsurn=>$indis) {
-				$subtotal+=count($indis);
-				$html.=WT_I18N::number(count($indis)).'<br>';
-			}
+		$subtotal=0;
+		foreach ($surns as $spfxsurn=>$indis) {
+			$subtotal+=count($indis);
+			$html.=WT_I18N::number(count($indis)).'<br>';
+		}
+		// More than one surname variant? Show a subtotal
+		if (count($surns)>1) {
 			$html.=WT_I18N::number($subtotal);
 		}
 		$html.='</td>';
