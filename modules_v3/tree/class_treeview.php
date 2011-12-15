@@ -71,7 +71,7 @@ class TreeView {
       $path = 'individual.php?pid='.$rootPerson->getXref().'&amp;ged='.$GEDCOM.'&allPartners='.($this->allPartners ? "false" : "true").'#tree';
     else
       $path = 'module.php?mod=tree&amp;mod_action=treeview&amp;rootid='.$rootPerson->getXref().'&amp;allPartners='.($this->allPartners ? "false" : "true");
-    $r = '<a name="tv_content"></a><div id="'.$this->name.'_out" dir="ltr" class="tv_out">';
+    $r = '<a name="tv_content"></a><div id="'.$this->name.'_out" class="tv_out">';
     
 		// Add the toolbar
 		$r.=
@@ -86,7 +86,7 @@ class TreeView {
 </ul>';
 		$r.='</div><h2 id="tree-title">'.
     		WT_I18N::translate('Interactive tree of %s',$rootPerson->getFullName()).
-    		'</h2><div id="'.$this->name.'_in" class="tv_in">';
+    		'</h2><div id="'.$this->name.'_in" class="tv_in" dir="ltr">';
     $parent = null;
     $r.=$this->drawPerson($rootPerson, $generations, 0, $parent, '', true);
     $r.='</div></div>'; // Close the tv_in and the tv_out div
