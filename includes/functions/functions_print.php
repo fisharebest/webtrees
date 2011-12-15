@@ -504,12 +504,12 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		if ($brpos !== false) {
 			$data .= '<span class="field">'.substr($text, 0, $brpos).'</span>';
 			if ($npage) {
-				$data .= substr($text, $brpos + 6) . "</div>";
+				$data .= substr($text, $brpos + 4) . "</div>";
 			} else {
 				$data .= '<div id="'.$elementID.'"';
 				if ($EXPAND_NOTES) $data .= ' style="display:block"';
 				$data .= ' class="note_details font11">';
-				$data .= substr($text, $brpos + 6);
+				$data .= substr($text, $brpos + 4);
 				$data .= '</div>';
 			}
 		} else {
