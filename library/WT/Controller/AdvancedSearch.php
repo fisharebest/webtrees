@@ -79,7 +79,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			'ADDR','ADDR:CITY','ADDR:STAE','ADDR:CTRY','ADDR:POST',
 			'ADOP:DATE','ADOP:PLAC',
 			'AFN',
-			'BAPL:DATE','BAPL:PLAC','BAPL:TEMP',
+			'BAPL:DATE','BAPL:PLAC',
 			'BAPM:DATE','BAPM:PLAC',
 			'BARM:DATE','BARM:PLAC',
 			'BASM:DATE','BASM:PLAC',
@@ -93,13 +93,13 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			'DSCR',
 			'EMAIL',
 			'EMIG:DATE','EMIG:PLAC',
-			'ENDL:DATE','ENDL:PLAC','ENDL:TEMP',
+			'ENDL:DATE','ENDL:PLAC',
 			'EVEN',
 			'EVEN:DATE','EVEN:PLAC',
 			'FAMS:CENS:DATE','FAMS:CENS:PLAC',
 			'FAMS:DIV:DATE','FAMS:DIV:PLAC',
 			'FAMS:NOTE',
-			'FAMS:SLGS:DATE','FAMS:SLGS:PLAC','FAMS:SLGS:TEMP',
+			'FAMS:SLGS:DATE','FAMS:SLGS:PLAC',
 			'FAX',
 			'FCOM:DATE','FCOM:PLAC',
 			'IMMI:DATE','IMMI:PLAC',
@@ -111,7 +111,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			'ORDN:DATE','ORDN:PLAC',
 			'RELI',
 			'RESI','RESI:DATE','RESI:PLAC',
-			'SLGC:DATE','SLGC:PLAC','SLGC:TEMP',
+			'SLGC:DATE','SLGC:PLAC',
 			'TITL',
 			'_BRTM:DATE','_BRTM:PLAC',
 			'_MILI',
@@ -121,6 +121,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			if (
 				$fact!='BIRT' &&
 				$fact!='DEAT' &&
+				$fact!='ASSO' &&
 				!in_array($fact, $ofields) &&
 				!in_array("{$fact}:DATE", $ofields) &&
 				!in_array("{$fact}:PLAC", $ofields)
@@ -129,11 +130,22 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			}
 		}
 		$fields=array();
-		uasort($fields, 'utf8_strcasecmp');
 		foreach ($ofields as $field) {
 			$fields[$field]=WT_Gedcom_Tag::GetLabel($field);
 		}
+		uksort($fields, array('WT_Controller_AdvancedSearch', 'tagSort'));
 		return $fields;
+	}
+
+	public static function tagSort($x, $y) {
+		list($x1)=explode(':', $x.':');
+		list($y1)=explode(':', $y.':');
+		$tmp=utf8_strcasecmp(WT_Gedcom_Tag::getLabel($x1), WT_Gedcom_Tag::getLabel($y1));
+		if ($tmp) {
+			return $tmp;
+		} else {
+			return utf8_strcasecmp(WT_Gedcom_Tag::getLabel($x), WT_Gedcom_Tag::getLabel($y));
+		}
 	}
 
 	function getValue($i) {
