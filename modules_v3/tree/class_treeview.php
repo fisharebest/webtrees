@@ -76,13 +76,6 @@ class TreeView {
 		// Add the toolbar
 		$r.=
 			'<div id="tv_tools"><ul>'.
-			'<li id="tvbZoomIn" class="tv_button"><img src="'.$WT_IMAGES['zoomin'].'" alt="'.WT_I18N::translate('Zoom in').'" title="'.WT_I18N::translate('Zoom in').'"></li>'.
-			'<li id="tvbZoomOut" class="tv_button"><img src="'.$WT_IMAGES['zoomout'].'" alt="'.WT_I18N::translate('Zoom out').'" title="'.WT_I18N::translate('Zoom out').'"></li>'.
-			'<li id="tvbNoZoom" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/zoom0.png" alt="'.WT_I18N::translate('Reset').'" title="'.WT_I18N::translate('Reset').'"></li>'.
-			'<li id="tvbLeft" class="tv_button"><img src="'.$WT_IMAGES['ldarrow'].'" alt="'.WT_I18N::translate('Align left').'" title="'.WT_I18N::translate('Align left').'"></li>'.
-			'<li id="tvbCenter" class="tv_button"><img src="'.$WT_IMAGES['center'].'" alt="'./* I18N: verb/action */ WT_I18N::translate('Center').'" title="'.WT_I18N::translate('Center').'"></li>'.
-			'<li id="tvbRight" class="tv_button"><img src="'.$WT_IMAGES['rdarrow'].'" alt="'.WT_I18N::translate('Align right').'" title="'.WT_I18N::translate('Align right').'"></li>'.
-			'<li id="tvbDates" class="tv_button tvPressed"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/dates.png" alt="'.WT_I18N::translate('Show year of birth and death').'" title="'.WT_I18N::translate('Show year of birth and death').'"></li>'.
 			'<li id="tvbCompact" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/compact.png" alt="'.WT_I18N::translate('Use compact layout').'" title="'.WT_I18N::translate('Use compact layout').'"></li>'.
 			// TODO: this is temporarily disabled (as it sends a flood of AJAX requests?)
 			//'<li id="tvbOpen" class="tv_button"><img src="'.$WT_IMAGES["media"].'" alt="o" title="'.WT_I18N::translate('Show all details').'"></li>'.
@@ -91,7 +84,9 @@ class TreeView {
     // Hidden loading image
 		$r.='<li class="tv_button" id="'.$this->name.'_loading"><img src="'.WT_STATIC_URL.'images/loading.gif" alt="Loading..."></li>
 </ul>';
-		$r.='</div><div id="'.$this->name.'_in" class="tv_in">';
+		$r.='</div><h2 id="tree-title">'.
+    		WT_I18N::translate('Interactive tree of %s',$rootPerson->getFullName()).
+    		'</h2><div id="'.$this->name.'_in" class="tv_in">';
     $parent = null;
     $r.=$this->drawPerson($rootPerson, $generations, 0, $parent, '', true);
     $r.='</div></div>'; // Close the tv_in and the tv_out div
@@ -262,9 +257,7 @@ class TreeView {
     }
 
     if ($isRoot)
-    	$r = '<table id="tvTreeBorder" class="tv_tree"><tbody><tr><td id="tv_tree_topleft"></td><td id="tv_tree_top"><div>'.
-    		WT_I18N::translate('Interactive tree of %s',$person->getFullName()).
-    		'</div></td><td id="tv_tree_topright"></td></tr><tr><td id="tv_tree_left"></td><td>';
+    	$r = '<table id="tvTreeBorder" class="tv_tree"><tbody><tr><td id="tv_tree_topleft"></td><td id="tv_tree_top"></td><td id="tv_tree_topright"></td></tr><tr><td id="tv_tree_left"></td><td>';
     else $r = '';
     /* height 1% : this hack enable the div auto-dimensionning in td for FF & Chrome */
     $r .= '<table class="tv_tree"'.($isRoot ? ' id="tv_tree"' : '').' style="height: 1%"><tbody><tr>';
