@@ -635,7 +635,7 @@ class WT_Stats {
 	}
 
 	function totalSexMalesPercentage() {
-		return $this->_getPercentage($this->totalSexMales(), 'individual');
+		return $this->_getPercentage($this->_totalSexMales(), 'individual');
 	}
 
 	function _totalSexFemales() {
