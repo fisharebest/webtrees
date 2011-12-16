@@ -207,7 +207,7 @@ table#tvTreeBorder td, #tv_tree {
   float: right;
 }
 #tv_tree div.tv_box div.tv_person_expanded {
-  min-height: 50px;
+  min-height: 55px;
   padding: 2px;
 }
 #tv_tree div.tv_box img.pedigree_image_portrait, #tv_tree div.tv_box img.pedigree_image_landscape {
