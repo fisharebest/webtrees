@@ -191,7 +191,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				break;
 			case 'm':
 				$rows=WT_DB::prepare(
-					"SELECT 'OBJE' AS type, m_media AS xref, m_gedfile AS ged_id, m_gedrec AS gedrec".
+					"SELECT 'OBJE' AS type, m_media AS xref, m_gedfile AS ged_id, m_gedrec AS gedrec, m_titl, m_file".
 					" FROM `##media`".
 					" WHERE m_gedfile=?".
 					" ORDER BY m_media".
