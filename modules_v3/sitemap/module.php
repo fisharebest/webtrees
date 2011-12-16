@@ -162,7 +162,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 					" LIMIT ".self::RECORDS_PER_VOLUME." OFFSET ".($volume*self::RECORDS_PER_VOLUME)
 				)->execute(array($ged_id))->fetchAll(PDO::FETCH_ASSOC);
 				foreach ($rows as $row) {
-					$records[]=WT_Sourcen::getInstance($row);
+					$records[]=WT_Source::getInstance($row);
 				}
 				break;
 			case 'r':
