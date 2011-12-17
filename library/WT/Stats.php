@@ -720,7 +720,7 @@ class WT_Stats {
 	}
 
 	function totalLivingPercentage() {
-		return $this->_getPercentage($this->totalLiving(), 'individual');
+		return $this->_getPercentage($this->_totalLiving(), 'individual');
 	}
 
 	function _totalDeceased() {
@@ -735,7 +735,7 @@ class WT_Stats {
 	}
 
 	function totalDeceasedPercentage() {
-		return $this->_getPercentage($this->totalDeceased(), 'individual');
+		return $this->_getPercentage($this->_totalDeceased(), 'individual');
 	}
 
 	function chartMortality($params=null) {
