@@ -675,7 +675,7 @@ case 'addnewsource':
 			}
 		?>
 		</table>
-			<a href="#"  onclick="return expand_layer('events');"><img id="events_img" src="<?php echo $WT_IMAGES["plus"]; ?>" width="11" height="11" alt="" title="">
+			<a href="#"  onclick="return expand_layer('events');"><img id="events_img" src="<?php echo $WT_IMAGES['plus']; ?>" width="11" height="11" alt="" title="">
 			<?php echo WT_I18N::translate('Associate events with this source'); ?></a><?php echo help_link('edit_SOUR_EVEN'); ?>
 			<div id="events" style="display: none;">
 			<table class="facts_table">
@@ -684,22 +684,22 @@ case 'addnewsource':
 				<td class="optionbox wrap"><select name="EVEN[]" multiple="multiple" size="5">
 					<?php
 					$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'INDI_FACTS_ADD'));
-					foreach ($parts as $p=>$key) {
-						?><option value="<?php echo $key; ?>"><?php echo WT_I18N::translate($key). " ($key)"; ?></option>
+					foreach ($parts as $key) {
+						?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
 					<?php
 					}
 					$parts = explode(',', get_gedcom_setting(WT_GED_ID, 'FAM_FACTS_ADD'));
-					foreach ($parts as $p=>$key) {
-						?><option value="<?php echo $key; ?>"><?php echo WT_I18N::translate($key). " ($key)"; ?></option>
+					foreach ($parts as $key) {
+						?><option value="<?php echo $key; ?>"><?php echo WT_Gedcom_Tag::getLabel($key); ?></option>
 					<?php
 					}
 					?>
 				</select></td>
 			</tr>
 			<?php
-			add_simple_tag("0 DATE", "EVEN");
-			add_simple_tag("0 PLAC", "EVEN");
-			add_simple_tag("0 AGNC");
+			add_simple_tag('0 DATE', 'EVEN');
+			add_simple_tag('0 PLAC', 'EVEN');
+			add_simple_tag('0 AGNC');
 			?>
 			</table>
 			</div>
