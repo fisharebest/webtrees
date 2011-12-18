@@ -31,13 +31,12 @@ if (!defined('WT_WEBTREES')) {
 echo
 	'<div id="out-', $boxID, '" ', $outBoxAdd, '>';
 	if ($show_full) { 
-			echo '<div class="noprint" id="icons-',$boxID,'"';
-			echo 'style="',$iconsStyleAdd,' width: 25px; height: 50px">';
-			echo $icons;
-			echo '</div>';
+		echo '<div class="noprint" id="icons-',$boxID,'"';
+		echo 'style="',$iconsStyleAdd,' width: 25px; height: 50px">';
+		echo $icons;
+		echo '</div>';
 	}	
-
-echo
+		echo $thumbnail,
 		'<a class="name', $style, ' ', $classfacts, '" onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">', $name.$addname, '</a>',
 		'<div id="inout2-', $boxID, '" class="details', $style, '" style="display:block; overflow:hidden; max-height: ', $bheight*.9, 'px">', $BirthDeath, '</div>',
 		'<div id="inout-', $boxID, '" style="display:none;"><div id="LOADING-inout-', $boxID, '"></div></div>',
