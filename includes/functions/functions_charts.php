@@ -127,6 +127,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 	$hfams = $husb->getChildFamilies();
 	$hparents = false;
 	$upfamid = "";
+
 	if (count($hfams) > 0 or ($sosa != 0 and $SHOW_EMPTY_BOXES)) {
 		echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td rowspan=\"2\"><img src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"" . ($pbheight+9) . "\" alt=\"\"></td>";
 		echo "<td><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" alt=\"\"></td><td>";
@@ -322,6 +323,8 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 				if ($sosa != 0) {
 					// loop for all families where current child is a spouse
 					$famids = WT_Person::getInstance($chil)->getSpouseFamilies();
+					
+					
 					$maxfam = count($famids)-1;
 					for ($f=0; $f<=$maxfam; $f++) {
 						$famid_child = $famids[$f]->getXref();
@@ -336,8 +339,21 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							else echo " align=\"right\">";
 							//if ($f==$maxfam) echo "<img height=\"50%\"";
 							//else echo "<img height=\"100%\"";
-							if ($f==$maxfam) echo "<img height=\"".($pbheight/2-3)."px\"";
-							else echo "<img height=\"".$pbheight."px\"";
+							
+							//find out how many cousins there are to establish vertical line on second families
+							$family=WT_Family::getInstance($famid_child);
+							$fchildren=$family->getChildren();
+							$kids = count($fchildren);
+							if ($kids==0) $kids+=1;
+							if ($kids>1) $kids-=1;
+							$adder = 0;
+							if ($kids==1) $adder=6;
+								elseif ($kids==2) $adder=18;
+									elseif ($kids==3) $adder=38;
+										else $adder=(((($kids-3)/2)*$pbheight/2)+10);
+
+							if ($f==$maxfam) echo "<img height=\"".((($pbheight-14)/2)+$adder)."px\"";
+							else echo "<img height=\"".($pbheight+$adder)."px\"";
 							echo " width=\"3\" src=\"".$WT_IMAGES["vline"]."\" alt=\"\">";
 							echo "</td>";
 						}
