@@ -578,19 +578,19 @@ width:99%;
 
 .person_box {
 background:#ddf;
-border:1px solid #999;
+border:1px solid #AAA;
 padding:3px;
 }
 
 .person_boxF {
 background:#fdd;
-border:1px solid #f28;
+border:1px solid #AAA;
 padding:3px;
 }
 
 .person_boxNN {
 background:#fff;
-border:1px solid #CCC;
+border:1px solid #AAA;
 padding:3px;
 }
 
