@@ -1725,7 +1725,7 @@ case 'editname':
 	// Hide the private data
 	$tmp=new WT_GedcomRecord($gedrec);
 	list($gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
-
+	$person=WT_Person::getInstance($pid);
 	$gedlines = explode("\n", trim($gedrec));
 	$fields = explode(' ', $gedlines[$linenum]);
 	$glevel = $fields[0];
@@ -1735,15 +1735,16 @@ case 'editname':
 		$namerec.="\n".$gedlines[$i];
 		$i++;
 	}
-	print_indi_form("update", "", $linenum, $namerec);
+	print_indi_form('update', '', $linenum, $namerec, '', $person->getSex());
 	break;
 //------------------------------------------------------------------------------
 case 'addname':
-	print_indi_form("update", "", "new", "NEW");
+	$person=WT_Person::getInstance($pid);
+	print_indi_form('update', '', 'new', 'NEW', '', $person->getSex());
 	break;
 //------------------------------------------------------------------------------
 case 'paste':
-	$gedrec .= "\n".$WT_SESSION->clipboard[$fact]["factrec"]."\n";
+	$gedrec .= "\n".$WT_SESSION->clipboard[$fact]['factrec']."\n";
 	if (replace_gedrec($pid, WT_GED_ID, $gedrec, $NO_UPDATE_CHAN)) {
 		$success=true;
 	}
@@ -1760,9 +1761,9 @@ case 'reorder_media': // Sort page using Popup
 //------------------------------------------------------------------------------
 case 'reset_media_update': // Reset sort using popup
 	$lines = explode("\n", $gedrec);
-	$newgedrec = "";
+	$newgedrec = '';
 	foreach ($lines as $line) {
-		if (strpos($line, "1 _WT_OBJE_SORT")===false) {
+		if (strpos($line, '1 _WT_OBJE_SORT')===false) {
 			$newgedrec .= $line."\n";
 		}
 	}
@@ -1774,23 +1775,23 @@ case 'reset_media_update': // Reset sort using popup
 //------------------------------------------------------------------------------
 case 'reorder_media_update': // Update sort using popup
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
-    if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
+	if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
-		if (strpos($line, "1 _WT_OBJE_SORT")===false) {
+		if (strpos($line, '1 _WT_OBJE_SORT')===false) {
 			$newgedrec .= $line."\n";
 		}
 	}
 	foreach ($order1 as $m_media=>$num) {
-		$newgedrec .= "1 _WT_OBJE_SORT @".$m_media."@\n";
+		$newgedrec .= '1 _WT_OBJE_SORT @'.$m_media."@\n";
 	}
 	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
 		$success=true;
 	}
-	echo "<br>", WT_I18N::translate('Update successful'), "<br><br>";
+	echo '<br>', WT_I18N::translate('Update successful'), '<br><br>';
 
-	if ($currtab=="album") {
+	if ($currtab=='album') {
 		$link = "individual.php?pid=$pid#lightbox";
 	} else {
 		$link = "individual.php?pid=$pid#media";
