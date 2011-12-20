@@ -203,6 +203,18 @@ class WT_Controller_Clippings {
 						$record=str_replace($match[0], '', $record);
 					}
 				}
+				preg_match_all('/\n2 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@(\n[3-9].*)*/', $record, $matches, PREG_SET_ORDER);
+				foreach ($matches as $match) {
+					if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
+						$record=str_replace($match[0], '', $record);
+					}
+				}
+				preg_match_all('/\n3 '.WT_REGEX_TAG.' @('.WT_REGEX_XREF.')@(\n[4-9].*)*/', $record, $matches, PREG_SET_ORDER);
+				foreach ($matches as $match) {
+					if (!array_key_exists($match[1], $WT_SESSION->cart[WT_GED_ID])) {
+						$record=str_replace($match[0], '', $record);
+					}
+				}
 				$record = convert_media_path($record, $this->conv_path, $this->conv_slashes);
 				$savedRecord = $record; // Save this for the "does this file exist" check
 				if ($convert=='yes') {
