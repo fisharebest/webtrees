@@ -386,7 +386,7 @@ class WT_Controller_Clippings {
 	}
 
 	// Helper function to sort records by type/name
-	function compare_clippings($a, $b) {
+	static function compare_clippings($a, $b) {
 		$a=WT_GedcomRecord::getInstance($a);
 		$b=WT_GedcomRecord::getInstance($b);
 		if ($a && $b) {
