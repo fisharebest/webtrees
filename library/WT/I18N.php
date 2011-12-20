@@ -37,7 +37,7 @@ class WT_I18N {
 	const UTF8_LRE="\xE2\x80\xAB"; // U+202B  (Right to Left embedding: treat everything following as RTL text)
 	const UTF8_PDF="\xE2\x80\xAC"; // U+202C  (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
 
-	static private $locale='';
+	static public  $locale='';
 	static private $dir='';
 	static public  $collation;
 	static public  $list_separator;
@@ -110,9 +110,6 @@ class WT_I18N {
 				}
 			}
 		}
-		// We now have a valid locale.  Remember it.
-		$WT_SESSION->locale=$locale;
-
 		// Load the translation file
 		$translate=new Zend_Translate('gettext', WT_ROOT.'language/'.$locale.'.mo', $locale);
 
