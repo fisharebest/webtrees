@@ -48,7 +48,8 @@
 .facts_label03,
 .facts_table h2,
 .facts_table .descriptionbox a,
-.blockcontent .facts_label
+.blockcontent .facts_label,
+#find-header
 {
 	background-color:#F75993;
 	color: #ffffff;
@@ -75,7 +76,8 @@
 .list_value_wrap,
 .tab_cell_active,
 .news_box, .optionbox,
-.submenuitem_hover
+.submenuitem_hover,
+#find-output, #find-output-special
 {
 	background:#fbdaed;
 }

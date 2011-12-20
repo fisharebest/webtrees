@@ -202,9 +202,8 @@ $options["form"][]= "formnote";
 $options["form"][]= "formsource";
 $options["form"][]= "formspecialchar";
 
-echo "<div align=\"center\">";
-echo "<table class=\"list_table width90\" border=\"0\">";
-echo "<tr><td style=\"padding: 10px;\" valign=\"top\" class=\"facts_label03 width90\">"; // start column for find text header
+echo '<div id="find-page">
+<h3>'; // header title
 
 switch ($type) {
 case "indi":
@@ -236,177 +235,144 @@ case "facts":
 	break;
 }
 
-echo "</td>"; // close column for find text header
+echo "</h3>"; // close header title
 
-// start column for find options
-echo "</tr><tr><td class=\"list_value\" style=\"padding: 5px;\">";
 
 // Show indi and hide the rest
 if ($type == "indi") {
-	echo "<div align=\"center\">";
-	echo "<form name=\"filterindi\" method=\"get\" onsubmit=\"return checknames(this);\" action=\"find.php\">";
-	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\">";
-	echo "<input type=\"hidden\" name=\"action\" value=\"filter\">";
-	echo "<input type=\"hidden\" name=\"type\" value=\"indi\">";
-	echo "<input type=\"hidden\" name=\"multiple\" value=\"$multiple\">";
-	echo "<table class=\"list_table width100\" border=\"0\">";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo WT_I18N::translate('Name contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo '<div id="find-header">
+	<form name="filterindi" method="get" onsubmit="return checknames(this);" action="find.php">
+	<input type="hidden" name="callback" value="'.$callback.'">
+	<input type="hidden" name="action" value="filter">
+	<input type="hidden" name="type" value="indi">
+	<input type="hidden" name="multiple" value="$multiple">
+	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
+	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo "\">";
-	echo "</td></tr>";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" value=\"", WT_I18N::translate('Filter'), "\"><br>";
-	echo "</td></tr></table>";
-	echo "</form></div>";
+	echo '">
+	<input type="submit" value="', WT_I18N::translate('Filter'), '">
+	</form></div>';
 }
 
 // Show fam and hide the rest
 if ($type == "fam") {
-	echo "<div align=\"center\">";
-	echo "<form name=\"filterfam\" method=\"get\" onsubmit=\"return checknames(this);\" action=\"find.php\">";
-	echo "<input type=\"hidden\" name=\"action\" value=\"filter\">";
-	echo "<input type=\"hidden\" name=\"type\" value=\"fam\">";
-	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\">";
-	echo "<input type=\"hidden\" name=\"multiple\" value=\"$multiple\">";
-	echo "<table class=\"list_table width100\" border=\"0\">";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo WT_I18N::translate('Name contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo '<div id="find-header">
+	<form name="filterfam" method="get" onsubmit="return checknames(this);" action="find.php">
+	<input type="hidden" name="callback" value="'.$callback.'">
+	<input type="hidden" name="action" value="filter">
+	<input type="hidden" name="type" value="fam">
+	<input type="hidden" name="multiple" value="$multiple">
+	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
+	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo "\">";
-	echo "</td></tr>";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" value=\"", WT_I18N::translate('Filter'), "\"><br>";
-	echo "</td></tr></table>";
-	echo "</form></div>";
+	echo '">
+	<input type="submit" value="', WT_I18N::translate('Filter'), '">
+	</form></div>';
 }
 
 // Show media and hide the rest
 if ($type == 'media') {
-	echo "<div align=\"center\">";
-	echo "<form name=\"filtermedia\" method=\"get\" onsubmit=\"return checknames(this);\" action=\"find.php\">";
-	echo "<input type=\"hidden\" name=\"choose\" value=\"", $choose, "\">";
-	echo "<input type=\"hidden\" name=\"directory\" value=\"", $directory, "\">";
-	echo "<input type=\"hidden\" name=\"thumbdir\" value=\"", $thumbdir, "\">";
-	echo "<input type=\"hidden\" name=\"level\" value=\"", $level, "\">";
-	echo "<input type=\"hidden\" name=\"action\" value=\"filter\">";
-	echo "<input type=\"hidden\" name=\"type\" value=\"media\">";
-	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\">";
-	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table width100\" border=\"0\">";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo WT_I18N::translate('Media contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo '<div id="find-header">
+	<form name="filtermedia" method="get" onsubmit="return checknames(this);" action="find.php">
+	<input type="hidden" name="choose" value="', $choose, '">
+	<input type="hidden" name="directory" value="', $directory, '">
+	<input type="hidden" name="thumbdir" value="', $thumbdir, '">
+	<input type="hidden" name="level" value="', $level, '">
+	<input type="hidden" name="action" value="filter">
+	<input type="hidden" name="type" value="media">
+	<input type="hidden" name="callback" value="', $callback, '">
+	<input type="hidden" name="subclick">
+	<span>', WT_I18N::translate('Media contains:'), '</span>
+	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo "\">";
-	echo help_link('simple_filter');
-	echo "</td></tr>";
-	echo "<tr><td class=\"list_label width10\" wstyle=\"padding: 5px;\">";
-	echo "<input type=\"checkbox\" name=\"showthumb\" value=\"true\"";
-	if ($showthumb) echo "checked=\"checked\"";
-	echo "onclick=\"this.form.submit();\">", WT_I18N::translate('Show thumbnails');
-	echo "</td></tr>";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\">&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\">";
-	echo "</td></tr></table>";
-	echo "</form></div>";
+	echo '">',
+	help_link('simple_filter'),
+	'<p><input type="checkbox" name="showthumb" value="true"';
+	if ($showthumb) echo 'checked="checked" ';
+	echo 'onclick="this.form.submit();"><span>', WT_I18N::translate('Show thumbnails'), '</span></p>
+	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick=\"this.form.subclick.value=this.name\">
+	</p></form></div>';
 }
 
 // Show place and hide the rest
 if ($type == "place") {
-	echo "<div align=\"center\">";
-	echo "<form name=\"filterplace\" method=\"get\"  onsubmit=\"return checknames(this);\" action=\"find.php\">";
-	echo "<input type=\"hidden\" name=\"action\" value=\"filter\">";
-	echo "<input type=\"hidden\" name=\"type\" value=\"place\">";
-	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\">";
-	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table width100\" border=\"0\">";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo WT_I18N::translate('Place contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo '<div id="find-header">
+	<form name="filterplace" method="get"  onsubmit="return checknames(this);" action="find.php">
+	<input type="hidden" name="action" value="filter">
+	<input type="hidden" name="type" value="place">
+	<input type="hidden" name="callback" value="', $callback, '">
+	<input type="hidden" name="subclick">
+	<span>', WT_I18N::translate('Place contains:'), '</span>
+	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo "\">";
-	echo "</td></tr>";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\">&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\">";
-	echo "</td></tr></table>";
-	echo "</form></div>";
+	echo '">
+	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+	</p></form></div>';
 }
 
 // Show repo and hide the rest
 if ($type == "repo") {
-	echo "<div align=\"center\">";
-	echo "<form name=\"filterrepo\" method=\"get\" onsubmit=\"return checknames(this);\" action=\"find.php\">";
-	echo "<input type=\"hidden\" name=\"action\" value=\"filter\">";
-	echo "<input type=\"hidden\" name=\"type\" value=\"repo\">";
-	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\">";
-	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table width100\" border=\"0\">";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo WT_I18N::translate('Repository contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo '<div id="find-header">
+	<form name="filterrepo" method="get" onsubmit="return checknames(this);" action="find.php">
+	<input type="hidden" name="action" value="filter">
+	<input type="hidden" name="type" value="repo">
+	<input type="hidden" name="callback" value="', $callback, '">
+	<input type="hidden" name="subclick">
+	<span>', WT_I18N::translate('Repository contains:'), '</span>
+	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo "\">";
-	echo "</td></tr>";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\">&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\">";
-	echo "</td></tr></table>";
-	echo "</form></div>";
+	echo '">
+	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+	</td></tr></table>
+	</p></form></div>';
 }
 
 // Show Shared Notes and hide the rest
 if ($type == "note") {
-	echo "<div align=\"center\">";
-	echo "<form name=\"filternote\" method=\"get\" onsubmit=\"return checknames(this);\" action=\"find.php\">";
-	echo "<input type=\"hidden\" name=\"action\" value=\"filter\">";
-	echo "<input type=\"hidden\" name=\"type\" value=\"note\">";
-	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\">";
-	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table width100\" border=\"0\">";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo WT_I18N::translate('Shared Note contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo '<div id="find-header">
+	<form name="filternote" method="get" onsubmit="return checknames(this);" action="find.php">
+	<input type="hidden" name="action" value="filter">
+	<input type="hidden" name="type" value="note">
+	<input type="hidden" name="callback" value="', $callback, '">
+	<input type="hidden" name="subclick">
+	<span>', WT_I18N::translate('Shared Note contains:'), '</span>
+	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo "\">";
-	echo "</td></tr>";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\">&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\">";
-	echo "</td></tr></table>";
-	echo "</form></div>";
+	echo '">
+	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+	</p></form></div>';
 }
 
 // Show source and hide the rest
 if ($type == "source") {
-	echo "<div align=\"center\">";
-	echo "<form name=\"filtersource\" method=\"get\" onsubmit=\"return checknames(this);\" action=\"find.php\">";
-	echo "<input type=\"hidden\" name=\"action\" value=\"filter\">";
-	echo "<input type=\"hidden\" name=\"type\" value=\"source\">";
-	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\">";
-	echo "<input type=\"hidden\" name=\"subclick\">"; // This is for passing the name of which submit button was clicked
-	echo "<table class=\"list_table width100\" border=\"0\">";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo WT_I18N::translate('Source contains:'), " <input type=\"text\" name=\"filter\" value=\"";
+	echo '<div id="find-header">
+	<form name="filtersource" method="get" onsubmit="return checknames(this);" action="find.php">
+	<input type="hidden" name="action" value="filter">
+	<input type="hidden" name="type" value="source">
+	<input type="hidden" name="callback" value="', $callback, '">
+	<input type="hidden" name="subclick">
+	<span>', WT_I18N::translate('Source contains:'), '</span>
+	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
-	echo "\">";
-	echo "</td></tr>";
-	echo "<tr><td class=\"list_label width10\" style=\"padding: 5px;\">";
-	echo "<input type=\"submit\" name=\"search\" value=\"", WT_I18N::translate('Filter'), "\" onclick=\"this.form.subclick.value=this.name\">&nbsp;";
-	echo "<input type=\"submit\" name=\"all\" value=\"", WT_I18N::translate('Display all'), "\" onclick=\"this.form.subclick.value=this.name\">";
-	echo "</td></tr></table>";
-	echo "</form></div>";
+	echo '">
+	<p><input type="submit" name="search" value="', WT_I18N::translate('Filter'), '" onclick="this.form.subclick.value=this.name">&nbsp;
+	<input type="submit" name="all" value="', WT_I18N::translate('Display all'), '" onclick="this.form.subclick.value=this.name">
+	</p></form></div>';
 }
 
 // Show specialchar and hide the rest
 if ($type == 'specialchar') {
-	echo '<div align="center">';
-	echo '<form name="filterspecialchar" method="get" action="find.php">';
-	echo '<input type="hidden" name="action" value="filter">';
-	echo '<input type="hidden" name="type" value="specialchar">';
-	echo '<input type="hidden" name="callback" value="'.$callback.'">';
-	echo '<table class="list_table width100">';
-	echo '<tr><td class="list_label">';
-	echo '<select id="language_filter" name="language_filter" onchange="submit();">';
-	echo '<option value="">', WT_I18N::translate('Change language'), '</option>';
+	echo '<div id="find-header">
+	<form name="filterspecialchar" method="get" action="find.php">
+	<input type="hidden" name="action" value="filter">
+	<input type="hidden" name="type" value="specialchar">
+	<input type="hidden" name="callback" value="'.$callback.'">
+	<p><select id="language_filter" name="language_filter" onchange="submit();">
+	<option value="">', WT_I18N::translate('Change language'), '</option>';
 	$language_options = '';
 	foreach ($specialchar_languages as $key=>$value) {
 		$language_options.= '<option value="'.$key.'"';
@@ -415,24 +381,22 @@ if ($type == 'specialchar') {
 		}
 		$language_options.='>'.$value.'</option>';
 	}
-	echo $language_options;
-	echo '</select><br>';
-	echo '</td></tr></table>';
-	echo '</form></div>';
+	echo $language_options,
+	'</select>
+	</p></form></div>';
 }
 
 // Show facts
 if ($type == "facts") {
-	echo "<div align=\"center\">";
-	echo "<form name=\"filterfacts\" method=\"get\" action=\"find.php\" >";
-	echo "<input type=\"hidden\" name=\"type\" value=\"facts\">";
-	echo "<input type=\"hidden\" name=\"tags\" value=\"$qs\">";
-	echo "<input type=\"hidden\" name=\"callback\" value=\"$callback\">";
-	echo "<table class=\"list_table width100\" border=\"0\">";
-	echo "<tr><td class=\"list_label\" style=\"padding: 5px; font-weight: normal; white-space: normal;\">";
+	echo '<div id="find-facts-header">
+	<form name="filterfacts" method="get" action="find.php"
+	input type="hidden" name="type" value="facts">
+	<input type="hidden" name="tags" value="', $qs, '">
+	<input type="hidden" name="callback" value="', $callback, '">
+	<table class="list_table width100" border="0">
+	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">' ;
 	getPreselectedTags($preselDefault, $preselCustom);
-	?>
-	<?php echo WT_JS_START; ?>
+	echo WT_JS_START; ?>
 	// A class representing a default tag
 	function DefaultTag(id, name, selected) {
 		this.Id=id;
@@ -569,42 +533,34 @@ if ($type == "facts") {
 		window.close();
 		return false;
 	}
-	<?php echo WT_JS_END; ?>
-	<div id="layDefinedTags"><table id="tabDefinedTags">
+	<?php echo WT_JS_END;
+	echo '<div id="layDefinedTags"><table id="tabDefinedTags">
 		<thead><tr>
 			<th>&nbsp;</th>
-			<th><?php echo WT_I18N::translate('Tag'); ?></th>
-			<th><?php echo WT_I18N::translate('Description'); ?></th>
+			<th>', WT_I18N::translate('Tag'), '</th>
+			<th>', WT_I18N::translate('Description'), '</th>
 		</tr></thead>
 		<tbody id="tbDefinedTags">
 		</tbody>
 	</table></div>
 
 	<table id="tabDefinedTagsShow"><tbody><tr>
-		<td><a href="#" onclick="Lister.showSelected();return false"><?php echo WT_I18N::translate('Show only selected tags'); ?> (<span id="layCurSelectedCount"></span>)</a></td>
-		<td><a href="#" onclick="Lister.refreshNow(true);return false"><?php echo WT_I18N::translate('Show all tags'); ?></a></td>
+		<td><a href="#" onclick="Lister.showSelected();return false">', WT_I18N::translate('Show only selected tags'), ' (<span id="layCurSelectedCount"></span>)</a></td>
+		<td><a href="#" onclick="Lister.refreshNow(true);return false">', WT_I18N::translate('Show all tags'), '</a></td>
 	</tr></tbody></table>
 
 	<table id="tabFilterAndCustom"><tbody>
-		<tr><td><?php echo WT_I18N::translate('Filter'); ?>:</td><td><input type="text" id="tbxFilter"></td></tr>
-		<tr><td><?php echo WT_I18N::translate('Custom tags'); ?>:</td><td><input type="text" id="tbxCustom" value="<?php echo addslashes(implode(',', $preselCustom)); ?>"></td></tr>
+		<tr><td>', WT_I18N::translate('Filter'), ':</td><td><input type="text" id="tbxFilter"></td></tr>
+		<tr><td>', WT_I18N::translate('Custom tags'), ':</td><td><input type="text" id="tbxCustom" value="', addslashes(implode(",", $preselCustom)), '"></td></tr>
 	<td><td></tbody></table>
 
 	<table id="tabAction"><tbody><tr>
-		<td><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();"><?php echo WT_I18N::translate('Accept'); ?></button></td>
-		<td><button onclick="window.close();return false"><?php echo WT_I18N::translate('Cancel'); ?></button></td>
+		<td><button id="btnOk" disabled="disabled" onclick="if (!this.disabled)DoOK();">', WT_I18N::translate('Accept'), '</button></td>
+		<td><button onclick="window.close();return false">', WT_I18N::translate('Cancel'), '</button></td>
 	<tr></tbody></table>
-	<?php
-	echo "</td></tr></table>";
-	echo "</form></div>";
+	</td></tr></table>
+	</form></div>';
 }
-// end column for find options
-echo "</td></tr>";
-echo "</table>"; // Close table with find options
-
-echo "<br>";
-echo "<a href=\"#\" onclick=\"if (window.opener.showchanges) window.opener.showchanges(); window.close();\">", WT_I18N::translate('Close Window'), "</a><br>";
-echo "<br>";
 
 if ($action=="filter") {
 	$filter = trim($filter);
@@ -612,26 +568,25 @@ if ($action=="filter") {
 
 	// Output Individual
 	if ($type == "indi") {
-		echo "<table class=\"tabs_table width90\"><tr>";
+		echo '<div id="find-output">';
 		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
 		if ($myindilist) {
-			echo "<td class=\"list_value_wrap\"><ul>";
+			echo '<ul>';
 			usort($myindilist, array('WT_GedcomRecord', 'Compare'));
 			foreach ($myindilist as $indi) {
 				echo $indi->format_list('li', true);
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total individuals: %s', count($myindilist)), '</tr></td>';
+			echo '</ul>
+			<p>', WT_I18N::translate('Total individuals: %s', count($myindilist)), '</p>';
 		} else {
-			echo "<td class=\"list_value_wrap\">";
-			echo WT_I18N::translate('No results found.');
-			echo "</td></tr>";
+			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
-		echo "</table>";
+		echo '</div>';
 	}
 
 	// Output Family
 	if ($type == "fam") {
-		echo "<table class=\"tabs_table width90\"><tr>";
+		echo '<div id="find-output">';
 		// Get the famrecs with hits on names from the family table
 		// Get the famrecs with hits in the gedcom record from the family table
 		$myfamlist = array_unique(array_merge(
@@ -641,18 +596,17 @@ if ($action=="filter") {
 
 		if ($myfamlist) {
 			$curged = $GEDCOM;
-			echo "<td class=\"list_value_wrap\"><ul>";
+			echo '<ul>';
 			usort($myfamlist, array('WT_GedcomRecord', 'Compare'));
 			foreach ($myfamlist as $family) {
 				echo $family->format_list('li', true);
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total families: %s', count($myfamlist)), '</tr></td>';
+			echo '</ul>
+			<p>', WT_I18N::translate('Total families: %s', count($myfamlist)), '</p>';
 		} else {
-			echo "<td class=\"list_value_wrap\">";
-			echo WT_I18N::translate('No results found.');
-			echo "</td></tr>";
+			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
-		echo "</table>";
+		echo '</div>';
 	}
 
 	// Output Media
@@ -661,7 +615,7 @@ if ($action=="filter") {
 
 		$medialist = get_medialist(true, $directory);
 
-		echo "<table class=\"tabs_table width90\">";
+		echo '<div id="find-output">';
 		// Show link to previous folder
 		if ($level>0) {
 			$levels = explode("/", $directory);
@@ -670,38 +624,28 @@ if ($action=="filter") {
 			$levels = explode("/", $thumbdir);
 			$pthumb = "";
 			for ($i=0; $i<count($levels)-2; $i++) $pthumb.=$levels[$i]."/";
-			$uplink = "<a href=\"find.php?directory={$pdir}&amp;thumbdir={$pthumb}&amp;level=".($level-1)."{$thumbget}&amp;type=media&amp;choose={$choose}\">&nbsp;&nbsp;&nbsp;&lt;-- <span dir=\"ltr\">".$pdir."</span>&nbsp;&nbsp;&nbsp;</a><br>";
+			$uplink = "<a href=\"find.php?directory={$pdir}&amp;thumbdir={$pthumb}&amp;level=".($level-1)."{$thumbget}&amp;type=media&amp;choose={$choose}\">&nbsp;&nbsp;&nbsp;&lt;-- <span dir=\"ltr\">".$pdir."</span>&nbsp;&nbsp;&nbsp;</a>";
 		}
 
 		// Start of media directory table
-		echo "<table class=\"list_table width90\">";
-
 		// Tell the user where he is
-		echo "<tr>";
-			echo "<td class=\"topbottombar\" colspan=\"2\">";
-				echo WT_I18N::translate('Current directory');
-				echo "<br>";
-				echo substr($directory, 0, -1);
-			echo "</td>";
-		echo "</tr>";
+		echo '<div id="find-media"><span>', WT_I18N::translate('Current directory'), '&nbsp;=&nbsp;</span>', substr($directory, 0, -1), '</div>';
 
 		// display the directory list
 		if (count($dirs) || $level) {
 			sort($dirs);
 			if ($level) {
-				echo "<tr><td class=\"list_value\" colspan=\"2\">";
-				echo $uplink, "</td></tr>";
+				echo '<div class="find-media-dirs">', $uplink, '</div>';
 			}
-			echo "<tr><td class=\"descriptionbox\" colspan=\"2\">";
-			echo "<a href=\"find.php?directory={$directory}&amp;thumbdir=".str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY."thumbs/", $directory)."&amp;level={$level}{$thumbget}&amp;external_links=http&amp;type=media&amp;choose={$choose}\">", WT_I18N::translate('External objects'), "</a>";
-			echo "</td></tr>";
+			echo '<div class="find-media-dirs">
+				<a href="find.php?directory=', $directory, '&amp;thumbdir='.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs', $directory).'&amp;level=',$level,$thumbget, '&amp;external_links=http&amp;type=media&amp;choose=', $choose, '">', WT_I18N::translate('External objects'), '</a>';
+			echo '</div>';
 			foreach ($dirs as $indexval => $dir) {
-				echo "<tr><td class=\"list_value\" colspan=\"2\">";
-				echo "<a href=\"find.php?directory={$directory}{$dir}/&amp;thumbdir={$directory}{$dir}/&amp;level=".($level+1)."{$thumbget}&amp;type=media&amp;choose={$choose}\"><span dir=\"ltr\">", $dir, "</span></a>";
-				echo "</td></tr>";
+				echo '<div class="find-media-dirs">
+					<a href="find.php?directory=', $directory.$dir, '/&amp;thumbdir=', $directory.$dir, '&amp;level=', ($level+1).$thumbget, '&amp;type=media&amp;choose=', $choose, '"><span dir="ltr">', $dir, '</span></a>
+				</div>';
 			}
 		}
-		echo "<tr><td class=\"descriptionbox\" colspan=\"2\"></td></tr>";
 
 		/**
 		 * This action generates a thumbnail for the file
@@ -713,12 +657,9 @@ if ($action=="filter") {
 			generate_thumbnail($directory.$filename, $thumbdir.$filename);
 		}
 
-		echo "<br>";
-
 		// display the images TODO x across if lots of files??
 		if (count($medialist) > 0) {
 			foreach ($medialist as $indexval => $media) {
-
 				// Check if the media belongs to the current folder
 				preg_match_all("/\//", $media["FILE"], $hits);
 				$ct = count($hits[0]);
@@ -741,70 +682,73 @@ if ($action=="filter") {
 							$imgheight = 0;
 						}
 
-						echo "<tr>";
+						echo '<div class="find-media-media">';
 
 						//-- thumbnail field
 						if ($showthumb) {
-							echo "<td class=\"list_value width10\">";
-							if (isset($media["THUMB"])) echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\"><img src=\"", filename_decode($media["THUMB"]), "\" border=\"0\" width=\"50\" alt=\"\"></a>";
-							else echo "&nbsp;";
+							echo '<div class="find-media-thumb">';
+							if (isset($media["THUMB"])) echo '<a href="#" onclick="return openImage(\'', rawurlencode($media["FILE"]), '\',', $imgwidth, $imgheight,');"><img src="', filename_decode($media["THUMB"]), '" border="0" width="50" alt=""></a>';
+							else echo '&nbsp;';
+							echo '</div>';
 						}
 
 						//-- name and size field
-						echo "<td class=\"list_value\">";
-						if ($media["TITL"] != "") {
-							echo "<b>", PrintReady($media["TITL"]), "</b><br>";
-						}
-						if (!$embed) {
-							echo "<a href=\"#\" onclick=\"pasteid('", addslashes($media["FILE"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
-						}
-						else echo "<a href=\"#\" onclick=\"pasteid('", $media["XREF"], "', '", addslashes($media["TITL"]), "', '", addslashes($media["THUMB"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
-						echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\">", WT_I18N::translate('View'), "</a><br>";
-						if (!$media["EXISTS"] && !isFileExternal($media["FILE"])) echo $media["FILE"], "<br><span class=\"error\">", WT_I18N::translate('The filename entered does not exist.'), "</span><br>";
-						else if (!isFileExternal($media["FILE"]) && !empty($imgsize[0])) {
-							echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize[0].' × '.$imgsize[1]);
-						}
-						if ($media["LINKED"]) {
-							echo WT_I18N::translate('This media object is linked to the following:'), "<br>";
-							foreach ($media["LINKS"] as $indi => $type_record) {
-								if ($type_record!='INDI' && $type_record!='FAM' && $type_record!='SOUR' && $type_record!='OBJE') continue;
-								$record=WT_GedcomRecord::getInstance($indi);
-								echo '<br><a href="', $record->getHtmlUrl(), '">';
-								switch($type_record) {
-								case 'INDI':
-									echo WT_I18N::translate('View Person'), ' - ';
-									break;
-								case 'FAM':
-									echo WT_I18N::translate('View Family'), ' - ';
-									break;
-								case 'SOUR':
-									echo WT_I18N::translate('View Source'), ' - ';
-									break;
-								case 'OBJE':
-									echo WT_I18N::translate('View Object'), ' - ';
-									break;
-								}
-								echo $record->getFullName(), '</a>';
+						echo '<div class="find-media-details">';
+							if ($media["TITL"] != '') {
+								echo '<p class="find-media-title">', PrintReady($media["TITL"]), '</p>';
 							}
-						} else {
-							echo WT_I18N::translate('This media object is not linked to any GEDCOM record.');
-						}
-						echo "</td>";
+							if (!$embed) {
+								echo '<p><a href="#" onclick="pasteid(\'', addslashes($media["FILE"]), '\span dir="ltr">', $media["FILE"], '</span></a> -- </p>';
+							}
+							else echo '<p><a href="#" onclick="pasteid(\'', $media["XREF"], '\', \'', addslashes($media["TITL"]), '\', \'', addslashes($media["THUMB"]), '\');"><span dir="ltr">', $media["FILE"], '</span></a> -- ';
+							echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\">", WT_I18N::translate('View'), "</a></p>";
+							if (!$media["EXISTS"] && !isFileExternal($media["FILE"])) echo $media["FILE"], "<p><span class=\"error\">", WT_I18N::translate('The filename entered does not exist.'), "</span></p>";
+							else if (!isFileExternal($media["FILE"]) && !empty($imgsize[0])) {
+								echo WT_Gedcom_Tag::getLabelValue('__IMAGE_SIZE__', $imgsize[0].' × '.$imgsize[1]);
+							}
+							if ($media["LINKED"]) {
+								echo '<p>', WT_I18N::translate('This media object is linked to the following:'), '</p>',
+								'<ul>';
+								foreach ($media["LINKS"] as $indi => $type_record) {
+									if ($type_record!='INDI' && $type_record!='FAM' && $type_record!='SOUR' && $type_record!='OBJE') continue;
+									$record=WT_GedcomRecord::getInstance($indi);
+									echo '<li><a href="', $record->getHtmlUrl(), '">';
+									switch($type_record) {
+									case 'INDI':
+										echo WT_I18N::translate('View Person'), ' - ';
+										break;
+									case 'FAM':
+										echo WT_I18N::translate('View Family'), ' - ';
+										break;
+									case 'SOUR':
+										echo WT_I18N::translate('View Source'), ' - ';
+										break;
+									case 'OBJE':
+										echo WT_I18N::translate('View Object'), ' - ';
+										break;
+									}
+									echo $record->getFullName(), '</a></li>';
+								}
+								echo '</ul>';
+							} else {
+								echo WT_I18N::translate('This media object is not linked to any GEDCOM record.');
+							}
+						echo '</div>'; // close div
+						echo '</div>'; // close div="find-media-media"
 					}
 				}
 			}
 		}
 		else {
-			echo "<tr><td class=\"list_value_wrap\">";
-			echo WT_I18N::translate('No results found.');
-			echo "</td></tr>";
+			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
-		echo "</table>";
+		echo '<div style="clear:both;">&nbsp;</div>';
+		echo '</div>';
 	}
 
 	// Output Places
 	if ($type == "place") {
-		echo "<table class=\"tabs_table width90\"><tr>";
+		echo '<div id="find-output">';
 		$placelist = array();
 		if ($all || $filter) {
 			$placelist=find_place_list($filter);
@@ -824,47 +768,46 @@ if ($action=="filter") {
 					$revplacelist[] = $placetext;
 				}
 				uasort($revplacelist, "utf8_strcasecmp");
-				echo "<td class=\"list_value_wrap\"><ul>";
+				echo '<ul>';
 				foreach ($revplacelist as $place) {
 					echo "<li><a href=\"#\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", PrintReady($place), "</a></li>";
 				}
-				echo "</ul></td></tr>";
-				echo "<tr><td class=\"list_label\">", WT_I18N::translate('Places found'), " ", $ctplace;
-				echo "</td></tr>";
+				echo '</ul>
+				<p>', WT_I18N::translate('Places found'), '&nbsp;', $ctplace, '</p>';
 			}
 			else {
-				echo "<tr><td class=\"list_value_wrap\"><ul>";
-				echo WT_I18N::translate('No results found.');
-				echo "</td></tr>";
+				echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 			}
 		}
-		echo "</table>";
+		echo '</div>';
 	}
 
 	// Output Repositories
 	if ($type == "repo") {
-		echo "<table class=\"tabs_table width90\"><tr>";
-		$repo_list = get_repo_list(WT_GED_ID);
+		echo '<div id="find-output">';
+		if ($filter) {
+			$repo_list = search_repos($filter_array, array(WT_GED_ID), 'AND', true);
+		} else {
+			$repo_list = get_repo_list(WT_GED_ID);
+		}
 		if ($repo_list) {
-			echo "<td class=\"list_value_wrap\"><ul>";
+			usort($repo_list, array('WT_GedcomRecord', 'Compare'));
+			echo '<ul>';
 			foreach ($repo_list as $repo) {
 				echo '<li><a href="', $repo->getHtmlUrl(), '" onclick="pasteid(\'', $repo->getXref(), '\');"><span class="list_item">', $repo->getFullName(),'</span></a></li>';
 			}
-			echo "</ul></td></tr>";
-			echo "<tr><td class=\"list_label\">", WT_I18N::translate('Repositories found'), " ", count($repo_list);
-			echo "</td></tr>";
+			echo '</ul>
+			<p>', WT_I18N::translate('Repositories found'), " ", count($repo_list), '</p>';
 		}
 		else {
-			echo "<tr><td class=\"list_value_wrap\">";
-			echo WT_I18N::translate('No results found.');
-			echo "</td></tr>";
+			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
-		echo "</table>";
+		echo '</div>';
 	}
 
 	// Output Shared Notes
 	if ($type=="note") {
-		echo '<table class="tabs_table width90">';
+		echo '<div id="find-output">';
 		if ($filter) {
 			$mynotelist = search_notes($filter_array, array(WT_GED_ID), 'AND', true);
 		} else {
@@ -872,21 +815,22 @@ if ($action=="filter") {
 		}
 		if ($mynotelist) {
 			usort($mynotelist, array('WT_GedcomRecord', 'Compare'));
-			echo '<tr><td class="list_value_wrap"><ul>';
+			echo '<ul>';
 			foreach ($mynotelist as $note) {
 				echo '<li><a href="', $note->getHtmlUrl(), '" onclick="pasteid(\'', $note->getXref(), '\');"><span class="list_item">', $note->getFullName(),'</span></a></li>';
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Shared Notes found'), ' ', count($mynotelist), '</td></tr>';
+			echo '</ul>
+			<p>', WT_I18N::translate('Shared Notes found'), ' ', count($mynotelist), '</p>';
 		}
 		else {
-			echo '<tr><td class="list_value_wrap">', WT_I18N::translate('No results found.'), '</td></tr>';
+			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
-		echo '</table>';
+		echo '</div>';
 	}
 
 	// Output Sources
 	if ($type=="source") {
-		echo '<table class="tabs_table width90">';
+		echo '<div id="find-output">';
 		if ($filter) {
 			$mysourcelist = search_sources($filter_array, array(WT_GED_ID), 'AND', true);
 		} else {
@@ -894,39 +838,41 @@ if ($action=="filter") {
 		}
 		if ($mysourcelist) {
 			usort($mysourcelist, array('WT_GedcomRecord', 'Compare'));
-			echo '<tr><td class="list_value_wrap"><ul>';
+			echo '<ul>';
 			foreach ($mysourcelist as $source) {
 				echo '<li><a href="', $source->getHtmlUrl(), '" onclick="pasteid(\'', $source->getXref(), '\');"><span class="list_item">', $source->getFullName(),'</span></a></li>';
 			}
-			echo '</ul></td></tr><tr><td class="list_label">', WT_I18N::translate('Total sources: %s', count($mysourcelist)), '</td></tr>';
+			echo '</ul>
+			<p>', WT_I18N::translate('Total sources: %s', count($mysourcelist)), '</p>';
 		}
 		else {
-			echo '<tr><td class="list_value_wrap">', WT_I18N::translate('No results found.'), '</td></tr>';
+			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
-		echo '</table>';
+		echo '</div>';
 	}
 
 	// Output Special Characters
 	if ($type == "specialchar") {
-		echo "<table class=\"tabs_table width90\"><tr><td class=\"list_value center wrap\"><br>";
+		echo '<div id="find-output-special"><p>';
 		// lower case special characters
 		foreach ($lcspecialchars as $key=>$value) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
 		}
-		echo '<br><br>';
+		echo '</p><p>';
 		//upper case special characters
 		foreach ($ucspecialchars as $key=>$value) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
 		}
-		echo '<br><br>';
+		echo '</p><p>';
 		// other special characters (not letters)
 		foreach ($otherspecialchars as $key=>$value) {
 			echo '<a class="largechars" href="#" onclick="return window.opener.paste_char(\'', $value, '\');">', $key, '</a> ';
 		}
-		echo '<br><br></td></tr></table>';
+		echo '</p></div>';
 	}
 }
-echo "</div>"; // Close div that centers table
+echo '<h4><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a></h4>';
+echo "</div>"; // Close div="find-page"
 
 // Set focus to the input field
 if ($type!='facts') echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;

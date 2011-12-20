@@ -1764,6 +1764,26 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}
 #sb_content_extra_info #hitcounter {border-top: 1px solid #B2C7D7; font-weight: bold; padding-top: 5px;}
 
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
+
+/* ============== find.php ======================= */
+#find-page h3, #find-page h4{margin: 10px; text-align:center;}
+#find-header {border:1px solid #000; border-radius:3px; margin:10px auto; padding:5px 20px; width:50%;}
+#find-header p {margin:5px; text-align:center;}
+#find-header span {font-weight:bold;}
+#find-output, #find-output-special {border:1px solid #000; margin:20px 5px; padding:10px;}
+#find-output p {border-top:1px solid #000; font-weight: bold; margin:0; padding-top:10px; text-align: center;}
+#find-media {border:1px solid #000; padding:5px; text-align:center;}
+#find-media span {border:0; font-weight: bold; margin:auto; padding:5px;}
+.find-media-dirs {border-bottom:1px solid #000; padding:3px;}
+.find-media-media {border:1px solid #000; overflow: hidden; margin:1px; padding:2px;}
+.find-media-thumb {clear:left; float:left;}
+.find-media-details {float:left;}
+#find-output .find-media-details p {border:0; padding:0 5px 2px 5px; font-weight:normal; text-align:left;}
+#find-output .find-media-details div span {font-weight:normal; padding:0 5px 2px 5px;}
+#find-output p.find-media-title {font-weight:bold;}
+.find-media-details ul {padding:0; margin:0px 20px 10px 20px; list-style-type:none;}
+#find-facts-header .list_label {text-align:inherit;}
+
 @media print {
 #backprint, #header, #topMenu {
 	display:none;
