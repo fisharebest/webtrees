@@ -344,16 +344,14 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							$family=WT_Family::getInstance($famid_child);
 							$fchildren=$family->getChildren();
 							$kids = count($fchildren);
+							$PBheight = ($pbheight-14)/2;
 							if ($kids==0) $kids+=1;
 							if ($kids>1) $kids-=1;
-							$adder = 0;
-							if ($kids==1) $adder=6;
-								elseif ($kids==2) $adder=18;
-									elseif ($kids==3) $adder=38;
-										else $adder=(((($kids-3)/2)*$pbheight/2)+10);
-
-							if ($f==$maxfam) echo "<img height=\"".((($pbheight-14)/2)+$adder)."px\"";
-							else echo "<img height=\"".($pbheight+$adder)."px\"";
+							// Adjustment for block hights greater than 80
+							$PBadj = (((($PBheight-40)/2)*$kids)-5);
+							if ($PBadj<0) $PBadj=0;
+							if ($f==$maxfam) echo "<img height=\"".(( (($PBheight)+($kids-2)*22) +28)+$PBadj)."px\"";
+							else echo "<img height=\"".$pbheight."px\"";
 							echo " width=\"3\" src=\"".$WT_IMAGES["vline"]."\" alt=\"\">";
 							echo "</td>";
 						}
@@ -639,7 +637,7 @@ function print_cousins($famid, $personcount=1) {
 	$kids = count($fchildren);
 	$save_show_full = $show_full;
 	if ($save_show_full) {
-		$bheight=$bheight/4+10;
+		$bheight=(($bheight)/2)-4; /* adjust for padding and border, should 1/2 larger block size  */
 		$bwidth-=40;
 	} 
 	
@@ -677,7 +675,7 @@ function print_cousins($famid, $personcount=1) {
 	}
 	$show_full = $save_show_full;
 	if ($save_show_full) {
-		$bheight=($bheight-10)*4;
+		$bheight=($bheight+4)*2;
 		$bwidth+=40;
 	}
 	echo '</td>';
