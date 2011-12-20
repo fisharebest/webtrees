@@ -76,36 +76,38 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$data='';
 			$lastmod='<lastmod>'.date('Y-m-d').'</lastmod>';
 			foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-				$n=WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=?")->execute(array($ged_id))->fetchOne();
-				for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
-					$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-i-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
-				}
-				$n=WT_DB::prepare("SELECT COUNT(*) FROM `##families` WHERE f_file=?")->execute(array($ged_id))->fetchOne();
-				for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
-					$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-f-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
-				}
-				$n=WT_DB::prepare("SELECT COUNT(*) FROM `##sources` WHERE s_file=?")->execute(array($ged_id))->fetchOne();
-				if ($n) {
+				if (get_gedcom_setting($ged_id, 'include_in_sitemap')) {
+					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##individuals` WHERE i_file=?")->execute(array($ged_id))->fetchOne();
 					for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
-						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-s-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
+						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-i-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
 					}
-				}
-				$n=WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_file=? AND o_type='REPO'")->execute(array($ged_id))->fetchOne();
-				if ($n) {
+					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##families` WHERE f_file=?")->execute(array($ged_id))->fetchOne();
 					for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
-						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-r-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
+						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-f-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
 					}
-				}
-				$n=WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_file=? AND o_type='NOTE'")->execute(array($ged_id))->fetchOne();
-				if ($n) {
-					for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
-						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-n-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
+					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##sources` WHERE s_file=?")->execute(array($ged_id))->fetchOne();
+					if ($n) {
+						for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
+							$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-s-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
+						}
 					}
-				}
-				$n=WT_DB::prepare("SELECT COUNT(*) FROM `##media` WHERE m_gedfile=?")->execute(array($ged_id))->fetchOne();
-				if ($n) {
-					for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
-						$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-m-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
+					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_file=? AND o_type='REPO'")->execute(array($ged_id))->fetchOne();
+					if ($n) {
+						for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
+							$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-r-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
+						}
+					}
+					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_file=? AND o_type='NOTE'")->execute(array($ged_id))->fetchOne();
+					if ($n) {
+						for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
+							$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-n-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
+						}
+					}
+					$n=WT_DB::prepare("SELECT COUNT(*) FROM `##media` WHERE m_gedfile=?")->execute(array($ged_id))->fetchOne();
+					if ($n) {
+						for ($i=0; $i<=$n/self::RECORDS_PER_VOLUME; ++$i) {
+							$data.='<sitemap><loc>'.WT_SERVER_NAME.WT_SCRIPT_PATH.'module.php?mod='.$this->getName().'&amp;mod_action=generate&amp;file=sitemap-'.$ged_id.'-m-'.$i.'.xml</loc>'.$lastmod.'</sitemap>';
+						}
 					}
 				}
 			}
@@ -216,8 +218,8 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			}
 			$data='<'.'?xml version="1.0" encoding="UTF-8" ?'.'><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">'.$data.'</urlset>';
 			// Cache this data
-			set_module_setting($this->getName(), 'sitemap.xml', $data);
-			set_module_setting($this->getName(), 'sitemap.timestamp', time());
+			set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml', $data);
+			set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp', time());
 		}
 		header('Content-Type: application/xml');
 		header('Content-Length: '.strlen($data));
@@ -234,7 +236,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 		// Save the updated preferences
 		if (safe_POST('action', 'save')=='save') {
 			foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-				set_module_setting($this->getName(), 'include'.$ged_id, safe_POST_bool('include'.$ged_id));
+				set_gedcom_setting($ged_id, 'include_in_sitemap', safe_POST_bool('include'.$ged_id));
 			}
 			// Clear cache and force files to be regenerated
 			WT_DB::prepare(
@@ -254,7 +256,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			'<input type="hidden" name="action" value="save">';
 		foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 			echo '<p><input type="checkbox" name="include', $ged_id, '"';
-			if (get_module_setting($this->getName(), 'include'.$ged_id)) {
+			if (get_gedcom_setting($ged_id, 'include_in_sitemap')) {
 				echo ' checked="checked"';
 				$include_any=true;
 			}
