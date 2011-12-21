@@ -366,9 +366,9 @@ function generate_fan_chart($treeid, $fanw=640, $fandeg=270) {
 	// note: arg "image_name=" is to avoid image miscaching
 	$image_name= "V".time();
 	unset($_SESSION[$image_name]); // statisticsplot.php uses this to hold a filename to send to browser
-	$image_title=preg_replace("~<.*>~", "", $name) . " " . WT_I18N::translate('Fan chart');
+	$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($name));
 	$html.= "<p align=\"center\" >";
-	$html.= "<img src=\"imageflush.php?image_type=png&amp;image_name=$image_name&amp;height=$fanh&amp;width=$fanw\" width=\"$fanw\" height=\"$fanh\" border=\"0\" alt=\"$image_title\" title=\"$image_title\" usemap=\"#fanmap\">";
+	$html.= "<img src=\"imageflush.php?image_type=png&amp;image_name=$image_name&amp;height=$fanh&amp;width=$fanw\" width=\"$fanw\" height=\"$fanh\" alt=\"$image_title\" title=\"$image_title\" usemap=\"#fanmap\">";
 	$html.= "</p>";
 	ImageDestroy($image);
 	return $html;
@@ -429,7 +429,7 @@ echo '<option value="3"', ($fan_style==3 ? ' selected="selected"' : ''), '>';
 echo /* I18N: layout option for the fan chart */ WT_I18N::translate('three-quarter circle');
 echo '<option value="4"', ($fan_style==4 ? ' selected="selected"' : ''), '>';
 echo /* I18N: layout option for the fan chart */ WT_I18N::translate('full circle');
-echo '<option></td>';
+echo '<option></select></td>';
 
 // NOTE: submit
 echo '<td rowspan="2" class="topbottombar vmiddle">';
