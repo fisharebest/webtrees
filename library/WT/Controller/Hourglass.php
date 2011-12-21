@@ -287,7 +287,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			if ($kcount==0) {
 				echo "<div style=\"width: ".($this->arrwidth)."px;\"><br></div></td><td width=\"$bwidth\">";
 			} else {
-				echo "<div style=\"width: ".($this->arrwidth)."px;\"><a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["larrow"]."\" border=\"0\" alt=\"\"></a></div>";
+				echo "<div style=\"width: ".($this->arrwidth)."px;\"><a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["larrow"]."\" alt=\"\"></a></div>";
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					foreach ($families as $family) {
@@ -351,7 +351,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 					echo "<div class=\"center\" id=\"childarrow\" dir=\"".$TEXT_DIRECTION."\"";
 					echo " style=\"position:absolute; width:".$bwidth."px; \">";
 					echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow',3);\" onmouseout=\"swap_image('larrow',3);\">";
-					echo "<img id=\"larrow\" src=\"".$WT_IMAGES["darrow"]."\" border=\"0\" alt=\"\">";
+					echo "<img id=\"larrow\" src=\"".$WT_IMAGES["darrow"]."\" alt=\"\">";
 					echo "</a><br>";
 					echo "<div id=\"childbox\" dir=\"".$TEXT_DIRECTION."\" style=\"width:".$bwidth."px; height:".$bheight."px; visibility: hidden;\">";
 					echo "<table class=\"person_box\"><tr><td>";
@@ -381,7 +381,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						}
 					}
 					//-- do we need to print this arrow?
-					echo "<img src=\"".$WT_IMAGES["rarrow"]."\" border=\"0\" alt=\"\"> ";
+					echo "<img src=\"".$WT_IMAGES["rarrow"]."\" alt=\"\"> ";
 
 					//-- print the siblings
 					foreach ($cfamids as $family) {
