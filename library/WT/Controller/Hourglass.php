@@ -349,7 +349,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				// NOTE: If statement OK
 				if ($num>0) {
 					echo "<div class=\"center\" id=\"childarrow\" dir=\"".$TEXT_DIRECTION."\"";
-					echo " style=\"position:absolute; width:".$bwidth."px; \">";
+					echo " style=\"position:absolute; width:".$bwidth."px;\">";
 					echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow',3);\" onmouseout=\"swap_image('larrow',3);\">";
 					echo "<img id=\"larrow\" src=\"".$WT_IMAGES["darrow"]."\" alt=\"\">";
 					echo "</a><br>";
