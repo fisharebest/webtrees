@@ -604,7 +604,6 @@ class WT_Media extends WT_GedcomRecord {
 	 * returns the complete HTML needed to render a thumbnail image that is linked to the main image
 	 * @param array with optional parameters: 
 	 *    'download'=>true|false, default is false - whether or not to show a 'download file' link
-	 *    'align'=>'auto'|'none', default is 'auto' - if set to 'auto', will add align='left' or align='right', depending on TEXT_DIRECTION
 	 *    'display_type'=>'normal'|'pedigree_person'|'treeview'|'googlemap' the type of image this is
 	 *    'img_id'=>string (optional) - if this image needs an id, set it here
 	 *    'class'=>string (optional) - class to assign to image
@@ -620,7 +619,6 @@ class WT_Media extends WT_GedcomRecord {
 
 		$default_config=array(
 			'download'=>false,
-			'align'=>'auto',
 			'display_type'=>'normal',
 			'img_id'=>'',
 			'class'=>'thumbnail',
@@ -637,7 +635,6 @@ class WT_Media extends WT_GedcomRecord {
 
 			if ($config['display_type']=='pedigree_person') {
 				// 
-				$config['align']='none';
 				$config['uselightbox_fallback']=false;
 				$config['clearbox']='general_2';        
 				$imgsizeped=$this->getImageAttributes('thumb');
@@ -646,7 +643,6 @@ class WT_Media extends WT_GedcomRecord {
 			}
 			if ($config['display_type']=='treeview') {
 				// 
-				$config['align']='none';
 				$config['uselightbox_fallback']=false;
 				$imgsizeped=$this->getImageAttributes('thumb');
 				$config['class']='tv_link pedigree_image_'.$imgsizeped['aspect'];
@@ -654,7 +650,6 @@ class WT_Media extends WT_GedcomRecord {
 			}
 			if ($config['display_type']=='googlemap') {
 				// used on google maps tab on indi page
-				$config['align']='none';
 				$config['oktolink']=false;
 				$config['addslashes']=true;
 				$imgsizeped=$this->getImageAttributes('thumb');
@@ -664,7 +659,6 @@ class WT_Media extends WT_GedcomRecord {
 
 			$mainexists=$this->isExternal() || $this->fileExists('main');
 			$idstr=($config['img_id']) ? 'id="'.$config['img_id'].'"' : '';
-			$alignstr=($config['align']=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
 			$stylestr=($config['show_full']) ? '' : ' style="display: none;" ';
 			if ($config['img_title']) {
 				$config['img_title']=strip_tags($config['img_title']);
@@ -681,7 +675,7 @@ class WT_Media extends WT_GedcomRecord {
 			$output='';
 			if ($config['oktolink'] && $mainexists) $output .= '<a href="'.$this->getHtmlUrlSnippet($config).'">';
 			$output .= '<img '.$idstr.' src="'.$this->getHtmlUrlDirect('thumb').'" '.$sizestr.' class="'.$config['class'].'"';
-			$output .= ' '.$alignstr.' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.'>';
+			$output .= ' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.'>';
 			if ($config['oktolink'] && $mainexists) {
 				$output .= '</a>';
 				if ($config['download'] && $SHOW_MEDIA_DOWNLOAD) {

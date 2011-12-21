@@ -110,7 +110,7 @@ echo '<div id="media-tabs">';
 				<td align="center" width="150">';
 					// display image
 					if ($controller->record->canDisplayDetails()) {
-						echo $controller->record->displayMedia(array('download'=>true, 'align'=>'none', 'alertnotfound'=>true));
+						echo $controller->record->displayMedia(array('download'=>true, 'alertnotfound'=>true));
 					}
 				echo '</td>
 				<td valign="top">
