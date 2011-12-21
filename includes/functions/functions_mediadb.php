@@ -895,7 +895,6 @@ function display_silhouette(array $config = array()) {
 
 	$default_config=array(
 		'sex'=>'U',
-		'align'=>'auto',
 		'display_type'=>'normal',
 		'img_id'=>'',
 		'class'=>'',
@@ -914,15 +913,12 @@ function display_silhouette(array $config = array()) {
 	}
 
 	if ($config['display_type']=='pedigree_person') {
-		$config['align']='none';
 		$config['class']='pedigree_image_portrait';
 	}
 	if ($config['display_type']=='treeview') {
-		$config['align']='none';
 		$config['class']='default_thumbnail pedigree_image_portrait';
 	}
 	if ($config['display_type']=='googlemap') {
-		$config['align']='none';
 		$config['usejavascript']=false;
 		$config['addslashes']=true;
 		$config['class']='pedigree_image_portrait';
@@ -935,8 +931,7 @@ function display_silhouette(array $config = array()) {
 	}
 	$idstr=($config['img_id']) ? ' id="'.$config['img_id'].'" ' : '';
 	$stylestr=($config['show_full']) ? '' : ' style="display: none;" ';
-	$alignstr=($config['align']=='auto') ? 'align="'.($TEXT_DIRECTION=="rtl" ? "right":"left").'"' : ''; 
-	$output='<img '.$idstr.' src="'.$WT_IMAGES['default_image_'.$config['sex']].'" '.$classstr.$alignstr.' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.'>';
+	$output='<img '.$idstr.' src="'.$WT_IMAGES['default_image_'.$config['sex']].'" '.$classstr.' alt="'.$config['img_title'].'" title="'.$config['img_title'].'" '.$stylestr.'>';
 
 	if ($config['addslashes']) {
 		// the image string will be used in javascript code, such as googlemaps
