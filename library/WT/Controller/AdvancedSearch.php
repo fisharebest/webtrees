@@ -355,7 +355,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 							$sdx[$k]="i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
 						}
-						$sql.=' AND ('.implode(' OR ', $sdx).')';
+						$sql.=" AND (".implode(' OR ', $sdx).")";
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
@@ -364,9 +364,17 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 							$sdx[$k]="i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
 						}
-						$sql.=' AND ('.implode(' OR ', $sdx).')';
+						$sql.=" AND (".implode(' OR ', $sdx).")";
 						break;
 					}
+					break;
+				case 'NICK':
+				case '_MARNM':
+				case '_HEB':
+				case '_AKA':
+					$sql.=" AND i_n.n_type=? AND i_n.n_full LIKE CONCAT('%', ?, '%')";
+					$bind[]=$parts[1];
+					$bind[]=$value;
 					break;
 				}
 			} elseif ($parts[1]=='DATE') {
