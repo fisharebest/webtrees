@@ -1864,6 +1864,17 @@ html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 .find-media-details ul {padding:0; margin:0px 20px 10px 20px; list-style-type:none;}
 #find-facts-header .list_label {text-align:inherit;}
 
+/* ============== search.php ======================= */
+#search-page h2, #search_submit {margin:20px; text-align:center;}
+#search-page-table {border:1px solid #999; border-radius:3px; margin:20px auto 0; width:580px;}
+#search-page-table .label{float:left; font-weight:bold; padding:5px 10px 0; width:150px;}
+#search-page-table .value {background-color:#ECF5FF; border-top:1px solid #999; color:#333; margin-left:170px; padding:5px; white-space:nowrap;}
+#search-page-table div:nth-of-type(2){border:0;} 
+#search-page-table p {margin:0;}
+#search-page-table label {margin:0 3px;}
+html[dir='rtl'] #search-page-table .label{float:right;}
+html[dir='rtl'] #search-page-table .value {margin-right:170px;}
+
 @media print {
 #toplinks, #header select, #header input, #footer select, #backprint, #sidebar {display:none;}
 

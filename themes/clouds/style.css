@@ -1887,7 +1887,7 @@ html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 #find-header {background-color:#95B8E0; border:1px solid #95B8E0; border-radius:3px; margin:10px auto; padding:5px 20px; width:50%;}
 #find-header p {margin:5px; text-align:center;}
 #find-header span {color:#fff; font-weight:bold;}
-#find-output, #find-output-special {background-color:#edf7f9; border:1px solid #95B8E0; border-radius:3px; margin:20px 5px; padding:10px;}
+#find-output, #find-output-special {background-color:#fff; border:1px solid #95B8E0; border-radius:3px; margin:20px 5px; padding:10px;}
 #find-output p {border-top:1px solid #95B8E0; font-weight: bold; margin:0; padding-top:10px; text-align: center;}
 #find-media {background-color:#95B8E0; border:1px solid #95B8E0; color:#fff; padding:5px; text-align:center;}
 #find-media span {border:0; font-weight: bold; margin:auto; padding:5px;}
@@ -1900,6 +1900,15 @@ html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 #find-output p.find-media-title {font-weight:bold;}
 .find-media-details ul {padding:0; margin:0px 20px 10px 20px; list-style-type:none;}
 #find-facts-header .list_label {text-align:inherit;}
+
+/* ============== search.php ======================= */
+#search-page h2, #search_submit {margin:20px; text-align:center;}
+#search-page-table {background-color:#95B8E0; border:1px outset #95B8E0; border-top:0; margin:20px auto 0; width:580px;}
+#search-page-table .label{color:#fff; float:left; font-weight:bold; padding:5px 10px 0; width:150px;}
+#search-page-table .value {background-color:#fff; border-top:1px solid #95B8E0; margin-left:170px; padding:5px; white-space:nowrap;}
+#search-page-table p {margin:0;}
+html[dir='rtl'] #search-page-table .label{float:right;}
+html[dir='rtl'] #search-page-table .value {margin-right:170px;}
 
 @media print {
 #topMenu, #header select, #header input, #footer select, #backprint, #sidebar {display:none;}

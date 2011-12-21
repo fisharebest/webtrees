@@ -32,6 +32,7 @@ $controller->pageHeader();
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 ?>
+
 <script type="text/javascript">
 <!--
 	function checknames(frm) {
@@ -88,303 +89,199 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 //-->
 </script>
-<div id="search-page">
-<h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
-<!-- /*************************************************** Search Form Outer Table **************************************************/ -->
-<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php">
-<input type="hidden" name="action" value="<?php echo $controller->action; ?>">
-<input type="hidden" name="isPostBack" value="true">
-<script type="text/javascript">
-	function paste_char(value) {
-		document.searchform.query.value+=value;
-	}
-</script>
-<table class="list_table" width="35%">
-	<tr>
-
-<!-- /**************************************************** General search Form *************************************************************/ -->
-			<?php if ($controller->action == "general") { ?>
-				<td colspan="3" class="facts_label03" style="text-align:center;">
-					<?php echo WT_I18N::translate('General search'); ?>
-				</td>
-	</tr>
-	<!-- // search terms -->
-	<tr>
-		<td class="list_label" style="padding: 5px;">
-			<label for="firstfocus"><?php echo WT_I18N::translate('Search for'); ?></label>
-		</td>
-		<td class="list_value" style="padding: 5px;">
-			<input tabindex="1" id="firstfocus" type="text" name="query" value="<?php if (isset($controller->myquery)) echo $controller->myquery; ?>" size="40" autofocus>
-			<?php print_specialchar_link('firstfocus', false); ?>
-		</td>
-		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="4">
-			<input tabindex="2" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>">
-		</td>
-	</tr>
-	<!-- // Choice where to search -->
-	<tr>
-		<td class="list_label" style="padding: 5px;">
-			<?php echo /* I18N: Genealogy records, such as Individual, Source, Repository */ WT_I18N::translate('Records'); ?>
-		</td>
-		<td class="list_value" style="padding: 5px;">
-			<input type="checkbox"<?php
-	if (isset ($controller->srindi) || !$controller->isPostBack)
-		echo ' checked="checked"'; ?> value="yes" id="srindi" name="srindi">
-				<label for="srindi"><?php echo WT_I18N::translate('Individuals'); ?></label><br >
-			<input type="checkbox"<?php
-	if (isset ($controller->srfams))
-		echo ' checked="checked"'; ?> value="yes" id="srfams" name="srfams">
-				<label for="srfams"><?php echo WT_I18N::translate('Families'); ?></label><br>
-			<input type="checkbox"<?php
-	if (isset ($controller->srsour))
-		echo ' checked="checked"'; ?> value="yes" id="srsour" name="srsour">
-				<label for="srsour"><?php echo WT_I18N::translate('Sources'); ?></label><br>
-			<input type="checkbox"<?php
-	if (isset ($controller->srnote))
-		echo ' checked="checked"'; ?> value="yes" id="srnote" name="srnote">
-				<label for="srnote"><?php echo WT_I18N::translate('Shared notes'); ?></label><br>
-		</td>
-	</tr>
-	<!-- Choice to Exclude non-genealogical data -->
-	<tr>
-		<td class="list_label" style="padding: 5px;">
-			<?php echo WT_I18N::translate('Exclude filter'), help_link('search_exclude_tags'); ?>
-		</td>
-		<td class="list_value" style="padding: 5px;">
-			<input type="radio" id="tagfilter_on" name="tagfilter" value="on"<?php
-	if (($controller->tagfilter == "on") || ($controller->tagfilter == ""))
-		echo ' checked="checked" '; ?>>
-				<label for="tagfilter_on"><?php echo WT_I18N::translate('Exclude some non-genealogical data'); ?></label><br>
-			<input type="radio" id="tagfilter_off" name="tagfilter" value="off"<?php
-	if ($controller->tagfilter == "off")
-		echo ' checked="checked" ';?>>
-				<label for="tagfilter_off"><?php echo WT_I18N::translate('Off'); ?></label>
-		</td>
-	</tr>
-	<!-- Choice to show related persons/families (associates) -->
-	<tr>
-		<td class="list_label" style="padding: 5px;">
-			<?php echo WT_I18N::translate('Associates'), help_link('search_include_ASSO'); ?>
-		</td>
-		<td class="list_value" style="padding: 5px;">
-			<input type="checkbox" id="showasso" name="showasso" value="on"<?php
-	if ($controller->showasso == "on") echo ' checked="checked" '; ?>>
-				<label for="showasso"><?php echo WT_I18N::translate('Show related persons/families'); ?></label>
-		</td>
-	</tr>
-			<?php
-
-}
-/**************************************************** Search and replace Search Form ****************************************************/
-if ($controller->action == "replace")
-{
-	if (WT_USER_CAN_EDIT) {
-?>
-				<td colspan="3" class="facts_label03" style="text-align: center;">
-					<?php echo WT_I18N::translate('Search and replace'); ?>
-				</td>
-	</tr>
-	<!-- // search terms -->
-	<tr>
-		<td class="list_label" style="padding: 5px;"><?php echo WT_I18N::translate('Search for'); ?></td>
-		<td class="list_value" style="padding: 5px;"><input tabindex="1" id="firstfocus" name="query" value="" type="text" autofocus></td>
-			<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="3">
-			<input tabindex="2" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>">
-		</td>
-	</tr>
-	<tr>
-		<td class="list_label" style="padding: 5px;"><?php echo WT_I18N::translate('Replace with'); ?></td>
-		<td class="list_value" style="padding: 5px;"><input tabindex="1" name="replace" value="" type="text"></td>
-	</tr>
-	<!-- // Choice where to search -->
-	<tr>
-		<td class="list_label" style="padding: 5px;"><?php echo WT_I18N::translate('Search'); ?></td>
-		<td class="list_value" style="padding: 5px;">
-			<script type="text/javascript">
-			<!--
-				function checkAll(box) {
-					if (!box.checked) {
-						box.form.replaceNames.disabled = false;
-						box.form.replacePlaces.disabled = false;
-						box.form.replacePlacesWord.disabled = false;
+<?php
+echo '<div id="search-page">
+	<h2>' , $controller->getPageTitle(), '</h2>';	
+	//========== Search Form Outer Table //==========
+	echo '<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php"><input type="hidden" name="action" value="', $controller->action, '"><input type="hidden" name="isPostBack" value="true">
+	<div id="search-page-table">';
+  		?>      
+		<script type="text/javascript">
+	        function paste_char(value) {
+	            document.searchform.query.value+=value;
+	        }
+	    </script>		
+		<?php  	
+		//========== General search Form ==========
+		if ($controller->action == "general") { 			
+			echo '<div class="label">' , WT_I18N::translate('Search for'), '</div>		
+			<div class="value"><input tabindex="1" id="firstfocus" type="text" name="query" value="';
+				if (isset($controller->myquery)) 	echo $controller->myquery;
+				echo '" size="40">' , print_specialchar_link('firstfocus', false), '</div>		
+			<div class="label">' ,  WT_I18N::translate('Records'), '</div>
+			<div class="value"><p>
+				<input type="checkbox"';
+				if (isset ($controller->srindi) || !$controller->isPostBack) echo ' checked="checked"';
+				echo ' value="yes" id="srindi" name="srindi">
+					<label for="srindi">' ,  WT_I18N::translate('Individuals'), '</label>
+				</p><p>
+				<input type="checkbox"';		
+				if (isset ($controller->srfams)) echo ' checked="checked"';
+				echo ' value="yes" id="srfams" name="srfams">
+					<label for="srfams">' , WT_I18N::translate('Families'), '</label>
+				</p><p>
+				<input type="checkbox"';
+				if (isset ($controller->srsour)) echo ' checked="checked"';
+				echo ' value="yes" id="srsour" name="srsour">
+					<label for="srsour">' ,  WT_I18N::translate('Sources'), '</label>
+				</p><p>
+				<input type="checkbox"';
+				if (isset ($controller->srnote)) echo 'checked="checked"';
+				echo ' value="yes" id="srnote" name="srnote">
+					<label for="srnote">' ,  WT_I18N::translate('Shared notes'), '</label>
+			</p></div>
+			<div class="label">' , WT_I18N::translate('Exclude filter'), help_link('search_exclude_tags'), '</div>
+			<div class="value"><p>
+				<input type="radio" id="tagfilter_on" name="tagfilter" value="on" ';
+				if (($controller->tagfilter == "on") || ($controller->tagfilter == "")) echo ' checked="checked"';
+				echo '><label for="tagfilter_on">' , WT_I18N::translate('Exclude some non-genealogical data'), '</label>
+				</p><p>
+				<input type="radio" id="tagfilter_off" name="tagfilter" value="off"';
+				if ($controller->tagfilter == "off") echo ' checked="checked"';
+				echo '><label for="tagfilter_off">' , WT_I18N::translate('Off'), '</label>
+			</p></div>
+			<div class="label">' , WT_I18N::translate('Associates'), help_link('search_include_ASSO'), '</div>
+			<div class="value"><input type="checkbox" id="showasso" name="showasso" value="on"';
+				if ($controller->showasso == "on") echo ' checked="checked" '; 
+			echo '<label for="showasso">' , WT_I18N::translate('Show related persons/families'), '</label></div>';
+		}	
+		//========== Search and replace Search Form ==========
+		if ($controller->action == "replace") {
+			if (WT_USER_CAN_EDIT) { 
+				echo '<div class="label">', WT_I18N::translate('Search for'), '</div>
+					<div class="value"><input tabindex="1" id="firstfocus" name="query" value="" type="text" autofocus></div>
+					<div class="label">',  WT_I18N::translate('Replace with'), '</div>
+					<div class="value"><input tabindex="1" name="replace" value="" type="text"></div>';			
+				?>
+				<script type="text/javascript">
+				<!--
+					function checkAll(box) {
+						if (!box.checked) {
+							box.form.replaceNames.disabled = false;
+							box.form.replacePlaces.disabled = false;
+							box.form.replacePlacesWord.disabled = false;
+						}
+						else {
+							box.form.replaceNames.disabled = true;
+							box.form.replacePlaces.disabled = true;
+							box.form.replacePlacesWord.disabled = true;
+						}
 					}
-					else {
-						box.form.replaceNames.disabled = true;
-						box.form.replacePlaces.disabled = true;
-						box.form.replacePlacesWord.disabled = true;
+				//-->
+				</script>
+				<?php
+				echo '<div class="label">', WT_I18N::translate('Search'), '</div>
+					<div class="value"><p>
+						<input id="replaceAll" checked="checked" onclick="checkAll(this);" value="yes" name="replaceAll" type="checkbox">
+						<label for="replaceAll">' , WT_I18N::translate('Entire record'), '</label>
+						<hr>
+					</p><p>
+						<input id="replaceNames" checked="checked" disabled="disabled" value="yes" name="replaceNames" type="checkbox">
+						<label for="replaceNames">' , WT_I18N::translate('Individuals'), '</label>
+					</p><p>
+						<input id="replacePlace" checked="checked" disabled="disabled" value="yes" name="replacePlaces" type="checkbox">
+						<label for="replacePlace">' , WT_I18N::translate('Place'), '</label>
+					</p><p>
+						<input id="replaceWords" checked="checked" disabled="disabled" value="yes" name="replacePlacesWord" type="checkbox">
+						<label for="replaceWords">' , WT_I18N::translate('Whole words only'), '</label>
+					</p></div>';
+			}
+		}	
+		//========== Phonetic search Form //==========		
+		if ($controller->action == "soundex") {
+			echo '<div class="label">' , WT_I18N::translate('Given name'), '</div>
+				<div class="value"><input tabindex="3" type="text" id="firstfocus" name="firstname" value="' , $controller->myfirstname, '" autofocus></div>
+				<div class="label">' , WT_I18N::translate('Last name'), '</div>
+				<div class="value"><input tabindex="4" type="text" name="lastname" value="' , $controller->mylastname, '"></div>
+				<div class="label">' , WT_I18N::translate('Place'), '</div>
+				<div class="value"><input tabindex="5" type="text" name="place" value="' , $controller->myplace, '"></div>
+				<div class="label">' , WT_I18N::translate('Year'), '</div>
+				<div class="value"><input tabindex="6" type="text" name="year" value="' , $controller->myyear, '"></div>';
+			
+			// ---- Soundex type options (Russell, DaitchM) --- 
+			echo '<div class="label">' , WT_I18N::translate('Phonetic algorithm'),  '</div>
+				<div class="value"><p>
+					<input type="radio" name="soundex" value="Russell"';
+						if ($controller->soundex == "Russell") echo ' checked="checked" ';
+						echo '>'  , WT_I18N::translate('Russell'); //* I18N: http://en.wikipedia.org/wiki/Soundex */
+					echo '</p><p>
+						<input type="radio" name="soundex" value="DaitchM"';
+						if ($controller->soundex == "DaitchM" || $controller->soundex == "") echo ' checked="checked" ';
+						echo'>' , WT_I18N::translate('Daitch-Mokotoff'); //* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */
+				echo '</p></div>';
+			// Associates Section
+			echo '<div class="label">' , WT_I18N::translate('Associates'), '</div>
+				<div class="value"><input type="checkbox" name="showasso" value="on"';
+					if ($controller->showasso == "on") echo ' checked="checked" ';
+					echo '>' , WT_I18N::translate('Show related persons/families'),
+				'</div>';
+		}			
+		// If the search is a general or soundex search then possibly display checkboxes for the gedcoms
+		if ($controller->action == "general" || $controller->action == "soundex") {
+			$all_gedcoms=get_all_gedcoms();
+			// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
+			if ((count($all_gedcoms) > 1) && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
+				// More Than 3 Gedcom Filess enable elect all & select none buttons
+				if (count($all_gedcoms)>3) {
+					echo '<div class="label">&nbsp;</div>
+						<div class="value">
+							<input type="button" value="', WT_I18N::translate('select all'), '" onclick="jQuery(\'#search_trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', true);});return false;">
+							<input type="button" value="', WT_I18N::translate('select none'), '" onclick="jQuery(\'#search_trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', false);});return false;">';							
+							// More Than 10 Gedcom Files enable invert selection button
+							if (count($all_gedcoms)>10) {
+								echo '<input type="button" value="', WT_I18N::translate('invert selection'), '" onclick="jQuery(\'#search_trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', !jQuery(this).attr(\'checked\'));});return false;">';
+							}	
+						echo '</div>';
+				}			
+				echo '<div class="label">' , WT_I18N::translate('Family trees'), '</div>
+				<div class="value">';	
+					//-- sorting menu by gedcom filename
+					asort($all_gedcoms);
+					foreach ($all_gedcoms as $ged_id=>$gedcom) {
+						$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
+						$controller->inputFieldNames[] = "$str";
+						echo '<p><input type="checkbox" ';
+						if (isset ($_REQUEST["$str"])) {
+							echo 'checked="checked" ';
+						}
+						echo 'value="yes" id="checkbox_', $ged_id , '" name="', $str, '"><label for="checkbox_', $ged_id , '">', get_gedcom_setting($ged_id, 'title'), '</label></p>', "\n";
+					}
+				echo '</div>';
+			}
+		}
+		
+		// Links to Other Search Options	
+			echo '<div class="label">' , WT_I18N::translate('Other Searches'), '</div>
+				<div class="value">';	
+				if ($controller->action == "general") {
+					echo '<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a>&nbsp;|&nbsp;<a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
+					if (WT_USER_CAN_EDIT) {
+						echo '&nbsp;|&nbsp;<a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';
+					}
+				} elseif ($controller->action == "replace") {
+					echo '<a href="?action=general">', WT_I18N::translate('General search'), '</a>&nbsp;|&nbsp;',
+						'<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a>',
+						'&nbsp;|&nbsp;<a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
+				} elseif ($controller->action == "soundex") {
+					echo '<a href="?action=general">', WT_I18N::translate('General search'), '</a>',
+						'&nbsp;|&nbsp;<a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
+					if (WT_USER_CAN_EDIT) {
+						echo '&nbsp;|<a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';
 					}
 				}
-			//-->
-			</script>
-			<input checked="checked" onclick="checkAll(this);" value="yes" name="replaceAll" type="checkbox"><?php echo WT_I18N::translate('Entire record'); ?>
-			<br>
-			<hr>
-			<input checked="checked" disabled="disabled" value="yes" name="replaceNames" type="checkbox"><?php echo WT_I18N::translate('Individuals'); ?>
-			<br>
-			<input checked="checked" disabled="disabled" value="yes" name="replacePlaces" type="checkbox"><?php echo WT_I18N::translate('Place'); ?>
-			<input checked="checked" disabled="disabled" value="yes" name="replacePlacesWord" type="checkbox"><?php echo WT_I18N::translate('Whole words only'); ?>
-			<br>
-
-		</td>
-	</tr>
-<?php
-}
-}
-
-/**************************************************** Phonetic search Form *************************************************************/
-if ($controller->action == "soundex") {
-?>
-				<td colspan="3" class="facts_label03" style="text-align:center;">
-					<?php echo WT_I18N::translate('Phonetic search'); ?>
-				</td>
-	</tr>
-	<!-- // search terms -->
-	<tr>
-		<td class="list_label" width="35%">
-			<?php echo WT_I18N::translate('Given name'); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="3" type="text" id="firstfocus" name="firstname" value="<?php echo $controller->myfirstname; ?>" autofocus>
-		</td>
-		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  rowspan="6">
-			<input tabindex="7" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>">
-		</td>
-	</tr>
-	<tr>
-		<td class="list_label">
-			<?php echo WT_I18N::translate('Last name'); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="4" type="text" name="lastname" value="<?php echo $controller->mylastname; ?>">
-		</td>
-	</tr>
-	<tr>
-		<td class="list_label">
-			<?php echo WT_I18N::translate('Place'); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="5" type="text" name="place" value="<?php echo $controller->myplace; ?>">
-		</td>
-	</tr>
-	<tr>
-		<td class="list_label">
-			<?php echo WT_I18N::translate('Year'); ?>
-		</td>
-		<td class="list_value">
-			<input tabindex="6" type="text" name="year" value="<?php echo $controller->myyear; ?>">
-		</td>
-	</tr>
-	<!-- Soundex type options (Russell, DaitchM) -->
-	<tr>
-		<td class="list_label">
-			<?php echo /* I18N: rules for matching names by sound, rather than spelling */ WT_I18N::translate('Phonetic algorithm'); ?>
-		</td>
-		<td class="list_value" >
-			<input type="radio" name="soundex" value="Russell"
-				<?php if ($controller->soundex == "Russell") echo ' checked="checked" '; ?>>
-			<?php echo /* I18N: http://en.wikipedia.org/wiki/Soundex */ WT_I18N::translate('Russell'); ?><br>
-			<input type="radio" name="soundex" value="DaitchM"
-				<?php if ($controller->soundex == "DaitchM" || $controller->soundex == "") echo ' checked="checked" '; ?>>
-			<?php echo /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */ WT_I18N::translate('Daitch-Mokotoff'); ?>
-		</td>
-	</tr>
-
-	<!-- Individuals' names to print options (Names with hit, All names) -->
-	<!-- <tr>
-		<td class="list_label">
-			<?php  echo WT_I18N::translate('Individuals\'<br />names to print:'); ?>
-		</td>
-		<td class="list_value">
-			<input type="radio" name="nameprt" value="hit"
-				<?php if (($controller->nameprt == "hit") || ($controller->nameprt == "")) echo ' checked="checked" '; ?>>
-				<?php echo WT_I18N::translate('Names with hit'); ?><br>
-			<input type="radio" name="nameprt" value="all"
-				<?php if ($controller->nameprt == "all") echo ' checked="checked" '; ?>>
-				<?php echo WT_I18N::translate('All names'); ?>
-		</td>
-	</tr> -->
-	<tr>
-		<td class="list_label" style="padding: 5px;">
-			<?php echo WT_I18N::translate('Associates'); ?>
-		</td>
-		<td class="list_value" style="padding: 5px;">
-			<input type="checkbox" name="showasso" value="on"
-				<?php if ($controller->showasso == "on") echo ' checked="checked" '; ?>>
-				<?php echo WT_I18N::translate('Show related persons/families'); ?>
-		</td>
-	</tr>
-				<?php
-
-}
-
-// If the search is a general or soundex search then possibly display checkboxes for the gedcoms
-if ($controller->action == "general" || $controller->action == "soundex") {
-	$all_gedcoms=get_all_gedcoms();
-	// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
-	if ((count($all_gedcoms) > 1) && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
-?>
-	<tr>
-		<td class="list_label" style="padding: 5px;">
-			<?php echo WT_I18N::translate('Family trees'); ?>
-		</td>
-		<td class="list_value"colspan="2">
-			<?php
-		if (count($all_gedcoms)>3) {
-			echo '<div style="border-bottom:1px solid;"><input type="button" value="', WT_I18N::translate('select all'), '" onclick="jQuery(\'#trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', true);});return false;">';
-			echo ' <input type="button" value="', WT_I18N::translate('select none'), '" onclick="jQuery(\'#trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', false);});return false;">';
-			if (count($all_gedcoms)>10) {
-			 	echo ' <input type="button" value="', WT_I18N::translate('invert selection'), '" onclick="jQuery(\'#trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', !jQuery(this).attr(\'checked\'));});return false;">';
+			echo '</div>
+		</div>'; // Close div id="search_page-table"
+		
+		//Search buttons
+		echo '<div id="search_submit">';
+			if ($controller->action == "general") {
+				echo '<input tabindex="2" type="submit" value="' , WT_I18N::translate('Search'), '">';
+			} elseif ($controller->action == "replace") {
+				echo '<input tabindex="2" type="submit" value="' , WT_I18N::translate('Search'), '">';
+			} elseif ($controller->action == "soundex") {
+				echo '<input tabindex="7" type="submit" value="' , WT_I18N::translate('Search'), '">';
 			}
-		}
-		echo '</div><div id="trees" style="max-height:300px; overflow-x:auto;">', "\n";
-		//-- sorting menu by gedcom filename
-		asort($all_gedcoms);
-		foreach ($all_gedcoms as $ged_id=>$gedcom) {
-			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
-			$controller->inputFieldNames[] = "$str";
-			echo '<input type="checkbox" ';
-			if (isset ($_REQUEST["$str"])) {
-				echo 'checked="checked" ';
-			}
-			echo 'value="yes" id="checkbox_', $ged_id , '" name="', $str, '"><label for="checkbox_', $ged_id , '">', get_gedcom_setting($ged_id, 'title'), '</label><br>', "\n";
-		}
-		echo '</div></td>';
-?>
-	</tr>
-	<?php
-	}
-}
-?>
-	<tr>
-		<td class="list_label" style="padding: 5px;" >
-			<?php echo WT_I18N::translate('Other Searches'); ?>
-		</td>
-		<td class="list_value" style="padding: 5px; text-align:center;" colspan="2" >
-			<?php
-
-if ($controller->action == "general") {
-	echo '<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a>';
-	echo ' | <a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
-	if (WT_USER_CAN_EDIT) {
-		echo ' | <a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';
-	}
-} else if ($controller->action == "replace") {
-	echo '<a href="?action=general">', WT_I18N::translate('General search'), '</a> | ';
-	echo '<a href="?action=soundex">', WT_I18N::translate('Phonetic search'), '</a>';
-	echo ' | <a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
-} else if ($controller->action == "soundex") {
-		echo '<a href="?action=general">', WT_I18N::translate('General search'), '</a>';
-		echo ' | <a href="search_advanced.php">', WT_I18N::translate('Advanced search'), '</a>';
-		if (WT_USER_CAN_EDIT) {
-			echo ' | <a href="?action=replace">', WT_I18N::translate('Search and replace'), '</a>';
-		}
-	}
-?>
-		</td>
-	</tr>
-</table>
-</form>
-
-<?php $somethingPrinted = $controller->printResults(); ?>
-
-</div> <!-- close div id "search-page" -->
+		echo '</div>';  // close div id="search_submit"
+	echo '</form>';
+	$somethingPrinted = $controller->printResults();
+echo '</div>'; // close div id "search-page"

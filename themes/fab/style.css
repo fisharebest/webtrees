@@ -1400,3 +1400,12 @@ html[dir='rtl'] fieldset {text-align:right;}
 #find-output p.find-media-title {font-weight:bold;}
 .find-media-details ul {padding:0; margin:0px 20px 10px 20px; list-style-type:none;}
 #find-facts-header .list_label {text-align:inherit;}
+
+/* ============== search.php ======================= */
+#search-page h2, #search_submit {margin:20px; text-align:center;}
+#search-page-table {background-color:#ccc; border:1px solid darkGray; border-radius:3px; margin:20px auto 0; width:580px;}
+#search-page-table .label{float:left; font-weight:bold; margin:1px; padding:5px 10px 0; width:150px;}
+#search-page-table .value {background-color:#ddd; border:1px solid #fff; margin-left:170px; padding:5px; white-space:nowrap;}
+#search-page-table p {margin:0;}
+html[dir='rtl'] #search-page-table .label{float:right;}
+html[dir='rtl'] #search-page-table .value {margin-right:170px;}
