@@ -196,7 +196,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 			}
 			else { // The place is in the table but has empty values
 				if (!empty($name)) {
-					if (!empty($missing)) $missing .= ",\n ";
+					if (!empty($missing)) $missing .= ", ";
 					$addlist = '<a href="'.$person->getHtmlUrl().'">'. $name . '</a>';
 					$missing .= $addlist;
 					$miscount++;
@@ -205,7 +205,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 		}
 		else { // There was no place, or not listed in the map table
 			if (!empty($name)) {
-				if (!empty($missing)) $missing .= ",\n ";
+				if (!empty($missing)) $missing .= ", ";
 				$addlist = '<a href="'.$person->getHtmlUrl().'">'. $name . '</a>';
 				$missing .= $addlist;
 				$miscount++;
@@ -217,29 +217,29 @@ for ($i=0; $i<($controller->treesize); $i++) {
 
 //<!-- start of map display -->
 echo '<table class="tabs_table" cellspacing="0" cellpadding="0" border="0" width="100%">';
-echo "<tr>\n";
-echo "<td valign=\"top\">\n";
-echo "<img src=\"", WT_STATIC_URL, "images/spacer.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\" border=\"0\">\n";
+echo "<tr>";
+echo "<td valign=\"top\">";
+echo "<img src=\"", WT_STATIC_URL, "images/spacer.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\">";
 echo "<div id=\"pm_map\" style=\"border: 1px solid gray; height: ".$GOOGLEMAP_YSIZE."px; font-size: 0.9em;";
-echo " background-image: url('", WT_STATIC_URL, "images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>\n";
+echo " background-image: url('", WT_STATIC_URL, "images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
 if (WT_USER_IS_ADMIN) {
 	echo "<table width=\"100%\">";
-	echo "<tr><td align=\"left\">\n";
+	echo "<tr><td align=\"left\">";
 	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps configuration'), "</a>";
-	echo "</td>\n";
-	echo "<td align=\"center\">\n";
+	echo "</td>";
+	echo "<td align=\"center\">";
 	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_places\">", WT_I18N::translate('Edit geographic place locations'), "</a>";
-	echo "</td>\n";
-	echo "<td align=\"right\">\n";
+	echo "</td>";
+	echo "<td align=\"right\">";
 	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_placecheck\">", WT_I18N::translate('Place Check'), "</a>";
-	echo "</td></tr>\n";
-	echo "</table>\n";
+	echo "</td></tr>";
+	echo "</table>";
 }
-echo "</td><td width=\"15px\">&nbsp;</td>\n";
-echo "<td width=\"310px\" valign=\"top\">\n";
-echo "<div id=\"side_bar\" style=\"width: 300px; font-size: 0.9em; overflow: auto; overflow-x: hidden; overflow-y: auto; height: ".$GOOGLEMAP_YSIZE."px; \"></div></td>\n";
-echo "</tr>\n";
-echo "</table>\n";
+echo "</td><td width=\"15px\">&nbsp;</td>";
+echo "<td width=\"310px\" valign=\"top\">";
+echo "<div id=\"side_bar\" style=\"width: 300px; font-size: 0.9em; overflow: auto; overflow-x: hidden; overflow-y: auto; height: ".$GOOGLEMAP_YSIZE."px;\"></div></td>";
+echo "</tr>";
+echo "</table>";
 // display info under map
 echo "<hr>";
 echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" width=\"100%\">";
@@ -255,16 +255,16 @@ if (isset($curgen)) {
 		$count,
 		$count, $total, $curgen
 	), '<br>';
-	echo "</td>\n";
-	echo "  </tr>\n";
-	echo "  <tr>\n";
-	echo " <td valign=\"top\">\n";
+	echo "</td>";
+	echo "  </tr>";
+	echo "  <tr>";
+	echo " <td valign=\"top\">";
 	if ($priv) {
 		echo WT_I18N::plural('%s individual is private.', '%s individuals are private.', $priv, $priv), '<br>';
 	}
 	if ($count+$priv != $total) {
 		if ($miscount == 0) {
-			echo WT_I18N::translate('No ancestors in the database.'), "<br>\n";
+			echo WT_I18N::translate('No ancestors in the database.'), "<br>";
 		} else {
 			echo /* I18N: %1$d is a count of individuals, %2$s is a list of their names */ WT_I18N::plural(
 				'%1$d individual is missing birthplace map coordinates: %2$s.',
@@ -274,9 +274,9 @@ if (isset($curgen)) {
 		}
 	}
 }
-echo " </td>\n";
-echo "  </tr>\n";
-echo "</table>\n";
+echo " </td>";
+echo "  </tr>";
+echo "</table>";
 echo "</div>";
 ?>
 <!-- end of map display -->

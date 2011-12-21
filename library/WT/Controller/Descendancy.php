@@ -208,7 +208,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		// print marriage info
 		echo "<li>";
 		echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"".($Dindent+4)."\" alt=\"\">";
-		echo "<span class=\"details1\" style=\"white-space: nowrap; \" >";
+		echo "<span class=\"details1\" style=\"white-space: nowrap;\">";
 		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><img id=\"".$family->getXref().$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" alt=\"".WT_I18N::translate('View Family')."\"></a>";
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
