@@ -687,7 +687,7 @@ if ($action=="filter") {
 						//-- thumbnail field
 						if ($showthumb) {
 							echo '<div class="find-media-thumb">';
-							if (isset($media["THUMB"])) echo '<a href="#" onclick="return openImage(\'', rawurlencode($media["FILE"]), '\',', $imgwidth, $imgheight,');"><img src="', filename_decode($media["THUMB"]), '" border="0" width="50" alt=""></a>';
+							if (isset($media["THUMB"])) echo '<a href="#" onclick="return openImage(\'', rawurlencode($media["FILE"]), '\',', $imgwidth, $imgheight,');"><img src="', filename_decode($media["THUMB"]), '" width="50" alt=""></a>';
 							else echo '&nbsp;';
 							echo '</div>';
 						}

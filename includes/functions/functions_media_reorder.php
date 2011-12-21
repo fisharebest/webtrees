@@ -82,7 +82,7 @@ function media_reorder_row($rtype, $rowm, $pid) {
 		$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm["m_media"], $mediaTitle, '');
 
 		//-- Thumbnail field
-		echo "<img src=\"".$mediaInfo['thumb']."\" height=\"38\" border=\"0\" " ;
+		echo "<img src=\"".$mediaInfo['thumb']."\" height=\"38\"";
 
 		if (strpos($rowm['m_gedrec'], "1 SOUR")!==false) {
 			echo " alt=\"" . PrintReady($mediaTitle) . "\" title=\"" . PrintReady($mediaTitle) . " Source info available\">";

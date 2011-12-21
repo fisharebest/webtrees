@@ -1536,7 +1536,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		} else {
 /*   $thumbnail = thumbnail_file($fileName, true, false, $pid);
 			if (!empty($thumbnail)) {
-				echo "<img src=\"".$thumbnail."\" border=\"0\" class=\"thumbnail\"";
+				echo "<img src=\"".$thumbnail."\" class=\"thumbnail\"";
 				if ($isExternal) echo " width=\"".$THUMBNAIL_WIDTH."\"";
 				echo " alt=\"\" title=\"\">";
 			} */

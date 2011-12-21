@@ -322,7 +322,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			$height = 78;
 			$size = findImageSize($mediaInfo['thumb']);
 			if ($size[1]<$height) $height = $size[1];
-			echo "<img src=\"{$mediaInfo['thumb']}\" border=\"0\" height=\"{$height}\"" ;
+			echo "<img src=\"{$mediaInfo['thumb']}\" height=\"{$height}\"" ;
 
 			// print browser tooltips associated with image ----------------------------------------
 			echo " alt=\"\" title=\"" . Printready(strip_tags($mediaTitle)) . "\">";

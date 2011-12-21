@@ -595,7 +595,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 								//-- thumbnail field
 								if ($showthumb) {
 									echo "<td class=\"list_value width10\">";
-									if (isset($media["THUMB"])) echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\"><img src=\"", filename_decode($media["THUMB"]), "\" border=\"0\" width=\"50\" alt=\"\"></a>";
+									if (isset($media["THUMB"])) echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\"><img src=\"", filename_decode($media["THUMB"]), "\" width=\"50\" alt=\"\"></a>";
 									else echo "&nbsp;";
 								}
 		
