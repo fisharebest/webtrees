@@ -139,10 +139,10 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		//print_r($person);
 		echo "<li>";
 		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
-		if ($depth==$this->generations) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" border=\"0\" alt=\"\"></td><td>";
+		if ($depth==$this->generations) echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"$Dindent\" alt=\"\"></td><td>";
 		else {
-			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"3\" border=\"0\" alt=\"\">";
-			echo "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" border=\"0\" alt=\"\"></td><td>";
+			echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"3\" width=\"3\" alt=\"\">";
+			echo "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" alt=\"\"></td><td>";
 		}
 		print_pedigree_person($person, 1, 0, $personcount);
 		echo "</td>";
@@ -207,9 +207,9 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	
 		// print marriage info
 		echo "<li>";
-		echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"".($Dindent+4)."\" border=\"0\" alt=\"\">";
+		echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"".($Dindent+4)."\" alt=\"\">";
 		echo "<span class=\"details1\" style=\"white-space: nowrap; \" >";
-		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><img id=\"".$family->getXref().$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" border=\"0\" alt=\"".WT_I18N::translate('View Family')."\"></a>";
+		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><img id=\"".$family->getXref().$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" alt=\"".WT_I18N::translate('View Family')."\"></a>";
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
 			echo ' <a href="', $family->getHtmlUrl(), '" class="details1">';
