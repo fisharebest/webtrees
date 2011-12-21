@@ -219,7 +219,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				$user_id=get_user_from_gedcom_xref(WT_GED_ID, $this->record->getXref());
 				if ($user_id) {
 					$user_name=get_user_name($user_id);
-					echo '<span> - <a class="warning" href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</span></a>';
+					echo '<span> - <a class="warning" href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</a></span>';
 				}
 			}
 		}
