@@ -328,7 +328,7 @@ if (count($controller->people)>0) {
 	?>
 <div id="timeline_chart">
 	<!-- print the timeline line image -->
-	<div id="line" style="position:absolute; <?php echo $TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+22):"right: ".($basexoffset+22); ?>px; top: <?php echo $baseyoffset; ?>px; ">
+	<div id="line" style="position:absolute; <?php echo $TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+22):"right: ".($basexoffset+22); ?>px; top: <?php echo $baseyoffset; ?>px;">
 		<img src="<?php echo $WT_IMAGES["vline"]; ?>" width="3" height="<?php echo ($baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale)); ?>" alt="">
 	</div>
 	<!-- print divs for the grid -->
