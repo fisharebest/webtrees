@@ -89,7 +89,7 @@ if (WT_USE_LIGHTBOX) {
 
 echo '<div id="home-page">';
 if ($ctype=='user') {
-	echo '<h1 align="center">', WT_I18N::translate('My page'), '</h1>';
+	echo '<h1 class="center">', WT_I18N::translate('My page'), '</h1>';
 }
 if ($blocks['main']) {
 	if ($blocks['side']) {

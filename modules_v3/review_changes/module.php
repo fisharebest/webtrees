@@ -95,13 +95,14 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			if (WT_USER_CAN_EDIT) {
 				$id=$this->getName().$block_id;
 				$class=$this->getName().'_block';
-				$title='';
-				if ($ctype=="gedcom" && WT_USER_GEDCOM_ADMIN || $ctype=="user" && WT_USER_ID) {
-					$title .= "<a href=\"#\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-					$title .= "<img class=\"adminicon\" src=\"".$WT_IMAGES["admin"]."\" width=\"15\" height=\"15\" border=\"0\" alt=\"".WT_I18N::translate('Configure')."\"></a>";
+				if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+					$title='<img class="adminicon" src="'.$WT_IMAGES['admin'].'" width="15" height="15" alt="'.WT_I18N::translate('Configure').'"  onclick="window.open(\'index_edit.php?action=configure&amp;ctype='.$ctype.'&amp;block_id='.$block_id.'\', \'_blank\', \'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1\');">';
+				} else {
+					$title='';
 				}
 				$title.=$this->getTitle().help_link('review_changes', $this->getName());
-				$content = "";
+
+				$content = '';
 				if (WT_USER_CAN_ACCEPT) {
 					$content .= "<a href=\"#\" onclick=\"window.open('edit_changes.php','_blank','width=600,height=500,resizable=1,scrollbars=1'); return false;\">".WT_I18N::translate('There are pending changes for you to moderate.')."</a><br>";
 				}

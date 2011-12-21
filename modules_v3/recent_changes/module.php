@@ -68,13 +68,14 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		// Print block header
 		$id = $this->getName() . $block_id;
 		$class=$this->getName().'_block';
-		$title = '';
-		if ($ctype == "gedcom" && WT_USER_GEDCOM_ADMIN || $ctype == 'user') {
-			$title .= "<a href=\"#\" onclick=\"window.open('index_edit.php?action=configure&amp;ctype={$ctype}&amp;block_id={$block_id}', '_blank', 'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1'); return false;\">";
-			$title .= "<img class=\"adminicon\" src=\"" . $WT_IMAGES["admin"] . "\" width=\"15\" height=\"15\" border=\"0\" alt=\"" . WT_I18N::translate('Configure') . "\"></a>";
+		if ($ctype=='gedcom' && WT_USER_GEDCOM_ADMIN || $ctype=='user' && WT_USER_ID) {
+			$title='<img class="adminicon" src="'.$WT_IMAGES['admin'].'" width="15" height="15" alt="'.WT_I18N::translate('Configure').'"  onclick="window.open(\'index_edit.php?action=configure&amp;ctype='.$ctype.'&amp;block_id='.$block_id.'\', \'_blank\', \'top=50,left=50,width=600,height=350,scrollbars=1,resizable=1\');">';
+		} else {
+			$title='';
 		}
 		$title.= /* I18N: title for list of recent changes */ WT_I18N::plural('Changes in the last %d day', 'Changes in the last %d days', $days, $days);
-		$content = "";
+
+		$content = '';
 		// Print block content
 		if (count($found_facts) == 0) {
             $content .= WT_I18N::translate('There have been no changes within the last %s days.', $days);

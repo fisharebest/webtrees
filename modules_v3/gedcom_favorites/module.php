@@ -198,7 +198,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			WT_JS_START.'var pastefield; function paste_id(value) {pastefield.value=value;}'.WT_JS_END.
 			'<br>';
 			$uniqueID = floor(microtime() * 1000000); // This block can theoretically appear multiple times, so use a unique ID.
-			$content .= "<b><a href=\"#\" onclick=\"expand_layer('add_fav{$uniqueID}'); return false;\"><img id=\"add_fav{$uniqueID}_img\" src=\"".$WT_IMAGES["plus"]."\" border=\"0\" alt=\"\">&nbsp;".WT_I18N::translate('Add a new favorite')."</a></b>";
+			$content .= "<b><a href=\"#\" onclick=\"expand_layer('add_fav{$uniqueID}'); return false;\"><img id=\"add_fav{$uniqueID}_img\" src=\"".$WT_IMAGES["plus"]."\" alt=\"\">&nbsp;".WT_I18N::translate('Add a new favorite')."</a></b>";
 			$content .= "<br><div id=\"add_fav{$uniqueID}\" style=\"display: none;\">";
 			$content .= "<form name=\"addfavform\" method=\"get\" action=\"index.php\">";
 			$content .= "<input type=\"hidden\" name=\"action\" value=\"addfav\">";
@@ -223,7 +223,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= WT_I18N::translate('Enter an optional note about this favorite');
 			$content .= "<br><textarea name=\"favnote\" rows=\"6\" cols=\"50\"></textarea>";
 			$content .= "</td></tr></table>";
-			$content .= "<br><input type=\"submit\" value=\"".WT_I18N::translate('Add')."\" style=\"font-size: 8pt; \">";
+			$content .= "<br><input type=\"submit\" value=\"".WT_I18N::translate('Add')."\" style=\"font-size:8pt;\">";
 			$content .= "</form></div>";
 		}
 
