@@ -234,7 +234,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 				}
 				echo '<a href=pedigree.php?PEDIGREE_GENERATIONS=', $controller->PEDIGREE_GENERATIONS, '&amp;rootid=', $controller->treeid[$did], '&amp;show_full=', $controller->show_full, '&amp;talloffset=', $controller->talloffset, ' ';
 				echo "onmouseover=\"swap_image('arrow$i', 2);\" onmouseout=\"swap_image('arrow$i', 2);\">";
-				echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["uarrow"], '" alt="">';
+				echo '<img id="arrow', $i, '" class="noprint" src="', $WT_IMAGES['uarrow'], '" alt="">';
 				echo '</a>';
 			}
 			echo "</div>";
@@ -290,16 +290,16 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 				echo "</td></tr><tr><td align=\"center\">";
 				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$controller->talloffset}\" ";
 				echo "onmouseover=\"swap_image('arrow$i', 3);\" onmouseout=\"swap_image('arrow$i', 3);\">";
-				echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["darrow"], "\" alt=\"\">";
+				echo '<img id="arrow', $i, '" class="noprint" src="', $WT_IMAGES['darrow'], '" alt="">';
 			} elseif ($talloffset < 2) {
 				echo "</td><td valign=\"middle\">";
 				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\" ";
 				if ($TEXT_DIRECTION=="rtl") {
 					echo "onmouseover=\"swap_image('arrow$i', 0);\" onmouseout=\"swap_image('arrow$i', 0);\">";
-					echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["larrow"], "\" alt=\"\">";
+					echo '<img id="arrow', $i, '" class="noprint" src="', $WT_IMAGES['larrow'], '" alt="">';
 				} else {
 					echo "onmouseover=\"swap_image('arrow$i', 1);\" onmouseout=\"swap_image('arrow$i', 1);\">";
-					echo "<img id=\"arrow$i\" src=\"", $WT_IMAGES["rarrow"], "\" alt=\"\">";
+					echo '<img id="arrow', $i, '" class="noprint" src="', $WT_IMAGES['rarrow'], '" alt="">';
 				}
 				echo "</a>";
 			}
@@ -330,33 +330,33 @@ if ($controller->rootPerson->canDisplayDetails()) {
 			}
 			echo $addxoffset, "px; top:", $yoffset, "px; width:10px; height:10px;\">";
 			if ($TEXT_DIRECTION=="rtl") {
-				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 1);\" onmouseout=\"swap_image('larrow', 1);\">";
-				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["rarrow"], "\" alt=\"\">";
+				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 1);\" onmouseout=\"swap_image('arrow0', 1);\">";
+				echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['rarrow'], '" alt="">';
 			} else {
-				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 0);\" onmouseout=\"swap_image('larrow', 0);\">";
-				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["larrow"], "\" alt=\"\">";
+				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 0);\" onmouseout=\"swap_image('arrow0', 0);\">";
+				echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['larrow'], '" alt="">';
 			}
 			break;
 		case 1:
 			if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
 			echo $basexoffset, "px; top:", $yoffset, "px; width:10px; height:10px;\">";
 			if ($TEXT_DIRECTION=="rtl") {
-				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 1);\" onmouseout=\"swap_image('larrow', 1);\">";
-				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["rarrow"], "\" alt=\"\">";
+				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 1);\" onmouseout=\"swap_image('arrow0', 1);\">";
+				echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['rarrow'], '" alt="">';
 			} else {
-				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('larrow', 0);\" onmouseout=\"swap_image('larrow', 0);\">";
-				echo "<img id=\"larrow\" src=\"", $WT_IMAGES["larrow"], "\" alt=\"\">";
+				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 0);\" onmouseout=\"swap_image('arrow0', 0);\">";
+				echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['larrow'], '" alt="">';
 			}
 			break;
 		case 2:
 			echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset+$controller->pbheight/2+10), "px; width:10px; height:10px;\">";
-			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('darrow', 3);\" onmouseout=\"swap_image('darrow', 3);\">";
-			echo "<img id=\"darrow\" src=\"", $WT_IMAGES["darrow"], "\" alt=\"\">";
+			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 3);\" onmouseout=\"swap_image('arrow0', 3);\">";
+			echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['darrow'], '" alt="">';
 			break;
 		case 3:
 			echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset-$controller->pbheight/2-10), "px; width:10px; height:10px;\">";
-			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('uarrow', 2);\" onmouseout=\"swap_image('uarrow', 2);\">";
-			echo "<img id=\"uarrow\" src=\"", $WT_IMAGES["uarrow"], "\" alt=\"\">";
+			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 2);\" onmouseout=\"swap_image('arrow0', 2);\">";
+			echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['uarrow'], '" alt="">';
 			break;
 		}
 		echo "</a>";
