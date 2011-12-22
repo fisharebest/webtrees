@@ -300,24 +300,21 @@ if ($level > 0) {
 		$myfamlist = array();
 		foreach ($positions as $position) {
 			$record=WT_GedcomRecord::getInstance($position);
-			switch ($record->getType()) {
-			case 'INDI':
-				$myindilist[]=$record;
-				break;
-			case 'SOUR':
-				$mysourcelist[]=$record;
-				break;
-			case 'FAM':
-				$myfamlist[]=$record;
-				break;
+			if ($record->canDisplayDetails()) {
+				switch ($record->getType()) {
+				case 'INDI':
+					$myindilist[]=$record;
+					break;
+				case 'SOUR':
+					$mysourcelist[]=$record;
+					break;
+				case 'FAM':
+					$myfamlist[]=$record;
+					break;
+				}
 			}
 		}
 		echo '<br>';
-		$title = '';
-		foreach ($parent as $k=>$v) {
-			$title = $v.', '.$title;
-		}
-		$title = PrintReady(substr($title, 0, -2)).' ';
 
 		//-- display results
 		echo WT_JS_START;
@@ -349,14 +346,16 @@ if ($level > 0) {
 		if ($mysourcelist) {
 			echo '<div id="places-source">', format_sour_table($mysourcelist), '</div>';
 		}
-		echo '</div>';//close #places-tabs
+		if (!$myindilist && !$myfamlist && !$mysourcelist) {
+			echo '<div id="places-indi">', format_indi_table(array()), '</div>';
 		}
+		echo '</div>';//close #places-tabs
+	}
 }
 
 //-- list type display
 if ($display=='list') {
 	$placelist = array();
-
 	$placelist=find_place_list('');
 	$placelist = array_unique($placelist);
 	uasort($placelist, 'utf8_strcasecmp');
