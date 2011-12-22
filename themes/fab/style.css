@@ -1394,6 +1394,7 @@ html[dir='rtl'] fieldset {text-align:right;}
 .find-media-dirs {border-bottom:1px solid darkGray; padding:3px;}
 .find-media-media {border:1px solid darkGray; overflow: hidden; margin:1px; padding:2px;}
 .find-media-thumb {clear:left; float:left;}
+.find-media-thumb img {width:50px;}
 .find-media-details {float:left;}
 #find-output .find-media-details p {border:0; padding:0 5px 2px 5px; font-weight:normal; text-align:left;}
 #find-output .find-media-details div span {font-weight:normal; padding:0 5px 2px 5px;}
