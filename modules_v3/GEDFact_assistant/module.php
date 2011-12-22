@@ -111,6 +111,12 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		}
 		// End variables for find media
 		
+		// Users will probably always want the same language, so remember their setting
+		if (!$language_filter) {
+			$language_filter=get_user_setting(WT_USER_ID, 'default_language_filter');
+		} else {
+			set_user_setting(WT_USER_ID, 'default_language_filter', $language_filter);
+		}
 		require WT_ROOT.'includes/specialchars.php';
 		// End variables for Find Special Character
 		
