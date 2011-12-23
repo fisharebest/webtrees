@@ -1,14 +1,12 @@
 # robots.txt file for webtrees
 #
-# (c) Greg Roach, 2010
+# (c) Greg Roach, 2011
 #
 # This file needs to be placed in the domain root directory,
 # such as "www.example.com/robots.txt".  It will not work in a
 # subdirectory, such as "www.example.com/webtrees/robots.txt"
 # If you need to move it, then remember to adjust the paths as well.
 # e.g. "Allow: /index.php" becomes "Allow: /webtrees/index.php".
-#
-# See http://www.botsvsbrowsers.com/category/1/ for a useful list of robots.
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,217 +24,30 @@
 #
 # $Id$
 
-################################################################################
-# Instructions for unfriendly robots ...
-################################################################################
+# Well-behaved robots understand "Allow" directives.
+User-Agent: bingbot       # Bing
+User-Agent: Googlebot     # Google
+User-Agent: ia_archiver   # Internet Archive "wayback" machine
+User-Agent: msnbot        # Microsoft
+User-Agent: robozilla     # DMOZ
+User-Agent: slurp         # Yahoo!
+User-Agent: teoma         # Ask Jeeves
+#User-Agent: yandex        # Popular Russian search engine
+#User-Agent: baiduspider   # Popular Chinese search engine
+Allow: /family.php
+Allow: /index.php
+Allow: /indilist.php
+Allow: /individual.php
+Allow: /media.php
+Allow: /mediafirewall.php
+Allow: /mediaviewer.php
+Allow: /module.php?mod=sitemap
+Allow: /note.php
+Allow: /repo.php
+Allow: /site-offline.php
+Allow: /site-unavailable.php
+Allow: /source.php
 
-User-agent: AISearchBot
+# Disallow all other robots
+User-Agent: *
 Disallow: /
-
-User-agent: DataCha0s
-Disallow: /
-
-User-agent: DBLBot
-Disallow: /
-
-User-agent: DOC
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
-
-User-agent: Download Ninja
-Disallow: /
-
-User-agent: Fetch
-Disallow: /
-
-User-agent: grub-client
-Disallow: /
-
-User-agent: HTTrack
-Disallow: /
-
-User-agent: Indy Library
-Disallow: /
-
-# Internet explorer uses "MSIE"
-User-agent: Internet Explorer
-Disallow: /
-
-User-agent: KaloogaBot
-Disallow: /
-
-User-agent: larbin
-Disallow: /
-
-User-agent: libwww
-Disallow: /
-
-User-agent: linko
-Disallow: /
-
-User-agent: LWP::Simple
-Disallow: /
-
-User-agent: lwp-trivial
-Disallow: /
-
-User-agent: Mediapartners-Google
-Disallow: /
-
-User-agent: Microsoft.URL.Control
-Disallow: /
-
-User-agent: MSIECrawler
-Disallow: /
-
-User-agent: NPBot
-Disallow: /
-
-User-agent: Offline Explorer
-Disallow: /
-
-User-agent: Orthogaffe
-Disallow: /
-
-User-agent: panscient.com
-Disallow: /
-
-User-agent: Plonebot
-Disallow: /
-
-User-agent: sitecheck.internetseer.com
-Disallow: /
-
-User-agent: SiteSnagger
-Disallow: /
-
-User-agent: Super_Ale
-Disallow: /
-
-User-agent: Teleport
-Disallow: /
-
-User-agent: TurnitinBot
-Disallow: /
-
-User-agent: UbiCrawler
-Disallow: /
-
-User-agent: WebCopier
-Disallow: /
-
-User-agent: WebReaper
-Disallow: /
-
-User-agent: WebStripper
-Disallow: /
-
-User-agent: WebZIP
-Disallow: /
-
-User-agent: wget
-Disallow: /
-
-User-agent: Xenu
-Disallow: /
-
-User-agent: XXX
-Disallow: /
-
-User-agent: Zao
-Disallow: /
-
-User-agent: Zealbot
-Disallow: /
-
-User-agent: ZyBORG
-Disallow: /
-
-################################################################################
-# Instructions for friendly robots.
-# Note that not all robots understand the "Allow:" directive.  These are
-# included simply to document the allowed scripts.  These will be allowed by
-# default.
-################################################################################
-
-User-agent: *
-Disallow: /addmedia.php
-Disallow: /admin
-Disallow: /ancestry.php
-Disallow: /autocomplete.php
-Disallow: /branches.php
-Disallow: /build/
-Disallow: /calendar.php
-Disallow: /compact.php
-Disallow: /data/
-Disallow: /descendancy.php
-Disallow: /downloadbackup.php
-Disallow: /downloadgedcom.php
-Disallow: /edit_changes.php
-Disallow: /edit_interface.php
-Disallow: /editnews.php
-Disallow: /edituser.php
-Disallow: /expand_view.php
-Disallow: /export_gedcom.php
-Allow:    /family.php
-Disallow: /familybook.php
-Disallow: /famlist.php
-Disallow: /fanchart.php
-Disallow: /find.php
-Disallow: /gedcheck.php
-Disallow: /gedrecord.php
-Disallow: /help_text.php
-Disallow: /hourglass.php
-Disallow: /hourglass_ajax.php
-Disallow: /imageflush.php
-Disallow: /images/
-Disallow: /imageview.php
-Disallow: /import.php
-Disallow: /includes/
-Allow:    /index.php
-Disallow: /index_edit.php
-Allow:    /indilist.php
-Allow:    /individual.php
-Disallow: /inverselink.php
-Disallow: /js/
-Disallow: /language/
-Disallow: /library/
-Disallow: /lifespan.php
-Disallow: /login.php
-Disallow: /login_register.php
-Disallow: /media/
-Disallow: /mediafirewall.php
-Disallow: /medialist.php
-Disallow: /mediaviewer.php
-Disallow: /message.php
-Allow:    /module.php
-Disallow: /modules
-Allow:    /note.php
-Disallow: /notelist.php
-Disallow: /pedigree.php
-Disallow: /placelist.php
-Disallow: /places/
-Disallow: /relationship.php
-Allow:    /repo.php
-Disallow: /repolist.php
-Disallow: /reportengine.php
-Disallow: /save.php
-Disallow: /search.php
-Disallow: /search_advanced.php
-Allow:    /search_engine.php
-Disallow: /setup.php
-Allow:    /site-unavailable.php
-Allow:    /source.php
-Disallow: /sourcelist.php
-Disallow: /statistics.php
-Disallow: /statisticsplot.php
-Disallow: /themes/
-Disallow: /timeline.php
-# This is a trap for bad robots.
-# Visits to this URL will have their IP address and UA string blacklisted.
-Disallow: /bot-trap.php
-# Some of the list pages can be slow to generate.
-# Restrict requests to one a minute.
-Crawl-delay: 60
