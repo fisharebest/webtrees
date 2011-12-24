@@ -161,7 +161,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 					} else {
 						echo 'ltr" style="position:absolute; left:';
 					}
-					echo $linexoffset, 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;">';
+					echo ($linexoffset-2), 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;">';
 					echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($vlength-1), '" alt="" >';
 					echo '</div>';
 				} else {
@@ -267,7 +267,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 			$yoffset +=10;
 		}
 
-		echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth+$widthadd), "px; height:", $controller->pbheight, "px; ";
+		echo $xoffset, "px; top:", ($yoffset-1), "px; width:", ($controller->pbwidth+$widthadd), "px; height:", $controller->pbheight, "px; ";
 		echo "z-index: ", $zindex, ";\">";
 		echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" dir=\"$TEXT_DIRECTION\">";
 		if (($talloffset < 2) && ($curgen > $talloffset) && ($curgen < $controller->PEDIGREE_GENERATIONS)) {
