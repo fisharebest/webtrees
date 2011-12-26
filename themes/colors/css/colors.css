@@ -1520,6 +1520,7 @@ margin: 0;
 .user_favorites_block, .gedcom_favorites_block,
 #ancestry_chart .person_box, #ancestry_chart .person_boxF,
 #descendancy_chart .person_box, #descendancy_chart .person_boxF,
+#family-table .person_box, #family-table .person_boxF,
 #familybook_chart .person_box, #familybook_chart .person_boxF,
 #familybook_chart_rtl .person_box, #familybook_chart_rtl .person_boxF,
 #hourglass_chart .person_box, #hourglass_chart .person_boxF,
