@@ -264,11 +264,9 @@ class WT_I18N {
 	// fr: 12 345,67
 	// de: 12.345,67
 	static public function number($n, $precision=0) {
-		if (is_numeric($n)) {
-			// Add "punctuation" and convert digits
-			$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
-			$n=self::digits($n);
-		}
+		// Add "punctuation" and convert digits
+		$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
+		$n=self::digits($n);
 		return $n;
 	}
 	// Convert the digits 0-9 into the local script

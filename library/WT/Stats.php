@@ -1712,7 +1712,7 @@ class WT_Stats {
 			}
 			return get_age_at_event($age, true);
 		} else {
-			return floor($age/365.25);
+			return WT_I18N::number($age/365.25);
 		}
 	}
 

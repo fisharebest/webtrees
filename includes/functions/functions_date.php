@@ -60,10 +60,10 @@ function get_age_at_event($agestring, $show_years) {
 			WT_I18N::translate('Child'),
 			WT_I18N::translate('Infant'),
 			WT_I18N::translate('Stillborn'),
-			($show_years || preg_match('/[dm]/', $agestring)) ? "WT_I18N::plural('%d year', '%d years', '$1' , '$1')" : '$1',
-			"WT_I18N::plural('%d month', '%d months', '$1' , '$1')",
-			"WT_I18N::plural('%d day', '%d days', '$1' , '$1')",
-			"WT_I18N::plural('%d week', '%d weeks', '$1' , '$1')"
+			($show_years || preg_match('/[dm]/', $agestring)) ? "WT_I18N::plural('%d year', '%d years', $1 , WT_I18N::digits($1))" : "WT_I18N::digits($1)",
+			"WT_I18N::plural('%d month', '%d months', $1 , WT_I18N::digits($1))",
+			"WT_I18N::plural('%d day', '%d days', $1 , WT_I18N::digits($1))",
+			"WT_I18N::plural('%d week', '%d weeks', $1 , WT_I18N::digits($1))"
 		),
 		$agestring
 	);
