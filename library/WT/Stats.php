@@ -172,13 +172,7 @@ class WT_Stats {
 			// Generate the replacement value for the tag
 			if (method_exists($this, $tags[$i])) {
 				$new_tags[] = "#{$full_tag}#";
-				$new_value=call_user_func_array(array($this, $tags[$i]), array($params));
-				// Numeric values need "translating" to local formats
-				if (is_numeric($new_value)) {
-					$new_values[]=WT_I18N::number($new_value);
-				} else {
-					$new_values[]=$new_value;
-				}
+				$new_values[]=call_user_func_array(array($this, $tags[$i]), array($params));
 			} elseif ($tags[$i] == 'help') {
 				// re-merge, just in case
 				$new_tags[] = "#{$full_tag}#";
