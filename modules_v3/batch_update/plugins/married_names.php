@@ -102,7 +102,7 @@ class married_names_bu_plugin extends base_plugin {
 	function getOptionsForm() {
 		return
 			parent::getOptionsForm().
-			'<tr valign="top"><td class="list_label width20">'.WT_I18N::translate('Surname Option').'</td>'.
+			'<tr valign="top"><th>'.WT_I18N::translate('Surname Option').'</th>'.
 			'<td class="optionbox"><select name="surname" onchange="reset_reload();"><option value="replace"'.
 			($this->surname=='replace' ? ' selected="selected"' : '').
 			'">'.WT_I18N::translate('Wife\'s surname replaced by husband\'s surname').'</option><option value="add"'.

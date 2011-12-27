@@ -94,17 +94,17 @@ class search_replace_bu_plugin extends base_plugin {
 		);
 
 		return
-			'<tr><th>'.WT_I18N::translate('Search text/pattern').':</th>'.
+			'<tr><th>'.WT_I18N::translate('Search text/pattern').'</th>'.
 			'<td>'.
 			'<input name="search" size="40" value="'.htmlspecialchars($this->search).
 			'" onchange="this.form.submit();"></td></tr>'.
 
-			'<tr><th>'.WT_I18N::translate('Replacement text').':</th>'.
+			'<tr><th>'.WT_I18N::translate('Replacement text').'</th>'.
 			'<td>'.
 			'<input name="replace" size="40" value="'.htmlspecialchars($this->replace).
 			'" onchange="this.form.submit();"></td></tr>'.
 
-			'<tr><th>'.WT_I18N::translate('Search method').':</th>'.
+			'<tr><th>'.WT_I18N::translate('Search method').'</th>'.
 			'<td><select name="method" onchange="this.form.submit();">'.
 			'<option value="exact"'    .($this->method=='exact'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Exact text')    .'</option>'.
 			'<option value="words"'    .($this->method=='words'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Whole words only')    .'</option>'.
@@ -112,7 +112,7 @@ class search_replace_bu_plugin extends base_plugin {
 			'<option value="regex"'    .($this->method=='regex'     ? ' selected="selected"' : '').'>'.WT_I18N::translate('Regular expression')    .'</option>'.
 			'</select><br><em>'.$descriptions[$this->method].'</em>'.$this->error.'</td></tr>'.
 
-			'<tr><th>'.WT_I18N::translate('Case insensitive').':</th>'.
+			'<tr><th>'.WT_I18N::translate('Case insensitive').'</th>'.
 			'<td>'.
 			'<input type="checkbox" name="case" value="i" '.($this->case=='i' ? 'checked="checked"' : '').'" onchange="this.form.submit();">'.
 			'<br><em>'.WT_I18N::translate('Tick this box to match both upper and lower case letters.').'</em></td></tr>'.
