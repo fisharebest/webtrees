@@ -307,25 +307,19 @@ function print_td_person($n) {
 			}
 		}
 
-		$text .= "<a class=\"name1\" href=\"".$indi->getHtmlUrl()."\">";
+		$text .= '<a class="name1" href="'.$indi->getHtmlUrl().'">';
 		$text .= $name;
-		if ($addname) $text .= "<br>" . $addname;
-		$text .= "</a>";
-		$text .= "<br>";
+		if ($addname) $text .= '<br>' . $addname;
+		$text .= '</a>';
+		$text .= '<br>';
 		if ($indi->canDisplayDetails()) {
-			$text.="<span class='details1'>";
-			$text.=$indi->getLifeSpan();
-			$age=WT_Date::GetAgeYears($indi->getBirthDate(), $indi->getDeathDate());
-			if ($age) {
-				$text.=" <span class=\"age\">".PrintReady("({$age})")."</span>";
-			}
-			$text.="</span>";
+			$text.='<span class="details1">'.$indi->getLifeSpan().'</span>';
 		}
 	}
 
 	// -- empty box
 	if (empty($text)) {
-		$text = "&nbsp;<br>&nbsp;<br>";
+		$text = '&nbsp;';
 	}
 	// -- box color
 	$isF="";

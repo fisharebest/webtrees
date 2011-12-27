@@ -800,7 +800,7 @@ function format_parents_age($pid, $birth_date=null) {
 			$family=current($families);
 			// Allow for same-sex parents
 			foreach (array($family->getHusband(), $family->getWife()) as $parent) {
-				if ($parent && $age=WT_Date::GetAgeYears($parent->getBirthDate(), $birth_date)) {
+				if ($parent && $age=WT_I18N::number(WT_Date::GetAgeYears($parent->getBirthDate(), $birth_date))) {
 					$deatdate=$parent->getDeathDate();
 					$class='';
 					switch ($parent->getSex()) {
