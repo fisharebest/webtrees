@@ -442,27 +442,15 @@ class WT_Date_Calendar {
 	// Functions to extract bits of the date in various formats.  Individual calendars
 	// will want to redefine some of these.
 	function FormatDayZeros() {
-		switch (WT_LOCALE) {
-		case 'ar':
-		case 'fa':
-			// TODO: Persian numerals are styled slightly differently to Arab numberals
-			return Zend_Locale_Format::convertNumerals(($this->d>9) ? $this->d : '0'.$this->d, 'Latn', 'Arab');
-		case 'he': // Hebrew uses lating digits for dates - except jewish dates, in WT_Date_Jewish
-		default:
-			return ($this->d>9) ? $this->d : '0'.$this->d;
+		if ($this->d>9) {
+			return WT_I18N::digits($this->d);
+		} else {
+			return WT_I18N::digits('0'.$this->d);
 		}
 	}
 
 	function FormatDay() {
-		switch (WT_LOCALE) {
-		case 'ar':
-		case 'fa':
-			// TODO: Persian numerals are styled slightly differently to Arab numberals
-			return Zend_Locale_Format::convertNumerals($this->d, 'Latn', 'Arab');
-		default:
-		case 'he': // Hebrew uses lating digits for dates - except jewish dates, in WT_Date_Jewish
-			return $this->d;
-		}
+		return WT_I18N::digits($this->d);
 	}
 
 	function FormatLongWeekday() {
@@ -474,15 +462,7 @@ class WT_Date_Calendar {
 	}
 
 	function FormatISOWeekday() {
-		switch (WT_LOCALE) {
-		case 'ar':
-		case 'fa':
-			// TODO: Persian numerals are styled slightly differently to Arab numberals
-			return Zend_Locale_Format::convertNumerals($this->minJD % 7 + 1, 'Latn', 'Arab');
-		case 'he': // Hebrew uses lating digits for dates - except jewish dates, in WT_Date_Jewish
-		default:
-			return $this->minJD % 7 + 1;
-		}
+		return WT_I18N::digits($this->minJD % 7 + 1);
 	}
 
 	function FormatOrdinalSuffix() {
@@ -494,51 +474,22 @@ class WT_Date_Calendar {
 	}
 
 	function FormatNumericWeekday() {
-		switch (WT_LOCALE) {
-		case 'ar':
-		case 'fa':
-			// TODO: Persian numerals are styled slightly differently to Arab numberals
-			return Zend_Locale_Format::convertNumerals(($this->minJD + 1) % $this->NUM_DAYS_OF_WEEK(), 'Latn', 'Arab');
-		case 'he': // Hebrew uses lating digits for dates - except jewish dates, in WT_Date_Jewish
-		default:
-			return ($this->minJD + 1) % $this->NUM_DAYS_OF_WEEK();
-		}
+		return WT_I18N::digits(($this->minJD + 1) % $this->NUM_DAYS_OF_WEEK());
 	}
 
 	function FormatDayOfYear() {
-		switch (WT_LOCALE) {
-		case 'ar':
-		case 'fa':
-			// TODO: Persian numerals are styled slightly differently to Arab numberals
-			return Zend_Locale_Format::convertNumerals($this->minJD - $this->YMDtoJD($this->y, 1, 1), 'Latn', 'Arab');
-		case 'he': // Hebrew uses lating digits for dates - except jewish dates, in WT_Date_Jewish
-		default:
-			return $this->minJD - $this->YMDtoJD($this->y, 1, 1);
-		}
-		return $this->minJD - $this->YMDtoJD($this->y, 1, 1);
+		return WT_I18N::digits($this->minJD - $this->YMDtoJD($this->y, 1, 1));
 	}
 
 	function FormatMonth() {
-		switch (WT_LOCALE) {
-		case 'ar':
-		case 'fa':
-			// TODO: Persian numerals are styled slightly differently to Arab numberals
-			return Zend_Locale_Format::convertNumerals($this->m, 'Latn', 'Arab');
-		case 'he': // Hebrew uses lating digits for dates - except jewish dates, in WT_Date_Jewish
-		default:
-			return $this->m;
-		}
+		return WT_I18N::digits($this->m);
 	}
 
 	function FormatMonthZeros() {
-		switch (WT_LOCALE) {
-		case 'ar':
-		case 'fa':
-			// TODO: Persian numerals are styled slightly differently to Arab numberals
-			return Zend_Locale_Format::convertNumerals(($this->m>9) ? $this->m : '0'.$this->m, 'Latn', 'Arab');
-		case 'he': // Hebrew uses lating digits for dates - except jewish dates, in WT_Date_Jewish
-		default:
-			return ($this->m>9) ? $this->m : '0'.$this->m;
+		if ($this->m>9) {
+			return WT_I18N::digits($this->m);
+		} else {
+			return WT_I18N::digits('0'.$this->m);
 		}
 	}
 
@@ -558,22 +509,15 @@ class WT_Date_Calendar {
 	// NOTE Short year is NOT a 2-digit year.  It is for calendars such as hebrew
 	// which have a 3-digit form of 4-digit years.
 	function FormatShortYear() {
-		switch (WT_LOCALE) {
-		case 'ar':
-		case 'fa':
-			// TODO: Persian numerals are styled slightly differently to Arab numberals
-			return Zend_Locale_Format::convertNumerals($this->y, 'Latn', 'Arab');
-		case 'he': // Hebrew uses lating digits for dates - except jewish dates, in WT_Date_Jewish
-		default:
-			return $this->y;
-		}
+		return WT_I18N::digits($this->y);
 	}
 
 	function FormatGedcomDay() {
-		if ($this->d==0)
+		if ($this->d==0) {
 			return '';
-		else
+		} else {
 			return sprintf('%02d', $this->d);
+		}
 	}
 
 	function FormatGedcomMonth() {
@@ -581,22 +525,15 @@ class WT_Date_Calendar {
 	}
 
 	function FormatGedcomYear() {
-		if ($this->y==0)
+		if ($this->y==0) {
 			return '';
-		else
+		} else {
 			return sprintf('%04d', $this->y);
+		}
 	}
 
 	function FormatLongYear() {
-		switch (WT_LOCALE) {
-		case 'ar':
-		case 'fa':
-			// TODO: Persian numerals are styled slightly differently to Arab numberals
-			return Zend_Locale_Format::convertNumerals($this->y, 'Latn', 'Arab');
-		case 'he': // Hebrew uses lating digits for dates - except jewish dates, in WT_Date_Jewish
-		default:
-			return $this->y;
-		}
+		return WT_I18N::digits($this->y);
 	}
 
 	// Calendars with leap-months should redefine this.

@@ -265,14 +265,20 @@ class WT_I18N {
 	// de: 12.345,67
 	static public function number($n, $precision=0) {
 		if (is_numeric($n)) {
-			// Add "punctuation"
+			// Add "punctuation" and convert digits
 			$n=Zend_Locale_Format::toNumber($n, array('locale'=>WT_LOCALE, 'precision'=>$precision));
-			// Convert digits.
-			if (WT_NUMBERING_SYSTEM!='latn') {
-				$n=Zend_Locale_Format::convertNumerals($n, 'latn', WT_NUMBERING_SYSTEM);
-			}
+			$n=self::digits($n);
 		}
 		return $n;
+	}
+	// Convert the digits 0-9 into the local script
+	// Used for years, etc., where we do not want thousands-separators, decimals, etc.
+	static public function digits($n) {
+		if (WT_NUMBERING_SYSTEM!='latn') {
+			return Zend_Locale_Format::convertNumerals($n, 'latn', WT_NUMBERING_SYSTEM);
+		} else {
+			return $n;
+		}
 	}
 
 	// Translate a fraction into a percentage.  e.g. 0.123 becomes
