@@ -87,10 +87,20 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		</tr>
 		<?php
 		}
+		$yetdied=false;
 		foreach ($indifacts as $fact) {
-			// Reference information, such as CHAN, IDNO, RFN, AFN, REFN, RIN, _UID can be shown in the sidebar
-			if (!in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !array_key_exists('extra_info', WT_Module::getActiveSidebars())) {
-				print_fact($fact, $controller->record);
+			if (strstr(WT_EVENTS_DEAT, $fact->getTag()) && $fact->getParentObject()->getXref()==$controller->record->getXref()) {
+				$yetdied = true;
+			}
+			if (!is_null($fact->getFamilyId())) {
+				if (!$yetdied) {
+					print_fact($fact, $controller->record);
+				}
+			} else {
+				// Reference information, such as CHAN, IDNO, RFN, AFN, REFN, RIN, _UID can be shown in the sidebar
+				if (!in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts()) || !array_key_exists('extra_info', WT_Module::getActiveSidebars())) {
+					print_fact($fact, $controller->record);
+				}
 			}
 		}
 		//-- new fact link
