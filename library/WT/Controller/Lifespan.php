@@ -524,4 +524,12 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 			}
 		}
 	}
+
+	public function getSignificantIndividual() {
+		if ($this->people) {
+			return $this->people[0];
+		} else {
+			return parent::getSignificantIndividual();
+		}
+	}
 }

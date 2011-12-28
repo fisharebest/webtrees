@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Chart();
 
 // Extract form variables
 $rootid    =safe_GET_xref('rootid');

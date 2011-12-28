@@ -304,4 +304,12 @@ class WT_Controller_Timeline extends WT_Controller_Chart {
 				echo " background-position: 0% $ypos;\">";
 				echo "</div>";
 	}
+
+	public function getSignificantIndividual() {
+		if ($this->pids) {
+			return WT_Person::getInstance($this->pids[0]);
+		} else {
+			return parent::getSignificantIndividual();
+		}
+	}
 }

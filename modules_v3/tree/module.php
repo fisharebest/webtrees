@@ -102,19 +102,15 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
     switch($mod_action) {
       case 'treeview':
 				global $controller;
-				$controller=new WT_Controller_Base();
+				$controller=new WT_Controller_Chart();
 
         $tvName = 'tv';
-        $rootid = safe_GET('rootid');
         $tv = new TreeView('tv');
 				ob_start();
-				$person=WT_Person::getInstance($rootid);
 
-				if (!$person) {
-					$person=$controller->getSignificantIndividual();
-				}
+				$person=$controller->getSignificantIndividual();
 
-				list($html, $js)=$tv->drawViewport($rootid, 4);
+				list($html, $js)=$tv->drawViewport($person->getXref(), 4);
 
 				$controller
 					->setPageTitle(WT_I18N::translate('Interactive tree of %s', $person->getFullName()))

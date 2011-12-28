@@ -27,7 +27,7 @@ define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-$controller=new WT_Controller_Base();
+$controller=new WT_Controller_Chart();
 
 /**
  * split and center text by lines

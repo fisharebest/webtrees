@@ -26,4 +26,18 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Controller_Chart extends WT_Controller_Base {
+	public $rootid;
+
+	public function __construct() {
+		parent::__construct();
+
+		$this->rootid=SAFE_GET_xref('rootid');
+		if (!$this->rootid) {
+			$this->rootid=parent::getSignificantIndividual()->getXref();
+		}
+	}
+
+	public function getSignificantIndividual() {
+		return WT_Person::getInstance($this->rootid);
+	}
 }
