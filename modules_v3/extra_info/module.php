@@ -50,7 +50,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGES, $FACT_COUNT, $SHOW_COUNTER, $controller;
+		global $WT_IMAGES, $SHOW_COUNTER, $controller;
 		
 		ob_start();
 		$indifacts = $controller->getIndiFacts();
@@ -61,7 +61,6 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
 				print_fact($fact, $controller->record);
 			}
-			$FACT_COUNT++;
 		}
 
 		echo '<div id="hitcounter">';

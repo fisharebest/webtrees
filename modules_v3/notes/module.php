@@ -48,14 +48,14 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $FACT_COUNT, $SHOW_LEVEL2_NOTES, $NAV_NOTES, $controller;
+		global $SHOW_LEVEL2_NOTES, $NAV_NOTES, $controller;
 
 		ob_start();
 		?>
 		<table class="facts_table">
 			<tr>
 				<td colspan="2" class="descriptionbox rela">
-					<input id="checkbox_note2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo " checked=\"checked\""; ?> onclick="jQuery('tr.row_note2').toggle();">
+					<input id="checkbox_note2" type="checkbox" <?php if ($SHOW_LEVEL2_NOTES) echo ' checked="checked"'; ?> onclick="jQuery('tr.row_note2').toggle();">
 					<label for="checkbox_note2"><?php echo WT_I18N::translate('Show all notes'); ?></label>
 					<?php echo help_link('show_fact_sources'); ?>
 				</td>
@@ -64,15 +64,14 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		$globalfacts = $controller->getGlobalFacts();
 		foreach ($globalfacts as $key => $event) {
 			$fact = $event->getTag();
-			if ($fact=="NAME") {
+			if ($fact=='NAME') {
 				print_main_notes($event->getGedcomRecord(), 2, $controller->record->getXref(), $event->getLineNumber(), true);
 			}
-			$FACT_COUNT++;
 		}
 		$otherfacts = $controller->getOtherFacts();
 		foreach ($otherfacts as $key => $event) {
 			$fact = $event->getTag();
-			if ($fact=="NOTE") {
+			if ($fact=='NOTE') {
 				print_main_notes($event->getGedcomRecord(), 1, $controller->record->getXref(), $event->getLineNumber());
 			}
 			$FACT_COUNT++;
@@ -84,7 +83,9 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 				print_main_notes($factrec->getGedcomRecord(), $i, $controller->record->getXref(), $factrec->getLineNumber(), true);
 			}
 		}
-		if ($this->get_note_count()==0) echo "<tr><td id=\"no_tab2\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Notes for this individual.')."</td></tr>";
+		if ($this->get_note_count()==0) {
+			echo '<tr><td id="no_tab2" colspan="2" class="facts_value">', WT_I18N::translate('There are no Notes for this individual.'), '</td></tr>';
+		}
 		//-- New Note Link
 		if ($controller->record->canEdit()) {
 			?>
