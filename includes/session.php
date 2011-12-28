@@ -45,10 +45,10 @@ define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
 // Note that some servers (e.g. Amazon S3) require separate compressed/uncompressed data.
 if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')!==false) {
 	// Pre-compressed resources, served with a "Content-encoding: gzip" header.
-	define('WT_STATIC_URL', ''); // For example, "http://my.cdn.com/webtrees-static-1.2.3z/"
+	define('WT_STATIC_URL', 'http://webtrees.net.s3-website-eu-west-1.amazonaws.com/webtrees-static-1.2.6z/'); // For example, "http://my.cdn.com/webtrees-static-1.2.3z/"
 } else {
 	// Uncompressed resources, served without a "Content-encoding: gzip" header.
-	define('WT_STATIC_URL', ''); // For example, "http://my.cdn.com/webtrees-static-1.2.3/"
+	define('WT_STATIC_URL', 'http://webtrees.net.s3-website-eu-west-1.amazonaws.com/webtrees-static-1.2.6/'); // For example, "http://my.cdn.com/webtrees-static-1.2.3z/"
 }
 
 // Optionally, load major JS libraries from Google's public CDN
@@ -542,7 +542,7 @@ define('WT_USE_LIGHTBOX', !$SEARCH_SPIDER && array_key_exists('lightbox', WT_Mod
 
 // Search engines are only allowed to see certain pages.
 if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME , array(
-	'index.php', 'site-unavailable.php', 'indilist.php',
+	'index.php', 'site-unavailable.php', 'indilist.php', 'module.php',
 	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
 ))) {
 	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
