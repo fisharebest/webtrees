@@ -89,11 +89,11 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		$yetdied=false;
 		foreach ($indifacts as $fact) {
-			if (strstr(WT_EVENTS_DEAT, $fact->getTag()) && $fact->getParentObject()->getXref()==$controller->record->getXref()) {
+			if (strstr(WT_EVENTS_DEAT, $fact->getTag()) && $fact->getParentObject()->getXref()==$controller->record->getXref() ) {
 				$yetdied = true;
 			}
 			if (!is_null($fact->getFamilyId())) {
-				if (!$yetdied) {
+				if (!$yetdied || $fact->getTag()=='_TODO') {
 					print_fact($fact, $controller->record);
 				}
 			} else {
