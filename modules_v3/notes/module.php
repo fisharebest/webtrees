@@ -74,7 +74,6 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 			if ($fact=='NOTE') {
 				print_main_notes($event->getGedcomRecord(), 1, $controller->record->getXref(), $event->getLineNumber());
 			}
-			$FACT_COUNT++;
 		}
 		// 2nd to 5th level notes/sources
 		$controller->record->add_family_facts(false);
