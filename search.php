@@ -234,7 +234,7 @@ echo '<div id="search-page">
 						echo '</div>';
 				}			
 				echo '<div class="label">' , WT_I18N::translate('Family trees'), '</div>
-				<div class="value">';	
+				<div id="search_trees" class="value">';	
 					//-- sorting menu by gedcom filename
 					asort($all_gedcoms);
 					foreach ($all_gedcoms as $ged_id=>$gedcom) {
