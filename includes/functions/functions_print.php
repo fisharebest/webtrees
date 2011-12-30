@@ -978,37 +978,32 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 	global $SHOW_PEDIGREE_PLACES, $SEARCH_SPIDER;
 
 	$factrec = $event->getGedcomRecord();
-	$html='';
 
-	$ct = preg_match("/2 PLAC (.*)/", $factrec, $match);
-	if ($ct>0) {
-		$html.=' ';
-		// reverse the array so that we get the top level first
-		$levels = array_reverse(explode(', ', $match[1]));
-		if ($anchor && (empty($SEARCH_SPIDER))) {
-			$place = trim($match[1]);
-			$tempURL = "placelist.php?action=show&amp;";
-			foreach ($levels as $pindex=>$ppart) {
-				$tempURL .= "parent[{$pindex}]=".rawurlencode($ppart).'&amp;';
-			}
-			$tempURL .= 'level='.count($levels);
-			$html .= '<a href="'.$tempURL.'"> '.PrintReady($place).'</a>';
-		} else {
-			if (!$SEARCH_SPIDER) {
-				$html.=' -- ';
-			}
-			for ($level=$SHOW_PEDIGREE_PLACES-1; $level>=0; $level--) {
-				if (!empty($levels[$level])) {
-					$html.=PrintReady($levels[$level]);
-					if ($level>0) {
-						$html.=", ";
-					}
-				}
-			}
-		}
+	$name_parts=explode(', ', $event->getPlace());
+
+	// Abbreviate the place name
+	$html=implode(', ', array_slice($name_parts, -$SHOW_PEDIGREE_PLACES)); // The *last* $SHOW_PEDIGREE_PLACES components
+	//$html=implode(', ', array_slice($name_parts, 0, $SHOW_PEDIGREE_PLACES)); // The *first* $SHOW_PEDIGREE_PLACES components
+
+	// If we abbreviated the place, show the full name as a tooltip
+	if (count($name_parts)>$SHOW_PEDIGREE_PLACES) {
+		$tooltip=' title="'.htmlspecialchars($event->getPlace()).'"';
 	} else {
-		$place='???';
+		$tooltip='';
 	}
+
+	// For real users, make this a link to the place hierarchy
+	if ($anchor && !$SEARCH_SPIDER) {
+		$n=count($name_parts);
+		$url='placelist.php?action=show&amp;level='.$n;
+		for ($i=0; $i<$n; ++$i) {
+			$url.='&amp;parent%5B'.$i.'%5D='.rawurlencode($name_parts[$n-$i-1]);
+		}
+		$html='<a href="'.$url.'"'.$tooltip.'>'.$html.'</a>';
+	} else {
+		$html='<span'.$tooltip.'>'.$html.'</span>';
+	}
+
 	$ctn=0;
 	if ($sub) {
 		$placerec = get_sub_record(2, '2 PLAC', $factrec);
@@ -1042,6 +1037,11 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 			if ($map_lati && $map_long && empty($SEARCH_SPIDER)) {
 				$map_lati=trim(strtr($map_lati, "NSEW,�", " - -. ")); // S5,6789 ==> -5.6789
 				$map_long=trim(strtr($map_long, "NSEW,�", " - -. ")); // E3.456� ==> 3.456
+				if ($name_parts) {
+					$place=$name_parts[0];
+				} else {
+					$place='';
+				}
 				$html.=' <a target="_BLANK" href="'."http://www.mapquest.com/maps/map.adp?searchtype=address&amp;formtype=latlong&amp;latlongtype=decimal&amp;latitude={$map_lati}&amp;longitude={$map_long}".'"><img src="images/mapq.gif" alt="Mapquest" title="Mapquest"></a>';
 				$html.=' <a target="_BLANK" href="'."http://maps.google.com/maps?q={$map_lati},{$map_long}(".rawurlencode($place).")".'"><img src="images/bubble.gif" alt="'.WT_I18N::translate('Google Maps™').'" title="'.WT_I18N::translate('Google Maps™').'"></a>';
 				$html.=' <a target="_BLANK" href="'."http://www.multimap.com/map/browse.cgi?lat={$map_lati}&amp;lon={$map_long}&amp;scale=&amp;icon=x".'"><img src="images/multim.gif" alt="Multimap" title="Multimap"></a>';
@@ -1084,7 +1084,7 @@ function format_first_major_fact($key, $majorfacts = array("BIRT", "CHR", "BAPM"
 		if (!is_null($event) && $event->hasDatePlace() && $event->canShow()) {
 			$html.='<br><em>';
 			$html .= $event->getLabel();
-			$html.=' '.format_fact_date($event, $person, false, false).format_fact_place($event).'</em>';
+			$html.=' '.format_fact_date($event, $person, false, false).' '.format_fact_place($event).'</em>';
 			break;
 		}
 	}

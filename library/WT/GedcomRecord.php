@@ -694,9 +694,9 @@ class WT_GedcomRecord {
 			if (($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
 				switch ($style) {
 				case 1:
-					return '<br><em>'.$event->getLabel().' '.format_fact_date($event, $this, false, false).format_fact_place($event).'</em>';
+					return '<br><em>'.$event->getLabel().' '.format_fact_date($event, $this, false, false).' '.format_fact_place($event).'</em>';
 				case 2:
-					return '<dl><dt class="label">'.$event->getLabel().'</dt><dd class="field">'.format_fact_date($event, $this, false, false).format_fact_place($event).'</dd></dl>';
+					return '<dl><dt class="label">'.$event->getLabel().'</dt><dd class="field">'.format_fact_date($event, $this, false, false).' '.format_fact_place($event).'</dd></dl>';
 				}
 			}
 		}

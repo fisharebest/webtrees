@@ -90,7 +90,7 @@ foreach ($events as $event) {
 			if ($family) {
 				echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
 			}
-			echo format_fact_place($event, true, true);
+			echo ' ',format_fact_place($event, true, true);
 			echo '</div>';
 			break;
 		}
