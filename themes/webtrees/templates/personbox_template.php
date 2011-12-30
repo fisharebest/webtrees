@@ -35,10 +35,14 @@ if (!defined('WT_WEBTREES')) {
 <div id="out-<?php echo $boxID; ?>" <?php echo $outBoxAdd; ?>>
 <!--  table helps to maintain spacing -->
 <table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td valign="top">
-		<div class="noprint" id="icons-<?php echo $boxID; ?>"
-			style="<?php echo $iconsStyleAdd; ?> width: 25px; height: 50px;"><?php echo $icons; ?>
-		</div>
-		<?php echo $thumbnail; ?>
+<?php	
+	if ($show_full) { 
+			echo '<div class="noprint" id="icons-',$boxID,'"';
+			echo 'style="',$iconsStyleAdd,' width: 25px; height: 50px">';
+			echo $icons;
+			echo '</div>';
+	}	
+		echo $thumbnail; ?>
 		<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php echo $pid; ?>&amp;ged=<?php echo rawurlencode($GEDCOM); ?>">
 		<span id="namedef-<?php echo $boxID; ?>" class="name<?php echo $style; ?> <?php echo $classfacts; ?>">
 			<?php echo $name.$addname; ?>
