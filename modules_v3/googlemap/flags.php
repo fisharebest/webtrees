@@ -101,9 +101,9 @@ if ($action == 'ChangeFlag') {
 <?php
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
+		echo '<script type="text/javascript\"><!--edit_close();//--></script>';
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close();\">", WT_I18N::translate('Close Window'), "</a></div><br>\n";
+	echo '<div class="center"><a href="#" onclick="edit_close();">', WT_I18N::translate('Close Window'), '</a></div><br>';
 	exit;
 }
 else {
@@ -169,7 +169,6 @@ else {
 		asort($stateList);
 	}
 ?>
-
 <form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected; ?>&amp;stateSelected=<?php echo $stateSelected; ?>">
 	<input type="hidden" name="action" value="ChangeFlag">
 	<input type="hidden" name="selcountry" value="<?php echo $countrySelected; ?>">
@@ -194,15 +193,22 @@ else {
 		$j = 1;
 		for ($i = 0; $i < count($flags); $i++) {
 			if ($countrySelected == 'Countries') {
-				$tempstr = "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"".$i."\" onchange=\"enableButtons();\"><img src=\"".WT_STATIC_URL.WT_MODULES_DIR."googlemap/places/flags/".$flags[$i].".png\" alt=\"".$flags[$i]."\"  title=\"";
-				if ($flags[$i]!='blank') $tempstr.=$countries[$flags[$i]];
-				else $tempstr.=$countries['???'];
-				echo $tempstr, "\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
+				$tempstr = '<td><input type="radio" dir="ltr" name="FLAGS" value="'.$i.'" onchange="enableButtons();"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/places/flags/'.$flags[$i].'.png" alt="'.$flags[$i].'"  title="';
+				if ($flags[$i]!='blank') {
+					if (isset($countries[$flags[$i]])) {
+						$tempstr.=$countries[$flags[$i]];
+					} else {
+						$tempstr.=$flags[$i];
+					}
+				} else {
+					$tempstr.=$countries['???'];
+				}
+				echo $tempstr, '">&nbsp;&nbsp;', $flags[$i], '</input></td>';
 			} else {
-				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"", WT_STATIC_URL, WT_MODULES_DIR, "googlemap/places/", $countrySelected, "/flags/", $flags[$i], ".png\">&nbsp;&nbsp;", $flags[$i], "</input></td>\n";
+				echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i, '" onchange="enableButtons();"><img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $flags[$i], '.png">&nbsp;&nbsp;', $flags[$i], '</input></td>';
 			}
 			if ($j == 4) {
-				echo "</tr><tr>\n";
+				echo '</tr><tr>';
 				$j = 0;
 			}
 			$j++;
@@ -218,9 +224,9 @@ else {
 				<select name="STATESELECT" dir="ltr" onchange="selectCountry()">
 					<option value="States"><?php echo /* I18N: Part of a country, state/region/county */ WT_I18N::translate('Subdivision'); ?></option>
 					<?php foreach ($stateList as $state_key=>$state_name) {
-						echo "<option value=\"", $state_key, "\"";
-						if ($stateSelected == $state_key) echo " selected=\"selected\" ";
-						echo ">", $state_name, "</option>\n";
+						echo '<option value="', $state_key, '"';
+						if ($stateSelected == $state_key) echo ' selected="selected" ';
+						echo '>', $state_name, '</option>';
 					} ?>
 				</select>
 			</td>
@@ -229,11 +235,11 @@ else {
 <?php
 		$j = 1;
 		for ($i = 0; $i < count($flags_s); $i++) {
-			if ($stateSelected != "States") {
-				echo "<td><input type=\"radio\" dir=\"ltr\" name=\"FLAGS\" value=\"", $i, "\" onchange=\"enableButtons();\"><img src=\"".WT_STATIC_URL.WT_MODULES_DIR."googlemap/places/", $countrySelected, "/flags/", $stateSelected, "/", $flags_s[$i], ".png\">&nbsp;&nbsp;", $flags_s[$i], "</input></td>\n";
+			if ($stateSelected != 'States') {
+				echo '<td><input type="radio" dir="ltr" name="FLAGS" value="', $i, '" onchange="enableButtons();"><img src="', WT_STATIC_URL.WT_MODULES_DIR, 'googlemap/places/', $countrySelected, '/flags/', $stateSelected, '/', $flags_s[$i], '.png">&nbsp;&nbsp;', $flags_s[$i], '</input></td>';
 			}
 			if ($j == 4) {
-				echo "</tr><tr>\n";
+				echo '</tr><tr>';
 				$j = 0;
 			}
 			$j++;
