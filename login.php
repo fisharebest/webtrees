@@ -140,12 +140,13 @@ if ($action=='login') {
 }
 
 $controller=new WT_Controller_Base();
-$controller->setPageTitle(WT_I18N::translate('webtrees user login'));
+$controller->setPageTitle(WT_I18N::translate('Login'));
 $controller->pageHeader();
 
 echo '<div id="login-page">';
 
-echo '<table class="width60"><tr><td>';
+echo '<div id="login-text">';
+
 switch ($WELCOME_TEXT_AUTH_MODE) {
 case 1:
 	echo WT_I18N::translate('<center><b>Welcome to this Genealogy website</b></center><br />Access to this site is permitted to every visitor who has a user account.<br /><br />If you have a user account, you can login on this page.  If you don\'t have a user account, you can apply for one by clicking on the appropriate link below.<br /><br />After verifying your application, the site administrator will activate your account.  You will receive an email when your application has been approved.');
@@ -171,50 +172,34 @@ if (!isset($_COOKIE[WT_SESSION_NAME])) {
 		'</p>';
 }
 
-echo '</td></tr></table><br><br>';
-	?>
-	<form name="loginform" method="post" action="<?php echo get_site_setting('LOGIN_URL'); ?>" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+'-'+(t.getMonth()+1)+'-'+t.getDate()+' '+t.getHours()+':'+t.getMinutes()+':'+t.getSeconds(); return true;">
+echo '</div>'; //close "login-text"
+	echo '<form id="login-form" name="loginform" method="post" action="', get_site_setting('LOGIN_URL'), '" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
 		<input type="hidden" name="action" value="login">
-		<input type="hidden" name="url" value="<?php echo htmlspecialchars($url); ?>">
-		<input type="hidden" name="ged" value="<?php if (isset($ged)) echo htmlspecialchars($ged); else echo htmlentities($GEDCOM); ?>">
-		<input type="hidden" name="pid" value="<?php if (isset($pid)) echo htmlspecialchars($pid); ?>">
-		<input type="hidden" name="usertime" value="">
-		<?php
-		if (!empty($message)) echo "<span class='error'><br><b>$message</b><br><br></span>";
-		?>
-		<!--table-->
-		<table class="facts_table width50">
-			<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Login'); ?></td></tr>
-			<tr>
-				<td class="descriptionbox wrap width50"><label for="username"><?php echo WT_I18N::translate('Username'), '</label>', help_link('username'); ?></td>
-				<td class="optionbox"><input type="text" id="username" name="username" value="<?php echo htmlspecialchars($username); ?>" size="20" class="formField"></td>
-			</tr>
-			<tr>
-				<td class="descriptionbox wrap width50"><label for="password"><?php echo WT_I18N::translate('Password'), '</label>', help_link('password'); ?></td>
-				<td class="optionbox"><input type="password" id="password" name="password" size="20" class="formField"></td>
-			</tr>
-			<tr>
-				<td class="topbottombar" colspan="2">
-					<input type="submit" value="<?php echo WT_I18N::translate('Login'); ?>">
-				</td>
-			</tr>
-		</table>
-</form><br><br>
-<?php
-
-if (get_site_setting('USE_REGISTRATION_MODULE')) { ?>
-	<table class="facts_table width50">
-	<tr><td class="topbottombar" colspan="2"><?php echo WT_I18N::translate('Account Information'); ?></td></tr>
-	<tr><td class="descriptionbox wrap width50"><?php echo WT_I18N::translate('No account?'), help_link('new_user'); ?></td>
-	<td class="optionbox wrap"><a href="login_register.php?action=register"><?php echo WT_I18N::translate('Request new user account'); ?></a></td></tr>
-	<tr><td class="descriptionbox wrap width50"><?php echo WT_I18N::translate('Lost your password?'), help_link('new_password'); ?></td>
-	<td class="optionbox wrap"><a href="login_register.php?action=pwlost"><?php echo WT_I18N::translate('Request new password'); ?></a></td></tr>
-	<tr><td class="topbottombar" colspan="2">&nbsp;</td></tr>
-	</table>
-<?php
-}
-echo "</div><br><br>";
-?>
+		<input type="hidden" name="url" value="', htmlspecialchars($url), '">
+		<input type="hidden" name="ged" value="'; if (isset($ged)) echo htmlspecialchars($ged); else echo htmlentities($GEDCOM); echo '">
+		<input type="hidden" name="pid" value="'; if (isset($pid)) echo htmlspecialchars($pid); echo '">
+		<input type="hidden" name="usertime" value="">';
+		if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>';
+		echo '<div>
+			<label for="username">', WT_I18N::translate('Username').help_link_span('username'), '</label>',
+			'<input type="text" id="username" name="username" value="', htmlspecialchars($username), '" size="20" class="formField">
+		</div>
+		<div>
+			<label for="password">', WT_I18N::translate('Password').help_link_span('password'), '</label>',
+			'<input type="password" id="password" name="password" size="20" class="formField">
+		</div>
+		<div>
+			<input type="submit" value="', WT_I18N::translate('Login'), '">
+		</div>
+		<div>
+			<a href="login_register.php?action=pwlost">', WT_I18N::translate('Request new password').help_link_span('new_password'), '</a>
+		</div>';
+		if (get_site_setting('USE_REGISTRATION_MODULE')) {
+			echo '<div><a href="login_register.php?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
+		}
+	echo '</form>'; // close "login-form"
+echo '</div>'; // close "login-page"
+	?>
 <script type="text/javascript">
 	document.loginform.username.focus();
 </script>

@@ -86,7 +86,7 @@ a:hover, a:active {
 	color:White !important;
 	background-color:DarkSlateGray;
 }
-a.help {
+a.help, span.help {
 	font-weight:bold;
 	text-shadow:Black 1px 1px 1px;
 	color:Yellow !important;
@@ -1014,8 +1014,14 @@ dd {
 	overflow: visible !important;
 }
 
-#login-register-page table, #login-page table, #branches-page table, #medialist-page .list_table  {margin:auto;}
+#login-register-page table, #branches-page table, #medialist-page .list_table  {margin:auto;}
 #login-register-page table a {display:block; text-align:center;}
+#login-text {margin:20px auto; width:50%;}
+#login-form {background-color:#ccc; border: 1px solid darkGray; border-radius: 3px; margin:10px auto; padding:5px; width:300px;}
+#login-form div, #login-form div a {font-weight:bold; margin:5px auto; padding:5px; text-align:center;}
+#login-form label {display:inline-block; text-align:right; width:120px;}
+html[dir='rtl'] #login-form label {text-align:left;}
+
 #reportengine-page table {margin:20px auto;}
 #reportengine-page .report-type {overflow:hidden; margin:auto; width:180px;}
 #reportengine-page .report-type div {float:left;margin: 0 20px;}

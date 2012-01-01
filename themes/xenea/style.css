@@ -1660,8 +1660,14 @@ dd {
 #relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN,
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN {overflow: visible !important;}
 
-#login-register-page table, #login-page table, #branches-page table, #medialist-page .list_table  {margin:auto;}
+#login-register-page table, #branches-page table, #medialist-page .list_table  {margin:auto;}
 #login-register-page table a {display:block; text-align:center;}
+#login-text {margin:20px auto; width:50%;}
+#login-form {background-color:#C3DFFF; margin:10px auto; padding:5px; width:300px;}
+#login-form div, #login-form div a {color:#006; margin:5px auto; padding:5px; text-align:center;}
+#login-form label {display:inline-block; text-align:right; width:120px;}
+html[dir='rtl'] #login-form label {text-align:left;}
+
 #reportengine-page table {margin:20px auto;}
 #reportengine-page .report-type {overflow:hidden; margin:auto; width:180px;}
 #reportengine-page .report-type div {float:left;margin: 0 20px;}
