@@ -118,21 +118,23 @@ echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), '</h2
 <?php
 //-- echo the boxes
 $curgen = 1;
+$lastvlength = 0; // -- used to save the last vertical line length where child had both father and mother
 $xoffset = 0;
 $yoffset = 0;     // -- used to offset the position of each box as it is generated
-$prevxoffset = 0; // -- used to track the x position of the previous box
-$prevyoffset = 0; // -- used to track the y position of the previous box
+$prevxoffset = 0; // -- used to track the horizontal x position of the previous box
+$prevyoffset = 0; // -- used to track the vertical y position of the previous box
 $maxyoffset = 0;
 $linesize = 3;
 if (!isset($brborder)) $brborder = 1; // Avoid errors from old custom themes
 for ($i=($controller->treesize-1); $i>=0; $i--) {
+
 	// -- check to see if we have moved to the next generation
 	if ($i < floor($controller->treesize / (pow(2, $curgen)))) {
 		$curgen++;
 	}
 	$prevxoffset = $xoffset;
 	$prevyoffset = $yoffset;
-	if ($talloffset < 2) {
+	if ($talloffset < 2) { // Portrate 0 Landscape 1 top 2 bottom 3 
 		$xoffset = $controller->offsetarray[$i]["x"];
 		$yoffset = $controller->offsetarray[$i]["y"];
 	} else {
@@ -140,11 +142,21 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		$yoffset = $controller->offsetarray[$i]["x"];
 	}
 	// -- if we are in the middle generations then we need to draw the connecting lines
+
 	if (($curgen > 0 && $talloffset > 1) || (($curgen > $talloffset) && ($curgen < $controller->PEDIGREE_GENERATIONS))) {
 		if ($i%2==1) {
 			if ($SHOW_EMPTY_BOXES || ($controller->treeid[$i]) || ($controller->treeid[$i+1])) {
+
 				if ($talloffset < 2) {
 					$vlength = $prevyoffset-$yoffset;
+					$lastvlength = $vlength;
+					 // If no father then adjust lines
+					if (!$controller->treeid[$i] && (!$SHOW_EMPTY_BOXES)) { 
+						$vlength = ($lastvlength/2);
+						if ($talloffset == 0 && $show_full==1) $yoffset = $yoffset+$controller->pbheight+50; 
+						if ($talloffset == 0 && $show_full==0) $yoffset = $yoffset+$controller->pbheight+30; 
+						if ($talloffset == 1) $yoffset = $yoffset+$controller->pbheight+5; 
+					} 
 				}
 				else {
 					$vlength = $prevxoffset-$xoffset;
@@ -161,8 +173,9 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 					} else {
 						echo 'ltr" style="position:absolute; left:';
 					}
-					echo ($linexoffset-2), 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;">';
-					echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($vlength-1), '" alt="" >';
+
+					echo ($linexoffset-2), 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;">'; // vertical line joining boxes
+					echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($vlength-1), '" alt="" >'; // vertical line joining boxes
 					echo '</div>';
 				} else {
 					echo '<div id="vline', $i, '" dir="';
