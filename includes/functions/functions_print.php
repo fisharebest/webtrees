@@ -619,21 +619,7 @@ function help_link($help_topic, $module='') {
 
 	if ($WT_SESSION->show_context_help) {
 		return
-			'<a class="help icon-help-15" href="#" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
-			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
-			'&nbsp;</a>';
-	} else {
-		return '';
-	}
-}
-
-// Print a link for a popup help window - NEW VERSION
-function help_link_span($help_topic, $module='') {
-	global $WT_USE_HELPIMG, $WT_IMAGES, $WT_SESSION;
-
-	if ($WT_SESSION->show_context_help) {
-		return
-			'<span class="help icon-help-15" href="#" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
+			'<span class="help icon-help-15" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
 			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
 			'&nbsp;</span>';
 	} else {

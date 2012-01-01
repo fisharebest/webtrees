@@ -181,21 +181,21 @@ echo '</div>'; //close "login-text"
 		<input type="hidden" name="usertime" value="">';
 		if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>';
 		echo '<div>
-			<label for="username">', WT_I18N::translate('Username').help_link_span('username'), '</label>',
+			<label for="username">', WT_I18N::translate('Username'), help_link('username'), '</label>',
 			'<input type="text" id="username" name="username" value="', htmlspecialchars($username), '" size="20" class="formField">
 		</div>
 		<div>
-			<label for="password">', WT_I18N::translate('Password').help_link_span('password'), '</label>',
+			<label for="password">', WT_I18N::translate('Password'), help_link('password'), '</label>',
 			'<input type="password" id="password" name="password" size="20" class="formField">
 		</div>
 		<div>
 			<input type="submit" value="', WT_I18N::translate('Login'), '">
 		</div>
 		<div>
-			<a href="login_register.php?action=pwlost">', WT_I18N::translate('Request new password').help_link_span('new_password'), '</a>
+			<a href="login_register.php?action=pwlost">', WT_I18N::translate('Request new password'), help_link('new_password'), '</a>
 		</div>';
 		if (get_site_setting('USE_REGISTRATION_MODULE')) {
-			echo '<div><a href="login_register.php?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
+			echo '<div><a href="login_register.php?action=register">', WT_I18N::translate('Request new user account'), help_link('new_user'), '</a></div>';
 		}
 	echo '</form>'; // close "login-form"
 echo '</div>'; // close "login-page"
