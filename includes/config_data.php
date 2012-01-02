@@ -279,6 +279,7 @@ $level2_tags=array(
 		'DEAT',
 		'DIV',
 		'DIVF',
+		'DSCR',
 		'EDUC',
 		'EMIG',
 		'ENDL',
