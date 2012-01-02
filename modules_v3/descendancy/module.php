@@ -150,7 +150,9 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if ($generations>0) {
 			$out .= '<div class="desc_tree_div_visible">';
 			$out .= $this->loadSpouses($person->getXref());
-			$out .= '</div><script type="text/javascript">dloadedNames["'.$person->getXref().'"]=2;</script>';
+			$out .= '</div>';
+			$base_controller=new WT_Controller_Base();
+			$base_controller->addInlineJavaScript('dloadedNames["'.$person->getXref().'"]=2;');
 		} else {
 			$out .= '<div class="desc_tree_div">';
 			$out .= '</div>';
@@ -174,7 +176,9 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= '<a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" alt="family"></a>';
 		$out .= '<div class="desc_tree_div_visible">';
 		$out .= $this->loadChildren($family->getXref(), $generations);
-		$out .= '</div><script type="text/javascript">dloadedNames["'.$family->getXref().'"]=2;</script>';
+		$out .= '</div>';
+		$base_controller=new WT_Controller_Base();
+		$base_controller->addInlineJavaScript('dloadedNames["'.$family->getXref().'"]=2;');
 		$out .= '</li>';
 		return $out;
 	}
