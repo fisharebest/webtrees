@@ -372,8 +372,8 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 #login-register-page table, #branches-page table, #medialist-page .list_table {margin:auto;}
 #login-register-page table a {display:block; text-align:center;}
 #login-text {margin:20px auto; width:50%;}
-#login-form {background-color:#81A9CB; border:1px outset #81A9CB; margin:10px auto; padding:5px; width:300px;}
-#login-form div, #login-form div a {color:#fff; margin:5px auto; padding:5px; text-align:center;}
+#login-form {background-color:#edf7fd; border:1px outset #81A9CB; margin:10px auto; padding:5px; width:300px;}
+#login-form div, #login-form div a {margin:5px auto; padding:5px; text-align:center;}
 #login-form label {display:inline-block; text-align:right; width:120px;}
 html[dir='rtl'] #login-form label {text-align:left;}
 
