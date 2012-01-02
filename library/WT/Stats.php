@@ -1579,8 +1579,8 @@ class WT_Stats {
 			$age = $row['age'];
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.4375)>0) {
+				$age = floor($age/30.4375).'m';
 			} else {
 				$age = $age.'d';
 			}
@@ -1646,8 +1646,8 @@ class WT_Stats {
 			$age = (WT_CLIENT_JD-$row['age']);
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.4375)>0) {
+				$age = floor($age/30.4375).'m';
 			} else {
 				$age = $age.'d';
 			}
@@ -1705,8 +1705,8 @@ class WT_Stats {
 		if ($show_years) {
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.4375)>0) {
+				$age = floor($age/30.4375).'m';
 			} else if (!empty($age)) {
 				$age = $age.'d';
 			}
@@ -2078,15 +2078,15 @@ class WT_Stats {
 				}
 				break;
 			case 'name':
-				$result="<a href=\"".$family->getHtmlUrl()."\">".$person->getFullName().'</a>';
+				$result='<a href="'.$family->getHtmlUrl().'">'.$person->getFullName().'</a>';
 				break;
 			case 'age':
 				$age = $row['age'];
 				if ($show_years) {
 					if (floor($age/365.25)>0) {
 						$age = floor($age/365.25).'y';
-					} else if (floor($age/12)>0) {
-						$age = floor($age/12).'m';
+					} else if (floor($age/30.4375)>0) {
+						$age = floor($age/30.4375).'m';
 					} else {
 						$age = $age.'d';
 					}
@@ -2116,7 +2116,7 @@ class WT_Stats {
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' husbdeath.d_gid = fam.f_husb AND'
-				." husbdeath.d_fact IN ('DEAT', 'BURI', 'CREM') AND"
+				." husbdeath.d_fact = 'DEAT' AND"
 				.' married.d_gid = fam.f_id AND'
 				." married.d_fact = 'MARR' AND"
 				.' married.d_julianday1 < husbdeath.d_julianday2 AND'
@@ -2138,7 +2138,7 @@ class WT_Stats {
 			.' WHERE'
 				." fam.f_file = {$this->_ged_id} AND"
 				.' wifedeath.d_gid = fam.f_wife AND'
-				." wifedeath.d_fact IN ('DEAT', 'BURI', 'CREM') AND"
+				." wifedeath.d_fact = 'DEAT' AND"
 				.' married.d_gid = fam.f_id AND'
 				." married.d_fact = 'MARR' AND"
 				.' married.d_julianday1 < wifedeath.d_julianday2 AND'
@@ -2195,8 +2195,8 @@ class WT_Stats {
 			}
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.4375)>0) {
+				$age = floor($age/30.4375).'m';
 			} else {
 				$age = $age.'d';
 			}
@@ -2276,8 +2276,8 @@ class WT_Stats {
 			$age = $fam['age'];
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.4375)>0) {
+				$age = floor($age/30.4375).'m';
 			} else {
 				$age = $age.'d';
 			}
@@ -2346,15 +2346,15 @@ class WT_Stats {
 				}
 				break;
 			case 'name':
-				$result="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName().'</a>';
+				$result='<a href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a>';
 				break;
 			case 'age':
 				$age = $row['age'];
 				if ($show_years) {
 					if (floor($age/365.25)>0) {
 						$age = floor($age/365.25).'y';
-					} else if (floor($age/12)>0) {
-						$age = floor($age/12).'m';
+					} else if (floor($age/30.4375)>0) {
+						$age = floor($age/30.4375).'m';
 					} else {
 						$age = $age.'d';
 					}
@@ -2896,10 +2896,10 @@ class WT_Stats {
 			$child2 = WT_Person::getInstance($fam['ch2']);
 			if ($type == 'name') {
 				if ($child1->canDisplayDetails() && $child2->canDisplayDetails()) {
-					$return = "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
-					$return .= WT_I18N::translate('and')." ";
-					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
-					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>\n";
+					$return = '<a href="'.$child2->getHtmlUrl().'">'.$child2->getFullName().'</a> ';
+					$return .= WT_I18N::translate('and').' ';
+					$return .= '<a href="'.$child1->getHtmlUrl().'">'.$child1->getFullName().'</a>';
+					$return .= ' <a href="'.$family->getHtmlUrl().'">['.WT_I18N::translate('View Family').']</a>';
 				} else {
 					$return = WT_I18N::translate('This information is private and cannot be shown.');
 				}
@@ -2908,8 +2908,8 @@ class WT_Stats {
 			$age = $fam['age'];
 			if (floor($age/365.25)>0) {
 				$age = floor($age/365.25).'y';
-			} else if (floor($age/12)>0) {
-				$age = floor($age/12).'m';
+			} else if (floor($age/30.4375)>0) {
+				$age = floor($age/30.4375).'m';
 			} else {
 				$age = $age.'d';
 			}
