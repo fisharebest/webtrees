@@ -1958,7 +1958,7 @@ function print_chart_by_age($data, $title) {
 	}
 	if ($count<1) return;
 	$avg = round($avg/$count);
-	$chart_url = "http://chart.apis.google.com/chart?cht=bvs"; // chart type
+	$chart_url = "https://chart.googleapis.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=725x150"; // size
 	$chart_url .= "&amp;chbh=3,2,2"; // bvg : 4,1,2
 	$chart_url .= "&amp;chf=bg,s,FFFFFF99"; //background color
@@ -2010,7 +2010,7 @@ function print_chart_by_decade($data, $title) {
 		$count += $n;
 	}
 	if ($count<1) return;
-	$chart_url = "http://chart.apis.google.com/chart?cht=bvs"; // chart type
+	$chart_url = "https://chart.googleapis.com/chart?cht=bvs"; // chart type
 	$chart_url .= "&amp;chs=360x150"; // size
 	$chart_url .= "&amp;chbh=3,3"; // bvg : 4,1,2
 	$chart_url .= "&amp;chf=bg,s,FFFFFF99"; //background color
