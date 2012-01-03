@@ -330,7 +330,7 @@ class WT_I18N {
 	}
 
 	// echo WT_I18N::plural('There is an error', 'There are errors', $num_errors);
-	// echo WT_I18N::plural('There is one error', 'There are %d errors', $num_errors);
+	// echo WT_I18N::plural('There is one error', 'There are %s errors', $num_errors);
 	// echo WT_I18N::plural('There is %1$d %2$s cat', 'There are %1$d %2$s cats', $num, $num, $colour);
 	static public function plural(/* var_args */) {
 		$args=func_get_args();
@@ -350,6 +350,7 @@ class WT_I18N {
 	// Convert a GEDCOM age string into translated_text
 	// NB: The import function will have normalised this, so we don't need
 	// to worry about badly formatted strings
+	// NOTE: this function is not yet complete - eventually it will replace get_age_at_event()
 	static public function gedcom_age($string) {
 		switch ($string) {
 		case 'STILLBORN':
@@ -366,21 +367,21 @@ class WT_I18N {
 		if (preg_match('/(\d+)y/', $string, $match)) {
 			// I18N: Part of an age string. e.g 5 years, 4 months and 3 days
 			$years=$match[1];
-			$age[]=WT_I18N::plural('%d year', '%d years', $years, $years);
+			$age[]=WT_I18N::plural('%s year', '%s years', $years, WT_I18N::number($years));
 		} else {
 			$years=-1;
 		}
 		if (preg_match('/(\d+)m/', $string, $match)) {
 			// I18N: Part of an age string. e.g 5 years, 4 months and 3 days
-			$age[]=WT_I18N::plural('%d month', '%d months', $match[1], $match[1]);
+			$age[]=WT_I18N::plural('%s month', '%s months', $match[1], WT_I18N::number($match[1]));
 		}
 		if (preg_match('/(\d+)w/', $string, $match)) {
 			// I18N: Part of an age string. e.g 7 weeks and 3 days
-			$age[]=WT_I18N::plural('%d week', '%d weeks', $match[1], $match[1]);
+			$age[]=WT_I18N::plural('%s week', '%s weeks', $match[1], WT_I18N::number($match[1]));
 		}
 		if (preg_match('/(\d+)d/', $string, $match)) {
 			// I18N: Part of an age string. e.g 5 years, 4 months and 3 days
-			$age[]=WT_I18N::plural('%d day', '%d days', $match[1], $match[1]);
+			$age[]=WT_I18N::plural('%s day', '%s days', $match[1], WT_I18N::number($match[1]));
 		}
 		// If an age is just a number of years, only show the number
 		if (count($age)==1 && $years>=0) {
@@ -406,7 +407,7 @@ class WT_I18N {
 	// century name, English => 21st, Polish => XXI, etc.
 	static function century_name($century) {
 		if ($century<0) {
-			return str_replace(-$century, self::century_name(-$century), self::translate('%d B.C.', -$century));
+			return str_replace(-$century, self::century_name(-$century), self::translate('%s&nbsp;BCE', WT_I18N::number(-$century)));
 		}
 		switch ($century) {
 		case 21: return self::translate_c('CENTURY', '21st');
@@ -443,26 +444,26 @@ class WT_I18N {
 		$minute=60;
 
 		// TODO: Display two units (years+months), (months+days), etc.
-		// This requires "contexts".  i.e. "%d months" has a different translation
+		// This requires "contexts".  i.e. "%s months" has a different translation
 		// in different contexts.
 		// We must AVOID combining phrases to make sentences.
 		if ($seconds>$year) {
 			$years=floor($seconds/$year);
-			return WT_I18N::plural('%d year ago', '%d years ago', $years, $years);
+			return WT_I18N::plural('%s year ago', '%s years ago', $years, WT_I18N::number($years));
 		} elseif ($seconds>$month) {
 			$months=floor($seconds/$month);
-			return WT_I18N::plural('%d month ago', '%d months ago', $months, $months);
+			return WT_I18N::plural('%s month ago', '%s months ago', $months, WT_I18N::number($months));
 		} elseif ($seconds>$day) {
 			$days=floor($seconds/$day);
-			return WT_I18N::plural('%d day ago', '%d days ago', $days, $days);
+			return WT_I18N::plural('%s day ago', '%s days ago', $days, WT_I18N::number($days));
 		} elseif ($seconds>$hour) {
 			$hours=floor($seconds/$hour);
-			return WT_I18N::plural('%d hour ago', '%d hours ago', $hours, $hours);
+			return WT_I18N::plural('%s hour ago', '%s hours ago', $hours, WT_I18N::number($hours));
 		} elseif ($seconds>$minute) {
 			$minutes=floor($seconds/$minute);
-			return WT_I18N::plural('%d minute ago', '%d minutes ago', $minutes, $minutes);
+			return WT_I18N::plural('%s minute ago', '%s minutes ago', $minutes, WT_I18N::number($minutes));
 		} else {
-			return WT_I18N::plural('%d second ago', '%d seconds ago', $seconds, $seconds);
+			return WT_I18N::plural('%s second ago', '%s seconds ago', $seconds, WT_I18N::number($seconds));
 		}
 	}
 

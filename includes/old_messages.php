@@ -33,6 +33,20 @@ exit;
 
 // MESSAGES DELETED IN WEBTREES-1.2.7
 
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d day ago', '%d days ago', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d day', '%d days', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d hour ago', '%d hours ago', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d minute ago', '%d minutes ago', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d month ago', '%d months ago', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d month', '%d months', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d second ago', '%d seconds ago', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d week', '%d weeks', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d year ago', '%d years ago', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d year', '%d years', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
+
 // MESSAGES DELETED IN WEBTREES-1.2.6
 
 /* I18N: This message is deleted in webtrees-1.2.6  */ WT_I18N::translate('A pedigree is an enumeration of all ancestors of the starting person.  Users who are not logged in see the pedigree of the starting (root) person chosen by the site administrator.  Logged in users can select their own starting (root) person.<br /><br />In this context, "All ancestors" means the father and mother, their parents, and so on.  The pedigree is displayed graphically; you don\'t have to struggle through pages of text to determine your ancestors.<br /><br />All individuals are displayed in Name boxes on the screen.<br /><ul><li><b>Name boxes on the pedigree</b><br />If the Pedigree page is set to show details, you will see the person\'s name and birth and death dates.  You can click on a person\'s name to take you directly to the Individual Information page of that person.<br /><br />When <b>Show details</b> is on there are two icons inside the name box.</li><li><b>Pedigree icon inside the Name box</b><br />When the option <b>Show Details</b> is on, you see a Pedigree icon in the Name box. Depending on the site settings, you have to hover over the icon or click on it.  When you click on or hover over this icon, a small sub-menu appears.<br /><br />The items <b>Pedigree Tree</b> and <b>Descendancy Chart</b> are similar to those items in the main menu, but the difference is that the starting person is now the individual of mentioned in the Name box.  You also see <b>Family with Spouse</b>. Underneath that you see the name of the spouse followed by the names of the children.  All names are clickable.</li><li><b>Magnifying glass inside the Name box</b><br />Depending on the site settings, you have to hover over the icon or click on it.  This magnifies the Name box so that more details will be displayed.  You will see more dates and events. Names are clickable.</li><li><b>Arrows</b><br />On the left or right of the leftmost or rightmost Name boxes you may see arrows.  When you click on these arrows the screen display will shift in the direction of the arrow.</li></ul>');
