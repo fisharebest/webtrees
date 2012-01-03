@@ -28,19 +28,12 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-/**
-* translate gedcom age string
-*
-* Examples:
-* 4y 8m 10d.
-* Chi
-* INFANT
-*
-* @param string $agestring gedcom AGE field value
-* @param bool $show_years;
-* @return string age in user language
-* @see http://homepages.rootsweb.com/~pmcbride/gedcom/55gcch2.htm#AGE_AT_EVENT
-*/
+// translate gedcom age string
+//
+// Examples:
+// 4y 8m 10d.
+// Chi
+// INFANT
 function get_age_at_event($agestring, $show_years) {
 	switch (WT_LOCALE) {
 		case 'pl':
@@ -60,10 +53,10 @@ function get_age_at_event($agestring, $show_years) {
 			WT_I18N::translate('Child'),
 			WT_I18N::translate('Infant'),
 			WT_I18N::translate('Stillborn'),
-			($show_years || preg_match('/[dm]/', $agestring)) ? "WT_I18N::plural('%d year', '%d years', $1 , WT_I18N::digits($1))" : "WT_I18N::digits($1)",
-			"WT_I18N::plural('%d month', '%d months', $1 , WT_I18N::digits($1))",
-			"WT_I18N::plural('%d day', '%d days', $1 , WT_I18N::digits($1))",
-			"WT_I18N::plural('%d week', '%d weeks', $1 , WT_I18N::digits($1))"
+			($show_years || preg_match('/[dm]/', $agestring)) ? "WT_I18N::plural('%s year', '%s years', $1 , WT_I18N::digits($1))" : "WT_I18N::digits($1)",
+			"WT_I18N::plural('%s month', '%s months', $1 , WT_I18N::digits($1))",
+			"WT_I18N::plural('%s day', '%s days', $1 , WT_I18N::digits($1))",
+			"WT_I18N::plural('%s week', '%s weeks', $1 , WT_I18N::digits($1))"
 		),
 		$agestring
 	);
