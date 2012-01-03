@@ -3604,7 +3604,7 @@ class WT_Stats {
 			}
 			switch ($type) {
 			case 'table':
-				$common[] = '<tr><td>'.PrintReady(utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1))).'</td><td>'.$total.'</td></tr>';
+				$common[] = '<tr><td>'.PrintReady(utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1))).'</td><td>'.WT_I18N::number($total).'</td><td>'.$total.'</td></tr>';
 				break;
 			case 'list':
 				$common[] = "\t<li>{$totL}".PrintReady(utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1)))."{$totR}</li>\n";
@@ -3633,13 +3633,14 @@ class WT_Stats {
 						"aaSorting": [[1,"desc"]],
 						"aoColumns": [
 							/* 0-name */ {},
-							/* 1-count */ { "sClass": "center"}
+							/* 1-count */ { sClass:"center", iDataSort:2},
+							/* 2-COUNT */ { bVisible:false}
 						]
 					});
 					jQuery("#'.$table_id.'").css("visibility", "visible");
 				');
 				$lookup=array('M'=>WT_I18N::translate('Male'), 'F'=>WT_I18N::translate('Female'), 'U'=>WT_I18N::translate_c('unknown gender', 'Unknown'), 'B'=>WT_I18N::translate('All'));
-				return '<table id="'.$table_id.'" class="givn-list"><thead><tr><th class="ui-state-default" colspan="2">'.$lookup[$sex].'</th></tr><tr><th>'.WT_I18N::translate('Name').'</th><th>'.WT_I18N::translate('Count').'</th></tr></thead><tbody>'.join('', $common).'</tbody></table>';
+				return '<table id="'.$table_id.'" class="givn-list"><thead><tr><th class="ui-state-default" colspan="3">'.$lookup[$sex].'</th></tr><tr><th>'.WT_I18N::translate('Name').'</th><th>'.WT_I18N::translate('Count').'</th><th>COUNT</th></tr></thead><tbody>'.join('', $common).'</tbody></table>';
 			case 'list':
 				return '<ul>\n'.join("\n", $common).'</ul>\n';
 			case 'nolist':

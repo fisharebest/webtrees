@@ -85,8 +85,8 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			$title='';
 		}
 
-		// I18N: There are separate lists of male/female names, containing %d names each
-		$title .= WT_I18N::plural('Top surname', 'Top %d surnames', $num, $num);
+		// I18N: Title for a list of the most common surnames - with %s names in the list
+		$title .= WT_I18N::plural('Top surname', 'Top %s surnames', $num, WT_I18N::number($num));
 		$title .= help_link('top_surnames', $this->getName());
 		switch ($infoStyle) {
 		case 'tagcloud':

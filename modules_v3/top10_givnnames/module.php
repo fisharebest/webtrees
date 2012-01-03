@@ -63,8 +63,8 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$title='';
 		}
-		// I18N: There are separate lists of male/female names, containing %d names each
-		$title .= WT_I18N::plural('Top given name', 'Top %d given names', $num, $num);
+		// I18N: Title for a list of the most common given names - with %s names in the list
+		$title .= WT_I18N::plural('Top given name', 'Top %s given names', $num, WT_I18N::number($num));
 
 		$content = '<div class="normal_inner_block">';
 		//Select List or Table
