@@ -1581,7 +1581,7 @@ margin: 0;
 #login-text {margin:20px auto; width:50%;}
 #login-form {background-color:#95B8E0; border-radius:3px; margin:10px auto; padding:5px; width:300px;}
 #login-form div, #login-form div a {color:#039; margin:5px auto; padding:5px; text-align:center;}
-#login-form label {display:inline-block; text-align:right; width:120px;}
+#login-form label {text-align:right; width:120px;}
 html[dir='rtl'] #login-form label {text-align:left;}
 
 #reportengine-page table {margin:20px auto;}
