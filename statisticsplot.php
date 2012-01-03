@@ -611,7 +611,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	$titleLength = strpos($mytitle."\n", "\n");
 	$title = substr($mytitle, 0, $titleLength);
 
-	$imgurl = 'https://chart.apis.google.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt='.rawurlencode($title).'&amp;'.$datastring.'&amp;'.$colorstring.'&amp;chbh=';
+	$imgurl = 'http://chart.apis.google.com/chart?cht=bvg&amp;chs=950x300&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chtt='.rawurlencode($title).'&amp;'.$datastring.'&amp;'.$colorstring.'&amp;chbh=';
 	if (count($ydata) > 3) {
 		$imgurl .= '5,1';
 	} else if (count($ydata) < 2) {
