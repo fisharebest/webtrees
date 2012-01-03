@@ -670,29 +670,35 @@ class WT_Stats {
 		if (isset($params[2]) && $params[2] != '') {$color_male = strtolower($params[2]);} else {$color_male = '84beff';}
 		if (isset($params[3]) && $params[3] != '') {$color_unknown = strtolower($params[3]);} else {$color_unknown = '777777';}
 		$sizes = explode('x', $size);
-		$tot_f = $this->totalSexFemalesPercentage();
-		$tot_m = $this->totalSexMalesPercentage();
-		$tot_u = $this->totalSexUnknownPercentage();
-		if ($tot_f == 0 && $tot_m == 0 && $tot_u == 0) {
+		// Raw data - for calculation
+		$tot_f = $this->_totalSexFemales();
+		$tot_m = $this->_totalSexMales();
+		$tot_u = $this->_totalSexUnknown();
+		$tot=$tot_f+$tot_m+$tot_u;
+		// I18N data - for display
+		$per_f = $this->totalSexFemalesPercentage();
+		$per_m = $this->totalSexMalesPercentage();
+		$per_u = $this->totalSexUnknownPercentage();
+		if ($tot==0) {
 			return '';
 		} else if ($tot_u > 0) {
-			$chd = self::_array_to_extended_encoding(array($tot_u, $tot_f, $tot_m));
+			$chd = self::_array_to_extended_encoding(array(4095*$tot_u/$tot, 4095*$tot_f/$tot, 4095*$tot_m/$tot));
 			$chl =
-				WT_I18N::translate_c('unknown people', 'Unknown').' - '.$tot_u.'|'.
-				WT_I18N::translate('Females').' - '.$tot_f.'|'.
-				WT_I18N::translate('Males').' - '.$tot_m;
+				WT_I18N::translate_c('unknown people', 'Unknown').' - '.$per_u.'|'.
+				WT_I18N::translate('Females').' - '.$per_f.'|'.
+				WT_I18N::translate('Males').' - '.$per_m;
 			$chart_title =
-				WT_I18N::translate('Males').' - '.$tot_m.WT_I18N::$list_separator.
-				WT_I18N::translate('Females').' - '.$tot_f.WT_I18N::$list_separator.
-				WT_I18N::translate_c('unknown people', 'Unknown').' - '.$tot_u;
+				WT_I18N::translate('Males').' - '.$per_m.WT_I18N::$list_separator.
+				WT_I18N::translate('Females').' - '.$per_f.WT_I18N::$list_separator.
+				WT_I18N::translate_c('unknown people', 'Unknown').' - '.$per_u;
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_unknown},{$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		} else {
 			$chd = self::_array_to_extended_encoding(array($tot_f, $tot_m));
 			$chl =
-				WT_I18N::translate('Females').' - '.$tot_f.'|'.
-				WT_I18N::translate('Males').' - '.$tot_m;
-			$chart_title =  WT_I18N::translate('Males').' - '.$tot_m.WT_I18N::$list_separator.
-							WT_I18N::translate('Females').' - '.$tot_f;
+				WT_I18N::translate('Females').' - '.$per_f.'|'.
+				WT_I18N::translate('Males').' - '.$per_m;
+			$chart_title =  WT_I18N::translate('Males').' - '.$per_m.WT_I18N::$list_separator.
+							WT_I18N::translate('Females').' - '.$per_f;
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_female},{$color_male}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		}
 	}
@@ -739,17 +745,22 @@ class WT_Stats {
 		if (isset($params[1]) && $params[1] != '') {$color_living = strtolower($params[1]);} else {$color_living = 'ffffff';}
 		if (isset($params[2]) && $params[2] != '') {$color_dead = strtolower($params[2]);} else {$color_dead = 'cccccc';}
 		$sizes = explode('x', $size);
-		$tot_l = $this->totalLivingPercentage();
-		$tot_d = $this->totalDeceasedPercentage();
-		if ($tot_l == 0 && $tot_d == 0) {
+		// Raw data - for calculation
+		$tot_l = $this->_totalLiving();
+		$tot_d = $this->_totalDeceased();
+		$tot=$tot_l+$tot_d;
+		// I18N data - for display
+		$per_l = $this->totalLivingPercentage();
+		$per_d = $this->totalDeceasedPercentage();
+		if ($tot==0) {
 			return '';
 		} else {
-			$chd = self::_array_to_extended_encoding(array($tot_l, $tot_d));
+			$chd = self::_array_to_extended_encoding(array(4095*$tot_l/$tot, 4095*$tot_d/$tot));
 			$chl =
-				WT_I18N::translate('Living').' - '.$tot_l.'|'.
-				WT_I18N::translate('Dead').' - '.$tot_d.'|';
-			$chart_title =  WT_I18N::translate('Living').' - '.$tot_l.WT_I18N::$list_separator.
-							WT_I18N::translate('Dead').' - '.$tot_d;
+				WT_I18N::translate('Living').' - '.$per_l.'|'.
+				WT_I18N::translate('Dead').' - '.$per_d.'|';
+			$chart_title =  WT_I18N::translate('Living').' - '.$per_l.WT_I18N::$list_separator.
+							WT_I18N::translate('Dead').' - '.$per_d;
 			return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_living},{$color_dead}&amp;chf=bg,s,ffffff00&amp;chl={$chl}\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 		}
 	}
@@ -3922,7 +3933,9 @@ class WT_Stats {
 
 	// http://bendodson.com/news/google-extended-encoding-made-easy/
 	static function _array_to_extended_encoding($a) {
-		if (!is_array($a)) {$a = array($a);}
+		if (!is_array($a)) {
+			$a = array($a);
+		}
 		$encoding = '';
 		foreach ($a as $value) {
 			if ($value<0) $value = 0;
