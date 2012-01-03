@@ -3495,7 +3495,6 @@ class WT_Stats {
 		$tot = 0;
 		$per = 0;
 		foreach ($surnames as $indexval=>$surname) {$tot += $surname['match'];}
-		$chart_title = '';
 		$chd = '';
 		$chl = array();
 		foreach ($all_surnames as $surn=>$surns) {
@@ -3518,16 +3517,15 @@ class WT_Stats {
 			$per = round(100 * $count_per / $tot_indi, 0);
 			$chd .= self::_array_to_extended_encoding($per);
 			//ToDo: RTL names are often printed LTR when also LTR names are present
-			$chl[] = $top_name.' - '.$count_per;
-			$chart_title .= $top_name.' - '.$count_per.WT_I18N::$list_separator;
+			$chl[] = $top_name.' - '.WT_I18N::number($count_per);
 
 		}
 		$per = round(100 * ($tot_indi-$tot) / $tot_indi, 0);
 		$chd .= self::_array_to_extended_encoding($per);
-		$chl[] = WT_I18N::translate('Other').' - '.($tot_indi-$tot);
-		$chart_title .= WT_I18N::translate('Other').' - '.($tot_indi-$tot);
+		$chl[] = WT_I18N::translate('Other').' - '.WT_I18N::number($tot_indi-$tot);
 
-		$chl = join('|', $chl);
+		$chart_title=implode(WT_I18N::$list_separator, $chl);
+		$chl=implode('|', $chl);
 		return '<img src="http://chart.apis.google.com/chart?cht=p3&amp;chd=e:'.$chd.'&amp;chs='.$size.'&amp;chco='.$color_from.','.$color_to.'&amp;chf=bg,s,ffffff00&amp;chl='.rawurlencode($chl).'" width="'.$sizes[0].'" height="'.$sizes[1].'" alt="'.$chart_title.'" title="'.$chart_title.'" />';
 	}
 
@@ -3691,7 +3689,6 @@ class WT_Stats {
 		if (count($given) <= 0) {return '';}
 		$tot = 0;
 		foreach ($given as $givn=>$count) {$tot += $count;}
-		$chart_title = '';
 		$chd = '';
 		$chl = array();
 		foreach ($given as $givn=>$count) {
@@ -3702,16 +3699,14 @@ class WT_Stats {
 			}
 			$chd .= self::_array_to_extended_encoding($per);
 			//ToDo: RTL names are often printed LTR when also LTR names are present
-			$chl[] = $givn.' - '.$count;
-			$chart_title .= $givn.' - '.$count.WT_I18N::$list_separator;
-
+			$chl[] = $givn.' - '.WT_I18N::number($count);
 		}
 		$per = round(100 * ($tot_indi-$tot) / $tot_indi, 0);
 		$chd .= self::_array_to_extended_encoding($per);
-		$chl[] = WT_I18N::translate('Other').' - '.($tot_indi-$tot);
-		$chart_title .= WT_I18N::translate('Other').' - '.($tot_indi-$tot);
+		$chl[] = WT_I18N::translate('Other').' - '.WT_I18N::number($tot_indi-$tot);
 
-		$chl = join('|', $chl);
+		$chart_title=implode(WT_I18N::$list_separator, $chl);
+		$chl=implode('|', $chl);
 		return "<img src=\"http://chart.apis.google.com/chart?cht=p3&amp;chd=e:{$chd}&amp;chs={$size}&amp;chco={$color_from},{$color_to}&amp;chf=bg,s,ffffff00&amp;chl=".rawurlencode($chl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".$chart_title."\" title=\"".$chart_title."\" />";
 	}
 
