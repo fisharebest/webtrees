@@ -43,6 +43,8 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d week', '%d weeks', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d year ago', '%d years ago', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d year', '%d years', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 0, 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('interval %d year', 'interval %d years', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');

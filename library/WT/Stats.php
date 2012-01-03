@@ -843,6 +843,7 @@ class WT_Stats {
 		$chart_title = "";
 		$c = 0;
 		$max = 0;
+		$media=array();
 		foreach (self::$_media_types as $type) {
 			$count = $this->_totalMediaType($type);
 			if ($count>0) {
@@ -853,7 +854,7 @@ class WT_Stats {
 				$c += $count;
 			}
 		}
-		$count = $this->totalMediaUnknown();
+		$count = $this->_totalMediaType('unknown');
 		if ($count>0) {
 			$media['unknown'] = $tot-$c;
 			if ($tot-$c > $max) {
@@ -1243,12 +1244,12 @@ class WT_Stats {
 		// get all the user's countries names
 		$all_countries = self::get_all_countries();
 		foreach ($all_db_countries as $country_code=>$country) {
-			$top10[]="\t<li>";
+			$top10[]='<li>';
 			foreach ($country as $country_name=>$tot) {
 				$place = '<a href="'.get_place_url($country_name).'" class="list_item">'.$all_countries[$country_code].'</a>';
-				$top10[].=$place." ".PrintReady("(".$tot.")");
+				$top10[].=$place.' - '.WT_I18N::number($tot);
 			}
-			$top10[].="</li>\n";
+			$top10[].='</li>';
 			if ($i++==10) break;
 		}
 		$top10=join("\n", $top10);
@@ -1290,7 +1291,7 @@ class WT_Stats {
 		arsort($places);
 		foreach ($places as $place=>$count) {
 			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
-			$top10[]="\t<li>".$place." ".PrintReady("(".$count.")")."</li>\n";
+			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
 		}
 		$top10=join("\n", $top10);
@@ -2525,7 +2526,7 @@ class WT_Stats {
 			$counts=array();
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= WT_I18N::century_name($values['century']).' - '.$values['total'].'|';
+				$centuries .= WT_I18N::century_name($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
@@ -3252,7 +3253,7 @@ class WT_Stats {
 				.' f_numchil = 0 AND'
 				." fam.f_file = {$this->_ged_id}");
 		$row=$rows[0];
-		return $row['tot'];
+		return WT_I18N::number($row['tot']);
 	}
 
 

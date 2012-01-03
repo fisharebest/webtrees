@@ -574,11 +574,11 @@ if (isset($content) && $content==1) {
 			?>
 			<br><select id="xas-grenzen-leeftijden" name="xas-grenzen-leeftijden">
 				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected="selected"><?php
-					echo WT_I18N::plural('interval %d year', 'interval %d years', 10, 10); ?></option>
+					echo WT_I18N::plural('interval %s year', 'interval %s years', 10, WT_I18N::number(10)); ?></option>
 				<option value="5,20,40,60,75,80,85,90"><?php
-					echo WT_I18N::plural('interval %d year', 'interval %d years', 20, 20); ?></option>
+					echo WT_I18N::plural('interval %s year', 'interval %s years', 20, WT_I18N::number(20)); ?></option>
 				<option value="10,25,50,75,100"><?php
-					echo WT_I18N::plural('interval %d year', 'interval %d years', 25, 25); ?></option>
+					echo WT_I18N::plural('interval %s year', 'interval %s years', 25, WT_I18N::number(25)); ?></option>
 			</select><br>
 			</div>
 			<div id="x_years_m" style="display:none;">
@@ -587,9 +587,9 @@ if (isset($content) && $content==1) {
 			?>
 			<br><select id="xas-grenzen-leeftijden_m" name="xas-grenzen-leeftijden_m">
 				<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected="selected"><?php
-					echo WT_I18N::plural('interval %d year', 'interval %d years', 2, 2); ?></option>
+					echo WT_I18N::plural('interval %s year', 'interval %s years', 2, WT_I18N::number(2)); ?></option>
 				<option value="20,25,30,35,40,45,50"><?php
-					echo WT_I18N::plural('interval %d year', 'interval %d years', 5, 5); ?></option>
+					echo WT_I18N::plural('interval %s year', 'interval %s years', 5, WT_I18N::number(5)); ?></option>
 			</select><br>
 			</div>
 			<div id="x_months" style="display:none;">
@@ -666,17 +666,17 @@ if (isset($content) && $content==1) {
 			<select id="zas-grenzen-periode" name="zas-grenzen-periode">
 				<option value="1700,1750,1800,1850,1900,1950,2000" selected="selected"><?php
 					// I18N: from 1700 interval 50 years
-					echo WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 50, 50, 1700); ?></option>
+					echo WT_I18N::plural('from %2$d interval %1$s year', 'from %2$d interval %1$s years', 50, 50, 1700); ?></option>
 				<option value="1800,1840,1880,1920,1950,1970,2000"><?php
-					echo WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 40, 40, 1800); ?></option>
+					echo WT_I18N::plural('from %2$d interval %1$s year', 'from %2$d interval %1$s years', 40, 40, 1800); ?></option>
 				<option value="1800,1850,1900,1950,2000"><?php
-					echo WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 50, 50, 1800); ?></option>
+					echo WT_I18N::plural('from %2$d interval %1$s year', 'from %2$d interval %1$s years', 50, 50, 1800); ?></option>
 				<option value="1900,1920,1940,1960,1980,1990,2000"><?php
-					echo WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 20, 20, 1900); ?></option>
+					echo WT_I18N::plural('from %2$d interval %1$s year', 'from %2$d interval %1$s years', 20, 20, 1900); ?></option>
 				<option value="1900,1925,1950,1975,2000"><?php
-					echo WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 25, 25, 1900); ?></option>
+					echo WT_I18N::plural('from %2$d interval %1$s year', 'from %2$d interval %1$s years', 25, 25, 1900); ?></option>
 				<option value="1940,1950,1960,1970,1980,1990,2000"><?php
-					echo WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 10, 10, 1940); ?></option>
+					echo WT_I18N::plural('from %2$d interval %1$s year', 'from %2$d interval %1$s years', 10, 10, 1940); ?></option>
 			</select>
 			<br><br>
 			<?php
