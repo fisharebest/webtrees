@@ -1246,7 +1246,7 @@ class WT_Stats {
 			$top10[]="\t<li>";
 			foreach ($country as $country_name=>$tot) {
 				$place = '<a href="'.get_place_url($country_name).'" class="list_item">'.$all_countries[$country_code].'</a>';
-				$top10[].=$place." ".PrintReady("[".$tot."]");
+				$top10[].=$place." ".PrintReady("(".$tot.")");
 			}
 			$top10[].="</li>\n";
 			if ($i++==10) break;
@@ -1290,7 +1290,7 @@ class WT_Stats {
 		arsort($places);
 		foreach ($places as $place=>$count) {
 			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
-			$top10[]="\t<li>".$place." ".PrintReady("[".$count."]")."</li>\n";
+			$top10[]="\t<li>".$place." ".PrintReady("(".$count.")")."</li>\n";
 			if ($i++==10) break;
 		}
 		$top10=join("\n", $top10);
@@ -1598,9 +1598,9 @@ class WT_Stats {
 			$age = get_age_at_event($age, true);
 			if ($person->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> [".$age."]"."</li>\n";
+					$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")"."</li>\n";
 				} else {
-					$top10[]="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> [".$age."]";
+					$top10[]="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")";
 				}
 			}
 		}
@@ -1610,7 +1610,7 @@ class WT_Stats {
 			$top10=join(';&nbsp; ', $top10);
 		}
 		if ($TEXT_DIRECTION=='rtl') {
-			$top10=str_replace(array("[", "]", "(", ")", "+"), array("&rlm;[", "&rlm;]", "&rlm;(", "&rlm;)", "&rlm;+"), $top10);
+			$top10=str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
 			return "<ul>\n{$top10}</ul>\n";
@@ -1664,9 +1664,9 @@ class WT_Stats {
 			}
 			$age = get_age_at_event($age, true);
 			if ($type == 'list') {
-				$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> [".$age."]"."</li>\n";
+				$top10[]="\t<li><a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")"."</li>\n";
 			} else {
-				$top10[]="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> [".$age."]";
+				$top10[]="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a> (".$age.")";
 			}
 		}
 		if ($type == 'list') {
@@ -1675,7 +1675,7 @@ class WT_Stats {
 			$top10=join(';&nbsp; ', $top10);
 		}
 		if ($TEXT_DIRECTION=='rtl') {
-			$top10=str_replace(array("[", "]", "(", ")", "+"), array("&rlm;[", "&rlm;]", "&rlm;(", "&rlm;)", "&rlm;+"), $top10);
+			$top10=str_replace(array('[', ']', '(', ')', '+'), array('&rlm;[', '&rlm;]', '&rlm;(', '&rlm;)', '&rlm;+'), $top10);
 		}
 		if ($type == 'list') {
 			return "<ul>\n{$top10}</ul>\n";
@@ -1785,7 +1785,11 @@ class WT_Stats {
 			$countsf = substr($countsf,0,-1);
 			$countsa = substr($countsa,0,-1);
 			$chd = 't2:'.$countsm.'|'.$countsf.'|'.$countsa;
-			$chxl .= '1:||'.WT_I18N::translate('century').'|2:|0|10|20|30|40|50|60|70|80|90|100|3:||'.WT_I18N::translate('Age').'|';
+			$decades='';
+			for ($i=0; $i<=100; $i+=10) {
+				$decades.='|'.WT_I18N::number($i);
+			}
+			$chxl .= '1:||'.WT_I18N::translate('century').'|2:'.$decades.'|3:||'.WT_I18N::translate('Age').'|';
 			$title = WT_I18N::translate('Average age related to death century');
 			if (count($rows)>6 || utf8_strlen($title)<30) {
 				$chtt = $title;
@@ -2220,9 +2224,9 @@ class WT_Stats {
 			if (($husb->getAllDeathDates() && $wife->getAllDeathDates()) || !$husb->isDead() || !$wife->isDead()) {
 				if ($family->canDisplayDetails()) {
 					if ($type == 'list') {
-						$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [".$age."]"."</li>\n";
+						$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")"."</li>\n";
 					} else {
-						$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [".$age."]";
+						$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")";
 					}
 				}
 				if (++$i==$total) break;
@@ -2295,9 +2299,9 @@ class WT_Stats {
 			$age = get_age_at_event($age, true);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [".$age."]"."</li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")"."</li>\n";
 				} else {
-					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [".$age."]";
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> (".$age.")";
 				}
 			}
 		}
@@ -2843,9 +2847,9 @@ class WT_Stats {
 			$family=WT_Family::getInstance($rows[$c]['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [{$rows[$c]['tot']} ".WT_I18N::translate('children')."]"."</li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> ({$rows[$c]['tot']} ".WT_I18N::translate('children').")"."</li>\n";
 				} else {
-					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [{$rows[$c]['tot']} ".WT_I18N::translate('children')."]";
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> ({$rows[$c]['tot']} ".WT_I18N::translate('children').")";
 				}
 			}
 		}
@@ -2935,7 +2939,7 @@ class WT_Stats {
 						$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
 						$return .= WT_I18N::translate('and')." ";
 						$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
-						$return .= " [".$age."]";
+						$return .= " (".$age.")";
 						$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
 						$return .= "\t</li>\n";
 						$top10[] = $return;
@@ -2946,7 +2950,7 @@ class WT_Stats {
 					$return .= "<a href=\"".$child2->getHtmlUrl()."\">".$child2->getFullName()."</a> ";
 					$return .= WT_I18N::translate('and')." ";
 					$return .= "<a href=\"".$child1->getHtmlUrl()."\">".$child1->getFullName()."</a>";
-					$return .= " [".$age."]";
+					$return .= " (".$age.")";
 					$return .= " <a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>";
 					$return .= "\t</li>\n";
 					$top10[] = $return;
@@ -2956,7 +2960,7 @@ class WT_Stats {
 					$return = $child2->format_list('span', false, $child2->getFullName());
 					$return .= "<br />".WT_I18N::translate('and')."<br />";
 					$return .= $child1->format_list('span', false, $child1->getFullName());
-					//$return .= "<br />[".$age."]";
+					//$return .= "<br />(".$age.")";
 					$return .= "<br /><a href=\"".$family->getHtmlUrl()."\">[".WT_I18N::translate('View Family')."]</a>\n";
 					return $return;
 				}
@@ -3393,9 +3397,9 @@ class WT_Stats {
 			$family=WT_Family::getInstance($row['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [{$row['tot']} ".WT_I18N::translate('grandchildren')."]"."</li>\n";
+					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> ({$row['tot']} ".WT_I18N::translate('grandchildren').")"."</li>\n";
 				} else {
-					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> [{$row['tot']} ".WT_I18N::translate('grandchildren')."]";
+					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> ({$row['tot']} ".WT_I18N::translate('grandchildren').")";
 				}
 			}
 		}
@@ -3514,7 +3518,7 @@ class WT_Stats {
 			$per = round(100 * $count_per / $tot_indi, 0);
 			$chd .= self::_array_to_extended_encoding($per);
 			//ToDo: RTL names are often printed LTR when also LTR names are present
-			$chl[] = $top_name.' - '.WT_I18N::number($count_per);
+			$chl[] = $top_name.' - '.$count_per;
 			$chart_title .= $top_name.' - '.$count_per.WT_I18N::$list_separator;
 
 		}
