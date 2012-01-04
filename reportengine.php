@@ -195,7 +195,7 @@ elseif ($action=='setup') {
 
 	init_calendar_popup();
 	echo '<div id="reportengine-page">
-		<form name="setupreport" method="get" target="_blank" action="reportengine.php">
+		<form name="setupreport" method="get" action="reportengine.php" onsubmit="if (this.output[1].checked) {this.target=\'_blank\';}">
 		<input type="hidden" name="action" value="run">
 		<input type="hidden" name="report" value="', $report, '">
 		<table class="facts_table width50">
@@ -311,7 +311,7 @@ elseif ($action=='setup') {
 		</td>
 		</tr>
 		<tr><td class="topbottombar" colspan="2">
-		<input type="submit" value="', WT_I18N::translate('Download report'), '" ;">
+		<input type="submit" value="', WT_I18N::translate('Download report'), '">
 		</td></tr></table></form></div>';
 }
 //-- run the report
