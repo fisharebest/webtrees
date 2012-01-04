@@ -987,7 +987,8 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 	//$html=implode(', ', array_slice($name_parts, 0, $SHOW_PEDIGREE_PLACES)); // The *first* $SHOW_PEDIGREE_PLACES components
 
 	// If we abbreviated the place, show the full name as a tooltip
-	if (count($name_parts)>$SHOW_PEDIGREE_PLACES) {
+	$ct=count($name_parts);
+	if ($ct>$SHOW_PEDIGREE_PLACES) {
 		$tooltip=' title="'.htmlspecialchars($event->getPlace()).'"';
 	} else {
 		$tooltip='';
