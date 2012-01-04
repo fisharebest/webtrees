@@ -2459,7 +2459,10 @@ case 'move_mediadirs':
 
 case 'new_password':
 	$title=WT_I18N::translate('Request new password');
-	$text=WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password.<br /><br />You will be taken to the "Lost Password Request" page.');
+	$text=WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password. Enter your user name then click ');
+	$text .= '<strong>';
+	$text .= WT_I18N::translate('Lost password request');
+	$text .= '</strong>';
 	break;
 
 case 'new_user':

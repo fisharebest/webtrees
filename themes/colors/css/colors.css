@@ -1531,10 +1531,13 @@ margin: 0;
 #login-register-page table, #branches-page table, #medialist-page .list_table  {margin:auto;}
 #login-register-page table a {display:block; text-align:center;}
 #login-text {margin:20px auto; width:50%;}
-#login-form {border:1px solid #999; border-radius:3px; margin:10px auto; padding:5px; width:300px;}
-#login-form div, #login-form div a {margin:5px auto; padding:5px; text-align:center;}
-#login-form label {text-align:right; width:120px;}
-html[dir='rtl'] #login-form label {text-align:left;}
+#login-form, #new_passwd_form {border:1px solid #999; border-radius:3px; margin:10px auto 0 auto; padding:5px; width:300px;}
+#new_passwd_form {margin:0 auto 0 auto;}
+.login_block_block #login-form, .login_block_block #new_passwd_form{border:0; background:none; color:inherit;}
+#login-form div, #login-form div a, #new_passwd_form div {margin:5px auto; padding:5px; text-align:center;}
+#login-form label, #new_passwd_form label {text-align:right; width:120px;}
+#new_passwd_form h4 {font-weight:normal; text-align:center;}
+html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label {text-align:left;}
 
 #reportengine-page table {margin:20px auto;}
 #reportengine-page .report-type {overflow:hidden; margin:auto; width:180px;}
