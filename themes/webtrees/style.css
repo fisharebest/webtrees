@@ -376,7 +376,7 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 #new_passwd_form {margin:0 auto 0 auto;}
 .login_block_block #login-form, .login_block_block #new_passwd_form{border:0; background:none;}
 #login-form div, #login-form div a, #new_passwd_form div {margin:5px auto; padding:5px; text-align:center;}
-#login-form label, #new_passwd_form label {display:inline-block; text-align:right; width:120px;}
+#login-form label, #new_passwd_form label {display:inline-block; text-align:right; width:140px;}
 #new_passwd_form h4 {font-weight:normal; text-align:center;}
 html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label {text-align:left;}
 
