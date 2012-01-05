@@ -43,17 +43,19 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d week', '%d weeks', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d year ago', '%d years ago', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d year', '%d years', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('No events exist for the next %d day.', 'No events exist for the next %d days.', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('No events for living people exist for the next %d day.', 'No events for living people exist for the next %d days.', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Changes in the last %d day', 'Changes in the last %d days', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Top given name', 'Top %d given names', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Top surname', 'Top %d surnames', 0, 0);
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Changes in the last %d day', 'Changes in the last %d days', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 0, 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('interval %d year', 'interval %d years', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('No account?');
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Lost your password?');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password.<br /><br />You will be taken to the "Lost Password Request" page.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Lost your password?');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('No account?');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
 
 // MESSAGES DELETED IN WEBTREES-1.2.6
 

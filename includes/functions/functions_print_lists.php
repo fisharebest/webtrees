@@ -1817,15 +1817,15 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %d==1 is unused; it is translated separately as tomorrow
-					$summary = WT_I18N::plural('No events exist for the next %d day.', 'No events exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
+					// I18N: tanslation for %s==1 is unused; it is translated separately as "tomorrow"
+					$summary = WT_I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd-$startjd+1, WT_I18N::number($endjd-$startjd+1));
 				}
 			} else {
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events for living people exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %d==1 is unused; it is translated separately as tomorrow
-					$summary = WT_I18N::plural('No events for living people exist for the next %d day.', 'No events for living people exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
+					// I18N: tanslation for %s==1 is unused; it is translated separately as "tomorrow"
+					$summary = WT_I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd-$startjd+1, WT_I18N::number($endjd-$startjd+1));
 				}
 			}
 		}
@@ -1923,15 +1923,15 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %d==1 is unused; it is translated separately as tomorrow
-					$summary = WT_I18N::plural('No events exist for the next %d day.', 'No events exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
+					// I18N: tanslation for %s==1 is unused; it is translated separately as "tomorrow"
+					$summary = WT_I18N::plural('No events exist for the next %s day.', 'No events exist for the next %s days.', $endjd-$startjd+1, WT_I18N::number($endjd-$startjd+1));
 				}
 			} else {
 				if ($endjd==$startjd) {
 					$summary = WT_I18N::translate('No events for living people exist for tomorrow.');
 				} else {
-					// I18N: tanslation for %d==1 is unused; it is translated separately as tomorrow
-					$summary = WT_I18N::plural('No events for living people exist for the next %d day.', 'No events for living people exist for the next %d days.', $endjd-$startjd+1, $endjd-$startjd+1);
+					// I18N: tanslation for %s==1 is unused; it is translated separately as "tomorrow"
+					$summary = WT_I18N::plural('No events for living people exist for the next %s day.', 'No events for living people exist for the next %s days.', $endjd-$startjd+1, WT_I18N::number($endjd-$startjd+1));
 				}
 			}
 		}
