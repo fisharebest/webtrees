@@ -38,10 +38,11 @@ ul {padding-left:15px; padding-right:15px; margin:8px;}
 img {border:none;}
 legend img {height:20px; vertical-align:middle; width:20px;}
 img.block, #calendar_img_indi, #calendar_img_fam, #biglink img, #mycart img  {border:none; height:25px; vertical-align:middle;}
-input, button, textarea {border-top-color:#fff; border-left-color:#fff; border-right-color:#006; border-bottom-color:#006; border-width:1px; font-size:12px;}
+input, button, textarea {border-top-color:#fff; border-left-color:#fff; border-right-color:#555; border-bottom-color:#555; border-width:1px; font-size:12px;}
 input, textarea {padding-left:3px; padding-right:3px;}
+textarea {border-style:inset;}
 input.image {width:17px; height:17px; border:none; padding:0; vertical-align:top;}
-select {border:solid #84beff 1px; font-size:12px;}
+select {border:1px solid #555; font-size:12px; margin:0 7px; padding:1px;}
 form {font-size:12px;}
 h2 {color:#006; font-weight:bold; font-size:18px;}
 h4 {color:#006; font-weight:bold; font-size:12px;}
@@ -369,17 +370,31 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 #relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN,
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN {overflow: visible !important;}
 
-#login-register-page table, #branches-page table, #medialist-page .list_table {margin:auto;}
-#login-register-page table a {display:block; text-align:center;}
-#login-text {margin:20px auto; width:50%;}
-#login-form, #new_passwd_form {background-color:#edf7fd; border:1px outset #81A9CB; margin:10px auto 0 auto; padding:5px; width:300px;}
-#new_passwd_form {margin:0 auto 0 auto;}
-.login_block_block #login-form, .login_block_block #new_passwd_form{border:0; background:none;}
-#login-form div, #login-form div a, #new_passwd_form div {margin:5px auto; padding:5px; text-align:center;}
-#login-form label, #new_passwd_form label {display:inline-block; text-align:right; width:140px;}
-#new_passwd_form h4 {font-weight:normal; text-align:center;}
-html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label {text-align:left;}
+#branches-page table, #medialist-page .list_table {margin:auto;}
 
+/* ============== login.php ======================= */
+#login-register-page h2 {text-align:center;}
+#login-register-page .warning  {margin:20px auto; text-align:center;}
+#login-register-page .back  {font-weight:bold; font-size:14px; text-align:center;}
+#login-register-page .confirm {margin: 20px auto; text-align: justify; width: 500px;}
+#login-register-page .confirm p  {font-size:14px;font-weight:bold;}
+#login-register-page .confirm p+p  {font-size:12px;font-weight:normal;}
+#login-text, #register-text, #user-verify {margin:20px auto; width: 610px; text-align: justify;}
+#login-form, #new_passwd_form, #register-form {background-color:#edf7fd; border:1px outset #81A9CB; margin:10px auto 0 auto; padding:5px; width:300px;}
+#new_passwd_form {margin:0 auto 0 auto;}
+#login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div {margin:5px auto; padding:5px; text-align:center;}
+#login-form label, #new_passwd_form label, #verify-form  label {display:inline-block; text-align:right; width:140px;}
+#new_passwd_form h4, #register-form h4 {font-weight:normal; text-align:center;}
+#register-form, #verify-form {width:610px;}
+#register-form div, #verify-form  div {text-align:justify;}
+#register-form label {display:inline-block; text-align:right; width:220px;}
+#register-form textarea {margin:-25px 0 0 230px;}
+#register-form div#registration-submit {text-align:center;}
+.login_block_block #login-form, .login_block_block #new_passwd_form{border:0; background:none;}
+html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[dir='rtl'] #register-form label, html[dir='rtl'] #verify-form  label  {text-align:left;}
+html[dir='rtl'] #register-form textarea {margin:-25px 230px 0 0;}
+
+/* ============== reportengine.php ======================= */
 #reportengine-page table {margin:20px auto;}
 #reportengine-page .report-type {overflow:hidden; margin:auto; width:180px;}
 #reportengine-page .report-type div {float:left;margin: 0 20px;}

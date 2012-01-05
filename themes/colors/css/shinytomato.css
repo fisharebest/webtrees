@@ -50,7 +50,8 @@
 .facts_table .descriptionbox a,
 .blockcontent .facts_label,
 #find-header, #find-media,
-#search-page-table, #login-form, #new_passwd_form
+#search-page-table, 
+#login-form, #new_passwd_form, #register-form
 {
 	background-color:#F96058;
 	color: #ffffff;
