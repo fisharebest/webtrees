@@ -4311,6 +4311,7 @@ class WT_Stats {
 			'SMR'=>WT_I18N::translate('San Marino'),
 			'SOM'=>WT_I18N::translate('Somalia'),
 			'SPM'=>WT_I18N::translate('Saint Pierre and Miquelon'),
+			'SSD'=>WT_I18N::translate('South Sudan'),
 			'STP'=>WT_I18N::translate('Sao Tome and Principe'),
 			'SUN'=>WT_I18N::translate('USSR'),
 			'SUR'=>WT_I18N::translate('Suriname'),
