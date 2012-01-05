@@ -125,6 +125,7 @@ class yahrzeit_WT_Module extends WT_Module implements WT_Module_Block {
 				->addInlineJavaScript('
 					jQuery("#'.$table_id.'").dataTable({
 						"sDom": \'t\',
+						'.WT_I18N::datatablesI18N().',
 						"bAutoWidth":false,
 						"bPaginate": false,
 						"bLengthChange": false,
