@@ -5,7 +5,7 @@
 // age -> periodes of 10 years (different for 0-1,1-5,5-10,10-20 etc)
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -740,7 +740,7 @@ function calc_legend($grenzen_zas) {
 
 //--------------------nr,-----bron ,xgiven,zgiven,title, xtitle,ytitle,grenzen_xas, grenzen-zas,functie,
 function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $myfunc) {
-	global $x_as, $y_as, $z_as, $nrfam, $nrpers, $n1, $months;
+	global $x_as, $y_as, $z_as, $n1, $months;
 	global $legend, $xdata, $ydata, $xmax, $zmax, $zgrenzen, $xgiven, $zgiven, $percentage, $male_female;
 	global $stats;
 
@@ -814,11 +814,11 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		}
 		$myfunc();
 		if ($indfam == 'IND') {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.$n1.' '.WT_I18N::translate('of').' '.$nrpers;
+			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.$n1.' '.WT_I18N::translate('of').' '.$stats->_totalIndividuals();
 		} else if ($x_as==21) {
 			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.$n1.' '.WT_I18N::translate('of').' '.$stats->totalChildren();
 		} else {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.$n1.' '.WT_I18N::translate('of').' '.$nrfam;
+			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.$n1.' '.WT_I18N::translate('of').' '.$stats->_totalFamilies();
 		}
 		myplot($hstr, $zmax, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	}
@@ -870,14 +870,14 @@ if ($action=='update') {
 	$chart_type  = $_POST['chart_type'];
 	$surname     = $_POST['SURN'];
 
-	$_SESSION[$GEDCOM.'statTicks']['xasGrLeeftijden'] = $xgl;
-	$_SESSION[$GEDCOM.'statTicks']['xasGrLeeftijden_m'] = $xglm;
-	$_SESSION[$GEDCOM.'statTicks']['xasGrMaanden'] = $xgm;
-	$_SESSION[$GEDCOM.'statTicks']['xasGrAantallen'] = $xga;
-	$_SESSION[$GEDCOM.'statTicks']['zasGrPeriode'] = $zgp;
-	$_SESSION[$GEDCOM.'statTicks']['chart_shows'] = $chart_shows;
-	$_SESSION[$GEDCOM.'statTicks']['chart_type'] = $chart_type;
-	$_SESSION[$GEDCOM.'statTicks']['SURN'] = $surname;
+	$WT_SESSION->statTicks[$GEDCOM]['xasGrLeeftijden'] = $xgl;
+	$WT_SESSION->statTicks[$GEDCOM]['xasGrLeeftijden_m'] = $xglm;
+	$WT_SESSION->statTicks[$GEDCOM]['xasGrMaanden'] = $xgm;
+	$WT_SESSION->statTicks[$GEDCOM]['xasGrAantallen'] = $xga;
+	$WT_SESSION->statTicks[$GEDCOM]['zasGrPeriode'] = $zgp;
+	$WT_SESSION->statTicks[$GEDCOM]['chart_shows'] = $chart_shows;
+	$WT_SESSION->statTicks[$GEDCOM]['chart_type'] = $chart_type;
+	$WT_SESSION->statTicks[$GEDCOM]['SURN'] = $surname;
 
 	// Save the input variables
 	$savedInput = array();
@@ -892,15 +892,15 @@ if ($action=='update') {
 	$savedInput['chart_shows'] = $chart_shows;
 	$savedInput['chart_type'] = $chart_type;
 	$savedInput['SURN'] = $surname;
-	$_SESSION[$GEDCOM.'statisticsplot'] = $savedInput;
+	$WT_SESSION->statisticsplot[$GEDCOM] = $savedInput;
 	unset($savedInput);
 } else {
-	if (!isset($_SESSION[$GEDCOM.'statisticsplot'])) {
+	if (!isset($WT_SESSION->statisticsplot[$GEDCOM])) {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'statistics.php');
 		exit;
 	}
 	// Recover the saved input variables
-	$savedInput = $_SESSION[$GEDCOM.'statisticsplot'];
+	$savedInput = $WT_SESSION->statisticsplot[$GEDCOM];
 	$x_as = $savedInput['x_as'];
 	$y_as = $savedInput['y_as'];
 	$z_as = $savedInput['z_as'];
@@ -917,11 +917,6 @@ if ($action=='update') {
 
 echo '<h2 class="center">', WT_I18N::translate('Statistics plot'), '</h2>';
 echo '<br>';
-
-$nrpers = $_SESSION[$GEDCOM.'nrpers'];
-$nrfam = $_SESSION[$GEDCOM.'nrfam'];
-$nrmale = $_SESSION[$GEDCOM.'nrmale'];
-$nrfemale = $_SESSION[$GEDCOM.'nrfemale'];
 
 //-- out of range values
 if (($y_as < 201) || ($y_as > 202)) {

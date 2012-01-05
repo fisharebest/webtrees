@@ -2,7 +2,7 @@
  * Style for Standard theme
  *
  * webtrees: Web based Family History software
- * Copyright (C) 2011 webtrees development team.
+ * Copyright (C) 2012 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -437,8 +437,9 @@ html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
 .source-list th:last-child, .note-list th:last-child, .repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
 .givn-list th{cursor:pointer;white-space: nowrap;padding:2px;text-align:center;}
 .givn-list th{cursor:pointer;white-space: nowrap;padding:2px;text-align:center;}
-#source-details h2,#sourcelist-page h2, #note-details h2, #notelist-page h2, #repo-details h2, #repolist-page h2, #media-details h2, #medialist-page h2  {margin-bottom:20px; text-align:center;}
+#source-details h2, #sourcelist-page h2, #note-details h2, #notelist-page h2, #repo-details h2, #repolist-page h2, #media-details h2, #medialist-page h2, #stats-details h2 {margin-bottom:20px; text-align:center;}
 #source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto; visibility:hidden; width:80%;}
+#stats-tabs {margin:auto; visibility:hidden; width:90%;}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
 .media-list td img {display:block; height:40px; margin:3px auto;}
 .filtersH, .filtersF {margin:4px}

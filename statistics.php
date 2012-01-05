@@ -5,7 +5,7 @@
 // age -> periodes of 10 years (different for 0-1,1-5,5-10,10-20 etc)
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -29,386 +29,394 @@
 define('WT_SCRIPT_NAME', 'statistics.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Base();
-$controller->setPageTitle(WT_I18N::translate('Statistics'));
-
 // check for on demand content loading
-if (isset($_REQUEST['tab'])) {
-	$tab = $_REQUEST['tab'];
-	if ($tab>3) $tab = 0;
+$tab = safe_GET('tab', WT_REGEX_NOSCRIPT, 0);
+$ajax = safe_GET('ajax', WT_REGEX_NOSCRIPT, 0);
+
+if (!$ajax) {
+	$js='jQuery(document).ready(function() {
+		jQuery("#stats-tabs").tabs({
+			spinner: \'<img src="'.WT_STATIC_URL.'images/loading.gif" height="12" alt="">\',
+			cache: true
+		});
+		jQuery("#stats-tabs").css("visibility", "visible");
+	});';
+	$controller=new WT_Controller_Base();
+	$controller->setPageTitle(WT_I18N::translate('Statistics'))
+		->addInlineJavaScript($js)
+		->pageHeader();
+	echo '<div id="stats-details"><h2>', WT_I18N::translate('Statistics'), '</h2>',
+		'<div id="stats-tabs">',
+		'<ul>',
+			'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=0">',
+			'<span id="stats-indi">', WT_I18N::translate('Individuals'), '</span></a></li>',
+			'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=1">',
+			'<span id="stats-fam">', WT_I18N::translate('Families'), '</span></a></li>',
+			'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=2">',
+			'<span id="stats-other">', WT_I18N::translate('Others'), '</span></a></li>',
+			'<li><a href="statistics.php?ged=', WT_GEDURL, '&amp;ajax=1&amp;tab=3">',
+			'<span id="stats-own">', WT_I18N::translate('Own charts'), '</span></a></li>',
+		'</ul>',
+		'</div>', // stats-tabs
+		'</div>', // stats-details
+	'<br><br>';
 } else {
-	$tab = 0;
-}
-$content = safe_GET('content');
-
-if (isset($content) && $content==1) {
-	header('Content-type: text/html; charset=UTF-8');
-	/*
-	* Initiate the stats object.
-	*/
+	$controller=new WT_Controller_Ajax();
+	$controller->pageHeader();
 	$stats = new WT_Stats($GEDCOM);
-
-	if ($tab==0) { ?>
-		<fieldset>
-			<legend><?php echo WT_I18N::translate('Total individuals: %s', $stats->totalIndividuals()); ?></legend>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total males'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total females'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total living'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total dead'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->totalSexMales(); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalSexFemales(); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalLiving(); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalDeceased(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->chartSex(); ?></td>
-						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->chartMortality(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<b><?php echo WT_I18N::translate('Events'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total births'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total deaths'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->totalBirths(); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalDeaths(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Births by century'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Deaths by century'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsBirth(); ?></td>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsDeath(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Earliest birth'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Earliest death'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->firstBirth(); ?></td>
-						<td class="facts_value"><?php echo $stats->firstDeath(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Latest birth'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Latest death'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->lastBirth(); ?></td>
-						<td class="facts_value"><?php echo $stats->lastDeath(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<b><?php echo WT_I18N::translate('Lifespan'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Average age at death'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Males'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Females'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->averageLifespan(true); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->averageLifespanMale(true); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->averageLifespanFemale(true); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value statistics_chart" colspan="3"><?php echo $stats->statsAge(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<b><?php echo WT_I18N::translate('Greatest age at death'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Males'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Females'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->topTenOldestMaleList(); ?></td>
-						<td class="facts_value"><?php echo $stats->topTenOldestFemaleList(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<?php
-				if (WT_USER_ID) {
-				?>
-				<b><?php echo WT_I18N::translate('Oldest living people'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Males'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Females'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->topTenOldestMaleListAlive(); ?></td>
-						<td class="facts_value"><?php echo $stats->topTenOldestFemaleListAlive(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<?php
-				}
-				?>
-				<b><?php echo WT_I18N::translate('Names'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total surnames'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total given names'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->totalSurnames(); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalGivennames(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Top surnames'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Top given names'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value statistics_chart"><?php echo $stats->chartCommonSurnames(); ?></td>
-						<td class="facts_value statistics_chart"><?php echo $stats->chartCommonGiven(); ?></td>
-					</tr>
-				</table>
-			</fieldset>
-	<?php }
-	if ($tab==1) { ?>
-		<fieldset>
-			<legend><?php echo WT_I18N::translate('Total families: %s', $stats->totalFamilies()); ?></legend>
-				<b><?php echo WT_I18N::translate('Events'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total marriages'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Total divorces'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->totalMarriages(); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->totalDivorces(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Marriages by century'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Divorces by century'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsMarr(); ?></td>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsDiv(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Earliest marriage'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Earliest divorce'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->firstMarriage(); ?></td>
-						<td class="facts_value"><?php echo $stats->firstDivorce(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Latest marriage'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Latest divorce'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->lastMarriage(); ?></td>
-						<td class="facts_value"><?php echo $stats->lastDivorce(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<b><?php echo WT_I18N::translate('Length of marriage'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Longest marriage'), ' - ', $stats->topAgeOfMarriage(); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Shortest marriage'), ' - ', $stats->minAgeOfMarriage(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->topAgeOfMarriageFamily(); ?></td>
-						<td class="facts_value"><?php echo $stats->minAgeOfMarriageFamily(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<b><?php echo WT_I18N::translate('Age in year of marriage'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Youngest male'), ' - ', $stats->youngestMarriageMaleAge(true); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Youngest female'), ' - ', $stats->youngestMarriageFemaleAge(true); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->youngestMarriageMale(); ?></td>
-						<td class="facts_value"><?php echo $stats->youngestMarriageFemale(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Oldest male'), ' - ', $stats->oldestMarriageMaleAge(true); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Oldest female'), ' - ', $stats->oldestMarriageFemaleAge(true); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->oldestMarriageMale(); ?></td>
-						<td class="facts_value"><?php echo $stats->oldestMarriageFemale(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->statsMarrAge(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<b><?php echo WT_I18N::translate('Age at birth of child'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Youngest father'), ' - ', $stats->youngestFatherAge(true); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Youngest mother'), ' - ', $stats->youngestMotherAge(true); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->youngestFather(); ?></td>
-						<td class="facts_value"><?php echo $stats->youngestMother(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Oldest father'), ' - ', $stats->oldestFatherAge(true); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Oldest mother'), ' - ', $stats->oldestMotherAge(true); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->oldestFather(); ?></td>
-						<td class="facts_value"><?php echo $stats->oldestMother(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<b><?php echo WT_I18N::translate('Children in family'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Average number of children per family'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Number of families without children'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value" align="center"><?php echo $stats->averageChildren(); ?></td>
-						<td class="facts_value" align="center"><?php echo $stats->noChildrenFamilies(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value statistics_chart"><?php echo $stats->statsChildren(); ?></td>
-						<td class="facts_value statistics_chart"><?php echo $stats->chartNoChildrenFamilies(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Largest families'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Largest number of grandchildren'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->topTenLargestFamilyList(); ?></td>
-						<td class="facts_value"><?php echo $stats->topTenLargestGrandFamilyList(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value statistics_chart" colspan="2"><?php echo $stats->chartLargestFamilies(); ?></td>
-					</tr>
-				</table>
-				<br>
-				<b><?php echo WT_I18N::translate('Age difference'); ?></b>
-				<table class="facts_table">
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Age between siblings'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Greatest age between siblings'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->topAgeBetweenSiblingsList(); ?></td>
-						<td class="facts_value"><?php echo $stats->topAgeBetweenSiblingsFullName(); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_label"><?php echo WT_I18N::translate('Age between husband and wife'); ?></td>
-						<td class="facts_label"><?php echo WT_I18N::translate('Age between wife and husband'); ?></td>
-					</tr>
-					<tr>
-						<td class="facts_value"><?php echo $stats->ageBetweenSpousesMFList(); ?></td>
-						<td class="facts_value"><?php echo $stats->ageBetweenSpousesFMList(); ?></td>
-					</tr>
-				</table>
-		</fieldset>
-	<?php }
-	else if ($tab==2) { ?>
-		<fieldset>
-			<legend><?php echo WT_I18N::translate('Records'), ': ', $stats->totalRecords(); ?></legend>
-				<table class="facts_table">
+	if ($tab==0) {
+		echo '<fieldset>
+		<legend>', WT_I18N::translate('Total individuals: %s', $stats->totalIndividuals()), '</legend>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Total males'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Total females'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Total living'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Total dead'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value" align="center">', $stats->totalSexMales(), '</td>
+				<td class="facts_value" align="center">', $stats->totalSexFemales(), '</td>
+				<td class="facts_value" align="center">', $stats->totalLiving(), '</td>
+				<td class="facts_value" align="center">', $stats->totalDeceased(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart" colspan="2">', $stats->chartSex(), '</td>
+				<td class="facts_value statistics_chart" colspan="2">', $stats->chartMortality(), '</td>
+			</tr>
+		</table>
+		<br>
+		<b>', WT_I18N::translate('Events'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Total births'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Total deaths'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value" align="center">', $stats->totalBirths(), '</td>
+				<td class="facts_value" align="center">', $stats->totalDeaths(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Births by century'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Deaths by century'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart">', $stats->statsBirth(), '</td>
+				<td class="facts_value statistics_chart">', $stats->statsDeath(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Earliest birth'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Earliest death'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->firstBirth(), '</td>
+				<td class="facts_value">', $stats->firstDeath(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Latest birth'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Latest death'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->lastBirth(), '</td>
+				<td class="facts_value">', $stats->lastDeath(), '</td>
+			</tr>
+		</table>
+		<br>
+		<b>', WT_I18N::translate('Lifespan'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Average age at death'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Males'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Females'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value" align="center">', $stats->averageLifespan(true), '</td>
+				<td class="facts_value" align="center">', $stats->averageLifespanMale(true), '</td>
+				<td class="facts_value" align="center">', $stats->averageLifespanFemale(true), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart" colspan="3">', $stats->statsAge(), '</td>
+			</tr>
+		</table>
+		<br>
+		<b>', WT_I18N::translate('Greatest age at death'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Males'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Females'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->topTenOldestMaleList(), '</td>
+				<td class="facts_value">', $stats->topTenOldestFemaleList(), '</td>
+			</tr>
+		</table>
+		<br>';
+		if (WT_USER_ID) {
+			echo '<b>', WT_I18N::translate('Oldest living people'), '</b>
+			<table class="facts_table">
 				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Media objects'); ?></td>
-					<td class="facts_label"><?php echo WT_I18N::translate('Sources'); ?></td>
-					<td class="facts_label"><?php echo WT_I18N::translate('Notes'); ?></td>
-					<td class="facts_label"><?php echo WT_I18N::translate('Repositories'); ?></td>
-					<td class="facts_label"><?php echo WT_I18N::translate('Other records'); ?></td>
+					<td class="facts_label">', WT_I18N::translate('Males'), '</td>
+					<td class="facts_label">', WT_I18N::translate('Females'), '</td>
 				</tr>
 				<tr>
-					<td class="facts_value" align="center"><?php echo $stats->totalMedia(); ?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalSources(); ?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalNotes(); ?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalRepositories(); ?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalOtherRecords(); ?></td>
-				</tr>
-				</table>
-			</fieldset>
-			<fieldset>
-				<legend><?php echo WT_I18N::translate('Total events'), ': ', $stats->totalEvents(); ?></legend>
-				<table class="facts_table">
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('First event'), ' - ', $stats->firstEventType(); ?></td>
-					<td class="facts_label"><?php echo WT_I18N::translate('Last event'), ' - ', $stats->lastEventType(); ?></td>
-				</tr>
-				<tr>
-					<td class="facts_value"><?php echo $stats->firstEvent(); ?></td>
-					<td class="facts_value"><?php echo $stats->lastEvent(); ?></td>
-				</tr>
-				</table>
-			</fieldset>
-			<fieldset>
-				<legend><?php echo WT_I18N::translate('Media objects'), ': ', $stats->totalMedia(); ?></legend>
-				<table class="facts_table">
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Media objects'); ?></td>
-				</tr>
-				<tr>
-					<td class="facts_value statistics_chart"><?php echo $stats->chartMedia(); ?></td>
-				</tr>
-				</table>
-			</fieldset>
-			<fieldset>
-				<legend><?php echo WT_I18N::translate('Sources'), ': ', $stats->totalSources(); ?></legend>
-				<table class="facts_table">
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Individuals with sources'); ?></td>
-					<td class="facts_label"><?php echo WT_I18N::translate('Families with sources'); ?></td>
-				</tr>
-				<tr>
-					<td class="facts_value" align="center"><?php echo $stats->totalIndisWithSources(); ?></td>
-					<td class="facts_value" align="center"><?php echo $stats->totalFamsWithSources(); ?></td>
-				</tr>
-				<tr>
-					<td class="facts_value statistics_chart"><?php echo $stats->chartIndisWithSources(); ?></td>
-					<td class="facts_value statistics_chart"><?php echo $stats->chartFamsWithSources(); ?></td>
-				</tr>
-				</table>
-			</fieldset>
-			<fieldset>
-				<legend><?php echo WT_I18N::translate('Places'), ': ', $stats->totalPlaces(); ?></legend>
-				<table class="facts_table">
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Birth places'); ?></td>
-					<td class="facts_label"><?php echo WT_I18N::translate('Death places'); ?></td>
-				</tr>
-				<tr>
-					<td class="facts_value"><?php echo $stats->commonBirthPlacesList(); ?></td>
-					<td class="facts_value"><?php echo $stats->commonDeathPlacesList(); ?></td>
-				</tr>
-				<tr>
-					<td class="facts_label"><?php echo WT_I18N::translate('Marriage places'); ?></td>
-					<td class="facts_label"><?php echo WT_I18N::translate('Events in countries'); ?></td>
-				</tr>
-				<tr>
-					<td class="facts_value"><?php echo $stats->commonMarriagePlacesList(); ?></td>
-					<td class="facts_value"><?php echo $stats->commonCountriesList(); ?></td>
-				</tr>
-				<tr>
-					<td class="facts_value" colspan="2"><?php echo $stats->chartDistribution(); ?></td>
+					<td class="facts_value">', $stats->topTenOldestMaleListAlive(), '</td>
+					<td class="facts_value">', $stats->topTenOldestFemaleListAlive(), '</td>
 				</tr>
 			</table>
+			<br>';
+		}
+		echo '<b>', WT_I18N::translate('Names'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Total surnames'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Total given names'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value" align="center">', $stats->totalSurnames(), '</td>
+				<td class="facts_value" align="center">', $stats->totalGivennames(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Top surnames'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Top given names'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart">', $stats->chartCommonSurnames(), '</td>
+				<td class="facts_value statistics_chart">', $stats->chartCommonGiven(), '</td>
+			</tr>
+		</table>
+		</fieldset>';
+	} else if ($tab==1) {
+		echo '<fieldset>
+		<legend>', WT_I18N::translate('Total families: %s', $stats->totalFamilies()), '</legend>
+		<b>', WT_I18N::translate('Events'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Total marriages'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Total divorces'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value" align="center">', $stats->totalMarriages(), '</td>
+				<td class="facts_value" align="center">', $stats->totalDivorces(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Marriages by century'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Divorces by century'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart">', $stats->statsMarr(), '</td>
+				<td class="facts_value statistics_chart">', $stats->statsDiv(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Earliest marriage'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Earliest divorce'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->firstMarriage(), '</td>
+				<td class="facts_value">', $stats->firstDivorce(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Latest marriage'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Latest divorce'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->lastMarriage(), '</td>
+				<td class="facts_value">', $stats->lastDivorce(), '</td>
+			</tr>
+		</table>
+		<br>
+		<b>', WT_I18N::translate('Length of marriage'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Longest marriage'), ' - ', $stats->topAgeOfMarriage(), '</td>
+				<td class="facts_label">', WT_I18N::translate('Shortest marriage'), ' - ', $stats->minAgeOfMarriage(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->topAgeOfMarriageFamily(), '</td>
+				<td class="facts_value">', $stats->minAgeOfMarriageFamily(), '</td>
+			</tr>
+		</table>
+		<br>
+		<b>', WT_I18N::translate('Age in year of marriage'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Youngest male'), ' - ', $stats->youngestMarriageMaleAge(true), '</td>
+				<td class="facts_label">', WT_I18N::translate('Youngest female'), ' - ', $stats->youngestMarriageFemaleAge(true), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->youngestMarriageMale(), '</td>
+				<td class="facts_value">', $stats->youngestMarriageFemale(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Oldest male'), ' - ', $stats->oldestMarriageMaleAge(true), '</td>
+				<td class="facts_label">', WT_I18N::translate('Oldest female'), ' - ', $stats->oldestMarriageFemaleAge(true), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->oldestMarriageMale(), '</td>
+				<td class="facts_value">', $stats->oldestMarriageFemale(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart" colspan="2">', $stats->statsMarrAge(), '</td>
+			</tr>
+		</table>
+		<br>
+		<b>', WT_I18N::translate('Age at birth of child'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Youngest father'), ' - ', $stats->youngestFatherAge(true), '</td>
+				<td class="facts_label">', WT_I18N::translate('Youngest mother'), ' - ', $stats->youngestMotherAge(true), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->youngestFather(), '</td>
+				<td class="facts_value">', $stats->youngestMother(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Oldest father'), ' - ', $stats->oldestFatherAge(true), '</td>
+				<td class="facts_label">', WT_I18N::translate('Oldest mother'), ' - ', $stats->oldestMotherAge(true), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->oldestFather(), '</td>
+				<td class="facts_value">', $stats->oldestMother(), '</td>
+			</tr>
+		</table>
+		<br>
+		<b>', WT_I18N::translate('Children in family'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Average number of children per family'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Number of families without children'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value" align="center">', $stats->averageChildren(), '</td>
+				<td class="facts_value" align="center">', $stats->noChildrenFamilies(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart">', $stats->statsChildren(), '</td>
+				<td class="facts_value statistics_chart">', $stats->chartNoChildrenFamilies(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Largest families'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Largest number of grandchildren'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->topTenLargestFamilyList(), '</td>
+				<td class="facts_value">', $stats->topTenLargestGrandFamilyList(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart" colspan="2">', $stats->chartLargestFamilies(), '</td>
+			</tr>
+		</table>
+		<br>
+		<b>', WT_I18N::translate('Age difference'), '</b>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Age between siblings'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Greatest age between siblings'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->topAgeBetweenSiblingsList(), '</td>
+				<td class="facts_value">', $stats->topAgeBetweenSiblingsFullName(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Age between husband and wife'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Age between wife and husband'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->ageBetweenSpousesMFList(), '</td>
+				<td class="facts_value">', $stats->ageBetweenSpousesFMList(), '</td>
+			</tr>
+		</table>
+		</fieldset>';
+	} else if ($tab==2) {
+		echo '<fieldset>
+		<legend>', WT_I18N::translate('Records'), ': ', $stats->totalRecords(), '</legend>
+		<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Media objects'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Sources'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Notes'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Repositories'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Other records'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value" align="center">', $stats->totalMedia(), '</td>
+				<td class="facts_value" align="center">', $stats->totalSources(), '</td>
+				<td class="facts_value" align="center">', $stats->totalNotes(), '</td>
+				<td class="facts_value" align="center">', $stats->totalRepositories(), '</td>
+				<td class="facts_value" align="center">', $stats->totalOtherRecords(), '</td>
+			</tr>
+			</table>
 		</fieldset>
-	<?php }
-	else if ($tab==3) { ?>
 		<fieldset>
-		<legend><?php echo WT_I18N::translate('Create your own chart'); ?></legend>
-		<?php
+			<legend>', WT_I18N::translate('Total events'), ': ', $stats->totalEvents(), '</legend>
+			<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('First event'), ' - ', $stats->firstEventType(), '</td>
+				<td class="facts_label">', WT_I18N::translate('Last event'), ' - ', $stats->lastEventType(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->firstEvent(), '</td>
+				<td class="facts_value">', $stats->lastEvent(), '</td>
+			</tr>
+			</table>
+		</fieldset>
+		<fieldset>
+			<legend>', WT_I18N::translate('Media objects'), ': ', $stats->totalMedia(), '</legend>
+			<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Media objects'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart">', $stats->chartMedia(), '</td>
+			</tr>
+			</table>
+		</fieldset>
+		<fieldset>
+			<legend>', WT_I18N::translate('Sources'), ': ', $stats->totalSources(), '</legend>
+			<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Individuals with sources'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Families with sources'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value" align="center">', $stats->totalIndisWithSources(), '</td>
+				<td class="facts_value" align="center">', $stats->totalFamsWithSources(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value statistics_chart">', $stats->chartIndisWithSources(), '</td>
+				<td class="facts_value statistics_chart">', $stats->chartFamsWithSources(), '</td>
+			</tr>
+			</table>
+		</fieldset>
+		<fieldset>
+			<legend>', WT_I18N::translate('Places'), ': ', $stats->totalPlaces(), '</legend>
+			<table class="facts_table">
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Birth places'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Death places'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->commonBirthPlacesList(), '</td>
+				<td class="facts_value">', $stats->commonDeathPlacesList(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_label">', WT_I18N::translate('Marriage places'), '</td>
+				<td class="facts_label">', WT_I18N::translate('Events in countries'), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value">', $stats->commonMarriagePlacesList(), '</td>
+				<td class="facts_value">', $stats->commonCountriesList(), '</td>
+			</tr>
+			<tr>
+				<td class="facts_value" colspan="2">', $stats->chartDistribution(), '</td>
+			</tr>
+		</table>
+		</fieldset>';
+	} else if ($tab==3) {
 		require_once WT_ROOT.'includes/functions/functions_places.php';
-
 		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+
+		echo '<fieldset>
+		<legend>', WT_I18N::translate('Create your own chart'), '</legend>';
 		?>
 		<script type="text/javascript">
 		<!--
@@ -453,60 +461,39 @@ if (isset($content) && $content==1) {
 		//-->
 		</script>
 		<?php
-
-		if (!isset($_SESSION[$GEDCOM.'nrpers'])) {
-			$nrpers = 0;
-		}
-		else {
-			$nrpers = $_SESSION[$GEDCOM.'nrpers'];
-			$nrfam = $_SESSION[$GEDCOM.'nrfam'];
-			$nrmale = $_SESSION[$GEDCOM.'nrmale'];
-			$nrfemale = $_SESSION[$GEDCOM.'nrfemale'];
-		}
-
-		$_SESSION[$GEDCOM.'nrpers'] = $stats->_totalIndividuals();
-		$_SESSION[$GEDCOM.'nrfam'] = $stats->_totalFamilies();
-		$_SESSION[$GEDCOM.'nrmale'] = $stats->_totalSexMales();
-		$_SESSION[$GEDCOM.'nrfemale'] = $stats->_totalSexFemales();
-
+		$WT_SESSION=new stdClass();
 		echo '<form method="post" name="form" action="statisticsplot.php?action=newform" target="_popup" onsubmit="return openPopup()">';
 		echo '<input type="hidden" name="action" value="update">';
 		echo '<table width="100%">';
-
 		if (!isset($plottype)) $plottype = 11;
 		if (!isset($charttype)) $charttype = 1;
 		if (!isset($plotshow)) $plotshow = 302;
 		if (!isset($plotnp)) $plotnp = 201;
-
-		if (isset($_SESSION[$GEDCOM.'statTicks'])) {
-			$xasGrLeeftijden = $_SESSION[$GEDCOM.'statTicks']['xasGrLeeftijden'];
-			$xasGrMaanden = $_SESSION[$GEDCOM.'statTicks']['xasGrMaanden'];
-			$xasGrAantallen = $_SESSION[$GEDCOM.'statTicks']['xasGrAantallen'];
-			$zasGrPeriode = $_SESSION[$GEDCOM.'statTicks']['zasGrPeriode'];
-		}
-		else {
+		if (isset($WT_SESSION->statTicks[$GEDCOM])) {
+			$xasGrLeeftijden = $WT_SESSION->statTicks[$GEDCOM]['xasGrLeeftijden'];
+			$xasGrMaanden = $WT_SESSION->statTicks[$GEDCOM]['xasGrMaanden'];
+			$xasGrAantallen = $WT_SESSION->statTicks[$GEDCOM]['xasGrAantallen'];
+			$zasGrPeriode = $WT_SESSION->statTicks[$GEDCOM]['zasGrPeriode'];
+		} else {
 			$xasGrLeeftijden = '1,5,10,20,30,40,50,60,70,80,90,100';
 			$xasGrMaanden = '-24,-12,0,8,12,18,24,48';
 			$xasGrAantallen = '1,2,3,4,5,6,7,8,9,10';
 			$zasGrPeriode = '1700,1750,1800,1850,1900,1950,2000';
 		}
-		if (isset($_SESSION[$GEDCOM.'statTicks1'])) {
-			$chart_shows = $_SESSION[$GEDCOM.'statTicks1']['chart_shows'];
-			$chart_type = $_SESSION[$GEDCOM.'statTicks1']['chart_type'];
-			$surname = $_SESSION[$GEDCOM.'statTicks1']['surname'];
-		}
-		else {
+		if (isset($WT_SESSION->statTicks1[$GEDCOM])) {
+			$chart_shows = $WT_SESSION->statTicks1[$GEDCOM]['chart_shows'];
+			$chart_type = $WT_SESSION->statTicks1[$GEDCOM]['chart_type'];
+			$surname = $WT_SESSION->statTicks1[$GEDCOM]['surname'];
+		} else {
 			$chart_shows = 'world';
 			$chart_type = 'indi_distribution_chart';
 			$surname = $stats->getCommonSurname();
 		}
 
-		?>
-			<tr>
-			<td class="descriptionbox width25 wrap"><?php echo WT_I18N::translate('Select chart type:'); ?></td>
+		echo '<tr>
+			<td class="descriptionbox width25 wrap">', WT_I18N::translate('Select chart type:'), '</td>
 			<td class="optionbox">
-			<input type="radio" id="stat_11" name="x-as" value="11"
-			<?php
+			<input type="radio" id="stat_11" name="x-as" value="11"';
 			if ($plottype == '11') echo ' checked="checked"';
 			echo " onclick=\"{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}";
 			echo '"><label for="stat_11">', WT_I18N::translate('Month of birth'), '</label><br>';
@@ -566,89 +553,70 @@ if (isset($content) && $content==1) {
 			if ($plottype == "3") echo ' checked="checked"';
 			echo " onclick=\"{statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusShow('map_opt'); statusHide('chart_type'); statusHide('surname_opt');}";
 			echo '"><label for="stat_3">', WT_I18N::translate('Death by country'), '</label><br>';
-			?>
-			<br>
-			<div id="x_years" style="display:none;">
-			<?php
+			echo '<br><div id="x_years" style="display:none;">';
 			echo WT_I18N::translate('Select the desired age interval');
-			?>
-			<br><select id="xas-grenzen-leeftijden" name="xas-grenzen-leeftijden">
-				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected="selected"><?php
-					echo WT_I18N::plural('interval %s year', 'interval %s years', 10, WT_I18N::number(10)); ?></option>
-				<option value="5,20,40,60,75,80,85,90"><?php
-					echo WT_I18N::plural('interval %s year', 'interval %s years', 20, WT_I18N::number(20)); ?></option>
-				<option value="10,25,50,75,100"><?php
-					echo WT_I18N::plural('interval %s year', 'interval %s years', 25, WT_I18N::number(25)); ?></option>
+			echo '<br><select id="xas-grenzen-leeftijden" name="xas-grenzen-leeftijden">
+				<option value="1,5,10,20,30,40,50,60,70,80,90,100" selected="selected">',
+				WT_I18N::plural('interval %s year', 'interval %s years', 10, WT_I18N::number(10)), '</option>
+				<option value="5,20,40,60,75,80,85,90">', 
+				WT_I18N::plural('interval %s year', 'interval %s years', 20, WT_I18N::number(20)), '</option>
+				<option value="10,25,50,75,100">',
+				WT_I18N::plural('interval %s year', 'interval %s years', 25, WT_I18N::number(25)), '</option>
 			</select><br>
 			</div>
-			<div id="x_years_m" style="display:none;">
-			<?php
+			<div id="x_years_m" style="display:none;">';
 			echo WT_I18N::translate('Select the desired age interval');
-			?>
-			<br><select id="xas-grenzen-leeftijden_m" name="xas-grenzen-leeftijden_m">
-				<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected="selected"><?php
-					echo WT_I18N::plural('interval %s year', 'interval %s years', 2, WT_I18N::number(2)); ?></option>
-				<option value="20,25,30,35,40,45,50"><?php
-					echo WT_I18N::plural('interval %s year', 'interval %s years', 5, WT_I18N::number(5)); ?></option>
+			echo '<br><select id="xas-grenzen-leeftijden_m" name="xas-grenzen-leeftijden_m">
+				<option value="16,18,20,22,24,26,28,30,32,35,40,50" selected="selected">',
+				WT_I18N::plural('interval %s year', 'interval %s years', 2, WT_I18N::number(2)), '</option>
+				<option value="20,25,30,35,40,45,50">',
+				WT_I18N::plural('interval %s year', 'interval %s years', 5, WT_I18N::number(5)), '</option>
 			</select><br>
 			</div>
-			<div id="x_months" style="display:none;">
-			<?php
+			<div id="x_months" style="display:none;">';
 			echo WT_I18N::translate('Select the desired age interval');
-			?>
-			<br><select id="xas-grenzen-maanden" name="xas-grenzen-maanden">
-				<option value="0,8,12,15,18,24,48" selected="selected"><?php echo WT_I18N::translate('months after marriage'); ?></option>
-				<option value="-24,-12,0,8,12,18,24,48"><?php echo WT_I18N::translate('months before and after marriage'); ?></option>
-				<option value="0,6,9,12,15,18,21,24"><?php echo WT_I18N::translate('quarters after marriage'); ?></option>
-				<option value="0,6,12,18,24"><?php echo WT_I18N::translate('half-year after marriage'); ?></option>
+			echo '<br><select id="xas-grenzen-maanden" name="xas-grenzen-maanden">
+				<option value="0,8,12,15,18,24,48" selected="selected">', WT_I18N::translate('months after marriage'), '</option>
+				<option value="-24,-12,0,8,12,18,24,48">', WT_I18N::translate('months before and after marriage'), '</option>
+				<option value="0,6,9,12,15,18,21,24">', WT_I18N::translate('quarters after marriage'), '</option>
+				<option value="0,6,12,18,24">', WT_I18N::translate('half-year after marriage'), '</option>
 			</select><br>
 			</div>
-			<div id="x_numbers" style="display:none;">
-			<?php
+			<div id="x_numbers" style="display:none;">';
 			echo WT_I18N::translate('Select the desired count interval');
-			?>
-			<br><select id="xas-grenzen-aantallen" name="xas-grenzen-aantallen">
-				<option value="1,2,3,4,5,6,7,8,9,10" selected="selected"><?php echo WT_I18N::translate('interval one child'); ?></option>
-				<option value="2,4,6,8,10,12"><?php echo WT_I18N::translate('interval two children'); ?></option>
+			echo '<br><select id="xas-grenzen-aantallen" name="xas-grenzen-aantallen">
+				<option value="1,2,3,4,5,6,7,8,9,10" selected="selected">', WT_I18N::translate('interval one child'), '</option>
+				<option value="2,4,6,8,10,12">', WT_I18N::translate('interval two children'), '</option>
 			</select>
 			<br>
 			</div>
 			<div id="map_opt" style="display:none;">
-			<div id="chart_type">
-			<?php
+			<div id="chart_type">';
 			echo WT_I18N::translate('Chart type');
-			?>
-			<br><select name="chart_type" onchange="statusShowSurname(this);">
-				<option value="indi_distribution_chart" selected="selected">
-					<?php echo WT_I18N::translate('Individual distribution chart'); ?></option>
-				<option value="surname_distribution_chart">
-					<?php echo WT_I18N::translate('Surname distribution chart'); ?></option>
+			echo '<br><select name="chart_type" onchange="statusShowSurname(this);">
+				<option value="indi_distribution_chart" selected="selected">', WT_I18N::translate('Individual distribution chart'), '</option>
+				<option value="surname_distribution_chart">', WT_I18N::translate('Surname distribution chart'), '</option>
 			</select>
 			<br>
 			</div>
-			<div id="surname_opt" style="display:none;">
-			<?php
+			<div id="surname_opt" style="display:none;">';
 			echo WT_Gedcom_Tag::getLabel('SURN'), help_link('google_chart_surname'), '<br><input type="text" name="SURN" size="20">';
-			?>
-			<br>
-			</div>
-			<?php
+			echo '<br>
+			</div>';
 			echo WT_I18N::translate('Geographical area');
-			?>
-			<br><select id="chart_shows" name="chart_shows">
-				<option value="world" selected="selected"><?php echo WT_I18N::translate('World'); ?></option>
-				<option value="europe"><?php echo WT_I18N::translate('Europe'); ?></option>
-				<option value="south_america"><?php echo WT_I18N::translate('South America'); ?></option>
-				<option value="asia"><?php echo WT_I18N::translate('Asia'); ?></option>
-				<option value="middle_east"><?php echo WT_I18N::translate('Middle East'); ?></option>
-				<option value="africa"><?php echo WT_I18N::translate('Africa'); ?></option>
+			echo '<br><select id="chart_shows" name="chart_shows">
+				<option value="world" selected="selected">', WT_I18N::translate('World'), '</option>
+				<option value="europe">', WT_I18N::translate('Europe'), '</option>
+				<option value="south_america">', WT_I18N::translate('South America'), '</option>
+				<option value="asia">', WT_I18N::translate('Asia'), '</option>
+				<option value="middle_east">', WT_I18N::translate('Middle East'), '</option>
+				<option value="africa">', WT_I18N::translate('Africa'), '</option>
 			</select>
 			</div>
 			</td>
-			<td class="descriptionbox width20 wrap" id="axes"><?php echo WT_I18N::translate('Categories:'); ?></td>
+			<td class="descriptionbox width20 wrap" id="axes">', WT_I18N::translate('Categories:'), '</td>
 			<td class="optionbox width30" id="zyaxes">
-			<input type="radio" id="z_none" name="z-as" value="300"
-			<?php
+			<input type="radio" id="z_none" name="z-as" value="300"';
 			if ($plotshow == "300") echo ' checked="checked"';
 			echo " onclick=\"statusDisable('zas-grenzen-periode');";
 			echo '"><label for="z_none">', WT_I18N::translate('overall'), '</label><br>';
@@ -661,98 +629,40 @@ if (isset($content) && $content==1) {
 			echo " onclick=\"statusEnable('zas-grenzen-periode');";
 			echo '"><label for="z_time">', WT_I18N::translate('date periods'), '</label><br><br>';
 			echo WT_I18N::translate('Date range'), '<br>';
-
-			?>
-			<select id="zas-grenzen-periode" name="zas-grenzen-periode">
-				<option value="1700,1750,1800,1850,1900,1950,2000" selected="selected"><?php
-					// I18N: from 1700 interval 50 years
-					echo WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, WT_I18N::digits(1700), WT_I18N::number(50)); ?></option>
-				<option value="1800,1840,1880,1920,1950,1970,2000"><?php
-					echo WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 40, WT_I18N::digits(1800), WT_I18N::number(40)); ?></option>
-				<option value="1800,1850,1900,1950,2000"><?php
-					echo WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, WT_I18N::digits(1800), WT_I18N::number(50)); ?></option>
-				<option value="1900,1920,1940,1960,1980,1990,2000"><?php
-					echo WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 20, WT_I18N::digits(1900), WT_I18N::number(20)); ?></option>
-				<option value="1900,1925,1950,1975,2000"><?php
-					echo WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 25, WT_I18N::digits(1900), WT_I18N::number(25)); ?></option>
-				<option value="1940,1950,1960,1970,1980,1990,2000"><?php
-					echo WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 10, WT_I18N::digits(1940), WT_I18N::number(10)); ?></option>
+			echo '<select id="zas-grenzen-periode" name="zas-grenzen-periode">
+				<option value="1700,1750,1800,1850,1900,1950,2000" selected="selected">',
+					/* I18N: from 1700 interval 50 years */ WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, WT_I18N::digits(1700), WT_I18N::number(50)), '</option>
+				<option value="1800,1840,1880,1920,1950,1970,2000">',
+					WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 40, WT_I18N::digits(1800), WT_I18N::number(40)), '</option>
+				<option value="1800,1850,1900,1950,2000">',
+					WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 50, WT_I18N::digits(1800), WT_I18N::number(50)), '</option>
+				<option value="1900,1920,1940,1960,1980,1990,2000">',
+					WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 20, WT_I18N::digits(1900), WT_I18N::number(20)), '</option>
+				<option value="1900,1925,1950,1975,2000">',
+					WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 25, WT_I18N::digits(1900), WT_I18N::number(25)), '</option>
+				<option value="1940,1950,1960,1970,1980,1990,2000">',
+					WT_I18N::plural('from %1$s interval %2$s year', 'from %1$s interval %2$s years', 10, WT_I18N::digits(1940), WT_I18N::number(10)), '</option>
 			</select>
-			<br><br>
-			<?php
+			<br><br>';
 			echo WT_I18N::translate('results:'), '<br>';
-			?>
-			<input type="radio" id="y_num" name="y-as" value="201"
-			<?php
+			echo '<input type="radio" id="y_num" name="y-as" value="201"';
 			if ($plotnp == "201") echo ' checked="checked"';
 			echo '><label for="y_num">', WT_I18N::translate('numbers'), '</label><br>';
 			echo '<input type="radio" id="y_perc" name="y-as" value="202"';
 			if ($plotnp == "202") echo ' checked="checked"';
 			echo '><label for="y_perc">', WT_I18N::translate('percentage'), '</label><br>';
-			?>
-			</td>
+			echo '</td>
 			</tr>
 			</table>
 			<table width="100%">
 			<tr align="center"><td>
 				<br>
-				<input type="submit" value="<?php echo WT_I18N::translate('show the plot'); ?> " onclick="closeHelp();">
-				<input type="reset"  value=" <?php echo WT_I18N::translate('reset'); ?> " onclick="{statusEnable('z_sex'); statusHide('x_years'); statusHide('x_months'); statusHide('x_numbers'); statusHide('map_opt');}"><br>
+				<input type="submit" value="', WT_I18N::translate('show the plot'), ' " onclick="closeHelp();">
+				<input type="reset"  value=" ', WT_I18N::translate('reset'), ' " onclick="{statusEnable(\'z_sex\'); statusHide(\'x_years\'); statusHide(\'x_months\'); statusHide(\'x_numbers\'); statusHide(\'map_opt\');}"><br>
 			</td>
 			</tr>
 		</table>
 		</form>
-		<?php
-		$_SESSION['plottype']=$plottype;
-		$_SESSION['plotshow']=$plotshow;
-		$_SESSION['plotnp']=$plotnp;
-		?>
-		</fieldset>
-	<?php }
-} else {
-	$controller->pageHeader();
-
-	$ble = false;
-	?>
-	<h2 class="center"><?php echo WT_I18N::translate('Statistics'); ?></h2>
-	<script type="text/javascript">
-	//<![CDATA[
-		jQuery.noConflict();
-		jQuery(document).ready(function() {
-		jQuery('#tabbar').tabs();
-		});
-	//]]>
-	</script>
-	<script type="text/javascript">
-	//<![CDATA[
-	jQuery(document).ready(function() {
-		// TODO: change images directory when the common images will be deleted.
-		jQuery('#tabs').tabs({ spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18">' });
-		jQuery("#tabs").tabs({ cache: true });
-		jQuery('#tabs').bind('tabsshow', function(event, ui) {
-		});
-	});
-	//]]>
-	</script>
-	<div class="width90" style="margin:0 auto;">
-		<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
-		<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-			<li class="ui-state-default ui-corner-top">
-				<a href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=0"><div title="<?php echo WT_I18N::translate('Individuals'); ?>"><?php echo WT_I18N::translate('Individuals'); ?></div></a>
-			</li>
-			<li class="ui-state-default ui-corner-top">
-				<a href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=1"><div title="<?php echo WT_I18N::translate('Families'); ?>"><?php echo WT_I18N::translate('Families'); ?></div></a>
-			</li>
-			<li class="ui-state-default ui-corner-top">
-				<a href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=2"><div title="<?php echo WT_I18N::translate('Others'); ?>"><?php echo WT_I18N::translate('Others'); ?></div></a>
-			</li>
-			<li class="ui-state-default ui-corner-top">
-				<a href="statistics.php?ged=<?php echo WT_GEDURL; ?>&amp;content=1&amp;tab=3"><div title="<?php echo WT_I18N::translate('Own charts'); ?>"><?php echo WT_I18N::translate('Own charts'); ?></div></a>
-			</li>
-		</ul>
-		</div> <!-- tabs -->
-	</div> <!--  end -->
-	<?php
-	$ble = true;
-	echo '<br><br>';
+		</fieldset>';
+	}
 }
