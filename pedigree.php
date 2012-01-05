@@ -119,7 +119,9 @@ echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), '</h2
 //-- echo the boxes
 $curgen = 1;
 $lastvlength = 0; // -- used to save the last vertical line length where child had both father and mother
-$xoffset = 0;
+$linexoffset = 0;
+$vlength = 0;
+$xoffset = 0;	
 $yoffset = 0;     // -- used to offset the position of each box as it is generated
 $prevxoffset = 0; // -- used to track the horizontal x position of the previous box
 $prevyoffset = 0; // -- used to track the vertical y position of the previous box
@@ -188,7 +190,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1-$controller->pbheight/2+10), 'px; z-index: 0;">';
 						echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" >';
 					} else {
-						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1+$controller->pbheight/2+10), 'px; z-index: 0;">';
+						echo ($linexoffset-1+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1+$controller->pbheight/2+10), 'px; z-index: 0;">';
 						echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" >';
 					}
 					echo '</div>';
@@ -202,7 +204,9 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 					echo '<img src="', $WT_IMAGES['hline'], '" width="', ($vlength-$controller->pbwidth), '" height="', $linesize, '" alt="">';
 					echo '</div>';
 				}
-			}
+			} else  			// here if no parents and no empty boxes
+			$vlength = $prevxoffset-$xoffset;
+			$linexoffset = $xoffset;
 		}
 	}
 	// -- draw the box
