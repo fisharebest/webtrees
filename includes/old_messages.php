@@ -51,6 +51,9 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('No account?');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Lost your password?');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password.<br /><br />You will be taken to the "Lost Password Request" page.');
 
 // MESSAGES DELETED IN WEBTREES-1.2.6
 
