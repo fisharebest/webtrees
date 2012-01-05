@@ -204,9 +204,10 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 					echo '<img src="', $WT_IMAGES['hline'], '" width="', ($vlength-$controller->pbwidth), '" height="', $linesize, '" alt="">';
 					echo '</div>';
 				}
-			} else  			// here if no parents and no empty boxes
-			$vlength = $prevxoffset-$xoffset;
-			$linexoffset = $xoffset;
+			} else { // here if no parents and no empty boxes
+				$vlength = $prevxoffset-$xoffset;
+				$linexoffset = $xoffset;
+			}
 		}
 	}
 	// -- draw the box
