@@ -69,7 +69,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$title=WT_I18N::plural('%s message', '%s messages',count($usermessages), count($usermessages));
+		$title=WT_I18N::plural('%s message', '%s messages',count($usermessages), WT_I18N::number(count($usermessages)));
 		$content = '';
 		$content .= "<form name=\"messageform\" action=\"index.php?ctype={$ctype}\" method=\"get\" onsubmit=\"return confirm('".WT_I18N::translate('Are you sure you want to delete this message?  It cannot be retrieved later.')."');\">";
 		if (get_user_count()>1) {
