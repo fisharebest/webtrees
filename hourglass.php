@@ -104,7 +104,7 @@ $gencount=0;
 
 	<!-- // NOTE: Box width -->
 	<tr><td class="descriptionbox">
-	<?php echo WT_I18N::translate('Box width'), help_link('box_width'); ?>
+	<?php echo WT_I18N::translate('Box width'); ?>
 	</td>
 	<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>">
 	<b>%</b>

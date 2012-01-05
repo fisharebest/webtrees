@@ -68,7 +68,7 @@ echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3
 print_findindi_link("rootid", "");
 echo '</td>';
 echo '<td class="descriptionbox">';
-echo WT_I18N::translate('Box width'), help_link('box_width'), '</td>';
+echo WT_I18N::translate('Box width'), '</td>';
 echo '<td class="optionbox"><input type="text" size="3" name="box_width" value="', $controller->box_width, '">';
 echo '<b>%</b></td>';
 echo '<td rowspan="2" class="descriptionbox">';

@@ -52,6 +52,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('interval %d year', 'interval %d years', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Here you can change the box width from 50 percent to 300 percent.  At 100 percent each box is about 270 pixels wide.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password.<br /><br />You will be taken to the "Lost Password Request" page.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Lost your password?');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('No account?');
