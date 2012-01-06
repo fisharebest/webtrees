@@ -287,7 +287,7 @@ function login_link($extra='') {
 		return '';
 	} else {
 		if (WT_SCRIPT_NAME=='login.php') {
-			$href='#';
+			$href='login.php#';
 		} else {
 			$href=get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url());
 		}
