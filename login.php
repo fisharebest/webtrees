@@ -645,7 +645,7 @@ case 'verify_hash':
 		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */
 		WT_I18N::translate('A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).', getUserFullName($user_id), $user_name,  getUserEmail($user_id))."\r\n\r\n";
 	if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
-		$mail1_body .= WT_I18N::translate('You now need to reveiew the account details, and set the “approved” status to “yes”.') . "\r\n";
+		$mail1_body .= WT_I18N::translate('You now need to review the account details, and set the “approved” status to “yes”.') . "\r\n";
 	} else {
 		$mail1_body .= WT_I18N::translate('You do not have to take any action; the user can now login.') . "\r\n";
 	}
