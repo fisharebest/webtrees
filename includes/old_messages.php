@@ -57,6 +57,9 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password.<br /><br />You will be taken to the "Lost Password Request" page.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Lost your password?');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('No account?');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This block displays the most frequently occurring surnames in the database.  The configuration settings for this block allow changes to the number of names displayed, the presentation style, and the use of scroll bars with long lists.  By using the GEDCOM administration function, an administrator can also configure names to remove from this list.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This block shows a table of the 10 most frequently occurring given names in the database.  The actual number of given names shown in this block is configurable.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Top 10 Given Names');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
 
 // MESSAGES DELETED IN WEBTREES-1.2.6

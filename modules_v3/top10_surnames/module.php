@@ -85,9 +85,14 @@ class top10_surnames_WT_Module extends WT_Module implements WT_Module_Block {
 			$title='';
 		}
 
-		// I18N: Title for a list of the most common surnames - with %s names in the list
-		$title .= WT_I18N::plural('Top surname', 'Top %s surnames', $num, WT_I18N::number($num));
-		$title .= help_link('top_surnames', $this->getName());
+		if ($num==1) {
+			// I18N: i.e. most popular surname.
+			$title.=WT_I18N::translate('Top surname');
+		} else {
+			// I18N: Title for a list of the most common surnames, %s is a number.  Note that a separate translation exists when %s is 1
+			$title.=WT_I18N::plural('Top %s surname', 'Top %s surnames', $num, WT_I18N::number($num));
+		}
+
 		switch ($infoStyle) {
 		case 'tagcloud':
 			uksort($all_surnames,'utf8_strcasecmp');

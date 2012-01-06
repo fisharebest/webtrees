@@ -63,8 +63,13 @@ class top10_givnnames_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$title='';
 		}
-		// I18N: Title for a list of the most common given names - with %s names in the list
-		$title .= WT_I18N::plural('Top given name', 'Top %s given names', $num, WT_I18N::number($num));
+		if ($num==1) {
+			// I18N: i.e. most popular given name.
+			$title.=WT_I18N::translate('Top given name');
+		} else {
+			// I18N: Title for a list of the most common given names, %s is a number.  Note that a separate translation exists when %s is 1
+			$title.=WT_I18N::plural('Top %s given name', 'Top %s given names', $num, WT_I18N::number($num));
+		}
 
 		$content = '<div class="normal_inner_block">';
 		//Select List or Table
