@@ -115,6 +115,7 @@ set_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD',          false);
 set_gedcom_setting($ged_id, 'SHOW_NO_WATERMARK',            WT_PRIV_USER);
 set_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE',             true);
 set_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES',         '9');
+set_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES_SUFFIX',  false);
 set_gedcom_setting($ged_id, 'SHOW_PRIVATE_RELATIONSHIPS',   true);
 set_gedcom_setting($ged_id, 'SHOW_REGISTER_CAUTION',        true);
 set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS',        '_BIRT_CHIL,_BIRT_SIBL,_MARR_CHIL,_MARR_PARE,_DEAT_CHIL,_DEAT_PARE,_DEAT_GPAR,_DEAT_SIBL,_DEAT_SPOU');
