@@ -2,7 +2,7 @@
 // UI for online updating of the GEDCOM config file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -241,6 +241,7 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SHOW_NO_WATERMARK',            safe_POST('NEW_SHOW_NO_WATERMARK'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PARENTS_AGE',             safe_POST_bool('NEW_SHOW_PARENTS_AGE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES',         safe_POST('NEW_SHOW_PEDIGREE_PLACES'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX',  safe_POST('NEW_SHOW_PEDIGREE_PLACES_SUFFIX'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS',   safe_POST('SHOW_PRIVATE_RELATIONSHIPS'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_REGISTER_CAUTION',        safe_POST_bool('NEW_SHOW_REGISTER_CAUTION'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_RELATIVES_EVENTS',        safe_POST('NEW_SHOW_RELATIVES_EVENTS'));
@@ -1116,6 +1117,14 @@ echo WT_JS_START;?>
 							<?php echo WT_I18N::translate('Place levels to show in person boxes'), help_link('SHOW_PEDIGREE_PLACES'); ?>
 						</td>
 						<td>
+							<select name="NEW_SHOW_PEDIGREE_PLACES_SUFFIX">
+								<option <?php echo get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX') ? '' : 'selected="selected"'; ?> value="0">
+									<?php echo WT_I18N::translate('first'); ?>
+								</option>
+								<option <?php echo get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX') ? 'selected="selected"' : ''; ?> value="1">
+									<?php echo WT_I18N::translate('last'); ?>
+								</option>
+							</select>
 							<input type="text" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php echo $SHOW_PEDIGREE_PLACES; ?>" size="5" maxlength="2">
 						</td>
 					</tr>

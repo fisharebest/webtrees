@@ -976,34 +976,40 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 * @param boolean $lds option to print LDS TEMPle and STATus
 */
 function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=false) {
-	global $SHOW_PEDIGREE_PLACES, $SEARCH_SPIDER;
+	global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX, $SEARCH_SPIDER;
 
 	$factrec = $event->getGedcomRecord();
 
 	$name_parts=explode(', ', $event->getPlace());
 
-	// Abbreviate the place name
-	$html=implode(', ', array_slice($name_parts, -$SHOW_PEDIGREE_PLACES)); // The *last* $SHOW_PEDIGREE_PLACES components
-	//$html=implode(', ', array_slice($name_parts, 0, $SHOW_PEDIGREE_PLACES)); // The *first* $SHOW_PEDIGREE_PLACES components
-
-	// If we abbreviated the place, show the full name as a tooltip
-	$ct=count($name_parts);
-	if ($ct>$SHOW_PEDIGREE_PLACES) {
-		$tooltip=' title="'.htmlspecialchars($event->getPlace()).'"';
-	} else {
-		$tooltip='';
-	}
-
-	// For real users, make this a link to the place hierarchy
-	if ($anchor && !$SEARCH_SPIDER) {
-		$n=count($name_parts);
-		$url='placelist.php?action=show&amp;level='.$n;
-		for ($i=0; $i<$n; ++$i) {
-			$url.='&amp;parent%5B'.$i.'%5D='.rawurlencode($name_parts[$n-$i-1]);
+	if ($anchor) {
+		// Show the full place name, for facts/events tab
+		$html=$event->getPlace();
+		if (!$SEARCH_SPIDER) {
+			$n=count($name_parts);
+			$url='placelist.php?action=show&amp;level='.$n;
+			for ($i=0; $i<$n; ++$i) {
+				$url.='&amp;parent%5B'.$i.'%5D='.rawurlencode($name_parts[$n-$i-1]);
+			}
+			$html='<a href="'.$url.'">'.$html.'</a>';
 		}
-		$html='<a href="'.$url.'"'.$tooltip.'>'.$html.'</a>';
 	} else {
-		$html='<span'.$tooltip.'>'.$html.'</span>';
+		// Abbreviate the place name, for chart boxes
+		if ($SHOW_PEDIGREE_PLACES_SUFFIX) {
+			// The *last* $SHOW_PEDIGREE_PLACES components
+			$html=implode(', ', array_slice($name_parts, -$SHOW_PEDIGREE_PLACES));
+		} else {
+			// The *first* $SHOW_PEDIGREE_PLACES components
+			$html=implode(', ', array_slice($name_parts, 0, $SHOW_PEDIGREE_PLACES));
+		}
+
+		// If we abbreviated the place, show the full name as a tooltip
+		$ct=count($name_parts);
+		if ($ct>$SHOW_PEDIGREE_PLACES) {
+			$html=' – <span title="'.htmlspecialchars($event->getPlace()).'">'.$html.'</span>';
+		}
+		// Chart boxes don't have room for temple names, alternate place names, etc.
+		return $html;
 	}
 
 	$ctn=0;
