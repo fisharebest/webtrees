@@ -201,21 +201,21 @@ default:
 		<input type="hidden" name="usertime" value="">';
 		if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>';
 		echo '<div>
-			<label for="username">', WT_I18N::translate('Username'), help_link('username'), '</label>',
+			<label for="username">', WT_I18N::translate('Username'), '</label>',
 			'<input type="text" id="username" name="username" value="', htmlspecialchars($username), '" size="20" class="formField">
 		</div>
 		<div>
-			<label for="password">', WT_I18N::translate('Password'), help_link('password'), '</label>',
+			<label for="password">', WT_I18N::translate('Password'), '</label>',
 			'<input type="password" id="password" name="password" size="20" class="formField">
 		</div>
 		<div>
 			<input type="submit" value="', WT_I18N::translate('Login'), '">
 		</div>
 		<div>
-			<a href="#" id="passwd_click">', WT_I18N::translate('Request new password'), help_link('new_password'), '</a>
+			<a href="#" id="passwd_click">', WT_I18N::translate('Request new password'), '</a>
 		</div>';
 		if (get_site_setting('USE_REGISTRATION_MODULE')) {
-			echo '<div><a href="login.php?action=register">', WT_I18N::translate('Request new user account'), help_link('new_user'), '</a></div>';
+			echo '<div><a href="login.php?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
 		}
 	echo '</form>'; // close "login-form"
 	
@@ -224,12 +224,12 @@ default:
 		<form id="new_passwd_form" name="requestpwform" action="login.php" method="post" onsubmit="t = new Date(); document.requestpwform.time.value=t.toUTCString(); return checkform(this);">
 		<input type="hidden" name="time" value="">
 		<input type="hidden" name="action" value="requestpw">
-		<h4>', WT_I18N::translate('Lost password request'), help_link('pls_note11'), '</h4>
+		<h4>', WT_I18N::translate('Lost password request'), '</h4>
 		<div>
-			<label for="username">', WT_I18N::translate('Username'), '</label>
+			<label for="username">', WT_I18N::translate('Username or email address'), '</label>
 			<input type="text" id="username" name="user_name" value="" autofocus>
 		</div>
-		<div><input type="submit" value="', WT_I18N::translate('Lost password request'), '"></div>
+		<div><input type="submit" value="', /* I18N: button label */ WT_I18N::translate('Continue'), '"></div>
 		</form>
 	</div>'; //"new_passwd"
 		
@@ -245,55 +245,49 @@ case 'requestpw':
 		->pageHeader();
 	echo '<div id="login-page">';
 
-	$user_id=get_user_id($user_name);
-	if (!$user_id) {
-		AddToLog('New password requests for user '.$user_name.' that does not exist', 'auth');
-		echo '<p id="login-text" class="ui-state-error">';
-		echo WT_I18N::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
-		echo '</p>';
-	} else {
-		if (getUserEmail($user_id)=='') {
-			AddToLog('Unable to send password to user '.$user_name.' because they do not have an email address', 'auth');
-			echo '<p id="login-text" class="ui-state-error">';
-			echo WT_I18N::translate('Could not verify the information you entered.  Please try again or contact the site administrator for more information.');
-			echo '</p>';
-		} else {
-			$passchars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-			$user_new_pw = '';
-			$max = strlen($passchars)-1;
-			for ($i=0; $i<8; $i++) {
-				$index = rand(0,$max);
-				$user_new_pw .= $passchars{$index};
-			}
-
-			set_user_password($user_id, $user_new_pw);
-			set_user_setting($user_id, 'pwrequested', 1);
-
-			$mail_body = '';
-			$mail_body .= WT_I18N::translate('Hello %s ...', getUserFullName($user_id)) . "\r\n\r\n";
-			$mail_body .= WT_I18N::translate('A new password was requested for your user name.') . "\r\n\r\n";
-			$mail_body .= WT_I18N::translate('Username') . ": " . $user_name . "\r\n";
-
-			$mail_body .= WT_I18N::translate('Password') . ": " . $user_new_pw . "\r\n\r\n";
-			$mail_body .= WT_I18N::translate('Recommendation:') . "\r\n";
-			$mail_body .= WT_I18N::translate('Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure.') . "\r\n\r\n";
-			$mail_body .= WT_I18N::translate('After you have logged in, select the «My Account» link under the «My Page» menu and fill in the password fields to change your password.') . "\r\n\r\n";
-
-			if ($TEXT_DIRECTION=='rtl') {
-				$mail_body .= "<a href=\"".WT_SERVER_NAME.WT_SCRIPT_PATH."\">".WT_SERVER_NAME.WT_SCRIPT_PATH."</a>";
-			} else {
-				$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH;
-			}
-
-			require_once WT_ROOT.'includes/functions/functions_mail.php';
-			webtreesMail(getUserEmail($user_id), $WEBTREES_EMAIL, WT_I18N::translate('Data request at %s', get_gedcom_setting(WT_GED_ID, 'title').' - '.WT_SERVER_NAME.WT_SCRIPT_PATH), $mail_body);
-
-			echo '<div class="confirm">
-			<p>', WT_I18N::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', $user_name), '</p>
-			</div>';
-			AddToLog('Password request was sent to user: '.$user_name, 'auth');
+	$user_id=WT_DB::prepare(
+		"SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
+	)->execute(array($user_name))->fetchOne();
+	if ($user_id) {
+		$passchars = 'abcdefghijklmnopqrstuvqxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		$user_new_pw = '';
+		$max = strlen($passchars)-1;
+		for ($i=0; $i<8; $i++) {
+			$index = rand(0,$max);
+			$user_new_pw .= $passchars{$index};
 		}
+
+		set_user_password($user_id, $user_new_pw);
+		set_user_setting($user_id, 'pwrequested', 1);
+
+		$mail_body = '';
+		$mail_body .= WT_I18N::translate('Hello %s ...', getUserFullName($user_id)) . "\r\n\r\n";
+		$mail_body .= WT_I18N::translate('A new password was requested for your user name.') . "\r\n\r\n";
+		$mail_body .= WT_I18N::translate('Username') . ": " . $user_name . "\r\n";
+
+		$mail_body .= WT_I18N::translate('Password') . ": " . $user_new_pw . "\r\n\r\n";
+		$mail_body .= WT_I18N::translate('Recommendation:') . "\r\n";
+		$mail_body .= WT_I18N::translate('Please click on the link below or paste it into your browser, login with the new password, and change it immediately to keep the integrity of your data secure.') . "\r\n\r\n";
+		$mail_body .= WT_I18N::translate('After you have logged in, select the «My Account» link under the «My Page» menu and fill in the password fields to change your password.') . "\r\n\r\n";
+
+		if ($TEXT_DIRECTION=='rtl') {
+			$mail_body .= "<a href=\"".WT_SERVER_NAME.WT_SCRIPT_PATH."\">".WT_SERVER_NAME.WT_SCRIPT_PATH."</a>";
+		} else {
+			$mail_body .= WT_SERVER_NAME.WT_SCRIPT_PATH;
+		}
+
+		require_once WT_ROOT.'includes/functions/functions_mail.php';
+		webtreesMail(getUserEmail($user_id), $WEBTREES_EMAIL, WT_I18N::translate('Lost password request'), $mail_body);
 	}
+	// Show a success message, even if the user account does not exist.
+	// Otherwise this page can be used to guess/test usernames.
+	// A genuine user will hopefully always know their own email address.
+	echo
+		'<div class="confirm"><p>',
+		/* I18N: %s is a username */
+		WT_I18N::translate('A new password has been created and emailed to %s.  You can change this password after you login.', $user_name),
+		'</p></div>';
+	AddToLog('Password request was sent to user: '.$user_name, 'auth');
 	echo '</div>'; // <div id="login-page">
 	break;
 
@@ -440,7 +434,8 @@ case 'register':
 				// Generate an email in the user's language
 				$mail2_body=
 					WT_I18N::translate('Hello %s ...', $user_realname) . "\r\n\r\n".
-					/* I18N: %s placeholders are the site URL and an email address */ WT_I18N::translate('A request was received at %s to create a webtrees account with your email address %s.', get_gedcom_setting(WT_GED_ID, 'title').' - '.WT_SERVER_NAME.WT_SCRIPT_PATH, $user_email) . "  ".
+					/* I18N: %1$s is the site URL and %2$s is an email address */
+					WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME.WT_SCRIPT_PATH, $user_email) . "  ".
 					WT_I18N::translate('Information about the request is shown under the link below.') . "\r\n\r\n".
 					WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . "\r\n\r\n";
 				if ($TEXT_DIRECTION=='rtl') {
@@ -647,17 +642,18 @@ case 'verify_hash':
 	$user_id=get_user_id($user_name);
 	$mail1_body=
 		WT_I18N::translate('Hello Administrator ...') . "\r\n\r\n".
-		/* I18N: User <login-id> (<real name>) has ... */ WT_I18N::translate('User %s (%s) has confirmed their request for an account.', $user_name, getUserFullName($user_id)) . "\r\n\r\n";
+		/* I18N: %1$s is a real-name, %2$s is a username, %3$s is an email address */
+		WT_I18N::translate('A new user (%1$s) has requested an account (%2$s) and verified an email address (%3$s).', getUserFullName($user_id), $user_name,  getUserEmail($user_id))."\r\n\r\n";
 	if ($REQUIRE_ADMIN_AUTH_REGISTRATION) {
-		$mail1_body .= WT_I18N::translate('Please click on the link below to login to your site.  You must Edit the user to activate the account so that he can login to your site.') . "\r\n";
+		$mail1_body .= WT_I18N::translate('You now need to reveiew the account details, and set the “approved” status to “yes”.') . "\r\n";
 	} else {
 		$mail1_body .= WT_I18N::translate('You do not have to take any action; the user can now login.') . "\r\n";
 	}
 	if ($TEXT_DIRECTION=='rtl') {
 		$mail1_body .= "<a href=\"";
-		$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?action=edituser&username=" . urlencode($user_name) . "\">";
+		$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?action=edituser&username=" . rawurlencode($user_name) . "\">";
 	}
-	$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?action=edituser&username=" . urlencode($user_name);
+	$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?action=edituser&username=" . rawurlencode($user_name);
 	if ($TEXT_DIRECTION=="rtl") {
 		$mail1_body .= "</a>";
 	}

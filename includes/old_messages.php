@@ -11,7 +11,7 @@
 // translated messages.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -43,23 +43,31 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d week', '%d weeks', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d year ago', '%d years ago', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d year', '%d years', 0, 0);
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Changes in the last %d day', 'Changes in the last %d days', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('No events exist for the next %d day.', 'No events exist for the next %d days.', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('No events for living people exist for the next %d day.', 'No events for living people exist for the next %d days.', 0, 0);
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Changes in the last %d day', 'Changes in the last %d days', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Top given name', 'Top %d given names', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Top surname', 'Top %d surnames', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 0, 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('interval %d year', 'interval %d years', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('A request was received at %s to create a webtrees account with your email address %s.', '', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Data request at %s', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Fields marked with * are mandatory.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Here you can change the box width from 50 percent to 300 percent.  At 100 percent each box is about 270 pixels wide.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you are a visitor to this site and wish to request a user account, you can click this link.<br /><br />You will be taken to the "Register" page.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password.<br /><br />You will be taken to the "Lost Password Request" page.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Lost your password?');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('No account?');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Please click on the link below to login to your site.  You must Edit the user to activate the account so that he can login to your site.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Request user account');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This block displays the most frequently occurring surnames in the database.  The configuration settings for this block allow changes to the number of names displayed, the presentation style, and the use of scroll bars with long lists.  By using the GEDCOM administration function, an administrator can also configure names to remove from this list.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This block shows a table of the 10 most frequently occurring given names in the database.  The actual number of given names shown in this block is configurable.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('To have your password reset, enter your user name.<br /><br />We will respond by sending you an email to the address registered with your account.  The email will contain a URL and confirmation code for your account. When you visit this URL, you can change your password and login to this site. For security reasons, you should not give this confirmation code to anyone.<br /><br />If you require assistance from the site administrator, please use the contact link below.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Top 10 Given Names');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('User %s (%s) has confirmed their request for an account.', '', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
 
 // MESSAGES DELETED IN WEBTREES-1.2.6

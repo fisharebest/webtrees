@@ -4,7 +4,7 @@
 // Various printing functions used by all scripts and included by the functions.php file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -287,7 +287,7 @@ function login_link($extra='') {
 		return '';
 	} else {
 		if (WT_SCRIPT_NAME=='login.php') {
-			$href='login.php#';
+			$href='login.php';
 		} else {
 			$href=get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url());
 		}

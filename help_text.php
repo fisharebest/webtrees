@@ -2,7 +2,7 @@
 // Show help text in a popup window.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This file also serves as a database of fact and label descriptions,
 // allowing them to be discovered by xgettext, so we may use them dynamically
@@ -2452,19 +2452,6 @@ case 'move_mediadirs':
 	$text=WT_I18N::translate('When the Media Firewall is enabled, Multi-Media files can be stored in a server directory that is not accessible from the Internet.<br /><br />These buttons allow you to easily move an entire Media directory structure between the protected (not web-addressable) <b>%s%s</b> and the normal <b>%s</b> directories.', $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY, $MEDIA_DIRECTORY);
 	break;
 
-case 'new_password':
-	$title=WT_I18N::translate('Request new password');
-	$text=WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password. Enter your user name then click ');
-	$text .= '<strong>';
-	$text .= WT_I18N::translate('Lost password request');
-	$text .= '</strong>';
-	break;
-
-case 'new_user':
-	$title=WT_I18N::translate('Request user account');
-	$text=WT_I18N::translate('If you are a visitor to this site and wish to request a user account, you can click this link.<br /><br />You will be taken to the "Register" page.');
-	break;
-
 case 'next_path':
 	$title=WT_I18N::translate('Find next relationship path');
 	$text=WT_I18N::translate('You can click this button to see whether there is another relationship path between the two people.  Previously found paths can be displayed again by clicking the link with the path number.');
@@ -2532,11 +2519,6 @@ case 'pending_changes':
 			'</p>';
 	}
 
-	break;
-
-case 'pls_note11':
-	$title=WT_I18N::translate('Lost password request');
-	$text=WT_I18N::translate('To have your password reset, enter your user name.<br /><br />We will respond by sending you an email to the address registered with your account.  The email will contain a URL and confirmation code for your account. When you visit this URL, you can change your password and login to this site. For security reasons, you should not give this confirmation code to anyone.<br /><br />If you require assistance from the site administrator, please use the contact link below.');
 	break;
 
 case 'ppp_view_records':
