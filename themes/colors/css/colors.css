@@ -1540,7 +1540,7 @@ margin: 0;
 #login-text, #register-text, #user-verify {margin:20px auto; width: 610px; text-align: justify;}
 #login-form, #new_passwd_form, #register-form  {border:1px solid #999; border-radius:3px; margin:10px auto 0 auto; padding:5px; width:300px;}
 #login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div  {margin:5px auto; padding:5px; text-align:center;}
-#login-form label, #new_passwd_form label, #verify-form  label  {text-align:right; width:120px;}
+#login-form label, #new_passwd_form label, #verify-form  label  {text-align:right; width:120px; padding-right: 5px;}
 #new_passwd_form {margin:0 auto 0 auto;}
 #new_passwd_form h4, #register-form h4 {font-weight:normal; text-align:center;}
 #register-form, #verify-form {width:610px;}

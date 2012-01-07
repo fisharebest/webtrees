@@ -1588,7 +1588,7 @@ margin: 0;
 #login-text, #register-text, #user-verify {margin:20px auto; width: 610px; text-align: justify;}
 #login-form, #new_passwd_form, #register-form  {background-color:#95B8E0; border-radius:3px; margin:10px auto 0 auto; padding:5px; width:310px;}
 #login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div  {color:#039; margin:5px auto; padding:5px; text-align:center;}
-#login-form label, #new_passwd_form label, #verify-form  label  {text-align:right; width:140px;}
+#login-form label, #new_passwd_form label, #verify-form  label  {text-align:right; width:140px; padding-right: 5px;}
 #new_passwd_form {margin:1px auto 0 auto;}
 #new_passwd_form h4, #register-form h4 {color:#039; font-weight:normal; margin:5px; text-align:center;}
 #register-form, #verify-form {width:610px;}

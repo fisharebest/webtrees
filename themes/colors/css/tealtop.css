@@ -51,7 +51,8 @@
 .blockcontent .facts_label,
 #find-header, #find-media,
 #search-page-table, 
-#login-form, #new_passwd_form, #register-form
+#login-form, #login-form a,
+#new_passwd_form, #register-form
 {
 	background-color:#51B389;
 	color: #ffffff;
