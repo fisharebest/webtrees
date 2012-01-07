@@ -981,6 +981,7 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 	$factrec = $event->getGedcomRecord();
 
 	$name_parts=explode(', ', $event->getPlace());
+	$ct=count($name_parts);
 
 	if ($anchor) {
 		// Show the full place name, for facts/events tab
@@ -1004,7 +1005,6 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 		}
 
 		// If we abbreviated the place, show the full name as a tooltip
-		$ct=count($name_parts);
 		if ($ct>$SHOW_PEDIGREE_PLACES) {
 			$html=' – <span title="'.htmlspecialchars($event->getPlace()).'">'.$html.'</span>';
 		}
@@ -1019,14 +1019,14 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 			$cts = preg_match('/\d ROMN (.*)/', $placerec, $match);
 			if ($cts>0) {
 				if ($ct>0) {
-					$html.=" - ";
+					$html.=" – ";
 				}
 				$html.=' '.PrintReady($match[1]);
 			}
 			$cts = preg_match('/\d _HEB (.*)/', $placerec, $match);
 			if ($cts>0) {
 				if ($ct>0) {
-					$html.=' - ';
+					$html.=' – ';
 				}
 				$html.=' '.PrintReady($match[1]);
 			}
