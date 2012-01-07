@@ -2,7 +2,7 @@
 // Startup and session logic
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2012 webtrees development team.
+// Copyright (C) 2011 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
@@ -301,14 +301,20 @@ if (!empty($_SERVER['HTTP_USER_AGENT'])) {
 require WT_ROOT.'includes/session_spider.php';
 
 // Store our session data in the database.
-session_set_save_handler(
-	create_function('', 'return true;'), // open
-	create_function('', 'return true;'), // close
-	create_function('$id', 'return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();'), // read
-	create_function('$id,$data', 'WT_DB::prepare("REPLACE INTO `##session` (session_id, user_id, ip_address, session_data) VALUES (?,?,?,?)")->execute(array($id, WT_USER_ID, $_SERVER["REMOTE_ADDR"], $data));return true;'), // write
-	create_function('$id', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));return true;'), // destroy
-	create_function('$maxlifetime', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));return true;') // gc
-);
+// NOTE: this causes problems for sites using PHP/APC
+// For APC sites, we skip this, and rely on default
+// session handling.  This will stop us from detecting
+// who is logged in.
+if (ini_get('apc.enabled')==false) {
+	session_set_save_handler(
+		create_function('', 'return true;'), // open
+		create_function('', 'return true;'), // close
+		create_function('$id', 'return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();'), // read
+		create_function('$id,$data', 'WT_DB::prepare("REPLACE INTO `##session` (session_id, user_id, ip_address, session_data) VALUES (?,?,?,?)")->execute(array($id, WT_USER_ID, $_SERVER["REMOTE_ADDR"], $data));return true;'), // write
+		create_function('$id', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));return true;'), // destroy
+		create_function('$maxlifetime', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));return true;') // gc
+	);
+}
 
 // Use the Zend_Session object to start the session.
 // This allows all the other Zend Framework components to integrate with the session
