@@ -113,7 +113,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				$num = count($children);
 				$personlinks .= '<dt>';
 				if ((!empty($spouse))||($num>0)) {
-					$personlinks .= '<a href="'.$family->getHtmlUrl().'&amp;show_full=1"><b>'.WT_I18N::translate('Family with spouse').'</b></a><br>';
+					$personlinks .= '<a href="'.$family->getHtmlUrl().'"><b>'.WT_I18N::translate('Family with spouse').'</b></a><br>';
 					if (!empty($spouse)) {
 						$personlinks .= '<a href="'.$spouse->getHtmlUrl().'">';
 						$personlinks .= $spouse->getFullName();
