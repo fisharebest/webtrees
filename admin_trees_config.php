@@ -1119,10 +1119,10 @@ echo WT_JS_START;?>
 						<td>
 							<select name="NEW_SHOW_PEDIGREE_PLACES_SUFFIX">
 								<option <?php echo get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX') ? '' : 'selected="selected"'; ?> value="0">
-									<?php echo WT_I18N::translate('first'); ?>
+									<?php echo WT_I18N::translate_c('first part of place name', 'first'); ?>
 								</option>
 								<option <?php echo get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX') ? 'selected="selected"' : ''; ?> value="1">
-									<?php echo WT_I18N::translate('last'); ?>
+									<?php echo WT_I18N::translate_c('last part of place name', 'last'); ?>
 								</option>
 							</select>
 							<input type="text" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php echo $SHOW_PEDIGREE_PLACES; ?>" size="5" maxlength="2">
