@@ -5,7 +5,7 @@
 // used on the indilist, famlist, find, and search pages.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -313,13 +313,7 @@ function format_indi_table($datalist, $option='') {
 		//-- Event date (sortable)hidden by datatables code
 		$html .= '<td>'. $birth_date->JD(). '</td>';
 		//-- Birth anniversary
-		$html .= '<td>';
-		if ($birth_dates[0]->isOK()) {
-			$html .= WT_I18N::number(WT_Date::GetAgeYears($birth_dates[0]));
-		} else {
-			$html .= '&nbsp;';
-		}
-		$html .= '</td>';
+		$html .= '<td>'.WT_Date::getAge($birth_dates[0], null, 2).'</td>';
 		//-- Birth place
 		$html .= '<td>';
 		foreach ($person->getAllBirthPlaces() as $n=>$birth_place) {
@@ -365,24 +359,14 @@ function format_indi_table($datalist, $option='') {
 		//-- Event date (sortable)hidden by datatables code
 		$html .= '<td>'. $death_date->JD(). '</td>';
 		//-- Death anniversary
-		$html .= '<td>';
-		if ($death_dates[0]->isOK()) {
-			$html .= WT_I18N::number(WT_Date::GetAgeYears($death_dates[0]));
-		} else {
-			$html .= '&nbsp;';
-		}
-		$html .= '</td>';
+		$html .= '<td>'.WT_Date::getAge($death_dates[0], null, 2).'</td>';
 		//-- Age at death
-		if ($birth_dates[0]->isOK() && $death_dates[0]->isOK()) {
-			$age=WT_Date::GetAgeYears($birth_dates[0], $death_dates[0]);
-			if (!isset($unique_indis[$person->getXref()])) {
-				$deat_by_age[max(0, min($max_age, $age))] .= $person->getSex();
-			}
-		} else {
-			$age='';
+		$age=WT_Date::getAge($birth_dates[0], $death_dates[0], 0);
+		if (!isset($unique_indis[$person->getXref()]) && $age>=0 && $age<=$max_age) {
+			$deat_by_age[$age].=$person->getSex();
 		}
 		// Need both display and sortable age
-		$html .= '<td>' . WT_I18N::number($age) . '</td><td>' . $age . '</td>';
+		$html .= '<td>' . WT_Date::getAge($birth_dates[0], $death_dates[0], 2) . '</td><td>' . WT_Date::getAge($birth_dates[0], $death_dates[0], 1) . '</td>';
 		//-- Death place
 		$html .= '<td>';
 		foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
@@ -711,20 +695,17 @@ function format_fam_table($datalist, $option='') {
 		$html .= '<td>'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Husband age
-		$html .= '<td>';
 		$hdate=$husb->getBirthDate();
 		if ($hdate->isOK() && $mdate->isOK()) {
 			if ($hdate->gregorianYear()>=1550 && $hdate->gregorianYear()<2030) {
 				$birt_by_decade[floor($hdate->gregorianYear()/10)*10] .= $husb->getSex();
 			}
-			$hage=WT_Date::GetAgeYears($hdate, $mdate);
-			$hage_jd = $mdate->MinJD()-$hdate->MinJD();
-			$html .= WT_I18N::number($hage);
-			$marr_by_age[max(0, min($max_age, $hage))] .= $husb->getSex();
-		} else {
-			$hage=0;
+			$hage=WT_Date::getAge($hdate, $mdate, 0);
+			if ($hage>=0 && $hage<=$max_age) {
+				$marr_by_age[$hage].=$husb->getSex();
+			}
 		}
-		$html .= '</td><td>'. $hage. '</td>';
+		$html .= '<td>'.WT_Date::getAge($hdate, $mdate, 2).'</td><td>'.WT_Date::getAge($hdate, $mdate, 1).'</td>';
 		//-- Wife name(s)
 		$html .= '<td colspan="2">';
 		foreach ($wife->getAllNames() as $num=>$name) {
@@ -760,20 +741,17 @@ function format_fam_table($datalist, $option='') {
 		$html .= '<td>'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). 'AAAA'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). '</td>';
 		$mdate=$family->getMarriageDate();
 		//-- Wife age
-		$html .= '<td>';
 		$wdate=$wife->getBirthDate();
 		if ($wdate->isOK() && $mdate->isOK()) {
 			if ($wdate->gregorianYear()>=1550 && $wdate->gregorianYear()<2030) {
 				$birt_by_decade[floor($wdate->gregorianYear()/10)*10] .= $wife->getSex();
 			}
-			$wage=WT_Date::GetAgeYears($wdate, $mdate);
-			$wage_jd = $mdate->MinJD()-$wdate->MinJD();
-			$html .= WT_I18N::number($wage);
-			$marr_by_age[max(0, min($max_age, $wage))] .= $wife->getSex();
-		} else {
-			$wage=0;
+			$wage=WT_Date::getAge($wdate, $mdate, 0);
+			if ($wage>=0 && $wage<=$max_age) {
+				$marr_by_age[$wage].=$wife->getSex();
+			}
 		}
-		$html .= '</td><td>'. $wage. '</td>';
+		$html .= '<td>'.WT_Date::getAge($wdate, $mdate, 2).'</td><td>'.WT_Date::getAge($wdate, $mdate, 1).'</td>';
 		//-- Marriage date
 		$html .= '<td>';
 		if ($marriage_dates=$family->getAllMarriageDates()) {
@@ -822,14 +800,7 @@ function format_fam_table($datalist, $option='') {
 		}
 		$html .= '</td>';
 		//-- Marriage anniversary
-		$html .= '<td>';
-		$mage=WT_Date::GetAgeYears($mdate);
-		if ($mage) {
-			$html .= WT_I18N::number($mage);
-		} else {
-			$html .= '&nbsp;';
-		}
-		$html .= '</td>';
+		$html .= '<td>'.WT_Date::getAge($mdate, null, 2).'</td>';
 		//-- Marriage place
 		$html .= '<td>';
 		foreach ($family->getAllMarriagePlaces() as $n=>$marriage_place) {
