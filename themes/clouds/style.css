@@ -1087,6 +1087,10 @@ h4 {
 font-weight: bold;
 }
 
+.formField {
+font-size:12px;
+}
+
 .starredname {
 text-decoration:underline;
 }
@@ -1586,7 +1590,7 @@ margin: 0;
 #login-register-page .confirm p  {font-size:14px;font-weight:bold;}
 #login-register-page .confirm p+p  {font-size:12px;font-weight:normal;}
 #login-text, #register-text, #user-verify {margin:20px auto; width: 610px; text-align: justify;}
-#login-form, #new_passwd_form, #register-form  {background-color:#95B8E0; border-radius:3px; margin:10px auto 0 auto; padding:5px; width:310px;}
+#login-form, #new_passwd_form, #register-form  {background-color:#95B8E0; border-radius:3px; margin:10px auto 0 auto; padding:5px; width:300px;}
 #login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div  {color:#039; margin:5px auto; padding:5px; text-align:center;}
 #login-form label, #new_passwd_form label, #verify-form  label  {text-align:right; width:140px; padding-right: 5px;}
 #login-form a:hover {color: #f00;}
@@ -1598,7 +1602,7 @@ margin: 0;
 #register-form textarea {margin:-25px 0 0 230px;}
 #register-form div#registration-submit {text-align:center;}
 .login_block_block #login-form, .login_block_block #new_passwd_form{border:0; background:none;}
-html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[dir='rtl'] #register-form label, html[dir='rtl'] #verify-form  label {text-align:left;}
+html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[dir='rtl'] #register-form label, html[dir='rtl'] #verify-form  label {text-align:left; margin-left: 5px;}
 html[dir='rtl'] #register-form textarea {margin:-25px 230px 0 0;}
 
 /* ============== reportengine.php ======================= */
