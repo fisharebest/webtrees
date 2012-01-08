@@ -50,9 +50,7 @@
 .facts_table .descriptionbox a,
 .blockcontent .facts_label,
 #find-header, #find-media,
-#search-page-table, 
-#login-form, #login-form a,
-#new_passwd_form, #register-form
+#search-page-table
 {
 	background-color:#5997E3;
 	color: #ffffff;
@@ -81,7 +79,9 @@
 .news_box, .optionbox,
 .submenuitem_hover,
 #find-output, #find-output-special,
-#search-page-table .value 
+#search-page-table .value,
+#login-form, #login-form a,
+#new_passwd_form, #register-form 
 {
 	background:#e6e1ff;
 }
