@@ -262,7 +262,7 @@ html[dir='rtl'] #main-menu li ul li {text-indent: 0;}
 #menu-theme    li {text-align:left;} /* The theme menu is always LTR, even on RTL pages */
 
 /* ============================================= */
-/* Options Menu, language, theme, palette, login */
+/* Options Menu  */
 .makeMenu li {z-index: 100; display:inline; position:relative; white-space:nowrap;}
 .makeMenu li:before {content:" | ";}
 .makeMenu li ul li:before {content:"";}
@@ -1053,7 +1053,8 @@ font-weight: bold;
 }
 
 .formField {
-	font-size:12px;
+font-size:12px;
+width: 140px;
 }
 
 .starredname {
@@ -1544,7 +1545,7 @@ margin: 0;
 #login-text, #register-text, #user-verify {margin:20px auto; width: 610px; text-align: justify;}
 #login-form, #new_passwd_form, #register-form  {border:1px solid #999; border-radius:3px; margin:10px auto 0 auto; padding:5px; width:300px;}
 #login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div  {margin:5px auto; padding:5px; text-align:center;}
-#login-form label, #new_passwd_form label, #verify-form  label  {text-align:right; width:120px; padding-right: 5px;}
+#login-form label, #new_passwd_form label, #verify-form  label  {display: inline-block; text-align:right; width:110px; padding-right: 5px;}
 #new_passwd_form {margin:0 auto 0 auto;}
 #new_passwd_form h4, #register-form h4 {font-weight:normal; text-align:center;}
 #register-form, #verify-form {width:610px;}
