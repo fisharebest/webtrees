@@ -120,7 +120,7 @@ function format_timestamp($time) {
 			}
 				break;
 		default:
-			$time_fmt=str_replace($match, WT_I18N::number(date(substr($match, -1), $time)), $time_fmt);
+			$time_fmt=str_replace($match, WT_I18N::digits(date(substr($match, -1), $time)), $time_fmt);
 		}
 	}
 
