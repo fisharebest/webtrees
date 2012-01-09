@@ -301,9 +301,6 @@ if (!$ajax) {
 				<td class="facts_value">', $stats->topTenLargestFamilyList(), '</td>
 				<td class="facts_value">', $stats->topTenLargestGrandFamilyList(), '</td>
 			</tr>
-			<tr>
-				<td class="facts_value statistics_chart" colspan="2">', $stats->chartLargestFamilies(), '</td>
-			</tr>
 		</table>
 		<br>
 		<b>', WT_I18N::translate('Age difference'), '</b>
