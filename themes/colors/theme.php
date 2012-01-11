@@ -79,29 +79,37 @@ $COLOR_THEME_LIST=array(
 	'tealtop'         => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Teal Top'),
 );
 
+// If we've selected a new palette, and we are logged in, set this value as a default.
 if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_THEME_LIST)) {
 	// Request to change color
 	$subColor=$_GET['themecolor'];
 	if (WT_USER_ID) {
 		set_user_setting(WT_USER_ID, 'themecolor', $subColor);
-		set_site_setting('DEFAULT_COLOR_PALETTE', $subColor);
+		if (WT_USER_IS_ADMIN) {
+			set_site_setting('DEFAULT_COLOR_PALETTE', $subColor);
+		}
 	}
 	unset($_GET['themecolor']);
-} elseif ($WT_SESSION->themecolor)  {
-	// Previously selected color
-	$subColor=$WT_SESSION->themecolor;
-} else {
-	if (WT_USER_ID) {
-		$subColor=get_user_setting(WT_USER_ID, 'themecolor');
-		if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
-			$subColor = get_site_setting('DEFAULT_COLOR_PALETTE','ash');
-		}
-	} else {
-		$subColor=get_site_setting('DEFAULT_COLOR_PALETTE','ash');
-	}
+	// Rember that we have selected a value
+	$WT_SESSION->subColor=$subColor;
 }
-
-$WT_SESSION->themecolor=$subColor;
+// If we are logged in, use our preference
+$subColor=null;
+if (WT_USER_ID) {
+	$subColor=get_user_setting(WT_USER_ID, 'themecolor');
+}
+// If not logged in or no preference, use one we selected earlier in the session?
+if (!$subColor) {
+	$subColor=$WT_SESSION->subColor;
+}
+// We haven't selected one this session?  Use the site default
+if (!$subColor) {
+	$subColor=get_site_setting('DEFAULT_COLOR_PALETTE','ash');
+}
+// Make sure our selected palette actually exists
+if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {
+	$subColor='ash';
+}
 
 $theme_name       = "colors"; // need double quotes, as file is scanned/parsed by script
 $footerfile       = WT_THEME_DIR . 'footer.php';
