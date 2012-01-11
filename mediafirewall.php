@@ -46,6 +46,7 @@ $debug_verboseLogging  = 0; // set to 1 for extra logging details
 // line1 - the error message
 // line2 - the media file which caused the error (shown only to admins/editors)
 function sendErrorAndExit($type, $line1, $line2 = false) {
+	global $useTTF;
 
 	// line2 contains the information that only an admin/editor should see, such as the full path to a file
 	if (!WT_USER_CAN_EDIT) {
@@ -74,17 +75,52 @@ function sendErrorAndExit($type, $line1, $line2 = false) {
 
 	$type = isImageTypeSupported($type);
 	if ($type) {
-		// width of image is based on the number of characters
-		$width = ($numchars+1) * 6.5;
-		$height = 60;
-
-		$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
-		$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
-		$tc  = imagecolorallocate($im, 0, 0, 0);       /* set text color */
-		imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
-		imagestring($im, 2, 5, 5, $line1, $tc);
-		if ($line2) {
-			imagestring($im, 2, 5, 30, $line2, $tc);
+		// there are two ways to embed text with PHP
+		// (preferred) using GD and FreeType you can embed text using any True Type font
+		// (fall back) if that is not available, you can insert basic monospaced text
+		if ($useTTF) {
+			$font = 'DejaVuSans.ttf'; // this font ships with webtrees
+			if (!file_exists(WT_ROOT.'includes/fonts/'.$font)) {
+				$useTTF = false;
+			}
+		}
+		// apply the text
+		if ($useTTF) {
+			// if imagettftext throws errors, catch them with a custom error handler
+			set_error_handler("imagettftextErrorHandler");
+			// width of image is based on the number of characters
+			$width = $numchars * 8 + 15;
+			$height = 60;
+			$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
+			$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
+			$tc  = imagecolorallocate($im, 0, 0, 0);       /* set text color */
+			$tsc = imagecolorallocate($im, 128, 128, 128); /* set text shadow color */
+			imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
+			imagettftext($im, 10, 0, 9, 26, $tsc, 'includes/fonts/'.$font, $line1);
+			imagettftext($im, 10, 0, 8, 25, $tc, 'includes/fonts/'.$font, $line1);
+			if ($line2) {
+				imagettftext($im, 10, 0, 9, 43, $tsc, 'includes/fonts/'.$font, $line2);
+				imagettftext($im, 10, 0, 8, 42, $tc, 'includes/fonts/'.$font, $line2);
+			}
+			restore_error_handler();
+		}
+		// don't use an 'else' here since imagettftextErrorHandler may have changed the value of $useTTF from true to false
+		if (!$useTTF) {
+			// width of image is based on the number of characters
+			$width = ($numchars+1) * 6.5;
+			$height = 60;
+			$im  = imagecreatetruecolor($width, $height);  /* Create a black image */
+			$bgc = imagecolorallocate($im, 255, 255, 255); /* set background color */
+			$tc  = imagecolorallocate($im, 0, 0, 0);       /* set text color */
+			$tsc = imagecolorallocate($im, 128, 128, 128); /* set text shadow color */
+			imagefilledrectangle($im, 2, 2, $width-4, $height-4, $bgc); /* create a rectangle, leaving 2 px border */
+			imagestring($im, 2, 6, 6, $line1, $tsc);
+			imagestring($im, 2, 5, 5, $line1, $tc);
+			if ($line2) {
+				imagestring($im, 2, 6, 31, $line2, $tsc);
+				imagestring($im, 2, 5, 30, $line2, $tc);
+				
+			}
 		}
 
 		// if we are using mod rewrite, there will be no error status.  be sure to set it
@@ -127,8 +163,6 @@ function getWatermarkPath ($path) {
 	$path = str_replace($serverroot, $serverroot . 'watermark/'.WT_GEDCOM.'/', $path);
 	return $path;
 }
-
-
 
 // the media firewall passes in an image
 // this function can manipulate the image however it wants
