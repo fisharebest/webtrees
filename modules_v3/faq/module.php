@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -370,7 +370,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_Conf
 			foreach ($faqs as $faq) {
 				// NOTE: Print the position of the current item
 				echo '<tr class="faq_edit_pos"><td>';
-				echo WT_I18N::translate('Position item'), ': ', $faq->block_order, ', ';
+				echo WT_I18N::translate('Position item'), ': ', ($faq->block_order+1), ', ';
 				if ($faq->gedcom_id==null) {
 					echo WT_I18N::translate('All');
 				} else {
