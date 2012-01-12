@@ -458,7 +458,7 @@ if (!$ajax) {
 		//-->
 		</script>
 		<?php
-		$WT_SESSION=new stdClass();
+		global $WT_SESSION;
 		echo '<form method="post" name="form" action="statisticsplot.php?action=newform" target="_popup" onsubmit="return openPopup()">';
 		echo '<input type="hidden" name="action" value="update">';
 		echo '<table width="100%">';
