@@ -2789,6 +2789,9 @@ function HighlightedImageSHandler($attrs) {
 	$media = find_highlighted_object($id, WT_GED_ID, $gedrec);
 	if (!empty($media['file'])) {
 		if (preg_match("/(jpg|jpeg|png|gif)$/i", $media['file'])) {
+			if (!file_exists($media['file'])) {
+				$media['file']=get_media_firewall_path($media['file']);
+			}
 			if (file_exists($media['file'])) {
 				$size = findImageSize($media['file']);
 				if (($width>0) and ($height==0)) {
