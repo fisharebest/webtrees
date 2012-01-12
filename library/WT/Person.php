@@ -1737,12 +1737,12 @@ class WT_Person extends WT_GedcomRecord {
 
 		// The NICK field might be present, but not appear in the NAME.
 		// Nicknames must be surrounded by spaces or standard quotation marks (ones with HTML entities)
-		if ($NICK && !preg_match('/(^| |"|«|“|\'|‹|‘)'.preg_quote($NICK, '/').'( |"|»|”|\'|›|’|$)/', $full)) {
+		if ($NICK && !preg_match('/(^| |"|«|“|\'|‹|‘|„)'.preg_quote($NICK, '/').'( |"|»|”|\'|›|’|”|$)/', $full)) {
 			$pos=strpos($full, '/');
 			if ($pos===false) {
-				$full.=' "'.$NICK.'"';
+				$full.=' '.WT_I18N::quotation_marks($NICK);
 			} else {
-				$full=substr($full, 0, $pos).'"'.$NICK.'" '.substr($full, $pos);
+				$full=substr($full, 0, $pos).WT_I18N::quotation_marks($NICK).' '.substr($full, $pos);
 			}
 		}
 

@@ -285,11 +285,16 @@ class WT_I18N {
 	// de: 12,3%
 	static public function percentage($n, $precision=0) {
 		return
- 			/* I18N: This is a percentage, such as "32.5%". "%s" is the number, "%%" is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
+			/* I18N: This is a percentage, such as "32.5%". "%s" is the number, "%%" is the percent symbol.  Some languages require a (non-breaking) space between the two, or a different symbol. */
 			WT_I18N::translate('%s%%', WT_I18N::number($n*100.0, $precision));
 	}
 
-
+	// Quotation marks, English => “typographic quotation marks” , Polish => „typographic quotation marks”, etc.
+	static public function quotation_marks($string) {
+		return
+			/* I18N: This is a opening and closing quotation marks. %s is the string which should be in quotation mark. Some languages require different symbols for quotation. */
+			WT_I18N::translate('“%s”', $string);
+	}
 
 	// echo WT_I18N::translate('Hello World!');
 	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
