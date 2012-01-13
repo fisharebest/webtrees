@@ -1735,14 +1735,24 @@ class WT_Person extends WT_GedcomRecord {
 			$full="$full $NSFX";
 		}
 
-		// The NICK field might be present, but not appear in the NAME.
-		// Nicknames must be surrounded by spaces or standard quotation marks (ones with HTML entities)
-		if ($NICK && !preg_match('/(^| |"|«|“|\'|‹|‘|„)'.preg_quote($NICK, '/').'( |"|»|”|\'|›|’|”|$)/', $full)) {
-			$pos=strpos($full, '/');
-			if ($pos===false) {
-				$full.=' '.WT_I18N::quotation_marks($NICK);
+		// GEDCOM nicknames should be specificied in a NICK field, or in the
+		// NAME filed, surrounded by ASCII quotes (or both).
+		if ($NICK) {
+			// NICK field found.  Add localised quotation marks.
+			$QNICK=/* I18N: Place a nickname in quotation marks */ WT_I18N::translate('“%s”', $NICK);
+			if (preg_match('/(^| |"|«|“|\'|‹|‘|„)'.preg_quote($NICK, '/').'( |"|»|”|\'|›|’|”|$)/', $full)) {
+				// NICK present in name.  Localise ASCII quotes (but leave others).
+				$full=str_replace('"'.$NICK.'"', $QNICK, $full);
 			} else {
-				$full=substr($full, 0, $pos).WT_I18N::quotation_marks($NICK).' '.substr($full, $pos);
+				// NICK not present in NAME.
+				$pos=strpos($full, '/');
+				if ($pos===false) {
+					// No surname - append it
+					$full.=' '.$QNICK;
+				} else {
+					// Insert before surname
+					$full=substr($full, 0, $pos).$QNICK.' '.substr($full, $pos);
+				}
 			}
 		}
 

@@ -289,13 +289,6 @@ class WT_I18N {
 			WT_I18N::translate('%s%%', WT_I18N::number($n*100.0, $precision));
 	}
 
-	// Quotation marks, English => “typographic quotation marks” , Polish => „typographic quotation marks”, etc.
-	static public function quotation_marks($string) {
-		return
-			/* I18N: This is a opening and closing quotation marks. %s is the string which should be in quotation mark. Some languages require different symbols for quotation. */
-			WT_I18N::translate('“%s”', $string);
-	}
-
 	// echo WT_I18N::translate('Hello World!');
 	// echo WT_I18N::translate('The %s sat on the mat', 'cat');
 	static public function translate(/* var_args */) {
