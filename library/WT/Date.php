@@ -313,10 +313,11 @@ class WT_Date {
 			$jd=WT_CLIENT_JD;
 		}
 
+		var_dump("fmt=$format");
 		switch ($format) {
 		case 0: // Years - integer only (for statistics, rather than for display)
 			if ($jd && $d1->MinJD()) {
-				return $d1->MinDate()->GetAge(false, $jd);
+				return $d1->MinDate()->GetAge(false, $jd, false);
 			} else {
 				return -1;
 			}
