@@ -1832,11 +1832,6 @@ case 'SHOW_LEVEL2_NOTES':
 	$text=WT_I18N::translate('This option controls whether Notes and Source references that are attached to Facts should be shown on the Notes and Sources tabs of the Individual page.<br /><br />Ordinarily, the Notes and Sources tabs show only Notes and Source references that are attached directly to the individual\'s database record.  These are <i>level 1</i> Notes and Source references.<br /><br />The <b>Yes</b> option causes these tabs to also show Notes and Source references that are part of the various Facts in the individual\'s database record.  These are <i>level 2</i> Notes and Source references because the various Facts are at level 1.');
 	break;
 
-case 'SHOW_LIST_PLACES':
-	$title=WT_I18N::translate('Place levels to show on lists');
-	$text=WT_I18N::translate('This determines how much of the Place information is shown in the Place fields on lists.<br /><br />Setting the value to <b>9</b> will ensure that all Place information will be shown.  Setting the value to <b>0</b> (zero) will hide places completely.  Setting the value to <b>1</b> will show the topmost level, which is normally the country.  Setting it to <b>2</b> will show the topmost two levels.  The second topmost level, below the country, is often the state, province, or territory. Etc.');
-	break;
-
 case 'SHOW_LIVING_NAMES':
 	$title=WT_I18N::translate('Names of private individuals');
 	$text=WT_I18N::translate('This option will show the names (but no other details) of private individuals.  Individuals are private if they are still alive or if a privacy restriction has been added to their individual record.  To hide a specific name, add a privacy restriction to that name record.');
@@ -1859,8 +1854,8 @@ case 'SHOW_PARENTS_AGE':
 	break;
 
 case 'SHOW_PEDIGREE_PLACES':
-	$title=WT_I18N::translate('Place levels to show in person boxes');
-	$text=WT_I18N::translate('This sets how much of the place information is shown in the person boxes on charts.<br /><br />Setting the value to 9 will guarantee to show all place levels.  Setting the value to 0 will hide places completely.  Setting the value to 1 will show the first level, setting it to 2 will show the first two levels, etc.');
+	$title=WT_I18N::translate('Abbreviate place names');
+	$text=WT_I18N::translate('Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>');
 	break;
 
 case 'SHOW_PRIVATE_RELATIONSHIPS':

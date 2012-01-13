@@ -235,13 +235,12 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LAST_CHANGE',             safe_POST_bool('NEW_SHOW_LAST_CHANGE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LDS_AT_GLANCE',           safe_POST_bool('NEW_SHOW_LDS_AT_GLANCE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LEVEL2_NOTES',            safe_POST_bool('NEW_SHOW_LEVEL2_NOTES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_LIST_PLACES',             safe_POST('NEW_SHOW_LIST_PLACES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_LIVING_NAMES',            safe_POST('SHOW_LIVING_NAMES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_MEDIA_DOWNLOAD',          safe_POST_bool('NEW_SHOW_MEDIA_DOWNLOAD'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_NO_WATERMARK',            safe_POST('NEW_SHOW_NO_WATERMARK'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PARENTS_AGE',             safe_POST_bool('NEW_SHOW_PARENTS_AGE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES',         safe_POST('NEW_SHOW_PEDIGREE_PLACES'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX',  safe_POST('NEW_SHOW_PEDIGREE_PLACES_SUFFIX'));
+	set_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX',  safe_POST_bool('NEW_SHOW_PEDIGREE_PLACES_SUFFIX'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_PRIVATE_RELATIONSHIPS',   safe_POST('SHOW_PRIVATE_RELATIONSHIPS'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_REGISTER_CAUTION',        safe_POST_bool('NEW_SHOW_REGISTER_CAUTION'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_RELATIVES_EVENTS',        safe_POST('NEW_SHOW_RELATIVES_EVENTS'));
@@ -1113,22 +1112,6 @@ echo WT_JS_START;?>
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Place levels to show in person boxes'), help_link('SHOW_PEDIGREE_PLACES'); ?>
-						</td>
-						<td>
-							<select name="NEW_SHOW_PEDIGREE_PLACES_SUFFIX">
-								<option <?php echo get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX') ? '' : 'selected="selected"'; ?> value="0">
-									<?php echo WT_I18N::translate_c('first part of place name', 'first'); ?>
-								</option>
-								<option <?php echo get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX') ? 'selected="selected"' : ''; ?> value="1">
-									<?php echo WT_I18N::translate_c('last part of place name', 'last'); ?>
-								</option>
-							</select>
-							<input type="text" name="NEW_SHOW_PEDIGREE_PLACES" value="<?php echo $SHOW_PEDIGREE_PLACES; ?>" size="5" maxlength="2">
-						</td>
-					</tr>
-					<tr>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('Individual pages'); ?>
 						</td>
@@ -1188,10 +1171,37 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Place levels to show on lists'), help_link('SHOW_LIST_PLACES'); ?>
+							<?php echo WT_I18N::translate('Abbreviate place names'), help_link('SHOW_PEDIGREE_PLACES'); ?>
 						</td>
 						<td>
-							<input type="text" name="NEW_SHOW_LIST_PLACES" value="<?php echo $SHOW_LIST_PLACES; ?>" size="5" maxlength="2">
+							<?php
+							echo /* I18N: The placeholders are edit controls.  Show the [first/last] [1/2/3/4/5] parts of a place name */ WT_I18N::translate(
+								'Show the %1$s %2$s parts of a place name.',
+								select_edit_control('NEW_SHOW_PEDIGREE_PLACES_SUFFIX',
+									array(
+										false=>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'first'),
+										true =>WT_I18N::translate_c('Show the [first/last] [N] parts of a place name.', 'last')
+									),
+									null,
+									get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES_SUFFIX')
+								),
+								select_edit_control('NEW_SHOW_PEDIGREE_PLACES',
+									array(
+										1=>WT_I18N::number(1),
+										2=>WT_I18N::number(2),
+										3=>WT_I18N::number(3),
+										4=>WT_I18N::number(4),
+										5=>WT_I18N::number(5),
+										6=>WT_I18N::number(6),
+										7=>WT_I18N::number(7),
+										8=>WT_I18N::number(8),
+										9=>WT_I18N::number(9),
+									),
+									null,
+									get_gedcom_setting(WT_GED_ID, 'SHOW_PEDIGREE_PLACES')
+								)
+							);
+							?>
 						</td>
 					</tr>
 					<tr>

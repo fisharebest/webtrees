@@ -262,7 +262,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SHOW_LAST_CHANGE;             $SHOW_LAST_CHANGE             =get_gedcom_setting($ged_id, 'SHOW_LAST_CHANGE');
 	global $SHOW_LDS_AT_GLANCE;           $SHOW_LDS_AT_GLANCE           =get_gedcom_setting($ged_id, 'SHOW_LDS_AT_GLANCE');
 	global $SHOW_LEVEL2_NOTES;            $SHOW_LEVEL2_NOTES            =get_gedcom_setting($ged_id, 'SHOW_LEVEL2_NOTES');
-	global $SHOW_LIST_PLACES;             $SHOW_LIST_PLACES             =get_gedcom_setting($ged_id, 'SHOW_LIST_PLACES');
 	global $SHOW_LIVING_NAMES;            $SHOW_LIVING_NAMES            =get_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES');
 	global $SHOW_MEDIA_DOWNLOAD;          $SHOW_MEDIA_DOWNLOAD          =get_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD');
 	global $SHOW_NO_WATERMARK;            $SHOW_NO_WATERMARK            =get_gedcom_setting($ged_id, 'SHOW_NO_WATERMARK');

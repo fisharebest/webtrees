@@ -50,18 +50,18 @@ function get_place_url($gedcom_place) {
  * @return string  a shortened version of the place
  */
 function get_place_short($gedcom_place) {
-	global $GEDCOM, $SHOW_LIST_PLACES;
-	if ($SHOW_LIST_PLACES==9) {
-		return $gedcom_place;
+	global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX;
+
+	$name_parts=explode(', ', $gedcom_place);
+	
+	// Abbreviate the place name, for lists
+	if ($SHOW_PEDIGREE_PLACES_SUFFIX) {
+		// The *last* $SHOW_PEDIGREE_PLACES components
+		return implode(', ', array_slice($name_parts, -$SHOW_PEDIGREE_PLACES));
+	} else {
+		// The *first* $SHOW_PEDIGREE_PLACES components
+		return implode(', ', array_slice($name_parts, 0, $SHOW_PEDIGREE_PLACES));
 	}
-	$gedcom_place = trim($gedcom_place, " ,");
-	$exp = explode(",", $gedcom_place);
-	$place = "";
-	for ($i=0; $i<$SHOW_LIST_PLACES && $i<count($exp); $i++) {
-		if ($i>0) $place .= ", ";
-		$place.=trim($exp[$i]);
-	}
-	return $place;
 }
 
 /**
