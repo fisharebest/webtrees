@@ -44,6 +44,14 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		global $controller;
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
+		$controller
+			->addInlineJavaScript('
+				  jQuery("#new_passwd").hide();
+				  jQuery("#passwd_click").click(function()
+				  {
+					jQuery("#new_passwd").slideToggle(500);
+				  });
+			');
 		if (WT_USER_ID) {
 			$title = WT_I18N::translate('Logout');
 			$content='';
@@ -56,14 +64,6 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		} else {
 			$title = WT_I18N::translate('Login');
 			$LOGIN_URL=get_site_setting('LOGIN_URL');		
-			$controller
-				->addInlineJavaScript('
-					  jQuery("#new_passwd").hide();
-					  jQuery("#passwd_click").click(function()
-					  {
-						jQuery("#new_passwd").slideToggle(500);
-					  });
-				');
 			$content='';
 			$content='<form id="login-form" name="loginform" method="post" action="'. get_site_setting('LOGIN_URL'). '" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
 			<input type="hidden" name="action" value="login">
@@ -72,12 +72,14 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 				<input type="hidden" name="pid" value="'; if (isset($pid)) $content.= htmlspecialchars($pid); $content.= '">
 				<input type="hidden" name="usertime" value="">';
 			$content.= '<div>
-				<label for="username">'. WT_I18N::translate('Username').'</label>'.
-				'<input type="text" id="username" name="username" size="20" class="formField">
+				<label for="username">'. WT_I18N::translate('Username').
+					'<input type="text" id="username" name="username" class="formField">
+				</label>
 				</div>
 				<div>
-					<label for="password">'. WT_I18N::translate('Password').'</label>'.
-					'<input type="password" id="password" name="password" size="20" class="formField">
+					<label for="password">'. WT_I18N::translate('Password').
+						'<input type="password" id="password" name="password" class="formField">
+					</label>
 				</div>
 				<div>
 					<input type="submit" value="'. WT_I18N::translate('Login'). '">
@@ -97,8 +99,9 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			<input type="hidden" name="action" value="requestpw">
 			<h4>'. WT_I18N::translate('Lost password request').'</h4>
 			<div>
-				<label for="username">'. WT_I18N::translate('Username or email address'). '</label>
-				<input type="text" id="username" name="user_name" value="" autofocus>
+				<label for="username">'. WT_I18N::translate('Username or email address').
+					'<input type="text" id="username" name="user_name" value="" autofocus>
+				</label>
 			</div>
 			<div><input type="submit" value="'. WT_I18N::translate('Continue'). '"></div>
 			</form>

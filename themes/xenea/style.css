@@ -1670,19 +1670,20 @@ dd {
 #login-register-page .confirm p  {font-size:14px;font-weight:bold;}
 #login-register-page .confirm p+p  {font-size:12px;font-weight:normal;}
 #login-text, #register-text, #user-verify {margin:20px auto; width: 610px; text-align: justify;}
-#login-form, #new_passwd_form, #register-form   {background-color:#C3DFFF; margin:10px auto 0 auto; padding:5px; width:300px;}
-#login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div  {color:#006; margin:5px auto; padding:5px; text-align:center;}
-#login-form label, #new_passwd_form label, #verify-form  label   {display:inline-block; text-align:right; width:140px;}
-#new_passwd_form {margin:1px auto 0 auto;}
+#login-form, #new_passwd_form, #register-form   {background-color:#C3DFFF; margin:10px auto 0 auto; padding:5px; width:20%; max-width: 450px; min-width: 300px;}
+#login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div  {color:#006; padding:5px; text-align:center;}
+#new_passwd_form {margin:1px auto 0 auto; min-width: 350px;}
+#login-form label, #new_passwd_form label, #verify-form  label   {display:block; text-align:right;}
+#login-form label input, #new_passwd_form label input, #verify-form  input {width:140px; margin: 0 10px;}
 #new_passwd_form h4, #register-form h4 {color:#006; font-weight:normal; text-align:center;}
 #register-form, #verify-form {width:610px;}
-#register-form div, #verify-form  div {text-align:justify;}
-#register-form label {display:inline-block; text-align:right; width:220px;}
-#register-form textarea {margin:-25px 0 0 230px;}
+#register-form div, #verify-form  div {text-align:right;}
+#register-form label input, #register-form label select, #register-form textarea {width:220px; margin: 0 10px;}
+#register-form label select {margin:0 9px; width:223px;}
+#register-form textarea {margin:0 3px; vertical-align: top;}
 #register-form div#registration-submit {text-align:center;}
 .login_block_block #login-form, .login_block_block #new_passwd_form{border:0; background:none;}
 html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[dir='rtl'] #register-form label, html[dir='rtl'] #verify-form  label {text-align:left;}
-html[dir='rtl'] #register-form textarea {margin:-25px 230px 0 0;}
 
 /* ============== reportengine.php ======================= */
 #reportengine-page table {margin:20px auto;}

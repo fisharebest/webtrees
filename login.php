@@ -201,12 +201,14 @@ default:
 		<input type="hidden" name="usertime" value="">';
 		if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>';
 		echo '<div>
-			<label for="username">', WT_I18N::translate('Username'), '</label>',
-			'<input type="text" id="username" name="username" value="', htmlspecialchars($username), '" size="20" class="formField">
+			<label for="username">', WT_I18N::translate('Username'),
+			'<input type="text" id="username" name="username" value="', htmlspecialchars($username), '" class="formField">
+			</label>
 		</div>
 		<div>
-			<label for="password">', WT_I18N::translate('Password'), '</label>',
-			'<input type="password" id="password" name="password" size="20" class="formField">
+			<label for="password">', WT_I18N::translate('Password'),
+				'<input type="password" id="password" name="password" class="formField">
+			</label>
 		</div>
 		<div>
 			<input type="submit" value="', WT_I18N::translate('Login'), '">
@@ -226,8 +228,9 @@ default:
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', WT_I18N::translate('Lost password request'), '</h4>
 		<div>
-			<label for="username">', WT_I18N::translate('Username or email address'), '</label>
-			<input type="text" id="username" name="user_name" value="" autofocus>
+			<label for="username">', WT_I18N::translate('Username or email address'),
+				'<input type="text" id="username" name="user_name" value="" autofocus>
+			</label>
 		</div>
 		<div><input type="submit" value="', /* I18N: button label */ WT_I18N::translate('Continue'), '"></div>
 		</form>
@@ -547,41 +550,48 @@ case 'register':
 				<input type="hidden" name="time" value="">
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 				<div>
-					<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'), '</label>
-					<input type="text" size="30" id="user_realname" name="user_realname" value="';
-					if (!$user_realname_false) echo $user_realname;
-					echo '" autofocus>
+					<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
+						'<input type="text" size="30" id="user_realname" name="user_realname" value="';
+							if (!$user_realname_false) echo $user_realname;
+						echo '" autofocus>
+					</label>		
 				</div>
 				<div>
-					<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'), '</label>
-					<input type="text" size="30" id="user_email" name="user_email" value="';
-					if (!$user_email_false) echo $user_email;
-					echo '">
-				</div>
-				<div>
-					<label for="username">', WT_I18N::translate('Desired user name'), help_link('username'), '</label>
-					<input type="text" size="30" id="username" name="user_name" value="';
-						if (!$user_name_false) echo $user_name;
+					<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
+						'<input type="text" size="30" id="user_email" name="user_email" value="';
+							if (!$user_email_false) echo $user_email;
 						echo '">
+					</label>
 				</div>
 				<div>
-					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'), '</label>
-					<input type="password" size="30" id="user_password01" name="user_password01" value="">
+					<label for="username">', WT_I18N::translate('Desired user name'), help_link('username'),
+						'<input type="text" size="30" id="username" name="user_name" value="';
+							if (!$user_name_false) echo $user_name;
+						echo '">
+					</label>
 				</div>
 				<div>
-					<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('edituser_conf_password'), '</label>
-					<input type="password" size="30" id="user_password02" name="user_password02" value="">
+					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
+						'<input type="password" size="30" id="user_password01" name="user_password01" value="">
+					</label>
 				</div>
 				<div>
-					<label for="user_language">', WT_I18N::translate('Language'), help_link('edituser_change_lang'), '</label>',
-					edit_field_language('user_language', WT_LOCALE),
-				'</div>
-				<div>
-				<label for="user_comments">', WT_I18N::translate('Comments'), help_link('register_comments'), '</label>
+					<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('edituser_conf_password'),
+						'<input type="password" size="30" id="user_password02" name="user_password02" value="">
+					</label>
 				</div>
-				<textarea cols="50" rows="5" id="user_comments" name="user_comments">';
-					if (!$user_comments_false) echo $user_comments;
-				echo '</textarea>
+				<div>
+					<label for="user_language">', WT_I18N::translate('Language'), help_link('edituser_change_lang'),
+						edit_field_language('user_language', WT_LOCALE),
+					'</label>
+				</div>
+				<div>
+					<label for="user_comments">', WT_I18N::translate('Comments'), help_link('register_comments'),
+						'<textarea cols="50" rows="5" id="user_comments" name="user_comments">';
+							if (!$user_comments_false) echo $user_comments;
+						echo '</textarea>
+					</label>
+				</div>
 				<hr>
 				<div id="registration-submit">
 					<input type="submit" value="', WT_I18N::translate('Request new user account'), '">
