@@ -65,7 +65,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$title = WT_I18N::translate('Login');
 			$LOGIN_URL=get_site_setting('LOGIN_URL');		
 			$content='';
-			$content='<form id="login-form" name="loginform" method="post" action="'. get_site_setting('LOGIN_URL'). '" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
+			$content='<form id="login-form" name="login-form" method="post" action="'. get_site_setting('LOGIN_URL'). '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
 			<input type="hidden" name="action" value="login">
 				<input type="hidden" name="url" value="index.php">
 				<input type="hidden" name="ged" value="'; if (isset($ged)) $content.= htmlspecialchars($ged); else $content.= htmlentities(WT_GEDCOM); $content.= '">
@@ -94,13 +94,13 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		
 		// hidden New Password block
 		$content.= '<div id="new_passwd">
-			<form id="new_passwd_form" name="requestpwform" action="login.php" method="post" onsubmit="t = new Date(); document.requestpwform.time.value=t.toUTCString(); return checkform(this);">
+			<form id="new_passwd_form" name="new_passwd_form" action="login.php" method="post" onsubmit="t = new Date(); document.new_passwd_form.time.value=t.toUTCString(); return checkform(this);">
 			<input type="hidden" name="time" value="">
 			<input type="hidden" name="action" value="requestpw">
 			<h4>'. WT_I18N::translate('Lost password request').'</h4>
 			<div>
 				<label for="username">'. WT_I18N::translate('Username or email address').
-					'<input type="text" id="username" name="user_name" value="" autofocus>
+					'<input type="text" id="username" name="username" value="" autofocus>
 				</label>
 			</div>
 			<div><input type="submit" value="'. WT_I18N::translate('Continue'). '"></div>

@@ -193,7 +193,7 @@ default:
 	}
 
 	echo '</div>'; //close "login-text"
-	echo '<form id="login-form" name="loginform" method="post" action="', get_site_setting('LOGIN_URL'), '" onsubmit="t = new Date(); document.loginform.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
+	echo '<form id="login-form" name="login-form" method="post" action="', get_site_setting('LOGIN_URL'), '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', htmlspecialchars($url), '">
 		<input type="hidden" name="ged" value="'; if (isset($ged)) echo htmlspecialchars($ged); else echo htmlentities($GEDCOM); echo '">
@@ -223,13 +223,13 @@ default:
 	
 	// hidden New Password block
 	echo '<div id="new_passwd">
-		<form id="new_passwd_form" name="requestpwform" action="login.php" method="post" onsubmit="t = new Date(); document.requestpwform.time.value=t.toUTCString(); return checkform(this);">
+		<form id="new_passwd_form" name="new_passwd_form" action="login.php" method="post" onsubmit="t = new Date(); document.new_passwd_form.time.value=t.toUTCString(); return checkform(this);">
 		<input type="hidden" name="time" value="">
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', WT_I18N::translate('Lost password request'), '</h4>
 		<div>
 			<label for="username">', WT_I18N::translate('Username or email address'),
-				'<input type="text" id="username" name="user_name" value="" autofocus>
+				'<input type="text" id="username" name="username" value="" autofocus>
 			</label>
 		</div>
 		<div><input type="submit" value="', /* I18N: button label */ WT_I18N::translate('Continue'), '"></div>
@@ -238,7 +238,7 @@ default:
 		
 	echo '</div>'; // close "login-page"
 	echo '<script type="text/javascript">
-		document.loginform.username.focus();
+		document.login-form.username.focus();
 	</script>';
 	break;
 
@@ -545,7 +545,7 @@ case 'register':
 				echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
 				echo '</div>';
 			}
-			echo '<form id="register-form" name="registerform" method="post" action="login.php" onsubmit="t = new Date(); document.registerform.time.value=t.toUTCString(); return checkform(this);">
+			echo '<form id="register-form" name="register-form" method="post" action="login.php" onsubmit="t = new Date(); document.register-form.time.value=t.toUTCString(); return checkform(this);">
 				<input type="hidden" name="action" value="register">
 				<input type="hidden" name="time" value="">
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
@@ -615,7 +615,7 @@ case 'userverify':
 	$controller->pageHeader();
 
 	echo '<div id="login-register-page">
-		<form id="verify-form" name="verifyform" method="post" action="" onsubmit="t = new Date(); document.verifyform.time.value=t.toUTCString();">
+		<form id="verify-form" name="verify-form" method="post" action="" onsubmit="t = new Date(); document.verify-form.time.value=t.toUTCString();">
 			<input type="hidden" name="action" value="verify_hash">
 			<input type="hidden" name="time" value="">
 			<h4>', WT_I18N::translate('User verification'), help_link('pls_note07'), '</h4>
