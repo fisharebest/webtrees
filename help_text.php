@@ -1855,7 +1855,7 @@ case 'SHOW_PARENTS_AGE':
 
 case 'SHOW_PEDIGREE_PLACES':
 	$title=WT_I18N::translate('Abbreviate place names');
-	$text=WT_I18N::translate('Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>');
+	$text=WT_I18N::translate('Place names are frequently too long to fit on charts, lists, etc.  They can be abbreviated by showing just the first few parts of the name, such as <i>village, county</i>, or the last few part of it, such as <i>region, country</i>.');
 	break;
 
 case 'SHOW_PRIVATE_RELATIONSHIPS':
