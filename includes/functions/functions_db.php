@@ -5,7 +5,7 @@
 // to use an SQL database as its datastore.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -1044,18 +1044,31 @@ function get_place_list($parent, $level) {
 function get_place_positions($parent, $level='') {
 	// TODO: this function needs splitting into two
 
-	if ($level!=='') {
-		return
+	if ($level) {
+		// placelist.php - we know the exact hierarchy
+		$rows=
 			WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
 			->execute(array(get_place_parent_id($parent, $level), WT_GED_ID))
 			->fetchOneColumn();
+		$place_regex='\n2 PLAC '.preg_quote(implode(', ', array_reverse($parent)), '/').'(\n|$)';
 	} else {
-		//-- we don't know the level so get the any matching place
-		return
+		// lifespan.php - we don't know the level so get the any matching place
+		$rows=
 			WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks`, `##places` WHERE p_place LIKE ? AND p_file=pl_file AND p_id=pl_p_id AND p_file=?")
 			->execute(array($parent, WT_GED_ID))
 			->fetchOneColumn();
+		$place_regex='\n2 PLAC '.preg_quote($parent, '/').'(\n|,|$)';
 	}
+
+	// The placelinks table does not take account of private records.
+	$xrefs=array();
+	foreach ($rows as $row) {
+		$indi=WT_Person::getInstance($row);
+		if ($indi && preg_match('/'.$place_regex.'/i', $indi->getGedcomRecord())) {
+			$xrefs[]=$row;
+		}
+	}
+	return $xrefs;
 }
 
 //-- find all of the places
