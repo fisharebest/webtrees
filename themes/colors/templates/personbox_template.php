@@ -47,6 +47,12 @@ if (!defined('WT_WEBTREES')) {
 		<span id="namedef-<?php echo $boxID; ?>" class="name<?php echo $style; ?> <?php echo $classfacts; ?>">
 			<?php echo $name.$addname; ?>
 		</span>
+	<?php
+	if (!$show_full) { 
+		$lifespan = $person->getLifeSpan();
+		echo $lifespan;
+	}
+	?>
 		<span class="name<?php echo $style; ?>"> <?php echo $genderImage; ?></span>
 		<?php echo $showid; ?> </a>
 		<div id="fontdef-<?php echo $boxID; ?>" class="details<?php echo $style; ?>">
