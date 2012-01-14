@@ -313,7 +313,6 @@ class WT_Date {
 			$jd=WT_CLIENT_JD;
 		}
 
-		var_dump("fmt=$format");
 		switch ($format) {
 		case 0: // Years - integer only (for statistics, rather than for display)
 			if ($jd && $d1->MinJD()) {
