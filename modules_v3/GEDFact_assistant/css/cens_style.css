@@ -37,7 +37,7 @@
 .cens_text {font-size:11px; text-align:left;}
 textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
 .cens_header_left {float:left; font-weight:bold;}
-.cens_header_right {float: right;}
+.cens_header_right {float: right; width:50%;}
 .cens_sour_1 {width:100%; margin:0; padding:0;}
 .cens_sour_2 {clear:left;width:20%; float:left; margin-top:0.25em;}
 .cens_container input {padding:0;}
