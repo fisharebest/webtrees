@@ -159,7 +159,7 @@ default:
 			  jQuery("#new_passwd_form").hide();
 			  jQuery("#passwd_click").click(function()
 			  {
-				jQuery("#new_passwd_form").slideToggle(500);
+				jQuery("#new_passwd_form").slideToggle(100);
 			  });
 		');
 
@@ -193,7 +193,8 @@ default:
 	}
 
 	echo '</div>'; //close "login-text"
-	echo '<form id="login-form" name="login-form" method="post" action="', get_site_setting('LOGIN_URL'), '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
+	echo '<div id="login-box">
+		<form id="login-form" name="login-form" method="post" action="', get_site_setting('LOGIN_URL'), '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', htmlspecialchars($url), '">
 		<input type="hidden" name="ged" value="'; if (isset($ged)) echo htmlspecialchars($ged); else echo htmlentities($GEDCOM); echo '">
@@ -235,6 +236,7 @@ default:
 		<div><input type="submit" value="', /* I18N: button label */ WT_I18N::translate('Continue'), '"></div>
 		</form>
 	</div>'; //"new_passwd"
+	echo '</div>'; //"login-box"
 		
 	echo '</div>'; // close "login-page"
 	echo '<script type="text/javascript">
@@ -545,39 +547,40 @@ case 'register':
 				echo WT_I18N::translate('<div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div>');
 				echo '</div>';
 			}
-			echo '<form id="register-form" name="register-form" method="post" action="login.php" onsubmit="t = new Date(); document.register-form.time.value=t.toUTCString(); return checkform(this);">
+			echo '<div id="register-box">
+				<form id="register-form" name="register-form" method="post" action="login.php" onsubmit="t = new Date(); document.register-form.time.value=t.toUTCString(); return checkform(this);">
 				<input type="hidden" name="action" value="register">
 				<input type="hidden" name="time" value="">
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 				<div>
 					<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
-						'<input type="text" size="30" id="user_realname" name="user_realname" value="';
+						'<input type="text" id="user_realname" name="user_realname" value="';
 							if (!$user_realname_false) echo $user_realname;
 						echo '" autofocus>
 					</label>		
 				</div>
 				<div>
 					<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
-						'<input type="text" size="30" id="user_email" name="user_email" value="';
+						'<input type="text" id="user_email" name="user_email" value="';
 							if (!$user_email_false) echo $user_email;
 						echo '">
 					</label>
 				</div>
 				<div>
 					<label for="username">', WT_I18N::translate('Desired user name'), help_link('username'),
-						'<input type="text" size="30" id="username" name="user_name" value="';
+						'<input type="text" id="username" name="user_name" value="';
 							if (!$user_name_false) echo $user_name;
 						echo '">
 					</label>
 				</div>
 				<div>
 					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-						'<input type="password" size="30" id="user_password01" name="user_password01" value="">
+						'<input type="password" id="user_password01" name="user_password01" value="">
 					</label>
 				</div>
 				<div>
 					<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('edituser_conf_password'),
-						'<input type="password" size="30" id="user_password02" name="user_password02" value="">
+						'<input type="password" id="user_password02" name="user_password02" value="">
 					</label>
 				</div>
 				<div>
@@ -597,6 +600,7 @@ case 'register':
 					<input type="submit" value="', WT_I18N::translate('Request new user account'), '">
 				</div>
 			</form>
+		</div>
 		</div>';
 	}
 	break;

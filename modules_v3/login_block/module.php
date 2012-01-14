@@ -49,7 +49,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 				  jQuery("#new_passwd").hide();
 				  jQuery("#passwd_click").click(function()
 				  {
-					jQuery("#new_passwd").slideToggle(500);
+					jQuery("#new_passwd").slideToggle(100);
 				  });
 			');
 		if (WT_USER_ID) {
@@ -65,8 +65,9 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$title = WT_I18N::translate('Login');
 			$LOGIN_URL=get_site_setting('LOGIN_URL');		
 			$content='';
-			$content='<form id="login-form" name="login-form" method="post" action="'. get_site_setting('LOGIN_URL'). '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
-			<input type="hidden" name="action" value="login">
+			$content='<div id="login-box">
+				<form id="login-form" name="login-form" method="post" action="'. get_site_setting('LOGIN_URL'). '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
+				<input type="hidden" name="action" value="login">
 				<input type="hidden" name="url" value="index.php">
 				<input type="hidden" name="ged" value="'; if (isset($ged)) $content.= htmlspecialchars($ged); else $content.= htmlentities(WT_GEDCOM); $content.= '">
 				<input type="hidden" name="pid" value="'; if (isset($pid)) $content.= htmlspecialchars($pid); $content.= '">
@@ -106,6 +107,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			<div><input type="submit" value="'. WT_I18N::translate('Continue'). '"></div>
 			</form>
 		</div>'; //"new_passwd"
+		$content.= '</div>';//"login-box"
 		}
 
 		if ($template) {
