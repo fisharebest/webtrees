@@ -2,7 +2,7 @@
 // Update the database schema from version 15 to 16
 // - delete old config settings
 // - add extra columns to wt_default_resn
-// - add a table to store language preferences
+// - increase size of session_id column, to account for new session hash algorithms
 //
 // The script should assume that it can be interrupted at
 // any point, and be able to continue by re-running the script.
@@ -35,12 +35,15 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// Remove the i_isdead column
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES')");
-self::exec("DELETE FROM `##user_setting` WHERE setting_name='default'");
+// Remove old settings
+self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES', 'SHOW_LIST_PLACES')");
+self::exec("DELETE FROM `##user_setting` WHERE setting_name='defaulttab'");
 
 // There is no way to add a RESN tag to NOTE objects
 self::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
+
+// Later PHP versions use session IDs longer than 32 chars.
+self::exec("ALTER TABLE `##session` CHANGE session_id session_id CHAR(128) COLLATE utf8_unicode_ci NOT NULL");
 
 // Update the version to indicate success
 set_site_setting($schema_name, $next_version);

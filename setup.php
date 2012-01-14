@@ -922,7 +922,7 @@ try {
 	);
 	$dbh->exec(
 		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}session` (".
-		" session_id   CHAR(32)    NOT NULL,".
+		" session_id   CHAR(128)   NOT NULL,".
 		" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
 		" user_id      INTEGER     NOT NULL,".
 		" ip_address   VARCHAR(32) NOT NULL,".
