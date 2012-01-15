@@ -162,7 +162,8 @@ $WT_LINK=array(
 	'FAM'=>'family.php?famid=',
 	'SOUR'=>'source.php?sid=',
 	'REPO'=>'repo.php?rid=',
-	'OBJE'=>'mediaviewer.php?mid='
+	'OBJE'=>'mediaviewer.php?mid=',
+	'NOTE'=>'note.php?nid='
 );
 $target=($openinnew==1 ? ' target="_new"' : '');
 function wt_href($tag, $xref, $name='')
