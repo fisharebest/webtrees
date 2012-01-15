@@ -1041,10 +1041,10 @@ function get_place_list($parent, $level) {
 * @param int $level
 * @return array
 */
-function get_place_positions($parent, $level='') {
+function get_place_positions($parent, $level=null) {
 	// TODO: this function needs splitting into two
 
-	if ($level) {
+	if ($level!==null) {
 		// placelist.php - we know the exact hierarchy
 		$rows=
 			WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
