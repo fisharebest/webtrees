@@ -800,29 +800,31 @@ function format_parents_age($pid, $birth_date=null) {
 		if ($birth_date->isOK() && count($families)==1) {
 			$family=current($families);
 			foreach ($family->getSpouses() as $parent) {
-				$sex=$parent->getSexImage();
-				$age=WT_Date::getAge($parent->getBirthDate(), $birth_date, 0);
-				$deatdate=$parent->getDeathDate();
-				switch ($parent->getSex()) {
-				case 'F':
-					// Highlight mothers who die in childbirth or shortly afterwards
-					if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()+90) {
-						$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
-					} else {
-						$html.=' <span title="'.WT_I18N::translate('Mother\'s age').'">'.$sex.$age.'</span>';
+				if ($parent->getBirthDate()->isOK()) {
+					$sex=$parent->getSexImage();
+					$age=WT_Date::getAge($parent->getBirthDate(), $birth_date, 2);
+					$deatdate=$parent->getDeathDate();
+					switch ($parent->getSex()) {
+					case 'F':
+						// Highlight mothers who die in childbirth or shortly afterwards
+						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()+90) {
+							$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
+						} else {
+							$html.=' <span title="'.WT_I18N::translate('Mother\'s age').'">'.$sex.$age.'</span>';
+						}
+						break;
+					case 'M':
+						// Highlight fathers who die before the birth
+						if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()) {
+							$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
+						} else {
+							$html.=' <span title="'.WT_I18N::translate('Father\'s age').'">'.$sex.$age.'</span>';
+						}
+						break;
+					default:
+						$html.=' <span title="'.WT_I18N::translate('Parent\'s age').'">'.$sex.$age.'</span>';
+						break;
 					}
-					break;
-				case 'M':
-					// Highlight fathers who die before the birth
-					if ($deatdate->isOK() && $deatdate->MinJD()<$birth_date->MinJD()) {
-						$html.=' <span title="'.WT_Gedcom_Tag::getLabel('_DEAT_PARE', $parent).'" class="parentdeath">'.$sex.$age.'</span>';
-					} else {
-						$html.=' <span title="'.WT_I18N::translate('Father\'s age').'">'.$sex.$age.'</span>';
-					}
-					break;
-				default:
-					$html.=' <span title="'.WT_I18N::translate('Parent\'s age').'">'.$sex.$age.'</span>';
-					break;
 				}
 			}
 			if ($html) {
