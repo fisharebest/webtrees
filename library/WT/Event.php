@@ -168,27 +168,14 @@ class WT_Event {
 		return $this->getValue("_WTS");
 	}
 
-	/**
-	 * Get the date object for this event
-	 *
-	 * @return WT_Date
-	 */
-	function getDate($estimate = true) {
-		if (is_null($this->date))
+	// We can call this function many times, especially when sorting,
+	// so keep a copy of the date.
+	function getDate() {
+		if ($this->date===null) {
 			$this->date=new WT_Date($this->getValue('DATE'));
+		}
 
-		if (!$estimate && $this->dest) return null;
 		return $this->date;
-	}
-
-	/**
-	 * Set the date of this event.  This method should only be used to force a date.
-	 *
-	 * @param WT_Date $date
-	 */
-	function setDate($date) {
-		$this->date = $date;
-		$this->dest = true;
 	}
 
 	/**
@@ -275,14 +262,17 @@ class WT_Event {
 		   $data .= "<span class=\"details_label\">".$this->getLabel($ABBREVIATE_CHART_LABELS)."</span> ";
 		}
 		$emptyfacts = array("BIRT","CHR","DEAT","BURI","CREM","ADOP","BAPM","BARM","BASM","BLES","CHRA","CONF","FCOM","ORDN","NATU","EMIG","IMMI","CENS","PROB","WILL","GRAD","RETI","BAPL","CONL","ENDL","SLGC","MARR","SLGS","MARL","ANUL","CENS","DIV","DIVF","ENGA","MARB","MARC","MARS","OBJE","CHAN","_SEPR","RESI", "DATA", "MAP");
-		if (!in_array($this->tag, $emptyfacts))
+		if (!in_array($this->tag, $emptyfacts)) {
 			$data .= PrintReady($this->detail);
-		if (!$this->dest)
-			$data .= format_fact_date($this, $this->getParentObject(), $anchor, false);
+		}
+		$data .= format_fact_date($this, $this->getParentObject(), $anchor, false);
 		$data .= ' '.format_fact_place($this, $anchor, false, false);
 		$data .= "<br>";
-		if (!$return) echo $data;
-		else return $data;
+		if ($return) {
+			return $data;
+		} else {
+			echo $data;
+		}
 	}
 
 	// Display an icon for this fact.
@@ -309,24 +299,22 @@ class WT_Event {
 	 * @return int
 	 */
 	static function CompareDate($a, $b) {
-		$adate = $a->getDate();
-		$bdate = $b->getDate();
-		//-- non-dated events should sort according to the preferred sort order
-		if (is_null($adate) && !is_null($a->sortDate)) {
-			$ret = $a->sortOrder - $b->sortOrder;
-		} elseif (is_null($bdate) && !is_null($b->sortDate)) {
-			$ret = $a->sortOrder - $b->sortOrder;
-		} else {
-			$ret = WT_Date::Compare($adate, $bdate);
-		}
-		if ($ret==0) {
-			$ret = $a->sortOrder - $b->sortOrder;
-			//-- if dates are the same they should be ordered by their fact type
+		if ($a->getDate()->isOK() && $b->getDate()->isOK()) {
+			// If both events have dates, compare by date
+			$ret=WT_Date::Compare($a->getDate(), $b->getDate());
 			if ($ret==0) {
-				$ret = WT_Event::CompareType($a, $b);
+				// If dates are the same, compare by fact type
+				$ret=WT_Event::CompareType($a, $b);
+				// If the fact type is also the same, retain the initial order
+				if ($ret==0) {
+					$ret=$a->sortOrder - $b->sortOrder;
+				}
 			}
+			return $ret;
+		} else {
+			// One or both events have no date - retain the initial orde
+			return $a->sortOrder - $b->sortOrder;
 		}
-		return $ret;
 	}
 
 	/**
