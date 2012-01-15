@@ -27,6 +27,12 @@ define('WT_SCRIPT_NAME', 'login.php');
 require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
+// If we are already logged in, then go to the home page
+if (WT_USER_ID) {
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+	exit;
+}
+
 $controller=new WT_Controller_Base();
 
 $REQUIRE_ADMIN_AUTH_REGISTRATION=get_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATION');
@@ -46,15 +52,17 @@ $url            =safe_POST('url',      WT_REGEX_URL);
 $username       =safe_POST('username', WT_REGEX_USERNAME);
 $password       =safe_POST('password', WT_REGEX_UNSAFE); // Can use any password that was previously stored
 $usertime       =safe_POST('usertime');
-$pid            =safe_POST('pid',      WT_REGEX_XREF);
-$ged            =safe_POST('ged',      preg_quote_array(get_all_gedcoms()), $GEDCOM);
 $help_message   =safe_GET('help_message');
 
 // These parameters may come from the URL which is emailed to users.
 if (empty($action)) $action = safe_GET('action');
 if (empty($user_name)) $user_name = safe_GET('user_name', WT_REGEX_USERNAME);
 if (empty($user_hashcode)) $user_hashcode = safe_GET('user_hashcode');
-if (!$url)    $url   =safe_GET('url',  WT_REGEX_URL);
+
+// This parameter may come from generated login links
+if (!$url) {
+	$url=safe_GET('url',  WT_REGEX_URL);
+}
 
 $message='';
 
@@ -85,29 +93,10 @@ default:
 			$WT_SESSION->locale   =get_user_setting($user_id, 'language');
 			$WT_SESSION->theme_dir=get_user_setting($user_id, 'theme');
 
-			// If we have no access rights to the current gedcom, switch to one where we do
-			if (!userIsAdmin($user_id)) {
-				if (!userCanAccess($user_id, WT_GED_ID)) {
-					foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-						if (userCanAccess($user_id, $ged_id)) {
-							$ged=$ged_name;
-							$url='index.php';
-							break;
-						}
-					}
-				}
-			}
-
 			// If we've clicked login from the login page, we don't want to go back there.
 			if (strpos($url, WT_SCRIPT_NAME)===0) {
 				$url='index.php';
 			}
-
-			$url .= "&"; // Simplify the preg_replace following
-			$url = preg_replace('/(&|\?)ged=.*&/', "$1", html_entity_decode(rawurldecode($url),ENT_COMPAT,'UTF-8')); // Remove any existing &ged= parameter
-			if (substr($url, -1)=="&") $url = substr($url, 0, -1);
-			$url .= "&ged=".$ged;
-			$url = str_replace(array("&&", ".php&", ".php?&"), array("&", ".php?", ".php?"), $url);
 
 			// Redirect to the target URL
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
@@ -178,8 +167,6 @@ default:
 		<form id="login-form" name="login-form" method="post" action="', get_site_setting('LOGIN_URL', 'login.php'), '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', htmlspecialchars($url), '">
-		<input type="hidden" name="ged" value="'; if (isset($ged)) echo htmlspecialchars($ged); else echo htmlentities($GEDCOM); echo '">
-		<input type="hidden" name="pid" value="'; if (isset($pid)) echo htmlspecialchars($pid); echo '">
 		<input type="hidden" name="usertime" value="">';
 		if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>';
 		echo '<div>
