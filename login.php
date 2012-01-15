@@ -42,13 +42,13 @@ $user_language  =safe_POST('user_language', array_keys(WT_I18N::installed_langua
 $user_comments  =safe_POST('user_comments');
 $user_password  =safe_POST('user_password',   WT_REGEX_UNSAFE); // Can use any password that was previously stored
 $user_hashcode  =safe_POST('user_hashcode');
-$url         	=safe_POST('url',      WT_REGEX_URL);
-$username    	=safe_POST('username', WT_REGEX_USERNAME);
-$password    	=safe_POST('password', WT_REGEX_UNSAFE); // Can use any password that was previously stored
-$usertime   	=safe_POST('usertime');
-$pid         	=safe_POST('pid',      WT_REGEX_XREF);
-$ged         	=safe_POST('ged',      preg_quote_array(get_all_gedcoms()), $GEDCOM);
-$help_message	=safe_GET('help_message');
+$url            =safe_POST('url',      WT_REGEX_URL);
+$username       =safe_POST('username', WT_REGEX_USERNAME);
+$password       =safe_POST('password', WT_REGEX_UNSAFE); // Can use any password that was previously stored
+$usertime       =safe_POST('usertime');
+$pid            =safe_POST('pid',      WT_REGEX_XREF);
+$ged            =safe_POST('ged',      preg_quote_array(get_all_gedcoms()), $GEDCOM);
+$help_message   =safe_GET('help_message');
 
 // These parameters may come from the URL which is emailed to users.
 if (empty($action)) $action = safe_GET('action');
@@ -98,30 +98,11 @@ default:
 				}
 			}
 
-			//-- section added based on UI feedback
-			// $url is set to individual.php below if a URL is not passed in... it will then be resent as "individual.php" when the user attempts to login
-			if ($url=='individual.php') {
-				foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-					if (get_user_gedcom_setting($user_id, $ged_id, 'gedcomid')) {
-						$pid = get_user_gedcom_setting($user_id, $ged_id, 'gedcomid');
-						$ged = $ged_name;
-						break;
-					}
-				}
-				if ($pid) {
-					$url = "individual.php?pid=".$pid;
-				} else {
-					//-- user does not have a pid?  Go to My Page
-					$url = "index.php";
-				}
-			}
-
 			// If we've clicked login from the login page, we don't want to go back there.
 			if (strpos($url, WT_SCRIPT_NAME)===0) {
 				$url='index.php';
 			}
 
-			$url = str_replace("logout=1", "", $url);
 			$url .= "&"; // Simplify the preg_replace following
 			$url = preg_replace('/(&|\?)ged=.*&/', "$1", html_entity_decode(rawurldecode($url),ENT_COMPAT,'UTF-8')); // Remove any existing &ged= parameter
 			if (substr($url, -1)=="&") $url = substr($url, 0, -1);
@@ -194,7 +175,7 @@ default:
 
 	echo '</div>'; //close "login-text"
 	echo '<div id="login-box">
-		<form id="login-form" name="login-form" method="post" action="', get_site_setting('LOGIN_URL'), '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
+		<form id="login-form" name="login-form" method="post" action="', get_site_setting('LOGIN_URL', 'login.php'), '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', htmlspecialchars($url), '">
 		<input type="hidden" name="ged" value="'; if (isset($ged)) echo htmlspecialchars($ged); else echo htmlentities($GEDCOM); echo '">
