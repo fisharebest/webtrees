@@ -209,10 +209,6 @@ case 'PLACECHECK_KEY':
 		'</td><td class="center">N55.0</td><td class="center">W85.0</td><td style="font-size:85%; white-space:normal;">'.
 		WT_I18N::translate('This place level is blank in your GEDCOM file, but exists as "unknown" in the GoogleMap places table with coordinates. No action required until the missing level can be entered.').
 		'</td></tr></table>';
-
-	
-	
-	
 	break;
 
 // Help text for Place Hierarchy display
@@ -229,7 +225,7 @@ case 'GOOGLEMAP_PH_MAP_SIZE':
 
 case 'GOOGLEMAP_PH_MARKER':
 	$title=WT_I18N::translate('Type of place markers in Place Hierarchy');
-	$text=WT_I18N::translate('Here you can specify what type of marker be able to use (standard or flag). If place has no flag, use standard marker.');
+	$text=WT_I18N::translate('Choose between standard Google place markers or flags on Place Hierarchy map displays.');
 	break;
 
 case 'GM_DISP_SHORT_PLACE':
