@@ -52,7 +52,6 @@ $url            =safe_POST('url',      WT_REGEX_URL);
 $username       =safe_POST('username', WT_REGEX_USERNAME);
 $password       =safe_POST('password', WT_REGEX_UNSAFE); // Can use any password that was previously stored
 $usertime       =safe_POST('usertime');
-$help_message   =safe_GET('help_message');
 
 // These parameters may come from the URL which is emailed to users.
 if (empty($action)) $action = safe_GET('action');
