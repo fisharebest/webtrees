@@ -326,6 +326,7 @@ $cfg=array(
 	'gc_probability'  => 1,
 	'gc_divisor'      => 100,
 	'cookie_path'     => WT_SCRIPT_PATH,
+	'cookie_httponly' => true,
 );
 
 // Search engines don't send cookies, and so create a new session with every visit.
