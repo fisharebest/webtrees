@@ -203,8 +203,8 @@ case 'load1row':
 	// Generate an AJAX response for datatables to load expanded row
 	$user_id=(int)safe_GET('user_id');
 	header('Content-type: text/html; charset=UTF-8');
-	echo '<dl>';
 	echo '<h2>', WT_I18N::translate('Details'), '</h2>';
+	echo '<dl>';
 	echo '<dt>', WT_I18N::translate('Administrator'), '</dt>';
 	echo '<dd>', edit_field_yes_no_inline('user_setting-'.$user_id.'-canadmin', get_user_setting($user_id, 'canadmin')), '</dd>';
 
@@ -246,7 +246,7 @@ case 'load1row':
 
 	foreach ($all_gedcoms as $ged_id=>$ged_name) {
 		echo
-			'<tr><td >',
+			'<tr><td>',
 			WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), 
 			//Pedigree root person
 			'</td><td>',
@@ -423,24 +423,23 @@ case 'createform':
 		<table id="adduser">
 			<tr>
 				<td><?php echo WT_I18N::translate('Username'), help_link('username'); ?></td>
-				<td colspan="3" ><input type="text" name="username" autofocus></td>
+				<td colspan="3"><input type="text" name="username" autofocus></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Real name'), help_link('real_name'); ?></td>
-				<td colspan="3" ><input type="text" name="realname" size="50"></td>
+				<td colspan="3"><input type="text" name="realname" size="50"></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Password'), help_link('password'); ?></td>
-				<td ><input type="password" name="pass1"></td>
+				<td><input type="password" name="pass1"></td>
 				<td><?php echo WT_I18N::translate('Confirm password'), help_link('password_confirm'); ?></td>
-				<td ><input type="password" name="pass2"></td>
+				<td><input type="password" name="pass2"></td>
 			</tr>
 			<tr>
-			<tr>
 				<td><?php echo WT_I18N::translate('Email address'), help_link('email'); ?></td>
-				<td ><input type="text" name="emailaddress" value="" size="50"></td>
+				<td><input type="text" name="emailaddress" value="" size="50"></td>
 				<td><?php echo WT_I18N::translate('Preferred contact method'), help_link('useradmin_user_contact'); ?></td>
-				<td >
+				<td>
 					<?php
 						echo edit_field_contact('new_contact_method');
 					?>
@@ -448,21 +447,21 @@ case 'createform':
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Email verified'), help_link('useradmin_verification'); ?></td>
-				<td ><input type="checkbox" name="verified" value="1" checked="checked"></td>
+				<td><input type="checkbox" name="verified" value="1" checked="checked"></td>
 				<td><?php echo WT_I18N::translate('Approved by administrator'), help_link('useradmin_verification'); ?></td>
-				<td ><input type="checkbox" name="verified_by_admin" value="1" checked="checked"></td>
+				<td><input type="checkbox" name="verified_by_admin" value="1" checked="checked"></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Automatically approve changes made by this user'), help_link('useradmin_auto_accept'); ?></td>
-				<td ><input type="checkbox" name="new_auto_accept" value="1"></td>
+				<td><input type="checkbox" name="new_auto_accept" value="1"></td>
 				<td><?php echo WT_I18N::translate('Allow this user to edit his account information'), help_link('useradmin_editaccount'); ?></td>
-				<td ><input type="checkbox" name="editaccount" value="1" checked="checked"></td>
+				<td><input type="checkbox" name="editaccount" value="1" checked="checked"></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Administrator'), help_link('role'); ?></td>
-				<td ><input type="checkbox" name="canadmin" value="1"></td>
+				<td><input type="checkbox" name="canadmin" value="1"></td>
 				<td><?php echo WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'); ?></td>
-				<td ><input type="checkbox" name="visibleonline" value="1" checked="checked"></td>
+				<td><input type="checkbox" name="visibleonline" value="1" checked="checked"></td>
 			</tr>
 			<?php if (WT_USER_IS_ADMIN) { ?>
 			<tr>
@@ -479,11 +478,10 @@ case 'createform':
 					<td><?php echo WT_I18N::translate('Theme'), help_link('THEME'); ?></td>
 					<td colspan="3">
 						<select name="new_user_theme">
-						<option value="" selected="selected"><?php echo WT_I18N::translate('Site Default'); ?></option>
+						<option value="" selected="selected"><?php echo htmlspecialchars(WT_I18N::translate('<default theme>')); ?></option>
 						<?php
 							foreach (get_theme_names() as $themename=>$themedir) {
-								echo "<option value=\"", $themedir, "\"";
-								echo ">", $themename, "</option>";
+								echo '<option value="', $themedir, '">', $themename, '</option>';
 							}
 						?>
 						</select>
@@ -507,18 +505,18 @@ case 'createform':
 						<?php
 							foreach ($all_gedcoms as $ged_id=>$ged_name) {
 								echo '<tr>',
-									'<td >', WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td>',
+									'<td>', WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td>',
 									//Pedigree root person
-									'<td >';
+									'<td>';
 										$varname='rootid'.$ged_id;
 										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="">', print_findindi_link($varname, "", false, false, $ged_name),
 									'</td>',						
 									// GEDCOM INDI Record ID
-									'<td >';
+									'<td>';
 										$varname='gedcomid'.$ged_id;
 										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="">' ,print_findindi_link($varname, "", false, false, $ged_name),
 									'</td>',
-									'<td >';
+									'<td>';
 										$varname='canedit'.$ged_id;
 										echo '<select name="', $varname, '">';
 										foreach ($ALL_EDIT_OPTIONS as $EDIT_OPTION=>$desc) {
@@ -569,7 +567,7 @@ case 'cleanup':
 	for ($i=1; $i<=12; $i++) {
 		echo "<option value=\"admin_users.php?action=cleanup&amp;month=$i\"";
 		if ($i == $month) echo " selected=\"selected\"";
-		echo " >", $i, "</option>";
+		echo ">", $i, "</option>";
 	}
 	echo "</select></td></tr>";
 	?>
