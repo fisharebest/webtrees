@@ -2,7 +2,7 @@
 // Controller for the descendancy chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -61,7 +61,6 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract parameters from form
-		$this->rootid     =safe_GET_xref('rootid');
 		$this->show_full  =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
 		$this->chart_style=safe_GET_integer('chart_style', 0, 3, 0);
 		$this->generations=safe_GET_integer('generations', 2, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS);
@@ -95,12 +94,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			$this->cellwidth=(strlen($this->name)*14);
 		}
 
-		$this->descPerson = WT_Person::getInstance($this->rootid);
-		if (!$this->descPerson) {
-			$this->descPerson=$this->getSignificantIndividual();
-			$this->rootid=$this->descPerson->getXref();
-		}
-		$this->name=$this->descPerson->getFullName();
+		$this->name=$this->root->getFullName();
 
 		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Descendants of %s', $this->name));
 	}

@@ -7,7 +7,7 @@
 // GEDCOM '2 PLAC' tag (within the '1 BIRT' event) and the place_locations table.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
@@ -111,7 +111,7 @@ echo '<h2>', $controller->getPageTitle(), '</h2>';
 			</tr>
 			<tr>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php print_findindi_link("rootid",""); ?>
 				</td>
 				<td class="optionbox">

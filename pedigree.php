@@ -5,7 +5,7 @@
 // with id = $rootid in the GEDCOM file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -77,7 +77,7 @@ echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), '</h2
 
 			<tr>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
 					<?php print_findindi_link("rootid", ""); ?>
 				</td>
 				<td class="optionbox">
@@ -326,12 +326,12 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	}
 }
 
-if ($controller->rootPerson->canDisplayDetails()) {
+if ($controller->root->canDisplayDetails()) {
 	// -- echo left arrow for decendants so that we can move down the tree
 	$yoffset += ($controller->pbheight / 2)-10;
-	$famids = $controller->rootPerson->getSpouseFamilies();
+	$famids = $controller->root->getSpouseFamilies();
 	//-- make sure there is more than 1 child in the family with parents
-	$cfamids = $controller->rootPerson->getChildFamilies();
+	$cfamids = $controller->root->getChildFamilies();
 	if (count($famids)>0) {
 		echo "<div id=\"childarrow\" dir=\"";
 		if ($TEXT_DIRECTION=="rtl") {
@@ -389,7 +389,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 		echo $xoffset, "px; top:", $yoffset, "px; width:", $controller->pbwidth, "px; height:", $controller->pbheight, "px; visibility: hidden;\">";
 		echo "<table class=\"person_box\"><tr><td>";
 		foreach ($famids as $family) {
-			$spouse=$family->getSpouse(WT_Person::getInstance($controller->rootid));
+			$spouse=$family->getSpouse($controller->root);
 			if ($spouse) {
 				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spouse->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 				$name = $spouse->getFullName();
@@ -426,7 +426,7 @@ if ($controller->rootPerson->canDisplayDetails()) {
 					echo '<span class="name1"><br>', WT_I18N::translate('Sibling'), '<br></span>';
 				}
 				foreach ($children as $child) {
-					if (!$controller->rootPerson->equals($child) && !is_null($child)) {
+					if (!$controller->root->equals($child) && !is_null($child)) {
 						echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 						$name = $child->getFullName();
 						if (hasRTLText($name)) {

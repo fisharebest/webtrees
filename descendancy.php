@@ -2,7 +2,7 @@
 // Displays a descendancy tree.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -64,7 +64,7 @@ echo '<table class="list_table">';
 echo '<tr><td class="descriptionbox">';
 echo WT_I18N::translate('Individual'), '</td>';
 echo '<td class="optionbox">';
-echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="', $controller->rootid, '">';
+echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="', $controller->root->getXref(), '">';
 print_findindi_link("rootid", "");
 echo '</td>';
 echo '<td class="descriptionbox">';
@@ -117,7 +117,7 @@ if ($controller->show_full) {
 }
 echo '></td></tr></table></form>';
 echo '</td></tr></table>';
-if (is_null($controller->descPerson)) {
+if (is_null($controller->root)) {
 	echo '<span class="error">', WT_I18N::translate('The requested GEDCOM record could not be found.  This could be caused by a link to an invalid person or by a corrupt GEDCOM file.'), '</span>';
 }
 
@@ -127,7 +127,7 @@ case 0: //-- list
 		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br><br>';
 	}
 	echo '<ul style="list-style: none; display: block;" id="descendancy_chart">';
-	$controller->print_child_descendancy($controller->descPerson, $controller->generations);
+	$controller->print_child_descendancy($controller->root, $controller->generations);
 	echo '</ul>';
 	break;
 case 1: //-- booklet
@@ -136,17 +136,17 @@ case 1: //-- booklet
 		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br><br>';
 	}
 	$show_cousins = true;
-	$controller->print_child_family($controller->descPerson, $controller->generations);
+	$controller->print_child_family($controller->root, $controller->generations);
 	echo '</div>';
 	break;
 case 2: //-- Individual list
-	$descendants=indi_desc($controller->descPerson, $controller->generations, array());
+	$descendants=indi_desc($controller->root, $controller->generations, array());
 	echo '<div id="descendancy-list">';
 	echo format_indi_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
 	echo '</div>';
 	break;
 case 3: //-- Family list
-	$descendants=fam_desc($controller->descPerson, $controller->generations, array());
+	$descendants=fam_desc($controller->root, $controller->generations, array());
 	echo '<div id="descendancy-list">';
 	echo format_fam_table($descendants, WT_I18N::translate('Descendants of %s', $controller->name));
 	echo '</div>';

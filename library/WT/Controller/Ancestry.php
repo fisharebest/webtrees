@@ -2,7 +2,7 @@
 // Controller for the ancestry chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -50,7 +50,6 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		parent::__construct();
 
 		// Extract form parameters
-		$this->rootid        =safe_GET_xref('rootid');
 		$this->show_full     =safe_GET('show_full',    array('0', '1'), $PEDIGREE_FULL_DETAILS);
 		$this->show_cousins  =safe_GET('show_cousins', array('0', '1'), '0');
 		$this->chart_style   =safe_GET_integer('chart_style',          0, 3, 0);
@@ -77,13 +76,8 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		$pbwidth = $bwidth+12;
 		$pbheight = $bheight+14;
 
-		$this->ancestry = WT_Person::getInstance($this->rootid);
-		if (!$this->ancestry) {
-			$this->ancestry=$this->getSignificantIndividual();
-			$this->rootid=$this->ancestry->getXref();
-		}
-		$this->name     = $this->ancestry->getFullName();
-		$this->addname  = $this->ancestry->getAddName();
+		$this->name     = $this->root->getFullName();
+		$this->addname  = $this->root->getAddName();
 
 		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Ancestors of %s', $this->name));
 
