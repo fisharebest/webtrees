@@ -546,7 +546,7 @@ class WT_MenuBar {
 	}
 
 	public static function getHelpMenu() {
-		global $SEARCH_SPIDER, $helpindex, $WT_SESSION;
+		global $SEARCH_SPIDER, $WT_SESSION;
 
 		if (!empty($SEARCH_SPIDER)) {
 			return null;
@@ -554,10 +554,7 @@ class WT_MenuBar {
 		//-- main help menu item
 		$menu = new WT_Menu(WT_I18N::translate('Help'), '#', 'menu-help', 'down');
 		$menu->addIcon('menu_help');
-		if (empty($helpindex))
-			$menu->addOnclick("return helpPopup('".WT_SCRIPT_NAME."');");
-		else
-			$menu->addOnclick("return helpPopup('".$helpindex."');");
+		$menu->addOnclick("return helpPopup('help_contents_help');");
 		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_help');
 
 		//-- help_contents sub menu
