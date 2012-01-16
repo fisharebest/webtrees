@@ -438,7 +438,7 @@ case 'createform':
 			<tr>
 				<td><?php echo WT_I18N::translate('Email address'), help_link('email'); ?></td>
 				<td><input type="text" name="emailaddress" value="" size="50"></td>
-				<td><?php echo WT_I18N::translate('Preferred contact method'), help_link('useradmin_user_contact'); ?></td>
+				<td><?php echo WT_I18N::translate('Preferred contact method'); ?></td>
 				<td>
 					<?php
 						echo edit_field_contact('new_contact_method');
@@ -465,12 +465,12 @@ case 'createform':
 			</tr>
 			<?php if (WT_USER_IS_ADMIN) { ?>
 			<tr>
-				<td><?php echo WT_I18N::translate('Admin comments on user'), help_link('useradmin_comment'); ?></td>
+				<td><?php echo WT_I18N::translate('Admin comments on user'); ?></td>
 				<td colspan="3"><textarea cols="80" rows="5" name="new_comment"></textarea></td>
 			</tr>
 			<?php } ?>
 			<tr>
-				<td><?php echo WT_I18N::translate('Language'), help_link('useradmin_change_lang'); ?></td>
+				<td><?php echo WT_I18N::translate('Language'); ?></td>
 				<td colspan="3"><?php echo edit_field_language('user_language', get_user_setting(WT_USER_ID, 'language')); ?></td>
 			</tr>
 			<?php if (get_site_setting('ALLOW_USER_THEMES')) { ?>

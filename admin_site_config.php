@@ -80,8 +80,6 @@ echo
 			'<dd>', edit_field_inline('site_setting-SMTP_HOST', get_site_setting('SMTP_HOST')), '</dd>',
 			'<dt>', WT_I18N::translate('SMTP port'), help_link('SMTP_PORT'), '</dt>',
 			'<dd>', edit_field_inline('site_setting-SMTP_PORT', get_site_setting('SMTP_PORT')), '</dd>',
-			'<dt>', WT_I18N::translate('Use simple mail headers'), help_link('SMTP_SIMPLE_MAIL'), '</dt>',
-			'<dd>', edit_field_yes_no_inline('site_setting-SMTP_SIMPLE_MAIL', get_site_setting('SMTP_SIMPLE_MAIL')), '</dd>',
 			'<dt>', WT_I18N::translate('Use password'), help_link('SMTP_AUTH'), '</dt>',
 			'<dd>', edit_field_yes_no_inline('site_setting-SMTP_AUTH', get_site_setting('SMTP_AUTH')), '</dd>',
 			'<dt>', WT_I18N::translate('Username'), help_link('SMTP_AUTH_USER'), '</dt>',

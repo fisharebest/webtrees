@@ -546,7 +546,7 @@ case 'register':
 					</label>
 				</div>
 				<div>
-					<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('edituser_conf_password'),
+					<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('password_confirm'),
 						'<input type="password" id="user_password02" name="user_password02" value="">
 					</label>
 				</div>
@@ -589,7 +589,7 @@ case 'userverify':
 		<form id="verify-form" name="verify-form" method="post" action="" onsubmit="t = new Date(); document.verify-form.time.value=t.toUTCString();">
 			<input type="hidden" name="action" value="verify_hash">
 			<input type="hidden" name="time" value="">
-			<h4>', WT_I18N::translate('User verification'), help_link('pls_note07'), '</h4>
+			<h4>', WT_I18N::translate('User verification'), '</h4>
 			<div>
 				<label for="username">', WT_I18N::translate('Username'), '</label>
 				<input type="text" id="username" name="user_name" value="', $user_name, '">

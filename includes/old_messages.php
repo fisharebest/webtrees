@@ -55,6 +55,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Data request at %s', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Fields marked with * are mandatory.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('GEDCOM information');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Here you can change the box width from 50 percent to 300 percent.  At 100 percent each box is about 270 pixels wide.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you are a visitor to this site and wish to request a user account, you can click this link.<br /><br />You will be taken to the "Register" page.');
@@ -72,6 +73,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This sets how much of the place information is shown in the person boxes on charts.<br /><br />Setting the value to 9 will guarantee to show all place levels.  Setting the value to 0 will hide places completely.  Setting the value to 1 will show the first level, setting it to 2 will show the first two levels, etc.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('To have your password reset, enter your user name.<br /><br />We will respond by sending you an email to the address registered with your account.  The email will contain a URL and confirmation code for your account. When you visit this URL, you can change your password and login to this site. For security reasons, you should not give this confirmation code to anyone.<br /><br />If you require assistance from the site administrator, please use the contact link below.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Top 10 Given Names');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Use simple mail headers');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('User %s (%s) has confirmed their request for an account.', '', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
 

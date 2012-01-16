@@ -152,7 +152,7 @@ echo '<input type="text" name="form_username" value="', WT_USER_NAME, '" autofoc
 echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Real name'), help_link('edituser_realname'), '</td><td class="optionbox">';
+echo WT_I18N::translate('Real name'), help_link('real_name'), '</td><td class="optionbox">';
 echo '<input type="text" name="form_realname" value="', getUserFullName(WT_USER_ID), '">';
 echo '</td></tr>';
 

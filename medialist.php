@@ -245,7 +245,7 @@ if (WT_USE_LIGHTBOX) {
 <!-- // NOTE: Row 2 right:-->
 	<!-- // begin media objects per page -->
 			<td class="descriptionbox wrap width25">
-				<?php echo WT_I18N::translate('Media objects per page'), help_link('media_objects_pp');; ?>
+				<?php echo WT_I18N::translate('Media objects per page'); ?>
 			</td>
 			<td class="optionbox wrap width25">
 				<select name="max">
@@ -263,7 +263,7 @@ if (WT_USE_LIGHTBOX) {
 <!-- // NOTE: Row 3 left:-->
 	<!-- // begin search filter -->
 			<td class="descriptionbox wrap width25">
-				<?php echo WT_I18N::translate('Search filters'), help_link('medialist_filters'); ?>
+				<?php echo WT_I18N::translate('Search filters'); ?>
 			</td>
 			<td class="optionbox wrap width25">
 		<!-- // begin Text field for filter and "submit" button -->
@@ -283,9 +283,9 @@ if (WT_USE_LIGHTBOX) {
 <!-- // NOTE: Row 3 right:-->
 	<!-- // begin columns per page -->
 			<td class="descriptionbox wrap width25">
-				<?php echo WT_I18N::translate('Columns per page'), help_link('media_columns_pp'); ?>
+				<?php echo WT_I18N::translate('Columns per page'); ?>
 				<br>
-			<?php echo WT_I18N::translate('Show thumbnails'), help_link('media_thumbs'); ?>
+			<?php echo WT_I18N::translate('Show thumbnails'); ?>
 			</td>
 			<td class="optionbox wrap width25">
 				<select name="columns">

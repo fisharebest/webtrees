@@ -368,7 +368,6 @@ if ($display=='list') {
 		echo ' colspan="', $ct>20 ? 3 : 2, '">&nbsp;';
 		echo '<img src="', $WT_IMAGES['place'], '" title="', WT_I18N::translate('Place'), '" alt="', WT_I18N::translate('Place'), '">&nbsp;&nbsp;';
 		echo WT_I18N::translate('Place List');
-		echo help_link('ppp_placelist');
 		echo '</td></tr><tr><td class="list_value_wrap"><ul>';
 		$i=0;
 		foreach ($placelist as $indexval => $revplace) {
