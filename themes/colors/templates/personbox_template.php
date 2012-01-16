@@ -49,7 +49,9 @@ if (!defined('WT_WEBTREES')) {
 		</span>
 	<?php
 	if (!$show_full) { 
+		echo '<div class="person_box_lifespan" >';
 		echo $person->getLifeSpan();
+		echo '</div>';
 	}
 	?>
 		<span class="name<?php echo $style; ?>"> <?php echo $genderImage; ?></span>
