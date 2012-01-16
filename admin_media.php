@@ -88,11 +88,11 @@ function move_file($src, $dest) {
 
 	// sometimes thumbnail files are set to something like "images/media.gif", this ensures we do not move them
 	// check to make sure the src file is in the standard or protected media directories
-	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $src)==0) {
+	if (strpos($src, $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)!==0 && strpos($src, $MEDIA_DIRECTORY)!==0) {
 		return false;
 	}
 	// check to make sure the dest file is in the standard or protected media directories
-	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $dest)==0) {
+	if (strpos($dest, $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)!==0 && strpos($dest, $MEDIA_DIRECTORY)!==0) {
 		return false;
 	}
 
@@ -108,7 +108,7 @@ function move_file($src, $dest) {
 		echo '<div class="error">', WT_I18N::translate('Media file could not be moved.'), ' (', $src, ')</div>';
 		return false;
 	}
-	echo '<div>', WT_I18N::translate('Media file moved.'), ' (', $src, ')</div>';
+	echo '<div>', WT_I18N::translate('Media file moved.'), ' (', $src, ' - ', $dest, ')</div>';
 	return true;
 }
 
