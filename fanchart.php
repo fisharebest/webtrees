@@ -35,12 +35,10 @@ if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'js/autocomplete.js.htm';
 }
 
-$cellwidth = max(strlen(strip_tags($controller->getPageTitle()))*4, 420);
-
 ?>
 <table class="list_table">
 	<tr>
-		<td width="<? echo $cellwidth; ?>px" valign="top">
+		<td>
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 		</td>
 		<td>

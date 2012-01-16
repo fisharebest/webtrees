@@ -1,5 +1,5 @@
 <?php
-//	Controller for the pedigree chart
+//	Controller for the fan chart
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2012 webtrees development team.
