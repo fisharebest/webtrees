@@ -94,9 +94,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			$this->cellwidth=(strlen($this->name)*14);
 		}
 
-		$this->name=$this->root->getFullName();
-
-		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Descendants of %s', $this->name));
+		if ($this->root && $this->root->canDisplayName()) {
+			$this->setPageTitle(
+				/* I18N: %s is a person's name */
+				WT_I18N::translate('Descendants of %s', $this->root->getFullName())
+			);
+		} else {
+			$this->setPageTitle(WT_I18N::translate('Descendants'));
+		}
 	}
 
 	/**

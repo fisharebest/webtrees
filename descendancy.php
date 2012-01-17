@@ -51,7 +51,7 @@ if (WT_USE_LIGHTBOX) {
 }
 // ==========================================================================================
 
-echo '<table><tr><td valign="top"><h2>', WT_I18N::translate('Descendants of %s', $controller->name), '</h2>';
+echo '<table><tr><td valign="top"><h2>', $controller->getPageTitle(), '</h2>';
 echo WT_JS_START;
 echo 'var pastefield; function paste_id(value) {pastefield.value=value;}';
 echo WT_JS_END;
@@ -64,7 +64,7 @@ echo '<table class="list_table">';
 echo '<tr><td class="descriptionbox">';
 echo WT_I18N::translate('Individual'), '</td>';
 echo '<td class="optionbox">';
-echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="', $controller->root->getXref(), '">';
+echo '<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="', $controller->rootid, '">';
 print_findindi_link("rootid", "");
 echo '</td>';
 echo '<td class="descriptionbox">';
@@ -117,8 +117,10 @@ if ($controller->show_full) {
 }
 echo '></td></tr></table></form>';
 echo '</td></tr></table>';
-if (is_null($controller->root)) {
-	echo '<span class="error">', WT_I18N::translate('The requested GEDCOM record could not be found.  This could be caused by a link to an invalid person or by a corrupt GEDCOM file.'), '</span>';
+
+if ($controller->error_message) {
+	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+	exit;
 }
 
 switch ($controller->chart_style) {
