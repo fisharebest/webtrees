@@ -594,6 +594,8 @@ border:1px solid #AAA;
 padding:3px;
 }
 
+.person_box_lifespan {display: inline;}
+
 .action_headerF {background: #FDD;}
 .action_header {background: #DDF;}
 

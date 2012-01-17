@@ -31,30 +31,50 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
-?>
-<div id="out-<?php echo $boxID; ?>" <?php echo $outBoxAdd; ?>>
+
+echo '<div id="out-',$boxID,'" ',$outBoxAdd; '">'; ?>
+
 <!--  table helps to maintain spacing -->
-<table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td valign="top">
-<?php	
-	if ($show_full) { 
-			echo '<div class="noprint" id="icons-',$boxID,'"';
-			echo 'style="',$iconsStyleAdd,' width: 25px; height: 50px">';
-			echo $icons;
-			echo '</div>';
-	}	
-		echo $thumbnail; ?>
-		<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php echo $pid; ?>&amp;ged=<?php echo rawurlencode($GEDCOM); ?>">
-		<span id="namedef-<?php echo $boxID; ?>" class="name<?php echo $style; ?> <?php echo $classfacts; ?>">
-			<?php echo $name.$addname; ?>
-		</span>
-		<span class="name<?php echo $style; ?>"> <?php echo $genderImage; ?></span>
-		<?php echo $showid; ?> </a>
-		<div id="fontdef-<?php echo $boxID; ?>" class="details<?php echo $style; ?>">
-		<!--  Set box height so the birth and death fields have 1/2 the block size plus an extra 10px for longe locations-->
-		<div id="inout2-<?php echo $boxID; ?>" style="display: block; max-height: <?php echo $bheight*.9; ?>px;"><?php echo $BirthDeath; ?></div>
-		</div>
-		<div id="inout-<?php echo $boxID; ?>" style="display: none;">
-			<div id="LOADING-inout-<?php echo $boxID; ?>"><?php echo WT_I18N::translate('Loading...'); ?></div>
-		</div>
-</td></tr></table>
-</div>
+
+<?php 
+echo '<table width="100%" cellspacing="0" cellpadding="0" border="0"><tr><td valign="top">';
+
+if ($show_full) { 
+	echo '<div class="noprint" id="icons-',$boxID,'"',
+		 'style="',$iconsStyleAdd,' width: 25px; height: 50px">',
+		 $icons,
+		 '</div>';
+}	
+
+echo $thumbnail; ?>
+<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php echo $pid; ?>&amp;ged=<?php echo rawurlencode($GEDCOM); ?>">
+
+<?php
+echo '<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts;'">';
+
+if ($show_full) { 
+	echo $name.$addname;
+	} else {
+	echo $name; // do not print additional names
+}
+
+echo ' </span>';
+if 	(!$show_full) { 
+	echo '<div class="person_box_lifespan" >',
+		 $person->getLifeSpan();
+	echo '</div>';
+}
+
+echo '<span class="name',$style,'" ',$genderImage,'</span>';
+echo $showid; 
+echo '</a>',
+	 '<div id="fontdef-',$boxID,'" class="details',$style,'">';
+echo '<div id="inout2-', $boxID,'" style="display: block; max-height:', ($bheight*.9),'px;">',$BirthDeath,'</div>';
+
+echo '</div>',
+	 '<div id="inout-',$boxID,'" style="display: none;">',
+	 '<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading...'),'</div>',
+	 '</div>',
+	 '</td></tr></table>',
+	 '</div>';
+?>
