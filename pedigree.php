@@ -1,8 +1,5 @@
 <?php
-// Parses gedcom file and displays a pedigree tree.
-//
-// Specify a $rootid to root the pedigree tree at a certain person
-// with id = $rootid in the GEDCOM file.
+// View for the pedigree tree.
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2012 webtrees development team.
@@ -31,89 +28,92 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Pedigree();
-$controller->pageHeader();
+$controller
+	->pageHeader()
+	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
 
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+if ($ENABLE_AUTOCOMPLETE) {
+	require WT_ROOT.'js/autocomplete.js.htm';
+}
 
-// LightBox
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 
-echo '<table><tr><td valign="middle">';
-echo '<h2>', WT_I18N::translate('Pedigree tree of %s', $controller->name), '</h2>';
-// -- echo the form to change the number of displayed generations
 ?>
-	<script type="text/javascript">
-	<!--
-	var pastefield;
-	function paste_id(value) {
-		pastefield.value=value;
-	}
-	//-->
-	</script>
-	</td><td width="50px">&nbsp;</td><td><form name="people" id="people" method="get" action="?">
-	<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
-		<table class="list_table" width="500" align="center">
-			<tr>
-				<td colspan="4" class="topbottombar" style="text-align:center;">
-					<?php echo WT_I18N::translate('Options:'); ?>
-				</td>
-			</tr>
-			<tr>
-				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Individual'); ?>
-				</td>
-				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Generations'); ?>
-				</td>
-				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Layout'); ?>
-				</td>
-				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Show Details'); ?>
-				</td>
-			</tr>
 
-			<tr>
-				<td class="optionbox">
-					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
-					<?php print_findindi_link("rootid", ""); ?>
-				</td>
-				<td class="optionbox">
-					<select name="PEDIGREE_GENERATIONS">
-					<?php
-						for ($i=3; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
-							echo "<option value=\"", $i, "\"" ;
-							if ($i == $controller->PEDIGREE_GENERATIONS) echo " selected=\"selected\"";
-							echo ">", $i, "</option>";
-						}
-					?>
-					</select>
-				</td>
-				<td class="optionbox">
-					<?php echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset); ?>
-				</td>
-				<td class="optionbox">
-					<input type="checkbox" value="<?php
-					if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
-					else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
-				</td>
-			</tr>
-			<tr>
-				<td class="topbottombar" colspan="4">
-					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
-				</td>
-			</tr>
-		</table>
-	</form>
-<?php
-	if ($show_full==0) {
-		echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br>';
-	}
-?>
-	</td></tr>
+<table>
+	<tr>
+		<td valign="middle">
+			<h2><?php echo $controller->getPageTitle(); ?></h2>
+		</td>
+		<td width="50px">&nbsp;</td>
+		<td>
+			<form name="people" id="people" method="get" action="?">
+				<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
+				<table class="list_table" width="500" align="center">
+					<tr>
+						<td class="descriptionbox wrap">
+							<?php echo WT_I18N::translate('Individual'); ?>
+						</td>
+						<td class="descriptionbox wrap">
+							<?php echo WT_I18N::translate('Generations'); ?>
+						</td>
+						<td class="descriptionbox wrap">
+							<?php echo WT_I18N::translate('Layout'); ?>
+						</td>
+						<td class="descriptionbox wrap">
+							<?php echo WT_I18N::translate('Show Details'); ?>
+						</td>
+						<td rowspan="2" class="facts_label03">
+							<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+						</td>
+					</tr>
+					<tr>
+						<td class="optionbox">
+							<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+							<?php print_findindi_link("rootid", ""); ?>
+						</td>
+						<td class="optionbox">
+							<select name="PEDIGREE_GENERATIONS">
+								<?php
+								for ($i=3; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
+									echo "<option value=\"", $i, "\"" ;
+									if ($i == $controller->PEDIGREE_GENERATIONS) echo " selected=\"selected\"";
+									echo ">", $i, "</option>";
+								}
+								?>
+							</select>
+						</td>
+						<td class="optionbox">
+							<?php echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset); ?>
+						</td>
+						<td class="optionbox">
+							<input type="checkbox" value="<?php
+							if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
+							else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
+						</td>
+					</tr>
+				</table>
+			</form>
+		<?php
+			if ($show_full==0) {
+				echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br>';
+			}
+		?>
+		</td>
+	</tr>
 </table>
+
+<?php
+
+if ($controller->error_message) {
+	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+	exit;
+}
+
+?>
+
 <div id="pedigree_chart"> 
 <?php
 //-- echo the boxes
@@ -326,123 +326,121 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	}
 }
 
-if ($controller->root->canDisplayDetails()) {
-	// -- echo left arrow for decendants so that we can move down the tree
-	$yoffset += ($controller->pbheight / 2)-10;
-	$famids = $controller->root->getSpouseFamilies();
-	//-- make sure there is more than 1 child in the family with parents
-	$cfamids = $controller->root->getChildFamilies();
-	if (count($famids)>0) {
-		echo "<div id=\"childarrow\" dir=\"";
-		if ($TEXT_DIRECTION=="rtl") {
-			echo "rtl\" style=\"position:absolute; right:";
-		} else {
-			echo "ltr\" style=\"position:absolute; left:";
-		}
-		switch ($talloffset) {
-		case 0:
-			if ($PEDIGREE_GENERATIONS<6) {
-				$addxoffset = 60*(5-$PEDIGREE_GENERATIONS);
-			} else {
-				$addxoffset = 0;
-			}
-			echo $addxoffset, "px; top:", $yoffset, "px; width:10px; height:10px;\">";
-			if ($TEXT_DIRECTION=="rtl") {
-				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 1);\" onmouseout=\"swap_image('arrow0', 1);\">";
-				echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['rarrow'], '" alt="">';
-			} else {
-				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 0);\" onmouseout=\"swap_image('arrow0', 0);\">";
-				echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['larrow'], '" alt="">';
-			}
-			break;
-		case 1:
-			if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
-			echo $basexoffset, "px; top:", $yoffset, "px; width:10px; height:10px;\">";
-			if ($TEXT_DIRECTION=="rtl") {
-				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 1);\" onmouseout=\"swap_image('arrow0', 1);\">";
-				echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['rarrow'], '" alt="">';
-			} else {
-				echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 0);\" onmouseout=\"swap_image('arrow0', 0);\">";
-				echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['larrow'], '" alt="">';
-			}
-			break;
-		case 2:
-			echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset+$controller->pbheight/2+10), "px; width:10px; height:10px;\">";
-			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 3);\" onmouseout=\"swap_image('arrow0', 3);\">";
-			echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['darrow'], '" alt="">';
-			break;
-		case 3:
-			echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset-$controller->pbheight/2-10), "px; width:10px; height:10px;\">";
-			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 2);\" onmouseout=\"swap_image('arrow0', 2);\">";
-			echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['uarrow'], '" alt="">';
-			break;
-		}
-		echo "</a>";
-		echo "</div>";
-		$yoffset += ($controller->pbheight / 2)+10;
-		echo "<div id=\"childbox\" dir=\"";
-		if ($TEXT_DIRECTION=="rtl") {
-			echo "rtl\" style=\"position:absolute; right:";
-		} else {
-			echo "ltr\" style=\"position:absolute; left:";
-		}
-		echo $xoffset, "px; top:", $yoffset, "px; width:", $controller->pbwidth, "px; height:", $controller->pbheight, "px; visibility: hidden;\">";
-		echo "<table class=\"person_box\"><tr><td>";
-		foreach ($famids as $family) {
-			$spouse=$family->getSpouse($controller->root);
-			if ($spouse) {
-				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spouse->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
-				$name = $spouse->getFullName();
-				if (hasRTLText($name)) {
-					echo 'class="name2">';
-				} else {
-					echo 'class="name1">';
-				}
-				echo $name;
-				echo '<br></span></a>';
-			}
-
-			$children = $family->getChildren();
-			foreach ($children as $child) {
-				echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
-				$name = $child->getFullName();
-				if (hasRTLText($name)) {
-					echo "class=\"name2\">&lt; ";
-				} else {
-					echo "class=\"name1\">&lt; ";
-				}
-				echo $name;
-				echo '<br></span></a>';
-			}
-		}
-		//-- echo the siblings
-		foreach ($cfamids as $family) {
-			if ($family!=null) {
-				$children = $family->getChildren();
-				if (count($children)>2) {
-					echo '<span class="name1"><br>', WT_I18N::translate('Siblings'), '<br></span>';
-				}
-				if (count($children)==2) {
-					echo '<span class="name1"><br>', WT_I18N::translate('Sibling'), '<br></span>';
-				}
-				foreach ($children as $child) {
-					if (!$controller->root->equals($child) && !is_null($child)) {
-						echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
-						$name = $child->getFullName();
-						if (hasRTLText($name)) {
-							echo 'class="name2"> ';
-						} else {
-							echo 'class="name1"> ';
-						}
-						echo $name;
-						echo '<br></span></a>';
-					}
-				}
-			}
-		}
-		echo "</td></tr></table>";
-		echo "</div>";
+// -- echo left arrow for decendants so that we can move down the tree
+$yoffset += ($controller->pbheight / 2)-10;
+$famids = $controller->root->getSpouseFamilies();
+//-- make sure there is more than 1 child in the family with parents
+$cfamids = $controller->root->getChildFamilies();
+if (count($famids)>0) {
+	echo "<div id=\"childarrow\" dir=\"";
+	if ($TEXT_DIRECTION=="rtl") {
+		echo "rtl\" style=\"position:absolute; right:";
+	} else {
+		echo "ltr\" style=\"position:absolute; left:";
 	}
+	switch ($talloffset) {
+	case 0:
+		if ($PEDIGREE_GENERATIONS<6) {
+			$addxoffset = 60*(5-$PEDIGREE_GENERATIONS);
+		} else {
+			$addxoffset = 0;
+		}
+		echo $addxoffset, "px; top:", $yoffset, "px; width:10px; height:10px;\">";
+		if ($TEXT_DIRECTION=="rtl") {
+			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 1);\" onmouseout=\"swap_image('arrow0', 1);\">";
+			echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['rarrow'], '" alt="">';
+		} else {
+			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 0);\" onmouseout=\"swap_image('arrow0', 0);\">";
+			echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['larrow'], '" alt="">';
+		}
+		break;
+	case 1:
+		if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
+		echo $basexoffset, "px; top:", $yoffset, "px; width:10px; height:10px;\">";
+		if ($TEXT_DIRECTION=="rtl") {
+			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 1);\" onmouseout=\"swap_image('arrow0', 1);\">";
+			echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['rarrow'], '" alt="">';
+		} else {
+			echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 0);\" onmouseout=\"swap_image('arrow0', 0);\">";
+			echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['larrow'], '" alt="">';
+		}
+		break;
+	case 2:
+		echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset+$controller->pbheight/2+10), "px; width:10px; height:10px;\">";
+		echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 3);\" onmouseout=\"swap_image('arrow0', 3);\">";
+		echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['darrow'], '" alt="">';
+		break;
+	case 3:
+		echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), "px; top:", ($yoffset-$controller->pbheight/2-10), "px; width:10px; height:10px;\">";
+		echo "<a href=\"#\" onclick=\"togglechildrenbox(); return false;\" onmouseover=\"swap_image('arrow0', 2);\" onmouseout=\"swap_image('arrow0', 2);\">";
+		echo '<img id="arrow0" class="noprint" src="', $WT_IMAGES['uarrow'], '" alt="">';
+		break;
+	}
+	echo "</a>";
+	echo "</div>";
+	$yoffset += ($controller->pbheight / 2)+10;
+	echo "<div id=\"childbox\" dir=\"";
+	if ($TEXT_DIRECTION=="rtl") {
+		echo "rtl\" style=\"position:absolute; right:";
+	} else {
+		echo "ltr\" style=\"position:absolute; left:";
+	}
+	echo $xoffset, "px; top:", $yoffset, "px; width:", $controller->pbwidth, "px; height:", $controller->pbheight, "px; visibility: hidden;\">";
+	echo "<table class=\"person_box\"><tr><td>";
+	foreach ($famids as $family) {
+		$spouse=$family->getSpouse($controller->root);
+		if ($spouse) {
+			echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spouse->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
+			$name = $spouse->getFullName();
+			if (hasRTLText($name)) {
+				echo 'class="name2">';
+			} else {
+				echo 'class="name1">';
+			}
+			echo $name;
+			echo '<br></span></a>';
+		}
+
+		$children = $family->getChildren();
+		foreach ($children as $child) {
+			echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
+			$name = $child->getFullName();
+			if (hasRTLText($name)) {
+				echo "class=\"name2\">&lt; ";
+			} else {
+				echo "class=\"name1\">&lt; ";
+			}
+			echo $name;
+			echo '<br></span></a>';
+		}
+	}
+	//-- echo the siblings
+	foreach ($cfamids as $family) {
+		if ($family!=null) {
+			$children = $family->getChildren();
+			if (count($children)>2) {
+				echo '<span class="name1"><br>', WT_I18N::translate('Siblings'), '<br></span>';
+			}
+			if (count($children)==2) {
+				echo '<span class="name1"><br>', WT_I18N::translate('Sibling'), '<br></span>';
+			}
+			foreach ($children as $child) {
+				if (!$controller->root->equals($child) && !is_null($child)) {
+					echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
+					$name = $child->getFullName();
+					if (hasRTLText($name)) {
+						echo 'class="name2"> ';
+					} else {
+						echo 'class="name1"> ';
+					}
+					echo $name;
+					echo '<br></span></a>';
+				}
+			}
+		}
+	}
+	echo "</td></tr></table>";
+	echo "</div>";
 }
 // -- print html footer
 $maxyoffset+=30;

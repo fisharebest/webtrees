@@ -81,10 +81,14 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$show_full = $this->show_full;
 		$talloffset = $this->talloffset;
 
-		$this->name     = $this->root->getFullName();
-		$this->addname  = $this->root->getAddName();
-
-		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree tree of %s', $this->name));
+		if ($this->root && $this->root->canDisplayName()) {
+			$this->setPageTitle(
+				/* I18N: %s is a person's name */
+				WT_I18N::translate('Pedigree tree of %s', $this->root->getFullName())
+			);
+		} else {
+			$this->setPageTitle(WT_I18N::translate('Pedigree tree'));
+		}
 
 		//-- adjustments for hide details
 		if ($this->show_full==false) {
@@ -105,7 +109,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		$this->pbwidth = $bwidth+6;
 		$this->pbheight = $bheight+5;
 
-		$this->treeid = ancestry_array($this->root->getXref());
+		$this->treeid = ancestry_array($this->rootid);
 		$this->treesize = pow(2, (int)($this->PEDIGREE_GENERATIONS))-1;
 
 		//-- ancestry_array puts everyone at $i+1
