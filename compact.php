@@ -2,7 +2,7 @@
 // Compact pedigree tree
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -36,43 +36,50 @@ if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'js/autocomplete.js.htm';
 }
 
-// LBox =====================================================================================
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
-// ==========================================================================================
 
-echo '<table class="list_table"><tr><td>';
-echo '<h2>', $controller->getPageTitle(), '</h2>';
-echo '</td><td><form name="people" id="people" method="get" action="', WT_SCRIPT_NAME, '">';
-echo '<table class="list_table">';
-echo '<tr>';
-echo '<td class="descriptionbox">';
-echo WT_I18N::translate('Individual'), '</td>';
-echo '<td class="optionbox vmiddle">';
-echo '<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="', $controller->rootid, '">';
-print_findindi_link('rootid','');
-echo '</td>';
+?>
 
-// NOTE: submit
-echo '<td class="facts_label03" ', ($SHOW_HIGHLIGHT_IMAGES ? 'rowspan="2"' : ''), '>';
-echo '<input type="submit" value="'.WT_I18N::translate('View').'">';
-echo '</td></tr>';
+<table class="list_table">
+	<tr>
+		<td>
+			<h2><?php echo $controller->getPageTitle(); ?></h2>
+		</td>
+		<td>
+			<form name="people" id="people" method="get" action="#">
+				<table class="list_table">
+					<tr>
+						<td class="descriptionbox">
+							<?php echo WT_I18N::translate('Individual'); ?>
+						</td>
+						<td class="optionbox vmiddle">
+							<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+							<?php print_findindi_link('rootid',''); ?>
+						</td>
+							<td <?php echo $SHOW_HIGHLIGHT_IMAGES ? 'rowspan="2"' : ''; ?> class="facts_label03">
+								<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+							</td>
+						</tr>
+						<?php if ($SHOW_HIGHLIGHT_IMAGES) { ?>
+						<tr>
+							<td class="descriptionbox">
+								<?php echo WT_I18N::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES'); ?>
+							</td>
+							<td class="optionbox">
+								<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked="checked"' : ''; ?>>
+							</td>
+						</tr>
+						<?php } ?>
+					</table>
+			</form>
+		</td>
+	</tr>
+</table>
+<br>
 
-if ($SHOW_HIGHLIGHT_IMAGES) {
-	echo '<tr>';
-	echo '<td class="descriptionbox">';
-	echo WT_I18N::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES');
-	echo '</td>';
-	echo '<td class="optionbox">';
-	echo '<input name="show_thumbs" type="checkbox" value="1"';
-	if ($controller->show_thumbs) echo ' checked="checked"';
-	echo '></td></tr>';
-}
-
-echo '</table>';
-echo '</form>';
-echo '</td></tr></table>';
+<?php
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
@@ -81,7 +88,6 @@ if ($controller->error_message) {
 
 ?>
 
-<br>
 <table width="100%" style="text-align:center;">
 	<tr>
 		<?php echo $controller->sosa_person(16); ?>
@@ -225,7 +231,7 @@ if ($controller->error_message) {
 		<?php echo $controller->sosa_person(5); ?>
 		<td><?php echo $controller->sosa_arrow(11, 'right'); ?></td>
 		<?php echo $controller->sosa_person(11); ?>
-		<td></td>
+		<td>&nbsp;</td>
 		<?php echo $controller->sosa_person(14); ?>
 		<td><?php echo $controller->sosa_arrow(14, 'left'); ?></td>
 		<?php echo $controller->sosa_person(7); ?>
