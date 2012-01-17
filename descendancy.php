@@ -41,22 +41,19 @@ $nonfamfacts[] = 'UID';
 $nonfamfacts[] = '';
 
 $controller=new WT_Controller_Descendancy();
-$controller->pageHeader();
+$controller
+	->pageHeader()
+	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
 
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+if ($ENABLE_AUTOCOMPLETE) {
+	require WT_ROOT.'js/autocomplete.js.htm';
+}
 
-// LBox =====================================================================================
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
-// ==========================================================================================
 
 echo '<table><tr><td valign="top"><h2>', $controller->getPageTitle(), '</h2>';
-echo WT_JS_START;
-echo 'var pastefield; function paste_id(value) {pastefield.value=value;}';
-echo WT_JS_END;
-
-$gencount=0;
 echo '</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">';
 echo '<input type="hidden" name="ged" value="', WT_GEDCOM, '">';
 echo '<input type="hidden" name="show_full" value="', $controller->show_full, '">';

@@ -43,7 +43,9 @@ $nonfamfacts[] = 'UID';
 $nonfamfacts[] = '';
 
 $controller=new WT_Controller_Ancestry();
-$controller->pageHeader();
+$controller
+	->pageHeader()
+	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
@@ -54,8 +56,6 @@ if (WT_USE_LIGHTBOX) {
 
 echo '<table><tr><td valign="middle">';
 echo '<h2>', $controller->getPageTitle(), '</h2>';
-// -- print the form to change the number of displayed generations
-echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=value;}', WT_JS_END;
 ?>
 </td><td width="50px">&nbsp;</td><td><form name="people" id="people" method="get" action="?">
 <input type="hidden" name="ged" value="<?php echo WT_GEDCOM; ?>">

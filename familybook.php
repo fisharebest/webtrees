@@ -1,5 +1,5 @@
 <?php
-// Display an family book chart
+// View for the family book chart
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2012 webtrees development team.

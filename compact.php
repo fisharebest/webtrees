@@ -47,6 +47,7 @@ if (WT_USE_LIGHTBOX) {
 		<td>
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 		</td>
+		<td width="50px">&nbsp;</td>
 		<td>
 			<form name="people" id="people" method="get" action="#">
 				<table class="list_table">
