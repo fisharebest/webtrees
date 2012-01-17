@@ -76,10 +76,15 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		$pbwidth = $bwidth+12;
 		$pbheight = $bheight+14;
 
-		$this->name     = $this->root->getFullName();
-		$this->addname  = $this->root->getAddName();
-
-		$this->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Ancestors of %s', $this->name));
+		if ($this->root && $this->root->canDisplayName()) {
+			$this->setPageTitle(
+				/* I18N: %s is a person's name */
+			WT_I18N::translate('Ancestors of %s', $this->root->getFullName())
+		);
+			$this->treeid=ancestry_array($this->rootid, 5);
+		} else {
+			$this->setPageTitle(WT_I18N::translate('Ancestors'));
+		}
 
 		if (strlen($this->name)<30) $this->cellwidth="420";
 		else $this->cellwidth=(strlen($this->name)*14);

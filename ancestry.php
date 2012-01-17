@@ -53,7 +53,7 @@ if (WT_USE_LIGHTBOX) {
 }
 
 echo '<table><tr><td valign="middle">';
-echo '<h2>', WT_I18N::translate('Ancestors of %s', $controller->name), '</h2>';
+echo '<h2>', $controller->getPageTitle(), '</h2>';
 // -- print the form to change the number of displayed generations
 echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=value;}', WT_JS_END;
 ?>
@@ -67,7 +67,7 @@ echo WT_JS_START, 'var pastefield; function paste_id(value) {pastefield.value=va
 <tr>
 	<td class="descriptionbox"><?php echo WT_I18N::translate('Individual'); ?></td>
 <td class="optionbox">
-<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
 <?php print_findindi_link('rootid', ''); ?>
 </td>
 
@@ -172,6 +172,11 @@ if ($show_full==0) {
 	echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br><br>';
 }
 
+if ($controller->error_message) {
+	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+	exit;
+}
+
 switch ($controller->chart_style) {
 case 0:
 	// List
@@ -225,7 +230,7 @@ case 3:
 		}
 	}
 	echo '<div id="ancestry-list">';
-	echo format_fam_table($famlist, WT_I18N::translate('Ancestors of %s', $controller->name));
+	echo format_fam_table($famlist, $controller->getPageTitle());
 	echo '</div>';
 	break;
 }
