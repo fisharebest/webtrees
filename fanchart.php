@@ -49,7 +49,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 							<?php echo WT_I18N::translate('Individual'); ?>
 						</td>
 						<td class="optionbox">
-							<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->root->getXref(); ?>">
+							<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
 							<?php print_findindi_link('rootid', ''); ?>
 						</td>
 						<td class="descriptionbox">
@@ -115,4 +115,10 @@ if ($ENABLE_AUTOCOMPLETE) {
 			</form>
 		</tr>
 </table>
-<?php echo $controller->chart_html; ?>
+
+<?php
+if ($controller->error_message) {
+	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
+} else {
+	echo $controller->chart_html;
+}

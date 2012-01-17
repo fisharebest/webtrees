@@ -27,20 +27,19 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Controller_Chart extends WT_Controller_Base {
 	public $root;
-	public $error=null;
-	public $warning=null;
+	public $rootid;
+	public $error_message=null;
 
 	public function __construct() {
 		parent::__construct();
 
-		$rootid=safe_GET_xref('rootid');
-		$this->root=WT_Person::getInstance($rootid);
+		$this->rootid=safe_GET_xref('rootid');
+		$this->root=WT_Person::getInstance($this->rootid);
 		
 		if (!$this->root || !$this->root->canDisplayName()) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
-			$this->error=WT_I18N::translate('This individual does not exist or you do not have permission to view it.');
-		} elseif (!$this->root->canDisplayDetails()) {
-			$this->warning=WT_I18N::translate('The details of this individual are private.');
+			$this->error_message=WT_I18N::translate('This individual does not exist or you do not have permission to view it.');
+			$this->rootid=null;
 		}
 	}
 
