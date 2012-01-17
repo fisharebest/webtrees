@@ -87,7 +87,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 				WT_I18N::translate('Pedigree tree of %s', $this->root->getFullName())
 			);
 		} else {
-			$this->setPageTitle(WT_I18N::translate('Pedigree tree'));
+			$this->setPageTitle(WT_I18N::translate('Pedigree'));
 		}
 
 		//-- adjustments for hide details
