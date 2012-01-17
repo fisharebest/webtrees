@@ -2,7 +2,7 @@
 // Display an family book chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -25,11 +25,11 @@
 
 define('WT_SCRIPT_NAME', 'familybook.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_charts.php';
 
 $controller=new WT_Controller_Familybook();
-
-$controller->pageHeader();
+$controller
+	->pageHeader()
+	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
 
 if ($ENABLE_AUTOCOMPLETE) {
 	require WT_ROOT.'js/autocomplete.js.htm';
@@ -39,90 +39,77 @@ if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 
-echo '<table><tr><td valign="top">';
-echo '<h2>'.$controller->getPageTitle(), '</h2>';
 ?>
 
-<script type="text/javascript">
-<!--
-	var pastefield;
-	function open_find(textbox) {
-		pastefield = textbox;
-		findwin = window.open('find.php?type=indi', '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
-	}
-	function paste_id(value) {
-		pastefield.value=value;
-	}
-//-->
-</script>
-
-</td><td width="50px">&nbsp;</td><td><form method="get" name="people" action="?">
-<table><tr>
-
-<td class="descriptionbox">
-	<?php echo WT_I18N::translate('Individual'); ?>
-</td>
-<td class="optionbox">
-	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
-	<?php print_findindi_link('rootid',''); ?>
-</td>
-
-<td class="descriptionbox">
-<?php echo WT_I18N::translate('Show Details'); ?>
-</td>
-<td class="optionbox">
-<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
-<input type="checkbox" value="<?php
-	if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
-else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
-</td>
-
-<td rowspan="4" class="topbottombar vmiddle">
-<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ WT_I18N::translate('View'); ?>">
-</td></tr>
-
-<tr><td class="descriptionbox">
-<?php echo WT_I18N::translate('Generations'); ?>
-</td>
-<td class="optionbox">
-<select name="generations">
-<?php
-for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
-	echo "<option value=\"".$i."\"" ;
-	if ($i == $controller->generations) echo " selected=\"selected\"";
-	echo ">".WT_I18N::number($i)."</option>";
-}
-?>
-</select>
-</td>
-
-<td class="descriptionbox">
-	<?php echo WT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
-</td>
-<td class="optionbox">
-<input type="checkbox" value="1" name="show_spouse"
-<?php
-if ($controller->show_spouse) echo " checked=\"checked\""; ?>>
-</td></tr>
-
-<tr><td class="descriptionbox">
-	<?php echo WT_I18N::translate('Box width'); ?>
-</td>
-<td class="optionbox"><input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>">
-<b>%</b>
-</td>
-
-<td class="descriptionbox">&nbsp;</td><td class="optionbox">&nbsp;</td></tr>
-
-<tr><td class="descriptionbox">
-	<?php echo WT_I18N::translate('Descent Steps'), help_link('fambook_descent'); ?>
-</td>
-<td class="optionbox"><input type="text" size="3" name="descent" value="<?php echo $controller->descent; ?>">
-</td>
-
-<td class="descriptionbox">&nbsp;</td><td class="optionbox">&nbsp;</td></tr>
-</table></form>
-</td></tr></table>
+<table>
+	<tr>
+		<td valign="top">
+			<h2><?php echo $controller->getPageTitle(); ?></h2>
+		</td>
+		<td width="50px">&nbsp;</td>
+		<td>
+			<form method="get" name="people" action="?">
+				<table>
+					<tr>
+						<td class="descriptionbox">
+							<?php echo WT_I18N::translate('Individual'); ?>
+						</td>
+						<td class="optionbox">
+							<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+							<?php print_findindi_link('rootid',''); ?>
+						</td>
+						<td class="descriptionbox">
+							<?php echo WT_I18N::translate('Show Details'); ?>
+						</td>
+						<td class="optionbox">
+							<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
+							<input type="checkbox" value="<?php	if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';"; else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
+						</td>
+						<td rowspan="3" class="topbottombar vmiddle">
+							<input type="submit" value="<?php echo /* I18N: Submit button, on a form */ WT_I18N::translate('View'); ?>">
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox">
+							<?php echo WT_I18N::translate('Generations'); ?>
+						</td>
+						<td class="optionbox">
+							<select name="generations">
+								<?php
+								for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
+									echo "<option value=\"".$i."\"" ;
+									if ($i == $controller->generations) echo " selected=\"selected\"";
+									echo ">".WT_I18N::number($i)."</option>";
+								}
+								?>
+							</select>
+						</td>
+						<td class="descriptionbox">
+							<?php echo WT_I18N::translate('Show spouses'), help_link('show_spouse'); ?>
+						</td>
+						<td class="optionbox">
+							<input type="checkbox" value="1" name="show_spouse" <?php if ($controller->show_spouse) echo " checked=\"checked\""; ?>>
+						</td>
+					</tr>
+					<tr>
+						<td class="descriptionbox">
+							<?php echo WT_I18N::translate('Descent Steps'), help_link('fambook_descent'); ?>
+						</td>
+						<td class="optionbox">
+							<input type="text" size="3" name="descent" value="<?php echo $controller->descent; ?>">
+						</td>
+						<td class="descriptionbox">
+							<?php echo WT_I18N::translate('Box width'); ?>
+						</td>
+						<td class="optionbox">
+							<input type="text" size="3" name="box_width" value="<?php echo $controller->box_width; ?>"> %
+						</td>
+					</tr>
+				</table>
+			</form>
+		</td>
+	</tr>
+</table>
 
 <?php
 
@@ -131,11 +118,8 @@ if ($controller->error_message) {
 	exit;
 }
 
-echo
-	'<div id="familybook_chart',
-	($TEXT_DIRECTION=="ltr")?"":"_rtl",
-	'" style="width:98%; z-index:1;">';
+?>
 
-$controller->print_family_book($controller->root, $controller->descent);
-
-echo '</div>';
+<div id="familybook_chart" style="width:98%; z-index:1;">
+<?php $controller->print_family_book($controller->root, $controller->descent); ?>
+</div>

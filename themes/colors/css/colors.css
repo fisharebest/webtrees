@@ -1513,7 +1513,7 @@ margin: 0;
 	line-height: 1.5;
 }
 
-.block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #familybook_chart_rtl .itr, #hourglass_chart .itr, #hourglass_chart_rtl .itr, #relatives_content .itr {
+.block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #hourglass_chart_rtl .itr, #relatives_content .itr {
 	position: relative;
 	top: 0;
 }
@@ -1529,7 +1529,6 @@ margin: 0;
 #descendancy_chart .person_box, #descendancy_chart .person_boxF,
 #family-table .person_box, #family-table .person_boxF,
 #familybook_chart .person_box, #familybook_chart .person_boxF,
-#familybook_chart_rtl .person_box, #familybook_chart_rtl .person_boxF,
 #hourglass_chart .person_box, #hourglass_chart .person_boxF,
 #hourglass_chart_rtl .person_box, #hourglass_chart_rtl .person_boxF {
 	overflow: visible !important;
