@@ -117,8 +117,10 @@ if ($ENABLE_AUTOCOMPLETE) {
 </table>
 
 <?php
+
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
-} else {
-	echo $controller->chart_html;
+	exit;
 }
+
+echo $controller->chart_html;
