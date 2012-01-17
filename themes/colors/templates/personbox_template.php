@@ -45,9 +45,13 @@ if (!defined('WT_WEBTREES')) {
 		echo $thumbnail; ?>
 		<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php echo $pid; ?>&amp;ged=<?php echo rawurlencode($GEDCOM); ?>">
 		<span id="namedef-<?php echo $boxID; ?>" class="name<?php echo $style; ?> <?php echo $classfacts; ?>">
-			<?php echo $name.$addname; ?>
-		</span>
-	<?php
+<?php
+	if ($show_full) { 
+		echo $name.$addname;
+	} else {
+		echo $name;
+	}
+	echo ' </span>';
 	if (!$show_full) { 
 		echo '<div class="person_box_lifespan" >';
 		echo $person->getLifeSpan();
