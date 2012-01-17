@@ -54,6 +54,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('A request was received at %s to create a webtrees account with your email address %s.', '', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Data request at %s', '');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Enter the number of children for this individual or family. This is an optional field.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Fields marked with * are mandatory.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('GEDCOM information');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', '');
