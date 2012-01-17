@@ -2,7 +2,7 @@
 // Startup and session logic for handling Bots and Spiders
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2008 to 2009  PGV Development Team.  All rights reserved.
@@ -101,6 +101,9 @@ $SEARCH_SPIDER = false; // set empty at start
 $ua = isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "";
 
 $worms = array(
+	'Gigabot',    // http://www.gigablast.com/spider.html           - Ignores robots.txt
+	'Sogou',      // http://www.sogou.com/docs/help/webmasters.htm  - Ignores robots.txt
+	'facebook',   // http://www.facebook.com/externalhit_uatext.php - Ignores robots.txt
 	'oBot',
 	'Indy Library',
 	'XXX',
@@ -130,12 +133,6 @@ $worms = array(
 	);
 
 $quitReason = "";
-
-// check for attempt to redirect
-if (preg_match("/=.*:\/\//i", rawurldecode($_SERVER["REQUEST_URI"]))) {
-	//Removed (temporarily?) - this just hides badly escaped code elsewhere.  We should fix the real problem!?
-	//$quitReason = "Embedded URL detected";
-}
 
 // check for worms and bad bots
 if ($quitReason == "") {
@@ -187,14 +184,16 @@ $real_browsers = array(
 $known_spiders = array(
 	'Googlebot',
 	'Yahoo Slurp',
+	'YahooCacheSystem',
 	'msnbot',
 	'bingbot',
 	'Ask Jeeves',
 	'Mediapartners-Google',
 	'Feedfetcher-Google',
 	'Twiceler',
-	'YandexBot',   // Popular Russian/cyrillic search engine
-	'Baiduspider', // Popular Chinese search engine
+	'ia_archive',          // http://www.archive.org/
+	'YandexBot',           // Popular Russian/cyrillic search engine
+	'Baiduspider',         // Popular Chinese search engine
 );
 
 // We overlay the following name with carefully selected characters.
