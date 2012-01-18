@@ -121,9 +121,6 @@ function edit_field_yes_no($name, $selected=false, $extra='') {
 	return radio_buttons(
 		$name, array(false=>WT_I18N::translate('no'),true=>WT_I18N::translate('yes')), $selected, $extra
 	);
-	//return select_edit_control(
-		//$name, array(true=>WT_I18N::translate('yes'), false=>WT_I18N::translate('no')), null, $selected, $extra
-	//);
 }
 
 // An inline-editing version of edit_field_yes_no()
@@ -235,6 +232,15 @@ function edit_field_language_inline($name, $selected=false, $extra='') {
 	return select_edit_control_inline(
 		$name, WT_I18N::installed_languages(), null, $selected, $extra
 	);
+}
+
+// Print an edit control for a range of integers
+function edit_field_integers($name, $selected='', $min, $max, $extra='') {
+	$array=array();
+	for ($i=$min; $i<=$max; ++$i) {
+		$array[$i]=WT_I18N::number($i);
+	}
+	return select_edit_control($name, $array, null, $selected, $extra);
 }
 
 // Print an edit control for a username

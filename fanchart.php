@@ -25,6 +25,7 @@
 
 define('WT_SCRIPT_NAME', 'fanchart.php');
 require './includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Fanchart();
 $controller
@@ -57,17 +58,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 							<?php echo WT_I18N::translate('Layout'); ?>
 						</td>
 						<td class="optionbox">
-							<select name="fan_style">
-								<option value="2" <?php echo $controller->fan_style==2 ? 'selected="selected"' : ''; ?>>
-									<?php echo /* I18N: layout option for the fan chart */ WT_I18N::translate('half circle'); ?>
-								</option>
-								<option value="3" <?php echo $controller->fan_style==3 ? 'selected="selected"' : ''; ?>>
-									<?php echo /* I18N: layout option for the fan chart */ WT_I18N::translate('three-quarter circle'); ?>
-								</option>
-								<option value="4" <?php echo $controller->fan_style==4 ? 'selected="selected"' : ''; ?>>
-									<?php echo /* I18N: layout option for the fan chart */ WT_I18N::translate('full circle'); ?>
-								</option>
-							</select>
+							<?php echo select_edit_control('fan_style', $controller->getFanStyles(), null, $controller->fan_style); ?>
 						</td>
 						<td rowspan="2" class="topbottombar vmiddle">
 							<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
@@ -78,32 +69,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 							<?php echo WT_I18N::translate('Generations'); ?>
 						</td>
 						<td class="optionbox">
-							<select name="generations">
-								<option value="2" <?php echo $controller->generations==2 ? 'selected="selected"' : ''; ?>>
-									<?php echo WT_I18N::number(2); ?>
-								</option>
-								<option value="3" <?php echo $controller->generations==3 ? 'selected="selected"' : ''; ?>>
-									<?php echo WT_I18N::number(3); ?>
-								</option>
-								<option value="4" <?php echo $controller->generations==4 ? 'selected="selected"' : ''; ?>>
-									<?php echo WT_I18N::number(4); ?>
-								</option>
-								<option value="5" <?php echo $controller->generations==5 ? 'selected="selected"' : ''; ?>>
-									<?php echo WT_I18N::number(5); ?>
-								</option>
-								<option value="6" <?php echo $controller->generations==6 ? 'selected="selected"' : ''; ?>>
-									<?php echo WT_I18N::number(6); ?>
-								</option>
-								<option value="7" <?php echo $controller->generations==7 ? 'selected="selected"' : ''; ?>>
-									<?php echo WT_I18N::number(7); ?>
-								</option>
-								<option value="8" <?php echo $controller->generations==8 ? 'selected="selected"' : ''; ?>>
-									<?php echo WT_I18N::number(8); ?>
-								</option>
-								<option value="9" <?php echo $controller->generations==9 ? 'selected="selected"' : ''; ?>>
-									<?php echo WT_I18N::number(9); ?>
-								</option>
-							</select>
+							<?php echo edit_field_integers('generations', $controller->generations, 2, 9); ?>
 						</td>
 						<td class="descriptionbox">
 							<?php echo WT_I18N::translate('Width'), help_link('fan_width'); ?>
