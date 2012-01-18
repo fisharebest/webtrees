@@ -257,6 +257,7 @@ html[dir='rtl'] .makeMenu li ul li {
 
 .person_box, .person_boxF, .person_boxNN {margin: 0 0 0 3px;}
 
+.person_box_lifespan {display: inline;}
 
 html[dir='rtl'] .person_box html[dir='rtl'] .person_boxF html[dir='rtl'] .person_boxNN {margin: 0 3px 0 0;}
 

@@ -36,8 +36,33 @@ echo
 		echo $icons;
 		echo '</div>';
 	}	
-		echo $thumbnail,
-		'<a class="name', $style, ' ', $classfacts, '" onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">', $name.$addname, '</a>',
-		'<div id="inout2-', $boxID, '" class="details', $style, '" style="display:block; max-height: ', $bheight*.9, 'px">', $BirthDeath, '</div>',
-		'<div id="inout-', $boxID, '" style="display:none;"><div id="LOADING-inout-', $boxID, '"></div></div>',
-	'</div>';
+echo $thumbnail; ?>
+<a onclick="event.cancelBubble = true;" href="individual.php?pid=<?php echo $pid; ?>&amp;ged=<?php echo rawurlencode($GEDCOM); ?>">
+
+<?php
+echo '<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts;'">';
+
+if ($show_full) { 
+	echo $name.$addname;
+	} else {
+	echo $name; // do not print additional names
+}
+
+echo ' </span>';
+if 	(!$show_full) { 
+	echo '<div class="person_box_lifespan" >',
+		 $person->getLifeSpan();
+	echo '</div>';
+}
+
+echo '<span class="name',$style,'" ',$genderImage,'</span>';
+echo $showid; 
+echo '</a>',
+	 '<div id="fontdef-',$boxID,'" class="details',$style,'">';
+echo '<div id="inout2-', $boxID,'" style="display: block; max-height:', ($bheight*.9),'px;">',$BirthDeath,'</div>';
+
+echo '</div>',
+	 '<div id="inout-',$boxID,'" style="display: none;">',
+	 '<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading...'),'</div>',
+	 '</div>',
+	 '</div>';
