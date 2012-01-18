@@ -63,6 +63,7 @@ h4 {color:#006; font-weight:bold; font-size:12px;}
 .person_boxF {background-color:#e9daf1; border:1px solid #ff2080; padding:3px;}
 .person_boxNN {background-color:#fff; border:dashed #81a9cb 1px; padding:3px;}
 .person_box:target, .news_box:target, #gedcom_stats:target {background-color:#ffc;}
+.person_box_lifespan {display: inline;}
 
 
 .center {text-align:center;}
