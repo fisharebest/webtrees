@@ -61,6 +61,14 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		}
 	}
 
+	public function getFanStyles() {
+		return array(
+			2=>/* I18N: layout option for the fan chart */ WT_I18N::translate('half circle'),
+			3=>/* I18N: layout option for the fan chart */ WT_I18N::translate('three-quarter circle'),
+			4=>/* I18N: layout option for the fan chart */ WT_I18N::translate('full circle'),
+		);
+	}
+
 	/**
 	 * split and center text by lines
 	 *
