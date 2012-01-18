@@ -4,7 +4,7 @@
 // Various printing functions used to print fact records
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -586,14 +586,14 @@ function print_media_links($factrec, $level, $pid='') {
 					echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row['m_file'], '&amp;output=svembed"></iframe>';
 				// --------------------------------------------------------------------------------------
 				} else if ($USE_MEDIA_VIEWER) {
-					echo '<a href="mediaviewer.php?mid=', $media_id, '">';
+					echo '<a href="mediaviewer.php?mid=', $media_id, '&amp;ged=', WT_GEDURL, '">';
 				} else if (preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
 					echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($mainMedia), "', $imgwidth, $imgheight);\">";
 				// extra for Streetview ----------------------------------------
 				} else if (strpos($row['m_file'], 'http://maps.google.')===0) {
 					echo '<iframe width="300" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
 				} else {
-					echo '<a href="mediaviewer.php?mid=', $media_id, '">';
+					echo '<a href="mediaviewer.php?mid=', $media_id, '&amp;ged=', WT_GEDURL, '">';
 				}
 
 				echo '<img src="', $thumbnail, '" align="' , $TEXT_DIRECTION== 'rtl'?'right':'left', '" class="thumbnail"';
@@ -616,7 +616,7 @@ function print_media_links($factrec, $level, $pid='') {
 			echo '</div>'; // close div "media-display-image"
 			echo '<div id="media-display-title">';
 			if (empty($SEARCH_SPIDER)) {
-				echo '<a href="mediaviewer.php?mid=', $media_id, '">';
+				echo '<a href="mediaviewer.php?mid=', $media_id, '&amp;ged=', WT_GEDURL, '">';
 			}
 			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo getLRM(),  PrintReady($mediaTitle);
 			else echo PrintReady($mediaTitle);

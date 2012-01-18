@@ -3115,7 +3115,7 @@ function mediaFileInfo($fileName, $thumbName, $mid, $name='', $notes='', $admin=
 			break 2;
 		}
 		if ($USE_MEDIA_VIEWER && $obeyViewerOption) {
-			$url = 'mediaviewer.php?mid='.$mid;
+			$url = 'mediaviewer.php?mid='.$mid.'&amp;ged='.WT_GEDURL;
 		} else {
 			$imgsize = findImageSize($fileName);
 			$imgwidth = $imgsize[0]+40;
