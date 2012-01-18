@@ -170,9 +170,9 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name,'show_full'=>$show_full)); // may return ''
 		}
 	}
-	//-- find additional name
+	//-- find additional name, e.g. Hebrew
 	$addname=$person->getAddName();
-
+	
 	// add optional CSS style for each fact
 	$indirec = $person->getGedcomRecord();
 	$cssfacts = array("BIRT", "CHR", "DEAT", "BURI", "CREM", "ADOP", "BAPM", "BARM", "BASM", "BLES", "CHRA", "CONF", "FCOM", "ORDN", "NATU", "EMIG", "IMMI", "CENS", "PROB", "WILL", "GRAD", "RETI", "CAST", "DSCR", "EDUC", "IDNO",
@@ -180,18 +180,29 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	foreach ($cssfacts as $indexval => $fact) {
 		if (strpos($indirec, "1 $fact")!==false) $classfacts .= " $fact";
 	}
-	if ($PEDIGREE_SHOW_GENDER)
+	
+	if ($PEDIGREE_SHOW_GENDER && $show_full) {
 		$genderImage = " ".$person->getSexImage('small', "box-$boxID-gender");
+	}
+	
+	// Here for alternate name2
 	if (strlen($addname) > 0) {
 		$tempStyle = $style;
-		if (hasRTLText($addname) && $style=='1') $tempStyle = '2';
-		$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name$tempStyle\"> ".PrintReady($addname)."</span>";
+		if (hasRTLText($addname) && $style=='1') {
+			$tempStyle = '2';
+			if ($show_full) {
+				$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name$tempStyle\"> ".PrintReady($addname)."</span>";
+			} else {
+				$addname = "</span>";
+			}
+		}
 	}
-	if ($SHOW_LDS_AT_GLANCE) {
+	
+	if ($SHOW_LDS_AT_GLANCE && $show_full) {
 		$addname = ' <span class="details$style">'.get_lds_glance($indirec).'</span>' . $addname;
 	}
 
-		if ($show_full) {
+	if ($show_full) {
 
 			$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
 
