@@ -289,15 +289,15 @@ function paste_id(value) {
 
 	</table></form>
 </div>
+
 <?php
 if ($check_node===false) {
 	exit;
 }
-if ($show_full==0) {
-	echo '<br><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br>';
-}
 ?>
+
 <div id="relationship_chart">
+
 <?php
 $maxyoffset = $Dbaseyoffset;
 if ((!empty($pid1))&&(!empty($pid2))) {

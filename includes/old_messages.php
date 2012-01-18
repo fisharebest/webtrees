@@ -53,6 +53,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('A request was received at %s to create a webtrees account with your email address %s.', '', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Click on any of the boxes to get more information about that person.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Data request at %s', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Enter the number of children for this individual or family. This is an optional field.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Fields marked with * are mandatory.');

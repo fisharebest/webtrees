@@ -167,10 +167,8 @@ if ($controller->show_full) {
 </table>
 </form>
 </td></tr></table>
+
 <?php
-if ($show_full==0) {
-	echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br><br>';
-}
 
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';

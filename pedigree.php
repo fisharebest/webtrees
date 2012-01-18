@@ -96,11 +96,6 @@ if (WT_USE_LIGHTBOX) {
 					</tr>
 				</table>
 			</form>
-		<?php
-			if ($show_full==0) {
-				echo '<span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br>';
-			}
-		?>
 		</td>
 	</tr>
 </table>

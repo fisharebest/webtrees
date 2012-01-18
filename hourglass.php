@@ -118,11 +118,6 @@ $gencount=0;
 
 	<!-- // NOTE: Close table header -->
 	</td></tr></table>
-<?php
-	if ($show_full==0) {
-		echo '<br><span class="details2">', WT_I18N::translate('Click on any of the boxes to get more information about that person.'), '</span><br>';
-	}
-?>
 <div id="hourglass_chart<?php if ($TEXT_DIRECTION=="rtl") echo "_rtl"; ?>" <?php echo "style=\"width:98%; direction:".$TEXT_DIRECTION."; z-index:1;\""; ?> >
 <table cellspacing="0" cellpadding="0" border="0"><tr>
 <!-- // descendancy -->
