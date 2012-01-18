@@ -71,7 +71,7 @@ echo $menu->getMenu();
 ?>
 <script type="text/javascript">
   function ilinkitem(mediaid, type) {
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type+'&'+sessionname+'='+sessionid, '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1');
+	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1');
 	return false;
   }
 </script>

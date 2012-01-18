@@ -224,9 +224,6 @@ class WT_Controller_Base {
 			var browserType    = "'.$BROWSERTYPE.'";
 			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 			var WT_LOCALE      = "'.WT_LOCALE.'";
-			/* keep the session id when opening new windows */
-			var sessionid   = "'.Zend_Session::getId().'";
-			var sessionname = "'.WT_SESSION_NAME.'";
 			var accesstime  = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
 			var plusminus = new Array();
 			plusminus[0] = new Image();
@@ -253,7 +250,7 @@ class WT_Controller_Base {
 		function delete_record(pid, linenum, mediaid) {
 			if (!mediaid) mediaid="";
 			if (confirm(\''.WT_I18N::translate('Are you sure you want to delete this fact?').'\')) {
-				window.open(\'edit_interface.php?action=delete&pid=\'+pid+\'&linenum=\'+linenum+\'&mediaid=\'+mediaid+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
+				window.open(\'edit_interface.php?action=delete&pid=\'+pid+\'&linenum=\'+linenum+\'&mediaid=\'+mediaid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
 			}
 			return false;
 		}
@@ -261,7 +258,7 @@ class WT_Controller_Base {
 		function message(username, method, url, subject) {
 			if ((!url)||(url=="")) url=\''.addslashes(urlencode(get_query_url())).'\';
 			if ((!subject)||(subject=="")) subject="";
-			window.open(\'message.php?to=\'+username+\'&method=\'+method+\'&url=\'+url+\'&subject=\'+subject+"&"+sessionname+"="+sessionid, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
+			window.open(\'message.php?to=\'+username+\'&method=\'+method+\'&url=\'+url+\'&subject=\'+subject, \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\');
 			return false;
 		}
 

@@ -311,22 +311,22 @@ function getMouseXY(e) {
 }
 
 function edit_record(pid, linenum) {
-	window.open('edit_interface.php?action=edit&pid='+pid+'&linenum='+linenum+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=edit&pid='+pid+'&linenum='+linenum+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function edit_raw(pid) {
-	window.open('edit_interface.php?action=editraw&pid='+pid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=510,height=520,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=editraw&pid='+pid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=510,height=520,resizable=1,scrollbars=1');
 	return false;
 }
 
 function edit_note(pid) {
-	window.open('edit_interface.php?action=editnote&pid='+pid+'&linenum=1&'+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=editnote&pid='+pid+'&linenum=1&'+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function edit_source(pid) {
-	window.open('edit_interface.php?action=editsource&pid='+pid+'&linenum=1&'+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=editsource&pid='+pid+'&linenum=1&'+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
@@ -335,7 +335,7 @@ function add_record(pid, fact) {
 	if (factfield) {
 		factvalue = factfield.options[factfield.selectedIndex].value;
 		if (factvalue == "OBJE") window.open('addmedia.php?action=showmediaform&linkid='+pid, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
-		else window.open('edit_interface.php?action=add&pid='+pid+'&fact='+factvalue+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+		else window.open('edit_interface.php?action=add&pid='+pid+'&fact='+factvalue+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	}
 	return false;
 }
@@ -344,78 +344,78 @@ function addClipboardRecord(pid, fact) {
 	factfield = document.getElementById(fact);
 	if (factfield) {
 		factvalue = factfield.options[factfield.selectedIndex].value;
-		window.open('edit_interface.php?action=paste&pid='+pid+'&fact='+factvalue.substr(10)+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+		window.open('edit_interface.php?action=paste&pid='+pid+'&fact='+factvalue.substr(10)+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	}
 	return false;
 }
 
 function add_new_record(pid, fact) {
-		window.open('edit_interface.php?action=add&pid='+pid+'&fact='+fact+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+		window.open('edit_interface.php?action=add&pid='+pid+'&fact='+fact+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function addnewchild(famid,gender) {
-	window.open('edit_interface.php?action=addchild&gender='+gender+'&famid='+famid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addchild&gender='+gender+'&famid='+famid+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function addnewspouse(famid, famtag) {
-	window.open('edit_interface.php?action=addspouse&famid='+famid+'&famtag='+famtag+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addspouse&famid='+famid+'&famtag='+famtag+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function addopfchild(pid, gender) {
-	window.open('edit_interface.php?action=addopfchild&pid='+pid+'&gender='+gender+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addopfchild&pid='+pid+'&gender='+gender+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function addspouse(pid, famtag) {
-	window.open('edit_interface.php?action=addspouse&pid='+pid+'&famtag='+famtag+'&famid=new&'+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addspouse&pid='+pid+'&famtag='+famtag+'&famid=new&'+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function linkspouse(pid, famtag) {
-	window.open('edit_interface.php?action=linkspouse&pid='+pid+'&famtag='+famtag+'&famid=new&'+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=linkspouse&pid='+pid+'&famtag='+famtag+'&famid=new&'+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function add_famc(pid) {
-	 window.open('edit_interface.php?action=addfamlink&pid='+pid+'&famtag=CHIL'+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	 window.open('edit_interface.php?action=addfamlink&pid='+pid+'&famtag=CHIL'+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function add_fams(pid, famtag) {
-	 window.open('edit_interface.php?action=addfamlink&pid='+pid+'&famtag='+famtag+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	 window.open('edit_interface.php?action=addfamlink&pid='+pid+'&famtag='+famtag+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function edit_name(pid, linenum) {
-	window.open('edit_interface.php?action=editname&pid='+pid+'&linenum='+linenum+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=editname&pid='+pid+'&linenum='+linenum+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function add_name(pid) {
-	window.open('edit_interface.php?action=addname&pid='+pid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addname&pid='+pid+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function addnewparent(pid, famtag) {
-	window.open('edit_interface.php?action=addnewparent&pid='+pid+'&famtag='+famtag+'&famid=new'+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addnewparent&pid='+pid+'&famtag='+famtag+'&famid=new'+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function addnewparentfamily(pid, famtag, famid) {
-	window.open('edit_interface.php?action=addnewparent&pid='+pid+'&famtag='+famtag+'&famid='+famid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addnewparent&pid='+pid+'&famtag='+famtag+'&famid='+famid+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function reorder_children(famid) {
-	window.open('edit_interface.php?action=reorder_children&pid='+famid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=reorder_children&pid='+famid+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function reorder_families(pid) {
-	window.open('edit_interface.php?action=reorder_fams&pid='+pid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=reorder_fams&pid='+pid+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
@@ -425,17 +425,17 @@ function chat(username) {
 }
 
 function reply(username, subject) {
-	window.open('message.php?to='+username+'&subject='+subject+"&"+sessionname+"="+sessionid, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('message.php?to='+username+'&subject='+subject, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function delete_message(id) {
-	window.open('message.php?action=delete&id='+id+"&"+sessionname+"="+sessionid, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('message.php?action=delete&id='+id, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
 function change_family_members(famid) {
-	window.open('edit_interface.php?famid='+famid+"&"+sessionname+"="+sessionid+"&accesstime="+accesstime+"&action=changefamily", '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?famid='+famid+"&"+"&accesstime="+accesstime+"&action=changefamily", '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
 	return false;
 }
 
