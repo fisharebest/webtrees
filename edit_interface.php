@@ -2,7 +2,7 @@
 // PopUp Window to provide editing features.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -52,7 +52,6 @@ $gender =safe_REQUEST($_REQUEST, 'gender',  WT_REGEX_UNSAFE);
 
 $assist =safe_REQUEST($_REQUEST, 'assist',  WT_REGEX_UNSAFE);
 $noteid =safe_REQUEST($_REQUEST, 'noteid',  WT_REGEX_UNSAFE);
-$currtab=safe_REQUEST($_REQUEST, 'currtab', WT_REGEX_UNSAFE);
 
 $pid_array      =safe_REQUEST($_REQUEST, 'pid_array',       WT_REGEX_XREF);
 $pids_array_add =safe_REQUEST($_REQUEST, 'pids_array_add',  WT_REGEX_XREF);
@@ -1775,7 +1774,6 @@ case 'reset_media_update': // Reset sort using popup
 //------------------------------------------------------------------------------
 case 'reorder_media_update': // Update sort using popup
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
-	if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
@@ -1791,11 +1789,7 @@ case 'reorder_media_update': // Update sort using popup
 	}
 	echo '<br>', WT_I18N::translate('Update successful'), '<br><br>';
 
-	if ($currtab=='album') {
-		$link = "individual.php?pid=$pid#lightbox";
-	} else {
-		$link = "individual.php?pid=$pid#media";
-	}
+	$link = "individual.php?pid=$pid";
 	echo WT_JS_START;
 	echo "edit_close('{$link}')";
 	echo WT_JS_END;
@@ -1803,7 +1797,6 @@ case 'reorder_media_update': // Update sort using popup
 
 //------------------------------------------------------------------------------
 case 'al_reset_media_update': // Reset sort using Album Page
-    if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
 	$lines = explode("\n", $gedrec);
 	$newgedrec = "";
 	foreach ($lines as $line) {
@@ -1815,11 +1808,7 @@ case 'al_reset_media_update': // Reset sort using Album Page
 		$success=true;
 	}
 	echo "<br>", WT_I18N::translate('Update successful'), "<br><br>";
-	if ($currtab=="album") {
-		$link = "individual.php?pid=$pid#lightbox";
-	} else {
-		$link = "individual.php?pid=$pid#media";
-	}
+	$link = "individual.php?pid=$pid";
 	echo WT_JS_START;
 	echo "edit_close('{$link}')";
 	echo WT_JS_END;
@@ -1828,7 +1817,6 @@ case 'al_reset_media_update': // Reset sort using Album Page
 //------------------------------------------------------------------------------
 case 'al_reorder_media_update': // Update sort using Album Page
 	if (isset($_REQUEST['order1'])) $order1 = $_REQUEST['order1'];
-    if (isset($_POST['currtab'])) $currtab = $_POST['currtab'];
 	function SwapArray($Array) {
 		$Values = array();
 		while (list($Key, $Val) = each($Array))
@@ -1851,11 +1839,7 @@ case 'al_reorder_media_update': // Update sort using Album Page
 	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
 		$success=true;
 	}
-	if ($currtab=="album") {
-		$link = "individual.php?pid=$pid#lightbox";
-	} else {
-		$link = "individual.php?pid=$pid#media";
-	}
+	$link = "individual.php?pid=$pid";
 	echo WT_JS_START;
 	echo "edit_close('{$link}')";
 	echo WT_JS_END;

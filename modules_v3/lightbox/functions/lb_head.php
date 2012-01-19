@@ -4,7 +4,7 @@
 // Display media Items using Lightbox
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2007 to 2008  PGV Development Team.  All rights reserved.
@@ -30,14 +30,13 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-global $GEDCOM;
 $reorder=safe_get('reorder', '1', '0');
 ?>
 <script type="text/javascript">
 <!--
 	function reorder_media() {
 		var win02 = window.open(
-		'edit_interface.php?action=reorder_media&pid=<?php echo $controller->record->getXref(); ?>&currtab=album', 'win02', 'resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ');
+		'edit_interface.php?action=reorder_media&pid=<?php echo $controller->record->getXref(); ?>', 'win02', 'resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ');
 		if (window.focus) {win02.focus();}
 	}
 	function album_add() {

@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -58,12 +58,12 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $NAV_MEDIA, $WT_IMAGES, $controller;
+		global $WT_IMAGES, $controller;
 		?>
 		<script type="text/javascript">
 		<!--
 			function reorder_media() {
-			var win02 = window.open("edit_interface.php?action=reorder_media&amp;pid=<?php echo $controller->record->getXref(); ?>", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, height=840, width=450 ");
+			var win02 = window.open("edit_interface.php?action=reorder_media&pid=<?php echo $controller->record->getXref(); ?>", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, height=840, width=450 ");
 			if (window.focus) {win02.focus();}
 			}
 		-->
@@ -82,7 +82,9 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		$media_found = false;
 		$media_found = print_main_media($controller->record->getXref(), 0, true);
-		if (!$media_found) echo "<tr><td id=\"no_tab4\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no media objects for this individual.')."</td></tr>";
+		if (!$media_found) {
+			echo '<tr><td id="no_tab4" colspan="2" class="facts_value">', WT_I18N::translate('There are no media objects for this individual.'), '</td></tr>';
+		}
 		//-- New Media link
 		if (WT_USER_CAN_EDIT && $controller->record->canDisplayDetails() && get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
 		?>
