@@ -48,7 +48,6 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$stat_indi           =get_block_setting($block_id, 'stat_indi',            true);
 		$stat_fam            =get_block_setting($block_id, 'stat_fam',             true);
 		$stat_sour           =get_block_setting($block_id, 'stat_sour',            true);
-		$stat_other          =get_block_setting($block_id, 'stat_other',           true);
 		$stat_media          =get_block_setting($block_id, 'stat_media',           true);
 		$stat_repo           =get_block_setting($block_id, 'stat_repo',            true);
 		$stat_surname        =get_block_setting($block_id, 'stat_surname',         true);
@@ -65,7 +64,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		$stat_link           =get_block_setting($block_id, 'stat_link',            true);
 		$block               =get_block_setting($block_id, 'block',                false);
 		if ($cfg) {
-			foreach (array('show_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_other', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'stat_link', 'block') as $name) {
+			foreach (array('show_common_surnames', 'stat_indi', 'stat_fam', 'stat_sour', 'stat_media', 'stat_surname', 'stat_events', 'stat_users', 'stat_first_birth', 'stat_last_birth', 'stat_first_death', 'stat_last_death', 'stat_long_life', 'stat_avg_life', 'stat_most_chil', 'stat_avg_chil', 'stat_link', 'block') as $name) {
 				if (array_key_exists($name, $cfg)) {
 					$$name=$cfg[$name];
 				}
@@ -109,9 +108,6 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		if ($stat_repo) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Repositories').'</td><td class="facts_value" align="right"><a href="repolist.php?ged='.WT_GEDURL.'">'.$stats->totalRepositories().'</a></td></tr>';
-		}
-		if ($stat_other) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Other records').'</td><td class="facts_value" align="right">'.$stats->totalOtherRecords().'</td></tr>';
 		}
 		if ($stat_events) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total events').'</td><td class="facts_value" align="right">'.$stats->totalEvents().'</td></tr>';
