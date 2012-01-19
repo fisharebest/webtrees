@@ -53,12 +53,18 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('A request was received at %s to create a webtrees account with your email address %s.', '', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Administrator help items');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Click on any of the boxes to get more information about that person.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Data request at %s', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Enter the number of children for this individual or family. This is an optional field.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('FAQ List: Edit');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Fields marked with * are mandatory.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('GEDCOM information');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('GEDCOM: Administration page');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('GEDCOM: Configure');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('GEDCOM: Default');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', '');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Help items');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Here you can change the box width from 50 percent to 300 percent.  At 100 percent each box is about 270 pixels wide.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you are a visitor to this site and wish to request a user account, you can click this link.<br /><br />You will be taken to the "Register" page.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password.<br /><br />You will be taken to the "Lost Password Request" page.');
@@ -78,6 +84,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Top 10 Given Names');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Use simple mail headers');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('User %s (%s) has confirmed their request for an account.', '', '');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('View readme.html file');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
 
 // MESSAGES DELETED IN WEBTREES-1.2.6

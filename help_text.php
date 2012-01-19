@@ -1511,17 +1511,7 @@ case 'header_favorites':
 
 case 'help_contents_help':
 	$title=WT_I18N::translate('Help contents');
-	$text=
-			'<table><tr><td><span class="helpstart">'.WT_I18N::translate('Help items').'</span>
-			<ul><li><a href="?help=ancestry.php">'.WT_I18N::translate('Ancestors').'</a></li><li><a href="?help=fanchart.php">'.WT_I18N::translate('Fan chart').'</a></li><li><a href="?help=familybook.php">'
-			.WT_I18N::translate('Family book').'</a></li><li><a href="?help=index_portal">'.WT_I18N::translate('Home page').'</a></li><li><a href="?help=hourglass.php">'.WT_I18N::translate('Hourglass chart').'</a></li><li><a href="?help=individual.php">'
-			.WT_I18N::translate('Individual information').'</a></li><li><a href="?help=indilist.php">'.WT_I18N::translate('Individuals').'</a></li><li><a href="?help=treenav">'.WT_I18N::translate('Interactive tree').'</a></li><li><a href="?help=pls_note11">'.WT_I18N::translate('Lost password request').'</a></li><li><a href="?help=medialist.php">'.WT_I18N::translate('Media').'</a></li><li><a href="?help=edituser.php">'
-			.WT_I18N::translate('My account').'</a></li><li><a href="?help=mypage_portal">'.WT_I18N::translate('My page').'</a></li><li><a href="?help=edituser_password">'.WT_I18N::translate('Password').'</a></li><li><a href="?help=pedigree.php">'.WT_I18N::translate('Pedigree').'</a></li><li><a href="?help=timeline.php">'.WT_I18N::translate('Timeline').'</a></li><li><a href="?help=edituser_username">'.WT_I18N::translate('Username').'</a></li></ul></td>';
-		if (WT_USER_IS_ADMIN) {
-			$text.='<td valign="top"><span class="helpstart">'.WT_I18N::translate('Administrator help items').'</span><ul><li><a href="?help=admin.php">'.WT_I18N::translate('Administration').'</a></li><li><a href="?help=help_editconfig.php">'.WT_I18N::translate('Configure').'</a></li><li><a href="?help=help_faq.php">'
-			.WT_I18N::translate('FAQ List: Edit').'</a></li><li><a href="?help=edit_gedcoms">'.WT_I18N::translate('GEDCOM: Administration page').'</a></li><li><a href="?help=edit_config_gedcom">'.WT_I18N::translate('GEDCOM: Configure').'</a></li><li><a href="?help=default_gedcom">'.WT_I18N::translate('GEDCOM: Default').'</a></li><li><a href="readme.html">'.WT_I18N::translate('View readme.html file').'</a></li><li><a href="?help=help_admin_users.php">'.WT_I18N::translate('User administration').'</a></li></ul></td>';
-		}
-	$text.=('</tr></table>');
+	$text='';
 	break;
 
 case 'import_gedcom':
