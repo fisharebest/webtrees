@@ -108,7 +108,6 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 	foreach (WT_MenuBar::getModuleMenus() as $menu) {
 		$menu_items[]=$menu;
 	}
-	$menu_items[]=WT_MenuBar::getHelpMenu();
 
 	echo
 		'<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;">',

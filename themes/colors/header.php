@@ -120,7 +120,6 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	foreach (WT_MenuBar::getModuleMenus() as $menu) {
 		$menu_items[]=$menu;
 	}
-	$menu_items[]=WT_MenuBar::getHelpMenu();
 
 	// Print the menu bar
 	echo

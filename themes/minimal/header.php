@@ -149,7 +149,6 @@ if ($view!='simple') {
 		echo $menu->getMenuAsList();
 		}
 	}
-	$menu=WT_MenuBar::getHelpMenu();
 	if ($menu) {
 		$menu->addIcon(null);
 		echo $menu->getMenuAsList();

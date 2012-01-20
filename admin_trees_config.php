@@ -224,7 +224,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_IMAGE',         safe_POST_bool('NEW_SAVE_WATERMARK_IMAGE'));
 	set_gedcom_setting(WT_GED_ID, 'SAVE_WATERMARK_THUMB',         safe_POST_bool('NEW_SAVE_WATERMARK_THUMB'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_AGE_DIFF',                safe_POST_bool('NEW_SHOW_AGE_DIFF'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_CONTEXT_HELP',            safe_POST_bool('NEW_SHOW_CONTEXT_HELP'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_COUNTER',                 safe_POST_bool('NEW_SHOW_COUNTER'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE',             safe_POST('SHOW_DEAD_PEOPLE'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_EMPTY_BOXES',             safe_POST_bool('NEW_SHOW_EMPTY_BOXES'));
@@ -577,7 +576,7 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Support contact'), help_link('WEBMASTER_USER_ID'); ?>
+							<?php echo WT_I18N::translate('Technical help contact'), help_link('WEBMASTER_USER_ID'); ?>
 						</td>
 						<td><select name="NEW_WEBMASTER_USER_ID">
 						<?php
@@ -965,14 +964,6 @@ echo WT_JS_START;?>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('User options'); ?>
 						</th>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Contextual Help links'), help_link('SHOW_CONTEXT_HELP'); ?>
-						</td>
-						<td>
-							<?php echo radio_buttons('NEW_SHOW_CONTEXT_HELP', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_gedcom_setting(WT_GED_ID, 'SHOW_CONTEXT_HELP')); ?>
-						</td>
 					</tr>
 					<tr>
 						<td>

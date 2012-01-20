@@ -342,24 +342,6 @@ function user_contact_link($user_id) {
 	}
 }
 
-// Print a menu item to allow email/messaging contact with a user
-// Optionally specify a method (used for webmaster/genealogy contacts)
-function user_contact_menu($user_id) {
-	$method=get_user_setting($user_id, 'contactmethod');
-
-	$fullname=getUserFullName($user_id);
-
-	switch ($method) {
-	case 'none':
-		return array();
-	case 'mailto':
-		$email=getUserEmail($user_id);
-		return array('label'=>$fullname, 'labelpos'=>'right', 'class'=>'submenuitem', 'hoverclass'=>'submenuitem_hover', 'link'=>"mailto:{$email}");
-	default:
-		return array('label'=>$fullname, 'labelpos'=>'right', 'class'=>'submenuitem', 'hoverclass'=>'submenuitem_hover', 'link'=>'#', 'onclick'=>"message('".get_user_name($user_id)."', '{$method}');return false;");
-	}
-}
-
 // print links for genealogy and technical contacts
 //
 // this function will print appropriate links based on the preferred contact methods for the genealogy
@@ -394,35 +376,6 @@ function contact_links($ged_id=WT_GED_ID) {
 		$returnText .= '</div>';
 		return $returnText;
 	}
-}
-
-function contact_menus($ged_id=WT_GED_ID) {
-	$contact_user_id  =get_gedcom_setting($ged_id, 'CONTACT_USER_ID');
-	$webmaster_user_id=get_gedcom_setting($ged_id, 'WEBMASTER_USER_ID');
-
-	$support_menu=user_contact_menu($webmaster_user_id);
-	$contact_menu=user_contact_menu($contact_user_id);
-
-	if (!$support_menu) {
-		$support_menu=$contact_menu;
-	}
-	if (!$contact_menu) {
-		$contact_menu=$support_menu;
-	}
-	if (!$support_menu) {
-		return array();
-	}
-	$menuitems=array();
-	if ($support_menu==$contact_menu) {
-		$support_menu['label']=WT_I18N::translate('Technical help contact');
-		$menuitems['menu-help-technical']=$support_menu;
-	} else {
-		$support_menu['label']=WT_I18N::translate('Technical help contact');
-		$menuitems['menu-help-technical']=$support_menu;
-		$contact_menu['label']=WT_I18N::translate('Genealogy contact');
-		$menuitems['menu-help-genealogy']=$contact_menu;
-	}
-	return $menuitems;
 }
 
 //-- print user favorites
@@ -633,31 +586,23 @@ function print_privacy_error() {
 
 // Print a link for a popup help window
 function help_link($help_topic, $module='') {
-	global $WT_USE_HELPIMG, $WT_IMAGES, $WT_SESSION;
+	global $WT_USE_HELPIMG, $WT_IMAGES;
 
-	if ($WT_SESSION->show_context_help) {
-		return
-			'<span class="help icon-help-15" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
-			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
-			'&nbsp;</span>';
-	} else {
-		return '';
-	}
+	return
+		'<span class="help icon-help-15" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
+		($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
+		'&nbsp;</span>';
 }
 
 
 // Print an external help link to the wiki site, in a new window
 function wiki_help_link($topic) {
-	global $WT_USE_HELPIMG, $WT_IMAGES, $WT_SESSION;
+	global $WT_USE_HELPIMG, $WT_IMAGES;
 
-	if ($WT_SESSION->show_context_help) {
-		return
-			'<a class="help icon-help-15" href="'.WT_WEBTREES_WIKI.$topic.'" target="_new">&nbsp;'.
-			($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
-			'&nbsp;</a>';
-	} else {
-		return '';
-	}
+	return
+		'<a class="help icon-help-15" href="'.WT_WEBTREES_WIKI.$topic.'" target="_new">&nbsp;'.
+		($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
+		'&nbsp;</a>';
 }
 
 // When a user has searched for text, highlight any matches in

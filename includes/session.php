@@ -437,16 +437,6 @@ if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {
 	exit;
 }
 
-// Do we show context help on the page?
-if (isset($_GET['show_context_help'])) {
-	$WT_SESSION->show_context_help=safe_GET_bool('show_context_help');
-	unset($_GET['show_context_help']);
-} elseif ($SEARCH_SPIDER) {
-	$WT_SESSION->show_context_help=false;
-} elseif (!isset($WT_SESSION->show_context_help)) {
-	$WT_SESSION->show_context_help=get_gedcom_setting(WT_GED_ID, 'SHOW_CONTEXT_HELP', true);
-}
-
 if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
 
 if (WT_SCRIPT_NAME!='help_text.php') {

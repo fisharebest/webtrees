@@ -918,11 +918,6 @@ case 'SHOW_AGE_DIFF':
 	$text=WT_I18N::translate('This option controls whether or not the Close Relatives tab should show differences between birth dates of spouses, between marriage date and birth date of first child, and between birth dates of children.');
 	break;
 
-case 'SHOW_CONTEXT_HELP':
-	$title=WT_I18N::translate('Contextual Help links');
-	$text=WT_I18N::translate('This option will enable links, identified by question marks, next to items on many pages.  These links allow users to get information or help about those items.');
-	break;
-
 case 'SHOW_COUNTER':
 	$title=WT_I18N::translate('Hit counters');
 	$text=WT_I18N::translate('Show hit counters on Portal and Individual pages.');
@@ -1145,7 +1140,7 @@ case 'WATERMARK_THUMB':
 	break;
 
 case 'WEBMASTER_USER_ID':
-	$title=WT_I18N::translate('Support contact');
+	$title=WT_I18N::translate('Technical help contact');
 	$text=WT_I18N::translate('The person to be contacted about technical questions or errors encountered on your site.');
 	break;
 

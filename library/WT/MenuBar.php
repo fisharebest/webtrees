@@ -545,59 +545,6 @@ class WT_MenuBar {
 		return $menus;
 	}
 
-	public static function getHelpMenu() {
-		global $SEARCH_SPIDER, $WT_SESSION;
-
-		if (!empty($SEARCH_SPIDER)) {
-			return null;
-		}
-		//-- main help menu item
-		$menu = new WT_Menu(WT_I18N::translate('Help'), '#', 'menu-help', 'down');
-		$menu->addIcon('menu_help');
-		$menu->addOnclick("return helpPopup('help_contents_help');");
-		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_help');
-
-		//-- help_contents sub menu
-		$submenu = new WT_Menu(WT_I18N::translate('Help contents'), '#', 'menu-help-contents');
-		$submenu->addIcon('help');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_help');
-		$submenu->addOnclick("return helpPopup('help_contents_help');");
-		$menu->addSubmenu($submenu);
-		//-- faq sub menu
-		if (array_key_exists('faq', WT_Module::getActiveModules()) && WT_DB::prepare("SELECT COUNT(*) FROM `##block` WHERE module_name='faq'")->fetchOne()) {
-
-			$submenu = new WT_Menu(WT_I18N::translate('FAQ'), 'module.php?mod=faq&amp;mod_action=show', 'menu-help-faq');
-			$submenu->addIcon('help');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_help');
-			$menu->addSubmenu($submenu);
-		}
-		//-- add wiki links
-		$submenu = new WT_Menu(/* I18N: The website wiki.webtrees.net.  Do not translate this? */ WT_I18N::translate('webtrees wiki'), WT_WEBTREES_WIKI.'" target="_blank', 'menu-help-wiki');
-		$submenu->addIcon('wiki');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_wiki');
-		$menu->addSubmenu($submenu);
-
-		//-- add contact links to help menu
-		$menuitems = contact_menus();
-		foreach ($menuitems as $menu_id=>$menuitem) {
-			$submenu = new WT_Menu($menuitem['label'], $menuitem['link'], $menu_id);
-			$submenu->addIcon('mypage');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_contact');
-			if (!empty($menuitem['onclick'])) $submenu->addOnclick($menuitem['onclick']);
-			$menu->addSubmenu($submenu);
-		}
-		//-- add show/hide context_help
-		if ($WT_SESSION->show_context_help) {
-			$submenu = new WT_Menu(WT_I18N::translate('Hide contextual help'), get_query_url(array('show_context_help'=>'no')), 'menu-help-hide');
-		} else {
-			$submenu = new WT_Menu(WT_I18N::translate('Show contextual help'), get_query_url(array('show_context_help'=>'yes')), 'menu-help-show');
-		}
-		$submenu->addIcon('help');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_help');
-		$menu->addSubmenu($submenu);
-		return $menu;
-	}
-
 	public static function getThemeMenu() {
 		global $SEARCH_SPIDER;
 

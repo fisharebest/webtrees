@@ -99,7 +99,6 @@ set_gedcom_setting($ged_id, 'REQUIRE_AUTHENTICATION',       false);
 set_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE',         false);
 set_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB',         false);
 set_gedcom_setting($ged_id, 'SHOW_AGE_DIFF',                false);
-set_gedcom_setting($ged_id, 'SHOW_CONTEXT_HELP',            true);
 set_gedcom_setting($ged_id, 'SHOW_COUNTER',                 true);
 set_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE',             WT_PRIV_PUBLIC);
 set_gedcom_setting($ged_id, 'SHOW_EMPTY_BOXES',             true);

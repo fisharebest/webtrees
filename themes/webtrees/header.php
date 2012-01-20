@@ -101,7 +101,6 @@ if ($view!='simple') {
 	foreach (WT_MenuBar::getModuleMenus() as $menu) {
 		$menu_items[]=$menu;
 	}
-	$menu_items[]=WT_MenuBar::getHelpMenu();
 	// Print the menu bar
 	echo
 		'<div id="topMenu">',

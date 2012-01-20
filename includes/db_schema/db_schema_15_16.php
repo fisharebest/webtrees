@@ -12,7 +12,7 @@
 // seconds, for systems with low timeout values.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 Greg Roach
+// Copyright (C) 2012 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Remove old settings
-self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES', 'SHOW_LIST_PLACES')");
+self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN('GEDCOM_DEFAULT_TAB', 'LINK_ICONS', 'ZOOM_BOXES', 'SHOW_LIST_PLACES', 'SHOW_CONTEXT_HELP')");
 self::exec("DELETE FROM `##user_setting` WHERE setting_name='defaulttab'");
 
 // There is no way to add a RESN tag to NOTE objects
