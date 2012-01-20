@@ -88,7 +88,7 @@ foreach ($events as $event) {
 			}
 			$family=WT_Family::getInstance($event->getFamilyId());
 			if ($family) {
-				echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
+				echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family -'), '</a>';
 			}
 			echo ' ',format_fact_place($event, true, true);
 			echo '</div>';
