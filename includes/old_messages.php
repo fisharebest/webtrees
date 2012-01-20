@@ -33,6 +33,7 @@ exit;
 
 // MESSAGES DELETED IN WEBTREES-1.2.7
 
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Other records');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d day ago', '%d days ago', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d day', '%d days', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('%d hour ago', '%d hours ago', 0, 0);

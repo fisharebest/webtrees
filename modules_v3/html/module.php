@@ -204,10 +204,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 									<td class="facts_value" align="right"><a href="repolist.php?ged='.WT_GEDURL.'">#totalRepositories#</a></td>
 								</tr>
 								<tr>
-									<td class="facts_label">'.WT_I18N::translate('Other records').'</td>
-									<td class="facts_value" align="right">#totalOtherRecords#</td>
-								</tr>
-								<tr>
 									<td class="facts_label">'.WT_I18N::translate('Total events').'</td>
 									<td class="facts_value" align="right">#totalEvents#</td>
 								</tr>

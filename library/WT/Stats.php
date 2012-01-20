@@ -339,7 +339,7 @@ class WT_Stats {
 		switch($type) {
 			default:
 			case 'all':
-				$type = $this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources() + $this->_totalOtherRecords();
+				$type = $this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources();
 				break;
 			case 'individual':
 				$type = $this->_totalIndividuals();
@@ -353,9 +353,6 @@ class WT_Stats {
 			case 'note':
 				$type = $this->_totalNotes();
 				break;
-			case 'other':
-				$type = $this->_totalOtherRecords();
-				break;
 			default:
 				return WT_I18N::percentage(0, 1);
 		}
@@ -367,7 +364,7 @@ class WT_Stats {
 	}
 
 	function totalRecords() {
-		return WT_I18N::number($this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources() + $this->_totalOtherRecords());
+		return WT_I18N::number($this->_totalIndividuals() + $this->_totalFamilies() + $this->_totalSources());
 	}
 
 	function _totalIndividuals() {
@@ -493,21 +490,6 @@ class WT_Stats {
 
 	function totalRepositoriesPercentage() {
 		return $this->_getPercentage($this->_totalRepositories(), 'all');
-	}
-
-	function _totalOtherRecords() {
-		return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##other` WHERE o_type NOT IN ('NOTE', 'REPO') AND o_file=?")
-			->execute(array($this->_ged_id))
-			->fetchOne();
-	}
-
-	function totalOtherRecords() {
-		return WT_I18N::number($this->_totalOtherRecords());
-	}
-
-	function totalOtherPercentage() {
-		return $this->_getPercentage($this->_totalOtherRecords(), 'all');
 	}
 
 	function totalSurnames($params = null) {

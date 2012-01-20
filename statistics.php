@@ -332,14 +332,12 @@ if (!$ajax) {
 				<td class="facts_label">', WT_I18N::translate('Sources'), '</td>
 				<td class="facts_label">', WT_I18N::translate('Notes'), '</td>
 				<td class="facts_label">', WT_I18N::translate('Repositories'), '</td>
-				<td class="facts_label">', WT_I18N::translate('Other records'), '</td>
 			</tr>
 			<tr>
 				<td class="facts_value" align="center">', $stats->totalMedia(), '</td>
 				<td class="facts_value" align="center">', $stats->totalSources(), '</td>
 				<td class="facts_value" align="center">', $stats->totalNotes(), '</td>
 				<td class="facts_value" align="center">', $stats->totalRepositories(), '</td>
-				<td class="facts_value" align="center">', $stats->totalOtherRecords(), '</td>
 			</tr>
 			</table>
 		</fieldset>
