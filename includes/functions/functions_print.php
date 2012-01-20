@@ -159,7 +159,13 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		}
 	}
 	//-- find the name
+
 	$name = $person->getFullName();
+	// Generate short name w/o Nickname for compact chart
+	$compactname = $person->getSortName(); 
+	$cpos = strrpos($compactname, ",");
+	$shortname =  substr($compactname,($cpos+1))." ".substr($compactname,0, ($cpos));
+	
 	if ($SHOW_HIGHLIGHT_IMAGES) {
 		$object=$person->findHighlightedMedia();
 		$img_id='box-'.$boxID.'.-thumb';
@@ -170,6 +176,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name,'show_full'=>$show_full)); // may return ''
 		}
 	}
+	
 	//-- find additional name, e.g. Hebrew
 	$addname=$person->getAddName();
 	
