@@ -80,6 +80,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Request user account');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Show contextual help');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Site Default');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Support contact');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Technical help contact');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('The requested GEDCOM record could not be found.  This could be caused by a link to an invalid person or by a corrupt GEDCOM file.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This block displays the most frequently occurring surnames in the database.  The configuration settings for this block allow changes to the number of names displayed, the presentation style, and the use of scroll bars with long lists.  By using the GEDCOM administration function, an administrator can also configure names to remove from this list.');
