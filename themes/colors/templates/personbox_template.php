@@ -46,7 +46,7 @@ if ($show_full) {
 }		
 echo $thumbnail,
 	 '<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
-	 '<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts;'">';
+	 '<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">';
 if ($show_full) { 
 	echo $name.$addname;
 	} else {
