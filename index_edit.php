@@ -2,7 +2,7 @@
 // Change the blocks on "My page" and "Home page"
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -95,6 +95,7 @@ if ($ctype=='user') {
 } else {
 	if ($action=='reset') {
 		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array(WT_GED_ID));
+		WT_DB::prepare("DELETE FROM `##block` WHERE gedcom_id=?")->execute(array(WT_GED_ID));
 	}
 	$blocks=get_gedcom_blocks(WT_GED_ID);
 }
@@ -395,10 +396,7 @@ if ($action=="configure") {
 	if (WT_USER_IS_ADMIN && $ctype=='user') {
 		echo WT_I18N::translate('Use these blocks as the default block configuration for all users?'), '<input type="checkbox" name="setdefault" value="1"><br><br>';
 	}*/
-	/* Access to this section temporarily removed from Home page as it does not work (kiwi - 20/01/2012)*/
-	if ($ctype=='user') {
-		echo '<input type="button" value="', WT_I18N::translate('Reset to Default Blocks'), '" onclick="window.location=\'index_edit.php?ctype=', $ctype, '&amp;action=reset&amp;name=', addslashes($name), '\';">';
-	}
+	echo '<input type="button" value="', WT_I18N::translate('Reset to Default Blocks'), '" onclick="window.location=\'index_edit.php?ctype=', $ctype, '&amp;action=reset&amp;name=', addslashes($name), '\';">';
 	echo '&nbsp;&nbsp;';
 	echo '<input type="button" value="', WT_I18N::translate('Save'), '" onclick="select_options(); save_form();">';
 	echo '&nbsp;&nbsp;';
