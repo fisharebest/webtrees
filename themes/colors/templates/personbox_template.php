@@ -50,12 +50,13 @@ echo $thumbnail,
 if ($show_full) { 
 	echo $name.$addname;
 	} else {
-	echo $name; // do not print additional names
+	echo $shortname; // do not print additional names
 }
 echo ' </span>';
 if 	(!$show_full) { 
 	echo '<div class="person_box_lifespan" >',
-		 $person->getLifeSpan(),
+		 $person->getLifeSpan(), ' ',
+		 $person->getBirthPlace(),
 		 '</div>';
 }
 echo '<span class="name',$style,'" ',$genderImage,'</span>',
