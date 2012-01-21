@@ -50,7 +50,7 @@ echo $thumbnail,
 if ($show_full) { 
 	echo $name.$addname;
 	} else {
-	echo $shortname; // do not print additional names
+	echo $name; // do not print additional names
 }
 echo ' </span>';
 if 	(!$show_full) { 
