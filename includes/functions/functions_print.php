@@ -161,15 +161,6 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	//-- find the name
 
 	$name = $person->getFullName();
-	// for names with nickname, remove it for compact chart
-	if (substr_count($name, '“')) { // check for nickname
-		$startn = strpos($name, '“');
-		$endn = strpos($name, '”');
-		$end2 = strpos($name, '<', $endn);
-		$shortname = substr($name, 0, $startn) . substr($name, $end2);
-	} else {
-		$shortname = $name;
-	}
 
 	if ($SHOW_HIGHLIGHT_IMAGES) {
 		$object=$person->findHighlightedMedia();
