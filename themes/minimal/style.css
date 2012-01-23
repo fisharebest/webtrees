@@ -832,6 +832,8 @@ img.block {
 	top: -240px;
 	left: 10px;
 }
+#pedigree_chart table div p {font-size:90%; margin:0;}
+
 /*-- pedigree chart rtl specific stylesheets --*/
 html[dir='rtl'] #pedigree_chart {
 left:auto;
@@ -897,6 +899,7 @@ html[dir='rtl'] #relationship_chart {
 	padding-right: 0;
 	padding-bottom: 0;
 }
+#ancestry_chart li table div {margin: 5px 0;}
 
 /*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {

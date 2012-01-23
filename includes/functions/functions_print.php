@@ -31,6 +31,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
+require_once WT_ROOT.'includes/functions/functions_places.php';
 
 /**
 * print the information for an individual chart box
@@ -75,6 +76,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	$classfacts = "";
 	$genderImage = "";
 	$BirthDeath = "";
+	$birthplace = "";
 	$outBoxAdd = "";
 	$thumbnail = "";
 	$showid = "";
@@ -159,7 +161,6 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		}
 	}
 	//-- find the name
-
 	$name = $person->getFullName();
 
 	if ($SHOW_HIGHLIGHT_IMAGES) {
@@ -167,9 +168,9 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		$img_id='box-'.$boxID.'.-thumb';
 		if (!empty($object)) {
 			$mediaobject=WT_Media::getInstance($object['mid']);
-			$thumbnail=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name,'show_full'=>$show_full));
+			$thumbnail=$mediaobject->displayMedia(array('display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name));
 		} else {
-			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name,'show_full'=>$show_full)); // may return ''
+			$thumbnail=display_silhouette(array('sex'=>$person->getSex(),'display_type'=>'pedigree_person','img_id'=>$img_id,'img_title'=>$name)); // may return ''
 		}
 	}
 	
@@ -250,8 +251,26 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				$BirthDeath .= $event->print_simple_fact(true);
 				}
 			}
+	} else {
+		//find the short birth place for compact chart
+		$opt_tags=preg_split('/\W/', $CHART_BOX_TAGS, 0, PREG_SPLIT_NO_EMPTY);
+		foreach (explode('|', WT_EVENTS_BIRT) as $birttag) {
+			if (!in_array($birttag, $opt_tags)) {
+				$event = $person->getFactByType($birttag);
+				if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
+					$birthplace .= get_place_short($event->getPlace());
+					break;
+				}
+			}
 		}
-	require WT_THEME_DIR.'templates/personbox_template.php';
+
+	}
+
+	if ($show_full) {
+	   require WT_THEME_DIR.'templates/personbox_template.php';
+	} else {
+	   require WT_THEME_DIR.'templates/compactbox_template.php';
+	}
 }
 
 // print HTML header meta links 

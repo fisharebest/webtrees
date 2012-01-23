@@ -51,11 +51,10 @@ $Dbaseyoffset = 0;
 $Dbheight = 78+($bheight-80); // Set distance between vertical blocks
 if ($show_full==false) {
 	$Dbwidth = $Dbwidth - 50;
-	$bwidth = $bwidth / 1.5;
-	$bheight = $bheight / 2 ;
+	$bwidth = $bwidth - 25;
+	$bheight = $bheight - 32 ;
 	$Dbheight= $bheight-10;
 	$Dbwidth = $bwidth;
-
 }
 
 $title_string = "";

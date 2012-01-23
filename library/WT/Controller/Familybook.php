@@ -62,9 +62,9 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$bheight =$Dbheight;
 		
 		// -- adjust size of the non-detailed boxes
-		if ($this->show_full==false) {
-			$bwidth = $bwidth / 1.5;
-			$bheight = $bheight / 2 ;
+		if (!$this->show_full) {
+			$bwidth = $bwidth - 25;
+			$bheight = $bheight - 32;
 		}
 
 		if ($this->root && $this->root->canDisplayName()) {

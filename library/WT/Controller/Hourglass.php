@@ -101,8 +101,8 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		
 		// -- adjust size of the non-detailed boxes
 		if (!$this->show_full) {
-			$bwidth = $bwidth / 1.5;
-			$bheight = $bheight / 2 ;
+			$bwidth = $bwidth - 25;
+			$bheight = $bheight - 32;
 		}
 
 		$bhalfheight = (int)($bheight / 2);

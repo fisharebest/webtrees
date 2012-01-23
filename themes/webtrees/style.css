@@ -174,6 +174,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {padding-left:5pt; padding-rig
 
 /*-- pedigree chart specific stylesheets --*/
 #pedigree_chart {position:relative; top:-200px; left:0;}
+#pedigree_chart table div p {font-size:90%; margin:0;}
 
 /*-- pedigree chart rtl specific stylesheets --*/
 html[dir='rtl'] #pedigree_chart {left:auto; right:10px;}
@@ -194,11 +195,14 @@ html[dir='rtl'] #descendancy_chart ul {background-position:right top; margin:0 1
 html[dir='rtl'] #relationship_chart {left:auto; right:10px;}
 
 /*-- ancestry chart specific stylesheets --*/
+#ancestry_chart table div p {font-size:90%; margin:0;}
+
 #ancestry_chart ul {background-image:url(images/vline.png); background-repeat:repeat-y; background-position:left top; list-style:none; display:block; margin:0 0 0 15px; /* top right bottom left */
 	padding-top:0; padding-right:0; padding-bottom:0;}
 
 #ancestry_chart li {list-style:none; margin:0 0 2px -13px; /* top right bottom left */
 	padding-top:0; padding-right:0; padding-bottom:0;}
+#ancestry_chart li table div {margin-bottom: 5px;}
 
 /*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {background-position:right top; margin:0 15px 0 0; left:auto;}

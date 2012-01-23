@@ -90,14 +90,10 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 			$this->setPageTitle(WT_I18N::translate('Pedigree'));
 		}
 
-		//-- adjustments for hide details
-		if ($this->show_full==false) {
-			$bheight=$bheight/2;
-			if ($this->talloffset < 2) {
-				$bwidth=$bwidth/1.5; 
-			} else {
-				$bwidth = $bwidth/1.5; // Problem item correct vaoue is -=50  offset #3
-			}
+		// -- adjust size of the compact box
+		if (!$this->show_full) {
+			$bwidth = $bwidth - 25;
+			$bheight = $bheight - 32;
 		}
 		//-- adjustments for portrait mode
 		if ($this->talloffset==0) {

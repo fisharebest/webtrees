@@ -303,6 +303,7 @@ html[dir='rtl'] .person_box html[dir='rtl'] .person_boxF html[dir='rtl'] .person
 	top:-230px;
 	left:0;
 }
+#pedigree_chart table div p {font-size:90%; margin:0;}
 
 .thumbnail {
 height:auto;
@@ -660,6 +661,7 @@ html[dir='rtl'] #relationship_chart {
 	padding-right:0;
 	padding-bottom:0;
 }
+#ancestry_chart li table div {margin: 5px 0;}
 
 /*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {

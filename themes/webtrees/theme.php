@@ -191,8 +191,8 @@ $bwidth=250;     // -- width of boxes on pedigree chart
 $bheight=80;     // -- height of boxes on pedigree chart
 $baseyoffset=10; // -- position the entire pedigree tree relative to the top of the page
 $basexoffset=10; // -- position the entire pedigree tree relative to the left of the page
-$bxspacing=0;    // -- horizontal spacing between boxes on the pedigree chart
-$byspacing=5;    // -- vertical spacing between boxes on the pedigree chart
+$bxspacing=10;    // -- horizontal spacing between boxes on the pedigree chart
+$byspacing=10;    // -- vertical spacing between boxes on the pedigree chart
 $brborder=1;     // -- box right border thickness
 
 // -- descendancy - relationship chart variables

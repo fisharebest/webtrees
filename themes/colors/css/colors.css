@@ -434,6 +434,7 @@ top:-200px;
 left:0;
 z-index: 1;
 }
+#pedigree_chart table div p {font-size:90%; margin:0;}
 
 html[dir='rtl'] #pedigree_chart {
 left:auto;
@@ -497,6 +498,7 @@ padding-top:0;
 padding-right:0;
 padding-bottom:0;
 }
+#ancestry_chart li table div {margin: 5px 0;}
 
 #ancestry_chart > .person_box, #ancestry_chart > .person_boxF  {margin: 0 0 10px 10px;}
 
