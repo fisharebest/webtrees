@@ -162,7 +162,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	}
 	//-- find the name
 	$name = $person->getFullName();
-
+	$shortname = $person->getShortName();
+	
 	if ($SHOW_HIGHLIGHT_IMAGES) {
 		$object=$person->findHighlightedMedia();
 		$img_id='box-'.$boxID.'.-thumb';

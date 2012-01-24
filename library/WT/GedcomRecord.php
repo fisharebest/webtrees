@@ -638,7 +638,7 @@ class WT_GedcomRecord {
 		}
 	}
 
-	// Get the three variants of the name
+	// Get variants of the name
 	public function getFullName() {
 		if ($this->canDisplayName()) {
 			$tmp=$this->getAllNames();
@@ -659,6 +659,39 @@ class WT_GedcomRecord {
 			return $all_names[$this->getSecondaryName()]['full'];
 		} else {
 			return null;
+		}
+	}
+	// create a short name for compact display on charts
+	public function getShortName() {
+		global $bwidth, $SHOW_HIGHLIGHT_IMAGES;
+		// Estimate number of characters that can fit in box. Calulates to 26 characters in webtrees theme.
+		if ($SHOW_HIGHLIGHT_IMAGES) {
+			$char = intval(($bwidth-40)/7); 
+		} else {
+			$char = ($bwidth/7);
+		}
+		if ($this->canDisplayName()) {
+			$tmp=$this->getAllNames();
+			$givn = $tmp[$this->getPrimaryName()]['givn'];
+			$surn = $tmp[$this->getPrimaryName()]['surn'];
+			$shortname =  $givn.' '.$surn;
+			$new_name = explode(' ', $givn);
+			$count_givn = count($new_name);
+			$len_givn = strlen($givn);
+			$len_surn = strlen($surn)+1;
+			$len = $len_givn + $len_surn;
+			$i = 1;
+			while ($len > $char) {
+				$new_name[$count_givn-$i] = substr($new_name[$count_givn-$i],0,1);
+				$givn = implode(' ', $new_name);
+				$len_givn = strlen($givn);
+				$len = $len_givn + $len_surn;
+				$i++;
+			}
+			$shortname =  $givn.' '.$surn;
+			return $shortname;
+		} else {
+			return WT_I18N::translate('Private');
 		}
 	}
 

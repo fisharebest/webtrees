@@ -202,7 +202,7 @@ html[dir='rtl'] #relationship_chart {left:auto; right:10px;}
 
 #ancestry_chart li {list-style:none; margin:0 0 2px -13px; /* top right bottom left */
 	padding-top:0; padding-right:0; padding-bottom:0;}
-#ancestry_chart li table div {margin-bottom: 5px;}
+#ancestry_chart li table {margin: 5px 0;}
 
 /*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {background-position:right top; margin:0 15px 0 0; left:auto;}
@@ -254,7 +254,7 @@ html[dir='rtl'] .header_search {float:left;}
 
 /* Colors */
 .red {color:#f00;}
-.rela {opacity:0.67;}
+.rela, .histo {opacity:0.67;}
 /* Width settings */
 .width10 {width:10%;}
 .width20 {width:20%;}

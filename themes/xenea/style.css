@@ -1132,7 +1132,7 @@ html[dir='rtl'] #relationship_chart {
 	padding-right:0;
 	padding-bottom:0;
 }
-#ancestry_chart li table div {margin: 5px 0;}
+#ancestry_chart li table {margin: 5px 0;}
 
 /*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {
@@ -1298,7 +1298,7 @@ h4 {
 	color:red;
 }
 
-.rela {
+.rela, .histo {
 	opacity:0.67;
 }
 

@@ -489,7 +489,7 @@ right:0;
 
 #ancestry_chart li {list-style:none; margin:0 0 2px -13px; /* top right bottom left */
 	padding-top:0; padding-right:0; padding-bottom:0;}
-#ancestry_chart li table div {margin-bottom: 5px;}
+#ancestry_chart li table {margin: 5px 0;}
 
 /*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {background-position:right top; margin:0 15px 0 0; left:auto;}
@@ -1090,7 +1090,7 @@ padding: 3px;
 vertical-align: middle;
 }
 
-.rela {
+.rela, .histo {
 opacity: 0.67;
 }
 

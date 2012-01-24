@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '">',
 	$thumbnail,
 	'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
-		'<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $name, '</span>
+		'<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $shortname, '</span>
 	</a>
 	<p>', $person->getLifeSpan(), '</p>
 	<p>', $birthplace, '</p>
