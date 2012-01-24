@@ -3,7 +3,7 @@
 // This template expects that the following variables will be set
 //  $pid, $boxID, $icons, $GEDCOM, $style,
 // $name, $classfacts, $genderImage, $BirthDeath, $isF, $outBoxAdd,
-// $addname, $showid, $float
+// $addname
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2012 webtrees development team.
@@ -59,7 +59,6 @@ if 	(!$show_full) {
 		 '</div>';
 }
 echo '<span class="name',$style,'" ',$genderImage,'</span>',
-	 $showid,
 	 '</a>',
 	 '<div id="fontdef-',$boxID,'" class="details',$style,'">',
 	 '<div id="inout2-', $boxID,'" style="display: block; max-height:', ($bheight*.9),'px;">',$BirthDeath,'</div>',
