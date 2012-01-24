@@ -328,6 +328,8 @@ background: #fff;
 color: #000;
 }
 
+hr {margin-top: 5px;}
+
 tfoot label  {
 margin-left:5px;
 }
