@@ -688,7 +688,7 @@ class WT_GedcomRecord {
 				$len = $len_givn + $len_surn;
 				$i++;
 			}
-			$shortname =  $givn.' '.$surn;
+			$shortname =  check_NN($givn.' '.$surn);
 			return $shortname;
 		} else {
 			return WT_I18N::translate('Private');
