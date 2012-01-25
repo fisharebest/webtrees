@@ -303,7 +303,8 @@ html[dir='rtl'] .person_box html[dir='rtl'] .person_boxF html[dir='rtl'] .person
 	top:-230px;
 	left:0;
 }
-#pedigree_chart table div p {font-size:90%; margin:0;}
+
+.compact_view p {font-size:90%; margin:0;}
 
 .thumbnail {
 height:auto;

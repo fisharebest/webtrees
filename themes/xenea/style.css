@@ -1065,7 +1065,6 @@ img.block {
 	top:-240px;
 	left:0;
 }
-#pedigree_chart table div p {font-size:90%; margin:0;}
 
 /*-- pedigree chart rtl specific stylesheets --*/
 html[dir='rtl'] #pedigree_chart {
@@ -1191,6 +1190,8 @@ left:auto;
 	border:outset #55FF55 1px;
 	vertical-align:top;
 }
+
+.compact_view p {font-size:90%; margin:0;}
 
 .listlog {
 	line-height:20pt;

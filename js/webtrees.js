@@ -650,6 +650,7 @@ function expandbox(boxid, bstyle) {
 		if (fontdef) {
 			oldfont = fontdef.className;
 			fontdef.className = 'detailsZoom';
+			fontdef.style.display='block';
 		}
 		namedef = document.getElementById("namedef-"+boxid);
 		if (namedef) {

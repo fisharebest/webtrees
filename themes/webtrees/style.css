@@ -174,44 +174,27 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {padding-left:5pt; padding-rig
 
 /*-- pedigree chart specific stylesheets --*/
 #pedigree_chart {position:relative; top:-200px; left:0;}
-#pedigree_chart table div p {font-size:90%; margin:0;}
-
-/*-- pedigree chart rtl specific stylesheets --*/
 html[dir='rtl'] #pedigree_chart {left:auto; right:10px;}
 
 /*-- descendancy chart specific stylesheets --*/
-#descendancy_chart ul {background-image:url(images/vline.png); background-repeat:repeat-y; background-position:left top; list-style:none; margin:0 0 5px 15px; /* top right bottom left */
-	padding-top:0; padding-right:0; padding-bottom:0;}
-
-#descendancy_chart li {list-style:none; margin:0 0 0 -15px; /* top right bottom left */
-	padding-top:0; padding-right:0; padding-bottom:0;}
-
-/*-- descendancy chart rtl specific stylesheets --*/
+#descendancy_chart ul {background-image:url(images/vline.png); background-repeat:repeat-y; background-position:left top; list-style:none; margin:0 0 5px 15px; padding-top:0; padding-right:0; padding-bottom:0;}
+#descendancy_chart li {list-style:none; margin:0 0 0 -15px; padding-top:0; padding-right:0; padding-bottom:0;}
 html[dir='rtl'] #descendancy_chart ul {background-position:right top; margin:0 15px 0 0; left:auto;}
 
 /*-- relationship chart specific stylesheets --*/
 #relationship_chart {position:relative; top:-40px; left:0;}
-
 html[dir='rtl'] #relationship_chart {left:auto; right:10px;}
 
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart table div p {font-size:90%; margin:0;}
-
-#ancestry_chart ul {background-image:url(images/vline.png); background-repeat:repeat-y; background-position:left top; list-style:none; display:block; margin:0 0 0 15px; /* top right bottom left */
-	padding-top:0; padding-right:0; padding-bottom:0;}
-
-#ancestry_chart li {list-style:none; margin:0 0 2px -13px; /* top right bottom left */
-	padding-top:0; padding-right:0; padding-bottom:0;}
+#ancestry_chart ul {background-image:url(images/vline.png); background-repeat:repeat-y; background-position:left top; list-style:none; display:block; margin:0 0 0 15px; padding-top:0; padding-right:0; padding-bottom:0;}
+#ancestry_chart li {list-style:none; margin:0 0 2px -13px; padding-top:0; padding-right:0; padding-bottom:0;}
 #ancestry_chart li table {margin: 5px 0;}
-
-/*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {background-position:right top; margin:0 15px 0 0; left:auto;}
-
 html[dir='rtl'] #ancestry_chart li {margin:0; padding:0 2px 0 0; left:auto;}
 
 /*-- timeline chart specific styles --*/
 #timeline_chart {position:relative; top:0; left:0;}
-
 .timeline_table {}
 .person0 {background-color:#aaf; border:outset #aaf 1px; vertical-align:top;}
 .person1 {background-color:#afa; border:outset #afa 1px; vertical-align:top;}
@@ -219,6 +202,8 @@ html[dir='rtl'] #ancestry_chart li {margin:0; padding:0 2px 0 0; left:auto;}
 .person3 {background-color:#55f; border:outset #55f 1px; vertical-align:top;}
 .person4 {background-color:#f55; border:outset #f55 1px; vertical-align:top;}
 .person5 {background-color:#5f5; border:outset #5f5 1px; vertical-align:top;}
+
+.compact_view p {font-size:90%; margin:0;}
 
 .listlog {line-height:20pt;}
 

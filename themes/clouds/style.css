@@ -464,8 +464,6 @@ left:0;
 z-index: 1;
 }
 
-#pedigree_chart table div p {font-size:90%; margin:0;}
-
 html[dir='rtl'] #pedigree_chart {
 left:auto;
 right:0;
@@ -521,6 +519,8 @@ right:0;
 
 html[dir='rtl'] #ancestry_chart ul {background-position:right top; margin:0 15px 0 0;left:auto;}
 html[dir='rtl'] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
+
+.compact_view p {font-size:90%; margin:0;}
 
 .topheader {
 color:#888;

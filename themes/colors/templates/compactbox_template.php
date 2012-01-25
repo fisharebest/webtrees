@@ -42,14 +42,15 @@ echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '">
 		<p>', $birthplace, '</p>
 	</div>';
 	//	details for zoom view
-		echo '<br><hr>
-			<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
-				'<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $name.$addname, '</span>
-				<span class="name',$style,'" ',$genderImage,'</span>
-			</a>
-		<br>',
-		$BirthDeath,
-		'<div id="inout-',$boxID,'" style="display: none;">
+		echo '<div id="fontdef-',$boxID,'" class="details',$style,'" style="display:none;">
+			<br><hr>
+				<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
+					'<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $name.$addname, '</span>
+					<span class="name',$style,'" ',$genderImage,'</span>
+				</a>',
+			$BirthDeath,
+		'</div>
+		<div id="inout-',$boxID,'" style="display:none;">
 			<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading...'),'</div>
 		</div>';
 	// end of zoom view
