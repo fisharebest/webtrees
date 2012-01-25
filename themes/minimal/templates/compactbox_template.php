@@ -32,15 +32,26 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '">',
-	$thumbnail,
-	'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
-		'<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $shortname, '</span>
-	</a>
-	<p style="font-size:90%;margin:0;">', $person->getLifeSpan(), '</p>
-	<p style="font-size:90%;margin:0;">', $birthplace, '</p>
-	<div id="inout-',$boxID,'" style="display: none;">
-		<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading...'),'</div>
-	</div>
-</div>';
+echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '">
+	<div class="compact_view" style="cursor:url(\''.$WT_IMAGES["zoomin"].'\'),n-resize;">',
+		$thumbnail,
+		'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '" title="',strip_tags($name),'">
+			<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $shortname, '</span>
+		</a>
+		<p>', $person->getLifeSpan(), '</p>
+		<p>', $birthplace, '</p>
+	</div>';
+	//	details for zoom view
+		echo '<br><hr>
+			<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
+				'<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $name.$addname, '</span>
+				<span class="name',$style,'" ',$genderImage,'</span>
+			</a>
+		<br>',
+		$BirthDeath,
+		'<div id="inout-',$boxID,'" style="display: none;">
+			<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading...'),'</div>
+		</div>';
+	// end of zoom view
+echo '</div>';
 ?>
