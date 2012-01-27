@@ -775,6 +775,11 @@ function evalAjaxJavascript(text, parentElement) {
 }
 
 function restorebox(boxid, bstyle) {
+     if (big==1) {
+         window.location.reload( false );
+         if (boxid==oldboxid) return true;
+     }
+
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
 	inbox2 = document.getElementById("inout2-"+boxid);
