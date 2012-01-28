@@ -566,11 +566,9 @@ function expandbox(boxid, bstyle) {
 	if (big==1) {
 		fontdef.style.display='none';
 		restorebox(oldboxid, bstyle);
-		//window.location.reload( false );
 		if (boxid==oldboxid) return true;
 	}
 	url = window.location.toString();
-	cfontdef = document.getElementById("fontdef-"+boxid);
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
 	inbox2 = document.getElementById("inout2-"+boxid);
