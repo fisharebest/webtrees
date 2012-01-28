@@ -677,14 +677,14 @@ class WT_GedcomRecord {
 			$shortname =  $givn.' '.$surn;
 			$new_name = explode(' ', $givn);
 			$count_givn = count($new_name);
-			$len_givn = strlen($givn);
-			$len_surn = strlen($surn)+1;
+			$len_givn = utf8_strlen($givn);
+			$len_surn = utf8_strlen($surn)+1;
 			$len = $len_givn + $len_surn;
 			$i = 1;
 			while ($len > $char) {
-				$new_name[$count_givn-$i] = substr($new_name[$count_givn-$i],0,1);
+				$new_name[$count_givn-$i] = utf8_substr($new_name[$count_givn-$i],0,1);
 				$givn = implode(' ', $new_name);
-				$len_givn = strlen($givn);
+				$len_givn = utf8_strlen($givn);
 				$len = $len_givn + $len_surn;
 				$i++;
 			}
