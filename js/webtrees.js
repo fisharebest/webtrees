@@ -564,10 +564,13 @@ var oldiconsdislpay = 0;
 
 function expandbox(boxid, bstyle) {
 	if (big==1) {
+		fontdef.style.display='none';
 		restorebox(oldboxid, bstyle);
+		//window.location.reload( false );
 		if (boxid==oldboxid) return true;
 	}
 	url = window.location.toString();
+	cfontdef = document.getElementById("fontdef-"+boxid);
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
 	inbox2 = document.getElementById("inout2-"+boxid);
@@ -643,6 +646,8 @@ function expandbox(boxid, bstyle) {
 		{
 			inbox.style.display='none';
 		}
+
+		
 
 		if (inbox2) inbox2.style.display='none';
 
@@ -775,11 +780,6 @@ function evalAjaxJavascript(text, parentElement) {
 }
 
 function restorebox(boxid, bstyle) {
-     if (big==1) {
-         window.location.reload( false );
-         if (boxid==oldboxid) return true;
-     }
-
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
 	inbox2 = document.getElementById("inout2-"+boxid);
