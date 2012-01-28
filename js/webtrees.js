@@ -563,7 +563,7 @@ var oldiconsdislpay = 0;
 
 function expandbox(boxid, bstyle) {
 	if (big==1) {
-		if (hr.length>0) {fontdef.style.display='none';}
+		if (hr.length>0) {fontdef.style.display='none';} // True only if compact chart
 		restorebox(oldboxid, bstyle);
 		if (boxid==oldboxid) return true;
 	}
