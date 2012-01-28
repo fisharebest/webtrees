@@ -203,7 +203,7 @@ html[dir='rtl'] #ancestry_chart li {margin:0; padding:0 2px 0 0; left:auto;}
 .person4 {background-color:#f55; border:outset #f55 1px; vertical-align:top;}
 .person5 {background-color:#5f5; border:outset #5f5 1px; vertical-align:top;}
 
-.compact_view p {font-size:90%; margin:0;}
+#compact_view p {font-size:90%; margin:0;}
 
 .listlog {line-height:20pt;}
 

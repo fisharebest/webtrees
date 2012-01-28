@@ -498,7 +498,7 @@ html[dir='rtl'] #ancestry_chart li {margin:0; padding:0 2px 0 0; left:auto;}
 #familybook_chart {margin-left: 10px;}
 html[dir='rtl'] #familybook_chart {margin-right: 10px;}
 
-.compact_view p {font-size:90%; margin:0;}
+#compact_view p {font-size:90%; margin:0;}
 
 .topheader {
 color:#888;

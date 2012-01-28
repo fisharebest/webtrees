@@ -304,7 +304,7 @@ html[dir='rtl'] .person_box html[dir='rtl'] .person_boxF html[dir='rtl'] .person
 	left:0;
 }
 
-.compact_view p {font-size:90%; margin:0;}
+#compact_view p {font-size:90%; margin:0;}
 
 .thumbnail {
 height:auto;

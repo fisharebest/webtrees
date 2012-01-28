@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '">
-	<div class="compact_view" style="cursor:url(\''.$WT_IMAGES["zoomin"].'\'),n-resize;">',
+	<div id="compact_view" style="cursor:url(\''.$WT_IMAGES["zoomin"].'\'),n-resize;">',
 		$thumbnail,
 		'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '" title="',strip_tags($name),'">
 			<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $shortname, '</span>
