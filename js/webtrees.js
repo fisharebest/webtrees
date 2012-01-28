@@ -563,11 +563,10 @@ var oldiconsdislpay = 0;
 
 function expandbox(boxid, bstyle) {
 	if (big==1) {
-		if (hr.length>0) {fontdef.style.display='none';} // True only if compact chart
+		if (document.getElementById("compact_view")) {fontdef.style.display='none';} // True only if compact chart
 		restorebox(oldboxid, bstyle);
 		if (boxid==oldboxid) return true;
 	}
-	hr = document.getElementsByTagName("hr");
 	url = window.location.toString();
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
@@ -615,10 +614,6 @@ function expandbox(boxid, bstyle) {
 		if (divleft<0) {
 			repositioned = 1;
 			divleft=0;
-		}
-		if (url.indexOf("pedigree.php")!=-1) {
-			if (textDirection=="ltr") parentbox.style.left=divleft+"px";
-			//else parentbox.style.right=divleft+"px";
 		}
 		divbox.style.height='auto';
 		if (inbox)
@@ -814,10 +809,6 @@ function restorebox(boxid, bstyle) {
 			//if (parentbox!=divbox) parentbox.style.width = parseInt(parentbox.style.width)-diff;
 			//alert("here");
 			parentbox.style.zIndex=oldz;
-			if (url.indexOf("pedigree.php")!=-1) {
-				if (textDirection=="ltr") parentbox.style.left=oldleft+"px";
-				else parentbox.style.right=oldleft+"px";
-			}
 		}
 		if (inbox) inbox.style.display='none';
 		if (inbox2) inbox2.style.display='block';
