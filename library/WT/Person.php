@@ -1739,10 +1739,20 @@ class WT_Person extends WT_GedcomRecord {
 		// NAME filed, surrounded by ASCII quotes (or both).
 		if ($NICK) {
 			// NICK field found.  Add localised quotation marks.
-			$QNICK=/* I18N: Place a nickname in quotation marks */ WT_I18N::translate('“%s”', $NICK);
+
+			// GREG 28/Jan/12 - these localised quotation marks apparantly cause problems with LTR names on RTL
+			// pages and vice-versa.  Just use straight ASCII quotes.  Keep the old code, so that we keep the
+			// translations.
+			if (false) {
+				$QNICK=/* I18N: Place a nickname in quotation marks */ WT_I18N::translate('“%s”', $NICK);
+			} else {
+				$QNICK='"'.$NICK.'"';
+			}
+
 			if (preg_match('/(^| |"|«|“|\'|‹|‘|„)'.preg_quote($NICK, '/').'( |"|»|”|\'|›|’|”|$)/', $full)) {
 				// NICK present in name.  Localise ASCII quotes (but leave others).
-				$full=str_replace('"'.$NICK.'"', $QNICK, $full);
+				// GREG 28/Jan/12 - redundant - see comment above.
+				// $full=str_replace('"'.$NICK.'"', $QNICK, $full);
 			} else {
 				// NICK not present in NAME.
 				$pos=strpos($full, '/');
