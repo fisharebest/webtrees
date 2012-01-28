@@ -544,7 +544,6 @@ function valid_date(datefield) {
 	}
 	datefield.value=datestr;
 }
-
 var oldheight = 0;
 var oldwidth = 0;
 var oldz = 0;
@@ -564,10 +563,11 @@ var oldiconsdislpay = 0;
 
 function expandbox(boxid, bstyle) {
 	if (big==1) {
-		fontdef.style.display='none';
+		if (hr.length>0) {fontdef.style.display='none';}
 		restorebox(oldboxid, bstyle);
 		if (boxid==oldboxid) return true;
 	}
+	hr = document.getElementsByTagName("hr");
 	url = window.location.toString();
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
