@@ -958,7 +958,7 @@ left:auto;
 	vertical-align: top;
 }
 
-#compact_view p {font-size:90%; margin:0;}
+.compact_view p {font-size:90%; margin:0;}
 
 .listlog {
 	line-height: 20pt;
