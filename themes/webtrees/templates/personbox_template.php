@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '<div id="out-',$boxID,'" ',$outBoxAdd,'">
+echo '<div id="out-',$boxID,'" ',$outBoxAdd,'>
 	<div class="noprint" id="icons-',$boxID,'" style="',$iconsStyleAdd,' width: 25px; height: 50px">', $icons, '</div>',
 	$thumbnail,
 	'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">

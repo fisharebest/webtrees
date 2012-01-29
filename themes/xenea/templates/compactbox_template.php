@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '">
+echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '>
 	<div class="compact_view" style="cursor:url(\''.$WT_IMAGES["zoomin"].'\'),n-resize;">',
 		$thumbnail,
 		'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '" title="',strip_tags($name),'">
@@ -45,8 +45,8 @@ echo '<div id="out-', $boxID ,'" ', $outBoxAdd, '">
 		echo '<div id="fontdef-',$boxID,'" class="details',$style,'" style="display:none;">
 			<br><hr>
 				<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">',
-					'<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $name.$addname, '</span>
-					<span class="name',$style,'" ',$genderImage,'</span>
+					'<span id="namedef-',$boxID, '.2" class="name',$style,' ',$classfacts,'">', $name.$addname, '</span>
+					<span class="name',$style,'">',$genderImage,'</span>
 				</a>',
 			$BirthDeath,
 		'</div>
