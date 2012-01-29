@@ -563,10 +563,11 @@ var oldiconsdislpay = 0;
 
 function expandbox(boxid, bstyle) {
 	if (big==1) {
-		if (document.getElementById("compact_view")) {fontdef.style.display='none';} // True only if compact chart
+		if (compact_count.length>0) {fontdef.style.display='none';} // True only if compact chart
 		restorebox(oldboxid, bstyle);
 		if (boxid==oldboxid) return true;
 	}
+    compact_count = document.getElementsByClassName("compact_view");
 	url = window.location.toString();
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
