@@ -563,11 +563,19 @@ var oldiconsdislpay = 0;
 
 function expandbox(boxid, bstyle) {
 	if (big==1) {
-		if (compact_count.length>0) {fontdef.style.display='none';} // True only if compact chart
+		if (document.getElementsByClassName) { // Check if browser supports the getElementByClassName function
+			if (compact_count.length>0) { // True only if compact chart
+				fontdef.style.display='none';
+			}
+		} 
 		restorebox(oldboxid, bstyle);
 		if (boxid==oldboxid) return true;
 	}
-    compact_count = document.getElementsByClassName("compact_view");
+	if (document.getElementsByClassName) {  // Check if browser supports the getElementByClassName function
+		compact_count = document.getElementsByClassName("compact_view");
+		ie8=0;
+	}   
+
 	url = window.location.toString();
 	divbox = document.getElementById("out-"+boxid);
 	inbox = document.getElementById("inout-"+boxid);
