@@ -210,7 +210,7 @@ class WT_MenuBar {
 				$submenu = new WT_Menu($menuName, 'timeline.php?pids%5B%5D='.$indi_xref.'&amp;ged='.WT_GEDURL, 'menu-chart-timeline');
 				$submenu->addIcon('timeline');
 				$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_timeline');
-				if ($controller instanceof WT_Controller_Family) {
+				if ($controller instanceof WT_Controller_Family && $controller->record) {
 					// Build a sortable list of submenu items and then sort it in localized name order
 					$menuList = array();
 					$menuList['parentTimeLine'] = WT_I18N::translate('Show couple on timeline chart');
