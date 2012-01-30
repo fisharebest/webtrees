@@ -64,6 +64,8 @@ h4 {color:#006; font-weight:bold; font-size:12px;}
 .person_boxNN {background-color:#fff; border:dashed #81a9cb 1px; padding:3px;}
 .person_box:target, .news_box:target, #gedcom_stats:target {background-color:#ffc;}
 .person_box_lifespan {display: inline;}
+/* families tab person box */
+#relatives_content .person_box, #relatives_content .person_boxF { height:50px;}
 
 
 .center {text-align:center;}

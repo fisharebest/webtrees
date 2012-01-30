@@ -409,22 +409,6 @@ clear: both;
 padding:10px 10px 0 0;
 }
 
-#index_small_blocks .person_box .pedigree_image_portrait,
-#index_small_blocks .person_boxF .pedigree_image_portrait,
-#index_small_blocks .person_boxNN .pedigree_image_portrait,
-#index_small_blocks .person_box .pedigree_image_landscape,
-#index_small_blocks .person_boxF .pedigree_image_landscape,
-#index_small_blocks .person_boxNN .pedigree_image_landscape,
-#index_small_blocks .person_box .pedigree_image_portrait_rtl,
-#index_small_blocks .person_boxF .pedigree_image_portrait_rtl,
-#index_small_blocks .person_boxNN .pedigree_image_portrait_rtl,
-#index_small_blocks .person_box .pedigree_image_landscape_rtl,
-#index_small_blocks .person_boxF .pedigree_image_landscape_rtl,
-#index_small_blocks .person_boxNN .pedigree_image_landscape_rtl {
-display:inline;
-visibility:visible;
-}
-
 #index_title {
 float: left;
 }
@@ -537,25 +521,32 @@ width:99%;
 
 /* person boxes are used in various charts */
 
-.person_box {
-background:#ddf;
-border:1px solid #AAA;
-padding:3px;
+#index_small_blocks .person_box .pedigree_image_portrait,
+#index_small_blocks .person_boxF .pedigree_image_portrait,
+#index_small_blocks .person_boxNN .pedigree_image_portrait,
+#index_small_blocks .person_box .pedigree_image_landscape,
+#index_small_blocks .person_boxF .pedigree_image_landscape,
+#index_small_blocks .person_boxNN .pedigree_image_landscape,
+#index_small_blocks .person_box .pedigree_image_portrait_rtl,
+#index_small_blocks .person_boxF .pedigree_image_portrait_rtl,
+#index_small_blocks .person_boxNN .pedigree_image_portrait_rtl,
+#index_small_blocks .person_box .pedigree_image_landscape_rtl,
+#index_small_blocks .person_boxF .pedigree_image_landscape_rtl,
+#index_small_blocks .person_boxNN .pedigree_image_landscape_rtl {
+display:inline;
+visibility:visible;
 }
 
-.person_boxF {
-background:#fdd;
-border:1px solid #AAA;
-padding:3px;
-}
+.person_box, .person_boxF, .person_boxNN {border:1px solid #AAA; padding:3px;}
 
-.person_boxNN {
-background:#fff;
-border:1px solid #AAA;
-padding:3px;
-}
+.person_box {background:#ddf;}
+.person_boxF {background:#fdd;}
+.person_boxNN {background:#fff;}
 
 .person_box_lifespan {display: inline;}
+
+/* families tab person box */
+#relatives_content .person_box, #relatives_content .person_boxF { height:50px;}
 
 .action_headerF {background: #FDD;}
 .action_header {background: #DDF;}
