@@ -62,7 +62,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $arrheight;
 
 	function __construct($rootid='', $show_full=1, $generations=3) {
-		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bheight, $bwidth, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
+		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bheight, $bwidth, $cbwidth, $cbheight, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $WT_IMAGES, $TEXT_DIRECTION, $show_full;
 
 		parent::__construct();
@@ -99,10 +99,10 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		$bwidth=$Dbwidth;
 		$bheight=$Dbheight;
 		
-		// -- adjust size of the non-detailed boxes
+		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $bwidth - 25;
-			$bheight = $bheight - 32;
+			$bwidth = $cbwidth;
+			$bheight = $cbheight;
 		}
 
 		$bhalfheight = (int)($bheight / 2);

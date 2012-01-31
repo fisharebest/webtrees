@@ -55,16 +55,16 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$this->box_width  =safe_GET_integer('box_width',     50, 300, 100);
 
 		// Box sizes are set globally in the theme.  Modify them here.
-		global $bwidth, $bheight, $Dbwidth, $Dbheight;
+		global $bwidth, $bheight, $cbwidth, $cbheight, $Dbwidth, $Dbheight;
 		$Dbwidth =$this->box_width * $bwidth  / 100;
 		$Dbheight=$this->box_width * $bheight / 100;
 		$bwidth  =$Dbwidth;
 		$bheight =$Dbheight;
 		
-		// -- adjust size of the non-detailed boxes
+		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $bwidth - 25;
-			$bheight = $bheight - 32;
+			$bwidth = $cbwidth;
+			$bheight = $cbheight;
 		}
 
 		if ($this->root && $this->root->canDisplayName()) {

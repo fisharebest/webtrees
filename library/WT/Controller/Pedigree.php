@@ -52,7 +52,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 	public function __construct() {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $MAX_PEDIGREE_GENERATIONS;
 		global $DEFAULT_PEDIGREE_GENERATIONS, $SHOW_EMPTY_BOXES;
-		global $bwidth, $bheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
+		global $bwidth, $bheight, $cbwidth, $cbheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
 		global $BROWSER_TYPE, $show_full, $talloffset;
 
 		parent::__construct();
@@ -92,8 +92,8 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $bwidth - 25;
-			$bheight = $bheight - 32;
+			$bwidth = $cbwidth;
+			$bheight = $cbheight;
 		}
 		//-- adjustments for portrait mode
 		if ($this->talloffset==0) {

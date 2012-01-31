@@ -56,7 +56,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	var $show_cousins;
 
 	function __construct() {
-		global $USE_RIN, $MAX_ALIVE_AGE, $bwidth, $bheight, $pbwidth, $pbheight, $GEDCOM, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
+		global $USE_RIN, $MAX_ALIVE_AGE, $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $GEDCOM, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS, $DEFAULT_PEDIGREE_GENERATIONS, $show_full;
 
 		parent::__construct();
 
@@ -78,10 +78,10 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		$bwidth=$Dbwidth;
 		$bheight=$Dbheight;
 		
-		// -- adjust size of the non-detailed boxes
+		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $bwidth - 25;
-			$bheight = $bheight - 32;
+			$bwidth = $cbwidth;
+			$bheight = $cbheight;
 		}
 		
 		$pbwidth = $bwidth+12;

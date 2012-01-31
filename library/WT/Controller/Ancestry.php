@@ -43,7 +43,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	var $cellwidth;
 
 	function __construct() {
-		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bwidth, $bheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
+		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bwidth, $bheight, $cbwidth, $cbheight, $pbwidth, $pbheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
 		global $DEFAULT_PEDIGREE_GENERATIONS, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $OLD_PGENS, $box_width, $Dbwidth, $Dbheight;
 		global $show_full;
 
@@ -67,10 +67,10 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		$bwidth=$Dbwidth;
 		$bheight=$Dbheight;
 		
-		// -- adjust size of the non-detailed boxes
+		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $bwidth - 25;
-			$bheight = $bheight - 32;
+			$bwidth = $cbwidth;
+			$bheight = $cbheight;
 		}
 
 		$pbwidth = $bwidth+12;
