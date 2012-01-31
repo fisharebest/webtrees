@@ -1480,7 +1480,7 @@ margin: 0;
 .helpcontent dt {clear:both;}
 
 .itr {
-	position: absolute;
+	/* position: absolute; */ remove to fix chrome problem
 	top: 3em;
 	line-height: 1.5;
 }
@@ -1542,6 +1542,7 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 .popup dl {
 	padding:5px;
 	font-size:9px;
+	height: auto;
 }
 
 .popup dt {
@@ -1557,8 +1558,12 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 	display: block;
 	position: absolute;
 	width: 12em;
-	right: 0;
+	right: 0px;
 	z-index: 9999;
+}
+
+#relationship_chart .itr:hover .popup {
+	right: -15px;
 }
 
 html[dir='rtl'] .popup dt {float:none;}
