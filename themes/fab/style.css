@@ -260,8 +260,7 @@ html[dir='rtl'] .makeMenu li ul li {
 .person_box_lifespan {display: inline;}
 
 /* families tab person box */
-
-#relatives_content  .person_box > .person_box, #relatives_content .person_boxF  > .person_boxF { height:50px;}
+#relatives_content  .person_box > .person_box, #relatives_content .person_boxF  > .person_boxF, #relatives_content .person_boxNN  > .person_boxNN {  border:none;min-height:50px;} 
 
 html[dir='rtl'] .person_box html[dir='rtl'] .person_boxF html[dir='rtl'] .person_boxNN {margin: 0 3px 0 0;}
 

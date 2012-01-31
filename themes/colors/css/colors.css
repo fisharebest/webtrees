@@ -546,7 +546,7 @@ visibility:visible;
 .person_box_lifespan {display: inline;}
 
 /* families tab person box */
-#relatives_content  .person_box > .person_box, #relatives_content .person_boxF  > .person_boxF { height:50px;}
+#relatives_content  .person_box > .person_box, #relatives_content .person_boxF  > .person_boxF, #relatives_content .person_boxNN  > .person_boxNN {  border:none;min-height:50px;} 
 
 .action_headerF {background: #FDD;}
 .action_header {background: #DDF;}
