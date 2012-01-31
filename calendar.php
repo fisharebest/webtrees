@@ -107,7 +107,7 @@ $today_month=$today->Format('%O');
 // Invalid dates?  Go to monthly view, where they'll be found.
 if ($cal_date->d>$days_in_month && $action=='today')
 	$action='calendar';
-echo "<div>";
+echo '<div id="calendar-page">';
 
 // Calendar form
 echo '<form name="dateform" method="get" action="calendar.php">';
@@ -526,7 +526,7 @@ case 'calendar':
 	echo '</table>';
 	break;
 }
-echo '</div>';
+echo '</div>'; //close "calendar-page"
 
 /////////////////////////////////////////////////////////////////////////////////
 // Filter a list of facts
