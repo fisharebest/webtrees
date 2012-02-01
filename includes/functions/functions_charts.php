@@ -628,7 +628,7 @@ function get_sosa_name($sosa) {
  * @param string $famid family ID
  */
 function print_cousins($famid, $personcount=1) {
-	global $show_full, $bheight, $bwidth, $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM;
+	global $show_full, $bheight, $bwidth, $cbheight, $cbwidth, $WT_IMAGES, $TEXT_DIRECTION, $GEDCOM;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	$family=WT_Family::getInstance($famid);
@@ -637,8 +637,8 @@ function print_cousins($famid, $personcount=1) {
 	$kids = count($fchildren);
 	$save_show_full = $show_full;
 	if ($save_show_full) {
-		$bheight=(($bheight)/2)-4; /* adjust for padding and border, should 1/2 larger block size  */
-		$bwidth-=40;
+		$bheight = $cbheight;
+		$bwidth  = $cbwidth;
 	} 
 	
 	$show_full = false;
@@ -675,8 +675,8 @@ function print_cousins($famid, $personcount=1) {
 	}
 	$show_full = $save_show_full;
 	if ($save_show_full) {
-		$bheight=($bheight+4)*2;
-		$bwidth+=40;
+		$bheight = $cbheight;
+		$bwidth  = $cbwidth;
 	}
 	echo '</td>';
 }
