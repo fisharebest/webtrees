@@ -34,6 +34,9 @@ $to        =isset($_REQUEST['to'        ]) ? $_REQUEST['to'        ] : '';
 $action    =isset($_REQUEST['action'    ]) ? $_REQUEST['action'    ] : 'compose';
 $time      =isset($_REQUEST['time'      ]) ? $_REQUEST['time'      ] : '';
 $method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : '';
+$method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : '';
+$from_email=isset($_REQUEST['from_email']) ? $_REQUEST['from_email'] : '';
+$from_name =isset($_REQUEST['from_name' ]) ? $_REQUEST['from_name' ] : '';
 
 $controller=new WT_Controller_Simple();
 $controller->setPageTitle(WT_I18N::translate('webtrees Message'));
@@ -55,9 +58,6 @@ $errors='';
 if (WT_USER_ID) {
 	$from=WT_USER_NAME;
 } else {
-	$from_email=isset($_REQUEST['from_email']) ? $_REQUEST['from_email'] : '';
-	$from_name =isset($_REQUEST['from_name' ]) ? $_REQUEST['from_name' ] : '';
-
 	// Visitors must provide a valid email address
 	if ($from_email && (!preg_match("/(.+)@(.+)/", $from_email, $match) || function_exists('checkdnsrr') && checkdnsrr($match[2])===false)) {
 		$errors.='<p class="ui-state-error">'.WT_I18N::translate('Please enter a valid email address.').'</p>';
