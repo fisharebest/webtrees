@@ -525,7 +525,7 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 			}
 
 			echo '<div style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':1px; top:', abs($Dbaseyoffset-70), 'px; z-index:1;">';
-			echo '<h4>', WT_I18N::translate('Relationship: %s', get_relationship_name($node)), '</h4></div>';
+			echo '<h3>', WT_I18N::translate('Relationship: %s', get_relationship_name($node)), '</h3></div>';
 		}
 	}
 }
