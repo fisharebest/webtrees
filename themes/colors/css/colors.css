@@ -151,7 +151,7 @@ html[dir='rtl'] #main-menu li ul li {text-indent: 0;}
 
 /*******************Menu submenu Icons**********************/
 /* Chart Icons */
-#menu-chart-ancestry        {background-position:left -184px;} html[dir=rtl] #menu-chart-ancestry         {background-position:right-184px;}
+#menu-chart-ancestry        {background-position:left -184px;} html[dir=rtl] #menu-chart-ancestry         {background-position:right -184px;}
 #menu-chart-fanchart        {background-position:left  -23px;} html[dir=rtl] #menu-chart-fanchart         {background-position:right  -23px;}
 #menu-chart-compact         {background-position:left  -46px;} html[dir=rtl] #menu-chart-compact          {background-position:right  -46px;}
 #menu-chart-descendancy     {background-position:left   -0px;} html[dir=rtl] #menu-chart-descendancy      {background-position:right   -0px;}
@@ -1496,7 +1496,7 @@ margin: 0;
 .user_favorites_block  .person_box .details2, .user_favorites_block  .person_boxF.details2, .user_favorites_block  .person_boxNN.details2 {min-height:40px;}
 
 
-.charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN 
+.charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
 .gedcom_favorites_block,.user_favorites_block, 
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
 #descendancy_chart .person_box, #descendancy_chart .person_boxF, #descendancy_chart .person_boxNN,
@@ -1561,7 +1561,7 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 	position: absolute;
 	width: 12em;
 	right: 0px;
-	z-index: 9999;
+	z-index: 99999;
 }
 
 #relationship_chart .itr:hover .popup {
