@@ -177,7 +177,7 @@ function move_files($path, $protect) {
 */
 function set_perms($path) {
 	global $MEDIA_FIREWALL_ROOTDIR, $MEDIA_DIRECTORY, $starttime, $operation_count;
-	if (preg_match("'^($MEDIA_FIREWALL_ROOTDIR)?$MEDIA_DIRECTORY'", $path."/")==0) {
+	if (strpos($path."/", $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)!==0 && strpos($path."/", $MEDIA_DIRECTORY)!==0) {
 		return false;
 	}
 	$timelimit=get_site_setting('MAX_EXECUTION_TIME');
