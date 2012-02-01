@@ -172,8 +172,7 @@ if (WT_USE_LIGHTBOX) {
 					<?php echo WT_I18N::translate('Show oldest top'), help_link('oldest_top'); ?>
 				</td>
 				<td class="optionbox">
-					<input tabindex="4" type="checkbox" name="asc" value="-1"
-					<?php if ($asc==-1) echo " checked=\"checked\""; ?>>
+					<input tabindex="4" type="checkbox" name="asc" value="-1" <?php if ($asc==-1) echo ' checked="checked"'; ?>>
 				</td>
 			</tr>
 			<tr>
@@ -201,15 +200,15 @@ if (WT_USE_LIGHTBOX) {
 								echo ' | ';
 							}
 							if ($i==$path_to_find) {
-								echo "<span class=\"error\" style=\"valign: middle\">".($i+1).'</span>';
+								echo '<span class="error" style="valign: middle">', $i+1, '</span>';
 								$new_path=false;
 							} else {
-								echo "<a href=\"relationship.php?pid1={$pid1}&amp;pid2={$pid2}&amp;path_to_find={$i}&amp;followspouse={$followspouse}&amp;show_full={$show_full}&amp;asc={$asc}\">".($i+1).'</a>';
+								echo '<a href="relationship.php?pid1=', $pid1, '&amp;pid2=', $pid2, '&amp;path_to_find=', $i, '&amp;followspouse=', $followspouse, '&amp;show_full=', $show_full, '&amp;asc=', $asc, '">', $i+1, '</a>';
 							}
 							$i++;
 						}
 						if ($new_path && $path_to_find<$i+1 && $check_node) {
-							echo " | <span class=\"error\">".($i+1).'</span>';
+							echo ' | <span class="error">', $i+1, '</span>';
 						}
 						echo '</td>';
 					} else {
@@ -217,15 +216,15 @@ if (WT_USE_LIGHTBOX) {
 							$disp=$person1->canDisplayName() && $person2->canDisplayName();
 							if ($disp) {
 								echo WT_I18N::translate('Show path'), ': </td>';
-								echo "<td class=\"optionbox\">";
-								echo " <span class=\"error vmmiddle\">";
+								echo '<td class="optionbox">';
+								echo '<span class="error vmmiddle">';
 								$check_node = get_relationship($pid1, $pid2, $followspouse, 0, true, $path_to_find);
 								echo $check_node ? '1' : '&nbsp;'.WT_I18N::translate('No results found.'), '</span></td>';
 								$prt = true;
 							}
 						}
 						if (!isset($prt)) {
-							echo "&nbsp;</td><td class=\"optionbox\">&nbsp;</td>";
+							echo '&nbsp;</td><td class="optionbox">&nbsp;</td>';
 						}
 					}
 					?>
@@ -242,21 +241,21 @@ if (WT_USE_LIGHTBOX) {
 				if ($person1 && $person2 && $disp) {
 					echo '</tr><tr>';
 					if (($disp)&&(!$check_node)) {
-						echo "<td class=\"topbottombar wrap vmiddle center\" colspan=\"2\">";
-						if (isset($_SESSION["relationships"])) {
+						echo '<td class="topbottombar wrap vmiddle center" colspan="2">';
+						if (isset($_SESSION['relationships'])) {
 							if ($path_to_find==0) {
-								echo "<span class=\"error\">", WT_I18N::translate('No link between the two individuals could be found.'), "</span><br>";
+								echo '<span class="error">', WT_I18N::translate('No link between the two individuals could be found.'), '</span><br>';
 							} else {
-								echo "<span class=\"error\">", WT_I18N::translate('No other link between the two individuals could be found.'), "</span><br>";
+								echo '<span class="error">', WT_I18N::translate('No other link between the two individuals could be found.'), '</span><br>';
 							}
 						}
 						if (!$followspouse) {
 							$controller->addInlineJavaScript('document.getElementById("followspousebox").className="facts_valuered";');
-							echo "<input class=\"error\" type=\"submit\" value=\"", WT_I18N::translate('Check relationships by marriage'), "\" onclick=\"people.followspouse.checked='checked';\">";
+							echo '<input class="error" type="submit" value="', WT_I18N::translate('Check relationships by marriage'), '" onclick="people.followspouse.checked=\'checked\';">';
 						}
 						echo '</td>';
 					} else {
-						echo "<td class=\"topbottombar vmiddle center\" colspan=\"2\"><input type=\"submit\" value=\"", WT_I18N::translate('Find next path'), "\" onclick=\"document.people.path_to_find.value='", $path_to_find+1, "';\">";
+						echo '<td class="topbottombar vmiddle center" colspan="2"><input type="submit" value="', WT_I18N::translate('Find next path'), '" onclick="document.people.path_to_find.value=', $path_to_find+1, ';">';
 						echo help_link('next_path');
 						echo '</td>';
 					}
@@ -264,7 +263,7 @@ if (WT_USE_LIGHTBOX) {
 				}
 
 				if ($pass == false) {
-					echo "</tr><tr><td colspan=\"2\" class=\"topbottombar wrap\">&nbsp;</td>";
+					echo '</tr><tr><td colspan="2" class="topbottombar wrap">&nbsp;</td>';
 				}
 				?>
 				<td>
@@ -479,11 +478,11 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 						}
 						$joinx = $xoffset-$xs;
 						$joiny = $liney-2+($asc+1)/2*$lh;
-						echo "<div id=\"joina$index\" style=\"position:absolute; ".($TEXT_DIRECTION=='ltr'?'left':'right').':'.($joinx+$Dbxspacing).'px; top:'.($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\"></div>";
+						echo '<div id="joina', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px; z-index:-100;" align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
 						$joinw = $xs/2+2;
 						$joinx = $joinx+$xs/2;
 						$joiny = $joiny-$asc*$lh;
-						echo "<div id=\"joinb$index\" style=\"position:absolute; ".($TEXT_DIRECTION=='ltr'?'left':'right').':'.($joinx+$Dbxspacing).'px; top:'.($joiny+$Dbyspacing)."px; z-index:-100; \" align=\"center\"><img src=\"".$WT_IMAGES["hline"]."\" align=\"left\" width=\"".$joinw."\" height=\"".$joinh."\" alt=\"\"></div>";
+						echo '<div id="joinb', $index, '" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $joinx+$Dbxspacing, 'px; top:', $joiny+$Dbyspacing, 'px; z-index:-100; " align="center"><img src="', $WT_IMAGES['hline'], '" align="left" width="', $joinw, '" height="', $joinh, '" alt=""></div>';
 					}
 					$previous2=$previous;
 					$previous='child';
@@ -499,15 +498,15 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 
 				if ($index>0) {
 					if ($TEXT_DIRECTION=='rtl' && $line!=$WT_IMAGES['hline']) {
-						echo "<div id=\"line$index\" dir=\"ltr\" style=\"background:none; position:absolute; right:".($plinex+$Dbxspacing).'px; top:'.($liney+$Dbyspacing).'px; width:'.($lw+$lh*2)."px; z-index:-100;\" align=\"right\">";
-						echo "<img src=\"$line\" align=\"right\" width=\"$lw\" height=\"$lh\" alt=\"\">";
-						echo "<br>";
-						echo WT_I18N::translate($node['relations'][$index]);
-						echo "<img src=\"$arrow_img\" align=\"middle\" alt=\"\">";
-					} else {
-						echo "<div id=\"line$index\" style=\"background:none;  position:absolute; ".($TEXT_DIRECTION=='ltr'?'left':'right').':'.($plinex+$Dbxspacing).'px; top:'.($liney+$Dbyspacing).'px; width:'.($lw+$lh*2)."px; z-index:-100;\" align=\"".($lh==3?"center":"left")."\"><img src=\"$line\" align=\"left\" width=\"$lw\" height=\"$lh\" alt=\"\">";
+						echo '<div id="line', $index, '" style="background:none; position:absolute; right:', $plinex+$Dbxspacing, 'px; top:', $liney+$Dbyspacing, 'px; width:', $lw+$lh*2, 'px; z-index:-100;" align="right">';
+						echo '<img src="', $line, '" align="right" width="', $lw, '" height="', $lh, '" alt="">';
 						echo '<br>';
-						echo "<img src=\"$arrow_img\" align=\"middle\" alt=\"\">";
+						echo WT_I18N::translate($node['relations'][$index]);
+						echo '<img src="', $arrow_img, '" align="middle" alt="">';
+					} else {
+						echo '<div id="line', $index, '" style="background:none; position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $plinex+$Dbxspacing, 'px; top:', $liney+$Dbyspacing, 'px; width:', $lw+$lh*2, 'px; z-index:-100;" align="', $lh==3?'center':'left', '"><img src="', $line, '" align="left" width="', $lw, '" height="', $lh, '" alt="">';
+						echo '<br>';
+						echo '<img src="', $arrow_img, '" align="middle" alt="">';
 						if ($lh == 3) {
 							echo '<br>'; // note: $lh==3 means horiz arrow
 						}
@@ -519,12 +518,12 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				// Determine the z-index for this box
 				$zIndex = 200 - ($colNum * $depth + $rowNum);
 
-				echo "<div id=\"box$pid.0\" style=\"position:absolute; ".($TEXT_DIRECTION=='ltr'?'left':'right').':'.$pxoffset.'px; top:'.$pyoffset.'px; width:'.$Dbwidth.'px; height:'.$Dbheight.'px; z-index:'.$zIndex.";\"><table><tr><td colspan=\"2\" width=\"$Dbwidth\" height=\"$Dbheight\">";
+				echo '<div id="box', $pid, '.0" style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $pxoffset, 'px; top:', $pyoffset, 'px; width:', $Dbwidth, 'px; height:', $Dbheight, 'px; z-index:', $zIndex, ';"><table><tr><td colspan="2" width="', $Dbwidth, '" height="', $Dbheight, '">';
 				print_pedigree_person(WT_Person::getInstance($pid), 1);
 				echo '</td></tr></table></div>';
 			}
 
-			echo '<div style="position:absolute; '.($TEXT_DIRECTION=='ltr'?'left':'right').':1px; top:'.abs($Dbaseyoffset-70).'px; z-index:1;">';
+			echo '<div style="position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':1px; top:', abs($Dbaseyoffset-70), 'px; z-index:1;">';
 			echo '<h4>', WT_I18N::translate('Relationship: %s', get_relationship_name($node)), '</h4></div>';
 		}
 	}
