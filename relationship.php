@@ -154,13 +154,7 @@ if (WT_USE_LIGHTBOX) {
 				</td>
 				<td class="optionbox vmiddle">
 					<input type="hidden" name="show_full" value="<?php echo $show_full; ?>">
-					<?php
-						echo "<input tabindex=\"3\" type=\"checkbox\" name=\"showfull\" value=\"0\"";
-						if ($show_full) {
-							echo " checked=\"checked\"";
-						}
-						echo " onclick=\"document.people.show_full.value='".(!$show_full)."';\">";
-					?>
+					<input tabindex="3" type="checkbox" name="showfull" value="0" <?php if ($show_full) { echo ' checked="checked"'; } ?> onclick="document.people.show_full.value='<?php echo !$show_full; ?>';">
 				</td>
 			</tr>
 			<tr>
@@ -186,7 +180,7 @@ if (WT_USE_LIGHTBOX) {
 				<td class="descriptionbox">
 					<?php
 					$pass = false;
-					if ((isset($_SESSION['relationships']))&&((!empty($pid1))&&(!empty($pid2)))) {
+					if (isset($_SESSION['relationships']) && !empty($pid1) && !empty($pid2)) {
 						$pass = true;
 						$i=0;
 						$new_path=true;
@@ -242,14 +236,7 @@ if (WT_USE_LIGHTBOX) {
 					<?php echo WT_I18N::translate('Check relationships by marriage'), help_link('CHECK_MARRIAGE_RELATIONS'); ?>
 				</td>
 				<td class="optionbox" id="followspousebox">
-					<input tabindex="6" type="checkbox" name="followspouse" value="1"
-						<?php
-						if ($followspouse) {
-							echo " checked=\"checked\"";
-						}
-						echo " onclick=\"document.people.path_to_find.value='-1';\"";
-						?>
-					>
+					<input tabindex="6" type="checkbox" name="followspouse" value="1" <?php if ($followspouse) { echo ' checked="checked"'; } ?> onclick="document.people.path_to_find.value='-1';" >
 				</td>
 				<?php
 				if ($person1 && $person2 && $disp) {
@@ -556,7 +543,7 @@ $controller
 	->addInlineJavaScript('
 		relationship_chart_div = document.getElementById("relationship_chart");
 		if (relationship_chart_div) {
-			relationship_chart_div.style.height = '.($maxyoffset-50).'"px";
+			relationship_chart_div.style.height = "'.($maxyoffset-50).'px";
 			relationship_chart_div.style.width = "100%";
 		}'
 	);
