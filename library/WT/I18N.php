@@ -503,6 +503,19 @@ class WT_I18N {
 						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
 						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
 						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
+    			},
+				"fnFormatNumber": function(iIn) {
+					return String(iIn)
+						.replace(/0/g, "'.utf8_substr($digits, 0, 1).'")
+						.replace(/1/g, "'.utf8_substr($digits, 1, 1).'")
+						.replace(/2/g, "'.utf8_substr($digits, 2, 1).'")
+						.replace(/3/g, "'.utf8_substr($digits, 3, 1).'")
+						.replace(/4/g, "'.utf8_substr($digits, 4, 1).'")
+						.replace(/5/g, "'.utf8_substr($digits, 5, 1).'")
+						.replace(/6/g, "'.utf8_substr($digits, 6, 1).'")
+						.replace(/7/g, "'.utf8_substr($digits, 7, 1).'")
+						.replace(/8/g, "'.utf8_substr($digits, 8, 1).'")
+						.replace(/9/g, "'.utf8_substr($digits, 9, 1).'");
     			}
 			';
 		}
