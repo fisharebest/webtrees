@@ -2830,9 +2830,13 @@ class WT_Stats {
 			$family=WT_Family::getInstance($rows[$c]['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> ({$rows[$c]['tot']} ".WT_I18N::translate('children').")"."</li>\n";
+					$top10[]=
+						'<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a> - '.
+						WT_I18N::plural('%s child', '%s children', $rows[$c]['tot'], WT_I18N::number($rows[$c]['tot']));
 				} else {
-					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> ({$rows[$c]['tot']} ".WT_I18N::translate('children').")";
+					$top10[]=
+						'<a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a> - '.
+						WT_I18N::plural('%s child', '%s children', $rows[$c]['tot'], WT_I18N::number($rows[$c]['tot']));
 				}
 			}
 		}
@@ -3380,9 +3384,13 @@ class WT_Stats {
 			$family=WT_Family::getInstance($row['id']);
 			if ($family->canDisplayDetails()) {
 				if ($type == 'list') {
-					$top10[] = "\t<li><a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> ({$row['tot']} ".WT_I18N::translate('grandchildren').")"."</li>\n";
+					$top10[]=
+						'<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a> - '.
+						WT_I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], WT_I18N::number($row['tot']));
 				} else {
-					$top10[] = "<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName()."</a> ({$row['tot']} ".WT_I18N::translate('grandchildren').")";
+					$top10[]=
+						'<a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a> - '.
+						WT_I18N::plural('%s grandchild', '%s grandchildren', $row['tot'], WT_I18N::number($row['tot']));
 				}
 			}
 		}
