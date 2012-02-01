@@ -2,7 +2,7 @@
 // Controller for the advanced search page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team. All rights reserved.
@@ -217,24 +217,23 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		$fam_plac        =false;
 		foreach ($this->fields as $n=>$field) {
 			if ($this->values[$n]) {
+			//var_dump($field);var_dump($this->values[$n]);
 				$anything_to_find=true;
 				if (substr($field, 0, 14)=='FAMC:HUSB:NAME') {
 					$father_name=true;
 				} elseif (substr($field, 0, 14)=='FAMC:WIFE:NAME') {
 					$mother_name=true;
-				} elseif (substr($field, 0, 4)=='FAMS') {
-					$spouse_family=true;
 				} elseif (substr($field, 0, 4)=='NAME') {
 					$indi_name=true;
 				} elseif (strpos($field, ':DATE')!==false) {
-					if (substr($field, 0, 4)=='MARR') {
+					if (substr($field, 0, 4)=='FAMS') {
 						$fam_date=true;
 						$spouse_family=true;
 					} else {
 						$indi_date=true;
 					}
 				} elseif (strpos($field, ':PLAC')!==false) {
-					if (substr($field, 0, 4)=='MARR') {
+					if (substr($field, 0, 4)=='FAMS') {
 						$fam_plac=true;
 						$spouse_family=true;
 					} else {
@@ -261,8 +260,8 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			$bind[]=WT_GED_ID;
 		}
 		if ($spouse_family) {
-			$sql.=" JOIN `##link`   l_4 ON (l_4.l_file=? AND l_4.l_from=ind.4_id AND l_4.l_type='FAMS')";
-			$sql.=" JOIN `##family` fam ON (fam.n_file=? AND fam.f_id  =l_4.l_to)";
+			$sql.=" JOIN `##link`     l_4 ON (l_4.l_file=? AND l_4.l_from=ind.i_id AND l_4.l_type='FAMS')";
+			$sql.=" JOIN `##families` fam ON (fam.f_file=? AND fam.f_id  =l_4.l_to)";
 			$bind[]=WT_GED_ID;
 			$bind[]=WT_GED_ID;
 		}
@@ -275,7 +274,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 			$bind[]=WT_GED_ID;
 		}
 		if ($fam_date) {
-			$sql.=" JOIN `##date`   f_d ON (f_d.d_file=? AND f_d.d_id=fam.f_id)";
+			$sql.=" JOIN `##dates`  f_d ON (f_d.d_file=? AND f_d.d_gid=fam.f_id)";
 			$bind[]=WT_GED_ID;
 		}
 		if ($indi_plac) {
@@ -424,8 +423,8 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$sql.=" OR i_p.p_dm_soundex LIKE CONCAT('%', ?, '%')";
 						$bind[]=$sdx;
 					}
+					$sql.= ")";
 				}
-				$sql.= ")";
 			} elseif ($parts[0]=='FAMS' && $parts[2]=='PLAC') {
 				// *:DATE
 				// SQL can only link a place to a person/family, not to an event.
@@ -437,8 +436,8 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$sql.=" OR f_p.p_dm_soundex LIKE CONCAT('%', ?, '%')";
 						$bind[]=$sdx;
 					}
+					$sql.= ")";
 				}
-				$sql.= ")";
 			} elseif ($parts[0]=='FAMC' && $parts[2]=='NAME') {
 				$table=$parts[1]=='HUSB' ? 'f_n' : 'm_n';
 				// NAME:*
@@ -518,6 +517,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				$bind[]=$value;
 			}
 		}
+		//var_dump($sql);
 		$rows=WT_DB::prepare($sql)->execute($bind)->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row) {
 			$this->myindilist[]=WT_Person::getInstance($row);
