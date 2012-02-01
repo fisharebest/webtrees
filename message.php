@@ -2,7 +2,7 @@
 // Send a message to a user in the system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2007  John Finlay and Others
@@ -25,7 +25,6 @@
 
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
-
 $subject   =isset($_REQUEST['subject'   ]) ? $_REQUEST['subject'   ] : '';
 $url       =isset($_REQUEST['url'       ]) ? $_REQUEST['url'       ] : '';
 $method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : 'messaging2';
@@ -43,8 +42,8 @@ $controller->setPageTitle(WT_I18N::translate('webtrees Message'));
 
 $to_user_id=get_user_id($to);
 
-// This should never happen?  All links to this page contain valid recipients....
-if (!$to_user_id || ($to=='all' || $to=='last_6mo' || $to=='never_logged') && !WT_USER_IS_ADMIN) {
+// Only admins can send broadcast messages
+if ((!$to_user_id || $to=='all' || $to=='last_6mo' || $to=='never_logged') && !WT_USER_IS_ADMIN) {
 	// TODO, what if we have a user called "all" or "last_6mo" or "never_logged" ???
 	Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('Message was not sent'));
 	$controller->pageHeader();
