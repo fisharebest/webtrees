@@ -53,7 +53,7 @@ if ($show_full==false) {
 $Dbheight     = $bheight;
 $Dbxspacing		= 0;
 $Dbasexoffset	= 0;
-$Dbaseyoffset	= 0;
+$Dbaseyoffset	= 110;
 
 $pid1=safe_GET_xref('pid1');
 $pid2=safe_GET_xref('pid2');
