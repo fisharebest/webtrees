@@ -2,7 +2,7 @@
 // Setup Wizard
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -988,8 +988,6 @@ try {
 		"('ALLOW_USER_THEMES',               '1'),".
 		"('ALLOW_CHANGE_GEDCOM',             '1'),".
 		"('SESSION_TIME',                    '7200'),".
-		"('SERVER_URL',                      ''),".
-		"('LOGIN_URL',                       'login.php'),".
 		"('SMTP_ACTIVE',                     ?),".
 		"('SMTP_HOST',                       ?),".
 		"('SMTP_HELO',                       ?),".

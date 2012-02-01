@@ -42,6 +42,11 @@ self::exec("DELETE FROM `##user_setting` WHERE setting_name='defaulttab'");
 // There is no way to add a RESN tag to NOTE objects
 self::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR,RESN' WHERE setting_name='NOTE_FACTS_ADD' AND setting_value='SOUR'");
 
+// This needs to be an absolute URL.  If not set, it defaults to the full path to login.php
+self::exec("DELETE FROM `##site_setting` WHERE setting_name='LOGIN_URL' AND setting_value='login.php'");
+// No need for an empty value
+self::exec("DELETE FROM `##site_setting` WHERE setting_name='SERVER_URL' AND setting_value=''");
+
 // Later PHP versions use session IDs longer than 32 chars.
 self::exec("ALTER TABLE `##session` CHANGE session_id session_id CHAR(128) COLLATE utf8_unicode_ci NOT NULL");
 

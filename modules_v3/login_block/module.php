@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -89,13 +89,13 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 					<a href="#" id="passwd_click">'. WT_I18N::translate('Request new password').'</a>
 				</div>';
 			if (get_site_setting('USE_REGISTRATION_MODULE')) {
-				$content.= '<div><a href="login.php?action=register">'. WT_I18N::translate('Request new user account').'</a></div>';
+				$content.= '<div><a href="'.WT_LOGIN_URL.'?action=register">'. WT_I18N::translate('Request new user account').'</a></div>';
 			}
 		$content.= '</form>'; // close "login-form"
 		
 		// hidden New Password block
 		$content.= '<div id="new_passwd">
-			<form id="new_passwd_form" name="new_passwd_form" action="login.php" method="post" onsubmit="t = new Date(); document.new_passwd_form.time.value=t.toUTCString(); return checkform(this);">
+			<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post" onsubmit="t = new Date(); document.new_passwd_form.time.value=t.toUTCString(); return checkform(this);">
 			<input type="hidden" name="time" value="">
 			<input type="hidden" name="action" value="requestpw">
 			<h4>'. WT_I18N::translate('Lost password request').'</h4>

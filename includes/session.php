@@ -2,7 +2,7 @@
 // Startup and session logic
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2011  PGV Development Team.  All rights reserved.
@@ -437,6 +437,9 @@ if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {
 	exit;
 }
 
+// The login URL must be an absolute URL, and can be user-defined
+define('WT_LOGIN_URL', get_site_setting('LOGIN_URL', WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php'));
+
 if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
 
 if (WT_SCRIPT_NAME!='help_text.php') {
@@ -451,7 +454,7 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 		} else {
 			$url=WT_SCRIPT_NAME.'?'.$QUERY_STRING;
 		}
-		header('Location: '.get_site_setting('LOGIN_URL').'?url='.rawurlencode($url));
+		header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode($url));
 		exit;
 	}
 

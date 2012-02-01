@@ -2,7 +2,7 @@
 // Base controller for all other controllers
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -90,7 +90,7 @@ class WT_Controller_Base {
 	public function requireAdminLogin() {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_IS_ADMIN) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -103,7 +103,7 @@ class WT_Controller_Base {
 			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
 			$ged_id!=WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
 		) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -113,7 +113,7 @@ class WT_Controller_Base {
 	public function requireAcceptLogin() {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_CAN_ACCEPT) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -123,7 +123,7 @@ class WT_Controller_Base {
 	public function requireEditorLogin() {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_CAN_EDIT) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;
@@ -133,7 +133,7 @@ class WT_Controller_Base {
 	public function requireMemberLogin() {
 		require_once WT_ROOT.'includes/functions/functions.php'; // for get_query_url
 		if (!WT_USER_ID) {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url()));
+			header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()));
 			exit;
 		}
 		return $this;

@@ -2,7 +2,7 @@
 // Register as a new User or request new password if it is lost
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -163,7 +163,7 @@ default:
 
 	echo '</div>'; //close "login-text"
 	echo '<div id="login-box">
-		<form id="login-form" name="login-form" method="post" action="', get_site_setting('LOGIN_URL', 'login.php'), '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
+		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', htmlspecialchars($url), '">
 		<input type="hidden" name="usertime" value="">';
@@ -185,13 +185,13 @@ default:
 			<a href="#" id="passwd_click">', WT_I18N::translate('Request new password'), '</a>
 		</div>';
 		if (get_site_setting('USE_REGISTRATION_MODULE')) {
-			echo '<div><a href="login.php?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
+			echo '<div><a href="'.WT_LOGIN_URL.'?action=register">', WT_I18N::translate('Request new user account'), '</a></div>';
 		}
 	echo '</form>'; // close "login-form"
 	
 	// hidden New Password block
 	echo '<div id="new_passwd">
-		<form id="new_passwd_form" name="new_passwd_form" action="login.php" method="post" onsubmit="t = new Date(); document.new_passwd_form.time.value=t.toUTCString(); return checkform(this);">
+		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post" onsubmit="t = new Date(); document.new_passwd_form.time.value=t.toUTCString(); return checkform(this);">
 		<input type="hidden" name="time" value="">
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', WT_I18N::translate('Lost password request'), '</h4>
@@ -324,7 +324,7 @@ case 'register':
 		}
 
 		//-- check referer for possible spam attack
-		if (!isset($_SERVER['HTTP_REFERER']) || stristr($_SERVER['HTTP_REFERER'],'login.php')===false) {
+		if (!isset($_SERVER['HTTP_REFERER']) || stristr($_SERVER['HTTP_REFERER'],WT_LOGIN_URL)!==0) {
 			echo '<center><br><span class="error">Invalid page referer.</span>';
 			echo '<br><br></center>';
 			AddToLog('Invalid page referer while trying to register a user.  Possible spam attack.', 'auth');
@@ -412,9 +412,9 @@ case 'register':
 					WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . "\r\n\r\n";
 				if ($TEXT_DIRECTION=='rtl') {
 					$mail2_body .= "<a href=\"";
-					$mail2_body .= WT_SERVER_NAME.WT_SCRIPT_PATH . "login.php?user_name=".urlencode($user_name)."&user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode'))."&action=userverify\">";
+					$mail2_body .= WT_LOGIN_URL . "?user_name=".urlencode($user_name)."&user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode'))."&action=userverify\">";
 				}
-				$mail2_body .= WT_SERVER_NAME.WT_SCRIPT_PATH . "login.php?user_name=".urlencode($user_name)."&user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode'))."&action=userverify";
+				$mail2_body .= WT_LOGIN_URL . "?user_name=".urlencode($user_name)."&user_hashcode=".urlencode(get_user_setting($user_id, 'reg_hashcode'))."&action=userverify";
 				if ($TEXT_DIRECTION=='rtl') {
 					$mail2_body .= "</a>";
 				}
@@ -450,7 +450,7 @@ case 'register':
 			}
 			echo '</div>';
 		} else {
-			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.get_site_setting('LOGIN_URL', 'login.php'));
+			header('Location: '.WT_LOGIN_URL);
 			exit;
 		}
 	} else {
@@ -515,7 +515,7 @@ case 'register':
 				echo '</div>';
 			}
 			echo '<div id="register-box">
-				<form id="register-form" name="register-form" method="post" action="login.php" onsubmit="t = new Date(); document.register-form.time.value=t.toUTCString(); return checkform(this);">
+				<form id="register-form" name="register-form" method="post" action="'.WT_LOGIN_URL.'" onsubmit="t = new Date(); document.register-form.time.value=t.toUTCString(); return checkform(this);">
 				<input type="hidden" name="action" value="register">
 				<input type="hidden" name="time" value="">
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>

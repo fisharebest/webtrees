@@ -315,12 +315,10 @@ function login_link($extra='') {
 	if ($SEARCH_SPIDER) {
 		return '';
 	} else {
-		if (WT_SCRIPT_NAME=='login.php') {
-			$href='login.php';
-		} else {
-			$href=get_site_setting('LOGIN_URL', 'login.php').'?url='.rawurlencode(get_query_url());
-		}
-		return '<a href="' . $href . '" ' . $extra . ' class="link">' . WT_I18N::translate('Login') . '</a>';
+		return
+			'<a href="'.WT_LOGIN_URL.'?url='.rawurlencode(get_query_url()).'" '.$extra.' class="link">'.
+			WT_I18N::translate('Login').
+			'</a>';
 	}
 }
 
