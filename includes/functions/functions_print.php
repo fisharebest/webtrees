@@ -196,11 +196,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		if (hasRTLText($addname) && $style=='1') {
 			$tempStyle = '2';
 		}
-		if ($show_full) {
-			$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name$tempStyle\"> ".PrintReady($addname)."</span>";
-			} else {
-			$addname = "</span>";
-		}
+		$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name$tempStyle\"> ".PrintReady($addname)."</span>";
 	}
 	
 	if ($SHOW_LDS_AT_GLANCE && $show_full) {
