@@ -104,10 +104,10 @@ $worms = array(
 	'Gigabot',    // http://www.gigablast.com/spider.html           - Ignores robots.txt
 	'Sogou',      // http://www.sogou.com/docs/help/webmasters.htm  - Ignores robots.txt
 	'facebook',   // http://www.facebook.com/externalhit_uatext.php - Ignores robots.txt
+	'SeznamBot',  // http://fulltext.sblog.cz - Fetches robots.txt, but then ignores it!
 	'oBot',
 	'Indy Library',
 	'XXX',
-// 'robotgenius',
 	'Super_Ale',
 	'Wget',
 	'DataCha',
@@ -115,13 +115,11 @@ $worms = array(
 	'LWP::Simple',
 	'lwp-trivial',
 	'MJ.*bot',
-// 'ru.*rv',
 	'DotBot',
 	'HTTrack',
 	'AISearchBot',
 	'panscient.com',
 	'Plonebot',
-// 'Mozilla([^\/])|(\/[\D])', // legitimate Mozilla-based browsers have something like "Mozilla/5.0"
 	'Mozilla[^\/]',  // legitimate Mozilla-based browsers have something like "Mozilla/5.0"
 	'Mozilla\/[^456]', // legitimate Mozilla-based browsers have something like "Mozilla/5.0"
 	'^Mozilla\/[456]\.0$', // legitimate Mozilla-based browsers have something following "Mozilla/5.0"
@@ -191,9 +189,10 @@ $known_spiders = array(
 	'Mediapartners-Google',
 	'Feedfetcher-Google',
 	'Twiceler',
-	'ia_archive',          // http://www.archive.org/
-	'YandexBot',           // Popular Russian/cyrillic search engine
-	'Baiduspider',         // Popular Chinese search engine
+	'Netcraft Web Server Survey', // Long-established, respectable survey tool
+	'ia_archive',                 // http://www.archive.org/
+	'YandexBot',                  // Popular Russian/cyrillic search engine
+	'Baiduspider',                // Popular Chinese search engine
 );
 
 // We overlay the following name with carefully selected characters.
