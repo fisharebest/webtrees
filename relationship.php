@@ -50,8 +50,9 @@ if ($show_full==false) {
 	$Dbwidth = $cbwidth;
 }
 
-$Dbheight     = $bheight;
+$Dbheight  		= $bheight;
 $Dbxspacing		= 0;
+$Dbyspacing		= 0;
 $Dbasexoffset	= 0;
 $Dbaseyoffset	= 110;
 
