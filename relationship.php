@@ -40,23 +40,16 @@ if ($path_to_find == -1) {
 	$path_to_find = 0;
 	unset($_SESSION["relationships"]);
 }
-
-$Dbxspacing = ($bwidth-240)/2;
-
-
-//-- previously these variables were set in theme.php, now they are no longer required to be set there
-$Dbasexoffset = 0;
-$Dbaseyoffset = 0;
-
-$Dbheight = $bheight; // Set distance between vertical blocks
 if ($show_full==false) {
-	$Dbwidth = $Dbwidth - 50;
-	$bwidth = $bwidth - 25;
-	$bheight = $bheight - 32 ;
-	$Dbheight= $bheight;
-	$Dbwidth = $bwidth;
-
+	$bwidth = $cbwidth;
+	$bheight = $cbheight;
+	$Dbwidth = $cbwidth;
 }
+
+$Dbheight		= $bheight;
+$Dbxspacing		= 0;
+$Dbasexoffset	= 0;
+$Dbaseyoffset	= 0;
 
 $title_string = "";
 
@@ -493,8 +486,14 @@ if ((!empty($pid1))&&(!empty($pid2))) {
 				}
 				// Determine the z-index for this box
 				$boxNum ++;
-				$zIndex = 200 - ($colNum * $depth + $rowNum);
-
+				
+				// Test to see which way the blocks flow
+				If ($pid1>$pid2) {
+					$zIndex = 200 - ($colNum * $depth + $rowNum);
+				} else {
+					$zIndex = 200 + ($colNum * $depth + $rowNum);
+				}	
+					
 				echo "<div id=\"box$pid.0\" style=\"position:absolute; ".($TEXT_DIRECTION=="ltr"?"left":"right").":".$pxoffset."px; top:".$pyoffset."px; width:".$Dbwidth."px; height:".$Dbheight."px; z-index:".$zIndex.";\"><table><tr><td colspan=\"2\" width=\"$Dbwidth\" height=\"$Dbheight\">";
 				print_pedigree_person(WT_Person::getInstance($pid), 1);
 				echo "</td></tr></table></div>";
