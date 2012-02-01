@@ -343,7 +343,7 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 .place {padding-top:5px;}
 .logo {text-align:center;}
 
-.itr {position:absolute; top:3em;line-height:1.5;}
+.itr {top:3em;line-height:1.5;}
 .block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {position:relative;top:0;}
 
 #pending h2 {text-align:center; margin-bottom:20px;}

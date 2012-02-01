@@ -1480,7 +1480,6 @@ margin: 0;
 .helpcontent dt {clear:both;}
 
 .itr {
-	/* position: absolute; */ remove to fix chrome problem
 	top: 3em;
 	line-height: 1.5;
 }
