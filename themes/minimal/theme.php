@@ -172,7 +172,7 @@ $Darrowwidth = 30; // -- additional width to include for the up arrows
 $Darrowwidth = 15; // -- additional width to include for the up arrows
 
 // -- Dimensions for compact version of chart displays
-$cbwidth=225;
+$cbwidth=240;
 $cbheight=50;
 
 // --  The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
