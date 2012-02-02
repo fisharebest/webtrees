@@ -1894,5 +1894,5 @@ form, button, input {display: none;} /* buttons and input are used out of forms 
         top: -60px;
         z-index:1;
 }
-
+#CB_All {display:none;}
 }

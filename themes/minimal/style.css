@@ -1814,38 +1814,38 @@ html[dir='rtl'] #search-page-table .label{float:right;}
 html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 
 @media print {
-#backprint, #header, #topMenu {
-	display:none;
-}
-/*-- pedigree chart specific stylesheets --*/
-#pedigree_chart {
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-/*-- pedigree chart rtl specific stylesheets --*/
-html[dir='rtl'] #pedigree_chart {
-left:auto;
-right:0;
-}
+	#backprint, #header, #topMenu {
+		display:none;
+	}
+	/*-- pedigree chart specific stylesheets --*/
+	#pedigree_chart {
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+	/*-- pedigree chart rtl specific stylesheets --*/
+	html[dir='rtl'] #pedigree_chart {
+	left:auto;
+	right:0;
+	}
 
-#header, #footer, .noprint {display:none !important;}
-form, button, input {display: none;} /* buttons and input are used out of forms in sortable tables*/
+	#header, #footer, .noprint {display:none !important;}
+	form, button, input {display: none;} /* buttons and input are used out of forms in sortable tables*/
 
-.lifespan_outer {
-	position: relative;
-	width: auto;
-	height: auto;
-	overflow: visible;
-	border: none;
-}
+	.lifespan_outer {
+		position: relative;
+		width: auto;
+		height: auto;
+		overflow: visible;
+		border: none;
+	}
 
-.lifespan_people {
-	position: absolute;
-	width: auto;
-	left: -10px;
-	top: -60px;
-	z-index:1;
-}
-
+	.lifespan_people {
+		position: absolute;
+		width: auto;
+		left: -10px;
+		top: -60px;
+		z-index:1;
+	}
+	#CB_All {display:none;}
 }

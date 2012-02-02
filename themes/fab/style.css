@@ -325,6 +325,7 @@ right:10px;
 	#header, #footer {
 	display:none;
 	}
+	#CB_All {display:none;}
 }
 
 /* Tabular data */

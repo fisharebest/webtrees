@@ -1933,5 +1933,5 @@ form, button, input {display: none;} /* buttons and input are used out of forms 
 }
 #content {padding: 0}
 #clouds-container {border: 0;}
-
+#CB_All {display:none;}
 }
