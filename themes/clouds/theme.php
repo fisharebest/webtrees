@@ -200,7 +200,7 @@ $Dindent = 15; // -- width to indent ancestry and descendancy charts boxes
 $Darrowwidth = 300; // -- not used that I can see ***
 
 // -- Dimensions for compact version of chart displays
-$cbwidth=225;
+$cbwidth=240;
 $cbheight=50;
 
 // --  The largest possible area for charts is 300,000 pixels. As the maximum height or width is 1000 pixels
