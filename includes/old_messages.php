@@ -66,6 +66,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('GEDCOM: Configure');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('GEDCOM: Default');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Hello...<br /><br />An email with your new password was sent to the address we have on file for <b>%s</b>.<br /><br />Please check your email account; you should receive our message soon.<br /><br />Recommendation:<br />You should login to this site with your new password as soon as possible, and you should change your password to maintain your data\'s security.', '');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Help content');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Help items');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Here you can change the box width from 50 percent to 300 percent.  At 100 percent each box is about 270 pixels wide.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Hide contextual help');

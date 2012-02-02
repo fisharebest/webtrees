@@ -1504,11 +1504,6 @@ case 'header_favorites':
 	$text=WT_I18N::translate('The Favorites drop-down list shows the favorites that you have selected on your personalized My Page.  It also shows the favorites that the site administrator has selected for the currently active GEDCOM.  Clicking on one of the favorites entries will take you directly to the Individual Information page of that person.<br /><br />More help about adding Favorites is available in your personalized My Page.');
 	break;
 
-case 'help_contents_help':
-	$title=WT_I18N::translate('Help contents');
-	$text='';
-	break;
-
 case 'import_gedcom':
 	$title=WT_I18N::translate('Import family tree');
 	$text=
@@ -1871,8 +1866,5 @@ $controller->pageHeader();
 echo '<div class="helpheader">', $title, '</div>';
 echo '<div class="helpcontent">', $text,'</div>';
 echo '<div class="helpfooter">';
-if ($help!='help_contents_help') {
-	echo '<a href="help_text.php?help=help_contents_help">', WT_I18N::translate('Help contents'), '</a><br />';
-}
 echo '<a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a>';
 echo '</div>';
