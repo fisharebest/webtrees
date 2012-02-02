@@ -479,18 +479,8 @@ left:auto;
 }
 
 #relationship_chart {
-position:relative;
-top:-40px;
-left:0;
 z-index:1;
-width:98%;
 }
-
-html[dir='rtl'] #relationship_chart {
-left:auto;
-right:0;
-}
-
 /*-- ancestry chart specific stylesheets --*/
 #ancestry_chart table div p {font-size:90%; margin:0;}
 

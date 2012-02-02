@@ -2,7 +2,7 @@
 // FAB theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Based on standard theme, which is Copyright (C) 2002 to 2010  PGV Development Team.
 //
