@@ -607,8 +607,8 @@ function expandbox(boxid, bstyle) {
 		oldz = parentbox.style.zIndex;
 		if (url.indexOf("descendancy.php")==-1) parentbox.style.zIndex='100';
 		if (bstyle!=2) {
-			divbox.style.width='350px';
-			diff = 350-parseInt(oldwidth);
+			divbox.style.width='300px';
+			diff = 300-parseInt(oldwidth);
 			if (famlinks) {
 				famleft = parseInt(famlinks.style.left);
 				famlinks.style.left = (famleft+diff)+"px";
