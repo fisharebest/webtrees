@@ -536,7 +536,7 @@ define('WT_USE_LIGHTBOX', !$SEARCH_SPIDER && array_key_exists('lightbox', WT_Mod
 
 // Search engines are only allowed to see certain pages.
 if ($SEARCH_SPIDER && !in_array(WT_SCRIPT_NAME , array(
-	'index.php', 'site-unavailable.php', 'indilist.php', 'module.php',
+	'index.php', 'indilist.php', 'module.php', 'mediafirewall.php',
 	'individual.php', 'family.php', 'mediaviewer.php', 'note.php', 'repo.php', 'source.php',
 ))) {
 	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
