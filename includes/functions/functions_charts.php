@@ -346,11 +346,13 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							$kids = count($fchildren);
 							$PBheight = $bheight;
 							$Pheader = ($cbheight*$kids)-$bheight;
-							if (($cbheight * $kids) > $bheight) {
-								$PBadj = ($Pheader/2+$kids*4.5);
-							} else {
-								$PBadj = 6;	
+							$PBadj = 6;	// default
+							if ($show_cousins>0) {
+								if (($cbheight * $kids) > $bheight) {
+									$PBadj = ($Pheader/2+$kids*4.5);
+								} 
 							}
+
 							if ($PBadj<0) $PBadj=0;
 							if ($f==$maxfam) echo "<img height=\"".( (($bheight/2))+$PBadj)."px\"";
 							else echo "<img height=\"".$pbheight."px\"";
