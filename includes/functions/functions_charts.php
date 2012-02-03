@@ -247,7 +247,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
  * @param string $label optional indi label (descendancy booklet)
  */
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
-	global $pbwidth, $pbheight, $cbheight, $cbwidth, $show_cousins, $WT_IMAGES, $GEDCOM, $TEXT_DIRECTION;
+	global $bwidth, $bheight, $pbwidth, $pbheight, $cbheight, $cbwidth, $show_cousins, $WT_IMAGES, $GEDCOM, $TEXT_DIRECTION;
 
 	$family=WT_Family::getInstance($famid);
 	$children=array();
@@ -344,13 +344,15 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							$family=WT_Family::getInstance($famid_child);
 							$fchildren=$family->getChildren();
 							$kids = count($fchildren);
-							$PBheight = $cbheight;
-							if ($kids==0) $kids+=1;
-							if ($kids>1) $kids-=1;
-							// Adjustment for block hights greater than 80
-							$PBadj = (((($PBheight-40)/2)*$kids)-4);
+							$PBheight = $bheight;
+							$Pheader = ($cbheight*$kids)-$bheight;
+							if (($cbheight * $kids) > $bheight) {
+								$PBadj = ($Pheader/2+$kids*4.5);
+							} else {
+								$PBadj = 6;	
+							}
 							if ($PBadj<0) $PBadj=0;
-							if ($f==$maxfam) echo "<img height=\"".(( (($PBheight)+($kids-2)*22) +28)+$PBadj)."px\"";
+							if ($f==$maxfam) echo "<img height=\"".( (($bheight/2))+$PBadj)."px\"";
 							else echo "<img height=\"".$pbheight."px\"";
 							echo " width=\"3\" src=\"".$WT_IMAGES["vline"]."\" alt=\"\">";
 							echo "</td>";
