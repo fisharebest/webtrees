@@ -247,7 +247,7 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
  * @param string $label optional indi label (descendancy booklet)
  */
 function print_family_children($famid, $childid = "", $sosa = 0, $label="", $personcount="1") {
-	global $pbwidth, $pbheight, $show_cousins, $WT_IMAGES, $GEDCOM, $TEXT_DIRECTION;
+	global $pbwidth, $pbheight, $cbheight, $cbwidth, $show_cousins, $WT_IMAGES, $GEDCOM, $TEXT_DIRECTION;
 
 	$family=WT_Family::getInstance($famid);
 	$children=array();
@@ -344,11 +344,11 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 							$family=WT_Family::getInstance($famid_child);
 							$fchildren=$family->getChildren();
 							$kids = count($fchildren);
-							$PBheight = ($pbheight-14)/2;
+							$PBheight = $cbheight;
 							if ($kids==0) $kids+=1;
 							if ($kids>1) $kids-=1;
 							// Adjustment for block hights greater than 80
-							$PBadj = (((($PBheight-40)/2)*$kids)-5);
+							$PBadj = (((($PBheight-40)/2)*$kids)-4);
 							if ($PBadj<0) $PBadj=0;
 							if ($f==$maxfam) echo "<img height=\"".(( (($PBheight)+($kids-2)*22) +28)+$PBadj)."px\"";
 							else echo "<img height=\"".$pbheight."px\"";
