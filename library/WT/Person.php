@@ -2,7 +2,7 @@
 // Class file for a person
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -1149,7 +1149,7 @@ class WT_Person extends WT_GedcomRecord {
 			foreach ($family->getSpouses() as $parent) {
 				if (strstr($SHOW_RELATIVES_EVENTS, '_DEAT'.($sosa==1 ? '_PARE' : '_GPAR'))) {
 					foreach ($parent->getAllFactsByType(explode('|', WT_EVENTS_DEAT)) as $sEvent) {
-						if (WT_Date::Compare($bDate, $sEvent->getDate())<=0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
+						if ($sEvent->getDate()->isOK() && WT_Date::Compare($bDate, $sEvent->getDate())<=0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
 							switch ($sosa) {
 							case 1:
 								// Convert the event to a close relatives event
@@ -1179,7 +1179,7 @@ class WT_Person extends WT_GedcomRecord {
 				foreach ($family->getSpouses() as $parent) {
 					foreach ($parent->getSpouseFamilies() as $sfamily) {
 						foreach ($sfamily->getAllFactsByType(explode('|', WT_EVENTS_MARR)) as $sEvent) {
-							if (WT_Date::Compare($bDate, $sEvent->getDate())<=0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
+							if ($sEvent->getDate()->isOK() && WT_Date::Compare($bDate, $sEvent->getDate())<=0 && WT_Date::Compare($sEvent->getDate(), $dDate)<=0) {
 								if ($sfamily->equals($family)) {
 									if ($parent->getSex()=='F') {
 										// show current family marriage only once
