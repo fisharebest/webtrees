@@ -402,37 +402,6 @@ class WT_I18N {
 		}
 	}
 
-	// century name, English => 21st, Polish => XXI, etc.
-	static function century_name($century) {
-		if ($century<0) {
-			return str_replace(-$century, self::century_name(-$century), self::translate('%s&nbsp;BCE', WT_I18N::number(-$century)));
-		}
-		switch ($century) {
-		case 21: return self::translate_c('CENTURY', '21st');
-		case 20: return self::translate_c('CENTURY', '20th');
-		case 19: return self::translate_c('CENTURY', '19th');
-		case 18: return self::translate_c('CENTURY', '18th');
-		case 17: return self::translate_c('CENTURY', '17th');
-		case 16: return self::translate_c('CENTURY', '16th');
-		case 15: return self::translate_c('CENTURY', '15th');
-		case 14: return self::translate_c('CENTURY', '14th');
-		case 13: return self::translate_c('CENTURY', '13th');
-		case 12: return self::translate_c('CENTURY', '12th');
-		case 11: return self::translate_c('CENTURY', '11th');
-		case 10: return self::translate_c('CENTURY', '10th');
-		case  9: return self::translate_c('CENTURY', '9th');
-		case  8: return self::translate_c('CENTURY', '8th');
-		case  7: return self::translate_c('CENTURY', '7th');
-		case  6: return self::translate_c('CENTURY', '6th');
-		case  5: return self::translate_c('CENTURY', '5th');
-		case  4: return self::translate_c('CENTURY', '4th');
-		case  3: return self::translate_c('CENTURY', '3rd');
-		case  2: return self::translate_c('CENTURY', '2nd');
-		case  1: return self::translate_c('CENTURY', '1st');
-		default: return ($century-1).'01-'.$century.'00';
-		}
-	}
-
 	// Convert a number of seconds into a relative time.  e.g. 630 => "10 hours, 30 minutes ago"
 	static function time_ago($seconds) {
 		$year=365*24*60*60;

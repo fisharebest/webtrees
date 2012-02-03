@@ -1284,7 +1284,7 @@ class WT_Stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM `##dates` "
+			$sql = "SELECT FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
@@ -1328,7 +1328,7 @@ class WT_Stats {
 			$centuries = "";
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= WT_I18N::century_name($values['century']).' - '.WT_I18N::number($values['total']).'|';
+				$centuries .= self::_centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = rawurlencode(substr($centuries,0,-1));
@@ -1342,7 +1342,7 @@ class WT_Stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM `##dates` "
+			$sql = "SELECT FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
@@ -1386,7 +1386,7 @@ class WT_Stats {
 			$centuries = "";
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= WT_I18N::century_name($values['century']).' - '.WT_I18N::number($values['total']).'|';
+				$centuries .= self::_centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = rawurlencode(substr($centuries,0,-1));
@@ -1717,7 +1717,7 @@ class WT_Stats {
 			$rows=self::_runSQL(''
 				.' SELECT'
 					.' ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age,'
-					.' ROUND((death.d_year+49.1)/100) AS century,'
+					.' FLOOR(death/100+1) AS century,'
 					.' i_sex AS sex'
 				.' FROM'
 					." `##dates` AS death,"
@@ -1746,7 +1746,7 @@ class WT_Stats {
 			}
 			foreach ($out as $century=>$values) {
 				if ($sizes[0]<980) $sizes[0] += 50;
-				$chxl .= WT_I18N::century_name($century).'|';
+				$chxl .= self::_centuryName($century).'|';
 				$average = 0;
 				if (isset($values['F'])) {
 					$countsf .= $values['F'].',';
@@ -2369,7 +2369,7 @@ class WT_Stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM `##dates` "
+			$sql = "SELECT FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
@@ -2432,7 +2432,7 @@ class WT_Stats {
 			$counts=array();
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= WT_I18N::century_name($values['century']).' - '.WT_I18N::number($values['total']).'|';
+				$centuries .= self::_centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
@@ -2445,7 +2445,7 @@ class WT_Stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT ROUND((d_year+49.1)/100) AS century, COUNT(*) AS total FROM `##dates` "
+			$sql = "SELECT FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
@@ -2508,7 +2508,7 @@ class WT_Stats {
 			$counts=array();
 			foreach ($rows as $values) {
 				$counts[] = round(100 * $values['total'] / $tot, 0);
-				$centuries .= WT_I18N::century_name($values['century']).' - '.WT_I18N::number($values['total']).'|';
+				$centuries .= self::_centuryName($values['century']).' - '.WT_I18N::number($values['total']).'|';
 			}
 			$chd = self::_array_to_extended_encoding($counts);
 			$chl = substr($centuries,0,-1);
@@ -2553,7 +2553,7 @@ class WT_Stats {
 			$rows=self::_runSQL(
 				"SELECT ".
 				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
-				" ROUND((married.d_year+49.1)/100) AS century, ".
+				" FLOOR(married.d_year/100+1) AS century, ".
 				" 'M' AS sex ".
 				"FROM `wt_dates` AS married ".
 				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
@@ -2567,7 +2567,7 @@ class WT_Stats {
 				"UNION ALL ".
 				"SELECT ".
 				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
-				" ROUND((married.d_year+49.1)/100) AS century, ".
+				" FLOOR(married.d_year/100+1) AS century, ".
 				" 'F' AS sex ".
 				"FROM `wt_dates` AS married ".
 				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
@@ -2596,7 +2596,7 @@ class WT_Stats {
 			}
 			foreach ($out as $century=>$values) {
 				if ($sizes[0]<1000) $sizes[0] += 50;
-				$chxl .= WT_I18N::century_name($century).'|';
+				$chxl .= self::_centuryName($century).'|';
 				$average = 0;
 				if (isset($values['F'])) {
 					if ($max<=50) $value = $values['F']*2;
@@ -2664,7 +2664,7 @@ class WT_Stats {
 				"UNION ALL ".
 				"SELECT ".
 				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
-				" ROUND((married.d_year+49.1)/100) AS century, ".
+				" FLOOR(married.d_year/100+1) AS century, ".
 				" 'F' AS sex ".
 				"FROM `wt_dates` AS married ".
 				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
@@ -3149,7 +3149,7 @@ class WT_Stats {
 			$rows=self::_runSQL(''
 				.' SELECT'
 					.' ROUND(AVG(f_numchil),2) AS num,'
-					.' ROUND((married.d_year+49.1)/100) AS century'
+					.' FLOOR(married.d_year/100+1) AS century'
 				.' FROM'
 					." `##families` AS fam"
 				.' LEFT JOIN'
@@ -3170,7 +3170,7 @@ class WT_Stats {
 			$counts=array();
 			foreach ($rows as $values) {
 				if ($sizes[0]<980) $sizes[0] += 38;
-				$chxl .= WT_I18N::century_name($values['century'])."|";
+				$chxl .= self::_centuryName($values['century'])."|";
 				if ($max<=5) $counts[] = round($values['num']*819.2-1, 1);
 				else $counts[] = round($values['num']*409.6, 1);
 				$chm .= 't'.$values['num'].',000000,0,'.$i.',11,1|';
@@ -3292,22 +3292,22 @@ class WT_Stats {
 		}
 		$max = 0;
 		$tot = 0;
-		$rows=self::_runSQL(''
-			.' SELECT'
-				.' COUNT(*) AS count,'
-				.' ROUND((married.d_year+49.1)/100) AS century'
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-			.' WHERE'
-				.' f_numchil = 0 AND'
-				.' married.d_gid = fam.f_id AND'
-				." fam.f_file = {$this->_ged_id} AND"
-				.$years
-				." married.d_fact = 'MARR' AND"
-				." married.d_type='@#DGREGORIAN@'"
-			.' GROUP BY century ORDER BY century');
+		$rows=self::_runSQL(
+			"SELECT".
+			" COUNT(*) AS count,".
+			" FLOOR(married.d_year/100+1) AS century".
+			" FROM".
+			" `##families` AS fam".
+			" JOIN".
+			" `##dates` AS married ON (married.d_file = fam.f_file AND married.d_gid = fam.f_id)".
+			" WHERE".
+			" f_numchil = 0 AND".
+			" fam.f_file = {$this->_ged_id} AND".
+			$years.
+			" married.d_fact = 'MARR' AND".
+			" married.d_type = '@#DGREGORIAN@'".
+			" GROUP BY century ORDER BY century"
+		);
 		if (empty($rows)) return '';
 		foreach ($rows as $values) {
 			if ($max<$values['count']) $max = $values['count'];
@@ -3320,7 +3320,7 @@ class WT_Stats {
 		$i = 0;
 		foreach ($rows as $values) {
 			if ($sizes[0]<980) $sizes[0] += 38;
-			$chxl .= WT_I18N::century_name($values['century'])."|";
+			$chxl .= self::_centuryName($values['century'])."|";
 			$counts[] = round(4095*$values['count']/($max+1));
 			$chm .= 't'.$values['count'].',000000,0,'.$i.',11,1|';
 			$i++;
@@ -4352,4 +4352,36 @@ class WT_Stats {
 			'ZWE'=>WT_I18N::translate('Zimbabwe'),
 		);
 	}
+
+	// century name, English => 21st, Polish => XXI, etc.
+	private static function _centuryName($century) {
+		if ($century<0) {
+			return str_replace(-$century, WT_I18N::_centuryName(-$century), WT_I18N::translate('%s&nbsp;BCE', WT_I18N::number(-$century)));
+		}
+		switch ($century) {
+		case 21: return WT_I18N::translate_c('CENTURY', '21st');
+		case 20: return WT_I18N::translate_c('CENTURY', '20th');
+		case 19: return WT_I18N::translate_c('CENTURY', '19th');
+		case 18: return WT_I18N::translate_c('CENTURY', '18th');
+		case 17: return WT_I18N::translate_c('CENTURY', '17th');
+		case 16: return WT_I18N::translate_c('CENTURY', '16th');
+		case 15: return WT_I18N::translate_c('CENTURY', '15th');
+		case 14: return WT_I18N::translate_c('CENTURY', '14th');
+		case 13: return WT_I18N::translate_c('CENTURY', '13th');
+		case 12: return WT_I18N::translate_c('CENTURY', '12th');
+		case 11: return WT_I18N::translate_c('CENTURY', '11th');
+		case 10: return WT_I18N::translate_c('CENTURY', '10th');
+		case  9: return WT_I18N::translate_c('CENTURY', '9th');
+		case  8: return WT_I18N::translate_c('CENTURY', '8th');
+		case  7: return WT_I18N::translate_c('CENTURY', '7th');
+		case  6: return WT_I18N::translate_c('CENTURY', '6th');
+		case  5: return WT_I18N::translate_c('CENTURY', '5th');
+		case  4: return WT_I18N::translate_c('CENTURY', '4th');
+		case  3: return WT_I18N::translate_c('CENTURY', '3rd');
+		case  2: return WT_I18N::translate_c('CENTURY', '2nd');
+		case  1: return WT_I18N::translate_c('CENTURY', '1st');
+		default: return ($century-1).'01-'.$century.'00';
+		}
+	}
+
 }
