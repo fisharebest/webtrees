@@ -987,7 +987,7 @@ class WT_GedcomRecord {
 			$sort=$d->MinJD().$match[1].$match[2].$match[3];
 			if ($sorting) return $sort;
 			$t=mktime($match[1], $match[2], $match[3]);
-			$text=strip_tags($d->Display(false, "{$DATE_FORMAT} - ", array()).date(str_replace('%', '', $TIME_FORMAT), $t));
+			$text=strip_tags($d->Display(false, "{$DATE_FORMAT} - ", array()).format_timestamp($t));
 		} else {
 			$sort=$d->MinJD().'000000';
 			if ($sorting) return $sort;
