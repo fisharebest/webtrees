@@ -1717,7 +1717,7 @@ class WT_Stats {
 			$rows=self::_runSQL(''
 				.' SELECT'
 					.' ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age,'
-					.' FLOOR(death/100+1) AS century,'
+					.' FLOOR(death.d_year/100+1) AS century,'
 					.' i_sex AS sex'
 				.' FROM'
 					." `##dates` AS death,"
