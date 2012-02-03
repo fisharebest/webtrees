@@ -339,9 +339,6 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 .place {padding-top:5px;}
 .logo {text-align:center;}
 
-.itr {top:3em;line-height:1.5;}
-.block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {position:relative;top:0;}
-
 #pending h2 {text-align:center; margin-bottom:20px;}
 #pending h3 {text-align:center; margin-top:20px;}
 
@@ -385,6 +382,9 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 #reportengine-page .report-type {overflow:hidden; margin:auto; width:180px;}
 #reportengine-page .report-type div {float:left;margin: 0 20px;}
 #reportengine-page .report-type p {margin: 0; text-align:center;}
+
+.itr {position: absolute;top:3em;line-height:1.5;}
+.block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {position:relative;top:0;}
 
 .popup {display:none;}
 .popup dl {padding:5px; font-size:9px;}

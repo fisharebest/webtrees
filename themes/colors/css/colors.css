@@ -1465,16 +1465,6 @@ margin: 0;
 
 .helpcontent dt {clear:both;}
 
-.itr {
-	top: 3em;
-	line-height: 1.5;
-}
-
-.block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {
-	position: relative;
-	top: 0;
-}
-
 #pending h2 {text-align:center; margin-bottom:20px;}
 #pending h3 {text-align:center; margin-top:20px;}
 
@@ -1523,6 +1513,25 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 #reportengine-page .report-type div {float:left;margin: 0 20px;}
 #reportengine-page .report-type p {margin: 0; text-align:center;}
 
+.itr {
+	position: absolute;
+	top: 3em;
+	line-height: 1.5;
+}
+
+.itr:hover .popup {
+	display: block;
+	position: absolute;
+	width: 12em;
+	right: 0px;
+	z-index: 99999;
+}
+
+.block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {
+	position: relative;
+	top: 0;
+}
+
 .popup {
 	display:none;
 }
@@ -1540,18 +1549,6 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 .popup dd {
 	display: block;
 	margin-left:10px;
-}
-
-.itr:hover .popup {
-	display: block;
-	position: absolute;
-	width: 12em;
-	right: 0px;
-	z-index: 99999;
-}
-
-#relationship_chart .itr:hover .popup {
-	right: -15px;
 }
 
 html[dir='rtl'] .popup dt {float:none;}
