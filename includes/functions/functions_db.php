@@ -1050,7 +1050,15 @@ function get_place_positions($parent, $level=null) {
 			WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
 			->execute(array(get_place_parent_id($parent, $level), WT_GED_ID))
 			->fetchOneColumn();
-		$place_regex='\n2 PLAC '.preg_quote(implode(', ', array_reverse($parent)), '/').'(\n|$)';
+		$place_regex='\n2 PLAC '.'(.*)'.preg_quote(implode(', ', array_reverse($parent)), '/').'(\n|$)';
+		// The placelinks table does not take account of private records.
+		$xrefs=array();
+		foreach ($rows as $row) {
+			$record=WT_GedcomRecord::getInstance($row);
+			if ($record && preg_match('/'.$place_regex.'/i', $record->getGedcomRecord())) {
+				$xrefs[]=$row;
+			}
+		}
 	} else {
 		// lifespan.php - we don't know the level so get the any matching place
 		$rows=
@@ -1058,14 +1066,13 @@ function get_place_positions($parent, $level=null) {
 			->execute(array($parent, WT_GED_ID))
 			->fetchOneColumn();
 		$place_regex='\n2 PLAC '.preg_quote($parent, '/').'(\n|,|$)';
-	}
-
-	// The placelinks table does not take account of private records.
-	$xrefs=array();
-	foreach ($rows as $row) {
-		$indi=WT_Person::getInstance($row);
-		if ($indi && preg_match('/'.$place_regex.'/i', $indi->getGedcomRecord())) {
-			$xrefs[]=$row;
+		// The placelinks table does not take account of private person records.
+		$xrefs=array();
+		foreach ($rows as $row) {
+			$indi=WT_Person::getInstance($row);
+			if ($indi && preg_match('/'.$place_regex.'/i', $indi->getGedcomRecord())) {
+				$xrefs[]=$row;
+			}
 		}
 	}
 	return $xrefs;
