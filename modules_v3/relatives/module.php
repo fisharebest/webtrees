@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -69,7 +69,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @return html table rows
 	*/
 	function printParentsRows($family, $people, $type) {
-		global $personcount, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $controller;
+		global $personcount, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $controller, $SEARCH_SPIDER;
 
 		$elderdate = "";
 		//-- new father/husband
@@ -202,13 +202,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 						}
 						if (!empty($place)) {
 							$html='';
-							$levels = explode(',', $place);
-							$tempURL = "placelist.php?action=show&amp;";
-							foreach (array_reverse($levels) as $pindex=>$ppart) {
-								$tempURL .= "parent[{$pindex}]=".rawurlencode($ppart).'&amp;';
-							}
-							$tempURL .= 'level='.count($levels);
-							$html .= '<a href="'.$tempURL.'"> ';
+							$levels = explode(', ', $place);
 							for ($level=0; $level<$SHOW_PEDIGREE_PLACES; $level++) {
 								if (!empty($levels[$level])) {
 									if ($level>0) {
@@ -217,7 +211,13 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 									$html.=PrintReady($levels[$level]);
 								}
 							}
-							$html.='</a>';
+							if (!$SEARCH_SPIDER) {
+								$tempURL = 'placelist.php?level='.count($levels);
+								foreach (array_reverse($levels) as $pindex=>$ppart) {
+									$tempURL .= '&amp;parent%5B'.$pindex.'%5D='.rawurlencode($ppart);
+								}
+								$html = '<a href="'.$tempURL.'">'.$html.'</a>';
+							}
 							echo $html;
 						}
 					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
