@@ -1595,7 +1595,7 @@ function print_changes_table($change_ids, $sort) {
 		$indi = false;
 		switch ($record->getType()) {
 			case "INDI":
-				$icon .= $record->getSexImage('small', '', '', false);
+				$icon = $record->getSexImage('small', '', '', false);
 				$indi = true;
 				break;
 			case "FAM":
