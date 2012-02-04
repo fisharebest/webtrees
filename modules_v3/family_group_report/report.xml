@@ -249,9 +249,12 @@
 									<if condition="@desc=='N'">
 										<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
 									</if>
-									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N'">
-										<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
-									</if>
+								<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
+									<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
+								</if>
+								<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC==''">
+									<GedcomValue tag="@desc"/>
+								</if>
 								</Text>
 								<Gedcom id="@ASSO">
 									<GetPersonName id=""/>
@@ -261,7 +264,15 @@
 						<if condition="@desc==''">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<Text color="$tcolor" style="text">
-									<GedcomValue tag="@fact:PLAC" /> <GedcomValue tag="@fact:TEMP" />
+									<if condition="@PLAC!='' and @TEMP!=''">
+										<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+									</if>
+									<if condition="@PLAC!='' and @TEMP==''">
+										<GedcomValue tag="@fact:PLAC" />
+									</if>	
+									<if condition="@PLAC=='' and @TEMP!=''">
+										<GedcomValue tag="@fact:TEMP" />
+									</if>
 								</Text>
 							</TextBox>
 						</if>
@@ -409,8 +420,17 @@
 										<if condition="@desc=='N'">
 											<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
 										</if>
-										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N'">
+										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!='' and @TEMP!=''">
 											<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+										</if>
+										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC=='' and @TEMP!=''">
+											<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:TEMP" />
+										</if>
+										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!='' and @TEMP==''">
+											<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC" />
+										</if>
+										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC=='' and @TEMP==''">
+											<GedcomValue tag="@desc" />
 										</if>
 									</Text>
 									<Gedcom id="@ASSO">
@@ -421,7 +441,15 @@
 							<if condition="@desc==''">
 								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 									<Text color="$tcolor" style="text">
-										<GedcomValue tag="@fact:PLAC" /> <GedcomValue tag="@fact:TEMP" />
+										<if condition="@PLAC!='' and @TEMP!=''">
+											<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+										</if>
+										<if condition="@PLAC!='' and @TEMP==''">
+											<GedcomValue tag="@fact:PLAC" />
+										</if>
+										<if condition="@PLAC=='' and @TEMP!=''">
+											<GedcomValue tag="@fact:TEMP" />
+										</if>
 									</Text>
 								</TextBox>
 							</if>
@@ -572,8 +600,11 @@
 									<if condition="@desc=='N'">
 										<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
 									</if>
-									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N'">
+									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
 										<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
+									</if>
+									<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC==''">
+										<GedcomValue tag="@desc"/>
 									</if>
 								</Text>
 								<Gedcom id="@ASSO">
@@ -584,7 +615,15 @@
 						<if condition="@desc==''">
 							<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 								<Text color="$tcolor" style="text">
-									<GedcomValue tag="@fact:PLAC" /> <GedcomValue tag="@fact:TEMP" />
+								<if condition="@PLAC!='' and @TEMP!=''">
+									<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+								</if>
+								<if condition="@PLAC!='' and @TEMP==''">
+									<GedcomValue tag="@fact:PLAC" />
+								</if>
+								<if condition="@PLAC=='' and @TEMP!=''">
+									<GedcomValue tag="@fact:TEMP" />
+								</if>
 								</Text>
 							</TextBox>
 						</if>
@@ -902,8 +941,11 @@
 										<if condition="@desc=='N'">
 											<var var="WT_I18N::translate('no')" />  <GedcomValue tag="@fact:PLAC"/>
 										</if>
-										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N'">
+										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC!=''">
 											<GedcomValue tag="@desc"/>  <GedcomValue tag="@fact:PLAC"/>
+										</if>
+										<if condition="@fact!='ASSO' and @desc!='Y' and @desc!='N' and @PLAC==''">
+											<GedcomValue tag="@desc"/>
 										</if>
 									</Text>
 									<Gedcom id="@ASSO">
@@ -914,7 +956,15 @@
 							<if condition="@desc==''">
 								<TextBox bgcolor="$factbox_bgcolor" border="1" width="$width2" newline="1">
 									<Text color="$tcolor" style="text">
-										<GedcomValue tag="@fact:PLAC" /> <GedcomValue tag="@fact:TEMP" />
+									<if condition="@PLAC!='' and @TEMP!=''">
+										<GedcomValue tag="@fact:PLAC"/> <GedcomValue tag="@fact:TEMP" />
+									</if>
+									<if condition="@PLAC!='' and @TEMP==''">
+										<GedcomValue tag="@fact:PLAC" />
+									</if>
+									<if condition="@PLAC=='' and @TEMP!=''">
+										<GedcomValue tag="@fact:TEMP" />
+									</if>
 									</Text>
 								</TextBox>
 							</if>

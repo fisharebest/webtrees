@@ -149,7 +149,7 @@
 							<Gedcom id="@FAMS">
 								<if condition="$more==1">
 									<br />
-									---------------------------
+									________________________________
 									<br />
 								</if>
 								<!-- todo: print the dates, places and sources of all the FAM MARR records -->
