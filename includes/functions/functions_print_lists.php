@@ -1595,29 +1595,30 @@ function print_changes_table($change_ids, $sort) {
 		$indi = false;
 		switch ($record->getType()) {
 			case "INDI":
-				$html .= $record->getSexImage('small', '', '', false);
+				$icon .= $record->getSexImage('small', '', '', false);
 				$indi = true;
 				break;
 			case "FAM":
-				$html .= '<img src="' . $WT_IMAGES['cfamily'] . '" title="" alt="" height="12">';
+				$icon = '<img src="' . $WT_IMAGES['cfamily'] . '" title="" alt="" height="12">';
 				break;
 			case "OBJE":
-				$html .= '<img src="' . $record->getMediaIcon() . '" title="" alt="" height="12">';
+				$icon = '<img src="' . $record->getMediaIcon() . '" title="" alt="" height="12">';
 				break;
 			case "NOTE":
-				$html .= '<img src="' . $WT_IMAGES['note'] . '" title="" alt="" height="12">';
+				$icon = '<img src="' . $WT_IMAGES['note'] . '" title="" alt="" height="12">';
 				break;
 			case "SOUR":
-				$html .= '<img src="' . $WT_IMAGES['source'] . '" title="" alt="" height="12">';
+				$icon = '<img src="' . $WT_IMAGES['source'] . '" title="" alt="" height="12">';
 				break;
 			case "REPO":
-				$html .= '<img src="' . $WT_IMAGES['repository'] . '" title="" alt="" height="12">';
+				$icon = '<img src="' . $WT_IMAGES['repository'] . '" title="" alt="" height="12">';
 				break;
 			default:
-				$html .= '&nbsp;';
+				$icon = '&nbsp;';
 				break;
 		}
-		$html .= "</td>";
+		$html .= '<a href="'. $record->getHtmlUrl() .'">'. $icon . '</a>';
+		$html .= '</td>';
 		++$n;
 		//-- Record name(s)
 		$name = $record->getFullName();
