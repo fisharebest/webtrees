@@ -34,13 +34,16 @@ if (!defined('WT_WEBTREES')) {
 
 echo '<div id="out-',$boxID,'" ',$outBoxAdd,'>
 	<div class="noprint" id="icons-',$boxID,'" style="',$iconsStyleAdd,' width: 25px; height: 50px">', $icons, '</div>',
+	'<div id="tbox-',$boxID,'" style="height:80px; overflow: hidden; ">',
 	$thumbnail,
+
 	'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">
 		<span id="namedef-',$boxID, '" class="name',$style,' ',$classfacts,'">', $name.$addname,  '</span>
 		<span class="name',$style,'"> ',$genderImage,'</span>
 	</a>
 	<div id="fontdef-',$boxID,'" class="details',$style,'">
 		<div id="inout2-',$boxID,'" style="display:block; max-height:', ($bheight*.9),'px;">',$BirthDeath,'</div>
+	</div>
 	</div>
 	<div id="inout-',$boxID,'" style="display:none;">
 		<div id="LOADING-inout-',$boxID,'">',WT_I18N::translate('Loading...'),'</div>
