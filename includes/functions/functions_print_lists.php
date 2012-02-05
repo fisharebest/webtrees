@@ -321,7 +321,7 @@ function format_indi_table($datalist, $option='') {
 				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				$html .= get_place_short($birth_place). ' ';
+				$html .= get_place_short($birth_place);
 			} else {
 				$html .= '<a href="'. get_place_url($birth_place). '" title="'. $birth_place. '">';
 				$html .= highlight_search_hits(get_place_short($birth_place)). '</a>';
@@ -374,7 +374,7 @@ function format_indi_table($datalist, $option='') {
 				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				$html .= get_place_short($death_place). ' ';
+				$html .= get_place_short($death_place);
 			} else {
 				$html .= '<a href="'. get_place_url($death_place). '" title="'. $death_place. '">';
 				$html .= highlight_search_hits(get_place_short($death_place)). '</a>';
@@ -808,7 +808,7 @@ function format_fam_table($datalist, $option='') {
 				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				$html .= get_place_short($marriage_place). ' ';
+				$html .= get_place_short($marriage_place);
 			} else {
 				$html .= '<a href="'. get_place_url($marriage_place). '" title="'. $marriage_place. '">';
 				$html .= highlight_search_hits(get_place_short($marriage_place)). '</a>';

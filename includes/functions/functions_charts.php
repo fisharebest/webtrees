@@ -58,12 +58,12 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
 		} elseif ($arrowDirection== "down") {
 			$dir = 3;
 		} else {
-			$dir = 2; // either "blank" or "up"
+			$dir = 2; // either 'blank' or 'up'
 		}
-		echo "<br>";
-		print_url_arrow($pid, "#$pid", "$pid", $dir);
+		echo '<br>';
+		print_url_arrow($pid, '#'.$pid, $pid, $dir);
 	}
-	echo "</td>";
+	echo '</td>';
 }
 
 /**
@@ -75,8 +75,8 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
  * @param string $parid optional parent ID (descendancy booklet)
  * @param string $gparid optional gd-parent ID (descendancy booklet)
  */
-function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="", $personcount="1") {
-	global $show_full, $SHOW_EMPTY_BOXES, $pbwidth, $pbheight, $WT_IMAGES, $GEDCOM;
+function print_family_parents($famid, $sosa=0, $label='', $parid='', $gparid='', $personcount=1) {
+	global $SHOW_EMPTY_BOXES, $pbwidth, $pbheight, $WT_IMAGES, $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	$family = WT_Family::getInstance($famid);
@@ -149,9 +149,9 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		echo "</td>";
 	}
 	if (!empty($upfamid) and ($sosa!=-1)) {
-		echo "<td valign=\"middle\" rowspan=\"2\">";
-		print_url_arrow($upfamid, ($sosa==0 ? "?famid=$upfamid&amp;show_full=$show_full" : "#$upfamid"), "$upfamid", 1);
-		echo "</td>";
+		echo '<td valign="middle" rowspan="2">';
+		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.WT_GEDURL : '#'.$upfamid), $upfamid, 1);
+		echo '</td>';
 	}
 	if ($hparents or ($sosa != 0 and $SHOW_EMPTY_BOXES)) {
 		// husband's mother
@@ -220,9 +220,9 @@ function print_family_parents($famid, $sosa = 0, $label="", $parid="", $gparid="
 		echo "</td>";
 	}
 	if (!empty($upfamid) and ($sosa!=-1)) {
-		echo "<td valign=\"middle\" rowspan=\"2\">";
-		print_url_arrow($upfamid, ($sosa==0 ? "?famid=$upfamid&amp;show_full=$show_full" : "#$upfamid"), "$upfamid", 1);
-		echo "</td>";
+		echo '<td valign="middle" rowspan="2">';
+		print_url_arrow($upfamid, ($sosa==0 ? '?famid='.$upfamid.'&amp;ged='.WT_GEDURL : '#'.$upfamid), $upfamid, 1);
+		echo '</td>';
 	}
 	if ($hparents or ($sosa != 0 and $SHOW_EMPTY_BOXES)) {
 		// wife's mother

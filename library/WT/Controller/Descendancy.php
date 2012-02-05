@@ -110,17 +110,17 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	 * @param string $pid individual Gedcom Id
 	 * @param int $depth the descendancy depth to show
 	 */
-	function print_child_family($person, $depth, $label="1.", $gpid="") {
+	function print_child_family($person, $depth, $label='1.', $gpid='') {
 		global $personcount;
 
 		if (is_null($person)) return;
 		if ($depth<2) return;
 		foreach ($person->getSpouseFamilies() as $family) {
-			print_sosa_family($family->getXref(), "", -1, $label, $person->getXref(), $gpid, $personcount);
+			print_sosa_family($family->getXref(), '', -1, $label, $person->getXref(), $gpid, $personcount);
 			$personcount++;
 			$i=1;
 			foreach ($family->getChildren() as $child) {
-				$this->print_child_family($child, $depth-1, $label.($i++).".", $person->getXref());
+				$this->print_child_family($child, $depth-1, $label.($i++).'.', $person->getXref());
 			}
 		}
 	}
@@ -144,14 +144,14 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 			echo "<img src=\"".$WT_IMAGES["hline"]."\" height=\"3\" width=\"".($Dindent-3)."\" alt=\"\"></td><td>";
 		}
 		print_pedigree_person($person, 1, 0, $personcount);
-		echo "</td>";
+		echo '</td>';
 	
 		// check if child has parents and add an arrow
-		echo "<td>&nbsp;</td>";
-		echo "<td>";
+		echo '<td>&nbsp;</td>';
+		echo '<td>';
 		foreach ($person->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow($parent->getXref().$personcount.$person->getXref(), "?rootid=".$parent->getXref()."&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
+				print_url_arrow($parent->getXref().$personcount.$person->getXref(), '?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
 				$personcount++;
 				// only show the arrow for one of the parents
 				break;
@@ -160,8 +160,8 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	
 		// d'Aboville child number
 		$level =$this->generations-$depth;
-		if ($this->show_full) echo "<br><br>&nbsp;";
-		echo "<span dir=\"ltr\">"; //needed so that RTL languages will display this properly
+		if ($this->show_full) echo '<br><br>&nbsp;';
+		echo '<span dir="ltr">'; //needed so that RTL languages will display this properly
 		if (!isset($this->dabo_num[$level])) $this->dabo_num[$level]=0;
 		$this->dabo_num[$level]++;
 		$this->dabo_num[$level+1]=0;
@@ -205,9 +205,9 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		}
 	
 		// print marriage info
-		echo "<li>";
-		echo "<img src=\"".$WT_IMAGES["spacer"]."\" height=\"2\" width=\"".($Dindent+4)."\" alt=\"\">";
-		echo "<span class=\"details1\" style=\"white-space: nowrap;\">";
+		echo '<li>';
+		echo '<img src="', $WT_IMAGES['spacer'], '" height="2" width="', ($Dindent+4), '" alt="">';
+		echo '<span class="details1" style="white-space:nowrap;">';
 		echo "<a href=\"#\" onclick=\"expand_layer('".$family->getXref().$personcount."'); return false;\" class=\"top\"><img id=\"".$family->getXref().$personcount."_img\" src=\"".$WT_IMAGES["minus"]."\" align=\"middle\" hspace=\"0\" vspace=\"3\" alt=\"".WT_I18N::translate('View Family')."\"></a>";
 		$marriage = $family->getMarriage();
 		if ($marriage->canShow()) {
@@ -218,47 +218,47 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 		echo '</span>';
 	
 		// print spouse
-		echo "<ul style=\"list-style: none; display: block;\" id=\"".$family->getXref().$personcount."\">";
-		echo "<li>";
-		echo "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\"><tr><td>";
+		echo '<ul style="list-style:none; display:block;" id="'.$family->getXref().$personcount.'">';
+		echo '<li>';
+		echo '<table border="0" cellpadding="0" cellspacing="0"><tr><td>';
 		print_pedigree_person($spouse, 1, 0, $personcount);
-		echo "</td>";
+		echo '</td>';
 	
 		// check if spouse has parents and add an arrow
-		echo "<td>&nbsp;</td>";
-		echo "<td>";
+		echo '<td>&nbsp;</td>';
+		echo '<td>';
 		foreach ($spouse->getChildFamilies() as $cfamily) {
 			foreach ($cfamily->getSpouses() as $parent) {
-				print_url_arrow($parent->getXref().$personcount.$person->getXref(), "?rootid=".$parent->getXref()."&amp;generations={$this->generations}&amp;chart_style={$this->chart_style}&amp;show_full={$this->show_full}&amp;box_width={$this->box_width}", WT_I18N::translate('Start at parents'), 2);
+				print_url_arrow($parent->getXref().$personcount.$person->getXref(), '?rootid='.$parent->getXref().'&amp;generations='.$this->generations.'&amp;chart_style='.$this->chart_style.'&amp;show_full='.$this->show_full.'&amp;box_width='.$this->box_width.'&amp;ged='.WT_GEDURL, WT_I18N::translate('Start at parents'), 2);
 				$personcount++;
 				// only show the arrow for one of the parents
 				break;
 			}
 		}
-		if ($this->show_full) echo "<br><br>&nbsp;";
-		echo "</td></tr>";
+		if ($this->show_full) echo '<br><br>&nbsp;';
+		echo '</td></tr>';
 	
 		// children
 		$children = $family->getChildren();
-		echo "<tr><td colspan=\"3\" class=\"details1\" >&nbsp;&nbsp;";
+		echo '<tr><td colspan=\"3\" class=\"details1\" >&nbsp;&nbsp;';
 		if ($children) {
-			echo WT_Gedcom_Tag::getLabel('NCHI').": ".count($children);
+			echo WT_Gedcom_Tag::getLabel('NCHI').': '.count($children);
 		} else {
 			// Distinguish between no children (NCHI 0) and no recorded
 			// children (no CHIL records)
-			if (strpos($family->getGedcomRecord(), "\n1 NCHI 0")) {
-				echo WT_Gedcom_Tag::getLabel('NCHI').": ".count($children);
+			if (strpos($family->getGedcomRecord(), '\n1 NCHI 0')) {
+				echo WT_Gedcom_Tag::getLabel('NCHI').': '.count($children);
 			} else {
 				echo WT_I18N::translate('No children');
 			}
 		}
-		echo "</td></tr></table>";
-		echo "</li>";
+		echo '</td></tr></table>';
+		echo '</li>';
 		if ($depth>1) foreach ($children as $child) {
 			$personcount++;
 			$this->print_child_descendancy($child, $depth-1);
 		}
-		echo "</ul>";
-		echo "</li>";
+		echo '</ul>';
+		echo '</li>';
 	}
 }
