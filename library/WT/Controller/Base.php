@@ -196,7 +196,7 @@ class WT_Controller_Base {
 
 		// The title often includes the names of records, which may have markup
 		// that cannot be used in the page title.
-		$title=htmlspecialchars_decode(strip_tags($this->page_title));
+		$title=html_entity_decode(strip_tags($this->page_title), ENT_QUOTES, 'UTF-8');
 
 		// Initialise variables for the theme's header.php
 		$LINK_CANONICAL  =$this->canonical_url;
