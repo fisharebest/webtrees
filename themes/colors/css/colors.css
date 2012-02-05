@@ -460,13 +460,18 @@ left:auto;
 	padding-top:0; padding-right:0; padding-bottom:0;}
 #ancestry_chart li table {margin: 5px 0;}
 
+#ancestry_chart {margin-left: 10px;}
+
 /*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {background-position:right top; margin:0 15px 0 0; left:auto;}
 html[dir='rtl'] #ancestry_chart li {margin:0; padding:0 2px 0 0; left:auto;}
-
+html[dir='rtl'] #ancestry_chart {margin-right: 10px;}
 
 #familybook_chart {margin-left: 10px;}
 html[dir='rtl'] #familybook_chart {margin-right: 10px;}
+
+#relationship_chart {margin-left: 10px;}
+html[dir='rtl'] #relationship_chart {margin-right: 10px;}
 
 .compact_view p {font-size:90%; margin:0;}
 
