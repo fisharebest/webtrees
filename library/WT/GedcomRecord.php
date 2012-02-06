@@ -974,39 +974,39 @@ class WT_GedcomRecord {
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
-	// Get the last-change timestamp for this record - optionally wrapped in a
-	// link to ourself, sorting - used in recent changes table for time sorting
+	// Get the last-change timestamp for this record, either as a formatted string
+	// (for display) or as a unix timestamp (for sorting)
 	//////////////////////////////////////////////////////////////////////////////
-	public function LastChangeTimestamp($add_url, $sorting=false) {
-		global $DATE_FORMAT, $TIME_FORMAT;
-
+	public function LastChangeTimestamp($sorting=false) {
 		$chan = $this->getChangeEvent();
 
-		if (is_null($chan)) {
-			return '&nbsp;';
-		}
-
-		$d = $chan->getDate();
-		if (preg_match('/^(\d\d):(\d\d):(\d\d)/', get_gedcom_value('DATE:TIME', 2, $chan->getGedcomRecord(), '', false).':00', $match)) {
-			$sort=$d->MinJD().$match[1].$match[2].$match[3];
-			if ($sorting) return $sort;
-			$t=mktime($match[1], $match[2], $match[3]);
-			$text=strip_tags($d->Display(false, "{$DATE_FORMAT} - ", array()).format_timestamp($t));
+		if ($chan) {
+			// The record does have a CHAN event
+			$d = $chan->getDate()->MinDate();
+			if (preg_match('/^(\d\d):(\d\d):(\d\d)/', get_gedcom_value('DATE:TIME', 2, $chan->getGedcomRecord(), '', false).':00', $match)) {
+				$t=mktime((int)$match[1], (int)$match[2], (int)$match[3], (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
+			} else {
+				$t=mktime(0, 0, 0, (int)$d->MinDate()->Format('%n'), (int)$d->MinDate()->Format('%j'), (int)$d->MinDate()->Format('%Y'));
+			}
+			if ($sorting) {
+				return $t;
+			} else {
+				return strip_tags(format_timestamp($t));
+			}
 		} else {
-			$sort=$d->MinJD().'000000';
-			if ($sorting) return $sort;
-			$text=strip_tags($d->Display(false, "{$DATE_FORMAT}", array()));
+			// The record does not have a CHAN event
+			if ($sorting) {
+				return 0;
+			} else {
+				return '&nbsp;';
+			}
 		}
-		if ($add_url) {
-			$text='<a name="'.$sort.'" href="'.$this->getHtmlUrl().'">'.$text.'</a>';
-		}
-		return $text;
 	}
 
 	//////////////////////////////////////////////////////////////////////////////
 	// Get the last-change user for this record
 	//////////////////////////////////////////////////////////////////////////////
-	public function LastchangeUser() {
+	public function LastChangeUser() {
 		$chan = $this->getChangeEvent();
 
 		if (is_null($chan)) {

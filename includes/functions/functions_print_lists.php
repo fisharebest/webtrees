@@ -383,7 +383,7 @@ function format_indi_table($datalist, $option='') {
 		$html .= '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>'. $person->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
+			$html .= '<td>'. $person->LastChangeTimestamp(). '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -820,7 +820,7 @@ function format_fam_table($datalist, $option='') {
 		$html .= '<td>'. WT_I18N::number($nchi). '</td><td>'. $nchi. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>'. $family->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
+			$html .= '<td>'. $family->LastChangeTimestamp(). '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -995,7 +995,7 @@ function format_sour_table($datalist) {
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>'. $source->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
+			$html .= '<td>'. $source->LastChangeTimestamp(). '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1088,7 +1088,7 @@ function format_note_table($datalist) {
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>'. $note->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
+			$html .= '<td>'. $note->LastChangeTimestamp(). '</td>';
 		} else {
 			$html .= '<td></td>';
 		}
@@ -1172,7 +1172,7 @@ function format_repo_table($repos) {
 		$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
-			$html .= '<td>'. $repo->LastChangeTimestamp(!$SEARCH_SPIDER). '</td>';
+			$html .= '<td>'. $repo->LastChangeTimestamp(). '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1274,7 +1274,7 @@ function format_media_table($datalist) {
 			$html .= '<td>'. WT_I18N::number($num). '</td><td>'. $num. '</td>';
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {
-				$html .= '<td>'. $media->LastChangeTimestamp(empty($SEARCH_SPIDER)). '</td>';
+				$html .= '<td>'. $media->LastChangeTimestamp(). '</td>';
 			} else {
 				$html .= '<td>&nbsp;</td>';
 			}
@@ -1500,7 +1500,7 @@ function print_changes_list($change_ids, $sort) {
 		// setup sorting parameters
 		$arr[$n]['record'] = $record;
 		$arr[$n]['jd'] = ($sort == 'name') ? 1 : $n;
-		$arr[$n]['anniv'] = $record->LastChangeTimestamp(false, true);
+		$arr[$n]['anniv'] = $record->LastChangeTimestamp(true);
 		$arr[$n++]['fact'] = $record->getSortName(); // in case two changes have same timestamp
 	}
 
@@ -1524,7 +1524,7 @@ function print_changes_list($change_ids, $sort) {
 				$html .= '<a href="' . $value['record']->getHtmlUrl() . '" class="list_item">' . $value['record']->getAddName() . '</a>';
 			}
 		}
-		$html .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(false), $value['record']->LastChangeUser());
+		$html .= /* I18N: [a record was] Changed on <date/time> by <user> */ WT_I18N::translate('Changed on %1$s by %2$s', $value['record']->LastChangeTimestamp(), $value['record']->LastChangeUser());
 		$html .= '</div>';
 	}
 	return $html;
@@ -1632,11 +1632,11 @@ function print_changes_table($change_ids, $sort) {
 		}
 		$html .= "</td>";
 		//-- Last change date/time
-		$html .= "<td class='wrap'>" . $record->LastChangeTimestamp(empty($SEARCH_SPIDER)) . "</td>";
+		$html .= "<td class='wrap'>" . $record->LastChangeTimestamp() . "</td>";
 		//-- Last change user
 		$html .= "<td class='wrap'>" . $record->LastChangeUser() . "</td>";
 		//-- change date (sortable) hidden by datatables code
-		$html .= "<td>" . $record->LastChangeTimestamp(false, true) . "</td>";
+		$html .= "<td>" . $record->LastChangeTimestamp(true) . "</td>";
 		//-- names (sortable) hidden by datatables code
 		$html .= "<td>" . $record->getSortName() . "</td></tr>";
 	}

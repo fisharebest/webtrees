@@ -287,7 +287,7 @@ case 'editraw':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
 		echo '</table>';
@@ -330,7 +330,7 @@ case 'edit':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
 	}
@@ -405,7 +405,7 @@ case 'add':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
 	}
@@ -480,7 +480,7 @@ case 'addfamlink':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
 	}
@@ -519,7 +519,7 @@ case 'linkspouse':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
 	}
@@ -961,7 +961,7 @@ case 'editsource':
 		} 
 		echo '>';
 		echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
+		echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
 		echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 		echo '</td></tr>';
 	}
@@ -1018,7 +1018,7 @@ case 'editnote':
 					} 
 					echo '>';
 					echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-					echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp(false));
+					echo WT_Gedcom_Tag::getLabelValue('DATE', $tmp->LastChangeTimestamp());
 					echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $tmp->LastChangeUser());
 					echo '</td></tr>';
 				}
@@ -1913,7 +1913,7 @@ case 'reorder_children':
 			} 
 			echo '>';
 			echo WT_I18N::translate('Do not update the “last change” record'), help_link('no_update_CHAN');
-			echo WT_Gedcom_Tag::getLabelValue('DATE', $family->LastChangeTimestamp(false));
+			echo WT_Gedcom_Tag::getLabelValue('DATE', $family->LastChangeTimestamp());
 			echo WT_Gedcom_Tag::getLabelValue('_WT_USER', $family->LastChangeUser());
 			echo '</td></tr></table></center><br>';
 		}
