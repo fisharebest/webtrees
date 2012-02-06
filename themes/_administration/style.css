@@ -355,7 +355,10 @@ html[dir='rtl'] .gm_edit_config td {padding-right:50px;}
 #gm_advanced td {padding:0;}
 table#gm_levels {margin-left:20px;}
 html[dir='rtl'] table#gm_levels {margin-right:20px;}
-#gm_levels th {color:green;}
+.gm_levels th, .gm_prefix {color:green;}
+#gm_level_titles th {text-align:center;}
+.gm_levels input{width:90%;}
+
 
 /* Place edit */
 table.gm_plac_edit {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:0 5px; width:100%;}

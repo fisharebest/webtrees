@@ -55,11 +55,6 @@ case 'GM_DEFAULT_LEVEL_0':
 	$text=WT_I18N::translate('Here the default level for the highest level in the place-hierarchy can be defined. If a place cannot be found this name is added as the highest level (country) and the database is searched again.');
 	break;
 
-case 'GM_NOF_LEVELS':
-	$title=WT_I18N::translate('Number of levels');
-	$text=WT_I18N::translate('This field indicates the number of levels in the places-hierarchy that is being used by the Googlemap modules.<br />The default value is 4 (Country, State, County, Place), which is usually good enough. If you want to add an extra level (for example to add specific location like cemeteries or schools) change this value. If you want to remove a level (for example county) you can also change this value, but keep in mind that the files containing the place-locations contain a 4-level structure.');
-	break;
-
 case 'GM_NAME_PREFIX':
 	$title=WT_I18N::translate('Prefix for names used on this level');
 	$text=WT_I18N::translate('This value will be added to the front of the names on this level. Multiple values can be used, seperated by semicolons.');
