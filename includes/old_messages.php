@@ -51,8 +51,6 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 0, 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('interval %d year', 'interval %d years', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('grandchildren');
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees wiki');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('A request was received at %s to create a webtrees account with your email address %s.', '', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Account Information');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Administrator help items');
@@ -75,6 +73,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('If you have forgotten your password, you can click this link to request a new password.<br /><br />You will be taken to the "Lost Password Request" page.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Lost your password?');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('No account?');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Number of levels');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Other records');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Place levels to show in person boxes');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Place levels to show on lists');
@@ -88,6 +87,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This block displays the most frequently occurring surnames in the database.  The configuration settings for this block allow changes to the number of names displayed, the presentation style, and the use of scroll bars with long lists.  By using the GEDCOM administration function, an administrator can also configure names to remove from this list.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This block shows a table of the 10 most frequently occurring given names in the database.  The actual number of given names shown in this block is configurable.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This determines how much of the Place information is shown in the Place fields on lists.<br /><br />Setting the value to <b>9</b> will ensure that all Place information will be shown.  Setting the value to <b>0</b> (zero) will hide places completely.  Setting the value to <b>1</b> will show the topmost level, which is normally the country.  Setting it to <b>2</b> will show the topmost two levels.  The second topmost level, below the country, is often the state, province, or territory. Etc.');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This field indicates the number of levels in the places-hierarchy that is being used by the Googlemap modules.<br />The default value is 4 (Country, State, County, Place), which is usually good enough. If you want to add an extra level (for example to add specific location like cemeteries or schools) change this value. If you want to remove a level (for example county) you can also change this value, but keep in mind that the files containing the place-locations contain a 4-level structure.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This option will enable links, identified by question marks, next to items on many pages.  These links allow users to get information or help about those items.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('This sets how much of the place information is shown in the person boxes on charts.<br /><br />Setting the value to 9 will guarantee to show all place levels.  Setting the value to 0 will hide places completely.  Setting the value to 1 will show the first level, setting it to 2 will show the first two levels, etc.');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('To have your password reset, enter your user name.<br /><br />We will respond by sending you an email to the address registered with your account.  The email will contain a URL and confirmation code for your account. When you visit this URL, you can change your password and login to this site. For security reasons, you should not give this confirmation code to anyone.<br /><br />If you require assistance from the site administrator, please use the contact link below.');
@@ -95,7 +95,9 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('Use simple mail headers');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('User %s (%s) has confirmed their request for an account.', '', '');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('View readme.html file');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('grandchildren');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
+/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees wiki');
 
 // MESSAGES DELETED IN WEBTREES-1.2.6
 
