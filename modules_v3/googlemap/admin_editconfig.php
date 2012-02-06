@@ -33,54 +33,6 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $action=safe_REQUEST($_REQUEST, 'action');
 
-function print_level_config_table($level) {
-	global $GM_MARKER_COLOR, $GM_MARKER_SIZE, $GM_PREFIX;
-	global $GM_POSTFIX, $GM_PRE_POST_MODE;
-?>
-	<div id="level<?php echo $level; ?>">
-		<table id="gm_levels">
-			<tr>
-				<th colspan="2">
-					<?php
-					if ($level==1) {
-						echo WT_I18N::translate('Country');
-					} else {
-						echo WT_I18N::translate('Level'), " ", $level;
-					}
-					?>
-				</th>
-				<td>
-					<?php echo WT_I18N::translate('Prefix'), help_link('GM_NAME_PREFIX','googlemap'); ?>
-				</td>
-				<td>
-					<input type="text" name="NEW_GM_PREFIX_<?php echo $level; ?>" value="<?php echo $GM_PREFIX[$level]; ?>" size="20">
-				</td>
-				<td>
-					<?php echo WT_I18N::translate('Postfix'), help_link('GM_NAME_POSTFIX','googlemap'); ?>
-				</td>
-				<td>
-					<input type="text" name="NEW_GM_POSTFIX_<?php echo $level; ?>" value="<?php echo $GM_POSTFIX[$level]; ?>" size="20">
-				</td>
-				<td>
-					<?php echo WT_I18N::translate('Prefix / Postfix order'), help_link('GM_NAME_PRE_POST','googlemap'); ?>
-				</td>
-				<td>
-					<select name="NEW_GM_PRE_POST_MODE_<?php echo $level; ?>" dir="ltr" onchange="showSelectedLevels()">
-						<option value="0"<?php if ($GM_PRE_POST_MODE[$level] == 0) echo ' selected="selected"'; ?>><?php echo WT_I18N::translate('No pre/postfix'); ?></option>
-						<option value="1"<?php if ($GM_PRE_POST_MODE[$level] == 1) echo ' selected="selected"'; ?>><?php echo WT_I18N::translate('Normal, prefix, postfix, both'); ?></option>
-						<option value="2"<?php if ($GM_PRE_POST_MODE[$level] == 2) echo ' selected="selected"'; ?>><?php echo WT_I18N::translate('Normal, postfix, prefix, both'); ?></option>
-						<option value="3"<?php if ($GM_PRE_POST_MODE[$level] == 3) echo ' selected="selected"'; ?>><?php echo WT_I18N::translate('Prefix, postfix, both, normal'); ?></option>
-						<option value="4"<?php if ($GM_PRE_POST_MODE[$level] == 4) echo ' selected="selected"'; ?>><?php echo WT_I18N::translate('Postfix, prefix, both, normal'); ?></option>
-						<option value="5"<?php if ($GM_PRE_POST_MODE[$level] == 5) echo ' selected="selected"'; ?>><?php echo WT_I18N::translate('Prefix, postfix, normal, both'); ?></option>
-						<option value="6"<?php if ($GM_PRE_POST_MODE[$level] == 6) echo ' selected="selected"'; ?>><?php echo WT_I18N::translate('Postfix, prefix, normal, both'); ?></option>
-					</select>
-				</td>
-			</tr>
-		</table>
-	</div>
-<?php
-}
-
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
