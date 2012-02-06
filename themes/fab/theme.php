@@ -172,7 +172,7 @@ $fanChart=array(
 
 // variables for the pedigree chart
 $bwidth=275;     // width of boxes on pedigree chart
-$bheight=85;     // height of boxes on pedigree chart
+$bheight=80;     // height of boxes on pedigree chart
 $baseyoffset=10; // position the entire pedigree tree relative to the top of the page
 $basexoffset=10; // position the entire pedigree tree relative to the left of the page
 $bxspacing=0;    // horizontal spacing between boxes on the pedigree chart
@@ -185,7 +185,7 @@ $Dbasexoffset=20; // -- position the entire descendancy tree relative to the lef
 $Dbxspacing=5;   // -- horizontal spacing between boxes
 $Dbyspacing=10;   // -- vertical spacing between boxes
 $Dbwidth=290;    // -- width of DIV layer boxes
-$Dbheight=85;    // -- height of DIV layer boxes
+$Dbheight=80;    // -- height of DIV layer boxes
 $Dindent=15;     // -- width to indent descendancy boxes
 $Darrowwidth=30; // -- additional width to include for the up arrows
 
