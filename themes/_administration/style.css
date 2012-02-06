@@ -448,5 +448,5 @@ table#story_table {width:100%}
 #page_help .icon-help-15 {background-position:-45px 0; width:24px; height:24px;} /* switch to larger version icon-help-24 */
 
 /* These two needed for now to suppress standard help icons */
-.help {display:inline; margin-left:5px; padding-right:15px; padding-bottom:5px;}
+.help {cursor:help; display:inline; margin-left:5px; padding-right:15px; padding-bottom:5px;}
 .icon {display:none;}
