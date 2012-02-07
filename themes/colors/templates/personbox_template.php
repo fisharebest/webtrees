@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 echo '<div id="out-',$boxID,'" ',$outBoxAdd,'>
-	<div class="noprint" id="icons-',$boxID,'" style="',$iconsStyleAdd,' width: 25px; height: 50px">', $icons, '</div>',
+	<div class="noprint" id="icons-',$boxID,'" style="',$iconsStyleAdd,' width: 25px; height: 50px; position: relative;">', $icons, '</div>',
 	'<div class="chart_textbox" style="height:auto; max-height:', $bheight,'px; overflow: hidden; ">',
 	$thumbnail,
 
