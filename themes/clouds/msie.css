@@ -14,3 +14,5 @@ div.blockcontent {*margin-top:-2px;}
 #topMenu {*position: relative; *z-index: 1;}
 #header {*position: relative; *z-index: 2002; *height: 120px;}
 .makeMenu li ul { *top: 8px;}
+.itr {right: 5px;}
+.itr:hover .popup {top: 20px;}

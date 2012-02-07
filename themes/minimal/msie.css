@@ -9,3 +9,5 @@ form {margin-top: 0px; margin-bottom: 0px;}
 .favorites_form {*top:1.7em;}
 html[dir='rtl'] .favorites_form {*top:1.7em;}
 .makeMenu {*clear: both; *width: 750px;}
+.itr {right: 5px;}
+.itr:hover .popup {top: 20px;}
