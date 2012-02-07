@@ -46,8 +46,9 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Changes in the last %d day', 'Changes in the last %d days', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('No events exist for the next %d day.', 'No events exist for the next %d days.', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('No events for living people exist for the next %d day.', 'No events for living people exist for the next %d days.', 0, 0);
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Top given name', 'Top %d given names', 0, 0);
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('Top surname', 'Top %d surnames', 0, 0);
+// We cannot include these two, as they conflict with a non-plural translation of the same string
+// WT_I18N::plural('Top given name', 'Top %d given names', 0, 0);
+// WT_I18N::plural('Top surname', 'Top %d surnames', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('from %2$d interval %1$d year', 'from %2$d interval %1$d years', 0, 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::plural('interval %d year', 'interval %d years', 0, 0);
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('%d B.C.');
