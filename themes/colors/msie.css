@@ -9,10 +9,11 @@
 a.showit:hover > span {filter: alpha(opacity=85);}
 .ltr {text-align: left;}
 
+
 #menu-theme, #menu-language, #menu-theme, #menu-favorites {*padding-right: 10px;}
 div.blockcontent {*margin-top:-2px;}
 #topMenu {*position: relative; *z-index: 1;}
 #header {*position: relative; *z-index: 2002; *height: 120px;}
 .makeMenu li ul { *top: 8px;}
-.itr {right: 5px;}
+.itr {right: 3px; top: 30px;}
 .itr:hover .popup {top: 20px;}

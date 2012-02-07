@@ -7,7 +7,7 @@
 
 .rela {filter: alpha(opacity=67);}
 a.showit:hover > span {filter: alpha(opacity=85);}
-.itr {right: 5px;}
+.itr {right: 3px; top: 30px;}
 .itr:hover .popup {top: 20px;}
 
 
