@@ -324,7 +324,7 @@ case 'register':
 		}
 
 		//-- check referer for possible spam attack
-		if (!isset($_SERVER['HTTP_REFERER']) || stristr($_SERVER['HTTP_REFERER'],WT_LOGIN_URL)!==0) {
+		if (!isset($_SERVER['HTTP_REFERER']) || strpos($_SERVER['HTTP_REFERER'],WT_LOGIN_URL)!==0) {
 			echo '<center><br><span class="error">Invalid page referer.</span>';
 			echo '<br><br></center>';
 			AddToLog('Invalid page referer while trying to register a user.  Possible spam attack.', 'auth');
