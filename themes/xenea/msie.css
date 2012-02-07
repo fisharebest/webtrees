@@ -8,5 +8,5 @@
 #fav-menu {*left: 30px;}
 html[dir='rtl'] #fav-menu {*right: 30px;}
 
-.itr {right: 4px; height: 30px;}
+.itr {height: 30px;}
 .itr:hover .popup {top: 28px;}

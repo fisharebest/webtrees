@@ -386,7 +386,7 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 #reportengine-page .report-type div {float:left;margin: 0 20px;}
 #reportengine-page .report-type p {margin: 0; text-align:center;}
 
-.itr {position: absolute;top:3em;line-height:1.5;}
+.itr {position: absolute;line-height:1.5;}
 .block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {position:relative;top:0;}
 
 .popup {display:none;}

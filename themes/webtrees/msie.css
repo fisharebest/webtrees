@@ -23,5 +23,5 @@ form {
 a.showit:hover > span {
 	filter: alpha(opacity=85);
 }
-.itr {right: 5px;}
+.itr {height: 30px;}
 .itr:hover .popup {top: 20px;}

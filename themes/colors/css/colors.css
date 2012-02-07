@@ -1522,7 +1522,6 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 
 .itr {
 	position: absolute;
-	top: 3em;
 	line-height: 1.5;
 }
 
@@ -1531,7 +1530,7 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 	position: absolute;
 	width: 12em;
 	right: 0px;
-	z-index: 99999;
+	z-index: 10;
 }
 
 .block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {
