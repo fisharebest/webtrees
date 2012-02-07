@@ -1484,7 +1484,9 @@ margin: 0;
 #family-table .person_box, #family-table .person_boxF, #family-table .person_boxNN,
 #familybook_chart .person_box, #familybook_chart .person_boxF, #familybook_chart .person_boxNN,
 #hourglass_chart .person_box, #hourglass_chart .person_boxF, #hourglass_chart .person_boxNN,
-#relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN {
+#pedigree_chart .person_box, #pedigree_chart .person_boxF, #pedigree_chart .person_boxNN,
+#relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN,
+#relationship_chart .person_box, #relationship_chart .person_boxF, #relationship_chart .person_boxNN {
 overflow: visible !important;
 }
 
