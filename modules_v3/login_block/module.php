@@ -63,10 +63,9 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<br><br></form></div>";
 		} else {
 			$title = WT_I18N::translate('Login');
-			$LOGIN_URL=get_site_setting('LOGIN_URL');		
 			$content='';
 			$content='<div id="login-box">
-				<form id="login-form" name="login-form" method="post" action="'. get_site_setting('LOGIN_URL'). '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
+				<form id="login-form" name="login-form" method="post" action="'.WT_LOGIN_URL.'" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
 				<input type="hidden" name="action" value="login">
 				<input type="hidden" name="url" value="index.php">
 				<input type="hidden" name="ged" value="'; if (isset($ged)) $content.= htmlspecialchars($ged); else $content.= htmlentities(WT_GEDCOM); $content.= '">
