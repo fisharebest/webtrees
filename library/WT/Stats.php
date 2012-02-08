@@ -378,9 +378,13 @@ class WT_Stats {
 		return WT_I18N::number($this->_totalIndividuals());
 	}
 
-	function totalIndisWithSources() {
+	function _totalIndisWithSources() {
 		$rows=self::_runSQL("SELECT COUNT(DISTINCT i_id) AS tot FROM `##link`, `##individuals` WHERE i_id=l_from AND i_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
-		return WT_I18N::number($rows[0]['tot']);
+		return $rows[0]['tot'];
+	}
+
+	function totalIndisWithSources() {
+		return WT_I18N::number(self::_totalIndisWithSources());
 	}
 
 	function chartIndisWithSources($params=null) {
@@ -394,7 +398,7 @@ class WT_Stats {
 		if ($tot_indi==0) {
 			return '';
 		} else {
-			$tot_sindi_per = round($this->totalIndisWithSources()/$tot_indi, 3);
+			$tot_sindi_per = round($this->_totalIndisWithSources()/$tot_indi, 3);
 			$chd = self::_array_to_extended_encoding(array(100-100*$tot_sindi_per, 100*$tot_sindi_per));
 			$chl =  WT_I18N::translate('Without sources').' - '.WT_I18N::percentage(1-$tot_sindi_per,1).'|'.
 					WT_I18N::translate('With sources').' - '.WT_I18N::percentage($tot_sindi_per,1);
@@ -418,9 +422,13 @@ class WT_Stats {
 		return WT_I18N::number($this->_totalFamilies());
 	}
 
-	function totalFamsWithSources() {
+	function _totalFamsWithSources() {
 		$rows=self::_runSQL("SELECT COUNT(DISTINCT f_id) AS tot FROM `##link`, `##families` WHERE f_id=l_from AND f_file=l_file AND l_file=".$this->_ged_id." AND l_type='SOUR'");
-		return WT_I18N::number($rows[0]['tot']);
+		return $rows[0]['tot'];
+	}
+
+	function totalFamsWithSources() {
+		return WT_I18N::number(self::_totalFamsWithSources());
 	}
 
 	function chartFamsWithSources($params=null) {
@@ -434,7 +442,7 @@ class WT_Stats {
 		if ($tot_fam==0) {
 			return '';
 		} else {
-			$tot_sfam_per = round($this->totalFamsWithSources()/$tot_fam, 3);
+			$tot_sfam_per = round($this->_totalFamsWithSources()/$tot_fam, 3);
 			$chd = self::_array_to_extended_encoding(array(100-100*$tot_sfam_per, 100*$tot_sfam_per));
 			$chl =  WT_I18N::translate('Without sources').' - '.WT_I18N::percentage(1-$tot_sfam_per,1).'|'.
 					WT_I18N::translate('With sources').' - '.WT_I18N::percentage($tot_sfam_per,1);
