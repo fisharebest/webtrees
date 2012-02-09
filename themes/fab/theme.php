@@ -54,7 +54,6 @@ $WT_IMAGES=array(
 	'button_repository'   =>WT_THEME_URL.'images/buttons/repository.png',
 	'button_source'       =>WT_THEME_URL.'images/buttons/source.png',
 	'calendar'            =>WT_THEME_URL.'images/calendar.png',
-	'center'              =>WT_THEME_URL.'images/center.png',
 	'cfamily'             =>WT_THEME_URL.'images/cfamily.png',
 	'childless'           =>WT_THEME_URL.'images/childless.png',
 	'children'            =>WT_THEME_URL.'images/children.png',

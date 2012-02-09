@@ -1276,7 +1276,13 @@ function old_paths() {
 		WT_ROOT.'themes/fab/images/fscreen.png',
 		WT_ROOT.'themes/minimal/images/fscreen.png',
 		WT_ROOT.'themes/webtrees/images/fscreen.png',
-		WT_ROOT.'themes/xenea/images/fscreen.png',
+		WT_ROOT.'themes/xenea/images/fscreen.png',		
+		WT_ROOT.'themes/clouds/images/center.png',
+		WT_ROOT.'themes/colors/images/center.png',
+		WT_ROOT.'themes/fab/images/center.png',
+		WT_ROOT.'themes/minimal/images/center.png',
+		WT_ROOT.'themes/webtrees/images/center.png',
+		WT_ROOT.'themes/xenea/images/center.png',
 	);
 }
 

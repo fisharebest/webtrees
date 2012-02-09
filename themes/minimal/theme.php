@@ -41,7 +41,6 @@ $WT_IMAGES=array(
 	'admin'          =>WT_THEME_URL.'images/admin.png',
 	'ancestry'       =>WT_THEME_URL.'images/ancestry.png',
 	'calendar'       =>WT_THEME_URL.'images/calendar.png',
-	'center'         =>WT_THEME_URL.'images/center.png',
 	'cfamily'        =>WT_THEME_URL.'images/cfamily.png',
 	'childless'      =>WT_THEME_URL.'images/childless.png',
 	'children'       =>WT_THEME_URL.'images/children.png',

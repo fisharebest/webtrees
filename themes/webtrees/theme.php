@@ -102,9 +102,6 @@ $WT_IMAGES=array(
 	'warning'=>WT_THEME_URL.'images/warning.png',
 	'wiki'=>WT_THEME_URL.'images/w_22.png',
 	'itree'=>WT_THEME_URL.'images/tree.png',
-	// - Interactive Chart Icons
-	'center'=>WT_THEME_URL.'images/center.png',
-	'itree'=>WT_THEME_URL.'images/tree.png',
 
 	//- buttons for data entry pages
 	'button_addmedia'=>WT_THEME_URL.'images/buttons/addmedia.png',
