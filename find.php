@@ -104,23 +104,18 @@ case "fam":
 	break;
 case "media":
 	$controller->setPageTitle(WT_I18N::translate('Find media'));
-	$action="filter";
 	break;
 case "place":
 	$controller->setPageTitle(WT_I18N::translate('Find Place'));
-	$action="filter";
 	break;
 case "repo":
 	$controller->setPageTitle(WT_I18N::translate('Repositories'));
-	$action="filter";
 	break;
 case "note":
 	$controller->setPageTitle(WT_I18N::translate('Find Shared Note'));
-	$action="filter";
 	break;
 case "source":
 	$controller->setPageTitle(WT_I18N::translate('Find Source'));
-	$action="filter";
 	break;
 case "specialchar":
 	// Users will probably always want the same language, so remember their setting
