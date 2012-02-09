@@ -99,6 +99,9 @@ default:
 
 			// Redirect to the target URL
 			header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.$url);
+			// Explicitly write the session data before we exit,
+			// as it doesn't always happen when using APC.
+			Zend_Session::writeClose();
 			exit;
 		}
 	} else {
