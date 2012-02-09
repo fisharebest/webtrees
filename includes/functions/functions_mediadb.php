@@ -2,7 +2,7 @@
 // Various functions used by the media DB interface
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -212,7 +212,7 @@ function get_medialist($currentdir = false, $directory = "", $linkonly = false, 
 				$media["EXISTS"] = 1; // 1 means external
 			} else {
 				$media["THUMB"] = thumbnail_file($fileName);
-				$media["THUMBEXISTS"] = media_exists($media["THUMB"]);
+				$media["THUMBEXISTS"] = media_exists(thumbnail_file($fileName, true, false, false));
 				$media["EXISTS"] = media_exists($fileName);
 			}
 			$media["TITL"] = $row->m_titl;
@@ -382,7 +382,7 @@ if (!$excludeLinks) {
 				$media["GEDFILE"] = "";
 				$media["FILE"] = $directory . $fileName;
 				$media["THUMB"] = thumbnail_file($directory . $fileName, false);
-				$media["THUMBEXISTS"] = media_exists($media["THUMB"]);
+				$media["THUMBEXISTS"] = media_exists(thumbnail_file($directory . $fileName, false, false, false));
 				$media["EXISTS"] = media_exists($media["FILE"]);
 				$media["FORM"] = $ext;
 				if ($ext == "jpg" || $ext == "jp2")
@@ -576,7 +576,7 @@ function get_medialist2($currentdir = false, $directory = "", $linkonly = false,
 				$media["GEDFILE"] = "";
 				$media["FILE"] = $directory . $fileName;
 				$media["THUMB"] = thumbnail_file($directory . $fileName, false);
-				$media["THUMBEXISTS"] = media_exists($media["THUMB"]);
+				$media["THUMBEXISTS"] = media_exists($directory . $fileName, false, false, false);
 				$media["EXISTS"] = media_exists($media["FILE"]);
 				$media["FORM"] = $ext;
 				if ($ext == "jpg" || $ext == "jp2")
@@ -748,7 +748,7 @@ function filterMedia2($mediaobject, $filter) {
 * @param bool $overwrite 'true' to replace existing thumbnail
 * @return string the location of the thumbnail
 */
-function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
+function thumbnail_file($filename, $generateThumb=true, $overwrite=false, $icon_image=true) {
 	global $MEDIA_DIRECTORY, $WT_IMAGES, $MEDIA_DIRECTORY_LEVELS, $MEDIA_EXTERNAL;
 
 	if (strlen($filename) == 0)
@@ -793,9 +793,13 @@ function thumbnail_file($filename, $generateThumb = true, $overwrite = false) {
 		}
 	}
 
-	// Thumbnail doesn't exist and could not be generated:
-	// Return an icon image instead
-	return media_icon_file($filename);
+	if ($icon_image) {
+		// Thumbnail doesn't exist and could not be generated:
+		// Return an icon image instead
+		return media_icon_file($filename);
+	} else {
+		return false;
+	}
 
 }
 
