@@ -92,6 +92,7 @@ require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 require 'includes/functions/functions.php';
 require 'includes/functions/functions_edit.php';
+$WT_SESSION=new Zend_Session_Namespace('WEBTREES');
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
 
 echo
