@@ -1724,10 +1724,9 @@ function get_newest_registered_user() {
 }
 
 function set_user_password($user_id, $password) {
-	if (CRYPT_BLOWFISH==1 && version_compare(PHP_VERSION, '5.3')) {
+	if (version_compare(PHP_VERSION, '5.3')>0) {
 		// Some PHP5.2 implementations of crypt() appear to be broken - #802316
-		// PHP5.3 will always support BLOWFISH - see php.net/crypt - so the check
-		// for CRYPT_BLOWFISH is redundant.
+		// PHP5.3 will always support BLOWFISH - see php.net/crypt
 		// This salt will select the BLOWFISH algorithm with 2^12 rounds
 		$salt='$2a$12$';
 		$salt_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789./';
@@ -1752,7 +1751,7 @@ function check_user_password($user_id, $password) {
 		->fetchOne();
 	if (crypt($password, $password_hash)==$password_hash) {
 		// Update older passwords to use BLOWFISH with 2^12 rounds
-		if (CRYPT_BLOWFISH==1 && version_compare(PHP_VERSION, '5.3') && substr($password_hash, 0, 7)!='$2a$12$') {
+		if (version_compare(PHP_VERSION, '5.3')>0 && substr($password_hash, 0, 7)!='$2a$12$') {
 			set_user_password($user_id, $password);
 		}
 		return true;
