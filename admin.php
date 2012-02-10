@@ -1277,6 +1277,10 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/images/fscreen.png',
 		WT_ROOT.'themes/webtrees/images/fscreen.png',
 		WT_ROOT.'themes/xenea/images/fscreen.png',		
+		// Removed in 1.2.7
+		WT_ROOT.'login_register.php',
+		WT_ROOT.'modules_v3/top10_givnnames/help_text.php',
+		WT_ROOT.'modules_v3/top10_surnames/help_text.php',
 		WT_ROOT.'themes/clouds/images/center.png',
 		WT_ROOT.'themes/colors/images/center.png',
 		WT_ROOT.'themes/fab/images/center.png',
