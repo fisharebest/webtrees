@@ -4,7 +4,7 @@
 // Media Link information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -35,9 +35,7 @@ $update_CHAN = safe_REQUEST($_REQUEST, 'preserve_last_changed', WT_REGEX_UNSAFE)
 
 if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
-//-- check for admin
-//$paramok =  WT_USER_CAN_EDIT;
-$paramok =  WT_USER_GEDCOM_ADMIN;
+$paramok =  true;
 if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
 
 if ($action == "choose" && $paramok) {

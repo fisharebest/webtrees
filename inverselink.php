@@ -4,7 +4,7 @@
 // This is the page that does the work of linking items.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -30,8 +30,10 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('Link media'));
-$controller->pageHeader();
+$controller
+	->requireEditorLogin()
+	->setPageTitle(WT_I18N::translate('Link media'))
+	->pageHeader();
 
 //-- page parameters and checking
 $linktoid = safe_GET_xref('linktoid');
@@ -40,14 +42,14 @@ $linkto   = safe_GET     ('linkto', array('person', 'source', 'family', 'manage'
 $action   = safe_GET     ('action', WT_REGEX_ALPHA, 'choose');
 
 // If GedFAct_assistant/_MEDIA/ installed ======================
-if (WT_USER_IS_ADMIN && $linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_0_inverselink.php';
 } else {
 
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 	//-- check for admin
-	$paramok =  WT_USER_CAN_EDIT;
+	$paramok =  true;
 	if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
 
 	if ($action == "choose" && $paramok) {

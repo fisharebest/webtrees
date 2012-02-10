@@ -2,7 +2,7 @@
 // Controller for the media page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -104,12 +104,6 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 			return null;
 		}
 
-		$links = get_media_relations($this->record->getXref());
-		$linktoid = "new";
-		foreach ($links as $linktoid => $type) {
-			break; // we're only interested in the key of the first list entry
-		}
-
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-obje');
 		$menu->addIcon('edit_media');
@@ -123,18 +117,11 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 			$menu->addSubmenu($submenu);
 
 			// main link displayed on page
-			if (WT_USER_GEDCOM_ADMIN && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
+			if (array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				$submenu = new WT_Menu(WT_I18N::translate('Manage links'), '#', 'menu-obje-link');
-			} else {
-				$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', 'menu-obje-link');
-			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_medialink');
-			$submenu->addIcon('edit_media');
-
-			// GEDFact assistant Add Media Links =======================
-			if (WT_USER_GEDCOM_ADMIN && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				$submenu->addOnclick("return ilinkitem('".$this->record->getXref()."','manage');");
 			} else {
+				$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', 'menu-obje-link');
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'), '#', 'menu-obje-link-indi');
 				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','person');");
 				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_indis');
@@ -153,6 +140,9 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 			}
+			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_medialink');
+			$submenu->addIcon('edit_media');
+
 			$menu->addSubmenu($submenu);
 		}
 
@@ -176,7 +166,7 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		}
 
 		// delete
-		if (WT_USER_GEDCOM_ADMIN) {
+		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(
 				WT_I18N::translate('Remove object'),
 				"admin_media.php?action=removeobject&amp;xref=".$this->record->getXref(),
