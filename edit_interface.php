@@ -469,6 +469,7 @@ case 'addfamlink':
 		case 'F': echo edit_field_pedi_f('pedigree'); break;
 		case 'U': echo edit_field_pedi_u('pedigree'); break;
 		}
+		echo help_link('PEDI');
 		echo '</td></tr>';
 	}
 	if (WT_USER_IS_ADMIN) {
