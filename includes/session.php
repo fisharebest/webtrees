@@ -304,8 +304,8 @@ require WT_ROOT.'includes/session_spider.php';
 session_set_save_handler(
 	create_function('', 'return true;'), // open
 	create_function('', 'return true;'), // close
-	create_function('$id', 'AddToLog("read-$id", "debug"); return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();'), // read
-	create_function('$id,$data', 'AddToLog("write-$id", "debug"); WT_DB::prepare("REPLACE INTO `##session` (session_id, user_id, ip_address, session_data) VALUES (?,?,?,?)")->execute(array($id, WT_USER_ID, $_SERVER["REMOTE_ADDR"], $data));return true;'), // write
+	create_function('$id', 'return WT_DB::prepare("SELECT session_data FROM `##session` WHERE session_id=?")->execute(array($id))->fetchOne();'), // read
+	create_function('$id,$data', 'WT_DB::prepare("REPLACE INTO `##session` (session_id, user_id, ip_address, session_data) VALUES (?,?,?,?)")->execute(array($id, WT_USER_ID, $_SERVER["REMOTE_ADDR"], $data));return true;'), // write
 	create_function('$id', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_id=?")->execute(array($id));return true;'), // destroy
 	create_function('$maxlifetime', 'WT_DB::prepare("DELETE FROM `##session` WHERE session_time < DATE_SUB(NOW(), INTERVAL ? SECOND)")->execute(array($maxlifetime));return true;') // gc
 );
