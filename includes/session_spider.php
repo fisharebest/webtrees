@@ -28,47 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-/**
- * Changes the session same for known spiders
- * session names are limited to alphanum upper and lower only.
- * $outname = '__Spider-name-:/alphanum_only__';
- * Example  =  sess_xxGOOGLEBOTfsHTTPcffWWWdGOOGLxx
- * Matchable by "ls sess_xx??????????????????????????xx"
- *
- * @param string $bot_name
- * @param string $bot_language
- * @return string
- */
-function gen_spider_session_name($bot_name, $bot_language) {
-	$outname = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
-
-	$bot_limit = strlen($bot_name);
-	if ($bot_limit > 27) {
-		$bot_limit = 27;
-	}
-	for ($x=0; $x < $bot_limit; $x++) {
-		if (preg_match('/^[a-zA-Z0-9]+$/', $bot_name{$x})) {
-			$outname{$x+2} = strtoupper($bot_name{$x});
-		} elseif ($bot_name{$x} == '.') {
-			$outname{$x+2} = 'd';
-		} elseif ($bot_name{$x} == ':') {
-			$outname{$x+2} = 'c';
-		} elseif ($bot_name{$x} == '/') {
-			$outname{$x+2} = 'f';
-		} elseif ($bot_name{$x} == ' ') {
-			$outname{$x+2} = 's';
-		} elseif ($bot_name{$x} == '-') {
-			$outname{$x+2} = 't';
-		} elseif ($bot_name{$x} == '_') {
-			$outname{$x+2} = 'u';
-		} else {
-			$outname{$x+2} = 'o';
-		}
-	}
-	return($outname);
-}
-
-
 // Block sites by IP address.
 // Convert user-friendly such as '123.45.*.*' into SQL '%' wildcards.
 // Note: you may need to blcok IPv6 addresses as well as IPv4 ones.
@@ -228,77 +187,7 @@ if ($ua != "") {
 }
 
 if (!$real) {
-	$bot_name = $ua;
-	// strip out several common strings that clutter the User Agent.
-	$bot_name = preg_replace("/Mozilla\/... \(compatible;/i", "", $bot_name);
-	$bot_name = preg_replace("/Mozilla\/... /i", "", $bot_name);
-	$bot_name = preg_replace("/Windows NT/i", "", $bot_name);
-	$bot_name = preg_replace("/Windows; U;/i", "", $bot_name);
-	$bot_name = preg_replace("/Windows/i", "", $bot_name);
-
-	// Copy in characters, stripping out unwanteds until we are full, stopping at 70.
-	$y = 0;
-	$valid_char = false;
-	$bot_limit = strlen($bot_name);
-	for ($x=0; $x < $bot_limit; $x++) {
-		if (preg_match('/^[a-zA-Z]+$/', $bot_name{$x})) {
-			$spider_name{$y} = $bot_name{$x};
-			$valid_char = true;
-			$y++;
-			if ($y > 70) break;
-		}
-		else if ($bot_name{$x} == ' ') {
-			if ($valid_char) {
-				$spider_name{$y} = ' ';
-				$valid_char = false;
-				$y++;
-				if ($y > 70) break;
-			}
-		}
-		else if ($bot_name{$x} == '.') {
-			if ($valid_char) {
-				$spider_name{$y} = '.';
-				$valid_char = true;
-				$y++;
-				if ($y > 70) break;
-			}
-		}
-		else if ($bot_name{$x} == ':') {
-			$spider_name{$y} = ':';
-			$valid_char = true;
-			$y++;
-			if ($y > 70) break;
-		}
-		else if ($bot_name{$x} == '/') {
-			$spider_name{$y} = '/';
-			$valid_char = true;
-			$y++;
-			if ($y > 70) break;
-		}
-		else if ($bot_name{$x} == '-') {
-			$spider_name{$y} = '-';
-			$valid_char = true;
-			$y++;
-			if ($y > 70) break;
-		}
-		else if ($bot_name{$x} == '_') {
-			$spider_name{$y} = '_';
-			$valid_char = true;
-			$y++;
-			if ($y > 70) break;
-		}
-		else { // Compress consecutive invalids down to one space char.
-			if ($valid_char) {
-				$spider_name{$y} = ' ';
-				$valid_char = false;
-				$y++;
-				if ($y > 70) break;
-			}
-		}
-	}
-	// The SEARCH_SPIDER is set to 70 vetted chars, the session to 26 chars.
-	$SEARCH_SPIDER = $spider_name;
-	Zend_Session::setId(gen_spider_session_name($spider_name, ""));
+	$SEARCH_SPIDER = $ua;
 }
 
 // Manual Search Engine IP Address tagging
