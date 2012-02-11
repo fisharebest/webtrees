@@ -976,7 +976,7 @@ try {
 		" (1, 'auto_accept',       ?),".
 		" (1, 'visibleonline',     ?)"
 	)->execute(array(
-		1, Zend_Registry::get('Zend_Locale'), 1, 1, 1, 0, 1
+		1, WT_LOCALE, 1, 1, 1, 0, 1
 	));
 
 	$dbh->prepare(
