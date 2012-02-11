@@ -347,9 +347,9 @@ class WT_Date {
 			return $d1->date1->GetAge(true, WT_CLIENT_JD, $warn_on_negative);
 		} else {
 			// If dates overlap, then can't calculate age.
-			if (WT_Date::Compare($d1, $d2)) {
+			if (self::Compare($d1, $d2)) {
 				return $d1->date1->GetAge(true, $d2->MinJD(), $warn_on_negative);
-			} if (WT_Date::Compare($d1, $d2)==0 && $d1->date1->minJD==$d2->MinJD()) {
+			} if (self::Compare($d1, $d2)==0 && $d1->date1->minJD==$d2->MinJD()) {
 				return '0d';
 			} else {
 				return '';
