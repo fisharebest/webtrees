@@ -2,7 +2,7 @@
 // Class that defines an event details object
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2008  PGV Development Team.  All rights reserved.
@@ -304,7 +304,7 @@ class WT_Event {
 			$ret=WT_Date::Compare($a->getDate(), $b->getDate());
 			if ($ret==0) {
 				// If dates are the same, compare by fact type
-				$ret=WT_Event::CompareType($a, $b);
+				$ret=self::CompareType($a, $b);
 				// If the fact type is also the same, retain the initial order
 				if ($ret==0) {
 					$ret=$a->sortOrder - $b->sortOrder;
