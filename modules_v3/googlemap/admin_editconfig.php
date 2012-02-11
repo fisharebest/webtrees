@@ -2,7 +2,7 @@
 // Online UI for editing site configuration variables
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team. All rights reserved.
@@ -59,7 +59,6 @@ if ($action=="update" && !isset($security_user)) {
 	set_module_setting('googlemap', 'GM_PRECISION_4',       $_POST['NEW_GM_PRECISION_4']);
 	set_module_setting('googlemap', 'GM_PRECISION_5',       $_POST['NEW_GM_PRECISION_5']);
 	set_module_setting('googlemap', 'GM_DEFAULT_TOP_VALUE', $_POST['NEW_GM_DEFAULT_TOP_LEVEL']);
-	set_module_setting('googlemap', 'GM_MAX_NOF_LEVELS',    $_POST['NEW_GM_LEVEL_COUNT']);
 	set_module_setting('googlemap', 'GM_COORD',             $_POST['NEW_GM_COORD']);
 	set_module_setting('googlemap', 'GM_PLACE_HIERARCHY',   $_POST['NEW_GM_PLACE_HIERARCHY']);
 	set_module_setting('googlemap', 'GM_PH_XSIZE',          $_POST['NEW_GM_PH_XSIZE']);
