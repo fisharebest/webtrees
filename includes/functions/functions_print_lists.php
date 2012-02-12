@@ -1460,7 +1460,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 	case 1:
 		return '<ul><li>'.implode('</li><li>', $html).'</li></ul>';
 	case 2:
-		return implode('; ', $html);
+		return implode(';&nbsp;', $html);
 	case 3:
 		$i = 0;
 		$count = count($html);
