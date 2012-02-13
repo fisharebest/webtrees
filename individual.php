@@ -29,18 +29,85 @@
 
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
+$controller=new WT_Controller_Individual();
+$callbacks='';
+foreach ($controller->tabs as $tab) {
+  $callbacks.=$tab->getJSCallback()."\n";
+}
+$controller->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.cookie.js');// This page uses jquery.cookie.js to record the sidebar state
+$controller->addInlineJavaScript('
+	var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}
+	
+	jQuery("#tabs").tabs({
+		spinner: "<img src=\"'.WT_STATIC_URL.'images/loading.gif\" height=\"18\" alt=\"\">",
+		cache: true
+	});
+	jQuery("#tabs").tabs("select",jQuery.cookie("indi-tab"));
+	jQuery("#tabs").bind("tabsshow", function(event, ui) {
+		jQuery.cookie("indi-tab", ui.panel.id);'.$callbacks.
+	'});
 
+	// sidebar settings 
+	// Variables
+	var objMain			= jQuery("#main");
+	var objTabs			= jQuery("#indi_left");
+	var objBar			= jQuery("#sidebar");
+	var objSeparator	= jQuery("#separator");
+	// Adjust header dimensions
+	function adjHeader(){
+		var indi_header_div = document.getElementById("indi_header").offsetWidth - 20;
+		var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth +20;
+		var header_accordion_div = document.getElementById("header_accordion1");
+		header_accordion_div.style.width = indi_header_div - indi_mainimage_div +"px";
+
+		jQuery(window).bind("resize", function(){
+			var indi_header_div = document.getElementById("indi_header").offsetWidth - 20;
+			var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth +20;
+			var header_accordion_div = document.getElementById("header_accordion1");
+			header_accordion_div.style.width = indi_header_div - indi_mainimage_div +"px";
+		 });
+	}
+	// Show sidebar
+	function showSidebar(){
+		objMain.addClass("use-sidebar");
+		objSeparator.css("height", objBar.outerHeight() + "px");
+		jQuery.cookie("hide-sb", null);
+	}
+	// Hide sidebar
+	function hideSidebar(){
+		objMain.removeClass("use-sidebar");
+		objSeparator.css("height", objTabs.outerHeight() + "px");
+		jQuery.cookie("hide-sb", "1");
+	}
+	// Sidebar separator
+	objSeparator.click(function(e){
+		e.preventDefault();
+		if ( objMain.hasClass("use-sidebar") ){
+			hideSidebar();
+			adjHeader();
+		} else {
+			showSidebar();
+			adjHeader();
+		}
+	});
+	// Load preference
+	if (jQuery.cookie("hide-sb")=="1"){
+		hideSidebar();
+	} else {
+		showSidebar();
+	}
+	adjHeader();
+	jQuery("#main").css("visibility", "visible");
+	
+	function show_gedcom_record() {
+		var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
+	}	
+	function showchanges(){window.location="'.$controller->record->getRawUrl().'";}
+');
 // -- array of GEDCOM elements that will be found but should not be displayed
 $nonfacts = array('FAMS', 'FAMC', 'MAY', 'BLOB', 'CHIL', 'HUSB', 'WIFE', 'RFN', '_WT_OBJE_SORT', '');
 $nonfamfacts = array(/*'NCHI',*/ 'UID', '');
 
-$controller=new WT_Controller_Individual();
-
-// This page uses jquery.cookie.js to record the sidebar state
-$controller->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.cookie.js');
-
-$controller->addInlineJavaScript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}');
-	
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	if (safe_GET('action')=='ajax') {
 		$controller->ajaxRequest();
@@ -103,90 +170,9 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 
 // tell tabs that use jquery that it is already loaded
 define('WT_JQUERY_LOADED', 1);
-
 $linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link to
 
-echo WT_JS_START;
-echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
-echo '}';
-echo 'function showchanges() { window.location="'.$controller->record->getRawUrl().'"; }';
-
-?>
-
-jQuery(document).ready(function() {
-	jQuery("#tabs").tabs({
-		spinner: '<img src="<?php echo WT_STATIC_URL; ?>images/loading.gif" height="18" alt="">',
-		cache: true
-	});
-	jQuery("#tabs").tabs("select",jQuery.cookie("indi-tab"));
-	jQuery("#tabs").bind("tabsshow", function(event, ui) {
-		jQuery.cookie("indi-tab", ui.panel.id);
-		<?php
-		foreach ($controller->tabs as $tab) {
-			echo $tab->getJSCallback()."\n";
-		}
-		?>
-	});
-
-	// sidebar settings 
-	// Variables
-	var objMain			= jQuery("#main");
-	var objTabs			= jQuery("#indi_left");
-	var objBar			= jQuery("#sidebar");
-	var objSeparator	= jQuery("#separator");
-	// Adjust header dimensions
-	function adjHeader(){
-		var indi_header_div = document.getElementById("indi_header").offsetWidth - 20;
-		var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth +20;
-		var header_accordion_div = document.getElementById("header_accordion1");
-		header_accordion_div.style.width = indi_header_div - indi_mainimage_div +"px";
-
-		jQuery(window).bind("resize", function(){
-			var indi_header_div = document.getElementById("indi_header").offsetWidth - 20;
-			var indi_mainimage_div = document.getElementById("indi_mainimage").offsetWidth +20;
-			var header_accordion_div = document.getElementById("header_accordion1");
-			header_accordion_div.style.width = indi_header_div - indi_mainimage_div +"px";
-		 });
-	}
-	// Show sidebar
-	function showSidebar(){
-		objMain.addClass("use-sidebar");
-		objSeparator.css("height", objBar.outerHeight() + "px");
-		jQuery.cookie("hide-sb", null);
-	}
-	// Hide sidebar
-	function hideSidebar(){
-		objMain.removeClass("use-sidebar");
-		objSeparator.css("height", objTabs.outerHeight() + "px");
-		jQuery.cookie("hide-sb", "1");
-	}
-	// Sidebar separator
-	objSeparator.click(function(e){
-		e.preventDefault();
-		if ( objMain.hasClass("use-sidebar") ){
-			hideSidebar();
-			adjHeader();
-		} else {
-			showSidebar();
-			adjHeader();
-		}
-	});
-
-	// Load preference
-	if (jQuery.cookie("hide-sb")=="1"){
-		hideSidebar();
-	} else {
-		showSidebar();
-	}
-	
-	adjHeader();
-	jQuery("#main").css("visibility", "visible");
-});
-<?php
-echo WT_JS_END;
 // ===================================== header area
-
 echo
 	'<div id="main" class="use-sidebar sidebar-at-right" style="visibility:hidden;">', //overall page container
 	'<div id="indi_left">',
