@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -52,7 +52,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount."<br>";
 		$content .=  "<br>";
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .=  "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', 'top=50,left=10,width=600,height=500,scrollbars=1,resizable=1'); return false;\">".WT_I18N::translate('Change the blocks on this page')."</a><br>";
+			$content .=  "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Change the blocks on this page')."</a><br>";
 		}
 		$content .=  "</div>";
 

@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -173,7 +173,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 						// Check if Indi, Fam or source ===================
 						/*
 						if (id.match("I")=="I") {
-							var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', 'top=50, left=600, width=420, height=650, resizable=1, scrollbars=1');
+							var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', edit_window_specs);
 							if (window.focus) {win01.focus();}
 						} else if (id.match("F")=="F") {
 							// TODO --- alert('Opening Navigator with family id entered will come later');

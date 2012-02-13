@@ -2,7 +2,7 @@
 // Facility for Census assistant that will allow a user to search for a person
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -158,7 +158,7 @@ echo WT_JS_START;
 				// Check if Indi, Fam or source ===================
 				/*
 				if (id.match("I")=="I") {
-					var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', 'top=50, left=600, width=420, height=650, resizable=1, scrollbars=1');
+					var win01 = window.opener.window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'win01', edit_window_specs);
 					if (window.focus) {win01.focus();}
 				} else if (id.match("F")=="F") {
 					// TODO --- alert('Opening Navigator with family id entered will come later');

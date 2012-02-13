@@ -2,7 +2,7 @@
 // Footer for Clouds theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView Cloudy theme
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -42,7 +42,7 @@ if ($view!='simple') {
 		echo execution_stats();
 	}
 	if (exists_pending_change()) {
-		echo '<a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', \'width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
+		echo '<a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;">';
 		echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
 		echo '</a>';
 	}

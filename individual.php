@@ -100,7 +100,7 @@ $controller->addInlineJavaScript('
 	jQuery("#main").css("visibility", "visible");
 	
 	function show_gedcom_record() {
-		var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
+		var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", edit_window_specs);
 	}	
 	function showchanges(){window.location="'.$controller->record->getRawUrl().'";}
 ');

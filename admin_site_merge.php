@@ -4,7 +4,7 @@
 // This page will allow you to merge 2 gedcom records
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -250,17 +250,17 @@ if ($action=='choose') {
 	function iopen_find(textbox, gedselect) {
 		pasteto = textbox;
 		ged = gedselect.options[gedselect.selectedIndex].value;
-		findwin = window.open('find.php?type=indi&ged='+ged, '_blank', 'left=50, top=50, width=600, height=500, resizable=1,  scrollbars=1');
+		findwin = window.open('find.php?type=indi&ged='+ged, '_blank', find_window_specs);
 	}
 	function fopen_find(textbox, gedselect) {
 		pasteto = textbox;
 		ged = gedselect.options[gedselect.selectedIndex].value;
-		findwin = window.open('find.php?type=fam&ged='+ged, '_blank', 'left=50, top=50, width=600, height=500, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=fam&ged='+ged, '_blank', find_window_specs);
 	}
 	function sopen_find(textbox, gedselect) {
 		pasteto = textbox;
 		ged = gedselect.options[gedselect.selectedIndex].value;
-		findwin = window.open('find.php?type=source&ged='+ged, '_blank', 'left=50, top=50, width=600, height=500, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=source&ged='+ged, '_blank', find_window_specs);
 	}
 	function paste_id(value) {
 		pasteto.value=value;

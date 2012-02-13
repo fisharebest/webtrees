@@ -4,7 +4,7 @@
 // Census and Souce Input Area File File
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2007 to 2010  PGV Development Team.  All rights reserved.
@@ -108,7 +108,7 @@ if (!defined('WT_WEBTREES')) {
 
 	function findSource(field) {
 		pastefield = field;
-		findwin = window.open('find.php?type=source', '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
+		findwin = window.open('find.php?type=source', '_blank', find_window_specs);
 		return false;
 	}
 	function openerpasteid(id) {

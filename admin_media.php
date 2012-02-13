@@ -2,7 +2,7 @@
 // Popup window that will allow a user to search for a media
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -280,7 +280,7 @@ function pasteid(id) {
 }
 
 function ilinkitem(mediaid, type) {
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', 'top=50, left=50, width=570, height=650, resizable=1, scrollbars=1');
+	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', find_window_specs);
 	return false;
 }
 
@@ -802,7 +802,7 @@ if (check_media_structure()) {
 				<?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".WT_I18N::translate('Upload media files')."</a>". help_link('upload_media'); ?>
 			</td>-->
 			<td class="wrap">
-				<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=new', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media object')."</a>". help_link('OBJE'); ?>
+				<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=new', '_blank', edit_window_specs); return false;"> <?php echo WT_I18N::translate('Add a new media object')."</a>". help_link('OBJE'); ?>
 			</td>
 				<?php
 					$tempURL = WT_SCRIPT_NAME.'?';
@@ -1111,7 +1111,7 @@ if (check_media_structure()) {
 							} else {
 								$tempURL .= 'showmediaform&amp;filename='.rawurlencode($media['FILE']).'&amp;linktoid=new';
 							}
-							echo "<a href=\"#\" onclick=\"window.open('", $tempURL, "', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1'); return false;\">", WT_I18N::translate('Edit'), "</a><br>";
+							echo "<a href=\"#\" onclick=\"window.open('", $tempURL, "', '_blank', edit_window_specs); return false;\">", WT_I18N::translate('Edit'), "</a><br>";
 
 							// Edit Raw
 							if ($media["XREF"] != "") {

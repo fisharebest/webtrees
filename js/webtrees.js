@@ -24,20 +24,17 @@
 //
 // $Id$
 
-if (!document.getElementById)	// Check if browser supports the getElementByID function
-{
-	curloc = window.location.toString();
-	if (curloc.indexOf('nosupport.php')==-1) window.location.href = "nosupport.php";
-}
+// Specifications for various types of popup edit window.
+// Choose positions to center in the smallest (1000x800) target screen
+var edit_window_specs='width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
+var indx_window_specs='width=600,height=500,left=200,top=150,resizable=1,scrollbars=1'; // index_edit.php, module configuration
+var help_window_specs='width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
+var find_window_specs='width=500,height=500,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
+var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // message.php
+var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 
-var helpWin;
 function helpPopup(which, mod) {
-	if (mod!='') which=which+'&mod='+mod;
-	if ((!helpWin)||(helpWin.closed)) {
-		helpWin = window.open('help_text.php?help='+which,'_blank','left=50,top=50,width=500,height=320,resizable=1,scrollbars=1');
-	} else {
-		helpWin.location = 'help_text.php?help='+which;
-	}
+	window.open('help_text.php?help='+which+'&mod='+mod, 'help', help_window_specs);
 	return false;
 }
 function closeHelp() {
@@ -310,22 +307,22 @@ function getMouseXY(e) {
 }
 
 function edit_record(pid, linenum) {
-	window.open('edit_interface.php?action=edit&pid='+pid+'&linenum='+linenum+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=edit&pid='+pid+'&linenum='+linenum+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function edit_raw(pid) {
-	window.open('edit_interface.php?action=editraw&pid='+pid+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=510,height=520,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=editraw&pid='+pid+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function edit_note(pid) {
-	window.open('edit_interface.php?action=editnote&pid='+pid+'&linenum=1&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=editnote&pid='+pid+'&linenum=1&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function edit_source(pid) {
-	window.open('edit_interface.php?action=editsource&pid='+pid+'&linenum=1&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=editsource&pid='+pid+'&linenum=1&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
@@ -333,8 +330,8 @@ function add_record(pid, fact) {
 	factfield = document.getElementById(fact);
 	if (factfield) {
 		factvalue = factfield.options[factfield.selectedIndex].value;
-		if (factvalue == "OBJE") window.open('addmedia.php?action=showmediaform&linkid='+pid, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
-		else window.open('edit_interface.php?action=add&pid='+pid+'&fact='+factvalue+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+		if (factvalue == "OBJE") window.open('addmedia.php?action=showmediaform&linkid='+pid, '_blank', edit_window_specs);
+		else window.open('edit_interface.php?action=add&pid='+pid+'&fact='+factvalue+"&"+"&accesstime="+accesstime, '_blank', edit_window_specs);
 	}
 	return false;
 }
@@ -343,78 +340,78 @@ function addClipboardRecord(pid, fact) {
 	factfield = document.getElementById(fact);
 	if (factfield) {
 		factvalue = factfield.options[factfield.selectedIndex].value;
-		window.open('edit_interface.php?action=paste&pid='+pid+'&fact='+factvalue.substr(10)+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+		window.open('edit_interface.php?action=paste&pid='+pid+'&fact='+factvalue.substr(10)+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	}
 	return false;
 }
 
 function add_new_record(pid, fact) {
-		window.open('edit_interface.php?action=add&pid='+pid+'&fact='+fact+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+		window.open('edit_interface.php?action=add&pid='+pid+'&fact='+fact+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function addnewchild(famid,gender) {
-	window.open('edit_interface.php?action=addchild&gender='+gender+'&famid='+famid+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addchild&gender='+gender+'&famid='+famid+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function addnewspouse(famid, famtag) {
-	window.open('edit_interface.php?action=addspouse&famid='+famid+'&famtag='+famtag+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addspouse&famid='+famid+'&famtag='+famtag+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function addopfchild(pid, gender) {
-	window.open('edit_interface.php?action=addopfchild&pid='+pid+'&gender='+gender+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addopfchild&pid='+pid+'&gender='+gender+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function addspouse(pid, famtag) {
-	window.open('edit_interface.php?action=addspouse&pid='+pid+'&famtag='+famtag+'&famid=new&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addspouse&pid='+pid+'&famtag='+famtag+'&famid=new&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function linkspouse(pid, famtag) {
-	window.open('edit_interface.php?action=linkspouse&pid='+pid+'&famtag='+famtag+'&famid=new&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=linkspouse&pid='+pid+'&famtag='+famtag+'&famid=new&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function add_famc(pid) {
-	 window.open('edit_interface.php?action=addfamlink&pid='+pid+'&famtag=CHIL'+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	 window.open('edit_interface.php?action=addfamlink&pid='+pid+'&famtag=CHIL'+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function add_fams(pid, famtag) {
-	 window.open('edit_interface.php?action=addfamlink&pid='+pid+'&famtag='+famtag+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	 window.open('edit_interface.php?action=addfamlink&pid='+pid+'&famtag='+famtag+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function edit_name(pid, linenum) {
-	window.open('edit_interface.php?action=editname&pid='+pid+'&linenum='+linenum+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=editname&pid='+pid+'&linenum='+linenum+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function add_name(pid) {
-	window.open('edit_interface.php?action=addname&pid='+pid+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addname&pid='+pid+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function addnewparent(pid, famtag) {
-	window.open('edit_interface.php?action=addnewparent&pid='+pid+'&famtag='+famtag+'&famid=new'+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addnewparent&pid='+pid+'&famtag='+famtag+'&famid=new'+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function addnewparentfamily(pid, famtag, famid) {
-	window.open('edit_interface.php?action=addnewparent&pid='+pid+'&famtag='+famtag+'&famid='+famid+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addnewparent&pid='+pid+'&famtag='+famtag+'&famid='+famid+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function reorder_children(famid) {
-	window.open('edit_interface.php?action=reorder_children&pid='+famid+'&'+'&accesstime='+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=reorder_children&pid='+famid+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
 function reorder_families(pid) {
-	window.open('edit_interface.php?action=reorder_fams&pid='+pid+"&"+"&accesstime="+accesstime, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=reorder_fams&pid='+pid+"&"+"&accesstime="+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
@@ -424,33 +421,33 @@ function chat(username) {
 }
 
 function reply(username, subject) {
-	window.open('message.php?to='+username+'&subject='+subject, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('message.php?to='+username+'&subject='+subject, '_blank', mesg_window_specs);
 	return false;
 }
 
 function delete_message(id) {
-	window.open('message.php?action=delete&id='+id, '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('message.php?action=delete&id='+id, '_blank', mesg_window_specs);
 	return false;
 }
 
 function change_family_members(famid) {
-	window.open('edit_interface.php?famid='+famid+"&"+"&accesstime="+accesstime+"&action=changefamily", '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?famid='+famid+"&"+"&accesstime="+accesstime+"&action=changefamily", '_blank', edit_window_specs);
 	return false;
 }
 
 function addnewsource(field) {
 	pastefield = field;
-	window.open('edit_interface.php?action=addnewsource&pid=newsour', '_blank', 'top=70,left=70,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addnewsource&pid=newsour', '_blank', edit_window_specs);
 	return false;
 }
 function addnewnote(field) {
 	pastefield = field;
-	window.open('edit_interface.php?action=addnewnote&noteid=newnote', '_blank', 'top=70,left=70,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('edit_interface.php?action=addnewnote&noteid=newnote', '_blank', edit_window_specs);
 	return false;
 }
 function addnewnote_assisted(field, iid) {
 	pastefield = field;
-	window.open('edit_interface.php?action=addnewnote_assisted&noteid=newnote&pid='+iid, '_blank', 'top=70,left=70,width=900,height=750,scrollbars=no,resizable=no');
+	window.open('edit_interface.php?action=addnewnote_assisted&noteid=newnote&pid='+iid, '_blank', edit_window_specs);
 	return false;
 }
 function addmedia_links(field, iid, iname) {
@@ -1251,59 +1248,58 @@ function findIndi(field, indiname, multiple, ged,filter) {
         nameElement = indiname;
         if(filter)
         {
-        window.open('find.php?type=indi&multiple='+multiple+'&ged='+ged+'&filter='+filter, '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
+        window.open('find.php?type=indi&multiple='+multiple+'&ged='+ged+'&filter='+filter, '_blank', find_window_specs);
         }
         else
         {
-        window.open('find.php?type=indi&multiple='+multiple+'&ged='+ged, '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
+        window.open('find.php?type=indi&multiple='+multiple+'&ged='+ged, '_blank', find_window_specs);
         }
         return false;
 }
 
 function findPlace(field, ged) {
 	pastefield = field;
-	window.open('find.php?type=place&ged='+ged, '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('find.php?type=place&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
 
 function findFamily(field, ged) {
 	pastefield = field;
-	window.open('find.php?type=fam&ged='+ged, '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('find.php?type=fam&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
 function findMedia(field, choose, ged) {
 	pastefield = field;
 	if (!choose) choose="0all";
-	window.open('find.php?type=media&choose='+choose+'&ged='+ged, '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('find.php?type=media&choose='+choose+'&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
 function findSource(field, sourcename, ged) {
 	pastefield = field;
 	nameElement = sourcename;
-	window.open('find.php?type=source&ged='+ged, '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('find.php?type=source&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
 function findnote(field, notename, ged) {
 	pastefield = field;
 	nameElement = notename;
-	window.open('find.php?type=note&ged='+ged, '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('find.php?type=note&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
 function findRepository(field, ged) {
 	pastefield = field;
-	window.open('find.php?type=repo&ged='+ged, '_blank', 'left=50,top=50,width=600,height=500,resizable=1,scrollbars=1');
+	window.open('find.php?type=repo&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
 function findSpecialChar(field) {
 	pastefield = field;
-	window.open('find.php?type=specialchar', '_blank', 'top=55,left=55,width=500,height=500,scrollbars=1,resizeable=1');
+	window.open('find.php?type=specialchar', '_blank', find_window_specs);
 	return false;
 }
 function findFact(field, ged) {
 	pastefield = field;
 	tags = field.value;
-	left = screen.width-555;
-	window.open('find.php?type=facts&tags='+tags+'&ged='+ged, '_blank', 'top=55,left='+left+',width=500,height=500,scrollbars=1,resizeable=1');
+	window.open('find.php?type=facts&tags='+tags+'&ged='+ged, '_blank', find_window_specs);
 	return false;
 }
 

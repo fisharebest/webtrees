@@ -91,8 +91,8 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 			<tr>
 				<td class="facts_label"><?php echo WT_I18N::translate('Add media'), help_link('OBJE'); ?></td>
 				<td class="facts_value">
-					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?php echo $controller->record->getXref(); ?>', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;"> <?php echo WT_I18N::translate('Add a new media object'); ?></a><br>
-					<a href="#" onclick="window.open('inverselink.php?linktoid=<?php echo $controller->record->getXref(); ?>&amp;linkto=person', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;"><?php echo WT_I18N::translate('Link to an existing media object'); ?></a>
+					<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=<?php echo $controller->record->getXref(); ?>', '_blank', edit_window_specs); return false;"> <?php echo WT_I18N::translate('Add a new media object'); ?></a><br>
+					<a href="#" onclick="window.open('inverselink.php?linktoid=<?php echo $controller->record->getXref(); ?>&amp;linkto=person', '_blank', find_window_specs); return false;"><?php echo WT_I18N::translate('Link to an existing media object'); ?></a>
 				</td>
 			</tr>
 		<?php

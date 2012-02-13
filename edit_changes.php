@@ -2,7 +2,7 @@
 // Interface to moderate pending changes.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -41,7 +41,7 @@ $ged      =safe_GET('ged');
 echo WT_JS_START;
 ?>
 	function show_gedcom_record(xref) {
-		var recwin = window.open("gedrecord.php?fromfile=1&pid="+xref, "_blank", "top=50, left=50, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");
+		var recwin = window.open("gedrecord.php?fromfile=1&pid="+xref, "_blank", edit_window_specs);
 	}
 
 	function showchanges() {

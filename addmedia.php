@@ -2,7 +2,7 @@
 // Add media to gedcom file
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -92,7 +92,7 @@ echo WT_JS_START;
 	// Shared Notes =========================
 	function findnote(field) {
 		pastefield = field;
-		findwin = window.open('find.php?type=note', '_blank', 'left=50, top=50, width=600, height=520, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=note', '_blank', find_window_specs);
 		return false;
 	}
 	var pastefield;

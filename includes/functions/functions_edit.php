@@ -2,7 +2,7 @@
 // Various functions used by the Edit interface
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -1131,7 +1131,7 @@ function print_addnewmedia_link($element_id) {
 	$text = WT_I18N::translate('Add a new media object');
 	if (isset($WT_IMAGES["button_addmedia"])) $Link = "<img src=\"".$WT_IMAGES["button_addmedia"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"middle\">";
 	else $Link = $text;
-	echo '&nbsp;&nbsp;&nbsp;<a href="#" onclick="pastefield=document.getElementById(\'', $element_id, '\'); window.open(\'addmedia.php?action=showmediaform&amp;linktoid={$linkToID}&amp;level={$level}\', \'_blank\', \'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1\'); return false;">';
+	echo '&nbsp;&nbsp;&nbsp;<a href="#" onclick="pastefield=document.getElementById(\'', $element_id, '\'); window.open(\'addmedia.php?action=showmediaform&amp;linktoid={$linkToID}&amp;level={$level}\', \'_blank\', edit_window_specs); return false;">';
 	echo $Link;
 	echo "</a>";
 }
@@ -1187,7 +1187,7 @@ function print_editnote_link($note_id) {
 	$text = WT_I18N::translate('Edit Shared Note');
 	if (isset($WT_IMAGES["button_note"])) $Link = "<img src=\"".$WT_IMAGES["button_note"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"middle\">";
 	else $Link = $text;
-	echo "<a href=\"#\" onclick=\"var win02=window.open('edit_interface.php?action=editnote&amp;pid=$note_id', 'win02', 'top=70, left=70, width=620, height=500, resizable=1, scrollbars=1 ' )\">";
+	echo "<a href=\"#\" onclick=\"var win02=window.open('edit_interface.php?action=editnote&amp;pid=$note_id', 'win02', edit_window_specs)\">";
 	echo $Link;
 	echo "</a>";
 }

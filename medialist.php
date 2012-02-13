@@ -2,7 +2,7 @@
 // Displays a list of the media objects
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -432,7 +432,7 @@ if ($show == 'yes') {
 					echo '<table><tr>';
 					// ---------- Edit Media --------------------
 					echo '<td class="width33 wrap center font9" valign="top">';
-					echo "<a href=\"#\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."&amp;linktoid=', '_blank', 'top=50, left=50, width=600, height=600, resizable=1, scrollbars=1');\">";
+					echo "<a href=\"#\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."&amp;linktoid=', '_blank', edit_window_specs);\">";
 					echo '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '">&nbsp;&nbsp;&nbsp;';
 					echo '<br>';
 					echo WT_I18N::translate('Edit Details') ;

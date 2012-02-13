@@ -3,7 +3,7 @@
 // reference this shared note.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2009 PGV Development Team.  All rights reserved.
@@ -84,11 +84,11 @@ $linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
 echo WT_JS_START;
 echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", "top=0, left=0, width=600, height=400, scrollbars=1, scrollable=1, resizable=1");';
+echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", edit_window_specs);';
 echo '}';
 echo 'function showchanges() { window.location="', $controller->record->getRawUrl(), '"; }';
 echo 'function edit_note() {';
-echo ' var win04 = window.open("edit_interface.php?action=editnote&pid=', $linkToID, '", "win04", "top=70, left=70, width=620, height=500, resizable=1, scrollbars=1");';
+echo ' var win04 = window.open("edit_interface.php?action=editnote&pid=', $linkToID, '", "win04", edit_window_specs);';
 echo ' if (window.focus) {win04.focus();}';
 echo '}';
 ?>	jQuery(document).ready(function() {

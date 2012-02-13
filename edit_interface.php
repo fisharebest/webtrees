@@ -70,46 +70,46 @@ echo WT_JS_START;
 
 	function findIndi(field, indiname) {
 		pastefield = field;
-		findwin = window.open('find.php?type=indi', '_blank', 'left=50, top=50, width=600, height=500, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=indi', '_blank', find_window_specs);
 		return false;
 	}
 	function findPlace(field) {
 		pastefield = field;
-		findwin = window.open('find.php?type=place', '_blank', 'left=50, top=50, width=600, height=500, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=place', '_blank', find_window_specs);
 		return false;
 	}
 	function findMedia(field, choose, ged) {
 		pastefield = field;
 		if (!choose) choose="0all";
-		findwin = window.open('find.php?type=media&choose='+choose+'&ged='+ged, '_blank', 'left=50, top=50, width=600, height=500, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=media&choose='+choose+'&ged='+ged, '_blank', find_window_specs);
 		return false;
 	}
 	function findSource(field) {
 		pastefield = field;
-		findwin = window.open('find.php?type=source', '_blank', 'left=50, top=50, width=600, height=500, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=source', '_blank', find_window_specs);
 		return false;
 	}
 	// Shared Notes =========================
 	function findnote(field) {
 		pastefield = field;
-		findwin = window.open('find.php?type=note', '_blank', 'left=50, top=50, width=600, height=520, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=note', '_blank', find_window_specs);
 		return false;
 	}
 	// =====================================
 	function findRepository(field) {
 		pastefield = field;
-		findwin = window.open('find.php?type=repo', '_blank', 'left=50, top=50, width=600, height=500, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=repo', '_blank', find_window_specs);
 		return false;
 	}
 	function findFamily(field) {
 		pastefield = field;
-		findwin = window.open('find.php?type=fam', '_blank', 'left=50, top=50, width=600, height=500, resizable=1, scrollbars=1');
+		findwin = window.open('find.php?type=fam', '_blank', find_window_specs);
 		return false;
 	}
 
 	function addnewrepository(field) {
 		pastefield = field;
-		window.open('edit_interface.php?action=addnewrepository&pid=newrepo', '_blank', 'top=70, left=70, width=600, height=500, resizable=1, scrollbars=1');
+		window.open('edit_interface.php?action=addnewrepository&pid=newrepo', '_blank', find_window_specs);
 		return false;
 	}
 

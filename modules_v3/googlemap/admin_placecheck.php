@@ -3,7 +3,7 @@
 // entries in the Google Maps 'placelocations' table.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team. All rights reserved.
@@ -221,12 +221,12 @@ case 'go':
 	<script type="text/javascript">
 	<!--
 	function edit_place_location(placeid) {
-		window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid, '_blank', 'top=50, left=50, width=680, height=550, resizable=1, scrollbars=1');
+		window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid, '_blank', indx_window_specs);
 		return false;
 	}
 
 	function add_place_location(placeid) {
-		window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid, '_blank', 'top=50, left=50, width=680, height=550, resizable=1, scrollbars=1');
+		window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid, '_blank', indx_window_specs);
 		return false;
 	}
 	function showchanges() {

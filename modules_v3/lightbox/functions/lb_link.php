@@ -4,7 +4,7 @@
 // Display media Items using Lightbox
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2007  PHPGedView Development Team
@@ -71,7 +71,7 @@ echo $menu->getMenu();
 ?>
 <script type="text/javascript">
   function ilinkitem(mediaid, type) {
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1');
+	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', find_window_specs);
 	return false;
   }
 </script>

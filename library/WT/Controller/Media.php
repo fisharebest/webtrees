@@ -111,7 +111,7 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'), '#', 'menu-obje-edit');
-			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->record->getXref()}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1')");
+			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->record->getXref()}', '_blank', edit_window_specs)");
 			$submenu->addIcon('edit_media');
 			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_media');
 			$menu->addSubmenu($submenu);

@@ -2,7 +2,7 @@
 // Functions used for charts
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -494,9 +494,9 @@ function print_family_facts($family) {
 				echo '<tr><td class="descriptionbox">';
 				echo WT_I18N::translate('Add media'), help_link('OBJE');
 				echo '</td><td class="optionbox">';
-				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&amp;linktoid={$famid}', '_blank', 'top=50,left=50,width=600,height=500,resizable=1,scrollbars=1'); return false;\">", WT_I18N::translate('Add a new media object'), '</a>';
+				echo "<a href=\"#\" onclick=\"window.open('addmedia.php?action=showmediaform&amp;linktoid={$famid}', '_blank', edit_window_specs); return false;\">", WT_I18N::translate('Add a new media object'), '</a>';
 				echo '<br>';
-				echo "<a href=\"#\" onclick=\"window.open('inverselink.php?linktoid={$famid}&amp;linkto=family', '_blank', 'top=50,left=50,width=400,height=300,resizable=1,scrollbars=1'); return false;\">", WT_I18N::translate('Link to an existing media object'), '</a>';
+				echo "<a href=\"#\" onclick=\"window.open('inverselink.php?linktoid={$famid}&amp;linkto=family', '_blank', find_window_specs); return false;\">", WT_I18N::translate('Link to an existing media object'), '</a>';
 				echo '</td></tr>';
 			}
 

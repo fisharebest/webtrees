@@ -2,7 +2,7 @@
 // Displays a place hierachy
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
@@ -194,7 +194,7 @@ function create_map($placelevels) {
 				var svbear = document.getElementById("sv_bearText").value.slice(0, -1);
 				var svelev = document.getElementById("sv_elevText").value.slice(0, -1);
 				var svzoom = document.getElementById("sv_zoomText").value;
-				win03 = window.open("module.php?mod=googlemap&mod_action=places_edit&action=update_sv_params&placeid="+placeid+"&svlati="+svlati+"&svlong="+svlong+"&svbear="+svbear+"&svelev="+svelev+"&svzoom="+svzoom, "win03", "top=50, left=50, width=680, height=550, resizable=1, scrollbars=1");	
+				win03 = window.open("module.php?mod=googlemap&mod_action=places_edit&action=update_sv_params&placeid="+placeid+"&svlati="+svlati+"&svlong="+svlong+"&svbear="+svbear+"&svelev="+svelev+"&svzoom="+svzoom, "win03", indx_window_specs);	
 				if (window.focus) {win03.focus();}
 			}
 		');

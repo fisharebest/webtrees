@@ -2,7 +2,7 @@
 // Included script file for Interface to edit place locations
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
@@ -386,7 +386,7 @@ if (!defined('WT_WEBTREES')) {
 	}
 		
 	function change_icon() {
-		window.open('module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $selected_country; ?>', '_blank', 'top=50, left=50, width=600, height=500, resizable=1, scrollbars=1');
+		window.open('module.php?mod=googlemap&mod_action=flags&countrySelected=<?php echo $selected_country; ?>', '_blank', indx_window_specs);
 		return false;
 	}
 
