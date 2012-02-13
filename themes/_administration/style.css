@@ -446,7 +446,7 @@ table#story_table {width:100%}
 .icon-repository {background-position:-91px -180px; width:15px; height:15px;}
 .icon-help-15 {background-position:-10px -181px; width:15px; height:15px;}
 .icon-indi {background-position:-116px -180px; width:11px; height:15px; display:inline;}
-.icon-open {background-position:-64px -205px; width:12px; height:12px;}
+.icon-open {background-position:-64px -205px; margin-top:4px; width:12px; height:12px;}
 .icon-close {background-position:-86px -205px; width:12px; height:12px;}
 #page_help .icon-help-15 {background-position:-45px 0; width:24px; height:24px;} /* switch to larger version icon-help-24 */
 
