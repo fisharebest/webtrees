@@ -118,6 +118,7 @@ html[dir='rtl'] #main-menu li ul li {text-indent: 0;}
 
 #main-menu > li > ul > li:first-child {
 	border-bottom: 2px solid #ddd;
+	color: #333;
 	font-weight: bold;
 	text-align: center !important;
 	text-indent: 0;
