@@ -552,9 +552,6 @@ case 'linkfamaction':
 				$pedigree="";
 				if (isset($_REQUEST['pedigree'])) $pedigree = $_REQUEST['pedigree'];
 				switch ($pedigree) {
-				case 'birth':
-					$gedrec .= "1 FAMC @$famid@\n2 PEDI $pedigree";
-					break;
 				case 'adopted':
 					$gedrec .= "1 FAMC @$famid@\n2 PEDI $pedigree\n1 ADOP\n2 FAMC @$famid@\n3 ADOP BOTH";
 					break;
@@ -564,8 +561,11 @@ case 'linkfamaction':
 				case 'foster':
 					$gedrec .= "1 FAMC @$famid@\n2 PEDI $pedigree\n1 EVEN\n2 TYPE $pedigree";
 					break;
-				default:
+				case '':
 					$gedrec .= "1 FAMC @$famid@";
+					break;
+				default:
+					$gedrec .= "1 FAMC @$famid@\n2 PEDI $pedigree";
 					break;
 				}
 			} else {
