@@ -547,29 +547,18 @@ case 'linkfamaction':
 
 		//-- update the individual record for the person
 		if (strpos($gedrec, "1 $itag @$famid@")===false) {
-			$gedrec .= "\n";
-			if ($itag=="FAMC") {
-				$pedigree="";
-				if (isset($_REQUEST['pedigree'])) $pedigree = $_REQUEST['pedigree'];
-				switch ($pedigree) {
-				case 'adopted':
-					$gedrec .= "1 FAMC @$famid@\n2 PEDI $pedigree\n1 ADOP\n2 FAMC @$famid@\n3 ADOP BOTH";
-					break;
-				case 'sealing':
-					$gedrec .= "1 FAMC @$famid@\n2 PEDI $pedigree\n1 SLGC\n2 FAMC @$famid@";
-					break;
-				case 'foster':
-					$gedrec .= "1 FAMC @$famid@\n2 PEDI $pedigree\n1 EVEN\n2 TYPE $pedigree";
-					break;
-				case '':
-					$gedrec .= "1 FAMC @$famid@";
-					break;
-				default:
-					$gedrec .= "1 FAMC @$famid@\n2 PEDI $pedigree";
-					break;
+			switch ($itag) {
+			case 'FAMC':
+				if (isset($_REQUEST['pedigree'])) {
+					$pedigree = $_REQUEST['pedigree'];
+				} else {
+					$pedigree='';
 				}
-			} else {
-				$gedrec .= "1 FAMS @$famid@";
+				$gedrec.="\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($pedigree, $famid);
+				break;
+			case 'FAMS':
+				$gedrec.="\n1 FAMS @$famid@";
+				break;
 			}
 			if (replace_gedrec($pid, WT_GED_ID, $gedrec, $update_CHAN)) {
 				$success=true;

@@ -920,24 +920,18 @@ class WT_Person extends WT_GedcomRecord {
 		$this->parseFacts();
 		return $this->otherfacts;
 	}
-	/**
-	* get the correct label for a family
-	* @param Family $family the family to get the label for
-	* @return string
-	*/
-	function getChildFamilyLabel($family) {
-		if (!is_null($family)) {
-			$famlink = get_sub_record(1, '1 FAMC @'.$family->getXref().'@', $this->getGedcomRecord());
-			if (preg_match('/2 PEDI (.*)/', $famlink, $fmatch)) {
-				switch ($fmatch[1]) {
-				case 'adopted': return WT_I18N::translate('Family with adoptive parents');
-				case 'foster':  return WT_I18N::translate('Family with foster parents');
-				case 'sealing': return WT_I18N::translate('Family with sealing parents');
-				}
-			}
+	
+	// A label for a parental family group
+	function getChildFamilyLabel(WT_Family $family) {
+		if (preg_match('/\n1 FAMC @'.$family->getXref().'@(?:\n[2-9].*)*\n2 PEDI (.+)/', $this->getGedcomRecord(), $match)) {
+			// A specified pedigree
+			return WT_Gedcom_Code_Pedi::getChildFamilyLabel($match[1]);
+		} else {
+			// Default (birth) pedigree
+			return WT_Gedcom_Code_Pedi::getChildFamilyLabel('');
 		}
-		return WT_I18N::translate('Family with parents');
 	}
+
 	/**
 	* get the correct label for a step family
 	* @param Family $family the family to get the label for

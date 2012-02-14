@@ -2,7 +2,7 @@
 // Functions and logic for GEDCOM "PEDI" codes
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ class WT_Gedcom_Code_Pedi {
 	
 	private static $TYPES=array('adopted', 'birth', 'foster', 'rada', 'sealing');
 
-	// Translate a code, for an (optional) record
+	// Translate a code, for an optional record
 	public static function getValue($type, $record=null) {
 		if ($record instanceof WT_Person) {
 			$sex=$record->getSex();
@@ -58,19 +58,15 @@ class WT_Gedcom_Code_Pedi {
 			}
 		case 'sealing':
 			switch ($sex) {
-			case 'U': return WT_I18N::translate_c('Pedigree',        'Sealing');
-			case 'M': return WT_I18N::translate_c('Male pedigree',   'Sealing');
-			case 'F': return WT_I18N::translate_c('Female pedigree', 'Sealing');
+			case 'U': return /* I18N: "sealing" is a Mormon ceremony. */ WT_I18N::translate_c('Pedigree',        'Sealing');
+			case 'M': return /* I18N: "sealing" is a Mormon ceremony. */ WT_I18N::translate_c('Male pedigree',   'Sealing');
+			case 'F': return /* I18N: "sealing" is a Mormon ceremony. */ WT_I18N::translate_c('Female pedigree', 'Sealing');
 			}
-		case 'rada':
-			switch ($sex) {
-			case 'U':
-			case 'M':
-			case 'F':
+			case 'rada':
+				// Not standard GEDCOM - a webtrees extension
 				// This is an arabic word which does not exist in other languages.
 				// So, it will not have any inflected forms.
 				return /* I18N: This is an Arabic word, pronounced "ra DAH".  It is child-to-parent pedigree, established by wet-nursing. */ WT_I18N::translate('Rada');
-			}
 		default:
 			return $type;
 		}
@@ -84,5 +80,29 @@ class WT_Gedcom_Code_Pedi {
 		}
 		uasort($values, 'utf8_strcasecmp');
 		return $values;
+	}
+
+	// A label for a parental family group
+	public static function getChildFamilyLabel($pedi) {
+		switch ($pedi) {
+		case '':
+		case 'birth':   return WT_I18N::translate('Family with parents');
+		case 'adopted': return WT_I18N::translate('Family with adoptive parents');
+		case 'foster':  return WT_I18N::translate('Family with foster parents');
+		case 'sealing': return /* I18N: "sealing" is a Mormon ceremony. */ WT_I18N::translate('Family with sealing parents');
+		case 'rada':    return /* I18N: "rada" is an Arabic word, pronounced "ra DAH". */ WT_I18N::translate('Family with rada parents');
+		default:        return WT_I18N::translate('Family with parents').' - '.$pedi;
+		}
+	}
+
+	// Create GEDCOM for a new child-family pedigree
+	public static function createNewFamcPedi($pedi, $xref) {
+		switch ($pedi) {
+		case '':        return "1 FAMC @$xref@";
+		case 'adopted': return "1 FAMC @$xref@\n2 PEDI $pedi\n1 ADOP\n2 FAMC @$xref@\n3 ADOP BOTH";
+		case 'sealing': return "1 FAMC @$xref@\n2 PEDI $pedi\n1 SLGC\n2 FAMC @$xref@";
+		case 'foster':  return "1 FAMC @$xref@\n2 PEDI $pedi\n1 EVEN\n2 TYPE $pedi";
+		default:        return "1 FAMC @$xref@\n2 PEDI $pedi";
+		}
 	}
 }
