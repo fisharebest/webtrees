@@ -32,6 +32,7 @@ var help_window_specs='width=500,height=400,left=250,top=200,resizable=1,scrollb
 var find_window_specs='width=500,height=500,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
 var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // message.php
 var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
+var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
 
 function helpPopup(which, mod) {
 	window.open('help_text.php?help='+which+'&mod='+mod, 'help', help_window_specs);
@@ -447,7 +448,7 @@ function addnewnote(field) {
 }
 function addnewnote_assisted(field, iid) {
 	pastefield = field;
-	window.open('edit_interface.php?action=addnewnote_assisted&noteid=newnote&pid='+iid, '_blank', edit_window_specs);
+	window.open('edit_interface.php?action=addnewnote_assisted&noteid=newnote&pid='+iid, '_blank', assist_window_specs);
 	return false;
 }
 function addmedia_links(field, iid, iname) {
