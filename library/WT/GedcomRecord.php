@@ -673,7 +673,7 @@ class WT_GedcomRecord {
 		if ($this->canDisplayName()) {
 			$tmp=$this->getAllNames();
 			$givn = $tmp[$this->getPrimaryName()]['givn'];
-			$surn = $tmp[$this->getPrimaryName()]['surn'];
+			$surn = $tmp[$this->getPrimaryName()]['surname'];
 			$new_givn = explode(' ', $givn);
 			$count_givn = count($new_givn);
 			$len_givn = utf8_strlen($givn);
