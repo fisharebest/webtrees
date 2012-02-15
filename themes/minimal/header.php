@@ -34,22 +34,10 @@ echo
 	'<head>',
 	'<meta charset="UTF-8">',
 	'<title>', htmlspecialchars($title), '</title>',
-	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">';
-
-if (!empty($LINK_CANONICAL)) {
-	echo '<link rel="canonical" href="', $LINK_CANONICAL, '">';
-}
-if (!empty($META_DESCRIPTION)) {
-	echo '<meta name="description" content="', htmlspecialchars($META_DESCRIPTION), '">';
-}
-echo '<meta name="robots" content="', $META_ROBOTS, '">';
-if (!empty($META_GENERATOR)) {
-	echo '<meta name="generator" content="', $META_GENERATOR, '">';
-}
-
-echo
-	'<link type="text/css" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css" rel="Stylesheet">',
-	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all">';
+	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
+	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
+	'<link rel="stylesheet" type="text/css" href="', WT_STATIC_URL, 'js/jquery/css/jquery-ui.custom.css">',
+	'<link rel="stylesheet" type="text/css" href="', $stylesheet, '">';
 
 switch ($BROWSERTYPE) {
 //case 'chrome': uncomment when chrome.css file needs to be added, or add others as needed
@@ -149,14 +137,9 @@ if ($view!='simple') {
 		echo $menu->getMenuAsList();
 		}
 	}
-	if ($menu) {
-		$menu->addIcon(null);
-		echo $menu->getMenuAsList();
-	}
 	echo 
 		'</ul>',
-		'</div>';
-	echo '</div>'; // <div id="header">
+		'</div>'; //<div id="topMenu">
 	// Display feedback from asynchronous actions
 	echo '<div id="flash-messages">';
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
