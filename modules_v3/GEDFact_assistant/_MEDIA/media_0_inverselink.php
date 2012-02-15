@@ -38,7 +38,7 @@ if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 $paramok =  true;
 if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
 
-if ($action == "choose" && $paramok) {
+if ($action == 'choose' && $paramok) {
 
 	?>
 	<script type="text/javascript">
@@ -70,7 +70,7 @@ if ($action == "choose" && $paramok) {
 		}
 	}
 
-	var GEDFact_assist = "installed";
+	var GEDFact_assist = 'installed';
 //-->
 	</script>
 	<script src="<?php echo WT_STATIC_URL; ?>webtrees.js" type="text/javascript"></script>
@@ -411,8 +411,7 @@ function addRowToTable(num, pid, nam, head)
 				txtInp2.style.background='transparent';
 				txtInp2.style.border='0px';
 				txtInp2.style.fontSize="11px";
-				txtInp2.innerHTML = unescape(removeHTMLTags(nam)); //Required for IE
-				txtInp2.textContent = unescape(removeHTMLTags(nam));
+				txtInp2.innerHTML = removeHTMLTags(unescape(nam));
 			cell2.appendChild(txtInp2);
 
 			// cell btn - remove img button
