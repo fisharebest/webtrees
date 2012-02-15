@@ -986,7 +986,7 @@ class WT_GedcomRecord {
 			if (preg_match('/^(\d\d):(\d\d):(\d\d)/', get_gedcom_value('DATE:TIME', 2, $chan->getGedcomRecord(), '', false).':00', $match)) {
 				$t=mktime((int)$match[1], (int)$match[2], (int)$match[3], (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
 			} else {
-				$t=mktime(0, 0, 0, (int)$d->MinDate()->Format('%n'), (int)$d->MinDate()->Format('%j'), (int)$d->MinDate()->Format('%Y'));
+				$t=mktime(0, 0, 0, (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
 			}
 			if ($sorting) {
 				return $t;
