@@ -61,12 +61,12 @@ color: #707070;
 }
 
 /* Indi Page  */
-.ui-state-active,.ui-widget-content.ui-state-active {
+.ui-state-active,.ui-widget-content .ui-state-active {
 background:#C6C8D2;
 }
 
 /* sidebar */
-#separator,.use-sidebar #separator {
+#separator, .use-sidebar #separator {
 background-color:#C6C8D2;
 }
 
