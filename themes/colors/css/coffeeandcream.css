@@ -24,14 +24,18 @@
  * $Id$
  */
 
-/* ================================================== */
-/*                 Coffee and Cream Palette           */
-/* ================================================== */
+/* Ash Palette */
 
 /* Header */
 
-#header, .gedcomtitle {background:#D4c7a7; color: #553e2f;}
-.title .gedcomtitle {text-decoration:none; color: #553e2f;}
+#header {
+background:#D4c7a7;
+color: #553e2f;
+}
+
+.title {
+text-decoration:none;
+color:#553e2f;}
 
 /* Tbls and menus  */
 
@@ -52,59 +56,75 @@
 #find-header, #find-media,
 #search-page-table
 {
-	background-color:#93724f;
-	color: #ffffff;
+background-color:#93724f;
+color: #ffffff;
 }
 
 /* Indi Page  */
-.ui-state-active, .ui-widget-content .ui-state-active {background:#93724f;}
+.ui-state-active,.ui-widget-content.ui-state-active {
+background:#93724f;
+}
 
 /* sidebar */
-#separator, .use-sidebar #separator {background-color: #93724f;}
+#separator,.use-sidebar #separator {
+background-color:#93724f;
+}
 
 /*  Top Menu  */
 
-#topMenu {background:#93724F;}
-
-
-/*  Base  */
-
-#indi_header h3.person_box,
-.makeMenu ul li a:hover,
-.descriptionbox .submenu a,
-.blockcontent,
-.list_value,
-.list_value_wrap,
-.tab_cell_active,
-.news_box, .optionbox,
-.submenuitem_hover, .submenuitem_hover_rtl,
-#find-output, #find-output-special,
-#search-page-table .value,
-#login-form, #login-form a,
-#new_passwd_form, #register-form 
-{
-	background:#F4EAD1;
-}
-#indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN, .odd
-{
-	background: #F4EAD1;
+#topMenu {
+background:#93724F;
 }
 
-/*  Alerts  */
 
-.error, .warning, .red {color:#971702;}
-.facts_labelred, .facts_valuered {border: solid #971702 2px;}
+/* Base */
 
-/*  Light Text  */
+#indi_header h3.person_box,.makeMenu ul li a:hover,.descriptionbox .submenu a,.blockcontent,
+.list_value,.list_value_wrap,.tab_cell_active,.news_box,.optionbox,.submenuitem_hover,.submenuitem_hover_rtl,
+#find-output,#find-output-special,#search-page-table .value,#login-form,#login-form a,#new_passwd_form,#register-form {
+background:#F4EAD1;
+}
 
-.makeMenu li a {color: #553e2f;}
-.ui-state-active a:link, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a {color: #ffffff;}
-/*.ui-widget-content span a, ui-widget-content span a:hover {color: #ffffff;} */
-#lightbox_content span a, #lightbox_content span a:hover {color: #ffffff; background: #93724f;}
-#lightbox_content span a:hover {color: #FF0000; background: #93724f;}
+#indi_header h3.person_box,#indi_header h3.person_boxF ,#indi_header h3.person_boxNN,.odd
+{
+background:#F4EAD1;
+}
+
+/* Alerts */
+
+.error,.warning,.red {
+color:#971702;
+}
+
+.facts_labelred,.facts_valuered {
+border:solid #971702 2px;
+}
+
+/* Light Text */
+
+.makeMenu li a {
+color:#553e2f;
+}
+
+.ui-state-active a:link,.ui-tabs.ui-tabs-nav li.ui-tabs-selected a {
+color:#ffffff;
+}
+
+#lightbox_content span a,#lightbox_content span a:hover {
+color:#ffffff;background:#93724f;
+}
+
+#lightbox_content span a:hover {
+color:#FF0000;background: #93724f;
+}
+
 /*  Dark Text Color  */
+input,button,textarea {
+border-color:#fff #494949 #494949 #fff;
+}
 
-input,button,textarea {border-color:#fff #494949 #494949 #fff;}
-.subheaders {color:#494949;}
+.subheaders {
+color:#494949;
+}
 
 /* end of palette */

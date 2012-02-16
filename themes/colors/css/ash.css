@@ -24,14 +24,18 @@
  * $Id$
  */
 
-/* ================================================== */
-/*                 Ash Palette                        */
-/* ================================================== */
+/* Ash Palette */
 
 /* Header */
 
-#header, .gedcomtitle {background:#5d6779; color: #FFFFFF;}
-.title .gedcomtitle {text-decoration:none; color: #FFFFFF;}
+#header {
+background:#5d6779;
+color: #FFFFFF;
+}
+
+.title {
+text-decoration:none;
+color:#FFFFFF;}
 
 /* Tbls and menus  */
 
@@ -52,59 +56,75 @@
 #find-header, #find-media,
 #search-page-table
 {
-	background-color:#9DA5B4;
-	color: #ffffff;
+background-color:#9DA5B4;
+color: #ffffff;
 }
 
 /* Indi Page  */
-.ui-state-active, .ui-widget-content .ui-state-active {background:#9DA5B4;}
+.ui-state-active,.ui-widget-content.ui-state-active {
+background:#9DA5B4;
+}
 
 /* sidebar */
-#separator, .use-sidebar #separator {background-color: #9DA5B4;}
+#separator,.use-sidebar #separator {
+background-color:#9DA5B4;
+}
 
 /*  Top Menu  */
 
-#topMenu {background:#2A2B2D;}
-
-
-/*  Base  */
-
-#indi_header h3.person_box,
-.makeMenu ul li a:hover,
-.descriptionbox .submenu a,
-.blockcontent,
-.list_value,
-.list_value_wrap,
-.tab_cell_active,
-.news_box, .optionbox,
-.submenuitem_hover, .submenuitem_hover_rtl,
-#find-output, #find-output-special,
-#search-page-table .value,
-#login-form, #login-form a,
-#new_passwd_form, #register-form 
-{
-	background:#ededee;
-}
-#indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN, .odd
-{
-	background: #ededee;
+#topMenu {
+background:#2A2B2D;
 }
 
-/*  Alerts  */
 
-.error, .warning, .red {color:#2a2b2d;}
-.facts_labelred, .facts_valuered {border: solid #2a2b2d 2px;}
+/* Base */
 
-/*  Light Text  */
+#indi_header h3.person_box,.makeMenu ul li a:hover,.descriptionbox .submenu a,.blockcontent,
+.list_value,.list_value_wrap,.tab_cell_active,.news_box,.optionbox,.submenuitem_hover,.submenuitem_hover_rtl,
+#find-output,#find-output-special,#search-page-table .value,#login-form,#login-form a,#new_passwd_form,#register-form {
+background:#ededee;
+}
 
-.makeMenu li a {color: #FFFFFF;}
-.ui-state-active a:link, .ui-tabs .ui-tabs-nav li.ui-tabs-selected a {color: #ffffff;}
-/*.ui-widget-content span a, ui-widget-content span a:hover {color: #ffffff;} */
-#lightbox_content span a, #lightbox_content span a:hover {color: #ffffff; background: #9DA5B4;}
-#lightbox_content span a:hover {color: #FF0000; background: #9DA5B4;}
+#indi_header h3.person_box,#indi_header h3.person_boxF ,#indi_header h3.person_boxNN,.odd
+{
+background:#ededee;
+}
+
+/* Alerts */
+
+.error,.warning,.red {
+color:#2a2b2d;
+}
+
+.facts_labelred,.facts_valuered {
+border:solid #2a2b2d 2px;
+}
+
+/* Light Text */
+
+.makeMenu li a {
+color:#FFFFFF;
+}
+
+.ui-state-active a:link,.ui-tabs.ui-tabs-nav li.ui-tabs-selected a {
+color:#ffffff;
+}
+
+#lightbox_content span a,#lightbox_content span a:hover {
+color:#ffffff;background:#9DA5B4;
+}
+
+#lightbox_content span a:hover {
+color:#FF0000;background: #9DA5B4;
+}
+
 /*  Dark Text Color  */
+input,button,textarea {
+border-color:#fff #494949 #494949 #fff;
+}
 
-input,button,textarea {border-color:#fff #494949 #494949 #fff;}
-.subheaders {color:#494949;}
+.subheaders {
+color:#494949;
+}
 
 /* end of palette */
