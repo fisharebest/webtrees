@@ -30,14 +30,80 @@
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller=new WT_Controller_Individual();
+$controller->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.cookie.js');// This page uses jquery.cookie.js to record the sidebar state
+$controller->addInlineJavaScript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
+	
+// -- array of GEDCOM elements that will be found but should not be displayed
+$nonfacts = array('FAMS', 'FAMC', 'MAY', 'BLOB', 'CHIL', 'HUSB', 'WIFE', 'RFN', '_WT_OBJE_SORT', '');
+$nonfamfacts = array(/*'NCHI',*/ 'UID', '');
+
+if ($controller->record && $controller->record->canDisplayDetails()) {
+	if (safe_GET('action')=='ajax') {
+		$controller->ajaxRequest();
+		exit;
+	}
+	// Generate the sidebar content *before* we display the page header,
+	// as the clippings cart needs to have write access to the session.
+	$sidebar_html=$controller->getSideBarContent();
+
+	$controller->pageHeader();
+	if ($controller->record->isMarkedDeleted()) {
+		if (WT_USER_CAN_ACCEPT) {
+			echo
+				'<p class="ui-state-highlight">',
+				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
+					'This individual has been deleted.  You should review the deletion and then %1$s or %2$s it.',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
+				),
+				' ', help_link('pending_changes'),
+				'</p>';
+		} elseif (WT_USER_CAN_EDIT) {
+			echo
+				'<p class="ui-state-highlight">',
+				WT_I18N::translate('This individual has been deleted.  The deletion will need to be reviewed by a moderator.'),
+				' ', help_link('pending_changes'),
+				'</p>';
+		}
+	} elseif (find_updated_record($controller->record->getXref(), WT_GED_ID)!==null) {
+		if (WT_USER_CAN_ACCEPT) {
+			echo
+				'<p class="ui-state-highlight">',
+				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
+					'This individual has been edited.  You should review the changes and then %1$s or %2$s them.',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
+					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
+				),
+				' ', help_link('pending_changes'),
+				'</p>';
+		} elseif (WT_USER_CAN_EDIT) {
+			echo
+				'<p class="ui-state-highlight">',
+				WT_I18N::translate('This individual has been edited.  The changes need to be reviewed by a moderator.'),
+				' ', help_link('pending_changes'),
+				'</p>';
+		}
+	}
+} elseif ($controller->record && $controller->record->canDisplayName()) {
+	// Just show the name.
+	$controller->pageHeader();
+	echo '<h2>', $controller->record->getFullName(), '</h2>';
+	echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this individual are private.'), '</p>';
+	exit;
+} else {
+	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+	$controller->pageHeader();
+	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
+	exit;
+}
+
+$linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link to
+
 $callbacks='';
 foreach ($controller->tabs as $tab) {
   $callbacks.=$tab->getJSCallback()."\n";
 }
-$controller->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.cookie.js');// This page uses jquery.cookie.js to record the sidebar state
 $controller->addInlineJavaScript('
-	var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}
-	
 	jQuery("#tabs").tabs({
 		spinner: "<img src=\"'.WT_STATIC_URL.'images/loading.gif\" height=\"18\" alt=\"\">",
 		cache: true
@@ -104,73 +170,6 @@ $controller->addInlineJavaScript('
 	}	
 	function showchanges(){window.location="'.$controller->record->getRawUrl().'";}
 ');
-// -- array of GEDCOM elements that will be found but should not be displayed
-$nonfacts = array('FAMS', 'FAMC', 'MAY', 'BLOB', 'CHIL', 'HUSB', 'WIFE', 'RFN', '_WT_OBJE_SORT', '');
-$nonfamfacts = array(/*'NCHI',*/ 'UID', '');
-
-if ($controller->record && $controller->record->canDisplayDetails()) {
-	if (safe_GET('action')=='ajax') {
-		$controller->ajaxRequest();
-		exit;
-	}
-	// Generate the sidebar content *before* we display the page header,
-	// as the clippings cart needs to have write access to the session.
-	$sidebar_html=$controller->getSideBarContent();
-
-	$controller->pageHeader();
-	if ($controller->record->isMarkedDeleted()) {
-		if (WT_USER_CAN_ACCEPT) {
-			echo
-				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
-					'This individual has been deleted.  You should review the deletion and then %1$s or %2$s it.',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'accept') . '</a>',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the deletion and then accept or reject it.', 'reject') . '</a>'
-				),
-				' ', help_link('pending_changes'),
-				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
-			echo
-				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This individual has been deleted.  The deletion will need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
-				'</p>';
-		}
-	} elseif (find_updated_record($controller->record->getXref(), WT_GED_ID)!==null) {
-		if (WT_USER_CAN_ACCEPT) {
-			echo
-				'<p class="ui-state-highlight">',
-				/* I18N: %1$s is "accept", %2$s is "reject".  These are links. */ WT_I18N::translate(
-					'This individual has been edited.  You should review the changes and then %1$s or %2$s them.',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'accept-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'accept') . '</a>',
-					'<a href="#" onclick="jQuery.post(\'action.php\',{action:\'reject-changes\',xref:\''.$controller->record->getXref().'\'},function(){location.reload();})">' . WT_I18N::translate_c('You should review the changes and then accept or reject them.', 'reject') . '</a>'
-				),
-				' ', help_link('pending_changes'),
-				'</p>';
-		} elseif (WT_USER_CAN_EDIT) {
-			echo
-				'<p class="ui-state-highlight">',
-				WT_I18N::translate('This individual has been edited.  The changes need to be reviewed by a moderator.'),
-				' ', help_link('pending_changes'),
-				'</p>';
-		}
-	}
-} elseif ($controller->record && $controller->record->canDisplayName()) {
-	// Just show the name.
-	$controller->pageHeader();
-	echo '<h2>', $controller->record->getFullName(), '</h2>';
-	echo '<p class="ui-state-highlight">', WT_I18N::translate('The details of this individual are private.'), '</p>';
-	exit;
-} else {
-	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
-	$controller->pageHeader();
-	echo '<p class="ui-state-error">', WT_I18N::translate('This individual does not exist or you do not have permission to view it.'), '</p>';
-	exit;
-}
-
-// tell tabs that use jquery that it is already loaded
-define('WT_JQUERY_LOADED', 1);
-$linkToID=$controller->record->getXref(); // -- Tell addmedia.php what to link to
 
 // ===================================== header area
 echo
