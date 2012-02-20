@@ -629,8 +629,8 @@ function wiki_help_link($topic) {
 	global $WT_USE_HELPIMG, $WT_IMAGES;
 
 	return
-		'<a class="help icon-help-15" href="'.WT_WEBTREES_WIKI.$topic.'" target="_new">&nbsp;'.
-		($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
+		'<a class="help icon-wiki" href="'.WT_WEBTREES_WIKI.$topic.'" target="_new">&nbsp;'.
+		($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['wiki'].'" class="icon" alt="'.WT_I18N::translate('webtrees WIKI').'" title="'.WT_I18N::translate('webtrees WIKI').'">' : WT_I18N::translate('?')).
 		'&nbsp;</a>';
 }
 

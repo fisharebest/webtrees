@@ -126,8 +126,7 @@ a:hover .nameZoom {color:#f00; font-weight:bold; font-size:14px;}
 .pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {float:right; max-height:50px; max-width:37px; margin-left:4px;}
 .pedigree_form {width:45px;}
 .thumbnail {height:auto; padding:3px;}
-.icon, .adminicon {border:none; padding-left:0; padding-right:5pt;}
-html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {padding-left:5pt; padding-right:0;}
+.icon, .adminicon {border:none;}
 
 .sublinks_table {border:solid #81a9cb 1px; background-color:#edf7fd;}
 .sublinks_cell {font-size:12px; background-color:#edf7fd;}
@@ -149,8 +148,8 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {padding-left:5pt; padding-rig
 .border1 {border:solid #000 1px;}
 .header_select {font-size:9pt;}
 .favorites_form {margin-top:0;}
-.help {font-weight:bold; cursor:help;}
-
+.help {cursor:help; font-weight:bold; line-height:16px;}
+.help img {vertical-align:bottom;}
 .menuitem {text-decoration:none; font-size:11px; padding:1px;}
 .menuitem_hover {text-decoration:none; font-size:11px; padding:1px;}
 .submenu {text-decoration:none; font-size:11px; background-color:#edf7fd; border:solid #81a9cb 1px; white-space:nowrap; visibility:hidden; position:absolute; padding:5px;}
@@ -230,7 +229,6 @@ html[dir='rtl'] .header_search {float:left;}
 .subbar {background-color:#d1d9ef; border:solid #81a9cb 1px; font-size:11px; vertical-align:top; white-space:nowrap; padding:3px;}
 /* Style for the descriptionbox */
 .descriptionbox {color:#fff; background-color:#81a9cb; font-size:12px; vertical-align:top; padding:3px;}
-.descriptionbox .icon {width:15px; vertical-align:middle;}
 /* Style for the optionbox */
 .optionbox {background-color:#d1d9ef; border:solid #81a9cb 1px; font-size:12px; vertical-align:top; white-space:nowrap; padding:3px;}
 .vmiddle {vertical-align:middle}

@@ -104,6 +104,7 @@ $WT_IMAGES=array(
 	'vline'          =>WT_THEME_URL.'images/vline.png',
 	'warning'        =>WT_THEME_URL.'images/warning.png',
 	'webtrees'       =>WT_THEME_URL.'images/webtrees.png',
+	'wiki'			 =>'images/w_button.png',
 	'zoomin'         =>WT_THEME_URL.'images/zoomin.png',
 	'zoomout'        =>WT_THEME_URL.'images/zoomout.png',
 

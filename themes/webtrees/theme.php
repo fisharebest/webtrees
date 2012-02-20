@@ -100,7 +100,7 @@ $WT_IMAGES=array(
 	'timeline'=>WT_THEME_URL.'images/timeline.png',
 	'tree'=>WT_THEME_URL.'images/tree.png',
 	'warning'=>WT_THEME_URL.'images/warning.png',
-	'wiki'=>WT_THEME_URL.'images/w_22.png',
+	'wiki'=>'images/w_button.png',
 	'itree'=>WT_THEME_URL.'images/tree.png',
 
 	//- buttons for data entry pages
