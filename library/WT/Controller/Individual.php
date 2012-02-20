@@ -2,7 +2,7 @@
 // Controller for the individual page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
@@ -219,7 +219,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				$user_id=get_user_from_gedcom_xref(WT_GED_ID, $this->record->getXref());
 				if ($user_id) {
 					$user_name=get_user_name($user_id);
-					echo '<span> - <a class="warning" href="admin_users.php?action=edituser&amp;username='.$user_name.'">'.$user_name.'</a></span>';
+					echo '<span> - <a class="warning" href="admin_users.php?filter='.$user_name.'">'.$user_name.'</a></span>';
 				}
 			}
 		}

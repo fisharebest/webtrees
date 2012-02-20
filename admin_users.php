@@ -2,7 +2,7 @@
 // Administrative User Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -34,7 +34,7 @@ $controller
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 
 // Valid values for form variables
-$ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'edituser', 'edituser2', 'listusers', 'loadrows', 'load1row');
+$ALL_ACTIONS=array('cleanup', 'cleanup2', 'createform', 'createuser', 'deleteuser', 'listusers', 'loadrows', 'load1row');
 $ALL_THEMES_DIRS=array();
 foreach (get_theme_names() as $themename=>$themedir) {
 	$ALL_THEME_DIRS[]=$themedir;
@@ -48,33 +48,27 @@ $ALL_EDIT_OPTIONS=array(
 );
 
 // Form actions
-$action                  =safe_GET('action',   $ALL_ACTIONS, 'listusers');
-$usrlang                 =safe_POST('usrlang',  array_keys(WT_I18N::installed_languages()));
-$username                =safe_POST('username', WT_REGEX_USERNAME);
-$filter                  =safe_POST('filter',   WT_REGEX_NOSCRIPT);
-$ged                     =safe_POST('ged',      WT_REGEX_NOSCRIPT);
+$action            =safe_GET('action',   $ALL_ACTIONS, 'listusers');
+$usrlang           =safe_POST('usrlang',  array_keys(WT_I18N::installed_languages()));
+$username          =safe_POST('username', WT_REGEX_USERNAME);
+$filter            =safe_POST('filter',   WT_REGEX_NOSCRIPT);
+$ged               =safe_POST('ged',      WT_REGEX_NOSCRIPT);
 
 // Extract form variables
-$oldusername             =safe_POST('oldusername',     WT_REGEX_USERNAME);
-$oldemailaddress         =safe_POST('oldemailaddress', WT_REGEX_EMAIL);
-$realname                =safe_POST('realname'   );
-$pass1                   =safe_POST('pass1',        WT_REGEX_PASSWORD);
-$pass2                   =safe_POST('pass2',        WT_REGEX_PASSWORD);
-$emailaddress            =safe_POST('emailaddress', WT_REGEX_EMAIL);
-$user_theme              =safe_POST('user_theme',               $ALL_THEME_DIRS);
-$user_language           =safe_POST('user_language',            array_keys(WT_I18N::installed_languages()), WT_LOCALE);
-$new_contact_method      =safe_POST('new_contact_method');
-$new_comment             =safe_POST('new_comment',              WT_REGEX_UNSAFE);
-$new_auto_accept         =safe_POST_bool('new_auto_accept');
-$canadmin                =safe_POST_bool('canadmin');
-$visibleonline           =safe_POST_bool('visibleonline');
-$editaccount             =safe_POST_bool('editaccount');
-$verified                =safe_POST_bool('verified');
-$verified_by_admin       =safe_POST_bool('verified_by_admin');
-
-if (empty($ged)) {
-	$ged=$GEDCOM;
-}
+$realname          =safe_POST('realname'   );
+$pass1             =safe_POST('pass1',        WT_REGEX_PASSWORD);
+$pass2             =safe_POST('pass2',        WT_REGEX_PASSWORD);
+$emailaddress      =safe_POST('emailaddress', WT_REGEX_EMAIL);
+$user_theme        =safe_POST('user_theme',               $ALL_THEME_DIRS);
+$user_language     =safe_POST('user_language',            array_keys(WT_I18N::installed_languages()), WT_LOCALE);
+$new_contact_method=safe_POST('new_contact_method');
+$new_comment       =safe_POST('new_comment',              WT_REGEX_UNSAFE);
+$new_auto_accept   =safe_POST_bool('new_auto_accept');
+$canadmin          =safe_POST_bool('canadmin');
+$visibleonline     =safe_POST_bool('visibleonline');
+$editaccount       =safe_POST_bool('editaccount');
+$verified          =safe_POST_bool('verified');
+$verified_by_admin =safe_POST_bool('verified_by_admin');
 
 // Load all available gedcoms
 $all_gedcoms = get_all_gedcoms();
@@ -262,109 +256,64 @@ case 'load1row':
 			'</td></tr>';
 	}
 	echo '</table>';
-
 	echo '</td></tr></table></div>';
 	exit;
 }
 
 $controller->pageHeader();
 
-// Save new user info to the database
-if ($action=='createuser' || $action=='edituser2') {
-	if (($action=='createuser' || $action=='edituser2' && $username!=$oldusername) && get_user_id($username)) {
-		echo "<span class=\"error\">", WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), "</span><br>";
-	} elseif (($action=='createuser' || $action=='edituser2' && $emailaddress!=$oldemailaddress) && get_user_by_email($emailaddress)) {
-		echo "<span class=\"error\">", WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), "</span><br>";
+// Pass 1 - perform action updates
+switch ($action) {
+case 'createuser':
+	if (get_user_id($username)) {
+		echo '<div class="ui-state-error">', WT_I18N::translate('Duplicate user name.  A user with that user name already exists.  Please choose another user name.'), '</div>';
+		$action='createform';
+	} elseif (get_user_by_email($emailaddress)) {
+		echo '<div class="ui-state-error">', WT_I18N::translate('Duplicate email address.  A user with that email already exists.'), '</div>';
+		$action='createform';
+	} elseif ($pass1!=$pass2) {
+		echo '<div class="ui-state-error">', WT_I18N::translate('Passwords do not match.'), '</div>';
+		$action='createform';
 	} else {
-		if ($pass1!=$pass2) {
-			echo "<span class=\"error\">", WT_I18N::translate('Passwords do not match.'), "</span><br>";
-		} else {
-			// New user
-			if ($action=='createuser') {
-				if ($user_id=create_user($username, $realname, $emailaddress, $pass1)) {
-					set_user_setting($user_id, 'reg_timestamp', date('U'));
-					set_user_setting($user_id, 'sessiontime', '0');
-					AddToLog("User ->{$username}<- created", 'auth');
-				} else {
-					AddToLog("User ->{$username}<- was not created", 'auth');
-					$user_id=get_user_id($username);
-				}
+		// Create new uers
+		$user_id=create_user($username, $realname, $emailaddress, $pass1);
+		set_user_setting($user_id, 'reg_timestamp', date('U'));
+		set_user_setting($user_id, 'sessiontime', '0');
+		setUserFullName ($user_id, $realname);
+		setUserEmail    ($user_id, $emailaddress);
+		set_user_setting($user_id, 'theme',                $user_theme);
+		set_user_setting($user_id, 'language',             $user_language);
+		set_user_setting($user_id, 'contactmethod',        $new_contact_method);
+		set_user_setting($user_id, 'comment',              $new_comment);
+		set_user_setting($user_id, 'auto_accept',          $new_auto_accept);
+		set_user_setting($user_id, 'canadmin',             $canadmin);
+		set_user_setting($user_id, 'visibleonline',        $visibleonline);
+		set_user_setting($user_id, 'editaccount',          $editaccount);
+		set_user_setting($user_id, 'verified',             $verified);
+		set_user_setting($user_id, 'verified_by_admin',    $verified_by_admin);
+		foreach ($all_gedcoms as $ged_id=>$ged_name) {
+			set_user_gedcom_setting($user_id, $ged_id, 'gedcomid', safe_POST_xref('gedcomid'.$ged_id));
+			set_user_gedcom_setting($user_id, $ged_id, 'rootid',   safe_POST_xref('rootid'.$ged_id));
+			set_user_gedcom_setting($user_id, $ged_id, 'canedit',  safe_POST('canedit'.$ged_id, array_keys($ALL_EDIT_OPTIONS)));
+			if (safe_POST_xref('gedcomid'.$ged_id)) {
+				set_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', safe_POST_integer('RELATIONSHIP_PATH_LENGTH'.$ged_id, 0, 10, 0));
 			} else {
-				$user_id=get_user_id($oldusername);
-			}
-			// Change password
-			if ($action=='edituser2' && !empty($pass1)) {
-				set_user_password($user_id, $pass1);
-			}
-			// Change username
-			if ($action=='edituser2' && $username!=$oldusername) {
-				rename_user($oldusername, $username);
-				AddToLog("User ->{$oldusername}<- renamed to ->{$username}<-", 'auth');
-			}
-				// Create/change settings that can be updated in the user's gedcom record?
-			$email_changed=($emailaddress!=getUserEmail($user_id));
-			$newly_verified=($verified_by_admin && !get_user_setting($user_id, 'verified_by_admin'));
-			// Create/change other settings
-			setUserFullName ($user_id, $realname);
-			setUserEmail    ($user_id, $emailaddress);
-			set_user_setting($user_id, 'theme',                $user_theme);
-			set_user_setting($user_id, 'language',             $user_language);
-			set_user_setting($user_id, 'contactmethod',        $new_contact_method);
-			set_user_setting($user_id, 'comment',              $new_comment);
-			set_user_setting($user_id, 'auto_accept',          $new_auto_accept);
-			set_user_setting($user_id, 'canadmin',             $canadmin);
-			set_user_setting($user_id, 'visibleonline',        $visibleonline);
-			set_user_setting($user_id, 'editaccount',          $editaccount);
-			set_user_setting($user_id, 'verified',             $verified);
-			set_user_setting($user_id, 'verified_by_admin',    $verified_by_admin);
-			foreach ($all_gedcoms as $ged_id=>$ged_name) {
-				set_user_gedcom_setting($user_id, $ged_id, 'gedcomid', safe_POST_xref('gedcomid'.$ged_id));
-				set_user_gedcom_setting($user_id, $ged_id, 'rootid',   safe_POST_xref('rootid'.$ged_id));
-				set_user_gedcom_setting($user_id, $ged_id, 'canedit',  safe_POST('canedit'.$ged_id, array_keys($ALL_EDIT_OPTIONS)));
-				if (safe_POST_xref('gedcomid'.$ged_id)) {
-					set_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', safe_POST_integer('RELATIONSHIP_PATH_LENGTH'.$ged_id, 0, 10, 0));
-				} else {
-					// Do not allow a path length to be set if the individual ID is not
-					set_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', null);
-				}
-			}
-
-			// If we're verifying a new user, send them a message to let them know
-			if ($newly_verified && $action=='edituser2') {
-				WT_I18N::init($user_language);
-				$message=array();
-				$message["to"]=$username;
-				$headers="From: ".$WEBTREES_EMAIL;
-				$message["from"]=WT_USER_NAME;
-				$message["subject"]=WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
-				$message["body"]=WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH);
-				$message["created"]="";
-				$message["method"]="messaging2";
-				addMessage($message);
-				// and send a copy to the admin
-				/*
-				$message=array();
-				$message["to"]=WT_USER_NAME;
-				$headers="From: ".$WEBTREES_EMAIL;
-				$message["from"]=$username; // fake the from address - so the admin can "reply" to it.
-				$message["subject"]=WT_I18N::translate('Approval of account at %s', WT_SERVER_NAME.WT_SCRIPT_PATH));
-				$message["body"]=WT_I18N::translate('The administrator at the webtrees site %s has approved your application for an account.  You may now login by accessing the following link: %s', WT_SERVER_NAME.WT_SCRIPT_PATH, WT_SERVER_NAME.WT_SCRIPT_PATH));
-				$message["created"]="";
-				$message["method"]="messaging2";
-				addMessage($message); */
+				// Do not allow a path length to be set if the individual ID is not
+				set_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', null);
 			}
 		}
-	}
-} else {
-	if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
+		AddToLog("User ->{$username}<- created", 'auth');
+		$action='listusers';
 	}
 }
 
-// -- echo out the form to add a new user
-// NOTE: WORKING
+// Pass 2 - display page
 switch ($action) {
 case 'createform':
+	if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
+		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
+	}
+
 	init_calendar_popup();
 	$controller->addInlineJavaScript('
 		function checkform(frm) {
@@ -423,25 +372,25 @@ case 'createform':
 		<table id="adduser">
 			<tr>
 				<td><?php echo WT_I18N::translate('Username'), help_link('username'); ?></td>
-				<td colspan="3"><input type="text" name="username" autofocus></td>
+				<td colspan="3"><input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>" autofocus></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Real name'), help_link('real_name'); ?></td>
-				<td colspan="3"><input type="text" name="realname" size="50"></td>
+				<td colspan="3"><input type="text" name="realname" size="40" value="<?php echo htmlspecialchars($realname); ?>"></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Password'), help_link('password'); ?></td>
-				<td><input type="password" name="pass1"></td>
+				<td><input type="password" name="pass1" value="<?php echo htmlspecialchars($pass1); ?>"></td>
 				<td><?php echo WT_I18N::translate('Confirm password'), help_link('password_confirm'); ?></td>
-				<td><input type="password" name="pass2"></td>
+				<td><input type="password" name="pass2" value="<?php echo htmlspecialchars($pass2); ?>"></td>
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Email address'), help_link('email'); ?></td>
-				<td><input type="text" name="emailaddress" value="" size="50"></td>
+				<td><input type="text" name="emailaddress" size="40" value="<?php echo htmlspecialchars($emailaddress); ?>"></td>
 				<td><?php echo WT_I18N::translate('Preferred contact method'); ?></td>
 				<td>
 					<?php
-						echo edit_field_contact('new_contact_method');
+						echo edit_field_contact('new_contact_method', $new_contact_method);
 					?>
 				</td>
 			</tr>
@@ -466,12 +415,12 @@ case 'createform':
 			<?php if (WT_USER_IS_ADMIN) { ?>
 			<tr>
 				<td><?php echo WT_I18N::translate('Admin comments on user'); ?></td>
-				<td colspan="3"><textarea cols="80" rows="5" name="new_comment"></textarea></td>
+				<td colspan="3"><textarea cols="80" rows="5" name="new_comment" value="<?php echo htmlspecialchars($new_comment); ?>"></textarea></td>
 			</tr>
 			<?php } ?>
 			<tr>
 				<td><?php echo WT_I18N::translate('Language'); ?></td>
-				<td colspan="3"><?php echo edit_field_language('user_language', get_user_setting(WT_USER_ID, 'language')); ?></td>
+				<td colspan="3"><?php echo edit_field_language('user_language', $user_language); ?></td>
 			</tr>
 			<?php if (get_site_setting('ALLOW_USER_THEMES')) { ?>
 				<tr>
@@ -509,12 +458,12 @@ case 'createform':
 									//Pedigree root person
 									'<td>';
 										$varname='rootid'.$ged_id;
-										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="">', print_findindi_link($varname, "", false, false, $ged_name),
+										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', htmlspecialchars(safe_POST_xref('gedcomid'.$ged_id)), '">', print_findindi_link($varname, "", false, false, $ged_name),
 									'</td>',						
 									// GEDCOM INDI Record ID
 									'<td>';
 										$varname='gedcomid'.$ged_id;
-										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="">' ,print_findindi_link($varname, "", false, false, $ged_name),
+										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', htmlspecialchars(safe_POST_xref('rootid'.$ged_id)), '">' ,print_findindi_link($varname, "", false, false, $ged_name),
 									'</td>',
 									'<td>';
 										$varname='canedit'.$ged_id;
@@ -664,7 +613,6 @@ case 'cleanup2':
 	}
 	break;
 case 'listusers':
-case 'edituser':
 default:
 	echo
 		'<table id="list">',
@@ -749,12 +697,7 @@ default:
 				});
 				jQuery(this).addClass("icon-close");
 			});
+			oTable.fnFilter("'.safe_GET('filter', WT_REGEX_USERNAME).'");
 		');
-
-	/* Filter immediately for single user name */
-	if ($action=='edituser') {
-		$username=safe_GET('username');
-		$controller->addInlineJavaScript('oTable.fnFilter("'.$username.'");');
-	}	
 	break;
 }

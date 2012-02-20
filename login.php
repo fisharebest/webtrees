@@ -635,9 +635,9 @@ case 'verify_hash':
 	}
 	if ($TEXT_DIRECTION=='rtl') {
 		$mail1_body .= "<a href=\"";
-		$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?action=edituser&username=" . rawurlencode($user_name) . "\">";
+		$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user_name) . "\">";
 	}
-	$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?action=edituser&username=" . rawurlencode($user_name);
+	$mail1_body .= WT_SERVER_NAME.WT_SCRIPT_PATH."admin_users.php?filter=" . rawurlencode($user_name);
 	if ($TEXT_DIRECTION=="rtl") {
 		$mail1_body .= "</a>";
 	}

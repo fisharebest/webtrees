@@ -118,7 +118,7 @@ if (WT_USER_IS_ADMIN) {
 		'<li><ul>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="createform" ? 'class="current" ' : ''), 'href="admin_users.php?action=createform">', WT_I18N::translate('Add a new user'), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_users_bulk.php" ? 'class="current" ' : ''), 'href="admin_users_bulk.php">',
-		WT_I18N::translate('Send broadcast messages'),
+		WT_I18N::translate('Send broadcast messages'), '</a>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="cleanup" ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">',
 		WT_I18N::translate('Delete inactive users'),
 		'</a></li>',
