@@ -134,11 +134,6 @@ echo WT_JS_END;
 <input type="hidden" name="action" value="<?php echo $controller->action; ?>">
 <input type="hidden" name="isPostBack" value="true">
 <table id="field_table" class="list_table" width="35%" border="0">
-	<tr>
-		<td colspan="4" class="facts_label03" style="text-align:center;">
-			<?php echo WT_I18N::translate('Advanced search'); ?>
-		</td>
-	</tr>
 	<!-- // search terms -->
 	<?php
 	$fct = count($controller->fields);
@@ -205,7 +200,7 @@ echo WT_JS_END;
 				}
 			}
 			?>
-			<td rowspan="100" class="list_value">&nbsp;</td>
+
 			<td rowspan="100" class="list_value">
 				<table>
 					<!--  father -->
@@ -293,13 +288,14 @@ echo WT_JS_END;
 	<tr>
 		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  colspan="10">
 			<a href="#" onclick="addFields();"><?php echo WT_I18N::translate('Add More Fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>">
 		</td>
 	</tr>
 </table>
+		<div id="search_submit">
+		<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>">
+		</div>
 </form>
 </div> 
-<br><br><br><br>
 <?php
 // set the focus on the first field unless multisite or some search results have been printed
 if (!$somethingPrinted ) {
