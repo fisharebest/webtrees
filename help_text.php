@@ -915,7 +915,7 @@ case 'SERVER_URL':
 
 case 'SHOW_AGE_DIFF':
 	$title=WT_I18N::translate('Show date differences');
-	$text=WT_I18N::translate('This option controls whether or not the Close Relatives tab should show differences between birth dates of spouses, between marriage date and birth date of first child, and between birth dates of children.');
+	$text=WT_I18N::translate('This option controls whether or not the Families tab should show differences between birth dates of spouses, between marriage date and birth date of first child, and between birth dates of children.');
 	break;
 
 case 'SHOW_COUNTER':
@@ -1240,7 +1240,7 @@ case 'add_wife':
 
 case 'age_differences':
 	$title=WT_I18N::translate('Show date differences');
-	$text=WT_I18N::translate('When this option box is checked, the «Close Relatives» tab will show date differences as follows:<br /><ul><li>birth dates of partners.<br />A negative value indicates that the second partner is older than the first.<br /><br /></li><li>marriage date and birth date of the first child.<br />A negative value here indicates that the child was born before the marriage date or that either the birth date or the marriage date is wrong.<br /><br /></li><li>birth dates of siblings.<br />A negative value here indicates that either the order of the children is wrong or that one of the birth dates is wrong.</li></ul>');
+	$text=WT_I18N::translate('When this option box is checked, the «Families» tab will show date differences as follows:<br /><ul><li>birth dates of partners.<br />A negative value indicates that the second partner is older than the first.<br /><br /></li><li>marriage date and birth date of the first child.<br />A negative value here indicates that the child was born before the marriage date or that either the birth date or the marriage date is wrong.<br /><br /></li><li>birth dates of siblings.<br />A negative value here indicates that either the order of the children is wrong or that one of the birth dates is wrong.</li></ul>');
 	break;
 
 case 'annivers_date_select':
@@ -1865,6 +1865,6 @@ $controller->pageHeader();
 
 echo '<div class="helpheader">', $title, '</div>';
 echo '<div class="helpcontent">', $text,'</div>';
-echo '<div class="helpfooter">';
-echo '<a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a>';
-echo '</div>';
+//echo '<div class="helpfooter">';
+//echo '<a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a>';
+// '</div>';
