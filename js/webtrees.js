@@ -557,10 +557,11 @@ var oldname = 0;
 var oldthumbdisp = 0;
 var repositioned = 0;
 var oldiconsdislpay = 0;
+var rv =null;
 
 function expandbox(boxid, bstyle) {
 	if (big==1) {
-		if (document.getElementsByClassName) { // Check if browser supports the getElementByClassName function
+		if (!rv) { // true if not ie8
 			if (compact_count.length>0) { // True only if compact chart
 				fontdef.style.display='none';
 			}
@@ -568,9 +569,14 @@ function expandbox(boxid, bstyle) {
 		restorebox(oldboxid, bstyle);
 		if (boxid==oldboxid) return true;
 	}
-	if (document.getElementsByClassName) {  // Check if browser supports the getElementByClassName function
+	if (navigator.appName == 'Microsoft Internet Explorer') {
+		var ua = navigator.userAgent;
+		var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+		if (re.exec(ua) != null)
+			rv = parseFloat(RegExp.$1);
+	}
+	if (!rv) {  // true if not IE8
 		compact_count = document.getElementsByClassName("compact_view");
-		ie8=0;
 	}   
 
 	url = window.location.toString();
