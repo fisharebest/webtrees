@@ -102,4 +102,3 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('View readme.html file');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('grandchildren');
 /* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees user login');
-/* I18N: This message is deleted in webtrees-1.2.7  */ WT_I18N::translate('webtrees wiki');
