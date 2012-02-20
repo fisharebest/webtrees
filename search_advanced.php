@@ -126,7 +126,7 @@ echo WT_JS_START;
 <?php
 echo WT_JS_END;
 ?>
-
+<div id="search-page">
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>
 <?php $somethingPrinted = $controller->PrintResults(); ?>
 <!-- /*************************************************** Search Form Outer Table **************************************************/ -->
@@ -298,6 +298,7 @@ echo WT_JS_END;
 	</tr>
 </table>
 </form>
+</div> 
 <br><br><br><br>
 <?php
 // set the focus on the first field unless multisite or some search results have been printed
