@@ -338,6 +338,7 @@ table#faq_edit  {border:1px solid; border-radius:5px;  margin-top:30px; padding:
 .faq_edit_pos td:first-child {width:80%;}
 .faq_edit_title {border-bottom: 1px solid; margin-bottom:10px;}
 .faq_edit_item {background: none repeat scroll 0 0 OldLace; border: 1px inset #D9D6C4; padding: 5px;}
+.faq_edit_item div+div {max-height:200px; overflow:auto;}
 html[dir='rtl'] #faq_module2 th, html[dir='rtl'] #faq_module2 td {text-align:right;}
 
 /* GOOGLEMAP MODULE*/
