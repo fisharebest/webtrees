@@ -147,7 +147,7 @@ case 'loadrows':
 	
 	// Reformat various columns for display
 	foreach ($aaData as &$aData) {
-		// $aData[0] is a dummy column for the expand-details icon
+		$aData[0]='<a href="#" title="'.WT_I18N::translate('Details').'">&nbsp;</a>';
 		// $aData[1] is the user ID
 		$user_id  =$aData[1];
 		$user_name=$aData[2];
