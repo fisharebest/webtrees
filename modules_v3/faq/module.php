@@ -404,7 +404,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				echo '<div class="faq_edit_item">';
 				echo '<div class="faq_edit_title">', $faq->header, '</div>';
 				// NOTE: Print the body text of the current item
-				echo '<div>', substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody), '</div></div></td></tr>';
+				echo '<div class="faq_edit_content">', substr($faq->faqbody, 0, 1)=='<' ? $faq->faqbody : nl2br($faq->faqbody), '</div></div></td></tr>';
 			}
 			echo '</table>';
 		}
