@@ -276,7 +276,7 @@ case 'editraw':
 	$gedrec=preg_replace('/^(0 @'.WT_REGEX_XREF.'@ NOTE) (.+)/', "$1\n1 CONC $2", $gedrec);
 	list($gedrec1, $gedrec2)=explode("\n", $gedrec, 2);
 	echo '<textarea name="newgedrec1" rows="1"  cols="80" dir="ltr" readonly="readonly">', $gedrec1, '</textarea><br>';
-	echo '<textarea name="newgedrec2" rows="20" cols="80" dir="ltr">', $gedrec2, "</textarea><br>";
+	echo '<textarea name="newgedrec2" id="newgedrec2" rows="20" cols="80" dir="ltr">', htmlspecialchars($gedrec2), "</textarea><br>";
 	if (WT_USER_IS_ADMIN) {
 		echo '<table class="facts_table">';
 		echo '<tr><td class="descriptionbox  wrap width25">';
@@ -292,7 +292,7 @@ case 'editraw':
 		echo '</td></tr>';
 		echo '</table>';
 	}
-	print_specialchar_link("newgedrec", true);
+	print_specialchar_link("newgedrec2", true);
 	echo '<br>';
 	echo '<input id="savebutton" type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 	echo '</form>';
