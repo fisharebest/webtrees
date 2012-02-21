@@ -169,6 +169,14 @@ $controller->addInlineJavaScript('
 		var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", edit_window_specs);
 	}	
 	function showchanges(){window.location="'.$controller->record->getRawUrl().'";}
+
+	jQuery("#header_accordion1").accordion({
+		active: 0,
+		icons: {"header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" },
+		autoHeight: false,
+		collapsible: true
+	});
+
 ');
 
 // ===================================== header area
@@ -203,24 +211,13 @@ if ($controller->record->canDisplayDetails()) {
 		$fact = $value->getTag();
 		if ($fact=="SEX") $controller->print_sex_record($value);
 	}
-	echo '</h3>'; // close first name accordion header
-	
+	echo '</h3>'; // close first name accordion header	
 	//Display name details
 	foreach ($globalfacts as $key=>$value) {
 		$fact = $value->getTag();
 		if ($fact=="NAME") $controller->print_name_record($value);
 	}
-
-	echo
-		'</div>', // close header_accordion1
-		WT_JS_START,
-		'jQuery("#header_accordion1").accordion({',
-		' active: 0,',
-		' icons: {"header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" },',
-		' autoHeight: false,',
-		' collapsible: true',
-		'});',
-		WT_JS_END; //accordion details
+	echo '</div>'; // close header_accordion1
 }
 echo '</div>';// close #indi_header
 // ===================================== main content tabs
