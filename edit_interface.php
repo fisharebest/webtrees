@@ -465,9 +465,9 @@ case 'addfamlink':
 	if ($famtag=='CHIL') {
 		echo '<tr><td class="facts_label">', WT_Gedcom_Tag::getLabel('PEDI'), '</td><td class="facts_value">';
 		switch (WT_Person::getInstance($pid)->getSex()) {
-		case 'M': echo edit_field_pedi_m('pedigree'); break;
-		case 'F': echo edit_field_pedi_f('pedigree'); break;
-		case 'U': echo edit_field_pedi_u('pedigree'); break;
+		case 'M': echo edit_field_pedi_m('PEDI'); break;
+		case 'F': echo edit_field_pedi_f('PEDI'); break;
+		case 'U': echo edit_field_pedi_u('PEDI'); break;
 		}
 		echo help_link('PEDI');
 		echo '</td></tr>';
@@ -549,12 +549,12 @@ case 'linkfamaction':
 		if (strpos($gedrec, "1 $itag @$famid@")===false) {
 			switch ($itag) {
 			case 'FAMC':
-				if (isset($_REQUEST['pedigree'])) {
-					$pedigree = $_REQUEST['pedigree'];
+				if (isset($_REQUEST['PEDI'])) {
+					$PEDI = $_REQUEST['PEDI'];
 				} else {
-					$pedigree='';
+					$PEDI='';
 				}
-				$gedrec.="\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($pedigree, $famid);
+				$gedrec.="\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $famid);
 				break;
 			case 'FAMS':
 				$gedrec.="\n1 FAMS @$famid@";
@@ -1369,27 +1369,12 @@ case 'addchildaction':
 	}
 
 	if (!empty($famid)) {
-		$gedrec .= "\n";
-		$PEDI="";
-		if (isset($_REQUEST['PEDI'])) $PEDI = $_REQUEST['PEDI'];
-		switch ($PEDI) {
-		case 'birth':
-			$gedrec.="1 FAMC @$famid@\n2 PEDI $PEDI";
-			break;
-		case 'adopted':
-			$gedrec.="1 FAMC @$famid@\n2 PEDI $PEDI\n1 ADOP\n2 FAMC @$famid@\n3 ADOP BOTH";
-			break;
-		case 'sealing':
-			$gedrec.="1 FAMC @$famid@\n2 PEDI $PEDI\n1 SLGC\n2 FAMC @$famid@";
-			break;
-		case 'foster':
-			$gedrec.="1 FAMC @$famid@\n2 PEDI $PEDI\n1 EVEN\n2 TYPE $PEDI";
-			break;
-		default:
-			$gedrec.="1 FAMC @$famid@";
-			break;
+		if (isset($_REQUEST['PEDI'])) {
+			$PEDI = $_REQUEST['PEDI'];
+		} else {
+			$PEDI='';
 		}
-		$gedrec .= "\n";
+		$gedrec.="\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $famid);
 	}
 
 	if (safe_POST_bool('SOUR_INDI')) {
