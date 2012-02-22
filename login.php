@@ -39,7 +39,6 @@ $REQUIRE_ADMIN_AUTH_REGISTRATION=get_site_setting('REQUIRE_ADMIN_AUTH_REGISTRATI
 
 $action         =safe_POST('action');
 $user_realname  =safe_POST('user_realname');
-$time           =safe_POST('time');
 $user_name      =safe_POST('user_name',       WT_REGEX_USERNAME);
 $user_email     =safe_POST('user_email',      WT_REGEX_EMAIL);
 $user_password01=safe_POST('user_password01', WT_REGEX_PASSWORD);
@@ -166,7 +165,7 @@ default:
 
 	echo '</div>'; //close "login-text"
 	echo '<div id="login-box">
-		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="t = new Date(); document.login-form.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds(); return true;">
+		<form id="login-form" name="login-form" method="post" action="', WT_LOGIN_URL, '" onsubmit="t = new Date(); this.usertime.value=t.getFullYear()+\'-\'+(t.getMonth()+1)+\'-\'+t.getDate()+\' \'+t.getHours()+\':\'+t.getMinutes()+\':\'+t.getSeconds();return true;">
 		<input type="hidden" name="action" value="login">
 		<input type="hidden" name="url" value="', htmlspecialchars($url), '">
 		<input type="hidden" name="usertime" value="">';
@@ -194,8 +193,7 @@ default:
 	
 	// hidden New Password block
 	echo '<div id="new_passwd">
-		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post" onsubmit="t = new Date(); document.new_passwd_form.time.value=t.toUTCString(); return checkform(this);">
-		<input type="hidden" name="time" value="">
+		<form id="new_passwd_form" name="new_passwd_form" action="'.WT_LOGIN_URL.'" method="post">
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', WT_I18N::translate('Lost password request'), '</h4>
 		<div>
@@ -518,9 +516,8 @@ case 'register':
 				echo '</div>';
 			}
 			echo '<div id="register-box">
-				<form id="register-form" name="register-form" method="post" action="'.WT_LOGIN_URL.'" onsubmit="t = new Date(); document.register-form.time.value=t.toUTCString(); return checkform(this);">
+				<form id="register-form" name="register-form" method="post" action="'.WT_LOGIN_URL.'">
 				<input type="hidden" name="action" value="register">
-				<input type="hidden" name="time" value="">
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 				<div>
 					<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
@@ -589,9 +586,8 @@ case 'userverify':
 	$controller->pageHeader();
 
 	echo '<div id="login-register-page">
-		<form id="verify-form" name="verify-form" method="post" action="" onsubmit="t = new Date(); document.verify-form.time.value=t.toUTCString();">
+		<form id="verify-form" name="verify-form" method="post" action="', WT_LOGIN_URL, '">
 			<input type="hidden" name="action" value="verify_hash">
-			<input type="hidden" name="time" value="">
 			<h4>', WT_I18N::translate('User verification'), '</h4>
 			<div>
 				<label for="username">', WT_I18N::translate('Username'), '</label>
