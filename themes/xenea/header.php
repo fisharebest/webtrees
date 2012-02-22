@@ -30,8 +30,6 @@ if (!defined('WT_WEBTREES')) {
 
 global $DATE_FORMAT;
 
-$displayDate=timestamp_to_gedcom_date(client_time())->Display(false, $DATE_FORMAT);
-
 echo
 	'<!DOCTYPE html>',
 	'<html ', WT_I18N::html_markup(), '>',
@@ -117,7 +115,6 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 				}
 	echo 
 			'</ul>',
-			'<div id="favdate">', $displayDate, '</div>',
 		'</div>',
 	'</div>';
 // Menu 

@@ -68,8 +68,6 @@ echo
 	WT_WEBTREES, ' ', WT_VERSION_TEXT,
 	'<br>',
 	WT_I18N::translate('Current Server Time:'), ' ', format_timestamp(time()),
-	'<br>',
-	WT_I18N::translate('Current User Time:'), ' ', format_timestamp(client_time()),
 	'</div>',
 	'</div>',
 // Side menu 

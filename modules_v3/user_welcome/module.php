@@ -57,11 +57,11 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<td class=\"center details2\" style=\"width:33%; clear:none; vertical-align:top; margin-top:2px;\"><a href=\"individual.php?pid=".WT_USER_GEDCOM_ID."&amp;ged=".WT_GEDURL."\"><img class=\"block\" src=\"".$WT_IMAGES["indis"]."\" alt=\"".WT_I18N::translate('My individual record')."\"><br>".WT_I18N::translate('My individual record')."</a></td>";
 		}
 		$content .= "</tr><tr><td class=\"center\" colspan=\"3\">";
-		$content .= "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_USER_NAME."&amp;ctype=user"."', '_blank', indx_window_specs);\">".WT_I18N::translate('Change the blocks on this page')."</a>";
-		$content .= "<br>".format_timestamp(client_time())."<br>";
-		if ($SHOW_COUNTER)
-			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount."<br>";
-		$content .= "</td></tr></table>";
+		if ($SHOW_COUNTER) {
+			$content .=  WT_I18N::translate('Hit Count:').' '.$hitCount.'<br>';
+		}
+		$content .= "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_USER_NAME."&amp;ctype=user"."', '_blank', indx_window_specs);\">".WT_I18N::translate('Change the blocks on this page').'</a>';
+		$content .= '</td></tr></table>';
 
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';
