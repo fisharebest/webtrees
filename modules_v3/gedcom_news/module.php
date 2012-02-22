@@ -92,7 +92,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$content = '';
 		if (count($usernews)==0) {
-			$content .= WT_I18N::translate('No News articles have been submitted.');
+			$content .= WT_I18N::translate('No News articles have been submitted.').'<br>';
 		}
 		$c = 0;
 		$td = time();

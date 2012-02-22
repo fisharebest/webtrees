@@ -341,15 +341,6 @@ case 'update':
 	fix_media_htaccess();
 
 	if (!$errors) {
-		$gednews = getUserNews(WT_GEDCOM);
-		if (count($gednews)==0) {
-			$news = array();
-			$news["title"] = WT_I18N::translate('Welcome to Your Genealogy');
-			$news["username"] = WT_GEDCOM;
-			$news["text"] = WT_I18N::translate('The genealogy information on this website is powered by <a href="http://webtrees.net/" target="_blank">webtrees</a>.  This page provides an introduction and overview to this genealogy.<br /><br />To begin working with the data, choose one of the charts from the Charts menu, go to the Individual list, or search for a name or place.<br /><br />If you have trouble using the site, you can click on the Help icon to give you information on how to use the page that you are currently viewing.<br /><br />Thank you for visiting this site.');
-			$news["date"] = client_time();
-			addNews($news);
-		}
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 		exit;
 	}

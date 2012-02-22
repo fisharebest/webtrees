@@ -32,6 +32,8 @@
 exit;
 
 // MESSAGES DELETED IN WEBTREES-1.2.8
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Welcome to Your Genealogy');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('The genealogy information on this website is powered by <a href="http://webtrees.net/" target="_blank">webtrees</a>.  This page provides an introduction and overview to this genealogy.<br /><br />To begin working with the data, choose one of the charts from the Charts menu, go to the Individual list, or search for a name or place.<br /><br />If you have trouble using the site, you can click on the Help icon to give you information on how to use the page that you are currently viewing.<br /><br />Thank you for visiting this site.');
 
 
 // MESSAGES DELETED IN WEBTREES-1.2.7
