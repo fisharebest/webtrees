@@ -570,7 +570,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	echo "<table class=\"facts_table\">";
 
 	// When adding a new child, specify the pedigree
-	if ($nextaction=='addchildaction') {
+	if ($nextaction=='addchildaction' || $nextaction=='addopfchildaction') {
 		add_simple_tag('0 PEDI');
 	}
 

@@ -1662,12 +1662,19 @@ case 'addopfchildaction':
 	$newindixref=get_new_xref('INDI');
 	$newfamxref=get_new_xref('FAM');
 
-	$gedrec ="0 @{$newindixref}@ INDI\n1 FAMC @{$newfamxref}@\n".addNewName().addNewSex ();
+	$gedrec ="0 @{$newindixref}@ INDI\n".addNewName().addNewSex ();
 	if (preg_match_all('/([A-Z0-9_]+)/', $QUICK_REQUIRED_FACTS, $matches)) {
 		foreach ($matches[1] as $match) {
 			$gedrec.=addNewFact($match);
 		}
 	}
+
+	if (isset($_REQUEST['PEDI'])) {
+		$PEDI = $_REQUEST['PEDI'];
+	} else {
+		$PEDI='';
+	}
+	$gedrec.="\n".WT_Gedcom_Code_Pedi::createNewFamcPedi($PEDI, $newfamxref);
 
 	if (safe_POST_bool('SOUR_INDI')) {
 		$gedrec=handle_updates($gedrec);
