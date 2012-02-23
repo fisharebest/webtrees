@@ -1035,7 +1035,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 		if ($level>=2) echo ' rela';
 		echo ' ', $styleadd, ' width20">';
 		if (!$noedit && WT_USER_CAN_EDIT && !FactEditRestricted($pid, $factrec) && $styleadd!='change_old') {
-			echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), '\">';
+			echo '<a onclick="return edit_record(\'', $pid, '\', ', $linenum, ');" href="#" title="', WT_I18N::translate('Edit'), '">';
 			if ($level<2) {
 				if ($SHOW_FACT_ICONS) {
 					echo '<img class="icon" src="', $WT_IMAGES['note'], '" alt="">';
