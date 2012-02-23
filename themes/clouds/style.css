@@ -59,13 +59,11 @@ height:30px;
 
 .title {
 color:#039;
-display:block;
 float:left;
-font-size:24px;
+font-size:20px;
 margin-left:12px;
 margin-top:5px;
-text-decoration:none;
-vertical-align:bottom;
+vertical-align:middle;
 width:70%;
 }
 
@@ -351,11 +349,6 @@ width:17px;
 /*  Stories  */
 #menu-story-sub	{background-position:left -920px;} html[dir=rtl] #menu-story-sub	{background-position:right -920px;}
 
- /* Always LTR, even on RTL pages */
-#menu-language li	{text-align:left;}
-#menu-theme    li	{text-align:left;}
-
-
 /* ===== */
 /* Right Options Menu */
 
@@ -439,11 +432,6 @@ background-color:#95B8E0;
 color:#039;
 }
 
-/* Menu Color */
-#toplinks {
-background:#acf;
-}
-
 /* Base Color */
 .descriptionbox .submenu a,.blockcontent,.list_value,.list_value_wrap,.tab_cell_active,.news_box,optionbox,.submenuitem_hover {
 background:#fff;
@@ -459,18 +447,13 @@ a:link,a:visited,a:active,a:hover,.menuitem a,.nameZoom {
 color:#039;
 }
 
-a:hover,.blanco a.link:hover {
+a.link:hover {
 color:red;
 text-decoration:none;
 }
 
 .facts_labelred,.facts_valuered {
 border:solid red 2px;
-}
-
-/* Dark Text Color */
-input,button,textarea {
-border-color:#fff #006 #006 #fff;
 }
 
 .subheaders {
@@ -492,8 +475,18 @@ hr {
 margin-top:5px;
 }
 
-tfoot label {
-margin-left:5px;
+h2 {
+font-size:18px;
+font-weight:bold;
+}
+
+h4 {
+font-weight:bold;
+}
+
+.alpha_index
+{
+margin-top: 10px;
 }
 
 p.center a {
@@ -1292,6 +1285,7 @@ color:#555;
 
 input,button,textarea  {
 border-width:1px;
+border-color:#fff #006 #006 #fff;
 }
 
 input,textarea {
@@ -1309,15 +1303,6 @@ select {
 border:1px solid #ccc;
 }
 
-h2 {
-font-size:18px;
-font-weight:bold;
-}
-
-h4 {
-font-weight:bold;
-}
-
 .formField {
 width:140px;
 font-size:12px;
@@ -1332,17 +1317,6 @@ background:#FF0;
 color:#000;
 }
 .search_item{font-weight:600;}
-
-.title {
-font-size:20px;
-vertical-align:middle;
-}
-
-.accesskeys {
-width:1px;
-height:1px;
-overflow:hidden;
-}
 
 .topbottombar {
 font-weight:bold;
@@ -1809,6 +1783,10 @@ min-height:40px;
 }
 #branches-page table,#medialist-page .list_table {
 margin:auto;
+}
+
+#branches-page p {
+margin: 10px;
 }
 
 /* ============== login.php ======================= */
@@ -2386,10 +2364,6 @@ margin:5px;
 clear:both;
 }
 
-.even {
-background-color:#fff;
-}
-
 .fg-button {
 padding:2px 6px;
 }
@@ -2401,6 +2375,10 @@ padding:1px 6px;
 
 .odd {
 background-color:#D9EAF7;
+}
+
+.even {
+background-color:#fafafa;
 }
 
 .recent_changes_block .dataTables_info,.upcoming_events_block .dataTables_info,.todays_events_block .dataTables_info,.todo_block .dataTables_info,.yahrzeit_block .dataTables_info {
