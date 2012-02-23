@@ -592,35 +592,11 @@ function print_privacy_error() {
 // Print a link for a popup help window
 function help_link($help_topic, $module='') {
 	global $WT_USE_HELPIMG, $WT_IMAGES;
-	$help_popup_id = 'ID'.floor(microtime()*1000000); // popups requires a unique ID in case there are multiple popups per page
-	echo WT_JS_START;?>
-		jQuery(document).ready(function() {
-			jQuery(".<?php echo $help_popup_id; ?>").each(function() {
-				var $link = jQuery(this);
-				var $dialog = jQuery("<div></div>")
-					.load($link.attr("href") + " #content")
-					.dialog({
-						autoOpen: false,
-						title: $link.attr("title"),
-						modal: "true",
-						width: 500,
-						height: "auto"
-					});
-				$link.click(function() {
-					$dialog.dialog("open");
-					return false;
-				});		
-				jQuery(".ui-widget-overlay").live("click", function (){
-				  jQuery("div:ui-dialog:visible").dialog("close");
-				});
-			});
-		});
-	<?php echo WT_JS_END;
 
 	return
-		'<a class="'.$help_popup_id.'" href="help_text.php?help='.$help_topic.'&mod='.$module.'" title="'.WT_I18N::translate('Help').'"><span class="help icon-help-15">&nbsp;'.
+		'<span class="help icon-help-15" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\', \''.WT_I18N::translate('Help').'\'); return false;">&nbsp;'.
 		($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
-		'&nbsp;</span></a>';
+		'&nbsp;</span>';
 }
 
 

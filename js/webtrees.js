@@ -34,8 +34,14 @@ var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollb
 var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
 
-function helpPopup(which, mod) {
-	window.open('help_text.php?help='+which+'&mod='+mod, 'help', help_window_specs);
+function helpPopup(which, mod, title) {
+	url='help_text.php?help='+which+'&mod='+mod;
+	dialog=jQuery('<div title="'+title+'"></div>')
+		.load(url)
+		.dialog({
+			modal: true,
+			width: 500
+	});
 	return false;
 }
 function closeHelp() {
