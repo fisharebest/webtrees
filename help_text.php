@@ -31,9 +31,7 @@
 define('WT_SCRIPT_NAME', 'help_text.php');
 require './includes/session.php';
 
-Zend_Session::writeClose();
-
-$controller=new WT_Controller_Simple();
+$controller=new WT_Controller_Ajax();
 
 $help=safe_GET('help');
 switch ($help) {
@@ -1862,11 +1860,7 @@ default:
 	break;
 }
 
-$controller->setPageTitle($title);
 $controller->pageHeader();
 
 echo '<div class="helpheader">', $title, '</div>';
 echo '<div class="helpcontent">', $text,'</div>';
-//echo '<div class="helpfooter">';
-//echo '<a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a>';
-// '</div>';
