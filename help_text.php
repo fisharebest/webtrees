@@ -31,6 +31,8 @@
 define('WT_SCRIPT_NAME', 'help_text.php');
 require './includes/session.php';
 
+Zend_Session::writeClose();
+
 $controller=new WT_Controller_Simple();
 
 $help=safe_GET('help');
