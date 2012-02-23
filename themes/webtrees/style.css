@@ -150,6 +150,7 @@ a:hover .nameZoom {color:#f00; font-weight:bold; font-size:14px;}
 .favorites_form {margin-top:0;}
 .help {cursor:help; font-weight:bold; line-height:16px;}
 .help img {vertical-align:bottom;}
+.mailto{background-image:url(images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px; line-height:20px; vertical-align:bottom;}
 .menuitem {text-decoration:none; font-size:11px; padding:1px;}
 .menuitem_hover {text-decoration:none; font-size:11px; padding:1px;}
 .submenu {text-decoration:none; font-size:11px; background-color:#edf7fd; border:solid #81a9cb 1px; white-space:nowrap; visibility:hidden; position:absolute; padding:5px;}

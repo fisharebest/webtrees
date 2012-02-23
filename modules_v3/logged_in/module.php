@@ -41,41 +41,12 @@ class logged_in_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		// List active users
-		$NumAnonymous = 0;
-		$loggedusers = array ();
-		foreach (get_logged_in_users() as $user_id=>$user_name) {
-			if (WT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')) {
-				$loggedusers[$user_id]=$user_name;
-			} else {
-				$NumAnonymous++;
-			}
-		}
-
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		$title=$this->getTitle();
-		$content='<table>';
-		$LoginUsers=count($loggedusers);
-		if ($LoginUsers==0 && $NumAnonymous==0) {
-			$content.='<tr><td><b>' . WT_I18N::translate('No logged-in and no anonymous users') . '</b></td></tr>';
-		}
-		if ($NumAnonymous>0) {
-			$content.='<tr><td><b>' . WT_I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $NumAnonymous, $NumAnonymous) . '</b></td></tr>';
-		}
-		if ($LoginUsers>0) {
-			$content.='<tr><td><b>' . WT_I18N::plural('%d logged-in user', '%d logged-in users', $LoginUsers, $LoginUsers) . '</b></td></tr>';
-		}
-		if (WT_USER_ID) {
-			foreach ($loggedusers as $user_id=>$user_name) {
-				$content .= "<tr><td>".PrintReady(getUserFullName($user_id))." - ".$user_name;
-				if (WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
-					$content .= "<br><a href=\"#\" onclick=\"return message('" . $user_name . "');\">" . WT_I18N::translate('Send Message') . "</a>";
-				}
-				$content .= "</td></tr>";
-			}
-		}
-		$content .= "</table>";
+		$content  = '<div>';
+		$content .= whoisonline();
+		$content .= "</div>";
 
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';

@@ -329,6 +329,38 @@ function logout_link($extra='') {
 	}
 }
 
+//generate Who is online list
+function whoisonline() {
+	$NumAnonymous = 0;
+	$loggedusers = array ();
+	$content='';
+	foreach (get_logged_in_users() as $user_id=>$user_name) {
+		if (WT_USER_IS_ADMIN || get_user_setting($user_id, 'visibleonline')) {
+			$loggedusers[$user_id]=$user_name;
+		} else {
+			$NumAnonymous++;
+		}
+	}
+	$LoginUsers=count($loggedusers);
+	$content .= WT_I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $NumAnonymous, $NumAnonymous). '&nbsp;and&nbsp;';
+	$content .= WT_I18N::plural('%d logged-in user', '%d logged-in users', $LoginUsers, $LoginUsers);
+	$content .= '<p style="margin:5px 0 0 0; padding:0; line-height:20px;">';
+	if (WT_USER_ID) {
+		$i=0;
+		foreach ($loggedusers as $user_id=>$user_name) {
+			$content .= PrintReady(getUserFullName($user_id))." - ".$user_name;
+			if (WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
+				$content .= "<a class=\"mailto\" href=\"#\" onclick=\"return message('" . $user_name . "')\" title=\"" . WT_I18N::translate('Send Message') . "\">&nbsp;&nbsp;&nbsp;&nbsp;</a>";
+			}
+			$i++;
+			if ($i>0 && $i<$LoginUsers)$content .= "&nbsp;|&nbsp;";
+		}
+	}
+	$content .= '</p>';
+	return $content;
+}
+
+
 // Print a link to allow email/messaging contact with a user
 // Optionally specify a method (used for webmaster/genealogy contacts)
 function user_contact_link($user_id) {
