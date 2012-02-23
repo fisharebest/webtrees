@@ -42,6 +42,9 @@ function helpPopup(which, mod, title) {
 			modal: true,
 			width: 500
 	});
+	jQuery(".ui-widget-overlay").live("click", function (){
+		jQuery("div:ui-dialog:visible").dialog("close");
+	});
 	return false;
 }
 function closeHelp() {
