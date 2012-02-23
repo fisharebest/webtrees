@@ -46,15 +46,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		$title=get_gedcom_setting(WT_GED_ID, 'title');
-		$content = '<div class="center"><br>';
-		if ($SHOW_COUNTER) {
-			$content .=  WT_I18N::translate('Hit Count:')." ".$hitCount.'<br>';
-		}
-		if (WT_USER_GEDCOM_ADMIN) {
-			$content .=  "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Change the blocks on this page').'</a>';
-		}
-		$content .=  '</div>';
-
+		$content = '';
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';
 		} else {

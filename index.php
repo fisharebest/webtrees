@@ -137,15 +137,22 @@ if ($blocks['side']) {
 	echo '</div>';
 }
 
-// Ensure there is always way to configure the blocks
-if ($ctype=='user' && !in_array('user_welcome', $blocks['main']) && !in_array('user_welcome', $blocks['side'])) {
-	echo '<div align="center">';
+// link for changing blocks
+if ($ctype=='user') {
+	echo '<div class="change_blocks" style="clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;">';
 	echo "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".rawurlencode(WT_USER_NAME)."&amp;ctype=user', '_blank', indx_window_specs);\">".WT_I18N::translate('Change the blocks on this page').'</a>';
+	if ($SHOW_COUNTER) {
+		echo '&nbsp;|&nbsp;'.WT_I18N::translate('Hit Count:')." ".$hitCount.'<br>';
+	}
 	echo '</div>';
 }
-if (WT_USER_IS_ADMIN && $ctype=='gedcom' && !in_array('gedcom_block', $blocks['main']) && !in_array('gedcom_block', $blocks['side'])) {
-	echo '<div align="center">';
+if (WT_USER_IS_ADMIN && $ctype=='gedcom') {
+	echo '<div class="change_blocks" style="clear:both; margin:0 auto; text-align:center; padding:25px 0 0 0; width:400px;">';
 	echo "<a href=\"#\" onclick=\"window.open('index_edit.php?name=".WT_GEDURL."&amp;ctype=gedcom', '_blank', indx_window_specs);\">".WT_I18N::translate('Change the blocks on this page').'</a>';
+	if ($SHOW_COUNTER) {
+		echo '&nbsp;|&nbsp;'.WT_I18N::translate('Hit Count:')." ".$hitCount.'<br>';
+	}
 	echo '</div>';
 }
+
 echo '</div>'; // <div id="home-page">
