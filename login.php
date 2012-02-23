@@ -172,7 +172,7 @@ default:
 		if (!empty($message)) echo '<span class="error"><br><b>', $message, '</b><br><br></span>';
 		echo '<div>
 			<label for="username">', WT_I18N::translate('Username'),
-			'<input type="text" id="username" name="username" value="', htmlspecialchars($username), '" class="formField">
+			'<input type="text" id="username" name="username" value="', htmlspecialchars($username), '" class="formField" autofocus>
 			</label>
 		</div>
 		<div>
@@ -207,9 +207,6 @@ default:
 	echo '</div>'; //"login-box"
 		
 	echo '</div>'; // close "login-page"
-	echo '<script type="text/javascript">
-		document.login-form.username.focus();
-	</script>';
 	break;
 
 case 'requestpw':
