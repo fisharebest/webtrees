@@ -27,7 +27,6 @@
 /* Ash Palette */
 
 /* Header */
-
 #header {
 background:#971702;
 color: #FFFFFF;
@@ -38,62 +37,36 @@ text-decoration:none;
 color:#FFFFFF;}
 
 /* Tbls and menus  */
-
-.descriptionbox,
-.descriptionbox > a,
-.topbottombar,
-.topbottombar a,
-.topbottombar h2,
-.list_label,
-.list_label a,
-.facts_label,
-.facts_label a,
-.facts_label .date,
-.facts_label03,
-.facts_table h2,
-.facts_table .descriptionbox a,
-.blockcontent .facts_label,
-#find-header, #find-media,
-#search-page-table
+.descriptionbox, .descriptionbox a, .facts_label03,
+.topbottombar,.topbottombar a,.topbottombar h2,
+.facts_label,.facts_label a, .facts_label h2,.facts_label .date,
+.list_label, .list_label a, #search-page-table,
+#lightbox_content span a,#lightbox_content span a:hover,
+#separator, .use-sidebar #separator, #family_nav, 
+.ui-state-active a:link, .ui-state-active a:visited 
 {
 background-color:#af2604;
 color: #ffffff;
 }
 
-/* Indi Page  */
-.ui-state-active,.ui-widget-content .ui-state-active {
-background:#af2604;
-}
-
-/* sidebar */
-#separator, .use-sidebar #separator {
-background-color:#af2604;
-}
-
-/*  Top Menu  */
-
+/* Top Menu  */
 #topMenu {
 background:#311900;
 }
 
-
 /* Base */
-
-#indi_header h3.person_box,.makeMenu ul li a:hover,.descriptionbox .submenu a,.blockcontent,
-.list_value,.list_value_wrap,.tab_cell_active,.news_box,.optionbox,.submenuitem_hover,.submenuitem_hover_rtl,
-#find-output,#find-output-special,#search-page-table .value,#login-form,#login-form a,#new_passwd_form,#register-form {
-background:#f6edd5;
-}
-
-#indi_header h3.person_box,#indi_header h3.person_boxF ,#indi_header h3.person_boxNN,.odd
-{
+#indi_header h3,
+.blockcontent,#search,#search-page-table .value,
+.makeMenu ul li a:hover,
+.optionbox,.optionbox a,
+.list_value,.list_value_wrap,.list_value_wrap a,
+#login-form,#new_passwd_form,#register-form {
 background:#f6edd5;
 }
 
 /* Alerts */
-
 .error,.warning,.red {
-color:#971702;
+color:#f00;
 }
 
 .facts_labelred,.facts_valuered {
@@ -101,21 +74,8 @@ border:solid #971702 2px;
 }
 
 /* Light Text */
-
 .makeMenu li a {
 color:#FFFFFF;
-}
-
-.ui-state-active a:link,.ui-tabs.ui-tabs-nav li.ui-tabs-selected a {
-color:#ffffff;
-}
-
-#lightbox_content span a,#lightbox_content span a:hover {
-color:#ffffff;background:#af2604;
-}
-
-#lightbox_content span a:hover {
-color:#FF0000;background: #af2604;
 }
 
 /*  Dark Text Color  */
@@ -126,5 +86,3 @@ border-color:#fff #494949 #494949 #fff;
 .subheaders {
 color:#494949;
 }
-
-/* end of palette */
