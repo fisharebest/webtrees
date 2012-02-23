@@ -73,7 +73,7 @@ if ($action=="compose") {
 	} else {
 		$news = array();
 		$news["username"] = $username;
-		$news["date"] = client_time();
+		$news["date"] = time();
 		$news["title"] = "";
 		$news["text"] = "";
 	}
@@ -100,7 +100,6 @@ if ($action=="compose") {
 	echo "</table>";
 	echo "</form>";
 } else if ($action=="save") {
-	$date=time()-$_SESSION["timediff"];
 	if (empty($title)) $title="No Title";
 	if (empty($text)) $text="No Text";
 	$message = array();
@@ -108,7 +107,7 @@ if ($action=="compose") {
 		$message["id"]=$news_id;
 	}
 	$message["username"] = $username;
-	$message["date"]=$date;
+	$message["date"]=time();
 	$message["title"] = $title;
 	$message["text"] = $text;
 	if (addNews($message)) {
