@@ -75,7 +75,7 @@ class TreeView {
 		$r = '<a name="tv_content"></a><div id="'.$this->name.'_out" class="tv_out">';
 
 		// Add the toolbar
-		$r.='<div id="tv_tools"><ul>'.
+		$r.='<div id="tv_tools" class="noprint"><ul>'.
 			'<li id="tvbCompact" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/compact.png" alt="'.WT_I18N::translate('Use compact layout').'" title="'.WT_I18N::translate('Use compact layout').'"></li>'.
 			// TODO: this is temporarily disabled (as it sends a flood of AJAX requests?)
 			//'<li id="tvbOpen" class="tv_button"><img src="'.$WT_IMAGES["media"].'" alt="o" title="'.WT_I18N::translate('Show all details').'"></li>'.

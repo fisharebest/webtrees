@@ -95,15 +95,6 @@ function TreeViewHandler(treeviewInstance, allPartners) {
 		}
 	});
 	
-	// Intercept the scroll event to keep the toolbox available
-	jQuery(window).scroll(function(){
-		if (jQuery(window).scrollTop() > tv.container.offset().top) {
-			tv.toolbox.css("position", "fixed");
-		} else {
-			tv.toolbox.css("position", "absolute");
-		}
-	});
-	
 	tv.centerOnRoot(); // fire ajax update if needed, which call setComplete() when all is loaded
 	return false;
 }

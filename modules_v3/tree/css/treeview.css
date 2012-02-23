@@ -222,24 +222,24 @@ table#tvTreeBorder td, #tv_tree {
 
 /* The toolbox style. Button's images come from the active theme */
 #tv_tools, #tvStylesSubmenu {
-  display: inline-block;
-  position: absolute;
-  left: 0;
-  top: 0;
- 	padding: 0;
- 	margin: 0; /* required */
-  z-index: 90; /* should be < 100 because 100 is the z-index of WT menus */
-  background-color: #efefef; /* customizable */
-  border: 1px outset #dfdfdf; /* customizable */
-  -moz-border-radius: 4px; /* customizable */
-  -webkit-border-radius: 4px; /* customizable */
-  -khtml-border-radius: 4px; /* customizable */
-  border-radius: 4px; /* customizable */
-  box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -webkit-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -moz-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -khtml-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcfdf, offX=1, offY=1, positive=true); /* customizable */  
+	display: inline-block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	padding: 0;
+	margin: 0; /* required */
+	z-index: 90; /* should be < 100 because 100 is the z-index of WT menus */
+	background-color: #efefef; /* customizable */
+	border: 1px outset #dfdfdf; /* customizable */
+	-moz-border-radius: 4px; /* customizable */
+	-webkit-border-radius: 4px; /* customizable */
+	-khtml-border-radius: 4px; /* customizable */
+	border-radius: 4px; /* customizable */
+	box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
+	-webkit-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
+	-moz-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
+	-khtml-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
+	filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcfdf, offX=1, offY=1, positive=true); /* customizable */  
 }
 
 /* styles submenu */
