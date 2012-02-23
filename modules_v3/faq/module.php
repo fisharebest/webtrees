@@ -283,9 +283,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			" WHERE module_name=?".
 			" AND bs1.setting_name='header'".
 			" AND bs2.setting_name='faqbody'".
-			" AND (gedcom_id IS NULL OR gedcom_id=?)".
+			" AND IFNULL(gedcom_id, ?)=?".
 			" ORDER BY block_order"
-		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 
 		// Define your colors for the alternating rows
 		echo '<h2 class="center">', WT_I18N::translate('Frequently asked questions'), '</h2>';
@@ -348,9 +348,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			" WHERE module_name=?".
 			" AND bs1.setting_name='header'".
 			" AND bs2.setting_name='faqbody'".
-			" AND (gedcom_id IS NULL OR gedcom_id=?)".
+			" AND IFNULL(gedcom_id, ?)=?".
 			" ORDER BY block_order"
-		)->execute(array($this->getName(), WT_GED_ID))->fetchAll();
+		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 
 		$min_block_order=WT_DB::prepare(
 			"SELECT MIN(block_order) FROM `##block` WHERE module_name=?"
@@ -414,15 +414,20 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	public function defaultMenuOrder() {
 		return 40;
 	}
-	// Extend class WT_Module
-	public function defaultAccessLevel() {
-		return WT_PRIV_HIDE;
-	}
+
 	// Implement WT_Module_Menu
 	public function getMenu() {
 		global $SEARCH_SPIDER;
 
 		if ($SEARCH_SPIDER) {
+			return null;
+		}
+
+		$faqs=WT_DB::prepare(
+			"SELECT block_id FROM `##block` b WHERE module_name=? AND IFNULL(gedcom_id, ?)=?"
+		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
+		
+		if (!$faqs) {
 			return null;
 		}
 
