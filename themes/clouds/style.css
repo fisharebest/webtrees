@@ -1234,21 +1234,19 @@ overflow:visible;
 }
 
 .news_box {
-padding:3pt;
+padding:5pt 5px;
+border-top:solid #ccc 1px;
 }
-
 .news_title {
-color:black;
-font-size:1.10em;
-font-weight:bold;
+color:#000;
+font-size:13px;
+font-weight:700;
 }
 
 .news_date {
-color: #000;
-margin-bottom: 12px;
+color:#000;
+margin-bottom:12px;
 }
-
-
 
 .person0 {
 background:#ddf;
@@ -2427,6 +2425,12 @@ html[dir='rtl'] .DataTables_sort_wrapper {margin-right:20px;}
 html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0;margin-right:-20px;}
 
 /* ==== List styles ===== */
+
+#firstfocus {
+font-size:12px;
+width:330px;
+}
+
 #search-result-tabs h3,#place-heirarchy h2,#place-heirarchy h4 {
 text-align:center;
 }
