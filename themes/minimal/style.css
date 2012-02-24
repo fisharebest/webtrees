@@ -725,12 +725,7 @@ html[dir='rtl'] .icon, html[dir='rtl'] .adminicon {
 	margin: 10px;
 }
 
-.helpheader {
-	margin: 10px;
-	font-size: 18px;
-	font-weight: bold;
-	color: black;
-}
+.helpheader {}
 
 .helpstart {
 	margin: 10px;

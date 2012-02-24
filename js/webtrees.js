@@ -34,17 +34,19 @@ var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollb
 var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
 
-function helpPopup(which, mod, title) {
+
+function helpPopup(which, mod) {
 	url='help_text.php?help='+which+'&mod='+mod;
-	dialog=jQuery('<div title="'+title+'"></div>')
-		.load(url)
+	dialog=jQuery('<div></div>')
+		.load(url+' .helpcontent')
 		.dialog({
 			modal: true,
 			width: 500
-	});
+		});
 	jQuery(".ui-widget-overlay").live("click", function (){
 		jQuery("div:ui-dialog:visible").dialog("close");
 	});
+	jQuery('.ui-dialog-title').load(url+' .helpheader');
 	return false;
 }
 function closeHelp() {

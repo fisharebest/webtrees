@@ -409,7 +409,7 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 
 .help img {vertical-align:bottom;}
 .help{cursor:help;font-weight:700;}
-.helpheader{color:#000;font-size:16px;font-weight:700;}
+.helpheader {}
 .helpstart{color:#00f;font-size:14px;font-weight:700;text-decoration:none;}
 .helptext{color:#000;}
 .hit-counter{background:#000;color:#FFF;font-weight:700;}

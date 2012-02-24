@@ -624,9 +624,9 @@ function print_privacy_error() {
 // Print a link for a popup help window
 function help_link($help_topic, $module='') {
 	global $WT_USE_HELPIMG, $WT_IMAGES;
-
+	
 	return
-		'<span class="help icon-help-15" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\', \''.WT_I18N::translate('Help').'\'); return false;">&nbsp;'.
+		'<span class="help icon-help-15" onclick="helpPopup(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
 		($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
 		'&nbsp;</span>';
 }
