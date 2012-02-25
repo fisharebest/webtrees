@@ -103,23 +103,6 @@ default:
 			Zend_Session::writeClose();
 			exit;
 		}
-	} else {
-		$tSERVER_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), WT_SERVER_NAME.WT_SCRIPT_PATH);
-		$tLOGIN_URL = preg_replace(array("'https?://'", "'www.'", "'/$'"), array("","",""), get_site_setting('LOGIN_URL'));
-		if (empty($url)) {
-			if ((isset($_SERVER['HTTP_REFERER'])) && ((stristr($_SERVER['HTTP_REFERER'],$tSERVER_URL)!==false)||(stristr($_SERVER['HTTP_REFERER'],$tLOGIN_URL)!==false))) {
-				$url = basename($_SERVER['HTTP_REFERER']);
-				if (stristr($url, ".php")===false) {
-					$url = "index.php?ged=$GEDCOM";
-				}
-			}
-			else {
-				if (isset($url)) {
-					if (stristr($url,WT_SERVER_NAME.WT_SCRIPT_PATH)!==false) $url = WT_SERVER_NAME.WT_SCRIPT_PATH;
-				}
-				else $url = "individual.php";
-			}
-		}
 	}
 
 	$controller=new WT_Controller_Base();
