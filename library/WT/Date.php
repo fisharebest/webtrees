@@ -315,7 +315,7 @@ class WT_Date {
 
 		switch ($format) {
 		case 0: // Years - integer only (for statistics, rather than for display)
-			if ($jd && $d1->MinJD()>=$jd) {
+			if ($jd && $d1->MinJD() && $d1->MinJD()<=$jd) {
 				return $d1->MinDate()->GetAge(false, $jd, false);
 			} else {
 				return -1;
