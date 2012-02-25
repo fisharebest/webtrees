@@ -70,7 +70,7 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 		}
 	}
 } else {
-	header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+	header($_SERVER['SERVER_PROTOCOL'].' 404 Not Found');
 	$controller->pageHeader();
 	echo '<p class="ui-state-error">', WT_I18N::translate('This source does not exist or you do not have permission to view it.'), '</p>';
 	exit;
