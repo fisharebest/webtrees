@@ -1627,12 +1627,13 @@ class WT_Stats {
 			." birth.d_gid AS id,"
 			." MIN(birth.d_julianday1) AS age"
 			." FROM"
-			." `##dates` AS birth," // assume all events occur *after* birth
+			." `##dates` AS birth,"
 			." `##individuals` AS indi"
 			." WHERE"
 			." indi.i_id=birth.d_gid AND"
 			." indi.i_gedcom NOT REGEXP '\n1 (".WT_EVENTS_DEAT.")' AND"
 			." birth.d_file={$this->_ged_id} AND"
+			." birth.d_fact='BIRT' AND"
 			." birth.d_file=indi.i_file AND"
 			." birth.d_julianday1<>0"
 			.$sex_search
