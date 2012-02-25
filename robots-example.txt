@@ -47,6 +47,7 @@ Allow: /repo.php
 Allow: /site-offline.php
 Allow: /site-unavailable.php
 Allow: /source.php
+Disallow: /
 
 # Disallow all other robots
 User-Agent: *
