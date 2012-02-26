@@ -62,43 +62,31 @@ html[dir='rtl'] .title{float:right;margin-right:12px;}
 
 #flash-messages{clear:both;}
 
-/* set menu container */
-#topMenu{float:left;height:51px;width:100%;}
-
 /* Top Menu  */
-#topMenu ul{margin:0;padding:0;}
-#topMenu ul li{float:left;list-style:none;position:relative;}
-#topMenu ul li a{display:block;font-size:14px;height:12px;margin:auto;text-align:center;text-decoration:none;}
-#topMenu > ul > li > a{height:27px;}
-
-html[dir='rtl'] #topMenu{float:right;}
-html[dir='rtl'] #topMenu ul li{float:right;}
-
-/* Submenu one */
 #topMenu{float:left;height:51px;width:100%;}
-#topMenu ul ul{background:#fff;border:1px solid #ccc;display:none;left:0;position:absolute;right:auto;top:40px;z-index:2001;}
-#topMenu ul ul li a{font-size:12px;padding:5px;text-align:left;white-space:nowrap;}
+#topMenu ul {margin:0;padding:0;}
+html[dir='rtl'] #topMenu{float:right;}
 
-html[dir='rtl'] #topMenu ul ul{right:0;left:auto;}
-html[dir='rtl'] #topMenu ul ul li a{text-align:right;float:right;padding-right:30px;}
+#main-menu > li > a {display: block; height: 27px;}
+#main-menu li{float:left;list-style:none;position:relative;}
+html[dir='rtl'] #main-menu li{float:right;}
 
-/* Submenu two */
-#topMenu ul ul ul{display:none!important;}
+#main-menu ul{background:#fff;border:1px solid #ccc;display:none;left:0;position:absolute;right:auto;top:40px;z-index:2001;}
+html[dir='rtl'] #main-menu ul{right:0;left:auto;}
 
-/* Hover Layout  */
-#topMenu ul li:hover ul{display:block;}
-#topMenu ul li:hover li{float:none;}
-#topMenu ul li:hover li a{text-decoration:none;}
-#topMenu ul li li a:hover{width:auto;}
-#topMenu ul ul li:hover ul{display:block !important;margin-left:118px;margin-top:-35px;position:absolute;}
+#main-menu ul li a{font-size:12px;padding:5px;text-align:left;white-space:nowrap;}
+html[dir='rtl'] #main-menu ul li a{text-align:right;float:right;padding-right:30px;}
 
-html[dir='rtl'] #topMenu ul ul li:hover ul{margin-left:auto;margin-right:118px;}
+#main-menu #menu-chart li ul{display:none;}
+#main-menu li:hover ul{display:block; } /* main menu hover */
+#main-menu li:hover li{float:none;}
 
-/*  Mainmenu Icons */
-#topMenu > ul > li{background-image:url(../images/sprites-top-menu.png);background-repeat:no-repeat;height:40px;line-height:40px;margin:7px 0 0 16px;text-indent:32px;width:40px;}
-html[dir='rtl'] #topMenu > ul > li{left:auto;margin:7px 16px 0 0;}
+#main-menu #menu-chart li:hover ul{display:block;left:100%;right:auto; margin-top:-47px;position:absolute;}
+html[dir='rtl'] #main-menu #menu-chart li:hover ul{right:100%;left:auto;} 
 
-/*  Submenu Icons  */
+#main-menu > li{background-image:url(../images/sprites-top-menu.png);background-repeat:no-repeat;height:40px;line-height:40px;margin:7px 0 0 16px;text-indent:32px;width:40px;}
+html[dir='rtl'] #main-menu > li{margin:7px 16px 0 0px;}
+
 #main-menu li ul li{background-image:url(../images/sprites-sub-menu.png);background-repeat:no-repeat;height:22px;line-height:15px;margin:5px 0;text-indent:22px;}
 html[dir='rtl'] #main-menu li ul li{text-indent:0;}
 
@@ -422,7 +410,7 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 .link{font-size:11px;text-align:center;}
 .listlog{color:#555;line-height:20pt;}
 
-.name_head{font-size:16px;font-weight:700;letter-spacing:.2px;}
+.name_head{color:#333;font-size:16px;font-weight:700;line-height:2;padding:0 5px;}
 .news_box{padding:5pt 5px;border-top:solid #ccc 1px;}
 .news_title{color:#000;font-size:13px;font-weight:700;}
 .news_date{color:#000;margin-bottom:12px;}
@@ -451,8 +439,8 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 .person4{background:#f55;border:outset #f55 1px;border-radius:3px;vertical-align:top;}
 .person5{background:#5f5;border:outset #5f5 1px;border-radius:3px;vertical-align:top;}
 
-input,button,textarea{border-width:1px;}
-input,textarea{padding-left:0;padding-right:3px;}
+button{border-width:1px;}
+input,textarea{padding-left:0;padding-right:3px;border-width:1px;}
 html[dir="rtl"] input, textarea{padding-left:10px;padding-right:0;}
 
 .optionbox{border:solid #999 1px;border-radius:3px;font-size:12px;padding:3px;vertical-align:top;white-space:nowrap;}
@@ -461,7 +449,6 @@ html[dir="rtl"] .optionbox > input{margin-right:5px;}
 
 .descriptionbox{border:1px solid #999;border-radius:3px;padding:3px;vertical-align:top;white-space:nowrap;}
 .formField{font-size:12px;width:140px;}
-.name_head{color:#333;font-size:16px;font-weight:700;line-height:2;padding:0 5px;}
 .rela,.histo{opacity:0.67px;}
 .sex_image{border:none;height:9px;padding-left:3px;padding-right:3px;vertical-align:middle;width:9px;}
 .starredname{text-decoration:underline;}
@@ -571,12 +558,13 @@ a.showit:hover > span{background:#444;border-bottom:2px solid #000;border-left:1
 #field_table select{min-width:100px;}
 
 /* login.php  */
+#login-register-page h2,#login-box,#register-box{text-align:center;}
+
 #login-register-page .warning{margin:20px auto;text-align:center;}
 #login-register-page .back{font-size:14px;font-weight:700;text-align:center;}
 #login-register-page .confirm{margin:20px auto;text-align:justify;width:500px;}
 #login-register-page .confirm p{font-size:14px;font-weight:700;}
 #login-register-page .confirm p+p{font-size:12px;font-weight:400;}
-#login-register-page h2,#login-box,#register-box{text-align:center;}
 
 #login-text,#register-text,#user-verify{margin:20px auto;text-align:justify;width:610px;}
 
@@ -585,11 +573,7 @@ a.showit:hover > span{background:#444;border-bottom:2px solid #000;border-left:1
 #login-form label,#new_passwd_form label,#verify-form label{display:block;text-align:right;}
 #login-form label input,#new_passwd_form label input,#verify-form input{margin:0 10px;width:140px;}
 
-.login_block_block #login-form,.login_block_block #new_passwd_form{background:none;border:0;}
-
-html[dir='rtl'] #login-form label,html[dir='rtl'] #new_passwd_form label,html[dir='rtl'] #register-form label,html[dir='rtl'] #verify-form label{text-align:left;}
-
-#new_passwd_form h4,#register-form h4{font-weight:400;text-align:center;}
+#new_passwd_form h4{font-weight:400;text-align:center;}
 
 #register-form div,#verify-form div{text-align:right;}
 #register-form label input{margin:0 10px;width:220px;}
@@ -597,6 +581,9 @@ html[dir='rtl'] #login-form label,html[dir='rtl'] #new_passwd_form label,html[di
 #register-form label select{margin:0 10px;width:225px;}
 #register-form textarea{vertical-align:top;width:212px;}
 #register-form div#registration-submit{text-align:center;}
+#register-form h4{font-weight:400;text-align:center;}
+
+html[dir='rtl'] #login-form label,html[dir='rtl'] #new_passwd_form label,html[dir='rtl'] #register-form label,html[dir='rtl'] #verify-form label{text-align:left;}
 
 /* reportengine.php */
 #reportengine-page table{margin:20px auto;}
@@ -821,8 +808,9 @@ html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-c
 .use-sidebar #separator{background-image:url('../images/general_sprite.png');background-position:-1px 100px;background-repeat:no-repeat;}
 .use-sidebar #indi_left{width:77%;}
 .use-sidebar #sidebar{display:block;}
-.use-sidebar.sidebar-at-right #sidebar,.sidebar-at-right #separator,html[dir='rtl'] #indi_left,html[dir='rtl'] #tabs{float:right;}
+.use-sidebar.sidebar-at-right #sidebar,.sidebar-at-right #separator {float:right;}
 
+html[dir='rtl'] #indi_left,html[dir='rtl'] #tabs{float:right;}
 html[dir='rtl'] #sidebar{margin:5px 0 0 2px;}
 html[dir='rtl'] #separator{background-image:url('../images/general_sprite.png');background-repeat:no-repeat;background-position:-1px 100px;}
 html[dir='rtl'] .use-sidebar #separator{background-image:url('../images/general_sprite.png');background-repeat:no-repeat;background-position:-26px 100px;}
@@ -909,7 +897,7 @@ html[dir='rtl'] #search-page-table .value{margin:0 170px 0 0;}
 
 @media print{
 	form,button,input{display:none;}
-	#toplinks,#header select,#header input,#footer select,#backprint, #sidebar{display:none;}
+	#header select,#header input,#footer select,#backprint, #sidebar{display:none;}
 	#header,#footer,.noprint{display:none!important;}
 	#CB_All{display:none;}
 	.lifespan_outer{position:relative;width:auto;height:auto;overflow:visible;border:none;}
