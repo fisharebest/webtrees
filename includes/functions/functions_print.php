@@ -342,8 +342,17 @@ function whoisonline() {
 		}
 	}
 	$LoginUsers=count($loggedusers);
-	$content .= '<div class="logged_in_count">'.WT_I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $NumAnonymous, $NumAnonymous). '&nbsp;|&nbsp;';
-	$content .= WT_I18N::plural('%d logged-in user', '%d logged-in users', $LoginUsers, $LoginUsers).'</div>';
+	$content .= '<div class="logged_in_count">';
+	if ($NumAnonymous) {
+		$content .= WT_I18N::plural('%d anonymous logged-in user', '%d anonymous logged-in users', $NumAnonymous, $NumAnonymous);
+		if ($LoginUsers) {
+			$content .=  '&nbsp;|&nbsp;';
+		}
+	}
+	if ($LoginUsers) {
+		$content .= WT_I18N::plural('%d logged-in user', '%d logged-in users', $LoginUsers, $LoginUsers);
+	}
+	$content .= '</div>';
 	$content .= '<div class="logged_in_list">';
 	if (WT_USER_ID) {
 		$i=0;
