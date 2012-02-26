@@ -447,7 +447,7 @@ a:link,a:visited,a:active,a:hover,.menuitem a,.nameZoom {
 color:#039;
 }
 
-a.link:hover {
+a:hover, a.link:hover {
 color:red;
 text-decoration:none;
 }
