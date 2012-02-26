@@ -348,14 +348,12 @@ function whoisonline() {
 	if (WT_USER_ID) {
 		$i=0;
 		foreach ($loggedusers as $user_id=>$user_name) {
-//			if ($i=0)$content .= "|&nbsp;";
 			$content .= '<div class="logged_in_name">';
 			$content .= PrintReady(getUserFullName($user_id))." - ".$user_name;
 			if (WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
 				$content .= "<a class=\"mailto\" href=\"#\" onclick=\"return message('" . $user_name . "')\" title=\"" . WT_I18N::translate('Send Message') . "\">&nbsp;&nbsp;&nbsp;&nbsp;</a>";
 			}
 			$i++;
-//			if ($i>0 && $i<$LoginUsers)$content .= "&nbsp;|&nbsp;";
 			$content .= '</div>';
 		}
 	}
