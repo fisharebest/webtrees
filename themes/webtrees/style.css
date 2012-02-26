@@ -150,7 +150,6 @@ a:hover .nameZoom {color:#f00; font-weight:bold; font-size:14px;}
 .favorites_form {margin-top:0;}
 .help {cursor:help; font-weight:bold; line-height:16px;}
 .help img {vertical-align:bottom;}
-.mailto{background-image:url(images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px; line-height:20px; vertical-align:bottom;}
 .menuitem {text-decoration:none; font-size:11px; padding:1px;}
 .menuitem_hover {text-decoration:none; font-size:11px; padding:1px;}
 .submenu {text-decoration:none; font-size:11px; background-color:#edf7fd; border:solid #81a9cb 1px; white-space:nowrap; visibility:hidden; position:absolute; padding:5px;}
@@ -453,6 +452,10 @@ html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-c
 .blockcontent .list_table {border-spacing:0; border:solid #81a9cb 1px; border-right:0;}
 .blockcontent .list_value, .blockcontent  .list_value_wrap {border:0; border-top:solid #81a9cb 1px; border-right:solid #81a9cb 1px;}
 .blockheader {font-weight:bold;}
+ 
+ /* ======= Who is online block ========== */
+.logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
+.mailto{background-image:url(images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px;}
 
 /* ======= FAQ table styles ========== */
 table.faq   {background-color:#e0e0e0; margin:5px 0 50px 5px;width:98%;}

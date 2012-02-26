@@ -1424,3 +1424,7 @@ html[dir='rtl'] fieldset {text-align:right;}
 #search-page-table p {margin:0;}
 html[dir='rtl'] #search-page-table .label{float:right;}
 html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
+
+ /* ======= Who is online block ========== */
+.logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
+.mailto{background-image:url(images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px; font-size: 14px;}

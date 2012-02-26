@@ -903,6 +903,10 @@ html[dir='rtl'] #sb_content_extra_info .editfacts,.find-media-details{float:left
 html[dir='rtl'] #search-page-table .label{float:right;}
 html[dir='rtl'] #search-page-table .value{margin:0 170px 0 0;}
 
+ /* ======= Who is online block ========== */
+.logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
+.mailto{background-image:url(../images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px;}
+
 @media print{
 	form,button,input{display:none;}
 	#toplinks,#header select,#header input,#footer select,#backprint, #sidebar{display:none;}

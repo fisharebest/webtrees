@@ -31,10 +31,6 @@ if (!defined('WT_WEBTREES')) {
 echo '</div>'; // <div id="content">
 if ($view!='simple') {
 	echo '<div id="footer">';
-	echo '<div style="margin:auto; background-color:#EDF7FD; border:solid #81A9CB 1px; padding:5px; text-align:auto;">';
-	echo '<span style="font-weight:700;">'. WT_I18N::translate('Who is online'). ':&nbsp</span>';
-	echo whoisonline();
-	echo '</div>';
 	echo contact_links();
 	echo '<p class="logo">';
 	echo '<a href="', WT_WEBTREES_URL, '" target="_blank">';
