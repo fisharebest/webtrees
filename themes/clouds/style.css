@@ -157,8 +157,8 @@ html[dir='rtl'] #topMenu ul ul li {right:auto;clear:right;text-align:right;}
 html[dir='rtl'] #topMenu > ul ul li a {text-align:right;padding-right:30px;}
 
 /* Submenu horizontal */
-#topMenu ul ul ul {
-display:none !important;
+#main-menu #menu-chart li ul{
+display:none;
 }
 
 /* Set up hover layout and style */
@@ -178,14 +178,14 @@ text-decoration:none;
 width:auto;
 }
 
-#topMenu ul ul li:hover ul {
-display:block !important;
-margin-left:118px;
+#main-menu #menu-chart li:hover ul {
+display:block;
+margin-left:100%;
 margin-top:-35px;
 position:absolute;
 }
 
-html[dir='rtl'] #topMenu ul  ul li:hover ul {margin-left:auto;margin-right:118px;}
+html[dir='rtl'] #topMenu ul  ul li:hover ul {margin-left:auto;margin-right:100%;}
 
 /*  Mainmenu Icons*/
 #topMenu > ul > li {
@@ -259,7 +259,7 @@ width:17px;
 #menu-chart-timeline li	{background-position:left -276px;} html[dir=rtl] #menu-chart-timeline li	{background-position:right -276px;}
 
 /* Lists Icons */
-#menu-list-obje	{background-position:left -299px;} html[dir=rtl] #menu-list-obj	{background-position:right -299px;}
+#menu-list-obje	{background-position:left -299px;} html[dir=rtl] #menu-list-obje{background-position:right -299px;}
 #menu-list-plac	{background-position:left -322px;} html[dir=rtl] #menu-list-plac{background-position:right -322px;}
 #menu-list-repo	{background-position:left -345px;} html[dir=rtl] #menu-list-repo{background-position:right -345px;}
 #menu-list-note	{background-position:left -368px;} html[dir=rtl] #menu-list-note{background-position:right -368px;}
