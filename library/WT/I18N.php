@@ -185,10 +185,10 @@ class WT_I18N {
 		$mo_files=glob(WT_ROOT.'language'.DIRECTORY_SEPARATOR.'*.mo');
 		$cache_key=md5(serialize($mo_files));
 
-		if (!($installed_languages=self::$cache->load($cache_key))) {
+		if (true || !($installed_languages=self::$cache->load($cache_key))) {
 			$installed_languages=array();
 			foreach ($mo_files as $mo_file) {
-				if (preg_match('/.*[\/\\](([a-z][a-z][a-z]?)(_[A-Z][A-Z])?)\.mo$/', $mo_file, $match)) {
+				if (preg_match('/^(([a-z][a-z][a-z]?)(_[A-Z][A-Z])?)\.mo$/', basename($mo_file), $match)) {
 					// launchpad does not support language variants.
 					// Until it does, we cannot support languages such as sr@latin
 					// See http://zendframework.com/issues/browse/ZF-7485
