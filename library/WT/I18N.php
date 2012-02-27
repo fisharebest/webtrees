@@ -185,7 +185,7 @@ class WT_I18N {
 		$mo_files=glob(WT_ROOT.'language'.DIRECTORY_SEPARATOR.'*.mo');
 		$cache_key=md5(serialize($mo_files));
 
-		if (true || !($installed_languages=self::$cache->load($cache_key))) {
+		if (!($installed_languages=self::$cache->load($cache_key))) {
 			$installed_languages=array();
 			foreach ($mo_files as $mo_file) {
 				if (preg_match('/^(([a-z][a-z][a-z]?)(_[A-Z][A-Z])?)\.mo$/', basename($mo_file), $match)) {
