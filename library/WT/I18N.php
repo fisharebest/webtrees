@@ -41,23 +41,36 @@ class WT_I18N {
 	static private $dir='';
 	static public  $collation;
 	static public  $list_separator;
+	static private $cache=null;
 
 	// Initialise the translation adapter with a locale setting.
 	// If null is passed, work out which language is needed from the environment.
 	static public function init($locale=null) {
 		global $WT_SESSION;
 
-		// The translation libraries work much faster with a cache.  Try to create one.
-		if (!is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
-			// We may not have permission - especially during setup, before we instruct
-			// the user to "chmod 777 /data"
-			@mkdir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache');
+		// The translation libraries only work with a cache.
+		$cache_options=array('automatic_serialization'=>true);
+
+		if (ini_get('apc.enabled')) {
+			self::$cache=Zend_Cache::factory('Core', 'Apc', $cache_options, array());
+		} else {
+			if (!is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
+				// We may not have permission - especially during setup, before we instruct
+				// the user to "chmod 777 /data"
+				@mkdir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache');
+			}
+			if (is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
+				self::$cache=Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir'=>WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache'));
+			} else {
+				// No cache available :-(
+				self::$cache=Zend_Cache::factory('Core', 'Zend_Cache_Backend_BlackHole', $cache_options, array(), false, true);
+			}
 		}
-		// If a cache directory exists, use it.
-		if (is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
-			$cache=Zend_Cache::factory('Core', 'File', array('automatic_serialization'=>true), array('cache_dir'=>WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache'));
-			Zend_Locale::setCache($cache);
-			Zend_Translate::setCache($cache);
+
+		// If we created a cache, use it.
+		if (self::$cache) {
+			Zend_Locale::setCache(self::$cache);
+			Zend_Translate::setCache(self::$cache);
 		}
 
 		$installed_languages=self::installed_languages();
@@ -169,12 +182,13 @@ class WT_I18N {
 
 	// Check which languages are installed
 	static public function installed_languages() {
-		static $installed_languages;
-		if (!is_array($installed_languages)) {
+		$mo_files=glob(WT_ROOT.'language'.DIRECTORY_SEPARATOR.'*.mo');
+		$cache_key=md5(serialize($mo_files));
+
+		if (!($installed_languages=self::$cache->load($cache_key))) {
 			$installed_languages=array();
-			$d=opendir(WT_ROOT.'language');
-			while (($f=readdir($d))!==false) {
-				if (preg_match('/^(([a-z][a-z][a-z]?)(_[A-Z][A-Z])?)\.mo$/', $f, $match)) {
+			foreach ($mo_files as $mo_file) {
+				if (preg_match('/.*\/(([a-z][a-z][a-z]?)(_[A-Z][A-Z])?)\.mo$/', $mo_file, $match)) {
 					// launchpad does not support language variants.
 					// Until it does, we cannot support languages such as sr@latin
 					// See http://zendframework.com/issues/browse/ZF-7485
@@ -190,7 +204,6 @@ class WT_I18N {
 					$installed_languages[$match[1]]=$tmp2.'|'.$tmp1;
 				}
 			}
-			closedir($d);
 			if (empty($installed_languages)) {
 				// We cannot translate this
 				die('There are no languages installed.  You must include at least one xx.mo file in /language/');
@@ -206,6 +219,7 @@ class WT_I18N {
 					list(,$value)=explode('|', $value);
 				}
 			}
+			self::$cache->save($installed_languages, $cache_key);
 		}
 		return $installed_languages;
 	}
