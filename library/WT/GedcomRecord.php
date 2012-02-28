@@ -98,9 +98,15 @@ class WT_GedcomRecord {
 				$data=self::fetchGedcomRecord($pid, $ged_id);
 			}
 
-			// If we didn't find the record in the database, it may be new/pending
-			if (!$data && WT_USER_CAN_EDIT && ($data=find_updated_record($pid, $ged_id, true))!='') {
-				$is_pending=true;
+			// If we can edit, then we also need to be able to see pending records.
+			// Otherwise relationship privacy rules will not allow us to see
+			// newly added records.
+			if (WT_USER_CAN_EDIT) {
+				$tmp=find_updated_record($pid, $ged_id, true);
+				if ($tmp) {
+					$is_pending=true;
+					$data=$tmp;
+				}
 			}
 
 			// If we still didn't find it, it doesn't exist
