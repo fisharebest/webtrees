@@ -6,7 +6,7 @@ jQuery(document).ready(function($){
 	$("#spouseid, input[id*=pid], input[id*=PID], input[id^=gedcomid], input[id^=rootid], input[id$=ROOT_ID], input[name^=FATHER], input[name^=MOTHER], input[name^=CHIL]").autocomplete("autocomplete.php", {
 		extraParams: {field:'INDI'},
 		formatItem: function(row, i) {
-			return row[0] + " &lrm;(" + row[1] + ")&lrm;";
+			return row[0];
 		},
 		formatResult: function(row) {
 			return row[1];
@@ -21,7 +21,7 @@ jQuery(document).ready(function($){
 			option: function() { return $("input[name=pid]").val() + "|" + $("input[id$=_DATE]").val(); }
 		},
 		formatItem: function(row, i) {
-			return row[0] + " &lrm;(" + row[1] + ")&lrm;";
+			return row[0];
 		},
 		formatResult: function(row) {
 			return row[1];
@@ -33,7 +33,7 @@ jQuery(document).ready(function($){
 	$(".FAM, input[id*=famid], input[id*=FAMC], #famid").autocomplete("autocomplete.php", {
 		extraParams: {field:'FAM'},
 		formatItem: function(row, i) {
-			return row[0] + " &lrm;(" + row[1] + ")&lrm;";
+			return row[0];
 		},
 		formatResult: function(row) {
 			return row[1];
@@ -45,7 +45,7 @@ jQuery(document).ready(function($){
 	$(".NOTE").autocomplete("autocomplete.php", {
 		extraParams: {field:'NOTE'},
 		formatItem: function(row, i) {
-			return row[0] + " &lrm;(" + row[1] + ")&lrm;";
+			return row[0];
 		},
 		formatResult: function(row) {
 			return row[1];
@@ -57,7 +57,7 @@ jQuery(document).ready(function($){
 	$(".SOUR, input[id*=sid]").autocomplete("autocomplete.php", {
 		extraParams: {field:'SOUR'},
 		formatItem: function(row, i) {
-			return row[0] + " &lrm;(" + row[1] + ")&lrm;";
+			return row[0];
 		},
 		formatResult: function(row) {
 			return row[1];
@@ -98,7 +98,7 @@ jQuery(document).ready(function($){
 	$(".REPO, #REPO").autocomplete("autocomplete.php", {
 		extraParams: {field:'REPO'},
 		formatItem: function(row, i) {
-			return row[0] + " &lrm;(" + row[1] + ")&lrm;";
+			return row[0];
 		},
 		formatResult: function(row) {
 			return row[1];
@@ -116,7 +116,7 @@ jQuery(document).ready(function($){
 	$(".OBJE, #OBJE, #mediaid, #filter").autocomplete("autocomplete.php", {
 		extraParams: {field:'OBJE'},
 		formatItem: function(row, i) {
-			return row[0] + " &lrm;(" + row[1] + ")&lrm;";
+			return row[0];
 		},
 		formatResult: function(row) {
 			return row[1];
@@ -128,7 +128,7 @@ jQuery(document).ready(function($){
 	$("input[id$=xref], input[name^=gid], #cart_item_id").autocomplete("autocomplete.php", {
 		extraParams: {field:'IFSRO'},
 		formatItem: function(row, i) {
-			return row[0] + " &lrm;(" + row[1] + ")&lrm;";
+			return row[0];
 		},
 		formatResult: function(row) {
 			return row[1];
