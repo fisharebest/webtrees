@@ -74,14 +74,6 @@ padding-right:10px;
 padding-top:5px;
 }
 
-/* set up div container  */
-#topMenu {
-background:#acf;
-clear:both;
-height:31px;
-width:100%;
-}
-
 #menu-right {
 float:right;
 margin-right:20px;
@@ -91,70 +83,59 @@ html[dir='rtl'] .title {float:right;margin-right:12px;}
 html[dir='rtl'] .hsearch {float:left;padding-left:10px;}
 html[dir='rtl'] #menu-right {float:left;margin-left:20px;}
 
-
 /* ===== */
 /* Layout Left Main menu  */
 
-#topMenu ul {
-list-style:none;
-margin:0;
-padding:0;
-position:relative;
-}
 
-#topMenu > ul li {
-display:block;
-float:left;
-list-style:none;
-position:relative;
-width:auto;
-}
-
-#topMenu > ul li a {
-display:block;
-font-size:14px;
-margin:auto;
-padding:5px 0 5px 10px;
-text-align:center;
-text-decoration:none;
-}
-
-html[dir='rtl'] #topMenu > ul li {float:right;}
-html[dir='rtl'] #topMenu > ul li a {padding:5px 10px 5px 0;}
-
-/* Subnavigation */
-#topMenu ul ul {
-background:#fff;
-border:1px solid #ccc;
-display:none;
-left:0;
-position:absolute;
-right:auto;
-text-align:left;
-top:22px;
-white-space:nowrap;
-width:auto;
-z-index:2001;
-}
-
-#topMenu ul ul li {
-clear:left;
-left:auto;
-margin:0;
-text-align:left;
+/* set up div container  */
+#topMenu {
+background:#acf;
+clear:both;
+height:31px;
 width:100%;
 }
 
-#topMenu > ul ul li a {
+#topMenu ul {
+margin:0;
+padding:0;
+}
+
+#main-menu li {
+position:relative;
+float:left;
+list-style:none;
+}
+
+#main-menu li a {
+display:block;
+font-size:14px;
+padding:5px 0 5px 10px;
+}
+
+html[dir='rtl'] #main-menu li {float:right;}
+html[dir='rtl'] #main-menu li a {padding:5px 10px 5px 0;}
+
+/* Subnavigation */
+#main-menu ul {
+position:absolute;
+top:22px;
+left:0;
+right:auto;
+z-index:2001;
+background:#fff;
+border:1px solid #ccc;
+display:none;
+}
+
+#main-menu ul li a {
 font-size:12px;
 padding:5px;
 text-align:left;
 white-space:nowrap;
 }
 
-html[dir='rtl'] #topMenu ul ul {right:0;left:auto;text-align:right;}
-html[dir='rtl'] #topMenu ul ul li {right:auto;clear:right;text-align:right;}
-html[dir='rtl'] #topMenu > ul ul li a {text-align:right;padding-right:30px;}
+html[dir='rtl'] #main-menu ul {right:0;left:auto;text-align:right;}
+html[dir='rtl'] #main-menu ul li a {text-align:right;padding-right:30px;}
 
 /* Submenu horizontal */
 #main-menu #menu-chart li ul{
@@ -162,20 +143,12 @@ display:none;
 }
 
 /* Set up hover layout and style */
-#topMenu ul li:hover ul {
+#main-menu li:hover ul {
 display:block;
 }
 
-#topMenu ul li:hover li {
+#main-menu li:hover li {
 float:none;
-}
-
-#topMenu ul li:hover li a {
-text-decoration:none;
-}
-
-#topMenu ul li li a:hover {
-width:auto;
 }
 
 #main-menu #menu-chart li:hover ul {
@@ -185,20 +158,19 @@ margin-top:-35px;
 position:absolute;
 }
 
-html[dir='rtl'] #topMenu ul  ul li:hover ul {margin-left:auto;margin-right:100%;}
+html[dir='rtl'] #main-menu ul li:hover ul {margin-left:auto;margin-right:100%;}
 
 /*  Mainmenu Icons*/
-#topMenu > ul > li {
+#main-menu > li {
 background-image:url(images/sprites-top-menu.png);
 background-repeat:no-repeat;
 width:22px; 
 height:22px;
 line-height:22px; 
-text-indent:32px; 
 margin:5px 0 0 10px;
 }
 
-html[dir='rtl'] #topMenu > ul > li {margin:5px 10px 0 0;left:auto;}
+html[dir='rtl'] #main-menu > li {margin:5px 10px 0 0;left:auto;}
 
 /*  Submenu Icons */
 #main-menu li ul li {
@@ -206,14 +178,14 @@ background-image:url(images/sprites-sub-menu.png);
 background-repeat:no-repeat;
 height:22px;
 line-height:15px;
-margin:2px 0 2px 5px;
+margin:2px 0 2px 0px;
 text-indent:22px;
 }
 
 html[dir='rtl'] #main-menu li ul li {text-indent:0;}
 
 /*  Delete tag from mainmenu icons */
-#topMenu > ul > li > a {
+#main-menu > li > a {
 color:#2A2B2D;
 height:17px;
 line-height:60px;
@@ -352,6 +324,8 @@ width:17px;
 /* ===== */
 /* Right Options Menu */
 
+#menu-right{float:right;margin:10px 10px 4px 0;}
+
 .makeMenu li {
 display:inline;
 position:relative;
@@ -372,8 +346,7 @@ position:absolute;
 top:1.1em !important;
 z-index:999;
 }
-
-.makeMenu li ul li {
+ .makeMenu li ul li {
 display:block;
 text-align:left;
 }
