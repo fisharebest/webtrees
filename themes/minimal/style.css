@@ -57,8 +57,8 @@ a:hover {
 /* -----Layout for top header ----- */
 
 .title {display: block; float: left; width: 40%;}
-.hlogin {display: block; float: left; padding: 2px 20px;}
-.htheme {display: block; float: left; width: 10%; white-space: nowrap;}
+.hlogin {padding: 2px 20px;}
+.htheme {width: 10%; white-space: nowrap;}
 .htheme option {text-align:left;}
 .hsearch, .favorites_form {display: block; float: right;}
 .favorites_form {
