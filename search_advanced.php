@@ -284,13 +284,12 @@ echo WT_JS_END;
 			</td>
 		<?php } ?>
 	</tr>
+
 	<?php } ?>
-	<tr>
-		<td class="list_value" style="vertical-align: middle; text-align: center; padding: 5px;"  colspan="10">
+	</table>
+		<div class="center" style="margin-top:10px;">
 			<a href="#" onclick="addFields();"><?php echo WT_I18N::translate('Add More Fields'); ?></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		</td>
-	</tr>
-</table>
+		</div>
 		<div id="search_submit">
 		<input tabindex="<?php echo $i+1; ?>" type="submit" value="<?php echo WT_I18N::translate('Search'); ?>">
 		</div>
