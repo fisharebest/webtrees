@@ -2,7 +2,7 @@
 // Displays a place hierachy
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
@@ -242,6 +242,7 @@ if ($display=='hierarchy') {
 		else echo PrintReady($value);
 		if ($use_googlemap) $place_names[$i]=trim($value);
 		echo '</a></li>';
+		$i++;
 		if ($ct1 > 20) {
 			if ($i == floor($ct1 / 3)) {
 				echo '</ul></td><td class="list_value"><ul>';
@@ -252,7 +253,6 @@ if ($display=='hierarchy') {
 		} elseif ($ct1 > 4 && $i == floor($ct1 / 2)) {
 			echo '</ul></td><td class="list_value"><ul>';
 		}
-		$i++;
 	}
 	if ($i>0) {
 		echo '</ul></td></tr>';
