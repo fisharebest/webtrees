@@ -2,7 +2,7 @@
 // Static GEDCOM data for Tags
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -891,7 +891,7 @@ class WT_Gedcom_Tag {
 		return
 			'<div class="fact_'.preg_replace('/[^_A-Za-z0-9]/', '', $tag).'">'.
 			/* I18N: a label/value pair, such as "Occupation: Farmer".  Some languages may need to change the punctuation. */
-			WT_I18N::translate('<span class="label">%1$s:</span> <span class="field">%2$s</span>', self::getLabel($tag, $record), $value).
+			WT_I18N::translate('<span class="label">%1$s:</span> <span class="field" dir="auto">%2$s</span>', self::getLabel($tag, $record), $value).
 			'</div>';
 	}
 

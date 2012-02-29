@@ -216,11 +216,6 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	case 'ASSO':
 		// we handle this later, in print_asso_rela_record()
 		break;
-	case 'PHON': // Not valid as a level 1 tag...
-	case 'FAX': // Not valid as a level 1 tag...
-		// These tags always(?) contain LTR data.  Make sure they render correctly on RTL pages.
-		echo '<div class="field" dir="ltr">', htmlspecialchars($fact->getDetail()), '</div>';
-		break;
 	case 'EMAIL':
 	case 'EMAI':
 	case '_EMAIL':
@@ -293,7 +288,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 					echo '<div class="error">', htmlspecialchars($fact->getDetail()), '</div>';
 				}
 			} else {
-				echo '<div class="field">', htmlspecialchars($fact->getDetail()), '</div>';
+				echo '<div class="field"><span dir="auto">', htmlspecialchars($fact->getDetail()), '</span></div>';
 			}
 			break;
 		}

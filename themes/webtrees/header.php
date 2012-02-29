@@ -2,7 +2,7 @@
 // Header for webtrees theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -78,14 +78,14 @@ if ($view!='simple') {
 	if ($menu) {
 		echo $menu->GetMenuAsList();
 	}
-	echo '</ul><div class="title">',
+	echo '</ul><div class="title" dir="auto">',
 		htmlspecialchars($GEDCOM_TITLE),
 		'</div>',
 		'<div class="header_search">',
 		'<form action="search.php" method="post">',
 		'<input type="hidden" name="action" value="general">',
 		'<input type="hidden" name="topsearch" value="yes">',
-		'<input type="text" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '">',
+		'<input type="text" name="query" size="25" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
 		'<input type="image" class="image" src="', $WT_IMAGES['search'], '" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
 		'</form>',
 		'</div>';

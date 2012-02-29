@@ -58,8 +58,8 @@ echo
 // begin header section
 if ($view!='simple') {
 	echo 
-		'<div id="header" class="', $TEXT_DIRECTION, '">',
-		'<span class="title">',
+		'<div id="header">',
+		'<span class="title" dir="auto">',
 			htmlspecialchars($GEDCOM_TITLE),
 		'</span>',
 		'<span class="hlogin">';
@@ -84,7 +84,7 @@ if ($view!='simple') {
 		'<form style="display:inline;" action="search.php" method="get">',
 		'<input type="hidden" name="action" value="general">',
 		'<input type="hidden" name="topsearch" value="yes">',
-		'<input type="text" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '">',
+		'<input type="text" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
 		'<input type="submit" name="search" value=" &gt; ">',
 		'</form>';
 	print_favorite_selector();

@@ -59,7 +59,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo
 	// Top row left
 	'<div id="header">',
-	'<span class="title">',
+	'<span class="title" dir="auto">',
 		htmlspecialchars($GEDCOM_TITLE),
 	'</span>';
 
@@ -99,7 +99,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 			'<form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general">',
 			'<input type="hidden" name="topsearch" value="yes">',
-			'<input type="text" name="query" size="10" placeholder="', WT_I18N::translate('Search'), '">',
+			'<input type="text" name="query" size="10" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
 			'<input type="image" src="', WT_THEME_URL, 'images/go.png', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
 			'</form>',
 		'</li>',

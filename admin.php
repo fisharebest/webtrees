@@ -143,13 +143,11 @@ echo
 			}
 			foreach ($all_gedcoms as $ged_id=>$ged_name) {
 				if (get_user_gedcom_setting($user_id, $ged_id, 'canedit')=='admin') {
-					$title=PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title')));
-					if (isset($gedadmin[$title])) {
-						$gedadmin[$title]["number"]++;
+					if (isset($gedadmin[$ged_id])) {
+						$gedadmin[$ged_id]["number"]++;
 					} else {
-						$gedadmin[$title]["name"] = $title;
-						$gedadmin[$title]["number"] = 1;
-						$gedadmin[$title]["ged"] = $ged_name;
+						$gedadmin[$ged_id]["number"] = 1;
+						$gedadmin[$ged_id]["ged"] = $ged_name;
 					}
 				}
 			}
@@ -168,8 +166,8 @@ echo
 		'<tr><td>', WT_I18N::translate('Total number of users'), '</td><td>', $totusers, '</td></tr>',
 		'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
 		'<tr><td colspan="2">', WT_I18N::translate('Managers'), '</td></tr>';
-		foreach ($gedadmin as $key=>$geds) {
-			echo '<tr><td><div><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '">', $geds['name'], '</a></div></td><td>', $geds['number'], '</td></tr>';
+		foreach ($gedadmin as $ged_id=>$geds) {
+			echo '<tr><td><div><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '" dir="auto">', htmlspecialchars(get_gedcom_setting($ged_id, 'title')), '</a></div></td><td>', $geds['number'], '</td></tr>';
 		}
 	echo '<tr><td>';
 	if ($warnusers == 0) {
