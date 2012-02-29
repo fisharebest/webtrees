@@ -854,16 +854,16 @@ if (check_media_structure()) {
 		if (empty($directory)) $directory = $MEDIA_DIRECTORY;
 
 		// Start of media directory table
-		echo "<table class=\"media_items\">";
+		echo '<table class="media_items">';
 		// Tell the user where he is
-		echo "<tr>";
-		echo "<td colspan=\"4\">";
+		echo '<tr>';
+		echo '<td colspan="4">';
 			echo WT_I18N::translate('Current directory');
-			echo ":&nbsp;&nbsp;&nbsp;";
+			echo ': ';
 //			if ($USE_MEDIA_FIREWALL) { echo $MEDIA_FIREWALL_ROOTDIR; }
 
-			echo PrintReady(substr($directory, 0, -1));
-			echo "<br>";
+			echo '<span dir="auto">'.substr($directory, 0, -1).'</span>';
+			echo '<br>';
 
 			// Calculation to determine whether files are protected or not -------------------------
 			// Check if media directory and thumbs directory are empty
@@ -965,10 +965,8 @@ if (check_media_structure()) {
 		$pdir = '';
 		for ($i=0; $i<count($levels)-2; $i++) $pdir.=$levels[$i].'/';
 		if ($pdir != '') {
-			$uplink = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\">";
-			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
+			$uplink = '<a href="'.WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick.'" dir="auto">';
 			$uplink .= $pdir;
-			if ($TEXT_DIRECTION=="rtl") $uplink .= getLRM();
 			$uplink .= "</a>";
 
 			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\"><img class=\"icon-larrow\" src=\"";
@@ -1009,21 +1007,18 @@ if (check_media_structure()) {
 							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\"></td>";
 						}
 
-						echo "</form>";
-			//	echo "</td>";
-					echo "<td>";
-						echo "<a href=\"".WT_SCRIPT_NAME."?directory=".rawurlencode($directory.$dir)."/&amp;sortby={$sortby}&amp;level=".($level+1).$thumbget."&amp;subclick={$subclick}\">";
-						if ($TEXT_DIRECTION=="rtl") echo getRLM();
+						echo '</form>';
+					echo '<td>';
+						echo '<a href="'.WT_SCRIPT_NAME.'?directory='.rawurlencode($directory.$dir).'/&amp;sortby='.$sortby.'&amp;level='.($level+1).$thumbget.'&amp;subclick='.$subclick.'" dir="auto">';
 						echo $dir;
-						if ($TEXT_DIRECTION=="rtl") echo getRLM();
-						echo "</a>";
-					echo "</td>";
-				echo "</tr>";
+						echo '</a>';
+					echo '</td>';
+				echo '</tr>';
 				}
 			}
 		}
-		echo "</table>\n";
-		echo "<br>";
+		echo '</table>';
+		echo '<br>';
 
 		// display the images
 		if (count($medialist) && ($subclick=='search' || $subclick=='all')) {
@@ -1196,7 +1191,7 @@ if (check_media_structure()) {
 						$after    = substr(strstr($haystack, $needle), strlen($needle));
 						$worked   = str_replace("1 NOTE", "1 NOTE<br>", $after);
 						$final    = $before.$needle.$worked;
-						$notes    = PrintReady(htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true))));
+						$notes    = htmlspecialchars(addslashes(print_fact_notes($final, 1, true, true)));
 
 						// Get info on how to handle this media file
 						$mediaInfo = mediaFileInfo($media["FILE"], $media["THUMB"], $media["XREF"], $name, $notes, "ADMIN");			
@@ -1222,15 +1217,15 @@ if (check_media_structure()) {
 
 						//-- name and size field
 						echo "<td>";
-						if ($media["TITL"]!="") echo "<b>".PrintReady($media["TITL"])."</b><br>";
-						if (!$isExternal && !$media["EXISTS"]) echo "<span dir=\"ltr\">".PrintReady($media["FILE"])."</span><br><span class=\"error\">".WT_I18N::translate('The filename entered does not exist.')."</span><br>";
+						if ($media["TITL"]!="") echo "<b>".htmlspecialchars($media["TITL"])."</b><br>";
+						if (!$isExternal && !$media["EXISTS"]) echo '<span dir="auto">'.htmlspecialchars($media["FILE"])."</span><br><span class=\"error\">".WT_I18N::translate('The filename entered does not exist.')."</span><br>";
 						else {
 							if (substr($mediaInfo['type'], 0, 4) == 'url_') $tempText = 'URL';
-							else $tempText = PrintReady($media["FILE"]);
-							if (!empty($media["XREF"])) {
-								echo '<a href="', 'mediaviewer.php?mid=', $media["XREF"], '"><span dir="ltr">', $tempText, '</span></a><br>';
+							else $tempText = $media['FILE'];
+							if (!empty($media['XREF'])) {
+								echo '<a href="', 'mediaviewer.php?mid=', $media['XREF'], '"><span dir="auto">', $tempText, '</span></a><br>';
 							} else {
-								echo '<span dir="ltr">', $tempText, '</span><br>';
+								echo '<span dir="auto">', $tempText, '</span><br>';
 							}
 						}
 						if (substr($mediaInfo['type'], 0, 4) != 'url_' && !empty($imgsize[0])) {

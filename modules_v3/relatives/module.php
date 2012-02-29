@@ -208,7 +208,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 									if ($level>0) {
 										$html.=", ";
 									}
-									$html.=PrintReady($levels[$level]);
+									$html.='<span dir="auto">'.htmlspecialchars($levels[$level]).'</span>';
 								}
 							}
 							if (!$SEARCH_SPIDER) {

@@ -2,7 +2,7 @@
 // System for generating menus.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team. All rights reserved.
@@ -46,7 +46,7 @@ class WT_MenuBar {
 		foreach ($gedcom_titles as $gedcom_title) {
 			if ($gedcom_title->gedcom_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new WT_Menu(
-					PrintReady($gedcom_title->gedcom_title),
+					'<span dir="auto">'.htmlspecialchars($gedcom_title->gedcom_title).'</span>',
 					'index.php?ctype=gedcom&amp;ged='.rawurlencode($gedcom_title->gedcom_name),
 					'menu-tree-'.$gedcom_title->gedcom_id // Cannot use name - it must be a CSS identifier
 				);

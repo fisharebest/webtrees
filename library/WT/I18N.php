@@ -9,7 +9,7 @@
 // We wrap the Zend_Translate gettext library, to allow us to add extra
 // functionality, such as mixed RTL and LTR text.
 //
-// Copyright (C) 2011 Greg Roach
+// Copyright (C) 2012 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -33,10 +33,6 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_I18N {
-	const UTF8_RLE="\xE2\x80\xAA"; // U+202A  (Left to Right embedding: treat everything following as LTR text)
-	const UTF8_LRE="\xE2\x80\xAB"; // U+202B  (Right to Left embedding: treat everything following as RTL text)
-	const UTF8_PDF="\xE2\x80\xAC"; // U+202C  (Pop directional formatting: restore state prior to last LRO, RLO, LRE, RLE)
-
 	static public  $locale='';
 	static private $dir='';
 	static public  $collation;
@@ -232,47 +228,6 @@ class WT_I18N {
 		return 'lang="'.$lang.'" dir="'.$dir.'"';
 	}
 
-	// Add I18N features to sprintf()
-	// - Convert arrays into lists
-	// - Add directional markup for mixed LTR/RTL strings
-	static public function sprintf(/* var_args */) {
-		$args=func_get_args();
-		foreach ($args as $n=>&$arg) {
-			if ($n) {
-				if (is_array($arg)) {
-					// Is this actually used?
-					$n=count($arg);
-					switch ($n) {
-					case 0:
-						$arg='';
-					case 1:
-						$arg=$arg[0];
-					default:
-						// TODO: add LTR/RTL markup to each element?
-						$arg=implode(self::$list_separator, $arg);
-					}
-				} else {
-					// For each embedded string, if the text-direction is the opposite of the
-					// page language, then wrap it in directional indicators.  This will stop
-					// weakly-directional characters being displayed in the wrong sequence.
-					// We need to use unicode control characters instead of <span dir="rtl">
-					// because we must use it in contexts (such as titles, select/options) where
-					// markup is not permitted.
-					if (self::$dir=='ltr') {
-						if (utf8_direction($arg)=='rtl') {
-							$arg=self::UTF8_RLE.$arg.self::UTF8_PDF;
-						}
-					} else {
-						if (utf8_direction($arg)=='ltr') {
-							$arg=self::UTF8_LRE.$arg.self::UTF8_PDF;
-						}
-					}
-				}
-			}
-		}
-		return call_user_func_array('sprintf', $args);
-	}
-
 	// Translate a number into the local representation.  e.g. 12345.67 becomes
 	// en: 12,345.67
 	// fr: 12 345,67
@@ -312,7 +267,7 @@ class WT_I18N {
 		} else {
 			$args[0]=Zend_Registry::get('Zend_Translate')->_($args[0]);
 		}
-		return call_user_func_array(array('WT_I18N', 'sprintf'), $args);
+		return call_user_func_array('sprintf', $args);
 	}
 
 	// Context sensitive version of translate.
@@ -331,7 +286,7 @@ class WT_I18N {
 		}
 		$args[0]=$msgtxt;
 		unset ($args[1]);
-		return call_user_func_array(array('WT_I18N', 'sprintf'), $args);
+		return call_user_func_array('sprintf', $args);
 	}
 
 	// Similar to translate, but do perform "no operation" on it.

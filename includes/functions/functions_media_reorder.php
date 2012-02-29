@@ -2,7 +2,7 @@
 // Reorder media Items using drag and drop
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -85,9 +85,9 @@ function media_reorder_row($rtype, $rowm, $pid) {
 		echo "<img src=\"".$mediaInfo['thumb']."\" height=\"38\"";
 
 		if (strpos($rowm['m_gedrec'], "1 SOUR")!==false) {
-			echo " alt=\"" . PrintReady($mediaTitle) . "\" title=\"" . PrintReady($mediaTitle) . " Source info available\">";
+			echo " alt=\"" . htmlspecialchars($mediaTitle) . "\" title=\"" . htmlspecialchars($mediaTitle) . " Source info available\">";
 		} else {
-			echo " alt=\"" . PrintReady($mediaTitle) . "\" title=\"" . PrintReady($mediaTitle) . "\">";
+			echo " alt=\"" . htmlspecialchars($mediaTitle) . "\" title=\"" . htmlspecialchars($mediaTitle) . "\">";
 		}
 
 		//print media info

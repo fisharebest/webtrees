@@ -82,7 +82,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$stats=new WT_Stats(WT_GEDCOM);
 
-		$content = "<b><a href=\"index.php?ctype=gedcom\">".PrintReady(strip_tags(get_gedcom_setting(WT_GED_ID, 'title')))."</a></b><br>";
+		$content = '<b><a href="index.php?ctype=gedcom" dir="auto">'.htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')).'</a></b><br>';
 
 		if ($show_last_update) {
 			$content .= '<div>'./* I18N: %s is a date */ WT_I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())).'</div>';
@@ -199,7 +199,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 						if ($i>0) {
 							$content .= ', ';
 						}
-						$content .= '<a href="'."indilist.php?ged=".WT_GEDURL."&amp;surname=".rawurlencode($surname['name']).'">'.PrintReady($surname['name']).'</a>';
+						$content .= '<a href="'."indilist.php?ged=".WT_GEDURL."&amp;surname=".rawurlencode($surname['name']).'">'.$surname['name'].'</a>';
 						$i++;
 					}
 				}

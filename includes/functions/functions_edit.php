@@ -426,8 +426,6 @@ function delete_gedrec($xref, $ged_id) {
 
 //-- this function will check a GEDCOM record for valid gedcom format
 function check_gedcom($gedrec, $chan=true) {
-	$gedrec = trim(stripLRMRLM($gedrec));
-
 	$ct = preg_match("/0 @(.*)@ (.*)/", $gedrec, $match);
 	if ($ct==0) {
 		echo "ERROR 20: Invalid GEDCOM format";
@@ -1628,22 +1626,22 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo '</select>';
 	} else if (($fact=="NAME" && $upperlevel!='REPO') || $fact=="_MARNM") {
 		// Populated in javascript from sub-tags
-		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", PrintReady(htmlspecialchars($value)), "\">";
-		echo "<span id=\"", $element_id, "_display\">", PrintReady(htmlspecialchars($value)), "</span>";
+		echo "<input type=\"hidden\" id=\"", $element_id, "\" name=\"", $element_name, "\" onchange=\"updateTextName('", $element_id, "');\" value=\"", htmlspecialchars($value), "\">";
+		echo '<span id="', $element_id, '_display" dir="auto">', htmlspecialchars($value), "</span>";
 		echo " <a href=\"#edit_name\" onclick=\"convertHidden('", $element_id, "'); return false;\"> ";
 		if (isset($WT_IMAGES["edit_indi"])) echo "<img src=\"", $WT_IMAGES["edit_indi"], "\" width=\"20\" alt=\"", WT_I18N::translate('Edit name'), "\" align=\"top\">";
 		else echo "<span class=\"age\">[", WT_I18N::translate('Edit name'), "]</span>";
 		echo "</a>";
 	} else {
 		// textarea
-		if ($rows>1) echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" rows=\"", $rows, "\" cols=\"", $cols, "\">", PrintReady(htmlspecialchars($value)), "</textarea><br>";
+		if ($rows>1) echo "<textarea id=\"", $element_id, "\" name=\"", $element_name, "\" rows=\"", $rows, "\" cols=\"", $cols, '" dir="auto">', htmlspecialchars($value), "</textarea><br>";
 		else {
 			// text
 			// If using GEDFact-assistant window
 			if ($action=="addnewnote_assisted") {
-				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value)), "\" style=\"width:4.1em;\" dir=\"ltr\"";
+				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\" style=\"width:4.1em;\" dir=\"ltr\"";
 			} else {
-				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", PrintReady(htmlspecialchars($value)), "\" size=\"", $cols, "\" dir=\"ltr\"";
+				echo "<input type=\"text\" id=\"", $element_id, "\" name=\"", $element_name, "\" value=\"", htmlspecialchars($value), "\" size=\"", $cols, "\" dir=\"ltr\"";
 			}
 			echo " class=\"{$fact}\"";
 			if (in_array($fact, $subnamefacts)) echo " onblur=\"updatewholename();\" onkeyup=\"updatewholename();\"";
@@ -1810,33 +1808,17 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 
 	// current value
-	if ($TEXT_DIRECTION=="ltr") {
-		if ($fact=="DATE") {
-			$date=new WT_Date($value);
-			echo $date->Display(false);
+	if ($fact=="DATE") {
+		$date=new WT_Date($value);
+		echo $date->Display(false);
+	}
+	if (($fact=="ASSO" || $fact=="SOUR" || $fact=="OBJE" || ($fact=="NOTE" && $islink)) && $value) {
+		$record=WT_GedcomRecord::getInstance($value);
+		if ($record) {
+			echo ' ', $record->getFullName();
 		}
-		if (($fact=="ASSO" || $fact=="SOUR" || $fact=="OBJE" || ($fact=="NOTE" && $islink)) && $value) {
-			$record=WT_GedcomRecord::getInstance($value);
-			if ($record) {
-				echo ' ', $record->getFullName(), ' (', $value, ')';
-			}
-			else if ($value!="new") {
-				echo ' ', $value;
-			}
-		}
-	} else {
-		if ($fact=="DATE") {
-			$date=new WT_Date($value);
-			echo getRLM(), $date->Display(false), getRLM();
-		}
-		if (($fact=="ASSO" || $fact=="SOUR" || $fact=="OBJE" || ($fact=="NOTE" && $islink)) && $value) {
-			$record=WT_GedcomRecord::getInstance($value);
-			if ($record) {
-				echo getRLM(), $record->getFullName(), ' ', getLRM(), '(', $value, ') ', getLRM(), getRLM();
-			}
-			else if ($value!="new") {
-				echo getRLM(), $value, ' ', getRLM();
-			}
+		else if ($value!="new") {
+			echo ' ', $value;
 		}
 	}
 	// pastable values

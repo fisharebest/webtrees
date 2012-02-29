@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -157,7 +157,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$html=$letter;
 					break;
 			}
-			$html='<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=families&amp;alpha='.urlencode($letter).'" class="sb_fam_letter">'.PrintReady($html).'</a>';
+			$html='<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=families&amp;alpha='.urlencode($letter).'" class="sb_fam_letter">'.$html.'</a>';
 			$out .= $html." ";
 		}
 
@@ -209,7 +209,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if ($family->canDisplayDetails()) {
 					$bd = $family->getMarriageYear();
 					if (!empty($bd)) {
-						$out .= PrintReady(' ('.$bd.')');
+						$out .= ' ('.$bd.')';
 					}
 				}
 				$out .= '</a></li>';
@@ -263,7 +263,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
 				if ($family->canDisplayDetails()) {
 					$bd = $family->getMarriageYear();
-					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');
+					if (!empty($bd)) $out .= ' ('.$bd.')';
 				}
 				$out .= '</a></li>';
 			}

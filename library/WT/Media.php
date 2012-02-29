@@ -2,7 +2,7 @@
 // Class that defines a media object
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -474,7 +474,7 @@ class WT_Media extends WT_GedcomRecord {
 	 *    'uselightbox_fallback'=>true|false,  default is true - if lb is not available, should we use  fallback javascript (true) or link directly to media viewer (false)
 	 *    'usejavascript'=>true|false,  default is true - set to false to ensure no javascript will be used in the link
 	 *    'clearbox'=>'general'|'general_1' etc
-	 *    'img_title'=>string (optional) - image title to override the default.  must run PrintReady(htmlspecialchars()) priort to sending
+	 *    'img_title'=>string (optional) - image title to override the default.  must run htmlspecialchars() priort to sending
 	 * @return string, suitable for use inside an a tag: '<a href="'.$this->getHtmlUrlSnippet().'">';
 	 */
 	public function getHtmlUrlSnippet(array $config = array()) {
@@ -607,7 +607,7 @@ class WT_Media extends WT_GedcomRecord {
 	 *    'display_type'=>'normal'|'pedigree_person'|'treeview'|'googlemap' the type of image this is
 	 *    'img_id'=>string (optional) - if this image needs an id, set it here
 	 *    'class'=>string (optional) - class to assign to image
-	 *    'img_title'=>string (optional) - image title to override the default.  must run PrintReady(htmlspecialchars()) priort to sending
+	 *    'img_title'=>string (optional) - image title to override the default.  must run htmlspecialchars() priort to sending
 	 *    'addslashes'=>true|false, default is false - if result will be stored in javascript array (such as googlemaps) set to true
 	 *    'oktolink'=>true|false, default is true - whether to include link to main image
 	 *    'alertnotfound'=>true|false, default is false - whether to display error when main image is missing

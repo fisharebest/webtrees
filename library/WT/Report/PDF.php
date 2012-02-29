@@ -4,7 +4,7 @@
 // used by the SAX parser to generate PDF reports from the XML report file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -1331,9 +1331,7 @@ class FootnotePDF extends Footnote {
 			$temptext = "<span>".$this->num.". </span>".$temptext;
 		}
 //DumpString($temptext); //@@@
-//		$temptext = spanLTRRTL($temptext, "BOTH");
 		//do not add span to '<u>', '</u>' and to special characters (- . , : ?) What about + in phone numbers?. Day together with the rest of the date in page orientation.
-		$temptext = PrintReady($temptext); //@@ better than spanLTRRTL- not 100%
 		// underline «title» part of Source item
 		$temptext = str_replace(array('«', '»'), array('<u>', '</u>'), $temptext);
 //DumpString($temptext); //@@@

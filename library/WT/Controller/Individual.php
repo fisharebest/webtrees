@@ -250,7 +250,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 							if ($fact=='TYPE') {
 								echo WT_Gedcom_Code_Name::getValue($name, $this->record);
 							} else {
-								echo PrintReady($name);
+								echo htmlspecialchars($name);
 							}
 						}
 					echo '</dd>';

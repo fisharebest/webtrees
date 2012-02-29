@@ -2,7 +2,7 @@
 // Allow an admin user to download the entire gedcom file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -41,8 +41,6 @@ $zip              = safe_GET('zip',              'yes', 'no');
 $conv_path        = safe_GET('conv_path',        WT_REGEX_NOSCRIPT);
 $conv_slashes     = safe_GET('conv_slashes',     array('forward', 'backward'), 'forward');
 $privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'));
-
-$conv_path = stripLRMRLM($conv_path);
 
 if ($action == 'download') {
 	$conv_path = rtrim(str_replace('\\', '/', trim($conv_path)), '/').'/'; // make sure we have a trailing slash here
@@ -124,7 +122,7 @@ $controller->pageHeader();
 	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
 		<td class="list_value"><input type="checkbox" name="convert" value="yes"></td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media path to'), help_link('convertPath'); ?></td>
-		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo getLRM(), $conv_path, getLRM(); ?>"></td></tr>
+		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo $conv_path; ?>" dir="auto"></td></tr>
 	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media folder separators to'), help_link('convertSlashes'); ?></td>
 		<td class="list_value">
 		<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') echo "checked=\"checked\" "; ?>>&nbsp;&nbsp;<?php echo WT_I18N::translate('Forward slashes : /'); ?><br>

@@ -555,14 +555,14 @@ $where_am_i=place_id_to_hierarchy($parent);
 foreach (array_reverse($where_am_i, true) as $id=>$place) {
 	if ($id==$parent) {
 		if ($place != 'Unknown') {
-			echo PrintReady($place);
+			echo htmlspecialchars($place);
 		} else {
 			echo WT_I18N::translate('unknown');
 		}
 	} else {
 		echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $id, '&inactive=', $inactive, '">';
 		if ($place != 'Unknown') {
-			echo PrintReady($place), '</a>';
+			echo htmlspecialchars($place), '</a>';
 		} else {
 			echo WT_I18N::translate('unknown'), '</a>';
 		}
@@ -593,7 +593,7 @@ if (count($placelist) == 0)
 foreach ($placelist as $place) {
 	echo '<tr><td><a href="module.php?mod=googlemap&mod_action=admin_places&parent=', $place['place_id'], '&inactive=', $inactive, '">';
 	if ($place['place'] != 'Unknown')
-			echo PrintReady($place['place']), '</a></td>';
+			echo htmlspecialchars($place['place']), '</a></td>';
 		else
 			echo WT_I18N::translate('unknown'), '</a></td>';
 	echo '<td>', $place['lati'], '</td>';

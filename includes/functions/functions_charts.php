@@ -49,7 +49,7 @@ function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
 		$visibility = "normal";
 	}
 	echo "<td class=\"subheaders center\" style=\"vertical-align: middle; text-indent: 0px; margin-top: 0px; white-space: nowrap; visibility: ", $visibility, ";\">";
-	echo getLRM(), $personLabel, getLRM();
+	echo $personLabel;
 	if ($sosa != "1" && $pid != "") {
 		if ($arrowDirection=="left") {
 			$dir = 0;

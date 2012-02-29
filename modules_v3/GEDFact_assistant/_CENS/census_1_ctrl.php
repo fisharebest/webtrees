@@ -4,7 +4,7 @@
 // Census information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -46,8 +46,8 @@ $married=-1;
 $person=WT_Person::getInstance($pid);
 // var_dump($person->getAllNames());
 $nam = $person->getAllNames();
-if (PrintReady($person->getDeathYear()) == 0) { $DeathYr = ""; } else { $DeathYr = PrintReady($person->getDeathYear()); }
-if (PrintReady($person->getBirthYear()) == 0) { $BirthYr = ""; } else { $BirthYr = PrintReady($person->getBirthYear()); }
+if ($person->getDeathYear() == 0) { $DeathYr = ""; } else { $DeathYr = $person->getDeathYear(); }
+if ($person->getBirthYear() == 0) { $BirthYr = ""; } else { $BirthYr = $person->getBirthYear(); }
 $fulln   = rtrim($nam[0]['givn'],'*')." ".$nam[0]['surname'];
 $fulln   = str_replace("@N.N.", "(".WT_I18N::translate('unknown').")", $fulln);
 $fulln   = str_replace("@P.N.", "(".WT_I18N::translate('unknown').")", $fulln);

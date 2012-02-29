@@ -4,7 +4,7 @@
 // NOTE THAT THIS IS NOT A PAGE CONTROLLER, AND DOES NOT EXTEND WT_CONTROLLER_BASE
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -89,7 +89,6 @@ class WT_Controller_Clippings {
 			$this->privatize_export='visitor';
 		}
 
-		$this->conv_path = stripLRMRLM($this->conv_path);
 		$_SESSION['exportConvPath'] = $this->conv_path; // remember this for the next Download
 		$_SESSION['exportConvSlashes'] = $this->conv_slashes;
 

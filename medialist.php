@@ -43,9 +43,7 @@ $build = 'no';
 $reset = safe_GET('reset');
 $apply_filter = safe_GET('apply_filter');
 $filter1 = safe_GET('filter1');
-$filter1 = stripLRMRLM($filter1);
 $filter2 = safe_GET('filter2');
-$filter2 = stripLRMRLM($filter2);
 $or = WT_I18N::translate('or');
 $and = WT_I18N::translate('and');
 $filter_type = safe_GET('filter_type', array($or, $and), $or);
@@ -267,7 +265,7 @@ if (WT_USE_LIGHTBOX) {
 			</td>
 			<td class="optionbox wrap width25">
 		<!-- // begin Text field for filter and "submit" button -->
-				<input id="filter1" name="filter1" value="<?php echo PrintReady($filter1); ?>" size="14">
+				<input id="filter1" name="filter1" value="<?php echo $filter1; ?>" size="14" dir="auto">
 				<select name="filter_type">
 					<?php
 					foreach (array($or, $and) as $selectEntry) {
@@ -277,7 +275,7 @@ if (WT_USE_LIGHTBOX) {
 					}
 					?>
 				</select><br>
-				<input id="filter2" name="filter2" value="<?php echo PrintReady($filter2); ?>" size="14">
+				<input id="filter2" name="filter2" value="<?php echo $filter2; ?>" size="14" dir="auto">
 			</td>
 	<!-- // end search filter -->
 <!-- // NOTE: Row 3 right:-->

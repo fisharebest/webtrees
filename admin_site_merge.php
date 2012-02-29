@@ -291,7 +291,7 @@ if ($action=='choose') {
 		if (empty($ged) && $ged_id==WT_GED_ID || !empty($ged) && $ged==$ged_name) {
 			echo ' selected="selected"';
 		}
-		echo '>', PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), '</option>';
+		echo ' dir="auto">', htmlspecialchars(get_gedcom_setting($ged_id, 'title')), '</option>';
 	}
 	$inditext = WT_I18N::translate('Find individual ID');
 	if (isset($WT_IMAGES['button_indi'])) $inditext = '<img src="'.$WT_IMAGES['button_indi'].'" alt="'.$inditext.'" title="'.$inditext.'" align="middle">';
@@ -318,7 +318,7 @@ if ($action=='choose') {
 		if (empty($ged2) && $ged_id==WT_GED_ID || !empty($ged2) && $ged2==$ged_name) {
 			echo ' selected="selected"';
 		}
-		echo '>', PrintReady(strip_tags(get_gedcom_setting($ged_id, 'title'))), '</option>';
+		echo ' dir="auto">', htmlspecialchars(get_gedcom_setting($ged_id, 'title')), '</option>';
 	}
 	echo
 		'</select>

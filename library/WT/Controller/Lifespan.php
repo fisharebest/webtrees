@@ -2,7 +2,7 @@
 // Controller for the timeline chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
@@ -501,28 +501,6 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 				if ($maxY < $Y) $maxY = $Y;
 		}
 		return $maxY;
-	}
-
-	/**
-	* check the privacy of the incoming people to make sure they can be shown
-	*/
-	function checkPrivacy() {
-		$printed = false;
-		for ($i = 0; $i < count($this->people); $i ++) {
-			if (!$this->people[$i]->canDisplayDetails()) {
-				if ($this->people[$i]->canDisplayName()) {
-					$indiName = PrintReady(str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $this->people[$i]->getFullName()));
-					echo "&nbsp;<a href=\"".$this->people[$i]->getHtmlUrl()."\">".$indiName."</a>";
-					print_privacy_error();
-					echo "<br>";
-					$printed = true;
-				} else
-					if (!$printed) {
-						print_privacy_error();
-						echo "<br>";
-					}
-			}
-		}
 	}
 
 	public function getSignificantIndividual() {

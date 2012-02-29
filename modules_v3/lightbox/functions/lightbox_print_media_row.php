@@ -138,7 +138,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		$before   = substr($haystack, 0, strpos($haystack, $needle));
 		$after    = substr(strstr($haystack, $needle), strlen($needle));
 		$final    = $before.$needle.$after;
-		$notes    = PrintReady(htmlspecialchars(print_fact_notes($final, 1, true, true), ENT_QUOTES));
+		$notes    = htmlspecialchars(print_fact_notes($final, 1, true, true), ENT_QUOTES);
 
 		// Get info on how to handle this media file
 		$mediaInfo = mediaFileInfo($mainMedia, $thumbnail, $rowm['m_media'], $mediaTitle, $notes);

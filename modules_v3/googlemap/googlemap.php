@@ -2,7 +2,7 @@
 // Google map module for phpGedView
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -41,10 +41,10 @@ function print_fact_place_map($factrec) {
 		foreach ($levels as $pindex=>$ppart) {
 			// routine for replacing ampersands
 			$ppart = preg_replace("/amp\%3B/", "", trim($ppart));
-			$retStr .= "parent[$pindex]=".PrintReady($ppart)."&amp;";
+			$retStr .= "parent[$pindex]=".$ppart."&amp;";
 		}
 		$retStr .= 'level='.count($levels);
-		$retStr .= '"> '.PrintReady($place).'</a>';
+		$retStr .= '"> '.htmlspecialchars($place).'</a>';
 		return $retStr;
 	}
 	return '';
@@ -68,9 +68,9 @@ function print_address_structure_map($factrec, $level) {
 		$resultText = '';
 		$cn = preg_match("/$nlevel _NAME (.*)/", $arec, $cmatch);
 		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1]).'<br>';
-		$resultText .= PrintReady(trim($omatch[$i][1]));
+		$resultText .= $omatch[$i][1];
 		$cont = get_cont($nlevel, $arec);
-		if (!empty($cont)) $resultText .= str_replace(array(' ', "<br&nbsp;"), array("&nbsp;", "<br "), PrintReady($cont));
+		if (!empty($cont)) $resultText .= str_replace(array(' ', "<br&nbsp;"), array("&nbsp;", "<br "), $cont);
 		else {
 			if (strlen(trim($omatch[$i][1])) > 0) echo '<br>';
 				$cs = preg_match("/$nlevel ADR1 (.*)/", $arec, $cmatch);
@@ -79,7 +79,7 @@ function print_address_structure_map($factrec, $level) {
 					$resultText .= '<br>';
 					$cn=0;
 				}
-				$resultText .= PrintReady($cmatch[1]);
+				$resultText .= $cmatch[1];
 			}
 			$cs = preg_match("/$nlevel ADR2 (.*)/", $arec, $cmatch);
 			if ($cs>0) {
@@ -87,27 +87,27 @@ function print_address_structure_map($factrec, $level) {
 					$resultText .= '<br>';
 					$cn=0;
 				}
-				$resultText .= PrintReady($cmatch[1]);
+				$resultText .= $cmatch[1];
 			}
 
 			if ($POSTAL_CODE) {
 				if (preg_match("/$nlevel CITY (.*)/", $arec, $cmatch))
-					$resultText.=' '.PrintReady($cmatch[1]);
+					$resultText.=' '.$cmatch[1];
 				if (preg_match("/$nlevel STAE (.*)/", $arec, $cmatch))
-					$resultText.=', '.PrintReady($cmatch[1]);
+					$resultText.=', '.$cmatch[1];
 				if (preg_match("/$nlevel POST (.*)/", $arec, $cmatch))
-					$resultText.='<br>'.PrintReady($cmatch[1]);
+					$resultText.='<br>'.$cmatch[1];
 			} else {
 				if (preg_match("/$nlevel POST (.*)/", $arec, $cmatch))
-					$resultText.='<br>'.PrintReady($cmatch[1]);
+					$resultText.='<br>'.$cmatch[1];
 				if (preg_match("/$nlevel CITY (.*)/", $arec, $cmatch))
-					$resultText.=' '.PrintReady($cmatch[1]);
+					$resultText.=' '.$cmatch[1];
 				if (preg_match("/$nlevel STAE (.*)/", $arec, $cmatch))
-					$resultText.=', '.PrintReady($cmatch[1]);
+					$resultText.=', '.$cmatch[1];
 			}
 		}
 		if (preg_match("/$nlevel CTRY (.*)/", $arec, $cmatch))
-			$resultText.='<br>'.PrintReady($cmatch[1]);
+			$resultText.='<br>'.$cmatch[1];
 		$resultText.= '<br>';
 		// Here we can examine the resultant text and remove empty tags
 		echo str_replace(chr(10), ' ' , $resultText);
@@ -115,25 +115,25 @@ function print_address_structure_map($factrec, $level) {
 	$resultText = "<table>";
 	$ct = preg_match_all("/$level PHON (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('PHON').': </b></span></td><td><span class="field">';
-		$resultText .= getLRM() . $omatch[$i][1]. getLRM();
+		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('PHON').': </b></span></td><td><span class="field" dir="auto">';
+		$resultText .= $omatch[$i][1];
 		$resultText .= '</span></td></tr>';
 	}
 	$ct = preg_match_all("/$level FAX (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('FAX').': </b></span></td><td><span class="field">';
-		$resultText .= getLRM() . $omatch[$i][1] . getLRM();
+		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('FAX').': </b></span></td><td><span class="field" dir="auto">';
+		$resultText .= $omatch[$i][1];
 		$resultText .= '</span></td></tr>';
 	}
 	$ct = preg_match_all("/$level EMAIL (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('EMAIL').': </b></span></td><td><span class="field">';
+		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('EMAIL').': </b></span></td><td><span class="field" dir="auto">';
 		$resultText .= '<a href="mailto:'.$omatch[$i][1].'">'.$omatch[$i][1].'</a>';
 		$resultText .= '</span></td></tr>';
 	}
 	$ct = preg_match_all("/$level (WWW|URL) (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	for ($i=0; $i<$ct; $i++) {
-		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('URL').': </b></span></td><td><span class="field">';
+		$resultText .= '<tr><td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('URL').': </b></span></td><td><span class="field" dir="auto">';
 		$resultText .= '<a href="'.$omatch[$i][2].'" target="_blank">'.$omatch[$i][2].'</a>';
 		$resultText .= '</span></td></tr>';
 	}

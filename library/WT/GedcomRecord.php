@@ -453,21 +453,10 @@ class WT_GedcomRecord {
 	// Convert a name record into sortable and full/display versions.  This default
 	// should be OK for simple record types.  INDI/FAM records will need to redefine it.
 	protected function _addName($type, $value, $gedrec) {
-		global $TEXT_DIRECTION;
-		// RTL names on LTR pages (and vice-versa) cause problems when they contain
-		// weakly-directional characters such as punctuation.  Add markup to fix this.
-		$dir=utf8_direction($value);
-		if ($dir=='ltr' && $TEXT_DIRECTION=='rtl') {
-			$full='<span dir="ltr">'.htmlspecialchars($value).'</span>';
-		} elseif ($dir=='rtl' && $TEXT_DIRECTION=='ltr') {
-			$full='<span dir="rtl">'.htmlspecialchars($value).'</span>';
-		} else {
-			$full=htmlspecialchars($value);
-		}
 		$this->_getAllNames[]=array(
 			'type'=>$type,
 			'sort'=>preg_replace('/([0-9]+)/e', 'substr("000000000\\1", -10)', $value),
-			'full'=>$full,    // This is used for display
+			'full'=>'<span dir="auto">'.htmlspecialchars($value).'</span>',    // This is used for display
 			'fullNN'=>$value, // This goes into the database
 		);
 	}

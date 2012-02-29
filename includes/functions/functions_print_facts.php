@@ -459,7 +459,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 			$srec = get_sub_record($level, "$level SOUR ", $factrec, $j+1);
 			$srec = substr($srec, 6); // remove "2 SOUR"
 			$srec = str_replace("\n".($level+1)." CONT ", '<br>', $srec); // remove n+1 CONT
-			$data .= '<div="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').':</span> <span class="field">'.PrintReady($srec).'</span></div>';
+			$data .= '<div="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').':</span> <span class="field" dir="auto">'.htmlspecialchars($srec).'</span></div>';
 		}
 	}
 	// -- find source for each fact
@@ -572,10 +572,10 @@ function print_media_links($factrec, $level, $pid='') {
 				//LBox --------  change for Lightbox Album --------------------------------------------
 				if (WT_USE_LIGHTBOX && preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
 					$name = trim($row['m_titl']);
-					echo '<a href="', $mainMedia, '" rel="clearbox[general_1]" rev="', $media_id, '::', $GEDCOM, '::', PrintReady(htmlspecialchars($name)), '">';
+					echo '<a href="', $mainMedia, '" rel="clearbox[general_1]" rev="', $media_id, '::', $GEDCOM, '::', htmlspecialchars($name), '">';
 				} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
 					$name = trim($row['m_titl']);
-					echo '<a href="', $mainMedia, "\" rel='clearbox(", get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000'), ", ", get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'), ", click)' rev=\"", $media_id, '::', $GEDCOM, '::', PrintReady(htmlspecialchars($name)), '">';
+					echo '<a href="', $mainMedia, "\" rel='clearbox(", get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000'), ", ", get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'), ", click)' rev=\"", $media_id, '::', $GEDCOM, '::', htmlspecialchars($name), '">';
 				// extra for Streetview ----------------------------------------
 				} else if (WT_USE_LIGHTBOX && strpos($row['m_file'], 'http://maps.google.')===0) {
 					echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row['m_file'], '&amp;output=svembed"></iframe>';
@@ -596,7 +596,7 @@ function print_media_links($factrec, $level, $pid='') {
 					// Do not print Streetview title here (PF&D tab)
 				} else {
 					if ($isExternal) echo ' width="', $THUMBNAIL_WIDTH, '"';
-					echo ' alt="', PrintReady($mediaTitle), '"';
+					echo ' alt="', htmlspecialchars($mediaTitle), '"';
 				}
 				//LBox --------  change for Lightbox Album --------------------------------------------
 				if ($row['m_titl']) {
@@ -610,13 +610,10 @@ function print_media_links($factrec, $level, $pid='') {
 			}
 			echo '</div>'; // close div "media-display-image"
 			echo '<div id="media-display-title">';
-			if (empty($SEARCH_SPIDER)) {
-				echo '<a href="mediaviewer.php?mid=', $media_id, '&amp;ged=', WT_GEDURL, '">';
-			}
-			if ($TEXT_DIRECTION=="rtl" && !hasRTLText($mediaTitle)) echo getLRM(),  PrintReady($mediaTitle);
-			else echo PrintReady($mediaTitle);
-			if (empty($SEARCH_SPIDER)) {
-				echo '</a>';
+			if ($SEARCH_SPIDER) {
+				echo '<span dir="auto">', htmlspecialchars($mediaTitle), '</span>';
+			} else {
+				echo '<a href="mediaviewer.php?mid=', $media_id, '&amp;ged=', WT_GEDURL, '" dir="auto">', htmlspecialchars($mediaTitle), '</a>';
 			}
 			// NOTE: echo the notes of the media
 			echo '<p>';
@@ -682,12 +679,12 @@ function print_address_structure($factrec, $level) {
 	for ($i=0; $i<$ct; $i++) {
 		$arec = get_sub_record($level, "$level ADDR", $factrec, $i+1);
 		$resultText = "";
-		if ($level>1) $resultText .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('ADDR').": </span><br><div class=\"indent\">";
+		if ($level>1) $resultText .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('ADDR').': </span><br><div class="indent">';
 		$cn = preg_match("/$nlevel _NAME (.*)/", $arec, $cmatch);
 		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1])."<br>";
-		$resultText .= PrintReady(trim($omatch[$i][1]));
+		$resultText .= $omatch[$i][1];
 		$cont = get_cont($nlevel, $arec);
-		if (!empty($cont)) $resultText .= str_replace(array(" ", "<br&nbsp;"), array("&nbsp;", "<br "), PrintReady($cont));
+		if (!empty($cont)) $resultText .= str_replace(array(" ", "<br&nbsp;"), array("&nbsp;", "<br "), $cont);
 		else {
 			if (strlen(trim($omatch[$i][1])) > 0) echo '<br>';
 			$cs = preg_match("/$nlevel ADR1 (.*)/", $arec, $cmatch);
@@ -696,7 +693,7 @@ function print_address_structure($factrec, $level) {
 					$resultText .= '<br>';
 					$cn=0;
 				}
-				$resultText .= PrintReady($cmatch[1]);
+				$resultText .= $cmatch[1];
 			}
 			$cs = preg_match("/$nlevel ADR2 (.*)/", $arec, $cmatch);
 			if ($cs>0) {
@@ -704,41 +701,41 @@ function print_address_structure($factrec, $level) {
 					$resultText .= '<br>';
 					$cn=0;
 				}
-				$resultText .= PrintReady($cmatch[1]);
+				$resultText .= $cmatch[1];
 			}
 
 			if (!$POSTAL_CODE) {
 				$cs = preg_match("/$nlevel POST (.*)/", $arec, $cmatch);
 				if ($cs>0) {
-					$resultText .= "<br>".PrintReady($cmatch[1]);
+					$resultText .= "<br>".$cmatch[1];
 				}
 				$cs = preg_match("/$nlevel CITY (.*)/", $arec, $cmatch);
 				if ($cs>0) {
-					$resultText .= " ".PrintReady($cmatch[1]);
+					$resultText .= " ".$cmatch[1];
 				}
 				$cs = preg_match("/$nlevel STAE (.*)/", $arec, $cmatch);
 				if ($cs>0) {
-					$resultText .= ", ".PrintReady($cmatch[1]);
+					$resultText .= ", ".$cmatch[1];
 				}
 			}
 			else {
 				$cs = preg_match("/$nlevel CITY (.*)/", $arec, $cmatch);
 				if ($cs>0) {
-					$resultText .= "<br>".PrintReady($cmatch[1]);
+					$resultText .= "<br>".$cmatch[1];
 				}
 				$cs = preg_match("/$nlevel STAE (.*)/", $arec, $cmatch);
 				if ($cs>0) {
-					$resultText .= ", ".PrintReady($cmatch[1]);
+					$resultText .= ", ".$cmatch[1];
 				}
 				$cs = preg_match("/$nlevel POST (.*)/", $arec, $cmatch);
 				if ($cs>0) {
-					$resultText .= " ".PrintReady($cmatch[1]);
+					$resultText .= " ".$cmatch[1];
 				}
 			}
 
 			$cs = preg_match("/$nlevel CTRY (.*)/", $arec, $cmatch);
 			if ($cs>0) {
-				$resultText .= "<br>".PrintReady($cmatch[1]);
+				$resultText .= "<br>".$cmatch[1];
 			}
 		}
 		if ($level>1) $resultText .= "</div>";
@@ -749,37 +746,37 @@ function print_address_structure($factrec, $level) {
 	$ct = preg_match_all("/$level PHON (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
 		for ($i=0; $i<$ct; $i++) {
-			$resultText .= "<tr>";
-			$resultText .= "<td><span class=\"label\"><b>".WT_Gedcom_Tag::getLabel('PHON').": </b></span></td><td><span class=\"field\">";
-			$resultText .= getLRM() . $omatch[$i][1] . getLRM();
-			$resultText .= "</span></td></tr>";
+			$resultText .= '<tr>';
+			$resultText .= '<td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('PHON').': </b></span></td><td><span class="field" dir="auto">';
+			$resultText .= $omatch[$i][1];
+			$resultText .= '</span></td></tr>';
 		}
 	}
 	$ct = preg_match_all("/$level FAX (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
 		for ($i=0; $i<$ct; $i++) {
-			$resultText .= "<tr>";
-			$resultText .= "<td><span class=\"label\"><b>".WT_Gedcom_Tag::getLabel('FAX').": </b></span></td><td><span class=\"field\">";
-			$resultText .= getLRM() . $omatch[$i][1] . getLRM();
-			$resultText .= "</span></td></tr>";
+			$resultText .= '<tr>';
+			$resultText .= '<td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('FAX').': </b></span></td><td><span class="field" dir="auto">';
+			$resultText .= $omatch[$i][1];
+			$resultText .= '</span></td></tr>';
 		}
 	}
 	$ct = preg_match_all("/$level EMAIL (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
 		for ($i=0; $i<$ct; $i++) {
-			$resultText .= "<tr>";
-			$resultText .= "<td><span class=\"label\"><b>".WT_Gedcom_Tag::getLabel('EMAIL').": </b></span></td><td><span class=\"field\">";
-			$resultText .= "<a href=\"mailto:".$omatch[$i][1]."\">".$omatch[$i][1]."</a>";
-			$resultText .= "</span></td></tr>";
+			$resultText .= '<tr>';
+			$resultText .= '<td><span class="label"><b>'.WT_Gedcom_Tag::getLabel('EMAIL').': </b></span></td><td><span class="field">';
+			$resultText .= '<a href="mailto:'.$omatch[$i][1].'" dir="auto">'.$omatch[$i][1].'</a>';
+			$resultText .= '</span></td></tr>';
 		}
 	}
 	$ct = preg_match_all("/$level (WWW|URL) (.*)/", $factrec, $omatch, PREG_SET_ORDER);
 	if ($ct>0) {
 		for ($i=0; $i<$ct; $i++) {
-			$resultText .= "<tr>";
-			$resultText .= "<td><span class=\"label\"><b>".WT_Gedcom_Tag::getLabel($omatch[$i][1]).": </b></span></td><td><span class=\"field\">";
-			$resultText .= "<a href=\"".$omatch[$i][2]."\" target=\"_blank\">".$omatch[$i][2]."</a>";
-			$resultText .= "</span></td></tr>";
+			$resultText .= '<tr>';
+			$resultText .= '<td><span class="label"><b>'.WT_Gedcom_Tag::getLabel($omatch[$i][1]).': </b></span></td><td><span class="field" dir="auto">';
+			$resultText .= '<a href="'.$omatch[$i][2].'" target="_blank" dir="auto">'.$omatch[$i][2].'</a>';
+			$resultText .= '</span></td></tr>';
 		}
 	}
 	$resultText .= '</table>';
@@ -915,13 +912,13 @@ function printSourceStructure($textSOUR) {
 	$html='';
 
 	if ($textSOUR['PAGE']) {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('PAGE').':</span> <span class="field">'.PrintReady(expand_urls($textSOUR['PAGE'])).'</span></div>';
+		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('PAGE').':</span> <span class="field" dir="auto">'.expand_urls($textSOUR['PAGE']).'</span></div>';
 	}
 
 	if ($textSOUR['EVEN']) {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('EVEN').': </span><span class="field">'.PrintReady($textSOUR['EVEN']).'</span></div>';
+		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('EVEN').': </span><span class="field" dir="auto">'.$textSOUR['EVEN'].'</span></div>';
 		if ($textSOUR['ROLE']) {
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('ROLE').': </span><span class="field">'.PrintReady($textSOUR['ROLE']).'</span></div>';
+			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('ROLE').': </span><span class="field" dir="auto">'.$textSOUR['ROLE'].'</span></div>';
 		}
 	}
 
@@ -931,12 +928,12 @@ function printSourceStructure($textSOUR) {
 			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('DATA:DATE').':</span> <span class="field">'.$date->Display(false).'</span></div>';
 		}
 		foreach ($textSOUR['TEXT'] as $text) {
-			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field">'.PrintReady(expand_urls($text)).'</span></div>';
+			$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('TEXT').':</span> <span class="field" dir="auto">'.expand_urls($text).'</span></div>';
 		}
 	}
 
 	if ($textSOUR['QUAY']!='') {
-		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('QUAY').':</span> <span class="field">'.PrintReady($textSOUR['QUAY']).'</span></div>';
+		$html.='<div class="indent"><span class="label">'.WT_Gedcom_Tag::getLabel('QUAY').':</span> <span class="field" dir="auto">'.$textSOUR['QUAY'].'</span></div>';
 	}
 
 	return $html;
@@ -1082,7 +1079,6 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 				$text = preg_replace("/~~/", "<br>", trim($match[$j][1]));
 				$text .= get_cont($nlevel, $nrec);
 				$text = expand_urls($text);
-				$text = PrintReady($text);
 			} else {
 				//-- print linked/shared note records
 				$note=WT_Note::getInstance($nid);
@@ -1102,8 +1098,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 						}
 					}
 					$text .= get_cont(1, $noterec);
-					$text = expand_urls($text);
-					$text = PrintReady($text).' <br>';
+					$text = expand_urls($text).'<br>';
 					// If Census assistant installed, and if Formatted Shared Note (using pipe "|" as delimiter) -------
 					if (strstr($text, '|') && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 						require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';

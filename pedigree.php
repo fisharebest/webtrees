@@ -387,11 +387,7 @@ if (count($famids)>0) {
 		if ($spouse) {
 			echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$spouse->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 			$name = $spouse->getFullName();
-			if (hasRTLText($name)) {
-				echo 'class="name2">';
-			} else {
-				echo 'class="name1">';
-			}
+			echo 'class="name1">';
 			echo $name;
 			echo '<br></span></a>';
 		}
@@ -400,11 +396,7 @@ if (count($famids)>0) {
 		foreach ($children as $child) {
 			echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 			$name = $child->getFullName();
-			if (hasRTLText($name)) {
-				echo "class=\"name2\">&lt; ";
-			} else {
-				echo "class=\"name1\">&lt; ";
-			}
+			echo "class=\"name1\">&lt; ";
 			echo $name;
 			echo '<br></span></a>';
 		}
@@ -423,11 +415,7 @@ if (count($famids)>0) {
 				if (!$controller->root->equals($child) && !is_null($child)) {
 					echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
 					$name = $child->getFullName();
-					if (hasRTLText($name)) {
-						echo 'class="name2"> ';
-					} else {
-						echo 'class="name1"> ';
-					}
+					echo 'class="name1"> ';
 					echo $name;
 					echo '<br></span></a>';
 				}

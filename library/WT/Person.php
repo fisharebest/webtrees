@@ -1772,20 +1772,7 @@ class WT_Person extends WT_GedcomRecord {
 		if (strpos($full, '@P.N.')!==false) {
 			$full=str_replace('@P.N.', $UNKNOWN_PN, $full);
 		}
-		// RTL names on LTR pages (and vice-versa) cause problems when they contain
-		// weakly-directional characters such as punctuation.  Add markup to fix this.
-		switch (utf8_direction($full)) {
-		case 'ltr':
-			$dir=($TEXT_DIRECTION=='rtl') ? ' dir="ltr"' : '';
-			break;
-		case 'rtl':
-			$dir=($TEXT_DIRECTION=='ltr') ? ' dir="rtl"' : '';
-			break;
-		case 'unknown':
-			$dir='';
-			break;
-		}
-		$full='<span class="NAME"'.$dir.'>'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', htmlspecialchars($full)).'</span>';
+		$full='<span class="NAME" dir="auto">'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', htmlspecialchars($full)).'</span>';
 
 		// Some people put preferred names in quotes.  This is wrong - quotes indicate NICK names.
 		if ($UNDERLINE_NAME_QUOTES) {

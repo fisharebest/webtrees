@@ -2,7 +2,7 @@
 // Controller for the hourglass chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -362,8 +362,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 							$spid = $spouse->getXref();
 							echo "<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 							$name = $spouse->getFullName();
-							if (hasRTLText($name)) echo 'class="name2">';
-							else echo 'class="name1">';
+							echo 'class="name1">';
 							echo $name;
 							echo "<br></span></a>";
 
@@ -374,8 +373,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 							$cid = $child->getXref();
 							echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 							$name = $child->getFullName();
-							if (hasRTLText($name)) echo 'class="name2">';
-							else echo 'class="name1">';
+							echo 'class="name1">';
 							echo '<img src="'.$WT_IMAGES["larrow"].'" height="10" alt="">  ', $name;
 							echo "<br></span></a>";
 						}
@@ -393,8 +391,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $husb->getFullName();
 								$name = rtrim($name);
-								if (hasRTLText($name)) echo 'class="name2">';
-								else echo 'class="name1">';
+								echo 'class="name1">';
 								echo $name;
 								echo "<br></span></a>";
 							}
@@ -404,8 +401,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $husb->getFullName();
 								$name = rtrim($name);
-								if (hasRTLText($name)) echo 'class="name2">';
-								else echo 'class="name1">';
+								echo 'class="name1">';
 								echo $name;
 								echo "<br></span></a>";
 							}
@@ -420,8 +416,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
 								$name = $child->getFullName();
 								$name = rtrim($name);
-								if (hasRTLText($name)) echo 'class="name2">';
-								else echo 'class="name1">';
+								echo 'class="name1">';
 								echo $name;
 								echo "<br></span></a>";
 							}

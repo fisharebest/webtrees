@@ -403,7 +403,7 @@ if (!defined('WT_WEBTREES')) {
 			if (response.length > 0) {
 				for (i=0; i<response.length; i++) {					
 					var name  = '<div id="gname" class="iwstyle">'+response[i].address_components[0].short_name+'<br> '+response[i].geometry.location+''
-						name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo PrintReady(WT_I18N::translate('Use this value')); ?></div></a>'
+						name +=	'<br><a href="#" onclick="setLoc(' + response[i].geometry.location.lat() + ', ' + response[i].geometry.location.lng() + ');"><div id="namelink"><?php echo WT_I18N::translate('Use this value'); ?></div></a>'
 						name += '</div>'
 					var point = response[i].geometry.location;
 					var marker = createMarker(i, point, name);	
@@ -437,7 +437,7 @@ if (!defined('WT_WEBTREES')) {
 	}
 
 	function showLocation_level(address) {
-		address += '<?php if ($level>0) echo ', ', addslashes(PrintReady(implode(', ', array_reverse($where_am_i, true)))); ?>';
+		address += '<?php if ($level>0) echo ', ', addslashes(implode(', ', array_reverse($where_am_i, true))); ?>';
 		geocoder.geocode({'address': address}, addAddressToMap);
 	}
 

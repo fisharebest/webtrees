@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -218,7 +218,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 					<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media path to'), help_link('convertPath'); ?></td>
-					<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo getLRM(), $clip_ctrl->conv_path, getLRM(); ?>"></td></tr>
+					<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo $clip_ctrl->conv_path; ?>" dir="auto"></td></tr>
 
 					<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media folder separators to'), help_link('convertSlashes'); ?></td>
 					<td class="list_value">
@@ -610,7 +610,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		<tr><td class="descriptionbox width50 wrap">'.WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)').help_link('utf8_ansi').'</td>
 		<td class="optionbox"><input type="checkbox" name="convert" value="yes"></td></tr>
 
-		<input type="hidden" name="conv_path" value="'.getLRM(). $clip_ctrl->conv_path. getLRM().'"></td></tr>
+		<input type="hidden" name="conv_path" value="'.$clip_ctrl->conv_path.'"></td></tr>
 
 		<tr><td class="topbottombar" colspan="2">
 		<input type="button" value="'.WT_I18N::translate('Cancel').'" onclick="cancelDownload();">

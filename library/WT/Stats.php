@@ -54,7 +54,7 @@ class WT_Stats {
 
 	function _setGedcom($gedcom) {
 		$this->_gedcom = $gedcom;
-		$this->_ged_id = PrintReady(get_id_from_gedcom($gedcom));
+		$this->_ged_id = get_id_from_gedcom($gedcom);
 		$this->_gedcom_url = rawurlencode($gedcom);
 	}
 
@@ -201,7 +201,7 @@ class WT_Stats {
 
 	function gedcomID() {return $this->_ged_id;}
 
-	function gedcomTitle() {return PrintReady(get_gedcom_setting($this->_ged_id, 'title'));}
+	function gedcomTitle() {return htmlspecialchars(get_gedcom_setting($this->_ged_id, 'title'));}
 
 	function _gedcomHead() {
 		$title = "";
@@ -1252,7 +1252,7 @@ class WT_Stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
+			$place = '<a href="'.get_place_url($place).'" class="list_item">'.htmlspecialchars($place).'</a>';
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
 		}
@@ -1266,7 +1266,7 @@ class WT_Stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
+			$place = '<a href="'.get_place_url($place).'" class="list_item">'.htmlspecialchars($place).'</a>';
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
 		}
@@ -1280,7 +1280,7 @@ class WT_Stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$place = '<a href="'.get_place_url($place).'" class="list_item">'.PrintReady($place).'</a>';
+			$place = '<a href="'.get_place_url($place).'" class="list_item">'.htmlspecialchars($place).'</a>';
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
 		}
@@ -3589,7 +3589,7 @@ class WT_Stats {
 			if ($maxtoshow !== -1) {if ($maxtoshow-- <= 0) {break;}}
 			if ($total < $threshold) {break;}
 			if ($show_tot) {
-				$tot = PrintReady("[{$total}]");
+				$tot = "[{$total}]";
 				if ($TEXT_DIRECTION=='ltr') {
 					$totL = '';
 					$totR = '&nbsp;'.$tot;
@@ -3603,13 +3603,13 @@ class WT_Stats {
 			}
 			switch ($type) {
 			case 'table':
-				$common[] = '<tr><td>'.PrintReady(utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1))).'</td><td>'.WT_I18N::number($total).'</td><td>'.$total.'</td></tr>';
+				$common[] = '<tr><td>'.utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1)).'</td><td>'.WT_I18N::number($total).'</td><td>'.$total.'</td></tr>';
 				break;
 			case 'list':
-				$common[] = "\t<li>{$totL}".PrintReady(utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1)))."{$totR}</li>\n";
+				$common[] = "\t<li>{$totL}".utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1))."{$totR}</li>\n";
 				break;
 			case 'nolist':
-				$common[] = $totL.PrintReady(utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1))).$totR;
+				$common[] = $totL.utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1)).$totR;
 				break;
 			}
 		}
@@ -3753,9 +3753,9 @@ class WT_Stats {
 		if (WT_USER_ID) {
 			foreach ($loggedusers as $user_id=>$user_name) {
 				if ($type == 'list') {
-					$content .= "\t<li>".PrintReady(getUserFullName($user_id))." - {$user_name}";
+					$content .= "\t<li>".htmlspecialchars(getUserFullName($user_id))." - {$user_name}";
 				} else {
-					$content .= PrintReady(getUserFullName($user_id))." - {$user_name}";
+					$content .= htmlspecialchars(getUserFullName($user_id))." - {$user_name}";
 				}
 				if (WT_USER_ID != $user_id && get_user_setting($user_id, 'contactmethod') != 'none') {
 					if ($type == 'list') {

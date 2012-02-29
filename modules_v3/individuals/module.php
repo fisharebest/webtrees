@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -159,7 +159,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$html=$letter;
 					break;
 			}
-			$html='<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=individuals&amp;alpha='.urlencode($letter).'" class="sb_indi_letter">'.PrintReady($html).'</a>';
+			$html='<a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=individuals&amp;alpha='.urlencode($letter).'" class="sb_indi_letter">'.$html.'</a>';
 			$out .= $html." ";
 		}
 
@@ -211,7 +211,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				if ($person->canDisplayDetails()) {
 					$bd = $person->getLifeSpan();
 					if (!empty($bd)) {
-						$out .= PrintReady(' ('.$bd.')');
+						$out .= ' ('.$bd.')';
 					}
 				}
 				$out .= '</a></li>';
@@ -244,7 +244,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				$out .= '<li><a href="'.$person->getHtmlUrl().'">'.$person->getSexImage().' '.$person->getFullName().' ';
 				if ($person->canDisplayDetails()) {
 					$bd = $person->getLifeSpan();
-					if (!empty($bd)) $out .= PrintReady(' ('.$bd.')');
+					if (!empty($bd)) $out .= ' ('.$bd.')';
 				}
 				$out .= '</a></li>';
 			}

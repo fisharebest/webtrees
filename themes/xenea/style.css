@@ -53,7 +53,7 @@ a.link:hover {color:#333366; font-weight:bold;}
 .title a:hover {color:#fff;}
 .hsearch {display:block; float:right; margin-top:10px; margin-right:5px;}
 
-/* LTR to TRL Translation */
+/* LTR to RTL Translation */
 html[dir='rtl'] #header {background-position:right top; background-image:url(images/cabeza_rtl.png);}
 html[dir='rtl'] .title {float:right; margin-right:12px;}
 html[dir='rtl'] .hsearch {float:left; padding-left:10px;}
@@ -81,7 +81,7 @@ html[dir='rtl'] .hsearch {float:left; padding-left:10px;}
 #lang-menu {float:right; margin-right:10px; margin-top:5px; text-align:right;}
 #lang-menu .makeMenu li ul {left:auto; right:0;}
 
-/* LTR to TRL Translation */
+/* LTR to RTL Translation */
 html[dir='rtl'] #theme-menu {float:right; margin-right:10px;}
 html[dir='rtl'] #fav-menu {left:auto; right:10px;}
 html[dir='rtl'] #login-menu {left:auto; right:30%}

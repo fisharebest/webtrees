@@ -309,7 +309,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 				'<option value="__default__"', $sel_default, '>', WT_I18N::translate('Default'), '</option>';
 			foreach ($gedcoms as $ged_id=>$ged_name) {
 				if ($ged_name == $gedcom) {$sel = ' selected="selected"';} else {$sel = '';}
-				echo '<option value="', $ged_name, '"', $sel, '>', PrintReady(get_gedcom_setting($ged_id, 'title')), '</option>';
+				echo '<option value="', $ged_name, '"', $sel, ' dir="auto">', htmlspecialchars(get_gedcom_setting($ged_id, 'title')), '</option>';
 			}
 			echo '</select></td></tr>';
 		}

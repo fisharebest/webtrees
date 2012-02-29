@@ -4,7 +4,7 @@
 // Serves images from the index directory
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -148,8 +148,8 @@ function sendErrorAndExit($type, $line1, $line2 = false) {
 		echo "<!-- filler space so IE will display the custom 404 error -->";
 		echo "\n<div align=\"center\">", $line1, "</div>\n";
 		if ($line2) {
-			// line2 comes from url, wrap in PrintReady
-			echo "<div align=\"center\">", PrintReady($line2), "</div>\n";
+			// line2 comes from url, so escape
+			echo "<div align=\"center\">", htmlspecialchars($line2), "</div>\n";
 		}
 		echo "</body></html>\n";
 	}

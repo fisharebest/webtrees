@@ -2,7 +2,7 @@
 // Date Functions that can be used by any page in webtrees
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -124,9 +124,7 @@ function format_timestamp($time) {
 		}
 	}
 
-	return
-		PrintReady(timestamp_to_gedcom_date($time)->Display(false, $DATE_FORMAT).
-		'<span class="date"> - '.$time_fmt.'</span>');
+	return timestamp_to_gedcom_date($time)->Display(false, $DATE_FORMAT).  '<span class="date"> - '.$time_fmt.'</span>';
 }
 
 ////////////////////////////////////////////////////////////////////////////////

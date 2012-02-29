@@ -2,7 +2,7 @@
 // List branches by surname
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -65,7 +65,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 			<td class="descriptionbox">
 				<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></td>
 			<td class="optionbox">
-				<input type="text" name="surname" id="SURN" value="<?php echo $surn; ?>">
+				<input type="text" name="surname" id="SURN" value="<?php echo $surn; ?>" dir="auto">
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>">
 				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
 				<p><?php echo WT_I18N::translate('Phonetic search'); ?></p>
@@ -83,7 +83,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 //-- results
 if ($surn) {
 	$surn_script = utf8_script($surn);
-	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', PrintReady($surn), '</legend>';
+	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', $surn, '</legend>';
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
 	usort($indis, array('WT_Person', 'CompareBirtDate'));
 	echo '<ol>';
@@ -134,7 +134,6 @@ function print_fams($person, $famid=null) {
 		echo '<li title="', strip_tags($person->getFullName()), '">', $person->getSexImage(), '…</li>';
 		return;
 	}
-	$person_script = utf8_script($person_name);
 	// current indi
 	echo '<li>';
 	$class = '';
@@ -144,7 +143,7 @@ function print_fams($person, $famid=null) {
 		$sosa = '<a target="_blank" dir="ltr" class="details1 '.$person->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$person->getXref().'">&nbsp;'.$sosa.'&nbsp;</a>'.sosa_gen($sosa);
 	}
 	$current = $person->getSexImage().
-		'<a target="_blank" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.PrintReady($person_name).'</a> '.
+		'<a target="_blank" class="'.$class.'" href="'.$person->getHtmlUrl().'">'.$person_name.'</a> '.
 		$person->getLifeSpan().' '.$sosa;
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();

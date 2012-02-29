@@ -2,7 +2,7 @@
 // Controller for the timeline chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
@@ -242,7 +242,7 @@ class WT_Controller_Timeline extends WT_Controller_Chart {
 						echo '<span class="age"> ', WT_I18N::translate('Age'), ' ', $ageh, '</span>';
 					}
 				}
-				echo " ".PrintReady($desc);
+				echo " ".htmlspecialchars($desc);
 				if ($SHOW_PEDIGREE_PLACES>0) {
 					$place = $event->getPlace();
 					if ($place!=null) {
@@ -251,7 +251,7 @@ class WT_Controller_Timeline extends WT_Controller_Chart {
 						for ($plevel=0; $plevel<$SHOW_PEDIGREE_PLACES; $plevel++) {
 							if (!empty($plevels[$plevel])) {
 								if ($plevel>0) echo ", ";
-								echo PrintReady($plevels[$plevel]);
+								echo htmlspecialchars($plevels[$plevel]);
 							}
 						}
 					}

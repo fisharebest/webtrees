@@ -257,15 +257,11 @@ class WT_Event {
 		global $SHOW_PEDIGREE_PLACES, $ABBREVIATE_CHART_LABELS;
 
 		if (!$this->canShow()) return "";
-		$data = "";
-		if ($this->gedcomRecord != "1 DEAT") {
-		   $data .= "<span class=\"details_label\">".$this->getLabel($ABBREVIATE_CHART_LABELS)."</span> ";
+		$data = '<span class="details_label">'.$this->getLabel($ABBREVIATE_CHART_LABELS).'</span>';
+		if ($this->detail) {
+			$data .= ' <span dir="auto">'.htmlspecialchars($this->detail).'</span>';
 		}
-		$emptyfacts = array("BIRT","CHR","DEAT","BURI","CREM","ADOP","BAPM","BARM","BASM","BLES","CHRA","CONF","FCOM","ORDN","NATU","EMIG","IMMI","CENS","PROB","WILL","GRAD","RETI","BAPL","CONL","ENDL","SLGC","MARR","SLGS","MARL","ANUL","CENS","DIV","DIVF","ENGA","MARB","MARC","MARS","OBJE","CHAN","_SEPR","RESI", "DATA", "MAP");
-		if (!in_array($this->tag, $emptyfacts)) {
-			$data .= PrintReady($this->detail);
-		}
-		$data .= format_fact_date($this, $this->getParentObject(), $anchor, false);
+		$data .= ' '.format_fact_date($this, $this->getParentObject(), $anchor, false);
 		$data .= ' '.format_fact_place($this, $anchor, false, false);
 		$data .= "<br>";
 		if ($return) {

@@ -78,7 +78,7 @@ foreach ($events as $event) {
 			echo '<span class="details_label">', $event->getLabel(), '</span> ';
 			$details=$event->getDetail();
 			if ($details!='Y' && $details!='N') {
-				echo PrintReady($details);
+				echo '<span dir="auto">', $details, '</span>';
 			}
 			echo format_fact_date($event, $person, false, false);
 			// Show spouse/family for family events

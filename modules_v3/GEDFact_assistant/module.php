@@ -608,7 +608,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 								//-- name and size field
 								echo "<td class=\"list_value\">";
 								if ($media["TITL"] != "") {
-									echo "<b>", PrintReady($media["TITL"]), "</b><br>";
+									echo "<b>", htmlspecialchars($media["TITL"]), "</b><br>";
 								}
 								if (!$embed) {
 									echo "<a href=\"#\" onclick=\"pasteid('", addslashes($media["FILE"]), "');\"><span dir=\"ltr\">", $media["FILE"], "</span></a> -- ";
@@ -681,7 +681,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 						uasort($revplacelist, "utf8_strcasecmp");
 						echo "<td class=\"list_value_wrap\"><ul>";
 						foreach ($revplacelist as $place) {
-							echo "<li><a href=\"#\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", PrintReady($place), "</a></li>";
+							echo "<li><a href=\"#\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", htmlspecialchars($place), "</a></li>";
 						}
 						echo "</ul></td></tr>";
 						echo "<tr><td class=\"list_label\">", WT_I18N::translate('Places found'), " ", $ctplace;

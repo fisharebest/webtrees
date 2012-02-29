@@ -239,26 +239,26 @@ case 'go':
 	//start to produce the display table
 	$cols=0;
 	$span=$max*3+3;
-	echo "<div class='gm_check_details'>";
-	echo "<table class='gm_check_details'><tr>";
-	echo "<th rowspan='3'>", WT_I18N::translate('GEDCOM File Place Data<br />(2 PLAC tag)'), "</th>";
-	echo "<th colspan='", $span, "'>", WT_I18N::translate('GoogleMap Places Table Data'), "</th></tr>";
-	echo "<tr>";
+	echo '<div class="gm_check_details">';
+	echo '<table class="gm_check_details"><tr>';
+	echo '<th rowspan="3">', WT_I18N::translate('GEDCOM File Place Data<br />(2 PLAC tag)'), '</th>';
+	echo '<th colspan="', $span, '">', WT_I18N::translate('GoogleMap Places Table Data'), '</th></tr>';
+	echo '<tr>';
 	while ($cols<$max) {
 		if ($cols == 0) {
-			echo "<th colspan='3'>", PrintReady(WT_I18N::translate('Country')), "</th>";
+			echo '<th colspan="3">', WT_I18N::translate('Country'), '</th>';
 		} else {
-			echo "<th colspan='3'>", PrintReady(WT_I18N::translate('Level')), "&nbsp;", $cols+1, "</th>";
+			echo '<th colspan="3">', WT_I18N::translate('Level'), '&nbsp;', $cols+1, '</th>';
 		}
 		$cols++;
 	}
-	echo "</tr><tr>";
+	echo '</tr><tr>';
 	$cols=0;
 	while ($cols<$max) {
-		echo "<th>", WT_Gedcom_Tag::getLabel('PLAC'), "</th><th>", WT_I18N::translate('Latitude'), "</th><th>", WT_I18N::translate('Longitude'), "</th></td>";
+		echo '<th>', WT_Gedcom_Tag::getLabel('PLAC'), '</th><th>', WT_I18N::translate('Latitude'), '</th><th>', WT_I18N::translate('Longitude'), '</th></td>';
 		$cols++;
 	}
-	echo "</tr>";
+	echo '</tr>';
 	$countrows=0;
 	while ($x<$i) {
 		$placestr="";
@@ -334,8 +334,8 @@ case 'go':
 				$long[$z]="<td class='error' align='center'><strong>X</strong></td>";$matched[$x]++;
 			}
 			$level++;
-			$mapstr3=$mapstr3."&amp;parent[".$z."]=".addslashes(PrintReady($row['pl_placerequested']));
-			$mapstr4=$mapstr4."&amp;parent[".$z."]=".addslashes(PrintReady(rtrim(ltrim($levels[$z]))));
+			$mapstr3=$mapstr3."&amp;parent[".$z."]=".addslashes($row['pl_placerequested']);
+			$mapstr4=$mapstr4."&amp;parent[".$z."]=".addslashes(rtrim(ltrim($levels[$z])));
 			$z++;
 		}
 		if ($matching) {

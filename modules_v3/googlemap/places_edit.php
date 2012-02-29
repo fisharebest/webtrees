@@ -2,7 +2,7 @@
 // Interface to edit place locations
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team. All rights reserved.
@@ -94,9 +94,9 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 		WT_DB::prepare("INSERT INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
 	if (($_POST['LONG_CONTROL'] == '') || ($_POST['NEW_PLACE_LONG'] == '') || ($_POST['NEW_PLACE_LATI'] == '')) {
-		$statement->execute(array(getHighestIndex()+1, $placeid, $level, stripLRMRLM($_POST['NEW_PLACE_NAME']), null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
+		$statement->execute(array(getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 	} else {
-		$statement->execute(array(getHighestIndex()+1, $placeid, $level, stripLRMRLM($_POST['NEW_PLACE_NAME']), $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
+		$statement->execute(array(getHighestIndex()+1, $placeid, $level, $_POST['NEW_PLACE_NAME'], $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon']));
 	}
 
 	// autoclose window when update successful unless debug on
@@ -112,9 +112,9 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 		WT_DB::prepare("UPDATE `##placelocation` SET pl_place=?, pl_lati=?, pl_long=?, pl_zoom=?, pl_icon=? WHERE pl_id=?");
 
 	if (($_POST['LONG_CONTROL'] == '') || ($_POST['NEW_PLACE_LONG'] == '') || ($_POST['NEW_PLACE_LATI'] == '')) {
-		$statement->execute(array(stripLRMRLM($_POST['NEW_PLACE_NAME']), null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
+		$statement->execute(array($_POST['NEW_PLACE_NAME'], null, null, $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
 	} else {
-		$statement->execute(array(stripLRMRLM($_POST['NEW_PLACE_NAME']), $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
+		$statement->execute(array($_POST['NEW_PLACE_NAME'], $_POST['LATI_CONTROL'][3].$_POST['NEW_PLACE_LATI'], $_POST['LONG_CONTROL'][3].$_POST['NEW_PLACE_LONG'], $_POST['NEW_ZOOM_FACTOR'], $_POST['icon'], $placeid));
 	}
 
 	// autoclose window when update successful unless debug on
@@ -137,7 +137,7 @@ if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {
 	echo "<br><br>";	
 	$statement=
 		WT_DB::prepare("UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?");		
-	$statement->execute(array(stripLRMRLM($_REQUEST['svlati']), $_REQUEST['svlong'], $_REQUEST['svbear'], $_REQUEST['svelev'], $_REQUEST['svzoom'], $placeid));
+	$statement->execute(array($_REQUEST['svlati'], $_REQUEST['svlong'], $_REQUEST['svbear'], $_REQUEST['svelev'], $_REQUEST['svzoom'], $placeid));
 	if (!WT_DEBUG) {
 		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
 	}
@@ -195,19 +195,19 @@ if ($action=="update") {
 
 	$success = false;
 
-	echo "<b>", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), "</b><br>\n";
+	echo '<b>', str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true))), '</b><br>';
 }
 
-if ($action=="add") {
+if ($action=='add') {
 	// --- find the parent place in the file
 	if ($placeid != 0) {
-		if (!isset($place_name)) $place_name  = "";
+		if (!isset($place_name)) $place_name  = '';
 		$place_lati = null;
 		$place_long = null;
 		$zoomfactor = 1;
-		$parent_lati = "0.0";
-		$parent_long = "0.0";
-		$place_icon = "";
+		$parent_lati = '0.0';
+		$parent_long = '0.0';
+		$place_icon = '';
 		$parent_id=$placeid;
 		do {
 			$row=
@@ -227,30 +227,30 @@ if ($action=="add") {
 		} while ($row->pl_parent_id!=0 && $row->pl_lati===null && $row->pl_long===null);
 	}
 	else {
-		if (!isset($place_name)) $place_name  = "";
+		if (!isset($place_name)) $place_name  = '';
 		$place_lati  = null;
 		$place_long  = null;
 		$parent_lati = "0.0";
 		$parent_long = "0.0";
-		$place_icon  = "";
+		$place_icon  = '';
 		$parent_id   = 0;
 		$level = 0;
 		$zoomfactor  = $GOOGLEMAP_MIN_ZOOM;
 	}
-	$selected_country = "Countries";
+	$selected_country = 'Countries';
 	$show_marker = false;
 	$success = false;
 
-	if (!isset($place_name) || $place_name=="") echo "<b>", WT_I18N::translate('unknown');
-	else echo "<b>", $place_name;
+	if (!isset($place_name) || $place_name=="") echo '<b>', WT_I18N::translate('unknown');
+	else echo '<b>', $place_name;
 	if (count($where_am_i)>0)
-		echo ", ", str_replace("Unknown", WT_I18N::translate('unknown'), PrintReady(implode(WT_I18N::$list_separator, array_reverse($where_am_i, true)))), "</b><br>\n";
-	echo "</b><br>";
+		echo ', ', str_replace('Unknown', WT_I18N::translate('unknown'), implode(WT_I18N::$list_separator, array_reverse($where_am_i, true))), '</b><br>';
+	echo '</b><br>';
 }
 
 echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
 include_once 'wt_v3_places_edit.js.php';
-$api="v3";
+$api='v3';
 
 ?>
 

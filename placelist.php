@@ -90,10 +90,6 @@ else {
 	if (!is_array($parent)) $parent = array();
 	else $parent = array_values($parent);
 }
-// Remove slashes
-foreach ($parent as $p => $child) {
-	$parent[$p] = stripLRMRLM($child);
-}
 
 if (!isset($level)) {
 	$level=0;
@@ -136,12 +132,6 @@ if ($display=='hierarchy') {
 		//-- breadcrumb
 		$numls = count($parent)-1;
 		$num_place='';
-		//-- place and page text orientation is opposite -> top level added at the beginning of the place text
-		echo '<a href="?level=0">';
-		if ($numls>=0 && (($TEXT_DIRECTION=='ltr' && hasRtLText($parent[$numls])) || ($TEXT_DIRECTION=='rtl' && !hasRtLText($parent[$numls])))) { 
-			echo WT_I18N::translate('Top Level'), ', ';
-		}
-		echo '</a>';
 		for ($i=$numls; $i>=0; $i--) {
 			echo '<a href="?level=', ($i+1);
 			for ($j=0; $j<=$i; $j++) {
@@ -157,30 +147,23 @@ if ($display=='hierarchy') {
 					echo '&amp;parent%5B', $j, '%5D=', $ppart;
 				}
 			}
-			echo '">';
+			echo '"><bdi dir="auto">';
 			if (trim($parent[$i])=='') {
 				echo WT_I18N::translate('unknown');
 			} else if ($i == $numls) {
 				echo $base_parent; 
 			} else {
-				echo PrintReady($parent[$i]);
+				echo htmlspecialchars($parent[$i]);
 			}
-			echo '</a>';
-			if ($i>0) {
-				echo ', ';
-			} elseif (($TEXT_DIRECTION=='rtl' && hasRtLText($parent[$i])) || ($TEXT_DIRECTION=='ltr' &&  !hasRtLText($parent[$i]))) {
-				echo ', ';
-			}
+			echo '</bdi></a>';
+			echo ', ';
 			if (empty($num_place)) {
 				$num_place=$parent[$i];
 			}
 		}
 	}
 	echo '<a href="?level=0">';
-	//-- place and page text orientation is the same -> top level added at the end of the place text
-	if ($level==0 || ($numls>=0 && (($TEXT_DIRECTION=='rtl' && hasRtLText($parent[$numls])) || ($TEXT_DIRECTION=='ltr' && !hasRtLText($parent[$numls]))))) {
-		echo WT_I18N::translate('Top Level');
-	}
+	echo WT_I18N::translate('Top Level');
 	echo '</a>',
 		'</h4>';
 
@@ -239,7 +222,7 @@ if ($display=='hierarchy') {
 		echo '&amp;parent%5B', $level, '%5D=', urlencode($value), '" class="list_item">';
 
 		if (trim($value)=='') echo WT_I18N::translate('unknown');
-		else echo PrintReady($value);
+		else echo htmlspecialchars($value);
 		if ($use_googlemap) $place_names[$i]=trim($value);
 		echo '</a></li>';
 		$i++;
@@ -281,7 +264,7 @@ if ($display=='hierarchy') {
 			if (trim($value)=='') {
 				echo WT_I18N::translate('unknown');
 			} else {
-				echo PrintReady($value);
+				echo htmlspecialchars($value);
 			}
 			echo '</span></a>';
 			echo '</td></tr>';
@@ -384,7 +367,7 @@ if ($display=='list') {
 				else $revplace .= $place;
 			}
 			echo '<li><a href="?action=show&amp;display=hierarchy&amp;level=', $level, $linklevels, '">';
-			echo PrintReady($revplace), '</a></li>';
+			echo htmlspecialchars($revplace), '</a></li>';
 			$i++;
 			if ($ct > 20) {
 				if ($i == floor($ct / 3)) {

@@ -690,7 +690,7 @@ if ($action=="filter") {
 						//-- name and size field
 						echo '<div class="find-media-details">';
 							if ($media["TITL"] != '') {
-								echo '<p class="find-media-title">', PrintReady($media["TITL"]), '</p>';
+								echo '<p class="find-media-title">', htmlspecialchars($media["TITL"]), '</p>';
 							}
 							if (!$embed) {
 								echo '<p><a href="#" onclick="pasteid(\'', addslashes($media["FILE"]), '\span dir="ltr">', $media["FILE"], '</span></a> -- </p>';
@@ -765,7 +765,7 @@ if ($action=="filter") {
 				uasort($revplacelist, "utf8_strcasecmp");
 				echo '<ul>';
 				foreach ($revplacelist as $place) {
-					echo "<li><a href=\"#\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", PrintReady($place), "</a></li>";
+					echo "<li><a href=\"#\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", htmlspecialchars($place), "</a></li>";
 				}
 				echo '</ul>
 				<p>', WT_I18N::translate('Places found'), '&nbsp;', $ctplace, '</p>';

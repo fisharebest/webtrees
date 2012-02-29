@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -150,8 +150,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($favorite['type']=='URL') {
 					$content .= "<div id=\"boxurl".$key.".0\" class=\"person_box\">";
 					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
-					$content .= "<a href=\"".$favorite['url']."\"><b>".PrintReady($favorite['title']).'</b></a>';
-					$content .= '<br>'.PrintReady($favorite['note']);
+					$content .= "<a href=\"".$favorite['url']."\"><b>".$favorite['title'].'</b></a>';
+					$content .= '<br>'.$favorite['note'];
 					$content .= '</div>';
 				} else {
 					$record=WT_GedcomRecord::getInstance($favorite['gid']);
@@ -173,7 +173,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 							ob_start();
 							print_pedigree_person($record, $style, 1, $key);
 							$content .= ob_get_clean();
-							$content .= PrintReady($favorite["note"]);
+							$content .= $favorite['note'];
 							$content .= "</div>";
 						} else {
 							$record=WT_GedcomRecord::getInstance($favorite['gid']);
@@ -184,7 +184,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 							} else {
 								$content.=WT_I18N::translate('No such ID exists in this GEDCOM file.');
 							}
-							$content .= '<br>'.PrintReady($favorite['note']);
+							$content .= '<br>'.$favorite['note'];
 							$content .= '</div>';
 						}
 					}

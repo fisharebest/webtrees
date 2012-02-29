@@ -191,12 +191,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	}
 	
 	// Here for alternate name2
-	if (strlen($addname) > 0) {
-		$tempStyle = $style;
-		if (hasRTLText($addname) && $style=='1') {
-			$tempStyle = '2';
-		}
-		$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name$tempStyle\"> ".PrintReady($addname)."</span>";
+	if ($addname) {
+		$addname = "<br><span id=\"addnamedef-$boxID\" class=\"name1\"> ".$addname."</span>";
 	}
 	
 	if ($SHOW_LDS_AT_GLANCE && $show_full) {
@@ -358,7 +354,7 @@ function whoisonline() {
 		$i=0;
 		foreach ($loggedusers as $user_id=>$user_name) {
 			$content .= '<div class="logged_in_name">';
-			$content .= PrintReady(getUserFullName($user_id))." - ".$user_name;
+			$content .= htmlspecialchars(getUserFullName($user_id))." - ".htmlspecialchars($user_name);
 			if (WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
 				$content .= "<a class=\"mailto\" href=\"#\" onclick=\"return message('" . $user_name . "')\" title=\"" . WT_I18N::translate('Send Message') . "\">&nbsp;&nbsp;&nbsp;&nbsp;</a>";
 			}
@@ -467,7 +463,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		if (preg_match('/@N([0-9])+@/', $nrec, $match_nid)) {
 			$nid = str_replace('@', '', $match_nid[0]);
 			if (!$npage) {
-				$centitl = '<a href="note.php?nid='.$nid.'">'.$centitl.'</a>';
+				$centitl = '<a href="note.php?nid='.$nid.'" dir="auto">'.$centitl.'</a>';
 			}
 		}
 		if ($textOnly) {
@@ -480,11 +476,10 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		$text .= get_cont($nlevel, $nrec);
 	}
 	$text = str_replace('~~', '<br>', $text);
-	$text = trim(expand_urls(stripLRMRLM($text)));
+	$text = expand_urls($text);
 	$data = '';
 
 	if (!empty($text) || !empty($centitl)) {
-		$text = PrintReady($text);
 		// Check if Formatted Shared Note (using pipe "|" as delimiter ) --------------------
 		if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec) && strstr($text, "|") && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 			require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_CENS/census_note_decode.php';
@@ -520,18 +515,18 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 		}
 
 		if ($brpos !== false) {
-			$data .= '<span class="field">'.substr($text, 0, $brpos).'</span>';
+			$data .= '<span class="field" dir="auto">'.substr($text, 0, $brpos).'</span>';
 			if ($npage) {
 				$data .= substr($text, $brpos + 4) . "</div>";
 			} else {
 				$data .= '<div id="'.$elementID.'"';
 				if ($EXPAND_NOTES) $data .= ' style="display:block"';
-				$data .= ' class="note_details font11">';
+				$data .= ' class="note_details font11" dir="auto">';
 				$data .= substr($text, $brpos + 4);
 				$data .= '</div>';
 			}
 		} else {
-			$data .= '<span class="field">'.$text. '</span>';
+			$data .= '<span class="field" dir="auto">'.$text. '</span>';
 		}
 			$data .= "</div>";
 
@@ -598,18 +593,6 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 	if (!$return) echo $data;
 	else return $data;
 }
-/**
-* print a gedcom title linked to the gedcom portal
-*
-* This function will print the HTML to link the current gedcom title back to the
-* gedcom Home Page
-* @author John Finlay
-*/
-function print_gedcom_title_link() {
-	global $GEDCOM_TITLE;
-
-	echo '<a href="index.php?ctype=gedcom&amp;ged=', WT_GEDURL,'" class="gedcomtitle">', PrintReady($GEDCOM_TITLE), '</a>';
-}
 
 //-- function to print a privacy error with contact method
 function print_privacy_error() {
@@ -671,58 +654,6 @@ function highlight_search_hits($string) {
 	} else {
 		return $string;
 	}
-}
-
-/**
-* Prepare text with parenthesis for printing
-* Convert & to &amp; for xhtml compliance
-*
-* @param string $text to be printed
-*/
-function PrintReady($text) {
-	//-- convert all & to &amp;
-	$text = str_replace("&", "&amp;", $text);
-	//$text = preg_replace(array("/&/", "/</", "/>/"), array("&amp;", "&lt;", "&gt;"), $text);
-	//-- make sure we didn't double convert existing HTML entities like so:  &foo; to &amp;foo;
-	$text = preg_replace("/&amp;(\w+);/", "&$1;", $text);
-
-	// Look for strings enclosed in parentheses, braces, or brackets.
-	//
-	// Parentheses, braces, and brackets have weak directionality and aren't handled properly
-	// when they enclose text whose directionality differs from that of the page.
-	//
-	// To correct the problem, we need to enclose the parentheses, braces, or brackets with
-	// zero-width characters (&lrm; or &rlm;) having a directionality that matches the
-	// directionality of the text that is enclosed by the parentheses, etc.
-	$charPos = 0;
-	$lastChar = strlen($text);
-	$newText = "";
-	while (true) {
-		if ($charPos > $lastChar) break;
-		$thisChar = substr($text, $charPos, 1);
-		$charPos ++;
-		if ($thisChar=="(" || $thisChar=="{" || $thisChar=="[") {
-			$tempText = "";
-			while (true) {
-				$tempChar = "";
-				if ($charPos > $lastChar) break;
-				$tempChar = substr($text, $charPos, 1);
-				$charPos ++;
-				if ($tempChar==")" || $tempChar=="}" || $tempChar=="]") break;
-				$tempText .= $tempChar;
-			}
-			if (utf8_direction($tempText)=='rtl') {
-				$newText .= getRLM() . $thisChar . $tempText . $tempChar . getRLM();
-			} else {
-				$newText .= getLRM() . $thisChar . $tempText . $tempChar . getLRM();
-			}
-		} else {
-			$newText .= $thisChar;
-		}
-	}
-	$text = $newText;
-
-	return $text;
 }
 
 // Print the associations from the associated individuals in $event to the individuals in $record
@@ -926,7 +857,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 						}
 					}
 				}
-				if ($ageText!='') $html .= '<span class="age"> '.PrintReady($ageText).'</span>';
+				if ($ageText) $html .= ' <span class="age">'.$ageText.'</span>';
 			}
 		} elseif ($record instanceof WT_Family) {
 			$indirec=find_person_record($pid, $ged_id);
@@ -948,7 +879,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 					}
 				}
 			}
-			if ($ageText!='') $html .= '<span class="age"> '.PrintReady($ageText).'</span>';
+			if ($ageText) $html .= ' <span class="age">'.$ageText.'</span>';
 		}
 	} else {
 		// 1 DEAT Y with no DATE => print YES
@@ -965,7 +896,7 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 	// print gedcom ages
 	foreach (array(WT_Gedcom_Tag::getLabel('AGE')=>$fact_age, WT_Gedcom_Tag::getLabel('HUSB')=>$husb_age, WT_Gedcom_Tag::getLabel('WIFE')=>$wife_age) as $label=>$age) {
 		if ($age!='') {
-			$html.=' <span class="label">'.$label.':</span> <span class="age">'.PrintReady(get_age_at_event($age, false)).'</span>';
+			$html.=' <span class="label">'.$label.':</span> <span class="age">'.get_age_at_event($age, false).'</span>';
 		}
 	}
 	return $html;
@@ -1024,14 +955,14 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 				if ($ct>0) {
 					$html.=" – ";
 				}
-				$html.=' '.PrintReady($match[1]);
+				$html.=' '.$match[1];
 			}
 			$cts = preg_match('/\d _HEB (.*)/', $placerec, $match);
 			if ($cts>0) {
 				if ($ct>0) {
 					$html.=' – ';
 				}
-				$html.=' '.PrintReady($match[1]);
+				$html.=' '.$match[1];
 			}
 			$map_lati="";
 			$cts = preg_match('/\d LATI (.*)/', $placerec, $match);

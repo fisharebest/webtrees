@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -77,12 +77,9 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<option value="">' . WT_I18N::translate('&lt;select&gt;') . '</option>';
 			foreach (get_all_users() as $user_id=>$user_name) {
 				if ($user_id!=WT_USER_ID && get_user_setting($user_id, 'verified_by_admin') && get_user_setting($user_id, 'contactmethod')!='none') {
-					$content .= "<option value=\"".$user_name."\">".PrintReady(getUserFullName($user_id)).' ';
-					if ($TEXT_DIRECTION=='ltr') {
-						$content .= stripLRMRLM(getLRM().' - '.$user_name.getLRM());
-					} else {
-						$content .= stripLRMRLM(getRLM().' - '.$user_name.getRLM());
-					}
+					$content .= '<option value="'.$user_name.'">';
+					$content .= '<span dir="auto">'.htmlspecialchars(getUserFullName($user_id)).'</span>';
+					$content .= ' - <span dir="auto">'.$user_name.'</span>';
 					$content .= '</option>';
 				}
 			}
@@ -108,19 +105,15 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				if (isset($message['id'])) $key = $message['id'];
 				$content .= '<tr>';
 				$content .= "<td class=\"list_value_wrap\"><input type=\"checkbox\" id=\"cb_message$key\" name=\"message_id[]\" value=\"$key\"></td>";
-				$showmsg=preg_replace("/(\w)\/(\w)/","\$1/<span style=\"font-size:1px;\"> </span>\$2",PrintReady($message['subject']));
+				$showmsg=preg_replace("/(\w)\/(\w)/","\$1/<span style=\"font-size:1px;\"> </span>\$2",htmlspecialchars($message['subject']));
 				$showmsg=str_replace("@","@<span style=\"font-size:1px;\"> </span>",$showmsg);
 				$content .= "<td class=\"list_value_wrap\"><a href=\"#\" onclick=\"expand_layer('message{$key}'); return false;\"><img id=\"message{$key}_img\" src=\"".$WT_IMAGES['plus']."\" alt=\"".WT_I18N::translate('Show Details')."\" title=\"".WT_I18N::translate('Show Details')."\"> <b>".$showmsg."</b></a></td>";
 				$content .= '<td class="list_value_wrap">'.format_timestamp($message['created']).'</td>';
 				$content .= '<td class="list_value_wrap">';
 				$user_id=get_user_id($message['from']);
 				if ($user_id) {
-					$content .= PrintReady(getUserFullName($user_id));
-					if ($TEXT_DIRECTION=='ltr') {
-						$content .= ' '.getLRM().' - '.htmlspecialchars(getUserEmail($user_id)) . getLRM();
-					} else {
-						$content .= ' '.getRLM().' - '.htmlspecialchars(getUserEmail($user_id)) . getRLM();
-					}
+					$content .= '<span dir="auto">'.htmlspecialchars(getUserFullName($user_id)).'</span>';
+					$content .= '  - <span dir="auto">'.getUserEmail($user_id).'</span>';
 				} else {
 					$content .= "<a href=\"mailto:".$message['from']."\">".str_replace("@","@<span style=\"font-size:1px;\"> </span>",$message['from']).'</a>';
 				}
@@ -130,7 +123,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$message['body'] = nl2br(htmlspecialchars($message['body']));
 				$message['body'] = expand_urls($message['body']);
 
-				$content .= PrintReady($message['body']).'<br><br>';
+				$content .= htmlspecialchars($message['body']).'<br><br>';
 				if (strpos($message['subject'], /* I18N: When replying to an email, the subject becomes "RE: <subject>" */ WT_I18N::translate('RE: '))!==0) {
 					$message['subject']= WT_I18N::translate('RE: ').$message['subject'];
 				}

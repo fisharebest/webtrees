@@ -114,8 +114,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= $todo['date']->JD();
 					$content .= '</td>';
 					$content.='<td class="wrap">'. $todo['date']->Display(empty($SEARCH_SPIDER)).'</td>';
-					$name=$record->getFullName();
-					$content.='<td class="wrap"><a href="'.$record->getHtmlUrl().'">'.PrintReady($name).'</a></td>';
+					$content.='<td class="wrap"><a href="'.$record->getHtmlUrl().'">'.$record->getFullName().'</a></td>';
 					if ($show_unassigned || $show_other) {
 						$content.='<td class="wrap">'.$user_name.'</td>';
 					}

@@ -45,7 +45,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$title=get_gedcom_setting(WT_GED_ID, 'title');
+		$title='<span dir="auto">'.get_gedcom_setting(WT_GED_ID, 'title').'</span>';
 		$content = '';
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';
