@@ -489,7 +489,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		// 4) first one found
 		$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
 		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR=get_site_setting('THEME_DIR', 'webtrees');
+			$THEME_DIR=get_site_setting('THEME_DIR');
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
 			$THEME_DIR='webtrees';

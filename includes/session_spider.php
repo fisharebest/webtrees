@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 // Note: you may need to blcok IPv6 addresses as well as IPv4 ones.
 try {
 	$banned_ip=WT_DB::prepare(
-		"SELECT ip_address, comment FROM `##ip_address`".
+		"SELECT SQL_CACHE ip_address, comment FROM `##ip_address`".
 		" WHERE category='banned' AND ? LIKE REPLACE(ip_address, '*', '%') LIMIT 1"
 	)->execute(array($_SERVER['REMOTE_ADDR']))->fetchOneRow();
 	if ($banned_ip) {
@@ -198,7 +198,7 @@ if (!$real) {
 //   mode or update the table wt_ip_address directly.
 try {
 	$search_engine=WT_DB::prepare(
-		"SELECT ip_address, comment FROM `##ip_address`".
+		"SELECT SQL_CACHE ip_address, comment FROM `##ip_address`".
 		" WHERE category='search-engine' AND ? LIKE REPLACE(ip_address, '*', '%') LIMIT 1"
 	)->execute(array($_SERVER['REMOTE_ADDR']))->fetchOneRow();
 	if ($search_engine) {

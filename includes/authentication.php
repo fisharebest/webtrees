@@ -9,7 +9,7 @@
 // Other possible options are to use LDAP for authentication.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -224,7 +224,7 @@ function getUserAccessLevel($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 
 // Get the full name for a user
 function getUserFullName($user_id) {
-	return WT_DB::prepare("SELECT real_name FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
+	return WT_DB::prepare("SELECT SQL_CACHE real_name FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
 }
 
 // Set the full name for a user

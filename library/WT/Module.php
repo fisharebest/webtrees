@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -113,7 +113,7 @@ abstract class WT_Module {
 		
 		if ($modules===null) {
 			$module_names=WT_DB::prepare(
-				"SELECT module_name FROM `##module` WHERE status='enabled'"
+				"SELECT SQL_CACHE module_name FROM `##module` WHERE status='enabled'"
 			)->fetchOneColumn();
 			$modules=array();
 			foreach ($module_names as $module_name) {
@@ -139,7 +139,7 @@ abstract class WT_Module {
 
 	static private function getActiveModulesByComponent($component, $ged_id, $access_level) {
 		$module_names=WT_DB::prepare(
-			"SELECT module_name".
+			"SELECT SQL_CACHE module_name".
 			" FROM `##module`".
 			" JOIN `##module_privacy` USING (module_name)".
 			" WHERE gedcom_id=? AND component=? AND status='enabled' AND access_level>=?".
@@ -273,7 +273,7 @@ abstract class WT_Module {
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Menu) {
 				$module->sort=WT_DB::prepare(
-					"SELECT menu_order FROM `##module` WHERE module_name=?"
+					"SELECT SQL_CACHE menu_order FROM `##module` WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
 				$modules[$name]=$module;
 			}
@@ -299,7 +299,7 @@ abstract class WT_Module {
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Sidebar) {
 				$module->sort=WT_DB::prepare(
-					"SELECT sidebar_order FROM `##module` WHERE module_name=?"
+					"SELECT SQL_CACHE sidebar_order FROM `##module` WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
 				$modules[$name]=$module;
 			}
@@ -314,7 +314,7 @@ abstract class WT_Module {
 		foreach (self::getInstalledModules() as $name=>$module) {
 			if ($module instanceof WT_Module_Tab) {
 				$module->sort=WT_DB::prepare(
-					"SELECT tab_order FROM `##module` WHERE module_name=?"
+					"SELECT SQL_CACHE tab_order FROM `##module` WHERE module_name=?"
 				)->execute(array($module->getName()))->fetchOne();
 				$modules[$name]=$module;
 			}
