@@ -258,12 +258,13 @@ class WT_Event {
 
 		if (!$this->canShow()) return "";
 		$data = '<span class="details_label">'.$this->getLabel($ABBREVIATE_CHART_LABELS).'</span>';
-		if ($this->detail) {
+		// Don't display "yes", because format_fact_date() does this for us.  (Should it?)
+		if ($this->detail && $this->detail!='Y') {
 			$data .= ' <span dir="auto">'.htmlspecialchars($this->detail).'</span>';
 		}
 		$data .= ' '.format_fact_date($this, $this->getParentObject(), $anchor, false);
 		$data .= ' '.format_fact_place($this, $anchor, false, false);
-		$data .= "<br>";
+		$data .= '<br>';
 		if ($return) {
 			return $data;
 		} else {
