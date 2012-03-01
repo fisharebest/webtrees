@@ -325,7 +325,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo "<img src=\"{$mediaInfo['thumb']}\" height=\"{$height}\"" ;
 
 			// print browser tooltips associated with image ----------------------------------------
-			echo " alt=\"\" title=\"" . Printready(strip_tags($mediaTitle)) . "\">";
+			echo " alt=\"\" title=\"" . htmlspecialchars(strip_tags($mediaTitle)) . "\">";
 
 			// Close anchor --------------------------------------------------------------
 			if ($mainFileExists) {
