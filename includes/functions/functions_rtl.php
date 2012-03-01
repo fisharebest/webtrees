@@ -41,6 +41,18 @@ $numberPunctuation = '- ,.:/'; // Treat these like numbers when inside numeric s
 $punctuation = ',.:;?!';
 
 /**
+ * This function strips &lrm; and &rlm; from the input string.  It should be used for all
+ * text that has been passed through the PrintReady() function before that text is stored
+ * in the database.  The database should NEVER contain these characters.
+ *
+ * @param  string The string from which the &lrm; and &rlm; characters should be stripped
+ * @return string The input string, with &lrm; and &rlm; stripped
+ */
+function stripLRMRLM($inputText) {
+	return str_replace(array(WT_UTF8_LRM, WT_UTF8_RLM, WT_UTF8_LRO, WT_UTF8_RLO, WT_UTF8_LRE, WT_UTF8_RLE, WT_UTF8_PDF, "&lrm;", "&rlm;", "&LRM;", "&RLM;"), "", $inputText);
+}
+
+/**
  * This function encapsulates all texts in the input with <span dir='xxx'> and </span>
  * according to the directionality specified.
  *
