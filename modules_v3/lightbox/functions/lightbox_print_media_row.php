@@ -184,7 +184,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		}
 		$menu = new WT_Menu();
 		// Truncate media title to 13 chars (45 chars if Streetview) and add ellipsis
-		$mtitle = $mediaTitle;
+		$mtitle = strip_tags($mediaTitle);
 		if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
 			if (utf8_strlen($mtitle)>16) {
 				$mtitle = utf8_substr($rowm['m_file'], 0, 45).WT_I18N::translate('…');
