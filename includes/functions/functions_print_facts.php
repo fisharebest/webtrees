@@ -515,7 +515,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 				$data .= '</div>';
 			}
 		} else {
-			$data='<div class="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').'</span>: <span class="field">'.$sid.'</span></div>';
+			$data='<div class="fact_SOUR"><span class="label">'.WT_I18N::translate('Source').'</span>: <span class="field error">'.$sid.'</span></div>';
 		}
 	}
 

@@ -584,7 +584,7 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 					}
 				}
 			} else {
-				$data='<div class="fact_NOTE"><span class="label">'.WT_I18N::translate('Note').'</span>: <span class="field">'.$nid.'</span></div>';
+				$data='<div class="fact_NOTE"><span class="label">'.WT_I18N::translate('Note').'</span>: <span class="field error">'.$nid.'</span></div>';
 			}
 		}
 		if (!$textOnly) {
