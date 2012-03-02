@@ -132,6 +132,7 @@ $WT_IMAGES=array(
 	'uarrow'=>WT_THEME_URL.'images/uarrow.png',
 	'uarrow2'=>WT_THEME_URL.'images/uarrow2.png',
 	'udarrow'=>WT_THEME_URL.'images/udarrow.png',
+	'user_add'=>WT_THEME_URL.'images/user_add.png',
 	'vline'=>WT_THEME_URL.'images/vline.png',
 	'warning'=>WT_THEME_URL.'images/warning.png',
 	'webtrees'=>WT_THEME_URL.'images/webtrees.png',
