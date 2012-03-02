@@ -555,6 +555,7 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 	$nlevel = $level+1;
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
+		$nid = str_replace("@","",$match[$j][1]);
 		$spos1 = strpos($factrec, $match[$j][0]);
 		$spos2 = strpos($factrec."\n$level", "\n$level", $spos1+1);
 		if (!$spos2) $spos2 = strlen($factrec);
@@ -568,18 +569,22 @@ function print_fact_notes($factrec, $level, $textOnly=false, $return=false) {
 			$data .= $closeSpan;
 		} else {
 			$note=WT_Note::getInstance($nmatch[1]);
-			if ($note->canDisplayDetails()) {
-				$noterec = $note->getGedcomRecord();
-				//-- print linked note records
-				$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
-				$closeSpan = print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
-				$data .= $closeSpan;
-				if (!$textOnly) {
-					if (strpos($noterec, "1 SOUR")!==false) {
-						require_once WT_ROOT.'includes/functions/functions_print_facts.php';
-						$data .= print_fact_sources($noterec, 1, true);
+			if ($note) {
+				if ($note->canDisplayDetails()) {
+					$noterec = $note->getGedcomRecord();
+					//-- print linked note records
+					$nt = preg_match("/0 @$nmatch[1]@ NOTE (.*)/", $noterec, $n1match);
+					$closeSpan = print_note_record(($nt>0)?$n1match[1]:"", 1, $noterec, $textOnly, true);
+					$data .= $closeSpan;
+					if (!$textOnly) {
+						if (strpos($noterec, "1 SOUR")!==false) {
+							require_once WT_ROOT.'includes/functions/functions_print_facts.php';
+							$data .= print_fact_sources($noterec, 1, true);
+						}
 					}
 				}
+			} else {
+				$data='<div class="fact_NOTE"><span class="label">'.WT_I18N::translate('Note').'</span>: <span class="field">'.$nid.'</span></div>';
 			}
 		}
 		if (!$textOnly) {
