@@ -88,10 +88,12 @@ if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
 }
 
-echo '<div id="home-page">';
 if ($ctype=='user') {
+	echo '<div id="my-page">';
 	echo '<h1 class="center">', WT_I18N::translate('My page'), '</h1>';
-}
+} else {
+	echo '<div id="home-page">';
+}	
 if ($blocks['main']) {
 	if ($blocks['side']) {
 		echo '<div id="index_main_blocks">';
