@@ -240,7 +240,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->record), '</dt>';
 					echo '<dd class="field" dir="auto">';
 						if (isset($nmatch[$i][2])) {
-							$name = trim($nmatch[$i][2]);
+							$name = htmlspecialchars($nmatch[$i][2]);
 							$name = preg_replace("'/,'", ",", $name);
 							$name = preg_replace("'/'", " ", $name);
 							if ($UNDERLINE_NAME_QUOTES) {
@@ -250,7 +250,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 							if ($fact=='TYPE') {
 								echo WT_Gedcom_Code_Name::getValue($name, $this->record);
 							} else {
-								echo htmlspecialchars($name);
+								echo $name;
 							}
 						}
 					echo '</dd>';
