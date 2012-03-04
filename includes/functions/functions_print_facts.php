@@ -72,7 +72,6 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	case 'CHIL':
 	case 'HUSB':
 	case 'WIFE':
-	case '_WT_OBJE_SORT':
 		// These are internal links, not facts
 		return;
 	default:
