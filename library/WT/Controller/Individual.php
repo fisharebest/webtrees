@@ -235,14 +235,12 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$ct = preg_match_all('/\n2 (\w+) (.*)/', $factrec, $nmatch, PREG_SET_ORDER);
 		for ($i=0; $i<$ct; $i++) {
 			echo '<div>';
-				$fact = trim($nmatch[$i][1]);
+				$fact = $nmatch[$i][1];
 				if (($fact!="SOUR") && ($fact!="NOTE") && ($fact!="SPFX")) {
 					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->record), '</dt>';
 					echo '<dd class="field" dir="auto">';
 						if (isset($nmatch[$i][2])) {
 							$name = htmlspecialchars($nmatch[$i][2]);
-							$name = preg_replace("'/,'", ",", $name);
-							$name = preg_replace("'/'", " ", $name);
 							if ($UNDERLINE_NAME_QUOTES) {
 								$name=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $name);
 							}
@@ -253,6 +251,8 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 								echo $name;
 							}
 						}
+					var_dump($nmatch[$i][2]);
+					var_dump($name);
 					echo '</dd>';
 					echo '</dl>';
 				}
