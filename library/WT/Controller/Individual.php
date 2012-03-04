@@ -238,7 +238,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				$fact = trim($nmatch[$i][1]);
 				if (($fact!="SOUR") && ($fact!="NOTE") && ($fact!="SPFX")) {
 					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->record), '</dt>';
-					echo '<dd class="field">';
+					echo '<dd class="field" dir="auto">';
 						if (isset($nmatch[$i][2])) {
 							$name = trim($nmatch[$i][2]);
 							$name = preg_replace("'/,'", ",", $name);
