@@ -76,7 +76,6 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 		return;
 	case '_WT_OBJE_SORT':
 		// These links are used internally to record the sort order.
-		var_dump($eek);
 		return;
 	default:
 		// Hide unrecognised/custom tags?
