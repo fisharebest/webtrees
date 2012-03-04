@@ -251,8 +251,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 								echo $name;
 							}
 						}
-					var_dump($nmatch[$i][2]);
-					var_dump($name);
 					echo '</dd>';
 					echo '</dl>';
 				}
