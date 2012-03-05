@@ -223,6 +223,9 @@ case 'load1row':
 	echo '<dt>', WT_I18N::translate('Comments'), '</dt>';
 	echo '<dd>', edit_field_inline('user_setting-'.$user_id.'-comment', get_user_setting($user_id, 'comment')), '</dd>';
 
+	echo '<dt>', WT_I18N::translate('My page'), '</dt>';
+	echo '<dd><a href="#" onclick="modalDialog(\'index_edit.php?user_id='.$user_id.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a></dd>';
+
 	echo '</dl>';
 
 	// Column One - details
@@ -256,7 +259,6 @@ case 'load1row':
 			'</td></tr>';
 	}
 	echo '</table>';
-	echo '</td></tr></table></div>';
 	exit;
 }
 

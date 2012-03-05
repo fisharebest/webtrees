@@ -28,33 +28,37 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Ajax();
 
-$ctype=safe_REQUEST($_REQUEST, 'ctype', array('user', 'gedcom'));
+// Only one of $user_id and $gedcom_id should be set
+$user_id=safe_REQUEST($_REQUEST, 'user_id');
+if ($user_id) {
+	$gedcom_id=null;
+} else {
+	$gedcom_id=safe_REQUEST($_REQUEST, 'gedcom_id');
+}
 
-if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
-if (isset($_REQUEST['main'])) $main = $_REQUEST['main'];
-if (isset($_REQUEST['right'])) $right = $_REQUEST['right'];
-if (isset($_REQUEST['setdefault'])) $setdefault = $_REQUEST['setdefault'];
-if (isset($_REQUEST['side'])) $side = $_REQUEST['side'];
-if (isset($_REQUEST['index'])) $index = $_REQUEST['index'];
-if (isset($_REQUEST['name'])) $name = $_REQUEST['name'];
-
-//-- make sure that they have user status before they can use this page
-//-- otherwise have them login again
-if (!WT_USER_ID || !$ctype) {
+// Only managers can edit the "home page"
+// Only a user or an admin can edit a user's "my page"
+if (
+	$gedcom_id && !userGedcomAdmin(WT_USER_ID, $gedcom_id) ||
+	$user_id && WT_USER_ID!=$user_id && !WT_USER_IS_ADMIN
+) {
 	$controller->pageHeader();
 	$controller->addInlineJavaScript('window.location.reload();');
 	exit;
 }
-if (!WT_USER_IS_ADMIN) $setdefault=false;
 
-if (!isset($action)) $action='';
-if (!isset($main)) $main=array();
-if (!isset($right)) $right=array();
-if (!isset($setdefault)) $setdefault=false;
-if (!isset($side)) $side='main';
-if (!isset($index)) $index=1;
+$action=safe_GET('action');
 
-$block_id=safe_REQUEST($_REQUEST, 'block_id');
+if (isset($_REQUEST['main'])) {
+	$main=$_REQUEST['main'];
+} else {
+	$main=array();
+}
+if (isset($_REQUEST['right'])) {
+	$right=$_REQUEST['right'];
+} else {
+	$right=array();
+}
 
 // Define all the icons we're going to use
 if($TEXT_DIRECTION=='ltr') {
@@ -75,18 +79,17 @@ if($TEXT_DIRECTION=='ltr') {
 
 $all_blocks=array();
 foreach (WT_Module::getActiveBlocks() as $name=>$block) {
-	if ($ctype=='user' && $block->isUserBlock() || $ctype=='gedcom' && $block->isGedcomBlock()) {
+	if ($user_id && $block->isUserBlock() || $gedcom_id && $block->isGedcomBlock()) {
 		$all_blocks[$name]=$block;
 	}
 }
 
-//-- get the blocks list
-if ($ctype=='user') {
+if ($user_id) {
 	$controller->setPageTitle(WT_I18N::translate('My page'));
-	$blocks=get_user_blocks(WT_USER_ID);
-} else {
+	$blocks=get_user_blocks($user_id);
+} elseif ($gedcom_id) {
 	$controller->setPageTitle(WT_I18N::translate(get_gedcom_setting(WT_GED_ID, 'title')));
-	$blocks=get_gedcom_blocks(WT_GED_ID);
+	$blocks=get_gedcom_blocks($gedcom_id);
 }
 
 $controller->pageHeader();
@@ -106,10 +109,10 @@ if ($action=='update') {
 				WT_DB::prepare("UPDATE `##block` SET location=? WHERE block_id=?")->execute(array($location, $block_name));
 			} else {
 				// new block
-				if ($ctype=='user') {
-					WT_DB::prepare("INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array(WT_USER_ID, $location, $order, $block_name));
+				if ($user_id) {
+					WT_DB::prepare("INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($user_id, $location, $order, $block_name));
 				} else {
-					WT_DB::prepare("INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array(WT_GED_ID, $location, $order, $block_name));
+					WT_DB::prepare("INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (?, ?, ?, ?)")->execute(array($gedcom_id, $location, $order, $block_name));
 				}
 			}
 		}
@@ -121,7 +124,6 @@ if ($action=='update') {
 			}
 		}
 	}
-	$controller->addInlineJavaScript('opener.window.location.reload(); window.close();');
 	exit;
 }
 
@@ -250,10 +252,9 @@ if ($action=='update') {
 	}
 //-->
 </script>
-<form name="config_setup" method="post" action="index_edit.php" onsubmit="select_options(); return modalDialogSubmitAjax(this);" >
-<input type="hidden" name="ctype" value="<?php echo $ctype; ?>">
-<input type="hidden" name="action" value="update">
-<input type="hidden" name="name" value="<?php echo $name; ?>">
+<form name="config_setup" method="post" action="index_edit.php?action=update" onsubmit="select_options(); return modalDialogSubmitAjax(this);" >
+<input type="hidden" name="user_id"   value="<?php echo $user_id; ?>">
+<input type="hidden" name="gedcom_id" value="<?php echo $gedcom_id; ?>">
 <table border="1">
 <?php
 // NOTE: Row 1: Column legends
@@ -335,11 +336,6 @@ echo '<tr><td class="descriptionbox wrap" colspan="7"><div id="instructions">';
 echo WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.');
 echo '</div></td></tr>';
 echo '<tr><td class="topbottombar" colspan="7">';
-
-/* This section temporarily removed as it does not work (kiwi - 15/08/2011)
-if (WT_USER_IS_ADMIN && $ctype=='user') {
-	echo WT_I18N::translate('Use these blocks as the default block configuration for all users?'), '<input type="checkbox" name="setdefault" value="1"><br><br>';
-}*/
 echo '<input type="submit" value="', WT_I18N::translate('Save'), '">';
 echo '</td></tr></table>';
 echo '</form>';
