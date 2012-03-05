@@ -1444,14 +1444,14 @@ function format_surname_list($surnames, $style, $totals, $script) {
 				$first_spfxsurn=$spfxsurn;
 			}
 		}
-		$subhtml='<a href="'.$url.'">'.htmlspecialchars(implode(WT_I18N::$list_separator, array_keys($surns))).'</a>';
+		$subhtml='<a href="'.$url.'" dir="auto">'.htmlspecialchars(implode(WT_I18N::$list_separator, array_keys($surns))).'</a>';
 
 		if ($totals) {
 			$subtotal=0;
 			foreach ($surns as $spfxsurn=>$indis) {
 				$subtotal+=count($indis);
 			}
-			$subhtml.='&nbsp;('.$subtotal.')';
+			$subhtml.='&nbsp;('.WT_I18N::number($subtotal).')';
 		}
 		$html[]=$subhtml;
 
@@ -1460,7 +1460,7 @@ function format_surname_list($surnames, $style, $totals, $script) {
 	case 1:
 		return '<ul><li>'.implode('</li><li>', $html).'</li></ul>';
 	case 2:
-		return implode('; ', $html);
+		return implode(WT_I18N::$list_separator, $html);
 	case 3:
 		$i = 0;
 		$count = count($html);
