@@ -34,8 +34,8 @@ var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollb
 var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
 
-
-function helpPopup(which, mod) {
+// TODO: This function loads help_text.php twice.  It should only load it once.
+function helpDialog(which, mod) {
 	url='help_text.php?help='+which+'&mod='+mod;
 	dialog=jQuery('<div></div>')
 		.load(url+' .helpcontent')
@@ -43,10 +43,37 @@ function helpPopup(which, mod) {
 			modal: true,
 			width: 500
 		});
-	jQuery(".ui-widget-overlay").live("click", function (){
+	jQuery(".ui-widget-overlay").live("click", function () {
 		jQuery("div:ui-dialog:visible").dialog("close");
 	});
 	jQuery('.ui-dialog-title').load(url+' .helpheader');
+	return false;
+}
+
+// Create a modal dialog, fetching the contents from a URL
+function modalDialog(url, title) {
+	dialog=jQuery('<div title="'+title+'"></div>')
+		.load(url)
+		.dialog({
+			modal: true,
+			width: 700
+		});
+	// Close the window when we click outside it.
+	jQuery(".ui-widget-overlay").live("click", function () {
+		jQuery("div:ui-dialog:visible").dialog("close");
+	});
+	return false;
+}
+
+// For a dialog containing a form, submit the form via AJAX
+// (to save the data), then reload the page (to display it).
+function modalDialogSubmitAjax(form) {
+	jQuery.ajax({
+		type:    'POST',
+		url:     jQuery(form).attr('action'),
+		data:    jQuery(form).serialize(),
+		success: function(response) { window.location.reload(); }
+	});
 	return false;
 }
 
