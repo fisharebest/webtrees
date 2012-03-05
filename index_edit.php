@@ -30,10 +30,6 @@ $controller=new WT_Controller_Simple();
 
 $ctype=safe_REQUEST($_REQUEST, 'ctype', array('user', 'gedcom'));
 
-if (!$ctype) {
-	die("Internal error - missing ctype parameter");
-}
-
 if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
 if (isset($_REQUEST['main'])) $main = $_REQUEST['main'];
 if (isset($_REQUEST['right'])) $right = $_REQUEST['right'];
@@ -44,10 +40,9 @@ if (isset($_REQUEST['name'])) $name = $_REQUEST['name'];
 
 //-- make sure that they have user status before they can use this page
 //-- otherwise have them login again
-if (!WT_USER_ID) {
+if (!WT_USER_ID || !$ctype) {
 	$controller->pageHeader();
-	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
-	echo '<div class="center"><a href="#" onclick="self.close();">', WT_I18N::translate('Close Window').'</a></div>';
+	$controller->addInlineJavaScript('opener.window.location.reload(); window.close();');
 	exit;
 }
 if (!WT_USER_IS_ADMIN) $setdefault=false;
@@ -87,12 +82,14 @@ foreach (WT_Module::getActiveBlocks() as $name=>$block) {
 
 //-- get the blocks list
 if ($ctype=='user') {
+	$controller->setPageTitle(WT_I18N::translate('My page'));
 	if ($action=='reset') {
 		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array(WT_USER_ID));
 		WT_DB::prepare("DELETE FROM `##block` WHERE user_id=?")->execute(array(WT_USER_ID));
 	}
 	$blocks=get_user_blocks(WT_USER_ID);
 } else {
+	$controller->setPageTitle(WT_I18N::translate(get_gedcom_setting(WT_GED_ID, 'title')));
 	if ($action=='reset') {
 		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array(WT_GED_ID));
 		WT_DB::prepare("DELETE FROM `##block` WHERE gedcom_id=?")->execute(array(WT_GED_ID));
@@ -100,11 +97,6 @@ if ($ctype=='user') {
 	$blocks=get_gedcom_blocks(WT_GED_ID);
 }
 
-if ($ctype=='user') {
-	$controller->setPageTitle(WT_I18N::translate('My page'));
-} else {
-	$controller->setPageTitle(WT_I18N::translate(get_gedcom_setting(WT_GED_ID, 'title')));
-}
 $controller->pageHeader();
 
 if ($action=='update') {
@@ -137,8 +129,7 @@ if ($action=='update') {
 			}
 		}
 	}
-	if (isset($_POST['nextaction'])) $action = $_POST['nextaction'];
-	echo WT_JS_START, 'opener.window.location.reload(); window.close();', WT_JS_END;
+	$controller->addInlineJavaScript('opener.window.location.reload(); window.close();');
 	exit;
 }
 
@@ -148,7 +139,7 @@ if ($action=="configure") {
 	} elseif (array_key_exists($block_id, $blocks['side'])) {
 		$block_name=$blocks['side'][$block_id];
 	} else {
-		echo WT_JS_START, 'window.close();', WT_JS_END;
+		$controller->addInlineJavaScript('opener.window.location.reload(); window.close();');
 		exit;
 	}
 	$class_name=$block_name.'_WT_Module';
@@ -400,8 +391,7 @@ if ($action=="configure") {
 	echo '&nbsp;&nbsp;';
 	echo '<input type="button" value="', WT_I18N::translate('Save'), '" onclick="select_options(); save_form();">';
 	echo '&nbsp;&nbsp;';
-	echo '<input type ="button" value="', WT_I18N::translate('Cancel'), '" onclick="window.close();">';
+	echo '<input type ="button" value="', WT_I18N::translate('Cancel'), '" onclick="opener.window.location.reload(); window.close();">';
 	echo '</td></tr></table>';
 	echo '</form>';
 }
-echo '</body></html>'; // Yes! Absolutely NOTHING at page bottom, please.
