@@ -2,7 +2,7 @@
 // UI for online updating of the GEDCOM configuration.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -293,3 +293,6 @@ if (WT_USER_IS_ADMIN) {
 				'</div>';
 		}
 }
+echo '<p><a href="#" onclick="modalDialog(\'index_edit.php?gedcom_id=-1'.'\', \'', WT_I18N::translate('Change the default blocks for new family trees'), '\');">', WT_I18N::translate('Change the default blocks for new family trees'), '</a></p>';
+	
+

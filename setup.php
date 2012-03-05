@@ -863,7 +863,7 @@ try {
 		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}module_setting` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" setting_name  VARCHAR(32) NOT NULL,".
-		" setting_value TEXT        NOT NULL,".
+		" setting_value MEDIUMTEXT  NOT NULL,".
 		" PRIMARY KEY     (module_name, setting_name),".
 		" FOREIGN KEY fk1 (module_name) REFERENCES `{$TBLPREFIX}module` (module_name) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
@@ -960,11 +960,24 @@ try {
 	//);
 
 	$dbh->prepare(
+		"INSERT IGNORE INTO `{$TBLPREFIX}gedcom` (gedcom_id, gedcom_name) VALUES ".
+		" (-1, 'DEFAULT_TREE', 'DEFAULT_TREE')"
+	)->execute();
+
+	$dbh->prepare(
 		"INSERT IGNORE INTO `{$TBLPREFIX}user` (user_id, user_name, real_name, email, password) VALUES ".
-		" (1, ?, ?, ?, ?)"
+		" (-1, 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER'), (1, ?, ?, ?, ?)"
 	)->execute(array(
 		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], crypt($_POST['wtpass'])
 	));
+
+	$dbh->prepare(
+		"INSERT IGNORE INTO `{$TBLPREFIX}block` (user_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'todays_events'), (-1, 'main', 2, 'user_messages'), (-1, 'main', 3, 'user_favorites'), (-1, 'side', 1, 'user_welcome'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'upcoming_events'), (-1, 'side', 4, 'logged_in')"
+	)->execute();
+
+	$dbh->prepare(
+		"INSERT IGNORE INTO `{$TBLPREFIX}block` (gedcom_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'gedcom_stats'), (-1, 'main', 2, 'gedcom_news'), (-1, 'main', 3, 'gedcom_favorites'), (-1, 'main', 4, 'review_changes'), (-1, 'side', 1, 'gedcom_block'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'todays_events'), (-1, 'side', 4, 'logged_in')"
+	)->execute();
 
 	$dbh->prepare(
 		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".

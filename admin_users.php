@@ -138,6 +138,7 @@ case 'loadrows':
 		" LEFT JOIN `##user_setting` us3 ON (u.user_id=us3.user_id AND us3.setting_name='sessiontime')".
 		" LEFT JOIN `##user_setting` us4 ON (u.user_id=us4.user_id AND us4.setting_name='verified')".
 		" LEFT JOIN `##user_setting` us5 ON (u.user_id=us5.user_id AND us5.setting_name='verified_by_admin')".
+		" WHERE u.user_id>0 ".
 		$WHERE.
 		$ORDER_BY.
 		$LIMIT;
@@ -183,7 +184,7 @@ case 'loadrows':
 	
 	// Total filtered/unfiltered rows
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
-	$iTotalRecords=WT_DB::prepare("SELECT COUNT(*) FROM `##user`")->fetchOne();
+	$iTotalRecords=WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
 
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
@@ -639,6 +640,8 @@ default:
 			'<tbody>',
 			'</tbody>',
 		'</table>';
+	
+	echo '<p><a href="#" onclick="modalDialog(\'index_edit.php?user_id=-1'.'\', \'', WT_I18N::translate('Change the default blocks for new users'), '\');">', WT_I18N::translate('Change the default blocks for new users'), '</a></p>';
 	
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')

@@ -234,7 +234,7 @@ function setUserFullName($user_id, $real_name) {
 
 // Get the email for a user
 function getUserEmail($user_id) {
-	return WT_DB::prepare("SELECT email FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
+	return WT_DB::prepare("SELECT SQL_CACHE email FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();
 }
 
 // Set the email for a user

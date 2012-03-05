@@ -1168,12 +1168,12 @@ function get_top_surnames($ged_id, $min, $max) {
 	$max=(int)$max;
 	if ($max==0) {
 		return
-			WT_DB::prepare("SELECT n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC")
+			WT_DB::prepare("SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC")
 			->execute(array($ged_id, '_MARNM', '@N.N.', '', '?', 'UNKNOWN', $min))
 			->fetchAssoc();
 	} else {
 		return
-			WT_DB::prepare("SELECT n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC LIMIT ".$max)
+			WT_DB::prepare("SELECT SQL_CACHE n_surn, COUNT(n_surn) FROM `##name` WHERE n_file=? AND n_type!=? AND n_surn NOT IN (?, ?, ?, ?) GROUP BY n_surn HAVING COUNT(n_surn)>=? ORDER BY 2 DESC LIMIT ".$max)
 			->execute(array($ged_id, '_MARNM', '@N.N.', '', '?', 'UNKNOWN', $min))
 			->fetchAssoc();
 	}
@@ -1520,7 +1520,7 @@ function get_all_gedcoms() {
 
 function get_gedcom_count() {
 	return
-		WT_DB::prepare("SELECT COUNT(*) FROM `##gedcom` WHERE gedcom_id>0")
+		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##gedcom` WHERE gedcom_id>0")
 		->fetchOne();
 }
 
@@ -1544,7 +1544,7 @@ function get_gedcom_from_id($ged_id) {
 	}
 
 	return
-		WT_DB::prepare("SELECT gedcom_name FROM `##gedcom` WHERE gedcom_id=?")
+		WT_DB::prepare("SELECT SQL_CACHE gedcom_name FROM `##gedcom` WHERE gedcom_id=?")
 		->execute(array($ged_id))
 		->fetchOne();
 }
@@ -1563,6 +1563,14 @@ function get_id_from_gedcom($ged_name, $create=false) {
 				->execute(array($ged_name));
 			$ged_id=WT_DB::getInstance()->lastInsertId();
 			require WT_ROOT.'includes/set_gedcom_defaults.php';
+
+			// Set the initial block layot
+			WT_DB::prepare(
+				"INSERT INTO `##block` (gedcom_id, location, block_order, module_name)".
+				" SELECT ?, location, block_order, module_name".
+				" FROM `##block`".
+				" WHERE gedcom_id=-1"
+			)->execute(array($ged_id));
 			return $ged_id;
 		} catch (PDOException $ex) {
 			// The gedcom already exists - can't create
@@ -1570,7 +1578,7 @@ function get_id_from_gedcom($ged_name, $create=false) {
 	}
 
 	return
-		WT_DB::prepare("SELECT gedcom_id FROM `##gedcom` WHERE gedcom_name=?")
+		WT_DB::prepare("SELECT SQL_CACHE gedcom_id FROM `##gedcom` WHERE gedcom_name=?")
 		->execute(array($ged_name))
 		->fetchOne();
 }
@@ -1608,17 +1616,25 @@ function create_user($username, $realname, $email, $password) {
 	try {
 		WT_DB::prepare("INSERT INTO `##user` (user_name, real_name, email, password) VALUES (?, ?, ?, ?)")
 			->execute(array($username, $realname, $email, crypt($password)));
+		// Set the initial block layot
+		$user_id=WT_DB::getInstance()->lastInsertId();
+		WT_DB::prepare(
+			"INSERT INTO `##block` (user_id, location, block_order, module_name)".
+			" SELECT LAST_INSERT_ID(), location, block_order, module_name".
+			" FROM `##block`".
+			" WHERE user_id=-1"
+		)->execute(array($user_id));
 	} catch (PDOException $ex) {
 		// User already exists?
 	}
 	$user_id=
-		WT_DB::prepare("SELECT user_id FROM `##user` WHERE user_name=?")
+		WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE user_name=?")
 		->execute(array($username))->fetchOne();
 	return $user_id;
 }
 
 function rename_user($user_id, $new_username) {
-	WT_DB::prepare("UPDATE `##user`      SET user_name=?   WHERE user_id  =?")->execute(array($new_username, $user_id));
+	WT_DB::prepare("UPDATE `##user` SET user_name=?   WHERE user_id  =?")->execute(array($new_username, $user_id));
 }
 
 function delete_user($user_id) {
@@ -1640,16 +1656,16 @@ function delete_user($user_id) {
 function get_all_users($order='ASC', $key='realname') {
 	if ($key=='username') {
 		return
-			WT_DB::prepare("SELECT user_id, user_name FROM `##user` WHERE user_id>0 ORDER BY user_name")
+			WT_DB::prepare("SELECT SQL_CACHE user_id, user_name FROM `##user` WHERE user_id>0 ORDER BY user_name")
 			->fetchAssoc();
 	} elseif ($key=='realname') {
 		return
-			WT_DB::prepare("SELECT user_id, user_name FROM `##user` WHERE user_id>0 ORDER BY real_name")
+			WT_DB::prepare("SELECT SQL_CACHE user_id, user_name FROM `##user` WHERE user_id>0 ORDER BY real_name")
 			->fetchAssoc();
 	} else {
 		return
 			WT_DB::prepare(
-				"SELECT u.user_id, user_name".
+				"SELECT SQL_CACHE u.user_id, user_name".
 				" FROM `##user` u".
 				" LEFT JOIN `##user_setting` us1 ON (u.user_id=us1.user_id AND us1.setting_name=?)".
 				" WHERE u.user_id>0".
@@ -1661,13 +1677,13 @@ function get_all_users($order='ASC', $key='realname') {
 
 function get_user_count() {
 	return
-			WT_DB::prepare("SELECT COUNT(*) FROM `##user` WHERE user_id>0")
+			WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")
 			->fetchOne();
 }
 
 function get_user_by_email($email) {
 	return
-		WT_DB::prepare("SELECT user_id FROM `##user` WHERE email=?")
+		WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE email=?")
 		->execute(array($email))
 		->fetchOne();
 }
@@ -1692,7 +1708,7 @@ function get_logged_in_users() {
 	// multiple rows.  fetchAssoc() will eliminate the duplicates
 	return
 		WT_DB::prepare(
-			"SELECT user_id, user_name".
+			"SELECT SQL_NO_CACHE user_id, user_name".
 			" FROM `##user` u".
 			" JOIN `##session` USING (user_id)"
 		)
@@ -1701,21 +1717,21 @@ function get_logged_in_users() {
 
 // Get the ID for a username
 function get_user_id($username) {
-	return WT_DB::prepare("SELECT user_id FROM `##user` WHERE user_name=?")
+	return WT_DB::prepare("SELECT SQL_CACHE user_id FROM `##user` WHERE user_name=?")
 		->execute(array($username))
 		->fetchOne();
 }
 
 // Get the username for a user ID
 function get_user_name($user_id) {
-	return WT_DB::prepare("SELECT user_name FROM `##user` WHERE user_id=?")
+	return WT_DB::prepare("SELECT SQL_CACHE user_name FROM `##user` WHERE user_id=?")
 		->execute(array($user_id))
 		->fetchOne();
 }
 
 function get_newest_registered_user() {
 	return WT_DB::prepare(
-		"SELECT u.user_id".
+		"SELECT SQL_CACHE u.user_id".
 		" FROM `##user` u".
 		" LEFT JOIN `##user_setting` us ON (u.user_id=us.user_id AND us.setting_name=?) ".
 		" ORDER BY us.setting_value DESC LIMIT 1"
@@ -1746,7 +1762,7 @@ function set_user_password($user_id, $password) {
 function check_user_password($user_id, $password) {
 	// crypt() needs the password-hash to use as a salt
 	$password_hash=
-		WT_DB::prepare("SELECT password FROM `##user` WHERE user_id=?")
+		WT_DB::prepare("SELECT SQL_CACHE password FROM `##user` WHERE user_id=?")
 		->execute(array($user_id))
 		->fetchOne();
 	if (crypt($password, $password_hash)==$password_hash) {
@@ -1817,92 +1833,36 @@ function get_user_from_gedcom_xref($ged_id, $xref) {
 // Functions to access the WT_BLOCK table
 ////////////////////////////////////////////////////////////////////////////////
 
-function get_user_blocks($user_id, $gedcom_id=WT_GED_ID) {
+function get_user_blocks($user_id) {
 	$blocks=array('main'=>array(), 'side'=>array());
 	$rows=WT_DB::prepare(
-		"SELECT location, block_id, module_name".
+		"SELECT SQL_CACHE location, block_id, module_name".
 		" FROM  `##block`".
 		" JOIN  `##module` USING (module_name)".
-		" JOIN  `##module_privacy` USING (module_name)".
-		" WHERE user_id=? AND `##module_privacy`.gedcom_id=?".
-		" AND   status='enabled' AND access_level>=?".
+		" WHERE user_id=?".
+		" AND   status='enabled'".
 		" ORDER BY location, block_order"
-	)->execute(array($user_id, $gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
+	)->execute(array($user_id))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id]=$row->module_name;
 	}
-	if ($rows) {
-		return $blocks;
-	} else {
-		$active_blocks=WT_Module::getActiveBlocks();
-		foreach (array('todays_events', 'user_messages', 'user_favorites') as $n=>$block) {
-			if (array_key_exists($block, $active_blocks)) {
-				WT_DB::prepare(
-					"INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES ".
-					"(?, 'main', ?, ?)"
-				)->execute(array($user_id, $n, $block));
-			}
-		}
-		$block_found=false;
-		foreach (array('user_welcome', 'random_media', 'upcoming_events', 'logged_in') as $n=>$block) {
-			if (array_key_exists($block, $active_blocks)) {
-				WT_DB::prepare(
-					"INSERT INTO `##block` (user_id, location, block_order, module_name) VALUES ".
-					"(?, 'side', ?, ?)"
-				)->execute(array($user_id, $n, $block));
-				$block_found=true;
-			}
-		}
-		if ($block_found) {
-			return get_user_blocks($user_id);
-		} else {
-			return $blocks;
-		}
-	}
+	return $blocks;
 }
 
 function get_gedcom_blocks($gedcom_id) {
 	$blocks=array('main'=>array(), 'side'=>array());
 	$rows=WT_DB::prepare(
-		"SELECT location, block_id, module_name".
+		"SELECT SQL_CACHE location, block_id, module_name".
 		" FROM  `##block`".
 		" JOIN  `##module` USING (module_name)".
-		" JOIN  `##module_privacy` USING (module_name, gedcom_id)".
 		" WHERE gedcom_id=?".
-		" AND   status='enabled' AND access_level>=?".
+		" AND status='enabled'".
 		" ORDER BY location, block_order"
-	)->execute(array($gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
+	)->execute(array($gedcom_id))->fetchAll();
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id]=$row->module_name;
 	}
-	if ($rows) {
-		return $blocks;
-	} else {
-		$active_blocks=WT_Module::getActiveBlocks();
-		foreach (array('gedcom_stats', 'gedcom_news', 'gedcom_favorites', 'review_changes') as $n=>$block) {
-			if (array_key_exists($block, $active_blocks)) {
-				WT_DB::prepare(
-					"INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES ".
-					"(?, 'main', ?, ?)"
-				)->execute(array($gedcom_id, $n, $block));
-			}
-		}
-		$block_found=false;
-		foreach (array('gedcom_block', 'random_media', 'todays_events', 'logged_in') as $n=>$block) {
-			if (array_key_exists($block, $active_blocks)) {
-				WT_DB::prepare(
-					"INSERT INTO `##block` (gedcom_id, location, block_order, module_name) VALUES ".
-					"(?, 'side', ?, ?)"
-				)->execute(array($gedcom_id, $n, $block));
-				$block_found=true;
-			}
-		}
-		if ($block_found) {
-			return get_gedcom_blocks($gedcom_id);
-		} else {
-			return $blocks;
-		}
-	}
+	return $blocks;
 }
 
 function get_block_setting($block_id, $setting_name, $default_value=null) {
