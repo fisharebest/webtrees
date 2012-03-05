@@ -44,13 +44,13 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		global $controller;
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$controller
-			->addInlineJavaScript('
-				  jQuery("#new_passwd").hide();
-				  jQuery("#passwd_click").click(function()
-				  {
-					jQuery("#new_passwd").slideToggle(100);
-				  });
+		$controller->addInlineJavaScript('
+				jQuery("#new_passwd").hide();
+				jQuery("#passwd_click").click(function() {
+					jQuery("#new_passwd").slideToggle(100, function() {
+						jQuery("#new_passwd_username").focus();
+					});
+				});
 			');
 		if (WT_USER_ID) {
 			$title = WT_I18N::translate('Logout');
@@ -99,8 +99,8 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 			<input type="hidden" name="action" value="requestpw">
 			<h4>'. WT_I18N::translate('Lost password request').'</h4>
 			<div>
-				<label for="username">'. WT_I18N::translate('Username or email address').
-					'<input type="text" id="username" name="username" value="" autofocus>
+				<label for="new_passwd_username">'. WT_I18N::translate('Username or email address').
+					'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
 				</label>
 			</div>
 			<div><input type="submit" value="'. WT_I18N::translate('Continue'). '"></div>

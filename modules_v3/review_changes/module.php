@@ -165,7 +165,7 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 	// Implement class WT_Module_Block
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
-			set_block_setting($block_id, 'days',     safe_POST_integer('num', 1, 180));
+			set_block_setting($block_id, 'days',     safe_POST_integer('num', 1, 180, 7));
 			set_block_setting($block_id, 'sendmail', safe_POST_bool('sendmail'));
 			set_block_setting($block_id, 'block',    safe_POST_bool('block'));
 			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
