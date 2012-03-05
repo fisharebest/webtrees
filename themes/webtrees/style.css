@@ -453,7 +453,8 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 .blockcontent .list_table {border-spacing:0; border:solid #81a9cb 1px; border-right:0;}
 .blockcontent .list_value, .blockcontent  .list_value_wrap {border:0; border-top:solid #81a9cb 1px; border-right:solid #81a9cb 1px;}
 .blockheader {font-weight:bold;}
- 
+ #main_select,#available_select,#right_select{min-width:150px;}
+
  /* ======= Who is online block ========== */
 .logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
 .mailto{background-image:url(images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px;}

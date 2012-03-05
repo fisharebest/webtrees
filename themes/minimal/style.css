@@ -823,6 +823,8 @@ img.block {
 html[dir='rtl'] #index_main_blocks {float:right;}
 html[dir='rtl'] #index_small_blocks {float:left;}
 
+#main_select,#available_select,#right_select{min-width:150px;}
+
 #random_picture {
 	text-align: center;
 }
