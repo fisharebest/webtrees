@@ -3569,8 +3569,7 @@ class WT_Stats {
 		foreach ($rows as $row) {
 			// Split "John Thomas" into "John" and "Thomas" and count against both totals
 			foreach (explode(' ', $row->n_givn) as $given) {
-				$given=str_replace(array('*', '"'), '', $given);
-				if (strlen($given)>1) {
+				if (utf8_strlen($given)>1) {
 					if (array_key_exists($given, $nameList)) {
 						$nameList[$given]+=$row->num;
 					} else {
@@ -3589,27 +3588,19 @@ class WT_Stats {
 			if ($maxtoshow !== -1) {if ($maxtoshow-- <= 0) {break;}}
 			if ($total < $threshold) {break;}
 			if ($show_tot) {
-				$tot = "[{$total}]";
-				if ($TEXT_DIRECTION=='ltr') {
-					$totL = '';
-					$totR = '&nbsp;'.$tot;
-				} else {
-					$totL = $tot.'&nbsp;';
-					$totR = '';
-				}
+				$tot = '&nbsp;('.WT_I18N::number($total).')';
 			} else {
-				$totL = '';
-				$totR = '';
+				$tot = '';
 			}
 			switch ($type) {
 			case 'table':
-				$common[] = '<tr><td>'.utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1)).'</td><td>'.WT_I18N::number($total).'</td><td>'.$total.'</td></tr>';
+				$common[] = '<tr><td>'.$given.'</td><td>'.WT_I18N::number($total).'</td><td>'.$total.'</td></tr>';
 				break;
 			case 'list':
-				$common[] = "\t<li>{$totL}".utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1))."{$totR}</li>\n";
+				$common[] = '<li><span dir="auto">'.$given.'</span>'.$tot.'</li>';
 				break;
 			case 'nolist':
-				$common[] = $totL.utf8_substr($given,0,1).utf8_strtolower(utf8_substr($given,1)).$totR;
+				$common[] = '<span dir="auto">'.$given.'</span>'.$tot;
 				break;
 			}
 		}
@@ -3643,7 +3634,7 @@ class WT_Stats {
 			case 'list':
 				return '<ul>\n'.join("\n", $common).'</ul>\n';
 			case 'nolist':
-				return join(';&nbsp; ', $common);
+				return join(WT_I18N::$list_separator, $common);
 			}
 		} else {
 			return '';
