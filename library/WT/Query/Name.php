@@ -214,7 +214,7 @@ class WT_Query_Name {
 		$alphas=array();
 
 		$sql=
-			"SELECT COUNT(n_id)".
+			"SELECT SQL_CACHE COUNT(n_id)".
 			" FROM `##name` ".
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			" WHERE n_file={$ged_id}".
@@ -231,7 +231,7 @@ class WT_Query_Name {
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname.
 		$sql=
-			"SELECT UPPER(LEFT(n_surn, 1)), COUNT(n_id)".
+			"SELECT SQL_CACHE UPPER(LEFT(n_surn, 1)), COUNT(n_id)".
 			" FROM `##name` ".
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			" WHERE n_file={$ged_id} AND n_surn<>''".
@@ -247,7 +247,7 @@ class WT_Query_Name {
 
 		// Names with no surname
 		$sql=
-			"SELECT COUNT(n_id)".
+			"SELECT SQL_CACHE COUNT(n_id)".
 			" FROM `##name` ".
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			" WHERE n_file={$ged_id} AND n_surn=''".
@@ -271,7 +271,7 @@ class WT_Query_Name {
 		$alphas=array();
 
 		$sql=
-			"SELECT COUNT(DISTINCT n_id)".
+			"SELECT SQL_CACHE COUNT(DISTINCT n_id)".
 			" FROM `##name`".
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			" WHERE n_file={$ged_id} ".
@@ -301,7 +301,7 @@ class WT_Query_Name {
 		// Now fetch initial letters that are not in our alphabet,
 		// including "@" (for "@N.N.") and "" for no surname
 		$sql=
-			"SELECT UPPER(LEFT(n_givn, 1)), COUNT(DISTINCT n_id)".
+			"SELECT SQL_CACHE UPPER(LEFT(n_givn, 1)), COUNT(DISTINCT n_id)".
 			" FROM `##name` ".
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			" WHERE n_file={$ged_id} ".
@@ -341,7 +341,7 @@ class WT_Query_Name {
 	////////////////////////////////////////////////////////////////////////////////
 	public static function surnames($surn, $salpha, $marnm, $fams, $ged_id) {
 		$sql=
-			"SELECT n2.n_surn, n1.n_surname, n1.n_id".
+			"SELECT SQL_CACHE n2.n_surn, n1.n_surname, n1.n_id".
 			" FROM `##name` n1 ".
 			($fams ? " JOIN `##link` ON (n_id=l_from AND n_file=l_file AND l_type='FAMS') " : "").
 			" JOIN (SELECT n_surn, n_file FROM `##name`".
