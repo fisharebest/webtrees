@@ -341,7 +341,7 @@ echo '<div id="tabs">',
 </div>
 </div>
 <p>
-	<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="closeHelp();">
+	<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
 	&nbsp;&nbsp;
 	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
 </p>

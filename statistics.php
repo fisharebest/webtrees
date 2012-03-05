@@ -651,7 +651,7 @@ if (!$ajax) {
 			<table width="100%">
 			<tr align="center"><td>
 				<br>
-				<input type="submit" value="', WT_I18N::translate('show the plot'), ' " onclick="closeHelp();">
+				<input type="submit" value="', WT_I18N::translate('show the plot'), ' ">
 				<input type="reset"  value=" ', WT_I18N::translate('reset'), ' " onclick="{statusEnable(\'z_sex\'); statusHide(\'x_years\'); statusHide(\'x_months\'); statusHide(\'x_numbers\'); statusHide(\'map_opt\');}"><br>
 			</td>
 			</tr>

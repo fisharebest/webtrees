@@ -2,7 +2,7 @@
 // Online UI for editing site configuration variables
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2007  PGV Development Team
@@ -111,7 +111,7 @@ $LB_URL_HEIGHT=get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'); //  URL W
 			</td>
 		</tr>
 	</table>
-	<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="closeHelp();">
+	<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"">
 	&nbsp;&nbsp;
 	<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
 </form>

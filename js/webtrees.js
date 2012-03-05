@@ -49,9 +49,6 @@ function helpPopup(which, mod) {
 	jQuery('.ui-dialog-title').load(url+' .helpheader');
 	return false;
 }
-function closeHelp() {
-	if (helpWin) helpWin.close();
-}
 
 function openImage(filename, width, height) {
 	height=height+50;

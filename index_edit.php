@@ -144,7 +144,7 @@ if ($action=="configure") {
 	}
 	$class_name=$block_name.'_WT_Module';
 	$block=new $class_name;
-	echo '<table class="facts_table" width="99%">';
+	echo '<table class="facts_table">';
 	echo '<tr><td class="facts_label">';
 	echo '<h2>', WT_I18N::translate('Configure'), '</h2>';
 	echo '</td></tr>';
@@ -298,7 +298,7 @@ if ($action=="configure") {
 	<input type="hidden" name="ctype" value="<?php echo $ctype; ?>">
 	<input type="hidden" name="action" value="update">
 	<input type="hidden" name="name" value="<?php echo $name; ?>">
-	<table border="1" width="400px">
+	<table border="1">
 	<tr><td class="topbottombar" colspan="7">
 	<?php
 	echo '<b>', WT_I18N::translate('Change the blocks on this page'), '</b>';
