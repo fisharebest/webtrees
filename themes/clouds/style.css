@@ -537,6 +537,8 @@ width:100%;
 #index_small_blocks .name1 {
 color:#333;
 }
+html[dir='rtl'] #index_main_blocks {float:right;}
+html[dir='rtl'] #index_small_blocks {float:left;}
 
 #random_picture {
 text-align:center;

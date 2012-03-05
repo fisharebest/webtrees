@@ -279,7 +279,8 @@ html[dir='rtl'] .person_box html[dir='rtl'] .person_boxF html[dir='rtl'] .person
 }
 #index_full_blocks {
 }
-
+html[dir='rtl'] #index_main_blocks {float:right;}
+html[dir='rtl'] #index_small_blocks {float:left;}
 
 .facts_table, .facts_table_rtl {
 	width:100%;

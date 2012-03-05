@@ -443,6 +443,8 @@ html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-c
 #index_main_blocks {clear:none; width:66%; float:left;}
 #index_small_blocks {clear:none; width:33%; float:right;}
 #index_full_blocks {clear:none; width:100%;}
+html[dir='rtl'] #index_main_blocks {float:right;}
+html[dir='rtl'] #index_small_blocks {float:left;}
 #random_picture {text-align:center;}
 .small_inner_block {max-height:200px; overflow:auto;}
 .normal_inner_block {overflow:auto;}

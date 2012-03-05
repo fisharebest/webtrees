@@ -262,6 +262,8 @@ div.error{color:#d00;font-weight:600;}
 #index_main_blocks{clear:none;float:left;width:66%;}
 #index_small_blocks{clear:none;float:right;width:33%;}
 #index_full_blocks{clear:none;width:100%;}
+html[dir='rtl'] #index_main_blocks {float:right;}
+html[dir='rtl'] #index_small_blocks {float:left;}
 #index_small_blocks .name1{color:#333;}
 #random_picture{text-align:center;}
 
