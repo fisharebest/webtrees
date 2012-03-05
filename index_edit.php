@@ -26,7 +26,7 @@
 define('WT_SCRIPT_NAME', 'index_edit.php');
 require './includes/session.php';
 
-$controller=new WT_Controller_Simple();
+$controller=new WT_Controller_Ajax();
 
 $ctype=safe_REQUEST($_REQUEST, 'ctype', array('user', 'gedcom'));
 
@@ -42,7 +42,7 @@ if (isset($_REQUEST['name'])) $name = $_REQUEST['name'];
 //-- otherwise have them login again
 if (!WT_USER_ID || !$ctype) {
 	$controller->pageHeader();
-	$controller->addInlineJavaScript('opener.window.location.reload(); window.close();');
+	$controller->addInlineJavaScript('window.location.reload();');
 	exit;
 }
 if (!WT_USER_IS_ADMIN) $setdefault=false;
@@ -83,17 +83,9 @@ foreach (WT_Module::getActiveBlocks() as $name=>$block) {
 //-- get the blocks list
 if ($ctype=='user') {
 	$controller->setPageTitle(WT_I18N::translate('My page'));
-	if ($action=='reset') {
-		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE user_id=?")->execute(array(WT_USER_ID));
-		WT_DB::prepare("DELETE FROM `##block` WHERE user_id=?")->execute(array(WT_USER_ID));
-	}
 	$blocks=get_user_blocks(WT_USER_ID);
 } else {
 	$controller->setPageTitle(WT_I18N::translate(get_gedcom_setting(WT_GED_ID, 'title')));
-	if ($action=='reset') {
-		WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array(WT_GED_ID));
-		WT_DB::prepare("DELETE FROM `##block` WHERE gedcom_id=?")->execute(array(WT_GED_ID));
-	}
 	$blocks=get_gedcom_blocks(WT_GED_ID);
 }
 
@@ -256,21 +248,14 @@ if ($action=='update') {
 			list2.selectedIndex = -1;
 		}
 	}
-
-	function save_form() {
-		document.config_setup.submit();
-	}
 //-->
 </script>
-<form name="config_setup" method="post" action="index_edit.php">
+<form name="config_setup" method="post" action="index_edit.php" onsubmit="select_options(); return modalDialogSubmitAjax(this);" >
 <input type="hidden" name="ctype" value="<?php echo $ctype; ?>">
 <input type="hidden" name="action" value="update">
 <input type="hidden" name="name" value="<?php echo $name; ?>">
 <table border="1">
-<tr><td class="topbottombar" colspan="7">
 <?php
-echo '<b>', WT_I18N::translate('Change the blocks on this page'), '</b>';
-echo '</td></tr>';
 // NOTE: Row 1: Column legends
 echo '<tr>';
 	echo '<td class="descriptionbox center vmiddle" colspan="2">';
@@ -355,10 +340,6 @@ echo '<tr><td class="topbottombar" colspan="7">';
 if (WT_USER_IS_ADMIN && $ctype=='user') {
 	echo WT_I18N::translate('Use these blocks as the default block configuration for all users?'), '<input type="checkbox" name="setdefault" value="1"><br><br>';
 }*/
-echo '<input type="button" value="', WT_I18N::translate('Reset to Default Blocks'), '" onclick="window.location=\'index_edit.php?ctype=', $ctype, '&amp;action=reset&amp;name=', addslashes($name), '\';">';
-echo '&nbsp;&nbsp;';
-echo '<input type="button" value="', WT_I18N::translate('Save'), '" onclick="select_options(); save_form();">';
-echo '&nbsp;&nbsp;';
-echo '<input type ="button" value="', WT_I18N::translate('Cancel'), '" onclick="opener.window.location.reload(); window.close();">';
+echo '<input type="submit" value="', WT_I18N::translate('Save'), '">';
 echo '</td></tr></table>';
 echo '</form>';
