@@ -1713,11 +1713,6 @@ clear:both;
 
 html[dir="rtl"] dt {float:right;margin-right:auto;margin-left:10px;}
 
-dd {
-display:inline;
-margin:0;
-}
-
 .helpcontent dt {
 clear:both;
 }

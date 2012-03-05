@@ -47,7 +47,6 @@ fieldset ol, fieldset li{margin:2px 0 0 5px;}
 html[dir='rtl'] fieldset{text-align:right;}
 html[dir='rtl'] fieldset ol, fieldset li{margin:2px 5px 0 0;}
 
-dd{display:inline;margin:0;}
 dt{float:left;font-weight:bold;margin-right:10px;clear:both;}
 html[dir="rtl"] dt{float:right;margin-right:auto;margin-left:10px;}
 

@@ -1333,9 +1333,6 @@ ul.clist {
 	text-align: center;
 }
 
-dl {
-}
-
 dt {
 	float:left;
 	font-weight:bold;
@@ -1346,11 +1343,6 @@ html[dir="rtl"] dt {
 	float:right;
 	margin-right:auto;
 	margin-left:10px;
-}
-
-dd {
-	display: inline;
-	margin: 0;
 }
 
 .clearfloat {

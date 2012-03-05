@@ -1618,11 +1618,6 @@ html[dir="rtl"] dt {
 	margin-left:10px;
 }
 
-dd {
-	display:inline;
-	margin:0;
-}
-
 #pending h2 {text-align:center; margin-bottom:20px;}
 #pending h3 {text-align:center; margin-top:20px;}
 

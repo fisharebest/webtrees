@@ -327,7 +327,6 @@ ul.clist {list-style-image:none; text-decoration:none; margin:0;}
 dl {margin:0;}
 dt {float:left; font-weight:bold; margin-right:10px; clear:both;}
 html[dir="rtl"] dt {float:right; margin-right:auto; margin-left:10px;}
-dd {display:inline; margin:0;}
 
 /* Find special characters */
 .largechars {font-family: monospace; font-size: 200%;}
