@@ -239,8 +239,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				if (($fact!="SOUR") && ($fact!="NOTE") && ($fact!="SPFX")) {
 					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->record), '</dt>';
 					echo '<dd class="field" dir="auto">';
-						if (isset($nmatch[$i][2])) {
+					if (isset($nmatch[$i][2])) {
 							$name = htmlspecialchars($nmatch[$i][2]);
+							$name = str_replace('/', '', $name);
 							if ($UNDERLINE_NAME_QUOTES) {
 								$name=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $name);
 							}
