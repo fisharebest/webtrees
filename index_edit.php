@@ -255,7 +255,7 @@ if ($action=='update') {
 <form name="config_setup" method="post" action="index_edit.php?action=update" onsubmit="select_options(); return modalDialogSubmitAjax(this);" >
 <input type="hidden" name="user_id"   value="<?php echo $user_id; ?>">
 <input type="hidden" name="gedcom_id" value="<?php echo $gedcom_id; ?>">
-<table border="1">
+<table border="1" id="change_blocks">
 <?php
 // NOTE: Row 1: Column legends
 echo '<tr>';
