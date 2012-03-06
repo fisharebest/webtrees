@@ -289,6 +289,9 @@ html[dir='rtl'] .blockhc img{padding-left:3px;}
 
 #main_select,#available_select,#right_select{min-width:150px;}
 
+.user_welcome_block table, .gedcom_block_block  table{margin:auto;}
+.user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align: top;}
+
 /* chart styles */
 #ancestry_chart{margin-left:10px;}
 #ancestry_chart table div p{font-size:90%;margin:0;}

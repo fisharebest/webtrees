@@ -45,19 +45,17 @@ class user_welcome_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$title='';
-		$title .=/* I18N: A greeting; %s is the user's name */ WT_I18N::translate('Welcome %s', getUserFullName(WT_USER_ID));
-		$content = "<table style=\"margin:auto;\"><tr>";
-		$content .= "<td class=\"tab_active_bottom\" colspan=\"3\" ></td></tr><tr>";
+		$title = '<span dir="auto">'./* I18N: A greeting; %s is the user's name */ WT_I18N::translate('Welcome %s', getUserFullName(WT_USER_ID)).'</span>';
+		$content = '<table><tr>';
 		if (get_user_setting(WT_USER_ID, 'editaccount')) {
-			$content .= "<td class=\"center details2\" style=\"width:33%; clear:none; vertical-align:top; margin-top:2px;\"><a href=\"edituser.php\"><img class=\"block\" src=\"".$WT_IMAGES["mypage"]."\" alt=\"".WT_I18N::translate('My account')."\"><br>".WT_I18N::translate('My account')."</a></td>";
+			$content .= '<td><a href="edituser.php"><img class="block" src="'.$WT_IMAGES['mypage'].'" alt="'.WT_I18N::translate('My account').'"><br>'.WT_I18N::translate('My account').'</a></td>';
 		}
 		if (WT_USER_GEDCOM_ID) {
-			$content .= "<td class=\"center details2\" style=\"width:33%; clear:none; vertical-align:top; margin-top:2px;\"><a href=\"pedigree.php?rootid=".WT_USER_GEDCOM_ID."&amp;ged=".WT_GEDURL."\"><img class=\"block\" src=\"".$WT_IMAGES["pedigree"]."\" alt=\"".WT_I18N::translate('My pedigree')."\" title=\"".WT_I18N::translate('My pedigree')."\"><br>".WT_I18N::translate('My pedigree')."</a></td>";
-			$content .= "<td class=\"center details2\" style=\"width:33%; clear:none; vertical-align:top; margin-top:2px;\"><a href=\"individual.php?pid=".WT_USER_GEDCOM_ID."&amp;ged=".WT_GEDURL."\"><img class=\"block\" src=\"".$WT_IMAGES["indis"]."\" alt=\"".WT_I18N::translate('My individual record')."\"><br>".WT_I18N::translate('My individual record')."</a></td>";
+			$content .= '<td><a href="pedigree.php?rootid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><img class="block" src="'.$WT_IMAGES['pedigree'].'" alt="'.WT_I18N::translate('My pedigree').'" title="'.WT_I18N::translate('My pedigree').'"><br>'.WT_I18N::translate('My pedigree').'</a></td>';
+			$content .= '<td><a "href="individual.php?pid='.WT_USER_GEDCOM_ID.'&amp;ged='.WT_GEDURL.'"><img class="block" src="'.$WT_IMAGES['indis'].'" alt="'.WT_I18N::translate('My individual record').'"><br>'.WT_I18N::translate('My individual record').'</a></td>';
 		}
-		$content .= "</tr>";
-		$content .= "</table>";
+		$content .= '</tr>';
+		$content .= '</table>';
 
 		if ($template) {
 			require WT_THEME_DIR.'templates/block_main_temp.php';
