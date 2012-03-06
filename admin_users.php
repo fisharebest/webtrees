@@ -89,16 +89,16 @@ case 'deleteuser':
 case 'loadrows':
 	// Generate an AJAX/JSON response for datatables to load a block of rows
 	$sSearch=safe_GET('sSearch');
+	$WHERE=" WHERE u.user_id>0";
+	$ARGS=array();
 	if ($sSearch) {
-		$WHERE=
-			" WHERE".
+		$WHERE.=
+			" AND (".
 			" user_name LIKE CONCAT('%', ?, '%') OR " .
 			" real_name LIKE CONCAT('%', ?, '%') OR " .
-			" email     LIKE CONCAT('%', ?, '%')";
+			" email     LIKE CONCAT('%', ?, '%'))";
 		$ARGS=array($sSearch, $sSearch, $sSearch);
 	} else {
-		$WHERE="";
-		$ARGS=array();
 	}
 	$iDisplayStart =(int)safe_GET('iDisplayStart');
 	$iDisplayLength=(int)safe_GET('iDisplayLength');
@@ -138,7 +138,6 @@ case 'loadrows':
 		" LEFT JOIN `##user_setting` us3 ON (u.user_id=us3.user_id AND us3.setting_name='sessiontime')".
 		" LEFT JOIN `##user_setting` us4 ON (u.user_id=us4.user_id AND us4.setting_name='verified')".
 		" LEFT JOIN `##user_setting` us5 ON (u.user_id=us5.user_id AND us5.setting_name='verified_by_admin')".
-		" WHERE u.user_id>0 ".
 		$WHERE.
 		$ORDER_BY.
 		$LIMIT;
