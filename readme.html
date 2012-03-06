@@ -90,6 +90,8 @@ To install <b>webtrees</b>, you need:
 	</ul>
 	<li>MySQL 5.0.13 or later. Note that <b>webtrees</b> can share a single database with other applications, by choosing a unique table prefix during configuration. If the number of databases is not restricted, you can set up a database purely for use by <b>webtrees</b> and create a separate user and password for only your genealogy.</li>
 	<li>Internet browser compatability. <b>webtrees</b> supports the use of most current versions of open-source browsers such as Firefox, Chrome, and Safari. We will do our best to support others such as Opera and Internet Explorer, though not their earlier versions. Currently many things do not work well in IE6, and some not in IE7 either. We strongly recommend anyone using these obsolete browsers upgrade as soon as possible. We are also aware that IE and Opera browsers provide poor RTL language support generally, so cannot recommend those for sites requiring RTL languages.</li>
+	<li>To view sites that contain both left-to-right and right-to-left text (e.g. English data on Hebrew pages), you will need to use a browser that provides support for the HTML5 dir="auto" attribute. At present, only browsers based on the WebKit engine (Chrome and Safari) have this. The Gecko (Firefox) and Presto (Opera) engines promise to provide this soon.</li>
+	<li>HTML Frames. Note that <b>webtrees</b> uses cookies to track login sessions. Sites that make <b>webtrees</b> pages available inside an HTML Frames will encounter problems with login for versions 7, 8, and 9 of Internet Explorer. IE users should review the Privacy settings Tools / Internet Options for more details.</li>
 	</ul>
 <hr width="100%">
 <!-- INSTALLATION -->
@@ -128,6 +130,7 @@ Upgrading <b>webtrees</b> is quick and easy. It is strongly recommended that you
 	<li>Delete the file <b>data/offline.txt</b></li>
 </ol>
 <p><i>NOTE for Macintosh users. Step 4 assumes you are using a copy tool that <b>merges</b> directories rather than replaces them. (<b>Merge</b> is standard behaviour on Windows and Linux.) If you use the Macintosh Finder or other similar tool to perform step 3, it will <b>replace</b>  your configuration, media and other directories with the empty/default ones from the installation. This would be very bad (but you did take a backup in step 1, didn't you!). Further details and recommendations for suitable tools can be found by searching <a href="http://google.com">google.com</a></i></p>
+<p><i>GENERAL NOTE: Depending on the changes in the new files, your browser configuration and possibly other factors, it is always wise to clear both the <b>webtrees</b> cache and your browser cache immediately after the upgrade is completed. The <b>webtrees</b> cache can be cleared simply by going to Administration -> Cleanup data directory and deleting the cache.</i></p>
 If you have any problems or questions, help is available on the <a href="http://webtrees.net/forums">webtrees forum</a>.
 <hr width="100%">
 <!-- GEDCOM FILES -->
