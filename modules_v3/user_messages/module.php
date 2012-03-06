@@ -123,7 +123,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 				$message['body'] = nl2br(htmlspecialchars($message['body']));
 				$message['body'] = expand_urls($message['body']);
 
-				$content .= htmlspecialchars($message['body']).'<br><br>';
+				$content .= $message['body'].'<br><br>';
 				if (strpos($message['subject'], /* I18N: When replying to an email, the subject becomes "RE: <subject>" */ WT_I18N::translate('RE: '))!==0) {
 					$message['subject']= WT_I18N::translate('RE: ').$message['subject'];
 				}
