@@ -142,7 +142,7 @@ if ($blocks['side']) {
 // link for changing blocks
 if ($ctype=='user') {
 	echo '<div class="change_blocks" style="clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;">';
-	echo '<a href="#" onclick="modalDialog(\'index_edit.php?user_id='.WT_USER_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+	echo '<a href="index_edit.php?user_id='.WT_USER_ID.'" onclick="return modalDialog(\'index_edit.php?user_id='.WT_USER_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 	if ($SHOW_COUNTER) {
 		echo '&nbsp;|&nbsp;'.WT_I18N::translate('Hit Count:')." ".$hitCount.'<br>';
 	}
@@ -150,7 +150,7 @@ if ($ctype=='user') {
 }
 if (WT_USER_IS_ADMIN && $ctype=='gedcom') {
 	echo '<div class="change_blocks" style="clear:both; margin:0 auto; text-align:center; padding:25px 0 0 0; width:400px;">';
-	echo '<a href="#" onclick="modalDialog(\'index_edit.php?gedcom_id='.WT_GED_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
+	echo '<a href="index_edit.php?gedcom_id='.WT_GED_ID.'" onclick="return modalDialog(\'index_edit.php?gedcom_id='.WT_GED_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 	if ($SHOW_COUNTER) {
 		echo '&nbsp;|&nbsp;'.WT_I18N::translate('Hit Count:')." ".$hitCount.'<br>';
 	}
