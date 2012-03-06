@@ -1342,10 +1342,10 @@ function format_surname_table($surnames, $script) {
 		// Multiple surname variants, e.g. von Groot, van Groot, van der Groot, etc.
 		foreach ($surns as $spfxsurn=>$indis) {
 			if ($spfxsurn) {
-				$html.='<a href="'.$url.'">'.htmlspecialchars($spfxsurn).'</a><br>';
+				$html.='<a href="'.$url.'" dir="auto">'.htmlspecialchars($spfxsurn).'</a><br>';
 			} else {
 				// No surname, but a value from "2 SURN"?  A common workaround for toponyms, etc.
-				$html.='<a href="'.$url.'">'.htmlspecialchars($surn).'</a><br>';
+				$html.='<a href="'.$url.'" dir="auto">'.htmlspecialchars($surn).'</a><br>';
 			}
 		}
 		$html.='</td>';
@@ -1402,7 +1402,7 @@ function format_surname_tagcloud($surnames, $script, $totals) {
 	foreach ($surnames as $surn=>$surns) {
 		foreach ($surns as $spfxsurn=>$indis) {
 			$cloud->appendTag(array(
-				'title'=>$totals ? WT_I18N::translate('%1$s (%2$d)', $spfxsurn, count($indis)) : $spfxsurn,
+				'title'=>$totals ? WT_I18N::translate('%1$s (%2$d)', '<span dir="auto">'.$spfxsurn.'</span>', count($indis)) : $spfxsurn,
 				'weight'=>count($indis),
 				'params'=>array(
 					'url'=>$surn ?
