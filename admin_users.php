@@ -641,7 +641,7 @@ default:
 			'</tbody>',
 		'</table>';
 	
-	echo '<p><a href="#" onclick="modalDialog(\'index_edit.php?user_id=-1'.'\', \'', WT_I18N::translate('Change the default blocks for new users'), '\');">', WT_I18N::translate('Change the default blocks for new users'), '</a></p>';
+	echo '<p><a href="index_edit.php?user_id=-1" onclick="return modalDialog(\'index_edit.php?user_id=-1'.'\', \'', WT_I18N::translate('Change the default blocks for new users'), '\');">', WT_I18N::translate('Change the default blocks for new users'), '</a></p>';
 	
 	$controller
 		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
