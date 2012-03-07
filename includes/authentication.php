@@ -434,7 +434,7 @@ function getUserMessages($user_id) {
  * Adds a news item to the database
  *
  * This function adds a news item represented by the $news array to the database.
- * If the $news array has an ["id"] field then the function assumes that it is
+ * If the $news array has an ['id'] field then the function assumes that it is
  * as update of an older news item.
  *
  * @author John Finlay
@@ -442,11 +442,11 @@ function getUserMessages($user_id) {
  */
 function addNews($news) {
 	if (array_key_exists('id', $news)) {
-		WT_DB::prepare("UPDATE `##news` SET n_date=?, n_title=?, n_text=? WHERE n_id=?")
-		->execute(array($news["date"], $news["title"], $news["text"], $news['id']));
+		WT_DB::prepare("UPDATE `##news` SET subject=?, body=? WHERE news_id=?")
+		->execute(array($news['title'], $news['text'], $news['id']));
 	} else {
-		WT_DB::prepare("INSERT INTO `##news` (n_username, n_date, n_title, n_text) VALUES (?, ? ,? ,?)")
-		->execute(array($news["username"], $news["date"], $news["title"], $news["text"]));
+		WT_DB::prepare("INSERT INTO `##news` (user_id, gedcom_id, subject, body) VALUES (?, ? ,? ,?)")
+		->execute(array($news['user_id'], $news['gedcom_id'],  $news['title'], $news['text']));
 	}
 }
 
@@ -457,29 +457,45 @@ function addNews($news) {
  * @param int $news_id the id number of the news item to delete
  */
 function deleteNews($news_id) {
-	return (bool)WT_DB::prepare("DELETE FROM `##news` WHERE n_id=?")->execute(array($news_id));
+	return (bool)WT_DB::prepare("DELETE FROM `##news` WHERE news_id=?")->execute(array($news_id));
 }
 
-/**
- * Gets the news items for the given user or gedcom
- *
- * @param String $username the username or gedcom filename to get news items for
- */
-function getUserNews($username) {
+// Gets the news items for the given user or gedcom
+function getUserNews($user_id) {
 	$rows=
-		WT_DB::prepare("SELECT * FROM `##news` WHERE n_username=? ORDER BY n_date DESC")
-		->execute(array($username))
+		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? ORDER BY updated DESC")
+		->execute(array($user_id))
 		->fetchAll();
 
 	$news=array();
 	foreach ($rows as $row) {
-		$news[$row->n_id]=array(
-			"id"=>$row->n_id,
-			"username"=>$row->n_username,
-			"date"=>$row->n_date,
-			"title"=>$row->n_title,
-			"text"=>$row->n_text,
-			"anchor"=>"article".$row->n_id
+		$news[$row->news_id]=array(
+			'id'=>$row->news_id,
+			'user_id'=>$row->user_id,
+			'gedcom_id'=>$row->gedcom_id,
+			'date'=>$row->updated,
+			'title'=>$row->subject,
+			'text'=>$row->body,
+		);
+	}
+	return $news;
+}
+
+function getGedcomNews($gedcom_id) {
+	$rows=
+		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE gedcom_id=? ORDER BY updated DESC")
+		->execute(array($gedcom_id))
+		->fetchAll();
+
+	$news=array();
+	foreach ($rows as $row) {
+		$news[$row->news_id]=array(
+			'id'=>$row->news_id,
+			'user_id'=>$row->user_id,
+			'gedcom_id'=>$row->gedcom_id,
+			'date'=>$row->updated,
+			'title'=>$row->subject,
+			'text'=>$row->body,
 		);
 	}
 	return $news;
@@ -492,18 +508,18 @@ function getUserNews($username) {
  */
 function getNewsItem($news_id) {
 	$row=
-		WT_DB::prepare("SELECT * FROM `##news` WHERE n_id=?")
+		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? FROM `##news` WHERE news_id=?")
 		->execute(array($news_id))
 		->fetchOneRow();
 
 	if ($row) {
 		return array(
-			"id"=>$row->n_id,
-			"username"=>$row->n_username,
-			"date"=>$row->n_date,
-			"title"=>$row->n_title,
-			"text"=>$row->n_text,
-			"anchor"=>"article".$row->n_id
+			'id'=>$row->news_id,
+			'user_id'=>$row->user_id,
+			'gedcom_id'=>$row->gedcom_id,
+			'date'=>$row->updated,
+			'title'=>$row->subject,
+			'text'=>$row->body,
 		);
 	} else {
 		return null;

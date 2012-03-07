@@ -921,22 +921,25 @@ echo '<p>pgv_favorites => wt_favorites ...</p>'; ob_flush(); flush(); usleep(500
 try {
 	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##favorites` (".
-		" fv_id       INTEGER AUTO_INCREMENT NOT NULL,".
-		" fv_username VARCHAR(32)            NOT NULL,".
-		" fv_gid      VARCHAR(20)                NULL,".
-		" fv_type     VARCHAR(15)                NULL,".
-		" fv_file     VARCHAR(100)               NULL,".
-		" fv_url      VARCHAR(255)               NULL,".
-		" fv_title    VARCHAR(255)               NULL,".
-		" fv_note     TEXT                       NULL,".
-		" PRIMARY KEY (fv_id),".
-		"         KEY ix1 (fv_username)".
+		" favorite_id   INTEGER AUTO_INCREMENT NOT NULL,".
+		" user_id       INTEGER                NOT NULL,".
+		" gedcom_id     INTEGER                NOT NULL,".
+		" xref          VARCHAR(20)                NULL,".
+		" favorite_type ENUM('INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE', 'URL') NOT NULL,".
+		" url           VARCHAR(255)               NULL,".
+		" title         VARCHAR(255)               NULL,".
+		" note          VARCHAR(255)               NULL,".
+		" PRIMARY KEY (favorite_id),".
+		"         KEY favorite_ix1 (gedcom_id, user_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 
 	WT_DB::prepare(
-		"REPLACE INTO `##favorites` (fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note)".
-		" SELECT fv_id, fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note FROM `{$DBNAME}`.`{$TBLPREFIX}favorites`"
+		"REPLACE INTO `##favorites` (favorite_id, user_id, gedcom_id, xref, favorite_type, url, title, note)".
+		" SELECT fv_id, u.user_id, g.gedcom_id, fv_gid, fv_type, fv_url, fv_title, fv_note".
+		" FROM `{$DBNAME}`.`{$TBLPREFIX}favorites` f"
+		" LEFT JOIN `##gedcom` g ON (f.fv_username=g.gedcom_name)".
+		" LEFT JOIN `##user`   u ON (f.fv_username=u.user_name)".
 	)->execute();
 } catch (PDOException $ex) {
 	// This table will only exist if the favorites module is installed in WT
@@ -948,19 +951,24 @@ echo '<p>pgv_news => wt_news ...</p>'; ob_flush(); flush(); usleep(50000);
 try {
 	WT_DB::exec(
 		"CREATE TABLE IF NOT EXISTS `##news` (".
-		" n_id       INTEGER AUTO_INCREMENT NOT NULL,".
-		" n_username VARCHAR(100)           NOT NULL,".
-		" n_date     INTEGER                NOT NULL,".
-		" n_title    VARCHAR(255)           NOT NULL,".
-		" n_text     TEXT                   NOT NULL,".
-		" PRIMARY KEY     (n_id),".
-		"         KEY ix1 (n_username)".
+		" news_id    INTEGER AUTO_INCREMENT NOT NULL,".
+		" user_id    INTEGER                NOT NULL,".
+		" gedcom_id  INTEGER                NOT NULL,".
+		" subject    VARCHAR(255)           NOT NULL,".
+		" body       TEXT                   NOT NULL,".
+		" updated    TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP".
+		" PRIMARY KEY          (news_id),".
+		"         KEY news_ix1 (user_id, updated),".
+		"         KEY news_ix2 (gedcom_id, updated)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
 
 	WT_DB::prepare(
-		"REPLACE INTO `##news` (n_id, n_username, n_date, n_title, n_text)".
-		" SELECT n_id, n_username, n_date, n_title, n_text FROM `{$DBNAME}`.`{$TBLPREFIX}news`"
+		"REPLACE INTO `##news` (news_id, user_id, gedcom_id, subject, body, updated)".
+		" SELECT n_id, u.user_id, g.gedcom_id, n_title, n_text, FROM_UNIXTIME(n_date)".
+		" FROM `{$DBNAME}`.`{$TBLPREFIX}news` n".
+		" LEFT JOIN `##gedcom` g ON (n.n_username=g.gedcom_name)".
+		" LEFT JOIN `##user` u ON (n.n_username=u.user_name)".
 	)->execute();
 } catch (PDOException $ex) {
 	// This table will only exist if the news/blog module is installed in WT

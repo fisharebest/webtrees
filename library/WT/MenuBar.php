@@ -287,8 +287,8 @@ class WT_MenuBar {
 					$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_relationship');
 					if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
 						// Add a submenu showing relationship from this person to each of our favorites
-						foreach (user_favorites_WT_Module::getUserFavorites(WT_USER_NAME) as $favorite) {
-							if ($favorite['type']=='INDI' && $favorite['file']==WT_GEDCOM) {
+						foreach (user_favorites_WT_Module::getFavorites(WT_USER_ID) as $favorite) {
+							if ($favorite['type']=='INDI' && $favorite['gedcom_id']==WT_GED_ID) {
 								$person=WT_Person::getInstance($favorite['gid']);
 								if ($person instanceof WT_Person) {
 									$subsubmenu = new WT_Menu(
@@ -601,15 +601,15 @@ class WT_MenuBar {
 		if ($show_user_favs && !$SEARCH_SPIDER) {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {
 				$favorites=array_merge(
-					gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM),
-					user_favorites_WT_Module::getUserFavorites(WT_USER_NAME)
+					gedcom_favorites_WT_Module::getFavorites(WT_GED_ID),
+					user_favorites_WT_Module::getFavorites(WT_USER_ID)
 				);
 			} else {
-				$favorites=user_favorites_WT_Module::getUserFavorites(WT_USER_NAME);
+				$favorites=user_favorites_WT_Module::getFavorites(WT_USER_ID);
 			}
 		} else {
 			if ($show_gedc_favs && !$SEARCH_SPIDER) {
-				$favorites=gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM);
+				$favorites=gedcom_favorites_WT_Module::getFavorites(WT_GED_ID);
 			} else {
 				return null;
 			}

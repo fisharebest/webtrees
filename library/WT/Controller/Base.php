@@ -219,6 +219,7 @@ class WT_Controller_Base {
 			var WT_THEME_DIR   = "'.WT_THEME_DIR.'";
 			var WT_MODULES_DIR = "'.WT_MODULES_DIR.'";
 			var WT_GEDCOM      = "'.WT_GEDCOM.'";
+			var WT_GED_ID      = "'.WT_GED_ID.'";
 			var WT_USER_ID     = "'.WT_USER_ID.'";
 			var textDirection  = "'.$TEXT_DIRECTION.'";
 			var browserType    = "'.$BROWSERTYPE.'";

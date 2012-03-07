@@ -47,4 +47,39 @@ class user_favorites_WT_Module extends gedcom_favorites_WT_Module {
 		return false;
 	}
 
+	// Get the favorites for a user (for the current family tree)
+	public static function getFavorites($user_id) {
+		self::updateSchema(); // make sure the favorites table has been created
+
+		return
+			WT_DB::prepare(
+				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title AS title, note AS note, url AS url".
+				" FROM `##favorite` WHERE user_id=? AND gedcom_id=?")
+			->execute(array($user_id, WT_GED_ID))
+			->fetchAll(PDO::FETCH_ASSOC);
+	}
+
+	// Add a favorite to the user-favorites
+	public function modAction($modAction) {
+		global $controller;
+
+		switch($modAction) {
+		case 'menu-add-favorite':
+			// Process the "add to user favorites" menu item on indi/fam/etc. pages
+			$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
+			if (WT_USER_ID && $record->canDisplayName()) {
+				self::addFavorite(array(
+					'user_id'  =>WT_USER_ID,
+					'gedcom_id'=>$record->getGedId(),
+					'gid'      =>$record->getXref(),
+					'type'     =>$record->getType(),
+					'url'      =>null,
+					'note'     =>null,
+					'title'    =>null,
+				));
+				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a person, source or other record */ WT_I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
+			}
+			break;
+		}
+	}
 }

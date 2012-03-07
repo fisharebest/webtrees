@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 // Create tables, if not already present
 try {
-	WT_DB::updateSchema(WT_MODULES_DIR, 'user_blog/db_schema/', 'NB_SCHEMA_VERSION', 1);
+	WT_DB::updateSchema(WT_MODULES_DIR, 'user_blog/db_schema/', 'NB_SCHEMA_VERSION', 2);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
@@ -94,7 +94,7 @@ class user_blog_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "</div><br>";
 		}
 		if (WT_USER_ID) {
-			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?username='+WT_USER_ID, '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Add a new Journal entry')."</a>";
+			$content .= "<br><a href=\"#\" onclick=\"window.open('editnews.php?user_id='+WT_USER_ID, '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Add a new Journal entry')."</a>";
 		}
 
 		if ($template) {

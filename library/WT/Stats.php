@@ -3987,8 +3987,8 @@ class WT_Stats {
 	static function gedcomFavorites() {return self::_getFavorites(true);}
 	static function userFavorites() {return self::_getFavorites(false);}
 
-	static function totalGedcomFavorites() {return count(gedcom_favorites_WT_Module::getUserFavorites(WT_GEDCOM));}
-	static function totalUserFavorites() {return count(user_favorites_WT_Module::getUserFavorites(WT_USER_NAME));}
+	static function totalGedcomFavorites() {return count(gedcom_favorites_WT_Module::getFavorites(WT_GED_ID));}
+	static function totalUserFavorites() {return count(user_favorites_WT_Module::getFavorites(WT_USER_ID));}
 
 	///////////////////////////////////////////////////////////////////////////////
 	// Other blocks                                                              //

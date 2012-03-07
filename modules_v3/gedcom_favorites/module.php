@@ -51,9 +51,9 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$action=safe_GET('action');
 		switch ($action) {
 		case 'deletefav':
-			$fv_id=safe_GET('fv_id');
-			if ($fv_id) {
-				self::deleteFavorite($fv_id);
+			$favorite_id=safe_GET('favorite_id');
+			if ($favorite_id) {
+				self::deleteFavorite($favorite_id);
 			}
 			unset($_GET['action']);
 			break;
@@ -67,24 +67,24 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 				$record=WT_GedcomRecord::getInstance($gid);
 				if ($record && $record->canDisplayDetails()) {
 					self::addFavorite(array(
-						'username'=>$ctype=='user' ? WT_USER_NAME : WT_GEDCOM,
-						'gid'     =>$record->getXref(),
-						'type'    =>$record->getType(),
-						'file'    =>WT_GEDCOM,
-						'url'     =>'',
-						'note'    =>$favnote,
-						'title'   =>$favtitle,
+						'user_id'  =>$ctype=='user' ? WT_USER_ID : null,
+						'gedcom_id'=>WT_GED_ID,
+						'gid'      =>$record->getXref(),
+						'type'     =>$record->getType(),
+						'url'      =>null,
+						'note'     =>$favnote,
+						'title'    =>$favtitle,
 					));
 				}
 			} elseif ($url) {
 				self::addFavorite(array(
-					'username'=>$ctype=='user' ? WT_USER_NAME : WT_GEDCOM,
-					'gid'     =>'',
-					'type'    =>'URL',
-					'file'    =>WT_GEDCOM,
-					'url'     =>$url,
-					'note'    =>$favnote,
-					'title'   =>$favtitle ? $favtitle : $url,
+					'user_id'  =>$ctype=='user' ? WT_USER_ID : null,
+					'gedcom_id'=>WT_GED_ID,
+					'gid'      =>null,
+					'type'     =>'URL',
+					'url'      =>$url,
+					'note'     =>$favnote,
+					'title'    =>$favtitle ? $favtitle : $url,
 				));
 			}
 			unset($_GET['action']);
@@ -106,7 +106,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$show_full = 1;
 		$PEDIGREE_FULL_DETAILS = 1;
 
-		$userfavs = self::getUserFavorites($ctype=='user' ? WT_USER_NAME : WT_GEDCOM);
+		$userfavs = $this->getFavorites($ctype=='user' ? WT_USER_ID : WT_GED_ID);
 		if (!is_array($userfavs)) $userfavs = array();
 
 		$id=$this->getName().$block_id;
@@ -145,7 +145,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\">";
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
-				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype={$ctype}&amp;action=deletefav&amp;fv_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".WT_I18N::translate('Remove')."</a><br>";
+				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype={$ctype}&amp;action=deletefav&amp;favorite_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".WT_I18N::translate('Remove')."</a><br>";
 				$content .= '<tr><td>';
 				if ($favorite['type']=='URL') {
 					$content .= "<div id=\"boxurl".$key.".0\" class=\"person_box\">";
@@ -275,21 +275,14 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 	}
 
-	/**
-	 * deleteFavorite
-	 * deletes a favorite in the database
-	 * @param int $fv_id the id of the favorite to delete
-	 */
-	public static function deleteFavorite($fv_id) {
+	// Delete a favorite from the database
+	public static function deleteFavorite($favorite_id) {
 		return (bool)
-			WT_DB::prepare("DELETE FROM `##favorites` WHERE fv_id=?")
-			->execute(array($fv_id));
+			WT_DB::prepare("DELETE FROM `##favorite` WHERE favorite_id=?")
+			->execute(array($favorite_id));
 	}
 
-	/**
-	 * stores a new favorite in the database
-	 * @param array $favorite the favorite array of the favorite to add
-	 */
+	// Store a new favorite in the database
 	public static function addFavorite($favorite) {
 		// -- make sure a favorite is added
 		if (empty($favorite['gid']) && empty($favorite['url'])) {
@@ -297,17 +290,20 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		//-- make sure this is not a duplicate entry
-		$sql = "SELECT 1 FROM `##favorites` WHERE";
+		$sql = "SELECT SQL_NO_CACHE 1 FROM `##favorite` WHERE";
 		if (!empty($favorite['gid'])) {
-			$sql.=" fv_gid=?";
+			$sql.=" xref=?";
 			$vars=array($favorite['gid']);
 		} else {
-			$sql.=" fv_url=?";
+			$sql.=" url=?";
 			$vars=array($favorite['url']);
 		}
-		$sql.=" AND fv_file=? AND fv_username=?";
-		$vars[]=$favorite['file'];
-		$vars[]=$favorite['username'];
+		$sql.=" AND gedcom_id=?";
+		$vars[]=$favorite['gedcom_id'];
+		if ($favorite['user_id']) {
+			$sql.=" AND user_id=?";
+			$vars[]=$favorite['user_id'];
+		}
 
 		if (WT_DB::prepare($sql)->execute($vars)->fetchOne()) {
 			return false;
@@ -315,50 +311,29 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 		//-- add the favorite to the database
 		return (bool)
-			WT_DB::prepare("INSERT INTO `##favorites` (fv_username, fv_gid, fv_type, fv_file, fv_url, fv_title, fv_note) VALUES (?, ? ,? ,? ,? ,? ,?)")
-				->execute(array($favorite['username'], $favorite['gid'], $favorite['type'], $favorite['file'], $favorite['url'], $favorite['title'], $favorite['note']));
+			WT_DB::prepare("INSERT INTO `##favorite` (user_id, gedcom_id, xref, favorite_type, url, title, note) VALUES (? ,? ,? ,? ,? ,? ,?)")
+				->execute(array($favorite['user_id'], $favorite['gedcom_id'], $favorite['gid'], $favorite['type'], $favorite['url'], $favorite['title'], $favorite['note']));
 	}
 
 	// Get favorites for a user or family tree
-	public static function getUserFavorites($username) {
+	public static function getFavorites($gedcom_id) {
 		self::updateSchema(); // make sure the favorites table has been created
 
 		return
 			WT_DB::prepare(
-				"SELECT fv_id AS id, fv_username AS username, fv_gid AS gid, fv_type AS type, fv_file AS file, fv_title AS title, fv_note AS note, fv_url AS url".
-				" FROM `##favorites` WHERE fv_username=? AND fv_file=?")
-			->execute(array($username, WT_GEDCOM))
+				"SELECT SQL_CACHE favorite_id AS id, user_id, gedcom_id, xref AS gid, favorite_type AS type, title, note, url".
+				" FROM `##favorite` WHERE gedcom_id=? AND user_id IS NULL")
+			->execute(array($gedcom_id))
 			->fetchAll(PDO::FETCH_ASSOC);
 	}
 
-	private static function updateSchema() {
+	protected static function updateSchema() {
 		// Create tables, if not already present
 		try {
-			WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 1);
+			WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'gedcom_favorites/db_schema/', 'FV_SCHEMA_VERSION', 2);
 		} catch (PDOException $ex) {
 			// The schema update scripts should never fail.  If they do, there is no clean recovery.
 			die($ex);
-		}
-	}
-
-	public function modAction($modAction) {
-		switch($modAction) {
-		case 'menu-add-favorite':
-			// Process the "add to user favorites" menu item on indi/fam/etc. pages
-			$record=WT_GedcomRecord::getInstance(safe_POST_xref('xref'));
-			if ($record && $record->canDisplayName()) {
-				Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(/* I18N: %s is the name of a person, source or other record */ WT_I18N::translate('“%s” has been added to your favorites.', $record->getFullName()));
-				self::addFavorite(array(
-					'username'=>WT_USER_NAME,
-					'gid'     =>$record->getXref(),
-					'type'    =>$record->getType(),
-					'file'    =>WT_GEDCOM,
-					'url'     =>'',
-					'note'    =>'',
-					'title'   =>'',
-				));
-			}
-			break;
 		}
 	}
 }

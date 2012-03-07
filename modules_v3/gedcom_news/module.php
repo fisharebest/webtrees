@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 // Create tables, if not already present
 try {
-	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'gedcom_news/db_schema/', 'NB_SCHEMA_VERSION', 1);
+	WT_DB::updateSchema(WT_ROOT.WT_MODULES_DIR.'gedcom_news/db_schema/', 'NB_SCHEMA_VERSION', 2);
 } catch (PDOException $ex) {
 	// The schema update scripts should never fail.  If they do, there is no clean recovery.
 	die($ex);
@@ -79,7 +79,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 		}
-		$usernews = getUserNews(WT_GEDCOM);
+		$usernews = getGedcomNews(WT_GED_ID);
 
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
@@ -108,7 +108,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 					break;
 				}
 			}
-			$content .= "<div class=\"news_box\" id=\"{$news['anchor']}\">";
+			$content .= "<div class=\"news_box\" id=\"article{$news['id']}\">";
 			$content .= "<div class=\"news_title\">".htmlspecialchars($news['title']).'</div>';
 			$content .= "<div class=\"news_date\">".format_timestamp($news['date']).'</div>';
 			if ($news["text"]==strip_tags($news["text"])) {
@@ -126,7 +126,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$printedAddLink = false;
 		if (WT_USER_GEDCOM_ADMIN) {
-			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?username='+WT_GEDCOM, '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Add a News article')."</a>";
+			$content .= "<a href=\"#\" onclick=\"window.open('editnews.php?gedcom_id='+WT_GED_ID, '_blank', indx_window_specs); return false;\">".WT_I18N::translate('Add a News article')."</a>";
 			$printedAddLink = true;
 		}
 		if ($limit=='date' || $limit=='count') {

@@ -1900,18 +1900,10 @@ function set_module_setting($module_name, $setting_name, $setting_value) {
 	}
 }
 
-/**
-* update favorites regarding a merge of records
-*
-* @param string $xref_from id to update
-* @param string $xref_to id to update to
-* @param string $ged_id gedcom to update
-*/
+// update favorites after merging records
 function update_favorites($xref_from, $xref_to, $ged_id=WT_GED_ID) {
-	$ged_name=get_gedcom_from_id($ged_id);
-
 	return
-		WT_DB::prepare("UPDATE `##favorites` SET fv_gid=? WHERE fv_gid=? AND fv_file=?")
-		->execute(array($xref_to, $xref_from, $ged_name))
+		WT_DB::prepare("UPDATE `##favorite` SET xref=? WHERE xref=? AND gedcom_id=?")
+		->execute(array($xref_to, $xref_from, $ged_id))
 		->rowCount();
 }
