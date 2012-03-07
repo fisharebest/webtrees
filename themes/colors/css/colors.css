@@ -732,6 +732,8 @@ html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon{right:0.5em;}
 html[dir='rtl'] .ui-tabs{direction:rtl;}
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default{float:right;}
+html[dir='rtl'] .ui-dialog-title{float:right;}
+html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em; right:auto;}
 
 /* jQuery over-rides */
 #loading{text-align:center;}

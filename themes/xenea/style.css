@@ -1893,7 +1893,8 @@ html[dir='rtl'] dd .editlink, html[dir='rtl'] dd .deletelink {float:left;}
 #media-display-image {float:left;}
 #media-display-title {float:left; font-style:italic; margin:10px;}
 
-/* ========= jquery-ui.custom.css changes ============ */.ui-widget-content {color:black; border-color:#999999;}
+/* ========= jquery-ui.custom.css changes ============ */
+.ui-widget-content {color:black; border-color:#999999;}
 .ui-widget-content a {color:blue;}
 .ui-widget-content a:hover {color:red;}
 .ui-state-active, .ui-widget-content .ui-state-active {border:1px solid #c3dfff; background:#c3dfff; font-weight:normal; color:black; outline:none;}
@@ -1924,6 +1925,8 @@ html[dir='rtl'] .ui-tabs {direction:rtl;}
 html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
+html[dir='rtl'] .ui-dialog-title{float:right;}
+html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em; right:auto;}
 
 /* ========= jQuery.datatable styling over-rides ============ */
 .odd {background-color:#dcdcdc;}
