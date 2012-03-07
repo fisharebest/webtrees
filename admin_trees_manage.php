@@ -292,7 +292,5 @@ if (WT_USER_IS_ADMIN) {
 				help_link('PGV_WIZARD'),
 				'</div>';
 		}
-}
-echo '<p><a href="index_edit.php?gedcom_id=-1" onclick="return modalDialog(\'index_edit.php?gedcom_id=-1'.'\', \'', WT_I18N::translate('Change the default blocks for new family trees'), '\');">', WT_I18N::translate('Change the default blocks for new family trees'), '</a></p>';
-	
+}	
 

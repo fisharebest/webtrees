@@ -107,6 +107,10 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 echo
 	'<li><a ', (WT_SCRIPT_NAME=="admin_site_merge.php" ? 'class="current" ' : ''), 'href="admin_site_merge.php">', WT_I18N::translate('Merge records'), '</a></li>',
 	'<li><a ', (WT_SCRIPT_NAME=="admin_site_other.php" ? 'class="current" ' : ''), 'href="admin_site_other.php">', WT_I18N::translate('Add unlinked records'), '</a></li>',
+
+	'<li><a href="index_edit.php?gedcom_id=-1" onclick="return modalDialog(\'index_edit.php?gedcom_id=-1'.'\', \'', WT_I18N::translate('Set the default blocks for new family trees'), '\');">', WT_I18N::translate('Set default blocks'), '</a></li>',
+
+
 	'</ul></li></ul>';
 if (WT_USER_IS_ADMIN) {
 	echo
@@ -120,6 +124,10 @@ if (WT_USER_IS_ADMIN) {
 		'<li><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')=="cleanup" ? 'class="current" ' : ''), 'href="admin_users.php?action=cleanup">',
 		WT_I18N::translate('Delete inactive users'),
 		'</a></li>',
+		
+		'<li><a href="index_edit.php?user_id=-1" onclick="return modalDialog(\'index_edit.php?user_id=-1'.'\', \'', WT_I18N::translate('Set the default blocks for new users'), '\');">', WT_I18N::translate('Set default blocks'), '</a></li>',
+		
+		
 		'</ul></li></ul>',
 		'<ul><li><a ', (WT_SCRIPT_NAME=="admin_media.php" ? 'class="current" ' : ''), 'href="admin_media.php">',
 		WT_I18N::translate('Media'),
