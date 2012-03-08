@@ -52,10 +52,16 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $EXPAND_RELATIVES_EVENTS, $controller;
+		$EXPAND_HISTO_EVENTS = false;
 
-		/*if (isset($_COOKIE['row_rela'])) $EXPAND_RELATIVES_EVENTS = ($_COOKIE['row_rela']);
-		if (isset($_COOKIE['row_histo'])) $EXPAND_HISTO_EVENTS = ($_COOKIE['row_histo']);
-		else*/ $EXPAND_HISTO_EVENTS = false;
+		echo WT_JS_START;
+		if (!$EXPAND_RELATIVES_EVENTS) {
+			echo "jQuery('tr.row_rela').toggle();";
+		}
+		if (!$EXPAND_HISTO_EVENTS) {
+			echo "jQuery('tr.row_histo').toggle();";
+		}
+		echo WT_JS_END;
 
 		//-- only need to add family facts on this tab
 		if (!isset($controller->skipFamilyFacts)) {
@@ -63,29 +69,25 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		ob_start();
-		?>
-		<table class="facts_table" style="margin-top:-2px;" cellpadding="0">
-		<?php
+		echo '<table class="facts_table">';
 		$indifacts = $controller->getIndiFacts();
-		if (count($indifacts)==0) { ?>
-			<tr>
-				<td id="no_tab1" colspan="2" class="facts_value"><?php echo WT_I18N::translate('There are no Facts for this individual.'); ?>
-				</td>
-			</tr>
-		<?php }
+		if (count($indifacts)==0) {
+			echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('There are no Facts for this individual.'), '</td></tr>';
+		}
 		if (!isset($controller->skipFamilyFacts)) {
-		?>
-		<tr id="row_top">
-			<td colspan="2" class="descriptionbox rela">
-				<input id="checkbox_rela_facts" type="checkbox" <?php if ($EXPAND_RELATIVES_EVENTS) echo ' checked="checked"'; ?> onclick="jQuery('tr.row_rela').toggle();">
-				<label for="checkbox_rela_facts"><?php echo WT_I18N::translate('Events of close relatives'); ?></label>
-				<?php if (file_exists(get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) { ?>
-					<input id="checkbox_histo" type="checkbox" <?php if ($EXPAND_HISTO_EVENTS) echo ' checked="checked"'; ?> onclick="jQuery('tr.row_histo').toggle();">
-					<label for="checkbox_histo"><?php echo WT_I18N::translate('Historical facts'); ?></label>
-				<?php } ?>
-			</td>
-		</tr>
-		<?php
+		echo '<tr id="row_top"><td colspan="2" class="descriptionbox rela">
+				<input id="checkbox_rela_facts" type="checkbox"';
+				if ($EXPAND_RELATIVES_EVENTS) echo ' checked="checked"';
+				echo 'onclick="jQuery(\'tr.row_rela\').toggle();">
+					<label for="checkbox_rela_facts">', WT_I18N::translate('Events of close relatives'), '</label>';
+				if (file_exists(get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
+					echo '&nbsp;
+						<input id="checkbox_histo" type="checkbox"';
+						if ($EXPAND_HISTO_EVENTS) echo ' checked="checked"';
+					echo 'onclick="jQuery(\'tr.row_histo\').toggle();">
+					<label for="checkbox_histo">', WT_I18N::translate('Historical facts'), '</label>';
+				}
+			echo '</td></tr>';
 		}
 		$yetdied=false;
 		foreach ($indifacts as $fact) {
@@ -107,15 +109,7 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		if ($controller->record->canEdit()) {
 			print_add_new_fact($controller->record->getXref(), $indifacts, 'INDI');
 		}
-		echo '</table><br>';
-		echo WT_JS_START;
-		if (!$EXPAND_RELATIVES_EVENTS) {
-			echo "jQuery('tr.row_rela').toggle();";
-		}
-		if (!$EXPAND_HISTO_EVENTS) {
-			echo "jQuery('tr.row_histo').toggle();";
-		}
-		echo WT_JS_END;
+		echo '</table>';
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}
 
