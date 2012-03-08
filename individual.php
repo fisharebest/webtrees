@@ -159,8 +159,10 @@ $controller->addInlineJavaScript('
 	// Load preference
 	if (jQuery.cookie("hide-sb")=="1"){
 		hideSidebar();
+		adjHeader();
 	} else {
 		showSidebar();
+		adjHeader();
 	}
 	adjHeader();
 	jQuery("#main").css("visibility", "visible");
