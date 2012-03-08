@@ -185,7 +185,7 @@ echo
 	'<div id="indi_left">',
 	'<div id="indi_header">';
 if ($controller->record->canDisplayDetails()) {
-	echo '<div id="indi_mainimage">'; // Display highlight image
+	echo '<div id="indi_mainimage" style="min-width:100px;">'; // Display highlight image
 	if ($controller->canShowHighlightedObject()) {
 		echo $controller->getHighlightedObject();
 	}
