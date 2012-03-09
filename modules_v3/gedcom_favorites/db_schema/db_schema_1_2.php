@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 // Add the new columns
-//try {
+try {
 	WT_DB::exec(
 		"ALTER TABLE `##favorites`".
 		" CHANGE fv_id    favorite_id   INTEGER AUTO_INCREMENT NOT NULL,".
@@ -47,48 +47,48 @@ if (!defined('WT_WEBTREES')) {
 		" DROP KEY ix1,".
 		" ADD KEY news_ix1 (gedcom_id, user_id)"
 	);
-//} catch (PDOException $ex) {
+} catch (PDOException $ex) {
 	// Already updated?
-//}
+}
 
 // Migrate data from the old columns to the new ones
-//try {
+try {
 	WT_DB::exec(
 		"UPDATE `##favorites` f".
 		" LEFT JOIN `##gedcom` g ON (f.fv_file    =g.gedcom_name)".
 		" LEFT JOIN `##user`   u ON (f.fv_username=u.user_name)".
 		" SET f.gedcom_id=g.gedcom_id, f.user_id=u.user_id"
 	);
-//} catch (PDOException $ex) {
+} catch (PDOException $ex) {
 	// Already updated?
-//}
+}
 
 // Delete orphaned rows
-//try {
+try {
 	WT_DB::exec(
 		"DELETE FROM `##favorites` WHERE user_id IS NULL AND gedcom_id IS NULL"
 	);
-//} catch (PDOException $ex) {
+} catch (PDOException $ex) {
 	// Already updated?
-//}
+}
 
 // Delete the old column
-//try {
+try {
 	WT_DB::exec(
 		"ALTER TABLE `##favorites` DROP fv_username, DROP fv_file"
 	);
-//} catch (PDOException $ex) {
+} catch (PDOException $ex) {
 	// Already updated?
-//}
+}
 
 // Rename the table
-//try {
+try {
 	WT_DB::exec(
 		"RENAME TABLE `##favorites` TO `##favorite`"
 	);
-//} catch (PDOException $ex) {
+} catch (PDOException $ex) {
 	// Already updated?
-//}
+}
 
 // Update the version to indicate success
 set_site_setting($schema_name, $next_version);
