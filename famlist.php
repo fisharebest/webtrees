@@ -126,6 +126,7 @@ if ($show_all=='yes') {
 	$url=WT_SCRIPT_NAME.'?ged='.WT_GEDURL;
 	$show='none'; // Don't show lists until something is chosen
 }
+$legend='<span dir="auto">'.$legend.'</span>';
 
 $controller
 	->setPageTitle(WT_I18N::translate('Families').' : '.$legend)
