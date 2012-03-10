@@ -185,7 +185,8 @@ echo
 	'<div id="indi_left">',
 	'<div id="indi_header">';
 if ($controller->record->canDisplayDetails()) {
-	echo '<div id="indi_mainimage" style="min-width:100px;">'; // Display highlight image
+	echo '<div id="indi_mainimage" '; // Display highlight image
+	if ($USE_SILHOUETTE) {echo 'style="min-width:', $THUMBNAIL_WIDTH, 'px;">';} else {echo '>';}
 	if ($controller->canShowHighlightedObject()) {
 		echo $controller->getHighlightedObject();
 	}
