@@ -238,7 +238,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				$fact = $nmatch[$i][1];
 				if (($fact!="SOUR") && ($fact!="NOTE") && ($fact!="SPFX")) {
 					echo '<dl><dt class="label">', WT_Gedcom_Tag::getLabel($fact, $this->record), '</dt>';
-					echo '<dd class="field" dir="auto">';
+					echo '<dd class="field">'; // Before using dir="auto" on this field, note that Gecko treats this as an inline element but WebKit treats it as a block element
 					if (isset($nmatch[$i][2])) {
 							$name = htmlspecialchars($nmatch[$i][2]);
 							$name = str_replace('/', '', $name);
