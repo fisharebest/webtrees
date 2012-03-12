@@ -937,9 +937,9 @@ try {
 	WT_DB::prepare(
 		"REPLACE INTO `##favorites` (favorite_id, user_id, gedcom_id, xref, favorite_type, url, title, note)".
 		" SELECT fv_id, u.user_id, g.gedcom_id, fv_gid, fv_type, fv_url, fv_title, fv_note".
-		" FROM `{$DBNAME}`.`{$TBLPREFIX}favorites` f"
+		" FROM `{$DBNAME}`.`{$TBLPREFIX}favorites` f".
 		" LEFT JOIN `##gedcom` g ON (f.fv_username=g.gedcom_name)".
-		" LEFT JOIN `##user`   u ON (f.fv_username=u.user_name)".
+		" LEFT JOIN `##user`   u ON (f.fv_username=u.user_name)"
 	)->execute();
 } catch (PDOException $ex) {
 	// This table will only exist if the favorites module is installed in WT
@@ -968,7 +968,7 @@ try {
 		" SELECT n_id, u.user_id, g.gedcom_id, n_title, n_text, FROM_UNIXTIME(n_date)".
 		" FROM `{$DBNAME}`.`{$TBLPREFIX}news` n".
 		" LEFT JOIN `##gedcom` g ON (n.n_username=g.gedcom_name)".
-		" LEFT JOIN `##user` u ON (n.n_username=u.user_name)".
+		" LEFT JOIN `##user` u ON (n.n_username=u.user_name)"
 	)->execute();
 } catch (PDOException $ex) {
 	// This table will only exist if the news/blog module is installed in WT
