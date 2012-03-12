@@ -508,7 +508,7 @@ function getGedcomNews($gedcom_id) {
  */
 function getNewsItem($news_id) {
 	$row=
-		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE user_id=? FROM `##news` WHERE news_id=?")
+		WT_DB::prepare("SELECT SQL_CACHE news_id, user_id, gedcom_id, UNIX_TIMESTAMP(updated) AS updated, subject, body FROM `##news` WHERE news_id=?")
 		->execute(array($news_id))
 		->fetchOneRow();
 
