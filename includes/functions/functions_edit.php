@@ -1980,7 +1980,7 @@ function addSimpleTags($fact) {
 function addNewName() {
 	global $ADVANCED_NAME_FACTS;
 
-	$gedrec='1 NAME '.safe_POST('NAME', WT_REGEX_UNSAFE, '//')."\n";
+	$gedrec="\n1 NAME ".safe_POST('NAME', WT_REGEX_UNSAFE, '//');
 
 	$tags=array('NPFX', 'GIVN', 'SPFX', 'SURN', 'NSFX');
 
@@ -1997,7 +1997,7 @@ function addNewName() {
 	foreach (array_unique($tags) as $tag) {
 		$TAG=safe_POST($tag, WT_REGEX_UNSAFE);
 		if ($TAG) {
-			$gedrec.="2 {$tag} {$TAG}\n";
+			$gedrec.="\n2 {$tag} {$TAG}";
 		}
 	}
 	return $gedrec;
@@ -2005,11 +2005,11 @@ function addNewName() {
 function addNewSex() {
 	switch (safe_POST('SEX', '[MF]', 'U')) {
 	case 'M':
-		return "1 SEX M\n";
+		return "\n1 SEX M";
 	case 'F':
-		return "1 SEX F\n";
+		return "\n1 SEX F";
 	default:
-		return "1 SEX U\n";
+		return "\n1 SEX U";
 	}
 }
 function addNewFact($fact) {
@@ -2020,28 +2020,28 @@ function addNewFact($fact) {
 	$PLAC=safe_POST("{$fact}_PLAC", WT_REGEX_UNSAFE);
 	if ($DATE || $PLAC || $FACT && $FACT!='Y') {
 		if ($FACT && $FACT!='Y') {
-			$gedrec="1 {$fact} {$FACT}\n";
+			$gedrec="\n1 {$fact} {$FACT}";
 		} else {
-			$gedrec="1 {$fact}\n";
+			$gedrec="\n1 {$fact}";
 		}
 		if ($DATE) {
-			$gedrec.="2 DATE {$DATE}\n";
+			$gedrec.="\n2 DATE {$DATE}";
 		}
 		if ($PLAC) {
-			$gedrec.="2 PLAC {$PLAC}\n";
+			$gedrec.="\n2 PLAC {$PLAC}";
 
 			if (preg_match_all('/('.WT_REGEX_TAG.')/', $ADVANCED_PLAC_FACTS, $match)) {
 				foreach ($match[1] as $tag) {
 					$TAG=safe_POST("{$fact}_{$tag}", WT_REGEX_UNSAFE);
 					if ($TAG) {
-						$gedrec.="3 {$tag} {$TAG}\n";
+						$gedrec.="\n3 {$tag} {$TAG}";
 					}
 				}
 			}
 			$LATI=safe_POST("{$fact}_LATI", WT_REGEX_UNSAFE);
 			$LONG=safe_POST("{$fact}_LONG", WT_REGEX_UNSAFE);
 			if ($LATI || $LONG) {
-				$gedrec.="3 MAP\n4 LATI {$LATI}\n4 LONG {$LONG}\n";
+				$gedrec.="\n3 MAP\n4 LATI {$LATI}\n4 LONG {$LONG}";
 			}
 		}
 		if (safe_POST_bool("SOUR_{$fact}")) {
@@ -2051,9 +2051,9 @@ function addNewFact($fact) {
 		}
 	} elseif ($FACT=='Y') {
 		if (safe_POST_bool("SOUR_{$fact}")) {
-			return updateSOUR("1 {$fact} Y\n", 2);
+			return updateSOUR("\n1 {$fact} Y", 2);
 		} else {
-			return "1 {$fact} Y\n";
+			return "\n1 {$fact} Y";
 		}
 	} else {
 		return '';
@@ -2288,7 +2288,7 @@ function handle_updates($newged, $levelOverride="no") {
 				if ($islink[$j]) $newline .= " @".$text[$j]."@";
 				else $newline .= ' '.$text[$j];
 			}
-			$newged .= breakConts($newline);
+			$newged .= "\n".breakConts($newline);
 		}
 	}
 
