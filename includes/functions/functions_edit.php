@@ -923,7 +923,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 		var spfx=frm.SPFX.value;
 		var surn=frm.SURN.value;
 		var nsfx=frm.NSFX.value;
-		<?php if ($SURNAME_TRADITION=='polish' && $sextag=='F') { ?>
+		<?php if ($SURNAME_TRADITION=='polish' && ($sextag=='F' || $famtag=='WIFE')) { ?>
 			surn=surn.replace(/ski$/, 'ska');
 			surn=surn.replace(/cki$/, 'cka');
 			surn=surn.replace(/dzki$/, 'dzka');
