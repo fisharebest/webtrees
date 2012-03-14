@@ -110,11 +110,12 @@ default:
 	$controller->pageHeader();
 	$controller
 		->addInlineJavaScript('
-			  jQuery("#new_passwd_form").hide();
-			  jQuery("#passwd_click").click(function()
-			  {
-				jQuery("#new_passwd_form").slideToggle(100);
-			  });
+			jQuery("#new_passwd_form").hide();
+			jQuery("#passwd_click").click(function() {
+				jQuery("#new_passwd_form").slideToggle(100, function() {
+					jQuery("#new_passwd_username").focus()
+				});
+			});
 		');
 
 	echo '<div id="login-page">';
@@ -180,8 +181,8 @@ default:
 		<input type="hidden" name="action" value="requestpw">
 		<h4>', WT_I18N::translate('Lost password request'), '</h4>
 		<div>
-			<label for="username">', WT_I18N::translate('Username or email address'),
-				'<input type="text" id="username" name="username" value="" autofocus>
+			<label for="new_passwd_username">', WT_I18N::translate('Username or email address'),
+				'<input type="text" id="new_passwd_username" name="new_passwd_username" value="">
 			</label>
 		</div>
 		<div><input type="submit" value="', /* I18N: button label */ WT_I18N::translate('Continue'), '"></div>
