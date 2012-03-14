@@ -1241,7 +1241,7 @@ case 'update':
 			if (!empty($_MARNM)) $newged .= "\n2 _MARNM $_MARNM";
 
 			while ($i<count($gedlines)) {
-				$newged .= trim($gedlines[$i])."\n";
+				$newged .= "\n".$gedlines[$i];
 				$i++;
 			}
 		} else {
@@ -1249,7 +1249,7 @@ case 'update':
 			$current = 0;
 			foreach ($linenum as $editline) {
 				for ($i=$current; $i<$editline; $i++) {
-					$newged .= $gedlines[$i]."\n";
+					$newged .= "\n".$gedlines[$i];
 				}
 				//-- for edits get the level from the line
 				if (isset($gedlines[$editline])) {
