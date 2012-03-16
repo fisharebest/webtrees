@@ -2759,7 +2759,7 @@ function in_arrayr($needle, $haystack) {
 
 // Function to build an URL querystring from GET variables
 // Optionally, add/replace specified values
-function get_query_url($overwrite=null) {
+function get_query_url($overwrite=null, $separator='&') {
 	if (empty($_GET)) {
 		$get=array();
 	} else {
@@ -2774,14 +2774,14 @@ function get_query_url($overwrite=null) {
 	$query_string='';
 	foreach ($get as $key=>$value) {
 		if (!is_array($value)) {
-			$query_string.='&amp;' . rawurlencode($key) . '=' . rawurlencode($value);
+			$query_string.=$separator . rawurlencode($key) . '=' . rawurlencode($value);
 		} else {
 			foreach ($value as $k=>$v) {
-				$query_string.='&amp;' . rawurlencode($key) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
+				$query_string.=$separator . rawurlencode($key) . '%5B' . rawurlencode($k) . '%5D=' . rawurlencode($v);
 			}
 		}
 	}
-	$query_string=substr($query_string, 5); // Remove leading '&amp;'
+	$query_string=substr($query_string, strlen($separator)); // Remove leading '&amp;'
 	if ($query_string) {
 		return WT_SCRIPT_NAME.'?'.$query_string;
 	} else {
