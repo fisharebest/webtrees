@@ -51,7 +51,9 @@ class search_replace_bu_plugin extends base_plugin {
 	}
 
 	function updateRecord($xref, $gedrec) {
-		return preg_replace('/'.$this->regex.'/'.$this->case, $this->replace, $gedrec);
+		// Allow "\n" to indicate a line-feed in replacement text.
+		// Back-references such as $1, $2 are handled automatically.
+		return preg_replace('/'.$this->regex.'/'.$this->case, str_replace('\n', "\n", $this->replace), $gedrec);
 	}
 
 	function getOptions() {
