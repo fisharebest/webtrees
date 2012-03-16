@@ -309,11 +309,11 @@ class WT_Controller_Base {
 	public function getSignificantIndividual() {
 		static $individual; // Only query the DB once.
 
-		if (!$individual && WT_USER_GEDCOM_ID) {
-			$individual=WT_Person::getInstance(WT_USER_GEDCOM_ID);
-		}
 		if (!$individual && WT_USER_ROOT_ID) {
 			$individual=WT_Person::getInstance(WT_USER_ROOT_ID);
+		}
+		if (!$individual && WT_USER_GEDCOM_ID) {
+			$individual=WT_Person::getInstance(WT_USER_GEDCOM_ID);
 		}
 		if (!$individual) {
 			$individual=WT_Person::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
