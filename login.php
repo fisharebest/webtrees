@@ -198,6 +198,7 @@ case 'requestpw':
 		->setPageTitle(WT_I18N::translate('Lost password request'))
 		->pageHeader();
 	echo '<div id="login-page">';
+	$user_name=safe_POST('new_passwd_username', WT_REGEX_USERNAME);
 
 	$user_id=WT_DB::prepare(
 		"SELECT user_id FROM `##user` WHERE ? IN (user_name, email)"
