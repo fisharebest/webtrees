@@ -554,7 +554,7 @@ table.center {
 	vertical-align: middle;
 }
 
-.pedigree_image_portrait, .pedigree_image_landscape {
+.pedigree_image {
 	float: left;
 	max-height: 50px;
 	max-width: 37px;
@@ -562,12 +562,9 @@ table.center {
 	margin-right: 3px;
 }
 
-.pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
-	float: right;
-	max-height: 50px;
-	max-width: 37px;
-	border: solid black 1px;
-	margin-left: 3px;
+html[dir="rtl"] .pedigree_image {
+	float:right;
+	margin:0 0 0 3px;
 }
 
 .pedigree_form {

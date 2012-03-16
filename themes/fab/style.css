@@ -292,18 +292,15 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 }
 
 /* pedigree.php */
-.pedigree_image_portrait, .pedigree_image_landscape {
+.pedigree_image {
 	float:left;
 	max-height:45px;
 	max-width:37px;
 	margin-right:3px;
 }
-
-.pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
+html[dir="rtl"] .pedigree_image {
 	float:right;
-	max-height:45px;
-	max-width:37px;
-	margin-left:3px;
+	margin:0 0 0 3px;
 }
 
 /*-- pedigree chart specific stylesheets --*/

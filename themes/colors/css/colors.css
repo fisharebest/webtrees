@@ -327,18 +327,9 @@ html[dir='rtl'] #relationship_chart{margin-right:10px;}
 .topheader{color:#888;margin:0;white-space:nowrap;}
 
 /* person boxes for charts */
-#index_small_blocks .person_box .pedigree_image_portrait,
-#index_small_blocks .person_boxF .pedigree_image_portrait,
-#index_small_blocks .person_boxNN .pedigree_image_portrait,
-#index_small_blocks .person_box .pedigree_image_landscape,
-#index_small_blocks .person_boxF .pedigree_image_landscape,
-#index_small_blocks .person_boxNN .pedigree_image_landscape,
-#index_small_blocks .person_box .pedigree_image_portrait_rtl,
-#index_small_blocks .person_boxF .pedigree_image_portrait_rtl,
-#index_small_blocks .person_boxNN .pedigree_image_portrait_rtl,
-#index_small_blocks .person_box .pedigree_image_landscape_rtl,
-#index_small_blocks .person_boxF .pedigree_image_landscape_rtl,
-#index_small_blocks .person_boxNN .pedigree_image_landscape_rtl{display:inline;visibility:visible;}
+#index_small_blocks .person_box .pedigree_image,
+#index_small_blocks .person_boxF .pedigree_image,
+#index_small_blocks .person_boxNN .pedigree_image {display:inline;visibility:visible;}
 
 .person_box{background:#ddf;border:1px solid #AAA;border-radius:3px;padding:3px;}
 .person_boxF{background:#fdd;border:1px solid #AAA;border-radius:3px;padding:3px;}
@@ -423,8 +414,9 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 .parentdeath{border:thin solid #888;padding:1px;}
 
 .pedigree_form{width:60px;}
-.pedigree_image_portrait,.pedigree_image_landscape{float:left;margin-right:3px;max-height:50px;max-width:37px;}
-.pedigree_image_portrait_rtl,.pedigree_image_landscape_rtl{float:right;margin-left:3px;max-height:50px;max-width:37px;}
+.pedigree_image{float:left;margin:0 3px 0 0;max-height:50px;max-width:37px;}
+html[dir="rtl"] .pedigree_image {float:right;margin:0 0 0 3px;}
+
 
 .rtl_cal_day{direction:rtl;float:right;font-weight:700;}
 .selected-option{background:#cef;}

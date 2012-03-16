@@ -917,15 +917,15 @@ function display_silhouette(array $config = array()) {
 	}
 
 	if ($config['display_type']=='pedigree_person') {
-		$config['class']='pedigree_image_portrait';
+		$config['class']='pedigree_image';
 	}
 	if ($config['display_type']=='treeview') {
-		$config['class']='default_thumbnail pedigree_image_portrait';
+		$config['class']='default_thumbnail pedigree_image';
 	}
 	if ($config['display_type']=='googlemap') {
 		$config['usejavascript']=false;
 		$config['addslashes']=true;
-		$config['class']='pedigree_image_portrait';
+		$config['class']='pedigree_image';
 	}
 	$config['img_title']=strip_tags($config['img_title']);
 	$classstr='';

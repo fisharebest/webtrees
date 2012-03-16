@@ -612,20 +612,17 @@ font-size:10px;
 	vertical-align:middle;
 }
 
-.pedigree_image_portrait, .pedigree_image_landscape {
+.pedigree_image {
 	float:left;
 	max-height:50px;
 	max-width:37px;
 	border:solid black 1px;
-	margin-right:3px;
+	margin:0 3px 0 0;
 }
 
-.pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {
+html[dir="rtl"] .pedigree_image {
 	float:right;
-	max-height:50px;
-	max-width:37px;
-	border:solid black 1px;
-	margin-left:3px;
+	margin:0 0 0 3px;
 }
 
 .pedigree_form {

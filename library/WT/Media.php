@@ -337,7 +337,6 @@ class WT_Media extends WT_GedcomRecord {
 				$imgsize['adjH']=$imgsize[1]+$addHeight; // adjusted height
 				$imageTypes=array('','GIF','JPG','PNG','SWF','PSD','BMP','TIFF','TIFF','JPC','JP2','JPX','JB2','SWC','IFF','WBMP','XBM');
 				$imgsize['ext']=$imageTypes[0+$imgsize[2]];
-				$imgsize['aspect']=($imgsize[0]>$imgsize[1]) ? 'landscape' : 'portrait';
 				// this is for display purposes, always show non-adjusted info
 				$imgsize['WxH']=/* I18N: image dimensions, width x height */ WT_I18N::translate('%1$s × %2$s pixels', WT_I18N::number($imgsize['0']), WT_I18N::number($imgsize['1']));
 				$imgsize['imgWH']=' width="'.$imgsize['adjW'].'" height="'.$imgsize['adjH'].'" ';
@@ -355,7 +354,6 @@ class WT_Media extends WT_GedcomRecord {
 			$imgsize['adjW']=0;
 			$imgsize['adjH']=0;
 			$imgsize['ext']='';
-			$imgsize['aspect']='';
 			$imgsize['mime']='';
 			$imgsize['WxH']='';
 			$imgsize['imgWH']='';
@@ -638,23 +636,20 @@ class WT_Media extends WT_GedcomRecord {
 				$config['uselightbox_fallback']=false;
 				$config['clearbox']='general_2';        
 				$imgsizeped=$this->getImageAttributes('thumb');
-				$config['class']='pedigree_image_'.$imgsizeped['aspect'];
-				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
+				$config['class']='pedigree_image';
 			}
 			if ($config['display_type']=='treeview') {
 				// 
 				$config['uselightbox_fallback']=false;
 				$imgsizeped=$this->getImageAttributes('thumb');
-				$config['class']='tv_link pedigree_image_'.$imgsizeped['aspect'];
-				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
+				$config['class']='tv_link pedigree_image';
 			}
 			if ($config['display_type']=='googlemap') {
 				// used on google maps tab on indi page
 				$config['oktolink']=false;
 				$config['addslashes']=true;
 				$imgsizeped=$this->getImageAttributes('thumb');
-				$config['class']='pedigree_image_'.$imgsizeped['aspect'];
-				if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
+				$config['class']='pedigree_image';
 			}
 
 			$mainexists=$this->isExternal() || $this->fileExists('main');

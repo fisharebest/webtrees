@@ -451,7 +451,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 				// The current indi ================================
 				if (!empty($this_person)) {
-					$class = 'pedigree_image_portrait';
+					$class = 'pedigree_image';
 					if ($gmark['fact'] == 'Census') {
 						$image = "<img class='icon_cens' src='././images/pix1.gif'>";
 					} else if ($gmark['fact'] == 'Birth') {

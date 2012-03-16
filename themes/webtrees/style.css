@@ -122,8 +122,8 @@ a:hover .nameZoom {color:#f00; font-weight:bold; font-size:14px;}
 
 .image {height:150px; padding:5px; margin:2px;}
 .gender_image {margin:0 3px; border:none; vertical-align:middle;}
-.pedigree_image_portrait, .pedigree_image_landscape {float:left; max-height:50px; max-width:37px; margin-right:4px;}
-.pedigree_image_portrait_rtl, .pedigree_image_landscape_rtl {float:right; max-height:50px; max-width:37px; margin-left:4px;}
+.pedigree_image {float:left; max-height:50px; max-width:37px; margin:0 4px 0 0;}
+html[dir="rtl"] .pedigree_image {float:right; margin:0 0 0 4px;}
 .pedigree_form {width:45px;}
 .thumbnail {height:auto; padding:3px;}
 .icon, .adminicon {border:none;}
