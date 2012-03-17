@@ -94,7 +94,6 @@ function strip_prefix($lastname) {
  * @return string
  */
 function check_NN($names) {
-	global $UNDERLINE_NAME_QUOTES;
 	global $UNKNOWN_NN, $UNKNOWN_PN;
 
 	$fullname = '';
@@ -103,10 +102,6 @@ function check_NN($names) {
 		$names = str_replace(array(' /','/,','/'), array(' ', ',', ' '), $names);
 		$names = str_replace(array('@N.N.','@P.N.'), array($UNKNOWN_NN,$UNKNOWN_PN), trim($names));
 		//-- underline names with a * at the end
-		//-- see this forum thread http://sourceforge.net/forum/forum.php?thread_id=1223099&forum_id=185165
-		if ($UNDERLINE_NAME_QUOTES) {
-			$names = preg_replace('/"(.+)"/', '<span class="starredname">$1</span>', $names);
-		}
 		$names = preg_replace('/([^ ]+)\*/', '<span class="starredname">$1</span>', $names);
 		return $names;
 	}

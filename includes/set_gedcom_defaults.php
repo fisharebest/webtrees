@@ -135,7 +135,6 @@ default:   set_gedcom_setting($ged_id, 'SURNAME_TRADITION', 'paternal');   break
 }
 set_gedcom_setting($ged_id, 'THEME_DIR',                    'webtrees');
 set_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH',              '100');
-set_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES',        false);
 set_gedcom_setting($ged_id, 'USE_GEONAMES',                 false);
 set_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL',           false);
 set_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER',             true);

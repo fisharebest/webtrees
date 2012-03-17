@@ -254,7 +254,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION',            safe_POST('NEW_SURNAME_TRADITION'));
 	set_gedcom_setting(WT_GED_ID, 'THEME_DIR',                    safe_POST('NEW_THEME_DIR'));
 	set_gedcom_setting(WT_GED_ID, 'THUMBNAIL_WIDTH',              safe_POST('NEW_THUMBNAIL_WIDTH'));
-	set_gedcom_setting(WT_GED_ID, 'UNDERLINE_NAME_QUOTES',        safe_POST_bool('NEW_UNDERLINE_NAME_QUOTES'));
 	set_gedcom_setting(WT_GED_ID, 'USE_GEONAMES',                 safe_POST_bool('NEW_USE_GEONAMES'));
 	set_gedcom_setting(WT_GED_ID, 'USE_MEDIA_FIREWALL',           safe_POST_bool('NEW_USE_MEDIA_FIREWALL'));
 	set_gedcom_setting(WT_GED_ID, 'USE_MEDIA_VIEWER',             safe_POST_bool('NEW_USE_MEDIA_VIEWER'));
@@ -995,13 +994,6 @@ echo WT_JS_START;?>
 						</td>
 					</tr>
 					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Underline names in quotes'), help_link('UNDERLINE_NAME_QUOTES'); ?>
-						</td>
-						<td>
-							<?php echo edit_field_yes_no('NEW_UNDERLINE_NAME_QUOTES', get_gedcom_setting(WT_GED_ID, 'UNDERLINE_NAME_QUOTES')); ?>
-						</td>
-					</tr>
 						<td>
 							<?php echo WT_I18N::translate('Min. no. of occurrences to be a "common surname"'), help_link('COMMON_NAMES_THRESHOLD'); ?>
 						</td>

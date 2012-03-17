@@ -1641,7 +1641,7 @@ class WT_Person extends WT_GedcomRecord {
 	// 2 GIVN Carlos
 	// 2 SURN Vasquez,Sante
 	protected function _addName($type, $full, $gedrec) {
-		global $UNDERLINE_NAME_QUOTES, $UNKNOWN_NN, $UNKNOWN_PN, $TEXT_DIRECTION;
+		global $UNKNOWN_NN, $UNKNOWN_PN, $TEXT_DIRECTION;
 
 		////////////////////////////////////////////////////////////////////////////
 		// Extract the structured name parts - use for "sortable" names and indexes
@@ -1774,13 +1774,7 @@ class WT_Person extends WT_GedcomRecord {
 		}
 		$full='<span class="NAME" dir="auto">'.preg_replace('/\/([^\/]*)\//', '<span class="SURN">$1</span>', htmlspecialchars($full)).'</span>';
 
-		// Some people put preferred names in quotes.  This is wrong - quotes indicate NICK names.
-		if ($UNDERLINE_NAME_QUOTES) {
-			// Note that we have already called htmlspecialchars(), so match the HTML entities.
-			$full=preg_replace('/&quot;(.*)&quot;(?![^<]*>)/', '<span class="starredname">\\1</span>', $full);
-		}
-
-		// The standards say you should use a suffix of '*'
+		// The standards say you should use a suffix of '*' for preferred name
 		$full=preg_replace('/([^ >]*)\*/', '<span class="starredname">\\1</span>', $full);
 
 		// Remove prefered-name indicater - they don't go in the database

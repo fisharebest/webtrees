@@ -190,7 +190,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* @param Event $event the event object
 	*/
 	function print_name_record($event) {
-		global $UNDERLINE_NAME_QUOTES;
 
 		if (!$event->canShow()) {
 			return false;
@@ -242,8 +241,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					if (isset($nmatch[$i][2])) {
 							$name = htmlspecialchars($nmatch[$i][2]);
 							$name = str_replace('/', '', $name);
-							if ($UNDERLINE_NAME_QUOTES) {
-								$name=preg_replace('/"([^"]*)"/', '<span class="starredname">\\1</span>', $name);
 							}
 							$name=preg_replace('/(\S*)\*/', '<span class="starredname">\\1</span>', $name);
 							if ($fact=='TYPE') {

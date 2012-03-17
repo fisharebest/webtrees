@@ -756,7 +756,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	default:                   @set_gedcom_setting($ged_id, 'THEME_DIR', 'webtrees');
 	}
 	@set_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH',              $THUMBNAIL_WIDTH);
-	@set_gedcom_setting($ged_id, 'UNDERLINE_NAME_QUOTES',        $UNDERLINE_NAME_QUOTES);
 	@set_gedcom_setting($ged_id, 'USE_GEONAMES',                 $USE_GEONAMES);
 	@set_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL',           $USE_MEDIA_FIREWALL);
 	@set_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER',             $USE_MEDIA_VIEWER);
