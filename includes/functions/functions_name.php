@@ -73,22 +73,6 @@ function get_common_surnames($min) {
 }
 
 /**
- * strip name prefixes
- *
- * this function strips the prefixes of lastnames
- * get rid of jr. Jr. Sr. sr. II, III and van, van der, de lowercase surname prefixes
- * a . and space must be behind a-z to ensure shortened prefixes and multiple prefixes are removed
- * @param string $lastname The name to strip
- * @return string The updated name
- */
-function strip_prefix($lastname) {
-	$name = preg_replace(array('/ [jJsS][rR]\.?,/', '/ I+,/', '/^([a-z]{1,4}[\. \_\-\(\[])+/'), array(',',',',''), $lastname);
-	$name = trim($name);
-	if ($name=='') return $lastname;
-	return $name;
-}
-
-/**
  * This function replaces @N.N. and @P.N. with the language specific translations
  * @param mixed $names $names could be an array of name parts or it could be a string of the name
  * @return string

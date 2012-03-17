@@ -3439,10 +3439,7 @@ class WT_Stats {
 		switch($sorting) {
 			default:
 			case 'alpha':
-				uasort($surname_list, array('WT_Stats', '_name_name_sort'));
-				break;
-			case 'ralpha':
-				uasort($surname_list, array('WT_Stats', '_name_name_rsort'));
+				uksort($surname_list, 'utf8_strcasecmp');
 				break;
 			case 'count':
 				uasort($surname_list, array('WT_Stats', '_name_total_sort'));
@@ -3935,14 +3932,6 @@ class WT_Stats {
 			$encoding .= self::$_xencoding[$first].self::$_xencoding[$second];
 		}
 		return $encoding;
-	}
-
-	static function _name_name_sort($a, $b) {
-		return utf8_strcasecmp(strip_prefix($a['name']), strip_prefix($b['name']), true);  // Case-insensitive compare
-	}
-
-	static function _name_name_rsort($a, $b) {
-		return utf8_strcasecmp(strip_prefix($b['name']), strip_prefix($a['name']), true);  // Case-insensitive compare
 	}
 
 	static function _name_total_sort($a, $b) {
