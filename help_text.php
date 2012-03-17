@@ -766,11 +766,6 @@ case 'PEDIGREE_LAYOUT':
 	$text=WT_I18N::translate('This option indicates whether the Pedigree chart should be generated in landscape or portrait mode.');
 	break;
 
-case 'PEDIGREE_ROOT_ID':
-	$title=WT_I18N::translate('Default person for pedigree and descendancy charts');
-	$text=WT_I18N::translate('Set the ID of the default person to display on Pedigree and Descendancy charts.');
-	break;
-
 case 'PEDIGREE_SHOW_GENDER':
 	$title=WT_I18N::translate('Gender icon on charts');
 	$text=WT_I18N::translate('This option controls whether or not to show the individual\'s gender icon on charts.<br /><br />Since the gender is also indicated by the color of the box, this option doesn\'t conceal the gender. The option simply removes some duplicate information from the box.');
@@ -1308,6 +1303,11 @@ case 'default_gedcom':
 	$text=WT_I18N::translate('This option selects the family tree that is shown to visitors when they first arrive at the site.');
 	break;
 
+case 'default_individual':
+	$title=WT_I18N::translate('Default individual');
+	$text=WT_I18N::translate('This individual will be selected by default when viewing charts and reports.');
+	break;
+
 case 'download_gedcom':
 	$title=WT_I18N::translate('Download family tree');
 	$text=WT_I18N::translate('This option will download the family tree to a GEDCOM file on your computer.');
@@ -1424,11 +1424,6 @@ case 'edituser_contact_meth':
 case 'edituser_gedcomid':
 	$title=WT_I18N::translate('Individual record');
 	$text=WT_I18N::translate('This is a link to your own record in the family tree.  If this is the wrong person, contact an administrator.');
-	break;
-
-case 'edituser_rootid':
-	$title=WT_I18N::translate('Pedigree chart root ID');
-	$text=WT_I18N::translate('This is the starting (Root) person of all your charts.<br /><br />If, for example, you were to click the link to the Pedigree, you would see this root person in the leftmost box.  This root person does not have to be you; you can start with any person (your grandfather or your mother\'s aunt, for instance), as long you have the rights to see that person.<br /><br />This changes the default Root person for most charts.  You can change the Root person on many charts, but that is just for that page at that particular invocation.');
 	break;
 
 case 'email':
@@ -1793,11 +1788,6 @@ case 'useradmin_editaccount':
 case 'useradmin_gedcomid':
 	$title=WT_I18N::translate('Individual record');
 	$text=WT_I18N::translate('The individual record identifies the user in each family tree.  Since a user can view the details of their individual record, this can only be set by an administrator.  If the user does not have a record in a family tree, leave it empty.');
-	break;
-
-case 'useradmin_rootid':
-	$title=WT_I18N::translate('Pedigree chart root person');
-	$text=WT_I18N::translate('For each genealogical database, you can designate a <b>Root Person</b> for the user.<br /><br />This Root Person does not need to be the user himself; it can be anybody.  The user will probably want to start the Pedigree chart with himself.  You control that, as well as the default Root person on other charts, here.<br /><br />If the user has Edit rights to his own account information, he can change this setting himself.');
 	break;
 
 case 'useradmin_verification':

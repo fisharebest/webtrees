@@ -235,7 +235,7 @@ case 'load1row':
 		'<h2>', WT_I18N::translate('Family tree access and settings'), '</h2>',
 		'<table><tr>',
 		'<th>', WT_I18N::translate('Family tree'), '</th>',
-		'<th>', WT_I18N::translate('Pedigree chart root person'), help_link('useradmin_rootid'), '</th>',
+		'<th>', WT_I18N::translate('Default individual'), help_link('default_individual'), '</th>',
 		'<th>', WT_I18N::translate('Individual record'), help_link('useradmin_gedcomid'), '</th>',
 		'<th>', WT_I18N::translate('Role'), help_link('role'), '</th>',
 		'<th>', WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'), '</th>',
@@ -448,7 +448,7 @@ case 'createform':
 					<table id="adduser2">
 						<tr>
 							<th><?php echo WT_I18N::translate('Family tree'); ?></th>
-							<th><?php echo WT_I18N::translate('Pedigree chart root person'), help_link('useradmin_rootid'); ?></th>
+							<th><?php echo WT_I18N::translate('Default individual'), help_link('default_individual'); ?></th>
 							<th><?php echo WT_I18N::translate('Individual record'), help_link('useradmin_gedcomid'); ?></th>
 							<th><?php echo WT_I18N::translate('Role'), help_link('role'); ?></th>
 							<th><?php echo WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>

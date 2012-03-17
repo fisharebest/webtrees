@@ -2,7 +2,7 @@
 // User Account Edit Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -166,7 +166,7 @@ if ($person) {
 
 $person=WT_Person::getInstance(WT_USER_ROOT_ID);
 echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Pedigree chart root person'), help_link('edituser_rootid'), '</td><td class="optionbox">';
+echo WT_I18N::translate('Default individual'), help_link('default_individual'), '</td><td class="optionbox">';
 echo '<input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '">';
 echo print_findindi_link('rootid', '', true), '<br>';
 if ($person) {

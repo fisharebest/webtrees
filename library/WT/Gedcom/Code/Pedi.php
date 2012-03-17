@@ -90,7 +90,7 @@ class WT_Gedcom_Code_Pedi {
 		case 'adopted': return WT_I18N::translate('Family with adoptive parents');
 		case 'foster':  return WT_I18N::translate('Family with foster parents');
 		case 'sealing': return /* I18N: "sealing" is a Mormon ceremony. */ WT_I18N::translate('Family with sealing parents');
-		case 'rada':    return /* I18N: "rada" is an Arabic word, pronounced "ra DAH". */ WT_I18N::translate('Family with rada parents');
+		case 'rada':    return /* I18N: "rada" is an Arabic word, pronounced "ra DAH".  It is child-to-parent pedigree, established by wet-nursing. */ WT_I18N::translate('Family with rada parents');
 		default:        return WT_I18N::translate('Family with parents').' - '.$pedi;
 		}
 	}
