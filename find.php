@@ -619,7 +619,7 @@ if ($action=="filter") {
 			$levels = explode("/", $thumbdir);
 			$pthumb = "";
 			for ($i=0; $i<count($levels)-2; $i++) $pthumb.=$levels[$i]."/";
-			$uplink = "<a href=\"find.php?directory={$pdir}&amp;thumbdir={$pthumb}&amp;level=".($level-1)."{$thumbget}&amp;type=media&amp;choose={$choose}\">&nbsp;&nbsp;&nbsp;&lt;-- <span dir=\"ltr\">".$pdir."</span>&nbsp;&nbsp;&nbsp;</a>";
+			$uplink = '<a href="find.php?directory='.$pdir.'&amp;thumbdir='.$pthumb.'&amp;level='.($level-1).$thumbget.'&amp;type=media&amp;choose='.$choose.'&amp;filter='.htmlspecialchars($filter).'&amp;action=filter">&nbsp;&nbsp;&nbsp;&lt;-- <span dir="ltr">'.$pdir.'</span>&nbsp;&nbsp;&nbsp;</a>';
 		}
 
 		// Start of media directory table
@@ -633,11 +633,11 @@ if ($action=="filter") {
 				echo '<div class="find-media-dirs">', $uplink, '</div>';
 			}
 			echo '<div class="find-media-dirs">
-				<a href="find.php?directory=', $directory, '&amp;thumbdir='.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs', $directory).'&amp;level=',$level,$thumbget, '&amp;external_links=http&amp;type=media&amp;choose=', $choose, '">', WT_I18N::translate('External objects'), '</a>';
+				<a href="find.php?directory=', $directory, '&amp;thumbdir='.str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs', $directory).'&amp;level=',$level,$thumbget, '&amp;external_links=http&amp;type=media&amp;choose=', $choose, '&amp;filter=', htmlspecialchars($filter), '&amp;action=filter">', WT_I18N::translate('External objects'), '</a>';
 			echo '</div>';
 			foreach ($dirs as $indexval => $dir) {
 				echo '<div class="find-media-dirs">
-					<a href="find.php?directory=', $directory.$dir, '/&amp;thumbdir=', $directory.$dir, '&amp;level=', ($level+1).$thumbget, '&amp;type=media&amp;choose=', $choose, '"><span dir="ltr">', $dir, '</span></a>
+					<a href="find.php?directory=', $directory.$dir, '/&amp;thumbdir=', $directory.$dir, '&amp;level=', ($level+1).$thumbget, '&amp;type=media&amp;choose=', $choose, '&amp;filter=', htmlspecialchars($filter), '&amp;action=filter"><span dir="ltr">', $dir, '</span></a>
 				</div>';
 			}
 		}
@@ -693,7 +693,7 @@ if ($action=="filter") {
 								echo '<p class="find-media-title">', htmlspecialchars($media["TITL"]), '</p>';
 							}
 							if (!$embed) {
-								echo '<p><a href="#" onclick="pasteid(\'', addslashes($media["FILE"]), '\span dir="ltr">', $media["FILE"], '</span></a> -- </p>';
+								echo '<p><a href="#" dir="auto" onclick="pasteid(\'', htmlspecialchars($media['FILE']), '\');">', $media["FILE"], '</a></p>';
 							}
 							else echo '<p><a href="#" onclick="pasteid(\'', $media["XREF"], '\', \'', addslashes($media["TITL"]), '\', \'', addslashes($media["THUMB"]), '\');"><span dir="ltr">', $media["FILE"], '</span></a> -- ';
 							echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($media["FILE"]), "', $imgwidth, $imgheight);\">", WT_I18N::translate('View'), "</a></p>";
