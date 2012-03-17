@@ -50,7 +50,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = '<table><tr>';
 		$content .= '<td><a href="pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><img class="block" src="'.$WT_IMAGES['pedigree'].'" alt="'.WT_I18N::translate('Default chart').'" title="'.WT_I18N::translate('Default chart').'"><br>'.WT_I18N::translate('Default chart').'</a></td>';
 		$content .= '<td><a href="individual.php?pid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><img class="block" src="'.$WT_IMAGES['indis'].'" alt="'.WT_I18N::translate('Default person').'"><br>'.WT_I18N::translate('Default person').'</a></td>';
-		if (get_site_setting('USE_REGISTRATION_MODULE')) {
+		if (get_site_setting('USE_REGISTRATION_MODULE') && WT_USER_ID==false) {
 			$content .= '<td><a href="'.WT_LOGIN_URL.'?action=register"><img class="block" src="'.$WT_IMAGES['user_add'].'" alt="'.WT_I18N::translate('Request new user account').'"><br>'.WT_I18N::translate('Request new user account').'</a></td>';
 		}
 		$content .= "</tr>";
