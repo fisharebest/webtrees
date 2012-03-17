@@ -3,7 +3,7 @@
 //
 // Tip : you could change the number of generations loaded before ajax calls both in individual page and in treeview page to optimize speed and server load 
 //
-// Copyright (C) 2011 webtrees development team
+// Copyright (C) 2012 webtrees development team
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -29,12 +29,6 @@ if (!defined('WT_WEBTREES')) {
 class tree_WT_Module extends WT_Module implements WT_Module_Tab {	
 	var $headers; // CSS and script to include in the top of <head> section, before theme's CSS
 	var $js; // the TreeViewHandler javascript
-	
-	function __construct() {
-		// define the module inclusions for the page header
-		$this->css=WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview.css';
-  	$this->js =WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/treeview.js';
-	}
 	
 	// Extend WT_Module. This title should be normalized when this module will be added officially
 	public function getTitle() {
@@ -64,13 +58,13 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
     $tv = new TreeView('tvTab');
     list($html, $js) = $tv->drawViewport($controller->record->getXref(), 3);
 		return
-			'<script type="text/javascript" src="'.$this->js.'"></script>'.
+			'<script type="text/javascript" src="'.$this->js().'"></script>'.
 			$html.
 			WT_JS_START.'
 			if (document.createStyleSheet) {
-				document.createStyleSheet("'.$this->css.'"); // For Internet Explorer
+				document.createStyleSheet("'.$this->css().'"); // For Internet Explorer
 			} else {
-				jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.$this->css.'">\');
+				jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.$this->css().'">\');
 			}'.
 			$js.
 			WT_JS_END;
@@ -115,13 +109,13 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 				$controller
 					->setPageTitle(WT_I18N::translate('Interactive tree of %s', $person->getFullName()))
 					->pageHeader()
-					->addExternalJavaScript($this->js)
+					->addExternalJavaScript($this->js())
 					->addInlineJavaScript($js)
 					->addInlineJavaScript('
 					if (document.createStyleSheet) {
-						document.createStyleSheet("'.$this->css.'"); // For Internet Explorer
+						document.createStyleSheet("'.$this->css().'"); // For Internet Explorer
 					} else {
-						jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.$this->css.'">\');
+						jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.$this->css().'">\');
 					}
 				');
 
@@ -158,5 +152,13 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
       default:
 				header('HTTP/1.0 404 Not Found');
     }
-  }
+	}
+
+	private function css() {
+		return WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview.css';
+	}
+	
+	private function js() {
+		return WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/treeview.js';
+	}
 }

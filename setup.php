@@ -21,11 +21,7 @@
 // $Id$
 
 define('WT_SCRIPT_NAME', 'setup.php');
-define('WT_DATA_DIR',    'data/');
-define('WT_MEDIA_DIR',   'media/');
 define('WT_CONFIG_FILE', 'config.ini.php');
-define('WT_DEBUG_LANG',  false); // The translation library needs this
-define('WT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
 
 // magic quotes were deprecated in PHP5.3.0 and removed in PHP6.0.0
 if (version_compare(PHP_VERSION, '5.3.0', '<')) {
@@ -82,9 +78,17 @@ if (version_compare(PHP_VERSION, '5.2')<0) {
 // This script (uniquely) does not load session.php.
 // session.php won't run until a configuration file exists...
 // This next block of code is a minimal version of session.php
-define('WT_WEBTREES', true);
+define('WT_WEBTREES',    'webtrees');
+require 'includes/authentication.php'; // for AddToLog()
+require 'includes/functions/functions_db.php'; // for get/setSiteSetting()
+define('WT_DATA_DIR',    'data/');
+define('WT_MEDIA_DIR',   'media/');
+define('WT_DEBUG_LANG',  false);
+define('WT_DEBUG_SQL',   false);
+define('WT_REQUIRED_MYSQL_VERSION', '5.0.13'); // For: prepared statements within stored procedures
+define('WT_MODULES_DIR', 'modules_v3/');
 define('WT_ROOT', '');
-define('WT_GED_ID', 0);
+define('WT_GED_ID', null);
 define('WT_USER_ID', 0);
 // Invoke the Zend Framework Autoloader, so we can use Zend_XXXXX and WT_XXXXX classes
 set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
@@ -252,24 +256,29 @@ if (empty($_POST['dbhost'])) $_POST['dbhost']='localhost';
 if (empty($_POST['dbport'])) $_POST['dbport']='3306';
 if (empty($_POST['dbuser'])) $_POST['dbuser']='';
 if (empty($_POST['dbpass'])) $_POST['dbpass']='';
+if (empty($_POST['dbname'])) $_POST['dbname']='';
+if (empty($_POST['tblpfx'])) $_POST['tblpfx']='wt_';
 
+
+define('WT_TBLPREFIX', $_POST['tblpfx']);
 try {
 	$db_version_ok=false;
-	if (substr($_POST['dbhost'], 0, 1)=='/') {
-		$dbh=new PDO('mysql:unix_socket='.$_POST['dbhost'], $_POST['dbuser'], $_POST['dbpass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, PDO::ATTR_CASE=>PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT=>true));
+	WT_DB::createInstance(
+		$_POST['dbhost'],
+		$_POST['dbport'],
+		'',               // No DBNAME - we will connect to it explicitly
+		$_POST['dbuser'],
+		$_POST['dbpass']
+	);
+	WT_DB::exec("SET NAMES 'utf8'");
+	$row=WT_DB::prepare("SHOW VARIABLES LIKE 'VERSION'")->fetchOneRow();
+	if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
+		echo '<p class="bad">', WT_I18N::translate('This database is only running MySQL version %s.  You cannot install webtrees here.', $row->value), '</p>';
 	} else {
-		$dbh=new PDO('mysql:host='.$_POST['dbhost'].';port='.$_POST['dbport'], $_POST['dbuser'], $_POST['dbpass'], array(PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION, PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_OBJ, PDO::ATTR_CASE=>PDO::CASE_LOWER, PDO::ATTR_AUTOCOMMIT=>true));
-	}
-	$dbh->exec("SET NAMES 'utf8'");
-	foreach ($dbh->query("SHOW VARIABLES LIKE 'VERSION'") as $row) {
-		if (version_compare($row->value, WT_REQUIRED_MYSQL_VERSION, '<')) {
-			echo '<p class="bad">', WT_I18N::translate('This database is only running MySQL version %s.  You cannot install webtrees here.', $row->value), '</p>';
-		} else {
-			$db_version_ok=true;
-		}
+		$db_version_ok=true;
 	}
 } catch (PDOException $ex) {
-	$dbh=null;
+	WT_DB::disconnect();
 	if ($_POST['dbuser']) {
 		// If we've supplied a login, then show the error
 		echo
@@ -279,7 +288,7 @@ try {
 	}
 }
 
-if (empty($_POST['dbuser']) || !$dbh || !$db_version_ok) {
+if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 	echo
 		'<h2>', WT_I18N::translate('Connection to database server'), '</h2>',
 		'<p>', WT_I18N::translate('<b>webtrees</b> needs a MySQL database, version %s or later.', WT_REQUIRED_MYSQL_VERSION), '</p>',
@@ -323,9 +332,6 @@ if (empty($_POST['dbuser']) || !$dbh || !$db_version_ok) {
 // Step three - Database connection.
 ////////////////////////////////////////////////////////////////////////////////
 
-if (empty($_POST['dbname'])) $_POST['dbname']='';
-if (empty($_POST['tblpfx'])) $_POST['tblpfx']='wt_';
-
 // The character "`" is not valid in database or table names (even if escaped).
 // By removing it, we can ensure that our SQL statements are quoted correctly.
 //
@@ -340,13 +346,13 @@ $dbname_ok=false;
 if ($DBNAME && $DBNAME==$_POST['dbname'] && $TBLPREFIX==$_POST['tblpfx']) {
 	try {
 		// Try to create the database, if it does not exist.
-		$dbh->exec("CREATE DATABASE IF NOT EXISTS `{$DBNAME}` COLLATE utf8_unicode_ci");
+		WT_DB::exec("CREATE DATABASE IF NOT EXISTS `{$DBNAME}` COLLATE utf8_unicode_ci");
 	} catch (PDOException $ex) {
 		// If we have no permission to do this, there's nothing helpful we can say.
 		// We'll get a more helpful error message from the next test.
 	}
 	try {
-		$dbh->exec("USE `{$DBNAME}`");
+		WT_DB::exec("USE `{$DBNAME}`");
 		$dbname_ok=true;
 	} catch (PDOException $ex) {
 		echo
@@ -361,7 +367,7 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.3 and earlier) and many other applications have a USERS table.
 		// webtrees has a USER table
-		$dummy=$dbh->query("SELECT COUNT(*) FROM `{$TBLPREFIX}users`");
+		$dummy=WT_DB::query("SELECT COUNT(*) FROM `##users`")->fetchOne();
 		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
@@ -372,7 +378,7 @@ if ($dbname_ok) {
 	try {
 		// PhpGedView (4.2.4 and later) has a site_setting.site_setting_name column.
 		// [We changed the column name in webtrees, so we can tell the difference!]
-		$dummy=$dbh->query("SELECT site_setting_value FROM `{$TBLPREFIX}site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'");
+		$dummy=WT_DB::query("SELECT site_setting_value FROM `##site_setting` WHERE site_setting_name='PGV_SCHEMA_VERSION'")->fetchOne();
 		echo '<p class="bad">', WT_I18N::translate('This database and table-prefix appear to be used by another application.  If you have an existing PhpGedView system, you should create a new webtrees system.  You can import your PhpGedView data and settings later.'), '</p>';
 		$dbname_ok=false;
 	} catch (PDOException $ex) {
@@ -566,8 +572,8 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 
 try {
 	// These shouldn't fail.
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}gedcom` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##gedcom` (".
 		" gedcom_id     INTEGER AUTO_INCREMENT NOT NULL,".
 		" gedcom_name   VARCHAR(255)           NOT NULL,".
 		" sort_order    INTEGER                NOT NULL DEFAULT 0,".
@@ -576,24 +582,24 @@ try {
 		"         KEY ix1 (sort_order)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}site_setting` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##site_setting` (".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY (setting_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}gedcom_setting` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##gedcom_setting` (".
 		" gedcom_id     INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}user` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##user` (".
 		" user_id   INTEGER AUTO_INCREMENT NOT NULL,".
 		" user_name VARCHAR(32)            NOT NULL,".
 		" real_name VARCHAR(64)            NOT NULL,".
@@ -604,28 +610,28 @@ try {
 		" UNIQUE  KEY ux2 (email)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}user_setting` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##user_setting` (".
 		" user_id       INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (user_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id) REFERENCES `{$TBLPREFIX}user` (user_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (user_id) REFERENCES `##user` (user_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}user_gedcom_setting` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##user_gedcom_setting` (".
 		" user_id       INTEGER      NOT NULL,".
 		" gedcom_id     INTEGER      NOT NULL,".
 		" setting_name  VARCHAR(32)  NOT NULL,".
 		" setting_value VARCHAR(255) NOT NULL,".
 		" PRIMARY KEY     (user_id, gedcom_id, setting_name),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES `{$TBLPREFIX}user`   (user_id)   /* ON DELETE CASCADE */,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES `##user`   (user_id)   /* ON DELETE CASCADE */,".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}log` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##log` (".
 		" log_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" log_time    TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" log_type    ENUM('auth', 'config', 'debug', 'edit', 'error', 'media', 'search') NOT NULL,".
@@ -637,12 +643,12 @@ try {
 		"         KEY ix1 (log_time),".
 		"         KEY ix2 (log_type),".
 		"         KEY ix3 (ip_address),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES `{$TBLPREFIX}user`   (user_id)   /* ON DELETE SET NULL */,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE SET NULL */".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES `##user`   (user_id)   /* ON DELETE SET NULL */,".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE SET NULL */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}change` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##change` (".
 		" change_id      INTEGER AUTO_INCREMENT                  NOT NULL,".
 		" change_time    TIMESTAMP                               NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" status         ENUM('accepted', 'pending', 'rejected') NOT NULL DEFAULT 'pending',".
@@ -653,12 +659,12 @@ try {
 		" user_id        INTEGER                                 NOT NULL,".
 		" PRIMARY KEY     (change_id),".
 		"         KEY ix1 (gedcom_id, status, xref),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES `{$TBLPREFIX}user`   (user_id)   /* ON DELETE RESTRICT */,".
-		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES `##user`   (user_id)   /* ON DELETE RESTRICT */,".
+		" FOREIGN KEY fk2 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}message` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##message` (".
 		" message_id INTEGER AUTO_INCREMENT NOT NULL,".
 		" sender     VARCHAR(64)            NOT NULL,". // username or email address
 		" ip_address VARCHAR(40)            NOT NULL,". // long enough for IPv6
@@ -667,11 +673,11 @@ try {
 		" body       TEXT                   NOT NULL,".
 		" created    TIMESTAMP              NOT NULL DEFAULT CURRENT_TIMESTAMP,".
 		" PRIMARY KEY     (message_id),".
-		" FOREIGN KEY fk1 (user_id)   REFERENCES `{$TBLPREFIX}user` (user_id) /* ON DELETE RESTRICT */".
+		" FOREIGN KEY fk1 (user_id)   REFERENCES `##user` (user_id) /* ON DELETE RESTRICT */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}default_resn` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##default_resn` (".
 		" default_resn_id INTEGER AUTO_INCREMENT                             NOT NULL,".
 		" gedcom_id       INTEGER                                            NOT NULL,".
 		" xref            VARCHAR(20)                                            NULL,".
@@ -681,11 +687,11 @@ try {
 		" updated         TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
 		" PRIMARY KEY     (default_resn_id),".
 		" UNIQUE  KEY ux1 (gedcom_id, xref, tag_type),".
-		" FOREIGN KEY fk1 (gedcom_id)  REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id)".
+		" FOREIGN KEY fk1 (gedcom_id)  REFERENCES `##gedcom` (gedcom_id)".
 		") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}individuals` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##individuals` (".
 		" i_id     VARCHAR(20)         NOT NULL,".
 		" i_file   INTEGER             NOT NULL,".
 		" i_rin    VARCHAR(20)         NOT NULL,".
@@ -695,8 +701,8 @@ try {
 		" UNIQUE  KEY ux1 (i_file, i_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}families` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##families` (".
 		" f_id      VARCHAR(20)  NOT NULL,".
 		" f_file    INTEGER      NOT NULL,".
 		" f_husb    VARCHAR(20)      NULL,".
@@ -709,8 +715,8 @@ try {
 		"         KEY ix2 (f_wife)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}places` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##places` (".
 		" p_id          INTEGER AUTO_INCREMENT NOT NULL,".
 		" p_place       VARCHAR(150)               NULL,".
 		" p_level       INTEGER                    NULL,".
@@ -725,8 +731,8 @@ try {
 		"         KEY ix4 (p_file)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}placelinks` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##placelinks` (".
 		" pl_p_id INTEGER NOT NULL,".
 		" pl_gid  VARCHAR(20)  NOT NULL,".
 		" pl_file INTEGER  NOT NULL,".
@@ -736,8 +742,8 @@ try {
 		"         KEY ix3 (pl_file)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}dates` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##dates` (".
 		" d_day        TINYINT     NOT NULL,".
 		" d_month      CHAR(5)         NULL,".
 		" d_mon        TINYINT     NOT NULL,".
@@ -760,8 +766,8 @@ try {
 		" KEY ix10 (d_fact, d_gid)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}media` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##media` (".
 		" m_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" m_media   VARCHAR(20)            NOT NULL,".
 		" m_ext     VARCHAR(6)                 NULL,".
@@ -773,8 +779,8 @@ try {
 		"         KEY ix1 (m_media, m_gedfile)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}media_mapping` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##media_mapping` (".
 		" mm_id      INTEGER AUTO_INCREMENT NOT NULL,".
 		" mm_media   VARCHAR(20)            NOT NULL,".
 		" mm_gid     VARCHAR(20)            NOT NULL,".
@@ -787,17 +793,17 @@ try {
 		"         KEY ix3 (mm_gedfile)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}next_id` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##next_id` (".
 		" gedcom_id   INTEGER     NOT NULL,".
 		" record_type VARCHAR(15) NOT NULL,".
 		" next_id     DECIMAL(20) NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, record_type),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}other` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##other` (".
 		" o_id     VARCHAR(20) NOT NULL,".
 		" o_file   INTEGER     NOT NULL,".
 		" o_type   VARCHAR(15) NOT NULL,".
@@ -806,8 +812,8 @@ try {
 		" UNIQUE  KEY ux1 (o_file, o_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}sources` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##sources` (".
 		" s_id     VARCHAR(20)    NOT NULL,".
 		" s_file   INTEGER        NOT NULL,".
 		" s_name   VARCHAR(255)   NOT NULL,".
@@ -817,8 +823,8 @@ try {
 		"         KEY ix1 (s_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}link` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##link` (".
 		" l_file    INTEGER     NOT NULL,".
 		" l_from    VARCHAR(20) NOT NULL,".
 		" l_type    VARCHAR(15) NOT NULL,".
@@ -827,8 +833,8 @@ try {
 		" UNIQUE INDEX ux1 (l_to, l_file, l_type, l_from)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}name` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##name` (".
 		" n_file             INTEGER      NOT NULL,".
 		" n_id               VARCHAR(20)  NOT NULL,".
 		" n_num              INTEGER      NOT NULL,".
@@ -849,8 +855,8 @@ try {
 		"         KEY ix3 (n_givn, n_file, n_type, n_id)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}module` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##module` (".
 		" module_name   VARCHAR(32)                 NOT NULL,".
 		" status        ENUM('enabled', 'disabled') NOT NULL DEFAULT 'enabled',".
 		" tab_order     INTEGER                         NULL, ".
@@ -859,28 +865,28 @@ try {
 		" PRIMARY KEY (module_name)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}module_setting` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##module_setting` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" setting_name  VARCHAR(32) NOT NULL,".
 		" setting_value MEDIUMTEXT  NOT NULL,".
 		" PRIMARY KEY     (module_name, setting_name),".
-		" FOREIGN KEY fk1 (module_name) REFERENCES `{$TBLPREFIX}module` (module_name) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}module_privacy` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##module_privacy` (".
 		" module_name   VARCHAR(32) NOT NULL,".
 		" gedcom_id     INTEGER     NOT NULL,".
 		" component     ENUM('block', 'chart', 'menu', 'report', 'sidebar', 'tab', 'theme') NOT NULL,".
 		" access_level  TINYINT     NOT NULL,".
 		" PRIMARY KEY     (module_name, gedcom_id, component),".
-		" FOREIGN KEY fk1 (module_name) REFERENCES `{$TBLPREFIX}module` (module_name) /* ON DELETE CASCADE */,".
-		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id)   /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (module_name) REFERENCES `##module` (module_name) /* ON DELETE CASCADE */,".
+		" FOREIGN KEY fk2 (gedcom_id  ) REFERENCES `##gedcom` (gedcom_id)   /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}block` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##block` (".
 		" block_id    INTEGER AUTO_INCREMENT NOT NULL,".
 		" gedcom_id   INTEGER                    NULL,".
 		" user_id     INTEGER                    NULL,".
@@ -889,40 +895,40 @@ try {
 		" block_order INTEGER                NOT NULL,".
 		" module_name VARCHAR(32)            NOT NULL,".
 		" PRIMARY KEY     (block_id),".
-		" FOREIGN KEY fk1 (gedcom_id  ) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id  ), /* ON DELETE CASCADE */".
-		" FOREIGN KEY fk2 (user_id    ) REFERENCES `{$TBLPREFIX}user`   (user_id    ), /* ON DELETE CASCADE */".
-		" FOREIGN KEY fk3 (module_name) REFERENCES `{$TBLPREFIX}module` (module_name)  /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (gedcom_id  ) REFERENCES `##gedcom` (gedcom_id  ), /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk2 (user_id    ) REFERENCES `##user`   (user_id    ), /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk3 (module_name) REFERENCES `##module` (module_name)  /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}block_setting` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##block_setting` (".
 		" block_id      INTEGER     NOT NULL,".
 		" setting_name  VARCHAR(32) NOT NULL,".
 		" setting_value TEXT        NOT NULL,".
 		" PRIMARY KEY     (block_id, setting_name),".
-		" FOREIGN KEY fk1 (block_id) REFERENCES `{$TBLPREFIX}block` (block_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (block_id) REFERENCES `##block` (block_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}hit_counter` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##hit_counter` (".
 		" gedcom_id      INTEGER     NOT NULL,".
 		" page_name      VARCHAR(32) NOT NULL,".
 		" page_parameter VARCHAR(32) NOT NULL,".
 		" page_count     INTEGER     NOT NULL,".
 		" PRIMARY KEY     (gedcom_id, page_name, page_parameter),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}ip_address` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##ip_address` (".
 		" ip_address VARCHAR(40)                                NOT NULL,". // long enough for IPv6
 		" category   ENUM('banned', 'search-engine', 'allowed') NOT NULL,".
 		" comment    VARCHAR(255)                               NOT NULL,".
 		" PRIMARY KEY (ip_address)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}session` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##session` (".
 		" session_id   CHAR(128)   NOT NULL,".
 		" session_time TIMESTAMP   NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
 		" user_id      INTEGER     NOT NULL,".
@@ -933,19 +939,19 @@ try {
 		"         KEY ix2 (user_id, ip_address)".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	$dbh->exec(
-		"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}gedcom_chunk` (".
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##gedcom_chunk` (".
 		" gedcom_chunk_id INTEGER AUTO_INCREMENT NOT NULL,".
 		" gedcom_id       INTEGER                NOT NULL,".
 		" chunk_data      MEDIUMBLOB             NOT NULL,".
 		" imported        BOOLEAN                NOT NULL DEFAULT FALSE,".
 		" PRIMARY KEY     (gedcom_chunk_id),".
 		"         KEY ix1 (gedcom_id, imported),".
-		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `{$TBLPREFIX}gedcom` (gedcom_id) /* ON DELETE CASCADE */".
+		" FOREIGN KEY fk1 (gedcom_id) REFERENCES `##gedcom` (gedcom_id) /* ON DELETE CASCADE */".
 		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	);
-	//$dbh->exec(
-	//	"CREATE TABLE IF NOT EXISTS `{$TBLPREFIX}language` (".
+	//WT_DB::exec(
+	//	"CREATE TABLE IF NOT EXISTS `##language` (".
 	//	" language_tag       VARCHAR(16)                      NOT NULL,".
 	//	" iso15924_code      CHAR(4)                          NOT NULL,".
 	//	" cldr_code          VARCHAR(16)                      NOT NULL,".
@@ -959,32 +965,20 @@ try {
 	//	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	//);
 
-	$dbh->prepare(
-		"INSERT IGNORE INTO `{$TBLPREFIX}gedcom` (gedcom_id, gedcom_name) VALUES ".
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##gedcom` (gedcom_id, gedcom_name) VALUES ".
 		" (-1, 'DEFAULT_TREE')"
 	)->execute();
 
-	$dbh->prepare(
-		"INSERT IGNORE INTO `{$TBLPREFIX}user` (user_id, user_name, real_name, email, password) VALUES ".
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##user` (user_id, user_name, real_name, email, password) VALUES ".
 		" (-1, 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER', 'DEFAULT_USER'), (1, ?, ?, ?, ?)"
 	)->execute(array(
 		$_POST['wtuser'], $_POST['wtname'], $_POST['wtemail'], crypt($_POST['wtpass'])
 	));
 
-	// We cannot do this here - because the modules have not yet been installed.
-	// When (if at all?) should we do this?
-	/*
-	$dbh->prepare(
-		"INSERT IGNORE INTO `{$TBLPREFIX}block` (user_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'todays_events'), (-1, 'main', 2, 'user_messages'), (-1, 'main', 3, 'user_favorites'), (-1, 'side', 1, 'user_welcome'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'upcoming_events'), (-1, 'side', 4, 'logged_in')"
-	)->execute();
-
-	$dbh->prepare(
-		"INSERT IGNORE INTO `{$TBLPREFIX}block` (gedcom_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'gedcom_stats'), (-1, 'main', 2, 'gedcom_news'), (-1, 'main', 3, 'gedcom_favorites'), (-1, 'main', 4, 'review_changes'), (-1, 'side', 1, 'gedcom_block'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'todays_events'), (-1, 'side', 4, 'logged_in')"
-	)->execute();
-	 */
-
-	$dbh->prepare(
-		"INSERT IGNORE INTO `{$TBLPREFIX}user_setting` (user_id, setting_name, setting_value) VALUES ".
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##user_setting` (user_id, setting_name, setting_value) VALUES ".
 		" (1, 'canadmin',          ?),".
 		" (1, 'language',          ?),".
 		" (1, 'verified',          ?),".
@@ -996,8 +990,8 @@ try {
 		1, WT_LOCALE, 1, 1, 1, 0, 1
 	));
 
-	$dbh->prepare(
-		"INSERT IGNORE INTO `{$TBLPREFIX}site_setting` (setting_name, setting_value) VALUES ".
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##site_setting` (setting_name, setting_value) VALUES ".
 		"('WT_SCHEMA_VERSION',               '-1'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
@@ -1019,6 +1013,17 @@ try {
 		$_POST['smtpuse'], $_POST['smtpserv'], $_POST['smtpsender'], $_POST['smtpport'], $_POST['smtpusepw'],
 		$_POST['smtpuser'], $_POST['smtppass'], $_POST['smtpsecure'], $_POST['smtpfrom']
 	));
+
+	// Search for all installed modules, and enable them.
+	WT_Module::getInstalledModules('enabled');
+
+	// Create the default settings for new users/family trees
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##block` (user_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'todays_events'), (-1, 'main', 2, 'user_messages'), (-1, 'main', 3, 'user_favorites'), (-1, 'side', 1, 'user_welcome'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'upcoming_events'), (-1, 'side', 4, 'logged_in')"
+	)->execute();
+	WT_DB::prepare(
+		"INSERT IGNORE INTO `##block` (gedcom_id, location, block_order, module_name) VALUES (-1, 'main', 1, 'gedcom_stats'), (-1, 'main', 2, 'gedcom_news'), (-1, 'main', 3, 'gedcom_favorites'), (-1, 'main', 4, 'review_changes'), (-1, 'side', 1, 'gedcom_block'), (-1, 'side', 2, 'random_media'), (-1, 'side', 3, 'todays_events'), (-1, 'side', 4, 'logged_in')"
+	)->execute();
 
 	echo
 		'<p>', WT_I18N::translate('Your system is almost ready for use.  The final step is to download a configuration file <b>%1$s</b> and copy this to the <b>%2$s</b> directory on your webserver.  This is a security measure to ensure only the website\'s owner can configure it.', WT_CONFIG_FILE, realpath(WT_DATA_DIR)), '</p>';

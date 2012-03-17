@@ -2,7 +2,7 @@
 // Module Administration User Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,64 +22,12 @@
 
 define('WT_SCRIPT_NAME', 'admin_modules.php');
 require 'includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('Module administration'));
-
-require WT_ROOT.'includes/functions/functions_edit.php';
-
-// New modules may have been added...
-$installed_modules=WT_Module::getInstalledModules();
-$all_modules=WT_DB::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
-
-foreach ($installed_modules as $module_name=>$module) {
-	if (!array_key_exists($module_name, $all_modules)) {
-		WT_DB::prepare("INSERT INTO `##module` (module_name, status) VALUES (?, 'disabled')")->execute(array($module_name));
-		$all_modules[$module_name]='disabled';
-	}
-}
-
-switch (safe_POST('action')) {
-case 'update_mods':
-	foreach ($all_modules as $module_name=>$status) {
-		$new_status=safe_POST("status-{$module_name}");
-		if ($new_status!==null) {
-			$new_status=$new_status ? 'enabled' : 'disabled';
-			if ($new_status!=$status) {
-				WT_DB::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute(array($new_status, $module_name));
-				$all_modules[$module_name]=$new_status;
-			}
-		}
-	}
-	break;
-}
-
-switch (safe_GET('action')) {
-case 'delete_module':
-	$module_name=safe_GET('module_name');
-	WT_DB::prepare(
-		"DELETE `##block_setting`".
-		" FROM `##block_setting`".
-		" JOIN `##block` USING (block_id)".
-		" JOIN `##module` USING (module_name)".
-		" WHERE module_name=?"
-	)->execute(array($module_name));
-	WT_DB::prepare(
-		"DELETE `##block`".
-		" FROM `##block`".
-		" JOIN `##module` USING (module_name)".
-		" WHERE module_name=?"
-	)->execute(array($module_name));
-	WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
-	WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
-	WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
-	unset($all_modules[$module_name]);
-	break;
-}
-
-$controller
+	->setPageTitle(WT_I18N::translate('Module administration'))
 	->pageHeader()
 	->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 	->addInlineJavaScript('
@@ -112,10 +60,53 @@ $controller
 			]
 		});
 	');
+
+$modules=WT_Module::getInstalledModules('disabled');
+
+$module_status=WT_DB::prepare("SELECT module_name, status FROM `##module`")->fetchAssoc();
+
+switch (safe_POST('action')) {
+case 'update_mods':
+	foreach ($modules as $module_name=>$status) {
+		$new_status=safe_POST("status-{$module_name}");
+		if ($new_status!==null) {
+			$new_status=$new_status ? 'enabled' : 'disabled';
+			if ($new_status!=$status) {
+				WT_DB::prepare("UPDATE `##module` SET status=? WHERE module_name=?")->execute(array($new_status, $module_name));
+				$module_status[$module_name]=$new_status;
+			}
+		}
+	}
+	break;
+}
+
+switch (safe_GET('action')) {
+case 'delete_module':
+	$module_name=safe_GET('module_name');
+	WT_DB::prepare(
+		"DELETE `##block_setting`".
+		" FROM `##block_setting`".
+		" JOIN `##block` USING (block_id)".
+		" JOIN `##module` USING (module_name)".
+		" WHERE module_name=?"
+	)->execute(array($module_name));
+	WT_DB::prepare(
+		"DELETE `##block`".
+		" FROM `##block`".
+		" JOIN `##module` USING (module_name)".
+		" WHERE module_name=?"
+	)->execute(array($module_name));
+	WT_DB::prepare("DELETE FROM `##module_setting` WHERE module_name=?")->execute(array($module_name));
+	WT_DB::prepare("DELETE FROM `##module_privacy` WHERE module_name=?")->execute(array($module_name));
+	WT_DB::prepare("DELETE FROM `##module`         WHERE module_name=?")->execute(array($module_name));
+	unset($modules[$module_name]);
+	break;
+}
+
 ?>
 <div align="center">
 	<div id="tabs">
-	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+		<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
 			<input type="hidden" name="action" value="update_mods">
 			<table id="installed_table" border="0" cellpadding="0" cellspacing="1">
 				<thead>
@@ -134,11 +125,11 @@ $controller
 				</thead>
 				<tbody>
 					<?php
-					foreach ($all_modules as $module_name=>$status) {
-						if (array_key_exists($module_name, $installed_modules)) {
-							$module=$installed_modules[$module_name];
+					foreach ($module_status as $module_name=>$status) {
+						if (array_key_exists($module_name, $modules)) {
+							$module=$modules[$module_name];
 							echo
-								'<tr><td>', two_state_checkbox('status-'.$module->getName(), $status=='enabled'), '</td>',
+								'<tr><td>', two_state_checkbox('status-'.$module_name, $status=='enabled'), '</td>',
 								'<td>', $module->getTitle(), '</td>',
 								'<td>', $module->getDescription(), '</td>',
 								'<td>', $module instanceof WT_Module_Menu    ? WT_I18N::translate('Menu') : '-', '</td>',

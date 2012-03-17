@@ -64,7 +64,7 @@ if (WT_USE_GOOGLE_API) {
 }
 
 // Location of our modules and themes.  These are used as URLs and directory paths.
-define('WT_MODULES_DIR', 'modules_v3/'); // Update the build script when this changes
+define('WT_MODULES_DIR', 'modules_v3/'); // Update setup.php and build/Makefile when this changes
 define('WT_THEMES_DIR',  'themes/' );
 
 // Enable debugging output?

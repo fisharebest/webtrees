@@ -2,7 +2,7 @@
 // Module Administration User Interface.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -22,122 +22,93 @@
 
 define('WT_SCRIPT_NAME', 'admin_module_sidebar.php');
 require 'includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('Module administration'));
-
-require WT_ROOT.'includes/functions/functions_edit.php';
-
-// New modules may have been added...
-$installed_modules=WT_Module::getInstalledModules();
-foreach ($installed_modules as $module_name=>$module) {
-	// New module
-	WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name) VALUES (?)")->execute(array($module_name));
-}
-
-// Disable modules that no longer exist.  Don't delete the config.  The module
-// may have only been removed temporarily, e.g. during an upgrade / migration
-$module_names=WT_DB::prepare("SELECT module_name FROM `##module` WHERE status='enabled'")->fetchOneColumn();
-foreach ($module_names as $module_name) {
-	if (!array_key_exists($module_name, $installed_modules)) {
-		WT_DB::prepare(
-			"UPDATE `##module` SET status='disabled' WHERE module_name=?"
-		)->execute(array($module_name));
-	}
-}
-
-$action = safe_POST('action');
-
-if ($action=='update_mods') {
-	foreach (WT_Module::getInstalledModules() as $module) {
-		$module_name=$module->getName();
-		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-			if ($module instanceof WT_Module_Sidebar) {
-				$value = safe_POST("sidebaraccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
-				WT_DB::prepare(
-					"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
-				)->execute(array($module_name, $ged_id, $value));
-				$value = safe_POST('sidebarorder-'.$module_name);
-				WT_DB::prepare(
-					"UPDATE `##module` SET sidebar_order=? WHERE module_name=?"
-				)->execute(array($value, $module_name));
-			}
-		}
-	}
-}
-
-$controller->pageHeader();
-
-echo WT_JS_START; ?>
-
-  jQuery(document).ready(function() {
-    jQuery("#sidebars_table").sortable({items: '.sortme', forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
+	->setPageTitle(WT_I18N::translate('Module administration'))
+	->pageHeader()
+	->addInlineJavaScript('
+    jQuery("#sidebars_table").sortable({items: ".sortme", forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
 
     //-- update the order numbers after drag-n-drop sorting is complete
-    jQuery('#sidebars_table').bind('sortupdate', function(event, ui) {
-			jQuery('#'+jQuery(this).attr('id')+' input').each(
+    jQuery("#sidebars_table").bind("sortupdate", function(event, ui) {
+			jQuery("#"+jQuery(this).attr("id")+" input").each(
 				function (index, value) {
 					value.value = index+1;
 				}
 			);
 		});
-	});
+	');
 
-<?php echo WT_JS_END; ?>
+$modules=WT_Module::getActiveSidebars();
 
-<div align="center">
-	<div id="tabs">
-		<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
-			<input type="hidden" name="action" value="update_mods">
-			<table id="sidebars_table" class="modules_table">
-				<thead>
-					<tr>
+$action = safe_POST('action');
+
+if ($action=='update_mods') {
+	foreach ($modules as $module_name=>$module) {
+		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+			$access_level = safe_POST("sidebaraccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
+			WT_DB::prepare(
+				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
+			)->execute(array($module_name, $ged_id, $access_level));
+		}
+		$order = safe_POST('sidebarorder-'.$module_name);
+		WT_DB::prepare(
+			"UPDATE `##module` SET sidebar_order=? WHERE module_name=?"
+		)->execute(array($order, $module_name));
+		$module->order=$order; // Make the new order take effect immediately
+	}
+	uasort($modules, create_function('$x,$y', 'return $x->order > $y->order;'));
+}
+
+?>
+<div id="sidebars" align="center">
+	<form method="post" action="<?php echo WT_SCRIPT_NAME; ?>">
+		<input type="hidden" name="action" value="update_mods">
+		<table id="sidebars_table" class="modules_table">
+			<thead>
+				<tr>
 					<th><?php echo WT_I18N::translate('Sidebar'); ?></th>
 					<th><?php echo WT_I18N::translate('Description'); ?></th>
 					<th><?php echo WT_I18N::translate('Order'); ?></th>
 					<th><?php echo WT_I18N::translate('Access level'); ?></th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php
-					$order = 1;
-					foreach (WT_Module::getInstalledSidebars() as $module) { 
-						if (array_key_exists($module->getName(), $module->getActiveModules())) {
-							echo '<tr class="sortme">';
-						} else {
-							echo '<tr class="sortme rela">';
-						}
-						?>
-							<td ><?php echo $module->getTitle(); ?></td>
-							<td><?php echo $module->getDescription(); ?></td>
-							<td><input type="text" size="3" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName(); ?>"></td>
-							<td>
-								<table class="modules_table2">
-									<?php
-									foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-										$varname = 'sidebaraccess-'.$module->getName().'-'.$ged_id;
-										$access_level=WT_DB::prepare(
-											"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='sidebar'"
-										)->execute(array($ged_id, $module->getName()))->fetchOne();
-										if ($access_level===null) {
-											$access_level=$module->defaultAccessLevel();
-										}
-										echo '<tr><td>',  WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td><td>';
-										echo edit_field_access_level($varname, $access_level);
-									}
-									?>
-								</table>
-							</td>
-						</tr>
-					<?php
-					$order++;
-					}
+				</tr>
+			</thead>
+			<tbody>
+				<?php
+				$order = 1;
+				foreach ($modules as $module_name=>$module) { 
 					?>
-				</tbody>
-			</table>
-			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
-		</form>
-	</div>
+					<tr class="sortme">
+						<td ><?php echo $module->getTitle(); ?></td>
+						<td><?php echo $module->getDescription(); ?></td>
+						<td><input type="text" size="3" value="<?php echo $order; ?>" name="sidebarorder-<?php echo $module->getName(); ?>"></td>
+						<td>
+							<table class="modules_table2">
+								<?php
+								foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+									$varname = 'sidebaraccess-'.$module_name.'-'.$ged_id;
+									$access_level=WT_DB::prepare(
+										"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='sidebar'"
+									)->execute(array($ged_id, $module_name))->fetchOne();
+									if ($access_level===null) {
+										$access_level=$module->defaultAccessLevel();
+									}
+									echo '<tr><td>',  WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td><td>';
+									echo edit_field_access_level($varname, $access_level);
+								}
+								?>
+							</table>
+						</td>
+					</tr>
+				<?php
+				$order++;
+				}
+				?>
+			</tbody>
+		</table>
+		<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
+	</form>
 </div>

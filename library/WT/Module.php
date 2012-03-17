@@ -228,158 +228,70 @@ abstract class WT_Module {
 		return $themes;
 	}
 
-	// Get installed modules
-	static public function getInstalledModules() {
-		static $modules=null;
-		if ($modules===null) {
-			$dir=opendir(WT_ROOT.WT_MODULES_DIR);
-			while (($file=readdir($dir))!==false) {
-				if (preg_match('/^[a-zA-Z0-9_]+$/', $file) && file_exists(WT_ROOT.WT_MODULES_DIR.$file.'/module.php')) {
-					require_once WT_ROOT.WT_MODULES_DIR.$file.'/module.php';
-					$class=$file.'_WT_Module';
-					$modules[$file]=new $class();
-				}
-			}
-			uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
-		}
-		return $modules;
-	}
-
-	// Get installed blocks
-	static public function getInstalledBlocks() {
+	// Get a list of all installed modules.
+	// During setup, new modules need status of 'enabled'
+	// In admin->modules, new modules need status of 'disabled'
+	static public function getInstalledModules($status) {
 		$modules=array();
-		foreach (self::getInstalledModules() as $name=>$module) {
-			if ($module instanceof WT_Module_Block) {
-				$modules[$name]=$module;
+		$dir=opendir(WT_ROOT.WT_MODULES_DIR);
+		while (($file=readdir($dir))!==false) {
+			if (preg_match('/^[a-zA-Z0-9_]+$/', $file) && file_exists(WT_ROOT.WT_MODULES_DIR.$file.'/module.php')) {
+				require_once WT_ROOT.WT_MODULES_DIR.$file.'/module.php';
+				$class=$file.'_WT_Module';
+				$module=new $class();
+				$modules[$module->getName()]=$module;
+				WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name, status, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?, ?)")
+					->execute(array(
+						$module->getName(),
+						$status,
+						$module instanceof WT_Module_Menu    ? $module->defaultMenuOrder   () : null,
+						$module instanceof WT_Module_Sidebar ? $module->defaultSidebarOrder() : null,
+						$module instanceof WT_Module_Tab     ? $module->defaultTabOrder    () : null
+					));
 			}
 		}
-		return $modules;
-	}
-
-	// Get installed charts
-	static public function getInstalledCharts() {
-		$modules=array();
-		foreach (self::getInstalledModules() as $name=>$module) {
-			if ($module instanceof WT_Module_Chart) {
-				$modules[$name]=$module;
-			}
-		}
-		return $modules;
-	}
-
-	// Get installed menus
-	static public function getInstalledMenus() {
-		$modules=array();
-		foreach (self::getInstalledModules() as $name=>$module) {
-			if ($module instanceof WT_Module_Menu) {
-				$module->sort=WT_DB::prepare(
-					"SELECT SQL_CACHE menu_order FROM `##module` WHERE module_name=?"
-				)->execute(array($module->getName()))->fetchOne();
-				$modules[$name]=$module;
-			}
-		}
-		uasort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
-		return $modules;
-	}
-
-	// Get installed reports
-	static public function getInstalledReports() {
-		$modules=array();
-		foreach (self::getInstalledModules() as $name=>$module) {
-			if ($module instanceof WT_Module_Report) {
-				$modules[$name]=$module;
-			}
-		}
-		return $modules;
-	}
-
-	// Get installed sidebars
-	static public function getInstalledSidebars() {
-		$modules=array();
-		foreach (self::getInstalledModules() as $name=>$module) {
-			if ($module instanceof WT_Module_Sidebar) {
-				$module->sort=WT_DB::prepare(
-					"SELECT SQL_CACHE sidebar_order FROM `##module` WHERE module_name=?"
-				)->execute(array($module->getName()))->fetchOne();
-				$modules[$name]=$module;
-			}
-		}
-		uasort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
-		return $modules;
-	}
-
-	// Get installed tabs
-	static public function getInstalledTabs() {
-		$modules=array();
-		foreach (self::getInstalledModules() as $name=>$module) {
-			if ($module instanceof WT_Module_Tab) {
-				$module->sort=WT_DB::prepare(
-					"SELECT SQL_CACHE tab_order FROM `##module` WHERE module_name=?"
-				)->execute(array($module->getName()))->fetchOne();
-				$modules[$name]=$module;
-			}
-		}
-		uasort($modules, create_function('$x,$y', 'return $x->sort - $y->sort;'));
-		return $modules;
-	}
-
-	// Get installed themes
-	static public function getInstalledThemes() {
-		$modules=array();
-		foreach (self::getInstalledModules() as $name=>$module) {
-			if ($module instanceof WT_Module_Theme) {
-				$modules[$name]=$module;
-			}
-		}
+		uasort($modules, create_function('$x,$y', 'return utf8_strcasecmp((string)$x, (string)$y);'));
 		return $modules;
 	}
 
 	// We have a new family tree - assign default access rights to it.
 	static public function setDefaultAccess($ged_id) {
-		foreach (self::getInstalledModules() as $module) {
-			WT_DB::prepare("INSERT IGNORE INTO `##module` (module_name, menu_order, sidebar_order, tab_order) VALUES (?, ?, ?, ?)")
-				->execute(array(
-					$module->getName(),
-					$module instanceof WT_Module_Menu    ? $module->defaultMenuOrder   () : null,
-					$module instanceof WT_Module_Sidebar ? $module->defaultSidebarOrder() : null,
-					$module instanceof WT_Module_Tab     ? $module->defaultTabOrder    () : null
-				));
-		}
-		WT_DB::prepare("DELETE FROM `##module_privacy` WHERE gedcom_id=?")->execute(array($ged_id));
-		foreach (self::getInstalledMenus() as $module) {
-			WT_DB::prepare(
-				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'menu', ?)"
-			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
-		}
-		foreach (self::getInstalledSidebars() as $module) {
-			WT_DB::prepare(
-				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
-			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
-		}
-		foreach (self::getInstalledTabs() as $module) {
-			WT_DB::prepare(
-				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
-			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
-		}
-		foreach (self::getInstalledBlocks() as $module) {
-			WT_DB::prepare(
-				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
-			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
-		}
-		foreach (self::getInstalledCharts() as $module) {
-			WT_DB::prepare(
-				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'charts', ?)"
-			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
-		}
-		foreach (self::getInstalledReports() as $module) {
-			WT_DB::prepare(
-				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
-			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
-		}
-		foreach (self::getInstalledThemes() as $module) {
-			WT_DB::prepare(
-				"INSERT INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
-			)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+		foreach (self::getInstalledModules('disabled') as $module) {
+			if ($module instanceof WT_Module_Menu) {
+				WT_DB::prepare(
+					"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'menu', ?)"
+				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+			}
+			if ($module instanceof WT_Module_Sidebar) {
+				WT_DB::prepare(
+					"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
+				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+			}
+			if ($module instanceof WT_Module_Tab) {
+				WT_DB::prepare(
+					"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'tab', ?)"
+				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+			}
+			if ($module instanceof WT_Module_Block) {
+				WT_DB::prepare(
+					"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'block', ?)"
+				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+			}
+			if ($module instanceof WT_Module_Chart) {
+				WT_DB::prepare(
+					"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'charts', ?)"
+				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+			}
+			if ($module instanceof WT_Module_Report) {
+				WT_DB::prepare(
+					"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'report', ?)"
+				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+			}
+			if ($module instanceof WT_Module_Theme) {
+				WT_DB::prepare(
+					"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'theme', ?)"
+				)->execute(array($module->getName(), $ged_id, $module->defaultAccessLevel()));
+			}
 		}
 	}
 }
