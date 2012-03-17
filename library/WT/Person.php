@@ -1813,4 +1813,47 @@ class WT_Person extends WT_GedcomRecord {
 		$this->format_first_major_fact(WT_EVENTS_BIRT, 1).
 		$this->format_first_major_fact(WT_EVENTS_DEAT, 1);
 	}
+
+	// create a short name for compact display on charts
+	public function getShortName() {
+		global $bwidth, $SHOW_HIGHLIGHT_IMAGES, $UNKNOWN_NN, $UNKNOWN_PN;
+		// Estimate number of characters that can fit in box. Calulates to 28 characters in webtrees theme, or 34 if no thumbnail used.
+		if ($SHOW_HIGHLIGHT_IMAGES) {
+			$char = intval(($bwidth-40)/6.5); 
+		} else {
+			$char = ($bwidth/6.5);
+		}
+		if ($this->canDisplayName()) {
+			$tmp=$this->getAllNames();
+			$givn = $tmp[$this->getPrimaryName()]['givn'];
+			$surn = $tmp[$this->getPrimaryName()]['surname'];
+			$new_givn = explode(' ', $givn);
+			$count_givn = count($new_givn);
+			$len_givn = utf8_strlen($givn);
+			$len_surn = utf8_strlen($surn);
+			$len = $len_givn + $len_surn;
+			$i = 1;
+			while ($len > $char && $i<=$count_givn) {
+				$new_givn[$count_givn-$i] = utf8_substr($new_givn[$count_givn-$i],0,1);
+				$givn = implode(' ', $new_givn);
+				$len_givn = utf8_strlen($givn);
+				$len = $len_givn + $len_surn;
+				$i++;
+			}
+			$max_surn = $char-$i*2;
+			if ($len_surn > $max_surn) {
+				$surn = substr($surn, 0, $max_surn).'...';
+				$len_surn = utf8_strlen($surn);
+			}
+			$shortname =  str_replace(
+				array('@P.N.', '@N.N.'),
+				array($UNKNOWN_PN, $UNKNOWN_NN),
+				$givn.' '.$surn
+			);
+			return $shortname;
+		} else {
+			return WT_I18N::translate('Private');
+		}
+	}
+
 }

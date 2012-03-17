@@ -254,7 +254,7 @@ if ($show=='indi' || $show=='surn') {
 					}
 				}
 				if ($show_all=='no') {
-					echo '<h2 class="center">', WT_I18N::translate('Individuals with surname %s', check_NN($surname)), '</h2>';
+					echo '<h2 class="center">', WT_I18N::translate('Individuals with surname %s', $legend), '</h2>';
 				}
 				echo '<p class="center alpha_index">', join(' | ', $list), '</p>';
 			}

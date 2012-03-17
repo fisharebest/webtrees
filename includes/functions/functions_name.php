@@ -73,58 +73,6 @@ function get_common_surnames($min) {
 }
 
 /**
- * This function replaces @N.N. and @P.N. with the language specific translations
- * @param mixed $names $names could be an array of name parts or it could be a string of the name
- * @return string
- */
-function check_NN($names) {
-	global $UNKNOWN_NN, $UNKNOWN_PN;
-
-	$fullname = '';
-
-	if (!is_array($names)) {
-		$names = str_replace(array(' /','/,','/'), array(' ', ',', ' '), $names);
-		$names = str_replace(array('@N.N.','@P.N.'), array($UNKNOWN_NN,$UNKNOWN_PN), trim($names));
-		//-- underline names with a * at the end
-		$names = preg_replace('/([^ ]+)\*/', '<span class="starredname">$1</span>', $names);
-		return $names;
-	}
-	if (count($names) == 2 && stristr($names[0], '@N.N.') && stristr($names[1], '@N.N.')) {
-		$fullname = $UNKNOWN_NN.' + '.$UNKNOWN_NN;
-	} else {
-		for ($i=0; $i<count($names); $i++) {
-			$unknown = false;
-			if (stristr($names[$i], '@N.N.')) {
-				$unknown = true;
-				$names[$i] = str_replace('@N.N.', $UNKNOWN_NN, trim($names[$i]));
-			}
-			if (stristr($names[$i], '@P.N.')) {
-				$names[$i] = $UNKNOWN_PN;
-			}
-			if ($i==1 && $unknown && count($names)==3) {
-				$fullname .= ', ';
-			} elseif ($i==2 && $unknown && count($names)==3) {
-				$fullname .= ' + ';
-			} elseif ($i==2 && stristr($names[2], 'Individual ') && count($names) == 3) {
-				$fullname .= ' + ';
-			} elseif ($i==2 && count($names)>3) {
-				$fullname .= ' + ';
-			} else {
-				$fullname .= ', ';
-			}
-			$fullname .= trim($names[$i]);
-		}
-	}
-	$fullname = trim($fullname);
-	if (substr($fullname,-1)==',') $fullname = substr($fullname,0,strlen($fullname)-1);
-	if (substr($fullname,0,2)==', ') $fullname = substr($fullname,2);
-	$fullname = trim($fullname);
-	if (empty($fullname)) return $UNKNOWN_NN;
-
-	return $fullname;
-}
-
-/**
  * determine the Daitch-Mokotoff Soundex code for a word
  * @param string $name The name
  * @return array The array of codes
