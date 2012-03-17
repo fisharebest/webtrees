@@ -155,14 +155,7 @@ table#tvTreeBorder td, #tv_tree {
   cursor: help; /* customizable */
   border-collapse: collapse; /* required */
   border-radius: 4px; /* customizable */
-  -moz-border-radius: 4px; /* customizable */
-  -webkit-border-radius: 4px; /* customizable */
-  -khtml-border-radius: 4px; /* customizable */
   box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -webkit-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -moz-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  -khtml-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-  filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcfdf, offX=1, offY=1, positive=true); /* customizable */
 }
 #tv_tree div.boxExpanded {
   width: 250px; /* customizable: initial expanded box width */
@@ -196,9 +189,6 @@ table#tvTreeBorder td, #tv_tree {
   padding-left: 4px;
   padding-right: 4px;
   border-radius: 4px; /* customizable */
-  -moz-border-radius: 4px; /* customizable */
-  -webkit-border-radius: 4px; /* customizable */
-  -khtml-border-radius: 4px; /* customizable */
 }
 #tv_tree div.tv_box i.dates {
 	float: right;
@@ -241,15 +231,8 @@ table#tvTreeBorder td, #tv_tree {
 	z-index: 90; /* should be < 100 because 100 is the z-index of WT menus */
 	background-color: #efefef; /* customizable */
 	border: 1px outset #dfdfdf; /* customizable */
-	-moz-border-radius: 4px; /* customizable */
-	-webkit-border-radius: 4px; /* customizable */
-	-khtml-border-radius: 4px; /* customizable */
 	border-radius: 4px; /* customizable */
 	box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-	-webkit-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-	-moz-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-	-khtml-box-shadow: 1px 1px 2px #cfcfdf; /* customizable */
-	filter: progid:DXImageTransform.Microsoft.dropShadow(color=#cfcfdf, offX=1, offY=1, positive=true); /* customizable */  
 }
 
 /* styles submenu */
@@ -276,9 +259,6 @@ table#tvTreeBorder td, #tv_tree {
   vertical-align: middle;
   border: thin solid #efefef; /* customizable */
   background-color: #efefef; /* customizable */
-  -moz-border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -khtml-border-radius: 4px;
   border-radius: 4px;
 }
 #tvStylesSubmenu li.tv_button {
