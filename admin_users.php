@@ -346,11 +346,6 @@ case 'createform':
 				frm.pass1.focus();
 				return false;
 			}
-			if (frm.emailaddress.value.indexOf("@")==-1) {
-				alert("'.addslashes(WT_I18N::translate('You must enter an email address.')).'");
-				frm.emailaddress.focus();
-				return false;
-			}
 			return true;
 		}
 		var pastefield;
@@ -388,7 +383,7 @@ case 'createform':
 			</tr>
 			<tr>
 				<td><?php echo WT_I18N::translate('Email address'), help_link('email'); ?></td>
-				<td><input type="text" name="emailaddress" size="40" value="<?php echo htmlspecialchars($emailaddress); ?>"></td>
+				<td><input type="email" name="emailaddress" size="40" value="<?php echo htmlspecialchars($emailaddress); ?>"></td>
 				<td><?php echo WT_I18N::translate('Preferred contact method'); ?></td>
 				<td>
 					<?php

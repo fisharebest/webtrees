@@ -113,11 +113,6 @@ function checkform(frm) {
 		frm.form_realname.focus();
 		return false;
 	}
-	if (frm.form_email.value.indexOf("@")==-1) {
-		alert("<?php echo WT_I18N::translate('You must enter an email address.'); ?>");
-		frm.user_email.focus();
-		return false;
-	}
 	if (frm.form_pass1.value!=frm.form_pass2.value) {
 		alert("<?php echo WT_I18N::translate('Passwords do not match.'); ?>");
 		frm.form_pass1.focus();
@@ -190,7 +185,7 @@ echo '</td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Email address'), help_link('email'), '</td><td class="optionbox" valign="top">';
-echo '<input type="text" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50"></td></tr>';
+echo '<input type="email" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50"></td></tr>';
 
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Theme'), help_link('THEME'), '</td><td class="optionbox" valign="top">';

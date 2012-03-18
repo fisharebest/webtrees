@@ -47,6 +47,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Underline names in quotes');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Welcome to Your Genealogy');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('When this option box is checked, the «Close Relatives» tab will show date differences as follows:<br /><ul><li>birth dates of partners.<br />A negative value indicates that the second partner is older than the first.<br /><br /></li><li>marriage date and birth date of the first child.<br />A negative value here indicates that the child was born before the marriage date or that either the birth date or the marriage date is wrong.<br /><br /></li><li>birth dates of siblings.<br />A negative value here indicates that either the order of the children is wrong or that one of the birth dates is wrong.</li></ul>');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('You must enter an email address.');
 
 // MESSAGES DELETED IN WEBTREES-1.2.7
 

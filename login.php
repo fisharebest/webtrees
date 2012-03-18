@@ -476,11 +476,6 @@ case 'register':
 						frm.user_realname.focus();
 						return false;
 					}
-					if ((frm.user_email.value == "")||(frm.user_email.value.indexOf("@")==-1)) {
-						alert("' . WT_I18N::translate('You must enter an email address.') . '");
-						frm.user_email.focus();
-						return false;
-					}
 					if (frm.user_comments.value == "") {
 						alert("' . WT_I18N::translate('Please enter your relationship to the data in the Comments field.') . '");
 						frm.user_comments.focus();
@@ -510,7 +505,7 @@ case 'register':
 				</div>
 				<div>
 					<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
-						'<input type="text" id="user_email" name="user_email" value="';
+						'<input type="email" id="user_email" name="user_email" value="';
 							if (!$user_email_false) echo $user_email;
 						echo '">
 					</label>
