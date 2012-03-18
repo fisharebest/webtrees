@@ -674,39 +674,6 @@ function search_indis_dates($day, $month, $year, $facts) {
 	return $list;
 }
 
-// Seach for individuals with events in a given date range
-function search_indis_daterange($start, $end, $facts) {
-	$sql="SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec FROM `##individuals` JOIN `##dates` ON i_id=d_gid AND i_file=d_file WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?";
-	$vars=array(WT_GED_ID, $start, $end);
-
-	if ($facts) {
-		$facts=explode(',', $facts);
-		foreach ($facts as $key=>$value) {
-			$facts[$key]="?";
-			$vars[]=$value;
-		}
-		$sql.=' AND d_fact IN ('.implode(',', $facts).')';
-	}
-
-	$list=array();
-	$rows=WT_DB::prepare($sql)->execute($vars)->fetchAll(PDO::FETCH_ASSOC);
-	foreach ($rows as $row) {
-		$list[]=WT_Person::getInstance($row);
-	}
-	return $list;
-}
-
-// Search for people who had events in a given year range
-function search_indis_year_range($startyear, $endyear) {
-	// TODO: We should use Julian-days, rather than gregorian years,
-	// to allow
-	// the lifespan chart, etc., to use other calendars.
-	$startjd=WT_Date_Gregorian::YMDtoJD($startyear, 1, 1);
-	$endjd  =WT_Date_Gregorian::YMDtoJD($endyear+1, 1, 1)-1;
-
-	return search_indis_daterange($startjd, $endjd, '');
-}
-
 // Search the gedcom records of families
 // $query - array of search terms
 // $geds - array of gedcoms to search

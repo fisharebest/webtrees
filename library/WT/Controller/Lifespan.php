@@ -154,7 +154,7 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 
 			//Variables to restrict the person boxes to the year searched.
 			//--Searches for individuals who had an even between the year begin and end years
-			$indis = search_indis_year_range($beginYear, $endYear);
+			$indis = self::search_indis_year_range($beginYear, $endYear);
 			//--Populates an array of people that had an event within those years
 
 			foreach ($indis as $person) {
@@ -509,5 +509,29 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 		} else {
 			return parent::getSignificantIndividual();
 		}
+	}
+
+	// Search for people who had events in a given year range
+	private static function search_indis_year_range($startyear, $endyear) {
+		// TODO: We should use Julian-days, rather than gregorian years,
+		// to allow the lifespan chart, etc., to use other calendars.
+		$startjd=WT_Date_Gregorian::YMDtoJD($startyear, 1, 1);
+		$endjd  =WT_Date_Gregorian::YMDtoJD($endyear+1, 1, 1)-1;
+
+		$sql=
+			"SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+			" FROM `##individuals`".
+			" JOIN `##dates` ON i_id=d_gid AND i_file=d_file".
+			" WHERE i_file=? AND d_julianday1 BETWEEN ? AND ?";
+
+		$rows=WT_DB::prepare($sql)
+			->execute(array(WT_GED_ID, $startjd, $endjd))
+			->fetchAll(PDO::FETCH_ASSOC);
+
+		$list=array();
+		foreach ($rows as $row) {
+			$list[]=WT_Person::getInstance($row);
+		}
+		return $list;
 	}
 }
