@@ -212,7 +212,6 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 
 // Common functions
 require WT_ROOT.'includes/functions/functions.php';
-require WT_ROOT.'includes/functions/functions_name.php';
 require WT_ROOT.'includes/functions/functions_db.php';
 
 set_error_handler('wt_error_handler');

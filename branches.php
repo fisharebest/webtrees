@@ -119,8 +119,8 @@ function print_fams($person, $famid=null) {
 		list($surn1) = explode(",", $name['sort']);
 		if (stripos($surn1, $surn)===false
 			&& stripos($surn, $surn1)===false
-			&& soundex_std($surn1)!==soundex_std($surn)
-			&& soundex_dm($surn1)!==soundex_dm($surn)
+			&& WT_Soundex::soundex_std($surn1)!==WT_Soundex::soundex_std($surn)
+			&& WT_Soundex::soundex_dm($surn1)!==WT_Soundex::soundex_dm($surn)
 			) {
 			continue;
 		}
@@ -212,11 +212,11 @@ function indis_array($surn, $soundex_std, $soundex_dm) {
 	$args=array(WT_GED_ID, '_MARNM', $surn, $surn);
 	if ($soundex_std) {
 		$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-		$args[]=soundex_std($surn);
+		$args[]=WT_Soundex::soundex_std($surn);
 	}
 	if ($soundex_dm) {
 		$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-		$args[]=soundex_dm($surn);
+		$args[]=WT_Soundex::soundex_dm($surn);
 	}
 	$sql .= ')';
 	$rows=

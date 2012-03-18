@@ -316,7 +316,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx=explode(':', soundex_std($value));
+						$sdx=explode(':', WT_Soundex::soundex_std($value));
 						foreach ($sdx as $k=>$v) {
 							$sdx[$k]="i_n.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
@@ -325,7 +325,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx=explode(':', soundex_dm($value));
+						$sdx=explode(':', WT_Soundex::soundex_dm($value));
 						foreach ($sdx as $k=>$v) {
 							$sdx[$k]="i_n.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
@@ -349,7 +349,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx=explode(':', soundex_std($value));
+						$sdx=explode(':', WT_Soundex::soundex_std($value));
 						foreach ($sdx as $k=>$v) {
 							$sdx[$k]="i_n.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
@@ -358,7 +358,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx=explode(':', soundex_dm($value));
+						$sdx=explode(':', WT_Soundex::soundex_dm($value));
 						foreach ($sdx as $k=>$v) {
 							$sdx[$k]="i_n.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
@@ -457,7 +457,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx=explode(':', soundex_std($value));
+						$sdx=explode(':', WT_Soundex::soundex_std($value));
 						foreach ($sdx as $k=>$v) {
 							$sdx[$k]="{$table}.n_soundex_givn_std LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
@@ -466,7 +466,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx=explode(':', soundex_dm($value));
+						$sdx=explode(':', WT_Soundex::soundex_dm($value));
 						foreach ($sdx as $k=>$v) {
 							$sdx[$k]="{$table}.n_soundex_givn_dm LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
@@ -490,7 +490,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$bind[]=$value;
 						break;
 					case 'SDX_STD':
-						$sdx=explode(':', soundex_std($value));
+						$sdx=explode(':', WT_Soundex::soundex_std($value));
 						foreach ($sdx as $k=>$v) {
 							$sdx[$k]="{$table}.n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;
@@ -499,7 +499,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						break;
 					case 'SDX': // SDX uses DM by default.
 					case 'SDX_DM':
-						$sdx=explode(':', soundex_dm($value));
+						$sdx=explode(':', WT_Soundex::soundex_dm($value));
 						foreach ($sdx as $k=>$v) {
 							$sdx[$k]="{$table}.n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 							$bind[]=$v;

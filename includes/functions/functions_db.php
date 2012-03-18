@@ -561,16 +561,16 @@ function search_indis_soundex($soundex, $lastname, $firstname, $place, $geds) {
 	$sql.=' WHERE i_file IN ('.implode(',', $geds).')';
 	switch ($soundex) {
 	case 'Russell':
-		$givn_sdx=explode(':', soundex_std($firstname));
-		$surn_sdx=explode(':', soundex_std($lastname));
-		$plac_sdx=explode(':', soundex_std($place));
+		$givn_sdx=explode(':', WT_Soundex::soundex_std($firstname));
+		$surn_sdx=explode(':', WT_Soundex::soundex_std($lastname));
+		$plac_sdx=explode(':', WT_Soundex::soundex_std($place));
 		$field='std';
 		break;
 	default:
 	case 'DaitchM':
-		$givn_sdx=explode(':', soundex_dm($firstname));
-		$surn_sdx=explode(':', soundex_dm($lastname));
-		$plac_sdx=explode(':', soundex_dm($place));
+		$givn_sdx=explode(':', WT_Soundex::soundex_dm($firstname));
+		$surn_sdx=explode(':', WT_Soundex::soundex_dm($lastname));
+		$plac_sdx=explode(':', WT_Soundex::soundex_dm($place));
 		$field='dm';
 		break;
 	}
@@ -1120,6 +1120,39 @@ function delete_gedcom($ged_id) {
 	WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id =?")->execute(array($ged_id));
 	WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id =?")->execute(array($ged_id));
+}
+
+/**
+ * Get array of common surnames
+ *
+ * This function returns a simple array of the most common surnames
+ * found in the individuals list.
+ * @param int $min the number of times a surname must occur before it is added to the array
+ */
+function get_common_surnames($min) {
+	$COMMON_NAMES_ADD   =get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_ADD');
+	$COMMON_NAMES_REMOVE=get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_REMOVE');
+
+	$topsurns=get_top_surnames(WT_GED_ID, $min, 0);
+	foreach (explode(',', $COMMON_NAMES_ADD) as $surname) {
+		if ($surname && !array_key_exists($surname, $topsurns)) {
+			$topsurns[$surname]=$min;
+		}
+	}
+	foreach (explode(',', $COMMON_NAMES_REMOVE) as $surname) {
+		unset($topsurns[utf8_strtoupper($surname)]);
+	}
+
+	//-- check if we found some, else recurse
+	if (empty($topsurns) && $min>2) {
+		return get_common_surnames($min/2);
+	} else {
+		uksort($topsurns, 'utf8_strcasecmp');
+		foreach ($topsurns as $key=>$value) {
+			$topsurns[$key]=array('name'=>$key, 'match'=>$value);
+		}
+		return $topsurns;
+	}
 }
 
 /**

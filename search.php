@@ -203,11 +203,11 @@ echo '<div id="search-page">
 				<div class="value"><p>
 					<input type="radio" name="soundex" value="Russell"';
 						if ($controller->soundex == "Russell") echo ' checked="checked" ';
-						echo '>'  , WT_I18N::translate('Russell'); //* I18N: http://en.wikipedia.org/wiki/Soundex */
+						echo '>'  , WT_I18N::translate('Russell');
 					echo '</p><p>
 						<input type="radio" name="soundex" value="DaitchM"';
 						if ($controller->soundex == "DaitchM" || $controller->soundex == "") echo ' checked="checked" ';
-						echo'>' , WT_I18N::translate('Daitch-Mokotoff'); //* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */
+						echo'>' , WT_I18N::translate('Daitch-Mokotoff');
 				echo '</p></div>';
 			// Associates Section
 			echo '<div class="label">' , WT_I18N::translate('Associates'), '</div>

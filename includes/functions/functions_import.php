@@ -809,8 +809,8 @@ function update_places($gid, $ged_id, $gedrec) {
 
 			//-- if we are not searching then we have to insert the place into the db
 			if (!$search) {
-				$std_soundex = soundex_std($place);
-				$dm_soundex = soundex_dm($place);
+				$std_soundex = WT_Soundex::soundex_std($place);
+				$dm_soundex = WT_Soundex::soundex_dm($place);
 				$sql_insert_places->execute(array($place, $level, $parent_id, $ged_id, $std_soundex, $dm_soundex));
 				$p_id=WT_DB::getInstance()->lastInsertId();
 			}
@@ -890,15 +890,15 @@ function update_names($xref, $ged_id, $record) {
 					$soundex_givn_std=null;
 					$soundex_givn_dm=null;
 				} else {
-					$soundex_givn_std="'".soundex_std($name['givn'])."'";
-					$soundex_givn_dm="'".soundex_dm($name['givn'])."'";
+					$soundex_givn_std="'".WT_Soundex::soundex_std($name['givn'])."'";
+					$soundex_givn_dm="'".WT_Soundex::soundex_dm($name['givn'])."'";
 				}
 				if ($name['surn']=='@N.N.') {
 					$soundex_surn_std=null;
 					$soundex_surn_dm=null;
 				} else {
-					$soundex_surn_std="'".soundex_std($name['surname'])."'";
-					$soundex_surn_dm="'".soundex_dm($name['surname'])."'";
+					$soundex_surn_std="'".WT_Soundex::soundex_std($name['surname'])."'";
+					$soundex_surn_dm="'".WT_Soundex::soundex_dm($name['surname'])."'";
 				}
 				$sql_insert_name_indi->execute(array($ged_id, $xref, $n, $name['type'], $name['sort'], $name['fullNN'], $name['surname'], $name['surn'], $name['givn'], $soundex_givn_std, $soundex_surn_std, $soundex_givn_dm, $soundex_surn_dm));
 			} else {
