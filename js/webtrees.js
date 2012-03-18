@@ -56,7 +56,8 @@ function modalDialog(url, title) {
 		.load(url)
 		.dialog({
 			modal: true,
-			width: 700
+			width: 700,
+			close: function(event, ui) { $(this).remove(); }
 		});
 	// Close the window when we click outside it.
 	jQuery(".ui-widget-overlay").live("click", function () {
