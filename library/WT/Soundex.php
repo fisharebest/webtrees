@@ -41,6 +41,16 @@ class WT_Soundex {
 		}
 	}
 
+	// Is there a match between two soundex codes?
+	public static function compare($soundex1, $soundex2) {
+		foreach (explode(':', $soundex1) as $code) {
+			if (strpos($soundex2, $code)!==false) {
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public static function soundex_std($text) {
 		$words=explode(' ', $text);
 		$soundex_array=array();

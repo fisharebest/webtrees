@@ -47,7 +47,7 @@ if (WT_USER_GEDCOM_ID) {
 
 $controller=new WT_Controller_Base();
 if ($surn) {
-	$controller->setPageTitle(/* I18N: %s is a surname */ WT_I18N::translate('Branches of the %s family', $surn));
+	$controller->setPageTitle(/* I18N: %s is a surname */ WT_I18N::translate('Branches of the %s family', htmlspecialchars($surn)));
 } else {
 	$controller->setPageTitle(WT_I18N::translate('Branches'));
 }
@@ -65,7 +65,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 			<td class="descriptionbox">
 				<?php echo WT_Gedcom_Tag::getLabel('SURN'); ?></td>
 			<td class="optionbox">
-				<input type="text" name="surname" id="SURN" value="<?php echo $surn; ?>" dir="auto">
+				<input type="text" name="surname" id="SURN" value="<?php echo htmlspecialchars($surn); ?>" dir="auto">
 				<input type="hidden" name="ged" id="ged" value="<?php echo $ged; ?>">
 				<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
 				<p><?php echo WT_I18N::translate('Phonetic search'); ?></p>
@@ -82,7 +82,6 @@ if ($ENABLE_AUTOCOMPLETE) {
 <?php
 //-- results
 if ($surn) {
-	$surn_script = utf8_script($surn);
 	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', $surn, '</legend>';
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
 	usort($indis, array('WT_Person', 'CompareBirtDate'));
@@ -112,23 +111,22 @@ if (false) {
 }
 
 function print_fams($person, $famid=null) {
-	global $UNKNOWN_NN, $surn, $surn_script, $user_ancestors;
+	global $surn, $soundex_std, $soundex_dm, $user_ancestors;
 	// select person name according to searched surname
 	$person_name = "";
 	foreach ($person->getAllNames() as $n=>$name) {
 		list($surn1) = explode(",", $name['sort']);
-		if (stripos($surn1, $surn)===false
-			&& stripos($surn, $surn1)===false
-			&& WT_Soundex::soundex_std($surn1)!==WT_Soundex::soundex_std($surn)
-			&& WT_Soundex::soundex_dm($surn1)!==WT_Soundex::soundex_dm($surn)
-			) {
-			continue;
+		if (
+			// one name is a substring of the other
+			stripos($surn1, $surn)!==false ||
+			stripos($surn, $surn1)!==false ||
+			// one name sounds like the other
+			$soundex_std && WT_Soundex::compare(WT_Soundex::soundex_std($surn1), WT_Soundex::soundex_std($surn)) ||
+			$soundex_dm  && WT_Soundex::compare(WT_Soundex::soundex_dm ($surn1), WT_Soundex::soundex_dm ($surn))
+		) {
+			$person_name = $name['full'];
+			break;
 		}
-		if (utf8_script($surn1)!==$surn_script) {
-			continue;
-		}
-		$person_name = $name['full'];
-		break;
 	}
 	if (empty($person_name)) {
 		echo '<li title="', strip_tags($person->getFullName()), '">', $person->getSexImage(), '…</li>';
@@ -204,28 +202,33 @@ function load_ancestors_array($person, $sosa=1) {
 
 function indis_array($surn, $soundex_std, $soundex_dm) {
 	$sql=
-		"SELECT DISTINCT n_id".
-		" FROM `##name`".
+		"SELECT DISTINCT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+		" FROM `##individuals`".
+		" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
 		" WHERE n_file=?".
 		" AND n_type!=?".
 		" AND (n_surn=? OR n_surname=?";
 	$args=array(WT_GED_ID, '_MARNM', $surn, $surn);
 	if ($soundex_std) {
-		$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
-		$args[]=WT_Soundex::soundex_std($surn);
+		foreach (explode(':', WT_Soundex::soundex_std($surn)) as $value) {
+			$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
+			$args[]=$value;
+		}
 	}
 	if ($soundex_dm) {
-		$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
-		$args[]=WT_Soundex::soundex_dm($surn);
+		foreach (explode(':', WT_Soundex::soundex_dm($surn)) as $value) {
+			$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
+			$args[]=$value;
+		}
 	}
 	$sql .= ')';
 	$rows=
 		WT_DB::prepare($sql)
 		->execute($args)
-		->fetchAll();
+		->fetchAll(PDO::FETCH_ASSOC);
 	$data=array();
 	foreach ($rows as $row) {
-		$data[]=WT_Person::getInstance($row->n_id);
+		$data[]=WT_Person::getInstance($row);
 	}
 	return $data;
 }
