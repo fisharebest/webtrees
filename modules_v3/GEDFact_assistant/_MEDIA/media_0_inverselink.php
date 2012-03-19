@@ -595,67 +595,36 @@ function openInNewWindow(frm)
 ?>
 <script>
 function parseAddLinks() {
-	str = '';
+	// start with the "newly added" ID.		
+	var str = document.getElementById('gid').value;
+	// Add in the "keep" IDs.
 	var tbl = document.getElementById('addlinkQueue');
 	for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 		var tr = tbl.rows[i];
 		if (IE) {
-			str += (str==''?'':', ') + tr.cells[1].childNodes[0].innerHTML;
+			str += (str==''?'':',') + tr.cells[1].childNodes[0].innerHTML;
 		} else {
-			str += (str==''?'':', ') + tr.cells[1].childNodes[0].textContent;
+			str += (str==''?'':',') + tr.cells[1].childNodes[0].textContent;
 		}
 	}
+	document.link.more_links.value = str;
 }
 
 function parseRemLinks() {
-	remstr = "";
+	var remstr = "";
 	var tbl = document.getElementById('existLinkTbl');
 	for (var i=1; i<tbl.rows.length; i++) { // start at i=1 because we need to avoid header
 		var remtr = tbl.rows[i];
-		var remstrRow = '';
-		for (var j=1; j<remtr.cells.length; j++) { // Start at col 1 (j=1)
-			if (j!=4 ) {
-				// dont show col 0 index
-				// miss out  col 2 name
-				// miss out  col 3 keep radio button
-				// choose    col 4 remove radio button
-				continue;
-			} else {
-				 if (remtr.cells[j].childNodes[0].checked)  {
-					remstrRow += (remstrRow==''?'':'') + remtr.cells[j].childNodes[0].name + ', ';
-				 }
-			}
+		if (remtr.cells[4].childNodes[0].checked)  {
+			remstr += (remstr==''?'':',') + remtr.cells[4].childNodes[0].name;
 		}
-		remstr += (remstr==''?'':'') + remstrRow;
 	}
-	// remstr += (remstr==''?'':','); // Adds just final comma at end of string (\')
-}
-
-function preview() {
-	parseAddLinks();
-	alert (str);
+	document.link.exist_links.value = remstr;
 }
 
 function shiftlinks() {
-
 	parseRemLinks();
-	// alert('remstring = '+ remstr);
-	if (remstr) {
-		document.link.exist_links.value = remstr;
-	}
-
 	parseAddLinks();
-	// alert('string = '+ str);
-	if (str) {
-		document.link.more_links.value = str;
-	} else {
-		// leave hidden input morelinks as "No Values"
-		var inputField = document.getElementById('gid');
-	// alert(inputField.value)
-		if (inputField) {
-			document.link.more_links.value = inputField.value+',';
-		}
-	}
 	if (winNav) {
 		winNav.close();
 	}
@@ -672,10 +641,8 @@ function shiftlinks() {
 	echo "<b>", $mediaid, "</b><br><br>";
 
 	// Unlink records indicated by radio button =========
-	if (isset($exist_links) && $exist_links!="No_Values") {
-		$exist_links = substr($exist_links, 0, -1);
-		$rem_exist_links = (explode(", ", $exist_links));
-		foreach ($rem_exist_links as $remLinkId) {
+	if ($exist_links) {
+		foreach (explode(',', $exist_links) as $remLinkId) {
 			echo WT_I18N::translate('Link to %s deleted', $remLinkId);
 			echo '<br>';
 			if ($update_CHAN=='no_change') {
@@ -690,9 +657,8 @@ function shiftlinks() {
 	}
 
 	// Add new Links ====================================
-	if (isset($more_links) && $more_links!="No_Values" && $more_links!=",") {
-		$add_more_links = (explode(", ", $more_links));
-		foreach ($add_more_links as $addLinkId) {
+	if ($more_links) {
+		foreach (explode(',', $more_links) as $addLinkId) {
 			echo WT_I18N::translate('Link to %s added', $addLinkId);
 			if ($update_CHAN=='no_change') {
 				linkMedia($mediaid, $addLinkId, 1, false);
