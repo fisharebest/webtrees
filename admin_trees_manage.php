@@ -236,7 +236,7 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 			help_link('import_gedcom'),
 			'</td>',
 			// download
-			'<td><a href="downloadgedcom.php?ged=', rawurlencode($gedcom_name),'">', WT_I18N::translate('Download'), '</a>',
+			'<td><a href="admin_trees_download.php?ged=', rawurlencode($gedcom_name),'">', WT_I18N::translate('Download'), '</a>',
 			help_link('download_gedcom'),
 			'</td>',
 			// upload

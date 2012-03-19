@@ -2,7 +2,7 @@
 // Allow an admin user to download the backup file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2005  John Finlay and Others
@@ -26,16 +26,15 @@
 define('WT_SCRIPT_NAME', 'downloadbackup.php');
 require './includes/session.php';
 
-$INDEX_DIRECTORY=get_site_setting('INDEX_DIRECTORY');
-
 $fname=safe_GET('fname');
 
 if (!WT_USER_GEDCOM_ADMIN || !preg_match('/\.zip$/', $fname)) {
-	echo WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.');
+	$controller=new WT_Controller_Base();
+	$controller->setPageTitle(WT_I18N::translate('Error'));
+	$controller->pageHeader();
+	echo '<p class="ui-state-error">', WT_I18N::translate('You do not have permission to view this page.'), '</p>';
 	exit;
 }
-
-if (ini_get('zlib.output_compression')) @ini_set('zlib.output_compression', 'Off');
 
 header('Pragma: public'); // required
 header('Expires: 0');
@@ -43,6 +42,6 @@ header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
 header('Cache-Control: private',false); // required for certain browsers
 header('Content-Type: application/zip');
 header('Content-Disposition: attachment; filename="'.$fname.'"');
-header('Content-length: '.filesize($INDEX_DIRECTORY.$fname));
+header('Content-length: '.filesize(WT_DATA_DIR.$fname));
 header('Content-Transfer-Encoding: binary');
-readfile($INDEX_DIRECTORY.basename($fname));
+readfile(WT_DATA_DIR.$fname);

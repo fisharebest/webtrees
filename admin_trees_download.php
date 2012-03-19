@@ -23,7 +23,7 @@
 //
 // $Id$
 
-define('WT_SCRIPT_NAME', 'downloadgedcom.php');
+define('WT_SCRIPT_NAME', 'admin_trees_download.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base();
@@ -103,33 +103,52 @@ if ($action == "download") {
 $controller->pageHeader();
 
 ?>
-<div class="center"><h2><?php echo WT_I18N::translate('Download GEDCOM'); ?></h2></div>
-<br>
+<h2><?php echo WT_I18N::translate('Download GEDCOM'); ?> - <?php echo htmlspecialchars($ged); ?></h2>
 <form name="convertform" method="get">
 	<input type="hidden" name="action" value="download">
 	<input type="hidden" name="ged" value="<?php echo $ged; ?>">
-	<table class="list_table width50" border="0" valign="top">
-	<tr><td colspan="2" class="facts_label03"><?php echo WT_I18N::translate('Options:'); ?></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Zip File(s)'), help_link('download_zipped'); ?></td>
-		<td class="list_value"><input type="checkbox" name="zip" value="yes"></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?></td>
-		<td class="list_value">
-		<input type="radio" name="privatize_export" value="none" checked="checked">&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?><br>
-		<input type="radio" name="privatize_export" value="gedadmin">&nbsp;&nbsp;<?php echo WT_I18N::translate('Manager'); ?><br>
-		<input type="radio" name="privatize_export" value="user">&nbsp;&nbsp;<?php echo WT_I18N::translate('Member'); ?><br>
-		<input type="radio" name="privatize_export" value="visitor">&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?><br>
-		</td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?></td>
-		<td class="list_value"><input type="checkbox" name="convert" value="yes"></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media path to'), help_link('convertPath'); ?></td>
-		<td class="list_value"><input type="text" name="conv_path" size="30" value="<?php echo $conv_path; ?>" dir="auto"></td></tr>
-	<tr><td class="descriptionbox width50 wrap"><?php echo WT_I18N::translate('Convert media folder separators to'), help_link('convertSlashes'); ?></td>
-		<td class="list_value">
-		<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') echo "checked=\"checked\" "; ?>>&nbsp;&nbsp;<?php echo WT_I18N::translate('Forward slashes : /'); ?><br>
-		<input type="radio" name="conv_slashes" value="backward" <?php if ($conv_slashes=='backward') echo "checked=\"checked\" "; ?>>&nbsp;&nbsp;<?php echo WT_I18N::translate('Backslashes : \\'); ?>
-		</td></tr>
-	<tr><td class="facts_label03" colspan="2">
+	<div id="tree-download" class="ui-helper-clearfix">
+		<dl>
+			<dt>
+				<?php echo WT_I18N::translate('Zip File(s)'), help_link('download_zipped'); ?>
+			</dt>
+			<dd>
+				<input type="checkbox" name="zip" value="yes">
+			</dd>
+			<dt>
+				<?php echo WT_I18N::translate('Apply privacy settings?'), help_link('apply_privacy'); ?>
+			</dt>
+			<dd>
+				<input type="radio" name="privatize_export" value="none" checked="checked">&nbsp;&nbsp;<?php echo WT_I18N::translate('None'); ?>
+				<br>
+				<input type="radio" name="privatize_export" value="gedadmin">&nbsp;&nbsp;<?php echo WT_I18N::translate('Manager'); ?>
+				<br>
+				<input type="radio" name="privatize_export" value="user">&nbsp;&nbsp;<?php echo WT_I18N::translate('Member'); ?>
+				<br>
+				<input type="radio" name="privatize_export" value="visitor">&nbsp;&nbsp;<?php echo WT_I18N::translate('Visitor'); ?>
+			</dd>
+			<dt>
+				<?php echo WT_I18N::translate('Convert from UTF-8 to ANSI (ISO-8859-1)'), help_link('utf8_ansi'); ?>
+			</dt>
+			<dd>
+				<input type="checkbox" name="convert" value="yes">
+			</dd>
+			<dt>
+				<?php echo WT_I18N::translate('Convert media path to'), help_link('convertPath'); ?>
+			</dt>
+			<dd>
+				<input type="text" name="conv_path" size="30" value="<?php echo $conv_path; ?>" dir="auto">
+			</dd>
+			<dt>
+				<?php echo WT_I18N::translate('Convert media folder separators to'), help_link('convertSlashes'); ?>
+			</dt>
+			<dd>
+				<input type="radio" name="conv_slashes" value="forward" <?php if ($conv_slashes=='forward') echo "checked=\"checked\" "; ?>>&nbsp;&nbsp;<?php echo WT_I18N::translate('Forward slashes : /'); ?>
+				<br>
+				<input type="radio" name="conv_slashes" value="backward" <?php if ($conv_slashes=='backward') echo "checked=\"checked\" "; ?>>&nbsp;&nbsp;<?php echo WT_I18N::translate('Backslashes : \\'); ?>
+			</dd>
+		</dl>
+	</div>
+	<br>
 	<input type="submit" value="<?php echo WT_I18N::translate('Download Now'); ?>">
-	<input type="button" value="<?php echo WT_I18N::translate('Back'); ?>" onclick="window.location='admin_trees_manage.php';"></td></tr>
-	</table>
 </form>
