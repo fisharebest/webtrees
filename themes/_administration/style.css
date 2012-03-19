@@ -232,7 +232,7 @@ html[dir='rtl'] #relatives {margin-right:120px;}
 /* TREE DOWNLOAD */
 #tree-download {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px;}
 #tree-download dl {float:left;margin:0 0 0 20px;line-height:21px;max-width: 600px;}
-#tree-download dt {clear:left; float:left; min-width:170px; margin:0; padding:5px 5px 5px 0; border-bottom:1px solid #999; font-weight:bold;}
+#tree-download dt {clear:left; float:left; min-width:170px; margin:0; padding:5px 5px 5px 0; font-weight:bold;}
 #tree-download dd {border-bottom:1px solid #999; margin-left:300px; min-width:300px; padding:5px;}
 html[dir='rtl'] #tree-download dl {float:right;margin:0 20px 0 0; max-width: 600px;}
 html[dir='rtl'] #tree-download dt {clear:right; float:right; padding:5px 0 5px 5px;}
