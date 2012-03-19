@@ -110,9 +110,8 @@ if ($action == 'choose' && $paramok) {
 			WT_DB::prepare("SELECT m_file FROM `##media` where m_media=? AND m_gedfile=?")
 			->execute(array($mediaid, WT_GED_ID))
 			->fetchOne();
-		$filename = str_replace(" ", "%20", $filename);
 		$thumbnail = thumbnail_file($filename, false);
-		echo '<img src = ', $thumbnail, ' class="thumbheight">';
+		echo '<img src = ', htmlspecialchars($thumbnail), ' class="thumbheight">';
 		echo '</td></tr></table>';
 		echo '</td></tr>';
 		echo '<tr><td class="descriptionbox width20 wrap">', WT_I18N::translate('Links'), '</td>';
