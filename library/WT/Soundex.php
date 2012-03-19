@@ -29,7 +29,7 @@ class WT_Soundex {
 	public static function getAlgorithms() {
 		return array(
 			'std' => /* I18N: http://en.wikipedia.org/wiki/Soundex */                 WT_I18N::translate('Russell'),
-			'dm'  => /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */ WT_I18N::translate('Daitch–Mokotoff'),
+			'dm'  => /* I18N: http://en.wikipedia.org/wiki/Daitch–Mokotoff_Soundex */ WT_I18N::translate('Daitch-Mokotoff'),
 		);
 	}
 
