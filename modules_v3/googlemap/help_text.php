@@ -184,32 +184,6 @@ case 'PLACECHECK_MATCH':
 	$text=WT_I18N::translate('By default the list does NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables.<br />Fully matched means all levels exist in both the gedcom file and the GoogleMap tables; and the GoogleMap places have coordinates for every level.<br /><br />Check this block to include those matched places.');
 	break;
 
-case 'PLACECHECK_KEY':
-	$title=WT_I18N::translate('Key to colors used below');
-	$text=
-		'<table border="1" cellspacing="0" cellpadding="3"><tr><td style="color:red;">'.
-		WT_Gedcom_Tag::getLabel('PLAC').
-		'</td><td style="color:red;" class="center"><strong>X</strong></td><td class="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
-		WT_I18N::translate('This place and its coordinates do not exist in the GoogleMap tables.').
-		'</td></tr><tr><td style="color:blue;">'.
-		WT_Gedcom_Tag::getLabel('PLAC').
-		'</td><td style="color:red;" class="center"><strong>X</strong></td><td class="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
-		WT_I18N::translate('This place exists in the GoogleMap tables, but has no coordinates.').
-		'</td></tr><tr><td><strong>'.
-		WT_I18N::translate('unknown').
-		'</td><td style="color:red;" class="center"><strong>X</strong></td><td class="center" style="color:red;"><strong>X</strong></td><td style="font-size:85%; white-space:normal;">'.
-		WT_I18N::translate('This place level is blank in your GEDCOM file. It should be added to GoogleMap places as "unknown" with coordinates from its parent level before you add any place to the next level.').
-		'</td></tr><tr><td style="color:blue;">'.
-		WT_I18N::translate('unknown').
-		'</td><td class="center">N55.0</td><td class="center">W85.0</td><td style="font-size:85%; white-space:normal;">'.
-		WT_I18N::translate('This place level is blank in your GEDCOM file, but exists as "unknown" in the GoogleMap places table with coordinates. No action required until the missing level can be entered.').
-		'</td></tr></table>';
-
-	
-	
-	
-	break;
-
 // Help text for Place Hierarchy display
 
 case 'GOOGLEMAP_PH':
