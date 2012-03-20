@@ -142,7 +142,7 @@ if (!isset ($_POST['matching'])) {$matching=false;} else {$matching=true;}
 echo '<td>';
 echo '<table class="gm_check_top"  align="center">';
 echo '<tr><th colspan="2">';
-echo WT_I18N::translate('List filtering options'), help_link('PLACECHECK_FILTER','googlemap');
+echo WT_I18N::translate('List filtering options');
 echo '</th></tr><tr><td>';
 echo WT_I18N::translate('Include fully matched places: '), help_link('PLACECHECK_MATCH','googlemap');
 echo '</td><td><input type="checkbox" name="matching" value="active"';
