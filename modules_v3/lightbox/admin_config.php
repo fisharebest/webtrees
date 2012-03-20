@@ -36,7 +36,7 @@ $controller
 
 $action = safe_POST('action');
 
-if ($action=='update' && !isset($security_user)) {
+if ($action=='update') {
 	set_module_setting('lightbox', 'LB_MUSIC_FILE',     $_POST['NEW_LB_MUSIC_FILE']);
 	set_module_setting('lightbox', 'LB_SS_SPEED',       $_POST['NEW_LB_SS_SPEED']);
 	set_module_setting('lightbox', 'LB_TRANSITION',     $_POST['NEW_LB_TRANSITION']);

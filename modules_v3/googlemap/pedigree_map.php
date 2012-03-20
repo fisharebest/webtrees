@@ -2,7 +2,7 @@
 // Print pedigree map using Googlemaps.
 // It requires that your place coordinates are stored on the Google Map
 // 'place_locations' table. It will NOT find coordinates stored only as tags in
-// your GEDCOM file. As in the Google Maps module, it can only display place
+// your GEDCOM file. As in the Google Maps™ module, it can only display place
 // markers where the location exists with identical spelling in both your
 // GEDCOM '2 PLAC' tag (within the '1 BIRT' event) and the place_locations table.
 //
@@ -225,10 +225,10 @@ echo " background-image: url('", WT_STATIC_URL, "images/loading.gif'); backgroun
 if (WT_USER_IS_ADMIN) {
 	echo "<table width=\"100%\">";
 	echo "<tr><td align=\"left\">";
-	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps configuration'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_editconfig\">", WT_I18N::translate('Google Maps™ preferences'), "</a>";
 	echo "</td>";
 	echo "<td align=\"center\">";
-	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_places\">", WT_I18N::translate('Edit geographic place locations'), "</a>";
+	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_places\">", WT_I18N::translate('Geographic data'), "</a>";
 	echo "</td>";
 	echo "<td align=\"right\">";
 	echo "<a href=\"module.php?mod=googlemap&amp;mod_action=admin_placecheck\">", WT_I18N::translate('Place Check'), "</a>";

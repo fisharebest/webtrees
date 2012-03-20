@@ -167,9 +167,9 @@ function create_map($placelevels) {
 			$adminplaces_url .= '&amp;parent='.$latlng['pl_id'];
 		}
 		echo '</tr><tr><td>';
-		echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
+		echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps™ preferences'), '</a>';
 		echo '&nbsp;|&nbsp;';
-		echo '<a href="'.$adminplaces_url.'">', WT_I18N::translate('Edit geographic place locations'), '</a>';
+		echo '<a href="'.$adminplaces_url.'">', WT_I18N::translate('Geographic data'), '</a>';
 		echo '&nbsp;|&nbsp;';
 		echo '<a href="'.$placecheck_url.'">', WT_I18N::translate('Place Check'), '</a>';
 		if (array_key_exists('batch_update', WT_Module::getActiveModules())) {
@@ -218,7 +218,7 @@ function create_map($placelevels) {
 					$sv_lat = $pl_lati;
 					$sv_lng = $pl_long;
 			}
-			// Set Street View parameters to numeric value if NULL (avoids problem with Google Street View Pane not rendering)
+			// Set Street View parameters to numeric value if NULL (avoids problem with Google Street View™ Pane not rendering)
 			if ($sv_dir==null) {
 				$sv_dir=0;
 			}
@@ -229,9 +229,9 @@ function create_map($placelevels) {
 				$sv_zoom=1;
 			}
 			
-			$_map = WT_I18N::translate('Google Maps');
+			$_map = WT_I18N::translate('Google Maps™');
 			$_reset = WT_I18N::translate('Reset');
-				$_streetview = /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View');
+				$_streetview = /* I18N: http://en.wikipedia.org/wiki/Google_street_view */ WT_I18N::translate('Google Street View™');
 			?>
 			<div>
 			<iframe style="background:transparent; margin-top:-3px; margin-left:2px; width:530px;height:405px;padding:0;border:solid 0px black" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_street_view.php?x=<?php echo $sv_lng; ?>&amp;y=<?php echo $sv_lat; ?>&amp;z=18&amp;t=2&amp;c=1&amp;s=1&amp;b=<?php echo $sv_dir; ?>&amp;p=<?php echo $sv_pitch; ?>&amp;m=<?php echo $sv_zoom; ?>&amp;j=1&amp;k=1&amp;v=1&amp;map=<?php echo $_map; ?>&amp;reset=<?php echo $_reset; ?>&amp;streetview=<?php echo $_streetview; ?>" marginwidth="0" marginheight="0" frameborder="0" scrolling="no"></iframe>
@@ -367,7 +367,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		}
 		echo '<br>', WT_I18N::translate('This place has no coordinates');
 		if (WT_USER_IS_ADMIN)
-			echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", WT_I18N::translate('Edit geographic location'), "</a>";
+			echo "<br><a href='module.php?mod=googlemap&amp;mod_action=admin_places&amp;parent=", $levelm, "&amp;display=inactive'>", WT_I18N::translate('Geographic data'), "</a>";
 		echo "</div>\", icon_type, \"", str_replace(array('&lrm;', '&rlm;'), array(WT_UTF8_LRM, WT_UTF8_RLM), addslashes($place2['place'])), "\");\n";
 	} else {
 		$lati = str_replace(array('N', 'S', ','), array('', '-', '.'), $place2['lati']);

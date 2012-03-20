@@ -45,7 +45,7 @@ if (!defined('WT_WEBTREES')) {
 class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Module_Tab {
 	// Extend WT_Module
 	public function getTitle() {
-		return /* I18N: The name of a module.  Google Maps is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ WT_I18N::translate('Google Maps™');
+		return /* I18N: The name of a module.  Google Maps™ is a trademark.  Do not translate it? http://en.wikipedia.org/wiki/Google_maps */ WT_I18N::translate('Google Maps™');
 	}
 
 	// Extend WT_Module
@@ -103,7 +103,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		global $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM, $GEDCOM;
 		global $GOOGLEMAP_XSIZE, $GOOGLEMAP_YSIZE, $SHOW_LIVING_NAMES;
 		global $GM_DEFAULT_TOP_VALUE, $GOOGLEMAP_COORD, $GOOGLEMAP_PH_CONTROLS;
-		global $GM_MARKER_COLOR, $GM_MARKER_SIZE, $GM_PREFIX, $GM_POSTFIX, $GM_PRE_POST_MODE;
+		global $GM_MARKER_COLOR, $GM_MARKER_SIZE, $GM_PREFIX, $GM_POSTFIX;
 
 		ob_start();
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
@@ -118,10 +118,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		if (WT_USER_IS_ADMIN) {
 			echo '<table width="100%"><tr>';
 			echo '<td width="40%" align="left">';
-			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
+			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps™ preferences'), '</a>';
 			echo '</td>';
 			echo '<td width="35%" class="center">';
-			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>';
+			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_places">', WT_I18N::translate('Geographic data'), '</a>';
 			echo '</td>';
 			echo '<td width="25%" align="right">';
 			echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place Check'),'</a>';

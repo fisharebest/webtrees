@@ -1,21 +1,21 @@
-﻿README file for the Google Maps module for webtrees
+﻿README file for the Google Maps™ module for webtrees
 
 The files in this archive should be extracted into your modules directory.
 
-These are the instruction on getting your Google Maps interface to work:
+These are the instruction on getting your Google Maps™ interface to work:
 
 1. Go to the Modules. You can find this page under the Administration page.
-2. Tick Enable Google Maps.
+2. Tick Enable Google Maps™.
 
 The map will only be shown if at least one fact has a place with coordinates
 attached to it. Attaching a coordinate can be done through the generic
-place-location interface (located at the Google Maps configuration page) or
+place-location interface (located at the Google Maps™ preferences page) or
 by specifying a MAP record with an event.
 
 Adding places one by one to your GEDCOM file (not recommended):
 
 This method is included so that you may have an idea of how a GEDCOM stores
-place data. You do not need the Google Maps module to use this procedure.
+place data. You do not need the Google Maps™ module to use this procedure.
 The co-ordinates for an event can only be added directly to a GEDCOM file. 
 The correct way to do this is for a PLAC record:
 2 PLAC <Placename>
@@ -33,7 +33,7 @@ editing if that option is selected.
 It is also possible to define a MAP record within a ADDR record, even though
 this is not according to the standard (these records are created by Legacy).
 
-Add a place using webtrees Google Maps module (recommended method):
+Add a place using webtrees Google Maps™ module (recommended method):
 
 Forenote: the Google Map module is designed to work with locations in tree-like
 fashion. If we were to consider a suburb of London, the tree would take the
@@ -46,7 +46,7 @@ GEDCOM specification, a feature of webtrees.
 And, BEFORE you start with any mapping endeavours, review your data. Make sure
 spelling is consistent, there are no 'almost' duplicates, places are in their
 right country, and the places you describe are in true tree fashion. Only then
-will the module make it easy for you to connect family data with Google Maps. 
+will the module make it easy for you to connect family data with Google Maps™. 
 
 This feature uses new database tables to store place text and location
 information. Existing places can be imported and location information can be

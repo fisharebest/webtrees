@@ -29,6 +29,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 global $WT_IMAGES;
 $action=safe_REQUEST($_REQUEST, 'action');
@@ -171,27 +172,39 @@ if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 }
 
 $controller=new WT_Controller_Base();
-$controller->setPageTitle(WT_I18N::translate('Edit geographic place locations'));
+$controller->setPageTitle(WT_I18N::translate('Google Maps™'));
 $controller->pageHeader();
 
-echo '<table id="gm_config"><tr>',
-	'<th><a ', (safe_GET('mod_action')=='admin_editconfig' ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>', '</th>',
-	'<th><a ', (safe_GET('mod_action')=='admin_places' ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&amp;mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>', '</th>',
-	'<th><a ', (safe_GET('mod_action')=='admin_placecheck' ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>', help_link('GOOGLEMAP_PLACECHECK','googlemap'), '</th>',
-'</tr></table>';
+?>
+<table id="gm_config">
+	<tr>
+		<th>
+			<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">
+				<?php echo WT_I18N::translate('Google Maps™ preferences'); ?>
+		</a>
+	</th>
+	<th>
+		<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_places">
+			<?php echo WT_I18N::translate('Geographic data'); ?>
+		</a>
+	</th>
+	<th>
+		<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
+			<?php echo WT_I18N::translate('Place Check'); ?>
+		</a>
+		<?php echo help_link('GOOGLEMAP_PLACECHECK','googlemap'); ?>
+		</th>
+	</tr>
+</table>
+<?php
 
 if ($action=='ImportGedcom') {
+	$ged_id=safe_GET('ged_id');
 	$placelist=array();
 	$j=0;
-	if ($mode=='all') {
-		$statement=
-			WT_DB::prepare("SELECT i_gedcom FROM `##individuals` UNION ALL SELECT f_gedcom FROM `##families`")
-			->execute();
-	} else {
-		$statement=
-			WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_file=? UNION ALL SELECT f_gedcom FROM `##families` WHERE f_file=?")
-			->execute(array(WT_GED_ID, WT_GED_ID));
-	}
+	$statement=
+		WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_file=? UNION ALL SELECT f_gedcom FROM `##families` WHERE f_file=?")
+		->execute(array($ged_id, $ged_id));
 	while ($gedrec=$statement->fetchColumn()) {
 		$i = 1;
 		$placerec = get_sub_record(2, '2 PLAC', $gedrec, $i);
@@ -571,12 +584,11 @@ foreach (array_reverse($where_am_i, true) as $id=>$place) {
 }
 echo '<a href="module.php?mod=googlemap&mod_action=admin_places&parent=0&inactive=', $inactive, '">', WT_I18N::translate('Top Level'), '</a></div>';
 echo '<form name="active" method="post" action="module.php?mod=googlemap&mod_action=admin_places&parent=', $parent, '&inactive=', $inactive, '"><div id="gm_active">';
-echo '<label for="inactive">', WT_I18N::translate('Click here to show inactive places'), '</label>';
-echo help_link('PLE_ACTIVE','googlemap');
+echo '<label for="inactive">', WT_I18N::translate('Show inactive places'), '</label>';
 echo '<input type="checkbox" name="inactive" id="inactive"';
 if ($inactive) echo ' checked="checked"';
 echo ' onclick="updateList(this.checked)"';
-echo '></div></form>';
+echo '>',  help_link('PLE_ACTIVE','googlemap'), '</div></form>';
 
 $placelist=get_place_list_loc($parent, $inactive);
 echo '<div class="gm_plac_edit">';
@@ -629,32 +641,48 @@ foreach ($placelist as $place) {
 ?>
 </table>
 </div>
+
 <table id="gm_manage">
 	<tr>
-		<td colspan="3"><a href="#" onclick="add_place_location(<?php echo $parent; ?>);return false;"><?php echo WT_I18N::translate('Add place'); ?></a><?php echo help_link('PL_ADD_LOCATION','googlemap'); ?></td>
-	</tr>
-	<tr>
-		<td><a href="module.php?mod=googlemap&mod_action=admin_places&action=ImportGedcom&mode=curr"><?php echo WT_I18N::translate('Import from current GEDCOM'); ?></a><?php echo help_link('PL_IMPORT_GEDCOM','googlemap'); ?></td>
-		<td><a href="module.php?mod=googlemap&mod_action=admin_places&action=ImportGedcom&mode=all"><?php echo WT_I18N::translate('Import from all GEDCOMs'); ?></a><?php echo help_link('PL_IMPORT_ALL_GEDCOM','googlemap'); ?></td>
-		<td><a href="module.php?mod=googlemap&mod_action=admin_places&action=ImportFile&mode=add"><?php echo WT_I18N::translate('Import from file'); ?></a><?php echo help_link('PL_IMPORT_FILE','googlemap'); ?></td>
+		<td colspan="2">
+			<a href="#" onclick="add_place_location(<?php echo $parent; ?>);return false;">
+				<?php echo WT_I18N::translate('Add place'); ?>
+			</a>
+		</td>
 	</tr>
 	<tr>
 		<td>
-<?php
-	if (count($where_am_i)<=4) {
-		echo '<a href="module.php?mod=googlemap&mod_action=admin_places&action=ExportFile&parent=', $parent, '">';
-		echo WT_I18N::translate('Export current view to file'), '</a>';
-		echo help_link('PL_EXPORT_FILE','googlemap');
-	} else {
-		echo '&nbsp;';
-	}
-	echo '</td><td colspan="2">';
-	echo '<a href="module.php?mod=googlemap&mod_action=admin_places&action=ExportFile&parent=0">';
-	echo WT_I18N::translate('Export all locations to file'), '</a>';
-	echo help_link('PL_EXPORT_ALL_FILE','googlemap');
-	echo '</td></tr></table>';
-if (empty($SEARCH_SPIDER)) {
-} else {
-	echo WT_I18N::translate('Search Engine Spider Detected'), ': ', $SEARCH_SPIDER;
-	echo '</div></body></html>';
-}
+			<?php echo WT_I18N::translate('Import geographic data from a family tree'); ?>
+		</td>
+		<td>
+			<form action="module.php" method="get">
+				<input type="hidden" name="mod" value="googlemap">
+				<input type="hidden" name="mod_action" value="admin_places">
+				<input type="hidden" name="action" value="ImportGedcom">
+				<?php echo select_edit_control('ged_id', get_all_gedcoms(), null, WT_GED_ID); ?>
+				<input type="submit" value="<?php echo WT_I18N::translate('Import'); ?>">
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<a href="module.php?mod=googlemap&amp;mod_action=admin_places&amp;action=ImportFile">
+				<?php echo WT_I18N::translate('Upload geographic data in CSV format'); ?>
+			</a>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo WT_I18N::translate('Download geographic data in CSV format'); ?>
+		</td>
+		<td>
+			<form action="module.php" method="get">
+				<input type="hidden" name="mod" value="googlemap">
+				<input type="hidden" name="mod_action" value="admin_places">
+				<input type="hidden" name="action" value="ExportFile">
+				<?php echo select_edit_control('parent', $where_am_i, 'All', WT_GED_ID); ?>
+				<input type="submit" value="<?php echo WT_I18N::translate('Download'); ?>">
+			</form>
+		</td>
+	</tr>
+</table>

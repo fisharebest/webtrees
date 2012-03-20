@@ -141,33 +141,35 @@ function print_address_structure_map($factrec, $level) {
 	if ($resultText!='<table></table>') echo str_replace(chr(10), ' ' , $resultText);
 }
 
-function rem_prefix_from_placename($prefix_list, $place, &$placelist) {
-	$prefix_split = explode(';', $prefix_list);
-	foreach ($prefix_split as $prefix) {
-		if ($prefix && substr($place, 0, strlen($prefix)+1)==$prefix.' ') {
-			$placelist[] = substr($place, strlen($prefix)+1);
+function rem_prefix_from_placename($prefix_list, $place, $placelist) {
+	if ($prefix_list) {
+		foreach (explode(';', $prefix_list) as $prefix) {
+			if ($prefix && substr($place, 0, strlen($prefix)+1)==$prefix.' ') {
+				$placelist[] = substr($place, strlen($prefix)+1);
+			}
 		}
 	}
 	return $placelist;
 }
 
-function rem_postfix_from_placename($postfix_list, $place, &$placelist) {
-	$postfix_split = explode (';', $postfix_list);
-	foreach ($postfix_split as $postfix) {
-		if ($postfix && substr($place, -strlen($postfix)-1)==' '.$postfix) {
-			$placelist[] = substr($place, 0, strlen($place)-strlen($postfix)-1);
+function rem_postfix_from_placename($postfix_list, $place, $placelist) {
+	if ($postfix_list) {
+		foreach (explode (';', $postfix_list) as $postfix) {
+			if ($postfix && substr($place, -strlen($postfix)-1)==' '.$postfix) {
+				$placelist[] = substr($place, 0, strlen($place)-strlen($postfix)-1);
+			}
 		}
 	}
 	return $placelist;
 }
 
-function rem_prefix_postfix_from_placename($prefix_list, $postfix_list, $place, &$placelist) {
-	$prefix_split = explode (";", $prefix_list);
-	$postfix_split = explode (";", $postfix_list);
-	foreach ($prefix_split as $prefix) {
-		foreach ($postfix_split as $postfix) {
-			if ($prefix && $postfix && substr($place, 0, strlen($prefix)+1)==$prefix.' ' && substr($place, -strlen($postfix)-1)==' '.$postfix) {
-				$placelist[] = substr($place, strlen($prefix)+1, strlen($place)-strlen($prefix)-strlen($postfix)-2);
+function rem_prefix_postfix_from_placename($prefix_list, $postfix_list, $place, $placelist) {
+	if ($prefix_list && $postfix_list) {
+		foreach (explode (";", $prefix_list) as $prefix) {
+			foreach (explode (";", $postfix_list) as $postfix) {
+				if ($prefix && $postfix && substr($place, 0, strlen($prefix)+1)==$prefix.' ' && substr($place, -strlen($postfix)-1)==' '.$postfix) {
+					$placelist[] = substr($place, strlen($prefix)+1, strlen($place)-strlen($prefix)-strlen($postfix)-2);
+				}
 			}
 		}
 	}
@@ -175,51 +177,15 @@ function rem_prefix_postfix_from_placename($prefix_list, $postfix_list, $place, 
 }
 
 function create_possible_place_names ($placename, $level) {
-	global $GM_PREFIX, $GM_POSTFIX, $GM_PRE_POST_MODE;
+	global $GM_PREFIX, $GM_POSTFIX;
 
 	$retlist = array();
 
-	switch (@$GM_PRE_POST_MODE[$level]) {
-	case 0:     // 0: no pre/postfix
-		$retlist[] = $placename;
-		break;
-	case 1:     // 1 = Normal name, Prefix, Postfix, Both
-		$retlist[] = $placename;
-		$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist);
-		$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
-		$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist);
-		break;
-	case 2:     // 2 = Normal name, Postfix, Prefix, Both
-		$retlist[] = $placename;
-		$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
-		$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist);
-		$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist);
-		break;
-	case 3:     // 3 = Prefix, Postfix, Both, Normal name
-		$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist);
-		$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
-		$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist);
-		$retlist[] = $placename;
-		break;
-	case 4:     // 4 = Postfix, Prefix, Both, Normal name
-		$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
-		$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist);
-		$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist);
-		$retlist[] = $placename;
-		break;
-	case 5:     // 5 = Prefix, Postfix, Normal name, Both
-		$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist);
-		$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
-		$retlist[] = $placename;
-		$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist);
-		break;
-	case 6:     // 6 = Postfix, Prefix, Normal name, Both
-		$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
-		$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist);
-		$retlist[] = $placename;
-		$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist);
-		break;
-	}
+	//  Exact, remove prefix, remove suffix, remove both
+	$retlist[] = $placename;
+	$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist);
+	$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
+	$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist);
 	return $retlist;
 }
 
@@ -502,7 +468,7 @@ function build_indiv_map($indifacts, $famids) {
 		echo '</td></tr>';
 		if (WT_USER_IS_ADMIN) {
 			echo '<tr><td class="center" colspan="2">';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>';
+			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps™ preferences'), '</a>';
 			echo '</td></tr>';
 		}
 	} else {

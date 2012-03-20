@@ -642,7 +642,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 						'<ul class="tabs" >',
 							'<li><a href="#event" id="EV"><?php echo WT_I18N::translate('Events'); ?><\/a><\/li>',
 							<?php if ($STREETVIEW) { ?>
-							'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Google Street View'); ?><\/a><\/li>',
+							'<li><a href="#sview" id="SV"><?php echo WT_I18N::translate('Google Street View™'); ?><\/a><\/li>',
 							<?php } ?>
 							
 						// === To be used later === Do not delete ==============

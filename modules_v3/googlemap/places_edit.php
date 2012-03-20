@@ -36,7 +36,7 @@ if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
 
 $controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('Edit geographic place locations'));
+$controller->setPageTitle(WT_I18N::translate('Geographic data'));
 $controller->pageHeader();
 
 if (!WT_USER_IS_ADMIN) {
@@ -127,7 +127,7 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 
 // Update placelocation STREETVIEW fields ----------------------------------------------------------
 if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {	
-	echo "Google Street View parameters updated";
+	echo "Google Street View™ parameters updated";
 	echo "<br><br>";
 	echo "LATI = ".$_REQUEST['svlati']."<br>";
 	echo "LONG = ".$_REQUEST['svlong']."<br>";

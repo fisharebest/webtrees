@@ -1,6 +1,6 @@
 <?php
 // Provides a way to compare places in your family tree file with the matching
-// entries in the Google Maps 'placelocations' table.
+// entries in the Google Maps™ 'placelocations' table.
 //
 // webtrees: Web based Family History software
 // Copyright (C) 2012 webtrees development team.
@@ -31,7 +31,6 @@ if (!defined('WT_WEBTREES')) {
 
 $action   =safe_POST     ('action'                                              );
 $gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID );
-$openinnew=safe_POST_bool('openinnew'                                           );
 $country  =safe_POST     ('country',   WT_REGEX_UNSAFE,              ''         );
 if (!$country) {
 	// allow placelist to link directly to a specific country/state
@@ -52,11 +51,6 @@ if ($show_changes && !empty($_SESSION['placecheck_gedcom_id'])) {
 } else {
 	$_SESSION['placecheck_gedcom_id'] = $gedcom_id;
 }
-if ($show_changes && !empty($_SESSION['placecheck_openinnew'])) {
-	$openinnew = $_SESSION['placecheck_openinnew'];
-} else {
-	$_SESSION['placecheck_openinnew'] = $openinnew;
-}
 if ($show_changes && !empty($_SESSION['placecheck_country'])) {
 	$country = $_SESSION['placecheck_country'];
 } else {
@@ -71,16 +65,32 @@ if ($show_changes && !empty($_SESSION['placecheck_state'])) {
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('Place Check'))
+	->setPageTitle(WT_I18N::translate('Google Maps™'))
 	->pageHeader();
 
-$target=$openinnew ? 'target="_blank"' : '';
+?>
+<table id="gm_config">
+	<tr>
+		<th>
+			<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">
+				<?php echo WT_I18N::translate('Google Maps™ preferences'); ?>
+		</a>
+	</th>
+	<th>
+		<a href="module.php?mod=googlemap&amp;mod_action=admin_places">
+			<?php echo WT_I18N::translate('Geographic data'); ?>
+		</a>
+	</th>
+	<th>
+		<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
+			<?php echo WT_I18N::translate('Place Check'); ?>
+		</a>
+		<?php echo help_link('GOOGLEMAP_PLACECHECK','googlemap'); ?>
+		</th>
+	</tr>
+</table>
 
-echo '<table id="gm_config"><tr>',
-	'<th><a ', (safe_GET('mod_action')=="admin_editconfig" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps configuration'), '</a>', '</th>',
-	'<th><a ', (safe_GET('mod_action')=="admin_places" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&amp;mod_action=admin_places">', WT_I18N::translate('Edit geographic place locations'), '</a>', '</th>',
-	'<th><a ', (safe_GET('mod_action')=="admin_placecheck" ? 'class="current" ' : ''), 'href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">', WT_I18N::translate('Place Check'), '</a>', help_link('GOOGLEMAP_PLACECHECK','googlemap'), '</th>',
-'</tr></table>';
+<?php
 
 //Start of User Defined options
 echo '<table id="gm_check_outer">';
@@ -95,12 +105,6 @@ echo '<td><select name="gedcom_id">';
 foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	echo '<option value="', $ged_id, '"', $ged_id==$gedcom_id?' selected="selected"':'', '>', get_gedcom_setting($ged_id, 'title'), '</option>';
 }
-echo '</select></td></tr>';
-//Option box for 'Open in new window'
-echo '<tr><td>', WT_I18N::translate('Open links in'), '</td>';
-echo '<td><select name="openinnew">';
-echo '<option value="0" ', $openinnew?' selected="selected"':'', '>', WT_I18N::translate('Same tab/window'), '</option>';
-echo '<option value="1" ', $openinnew?' selected="selected"':'', '>', WT_I18N::translate('New tab/window'), '</option>';
 echo '</select></td></tr>';
 //Option box to select Country within Gedcom
 echo '<tr><td>', WT_I18N::translate('Country'), '</td>';
@@ -156,7 +160,7 @@ echo '></td></tr>';
 echo '</table>';
 echo '</td>';
 echo '<td>';
-echo '<input type="submit" value="', WT_I18N::translate('Show'), '"', $target, '><input type="hidden" name="action" value="go">';
+echo '<input type="submit" value="', WT_I18N::translate('Show'), '"><input type="hidden" name="action" value="go">';
 echo '</td>';
 echo '</tr>';
 echo '</form>';
@@ -166,7 +170,7 @@ echo '<hr>';
 switch ($action) {
 case 'go':
 	//Identify gedcom file
-	echo "<div id=\"gm_check_title\"><span>", WT_I18N::translate('Place list for GEDCOM file'), ": </span>", htmlspecialchars(get_gedcom_setting($gedcom_id, 'title')), "</div>";
+	echo '<div id="gm_check_title"><span>', htmlspecialchars(get_gedcom_setting($gedcom_id, 'title')), '</span></div>';
 	//Select all '2 PLAC ' tags in the file and create array
 	$place_list=array();
 	$ged_data=WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")
@@ -241,8 +245,8 @@ case 'go':
 	$span=$max*3+3;
 	echo '<div class="gm_check_details">';
 	echo '<table class="gm_check_details"><tr>';
-	echo '<th rowspan="3">', WT_I18N::translate('GEDCOM File Place Data<br />(2 PLAC tag)'), '</th>';
-	echo '<th colspan="', $span, '">', WT_I18N::translate('GoogleMap Places Table Data'), '</th></tr>';
+	echo '<th rowspan="3">', WT_I18N::translate('Place'), '</th>';
+	echo '<th colspan="', $span, '">', WT_I18N::translate('Geographic data'), '</th></tr>';
 	echo '<tr>';
 	while ($cols<$max) {
 		if ($cols == 0) {
@@ -365,6 +369,6 @@ case 'go':
 default:
 	// Do not run until user selects a gedcom/place/etc.
 	// Instead, show some useful help info.
-	echo "<div class=\"gm_check_top accepted\">", WT_I18N::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), "</div>";
+	echo "<div class=\"gm_check_top accepted\">", WT_I18N::translate('This will list all the places from the selected family tree. By default this will NOT INCLUDE places that are fully matched between the family tree and the Google Maps™ tables.'), "</div>";
 	break;
 }

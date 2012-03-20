@@ -77,7 +77,6 @@ else {
 
 $ged          =safe_POST('ged', preg_quote_array(array_keys($all_geds)), $default_ged);
 $err_level    =safe_POST('err_level',    '[0-3]', $critical); // Higher numbers are more picky.
-$openinnew    =safe_POST('openinnew',    '[01]',  '0');    // Open links in same/new tab/window
 $context_lines=safe_POST('context_lines','[0-5]', '2');    // Lines of context to display
 $showall      =safe_POST('showall',      '[01]',  '0');    // Show details of records with no problems
 
@@ -94,11 +93,6 @@ echo '<td class="optionbox"><select name="err_level">';
 for ($i=0; $i<count($levels); $i++) {
 	echo '<option value="', $i, '"', $i==$err_level?' selected="selected"':'', '>', $levels[$i], '</option>';
 }
-echo '</select></td></tr>';
-echo '<tr><td class="list_label">', WT_I18N::translate('Open links in'), '</td>';
-echo '<td class="optionbox"><select name="openinnew">';
-echo '<option value="0"', $openinnew==0?' selected="selected"':'', '>', WT_I18N::translate('Same tab/window'), '</option>';
-echo '<option value="1"', $openinnew==1?' selected="selected"':'', '>', WT_I18N::translate('New tab/window'), '</option>';
 echo '</select></td></tr>';
 echo '<tr><td class="list_label">', WT_I18N::translate('Lines of GEDCOM context'), '</td>';
 echo '<td class="optionbox"><select name="context_lines">';
@@ -165,13 +159,12 @@ $WT_LINK=array(
 	'OBJE'=>'mediaviewer.php?mid=',
 	'NOTE'=>'note.php?nid='
 );
-$target=($openinnew==1 ? ' target="_new"' : '');
 function wt_href($tag, $xref, $name='')
 {
 	global $WT_LINK, $target, $ged;
 	$text=($name=='' ? "$tag $xref" : "$name ($xref)");
 	if (isset($WT_LINK[$tag]) && get_id_from_gedcom($ged)) {
-		return '&lrm;<a href="'.$WT_LINK[$tag].str_replace('@','',$xref).'&amp;ged='.rawurlencode($ged).'"'.$target.'>'.$text.'</a>&lrm;';
+		return '&lrm;<a href="'.$WT_LINK[$tag].str_replace('@','',$xref).'&amp;ged='.rawurlencode($ged).'">'.$text.'</a>&lrm;';
 	} else {
 		return "&lrm;$tag $xref&lrm;";
 	}

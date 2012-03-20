@@ -92,65 +92,48 @@ global $GM_MARKER_COLOR;
 global $GM_MARKER_SIZE;
 global $GM_PREFIX;
 global $GM_POSTFIX;
-global $GM_PRE_POST_MODE;
 
 $GM_MARKER_COLOR [1]=get_module_setting('googlemap', 'GM_MARKER_COLOR_1',  'Red'  ); // Marker to be used
 $GM_MARKER_SIZE  [1]=get_module_setting('googlemap', 'GM_MARKER_SIZE_1',   'Large'); // 'Small' or 'Large'
 $GM_PREFIX       [1]=get_module_setting('googlemap', 'GM_PREFIX_1',        ''     ); // Text to be placed in front of the name
 $GM_POSTFIX      [1]=get_module_setting('googlemap', 'GM_POSTFIX_1',       ''     ); // Text to be placed after the name
-$GM_PRE_POST_MODE[1]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_1', '0'    ); // Prefix/Postfix mode. Possible value are:
-                                                                      // 0 = no pre/postfix
-                                                                      // 1 = Normal name, Prefix, Postfix, Both
-                                                                      // 2 = Normal name, Postfix, Prefxi, Both
-                                                                      // 3 = Prefix, Postfix, Both, Normal name
-                                                                      // 4 = Postfix, Prefix, Both, Normal name
-                                                                      // 5 = Prefix, Postfix, Normal name, Both
-                                                                      // 6 = Postfix, Prefix, Normal name, Both
 
 $GM_MARKER_COLOR [2]=get_module_setting('googlemap', 'GM_MARKER_COLOR_2',  'Red'  );
 $GM_MARKER_SIZE  [2]=get_module_setting('googlemap', 'GM_MARKER_SIZE_2',   'Large');
 $GM_PREFIX       [2]=get_module_setting('googlemap', 'GM_PREFIX_2',        ''     );
 $GM_POSTFIX      [2]=get_module_setting('googlemap', 'GM_POSTFIX_2',       ''     );
-$GM_PRE_POST_MODE[2]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_2', '0'    );
 
 $GM_MARKER_COLOR [3]=get_module_setting('googlemap', 'GM_MARKER_COLOR_3',  'Red'  );
 $GM_MARKER_SIZE  [3]=get_module_setting('googlemap', 'GM_MARKER_SIZE_3',   'Large');
 $GM_PREFIX       [3]=get_module_setting('googlemap', 'GM_PREFIX_3',        ''     );
 $GM_POSTFIX      [3]=get_module_setting('googlemap', 'GM_POSTFIX_3',       ''     );
-$GM_PRE_POST_MODE[3]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_3', '0'    );
 
 $GM_MARKER_COLOR [4]=get_module_setting('googlemap', 'GM_MARKER_COLOR_4',  'Red'  );
 $GM_MARKER_SIZE  [4]=get_module_setting('googlemap', 'GM_MARKER_SIZE_4',   'Large');
 $GM_PREFIX       [4]=get_module_setting('googlemap', 'GM_PREFIX_4',        ''     );
 $GM_POSTFIX      [4]=get_module_setting('googlemap', 'GM_POSTFIX_4',       ''     );
-$GM_PRE_POST_MODE[4]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_4', '0'    );
 
 $GM_MARKER_COLOR [5]=get_module_setting('googlemap', 'GM_MARKER_COLOR_5',  'Red'  );
 $GM_MARKER_SIZE  [5]=get_module_setting('googlemap', 'GM_MARKER_SIZE_5',   'Large');
 $GM_PREFIX       [5]=get_module_setting('googlemap', 'GM_PREFIX_5',        ''     );
 $GM_POSTFIX      [5]=get_module_setting('googlemap', 'GM_POSTFIX_5',       ''     );
-$GM_PRE_POST_MODE[5]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_5', '0'    );
 
 $GM_MARKER_COLOR [6]=get_module_setting('googlemap', 'GM_MARKER_COLOR_6',  'Red'  );
 $GM_MARKER_SIZE  [6]=get_module_setting('googlemap', 'GM_MARKER_SIZE_6',   'Large');
 $GM_PREFIX       [6]=get_module_setting('googlemap', 'GM_PREFIX_6',        ''     );
 $GM_POSTFIX      [6]=get_module_setting('googlemap', 'GM_POSTFIX_6',       ''     );
-$GM_PRE_POST_MODE[6]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_6', '0'    );
 
 $GM_MARKER_COLOR [7]=get_module_setting('googlemap', 'GM_MARKER_COLOR_7',  'Red'  );
 $GM_MARKER_SIZE  [7]=get_module_setting('googlemap', 'GM_MARKER_SIZE_7',   'Large');
 $GM_PREFIX       [7]=get_module_setting('googlemap', 'GM_PREFIX_7',        ''     );
 $GM_POSTFIX      [7]=get_module_setting('googlemap', 'GM_POSTFIX_7',       ''     );
-$GM_PRE_POST_MODE[7]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_7', '0'    );
 
 $GM_MARKER_COLOR [8]=get_module_setting('googlemap', 'GM_MARKER_COLOR_8',  'Red'  );
 $GM_MARKER_SIZE  [8]=get_module_setting('googlemap', 'GM_MARKER_SIZE_8',   'Large');
 $GM_PREFIX       [8]=get_module_setting('googlemap', 'GM_PREFIX_8',        ''     );
 $GM_POSTFIX      [8]=get_module_setting('googlemap', 'GM_POSTFIX_8',       ''     );
-$GM_PRE_POST_MODE[8]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_8', '0'    );
 
 $GM_MARKER_COLOR [9]=get_module_setting('googlemap', 'GM_MARKER_COLOR_9',  'Red'  );
 $GM_MARKER_SIZE  [9]=get_module_setting('googlemap', 'GM_MARKER_SIZE_9',   'Large');
 $GM_PREFIX       [9]=get_module_setting('googlemap', 'GM_PREFIX_9',        ''     );
 $GM_POSTFIX      [9]=get_module_setting('googlemap', 'GM_POSTFIX_9',       ''     );
-$GM_PRE_POST_MODE[9]=get_module_setting('googlemap', 'GM_PRE_POST_MODE_9', '0'    );

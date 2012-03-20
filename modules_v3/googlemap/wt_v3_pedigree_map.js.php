@@ -5,7 +5,7 @@
 // Print pedigree map using Googlemaps.
 // It requires that your place coordinates are stored on the Google Map
 // 'place_locations' table. It will NOT find coordinates stored only as tags in
-// your GEDCOM file. As in the Google Maps module, it can only display place
+// your GEDCOM file. As in the Google Maps™ module, it can only display place
 // markers where the location exists with identical spelling in both your
 // GEDCOM '2 PLAC' tag (within the '1 BIRT' event) and the place_locations table.
 //
