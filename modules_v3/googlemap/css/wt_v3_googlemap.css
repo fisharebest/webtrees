@@ -11,12 +11,12 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
  * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
  * $Id:wt_v3_googlemap.css 12914 2011-11-24 19:57:59Z brian $
  *
@@ -26,14 +26,14 @@
 #googlemap_left{margin-top:-14px;}
 div.infowindow {max-height:260px; overflow-x:hidden;}
 
-#iwhead {text-align:center; font-size:10px; white-space:normal; margin-right:0px;  margin-left:-2px;  margin-top:-1px;  background:#ffffff; border-top:1px solid #bbbbbb; border-bottom:1px solid #bbbbbb; border-left:0px solid #bbbbbb; border-right:0px solid #bbbbbb; padding-left:.2em; padding-right:.2em; padding-top:.3em; padding-bottom:.3em; width:300px;}
+#iwhead {text-align:center; font-size:10px; white-space:normal; margin-right:0px; margin-left:-2px; margin-top:-1px; background:#ffffff; border-top:1px solid #bbbbbb; border-bottom:1px solid #bbbbbb; border-left:0px solid #bbbbbb; border-right:0px solid #bbbbbb; padding-left:.2em; padding-right:.2em; padding-top:.3em; padding-bottom:.3em; width:300px;}
 #iwhead a:hover {color:red;}
-#iwcontent {/* background-color:#ddeeff; */ background-color:#eeeeee; border:1px solid #bbbbbb; /*min-width:314px; */ min-height:260px; margin-right:0em;}
+#iwcontent {background-color:#eeeeee; border:1px solid #bbbbbb; min-height:260px; margin-right:0em;}
 #iwcontent a {color:black;}
 #iwhead a {color:#0000cc;}
 #iwcontent a:hover {color:red;}
 
-#gmtabs {/* background-color:#ddeeff; */ background-color:#eeeeee; border:0px solid red; margin-top:0em; margin-left:-2px; font-size:11px; margin-right:4.5em; width:247px;}
+#gmtabs {background-color:#eeeeee; border:0px solid red; margin-top:0em; margin-left:-2px; font-size:11px; margin-right:4.5em; width:247px;}
 #gmtabs ul {margin-left:-2px; border:0px solid red; border-bottom:1px solid #aaaaaa;}
 
 h4 {margin-bottom:-0.1em;}
@@ -41,16 +41,16 @@ h4 {margin-bottom:-0.1em;}
 #txt {width:300px; margin-top:-8px; margin-left:-8px; background:#ffffcc; text-align:center;}
 #pano {width:297px; height:216px; margin-left:0px; margin-top:0em; border-top:1px solid #aaaaaa;}
 
-.highlt_img {width:60px; /* background-color:#ddeeff; */ background-color:#eeeeee; text-align:center;}
+.highlt_img {width:60px; background-color:#eeeeee; text-align:center;}
 .highlt_img img{float:none; border:none;}
 
 /* root element for tabs */
-ul.tabs { margin:0 !important;  padding:0; padding-left:2px; padding-top:2px; height:20px; border:1px solid #666; background:#ddeeff; width:296px;}
+ul.tabs {margin:0 !important; padding:0; padding-left:2px; padding-top:2px; height:20px; border:1px solid #666; background:#ddeeff; width:296px;}
 /* single tab */
-ul.tabs li { float:left;  padding:0;  margin:0;  margin-left:2px; list-style-type:none;}
+ul.tabs li {float:left; padding:0; margin:0; margin-left:2px; list-style-type:none;}
 /* link inside the tab. uses a background image */
 ul.tabs a {float:left; font-size:13px; display:block; /* padding:5px 30px; */ padding:0px 10px; text-decoration:none; border:1px solid #666; border-bottom:0px; height:18px; background-color:#efefef; color:#777; margin-right:2px; position:relative; top:1px; outline:0; border-radius:4px 4px 0 0;}
-ul.tabs a:hover {/* background-color:#F7F7F7; */ background-color:#ffffff; color:#333;} 
+ul.tabs a:hover { background-color:#ffffff; color:#333;} 
 /* selected tab */
 ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#000; cursor:default;}
 /* tabs */
@@ -68,9 +68,6 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 #view_type {display:block; margin-top:-12px;}
 #view_type td {width:360px;}
 #view_type form{width:360px; text-align:center;}
-
-/* place_hierarchy elements */
-#place_hierarchy {/* float:left; margin-left:-130px; */}
 
 /* Elements To be defined later (leave as dislay:none; for now) */ 
 /* sidebar */
@@ -90,7 +87,7 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 .icon_birt {background-position:-120px -120px; width:60px; height:60px;}
 
 /* places_edit */
-#gname {vertical-align:text-middle; margin-top:0px; white-space:pre-wrap;  width:200px;  height:60px;}
+#gname {vertical-align:text-middle; margin-top:0px; white-space:pre-wrap; width:200px; height:60px;}
 #namelink {padding-bottom:5px;}
 
 /* googlemap_style */
@@ -99,5 +96,4 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 #map_type li.non_active {background:white; color:black; font-weight:normal;}
 #map_type li.active {background:gray; color:white; font-weight:bold;}
 #map_type li:hover {background:#ddd;}
-
 #googlemap_left {margin-top:-14px !important;}

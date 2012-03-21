@@ -27,7 +27,7 @@ html {overflow-y:scroll;}
 /* general styles */
 body {font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size:12px; margin:10px; min-width:800px;}
 input.ui-button {padding:1px 3px;}
-input, textarea, select {color:black; font:inherit; padding:0 3px;}
+input, textarea, select {color:black; font:inherit; padding:0 3px; height:22px;}
 fieldset {margin:8px 8px 4px 8px;}
 legend {font-style:italic; font-weight:bold; padding:0 5px 5px; align:top;}
 img {border:none; vertical-align:middle;}
@@ -372,14 +372,15 @@ html[dir='rtl'] table#gm_levels {margin-right:20px;}
 .gm_levels input{width:90%;}
 
 
-/* Place edit */
+/* Georgraphic data */
 table.gm_plac_edit {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:0 5px; width:100%;}
 div.gm_plac_edit {width:100%; max-height:535px; overflow:auto;}
 .gm_plac_edit th {border-bottom:2px solid LightGrey; font-size:105%; font-weight:bold; padding:5px; text-align:left;}
 html[dir='rtl'] .gm_plac_edit th {text-align:right;}
 .gm_plac_edit td {border-bottom:1px solid LightGrey;}
 table#gm_manage {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0 0; padding:0 5px; width:98%;}
-#gm_manage td {border-bottom:1px solid LightGrey;}
+#gm_manage td {border-bottom:1px solid LightGrey; vertical-align:middle;}
+#gm_active input {height: auto; vertical-align: top;}
 
 /* Place check */
 table.gm_check_outer {border-collapse:separate; border-spacing:0; height:100px; overflow:auto; width:98%}

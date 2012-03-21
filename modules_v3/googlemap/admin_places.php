@@ -645,7 +645,7 @@ foreach ($placelist as $place) {
 <table id="gm_manage">
 	<tr>
 		<td colspan="2">
-			<a href="#" onclick="add_place_location(<?php echo $parent; ?>);return false;">
+			<a class="accepted" href="#" onclick="add_place_location(<?php echo $parent; ?>);return false;">
 				<?php echo WT_I18N::translate('Add place'); ?>
 			</a>
 		</td>
