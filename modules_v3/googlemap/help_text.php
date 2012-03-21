@@ -49,11 +49,6 @@ case 'GM_NAME_PREFIX_SUFFIX':
 	$text=WT_I18N::translate('Some place names may be written with optional prefixes and suffixes.  For example “Orange” versus “Orange County”.  If the family tree contains the full place names, but the geographic database contains the short place names, then you should specify a list of the prefixes and suffixes to be disregarded.  Multiple options should be separated with semicolons.  For example “County;County of” or “Township;Twp;Twp.”.');
 	break;
 
-case 'PL_EDIT_LOCATION':
-	$title=WT_I18N::translate('Edit or delete location');
-	$text=WT_I18N::translate('Here you can edit the location or delete the location. When you click on Edit a new window will open where you can change the values of the geographic location.<br />If you click on the delete-icon the record will be deleted. This can only be done if there are no records connected to this location. If no records are connected the delete-icon is active, otherwise it is inactive.');
-	break;
-
 case 'GOOGLEMAP_COORD':
 	$title=WT_I18N::translate('Display Map Coordinates');
 	$text=WT_I18N::translate('This options sets whether Latitude and Longitude are displayed on the pop-up window attached to map markers.');

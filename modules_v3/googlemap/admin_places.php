@@ -598,8 +598,8 @@ echo '<th>', WT_Gedcom_Tag::getLabel('LATI'), '</th>';
 echo '<th>', WT_Gedcom_Tag::getLabel('LONG'), '</th>';
 echo '<th>', WT_I18N::translate('Zoom factor'), '</th>';
 echo '<th>', WT_I18N::translate('Icon'), '</th>';
-echo '<th colspan="2">';
-echo WT_I18N::translate('Edit geographic location'), help_link('PL_EDIT_LOCATION','googlemap'), '</th></tr>';
+echo '<th>';
+echo WT_I18N::translate('Edit'), '</th><th>', WT_I18N::translate('Delete'), '</th></tr>';
 if (count($placelist) == 0)
 	echo '<tr><td colspan="7" class="accepted">', WT_I18N::translate('No places found'), '</td></tr>';
 foreach ($placelist as $place) {
@@ -644,15 +644,19 @@ foreach ($placelist as $place) {
 
 <table id="gm_manage">
 	<tr>
-		<td colspan="2">
-			<a class="accepted" href="#" onclick="add_place_location(<?php echo $parent; ?>);return false;">
-				<?php echo WT_I18N::translate('Add place'); ?>
-			</a>
+		<td>
+			<?php echo WT_I18N::translate('Add geographic location'); ?>
+		</td>
+		<td>
+			<form action="#" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
+				<?php echo select_edit_control('parent_id', $where_am_i, WT_I18N::translate('Top Level'), $parent); ?>
+				<input type="submit" value="<?php echo WT_I18N::translate('Add'); ?>">
+			</form>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<?php echo WT_I18N::translate('Import geographic data from a family tree'); ?>
+			<?php echo WT_I18N::translate('Import all places from a family tree'); ?>
 		</td>
 		<td>
 			<form action="module.php" method="get">
@@ -666,14 +670,27 @@ foreach ($placelist as $place) {
 	</tr>
 	<tr>
 		<td colspan="2">
-			<a href="module.php?mod=googlemap&amp;mod_action=admin_places&amp;action=ImportFile">
-				<?php echo WT_I18N::translate('Upload geographic data in CSV format'); ?>
-			</a>
+			<b>
+				<?php echo /* I18N: %s is a URL */ WT_I18N::translate('Geographic data may be obtained from %s', '<a href="http://webtrees.net/en/add-ons/gmfiles">webtrees.net/en/add-ons/gmfiles</a>'); ?>
+			</b>
 		</td>
 	</tr>
 	<tr>
 		<td>
-			<?php echo WT_I18N::translate('Download geographic data in CSV format'); ?>
+			<?php echo WT_I18N::translate('Upload geographic data'); ?>
+		</td>
+		<td>
+			<form action="module.php" method="get">
+				<input type="hidden" name="mod" value="googlemap">
+				<input type="hidden" name="mod_action" value="admin_places">
+				<input type="hidden" name="action" value="ImportFile">
+				<input type="submit" value="<?php echo WT_I18N::translate('Upload'); ?>">
+			</form>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<?php echo WT_I18N::translate('Download geographic data'); ?>
 		</td>
 		<td>
 			<form action="module.php" method="get">
