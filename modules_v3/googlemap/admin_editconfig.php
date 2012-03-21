@@ -121,8 +121,8 @@ if ($action=='update') {
 					</td>
 				</tr>
 				<tr>
-					<th><?php echo WT_I18N::translate('Enable Google Street View™'); ?></th>
-					<td><?php echo edit_field_yes_no('NEW_GM_USE_STREETVIEW', get_module_setting('googlemap', 'GM_USE_STREETVIEW')); ?></td>
+					<th><?php echo WT_I18N::translate('Google Street View™'); ?></th>
+					<td><?php echo radio_buttons('NEW_GM_USE_STREETVIEW', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), get_module_setting('googlemap', 'GM_USE_STREETVIEW')); ?></td>
 				</tr>
 				<tr>
 					<th><?php echo WT_I18N::translate('Size of map (in pixels)'); ?></th>

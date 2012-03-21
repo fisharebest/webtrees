@@ -668,13 +668,6 @@ foreach ($placelist as $place) {
 		</td>
 	</tr>
 	<tr>
-		<td colspan="2">
-			<b>
-				<?php echo /* I18N: %s is a URL */ WT_I18N::translate('Geographic data may be obtained from %s', '<a href="http://webtrees.net/en/add-ons/gmfiles">webtrees.net/en/add-ons/gmfiles</a>'); ?>
-			</b>
-		</td>
-	</tr>
-	<tr>
 		<td>
 			<?php echo WT_I18N::translate('Upload geographic data'); ?>
 		</td>

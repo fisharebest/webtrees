@@ -357,6 +357,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		}
 		echo '</a>';
+		die("eek1!");
 		if ($GM_DISP_COUNT) {
 			if ($lastlevel) {
 				print_how_many_people($level, $parent);
@@ -440,6 +441,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 			}
 		}
 		echo '</a>';
+		die("eek2!");
 		if ($GM_DISP_COUNT) {
 			if ($lastlevel) {
 				print_how_many_people($level, $parent);

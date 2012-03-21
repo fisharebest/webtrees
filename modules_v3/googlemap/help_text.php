@@ -91,13 +91,6 @@ case 'PLE_ACTIVE':
 		'</p>';
 	break;
 
-// Help text for placecheck.php
-
-case 'PLACECHECK_MATCH':
-	$title=WT_I18N::translate('Include matched places');
-	$text=WT_I18N::translate('By default the list does NOT INCLUDE places that are fully matched between the family tree and the Google Maps™ tables.<br />Fully matched means all levels exist in both the gedcom file and the Google Maps™ tables; and the Google Maps™ places have coordinates for every level.<br /><br />Check this block to include those matched places.');
-	break;
-
 // Help text for Place Hierarchy display
 
 case 'GOOGLEMAP_PH_MARKER':
@@ -112,7 +105,7 @@ case 'GM_DISP_SHORT_PLACE':
 
 case 'GM_DISP_COUNT':
 	$title=WT_I18N::translate('Display indis and families counts');
-	$text=WT_I18N::translate('Here you can specify if the counts of indis and families connected to the place is displayed. If the family tree contains many people is recomended to turn it off.');
+	$text=WT_I18N::translate('Here you can specify if the counts of indis and families connected to the place is displayed. Now if GEDCOM file contains many people is recomended to turn it off.');
 	break;
 
 case 'GOOGLEMAP_PH_WHEEL':
@@ -129,7 +122,7 @@ case 'GOOGLEMAP_PH_CONTROLS':
 
 case 'PEDIGREE_MAP_clustersize':
 	$title=WT_I18N::translate('Cluster size');
-	$text=WT_I18N::translate('The number of markers to be placed at one point before a trail of pins is started in a north east line behind the younger generations.  The “trail” is usually only visable at high zoom values.');
+	$text=WT_I18N::translate('The number of markers to be placed at one point before a trail of pins is started in a north east line behind the younger generations.  The \'trail\' is usually only visable at high zoom values.');
 	break;
 
 case 'PEDIGREE_MAP_hidelines':
@@ -139,6 +132,6 @@ case 'PEDIGREE_MAP_hidelines':
 
 case 'PEDIGREE_MAP_hideflags':
 	$title=WT_I18N::translate('Hide flags');
-	$text=WT_I18N::translate('Hide the flags that are configured in the Google Maps™ module.  Usually these are for countries and states. This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.');
+	$text=WT_I18N::translate('Hide the flags that are configured in the googlemap module.  Usually these are for countries and states. This serves as a visual cue that the markers around the flag are from the general area, and not the specific spot.');
 	break;
 }

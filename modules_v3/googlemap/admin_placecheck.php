@@ -147,7 +147,7 @@ echo '<table class="gm_check_top"  align="center">';
 echo '<tr><th colspan="2">';
 echo WT_I18N::translate('List filtering options');
 echo '</th></tr><tr><td>';
-echo WT_I18N::translate('Include fully matched places: '), help_link('PLACECHECK_MATCH','googlemap');
+echo WT_I18N::translate('Include fully matched places: ');
 echo '</td><td><input type="checkbox" name="matching" value="active"';
 if ($matching) {
 	echo ' checked="checked"';
@@ -368,6 +368,6 @@ case 'go':
 default:
 	// Do not run until user selects a gedcom/place/etc.
 	// Instead, show some useful help info.
-	echo "<div class=\"gm_check_top accepted\">", WT_I18N::translate('This will list all the places from the selected family tree. By default this will NOT INCLUDE places that are fully matched between the family tree and the Google Maps™ tables.'), "</div>";
+	echo "<div class=\"gm_check_top accepted\">", WT_I18N::translate('This will list all the places from the selected GEDCOM file. By default this will NOT INCLUDE places that are fully matched between the GEDCOM file and the GoogleMap tables'), "</div>";
 	break;
 }
