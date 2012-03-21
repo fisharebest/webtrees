@@ -76,29 +76,9 @@ case 'PLE_FLAGS':
 	$text=WT_I18N::translate('Using the pull down menu it is possible to select a country, of which a flag can be selected. If no flags are shown, then there are no flags defined for this country.');
 	break;
 
-case 'PLIF_FILENAME':
-	$title=WT_I18N::translate('Enter filename');
-	$text=WT_I18N::translate('Browse for the file on your computer which contains the place locations in CSV format.');
-	break;
-
 case 'PLIF_LOCALFILE':
 	$title=WT_I18N::translate('Enter filename');
 	$text=WT_I18N::translate('Select a file from the list of files already on the server which contains the place locations in CSV format.');
-	break;
-
-case 'PLIF_CLEAN':
-	$title=WT_I18N::translate('Clear all place-locations before import?');
-	$text=WT_I18N::translate('Delete all the geographic data before importing the new data.');
-	break;
-
-case 'PLIF_UPDATE':
-	$title=WT_I18N::translate('Update existing records');
-	$text=WT_I18N::translate('When this option is selected only existing records will be updated. This can be used to fill in latitude and longitude of places that have been imported from a family tree. No new places will be added to the database.');
-	break;
-
-case 'PLIF_OVERWRITE':
-	$title=WT_I18N::translate('Overwrite location data');
-	$text=WT_I18N::translate('Overwrite location data in the database with data from the file.<br />When this option is selected, the location data in the database (latitude, longitude, zoomlevel and flag) are overwritten with the data in the file, if available. If the record is not already in the database a new record will be created, unless the Update-only  option is also selected.');
 	break;
 
 case 'PLE_ACTIVE':
@@ -112,11 +92,6 @@ case 'PLE_ACTIVE':
 	break;
 
 // Help text for placecheck.php
-
-case 'GOOGLEMAP_PLACECHECK':
-	$title=WT_I18N::translate('Place Check');
-	$text=WT_I18N::translate('This tool provides a way to compare places in your gedcom file with the matching entries in the Google Maps™ “placelocations” table.<br /><br /><strong>The display</strong> can be structured for a specific gedcom file; for a specific country within that file; and for a particular area (e.g. state or county) within that country.<br /><br /><strong>Places</strong>are listed alphabetically so that minor spelling differences can be easily spotted, and corrected.<br /><br /><strong>From</strong> the results of the comparison you can click on place names for one of these three options:<br /><br /><strong>1 - </strong>For gedcom file places you will be taken to the Place Heirarchy view. Here you will see all records that are linked to that place.<br /><br /><strong>2 - </strong>For places that exist in the gedcom file, but not in the Google Maps™ table (highlighted in red), you will get the Google Maps™ “Add place” screen.<br /><br /><strong>3 - </strong>For places that exist in both the gedcom file and the Google Maps™ table (perhaps without coordinates) you will get the Google Maps™ “edit place” screen. Here you can edit any aspect of the place record for the Google Maps™ display.<br /><br /><strong>Hovering</strong> over any place in the Google Maps™ table columns will display the zoom level curently set for that place.');
-	break;
 
 case 'PLACECHECK_MATCH':
 	$title=WT_I18N::translate('Include matched places');

@@ -74,18 +74,17 @@ $controller
 		<th>
 			<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">
 				<?php echo WT_I18N::translate('Google Maps™ preferences'); ?>
-		</a>
-	</th>
-	<th>
-		<a href="module.php?mod=googlemap&amp;mod_action=admin_places">
-			<?php echo WT_I18N::translate('Geographic data'); ?>
-		</a>
-	</th>
-	<th>
-		<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-			<?php echo WT_I18N::translate('Place Check'); ?>
-		</a>
-		<?php echo help_link('GOOGLEMAP_PLACECHECK','googlemap'); ?>
+			</a>
+		</th>
+		<th>
+			<a href="module.php?mod=googlemap&amp;mod_action=admin_places">
+				<?php echo WT_I18N::translate('Geographic data'); ?>
+			</a>
+		</th>
+		<th>
+			<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
+				<?php echo WT_I18N::translate('Place Check'); ?>
+			</a>
 		</th>
 	</tr>
 </table>

@@ -181,18 +181,17 @@ $controller->pageHeader();
 		<th>
 			<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">
 				<?php echo WT_I18N::translate('Google Maps™ preferences'); ?>
-		</a>
-	</th>
-	<th>
-		<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_places">
-			<?php echo WT_I18N::translate('Geographic data'); ?>
-		</a>
-	</th>
-	<th>
-		<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-			<?php echo WT_I18N::translate('Place Check'); ?>
-		</a>
-		<?php echo help_link('GOOGLEMAP_PLACECHECK','googlemap'); ?>
+			</a>
+		</th>
+		<th>
+			<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_places">
+				<?php echo WT_I18N::translate('Geographic data'); ?>
+			</a>
+		</th>
+		<th>
+			<a href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
+				<?php echo WT_I18N::translate('Place Check'); ?>
+			</a>
 		</th>
 	</tr>
 </table>
@@ -325,7 +324,7 @@ if ($action=='ImportFile') {
 	<input type="hidden" name="action" value="ImportFile2">
 	<table class="gm_plac_edit">
 		<tr>
-			<th><?php echo WT_I18N::translate('File containing places (CSV)'), help_link('PLIF_FILENAME','googlemap'); ?></th>
+			<th><?php echo WT_I18N::translate('File containing places (CSV)'); ?></th>
 			<td><input type="file" name="placesfile" size="50"></td>
 		</tr>
 		<?php if (count($placefiles)>0) { ?>
@@ -344,15 +343,15 @@ if ($action=='ImportFile') {
 		</tr>
 		<?php } ?>
 		<tr>
-			<th><?php echo WT_I18N::translate('Clear all place-locations before import?'), help_link('PLIF_CLEAN','googlemap'); ?></th>
+			<th><?php echo WT_I18N::translate('Delete all existing geographic data before importing the file.'); ?></th>
 			<td><input type="checkbox" name="cleardatabase"></td>
 		</tr>
 		<tr>
-			<th><?php echo WT_I18N::translate('Update existing places only?'), help_link('PLIF_UPDATE','googlemap'); ?></th>
+			<th><?php echo WT_I18N::translate('Do not create new locations, just import coordinates for existing locations.'); ?></th>
 			<td><input type="checkbox" name="updateonly"></td>
 		</tr>
 		<tr>
-			<th><?php echo WT_I18N::translate('Overwrite location-data with data from file?'), help_link('PLIF_OVERWRITE','googlemap'); ?></th>
+			<th><?php echo WT_I18N::translate('Overwrite existing coordinates.'); ?></th>
 			<td><input type="checkbox" name="overwritedata"></td>
 		</tr>
 	</table>
@@ -645,7 +644,7 @@ foreach ($placelist as $place) {
 <table id="gm_manage">
 	<tr>
 		<td>
-			<?php echo WT_I18N::translate('Add geographic location'); ?>
+			<?php echo WT_I18N::translate('Add  a new geographic location'); ?>
 		</td>
 		<td>
 			<form action="#" onsubmit="add_place_location(this.parent_id.options[this.parent_id.selectedIndex].value); return false;">
