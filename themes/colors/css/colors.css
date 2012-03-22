@@ -324,7 +324,6 @@ html[dir='rtl'] #relationship_chart{margin-right:10px;}
 .center{text-align:center;}
 .compact_view p{font-size:90%;margin:0;}
 .gedcom_table{border:1px solid #999;margin:0;width:99%;}
-.topheader{color:#888;margin:0;white-space:nowrap;}
 
 /* person boxes for charts */
 #index_small_blocks .person_box .pedigree_image,
@@ -382,7 +381,6 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 .detailsZoom{font-size:13px;text-decoration:none;}
 
 .age{font-size:9px;}
-.border1{border:solid #000 1px;}
 .cal_day{float:left;font-weight:700;}
 .contact_links{text-align:center;}
 .current_day{font-size:16px;font-weight:700;}
@@ -400,12 +398,11 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 .hit-counter{background:#000;color:#FFF;font-weight:700;}
 
 .image{height:150px;margin-right:15px;padding:5px;}
-.indent_rtl{padding-right:7px;}
 .indent{padding-left:7px;}
+.indent_rtl{padding-right:7px;}
 .journal_box{border:thin solid #AAA;overflow:visible;padding:3pt;}
 .largeError{color:#d00;font-size:24px;font-weight:700;}
 .link{font-size:11px;text-align:center;}
-.listlog{color:#555;line-height:20pt;}
 
 .name_head{color:#333;font-size:16px;font-weight:700;line-height:2;padding:0 5px;}
 .news_box{padding:5pt 5px;border-top:solid #ccc 1px;}
@@ -419,15 +416,12 @@ html[dir="rtl"] .pedigree_image {float:right;margin:0 0 0 3px;}
 
 
 .rtl_cal_day{direction:rtl;float:right;font-weight:700;}
-.selected-option{background:#cef;}
 .source_citations{display:none;}
 .subheaders{font-size:16px;font-weight:700;margin:15px 0 0 15px;padding:10px;vertical-align:bottom;}
 .sublinks_cell{background:#9be;}
-.sublinks_table{border:solid #999 1px;margin:2px 2px 20px;padding:5px;text-align:left;}
 .submenu{font-size:11px;white-space:nowrap;}
 .submenuitem,.submenuitem_rtl,.submenuitem_hover,.submenuitem_hover_rtl{background-color:#fff;border:1px solid #ccc;height:20px;padding:3px 3px 0;white-space:nowrap;}
-.theme_form option,.lang_form option,.color_form option{margin:3px;}
-.theme_form,.lang_form{font-size:14px;margin-top:0;}
+.theme_form {font-size:14px;margin:3px;margin-top:0; }
 .thumbnail{height:auto;padding:5px;}
 
 .person0{background:#ddf;border:outset #999 1px;border-radius:3px;vertical-align:top;}
@@ -447,7 +441,7 @@ html[dir="rtl"] .optionbox > input{margin-right:5px;}
 
 .descriptionbox{border:1px solid #999;border-radius:3px;padding:3px;vertical-align:top;white-space:nowrap;}
 .formField{font-size:12px;width:140px;}
-.rela,.histo{opacity:0.67px;}
+.rela{opacity:0.67px;}
 .sex_image{border:none;height:9px;padding-left:3px;padding-right:3px;vertical-align:middle;width:9px;}
 .starredname{text-decoration:underline;}
 .subbar{background:#fff;border:1pt solid #ddd;border-radius:3px;font-size:11px;padding:3px;vertical-align:top;white-space:nowrap;}
@@ -473,6 +467,7 @@ html[dir="rtl"] .optionbox > input{margin-right:5px;}
 
 .font9{font-size:9px;}
 .font11{font-size:11px;}
+.font12{font-size:12px;}
 
 /* Pending edits  */
 .change_new,.nameblue{border:solid #00f 2px !important;}
