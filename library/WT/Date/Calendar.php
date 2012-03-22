@@ -12,7 +12,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -300,10 +300,10 @@ class WT_Date_Calendar {
 		global $WT_IMAGES;
 
 		if ($this->y==0 || $jd==0) {
-			return '';
+			return $full?'':'0';
 		}
 		if ($this->minJD < $jd && $this->maxJD > $jd) {
-			return '';
+			return $full?'':'0';
 		}
 		if ($this->minJD==$jd) {
 			return $full?'':'0';
