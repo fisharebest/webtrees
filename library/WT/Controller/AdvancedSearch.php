@@ -194,7 +194,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 	}
 
 	function advancedSearch($justSql=false, $table="individuals", $prefix="i") {
-		DMsoundex("", "opencache");
 		$this->myindilist = array ();
 		$fct = count($this->fields);
 		if ($fct==0) {
@@ -244,50 +243,36 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 		}
 
 		if ($father_name || $mother_name) {
-			$sql.=" JOIN `##link`   l_1 ON (l_1.l_file=? AND l_1.l_from=ind.i_id AND l_1.l_type='FAMC')";
-			$bind[]=WT_GED_ID;
+			$sql.=" JOIN `##link`   l_1 ON (l_1.l_file=ind.i_file AND l_1.l_from=ind.i_id AND l_1.l_type='FAMC')";
 		}
 		if ($father_name) {
-			$sql.=" JOIN `##link`   l_2 ON (l_2.l_file=? AND l_2.l_from=l_1.l_to AND l_2.l_type='HUSB')";
-			$sql.=" JOIN `##name`   f_n ON (f_n.n_file=? AND f_n.n_id  =l_2.l_to)";
-			$bind[]=WT_GED_ID;
-			$bind[]=WT_GED_ID;
+			$sql.=" JOIN `##link`   l_2 ON (l_2.l_file=ind.i_file AND l_2.l_from=l_1.l_to AND l_2.l_type='HUSB')";
+			$sql.=" JOIN `##name`   f_n ON (f_n.n_file=ind.i_file AND f_n.n_id  =l_2.l_to)";
 		}
 		if ($mother_name) {
-			$sql.=" JOIN `##link`   l_3 ON (l_3.l_file=? AND l_3.l_from=l_1.l_to AND l_3.l_type='WIFE')";
-			$sql.=" JOIN `##name`   m_n ON (m_n.n_file=? AND m_n.n_id  =l_3.l_to)";
-			$bind[]=WT_GED_ID;
-			$bind[]=WT_GED_ID;
+			$sql.=" JOIN `##link`   l_3 ON (l_3.l_file=ind.i_file AND l_3.l_from=l_1.l_to AND l_3.l_type='WIFE')";
+			$sql.=" JOIN `##name`   m_n ON (m_n.n_file=ind.i_file AND m_n.n_id  =l_3.l_to)";
 		}
 		if ($spouse_family) {
-			$sql.=" JOIN `##link`     l_4 ON (l_4.l_file=? AND l_4.l_from=ind.i_id AND l_4.l_type='FAMS')";
-			$sql.=" JOIN `##families` fam ON (fam.f_file=? AND fam.f_id  =l_4.l_to)";
-			$bind[]=WT_GED_ID;
-			$bind[]=WT_GED_ID;
+			$sql.=" JOIN `##link`     l_4 ON (l_4.l_file=ind.i_file AND l_4.l_from=ind.i_id AND l_4.l_type='FAMS')";
+			$sql.=" JOIN `##families` fam ON (fam.f_file=ind.i_file AND fam.f_id  =l_4.l_to)";
 		}
 		if ($indi_name) {
-			$sql.=" JOIN `##name`   i_n ON (i_n.n_file=? AND i_n.n_id=ind.i_id)";
-			$bind[]=WT_GED_ID;
+			$sql.=" JOIN `##name`   i_n ON (i_n.n_file=ind.i_file AND i_n.n_id=ind.i_id)";
 		}
 		if ($indi_date) {
-			$sql.=" JOIN `##dates`  i_d ON (i_d.d_file=? AND i_d.d_gid=ind.i_id)";
-			$bind[]=WT_GED_ID;
+			$sql.=" JOIN `##dates`  i_d ON (i_d.d_file=ind.i_file AND i_d.d_gid=ind.i_id)";
 		}
 		if ($fam_date) {
-			$sql.=" JOIN `##dates`  f_d ON (f_d.d_file=? AND f_d.d_gid=fam.f_id)";
-			$bind[]=WT_GED_ID;
+			$sql.=" JOIN `##dates`  f_d ON (f_d.d_file=ind.i_file AND f_d.d_gid=fam.f_id)";
 		}
 		if ($indi_plac) {
-			$sql.=" JOIN `##places`       i_p  ON (i_p.p_file  =? AND i_p.p_id   =ind.i_id)";
-			$sql.=" JOIN `##placelinks`   i_pl ON (i_pl.pl_file=? AND i_pl.pl_gid=i_p.p_id)";
-			$bind[]=WT_GED_ID;
-			$bind[]=WT_GED_ID;
+			$sql.=" JOIN `##placelinks`   i_pl ON (i_pl.pl_file=ind.i_file AND i_pl.pl_gid =ind.i_id)";
+			$sql.=" JOIN `##places`       i_p  ON (i_p.p_file  =ind.i_file AND i_pl.pl_p_id=i_p.p_id)";
 		}
 		if ($fam_plac) {
-			$sql.=" JOIN `##places`       f_p  ON (f_p.p_file  =? AND f_p.p_id   =fam.f_id)";
-			$sql.=" JOIN `##placelinks`   f_pl ON (f_pl.pl_file=? AND f_pl.pl_gid=f_p.p_id)";
-			$bind[]=WT_GED_ID;
-			$bind[]=WT_GED_ID;
+			$sql.=" JOIN `##placelinks`   f_pl ON (f_pl.pl_file=ind.i_file AND f_pl.pl_gid =fam.f_id)";
+			$sql.=" JOIN `##places`       f_p  ON (f_p.p_file  =ind.i_file AND f_pl.pl_p_id=f_p.p_id)";
 		}
 
 		// Add the where clause
@@ -417,26 +402,16 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				// SQL can only link a place to a person/family, not to an event.
 				$places = preg_split("/[, ]+/", $value);
 				foreach ($places as $place) {
-					$sql.=" AND (i_p.p_place=?";
+					$sql.=" AND (i_p.p_place=?)";
 					$bind[]=$place;
-					foreach (DMsoundex($place) as $sdx) {
-						$sql.=" OR i_p.p_dm_soundex LIKE CONCAT('%', ?, '%')";
-						$bind[]=$sdx;
-					}
-					$sql.= ")";
 				}
 			} elseif ($parts[0]=='FAMS' && $parts[2]=='PLAC') {
 				// *:DATE
 				// SQL can only link a place to a person/family, not to an event.
 				$places = preg_split("/[, ]+/", $value);
 				foreach ($places as $place) {
-					$sql.=" AND (f_p.p_place=?";
+					$sql.=" AND (f_p.p_place=?)";
 					$bind[]=$place;
-					foreach (DMsoundex($place) as $sdx) {
-						$sql.=" OR f_p.p_dm_soundex LIKE CONCAT('%', ?, '%')";
-						$bind[]=$sdx;
-					}
-					$sql.= ")";
 				}
 			} elseif ($parts[0]=='FAMC' && $parts[2]=='NAME') {
 				$table=$parts[1]=='HUSB' ? 'f_n' : 'm_n';
@@ -517,7 +492,6 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 				$bind[]=$value;
 			}
 		}
-		//var_dump($sql);
 		$rows=WT_DB::prepare($sql)->execute($bind)->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($rows as $row) {
 			$this->myindilist[]=WT_Person::getInstance($row);
