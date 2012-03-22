@@ -683,27 +683,18 @@ function print_address_structure($factrec, $level) {
 		$arec = get_sub_record($level, "$level ADDR", $factrec, $i+1);
 		$resultText = "";
 		if ($level>1) $resultText .= "<span class=\"label\">".WT_Gedcom_Tag::getLabel('ADDR').': </span><br><div class="indent">';
-		$cn = preg_match("/$nlevel _NAME (.*)/", $arec, $cmatch);
-		if ($cn>0) $resultText .= str_replace("/", "", $cmatch[1])."<br>";
 		$resultText .= $omatch[$i][1];
 		$cont = get_cont($nlevel, $arec);
-		if (!empty($cont)) $resultText .= str_replace(array(" ", "<br&nbsp;"), array("&nbsp;", "<br "), $cont);
-		else {
+		if ($cont) {
+			$resultText .= $cont;
+		} else {
 			if (strlen(trim($omatch[$i][1])) > 0) echo '<br>';
 			$cs = preg_match("/$nlevel ADR1 (.*)/", $arec, $cmatch);
 			if ($cs>0) {
-				if ($cn==0) {
-					$resultText .= '<br>';
-					$cn=0;
-				}
 				$resultText .= $cmatch[1];
 			}
 			$cs = preg_match("/$nlevel ADR2 (.*)/", $arec, $cmatch);
 			if ($cs>0) {
-				if ($cn==0) {
-					$resultText .= '<br>';
-					$cn=0;
-				}
 				$resultText .= $cmatch[1];
 			}
 
@@ -720,8 +711,7 @@ function print_address_structure($factrec, $level) {
 				if ($cs>0) {
 					$resultText .= ", ".$cmatch[1];
 				}
-			}
-			else {
+			} else {
 				$cs = preg_match("/$nlevel CITY (.*)/", $arec, $cmatch);
 				if ($cs>0) {
 					$resultText .= "<br>".$cmatch[1];
