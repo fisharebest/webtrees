@@ -4,7 +4,7 @@
 // used by the SAX parser to generate HTML reports from the XML report file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -46,7 +46,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	* Cell height ratio
 	* @var float
 	*/
-	public $cellHeightRatio = 1.3;
+	public $cellHeightRatio = 1.8;
 	/**
 	* Current horizontal position
 	* @var int
@@ -222,7 +222,7 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 		//-- body
 		echo "
-</div>", WT_JS_START, "document.getElementById('headerdiv').style.height='", $this->topmargin + $this->headermargin + 10, "pt';", WT_JS_END,
+</div>", WT_JS_START, "document.getElementById('headerdiv').style.height='", $this->topmargin - $this->headermargin - 6, "pt';", WT_JS_END,
 "<div id=\"bodydiv\" style=\"position:relative; top:auto; width:", $this->noMarginWidth, "pt; height:100%;\">";
 		$this->Y = 0;
 		$this->maxY = 0;
@@ -1038,7 +1038,7 @@ class TextBoxHTML extends TextBox {
 		unset($lw, $cHT, $fH, $w);
 
 		// Finaly, check the last cells height
-		if ($html->lastCellHeight > $cH) {
+		if ($cH < $html->lastCellHeight) {
 			$cH = $html->lastCellHeight;
 		}
 		// Update max Y incase of a pagebreak
