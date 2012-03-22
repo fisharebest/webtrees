@@ -943,11 +943,6 @@ case 'SHOW_GEDCOM_RECORD':
 	$text=WT_I18N::translate('Setting this to <b>Yes</b> will place links on individuals, sources, and families to let users bring up another window containing the raw data taken right out of the GEDCOM file.');
 	break;
 
-case 'SHOW_HIGHLIGHT_IMAGES':
-	$title=WT_I18N::translate('Show highlight images in people boxes');
-	$text=WT_I18N::translate('If you have enabled multi-media in your site, this option will display a person\'s thumbnail image next to their name in charts and boxes.');
-	break;
-
 case 'SHOW_LAST_CHANGE':
 	$title=WT_I18N::translate('Show GEDCOM record last change date on lists');
 	$text=WT_I18N::translate('This option controls whether or not to show GEDCOM record last change date on lists.');

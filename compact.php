@@ -66,7 +66,7 @@ if (WT_USE_LIGHTBOX) {
 						<?php if ($SHOW_HIGHLIGHT_IMAGES) { ?>
 						<tr>
 							<td class="descriptionbox">
-								<?php echo WT_I18N::translate('Show highlight images in people boxes'), help_link('SHOW_HIGHLIGHT_IMAGES'); ?>
+								<?php echo WT_I18N::translate('Show highlight images in people boxes'); ?>
 							</td>
 							<td class="optionbox">
 								<input name="show_thumbs" type="checkbox" value="1" <?php echo $controller->show_thumbs ? 'checked="checked"' : ''; ?>>

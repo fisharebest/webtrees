@@ -62,6 +62,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Google Street View');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('GoogleMap Places Table Data');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Here you can edit the location or delete the location. When you click on Edit a new window will open where you can change the values of the geographic location.<br />If you click on the delete-icon the record will be deleted. This can only be done if there are no records connected to this location. If no records are connected the delete-icon is active, otherwise it is inactive.');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('If you have enabled multi-media in your site, this option will display a person\'s thumbnail image next to their name in charts and boxes.');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Import from all GEDCOMs');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Import from current GEDCOM');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Import from file');
