@@ -122,7 +122,7 @@ a:hover .nameZoom {color:#f00; font-weight:bold; font-size:14px;}
 
 .image {height:150px; padding:5px; margin:2px;}
 .gender_image {margin:0 3px; border:none; vertical-align:middle;}
-.pedigree_image {float:left; max-height:50px; max-width:37px; margin:0 4px 0 0;}
+.pedigree_image {float:left; margin:0 4px 0 0; max-height:50px; max-width:37px;}
 html[dir="rtl"] .pedigree_image {float:right; margin:0 0 0 4px;}
 .pedigree_form {width:45px;}
 .thumbnail {height:auto; padding:3px;}

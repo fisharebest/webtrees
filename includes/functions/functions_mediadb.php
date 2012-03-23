@@ -930,7 +930,6 @@ function display_silhouette(array $config = array()) {
 	$config['img_title']=strip_tags($config['img_title']);
 	$classstr='';
 	if ($config['class']) {
-		if ($TEXT_DIRECTION == "rtl") $config['class'] .= "_rtl";
 		$classstr=' class="'.$config['class'].'" ';
 	}
 	$idstr=($config['img_id']) ? ' id="'.$config['img_id'].'" ' : '';
