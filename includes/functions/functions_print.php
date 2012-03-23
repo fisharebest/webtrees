@@ -621,23 +621,13 @@ function print_privacy_error() {
 
 // Print a link for a popup help window
 function help_link($help_topic, $module='') {
-	global $WT_USE_HELPIMG, $WT_IMAGES;
-	
-	return
-		'<span class="help icon-help-15" onclick="helpDialog(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;'.
-		($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['help'].'" class="icon" width="15" height="15" alt="">' : WT_I18N::translate('?')).
-		'&nbsp;</span>';
+	return '<span class="help icon-help-15" onclick="helpDialog(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;</span>';
 }
 
 
 // Print an external help link to the wiki site, in a new window
 function wiki_help_link($topic) {
-	global $WT_USE_HELPIMG, $WT_IMAGES;
-
-	return
-		'<a class="help icon-wiki" href="'.WT_WEBTREES_WIKI.$topic.'" target="_new">&nbsp;'.
-		($WT_USE_HELPIMG ?  '<img src="'.$WT_IMAGES['wiki'].'" class="icon" alt="'.WT_I18N::translate('webtrees wiki').'" title="'.WT_I18N::translate('webtrees wiki').'">' : WT_I18N::translate('?')).
-		'&nbsp;</a>';
+	return '<a class="help icon-wiki" href="'.WT_WEBTREES_WIKI.$topic.'" alt="'.WT_I18N::translate('webtrees wiki').'">&nbsp;</a>';
 }
 
 // When a user has searched for text, highlight any matches in

@@ -31,56 +31,29 @@ if (!defined('WT_WEBTREES')) {
 }
 
 $theme_name = "webtrees"; // need double quotes, as file is scanned/parsed by script
-$stylesheet       = WT_THEME_URL.'style.css';
-$print_stylesheet = WT_THEME_URL.'print.css';
-$headerfile       = WT_THEME_DIR.'header.php';
-$footerfile       = WT_THEME_DIR.'footer.php';
-$WT_USE_HELPIMG   = true;
-$WT_MENU_LOCATION = 'top';
+$stylesheet = WT_THEME_URL.'style.css';
+$headerfile = WT_THEME_DIR.'header.php';
+$footerfile = WT_THEME_DIR.'footer.php';
 
 //- main icons
 $WT_IMAGES=array(
 	'admin'=>WT_THEME_URL.'images/admin.png',
-	'ancestry'=>WT_THEME_URL.'images/ancestry.png',
-	'calendar'=>WT_THEME_URL.'images/calendar.png',
 	'cfamily'=> WT_THEME_URL.'images/family.png',
-	'charts'=>WT_THEME_URL.'images/charts.png',
 	'childless'=>WT_THEME_URL.'images/childless.png',
 	'clippings'=>WT_THEME_URL.'images/clippings.png',
-	'descendant'=>WT_THEME_URL.'images/descendancy.png',
-	'edit_fam'=>WT_THEME_URL.'images/edit_fam.png',
 	'edit_indi'=>WT_THEME_URL.'images/edit_indi.png',
-	'edit_media'=>WT_THEME_URL.'images/edit_media.png',
-	'edit_note'=>WT_THEME_URL.'images/edit_note.png',
-	'edit_repo'=>WT_THEME_URL.'images/edit_repo.png',
-	'edit_sour'=>WT_THEME_URL.'images/edit_source.png',
 	'fam-list'=>WT_THEME_URL.'images/family.png',
-	'fambook'=>WT_THEME_URL.'images/source.png',
-	'fanchart'=>WT_THEME_URL.'images/fanchart.png',
-	'favorites'=>WT_THEME_URL.'images/favorites.png',
-	'gedcom'=>WT_THEME_URL.'images/tree.png',
-	'help'=>WT_THEME_URL.'images/help2.png',
-	'home'=>WT_THEME_URL.'images/home.png',
-	'hourglass'=>WT_THEME_URL.'images/hourglass.png',
 	'indis'=>WT_THEME_URL.'images/indis.png',
 	'indi-list'=>WT_THEME_URL.'images/indis.png',
-	'lists'=>WT_THEME_URL.'images/lists.png',
 	'media'=>WT_THEME_URL.'images/media.png',
 	'media-list'=>WT_THEME_URL.'images/media.png',
-	'menu_help'=>WT_THEME_URL.'images/help.png',
-	'menu_media'=>WT_THEME_URL.'images/media.png',
-	'menu_note'=>WT_THEME_URL.'images/notes.png',
-	'menu_repository'=>WT_THEME_URL.'images/repository.png',
-	'menu_source'=>WT_THEME_URL.'images/source.png',
 	'mypage'=>WT_THEME_URL.'images/mypage.png',
 	'note'=>WT_THEME_URL.'images/notes.png',
 	'note-list'=>WT_THEME_URL.'images/notes.png',
 	'patriarch'=>WT_THEME_URL.'images/patriarch.png',
 	'pedigree'=>WT_THEME_URL.'images/pedigree.png',
 	'place'=>WT_THEME_URL.'images/place.png',
-	'relationship'=>WT_THEME_URL.'images/relationship.png',
 	'reorder'=>WT_THEME_URL.'images/reorder_images.png',
-	'reports'=>WT_THEME_URL.'images/reports.png',
 	'repository'=>WT_THEME_URL.'images/repository.png',
 	'repo-list'=>WT_THEME_URL.'images/repository.png',
 	'rings'=>WT_THEME_URL.'images/rings.png',
@@ -95,14 +68,11 @@ $WT_IMAGES=array(
 	'sfamily'=>WT_THEME_URL.'images/family.png',
 	'source'=>WT_THEME_URL.'images/source.png',
 	'source-list'=>WT_THEME_URL.'images/source.png',
-	'statistic'=>WT_THEME_URL.'images/statistic.png',
 	'target'=>WT_THEME_URL.'images/buttons/target.png',
-	'timeline'=>WT_THEME_URL.'images/timeline.png',
 	'tree'=>WT_THEME_URL.'images/tree.png',
 	'user_add'=>WT_THEME_URL.'images/user_add.png',
 	'warning'=>WT_THEME_URL.'images/warning.png',
 	'wiki'=>WT_STATIC_URL.'images/w_button.png',
-	'itree'=>WT_THEME_URL.'images/tree.png',
 
 	//- buttons for data entry pages
 	'button_addmedia'=>WT_THEME_URL.'images/buttons/addmedia.png',

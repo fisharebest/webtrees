@@ -77,9 +77,6 @@ class TreeView {
 		// Add the toolbar
 		$r.='<div id="tv_tools" class="noprint"><ul>'.
 			'<li id="tvbCompact" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/compact.png" alt="'.WT_I18N::translate('Use compact layout').'" title="'.WT_I18N::translate('Use compact layout').'"></li>'.
-			// TODO: this is temporarily disabled (as it sends a flood of AJAX requests?)
-			//'<li id="tvbOpen" class="tv_button"><img src="'.$WT_IMAGES["media"].'" alt="o" title="'.WT_I18N::translate('Show all details').'"></li>'.
-			//'<li id="tvbClose" class="tv_button"><img src="'.$WT_IMAGES["fambook"].'" alt="f" title="'.WT_I18N::translate('Hide all details').'"></li>'.
 			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show all spouses and ancestors').'" title="'.WT_I18N::translate('Show all spouses and ancestors').'"></a></li>';
 		// Hidden loading image
 		$r.='<li class="tv_button" id="'.$this->name.'_loading"><img src="'.WT_STATIC_URL.'images/loading.gif" alt="Loading..."></li></ul>';

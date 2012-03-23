@@ -28,19 +28,15 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$theme_name       = "minimal"; // need double quotes, as file is scanned/parsed by script
-$stylesheet       = WT_THEME_URL.'style.css';
-$print_stylesheet = WT_THEME_URL.'print.css';
-$headerfile       = WT_THEME_DIR.'header.php';
-$footerfile       = WT_THEME_DIR.'footer.php';
-$WT_USE_HELPIMG   = false;
+$theme_name = "minimal"; // need double quotes, as file is scanned/parsed by script
+$stylesheet = WT_THEME_URL.'style.css';
+$headerfile = WT_THEME_DIR.'header.php';
+$footerfile = WT_THEME_DIR.'footer.php';
 
 //-- variables for image names
 $WT_IMAGES=array(
 	'add'            =>WT_THEME_URL.'images/add.png',
 	'admin'          =>WT_THEME_URL.'images/admin.png',
-	'ancestry'       =>WT_THEME_URL.'images/ancestry.png',
-	'calendar'       =>WT_THEME_URL.'images/calendar.png',
 	'cfamily'        =>WT_THEME_URL.'images/cfamily.png',
 	'childless'      =>WT_THEME_URL.'images/childless.png',
 	'children'       =>WT_THEME_URL.'images/children.png',
@@ -51,16 +47,10 @@ $WT_IMAGES=array(
 	'default_image_F'=>WT_THEME_URL.'images/silhouette_female.png',
 	'default_image_M'=>WT_THEME_URL.'images/silhouette_male.png',
 	'default_image_U'=>WT_THEME_URL.'images/silhouette_unknown.png',
-	'descendant'     =>WT_THEME_URL.'images/descendancy.png',
 	'dline'          =>WT_THEME_URL.'images/dline.png',
 	'dline2'         =>WT_THEME_URL.'images/dline2.png',
-	'fambook'        =>WT_THEME_URL.'images/fambook.png',
-	'fanchart'       =>WT_THEME_URL.'images/fanchart.png',
-	'gedcom'         =>WT_THEME_URL.'images/gedcom.png',
-	'help'           =>WT_THEME_URL.'images/help.png',
 	'hline'          =>WT_THEME_URL.'images/hline.png',
 	'indis'          =>WT_THEME_URL.'images/indis.png',
-	'itree'          =>WT_THEME_URL.'images/itree.png',
 	'larrow'         =>WT_THEME_URL.'images/larrow.png',
 	'larrow2'        =>WT_THEME_URL.'images/larrow2.png',
 	'ldarrow'        =>WT_THEME_URL.'images/ldarrow.png',
@@ -81,7 +71,6 @@ $WT_IMAGES=array(
 	'rdarrow'        =>WT_THEME_URL.'images/rdarrow.png',
 	'reminder'       =>WT_THEME_URL.'images/reminder.png',
 	'remove'         =>WT_THEME_URL.'images/remove.png',
-	'reports'        =>WT_THEME_URL.'images/report.png',
 	'repository'     =>WT_THEME_URL.'images/repository.png',
 	'rings'          =>WT_THEME_URL.'images/rings.png',
 	'search'         =>WT_THEME_URL.'images/search.png',
@@ -96,7 +85,6 @@ $WT_IMAGES=array(
 	'source'         =>WT_THEME_URL.'images/source.png',
 	'spacer'         =>WT_THEME_URL.'images/spacer.png',
 	'stop'           =>WT_THEME_URL.'images/stop.png',
-	'timeline'       =>WT_THEME_URL.'images/timeline.png',
 	'tree'           =>WT_THEME_URL.'images/gedcom.png',
 	'uarrow'         =>WT_THEME_URL.'images/uarrow.png',
 	'uarrow2'        =>WT_THEME_URL.'images/uarrow2.png',

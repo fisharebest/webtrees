@@ -2,7 +2,7 @@
 // Administration theme
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -32,12 +32,10 @@ $theme_name = "_administration"; // need double quotes, as file is scanned/parse
 $stylesheet       = WT_THEME_URL.'style.css';
 $headerfile       = WT_THEME_DIR.'header.php';
 $footerfile       = WT_THEME_DIR.'footer.php';
-$WT_USE_HELPIMG   = true;
 
 //- main icons
 $WT_IMAGES=array(
 	'webtrees'=>WT_THEME_URL.'images/header.png',
-	'help'=>WT_THEME_URL.'images/help.png', // needs to be left here until all themes no longer use it.
 	'edit'=>WT_THEME_URL.'images/edit.png',
 	'email'=>WT_THEME_URL.'images/email.png',
 	'open'=>WT_THEME_URL.'images/open.png',
