@@ -504,6 +504,8 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 		// If only one marker, set zoom level to that of place in database
 		if (mapLevel != 0) {
 			var pointZoom = placezoom;
+		} else {
+			var pointZoom = 1;
 		}
 	
 		// Creates a marker whose info window displays the given name
