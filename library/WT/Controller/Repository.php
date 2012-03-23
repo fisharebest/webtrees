@@ -2,7 +2,7 @@
 // Controller for the repository page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
@@ -77,14 +77,10 @@ class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-repo');
-		$menu->addIcon('edit_repo');
-		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_repo');
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit repository'), '#', 'menu-repo-edit');
 			$submenu->addOnclick('return edit_source(\''.$this->record->getXref().'\');');
-			$submenu->addIcon('edit_repo');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_repo');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -92,18 +88,14 @@ class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-repo-editraw');
 			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
-			$submenu->addIcon('gedcom');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-repo-viewraw');
-			$submenu->addIcon('gedcom');
 			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -111,8 +103,6 @@ class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-repo-del');
 			$submenu->addOnclick("if (confirm('".addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())))."')) jQuery.post('action.php',{action:'delete-repository',xref:'".$this->record->getXref()."'},function(){location.reload();})");
-			$submenu->addIcon('remove');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -124,8 +114,6 @@ class WT_Controller_Repository extends WT_Controller_GedcomRecord {
 				'menu-repo-addfav'
 			);
 			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
-			$submenu->addIcon('favorites');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);
 		}
 

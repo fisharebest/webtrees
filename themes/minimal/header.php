@@ -98,7 +98,6 @@ if ($view!='simple') {
 
 	$menu=WT_MenuBar::getGedcomMenu();
 	if ($menu) {
-		$menu->addIcon(null);
 		echo $menu->getMenuAsList();
 	}
 	$menu=WT_MenuBar::getMyPageMenu();
@@ -107,33 +106,27 @@ if ($view!='simple') {
 	}
 	$menu=WT_MenuBar::getChartsMenu();
 	if ($menu) {
-		$menu->addIcon(null);
 		echo $menu->getMenuAsList();
 	}
 	$menu=WT_MenuBar::getListsMenu();
 	if ($menu) {
-		$menu->addIcon(null);
 		echo $menu->getMenuAsList();
 	}
 	$menu=WT_MenuBar::getCalendarMenu();
 	if ($menu) {
-		$menu->addIcon(null);
 		echo $menu->getMenuAsList();
 	}
 	$menu=WT_MenuBar::getReportsMenu();
 	if ($menu) {
-		$menu->addIcon(null);
 		echo $menu->getMenuAsList();
 	}
 	$menu=WT_MenuBar::getSearchMenu();
 	if ($menu) {
-		$menu->addIcon(null);
 		echo $menu->getMenuAsList();
 	}
 	$menus=WT_MenuBar::getModuleMenus();
 	foreach ($menus as $menu) {
 		if ($menu) {
-			$menu->addIcon(null);
 		echo $menu->getMenuAsList();
 		}
 	}

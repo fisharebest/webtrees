@@ -1376,66 +1376,6 @@ form .rtl {
 text-align:right;
 }
 
-.favmenuitem {
-color:#fff;
-font-size:11px;
-font-weight:bold;
-text-decoration:none;
-padding:1px;
-}
-
-.favmenuitem a {
-color:#fff;
-}
-
-.favmenuitem_hover {
-color:#000;
-font-size:11px;
-text-decoration:none;
-padding:1px;
-}
-
-.favsubmenu {
-color:#000;
-text-decoration:none;
-font-size:11px;
-text-align:center;
-background:#eff;
-border:solid #8bf 1px;
-white-space:nowrap;
-}
-
-.favsubmenuitem a,.favsubmenuitem_selected a {
-color:#000;
-font-size:11px;
-text-decoration:none;
-background:#eff;
-white-space:nowrap;
-text-align:left;
-}
-
-.favsubmenuitem_selected a {
-background:#0ff;
-}
-
-.favsubmenuitem_hover {
-color:#000;
-font-size:11px;
-text-decoration:none;
-background:#fff;
-white-space:nowrap;
-text-align:left;
-}
-
-.favsubmenuitem_hover a {
-color:#f00;
-font-size:11px;
-text-decoration:none;
-background:#fff;
-white-space:nowrap;
-text-align:left;
-}
-
 .ltr {
 text-align:left;
 }

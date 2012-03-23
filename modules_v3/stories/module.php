@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -472,9 +472,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			}
 			//-- Stories menu item
 			$menu = new WT_Menu($this->getTitle(), 'module.php?mod='.$this->getName().'&amp;mod_action=show_list', 'menu-story', 'down');
-			$menu->addClass('menuitem', 'menuitem_hover', 'submenu', '');		
 			$submenu = new WT_Menu($this->getTitle(), 'module.php?mod='.$this->getName().'&amp;mod_action=show_list', 'menu-story-sub');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', '');
 			$menu->addSubmenu($submenu);
 			return $menu;
 		}

@@ -432,12 +432,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		}
 
 		$menu = new WT_Menu(WT_I18N::translate('FAQ'), 'module.php?mod=faq&amp;mod_action=show', 'menu-help', 'down');
-		$menu->addIcon('menu_help');
-		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_help');
 
 		$submenu = new WT_Menu(WT_I18N::translate('FAQ'), 'module.php?mod=faq&amp;mod_action=show', 'menu-help-faq');
-		$submenu->addIcon('help');
-		$submenu->addClass('submenuitem', 'submenuitem_hover', '', 'icon_small_menu_help');
 		$menu->addSubmenu($submenu);
 		return $menu;
 	}

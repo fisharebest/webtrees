@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -54,8 +54,6 @@ class cemetery_report_WT_Module extends WT_Module implements WT_Module_Report {
 			'reportengine.php?ged='.WT_GEDURL.'&amp;action=setup&amp;report='.WT_MODULES_DIR.$this->getName().'/report.xml',
 			'menu-report-'.$this->getName()
 		);
-		$menu->addIcon('place');
-		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reports');
 		$menus[]=$menu;
 
 		return $menus;

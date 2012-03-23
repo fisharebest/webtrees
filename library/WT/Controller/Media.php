@@ -106,14 +106,10 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-obje');
-		$menu->addIcon('edit_media');
-		$menu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_large_edit_media');
 
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit media object'), '#', 'menu-obje-edit');
 			$submenu->addOnclick("window.open('addmedia.php?action=editmedia&pid={$this->record->getXref()}', '_blank', edit_window_specs)");
-			$submenu->addIcon('edit_media');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_media');
 			$menu->addSubmenu($submenu);
 
 			// main link displayed on page
@@ -124,24 +120,16 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 				$submenu = new WT_Menu(WT_I18N::translate('Set link'), '#', 'menu-obje-link');
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Person'), '#', 'menu-obje-link-indi');
 				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','person');");
-				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_indis');
-				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Family'), '#', 'menu-obje-link-fam');
 				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','family');");
-				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_cfamily');
-				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 
 				$ssubmenu = new WT_Menu(WT_I18N::translate('To Source'), '#', 'menu-obje-link-sour');
 				$ssubmenu->addOnclick("return ilinkitem('".$this->record->getXref()."','source');");
-				$ssubmenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_menu_source');
-				$ssubmenu->addIcon('edit_media');
 				$submenu->addSubMenu($ssubmenu);
 			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_medialink');
-			$submenu->addIcon('edit_media');
 
 			$menu->addSubmenu($submenu);
 		}
@@ -150,18 +138,14 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-obje-editraw');
 			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
-			$submenu->addIcon('gedcom');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-obje-viewraw');
-			$submenu->addIcon('gedcom');
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -173,8 +157,6 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 				'menu-obje-del'
 			);
 			$submenu->addOnclick("return confirm('".WT_I18N::translate('Are you sure you want to remove this object from the database?')."')");
-			$submenu->addIcon('remove');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -186,8 +168,6 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 				'menu-obje-addfav'
 			);
 			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
-			$submenu->addIcon('favorites');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);
 		}
 

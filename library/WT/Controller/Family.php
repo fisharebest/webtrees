@@ -2,7 +2,7 @@
 // Controller for the family page
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010 PGV Development Team.  All rights reserved.
@@ -117,31 +117,23 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-fam');
-		$menu->addIcon('edit_fam');
-		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_fam');
 		$menu->addLabel($menu->label, 'down');
 
 		if (WT_USER_CAN_EDIT) {
 			// edit_fam / members
 			$submenu = new WT_Menu(WT_I18N::translate('Change Family Members'), '#', 'menu-fam-change');
 			$submenu->addOnclick("return change_family_members('".$this->record->getXref()."');");
-			$submenu->addIcon('edit_fam');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_fam');
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / add child
 			$submenu = new WT_Menu(WT_I18N::translate('Add a child to this family'), '#', 'menu-fam-addchil');
 			$submenu->addOnclick("return addnewchild('".$this->record->getXref()."');");
-			$submenu->addIcon('edit_fam');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_add_fam');
 			$menu->addSubmenu($submenu);
 
 			// edit_fam / reorder_children
 			if ($this->record->getNumberOfChildren() > 1) {
 				$submenu = new WT_Menu(WT_I18N::translate('Re-order children'), '#', 'menu-fam-orderchil');
 				$submenu->addOnclick("return reorder_children('".$this->record->getXref()."');");
-				$submenu->addIcon('edit_fam');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_reord_fam');
 				$menu->addSubmenu($submenu);
 			}
 		}
@@ -150,18 +142,14 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-fam-editraw');
 			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
-			$submenu->addIcon('gedcom');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-fam-viewraw');
-			$submenu->addIcon('gedcom');
 			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -169,8 +157,6 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-fam-del');
 			$submenu->addOnclick("if (confirm('".WT_I18N::translate('Deleting the family will unlink all of the individuals from each other but will leave the individuals in place.  Are you sure you want to delete this family?')."')) jQuery.post('action.php',{action:'delete-family',xref:'".$this->record->getXref()."'},function(){location.reload();})");
-			$submenu->addIcon('remove');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -182,8 +168,6 @@ class WT_Controller_Family extends WT_Controller_GedcomRecord {
 				'menu-fam-addfav'
 			);
 			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
-			$submenu->addIcon('favorites');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);
 		}
 

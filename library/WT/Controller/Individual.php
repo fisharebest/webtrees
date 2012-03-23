@@ -324,8 +324,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 		// edit menu
 		$menu = new WT_Menu(WT_I18N::translate('Edit'), '#', 'menu-indi');
-		$menu->addIcon('edit_indi');
-		$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_edit_indi');
 		$menu->addLabel($menu->label, 'down');
 
 		$this->getGlobalFacts(); // sets NAME_LINENUM and SEX_LINENUM.  individual.php doesn't do it early enough for us....
@@ -343,8 +341,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			//--make sure the totals are correct
 			$submenu = new WT_Menu(WT_I18N::translate('Add new Name'), '#', 'menu-indi-addname');
 			$submenu->addOnclick("return add_name('".$this->record->getXref()."');");
-			$submenu->addIcon('edit_indi');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_add_indi');
 			$menu->addSubmenu($submenu);
 
 			if ($this->SEX_COUNT<2) {
@@ -354,16 +350,12 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				} else {
 					$submenu->addOnclick("return edit_record('".$this->record->getXref()."', ".$this->SEX_LINENUM.");");
 				}
-				$submenu->addIcon('edit_indi');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_sex');
 				$menu->addSubmenu($submenu);
 			}
 
 			if (count($this->record->getSpouseFamilies())>1) {
 				$submenu = new WT_Menu(WT_I18N::translate('Reorder families'), '#', 'menu-indi-orderfam');
 				$submenu->addOnclick("return reorder_families('".$this->record->getXref()."');");
-				$submenu->addIcon('edit_fam');
-				$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_fam');
 				$menu->addSubmenu($submenu);
 			}
 		}
@@ -372,18 +364,14 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		if (WT_USER_IS_ADMIN || $SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('Edit raw GEDCOM record'), '#', 'menu-indi-editraw');
 			$submenu->addOnclick("return edit_raw('".$this->record->getXref()."');");
-			$submenu->addIcon('gedcom');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		} elseif ($SHOW_GEDCOM_RECORD) {
 			$submenu = new WT_Menu(WT_I18N::translate('View GEDCOM Record'), '#', 'menu-indi-viewraw');
-			$submenu->addIcon('gedcom');
 			if (WT_USER_CAN_EDIT) {
 				$submenu->addOnclick("return show_gedcom_record('new');");
 			} else {
 				$submenu->addOnclick("return show_gedcom_record();");
 			}
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_edit_raw');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -391,8 +379,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		if (WT_USER_CAN_EDIT) {
 			$submenu = new WT_Menu(WT_I18N::translate('Delete'), '#', 'menu-indi-del');
 			$submenu->addOnclick("if (confirm('".addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($this->record->getFullName())))."')) jQuery.post('action.php',{action:'delete-individual',xref:'".$this->record->getXref()."'},function(){location.reload();})");
-			$submenu->addIcon('remove');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_delete');
 			$menu->addSubmenu($submenu);
 		}
 
@@ -404,8 +390,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				'menu-indi-addfav'
 			);
 			$submenu->addOnclick("jQuery.post('module.php?mod=user_favorites&amp;mod_action=menu-add-favorite',{xref:'".$this->record->getXref()."'},function(){location.reload();})");
-			$submenu->addIcon('favorites');
-			$submenu->addClass('submenuitem', 'submenuitem_hover', 'submenu', 'icon_small_fav');
 			$menu->addSubmenu($submenu);
 		}
 

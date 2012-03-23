@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -55,10 +55,6 @@ class page_menu_WT_Module extends WT_Module implements WT_Module_Menu {
 
 		if (WT_USER_CAN_EDIT && method_exists($controller, 'getEditMenu')) {
 			$menu = $controller->getEditMenu();
-			if ($menu) {
-			//	$menu->addClass('menuitem', 'menuitem_hover', 'submenu', 'icon_large_gedcom');
-			//	$menu->addLabel($menu->label, 'down');
-			}
 		}
 		return $menu;
 	}
