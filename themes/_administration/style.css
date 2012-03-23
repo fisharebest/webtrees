@@ -50,7 +50,7 @@ html[dir='rtl'] .indent {padding-right:15px;}
 .ui-widget-content a.current {color:#E17009; font-weight:bold;}
 .ui-widget-content a:hover, .DataTables_sort_wrapper:hover {color:red; cursor:pointer;}
 .ui-widget-header {padding:5px;}
-.ui-progressbar-value {height:60% !important;}
+.ui-progressbar-value {height:60% !important; background:lightgrey !important;}
 .ui-accordion .ui-accordion-content-active {display:block;}
 .css_right {float:right;}
 html[dir='rtl'] .css_right {float:left;}
