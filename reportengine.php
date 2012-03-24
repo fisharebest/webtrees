@@ -280,15 +280,8 @@ elseif ($action=='setup') {
 				} elseif ($input['lookup']=='SOUR') {
 					print_findsource_link($input['name']);
 				} elseif ($input['lookup']=='DATE') {
-					$text = WT_I18N::translate('Select a date');
-					if (isset($WT_IMAGES['button_calendar'])) {
-						$Link = '<img src="'.$WT_IMAGES['button_calendar'].'" name="a_'.$input['name'].'" id="a_'.$input['name'].'" alt="'.$text.'" title="'.$text.'" align="middle">';
-					} else {
-						$Link = $text;
-					}
-
-			echo '<a href="#" onclick="cal_toggleDate(\'div_', $input['name'], '\', ', $input['name'], '\'); return false;">', $Link, '</a>
-					<div id="div_', $input['name'], '" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>';
+					echo ' <a href="#" onclick="cal_toggleDate(\'div_', $input['name'], '\', \'', $input['name'], '\'); return false;" class="icon-button_calendar" title="', WT_I18N::translate('Select a date'), '"></a>';
+					echo '<div id="div_', $input['name'], '" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>';
 				}
 			}
 			echo '</td></tr>';
@@ -298,11 +291,11 @@ elseif ($action=='setup') {
 		<td colspan="2" class="optionbox">
 		<div class="report-type">
 		<div>
-		<img src="', $WT_IMAGES['media_pdf'], '" alt="PDF" title="PDF">
+		<i class="icon-media_pdf"></i>
 		<p><input type="radio" name="output" value="PDF" checked="checked"></p>
 		</div>
 		<div>
-		<img src="', $WT_IMAGES['media_html'], '" alt="HTML" title="HTML">
+		<i class="icon-media_html"></i>
 		<p><input type="radio" name="output" value="HTML"';
 		if ($output=='HTML') echo ' checked="checked"', '>';
 	echo '</p>
