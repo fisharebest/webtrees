@@ -293,17 +293,11 @@ if ($action=='choose') {
 		}
 		echo ' dir="auto">', htmlspecialchars(get_gedcom_setting($ged_id, 'title')), '</option>';
 	}
-	$inditext = WT_I18N::translate('Find individual ID');
-	if (isset($WT_IMAGES['button_indi'])) $inditext = '<img src="'.$WT_IMAGES['button_indi'].'" alt="'.$inditext.'" title="'.$inditext.'" align="middle">';
-	$famtext = WT_I18N::translate('Find Family ID');
-	if (isset($WT_IMAGES['button_family'])) $famtext = '<img src="'.$WT_IMAGES['button_family'].'" alt="'.$famtext.'" title="'.$famtext.'" align="middle">';
-	$sourtext = WT_I18N::translate('Find Source ID');
-	if (isset($WT_IMAGES['button_source'])) $sourtext = '<img src="'.$WT_IMAGES['button_source'].'" alt="'.$sourtext.'" title="'.$sourtext.'" align="middle">';
 	echo
 		'</select>
-		<a href="#" onclick="iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6">', $inditext, '</a>
-		<a href="#" onclick="fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8">', $famtext, '</a>
-		<a href="#" onclick="sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10">', $sourtext, '</a>
+		<a href="#" onclick="iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6" class="icon-button_indi" title="'.WT_I18N::translate('Find individual ID').'"></a>
+		<a href="#" onclick="fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8" class="icon-button_family" title="'.WT_I18N::translate('Find Family ID').'"></a>
+		<a href="#" onclick="sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10" class="icon-button_source" title="'.WT_I18N::translate('Find Source ID').'"></a>
 		</td></tr><tr><td>',
 		WT_I18N::translate('Merge From ID:'),
 		'</td><td>
@@ -322,9 +316,9 @@ if ($action=='choose') {
 	}
 	echo
 		'</select>
-		<a href="#" onclick="iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7">', $inditext, '</a>
-		<a href="#" onclick="fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9">', $famtext, '</a>
-		<a href="#" onclick="sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11">',  $sourtext, '</a>
+		<a href="#" onclick="iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7" class="icon-button_indi" title="'.WT_I18N::translate('Find individual ID').'"></a>
+		<a href="#" onclick="fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9" class="icon-button_family" title="'.WT_I18N::translate('Find Family ID').'"></a>
+		<a href="#" onclick="sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11" class="icon-button_source" title="'.WT_I18N::translate('Find Source ID').'"></a>
 		</td></tr></table>
 		<input type="submit" value="', WT_I18N::translate('Merge records'), '" tabindex="3">
 		</form></div>';
