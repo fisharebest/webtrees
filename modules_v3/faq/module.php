@@ -334,8 +334,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	}
 
 	private function config() {
-		global $WT_IMAGES;
-
 		$controller=new WT_Controller_Base();
 		$controller->setPageTitle($this->getTitle());
 		$controller->pageHeader();

@@ -45,20 +45,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	}
 
 	function printFamilyHeader($url, $label) {
-		global $WT_IMAGES, $SEARCH_SPIDER;
-
-		echo '<table>
-			<tr>';
-			if (isset($WT_IMAGES["cfamily"])) {
-				echo '<td><img src="', $WT_IMAGES["cfamily"], '" class="icon" alt=""></td>';
-			}
-			echo '<td><span class="subheaders">', $label, '</span>';
-			if (empty($SEARCH_SPIDER)) {
-				echo ' - <a href="', $url, '">', WT_I18N::translate('View Family'), '</a>';
-			 }
-			echo '</td>
-			</tr>
-		</table>';
+		echo '<table><tr>';
+		echo '<td><i class="icon-cfamily"></i></td>';
+		echo '<td><span class="subheaders">', $label, '</span>';
+		echo ' - <a href="', $url, '">', WT_I18N::translate('View Family'), '</a></td>';
+		echo '</tr></table>';
 	}
 
 	/**
@@ -69,7 +60,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @return html table rows
 	*/
 	function printParentsRows($family, $people, $type) {
-		global $personcount, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $controller, $SEARCH_SPIDER;
+		global $personcount, $SHOW_PEDIGREE_PLACES, $controller, $SEARCH_SPIDER;
 
 		$elderdate = "";
 		//-- new father/husband
@@ -261,7 +252,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 	* @return html table rows
 	*/
 	function printChildrenRows($family, $people, $type) {
-		global $personcount, $WT_IMAGES, $controller;
+		global $personcount, $controller;
 
 		$elderdate = $family->getMarriageDate();
 		$key=0;
@@ -351,7 +342,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $WT_IMAGES, $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount, $controller;
+		global $SHOW_AGE_DIFF, $GEDCOM, $ABBREVIATE_CHART_LABELS, $show_full, $personcount, $controller;
 
 		if (isset($show_full)) $saved_show_full = $show_full; // We always want to see full details here
 		$show_full = 1;

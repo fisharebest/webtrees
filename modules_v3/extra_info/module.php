@@ -2,7 +2,7 @@
 // A sidebar to show extra/non-genealogical information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGES, $SHOW_COUNTER, $controller;
+		global $SHOW_COUNTER, $controller;
 		
 		ob_start();
 		$indifacts = $controller->getIndiFacts();
