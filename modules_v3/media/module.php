@@ -58,7 +58,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $WT_IMAGES, $controller;
+		global $controller;
 		?>
 		<script type="text/javascript">
 		<!--
@@ -74,8 +74,7 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 		// Reorder media ------------------------------------
 		if (WT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
 			echo '<tr><td colspan="2" class="descriptionbox rela">';
-			echo '<span><a href="#" onclick="reorder_media()">';
-			if (isset($WT_IMAGES['reorder'])) {echo '<img src="', $WT_IMAGES['reorder'],'" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '">';}
+			echo '<span><a href="#" onclick="reorder_media(); return false;"><i class="icon-reorder"></i>';
 			echo WT_I18N::translate('Re-order media');
 			echo '</a></span>';
 			echo '</td></tr>';

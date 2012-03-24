@@ -61,7 +61,7 @@ class TreeView {
 	* @param int $generations number of generations to draw
 	*/
 	public function drawViewport($rootPersonId, $generations) {
-		global $GEDCOM, $WT_IMAGES, $controller;
+		global $GEDCOM, $controller;
 
 		$rootPerson = WT_Person::getInstance($rootPersonId);
 		if (is_null($rootPerson)) {
@@ -77,7 +77,7 @@ class TreeView {
 		// Add the toolbar
 		$r.='<div id="tv_tools" class="noprint"><ul>'.
 			'<li id="tvbCompact" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/compact.png" alt="'.WT_I18N::translate('Use compact layout').'" title="'.WT_I18N::translate('Use compact layout').'"></li>'.
-			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a href="'.$path.'"><img src="'.$WT_IMAGES["sfamily"].'" alt="'.WT_I18N::translate('Show all spouses and ancestors').'" title="'.WT_I18N::translate('Show all spouses and ancestors').'"></a></li>';
+			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a class="icon-sfamily" href="'.$path.'" title="'.WT_I18N::translate('Show all spouses and ancestors').'"></a></li>';
 		// Hidden loading image
 		$r.='<li class="tv_button" id="'.$this->name.'_loading"><img src="'.WT_STATIC_URL.'images/loading.gif" alt="Loading..."></li></ul>';
 		$r.='</div><h2 id="tree-title">'.
@@ -161,14 +161,12 @@ class TreeView {
 	* @param Person $person the person to return the details for
 	*/
 	private function getPersonDetails($personGroup, $person, $family) {
-		global $WT_IMAGES;
-
 		$r = '<div class="tv'.$person->getSex().' tv_person_expanded">';
 		$r .= $this->getThumbnail($personGroup, $person);
-		$r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&amp;rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'"><img src="'.$WT_IMAGES['tree'].'" class="tv_link tv_treelink"></a>';
+		$r .= '<a class="tv_link" href="'.$person->getHtmlUrl().'">'.$person->getFullName().'</a> <a href="module.php?mod=tree&amp;mod_action=treeview&allPartners='.($this->allPartners ? 'true' : 'false').'&amp;rootid='.$person->getXref().'" title="'.WT_I18N::translate('Interactive tree of %s', strip_tags($person->getFullName())).'" class="icon-button_indi tv_link tv_treelink"></a>';
 		$r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('BIRT').'</b> '.$person->getBirthDate()->Display().' '.$person->getBirthPlace();
 		if ($family) {
-			$r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" class="tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'"></a>'.$family->getMarriagePlace();
+			$r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('MARR').'</b> '.$family->getMarriageDate()->Display().' <a href="'.$family->getHtmlUrl().'" class="icon-button_family tv_link tv_treelink" title="'.strip_tags($family->getFullName()).'"></a>'.$family->getMarriagePlace();
 		}
 		if ($person->isDead()) {
 			$r .= '<br><b>'.WT_Gedcom_Tag::getAbbreviation('DEAT').'</b> '.$person->getDeathDate()->Display().' '.$person->getDeathPlace();
