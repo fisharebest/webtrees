@@ -127,19 +127,15 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 			}
 		}
 
-		$text = "";
 		if ($pid) {
 			$indi=WT_Person::getInstance($pid);
 			$title=WT_I18N::translate('Compact tree of %s', $indi->getFullName());
 			$title=htmlspecialchars(strip_tags($title));
-			$arrow_img = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' align='middle' alt='$title' title='$title'>";
-			$text .= "<a href=\"?rootid=".$pid;
+			$text = '<a class="icon-'.$arrow_dir.'arrow" title="'.$title.'" href="?rootid='.$pid;
 			if ($this->show_thumbs) $text .= "&amp;show_thumbs=".$this->show_thumbs;
-			$text .= "\" onmouseover=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" onmouseout=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" >";
-			$text .= $arrow_img."</a>";
+			$text .= "\" onmouseover=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" onmouseout=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" ></a>";
 		} else {
-			// -- arrow to empty box does not have a url attached.
-			$text = "<img id='arrow$n' src='".$WT_IMAGES[$arrow_dir."arrow"]."' align='middle' alt='".WT_I18N::translate('Compact tree')."' title='".WT_I18N::translate('Compact tree')."' style='visibility:hidden;'>";
+			$text = '<i class="icon-'.$arrow_dir.'arrow"></i>';
 		}
 
 		return $text;

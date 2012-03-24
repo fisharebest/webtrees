@@ -32,8 +32,6 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_MenuBar {
 	public static function getGedcomMenu() {
-		global $WT_IMAGES;
-
 		//-- main menu
 		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree', 'down');
 		//-- gedcom list
@@ -53,7 +51,7 @@ class WT_MenuBar {
 	}
 
 	public static function getMyPageMenu() {
-		global $WT_IMAGES, $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
+		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT;
 
 		$showFull = ($PEDIGREE_FULL_DETAILS) ? 1 : 0;
 		$showLayout = ($PEDIGREE_LAYOUT) ? 1 : 0;
@@ -94,7 +92,7 @@ class WT_MenuBar {
 	}
 
 	public static function getChartsMenu() {
-		global $WT_IMAGES, $SEARCH_SPIDER, $controller;
+		global $SEARCH_SPIDER, $controller;
 
 		if ($SEARCH_SPIDER) {
 			return null;
@@ -277,7 +275,6 @@ class WT_MenuBar {
 
 			case 'pedigree_map':
 				$submenu = new WT_Menu($menuName, 'module.php?ged='.WT_GEDURL.'&amp;mod=googlemap&amp;mod_action=pedigree_map&amp;rootid='.$indi_xref, 'menu-chart-pedigree_map');
-				$WT_IMAGES['pedigree_map']=WT_STATIC_URL.WT_MODULES_DIR.'googlemap/images/pedigree_map.gif';
 				$menu->addSubmenu($submenu);
 				break;
 			}

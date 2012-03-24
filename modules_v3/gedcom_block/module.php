@@ -41,17 +41,17 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $WT_IMAGES, $controller;
+		global $controller;
 
 		$indi_xref=$controller->getSignificantIndividual()->getXref();
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
 		$title='<span dir="auto">'.get_gedcom_setting(WT_GED_ID, 'title').'</span>';
 		$content = '<table><tr>';
-		$content .= '<td><a href="pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><img class="block" src="'.$WT_IMAGES['pedigree'].'" alt="'.WT_I18N::translate('Default chart').'" title="'.WT_I18N::translate('Default chart').'"><br>'.WT_I18N::translate('Default chart').'</a></td>';
-		$content .= '<td><a href="individual.php?pid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><img class="block" src="'.$WT_IMAGES['indis'].'" alt="'.WT_I18N::translate('Default individual').'"><br>'.WT_I18N::translate('Default individual').'</a></td>';
+		$content .= '<td><a href="pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('Default chart').'</a></td>';
+		$content .= '<td><a href="individual.php?pid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('Default individual').'</a></td>';
 		if (get_site_setting('USE_REGISTRATION_MODULE') && WT_USER_ID==false) {
-			$content .= '<td><a href="'.WT_LOGIN_URL.'?action=register"><img class="block" src="'.$WT_IMAGES['user_add'].'" alt="'.WT_I18N::translate('Request new user account').'"><br>'.WT_I18N::translate('Request new user account').'</a></td>';
+			$content .= '<td><a href="'.WT_LOGIN_URL.'?action=register"><i class="icon-user_add"></i><br>'.WT_I18N::translate('Request new user account').'</a></td>';
 		}
 		$content .= "</tr>";
 		$content .= "</table>";

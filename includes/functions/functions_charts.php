@@ -595,14 +595,13 @@ function print_url_arrow($id, $url, $label, $dir=2) {
 	if ($TEXT_DIRECTION=="rtl" and $dir==0) $adir=1;
 	if ($TEXT_DIRECTION=="rtl" and $dir==1) $adir=0;
 
-	// Labels include people's names, which may contain markup
-	$label=htmlspecialchars(strip_tags($label));
 
 	// arrow style     0         1         2         3
 	$array_style=array("larrow", "rarrow", "uarrow", "darrow");
 	$astyle=$array_style[$adir];
 
-	echo "<a href=\"$url\" onmouseover=\"swap_image('".$astyle.$id."',$adir); window.status ='" . $label . "'; return true;\" onmouseout=\"swap_image('".$astyle.$id."',$adir); window.status=''; return true;\"><img id=\"".$astyle.$id."\" src=\"".$WT_IMAGES[$astyle]."\" alt=\"$label\" title=\"$label\"></a>";
+	// Labels include people's names, which may contain markup
+	echo '<a href="'.$url.'" title="'.strip_tags($label).'" class="icon-'.$astyle.'"></a>';
 }
 
 /**

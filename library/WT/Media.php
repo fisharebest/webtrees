@@ -424,7 +424,6 @@ class WT_Media extends WT_GedcomRecord {
 				return 'mediafirewall.php?mid='.$this->getXref().$thumbstr.$downloadstr.$separator.'ged='.rawurlencode(get_gedcom_from_id($this->ged_id)).$separator.'cb='.$this->getEtag($which);
 			} else {
 				// file is in standard media directory (or doesn't exist), no need to use media firewall script
-				// definitely don't want icons defined in $WT_IMAGES going through the media firewall
 				if ($separator == '&') {
 					return rawurlencode($this->getLocalFilename($which));
 				} else {

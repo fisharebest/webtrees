@@ -49,7 +49,7 @@ echo
 	'<body id="body">',
 // Header
 	'<div id="admin_head" class="ui-widget-content">',
-	'<img src="', $WT_IMAGES['webtrees'], '" alt="', WT_WEBTREES, '">',
+	'<i class="icon-webtrees"></i>',
 	'<div id="title"><a href="admin.php">', WT_I18N::translate('Administration'), '</a></div>',
 	'<div id="links">',
 	'<a href="index.php">', WT_I18N::translate('My page'), '</a> | ',
