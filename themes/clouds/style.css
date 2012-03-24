@@ -2845,7 +2845,7 @@ html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 }
 
 /* Icons */
-[class^="icon-"], [class*=" icon-"] {display:inline-block;vertical-align:text-bottom;background-repeat:no-repeat;}
+[class^="icon-"], [class*=" icon-"] {display:inline-block;vertical-align:middle;background-repeat:no-repeat;}
 .icon-add {width:14px;height:15px;background-image:url("images/add.png");}
 .icon-admin {width:22px;height:22px;background-image:url("images/admin.png");}
 .icon-button_addmedia {width:18px;height:16px;background-image:url("images/buttons/addmedia.png");}
@@ -2919,7 +2919,7 @@ a.icon-rarrow:hover {width:20px;height:20px;background-image:url("images/rarrow2
 .icon-reorder {width:16px;height:16px;background-image:url("images/reorder_images.png");}
 .icon-repo-list {width:22px;height:22px;background-image:url("images/repository.png");}
 .icon-repository {width:22px;height:22px;background-image:url("images/repository.png");}
-.icon-rings {width:9px;height:9px;background-image:url("images/rings.png");}
+.icon-rings {width:9px;height:11px;background-image:url("images/rings.png");}
 .icon-search {width:16px;height:16px;background-image:url("images/go.png");}
 .icon-selected {width:12px;height:12px;background-image:url("images/selected.png");}
 .icon-sex_f_15x15 {width:15px;height:15px;background-image:url("images/sex_f_15x15.png");}
