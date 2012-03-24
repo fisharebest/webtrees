@@ -382,14 +382,14 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				if ($faq->block_order==$min_block_order) {
 					echo '&nbsp;';
 				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES['uarrow'], '" alt=""></a>';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_moveup&amp;block_id=', $faq->block_id, '" class="icon-uarrow"></a>';
 					echo help_link('moveup_faq_item', $this->getName());
 				}
 				echo '</td><td>';
 				if ($faq->block_order==$max_block_order) {
 					echo '&nbsp;';
 				} else {
-					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $faq->block_id, '"><img src="', $WT_IMAGES['darrow'], '" alt=""></a>';
+					echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_movedown&amp;block_id=', $faq->block_id, '" class="icon-darrow"></a>';
 					echo help_link('movedown_faq_item', $this->getName());
 				}
 				echo '</td><td>';
