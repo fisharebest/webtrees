@@ -26,11 +26,6 @@
 define('WT_SCRIPT_NAME', 'branches.php');
 require './includes/session.php';
 
-//-- const
-$fact='MARR';
-define('WT_ICON_RINGS', '<img src="'.$WT_IMAGES['rings'].'" alt="'.WT_Gedcom_Tag::getLabel('MARR').'" title="'.WT_Gedcom_Tag::getLabel('MARR').'">');
-define('WT_ICON_BRANCHES', '<img src="'.$WT_IMAGES['patriarch'].'" alt="" align="middle">');
-
 //-- args
 $surn = safe_GET('surname', '[^<>&%{};]*');
 $soundex_std = safe_GET_bool('soundex_std');
@@ -82,7 +77,7 @@ if ($ENABLE_AUTOCOMPLETE) {
 <?php
 //-- results
 if ($surn) {
-	echo '<fieldset><legend>', WT_ICON_BRANCHES, ' ', $surn, '</legend>';
+	echo '<fieldset><legend><i class="icon-patriarch"></i> ', $surn, '</legend>';
 	$indis = indis_array($surn, $soundex_std, $soundex_dm);
 	usort($indis, array('WT_Person', 'CompareBirtDate'));
 	echo '<ol>';
@@ -168,11 +163,11 @@ function print_fams($person, $famid=null) {
 			}
 			if ($family->getMarriageYear()) {
 				$txt .= ' <a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<span class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'">'.WT_ICON_RINGS.$family->getMarriageYear().'</span></a>';
+				$txt .= '<span class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'"><i class="icon-rings"></i>'.$family->getMarriageYear().'</span></a>';
 			}
 			else if ($family->getMarriage()) {
 				$txt .= ' <a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<span class="details1" title="'.WT_I18N::translate('yes').'">'.WT_ICON_RINGS.'</span></a>';
+				$txt .= '<span class="details1" title="'.WT_I18N::translate('yes').'"><i class="icon-rings"></i></span></a>';
 			}
 		$txt .=
 			$spouse->getSexImage().
