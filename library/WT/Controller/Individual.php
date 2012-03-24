@@ -469,8 +469,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* @return array an array of Person that will be used to iterate through on the indivudal.php page
 	*/
 	function buildFamilyList($family, $type, $include_pedi=true) {
-		global $WT_IMAGES;
-
 		$labels = array();
 		switch ($type) {
 		case 'parents':
@@ -566,7 +564,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			if ($sex=="M") {
 				$label = $labels["father"];
 			}
-			if ($husb->getXref()==$this->record->getXref()) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\">";
+			if ($husb->getXref()==$this->record->getXref()) {
+				$label = '<i class="icon-selected"></i>';
+			}
 			$husb->setLabel($label);
 		}
 		//-- set the label for the wife
@@ -579,7 +579,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			if ($sex=="M") {
 				$label = $labels["father"];
 			}
-			if ($wife->getXref()==$this->record->getXref()) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\">";
+			if ($wife->getXref()==$this->record->getXref()) {
+				$label = '<i class="icon-selected"></i>';
+			}
 			$wife->setLabel($label);
 		}
 		if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT) {
@@ -596,7 +598,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					if ($sex=="M") {
 						$label = $labels["father"];
 					}
-					if ($newhusb->getXref()==$this->record->getXref()) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\">";
+					if ($newhusb->getXref()==$this->record->getXref()) {
+						$label = '<i class="icon-selected"></i>';
+					}
 					$newhusb->setLabel($label);
 				}
 				else $newhusb = null;
@@ -611,7 +615,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					if ($sex=="M") {
 						$label = $labels["father"];
 					}
-					if ($newwife->getXref()==$this->record->getXref()) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\">";
+					if ($newwife->getXref()==$this->record->getXref()) {
+						$label = '<i class="icon-selected"></i>';
+					}
 					$newwife->setLabel($label);
 				}
 				else $newwife = null;
@@ -665,7 +671,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					$label = $labels["brother"];
 				}
 				if ($children[$i]->getXref()==$this->record->getXref()) {
-					$label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\">";
+					$label = '<i class="icon-selected"></i>';
 				}
 				if ($include_pedi==true) {
 					$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcomRecord());
@@ -687,7 +693,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			if ($sex=="M") {
 				$label = $labels["brother"];
 			}
-			if ($newchildren[$i]->getXref()==$this->record->getXref()) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\">";
+			if ($newchildren[$i]->getXref()==$this->record->getXref()) {
+				$label = '<i class="icon-selected"></i>';
+			}
 			if ($include_pedi==true) {
 				$pedi = $newchildren[$i]->getChildFamilyPedigree($family->getXref());
 				if ($pedi) {
@@ -706,7 +714,9 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			if ($sex=="M") {
 				$label = $labels["brother"];
 			}
-			if ($delchildren[$i]->getXref()==$this->record->getXref()) $label = "<img src=\"". $WT_IMAGES["selected"]. "\" alt=\"\">";
+			if ($delchildren[$i]->getXref()==$this->record->getXref()) {
+				$label = '<i class="icon-selected"></i>';
+			}
 			if ($include_pedi==true) {
 				$pedi = $delchildren[$i]->getChildFamilyPedigree($family->getXref());
 				if ($pedi) {

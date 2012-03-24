@@ -592,7 +592,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 
 	function printResults() {
 		require_once WT_ROOT.'includes/functions/functions_print_lists.php';
-		global $GEDCOM, $WT_IMAGES;
+		global $GEDCOM;
 
 		$somethingPrinted = false; // whether anything printed
 		// ---- section to search and display results on a general keyword search

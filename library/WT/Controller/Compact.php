@@ -112,7 +112,7 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 	}
 
 	function sosa_arrow($n, $arrow_dir) {
-		global $TEXT_DIRECTION, $WT_IMAGES;
+		global $TEXT_DIRECTION;
 
 		$pid = $this->treeid[$n];
 
