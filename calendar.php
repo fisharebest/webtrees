@@ -414,31 +414,27 @@ case 'calendar':
 switch ($action) {
 case 'year':
 case 'today':
-	echo "<table class=\"width100\"><tr>";
+	echo '<table class="width100"><tr>';
 	// Table headings
-	echo "<td class=\"descriptionbox width50\">";
-		if (isset($WT_IMAGES['indis'])) echo "<img id=\"calendar_img_indi\" src=\"{$WT_IMAGES['indis']}\" title=\"", WT_I18N::translate('Individuals'), "\" alt=\"", WT_I18N::translate('Individuals'), "\">&nbsp;&nbsp;&nbsp;";
-		echo WT_I18N::translate('Individuals'), "</td>";
-	echo "<td class=\"descriptionbox center width50\">";
-		if (isset($WT_IMAGES['cfamily'])) echo "<img id=\"calendar_img_fam\" src=\"{$WT_IMAGES['cfamily']}\" title=\"", WT_I18N::translate('Families'), "\" alt=\"", WT_I18N::translate('Families'), "\">&nbsp;&nbsp;&nbsp;";
-		echo WT_I18N::translate('Families'), "</td>";
-	echo "</tr><tr>";
+	echo '<td class="descriptionbox center width50"><i class="icon-indis"></i>', WT_I18N::translate('Individuals'), '</td>';
+	echo '<td class="descriptionbox center width50"><i class="icon-cfamily"></i>', WT_I18N::translate('Families'), '</td>';
+	echo '</tr><tr>';
 	// Table rows
 	$males=0;
 	$females=0;
 	$numfams=0;
-	echo "<td class=\"optionbox wrap\">";
+	echo '<td class="optionbox wrap">';
 
 	// Avoid an empty unordered list
 	ob_start();
-	echo calendar_list_text($indis, "<li>", "</li>", true);
+	echo calendar_list_text($indis, '<li>', '</li>', true);
 	$content = ob_get_clean();
 	if (!empty($content)) {
 		echo '<ul>', $content, '</ul>';
 	}
 
 	echo '</td>';
-	echo "<td class=\"optionbox wrap\">";
+	echo '<td class="optionbox wrap">';
 
 	// Avoid an empty unordered list
 	ob_start();
@@ -582,7 +578,7 @@ function calendar_fact_text($fact, $show_places) {
 // Format a list of facts for display
 ////////////////////////////////////////////////////////////////////////////////
 function calendar_list_text($list, $tag1, $tag2, $show_sex_symbols) {
-	global $WT_IMAGES, $males, $females;
+	global $males, $females;
 
 	foreach ($list as $id=>$facts) {
 		$tmp=WT_GedcomRecord::GetInstance($id);
