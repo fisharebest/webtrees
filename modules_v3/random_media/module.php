@@ -194,39 +194,33 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				} else {
 					$image = "rarrow";
 				}
-				$linkNextImage = "<a href=\"#\" onclick=\"jQuery('#block_{$block_id}').load('index.php?ctype={$ctype}&amp;action=ajax&amp;block_id={$block_id}');return false;\"><img src=\"{$WT_IMAGES['rdarrow']}\" alt=\"".WT_I18N::translate('Next image')."\" title=\"".WT_I18N::translate('Next image')."\"></a>";
-
+				$linkNextImage = '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;"title="'.WT_I18N::translate('Next image').'" class="icon-rdarrow"></a>';
 				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br>";
 				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
-				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\">";
-				if (isset($WT_IMAGES[$image])) $content .= "<img id=\"play_stop\" src=\"{$WT_IMAGES[$image]}\" alt=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop')."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop')."\">";
-				else $content .= WT_I18N::translate('Play')."/".WT_I18N::translate('Stop');
-				$content .= "</a>";
+				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"icon-".$image."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
 				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
 				$content .= '</div>'.WT_JS_START.'
 					var play = false;
 						function togglePlay() {
 							if (play) {
 								play = false;
-								imgid = document.getElementById("play_stop");
-								imgid.src = \''.$WT_IMAGES["rarrow"].'\';
+								jQuery("#play_stop").removeClass("icon-stop").addClass("icon-rarrow");
 							}
 							else {
 								play = true;
 								playSlideShow();
-								imgid = document.getElementById("play_stop");
-								imgid.src = \''.$WT_IMAGES["stop"].'\';
+								jQuery("#play_stop").removeClass("icon-rarrow").addClass("icon-stop");
 							}
 						}
 
 						function playSlideShow() {
 							if (play) {
-								window.setTimeout(\'reload_image()\', 6000);
+								window.setTimeout("reload_image()", 6000);
 							}
 						}
 						function reload_image() {
 							if (play) {
-								jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1\');
+								jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1");
 							}
 						}
 					'.WT_JS_END;
