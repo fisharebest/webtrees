@@ -597,11 +597,11 @@ function print_url_arrow($id, $url, $label, $dir=2) {
 
 
 	// arrow style     0         1         2         3
-	$array_style=array("larrow", "rarrow", "uarrow", "darrow");
+	$array_style=array("icon-larrow", "icon-rarrow", "icon-uarrow", "icon-darrow");
 	$astyle=$array_style[$adir];
 
 	// Labels include people's names, which may contain markup
-	echo '<a href="'.$url.'" title="'.strip_tags($label).'" class="icon-'.$astyle.'"></a>';
+	echo '<a href="'.$url.'" title="'.strip_tags($label).'" class="'.$astyle.'"></a>';
 }
 
 /**

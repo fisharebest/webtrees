@@ -190,14 +190,14 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content = "<div id=\"random_picture_container$block_id\">";
 			if ($controls) {
 				if ($start) {
-					$image = "stop";
+					$icon_class = 'icon-stop';
 				} else {
-					$image = "rarrow";
+					$icon_class = 'icon-rarrow';
 				}
 				$linkNextImage = '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;"title="'.WT_I18N::translate('Next image').'" class="icon-rdarrow"></a>';
 				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br>";
 				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
-				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"icon-".$image."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
+				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"".$icon_class."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
 				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
 				$content .= '</div>'.WT_JS_START.'
 					var play = false;

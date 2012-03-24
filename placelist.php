@@ -208,8 +208,7 @@ if ($display=='hierarchy') {
 			} elseif ($ct1 > 4) {
 				echo 'colspan="2"';
 			}
-			echo '>&nbsp;';
-			echo '<img src="', $WT_IMAGES['place'], '" title="', WT_I18N::translate('Place'), '" alt="', WT_I18N::translate('Place'), '">&nbsp;&nbsp;';
+			echo '><i class="icon-place"></i> ';
 			if ($level>0) {
 				echo /* I18N: %s is a country or region */WT_I18N::translate('Places in %s', $num_place);
 			} else {
@@ -348,8 +347,7 @@ if ($display=='list') {
 		echo '<table class="list_table">';
 		echo '<tr><td class="list_label" ';
 		$ct = count($placelist);
-		echo ' colspan="', $ct>20 ? 3 : 2, '">&nbsp;';
-		echo '<img src="', $WT_IMAGES['place'], '" title="', WT_I18N::translate('Place'), '" alt="', WT_I18N::translate('Place'), '">&nbsp;&nbsp;';
+		echo ' colspan="', $ct>20 ? 3 : 2, '"><i class="icon-place"></i> ';
 		echo WT_I18N::translate('Place List');
 		echo '</td></tr><tr><td class="list_value_wrap"><ul>';
 		$i=0;
