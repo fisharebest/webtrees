@@ -317,20 +317,6 @@ var show = false;
 		return false;
 	}
 
-	//-- function used for mouse overs of arrows
-	//- arrow is the id of the arrow to swap
-	//- index is the index into the arrows array
-	//- set index=0 for left pointing arrows
-	//- set index=1 for right pointing arrows
-	//- set index=2 for up pointing arrows
-	//- set index=3 for down pointing arrows
-	function swap_image(arrow, index) {
-		arrowimg = document.getElementById(arrow);
-		tmp = arrowimg.src;
-		arrowimg.src = arrows[index].src;
-		arrows[index].src = tmp;
-	}
-
 // Main function to retrieve mouse x-y pos.s
 function getMouseXY(e) {
   if (IE) { // grab the x-y pos.s if browser is IE

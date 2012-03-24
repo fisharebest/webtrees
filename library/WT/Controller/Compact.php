@@ -130,10 +130,9 @@ class WT_Controller_Compact extends WT_Controller_Chart {
 		if ($pid) {
 			$indi=WT_Person::getInstance($pid);
 			$title=WT_I18N::translate('Compact tree of %s', $indi->getFullName());
-			$title=htmlspecialchars(strip_tags($title));
-			$text = '<a class="icon-'.$arrow_dir.'arrow" title="'.$title.'" href="?rootid='.$pid;
+			$text = '<a class="icon-'.$arrow_dir.'arrow" title="'.strip_tags($title).'" href="?rootid='.$pid;
 			if ($this->show_thumbs) $text .= "&amp;show_thumbs=".$this->show_thumbs;
-			$text .= "\" onmouseover=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" onmouseout=\"swap_image('arrow$n',".$arrow_swap[$arrow_dir].");\" ></a>";
+			$text .= "\" </a>";
 		} else {
 			$text = '<i class="icon-'.$arrow_dir.'arrow"></i>';
 		}

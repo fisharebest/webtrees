@@ -238,15 +238,6 @@ class WT_Controller_Base {
 			zoominout[0].src = "'.$WT_IMAGES["zoomin"].'";
 			zoominout[1] = new Image();
 			zoominout[1].src = "'.$WT_IMAGES["zoomout"].'";
-			var arrows = new Array();
-			arrows[0] = new Image();
-			arrows[0].src = "'.$WT_IMAGES["larrow2"].'";
-			arrows[1] = new Image();
-			arrows[1].src = "'.$WT_IMAGES["rarrow2"].'";
-			arrows[2] = new Image();
-			arrows[2].src = "'.$WT_IMAGES["uarrow2"].'";
-			arrows[3] = new Image();
-			arrows[3].src = "'.$WT_IMAGES["darrow2"].'";
 	
 		function delete_record(pid, linenum, mediaid) {
 			if (!mediaid) mediaid="";
