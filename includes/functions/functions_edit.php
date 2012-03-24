@@ -1847,7 +1847,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 
 	if ($tag=="SOUR") {
 		//-- Add new source to fact
-		echo "<a href=\"#\" onclick=\"return expand_layer('newsource');\"><img id=\"newsource_img\" src=\"", $WT_IMAGES["plus"], "\" width=\"11\" height=\"11\" alt=\"\" title=\"\"> ", WT_I18N::translate('Add a new source citation'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newsource');\"><i id=\"newsource_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new source citation'), "</a>";
 		echo help_link('edit_add_SOUR');
 		echo "<br>";
 		echo "<div id=\"newsource\" style=\"display: none;\">";
@@ -1878,12 +1878,12 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	if ($tag=="ASSO" || $tag=="ASSO2") {
 		//-- Add a new ASSOciate
 		if ($tag=="ASSO") {
-			echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><img id=\"newasso_img\" src=\"", $WT_IMAGES["plus"], "\" width=\"11\" height=\"11\" alt=\"\" title=\"\"> ", WT_I18N::translate('Add a new associate'), "</a>";
+			echo "<a href=\"#\" onclick=\"return expand_layer('newasso');\"><i id=\"newasso_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new associate'), "</a>";
 			echo help_link('edit_add_ASSO');
 			echo "<br>";
 			echo "<div id=\"newasso\" style=\"display: none;\">";
 		} else {
-			echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><img id=\"newasso2_img\" src=\"", $WT_IMAGES["plus"], "\" width=\"11\" height=\"11\" alt=\"\" title=\"\"> ", WT_I18N::translate('Add a new associate'), "</a>";
+			echo "<a href=\"#\" onclick=\"return expand_layer('newasso2');\"><i id=\"newasso2_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new associate'), "</a>";
 			echo help_link('edit_add_ASSO');
 			echo "<br>";
 			echo "<div id=\"newasso2\" style=\"display: none;\">";
@@ -1903,7 +1903,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	if ($tag=="NOTE") {
 		//-- Retrieve existing note or add new note to fact
 		$text = '';
-		echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><img id=\"newnote_img\" src=\"", $WT_IMAGES["plus"], "\" width=\"11\" height=\"11\" alt=\"\" title=\"\"> ", WT_I18N::translate('Add a new note'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newnote');\"><i id=\"newnote_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new note'), "</a>";
 		echo help_link('edit_add_NOTE');
 		echo "<br>";
 		echo "<div id=\"newnote\" style=\"display: none;\">";
@@ -1916,7 +1916,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	if ($tag=="SHARED_NOTE") {
 		//-- Retrieve existing shared note or add new shared note to fact
 		$text = '';
-		echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><img id=\"newshared_note_img\" src=\"", $WT_IMAGES["plus"], "\" width=\"11\" height=\"11\" alt=\"\" title=\"\"> ", WT_I18N::translate('Add a new shared note'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newshared_note');\"><i id=\"newshared_note_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new shared note'), "</a>";
 		echo help_link('edit_add_SHARED_NOTE');
 		echo "<br>";
 		echo "<div id=\"newshared_note\" style=\"display: none;\">";
@@ -1929,7 +1929,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	}
 	if ($tag=="OBJE") {
 		//-- Add new obje to fact
-		echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><img id=\"newobje_img\" src=\"", $WT_IMAGES["plus"], "\" width=\"11\" height=\"11\" alt=\"\" title=\"\"> ", WT_I18N::translate('Add a new media object'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newobje');\"><i id=\"newobje_img\" class=\"icon-plus\"></i> ", WT_I18N::translate('Add a new media object'), "</a>";
 		echo help_link('OBJE');
 		echo "<br>";
 		echo "<div id=\"newobje\" style=\"display: none;\">";
@@ -1941,7 +1941,7 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 	if ($tag=="RESN") {
 		//-- Retrieve existing resn or add new resn to fact
 		$text = '';
-		echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><img id=\"newresn_img\" src=\"", $WT_IMAGES["plus"], "\" width=\"11\" height=\"11\" alt=\"\" title=\"\"> ", WT_Gedcom_Tag::getLabel('RESN'), "</a>";
+		echo "<a href=\"#\" onclick=\"return expand_layer('newresn');\"><i id=\"newresn_img\" class=\"icon-plus\"></i> ", WT_Gedcom_Tag::getLabel('RESN'), "</a>";
 		echo help_link('RESN');
 		echo "<br>";
 		echo "<div id=\"newresn\" style=\"display: none;\">";

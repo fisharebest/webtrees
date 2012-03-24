@@ -484,14 +484,12 @@ function print_fact_sources($factrec, $level, $return=false) {
 				$data .= '<span class="label">';
 				$elementID = $sid."-".floor(microtime()*1000000);
 				if ($EXPAND_SOURCES) {
-					$plusminus='minus';
+					$plusminus='icon-minus';
 				} else {
-					$plusminus='plus';
+					$plusminus='icon-plus';
 				}
 				if ($lt>0) {
-					$data .= "<a href=\"#\" onclick=\"expand_layer('$elementID'); return false;\"><img id=\"{$elementID}_img\" src=\"".$WT_IMAGES[$plusminus].'" width="11" height="11" alt="';
-					if ($plusminus=='plus') $data .= WT_I18N::translate('Show Details').'" title="'.WT_I18N::translate('Show Details').'"></a> ';
-					else $data .= WT_I18N::translate('Hide Details').'" title="'.WT_I18N::translate('Hide Details').'"></a> ';
+					$data .= '<a href="#" onclick="return expand_layer(\''.$elementID.'\');"><i id="'.$elementID.'_img" class="'.$plusminus.'"></i></a> ';
 				}
 				$data .= WT_I18N::translate('Source').':</span> <span class="field">';
 				$data .= '<a href="'.$source->getHtmlUrl().'">'.$source->getFullName().'</a>';

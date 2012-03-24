@@ -226,13 +226,6 @@ class WT_Controller_Base {
 			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 			var WT_LOCALE      = "'.WT_LOCALE.'";
 			var accesstime  = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
-			var plusminus = new Array();
-			plusminus[0] = new Image();
-			plusminus[0].src = "'.$WT_IMAGES["plus"].'";
-			plusminus[0].title = "'.WT_I18N::translate('Show Details').'";
-			plusminus[1] = new Image();
-			plusminus[1].src = "'.$WT_IMAGES["minus"].'";
-			plusminus[1].title = "'.WT_I18N::translate('Hide Details').'";
 			var zoominout = new Array();
 			zoominout[0] = new Image();
 			zoominout[0].src = "'.$WT_IMAGES["zoomin"].'";

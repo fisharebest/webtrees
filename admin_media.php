@@ -798,9 +798,6 @@ if (check_media_structure()) {
 				<?php echo WT_I18N::translate('Show thumbnails'); ?>
 				<input type="checkbox" name="showthumb" value="true" <?php if ($showthumb) echo "checked=\"checked\""; ?> onclick="submit();">
 			</td>
-			<!--<td class="wrap">
-				<?php echo "<a href=\"#\" onclick=\"expand_layer('uploadmedia');\">".WT_I18N::translate('Upload media files')."</a>". help_link('upload_media'); ?>
-			</td>-->
 			<td class="wrap">
 				<a href="#" onclick="window.open('addmedia.php?action=showmediaform&amp;linktoid=new', '_blank', edit_window_specs); return false;"> <?php echo WT_I18N::translate('Add a new media object')."</a>". help_link('OBJE'); ?>
 			</td>

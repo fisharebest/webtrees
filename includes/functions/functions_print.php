@@ -501,9 +501,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 			$data .= '<div class="fact_NOTE"><span class="label">';
 			if ($brpos !== false) {
 				if ($EXPAND_NOTES) $plusminus='minus'; else $plusminus='plus';
-				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><img id="'.$elementID.'_img" src="'.$WT_IMAGES[$plusminus].'" width="11" height="11" alt="';
-				if ($plusminus=='plus') $data .= WT_I18N::translate('Show Details').'" title="'.WT_I18N::translate('Show Details').'"></a> ';
-				else $data .= WT_I18N::translate('Hide Details').'" title="'.WT_I18N::translate('Hide Details').'"></a> ';
+				$data .= '<a href="#" onclick="expand_layer(\''.$elementID.'\'); return false;"><i id="'.$elementID.'_img" class="icon-plus"></i></a> ';
 			}
 
 			// Check if Shared Note -----------------------------
