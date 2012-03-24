@@ -323,18 +323,18 @@ echo
 			<table style="margin-left: 20px" dir="ltr" border="0" cellpadding="0">
 				<tr>
 					<td></td>
-					<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll(\'down\')" onmouseup="stopScroll()"><img src="', $WT_IMAGES["lsuparrow"], '" alt=""></a></td>
+					<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll(\'down\')" onmouseup="stopScroll()" class="icon-lsuparrow"></a></td>
 					<td></td>
 				</tr>
 				<tr>
-					<td><a href="#" onclick="return false;" onmousedown="startScroll(\'right\')" onmouseup="stopScroll()"><img src="', $WT_IMAGES["lsltarrow"], '" alt=""></a></td>
-					<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom(\'increase\')"><img src="', $WT_IMAGES["zoomin"], '" alt=""></a> --></td>
-					<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom(\'decrease\')"><img src="', $WT_IMAGES["zoomout"], '" alt=""></a> --></td>
-					<td><a href="#" onclick="return false;" onmousedown="startScroll(\'left\')" onmouseup="stopScroll()"><img src="', $WT_IMAGES["lsrtarrow"], '" alt=""></a></td>
+					<td><a href="#" onclick="return false;" onmousedown="startScroll(\'right\')" onmouseup="stopScroll()" class="icon-lsltarrow"></a></td>
+					<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom(\'increase\')" class="icon-zoomin"></a> --></td>
+					<td align="center"><!-- <a href="#" onclick="return false;" onmousedown="startZoom(\'decrease\')" class="icon-zoomout"></a> --></td>
+					<td><a href="#" onclick="return false;" onmousedown="startScroll(\'left\')" onmouseup="stopScroll()" class="icon-lsrtarrow"></a></td>
 				</tr>
 				<tr>
 					<td>&nbsp;</td>
-					<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll(\'up\')" onmouseup="stopScroll()"><img src="', $WT_IMAGES["lsdnarrow"], '" alt=""></a></td>
+					<td colspan="2" align="center"><a href="#" onclick="return false;" onmousedown="startScroll(\'up\')" onmouseup="stopScroll()" class="icon-lsdnarrow"></a></td>
 					<td>&nbsp;</td>
 				</tr>
 			</table>
