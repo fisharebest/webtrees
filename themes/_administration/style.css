@@ -457,3 +457,4 @@ a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 /* These icons need to be combined into admin_icon_sprite.png */
 .icon-remove {width:16px;height:16px;background:url("images/delete.png");}
 .icon-remove_grey {width:16px;height:16px;background:url("images/delete_grey.png");}
+.icon-webtrees {width:240px;height:50px;background:url("images/header.png");}
