@@ -932,7 +932,6 @@ a.icon-darrow:hover {width:20px;height:20px;background-image:url("../images/darr
 .icon-help {width:15px;height:15px;background-image:url("../images/help.png");}
 .icon-hline {width:10px;height:3px;background-image:url("../images/hline.png");}
 .icon-indi-list {width:32px;height:32px;background-image:url("../images/indis.png");}
-.icon-indis {width:32px;height:32px;background-image:url("../images/indis.png");}
 .icon-larrow {width:20px;height:20px;background-image:url("../images/larrow.png");}
 a.icon-larrow:hover {width:20px;height:20px;background-image:url("../images/larrow2.png");}
 .icon-ldarrow {width:20px;height:20px;background-image:url("../images/ldarrow.png");}
@@ -955,11 +954,14 @@ a.icon-larrow:hover {width:20px;height:20px;background-image:url("../images/larr
 .icon-media_wmv {width:48px;height:48px;background-image:url("../images/media/wmv.png");}
 .icon-media_wmvrem {width:48px;height:48px;background-image:url("../images/media/wmvrem.png");}
 .icon-minus {width:11px;height:11px;background-image:url("../images/minus.png");}
-.icon-mypage {width:32px;height:32px;background-image:url("../images/mypage.png");}
 .icon-note {width:33px;height:35px;background-image:url("../images/notes.png");}
 .icon-note-list {width:33px;height:35px;background-image:url("../images/notes.png");}
 .icon-patriarch {width:32px;height:32px;background-image:url("../images/patriarch.png");}
-.icon-pedigree {width:22px;height:22px;background-image:url("../images/pedigree.png");}
+
+.icon-pedigree {width:22px;height:25px;background-image:url("../images/icon-pedigree.png");}
+.icon-mypage {width:22px;height:25px;background-image:url("../images/mypage.png");}
+.icon-indis {width:22px;height:25px;background-image:url("../images/mypage.png");}
+
 .icon-pedigree_map {width:24px;height:24px;background-image:url("../../../modules_v3/googlemap/images/pedigree_map.gif");}
 .icon-place {width:32px;height:17px;background-image:url("../images/place.png");}
 .icon-plus {width:11px;height:11px;background-image:url("../images/plus.png");}
