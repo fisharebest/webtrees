@@ -143,7 +143,7 @@ if ($action == 'choose' && $paramok) {
 	
 			if ($record->getType()=='INDI') {
 				?>
-				<td align="center"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $link; ?>');"></td>
+				<td align="center"><a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $link; ?>'); return false;"></a></td>
 				<?php
 			} elseif ($record->getType()=='FAM') {
 				if ($record->getHusband()) {
@@ -154,7 +154,7 @@ if ($action == 'choose' && $paramok) {
 					$head='';
 				}
 				?>
-				<td align="center"><img style="border-style:none; margin-top:5px;" src="<?php echo $WT_IMAGES['button_family']; ?>" alt="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" title="<?php echo WT_I18N::translate('Open Family Navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $head; ?>');"></td>
+				<td align="center"><a href="#" class="icon-button_family" title="<?php echo WT_I18N::translate('Family navigator'); ?>" name="family_'<?php echo $link; ?>'" onclick="openFamNav('<?php echo $head; ?>');"></a></td>
 				<?php
 			} else {
 				echo '<td></td>';

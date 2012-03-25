@@ -80,6 +80,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Normal, postfix, prefix, both');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Normal, prefix, postfix, both');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Only update existing records.<br />When this option is selected only existing records will be updated. This can be used to fill in latitude and longitude of places that have been imported from a GEDCOM. No new places will be added to the database.');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Open Family Navigator');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Open links in');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Overwrite location data in the database with data from the file.<br />When this option is selected, the location data in the database (latitude, longitude, zoomlevel and flag) are overwritten with the data in the file, if available. If the record is not already in the database a new record will be created, unless the Update-only  option is also selected.');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Overwrite location data');
