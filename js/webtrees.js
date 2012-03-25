@@ -587,9 +587,10 @@ function expandbox(boxid, bstyle) {
 		oldiconsdislpay = icons.style.display;
 		icons.style.display = "block";
 		}
-		if (iconz) {
-			if (iconz.src==zoominout[0].src) iconz.src = zoominout[1].src;
-			else iconz.src = zoominout[0].src;
+		if (jQuery(iconz).hasClass("icon-zoomin")) {
+			jQuery(iconz).removeClass("icon-zoomin").addClass("icon-zoomout");
+		} else {
+			jQuery(iconz).removeClass("icon-zoomout").addClass("icon-zoomin");
 		}
 		oldboxid=boxid;
 		big = 1;
@@ -961,18 +962,6 @@ function timeout_submenu(elementid) {
 		menutimeouts[elementid] = tout;
 	}
 }
-function checkKeyPressed(e) {
-	if (IE) key = window.event.keyCode;
-	else key = e.which;
-	if (key==118) {
-		if (pastefield) findSpecialChar(pastefield);
-	}
-	if (key==112) {
-		helpPopup(whichhelp);
-	}
-	//else if (pastefield) pastefield.value=key;
-}
-
 function focusHandler(evt) {
 	var e = evt ? evt : window.event;
 	if (!e) return;
@@ -994,7 +983,6 @@ function loadHandler() {
 var IE = document.all?true:false;
 if (!IE) document.captureEvents(Event.MOUSEMOVE|Event.KEYDOWN|Event.KEYUP);
 document.onmousemove = getMouseXY;
-document.onkeyup = checkKeyPressed;
 
 //Highlight image script - START
 //Highlight image script- By Dynamic Drive

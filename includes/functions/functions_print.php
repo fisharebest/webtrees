@@ -45,7 +45,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	global $HIDE_LIVE_PEOPLE, $SHOW_LIVING_NAMES, $GEDCOM;
 	global $SHOW_HIGHLIGHT_IMAGES, $bwidth, $bheight, $PEDIGREE_FULL_DETAILS, $SHOW_PEDIGREE_PLACES;
 	global $TEXT_DIRECTION, $DEFAULT_PEDIGREE_GENERATIONS, $OLD_PGENS, $talloffset, $PEDIGREE_LAYOUT;
-	global $WT_IMAGES, $ABBREVIATE_CHART_LABELS;
+	global $ABBREVIATE_CHART_LABELS;
 	global $chart_style, $box_width, $generations, $show_spouse, $show_full;
 	global $CHART_BOX_TAGS, $SHOW_LDS_AT_GLANCE, $PEDIGREE_SHOW_GENDER;
 	global $SEARCH_SPIDER;
@@ -137,10 +137,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			if (!$show_full) {
 				$outBoxAdd .= $mouseAction4;
 			} else {
-				$icons .= "<a href=\"#\"";
-				$icons .= $mouseAction4;
-				$icons .= "><img id=\"iconz-$boxID\" src=\"".$WT_IMAGES["zoomin"]."\" alt=\"".WT_I18N::translate('Zoom in/out on this box.')."\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\"></a>";
-				$icons .= '<div class="itr"><img src="'.$WT_IMAGES['pedigree'].'" alt="" title=""><div class="popup">'.$personlinks.'</div></div>';
+				$icons .= "<a href=\"#\"".$mouseAction4." id=\"iconz-$boxID\" class=\"icon-zoomin\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\"></a>";
+				$icons .= '<div class="itr"><i class="icon-pedigree"></i><div class="popup">'.$personlinks.'</div></div>';
 			}
 		} else {
 			if ($style==1) {

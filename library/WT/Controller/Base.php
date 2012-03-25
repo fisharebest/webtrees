@@ -225,12 +225,7 @@ class WT_Controller_Base {
 			var browserType    = "'.$BROWSERTYPE.'";
 			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 			var WT_LOCALE      = "'.WT_LOCALE.'";
-			var accesstime  = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
-			var zoominout = new Array();
-			zoominout[0] = new Image();
-			zoominout[0].src = "'.$WT_IMAGES["zoomin"].'";
-			zoominout[1] = new Image();
-			zoominout[1].src = "'.$WT_IMAGES["zoomout"].'";
+			var accesstime     = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
 	
 		function delete_record(pid, linenum, mediaid) {
 			if (!mediaid) mediaid="";
@@ -246,8 +241,6 @@ class WT_Controller_Base {
 			window.open(\'message.php?to=\'+username+\'&method=\'+method+\'&url=\'+url+\'&subject=\'+subject, \'_blank\', mesg_window_specs);
 			return false;
 		}
-
-		var whichhelp = \'help_'.WT_SCRIPT_NAME.'\';
 		'.
 		WT_JS_END.
 		'<script src="'.WT_STATIC_URL.'js/webtrees.js" type="text/javascript"></script>';
