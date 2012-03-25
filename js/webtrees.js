@@ -282,10 +282,10 @@ var show = false;
 	function expand_layer(sid) {
 		if (jQuery("#"+sid+"_img").hasClass("icon-plus")) {
 			jQuery('#'+sid+"_img").removeClass("icon-plus").addClass("icon-minus");
-			jQuery('#'+sid).show();
+			jQuery('#'+sid).show("fast");
 		} else {
 			jQuery('#'+sid+"_img").removeClass("icon-minus").addClass("icon-plus");
-			jQuery('#'+sid).hide();
+			jQuery('#'+sid).hide("fast");
 		}
 		return false;
 	}
