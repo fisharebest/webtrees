@@ -421,7 +421,7 @@ table#story_table {width:100%}
 .ac_over {background-color:#0A246A; color:white;}
 
 /* IMAGE SPRITE */
-[class^="icon-"], [class*=" icon-"] {display:inline-block; background:url('images/admin_icon_sprite.png') no-repeat;}
+[class^="icon-"], [class*=" icon-"] {display:inline-block; background:url('images/admin_icon_sprite.png') no-repeat; vertical-align:middle;}
 
 .icon-bullet {background-position:-66px -154px; width:16px; height:16px;}
 .icon-button_family {background-position:-112px 0px; width:16px; height:16px;}
@@ -440,7 +440,7 @@ a.icon-darrow:hover {background-position:-40px -124px; width:20px; height:20px;}
 .icon-edit {background-position:-109px -34px; width:18px; height:18px;}
 .icon-email {background-position:-10px -6px; width:25px; height:25px;}
 .icon-find-facts {background-position:-38px -180px; width:16px; height:16px;}
-.icon-help {background-position:-10px -181px; width:15px; height:15px;}
+.icon-help {background-position:-10px -181px; width:15px; height:15px;vertical-align:top; margin:0 5px;}
 .icon-larrow {background-position:-79px -64px; width:20px; height:20px;}
 a.icon-larrow:hover {background-position:-79px -34px; width:20px; height:20px;}
 .icon-ldarrow {background-position:-10px -95px; width:20px; height:20px;}
