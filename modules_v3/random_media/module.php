@@ -317,7 +317,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">';
 		echo WT_I18N::translate('Show only persons, events, or all?'), help_link('random_media_persons_or_all', $this->getName());
 		echo '</td><td class="optionbox">';
-		echo select_edit_control('filter', array('indi'=>WT_I18N::translate('Persons'), 'event'=>WT_I18N::translate('Events'), 'all'=>WT_I18N::translate('All')), null, $filter, '');
+		echo select_edit_control('filter', array('indi'=>WT_I18N::translate('Individuals'), 'event'=>WT_I18N::translate('Events'), 'all'=>WT_I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';
 
 		$filters=array(
