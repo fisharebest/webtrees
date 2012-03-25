@@ -82,7 +82,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 	// Implement WT_Module_Sidebar
 	public function getSidebarContent() {
-		global $WT_IMAGES, $controller;
+		global $controller;
 
 		$controller->addInlineJavaScript('
 			var dloadedNames = new Array();
@@ -106,19 +106,19 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 				var pid=this.title;
 				if (!dloadedNames[pid]) {
 					jQuery("#sb_desc_"+pid+" div").load(this.href);
-					jQuery("#sb_desc_"+pid+" div").show();
-					jQuery("#sb_desc_"+pid+" .plusminus").attr("src", "'.$WT_IMAGES['minus'].'");
+					jQuery("#sb_desc_"+pid+" div").show("fast");
+					jQuery("#sb_desc_"+pid+" .plusminus").removeClass("icon-plus").addClass("icon-minus");
 					dloadedNames[pid]=2;
 				}
 				else if (dloadedNames[pid]==1) {
 					dloadedNames[pid]=2;
-					jQuery("#sb_desc_"+pid+" div").show();
-					jQuery("#sb_desc_"+pid+" .plusminus").attr("src", "'.$WT_IMAGES['minus'].'");
+					jQuery("#sb_desc_"+pid+" div").show("fast");
+					jQuery("#sb_desc_"+pid+" .plusminus").removeClass("icon-plus").addClass("icon-minus");
 				}
 				else {
 					dloadedNames[pid]=1;
-					jQuery("#sb_desc_"+pid+" div").hide();
-					jQuery("#sb_desc_"+pid+" .plusminus").attr("src", "'.$WT_IMAGES['plus'].'");
+					jQuery("#sb_desc_"+pid+" div").hide("fast");
+					jQuery("#sb_desc_"+pid+" .plusminus").removeClass("icon-minus").addClass("icon-plus");
 				}
 				return false;
 			});
@@ -134,19 +134,17 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function getPersonLi(WT_Person $person, $generations=0) {
-		global $WT_IMAGES;
-
 		$out = '<li id="sb_desc_'.$person->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=descendancy&amp;pid='.$person->getXref().'" title="'.$person->getXref().'" class="sb_desc_indi">';
 		if ($generations>0) {
-			$out .= '<img src="'.$WT_IMAGES['minus'].'" class="plusminus" alt="">';
+			$out .= '<i class="icon-minus plusminus"></i>';
 		} else {
-			$out .= '<img src="'.$WT_IMAGES['plus'].'" class="plusminus" alt="">';
+			$out .= '<i class="icon-plus plusminus"></i>';
 		}
 		$out .= $person->getSexImage().' '.$person->getFullName().' ';
 		if ($person->canDisplayDetails()) {
 			$out .= ' ('.$person->getLifeSpan().')';
 		}
-		$out .= '</a> <a href="'.$person->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_indi'].'" alt="indi"></a>';
+		$out .= '</a> <a href="'.$person->getHtmlUrl().'" class="icon-button_indi"></a>';
 		if ($generations>0) {
 			$out .= '<div class="desc_tree_div_visible">';
 			$out .= $this->loadSpouses($person->getXref());
@@ -162,18 +160,16 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	}
 
 	public function getFamilyLi(WT_Family $family, WT_Person $person, $generations=0) {
-		global $WT_IMAGES;
-
 		$out = '<li id="sb_desc_'.$family->getXref().'" class="sb_desc_indi_li"><a href="module.php?mod='.$this->getName().'&amp;mod_action=ajax&amp;sb_action=descendancy&amp;famid='.$family->getXref().'" title="'.$family->getXref().'" class="sb_desc_indi">';
-		$out .= '<img src="'.$WT_IMAGES['minus'].'" class="plusminus" alt="">';
+		$out .= '<i class="icon-minus plusminus"></i>';
 		$out .= $person->getSexImage().$person->getFullName();
 
 		$marryear = $family->getMarriageYear();
 		if (!empty($marryear)) {
 			$out .= ' ('.WT_Gedcom_Tag::getLabel('MARR').' '.$marryear.')';
 		}
-		$out .= '</a> <a href="'.$person->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_indi'].'" alt="indi"></a>';
-		$out .= '<a href="'.$family->getHtmlUrl().'"><img src="'.$WT_IMAGES['button_family'].'" alt="family"></a>';
+		$out .= '</a> <a href="'.$person->getHtmlUrl().'" class="icon-button_indi"></a>';
+		$out .= '<a href="'.$family->getHtmlUrl().'" class="icon-button_family"></a>';
 		$out .= '<div class="desc_tree_div_visible">';
 		$out .= $this->loadChildren($family->getXref(), $generations);
 		$out .= '</div>';
