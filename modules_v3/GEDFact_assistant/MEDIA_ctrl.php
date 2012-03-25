@@ -4,7 +4,7 @@
 // GEDFact information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
@@ -30,7 +30,7 @@ $controller=new WT_Controller_Individual();
 echo '<link href="'.WT_STATIC_URL.WT_MODULES_DIR.'GEDFact_assistant/css/gf_styles.css" rel="stylesheet" type="text/css" media="screen">';
 
 global $tabno, $linkToID, $SEARCH_SPIDER, $GOOGLEMAP_PH_CONTROLS;
-global $WT_IMAGES, $SHOW_AGE_DIFF;
+global $SHOW_AGE_DIFF;
 global $GEDCOM, $ABBREVIATE_CHART_LABELS;
 global $show_full;
 global $famid, $censyear, $censdate;

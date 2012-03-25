@@ -84,6 +84,8 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Overwrite location data in the database with data from the file.<br />When this option is selected, the location data in the database (latitude, longitude, zoomlevel and flag) are overwritten with the data in the file, if available. If the record is not already in the database a new record will be created, unless the Update-only  option is also selected.');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Overwrite location data');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Overwrite location-data with data from file?');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('PHP server misconfiguration: FreeType library required to use TrueType fonts.');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('PHP server misconfiguration: GD 2.x library required to use image functions.');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Pedigree chart root ID');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Pedigree chart root person');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Place Check - List Filtering Optons');
