@@ -1215,7 +1215,7 @@ function print_findplace_link($element_id, $ged=WT_GEDCOM, $asString=false) {
 }
 
 function print_findfamily_link($element_id, $ged=WT_GEDCOM, $asString=false) {
-	$out=' <a href="#" onclick="findFamily(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_family" title="'.WT_I18N::translate('Find Family ID').'!"></a>';
+	$out=' <a href="#" onclick="findFamily(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_family" title="'.WT_I18N::translate('Find Family ID').'"></a>';
 
 	if ($asString) {
 		return $out;
