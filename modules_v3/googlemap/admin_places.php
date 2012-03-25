@@ -629,9 +629,9 @@ foreach ($placelist as $place) {
 		->execute(array($place['place_id']))
 		->fetchOne();
 	if ($noRows==0) { ?>
-		<td><a href="#" onclick="delete_place(<?php echo $place['place_id']?>);return false;" class="icon-remove" title="<?php echo WT_I18N::translate('Remove'); ?>"></a></td>
+		<td><a href="#" onclick="delete_place(<?php echo $place['place_id']?>);return false;" class="icon-delete" title="<?php echo WT_I18N::translate('Remove'); ?>"></a></td>
 <?php       } else { ?>
-		<td><i class="icon-remove_grey"></i></td>
+		<td><i class="icon-delete-grey"></i></td>
 <?php       } ?>
 	</tr>
 	<?php
