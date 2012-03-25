@@ -143,7 +143,7 @@
 					<HighlightedImage left="$pwidth" width="80"/>
 				</if>
 				<!-- Print the individuals facts -->
-				<Cell tcolor="$tcolor" bgcolor="$stbgcolor" border="1" newline="1" style="title" width="$width"><var var="WT_I18N::translate('Personal Facts and Details')"/></Cell>
+				<Cell tcolor="$tcolor" bgcolor="$stbgcolor" border="1" newline="1" style="title" width="$width"><var var="WT_I18N::translate('Facts and events')"/></Cell>
 				<Facts ignore="$ignore" families="1">
 					<TextBox bgcolor="$fbbgcolor" border="1" width="$dwidth">
 						<Text color="$tcolor" style="fact"><var var="@fact"/>  </Text>

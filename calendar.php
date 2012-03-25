@@ -140,7 +140,7 @@ echo '</h2></td></tr>';
 
 // Day selector
 echo '<tr><td class="descriptionbox vmiddle">';
-echo WT_I18N::translate('Day'), help_link('annivers_date_select'), '</td><td colspan="3" class="optionbox">';
+echo WT_I18N::translate('Day'), '</td><td colspan="3" class="optionbox">';
 for ($d=1; $d<=$days_in_month; $d++) {
 	// Format the day number using the calendar
 	$tmp=new WT_Date($cal_date->Format("%@ {$d} %O %E"));
@@ -156,7 +156,7 @@ echo "<a href=\"calendar.php?cal={$cal}&amp;day={$today->d}&amp;month={$today_mo
 echo '</td></tr>';
 // Month selector
 echo '<tr><td class="descriptionbox vmiddle">';
-echo WT_I18N::translate('Month'), help_link('annivers_month_select'), '</td>';
+echo WT_I18N::translate('Month'), '</td>';
 echo '<td class="optionbox" colspan="3">';
 for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
 	$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
@@ -173,18 +173,19 @@ for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
 echo "<a href=\"calendar.php?cal={$cal}&amp;day=".min($cal_date->d, $today->DaysInMonth())."&amp;month={$today_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%F %Y').'</b></a></td></tr>';
 // Year selector
 echo '<tr><td class="descriptionbox vmiddle">';
-echo WT_I18N::translate('Year'), help_link('annivers_year_select'), '</td>';
+echo WT_I18N::translate('Year'), '</td>';
 echo '<td class="optionbox vmiddle">';
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==1?-1:$cal_date->y-1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">-1</a>";
 echo " <input type=\"text\" name=\"year\" value=\"{$year}\" size=\"4\"> ";
 echo "<a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year=".($cal_date->y==-1?1:$cal_date->y+1)."&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">+1</a>";
 echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$today->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\"><b>".$today->Format('%Y')."</b></a>";
+echo help_link('annivers_year_select');
 echo '</td> ';
 
 // Filtering options
 
 echo '<td class="descriptionbox vmiddle">';
-	echo WT_I18N::translate('Show'), help_link('annivers_show'), '</td>';
+	echo WT_I18N::translate('Show'), '</td>';
 
 echo '<td class="optionbox vmiddle">';
 	echo '<select class="list_value" name="filterof" onchange="document.dateform.submit();">';
@@ -297,7 +298,6 @@ if ($action=='year') {
 } else {
 	echo " | <a href=\"calendar.php?cal={$cal}&amp;day={$cal_date->d}&amp;month={$cal_month}&amp;year={$cal_date->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action=year\">", WT_I18N::translate('View Year'), "</a>";
 }
-echo help_link('day_month');
 echo '</td><td class="topbottombar width50">';
 $n=0;
 foreach (array(
