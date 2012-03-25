@@ -451,7 +451,7 @@ function print_favorite_selector($option=0) {
 * @return boolean
 */
 function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false, $npage=false) {
-	global $WT_IMAGES, $EXPAND_SOURCES, $EXPAND_NOTES;
+	global $EXPAND_SOURCES, $EXPAND_NOTES;
 
 	$elementID = 'N-'.floor(microtime()*1000000);
 	$text = trim($text);
@@ -1194,59 +1194,44 @@ function init_calendar_popup() {
 * @param boolean $multiple Whether or not the user will be selecting multiple people
 * @param string $ged The GEDCOM to search in
 */
-function print_findindi_link($element_id, $indiname, $asString=false, $multiple=false, $ged='', $filter='') {
-	global $WT_IMAGES, $GEDCOM;
+function print_findindi_link($element_id, $indiname, $asString=false, $multiple=false, $ged=WT_GEDCOM, $filter='') {
+	$out=' <a href="#" onclick="findIndi(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$indiname.'\'), \''.$multiple.'\', \''.$ged.'\', \''.$filter.'\'); return false;" class="icon-button_indi" title="'.WT_I18N::translate('Find individual ID').'"></a>';
 
-	$text = WT_I18N::translate('Find individual ID');
-	if (empty($ged)) $ged=$GEDCOM;
-	if (isset($WT_IMAGES["button_indi"])) $Link = "<img src=\"".$WT_IMAGES["button_indi"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"middle\">";
-	else $Link = $text;
-	$out = " <a href=\"#\" onclick=\"findIndi(document.getElementById('".$element_id."'), document.getElementById('".$indiname."'), '".$multiple."', '".$ged."', '".$filter."'); findtype='individual'; return false;\">";
-	$out .= $Link;
-	$out .= "</a>";
-	if ($asString) return $out;
-	echo $out;
+	if ($asString) {
+		return $out;
+	} else {
+		echo $out;
+	}
 }
 
-function print_findplace_link($element_id, $ged='', $asString=false) {
-	global $WT_IMAGES, $GEDCOM;
+function print_findplace_link($element_id, $ged=WT_GEDCOM, $asString=false) {
+	$out=' <a href="#" onclick="findPlace(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_place" title="'.WT_I18N::translate('Find Place').'"></a>';
 
-	if (empty($ged)) $ged=$GEDCOM;
-	$text = WT_I18N::translate('Find Place');
-	if (isset($WT_IMAGES["button_place"])) $Link = "<img src=\"".$WT_IMAGES["button_place"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"middle\">";
-	else $Link = $text;
-	$out = " <a href=\"#\" onclick=\"findPlace(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
-	$out .= $Link;
-	$out .= "</a>";
-	if ($asString) return $out;
-	echo $out;
+	if ($asString) {
+		return $out;
+	} else {
+		echo $out;
+	}
 }
 
-function print_findfamily_link($element_id, $ged='', $asString=false) {
-	global $WT_IMAGES, $GEDCOM;
+function print_findfamily_link($element_id, $ged=WT_GEDCOM, $asString=false) {
+	$out=' <a href="#" onclick="findFamily(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_family" title="'.WT_I18N::translate('Find Family ID').'!"></a>';
 
-	if (empty($ged)) $ged=$GEDCOM;
-	$text = WT_I18N::translate('Find Family ID');
-	if (isset($WT_IMAGES["button_family"])) $Link = "<img src=\"".$WT_IMAGES["button_family"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"middle\">";
-	else $Link = $text;
-	$out = " <a href=\"#\" onclick=\"findFamily(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
-	$out .= $Link;
-	$out .= "</a>";
-	if ($asString) return $out;
-	echo $out;
+	if ($asString) {
+		return $out;
+	} else {
+		echo $out;
+	}
 }
 
 function print_specialchar_link($element_id, $vert, $asString=false) {
-	global $WT_IMAGES;
+	$out=' <a href="#" onclick="findSpecialChar(document.getElementById(\''.$element_id.'\')); updatewholename(); return false;" class="icon-button_keyboard" title="'.WT_I18N::translate('Find Special Characters').'"></a>';
 
-	$text = WT_I18N::translate('Find Special Characters');
-	if (isset($WT_IMAGES["button_keyboard"])) $Link = "<img id=\"".$element_id."_spec\" name=\"".$element_id."_spec\" src=\"".$WT_IMAGES["button_keyboard"]."\"  alt=\"".$text."\"  title=\"".$text."\" align=\"middle\">";
-	else $Link = $text;
-	$out = " <a href=\"#\" onclick=\"findSpecialChar(document.getElementById('".$element_id."')); updatewholename(); return false;\">";
-	$out .= $Link;
-	$out .= "</a>";
-	if ($asString) return $out;
-	echo $out;
+	if ($asString) {
+		return $out;
+	} else {
+		echo $out;
+	}
 }
 
 function print_autopaste_link($element_id, $choices, $concat=1, $name=1, $submit=0) {
@@ -1262,74 +1247,54 @@ function print_autopaste_link($element_id, $choices, $concat=1, $name=1, $submit
 	echo "</small>";
 }
 
-function print_findsource_link($element_id, $sourcename="", $asString=false, $ged='') {
-	global $WT_IMAGES, $GEDCOM;
+function print_findsource_link($element_id, $sourcename="", $asString=false, $ged=WT_GEDCOM) {
+	$out=' <a href="#" onclick="findSource(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$sourcename.'\'), \''.$ged.'\'); return false;" class="icon-button_source" title="'.WT_I18N::translate('Find Source ID').'"></a>';
 
-	if (empty($ged)) $ged=$GEDCOM;
-	$text = WT_I18N::translate('Find Source ID');
-	if (isset($WT_IMAGES["button_source"])) $Link = "<img src=\"".$WT_IMAGES["button_source"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"middle\">";
-	else $Link = $text;
-	$out = " <a href=\"#\" onclick=\"findSource(document.getElementById('".$element_id."'), document.getElementById('".$sourcename."'), '".$ged."'); findtype='source'; return false;\">";
-	$out .= $Link;
-	$out .= "</a>";
-	if ($asString) return $out;
-	echo $out;
+	if ($asString) {
+		return $out;
+	} else {
+		echo $out;
+	}
 }
 
-function print_findnote_link($element_id, $notename="", $asString=false, $ged='') {
-	global $WT_IMAGES, $GEDCOM;
+function print_findnote_link($element_id, $notename="", $asString=false, $ged=WT_GEDCOM) {
+	$out=' <a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \''.$ged.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Find Shared Note').'"></a>';
 
-	if (empty($ged)) $ged=$GEDCOM;
-	$text = WT_I18N::translate('Find Shared Note');
-	if (isset($WT_IMAGES["button_note"])) $Link = "<img src=\"".$WT_IMAGES["button_note"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"middle\">";
-	else $Link = $text;
-	$out = " <a href=\"#\" onclick=\"findnote(document.getElementById('".$element_id."'), document.getElementById('".$notename."'), '".$ged."'); findtype='note'; return false;\">";
-	$out .= $Link;
-	$out .= "</a>";
-	if ($asString) return $out;
-	echo $out;
+	if ($asString) {
+		return $out;
+	} else {
+		echo $out;
+	}
 }
 
-function print_findrepository_link($element_id, $ged='', $asString=false) {
-	global $WT_IMAGES, $GEDCOM;
+function print_findrepository_link($element_id, $ged=WT_GEDCOM, $asString=false) {
+	$out=' <a href="#" onclick="findRepository(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_repository" title="'.WT_I18N::translate('Find Repository').'"></a>';
 
-	if (empty($ged)) $ged=$GEDCOM;
-	$text = WT_I18N::translate('Find Repository');
-	if (isset($WT_IMAGES["button_repository"])) $Link = "<img src=\"".$WT_IMAGES["button_repository"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"middle\">";
-	else $Link = $text;
-	$out = " <a href=\"#\" onclick=\"findRepository(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
-	$out .= $Link;
-	$out .= "</a>";
-	if ($asString) return $out;
-	echo $out;
+	if ($asString) {
+		return $out;
+	} else {
+		echo $out;
+	}
 }
 
 function print_findmedia_link($element_id, $choose="", $ged='', $asString=false) {
-	global $WT_IMAGES, $GEDCOM;
+	$out=' <a href="#" onclick="findMedia(document.getElementById(\''.$element_id.'\'), \''.$choose.'\', \''.$ged.'\'); return false;" class="icon-button_media" title="'.WT_I18N::translate('Find media').'"></a>';
 
-	if (empty($ged)) $ged=$GEDCOM;
-	$text = WT_I18N::translate('Find media');
-	if (isset($WT_IMAGES["button_media"])) $Link = "<img src=\"".$WT_IMAGES["button_media"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"middle\">";
-	else $Link = $text;
-	$out = " <a href=\"#\" onclick=\"findMedia(document.getElementById('".$element_id."'), '".$choose."', '".$ged."'); return false;\">";
-	$out .= $Link;
-	$out .= "</a>";
-	if ($asString) return $out;
-	echo $out;
+	if ($asString) {
+		return $out;
+	} else {
+		echo $out;
+	}
 }
 
-function print_findfact_link($element_id, $ged='', $asString=false) {
-	global $WT_IMAGES, $GEDCOM;
+function print_findfact_link($element_id, $ged=WT_GEDCOM, $asString=false) {
+	$out=' <a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_find_facts" title="'.WT_I18N::translate('Find fact tag').'"></a>';
 
-	$text = WT_I18N::translate('Find fact tag');
-	if (empty($ged)) $ged=$GEDCOM;
-	if (isset($WT_IMAGES["button_find_facts"])) $Link = "<img src=\"".$WT_IMAGES["button_find_facts"]."\" alt=\"".$text."\" title=\"".$text."\" align=\"top\">";
-	else $Link = $text;
-	$out = " <a href=\"#\" onclick=\"findFact(document.getElementById('".$element_id."'), '".$ged."'); return false;\">";
-	$out .= $Link;
-	$out .= "</a>";
-	if ($asString) return $out;
-	echo $out;
+	if ($asString) {
+		return $out;
+	} else {
+		echo $out;
+	}
 }
 
 /**
