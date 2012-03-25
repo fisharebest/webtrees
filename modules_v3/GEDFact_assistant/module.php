@@ -122,33 +122,33 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		
 		switch ($type) {
 		case "indi":
-			$controller->setPageTitle(WT_I18N::translate('Find individual ID'));
+			$controller->setPageTitle(WT_I18N::translate('Find an individual'));
 			break;
 		case "fam":
-			$controller->setPageTitle(WT_I18N::translate('Find Family List'));
+			$controller->setPageTitle(WT_I18N::translate('Find a family'));
 			break;
 		case "media":
-			$controller->setPageTitle(WT_I18N::translate('Find media'));
+			$controller->setPageTitle(WT_I18N::translate('Find a media object'));
 			$action="filter";
 			break;
 		case "place":
-			$controller->setPageTitle(WT_I18N::translate('Find Place'));
+			$controller->setPageTitle(WT_I18N::translate('Find a place'));
 			$action="filter";
 			break;
 		case "repo":
-			$controller->setPageTitle(WT_I18N::translate('Repositories'));
+			$controller->setPageTitle(WT_I18N::translate('Find a repository'));
 			$action="filter";
 			break;
 		case "note":
-			$controller->setPageTitle(WT_I18N::translate('Find Shared Note'));
+			$controller->setPageTitle(WT_I18N::translate('Find a note'));
 			$action="filter";
 			break;
 		case "source":
-			$controller->setPageTitle(WT_I18N::translate('Find Source'));
+			$controller->setPageTitle(WT_I18N::translate('Find a source'));
 			$action="filter";
 			break;
 		case "specialchar":
-			$controller->setPageTitle(WT_I18N::translate('Find Special Characters'));
+			$controller->setPageTitle(WT_I18N::translate('Find a special character'));
 			$action="filter";
 			break;
 		}
@@ -225,28 +225,28 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		
 		switch ($type) {
 		case "indi":
-			echo WT_I18N::translate('Find individual ID');
+			echo WT_I18N::translate('Find an individual');
 			break;
 		case "fam":
-			echo WT_I18N::translate('Find Family List');
+			echo WT_I18N::translate('Find a family');
 			break;
 		case "media":
-			echo WT_I18N::translate('Find media');
+			echo WT_I18N::translate('Find a media object');
 			break;
 		case "place":
-			echo WT_I18N::translate('Find Place');
+			echo WT_I18N::translate('Find a place');
 			break;
 		case "repo":
-			echo WT_I18N::translate('Repositories');
+			echo WT_I18N::translate('Find a repository');
 			break;
 		case "note":
-			echo WT_I18N::translate('Find Shared Note');
+			echo WT_I18N::translate('Find a note');
 			break;
 		case "source":
-			echo WT_I18N::translate('Find Source');
+			echo WT_I18N::translate('Find a source');
 			break;
 		case "specialchar":
-			echo WT_I18N::translate('Find Special Characters');
+			echo WT_I18N::translate('Find a special character');
 			break;
 		}
 		

@@ -1193,7 +1193,7 @@ function init_calendar_popup() {
 * @param string $ged The GEDCOM to search in
 */
 function print_findindi_link($element_id, $indiname, $asString=false, $multiple=false, $ged=WT_GEDCOM, $filter='') {
-	$out=' <a href="#" onclick="findIndi(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$indiname.'\'), \''.$multiple.'\', \''.$ged.'\', \''.$filter.'\'); return false;" class="icon-button_indi" title="'.WT_I18N::translate('Find individual ID').'"></a>';
+	$out=' <a href="#" onclick="findIndi(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$indiname.'\'), \''.$multiple.'\', \''.$ged.'\', \''.$filter.'\'); return false;" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>';
 
 	if ($asString) {
 		return $out;
@@ -1203,7 +1203,7 @@ function print_findindi_link($element_id, $indiname, $asString=false, $multiple=
 }
 
 function print_findplace_link($element_id, $ged=WT_GEDCOM, $asString=false) {
-	$out=' <a href="#" onclick="findPlace(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_place" title="'.WT_I18N::translate('Find Place').'"></a>';
+	$out=' <a href="#" onclick="findPlace(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_place" title="'.WT_I18N::translate('Find a place').'"></a>';
 
 	if ($asString) {
 		return $out;
@@ -1213,7 +1213,7 @@ function print_findplace_link($element_id, $ged=WT_GEDCOM, $asString=false) {
 }
 
 function print_findfamily_link($element_id, $ged=WT_GEDCOM, $asString=false) {
-	$out=' <a href="#" onclick="findFamily(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_family" title="'.WT_I18N::translate('Find Family ID').'"></a>';
+	$out=' <a href="#" onclick="findFamily(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>';
 
 	if ($asString) {
 		return $out;
@@ -1223,7 +1223,7 @@ function print_findfamily_link($element_id, $ged=WT_GEDCOM, $asString=false) {
 }
 
 function print_specialchar_link($element_id, $vert, $asString=false) {
-	$out=' <a href="#" onclick="findSpecialChar(document.getElementById(\''.$element_id.'\')); updatewholename(); return false;" class="icon-button_keyboard" title="'.WT_I18N::translate('Find Special Characters').'"></a>';
+	$out=' <a href="#" onclick="findSpecialChar(document.getElementById(\''.$element_id.'\')); updatewholename(); return false;" class="icon-button_keyboard" title="'.WT_I18N::translate('Find a special character').'"></a>';
 
 	if ($asString) {
 		return $out;
@@ -1246,7 +1246,7 @@ function print_autopaste_link($element_id, $choices, $concat=1, $name=1, $submit
 }
 
 function print_findsource_link($element_id, $sourcename="", $asString=false, $ged=WT_GEDCOM) {
-	$out=' <a href="#" onclick="findSource(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$sourcename.'\'), \''.$ged.'\'); return false;" class="icon-button_source" title="'.WT_I18N::translate('Find Source ID').'"></a>';
+	$out=' <a href="#" onclick="findSource(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$sourcename.'\'), \''.$ged.'\'); return false;" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>';
 
 	if ($asString) {
 		return $out;
@@ -1256,7 +1256,7 @@ function print_findsource_link($element_id, $sourcename="", $asString=false, $ge
 }
 
 function print_findnote_link($element_id, $notename="", $asString=false, $ged=WT_GEDCOM) {
-	$out=' <a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \''.$ged.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Find Shared Note').'"></a>';
+	$out=' <a href="#" onclick="findnote(document.getElementById(\''.$element_id.'\'), document.getElementById(\''.$notename.'\'), \''.$ged.'\'); return false;" class="icon-button_note" title="'.WT_I18N::translate('Find a note').'"></a>';
 
 	if ($asString) {
 		return $out;
@@ -1266,7 +1266,7 @@ function print_findnote_link($element_id, $notename="", $asString=false, $ged=WT
 }
 
 function print_findrepository_link($element_id, $ged=WT_GEDCOM, $asString=false) {
-	$out=' <a href="#" onclick="findRepository(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_repository" title="'.WT_I18N::translate('Find Repository').'"></a>';
+	$out=' <a href="#" onclick="findRepository(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_repository" title="'.WT_I18N::translate('Find a repository').'"></a>';
 
 	if ($asString) {
 		return $out;
@@ -1276,7 +1276,7 @@ function print_findrepository_link($element_id, $ged=WT_GEDCOM, $asString=false)
 }
 
 function print_findmedia_link($element_id, $choose="", $ged='', $asString=false) {
-	$out=' <a href="#" onclick="findMedia(document.getElementById(\''.$element_id.'\'), \''.$choose.'\', \''.$ged.'\'); return false;" class="icon-button_media" title="'.WT_I18N::translate('Find media').'"></a>';
+	$out=' <a href="#" onclick="findMedia(document.getElementById(\''.$element_id.'\'), \''.$choose.'\', \''.$ged.'\'); return false;" class="icon-button_media" title="'.WT_I18N::translate('Find a media object').'"></a>';
 
 	if ($asString) {
 		return $out;
@@ -1286,7 +1286,7 @@ function print_findmedia_link($element_id, $choose="", $ged='', $asString=false)
 }
 
 function print_findfact_link($element_id, $ged=WT_GEDCOM, $asString=false) {
-	$out=' <a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_find_facts" title="'.WT_I18N::translate('Find fact tag').'"></a>';
+	$out=' <a href="#" onclick="findFact(document.getElementById(\''.$element_id.'\'), \''.$ged.'\'); return false;" class="icon-button_find_facts" title="'.WT_I18N::translate('Find a fact or event').'"></a>';
 
 	if ($asString) {
 		return $out;

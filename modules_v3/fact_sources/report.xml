@@ -3,7 +3,7 @@
 	<!-- $Id$ -->
 	<Title><var var="WT_I18N::translate('Source')" /></Title>
 	<Description><var var="WT_I18N::translate('A report of facts which are supported by a given source.')" /></Description>
-	<Input name="sid" lookup="SOUR" default="" type="text"><var var="WT_I18N::translate('Find Source ID')" /></Input>
+	<Input name="sid" lookup="SOUR" default="" type="text"><var var="WT_I18N::translate('Find a source')" /></Input>
 	<Input name="stype" type="select" default="facts" options="facts=>WT_I18N::translate('facts')|records=>WT_I18N::translate('records')"><var var="WT_I18N::translate('Source type')" /></Input>
 	<Input name="sortby" type="select" default="BIRT:DATE" options="NAME=>WT_I18N::translate('sort by name')|BIRT:DATE=>WT_I18N::translate('sort by date of birth')"><var var="WT_I18N::translate('Sort order')" /></Input>
 	<Input name="pageSize" type="select" default="A4" options="letter=>WT_I18N::translate_c('paper size','Letter')|A3=>WT_I18N::translate_c('paper size', 'A3')|A4=>WT_I18N::translate_c('paper size','A4')|legal=>WT_I18N::translate_c('paper size','Legal')"><var var="WT_I18N::translate('Page size')" /></Input>

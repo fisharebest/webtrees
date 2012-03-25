@@ -295,9 +295,9 @@ if ($action=='choose') {
 	}
 	echo
 		'</select>
-		<a href="#" onclick="iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6" class="icon-button_indi" title="'.WT_I18N::translate('Find individual ID').'"></a>
-		<a href="#" onclick="fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8" class="icon-button_family" title="'.WT_I18N::translate('Find Family ID').'"></a>
-		<a href="#" onclick="sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10" class="icon-button_source" title="'.WT_I18N::translate('Find Source ID').'"></a>
+		<a href="#" onclick="iopen_find(document.merge.gid1, document.merge.ged);" tabindex="6" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>
+		<a href="#" onclick="fopen_find(document.merge.gid1, document.merge.ged);" tabindex="8" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>
+		<a href="#" onclick="sopen_find(document.merge.gid1, document.merge.ged);" tabindex="10" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>
 		</td></tr><tr><td>',
 		WT_I18N::translate('Merge From ID:'),
 		'</td><td>
@@ -316,9 +316,9 @@ if ($action=='choose') {
 	}
 	echo
 		'</select>
-		<a href="#" onclick="iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7" class="icon-button_indi" title="'.WT_I18N::translate('Find individual ID').'"></a>
-		<a href="#" onclick="fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9" class="icon-button_family" title="'.WT_I18N::translate('Find Family ID').'"></a>
-		<a href="#" onclick="sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11" class="icon-button_source" title="'.WT_I18N::translate('Find Source ID').'"></a>
+		<a href="#" onclick="iopen_find(document.merge.gid2, document.merge.ged2);" tabindex="7" class="icon-button_indi" title="'.WT_I18N::translate('Find an individual').'"></a>
+		<a href="#" onclick="fopen_find(document.merge.gid2, document.merge.ged2);" tabindex="9" class="icon-button_family" title="'.WT_I18N::translate('Find a family').'"></a>
+		<a href="#" onclick="sopen_find(document.merge.gid2, document.merge.ged2);" tabindex="11" class="icon-button_source" title="'.WT_I18N::translate('Find a source').'"></a>
 		</td></tr></table>
 		<input type="submit" value="', WT_I18N::translate('Merge records'), '" tabindex="3">
 		</form></div>';

@@ -34,6 +34,7 @@ exit;
 // MESSAGES DELETED IN WEBTREES-1.2.8
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('<span class="label">%1$s:</span> <span class="field">%2$s</span>');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('<strong>This tool</strong> provides a way to compare places in your gedcom file with the matching entries in the googlemaps \'placelocations\' table.<br /><br /><strong>The display</strong> can be structured for a specific gedcom file; for a specific country within that file; and for a particular area (e.g. state or county) within that country.<br /><br /><strong>Places</strong>are listed alphabetically so that minor spelling differences can be easily spotted, and corrected.<br /><br /><strong>From</strong> the results of the comparison you can click on place names for one of these three options:<br /><br /><strong>1 - </strong>For gedcom file places you will be taken to the Place Heirarchy view. Here you will see all records that are linked to that place.<br /><br /><strong>2 - </strong>For places that exist in the gedcom file, but not in the googlemap table (highlighted in red), you will get the googlemap \"Add place\" screen.<br /><br /><strong>3 - </strong>For places that exist in both the gedcom file and the googlemap table (perhaps without coordinates) you will get the googlemap \"edit place\" screen. Here you can edit any aspect of the place record for the googlemap display.<br /><br /><strong>Hovering</strong> over any place in the googlemap table columns will display the zoom level curently set for that place.');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('?');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Add geographic location');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Add place');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Browse for the file on your computer which contains the place locations in CSV format.');
@@ -55,6 +56,18 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Export location data to a file. This option will save the data from the current view and all dependant data to a file. This means that if a country is selected and the states are shown, this option will save the data of the states, all the counties that are defined in those states and all places within those counties.');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Export location data to a file. This option will save the data from the current view and all dependant data to a file. This means that if a country is selected and the states are shown, this option will save the data of the states, all the counties that are defined in those states and all places within those counties.');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Export locations to file');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find Family ID');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find Family List');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find Place');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find Repository');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find Shared Note');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find Source ID');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find Source');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find Special Characters');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find individual ID');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find media');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find fact tag');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Find fact tags');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('For each genealogical database, you can designate a <b>Root Person</b> for the user.<br /><br />This Root Person does not need to be the user himself; it can be anybody.  The user will probably want to start the Pedigree chart with himself.  You control that, as well as the default Root person on other charts, here.<br /><br />If the user has Edit rights to his own account information, he can change this setting himself.');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('GEDCOM File Place Data<br />(2 PLAC tag)');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Google Maps configuration');
@@ -62,6 +75,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Google Street View');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('GoogleMap Places Table Data');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Here you can edit the location or delete the location. When you click on Edit a new window will open where you can change the values of the geographic location.<br />If you click on the delete-icon the record will be deleted. This can only be done if there are no records connected to this location. If no records are connected the delete-icon is active, otherwise it is inactive.');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Hide Details');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('If you have enabled multi-media in your site, this option will display a person\'s thumbnail image next to their name in charts and boxes.');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Import from all GEDCOMs');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('Import from current GEDCOM');
@@ -129,6 +143,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('When this option box is checked, the «Close Relatives» tab will show date differences as follows:<br /><ul><li>birth dates of partners.<br />A negative value indicates that the second partner is older than the first.<br /><br /></li><li>marriage date and birth date of the first child.<br />A negative value here indicates that the child was born before the marriage date or that either the birth date or the marriage date is wrong.<br /><br /></li><li>birth dates of siblings.<br />A negative value here indicates that either the order of the children is wrong or that one of the birth dates is wrong.</li></ul>');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('When this option is selected the placelocation database will be cleared. This means that only the location stored in this table will be deleted. This will not change anything in the GEDCOM.');
 /* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('You must enter an email address.');
+/* I18N: This message is deleted in webtrees-1.2.8  */ WT_I18N::translate('http://www.php.net/gd');
 
 // MESSAGES DELETED IN WEBTREES-1.2.7
 

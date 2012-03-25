@@ -97,25 +97,25 @@ if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
 
 switch ($type) {
 case "indi":
-	$controller->setPageTitle(WT_I18N::translate('Find individual ID'));
+	$controller->setPageTitle(WT_I18N::translate('Find an individual'));
 	break;
 case "fam":
-	$controller->setPageTitle(WT_I18N::translate('Find Family List'));
+	$controller->setPageTitle(WT_I18N::translate('Find a family'));
 	break;
 case "media":
-	$controller->setPageTitle(WT_I18N::translate('Find media'));
+	$controller->setPageTitle(WT_I18N::translate('Find a media object'));
 	break;
 case "place":
-	$controller->setPageTitle(WT_I18N::translate('Find Place'));
+	$controller->setPageTitle(WT_I18N::translate('Find a place'));
 	break;
 case "repo":
-	$controller->setPageTitle(WT_I18N::translate('Repositories'));
+	$controller->setPageTitle(WT_I18N::translate('Find a repository'));
 	break;
 case "note":
-	$controller->setPageTitle(WT_I18N::translate('Find Shared Note'));
+	$controller->setPageTitle(WT_I18N::translate('Find a note'));
 	break;
 case "source":
-	$controller->setPageTitle(WT_I18N::translate('Find Source'));
+	$controller->setPageTitle(WT_I18N::translate('Find a source'));
 	break;
 case "specialchar":
 	// Users will probably always want the same language, so remember their setting
@@ -126,12 +126,12 @@ case "specialchar":
 		set_user_setting(WT_USER_ID, 'default_language_filter', $language_filter);
 	}
 	require WT_ROOT.'includes/specialchars.php';
-	$controller->setPageTitle(WT_I18N::translate('Find Special Characters'));
+	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
 	$action="filter";
 	break;
 case "facts":
 	$controller
-		->setPageTitle(WT_I18N::translate('Find fact tags'))
+		->setPageTitle(WT_I18N::translate('Find a fact or event'))
 		->addInlineJavaScript('initPickFact();');
 	break;
 }
@@ -202,31 +202,31 @@ echo '<div id="find-page">
 
 switch ($type) {
 case "indi":
-	echo WT_I18N::translate('Find individual ID');
+	echo WT_I18N::translate('Find an individual');
 	break;
 case "fam":
-	echo WT_I18N::translate('Find Family List');
+	echo WT_I18N::translate('Find a family');
 	break;
 case "media":
-	echo WT_I18N::translate('Find media');
+	echo WT_I18N::translate('Find a media object');
 	break;
 case "place":
-	echo WT_I18N::translate('Find Place');
+	echo WT_I18N::translate('Find a place');
 	break;
 case "repo":
-	echo WT_I18N::translate('Repositories');
+	echo WT_I18N::translate('Find a repository');
 	break;
 case "note":
-	echo WT_I18N::translate('Find Shared Note');
+	echo WT_I18N::translate('Find a note');
 	break;
 case "source":
-	echo WT_I18N::translate('Find Source');
+	echo WT_I18N::translate('Find a source');
 	break;
 case "specialchar":
-	echo WT_I18N::translate('Find Special Characters');
+	echo WT_I18N::translate('Find a special character');
 	break;
 case "facts":
-	echo WT_I18N::translate('Find fact tags');
+	echo WT_I18N::translate('Find a fact or event');
 	break;
 }
 
