@@ -118,7 +118,7 @@ if ($pid=="") {
 	
 		<?php
 		//-- Add Family Members to Census  -------------------------------------------
-		global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr, $censyear, $censdate;
+		global $spouselinks, $parentlinks, $DeathYr, $BirthYr, $censyear, $censdate;
 		// echo "CENS = " . $censyear;
 		?>
 		<tr>
@@ -128,9 +128,8 @@ if ($pid=="") {
 				<td align="center" colspan=3 class="descriptionbox wrap font9">
 					<?php
 					// Header text with "Head" button =================================================
-					$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["button_head"]."\">";
-					$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" alt=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" title=\"".WT_I18N::translate('Click to choose person as Head of family.')."\">";
-					global $tempStringHead;
+					$headImg  = '<i class="headimg vmiddle icon-button_head"></i>';
+					$headImg2 = '<i class="headimg2 vmiddle icon-button_head" title="'.WT_I18N::translate('Click to choose person as Head of family.').'"></i>';
 					echo WT_I18N::translate('Click %s to choose person as Head of family.', $headImg);
 					?>
 					<br><br>

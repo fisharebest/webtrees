@@ -71,7 +71,7 @@ if (!defined('WT_WEBTREES')) {
 
 				<?php
 				//-- Add Family Members to Census  -------------------------------------------
-				global $WT_IMAGES, $spouselinks, $parentlinks, $DeathYr, $BirthYr;
+				global $spouselinks, $parentlinks, $DeathYr, $BirthYr;
 				?>
 
 				<tr>
@@ -82,11 +82,9 @@ if (!defined('WT_WEBTREES')) {
 								<font size=1>
 								<?php
 								// Header text with "Head" button =================================================
-								$headImg  = "<img class=\"headimg vmiddle\" src=\"".$WT_IMAGES["button_head"]."\">";
-								$headImg2 = "<img class=\"headimg2 vmiddle\" src=\"".$WT_IMAGES["button_head"]."\" alt=\"".WT_I18N::translate('Click to choose person as Head of family.')."\" title=\"".WT_I18N::translate('Click to choose person as Head of family.')."\">";
-								global $tempStringHead;
-								$tempStringHead = $headImg;
-								echo WT_I18N::translate('Click %s to choose person as Head of family.', $tempStringHead);
+								$headImg  = '<i class="headimg vmiddle icon-button_head"></i>';
+								$headImg2 = '<i class="headimg2 vmiddle icon-button_head" title="'.WT_I18N::translate('Click to choose person as Head of family.').'"></i>';
+								echo WT_I18N::translate('Click %s to choose person as Head of family.', $headImg);
 								?>
 								</font>
 								</td>
