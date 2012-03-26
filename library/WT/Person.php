@@ -619,38 +619,7 @@ class WT_Person extends WT_GedcomRecord {
 	}
 
 	static function sexImage($sex, $size='small', $style='', $title='') {
-		global $WT_IMAGES;
-
-		if ($size=='small') {
-			$image='sex_'.strtolower($sex).'_9x9';
-		} else {
-			$image='sex_'.strtolower($sex).'_15x15';
-		}
-
-		if ($title) {
-			$title=' title="'.$title.'"';
-		}
-
-		switch ($sex) {
-		case 'M':
-			if (isset($WT_IMAGES[$image])) {
-				return '<img src="'.$WT_IMAGES[$image].'" class="gender_image" style="'.$style.'" alt="'.WT_I18N::translate('Male').'"'.$title.'>';
-			} else {
-				return '<span style="size:'.$size.'">'.WT_UTF8_MALE.'</span>';
-			}
-		case 'F':
-			if (isset($WT_IMAGES[$image])) {
-				return '<img src="'.$WT_IMAGES[$image].'" class="gender_image" style="'.$style.'" alt="'.WT_I18N::translate('Female').'"'.$title.'>';
-			} else {
-				return '<span style="size:'.$size.'">'.WT_UTF8_FEMALE.'</span>';
-			}
-		default:
-			if (isset($WT_IMAGES[$image])) {
-				return '<img src="'.$WT_IMAGES[$image].'" class="gender_image" style="'.$style.'" alt="'.WT_I18N::translate_c('unknown gender', 'Unknown').'"'.$title.'>';
-			} else {
-				return '<span style="size:'.$size.'">?</span>';
-			}
-		}
+		return '<i class="icon-sex_'.strtolower($sex).'_'.($size=='small' ? '9x9' : '15x15').'" title="'.$title.'"></i>';
 	}
 
 	function getBoxStyle() {
@@ -678,8 +647,6 @@ class WT_Person extends WT_GedcomRecord {
 	* @return string
 	*/
 	function getLabel($elderdate='', $counter=0) {
-		global $WT_IMAGES;
-
 		$label = '';
 		$gap = 0;
 		if (is_object($elderdate) && $elderdate->isOK()) {
@@ -688,9 +655,9 @@ class WT_Person extends WT_GedcomRecord {
 				$gap = $p2->MinJD()-$elderdate->MinJD(); // days
 				$label .= "<div class=\"elderdate age\">";
 				// warning if negative gap : wrong order
-				if ($gap<0 && $counter>0) $label .= '<img alt="" src="'.$WT_IMAGES['warning'].'"> ';
+				if ($gap<0 && $counter>0) $label .= '<i class="icon-warning"></i> ';
 				// warning if gap<6 months
-				if ($gap>1 && $gap<180 && $counter>0) $label .= '<img alt="" src="'.$WT_IMAGES['warning'].'"> ';
+				if ($gap>1 && $gap<180 && $counter>0) $label .= '<i class="icon-warning"></i> ';
 				// children with same date means twin
 				/**if ($gap==0 && $counter>1) {
 					if ($this->getSex()=='M') $label .= WT_I18N::translate('Twin brother');

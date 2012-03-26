@@ -298,8 +298,6 @@ class WT_Date {
 	// Calculate the the age of a person, on a date.
 	// If $d2 is null, today's date is used.
 	static function getAge(WT_Date $d1, WT_Date $d2=null, $format) {
-		global $WT_IMAGES;
-
 		if ($d2) {
 			if ($d2->MaxJD()>=$d1->MinJD() && $d2->MinJD()<=$d1->MinJD()) {
 				// Overlapping dates
@@ -326,10 +324,10 @@ class WT_Date {
 			} else {
 				return -1;
 			}
-		case 2: // Just years, in local digits, with warning for negative
+		case 2: // Just years, in local digits, with warning for negative/
 			if ($jd && $d1->MinJD()) {
 				if ($d1->MinJD()>$jd) {
-					return '<img alt="" src="'.$WT_IMAGES['warning'].'">';
+					return '<i class="icon-warning"></i>';
 				} else {
 					return WT_I18N::number($d1->MinDate()->GetAge(false, $jd));
 				}

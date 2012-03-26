@@ -94,9 +94,6 @@ define('WT_REGEX_UNSAFE',   '[\x00-\xFF]*'); // Use with care and apply addition
 
 // UTF8 representation of various characters
 define('WT_UTF8_BOM',    "\xEF\xBB\xBF"); // U+FEFF
-define('WT_UTF8_MALE',   "\xE2\x99\x82"); // U+2642
-define('WT_UTF8_FEMALE', "\xE2\x99\x80"); // U+2640
-define('WT_UTF8_NO_SEX', "\xE2\x9A\xAA"); // U+26AA
 
 // UTF8 control codes affecting the BiDirectional algorithm (see http://www.unicode.org/reports/tr9/)
 define('WT_UTF8_LRM',    "\xE2\x80\x8E"); // U+200E  (Left to Right mark:  zero-width character with LTR directionality)
