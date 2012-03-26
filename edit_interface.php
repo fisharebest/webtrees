@@ -647,7 +647,7 @@ case 'addnewsource':
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PUBL'), help_link('PUBL'); ?></td>
 			<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5" cols="60"></textarea><br><?php print_specialchar_link("PUBL", true); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('REPO'), help_link('REPO'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="REPO" id="REPO" value="" size="10"> <?php print_findrepository_link("REPO"); echo help_link('REPO'); print_addnewrepository_link("REPO"); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="REPO" id="REPO" value="" size="10"> <?php print_findrepository_link("REPO"); print_addnewrepository_link("REPO"); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('CALN'), help_link('CALN'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value=""></td></tr>
 		<?php
