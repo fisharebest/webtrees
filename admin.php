@@ -1285,7 +1285,7 @@ function old_paths() {
 		WT_ROOT.'themes/minimal/images/center.png',
 		WT_ROOT.'themes/webtrees/images/center.png',
 		WT_ROOT.'themes/xenea/images/center.png',
-		// Removed in 1.2.8
+		// Removed in 1.3.0
 		WT_ROOT.'themes/xenea/images/w_22.png',
 		WT_ROOT.'themes/webtrees/images/w_22.png',
 	);

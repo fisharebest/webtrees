@@ -1677,30 +1677,6 @@ case 'simple_filter':
 	$text=WT_I18N::translate('Simple search filter based on the characters entered, no wildcards are accepted.');
 	break;
 
-case 'treenav':
-	$title=WT_I18N::translate('Interactive tree');
-	$text=
-		WT_I18N::translate('Use the Interactive Tree to view the entire family tree of a person in both directions.  This view is similar to the Hourglass view in that it shows both ancestors and descendants of a given root person.  This chart gives you a more compact view by showing boxes for couples or families instead of just individuals.').
-		'<br /><ul><li><b>'.WT_I18N::translate('Scrolling').'</b><br />'.
-		WT_I18N::translate('Whenever your mouse cursor changes to a Move icon, you can click and drag the tree to view other portions of the tree.  As you drag the tree future generations will automatically expand until there are no more generations left to view in that direction.').
-		'<br /></li><li><b>'.WT_I18N::translate('Zoom').'</b><br />'.
-		WT_I18N::translate('You can use the icons on the left of the tree to zoom in and out.  Zooming out will allow you to see more of the tree on the screen at a time.  As you zoom out the text can become difficult to read; when your mouse hovers over a box you will get an enlarged view of what is inside it.').
-		'<br /></li><li><b>'.WT_I18N::translate('Expanding Details').'</b><br />'.
-		WT_I18N::translate('Clicking on any box will expand the box and display a more detailed view.  While in expanded mode, clicking on a person\'s name will open their Individual Information page.').
-		'<br />'.
-		WT_I18N::translate('Clicking %s will redraw the tree with that person as the new root.', '<img src="'.$WT_IMAGES['tree'].'" width="15px" height="15px" alt="">').
-		'<br />'.
-		WT_I18N::translate('Clicking %s will take you to that family\'s detail page.', '<img src="'.$WT_IMAGES['button_family'].'" width="15px" height="15px" alt="">').
-		'<br /></li><li><b>'.WT_I18N::translate('Toggle Spouses').'</b><br />'.
-		WT_I18N::translate('The %s icon directly under the Zoom buttons will toggle the display of all spouses on or off on the descendancy side.  When the display is set to show spouses, all of a person\'s spouses will appear in the box with them.  All of the person\'s children will be shown as well.  When the option to show spouses is off, only the person\'s last spouse and children with that spouse will be shown.', '<img src="'.$WT_IMAGES['sfamily'].'" width="15px" height="15px" alt="">').
-		'<br /></li><li><b>'.WT_I18N::translate('Large Tree').'</b>'.
-		'<br />'.
-		WT_I18N::translate('The Interactive Tree is available from many different pages including the Tree tab on the Individual Information page and the Charts block on the Home Page.  When viewing the tree from one of these other pages, you will also have a Tree icon under the Zoom icons.').
-		'<br />'.
-		WT_I18N::translate('Clicking %s will take you to the Interactive Tree page.', '<img src="'.$WT_IMAGES['tree'].'" width="15px" height="15px" alt="">').
-		'</li></ul>';
-	break;
-
 case 'upload_gedcom':
 	$title=WT_I18N::translate('Upload family tree');
 	$text=WT_I18N::translate('This option deletes all the genealogy data in your family tree and replaces it with data from a GEDCOM file on your computer.');
