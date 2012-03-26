@@ -35,7 +35,7 @@ require_once WT_ROOT.'includes/functions/functions_places.php';
 
 // print a table of individuals
 function format_indi_table($datalist, $option='') {
-	global $GEDCOM, $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
 
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
@@ -211,13 +211,13 @@ function format_indi_table($datalist, $option='') {
 	$html .= '<th>SOSA</th>';
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('BIRT'). '</th>';
 	$html .= '<th>SORT_BIRT</th>';
-	$html .= '<th><img src="'. $WT_IMAGES['reminder']. '" alt="'. WT_I18N::translate('Anniversary'). '" title="'. WT_I18N::translate('Anniversary'). '"></th>';
+	$html .= '<th><i class="icon-reminder" title="'. WT_I18N::translate('Anniversary'). '"></i></th>';
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('PLAC'). '</th>';
-	$html .= '<th><img src="'. $WT_IMAGES['children']. '" alt="'. WT_I18N::translate('Children'). '" title="'. WT_I18N::translate('Children'). '"></th>';
+	$html .= '<th><i class="icon-children" title="'. WT_I18N::translate('Children'). '"></i></th>';
 	$html .= '<th>NCHI</th>';
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('DEAT'). '</th>';
 	$html .= '<th>SORT_DEAT</th>';
-	$html .= '<th><img src="'. $WT_IMAGES['reminder']. '" alt="'. WT_I18N::translate('Anniversary'). '" title="'. WT_I18N::translate('Anniversary'). '"></th>';
+	$html .= '<th><i class="icon-reminder" title="'. WT_I18N::translate('Anniversary'). '"></i></th>';
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('AGE'). '</th>';
 	$html .= '<th>AGE</th>';
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('PLAC'). '</th>';
@@ -438,7 +438,7 @@ function format_indi_table($datalist, $option='') {
 
 // print a table of families
 function format_fam_table($datalist, $option='') {
-	global $GEDCOM, $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $controller;
+	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
 	$html = '';
@@ -624,9 +624,9 @@ function format_fam_table($datalist, $option='') {
 	$html .= '<th>AGE</th>';
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('MARR'). '</th>';
 	$html .= '<th>MARR:DATE</th>';
-	$html .= '<th><img src="'. $WT_IMAGES['reminder']. '" alt="'. WT_I18N::translate('Anniversary'). '" title="'. WT_I18N::translate('Anniversary'). '"></th>';
+	$html .= '<th><i class="icon-reminder" title="'. WT_I18N::translate('Anniversary'). '"></i></th>';
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('PLAC'). '</th>';
-	$html .= '<th><img src="'. $WT_IMAGES['children']. '" alt="'. WT_I18N::translate('Children'). '" title="'. WT_I18N::translate('Children'). '"></th>';
+	$html .= '<th><i class="icon-children" title="'. WT_I18N::translate('Children'). '"></i></th>';
 	$html .= '<th>NCHI</th>';
 	$html .= '<th '.($SHOW_LAST_CHANGE?'':'').'>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
 	$html .= '<th>MARR</th>';
@@ -882,7 +882,7 @@ function format_fam_table($datalist, $option='') {
 
 // print a table of sources
 function format_sour_table($datalist) {
-	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
+	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
 	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1014,7 +1014,7 @@ function format_sour_table($datalist) {
 
 // print a table of shared notes
 function format_note_table($datalist) {
-	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
+	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1107,7 +1107,7 @@ function format_note_table($datalist) {
 
 // print a table of repositories
 function format_repo_table($repos) {
-	global $SHOW_LAST_CHANGE, $WT_IMAGES, $SEARCH_SPIDER, $controller;
+	global $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
 	$html = '';
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1191,7 +1191,7 @@ function format_repo_table($repos) {
 
 // print a table of media objects
 function format_media_table($datalist) {
-	global $SHOW_LAST_CHANGE, $WT_IMAGES, $controller;
+	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
@@ -1532,7 +1532,7 @@ function print_changes_list($change_ids, $sort) {
 
 // print a table of recent changes
 function print_changes_table($change_ids, $sort) {
-	global $WT_IMAGES, $controller;
+	global $controller;
 
 	$return = '';
 	$n = 0;
@@ -1599,19 +1599,19 @@ function print_changes_table($change_ids, $sort) {
 				$indi = true;
 				break;
 			case "FAM":
-				$icon = '<img src="' . $WT_IMAGES['cfamily'] . '" title="" alt="" height="12">';
+				$icon = '<i class="icon-button_family"></i>';
 				break;
 			case "OBJE":
-				$icon = '<img src="' . $record->getMediaIcon() . '" title="" alt="" height="12">';
+				$icon = '<i class="icon-button_media"></i>';
 				break;
 			case "NOTE":
-				$icon = '<img src="' . $WT_IMAGES['note'] . '" title="" alt="" height="12">';
+				$icon = '<i class="icon-button_note"></i>';
 				break;
 			case "SOUR":
-				$icon = '<img src="' . $WT_IMAGES['source'] . '" title="" alt="" height="12">';
+				$icon = '<i class="icon-button_source"></i>';
 				break;
 			case "REPO":
-				$icon = '<img src="' . $WT_IMAGES['repository'] . '" title="" alt="" height="12">';
+				$icon = '<i class="icon-button_repository"></i>';
 				break;
 			default:
 				$icon = '&nbsp;';
@@ -1648,7 +1648,7 @@ function print_changes_table($change_ids, $sort) {
 
 // print a table of events
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
-	global $WT_IMAGES, $controller;
+	global $controller;
 	$html = '';
 	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
 	$controller
@@ -1718,7 +1718,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$html .= '<th>NAME</th>'; //hidden by datatables code
 			$html .= '<th>'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
 			$html .= '<th>DATE</th>'; //hidden by datatables code
-			$html .= '<th><img src="'.$WT_IMAGES["reminder"].'" alt="'.WT_I18N::translate('Anniversary').'" title="'.WT_I18N::translate('Anniversary').'"></th>';
+			$html .= '<th><i class="icon-reminder" title="'.WT_I18N::translate('Anniversary').'"></th>';
 			$html .= '<th>ANNIV</th>';
 			$html .= '<th>'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
 			$html .= '</tr></thead><tbody>'."\n";
