@@ -333,12 +333,19 @@ if ($pid1 && $pid2) {
 			$rowNum = ($asc==-1) ? $depth : 0;
 			$maxxoffset = -1*$Dbwidth-20;
 			$maxyoffset = $yoffset;
+			// Left and right get reversed on RTL pages
 			if ($TEXT_DIRECTION=='ltr') {
-				$rArrow = $WT_IMAGES['rarrow'];
-				$lArrow = $WT_IMAGES['larrow'];
+				$right_arrow='icon-rarrow';
 			} else {
-				$rArrow = $WT_IMAGES['larrow'];
-				$lArrow = $WT_IMAGES['rarrow'];
+				$right_arrow='icon-larrow';
+			}
+			// Up and down get reversed, for the "oldest at top" option
+			if ($asc==1) {
+				$up_arrow   ='icon-uarrow';
+				$down_arrow ='icon-darrow';
+			} else {
+				$up_arrow   ='icon-darrow';
+				$down_arrow ='icon-uarrow';
 			}
 			foreach ($node['path'] as $index=>$pid) {
 				$linex = $xoffset;
@@ -350,20 +357,16 @@ if ($pid1 && $pid2) {
 				case 'F': $mfstyle='F';  break;
 				case 'U': $mfstyle='NN'; break;
 				}
-				$arrow_img = $WT_IMAGES['darrow'];
-				if ($node['relations'][$index]=='father' || $node['relations'][$index]=='mother' || $node['relations'][$index]=='parent') {
+				switch ($node['relations'][$index]) {
+				case 'father':
+				case 'mother':
+				case 'parent':
+					$arrow_img = $down_arrow;
 					$line = $WT_IMAGES['vline'];
 					$liney += $Dbheight;
 					$linex += $Dbwidth/2;
 					$lh = 54;
 					$lw = 3;
-					//check for paternal grandparent relationship
-					if ($asc==0) {
-						$asc=1;
-					}
-					if ($asc==-1) {
-						$arrow_img = $WT_IMAGES['uarrow'];
-					}
 					$lh=$ys;
 					$linex=$xoffset+$Dbwidth/2;
 					// put the box up or down ?
@@ -397,9 +400,14 @@ if ($pid1 && $pid2) {
 					}
 					$previous2=$previous;
 					$previous='parent';
-				}
-				if ($node['relations'][$index]=='brother' || $node['relations'][$index]=='sister' || $node['relations'][$index]=='sibling') {
-					$arrow_img = $rArrow;
+					break;
+				case 'brother':
+				case 'sister':
+				case 'sibling':
+				case 'husband':
+				case 'wife':
+				case 'spouse':
+					$arrow_img = $right_arrow;
 					$xoffset += $Dbwidth+$Dbxspacing+70;
 					$colNum ++;
 					//$rowNum is inherited from the box immediately to the left
@@ -413,31 +421,16 @@ if ($pid1 && $pid2) {
 					$liney = $yoffset+$Dbheight/4;
 					$previous2=$previous;
 					$previous='';
-				}
-				if ($node['relations'][$index]=='husband' || $node['relations'][$index]=='wife' || $node['relations'][$index]=='spouse') {
-					$arrow_img = $rArrow;
-					$xoffset += $Dbwidth+$Dbxspacing+70;
-					$colNum ++;
-					//$rowNum is inherited from the box immediately to the left
-					$line = $WT_IMAGES['hline'];
-					$linex += $Dbwidth;
-					$liney += $Dbheight/2;
-					$lh = 3;
-					$lw = 70;
-					$lw = $xs;
-					$linex = $xoffset-$lw;
-					$liney = $yoffset+$Dbheight/4;
-					$previous2=$previous;
-					$previous='';
-				}
-				if ($node['relations'][$index]=='son' || $node['relations'][$index]=='daughter' || $node['relations'][$index]=='child') {
+					break;
+				case 'son':
+				case 'daughter':
+				case 'child':
+					$arrow_img = $up_arrow;
 					$line = $WT_IMAGES['vline'];
 					$liney += $Dbheight;
 					$linex += $Dbwidth/2;
 					$lh = 54;
 					$lw = 3;
-					if ($asc==0) $asc=-1;
-					if ($asc==1) $arrow_img = $WT_IMAGES['uarrow'];
 					$lh=$ys;
 					$linex = $xoffset+$Dbwidth/2;
 					// put the box up or down ?
@@ -471,6 +464,7 @@ if ($pid1 && $pid2) {
 					}
 					$previous2=$previous;
 					$previous='child';
+					break;
 				}
 				if ($yoffset > $maxyoffset) {
 					$maxyoffset = $yoffset;
@@ -487,11 +481,11 @@ if ($pid1 && $pid2) {
 						echo '<img src="', $line, '" align="right" width="', $lw, '" height="', $lh, '" alt="">';
 						echo '<br>';
 						echo WT_I18N::translate($node['relations'][$index]);
-						echo '<img src="', $arrow_img, '" align="middle" alt="">';
+						echo '<i class="', $arrow_img, '"></i>';
 					} else {
 						echo '<div id="line', $index, '" style="background:none; position:absolute; ', $TEXT_DIRECTION=='ltr'?'left':'right', ':', $plinex+$Dbxspacing, 'px; top:', $liney+$Dbyspacing, 'px; width:', $lw+$lh*2, 'px;" align="', $lh==3?'center':'left', '"><img src="', $line, '" align="left" width="', $lw, '" height="', $lh, '" alt="">';
 						echo '<br>';
-						echo '<img src="', $arrow_img, '" align="middle" alt="">';
+						echo '<i class="', $arrow_img, '"></i>';
 						if ($lh == 3) {
 							echo '<br>'; // note: $lh==3 means horiz arrow
 						}
@@ -513,7 +507,7 @@ if ($pid1 && $pid2) {
 }
 
 // The contents of <div id="relationship_chart"> use relative positions.
-// Need to expand the dive to include the children, or we'll overlap the footer.
+// Need to expand the div to include the children, or we'll overlap the footer.
 // $maxyoffset is the top edge of the lowest box.
 $controller
 	->addInlineJavaScript('
