@@ -925,12 +925,9 @@ a.icon-darrow:hover {width:20px;height:20px;background-image:url("../images/darr
 .icon-default_image_F {width:99px;height:106px;background-image:url("../images/silhouette_female.png");}
 .icon-default_image_M {width:99px;height:99px;background-image:url("../images/silhouette_male.png");}
 .icon-default_image_U {width:100px;height:97px;background-image:url("../images/silhouette_unknown.png");}
-.icon-dline {width:200px;height:200px;background-image:url("../images/dline.png");}
-.icon-dline2 {width:200px;height:200px;background-image:url("../images/dline2.png");}
 .icon-edit_indi {width:22px;height:22px;background-image:url("../images/edit_indi.png");}
 .icon-fam-list {width:32px;height:32px;background-image:url("../images/sfamily.png");}
 .icon-help {width:15px;height:15px;background-image:url("../images/help.png");}
-.icon-hline {width:10px;height:3px;background-image:url("../images/hline.png");}
 .icon-indi-list {width:32px;height:32px;background-image:url("../images/indis.png");}
 .icon-larrow {width:20px;height:20px;background-image:url("../images/larrow.png");}
 a.icon-larrow:hover {width:20px;height:20px;background-image:url("../images/larrow2.png");}
@@ -985,7 +982,6 @@ a.icon-rarrow:hover {width:20px;height:20px;background-image:url("../images/rarr
 .icon-sfamily {width:22px;height:22px;background-image:url("../images/icon-sfamily.png");}
 .icon-source {width:32px;height:32px;background-image:url("../images/source.png");}
 .icon-source-list {width:32px;height:32px;background-image:url("../images/source.png");}
-.icon-spacer {width:10px;height:10px;background-image:url("../images/spacer.png");}
 .icon-stop {width:20px;height:20px;background-image:url("../images/stop.png");}
 .icon-target {width:15px;height:15px;background-image:url("../images/buttons/target.png");}
 .icon-tree {width:20px;height:20px;background-image:url("../images/gedcom.png");}
@@ -993,7 +989,6 @@ a.icon-rarrow:hover {width:20px;height:20px;background-image:url("../images/rarr
 a.icon-uarrow:hover {width:20px;height:20px;background-image:url("../images/uarrow2.png");}
 .icon-udarrow {width:20px;height:20px;background-image:url("../images/udarrow.png");}
 .icon-user_add {width:32px;height:32px;background-image:url("../images/user_add.png");}
-.icon-vline {width:3px;height:10px;background-image:url("../images/vline.png");}
 .icon-warning {width:17px;height:17px;background-image:url("../images/warning.png");}
 .icon-webtrees {width:100px;height:21px;background-image:url("../images/webtrees.png");}
 .icon-wiki {width:16px;height:16px;background-image:url("../../../images/w_button.png");}

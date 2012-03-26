@@ -127,13 +127,13 @@ echo '<div id="note-tabs">
 			echo '<tr><td align="left" class="descriptionbox">';
 				if (WT_USER_CAN_EDIT) {
 					echo '<a href="#" onclick="edit_note()" title="', WT_I18N::translate('Edit'), '">';
-					if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top">';
+					echo '<i class="icon-note"></i>';
 					echo WT_I18N::translate('Shared note'), '</a>';
 					echo '<div class="editfacts">';
-						echo '<div class="editlink"><a class="editicon" href="#" onclick="edit_note()" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
+					echo '<div class="editlink"><a class="editicon" href="#" onclick="edit_note()" title="', WT_I18N::translate('Edit'), '"><span class="link_text">', WT_I18N::translate('Edit'), '</span></div></a>';
 					echo '</div>';
 				} else { 
-					if (!empty($WT_IMAGES['note']) && $SHOW_FACT_ICONS) echo '<img src="', $WT_IMAGES['note'], '" alt="" align="top">';
+					echo '<i class="icon-note"></i>';
 					echo WT_I18N::translate('Shared note');
 				}
 				echo '</td><td class="optionbox wrap width80">';

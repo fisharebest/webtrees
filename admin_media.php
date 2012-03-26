@@ -966,9 +966,7 @@ if (check_media_structure()) {
 			$uplink .= $pdir;
 			$uplink .= "</a>";
 
-			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\"><img class=\"icon-larrow\" src=\"";
-			$uplink2 .= $WT_IMAGES["larrow"];
-			$uplink2 .= "\" alt=\"".WT_I18N::translate('Back')."\" title=\"".WT_I18N::translate('Back')."\"></a>";
+			$uplink2 = "<a href=\"".WT_SCRIPT_NAME."?directory={$pdir}&amp;sortby={$sortby}&amp;level=".($level-1).$thumbget."&amp;subclick=".$subclick."\" class=\"icon-larrow\"  title=\"".WT_I18N::translate('Back')."\"></a>";
 		}
 
 		// display the directory list
