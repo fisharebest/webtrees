@@ -786,9 +786,11 @@ function restorebox(boxid, bstyle) {
 	iconz = document.getElementById("iconz-"+boxid);	// This is the Zoom icon
 	if (divbox) {
 		if (icons) icons.style.display = oldiconsdislpay;
-		if (iconz) {
-			if (iconz.src==zoominout[0].src) iconz.src = zoominout[1].src;
-			else iconz.src = zoominout[0].src;
+		if (jQuery(iconz).hasClass("icon-zoomin")) {
+			jQuery(iconz).removeClass("icon-zoomin").addClass("icon-zoomout");
+		} else {
+			jQuery(iconz).removeClass("icon-zoomout").addClass("icon-zoomin");
+		
 		}
 		big = 0;
 		if (gender) {
