@@ -2,7 +2,7 @@
 // Returns data for autocompletion
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -560,12 +560,12 @@ function get_autocomplete_INDI($FILTER, $ged_id=WT_GED_ID) {
 			WT_DB::prepare(
 			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`, `##name`".
-			" WHERE n_sort LIKE ?".
+			" WHERE (n_sort LIKE ? OR n_full LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
 			" ORDER BY n_sort".
 			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
 			)
-			->execute(array("%{$FILTER}%", $ged_id))
+			->execute(array("%{$FILTER}%", "%{$FILTER}%", $ged_id))
 			->fetchAll(PDO::FETCH_ASSOC);
 	} else {
 		return $rows;
