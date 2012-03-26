@@ -36,7 +36,7 @@ if (!defined('WT_WEBTREES')) {
  * @param string $arrowDirection   direction of link arrow
  */
 function print_sosa_number($sosa, $pid = "", $arrowDirection = "up") {
-	global $pbwidth, $pbheight, $WT_IMAGES;
+	global $pbwidth, $pbheight;
 
 	if (substr($sosa,-1,1)==".") {
 		$personLabel = substr($sosa,0,-1);
@@ -586,7 +586,7 @@ function ancestry_array($rootid, $maxgen=0) {
  * @param string $dir arrow direction 0=left 1=right 2=up 3=down (default=2)
  */
 function print_url_arrow($id, $url, $label, $dir=2) {
-	global $WT_IMAGES, $TEXT_DIRECTION;
+	global $TEXT_DIRECTION;
 
 	if ($id=="" or $url=="") return;
 
@@ -672,11 +672,10 @@ function print_cousins($famid, $personcount=1) {
 		}
 		echo '</table>';
 	} else {
-		$famrec = find_family_record($famid, $ged_id);
-		$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
-		if ($ct>0) $nchi = $match[1];
-		else $nchi = "";
-		if ($nchi=='0') echo '&nbsp;<img src="', $WT_IMAGES['childless'], '" alt="', WT_I18N::translate('This family remained childless'), '" title="', WT_I18N::translate('This family remained childless'), '">';
+		// If there is known that there are no children (as opposed to no known children)
+		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
+			echo ' <i class="icon-childless" title="', WT_I18N::translate('This family remained childless'), '"></i>';
+		}
 	}
 	$show_full = $save_show_full;
 	if ($save_show_full) {
