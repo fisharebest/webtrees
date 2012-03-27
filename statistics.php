@@ -449,14 +449,29 @@ if (!$ajax) {
 					box.style.display = 'none';
 				}
 			}
-			function openPopup() {
-				window.open('', '_popup', 'top=50, left=50, width=950, height=480, scrollbars=0, scrollable=0');
-				return true;
+			function statsModalDialog(url, title) {
+				var $form = jQuery('#own-stats-form');
+				jQuery.post($form.attr('action'), $form.serialize(), function(response) {
+					jQuery('div#statistics-plot').html(response);
+				});
+				dialog=jQuery('<div title="'+title+'"></div>')
+					.load(url)
+					.dialog({
+						modal: true,
+						width: 962,
+						position: ['center',50],
+						close: function(event, ui) { $(this).remove(); }
+					});
+				// Close the window when we click outside it.
+				jQuery(".ui-widget-overlay").live("click", function () {
+					jQuery("div:ui-dialog:visible").dialog("close");
+				});
+				return false;
 			}
 		//-->
 		</script>
 		<?php
-		echo '<form method="post" name="form" action="statisticsplot.php?action=newform" target="_popup" onsubmit="return openPopup()">';
+		echo '<div id="own-stats"><form method="post" id="own-stats-form" name="form" action="statisticsplot.php" onsubmit="statsModalDialog(\'statisticsplot.php?action=newform\', \'', WT_I18N::translate('Statistics plot'), '\'); return false;">';
 		echo '<input type="hidden" name="action" value="update">';
 		echo '<table width="100%">';
 		if (!isset($plottype)) $plottype = 11;
@@ -656,7 +671,7 @@ if (!$ajax) {
 			</td>
 			</tr>
 		</table>
-		</form>
+		</form></div>
 		</fieldset>';
 	}
 }
