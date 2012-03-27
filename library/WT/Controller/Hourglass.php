@@ -56,14 +56,15 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $dgenerations;
 	var $box_width;
 	var $name;
+	// Left and right get reversed on RTL pages
+	private $left_arrow;
+	private $right_arrow;
 	//  the following are ajax variables  //
 	var $ARID;
-	var $arrwidth;
-	var $arrheight;
 
 	function __construct($rootid='', $show_full=1, $generations=3) {
 		global $USE_RIN, $MAX_ALIVE_AGE, $GEDCOM, $bheight, $bwidth, $cbwidth, $cbheight, $bhalfheight, $PEDIGREE_FULL_DETAILS, $MAX_DESCENDANCY_GENERATIONS;
-		global $WT_IMAGES, $TEXT_DIRECTION, $show_full;
+		global $TEXT_DIRECTION, $show_full;
 
 		parent::__construct();
 
@@ -81,16 +82,12 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		if (!empty($rootid)) $this->pid = $rootid;
 
 		//-- flip the arrows for RTL languages
-		if ($TEXT_DIRECTION=="rtl") {
-			$temp = $WT_IMAGES['larrow'];
-			$WT_IMAGES['larrow'] = $WT_IMAGES['rarrow'];
-			$WT_IMAGES['rarrow'] = $temp;
-		}
-		//-- get the width and height of the arrow images for adjusting spacing
-		if (file_exists($WT_IMAGES['larrow'])) {
-			$temp = getimagesize($WT_IMAGES['larrow']);
-			$this->arrwidth = $temp[0];
-			$this->arrheight= $temp[1];
+		if ($TEXT_DIRECTION=='ltr') {
+			$this->left_arrow='icon-larrow';
+			$this->right_arrow='icon-rarrow';
+		} else {
+			$this->left_arrow='icon-larrow';
+			$this->right_arrow='icon-larrow';
 		}
 		
 		// -- size of the detailed boxes based upon optional width parameter
@@ -154,7 +151,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 				//-- print an Ajax arrow on the last generation of the adult male
 				if ($count==$this->generations-1 && $family->getHusband()->getChildFamilies()) {
-					echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["rarrow"]."\" alt=\"\"></a> ";
+					echo "<a href=\"#\" onclick=\"return ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->right_arrow."\"></a> ";
 				}
 				//-- recursively get the father's family
 				$this->print_person_pedigree($family->getHusband(), $count+1);
@@ -173,7 +170,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 				//-- print an ajax arrow on the last generation of the adult female
 				if ($count==$this->generations-1 && $family->getWife()->getChildFamilies()) {
-					echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\"><img src=\"".$WT_IMAGES["rarrow"]."\" alt=\"\"></a> ";
+					echo "<a href=\"#\" onclick=\"ChangeDiv('td_".$ARID."','".$ARID."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."'); return false;\" class=\"".$this->right_arrow."\"></a> ";
 				}
 	
 				//-- recursively print the mother's family
@@ -285,9 +282,9 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				$kcount+=$family->getNumberOfChildren();
 			}
 			if ($kcount==0) {
-				echo "<div style=\"width: ".($this->arrwidth)."px;\"><br></div></td><td width=\"$bwidth\">";
+				echo "&nbsp;</td><td width=\"$bwidth\">";
 			} else {
-				echo "<div style=\"width: ".($this->arrwidth)."px;\"><a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\"><img src=\"".$WT_IMAGES["larrow"]."\" alt=\"\"></a></div>";
+				echo "<a href=\"$pid\" onclick=\"return ChangeDis('td_".$pid."','".$pid."','".$this->show_full."','".$this->show_spouse."','".$this->box_width."')\" class=\"".$this->left_arrow."\"></a>";
 				//-- move the arrow up to line up with the correct box
 				if ($this->show_spouse) {
 					foreach ($families as $family) {
@@ -348,59 +345,47 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 				}
 				// NOTE: If statement OK
 				if ($num>0) {
-					echo '<div class="center" id="childarrow" style="position:absolute; width:'.$bwidth.'px;">';
+					echo '<div class="center" id="childarrow" style="position:absolute; width:', $bwidth, 'px;">';
 					echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-darrow"></a><br>';
-					echo '<div id="childbox" style="width:'.$bwidth.'px; height:'.$bheight.'px; visibility: hidden;">';
-					echo "<table class=\"person_box\"><tr><td>";
+					echo '<div id="childbox" style="width:', $bwidth, 'px; height:', $bheight, 'px; visibility: hidden;">';
+					echo '<table class="person_box"><tr><td>';
 
 					foreach ($famids as $family) {
 						$spouse = $family->getSpouse($person);
-						if (!empty($spouse)) {
+						if ($spouse) {
 							$spid = $spouse->getXref();
-							echo "<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-							$name = $spouse->getFullName();
-							echo 'class="name1">';
-							echo $name;
-							echo "<br></span></a>";
+							echo "<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
+							echo $spouse->getFullName();
+							echo '</a><br>';
 
 						}
 
 						$children = $family->getChildren();
 						foreach ($children as $id=>$child) {
 							$cid = $child->getXref();
-							echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-							$name = $child->getFullName();
-							echo 'class="name1">';
-							echo '<img src="'.$WT_IMAGES["larrow"].'" height="10" alt="">  ', $name;
-							echo "<br></span></a>";
+							echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
+							echo $child->getFullName();
+							echo '</a><br>';
 						}
 					}
-					//-- do we need to print this arrow?
-					echo "<img src=\"".$WT_IMAGES["rarrow"]."\" alt=\"\"> ";
 
 					//-- print the siblings
 					foreach ($cfamids as $family) {
-						if (!is_null($family->getHusband()) || !is_null($family->getWife())) {
+						if ($family->getHusband() || $family->getWife()) {
 							echo "<span class=\"name1\"><br>".WT_I18N::translate('Parents')."<br></span>";
 							$husb = $family->getHusband();
-							if (!empty($husb)) {
+							if ($husb) {
 								$spid = $husb->getXref();
-								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-								$name = $husb->getFullName();
-								$name = rtrim($name);
-								echo 'class="name1">';
-								echo $name;
-								echo "<br></span></a>";
+								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
+								echo $husb->getFullName();
+								echo '</a><br>';
 							}
-							$husb = $family->getWife();
-							if (!empty($husb)) {
-								$spid = $husb->getXref();
-								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-								$name = $husb->getFullName();
-								$name = rtrim($name);
-								echo 'class="name1">';
-								echo $name;
-								echo "<br></span></a>";
+							$wife = $family->getWife();
+							if ($wife) {
+								$spid = $wife->getXref();
+								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$spid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
+								echo $wife->getFullName();
+								echo '</a><br>';
 							}
 						}
 						$children = $family->getChildren();
@@ -410,23 +395,20 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 						foreach ($children as $id=>$child) {
 							$cid = $child->getXref();
 							if ($cid!=$pid) {
-								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\"><span ";
-								$name = $child->getFullName();
-								$name = rtrim($name);
-								echo 'class="name1">';
-								echo $name;
-								echo "<br></span></a>";
+								echo "&nbsp;&nbsp;<a href=\"hourglass.php?rootid={$cid}&amp;show_spouse={$this->show_spouse}&amp;show_full={$this->show_full}&amp;generations={$this->generations}&amp;box_width={$this->box_width}\" class=\"name1\">";
+								echo $child->getFullName();
+								echo '</a><br>';
 							}
 						}
 					}
-					echo "</td></tr></table>";
-					echo "</div>";
-					echo "</div>";
+					echo '</td></tr></table>';
+					echo '</div>';
+					echo '</div>';
 				}
 			}
 		}
-		echo "</td></tr>";
-		echo "</table>";
+		echo '</td></tr>';
+		echo '</table>';
 		return $numkids;
 	}
 

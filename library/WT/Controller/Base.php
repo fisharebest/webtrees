@@ -191,7 +191,7 @@ class WT_Controller_Base {
 	// Print the page header, using the theme
 	public function pageHeader() {
 		// Import global variables into the local scope, for the theme's header.php
-		global $BROWSERTYPE, $SEARCH_SPIDER, $WT_IMAGES, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
+		global $BROWSERTYPE, $SEARCH_SPIDER, $TEXT_DIRECTION, $REQUIRE_AUTHENTICATION;
 		global $stylesheet, $headerfile, $view;
 
 		// The title often includes the names of records, which may have markup
