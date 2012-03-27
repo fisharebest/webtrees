@@ -450,7 +450,7 @@ function print_repository_record($xref) {
  * @param boolean $return whether to return the data or print the data
  */
 function print_fact_sources($factrec, $level, $return=false) {
-	global $WT_IMAGES, $EXPAND_SOURCES;
+	global $EXPAND_SOURCES;
 
 	$data = '';
 	$nlevel = $level+1;
@@ -775,7 +775,7 @@ function print_address_structure($factrec, $level) {
 }
 
 function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
-	global $WT_IMAGES, $SHOW_FACT_ICONS;
+	global $SHOW_FACT_ICONS;
 
 	if (!canDisplayFact($pid, WT_GED_ID, $factrec)) {
 		return;
@@ -820,7 +820,7 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 			if (!$noedit && WT_USER_CAN_EDIT && !FactEditRestricted($pid, $factrec) && $styleadd!="red") {
 				echo "<a onclick=\"return edit_record('$pid', $linenum);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), '">';
 					if ($SHOW_FACT_ICONS) {
-						if ($level==1) echo '<img class="icon" src="', $WT_IMAGES['source'], '" alt="">';
+						if ($level==1) echo '<i class="icon-source"></i> ';
 					}
 					echo WT_Gedcom_Tag::getLabel($factname, $parent), '</a>';
 					echo '<div class="editfacts">';
@@ -992,7 +992,7 @@ function getSourceStructure($srec) {
  * @param boolean $noedit Whether or not to allow this fact to be edited
  */
 function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
-	global $GEDCOM, $SHOW_FACT_ICONS, $WT_IMAGES, $TEXT_DIRECTION;
+	global $GEDCOM, $SHOW_FACT_ICONS, $TEXT_DIRECTION;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	$styleadd="";
@@ -1021,7 +1021,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 			echo '<a onclick="return edit_record(\'', $pid, '\', ', $linenum, ');" href="#" title="', WT_I18N::translate('Edit'), '">';
 			if ($level<2) {
 				if ($SHOW_FACT_ICONS) {
-					echo '<img class="icon" src="', $WT_IMAGES['note'], '" alt="">';
+					echo '<i class="icon-note"></i> ';
 				}
 				if (strstr($factrec, "1 NOTE @" )) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
@@ -1038,7 +1038,7 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 		} else {
 			if ($level<2) {
 				if ($SHOW_FACT_ICONS) {
-					echo '<img class="icon" src="', $WT_IMAGES['note'], '" alt="">';
+					echo '<i class="icon-note"></i> ';
 				}
 				if (strstr($factrec, "1 NOTE @" )) {
 					echo WT_Gedcom_Tag::getLabel('SHARED_NOTE');
@@ -1303,7 +1303,7 @@ function print_main_media($pid, $level=1, $related=false) {
  * @param string $pid The record id this media item was attached to
  */
 function print_main_media_row($rtype, $rowm, $pid) {
-	global $WT_IMAGES, $SHOW_FACT_ICONS, $SEARCH_SPIDER;
+	global $SHOW_FACT_ICONS, $SEARCH_SPIDER;
 
 	$mediaobject = new WT_Media($rowm['m_gedrec']);
 	if (!$mediaobject || !$mediaobject->canDisplayDetails()) {
@@ -1319,7 +1319,7 @@ function print_main_media_row($rtype, $rowm, $pid) {
 	if ($rowm['mm_gid']==$pid && WT_USER_CAN_EDIT && (!FactEditRestricted($mediaobject->getXref(), $mediaobject->getGedcomRecord())) && ($styleadd!='change_old') && $rowm['m_gedrec']!='') {
 		echo "<a onclick=\"return window.open('addmedia.php?action=editmedia&amp;pid=", $mediaobject->getXref(), "&amp;linktoid={$rowm['mm_gid']}', '_blank', edit_window_specs);\" href=\"#\" title=\"", WT_I18N::translate('Edit'), "\">";
 		if ($SHOW_FACT_ICONS) {
-			echo '<img class="icon" src="', $WT_IMAGES['media'], '" alt="">';
+			echo '<i class="icon-media"></i> ';
 		}
 		echo WT_Gedcom_Tag::getLabel('OBJE'), '</a>';
 		echo '<div class="editfacts">';
