@@ -148,7 +148,7 @@ function create_map($placelevels) {
 	} else {
 		echo '<div id="place_map" style="border:1px solid gray; width:', $GOOGLEMAP_PH_XSIZE, 'px; height:', $GOOGLEMAP_PH_YSIZE, 'px; ';	
 	}
-	echo "background-image: url('", WT_STATIC_URL, "images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
+	echo "\"><i class=\"icon-loading-large\"></i></div>";
 	echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
 	echo '</td>';
 	

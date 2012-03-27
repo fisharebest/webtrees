@@ -79,7 +79,7 @@ class TreeView {
 			'<li id="tvbCompact" class="tv_button"><img src="'.WT_STATIC_URL.WT_MODULES_DIR.'tree/images/compact.png" alt="'.WT_I18N::translate('Use compact layout').'" title="'.WT_I18N::translate('Use compact layout').'"></li>'.
 			'<li class="tv_button'.($this->allPartners ? ' tvPressed' : '').'"><a class="icon-sfamily" href="'.$path.'" title="'.WT_I18N::translate('Show all spouses and ancestors').'"></a></li>';
 		// Hidden loading image
-		$r.='<li class="tv_button" id="'.$this->name.'_loading"><img src="'.WT_STATIC_URL.'images/loading.gif" alt="Loading..."></li></ul>';
+		$r.='<li class="tv_button" id="'.$this->name.'_loading"><i class="icon-loading-small"></i></li></ul>';
 		$r.='</div><h2 id="tree-title">'.
 			WT_I18N::translate('Interactive tree of %s',$rootPerson->getFullName()).
 			'</h2><div id="'.$this->name.'_in" class="tv_in" dir="ltr">';

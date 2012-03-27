@@ -105,7 +105,7 @@ foreach ($controller->tabs as $tab) {
 }
 $controller->addInlineJavaScript('
 	jQuery("#tabs").tabs({
-		spinner: "<img src=\"'.WT_STATIC_URL.'images/loading.gif\" height=\"18\" alt=\"\">",
+		spinner: \'<i class="icon-loading-small"></i>\',
 		cache: true
 	});
 	jQuery("#tabs").tabs("select",jQuery.cookie("indi-tab"));

@@ -221,7 +221,7 @@ echo "<tr>";
 echo "<td valign=\"top\">";
 //echo "<img src=\"", WT_STATIC_URL, "images/spacer.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\">";
 echo "<div id=\"pm_map\" style=\"border: 1px solid gray; height: ".$GOOGLEMAP_YSIZE."px; font-size: 0.9em;";
-echo " background-image: url('", WT_STATIC_URL, "images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
+echo "\"><i class=\"icon-loading-large\"></i></div>";
 if (WT_USER_IS_ADMIN) {
 	echo "<table width=\"100%\">";
 	echo "<tr><td align=\"left\">";

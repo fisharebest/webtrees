@@ -2056,6 +2056,8 @@ a.icon-larrow:hover {width:20px;height:20px;background-image:url("images/larrow2
 .icon-lsltarrow {width:48px;height:48px;background-image:url("images/lifespan-left.png");}
 .icon-lsrtarrow {width:48px;height:48px;background-image:url("images/lifespan-right.png");}
 .icon-lsuparrow {width:48px;height:48px;background-image:url("images/lifespan-up.png");}
+.icon-loading-small {width:16px;height:16px;background-image:url("images/indicator.gif");}
+.icon-loading-large {width:32px;height:32px;background-image:url("images/loading.gif");}
 .icon-mapquest {width:16px;height:16px;background-image:url("images/mapquest.png");}
 .icon-media {width:25px;height:25px;background-image:url("images/media.png");}
 .icon-media-list {width:25px;height:25px;background-image:url("images/media.png");}

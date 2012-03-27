@@ -36,7 +36,7 @@ $ajax = safe_GET('ajax', WT_REGEX_NOSCRIPT, 0);
 if (!$ajax) {
 	$js='jQuery(document).ready(function() {
 		jQuery("#stats-tabs").tabs({
-			spinner: \'<img src="'.WT_STATIC_URL.'images/loading.gif" height="12" alt="">\',
+			spinner: \'<i class="icon-loading-small"></i>\',
 			cache: true
 		});
 		jQuery("#stats-tabs").css("visibility", "visible");
