@@ -453,23 +453,23 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				if (!empty($this_person)) {
 					$class = 'pedigree_image';
 					if ($gmark['fact'] == 'Census') {
-						$image = "<img class='icon_cens' src='././images/pix1.gif'>";
+						$image = "<i class='icon_cens'></i>";
 					} else if ($gmark['fact'] == 'Birth') {
-						$image = "<img class='icon_birt' src='././images/pix1.gif'>";
+						$image = "<i class='icon_birt'></i>";
 					} else if ($gmark['fact'] == 'Baptism' || $gmark['fact'] == 'Christening') {
-						$image = "<img class='icon_bapm' src='././images/pix1.gif'>";
+						$image = "<i class='icon_bapm'></i>";
 					} else if ($gmark['fact'] == 'Military') {
-						$image = "<img class='icon_mili' src='././images/pix1.gif'>";
+						$image = "<i class='icon_mili'></i>";
 					} else if ($gmark['fact'] == 'Occupation') {
-						$image = "<img class='icon_occu' src='././images/pix1.gif'>";
+						$image = "<i class='icon_occu'></i>";
 					} else if ($gmark['fact'] == 'Residence') {
-						$image = "<img class='icon_resi' src='././images/pix1.gif'>";
+						$image = "<i class='icon_resi'></i>";
 					} else if ($gmark['fact'] == 'Death') {
-						$image = "<img class='icon_deat' src='././images/pix1.gif'>";
+						$image = "<i class='icon_deat'></i>";
 					} else if ($gmark['fact'] == 'Burial' || $gmark['fact'] == 'Cremation') {
-						$image = "<img class='icon_buri' src='././images/pix1.gif'>";
+						$image = "<i class='icon_buri'></i>";
 					} else if ($gmark['fact'] == 'Retirement' ) {
-						$image = "<img class='icon_reti' src='././images/pix1.gif'>";
+						$image = "<i class='icon_reti'></i>";
 					} else {
 						$indirec = $this_person->getGedcomRecord();
 						$image = '';

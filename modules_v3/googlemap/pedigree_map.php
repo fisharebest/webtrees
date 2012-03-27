@@ -219,7 +219,7 @@ for ($i=0; $i<($controller->treesize); $i++) {
 echo '<table class="tabs_table" cellspacing="0" cellpadding="0" border="0" width="100%">';
 echo "<tr>";
 echo "<td valign=\"top\">";
-echo "<img src=\"", WT_STATIC_URL, "images/spacer.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\">";
+//echo "<img src=\"", WT_STATIC_URL, "images/spacer.gif\" width=\"".$GOOGLEMAP_XSIZE."\" height=\"0\" alt=\"\">";
 echo "<div id=\"pm_map\" style=\"border: 1px solid gray; height: ".$GOOGLEMAP_YSIZE."px; font-size: 0.9em;";
 echo " background-image: url('", WT_STATIC_URL, "images/loading.gif'); background-position: center; background-repeat: no-repeat; overflow: hidden;\"></div>";
 if (WT_USER_IS_ADMIN) {

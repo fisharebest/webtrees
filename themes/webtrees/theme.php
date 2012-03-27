@@ -53,7 +53,7 @@ $WT_IMAGES=array(
 	'patriarch'=>WT_THEME_URL.'images/patriarch.png',
 	'pedigree'=>WT_THEME_URL.'images/pedigree.png',
 	'place'=>WT_THEME_URL.'images/place.png',
-	'reorder'=>WT_THEME_URL.'images/reorder_images.png',
+	'reorder'=>WT_THEME_URL.'images/reorder.png',
 	'repository'=>WT_THEME_URL.'images/repository.png',
 	'repo-list'=>WT_THEME_URL.'images/repository.png',
 	'rings'=>WT_THEME_URL.'images/rings.png',
@@ -72,7 +72,7 @@ $WT_IMAGES=array(
 	'tree'=>WT_THEME_URL.'images/tree.png',
 	'user_add'=>WT_THEME_URL.'images/user_add.png',
 	'warning'=>WT_THEME_URL.'images/warning.png',
-	'wiki'=>WT_STATIC_URL.'images/w_button.png',
+	'wiki'=>WT_THEME_URL.'images/w_button.png',
 
 	//- buttons for data entry pages
 	'button_addmedia'=>WT_THEME_URL.'images/buttons/addmedia.png',

@@ -854,6 +854,7 @@ html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 [class^="icon-"], [class*=" icon-"] {display:inline-block;vertical-align:text-bottom;background-repeat:no-repeat;}
 .icon-add {width:14px;height:15px;background-image:url("images/add.png");}
 .icon-admin {width:15px;height:15px;background-image:url("images/admin.png");}
+.icon-bing {width:16px;height:16px;background-image:url("images/bing.png");}
 .icon-button_addmedia {width:18px;height:16px;background-image:url("images/buttons/addmedia.png");}
 .icon-button_addnote {width:17px;height:15px;background-image:url("images/buttons/addnote.png");}
 .icon-button_addrepository {width:15px;height:15px;background-image:url("images/buttons/addrepository.png");}
@@ -881,16 +882,19 @@ a.icon-darrow:hover {width:20px;height:20px;background-image:url("images/darrow2
 .icon-default_image_U {width:100px;height:97px;background-image:url("images/silhouette_unknown.png");}
 .icon-edit_indi {width:20px;height:20px;background-image:url("images/edit_indi.png");}
 .icon-fam-list {width:20px;height:20px;background-image:url("images/family.png");}
+.icon-googlemaps {width:16px;height:16px;background-image:url("images/googlemaps.png");}
 .icon-help {width:15px;height:15px;background-image:url("images/help2.png");}
 .icon-indi-list {width:20px;height:20px;background-image:url("images/indis.png");}
 .icon-indis {width:20px;height:20px;background-image:url("images/indis.png");}
 .icon-larrow {width:20px;height:20px;background-image:url("images/larrow.png");}
 a.icon-larrow:hover {width:20px;height:20px;background-image:url("images/larrow2.png");}
 .icon-ldarrow {width:20px;height:20px;background-image:url("images/ldarrow.png");}
+.icon-lifespan-chunk {width:50px;height:37px;background-image:url("images/lifespan-chunk.png");}
 .icon-lsdnarrow {width:48px;height:48px;background-image:url("images/lifespan-down.png");}
 .icon-lsltarrow {width:48px;height:48px;background-image:url("images/lifespan-left.png");}
 .icon-lsrtarrow {width:48px;height:48px;background-image:url("images/lifespan-right.png");}
 .icon-lsuparrow {width:48px;height:48px;background-image:url("images/lifespan-up.png");}
+.icon-mapquest {width:16px;height:16px;background-image:url("images/mapquest.png");}
 .icon-media {width:20px;height:20px;background-image:url("images/media.png");}
 .icon-media-list {width:20px;height:20px;background-image:url("images/media.png");}
 .icon-media_audio {width:48px;height:48px;background-image:url("images/media/audio.png");}
@@ -919,9 +923,13 @@ a.icon-rarrow:hover {width:20px;height:20px;background-image:url("images/rarrow2
 .icon-rdarrow {width:20px;height:20px;background-image:url("images/rdarrow.png");}
 .icon-reminder {width:15px;height:12px;background-image:url("images/reminder.png");}
 .icon-remove {width:20px;height:20px;background-image:url("images/remove.png");}
-.icon-reorder {width:16px;height:16px;background-image:url("images/reorder_images.png");}
+.icon-reorder {width:10px;height:10px;background-image:url("images/reorder.png");}
 .icon-repo-list {width:20px;height:20px;background-image:url("images/repository.png");}
 .icon-repository {width:20px;height:20px;background-image:url("images/repository.png");}
+.icon-resn-confidential {width:16px;height:16px;background-image:url("images/resn_confidential.png");}
+.icon-resn-locked {width:16px;height:16px;background-image:url("images/resn_locked.png");}
+.icon-resn-none {width:16px;height:16px;background-image:url("images/resn_none.png");}
+.icon-resn-privacy {width:16px;height:16px;background-image:url("images/resn_privacy.png");}
 .icon-rings {width:9px;height:9px;background-image:url("images/rings.png");}
 .icon-search {width:17px;height:17px;background-image:url("images/search.png");}
 .icon-selected {width:12px;height:12px;background-image:url("images/selected.png");}
@@ -936,6 +944,7 @@ a.icon-rarrow:hover {width:20px;height:20px;background-image:url("images/rarrow2
 .icon-source-list {width:20px;height:20px;background-image:url("images/source.png");}
 .icon-stop {width:20px;height:20px;background-image:url("images/stop.png");}
 .icon-target {width:15px;height:15px;background-image:url("images/buttons/target.png");}
+.icon-terraserver {width:16px;height:16px;background-image:url("images/terraserver.png");}
 .icon-tree {width:20px;height:20px;background-image:url("images/tree.png");}
 .icon-uarrow {width:20px;height:20px;background-image:url("images/uarrow.png");}
 a.icon-uarrow:hover {width:20px;height:20px;background-image:url("images/uarrow2.png");}
@@ -943,6 +952,6 @@ a.icon-uarrow:hover {width:20px;height:20px;background-image:url("images/uarrow2
 .icon-user_add {width:20px;height:20px;background-image:url("images/user_add.png");}
 .icon-warning {width:17px;height:17px;background-image:url("images/warning.png");}
 .icon-webtrees {width:100px;height:21px;background-image:url("images/webtrees_s.png");}
-.icon-wiki {width:16px;height:16px;background-image:url("../../images/w_button.png");}
+.icon-wiki {width:16px;height:16px;background-image:url("images/w_button.png");}
 .icon-zoomin {width:25px;height:25px;background-image:url("images/zoomin.png");}
 .icon-zoomout {width:25px;height:25px;background-image:url("images/zoomout.png");}

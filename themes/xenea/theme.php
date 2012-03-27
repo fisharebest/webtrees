@@ -80,7 +80,7 @@ $WT_IMAGES=array(
 	'rdarrow'=>WT_THEME_URL.'images/rdarrow.png',
 	'reminder'=>WT_THEME_URL.'images/reminder.png',
 	'remove'=>WT_THEME_URL.'images/delete.png',
-	'reorder'=>WT_THEME_URL.'images/reorder_images.png',
+	'reorder'=>WT_THEME_URL.'images/reorder.png',
 	'repository'=>WT_THEME_URL.'images/repository.png',
 	'repo-list'=>WT_THEME_URL.'images/repository.png',
 	'rings'=>WT_THEME_URL.'images/rings.png',
@@ -105,7 +105,7 @@ $WT_IMAGES=array(
 	'vline'=>WT_THEME_URL.'images/vline.png',
 	'warning'=>WT_THEME_URL.'images/warning.png',
 	'webtrees'=>WT_THEME_URL.'images/webtrees.png',
-	'wiki'=>WT_STATIC_URL.'images/w_button.png',
+	'wiki'=>WT_THEME_URL.'images/w_button.png',
 	'zoomin'=>WT_THEME_URL.'images/zoomin.png',
 	'zoomout'=>WT_THEME_URL.'images/zoomout.png',
 	
