@@ -3929,7 +3929,7 @@ class WT_Stats {
 			if ($value<0) $value = 0;
 			$first = floor($value / 64);
 			$second = $value % 64;
-			$encoding .= self::$_xencoding[$first].self::$_xencoding[$second];
+			$encoding .= self::$_xencoding[(int)$first].self::$_xencoding[(int)$second];
 		}
 		return $encoding;
 	}
