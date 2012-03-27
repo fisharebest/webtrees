@@ -415,24 +415,11 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 			echo "</td></tr>";
 		}
 		// message 'no children' except for sosa
-	}
-	else if ($sosa<1) {
-		echo "<tr><td valign=\"top\" >";
-
-		$nchi = "";
-		$famrec = find_gedcom_record($famid, WT_GED_ID, true);
-		$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
-		if ($ct>0) $nchi = $match[1];
-		else {
-			$famrec = find_family_record($famid, WT_GED_ID);
-			$ct = preg_match("/1 NCHI (\w+)/", $famrec, $match);
-			if ($ct>0) $nchi = $match[1];
+	} elseif ($sosa<1) {
+		if (preg_match('/\n1 NCHI (\d+)/', $family->getGedcomRecord(), $match) && $match[1]==0) {
+			echo '<tr><td><i class="icon-childless"></i> '.WT_I18N::translate('This family remained childless').'</td></tr>';
 		}
-		if ($nchi=="0") echo '<img src="'.$WT_IMAGES['childless'].'" alt="'.WT_I18N::translate('This family remained childless').'" title="'.WT_I18N::translate('This family remained childless').'"> '.WT_I18N::translate('This family remained childless');
-		//else echo WT_I18N::translate('No children');
-		echo "</td></tr>";
-	}
-	else {
+	} else {
 		echo "<tr>";
 		print_sosa_number($sosa, WT_Person::getInstance($chil));
 		echo "<td valign=\"top\">";
