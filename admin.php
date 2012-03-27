@@ -307,24 +307,6 @@ function old_paths() {
 		WT_ROOT.'editgedcoms.php',
 		WT_ROOT.'edit_merge.php',
 		WT_ROOT.'genservice.php',
-		WT_ROOT.'images/buttons',
-		WT_ROOT.'images/checked.gif',
-		WT_ROOT.'images/checked_qm.gif',
-		WT_ROOT.'images/children.gif',
-		WT_ROOT.'images/feed-icon16x16.png',
-		WT_ROOT.'images/forbidden.gif',
-		WT_ROOT.'images/media',
-		WT_ROOT.'images/reminder.gif',
-		WT_ROOT.'images/selected.png',
-		WT_ROOT.'images/sex_f_15x15.gif',
-		WT_ROOT.'images/sex_f_9x9.gif',
-		WT_ROOT.'images/sex_m_15x15.gif',
-		WT_ROOT.'images/sex_m_9x9.gif',
-		WT_ROOT.'images/sex_u_15x15.gif',
-		WT_ROOT.'images/sex_u_9x9.gif',
-		WT_ROOT.'images/small',
-		WT_ROOT.'images/trashcan.gif',
-		WT_ROOT.'images/warning.gif',
 		WT_ROOT.'includes/classes',
 		WT_ROOT.'includes/controllers',
 		WT_ROOT.'includes/family_nav.php',
@@ -855,7 +837,6 @@ function old_paths() {
 		// Removed in 1.2.3
 		//WT_ROOT.'modules_v2', // Do not delete - users may have stored custom modules/data here
 		// Removed in 1.2.4
-		WT_ROOT.'images/indicator.gif',
 		WT_ROOT.'includes/cssparser.inc.php',
 		WT_ROOT.'js/strings.js',
 		WT_ROOT.'modules_v3/gedcom_favorites/help_text.php',
@@ -1288,6 +1269,7 @@ function old_paths() {
 		// Removed in 1.3.0
 		WT_ROOT.'themes/xenea/images/w_22.png',
 		WT_ROOT.'themes/webtrees/images/w_22.png',
+		WT_ROOT.'images',
 	);
 }
 
