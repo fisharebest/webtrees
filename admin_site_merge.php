@@ -29,7 +29,10 @@ define('WT_SCRIPT_NAME', 'admin_site_merge.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Base;
-$controller->setPageTitle(WT_I18N::translate('Merge records'));
+$controller
+	->requireManagerLogin()
+	->setPageTitle(WT_I18N::translate('Merge records'))
+	->pageHeader();
 
 require_once WT_ROOT.'includes/functions/functions_edit.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
@@ -44,16 +47,8 @@ $keep2=safe_POST('keep2', WT_REGEX_UNSAFE);
 if (empty($keep1)) $keep1=array();
 if (empty($keep2)) $keep2=array();
 
-$controller->pageHeader();
-
 if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
-}
-
-//-- make sure they have accept access privileges
-if (!WT_USER_CAN_ACCEPT) {
-	echo '<span class="error">', WT_I18N::translate('<b>Access Denied</b><br />You do not have access to this resource.'), '</span>';
-	exit;
 }
 
 if ($action!='choose') {
@@ -277,9 +272,8 @@ if ($action=='choose') {
 		<td>',
 		WT_I18N::translate('Merge To ID:'),
 		'</td><td>
-		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1">
-		<script type="text/javascript">document.getElementById("gid1").focus();</script>',
-		'<select name="ged" tabindex="4"';
+		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" autofocus="autofocus">
+		<select name="ged" tabindex="4"';
 	if (get_gedcom_count()==1) {
 		echo 'style="width:1px;visibility:hidden;"';
 	}
