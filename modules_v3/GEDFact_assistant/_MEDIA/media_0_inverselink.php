@@ -189,12 +189,9 @@ if ($action == 'choose' && $paramok) {
 			} else {
 			echo '<button name="addLink" value="" type="button" onclick="blankwin(); return false;">', WT_I18N::translate('Add'), '</button>';
 		}
-		echo '&nbsp;&nbsp;&nbsp;&nbsp;';
-		print_findindi_link("gid", "");
-		echo '&nbsp;';
-		print_findfamily_link("gid");
-		echo '&nbsp;';
-		print_findsource_link("gid");
+		echo ' ', print_findindi_link('gid');
+		echo ' ', print_findfamily_link('gid');
+		echo ' ', print_findsource_link('gid');
 	echo '</td></tr></table>';
 	echo "<sub>" . WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.') . "</sub>";
 

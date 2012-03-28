@@ -274,7 +274,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				echo '<tr>';
 				echo '<td class="optionbox">';
 				echo '<input type="text" name="xref" id="pid" size="4" value="'.$xref.'">';
-				print_findindi_link("pid", "xref");
+				echo print_findindi_link('pid');
 				if ($xref) {
 					$person=WT_Person::getInstance($xref);
 					if ($person) {

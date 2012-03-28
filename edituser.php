@@ -163,7 +163,7 @@ $person=WT_Person::getInstance(WT_USER_ROOT_ID);
 echo '<tr><td class="descriptionbox wrap">';
 echo WT_I18N::translate('Default individual'), help_link('default_individual'), '</td><td class="optionbox">';
 echo '<input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '">';
-echo print_findindi_link('rootid', '', true), '<br>';
+echo print_findindi_link('rootid'), '<br>';
 if ($person) {
 	echo $person->format_list('span');
 }

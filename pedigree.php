@@ -72,7 +72,7 @@ if (WT_USE_LIGHTBOX) {
 					<tr>
 						<td class="optionbox">
 							<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
-							<?php print_findindi_link("rootid", ""); ?>
+							<?php echo print_findindi_link('rootid'); ?>
 						</td>
 						<td class="optionbox">
 							<select name="PEDIGREE_GENERATIONS">

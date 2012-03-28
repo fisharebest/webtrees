@@ -1573,16 +1573,16 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		// split PLAC
 		if ($fact=="PLAC" && $readOnly=='') {
 			echo "<div id=\"", $element_id, "_pop\" style=\"display: inline;\">";
-			print_specialchar_link($element_id, false);
-			print_findplace_link($element_id);
+			echo print_specialchar_link($element_id), ' ', print_findplace_link($element_id);
 			echo '</div>';
 			echo '<a href="#" onclick="toggle_lati_long(); return false;" class="icon-target" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '" title="', WT_Gedcom_Tag::getLabel('LATI'), ' / ', WT_Gedcom_Tag::getLabel('LONG'), '"></a>';
 			if (array_key_exists('places_assistant', WT_Module::getActiveModules())) {
 				places_assistant_WT_Module::setup_place_subfields($element_id);
 				places_assistant_WT_Module::print_place_subfields($element_id);
 			}
+		} elseif (($cols>20 || $fact=="NPFX") && $readOnly=='') {
+			echo print_specialchar_link($element_id);
 		}
-		else if (($cols>20 || $fact=="NPFX") && $readOnly=='') print_specialchar_link($element_id, false);
 	}
 	// MARRiage TYPE : hide text field and show a selection list
 	if ($fact=='TYPE' && $level==2 && $tags[0]=='MARR') {
@@ -1626,12 +1626,12 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 			// -------------------------------------------------------------------------------------------------
 		}
-		if ($fact=="FAMC") print_findfamily_link($element_id, '');
-		if ($fact=="FAMS") print_findfamily_link($element_id, '');
-		if ($fact=="ASSO") print_findindi_link($element_id, '');
+		if ($fact=="FAMC") echo print_findfamily_link($element_id);
+		if ($fact=="FAMS") echo print_findfamily_link($element_id);
+		if ($fact=="ASSO") echo print_findindi_link($element_id);
 		if ($fact=="FILE") print_findmedia_link($element_id, "0file");
 		if ($fact=="SOUR") {
-			print_findsource_link($element_id);
+			echo print_findsource_link($element_id);
 			print_addnewsource_link($element_id);
 			//print_autopaste_link($element_id, array("S1", "S2"), false, false, true);
 			//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
@@ -1683,15 +1683,14 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 		}
 		if ($fact=="REPO") {
-			print_findrepository_link($element_id);
+			echo print_findrepository_link($element_id);
 			print_addnewrepository_link($element_id);
 		}
 
 		// Shared Notes Icons ========================================
 		if ($fact=="NOTE" && $islink) {
 			// Print regular Shared Note icons ---------------------------
-			echo "&nbsp;&nbsp;";
-			print_findnote_link($element_id);
+			echo ' ', print_findnote_link($element_id);
 			print_addnewnote_link($element_id);
 			if ($value!="") {
 				echo "&nbsp;&nbsp;&nbsp;";
@@ -1716,7 +1715,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		}
 
 		if ($fact=="OBJE") {
-			print_findmedia_link($element_id, "1media");
+			echo print_findmedia_link($element_id, '1media');
 		}
 		if ($fact=="OBJE" && !$value) {
 			print_addnewmedia_link($element_id);

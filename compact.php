@@ -57,7 +57,7 @@ if (WT_USE_LIGHTBOX) {
 						</td>
 						<td class="optionbox vmiddle">
 							<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
-							<?php print_findindi_link('rootid',''); ?>
+							<?php echo print_findindi_link('rootid'); ?>
 						</td>
 							<td <?php echo $SHOW_HIGHLIGHT_IMAGES ? 'rowspan="2"' : ''; ?> class="facts_label03">
 								<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">

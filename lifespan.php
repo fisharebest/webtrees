@@ -268,8 +268,8 @@ echo
 			'<table>
 				<tr><td class="person', $col, '" style="padding: 5px" valign="top">',
 					WT_I18N::translate('Add another person to the chart'), '<br>
-					<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid">',
-					print_findindi_link("newpid",""),
+					<input class="pedigree_form" type="text" size="5" id="newpid" name="newpid"> ',
+					print_findindi_link('newpid'),
 					'<br>
 					<div style="text-align: center">', WT_I18N::translate('Include the person\'s immediate family?'),
 					'<input type="checkbox" checked="checked" value="yes" name="addFamily"></div>

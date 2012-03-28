@@ -126,7 +126,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		return
 			'<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;">'.
-			'<input type="text" name="sb_desc_name" id="sb_desc_name" placeholder="'.WT_I18N::translate('Search').'">'.
+			'<input type="search" name="sb_desc_name" id="sb_desc_name" placeholder="'.WT_I18N::translate('Search').'">'.
 			'</form>'.
 			'<div id="sb_desc_content">'.
 			'<ul>'.$this->getPersonLi($controller->record, 1).'</ul>'.

@@ -100,7 +100,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 			'<form style="display:inline;" action="search.php" method="get">',
 			'<input type="hidden" name="action" value="general">',
 			'<input type="hidden" name="topsearch" value="yes">',
-			'<input type="text" name="query" size="10" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
+			'<input type="search" name="query" size="10" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
 			'<input type="image" src="', $WT_IMAGES['search'], '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
 			'</form>',
 		'</li>',

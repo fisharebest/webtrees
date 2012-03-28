@@ -276,7 +276,7 @@ $api='v3';
 		<td class="descriptionbox"><?php echo WT_Gedcom_Tag::getLabel('PLAC'); ?></td>
 		 <td class="optionbox"><input type="text" id="new_pl_name" name="NEW_PLACE_NAME" value="<?php echo htmlspecialchars($place_name); ?>" size="25" class="address_input">
 			<div id="INDI_PLAC_pop" style="display: inline;">
-			<?php print_specialchar_link("NEW_PLACE_NAME", false); ?></div></td><td class="optionbox">
+			<?php echo print_specialchar_link('NEW_PLACE_NAME'); ?></div></td><td class="optionbox">
 			<label for="new_pl_name"><a href="#" onclick="showLocation_all(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search globally'); ?></a></label>
 			&nbsp;&nbsp;|&nbsp;&nbsp;
 			<label for="new_pl_name"><a href="#" onclick="showLocation_level(document.getElementById('new_pl_name').value); return false">&nbsp;<?php echo WT_I18N::translate('Search locally'); ?></a></label>

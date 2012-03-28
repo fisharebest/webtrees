@@ -107,7 +107,7 @@ echo '<div id="search-page">
 			echo '<div class="label">' , WT_I18N::translate('Search for'), '</div>		
 			<div class="value"><input tabindex="1" id="firstfocus" type="text" name="query" value="';
 				if (isset($controller->myquery)) 	echo $controller->myquery;
-				echo '" size="40">' , print_specialchar_link('firstfocus', false), '</div>		
+				echo '" size="40"> ', print_specialchar_link('firstfocus'), '</div>		
 			<div class="label">' ,  WT_I18N::translate('Records'), '</div>
 			<div class="value"><p>
 				<input type="checkbox"';

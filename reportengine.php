@@ -272,13 +272,13 @@ elseif ($action=='setup') {
 			if (isset($input['lookup'])) {
 				echo '<input type="hidden" name="type[', $input['name'], ']" value="', $input['lookup'], '">';
 				if ($input['lookup']=='INDI') {
-					print_findindi_link('pid','');
+					echo print_findindi_link('pid');
 				} elseif ($input['lookup']=='PLAC') {
-					print_findplace_link($input['name']);
+					echo print_findplace_link($input['name']);
 				} elseif ($input['lookup']=='FAM') {
-					print_findfamily_link('famid');
+					echo print_findfamily_link('famid');
 				} elseif ($input['lookup']=='SOUR') {
-					print_findsource_link($input['name']);
+					echo print_findsource_link($input['name']);
 				} elseif ($input['lookup']=='DATE') {
 					echo ' <a href="#" onclick="cal_toggleDate(\'div_', $input['name'], '\', \'', $input['name'], '\'); return false;" class="icon-button_calendar" title="', WT_I18N::translate('Select a date'), '"></a>';
 					echo '<div id="div_', $input['name'], '" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>';

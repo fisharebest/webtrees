@@ -1228,17 +1228,10 @@ var monthLabels = new Array();
   	cal_toggleDate(dateDivId, dateFieldId);
   	return false;
   }
-function findIndi(field, indiname, multiple, ged,filter) {
+function findIndi(field, indiname, ged) {
         pastefield = field;
         nameElement = indiname;
-        if(filter)
-        {
-        window.open('find.php?type=indi&multiple='+multiple+'&ged='+ged+'&filter='+filter, '_blank', find_window_specs);
-        }
-        else
-        {
-        window.open('find.php?type=indi&multiple='+multiple+'&ged='+ged, '_blank', find_window_specs);
-        }
+        window.open('find.php?type=indi&ged='+ged, '_blank', find_window_specs);
         return false;
 }
 

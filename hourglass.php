@@ -57,7 +57,7 @@ $gencount=0;
 	</td>
 	<td class="optionbox">
 	<input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->pid; ?>">
-	<?php print_findindi_link("pid",""); ?>
+	<?php echo print_findindi_link('pid'); ?>
 	</td>
 
 	<!-- // NOTE: Show Details -->

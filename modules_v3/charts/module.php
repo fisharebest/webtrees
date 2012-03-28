@@ -229,7 +229,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			<td class="optionbox">
 				<input type="text" name="pid" id="pid" value="<?php echo $pid; ?>" size="5">
 				<?php
-				print_findindi_link('pid','');
+				echo print_findindi_link('pid');
 				$root=WT_Person::getInstance($pid);
 				if ($root) {
 					echo ' <span class="list_item">', $root->getFullName(), $root->format_first_major_fact(WT_EVENTS_BIRT, 1), '</span>';

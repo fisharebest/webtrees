@@ -1447,9 +1447,9 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 		echo "<tr><td class=\"descriptionbox wrap width25\">";
 		echo WT_I18N::translate('Enter a Person, Family, or Source ID'), help_link('add_media_linkid');
 		echo "</td><td class=\"optionbox wrap\"><input type=\"text\" name=\"gid\" id=\"gid\" size=\"6\" value=\"\">";
-		print_findindi_link("gid", "");
-		print_findfamily_link("gid");
-		print_findsource_link("gid");
+		echo ' ', print_findindi_link('gid');
+		echo ' ', print_findfamily_link('gid');
+		echo ' ', print_findsource_link('gid');
 		echo "<br><sub>", WT_I18N::translate('Enter or search for the ID of the person, family, or source to which this media item should be linked.'), "</sub></td></tr>";
 	}
 	$gedrec=find_gedcom_record($pid, WT_GED_ID, true);

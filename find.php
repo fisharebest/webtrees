@@ -37,7 +37,6 @@ $create         =safe_GET('create');
 $media          =safe_GET('media');
 $external_links =safe_GET('external_links');
 $directory      =safe_GET('directory', WT_REGEX_NOSCRIPT, $MEDIA_DIRECTORY);
-$multiple       =safe_GET_bool('multiple');
 $showthumb      =safe_GET_bool('showthumb');
 $all            =safe_GET_bool('all');
 $subclick       =safe_GET('subclick');
@@ -142,7 +141,7 @@ echo WT_JS_START;
 	function pasteid(id, name, thumb) {
 		if (thumb) {
 			window.opener.<?php echo $callback; ?>(id, name, thumb);
-			<?php if (!$multiple) echo "window.close();"; ?>
+			<?php echo "window.close();"; ?>
 		} else {
 			// GEDFact_assistant ========================
 			if (window.opener.document.getElementById('addlinkQueue')) {
@@ -159,7 +158,7 @@ echo WT_JS_START;
 			}
 			window.opener.<?php echo $callback; ?>(id);
 			if (window.opener.pastename) window.opener.pastename(name);
-			<?php if (!$multiple) echo "window.close();"; ?>
+			<?php echo "window.close();"; ?>
 		}
 	}
 	function checknames(frm) {
@@ -240,7 +239,6 @@ if ($type == "indi") {
 	<input type="hidden" name="callback" value="'.$callback.'">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="indi">
-	<input type="hidden" name="multiple" value="$multiple">
 	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;
@@ -256,7 +254,6 @@ if ($type == "fam") {
 	<input type="hidden" name="callback" value="'.$callback.'">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="type" value="fam">
-	<input type="hidden" name="multiple" value="$multiple">
 	<span>', WT_I18N::translate('Name contains:'), '&nbsp;</span>
 	<input type="text" name="filter" value="';
 	if ($filter) echo $filter;

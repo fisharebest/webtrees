@@ -68,7 +68,7 @@ echo '<h2>', $controller->getPageTitle(), '</h2>';
 	<td class="descriptionbox"><?php echo WT_I18N::translate('Individual'); ?></td>
 <td class="optionbox">
 <input class="pedigree_form" type="text" name="rootid" id="rootid" size="3" value="<?php echo $controller->rootid; ?>">
-<?php print_findindi_link('rootid', ''); ?>
+<?php echo print_findindi_link('rootid'); ?>
 </td>
 
 <!-- // NOTE: Box width -->

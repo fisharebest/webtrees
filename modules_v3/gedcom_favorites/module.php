@@ -207,12 +207,12 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= "<tr><td>".WT_I18N::translate('Enter a Person, Family, or Source ID')." <br>";
 			$content .= "<input class=\"pedigree_form\" type=\"text\" name=\"gid\" id=\"gid{$uniqueID}\" size=\"5\" value=\"\">";
 
-			$content .= print_findindi_link("gid{$uniqueID}",'',true);
-			$content .= print_findfamily_link("gid{$uniqueID}",'',true);
-			$content .= print_findsource_link("gid{$uniqueID}",'',true);
-			$content .= print_findrepository_link("gid{$uniqueID}",'',true);
-			$content .= print_findnote_link("gid{$uniqueID}",'',true);
-			$content .= print_findmedia_link("gid{$uniqueID}",'1','',true);
+			$content .= ' '.print_findindi_link('gid'.$uniqueID);
+			$content .= ' '.print_findfamily_link('gid'.$uniqueID);
+			$content .= ' '.print_findsource_link('gid'.$uniqueID);
+			$content .= ' '.print_findrepository_link('gid'.$uniqueID);
+			$content .= ' '.print_findnote_link('gid'.$uniqueID);
+			$content .= ' '.print_findmedia_link('gid'.$uniqueID);
 
 			$content .= "<br>".WT_I18N::translate('OR<br />Enter a URL and a title');
 			$content .= "<table><tr><td>".WT_Gedcom_Tag::getLabel('URL')."</td><td><input type=\"text\" name=\"url\" size=\"40\" value=\"\"></td></tr>";

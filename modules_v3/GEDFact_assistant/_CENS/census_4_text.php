@@ -46,7 +46,7 @@ if (!defined('WT_WEBTREES')) {
 	<div class="optionbox">
 		<textarea wrap="off" name="NOTE" id="NOTE"></textarea><br>
 		<center>
-		<?php print_specialchar_link('NOTE',true); ?>
+		<?php echo print_specialchar_link('NOTE'); ?>
 		</center>
 	</div>
 </div>

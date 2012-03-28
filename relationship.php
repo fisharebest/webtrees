@@ -142,7 +142,7 @@ if (WT_USE_LIGHTBOX) {
 			</td>
 			<td class="optionbox vmiddle">
 				<input tabindex="1" class="pedigree_form" type="text" name="pid1" id="pid1" size="3" value="<?php echo $pid1; ?>">
-				<?php print_findindi_link('pid1',''); ?>
+				<?php echo print_findindi_link('pid1'); ?>
 			</td>
 			<td class="descriptionbox">
 				<?php echo WT_I18N::translate('Show Details'); ?>
@@ -158,7 +158,7 @@ if (WT_USE_LIGHTBOX) {
 			</td>
 			<td class="optionbox vmiddle">
 				<input tabindex="2" class="pedigree_form" type="text" name="pid2" id="pid2" size="3" value="<?php echo $pid2; ?>">
-				<?php print_findindi_link('pid2',''); ?>
+				<?php echo print_findindi_link('pid2'); ?>
 			</td>
 			<td class="descriptionbox">
 				<?php echo WT_I18N::translate('Show oldest top'), help_link('oldest_top'); ?>

@@ -292,7 +292,7 @@ case 'editraw':
 		echo '</td></tr>';
 		echo '</table>';
 	}
-	print_specialchar_link("newgedrec2", true);
+	echo print_specialchar_link('newgedrec2');
 	echo '<br>';
 	echo '<input id="savebutton" type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 	echo '</form>';
@@ -459,8 +459,8 @@ case 'addfamlink':
 	echo '<input type="hidden" name="famtag" value="', $famtag, '">';
 	echo '<table class="facts_table">';
 	echo '<tr><td class="facts_label">', WT_I18N::translate('Family'), '</td>';
-	echo '<td class="facts_value"><input type="text" id="famid" name="famid" size="8">';
-	print_findfamily_link('famid');
+	echo '<td class="facts_value"><input type="text" id="famid" name="famid" size="8"> ';
+	echo print_findfamily_link('famid');
 	echo '</td></tr>';
 	if ($famtag=='CHIL') {
 		echo '<tr><td class="facts_label">', WT_Gedcom_Tag::getLabel('PEDI'), '</td><td class="facts_value">';
@@ -506,7 +506,7 @@ case 'linkspouse':
 	}
 	echo '</td>';
 	echo '<td class="facts_value"><input id="spouseid" type="text" name="spid" size="8"> ';
-	print_findindi_link("spouseid", "");
+	echo print_findindi_link('spouseid');
 	echo '</td></tr>';
 	add_simple_tag("0 MARR Y");
 	add_simple_tag("0 DATE", "MARR");
@@ -631,23 +631,23 @@ case 'addnewsource':
 		<input type="hidden" name="pid" value="newsour">
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ABBR'), help_link('ABBR'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php print_specialchar_link("ABBR", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="ABBR" id="ABBR" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ABBR'); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('TITL'), help_link('TITL'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="TITL" id="TITL" value="" size="60"> <?php print_specialchar_link("TITL", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="TITL" id="TITL" value="" size="60"> <?php echo print_specialchar_link('TITL'); ?></td></tr>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60"> <?php print_specialchar_link("_HEB", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="60"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
 			<?php } ?>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN")!==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
-			<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60"> <?php print_specialchar_link("ROMN", false); ?></td></tr>
+			<td class="optionbox wrap"><input  type="text" name="ROMN" id="ROMN" value="" size="60"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
 			<?php } ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('AUTH'), help_link('AUTH'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="AUTH" id="AUTH" value="" size="40" maxlength="255"> <?php print_specialchar_link("AUTH", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="AUTH" id="AUTH" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('AUTH'); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PUBL'), help_link('PUBL'); ?></td>
-			<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5" cols="60"></textarea><br><?php print_specialchar_link("PUBL", true); ?></td></tr>
+			<td class="optionbox wrap"><textarea name="PUBL" id="PUBL" rows="5" cols="60"></textarea><br><?php echo print_specialchar_link('PUBL'); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('REPO'), help_link('REPO'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="REPO" id="REPO" value="" size="10"> <?php print_findrepository_link("REPO"); print_addnewrepository_link("REPO"); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="REPO" id="REPO" value="" size="10"> <?php echo print_findrepository_link('REPO'); print_addnewrepository_link("REPO"); ?></td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('CALN'), help_link('CALN'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="CALN" id="CALN" value=""></td></tr>
 		<?php
@@ -760,7 +760,7 @@ case 'addnewnote':
 					echo WT_I18N::translate('Shared note'), help_link('SHARED_NOTE');
 					echo '</td>';
 					echo '<td class="optionbox wrap" ><textarea name="NOTE" id="NOTE" rows="15" cols="87"></textarea>';
-						print_specialchar_link("NOTE", true);
+					echo print_specialchar_link('NOTE');
 					echo '</td>';
 				echo '</tr>';
 			if (WT_USER_IS_ADMIN) {
@@ -956,7 +956,7 @@ case 'editnote':
 				<td class="optionbox wrap">
 					<textarea name="NOTE" id="NOTE" rows="15" cols="90"><?php
 						echo htmlspecialchars($note_content);
-					?></textarea><br><?php print_specialchar_link("NOTE", true); ?>
+					?></textarea><br><?php echo print_specialchar_link('NOTE'); ?>
 				</td>
 			</tr>
 			<?php
@@ -1004,17 +1004,17 @@ case 'addnewrepository':
 		<input type="hidden" name="pid" value="newrepo">
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Repository name'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="NAME" id="NAME" value="" size="40" maxlength="255"> <?php print_specialchar_link("NAME", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="NAME" id="NAME" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('NAME'); ?></td></tr>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php print_specialchar_link("_HEB", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
 			<?php } ?>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "ROMN")!==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ROMN'), help_link('ROMN'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255"> <?php print_specialchar_link("ROMN", false); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="ROMN" id="ROMN" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('ROMN'); ?></td></tr>
 			<?php } ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('ADDR'), help_link('ADDR'); ?></td>
-			<td class="optionbox wrap"><textarea name="ADDR" id="ADDR" rows="5" cols="60"></textarea><?php print_specialchar_link("ADDR", true); ?> </td></tr>
+			<td class="optionbox wrap"><textarea name="ADDR" id="ADDR" rows="5" cols="60"></textarea><?php echo print_specialchar_link('ADDR'); ?> </td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('PHON'), help_link('PHON'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="PHON" id="PHON" value="" size="40" maxlength="255"> </td></tr>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('FAX'), help_link('FAX'); ?></td>

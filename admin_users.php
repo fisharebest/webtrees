@@ -455,12 +455,12 @@ case 'createform':
 									//Pedigree root person
 									'<td>';
 										$varname='rootid'.$ged_id;
-										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', htmlspecialchars(safe_POST_xref('gedcomid'.$ged_id)), '">', print_findindi_link($varname, "", false, false, $ged_name),
+										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', htmlspecialchars(safe_POST_xref('gedcomid'.$ged_id)), '"> ', print_findindi_link($varname),
 									'</td>',						
 									// GEDCOM INDI Record ID
 									'<td>';
 										$varname='gedcomid'.$ged_id;
-										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', htmlspecialchars(safe_POST_xref('rootid'.$ged_id)), '">' ,print_findindi_link($varname, "", false, false, $ged_name),
+										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', htmlspecialchars(safe_POST_xref('rootid'.$ged_id)), '"> ', print_findindi_link($varname),
 									'</td>',
 									'<td>';
 										$varname='canedit'.$ged_id;
