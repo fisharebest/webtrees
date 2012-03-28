@@ -55,6 +55,7 @@ echo
 	'<body id="body">';
 
 if  ($view!='simple') { // Use "simple" headers for popup windows
+	global $WT_IMAGES;
 	echo 
 	'<div id="clouds-container">',
 		'<div id="header">',
@@ -67,7 +68,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 						'<input type="hidden" name="action" value="general">',
 						'<input type="hidden" name="topsearch" value="yes">',
 						'<input type="text" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
-						'<input type="image" src="', WT_THEME_URL, 'images/go.png', '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
+						'<input type="image" src="', $WT_IMAGES['search'], '" align="top" alt="', WT_I18N::translate('Search'), '" title="', WT_I18N::translate('Search'), '">',
 					'</form>',
 				'</div>',
 			'</div>',
