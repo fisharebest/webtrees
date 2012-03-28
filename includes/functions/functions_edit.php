@@ -1099,41 +1099,35 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 }
 
 // generates javascript code for calendar popup in user's language
-function print_calendar_popup($id, $asString=false) {
-	$out=' <a href="#" onclick="cal_toggleDate(\'caldiv'.$id.'\', \''.$id.'\'); return false;" class="icon-button_calendar" title="'.WT_I18N::translate('Select a date').'"></a>';
-	$out.='<div id="caldiv'.$id.'" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white; z-index: 1000;"></div>';
-
-	if ($asString) {
-		return $out;
-	} else {
-		echo $out;
-	}
+function print_calendar_popup($id) {
+	return 
+		' <a href="#" onclick="cal_toggleDate(\'caldiv'.$id.'\', \''.$id.'\'); return false;" class="icon-button_calendar" title="'.WT_I18N::translate('Select a date').'"></a>'.
+		'<div id="caldiv'.$id.'" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white; z-index: 1000;"></div>';
 }
 
 function print_addnewmedia_link($element_id) {
-	echo ' <a href="#" onclick="pastefield=document.getElementById(\'', $element_id, '\'); window.open(\'addmedia.php?action=showmediaform&amp;linktoid={$linkToID}&amp;level={$level}\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a new media object').'"></a>';
+	return '<a href="#" onclick="pastefield=document.getElementById(\''.$element_id.'\'); window.open(\'addmedia.php?action=showmediaform&amp;linktoid={$linkToID}&amp;level={$level}\', \'_blank\', edit_window_specs); return false;" class="icon-button_addmedia" title="'.WT_I18N::translate('Add a new media object').'"></a>';
 }
 
 function print_addnewrepository_link($element_id) {
-	echo ' <a href="#" onclick="addnewrepository(document.getElementById(\'', $element_id, '\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create Repository').'"></a>';
+	return '<a href="#" onclick="addnewrepository(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addrepository" title="'.WT_I18N::translate('Create Repository').'"></a>';
 }
 
 function print_addnewnote_link($element_id) {
-	echo ' <a href="#" onclick="addnewnote(document.getElementById(\'', $element_id, '\')); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new Shared Note').'">';
+	return '<a href="#" onclick="addnewnote(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new Shared Note').'">';
 }
 
 /// Used in GEDFact CENS assistant
-function print_addnewnote_assisted_link($element_id) {
-	global $pid;
-	echo ' <a href="#" onclick="addnewnote_assisted(document.getElementById(\'', $element_id, '\'), \'', $pid, '\'); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new Shared Note using Assistant').'"></a>';
+function print_addnewnote_assisted_link($element_id, $pid) {
+	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$pid.'\'); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new Shared Note using Assistant').'"></a>';
 }
 
 function print_editnote_link($note_id) {
-	echo ' <a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;pid='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit Shared Note').'"></a>';
+	return '<a href="#" onclick="var win02=window.open(\'edit_interface.php?action=editnote&amp;pid='.$note_id.'\', \'win02\', edit_window_specs);" class="icon-button_note" title="'.WT_I18N::translate('Edit Shared Note').'"></a>';
 }
 
 function print_addnewsource_link($element_id) {
-	echo ' <a href="#" onclick="addnewsource(document.getElementById(\'', $element_id, '\')); return false;" class="icon-button_addsource" title="'.WT_I18N::translate('Create a new source').'"></a>';
+	return '<a href="#" onclick="addnewsource(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addsource" title="'.WT_I18N::translate('Create a new source').'"></a>';
 }
 
 /**
@@ -1616,8 +1610,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	// popup links
 	if ($readOnly=='') {
-		if ($fact=="DATE") {
-			print_calendar_popup($element_id);
+		if ($fact=='DATE') {
+			echo print_calendar_popup($element_id);
 			// If GEDFact_assistant/_CENS/ module is installed -------------------------------------------------
 			if ($action=='add' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 				if (isset($CensDate) && $CensDate=="yes") {
@@ -1631,8 +1625,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		if ($fact=="ASSO") echo print_findindi_link($element_id);
 		if ($fact=="FILE") print_findmedia_link($element_id, "0file");
 		if ($fact=="SOUR") {
-			echo print_findsource_link($element_id);
-			print_addnewsource_link($element_id);
+			echo print_findsource_link($element_id), ' ', print_addnewsource_link($element_id);
 			//print_autopaste_link($element_id, array("S1", "S2"), false, false, true);
 			//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
 			if ($level==1) {
@@ -1683,18 +1676,15 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			}
 		}
 		if ($fact=="REPO") {
-			echo print_findrepository_link($element_id);
-			print_addnewrepository_link($element_id);
+			echo print_findrepository_link($element_id), ' ', print_addnewrepository_link($element_id);
 		}
 
 		// Shared Notes Icons ========================================
 		if ($fact=="NOTE" && $islink) {
 			// Print regular Shared Note icons ---------------------------
-			echo ' ', print_findnote_link($element_id);
-			print_addnewnote_link($element_id);
-			if ($value!="") {
-				echo "&nbsp;&nbsp;&nbsp;";
-				print_editnote_link($value);
+			echo ' ', print_findnote_link($element_id), ' ', print_addnewnote_link($element_id);
+			if ($value) {
+				echo ' ', print_editnote_link($value);
 			}
 			// If GEDFact_assistant/_CENS/ module exists && we are on the INDI page and the action is a GEDFact CENS assistant addition.
 			// Then show the add Shared note assisted icon, if not  ... show regular Shared note icons.
@@ -1707,8 +1697,8 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 						echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
 						echo "<a href=\"#\" onclick=\"addnewnote_assisted(document.getElementById('", $element_id, "'), '", $pid, "' ); return false;\" title=\"".WT_I18N::translate('Create a new Shared Note using Assistant')."\" alt=\"".WT_I18N::translate('Create a new Shared Note using Assistant')."\">";
 						echo WT_I18N::translate('Shared Note using Assistant');
-						echo "</a>";
-						print_addnewnote_assisted_link($element_id);
+						echo '</a> ';
+						echo print_addnewnote_assisted_link($element_id, $pid);
 					}
 				}
 			}
@@ -1718,7 +1708,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			echo print_findmedia_link($element_id, '1media');
 		}
 		if ($fact=="OBJE" && !$value) {
-			print_addnewmedia_link($element_id);
+			echo ' ', print_addnewmedia_link($element_id);
 			$value = "new";
 		}
 

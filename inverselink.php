@@ -103,7 +103,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 			}
 		} else {
 			echo '<input type="text" name="mediaid" id="mediaid" size="5">';
-			ehco ' ', print_findmedia_link('mediaid', '1media');
+			echo ' ', print_findmedia_link('mediaid', '1media');
 			echo "</td></tr>";
 		}
 
