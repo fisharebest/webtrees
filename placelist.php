@@ -119,7 +119,6 @@ if ($display=='hierarchy') {
 		$action='show';
 	}
 	
-	echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 
 	// -- echo the breadcrumb hierarchy
 	echo '<h4>';
@@ -399,5 +398,6 @@ if ($display=='list') {
 echo '</a></h4></div>';
 
 if ($use_googlemap && $display=='hierarchy') {
+	echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 	map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names);
 }
