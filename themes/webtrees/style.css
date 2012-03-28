@@ -200,7 +200,7 @@ html[dir='rtl'] #ancestry_chart li {margin:0; padding:0 2px 0 0; left:auto;}
 .person4 {background-color:#f55; border:outset #f55 1px; vertical-align:top;}
 .person5 {background-color:#5f5; border:outset #5f5 1px; vertical-align:top;}
 
-.compact_view {cursor:url('images/zoomin.png'),n-resize;}
+.compact_view {cursor:url(images/zoomin.png),n-resize;}
 .compact_view p {font-size:90%; margin:0;}
 
 .listlog {line-height:20pt;}
@@ -431,7 +431,7 @@ html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
 .media-list td img {display:block; height:40px; margin:3px auto;}
 .filtersH, .filtersF {margin:4px}
 .filtersH img {margin-bottom:2px;}
-.loading-image{background:transparent url(../../images/loading.gif) 50% 50% no-repeat; height:50px; margin:50px;}
+.loading-image{background:transparent url(images/loading.gif) 50% 50% no-repeat; height:50px; margin:50px;}
 .list-charts{text-align:center;}
 #search-result-tabs, #places-tabs {margin:auto; width:98%; visibility:hidden;}
 #search-result-tabs h3 {text-align:center;}
@@ -681,7 +681,7 @@ html[dir='rtl']  #dates {float:left;}
 html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 
 /* General sprite */
-.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display:block; background:url('images/general_sprite.png') no-repeat left 0;}
+.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display:block; background:url(images/general_sprite.png) no-repeat left 0;}
 
 .female_gender {background-position:-45px 3px; width:24px;}
 .male_gender {background-position:-72px 3px; width:24px;}
@@ -690,7 +690,7 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 .copyicon {background-position:-70px -32px; width:24px; height:16px;}
 .deleteicon {background-position:-100px -32px; width:24px; height:16px;}
 
-.icon_arrow {display:block; background:url('images/small_menu_sprite.png') no-repeat left 0;}
+.icon_arrow {display:block; background:url(images/small_menu_sprite.png) no-repeat left 0;}
 .icon_arrow {background-position:90% -1166px;} html[dir='rtl'] .icon_arrow {background-position:10% -1184px;}
 
 /* =========== Indi tabs ================== */
@@ -753,15 +753,15 @@ html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0; margin-right:
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {width:20%;}
 .use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float:right;}
-#separator {float:right; display:block; background:#99c2ff url('images/general_sprite.png') no-repeat -26px 100px; width:0.75%; min-width:6px; max-width:10px; border:1px solid #81a9cb; border-top-left-radius:3px; border-top-right-radius:3px; margin-top:5px;}
-.use-sidebar #separator {background:#99c2ff url('images/general_sprite.png') no-repeat -1px 100px;}
+#separator {float:right; display:block; background:#99c2ff url(images/general_sprite.png) no-repeat -26px 100px; width:0.75%; min-width:6px; max-width:10px; border:1px solid #81a9cb; border-top-left-radius:3px; border-top-right-radius:3px; margin-top:5px;}
+.use-sidebar #separator {background:#99c2ff url(images/general_sprite.png) no-repeat -1px 100px;}
 
 html[dir='rtl'] #indi_left {float:right;}
 html[dir='rtl'] #tabs {float:right;}
 html[dir='rtl'] #sidebar  {margin:5px 0 0 2px;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
-html[dir='rtl'] #separator {float:left; background:#99c2ff url('images/general_sprite.png') no-repeat -1px 100px;}
-html[dir='rtl'] .use-sidebar #separator {background:#99c2ff url('images/general_sprite.png') no-repeat -26px 100px;}
+html[dir='rtl'] #separator {float:left; background:#99c2ff url(images/general_sprite.png) no-repeat -1px 100px;}
+html[dir='rtl'] .use-sidebar #separator {background:#99c2ff url(images/general_sprite.png) no-repeat -26px 100px;}
 
 /* ============== Sidebar content items ============== */
 /* Family navigator */
@@ -792,7 +792,7 @@ html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0;}
 
 /* Individuals, Families */
 #sb_content_individuals, #sb_content_families {margin-top:5px;}
-.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url('images/plus.png');}
+.sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url(images/plus.png);}
 .name_tree_div {display:none;}
 .name_tree_div ul, .name_tree_div_visible ul {padding:0;margin:0;}
 .name_tree_div li, .name_tree_div_visible li {list-style:none; margin:0; padding:0;}
@@ -852,108 +852,107 @@ html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 
 /* Icons */
 [class^="icon-"], [class*=" icon-"] {display:inline-block;vertical-align:text-bottom;background-repeat:no-repeat;}
-.icon-add {width:14px;height:15px;background-image:url("images/add.png");}
-.icon-admin {width:15px;height:15px;background-image:url("images/admin.png");}
-.icon-bing {width:16px;height:16px;background-image:url("images/bing.png");}
-.icon-button_addmedia {width:18px;height:16px;background-image:url("images/buttons/addmedia.png");}
-.icon-button_addnote {width:17px;height:15px;background-image:url("images/buttons/addnote.png");}
-.icon-button_addrepository {width:15px;height:15px;background-image:url("images/buttons/addrepository.png");}
-.icon-button_addsource {width:18px;height:16px;background-image:url("images/buttons/addsource.png");}
-.icon-button_calendar {width:19px;height:15px;background-image:url("images/buttons/calendar.png");}
-.icon-button_family {width:14px;height:15px;background-image:url("images/buttons/family.png");}
-.icon-button_find_facts {width:20px;height:20px;background-image:url("images/buttons/find_facts.png");}
-.icon-button_head {width:12px;height:18px;background-image:url("images/buttons/head.png");}
-.icon-button_indi {width:11px;height:15px;background-image:url("images/buttons/indi.png");}
-.icon-button_keyboard {width:30px;height:15px;background-image:url("images/buttons/keyboard.png");}
-.icon-button_media {width:18px;height:16px;background-image:url("images/buttons/media.png");}
-.icon-button_note {width:17px;height:15px;background-image:url("images/buttons/note.png");}
-.icon-button_place {width:15px;height:15px;background-image:url("images/buttons/place.png");}
-.icon-button_repository {width:15px;height:15px;background-image:url("images/buttons/repository.png");}
-.icon-button_source {width:18px;height:16px;background-image:url("images/buttons/source.png");}
-.icon-cfamily {width:20px;height:20px;background-image:url("images/family.png");}
-.icon-childless {width:25px;height:25px;background-image:url("images/childless.png");}
-.icon-children {width:16px;height:16px;background-image:url("images/children.png");}
-.icon-clippings {width:22px;height:22px;background-image:url("images/clippings.png");}
-.icon-darrow {width:20px;height:20px;background-image:url("images/darrow.png");}
-a.icon-darrow:hover {width:20px;height:20px;background-image:url("images/darrow2.png");}
-.icon-ddarrow {width:20px;height:20px;background-image:url("images/ddarrow.png");}
-.icon-default_image_F {width:99px;height:106px;background-image:url("images/silhouette_female.png");}
-.icon-default_image_M {width:99px;height:99px;background-image:url("images/silhouette_male.png");}
-.icon-default_image_U {width:100px;height:97px;background-image:url("images/silhouette_unknown.png");}
-.icon-edit_indi {width:20px;height:20px;background-image:url("images/edit_indi.png");}
-.icon-fam-list {width:20px;height:20px;background-image:url("images/family.png");}
-.icon-googlemaps {width:16px;height:16px;background-image:url("images/googlemaps.png");}
-.icon-help {width:15px;height:15px;background-image:url("images/help2.png");}
-.icon-indi-list {width:20px;height:20px;background-image:url("images/indis.png");}
-.icon-indis {width:20px;height:20px;background-image:url("images/indis.png");}
-.icon-larrow {width:20px;height:20px;background-image:url("images/larrow.png");}
-a.icon-larrow:hover {width:20px;height:20px;background-image:url("images/larrow2.png");}
-.icon-ldarrow {width:20px;height:20px;background-image:url("images/ldarrow.png");}
-.icon-lifespan-chunk {width:50px;height:37px;background-image:url("images/lifespan-chunk.png");}
-.icon-loading-small {width:16px;height:16px;background-image:url("images/indicator.gif");}
-.icon-loading-large {width:32px;height:32px;background-image:url("images/loading.gif");}
-.icon-lsdnarrow {width:48px;height:48px;background-image:url("images/lifespan-down.png");}
-.icon-lsltarrow {width:48px;height:48px;background-image:url("images/lifespan-left.png");}
-.icon-lsrtarrow {width:48px;height:48px;background-image:url("images/lifespan-right.png");}
-.icon-lsuparrow {width:48px;height:48px;background-image:url("images/lifespan-up.png");}
-.icon-mapquest {width:16px;height:16px;background-image:url("images/mapquest.png");}
-.icon-media {width:20px;height:20px;background-image:url("images/media.png");}
-.icon-media-list {width:20px;height:20px;background-image:url("images/media.png");}
-.icon-media_audio {width:48px;height:48px;background-image:url("images/media/audio.png");}
-.icon-media_doc {width:48px;height:48px;background-image:url("images/media/doc.png");}
-.icon-media_flash {width:48px;height:48px;background-image:url("images/media/flash.png");}
-.icon-media_flashrem {width:48px;height:48px;background-image:url("images/media/flashrem.png");}
-.icon-media_ged {width:48px;height:48px;background-image:url("images/media/unknown.png");}
-.icon-media_globe {width:48px;height:48px;background-image:url("images/media/www.png");}
-.icon-media_html {width:48px;height:48px;background-image:url("images/media/www.png");}
-.icon-media_pdf {width:48px;height:48px;background-image:url("images/media/pdf.png");}
-.icon-media_picasa {width:48px;height:48px;background-image:url("images/media/picasa.png");}
-.icon-media_tex {width:48px;height:48px;background-image:url("images/media/tex.png");}
-.icon-media_wmv {width:48px;height:48px;background-image:url("images/media/wmv.png");}
-.icon-media_wmvrem {width:48px;height:48px;background-image:url("images/media/wmvrem.png");}
-.icon-minus {width:11px;height:11px;background-image:url("images/minus.png");}
-.icon-mypage {width:24px;height:24px;background-image:url("images/mypage.png");}
-.icon-note {width:20px;height:20px;background-image:url("images/notes.png");}
-.icon-note-list {width:20px;height:20px;background-image:url("images/notes.png");}
-.icon-patriarch {width:20px;height:20px;background-image:url("images/patriarch.png");}
-.icon-pedigree {width:20px;height:20px;background-image:url("images/pedigree.png");}
-.icon-pedigree_map {width:24px;height:24px;background-image:url("../../modules_v3/googlemap/images/pedigree_map.gif");}
-.icon-place {width:20px;height:20px;background-image:url("images/place.png");}
-.icon-plus {width:11px;height:11px;background-image:url("images/plus.png");}
-.icon-rarrow {width:20px;height:20px;background-image:url("images/rarrow.png");}
-a.icon-rarrow:hover {width:20px;height:20px;background-image:url("images/rarrow2.png");}
-.icon-rdarrow {width:20px;height:20px;background-image:url("images/rdarrow.png");}
-.icon-reminder {width:15px;height:12px;background-image:url("images/reminder.png");}
-.icon-remove {width:20px;height:20px;background-image:url("images/remove.png");}
-.icon-reorder {width:10px;height:10px;background-image:url("images/reorder.png");}
-.icon-repo-list {width:20px;height:20px;background-image:url("images/repository.png");}
-.icon-repository {width:20px;height:20px;background-image:url("images/repository.png");}
-.icon-resn-confidential {width:16px;height:16px;background-image:url("images/resn_confidential.png");}
-.icon-resn-locked {width:16px;height:16px;background-image:url("images/resn_locked.png");}
-.icon-resn-none {width:16px;height:16px;background-image:url("images/resn_none.png");}
-.icon-resn-privacy {width:16px;height:16px;background-image:url("images/resn_privacy.png");}
-.icon-rings {width:9px;height:9px;background-image:url("images/rings.png");}
-.icon-search {width:17px;height:17px;background-image:url("images/search.png");}
-.icon-selected {width:12px;height:12px;background-image:url("images/selected.png");}
-.icon-sex_f_15x15 {width:15px;height:15px;background-image:url("images/sex_f_15x15.png");}
-.icon-sex_f_9x9 {width:9px;height:9px;background-image:url("images/sex_f_9x9.png");}
-.icon-sex_m_15x15 {width:15px;height:15px;background-image:url("images/sex_m_15x15.png");}
-.icon-sex_m_9x9 {width:9px;height:9px;background-image:url("images/sex_m_9x9.png");}
-.icon-sex_u_15x15 {width:15px;height:15px;background-image:url("images/sex_u_15x15.png");}
-.icon-sex_u_9x9 {width:9px;height:9px;background-image:url("images/sex_u_9x9.png");}
-.icon-sfamily {width:20px;height:20px;background-image:url("images/family.png");}
-.icon-source {width:20px;height:20px;background-image:url("images/source.png");}
-.icon-source-list {width:20px;height:20px;background-image:url("images/source.png");}
-.icon-stop {width:20px;height:20px;background-image:url("images/stop.png");}
-.icon-target {width:15px;height:15px;background-image:url("images/buttons/target.png");}
-.icon-terraserver {width:16px;height:16px;background-image:url("images/terraserver.png");}
-.icon-tree {width:20px;height:20px;background-image:url("images/tree.png");}
-.icon-uarrow {width:20px;height:20px;background-image:url("images/uarrow.png");}
-a.icon-uarrow:hover {width:20px;height:20px;background-image:url("images/uarrow2.png");}
-.icon-udarrow {width:20px;height:20px;background-image:url("images/udarrow.png");}
-.icon-user_add {width:20px;height:20px;background-image:url("images/user_add.png");}
-.icon-warning {width:17px;height:17px;background-image:url("images/warning.png");}
-.icon-webtrees {width:100px;height:21px;background-image:url("images/webtrees_s.png");}
-.icon-wiki {width:16px;height:16px;background-image:url("images/w_button.png");}
-.icon-zoomin {width:25px;height:25px;background-image:url("images/zoomin.png");}
-.icon-zoomout {width:25px;height:25px;background-image:url("images/zoomout.png");}
+.icon-add {width:14px;height:15px;background-image:url(images/add.png);}
+.icon-admin {width:15px;height:15px;background-image:url(images/admin.png);}
+.icon-bing {width:16px;height:16px;background-image:url(images/bing.png);}
+.icon-button_addmedia {width:18px;height:16px;background-image:url(images/buttons/addmedia.png);}
+.icon-button_addnote {width:17px;height:15px;background-image:url(images/buttons/addnote.png);}
+.icon-button_addrepository {width:15px;height:15px;background-image:url(images/buttons/addrepository.png);}
+.icon-button_addsource {width:18px;height:16px;background-image:url(images/buttons/addsource.png);}
+.icon-button_calendar {width:19px;height:15px;background-image:url(images/buttons/calendar.png);}
+.icon-button_family {width:14px;height:15px;background-image:url(images/buttons/family.png);}
+.icon-button_find_facts {width:20px;height:20px;background-image:url(images/buttons/find_facts.png);}
+.icon-button_head {width:12px;height:18px;background-image:url(images/buttons/head.png);}
+.icon-button_indi {width:11px;height:15px;background-image:url(images/buttons/indi.png);}
+.icon-button_keyboard {width:30px;height:15px;background-image:url(images/buttons/keyboard.png);}
+.icon-button_media {width:18px;height:16px;background-image:url(images/buttons/media.png);}
+.icon-button_note {width:17px;height:15px;background-image:url(images/buttons/note.png);}
+.icon-button_place {width:15px;height:15px;background-image:url(images/buttons/place.png);}
+.icon-button_repository {width:15px;height:15px;background-image:url(images/buttons/repository.png);}
+.icon-button_source {width:18px;height:16px;background-image:url(images/buttons/source.png);}
+.icon-cfamily {width:20px;height:20px;background-image:url(images/family.png);}
+.icon-childless {width:25px;height:25px;background-image:url(images/childless.png);}
+.icon-children {width:16px;height:16px;background-image:url(images/children.png);}
+.icon-clippings {width:22px;height:22px;background-image:url(images/clippings.png);}
+.icon-darrow {width:20px;height:20px;background-image:url(images/darrow.png);}
+a.icon-darrow:hover {width:20px;height:20px;background-image:url(images/darrow2.png);}
+.icon-ddarrow {width:20px;height:20px;background-image:url(images/ddarrow.png);}
+.icon-default_image_F {width:99px;height:106px;background-image:url(images/silhouette_female.png);}
+.icon-default_image_M {width:99px;height:99px;background-image:url(images/silhouette_male.png);}
+.icon-default_image_U {width:100px;height:97px;background-image:url(images/silhouette_unknown.png);}
+.icon-edit_indi {width:20px;height:20px;background-image:url(images/edit_indi.png);}
+.icon-fam-list {width:20px;height:20px;background-image:url(images/family.png);}
+.icon-googlemaps {width:16px;height:16px;background-image:url(images/googlemaps.png);}
+.icon-help {width:15px;height:15px;background-image:url(images/help2.png);}
+.icon-indi-list {width:20px;height:20px;background-image:url(images/indis.png);}
+.icon-indis {width:20px;height:20px;background-image:url(images/indis.png);}
+.icon-larrow {width:20px;height:20px;background-image:url(images/larrow.png);}
+a.icon-larrow:hover {width:20px;height:20px;background-image:url(images/larrow2.png);}
+.icon-ldarrow {width:20px;height:20px;background-image:url(images/ldarrow.png);}
+.icon-lifespan-chunk {width:50px;height:37px;background-image:url(images/lifespan-chunk.png);}
+.icon-loading-small {width:16px;height:16px;background-image:url(images/indicator.gif);}
+.icon-loading-large {width:32px;height:32px;background-image:url(images/loading.gif);}
+.icon-lsdnarrow {width:48px;height:48px;background-image:url(images/lifespan-down.png);}
+.icon-lsltarrow {width:48px;height:48px;background-image:url(images/lifespan-left.png);}
+.icon-lsrtarrow {width:48px;height:48px;background-image:url(images/lifespan-right.png);}
+.icon-lsuparrow {width:48px;height:48px;background-image:url(images/lifespan-up.png);}
+.icon-mapquest {width:16px;height:16px;background-image:url(images/mapquest.png);}
+.icon-media {width:20px;height:20px;background-image:url(images/media.png);}
+.icon-media-list {width:20px;height:20px;background-image:url(images/media.png);}
+.icon-media_audio {width:48px;height:48px;background-image:url(images/media/audio.png);}
+.icon-media_doc {width:48px;height:48px;background-image:url(images/media/doc.png);}
+.icon-media_flash {width:48px;height:48px;background-image:url(images/media/flash.png);}
+.icon-media_flashrem {width:48px;height:48px;background-image:url(images/media/flashrem.png);}
+.icon-media_ged {width:48px;height:48px;background-image:url(images/media/unknown.png);}
+.icon-media_globe {width:48px;height:48px;background-image:url(images/media/www.png);}
+.icon-media_html {width:48px;height:48px;background-image:url(images/media/www.png);}
+.icon-media_pdf {width:48px;height:48px;background-image:url(images/media/pdf.png);}
+.icon-media_picasa {width:48px;height:48px;background-image:url(images/media/picasa.png);}
+.icon-media_tex {width:48px;height:48px;background-image:url(images/media/tex.png);}
+.icon-media_wmv {width:48px;height:48px;background-image:url(images/media/wmv.png);}
+.icon-media_wmvrem {width:48px;height:48px;background-image:url(images/media/wmvrem.png);}
+.icon-minus {width:11px;height:11px;background-image:url(images/minus.png);}
+.icon-mypage {width:24px;height:24px;background-image:url(images/mypage.png);}
+.icon-note {width:20px;height:20px;background-image:url(images/notes.png);}
+.icon-note-list {width:20px;height:20px;background-image:url(images/notes.png);}
+.icon-patriarch {width:20px;height:20px;background-image:url(images/patriarch.png);}
+.icon-pedigree {width:20px;height:20px;background-image:url(images/pedigree.png);}
+.icon-place {width:20px;height:20px;background-image:url(images/place.png);}
+.icon-plus {width:11px;height:11px;background-image:url(images/plus.png);}
+.icon-rarrow {width:20px;height:20px;background-image:url(images/rarrow.png);}
+a.icon-rarrow:hover {width:20px;height:20px;background-image:url(images/rarrow2.png);}
+.icon-rdarrow {width:20px;height:20px;background-image:url(images/rdarrow.png);}
+.icon-reminder {width:15px;height:12px;background-image:url(images/reminder.png);}
+.icon-remove {width:20px;height:20px;background-image:url(images/remove.png);}
+.icon-reorder {width:10px;height:10px;background-image:url(images/reorder.png);}
+.icon-repo-list {width:20px;height:20px;background-image:url(images/repository.png);}
+.icon-repository {width:20px;height:20px;background-image:url(images/repository.png);}
+.icon-resn-confidential {width:16px;height:16px;background-image:url(images/resn_confidential.png);}
+.icon-resn-locked {width:16px;height:16px;background-image:url(images/resn_locked.png);}
+.icon-resn-none {width:16px;height:16px;background-image:url(images/resn_none.png);}
+.icon-resn-privacy {width:16px;height:16px;background-image:url(images/resn_privacy.png);}
+.icon-rings {width:9px;height:9px;background-image:url(images/rings.png);}
+.icon-search {width:17px;height:17px;background-image:url(images/search.png);}
+.icon-selected {width:12px;height:12px;background-image:url(images/selected.png);}
+.icon-sex_f_15x15 {width:15px;height:15px;background-image:url(images/sex_f_15x15.png);}
+.icon-sex_f_9x9 {width:9px;height:9px;background-image:url(images/sex_f_9x9.png);}
+.icon-sex_m_15x15 {width:15px;height:15px;background-image:url(images/sex_m_15x15.png);}
+.icon-sex_m_9x9 {width:9px;height:9px;background-image:url(images/sex_m_9x9.png);}
+.icon-sex_u_15x15 {width:15px;height:15px;background-image:url(images/sex_u_15x15.png);}
+.icon-sex_u_9x9 {width:9px;height:9px;background-image:url(images/sex_u_9x9.png);}
+.icon-sfamily {width:20px;height:20px;background-image:url(images/family.png);}
+.icon-source {width:20px;height:20px;background-image:url(images/source.png);}
+.icon-source-list {width:20px;height:20px;background-image:url(images/source.png);}
+.icon-stop {width:20px;height:20px;background-image:url(images/stop.png);}
+.icon-target {width:15px;height:15px;background-image:url(images/buttons/target.png);}
+.icon-terraserver {width:16px;height:16px;background-image:url(images/terraserver.png);}
+.icon-tree {width:20px;height:20px;background-image:url(images/tree.png);}
+.icon-uarrow {width:20px;height:20px;background-image:url(images/uarrow.png);}
+a.icon-uarrow:hover {width:20px;height:20px;background-image:url(images/uarrow2.png);}
+.icon-udarrow {width:20px;height:20px;background-image:url(images/udarrow.png);}
+.icon-user_add {width:20px;height:20px;background-image:url(images/user_add.png);}
+.icon-warning {width:17px;height:17px;background-image:url(images/warning.png);}
+.icon-webtrees {width:100px;height:21px;background-image:url(images/webtrees_s.png);}
+.icon-wiki {width:16px;height:16px;background-image:url(images/w_button.png);}
+.icon-zoomin {width:25px;height:25px;background-image:url(images/zoomin.png);}
+.icon-zoomout {width:25px;height:25px;background-image:url(images/zoomout.png);}
