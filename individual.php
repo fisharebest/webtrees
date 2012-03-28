@@ -252,7 +252,7 @@ foreach ($controller->tabs as $tab) {
 			// Non-AJAX tabs load immediately
 			echo '#', $tab->getName();
 		}
-		echo '"><div title="', $tab->getDescription(), '">', $tab->getTitle(), '</div></a></li>';
+		echo '"><div title="', $tab->getDescription(), '"><span>', $tab->getTitle(), '</span></div></a></li>';
 	}
 }
 echo '</ul>';
