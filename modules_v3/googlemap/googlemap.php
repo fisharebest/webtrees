@@ -179,13 +179,12 @@ function rem_prefix_postfix_from_placename($prefix_list, $postfix_list, $place, 
 function create_possible_place_names ($placename, $level) {
 	global $GM_PREFIX, $GM_POSTFIX;
 
-	$retlist = array();
-
-	//  Exact, remove prefix, remove suffix, remove both
-	$retlist[] = $placename;
-	$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist);
-	$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist);
-	$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist);
+	$retlist = array($placename); // Exact
+	if ($level<=9) {
+		$retlist = rem_prefix_from_placename($GM_PREFIX[$level], $placename, $retlist); // Remove prefix
+		$retlist = rem_postfix_from_placename($GM_POSTFIX[$level], $placename, $retlist); // Remove suffix
+		$retlist = rem_prefix_postfix_from_placename($GM_PREFIX[$level], $GM_POSTFIX[$level], $placename, $retlist); // Remove both
+	}
 	return $retlist;
 }
 
