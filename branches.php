@@ -212,7 +212,7 @@ function indis_array($surn, $soundex_std, $soundex_dm) {
 	}
 	if ($soundex_dm) {
 		foreach (explode(':', WT_Soundex::soundex_dm($surn)) as $value) {
-			$sql .= " OR n_soundex_surn_std LIKE CONCAT('%', ?, '%')";
+			$sql .= " OR n_soundex_surn_dm LIKE CONCAT('%', ?, '%')";
 			$args[]=$value;
 		}
 	}
