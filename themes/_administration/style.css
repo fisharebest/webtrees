@@ -358,10 +358,12 @@ table#gm_config {background:OldLace; border:1px inset #D9D6C4; border-collapse:s
 #gm_config th {font-size:105%; font-weight:bold; padding:5px; text-align:left;}
 html[dir='rtl'] #gm_config th {text-align:right;}
 table.gm_edit_config {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; margin:10px 0;}
-.gm_edit_config th {border-bottom:1px solid LightGrey; font-weight:bold; padding:5px; text-align:left; vertical-align:top;}
+.gm_edit_config th {border-bottom:1px solid LightGrey; font-weight:bold; padding:5px; text-align:left;}
 html[dir='rtl'] .gm_edit_config th {text-align:right;}
-.gm_edit_config td {border-bottom:1px solid LightGrey; padding-left:50px;}
-html[dir='rtl'] .gm_edit_config td {padding-right:50px;}
+.gm_edit_config td {border-bottom:1px solid LightGrey; padding:1px 0 0 50px; vertical-align:middle;}
+.gm_edit_config input {margin:0; vertical-align:middle;}
+.gm_edit_config label {margin:5px; vertical-align:middle;}
+html[dir='rtl'] .gm_edit_config td {padding:1px 50px 0 0;}
 #gm_breadcrumb, #gm_breadcrumb a {color:green; font-weight:bold; font-size:105%; padding:5px;}
 #gm_active {padding:5px; vertical-align:top;}
 #gm_advanced td {padding:0;}

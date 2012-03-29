@@ -134,10 +134,6 @@ if ($action=='update') {
 					</td>
 				</tr>
 				<tr>
-					<th><?php echo WT_I18N::translate('Display Map Coordinates'), help_link('GOOGLEMAP_COORD','googlemap'); ?></th>
-					<td><?php echo edit_field_yes_no('NEW_GM_COORD', $GOOGLEMAP_COORD); ?></td>
-				</tr>
-				<tr>
 					<th><?php echo WT_I18N::translate('Zoom factor of map'), help_link('GOOGLEMAP_MAP_ZOOM','googlemap'); ?></th>
 					<td>
 						<?php echo WT_I18N::translate('minimum'); ?>: <select name="NEW_GM_MIN_ZOOM">
@@ -281,6 +277,10 @@ if ($action=='update') {
 				<tr>
 					<th><?php echo WT_I18N::translate('Display indis and families count'), help_link('GM_DISP_COUNT','googlemap'); ?></th>
 					<td><?php echo edit_field_yes_no('NEW_GM_DISP_COUNT', $GM_DISP_COUNT); ?></td>
+				</tr>
+				<tr>
+					<th><?php echo WT_I18N::translate('Display Map Coordinates'), help_link('GOOGLEMAP_COORD','googlemap'); ?></th>
+					<td><?php echo edit_field_yes_no('NEW_GM_COORD', $GOOGLEMAP_COORD); ?></td>
 				</tr>
 				<tr>
 					<th><?php echo WT_I18N::translate('Hide map controls'), help_link('GOOGLEMAP_PH_CONTROLS','googlemap'); ?></th>
