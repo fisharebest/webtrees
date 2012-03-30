@@ -100,6 +100,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Include matched places');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Key to colors used below');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Large Tree');
+/* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Manage sites');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Many programs will place the preferred given name in "quotes" in the GEDCOM.  The usual convention for this is to underline the preferred given name.  Enabling this option will convert any names surrounded by quotes to &lt;span&gt; with a CSS class of "starredname".<br /><br />For example, if the name in the GEDCOM were 1&nbsp;NAME&nbsp;Gustave&nbsp;"Jean&nbsp;Paul"&nbsp;Charles&nbsp;/Wilson/ enabling this option would change the part of the name enclosed in quotes to &lt;span&nbsp;class="starredname"&gt;Jean&nbsp;Paul&lt;/span&gt; for printing purposes.  Depending on other settings, the browser would then display that name as <b>Gustave&nbsp;<u>Jean&nbsp;Paul</u>&nbsp;Charles&nbsp;Wilson</b> or <b>Wilson,&nbsp;Gustave&nbsp;<u>Jean&nbsp;Paul</u> Charles</b>');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Month selector');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('New tab/window');

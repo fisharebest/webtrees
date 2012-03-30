@@ -83,7 +83,7 @@ if (WT_USER_IS_ADMIN) {
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_logs.php" ? 'class="current" ' : ''), 'href="admin_site_logs.php">',WT_I18N::translate('Logs'),'</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_readme.php" ? 'class="current" ' : ''), 'href="admin_site_readme.php">', WT_I18N::translate('README documentation'), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_info.php" ? 'class="current" ' : ''), 'href="admin_site_info.php">', WT_I18N::translate('PHP information'), '</a></li>',
-		'<li><a ', (WT_SCRIPT_NAME=="admin_site_ipaddress.php" ? 'class="current" ' : ''), 'href="admin_site_ipaddress.php">', WT_I18N::translate('Manage sites'), '</a></li>',
+		'<li><a ', (WT_SCRIPT_NAME=="admin_site_ipaddress.php" ? 'class="current" ' : ''), 'href="admin_site_ipaddress.php">', WT_I18N::translate('Site access'), '</a></li>',
 		'<li><a ', (WT_SCRIPT_NAME=="admin_site_clean.php" ? 'class="current" ' : ''), 'href="admin_site_clean.php">', WT_I18N::translate('Cleanup data directory'), '</a></li>',
 		'</ul></li></ul>',
 		'<ul><li><a ', (WT_SCRIPT_NAME=="admin_trees_manage.php" ? 'class="current" ' : ''), 'href="admin_trees_manage.php">',

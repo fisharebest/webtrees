@@ -31,7 +31,7 @@ require './includes/session.php';
 $controller=new WT_Controller_Base();
 $controller
 	->requireAdminLogin()
-	->setPageTitle(WT_I18N::translate('Manage sites'))
+	->setPageTitle(WT_I18N::translate('Site access'))
 	->pageHeader();
 
 require_once WT_ROOT.'includes/functions/functions.php';
