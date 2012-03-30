@@ -258,7 +258,7 @@ if ($action=='update') {
 					</td>
 				</tr>
 				<tr>
-					<th><?php echo WT_I18N::translate('Type of place markers in Place Hierarchy'), help_link('GOOGLEMAP_PH_MARKER','googlemap'); ?></th>
+					<th><?php echo WT_I18N::translate('Type of place markers in Place Hierarchy'); ?></th>
 					<td>
 						<select name="NEW_GM_PH_MARKER">
 							<option value="G_DEFAULT_ICON" <?php if ($GOOGLEMAP_PH_MARKER=="G_DEFAULT_ICON") echo "selected=\"selected\""; ?>><?php echo WT_I18N::translate('Standard'); ?></option>

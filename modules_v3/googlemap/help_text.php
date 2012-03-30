@@ -93,11 +93,6 @@ case 'PLE_ACTIVE':
 
 // Help text for Place Hierarchy display
 
-case 'GOOGLEMAP_PH_MARKER':
-	$title=WT_I18N::translate('Type of place markers in Place Hierarchy');
-	$text=WT_I18N::translate('Here you can specify what type of marker be able to use (standard or flag). If place has no flag, use standard marker.');
-	break;
-
 case 'GM_DISP_SHORT_PLACE':
 	$title=WT_I18N::translate('Display short placenames');
 	$text=WT_I18N::translate('Here you can choose between two types of displaying places names in hierarchy. If set Yes the place has short name or actual level name, if No - full name.<br /><b>Examples:<br />Full name: </b>Chicago, Illinois, USA<br /><b>Short name: </b>Chicago<br /><b>Full name: </b>Illinois, USA<br /><b>Short name: </b>Illinois');
