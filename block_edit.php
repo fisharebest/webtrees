@@ -23,9 +23,7 @@
 define('WT_SCRIPT_NAME', 'block_edit.php');
 require './includes/session.php';
 
-$action  =safe_GET('action');
 $block_id=safe_GET('block_id');
-
 $block=WT_DB::prepare(
 	"SELECT SQL_CACHE * FROM `##block` WHERE block_id=?"
 )->execute(array($block_id))->fetchOneRow();
