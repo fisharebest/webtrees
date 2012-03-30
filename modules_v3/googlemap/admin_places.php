@@ -688,7 +688,7 @@ foreach ($placelist as $place) {
 				<input type="hidden" name="mod" value="googlemap">
 				<input type="hidden" name="mod_action" value="admin_places">
 				<input type="hidden" name="action" value="ExportFile">
-				<?php echo select_edit_control('parent', $where_am_i, 'All', WT_GED_ID); ?>
+				<?php echo select_edit_control('parent', $where_am_i, WT_I18N::translate('All'), WT_GED_ID); ?>
 				<input type="submit" value="<?php echo WT_I18N::translate('Download'); ?>">
 			</form>
 		</td>
