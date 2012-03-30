@@ -86,8 +86,8 @@ class WT_Soundex {
 		return implode(':', array_unique($soundex_array));
 	}
 
-	// Determine the Daitch-Mokotoff Soundex code for a word
-	// Original author: G. Kroll (canajun2eh), after a previous implementation by Boudewijn Sjouke
+	// Determine the Daitch–Mokotoff Soundex code for a word
+	// Original implementation by Gerry Kroll, and analysis by Meliza Amity
 
 	// Max. table key length (in ASCII bytes -- NOT in UTF-8 characters!)
 	const MAXCHAR=7;
