@@ -42,7 +42,7 @@ $controller
 		});
 	');
 
-$modules=WT_Module::getActiveSidebars();
+$modules=WT_Module::getActiveSidebars(WT_GED_ID, WT_PRIV_HIDE);
 
 $action = safe_POST('action');
 

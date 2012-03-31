@@ -30,7 +30,7 @@ $controller
 	->setPageTitle(WT_I18N::translate('Module administration'))
 	->pageHeader();
 
-$modules=WT_Module::getActiveReports();
+$modules=WT_Module::getActiveReports(WT_GED_ID, WT_PRIV_HIDE);
 
 $action = safe_POST('action');
 

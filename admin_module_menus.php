@@ -42,7 +42,7 @@ $controller
 		});
 	');
 
-$modules=WT_Module::getActiveMenus();
+$modules=WT_Module::getActiveMenus(WT_GED_ID, WT_PRIV_HIDE);
 
 $action = safe_POST('action');
 
