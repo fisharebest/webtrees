@@ -110,12 +110,9 @@ if (!empty($_SESSION['pid2']) && $_SESSION['pid2']!=$pid2) {
 
 // -- print html header information
 $controller
+	->pageHeader()
 	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
-	->pageHeader();
-
-if ($ENABLE_AUTOCOMPLETE) {
-	require WT_ROOT.'js/autocomplete.js.htm';
-}
+	->addExternalJavaScript('js/autocomplete.js');
 
 if (WT_USE_LIGHTBOX) {
 	require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';

@@ -30,11 +30,8 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Pedigree();
 $controller
 	->pageHeader()
-	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
-
-if ($ENABLE_AUTOCOMPLETE) {
-	require WT_ROOT.'js/autocomplete.js.htm';
-}
+	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
+	->addExternalJavaScript('js/autocomplete.js');
 
 if (WT_USE_LIGHTBOX) {
 	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';

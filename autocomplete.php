@@ -32,9 +32,8 @@ header('Content-Type: text/plain; charset=UTF-8');
 Zend_Session::writeClose();
 
 //-- args
-$FILTER=safe_GET('q', WT_REGEX_UNSAFE); // we can search on '"><& etc.
+$FILTER=safe_GET('term', WT_REGEX_UNSAFE); // we can search on '"><& etc.
 $OPTION=safe_GET('option');
-$FORMAT=safe_GET('fmt');
 $FIELD =safe_GET('field');
 
 switch ($FIELD) {
@@ -93,24 +92,12 @@ default:
 	die("Bad arg: field={$FIELD}");
 }
 
-//-- sort
-$data = array_unique($data);
-uasort($data, "utf8_strcasecmp");
-
-//-- output
-if ($FORMAT=="json") {
-	//echo json_encode(array($FILTER, $data));//does not seem to work for some reason
-	$results=array();
-	foreach ($data as $k=>$v) {
-		$results[]=$v;
-	}
-	printf('["%s", %s]',$FILTER, json_encode($results));
-} else {
-	foreach ($data as $k=>$v) {
-		echo "$v|$k\n";
-	}
+$results=array();
+foreach ($data as $value=>$label) {
+	$results[]=array('value'=>$value, 'label'=>$label);
 }
-
+echo json_encode($results);
+exit;
 
 /**
 * returns INDIviduals matching filter
@@ -549,8 +536,7 @@ function get_autocomplete_INDI($FILTER, $ged_id=WT_GED_ID) {
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id=? OR i_id LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
-			" ORDER BY i_id".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" ORDER BY i_id"
 		)
 		->execute(array("{$FILTER}", "{$FILTER}_", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -562,8 +548,7 @@ function get_autocomplete_INDI($FILTER, $ged_id=WT_GED_ID) {
 			" FROM `##individuals`, `##name`".
 			" WHERE (n_sort LIKE ? OR n_full LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
-			" ORDER BY n_sort".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" ORDER BY n_sort"
 			)
 			->execute(array("%{$FILTER}%", "%{$FILTER}%", $ged_id))
 			->fetchAll(PDO::FETCH_ASSOC);
@@ -589,8 +574,7 @@ function get_autocomplete_FAM($FILTER, $ids, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
 			" FROM `##families`".
-			" WHERE {$where} AND f_file=?".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE {$where} AND f_file=?"
 		)
 		->execute($vars)
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -601,8 +585,7 @@ function get_autocomplete_NOTE($FILTER, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 		"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec ".
 		" FROM `##other`".
-		" WHERE o_gedcom LIKE ? AND o_type='NOTE' AND o_file=?".
-		" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+		" WHERE o_gedcom LIKE ? AND o_type='NOTE' AND o_file=?"
 		)
 		->execute(array("%{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -613,8 +596,7 @@ function get_autocomplete_SOUR($FILTER, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec".
 			" FROM `##sources`".
-			" WHERE (s_name LIKE ? OR s_id LIKE ?) AND s_file=? ORDER BY s_name".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE (s_name LIKE ? OR s_id LIKE ?) AND s_file=? ORDER BY s_name"
 		)
 		->execute(array("%{$FILTER}%", "{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -625,8 +607,7 @@ function get_autocomplete_SOUR_TITL($FILTER, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec".
 			" FROM `##sources`".
-			" WHERE s_name LIKE ? AND s_file=? ORDER BY s_name".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE s_name LIKE ? AND s_file=? ORDER BY s_name"
 		)
 		->execute(array("%{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -637,8 +618,7 @@ function get_autocomplete_INDI_BURI_CEME($FILTER, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`".
-			" WHERE i_gedcom LIKE ? AND i_file=?".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE i_gedcom LIKE ? AND i_file=?"
 		)
 		->execute(array("%1 BURI%2 CEME %{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -649,8 +629,7 @@ function get_autocomplete_INDI_SOUR_PAGE($FILTER, $OPTION, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`".
-			" WHERE i_gedcom LIKE ? AND i_file=?".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE i_gedcom LIKE ? AND i_file=?"
 		)
 		->execute(array("% SOUR @{$OPTION}@% PAGE %{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -661,8 +640,7 @@ function get_autocomplete_FAM_SOUR_PAGE($FILTER, $OPTION, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
 			" FROM `##families`".
-			" WHERE f_gedcom LIKE ? AND f_file=?".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE f_gedcom LIKE ? AND f_file=?"
 		)
 		->execute(array("% SOUR @{$OPTION}@% PAGE %{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -673,8 +651,7 @@ function get_autocomplete_REPO($FILTER, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
 			" FROM `##other`".
-			" WHERE (o_gedcom LIKE ? OR o_id LIKE ?) AND o_file=? AND o_type='REPO'".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE (o_gedcom LIKE ? OR o_id LIKE ?) AND o_file=? AND o_type='REPO'"
 		)
 		->execute(array("%1 NAME %{$FILTER}%", "{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -685,8 +662,7 @@ function get_autocomplete_REPO_NAME($FILTER, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
 			" FROM `##other`".
-			" WHERE o_gedcom LIKE ? AND o_file=? AND o_type='REPO'".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE o_gedcom LIKE ? AND o_file=? AND o_type='REPO'"
 		)
 		->execute(array("%1 NAME %{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -697,8 +673,7 @@ function get_autocomplete_OBJE($FILTER, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT m_media".
 			" FROM `##media`".
-			" WHERE (m_titl LIKE ? OR m_media LIKE ?) AND m_gedfile=?".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE (m_titl LIKE ? OR m_media LIKE ?) AND m_gedfile=?"
 		)
 		->execute(array("%{$FILTER}%", "{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -709,8 +684,7 @@ function get_autocomplete_SURN($FILTER, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT DISTINCT n_surname".
 			" FROM `##name`".
-			" WHERE n_surname LIKE ? AND n_file=? ORDER BY n_surname".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE n_surname LIKE ? AND n_file=? ORDER BY n_surname"
 		)
 		->execute(array("%{$FILTER}%", $ged_id))
 		->fetchOneColumn();
@@ -721,8 +695,7 @@ function get_autocomplete_GIVN($FILTER, $ged_id=WT_GED_ID) {
 		WT_DB::prepare(
 			"SELECT DISTINCT n_givn".
 			" FROM `##name`".
-			" WHERE n_givn LIKE ? AND n_file=? ORDER BY n_givn".
-			" LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" WHERE n_givn LIKE ? AND n_file=? ORDER BY n_givn"
 		)
 		->execute(array("%{$FILTER}%", $ged_id))
 		->fetchAll();
@@ -734,7 +707,7 @@ function get_autocomplete_PLAC($FILTER, $ged_id=WT_GED_ID) {
 	$nbLevels = get_number_levels_PLAC($ged_id) + 1;
 	
         // Generate the SQL statement
-	$sql = generate_place_sql($nbLevels)." LIMIT ".WT_AUTOCOMPLETE_LIMIT;
+	$sql = generate_place_sql($nbLevels);
 	
 	$arrayFilter = array();
 	for ($i = 0; $i < $nbLevels; $i++) {

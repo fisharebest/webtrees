@@ -176,22 +176,11 @@ elseif ($action=='setup') {
 	}
 	xml_parser_free($xml_parser);
 
-	$controller->setPageTitle($report_array['title']);
-	$controller->pageHeader();
-
-	if ($ENABLE_AUTOCOMPLETE) {
-		require_once WT_ROOT.'js/autocomplete.js.htm';
-	}
-
-	// Paste Found ID from a pop-up window
-	echo WT_JS_START;
-		?>
-		var pastefield;
-		function paste_id(value) {
-			pastefield.value=value;
-		}
-		<?php
-	echo WT_JS_END;
+	$controller
+		->setPageTitle($report_array['title'])
+		->pageHeader()
+		->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
+		->addExternalJavaScript('js/autocomplete.js');
 
 	init_calendar_popup();
 	echo '<div id="reportengine-page">

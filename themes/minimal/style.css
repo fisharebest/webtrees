@@ -1234,27 +1234,24 @@ a.showit:hover > span {
 }
 
 /* Autocomplete styles*/
-.ac_input {
+.ui-autocomplete-input {
 	background-color: #EEE8AA;
 }
 
-.ac_results {
+.ui-autocomplete {
 	padding: 0;
 	border: 1px solid black;
 	background-color: white;
-	overflow: hidden;
 	z-index: 99999;
-}
-
-.ac_results ul {
-	width: 100%;
 	list-style-position: outside;
 	list-style: none;
 	padding: 0;
 	margin: 0;
+	max-height:200px;
+	overflow-y:auto;
 }
 
-.ac_results li {
+.ui-autocomplete li {
 	margin: 0;
 	padding: 2px 5px;
 	cursor: default;
@@ -1274,17 +1271,12 @@ a.showit:hover > span {
 	overflow: hidden;
 }
 
-.ac_loading {
+.ui-autocomplete-loading {
 	background: white url(images/indicator.png) right center no-repeat;
 }
 
-.ac_odd {
+.ui-autocomplete li:nth-child(odd) {
 	background-color: #eee;
-}
-
-.ac_over {
-	background-color: #0A246A;
-	color: white;
 }
 /* End of Autocomplete styles*/
 

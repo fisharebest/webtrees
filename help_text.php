@@ -539,11 +539,6 @@ case 'DEFAULT_PEDIGREE_GENERATIONS':
 	$text=WT_I18N::translate('Set the default number of generations to display on Descendancy and Pedigree charts.');
 	break;
 
-case 'ENABLE_AUTOCOMPLETE':
-	$title=WT_I18N::translate('Autocomplete');
-	$text=WT_I18N::translate('This option determines whether Autocomplete should be active while information is being entered into certain fields on input forms.  When this option is set to <b>Yes</b>, text input fields for which Autocomplete is possible are indicated by a differently colored background.<br /><br />When Autocomplete is active, <b>webtrees</b> will search its database for possible matches according to what you have already entered.  As you enter more information, the list of possible matches is refined.  When you see the desired input in the list of matches, you can move the mouse cursor to that line of the list and then click the left mouse button to complete the input.<br /><br />The disadvantages of Autocomplete are that it slows the program, entails significant database activity, and also results in more data being sent to the browser.');
-	break;
-
 case 'EXPAND_NOTES':
 	$title=WT_I18N::translate('Automatically expand notes');
 	$text=WT_I18N::translate('This option controls whether or not to automatically display content of a <i>Note</i> record on the Individual page.');

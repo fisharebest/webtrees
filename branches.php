@@ -46,11 +46,9 @@ if ($surn) {
 } else {
 	$controller->setPageTitle(WT_I18N::translate('Branches'));
 }
-$controller->pageHeader();
-
-if ($ENABLE_AUTOCOMPLETE) {
-	require WT_ROOT.'/js/autocomplete.js.htm';
-}
+$controller
+	->pageHeader()
+	->addExternalJavaScript('js/autocomplete.js');
 
 ?>
 <div id="branches-page">

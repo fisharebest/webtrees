@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 
 require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 
-global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $ENABLE_AUTOCOMPLETE, $SHOW_HIGHLIGHT_IMAGES;
+global $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $SHOW_HIGHLIGHT_IMAGES;
 
 
 // Default is show for both of these.
@@ -62,14 +62,12 @@ $MAX_PEDIGREE_GENERATIONS = min($MAX_PEDIGREE_GENERATIONS, 8);
 
 // End of internal configuration variables
 
-$controller->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()));
-$controller->pageHeader();
+$controller
+	->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()))
+	->pageHeader()
+	->addExternalJavaScript('js/autocomplete.js');
 
-// echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet">';
 echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-
-
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 echo '<div><table><tr><td valign="middle">';
 echo '<h2>', $controller->getPageTitle(), '</h2>';
 

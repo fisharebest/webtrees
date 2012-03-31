@@ -177,7 +177,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD',       safe_POST('NEW_COMMON_NAMES_THRESHOLD', WT_REGEX_INTEGER, 40));
 	set_gedcom_setting(WT_GED_ID, 'CONTACT_USER_ID',              safe_POST('NEW_CONTACT_USER_ID'));
 	set_gedcom_setting(WT_GED_ID, 'DEFAULT_PEDIGREE_GENERATIONS', safe_POST('NEW_DEFAULT_PEDIGREE_GENERATIONS'));
-	set_gedcom_setting(WT_GED_ID, 'ENABLE_AUTOCOMPLETE',          safe_POST_bool('NEW_ENABLE_AUTOCOMPLETE'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_NOTES',                 safe_POST_bool('NEW_EXPAND_NOTES'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_RELATIVES_EVENTS',      safe_POST_bool('NEW_EXPAND_RELATIVES_EVENTS'));
 	set_gedcom_setting(WT_GED_ID, 'EXPAND_SOURCES',               safe_POST_bool('NEW_EXPAND_SOURCES'));
@@ -354,7 +353,7 @@ default:
 $controller->pageHeader();
 
 if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
+	$controller->addExternalJavaScript('js/autocomplete.js');
 }
 
 echo WT_JS_START;?>
@@ -1545,14 +1544,6 @@ echo WT_JS_START;?>
 					</td>
 					<td>
 						<?php echo select_edit_control('NEW_PREFER_LEVEL2_SOURCES', array(0=>WT_I18N::translate('none'), 1=>WT_I18N::translate('facts'), 2=>WT_I18N::translate('records')), null, get_gedcom_setting(WT_GED_ID, 'PREFER_LEVEL2_SOURCES')); ?>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<?php echo WT_I18N::translate('Autocomplete'), help_link('ENABLE_AUTOCOMPLETE'); ?>
-					</td>
-					<td>
-						<?php echo radio_buttons('NEW_ENABLE_AUTOCOMPLETE', array(false=>WT_I18N::translate('disable'),true=>WT_I18N::translate('enable')), get_gedcom_setting(WT_GED_ID, 'ENABLE_AUTOCOMPLETE')); ?>
 					</td>
 				</tr>
 				<tr>

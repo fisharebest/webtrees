@@ -414,13 +414,11 @@ table#story_table {width:100%}
 #story_table_wrapper  {margin-top: 20px;}
 
 /* Autocomplete styles */
-.ac_input {background-color:#EEE8AA;}
-.ac_results {padding:0; border:1px solid black; background-color:white; overflow:hidden; z-index:99999;}
-.ac_results ul {width:100%; list-style-position:outside; list-style:none; padding:0; margin:0;}
-.ac_results li {margin:0; padding:2px 5px; cursor:default; display:block; font:menu;font-size:12px; line-height:14px; overflow:hidden;}
-.ac_loading {background:white url(images/indicator.gif) right center no-repeat;}
-.ac_odd {background-color:#eee;}
-.ac_over {background-color:#0A246A; color:white;}
+.ui-autocomplete-input {background-color:#EEE8AA;}
+.ui-autocomplete {padding:0; border:1px solid black; background-color:white; z-index:99999;list-style-position:outside; list-style:none; padding:0; margin:0;;max-height:200px;overflow-y:auto;}
+.ui-autocomplete li {margin:0; padding:2px 5px; cursor:default; display:block; font:menu;font-size:12px; line-height:14px; overflow:hidden;}
+.ui-autocomplete-loading {background:white url(images/indicator.gif) right center no-repeat;}
+.ui-autocomplete li:nth-child(odd) {background-color:#eee;}
 
 /* IMAGE SPRITE */
 [class^="icon-"], [class*=" icon-"] {display:inline-block; background:url('images/admin_icon_sprite.png') no-repeat; vertical-align:middle;}

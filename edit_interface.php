@@ -28,9 +28,10 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Simple();
 $controller
+	->requireMemberLogin()
 	->setPageTitle(WT_I18N::translate('Edit'))
 	->pageHeader()
-	->requireMemberLogin();
+	->addExternalJavaScript('js/autocomplete.js');
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 
@@ -61,9 +62,6 @@ $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
 
-if ($ENABLE_AUTOCOMPLETE) {
-	require WT_ROOT.'js/autocomplete.js.htm';
-}
 echo WT_JS_START;
 ?>
 	var locale_date_format='<?php echo preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))); ?>';

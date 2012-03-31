@@ -29,8 +29,10 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('Add a new media object'));
-$controller->pageHeader();
+$controller
+	->setPageTitle(WT_I18N::translate('Add a new media object'))
+	->pageHeader()
+	->addExternalJavaScript('js/autocomplete.js');
 
 // TODO use GET/POST, rather than $_REQUEST
 // TODO decide what validation is required on these input parameters
@@ -86,7 +88,6 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 	exit;
 }
 
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'/js/autocomplete.js.htm';
 echo WT_JS_START;
 ?>
 	// Shared Notes =========================

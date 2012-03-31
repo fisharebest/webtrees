@@ -1561,27 +1561,26 @@ color:#000;
 font-weight:400;
 }
 
-.ac_input {
+.ui-autocomplete-input {
 background:#eea;
 }
 
-.ac_results {
+.ui-autocomplete-loading {background:white url(images/indicator.gif) right center no-repeat;}
+
+.ui-autocomplete {
 border:1px solid #000;
 background:#fff;
-overflow:hidden;
 z-index:99999;
 padding:0;
-}
-
-.ac_results ul {
-width:100%;
 list-style-position:outside;
 list-style:none;
 margin:0;
 padding:0;
+max-height:200px;
+overflow-y:auto;
 }
 
-.ac_results li {
+.ui-autocomplete li {
 cursor:default;
 display:block;
 font:menu;
@@ -1591,13 +1590,8 @@ margin:0;
 padding:2px 5px;
 }
 
-.ac_odd {
+.ui-autocomplete li:nth-child(odd) {
 background:#eee;
-}
-
-.ac_over {
-background:#026;
-color:#fff;
 }
 
 .sublinks_cell .submenuitem {

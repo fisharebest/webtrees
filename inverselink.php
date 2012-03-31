@@ -33,7 +33,8 @@ $controller=new WT_Controller_Simple();
 $controller
 	->requireEditorLogin()
 	->setPageTitle(WT_I18N::translate('Link media'))
-	->pageHeader();
+	->pageHeader()
+	->addExternalJavaScript('js/autocomplete.js');
 
 //-- page parameters and checking
 $linktoid = safe_GET_xref('linktoid');
@@ -45,8 +46,6 @@ $action   = safe_GET     ('action', WT_REGEX_ALPHA, 'choose');
 if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
 	require WT_ROOT.WT_MODULES_DIR.'GEDFact_assistant/_MEDIA/media_0_inverselink.php';
 } else {
-
-	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 	//-- check for admin
 	$paramok =  true;

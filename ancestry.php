@@ -45,9 +45,8 @@ $nonfamfacts[] = '';
 $controller=new WT_Controller_Ancestry();
 $controller
 	->pageHeader()
-	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
-
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
+	->addExternalJavaScript('js/autocomplete.js');
 
 // LightBox
 if (WT_USE_LIGHTBOX) {

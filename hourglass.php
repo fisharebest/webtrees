@@ -29,14 +29,13 @@ define('WT_SCRIPT_NAME', 'hourglass.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Hourglass();
-$controller->pageHeader();
-
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+$controller
+	->pageHeader()
+	->addExternalJavaScript('js/autocomplete.js')
+	->setupJavascript();
 
 echo '<table><tr><td valign="top">';
 echo '<h2>', WT_I18N::translate('Hourglass chart of %s', $controller->name), '</h2>';
-
-$controller->setupJavascript();
 
 // LBox =====================================================================================
 if (WT_USE_LIGHTBOX) {

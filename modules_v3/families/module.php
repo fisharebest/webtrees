@@ -230,7 +230,7 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			" FROM `##individuals`, `##name`".
 			" WHERE (i_id LIKE ? OR n_sort LIKE ?)".
 			" AND i_id=n_id AND i_file=n_file AND i_file=?".
-			" ORDER BY n_sort LIMIT ".WT_AUTOCOMPLETE_LIMIT
+			" ORDER BY n_sort"
 		)
 		->execute(array('INDI', "%{$query}%", "%{$query}%", WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);

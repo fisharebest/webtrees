@@ -47,7 +47,6 @@ set_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE',          '');
 set_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD',       '40');
 set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              WT_USER_ID);
 set_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS', '4');
-set_gedcom_setting($ged_id, 'ENABLE_AUTOCOMPLETE',          true);
 set_gedcom_setting($ged_id, 'EXPAND_NOTES',                 false);
 set_gedcom_setting($ged_id, 'EXPAND_RELATIVES_EVENTS',      false);
 set_gedcom_setting($ged_id, 'EXPAND_SOURCES',               false);

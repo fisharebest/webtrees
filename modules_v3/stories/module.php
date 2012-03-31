@@ -173,8 +173,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 
 	// Action from the configuration page
 	private function edit() {
-		global $ENABLE_AUTOCOMPLETE;
-
 		require_once WT_ROOT.'includes/functions/functions_edit.php';
 		if (WT_USER_CAN_EDIT) {
 
@@ -226,7 +224,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					$gedcom_id=WT_GED_ID;
 					$xref=safe_GET('xref', WT_REGEX_XREF);
 				}
-				$controller->pageHeader();
+				$controller
+					->pageHeader()
+					->addExternalJavaScript('js/autocomplete.js');
 				?>
 				<script type="text/javascript">
 					var pastefield;
@@ -235,9 +235,6 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					}
 				</script>
 				<?php
-				if ($ENABLE_AUTOCOMPLETE) {
-					require WT_ROOT.'/js/autocomplete.js.htm';
-				}
 				// "Help for this page" link
 				echo '<div id="page_help">', help_link('add_story', $this->getName()), '</div>';
 				echo '<form name="story" method="post" action="#">';

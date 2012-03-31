@@ -313,7 +313,7 @@ case 'createuser':
 switch ($action) {
 case 'createform':
 	if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm'; 
+		$controller->addExternalJavaScript('js/autocomplete.js');
 	}
 
 	init_calendar_popup();

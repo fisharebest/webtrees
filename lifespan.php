@@ -253,9 +253,8 @@ $controller
 			document.onmousemove = getMouseXY;
 			document.onmouseup = releaseimage;
 			
-	');
-
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+			')
+	->addExternalJavaScript('js/autocomplete.js');
 
 echo
 	'<h2>', WT_I18N::translate('Lifespans'), help_link('lifespan_chart'), '</h2>

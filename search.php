@@ -28,9 +28,10 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $controller=new WT_Controller_Search();
-$controller->pageHeader();
+$controller
+	->pageHeader()
+	->addExternalJavaScript('js/autocomplete.js');
 
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 ?>
 
 <script type="text/javascript">

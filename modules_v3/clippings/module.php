@@ -52,7 +52,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			echo $this->getSidebarAjaxContent();
 			break;
 		case 'index':
-			global $ENABLE_AUTOCOMPLETE, $MAX_PEDIGREE_GENERATIONS, $controller, $WT_SESSION;
+			global $MAX_PEDIGREE_GENERATIONS, $controller, $WT_SESSION;
 
 			require_once WT_ROOT.WT_MODULES_DIR.'clippings/clippings_ctrl.php';
 			require_once WT_ROOT.'includes/functions/functions_export.php';
@@ -62,9 +62,8 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$controller=new WT_Controller_Base();
 			$controller
 				->setPageTitle($this->getTitle())
-				->PageHeader();
-
-			if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+				->PageHeader()
+				->addExternalJavaScript('js/autocomplete.js');;
 
 			echo WT_JS_START;
 			echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';

@@ -44,7 +44,8 @@ if (!$ajax) {
 	$controller=new WT_Controller_Base();
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
 		->addInlineJavaScript($js)
-		->pageHeader();
+		->pageHeader()
+		->addExternalJavaScript('js/autocomplete.js');
 	echo '<div id="stats-details"><h2>', WT_I18N::translate('Statistics'), '</h2>',
 		'<div id="stats-tabs">',
 		'<ul>',
@@ -62,7 +63,9 @@ if (!$ajax) {
 	'<br><br>';
 } else {
 	$controller=new WT_Controller_Ajax();
-	$controller->pageHeader();
+	$controller
+		->pageHeader()
+		->addExternalJavaScript('js/autocomplete.js');
 	$stats = new WT_Stats($GEDCOM);
 	if ($tab==0) {
 		echo '<fieldset>
@@ -408,7 +411,6 @@ if (!$ajax) {
 		</fieldset>';
 	} else if ($tab==3) {
 		require_once WT_ROOT.'includes/functions/functions_places.php';
-		if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 
 		echo '<fieldset>
 		<legend>', WT_I18N::translate('Create your own chart'), '</legend>';

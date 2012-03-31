@@ -93,9 +93,9 @@ if ($form_action=='update') {
 		exit;
 	}
 } else {
-	$controller->pageHeader();
-
-	if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
+	$controller
+		->pageHeader()
+		->addExternalJavaScript('js/autocomplete.js')
 }
 
 // Form validation

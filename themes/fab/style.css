@@ -393,24 +393,22 @@ right:10px;
 }
 
 /* Autocomplete styles*/
-.ac_input {
+.ui-autocomplete-input {
 	background-color:#EEE8AA;
 }
-.ac_results {
+.ui-autocomplete {
 	padding:0;
 	border:thin solid #AAA;
 	background-color:white;
-	overflow:hidden;
 	z-index:99999;
-}
-.ac_results ul {
-	width:100%;
 	list-style-position:outside;
 	list-style:none;
 	padding:0;
 	margin:0;
+	max-height:200px;
+	overflow-y:auto;
 }
-.ac_results li {
+.ui-autocomplete li {
 	margin:0;
 	padding:2px 5px;
 	cursor:default;
@@ -419,18 +417,13 @@ right:10px;
 	line-height:14px; /* absolute setting required for firefox? */
 	overflow:hidden;
 }
-.ac_loading {
+.ui-autocomplete-loading {
 	background:white url(images/indicator.gif) right center no-repeat;
 }
-.ac_odd {
+.ui-autocomplete li:nth-child(odd) {
 	background-color:#eee;
 }
-.ac_over {
-	background-color:navy;
-	color:white;
-}
 
-/* Review everything below this line */
 
 .center {
 	text-align:center;

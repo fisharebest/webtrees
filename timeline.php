@@ -29,9 +29,10 @@ define('WT_SCRIPT_NAME', 'timeline.php');
 require './includes/session.php';
 
 $controller=new WT_Controller_Timeline();
-$controller->pageHeader();
+$controller
+	->pageHeader()
+	->addExternalJavaScript('js/autocomplete.js');
 
-if ($ENABLE_AUTOCOMPLETE) require WT_ROOT.'js/autocomplete.js.htm';
 ?>
 <script type="text/javascript">
 <!--

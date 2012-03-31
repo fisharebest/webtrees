@@ -970,6 +970,32 @@ try {
 	//	") COLLATE utf8_unicode_ci ENGINE=InnoDB"
 	//);
 
+	WT_DB::exec(
+		"CREATE TABLE IF NOT EXISTS `##site_access_rule` (".
+		" site_access_rule_id INTEGER          NOT NULL AUTO_INCREMENT,".
+		" ip_address_start     INTEGER UNSIGNED NOT NULL DEFAULT 0,".
+		" ip_address_end       INTEGER UNSIGNED NOT NULL DEFAULT 4294967295,".
+		" user_agent_pattern   VARCHAR(255)     NOT NULL,".
+		" rule                 ENUM('allow', 'deny', 'robot', 'unknown') NOT NULL DEFAULT 'unknown',".
+		" comment              VARCHAR(255)     NOT NULL,".
+		" updated              TIMESTAMP        NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,".
+		" PRIMARY KEY     (site_access_rule_id),".
+		"         KEY ix1 (rule),".
+		"         KEY ix2 (user_agent_pattern, ip_address_start, ip_address_end, rule),".
+		"         KEY ix3 (updated)".
+		") ENGINE=InnoDB COLLATE=utf8_unicode_ci"
+	);
+
+	WT_DB::exec(
+		"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES".
+		" ('Mozilla/5.0 (%) Gecko/% Firefox/%', 'allow', 'Firefox'),".
+		" ('Mozilla/5.0 (%) AppleWebKit/% (KHTML, like Gecko) Chrome/% Safari/%', 'allow', 'Chrome'),".
+		" ('Mozilla/5.0 (%) AppleWebKit/% (KHTML, like Gecko) Version/% Safari/%', 'allow', 'Safari'),".
+		" ('Opera/% (%) Presto/% Version/%', 'allow', 'Opera'),".
+		" ('Mozilla/% (compatible; MSIE %', 'allow', 'Internet Explorer'),".
+		" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror')"
+	);
+
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##gedcom` (gedcom_id, gedcom_name) VALUES ".
 		" (-1, 'DEFAULT_TREE')"
