@@ -257,7 +257,7 @@
 								</if>
 								</Text>
 								<Gedcom id="@ASSO">
-									<GetPersonName id=""/>
+									 <GetPersonName id=""/>
 								</Gedcom>
 							</TextBox>
 						</if>
@@ -434,7 +434,7 @@
 										</if>
 									</Text>
 									<Gedcom id="@ASSO">
-										<GetPersonName id=""/>
+										 <GetPersonName id=""/>
 									</Gedcom>
 								</TextBox>
 							</if>
@@ -608,7 +608,7 @@
 									</if>
 								</Text>
 								<Gedcom id="@ASSO">
-									<GetPersonName id=""/>
+									 <GetPersonName id=""/>
 								</Gedcom>
 							</TextBox>
 						</if>
@@ -949,7 +949,7 @@
 										</if>
 									</Text>
 									<Gedcom id="@ASSO">
-										<GetPersonName id=""/>
+										 <GetPersonName id=""/>
 									</Gedcom>
 								</TextBox>
 							</if>
