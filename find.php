@@ -117,15 +117,17 @@ case "source":
 	$controller->setPageTitle(WT_I18N::translate('Find a source'));
 	break;
 case "specialchar":
-	// Users will probably always want the same language, so remember their setting
+	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
 	$language_filter=safe_GET('language_filter');
-	if (!$language_filter) {
-		$language_filter=get_user_setting(WT_USER_ID, 'default_language_filter');
-	} else {
-		set_user_setting(WT_USER_ID, 'default_language_filter', $language_filter);
+	if (WT_USER_ID) {
+		// Users will probably always want the same language, so remember their setting
+		if (!$language_filter) {
+			$language_filter=get_user_setting(WT_USER_ID, 'default_language_filter');
+		} else {
+			set_user_setting(WT_USER_ID, 'default_language_filter', $language_filter);
+		}
 	}
 	require WT_ROOT.'includes/specialchars.php';
-	$controller->setPageTitle(WT_I18N::translate('Find a special character'));
 	$action="filter";
 	break;
 case "facts":
@@ -196,41 +198,7 @@ $options["form"][]= "formnote";
 $options["form"][]= "formsource";
 $options["form"][]= "formspecialchar";
 
-echo '<div id="find-page">
-<h3>'; // header title
-
-switch ($type) {
-case "indi":
-	echo WT_I18N::translate('Find an individual');
-	break;
-case "fam":
-	echo WT_I18N::translate('Find a family');
-	break;
-case "media":
-	echo WT_I18N::translate('Find a media object');
-	break;
-case "place":
-	echo WT_I18N::translate('Find a place');
-	break;
-case "repo":
-	echo WT_I18N::translate('Find a repository');
-	break;
-case "note":
-	echo WT_I18N::translate('Find a note');
-	break;
-case "source":
-	echo WT_I18N::translate('Find a source');
-	break;
-case "specialchar":
-	echo WT_I18N::translate('Find a special character');
-	break;
-case "facts":
-	echo WT_I18N::translate('Find a fact or event');
-	break;
-}
-
-echo "</h3>"; // close header title
-
+echo '<div id="find-page"><h3>', $controller->getPageTitle(), '</h3>';
 
 // Show indi and hide the rest
 if ($type == "indi") {
