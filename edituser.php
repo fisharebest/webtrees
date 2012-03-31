@@ -95,7 +95,7 @@ if ($form_action=='update') {
 } else {
 	$controller
 		->pageHeader()
-		->addExternalJavaScript('js/autocomplete.js')
+		->addExternalJavaScript('js/autocomplete.js');
 }
 
 // Form validation
