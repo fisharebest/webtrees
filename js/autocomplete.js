@@ -87,8 +87,7 @@ jQuery(".NOTE").autocomplete({
 
 // SOUR
 jQuery(".SOUR, input[id*=sid]").autocomplete({
-	source: "autocomplete.php?field=SOUR",
-	html: true
+	source: "autocomplete.php?field=SOUR"
 });
 
 /* This doesn't work (but the callback does!).  How do we obtain the SOUR/sid?

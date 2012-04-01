@@ -54,6 +54,31 @@ case 'CEME': // Cemetery fields, that contain the search term
 	echo json_encode($data);
 	exit;
 
+case 'FAM': // Families, whose name contains the search terms
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT DISTINCT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
+			" FROM `##families`".
+			" JOIN `##name` AS husb_name ON (f_husb=husb_name.n_id AND f_file=husb_name.n_file)".
+			" JOIN `##name` AS wife_name ON (f_wife=wife_name.n_id AND f_file=wife_name.n_file)".
+			" WHERE CONCAT(husb_name.n_full, ' ', wife_name.n_full) LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND f_file=?".
+			" AND husb_name.n_type<>'_MARNM' AND wife_name.n_type<>'_MARNM'".
+			" ORDER BY husb_name.n_sort, wife_name.n_sort"
+		)
+		->execute(array($term, WT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
+	$data=array();
+	foreach ($rows as $row) {
+		$family=WT_Family::getInstance($row);
+		if ($family->canDisplayName()) {
+			$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
+		}
+	}	
+	echo json_encode($data);
+	exit;
+
 case 'GIVN': // Given names, that start with the search term
 	// Do not filter by privacy.  Given names on their own do not identify individuals.
 	echo json_encode(
@@ -329,7 +354,7 @@ case 'SURN': // Surnames, that start with the search term
 	exit;
 
 case 'FAM':
-	$data=autocomplete_FAM($term, $OPTION);
+	$data=autocomplete_FAM($term);
 	break;
 case 'OBJE':
 	$data=autocomplete_OBJE($term);
@@ -441,10 +466,10 @@ function autocomplete_INDI($term, $OPTION) {
 * returns FAMilies matching filter
 * @return Array of string
 */
-function autocomplete_FAM($term, $OPTION) {
+function autocomplete_FAM($term) {
 
 	//-- search for INDI names
-	$ids=array_keys(autocomplete_INDI($term, $OPTION));
+	$ids=array_keys(autocomplete_INDI($term, ''));
 
 	$rows=get_autocomplete_FAM($term, $ids);
 	$data=array();
