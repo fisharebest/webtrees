@@ -112,6 +112,28 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 	);
 	exit;
 
+case 'REPO': // Repositories, that include the search term
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec, n_full".
+			" FROM `##other`".
+			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)".
+			" WHERE n_full LIKE CONCAT('%', ?, '%') AND o_file=? AND o_type='REPO'".
+			" ORDER BY n_full"
+		)
+		->execute(array($FILTER, WT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+	$data=array();
+	foreach ($rows as $row) {
+		$repository=WT_Repository::getInstance($row);
+		if ($repository->canDisplayName()) {
+			$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
+		}
+	}	
+	echo json_encode($data);
+	exit;
+
 case 'REPO_NAME': // Repository names, that include the search term
 	// Fetch all data, regardless of privacy
 	$rows=
@@ -128,6 +150,48 @@ case 'REPO_NAME': // Repository names, that include the search term
 	foreach ($rows as $row) {
 		$repository=WT_Repository::getInstance($row);
 		if ($repository->canDisplayName()) {
+			$data[]=$row['n_full'];
+		}
+	}	
+	echo json_encode($data);
+	exit;
+
+case 'SOUR': // Sources, that include the search term
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, n_full".
+			" FROM `##sources`".
+			" JOIN `##name` ON (s_id=n_id AND s_file=n_file)".
+			" WHERE n_full LIKE CONCAT('%', ?, '%') AND s_file=? ORDER BY n_full"
+		)
+		->execute(array($FILTER, WT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+	$data=array();
+	foreach ($rows as $row) {
+		$source=WT_Source::getInstance($row);
+		if ($source->canDisplayName()) {
+			$data[]=array('value'=>$row['xref'], 'label'=>$row['n_full']);
+		}
+	}	
+	echo json_encode($data);
+	exit;
+
+case 'SOUR_TITL': // Source titles, that include the search term
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, n_full".
+			" FROM `##sources`".
+			" JOIN `##name` ON (s_id=n_id AND s_file=n_file)".
+			" WHERE n_full LIKE CONCAT('%', ?, '%') AND s_file=? ORDER BY n_full"
+		)
+		->execute(array($FILTER, WT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+	$data=array();
+	foreach ($rows as $row) {
+		$source=WT_Source::getInstance($row);
+		if ($source->canDisplayName()) {
 			$data[]=$row['n_full'];
 		}
 	}	
@@ -447,40 +511,6 @@ function autocomplete_SOUR_PAGE($FILTER, $OPTION) {
 }
 
 /**
-* returns REPOsitories matching filter
-* @return Array of string
-*/
-function autocomplete_REPO($FILTER) {
-
-	$rows=get_autocomplete_REPO($FILTER);
-	$data=array();
-	foreach ($rows as $row) {
-		$repository = WT_Repository::getInstance($row);
-		if ($repository->canDisplayName()) {
-			$data[$row["xref"]] = $repository->getFullName();
-		}
-	}
-	return $data;
-}
-
-/**
-* returns REPO:NAME matching filter
-* @return Array of string
-*/
-function autocomplete_REPO_NAME($FILTER) {
-
-	$rows=get_autocomplete_REPO_NAME($FILTER);
-	$data=array();
-	foreach ($rows as $row) {
-		$repository = WT_Repository::getInstance($row);
-		if ($repository->canDisplayName()) {
-			$data[] = $repository->getFullName();
-		}
-	}
-	return $data;
-}
-
-/**
 * returns OBJEcts matching filter
 * @return Array of string
 */
@@ -611,17 +641,6 @@ function get_autocomplete_SOUR($FILTER, $ged_id=WT_GED_ID) {
 		->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function get_autocomplete_SOUR_TITL($FILTER, $ged_id=WT_GED_ID) {
-	return
-		WT_DB::prepare(
-			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec".
-			" FROM `##sources`".
-			" WHERE s_name LIKE ? AND s_file=? ORDER BY s_name"
-		)
-		->execute(array("%{$FILTER}%", $ged_id))
-		->fetchAll(PDO::FETCH_ASSOC);
-}
-
 function get_autocomplete_INDI_BURI_CEME($FILTER, $ged_id=WT_GED_ID) {
 	return
 		WT_DB::prepare(
@@ -652,28 +671,6 @@ function get_autocomplete_FAM_SOUR_PAGE($FILTER, $OPTION, $ged_id=WT_GED_ID) {
 			" WHERE f_gedcom LIKE ? AND f_file=?"
 		)
 		->execute(array("% SOUR @{$OPTION}@% PAGE %{$FILTER}%", $ged_id))
-		->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function get_autocomplete_REPO($FILTER, $ged_id=WT_GED_ID) {
-	return
-		WT_DB::prepare(
-			"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
-			" FROM `##other`".
-			" WHERE (o_gedcom LIKE ? OR o_id LIKE ?) AND o_file=? AND o_type='REPO'"
-		)
-		->execute(array("%1 NAME %{$FILTER}%", "{$FILTER}%", $ged_id))
-		->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function get_autocomplete_REPO_NAME($FILTER, $ged_id=WT_GED_ID) {
-	return
-		WT_DB::prepare(
-			"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec".
-			" FROM `##other`".
-			" WHERE o_gedcom LIKE ? AND o_file=? AND o_type='REPO'"
-		)
-		->execute(array("%1 NAME %{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
 }
 
