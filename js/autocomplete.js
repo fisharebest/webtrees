@@ -66,10 +66,9 @@ jQuery("#spouseid, input[id*=pid], input[id*=PID], input[id^=gedcomid], input[id
 	html: true
 });
 
-// INDI ASSOciate
+// ASSO
 jQuery(".ASSO").autocomplete({
-	// Is this the right way to add the option parameters?
-	source: "autocomplete.php?field=ASSO&option="+(jQuery("input[name=pid]").val())+"|"+(jQuery("input[id$=_DATE]").val()),
+	source: function(request, response) {jQuery.getJSON("autocomplete.php?field=ASSO", {term:request.term, pid:jQuery("input[name=pid]").val(), event_date:jQuery("input[id$=_DATE]").val()}, response);},
 	html: true
 });
 
@@ -90,12 +89,10 @@ jQuery(".SOUR, input[id*=sid]").autocomplete({
 	source: "autocomplete.php?field=SOUR"
 });
 
-/* This doesn't work (but the callback does!).  How do we obtain the SOUR/sid?
 // SOUR:PAGE
 jQuery(".PAGE").autocomplete({
-	source: "autocomplete.php?field=SOUR_PAGE&sid="+jQuery("input[id^=SOUR]").val()
+	source: function(request, response) {jQuery.getJSON("autocomplete.php?field=SOUR_PAGE", {term:request.term, sid:jQuery("input[class^=SOUR]").val()}, response);}
 });
-*/
 
 // SOUR:TITL
 jQuery("#TITL").autocomplete({
