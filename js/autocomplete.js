@@ -98,8 +98,7 @@ jQuery("#TITL").autocomplete({
 
 // REPO
 jQuery(".REPO, #REPO").autocomplete({
-	source: "autocomplete.php?field=REPO",
-	html: true
+	source: "autocomplete.php?field=REPO"
 });
 
 // REPO:NAME

@@ -88,6 +88,28 @@ case 'INDI': // Individuals, whose name contains the search terms
 	echo json_encode($data);
 	exit;
 
+case 'NOTE': // Notes which contain the search terms
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec, n_full".
+			" FROM `##other`".
+			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)".
+			" WHERE o_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='NOTE'".
+			" ORDER BY n_full"
+		)
+		->execute(array($term, WT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+	$data=array();
+	foreach ($rows as $row) {
+		$note=WT_Note::getInstance($row);
+		if ($note->canDisplayName()) {
+			$data[]=array('value'=>$row['xref'], 'label'=>$note->getFullName());
+		}
+	}	
+	echo json_encode($data);
+	exit;
+
 case 'PLAC': // Place names (with hierarchy), that include the search term
 	// Do not filter by privacy.  Place names on their own do not identify individuals.
 	$data=
@@ -256,9 +278,6 @@ case 'SURN': // Surnames, that start with the search term
 
 case 'FAM':
 	$data=autocomplete_FAM($term, $OPTION);
-	break;
-case 'NOTE':
-	$data=autocomplete_NOTE($term);
 	break;
 case 'INDI_SOUR_PAGE':
 	$data=autocomplete_INDI_SOUR_PAGE($term, $OPTION);
