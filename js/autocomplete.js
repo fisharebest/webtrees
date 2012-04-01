@@ -68,87 +68,87 @@ jQuery("#spouseid, input[id*=pid], input[id*=PID], input[id^=gedcomid], input[id
 });
 
 // INDI ASSOciate
-$(".ASSO").autocomplete({
+jQuery(".ASSO").autocomplete({
 	// Is this the right way to add the option parameters?
-	source: "autocomplete.php?field=INDI&option="+($("input[name=pid]").val())+"|"+($("input[id$=_DATE]").val()),
+	source: "autocomplete.php?field=INDI&option="+(jQuery("input[name=pid]").val())+"|"+(jQuery("input[id$=_DATE]").val()),
 	minLength: 2,
 	html: true
 });;
 
 // FAM
-$(".FAM, input[id*=famid], input[id*=FAMC], #famid").autocomplete({
+jQuery(".FAM, input[id*=famid], input[id*=FAMC], #famid").autocomplete({
 	source: "autocomplete.php?field=FAM",
 	minLength: 2,
 	html: true
 });
 
 // NOTE
-$(".NOTE").autocomplete({
+jQuery(".NOTE").autocomplete({
 	source: "autocomplete.php?field=NOTE",
 	minLength: 2,
 	html: true
 });
 
 // SOUR
-$(".SOUR, input[id*=sid]").autocomplete({
+jQuery(".SOUR, input[id*=sid]").autocomplete({
 	source: "autocomplete.php?field=SOUR",
 	minLength: 2,
 	html: true
 });
 
 // SOUR:TITL
-$("#TITL").autocomplete({
+jQuery("#TITL").autocomplete({
 	source: "autocomplete.php?field=SOUR_TITL",
 	minLength: 2
 });
 
 // REPO
-$(".REPO, #REPO").autocomplete({
+jQuery(".REPO, #REPO").autocomplete({
 	source: "autocomplete.php?field=REPO",
 	minLength: 2,
 	html: true
 });
 
 // OBJE
-$(".OBJE, #OBJE, #mediaid, #filter").autocomplete({
+jQuery(".OBJE, #OBJE, #mediaid, #filter").autocomplete({
 	source: "autocomplete.php?field=OBJE",
 	minLength: 2,
 	html: true
 });
 
 // INDI or FAM or SOUR or REPO or NOTE or OBJE
-$("input[id$=xref], input[name^=gid], #cart_item_id").autocomplete({
+jQuery("input[id$=xref], input[name^=gid], #cart_item_id").autocomplete({
 	source: "autocomplete.php?field=IFSRO",
 	minLength: 2,
 	html: true
 });
 
 // PLAC : full [City, County, State/Province, Country]
-$(".PLAC, #place, input[id=place], input[name*=PLACS], input[name*=PLAC3], input[name^=PLAC], input[name$=PLAC]").autocomplete({
+jQuery(".PLAC, #place, input[id=place], input[name*=PLACS], input[name*=PLAC3], input[name^=PLAC], input[name$=PLAC]").autocomplete({
 	source: "autocomplete.php?field=PLAC",
 	minLength: 2
 });
 
 // PLAC : splitted (mainly for search.php)
-$("input[name=place], input[id=birthplace], input[id=marrplace], input[id=deathplace]").autocomplete({
+jQuery("input[name=place], input[id=birthplace], input[id=marrplace], input[id=deathplace]").autocomplete({
 	source: "autocomplete.php?field=PLAC&option=split",
 	minLength: 2
 });
 
 // INDI:BURI:CEME
-$("input[id^=CEME]").autocomplete({
+jQuery("input[id^=CEME]").autocomplete({
 	source: "autocomplete.php?field=INDI_BURI_CEME",
 	minLength: 2
 });
 
 // GIVN
-$("#GIVN, input[name*=GIVN], input[name*=firstname]").autocomplete({
+jQuery("#GIVN, input[name*=GIVN], input[name*=firstname]").autocomplete({
 	source: "autocomplete.php?field=GIVN",
 	minLength: 2
 });
 
 // SURN
-$("#SURN, input[name*=SURN], input[name*=lastname]").autocomplete({
+jQuery("#SURN, input[name*=SURN], input[name*=lastname]").autocomplete({
 	source: "autocomplete.php?field=SURN",
 	minLength: 2
 });
