@@ -130,8 +130,8 @@ jQuery("input[name=place], input[id=birthplace], input[id=marrplace], input[id=d
 });
 
 // INDI:BURI:CEME
-jQuery("input[id^=CEME]").autocomplete({
-	source: "autocomplete.php?field=INDI_BURI_CEME"
+jQuery("input[id=BURI_CEME]").autocomplete({
+	source: "autocomplete.php?field=CEME"
 });
 
 // GIVN
