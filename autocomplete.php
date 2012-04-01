@@ -43,6 +43,7 @@ case 'CEME': // Cemetery fields, that contain the search term
 		)
 		->execute(array(WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
 	$data=array();
 	foreach ($rows as $row) {
 		$person=WT_Person::getInstance($row);
@@ -78,6 +79,7 @@ case 'INDI': // Individuals, whose name contains the search terms
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
 	$data=array();
 	foreach ($rows as $row) {
 		$person=WT_Person::getInstance($row);
@@ -100,6 +102,7 @@ case 'NOTE': // Notes which contain the search terms
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
 	$data=array();
 	foreach ($rows as $row) {
 		$note=WT_Note::getInstance($row);
@@ -188,6 +191,7 @@ case 'REPO': // Repositories, that include the search terms
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
 	$data=array();
 	foreach ($rows as $row) {
 		$repository=WT_Repository::getInstance($row);
@@ -210,6 +214,7 @@ case 'REPO_NAME': // Repository names, that include the search terms
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
 	$data=array();
 	foreach ($rows as $row) {
 		$repository=WT_Repository::getInstance($row);
@@ -231,6 +236,7 @@ case 'SOUR': // Sources, that include the search terms
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
 	$data=array();
 	foreach ($rows as $row) {
 		$source=WT_Source::getInstance($row);
@@ -239,6 +245,51 @@ case 'SOUR': // Sources, that include the search terms
 		}
 	}	
 	echo json_encode($data);
+	exit;
+
+case 'SOUR_PAGE': // Citation details, for a given source, that contain the search term
+	$sid=safe_GET_xref('sid');
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
+			" FROM `##individuals`".
+			" WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', ?, '@%') AND i_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=?"
+		)
+		->execute(array($sid, $term, WT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
+	$data=array();
+	foreach ($rows as $row) {
+		$person=WT_Person::getInstance($row);
+		if (preg_match('/\n1 SOUR @'.$sid.'@(?:\n[2-9].*)*\n2 PAGE (.*'.str_replace(' ', '.+', preg_quote($term)).'.*)/i', $person->getGedcomRecord(), $match)) {
+			$data[]=$match[1];
+		}
+		if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term)).'.*)/i', $person->getGedcomRecord(), $match)) {
+			$data[]=$match[1];
+		}
+	}
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT SQL_CACHE 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
+			" FROM `##families`".
+			" WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', ?, '@') AND f_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND f_file=?"
+		)
+		->execute(array($sid, $term, WT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
+	foreach ($rows as $row) {
+		$family=WT_Family::getInstance($row);
+		if (preg_match('/\n1 SOUR @'.$sid.'@(?:\n[2-9].*)*\n2 PAGE (.*'.str_replace(' ', '.+', preg_quote($term)).'.*)/i', $family->getGedcomRecord(), $match)) {
+			$data[]=$match[1];
+		}
+		if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term)).'.*)/i', $family->getGedcomRecord(), $match)) {
+			$data[]=$match[1];
+		}
+	}
+	sort($data);
+	echo json_encode(array_unique($data));
 	exit;
 
 case 'SOUR_TITL': // Source titles, that include the search terms
@@ -252,6 +303,7 @@ case 'SOUR_TITL': // Source titles, that include the search terms
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
+	// Filter for privacy
 	$data=array();
 	foreach ($rows as $row) {
 		$source=WT_Source::getInstance($row);
@@ -278,15 +330,6 @@ case 'SURN': // Surnames, that start with the search term
 
 case 'FAM':
 	$data=autocomplete_FAM($term, $OPTION);
-	break;
-case 'INDI_SOUR_PAGE':
-	$data=autocomplete_INDI_SOUR_PAGE($term, $OPTION);
-	break;
-case 'FAM_SOUR_PAGE':
-	$data=autocomplete_FAM_SOUR_PAGE($term, $OPTION);
-	break;
-case 'SOUR_PAGE':
-	$data=autocomplete_SOUR_PAGE($term, $OPTION);
 	break;
 case 'OBJE':
 	$data=autocomplete_OBJE($term);
@@ -436,70 +479,6 @@ function autocomplete_NOTE($term) {
 }
 
 /**
-* returns INDI:SOUR:PAGE matching filter
-* @return Array of string
-*/
-function autocomplete_INDI_SOUR_PAGE($term, $OPTION) {
-
-	$rows=get_autocomplete_INDI_SOUR_PAGE($term, $OPTION);
-	$data=array();
-	foreach ($rows as $row) {
-		$person = WT_Person::getInstance($row);
-		if ($person->canDisplayDetails()) {
-			// a single INDI may have multiple level 1 and level 2 sources
-			for ($level=1; $level<=2; $level++) {
-				$i = 1;
-				do {
-					$srec = get_sub_record("SOUR @{$OPTION}@", $level, $person->getGedcomRecord(), $i++);
-					$page = get_gedcom_value("PAGE", $level+1, $srec);
-					if (stripos($page, $term)!==false || empty($term)) {
-						$data[] = $page;
-					}
-				} while ($srec);
-			}
-		}
-	}
-	return $data;
-}
-
-/**
-* returns FAM:SOUR:PAGE matching filter
-* @return Array of string
-*/
-function autocomplete_FAM_SOUR_PAGE($term, $OPTION) {
-
-	$rows=get_autocomplete_FAM_SOUR_PAGE($term, $OPTION);
-	$data=array();
-	foreach ($rows as $row) {
-		$family = WT_Family::getInstance($row);
-		if ($family->canDisplayDetails()) {
-			// a single FAM may have multiple level 1 and level 2 sources
-			for ($level=1; $level<=2; $level++) {
-				$i = 1;
-				do {
-					$srec = get_sub_record("SOUR @{$OPTION}@", $level, $family->getGedcomRecord(), $i++);
-					$page = get_gedcom_value("PAGE", $level+1, $srec);
-					if (stripos($page, $term)!==false || empty($term)) {
-						$data[] = $page;
-					}
-				} while ($srec);
-			}
-		}
-	}
-	return $data;
-}
-
-/**
-* returns SOUR:PAGE matching filter
-* @return Array of string
-*/
-function autocomplete_SOUR_PAGE($term, $OPTION) {
-	return array_merge(
-		autocomplete_INDI_SOUR_PAGE($term, $OPTION),
-		autocomplete_FAM_SOUR_PAGE($term, $OPTION));
-}
-
-/**
 * returns OBJEcts matching filter
 * @return Array of string
 */
@@ -627,28 +606,6 @@ function get_autocomplete_SOUR($term, $ged_id=WT_GED_ID) {
 			" WHERE (s_name LIKE ? OR s_id LIKE ?) AND s_file=? ORDER BY s_name"
 		)
 		->execute(array("%{$term}%", "{$term}%", $ged_id))
-		->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function get_autocomplete_INDI_SOUR_PAGE($term, $OPTION, $ged_id=WT_GED_ID) {
-	return
-		WT_DB::prepare(
-			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
-			" FROM `##individuals`".
-			" WHERE i_gedcom LIKE ? AND i_file=?"
-		)
-		->execute(array("% SOUR @{$OPTION}@% PAGE %{$term}%", $ged_id))
-		->fetchAll(PDO::FETCH_ASSOC);
-}
-
-function get_autocomplete_FAM_SOUR_PAGE($term, $OPTION, $ged_id=WT_GED_ID) {
-	return
-		WT_DB::prepare(
-			"SELECT 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
-			" FROM `##families`".
-			" WHERE f_gedcom LIKE ? AND f_file=?"
-		)
-		->execute(array("% SOUR @{$OPTION}@% PAGE %{$term}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
 }
 

@@ -91,6 +91,13 @@ jQuery(".SOUR, input[id*=sid]").autocomplete({
 	html: true
 });
 
+/* This doesn't work (but the callback does!).  How do we obtain the SOUR/sid?
+// SOUR:PAGE
+jQuery(".PAGE").autocomplete({
+	source: "autocomplete.php?field=SOUR_PAGE&sid="+jQuery("input[id^=SOUR]").val()
+});
+*/
+
 // SOUR:TITL
 jQuery("#TITL").autocomplete({
 	source: "autocomplete.php?field=SOUR_TITL"
