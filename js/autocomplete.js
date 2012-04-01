@@ -85,13 +85,15 @@ $(".FAM, input[id*=famid], input[id*=FAMC], #famid").autocomplete({
 // NOTE
 $(".NOTE").autocomplete({
 	source: "autocomplete.php?field=NOTE",
-	minLength: 2
+	minLength: 2,
+	html: true
 });
 
 // SOUR
 $(".SOUR, input[id*=sid]").autocomplete({
 	source: "autocomplete.php?field=SOUR",
-	minLength: 2
+	minLength: 2,
+	html: true
 });
 
 // SOUR:TITL
@@ -103,7 +105,8 @@ $("#TITL").autocomplete({
 // REPO
 $(".REPO, #REPO").autocomplete({
 	source: "autocomplete.php?field=REPO",
-	minLength: 2
+	minLength: 2,
+	html: true
 });
 
 // OBJE
