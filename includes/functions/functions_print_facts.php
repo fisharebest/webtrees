@@ -850,16 +850,16 @@ function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
 						case 'none':
 							// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
 							// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-							echo '<img src="', WT_STATIC_URL, 'images/RESN_none.gif"> ', WT_I18N::translate('Show to visitors');
+							echo '<i class="icon-resn-none"></i> ', WT_I18N::translate('Show to visitors');
 							break;
 						case 'privacy':
-							echo '<img src="', WT_STATIC_URL, 'images/RESN_privacy.gif"> ', WT_I18N::translate('Show to members');
+							echo '<i class="icon-resn-privacy"></i> ', WT_I18N::translate('Show to members');
 							break;
 						case 'confidential':
-							echo '<img src="', WT_STATIC_URL, 'images/RESN_confidential.gif"> ', WT_I18N::translate('Show to managers');
+							echo '<i class="icon-resn-confidential"></i> ', WT_I18N::translate('Show to managers');
 							break;
 						case 'locked':
-							echo '<img src="', WT_STATIC_URL, 'images/RESN_locked.gif"> ', WT_I18N::translate('Only managers can edit');
+							echo '<i class="icon-resn-locked"></i> ', WT_I18N::translate('Only managers can edit');
 							break;
 						default:
 							echo $rmatch;
@@ -1113,16 +1113,16 @@ function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
 					case 'none':
 						// Note: "2 RESN none" is not valid gedcom, and the GUI will not let you add it.
 						// However, webtrees privacy rules will interpret it as "show an otherwise private fact to public".
-						echo '<img src="', WT_STATIC_URL, 'images/RESN_none.gif"> ', WT_I18N::translate('Show to visitors');
+						echo '<i class="icon-resn-none"></i> ', WT_I18N::translate('Show to visitors');
 						break;
 					case 'privacy':
-						echo '<img src="', WT_STATIC_URL, 'images/RESN_privacy.gif"> ', WT_I18N::translate('Show to members');
+						echo '<i class="icon-resn-privacy"></i> ', WT_I18N::translate('Show to members');
 						break;
 					case 'confidential':
-						echo '<img src="', WT_STATIC_URL, 'images/RESN_confidential.gif"> ', WT_I18N::translate('Show to managers');
+						echo '<i class="icon-resn-confidential"></i> ', WT_I18N::translate('Show to managers');
 						break;
 					case 'locked':
-						echo '<img src="', WT_STATIC_URL, 'images/RESN_locked.gif"> ', WT_I18N::translate('Only managers can edit');
+						echo '<i class="icon-resn-locked"></i> ', WT_I18N::translate('Only managers can edit');
 						break;
 					default:
 						echo $match;
