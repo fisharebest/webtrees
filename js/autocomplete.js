@@ -69,7 +69,7 @@ jQuery("#spouseid, input[id*=pid], input[id*=PID], input[id^=gedcomid], input[id
 // INDI ASSOciate
 jQuery(".ASSO").autocomplete({
 	// Is this the right way to add the option parameters?
-	source: "autocomplete.php?field=INDI&option="+(jQuery("input[name=pid]").val())+"|"+(jQuery("input[id$=_DATE]").val()),
+	source: "autocomplete.php?field=ASSO&option="+(jQuery("input[name=pid]").val())+"|"+(jQuery("input[id$=_DATE]").val()),
 	html: true
 });
 
