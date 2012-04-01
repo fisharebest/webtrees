@@ -31,12 +31,122 @@ header('Content-Type: text/plain; charset=UTF-8');
 // We have finished writing session data, so release the lock
 Zend_Session::writeClose();
 
-//-- args
 $FILTER=safe_GET('term', WT_REGEX_UNSAFE); // we can search on '"><& etc.
-$OPTION=safe_GET('option');
-$FIELD =safe_GET('field');
+$type =safe_GET('field');
 
-switch ($FIELD) {
+switch ($type) {
+case 'GIVN': // Given names, that start with the search term
+	echo json_encode(
+		WT_DB::prepare(
+			"SELECT SQL_CACHE DISTINCT n_givn".
+			" FROM `##name`".
+			" WHERE n_givn LIKE CONCAT(?, '%') AND n_file=?".
+			" ORDER BY LOCATE(' ', n_givn), n_givn"
+		)
+		->execute(array($FILTER, WT_GED_ID))
+		->fetchOneColumn()
+	);
+	exit;
+
+case 'PLAC': // Place names (with hierarchy), that include the search term
+	$data=
+		WT_DB::prepare(
+			"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)".
+			" FROM      `##places` AS p1".
+			" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id AND p1.p_file=p2.p_file)".
+			" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id AND p2.p_file=p3.p_file)".
+			" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id AND p3.p_file=p4.p_file)".
+			" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id AND p4.p_file=p5.p_file)".
+			" LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id AND p5.p_file=p6.p_file)".
+			" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id AND p6.p_file=p7.p_file)".
+			" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id AND p7.p_file=p8.p_file)".
+			" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id AND p8.p_file=p9.p_file)".
+			" WHERE p1.p_place LIKE CONCAT('%', ?, '%') AND p1.p_file=?".
+			" ORDER BY p1.p_place"
+		)
+		->execute(array($FILTER, WT_GED_ID))
+		->fetchOneColumn();
+	if (!$data && get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES')) {
+		// No place found?  Use an external gazetteer
+		$url=
+			"http://ws.geonames.org/searchJSON".
+			"?name_startsWith=".urlencode($FILTER).
+			"&lang=".WT_LOCALE.
+			"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC".
+			"&style=full";
+		// try to use curl when file_get_contents not allowed
+		if (ini_get('allow_url_fopen')) {
+			$json = file_get_contents($url);
+		} elseif (function_exists('curl_init')) {
+			$ch = curl_init();
+			curl_setopt($ch, CURLOPT_URL, $url);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			$json = curl_exec($ch);
+			curl_close($ch);
+		} else {
+			return $data;
+		}
+		$places = json_decode($json, true);
+		if ($places["geonames"]) {
+			foreach ($places["geonames"] as $k => $place) {
+				$data[] = $place["name"].", ".
+									$place["adminName2"].", ".
+									$place["adminName1"].", ".
+									$place["countryName"];
+			}
+		}
+	}
+	echo json_encode($data);
+	exit;
+	
+case 'PLAC2': // Place names (without hierarchy), that include the search term
+	echo json_encode(
+		WT_DB::prepare(
+			"SELECT SQL_CACHE p_place".
+			" FROM `##places`".
+			" WHERE p_place LIKE CONCAT('%', ?, '%') AND p_file=?".
+			" ORDER BY p_place"
+		)
+		->execute(array($FILTER, WT_GED_ID))
+		->fetchOneColumn()
+	);
+	exit;
+
+case 'REPO_NAME': // Repository names, that include the search term
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec, n_full".
+			" FROM `##other`".
+			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)".
+			" WHERE n_full LIKE CONCAT('%', ?, '%') AND o_file=? AND o_type='REPO'".
+			" ORDER BY n_full"
+		)
+		->execute(array($FILTER, WT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+	$data=array();
+	foreach ($rows as $row) {
+		$repository=WT_Repository::getInstance($row);
+		if ($repository->canDisplayName()) {
+			$data[]=$row['n_full'];
+		}
+	}	
+	echo json_encode($data);
+	exit;
+
+case 'SURN': // Surnames, that start with the search term
+	echo json_encode(
+		WT_DB::prepare(
+			"SELECT SQL_CACHE DISTINCT n_surname".
+			" FROM `##name`".
+			" WHERE n_surname LIKE CONCAT(?, '%') AND n_file=?".
+			" ORDER BY n_surname"
+		)
+		->execute(array($FILTER, WT_GED_ID))
+		->fetchOneColumn()
+	);
+	exit;
+
 case 'INDI':
 	$data=autocomplete_INDI($FILTER, $OPTION);
 	break;
@@ -50,7 +160,7 @@ case 'SOUR':
 	$data=autocomplete_SOUR($FILTER);
 	break;
 case 'SOUR_TITL':
-	$data=autocomplete_SOUR($FILTER);
+	$data=autocomplete_SOUR_TITL($FILTER);
 	break;
 case 'INDI_BURI_CEME':
 	$data=autocomplete_INDI_BURI_CEME($FILTER);
@@ -67,29 +177,14 @@ case 'SOUR_PAGE':
 case 'REPO':
 	$data=autocomplete_REPO($FILTER);
 	break;
-case 'REPO_NAME':
-	$data=autocomplete_REPO_NAME($FILTER);
-	break;
 case 'OBJE':
 	$data=autocomplete_OBJE($FILTER);
 	break;
 case 'IFSRO':
 	$data=autocomplete_IFSRO($FILTER);
 	break;
-case 'SURN':
-	$data=autocomplete_SURN($FILTER);
-	break;
-case 'GIVN':
-	$data=autocomplete_GIVN($FILTER);
-	break;
-case 'NAME':
-	$data=autocomplete_NAME($FILTER);
-	break;
-case 'PLAC':
-	$data=autocomplete_PLAC($FILTER, $OPTION);
-	break;
 default:
-	die("Bad arg: field={$FIELD}");
+	die("Bad arg: type={$type}");
 }
 
 $results=array();
@@ -257,7 +352,7 @@ function autocomplete_SOUR_TITL($FILTER) {
 	foreach ($rows as $row) {
 		$source = WT_Source::getInstance($row);
 		if ($source->canDisplayName()) {
-			$data[] = $source->getFullName();
+			$data[] = strip_tags($source->getFullName());
 		}
 	}
 	return $data;
@@ -442,92 +537,6 @@ function autocomplete_IFSRO() {
 		);
 }
 
-/**
-* returns SURNames matching filter
-* @return Array of string
-*/
-function autocomplete_SURN($FILTER) {
-	return get_autocomplete_SURN($FILTER);
-}
-
-/**
-* returns GIVenNames matching filter
-* @return Array of string
-*/
-function autocomplete_GIVN($FILTER) {
-
-	$rows=get_autocomplete_GIVN($FILTER);
-	$data=array();
-	foreach ($rows as $row) {
-		$givn=$row->n_givn;
-		list($givn) = explode("/", $givn);
-		list($givn) = explode(",", $givn);
-		list($givn) = explode("*", $givn);
-		list($givn) = explode(" ", $givn);
-		if ($givn) {
-			$data[]=$row->n_givn;
-		}
-	}
-	return $data;
-}
-
-/**
-* returns NAMEs matching filter
-* @return Array of string
-*/
-function autocomplete_NAME($FILTER) {
-	return array_merge(autocomplete_GIVN($FILTER), autocomplete_SURN($FILTER));
-}
-
-/**
-* returns PLACes matching filter
-* @return Array of string City, County, State/Province, Country
-*/
-function autocomplete_PLAC($FILTER, $OPTION) {
-	global $USE_GEONAMES;
-
-	$data=get_autocomplete_PLAC($FILTER);
-
-	//-- no match => perform a geoNames query if enabled
-	if (empty($data) && $USE_GEONAMES) {
-		$url = "http://ws.geonames.org/searchJSON".
-					"?name_startsWith=".urlencode($FILTER).
-					"&lang=".WT_LOCALE.
-					"&fcode=CMTY&fcode=ADM4&fcode=PPL&fcode=PPLA&fcode=PPLC".
-					"&style=full";
-		// try to use curl when file_get_contents not allowed
-		if (ini_get('allow_url_fopen')) {
-			$json = file_get_contents($url);
-		} elseif (function_exists('curl_init')) {
-			$ch = curl_init();
-			curl_setopt($ch, CURLOPT_URL, $url);
-			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-			$json = curl_exec($ch);
-			curl_close($ch);
-		} else {
-			return $data;
-		}
-		$places = json_decode($json, true);
-		if ($places["geonames"]) {
-			foreach ($places["geonames"] as $k => $place) {
-				$data[] = $place["name"].", ".
-									$place["adminName2"].", ".
-									$place["adminName1"].", ".
-									$place["countryName"];
-			}
-		}
-	}
-
-	// split ?
-	if ($OPTION=="split") {
-		foreach ($data as $k=>$v) {
-			list($data[$k]) = explode(",", $v);
-		}
-	}
-
-	return $data;
-}
-
 function get_autocomplete_INDI($FILTER, $ged_id=WT_GED_ID) {
 	// search for ids first and request the exact id from FILTER and ids with one additional digit
 	$rows=
@@ -678,73 +687,3 @@ function get_autocomplete_OBJE($FILTER, $ged_id=WT_GED_ID) {
 		->execute(array("%{$FILTER}%", "{$FILTER}%", $ged_id))
 		->fetchAll(PDO::FETCH_ASSOC);
 }
-
-function get_autocomplete_SURN($FILTER, $ged_id=WT_GED_ID) {
-	return
-		WT_DB::prepare(
-			"SELECT DISTINCT n_surname".
-			" FROM `##name`".
-			" WHERE n_surname LIKE ? AND n_file=? ORDER BY n_surname"
-		)
-		->execute(array("%{$FILTER}%", $ged_id))
-		->fetchOneColumn();
-}
-
-function get_autocomplete_GIVN($FILTER, $ged_id=WT_GED_ID) {
-	return
-		WT_DB::prepare(
-			"SELECT DISTINCT n_givn".
-			" FROM `##name`".
-			" WHERE n_givn LIKE ? AND n_file=? ORDER BY n_givn"
-		)
-		->execute(array("%{$FILTER}%", $ged_id))
-		->fetchAll();
-}
-//PLAC autocomplete - three functions
-function get_autocomplete_PLAC($FILTER, $ged_id=WT_GED_ID) {
-
-        // Retrieve the maximum number of levels
-	$nbLevels = get_number_levels_PLAC($ged_id) + 1;
-	
-        // Generate the SQL statement
-	$sql = generate_place_sql($nbLevels);
-	
-	$arrayFilter = array();
-	for ($i = 0; $i < $nbLevels; $i++) {
-		$arrayFilter[] = "%{$FILTER}%";
-		$arrayFilter[] =  $ged_id;
-	}
-	
-	return WT_DB::prepare($sql)->execute($arrayFilter)->fetchOneColumn();
-}
-
-function get_number_levels_PLAC($ged_id=WT_GED_ID){
-	return
-		WT_DB::prepare("SELECT MAX(p_level) FROM `##places` WHERE p_file=?")
-		->execute(array($ged_id))
-		->fetchOne(0);
-}
-
-function generate_place_sql($nbLevels) { 
-	if($nbLevels<=1){ 
-    	return 
-        	"SELECT p1.p_place". 
-            " FROM `##places` p1". 
-            " WHERE p1.p_place like ? and p1.p_parent_id=0 AND p1.p_file=?"; 
-	}
-	else {
-		$select = "p1.p_place"; 
-		$from = "`##places` p1";
-		for($i = 2; $i <= $nbLevels ; $i++) { 
-			$select .= ", ', ', p".$i.".p_place";
-			$from .= " JOIN `##places` p".$i." ON (p".($i-1).".p_parent_id=p".$i.".p_id AND p".($i-1).".p_file=p".$i.".p_file)"; 
-		}
-		return
-			"SELECT CONCAT(".$select.")".
-			" FROM ".$from.
-			" WHERE p1.p_place like ? and p".$nbLevels.".p_parent_id=0 AND p1.p_file=?".
-			" UNION ".
-			generate_place_sql($nbLevels - 1);
-	}
-//end of PLAC autocomplete functions
-} 

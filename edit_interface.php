@@ -1002,7 +1002,7 @@ case 'addnewrepository':
 		<input type="hidden" name="pid" value="newrepo">
 		<table class="facts_table">
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_I18N::translate('Repository name'); ?></td>
-			<td class="optionbox wrap"><input type="text" name="NAME" id="NAME" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('NAME'); ?></td></tr>
+			<td class="optionbox wrap"><input type="text" name="REPO_NAME" id="REPO_NAME" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('REPO_NAME'); ?></td></tr>
 			<?php if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) { ?>
 			<tr><td class="descriptionbox wrap width25"><?php echo WT_Gedcom_Tag::getLabel('_HEB'), help_link('_HEB'); ?></td>
 			<td class="optionbox wrap"><input type="text" name="_HEB" id="_HEB" value="" size="40" maxlength="255"> <?php echo print_specialchar_link('_HEB'); ?></td></tr>
@@ -1043,7 +1043,7 @@ case 'addnewrepository':
 //-- create a repository record from the incoming variables
 case 'addrepoaction':
 	$newgedrec = "0 @XREF@ REPO";
-	if (isset($_REQUEST['NAME'])) $NAME = $_REQUEST['NAME'];
+	if (isset($_REQUEST['REPO_NAME'])) $NAME = $_REQUEST['REPO_NAME'];
 	if (isset($_REQUEST['_HEB'])) $_HEB = $_REQUEST['_HEB'];
 	if (isset($_REQUEST['ROMN'])) $ROMN = $_REQUEST['ROMN'];
 	if (isset($_REQUEST['ADDR'])) $ADDR = $_REQUEST['ADDR'];
