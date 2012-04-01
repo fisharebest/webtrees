@@ -43,7 +43,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 
 	// Implement class WT_Module_Block
 	public function getBlock($block_id, $template=true, $cfg=null) {
-		global $ctype, $show_full, $PEDIGREE_FULL_DETAILS, $BROWSERTYPE;
+		global $ctype, $show_full, $PEDIGREE_FULL_DETAILS, $BROWSERTYPE, $controller;
 
 		self::updateSchema(); // make sure the favorites table has been created
 
@@ -112,25 +112,11 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$class=$this->getName().'_block';
 		$title=$this->getTitle();
 
-		if (WT_USER_ID && $ENABLE_AUTOCOMPLETE) {
-			$content = '<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.autocomplete.js"></script>
-			<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$("input[name^=gid]").autocomplete("autocomplete.php", {
-					extraParams: {field:"IFSRO"},
-					formatItem: function(row, i) {
-						return row[0] + " (" + row[1] + ")";
-					},
-					formatResult: function(row) {
-						return row[1];
-					},
-					width: 400,
-					minChars: 2
-				});
-			});
-			</script>';
-		} else $content = '';
+		if (WT_USER_ID) {
+			$controller->addExternalJavaScript('js/autocomplete.js');
+		}
 
+		$content = '';
 		if ($block) {
 			$style = 2; // 1 means "regular box", 2 means "wide box"
 			$tableWidth = ($BROWSERTYPE=='msie') ? '95%' : '99%'; // IE needs to have room for vertical scroll bar inside the box
