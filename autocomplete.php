@@ -67,6 +67,27 @@ case 'GIVN': // Given names, that start with the search term
 	);
 	exit;
 
+case 'INDI': // Individuals, whose name contains the search terms
+	// Fetch all data, regardless of privacy
+	$rows=
+		WT_DB::prepare(
+			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
+			" FROM `##individuals`".
+			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
+			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=? ORDER BY n_full"
+		)
+		->execute(array($term, WT_GED_ID))
+		->fetchAll(PDO::FETCH_ASSOC);
+	$data=array();
+	foreach ($rows as $row) {
+		$person=WT_Person::getInstance($row);
+		if ($person->canDisplayName()) {
+			$data[]=array('value'=>$row['xref'], 'label'=>str_replace(array('@N.N.', '@P.N.'), array($UNKNOWN_NN, $UNKNOWN_PN), $row['n_full']));
+		}
+	}	
+	echo json_encode($data);
+	exit;
+
 case 'PLAC': // Place names (with hierarchy), that include the search term
 	// Do not filter by privacy.  Place names on their own do not identify individuals.
 	$data=
@@ -133,14 +154,14 @@ case 'PLAC2': // Place names (without hierarchy), that include the search term
 	);
 	exit;
 
-case 'REPO': // Repositories, that include the search term
+case 'REPO': // Repositories, that include the search terms
 	// Fetch all data, regardless of privacy
 	$rows=
 		WT_DB::prepare(
 			"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec, n_full".
 			" FROM `##other`".
 			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)".
-			" WHERE n_full LIKE CONCAT('%', ?, '%') AND o_file=? AND o_type='REPO'".
+			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='REPO'".
 			" ORDER BY n_full"
 		)
 		->execute(array($term, WT_GED_ID))
@@ -155,14 +176,14 @@ case 'REPO': // Repositories, that include the search term
 	echo json_encode($data);
 	exit;
 
-case 'REPO_NAME': // Repository names, that include the search term
+case 'REPO_NAME': // Repository names, that include the search terms
 	// Fetch all data, regardless of privacy
 	$rows=
 		WT_DB::prepare(
 			"SELECT o_type AS type, o_id AS xref, o_file AS ged_id, o_gedcom AS gedrec, n_full".
 			" FROM `##other`".
 			" JOIN `##name` ON (o_id=n_id AND o_file=n_file)".
-			" WHERE n_full LIKE CONCAT('%', ?, '%') AND o_file=? AND o_type='REPO'".
+			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND o_file=? AND o_type='REPO'".
 			" ORDER BY n_full"
 		)
 		->execute(array($term, WT_GED_ID))
@@ -177,14 +198,14 @@ case 'REPO_NAME': // Repository names, that include the search term
 	echo json_encode($data);
 	exit;
 
-case 'SOUR': // Sources, that include the search term
+case 'SOUR': // Sources, that include the search terms
 	// Fetch all data, regardless of privacy
 	$rows=
 		WT_DB::prepare(
 			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, n_full".
 			" FROM `##sources`".
 			" JOIN `##name` ON (s_id=n_id AND s_file=n_file)".
-			" WHERE n_full LIKE CONCAT('%', ?, '%') AND s_file=? ORDER BY n_full"
+			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY n_full"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -198,14 +219,14 @@ case 'SOUR': // Sources, that include the search term
 	echo json_encode($data);
 	exit;
 
-case 'SOUR_TITL': // Source titles, that include the search term
+case 'SOUR_TITL': // Source titles, that include the search terms
 	// Fetch all data, regardless of privacy
 	$rows=
 		WT_DB::prepare(
 			"SELECT 'SOUR' AS type, s_id AS xref, s_file AS ged_id, s_gedcom AS gedrec, n_full".
 			" FROM `##sources`".
 			" JOIN `##name` ON (s_id=n_id AND s_file=n_file)".
-			" WHERE n_full LIKE CONCAT('%', ?, '%') AND s_file=? ORDER BY n_full"
+			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND s_file=? ORDER BY n_full"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -233,9 +254,6 @@ case 'SURN': // Surnames, that start with the search term
 	);
 	exit;
 
-case 'INDI':
-	$data=autocomplete_INDI($term, $OPTION);
-	break;
 case 'FAM':
 	$data=autocomplete_FAM($term, $OPTION);
 	break;
@@ -250,9 +268,6 @@ case 'FAM_SOUR_PAGE':
 	break;
 case 'SOUR_PAGE':
 	$data=autocomplete_SOUR_PAGE($term, $OPTION);
-	break;
-case 'REPO':
-	$data=autocomplete_REPO($term);
 	break;
 case 'OBJE':
 	$data=autocomplete_OBJE($term);
