@@ -280,11 +280,11 @@ elseif ($action=='setup') {
 		<td colspan="2" class="optionbox">
 		<div class="report-type">
 		<div>
-		<i class="icon-media_pdf"></i>
+		<i class="icon-mime-application-pdf"></i>
 		<p><input type="radio" name="output" value="PDF" checked="checked"></p>
 		</div>
 		<div>
-		<i class="icon-media_html"></i>
+		<i class="icon-mime-text-html"></i>
 		<p><input type="radio" name="output" value="HTML"';
 		if ($output=='HTML') echo ' checked="checked"', '>';
 	echo '</p>
