@@ -306,11 +306,11 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 		if (isset($family) && $controller->record->canEdit()) {
 			if ($type == "spouse") {
-				$child_u = WT_I18N::translate('Add a son or daughter');
+				$child_u = WT_I18N::translate('Add a new son or daughter');
 				$child_m = WT_I18N::translate('son');
 				$child_f = WT_I18N::translate('daughter');
 			} else {
-				$child_u = WT_I18N::translate('Add a brother or sister');
+				$child_u = WT_I18N::translate('Add a new brother or sister');
 				$child_m = WT_I18N::translate('brother');
 				$child_f = WT_I18N::translate('sister');
 			}
@@ -324,16 +324,9 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 				<td class="facts_value">
 					<a href="#" onclick="return addnewchild('<?php echo $family->getXref(); ?>');"><?php echo $child_u; ?></a>
 					<span style='white-space:nowrap;'>
-						<a href="#" onclick="return addnewchild('<?php echo $family->getXref(); ?>','M');"><?php echo WT_Person::sexImage('M', 'small', '', $child_m); ?></a>
-						<a href="#" onclick="return addnewchild('<?php echo $family->getXref(); ?>','F');"><?php echo WT_Person::sexImage('F', 'small', '', $child_f); ?></a>
+						<a href="#" class="icon-sex_m_15x15" onclick="return addnewchild('<?php echo $family->getXref(); ?>','M');"></a>
+						<a href="#" class="icon-sex_f_15x15" onclick="return addnewchild('<?php echo $family->getXref(); ?>','F');"></a>
 					</span>
-					<?php
-						if ($type=='spouse') {
-							echo help_link('add_son_daughter');
-						} else {
-							echo help_link('add_sibling');
-						}
-					?>
 				</td>
 			</tr>
 			<?php
