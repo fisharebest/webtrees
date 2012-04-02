@@ -117,21 +117,21 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		$content = '';
-		if ($block) {
+//		if ($block) {
 			$style = 2; // 1 means "regular box", 2 means "wide box"
-			$tableWidth = ($BROWSERTYPE=='msie') ? '95%' : '99%'; // IE needs to have room for vertical scroll bar inside the box
-			$cellSpacing = '1px';
-		} else {
-			$style = 2;
-			$tableWidth = '99%';
-			$cellSpacing = '3px';
-		}
+//			$tableWidth = ($BROWSERTYPE=='msie') ? '95%' : '99%'; // IE needs to have room for vertical scroll bar inside the box
+//			$cellSpacing = '1px';
+//		} else {
+//			$style = 2;
+//			$tableWidth = '99%';
+//			$cellSpacing = '3px';
+//		}
 		if ($userfavs) {
-			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\">";
+//			$content .= "<div>";
 			foreach ($userfavs as $key=>$favorite) {
 				if (isset($favorite['id'])) $key=$favorite['id'];
 				$removeFavourite = "<a class=\"font9\" href=\"index.php?ctype={$ctype}&amp;action=deletefav&amp;favorite_id={$key}\" onclick=\"return confirm('".WT_I18N::translate('Are you sure you want to remove this item from your list of Favorites?')."');\">".WT_I18N::translate('Remove')."</a><br>";
-				$content .= '<tr><td>';
+//				$content .= '<tr><td>';
 				if ($favorite['type']=='URL') {
 					$content .= "<div id=\"boxurl".$key.".0\" class=\"person_box\">";
 					if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) $content .= $removeFavourite;
@@ -174,40 +174,36 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 						}
 					}
 				}
-				$content .= '</td></tr>';
+//				$content .= '</td></tr>';
 			}
-			$content .= '</table>';
+//			$content .= '</div>';
 		}
 		if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
-			$content .=
-			WT_JS_START.'var pastefield; function paste_id(value) {pastefield.value=value;}'.WT_JS_END.
-			'<br>';
 			$uniqueID = floor(microtime() * 1000000); // This block can theoretically appear multiple times, so use a unique ID.
-			$content .= "<b><a href=\"#\" onclick=\"return expand_layer('add_fav{$uniqueID}');\"><i id=\"add_fav{$uniqueID}_img\" class=\"icon-plus\"></i> ".WT_I18N::translate('Add a new favorite')."</a></b>";
-			$content .= "<br><div id=\"add_fav{$uniqueID}\" style=\"display: none;\">";
+			$content .= WT_JS_START.'var pastefield; function paste_id(value) {pastefield.value=value;}'.WT_JS_END.'<br>';
+			$content .= '<div class="add_fav_head">';
+			$content .= '<a href="#" onclick="return expand_layer(\'add_fav'.$uniqueID.'\');">'.WT_I18N::translate('Add a new favorite').'<i id="add_fav'.$uniqueID.'_img" class="icon-plus"></i></a>';
+			$content .= '</div>';
+			$content .= "<div id=\"add_fav{$uniqueID}\" style=\"display: none;\">";
 			$content .= "<form name=\"addfavform\" method=\"get\" action=\"index.php\">";
 			$content .= "<input type=\"hidden\" name=\"action\" value=\"addfav\">";
 			$content .= "<input type=\"hidden\" name=\"ctype\" value=\"$ctype\">";
 			$content .= "<input type=\"hidden\" name=\"ged\" value=\"".WT_GEDCOM."\">";
-			$content .= "<table width=\"{$tableWidth}\" style=\"border:none\" cellspacing=\"{$cellSpacing}\" class=\"center\">";
-			$content .= "<tr><td>".WT_I18N::translate('Enter a Person, Family, or Source ID')." <br>";
-			$content .= "<input class=\"pedigree_form\" type=\"text\" name=\"gid\" id=\"gid{$uniqueID}\" size=\"5\" value=\"\">";
-
+			$content .= '<div class="add_fav_ref">';
+			$content .= '<label for "gid">'.WT_I18N::translate('Enter a Person, Family, or Source ID').'</label>';
+			$content .= '<input class="pedigree_form" type="text" name="gid" id="gid'.$uniqueID.'" size="5" value="">';
 			$content .= ' '.print_findindi_link('gid'.$uniqueID);
 			$content .= ' '.print_findfamily_link('gid'.$uniqueID);
 			$content .= ' '.print_findsource_link('gid'.$uniqueID);
 			$content .= ' '.print_findrepository_link('gid'.$uniqueID);
 			$content .= ' '.print_findnote_link('gid'.$uniqueID);
 			$content .= ' '.print_findmedia_link('gid'.$uniqueID);
-
-			$content .= "<br>".WT_I18N::translate('OR<br />Enter a URL and a title');
-			$content .= "<table><tr><td>".WT_Gedcom_Tag::getLabel('URL')."</td><td><input type=\"text\" name=\"url\" size=\"40\" value=\"\"></td></tr>";
-			$content .= "<tr><td>".WT_I18N::translate('Title:')."</td><td><input type=\"text\" name=\"favtitle\" size=\"40\" value=\"\"></td></tr></table>";
-			if ($block) $content .= "</td></tr><tr><td><br>";
-			else $content .= "</td><td>";
-			$content .= WT_I18N::translate('Enter an optional note about this favorite');
-			$content .= "<br><textarea name=\"favnote\" rows=\"6\" cols=\"50\"></textarea>";
-			$content .= "</td></tr></table>";
+			$content .= '<p class="fav_url">'.WT_I18N::translate('Or enter a URL and a title').'</p>';
+			$content .= '<p><label for "url">'.WT_Gedcom_Tag::getLabel('URL').'</label><input type="text" name="url" size="40" value=""></p>';
+			$content .= '<p><label for "favtitle">'.WT_I18N::translate('Title').'</label><input type="text" name="favtitle" size="40" value=""></p>';
+			$content .= '<p>'.WT_I18N::translate('Enter an optional note about this favorite').'</p>';
+			$content .= "<textarea name=\"favnote\" rows=\"6\" cols=\"50\"></textarea>";
+			$content .= "</div>";
 			$content .= "<br><input type=\"submit\" value=\"".WT_I18N::translate('Add')."\" style=\"font-size:8pt;\">";
 			$content .= "</form></div>";
 		}

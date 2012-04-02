@@ -1676,6 +1676,16 @@ overflow:visible !important;
 .user_favorites_block .person_box .details2,.user_favorites_block .person_boxF.details2,.user_favorites_block .person_boxNN.details2 {
 min-height:40px;
 }
+
+ /* ======= Favourites block ========== */
+.user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
+.add_fav_head {font-weight:900; margin:5px 0;}
+.add_fav_head i {margin:0 5px 1px 5px;}
+.add_fav_ref p {margin:5px 0;}
+.add_fav_ref label {display: inline-block; min-width:100px;}
+.add_fav_ref label:after {content:":";}
+.add_fav_ref input {margin: 0 5px;}
+
 #branches-page table,#medialist-page .list_table {
 margin:auto;
 }
