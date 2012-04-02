@@ -2497,7 +2497,7 @@ function SetVarSHandler($attrs) {
 		$value = preg_replace("/\\$".$match[$i][1]."/", $t, $value, 1);
 		$i++;
 	}
-	if (substr($value, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 15) == 'WT_I18N::number' || substr($value, 0, 23)=='WT_Gedcom_Tag::getLabel') {
+	if (substr($value, 0, 18) == 'WT_I18N::translate' || substr($value, 0, 15) == 'WT_I18N::number' || substr($value, 0, 23)=='WT_Gedcom_Tag::getLabel') {
 		eval("\$value = $value;");
 	}
 	// Arithmetic functions

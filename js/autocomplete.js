@@ -142,6 +142,6 @@ jQuery("#GIVN, input[name*=GIVN], input[name*=firstname]").autocomplete({
 });
 
 // SURN
-jQuery("#SURN, input[name*=SURN], input[name*=lastname]").autocomplete({
+jQuery("#SURN, input[name*=SURN], input[name*=lastname], #NAME, input[id=name]").autocomplete({
 	source: "autocomplete.php?field=SURN"
 });
