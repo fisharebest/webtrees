@@ -105,7 +105,7 @@ jQuery(".REPO, #REPO").autocomplete({
 });
 
 // REPO:NAME
-$("#REPO_NAME").autocomplete({
+jQuery("#REPO_NAME").autocomplete({
 	source: "autocomplete.php?field=REPO_NAME"
 });
 
