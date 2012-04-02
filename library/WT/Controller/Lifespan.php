@@ -37,6 +37,9 @@ function compare_people($a, $b) {
 class WT_Controller_Lifespan extends WT_Controller_Chart {
 	var $pids = array ();
 	var $people = array();
+	var $place = '';
+	var $beginYear = '';
+	var $endYear = '';
 	var $scale = 2;
 	var $YrowLoc = 125;
 	var $minYear = 0;
@@ -88,6 +91,8 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 		$clear =safe_GET_bool('clear');
 		$addfam=safe_GET_bool('addFamily');
 		$place =safe_GET('place');
+		$beginYear=safe_GET_integer('beginYear', 0, date('Y')+100, 0);
+		$endYear  =safe_GET_integer('endYear',   0, date('Y')+100, 0);
 
 		if ($clear) {
 			// Empty list
@@ -98,6 +103,7 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 		} elseif ($place) {
 			// All records found in a place
 			$this->pids=get_place_positions($place);
+			$this->place=$place;
 		} else {
 			// Modify an existing list of records
 			if (isset($_SESSION['timeline_pids'])) {
@@ -120,12 +126,11 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 		}
 		$_SESSION['timeline_pids']=$this->pids;
 
-
-		$beginYear  =safe_GET_integer('beginYear', 0, date('Y')+100, 0);
-		$endYear    =safe_GET_integer('endYear',   0, date('Y')+100, 0);
+		$this->beginYear=$beginYear;
+		$this->endYear=$endYear;
 		if ($beginYear==0 || $endYear==0) {
-		//-- cleanup user input
-		$this->pids = array_unique($this->pids);  //removes duplicates
+			//-- cleanup user input
+			$this->pids = array_unique($this->pids);  //removes duplicates
 			foreach ($this->pids as $key => $value) {
 				if ($value != $remove) {
 					$this->pids[$key] = $value;
@@ -134,7 +139,6 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 					if ($person && $person->getType()=='INDI') {
 						$bdate = $person->getEstimatedBirthDate();
 						$ddate = $person->getEstimatedDeathDate();
-
 						//--Checks to see if the details of that person can be viewed
 						if ($bdate->isOK() && $person->canDisplayDetails()) {
 							$this->people[] = $person;
@@ -143,7 +147,6 @@ class WT_Controller_Lifespan extends WT_Controller_Chart {
 				}
 			}
 		}
-
 
 		//--Finds if the begin year and end year textboxes are not empty
 		else {

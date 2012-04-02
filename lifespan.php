@@ -299,9 +299,9 @@ echo
 					<option value="1">4</option>
 
 					</select></td>
-				<td><input type="text" name="beginYear" size="5" value="'; if (isset($beginYear)) echo $beginYear; echo '"></td>
-				<td><input type="text" name="endYear" size="5" value="'; if (isset($endYear)) echo $endYear; echo '"></td>
-				<td><input type="text" name="place" size="15" value="'; if (isset($place)) echo $place; echo '"></td>
+				<td><input type="text" name="beginYear" size="5" value="', $controller->beginYear==0?'':$controller->beginYear, '"></td>
+				<td><input type="text" name="endYear" size="5" value="', $controller->endYear==0?'':$controller->endYear, '"></td>
+				<td><input type="text" name="place" size="15" value="', $controller->place, '"></td>
 				<td><input type="submit" name="search" value="', WT_I18N::translate('Search'), '"></td>
 			<td><input type="button" value="', WT_I18N::translate('Clear Chart'), '" onclick="window.location = \'lifespan.php?clear=1\';"></td>
 			</tr>
