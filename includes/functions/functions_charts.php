@@ -266,18 +266,19 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 	echo '</span>';
 
 	if ($sosa==0 && WT_USER_CAN_EDIT) {
-		echo "<br>";
-		echo "<span class='nowrap font12'>";
+		echo '<br>';
+		echo '<span class="nowrap font12">';
 		echo "<a href=\"#\" onclick=\"return addnewchild('$famid','');\">" . WT_I18N::translate('Add a child to this family') . "</a>";
-		echo " <a href=\"#\" onclick=\"return addnewchild('$famid','M');\">[".WT_Person::sexImage('M', 'small', '', WT_I18N::translate('son'     ))."]</a>";
-		echo " <a href=\"#\" onclick=\"return addnewchild('$famid','F');\">[".WT_Person::sexImage('F', 'small', '', WT_I18N::translate('daughter'))."]</a>";
-		echo help_link('add_child');
-		echo "</span>";
-		echo "<br><br>";
+		echo ' <a class="icon-sex_m_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'M\');" title="',WT_I18N::translate('son'), '"></a>';
+		echo ' <a class="icon-sex_f_15x15" href="#" onclick="return addnewchild(\'', $famid, '\',\'F\');" title="',WT_I18N::translate('daughter'), '"></a>';
+		echo '</span>';
+		echo '<br><br>';
 	}
-	echo "</td>";
-	if ($sosa>0) echo "<td></td><td></td>";
-	echo "</tr>";
+	echo '</td>';
+	if ($sosa>0) {
+		echo '<td></td><td></td>';
+	}
+	echo '</tr>';
 
 	$newchildren = array();
 	$oldchildren = array();

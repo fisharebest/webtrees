@@ -1148,11 +1148,6 @@ case 'WORD_WRAPPED_NOTES':
 	// This section contains all the other help items.
 	//////////////////////////////////////////////////////////////////////////////
 
-case 'add_child':
-	$title=WT_I18N::translate('Add a child to this family');
-	$text=WT_I18N::translate('You can add a child to this family by clicking this link.<br /><br />Adding a child is simple: Just click the link, fill out the boxes in the pop up screen, and that\'s all.');
-	break;
-
 case 'add_facts':
 	$title=WT_I18N::translate('Add a fact');
 	$text=WT_I18N::translate('Here you can add a fact to the record being edited.<br /><br />First choose a fact from the drop-down list, then click the <b>Add</b> button.  All possible facts that you can add to the database are in that drop-down list.');
