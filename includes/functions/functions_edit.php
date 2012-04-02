@@ -184,7 +184,7 @@ function edit_field_access_level($name, $selected='', $extra='') {
 function edit_field_resn($name, $selected='', $extra='') {
 	$RESN=array(
 		''            =>'',
-		//'none'        =>WT_I18N::translate('Show to visitors'), // Not valid GEDCOM, but useful
+		'none'        =>WT_I18N::translate('Show to visitors'), // Not valid GEDCOM, but very useful
 		'privacy'     =>WT_I18N::translate('Show to members'),
 		'confidential'=>WT_I18N::translate('Show to managers'),
 		'locked'      =>WT_I18N::translate('Only managers can edit')
