@@ -127,7 +127,7 @@ jQuery(".PLAC, #place, input[id=place], input[name*=PLACS], input[name*=PLAC3], 
 });
 
 // PLAC : without hierarchy
-jQuery("input[name=place], input[id=birthplace], input[id=marrplace], input[id=deathplace]").autocomplete({
+jQuery("input[name=place], input[id=birthplace], input[id=marrplace], input[id=deathplace], input[id=bdmplace]").autocomplete({
 	source: "autocomplete.php?field=PLAC2"
 });
 

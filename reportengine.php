@@ -4,7 +4,7 @@
 // Processes webtrees XML Reports and generates a report
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -229,6 +229,11 @@ elseif ($action=='setup') {
 						$input['default'] = $sid;
 					}
 				}
+				if ($input['lookup']=='DATE') {
+					if (isset($input['default'])) {
+						$input['default'] = strtoupper($input['default']);
+					}
+				}
 			}
 			if ($input['type']=='text') {
 				echo '<input type="text" name="vars[', $input['name'], ']" id="', $input['name'], '" 
@@ -247,7 +252,7 @@ elseif ($action=='setup') {
 				foreach ($options as $indexval => $option) {
 					$opt = explode('=>', $option);
 					list($value, $display)=$opt;
-					if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 23)=='WT_Gedcom_Tag::getLabel') {
+					if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 15) == 'WT_I18N::number' || substr($display, 0, 23)=='WT_Gedcom_Tag::getLabel') {
 						eval("\$display=$display;");
 					}
 					echo '<option value="', htmlspecialchars($value), '"';

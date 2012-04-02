@@ -4,7 +4,7 @@
 // used by the SAX parser to generate reports from the XML report file.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -2254,7 +2254,7 @@ function varSHandler($attrs) {
 			$tfact = $type;
 		}
 		$var = str_replace(array("@fact", "@desc"), array(WT_Gedcom_Tag::getLabel($tfact), $desc), $var);
-		if (substr($var, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 23)=='WT_Gedcom_Tag::getLabel') {
+		if (substr($var, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 15) == 'WT_I18N::number' || substr($var, 0, 23)=='WT_Gedcom_Tag::getLabel') {
 			eval("\$var=$var;");
 		}
 	}
@@ -2497,7 +2497,7 @@ function SetVarSHandler($attrs) {
 		$value = preg_replace("/\\$".$match[$i][1]."/", $t, $value, 1);
 		$i++;
 	}
-	if (substr($value, 0, 18) == 'WT_I18N::translate' || substr($value, 0, 23)=='WT_Gedcom_Tag::getLabel') {
+	if (substr($value, 0, 18) == 'WT_I18N::translate' || substr($var, 0, 15) == 'WT_I18N::number' || substr($value, 0, 23)=='WT_Gedcom_Tag::getLabel') {
 		eval("\$value = $value;");
 	}
 	// Arithmetic functions

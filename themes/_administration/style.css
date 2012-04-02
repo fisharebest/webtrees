@@ -27,9 +27,9 @@ html {overflow-y:scroll;}
 /* general styles */
 body {font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size:12px; margin:10px; min-width:800px;}
 input.ui-button {padding:1px 3px;}
-input, textarea, select {color:black; font:inherit; padding:0 3px; height:22px;}
+input, textarea, select {color:black; font:inherit; padding:0 3px; /*height:22px;*/}
 fieldset {margin:8px 8px 4px 8px;}
-legend {font-style:italic; font-weight:bold; padding:0 5px 5px; align:top;}
+legend {font-style:italic; font-weight:bold; padding:0 5px 5px; vertical-align:top;}
 img {border:none; vertical-align:middle;}
 h3 {margin:0;}
 h4 {margin:5px 3px; font-weight:normal; font-style:italic;}
