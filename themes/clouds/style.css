@@ -1838,23 +1838,34 @@ z-index:9999;
 display:none;
 }
 
-.popup dd {
-display:block;
-margin-left:10px;
-}
-
-.popup dl {
+.popup ul {
 font-size:9px;
-padding:5px;
+list-style:none;
+margin:0;
+padding:0 5px;
 }
 
-.popup dt {
-float:none;
+.popup  li {
+padding:1px 5px;
 }
 
-html[dir='rtl'] .popup dt {float:none;}
-html[dir='rtl'] .popup dd {margin-right:10px;}
-html[dir='rtl'] .itr:hover .popup {left:0;right:auto;}
+.popup  li span {
+padding:0 5px;
+}
+
+.popup  li ul, .popup  li ul li, .popup  li span span {
+padding:0;
+}
+
+.itr:hover .popup {
+display:block;
+position:absolute
+ width:12em;
+ right:0;
+ z-index: 9999;
+ }
+ 
+html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
 
 #layDefinedTags {
 border:inset 2px buttonface;

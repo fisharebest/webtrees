@@ -1044,20 +1044,23 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 	display:none;
 }
 
-.popup dl {
+.popup ul {
 	font-size:9px;
-	height:auto;
-	padding:5px;
-	min-height:100px;
+	list-style:none;
+	margin:0;
+	padding:0 5px;
 }
 
-.popup dt {
-	float:none;
+.popup  li {
+	padding:1px 5px;
 }
 
-.popup dd {
-	display: block;
-	margin-left:10px;
+.popup  li span {
+	padding:0 5px;
+}
+
+.popup  li ul, .popup  li ul li, .popup  li span span {
+	padding:0;
 }
 
 .itr:hover .popup {
@@ -1068,8 +1071,6 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 	z-index: 9999;
 }
 
-html[dir='rtl'] .popup dt {float:none;}
-html[dir='rtl'] .popup dd {margin-right:10px;}
 html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
 
 /* styles for FindFacts pop-up */
