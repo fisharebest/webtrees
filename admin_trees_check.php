@@ -115,7 +115,7 @@ $XREF_LINKS=array(
 );
 
 $RECORD_LINKS=array(
-	'INDI'=>array('FAMC', 'FAMS', 'OBJE', 'NOTE', 'SOUR', 'ASSO'),
+	'INDI'=>array('FAMC', 'FAMS', 'OBJE', 'NOTE', 'SOUR', 'ASSO', '_WT_OBJE_SORT'),
 	'FAM' =>array('HUSB','WIFE',  'CHIL', 'OBJE', 'NOTE', 'SOUR', 'ASSO'),
 	'SOUR'=>array('NOTE', 'OBJE', 'REPO'),
 	'NOTE'=>array(), // The spec also allows SOUR, but we treat this as a warning
