@@ -143,6 +143,6 @@ if ($blocks['side']) {
 echo '<div id="link_change_blocks">';
 	if ($ctype=='user') echo '<a href="index_edit.php?user_id='.WT_USER_ID.'" onclick="return modalDialog(\'index_edit.php?user_id='.WT_USER_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
 	if (WT_USER_IS_ADMIN && $ctype=='gedcom') echo '<a href="index_edit.php?gedcom_id='.WT_GED_ID.'" onclick="return modalDialog(\'index_edit.php?gedcom_id='.WT_GED_ID.'\', \'', WT_I18N::translate('Change the blocks on this page'), '\');">', WT_I18N::translate('Change the blocks on this page'), '</a>';
-	if ($SHOW_COUNTER) {echo '&nbsp;|&nbsp;'.WT_I18N::translate('Hit Count:')." ".$hitCount;}
-echo '</div>';
-echo '</div>'; // <div id="home-page">
+	if ($SHOW_COUNTER) {echo '<span>'.WT_I18N::translate('Hit Count:').' '.$hitCount.'</span>';}
+echo '</div>', // <div id="link_change_blocks">
+	 '</div>'; // <div id="home-page">
