@@ -207,9 +207,9 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if ($family->canDisplayName()) {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
 				if ($family->canDisplayDetails()) {
-					$bd = $family->getMarriageYear();
-					if (!empty($bd)) {
-						$out .= ' ('.$bd.')';
+					$marriage_year=$family->getMarriageYear();
+					if ($marriage_year) {
+						$out.=' ('.$marriage_year.')';
 					}
 				}
 				$out .= '</a></li>';
@@ -262,8 +262,10 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			if ($family->canDisplayName()) {
 				$out .= '<li><a href="'.$family->getHtmlUrl().'">'.$family->getFullName().' ';
 				if ($family->canDisplayDetails()) {
-					$bd = $family->getMarriageYear();
-					if (!empty($bd)) $out .= ' ('.$bd.')';
+					$marriage_year=$family->getMarriageYear();
+					if ($marriage_year) {
+						$out.=' ('.$marriage_year.')';
+					}
 				}
 				$out .= '</a></li>';
 			}

@@ -165,7 +165,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= $person->getSexImage().$person->getFullName();
 
 		$marryear = $family->getMarriageYear();
-		if (!empty($marryear)) {
+		if ($marryear) {
 			$out .= ' ('.WT_Gedcom_Tag::getLabel('MARR').' '.$marryear.')';
 		}
 		$out .= '</a> <a href="'.$person->getHtmlUrl().'" class="icon-button_indi"></a>';

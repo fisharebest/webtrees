@@ -159,9 +159,10 @@ function print_fams($person, $famid=null) {
 				$class = 'search_hit';
 				$sosa2 = '<a target="_blank" dir="ltr" class="details1 '.$spouse->getBoxStyle().'" title="'.WT_I18N::translate('Sosa').'" href="relationship.php?pid2='.WT_USER_ROOT_ID.'&amp;pid1='.$spouse->getXref().'">&nbsp;'.$sosa2.'&nbsp;</a>'.sosa_gen($sosa2);
 			}
-			if ($family->getMarriageYear()) {
+			$marriage_year=$family->getMarriageYear();
+			if ($marriage_year) {
 				$txt .= ' <a href="'.$family->getHtmlUrl().'">';
-				$txt .= '<span class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'"><i class="icon-rings"></i>'.$family->getMarriageYear().'</span></a>';
+				$txt .= '<span class="details1" title="'.strip_tags($family->getMarriageDate()->Display()).'"><i class="icon-rings"></i>'.$marriage_year.'</span></a>';
 			}
 			else if ($family->getMarriage()) {
 				$txt .= ' <a href="'.$family->getHtmlUrl().'">';

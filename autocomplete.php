@@ -154,7 +154,12 @@ case 'FAM': // Families, whose name contains the search terms
 	foreach ($rows as $row) {
 		$family=WT_Family::getInstance($row);
 		if ($family->canDisplayName()) {
-			$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$family->getMarriageYear().'</i>');
+			$marriage_year=$family->getMarriageYear();
+			if ($marriage_year) {
+				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
+			} else {
+				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
+			}
 		}
 	}	
 	echo json_encode($data);
@@ -460,7 +465,12 @@ case 'IFSRO':
 	foreach ($rows as $row) {
 		$family=WT_Family::getInstance($row);
 		if ($family->canDisplayName()) {
-			$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$family->getMarriageYear().'</i>');
+			$marriage_year=$family->getMarriageYear();
+			if ($marriage_year) {
+				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName().', <i>'.$marriage_year.'</i>');
+			} else {
+				$data[]=array('value'=>$family->getXref(), 'label'=>$family->getFullName());
+			}
 		}
 	}	
 	// Fetch all data, regardless of privacy
