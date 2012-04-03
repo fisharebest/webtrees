@@ -107,11 +107,10 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 echo
 	'<li><a ', (WT_SCRIPT_NAME=="admin_site_merge.php" ? 'class="current" ' : ''), 'href="admin_site_merge.php">', WT_I18N::translate('Merge records'), '</a></li>',
 	'<li><a ', (WT_SCRIPT_NAME=="admin_site_other.php" ? 'class="current" ' : ''), 'href="admin_site_other.php">', WT_I18N::translate('Add unlinked records'), '</a></li>',
-
+	'<li><a ', (WT_SCRIPT_NAME=="admin_trees_check.php" ? 'class="current" ' : ''), 'href="admin_trees_check.php">', WT_I18N::translate('Check for errors'), '</a></li>',
 	'<li><a href="index_edit.php?gedcom_id=-1" onclick="return modalDialog(\'index_edit.php?gedcom_id=-1'.'\', \'', WT_I18N::translate('Set the default blocks for new family trees'), '\');">', WT_I18N::translate('Set the default blocks'), '</a></li>',
-
-
 	'</ul></li></ul>';
+
 if (WT_USER_IS_ADMIN) {
 	echo
 		'<ul><li><a ', (WT_SCRIPT_NAME=="admin_users.php" && safe_GET('action')!="cleanup"&& safe_GET('action')!="createform" ? 'class="current" ' : ''), 'href="admin_users.php">',
