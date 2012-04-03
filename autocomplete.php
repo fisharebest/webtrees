@@ -340,7 +340,7 @@ case 'SOUR_PAGE': // Citation details, for a given source, that contain the sear
 		WT_DB::prepare(
 			"SELECT SQL_CACHE 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec".
 			" FROM `##individuals`".
-			" WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', ?, '@%') AND i_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=?"
+			" WHERE i_gedcom LIKE CONCAT('%\n_ SOUR @', ?, '@%', REPLACE(?, ' ', '%'), '%') AND i_file=?"
 		)
 		->execute(array($sid, $term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
@@ -359,7 +359,7 @@ case 'SOUR_PAGE': // Citation details, for a given source, that contain the sear
 		WT_DB::prepare(
 			"SELECT SQL_CACHE 'FAM' AS type, f_id AS xref, f_file AS ged_id, f_gedcom AS gedrec".
 			" FROM `##families`".
-			" WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', ?, '@') AND f_gedcom LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND f_file=?"
+			" WHERE f_gedcom LIKE CONCAT('%\n_ SOUR @', ?, '@%', REPLACE(?, ' ', '%'), '%') AND f_file=?"
 		)
 		->execute(array($sid, $term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
