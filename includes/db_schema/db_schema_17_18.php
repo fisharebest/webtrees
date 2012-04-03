@@ -55,7 +55,7 @@ self::exec(
 self::exec(
 	"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES".
 	" ('Mozilla/5.0 (%) Gecko/% %/%', 'allow', 'Gecko-based browsers'),".
-	" ('Mozilla/5.0 (%) Gecko/% %/%', 'allow', 'WebKit-based browsers'),".
+	" ('Mozilla/5.0 (%) AppleWebKit/% (KHTML, like Gecko) %/% Safari/%', 'allow', 'WebKit-based browsers'),".
 	" ('Opera/% (%) Presto/% Version/%', 'allow', 'Presto-based browsers'),".
 	" ('Mozilla/% (compatible; MSIE %', 'allow', 'Trident-based browsers'),".
 	" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror browser')"
