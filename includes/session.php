@@ -76,7 +76,7 @@ define('WT_DEBUG_LANG', false);
 define('WT_ERROR_LEVEL', 2); // 0=none, 1=minimal, 2=full
 
 // Required version of database tables/columns/indexes/etc.
-define('WT_SCHEMA_VERSION', 17);
+define('WT_SCHEMA_VERSION', 18);
 
 // Regular expressions for validating user input, etc.
 define('WT_REGEX_XREF',     '[A-Za-z0-9:_-]+');
@@ -122,9 +122,6 @@ define('WT_JS_END',   "\n//]]>\n</script>\n");
 
 // Used in Google charts
 define ('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
-
-// Maximum number of results in auto-complete fields
-define('WT_AUTOCOMPLETE_LIMIT', 500);
 
 // Privacy constants
 define('WT_PRIV_PUBLIC',  2); // Allows visitors to view the marked information
@@ -293,8 +290,33 @@ if (!empty($_SERVER['HTTP_USER_AGENT'])) {
 	}
 }
 
-//-- load up the code to check for spiders
-require WT_ROOT.'includes/session_spider.php';
+$rule=WT_DB::prepare(
+	"SELECT SQL_CACHE rule FROM `##site_access_rule`".
+	" WHERE INET_ATON(?) BETWEEN ip_address_start AND ip_address_end".
+	" AND ? LIKE user_agent_pattern".
+	" ORDER BY ip_address_end-ip_address_start"
+)->execute(array( $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']))->fetchOne();
+switch ($rule) {
+case 'allow':
+	$SEARCH_SPIDER=false;
+	break;
+case 'deny':
+	header('HTTP/1.1 403 Access Denied');
+	exit;
+case 'robot':
+case 'unknown':
+	// Search engines don't send cookies, and so create a new session with every visit.
+	// Make sure they always use the same one
+	Zend_Session::setId('search-engine-'.str_replace('.', '-', $_SERVER['REMOTE_ADDR']));
+	$SEARCH_SPIDER=true;
+	break;
+case '':
+	WT_DB::prepare(
+		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern) VALUES (INET_ATON(?), INET_ATON(?), ?)"
+	)->execute(array($_SERVER['REMOTE_ADDR'], $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']));
+	$SEARCH_SPIDER=true;
+	break;
+}
 
 // Store our session data in the database.
 session_set_save_handler(

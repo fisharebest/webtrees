@@ -988,12 +988,11 @@ try {
 
 	WT_DB::exec(
 		"INSERT IGNORE INTO `##site_access_rule` (user_agent_pattern, rule, comment) VALUES".
-		" ('Mozilla/5.0 (%) Gecko/% Firefox/%', 'allow', 'Firefox'),".
-		" ('Mozilla/5.0 (%) AppleWebKit/% (KHTML, like Gecko) Chrome/% Safari/%', 'allow', 'Chrome'),".
-		" ('Mozilla/5.0 (%) AppleWebKit/% (KHTML, like Gecko) Version/% Safari/%', 'allow', 'Safari'),".
-		" ('Opera/% (%) Presto/% Version/%', 'allow', 'Opera'),".
-		" ('Mozilla/% (compatible; MSIE %', 'allow', 'Internet Explorer'),".
-		" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror')"
+		" ('Mozilla/5.0 (%) Gecko/% %/%', 'allow', 'Gecko-based browsers'),".
+		" ('Mozilla/5.0 (%) Gecko/% %/%', 'allow', 'WebKit-based browsers'),".
+		" ('Opera/% (%) Presto/% Version/%', 'allow', 'Presto-based browsers'),".
+		" ('Mozilla/% (compatible; MSIE %', 'allow', 'Trident-based browsers'),".
+		" ('Mozilla/5.0 (compatible; Konqueror/%', 'allow', 'Konqueror browser')"
 	);
 
 	WT_DB::prepare(

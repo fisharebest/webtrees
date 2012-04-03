@@ -120,6 +120,34 @@ case 'site_setting':
 	set_site_setting($id1, $value);
 	ok();
 
+case 'site_access_rule':
+	//////////////////////////////////////////////////////////////////////////////
+	// Table name: WT_SITE_ACCESS_RULE
+	// ID format:  site_access_rule-{column_name}-{user_id}
+	//////////////////////////////////////////////////////////////////////////////
+
+	if (!WT_USER_IS_ADMIN) {
+		fail();
+	}
+	switch ($id1) {
+	case 'ip_address_start':
+	case 'ip_address_end':
+		WT_DB::prepare("UPDATE `##site_access_rule` SET {$id1}=INET_ATON(?) WHERE site_access_rule_id=?")
+			->execute(array($value, $id2));
+		$value=WT_DB::prepare(
+			"SELECT INET_NTOA({$id1}) FROM `##site_access_rule` WHERE site_access_rule_id=?"
+		)->execute(array($id2))->fetchOne();
+		ok();
+		break;
+	case 'user_agent_pattern':
+	case 'rule':
+	case 'comment':
+		WT_DB::prepare("UPDATE `##site_access_rule` SET {$id1}=? WHERE site_access_rule_id=?")
+			->execute(array($value, $id2));
+		ok();
+	}
+	fail();
+
 case 'user':
 	//////////////////////////////////////////////////////////////////////////////
 	// Table name: WT_USER
