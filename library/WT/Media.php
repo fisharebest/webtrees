@@ -585,8 +585,8 @@ class WT_Media extends WT_GedcomRecord {
 			} else {
 				$imgsize = $this->getImageAttributes('main',40,150);
 				if ($imgsize['0']) {
-					$jsurl = str_replace('mediaviewer.php?','imageview.php?', $this->getRawUrl());
-					$url = "#\" onclick=\"return openImage('".$jsurl."', ".$imgsize['adjW'].", ".$imgsize['adjH'].");";
+					$url = str_replace('mediaviewer.php?','imageview.php?', $this->getHtmlUrl());
+					$url = "#\" onclick=\"return openImage('".$url."', ".$imgsize['adjW'].", ".$imgsize['adjH'].");";
 				} else {
 					$url = $this->getHtmlUrl();
 				}
