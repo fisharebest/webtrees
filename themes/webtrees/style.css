@@ -452,10 +452,10 @@ html[dir='rtl'] #index_small_blocks {float:left;}
  #main_select,#available_select,#right_select{min-width:150px;}
 .user_welcome_block table, .gedcom_block_block  table{margin:auto;}
 .user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align: top;}
-.gedcom_favorites_block  .person_box .details2, .gedcom_favorites_block  .person_boxF.details2, .gedcom_favorites_block  .person_boxNN.details2 {min-height:40px;}
 #link_change_blocks {clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;}
 
  /* ======= Favourites block ========== */
+.gedcom_favorites_block  .person_box .details2, .gedcom_favorites_block  .person_boxF.details2, .gedcom_favorites_block  .person_boxNN.details2 {min-height:40px;}
 .user_favorites_block  .person_box .details2, .user_favorites_block  .person_boxF.details2, .user_favorites_block  .person_boxNN.details2 {min-height:40px;}
 .user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
 .add_fav_head {font-weight:900; margin:5px 0;}
