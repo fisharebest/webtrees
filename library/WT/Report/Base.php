@@ -2559,7 +2559,7 @@ function ifSHandler($attrs) {
 		} elseif ($id=="fact") {
 			$value = "\"$fact\"";
 		} elseif ($id=="desc") {
-			$value = "\"$desc\"";
+			$value = "\"".addslashes($desc)."\"";
 		} elseif ($id=="generation") {
 			$value = "\"$generation\"";
 		} else {
@@ -2574,7 +2574,7 @@ function ifSHandler($attrs) {
 				$level++;
 				$value = get_gedcom_value($id, $level, $gedrec, "", false);
 			}
-			$value = "\"".str_replace(array("'", '"'), array("\'", '\"'), $value)."\"";
+			$value = "\"".addslashes($value)."\"";
 		}
 		$condition = str_replace("@$id", $value, $condition);
 		$i++;
