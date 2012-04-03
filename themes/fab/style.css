@@ -144,6 +144,7 @@ img {
 .block {background-color:#EEE; clear:none;}
 .blockheader {font-weight:bold;}
 .charts_block {overflow:auto;}
+#link_change_blocks {clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;}
 
 /* Pending edits */
 .change_new, .nameblue {

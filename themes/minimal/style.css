@@ -818,6 +818,8 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 .user_welcome_block table, .gedcom_block_block  table{margin:auto;}
 .user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align: top;}
 
+#link_change_blocks {clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;}
+
 #random_picture {
 	text-align: center;
 }
