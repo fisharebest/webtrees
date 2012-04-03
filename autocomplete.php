@@ -373,8 +373,11 @@ case 'SOUR_PAGE': // Citation details, for a given source, that contain the sear
 			$data[]=$match[1];
 		}
 	}
-	sort($data);
-	echo json_encode(array_unique($data));
+	// array_unique() converts the keys from integer to string, which breaks
+	// the JSON encoding - so need to call array_values() to convert them
+	// back into integers.
+	$data=array_values(array_unique($data));
+	echo json_encode($data);
 	exit;
 
 case 'SOUR_TITL': // Source titles, that include the search terms
