@@ -1484,6 +1484,11 @@ a.icon-larrow:hover{width:20px;height:20px;background-image:url(images/larrow2.p
 .icon-mapquest{width:16px;height:16px;background-image:url(images/mapquest.png);}
 .icon-media{width:24px;height:24px;background-image:url(images/media.png);}
 .icon-media-list{width:24px;height:24px;background-image:url(images/media.png);}
+.icon-media-next{width:20px;height:20px;background-image:url(images/rdarrow.png);}
+.icon-media-play{width:20px;height:20px;background-image:url(images/rarrow.png);}
+.icon-media-prev{width:20px;height:20px;background-image:url(images/ldarrow.png);}
+.icon-media-shuffle{width:10px;height:10px;background-image:url(images/reorder.png);}
+.icon-media-stop{width:20px;height:20px;background-image:url(images/stop.png);}
 .icon-minus{width:11px;height:11px;background-image:url(images/minus.png);}
 .icon-mypage{width:25px;height:25px;background-image:url(images/mypage.png);}
 .icon-note{width:16px;height:16px;background-image:url(images/notes.png);}
@@ -1499,7 +1504,6 @@ a.icon-rarrow:hover{width:20px;height:20px;background-image:url(images/rarrow2.p
 .icon-rdarrow{width:20px;height:20px;background-image:url(images/rdarrow.png);}
 .icon-reminder{width:15px;height:12px;background-image:url(images/reminder.png);}
 .icon-remove{width:14px;height:15px;background-image:url(images/remove.png);}
-.icon-reorder{width:10px;height:10px;background-image:url(images/reorder.png);}
 .icon-repository{width:30px;height:30px;background-image:url(images/repository.png);}
 .icon-repo-list{width:30px;height:30px;background-image:url(images/repository.png);}
 .icon-resn-confidential{width:16px;height:16px;background-image:url(images/resn_confidential.png);}
@@ -1520,7 +1524,6 @@ a.icon-rarrow:hover{width:20px;height:20px;background-image:url(images/rarrow2.p
 .icon-slide_open{width:20px;height:22px;background-image:url(images/open.png);}
 .icon-source{width:24px;height:24px;background-image:url(images/source.png);}
 .icon-source-list{width:24px;height:24px;background-image:url(images/source.png);}
-.icon-stop{width:20px;height:20px;background-image:url(images/stop.png);}
 .icon-terraserver{width:16px;height:16px;background-image:url(images/terraserver.png);}
 .icon-target{width:15px;height:15px;background-image:url(images/buttons/target.png);}
 .icon-tree{width:24px;height:24px;background-image:url(images/gedcom.png);}

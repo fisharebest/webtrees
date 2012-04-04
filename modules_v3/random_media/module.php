@@ -190,11 +190,11 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			$content = "<div id=\"random_picture_container$block_id\">";
 			if ($controls) {
 				if ($start) {
-					$icon_class = 'icon-stop';
+					$icon_class = 'icon-media-stop';
 				} else {
-					$icon_class = 'icon-rarrow';
+					$icon_class = 'icon-media-play';
 				}
-				$linkNextImage = '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;"title="'.WT_I18N::translate('Next image').'" class="icon-rdarrow"></a>';
+				$linkNextImage = '<a href="#" onclick="jQuery(\'#block_'.$block_id.'\').load(\'index.php?ctype='.$ctype.'&amp;action=ajax&amp;block_id='.$block_id.'\');return false;"title="'.WT_I18N::translate('Next image').'" class="icon-media-next"></a>';
 				$content .= "<div class=\"center\" id=\"random_picture_controls$block_id\"><br>";
 				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
 				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"".$icon_class."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
@@ -204,12 +204,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 						function togglePlay() {
 							if (play) {
 								play = false;
-								jQuery("#play_stop").removeClass("icon-stop").addClass("icon-rarrow");
+								jQuery("#play_stop").removeClass("icon-media-stop").addClass("icon-media-play");
 							}
 							else {
 								play = true;
 								playSlideShow();
-								jQuery("#play_stop").removeClass("icon-rarrow").addClass("icon-stop");
+								jQuery("#play_stop").removeClass("icon-media-play").addClass("icon-media-stop");
 							}
 						}
 
