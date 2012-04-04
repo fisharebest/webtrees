@@ -88,32 +88,32 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<div>'./* I18N: %s is a date */ WT_I18N::translate('This family tree was last updated on %s.', strip_tags($stats->gedcomUpdated())).'</div>';
 		}
 
-		$content .= '<table><tr><td valign="top" class="width20"><table class="facts_table">';
+		$content .= '<table><tr><td class="width20"><table class="facts_table">';
 		if ($stat_indi) {
-			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Individuals').'</td><td class="facts_value" align="right"><a href="'."indilist.php?surname_sublist=no&amp;ged=".WT_GEDURL.'">'.$stats->totalIndividuals().'</a></td></tr>';
-			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Males').'</td><td class="facts_value" align="right">'.$stats->totalSexMales().'<br>'.$stats->totalSexMalesPercentage().'</td></tr>';
-			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Females').'</td><td class="facts_value" align="right">'.$stats->totalSexFemales().'<br>'.$stats->totalSexFemalesPercentage().'</td></tr>';
+			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Individuals').'</td><td class="facts_value stats_value"><a href="'."indilist.php?surname_sublist=no&amp;ged=".WT_GEDURL.'">'.$stats->totalIndividuals().'</a></td></tr>';
+			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Males').'</td><td class="facts_value stats_value">'.$stats->totalSexMales().'<br>'.$stats->totalSexMalesPercentage().'</td></tr>';
+			$content.='<tr><td class="facts_label">'.WT_I18N::translate('Females').'</td><td class="facts_value stats_value">'.$stats->totalSexFemales().'<br>'.$stats->totalSexFemalesPercentage().'</td></tr>';
 		}
 		if ($stat_surname) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total surnames').'</td><td class="facts_value" align="right"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged='.WT_GEDURL.'">'.$stats->totalSurnames().'</a></td></tr>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total surnames').'</td><td class="facts_value stats_value"><a href="indilist.php?show_all=yes&amp;surname_sublist=yes&amp;ged='.WT_GEDURL.'">'.$stats->totalSurnames().'</a></td></tr>';
 		}
 		if ($stat_fam) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Families').'</td><td class="facts_value" align="right"><a href="famlist.php?ged='.WT_GEDURL.'">'.$stats->totalFamilies().'</a></td></tr>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Families').'</td><td class="facts_value stats_value"><a href="famlist.php?ged='.WT_GEDURL.'">'.$stats->totalFamilies().'</a></td></tr>';
 		}
 		if ($stat_sour) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Sources').'</td><td class="facts_value" align="right"><a href="sourcelist.php?ged='.WT_GEDURL.'">'.$stats->totalSources().'</a></td></tr>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Sources').'</td><td class="facts_value stats_value"><a href="sourcelist.php?ged='.WT_GEDURL.'">'.$stats->totalSources().'</a></td></tr>';
 		}
 		if ($stat_media) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Media objects').'</td><td class="facts_value" align="right"><a href="medialist.php?ged='.WT_GEDURL.'">'.$stats->totalMedia().'</a></td></tr>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Media objects').'</td><td class="facts_value stats_value"><a href="medialist.php?ged='.WT_GEDURL.'">'.$stats->totalMedia().'</a></td></tr>';
 		}
 		if ($stat_repo) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Repositories').'</td><td class="facts_value" align="right"><a href="repolist.php?ged='.WT_GEDURL.'">'.$stats->totalRepositories().'</a></td></tr>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Repositories').'</td><td class="facts_value stats_value"><a href="repolist.php?ged='.WT_GEDURL.'">'.$stats->totalRepositories().'</a></td></tr>';
 		}
 		if ($stat_events) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total events').'</td><td class="facts_value" align="right">'.$stats->totalEvents().'</td></tr>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total events').'</td><td class="facts_value stats_value">'.$stats->totalEvents().'</td></tr>';
 		}
 		if ($stat_users) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total users').'</td><td class="facts_value" align="right">';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Total users').'</td><td class="facts_value stats_value">';
 			if (WT_USER_GEDCOM_ADMIN) {
 				$content .= '<a href="admin_users.php">'.$stats->totalUsers().'</a>';
 			} else {
@@ -122,31 +122,31 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '</td></tr>';
 		}
 		if (!$block) {
-			$content .= '</table></td><td><br></td><td valign="top"><table cellspacing="1" cellpadding="1" border="0">';
+			$content .= '</table></td><td><br></td><td><table>';
 		}
 		if ($stat_first_birth) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Earliest birth year').'</td><td class="facts_value" align="right">'.$stats->firstBirthYear().'</td>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Earliest birth year').'</td><td class="facts_value stats_value">'.$stats->firstBirthYear().'</td>';
 			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->firstBirth().'</td>';
 			}
 			$content .= '</tr>';
 		}
 		if ($stat_last_birth) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Latest birth year').'</td><td class="facts_value" align="right">'.$stats->lastBirthYear().'</td>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Latest birth year').'</td><td class="facts_value stats_value">'.$stats->lastBirthYear().'</td>';
 			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->lastBirth().'</td>';
 			}
 			$content .= '</tr>';
 		}
 		if ($stat_first_death) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Earliest death year').'</td><td class="facts_value" align="right">'.$stats->firstDeathYear().'</td>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Earliest death year').'</td><td class="facts_value stats_value">'.$stats->firstDeathYear().'</td>';
 			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->firstDeath().'</td>';
 			}
 			$content .= '</tr>';
 		}
 		if ($stat_last_death) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Latest death year').'</td><td class="facts_value" align="right">'.$stats->lastDeathYear().'
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Latest death year').'</td><td class="facts_value stats_value">'.$stats->lastDeathYear().'
 	</td>';
 			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->lastDeath().'</td>';
@@ -154,14 +154,14 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .='</tr>';
 		}
 		if ($stat_long_life) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Person who lived the longest').'</td><td class="facts_value" align="right">'.$stats->LongestLifeAge().'</td>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Person who lived the longest').'</td><td class="facts_value stats_value">'.$stats->LongestLifeAge().'</td>';
 			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->LongestLife().'</td>';
 			}
 			$content .= '</tr>';
 		}
 		if ($stat_avg_life) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Average age at death').'</td><td class="facts_value" align="right">'.$stats->averageLifespan().'</td>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Average age at death').'</td><td class="facts_value stats_value">'.$stats->averageLifespan().'</td>';
 			if (!$block) {
 				$content .= '<td class="facts_value">'.WT_I18N::translate('Males').':&nbsp;'.$stats->averageLifespanMale();
 				$content .= '&nbsp;&nbsp;&nbsp;'.WT_I18N::translate('Females').':&nbsp;'.$stats->averageLifespanFemale().'</td>';
@@ -170,14 +170,14 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 
 		if ($stat_most_chil && !$block) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Family with the most children').'</td><td class="facts_value" align="right">'.$stats->largestFamilySize().'</td>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Family with the most children').'</td><td class="facts_value stats_value">'.$stats->largestFamilySize().'</td>';
 			if (!$block) {
 				$content .= '<td class="facts_value">'.$stats->largestFamily().'</td>';
 			}
 			$content .= '</tr>';
 		}
 		if ($stat_avg_chil) {
-			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Average number of children per family').'</td><td class="facts_value" align="right">'.$stats->averageChildren().'</td>';
+			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Average number of children per family').'</td><td class="facts_value stats_value">'.$stats->averageChildren().'</td>';
 			if (!$block) {
 				$content .= '<td class="facts_value">&nbsp;</td>';
 			}

@@ -468,6 +468,11 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 .logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
 .mailto{background-image:url(images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px;}
 
+/* ============= Statistics block ============ */
+.gedcom_stats_block table td {vertical-align:top;}
+.gedcom_stats_block table td td {vertical-align:middle;}
+.gedcom_stats_block td .stats_value {text-align:center;}
+
 /* ======= FAQ table styles ========== */
 table.faq   {background-color:#e0e0e0; margin:5px 0 50px 5px;width:98%;}
 table.faq  tr.odd td {background-color:#e7eef3;}
