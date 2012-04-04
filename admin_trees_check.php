@@ -161,6 +161,8 @@ foreach ($all_links as $xref1=>$links) {
 			echo warning('The note '.make_link($xref1).' contains a linked source, '.make_link($xref2).'. Notes are intended to add explanations and comments to other records.  They would not normally have their own sources.');
 		} elseif ($type2=='SOUR' && $type1=='OBJE') {
 			echo warning('The media object '.make_link($xref1).' contains a linked source, '.make_link($xref2).'. Media objects are inteded to illustrate other records, facts, and source/citations.  They would not normally have their own sources.');
+		} elseif ($type2=='AUTH' && $type1=='SOUR') {
+			echo warning('The source '.make_link($xref1).' uses the AUTH tag as a link, instead of an author’s name.');
 		} elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1])) {
 			echo error('The record '.make_link($xref1).' has an invalid link: <b>'.$type2.':'.$xref2.'</b>.');
 		} elseif (!array_key_exists($type2, $XREF_LINKS)) {
