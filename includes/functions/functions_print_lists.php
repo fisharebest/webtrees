@@ -1718,7 +1718,7 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 			$html .= '<th>NAME</th>'; //hidden by datatables code
 			$html .= '<th>'.WT_Gedcom_Tag::getLabel('DATE').'</th>';
 			$html .= '<th>DATE</th>'; //hidden by datatables code
-			$html .= '<th><i class="icon-reminder" title="'.WT_I18N::translate('Anniversary').'"></th>';
+			$html .= '<th><i class="icon-reminder" title="'.WT_I18N::translate('Anniversary').'"></i></th>';
 			$html .= '<th>ANNIV</th>';
 			$html .= '<th>'.WT_Gedcom_Tag::getLabel('EVEN').'</th>';
 			$html .= '</tr></thead><tbody>'."\n";
