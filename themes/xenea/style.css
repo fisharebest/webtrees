@@ -58,6 +58,8 @@ html[dir='rtl'] #header {background-position:right top; background-image:url(ima
 html[dir='rtl'] .title {float:right; margin-right:12px;}
 html[dir='rtl'] .hsearch {float:left; padding-left:10px;}
 
+#bodydiv .title {margin:0;}
+
 #header, .gedcomtitle {color:#ffffff;}
 
 #flash-messages { clear:both; }

@@ -83,9 +83,10 @@ html[dir='rtl'] .title {float:right;margin-right:12px;}
 html[dir='rtl'] .hsearch {float:left;padding-left:10px;}
 html[dir='rtl'] #menu-right {float:left;margin-left:20px;}
 
+#bodydiv .title {margin:0;}
+
 /* ===== */
 /* Layout Left Main menu  */
-
 
 /* set up div container  */
 #topMenu {
