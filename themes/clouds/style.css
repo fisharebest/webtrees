@@ -544,6 +544,9 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 #random_picture {
 text-align:center;
 }
+#random_picture_box {
+width:100%;
+}
 
 .small_inner_block {
 max-height:200px;
@@ -634,7 +637,7 @@ float:left;
 
 #link_change_blocks {clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;}
 #link_change_blocks span {padding:0 50px;}
-#link_change_blocks span span {padding:auto;}
+#link_change_blocks span span {padding:0 3px;}
 
 /*-- charts layout --*/
 

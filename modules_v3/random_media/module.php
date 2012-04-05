@@ -228,12 +228,12 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			if ($start) {
 				$content .= WT_JS_START.'togglePlay();'.WT_JS_END;
 			}
-			$content .= "<div class=\"center\" id=\"random_picture_content$block_id\">";
-			$content .= "<table id=\"random_picture_box\" width=\"100%\"><tr><td valign=\"top\"";
+			$content .= '<div class="center" id="random_picture_content'.$block_id.'">';
+			$content .= '<table id="random_picture_box"><tr><td';
 
-			if ($block) $content .= " align=\"center\" class=\"details1\"";
-			else $content .= " class=\"details2\"";
-			$content .= " >";
+			if ($block) $content .= ' class="details1"';
+			else $content .= ' class="details2"';
+			$content .= ' >';
 			$content .= $mediaobject->displayMedia(array('align'=>'none', 'uselightbox'=>false, 'uselightbox_fallback'=>false));
 
 			if ($block) $content .= '<br>';

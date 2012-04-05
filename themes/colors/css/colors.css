@@ -266,6 +266,7 @@ html[dir='rtl'] #index_main_blocks {float:right;}
 html[dir='rtl'] #index_small_blocks {float:left;}
 #index_small_blocks .name1{color:#333;}
 #random_picture{text-align:center;}
+#random_picture_box {width:100%;}
 
 .small_inner_block{max-height:200px;overflow:auto;}
 

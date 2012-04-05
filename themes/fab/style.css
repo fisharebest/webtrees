@@ -148,6 +148,13 @@ img {
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
 
+#random_picture {
+	text-align:center;
+}
+#random_picture_box {
+width:100%;
+}
+
 /* Pending edits */
 .change_new, .nameblue {
 	border:solid blue 2px !important;

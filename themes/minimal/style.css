@@ -825,6 +825,9 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 #random_picture {
 	text-align: center;
 }
+#random_picture_box {
+width:100%;
+}
 
 /*-- pedigree chart specific stylesheets --*/
 #pedigree_chart {
