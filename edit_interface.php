@@ -239,14 +239,10 @@ case 'delete':
 			$tmp=new WT_GedcomRecord($gedrec);
 			list($gedcom, $private_gedrec)=$tmp->privatizeGedcom(WT_USER_ACCESS_LEVEL);
 			
-			$mediaid='';
-			if (isset($_REQUEST['mediaid'])) {
-				$mediaid = $_REQUEST['mediaid'];
-			}
 			//-- when deleting a media link
 			//-- $linenum comes is an OBJE and the $mediaid to delete should be set
-			if (!is_numeric($linenum)) {
-				$newged = remove_subrecord($gedrec, $linenum, $mediaid);
+			if ($linenum=='OBJE') {
+				$newged = remove_subrecord($gedrec, $linenum, $_REQUEST['mediaid']);
 			} else {
 				$newged = remove_subline($gedrec, $linenum);
 			}

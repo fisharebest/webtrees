@@ -2225,34 +2225,6 @@ function linkMedia($mediaid, $linktoid, $level=1, $chan=true) {
 }
 
 /**
-* unLink Media ID to Indi, Family, or Source ID
-*
-* @param  string  $mediaid Media ID to be unlinked.
-* @param string $linktoid Indi, Family, or Source ID that the Media ID should be unlinked from.
-* @param $linenum should be ALWAYS set to 'OBJE'.
-* @param int $level Level where the Media Object reference should be removed from (not used)
-* @param boolean $chan Whether or not to update/add the CHAN record
-*
-* @return  bool success or failure
-*/
-function unlinkMedia($linktoid, $linenum, $mediaid, $level=1, $chan=true) {
-	if (empty($level)) $level = 1;
-	if ($level!=1) return false; // Level 2 items get unlinked elsewhere (maybe ??)
-	// find Indi, Family, or Source record to unlink from
-	$gedrec = find_gedcom_record($linktoid, WT_GED_ID, true);
-
-	//-- when deleting/unlinking a media link
-	//-- $linenum comes as an OBJE and the $mediaid to delete should be set
-	if (!is_numeric($linenum)) {
-		$newged = remove_subrecord($gedrec, $linenum, $mediaid);
-	} else {
-		$newged = remove_subline($gedrec, $linenum);
-	}
-	replace_gedrec($linktoid, WT_GED_ID, $newged, $chan);
-}
-
-
-/**
 * builds the form for adding new facts
 * @param string $fact the new fact we are adding
 */
