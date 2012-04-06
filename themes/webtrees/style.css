@@ -470,7 +470,6 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 
  /* ======= Who is online block ========== */
 .logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
-.mailto{background-image:url(images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px;}
 
 /* ============= Statistics block ============ */
 .gedcom_stats_block table td {vertical-align:top;}
@@ -896,6 +895,7 @@ a.icon-darrow:hover{width:20px;height:20px;background-image:url(images/darrow2.p
 .icon-default_image_M{width:99px;height:99px;background-image:url(images/silhouette_male.png);}
 .icon-default_image_U{width:100px;height:97px;background-image:url(images/silhouette_unknown.png);}
 .icon-edit_indi{width:20px;height:20px;background-image:url(images/edit_indi.png);}
+.icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list{width:20px;height:20px;background-image:url(images/family.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-help{width:15px;height:15px;background-image:url(images/help2.png);}

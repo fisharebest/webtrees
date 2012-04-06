@@ -355,7 +355,7 @@ function whoisonline() {
 			$content .= '<div class="logged_in_name">';
 			$content .= htmlspecialchars(getUserFullName($user_id))." - ".htmlspecialchars($user_name);
 			if (WT_USER_ID!=$user_id && get_user_setting($user_id, 'contactmethod')!="none") {
-				$content .= "<a class=\"mailto\" href=\"#\" onclick=\"return message('" . $user_name . "')\" title=\"" . WT_I18N::translate('Send Message') . "\">&nbsp;&nbsp;&nbsp;&nbsp;</a>";
+				$content .= ' <a class="icon-email" href="#" onclick="return message(\''.$user_name . '\', \'\', \''.addslashes(urlencode(get_query_url())).'\', \'\');" title="' . WT_I18N::translate('Send Message').'"></a>';
 			}
 			$i++;
 			$content .= '</div>';

@@ -2000,7 +2000,6 @@ html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 
  /* ======= Who is online block ========== */
 .logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
-.mailto{background-image:url(images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px;}
 
 @media print {
 	#topMenu, #header, #optionsmenu, #header select, #header input, #footer select, #backprint, #sidebar {display:none;}
@@ -2058,6 +2057,7 @@ a.icon-darrow:hover{width:20px;height:20px;background-image:url(images/darrow2.p
 .icon-default_image_M{width:99px;height:99px;background-image:url(images/silhouette_male.png);}
 .icon-default_image_U{width:100px;height:97px;background-image:url(images/silhouette_unknown.png);}
 .icon-edit_indi{width:25px;height:25px;background-image:url(images/edit_indi.png);}
+.icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list{width:25px;height:25px;background-image:url(images/sfamily.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-help{width:15px;height:15px;background-image:url(images/help.png);}

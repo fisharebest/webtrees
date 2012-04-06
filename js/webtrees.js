@@ -1286,6 +1286,11 @@ function ilinkitem(mediaid, type) {
 	return false;
 }
 
+function message(username, method, url, subject) {
+	window.open('message.php?to='+username+'&method='+method+'&url='+url+'&subject='+subject, '_blank', mesg_window_specs);
+	return false;
+}
+
 /**
  * Load a CSS file from the body of a document
  *

@@ -233,13 +233,6 @@ class WT_Controller_Base {
 			}
 			return false;
 		}
-
-		function message(username, method, url, subject) {
-			if ((!url)||(url=="")) url=\''.addslashes(urlencode(get_query_url())).'\';
-			if ((!subject)||(subject=="")) subject="";
-			window.open(\'message.php?to=\'+username+\'&method=\'+method+\'&url=\'+url+\'&subject=\'+subject, \'_blank\', mesg_window_specs);
-			return false;
-		}
 		</script>
 		<script src="'.WT_STATIC_URL.'js/webtrees.js" type="text/javascript"></script>';
 		

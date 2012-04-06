@@ -83,7 +83,7 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 					$content .= '</option>';
 				}
 			}
-			$content .= "</select> <input type=\"button\" value=\"".WT_I18N::translate('Send')."\" onclick=\"message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, 'messaging2', ''); return false;\"><br><br>";
+			$content .= "</select> <input type=\"button\" value=\"".WT_I18N::translate('Send')."\" onclick=\"message(document.messageform.touser.options[document.messageform.touser.selectedIndex].value, 'messaging2', '', ''); return false;\"><br><br>";
 		}
 		if (count($usermessages)==0) {
 			$content .= WT_I18N::translate('You have no pending messages.')."<br>";

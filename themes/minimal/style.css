@@ -1820,7 +1820,6 @@ html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 
  /* ======= Who is online block ========== */
 .logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
-.mailto{background-image:url(images/email.png); background-repeat:no-repeat; cursor:help; margin:0 3px;}
 
 @media print {
 	#backprint, #header, #topMenu {
@@ -1889,6 +1888,7 @@ a.icon-darrow:hover{width:20px;height:20px;background-image:url(images/darrow2.p
 .icon-default_image_F{width:99px;height:106px;background-image:url(images/silhouette_female.png);}
 .icon-default_image_M{width:99px;height:99px;background-image:url(images/silhouette_male.png);}
 .icon-default_image_U{width:100px;height:97px;background-image:url(images/silhouette_unknown.png);}
+.icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-help{width:15px;height:15px;background-image:url(images/help.png);}
 .icon-indis{width:24px;height:24px;background-image:url(images/indis.png);}
