@@ -210,6 +210,7 @@ class WT_Controller_Base {
 		}
 
 		$javascript=
+			'<!--[if lt IE 9]><script src="'.WT_STATIC_URL.'js/html5.js"></script><![endif]-->'.
 			'<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script>'.
 			'<script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>'.
 			'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.jeditable.min.js"></script>'.
