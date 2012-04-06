@@ -279,11 +279,6 @@ function pasteid(id) {
 	window.close();
 }
 
-function ilinkitem(mediaid, type) {
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', find_window_specs);
-	return false;
-}
-
 function checknames(frm) {
 	if (document.managemedia.subclick) button = document.managemedia.subclick.value;
 	if (button == "all") {

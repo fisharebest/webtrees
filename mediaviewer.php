@@ -184,15 +184,3 @@ echo '<div id="media-tabs">';
 	}
 echo '</div>'; //close div "media-tabs"
 echo '</div>'; //close div "media-details"
-
-
-?>
-<script type="text/javascript">
-<!--
-
-function ilinkitem(mediaid, type) {
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', find_window_specs);
-	return false;
-}
-//-->
-</script>

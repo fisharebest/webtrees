@@ -68,11 +68,3 @@ $submenu->addClass('submenuitem'.$classSuffix, 'submenuitem'.$classSuffix);
 $menu->addSubMenu($submenu);
 
 echo $menu->getMenu();
-?>
-<script type="text/javascript">
-  function ilinkitem(mediaid, type) {
-	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', find_window_specs);
-	return false;
-  }
-</script>
-<?php

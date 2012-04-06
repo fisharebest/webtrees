@@ -1281,6 +1281,11 @@ function findFact(field, ged) {
 	return false;
 }
 
+function ilinkitem(mediaid, type) {
+	window.open('inverselink.php?mediaid='+mediaid+'&linkto='+type, '_blank', find_window_specs);
+	return false;
+}
+
 /**
  * Load a CSS file from the body of a document
  *
