@@ -29,13 +29,11 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 ?>
 
-<script type="text/javascript">var ie = 0;</script>
+<script>var ie = 0;</script>
 <!--[if IE]>
-<script type="text/javascript">ie = 1;</script>
+<script>ie = 1;</script>
 <![endif]-->
-<script type="text/javascript">
-
-//<![CDATA[
+<script>
 
 	// this variable will collect the html which will eventually be placed in the side_bar
 	var side_bar_html = '';
@@ -720,5 +718,4 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 		
 	}	// end loadMap()
 	
-//]]>
 </script>

@@ -117,8 +117,8 @@ define('WT_EOL', "\r\n");
 define ('WT_GEDCOM_LINE_LENGTH', 255-strlen(WT_EOL)); // Characters, not bytes
 
 // Use these tags to wrap embedded javascript consistently
-define('WT_JS_START', "\n<script type=\"text/javascript\">\n//<![CDATA[\n");
-define('WT_JS_END',   "\n//]]>\n</script>\n");
+define('WT_JS_START', '<script>');
+define('WT_JS_END',   '</script>');
 
 // Used in Google charts
 define ('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');

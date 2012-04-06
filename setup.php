@@ -320,9 +320,7 @@ if (empty($_POST['dbuser']) || !WT_DB::isConnected() || !$db_version_ok) {
 		'</fieldset>',
 		'<br><hr><input type="submit" value="'.WT_I18N::translate('Continue').'">',
 		'</form>',
-		"\n<script type=\"text/javascript\">\n//<![CDATA[\n",
-		'document.config.dbuser.focus();',
-		"\n//]]>\n</script>\n",
+		'<script>document.config.dbuser.focus();</script>',
 		'</body></html>';
 		exit;
 } else {
@@ -408,9 +406,7 @@ if (!$dbname_ok) {
 		'</fieldset>',
 		'<br><hr><input type="submit" value="'.WT_I18N::translate('Continue').'">',
 		'</form>',
-		"\n<script type=\"text/javascript\">\n//<![CDATA[\n",
-		'document.config.dbname.focus();',
-		"\n//]]>\n</script>\n",
+		'<script>document.config.dbname.focus();</script>',
 		'</body></html>';
 		exit;
 } else {
@@ -548,9 +544,7 @@ if (empty($_POST['wtname']) || empty($_POST['wtuser']) || strlen($_POST['wtpass'
 		'</fieldset>',
 		'<br><hr><input type="submit" value="'.WT_I18N::translate('Continue').'">',
 		'</form>',
-		"\n<script type=\"text/javascript\">\n//<![CDATA[\n",
-		'document.config.wtname.focus();',
-		"\n//]]>\n</script>\n",
+		'<script>document.config.wtname.focus();</script>',
 		'</body></html>';
 		exit;
 } else {

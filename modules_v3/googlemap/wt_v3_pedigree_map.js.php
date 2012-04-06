@@ -37,9 +37,7 @@ if (!defined('WT_WEBTREES')) {
 }
 ?>
 
-<script type="text/javascript">
-//<![CDATA[
-
+<script>
 // The HomeControl returns the map to the original position and style ==============
 function HomeControl(controlDiv, pm_map) {
 	// Set CSS styles for the DIV containing the control
@@ -676,5 +674,4 @@ google.maps.event.addListener(pm_map, 'click', function() {
 	contextmenu.style.visibility='hidden';
 });
 
-//]]>
 </script>

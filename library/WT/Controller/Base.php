@@ -37,8 +37,6 @@ class WT_Controller_Base {
 	private   $page_title   =WT_WEBTREES;        // <head><title> $page_title </title></head>
 
 	// The controller accumulates JavaScript (inline and external), and renders it in the footer
-	const JS_START="\n<script type=\"text/javascript\">\n//<![CDATA[\n";
-	const JS_END  ="\n//]]>\n</script>\n";
 	const JS_PRIORITY_HIGH   = 0;
 	const JS_PRIORITY_NORMAL = 1;
 	const JS_PRIORITY_LOW    = 2;
@@ -169,13 +167,13 @@ class WT_Controller_Base {
 		}
 		// Process the scripts, in priority order
 		if ($this->inline_javascript) {
-			$html.=self::JS_START;
+			$html.='<script>';
 			foreach ($this->inline_javascript as $scripts) {
 				foreach ($scripts as $script) {
 					$html.=$script.PHP_EOL;
 				}
 			}
-			$html.=self::JS_END;
+			$html.='</script>';
 		}
 
 		$this->inline_javascript=array(
@@ -210,11 +208,11 @@ class WT_Controller_Base {
 		}
 
 		$javascript=
-			'<!--[if lt IE 9]><script src="'.WT_STATIC_URL.'js/html5.js"></script><![endif]-->'.
-			'<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script>'.
-			'<script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>'.
-			'<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.jeditable.min.js"></script>'.
-			WT_JS_START.'
+			'<!--[if lt IE 9]><script src="'.WT_STATIC_URL.'js/html5.js"></script><![endif]-->
+			<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script>
+			<script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>
+			<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.jeditable.min.js"></script>
+			<script>
 			// Give JavaScript access to some PHP constants
 			var WT_STATIC_URL  = "'.WT_STATIC_URL.'";
 			var WT_THEME_DIR   = "'.WT_THEME_DIR.'";
@@ -242,9 +240,8 @@ class WT_Controller_Base {
 			window.open(\'message.php?to=\'+username+\'&method=\'+method+\'&url=\'+url+\'&subject=\'+subject, \'_blank\', mesg_window_specs);
 			return false;
 		}
-		'.
-		WT_JS_END.
-		'<script src="'.WT_STATIC_URL.'js/webtrees.js" type="text/javascript"></script>';
+		</script>
+		<script src="'.WT_STATIC_URL.'js/webtrees.js" type="text/javascript"></script>';
 		
 		header('Content-Type: text/html; charset=UTF-8');
 		require WT_ROOT.$headerfile;

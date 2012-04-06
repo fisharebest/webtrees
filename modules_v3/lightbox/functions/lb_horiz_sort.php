@@ -31,7 +31,7 @@ if (!defined('WT_WEBTREES')) {
 }
 
 ?>
-<script type="text/javascript">
+<script>
 	function getGroupOrder() {
 		// var sections = document.getElementsByClassName('section');
 		var sections = $$('.section');
@@ -62,11 +62,10 @@ if (!defined('WT_WEBTREES')) {
 		cursor: move;
 		border: none;
 		text-align: center;
-    }
+	}
 </style>
-<script type="text/javascript">
-// <![CDATA[
-    //sections = [ 'group1','group2' ];
+<script>
+	//sections = [ 'group1','group2' ];
 	<?php if ($rownum1>0) { ?>
 		Sortable.create( 'thumblist_1', { tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
 	<?php } ?>
@@ -79,6 +78,5 @@ if (!defined('WT_WEBTREES')) {
 	<?php if ($rownum4>0) { ?>
 		Sortable.create( "thumblist_4", { tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
 	<?php } ?>
-// Sortable.create( "thumblist", { tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
-	// ]]>
+	// Sortable.create( "thumblist", { tag:'li', dropOnEmpty: false, constraint: false, only:'facts_value' } );
 </script>
