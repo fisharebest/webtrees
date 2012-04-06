@@ -46,27 +46,23 @@ function dir_is_writable($dir) {
 $controller=new WT_Controller_Base();
 $controller
 	->requireManagerLogin()
-	->requireEditorLogin() /* Why this check? */
+	->requireEditorLogin() /* Editing may be disabled, even for admins */
 	->setPageTitle(WT_I18N::translate('Upload media files'))
-	->pageHeader();
-
-?>
-<script type="text/javascript">
-<!--
+	->pageHeader()
+	->addInlineJavaScript('
 	function checkpath(folder) {
 		value = folder.value;
 		if (value.substr(value.length-1,1) == "/") value = value.substr(0, value.length-1);
 		if (value.substr(0,1) == "/") value = value.substr(1, value.length-1);
 		result = value.split("/");
 		if (result.length > <?php echo $MEDIA_DIRECTORY_LEVELS; ?>) {
-			alert('<?php echo WT_I18N::translate('You can enter no more than %s subdirectory names', $MEDIA_DIRECTORY_LEVELS); ?>');
+			alert("' . WT_I18N::translate('You can enter no more than %s subdirectory names', $MEDIA_DIRECTORY_LEVELS) . '");
 			folder.focus();
 			return false;
 		}
 	}
-//-->
-</script>
-<?php
+	');
+	
 $action = safe_POST('action');
 if ($action == "upload") {
 	process_uploadMedia_form();

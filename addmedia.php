@@ -32,7 +32,36 @@ $controller=new WT_Controller_Simple();
 $controller
 	->setPageTitle(WT_I18N::translate('Add a new media object'))
 	->pageHeader()
-	->addExternalJavaScript('js/autocomplete.js');
+	->addExternalJavaScript('js/autocomplete.js')
+	->addInlineJavaScript('
+	// Shared Notes =========================
+	function findnote(field) {
+		pastefield = field;
+		findwin = window.open("find.php?type=note", "_blank", find_window_specs);
+		return false;
+	}
+	var pastefield;
+	function openerpasteid(id) {
+		window.opener.paste_id(id);
+		window.close();
+	}
+	function paste_id(value) {
+		pastefield.value = value;
+	}
+	function paste_char(value) {
+		pastefield.value += value;
+	}
+	function checkpath(folder) {
+		value = folder.value;
+		if (value.substr(value.length-1, 1) == "/") value = value.substr(0, value.length-1);
+		if (value.substr(0, 1) == "/") value = value.substr(1, value.length-1);
+		result = value.split("/");
+		if (result.length > <?php echo $MEDIA_DIRECTORY_LEVELS; ?>) {
+			alert("' . WT_I18N::translate('You can enter no more than %s subdirectory names', $MEDIA_DIRECTORY_LEVELS) . '");
+			folder.focus();
+		}
+	}
+	');
 
 // TODO use GET/POST, rather than $_REQUEST
 // TODO decide what validation is required on these input parameters
@@ -87,39 +116,6 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 	echo '<br><br><div class="center"><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a></div>';
 	exit;
 }
-
-echo WT_JS_START;
-?>
-	// Shared Notes =========================
-	function findnote(field) {
-		pastefield = field;
-		findwin = window.open('find.php?type=note', '_blank', find_window_specs);
-		return false;
-	}
-	var pastefield;
-	function openerpasteid(id) {
-		window.opener.paste_id(id);
-		window.close();
-	}
-	function paste_id(value) {
-		pastefield.value = value;
-	}
-	function paste_char(value) {
-		pastefield.value += value;
-	}
-	function checkpath(folder) {
-		value = folder.value;
-		if (value.substr(value.length-1, 1) == "/") value = value.substr(0, value.length-1);
-		if (value.substr(0, 1) == "/") value = value.substr(1, value.length-1);
-		result = value.split("/");
-		if (result.length > <?php echo $MEDIA_DIRECTORY_LEVELS; ?>) {
-			alert('<?php echo WT_I18N::translate('You can enter no more than %s subdirectory names', $MEDIA_DIRECTORY_LEVELS); ?>');
-			folder.focus();
-			return false;
-		}
-	}
-<?php
-echo WT_JS_END;
 
 // Naming conventions used in this script:
 // folderName - this is the link to the folder in the standard media directory; the one that is stored in the gedcom.
