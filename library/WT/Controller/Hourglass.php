@@ -539,5 +539,6 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 //-->
 </script>
 <?php
-}
+		return $this;
+	}
 }

@@ -32,7 +32,8 @@ $controller=new WT_Controller_Hourglass();
 $controller
 	->pageHeader()
 	->addExternalJavaScript('js/autocomplete.js')
-	->setupJavascript();
+	->setupJavascript()
+	->addInlineJavaScript('sizeLines();');
 
 echo '<table><tr><td valign="top">';
 echo '<h2>', WT_I18N::translate('Hourglass chart of %s', $controller->name), '</h2>';
@@ -131,9 +132,3 @@ $controller->print_person_pedigree(WT_Person::getInstance($controller->pid), 1);
 </td>
 </tr></table>
 </div>
-<br><br>
-<script type="text/javascript">
-<!--
-sizeLines();
-//-->
-</script>
