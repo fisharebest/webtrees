@@ -34,7 +34,7 @@ function compare_people($a, $b) {
 	return WT_Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
 }
 
-class WT_Controller_Lifespan extends WT_Controller_Chart {
+class WT_Controller_Lifespan extends WT_Controller_Base {
 	var $pids = array ();
 	var $people = array();
 	var $place = '';

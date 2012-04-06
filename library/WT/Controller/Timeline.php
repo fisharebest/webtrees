@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_charts.php';
 
-class WT_Controller_Timeline extends WT_Controller_Chart {
+class WT_Controller_Timeline extends WT_Controller_Base {
 	var $bheight = 30;
 	var $placements = array();
 	var $familyfacts = array();
