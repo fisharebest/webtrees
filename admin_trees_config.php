@@ -938,7 +938,7 @@ echo WT_JS_START;?>
 							<?php echo WT_I18N::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?>
 						</td>
 						<td>
-							<input name="NEW_WELCOME_TEXT_AUTH_MODE_4" size="60" maxlength="255" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE)); ?>">
+							<textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" maxlength="255" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE)); ?>"></textarea>
 						</td>
 					</tr>
 					<tr>

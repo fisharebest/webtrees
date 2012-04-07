@@ -230,6 +230,7 @@ table.gedcom_table2 {background:OldLace; border:1px inset #D9D6C4; border-collap
 #relatives {margin-left:120px;}
 html[dir='rtl'] #relatives {margin-right:120px;}
 #NEW_CALENDAR_FORMAT1 {margin:0 20px;}
+textarea[name="NEW_WELCOME_TEXT_AUTH_MODE_4"] {height:80px; width:460px;}
 
 /* TREE DOWNLOAD */
 #tree-download {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px;}
