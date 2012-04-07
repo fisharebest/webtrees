@@ -413,9 +413,7 @@ if ($action=='newentry') {
 				$success=true;
 			} else {
 				echo "<a href=\"#\" onclick=\"openerpasteid('$mediaid'); return false;\">", WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$mediaid</b></a><br><br>";
-				echo WT_JS_START;
-				echo "openerpasteid('", $mediaid, "');";
-				echo WT_JS_END;
+				$controller->addInlineJavaScript('openerpasteid("'.$mediaid.'");');
 			}
 		}
 		echo WT_I18N::translate('Update successful');
