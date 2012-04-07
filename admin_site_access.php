@@ -255,8 +255,8 @@ $controller
 // This could happen every time we create/update a rule.
 WT_DB::exec(
 	"DELETE unknown".
-	" FROM wt_site_access_rule AS unknown".
-	" JOIN wt_site_access_rule AS known ON (unknown.user_agent_pattern LIKE known.user_agent_pattern)".
+	" FROM `##site_access_rule` AS unknown".
+	" JOIN `##site_access_rule` AS known ON (unknown.user_agent_pattern LIKE known.user_agent_pattern)".
 	" WHERE unknown.rule='unknown' AND known.rule<>'unknown'".
 	" AND unknown.ip_address_start BETWEEN known.ip_address_start AND known.ip_address_end"
 );
