@@ -969,7 +969,7 @@ if (check_media_structure()) {
 			foreach ($dirs as $indexval => $dir) {
 				if ($dir{0}!=".") {
 				echo "<tr>";
-					echo "<td class=\" center\" width=\"10\">";
+					echo "<td class=\"center\" width=\"10\">";
 						// directory options
 						echo "<form name=\"blah\" action=\"".WT_SCRIPT_NAME."\" method=\"post\">";
 						echo "<input type=\"hidden\" name=\"directory\" value=\"".$directory.$dir."/\">";
@@ -979,7 +979,7 @@ if (check_media_structure()) {
 						echo "<input type=\"hidden\" name=\"action\" value=\"\">";
 						echo "<input type=\"hidden\" name=\"showthumb\" value=\"{$showthumb}\">";
 						echo "<input type=\"hidden\" name=\"sortby\" value=\"{$sortby}\">";
-						echo "<input type=\"image\" src=\"".$WT_IMAGES["remove"]."\" alt=\"".WT_I18N::translate('Delete')."\" title=\"".WT_I18N::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".WT_I18N::translate('Are you sure you want to delete this folder?')."');\"></td>";
+						echo "<input type=\"image\" class=\"icon-delete\" alt=\"".WT_I18N::translate('Delete')."\" title=\"".WT_I18N::translate('Delete')."\" onclick=\"this.form.action.value='deletedir';return confirm('".WT_I18N::translate('Are you sure you want to delete this folder?')."');\"></td>";
 						if ($USE_MEDIA_FIREWALL && $is_std_media_writable) {
 							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to standard')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirstandard';\"></td>";
 							echo "<td width=\"120\"><input type=\"submit\" value=\"".WT_I18N::translate('Move to protected')."\" onclick=\"this.form.level.value=(this.form.level.value*1)+1;this.form.action.value='movedirprotected';\"></td>";
