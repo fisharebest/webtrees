@@ -966,9 +966,9 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 .icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
 /* Generic MIME types */
 [class^="icon-mime-"],[class*=" icon-mime-"]{width:48px;height:48px;background-image:url(images/media/webtrees-mime-generic.png);}
-[class^="icon-mime-application-"],[class*=" icon-mime-application-"]{width:48px;height:48px;background-image:url(images/media/webtrees-mime-application-generic.png);}}
+[class^="icon-mime-application-"],[class*=" icon-mime-application-"]{width:48px;height:48px;background-image:url(images/media/webtrees-mime-application-generic.png);}
 [class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:48px;height:48px;background-image:url(images/media/audio-x-generic.png);}
-[class^="icon-mime-image-"],[class*=" icon-mime-image-"]{width:48px;height:48px;background-image:url(images/media/image-x-generic.png}
+[class^="icon-mime-image-"],[class*=" icon-mime-image-"]{width:48px;height:48px;background-image:url(images/media/image-x-generic.png);}
 [class^="icon-mime-text-"],[class*=" icon-mime-text-"]{width:48px;height:48px;background-image:url(images/media/text-x-generic.png);}
 [class^="icon-mime-video-"],[class*=" icon-mime-video-"]{width:48px;height:48px;background-image:url(images/media/video-x-generic.png);}
 /* Specific MIME types */
