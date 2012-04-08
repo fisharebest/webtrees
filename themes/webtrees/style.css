@@ -7,6 +7,8 @@
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
  *
+ * Mime-type icons from http://gnome-look.org, published under GPL (v2)
+ *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation; either version 2 of the License, or
@@ -963,12 +965,29 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 .icon-zoomin{width:25px;height:25px;background-image:url(images/zoomin.png);}
 .icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
 /* Generic MIME types */
-[class^="icon-mime-"],[class*=" icon-mime-"]{width:48px;height:48px;background-image:url(images/media/unknown.png);}
-[class^="icon-mime-application-"],[class*=" icon-mime-audio-"]{}
-[class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:48px;height:48px;background-image:url(images/media/audio.png);}
-[class^="icon-mime-image-"],[class*=" icon-mime-image-"]{}
-[class^="icon-mime-text-"],[class*=" icon-mime-text-"]{}
-[class^="icon-mime-video-"],[class*=" icon-mime-video-"]{}
+[class^="icon-mime-"],[class*=" icon-mime-"]{width:48px;height:48px;background-image:url(images/media/webtrees-mime-generic.png);}
+[class^="icon-mime-application-"],[class*=" icon-mime-application-"]{width:48px;height:48px;background-image:url(images/media/webtrees-mime-application-generic.png);}}
+[class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:48px;height:48px;background-image:url(images/media/audio-x-generic.png);}
+[class^="icon-mime-image-"],[class*=" icon-mime-image-"]{width:48px;height:48px;background-image:url(images/media/image-x-generic.png}
+[class^="icon-mime-text-"],[class*=" icon-mime-text-"]{width:48px;height:48px;background-image:url(images/media/text-x-generic.png);}
+[class^="icon-mime-video-"],[class*=" icon-mime-video-"]{width:48px;height:48px;background-image:url(images/media/video-x-generic.png);}
 /* Specific MIME types */
-.icon-mime-application-pdf{width:48px;height:48px;background-image:url(images/media/pdf.png);}
-.icon-mime-text-html{width:48px;height:48px;background-image:url(images/media/www.png);}
+.icon-mime-application-pdf{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-pdf.png);}
+.icon-mime-application-doc{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-msword.png);}
+.icon-mime-application-excel{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-vnd.ms-excel.png);}
+.icon-mime-application-rar{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-x-rar.png);}
+.icon-mime-application-zip{width:48px;height:48px;background-image:url(images/media/zip.png);}
+.icon-mime-application-dvi{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-x-dvi.png);}
+.icon-mime-application-shock-wave-flash{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-x-shockwave-flash.png);}
+.icon-mime-audio-mp3{width:48px;height:48px;background-image:url(images/media/audio-mp3.png);}
+.icon-mime-audio-mpeg{width:48px;height:48px;background-image:url(images/media/audio-x-mpeg.png);}
+.icon-mime-audio-ms-wma{width:48px;height:48px;background-image:url(images/media/audio-x-ms-wma.png);}
+.icon-mime-audio-wav{width:48px;height:48px;background-image:url(images/media/audio-x-wav.png);}
+.icon-mime-text-html{width:48px;height:48px;background-image:url(images/media/text-html.png);}
+.icon-mime-image-bmp{width:48px;height:48px;background-image:url(images/media/image-bmp.png);}
+.icon-mime-image-gif{width:48px;height:48px;background-image:url(images/media/image-gif.png);}
+.icon-mime-image-jpeg{width:48px;height:48px;background-image:url(images/media/image-jpeg.png);}
+.icon-mime-image-png{width:48px;height:48px;background-image:url(images/media/image-png.png);}
+.icon-mime-video-quicktime{width:48px;height:48px;background-image:url(images/media/video-quicktime.png);}
+.icon-mime-video-msvideo{width:48px;height:48px;background-image:url(images/media/video-x-msvideo.png);}
+.icon-mime-video-ms-wmv{width:48px;height:48px;background-image:url(images/media/video-x-ms-wmv.png);}
