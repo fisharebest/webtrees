@@ -1857,7 +1857,7 @@ function addSimpleTags($fact) {
 	global $ADVANCED_PLAC_FACTS;
 
 	// For new individuals, these facts default to "Y"
-	if ($fact=='MARR' || $fact=='BIRT') {
+	if ($fact=='MARR' /*|| $fact=='BIRT'*/) {
 		add_simple_tag("0 {$fact} Y");
 	} else {
 		add_simple_tag("0 {$fact}");
