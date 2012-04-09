@@ -1639,7 +1639,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 						foreach ($matches[1] as $match) {
 							if (!in_array($match, explode('|', WT_EVENTS_DEAT))) {
 								echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
-								echo WT_I18N::translate($match);
+								echo WT_Gedcom_Tag::getLabel($match);
 							}
 						}
 					}
@@ -1649,7 +1649,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 						foreach ($matches[1] as $match) {
 							if (in_array($match, explode('|', WT_EVENTS_DEAT))) {
 								echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
-								echo WT_I18N::translate($match);
+								echo WT_Gedcom_Tag::getLabel($match);
 							}
 						}
 					}
@@ -1660,7 +1660,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 					if (preg_match_all('/('.WT_REGEX_TAG.')/', $QUICK_REQUIRED_FAMFACTS, $matches)) {
 						foreach ($matches[1] as $match) {
 							echo '&nbsp;<input type="checkbox" name="SOUR_', $match, '"', $level2_checked, ' value="Y">';
-							echo WT_I18N::translate($match);
+							echo WT_Gedcom_Tag::getLabel($match);
 						}
 					}
 				}
@@ -1856,8 +1856,8 @@ function print_add_layer($tag, $level=2, $printSaveButton=true) {
 function addSimpleTags($fact) {
 	global $ADVANCED_PLAC_FACTS;
 
-	// Since we are adding a spouse, the default is "MARR Y"
-	if ($fact=='MARR') {
+	// For new individuals, these facts default to "Y"
+	if ($fact=='MARR' || $fact=='BIRT') {
 		add_simple_tag("0 {$fact} Y");
 	} else {
 		add_simple_tag("0 {$fact}");
