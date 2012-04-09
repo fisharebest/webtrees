@@ -964,30 +964,35 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 .icon-wiki{width:16px;height:16px;background-image:url(images/w_button.png);}
 .icon-zoomin{width:25px;height:25px;background-image:url(images/zoomin.png);}
 .icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
+
+[class^="icon-mime-"], [class*=" icon-mime-"] {display:inline-block; background-image:url(images/icon-mime-sprite.png);background-color:transparent;background-repeat:no-repeat;}
 /* Generic MIME types */
-[class^="icon-mime-"],[class*=" icon-mime-"]{width:48px;height:48px;background-image:url(images/media/webtrees-mime-generic.png);}
-[class^="icon-mime-application-"],[class*=" icon-mime-application-"]{width:48px;height:48px;background-image:url(images/media/webtrees-mime-application-generic.png);}
-[class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:48px;height:48px;background-image:url(images/media/audio-x-generic.png);}
-[class^="icon-mime-image-"],[class*=" icon-mime-image-"]{width:48px;height:48px;background-image:url(images/media/image-x-generic.png);}
-[class^="icon-mime-text-"],[class*=" icon-mime-text-"]{width:48px;height:48px;background-image:url(images/media/text-x-generic.png);}
-[class^="icon-mime-video-"],[class*=" icon-mime-video-"]{width:48px;height:48px;background-image:url(images/media/video-x-generic.png);}
+[class^="icon-mime-"],[class*=" icon-mime-"]{width:48px;height:48px;background-position: -99px -49px;}
+[class^="icon-mime-application-"],[class*=" icon-mime-application-"]{width:48px;height:48px;background-position: -99px -196px;}
+[class^="icon-mime-audio-"],[class*=" icon-mime-audio-"]{width:48px;height:48px;background-position: -197px -98px;}
+[class^="icon-mime-image-"],[class*=" icon-mime-image-"]{width:48px;height:48px;background-position: -148px -245px;}
+[class^="icon-mime-text-"],[class*=" icon-mime-text-"]{width:48px;height:48px;background-position: -197px -147px;}
+[class^="icon-mime-video-"],[class*=" icon-mime-video-"]{width:48px;height:48px;background-position: -148px -147px;}
 /* Specific MIME types */
-.icon-mime-application-pdf{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-pdf.png);}
-.icon-mime-application-doc{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-msword.png);}
-.icon-mime-application-excel{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-vnd.ms-excel.png);}
-.icon-mime-application-rar{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-x-rar.png);}
-.icon-mime-application-zip{width:48px;height:48px;background-image:url(images/media/zip.png);}
-.icon-mime-application-dvi{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-x-dvi.png);}
-.icon-mime-application-shock-wave-flash{width:48px;height:48px;background-image:url(images/media/gnome-mime-application-x-shockwave-flash.png);}
-.icon-mime-audio-mp3{width:48px;height:48px;background-image:url(images/media/audio-mp3.png);}
-.icon-mime-audio-mpeg{width:48px;height:48px;background-image:url(images/media/audio-x-mpeg.png);}
-.icon-mime-audio-ms-wma{width:48px;height:48px;background-image:url(images/media/audio-x-ms-wma.png);}
-.icon-mime-audio-wav{width:48px;height:48px;background-image:url(images/media/audio-x-wav.png);}
-.icon-mime-text-html{width:48px;height:48px;background-image:url(images/media/text-html.png);}
-.icon-mime-image-bmp{width:48px;height:48px;background-image:url(images/media/image-bmp.png);}
-.icon-mime-image-gif{width:48px;height:48px;background-image:url(images/media/image-gif.png);}
-.icon-mime-image-jpeg{width:48px;height:48px;background-image:url(images/media/image-jpeg.png);}
-.icon-mime-image-png{width:48px;height:48px;background-image:url(images/media/image-png.png);}
-.icon-mime-video-quicktime{width:48px;height:48px;background-image:url(images/media/video-quicktime.png);}
-.icon-mime-video-msvideo{width:48px;height:48px;background-image:url(images/media/video-x-msvideo.png);}
-.icon-mime-video-ms-wmv{width:48px;height:48px;background-image:url(images/media/video-x-ms-wmv.png);}
+.icon-mime-application-pdf{width:48px;height:48px;background-position: -1px -49px;}
+.icon-mime-application-doc{width:48px;height:48px;background-position: -148px -49px}
+.icon-mime-application-excel{width:48px;height:48px;background-position: -148px -196px;}
+.icon-mime-application-rar{width:48px;height:48px;background-position: -50px -98px}
+.icon-mime-application-zip{width:48px;height:48px;background-position: -50px -147px;}
+.icon-mime-application-dvi{width:48px;height:48px;background-position: -1px -0px;}
+.icon-mime-application-shock-wave-flash{width:48px;height:48px;background-position: -148px -0px;}
+.icon-mime-audio-mp3{width:48px;height:48px;background-position: -50px -245px;}
+.icon-mime-audio-mpeg{width:48px;height:48px;background-position: -50px -0px;}
+.icon-mime-audio-ms-wma{width:48px;height:48px;background-position: -1px -245px;}
+.icon-mime-audio-wav{width:48px;height:48px;background-position: -1px -98px;}
+.icon-mime-text-html{width:48px;height:48px;background-position: -99px -245px;}
+.icon-mime-text-gedcom{width:48px;height:48px;background-position: -50px -49px;}
+.icon-mime-image-bmp{width:48px;height:48px;background-position: -197px -0px;}
+.icon-mime-image-gif{width:48px;height:48px;background-position: -197px -49px;}
+.icon-mime-image-jpeg{width:48px;height:48px;background-position: -1px -147px;}
+.icon-mime-image-png{width:48px;height:48px;background-position: -99px -98px;}
+.icon-mime-image-svg{width:48px;height:48px;background-position: -197px -196px;}
+.icon-mime-image-tiff{width:48px;height:48px;background-position: -148px -98px;}
+.icon-mime-video-quicktime{width:48px;height:48px;background-position: -99px -147px;}
+.icon-mime-video-msvideo{width:48px;height:48px;background-position: -99px -0px;}
+.icon-mime-video-ms-wmv{width:48px;height:48px;background-position: -50px -196px;}
