@@ -532,7 +532,7 @@ function print_media_links($factrec, $level, $pid='') {
 	global $TEXT_DIRECTION;
 	global $SEARCH_SPIDER;
 	global $THUMBNAIL_WIDTH, $USE_MEDIA_VIEWER;
-	global $GEDCOM;
+	global $GEDCOM, $HIDE_GEDCOM_ERRORS;
 
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	$nlevel = $level+1;
@@ -542,119 +542,100 @@ function print_media_links($factrec, $level, $pid='') {
 	$objectNum = 0;
 	while ($objectNum < count($omatch)) {
 		$media_id = $omatch[$objectNum][1];
-		$row=
-			WT_DB::prepare("SELECT m_titl, m_file, m_gedrec FROM `##media` where m_media=? AND m_gedfile=?")
-			->execute(array($media_id, WT_GED_ID))
-			->fetchOneRow(PDO::FETCH_ASSOC);
-		if (WT_Media::getInstance($media_id)->canDisplayDetails()) {
-			// A new record, pending acceptance?
-			if (!$row && WT_USER_CAN_EDIT) {
-				$mediarec = find_updated_record($media_id, $ged_id);
-				$row['m_file'] = get_gedcom_value('FILE', 1, $mediarec);
-				$row['m_titl'] = get_gedcom_value('TITL', 1, $mediarec);
-				if (empty($row['m_titl'])) $row['m_titl'] = get_gedcom_value('FILE:TITL', 1, $mediarec);
-				$row['m_gedrec'] = $mediarec;
-			}
+		$media=WT_Media::getInstance($media_id);
+		if ($media) {
+			if ($media->canDisplayDetails()) {
+				$mainMedia = check_media_depth($media->getFileName(), 'NOTRUNC');
+				$thumbnail = thumbnail_file($mainMedia, true, false, $pid);
+				$isExternal = isFileExternal($media->getFileName());
 
-			$mainMedia = check_media_depth($row['m_file'], 'NOTRUNC');
-			$thumbnail = thumbnail_file($mainMedia, true, false, $pid);
-			$isExternal = isFileExternal($row['m_file']);
-			$mediaTitle = $row['m_titl'];
+				// Determine the size of the mediafile
+				$imgsize = findImageSize($mainMedia);
+				$imgwidth = $imgsize[0]+40;
+				$imgheight = $imgsize[1]+150;
+				if ($objectNum > 0) echo '<br clear="all">';
+				echo '<div id="media-display">
+					<div id="media-display-image">';;
+				if ($isExternal || media_exists($thumbnail)) {
+	
+					//LBox --------  change for Lightbox Album --------------------------------------------
+					if (WT_USE_LIGHTBOX && preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
+						echo '<a href="', $mainMedia, '" rel="clearbox[general_1]" rev="', $media->getXref(), '::', $GEDCOM, '::', strip_tags($media->getFullName()), '">';
+					} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
+						echo '<a href="', $mainMedia, "\" rel='clearbox(", get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000'), ", ", get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'), ", click)' rev=\"", $media->getXref(), '::', $GEDCOM, '::', strip_tags($media->getFullName()), '">';
+					// extra for Streetview ----------------------------------------
+					} else if (WT_USE_LIGHTBOX && strpos($media->getFileName(), 'http://maps.google.')===0) {
+						echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $media->getFileName(), '&amp;output=svembed"></iframe>';
+					// --------------------------------------------------------------------------------------
+					} else if ($USE_MEDIA_VIEWER) {
+						echo '<a href="mediaviewer.php?mid=', $media->getXref(), '&amp;ged=', WT_GEDURL, '">';
+					} else if (preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
+						echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($mainMedia), "', $imgwidth, $imgheight);\">";
+					// extra for Streetview ----------------------------------------
+					} else if (strpos($media->getFileName(), 'http://maps.google.')===0) {
+						echo '<iframe width="300" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $media->getFileName(), '&amp;output=svembed"></iframe>';
+					} else {
+						echo '<a href="mediaviewer.php?mid=', $media->getXref(), '&amp;ged=', WT_GEDURL, '">';
+					}
 
-			// Determine the size of the mediafile
-			$imgsize = findImageSize($mainMedia);
-			$imgwidth = $imgsize[0]+40;
-			$imgheight = $imgsize[1]+150;
-			if ($objectNum > 0) echo '<br clear="all">';
-			echo '<div id="media-display">
-				<div id="media-display-image">';;
-			if ($isExternal || media_exists($thumbnail)) {
-
-				//LBox --------  change for Lightbox Album --------------------------------------------
-				if (WT_USE_LIGHTBOX && preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
-					$name = trim($row['m_titl']);
-					echo '<a href="', $mainMedia, '" rel="clearbox[general_1]" rev="', $media_id, '::', $GEDCOM, '::', htmlspecialchars($name), '">';
-				} else if (WT_USE_LIGHTBOX && preg_match("/\.(pdf|avi|txt)$/i", $mainMedia)) {
-					$name = trim($row['m_titl']);
-					echo '<a href="', $mainMedia, "\" rel='clearbox(", get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000'), ", ", get_module_setting('lightbox', 'LB_URL_HEIGHT', '600'), ", click)' rev=\"", $media_id, '::', $GEDCOM, '::', htmlspecialchars($name), '">';
-				// extra for Streetview ----------------------------------------
-				} else if (WT_USE_LIGHTBOX && strpos($row['m_file'], 'http://maps.google.')===0) {
-					echo '<iframe style="float:left; padding:5px;" width="264" height="176" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row['m_file'], '&amp;output=svembed"></iframe>';
-				// --------------------------------------------------------------------------------------
-				} else if ($USE_MEDIA_VIEWER) {
-					echo '<a href="mediaviewer.php?mid=', $media_id, '&amp;ged=', WT_GEDURL, '">';
-				} else if (preg_match("/\.(jpe?g|gif|png)$/i", $mainMedia)) {
-					echo "<a href=\"#\" onclick=\"return openImage('", rawurlencode($mainMedia), "', $imgwidth, $imgheight);\">";
-				// extra for Streetview ----------------------------------------
-				} else if (strpos($row['m_file'], 'http://maps.google.')===0) {
-					echo '<iframe width="300" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="', $row["m_file"], '&amp;output=svembed"></iframe>';
+					echo '<img src="', $thumbnail, '" align="' , $TEXT_DIRECTION== 'rtl'?'right':'left', '" class="thumbnail"';
+					if (strpos($mainMedia, 'http://maps.google.')===0) {
+						// Do not print Streetview title here (PF&D tab)
+					} else {
+						if ($isExternal) echo ' width="', $THUMBNAIL_WIDTH, '"';
+						echo ' alt="', strip_tags($media->getFullName()), '"';
+					}
+					echo ' title="', strip_tags($media->getFullName()), '"></a>';
+				}
+				echo '</div>'; // close div "media-display-image"
+				echo '<div id="media-display-title">';
+				if ($SEARCH_SPIDER) {
+					echo $media->getFullName();
 				} else {
-					echo '<a href="mediaviewer.php?mid=', $media_id, '&amp;ged=', WT_GEDURL, '">';
+					echo '<a href="mediaviewer.php?mid=', $media->getXref(), '&amp;ged=', WT_GEDURL, '">', $media->getFullName(), '</a>';
 				}
-
-				echo '<img src="', $thumbnail, '" align="' , $TEXT_DIRECTION== 'rtl'?'right':'left', '" class="thumbnail"';
-				if (strpos($mainMedia, 'http://maps.google.')===0) {
-					// Do not print Streetview title here (PF&D tab)
-				} else {
-					if ($isExternal) echo ' width="', $THUMBNAIL_WIDTH, '"';
-					echo ' alt="', htmlspecialchars($mediaTitle), '"';
+				// NOTE: echo the notes of the media
+				echo '<p>';
+				echo print_fact_notes($media->getGedcomRecord(), 1);
+				if (preg_match('/2 DATE (.+)/', get_sub_record('FILE', 1, $media->getGedcomRecord()), $match)) {
+					$media_date=new WT_Date($match[1]);
+					$md = $media_date->Display(true);
+					echo '<p class="label">', WT_Gedcom_Tag::getLabel('DATE'), ': </p> ', $md;
 				}
-				//LBox --------  change for Lightbox Album --------------------------------------------
-				if ($row['m_titl']) {
-					echo ' title="', $row['m_titl'], '"';
-				} else {
-					echo'title="', basename($row['m_file']), '"';
+				$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $media->getGedcomRecord(), $match);
+				if ($ttype>0) {
+					$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
+					echo '<p class="label">', WT_I18N::translate('Type'), ': </span> <span class="field">', $mediaType, '</p>';
 				}
-				// ---------------------------------------------------------------------------------------------
-				echo '>';
-				echo '</a>';
-			}
-			echo '</div>'; // close div "media-display-image"
-			echo '<div id="media-display-title">';
-			if ($SEARCH_SPIDER) {
-				echo '<span dir="auto">', htmlspecialchars($mediaTitle), '</span>';
-			} else {
-				echo '<a href="mediaviewer.php?mid=', $media_id, '&amp;ged=', WT_GEDURL, '" dir="auto">', htmlspecialchars($mediaTitle), '</a>';
-			}
-			// NOTE: echo the notes of the media
-			echo '<p>';
-			echo print_fact_notes($row['m_gedrec'], 1);
-			if (preg_match('/2 DATE (.+)/', get_sub_record('FILE', 1, $row['m_gedrec']), $match)) {
-				$media_date=new WT_Date($match[1]);
-				$md = $media_date->Display(true);
-				echo '<p class="label">', WT_Gedcom_Tag::getLabel('DATE'), ': </p> ', $md;
-			}
-			$ttype = preg_match("/".($nlevel+1)." TYPE (.*)/", $row['m_gedrec'], $match);
-			if ($ttype>0) {
-				$mediaType = WT_Gedcom_Tag::getFileFormTypeValue($match[1]);
-				echo '<p class="label">', WT_I18N::translate('Type'), ': </span> <span class="field">', $mediaType, '</p>';
-			}
-			echo '</p>';
-			//-- print spouse name for marriage events
-			$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
-			if ($ct>0) {
-				$spouse=WT_Person::getInstance($match[1]);
-				if ($spouse) {
-					echo '<a href="', $spouse->getHtmlUrl(), '">';
-					echo $spouse->getFullName();
-					echo '</a>';
-				}
-				if (empty($SEARCH_SPIDER)) {
-					$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
-					if ($ct>0) {
-						$famid = trim($match[1]);
-						$family = WT_Family::getInstance($famid);
-						if ($family) {
-							if ($spouse) echo " - ";
-							echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
+				echo '</p>';
+				//-- print spouse name for marriage events
+				$ct = preg_match("/WT_SPOUSE: (.*)/", $factrec, $match);
+				if ($ct>0) {
+					$spouse=WT_Person::getInstance($match[1]);
+					if ($spouse) {
+						echo '<a href="', $spouse->getHtmlUrl(), '">';
+						echo $spouse->getFullName();
+						echo '</a>';
+					}
+					if (empty($SEARCH_SPIDER)) {
+						$ct = preg_match("/WT_FAMILY_ID: (.*)/", $factrec, $match);
+						if ($ct>0) {
+							$famid = trim($match[1]);
+							$family = WT_Family::getInstance($famid);
+							if ($family) {
+								if ($spouse) echo " - ";
+								echo '<a href="', $family->getHtmlUrl(), '">', WT_I18N::translate('View Family'), '</a>';
+							}
 						}
 					}
 				}
+				print_fact_notes($media->getGedcomRecord(), $nlevel);
+				print_fact_sources($media->getGedcomRecord(), $nlevel);
+				echo '</div>';//close div "media-display-title"
+				echo '</div>';//close div "media-display"
 			}
-			print_fact_notes($row['m_gedrec'], $nlevel);
-			print_fact_sources($row['m_gedrec'], $nlevel);
-			echo '</div>';//close div "media-display-title"
-			echo '</div>';//close div "media-display"
+		} elseif (!$HIDE_GEDCOM_ERRORS) {
+			echo '<p class="ui-state-error">', $media_id, '</p>';
 		}
 		$objectNum ++;
 	}
