@@ -122,14 +122,14 @@ class WT_DBStatement {
 	}
 
 	// Fetch one value and close the cursor.  e.g. SELECT MAX(foo) FROM bar
-	public function fetchOne($default=null) {
+	public function fetchOne() {
 		if (!$this->executed) {
 			$this->execute();
 		}
-		$row=$this->pdostatement->fetch(PDO::FETCH_NUM);
+		$value=$this->pdostatement->fetchColumn();
 		$this->pdostatement->closeCursor();
 		$this->executed=false;
-		return is_array($row) ? $row[0] : $default;
+		return $value===false ? null : $value;
 	}
 
 	// Fetch two columns, and return an associative array of col1=>col2
