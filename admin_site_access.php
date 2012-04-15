@@ -138,7 +138,6 @@ case 'load_unknown':
 			" OR user_agent_pattern LIKE CONCAT('%', ?, '%'))";
 		$args[]=$sSearch;
 		$args[]=$sSearch;
-		$args[]=$sSearch;
 	}
 
 	$iSortingCols=safe_GET('iSortingCols');
