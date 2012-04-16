@@ -131,7 +131,7 @@ class WT_Report_PDF extends WT_Report_Base {
 		header('Expires:');
 		header('Pragma:');
 		header('Cache-control:');
-		$this->pdf->Output('webtrees_'.basename(dirname($_REQUEST['report'])).'.pdf', 'I');
+		$this->pdf->Output('webtrees-'.uniqid().'.pdf', 'I');
 	}
 
 	/**
