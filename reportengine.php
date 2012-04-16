@@ -176,91 +176,85 @@ elseif ($action=='setup') {
 		$report_array['inputs'] = array();
 	}
 	foreach ($report_array['inputs'] as $indexval => $input) {
-		if ($input['name'] == 'sources' || $input['name'] != 'sources') {
-			// url forced default value ?
-			if (isset($_REQUEST[$input['name']])) {
-				$input['default']=$_REQUEST[$input['name']];
-			}
-			echo '<tr><td class="descriptionbox wrap">';
-			echo '<input type="hidden" name="varnames[]" value="', $input["name"], '">';
-			echo WT_I18N::translate($input['value']), '</td><td class="optionbox">';
-			if (!isset($input['type'])) {
-				$input['type'] = 'text';
-			}
-			if (!isset($input['default'])) {
-				$input['default'] = '';
-			}
-			if (isset($input['lookup'])) {
-				if ($input['lookup']=='INDI') {
-					if (!empty($pid)) {
-						$input['default'] = $pid;
-					} else {
-						$input['default'] = $controller->getSignificantIndividual()->getXref();
-					}
-				}
-				if ($input['lookup']=='FAM') {
-					if (!empty($famid)) {
-						$input['default'] = $famid;
-					} else {
-						$input['default'] = $controller->getSignificantFamily()->getXref();
-					}
-				}
-				if ($input['lookup']=='SOUR') {
-					if (!empty($sid)) {
-						$input['default'] = $sid;
-					}
-				}
-				if ($input['lookup']=='DATE') {
-					if (isset($input['default'])) {
-						$input['default'] = strtoupper($input['default']);
-					}
-				}
-			}
-			if ($input['type']=='text') {
-				echo '<input type="text" name="vars[', $input['name'], ']" id="', $input['name'], '" 
-						value="', $input['default'], '" style="direction: ltr;">';
-			}
-			if ($input['type']=='checkbox') {
-				echo '<input type="checkbox" name="vars[', $input['name'], ']" id="', $input['name'], '" value="1"';
-				if ($input['default']=='1') {
-					echo ' checked="checked"';
-				}
-				echo '>';
-			}
-			if ($input['type']=='select') {
-				echo '<select name="vars[', $input['name'], ']" id="', $input['name'], '_var">';
-				$options = preg_split('/[|]+/', $input['options']);
-				foreach ($options as $indexval => $option) {
-					$opt = explode('=>', $option);
-					list($value, $display)=$opt;
-					if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 15) == 'WT_I18N::number' || substr($display, 0, 23)=='WT_Gedcom_Tag::getLabel') {
-						eval("\$display=$display;");
-					}
-					echo '<option value="', htmlspecialchars($value), '"';
-					if ($opt[0]==$input['default']) {
-						echo ' selected="selected"';
-					}
-					echo '>', $display, '</option>';
-				}
-				echo '</select>';
-			}
-			if (isset($input['lookup'])) {
-				echo '<input type="hidden" name="type[', $input['name'], ']" value="', $input['lookup'], '">';
-				if ($input['lookup']=='INDI') {
-					echo print_findindi_link('pid');
-				} elseif ($input['lookup']=='PLAC') {
-					echo print_findplace_link($input['name']);
-				} elseif ($input['lookup']=='FAM') {
-					echo print_findfamily_link('famid');
-				} elseif ($input['lookup']=='SOUR') {
-					echo print_findsource_link($input['name']);
-				} elseif ($input['lookup']=='DATE') {
-					echo ' <a href="#" onclick="cal_toggleDate(\'div_', $input['name'], '\', \'', $input['name'], '\'); return false;" class="icon-button_calendar" title="', WT_I18N::translate('Select a date'), '"></a>';
-					echo '<div id="div_', $input['name'], '" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>';
-				}
-			}
-			echo '</td></tr>';
+		echo '<tr><td class="descriptionbox wrap">';
+		echo '<input type="hidden" name="varnames[]" value="', $input["name"], '">';
+		echo WT_I18N::translate($input['value']), '</td><td class="optionbox">';
+		if (!isset($input['type'])) {
+			$input['type'] = 'text';
 		}
+		if (!isset($input['default'])) {
+			$input['default'] = '';
+		}
+		if (isset($input['lookup'])) {
+			if ($input['lookup']=='INDI') {
+				if (!empty($pid)) {
+					$input['default'] = $pid;
+				} else {
+					$input['default'] = $controller->getSignificantIndividual()->getXref();
+				}
+			}
+			if ($input['lookup']=='FAM') {
+				if (!empty($famid)) {
+					$input['default'] = $famid;
+				} else {
+					$input['default'] = $controller->getSignificantFamily()->getXref();
+				}
+			}
+			if ($input['lookup']=='SOUR') {
+				if (!empty($sid)) {
+					$input['default'] = $sid;
+				}
+			}
+			if ($input['lookup']=='DATE') {
+				if (isset($input['default'])) {
+					$input['default'] = strtoupper($input['default']);
+				}
+			}
+		}
+		if ($input['type']=='text') {
+			echo '<input type="text" name="vars[', $input['name'], ']" id="', $input['name'], '" 
+					value="', $input['default'], '" style="direction: ltr;">';
+		}
+		if ($input['type']=='checkbox') {
+			echo '<input type="checkbox" name="vars[', $input['name'], ']" id="', $input['name'], '" value="1"';
+			if ($input['default']=='1') {
+				echo ' checked="checked"';
+			}
+			echo '>';
+		}
+		if ($input['type']=='select') {
+			echo '<select name="vars[', $input['name'], ']" id="', $input['name'], '_var">';
+			$options = preg_split('/[|]+/', $input['options']);
+			foreach ($options as $indexval => $option) {
+				$opt = explode('=>', $option);
+				list($value, $display)=$opt;
+				if (substr($display, 0, 18)=='WT_I18N::translate' || substr($display, 0, 15) == 'WT_I18N::number' || substr($display, 0, 23)=='WT_Gedcom_Tag::getLabel') {
+					eval("\$display=$display;");
+				}
+				echo '<option value="', htmlspecialchars($value), '"';
+				if ($opt[0]==$input['default']) {
+					echo ' selected="selected"';
+				}
+				echo '>', $display, '</option>';
+			}
+			echo '</select>';
+		}
+		if (isset($input['lookup'])) {
+			echo '<input type="hidden" name="type[', $input['name'], ']" value="', $input['lookup'], '">';
+			if ($input['lookup']=='INDI') {
+				echo print_findindi_link('pid');
+			} elseif ($input['lookup']=='PLAC') {
+				echo print_findplace_link($input['name']);
+			} elseif ($input['lookup']=='FAM') {
+				echo print_findfamily_link('famid');
+			} elseif ($input['lookup']=='SOUR') {
+				echo print_findsource_link($input['name']);
+			} elseif ($input['lookup']=='DATE') {
+				echo ' <a href="#" onclick="cal_toggleDate(\'div_', $input['name'], '\', \'', $input['name'], '\'); return false;" class="icon-button_calendar" title="', WT_I18N::translate('Select a date'), '"></a>';
+				echo '<div id="div_', $input['name'], '" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>';
+			}
+		}
+		echo '</td></tr>';
 	}
 	echo '<tr>
 		<td colspan="2" class="optionbox">
