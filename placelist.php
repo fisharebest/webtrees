@@ -43,13 +43,10 @@ function case_in_array($value, $array) {
 	}
 	return false;
 }
-$action = safe_GET('action');
-$display = safe_GET('display');
-$parent = safe_GET('parent', WT_REGEX_UNSAFE);
-$level = safe_GET('level');
-
-if (empty($action)) $action = 'find';
-if (empty($display)) $display = 'hierarchy';
+$action =safe_GET('action',  array('find', 'show'), 'find');
+$display=safe_GET('display', array('hierarchy', 'list'), 'hierarchy');
+$parent =safe_GET('parent');
+$level  =safe_GET('level');
 
 if ($display=='hierarchy') {
 	$controller->setPageTitle(WT_I18N::translate('Place hierarchy'));
