@@ -25,26 +25,25 @@
 
 define('WT_SCRIPT_NAME', 'relationship.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_charts.php';
+require WT_ROOT.'includes/functions/functions_charts.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Base();
 
-if (isset($_REQUEST['show_full'])) {
-	$show_full = $_REQUEST['show_full'];
-} else {
-	$show_full=$PEDIGREE_FULL_DETAILS;
-}
-if (!isset($_REQUEST['path_to_find'])) {
-	$path_to_find = 0;
-	unset($_SESSION['relationships']);
-} else {
-	$path_to_find = $_REQUEST['path_to_find'];
-}
-if ($path_to_find == -1) {
-	$path_to_find = 0;
+$pid1        =safe_GET_xref('pid1');
+$pid2        =safe_GET_xref('pid2');
+$show_full   =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
+$path_to_find=safe_GET('path_to_find', '[0-9]+', 0);
+$followspouse=safe_GET_bool('followspouse');
+$asc         =safe_GET_bool('asc');
+
+$asc = $asc ? -1 : 1;
+
+if ($path_to_find==0) {
 	unset($_SESSION['relationships']);
 }
-if ($show_full==false) {
+
+if (!$show_full) {
 	$bwidth  = $cbwidth;
 	$bheight = $cbheight;
 	$Dbwidth = $cbwidth;
@@ -56,24 +55,8 @@ $Dbyspacing		= 0;
 $Dbasexoffset	= 0;
 $Dbaseyoffset	= 0;
 
-$pid1=safe_GET_xref('pid1');
-$pid2=safe_GET_xref('pid2');
-
-if (!isset($_REQUEST['followspouse'])) {
-	$followspouse = 0;
-} else {
-	$followspouse = $_REQUEST['followspouse'];
-}
-if (!isset($_REQUEST['asc'])) {
-	$asc=1;
-} else {
-	$asc = $_REQUEST['asc'];
-}
-if ($asc=='') {
-	$asc=1;
-}
-if (empty($pid1)) {
-	$followspouse = 1;
+if (!$pid1) {
+	$followspouse = true;
 }
 $check_node = true;
 $disp = true;
@@ -145,8 +128,7 @@ if (WT_USE_LIGHTBOX) {
 				<?php echo WT_I18N::translate('Show Details'); ?>
 			</td>
 			<td class="optionbox vmiddle">
-				<input type="hidden" name="show_full" value="<?php echo $show_full; ?>">
-				<input tabindex="3" type="checkbox" name="showfull" value="0" <?php if ($show_full) { echo ' checked="checked"'; } ?> onclick="document.people.show_full.value='<?php echo !$show_full; ?>';">
+				<?php echo two_state_checkbox('show_full', $show_full); ?>
 			</td>
 		</tr>
 		<tr>
@@ -161,7 +143,7 @@ if (WT_USE_LIGHTBOX) {
 				<?php echo WT_I18N::translate('Show oldest top'), help_link('oldest_top'); ?>
 			</td>
 			<td class="optionbox">
-				<input tabindex="4" type="checkbox" name="asc" value="-1" <?php if ($asc==-1) echo ' checked="checked"'; ?>>
+				<input tabindex="4" type="checkbox" name="asc" value="1" <?php if ($asc==-1) echo ' checked="checked"'; ?>>
 			</td>
 		</tr>
 		<tr>
