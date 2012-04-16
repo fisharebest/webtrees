@@ -30,8 +30,23 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Base();
 
-$famid=safe_GET('famid');
-$pid  =safe_GET('pid');
+$famid   =safe_GET('famid');
+$pid     =safe_GET('pid');
+$action  =safe_GET('action', array('choose', 'setup', 'run'), 'choose');
+$report  =safe_GET('report');
+$output  =safe_GET('output', array('HTML', 'PDF'), 'PDF');
+$vars    =safe_GET('vars');
+$varnames=safe_GET('varnames');
+$type    =safe_GET('type');
+if (!is_array($vars)) {
+	$vars=array();
+}
+if (!is_array($varnames)) {
+	$varnames=array();
+}
+if (!is_array($type)) {
+	$type=array();
+}
 
 /**
  * function to get the values for the given tag
@@ -45,40 +60,6 @@ function get_tag_values($tag) {
 		$vals[] = $values[$i];
 	}
 	return $vals;
-}
-
-if (isset($_REQUEST['action'])) {
-	$action = $_REQUEST['action'];
-	if (empty($action)) {
-		$action = 'choose';
-	}
-} else {
-	$action = 'choose';
-}
-if (isset($_REQUEST['report'])) {
-	$report = $_REQUEST['report'];
-} else {
-	$report = '';
-}
-if (isset($_REQUEST['output'])) {
-	$output = $_REQUEST['output'];
-} else {
-	$output = 'PDF';
-}
-if (isset($_REQUEST['vars'])) {
-	$vars = $_REQUEST['vars'];
-} else {
-	$vars = array();
-}
-if (isset($_REQUEST['varnames'])) {
-	$varnames = $_REQUEST['varnames'];
-} else {
-	$varnames = array();
-}
-if (isset($_REQUEST['type'])) {
-	$type = $_REQUEST['type'];
-} else {
-	$type = array();
 }
 
 //-- setup the arrays
