@@ -214,7 +214,7 @@ echo WT_JS_END;
 							<?php echo WT_Gedcom_Tag::getLabel('GIVN'); ?>
 						</td>
 						<td class="list_value">
-							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:'.$fatherGivnOption)); ?>">
+							<input type="text" name="values[<?php echo $j; ?>]" value="<?php echo $controller->getValue($controller->getIndex('FAMC:HUSB:NAME:GIVN:'.$fatherGivnOption)); ?> autofocus">
 							<select name="fields[<?php echo $j; ?>]">
 								<option value="FAMC:HUSB:NAME:GIVN:EXACT"<?php if ($fatherGivnOption == 'EXACT') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Exact'); ?></option>
 								<option value="FAMC:HUSB:NAME:GIVN:BEGINS"<?php if ($fatherGivnOption == 'BEGINS') echo " selected=\"selected\""; ?>><?php echo WT_I18N::translate('Begins with'); ?></option>
@@ -295,14 +295,3 @@ echo WT_JS_END;
 		</div>
 </form>
 </div> 
-<?php
-// set the focus on the first field unless multisite or some search results have been printed
-if (!$somethingPrinted ) {
-?>
-	<script type="text/javascript">
-	<!--
-		document.getElementById('value0').focus();
-	//-->
-	</script>
-<?php
-}

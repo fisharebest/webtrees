@@ -29,9 +29,9 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Controller_Search extends WT_Controller_Base {
-	var $action;
+	public $action;
+	// TODO: decide if these variables are public/private/protected (or unused)
 	var $isPostBack = false;
-	var $topsearch;
 	var $srfams;
 	var $srindi;
 	var $srnote;
@@ -45,7 +45,6 @@ class WT_Controller_Search extends WT_Controller_Base {
 	var $srcResultsPrinted = -1;
 	var $query;
 	var $myquery = "";
-	//var $soundex = "Russell";
 	var $soundex = "DaitchM";
 	var $subaction = "";
 	var $nameprt = "";
@@ -64,13 +63,9 @@ class WT_Controller_Search extends WT_Controller_Base {
 	var $gender="";
 	var $mygender;
 	var $firstname="";
-	var $myfirstname;
 	var $lastname="";
-	var $mylastname;
 	var $place="";
-	var $myplace;
 	var $year="";
-	var $myyear;
 	var $sgeds = array ();
 	var $myindilist = array ();
 	var $mysourcelist = array ();
@@ -85,16 +80,13 @@ class WT_Controller_Search extends WT_Controller_Base {
 	var $printplace = array();
 
 	function __construct() {
-		global $GEDCOM;
-
 		parent::__construct();
 
-		if ($this->action=='') {
-			$this->action='general';
-		}
+		$this->action=safe_POST('action', array('advanced', 'general', 'soundex', 'replace'), 'general');
 
-		if (!empty ($_REQUEST["topsearch"])) {
-			$this->topsearch = true;
+		$topsearch=safe_POST_bool('topsearch');
+
+		if ($topsearch) {
 			$this->isPostBack = true;
 			$this->srfams = 'yes';
 			$this->srindi = 'yes';
@@ -105,7 +97,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 		// Get the query and remove slashes
 		if (isset ($_REQUEST["query"])) {
 			// Reset the "Search" text from the page header
-			if ($_REQUEST["query"] == WT_I18N::translate('Search') || strlen($_REQUEST["query"])<2 || preg_match("/^\.+$/", $_REQUEST["query"])>0) {
+			if (strlen($_REQUEST["query"])<2) {
 				$this->query="";
 				$this->myquery="";
 			} else {
@@ -122,13 +114,14 @@ class WT_Controller_Search extends WT_Controller_Base {
 			if (isset($_REQUEST["replaceAll"])) $this->replaceAll = true;
 		}
 
+		// TODO: fetch each variable independently, using appropriate validation
 		// Aquire all the variables values from the $_REQUEST
-		$varNames = array ("isPostBack", "action", "topsearch", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "tagfilter", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
+		$varNames = array ("isPostBack", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "tagfilter", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
 		$this->setRequestValues($varNames);
 
 		if (!$this->isPostBack) {
 			// Enable the default gedcom for search
-			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $GEDCOM);
+			$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), WT_GEDCOM);
 			$_REQUEST["$str"] = $str;
 		}
 
@@ -137,43 +130,35 @@ class WT_Controller_Search extends WT_Controller_Base {
 		if (count($all_gedcoms)>1 && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 			foreach ($all_gedcoms as $ged_id=>$gedcom) {
 				$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
-				if (isset ($_REQUEST["$str"]) || isset ($this->topsearch)) {
+				if (isset ($_REQUEST["$str"]) || $topsearch) {
 					$this->sgeds[$ged_id] = $gedcom;
 					$_REQUEST["$str"] = 'yes';
 				}
 			}
 		} else {
-			$this->sgeds[WT_GED_ID] = $GEDCOM;
+			$this->sgeds[WT_GED_ID] = WT_GEDCOM;
 		}
 
 		// vars use for soundex search
 		if (!empty ($_REQUEST["firstname"])) {
 			$this->firstname = $_REQUEST["firstname"];
-			$this->myfirstname = $this->firstname;
 		} else {
 			$this->firstname="";
-			$this->myfirstname = "";
 		}
 		if (!empty ($_REQUEST["lastname"])) {
 			$this->lastname = $_REQUEST["lastname"];
-			$this->mylastname = $this->lastname;
 		} else {
 			$this->lastname="";
-			$this->mylastname = "";
 		}
 		if (!empty ($_REQUEST["place"])) {
 			$this->place = $_REQUEST["place"];
-			$this->myplace = $this->place;
 		} else {
 			$this->place="";
-			$this->myplace = "";
 		}
 		if (!empty ($_REQUEST["year"])) {
 			$this->year = $_REQUEST["year"];
-			$this->myyear = $this->year;
 		} else {
 			$this->year="";
-			$this->myyear = "";
 		}
 		// Set the search result titles for soundex searches
 		if ($this->firstname || $this->lastname || $this->place) {
@@ -248,7 +233,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 		$this->inputFieldNames[] = "tagfilter";
 
 		// Get the search results based on the action
-		if (isset ($this->topsearch)) {
+		if ($topsearch) {
 			$this->TopSearch();
 		}
 		// If we want to show associated persons, build the list
@@ -292,12 +277,11 @@ class WT_Controller_Search extends WT_Controller_Base {
 	 * prepares the search to do a general search on indi's, fams, and sources.
 	 */
 	function TopSearch() {
-		global $GEDCOM;
 		// first set some required variables. Search only in current gedcom, only in indi's.
 		$this->srindi = "yes";
 
 		// Enable the default gedcom for search
-		$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $GEDCOM);
+		$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), WT_GEDCOM);
 		$_REQUEST["$str"] = "yes";
 
 		// Then see if an ID is typed in. If so, we might want to jump there.

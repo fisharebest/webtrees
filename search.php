@@ -106,9 +106,9 @@ echo '<div id="search-page">
 		//========== General search Form ==========
 		if ($controller->action == "general") { 			
 			echo '<div class="label">' , WT_I18N::translate('Search for'), '</div>		
-			<div class="value"><input tabindex="1" id="firstfocus" type="text" name="query" value="';
+			<div class="value"><input tabindex="1" id="query" type="text" name="query" value="';
 				if (isset($controller->myquery)) 	echo $controller->myquery;
-				echo '" size="40"> ', print_specialchar_link('firstfocus'), '</div>		
+				echo '" size="40" autofocus> ', print_specialchar_link('query'), '</div>		
 			<div class="label">' ,  WT_I18N::translate('Records'), '</div>
 			<div class="value"><p>
 				<input type="checkbox"';
@@ -150,9 +150,9 @@ echo '<div id="search-page">
 		if ($controller->action == "replace") {
 			if (WT_USER_CAN_EDIT) { 
 				echo '<div class="label">', WT_I18N::translate('Search for'), '</div>
-					<div class="value"><input tabindex="1" id="firstfocus" name="query" value="" type="text" autofocus></div>
+					<div class="value"><input tabindex="1" name="query" value="" type="text" autofocus></div>
 					<div class="label">',  WT_I18N::translate('Replace with'), '</div>
-					<div class="value"><input tabindex="1" name="replace" value="" type="text"></div>';			
+					<div class="value"><input tabindex="2" name="replace" value="" type="text"></div>';			
 				?>
 				<script type="text/javascript">
 				<!--
@@ -191,13 +191,13 @@ echo '<div id="search-page">
 		//========== Phonetic search Form //==========		
 		if ($controller->action == "soundex") {
 			echo '<div class="label">' , WT_I18N::translate('Given name'), '</div>
-				<div class="value"><input tabindex="3" type="text" id="firstfocus" name="firstname" value="' , $controller->myfirstname, '" autofocus></div>
+				<div class="value"><input tabindex="3" type="text" name="firstname" value="' , htmlspecialchars($controller->firstname), '" autofocus></div>
 				<div class="label">' , WT_I18N::translate('Last name'), '</div>
-				<div class="value"><input tabindex="4" type="text" name="lastname" value="' , $controller->mylastname, '"></div>
+				<div class="value"><input tabindex="4" type="text" name="lastname" value="' , htmlspecialchars($controller->lastname), '"></div>
 				<div class="label">' , WT_I18N::translate('Place'), '</div>
-				<div class="value"><input tabindex="5" type="text" name="place" value="' , $controller->myplace, '"></div>
+				<div class="value"><input tabindex="5" type="text" name="place" value="' , htmlspecialchars($controller->place), '"></div>
 				<div class="label">' , WT_I18N::translate('Year'), '</div>
-				<div class="value"><input tabindex="6" type="text" name="year" value="' , $controller->myyear, '"></div>';
+				<div class="value"><input tabindex="6" type="text" name="year" value="' , htmlspecialchars($controller->year), '"></div>';
 			
 			// ---- Soundex type options (Russell, DaitchM) --- 
 			echo '<div class="label">' , WT_I18N::translate('Phonetic algorithm'),  '</div>
