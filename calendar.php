@@ -33,24 +33,14 @@ $controller=new WT_Controller_Base();
 $controller->setPageTitle(WT_I18N::translate('Anniversary calendar'));
 $controller->pageHeader();
 
-if (isset($_REQUEST['cal'])) $cal = $_REQUEST['cal'];
-if (isset($_REQUEST['day'])) $day = $_REQUEST['day'];
-if (isset($_REQUEST['month'])) $month = $_REQUEST['month'];
-if (isset($_REQUEST['year'])) $year = $_REQUEST['year'];
-if (isset($_REQUEST['action'])) $action = $_REQUEST['action'];
-if (isset($_REQUEST['filterev'])) $filterev = $_REQUEST['filterev'];
-if (isset($_REQUEST['filterof'])) $filterof = $_REQUEST['filterof'];
-if (isset($_REQUEST['filtersx'])) $filtersx = $_REQUEST['filtersx'];
-
-// Set undefined parameters to defaults
-if (empty($cal     )) $cal     ='';
-if (empty($day     )) $day     ='';
-if (empty($month   )) $month   ='';
-if (empty($year    )) $year    ='';
-if (empty($action  )) $action  ='today';
-if (empty($filterev)) $filterev='bdm';
-if (empty($filterof)) $filterof='all';
-if (empty($filtersx)) $filtersx='';
+$cal     =safe_GET('cal',      '@#D[A-Z ]+@');
+$day     =safe_GET('day',      '[0-9]+');
+$month   =safe_GET('month',    '[A-Z]{3,5}');
+$year    =safe_GET('year',     '[0-9]+');
+$action  =safe_GET('action',   array('year', 'today', 'calendar'), 'today');
+$filterev=safe_GET('filterev', array('all', 'bdm', WT_REGEX_TAG), 'bdm');
+$filterof=safe_GET('filterof', array('all', 'living', 'recent'), 'all');
+$filtersx=safe_GET('filtersx', array('M', 'F'), '');
 
 if ($cal.$day.$month.$year=='') {
 	// No date specified?  Use the most likely calendar
