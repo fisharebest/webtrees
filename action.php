@@ -147,3 +147,4 @@ case 'theme':
 	}
 	break;
 }
+Zend_Session::writeClose();
