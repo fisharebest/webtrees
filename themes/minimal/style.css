@@ -27,198 +27,74 @@
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
 
-body {
-	color: black;
-	background-color: white;
-	font: 12px tahoma, arial, helvetica, sans-serif;
-}
+body {color:black; background-color:white; font:12px tahoma, arial, helvetica, sans-serif;}
 
-fieldset {
-	margin:8px 8px 4px 8px;
-	text-align:left;
-}
-
+fieldset {margin:8px 8px 4px 8px; text-align:left;}
 html[dir='rtl'] fieldset {text-align:right;}
 
-legend {
-	font-weight: bold;
-}
+legend {font-weight:bold;}
 
-a {
-	color: #666666;
-	text-decoration: none;
-}
+a {color:#666; text-decoration:none;}
+a:hover {color:black; text-decoration:underline;}
 
-a:hover {
-	color: black;
-	text-decoration: underline;
-}
-
-/* -----Layout for top header ----- */
-
-.title {display: block; float: left; width: 40%;}
-.hlogin {padding: 2px 20px;}
-.htheme {width: 10%; white-space: nowrap;}
-.htheme option {text-align:left;}
-.hsearch, .favorites_form {display: block; float: right;}
-.favorites_form {
-	position:absolute;
-	right:4px;
-	top:1.4em;
-	z-index:2000;
-}
-html[dir='rtl'] .title, html[dir='rtl'] .hlogin, html[dir='rtl'] .htheme {float: right;}
-html[dir='rtl'] .hsearch {float: left;}
-html[dir='rtl'] .htheme option {text-align: right;}
-html[dir='rtl'] .favorites_form {
-	position:absolute;
-	right: auto;
-	left:4px;
-	top:1.4em;
-	z-index:2000;
-}
-
-#flash-messages { clear:both; }
-
-/* Layout for header menu */
-
-#topMenu { /* set up container for menu */
-	border-bottom: 1px solid;
-	clear: both;
-	float: left;
-	width: 100%;
-	margin:10px 0 0 0;
-	padding:0 0 10px 0;
-	margin-top: 18px;
-	z-index:2000;
-	position: relative;
-}
-
-/* Set up Top Menu */
-
-#topMenu ul {
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	float: right;
-	position: relative;
-	right: 50%;
-}
-
-#topMenu ul li {
-	margin:0;
-	padding:0;
-	width: auto;
-	padding-left: 5px;
-	padding-right: 5px;
-	border: solid #999 1px;
-	float:left;
-	position:relative;
-	left: 50%;
-}
-
-#topMenu ul li a {
-	display: block;
-	font-size: 14px; /* set font size for top menu */
-	text-align: center;
-	padding: 5px 5px 5px 5px;
-	background-color: #fff;
-	color: #555;
-	text-decoration: none;
-}
-
-/* Subnavigation section */
-#topMenu ul ul {
-	display:none; /* Sub menus are hiden by default */
-	position:absolute;
-	top: 27px;
-	left:0;
-	right:auto; /*resets the right:50% on the parent ul */
-	width: auto;
-	border: 1px solid #AAA;
-	white-space: nowrap;
-	background: #eeeeee;
-	color: #666;
-}
-
-/* sub-sub-menus */
-#topMenu ul ul ul {
-	z-index:2100;
-	top:0;
-	left:100px;
-}
-
-#topMenu ul ul li {
-	border: 0;
-	left:auto; /*resets the left:50% on the parent li */
-	margin:0; /* Reset the 1px margin from the top menu */
-	padding-left: 0;
-	padding-right: 0;
-	clear:left;
-	float:left;
-	width:100%;
-}
-
-#topMenu ul ul li a {
-	font-size: 12px; /* set font size for submenu */
-	padding: 5px 5px 5px 5px;
-	text-align: left;
-}
-
-/* Set up hover layout and style */
-
-/* header hover */
-#topMenu ul li:hover a {
-	text-decoration: underline;
-	color: black;
-}
-
-#topMenu ul li:hover > ul {
-	display: block;
-	text-align: left;
-	position: absolute;
-	margin: 0;
-	padding: 0;
-}
-
-#topMenu ul li:hover li {
-	float: none;
-}
-	
-#topMenu ul li:hover li a {
-	background-color: #eeeeee;
-	border-bottom: 1px solid #fff;
-	text-decoration: none;
-	color: #000;
-}
-	
-#topMenu ul li li a:hover {
-	background-color: #fff;
-	width: auto;
-	}
+/* ======= Layout for top header ======= */
+.makeMenu {font-size:14px;}
+ul.makeMenu div {float:right;}
+.makeMenu li {background:none !important; border:1px solid #999; display:inline; float:left; line-height:26px; position:relative; white-space:nowrap;}
+li.title {border:0; font-size:26px; font-weight:900;}
+.makeMenu li a {padding:5px 8px;}
+.makeMenu li ul {display:none; font-weight:normal; font-size:12px; position:absolute; left:0; right:auto; top:26px; background-color:#fff; border:thin solid #aaa; z-index:999;}
+/* position sub-menus */
+.makeMenu ul ul {background:#eee; top:0; left:100px;}
+.makeMenu li ul li {border:0; clear:both; display:block; line-height:2; text-align:left;}
+.makeMenu, .makeMenu li ul {list-style:none; margin:0; padding:1px; z-index:3000;}
+.makeMenu li:hover > ul {display:block;}
+.makeMenu ul li a {padding:0 5px 0 2px; display:block;}
 
 /* --- RTL --- */
-html[dir='rtl'] #topMenu {float: left; width: 100%;}
-html[dir='rtl'] #topMenu ul li {float: left;}
-html[dir='rtl'] #topMenu ul ul li a {text-align: left;}
-html[dir='rtl'] #topMenu ul ul li {text-align: left;}
-html[dir='rtl'] #topMenu ul li:hover ul {text-align: left;}
-html[dir='rtl'] #topMenu ul li ul li {text-align: left;}
-html[dir='rtl'] #topMenu ul li {float: right;}
-html[dir='rtl'] #topMenu ul ul li a {text-align: right;}
-html[dir='rtl'] #topMenu ul ul li {text-align: right;}
-html[dir='rtl'] #topMenu ul li:hover ul {text-align: right;}
-html[dir='rtl'] #topMenu ul li ul li {text-align: right;}
-html[dir='rtl'] #topMenu ul ul {right:0; left: auto;}
+html[dir='rtl'] ul.makeMenu div {float:left;}
+html[dir='rtl'] .makeMenu li {float:right;}
+html[dir='rtl'] .makeMenu li ul {left:auto; right:0;}
+html[dir='rtl'] .makeMenu ul ul {top:0; left:auto; right:100px;}
+html[dir='rtl'] .makeMenu li ul li {text-align:right;}
+
+/* set up container for menu */
+#topMenu {border-bottom:1px solid; clear:both; float:left; width:100%; margin:10px 0 0 0; padding:0 0 10px 0; margin-top:18px; z-index:2000; position:relative;}
+#topMenu ul {	margin:0; padding:0; list-style:none; float:right; position:relative; right:50%;}
+#topMenu ul li {margin:0; padding:0; 	width:auto; padding-left:5px; padding-right:5px; border:solid #999 1px; float:left; position:relative; left:50%;}
+#topMenu ul li a {display:block; font-size:14px; text-align:center; padding:5px 5px 5px 5px; background-color:#fff;}
+/* Subnavigation section */
+#topMenu ul ul {display:none; position:absolute; top:27px; left:0; right:auto; border:1px solid #AAA; white-space:nowrap; 	background:#eee;}
+/* sub-sub-menus */
+#topMenu ul ul ul {z-index:2100; top:0; left:100px;}
+#topMenu ul ul li {border:0; left:auto; margin:0; padding-left:0; 	padding-right:0; clear:left; float:left; width:100%;}
+#topMenu ul ul li a {	font-size:12px; padding:5px 5px 5px 5px; text-align:left;}
+/* header hover */
+#topMenu ul li:hover {color:black;}
+#topMenu ul li:hover > ul {display:block; text-align:left; position:absolute; margin:0; 	padding:0;}
+#topMenu ul li:hover li {float:none;}
+#topMenu ul li:hover li a {background-color:#eeeeee; 	border-bottom:1px solid #fff;}
+#topMenu ul li li a:hover {background-color:#fff; width:auto;}
+
+/* --- RTL --- */
+html[dir='rtl'] #topMenu {float:left; width:100%;}
+html[dir='rtl'] #topMenu ul li {float:left;}
+html[dir='rtl'] #topMenu ul ul li a {text-align:left;}
+html[dir='rtl'] #topMenu ul ul li {text-align:left;}
+html[dir='rtl'] #topMenu ul li:hover ul {text-align:left;}
+html[dir='rtl'] #topMenu ul li ul li {text-align:left;}
+html[dir='rtl'] #topMenu ul li {float:right;}
+html[dir='rtl'] #topMenu ul ul li a {text-align:right;}
+html[dir='rtl'] #topMenu ul ul li {text-align:right;}
+html[dir='rtl'] #topMenu ul li:hover ul {text-align:right;}
+html[dir='rtl'] #topMenu ul li ul li {text-align:right;}
+html[dir='rtl'] #topMenu ul ul {right:0; left:auto;}
 html[dir='rtl'] #topMenu ul ul ul {left:auto; right:100px;}
-html[dir='rtl'] #topMenu ul {right: auto; float:left; left: 50%;}
-html[dir='rtl'] #topMenu ul li {float:right; right: 50%;}
+html[dir='rtl'] #topMenu ul {right:auto; float:left; left:50%;}
+html[dir='rtl'] #topMenu ul li {float:right; right:50%;}
 html[dir='rtl'] #topMenu ul ul li {right:auto;  /*resets the right:50% on the parent li */ clear:right; float:right; width:100%;}
 
-
-
-
-
+#flash-messages {clear:both;}
 
 /* --- end headers --- */
 
@@ -542,11 +418,6 @@ table.center {
 	padding-right: 7px;
 }
 
-.image {
-	height: 150px;
-	padding: 5px;
-}
-
 .gender_image {
 	padding-left: 3px;
 	padding-right: 3px;
@@ -594,7 +465,6 @@ html[dir='rtl'] .icon {
 	padding-right: 0;
 }
 .link {
-	font-size: 11px;
 	text-align: center;
 }
 
@@ -1554,9 +1424,9 @@ html[dir='rtl'] td.descriptionbox  a {
 /* ========= Positioning edit, copy, delete links ============= */
 /* General use */
 .editfacts {clear:both; padding-top:15px;} /* a container for the following three links */
-.editlink, .copylink, .deletelink {float:left; padding:5px 5px 0 0;
+.editlink, .copylink, .deletelink {float:left; padding:0 5px 0 0;
 }
-html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelink {float:right; padding:5px 0 0 5px;
+html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelink {float:right; padding:0 0 0 5px;
 }
 span.link_text  {}
 span.link_text:hover {text-decoration: underline;}
@@ -1600,7 +1470,7 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 .indi_table {clear:left;}
 #sex {float:right;}
 html[dir='rtl']  #sex {float:left;}
-#dates {float:right; margin-top:5px;}
+#dates {float:right;}
 dd .editlink, dd .deletelink  {float:right;}
 
 html[dir='rtl'] #indi_header {float:right; padding:0 0 0 10px;}
@@ -1859,20 +1729,40 @@ html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 }
 
 /* Icons */
-[class^="icon-"],[class*=" icon-"]{display:inline-block;vertical-align:text-bottom;background-repeat:no-repeat;}
+[class^="icon-"],[class*=" icon-"]{display:inline-block;vertical-align:middle;background-repeat:no-repeat;}
 .icon-add{width:14px;height:15px;background-image:url(images/add.png);}
 .icon-admin{width:25px;height:25px;background-image:url(images/admin.png);}
-.icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
+.icon-button_family{width:14px;height:15px;background-image:url(images/family.png); vertical-align:top;}
+.icon-button_indi{width:15px;height:15px;background-image:url(images/indi.png); vertical-align:top;}
+.icon-button_keyboard{width:30px;height:15px;background-image:url(images/keyboard.png);}
+.icon-email{width:16px;height:16px;background-image:url(images/email.png);}
+.icon-lifespan-chunk{width:50px;height:37px;background-image:url(images/lifespan-chunk.png);}
+.icon-lsdnarrow{width:48px;height:48px;background-image:url(images/lifespan-down.png);}
+.icon-lsltarrow{width:48px;height:48px;background-image:url(images/lifespan-left.png);}
+.icon-lsrtarrow{width:48px;height:48px;background-image:url(images/lifespan-right.png);}
+.icon-lsuparrow{width:48px;height:48px;background-image:url(images/lifespan-up.png);}
+.icon-minus{width:11px;height:11px;background-image:url(images/minus.png);}
+.icon-pedigree{width:24px;height:24px;background-image:url(images/pedigree.png);}
+.icon-plus{width:11px;height:11px;background-image:url(images/plus.png);}
+.icon-reminder{width:15px;height:12px;background-image:url(images/reminder.png);}
+.icon-remove{width:14px;height:15px;background-image:url(images/remove.png);}
+.icon-resn-confidential{width:16px;height:16px;background-image:url(images/resn_confidential.png);}
+.icon-resn-locked{width:16px;height:16px;background-image:url(images/resn_locked.png);}
+.icon-resn-none{width:16px;height:16px;background-image:url(images/resn_none.png);}
+.icon-resn-privacy{width:16px;height:16px;background-image:url(images/resn_privacy.png);}
+.icon-rings{width:9px;height:9px;background-image:url(images/rings.png);}
+.icon-search{width:24px;height:24px;background-image:url(images/search.png);}
+.icon-zoomin{width:25px;height:25px;background-image:url(images/zoomin.png);}
+.icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
+/*.icon-bing{width:16px;height:16px;background-image:url(images/bing.png);}
 .icon-button_addmedia{width:18px;height:16px;background-image:url(images/buttons/addmedia.png);}
 .icon-button_addnote{width:17px;height:15px;background-image:url(images/buttons/addnote.png);}
 .icon-button_addrepository{width:15px;height:15px;background-image:url(images/buttons/addrepository.png);}
 .icon-button_addsource{width:18px;height:16px;background-image:url(images/buttons/addsource.png);}
 .icon-button_calendar{width:19px;height:15px;background-image:url(images/buttons/calendar.png);}
-.icon-button_family{width:14px;height:15px;background-image:url(images/buttons/family.png);}
 .icon-button_find_facts{width:20px;height:20px;background-image:url(images/buttons/find_facts.png);}
 .icon-button_head{width:12px;height:18px;background-image:url(images/buttons/head.png);}
 .icon-button_indi{width:11px;height:15px;background-image:url(images/buttons/indi.png);}
-.icon-button_keyboard{width:30px;height:15px;background-image:url(images/buttons/keyboard.png);}
 .icon-button_media{width:18px;height:16px;background-image:url(images/buttons/media.png);}
 .icon-button_note{width:17px;height:15px;background-image:url(images/buttons/note.png);}
 .icon-button_place{width:15px;height:15px;background-image:url(images/buttons/place.png);}
@@ -1888,20 +1778,14 @@ a.icon-darrow:hover{width:20px;height:20px;background-image:url(images/darrow2.p
 .icon-default_image_F{width:99px;height:106px;background-image:url(images/silhouette_female.png);}
 .icon-default_image_M{width:99px;height:99px;background-image:url(images/silhouette_male.png);}
 .icon-default_image_U{width:100px;height:97px;background-image:url(images/silhouette_unknown.png);}
-.icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
 .icon-help{width:15px;height:15px;background-image:url(images/help.png);}
 .icon-indis{width:24px;height:24px;background-image:url(images/indis.png);}
 .icon-larrow{width:20px;height:20px;background-image:url(images/larrow.png);}
 a.icon-larrow:hover{width:20px;height:20px;background-image:url(images/larrow2.png);}
 .icon-ldarrow{width:20px;height:20px;background-image:url(images/ldarrow.png);}
-.icon-lifespan-chunk{width:50px;height:37px;background-image:url(images/lifespan-chunk.png);}
 .icon-loading-small{width:16px;height:16px;background-image:url(images/indicator.gif);}
 .icon-loading-large{width:32px;height:32px;background-image:url(images/loading.gif);}
-.icon-lsdnarrow{width:48px;height:48px;background-image:url(images/lifespan-down.png);}
-.icon-lsltarrow{width:48px;height:48px;background-image:url(images/lifespan-left.png);}
-.icon-lsrtarrow{width:48px;height:48px;background-image:url(images/lifespan-right.png);}
-.icon-lsuparrow{width:48px;height:48px;background-image:url(images/lifespan-up.png);}
 .icon-mapquest{width:16px;height:16px;background-image:url(images/mapquest.png);}
 .icon-media{width:24px;height:24px;background-image:url(images/media.png);}
 .icon-media-next{width:20px;height:20px;background-image:url(images/rdarrow.png);}
@@ -1909,25 +1793,14 @@ a.icon-larrow:hover{width:20px;height:20px;background-image:url(images/larrow2.p
 .icon-media-prev{width:20px;height:20px;background-image:url(images/ldarrow.png);}
 .icon-media-shuffle{width:10px;height:10px;background-image:url(images/reorder.png);}
 .icon-media-stop{width:16px;height:17px;background-image:url(images/stop.png);}
-.icon-minus{width:11px;height:11px;background-image:url(images/minus.png);}
 .icon-mypage{width:25px;height:25px;background-image:url(images/mypage.png);}
 .icon-note{width:16px;height:16px;background-image:url(images/notes.png);}
 .icon-patriarch{width:25px;height:25px;background-image:url(images/patriarch.png);}
-.icon-pedigree{width:24px;height:24px;background-image:url(images/pedigree.png);}
 .icon-place{width:24px;height:24px;background-image:url(images/place.png);}
-.icon-plus{width:11px;height:11px;background-image:url(images/plus.png);}
 .icon-rarrow{width:20px;height:20px;background-image:url(images/rarrow.png);}
 a.icon-rarrow:hover{width:20px;height:20px;background-image:url(images/rarrow2.png);}
 .icon-rdarrow{width:20px;height:20px;background-image:url(images/rdarrow.png);}
-.icon-reminder{width:15px;height:12px;background-image:url(images/reminder.png);}
-.icon-remove{width:14px;height:15px;background-image:url(images/remove.png);}
 .icon-repository{width:25px;height:25px;background-image:url(images/repository.png);}
-.icon-resn-confidential{width:16px;height:16px;background-image:url(images/resn_confidential.png);}
-.icon-resn-locked{width:16px;height:16px;background-image:url(images/resn_locked.png);}
-.icon-resn-none{width:16px;height:16px;background-image:url(images/resn_none.png);}
-.icon-resn-privacy{width:16px;height:16px;background-image:url(images/resn_privacy.png);}
-.icon-rings{width:9px;height:9px;background-image:url(images/rings.png);}
-.icon-search{width:24px;height:24px;background-image:url(images/search.png);}
 .icon-selected{width:12px;height:12px;background-image:url(images/selected.png);}
 .icon-sex_f_15x15{width:15px;height:15px;background-image:url(images/sex_f_15x15.png);}
 .icon-sex_f_9x9{width:9px;height:9px;background-image:url(images/sex_f_9x9.png);}
@@ -1946,9 +1819,7 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 .icon-user_add{width:24px;height:24px;background-image:url(images/user_add.png);}
 .icon-warning{width:17px;height:17px;background-image:url(images/warning.png);}
 .icon-webtrees{width:100px;height:21px;background-image:url(images/webtrees.png);}
-.icon-wiki{width:16px;height:16px;background-image:url(images/w_button.png);}
-.icon-zoomin{width:25px;height:25px;background-image:url(images/zoomin.png);}
-.icon-zoomout{width:25px;height:25px;background-image:url(images/zoomout.png);}
+.icon-wiki{width:16px;height:16px;background-image:url(images/w_button.png);}*/
 /* Generic MIME types */
 [class^="icon-mime-"],[class*=" icon-mime-"]{}
 [class^="icon-mime-application-"],[class*=" icon-mime-audio-"]{}

@@ -57,83 +57,65 @@ echo
 
 // begin header section
 if ($view!='simple') {
-	echo 
-		'<div id="header">',
-		'<span class="title" dir="auto">',
-			htmlspecialchars($GEDCOM_TITLE),
-		'</span>',
-		'<span class="hlogin">';
+	echo '<div id="header">';
+	echo '<ul class="makeMenu">';
+	echo '<li class="title" dir="auto">',htmlspecialchars($GEDCOM_TITLE),'</li>';
+	echo '<div>';
 	if (WT_USER_ID) {
-		echo '<a href="edituser.php" class="link">', WT_I18N::translate('Logged in as '), ' ', getUserFullName(WT_USER_ID), '</a> | ', logout_link();
+		echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';
+		if (WT_USER_CAN_ACCEPT && exists_pending_change()) {
+			echo ' <li><a href="#" onclick="window.open(\'edit_changes.php\',\'_blank\',chan_window_specs); return false;" style="color:red;">', WT_I18N::translate('Pending changes'), '</a></li>';
+		}
 	} else {
-		echo login_link();
+		echo '<li>', login_link(), '</li> ';
 	}
-	echo '</span>';
-	echo '<span class="htheme">';
-	$menu=WT_MenuBar::getThemeMenu();
+	$menu=WT_MenuBar::getFavoritesMenu();
 	if ($menu) {
-		echo $menu->getMenuAsDropdown();
+		echo $menu->getMenuAsList();
 	}
 	$menu=WT_MenuBar::getLanguageMenu();
 	if ($menu) {
-		echo $menu->getMenuAsDropdown();
+		echo $menu->getMenuAsList();
+	}
+	$menu=WT_MenuBar::getThemeMenu();
+	if ($menu) {
+		echo $menu->getMenuAsList();
 	}
 	echo
-		'</span>',
-		'<div class="hsearch">',
-		'<form style="display:inline;" action="search.php" method="get">',
+		'<li><form style="display:inline;" action="search.php" method="get">',
 		'<input type="hidden" name="action" value="general">',
 		'<input type="hidden" name="topsearch" value="yes">',
-		'<input type="search" name="query" size="15" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
-		'<input type="submit" name="search" value=" &gt; ">',
-		'</form>';
-	print_favorite_selector();
-	echo 
-		'</div>';
-	
-	//  begin top links section
-	echo 
-		'<div id="topMenu">', 
-		'<ul class="makeMenu">'; 
-
-	$menu=WT_MenuBar::getGedcomMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
+		'<input type="search" name="query" size="20" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',
+		'</form></li></div>',
+		'</ul>';
+	$menu_items=array(
+		WT_MenuBar::getGedcomMenu(),
+		WT_MenuBar::getMyPageMenu(),
+		WT_MenuBar::getChartsMenu(),
+		WT_MenuBar::getListsMenu(),
+		WT_MenuBar::getCalendarMenu(),
+		WT_MenuBar::getReportsMenu(),
+		WT_MenuBar::getSearchMenu(),
+	);
+	foreach (WT_MenuBar::getModuleMenus() as $menu) {
+		$menu_items[]=$menu;
 	}
-	$menu=WT_MenuBar::getMyPageMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getChartsMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getListsMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getCalendarMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getReportsMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menu=WT_MenuBar::getSearchMenu();
-	if ($menu) {
-		echo $menu->getMenuAsList();
-	}
-	$menus=WT_MenuBar::getModuleMenus();
-	foreach ($menus as $menu) {
+	// Print the menu bar
+	echo
+		'<div id="topMenu">',
+		'<ul id="main-menu">';
+	foreach ($menu_items as $menu) {
 		if ($menu) {
-		echo $menu->getMenuAsList();
+			echo $menu->getMenuAsList();
 		}
 	}
-	echo 
-		'</ul>',
-		'</div>'; //<div id="topMenu">
-	// Display feedback from asynchronous actions
+	unset($menu_items, $menu);
+	echo
+		'</ul>',  // <ul id="main-menu">
+		'</div>'; // <div id="topMenu">
+
+
+		// Display feedback from asynchronous actions
 	echo '<div id="flash-messages">';
 	foreach (Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->getMessages() as $message) {
 		echo '<p class="ui-state-highlight">', $message, '</p>';
