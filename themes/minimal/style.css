@@ -27,7 +27,7 @@
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
 
-body {color:black; background-color:white; font:12px tahoma, arial, helvetica, sans-serif;}
+body {color:#555; background-color:white; font:12px tahoma, arial, helvetica, sans-serif;}
 
 fieldset {margin:8px 8px 4px 8px; text-align:left;}
 html[dir='rtl'] fieldset {text-align:right;}
@@ -35,7 +35,7 @@ html[dir='rtl'] fieldset {text-align:right;}
 legend {font-weight:bold;}
 
 a {color:#666; text-decoration:none;}
-a:hover {color:black; text-decoration:underline;}
+a:hover {color:#555; text-decoration:underline;}
 
 /* ======= Layout for top header ======= */
 .makeMenu {font-size:14px;}
@@ -70,7 +70,7 @@ html[dir='rtl'] .makeMenu li ul li {text-align:right;}
 #topMenu ul ul li {border:0; left:auto; margin:0; padding-left:0; 	padding-right:0; clear:left; float:left; width:100%;}
 #topMenu ul ul li a {	font-size:12px; padding:5px 5px 5px 5px; text-align:left;}
 /* header hover */
-#topMenu ul li:hover {color:black;}
+#topMenu ul li:hover {color:#555;}
 #topMenu ul li:hover > ul {display:block; text-align:left; position:absolute; margin:0; 	padding:0;}
 #topMenu ul li:hover li {float:none;}
 #topMenu ul li:hover li a {background-color:#eeeeee; 	border-bottom:1px solid #fff;}
@@ -99,12 +99,12 @@ html[dir='rtl'] #topMenu ul ul li {right:auto;  /*resets the right:50% on the pa
 /* --- end headers --- */
 
 h2 {
-	color: black;
+	color: #555;
 	font-weight:bold; font-size:18px;
 }
 
 h4 {
-	color: black;
+	color: #555;
 	font-weight:bold; font-size:12px;
 }
 
@@ -133,20 +133,20 @@ input, textarea {
 }
 
 .gedcom_table {
-	border: 1px solid black;
+	border: 1px solid #555;
 	margin:0;
 	width:99%;
 }
 
 .person_box {
 	background-color: white;
-	border: solid black 1px;
+	border: solid #555 1px;
 	padding:3px;
 }
 
 .person_boxF {
 	background-color: white;
-	border: solid black 1px;
+	border: solid #555 1px;
 	padding:3px;
 }
 
@@ -180,17 +180,17 @@ table.center {
 }
 
 .list_label, .list_label_wrap {
-	color: black;
+	color: #555;
 	background-color: #eeeeee;
-	border: 1px solid black;
+	border: 1px solid #555;
 	font-size:12px;
 	text-align: center;
 }
 
 .list_value, .list_value_wrap {
 	background-color: white;
-	color: black;
-	border: solid black 1px;
+	color: #555;
+	border: solid #555 1px;
 	font-size:12px;
 	vertical-align: top;
 }
@@ -212,9 +212,9 @@ table.center {
 }
 
 .facts_label {
-	color: black;
+	color: #555;
 	background-color: #eeeeee;
-	border: 1px solid black;
+	border: 1px solid #555;
 	font-size:12px;
 	padding: 4px 4px 4px 4px;
 	width: 20%;
@@ -222,9 +222,9 @@ table.center {
 }
 
 .facts_label02, .facts_label03 {
-	color: black;
+	color: #555;
 	background-color: #eeeeee;
-	border: 1px solid black;
+	border: 1px solid #555;
 	font-weight:bold; font-size:12px;
 	padding: 4px 4px 4px 4px;
 	width: 20%;
@@ -233,16 +233,16 @@ table.center {
 
 .facts_value {
 	background-color: white;
-	color: black;
-	border: solid black 1px;
+	color: #555;
+	border: solid #555 1px;
 	font-size:12px;
 	padding: 4px 4px 4px 4px;
 }
 
 .facts_value02 {
 	background-color: white;
-	color: black;
-	border: solid black 1px;
+	color: #555;
+	border: solid #555 1px;
 	font-size:12px;
 	padding: 5px;
 }
@@ -258,7 +258,7 @@ table.center {
 
 .facts_valuered, .facts_valueblue {
 	background-color: white;
-	color: black;
+	color: #555;
 	font-size:12px;
 	padding: 4px 4px 4px 4px;
 }
@@ -285,9 +285,9 @@ table.center {
 
 .tab_cell_inactive {
 	background-color: #eeeeee;
-	border-left: solid black 2px;
-	border-top: solid black 2px;
-	border-right: outset black 2px;
+	border-left: solid #555 2px;
+	border-top: solid #555 2px;
+	border-right: outset #555 2px;
 	text-align: center;
 }
 
@@ -302,23 +302,23 @@ table.center {
 .tab_inactive_bottom {
 	border-left: none;
 	border-right: none;
-	border-top: outset black 2px;
+	border-top: outset #555 2px;
 	height: 5px;
 }
 
 .tab_inactive_bottom_right {
 	border-left: none;
 	border-right: none;
-	border-top: outset black 2px;
+	border-top: outset #555 2px;
 	width: 33%;
 	height: 5px;
 }
 
 .tab_cell_inactive_empty {
 	background-color: #bababa;
-	border-left: solid black 2px;
-	border-top: solid black 2px;
-	border-right: outset black 2px;
+	border-left: solid #555 2px;
+	border-top: solid #555 2px;
+	border-right: outset #555 2px;
 	text-align: center;
 }
 
@@ -327,12 +327,12 @@ table.center {
 }
 
 .name1 {
-	color: black;
+	color: #555;
 	font-weight:bold; font-size:11px;
 }
 
 .name1Hover {
-	color: black;
+	color: #555;
 	font-weight:bold; font-size:10px;
 	text-decoration: underline;
 }
@@ -349,12 +349,12 @@ table.center {
 	font-size:10px;
 }
 .name2 {
-	color: black;
+	color: #555;
 	font-weight:bold; font-size:12px;
 }
 
 .name2Hover {
-	color: black;
+	color: #555;
 	font-weight:bold; font-size:12px;
 	text-decoration: underline;
 }
@@ -364,7 +364,7 @@ table.center {
 }
 
 .nameZoom {
-	color: black;
+	color: #555;
 	font-weight:bold; font-size:14px;
 }
 .detailsZoom {
@@ -377,7 +377,7 @@ table.center {
 }
 
 .name_head {
-	color: black;
+	color: #555;
 	font-weight:bold; font-size:16px;
 	letter-spacing: .2px;
 }
@@ -429,7 +429,7 @@ table.center {
 	float: left;
 	max-height: 50px;
 	max-width: 37px;
-	border: solid black 1px;
+	border: solid #555 1px;
 	margin-right: 3px;
 }
 
@@ -469,7 +469,7 @@ html[dir='rtl'] .icon {
 }
 
 .sublinks_table {
-	border: solid black 1px;
+	border: solid #555 1px;
 }
 
 .sublinks_cell {
@@ -504,7 +504,7 @@ html[dir='rtl'] .icon {
 
 .selected-option {
 	background-color: #eeeeee;
-	border: solid black 1px;
+	border: solid #555 1px;
 }
 
 .user_links {
@@ -516,13 +516,13 @@ html[dir='rtl'] .icon {
 }
 
 .hit-counter {
-	background: black;
+	background: #555;
 	color: white;
 	font-weight: bold;
 }
 
 .border1 {
-	border: solid black 1px;
+	border: solid #555 1px;
 }
 
 .header_select {
@@ -540,7 +540,7 @@ html[dir='rtl'] .icon {
 
 .submenu {
 	background-color: #eeeeee;
-	border: solid black 1px;
+	border: solid #555 1px;
 }
 
 .journal_box {
@@ -590,13 +590,13 @@ html[dir='rtl'] .icon {
 .helpstart {
 	margin: 10px;
 	font-weight:bold; font-size:14px;
-	color: #444444;
+	color: #444;
 	text-decoration: none;
 }
 
 .helptext {
 	font-size:12px;
-	color: black;
+	color: #555;
 }
 
 #content {
@@ -606,9 +606,11 @@ html[dir='rtl'] .icon {
 
 #footer {
 	clear: both;
-	color: black;
+	color: #555;
 	font-size:12px;
 }
+
+#home-page{margin-top:10px;}
 
 /*-- index.php specific style sheets -- */
 .small_inner_block {
@@ -623,8 +625,8 @@ html[dir='rtl'] .icon {
 
 .block {
 	background-color: white;
-	color: black;
-	border: solid black 1px;
+	color: #555;
+	border: solid #555 1px;
 	font-size:12px;
 	vertical-align: top;
 	margin-bottom: 5px;
@@ -641,14 +643,14 @@ html[dir='rtl'] .icon {
 
 .blockcontent .list_table {
 	border-spacing:0;
-	border:solid black 1px;
+	border:solid #555 1px;
 	border-right:0;
 }
 
 .blockcontent .list_value, .blockcontent  .list_value_wrap, .blockcontent  .list_label {
 	border:0;
-	border-top:solid black 1px;
-	border-right:solid black 1px;
+	border-top:solid #555 1px;
+	border-right:solid #555 1px;
 }
 
 .blockheader {font-weight:bold;}
@@ -687,6 +689,7 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 
 .user_welcome_block table, .gedcom_block_block  table{margin:auto;}
 .user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align: top;}
+.user_welcome_block i, .gedcom_block_block  i{background-image:none; width:0; height:0;}
 
 #link_change_blocks {clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;}
 #link_change_blocks span {padding:0 50px;}
@@ -785,37 +788,37 @@ left:auto;
 
 .person0 {
 	background-color: #eeeeee;
-	border: outset black 1px;
+	border: outset #555 1px;
 	vertical-align: top;
 }
 
 .person1 {
 	background-color: #bfbfbf;
-	border: outset black 1px;
+	border: outset #555 1px;
 	vertical-align: top;
 }
 
 .person2 {
 	background-color: #999999;
-	border: outset black 1px;
+	border: outset #555 1px;
 	vertical-align: top;
 }
 
 .person3 {
 	background-color: #dfdfdf;
-	border: outset black 1px;
+	border: outset #555 1px;
 	vertical-align: top;
 }
 
 .person4 {
 	background-color: #eeeeee;
-	border: outset black 1px;
+	border: outset #555 1px;
 	vertical-align: top;
 }
 
 .person5 {
 	background-color: #fefefe;
-	border: outset black 1px;
+	border: outset #555 1px;
 	vertical-align: top;
 }
 
@@ -846,9 +849,9 @@ left:auto;
 
 /* Style for the top and bottom bar */
 .topbottombar {
-	color: black;
+	color: #555;
 	background-color: #eeeeee;
-	border: 1px solid black;
+	border: 1px solid #555;
 	font-weight:bold; font-size:12px;
 	padding: 4px;
 	text-align: center;
@@ -857,8 +860,8 @@ left:auto;
 /* Style for the subbar in  */
 .subbar {
 	background-color: white;
-	color: black;
-	border: solid black 1px;
+	color: #555;
+	border: solid #555 1px;
 	font-size:11px;
 	padding: 3px;
 	white-space: nowrap;
@@ -868,8 +871,8 @@ left:auto;
 /* Style for the descriptionbox */
 .descriptionbox {
 	background-color: white;
-	color: black;
-	border: solid black 1px;
+	color: #555;
+	border: solid #555 1px;
 	font-size:12px;
 	padding: 3px;
 	white-space: nowrap;
@@ -879,8 +882,8 @@ left:auto;
 /* Style for the optionbox */
 .optionbox {
 	background-color: white;
-	color: black;
-	border: solid black 1px;
+	color: #555;
+	border: solid #555 1px;
 	font-size:12px;
 	vertical-align: top;
 	white-space: nowrap;
@@ -961,7 +964,7 @@ left:auto;
 /* Message box */
 .messagebox {
 	background-color: white;
-	border: solid black 1px;
+	border: solid #555 1px;
 }
 
 /* Change indicators */
@@ -980,7 +983,7 @@ left:auto;
 a.showit {
 	position: relative;
 	z-index: 24;
-	color: black;
+	color: #555;
 	text-decoration: none;
 }
 
@@ -1001,8 +1004,8 @@ a.showit:hover > span {
 	border-style: outset;
 	border-left: 15px outset #1f1f1f;
 	border-top: 2px solid #1f1f1f;
-	border-bottom: 2px solid black;
-	border-right: 2px solid black;
+	border-bottom: 2px solid #555;
+	border-right: 2px solid #555;
 	padding: 3px;
 	background: #4f4f4f;
 	color: white;
@@ -1027,7 +1030,7 @@ a.showit:hover > span {
 }
 
 .lifespan_outer a {
-	color: black;
+	color: #555;
 }
 
 .lifespan_outer a:hover {
@@ -1053,7 +1056,6 @@ a.showit:hover > span {
 }
 .iwstyle {
 	width:360px;
-	/*background-color: #FFFFFF;*/
 }
 .iwstyle a {
 }
@@ -1084,14 +1086,14 @@ a.showit:hover > span {
 	width: 70px;
 	text-align: center;
 	padding: 2px;
-	border: 1px solid black;
+	border: 1px solid #555;
 	cursor: pointer;
 	float: left;
 	margin-left: 2px;
 }
 #map_type li.non_active {
 	background: white;
-	color: black;
+	color: #555;
 	font-weight: normal;
 }
 
@@ -1117,7 +1119,7 @@ a.showit:hover > span {
 
 .ui-autocomplete {
 	padding: 0;
-	border: 1px solid black;
+	border: 1px solid #555;
 	background-color: white;
 	z-index: 99999;
 	list-style-position: outside;
@@ -1133,17 +1135,8 @@ a.showit:hover > span {
 	padding: 2px 5px;
 	cursor: default;
 	display: block;
-	/*
-	if width will be 100% horizontal scrollbar will apear
-	when scroll mode will be used
-	*/
-	/*width: 100%;*/
 	font: menu;
 	font-size: 12px;
-	/*
-	it is very important, if line-height not setted or setted
-	in relative units scroll will be broken in firefox
-	*/
 	line-height: 14px;
 	overflow: hidden;
 }
@@ -1193,7 +1186,7 @@ ul.clist {
 }
 
 .gchart {
-	border: solid black 1px;
+	border: solid #555 1px;
 }
 
 .execution_stats {
@@ -1498,23 +1491,23 @@ html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 #media-display-title {float:left; font-style:italic; margin:10px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
-.ui-widget-content  {color:black;}
-.ui-widget-content  {color:black; border-color:#999999;}
-.ui-widget-content a {color:black;}
-.ui-widget-content a:hover  {color:black;}
-.ui-state-active, .ui-widget-content .ui-state-active {background:#888; font-weight:normal; color:black; outline:none;}
+.ui-widget-content  {color:#555;}
+.ui-widget-content  {color:#555; border-color:#999999;}
+.ui-widget-content a {color:#555;}
+.ui-widget-content a:hover  {color:#555;}
+.ui-state-active, .ui-widget-content .ui-state-active {background:#888; font-weight:normal; color:#555; outline:none;}
 .ui-state-active .ui-icon {background-image: url(../../js/jquery/css/images/ui-icons_222222_256x240.png);}
 .ui-state-default .ui-icon {background-image: url(../../js/jquery/css/images/ui-icons_222222_256x240.png);}
 
 .ui-tabs .ui-tabs-nav {padding: .3em .3em 0 .3em; border-color:#888888; background: #dddddd;}
 .ui-tabs .ui-tabs-nav li {font-size:1em; bottom:0; margin:0 0.15em 0 0.1em; border-color:#888888; background: #efefef;}
 .ui-tabs .ui-tabs-nav li a  {color:#555555;}
-.ui-tabs .ui-tabs-nav li:hover {color:black; background: #dfdfdf;}
-.ui-tabs .ui-tabs-nav li a:hover {color:black;}
+.ui-tabs .ui-tabs-nav li:hover {color:#555; background: #dfdfdf;}
+.ui-tabs .ui-tabs-nav li a:hover {color:#555;}
 
-.ui-tabs-nav li.ui-tabs-selected  {color:black; padding-top:0; top:1px; bottom:0; border-color: #888; border-bottom-width: 0; background:#f8f8f8;}
-.ui-tabs-nav li.ui-tabs-selected a {font-weight:600; color:black;}
-.ui-tabs-nav li.ui-tabs-selected a:hover {font-weight:600; color:black; background:#f8f8f8;}
+.ui-tabs-nav li.ui-tabs-selected  {color:#555; padding-top:0; top:1px; bottom:0; border-color: #888; border-bottom-width: 0; background:#f8f8f8;}
+.ui-tabs-nav li.ui-tabs-selected a {font-weight:600; color:#555;}
+.ui-tabs-nav li.ui-tabs-selected a:hover {font-weight:600; color:#555; background:#f8f8f8;}
 .ui-tabs-nav li.ui-tabs-selected:hover {background:#f8f8f8;}
 .ui-tabs .ui-tabs-panel  {background:#f8f8f8;}
 
@@ -1614,11 +1607,11 @@ html[dir='rtl'] .use-sidebar #separator {background: #DDD url(images/indi_sprite
 /* Family navigator */
 #sb_content_family_nav {padding:0;}
 #sb_family_nav_content {margin-top:2px;}
-.nam a:hover {color:black;}
+.nam a:hover {color:#555;}
 .nav_content {width:100%;padding:10px 0 0 0;}
 .flyout {color:#000000; text-align:left; margin-top:-20px; right:210px; padding:3px;}
 .flyout2 {color:#000000; text-align:left;margin-top:-2px; left:40px; padding:3px;}
-.flyout2 a:hover {color:black;}
+.flyout2 a:hover {color:#555;}
 .flyout4 {color:#000000; text-align:left; margin-top:0;margin-left:0; padding:3px;}
 .flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0; left:0; padding:0;}
 .famnav_link {font-size:12px; padding:0; width:100%;}
