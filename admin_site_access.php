@@ -40,6 +40,7 @@ case 'robot':
 	WT_DB::prepare("UPDATE `##site_access_rule` SET rule=? WHERE site_access_rule_id=?")->execute(array($action, $user_access_rule_id));
 	break;
 case 'load_rules':
+	Zend_Session::writeClose();
 	// AJAX callback for datatables
 	$sql=
 		"SELECT SQL_CALC_FOUND_ROWS".
@@ -123,6 +124,7 @@ case 'load_rules':
 	));
 	exit;
 case 'load_unknown':
+	Zend_Session::writeClose();
 	// AJAX callback for datatables
 	$sql=
 		"SELECT SQL_CALC_FOUND_ROWS".
