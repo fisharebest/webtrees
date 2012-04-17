@@ -1516,6 +1516,23 @@ function get_all_gedcoms() {
 	return
 		WT_DB::prepare("SELECT SQL_CACHE gedcom_id, gedcom_name FROM `##gedcom` WHERE gedcom_id>0 ORDER BY gedcom_name")
 		->fetchAssoc();
+	// Alternative implementation that just lists trees with access.
+	// Doesn't work with current session.php startup logic.
+	return
+		WT_DB::prepare(
+			"SELECT SQL_CACHE g.gedcom_id, gedcom_name".
+			" FROM `##gedcom` g".
+			" LEFT JOIN `##gedcom_setting` gs ON (g.gedcom_id=gs.gedcom_id AND gs.setting_name='REQUIRE_AUTHENTICATION')".
+			" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.user_id=? AND ugs.setting_name='canedit')".
+			" WHERE g.gedcom_id>0 AND (".
+			"  IFNULL(gs.setting_value, 1)<>1 OR". // allow visitors
+			"  IFNULL(ugs.setting_value, 'none')<>'none' OR". // explicit access
+			"  EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)". // admin
+			" )".
+			" ORDER BY gedcom_name"
+		)
+		->execute(array(WT_USER_ID, WT_USER_ID))
+		->fetchAssoc();
 }
 
 function get_gedcom_count() {
@@ -1534,6 +1551,24 @@ function get_gedcom_titles() {
 			" ORDER BY g.sort_order, 3"
 		)
 		->execute(array('title'))
+		->fetchAll();
+	// Alternative implementation that just lists trees with access.
+	// Doesn't work with current session.php startup logic.
+	return
+		WT_DB::prepare(
+			"SELECT SQL_CACHE g.gedcom_id, g.gedcom_name, COALESCE(gs1.setting_value, g.gedcom_name) AS gedcom_title".
+			" FROM `##gedcom` g".
+			" LEFT JOIN `##gedcom_setting` gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')".
+			" LEFT JOIN `##gedcom_setting` gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='REQUIRE_AUTHENTICATION')".
+			" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.user_id=? AND ugs.setting_name='canedit')".
+			" WHERE g.gedcom_id>0 AND (".
+			"  IFNULL(gs2.setting_value, 1)<>1 OR". // allow visitors
+			"  IFNULL(ugs.setting_value, 'none')<>'none' OR". // explicit access
+			"  EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)". // admin
+			" )".
+			" ORDER BY g.sort_order, 3"
+		)
+		->execute(array(WT_USER_ID, WT_USER_ID))
 		->fetchAll();
 }
 
