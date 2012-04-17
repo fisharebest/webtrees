@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_utf-8.php';
-
 ////////////////////////////////////////////////////////////////////////////////
 // Extract, sanitise and validate FORM (POST), URL (GET) and COOKIE variables.
 //

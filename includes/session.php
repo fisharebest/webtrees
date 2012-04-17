@@ -207,6 +207,14 @@ if (!isset($_SERVER['REQUEST_URI']))  {
 // Common functions
 require WT_ROOT.'includes/functions/functions.php';
 require WT_ROOT.'includes/functions/functions_db.php';
+// TODO: Not all pages require all of these.  Only load them in scripts that need them?
+require WT_ROOT.'includes/functions/functions_print.php';
+require WT_ROOT.'includes/functions/functions_rtl.php';
+require WT_ROOT.'includes/functions/functions_mediadb.php';
+require WT_ROOT.'includes/functions/functions_date.php';
+require WT_ROOT.'includes/functions/functions_charts.php';
+require WT_ROOT.'includes/functions/functions_places.php';
+require WT_ROOT.'includes/functions/functions_utf-8.php';
 
 set_error_handler('wt_error_handler');
 
@@ -402,11 +410,6 @@ if (empty($WEBTREES_EMAIL)) {
 	$WEBTREES_EMAIL='webtrees-noreply@'.preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
 }
 
-require WT_ROOT.'includes/functions/functions_print.php';
-require WT_ROOT.'includes/functions/functions_rtl.php';
-require WT_ROOT.'includes/functions/functions_mediadb.php';
-require WT_ROOT.'includes/functions/functions_date.php';
-
 // Use the server date to calculate privacy, etc.
 // Use the client date to show ages, etc.
 define('WT_SERVER_JD', timestamp_to_jd(time()));
@@ -455,7 +458,7 @@ define('WT_LOGIN_URL', get_site_setting('LOGIN_URL', WT_SERVER_NAME.WT_SCRIPT_PA
 if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
 
 if (WT_SCRIPT_NAME!='help_text.php') {
-	if (!get_gedcom_setting(WT_GED_ID, 'imported') && substr(WT_SCRIPT_NAME, 0, 5)!=='admin' && !in_array(WT_SCRIPT_NAME, array('help_text.php', 'downloadgedcom.php', 'login.php', 'export_gedcom.php', 'edit_changes.php', 'import.php', 'message.php', 'save.php'))) {
+	if (!get_gedcom_setting(WT_GED_ID, 'imported') && substr(WT_SCRIPT_NAME, 0, 5)!=='admin' && !in_array(WT_SCRIPT_NAME, array('help_text.php', 'login.php', 'export_gedcom.php', 'edit_changes.php', 'import.php', 'message.php', 'save.php'))) {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
 		exit;
 	}

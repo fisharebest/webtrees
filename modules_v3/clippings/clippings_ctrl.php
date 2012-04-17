@@ -30,7 +30,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions.php';
 require_once WT_ROOT.'includes/functions/functions_export.php';
 require_once WT_ROOT.'library/pclzip.lib.php';
 

@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_charts.php';
-
 // -- array of GEDCOM elements that will be found but should not be displayed
 $nonfacts[] = "FAMS";
 $nonfacts[] = "FAMC";

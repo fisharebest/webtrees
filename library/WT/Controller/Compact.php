@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_charts.php';
-
 class WT_Controller_Compact extends WT_Controller_Chart {
 	// Data for the view
 	public $show_thumbs=false;

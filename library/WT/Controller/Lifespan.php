@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_charts.php';
-
 function compare_people($a, $b) {
 	return WT_Date::Compare($a->getEstimatedBirthDate(), $b->getEstimatedBirthDate());
 }

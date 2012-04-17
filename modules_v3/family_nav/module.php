@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_charts.php';
-
 class family_nav_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	// Extend WT_Module
 	public function getTitle() {

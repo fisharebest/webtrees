@@ -30,9 +30,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_charts.php';
-require_once WT_ROOT.'includes/functions/functions_places.php';
-
 /**
 * print the information for an individual chart box
 *

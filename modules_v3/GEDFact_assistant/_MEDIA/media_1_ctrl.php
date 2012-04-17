@@ -30,7 +30,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once WT_ROOT.'includes/functions/functions_charts.php';
 global $summary, $censyear, $censdate;
 
 $pid = safe_get('pid');

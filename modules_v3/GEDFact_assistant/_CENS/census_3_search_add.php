@@ -1422,7 +1422,7 @@ if (!defined('WT_WEBTREES')) {
 
 <?php
 // ==================================================================
-require_once 'includes/functions/functions_charts.php';
+
 /**
  * print the information for an individual chart box
  *

@@ -30,7 +30,6 @@ if (!defined('WT_WEBTREES')) {
 
 require_once WT_ROOT.'includes/functions/functions_print_facts.php';
 require_once WT_ROOT.'includes/functions/functions_import.php';
-require_once WT_ROOT.'includes/functions/functions_charts.php';
 
 class WT_Controller_Family extends WT_Controller_GedcomRecord {
 	var $diff_record;

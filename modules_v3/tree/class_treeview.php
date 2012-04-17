@@ -28,8 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-require_once 'includes/functions/functions_charts.php';
-
 class TreeView {
 	var $name;
 	var $allPartners;
