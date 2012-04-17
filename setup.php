@@ -100,6 +100,7 @@ set_include_path(WT_ROOT.'library'.PATH_SEPARATOR.get_include_path());
 require_once 'Zend/Loader/Autoloader.php';
 Zend_Loader_Autoloader::getInstance()->registerNamespace('WT_');
 require 'includes/functions/functions.php';
+require 'includes/functions/functions_utf-8.php';
 require 'includes/functions/functions_edit.php';
 $WT_SESSION=new Zend_Session_Namespace('WEBTREES');
 define('WT_LOCALE', WT_I18N::init(safe_POST('lang', '[@a-zA-Z_]+')));
