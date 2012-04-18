@@ -178,7 +178,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '<input type="hidden" name="ctype" value="'.$ctype.'">';
 			$content .= '<input type="hidden" name="ged" value="'.WT_GEDCOM.'">';
 			$content .= '<div class="add_fav_ref">';
-			$content .= '<label for "gid">'.WT_I18N::translate('Enter a Person, Family, or Source ID').'</label>';
+			$content .= '<label for="gid">'.WT_I18N::translate('Enter a Person, Family, or Source ID').'</label>';
 			$content .= '<input class="pedigree_form" type="text" name="gid" id="gid'.$uniqueID.'" size="5" value="">';
 			$content .= ' '.print_findindi_link('gid'.$uniqueID);
 			$content .= ' '.print_findfamily_link('gid'.$uniqueID);
@@ -187,8 +187,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= ' '.print_findnote_link('gid'.$uniqueID);
 			$content .= ' '.print_findmedia_link('gid'.$uniqueID);
 			$content .= '<p class="fav_url">'.WT_I18N::translate('Or enter a URL and a title').'</p>';
-			$content .= '<p><label for "url">'.WT_Gedcom_Tag::getLabel('URL').'</label><input type="text" name="url" size="40" value=""></p>';
-			$content .= '<p><label for "favtitle">'.WT_I18N::translate('Title').'</label><input type="text" name="favtitle" size="40" value=""></p>';
+			$content .= '<p><label for="url">'.WT_Gedcom_Tag::getLabel('URL').'</label><input type="text" name="url" size="40" value=""></p>';
+			$content .= '<p><label for="favtitle">'.WT_I18N::translate('Title').'</label><input type="text" name="favtitle" size="40" value=""></p>';
 			$content .= '<p>'.WT_I18N::translate('Enter an optional note about this favorite').'</p>';
 			$content .= '<textarea name="favnote" rows="6" cols="50"></textarea>';
 			$content .= '</div>';
