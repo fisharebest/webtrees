@@ -97,7 +97,7 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	global $WT_IMAGES;
 	echo
 		'<li>',
-			'<form style="display:inline;" action="search.php" method="get">',
+			'<form style="display:inline;" action="search.php" method="post">',
 			'<input type="hidden" name="action" value="general">',
 			'<input type="hidden" name="topsearch" value="yes">',
 			'<input type="search" name="query" size="10" placeholder="', WT_I18N::translate('Search'), '" dir="auto">',

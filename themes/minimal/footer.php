@@ -38,10 +38,5 @@ if ($view!='simple') {
 	if (WT_DEBUG || get_gedcom_setting(WT_GED_ID, 'SHOW_STATS')) {
 		echo execution_stats();
 	}
-	if (exists_pending_change()) {
-		echo '<a href="#" onclick="window.open(\'edit_changes.php\', \'_blank\', chan_window_specs); return false;">';
-		echo '<p class="error center">', WT_I18N::translate('There are pending changes for you to moderate.'), '</p>';
-		echo '</a>';
-	}
 	echo '</div>'; // <div id="footer">
 }
