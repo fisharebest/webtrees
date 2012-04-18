@@ -285,25 +285,29 @@ if (!ini_get('safe_mode')) {
 }
 
 // Determine browser type
-$BROWSERTYPE = 'other';
-if (!empty($_SERVER['HTTP_USER_AGENT'])) {
-	if (stristr($_SERVER['HTTP_USER_AGENT'], 'Opera')) {
-		$BROWSERTYPE = 'opera';
-	} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'KHTML')) {
-		$BROWSERTYPE = 'chrome';
-	} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'Gecko')) {
-		$BROWSERTYPE = 'mozilla';
-	} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
-		$BROWSERTYPE = 'msie';
-	}
+if (!isset($_SERVER['HTTP_USER_AGENT'])) {
+	$_SERVER['HTTP_USER_AGENT']='';
 }
-
+// TODO: Browser sniffing is bad.  We should use capability detection.
+if (stristr($_SERVER['HTTP_USER_AGENT'], 'Opera')) {
+	$BROWSERTYPE = 'opera';
+} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'KHTML')) {
+	$BROWSERTYPE = 'chrome';
+} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'Gecko')) {
+	$BROWSERTYPE = 'mozilla';
+} elseif (stristr($_SERVER['HTTP_USER_AGENT'], 'MSIE')) {
+	$BROWSERTYPE = 'msie';
+} else {
+	$BROWSERTYPE = 'other';
+}
+$_SERVER['REMOTE_ADDR']='fe80::6cc9:bb00:b3f4:c2fc';
 $rule=WT_DB::prepare(
 	"SELECT SQL_CACHE rule FROM `##site_access_rule`".
-	" WHERE INET_ATON(?) BETWEEN ip_address_start AND ip_address_end".
+	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end".
 	" AND ? LIKE user_agent_pattern".
 	" ORDER BY ip_address_end-ip_address_start"
 )->execute(array( $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']))->fetchOne();
+
 switch ($rule) {
 case 'allow':
 	$SEARCH_SPIDER=false;
@@ -320,7 +324,7 @@ case 'unknown':
 	break;
 case '':
 	WT_DB::prepare(
-		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern) VALUES (INET_ATON(?), INET_ATON(?), ?)"
+		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?)"
 	)->execute(array($_SERVER['REMOTE_ADDR'], $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']));
 	$SEARCH_SPIDER=true;
 	break;
