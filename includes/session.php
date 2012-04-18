@@ -300,7 +300,7 @@ if (stristr($_SERVER['HTTP_USER_AGENT'], 'Opera')) {
 } else {
 	$BROWSERTYPE = 'other';
 }
-$_SERVER['REMOTE_ADDR']='fe80::6cc9:bb00:b3f4:c2fc';
+
 $rule=WT_DB::prepare(
 	"SELECT SQL_CACHE rule FROM `##site_access_rule`".
 	" WHERE IFNULL(INET_ATON(?), 0) BETWEEN ip_address_start AND ip_address_end".
