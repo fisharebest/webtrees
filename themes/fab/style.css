@@ -1059,10 +1059,11 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 }
 
 .popup ul {
+	background-image:none !important;
 	font-size:9px;
 	list-style:none;
 	margin:0;
-	padding:0 5px;
+	padding:0 10px;
 }
 
 .popup  li {
