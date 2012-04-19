@@ -403,31 +403,17 @@ function addMessage($message) {
 	return true;
 }
 
-//----------------------------------- deleteMessage
 //-- deletes a message in the database
 function deleteMessage($message_id) {
-	return (bool)WT_DB::prepare("DELETE FROM `##message` WHERE message_id=?")->execute(array($message_id));
+	WT_DB::prepare("DELETE FROM `##message` WHERE message_id=?")->execute(array($message_id));
 }
 
-//----------------------------------- getUserMessages
 //-- Return an array of a users messages
 function getUserMessages($user_id) {
-	$rows=
+	return
 		WT_DB::prepare("SELECT message_id, sender, subject, body, UNIX_TIMESTAMP(created) AS created FROM `##message` WHERE user_id=? ORDER BY message_id DESC")
 		->execute(array($user_id))
 		->fetchAll();
-
-	$messages=array();
-	foreach ($rows as $row) {
-		$messages[]=array(
-			"id"=>$row->message_id,
-			"from"=>$row->sender,
-			"subject"=>$row->subject,
-			"body"=>$row->body,
-			"created"=>$row->created
-		);
-	}
-	return $messages;
 }
 
 /**
