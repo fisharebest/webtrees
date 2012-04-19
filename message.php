@@ -25,17 +25,18 @@
 
 define('WT_SCRIPT_NAME', 'message.php');
 require './includes/session.php';
-$subject   =isset($_REQUEST['subject'   ]) ? $_REQUEST['subject'   ] : '';
-$url       =isset($_REQUEST['url'       ]) ? $_REQUEST['url'       ] : '';
-$method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : 'messaging2';
-$body      =isset($_REQUEST['body'      ]) ? $_REQUEST['body'      ] : '';
-$to        =isset($_REQUEST['to'        ]) ? $_REQUEST['to'        ] : '';
-$action    =isset($_REQUEST['action'    ]) ? $_REQUEST['action'    ] : 'compose';
-$time      =isset($_REQUEST['time'      ]) ? $_REQUEST['time'      ] : '';
-$method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : '';
-$method    =isset($_REQUEST['method'    ]) ? $_REQUEST['method'    ] : '';
-$from_email=isset($_REQUEST['from_email']) ? $_REQUEST['from_email'] : '';
-$from_name =isset($_REQUEST['from_name' ]) ? $_REQUEST['from_name' ] : '';
+
+// Variables are initialised from $_GET (so we can set initial values in URLs),
+// but are submitted in $_POST so we can have long body text.
+
+$subject   =safe_REQUEST($_REQUEST, 'subject',    WT_REGEX_UNSAFE); // Messages may legitimately contain "<", etc.
+$body      =safe_REQUEST($_REQUEST, 'body',       WT_REGEX_UNSAFE);
+$from_name =safe_REQUEST($_REQUEST, 'from_name',  WT_REGEX_UNSAFE);
+$from_email=safe_REQUEST($_REQUEST, 'from_email', WT_REGEX_EMAIL);
+$url       =safe_REQUEST($_REQUEST, 'url',        WT_REGEX_URL);
+$method    =safe_REQUEST($_REQUEST, 'method', array('messaging', 'messaging2', 'messaging3', 'mailto', 'none'), 'messaging2');
+$to        =safe_REQUEST($_REQUEST, 'to');
+$action    =safe_REQUEST($_REQUEST, 'action', array('compose', 'send'), 'compose');
 
 $controller=new WT_Controller_Simple();
 $controller->setPageTitle(WT_I18N::translate('webtrees Message'));
@@ -71,6 +72,7 @@ if (WT_USER_ID) {
 		AddToLog('Possible spam message from "'.$from_name.'"/"'.$from_email.'", IP="'.$_SERVER['REMOTE_ADDR'].'", subject="'.$subject.'", body="'.$body.'"', 'auth');
 		$action='compose';
 	}
+	$from=$from_email;
 }
 
 // Ensure the user always visits this page twice - once to compose it and again to send it.
@@ -125,17 +127,17 @@ case 'compose':
 	echo /* I18N: %s is the name of a language */ WT_I18N::translate('This user prefers to receive messages in %s', Zend_Locale::getTranslation(get_user_setting($to_user_id, 'language'), 'language', WT_LOCALE)), '</td></tr>';
 	if (!WT_USER_ID) {
 		echo '<tr><td valign="top" width="15%" align="right">', WT_I18N::translate('Your Name:'), '</td>';
-		echo '<td><input type="text" name="from_name" size="40" value="', addslashes($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="email" name="from_email" size="40" value="', addslashes($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
+		echo '<td><input type="text" name="from_name" size="40" value="', htmlspecialchars($from_name), '"></td></tr><tr><td valign="top" align="right">', WT_I18N::translate('Email Address:'), '</td><td><input type="email" name="from_email" size="40" value="', htmlspecialchars($from_email), '"><br>', WT_I18N::translate('Please provide your email address so that we may contact you in response to this message.  If you do not provide your email address we will not be able to respond to your inquiry.  Your email address will not be used in any other way besides responding to this inquiry.'), '<br><br></td></tr>';
 	}
 	echo '<tr><td align="right">', WT_I18N::translate('Subject:'), '</td>';
 	echo '<td>';
 	echo '<input type="hidden" name="action" value="send">';
-	echo '<input type="hidden" name="to" value="', $to, '">';
+	echo '<input type="hidden" name="to" value="', htmlspecialchars($to), '">';
 	echo '<input type="hidden" name="time" value="">';
 	echo '<input type="hidden" name="method" value="', $method, '">';
-	echo '<input type="hidden" name="url" value="', $url, '">';
-	echo '<input type="text" name="subject" size="50" value="', $subject, '"><br></td></tr>';
-	echo '<tr><td valign="top" align="right">', WT_I18N::translate('Body:'), '<br></td><td><textarea name="body" cols="50" rows="7">', $body, '</textarea><br></td></tr>';
+	echo '<input type="hidden" name="url" value="', htmlspecialchars($url), '">';
+	echo '<input type="text" name="subject" size="50" value="', htmlspecialchars($subject), '"><br></td></tr>';
+	echo '<tr><td valign="top" align="right">', WT_I18N::translate('Body:'), '<br></td><td><textarea name="body" cols="50" rows="7">', htmlspecialchars($body), '</textarea><br></td></tr>';
 	echo '<tr><td></td><td><input type="submit" value="', WT_I18N::translate('Send'), '"></td></tr>';
 	echo '</table>';
 	echo '</form>';
@@ -187,14 +189,13 @@ case 'send':
 			$message['from_email'] = $from_email;
 		}
 		$message['subject'] = $subject;
-		$url = preg_replace("/".WT_SESSION_NAME."=.*/", "", $url);
 		$message['body'] = $body;
-		$message['created'] = $time;
+		$message['created'] = time();
 		$message['method'] = $method;
 		$message['url'] = $url;
 		if ($i>0) $message['no_from'] = true;
 		if (addMessage($message)) {
-			Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('Message successfully sent to %s', $to));
+			Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('Message successfully sent to %s', htmlspecialchars($to)));
 		} else {
 			Zend_Controller_Action_HelperBroker::getStaticHelper('FlashMessenger')->addMessage(WT_I18N::translate('Message was not sent'));
 			AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)', 'error');
