@@ -416,8 +416,8 @@ if (empty($WEBTREES_EMAIL)) {
 
 // Use the server date to calculate privacy, etc.
 // Use the client date to show ages, etc.
-define('WT_SERVER_JD', timestamp_to_jd(time()));
-define('WT_CLIENT_JD', timestamp_to_jd(client_time()));
+define('WT_SERVER_JD', 2440588+floor(time()/86400));
+define('WT_CLIENT_JD', 2440588+floor(client_time()/86400));
 
 // Who are we?
 define('WT_USER_ID', getUserId());
