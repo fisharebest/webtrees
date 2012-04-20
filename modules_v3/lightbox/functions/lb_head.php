@@ -30,15 +30,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-$reorder=safe_get('reorder', '1', '0');
+$reorder=safe_GET_bool('reorder');
 ?>
-<script type="text/javascript">
-<!--
-	function reorder_media() {
-		var win02 = window.open(
-		'edit_interface.php?action=reorder_media&pid=<?php echo $controller->record->getXref(); ?>', 'win02', 'resizable=1, menubar=0, scrollbars=1, top=20, HEIGHT=840, WIDTH=450 ');
-		if (window.focus) {win02.focus();}
-	}
+<script>
 	function album_add() {
 		win03 = window.open(
 		'addmedia.php?action=showmediaform&linktoid=<?php echo $controller->record->getXref(); ?>', 'win03', 'resizable=1, scrollbars=1, top=50, HEIGHT=780, WIDTH=600 ');
@@ -49,7 +43,6 @@ $reorder=safe_get('reorder', '1', '0');
 		'inverselink.php?linktoid=<?php echo $controller->record->getXref(); ?>&linkto=person', 'win04', 'resizable=1, scrollbars=1, top=50, HEIGHT=300, WIDTH=450 ');
 		win04.focus()
 	}
--->
 </script>
 
 <?php
@@ -76,7 +69,7 @@ if (isset($reorder) && $reorder==1) {
 		}
 		if (WT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
 			// Popup Reorder Media
-			echo '<span><a href="#" onclick="reorder_media()">';
+			echo '<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\')">';
 			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/images.gif" id="head_icon" class="icon" title="', WT_I18N::translate('Re-order media'), '" alt="', WT_I18N::translate('Re-order media'), '">';
 			echo WT_I18N::translate('Re-order media');
 			echo '</a></span>';

@@ -226,15 +226,10 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavaScript('js/autocomplete.js');
-				?>
-				<script type="text/javascript">
-					var pastefield;
-					function paste_id(value) {
-						pastefield.value=value;
-					}
-				</script>
-				<?php
+					->addExternalJavaScript('js/autocomplete.js')
+					// for the findindi link
+					->addInlineJavaScript('var pastefield;function paste_id(value){pastefield.value=value;}');
+
 				// "Help for this page" link
 				echo '<div id="page_help">', help_link('add_story', $this->getName()), '</div>';
 				echo '<form name="story" method="post" action="#">';

@@ -32,6 +32,7 @@ var help_window_specs='width=500,height=400,left=250,top=200,resizable=1,scrollb
 var find_window_specs='width=500,height=500,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
 var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // message.php
 var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
+var mord_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
 var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
 
 // TODO: This function loads help_text.php twice.  It should only load it once.
@@ -341,8 +342,13 @@ function addClipboardRecord(pid, fact) {
 	return false;
 }
 
+function reorder_media(xref) {
+	window.open('edit_interface.php?action=reorder_media&pid='+xref, '_blank', mord_window_specs);
+	return false;
+}
+
 function add_new_record(pid, fact) {
-		window.open('edit_interface.php?action=add&pid='+pid+'&fact='+fact+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
+	window.open('edit_interface.php?action=add&pid='+pid+'&fact='+fact+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
 	return false;
 }
 
@@ -408,11 +414,6 @@ function reorder_children(famid) {
 
 function reorder_families(pid) {
 	window.open('edit_interface.php?action=reorder_fams&pid='+pid+"&"+"&accesstime="+accesstime, '_blank', edit_window_specs);
-	return false;
-}
-
-function chat(username) {
-	alert('This feature is not implement yet');
 	return false;
 }
 

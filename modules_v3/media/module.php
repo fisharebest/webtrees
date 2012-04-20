@@ -59,22 +59,13 @@ class media_WT_Module extends WT_Module implements WT_Module_Tab {
 	// Implement WT_Module_Tab
 	public function getTabContent() {
 		global $controller;
-		?>
-		<script type="text/javascript">
-		<!--
-			function reorder_media() {
-			var win02 = window.open("edit_interface.php?action=reorder_media&pid=<?php echo $controller->record->getXref(); ?>", "win02", "resizable=1, menubar=0, scrollbars=1, top=20, height=840, width=450 ");
-			if (window.focus) {win02.focus();}
-			}
-		-->
-		</script>
-		<?php
+
 		ob_start();
 		echo '<table class="facts_table">';
 		// Reorder media ------------------------------------
 		if (WT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
 			echo '<tr><td colspan="2" class="descriptionbox rela">';
-			echo '<span><a href="#" onclick="reorder_media(); return false;"><i class="icon-media-shuffle"></i>';
+			echo '<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\'); return false;"><i class="icon-media-shuffle"></i>';
 			echo WT_I18N::translate('Re-order media');
 			echo '</a></span>';
 			echo '</td></tr>';
