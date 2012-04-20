@@ -4,7 +4,7 @@
 // Display media Items using Lightbox
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2008  PGV Development Team.  All rights reserved.
@@ -65,9 +65,6 @@ $LB_MUSIC_FILE=get_module_setting('lightbox', 'LB_MUSIC_FILE', WT_STATIC_URL.WT_
 <?php if ($TEXT_DIRECTION == 'rtl') { ?>
 	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/Sound.js"  type="text/javascript"></script>
 	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/clearbox.js"  type="text/javascript"></script>
-	<!--[if lte IE 7]>
-	<link href ="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/css/album_page_RTL.css"  rel="stylesheet" type="text/css" media="screen">
-	<![endif]-->
 <?php } else { ?>
 	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/Sound.js"  type="text/javascript"></script>
 	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/clearbox.js"  type="text/javascript"></script>

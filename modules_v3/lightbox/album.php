@@ -35,7 +35,6 @@ global $edit, $sort_i;
 $reorder=safe_get('reorder', '1', '0');
 
 require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media.php';
-require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media_row.php';
 
 function cut_html($string) {
     $a=$string;
