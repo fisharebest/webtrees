@@ -1378,7 +1378,6 @@ function print_main_media_row($rtype, $rowm, $pid) {
 
 if (WT_USE_LIGHTBOX) {
 	require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media.php';
-	require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media_row.php';
 }
 
 require_once WT_ROOT.'includes/functions/functions_media_reorder.php';
