@@ -405,16 +405,14 @@ if (count($famids)>0) {
 			}
 		}
 	}
-	echo "</td></tr></table>";
-	echo "</div>";
+	echo '</td></tr></table>';
+	echo '</div>';
 }
-// -- print html footer
-$maxyoffset+=30;
-?>
-</div>
-<script type="text/javascript">
+echo '</div>';
+// Expand <div id="content"> to include the absolutely-positioned elements.
+$controller->addInlineJavaScript('
 	content_div = document.getElementById("content");
 	if (content_div) {
-		content_div.style.height = <?php echo $maxyoffset; ?> + "px";
+		content_div.style.height="'.($maxyoffset+30).'px";
 	}
-</script>
+');
