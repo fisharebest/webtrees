@@ -36,15 +36,6 @@ $controller
 ?>
 <script type="text/javascript">
 <!--
-function showhide(divbox, checkbox) {
-	if (checkbox.checked) {
-		MM_showHideLayers(divbox, ' ', 'show', ' ');
-	}
-	else {
-		MM_showHideLayers(divbox, ' ', 'hide', ' ');
-	}
-}
-
 var pastefield = null;
 function paste_id(value) {
 	pastefield.value=value;
@@ -283,7 +274,7 @@ $controller->checkPrivacy();
 			<?php if (!empty($controller->birthyears[$pid])) { ?>
 				<span class="details1"><br>
 				<?php echo /* I18N: an age indicator, which can be dragged around the screen */ WT_I18N::translate('Show an age cursor?'); ?>
-				<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="showhide('agebox<?php echo $p; ?>', this);">
+				<input type="checkbox" name="agebar<?php echo $p; ?>" value="ON" onclick="jQuery('#agebox<?php echo $p; ?>').toggle();">
 				</span>
 			<?php }
 			?>
@@ -363,7 +354,7 @@ if (count($controller->people)>0) {
 		$ageyoffset = $baseyoffset + ($controller->bheight*$p);
 		$col = $p % 6;
 		?>
-		<div id="agebox<?php echo $p; ?>" style="cursor:move; position:absolute; <?php echo ($TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+20):"right: ".($basexoffset+20)); ?>px; top:<?php echo $ageyoffset; ?>px; height:<?php echo $controller->bheight; ?>px; visibility: hidden;" onmousedown="ageMD(this, <?php echo $p; ?>);">
+		<div id="agebox<?php echo $p; ?>" style="cursor:move; position:absolute; <?php echo ($TEXT_DIRECTION =="ltr"?"left: ".($basexoffset+20):"right: ".($basexoffset+20)); ?>px; top:<?php echo $ageyoffset; ?>px; height:<?php echo $controller->bheight; ?>px; display:none;" onmousedown="ageMD(this, <?php echo $p; ?>);">
 			<table cellspacing="0" cellpadding="0">
 				<tr>
 					<td>
