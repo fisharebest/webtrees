@@ -60,7 +60,7 @@ h4 {color:#006; font-weight:bold; font-size:12px;}
 .optionbox a img {}
 .button {width:60px;}
 .gedcom_table {border:1px solid #81a9cb; margin:0; width:99%;}
-
+.alpha_index{color:#999;}
 .person_box {background-color:#edf7fd; border:solid #81a9cb 1px; padding:3px;}
 .person_boxF {background-color:#e9daf1; border:1px solid #ff2080; padding:3px;}
 .person_boxNN {background-color:#fff; border:dashed #81a9cb 1px; padding:3px;}
