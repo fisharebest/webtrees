@@ -136,7 +136,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 				$outBoxAdd .= $mouseAction4;
 			} else {
 				$icons .= "<a href=\"#\"".$mouseAction4." id=\"iconz-$boxID\" class=\"icon-zoomin\" title=\"".WT_I18N::translate('Zoom in/out on this box.')."\"></a>";
-				$icons .= '<div class="itr"><i class="icon-pedigree"></i><div class="popup">'.$personlinks.'</div></div>';
+				$icons .= '<div class="itr"><i onclick="return true" class="icon-pedigree"></i><div class="popup">'.$personlinks.'</div></div>';
 			}
 		} else {
 			if ($style==1) {
