@@ -353,7 +353,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo '</td>';
 			echo '<td class="description_box nowrap" valign="top" colspan="3">';
 			echo '<center><br><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
-			echo '<p class="ui-state-error">', WT_I18N::translate('The file ì%sî does not exist.', $rowm['m_file']), '</p>';
+			echo '<p class="ui-state-error">', WT_I18N::translate('The file ‚Äú%s‚Äù does not exist.', $rowm['m_file']), '</p>';
 			echo '</td>';
 			echo '</tr>';
 		} else if (!file_exists($rowm['m_file'])) {
@@ -365,7 +365,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo '</td>';
 			echo '<td class="description_box nowrap" valign="top" colspan="3">';
 			echo '<center><br><img src="', WT_THEME_URL, 'images/media.gif" height="30">';
-			echo '<p class="ui-state-error">', WT_I18N::translate('The file ì%sî does not exist.', $rowm['m_file']), '</p>';
+			echo '<p class="ui-state-error">', WT_I18N::translate('The file ‚Äú%s‚Äù does not exist.', $rowm['m_file']), '</p>';
 			echo '</td>';
 			echo '</tr>';
 		} else {
@@ -487,11 +487,11 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 		$mtitle = strip_tags($mediaTitle);
 		if (strpos($rowm['m_file'], 'http://maps.google.')===0) {
 			if (utf8_strlen($mtitle)>16) {
-				$mtitle = utf8_substr($rowm['m_file'], 0, 45).WT_I18N::translate('Ö');
+				$mtitle = utf8_substr($rowm['m_file'], 0, 45).WT_I18N::translate('‚Ä¶');
 			}
 		} else {
 			if (utf8_strlen($mtitle)>16) {
-				$mtitle = utf8_substr($mtitle, 0, 13).WT_I18N::translate('Ö');
+				$mtitle = utf8_substr($mtitle, 0, 13).WT_I18N::translate('‚Ä¶');
 			}
 		}
 
