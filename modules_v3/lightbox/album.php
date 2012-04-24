@@ -56,7 +56,7 @@ if (!isset($edit)) {
 
 // Used when sorting media on album tab page ===============================================
 if ($reorder==1) {
-	$sort_i=0; // Used in sorting on lightbox_print_media_row.php page
+	$sort_i=0; // Used in sorting on lightbox_print_media.php page
 	?>
 	<script type="text/javascript">
 	<!--

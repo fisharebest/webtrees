@@ -4,7 +4,7 @@
  * Display media Items using Lightbox
   *
  * webtrees: Web based Family History software
- * Copyright (C) 2010 webtrees development team.
+ * Copyright (C) 2012 webtrees development team.
  *
  * Derived from PhpGedView
  * Copyright (C) 2002 to 2007 John Finlay and Others
@@ -23,8 +23,6 @@
  * along with this program;  if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  *
- * @package webtrees
- * @subpackage Modules
  * @version $Id$
  */
  
@@ -47,6 +45,22 @@ li.li_old{border:2px solid red;}
 .clearlist:after{clear:both; content:"."; display:block; height:0; visibility:hidden;}
 #lightbox_content span {padding:10px;}
 #lightbox_content span img {vertical-align:top;}
+
+#lightbox-menu {margin-bottom:60px;}
+.lb-menu {position:relative; text-align:none; float:left; list-style-type:none; margin:0;}
+.lb-menu ul {list-style-type:none;}
+.lb-menu li {font-weight:normal; float:left; top:0;}
+.lb-menu > li:hover > ul {top:36px;}
+.lb-menu a {display:block;}
+.lb-menu li a {padding-top:24px;}
+.lb-menu li li a {padding:1px 10px 1px 5px;}
+html[dir='rtl'] .lb-menu {float:right;}
+html[dir='rtl'] .lb-menu li {float:right;}
+
+li#lb-image_edit {background:url(../images/image_edit.gif) no-repeat 50% 50%;}
+li#lb-image_link {background:url(../images/image_link.gif) no-repeat 50% 50%;}
+li#lb-image_view {background:url(../images/image_view.gif) no-repeat 50% 50%;}
+
 /* Hides from IE-mac \ */
 * html .clearfix{height:1%;}
 #clearlist{display:block;}

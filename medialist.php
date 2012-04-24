@@ -420,36 +420,8 @@ if ($show == 'yes') {
 		if ($show_thumbnail) {
 			echo $mediaobject->displayMedia(array());
 			echo '</td><td class="list_value_wrap" style="border:none;" width="100%">';
-
-			if (WT_USE_LIGHTBOX) {
-				if (WT_USER_CAN_EDIT) {
-					echo '<table><tr>';
-					// ---------- Edit Media --------------------
-					echo '<td class="width33 wrap center font9" valign="top">';
-					echo "<a href=\"#\" title=\"" . WT_I18N::translate('Edit this Media Item\'s Details') . "\" onclick=\" return window.open('addmedia.php?action=editmedia&amp;pid=".$mediaobject->getXref()."&amp;linktoid=', '_blank', edit_window_specs);\">";
-					echo '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_edit.gif" alt="" class="icon" title="', WT_I18N::translate('Edit this Media Item\'s Details'), '">&nbsp;&nbsp;&nbsp;';
-					echo '<br>';
-					echo WT_I18N::translate('Edit Details') ;
-					echo '</a>';
-					echo '</td>';
-					// ---------- Link Media to person, family or source  ---------------
-					echo '<td class="width33 wrap center font9" valign="top">';
-					require  WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_link.php';
-					echo '</td>';
-					// ---------- View Media Details (mediaviewer) --------------------
-					echo '<td class="width33 wrap center font9" valign="top">';
-					echo '<a href="'.$mediaobject->getHtmlUrl().'" title="', WT_I18N::translate('View this Media Item\'s Details 
-Plus other Media Options - MediaViewer page'), '">';
-					echo '&nbsp;&nbsp;&nbsp;<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_view.gif" alt="" class="icon" title="', WT_I18N::translate('View this Media Item\'s Details 
-Plus other Media Options - MediaViewer page'), '">';
-					echo '<br>';
-					echo WT_I18N::translate('View Details') ;
-					echo '</a>';
-					echo '</td>';
-					echo '</tr></table>';
-					// ------------ Linespace ---------------------
-					echo '<br>';
-				}
+			if (WT_USE_LIGHTBOX && WT_USER_CAN_EDIT) {
+				echo lightbox_WT_Module::getMediaListMenu($mediaobject);
 			}
 		}
 		// If sorting by title, highlight the title.  If sorting by filename, highlight the filename
