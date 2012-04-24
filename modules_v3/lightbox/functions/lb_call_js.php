@@ -62,13 +62,8 @@ $LB_MUSIC_FILE=get_module_setting('lightbox', 'LB_MUSIC_FILE', WT_STATIC_URL.WT_
 	var CB_Animation = '<?php echo get_module_setting('lightbox', 'LB_TRANSITION', 'warp'); ?>'; // Next/Prev Image transition effect
 </script>
 
-<?php if ($TEXT_DIRECTION == 'rtl') { ?>
-	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/Sound.js"  type="text/javascript"></script>
-	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/clearbox.js"  type="text/javascript"></script>
-<?php } else { ?>
-	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/Sound.js"  type="text/javascript"></script>
-	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/clearbox.js"  type="text/javascript"></script>
-<?php } ?>
+<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/Sound.js"  type="text/javascript"></script>
+<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/clearbox.js"  type="text/javascript"></script>
 <script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/wz_tooltip.js"  type="text/javascript"></script>
 <script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>lightbox/js/tip_centerwindow.js"  type="text/javascript"></script>
 <?php if ($TEXT_DIRECTION=='rtl') { ?>

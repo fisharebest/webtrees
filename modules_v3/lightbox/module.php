@@ -128,9 +128,43 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
-		ob_start();
-		require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
-		return ob_get_clean();
+		global $controller, $TEXT_DIRECTION;
+
+		$LB_MUSIC_FILE=get_module_setting('lightbox', 'LB_MUSIC_FILE', WT_STATIC_URL.WT_MODULES_DIR.'lightbox/music/music.mp3');
+		$js='var CB_ImgDetails = "'.WT_I18N::translate('Details').'";
+		var CB_Detail_Info = "'.WT_I18N::translate('View image details').'";
+		var CB_ImgNotes = "'.WT_I18N::translate('Notes').'";
+		var CB_Note_Info = "";
+		var CB_Pause_SS = "'.WT_I18N::translate('Pause Slideshow').'";
+		var CB_Start_SS = "'.WT_I18N::translate('Start Slideshow').'";
+		var CB_Music = "'.WT_I18N::translate('Turn Music On/Off').'";
+		var CB_Zoom_Off = "'.WT_I18N::translate('Disable Zoom').'";
+		var CB_Zoom_On = "'.WT_I18N::translate('Zoom is enabled ... Use mousewheel or i and o keys to zoom in and out').'";
+		var CB_Close_Win = "'.WT_I18N::translate('Close Lightbox window').'";
+		var CB_Balloon = "false";'; // Notes Tooltip Balloon or not
+		if ($TEXT_DIRECTION=='ltr') {
+			$js.='var CB_Alignm = "left";'; // Notes LTR Tooltip Balloon Text align
+		} else {
+			$js.='var CB_Alignm = "right";'; // Notes RTL Tooltip Balloon Text align
+		}
+		$js.='var CB_ImgNotes2 = "'.WT_I18N::translate('Notes').'";'; // Notes RTL Tooltip for Full Image
+		if ($LB_MUSIC_FILE == '') {
+			$js.='var myMusic = null;';
+		} else {
+			$js.='var myMusic  = "'.$LB_MUSIC_FILE.'";';   // The music file
+		}
+		$js.='var CB_SlShowTime  = "'.get_module_setting('lightbox', 'LB_SS_SPEED', '6').'"; // Slide show timer
+		var CB_Animation = "'.get_module_setting('lightbox', 'LB_TRANSITION', 'warp').'";'; // Next/Prev Image transition effect
+		$controller->addInlineJavaScript($js)
+			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/Sound.js')
+			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/clearbox.js')
+			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/wz_tooltip.js')
+			->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/tip_centerwindow.js');
+		if ($TEXT_DIRECTION=='ltr') {
+			$controller->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/tip_balloon.js');
+		} else {
+			$controller->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/tip_balloon_RTL.js');
+		}
 	}
 
 	// Implement WT_Module_Tab
