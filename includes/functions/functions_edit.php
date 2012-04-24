@@ -788,8 +788,10 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 			// Allow a new row to be entered if there was no row provided
 			if (count($match[1])==0 && empty($name_fields[$tag]) || $tag!='_HEB' && $tag!='NICK')
 				if ($tag=='_MARNM') {
-					add_simple_tag("0 _MARNM");
-					add_simple_tag("0 _MARNM_SURN $new_marnm");
+					if (strstr($ADVANCED_NAME_FACTS, '_MARNM')!==false) {
+						add_simple_tag("0 _MARNM");
+						add_simple_tag("0 _MARNM_SURN $new_marnm");
+					}
 				} else {
 					add_simple_tag("0 $tag", '', WT_Gedcom_Tag::getLabel("NAME:{$tag}", $person));
 				}
