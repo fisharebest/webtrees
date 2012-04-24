@@ -81,7 +81,7 @@ if (!defined('K_TCPDF_EXTERNAL_CONFIG')) {
 	/**
 	 * cache directory for temporary files (full path)
 	 */
-	define ('K_PATH_CACHE', K_PATH_MAIN.'cache/');
+	define ('K_PATH_CACHE', WT_DATA_DIR.'cache/');
 
 	/**
 	 * cache directory for temporary files (url path)
