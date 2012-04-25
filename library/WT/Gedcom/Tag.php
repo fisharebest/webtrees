@@ -920,7 +920,7 @@ class WT_Gedcom_Tag {
 	
 	// Get a list of reference facts that will be displayed in the "Extra information" sidebar module, and at the same time excluded from the personal_facts module
 	public static function getReferenceFacts() {
-		return array('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID');
+		return array('CHAN', 'IDNO', 'RFN', 'AFN', 'REFN', 'RIN', '_UID', 'SSN');
 	}
 
 
