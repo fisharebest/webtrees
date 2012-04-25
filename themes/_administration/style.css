@@ -189,11 +189,8 @@ html[dir='rtl'] .php_info td {border-left:0;}
 .php_info td+td {border-right:0; padding-left:20px;}
 html[dir='rtl'] .php_info td+td {border-left:0; padding-right:20px;}
 
-/* MANAGE SITES */
-table.sites {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:10px 0;}
-.sites th {font-size:105%; font-weight:bold; text-align:left;}
-html[dir='rtl'] .sites th {text-align:right;}
-.sites td {padding:5px;}
+/* SITE ACCESS */
+.ip_left{text-align:left;} /*applies to RTL as well as LTR languages*/
 
 /* MERGE RECORDS */
 #merge p, #merge2 p, #merge3 p {font-weight:bold; font-size:105%;}
