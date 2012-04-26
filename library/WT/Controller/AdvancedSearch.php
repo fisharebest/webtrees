@@ -392,7 +392,7 @@ class WT_Controller_AdvancedSearch extends WT_Controller_Search {
 						$jd1 = $jd1 - $adjd;
 						$jd2 = $jd2 + $adjd;
 					}
-					$sql.=" AND f_d.d_type=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
+					$sql.=" AND f_d.d_fact=? AND f_d.d_julianday1>=? AND f_d.d_julianday2<=?";
 					$bind[]=$parts[1];
 					$bind[]=$jd1;
 					$bind[]=$jd2;
