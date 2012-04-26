@@ -4,7 +4,7 @@
 // Set the root person using the $pid variable
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -40,7 +40,8 @@ echo '<h2>', WT_I18N::translate('Hourglass chart of %s', $controller->name), '</
 
 // LBox =====================================================================================
 if (WT_USE_LIGHTBOX) {
-	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
+	$album = new lightbox_WT_Module();
+	$album->getPreLoadContent();
 }
 // ==========================================================================================
 

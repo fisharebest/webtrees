@@ -78,7 +78,8 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 }
 
 if (WT_USE_LIGHTBOX) {
-	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
+	$album = new lightbox_WT_Module();
+	$album->getPreLoadContent();
 }
 
 echo WT_JS_START;

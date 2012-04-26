@@ -81,11 +81,12 @@ if ($controller->record && $controller->record->canDisplayDetails()) {
 }
 
 if (WT_USE_LIGHTBOX) {
-	require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
+	$album = new lightbox_WT_Module();
+	$album->getPreLoadContent();
 }
 
-$PEDIGREE_FULL_DETAILS = "1"; // Override GEDCOM configuration
-$show_full = "1";
+$PEDIGREE_FULL_DETAILS = '1'; // Override GEDCOM configuration
+$show_full = '1';
 
 echo WT_JS_START;
 echo 'function show_gedcom_record() {';

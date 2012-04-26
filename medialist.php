@@ -170,7 +170,8 @@ $controller->pageHeader();
 
 echo '<div id="medialist-page"><h2>', $controller->getPageTitle(), '</h2>';
 if (WT_USE_LIGHTBOX) {
-	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
+	$album = new lightbox_WT_Module();
+	$album->getPreLoadContent();
 }
 // ************************  BEGIN = 'Build the input form' ************************
 // A form for filtering the media items

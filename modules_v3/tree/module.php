@@ -55,8 +55,8 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		global $controller;
 
 		require_once WT_MODULES_DIR.$this->getName().'/class_treeview.php';
-    $tv = new TreeView('tvTab');
-    list($html, $js) = $tv->drawViewport($controller->record->getXref(), 3);
+		$tv = new TreeView('tvTab');
+		list($html, $js) = $tv->drawViewport($controller->record->getXref(), 3);
 		return
 			'<script type="text/javascript" src="'.$this->js().'"></script>'.
 			$html.
@@ -89,17 +89,17 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 	public function getPreLoadContent() {
 	}
 
-  // Extend WT_Module
-  // We define here actions to proceed when called, either by Ajax or not
-  public function modAction($mod_action) {  
+	// Extend WT_Module
+	// We define here actions to proceed when called, either by Ajax or not
+	public function modAction($mod_action) {
 		require_once WT_MODULES_DIR.$this->getName().'/class_treeview.php';
-    switch($mod_action) {
-      case 'treeview':
+		switch($mod_action) {
+		case 'treeview':
 				global $controller;
 				$controller=new WT_Controller_Chart();
 
-        $tvName = 'tv';
-        $tv = new TreeView('tv');
+				$tvName = 'tv';
+				$tv = new TreeView('tv');
 				ob_start();
 
 				$person=$controller->getSignificantIndividual();
@@ -119,39 +119,39 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 					}
 				');
 
-        if (WT_USE_LIGHTBOX) {
-        	require WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
-				}
+			if (WT_USE_LIGHTBOX) {
+				$album = new lightbox_WT_Module();
+				$album->getPreLoadContent();
+			}
+			echo $html;
+		break;
 
-				echo $html;
-        break;
+		case 'getDetails':
+			header('Content-Type: text/html; charset=UTF-8');
+			$pid = safe_GET('pid');
+			$i = safe_GET('instance');
+			$tv = new TreeView($i);
+			echo $tv->getDetails($pid);
+		break;
 
-      case 'getDetails':
-				header('Content-Type: text/html; charset=UTF-8');
-        $pid = safe_GET('pid');
-        $i = safe_GET('instance');
-        $tv = new TreeView($i);
-        echo $tv->getDetails($pid);
-        break;
+		case 'getPersons':
+			$q = $_REQUEST["q"];
+			$i = safe_GET('instance');
+			$tv = new TreeView($i);
+			echo $tv->getPersons($q);
+		break;
 
-      case 'getPersons':
-        $q = $_REQUEST["q"];
-        $i = safe_GET('instance');
-        $tv = new TreeView($i);
-        echo $tv->getPersons($q);
-        break;
+		// dynamically load full medias instead of thumbnails for opened boxes before printing
+		case 'getMedias':
+			$q = $_REQUEST["q"];
+			$i = safe_GET('instance');
+			$tv = new TreeView($i);
+			echo $tv->getMedias($q);
+		break;
 
-			// dynamically load full medias instead of thumbnails for opened boxes before printing
-      case 'getMedias':
-        $q = $_REQUEST["q"];
-        $i = safe_GET('instance');
-        $tv = new TreeView($i);
-        echo $tv->getMedias($q);
-      	break;
-
-      default:
-				header('HTTP/1.0 404 Not Found');
-    }
+		default:
+			header('HTTP/1.0 404 Not Found');
+		}
 	}
 
 	private function css() {

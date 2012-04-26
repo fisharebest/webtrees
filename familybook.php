@@ -33,7 +33,8 @@ $controller
 	->addExternalJavaScript('js/autocomplete.js');
 
 if (WT_USE_LIGHTBOX) {
-	require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_call_js.php';
+	$album = new lightbox_WT_Module();
+	$album->getPreLoadContent();
 }
 
 ?>

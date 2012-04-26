@@ -128,6 +128,29 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 	// Implement WT_Module_Tab
 	public function getPreLoadContent() {
+		return $this->getJS();
+	}
+
+	// Implement WT_Module_Tab
+	public function getJSCallback() {
+		return 'CB_Init();';
+	}
+
+	protected $mediaCount = null;
+
+	private function get_media_count() {
+		global $controller;
+
+		if ($this->mediaCount===null) {
+			$ct = preg_match_all("/\d OBJE/", $controller->record->getGedcomRecord(), $match);
+			foreach ($controller->record->getSpouseFamilies() as $sfam)
+				$ct += preg_match_all("/\d OBJE/", $sfam->getGedcomRecord(), $match);
+			$this->mediaCount = $ct;
+		}
+		return $this->mediaCount;
+	}
+
+	private function getJS() {
 		global $controller, $TEXT_DIRECTION;
 
 		$LB_MUSIC_FILE=get_module_setting('lightbox', 'LB_MUSIC_FILE', WT_STATIC_URL.WT_MODULES_DIR.'lightbox/music/music.mp3');
@@ -165,25 +188,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		} else {
 			$controller->addExternalJavaScript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/tip_balloon_RTL.js');
 		}
-	}
-
-	// Implement WT_Module_Tab
-	public function getJSCallback() {
-		return 'CB_Init();';
-	}
-
-	protected $mediaCount = null;
-
-	private function get_media_count() {
-		global $controller;
-
-		if ($this->mediaCount===null) {
-			$ct = preg_match_all("/\d OBJE/", $controller->record->getGedcomRecord(), $match);
-			foreach ($controller->record->getSpouseFamilies() as $sfam)
-				$ct += preg_match_all("/\d OBJE/", $sfam->getGedcomRecord(), $match);
-			$this->mediaCount = $ct;
-		}
-		return $this->mediaCount;
+		return true;
 	}
 
 	static public function getMediaListMenu($mediaobject) {
