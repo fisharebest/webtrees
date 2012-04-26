@@ -174,7 +174,7 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 		}
 		// Album Reorder include =============================
 		// Following used for Album media sort ------------------
-		$reorder=safe_get('reorder', '1', '0');
+		$reorder=safe_GET_bool('reorder');
 		if ($reorder==1) {
 			if ($kind==1) $rownum1=$numm;
 			if ($kind==2) $rownum2=$numm;
@@ -341,7 +341,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 	global $TEXT_DIRECTION;
 	global $item, $sort_i, $notes;
 
-	$reorder=safe_get('reorder', '1', '0');
+	$reorder=safe_GET_bool('reorder');
 
 	$mainMedia = check_media_depth($rowm['m_file'], 'NOTRUNC');
 	// If media file is missing from "media" directory, but is referenced in Gedcom

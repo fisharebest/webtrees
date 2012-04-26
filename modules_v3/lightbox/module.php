@@ -74,8 +74,9 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 	// Implement WT_Module_Tab
 	public function getTabContent() {
-		global $controller;
+		global $controller, $sort_i;
 
+		require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media.php';
 		$html='<div id="'.$this->getName().'_content">';
 		// If in re-order mode do not show header links, but instead, show drag and drop title.
 		if (safe_GET_bool('reorder')) {
@@ -109,14 +110,45 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 				$html.='</tr></table>';
 			}
 		}
-
-		ob_start();
 		$media_found = false;
-		require WT_ROOT.WT_MODULES_DIR.'lightbox/album.php';
+		$reorder=safe_GET_bool('reorder');
+		// Used when sorting media on album tab page
+		if ($reorder==1) {
+			$sort_i=0; // Used in sorting on lightbox_print_media.php page
+			// This script saves the dranNdrop reordered info into a hidden form input element (name=order2)
+			$js='function saveOrder() {
+				// var sections = document.getElementsByClassName("section");
+				var sections = $(".section");
+				var order = "";
+				sections.each(function(section) {
+					order += Sortable.sequence(section) + ",";
+					document.getElementById("ord2").value = order;
+				});
+			};';
+			$controller->addInlineJavaScript($js);
+			$html.='<form name="reorder_form" method="post" action="edit_interface.php">
+				<input type="hidden" name="action" value="al_reorder_media_update">
+				<input type="hidden" name="pid" value="'.$controller->record->getXref().'">
+				<input type="hidden" id="ord2" name="order2" value="">
+				<center>
+					<button type="submit" title="'.WT_I18N::translate('Saves the sorted media to the database').'" onclick="saveOrder();" >'.WT_I18N::translate('Save').'</button>&nbsp;
+					<button type="submit" title="'.WT_I18N::translate('Reset to the original order').'" onclick="document.reorder_form.action.value=\'al_reset_media_update\'; document.reorder_form.submit();">'.WT_I18N::translate('Reset').'</button>&nbsp;
+					<button type="button" title="'.WT_I18N::translate('Quit and return').'" onClick="location.href=\''.WT_SCRIPT_NAME.'?pid='.$controller->record->getXref().'\'">'.WT_I18N::translate('Cancel').'</button>
+				</center>
+				</form>';
+		}
+		$html.='<table width="100%" cellpadding="0" border="0"><tr>';
+		$html.='<td width="100%" valign="top" >';
+		ob_start();
+		lightbox_print_media($controller->record->getXref(), 0, true, 1); // map, painting, photo, tombstone)
+		lightbox_print_media($controller->record->getXref(), 0, true, 2); // card, certificate, document, magazine, manuscript, newspaper
+		lightbox_print_media($controller->record->getXref(), 0, true, 3); // electronic, fiche, film
+		lightbox_print_media($controller->record->getXref(), 0, true, 4); // audio, book, coat, video, other
+		lightbox_print_media($controller->record->getXref(), 0, true, 5); // footnotes
 		return
 			$html.
 			ob_get_clean().
-			'</div>';
+			'</td></tr></table></div>';
 	}
 
 	// Implement WT_Module_Tab

@@ -47,7 +47,7 @@ li.li_old{border:2px solid red;}
 #lightbox_content span img {vertical-align:top;}
 
 #lightbox-menu {margin-bottom:60px;}
-.lb-menu {position:relative; text-align:none; float:left; list-style-type:none; margin:0;}
+.lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
 .lb-menu ul {list-style-type:none;}
 .lb-menu li {font-weight:normal; float:left; top:0;}
 .lb-menu > li:hover > ul {top:36px;}
