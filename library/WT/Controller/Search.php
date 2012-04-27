@@ -82,7 +82,8 @@ class WT_Controller_Search extends WT_Controller_Base {
 	function __construct() {
 		parent::__construct();
 
-		$this->action=safe_POST('action', array('advanced', 'general', 'soundex', 'replace'), 'general');
+		// action comes from $_GET (menus) or $_POST (form submission)
+		$this->action=safe_REQUEST($_REQUEST, 'action', array('advanced', 'general', 'soundex', 'replace'), 'general');
 
 		$topsearch=safe_POST_bool('topsearch');
 
