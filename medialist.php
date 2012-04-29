@@ -345,9 +345,9 @@ if ($show == 'yes') {
 	echo '<table class="list_table">';
 	// echo page back, page number, page forward controls
 	echo '<tr><td colspan="2">';
-	echo '<table class="list_table width100">';
+	echo '<table class="list_table_controls">';
 	echo '<tr>';
-	echo '<td class="width30">';
+	echo '<td>';
 	if ($TEXT_DIRECTION=='ltr') {
 		if ($ct>$max) {
 			if ($currentPage > 1) {
@@ -373,8 +373,8 @@ if ($show == 'yes') {
 		}
 	}
 	echo '</td>';
-	echo '<td align="center">', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
-	echo '<td class="width30">';
+	echo '<td>', WT_I18N::translate('Page %s of %s', $currentPage, $lastPage), '</td>';
+	echo '<td>';
 	if ($TEXT_DIRECTION=='ltr') {
 		if ($ct>$max) {
 			if ($start+$max < $ct) {

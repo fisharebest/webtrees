@@ -73,7 +73,7 @@ h4 {color:#006; font-weight:bold; font-size:12px;}
 .center {text-align:center;}
 table.center {margin-left:auto; margin-right:auto;}
 
-.list_table {margin-left:auto; margin-right:auto;}
+.list_table {margin:0 auto;}
 .list_label, .list_label_wrap {color:#fff; background-color:#81a9cb; font-weight:bold; font-size:12px; text-align:center;}
 .list_value, .list_value_wrap {background-color:#edf7f9; border:solid #81a9cb 1px; font-size:12px; vertical-align:top;}
 .list_label, .list_value {white-space:nowrap;}
@@ -351,7 +351,10 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 #relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN,
 #relationship_chart .person_box, #relationship_chart .person_boxF, #relationship_chart .person_boxNN {overflow: visible !important;}
 
-#branches-page table, #medialist-page .list_table {margin:auto;}
+#branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
+#medialist-page .list_table_controls  {width:100%;}
+.list_table_controls td {text-align:center;}
+
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}

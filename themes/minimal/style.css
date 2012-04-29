@@ -1240,7 +1240,9 @@ html[dir="rtl"] dt {
 overflow: visible !important;
 }
 
-#branches-page table, #medialist-page .list_table  {margin:auto;}
+#branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
+#medialist-page .list_table_controls  {width:100%;}
+.list_table_controls td {text-align:center;}
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}
