@@ -179,7 +179,7 @@ if (WT_USE_LIGHTBOX) {
 <form action="medialist.php" method="get">
 	<input type="hidden" name="action" value="filter">
 	<input type="hidden" name="search" value="yes">
-	<table class="list-table width75">
+	<table class="list_table width75">
 	<!-- Build the form cells -->
 	<tr>
 <!-- // NOTE: Row 1, left: -->
