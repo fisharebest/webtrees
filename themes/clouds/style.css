@@ -1267,11 +1267,11 @@ padding-left:3px;
 padding-right:3px;
 }
 
-.optionbox > input {
-margin-left:5px;
+.optionbox input {
+margin-right:5px;
 }
 
-html[dir="rtl"] .optionbox > input {margin-right:5px;}
+html[dir="rtl"] .optionbox input {margin-left:5px;}
 
 select {
 border:1px solid #ccc;

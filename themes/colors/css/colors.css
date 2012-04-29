@@ -445,8 +445,8 @@ input,textarea{padding-left:0;padding-right:3px;border-width:1px;}
 html[dir="rtl"] input, textarea{padding-left:10px;padding-right:0;}
 
 .optionbox{border:solid #999 1px;border-radius:3px;font-size:12px;padding:3px;vertical-align:top;white-space:nowrap;}
-.optionbox > input{margin-left:5px;}
-html[dir="rtl"] .optionbox > input{margin-right:5px;}
+.optionbox input{margin-right:5px;}
+html[dir="rtl"] .optionbox input{margin-left:5px;}
 
 .descriptionbox{border:1px solid #999;border-radius:3px;padding:3px;vertical-align:top;white-space:nowrap;}
 .formField{font-size:12px;width:140px;}
