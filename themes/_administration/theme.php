@@ -35,7 +35,7 @@ $footerfile = WT_THEME_DIR.'footer.php';
 
 //- main icons
 $WT_IMAGES=array(
-	// lightbox module uses this in manage media links?
+	// lightbox module uses this in manage media links, and also admin_media.php for delete folder.
 	'remove'         =>WT_THEME_URL.'images/delete.png',
 
 	// need different sizes before moving to CSS

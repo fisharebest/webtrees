@@ -298,7 +298,8 @@ table#media_table {width:100%;}
 .media_items {width:100%; margin:0;}
 .media_items td {background:OldLace; border:1px inset #D9D6C4;}
 .media_items td+td+td {vertical-align:middle;}
-.media_items  input{border:0; padding:0;}
+.media_items td.center{width:16px;}
+.media_items  input {vertical-align:middle;}
 
 /* UPLOAD MEDIA */
 table.upload_media {border-collapse:separate; border-spacing:0; margin:10px 0;}
@@ -435,11 +436,11 @@ table#story_table {width:100%}
 .icon-button_note {background-position:-66px -180px; width:14px; height:16px;}
 .icon-button_source {background-position:-109px -62px; width:18px; height:16px;}
 .icon-button_repository {background-position:-91px -180px; width:15px; height:16px;}
-.icon-close {background-position:-86px -205px; width:12px; height:12px;}
+.icon-close {background-position:-82px -201px; margin-top:4px; width:16px; height:16px;}
 .icon-darrow {background-position:-40px -68px; width:20px; height:20px;}
 a.icon-darrow:hover {background-position:-40px -124px; width:20px; height:20px;}
 .icon-ddarrow {background-position:-70px -94px; width:20px; height:20px;}
-.icon-delete {background-position:-40px -154px; width:16px; height:16px;}
+.icon-delete {background-position:-40px -154px; width:16px; height:16px;cursor:pointer;}
 .icon-delete-grey {background-position:-40px -98px; width:16px; height:16px;}
 .icon-edit {background-position:-109px -34px; width:18px; height:18px;}
 .icon-email {background-position:-10px -6px; width:25px; height:25px;}
@@ -450,7 +451,7 @@ a.icon-larrow:hover {background-position:-79px -34px; width:20px; height:20px;}
 .icon-ldarrow {background-position:-10px -95px; width:20px; height:20px;}
 .icon-media {background-position:-10px -155px; width:18px; height:16px;}
 .icon-note {background-position:-64px -180px; width:17px; height:15px;}
-.icon-open {background-position:-64px -205px; margin-top:4px; width:12px; height:12px;}
+.icon-open {background-position:-60px -201px; margin-top:4px; width:16px; height:16px;}
 .icon-rarrow {background-position:-10px -34px; width:20px; height:20px;}
 .icon-rdarrow {background-position:-100px -124px; width:20px; height:20px;}
 a.icon-rarrow:hover {background-position:-10px -65px; width:20px; height:20px;}
@@ -463,7 +464,7 @@ a.icon-rarrow:hover {background-position:-10px -65px; width:20px; height:20px;}
 a.icon-uarrow:hover {background-position:-100px -94px; width:20px; height:20px;}
 .icon-udarrow {background-position:-70px -124px; width:20px; height:20px;}
 .icon-yes {background-position:-92px -154px; width:16px; height:16px;}
-.icon-webtrees {background-position:2px -220px; width:240px;height:50px;}
+.icon-webtrees {background-position:2px -230px; width:240px;height:50px;}
 .icon-zoomin {background-position:-45px -34px; width:24px; height:24px;}
 .icon-zoomout {background-position:-79px 0; width:24px; height:24px;}
 /* Generic MIME types */
