@@ -72,11 +72,12 @@ function format_indi_table($datalist, $option='') {
 					/* 15 age       */ {"iDataSort": 16, "sClass": "center"},
 					/* 16 AGE       */ {"sType": "numeric", "bVisible": false},
 					/* 17 deat plac */ {"sType": "unicode"},
-					/* 18 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 19 SEX       */ {"bVisible": false},
-					/* 20 BIRT      */ {"bVisible": false},
-					/* 21 DEAT      */ {"bVisible": false},
-					/* 22 TREE      */ {"bVisible": false}
+					/* 18 CHAN      */ {"iDataSort": 19, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 19 CHAN_sort */ {"bVisible": false},
+					/* 20 SEX       */ {"bVisible": false},
+					/* 21 BIRT      */ {"bVisible": false},
+					/* 22 DEAT      */ {"bVisible": false},
+					/* 23 TREE      */ {"bVisible": false}
 				],
 				"aaSorting": [['.($option=='sosa'?'4, "asc"':'1, "asc"').']],
 				"iDisplayLength": 20,
@@ -220,6 +221,7 @@ function format_indi_table($datalist, $option='') {
 	$html .= '<th>AGE</th>';
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('PLAC'). '</th>';
 	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
 	$html .= '<th>SEX</th>';
 	$html .= '<th>BIRT</th>';
 	$html .= '<th>DEAT</th>';
@@ -382,6 +384,12 @@ function format_indi_table($datalist, $option='') {
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			$html .= '<td>'. $person->LastChangeTimestamp(). '</td>';
+		} else {
+			$html .= '<td>&nbsp;</td>';
+		}
+		//-- Last change hidden sort column
+		if ($SHOW_LAST_CHANGE) {
+			$html .= '<td>'. $person->LastChangeTimestamp(true). '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
