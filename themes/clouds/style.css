@@ -1701,7 +1701,7 @@ min-height:40px;
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
 #medialist-page .list_table_controls  {width:100%;}
-.list_table_controls td {text-align:center;}
+.list_table_controls td {min-width:40px;padding: 1px;text-align:center;}
 
 #branches-page p {
 margin: 10px;

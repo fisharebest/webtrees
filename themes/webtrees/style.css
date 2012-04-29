@@ -353,7 +353,7 @@ td.descriptionbox  a {color:#fff;}/* this keeps the tag color the same when it i
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
 #medialist-page .list_table_controls  {width:100%;}
-.list_table_controls td {text-align:center;}
+.list_table_controls td {min-width:40px;text-align:center;}
 
 
 /* ============== login.php ======================= */
