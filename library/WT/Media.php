@@ -501,22 +501,22 @@ class WT_Media extends WT_GedcomRecord {
 				// Lightbox is installed
 				switch ($urltype) {
 				case 'url_flv':
-					$url = 'js/jw_player/flvVideo.php?flvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
+					$url = 'js/jw_player/flvVideo.php?flvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . htmlspecialchars($config['img_title']) . "::" . htmlspecialchars($notes);
 					break 2;
 				case 'local_flv':
-					$url = 'js/jw_player/flvVideo.php?flvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
+					$url = 'js/jw_player/flvVideo.php?flvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . htmlspecialchars($config['img_title']) . "::" . htmlspecialchars($notes);
 					break 2;
 				case 'url_audio':
 				case 'url_wmv':
-					$url = 'js/jw_player/wmvVideo.php?wmvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
+					$url = 'js/jw_player/wmvVideo.php?wmvVideo='.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . htmlspecialchars($config['img_title']) . "::" . htmlspecialchars($notes);
 					break 2;
 				case 'local_audio':
 				case 'local_wmv':
-					$url = 'js/jw_player/wmvVideo.php?wmvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
+					$url = 'js/jw_player/wmvVideo.php?wmvVideo='.WT_SERVER_NAME.WT_SCRIPT_PATH.$this->getRawUrlDirect('main') . "\" rel='clearbox(500, 392, click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . htmlspecialchars($config['img_title']) . "::" . htmlspecialchars($notes);
 					break 2;
 				case 'url_image':
 				case 'local_image':
-					$url = $this->getHtmlUrlDirect('main') . "\" rel=\"clearbox[" . $config['clearbox'] . "]\" rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
+					$url = $this->getHtmlUrlDirect('main') . "\" rel=\"clearbox[" . $config['clearbox'] . "]\" rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . htmlspecialchars($config['img_title']) . "::" . htmlspecialchars($notes);
 					break 2;
 				case 'url_picasa':
 				case 'url_page':
@@ -527,7 +527,7 @@ class WT_Media extends WT_GedcomRecord {
 				case 'local_page':
 				case 'local_pdf':
 				case 'local_document':
-					$url = $this->getHtmlUrlDirect('main') . "\" rel='clearbox(" . get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000') . ',' . get_module_setting('lightbox', 'LB_URL_HEIGHT', '600') . ", click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . $config['img_title'] . "::" . $notes;
+					$url = $this->getHtmlUrlDirect('main') . "\" rel='clearbox(" . get_module_setting('lightbox', 'LB_URL_WIDTH',  '1000') . ',' . get_module_setting('lightbox', 'LB_URL_HEIGHT', '600') . ", click)' rev=\"" . $this->getXref() . "::" . get_gedcom_from_id($this->ged_id) . "::" . htmlspecialchars($config['img_title']) . "::" . htmlspecialchars($notes);
 					break 2;
 				case 'url_streetview':
 					// need to call getHtmlForStreetview() instead of getHtmlUrlSnippet()
