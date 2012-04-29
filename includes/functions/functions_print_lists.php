@@ -480,10 +480,11 @@ function format_fam_table($datalist, $option='') {
 					/* 15 marr plac */ {"sType": "unicode"},
 					/* 16 children  */ {"iDataSort": 17, "sClass": "center"},
 					/* 17 NCHI      */ {"sType": "numeric", "bVisible": false},
-					/* 18 CHAN      */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 19 MARR      */ {"bVisible": false},
-					/* 20 DEAT      */ {"bVisible": false},
-					/* 21 TREE      */ {"bVisible": false}
+					/* 18 CHAN      */ {"iDataSort": 19, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 19 CHAN_sort */ {"bVisible": false},
+					/* 20 MARR      */ {"bVisible": false},
+					/* 21 DEAT      */ {"bVisible": false},
+					/* 22 TREE      */ {"bVisible": false}
 				],
 				"aaSorting": [[1, "asc"]],
 				"iDisplayLength": 20,
@@ -634,7 +635,8 @@ function format_fam_table($datalist, $option='') {
 	$html .= '<th>'. WT_Gedcom_Tag::getLabel('PLAC'). '</th>';
 	$html .= '<th><i class="icon-children" title="'. WT_I18N::translate('Children'). '"></i></th>';
 	$html .= '<th>NCHI</th>';
-	$html .= '<th '.($SHOW_LAST_CHANGE?'':'').'>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
 	$html .= '<th>MARR</th>';
 	$html .= '<th>DEAT</th>';
 	$html .= '<th>TREE</th>';
@@ -830,6 +832,12 @@ function format_fam_table($datalist, $option='') {
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
+		//-- Last change hidden sort column
+		if ($SHOW_LAST_CHANGE) {
+			$html .= '<td>'. $family->LastChangeTimestamp(true). '</td>';
+		} else {
+			$html .= '<td>&nbsp;</td>';
+		}
 		//-- Sorting by marriage date
 		$html .= '<td>';
 		if (!$family->canDisplayDetails() || !$mdate->isOK()) {
@@ -903,19 +911,20 @@ function format_sour_table($datalist) {
 				"bAutoWidth":false,
 				"bProcessing": true,
 				"aoColumns": [
-					/*  0 title  */ {"iDataSort": 1},
-					/*  1 TITL   */ {"bVisible": false, "sType": "unicode"},
-					/*  2 author */ {"sType": "unicode"},
-					/*  3 #indi  */ {"iDataSort": 4, "sClass": "center"},
-					/*  4 #INDI  */ {"sType": "numeric", "bVisible": false},
-					/*  5 #fam   */ {"iDataSort": 6, "sClass": "center"},
-					/*  6 #FAM   */ {"sType": "numeric", "bVisible": false},
-					/*  7 #obje  */ {"iDataSort": 8, "sClass": "center"},
-					/*  8 #OBJE  */ {"sType": "numeric", "bVisible": false},
-					/*  9 #note  */ {"iDataSort": 10, "sClass": "center"},
-					/* 10 #NOTE  */ {"sType": "numeric", "bVisible": false},
-					/* 11 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-					/* 12 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+					/*  0 title		*/ {"iDataSort": 1},
+					/*  1 TITL		*/ {"bVisible": false, "sType": "unicode"},
+					/*  2 author 	*/ {"sType": "unicode"},
+					/*  3 #indi  	*/ {"iDataSort": 4, "sClass": "center"},
+					/*  4 #INDI  	*/ {"sType": "numeric", "bVisible": false},
+					/*  5 #fam   	*/ {"iDataSort": 6, "sClass": "center"},
+					/*  6 #FAM   	*/ {"sType": "numeric", "bVisible": false},
+					/*  7 #obje  	*/ {"iDataSort": 8, "sClass": "center"},
+					/*  8 #OBJE		*/ {"sType": "numeric", "bVisible": false},
+					/*  9 #note		*/ {"iDataSort": 10, "sClass": "center"},
+					/* 10 #NOTE		*/ {"sType": "numeric", "bVisible": false},
+					/* 11 CHAN      */ {"iDataSort": 12, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+					/* 12 CHAN_sort */ {"bVisible": false},
+					/* 13 DELETE 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 				],
 				"iDisplayLength": 20,
 				"sPaginationType": "full_numbers"
@@ -940,7 +949,8 @@ function format_sour_table($datalist) {
 	$html .= '<th>#OBJE</th>';
 	$html .= '<th>'. WT_I18N::translate('Shared notes'). '</th>';
 	$html .= '<th>#NOTE</th>';
-	$html .= '<th>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
 	$html .= '<th>&nbsp;</th>';//delete
 	$html .= '</tr></thead>';
 	//-- table body
@@ -1005,6 +1015,12 @@ function format_sour_table($datalist) {
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
+		//-- Last change hidden sort column
+		if ($SHOW_LAST_CHANGE) {
+			$html .= '<td>'. $source->LastChangeTimestamp(true). '</td>';
+		} else {
+			$html .= '<td>&nbsp;</td>';
+		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
 			$html .= '<td><div title="'. WT_I18N::translate('Delete'). '" class="deleteicon" onclick="if (confirm(\''. addslashes(WT_I18N::translate('Are you sure you want to delete “%s”?', strip_tags($source->getFullName()))). '\')) jQuery.post(\'action.php\',{action:\'delete-source\',xref:\''. $source->getXref(). '\'},function(){location.reload();})"><span class="link_text">'. WT_I18N::translate('Delete'). '</span></div></td>';
@@ -1035,17 +1051,18 @@ function format_note_table($datalist) {
 			"bAutoWidth":false,
 			"bProcessing": true,
 			"aoColumns": [
-				/*  0 title  */ {"sType": "unicode"},
-				/*  1 #indi  */ {"iDataSort": 2, "sClass": "center"},
-				/*  2 #INDI  */ {"sType": "numeric", "bVisible": false},
-				/*  3 #fam   */ {"iDataSort": 4, "sClass": "center"},
-				/*  4 #FAM   */ {"sType": "numeric", "bVisible": false},
-				/*  5 #obje  */ {"iDataSort": 6, "sClass": "center"},
-				/*  6 #OBJE  */ {"sType": "numeric", "bVisible": false},
-				/*  7 #sour  */ {"iDataSort": 8, "sClass": "center"},
-				/*  8 #SOUR  */ {"sType": "numeric", "bVisible": false},
-				/*  9 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 10 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				/*  0 title  	*/ {"sType": "unicode"},
+				/*  1 #indi  	*/ {"iDataSort": 2, "sClass": "center"},
+				/*  2 #INDI  	*/ {"sType": "numeric", "bVisible": false},
+				/*  3 #fam   	*/ {"iDataSort": 4, "sClass": "center"},
+				/*  4 #FAM   	*/ {"sType": "numeric", "bVisible": false},
+				/*  5 #obje  	*/ {"iDataSort": 6, "sClass": "center"},
+				/*  6 #OBJE  	*/ {"sType": "numeric", "bVisible": false},
+				/*  7 #sour  	*/ {"iDataSort": 8, "sClass": "center"},
+				/*  8 #SOUR  	*/ {"sType": "numeric", "bVisible": false},
+				/*  9 CHAN      */ {"iDataSort": 10, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 10 CHAN_sort */ {"bVisible": false},
+				/* 11 DELETE 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1068,7 +1085,8 @@ function format_note_table($datalist) {
 	$html .= '<th>#OBJE</th>';
 	$html .= '<th>'. WT_I18N::translate('Sources'). '</th>';
 	$html .= '<th>#SOUR</th>';
-	$html .= '<th>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
 	$html .= '<th>&nbsp;</th>';//delete
 	$html .= '</tr></thead>';
 	//-- table body
@@ -1097,6 +1115,12 @@ function format_note_table($datalist) {
 			$html .= '<td>'. $note->LastChangeTimestamp(). '</td>';
 		} else {
 			$html .= '<td></td>';
+		}
+		//-- Last change hidden sort column
+		if ($SHOW_LAST_CHANGE) {
+			$html .= '<td>'. $note->LastChangeTimestamp(true). '</td>';
+		} else {
+			$html .= '<td>&nbsp;</td>';
 		}
 		//-- Delete 
 		if (WT_USER_GEDCOM_ADMIN) {
@@ -1128,11 +1152,12 @@ function format_repo_table($repos) {
 			"bAutoWidth":false,
 			"bProcessing": true,
 			"aoColumns": [
-				/* 0 name   */ {"sType": "unicode"},
-				/* 1 #sour  */ {"iDataSort": 2, "sClass": "center"},
-				/* 2 #SOUR  */ {"sType": "numeric", "bVisible": false},
-				/* 3 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
-				/* 4 DELETE */ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
+				/* 0 name   	*/ {"sType": "unicode"},
+				/* 1 #sour  	*/ {"iDataSort": 2, "sClass": "center"},
+				/* 2 #SOUR		*/ {"sType": "numeric", "bVisible": false},
+				/* 3 CHAN		*/ {"iDataSort": 4, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 4 CHAN_sort	*/ {"bVisible": false},
+				/* 5 DELETE 	*/ {"bVisible": '.(WT_USER_GEDCOM_ADMIN?'true':'false').', "bSortable": false}
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1149,7 +1174,8 @@ function format_repo_table($repos) {
 	$html .= '<th>'. WT_I18N::translate('Repository name'). '</th>';
 	$html .= '<th>'. WT_I18N::translate('Sources'). '</th>';
 	$html .= '<th>#SOUR</th>';
-	$html .= '<th>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
 	$html .= '<th>&nbsp;</th>';//delete
 	$html .= '</tr></thead>';
 	//-- table body
@@ -1179,6 +1205,12 @@ function format_repo_table($repos) {
 		//-- Last change
 		if ($SHOW_LAST_CHANGE) {
 			$html .= '<td>'. $repo->LastChangeTimestamp(). '</td>';
+		} else {
+			$html .= '<td>&nbsp;</td>';
+		}
+		//-- Last change hidden sort column
+		if ($SHOW_LAST_CHANGE) {
+			$html .= '<td>'. $repo->LastChangeTimestamp(true). '</td>';
 		} else {
 			$html .= '<td>&nbsp;</td>';
 		}
@@ -1212,15 +1244,16 @@ function format_media_table($datalist) {
 			"bAutoWidth":false,
 			"bProcessing": true,
 			"aoColumns": [
-				/* 0 media  */ {"bSortable": false},
-				/* 1 title  */ {"sType": "unicode"},
-				/* 2 #indi  */ {"iDataSort": 3, "sClass": "center"},
-				/* 3 #INDI  */ {"sType": "numeric", "bVisible": false},
-				/* 4 #fam   */ {"iDataSort": 5, "sClass": "center"},
-				/* 5 #FAM   */ {"sType": "numeric", "bVisible": false},
-				/* 6 #sour  */ {"iDataSort": 7, "sClass": "center"},
-				/* 7 #SOUR  */ {"sType": "numeric", "bVisible": false},
-				/* 8 CHAN   */ {"bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 0 media		*/ {"bSortable": false},
+				/* 1 title		*/ {"sType": "unicode"},
+				/* 2 #indi		*/ {"iDataSort": 3, "sClass": "center"},
+				/* 3 #INDI		*/ {"sType": "numeric", "bVisible": false},
+				/* 4 #fam		*/ {"iDataSort": 5, "sClass": "center"},
+				/* 5 #FAM		*/ {"sType": "numeric", "bVisible": false},
+				/* 6 #sour		*/ {"iDataSort": 7, "sClass": "center"},
+				/* 7 #SOUR		*/ {"sType": "numeric", "bVisible": false},
+				/* 8 CHAN		*/ {"iDataSort": 9, "bVisible": '.($SHOW_LAST_CHANGE?'true':'false').'},
+				/* 9 CHAN_sort	*/ {"bVisible": false},
 			],
 			"iDisplayLength": 20,
 			"sPaginationType": "full_numbers"
@@ -1242,7 +1275,8 @@ function format_media_table($datalist) {
 	$html .= '<th>#FAM</th>';
 	$html .= '<th>'. WT_I18N::translate('Sources'). '</th>';
 	$html .= '<th>#SOUR</th>';
-	$html .= '<th>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>'. WT_Gedcom_Tag::getLabel('CHAN'). '</th>';
+	$html .= '<th' .($SHOW_LAST_CHANGE?'':''). '>CHAN</th>';
 	$html .= '</tr></thead>';
 	//-- table body
 	$html .= '<tbody>';
@@ -1281,6 +1315,12 @@ function format_media_table($datalist) {
 			//-- Last change
 			if ($SHOW_LAST_CHANGE) {
 				$html .= '<td>'. $media->LastChangeTimestamp(). '</td>';
+			} else {
+				$html .= '<td>&nbsp;</td>';
+			}
+			//-- Last change hidden sort column
+			if ($SHOW_LAST_CHANGE) {
+				$html .= '<td>'. $media->LastChangeTimestamp(true). '</td>';
 			} else {
 				$html .= '<td>&nbsp;</td>';
 			}
@@ -1581,15 +1621,15 @@ function print_changes_table($change_ids, $sort) {
 		');
 
 		//-- table header
-		$html .= "<table id='" . $table_id . "' class='width100'>";
-		$html .= "<thead><tr>";
-		$html .= "<th>&nbsp;</th>";
-		$html .= "<th>" . WT_I18N::translate('Record') . "</th>";
-		$html .= "<th>" . WT_Gedcom_Tag::getLabel('CHAN') . "</th>";
-		$html .= "<th>" . WT_Gedcom_Tag::getLabel('_WT_USER') . "</th>";
-		$html .= "<th>DATE</th>";     //hidden by datatables code
-		$html .= "<th>SORTNAME</th>"; //hidden by datatables code
-		$html .= "</tr></thead><tbody>";
+		$html .= '<table id="' . $table_id . '" class="width100">';
+		$html .= '<thead><tr>';
+		$html .= '<th>&nbsp;</th>';
+		$html .= '<th>' . WT_I18N::translate('Record') . '</th>';
+		$html .= '<th>' . WT_Gedcom_Tag::getLabel('CHAN') . '</th>';
+		$html .= '<th>' . WT_Gedcom_Tag::getLabel('_WT_USER') . '</th>';
+		$html .= '<th>DATE</th>';     //hidden by datatables code
+		$html .= '<th>SORTNAME</th>'; //hidden by datatables code
+		$html .= '</tr></thead><tbody>';
 
 		//-- table body
 		foreach ($change_ids as $change_id) {
