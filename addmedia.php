@@ -412,7 +412,7 @@ if ($action=='newentry') {
 				AddToLog('Media ID '.$media_id." successfully added to $linktoid.", 'edit');
 				$success=true;
 			} else {
-				echo "<a href=\"#\" onclick=\"openerpasteid('$mediaid'); return false;\">", WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), " <b>$mediaid</b></a><br><br>";
+				echo '<a href="#" onclick="window.opener.paste_id(\'', $mediaid, '\'); return false;">', WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), ' <b>', $mediaid, '</b></a><br><br>';
 				$controller->addInlineJavaScript('openerpasteid("'.$mediaid.'");');
 			}
 		}
