@@ -2138,3 +2138,6 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(images/uarrow2.p
 /* Specific MIME types */
 .icon-mime-application-pdf{width:50px;height:32px;background-image:url(images/media/pdf.png);}
 .icon-mime-text-html{width:50px;height:32px;background-image:url(images/media/html.png);}
+/* style needed for lightbox album icons */
+#medialist-page .list_value_wrap a {color: blue;font-weight:normal}
+#medialist-page .list_value_wrap a:hover {color: red;font-weight:normal}

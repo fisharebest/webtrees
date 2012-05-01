@@ -50,7 +50,8 @@ li.li_old{border:2px solid red;}
 .lb-menu {position:relative; float:left; list-style-type:none; margin:0;}
 .lb-menu ul {list-style-type:none;}
 .lb-menu li {font-weight:normal; float:left; top:0;}
-.lb-menu > li:hover > ul {top:36px;}
+.lb-menu > li ul {display:none;width:80px;}
+.lb-menu > li:hover > ul {display:block; top:36px;}
 .lb-menu a {display:block;}
 .lb-menu li a {padding-top:24px;}
 .lb-menu li li a {padding:1px 10px 1px 5px;}
