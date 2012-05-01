@@ -35,6 +35,7 @@ if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
 	exit;
 }
+global $SHOW_HIGHLIGHT_IMAGES;
 ?>
 
 <script>
