@@ -1025,3 +1025,6 @@ a.icon-uarrow:hover{width:20px;height:20px;background-image:url(../images/uarrow
 /* Specific MIME types */
 .icon-mime-application-pdf{width:48px;height:48px;background-image:url(../images/media/pdf.png);}
 .icon-mime-text-html{width:48px;height:48px;background-image:url(../images/media/www.png);}
+
+/* style needed for lightbox album icons */
+#medialist-page .list_value_wrap a {background: none;}
