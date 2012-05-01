@@ -113,7 +113,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			ob_start();
 			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
 			require_once WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
-
+			echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 			echo '<table border="0" width="100%"><tr><td>';
 			echo '<table width="100%" border="0" class="facts_table">';
 			echo '<tr><td valign="top">';
