@@ -280,7 +280,7 @@ function build_indiv_map($indifacts, $famids) {
 				$useThisItem = true;
 			}
 			if (($ctla>0) && ($ctlo>0) && ($useThisItem==true)) {
-				$i = $i + 1;
+				$i++;
 				$markers[$i]=array('class'=>'optionbox', 'index'=>'', 'tabindex'=>'', 'placed'=>'no');
 				if ($fact == "EVEN" || $fact=="FACT") {
 					$eventrec = get_sub_record(1, '2 TYPE', $factrec);
@@ -319,7 +319,7 @@ function build_indiv_map($indifacts, $famids) {
 						}
 					}
 					if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
-						$i = $i + 1;
+						$i++;
 						$markers[$i]=array('class'=>'optionbox', 'index'=>'', 'tabindex'=>'', 'placed'=>'no');
 						if ($fact == "EVEN" || $fact=="FACT") {
 							$eventrec = get_sub_record(1, '2 TYPE', $factrec);
@@ -382,7 +382,7 @@ function build_indiv_map($indifacts, $famids) {
 									$ctla = preg_match("/\d LATI (.*)/", $placerec, $match1);
 									$ctlo = preg_match("/\d LONG (.*)/", $placerec, $match2);
 									if (($ctla>0) && ($ctlo>0)) {
-										$i = $i + 1;
+										$i++;
 										$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
 										if (strpos($srec, "\n1 SEX F")!==false) {
 											$markers[$i]['fact'] = WT_I18N::translate('daughter');
@@ -416,7 +416,7 @@ function build_indiv_map($indifacts, $famids) {
 											}
 										}
 										if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
-											$i = $i + 1;
+											$i++;
 											$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
 											$markers[$i]['fact']	= WT_I18N::translate('child');
 											$markers[$i]['class']	= 'option_boxNN';

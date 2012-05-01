@@ -167,7 +167,7 @@ function create_map($placelevels) {
 			$adminplaces_url .= '&amp;parent='.$latlng['pl_id'];
 		}
 		echo '</tr><tr><td>';
-		echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps™ preferences'), '</a>';
+		echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', WT_I18N::translate('Google Maps™ preferences'), '</a>';
 		echo '&nbsp;|&nbsp;';
 		echo '<a href="'.$adminplaces_url.'">', WT_I18N::translate('Geographic data'), '</a>';
 		echo '&nbsp;|&nbsp;';

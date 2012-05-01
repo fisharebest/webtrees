@@ -178,7 +178,7 @@ $controller->pageHeader();
 <table id="gm_config">
 	<tr>
 		<th>
-			<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">
+			<a href="module.php?mod=googlemap&amp;mod_action=admin_config">
 				<?php echo WT_I18N::translate('Google Maps™ preferences'); ?>
 			</a>
 		</th>
