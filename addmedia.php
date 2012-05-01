@@ -412,8 +412,10 @@ if ($action=='newentry') {
 				AddToLog('Media ID '.$media_id." successfully added to $linktoid.", 'edit');
 				$success=true;
 			} else {
+				if (!WT_DEBUG) {
+					echo WT_JS_START, 'if (window.opener.showchanges) window.opener.showchanges(); window.opener.paste_id("'.$mediaid.'"); window.close();', WT_JS_END;
+				} 
 				echo '<a href="#" onclick="window.opener.paste_id(\'', $mediaid, '\'); return false;">', WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), ' <b>', $mediaid, '</b></a><br><br>';
-				$controller->addInlineJavaScript('openerpasteid("'.$mediaid.'");');
 			}
 		}
 		echo WT_I18N::translate('Update successful');
