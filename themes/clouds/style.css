@@ -754,6 +754,12 @@ margin:0;
 width:99%;
 }
 
+#lb-image_edit a, #lb-image_link a, #lb-image_view a {padding-left: 5px;}
+
+.lb-menu > li:hover > ul {
+top: 28px!important;
+}
+
 /* person boxes are used in various charts */
 
 #index_small_blocks .person_box .pedigree_image,

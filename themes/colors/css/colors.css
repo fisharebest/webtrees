@@ -330,6 +330,9 @@ html[dir='rtl'] #relationship_chart{margin-right:10px;}
 .compact_view {cursor:url(../images/zoomin.png),n-resize;}
 .compact_view p{font-size:90%;margin:0;}
 .gedcom_table{border:1px solid #999;margin:0;width:99%;}
+#lb-image_edit a, #lb-image_link a, #lb-image_view a {color:#000000; padding-left: 5px;}
+.lb-menu > li:hover > ul {top: 28px!important;}
+
 
 /* person boxes for charts */
 #index_small_blocks .person_box .pedigree_image,
