@@ -754,10 +754,11 @@ margin:0;
 width:99%;
 }
 
-#lb-image_edit a, #lb-image_link a, #lb-image_view a {padding-left: 5px;}
-
-.lb-menu > li:hover > ul {
-top: 28px!important;
+/* style needed for lightbox album icons */
+#medialist-page .list_value_wrap a {background: none;}
+#lb-image_edit a, #lb-image_link a, #lb-image_view a {color:#000000; padding-left: 5px; }
+#lb-image_link a:hover {color:red; }
+.lb-menu > li:hover > ul {top: 28px!important;}
 }
 
 /* person boxes are used in various charts */
