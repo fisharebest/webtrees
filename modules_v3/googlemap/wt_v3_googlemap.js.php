@@ -2,7 +2,7 @@
 // Google map module for phpGedView
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -400,7 +400,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 
 	function loadMap() {
 		<?php
-			global $GOOGLEMAP_MAP_TYPE, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $SHOW_HIGHLIGHT_IMAGES, $GEDCOM;
+			global $GOOGLEMAP_MAP_TYPE, $PEDIGREE_GENERATIONS, $MAX_PEDIGREE_GENERATIONS, $SHOW_HIGHLIGHT_IMAGES;
 		?>
 
 		// Create the map and mapOptions
@@ -486,7 +486,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 					}
 				}
 
-				// Other people ====================================
+				// Other people
 				if (!empty($person)) {
 					$indirec2 = $person->getGedcomRecord();
 					$image2 = '';
@@ -546,10 +546,10 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			locations.length=locations.length - 1;
 		}
 
-		// Set the Marker bounds ===============================================
+		// Set the Marker bounds
 		var bounds = new google.maps.LatLngBounds ();
 
-		// Calculate tabs to be placed for each marker =========================
+		// Calculate tabs to be placed for each marker
 		var np = new Array();
 		var numtabs = new Array();
 		var npo = new Array();
@@ -566,7 +566,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			}
 		}
 
-		// Loop through all location markers ===================================
+		// Loop through all location markers
 		for (var i = 0; i < locations.length; i++) {
 			// obtain the attributes of each marker
 			var event = locations[i][0];							// Event or Fact
@@ -606,7 +606,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				var addr2 = locations[i][10];						// printable address for marker title
 			}
 
-			// If a fact with info or a persons name ===========================
+			// If a fact with info or a persons name
 			var event_item ='';
 			var event_tab ='';
 			var tabcontid = '';

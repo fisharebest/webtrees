@@ -52,7 +52,6 @@ function print_fact_place_map($factrec) {
 
 
 function print_address_structure_map($factrec, $level) {
-	global $WORD_WRAPPED_NOTES;
 	global $POSTAL_CODE;
 
 	//  $POSTAL_CODE = 'false' - before city, 'true' - after city and/or state
@@ -234,12 +233,10 @@ function get_lati_long_placelocation ($place) {
 }
 
 function setup_map() {
-	global $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM;
+	global $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM;
 
 	?>
-	<!--  V3 ============ -->
 	<script src="http://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language=<?php echo WT_LOCALE; ?>" type="text/javascript"></script>
-	<!--  V3 ============ -->
 	<script type="text/javascript">
 		var minZoomLevel = <?php echo $GOOGLEMAP_MIN_ZOOM;?>;
 		var maxZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
@@ -249,14 +246,11 @@ function setup_map() {
 }
 
 function build_indiv_map($indifacts, $famids) {
-	global $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM, $GEDCOM;
-	global $GOOGLEMAP_XSIZE, $GOOGLEMAP_YSIZE, $SHOW_LIVING_NAMES;
-	global $GM_DEFAULT_TOP_VALUE, $GOOGLEMAP_COORD;
+	global $controller, $GOOGLEMAP_MAX_ZOOM, $GOOGLEMAP_YSIZE, $GM_DEFAULT_TOP_VALUE;
 
-	$zoomLevel = $GOOGLEMAP_MAX_ZOOM;
-	// Create the markers list array ===============================================================
+	// Create the markers list array
 	$markers=array();
-	// Add the events to the markers list array=====================================================
+	// Add the events to the markers list array
 	//-- sort the facts into date order
 	sort_facts($indifacts);
 	$i = 0;
@@ -342,8 +336,8 @@ function build_indiv_map($indifacts, $famids) {
 						}
 						$markers[$i]['icon'] = $latlongval['icon'];
 						$markers[$i]['placerec'] = $placerec;
-						if ($zoomLevel > $latlongval['zoom']) {
-							$zoomLevel = $latlongval['zoom'];
+						if ($GOOGLEMAP_MAX_ZOOM > $latlongval['zoom']) {
+							$GOOGLEMAP_MAX_ZOOM = $latlongval['zoom'];
 						}
 						$markers[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.') , $latlongval['lati']);
 						$markers[$i]['lng'] = str_replace(array('E', 'W', ','), array('', '-', '.') , $latlongval['long']);
@@ -366,7 +360,7 @@ function build_indiv_map($indifacts, $famids) {
 		}
 	}
 
-	// Add children to the markers list array ======================================================
+	// Add children to the markers list array
 	if (count($famids)>0) {
 		$hparents=false;
 		for ($f=0; $f<count($famids); $f++) {
@@ -436,8 +430,8 @@ function build_indiv_map($indifacts, $famids) {
 											}
 											$markers[$i]['icon'] = $latlongval['icon'];
 											$markers[$i]['placerec'] = $placerec;
-											if ($zoomLevel > $latlongval['zoom']) {
-												$zoomLevel = $latlongval['zoom'];
+											if ($GOOGLEMAP_MAX_ZOOM > $latlongval['zoom']) {
+												$GOOGLEMAP_MAX_ZOOM = $latlongval['zoom'];
 											}
 											$markers[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.'), $latlongval['lati']);
 											$markers[$i]['lng']  = str_replace(array('E', 'W', ','), array('', '-', '.'), $latlongval['long']);
@@ -462,17 +456,8 @@ function build_indiv_map($indifacts, $famids) {
 		}
 	}
 
-	// Prepare the $markers array for use by the following "required" file/files ===================
-	if ($i == 0) {
-		echo '<table class="facts_table">';
-		echo '<tr><td colspan="2" class="facts_value">', WT_I18N::translate('No map data for this person');
-		echo '</td></tr>';
-		if (WT_USER_IS_ADMIN) {
-			echo '<tr><td class="center" colspan="2">';
-			echo '<a href="module.php?mod=googlemap&amp;mod_action=admin_editconfig">', WT_I18N::translate('Google Maps™ preferences'), '</a>';
-			echo '</td></tr>';
-		}
-	} else {
+	// Prepare the $markers array for use by the following "required" file/files
+	if ($i != 0) {
 		$indexcounter = 0;
 		for ($j=1; $j<=$i; $j++) {
 			if ($markers[$j]['placed'] == 'no') {
@@ -485,10 +470,9 @@ function build_indiv_map($indifacts, $famids) {
 				}
 				// If only one location with this long/lati combination
 				if ($multimarker == 0) {
-					// --- NOTE for V3 api, following line is changed from "yes" to "no" -----------
+					// --- NOTE for V3 api, following line is changed from "yes" to "no"
 					// --- This aids in identifying multi-event locations
 					$markers[$j]['placed'] = 'no';
-					// -----------------------------------------------------------------------------
 					$markers[$j]['index'] = $indexcounter;
 					$markers[$j]['tabindex'] = 0;
 					$indexcounter = $indexcounter + 1;
@@ -520,18 +504,11 @@ function build_indiv_map($indifacts, $famids) {
 				}
 			}
 		}
-
-		// === add $gmarks array to the required wt_v3_googlemap.js.php ============================
+		// add $gmarks array to the required wt_v3_googlemap.js.php
 		$gmarks = $markers;
-
-		global $controller;
 		$pid=$controller->record->getXref();
-
-		// === Include css and js files ============================================================
-		echo '<link type="text/css" href="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_googlemap.js.php';
-
-		// === Create the normal googlemap sidebar of events and children ==========================
+		// Create the normal googlemap sidebar of events and children
 		echo '<div style="overflow: auto; overflow-x: hidden; overflow-y: auto; height:', $GOOGLEMAP_YSIZE, 'px;"><table class="facts_table">';
 		$z=0;
 
@@ -564,9 +541,9 @@ function build_indiv_map($indifacts, $famids) {
 			echo '</tr>';
 		}
 		echo '</table></div><br>';
-	} // end prepare markers array =================================================================
+	} // end prepare markers array
 
-	// ======= More V3 api stuff (not displayed now) but will be sorted later ==========
+	// More V3 api stuff (not displayed now) but will be sorted later
 	?>
 	<table id="s_bar" style="display:none;">
 		<tr>
@@ -584,7 +561,7 @@ function build_indiv_map($indifacts, $famids) {
 					<!-- Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')"> -->
 
 					<?php
-					// --------- Maybe for later use ---------------
+					// Maybe for later use
 					/*
 					 Other Map:<input type="checkbox" id="infobox" onclick="boxclick(this,'info')">
 					<b>Pedigree Map:</b><input id="sel2" name="select" type=radio>
@@ -601,7 +578,6 @@ function build_indiv_map($indifacts, $famids) {
 		</tr>
 	</table>
 	<?php
-	// =================================================================================
 	echo '<br>';
 	return $i;
 } // end build_indiv_map function

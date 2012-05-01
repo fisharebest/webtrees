@@ -518,7 +518,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				$sonclick  = 'TipTog(';
 				// Contents of Notes
 				$sonclick .= "'";
-				$sonclick .= "&lt;font color=#008800>&lt;b>" . WT_I18N::translate('Notes') . ":&lt;/b>&lt;/font>&lt;br>";
+				$sonclick .= "<font color=#008800><b>" . WT_I18N::translate('Notes') . ":</b></font><br>";
 				$sonclick .= $notes;
 				$sonclick .= "'";
 				// Notes Tooltip Parameters
