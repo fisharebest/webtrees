@@ -106,73 +106,73 @@ function format_indi_table($datalist, $option='') {
 	
 			/* Add event listeners for filtering inputs */
 			jQuery("#SEX_M_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("M", 19 );
+				oTable'.$table_id.'.fnFilter("M", 20 );
 				jQuery("#SEX_M_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#SEX_F_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("F", 19 );
+				oTable'.$table_id.'.fnFilter("F", 20 );
 				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#SEX_U_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("U", 19 );
+				oTable'.$table_id.'.fnFilter("U", 21 );
 				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#BIRT_YES_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 20 );
+				oTable'.$table_id.'.fnFilter("YES", 21 );
 				jQuery("#BIRT_YES_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#BIRT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#BIRT_Y100_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 20 );
+				oTable'.$table_id.'.fnFilter("Y100", 21 );
 				jQuery("#BIRT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#BIRT_Y100_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#DEAT_N_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("N", 21 );
+				oTable'.$table_id.'.fnFilter("N", 22 );
 				jQuery("#DEAT_N_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_Y_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("^Y", 21, true, false );
+				oTable'.$table_id.'.fnFilter("^Y", 22, true, false );
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_YES_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 21 );
+				oTable'.$table_id.'.fnFilter("YES", 22 );
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_Y100_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 21 );
+				oTable'.$table_id.'.fnFilter("Y100", 22 );
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y100_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#TREE_R_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("R", 22 );
+				oTable'.$table_id.'.fnFilter("R", 23 );
 				jQuery("#TREE_R_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#TREE_L_'.   $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("L", 22 );
+				oTable'.$table_id.'.fnFilter("L", 23 );
 				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
 			});	
 			jQuery("#RESET_'.    $table_id.'").click( function() {
-				for (i=19; i<=22; i++){
+				for (i=20; i<=23; i++){
 					oTable'.$table_id.'.fnFilter("", i );
 				};
 				jQuery("div.filtersH_'.$table_id.' button").removeClass("ui-state-active");
@@ -513,7 +513,7 @@ function format_fam_table($datalist, $option='') {
 			
 			/* Add event listeners for filtering inputs */
 			jQuery("#MARR_U_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("U", 19);
+				oTable'.$table_id.'.fnFilter("U", 20);
 				jQuery("#MARR_U_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
@@ -521,7 +521,7 @@ function format_fam_table($datalist, $option='') {
 				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#MARR_YES_'.  $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("YES", 19);
+				oTable'.$table_id.'.fnFilter("YES", 20);
 				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_YES_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
@@ -529,7 +529,7 @@ function format_fam_table($datalist, $option='') {
 				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#MARR_Y100_'. $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y100", 19);
+				oTable'.$table_id.'.fnFilter("Y100", 20);
 				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_Y100_'.$table_id.'").addClass("ui-state-active");
@@ -537,7 +537,7 @@ function format_fam_table($datalist, $option='') {
 				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#MARR_DIV_'.  $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("D", 19);
+				oTable'.$table_id.'.fnFilter("D", 20);
 				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
@@ -545,7 +545,7 @@ function format_fam_table($datalist, $option='') {
 				jQuery("#MULTI_MARR_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#MULTI_MARR_'.$table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("M", 19);
+				oTable'.$table_id.'.fnFilter("M", 20);
 				jQuery("#MARR_U_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_YES_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#MARR_Y100_'.$table_id.'").removeClass("ui-state-active");
@@ -553,45 +553,45 @@ function format_fam_table($datalist, $option='') {
 				jQuery("#MULTI_MARR_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#DEAT_N_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("N", 20);
+				oTable'.$table_id.'.fnFilter("N", 21);
 				jQuery("#DEAT_N_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_W_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_H_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_W_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("W", 20);
+				oTable'.$table_id.'.fnFilter("W", 21);
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_W_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_H_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_H_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("H", 20);
+				oTable'.$table_id.'.fnFilter("H", 21);
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_W_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_H_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#DEAT_Y_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("Y", 20);
+				oTable'.$table_id.'.fnFilter("Y", 21);
 				jQuery("#DEAT_N_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_W_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_H_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#DEAT_Y_'.$table_id.'").addClass("ui-state-active");
 			});
 			jQuery("#TREE_R_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("R", 21);
+				oTable'.$table_id.'.fnFilter("R", 22);
 				jQuery("#TREE_R_'.$table_id.'").addClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#TREE_L_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("L", 21);
+				oTable'.$table_id.'.fnFilter("L", 22);
 				jQuery("#TREE_R_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#TREE_L_'.$table_id.'").addClass("ui-state-active");
 			});	
 			jQuery("#RESET_'.     $table_id.'").click( function() {
-				for (i=19; i<=21; i++) {
+				for (i=20; i<=22; i++) {
 					oTable'.$table_id.'.fnFilter("", i );
 				};
 				jQuery("div.filtersH_'.$table_id.' button").removeClass("ui-state-active");
