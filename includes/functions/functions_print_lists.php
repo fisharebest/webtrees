@@ -1300,7 +1300,6 @@ function format_media_table($datalist) {
 			$html .= highlight_search_hits($name). '</a>';
 			if (WT_USER_CAN_EDIT || WT_USER_CAN_ACCEPT)
 				$html .= '<br><a href="'. $media->getHtmlUrl(). '">'. basename($media->getFilename()). '</a>';
-//			if ($media->getNote()) $html .= '<p>'. print_fact_notes('1 NOTE '.$media->getNote(), 1, true, true).'</p>';
 			$html .= '</td>';
 
 			//-- Linked INDIs
