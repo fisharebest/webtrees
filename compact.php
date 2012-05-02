@@ -25,7 +25,6 @@
 
 define('WT_SCRIPT_NAME', 'compact.php');
 require './includes/session.php';
-require_once WT_ROOT.'includes/functions/functions_charts.php';
 
 $controller=new WT_Controller_Compact();
 $controller
