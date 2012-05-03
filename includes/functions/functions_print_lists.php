@@ -118,7 +118,7 @@ function format_indi_table($datalist, $option='') {
 				jQuery("#SEX_U_'.$table_id.'").removeClass("ui-state-active");
 			});
 			jQuery("#SEX_U_'.    $table_id.'").click( function() {
-				oTable'.$table_id.'.fnFilter("U", 21 );
+				oTable'.$table_id.'.fnFilter("U", 20 );
 				jQuery("#SEX_M_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_F_'.$table_id.'").removeClass("ui-state-active");
 				jQuery("#SEX_U_'.$table_id.'").addClass("ui-state-active");
