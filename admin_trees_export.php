@@ -87,4 +87,3 @@ if ($export) {
 	echo '</ul>';
 }
 
-echo '<p class="center"><a href="#" onclick="return modalDialogSubmitAjax(this);">', WT_I18N::translate('Close Window'), '</a></p>';
