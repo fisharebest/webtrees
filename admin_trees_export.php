@@ -2,10 +2,7 @@
 // Exports data from the database to a gedcom file
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
-//
-// Derived from PhpGedView
-// Copyright (C) 2008 to 2009  PGV Development Team.  All rights reserved.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,8 +20,15 @@
 //
 // $Id$
 
-define('WT_SCRIPT_NAME', 'export_gedcom.php');
+define('WT_SCRIPT_NAME', 'admin_trees_export.php');
 require './includes/session.php';
+
+$controller=new WT_Controller_Ajax();
+$controller
+	->pageHeader()
+	->setPageTitle(WT_I18N::translate('Export'))
+	->requireManagerLogin();
+
 require_once WT_ROOT.'includes/functions/functions_export.php';
 
 // Which gedcoms do we have permission to export?
@@ -44,14 +48,9 @@ if (empty($gedcoms)) {
 // Which gedcom have we requested to export
 $export = safe_GET('export', preg_quote_array($gedcoms));
 
-$controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('Export'));
-$controller->pageHeader();
-
 if ($export) {
 	$ged_id = get_id_from_gedcom($export);
 	$filename = get_site_setting('INDEX_DIRECTORY').$export;
-	echo '<h1>', WT_I18N::translate('Export'), '</h1>';
 	echo '<p>', htmlspecialchars(filename_decode($export)), ' => ', $filename, '</p>';
 	flush();
 	$gedout = fopen($filename.'.tmp', 'w');
@@ -88,4 +87,4 @@ if ($export) {
 	echo '</ul>';
 }
 
-echo '<p class="center"><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
+echo '<p class="center"><a href="#" onclick="return modalDialogSubmitAjax(this);">', WT_I18N::translate('Close Window'), '</a></p>';

@@ -228,7 +228,7 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 		echo
 			'<tr align="center">',
 			// export
-			'<td><a href="#" onclick="window.open(\'', "export_gedcom.php?export=", rawurlencode($gedcom_name), '\', \'_blank\',\'left=50,top=50,width=500,height=500,resizable=1,scrollbars=1\');">', WT_I18N::translate('Export'), '</a>',
+			'<td><a href="admin_trees_export.php?export=', rawurlencode($gedcom_name), '" onclick="return modalDialog(\'admin_trees_export.php?export=', rawurlencode($gedcom_name), '\', \'', WT_I18N::translate('Export'), '\');">', WT_I18N::translate('Export'), '</a>',
 			help_link('export_gedcom'),
 			'</td>',
 			// import
