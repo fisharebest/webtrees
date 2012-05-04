@@ -351,7 +351,7 @@ if (!defined('WT_WEBTREES')) {
 	}
 
 	function createMarker(i, point, name) {	
-		var contentString = '<div id="iwcontent">'+name+'<\/div>';
+		var contentString = '<div id="iwcontent_edit">'+name+'<\/div>';
 		<?php
 		echo 'var image = new google.maps.MarkerImage("', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/marker_yellow.png",';
 			echo 'new google.maps.Size(20, 34),';	// Image size
