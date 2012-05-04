@@ -377,7 +377,7 @@ function user_contact_link($user_id) {
 		$email=getUserEmail($user_id);
 		return '<a href="mailto:'.htmlspecialchars($email).'">'.htmlspecialchars($fullname).'</a>';
 	default:
-		return "<a href='#' onclick='message(\"".get_user_name($user_id)."\", \"{$method}\");return false;'>{$fullname}</a>";
+		return "<a href='#' onclick='message(\"".get_user_name($user_id)."\", \"".$method."\", \"".addslashes(urlencode(get_query_url()))."\", \"\");return false;'>".$fullname."</a>";
 	}
 }
 
@@ -608,7 +608,7 @@ function print_privacy_error() {
 		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', '<a href="mailto:'.htmlspecialchars($email).'">'.htmlspecialchars($fullname).'</a>', '</div>';
 		break;
 	default:
-		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', "<a href='#' onclick='message(\"".get_user_name($user_id)."\", \"{$method}\");return false;'>{$fullname}</a>", '</div>';
+		echo '<div class="error">', WT_I18N::translate('For more information contact'), ' ', "<a href='#' onclick='message(\"", get_user_name($user_id), "\", \"", $method, "\", \"", addslashes(urlencode(get_query_url())), "\", \"\");return false;'>", $fullname, '</a>', '</div>';
 		break;
 	}
 }
