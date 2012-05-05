@@ -915,25 +915,10 @@ WT_DB::prepare(
 
 ////////////////////////////////////////////////////////////////////////////////
 
-echo '<p>pgv_favorites => wt_favorites ...</p>'; ob_flush(); flush(); usleep(50000);
+echo '<p>pgv_favorites => wt_favorite ...</p>'; ob_flush(); flush(); usleep(50000);
 try {
-	WT_DB::exec(
-		"CREATE TABLE IF NOT EXISTS `##favorites` (".
-		" favorite_id   INTEGER AUTO_INCREMENT NOT NULL,".
-		" user_id       INTEGER                NOT NULL,".
-		" gedcom_id     INTEGER                NOT NULL,".
-		" xref          VARCHAR(20)                NULL,".
-		" favorite_type ENUM('INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE', 'URL') NOT NULL,".
-		" url           VARCHAR(255)               NULL,".
-		" title         VARCHAR(255)               NULL,".
-		" note          VARCHAR(255)               NULL,".
-		" PRIMARY KEY (favorite_id),".
-		"         KEY favorite_ix1 (gedcom_id, user_id)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-
 	WT_DB::prepare(
-		"REPLACE INTO `##favorites` (favorite_id, user_id, gedcom_id, xref, favorite_type, url, title, note)".
+		"REPLACE INTO `##favorite` (favorite_id, user_id, gedcom_id, xref, favorite_type, url, title, note)".
 		" SELECT fv_id, u.user_id, g.gedcom_id, fv_gid, fv_type, fv_url, fv_title, fv_note".
 		" FROM `{$DBNAME}`.`{$TBLPREFIX}favorites` f".
 		" LEFT JOIN `##gedcom` g ON (f.fv_username=g.gedcom_name)".
@@ -947,20 +932,6 @@ try {
 
 echo '<p>pgv_news => wt_news ...</p>'; ob_flush(); flush(); usleep(50000);
 try {
-	WT_DB::exec(
-		"CREATE TABLE IF NOT EXISTS `##news` (".
-		" news_id    INTEGER AUTO_INCREMENT NOT NULL,".
-		" user_id    INTEGER                NOT NULL,".
-		" gedcom_id  INTEGER                NOT NULL,".
-		" subject    VARCHAR(255)           NOT NULL,".
-		" body       TEXT                   NOT NULL,".
-		" updated    TIMESTAMP ON UPDATE CURRENT_TIMESTAMP DEFAULT CURRENT_TIMESTAMP".
-		" PRIMARY KEY          (news_id),".
-		"         KEY news_ix1 (user_id, updated),".
-		"         KEY news_ix2 (gedcom_id, updated)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-	);
-
 	WT_DB::prepare(
 		"REPLACE INTO `##news` (news_id, user_id, gedcom_id, subject, body, updated)".
 		" SELECT n_id, u.user_id, g.gedcom_id, n_title, n_text, FROM_UNIXTIME(n_date)".
@@ -1066,32 +1037,11 @@ WT_DB::prepare(
 ////////////////////////////////////////////////////////////////////////////////
 
 try {
-	if ($DBNAME.$TBLPREFIX.'placelocation') {
-		echo '<p>pgv_placelocation => wt_placelocation ...</p>'; ob_flush(); flush(); usleep(50000);
-		WT_DB::exec(
-		"CREATE TABLE IF NOT EXISTS `##placelocation` (".
-		" pl_id        INTEGER      NOT NULL,".
-		" pl_parent_id INTEGER          NULL,".
-		" pl_level     INTEGER          NULL,".
-		" pl_place     VARCHAR(255)     NULL,".
-		" pl_long      VARCHAR(30)      NULL,".
-		" pl_lati      VARCHAR(30)      NULL,".
-		" pl_zoom      INTEGER          NULL,".
-		" pl_icon      VARCHAR(255)     NULL,".
-		" PRIMARY KEY     (pl_id),".
-		"         KEY ix1 (pl_level),".
-		"         KEY ix2 (pl_long),".
-		"         KEY ix3 (pl_lati),".
-		"         KEY ix4 (pl_place),".
-		"         KEY ix5 (pl_parent_id)".
-		") COLLATE utf8_unicode_ci ENGINE=InnoDB"
-		);
-
-		WT_DB::prepare(
-			"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)".
-			" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `{$DBNAME}`.`{$TBLPREFIX}placelocation`"
-		)->execute();
-	}
+	echo '<p>pgv_placelocation => wt_placelocation ...</p>'; ob_flush(); flush(); usleep(50000);
+	WT_DB::prepare(
+		"REPLACE INTO `##placelocation` (pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon)".
+		" SELECT pl_id, pl_parent_id, pl_level, pl_place, pl_long, pl_lati, pl_zoom, pl_icon FROM `{$DBNAME}`.`{$TBLPREFIX}placelocation`"
+	)->execute();
 } catch (PDOexception $ex) {
 	// This table will only exist if the gm module is installed in PGV/WT
 }
