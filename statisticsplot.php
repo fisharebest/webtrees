@@ -723,7 +723,7 @@ function calc_legend($grenzen_zas) {
 	$zgrenzen[0] = $hulpar[0]-1;
 	while (isset($hulpar[$i])) {
 		$i1 = $i-1;
-		$legend[$i] = $hulpar[$i1].'-'.($hulpar[$i]-1);
+		$legend[$i] = WT_I18N::number($hulpar[$i1]).'-'.($hulpar[$i]-1);
 		$zgrenzen[$i] = $hulpar[$i]-1;
 		$i++;
 	}
@@ -814,11 +814,11 @@ function set_params($current, $indfam, $xg, $zg, $titstr, $xt, $yt, $gx, $gz, $m
 		}
 		$myfunc();
 		if ($indfam == 'IND') {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.$n1.' '.WT_I18N::translate('of').' '.$stats->_totalIndividuals();
+			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.WT_I18N::number($stats->_totalIndividuals());
 		} else if ($x_as==21) {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.$n1.' '.WT_I18N::translate('of').' '.$stats->totalChildren();
+			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.WT_I18N::number($stats->totalChildren());
 		} else {
-			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.$n1.' '.WT_I18N::translate('of').' '.$stats->_totalFamilies();
+			$hstr = $title.'|' .WT_I18N::translate('Counts ').' '.WT_I18N::number($n1).' '.WT_I18N::translate('of').' '.WT_I18N::number($stats->_totalFamilies());
 		}
 		myplot($hstr, $zmax, $xdata, $xtitle, $ydata, $ytitle, $legend);
 	}
