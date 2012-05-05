@@ -73,7 +73,7 @@ $rows=WT_DB::prepare(
 	" FROM (".
 	"  SELECT MAX(change_id) AS change_id".
 	"  FROM `##change`".
-	"  WHERE gedcom_id=?".
+	"  WHERE gedcom_id=? AND status='pending'".
 	"  GROUP BY xref".
 	" ) AS t1".
 	" JOIN `##change` t2 USING (change_id)"
