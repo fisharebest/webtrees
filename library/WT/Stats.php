@@ -1297,20 +1297,20 @@ class WT_Stats {
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
 						."d_fact='BIRT' AND "
-						."d_type='@#DGREGORIAN@'";
+						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else if ($sex) {
 			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` "
 					."JOIN `##individuals` ON d_file = i_file AND d_gid = i_id "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='BIRT' AND "
-						."d_type='@#DGREGORIAN@'";
+						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else {
 			$sql = "SELECT d_month, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='BIRT' AND "
-						."d_type='@#DGREGORIAN@'";
+						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		}
 		if ($year1>=0 && $year2>=0) {
 			$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
@@ -1355,20 +1355,20 @@ class WT_Stats {
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
 						."d_fact='DEAT' AND "
-						."d_type='@#DGREGORIAN@'";
+						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else if ($sex) {
 			$sql = "SELECT d_month, i_sex, COUNT(*) AS total FROM `##dates` "
 					."JOIN `##individuals` ON d_file = i_file AND d_gid = i_id "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='DEAT' AND "
-						."d_type='@#DGREGORIAN@'";
+						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else {
 			$sql = "SELECT d_month, COUNT(*) AS total FROM `##dates` "
 					."WHERE "
 						."d_file={$this->_ged_id} AND "
 						."d_fact='DEAT' AND "
-						."d_type='@#DGREGORIAN@'";
+						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		}
 		if ($year1>=0 && $year2>=0) {
 			$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
@@ -1741,8 +1741,8 @@ class WT_Stats {
 					." birth.d_fact='BIRT' AND"
 					." death.d_fact='DEAT' AND"
 					.' birth.d_julianday1<>0 AND'
-					." birth.d_type='@#DGREGORIAN@' AND"
-					." death.d_type='@#DGREGORIAN@' AND"
+					." birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
+					." death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
 					.' death.d_julianday1>birth.d_julianday2'
 				.' GROUP BY century, sex ORDER BY century, sex');
 			if (empty($rows)) return '';
@@ -2383,7 +2383,7 @@ class WT_Stats {
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
 						."d_fact='MARR' AND "
-						."d_type='@#DGREGORIAN@'";
+						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 						if ($year1>=0 && $year2>=0) {
 							$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 						}
@@ -2459,7 +2459,7 @@ class WT_Stats {
 						."d_file={$this->_ged_id} AND "
 						.'d_year<>0 AND '
 						."d_fact = 'DIV' AND "
-						."d_type='@#DGREGORIAN@'";
+						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 						if ($year1>=0 && $year2>=0) {
 							$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 						}
@@ -2569,8 +2569,8 @@ class WT_Stats {
 				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('M', 'BOTH') AND ".
-				" married.d_file={$this->_ged_id} AND married.d_type='@#DGREGORIAN@' AND married.d_fact='MARR' AND ".
-				" birth.d_type='@#DGREGORIAN@' AND birth.d_fact='BIRT' AND ".
+				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
+				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND ".
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
 				"GROUP BY century, sex ".
 				"UNION ALL ".
@@ -2583,8 +2583,8 @@ class WT_Stats {
 				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('F', 'BOTH') AND ".
-				" married.d_file={$this->_ged_id} AND married.d_type='@#DGREGORIAN@' AND married.d_fact='MARR' AND ".
-				" birth.d_type='@#DGREGORIAN@' AND birth.d_fact='BIRT' AND ".
+				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
+				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND ".
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
 				" GROUP BY century, sex ORDER BY century"
 			);
@@ -2667,8 +2667,8 @@ class WT_Stats {
 				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('M', 'BOTH') AND {$years} ".
-				" married.d_file={$this->_ged_id} AND married.d_type='@#DGREGORIAN@' AND married.d_fact='MARR' AND ".
-				" birth.d_type='@#DGREGORIAN@' AND birth.d_fact='BIRT' AND ".
+				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
+				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND ".
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 ".
 				"UNION ALL ".
 				"SELECT ".
@@ -2680,8 +2680,8 @@ class WT_Stats {
 				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('F', 'BOTH') AND {$years} ".
-				" married.d_file={$this->_ged_id} AND married.d_type='@#DGREGORIAN@' AND married.d_fact='MARR' AND ".
-				" birth.d_type='@#DGREGORIAN@' AND birth.d_fact='BIRT' AND ".
+				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
+				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND birth.d_fact='BIRT' AND ".
 				" married.d_julianday1>birth.d_julianday1 AND birth.d_julianday1<>0 "
 			);
 			return $rows;
@@ -3012,7 +3012,7 @@ class WT_Stats {
 							." link1.l_type = 'CHIL' AND"
 							.' child1.d_gid = link1.l_to AND'
 							." child1.d_fact = 'BIRT' AND"
-							." d_type='@#DGREGORIAN@' AND"
+							." d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
 							.' child1.d_month <> ""'
 							.$sql_years
 						.' ORDER BY'
@@ -3167,7 +3167,7 @@ class WT_Stats {
 					.' married.d_gid = fam.f_id AND'
 					." fam.f_file = {$this->_ged_id} AND"
 					." married.d_fact = 'MARR' AND"
-					." married.d_type='@#DGREGORIAN@'"
+					." married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')"
 				.' GROUP BY century ORDER BY century');
 			if (empty($rows)) return '';
 			foreach ($rows as $values) {
@@ -3314,7 +3314,7 @@ class WT_Stats {
 			" fam.f_file = {$this->_ged_id} AND".
 			$years.
 			" married.d_fact = 'MARR' AND".
-			" married.d_type = '@#DGREGORIAN@'".
+			" married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')".
 			" GROUP BY century ORDER BY century"
 		);
 		if (empty($rows)) return '';
