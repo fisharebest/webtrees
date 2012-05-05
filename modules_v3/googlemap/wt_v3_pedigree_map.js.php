@@ -375,7 +375,7 @@ gicons['8Rs'] 		= 	new google.maps.MarkerImage(WT_STATIC_URL+WT_MODULES_DIR+'goo
 // / A function to create the marker and set up the event window
 function createMarker(point, name, html, mhtml, icontype) {
 	// alert(i+'. '+name+', '+icontype);
-	var contentString = '<div id="iwcontent">'+mhtml+'<\/div>';
+	var contentString = '<div id="iwcontent_edit">'+mhtml+'<\/div>';
 	// === create a marker with the requested icon ===
 	var marker = new google.maps.Marker({
 		icon: 		gicons[icontype],
