@@ -605,19 +605,6 @@ echo WT_JS_START;?>
 			<div id="privacy">
 				<table>
 					<tr>
-						<th colspan="2">
-							<?php echo WT_I18N::translate('General'); ?>
-						</th>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
-						</td>
-						<td>
-							<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
-						</td>
-					</tr>
-					<tr>
 						<td>
 							<?php echo WT_I18N::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
 						</td>
@@ -916,6 +903,14 @@ echo WT_JS_START;?>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('Visitor options'); ?>
 						</th>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
+						</td>
+						<td>
+							<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
+						</td>
 					</tr>
 					<tr>
 						<td>
