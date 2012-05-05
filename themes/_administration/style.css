@@ -153,6 +153,9 @@ html[dir='rtl'] #tree_stats td, html[dir='rtl'] #recent td {padding:0 0 0 10px; 
 #trees span, #recent2 span {text-decoration:underline;}
 #x h2, #x h3 {padding:0 25px;}
 
+/* SITE ACCESS */
+.ip_address span, .ua_string span {direction:ltr;}
+
 /*SITE CONFIG */
 #site table, #mail table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
 .site_config h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}

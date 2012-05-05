@@ -212,11 +212,11 @@ $controller
 			"bProcessing": true,
 			"sPaginationType": "full_numbers",
 			"aoColumns": [
-				/* 0 ip_address_start        */ {"iDataSort": 1},
+				/* 0 ip_address_start        */ {"iDataSort": 1, "sClass": "ip_address"},
 				/* 1 ip_address_start (sort) */ {"sType": "numeric", "bVisible": false},
-				/* 2 ip_address_end          */ {"iDataSort": 3},
+				/* 2 ip_address_end          */ {"iDataSort": 3, "sClass": "ip_address"},
 				/* 3 ip_address_end (sort)   */ {"sType": "numeric", "bVisible": false},
-				/* 4 user_agent_pattern      */ {},
+				/* 4 user_agent_pattern      */ {"sClass": "ua_string"},
 				/* 5 comment                 */ {},
 				/* 6 rule                    */ {},
 				/* 7 <delete>                */ {"bSortable": false, "sClass": "center"}
@@ -242,9 +242,9 @@ $controller
 			"bProcessing": true,
 			"sPaginationType": "full_numbers",
 			"aoColumns": [
-				/* 0 ip_address         */ {"iDataSort": 1},
+				/* 0 ip_address         */ {"iDataSort": 1, "sClass": "ip_address"},
 				/* 0 ip_address (sort)  */ {"sType": "numeric", "bVisible": false},
-				/* 1 user_agent_pattern */ {},
+				/* 1 user_agent_pattern */ {"sClass": "ua_string"},
 				/* 2 <allowed>          */ {"bSortable": false, "sClass": "center"},
 				/* 3 <banned>           */ {"bSortable": false, "sClass": "center"},
 				/* 4 <search-engine>    */ {"bSortable": false, "sClass": "center"}
