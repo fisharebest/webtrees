@@ -131,9 +131,6 @@ $gedcoms=get_all_gedcoms();
 
 $controller->pageHeader();
 
-// "Help for this page" link
-echo '<div id="page_help">', help_link('gedcom_administration'), '</div>';
-
 // Process GET actions
 switch (safe_GET('action')) {
 case 'uploadform':

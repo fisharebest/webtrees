@@ -605,6 +605,19 @@ echo WT_JS_START;?>
 			<div id="privacy">
 				<table>
 					<tr>
+						<th colspan="2">
+							<?php echo WT_I18N::translate('General'); ?>
+						</th>
+					</tr>
+					<tr>
+						<td>
+							<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
+						</td>
+						<td>
+							<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
+						</td>
+					</tr>
+					<tr>
 						<td>
 							<?php echo WT_I18N::translate('Privacy options'), help_link('HIDE_LIVE_PEOPLE'); ?>
 						</td>
@@ -906,14 +919,6 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Require visitor authentication'), help_link('REQUIRE_AUTHENTICATION'); ?>
-						</td>
-						<td>
-							<?php echo edit_field_yes_no('NEW_REQUIRE_AUTHENTICATION', get_gedcom_setting(WT_GED_ID, 'REQUIRE_AUTHENTICATION')); ?>
-						</td>
-					</tr>
-					<tr>
-						<td>
 							<?php echo WT_I18N::translate('Welcome text on login page'), help_link('WELCOME_TEXT_AUTH_MODE'); ?>
 						</td>
 						<td><select name="NEW_WELCOME_TEXT_AUTH_MODE">
@@ -990,7 +995,7 @@ echo WT_JS_START;?>
 					<tr>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('Names'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
 						<td>
@@ -1047,7 +1052,7 @@ echo WT_JS_START;?>
 					<tr>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('Charts'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
 						<td>
@@ -1087,7 +1092,7 @@ echo WT_JS_START;?>
 					<tr>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('Individual pages'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
 						<td>
@@ -1140,7 +1145,7 @@ echo WT_JS_START;?>
 					<tr>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('Other'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
 						<td>
@@ -1196,7 +1201,7 @@ echo WT_JS_START;?>
 					<tr>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('Charts'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
 						<td>
@@ -1257,7 +1262,7 @@ echo WT_JS_START;?>
 					<tr>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('Individual pages'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
 						<td>
@@ -1310,7 +1315,7 @@ echo WT_JS_START;?>
 					<tr>
 						<th colspan="2">
 							<?php echo WT_I18N::translate('General'); ?>
-						</td>
+						</th>
 					</tr>
 					<tr>
 						<td>
@@ -1367,7 +1372,7 @@ echo WT_JS_START;?>
 				<tr>
 					<th colspan="2">
 						<?php echo WT_I18N::translate('Facts for Individual records'); ?>
-					</td>
+					</th>
 				</tr>
 				<tr>
 					<td>
@@ -1404,7 +1409,7 @@ echo WT_JS_START;?>
 				<tr>
 					<th colspan="2">
 						<?php echo WT_I18N::translate('Facts for Family records'); ?>
-					</td>
+					</th>
 				</tr>
 				<tr>
 					<td>
@@ -1441,7 +1446,7 @@ echo WT_JS_START;?>
 				<tr>
 					<th colspan="2">
 						<?php echo WT_I18N::translate('Facts for Source records'); ?>
-					</td>
+					</th>
 				</tr>
 				<tr>
 					<td>
@@ -1470,7 +1475,7 @@ echo WT_JS_START;?>
 				<tr>
 					<th colspan="2">
 						<?php echo WT_I18N::translate('Facts for Repository records'); ?>
-					</td>
+					</th>
 				</tr>
 				<tr>
 					<td>
@@ -1499,7 +1504,7 @@ echo WT_JS_START;?>
 				<tr>
 					<th colspan="2">
 						<?php echo WT_I18N::translate('Advanced fact settings'); ?>
-					</td>
+					</th>
 				</tr>
 				<tr>
 					<td>
@@ -1520,7 +1525,7 @@ echo WT_JS_START;?>
 				<tr>
 					<th colspan="2">
 						<?php echo WT_I18N::translate('Other settings'); ?>
-					</td>
+					</th>
 				</tr>
 				<tr>
 					<td>

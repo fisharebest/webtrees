@@ -1389,11 +1389,6 @@ case 'fan_width':
 	$text=WT_I18N::translate('Here you can change the diagram width from 50 percent to 300 percent.  At 100 percent the output image is about 640 pixels wide.');
 	break;
 
-case 'gedcom_administration':
-	$title=WT_I18N::translate('GEDCOM administration');
-	$text=WT_I18N::translate('The GEDCOM Administration page is the control center for administering all of your genealogical databases.');
-	break;
-
 case 'gedcom_news_archive':
 	$title=WT_I18N::translate('View archive');
 	$text=WT_I18N::translate('To reduce the height of the News block, the administrator has hidden some articles.  You can reveal these hidden articles by clicking the <b>View archive</b> link.');
