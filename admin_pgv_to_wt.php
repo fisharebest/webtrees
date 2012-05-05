@@ -976,7 +976,7 @@ try {
 
 echo '<p>pgv_nextid => wt_next_id ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
-	"REPLACE INTO `##next_id` (gedcom_id, record_type, next_id)".
+	"INSERT IGNORE INTO `##next_id` (gedcom_id, record_type, next_id)".
 	" SELECT ni_gedfile, ni_type, ni_id FROM `{$DBNAME}`.`{$TBLPREFIX}nextid`".
 	" WHERE ni_type IN ('INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE')"
 )->execute();
