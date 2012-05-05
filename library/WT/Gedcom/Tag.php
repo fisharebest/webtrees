@@ -322,7 +322,7 @@ class WT_Gedcom_Tag {
 		case 'ORDN:DATE': return WT_I18N::translate('Date of Ordination');
 		case 'ORDN:PLAC': return WT_I18N::translate('Place of Ordination');
 		case 'PAGE': return /* I18N: gedcom tag PAGE */ WT_I18N::translate('Citation details');
-		case 'PEDI': return /* I18N: gedcom tag PEDI */ WT_I18N::translate('Pedigree');
+		case 'PEDI': return /* I18N: gedcom tag PEDI */ WT_I18N::translate('Relationship to parents');
 		case 'PHON': return /* I18N: gedcom tag PHON */ WT_I18N::translate('Phone');
 		case 'PLAC': return /* I18N: gedcom tag PLAC */ WT_I18N::translate('Place');
 		case 'PLAC:FONE': return WT_I18N::translate('Phonetic place');
