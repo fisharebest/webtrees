@@ -275,7 +275,7 @@ WT_DB::exec(
 			<th>-</th>
 			<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('End IP address'); ?></th>
 			<th>-</th>
-			<th><?php echo /* http://en.wikipedia.org/wiki/User_agent_string */ WT_I18N::translate('User agent string'); ?></th>
+			<th><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent_string */ WT_I18N::translate('User agent string'); ?></th>
 			<th><?php echo /* I18N: noun */ WT_I18N::translate('Rule'); ?></th>
 			<th><?php echo WT_I18N::translate('Comment'); ?></th>
 			<th><?php echo WT_I18N::translate('Delete'); ?></th>
