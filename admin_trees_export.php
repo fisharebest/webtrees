@@ -51,7 +51,7 @@ $export = safe_GET('export', preg_quote_array($gedcoms));
 if ($export) {
 	$ged_id = get_id_from_gedcom($export);
 	$filename = get_site_setting('INDEX_DIRECTORY').$export;
-	if (substr($export, -4)!=='.ged') {
+	if (strtolower(substr($export, -4))!=='.ged') {
 		$filename.='.ged';
 	}
 	echo '<p>', htmlspecialchars(filename_decode($export)), ' => ', $filename, '</p>';
