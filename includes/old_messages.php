@@ -128,6 +128,8 @@ exit;
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Normal, prefix, postfix, both');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Nothing references this record');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('OR<br />Enter a URL and a title');
+/* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('On charts');
+/* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('On individual pages');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Only update existing records.<br />When this option is selected only existing records will be updated. This can be used to fill in latitude and longitude of places that have been imported from a GEDCOM. No new places will be added to the database.');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Open Family Navigator');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('Open links in');

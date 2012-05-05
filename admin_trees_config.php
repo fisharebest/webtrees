@@ -1195,7 +1195,7 @@ echo WT_JS_START;?>
 				<table>
 					<tr>
 						<th colspan="2">
-							<?php echo WT_I18N::translate('On charts'); ?>
+							<?php echo WT_I18N::translate('Charts'); ?>
 						</td>
 					</tr>
 					<tr>
@@ -1256,7 +1256,7 @@ echo WT_JS_START;?>
 					</tr>
 					<tr>
 						<th colspan="2">
-							<?php echo WT_I18N::translate('On individual pages'); ?>
+							<?php echo WT_I18N::translate('Individual pages'); ?>
 						</td>
 					</tr>
 					<tr>
