@@ -25,7 +25,7 @@ define('WT_SCRIPT_NAME', 'site-unavailable.php');
 // This script does not load session.php.
 // session.php won't run until a configuration file and database connection exist...
 // This next block of code is a minimal version of session.php
-define('WT_WEBTREES', true);
+define('WT_WEBTREES', 'webtrees');
 define('WT_ROOT', '');
 define('WT_GED_ID', 0);
 define('WT_USER_ID', 0);
@@ -49,7 +49,7 @@ echo
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
 	'<meta charset="UTF-8">',
-	'<title>', WT_I18N::translate('Site unavailable - webtrees'), '</title>',
+	'<title>', WT_WEBTREES, '</title>',
 	'<meta name="robots" content="noindex,follow">',
 	'<style type="text/css">
 		body {color: gray; background-color: white; font: 14px tahoma, arial, helvetica, sans-serif; padding:10px; }
