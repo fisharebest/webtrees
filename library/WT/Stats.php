@@ -2748,31 +2748,17 @@ class WT_Stats {
 	function oldestFatherAge($show_years=false)   { return $this->_parentsQuery('age',  'DESC', 'M', $show_years); }
 
 	function totalMarriedMales() {
-		$rows = WT_DB::prepare("SELECT SQL_CACHE f_gedcom AS ged, f_husb AS husb FROM `##families` WHERE f_file=?")
-				->execute(array($this->_ged_id))
-				->fetchAll();
-		$husb = array();
-		foreach ($rows as $row) {
-			$factrec = trim(get_sub_record(1, "1 MARR", $row->ged, 1));
-			if (!empty($factrec)) {
-				$husb[] = $row->husb."<br />";
-			}
-		}
-		return WT_I18N::number(count(array_unique($husb)));
+		$n=WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_husb) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\n1 MARR%'")
+			->execute(array($this->_ged_id))
+			->fetchOne();
+		return WT_I18N::number($n);
 	}
 
 	function totalMarriedFemales() {
-		$rows = WT_DB::prepare("SELECT SQL_CACHE f_gedcom AS ged, f_wife AS wife FROM `##families` WHERE f_file=?")
-				->execute(array($this->_ged_id))
-				->fetchAll();
-		$wife = array();
-		foreach ($rows as $row) {
-			$factrec = trim(get_sub_record(1, "1 MARR", $row->ged, 1));
-			if (!empty($factrec)) {
-				$wife[] = $row->wife."<br />";
-			}
-		}
-		return WT_I18N::number(count(array_unique($wife)));
+		$n=WT_DB::prepare("SELECT SQL_CACHE COUNT(DISTINCT f_wife) FROM `##families` WHERE f_file=? AND f_gedcom LIKE '%\n1 MARR%'")
+			->execute(array($this->_ged_id))
+			->fetchOne();
+		return WT_I18N::number($n);
 	}
 
 ///////////////////////////////////////////////////////////////////////////////
