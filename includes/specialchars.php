@@ -20,7 +20,7 @@
 // Other special characters are all listed at the bottom.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2007  PGV Development Team
@@ -1274,8 +1274,11 @@ default: // list all
 $otherspecialchars = array(
 	"&#161;" => "¡",
 	"&#191;" => "¿",
+	"&#x201E;" => "„",
 	"&#x201C;" => "“",
 	"&#x201D;" => "”",
+	"&#x201A;" => "‚",
+	"&#x201B;" => "‛",
 	"&#x2018;" => "‘",
 	"&#x2019;" => "’",
 	"&#x00AB;" => "«",
