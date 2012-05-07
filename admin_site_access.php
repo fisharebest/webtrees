@@ -264,7 +264,7 @@ WT_DB::exec(
 
 ?>
 
-<h2><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the site, using IP addresses and user agent strings'); ?></h2>
+<h2><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent */ WT_I18N::translate('Restrict access to the site, using IP addresses and user-agent strings'); ?></h2>
 
 <p><?php echo WT_I18N::translate('The following rules are used to decide whether a visitor is a human being (allow full access), a search-engine robot (allow restricted access) or an unwanted crawler (deny all access).'); ?></p>
 
@@ -275,7 +275,7 @@ WT_DB::exec(
 			<th>-</th>
 			<th><?php echo /* I18N [...] of a range of addresses */ WT_I18N::translate('End IP address'); ?></th>
 			<th>-</th>
-			<th><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent_string */ WT_I18N::translate('User agent string'); ?></th>
+			<th><?php echo /* I18N: http://en.wikipedia.org/wiki/User_agent_string */ WT_I18N::translate('User-agent string'); ?></th>
 			<th><?php echo /* I18N: noun */ WT_I18N::translate('Rule'); ?></th>
 			<th><?php echo WT_I18N::translate('Comment'); ?></th>
 			<th><?php echo WT_I18N::translate('Delete'); ?></th>
@@ -283,14 +283,14 @@ WT_DB::exec(
 	</thead>
 </table>
 
-<p><?php echo WT_I18N::translate('The following visitors were not recognised, and were assumed to be search-engines.'); ?></p>
+<p><?php echo WT_I18N::translate('The following visitors were not recognised, and were assumed to be search engines.'); ?></p>
 
 <table id="unknown_site_visitors" style="width:100%;">
 	<thead>
 		<tr>
 			<th rowspan="2"><?php /* I18N: http://en.wikipedia.org/wiki/IP_address */ echo WT_I18N::translate('IP address'); ?></th>
 			<th rowspan="2">-</th>
-			<th rowspan="2"><?php echo WT_I18N::translate('User agent string'); ?></th>
+			<th rowspan="2"><?php echo WT_I18N::translate('User-agent string'); ?></th>
 			<th colspan="3"><?php echo WT_I18N::translate('Create a new rule'); ?></th>
 		</tr>
 		<tr>
