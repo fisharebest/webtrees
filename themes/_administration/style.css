@@ -302,7 +302,7 @@ table#media_table {width:100%;}
 .media_items td {background:OldLace; border:1px inset #D9D6C4;}
 .media_items td+td+td {vertical-align:middle;}
 .media_items td.center{width:16px;}
-.media_items  input {vertical-align:middle;}
+.media_items  input {vertical-align:middle; margin:0;}
 
 /* UPLOAD MEDIA */
 table.upload_media {border-collapse:separate; border-spacing:0; margin:10px 0;}
