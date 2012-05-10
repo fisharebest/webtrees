@@ -226,6 +226,14 @@ class WT_Controller_Base {
 			var WT_LOCALE      = "'.WT_LOCALE.'";
 			var accesstime     = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
 	
+		// Temporary fix for access to main menu hover elements on android touch devices
+			var ua = navigator.userAgent.toLowerCase();
+			var isAndroid = ua.indexOf("android") > -1;
+			if(isAndroid) {
+				jQuery("#main-menu > li > a").attr("href", "#");
+				jQuery("a.icon_arrow").attr("href", "#");
+			}
+		
 		function delete_record(pid, linenum, mediaid) {
 			if (!mediaid) mediaid="";
 			if (confirm(\''.WT_I18N::translate('Are you sure you want to delete this fact?').'\')) {
