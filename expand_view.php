@@ -26,6 +26,8 @@
 define('WT_SCRIPT_NAME', 'expand_view.php');
 require './includes/session.php';
 
+Zend_Session::writeClose();
+
 header('Content-Type: text/html; charset=UTF-8');
 $person = WT_Person::getInstance(safe_GET_xref('pid'));
 if (!$person || !$person->canDisplayDetails()) {
