@@ -95,9 +95,6 @@ if (($level < 0) || ($level > $MEDIA_DIRECTORY_LEVELS)) {
 }
 // End variables for find media
 
-require WT_ROOT.'includes/specialchars.php';
-// End variables for Find Special Character
-
 switch ($type) {
 case "indi":
 	$controller->setPageTitle(WT_I18N::translate('Find an individual'));
