@@ -271,6 +271,8 @@ table.center {
 	border: solid blue 2px;
 }
 
+.quickfacts a {font-size:9px; padding:0 3px;}
+
 .tabs_table {
 	width: 100%;
 }

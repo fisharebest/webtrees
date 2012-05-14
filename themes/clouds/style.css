@@ -899,6 +899,8 @@ padding:4px 4px 4px 4px;
 border:solid #00f 2px;
 }
 
+.quickfacts a {font-size:9px; padding:0 3px;}
+
 .tab_cell_active {
 font-size:10px;
 border-right:1pt solid #999;

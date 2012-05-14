@@ -91,7 +91,7 @@ table.center {margin-left:auto; margin-right:auto;}
 .facts_valuered, .facts_valueblue {background-color:#edf7fd; font-size:12px; padding:4px;}
 .facts_labelred, .facts_valuered {border:solid #f00 2px;}
 .facts_labelblue, .facts_valueblue {border:solid #00f 2px;}
-
+.quickfacts a {font-size:9px; padding:0 3px;}
 .tabs_table {width:99%;}
 .tab_cell_active {background-color:#fff; border-left:outset #81a9cb 2px; border-top:outset #81a9cb 2px; border-right:outset #81a9cb 2px; text-align:center; font-weight:bold; font-size:10pt;}
 .tab_cell_inactive {background-color:#edf7fd; border-left:solid #81a9cb 2px; border-top:solid #81a9cb 2px; border-right:outset #81a9cb 2px; text-align:center; font-weight:bold; font-size:10pt;}

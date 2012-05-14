@@ -115,6 +115,8 @@ img {
 	font-weight:bold;
 }
 
+.quickfacts a {font-size:9px; padding:0 3px;}
+
 /* Main name on INDI/FAM/etc. pages */
 .name_head {
 	font-size:150%;

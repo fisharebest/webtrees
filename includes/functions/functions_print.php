@@ -1132,7 +1132,7 @@ function print_add_new_fact($id, $usedfacts, $type) {
 	echo WT_I18N::translate('Add new fact');
 	echo help_link('add_facts'), '</td>';
 	echo '<td class="optionbox wrap">';
-	echo "<form method=\"get\" name=\"newfactform\" action=\"\" onsubmit=\"return false;\">";
+	echo '<form method="get" name="newfactform" action="" onsubmit="return false;">';
 	echo '<select id="newfact" name="newfact">';
 	foreach ($translated_addfacts as $fact=>$fact_name) {
 		echo '<option value="', $fact, '">', $fact_name, '</option>';
@@ -1141,9 +1141,10 @@ function print_add_new_fact($id, $usedfacts, $type) {
 		echo '<option value="EVEN">', WT_I18N::translate('Custom Event'), '</option>';
 	}
 	echo '</select>';
-	echo "&nbsp;&nbsp;<input type=\"button\" value=\"", WT_I18N::translate('Add'), "\" onclick=\"add_record('$id', 'newfact');\"> ";
-	foreach ($quickfacts as $fact) echo "&nbsp;<small><a href='#' onclick=\"add_new_record('$id', '$fact');return false;\">", WT_Gedcom_Tag::getLabel($fact), "</a></small>&nbsp;";
-	echo '</form>';
+	echo '<input type="button" value="', WT_I18N::translate('Add'), '" onclick="add_record(\''.$id.'\', \'newfact\');">';
+	echo '<span class="quickfacts">';
+	foreach ($quickfacts as $fact) echo '<a href="#" onclick="add_new_record(\''.$id.'\', \''.$fact.'\');return false;">', WT_Gedcom_Tag::getLabel($fact), '</a>';
+	echo '</span></form>';
 	echo '</td></tr>';
 }
 
