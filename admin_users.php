@@ -185,6 +185,7 @@ case 'loadrows':
 	$iTotalDisplayRecords=WT_DB::prepare("SELECT FOUND_ROWS()")->fetchOne();
 	$iTotalRecords=WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##user` WHERE user_id>0")->fetchOne();
 
+	Zend_Session::writeClose();
 	header('Content-type: application/json');
 	echo json_encode(array( // See http://www.datatables.net/usage/server-side
 		'sEcho'               =>(int)safe_GET('sEcho'),
@@ -196,6 +197,7 @@ case 'loadrows':
 case 'load1row':
 	// Generate an AJAX response for datatables to load expanded row
 	$user_id=(int)safe_GET('user_id');
+	Zend_Session::writeClose();
 	header('Content-type: text/html; charset=UTF-8');
 	echo '<h2>', WT_I18N::translate('Details'), '</h2>';
 	echo '<dl>';
