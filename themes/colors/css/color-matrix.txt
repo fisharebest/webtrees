@@ -13,6 +13,7 @@ L-Text  #ffffff  #ffffff  #ffffff   #ffffff #ffffff  #ffffff    #ffffff  #ffffff
 
 Alert   #ff0000  #ff0000  #ff0000   #ff0000 #ff0000  #ff0000  	#ff0000  #ff0000  #ff0000  #ff0000  #ff0000  #ff0000  #ff0000  #ff0000  #ff0000
 
+
 * Header:    page header           
 * TopMenu:   toplinks and some headers    
 * Hdrs:      table and options menu headers     
