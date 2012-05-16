@@ -166,14 +166,15 @@ html[dir='rtl'] .site_config dl {float:right;margin:0 20px 0; max-width: 600px;}
 html[dir='rtl'] .site_config dt {clear:right; float:right; padding:5px 0 5px 5px;}
 html[dir='rtl'] .site_config dd {margin-right:370px;}
 
-/*SITE LOGS */
-table.site_logs {background:OldLace; border-collapse:separate; border-spacing:0; border:1px inset #D9D6C4; margin:10px; padding:5px;}
-.site_logs td {text-align:center; vertical-align:middle;}
+/*SITE LOGS & CHANGE LOGS*/
+table.site_logs, table.site_change {background:OldLace; border-collapse:separate; border-spacing:0; border:1px inset #D9D6C4; margin:10px; padding:5px;}
+.site_logs td, .site_change td {text-align:center; vertical-align:middle;}
 input.log-date {text-align:center; width:70px;}
 input.log-filter {width:120px;}
 table#log_list {width:100%}
 #log_list th {min-width:80px;white-space:nowrap;}
-
+#log_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;}
+ 
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
 #readme  h1 {font-size:16px; font-weight:bold; margin-top:0;}
