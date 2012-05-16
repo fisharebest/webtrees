@@ -115,12 +115,16 @@ case 'export':
 	header('Content-Disposition: attachment; filename="webtrees-changes.csv"');
 	$rows=WT_DB::prepare($SELECT1.$WHERE.' ORDER BY change_id')->execute($args)->fetchAll();
 	foreach ($rows as $row) {
+		$row->old_gedcom = str_replace('"', '""', $row->old_gedcom);
+		$row->old_gedcom = str_replace("\n", '""', $row->old_gedcom);
+		$row->new_gedcom = str_replace('"', '""', $row->new_gedcom);
+		$row->new_gedcom = str_replace("\n", '""', $row->new_gedcom);
 		echo
 			'"', $row->change_time, '",',
 			'"', $row->status, '",',
-			'"', str_replace('"', '""', $row->old_gedcom), '",',
-			'"', str_replace('"', '""', $row->new_gedcom), '",',
 			'"', $row->xref, '",',
+			'"', $row->old_gedcom, '",',
+			'"', $row->new_gedcom, '",',
 			'"', str_replace('"', '""', $row->user_name), '",',
 			'"', str_replace('"', '""', $row->gedcom_name), '"',
 			"\n";
@@ -255,7 +259,7 @@ echo
 				'<td colspan="6">',
 					'<input type="submit" value="', WT_I18N::translate('Filter'), '">',
 					'<input type="submit" value="', WT_I18N::translate('Export'), '" onclick="document.changes.action.value=\'export\';return true;" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
-					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', htmlspecialchars(WT_I18N::translate('Permanently delete these records?')) , '\')) {document.logs.action.value=\'delete\';return true;} else {return false;}" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
+					'<input type="submit" value="', WT_I18N::translate('Delete'), '" onclick="if (confirm(\'', htmlspecialchars(WT_I18N::translate('Permanently delete these records?')) , '\')) {document.changes.action.value=\'delete\';return true;} else {return false;}" ', ($action=='show' ? '' : 'disabled="disabled"'),'>',
 				'</td>',
 			'</tr>',
 		'</table>',
