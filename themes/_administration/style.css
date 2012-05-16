@@ -174,6 +174,8 @@ input.log-filter {width:120px;}
 table#log_list {width:100%}
 #log_list th {min-width:80px;white-space:nowrap;}
 #log_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap: break-word;-ms-word-break: break-all;word-break: break-all; word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto; hyphens: auto;}
+ #log_list a {color:blue;}
+ #log_list a:hover, #log_list a:visited {color:red;}
  
 /* README */
 #readme {font-size:12px; padding:10px 20px;}
