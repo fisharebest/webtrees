@@ -18,7 +18,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// $Id: admin_change_logs.php 13824 2012-04-17 20:19:36Z greg $
+// $Id$
 
 define('WT_SCRIPT_NAME', 'admin_site_change.php');
 require './includes/session.php';
