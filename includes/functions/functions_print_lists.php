@@ -2007,11 +2007,11 @@ function print_chart_by_age($data, $title) {
 	$chart_url .= "&amp;chd=s:"; // data : simple encoding from A=0 to 9=61
 	$CHART_ENCODING61 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	for ($age=0; $age<=$agemax; $age++) {
-		$chart_url .= $CHART_ENCODING61[floor(substr_count($data[$age], "M")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[(int)floor(substr_count($data[$age], "M")*61/$vmax)];
 	}
 	$chart_url .= ",";
 	for ($age=0; $age<=$agemax; $age++) {
-		$chart_url .= $CHART_ENCODING61[floor(substr_count($data[$age], "F")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[(int)floor(substr_count($data[$age], "F")*61/$vmax)];
 	}
 	$html = '<img src="'. $chart_url. '" alt="'. $title. '" title="'. $title. '" class="gchart">';
 	return $html;
