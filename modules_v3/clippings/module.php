@@ -48,6 +48,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 	public function modAction($mod_action) {
 		switch($mod_action) {
 		case 'ajax':
+			Zend_Session::writeClose();
 			header('Content-Type: text/html; charset=UTF-8');
 			echo $this->getSidebarAjaxContent();
 			break;
