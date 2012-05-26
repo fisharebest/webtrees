@@ -1658,8 +1658,8 @@ class WT_Person extends WT_GedcomRecord {
 				// There can be many surnames, each wrapped with '/'
 				$SURNS=$matches[1];
 				foreach ($SURNS as $n=>$SURN) {
-					// Remove surname prefix
-					$SURNS[$n]=preg_replace('/^(?:a |aan |ab |af |al |ap |as |auf |av |bat |bij |bin |bint |d\'|da |de |del |della |dem |den |der |di |du |el |fitz |het |ibn |l\'|la |las |le |les |los |onder |op |over |\'s |st |\'t |te |ten |ter |till |tot |uit |uijt |van |vanden |von |voor |vor )+/', '', $SURN);
+					// Remove surname prefixes, such as "van de ", "d'" and "'t " (lower case only)
+					$SURNS[$n]=preg_replace('/^(?:[a-z]+ |[a-z]+\' ?|\'[a-z]+ )+/', '', $SURN);
 				}
 			} else {
 				// It is valid not to have a surname at all
@@ -1669,14 +1669,21 @@ class WT_Person extends WT_GedcomRecord {
 
 		// If we don't have a GIVN record, extract it from the NAME
 		if (!$GIVN) {
-			// remove any prefix
-			$GIVN=preg_replace('/(?:(?:ADM|AMB|BRIG|CAN|CAPT|CHAN|CHAPLN|CMDR|COL|CPL|CPT|DR|GEN|GOV|HON|LADY|LORD|LT|MR|MRS|MS|MSGR|PFC|PRES|PROF|PVT|RABBI|REP|REV|SEN|SGT|SIR|SR|SRA|SRTA|VEN) )+$/', '', $full);
-			// remove any suffix
-			$GIVN=preg_replace('/(?: (?:ESQ|ESQUIRE|JR|JUNIOR|SR|SENIOR|[IVX]+))+$/', '', $GIVN);
-			// remove surname
-			$GIVN=preg_replace('/ ?\/.*\/ ?/', '', $GIVN);
-			// remove nickname
-			$GIVN=preg_replace('/ ?".+"/', '', $GIVN);
+			$GIVN=preg_replace(
+				array(
+					'/ ?\/.*\/ ?/', // remove surname
+					'/ ?".+"/',     // remove nickname
+					'/ {2,}/',      // multiple spaces, caused by the above
+					'/^ | $/',      // leading/trailing spaces, caused by the above
+				),
+				array(
+					' ',
+					' ',
+					' ',
+					'',
+				),
+				$full
+			);
 		}
 
 		// Add placeholder for unknown given name
