@@ -54,6 +54,7 @@
 		<option id="UK1851" name="UK1851" class="UK"  value="1851, 2, 30, UK">UK 1851</option>
 		<option id="UK1841" name="UK1841" class="UK"  value="1841, 5, 06, UK">UK 1841</option>
 		<option value=""></option>
+		<option id="USA1940" name="USA1940" class="USA" value="1940, 3, 01, USA">US 1940</option>
 		<option id="USA1930" name="USA1930" class="USA" value="1930, 3, 01, USA">US 1930</option>
 		<option id="USA1920" name="USA1920" class="USA" value="1920, 0, 01, USA">US 1920</option>
 		<option id="USA1910" name="USA1910" class="USA" value="1910, 3, 15, USA">US 1910</option>
