@@ -38,6 +38,7 @@ $class_name=$block->module_name.'_WT_Module';
 $block=new $class_name;
 
 $controller=new WT_Controller_Ajax();
+$controller->pageHeader();
 
 ?>
 <form name="block" method="post" action="block_edit.php?block_id=<?php echo $block_id; ?>" onsubmit="return modalDialogSubmitAjax(this);" >
