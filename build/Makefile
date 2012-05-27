@@ -1,5 +1,6 @@
 LANGUAGES_BUILD=ar bg bs ca cs da de en_GB en_US es et fa fi fr he hr hu is it lt nb nl pl pt ru sk sl sv tr tt vi
-LANGUAGES_EXTRA=af dv el en_AU fo fr_CA gl id ja ne nn oc pt_BR ro sr sr@Latn ta zh
+LANGUAGES_EXTRA=af dv el en_AU fo fr_CA gl id ja ka ne nn oc pt_BR ro sr sr@Latn ta zh
+# Note that we also have translations for mi (maori) and yi (yiddish), although Zend Framework v1 does not include support for these.
 PO_DIR=po
 MO_DIR=mo
 MO_FILES=$(patsubst %,$(MO_DIR)/%.mo,$(LANGUAGES_BUILD) $(LANGUAGES_EXTRA))
@@ -57,7 +58,7 @@ webtrees: $(PO_DIR) $(MO_DIR)
 	# Exclude some unused Zend Framework components to reduce the size of the distribution
 	rm -R $@/library/Zend/{Acl,Amf,Application,Auth,Barcode,Captcha,CodeGenerator,Console,Config,Crypt,Currency,Date,Db,Debug,Dojo,Dom,Feed,File,Form,Gdata,Http,InfoCard,Json,Layout,Ldap,Log,Mail,Markup,Measure,Memory,Mime,Navigation,Oauth,OpenId,Paginator,Pdf,ProgressBar,Queue,Reflection,Rest,Search,Serializer,Service,Soap,Test,Text,TimeSync,Tool,Uri,Validate,Version,View,Wildfire,XmlRpc}*
 	# Exclude some unused locale data to reduce the size of the distribution
-	rm -f $@/library/Zend/Locale/Data/{aa,ak,am,as,az,be,bn,bo,byn,cch,cop,cy,dz,ee,eo,eu,fil,fur,ga,gaa,gez,gsw,gu,gv,ha,haw,hi,hy,ia,ig,ii,in,iu,iw,k,ln,lo,lv,mk,ml,mn,mo,mr,mt,my,om,or,pa,ps,rw,sa,se,sh,si,so,sq,ss,st,sw,syr,te,tg,th,ti,tl,tn,to,trv,ts,u,ve,w,x,y,zu}*.xml
+	rm -f $@/library/Zend/Locale/Data/{aa,ak,am,as,az,be,bn,bo,byn,cch,cop,cy,dz,ee,eo,eu,fil,fur,ga,gaa,gez,gsw,gu,gv,ha,haw,hi,hy,ia,ig,ii,in,iu,iw,ln,lo,lv,mk,ml,mn,mo,mr,mt,my,om,or,pa,ps,rw,sa,se,sh,si,so,sq,ss,st,sw,syr,te,tg,th,ti,tl,tn,to,trv,ts,u,ve,w,x,y,zu}*.xml
 	rm -Rf $@/build
 	# Check for syntax errors
 	if find $@ -name '*.php' -exec php -l {} \; | grep -v "No syntax errors"; then false; else true; fi
