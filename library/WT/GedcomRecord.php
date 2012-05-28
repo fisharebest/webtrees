@@ -893,7 +893,7 @@ class WT_GedcomRecord {
 				}
 			}
 			if (!$found) {
-				$this->facts[$key]->gedcomRecord.="\nWT_OLD\n";
+				$this->facts[$key]->setIsOld();
 			}
 		}
 		//-- look for new facts
@@ -908,7 +908,7 @@ class WT_GedcomRecord {
 				}
 			}
 			if (!$found) {
-				$newevent->gedcomRecord.="\nWT_NEW\n";
+				$newevent->setIsNew();
 				$this->facts[]=$newevent;
 			}
 		}

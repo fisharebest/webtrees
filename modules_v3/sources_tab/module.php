@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -63,13 +63,13 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 			$otheritems = $controller->getOtherFacts();
 				foreach ($otheritems as $key => $event) {
 					if ($event->getTag()=='SOUR') {
-						print_main_sources($event->getGedcomRecord(), 1, $controller->record->getXref(), $event->getLineNumber());
+						print_main_sources($event, 1, $controller->record->getXref());
 					}
 			}
 			// 2nd level sources [ 1712181 ]
 			$controller->record->add_family_facts(false);
 			foreach ($controller->getIndiFacts() as $key => $factrec) {
-					print_main_sources($factrec->getGedcomRecord(), 2, $controller->record->getXref(), $factrec->getLineNumber(), true);
+					print_main_sources($factrec, 2, $controller->record->getXref(), true);
 			}
 			if ($this->get_source_count()==0) echo "<tr><td id=\"no_tab3\" colspan=\"2\" class=\"facts_value\">".WT_I18N::translate('There are no Source citations for this individual.')."</td></tr>";
 			//-- New Source Link

@@ -203,10 +203,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$this->name_count++;
 		if ($this->name_count >1) { echo '<h3 class="name_two">',$dummy->getFullName(), '</h3>'; } //Other names accordion element
 		echo '<div id="indi_name_details"';
-		if (strpos($factrec, "\nWT_OLD")!==false) {
+		if ($event->getIsOld()) {
 			echo " class=\"namered\"";
 		}
-		if (strpos($factrec, "\nWT_NEW")!==false) {
+		if ($event->getIsNew()) {
 			echo " class=\"nameblue\"";
 		}
 		echo ">";
@@ -224,7 +224,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				}
 			}
 		}
-		if ($this->record->canEdit() && !strpos($factrec, "\nWT_OLD")) {
+		if ($this->record->canEdit() && !$event->getIsOld()) {
 			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"#\" onclick=\"delete_record('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
 			echo "<div class=\"editlink\"><a href=\"#\" class=\"font9 editicon\" onclick=\"edit_name('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
 		}
@@ -279,10 +279,10 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		$sex = $event->getDetail();
 		if (empty($sex)) $sex = 'U';
 		echo '<span id="sex"';
-			if (strpos($factrec, "\nWT_OLD")!==false) {
+			if ($event->getIsOld()) {
 				echo ' class="namered"';
 			}
-			if (strpos($factrec, "\nWT_NEW")!==false) {
+			if ($event->getIsNew()) {
 				echo ' class="nameblue"';
 			}
 			switch ($sex) {
@@ -298,7 +298,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 			echo '>&nbsp;';
 			if ($this->SEX_COUNT>1) {
-				if ($this->record->canEdit() && strpos($factrec, "\nWT_OLD")===false) {
+				if ($this->record->canEdit() && !$event->getIsOld()) {
 					if ($event->getLineNumber()=="new") {
 						echo "<a class=\"font9\" href=\"#\" onclick=\"add_new_record('".$this->record->getXref()."', 'SEX'); return false;\">".WT_I18N::translate('Edit')."</a>";
 					} else {
@@ -412,7 +412,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				}
 				if ($fact=="NAME") {
 					$this->total_names++;
-					if ($this->NAME_LINENUM==null && strpos($value->getGedcomRecord(), "\nWT_OLD")===false) {
+					if ($this->NAME_LINENUM==null && !$value->getIsOld()) {
 						// This is the "primary" name and is edited from the menu
 						// Subsequent names get their own edit links
 						$this->NAME_LINENUM = $value->getLineNumber();

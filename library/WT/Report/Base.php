@@ -2363,7 +2363,7 @@ function FactsSHandler($attrs) {
 		$oldrecord->diffMerge($record);
 		$facts = $oldrecord->getFacts();
 		foreach ($facts as $fact) {
-			if (strpos($fact->getGedcomRecord(), "WT_NEW")!==false) {
+			if ($fact->getIsNew()) {
 				$repeats[]=$fact->getGedcomRecord();
 			}
 		}

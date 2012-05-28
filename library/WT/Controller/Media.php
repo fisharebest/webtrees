@@ -209,7 +209,7 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 					}
 				}
 				if (!$found) {
-					$facts[$i]->gedcomRecord.="\nWT_OLD\n";
+					$facts[$i]->setIsOld();
 				}
 			}
 			foreach ($newfacts as $indexval => $newfact) {
@@ -221,7 +221,7 @@ class WT_Controller_Media extends WT_Controller_GedcomRecord {
 					}
 				}
 				if (!$found) {
-					$newfact->gedcomRecord.="\nWT_NEW\n";
+					$newfact->setIsNew();
 					$facts[]=$newfact;
 				}
 			}

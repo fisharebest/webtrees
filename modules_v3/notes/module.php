@@ -2,7 +2,7 @@
 // Classes and libraries for module system
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2010 John Finlay
@@ -65,21 +65,21 @@ class notes_WT_Module extends WT_Module implements WT_Module_Tab {
 		foreach ($globalfacts as $key => $event) {
 			$fact = $event->getTag();
 			if ($fact=='NAME') {
-				print_main_notes($event->getGedcomRecord(), 2, $controller->record->getXref(), $event->getLineNumber(), true);
+				print_main_notes($event, 2, $controller->record->getXref(), true);
 			}
 		}
 		$otherfacts = $controller->getOtherFacts();
 		foreach ($otherfacts as $key => $event) {
 			$fact = $event->getTag();
 			if ($fact=='NOTE') {
-				print_main_notes($event->getGedcomRecord(), 1, $controller->record->getXref(), $event->getLineNumber());
+				print_main_notes($event, 1, $controller->record->getXref());
 			}
 		}
 		// 2nd to 5th level notes/sources
 		$controller->record->add_family_facts(false);
 		foreach ($controller->getIndiFacts() as $key => $factrec) {
 			for ($i=2; $i<6; $i++) {
-				print_main_notes($factrec->getGedcomRecord(), $i, $controller->record->getXref(), $factrec->getLineNumber(), true);
+				print_main_notes($factrec, $i, $controller->record->getXref(), true);
 			}
 		}
 		if ($this->get_note_count()==0) {

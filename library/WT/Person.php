@@ -1434,7 +1434,7 @@ class WT_Person extends WT_GedcomRecord {
 			}
 			//-- fact was deleted?
 			if (!$found) {
-				$this->indifacts[$i]->gedcomRecord.="\nWT_OLD\n";
+				$this->indifacts[$i]->setIsOld();
 			}
 		}
 		//-- check for any new facts being added
@@ -1449,7 +1449,7 @@ class WT_Person extends WT_GedcomRecord {
 				}
 			}
 			if (!$found) {
-				$newfact->gedcomRecord.="\nWT_NEW\n";
+				$newfact->setIsNew();
 				$this->indifacts[]=$newfact;
 			}
 		}
@@ -1464,7 +1464,7 @@ class WT_Person extends WT_GedcomRecord {
 				}
 			}
 			if (!$found) {
-				$this->otherfacts[$i]->gedcomRecord.="\nWT_OLD\n";
+				$this->otherfacts[$i]->setIsOld();
 			}
 		}
 		foreach ($diff->otherfacts as $indexval => $newfact) {
@@ -1476,7 +1476,7 @@ class WT_Person extends WT_GedcomRecord {
 				}
 			}
 			if (!$found) {
-				$newfact->gedcomRecord.="\nWT_NEW\n";
+				$newfact->setIsNew();
 				$this->otherfacts[]=$newfact;
 			}
 		}
@@ -1492,7 +1492,7 @@ class WT_Person extends WT_GedcomRecord {
 				}
 			}
 			if (!$found) {
-				$this->globalfacts[$i]->gedcomRecord.="\nWT_OLD\n";
+				$this->globalfacts[$i]->setIsOld();
 			}
 		}
 		foreach ($diff->globalfacts as $indexval => $newfact) {
@@ -1504,7 +1504,7 @@ class WT_Person extends WT_GedcomRecord {
 				}
 			}
 			if (!$found) {
-				$newfact->gedcomRecord.="\nWT_NEW\n";
+				$newfact->setIsNew();
 				$this->globalfacts[]=$newfact;
 			}
 		}

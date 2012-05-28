@@ -54,6 +54,10 @@ class WT_Event {
 	//-- temporary state variable that can be used by other scripts
 	var $temp = NULL;
 
+	// Is this an old/new pending record?
+	private $is_old = false;
+	private $is_new = false;
+
 	/**
 	 * Get the value for the first given GEDCOM tag
 	 *
@@ -245,6 +249,21 @@ class WT_Event {
 				return WT_Gedcom_Tag::getLabel($this->tag, $this->parentObject);
 			}
 		}
+	}
+
+	public function setIsOld() {
+		$this->is_old=true;
+		$this->is_new=false;
+	}
+	public function getIsOld() {
+		return $this->is_old;
+	}
+	public function setIsNew() {
+		$this->is_new=true;
+		$this->is_old=false;
+	}
+	public function getIsNew() {
+		return $this->is_new;
 	}
 
 	/**

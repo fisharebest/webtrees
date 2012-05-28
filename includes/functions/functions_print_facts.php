@@ -105,8 +105,8 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	}
 
 	$styleadd="";
-	if (strpos($fact->getGedcomRecord(), "WT_NEW")!==false) $styleadd="change_new";
-	if (strpos($fact->getGedcomRecord(), "WT_OLD")!==false) $styleadd="change_old";
+	if ($fact->getIsNew()) $styleadd="change_new";
+	if ($fact->getIsOld()) $styleadd="change_old";
 
 	if ($fact->getLineNumber()<1) $styleadd='rela'; // not editable
 	if ($fact->getLineNumber()==-1) $styleadd='histo'; // historical facts
@@ -755,17 +755,19 @@ function print_address_structure($factrec, $level) {
 	if ($resultText!='<table></table>') echo $resultText;
 }
 
-function print_main_sources($factrec, $level, $pid, $linenum, $noedit=false) {
+function print_main_sources($fact, $level, $pid, $noedit=false) {
 	global $SHOW_FACT_ICONS;
 
+	$factrec=$fact->getGedcomRecord();
+	$linenum=$fact->getLineNumber();
 	if (!canDisplayFact($pid, WT_GED_ID, $factrec)) {
 		return;
 	}
 
 	$nlevel = $level+1;
 	$styleadd='';
-	if (strpos($factrec, 'WT_NEW')!==false) $styleadd='change_new';
-	if (strpos($factrec, 'WT_OLD')!==false) $styleadd='change_old';
+	if ($fact->getIsNew()) $styleadd='change_new';
+	if ($fact->getIsOld()) $styleadd='change_old';
 	// -- find source for each fact
 	$ct = preg_match_all("/$level SOUR @(.*)@/", $factrec, $match, PREG_SET_ORDER);
 	$spos2 = 0;
@@ -972,13 +974,15 @@ function getSourceStructure($srec) {
  * @param int $linenum The line number in the level 0 record where this record was found.  This is used for online editing.
  * @param boolean $noedit Whether or not to allow this fact to be edited
  */
-function print_main_notes($factrec, $level, $pid, $linenum, $noedit=false) {
+function print_main_notes($fact, $level, $pid, $noedit=false) {
 	global $GEDCOM, $SHOW_FACT_ICONS, $TEXT_DIRECTION;
 
+	$factrec=$fact->getGedcomRecord();
+	$linenum=$fact->getLineNumber();
 	$ged_id=get_id_from_gedcom($GEDCOM);
 	$styleadd="";
-	if (strpos($factrec, 'WT_NEW')!==false) $styleadd='change_new';
-	if (strpos($factrec, 'WT_OLD')!==false) $styleadd='change_old';
+	if ($fact->getIsNew()) $styleadd='change_new';
+	if ($fact->getIsOld()) $styleadd='change_old';
 	$nlevel = $level+1;
 	$ct = preg_match_all("/$level NOTE(.*)/", $factrec, $match, PREG_SET_ORDER);
 	for ($j=0; $j<$ct; $j++) {
