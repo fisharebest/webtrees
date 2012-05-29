@@ -755,7 +755,7 @@ function print_address_structure($factrec, $level) {
 	if ($resultText!='<table></table>') echo $resultText;
 }
 
-function print_main_sources($fact, $level, $pid, $noedit=false) {
+function print_main_sources(WT_Event $fact, $level, $pid, $noedit=false) {
 	global $SHOW_FACT_ICONS;
 
 	$factrec=$fact->getGedcomRecord();
@@ -974,7 +974,7 @@ function getSourceStructure($srec) {
  * @param int $linenum The line number in the level 0 record where this record was found.  This is used for online editing.
  * @param boolean $noedit Whether or not to allow this fact to be edited
  */
-function print_main_notes($fact, $level, $pid, $noedit=false) {
+function print_main_notes(WT_Event $fact, $level, $pid, $noedit=false) {
 	global $GEDCOM, $SHOW_FACT_ICONS, $TEXT_DIRECTION;
 
 	$factrec=$fact->getGedcomRecord();

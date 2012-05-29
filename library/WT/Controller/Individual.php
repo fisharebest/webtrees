@@ -189,7 +189,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* @see individual.php
 	* @param Event $event the event object
 	*/
-	function print_name_record($event) {
+	function print_name_record(WT_Event $event) {
 
 		if (!$event->canShow()) {
 			return false;
@@ -271,7 +271,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 	* @see individual.php
 	* @param Event $event the Event object
 	*/
-	function print_sex_record($event) {
+	function print_sex_record(WT_Event $event) {
 		global $sex;
 
 		if (!$event->canShow()) return false;

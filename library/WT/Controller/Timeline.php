@@ -160,7 +160,7 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 		}
 	}
 
-	function print_time_fact($event) {
+	function print_time_fact(WT_Event $event) {
 		global $basexoffset, $baseyoffset, $factcount, $TEXT_DIRECTION, $WT_IMAGES, $SHOW_PEDIGREE_PLACES, $placements, $familyfacts;
 
 		/* @var $event Event */
