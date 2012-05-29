@@ -56,10 +56,10 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	// Some facts don't get printed here ...
 	switch ($fact->getTag()) {
 	case 'NOTE':
-		print_main_notes($fact->getGedcomRecord(), 1, $pid, $fact->getLineNumber(), !$fact->canEdit());
+		print_main_notes($fact, 1, $pid, !$fact->canEdit());
 		return;
 	case 'SOUR':
-		print_main_sources($fact->getGedcomRecord(), 1, $pid, $fact->getLineNumber(), !$fact->canEdit());
+		print_main_sources($fact, 1, $pid, !$fact->canEdit());
 		return;
 	case 'OBJE':
 		// These are printed separately, after all other facts
@@ -994,7 +994,7 @@ function print_main_notes(WT_Event $fact, $level, $pid, $noedit=false) {
 			if (empty($styleadd) && find_updated_record($nid, WT_GED_ID)!==null) {
 				$styleadd = 'change_old';
 				$newfactrec = $factrec.="\nWT_NEW";
-				print_main_notes($factrec, $level, $pid, $linenum, $noedit);
+				print_main_notes($fact, $level, $pid, $noedit);
 			}
 		}
 		if ($level>=2) echo '<tr class="row_note2">';
