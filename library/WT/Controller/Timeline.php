@@ -42,8 +42,9 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 	var $people = array();
 	var $pidlinks = "";
 	var $scale = 2;
+
 	// GEDCOM elements that may have DATE data, but should not be displayed
-	var $nonfacts = array("BAPL","ENDL","SLGC","SLGS","_TODO","CHAN");
+	private $nonfacts = array('BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', 'CHAN');
 
 	function __construct() {
 		parent::__construct();

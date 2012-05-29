@@ -2327,20 +2327,19 @@ function FactsSHandler($attrs) {
 
 	if (empty($attrs['diff']) && !empty($id)) {
 		$record = WT_GedcomRecord::getInstance($id);
-		$facts = $record->getFacts(explode(",", $tag));
+		$facts = $record->getFacts();
 		if (!is_array($facts)) {
 			$facts = array($facts);
 		}
 		sort_facts($facts);
 		$repeats = array();
+		$nonfacts=explode(',', $tag);
 		foreach ($facts as $event) {
-			if (strpos($tag.",", $event->getTag())===false) {
+			if (!in_array($event->getTag(), $nonfacts)) {
 				$repeats[]=$event->getGedComRecord();
 			}
 		}
 	} else {
-		global $nonfacts;
-		$nonfacts = preg_split("/[\s,;:]/", $tag);
 		$record = new WT_GedcomRecord($gedrec);
 		switch ($record->getType()) {
 			case "INDI":
@@ -2363,7 +2362,7 @@ function FactsSHandler($attrs) {
 		$oldrecord->diffMerge($record);
 		$facts = $oldrecord->getFacts();
 		foreach ($facts as $fact) {
-			if ($fact->getIsNew()) {
+			if ($fact->getIsNew() && $fact->getTag()<>'CHAN') {
 				$repeats[]=$fact->getGedcomRecord();
 			}
 		}

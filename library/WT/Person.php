@@ -874,8 +874,8 @@ class WT_Person extends WT_GedcomRecord {
 	* get indi facts
 	* @return array
 	*/
-	function getIndiFacts($nfacts=NULL) {
-		$this->parseFacts($nfacts);
+	function getIndiFacts() {
+		$this->parseFacts();
 		return $this->indifacts;
 	}
 
@@ -976,10 +976,8 @@ class WT_Person extends WT_GedcomRecord {
 	/**
 	* Parse the facts from the individual record
 	*/
-	function parseFacts($nfacts=NULL) {
-		global $nonfacts;
+	function parseFacts() {
 		parent::parseFacts();
-		if ($nfacts!=NULL) $nonfacts = $nfacts;
 		//-- only run this function once
 		if ($this->facts_parsed) return;
 		//-- don't run this function if privacy does not allow viewing of details
@@ -991,25 +989,21 @@ class WT_Person extends WT_GedcomRecord {
 		//-- sort the fact info into different categories for people
 		foreach ($this->facts as $f=>$event) {
 			$fact = $event->getTag();
-			// -- handle special name fact case
 			if ($fact=='NAME') {
+				// -- handle special name fact case
 				$this->globalfacts[] = $event;
-			}
-			// -- handle special source fact case
-			else if ($fact=='SOUR') {
+			} elseif ($fact=='SOUR') {
+				// -- handle special source fact case
 				$this->otherfacts[] = $event;
-			}
-			// -- handle special note fact case
-			else if ($fact=='NOTE') {
+			} elseif ($fact=='NOTE') {
+				// -- handle special note fact case
 				$this->otherfacts[] = $event;
-			}
-			// -- handle special sex case
-			else if ($fact=='SEX') {
+			} elseif ($fact=='SEX') {
+				// -- handle special sex case
 				$this->globalfacts[] = $event;
 				$sexfound = true;
-			}
-			else if ($fact=='OBJE') {}
-			else if (!isset($nonfacts) || !in_array($fact, $nonfacts)) {
+			} elseif ($fact=='OBJE') {
+			}	else {
 				$this->indifacts[] = $event;
 			}
 		}

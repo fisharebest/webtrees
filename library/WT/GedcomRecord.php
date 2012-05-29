@@ -809,8 +809,8 @@ class WT_GedcomRecord {
 	* returns an array of all of the facts
 	* @return Array
 	*/
-	public function getFacts($nfacts=NULL) {
-		$this->parseFacts($nfacts);
+	public function getFacts() {
+		$this->parseFacts();
 		return $this->facts;
 	}
 
@@ -829,7 +829,7 @@ class WT_GedcomRecord {
 	/**
 	* Parse the facts from the record
 	*/
-	public function parseFacts($nfacts=NULL) {
+	public function parseFacts() {
 		//-- only run this function once
 		if (!is_null($this->facts) && is_array($this->facts)) {
 			return;
@@ -856,11 +856,7 @@ class WT_GedcomRecord {
 			}
 			if ($i==$lct||$line{0}==1) {
 				if ($i>1) {
-					$event = new WT_Event($factrec, $this, $linenum);
-					$fact = $event->getTag();
-					if ($nfacts==NULL || !in_array($fact, $nfacts)) {
-						$this->facts[] = $event;
-					}
+					$this->facts[] = new WT_Event($factrec, $this, $linenum);
 				}
 				$factrec = $line;
 				$linenum = $i;

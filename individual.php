@@ -33,10 +33,6 @@ $controller=new WT_Controller_Individual();
 $controller->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.cookie.js');// This page uses jquery.cookie.js to record the sidebar state
 $controller->addInlineJavaScript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
 	
-// -- array of GEDCOM elements that will be found but should not be displayed
-$nonfacts = array('FAMS', 'FAMC', 'MAY', 'BLOB', 'CHIL', 'HUSB', 'WIFE', 'RFN', '_WT_OBJE_SORT', '');
-$nonfamfacts = array(/*'NCHI',*/ 'UID', '');
-
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	if (safe_GET('action')=='ajax') {
 		$controller->ajaxRequest();

@@ -67,6 +67,8 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 	var $startDate;
 	var $currentsex;
 
+	private $nonfacts=array('FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'BIRT', 'DEAT', 'BURI');
+
 	function __construct() {
 		global $GEDCOM_ID_PREFIX;
 
@@ -394,7 +396,13 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 				//$event[][]  = {"Cell 1 will hold events"}{"cell2 will hold time between that and the next value"};
 				//$value->add_historical_facts();
 				$value->add_family_facts(false);
-				$unparsedEvents = $value->getIndiFacts();
+				$unparsedEvents = array();
+
+				foreach ($value->getIndiFacts() as $fact) {
+					if (!in_array($fact->getTag(), $this->nonfacts)) {
+						$unparsedEvents[]=$fact;
+					}
+				}
 				sort_facts($unparsedEvents);
 
 				$eventinformation = Array();

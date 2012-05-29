@@ -28,19 +28,6 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-// -- array of GEDCOM elements that will be found but should not be displayed
-$nonfacts[] = "FAMS";
-$nonfacts[] = "FAMC";
-$nonfacts[] = "MAY";
-$nonfacts[] = "BLOB";
-$nonfacts[] = "CHIL";
-$nonfacts[] = "HUSB";
-$nonfacts[] = "WIFE";
-$nonfacts[] = "RFN";
-$nonfacts[] = "";
-$nonfamfacts[] = "UID";
-$nonfamfacts[] = "";
-
 class WT_Controller_Hourglass extends WT_Controller_Chart {
 	var $pid = "";
 
