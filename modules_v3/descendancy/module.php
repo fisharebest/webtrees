@@ -209,7 +209,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function loadSpouses($pid, $generations=0) {
 		$out = '';
 		$person = WT_Person::getInstance($pid);
-		if ($person->canDisplayDetails()) {
+		if ($person && $person->canDisplayDetails()) {
 			foreach($person->getSpouseFamilies() as $family) {
 				$spouse = $family->getSpouse($person);
 				if ($spouse) {
