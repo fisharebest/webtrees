@@ -226,36 +226,45 @@ class WT_DB {
 			$current_version=0;
 		}
 
-		//
+		// The update scripts can set these to indicate that we need to run a
+		// "post update" script.  It saves from having to store/maintain lots
+		// of separate versions at each schema version.
+		$need_to_delete_old_files=false;
 		$need_to_update_config_data=false;
 		$need_to_update_stored_procedures=false;
 		
-		// -1 is set during installation to indicate that the DB schema is up-to-date,
-		// but that we still need to update config data and stored procedures.
-		if ($current_version==-1) {
-			$need_config_data=true;
-			//$need_stored_procedures=true;
+		// During installation, the current version is set to a special value of
+		// -1 (v1.2.5 to v1.2.7) or -2 (v1.3.0 onwards).  This indicates that the tables have
+		// been created, but that we still need to install/update configuration data
+		// and/or stored procedures.
+		switch ($current_version) {
+		case -1:
+			// Due to a bug in webtrees 1.2.5 - 1.2.7, the setup value of "-1"
+			// wasn't being updated.
+			$current_version=12;
+			set_site_setting($schema_name, $current_version);
+			break;
+		case -2:
+			// Because of the above bug, we now set the version to -2 during setup.
 			$current_version=$target_version;
+			set_site_setting($schema_name, $current_version);
+			break;
 		}
 
-		// 
-
-		if ($current_version<$target_version) {
-			while ($current_version<$target_version) {
-				$next_version=$current_version+1;
-				require $schema_dir.'db_schema_'.$current_version.'_'.$next_version.'.php';
-				// The updatescript should update the version or throw an exception
-				$current_version=(int)get_site_setting($schema_name);
-				if ($current_version!=$next_version) {
-					die("Internal error while updating {$schema_name} to {$next_version}");
-				}
-			}
-			// After an update, there may well be old files to delete.
-			if (file_exists($schema_dir.'delete_old_files.php')) {
-				require $schema_dir.'delete_old_files.php';
+		// Update the schema, one version at a time.
+		while ($current_version<$target_version) {
+			$next_version=$current_version+1;
+			require $schema_dir.'db_schema_'.$current_version.'_'.$next_version.'.php';
+			// The updatescript should update the version or throw an exception
+			$current_version=(int)get_site_setting($schema_name);
+			if ($current_version!=$next_version) {
+				die("Internal error while updating {$schema_name} to {$next_version}");
 			}
 		}
 
+		if ($need_to_delete_old_files) {
+			require $schema_dir.'delete_old_files.php';
+		}
 		if ($need_to_update_config_data) {
 			require $schema_dir.'config_data.php';
 		}

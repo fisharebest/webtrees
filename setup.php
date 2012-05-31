@@ -1017,7 +1017,7 @@ try {
 
 	WT_DB::prepare(
 		"INSERT IGNORE INTO `##site_setting` (setting_name, setting_value) VALUES ".
-		"('WT_SCHEMA_VERSION',               '-1'),".
+		"('WT_SCHEMA_VERSION',               '-2'),".
 		"('INDEX_DIRECTORY',                 'data/'),".
 		"('STORE_MESSAGES',                  '1'),".
 		"('USE_REGISTRATION_MODULE',         '1'),".
