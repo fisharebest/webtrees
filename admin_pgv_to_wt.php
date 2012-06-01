@@ -161,8 +161,8 @@ WT_DB::exec("START TRANSACTION");
 // Delete the existing user accounts, and any information associated with it
 WT_DB::exec("UPDATE `##log` SET user_id=NULL");
 WT_DB::exec("DELETE FROM `##change`");
-WT_DB::exec("DELETE FROM `##block_setting`");
-WT_DB::exec("DELETE FROM `##block`");
+WT_DB::exec("DELETE `##block_setting` FROM `##block_setting` JOIN  `##block` USING (block_id) WHERE user_id>0 OR gedcom_id>0");
+WT_DB::exec("DELETE FROM `##block`               WHERE user_id>0 OR gedcom_id>0");
 WT_DB::exec("DELETE FROM `##message`");
 WT_DB::exec("DELETE FROM `##user_gedcom_setting` WHERE user_id>0");
 WT_DB::exec("DELETE FROM `##user_setting`        WHERE user_id>0");
