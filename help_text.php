@@ -903,11 +903,6 @@ case 'SERVER_URL':
 	$text=WT_I18N::translate('If your site can be reached using more than one URL, such as <b>http://www.example.com/webtrees/</b> and <b>http://webtrees.example.com/</b>, you can specify the preferred URL.  Requests for the other URLs will be redirected to the preferred one.');
 	break;
 
-case 'SHOW_AGE_DIFF':
-	$title=WT_I18N::translate('Show date differences');
-	$text=WT_I18N::translate('This option controls whether or not the Families tab should show differences between birth dates of spouses, between marriage date and birth date of first child, and between birth dates of children.');
-	break;
-
 case 'SHOW_COUNTER':
 	$title=WT_I18N::translate('Hit counters');
 	$text=WT_I18N::translate('Show hit counters on Portal and Individual pages.');
@@ -1201,11 +1196,6 @@ case 'add_source':
 case 'add_wife':
 	$title=WT_I18N::translate('Add a new wife');
 	$text=WT_I18N::translate('By clicking this link, you can add a <u>new</u> female person and link this person to the principal individual as a new wife.<br /><br />Just click the link, and you will get a pop up window to add the new person.  Fill out as many boxes as you can and click the <b>Save</b> button.<br /><br />That\'s all.');
-	break;
-
-case 'age_differences':
-	$title=WT_I18N::translate('Show date differences');
-	$text=WT_I18N::translate('When this option box is checked, the «Families» tab will show date differences as follows:<br /><ul><li>birth dates of partners.<br />A negative value indicates that the second partner is older than the first.<br /><br /></li><li>marriage date and birth date of the first child.<br />A negative value here indicates that the child was born before the marriage date or that either the birth date or the marriage date is wrong.<br /><br /></li><li>birth dates of siblings.<br />A negative value here indicates that either the order of the children is wrong or that one of the birth dates is wrong.</li></ul>');
 	break;
 
 case 'annivers_year_select':

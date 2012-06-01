@@ -128,11 +128,8 @@ $RECORD_LINKS=array(
 $errors=false;
 
 echo '<fieldset><legend>Key</legend>';
-echo '<p class="ui-state-error">These errors may cause problems for webtrees.</p>';
-echo '<p class="ui-state-highlight">These warnings may cause problems for other applications.</p>';
-if (get_gedcom_setting(WT_GED_ID, 'HIDE_GEDCOM_ERRORS')) {
-	echo '<p>You may wish to enable the display of GEDCOM errors in the family tree preferences.</p>';
-}
+echo '<p class="ui-state-error">', WT_I18N::translate('These issues may cause problems for webtrees.'), '</p>';
+echo '<p class="ui-state-highlight">', WT_I18N::translate('These issues may cause problems for other applications.'), '</p>';
 echo '</fieldset>';
 
 // Generate lists of all links
@@ -153,9 +150,9 @@ foreach ($all_links as $xref1=>$links) {
 		$type3=@$records[$xref2]->type;
 		if (!array_key_exists($xref2, $all_links)) {
 			if (array_key_exists(strtoupper($xref2), $upper_links)) {
-				echo error('The record '.make_link($xref1).' contains a link to a non-existant record, <b>'.$type2.':'.$xref2.'</b>.  Did you mean the record '.make_link(strtoupper($xref2)).'?');
+				echo error('The record '.make_link($xref1).' contains a link to a non-existent record, <b>'.$type2.':'.$xref2.'</b>.  Did you mean the record '.make_link(strtoupper($xref2)).'?');
 			} else {
-				echo error('The record '.make_link($xref1).' contains a link to a non-existant record, <b>'.$type2.':'.$xref2.'</b>.');
+				echo error('The record '.make_link($xref1).' contains a link to a non-existent record, <b>'.$type2.':'.$xref2.'</b>.');
 			}
 		} elseif ($type2=='SOUR' && $type1=='NOTE') {
 			//echo warning('The note '.make_link($xref1).' contains a linked source, '.make_link($xref2).'. Notes are intended to add explanations and comments to other records.  They would not normally have their own sources.');
@@ -213,5 +210,5 @@ function warning($message) {
 }
 
 if (!$errors) {
-	echo '<p>No errors were found.</p>';
+	echo '<p>', WT_I18N::translate('No errors were found.'), '</p>';
 }

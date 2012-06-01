@@ -30,6 +30,13 @@ $controller
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 
+$statuses=array(
+	''        =>'',
+	'accepted'=>/* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('accepted'),
+	'rejected'=>/* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('rejected'),
+	'pending' =>/* I18N: the status of an edit accepted/rejected/pending */ WT_I18N::translate('pending' ),
+);
+
 $earliest=WT_DB::prepare("SELECT DATE(MIN(change_time)) FROM `##change`")->execute(array())->fetchOne();
 $latest  =WT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execute(array())->fetchOne();
 
@@ -37,10 +44,10 @@ $latest  =WT_DB::prepare("SELECT DATE(MAX(change_time)) FROM `##change`")->execu
 $action=safe_GET('action');
 $from  =safe_GET('from', '\d\d\d\d-\d\d-\d\d', $earliest);
 $to    =safe_GET('to',   '\d\d\d\d-\d\d-\d\d', $latest);
-$type  =safe_GET('type', array('accepted','pending','rejected'));
-$oldged  =safe_GET('oldged');
-$newged  =safe_GET('newged');
-$xref    =safe_GET('xref');
+$type  =safe_GET('type', array_keys($statuses));
+$oldged=safe_GET('oldged');
+$newged=safe_GET('newged');
+$xref  =safe_GET('xref');
 $user  =safe_GET('user');
 if (WT_USER_IS_ADMIN) {
 	// Administrators can see all logs
@@ -238,10 +245,10 @@ echo
 				'</td>',
 			'</tr><tr>',
 				'<td>',
-					WT_I18N::translate('Status'), '<br>', select_edit_control('type', array(''=>'', 'accepted'=>'accepted','pending'=>'pending','rejected'=>'rejected'), null, $type, ''),
+					WT_I18N::translate('Status'), '<br>', select_edit_control('type', $statuses, null, $type, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Record ID'), '<br><input class="log-filter" name="xref" value="', htmlspecialchars($xref), '"> ',
+					WT_I18N::translate('Record'), '<br><input class="log-filter" name="xref" value="', htmlspecialchars($xref), '"> ',
 				'</td>',
 				'<td>',
 					WT_I18N::translate('Old data'), '<br><input class="log-filter" name="oldged" value="', htmlspecialchars($oldged), '"> ',
@@ -273,7 +280,7 @@ if ($action) {
 				'<tr>',
 					'<th>', WT_I18N::translate('Timestamp'), '</th>',
 					'<th>', WT_I18N::translate('Status'), '</th>',
-					'<th>', WT_I18N::translate('Record ID'), '</th>',
+					'<th>', WT_I18N::translate('Record'), '</th>',
 					'<th>', WT_I18N::translate('Old data'), '</th>',
 					'<th>', WT_I18N::translate('New data'), '</th>',
 					'<th>', WT_I18N::translate('User'), '</th>',
