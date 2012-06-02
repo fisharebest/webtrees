@@ -104,7 +104,7 @@ table#tvTreeBorder td, #tv_tree {
   height: 100%; /* required */
 }
 #tv_tree table.tv_tree td.tv_vline_h {
-  background-image: url(vline.jpg); /* customizable : image color must be the same color than div.tv_vline and div.tv_hline */
+  background-image: url(vline.gif); /* customizable : image color must be the same color than div.tv_vline and div.tv_hline */
 }
 #tv_tree table.tv_tree td.tv_vline_t {
   vertical-align: bottom;
