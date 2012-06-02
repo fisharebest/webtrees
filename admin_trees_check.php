@@ -109,27 +109,29 @@ $XREF_LINKS=array(
 	'CHIL'=>'INDI',
 	'ASSO'=>'INDI',
 	'ALIA'=>'INDI',
+	'AUTH'=>'INDI', // A webtrees extension
 	'ANCI'=>'SUBM',
 	'DESI'=>'SUBM',
 	'_WT_OBJE_SORT'=>'OBJE'
 );
 
 $RECORD_LINKS=array(
-	'INDI'=>array('FAMC', 'FAMS', 'OBJE', 'NOTE', 'SOUR', 'ASSO', '_WT_OBJE_SORT'),
-	'FAM' =>array('HUSB','WIFE',  'CHIL', 'OBJE', 'NOTE', 'SOUR', 'ASSO'),
-	'SOUR'=>array('NOTE', 'OBJE', 'REPO'),
-	'NOTE'=>array(), // The spec also allows SOUR, but we treat this as a warning
+	'INDI'=>array('NOTE', 'OBJE', 'SOUR', 'ASSO', 'FAMC', 'FAMS', 'ALIA', '_WT_OBJE_SORT'),
+	'FAM' =>array('NOTE', 'OBJE', 'SOUR', 'ASSO', 'HUSB', 'WIFE', 'CHIL'),
+	'SOUR'=>array('NOTE', 'OBJE', 'REPO', 'AUTH'),
 	'REPO'=>array('NOTE'),
 	'OBJE'=>array('NOTE'), // The spec also allows SOUR, but we treat this as a warning
+	'NOTE'=>array(), // The spec also allows SOUR, but we treat this as a warning
 	'SUBM'=>array(),
 	'SUBN'=>array(),
 );
 
 $errors=false;
 
-echo '<fieldset><legend>Key</legend>';
-echo '<p class="ui-state-error">', WT_I18N::translate('These issues may cause problems for webtrees.'), '</p>';
-echo '<p class="ui-state-highlight">', WT_I18N::translate('These issues may cause problems for other applications.'), '</p>';
+echo '<fieldset><legend>', WT_I18N::translate('Types of error'), '</legend>';
+echo '<p class="ui-state-error">',     WT_I18N::translate('This may cause a problem for webtrees.'),           '</p>';
+echo '<p class="ui-state-highlight">', WT_I18N::translate('This may cause a problem for other applications.'), '</p>';
+echo '<p class="warning-bad-data">',   WT_I18N::translate('This may be a mistake in your data.'),              '</p>';
 echo '</fieldset>';
 
 // Generate lists of all links
@@ -150,54 +152,66 @@ foreach ($all_links as $xref1=>$links) {
 		$type3=@$records[$xref2]->type;
 		if (!array_key_exists($xref2, $all_links)) {
 			if (array_key_exists(strtoupper($xref2), $upper_links)) {
-				echo error('The record '.make_link($xref1).' contains a link to a non-existent record, <b>'.$type2.':'.$xref2.'</b>.  Did you mean the record '.make_link(strtoupper($xref2)).'?');
+				echo warning(
+					link_message($type1, $xref1, $type2, $xref2).' '.
+					/* I18N: placeholders are GEDCOM IDs, such as R123 */ WT_I18N::translate('%1$s does not exist.  Did you mean %2$s?', format_link($xref2), format_link($upper_links[strtoupper($xref2)]))
+				);
 			} else {
-				echo error('The record '.make_link($xref1).' contains a link to a non-existent record, <b>'.$type2.':'.$xref2.'</b>.');
+				echo error(
+					link_message(
+						$type1, $xref1, $type2, $xref2).' '.
+						/* I18N: placeholders are GEDCOM IDs, such as R123 */ WT_I18N::translate('%1$s does not exist.', format_link($xref2))
+				);
 			}
 		} elseif ($type2=='SOUR' && $type1=='NOTE') {
-			//echo warning('The note '.make_link($xref1).' contains a linked source, '.make_link($xref2).'. Notes are intended to add explanations and comments to other records.  They would not normally have their own sources.');
+			//echo warning(WT_I18N::translate('The note %1$s has a source %2$s. Notes are intended to add explanations and comments to other records.  They should not have their own sources.'), format_link($xref1), format_link($xref2));
 		} elseif ($type2=='SOUR' && $type1=='OBJE') {
-			//echo warning('The media object '.make_link($xref1).' contains a linked source, '.make_link($xref2).'. Media objects are intended to illustrate other records, facts, and source/citations.  They would not normally have their own sources.');
-		} elseif ($type2=='AUTH' && $type1=='SOUR') {
-			echo warning('The source '.make_link($xref1).' uses the AUTH tag as a link, instead of an author’s name.');
-		} elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1])) {
-			echo error('The record '.make_link($xref1).' has an invalid link: <b>'.$type2.':'.$xref2.'</b>.');
-		} elseif (!array_key_exists($type2, $XREF_LINKS)) {
-			echo error('The record '.make_link($xref1).' contains a '.$type2.' link to '.make_link($xref2).', but '.$type2.' is not a valid link.');
+			//echo warning(WT_I18N::translate('The media object %1$s has a source %2$s. Media objects are intended to illustrate other records, facts, and source/citations.  They should not have their own sources.', format_link($xref1), format_link($xref2)));
+		} elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
+			echo error(
+				link_message($type1, $xref1, $type2, $xref2).' '.
+				/* I18N: placeholders are internal ID numbers such as "R123" */ WT_I18N::translate('This type of link is not allowed here.')
+			);
 		} elseif ($XREF_LINKS[$type2]!=$type3) {
 			// Target XREF does exist - but is invalid
-			echo error('The record '.make_link($xref1).' contains a '.$type2.' link to '.make_link($xref2).', but this record is a '.$type3.'.');
-		} else {
-			switch ($type2) {
-			case 'FAMC':
-				if (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='CHIL') {
-					echo error('The individual '.make_link($xref1).' links to '.make_link($xref2).' as a child, but this family does not link back to the child.');
-				}
-				break;
-			case 'FAMS':
-				if (!array_key_exists($xref1, $all_links[$xref2]) || ($all_links[$xref2][$xref1]!='HUSB' && $all_links[$xref2][$xref1]!='WIFE')) {
-					echo error('The individual '.make_link($xref1).' links to '.make_link($xref2).' as a spouse, but this family does not link back to the spouse.');
-				}
-				break;
-			case 'HUSB':
-			case 'WIFE':
-				if (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='FAMS') {
-					echo error('The family '.make_link($xref1).' contains '.make_link($xref2).' as a spouse, but this individual does not link back to the family.');
-				}
-				break;
-			case 'CHIL':
-				if (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='FAMC') {
-					echo error('The family '.make_link($xref1).' contains '.make_link($xref2).' as a child, but this individual does not link back to the family.');
-				}
-				break;
-			}
+			echo error(
+				link_message($type1, $xref1, $type2, $xref2).' '.
+				/* I18N: %1$s is an internal ID numbers such as "R123".  %2$s and %3$s are record types, such as INDI or SOUR */ WT_I18N::translate('%1$s is a %2$s but a %3$s is expected.', format_link($xref2), format_type($type3), format_type($type2))
+			);
+		} elseif (
+			$type2=='FAMC' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='CHIL') ||
+			$type2=='FAMS' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='HUSB' && $all_links[$xref2][$xref1]!='WIFE') ||
+			$type2=='CHIL' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='FAMC') ||
+			$type2=='HUSB' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='FAMS') ||
+			$type2=='WIFE' && (!array_key_exists($xref1, $all_links[$xref2]) || $all_links[$xref2][$xref1]!='FAMS')
+		) {
+			echo error(
+			link_message($type1, $xref1, $type2, $xref2).' '.
+				/* I18N: %1$s and %2$s are internal ID numbers such as "R123" */ WT_I18N::translate('%1$s does not have a link back to %2$s.', format_link($xref2), format_link($xref1))
+			);
 		}
 	}
 }
 
-function make_link($xref) {
+function link_message($type1, $xref1, $type2, $xref2) {
+	return
+		/* I18N: The placeholders are GEDCOM identifiers and tags.  e.g. "INDI I123 contains a FAMC link to F234 */ WT_I18N::translate(
+			'%1$s %2$s has a %3$s link to %4$s.',
+			format_type($type1),
+			format_link($xref1),
+			format_type($type2),
+			format_link($xref2)
+		);
+}
+
+function format_link($xref) {
 	return '<b><a href="gedrecord.php?pid='.$xref.'">'.$xref.'</a></b>';
 }
+
+function format_type($type) {
+	return '<b title="'.strip_tags(WT_Gedcom_Tag::getLabel($type)).'">'.$type.'</b>';
+}
+
 function error($message) {
 	global $errors;
 	$errors=true;
