@@ -170,7 +170,7 @@ foreach ($all_links as $xref1=>$links) {
 		} elseif (!array_key_exists($type1, $RECORD_LINKS) || !in_array($type2, $RECORD_LINKS[$type1]) || !array_key_exists($type2, $XREF_LINKS)) {
 			echo error(
 				link_message($type1, $xref1, $type2, $xref2).' '.
-				/* I18N: placeholders are internal ID numbers such as "R123" */ WT_I18N::translate('This type of link is not allowed here.')
+				WT_I18N::translate('This type of link is not allowed here.')
 			);
 		} elseif ($XREF_LINKS[$type2]!=$type3) {
 			// Target XREF does exist - but is invalid
