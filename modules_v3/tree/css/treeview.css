@@ -297,7 +297,7 @@ table#tvTreeBorder td, #tv_tree {
 }
 
 #tvToolsHandler {
-	float: left;
+  float: left;
   cursor: move;
   height: 22px;
   width: 2px;
@@ -321,5 +321,7 @@ table#tvTreeBorder td, #tv_tree {
 	padding-right: 4px;
 }
 
-.tvM { background-color: #DDF !important;}
-.tvF { background-color: #FDD !important;}
+.tvM {background-color:#DDF !important;}
+.tvF {background-color:#FDD !important;}
+
+.dashed {border-top:thin dashed #81A9CB !important;}

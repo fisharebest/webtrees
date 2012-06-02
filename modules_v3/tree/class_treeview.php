@@ -272,6 +272,7 @@ class TreeView {
 		$fop = Array(); // $fop is fathers of partners
 		if (!is_null($partner)) {
 			$sfams = $person->getSpouseFamilies();
+			$dashed = '';
 			foreach ($sfams as $famid=>$family) {
 				$p = $family->getSpouse($person);
 				if (!empty($p)) {
@@ -280,10 +281,11 @@ class TreeView {
 						if (!empty($pf)) {
 							$fop[] = Array($pf->getHusband(), $pf);
 						}
-						$r .= $this->drawPersonName($p);
+						$r .= $this->drawPersonName($p, $dashed);
 						if (!$this->allPartners) {
 							break; // we can stop here the foreach loop
 						}
+						$dashed = 'dashed';
 					}
 				}
 			}
@@ -334,8 +336,9 @@ class TreeView {
 	/**
 	* Draw a person name preceded by sex icon, with parents as tooltip
 	* @param WT_Person $p a person
+	* @param $dashed if = 'dashed' print dashed top border to separate multiple spuses
 	*/
-	private function drawPersonName($p) {
+	private function drawPersonName($p, $dashed='') {
 		if ($this->allPartners) {
 			$f = $p->getPrimaryChildFamily();
 			if ($f) {
@@ -357,7 +360,7 @@ class TreeView {
 			$title = '';
 		}
 		$sex = $p->getSex();
-		$r = '<div class="tv'.$sex.'"'.$title.'><a href="'.$p->getHtmlUrl().'"></a>'.$p->getFullName().' <span class="dates">'.$p->getLifeSpan().'</span></div>';
+		$r = '<div class="tv'.$sex.' '.$dashed.'"'.$title.'><a href="'.$p->getHtmlUrl().'"></a>'.$p->getFullName().' <span class="dates">'.$p->getLifeSpan().'</span></div>';
 		return $r;
 	}
 
