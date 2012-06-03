@@ -170,9 +170,9 @@ function fetch_remote_file($host, $path, $timeout=3) {
 // may be different for each.
 function fetch_latest_version() {
 	$last_update_timestamp=get_site_setting('LATEST_WT_VERSION_TIMESTAMP');
-	if ($last_update_timestamp < time()-24*60*60*3) {
+	if ($last_update_timestamp < time()-24*60*60) {
 		$row=WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
-		$params='?w='.WT_VERSION.'&p='.PHP_VERSION.'&m='.$row->value;
+		$params='?w='.WT_VERSION.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
 		$latest_version_txt=fetch_remote_file('svn.webtrees.net', '/build/latest-version.txt'.$params);
 		if ($latest_version_txt) {
 			set_site_setting('LATEST_WT_VERSION', $latest_version_txt);
