@@ -60,7 +60,6 @@ html[dir='rtl'] input {padding-right:3px; padding-left:0;}
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li {float: right;}
 
 /* jEditable styling over-rides */
-.editable {width:100%; display:block}
 .editable:hover {color:red; cursor:pointer;} /* both cursors needed for cross-browser support */
 .editable input, select {padding:0;}
 .editable input {font-size:90%; height:18px !important;}
@@ -159,7 +158,7 @@ html[dir='rtl'] #tree_stats td, html[dir='rtl'] #recent td {padding:0 0 0 10px; 
 /*SITE CONFIG */
 #site table, #mail table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
 .site_config h2 {font-size:125%; font-weight:bold; margin:10px 0 5px;}
-.site_config dl {float:left;margin:0 0 0 20px;line-height:21px;max-width: 600px;}
+.site_config dl {float:left;margin:0 0 0 20px;line-height:25px;max-width: 600px;}
 .site_config dt {clear:left; float:left; min-width:170px; margin:0; padding:5px 5px 5px 0; border-bottom:1px solid #999; font-weight:bold;}
 .site_config dd {border-bottom:1px solid #999; margin-left:370px; min-width:370px; padding:5px;}
 html[dir='rtl'] .site_config dl {float:right;margin:0 20px 0; max-width: 600px;}
