@@ -55,7 +55,7 @@ if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCO
 define ('WT_USE_GOOGLE_API', false);
 if (WT_USE_GOOGLE_API) {
 	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
-	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js');
+	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.19/jquery-ui.min.js');
 } else {
 	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery/jquery.min.js');
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery/jquery-ui.min.js');
