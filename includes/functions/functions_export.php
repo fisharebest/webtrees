@@ -2,12 +2,10 @@
 // Functions for exporting data
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team.  All rights reserved.
-//
-// Modifications Copyright (c) 2010 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -162,7 +160,7 @@ function convert_media_path($rec, $path, $slashes) {
 				$new_file_name=preg_replace('~/+~', '\\', $new_file_name);
 				break;
 			case 'forward':
-				$new_file_name=preg_replace('~\\+~', '/', $new_file_name);
+				$new_file_name=preg_replace('~\\\\+~', '/', $new_file_name);
 				break;
 			}
 			$rec=str_replace("\n1 FILE ".$old_file_name, "\n1 FILE ".$new_file_name, $rec);
