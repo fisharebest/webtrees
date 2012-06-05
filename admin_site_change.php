@@ -214,7 +214,16 @@ $controller
 			"bAutoWidth":false,
 			"aaSorting": [[ 0, "desc" ]],
 			"iDisplayLength": '.get_user_setting(WT_USER_ID, 'admin_site_change_page_size', 10).',
-			"sPaginationType": "full_numbers"
+			"sPaginationType": "full_numbers",
+			"aoColumns": [
+			/* Timestamp   */ {},
+			/* Status      */ {},
+			/* Record      */ {},
+			/* Old data    */ {"sClass":"raw_gedcom"},
+			/* New data    */ {"sClass":"raw_gedcom"},
+			/* User        */ {},
+			/* Family tree */ {}
+			]
 		});
 	');
 

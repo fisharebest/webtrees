@@ -153,7 +153,7 @@ html[dir='rtl'] #tree_stats td, html[dir='rtl'] #recent td {padding:0 0 0 10px; 
 #x h2, #x h3 {padding:0 25px;}
 
 /* SITE ACCESS */
-.ip_address span, .ua_string span {direction:ltr;}
+.ip_address span, .ua_string span, .raw_gedcom {direction:ltr;}
 
 /*SITE CONFIG */
 #site table, #mail table {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; font-size:90%; padding:5px; width:100%;}
