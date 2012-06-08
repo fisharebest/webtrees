@@ -181,7 +181,7 @@ case 'load_json':
 	$aaData=WT_DB::prepare($SELECT1.$WHERE.$ORDER_BY.$LIMIT)->execute($args)->fetchAll(PDO::FETCH_NUM);
 	foreach ($aaData as &$row) {
 		$row[1]=WT_I18N::translate($row[1]);
-		$row[2]='<a href="gedrecord.php?pid='.$row[2].'&ged='.$gedc.'" target="_blank">'.$row[2].'</a>';
+		$row[2]='<a href="gedrecord.php?pid='.$row[2].'&ged='.$row[6].'" target="_blank">'.$row[2].'</a>';
 		$row[3]='<pre>'.htmlspecialchars($row[3]).'</pre>';
 		$row[4]='<pre>'.htmlspecialchars($row[4]).'</pre>';
 	}
