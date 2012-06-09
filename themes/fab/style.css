@@ -436,6 +436,10 @@ right:10px;
 	background-color:#eee;
 }
 
+.ui-autocomplete li  a:hover{
+	background:DarkSlateGray;
+	color:white;
+}
 
 .center {
 	text-align:center;
