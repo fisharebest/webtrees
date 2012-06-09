@@ -154,11 +154,11 @@ class tree_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 	}
 
-	private function css() {
+	public function css() {
 		return WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/css/treeview.css';
 	}
 	
-	private function js() {
+	public function js() {
 		return WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/treeview.js';
 	}
 }

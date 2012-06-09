@@ -72,16 +72,16 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		$PEDIGREE_FULL_DETAILS = $show_full;
 
-		if ($type!='treenav') {
-			$controller=new WT_Controller_Hourglass($pid,0,3);
-			$controller->setupJavascript();
-		}
-
 		$person = WT_Person::getInstance($pid);
 		if (!$person) {
 			$pid = $PEDIGREE_ROOT_ID;
 			set_block_setting($block_id, 'pid', $pid);
 			$person = WT_Person::getInstance($pid);
+		}
+
+		if ($type!='treenav' && $person) {
+			$controller=new WT_Controller_Hourglass($person->getXref(),0,3);
+			$controller->setupJavascript();
 		}
 
 		$id=$this->getName().$block_id;
@@ -141,11 +141,10 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$mod=new tree_WT_Module;
 				$tv=new TreeView;
 				$content .= '<td>';
-				$content .= '<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script><script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>';
+				$content .= '<script src="'.WT_JQUERY_URL.'"></script><script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>';
 
-				$content .= $mod->css;
-				$content .= $mod->headers;
-				$content .= '<script type="text/javascript" src="'.$mod->js.'"></script>';
+				$content .= '<script>$("head").append(\'<link rel="stylesheet" href="'.$mod->css().'" type="text/css" />\');</script>';
+				$content .= '<script src="'.$mod->js().'"></script>';
 		    list($html, $js) = $tv->drawViewport($person->getXref(), 2);
 				$content .= $html.WT_JS_START.$js.WT_JS_END;
 				$content .= '</td>';
