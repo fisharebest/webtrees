@@ -64,7 +64,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			$bwidth = $cbwidth;
 			$bheight = $cbheight;
 		}
-
+		$bhalfheight = $bheight / 2;
 		if ($this->root && $this->root->canDisplayName()) {
 			$this->setPageTitle(
 				/* I18N: %s is a person's name */
@@ -100,10 +100,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				if (count($children)>0) {
 					echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
 					foreach ($children as $i=>$child) {
-						$rowspan = 2;
-						if ($i>0 && $i<count($children)-1) {
-							$rowspan=1;
-						}
+						$rowspan = 1;
 						echo "<tr><td rowspan=\"$rowspan\" width=\"$bwidth\" style=\"padding-top: 2px;\">";
 						if ($count < $this->dgenerations-1) {
 							$kids = $this->print_descendency($child, $count+1);
@@ -118,15 +115,18 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 						if (count($children)==1) {
 							$twidth+=3;
 						}
-						echo "<td rowspan=\"$rowspan\"><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"$twidth\" height=\"3\" alt=\"\"></td>";
+						if ($i==0) {
+							echo "<td rowspan=\"$rowspan\"><img class=\"line1\" src=\"".$WT_IMAGES["hline"]."\" width=\"$twidth\" height=\"3\" alt=\"\"></td>";
+						} else {
+							echo "<td rowspan=\"$rowspan\"><img class=\"line5\" src=\"".$WT_IMAGES["hline"]."\" width=\"$twidth\" height=\"3\" alt=\"\"></td>";
+						}
+						$lh= $bheight / 2;
 						if (count($children)>1) {
 							if ($i==0) {
-								echo "<td height=\"".($bhalfheight+3)."\"><img class=\"lineb\" src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td></tr>";
-								echo "<tr><td height=\"".($bhalfheight+3)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
+								echo "<td valign=\"bottom\"><img class=\"line1\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
 							}
 							else if ($i==count($children)-1) {
-								echo "<td height=\"".($bhalfheight+4)."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td></tr>";
-								echo "<tr><td height=\"".($bhalfheight+4)."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
+								echo "<td valign=\"top\"><img class=\"line1\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
 							}
 							else {
 								echo "<td style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
@@ -178,12 +178,12 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo "<tr>";
 			if ($count<$this->generations-1) {
 				echo "<td height=\"".$hheight."\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
-				echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
+				echo "<td rowspan=\"1\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
 			}
-			echo "<td rowspan=\"2\">";
+			echo "<td rowspan=\"1\">";
 			print_pedigree_person($family->getHusband());
 			echo "</td>";
-			echo "<td rowspan=\"2\">";
+			echo "<td rowspan=\"1\">";
 			$this->print_person_pedigree($family->getHusband(), $count+1);
 			echo "</td>";
 			echo "</tr><tr><td height=\"".$hheight."\"";
@@ -195,10 +195,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo "<td height=\"".$hheight."\" style=\"background: url('".$WT_IMAGES["vline"]."');\"><img src=\"".$WT_IMAGES["spacer"]."\" width=\"3\" alt=\"\"></td>";
 				echo "<td rowspan=\"2\"><img src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
 			}
-			echo "<td rowspan=\"2\">";
+			echo "<td rowspan=\"1\">";
 			print_pedigree_person($family->getWife());
 			echo "</td>";
-			echo "<td rowspan=\"2\">";
+			echo "<td rowspan=\"1\">";
 			$this->print_person_pedigree($family->getWife(), $count+1);
 			echo "</td>";
 			echo "</tr>";
