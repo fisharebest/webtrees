@@ -20,6 +20,10 @@
 //
 // $Id$
 
+// This PHP script *really* ought to include session.php, so it picks up
+// language, access, etc...
+define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false');
+
 header('Content-type: text/html; charset=UTF-8');
 
 ?>
