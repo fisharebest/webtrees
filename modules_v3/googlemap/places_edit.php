@@ -248,7 +248,7 @@ if ($action=='add') {
 	echo '</b><br>';
 }
 
-echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
+echo '<script src="//maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
 include_once 'wt_v3_places_edit.js.php';
 $api='v3';
 

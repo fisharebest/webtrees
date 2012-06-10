@@ -27,7 +27,7 @@ header('Content-type: text/html; charset=UTF-8');
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
 
 <script type="text/javascript">
 

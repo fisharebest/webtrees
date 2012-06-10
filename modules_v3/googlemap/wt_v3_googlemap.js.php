@@ -51,17 +51,17 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 	});
 
 	<?php
-	echo 'gicons["red"] = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker.png",';
+	echo 'gicons["red"] = new google.maps.MarkerImage("//maps.google.com/mapfiles/marker.png",';
 		echo 'new google.maps.Size(20, 34),';
 		echo 'new google.maps.Point(0,0),';
 		echo 'new google.maps.Point(9, 34));';
 
-	echo 'var iconImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker.png",';
+	echo 'var iconImage = new google.maps.MarkerImage("//maps.google.com/mapfiles/marker.png",';
 		echo 'new google.maps.Size(20, 34),';
 		echo 'new google.maps.Point(0,0),';
 		echo 'new google.maps.Point(9, 34));';
 
-	echo 'var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",';
+	echo 'var iconShadow = new google.maps.MarkerImage("//www.google.com/mapfiles/shadow50.png",';
 		echo 'new google.maps.Size(37, 34),';
 		echo 'new google.maps.Point(0,0),';
 		echo 'new google.maps.Point(9, 34));';
@@ -77,7 +77,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			iconColor = 'red';
 		}
 		if (!gicons[iconColor]) {
-			gicons[iconColor] = new google.maps.MarkerImage('http://maps.google.com/mapfiles/marker'+ iconColor +'.png',
+			gicons[iconColor] = new google.maps.MarkerImage('//maps.google.com/mapfiles/marker'+ iconColor +'.png',
 			new google.maps.Size(20, 34),
 			new google.maps.Point(0,0),
 			new google.maps.Point(9, 34));

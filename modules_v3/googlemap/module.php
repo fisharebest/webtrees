@@ -925,7 +925,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<!-- end of map display -->
 		<!-- Start of map scripts -->
 		<?php
-		echo '<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
+		echo '<script src="//maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_pedigree_map.js.php';
 	}
 
