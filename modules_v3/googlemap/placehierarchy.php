@@ -526,7 +526,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 					new google.maps.Size(20, 34),
 					new google.maps.Point(0,0),
 					new google.maps.Point(9, 34));
-					var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",
+					var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
 					new google.maps.Size(37, 34),
 					new google.maps.Point(0,0),
 					new google.maps.Point(9, 34));
@@ -537,11 +537,11 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 				//	type: "poly"
 				//	};
 			} else {
-				var iconImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker.png",
+				var iconImage = new google.maps.MarkerImage("https://maps.google.com/mapfiles/marker.png",
 				new google.maps.Size(20, 34),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9, 34));
-				var iconShadow = new google.maps.MarkerImage("http://www.google.com/mapfiles/shadow50.png",
+				var iconShadow = new google.maps.MarkerImage("https://www.google.com/mapfiles/shadow50.png",
 				new google.maps.Size(37, 34),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9, 34));
