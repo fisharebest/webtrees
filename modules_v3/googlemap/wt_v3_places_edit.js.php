@@ -30,12 +30,11 @@ if (!defined('WT_WEBTREES')) {
 ?>
 
 <head>
-	<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
-	<script type="text/javascript" src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
-	<!-- <link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_places_edit.css" rel="stylesheet"> -->
+	<script src="<?php echo WT_GM_SCRIPT; ?>"></script>
+	<script src="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/wt_v3_places_edit_overlays.js.php"></script>
 	<link type="text/css" href="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/css/wt_v3_googlemap.css" rel="stylesheet">
 
-	<script type="text/javascript">
+	<script>
 	var map;
 	var marker;
 	var zoom;

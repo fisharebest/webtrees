@@ -2,7 +2,7 @@
 // Displays a streetview map
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -27,9 +27,9 @@ header('Content-type: text/html; charset=UTF-8');
 <html>
 <head>
 <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-<script type="text/javascript" src="//maps.google.com/maps/api/js?sensor=false"></script>
+<script src="<?php echo WT_GM_SCRIPT; ?>"></script>
 
-<script type="text/javascript">
+<script>
 
 	// Following function creates an array of the google map parameters passed ---------------------    
 	var qsParm = new Array();

@@ -40,17 +40,16 @@ $controller->setPageTitle(WT_I18N::translate('Geographic data'));
 $controller->pageHeader();
 
 if (!WT_USER_IS_ADMIN) {
-	echo "<table class=\"facts_table\">\n";
+	echo "<table class=\"facts_table\">";
 	echo "<tr><td colspan=\"2\" class=\"facts_value\">", WT_I18N::translate('Page only for Administrators');
-	echo "</td></tr></table>\n";
-	echo "<br><br><br>\n";
+	echo "</td></tr></table>";
+	echo "<br><br><br>";
 	exit;
 }
 // echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet">';
 echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 ?>
-<script type="text/javascript">
-<!--
+<script>
 function edit_close(newurl) {
 	if (newurl) window.opener.location=newurl;
 	else if (window.opener.showchanges) window.opener.showchanges();
@@ -59,7 +58,6 @@ function edit_close(newurl) {
 function showchanges() {
 	updateMap();
 }
-//-->
 </script>
 <?php
 
@@ -101,9 +99,9 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('');\n//-->\n</script>";
+		echo "<script>edit_close('');</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>\n";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
 	exit;
 }
 
@@ -119,9 +117,9 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close('');\n//-->\n</script>";
+		echo "<script>edit_close('');</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>\n";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
 	exit;
 }
 
@@ -139,9 +137,9 @@ if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {
 		WT_DB::prepare("UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?");		
 	$statement->execute(array($_REQUEST['svlati'], $_REQUEST['svlong'], $_REQUEST['svbear'], $_REQUEST['svelev'], $_REQUEST['svzoom'], $placeid));
 	if (!WT_DEBUG) {
-		echo "\n<script type=\"text/javascript\">\n<!--\nedit_close();\n//-->\n</script>";
+		echo "<script>edit_close('');</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>\n";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
 	exit;
 }
 
@@ -248,7 +246,7 @@ if ($action=='add') {
 	echo '</b><br>';
 }
 
-echo '<script src="//maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
+echo '<script src="', WT_GM_SCRIPT, '"></script>';
 include_once 'wt_v3_places_edit.js.php';
 $api='v3';
 
@@ -362,4 +360,4 @@ $api='v3';
 	<input name="save2" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
 </form>
 <?php
-echo "<center><a href=\"#\" onclick=\"edit_close('')\">", WT_I18N::translate('Close Window'), "</a><br></center>\n";
+echo "<center><a href=\"#\" onclick=\"edit_close('')\">", WT_I18N::translate('Close Window'), "</a><br></center>";

@@ -149,7 +149,7 @@ function create_map($placelevels) {
 		echo '<div id="place_map" style="border:1px solid gray; width:', $GOOGLEMAP_PH_XSIZE, 'px; height:', $GOOGLEMAP_PH_YSIZE, 'px; ';	
 	}
 	echo "\"><i class=\"icon-loading-large\"></i></div>";
-	echo '<script src="//maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
+	echo '<script src="', WT_GM_SCRIPT, '"></script>';
 	echo '</td>';
 	
 	$plzoom	= $latlng['pl_zoom'];		// Map zoom level
@@ -537,7 +537,7 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 				//	type: "poly"
 				//	};
 			} else {
-				var iconImage = new google.maps.MarkerImage("//maps.google.com/mapfiles/marker.png",
+				var iconImage = new google.maps.MarkerImage("http://maps.google.com/mapfiles/marker.png",
 				new google.maps.Size(20, 34),
 				new google.maps.Point(0,0),
 				new google.maps.Point(9, 34));

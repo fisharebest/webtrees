@@ -531,8 +531,7 @@ if ($action=='DeleteRecord') {
 }
 
 ?>
-<script type="text/javascript">
-<!--
+<script>
 function showchanges() {
 	window.location = '<?php echo basename($_SERVER['REQUEST_URI']); ?>&show_changes=yes';
 }
@@ -557,8 +556,6 @@ function delete_place(placeid) {
 		window.location = '<?php echo $_SERVER['REQUEST_URI']; ?>&action=DeleteRecord&deleteRecord=' + placeid;
 	}
 }
-
-//-->
 </script>
 <?php
 echo '<div id="gm_breadcrumb">';

@@ -236,8 +236,8 @@ function setup_map() {
 	global $GOOGLEMAP_MIN_ZOOM, $GOOGLEMAP_MAX_ZOOM;
 
 	?>
-	<script src="//maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-	<script type="text/javascript">
+	<script src="<?php echo WT_GM_SCRIPT; ?>"></script>
+	<script>
 		var minZoomLevel = <?php echo $GOOGLEMAP_MIN_ZOOM;?>;
 		var maxZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;
 		var startZoomLevel = <?php echo $GOOGLEMAP_MAX_ZOOM;?>;

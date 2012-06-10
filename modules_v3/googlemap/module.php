@@ -28,6 +28,8 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+define('WT_GM_SCRIPT', 'https://maps.google.com/maps/api/js?v=3.2&amp;sensor=false&amp;language='.WT_LOCALE);
+
 // http://www.google.com/permissions/guidelines.html
 //
 // "... an unregistered Google Brand Feature should be followed by
@@ -507,8 +509,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 		if ($action == 'ChangeFlag') {
 		?>
-			<script type="text/javascript">
-			<!--
+			<script>
 				function edit_close() {
 		<?php if ($_POST['selcountry'] == 'Countries') { ?>
 					window.opener.document.editplaces.icon.value = 'places/flags/<?php echo $flags[$_POST['FLAGS']]; ?>.png';
@@ -522,20 +523,18 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<?php } ?>
 					window.close();
 				}
-			//-->
 			</script>
 		<?php
 			// autoclose window when update successful unless debug on
 			if (!WT_DEBUG) {
-				echo '<script type="text/javascript\"><!--edit_close();//--></script>';
+				echo '<script>edit_close();</script>';
 			}
 			echo '<div class="center"><a href="#" onclick="edit_close();">', WT_I18N::translate('Close Window'), '</a></div><br>';
 			exit;
 		}
 		else {
 		?>
-		<script type="text/javascript">
-		<!--
+		<script>
 			function enableButtons() {
 				document.flags.save1.disabled = '';
 				document.flags.save2.disabled = '';
@@ -557,7 +556,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				window.close();
 			}
 
-		//-->
 		</script>
 		<?php
 		}
@@ -925,7 +923,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<!-- end of map display -->
 		<!-- Start of map scripts -->
 		<?php
-		echo '<script src="//maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>';
+		echo '<script src="', WT_GM_SCRIPT, '"></script>';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/wt_v3_pedigree_map.js.php';
 	}
 
@@ -1124,8 +1122,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 
 			//scripts for edit, add and refresh
 			?>
-			<script type="text/javascript">
-			<!--
+			<script>
 			function edit_place_location(placeid) {
 				window.open('module.php?mod=googlemap&mod_action=places_edit&action=update&placeid='+placeid, '_blank', indx_window_specs);
 				return false;
@@ -1138,7 +1135,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			function showchanges() {
 				window.location='<?php echo $_SERVER["REQUEST_URI"]; ?>&show_changes=yes';
 			}
-			//-->
 			</script>
 			<?php
 
