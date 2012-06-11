@@ -478,7 +478,7 @@ function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false
 	if (!empty($text) || !empty($centitl)) {
 		// Check if Formatted Shared Note (using pipe "|" as delimiter ) --------------------
 		if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec) && strstr($text, "|") && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-			require WT_ROOT.WT_MODULES_DIR.'census/census_note_decode.php';
+			require WT_ROOT.WT_MODULES_DIR.'_CENS/census_note_decode.php';
 		// Else if unformatted Shared Note --------------------------------------------------
 		} else if (preg_match('/^0 @'.WT_REGEX_XREF.'@ NOTE/', $nrec)) {
 			$text=$centitl.$text;
