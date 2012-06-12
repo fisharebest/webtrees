@@ -150,7 +150,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 			set_block_setting($block_id, 'languages', implode(',', $languages));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
+//			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 
