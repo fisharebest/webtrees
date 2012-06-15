@@ -322,27 +322,32 @@ case 'createform':
 	$controller->addInlineJavaScript('
 		function checkform(frm) {
 			if (frm.username.value=="") {
-				alert("'.addslashes(WT_I18N::translate('You must enter a user name.')).'");
+				alert("'.WT_I18N::translate('You must enter a user name.').'");
 				frm.username.focus();
 				return false;
 			}
 			if (frm.realname.value=="") {
-				alert("'.addslashes(WT_I18N::translate('You must enter a real name.')).'");
+				alert("'.WT_I18N::translate('You must enter a real name.').'");
 				frm.realname.focus();
 				return false;
 			}
 			if (frm.pass1.value=="") {
-				alert("'.addslashes(WT_I18N::translate('You must enter a password.')).'");
+				alert("'.WT_I18N::translate('You must enter a password.').'");
 				frm.pass1.focus();
 				return false;
 			}
+			if (frm.emailaddress.value=="") {
+				alert("'.WT_I18N::translate('You must enter an email address.').'");
+				frm.emailaddress.focus();
+				return false;
+			}
 			if (frm.pass2.value=="") {
-				alert("'.addslashes(WT_I18N::translate('You must confirm the password.')).'");
+				alert("'.WT_I18N::translate('You must confirm the password.').'");
 				frm.pass2.focus();
 				return false;
 			}
 			if (frm.pass1.value.length < 6) {
-				alert("'.addslashes(WT_I18N::translate('Passwords must contain at least 6 characters.')).'");
+				alert("'.WT_I18N::translate('Passwords must contain at least 6 characters.').'");
 				frm.pass1.value = "";
 				frm.pass2.value = "";
 				frm.pass1.focus();

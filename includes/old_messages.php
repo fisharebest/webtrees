@@ -211,7 +211,6 @@ exit;
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('You can add a child to this family when you click this link.  "This Family", in this case, is the principal person of this screen and his or her spouse.<br /><br />Keep in mind that you are going to add a son or daughter of that person.  Adding a son or daughter is simple: Just click the link, fill out the boxes in the popup screen and that\'s all.<br /><br />If you have to add a brother or sister of the principal person, scroll up a little and click the link in "Family with Parents".');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('You can use the icons on the left of the tree to zoom in and out.  Zooming out will allow you to see more of the tree on the screen at a time.  As you zoom out the text can become difficult to read; when your mouse hovers over a box you will get an enlarged view of what is inside it.');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('You may enter a comment here.');
-/* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('You must enter an email address.');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('data');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('does not link back');
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('http://www.php.net/gd');
