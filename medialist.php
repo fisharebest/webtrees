@@ -487,7 +487,7 @@ if ($show == 'yes') {
 		if ($ct>$max) {
 			if ($currentPage < $lastPage) {
 				$lastStart = ((int) ($ct / $max)) * $max;
-				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter1=', rawurlencode($filter1), '&amp;filter_type=', $filter_type, '&amp;filter2=', rawurlencode($filter2), '&amp;columns=', $columns, '&amp;thumbnail=', $thumbnail, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '">', $IconRDarrow, '</a>';
+				echo '<a href="medialist.php?action=no&amp;search=no&amp;folder=', rawurlencode($folder), '&amp;sortby=', $sortby, '&amp;subdirs=', $subdirs, '&amp;filter1=', rawurlencode($filter1), '&amp;filter_type=', $filter_type, '&amp;filter2=', rawurlencode($filter2), '&amp;columns=', $columns, '&amp;thumbnail=', $thumbnail, '&amp;apply_filter=', $apply_filter, '&amp;start=', $lastStart, '&amp;max=', $max, '" class="icon-rdarrow"></a>';
 			}
 			if ($start+$max < $ct) {
 				$newstart = $start+$count;
