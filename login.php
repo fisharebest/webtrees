@@ -442,6 +442,16 @@ case 'register':
 			->pageHeader()
 			->addInlineJavascript('
 				function checkform(frm) {
+					if (frm.user_realname.value == "") {
+						alert("' . WT_I18N::translate('You must enter your real name.') . '");
+						frm.user_realname.focus();
+						return false;
+					}
+					if (frm.emailaddress.value=="") {
+						alert("'.WT_I18N::translate('You must enter an email address.').'");
+						frm.user_email.focus();
+						return false;
+					}
 					if (frm.user_name.value == "") {
 						alert("' . WT_I18N::translate('You must enter a user name.') . '");
 						frm.user_name.focus();
@@ -449,6 +459,13 @@ case 'register':
 					}
 					if (frm.user_password01.value == "") {
 						alert("' . WT_I18N::translate('You must enter a password.') . '");
+						frm.user_password01.focus();
+						return false;
+					}
+					if (frm.user_password01.value.length < 6) {
+						alert("' . WT_I18N::translate('Passwords must contain at least 6 characters.') . '");
+						frm.user_password01.value = "";
+						frm.user_password02.value = "";
 						frm.user_password01.focus();
 						return false;
 					}
@@ -462,18 +479,6 @@ case 'register':
 						frm.user_password01.value = "";
 						frm.user_password02.value = "";
 						frm.user_password01.focus();
-						return false;
-					}
-					if (frm.user_password01.value.length < 6) {
-						alert("' . WT_I18N::translate('Passwords must contain at least 6 characters.') . '");
-						frm.user_password01.value = "";
-						frm.user_password02.value = "";
-						frm.user_password01.focus();
-						return false;
-					}
-					if (frm.user_realname.value == "") {
-						alert("' . WT_I18N::translate('You must enter your real name.') . '");
-						frm.user_realname.focus();
 						return false;
 					}
 					if (frm.user_comments.value == "") {
@@ -493,7 +498,7 @@ case 'register':
 				echo '</div>';
 			}
 			echo '<div id="register-box">
-				<form id="register-form" name="register-form" method="post" action="'.WT_LOGIN_URL.'">
+				<form id="register-form" name="register-form" method="post" action="'.WT_LOGIN_URL.'" onsubmit="return checkform(this);">
 				<input type="hidden" name="action" value="register">
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 				<div>
