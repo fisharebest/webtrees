@@ -30,8 +30,9 @@
 define('WT_SCRIPT_NAME', 'individual.php');
 require './includes/session.php';
 $controller=new WT_Controller_Individual();
-$controller->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.cookie.js');// This page uses jquery.cookie.js to record the sidebar state
-$controller->addInlineJavaScript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
+$controller
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.cookie.js') // We use this to record the sidebar state
+	->addInlineJavascript('var catch_and_ignore; function paste_id(value) {catch_and_ignore = value;}'); // For the "find" links
 	
 if ($controller->record && $controller->record->canDisplayDetails()) {
 	if (safe_GET('action')=='ajax') {
@@ -99,7 +100,7 @@ $callbacks='';
 foreach ($controller->tabs as $tab) {
   $callbacks.=$tab->getJSCallback()."\n";
 }
-$controller->addInlineJavaScript('
+$controller->addInlineJavascript('
 	jQuery("#tabs").tabs({
 		spinner: \'<i class="icon-loading-small"></i>\',
 		cache: true

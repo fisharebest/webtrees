@@ -3593,8 +3593,8 @@ class WT_Stats {
 			global $controller;
 				$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 				$controller
-				->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-				->addInlineJavaScript('
+				->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+				->addInlineJavascript('
 					jQuery("#'.$table_id.'").dataTable({
 						"sDom": \'t\',
 						"bAutoWidth":false,

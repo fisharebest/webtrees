@@ -32,8 +32,8 @@ $controller=new WT_Controller_Simple();
 $controller
 	->setPageTitle(WT_I18N::translate('Add a new media object'))
 	->pageHeader()
-	->addExternalJavaScript('js/autocomplete.js')
-	->addInlineJavaScript('
+	->addExternalJavascript('js/autocomplete.js')
+	->addInlineJavascript('
 	// Shared Notes =========================
 	function findnote(field) {
 		pastefield = field;
@@ -413,7 +413,7 @@ if ($action=='newentry') {
 				$success=true;
 			} else {
 				if (!WT_DEBUG) {
-					echo WT_JS_START, 'if (window.opener.showchanges) window.opener.showchanges(); window.opener.paste_id("'.$mediaid.'"); window.close();', WT_JS_END;
+					echo '<script>if (window.opener.showchanges) window.opener.showchanges(); window.opener.paste_id("'.$mediaid.'"); window.close();</script>';
 				} 
 				echo '<a href="#" onclick="window.opener.paste_id(\'', $mediaid, '\'); return false;">', WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), ' <b>', $mediaid, '</b></a><br><br>';
 			}
@@ -615,10 +615,10 @@ if ($action=='editmedia') {
 
 if ($success && !WT_DEBUG) {
 	echo
-		WT_JS_START,
+		'<script>',
 		'if (window.opener.showchanges) window.opener.showchanges();',
 		'window.close();',
-		WT_JS_END;
+		'</script>';
 } else {
 	echo '<br>';
 	echo '<div class="center"><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">'.WT_I18N::translate('Close Window').'</a></div>';

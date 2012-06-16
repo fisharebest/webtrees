@@ -2,7 +2,7 @@
 // Popup window for viewing images
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -41,8 +41,7 @@ if (!$controller->record->canDisplayDetails()) {
 	exit;
 }
 ?>
-<script type="text/javascript">
-<!--
+<script>
 	var zoom = 100;
 	function zoomin() {
 		i = document.getElementById('theimage');
@@ -174,7 +173,6 @@ if (!$controller->record->canDisplayDetails()) {
 
 	window.onresize = resizeViewport;
 	//window.onload = resizeWindow;
--->
 </script>
 <?php
 
@@ -190,7 +188,7 @@ if (!$controller->record->isExternal() && !$controller->record->fileExists() ) {
 	$imgsize = $controller->record->getImageAttributes('main',2,2);
 	$imgwidth = $imgsize['adjW'];
 	$imgheight = $imgsize['adjH'];
-	echo "<script language=\"JavaScript\" type=\"text/javascript\">";
+	echo '<script>';
 	echo "var imgwidth = $imgwidth-5; var imgheight = $imgheight-5;";
 	echo "var landscape = false;";
 	echo "if (imgwidth > imgheight) landscape = true;";

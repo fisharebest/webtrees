@@ -43,7 +43,7 @@ if (
 	$user_id && WT_USER_ID!=$user_id && !WT_USER_IS_ADMIN
 ) {
 	$controller->pageHeader();
-	$controller->addInlineJavaScript('window.location.reload();');
+	$controller->addInlineJavascript('window.location.reload();');
 	exit;
 }
 
@@ -125,9 +125,9 @@ if ($action=='update') {
 
 $controller
 	->pageHeader()
-	->addInlineJavaScript('
+	->addInlineJavascript('
 	/**
-	* Move Up Block JavaScript function
+	* Move Up Block Javascript function
 	*
 	* This function moves the selected option up in the given select list
 	* @param String section_name the name of the select to move the options
@@ -145,7 +145,7 @@ $controller
 	}
 
 	/**
-	* Move Down Block JavaScript function
+	* Move Down Block Javascript function
 	*
 	* This function moves the selected option down in the given select list
 	* @param String section_name the name of the select to move the options
@@ -164,7 +164,7 @@ $controller
 	}
 
 	/**
-	* Move Block from one column to the other JavaScript function
+	* Move Block from one column to the other Javascript function
 	*
 	* This function moves the selected option down in the given select list
 	* @author KosherJava
@@ -186,7 +186,7 @@ $controller
 		}
 	}
 	/**
-	* Select Options JavaScript function
+	* Select Options Javascript function
 	*
 	* This function selects all the options in the multiple select lists
 	*/
@@ -206,7 +206,7 @@ $controller
 		return true;
 	}
 	/**
-	* Show Block Description JavaScript function
+	* Show Block Description Javascript function
 	*
 	* This function shows a description for the selected option
 	* @param String list_name the name of the select to get the option from
@@ -241,11 +241,11 @@ $controller
 	
 	// Load Block Description array for use by javascript
 	foreach ($all_blocks as $block_name=>$block) {
-		$controller->addInlineJavaScript(
+		$controller->addInlineJavascript(
 			'block_descr["'.$block_name.'"] = "'.addslashes($block->getDescription()).'";'
 		);
 	}
-	$controller->addInlineJavaScript(
+	$controller->addInlineJavascript(
 		'block_descr["advice1"] = "'.WT_I18N::translate('Highlight a  block name and then click on one of the arrow icons to move that highlighted block in the indicated direction.').'";'
 	);
 

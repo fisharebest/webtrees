@@ -48,7 +48,7 @@ if ($surn) {
 }
 $controller
 	->pageHeader()
-	->addExternalJavaScript('js/autocomplete.js');
+	->addExternalJavascript('js/autocomplete.js');
 
 ?>
 <div id="branches-page">

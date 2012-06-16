@@ -431,7 +431,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		global $bhalfheight;
 ?>
 
-<script type="text/javascript">
+<script>
 		// code to fix chart lines in block
 		var vlines;
 		vlines = document.getElementsByName("tvertline");
@@ -521,7 +521,6 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
 		}
 	}
-//-->
 </script>
 <?php
 		return $this;

@@ -29,9 +29,9 @@ require './includes/session.php';
 $controller=new WT_Controller_Simple();
 $controller
 	->requireMemberLogin()
+	->addExternalJavascript('js/autocomplete.js')
 	->setPageTitle(WT_I18N::translate('Edit'))
-	->pageHeader()
-	->addExternalJavaScript('js/autocomplete.js');
+	->pageHeader();
 
 require WT_ROOT.'includes/functions/functions_edit.php';
 
@@ -62,7 +62,7 @@ $update_CHAN=!safe_POST_bool('preserve_last_changed');
 
 $uploaded_files = array();
 
-echo WT_JS_START;
+echo '<script>';
 ?>
 	var locale_date_format='<?php echo preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))); ?>';
 
@@ -136,7 +136,7 @@ echo WT_JS_START;
 		window.close();
 	}
 <?php
-echo WT_JS_END;
+echo '</script>';
 //-- check if user has access to the gedcom record
 $edit = false;
 $success = false;
@@ -290,13 +290,13 @@ case 'editraw':
 	echo '<br>';
 	echo '<input id="savebutton" type="submit" value="', WT_I18N::translate('Save'), '"><br>';
 	echo '</form>';
-	echo WT_JS_START;
+	echo '<script>';
 	echo "textbox = document.getElementById('newgedrec');";
 	echo "savebutton = document.getElementById('savebutton');";
 	echo 'if (textbox && savebutton) {';
 	echo ' window.resizeTo(textbox.offsetLeft+textbox.offsetWidth+100, savebutton.offsetTop+savebutton.offsetHeight+150);';
 	echo '}';
-	echo WT_JS_END;
+	echo '</script>';
 	break;
 //------------------------------------------------------------------------------
 //-- edit a fact record in a form
@@ -606,7 +606,7 @@ case 'linkfamaction':
 //------------------------------------------------------------------------------
 //-- add new source
 case 'addnewsource':
-	echo WT_JS_START;
+	echo '<script>';
 	?>
 		function check_form(frm) {
 			if (frm.TITL.value=="") {
@@ -617,7 +617,7 @@ case 'addnewsource':
 			return true;
 		}
 	<?php
-	echo WT_JS_END;
+	echo '</script>';
 	?>
 	<b><?php echo WT_I18N::translate('Create a new source'); ?></b>
 	<form method="post" action="edit_interface.php" onsubmit="return check_form(this);">
@@ -978,7 +978,7 @@ case 'editnote':
 //------------------------------------------------------------------------------
 //-- add new repository
 case 'addnewrepository':
-	echo WT_JS_START;
+	echo '<script>';
 	?>
 		function check_form(frm) {
 			if (frm.NAME.value=="") {
@@ -989,7 +989,7 @@ case 'addnewrepository':
 			return true;
 		}
 	<?php
-	echo WT_JS_END;
+	echo '</script>';
 	?>
 	<b><?php echo WT_I18N::translate('Create Repository');
 	?></b>
@@ -1727,9 +1727,9 @@ case 'reorder_media_update': // Update sort using popup
 	echo '<br>', WT_I18N::translate('Update successful'), '<br><br>';
 
 	$link = "individual.php?pid=$pid";
-	echo WT_JS_START;
+	echo '<script>';
 	echo "edit_close('{$link}')";
-	echo WT_JS_END;
+	echo '</script>';
 	break;
 
 //------------------------------------------------------------------------------
@@ -1746,9 +1746,9 @@ case 'al_reset_media_update': // Reset sort using Album Page
 	}
 	echo "<br>", WT_I18N::translate('Update successful'), "<br><br>";
 	$link = "individual.php?pid=$pid";
-	echo WT_JS_START;
+	echo '<script>';
 	echo "edit_close('{$link}')";
-	echo WT_JS_END;
+	echo '</script>';
 	break;
 
 //------------------------------------------------------------------------------
@@ -1777,9 +1777,9 @@ case 'al_reorder_media_update': // Update sort using Album Page
 		$success=true;
 	}
 	$link = "individual.php?pid=$pid";
-	echo WT_JS_START;
+	echo '<script>';
 	echo "edit_close('{$link}')";
-	echo WT_JS_END;
+	echo '</script>';
 	break;
 
 //LBox ===================================================
@@ -1787,20 +1787,11 @@ case 'al_reorder_media_update': // Update sort using Album Page
 
 //------------------------------------------------------------------------------
 case 'reorder_children':
-	echo WT_JS_START; ?>
-	  jQuery(document).ready(function() {
-		jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
-
+	$controller
+		->addInlineJavascript('jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});')
 		//-- update the order numbers after drag-n-drop sorting is complete
-		jQuery('#reorder_list').bind('sortupdate', function(event, ui) {
-				jQuery('#'+jQuery(this).attr('id')+' input').each(
-					function (index, value) {
-						value.value = index+1;
-					}
-				);
-			});
-		});
-	<?php echo WT_JS_END;
+		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });');
+
 	echo '<br><b>', WT_I18N::translate('Re-order children'), '</b>', help_link('reorder_children');
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
@@ -1914,7 +1905,7 @@ case 'changefamily':
 			}
 		}
 	}
-	echo WT_JS_START;
+	echo '<script>';
 	?>
 		var nameElement = null;
 		var remElement = null;
@@ -1926,7 +1917,7 @@ case 'changefamily':
 				remElement.style.display = 'block';
 			}
 		}
-	<?php echo WT_JS_END; ?>
+	<?php echo '</script>'; ?>
 	<br><br>
 	<?php echo WT_I18N::translate('Use this page to change or remove family members.<br /><br />For each member in the family, you can use the Change link to choose a different person to fill that role in the family.  You can also use the Remove link to remove that person from the family.<br /><br />When you have finished changing the family members, click the Save button to save the changes.'); ?>
 	<form name="changefamform" method="post" action="edit_interface.php">
@@ -2180,20 +2171,11 @@ case 'reorder_update':
 	break;
 //------------------------------------------------------------------------------
 case 'reorder_fams':
-	echo WT_JS_START; ?>
-	  jQuery(document).ready(function() {
-		jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: 'move', axis: 'y'});
-
+		$controller
+		->addInlineJavascript('jQuery("#reorder_list").sortable({forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});')
 		//-- update the order numbers after drag-n-drop sorting is complete
-		jQuery('#reorder_list').bind('sortupdate', function(event, ui) {
-				jQuery('#'+jQuery(this).attr('id')+' input').each(
-					function (index, value) {
-						value.value = index+1;
-					}
-				);
-			});
-		});
-	<?php echo WT_JS_END;
+		->addInlineJavascript('jQuery("#reorder_list").bind("sortupdate", function(event, ui) { jQuery("#"+jQuery(this).attr("id")+" input").each( function (index, value) { value.value = index+1; }); });');
+
 	echo "<br><b>", WT_I18N::translate('Reorder families'), "</b>", help_link('reorder_families');
 	?>
 	<form name="reorder_form" method="post" action="edit_interface.php">
@@ -2260,7 +2242,7 @@ if (empty($goto) || empty($link)) {
 
 // autoclose window when update successful unless debug on
 if ($success && !WT_DEBUG ) {
-	echo WT_JS_START;
+	echo '<script>';
 	if ($action=="copy") {
 		echo "window.close();";
 	} elseif (isset($closeparent) && $closeparent=="yes" ) {
@@ -2269,7 +2251,7 @@ if ($success && !WT_DEBUG ) {
 	} else {
 		echo "edit_close('{$link}');";
 	}
-	echo WT_JS_END;
+	echo '</script>';
 }
 
 // Decide whether to print footer or not

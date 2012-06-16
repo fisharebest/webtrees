@@ -154,7 +154,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		}
 		$controller->pageHeader();
 		
-		echo WT_JS_START;
+		echo '<script>';
 		?>
 		
 			function pasterow(id, name, gend, yob, age, bpl) {
@@ -199,7 +199,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				return true;
 			}
 		<?php
-		echo WT_JS_END;
+		echo '</script>';
 		
 		$options = array();
 		$options["option"][]= "findindi";
@@ -784,7 +784,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		echo "</div>"; // Close div that centers table
 		
 		// Set focus to the input field
-		echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
+		echo '<script>document.filter', $type, '.filter.focus();</script>';
 	}
 
 	private static function media_query_3a() {
@@ -805,7 +805,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 				}
 			}
 			?>
-			<script type="text/javascript">
+			'<script>'
 			function insertId() {
 				if (window.opener.document.getElementById('addlinkQueue')) {
 					// alert('Please move this alert window and examine the contents of the pop-up window, then click OK')
@@ -813,23 +813,21 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 					window.close();
 				}
 			}
-			</script>
+			'</script>'
 			<?php
 		
 		} else {
 			?>
-			<script type="text/javascript">
+			'<sccript>'
 			function insertId() {
 				window.opener.alert('<?php echo strtoupper($iid2); ?> - <?php echo WT_I18N::translate('Not a valid Individual, Family or Source ID'); ?>');
 				window.close();
 			}
-			</script>
+			'</script>'
 			<?php
 		}
 		?>		
-		<script type="text/javascript">
-		 window.onLoad = insertId();
-		</script>
+		'<script>'window.onLoad = insertId();'</script>'
 		<?php
 	}
 }

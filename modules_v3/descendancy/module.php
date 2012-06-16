@@ -85,7 +85,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 	public function getSidebarContent() {
 		global $controller;
 
-		$controller->addInlineJavaScript('
+		$controller->addInlineJavascript('
 			var dloadedNames = new Array();
 
 			function dsearchQ() {
@@ -151,7 +151,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			$out .= $this->loadSpouses($person->getXref());
 			$out .= '</div>';
 			$base_controller=new WT_Controller_Base();
-			$base_controller->addInlineJavaScript('dloadedNames["'.$person->getXref().'"]=2;');
+			$base_controller->addInlineJavascript('dloadedNames["'.$person->getXref().'"]=2;');
 		} else {
 			$out .= '<div class="desc_tree_div">';
 			$out .= '</div>';
@@ -175,7 +175,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$out .= $this->loadChildren($family->getXref(), $generations);
 		$out .= '</div>';
 		$base_controller=new WT_Controller_Base();
-		$base_controller->addInlineJavaScript('dloadedNames["'.$family->getXref().'"]=2;');
+		$base_controller->addInlineJavascript('dloadedNames["'.$family->getXref().'"]=2;');
 		$out .= '</li>';
 		return $out;
 	}

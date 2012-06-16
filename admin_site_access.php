@@ -25,7 +25,11 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Base();
-$controller->requireAdminLogin();
+$controller
+	->requireAdminLogin()
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.jeditable.min.js')
+	->setPageTitle(WT_I18N::translate('Site access rules'));
 
 $action=safe_GET('action');
 switch ($action) {
@@ -196,10 +200,8 @@ case 'load_unknown':
 }
 
 $controller
-	->setPageTitle(WT_I18N::translate('Site access rules'))
 	->pageHeader()
-	->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-	->addInlineJavaScript('
+	->addInlineJavascript('
 		jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 		jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 		jQuery("#site_access_rules").dataTable({
@@ -222,11 +224,10 @@ $controller
 				/* 7 <delete>                */ {"bSortable": false, "sClass": "center"}
 			],
 			"fnDrawCallback": function() {
-				// Our JSON responses include JavaScript as well as HTML.  This does not get
+				// Our JSON responses include Javascript as well as HTML.  This does not get
 				// executed, So extract it, and add it to its own DOM element
 				jQuery("#site_access_rules script").each(function() {
 					var script=document.createElement("script");
-					script.type="text/javascript";
 					jQuery("#site_access_rules script").appendTo("body"); 
 					document.body.appendChild(script);
 				}).remove();

@@ -83,21 +83,12 @@ if (WT_USE_LIGHTBOX) {
 
 $linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
-echo WT_JS_START;
-echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", edit_window_specs);';
-echo '}';
-echo 'function showchanges() { window.location="', $controller->record->getRawUrl(), '"; }';
-echo 'function edit_note() {';
-echo ' var win04 = window.open("edit_interface.php?action=editnote&pid=', $linkToID, '", "win04", edit_window_specs);';
-echo ' if (window.focus) {win04.focus();}';
-echo '}';
-?>	jQuery(document).ready(function() {
-		jQuery("#note-tabs").tabs();
-		jQuery("#note-tabs").css('visibility', 'visible');
-	});
-<?php
-echo WT_JS_END;
+$controller
+	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
+	->addInlineJavascript('function showchanges() { window.location="' . $controller->record->getRawUrl() . '"; }')
+	->addInlineJavascript('function edit_note() {var win04 = window.open("edit_interface.php?action=editnote&pid=' . $linkToID . '", "win04", edit_window_specs);if (window.focus) {win04.focus();}}')
+	->addInlineJavascript('jQuery("#note-tabs").tabs();')
+	->addInlineJavascript('jQuery("#note-tabs").css("visibility", "visible");');
 
 echo '<div id="note-details">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';

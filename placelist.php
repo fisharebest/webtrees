@@ -295,14 +295,11 @@ if ($level > 0) {
 		echo '<br>';
 
 		//-- display results
-		echo WT_JS_START;
-		?>	jQuery(document).ready(function() {
-				jQuery("#places-tabs").tabs();
-				jQuery("#places-tabs").css("visibility", "visible");
-				jQuery(".loading-image").css("display", "none");
-			});
-		<?php
-		echo WT_JS_END;
+		$controller
+			->addInlineJavascript('jQuery("#places-tabs").tabs();')
+			->addInlineJavascript('jQuery("#places-tabs").css("visibility", "visible");')
+			->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
+
 		echo '<div class="loading-image">&nbsp;</div>';
 		echo '<div id="places-tabs"><ul>';
 		if ($myindilist) {

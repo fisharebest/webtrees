@@ -209,13 +209,13 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 			)->execute(array($gedcom_id))->fetchOne();
 			if (!$in_progress) {
 				echo '<div id="import', $gedcom_id, '"><div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
-			$controller->addInlineJavaScript(
+			$controller->addInlineJavascript(
 				'jQuery("#progressbar'.$gedcom_id.'").progressbar({value: 0});'
 			);
 			} else {
 				echo '<div id="import', $gedcom_id, '"></div>';
 			}
-			$controller->addInlineJavaScript(
+			$controller->addInlineJavascript(
 				'jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'&keep_media'.$gedcom_id.'='.safe_GET('keep_media'.$gedcom_id).'");'
 			);
 			echo '<table border="0" width="100%" id="actions', $gedcom_id, '" style="display:none">';

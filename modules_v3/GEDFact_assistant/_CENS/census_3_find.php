@@ -127,16 +127,14 @@ case "specialchar":
 	$action="filter";
 	break;
 case "facts":
-	$controller->setPageTitle(WT_I18N::translate('Find a fact or event'));
-	echo
-		WT_JS_START,
-		'jQuery(document).ready(function(){ initPickFact(); });',
-		WT_JS_END;
+	$controller
+		->setPageTitle(WT_I18N::translate('Find a fact or event'))
+		->addInlineJavascript('initPickFact();');
 	break;
 }
 $controller->pageHeader();
 
-echo WT_JS_START;
+echo '<script>';
 ?>
 
 	function pasterow(id, nam, mnam, label, gend, cond, dom, dob, dod, occu, age, birthpl, fbirthpl, mbirthpl, chilBLD) {
@@ -180,8 +178,8 @@ echo WT_JS_START;
 		}
 		return true;
 	}
+</script>
 <?php
-echo WT_JS_END;
 
 $options = array();
 $options["option"][]= "findindi";
@@ -431,7 +429,7 @@ if ($type == "facts") {
 	echo "<tr><td class=\"list_label\" style=\"padding: 5px; font-weight: normal; white-space: normal;\">";
 	getPreselectedTags($preselDefault, $preselCustom);
 	?>
-	<?php echo WT_JS_START; ?>
+	<script>
 	// A class representing a default tag
 	function DefaultTag(id, name, selected) {
 		this.Id=id;
@@ -570,7 +568,7 @@ if ($type == "facts") {
 		window.close();
 		return false;
 	}
-	<?php echo WT_JS_END; ?>
+	</script>
 	<div id="layDefinedTags"><table id="tabDefinedTags">
 		<thead><tr>
 			<th>&nbsp;</th>
@@ -1029,4 +1027,4 @@ if ($action=="filter") {
 echo "</div>"; // Close div that centers table
 
 // Set focus to the input field
-if ($type!='facts') echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
+if ($type!='facts') echo '<script>document.filter', $type, '.filter.focus();</script>';

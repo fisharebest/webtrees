@@ -66,8 +66,8 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$table_id = 'ID'.floor(microtime()*1000000); // create a unique ID
 		$controller
-			->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-			->addInlineJavaScript('
+			->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+			->addInlineJavascript('
 				jQuery("#'.$table_id.'").dataTable( {
 				"sDom": \'t\',
 				'.WT_I18N::datatablesI18N().',
@@ -164,7 +164,6 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'show_unassigned', safe_POST_bool('show_unassigned'));
 			set_block_setting($block_id, 'show_future',     safe_POST_bool('show_future'));
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 

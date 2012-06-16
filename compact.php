@@ -29,8 +29,8 @@ require './includes/session.php';
 $controller=new WT_Controller_Compact();
 $controller
 	->pageHeader()
-	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the "find indi" link
-	->addExternalJavaScript('js/autocomplete.js');
+	->addExternalJavascript('js/autocomplete.js')
+	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the "find indi" link
 
 if (WT_USE_LIGHTBOX) {
 	$album = new lightbox_WT_Module();

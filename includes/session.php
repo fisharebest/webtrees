@@ -114,10 +114,6 @@ define('WT_EOL', "\r\n");
 // Gedcom specification/definitions
 define ('WT_GEDCOM_LINE_LENGTH', 255-strlen(WT_EOL)); // Characters, not bytes
 
-// Use these tags to wrap embedded javascript consistently
-define('WT_JS_START', '<script>');
-define('WT_JS_END',   '</script>');
-
 // Used in Google charts
 define ('WT_GOOGLE_CHART_ENCODING', 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.');
 

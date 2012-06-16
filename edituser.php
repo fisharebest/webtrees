@@ -95,13 +95,12 @@ if ($form_action=='update') {
 } else {
 	$controller
 		->pageHeader()
-		->addExternalJavaScript('js/autocomplete.js');
+		->addExternalJavascript('js/autocomplete.js');
 }
 
 // Form validation
 ?>
-<script type="text/javascript">
-<!--
+<script>
 function checkform(frm) {
 	if (frm.form_username.value=="") {
 		alert("<?php echo WT_I18N::translate('You must enter a user name.'); ?>");
@@ -129,7 +128,6 @@ var pastefield;
 function paste_id(value) {
 	pastefield.value=value;
 }
--->
 </script>
 <?php
 

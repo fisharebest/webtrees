@@ -4,7 +4,7 @@
 // Display wmv video media Items using JW Player in webtrees
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2010 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2007 to 2009  PGV Development Team.  All rights reserved.
@@ -31,8 +31,8 @@
 	<META HTTP-EQUIV="Expires" CONTENT="Tue, 01 Jan 1980 1:00:00 GMT">
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<title>JW Player for Windows Media Videos</title>
-	<script type="text/javascript" src="silverlight.js"></script>
-	<script type="text/javascript" src="wmvplayer.js"></script>
+	<script src="silverlight.js"></script>
+	<script src="wmvplayer.js"></script>
 </head>
 <body bgcolor="#000000">
 <center>
@@ -45,7 +45,7 @@ $wmvVideo=$_GET['wmvVideo'];
 
 <div id="myplayer">The player will be placed here</div>
 
-<script type="text/javascript">
+<script>
 	var elm = document.getElementById("myplayer");
 	var src = 'wmvplayer.xaml';
 	var cfg = {

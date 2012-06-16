@@ -89,10 +89,10 @@ case 'save':
 	$message['title'] = $title;
 	$message['text'] = $text;
 	addNews($message);
-	$controller->addInlineJavaScript('window.opener.location.reload();window.close();');
+	$controller->addInlineJavascript('window.opener.location.reload();window.close();');
 	break;
 case 'delete':
 	deleteNews($news_id);
-	$controller->addInlineJavaScript('window.opener.location.reload();window.close();');
+	$controller->addInlineJavascript('window.opener.location.reload();window.close();');
 	break;
 }

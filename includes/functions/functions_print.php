@@ -1155,7 +1155,7 @@ function init_calendar_popup() {
 	global $WEEK_START;
 
 	echo
-		WT_JS_START,
+		'<script>',
 		'cal_setMonthNames(',
 			'"', WT_I18N::translate_c('NOMINATIVE', 'January'), '",',
 			'"', WT_I18N::translate_c('NOMINATIVE', 'February'), '",',
@@ -1178,7 +1178,7 @@ function init_calendar_popup() {
 			'"', WT_I18N::translate('Fri'), '",',
 			'"', WT_I18N::translate('Sat'), '");',
 			'cal_setWeekStart(', $WEEK_START, ');',
-			WT_JS_END;
+			'</script>';
 }
 
 function print_findindi_link($element_id, $indiname='', $ged=WT_GEDCOM) {

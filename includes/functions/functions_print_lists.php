@@ -40,8 +40,8 @@ function format_indi_table($datalist, $option='') {
 	if ($option=='MARR_PLAC') return;
 	$html = '';
 	$controller
-		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addInlineJavaScript('
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc"  ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc" ]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["num-html-asc" ]=function(a,b) {a=parseFloat(a.replace(/<[^<]*>/, "")); b=parseFloat(b.replace(/<[^<]*>/, "")); return (a<b) ? -1 : (a>b ? 1 : 0);};
@@ -276,7 +276,7 @@ function format_indi_table($datalist, $option='') {
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
 		//-- GIVN/SURN
-		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
+		// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
 		$html .= '<td>'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
@@ -450,8 +450,8 @@ function format_fam_table($datalist, $option='') {
 	$html = '';
 
 	$controller
-		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addInlineJavaScript('
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			var oTable'.$table_id.'=jQuery("#'.$table_id.'").dataTable( {
@@ -696,7 +696,7 @@ function format_fam_table($datalist, $option='') {
 		// Dummy column to match colspan in header
 		$html .= '<td style="display:none;"></td>';
 		//-- Husb GIVN
-		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
+		// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
 		$html .= '<td>'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
@@ -742,7 +742,7 @@ function format_fam_table($datalist, $option='') {
 		$html .= '<td style="display:none;"></td>';
 		//-- Wife GIVN
 		//-- Husb GIVN
-		// Use "AAAA" as a separator (instead of ",") as JavaScript.localeCompare() ignores
+		// Use "AAAA" as a separator (instead of ",") as Javascript.localeCompare() ignores
 		// punctuation and "ANN,ROACH" would sort after "ANNE,ROACH", instead of before it.
 		// Similarly, @N.N. would sort as NN.
 		$html .= '<td>'. htmlspecialchars(str_replace('@P.N.', 'AAAA', $givn)). 'AAAA'. htmlspecialchars(str_replace('@N.N.', 'AAAA', $surn)). '</td>';
@@ -900,8 +900,8 @@ function format_sour_table($datalist) {
 	$html = '';
 	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
-		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addInlineJavaScript('
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable( {
@@ -1040,8 +1040,8 @@ function format_note_table($datalist) {
 	$html = '';
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
-		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addInlineJavaScript('
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
@@ -1141,8 +1141,8 @@ function format_repo_table($repos) {
 	$html = '';
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
-		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addInlineJavaScript('
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
@@ -1233,8 +1233,8 @@ function format_media_table($datalist) {
 	$html = '';
 	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
-		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addInlineJavaScript('
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
@@ -1338,8 +1338,8 @@ function format_surname_table($surnames, $script) {
 	global $controller;
 	$html = '';
 	$controller
-		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addInlineJavaScript('
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["num-asc" ]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a<b) ? -1 : (a>b ? 1 : 0);};
 			jQuery.fn.dataTableExt.oSort["num-desc"]=function(a,b) {a=parseFloat(a); b=parseFloat(b); return (a>b) ? -1 : (a<b ? 1 : 0);};
 			jQuery(".surname-list").dataTable( {
@@ -1595,8 +1595,8 @@ function print_changes_table($change_ids, $sort) {
 	}
 	$html = '';
 	$controller
-		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addInlineJavaScript('
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavascript('
 			jQuery.fn.dataTableExt.oSort["unicode-asc" ]=function(a,b) {return a.replace(/<[^<]*>/, "").localeCompare(b.replace(/<[^<]*>/, ""))};
 			jQuery.fn.dataTableExt.oSort["unicode-desc"]=function(a,b) {return b.replace(/<[^<]*>/, "").localeCompare(a.replace(/<[^<]*>/, ""))};
 			jQuery("#'.$table_id.'").dataTable({
@@ -1697,8 +1697,8 @@ function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_li
 	$html = '';
 	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
 	$controller
-		->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-		->addInlineJavaScript('
+		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+		->addInlineJavascript('
 			jQuery("#'.$table_id.'").dataTable({
 				"sDom": \'t\',
 				'.WT_I18N::datatablesI18N().',

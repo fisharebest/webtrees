@@ -30,8 +30,8 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Pedigree();
 $controller
 	->pageHeader()
-	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
-	->addExternalJavaScript('js/autocomplete.js');
+	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
+	->addExternalJavascript('js/autocomplete.js');
 
 if (WT_USE_LIGHTBOX) {
 	$album = new lightbox_WT_Module();
@@ -410,7 +410,7 @@ if (count($famids)>0) {
 }
 echo '</div>';
 // Expand <div id="content"> to include the absolutely-positioned elements.
-$controller->addInlineJavaScript('
+$controller->addInlineJavascript('
 	content_div = document.getElementById("content");
 	if (content_div) {
 		content_div.style.height="'.($maxyoffset+30).'px";

@@ -82,17 +82,11 @@ if (WT_USE_LIGHTBOX) {
 	$album->getPreLoadContent();
 }
 
-echo WT_JS_START;
-echo 'function show_gedcom_record() {';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", edit_window_specs);';
-echo '}';
-echo 'function showchanges() { window.location="'.$controller->record->getRawUrl().'"; }';
-?>	jQuery(document).ready(function() {
-		jQuery("#media-tabs").tabs();
-		jQuery("#media-tabs").css('visibility', 'visible');
-	});
-<?php
-echo WT_JS_END;
+$controller
+	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
+	->addInlineJavascript('function showchanges() { window.location="' .$controller->record->getRawUrl() . '"; }')
+	->addInlineJavascript('jQuery("#media-tabs").tabs();')
+	->addInlineJavascript('jQuery("#media-tabs").css("visibility", "visible");');
 
 
 /* Note:

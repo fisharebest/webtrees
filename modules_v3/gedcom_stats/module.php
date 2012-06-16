@@ -251,7 +251,6 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'stat_most_chil',       safe_POST_bool('stat_most_chil'));
 			set_block_setting($block_id, 'stat_avg_chil',        safe_POST_bool('stat_avg_chil'));
 			set_block_setting($block_id, 'stat_link',            safe_POST_bool('stat_link'));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 

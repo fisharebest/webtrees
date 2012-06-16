@@ -162,7 +162,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'limit', safe_POST('limit'));
 			set_block_setting($block_id, 'flag',  safe_POST('flag'));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 

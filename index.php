@@ -49,10 +49,7 @@ fetch_latest_version();
 // We generate individual blocks using AJAX
 if ($action=='ajax') {
 	$controller=new WT_Controller_Ajax();
-	$controller
-		->pageHeader()
-		->addExternalJavaScript(WT_JQUERY_URL)
-		->addExternalJavaScript(WT_JQUERYUI_URL);
+	$controller->pageHeader();
 
 	// Check we're displaying an allowable block.
 	$block_id=safe_GET('block_id');

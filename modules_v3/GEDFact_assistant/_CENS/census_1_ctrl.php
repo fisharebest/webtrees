@@ -55,13 +55,13 @@ $wholename = $fulln;
 
 $currpid=$pid;
 
-echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/dynamicoptionlist.js" type="text/javascript"></script>';
-echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/date.js" type="text/javascript"></script>';
+echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/dynamicoptionlist.js"></script>';
+echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/date.js"></script>';
 
-echo WT_JS_START;
-echo "var TheCenYear = opener.document.getElementById('setyear').value;";
-echo "var TheCenCtry = opener.document.getElementById('setctry').value;";
-echo WT_JS_END;
+echo '<script>';
+echo 'var TheCenYear = opener.document.getElementById("setyear").value;';
+echo 'var TheCenCtry = opener.document.getElementById("setctry").value;';
+echo '</script>';
 
 // Header of assistant window =====================================================
 echo '<div class="cens_header">';
@@ -108,6 +108,4 @@ echo '</div>';
 	echo '</div>';
 	?>
 </div>
-<script type="text/javascript">
- window.onLoad = initDynamicOptionLists();
-</script>
+<script>window.onLoad = initDynamicOptionLists();</script>

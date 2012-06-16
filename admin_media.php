@@ -272,8 +272,7 @@ if (WT_USER_IS_ADMIN) {
 // echo the header of the page
 $controller->pageHeader();
 ?>
-<script type="text/javascript">
-<!--
+<script>
 function pasteid(id) {
 	window.opener.paste_id(id);
 	window.close();
@@ -309,7 +308,6 @@ function showchanges() {
 	window.location = '<?php echo WT_SCRIPT_NAME."?directory=".$directory."&level=".$level."&filter=".$filter."&subclick=".$subclick; ?>';
 }
 
-//-->
 </script>
 <?php
 if (check_media_structure()) {
@@ -1014,8 +1012,8 @@ if (check_media_structure()) {
 			// Set up for two passes, the first showing URLs, the second normal files
 
 			$controller
-				->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-				->addInlineJavaScript('
+				->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+				->addInlineJavascript('
 					jQuery("#media_table").dataTable( {
 						"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 						'.WT_I18N::datatablesI18N().',

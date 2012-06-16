@@ -33,7 +33,7 @@ $exist_links = safe_REQUEST($_REQUEST, 'exist_links', WT_REGEX_UNSAFE);
 $gid = safe_GET_xref('gid');
 $update_CHAN = safe_REQUEST($_REQUEST, 'preserve_last_changed', WT_REGEX_UNSAFE);
 
-$controller->addExternalJavaScript('js/autocomplete.js');
+$controller->addExternalJavascript('js/autocomplete.js');
 
 $paramok =  true;
 if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();
@@ -41,8 +41,7 @@ if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDi
 if ($action == 'choose' && $paramok) {
 
 	?>
-	<script type="text/javascript">
-	<!--
+	<script>
 	// Javascript variables
 	var id_empty = "<?php echo WT_I18N::translate('When adding a Link, the ID field cannot be empty.'); ?>";
 
@@ -71,7 +70,6 @@ if ($action == 'choose' && $paramok) {
 	}
 
 	var GEDFact_assist = 'installed';
-//-->
 	</script>
 	<link href ="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>GEDFact_assistant/css/media_0_inverselink.css" rel="stylesheet" type="text/css" media="screen">
 
@@ -198,7 +196,7 @@ if ($action == 'choose' && $paramok) {
 	echo '<br><br>';
 	echo '<input type="hidden" name="idName" id="idName" size="36" value="Name of ID">';
 ?>
-<script type="text/javascript">
+<script>
 
 	function addlinks(iname) {
 		// iid=document.getElementById('gid').value;
@@ -234,8 +232,8 @@ if ($action == 'choose' && $paramok) {
 	
 <?php
 
-// Various JavaScript variables required --------------------------------- ?>
-<script type="text/javascript">
+// Various Javascript variables required --------------------------------- ?>
+<script>
 	var ifamily = "<?php echo WT_I18N::translate('Open Family Navigator'); ?>";
 	var remove = "<?php echo WT_I18N::translate('Remove'); ?>";
 	var linkExists = "<?php echo WT_I18N::translate('This link already exists'); ?>";

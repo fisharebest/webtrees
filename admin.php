@@ -238,10 +238,9 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 }
 echo
 	'</div>', // id=tree_stats
-	WT_JS_START,
-	'jQuery("#tree_stats").accordion({active:',$accordion_element,', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});',
-	WT_JS_END,
 	'</div>'; // id=trees
+
+$controller->addInlineJavascript('jQuery("#tree_stats").accordion({active:'.$accordion_element.', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
 
 echo
 	'<h2>', WT_I18N::translate('Recent changes'), '</h2>',
@@ -270,19 +269,14 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 	}
 echo
 	'</div>', // id=changes
-	WT_JS_START,
-	'jQuery("#changes").accordion({active:',$accordion_element,', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});',
-	WT_JS_END,
-	'</div>'; // id=recent
-
-echo
+	'</div>', // id=recent
 	'</div>', //id = "x"
-	WT_JS_START,
-	'jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }, autoHeight:false});',
-	'jQuery("#content_container").css(\'visibility\', \'visible\');',
-	WT_JS_END,
 	'</div>'; //id = content_container
 
+$controller
+	->addInlineJavascript('jQuery("#changes").accordion({active:' . $accordion_element . ', icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});')
+	->addInlineJavascript('jQuery("#x").accordion({active:0, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }, autoHeight:false});')
+	->addInlineJavascript('jQuery("#content_container").css("visibility", "visible");');
 
 // This is a list of old files and directories, from earlier versions of webtrees, that can be deleted
 // It was generated with the help of a command like this

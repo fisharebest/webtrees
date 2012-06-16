@@ -1,5 +1,5 @@
 <?PHP
-// Special Character tables, for use by JavaScript to input characters
+// Special Character tables, for use by Javascript to input characters
 // that aren't on your keyboard
 //
 // THIS FILE MUST BE SAVED IN UTF-8 ENCODING (or some special characters will be lost)

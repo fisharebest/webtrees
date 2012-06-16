@@ -29,7 +29,7 @@ $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Module administration'))
 	->pageHeader()
-	->addInlineJavaScript('
+	->addInlineJavascript('
     jQuery("#tabs_table").sortable({items: ".sortme", forceHelperSize: true, forcePlaceholderSize: true, opacity: 0.7, cursor: "move", axis: "y"});
 
     //-- update the order numbers after drag-n-drop sorting is complete

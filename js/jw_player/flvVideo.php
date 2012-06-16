@@ -4,7 +4,7 @@
 // Display flv video media Items using JW Player in webtrees
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2007 to 2010  PGV Development Team.  All rights reserved.
@@ -31,7 +31,7 @@
 	<META HTTP-EQUIV="Expires" CONTENT="Tue, 01 Jan 1980 1:00:00 GMT">
 	<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
 	<title>JW Player for Flash</title>
-	<script type="text/javascript" src="swfobject.js"></script>
+	<script src="swfobject.js"></script>
 </head>
 <body bgcolor="#000000">
 <center>
@@ -68,7 +68,7 @@ $preview="";
 
 
 	<div id="container"><a href="http://www.macromedia.com/go/getflashplayer">Get the Flash Player</a> to see this player.</div>
-	<script type="text/javascript">
+	<script>
 		var video   = "<?php echo $flvVideo; ?>";
 		var preview = "<?php echo $preview; ?>";
 		var s1 = new SWFObject("player.swf","ply","480","365","9","#000000");

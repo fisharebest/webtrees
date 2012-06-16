@@ -2,9 +2,8 @@
 <html <?php echo WT_I18N::html_markup(); ?>>
 <head>
 <title>Help window</title>
-<script type="text/javascript">
+<script>
 /*
-	<!--
 	function printToPage()
 	{
 		var pos;
@@ -16,7 +15,6 @@
 		}
 		return(htmlOutput);
 	}
-	//-->
 */
 </script>
 </head>
@@ -26,10 +24,8 @@
 <br><br>
 Here will be the help for the Census Assistant window:
 <p>
-<script type="text/javascript">
-<!--
+<script>
 document.write(printToPage());
-//-->
 </script>
 </p>
 </body>

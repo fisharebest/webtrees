@@ -222,8 +222,7 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 		//-- body
 		echo "
-</div>", WT_JS_START, "document.getElementById('headerdiv').style.height='", $this->topmargin - $this->headermargin - 6, "pt';", WT_JS_END,
-"<div id=\"bodydiv\" style=\"position:relative; top:auto; width:", $this->noMarginWidth, "pt; height:100%;\">";
+</div><script>document.getElementById('headerdiv').style.height='", $this->topmargin - $this->headermargin - 6, "pt';</script><div id=\"bodydiv\" style=\"position:relative; top:auto; width:", $this->noMarginWidth, "pt; height:100%;\">";
 		$this->Y = 0;
 		$this->maxY = 0;
 		$this->runPageHeader();
@@ -238,8 +237,7 @@ class WT_Report_HTML extends WT_Report_Base {
 		}
 		//-- footer
 		echo "
-</div>", WT_JS_START, "document.getElementById('bodydiv').style.height='", $this->maxY, "pt';", WT_JS_END,
-"<div id=\"bottommargin\" style=\"position:relative; top:auto; height:", $this->bottommargin - $this->footermargin, "pt; width:", $this->noMarginWidth, "pt;\"></div>
+</div><script>document.getElementById('bodydiv').style.height='", $this->maxY, "pt';</script><div id=\"bottommargin\" style=\"position:relative; top:auto; height:", $this->bottommargin - $this->footermargin, "pt; width:", $this->noMarginWidth, "pt;\"></div>
 <div id=\"footerdiv\" style=\"position:relative; top:auto; width: ", $this->noMarginWidth, "pt; height:auto;\">";
 		$this->Y = 0;
 		$this->X = 0;
@@ -254,8 +252,7 @@ class WT_Report_HTML extends WT_Report_Base {
 			}
 		}
 		echo "
-</div>", WT_JS_START, "document.getElementById('footerdiv').style.height='", $this->maxY, "pt';", WT_JS_END,
-"<div id=\"footermargin\" style=\"position:relative; top:auto; height:", $this->footermargin, "pt; width:", $this->noMarginWidth, "pt;\"></div>
+</div><script>document.getElementById('footerdiv').style.height='", $this->maxY, "pt';</script><div id=\"footermargin\" style=\"position:relative; top:auto; height:", $this->footermargin, "pt; width:", $this->noMarginWidth, "pt;\"></div>
 </body>\n</html>\n";
 	}
 

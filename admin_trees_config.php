@@ -350,23 +350,16 @@ default:
 
 }
 
-$controller->pageHeader();
+$controller
+	->pageHeader()
+	->addInlineJavascript('jQuery("#tabs").tabs(); jQuery("#tabs").css("display", "inline");')
+	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }');
 
 if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-	$controller->addExternalJavaScript('js/autocomplete.js');
+	$controller->addExternalJavascript('js/autocomplete.js');
 }
 
-echo WT_JS_START;?>
-	jQuery(document).ready(function() {
-		jQuery("#tabs").tabs();
-		jQuery("#tabs").css('display', 'inline');
-	});
-	var pastefield;
-	function paste_id(value) {
-		pastefield.value=value;
-	}
-<?php echo WT_JS_END; ?>
-
+?>
 <form enctype="multipart/form-data" method="post" id="configform" name="configform" action="<?php echo WT_SCRIPT_NAME; ?>">
 <input type="hidden" name="action" value="update">
 <input type="hidden" name="ged" value="<?php echo htmlspecialchars(WT_GEDCOM); ?>">

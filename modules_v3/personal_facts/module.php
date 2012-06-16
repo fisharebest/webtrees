@@ -54,14 +54,14 @@ class personal_facts_WT_Module extends WT_Module implements WT_Module_Tab {
 		global $EXPAND_RELATIVES_EVENTS, $controller;
 		$EXPAND_HISTO_EVENTS = false;
 
-		echo WT_JS_START;
+		echo '<script>';
 		if (!$EXPAND_RELATIVES_EVENTS) {
 			echo "jQuery('tr.row_rela').toggle();";
 		}
 		if (!$EXPAND_HISTO_EVENTS) {
 			echo "jQuery('tr.row_histo').toggle();";
 		}
-		echo WT_JS_END;
+		echo '</script>';
 
 		//-- only need to add family facts on this tab
 		if (!isset($controller->skipFamilyFacts)) {

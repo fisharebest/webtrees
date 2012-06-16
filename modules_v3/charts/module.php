@@ -133,20 +133,16 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 				$content .= "</td>";
 			}
 			if ($type=='treenav') {
-				// TODO: we should
-				// 1) check whether the block is active
-				// 2) find out why it is necessary to load jquery, when it is already loaded
 				require_once WT_MODULES_DIR.'tree/module.php';
 				require_once WT_MODULES_DIR.'tree/class_treeview.php';
 				$mod=new tree_WT_Module;
 				$tv=new TreeView;
 				$content .= '<td>';
-				$content .= '<script src="'.WT_JQUERY_URL.'"></script><script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>';
 
 				$content .= '<script>$("head").append(\'<link rel="stylesheet" href="'.$mod->css().'" type="text/css" />\');</script>';
 				$content .= '<script src="'.$mod->js().'"></script>';
 		    list($html, $js) = $tv->drawViewport($person->getXref(), 2);
-				$content .= $html.WT_JS_START.$js.WT_JS_END;
+				$content .= $html.'<script>'.$js.'</script>';
 				$content .= '</td>';
 			}
 			$content .= "</tr></table>";
@@ -195,7 +191,6 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'details', safe_POST_bool('details'));
 			set_block_setting($block_id, 'type',    safe_POST('type', array('pedigree', 'descendants', 'hourglass', 'treenav'), 'pedigree'));
 			set_block_setting($block_id, 'pid',     safe_POST('pid', WT_REGEX_XREF));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 
@@ -203,7 +198,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$type   =get_block_setting($block_id, 'type',    'pedigree');
 		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		$controller->addExternalJavaScript('js/autocomplete.js');
+		$controller->addExternalJavascript('js/autocomplete.js');
 	?>
 		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
 		<td class="optionbox">

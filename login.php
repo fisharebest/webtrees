@@ -109,7 +109,7 @@ default:
 	$controller->setPageTitle(WT_I18N::translate('Login'));
 	$controller->pageHeader();
 	$controller
-		->addInlineJavaScript('
+		->addInlineJavascript('
 			jQuery("#new_passwd_form").hide();
 			jQuery("#passwd_click").click(function() {
 				jQuery("#new_passwd_form").slideToggle(100, function() {
@@ -440,7 +440,7 @@ case 'register':
 		$controller
 			->setPageTitle(WT_I18N::translate('Request new user account'))
 			->pageHeader()
-			->addInlineJavaScript('
+			->addInlineJavascript('
 				function checkform(frm) {
 					if (frm.user_name.value == "") {
 						alert("' . WT_I18N::translate('You must enter a user name.') . '");

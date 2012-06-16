@@ -34,7 +34,7 @@ $controller
 	->requireEditorLogin()
 	->setPageTitle(WT_I18N::translate('Link media'))
 	->pageHeader()
-	->addExternalJavaScript('js/autocomplete.js');
+	->addExternalJavascript('js/autocomplete.js');
 
 //-- page parameters and checking
 $linktoid = safe_GET_xref('linktoid');
@@ -53,8 +53,7 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 
 	if ($action == "choose" && $paramok) {
 		?>
-		<script type="text/javascript">
-		<!--
+		<script>
 		var pastefield;
 
 		function openerpasteid(id) {
@@ -69,9 +68,8 @@ if ($linkto=='manage' && array_key_exists('GEDFact_assistant', WT_Module::getAct
 		function paste_char(value) {
 			pastefield.value += value;
 		}
-		//-->
 		</script>
-	<script src="<?php echo WT_STATIC_URL; ?>js/webtrees.js" type="text/javascript"></script>
+	<script src="<?php echo WT_STATIC_URL; ?>js/webtrees.js"></script>
 
 		<?php
 		echo '<form name="link" method="get" action="inverselink.php">';

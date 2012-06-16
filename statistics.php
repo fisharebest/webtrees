@@ -34,18 +34,13 @@ $tab = safe_GET('tab', WT_REGEX_NOSCRIPT, 0);
 $ajax = safe_GET('ajax', WT_REGEX_NOSCRIPT, 0);
 
 if (!$ajax) {
-	$js='jQuery(document).ready(function() {
-		jQuery("#stats-tabs").tabs({
-			spinner: \'<i class="icon-loading-small"></i>\',
-			cache: true
-		});
-		jQuery("#stats-tabs").css("visibility", "visible");
-	});';
 	$controller=new WT_Controller_Base();
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
-		->addInlineJavaScript($js)
-		->pageHeader()
-		->addExternalJavaScript('js/autocomplete.js');
+		->addExternalJavascript('js/autocomplete.js')
+		->addInlineJavascript('jQuery("#stats-tabs").tabs({ spinner: "<i class=\"icon-loading-small\"></i>", cache: true });')
+		->addInlineJavascript('jQuery("#stats-tabs").css("visibility", "visible");')
+		->pageHeader();
+
 	echo '<div id="stats-details"><h2>', WT_I18N::translate('Statistics'), '</h2>',
 		'<div id="stats-tabs">',
 		'<ul>',
@@ -65,7 +60,7 @@ if (!$ajax) {
 	$controller=new WT_Controller_Ajax();
 	$controller
 		->pageHeader()
-		->addExternalJavaScript('js/autocomplete.js');
+		->addExternalJavascript('js/autocomplete.js');
 	$stats = new WT_Stats($GEDCOM);
 	if ($tab==0) {
 		echo '<fieldset>
@@ -415,8 +410,7 @@ if (!$ajax) {
 		echo '<fieldset>
 		<legend>', WT_I18N::translate('Create your own chart'), '</legend>';
 		?>
-		<script type="text/javascript">
-		<!--
+		<script>
 			function statusHide(sel) {
 				var box = document.getElementById(sel);
 				box.style.display = 'none';
@@ -470,7 +464,6 @@ if (!$ajax) {
 				});
 				return false;
 			}
-		//-->
 		</script>
 		<?php
 		echo '<div id="own-stats"><form method="post" id="own-stats-form" name="form" action="statisticsplot.php" onsubmit="statsModalDialog(\'statisticsplot.php?action=newform\', \'', WT_I18N::translate('Statistics plot'), '\'); return false;">';

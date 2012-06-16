@@ -150,7 +150,6 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 				}
 			}
 			set_block_setting($block_id, 'languages', implode(',', $languages));
-//			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 
@@ -279,12 +278,12 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			'</td><td class="optionbox">'
 		;
 		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-			echo WT_JS_START,
+			echo '<script>',
 				'function loadTemplate(html) {',
 				' var oEditor = CKEDITOR.instances["html"];',
 				' oEditor.setData(html);',
 				'}',
-				WT_JS_END,
+				'</script>',
 				'<select name="template" onchange="loadTemplate(document.block.template.options[document.block.template.selectedIndex].value);">';
 		} else {
 			echo '<select name="template" onchange="document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;">';

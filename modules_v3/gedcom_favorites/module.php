@@ -113,7 +113,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		$title=$this->getTitle();
 
 		if (WT_USER_ID) {
-			$controller->addExternalJavaScript('js/autocomplete.js');
+			$controller
+				->addExternalJavascript('js/autocomplete.js');
 		}
 
 		$content = '';
@@ -168,7 +169,7 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		}
 		if ($ctype=='user' || WT_USER_GEDCOM_ADMIN) {
 			$uniqueID = floor(microtime() * 1000000); // This block can theoretically appear multiple times, so use a unique ID.
-			$content .= WT_JS_START.'var pastefield; function paste_id(value) {pastefield.value=value;}'.WT_JS_END;
+			$content .= '<script>var pastefield; function paste_id(value) {pastefield.value=value;}</script>';
 			$content .= '<div class="add_fav_head">';
 			$content .= '<a href="#" onclick="return expand_layer(\'add_fav'.$uniqueID.'\');">'.WT_I18N::translate('Add a new favorite').'<i id="add_fav'.$uniqueID.'_img" class="icon-plus"></i></a>';
 			$content .= '</div>';
@@ -233,7 +234,6 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 

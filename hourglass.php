@@ -31,9 +31,9 @@ require './includes/session.php';
 $controller=new WT_Controller_Hourglass();
 $controller
 	->pageHeader()
-	->addExternalJavaScript('js/autocomplete.js')
+	->addExternalJavascript('js/autocomplete.js')
 	->setupJavascript()
-	->addInlineJavaScript('sizeLines();');
+	->addInlineJavascript('sizeLines();');
 
 echo '<table><tr><td valign="top">';
 echo '<h2>', WT_I18N::translate('Hourglass chart of %s', $controller->name), '</h2>';

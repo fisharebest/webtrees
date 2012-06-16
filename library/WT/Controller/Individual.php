@@ -135,11 +135,11 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		echo $mod->getTabContent();
 		
 		// Allow the other tabs to modify this one - e.g. lightbox does this.
-		echo WT_JS_START;
+		echo '<script>';
 		foreach ($this->tabs as $module) {
 			echo $module->getJSCallback();
 		}
-		echo WT_JS_END;
+		echo '</script>';
 
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();
@@ -763,7 +763,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 
 		$controller
-			->addInlineJavaScript('
+			->addInlineJavascript('
 				jQuery("#sidebarAccordion").accordion({
 					active:"#family_nav",
 					autoHeight: false,

@@ -74,7 +74,7 @@ function xmlParse(str) {
 }
 
 /**
- * Appends a JavaScript file to the page.
+ * Appends a Javascript file to the page.
  * @param {string} url
  */
 function downloadScript(url) {

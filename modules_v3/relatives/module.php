@@ -409,7 +409,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 		}
 
 		if (!$SHOW_AGE_DIFF) {
-			echo WT_JS_START, "jQuery('DIV.elderdate').toggle();", WT_JS_END;
+			echo '<script>jQuery("DIV.elderdate").toggle();</script>';
 		}
 
 		if ($controller->record->canEdit()) {

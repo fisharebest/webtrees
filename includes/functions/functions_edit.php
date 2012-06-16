@@ -31,21 +31,31 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_import.php';
 
 // Create an edit control for inline editing using jeditable
-function edit_field_inline($name, $value) {
-	return
-		'<span class="editable" id="' . $name . '">' . htmlspecialchars($value) . '</span>' .
-		WT_JS_START .
-		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'"})' .
-		WT_JS_END;
+function edit_field_inline($name, $value, $controller=null) {
+	$html='<span class="editable" id="' . $name . '">' . htmlspecialchars($value) . '</span>';
+	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'"})';
+
+	if ($controller) {
+		$controller->addInlineJavascript($js);
+		return $html;
+	} else {
+		// For AJAX callbacks
+		return $html . '<script>' . $js . '</script>';
+	}
 }
 
 // Create a text area for inline editing using jeditable
-function edit_text_inline($name, $value) {
-	return
-		'<span class="editable" style="white-space:pre-wrap;" id="' . $name . '">' . htmlspecialchars($value) . '</span>' .
-		WT_JS_START .
-		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", type: "textarea", rows:4, cols:60 })' .
-		WT_JS_END;
+function edit_text_inline($name, $value, $controller=null) {
+	$html='<span class="editable" style="white-space:pre-wrap;" id="' . $name . '">' . htmlspecialchars($value) . '</span>';
+	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", type: "textarea", rows:4, cols:60 })';
+
+	if ($controller) {
+		$controller->addInlineJavascript($js);
+		return $html;
+	} else {
+		// For AJAX callbacks
+		return $html . '<script>' . $js . '</script>';
+	}
 }
 
 // Create a <select> control for a form
@@ -79,7 +89,7 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 }
 
 // An inline-editing version of select_edit_control()
-function select_edit_control_inline($name, $values, $empty, $selected, $extra='') {
+function select_edit_control_inline($name, $values, $empty, $selected, $controller=null) {
 	if (!is_null($empty)) {
 		// Push ''=>$empty onto the front of the array, maintaining keys
 		$tmp=array(''=>htmlspecialchars($empty));
@@ -89,13 +99,17 @@ function select_edit_control_inline($name, $values, $empty, $selected, $extra=''
 		$values=$tmp;
 	}
 	$values['selected']=htmlspecialchars($selected);
-	return
-		'<span class="editable" id="' . $name . '">' .
-		(array_key_exists($selected, $values) ? $values[$selected] : '').
-		'</span>' .
-		WT_JS_START .
-		'jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", callback:function(value, settings) {jQuery(this).html(settings.data[value]);} })' .
-		WT_JS_END;
+
+	$html='<span class="editable" id="' . $name . '">' .  (array_key_exists($selected, $values) ? $values[$selected] : '') . '</span>';
+	$js='jQuery("#' . $name . '").editable("' . WT_SERVER_NAME . WT_SCRIPT_PATH . 'save.php", {type:"select", data:' . json_encode($values) . ', submit:"&nbsp;&nbsp;' . WT_I18N::translate('OK') . '&nbsp;&nbsp;", style:"inherit", placeholder: "'.WT_I18N::translate('click to edit').'", callback:function(value, settings) {jQuery(this).html(settings.data[value]);} })';
+
+	if ($controller) {
+		$controller->addInlineJavascript($js);
+		return $html;
+	} else {
+		// For AJAX callbacks
+		return $html . '<script>' . $js . '</script>';
+	}
 }
 
 // Create a set of radio buttons for a form
@@ -124,9 +138,9 @@ function edit_field_yes_no($name, $selected=false, $extra='') {
 }
 
 // An inline-editing version of edit_field_yes_no()
-function edit_field_yes_no_inline($name, $selected=false, $extra='') {
+function edit_field_yes_no_inline($name, $selected=false, $controller=null) {
 	return select_edit_control_inline(
-		$name, array(true=>WT_I18N::translate('yes'), false=>WT_I18N::translate('no')), null, (int)$selected, $extra
+		$name, array(true=>WT_I18N::translate('yes'), false=>WT_I18N::translate('no')), null, (int)$selected, $controller
 	);
 }
 
@@ -207,7 +221,7 @@ function edit_field_contact($name, $selected='', $extra='') {
 	}
 	return select_edit_control($name, $CONTACT_METHODS, null, $selected, $extra);
 }
-function edit_field_contact_inline($name, $selected='', $extra='') {
+function edit_field_contact_inline($name, $selected='', $controller=null) {
 	// Different ways to contact the users
 	$CONTACT_METHODS=array(
 		'messaging' =>WT_I18N::translate('webtrees internal messaging'),
@@ -219,7 +233,7 @@ function edit_field_contact_inline($name, $selected='', $extra='') {
 	if (!get_site_setting('STORE_MESSAGES')) {
 		unset($CONTACT_METHODS['messaging'], $CONTACT_METHODS['messaging2']);
 	}
-	return select_edit_control_inline($name, $CONTACT_METHODS, null, $selected, $extra);
+	return select_edit_control_inline($name, $CONTACT_METHODS, null, $selected, $controller);
 }
 
 // Print an edit control for a language field
@@ -228,9 +242,9 @@ function edit_field_language($name, $selected='', $extra='') {
 }
 
 // An inline-editing version of edit_field_language()
-function edit_field_language_inline($name, $selected=false, $extra='') {
+function edit_field_language_inline($name, $selected=false, $controller=null) {
 	return select_edit_control_inline(
-		$name, WT_I18N::installed_languages(), null, $selected, $extra
+		$name, WT_I18N::installed_languages(), null, $selected, $controller
 	);
 }
 
@@ -902,8 +916,7 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	}
 	echo "</form>";
 	?>
-	<script type="text/javascript">
-	<!--
+	<script>
 	function trim(str) {
 		str=str.replace(/\s\s+/g, " ");
 		return str.replace(/(^\s+)|(\s+$)/g, '');
@@ -1095,7 +1108,6 @@ function print_indi_form($nextaction, $famid, $linenum='', $namerec='', $famtag=
 	// If the name isn't initially formed from the components in a standard way,
 	// then don't automatically update it.
 	if (document.getElementById("NAME").value!=generate_name() && document.getElementById("NAME").value!="//") convertHidden("NAME");
-	//-->
 	</script>
 	<?php
 }
@@ -1163,8 +1175,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	if (substr($tag, 0, strpos($tag, "PLAC"))) {
 		?>
-	<script type="text/javascript">
-		<!--
+	<script>
 		function valid_lati_long(field, pos, neg) {
 			// valid LATI or LONG according to Gedcom standard
 			// pos (+) : N or E
@@ -1188,7 +1199,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			if (txt!='' && txt.charAt(0)!=neg && txt.charAt(0)!=pos) txt=pos+txt;
 			field.value = txt;
 		}
-		//-->
 		</script>
 		<?php
 	}
@@ -1573,9 +1583,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	// MARRiage TYPE : hide text field and show a selection list
 	if ($fact=='TYPE' && $level==2 && $tags[0]=='MARR') {
-		echo WT_JS_START;
+		echo '<script>';
 		echo "document.getElementById('", $element_id, "').style.display='none'";
-		echo WT_JS_END;
+		echo '</script>';
 		echo "<select id=\"", $element_id, "_sel\" onchange=\"document.getElementById('", $element_id, "').value=this.value;\" >";
 		foreach (array("Unknown", "Civil", "Religious", "Partners") as $indexval => $key) {
 			if ($key=="Unknown") echo "<option value=\"\"";
@@ -1596,9 +1606,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			case 'F': echo edit_field_name_type_f($element_name, $value, $extra); break;
 			default:  echo edit_field_name_type_u($element_name, $value, $extra); break;
 		}
-		echo WT_JS_START;
+		echo '<script>';
 		echo "document.getElementById('", $element_id, "').style.display='none';";
-		echo WT_JS_END;
+		echo '</script>';
 	}
 
 	// popup links

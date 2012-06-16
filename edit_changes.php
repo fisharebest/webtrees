@@ -38,7 +38,7 @@ $change_id=safe_GET('change_id');
 $index    =safe_GET('index');
 $ged      =safe_GET('ged');
 
-echo WT_JS_START;
+echo '<script>';
 ?>
 	function show_gedcom_record(xref) {
 		var recwin = window.open("gedrecord.php?fromfile=1&pid="+xref, "_blank", edit_window_specs);
@@ -53,7 +53,7 @@ echo WT_JS_START;
 		return false;
 	}
 <?php
-echo WT_JS_END;
+echo '</script>';
 echo '<div id="pending"><h2>', WT_I18N::translate('Pending changes'), '</h2>';
 
 switch ($action) {
@@ -236,10 +236,10 @@ if ($changed_gedcoms) {
 } else {
 	// No pending changes - refresh the parent window and close this one
 	echo
-		WT_JS_START,
+		'<script>',
 		'if (window.opener.showchanges)	window.opener.showchanges();',
 		'window.close();',
-		WT_JS_END,
+		'</script>',
 		'</h3>';
 }
 

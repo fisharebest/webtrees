@@ -83,18 +83,11 @@ if (WT_USE_LIGHTBOX) {
 
 $linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
-echo WT_JS_START;
-echo 'function show_gedcom_record() {';
-echo 'alert("eek");';
-echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", edit_window_specs);';
-echo '}';
-echo 'function showchanges() { window.location="', $controller->record->getRawUrl(), '"; }';
-?>	jQuery(document).ready(function() {
-		jQuery("#repo-tabs").tabs();
-		jQuery("#repo-tabs").css('visibility', 'visible');
-	});
-<?php
-echo WT_JS_END;
+$controller
+	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
+	->addInlineJavascript('function showchanges() { window.location="' .$controller->record->getRawUrl() . '"; }')
+	->addInlineJavascript('jQuery("#repo-tabs").tabs();')
+	->addInlineJavascript('jQuery("#repo-tabs").css("visibility", "visible");');
 
 echo '<div id="repo-details">';
 echo '<h2>', $controller->record->getFullName(), '</h2>';

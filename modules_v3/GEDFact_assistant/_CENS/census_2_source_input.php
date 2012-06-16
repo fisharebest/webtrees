@@ -965,7 +965,7 @@ if (!defined('WT_WEBTREES')) {
 			<option id="USOPT" name="USOPT" value="USA">USA</option>
 		</select>
 
-		<script type="text/javascript">
+		<script>
 		if (TheCenYear=='') {
 			var censyear = new DynamicOptionList();
 			censyear.addDependentFields("censCtry","censYear");
@@ -1027,7 +1027,7 @@ if (!defined('WT_WEBTREES')) {
 	<div class="cens_sour_scs">
 		<div class="cens_sour_1">
 			<div class="cens_sour_2"><?php echo WT_I18N::translate('Title'); ?></div>
-			<script type="text/javascript">
+			<script>
 				document.writeln('<input id="Titl" name="Titl" type="text" value="<?php echo WT_I18N::translate('Census transcript'),' - ',$wholename, ' - ', WT_I18N::translate('Household'); ?>">');
 			</script>
 		</div>

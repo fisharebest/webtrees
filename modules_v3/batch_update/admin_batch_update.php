@@ -2,7 +2,7 @@
 // Batch update module
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2008  PGV Development Team.  All rights reserved.
@@ -91,7 +91,7 @@ class batch_update {
 			if (substr($this->action, -4)=='_all') {
 				// Reset - otherwise we might "undo all changes", which refreshes the
 				// page, which makes them all again!
-				$html.='<script type="text/javascript">reset_reload();</script>';
+				$html.='<script>reset_reload();</script>';
 			} else {
 				if ($this->curr_xref) {
 					// Create an object, so we can get the latest version of the name.
@@ -290,7 +290,7 @@ class batch_update {
 	// Javascript that gets included on every page
 	static function getJavascript() {
 		return
-			'<script type="text/javascript">'.
+			'<script>'.
 			'function reset_reload() {'.
 			' var bu_form=document.getElementById("batch_update_form");'.
 			' bu_form.xref.value="";'.

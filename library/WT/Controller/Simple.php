@@ -2,7 +2,7 @@
 // Base controller for all popup pages
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -43,7 +43,7 @@ class WT_Controller_Simple extends WT_Controller_Base {
 	// Restrict access
 	public function requireAdminLogin() {
 		if (!WT_USER_IS_ADMIN) {
-			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
+			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
 			exit;
 		}
 		return $this;
@@ -55,7 +55,7 @@ class WT_Controller_Simple extends WT_Controller_Base {
 			$ged_id==WT_GED_ID && !WT_USER_GEDCOM_ADMIN ||
 			$ged_id!=WT_GED_ID && userGedcomAdmin(WT_USER_ID, $gedcom_id)
 		) {
-			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
+			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
 			exit;
 		}
 		return $this;
@@ -64,7 +64,7 @@ class WT_Controller_Simple extends WT_Controller_Base {
 	// Restrict access
 	public function requireMemberLogin() {
 		if (!WT_USER_ID) {
-			$this->addInlineJavaScript('opener.window.location.reload(); window.close();');
+			$this->addInlineJavascript('opener.window.location.reload(); window.close();');
 			exit;
 		}
 		return $this;

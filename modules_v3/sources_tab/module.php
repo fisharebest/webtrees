@@ -89,7 +89,7 @@ class sources_tab_WT_Module extends WT_Module implements WT_Module_Tab {
 		<br>
 		<?php
 		if (!$SHOW_LEVEL2_NOTES) {
-			echo WT_JS_START, 'jQuery("tr.row_sour2").toggle();', WT_JS_END;
+			echo '<script>jQuery("tr.row_sour2").toggle();</script>';
 		}
 		return '<div id="'.$this->getName().'_content">'.ob_get_clean().'</div>';
 	}

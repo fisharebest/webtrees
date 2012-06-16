@@ -199,7 +199,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 				if ($TEXT_DIRECTION=="rtl") $content .= $linkNextImage;
 				$content .= "<a href=\"#\" onclick=\"togglePlay(); return false;\" id=\"play_stop\" class=\"".$icon_class."\" title=\"".WT_I18N::translate('Play')."/".WT_I18N::translate('Stop').'"></a>';
 				if ($TEXT_DIRECTION=="ltr") $content .= $linkNextImage;
-				$content .= '</div>'.WT_JS_START.'
+				$content .= '</div><script>
 					var play = false;
 						function togglePlay() {
 							if (play) {
@@ -223,10 +223,10 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 								jQuery("#block_'.$block_id.'").load("index.php?ctype='.$ctype.'&action=ajax&block_id='.$block_id.'&start=1");
 							}
 						}
-					'.WT_JS_END;
+					</script>';
 			}
 			if ($start) {
-				$content .= WT_JS_START.'togglePlay();'.WT_JS_END;
+				$content .= '<script>togglePlay();</script>';
 			}
 			$content .= '<div class="center" id="random_picture_content'.$block_id.'">';
 			$content .= '<table id="random_picture_box"><tr><td';
@@ -307,7 +307,6 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'filter_photo',       safe_POST_bool('filter_photo'));
 			set_block_setting($block_id, 'filter_tombstone',   safe_POST_bool('filter_tombstone'));
 			set_block_setting($block_id, 'filter_video',       safe_POST_bool('filter_video'));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 

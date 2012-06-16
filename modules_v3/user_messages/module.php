@@ -153,7 +153,6 @@ class user_messages_WT_Module extends WT_Module implements WT_Module_Block {
 	public function configureBlock($block_id) {
 		if (safe_POST_bool('save')) {
 			set_block_setting($block_id, 'block',  safe_POST_bool('block'));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 

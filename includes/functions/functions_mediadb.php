@@ -1758,7 +1758,7 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	}
 	echo "</table>";
 ?>
-		<script type="text/javascript">
+		<script>
 			var formid = '<?php echo $formid; ?>';
 			function updateFormat(filename) {
 				var extsearch=/\.([a-zA-Z]{3,4})$/;

@@ -160,8 +160,8 @@ elseif ($action=='setup') {
 	$controller
 		->setPageTitle($report_array['title'])
 		->pageHeader()
-		->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
-		->addExternalJavaScript('js/autocomplete.js');
+		->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
+		->addExternalJavascript('js/autocomplete.js');
 
 	init_calendar_popup();
 	echo '<div id="reportengine-page">

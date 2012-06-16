@@ -36,7 +36,7 @@ class WT_Controller_Base {
 	protected $page_header  =false;              // Have we printed a page header?
 	private   $page_title   =WT_WEBTREES;        // <head><title> $page_title </title></head>
 
-	// The controller accumulates JavaScript (inline and external), and renders it in the footer
+	// The controller accumulates Javascript (inline and external), and renders it in the footer
 	const JS_PRIORITY_HIGH   = 0;
 	const JS_PRIORITY_NORMAL = 1;
 	const JS_PRIORITY_LOW    = 2;
@@ -49,9 +49,11 @@ class WT_Controller_Base {
 
 	// Startup activity
 	public function __construct() {
-		// Every page uses jQuery and jQueryUI
-		//$this->addExternalJavaScript(WT_JQUERY_URL);
-		//$this->addExternalJavaScript(WT_JQUERYUI_URL);
+		// (almost?) every page uses these scripts....
+		$this
+			->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
+			->addExternalJavascript(WT_JQUERY_URL)
+			->addExternalJavascript(WT_JQUERYUI_URL);
 	}
 
 	// Shutdown activity
@@ -137,16 +139,16 @@ class WT_Controller_Base {
 		return $this;
 	}
 
-	// Make a list of external JavaScript, so we can render them in the footer
-	public function addExternalJavaScript($script_name) {
+	// Make a list of external Javascript, so we can render them in the footer
+	public function addExternalJavascript($script_name) {
 		$this->external_javascript[$script_name]=true;
 		return $this;
 	}
 
-	// Make a list of inline JavaScript, so we can render them in the footer
+	// Make a list of inline Javascript, so we can render them in the footer
 	// NOTE: there is no need to use "jQuery(document).ready(function(){...})", etc.
-	// as this JavaScript won't be inserted until the very end of the page.
-	public function addInlineJavaScript($script, $priority=self::JS_PRIORITY_NORMAL) {
+	// as this Javascript won't be inserted until the very end of the page.
+	public function addInlineJavascript($script, $priority=self::JS_PRIORITY_NORMAL) {
 		if (WT_DEBUG) {
 			/* Show where the JS was added */
 			$backtrace=debug_backtrace();
@@ -157,20 +159,20 @@ class WT_Controller_Base {
 		return $this;
 	}
 
-	// We've collected up JavaScript fragments while rendering the page.
+	// We've collected up Javascript fragments while rendering the page.
 	// Now display them.
-	public function getJavaScript() {
+	public function getJavascript() {
 		// Load external libraries first
 		$html='';
 		foreach (array_keys($this->external_javascript) as $script_name) {
-			$html.=PHP_EOL.'<script type="text/javascript" src="'.htmlspecialchars($script_name).'"></script>';
+			$html.=PHP_EOL.'<script src="'.htmlspecialchars($script_name).'"></script>';
 		}
 		// Process the scripts, in priority order
 		if ($this->inline_javascript) {
-			$html.='<script>';
+			$html.=PHP_EOL.'<script>';
 			foreach ($this->inline_javascript as $scripts) {
 				foreach ($scripts as $script) {
-					$html.=$script.PHP_EOL;
+					$html.=$script;
 				}
 			}
 			$html.='</script>';
@@ -207,13 +209,11 @@ class WT_Controller_Base {
 			$title.=' - '.$META_TITLE;
 		}
 
-		$javascript=
-			'<!--[if lt IE 9]><script src="'.WT_STATIC_URL.'js/html5.js"></script><![endif]-->
-			<script type="text/javascript" src="'.WT_JQUERY_URL.'"></script>
-			<script type="text/javascript" src="'.WT_JQUERYUI_URL.'"></script>
-			<script type="text/javascript" src="'.WT_STATIC_URL.'js/jquery/jquery.jeditable.min.js"></script>
-			<script>
-			// Give JavaScript access to some PHP constants
+		// This javascript needs to be loaded in the header, *before* the CSS.
+		// All other javascript should be defered until the end of the page
+		$javascript= '<!--[if lt IE 9]><script src="'.WT_STATIC_URL.'js/html5.js"></script><![endif]-->';
+		// Give Javascript access to some PHP constants
+		$this->addInlineJavascript('
 			var WT_STATIC_URL  = "'.WT_STATIC_URL.'";
 			var WT_THEME_DIR   = "'.WT_THEME_DIR.'";
 			var WT_MODULES_DIR = "'.WT_MODULES_DIR.'";
@@ -225,32 +225,30 @@ class WT_Controller_Base {
 			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 			var WT_LOCALE      = "'.WT_LOCALE.'";
 			var accesstime     = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
+		');
 	
 		// Temporary fix for access to main menu hover elements on android touch devices
+		$this->addInlineJavascript('
 			var ua = navigator.userAgent.toLowerCase();
 			var isAndroid = ua.indexOf("android") > -1;
 			if(isAndroid) {
 				jQuery("#main-menu > li > a").attr("href", "#");
 				jQuery("a.icon_arrow").attr("href", "#");
 			}
-		</script>
-		<script src="'.WT_STATIC_URL.'js/webtrees.js" type="text/javascript"></script>';
+		');
 		
 		header('Content-Type: text/html; charset=UTF-8');
 		require WT_ROOT.$headerfile;
 
 		// Flush the output, so the browser can render the header and load javascript
 		// while we are preparing data for the page
-		flush();
 		if (ini_get('output_buffering')) {
 			ob_flush();
 		}
+		flush();
 
 		// Once we've displayed the header, we should no longer write session data.
 		Zend_Session::writeClose();
-
-		// Allow the browser to format the header/menus while we generate the page
-		flush();
 
 		// We've displayed the header - display the footer automatically
 		$this->page_header=true;
@@ -266,7 +264,7 @@ class WT_Controller_Base {
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();
 		}
-		echo $this->getJavaScript();
+		echo $this->getJavascript();
 		echo '</body></html>';
 
 		return $this;

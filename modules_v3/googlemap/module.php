@@ -200,7 +200,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			->requireAdminLogin()
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
 			->pageHeader()
-			->addInlineJavaScript('jQuery("#tabs").tabs();');
+			->addInlineJavascript('jQuery("#tabs").tabs();');
 
 
 		if ($action=='update') {
@@ -707,11 +707,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$controller
 			->setPageTitle(/* I18N: %s is a person's name */ WT_I18N::translate('Pedigree map of %s', $controller->getPersonName()))
 			->pageHeader()
-			->addExternalJavaScript('js/autocomplete.js')
-			->addInLineJavaScript('var pastefield;
-			function paste_id(value) {
-				pastefield.value=value;
-			}');
+			->addExternalJavascript('js/autocomplete.js')
+			->addInLineJavascript('var pastefield; function paste_id(value) {pastefield.value=value;}');
 
 		echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 		echo '<div><table><tr><td valign="middle">';

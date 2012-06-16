@@ -126,7 +126,6 @@ class recent_changes_WT_Module extends WT_Module implements WT_Module_Block {
 			set_block_setting($block_id, 'sortStyle', safe_POST('sortStyle', array('name', 'date_asc', 'date_desc'), 'date_desc'));
 			set_block_setting($block_id, 'hide_empty', safe_POST_bool('hide_empty'));
 			set_block_setting($block_id, 'block', safe_POST_bool('block'));
-			echo WT_JS_START, 'window.opener.location.href=window.opener.location.href;window.close();', WT_JS_END;
 			exit;
 		}
 

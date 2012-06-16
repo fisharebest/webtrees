@@ -583,22 +583,16 @@ class WT_Controller_Search extends WT_Controller_Base {
 		// ---- section to search and display results on a general keyword search
 		if ($this->action=="general" || $this->action=="soundex" || $this->action=="replace") {
 			if ($this->myindilist || $this->myfamlist || $this->mysourcelist || $this->mynotelist) {
+				$this->addInlineJavascript('jQuery("#search-result-tabs").tabs();');
+				$this->addInlineJavascript('jQuery("#search-result-tabs").css("visibility", "visible");');
+				$this->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
 				echo '<br>';
-			echo WT_JS_START;
-			?>	jQuery(document).ready(function() {
-					jQuery("#search-result-tabs").tabs();
-					jQuery("#search-result-tabs").css("visibility", "visible");
-					jQuery(".loading-image").css("display", "none");
-				});
-			<?php
-			echo WT_JS_END;
-			echo '<div class="loading-image">&nbsp;</div>';
-			echo '<div id="search-result-tabs">
-				<ul>';
-					if ($this->myindilist) {echo '<li><a href="#searchAccordion-indi"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';}
-					if ($this->myfamlist) {echo '<li><a href="#searchAccordion-fam"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';}
-					if ($this->mysourcelist) {echo '<li><a href="#searchAccordion-source"><span id="mediasource">', WT_I18N::translate('Sources'), '</span></a></li>';}
-					if ($this->mynotelist) {echo '<li><a href="#searchAccordion-note"><span id="notesource">', WT_I18N::translate('Notes'), '</span></a></li>';}
+				echo '<div class="loading-image">&nbsp;</div>';
+				echo '<div id="search-result-tabs"><ul>';
+				if ($this->myindilist) {echo '<li><a href="#searchAccordion-indi"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';}
+				if ($this->myfamlist) {echo '<li><a href="#searchAccordion-fam"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';}
+				if ($this->mysourcelist) {echo '<li><a href="#searchAccordion-source"><span id="mediasource">', WT_I18N::translate('Sources'), '</span></a></li>';}
+				if ($this->mynotelist) {echo '<li><a href="#searchAccordion-note"><span id="notesource">', WT_I18N::translate('Notes'), '</span></a></li>';}
 				echo '</ul>';
 
 				// individual results
@@ -623,7 +617,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						}
 					}
 				echo '</div>';//#searchAccordion-indi
-				echo WT_JS_START,'jQuery("#searchAccordion-indi").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
+				$this->addInlineJavascript('jQuery("#searchAccordion-indi").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
 
 				// family results
 				echo '<div id="searchAccordion-fam">';
@@ -647,7 +641,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						}
 					}
 				echo '</div>';//#searchAccordion-fam
-				echo WT_JS_START,'jQuery("#searchAccordion-fam").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
+				$this->addInlineJavascript('jQuery("#searchAccordion-fam").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
 
 				// source results
 				echo '<div id="searchAccordion-source">';
@@ -671,7 +665,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						}
 					}
 				echo '</div>';//#searchAccordion-source
-				echo WT_JS_START,'jQuery("#searchAccordion-source").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
+				$this->addInlineJavascript('jQuery("#searchAccordion-source").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
 
 				// note results
 				echo '<div id="searchAccordion-note">';
@@ -695,7 +689,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						}
 					}
 				echo '</div>';//#searchAccordion-note
-				echo WT_JS_START,'jQuery("#searchAccordion-note").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});', WT_JS_END;
+				$this->addInlineJavascript('jQuery("#searchAccordion-note").accordion({active:0, autoHeight: false, collapsible: true, icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }});');
 
 				$GEDCOM=WT_GEDCOM;
 				load_gedcom_settings(WT_GED_ID);

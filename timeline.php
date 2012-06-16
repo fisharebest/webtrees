@@ -4,7 +4,7 @@
 // Use the $pids array to set which individuals to show on the chart
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -31,10 +31,10 @@ require './includes/session.php';
 $controller=new WT_Controller_Timeline();
 $controller
 	->pageHeader()
-	->addExternalJavaScript('js/autocomplete.js');
+	->addExternalJavascript('js/autocomplete.js');
 
 ?>
-<script type="text/javascript">
+<script>
 <!--
 var pastefield = null;
 function paste_id(value) {
@@ -229,7 +229,6 @@ if (N) {
 }
 document.onmousemove = MM;
 document.onmouseup = MU;
-//-->
 </script>
 <h2><?php echo WT_I18N::translate('Timeline'); ?></h2>
 <form name="people" action="timeline.php">
@@ -384,8 +383,7 @@ if (count($controller->people)>0) {
 			</table><br><br><br>
 		</div><br><br><br><br>
 	<?php } ?>
-	<script type="text/javascript">
-	<!--
+	<script>
 	var bottomy = <?php echo ($baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale)); ?>-5;
 	var topy = <?php echo $baseyoffset; ?>;
 	var baseyear = <?php echo $controller->baseyear-(25/$controller->scale); ?>;
@@ -403,13 +401,10 @@ if (count($controller->people)>0) {
 
 	var bheight=<?php echo $controller->bheight; ?>;
 	var scale=<?php echo $controller->scale; ?>;
-	//-->
 	</script>
 </div>
 <?php } ?>
-<script type="text/javascript">
-<!--
+<script>
 	timeline_chart_div = document.getElementById("timeline_chart");
 	if (timeline_chart_div) timeline_chart_div.style.height = '<?php echo $baseyoffset+(($controller->topyear-$controller->baseyear)*$controller->scale*1.1); ?>px';
-//-->
 </script>

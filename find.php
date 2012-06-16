@@ -133,12 +133,12 @@ case "specialchar":
 case "facts":
 	$controller
 		->setPageTitle(WT_I18N::translate('Find a fact or event'))
-		->addInlineJavaScript('initPickFact();');
+		->addInlineJavascript('initPickFact();');
 	break;
 }
 $controller->pageHeader();
 
-echo WT_JS_START;
+echo '<script>';
 ?>
 	function pasteid(id, name, thumb) {
 		if (thumb) {
@@ -177,7 +177,7 @@ echo WT_JS_START;
 		return true;
 	}
 <?php
-echo WT_JS_END;
+echo '</script>';
 
 $options = array();
 $options["option"][]= "findindi";
@@ -356,7 +356,7 @@ if ($type == "facts") {
 	<table class="list_table width100" border="0">
 	<tr><td class="list_label" style="padding: 5px; font-weight: normal; white-space: normal;">' ;
 	getPreselectedTags($preselDefault, $preselCustom);
-	echo WT_JS_START; ?>
+	echo '<script>'; ?>
 	// A class representing a default tag
 	function DefaultTag(id, name, selected) {
 		this.Id=id;
@@ -493,7 +493,7 @@ if ($type == "facts") {
 		window.close();
 		return false;
 	}
-	<?php echo WT_JS_END;
+	<?php echo '</script>';
 	echo '<div id="layDefinedTags"><table id="tabDefinedTags">
 		<thead><tr>
 			<th>&nbsp;</th>
@@ -835,4 +835,4 @@ echo '<h4><a href="#" onclick="if (window.opener.showchanges) window.opener.show
 echo "</div>"; // Close div="find-page"
 
 // Set focus to the input field
-if ($type!='facts') echo WT_JS_START, 'document.filter', $type, '.filter.focus();', WT_JS_END;
+if ($type!='facts') echo '<script>', 'document.filter', $type, '.filter.focus();', '</script>';

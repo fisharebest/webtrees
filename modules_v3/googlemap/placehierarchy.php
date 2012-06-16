@@ -187,7 +187,7 @@ function create_map($placelevels) {
 	echo '<td style="margin-left:15px; float:right; ">';
 
 	if ($STREETVIEW) {
-		$controller->addInlineJavaScript('
+		$controller->addInlineJavascript('
 			function update_sv_params(placeid) {
 				var svlati = document.getElementById("sv_latiText").value.slice(0, -1);
 				var svlong = document.getElementById("sv_longText").value.slice(0, -1);
@@ -461,7 +461,7 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $place_names) {
 	global $GOOGLEMAP_MAP_TYPE, $GOOGLEMAP_PH_WHEEL, $GOOGLEMAP_PH_CONTROLS, $GOOGLEMAP_PH_MARKER, $plzoom, $controller;
 
-	$controller->addInlineJavaScript('
+	$controller->addInlineJavascript('
 		jQuery("head").append(\'<link rel="stylesheet" type="text/css" href="'.WT_STATIC_URL.WT_MODULES_DIR.'googlemap/css/wt_v3_googlemap.css" />\');
 		var numMarkers = "'.$numfound.'";
 		var mapLevel   = "'.$level.   '";
@@ -589,14 +589,14 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 	$numls = count($parent)-1;
 	$levelo=check_were_am_i($numls, $levelm);
 	if ($numfound<2 && ($level==1 || !(isset($levelo[($level-1)])))) {
-		$controller->addInlineJavaScript('map.maxZoom=6;');
+		$controller->addInlineJavascript('map.maxZoom=6;');
 		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+5);\n";
 	} else if ($numfound<2 && !isset($levelo[($level-2)])) {
 		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+6);\n";
 	} else if ($level==2) {
-		$controller->addInlineJavaScript('map.maxZoom=10');
+		$controller->addInlineJavascript('map.maxZoom=10');
 		// echo "zoomlevel = map.getBoundsZoomLevel(bounds);\n";
 		// echo " map.setCenter(new google.maps.LatLng(0, 0), zoomlevel+8);\n";
 	} else if ($numfound<2 && $level>1) {
@@ -662,5 +662,5 @@ function map_scripts($numfound, $level, $parent, $linklevels, $placelevels, $pla
 			print_gm_markers($place, $level, $parent, $place['place_id'], $linklevels, $placelevels);
 		}
 	}
-	$controller->addInlineJavaScript(ob_get_clean());
+	$controller->addInlineJavascript(ob_get_clean());
 }

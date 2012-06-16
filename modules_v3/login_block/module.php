@@ -44,7 +44,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 		global $controller;
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$controller->addInlineJavaScript('
+		$controller->addInlineJavascript('
 				jQuery("#new_passwd").hide();
 				jQuery("#passwd_click").click(function() {
 					jQuery("#new_passwd").slideToggle(100, function() {

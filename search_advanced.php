@@ -28,9 +28,10 @@ require './includes/session.php';
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 $controller=new WT_Controller_AdvancedSearch();
-$controller->pageHeader();
+$controller
+	->pageHeader();
 
-echo WT_JS_START;
+echo '<script>';
 ?>
 	function checknames(frm) {
 		action = "<?php echo $controller->action; ?>";
@@ -124,7 +125,7 @@ echo WT_JS_START;
 		elm.appendChild(sel);
 	}
 <?php
-echo WT_JS_END;
+echo '</script>';
 ?>
 <div id="search-page">
 <h2 class="center"><?php echo $controller->getPageTitle(); ?></h2>

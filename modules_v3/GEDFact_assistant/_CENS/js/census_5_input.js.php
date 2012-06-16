@@ -4,7 +4,7 @@
 // Census information about an individual
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -31,7 +31,7 @@
 // CONFIG notes. Below are some comments that point to where this script can be customized.
 // Note: Make sure to include a <tbody></tbody> in your table's HTML
 
-echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/chapman_codes.js" type="text/javascript"></script>';
+echo '<script src="', WT_STATIC_URL, WT_MODULES_DIR, 'GEDFact_assistant/_CENS/js/chapman_codes.js"></script>';
 ?>
 <script>
 

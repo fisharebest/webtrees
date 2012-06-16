@@ -2,7 +2,7 @@
 // Searches based on user query.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -30,12 +30,10 @@ require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 $controller=new WT_Controller_Search();
 $controller
 	->pageHeader()
-	->addExternalJavaScript('js/autocomplete.js');
+	->addExternalJavascript('js/autocomplete.js');
 
 ?>
-
-<script type="text/javascript">
-<!--
+<script>
 	function checknames(frm) {
 		action = "<?php echo $controller->action; ?>";
 		if (action == "general")
@@ -88,7 +86,6 @@ $controller
 		return true;
 	}
 
-//-->
 </script>
 <?php
 echo '<div id="search-page">
@@ -97,7 +94,7 @@ echo '<div id="search-page">
 	echo '<form method="post" name="searchform" onsubmit="return checknames(this);" action="search.php"><input type="hidden" name="action" value="', $controller->action, '"><input type="hidden" name="isPostBack" value="true">
 	<div id="search-page-table">';
   		?>      
-		<script type="text/javascript">
+		<script>
 	        function paste_char(value) {
 	            document.searchform.query.value+=value;
 	        }
@@ -154,8 +151,7 @@ echo '<div id="search-page">
 					<div class="label">',  WT_I18N::translate('Replace with'), '</div>
 					<div class="value"><input tabindex="2" name="replace" value="" type="text"></div>';			
 				?>
-				<script type="text/javascript">
-				<!--
+				<script>
 					function checkAll(box) {
 						if (!box.checked) {
 							box.form.replaceNames.disabled = false;
@@ -168,7 +164,6 @@ echo '<div id="search-page">
 							box.form.replacePlacesWord.disabled = true;
 						}
 					}
-				//-->
 				</script>
 				<?php
 				echo '<div class="label">', WT_I18N::translate('Search'), '</div>

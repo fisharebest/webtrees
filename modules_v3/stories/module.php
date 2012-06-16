@@ -226,9 +226,9 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavaScript('js/autocomplete.js')
+					->addExternalJavascript('js/autocomplete.js')
 					// for the findindi link
-					->addInlineJavaScript('var pastefield;function paste_id(value){pastefield.value=value;}');
+					->addInlineJavascript('var pastefield;function paste_id(value){pastefield.value=value;}');
 
 				// "Help for this page" link
 				echo '<div id="page_help">', help_link('add_story', $this->getName()), '</div>';
@@ -319,8 +319,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 			$controller->setPageTitle($this->getTitle());
 			$controller->pageHeader();
 			$controller
-				->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-				->addInlineJavaScript('
+				->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+				->addInlineJavascript('
 					jQuery("#story_table").dataTable({
 						"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 						"bAutoWidth":false,
@@ -390,8 +390,8 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 		$controller->setPageTitle($this->getTitle());
 		$controller->pageHeader();
 		$controller
-			->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-			->addInlineJavaScript('
+			->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+			->addInlineJavascript('
 				jQuery("#story_table").dataTable({
 					"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 					"bAutoWidth":false,

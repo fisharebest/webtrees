@@ -49,7 +49,7 @@ $controller
 	->requireEditorLogin() /* Editing may be disabled, even for admins */
 	->setPageTitle(WT_I18N::translate('Upload media files'))
 	->pageHeader()
-	->addInlineJavaScript('
+	->addInlineJavascript('
 	function checkpath(folder) {
 		value = folder.value;
 		if (value.substr(value.length-1,1) == "/") value = value.substr(0, value.length-1);

@@ -202,8 +202,8 @@ case 'load_json':
 
 $controller
 	->pageHeader()
-	->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-	->addInlineJavaScript('
+	->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+	->addInlineJavascript('
 		var oTable=jQuery("#log_list").dataTable( {
 			"sDom": \'<"H"pf<"dt-clear">irl>t<"F"pl>\',
 			"bProcessing": true,
