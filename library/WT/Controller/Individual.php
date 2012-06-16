@@ -225,7 +225,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			}
 		}
 		if ($this->record->canEdit() && !$event->getIsOld()) {
-			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"#\" onclick=\"delete_record('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
+			echo "<div class=\"deletelink\"><a class=\"font9 deleteicon\" href=\"#\" onclick=\"return delete_fact('".$this->record->getXref()."', ".$linenum.", '', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\" title=\"".WT_I18N::translate('Delete name')."\"><span class=\"link_text\">".WT_I18N::translate('Delete name')."</span></a></div>";
 			echo "<div class=\"editlink\"><a href=\"#\" class=\"font9 editicon\" onclick=\"edit_name('".$this->record->getXref()."', ".$linenum."); return false;\" title=\"".WT_I18N::translate('Edit name')."\"><span class=\"link_text\">".WT_I18N::translate('Edit name')."</span></a></div>";
 		}
 		echo '</dd>';
@@ -303,7 +303,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 						echo "<a class=\"font9\" href=\"#\" onclick=\"add_new_record('".$this->record->getXref()."', 'SEX'); return false;\">".WT_I18N::translate('Edit')."</a>";
 					} else {
 							echo "<a class=\"font9\" href=\"#\" onclick=\"edit_record('".$this->record->getXref()."', ".$event->getLineNumber()."); return false;\">".WT_I18N::translate('Edit')."</a> | ";
-							echo "<a class=\"font9\" href=\"#\" onclick=\"delete_record('".$this->record->getXref()."', ".$event->getLineNumber()."); return false;\">".WT_I18N::translate('Delete')."</a>";
+							echo "<a class=\"font9\" href=\"#\" onclick=\"return delete_fact('".$this->record->getXref()."', ".$event->getLineNumber().", '', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');\">".WT_I18N::translate('Delete')."</a>";
 					}
 				}
 			}

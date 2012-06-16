@@ -6,8 +6,6 @@
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
 //
-// Modifications Copyright (c) 2010 Greg Roach
-//
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License, or
@@ -404,6 +402,13 @@ function addnewparent(pid, famtag) {
 
 function addnewparentfamily(pid, famtag, famid) {
 	window.open('edit_interface.php?action=addnewparent&pid='+pid+'&famtag='+famtag+'&famid='+famid+'&'+'&accesstime='+accesstime, '_blank', edit_window_specs);
+	return false;
+}
+
+function delete_fact(pid, linenum, mediaid, message) {
+	if (confirm(message)) {
+		window.open('edit_interface.php?action=delete&pid='+pid+'&linenum='+linenum+'&mediaid='+mediaid, '_blank', edit_window_specs);
+	}
 	return false;
 }
 

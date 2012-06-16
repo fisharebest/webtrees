@@ -574,7 +574,7 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 					}
 					// Unlink Media
 					$submenu = new WT_Menu("&nbsp;&nbsp;" . WT_I18N::translate('Unlink Media') . "&nbsp;&nbsp;", "#", "right");
-					$submenu->addOnclick("return delete_record('$pid', 'OBJE', '".$rowm['m_media']."');");
+					$submenu->addOnclick("return delete_fact('$pid', 'OBJE', '".$rowm['m_media']."', '".WT_I18N::translate('Are you sure you want to delete this fact?')."');");
 					$submenu->addClass($submenu_class, $submenu_hoverclass);
 					$menu->addSubMenu($submenu);
 				}

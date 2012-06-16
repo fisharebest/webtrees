@@ -233,14 +233,6 @@ class WT_Controller_Base {
 				jQuery("#main-menu > li > a").attr("href", "#");
 				jQuery("a.icon_arrow").attr("href", "#");
 			}
-		
-		function delete_record(pid, linenum, mediaid) {
-			if (!mediaid) mediaid="";
-			if (confirm(\''.WT_I18N::translate('Are you sure you want to delete this fact?').'\')) {
-				window.open(\'edit_interface.php?action=delete&pid=\'+pid+\'&linenum=\'+linenum+\'&mediaid=\'+mediaid, \'_blank\', edit_window_specs);
-			}
-			return false;
-		}
 		</script>
 		<script src="'.WT_STATIC_URL.'js/webtrees.js" type="text/javascript"></script>';
 		
