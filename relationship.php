@@ -93,8 +93,8 @@ if (!empty($_SESSION['pid2']) && $_SESSION['pid2']!=$pid2) {
 // -- print html header information
 $controller
 	->pageHeader()
-	->addInlineJavaScript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
-	->addExternalJavaScript('js/autocomplete.js');
+	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
+	->addExternalJavascript('js/autocomplete.js');
 
 if (WT_USE_LIGHTBOX) {
 	$album = new lightbox_WT_Module();
@@ -218,7 +218,7 @@ if (WT_USE_LIGHTBOX) {
 						}
 					}
 					if (!$followspouse) {
-						$controller->addInlineJavaScript('document.getElementById("followspousebox").className="facts_valuered";');
+						$controller->addInlineJavascript('document.getElementById("followspousebox").className="facts_valuered";');
 						echo '<input class="error" type="submit" value="', WT_I18N::translate('Check relationships by marriage'), '" onclick="people.followspouse.checked=\'checked\';">';
 					}
 					echo '</td>';
@@ -489,7 +489,7 @@ if ($pid1 && $pid2) {
 // Need to expand the div to include the children, or we'll overlap the footer.
 // $maxyoffset is the top edge of the lowest box.
 $controller
-	->addInlineJavaScript('
+	->addInlineJavascript('
 		relationship_chart_div = document.getElementById("relationship_chart");
 		if (relationship_chart_div) {
 			relationship_chart_div.style.height = "'.($maxyoffset+$Dbheight+20).'px";
