@@ -30,9 +30,13 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Simple();
 $controller
+	->requireMemberLogin()
+	->addExternalJavascript(WT_JQUERY_URL)
+	->addExternalJavascript(WT_JQUERYUI_URL)
+	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->setPageTitle(WT_I18N::translate('Add a new media object'))
 	->pageHeader()
-	->addExternalJavascript('js/autocomplete.js')
 	->addInlineJavascript('
 	// Shared Notes =========================
 	function findnote(field) {
