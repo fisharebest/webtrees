@@ -1,40 +1,40 @@
 /*
- * Style for colors theme
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2012 webtrees development team.
- *
- * Derived from PhpGedView Cloudy theme
- * Original author w.a. bastein http://genealogy.bastein.biz
- * Copyright (C) 2010  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id$
- */
+* Style for colors theme
+*
+* webtrees: Web based Family History software
+* Copyright (C) 2012 webtrees development team.
+*
+* Derived from PhpGedView Cloudy theme
+* Original author w.a. bastein http://genealogy.bastein.biz
+* Copyright (C) 2010  PGV Development Team.  All rights reserved.
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+* $Id$
+*/
 
 /* Set defaults */
 
 body{font:12px tahoma, arial, helvetica, sans-serif;}
 legend,.details_label{font-weight:700;}
-a{color:#333;text-decoration: none;}
-a:hover{color: #f00;text-decoration: none;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#f00;text-decoration:none;}
 :focus{outline-style:none;}
 h2{color:#333;font-size:18px;font-weight:700;}
 h4{font-weight:700;}
-hr{margin-top: 5px;}
+hr{margin-top:5px;}
 ul{margin:8px;padding-left:15px;padding-right:15px;}
 th{font-weight:100;}
 select{border:1px solid #ccc;}
@@ -66,7 +66,7 @@ html[dir='rtl'] .title{float:right;margin-right:12px;}
 #topMenu ul {margin:0;padding:0;}
 html[dir='rtl'] #topMenu{float:right;}
 
-#main-menu > li > a {display: block; height: 27px;}
+#main-menu > li > a {display:block;height:27px;}
 #main-menu li{float:left;list-style:none;position:relative;}
 html[dir='rtl'] #main-menu li{float:right;}
 
@@ -77,10 +77,10 @@ html[dir='rtl'] #main-menu ul{right:0;left:auto;}
 html[dir='rtl'] #main-menu ul li a{text-align:right;float:right;padding-right:30px;}
 
 #main-menu #menu-chart li ul{display:none;}
-#main-menu li:hover ul{display:block; } /* main menu hover */
+#main-menu li:hover ul{display:block;} /* main menu hover */
 #main-menu li:hover li{float:none;}
 
-#main-menu #menu-chart li:hover ul{display:block;left:100%;right:auto; margin-top:-47px;position:absolute;}
+#main-menu #menu-chart li:hover ul{display:block;left:100%;right:auto;margin-top:-47px;position:absolute;}
 html[dir='rtl'] #main-menu #menu-chart li:hover ul{right:100%;left:auto;} 
 
 #main-menu > li{background-image:url(../images/sprites-top-menu.png);background-repeat:no-repeat;height:40px;line-height:40px;margin:7px 0 0 16px;text-indent:32px;width:40px;}
@@ -239,10 +239,10 @@ html[dir='rtl'] .makeMenu li ul li{text-align:right;}
 /*
 #menu-language li	{text-align:left;}
 #menu-theme  li		{text-align:left;}
- */
+*/
 
 /* families  */
-#content{clear: both;padding:10px 10px 0 10px;}
+#content{clear:both;padding:10px 10px 0 10px;}
 #content .center a{font-size:13px;}
 #content .center a.warning,#login-box span.error,#calendar-page span.error{color:#f50;}
 
@@ -281,19 +281,19 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 .blockhc{padding:3px 3px 0;}
 .blockhc img{padding-right:3px;}
 
-html[dir='rtl'] .blockh1{background-image: url(../images/right1B.png);}
-html[dir='rtl'] .blockh3{background-image: url(../images/right3.png);}
+html[dir='rtl'] .blockh1{background-image:url(../images/right1B.png);}
+html[dir='rtl'] .blockh3{background-image:url(../images/right3.png);}
 html[dir='rtl'] .blockhc{padding:3px 0 0 3px;}
 html[dir='rtl'] .blockhc img{padding-left:3px;}
 
-#index_title{float: left;}
+#index_title{float:left;}
 
 #main_select,#available_select,#right_select{min-width:150px;}
 
 .user_welcome_block table, .gedcom_block_block  table{margin:auto;}
-.user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align: top;}
+.user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align:top;}
 
-#link_change_blocks {clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;}
+#link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
 
@@ -313,17 +313,17 @@ html[dir='rtl'] #ancestry_chart{margin-right:10px;}
 
 html[dir='rtl'] #descendancy_chart ul{background-position:right top;margin:0 15px 0 0;left:auto;}
 
-#familybook_chart{margin-left: 10px;}
+#familybook_chart{margin-left:10px;}
 
 html[dir='rtl'] #familybook_chart{margin-right:10px;}
 
-#pedigree_chart{position:relative;top:-200px;left:0;z-index: 1;}
+#pedigree_chart{position:relative;top:-200px;left:0;z-index:1;}
 html[dir='rtl'] #pedigree_chart{left:auto;right:0;}
 
-#relationship_chart{margin-left: 10px;}
+#relationship_chart{margin-left:10px;}
 html[dir='rtl'] #relationship_chart{margin-right:10px;}
 
-#timeline_chart{position: relative;top:0;left:0;}
+#timeline_chart{position:relative;top:0;left:0;}
 
 .button{width:60px;}
 .center{text-align:center;}
@@ -332,10 +332,10 @@ html[dir='rtl'] #relationship_chart{margin-right:10px;}
 .gedcom_table{border:1px solid #999;margin:0;width:99%;}
 
 /* style needed for lightbox album icons */
-#medialist-page .list_value_wrap a {background: none;}
-#lb-image_edit a, #lb-image_link a, #lb-image_view a {color:#000000; padding-left: 5px; }
-#lb-image_link a:hover {color:red; }
-.lb-menu > li:hover > ul {top: 28px!important;}
+#medialist-page .list_value_wrap a {background:none;}
+#lb-image_edit a, #lb-image_link a, #lb-image_view a {color:#000000;padding-left:5px;}
+#lb-image_link a:hover {color:red;}
+.lb-menu > li:hover > ul {top:28px!important;}
 
 /* person boxes for charts */
 #index_small_blocks .person_box .pedigree_image,
@@ -356,7 +356,7 @@ html[dir='rtl'] #relationship_chart{margin-right:10px;}
 .list_table{margin:0 auto;}
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
 #medialist-page .list_table_controls  {width:100%;}
-.list_table_controls td {min-width:40px;padding: 1px;text-align:center;}
+.list_table_controls td {min-width:40px;padding:1px;text-align:center;}
 
 .list_label{border:1px solid #999;border-radius:3px;font-weight:700;text-align:center;white-space:nowrap;}
 .list_label_wrap{border:1px solid #999;border-radius:3px;font-weight:700;text-align:center;white-space:normal;}
@@ -376,7 +376,7 @@ html[dir=rtl] .list_value, html[dir=rtl] .list_value_wrap{text-align:right;}
 .facts_labelred,.facts_labelblue{background:#9df;padding:4px;text-align:center;width:20%;}
 .facts_valuered,.facts_valueblue{background:#fff;padding:4px;}
 .facts_labelblue,.facts_valueblue{border:solid #00f 2px;}
-.quickfacts a {font-size:9px; padding:0 3px;}
+.quickfacts a {font-size:9px;padding:0 3px;}
 
 .tab_cell_active{border-right:1pt solid #999;font-size:10px;padding:2pt;text-align:center;width:20%;}
 .tab_cell_inactive{background:#fff;border-right:1pt solid #ccc;border-top:none;font-size:10px;padding:2px;text-align:center;width:20%;}
@@ -437,7 +437,7 @@ html[dir="rtl"] .pedigree_image {float:right;margin:0 0 0 3px;}
 .sublinks_cell{background:#9be;}
 .submenu{font-size:11px;white-space:nowrap;}
 .submenuitem,.submenuitem_rtl,.submenuitem_hover,.submenuitem_hover_rtl{background-color:#fff;border:1px solid #ccc;height:20px;padding:3px 3px 0;white-space:nowrap;}
-.theme_form {font-size:14px;margin:3px;margin-top:0; }
+.theme_form {font-size:14px;margin:3px;margin-top:0;}
 .thumbnail{height:auto;padding:5px;}
 
 .person0{background:#ddf;border:outset #999 1px;border-radius:3px;vertical-align:top;}
@@ -511,7 +511,7 @@ a.showit:hover > span{background:#444;border-bottom:2px solid #000;border-left:1
 
 .ui-autocomplete-input{background:#eea;}
 
-.ui-autocomplete{background:#fff;border:1px solid #000;padding:0;z-index:99999;list-style:none;list-style-position:outside;margin:0;padding:0;max-height:200px;overflow-y:auto;}
+.ui-autocomplete{background:#fff;border:1px solid #000;padding:0;z-index:99999;list-style:none;list-style-position:outside;margin:0;max-height:200px;overflow-y:auto;}
 .ui-autocomplete li{cursor:default;display:block;font:menu;line-height:14px;margin:0;overflow:hidden;padding:2px 5px;}
 
 .ui-autocomplete-loading {background:white url(../images/indicator.gif) right center no-repeat;}
@@ -522,7 +522,7 @@ a.showit:hover > span{background:#444;border-bottom:2px solid #000;border-left:1
 .clearfloat{clear:both;}
 .execution_stats{padding:12px;text-align:center;}
 .gchart{border:1px solid #999;}
-.helpcontent {margin-left:10px; margin-right:10px;}
+.helpcontent {margin-left:10px;margin-right:10px;}
 .helpcontent dt{clear:both;}
 .iwstyle{width:360px;}
 .line1,.line2,.line3{vertical-align:bottom;}
@@ -562,14 +562,14 @@ a.showit:hover > span{background:#444;border-bottom:2px solid #000;border-left:1
 .gedcom_stats_block table td td {vertical-align:middle;}
 .gedcom_stats_block td .stats_value {text-align:center;}
 
- /* ======= Favourites block ========== */
+/* ======= Favourites block ========== */
 .user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
-.add_fav_head {font-weight:900; margin:5px 0;}
+.add_fav_head {font-weight:900;margin:5px 0;}
 .add_fav_head i {margin:0 5px 1px 5px;}
 .add_fav_ref p {margin:5px 0;}
-.add_fav_ref label {display: inline-block; min-width:100px;}
+.add_fav_ref label {display:inline-block;min-width:100px;}
 .add_fav_ref label:after {content:":";}
-.add_fav_ref input {margin: 0 5px;}
+.add_fav_ref input {margin:0 5px;}
 
 #branches-page table{margin:auto;}
 #branches-page p{margin:10px;}
@@ -618,12 +618,12 @@ html[dir='rtl'] #login-form label,html[dir='rtl'] #new_passwd_form label,html[di
 .block .itr,#family-table .itr,#ancestry_chart .itr,#descendancy_chart .itr,#familybook_chart .itr,#hourglass_chart .itr,#relatives_content .itr{position:relative;top:0;}
 
 .popup{display:none;}
-.popup ul {background-image:none !important; font-size:9px; list-style:none; margin:0; padding:0 10px;}
+.popup ul {background-image:none !important;font-size:9px;list-style:none;margin:0;padding:0 10px;}
 .popup  li {padding:1px 5px;}
 .popup  li span {padding:0 5px;}
 .popup  li ul, .popup  li ul li, .popup  li span span {padding:0;}
-.itr:hover .popup {display:block; position:absolute; width:12em;right:0; z-index: 9999;}
-html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
+.itr:hover .popup {display:block;position:absolute;width:12em;right:0;z-index:9999;}
+html[dir='rtl'] .itr:hover .popup {left:0;right:auto;}
 
 /* FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow{width:450px;}
@@ -705,7 +705,7 @@ html[dir='rtl'] #sex{float:left;}
 html[dir='rtl'] dd .editlink, html[dir='rtl']  dd .deletelink {float:left;}
 html[dir='rtl'] #header_accordion1{float:left;}
 html[dir='rtl'] #indi_header{float:right;}
-html[dir='rtl'] #indi_header h3{padding: 0 30px 0 10px;text-align:right;}
+html[dir='rtl'] #indi_header h3{padding:0 30px 0 10px;text-align:right;}
 html[dir='rtl'] #indi_mainimage{float:right;}
 html[dir='rtl'] #indi_mainimage a img{float:right;}
 html[dir='rtl'] #indi_note .fact_NOTE{float:right;margin:0 0 0 10px;}
@@ -747,7 +747,7 @@ html[dir='rtl'] .ui-tabs{direction:rtl;}
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default{float:right;}
 html[dir='rtl'] .ui-dialog-title{float:right;}
-html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em; right:auto;}
+html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em;right:auto;}
 
 /* jQuery over-rides */
 #loading{text-align:center;}

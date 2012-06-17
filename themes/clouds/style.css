@@ -1,28 +1,28 @@
 /*
- * Style for clouds theme
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2012 webtrees development team.
- *
- * Derived from PhpGedView Cloudy theme
- * Original author w.a. bastein http://genealogy.bastein.biz
- * Copyright (C) 2010  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id$
+* Style for clouds theme
+*
+* webtrees: Web based Family History software
+* Copyright (C) 2012 webtrees development team.
+*
+* Derived from PhpGedView Cloudy theme
+* Original author w.a. bastein http://genealogy.bastein.biz
+* Copyright (C) 2010  PGV Development Team.  All rights reserved.
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+* $Id$
 */
 
 body {
@@ -50,8 +50,7 @@ margin:0;
 padding:0;
 }
 
-/* ================= 
-   Header Layout   */
+/* ================= Header Layout */
 #header {
 background-image:url(images/clouds.png);
 height:30px;
@@ -165,9 +164,9 @@ html[dir='rtl'] #main-menu ul li:hover ul {margin-left:auto;margin-right:100%;}
 #main-menu > li {
 background-image:url(images/sprites-top-menu.png);
 background-repeat:no-repeat;
-width:22px; 
+width:22px;
 height:22px;
-line-height:22px; 
+line-height:22px;
 margin:5px 0 0 10px;
 }
 
@@ -347,7 +346,7 @@ position:absolute;
 top:1.1em !important;
 z-index:999;
 }
- .makeMenu li ul li {
+.makeMenu li ul li {
 display:block;
 text-align:left;
 }
@@ -396,7 +395,7 @@ margin-right:5px;
 content:"";
 }
 
-html[dir='rtl'] .makeMenu li ul {left:auto;right: -10px!important;}
+html[dir='rtl'] .makeMenu li ul {left:auto;right:-10px!important;}
 html[dir='rtl'] .makeMenu li ul li {text-align:right;}
 
 /* Tbl hdrs and Light Text */
@@ -460,7 +459,7 @@ font-weight:bold;
 
 .alpha_index
 {
-margin-top: 10px;
+margin-top:10px;
 }
 
 p.center a {
@@ -513,8 +512,8 @@ background:#FFC;
 }
 
 #footer {
-clear: both;
-width: 99%;
+clear:both;
+width:99%;
 }
 
 /* ======= Block styles ========== */
@@ -621,8 +620,8 @@ padding:3px 3px 0;
 .blockhc img {
 padding-right:3px;
 }
-html[dir='rtl'] .blockh1 {background-image: url(images/right1B.png);}
-html[dir='rtl'] .blockh3 {background-image: url(images/right3.png);}
+html[dir='rtl'] .blockh1 {background-image:url(images/right1B.png);}
+html[dir='rtl'] .blockh3 {background-image:url(images/right3.png);}
 html[dir='rtl'] .blockhc {padding:3px 0 0 3px;}
 html[dir='rtl'] .blockhc img {padding-left:3px;}
 
@@ -633,9 +632,9 @@ float:left;
 #main_select,#available_select,#right_select{min-width:150px;}
 
 .user_welcome_block table, .gedcom_block_block  table{margin:auto;}
-.user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align: top;}
+.user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align:top;}
 
-#link_change_blocks {clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;}
+#link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
 
@@ -670,7 +669,7 @@ padding-top:0;
 margin:5px 0;
 }
 
-html[dir='rtl'] #ancestry_chart ul {background-position:right top; margin:0 15px 0 0;left:auto;}
+html[dir='rtl'] #ancestry_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
 html[dir='rtl'] #ancestry_chart li {margin:0;padding:0 2px 0 0;left:auto;}
 
 #descendancy_chart ul {
@@ -685,7 +684,7 @@ padding-bottom:0;
 }
 
 #descendancy_chart li {
-list-style: none;
+list-style:none;
 margin:0 0 2px -15px;
 padding-top:0;
 padding-right:0;
@@ -698,7 +697,7 @@ html[dir='rtl'] #descendancy_chart ul {background-position:right top;margin:0 15
 position:relative;
 top:-200px;
 left:0;
-z-index: 1;
+z-index:1;
 }
 
 html[dir='rtl'] #pedigree_chart {left:auto;right:0;}
@@ -708,9 +707,9 @@ z-index:1;
 }
 
 #timeline_chart {
-position: relative;
-top: 50px;
-left: 0;
+position:relative;
+top:50px;
+left:0;
 }
 
 .compact_view {cursor:url(images/zoomin.png),n-resize;}
@@ -755,11 +754,10 @@ width:99%;
 }
 
 /* style needed for lightbox album icons */
-#medialist-page .list_value_wrap a {background: none;}
-#lb-image_edit a, #lb-image_link a, #lb-image_view a {color:#000000; padding-left: 5px; }
-#lb-image_link a:hover {color:red; }
-.lb-menu > li:hover > ul {top: 28px!important;}
-}
+#medialist-page .list_value_wrap a {background:none;}
+#lb-image_edit a, #lb-image_link a, #lb-image_view a {color:#000000;padding-left:5px;}
+#lb-image_link a:hover {color:red;}
+.lb-menu > li:hover > ul {top:28px!important;}
 
 /* person boxes are used in various charts */
 
@@ -830,7 +828,7 @@ vertical-align:top;
 html[dir=rtl] .list_value,  html[dir=rtl] .list_value_wrap {text-align:right;}
 
 .list_label,.list_value {
-white-space: nowrap;
+white-space:nowrap;
 }
 
 table.width66 {
@@ -874,7 +872,7 @@ text-align:center;
 background:#fff;
 border:1pt solid #999;
 padding:4px;
-color: #003399;
+color:#003399;
 }
 
 .facts_value02 {
@@ -899,7 +897,7 @@ padding:4px 4px 4px 4px;
 border:solid #00f 2px;
 }
 
-.quickfacts a {font-size:9px; padding:0 3px;}
+.quickfacts a {font-size:9px;padding:0 3px;}
 
 .tab_cell_active {
 font-size:10px;
@@ -924,7 +922,7 @@ border-top:none;
 border-bottom:none;
 border-left:none;
 border-right:none;
-height: 5px;
+height:5px;
 }
 
 .tab_inactive_bottom {
@@ -949,7 +947,7 @@ border-right:1pt solid #ccc;
 text-align:center;
 width:20%;
 padding:2px;
-font-size: 20px;
+font-size:20px;
 }
 
 .tab_cell_inactive_empty a {
@@ -957,17 +955,17 @@ color:#7af;
 }
 
 .name1, .name2, .nameZoom {
-font-weight: bold;
+font-weight:bold;
 }
 
 a:hover .name1,a:hover.name2,a:hover .nameZoom  {
-color: #f00;
-font-weight: bold
+color:#f00;
+font-weight:bold
 }
 
 .details1 {
 text-decoration:none;
-font-size: 11px;
+font-size:11px;
 }
 
 .details2 {
@@ -983,10 +981,10 @@ font-weight:bold;
 text-decoration:none;
 }
 
- a:hover .nameZoom {
+a:hover .nameZoom {
 font-weight:bold;
 font-size:14px;
-color: red;
+color:red;
 }
 
 .detailsZoom {
@@ -1179,7 +1177,7 @@ color:#000;
 }
 
 .block {
-color: #000;
+color:#000;
 vertical-align:top;
 
 }
@@ -1190,16 +1188,16 @@ color:#555;
 text-decoration:none;
 font-size:11px;
 background-color:#fff;
-border: 1px solid #ccc;
+border:1px solid #ccc;
 white-space:nowrap;
 padding:3px 3px 0 3px;
 }
 
 .submenuitem_hover,.submenuitem_hover_rtl {
-height:20px; 
-font-size:11px; 
+height:20px;
+font-size:11px;
 white-space:nowrap;
-border:1px solid #ccc; 
+border:1px solid #ccc;
 padding:3px 3px 0 3px;
 }
 
@@ -1440,7 +1438,7 @@ border:solid #00f 2px!important;
 }
 
 .change_old,.namered {
-color: #000!important;
+color:#000!important;
 text-decoration:line-through!important;
 }
 
@@ -1519,7 +1517,7 @@ z-index:1;
 }
 
 .lifespan_timeline {
-position: absolute;
+position:absolute;
 width:100%;
 left:-10px;
 top:-65px;
@@ -1592,7 +1590,6 @@ padding:0;
 list-style-position:outside;
 list-style:none;
 margin:0;
-padding:0;
 max-height:200px;
 overflow-y:auto;
 }
@@ -1612,7 +1609,7 @@ background:#eee;
 }
 
 .sublinks_cell .submenuitem {
-background: #fff;
+background:#fff;
 }
 
 .nowrap {
@@ -1699,21 +1696,21 @@ min-height:40px;
 .gedcom_stats_block table td td {vertical-align:middle;}
 .gedcom_stats_block td .stats_value {text-align:center;}
 
- /* ======= Favourites block ========== */
+/* ======= Favourites block ========== */
 .user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
-.add_fav_head {font-weight:900; margin:5px 0;}
+.add_fav_head {font-weight:900;margin:5px 0;}
 .add_fav_head i {margin:0 5px 1px 5px;}
 .add_fav_ref p {margin:5px 0;}
-.add_fav_ref label {display: inline-block; min-width:100px;}
+.add_fav_ref label {display:inline-block;min-width:100px;}
 .add_fav_ref label:after {content:":";}
-.add_fav_ref input {margin: 0 5px;}
+.add_fav_ref input {margin:0 5px;}
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
 #medialist-page .list_table_controls  {width:100%;}
-.list_table_controls td {min-width:40px;padding: 1px;text-align:center;}
+.list_table_controls td {min-width:40px;padding:1px;text-align:center;}
 
 #branches-page p {
-margin: 10px;
+margin:10px;
 }
 
 /* ============== login.php ======================= */
@@ -1880,13 +1877,13 @@ padding:0;
 
 .itr:hover .popup {
 display:block;
-position:absolute
- width:12em;
- right:0;
- z-index: 9999;
- }
- 
-html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
+position:absolute;
+width:12em;
+right:0;
+z-index:9999;
+}
+
+html[dir='rtl'] .itr:hover .popup {left:0;right:auto;}
 
 #layDefinedTags {
 border:inset 2px buttonface;
@@ -2131,12 +2128,12 @@ clear:left;
 }
 
 html[dir='rtl'] #dates {float:left;}
-html[dir='rtl'] #indi_header h3 .header_age {padding:5px 5px 5px 0; float:left;}
+html[dir='rtl'] #indi_header h3 .header_age {padding:5px 5px 5px 0;float:left;}
 html[dir='rtl'] #sex {float:left;}
 html[dir='rtl'] dd .editlink, html[dir='rtl']  dd .deletelink {float:left;}
 html[dir='rtl'] #header_accordion1 {float:left;}
 html[dir='rtl'] #indi_header {float:right;}
-html[dir='rtl'] #indi_header h3 {padding: 0 30px 0 10px;text-align:right;}
+html[dir='rtl'] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
 html[dir='rtl'] #indi_mainimage {float:right;}
 html[dir='rtl'] #indi_mainimage a img {float:right;}
 html[dir='rtl'] #indi_note .fact_NOTE {float:right;margin:0 0 0 10px;}
@@ -2147,7 +2144,7 @@ html[dir='rtl'] .indi_table {clear:right;}
 .male_gender,.female_gender,.unknown_gender,.editicon,.copyicon,.deleteicon {
 display:block;
 background-color:transparent;
-background: url(images/general_sprite.png) no-repeat left 0;
+background:url(images/general_sprite.png) no-repeat left 0;
 }
 
 .editicon {
@@ -2158,26 +2155,26 @@ height:16px;
 
 .copyicon {
 background-position:-70px -32px;
-width: 24px; height:16px;
+width:24px;height:16px;
 }
 
 .deleteicon {
 background-position:-100px -32px;
-width:24px; 
+width:24px;
 height:16px;
 }
 
 .female_gender {
-background-position:-45px 3px; 
-width: 24px;
+background-position:-45px 3px;
+width:24px;
 }
 .male_gender {
-background-position:-72px 3px; 
+background-position:-72px 3px;
 width:24px;
 }
 
 .unknown_gender {
-background-position:-100px 4px; 
+background-position:-100px 4px;
 width:24px;
 }
 
@@ -2185,7 +2182,7 @@ width:24px;
 /* Facts & Events tab */
 #personal_facts_content .fact_NOTE,#personal_facts_content .fact_SOUR,#family-table .fact_NOTE,#family-table .fact_SOUR {
 margin:5px 3px 5px 0;
-clear: both;
+clear:both;
 }
 
 #media-display-image {
@@ -2252,12 +2249,12 @@ span.link_text {
 display:none;
 }
 
-html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right: 0.5em;}
+html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 html[dir='rtl'] .ui-tabs {direction:rtl;}
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 html[dir='rtl'] .ui-dialog-title{float:right;}
-html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em; right:auto;}
+html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em;right:auto;}
 
 /* ==== jQuery over-rides ==== */
 
@@ -2341,7 +2338,7 @@ html[dir='rtl'] .dataTables_filter {float:left;}
 html[dir='rtl'] .dataTables_info {float:right}
 html[dir='rtl'] .dataTables_length {float:left;}
 html[dir='rtl'] .DataTables_sort_wrapper {margin-right:20px;}
-html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0;margin-right:-20px;}
+html[dir='rtl'] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
 
 /* ==== List styles ===== */
 
@@ -2524,7 +2521,7 @@ float:right;
 html[dir='rtl'] #indi_left {float:right;}
 html[dir='rtl'] #sidebar  {margin:5px 0 0 2px;}
 html[dir='rtl'] #tabs {float:right;}
-html[dir='rtl'] #separator {float:left; background:#ACF url(images/general_sprite.png) no-repeat -1px 100px;}
+html[dir='rtl'] #separator {float:left;background:#ACF url(images/general_sprite.png) no-repeat -1px 100px;}
 html[dir='rtl'] .use-sidebar #separator {background:#ACF url(images/general_sprite.png) no-repeat -26px 100px;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
 
@@ -2842,8 +2839,8 @@ margin:0;
 
 html[dir='rtl'] #search-page-table .label{float:right;}
 html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
- 
- /* ======= Who is online block ========== */
+
+/* ======= Who is online block ========== */
 .logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
 
 @media print {

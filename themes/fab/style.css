@@ -1,28 +1,28 @@
 /*
- * Style for FAB theme
- *
- * webtrees: Web based Family History software
- * Copyright (C) 2012 webtrees development team.
- *
- * Derived from PhpGedView
- * Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
- *
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
- * $Id$
- */
+* Style for FAB theme
+*
+* webtrees: Web based Family History software
+* Copyright (C) 2012 webtrees development team.
+*
+* Derived from PhpGedView
+* Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
+*
+* This program is free software; you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation; either version 2 of the License, or
+* (at your option) any later version.
+*
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+*
+* You should have received a copy of the GNU General Public License
+* along with this program; if not, write to the Free Software
+* Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+*
+* $Id$
+*/
 
 /* Add a permanent scrollbar, to prevent "flickering" when hover effects lengthen page */
 html {overflow-y:scroll;}
@@ -96,7 +96,7 @@ a.help, span.help {
 body {
 	color:DimGray;
 	background-color:White;
-	font:12px sans-serif; /* Use the browser's default font - give control to the user */
+	font:12px sans-serif;/* Use the browser's default font - give control to the user */
 	margin:0;
 }
 
@@ -115,7 +115,7 @@ img {
 	font-weight:bold;
 }
 
-.quickfacts a {font-size:9px; padding:0 3px;}
+.quickfacts a {font-size:9px;padding:0 3px;}
 
 /* Main name on INDI/FAM/etc. pages */
 .name_head {
@@ -143,10 +143,10 @@ img {
 }
 
 /* Block level objects, such as header, footer, etc. */
-.block {background-color:#EEE; clear:none;}
+.block {background-color:#EEE;clear:none;}
 .blockheader {font-weight:bold;}
 .charts_block {overflow:auto;}
-#link_change_blocks {clear:both; margin:0 auto; padding:25px 0 0 0; text-align:center; width:400px;}
+#link_change_blocks {clear:both;margin:0 auto;padding:25px 0 0 0;text-align:center;width:400px;}
 #link_change_blocks span {padding:0 50px;}
 #link_change_blocks span span {padding:0 3px;}
 
@@ -236,7 +236,7 @@ html[dir='rtl'] .makeMenu li ul li {
 }
 
 .makeMenu ul li a:hover  {
-    background-color:DarkSlateGray;
+	background-color:DarkSlateGray;
 	color:#000;
 }
 
@@ -252,33 +252,33 @@ html[dir='rtl'] .makeMenu li ul li {
 .person_box {
 	background-color:#DDF;
 	overflow:visible;
-	font: 13px  arial;
+	font:13px  arial;
 }
 
 .person_boxF {
 	background-color:#FDD;
-	font: 13px  arial;
+	font:13px  arial;
 	overflow:visible;
 }
 
 .person_boxNN {
 	background-color:#DFD;
 	overflow:visible;
-	font: 13px  arial;
+	font:13px  arial;
 }
 
-.person_box, .person_boxF, .person_boxNN {margin: 0 0 0 3px;}
+.person_box, .person_boxF, .person_boxNN {margin:0 0 0 3px;}
 
-.person_box_lifespan {display: inline;}
+.person_box_lifespan {display:inline;}
 
 /* families tab person box */
-#relatives_content  .person_box > .person_box, #relatives_content .person_boxF  > .person_boxF, #relatives_content .person_boxNN  > .person_boxNN {  border:none;min-height:50px;} 
+#relatives_content  .person_box > .person_box, #relatives_content .person_boxF  > .person_boxF, #relatives_content .person_boxNN  > .person_boxNN {border:none;min-height:50px;} 
 
-html[dir='rtl'] .person_box html[dir='rtl'] .person_boxF html[dir='rtl'] .person_boxNN {margin: 0 3px 0 0;}
+html[dir='rtl'] .person_box html[dir='rtl'] .person_boxF html[dir='rtl'] .person_boxNN {margin:0 3px 0 0;}
 
 
-.action_headerF {background: #FDD;}
-.action_header {background: #DDF;}
+.action_headerF {background:#FDD;}
+.action_header {background:#DDF;}
 
 /* index.php */
 #index_main_blocks {
@@ -297,7 +297,7 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 #main_select,#available_select,#right_select{min-width:150px;}
 
 .user_welcome_block table, .gedcom_block_block  table{margin:auto;}
-.user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align: top;}
+.user_welcome_block td, .gedcom_block_block  td{width:33%;text-align:center;vertical-align:top;}
 
 .facts_table, .facts_table_rtl {
 	width:100%;
@@ -323,7 +323,7 @@ html[dir="rtl"] .pedigree_image {
 }
 
 .compact_view {cursor:url(images/zoomin.png),n-resize;}
-.compact_view p {font-size:90%; margin:0;}
+.compact_view p {font-size:90%;margin:0;}
 
 .thumbnail {
 height:auto;
@@ -390,7 +390,7 @@ right:10px;
 }
 
 .journal_box {
-	padding: 3pt;
+	padding:3pt;
 	border:thin solid #AAA;
 	overflow:visible;
 }
@@ -415,7 +415,6 @@ right:10px;
 	z-index:99999;
 	list-style-position:outside;
 	list-style:none;
-	padding:0;
 	margin:0;
 	max-height:200px;
 	overflow-y:auto;
@@ -426,7 +425,7 @@ right:10px;
 	cursor:default;
 	display:block;
 	font:menu;
-	line-height:14px; /* absolute setting required for firefox? */
+	line-height:14px;/* absolute setting required for firefox? */
 	overflow:hidden;
 }
 .ui-autocomplete-loading {
@@ -611,7 +610,7 @@ right:10px;
 	background-repeat:repeat-y;
 	background-position:left top;
 	list-style:none;
-	margin:0 0 5px 15px; /* top right bottom left */
+	margin:0 0 5px 15px;
 	padding-top:0;
 	padding-right:15px;
 	padding-bottom:0;
@@ -620,12 +619,12 @@ right:10px;
 
 #descendancy_chart li {
 	list-style:none;
-	margin:0 0 0 -13px; /* top right bottom left */
+	margin:0 0 0 -13px;
 	padding-top:0;
 	padding-right:0;
 	padding-bottom:0;
 }
-li .person_box, li .person_boxF {margin: 3px 0 3px 0;}
+li .person_box, li .person_boxF {margin:3px 0 3px 0;}
 
 /*-- descendancy chart rtl specific stylesheets --*/
 html[dir='rtl'] #descendancy_chart ul {
@@ -648,7 +647,7 @@ left:auto;
 	background-position:left top;
 	list-style:none;
 	display:block;
-	margin:0 0 0 15px; /* top right bottom left */
+	margin:0 0 0 15px;
 	padding-top:0;
 	padding-right:15px;
 	padding-bottom:0;
@@ -657,12 +656,12 @@ left:auto;
 
 #ancestry_chart li {
 	list-style:none;
-	margin:0 0 2px -13px; /* top right bottom left */
+	margin:0 0 2px -13px;
 	padding-top:0;
 	padding-right:0;
 	padding-bottom:0;
 }
-#ancestry_chart li table {margin: 5px 0;}
+#ancestry_chart li table {margin:5px 0;}
 
 /*-- ancestry chart rtl specific stylesheets --*/
 html[dir='rtl'] #ancestry_chart ul {
@@ -986,8 +985,8 @@ html[dir="rtl"] dt {
 	margin-left:10px;
 }
 
-#pending h2 {text-align:center; margin-bottom:20px;}
-#pending h3 {text-align:center; margin-top:20px;}
+#pending h2 {text-align:center;margin-bottom:20px;}
+#pending h3 {text-align:center;margin-top:20px;}
 
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
 .gedcom_favorites_block,.user_favorites_block, 
@@ -999,7 +998,7 @@ html[dir="rtl"] dt {
 #pedigree_chart .person_box, #pedigree_chart .person_boxF, #pedigree_chart .person_boxNN,
 #relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN,
 #relationship_chart .person_box, #relationship_chart .person_boxF, #relationship_chart .person_boxNN {
-overflow: visible !important;
+overflow:visible !important;
 }
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
@@ -1008,31 +1007,31 @@ overflow: visible !important;
 
 /* ============== login.php ======================= */
 #login-register-page h2 {text-align:center;}
-#login-register-page .warning  {margin:20px auto; text-align:center;}
-#login-register-page .back  {font-weight:bold; font-size:14px; text-align:center;}
-#login-register-page .confirm {margin: 20px auto; text-align: justify; width: 500px;}
+#login-register-page .warning  {margin:20px auto;text-align:center;}
+#login-register-page .back  {font-weight:bold;font-size:14px;text-align:center;}
+#login-register-page .confirm {margin:20px auto;text-align:justify;width:500px;}
 #login-register-page .confirm p  {font-size:14px;font-weight:bold;}
 #login-register-page .confirm p+p  {font-size:12px;font-weight:normal;}
-#login-text, #register-text, #user-verify {margin:20px auto; width: 610px; text-align: justify;}
-#login-box, #register-box { text-align:center;}
-#login-form, #new_passwd_form, #register-form  {background-color:#ccc; border: 1px solid darkGray; border-radius: 3px; display: inline-block; margin:10px auto 0 auto; padding:5px;}
-#login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div  {font-weight: bold; margin:auto; padding:5px; text-align: center;}
-#login-form label, #new_passwd_form label, #verify-form  label  {display: block; text-align:right;}
-#login-form label input, #new_passwd_form label input, #verify-form  input {width:140px; margin: 0 10px;}
-#new_passwd_form h4, #register-form h4 {font-weight:normal; text-align:center;}
+#login-text, #register-text, #user-verify {margin:20px auto;width:610px;text-align:justify;}
+#login-box, #register-box {text-align:center;}
+#login-form, #new_passwd_form, #register-form  {background-color:#ccc;border:1px solid darkGray;border-radius:3px;display:inline-block;margin:10px auto 0 auto;padding:5px;}
+#login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div  {font-weight:bold;margin:auto;padding:5px;text-align:center;}
+#login-form label, #new_passwd_form label, #verify-form  label  {display:block;text-align:right;}
+#login-form label input, #new_passwd_form label input, #verify-form  input {width:140px;margin:0 10px;}
+#new_passwd_form h4, #register-form h4 {font-weight:normal;text-align:center;}
 #register-form div, #verify-form  div {text-align:right;}
-#register-form label input, #register-form label select, #register-form textarea {width:220px; margin: 0 10px;}
-#register-form label select {margin:0 10px; width:228px;}
-#register-form textarea {vertical-align: top;}
+#register-form label input, #register-form label select, #register-form textarea {width:220px;margin:0 10px;}
+#register-form label select {margin:0 10px;width:228px;}
+#register-form textarea {vertical-align:top;}
 #register-form div#registration-submit {text-align:center;}
-.login_block_block #login-form, .login_block_block #new_passwd_form{border:0; background:none;}
+.login_block_block #login-form, .login_block_block #new_passwd_form{border:0;background:none;}
 html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[dir='rtl'] #register-form label, html[dir='rtl'] #verify-form  label {text-align:left;}
 
 /* ============== reportengine.php ======================= */
 #reportengine-page table {margin:20px auto;}
-#reportengine-page .report-type {overflow:hidden; margin:auto; width:180px;}
-#reportengine-page .report-type div {float:left;margin: 0 20px;}
-#reportengine-page .report-type p {margin: 0; text-align:center;}
+#reportengine-page .report-type {overflow:hidden;margin:auto;width:180px;}
+#reportengine-page .report-type div {float:left;margin:0 20px;}
+#reportengine-page .report-type p {margin:0;text-align:center;}
 
 .gedcom_favorites_block  .person_box, .gedcom_favorites_block  .person_boxF, .gedcom_favorites_block  .person_boxNN {height:auto;}
 .user_favorites_block  .person_box, .user_favorites_block  .person_boxF, .user_favorites_block  .person_boxNN {height:auto;}
@@ -1044,22 +1043,22 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 .gedcom_stats_block table td td {vertical-align:middle;}
 .gedcom_stats_block td .stats_value {text-align:center;}
 
- /* ======= Favourites block ========== */
+/* ======= Favourites block ========== */
 .user_favorites_block .person_box, .gedcom_favorites_block .person_box {margin:5px 0;}
-.add_fav_head {font-weight:900; margin:5px 0;}
+.add_fav_head {font-weight:900;margin:5px 0;}
 .add_fav_head i {margin:0 5px 1px 5px;}
-.add_fav_ref label {display: inline-block; min-width:100px;}
+.add_fav_ref label {display:inline-block;min-width:100px;}
 .add_fav_ref label:after {content:":";}
-.add_fav_ref input {margin: 0 5px;}
+.add_fav_ref input {margin:0 5px;}
 
 .itr {
-	position: absolute;
-	line-height: 1.5;
+	position:absolute;
+	line-height:1.5;
 }
 
 .block .itr, #family-table .itr, #ancestry_chart .itr, #descendancy_chart .itr, #familybook_chart .itr, #hourglass_chart .itr, #relatives_content .itr {
-	position: relative;
-	top: 0;
+	position:relative;
+	top:0;
 }
 
 .popup {
@@ -1087,14 +1086,14 @@ html[dir='rtl'] #login-form label, html[dir='rtl'] #new_passwd_form label, html[
 }
 
 .itr:hover .popup {
-	display: block;
-	position: absolute;
-	width: 12em;
-	right: 0;
-	z-index: 9999;
+	display:block;
+	position:absolute;
+	width:12em;
+	right:0;
+	z-index:9999;
 }
 
-html[dir='rtl'] .itr:hover .popup {left:0; right:auto;}
+html[dir='rtl'] .itr:hover .popup {left:0;right:auto;}
 
 /* styles for FindFacts pop-up */
 #layDefinedTags,#tabDefinedTagsShow {
@@ -1195,12 +1194,12 @@ ul.clist {
 
 /* Find special characters */
 .largechars {
-	font-family: monospace;
-	font-size: 200%;
+	font-family:monospace;
+	font-size:200%;
 }
 /* ========= Positioning edit, copy, delete links ============= */
 /* General use */
-.editfacts {clear:left; padding-top:15px;} /* a container for the following three links */
+.editfacts {clear:left;padding-top:15px;} /* a container for the following three links */
 .editfacts  a:hover, .field a:hover {background-color:transparent !important;}
 .editlink, .copylink, .deletelink {float:left;}
 html[dir='rtl'] .editlink, html[dir='rtl'] .copylink, html[dir='rtl'] .deletelink {float:right;}
@@ -1212,27 +1211,27 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 
 /* =========== Indi header ================== */
 
-#indi_header {float:left; width:98%; border-radius:3px; margin:5px 0; padding:0 10px;}
-#indi_header h3 {color:#000666; font-size:90%; font-weight:bold; margin:0; padding:0 10px 0 30px; text-align:left;}
-#indi_header h3.name_one {overflow:hidden; position:relative; font-size:1.5em;}
+#indi_header {float:left;width:98%;border-radius:3px;margin:5px 0;padding:0 10px;}
+#indi_header h3 {color:#000666;font-size:90%;font-weight:bold;margin:0;padding:0 10px 0 30px;text-align:left;}
+#indi_header h3.name_one {overflow:hidden;position:relative;font-size:1.5em;}
 #indi_header h3.person_box, #indi_header h3.person_boxF , #indi_header h3.person_boxNN  {border:1px solid darkGray;}
-#indi_header h3 .header_age {padding:5px 0 5px 5px; float:right; font-weight:normal; font-size:65%;}
+#indi_header h3 .header_age {padding:5px 0 5px 5px;float:right;font-weight:normal;font-size:65%;}
 #indi_header h3 a {display:inline;}
-#indi_header a {color:#333377; font-size:0.75em; font-weight:normal;}
+#indi_header a {color:#333377;font-size:0.75em;font-weight:normal;}
 #indi_header a:hover {color:red;}
 
-#main_name {color:#000666; float:left; font-size:2em; margin:10px; font-weight:bold;}
+#main_name {color:#000666;float:left;font-size:2em;margin:10px;font-weight:bold;}
 
 #indi_mainimage {float:right;}
-#indi_mainimage a img {float:right; padding:0;}
+#indi_mainimage a img {float:right;padding:0;}
 
-#indi_name_details {margin:0; overflow:hidden !important; padding:5px;}
-#indi_name_details .warning {color:red; font-size:1em;}
+#indi_name_details {margin:0;overflow:hidden !important;padding:5px;}
+#indi_name_details .warning {color:red;font-size:1em;}
 #indi_name_details dt:after {content:":";}
 #name1 {}
 
 #indi_note {margin:0 0 5px 0;}
-#indi_note .fact_NOTE {float:left; margin:0 10px 0 0;}
+#indi_note .fact_NOTE {float:left;margin:0 10px 0 0;}
 #indi_note .note_details {font-size:100%;}
 #indi_note .fact_SOUR a {font-size:100%;}
 
@@ -1240,16 +1239,16 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 
 .indi_table {clear:left;}
 #sex {float:right;}
-#dates {color:#000666; float:right;}
+#dates {color:#000666;float:right;}
 dd .editlink, dd .deletelink  {float:right;}
 
 html[dir='rtl'] #indi_header {float:right;}
-html[dir='rtl'] #indi_header h3 {padding:0 30px 0 10px; text-align:right;}
-html[dir='rtl']  #indi_header h3 .header_age {padding:5px 5px 5px 0; float:left;}
+html[dir='rtl'] #indi_header h3 {padding:0 30px 0 10px;text-align:right;}
+html[dir='rtl']  #indi_header h3 .header_age {padding:5px 5px 5px 0;float:left;}
 html[dir='rtl'] #main_name {float:right;}
 html[dir='rtl'] #indi_mainimage {float:left;}
 html[dir='rtl'] #indi_mainimage a img {float:left;}
-html[dir='rtl'] #indi_note .fact_NOTE {float:right; margin:0 0 0 10px;}
+html[dir='rtl'] #indi_note .fact_NOTE {float:right;margin:0 0 0 10px;}
 html[dir='rtl'] #header_accordion1 {float:right;}
 html[dir='rtl'] .indi_table {clear:right;}
 html[dir='rtl']  #sex {float:left;}
@@ -1257,29 +1256,29 @@ html[dir='rtl']  #dates {float:left;}
 html[dir='rtl']  dd .editlink, html[dir='rtl']  dd .deletelink  {float:left;}
 
 /* INDI IMAGE SPRITE */
-.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display:block; background:url(images/indi_sprite.png) no-repeat;}
-.female_gender {background-position:-45px 3px; width:24px;}
-.male_gender {background-position:-72px 3px; width:24px;}
-.unknown_gender {background-position:-100px 4px; width:24px;}
-.editicon {background-position:-40px -32px; width:24px; height:16px;}
-.copyicon {background-position:-70px -32px; width:24px; height:16px;}
-.deleteicon {background-position:-100px -32px; width:24px; height:16px;}
+.male_gender, .female_gender, .unknown_gender, .editicon, .copyicon, .deleteicon {display:block;background:url(images/indi_sprite.png) no-repeat;}
+.female_gender {background-position:-45px 3px;width:24px;}
+.male_gender {background-position:-72px 3px;width:24px;}
+.unknown_gender {background-position:-100px 4px;width:24px;}
+.editicon {background-position:-40px -32px;width:24px;height:16px;}
+.copyicon {background-position:-70px -32px;width:24px;height:16px;}
+.deleteicon {background-position:-100px -32px;width:24px;height:16px;}
 
 /* =========== Indi tabs ================== */
 /* Facts & Events tab */
-#personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR, #family-table .fact_NOTE, #family-table .fact_SOUR {margin: 5px 3px 5px 0; clear: both;}
+#personal_facts_content .fact_NOTE, #personal_facts_content .fact_SOUR, #family-table .fact_NOTE, #family-table .fact_SOUR {margin:5px 3px 5px 0;clear:both;}
 #media-display-image {float:left;}
-#media-display-title {float:left; font-style:italic; margin:10px;}
+#media-display-title {float:left;font-style:italic;margin:10px;}
 
 /* ========= jquery-ui.custom.css changes ============ */
 .ui-widget-content a:hover  {color:red;}
 .ui-tabs-nav li.ui-tabs-selected  {background:#f8f8f8;}
-.ui-tabs-nav li.ui-tabs-selected a  {font-weight:600; color:black;}
-.ui-tabs-nav li.ui-tabs-selected a:hover  {font-weight:600; color:black;}
+.ui-tabs-nav li.ui-tabs-selected a  {font-weight:600;color:black;}
+.ui-tabs-nav li.ui-tabs-selected a:hover  {font-weight:600;color:black;}
 .ui-tabs .ui-tabs-panel {padding:1em 0;}
-.ui-state-active, .ui-widget-content .ui-state-active {border:1px solid darkGray; background:#ccc; font-weight:normal; color:black; outline:none;}
-.ui-accordion .ui-accordion-header .ui-icon {position:absolute; left:0.5em; top:50%; margin-top:-8px;}
-.ui-accordion .ui-accordion-content {padding:1em .05em; border-top:0; margin-top:-2px; position:relative; top:1px; margin-bottom:2px; overflow:visible; display:none;}
+.ui-state-active, .ui-widget-content .ui-state-active {border:1px solid darkGray;background:#ccc;font-weight:normal;color:black;outline:none;}
+.ui-accordion .ui-accordion-header .ui-icon {position:absolute;left:0.5em;top:50%;margin-top:-8px;}
+.ui-accordion .ui-accordion-content {padding:1em .05em;border-top:0;margin-top:-2px;position:relative;top:1px;margin-bottom:2px;overflow:visible;display:none;}
 .ui-accordion .ui-accordion-content-active {display:block;}
 .ui-accordion .ui-accordion-header a {padding:.5em;}
 .ui-helper-reset {line-height:1.6;}
@@ -1290,28 +1289,28 @@ html[dir='rtl'] ui-tabs .ui-tabs-nav li.ui-tabs-selected,
 html[dir='rtl'] .ui-tabs .ui-tabs-nav li.ui-state-default {float:right;}
 html[dir='rtl'] .ui-accordion .ui-accordion-header .ui-icon {right:0.5em;}
 html[dir='rtl'] .ui-dialog-title{float:right;}
-html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em; right:auto;}
+html[dir='rtl'] .ui-dialog-titlebar-close{left:.3em;right:auto;}
 
 /* ========= jQuery.datatable styling over-rides ============ */
 .odd {background-color:LightGrey;}
 .even {background-color:#fff;}
 .css_right {float:left;}
 .fg-button {padding:2px 6px;}
-.fg-toolbar {background:#EEE; border-color:darkGray;}
-.dataTables_paginate   {float:left; margin:5px;}
-.dataTables_processing {float:left; margin:5px;}
-.dataTables_filter  {float:right; margin:4px;}
-.dataTables_info {float:left; margin:5px;}
-.recent_changes_block .dataTables_info, .upcoming_events_block .dataTables_info, .todays_events_block .dataTables_info, .todo_block .dataTables_info, .yahrzeit_block .dataTables_info {padding: 0;}
-.upcoming_events_block .dataTables_info, .todays_events_block .dataTables_info {padding: 2px 0 0 0;}
-.upcoming_events_block  button, .todays_events_block  button {margin: 5px 20px;}
-.dataTables_length {float:right; margin:5px;}
-.dataTables_length select, .dataTables_filter input {font-size:11px; padding:1px;}
+.fg-toolbar {background:#EEE;border-color:darkGray;}
+.dataTables_paginate   {float:left;margin:5px;}
+.dataTables_processing {float:left;margin:5px;}
+.dataTables_filter  {float:right;margin:4px;}
+.dataTables_info {float:left;margin:5px;}
+.recent_changes_block .dataTables_info, .upcoming_events_block .dataTables_info, .todays_events_block .dataTables_info, .todo_block .dataTables_info, .yahrzeit_block .dataTables_info {padding:0;}
+.upcoming_events_block .dataTables_info, .todays_events_block .dataTables_info {padding:2px 0 0 0;}
+.upcoming_events_block  button, .todays_events_block  button {margin:5px 20px;}
+.dataTables_length {float:right;margin:5px;}
+.dataTables_length select, .dataTables_filter input {font-size:11px;padding:1px;}
 .ui-widget-header {font-weight:normal;}
 .dt-clear {clear:both;}
 #loading {text-align:center;}
-.DataTables_sort_wrapper {position:relative; margin: 0 20px;}
-.DataTables_sort_wrapper span {left:0; margin-left:-20px; margin-top:-8px; position:absolute; top:50%;}
+.DataTables_sort_wrapper {position:relative;margin:0 20px;}
+.DataTables_sort_wrapper span {left:0;margin-left:-20px;margin-top:-8px;position:absolute;top:50%;}
 
 html[dir='rtl'] .css_right {float:right;}
 html[dir='rtl'] .dataTables_paginate {float:right;}
@@ -1320,54 +1319,54 @@ html[dir='rtl'] .dataTables_filter  {float:left;}
 html[dir='rtl'] .dataTables_info {float:right}
 html[dir='rtl'] .dataTables_length {float:left;}
 html[dir='rtl'] .DataTables_sort_wrapper {margin-right:20px;}
-html[dir='rtl'] .DataTables_sort_wrapper span {left:auto; right:0; margin-right:-20px;}
+html[dir='rtl'] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-20px;}
 
 /* ========= List styles ================= */
-.source-list, .note-list, .repo-list, .media-list, .indi-list, .fam-list  {margin:5px auto; visibility:hidden; width:98%;}
+.source-list, .note-list, .repo-list, .media-list, .indi-list, .fam-list  {margin:5px auto;visibility:hidden;width:98%;}
 .surname-list, .givn-list  {margin:5px auto;}
 .source-list table, .note-list table, .repo-list table, .media-list table, .indi-list table, .fam-list table  {width:100%;}
 .source-list td, .note-list td, .repo-list td, .media-list td, .indi-list td, .fam-list td, .recent_changes_block td, .upcoming_events_block, .surname-list td, .givn-list td {padding:2px 5px;}
 .indi-list td, .fam-list td {color:#555;}
 .surname-list  td {vertical-align:top;}
-.indi-list .stats, .fam-list .stats {margin:0 auto; width:auto;}
-.source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th, .fam-list th, .recent_changes_block th, .upcoming_events_block th, .todays_events_block th, .todo_block th, .yahrzeit_block th, .surname-list th, .givn-list th {cursor:pointer; white-space:nowrap;}
-.source-list th:last-child, .note-list th:last-child, .repo-list th:last-child {margin:0 -2px 1px 1px; padding:3px 0 4px; width:24px;}
-.givn-list th{cursor:pointer;white-space: nowrap;padding:2px;text-align:center;}
-#source-details h2,#sourcelist-page h2, #note-details h2, #notelist-page h2, #repo-details h2, #repolist-page h2, #media-details h2, #medialist-page h2, #stats-details h2 {margin-bottom:20px; text-align:center;}
-#source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto; visibility:hidden; width:80%;}
-#stats-tabs {margin:auto; visibility:hidden; width:90%;}
+.indi-list .stats, .fam-list .stats {margin:0 auto;width:auto;}
+.source-list th, .note-list th, .repo-list th, .media-list th, .indi-list th, .fam-list th, .recent_changes_block th, .upcoming_events_block th, .todays_events_block th, .todo_block th, .yahrzeit_block th, .surname-list th, .givn-list th {cursor:pointer;white-space:nowrap;}
+.source-list th:last-child, .note-list th:last-child, .repo-list th:last-child {margin:0 -2px 1px 1px;padding:3px 0 4px;width:24px;}
+.givn-list th{cursor:pointer;white-space:nowrap;padding:2px;text-align:center;}
+#source-details h2,#sourcelist-page h2, #note-details h2, #notelist-page h2, #repo-details h2, #repolist-page h2, #media-details h2, #medialist-page h2, #stats-details h2 {margin-bottom:20px;text-align:center;}
+#source-tabs, #note-tabs, #repo-tabs, #media-tabs {margin:auto;visibility:hidden;width:80%;}
+#stats-tabs {margin:auto;visibility:hidden;width:90%;}
 #source-edit, #note-edit, #repo-edit, #media-edit {overflow-x:auto;}
-.media-list td img {display:block; height:40px; margin:3px auto;}
+.media-list td img {display:block;height:40px;margin:3px auto;}
 .filtersH, .filtersF {margin:4px}
 .filtersH img {margin-bottom:2px;}
-.filtersH .ui-state-default,.filtersF .ui-state-default {margin:0 2px; padding:2px;}
-.loading-image{background:transparent url(images/loading.gif) 50% 50% no-repeat; height:50px; margin:50px;}
-#search-result-tabs, #places-tabs {margin:auto; width:98%; visibility:hidden;}
+.filtersH .ui-state-default,.filtersF .ui-state-default {margin:0 2px;padding:2px;}
+.loading-image{background:transparent url(images/loading.gif) 50% 50% no-repeat;height:50px;margin:50px;}
+#search-result-tabs, #places-tabs {margin:auto;width:98%;visibility:hidden;}
 #search-result-tabs h3 {text-align:center;}
-#searchAccordion-indi, #searchAccordion-fam, #searchAccordion-source, #searchAccordion-note {margin:auto; width:99%;}
+#searchAccordion-indi, #searchAccordion-fam, #searchAccordion-source, #searchAccordion-note {margin:auto;width:99%;}
 #place-heirarchy h2, #place-heirarchy h4 {text-align:center;}
 
 html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-child, html[dir='rtl'] .repo-list th:last-child {margin:0 1px 1px -2px;}
 
 /* ========= Sidebar ============== */
-#main {min-width:600px; width:100%}
-#indi_left {float:left; width:98%;}
-#tabs {background-color:#FFF; border-color:#DDD; float:left; width:98%; overflow:visible;}
-#sidebar {border-color:#DDD; display:none; margin:5px 2px 0 0; height:auto;}
+#main {min-width:600px;width:100%}
+#indi_left {float:left;width:98%;}
+#tabs {background-color:#FFF;border-color:#DDD;float:left;width:98%;overflow:visible;}
+#sidebar {border-color:#DDD;display:none;margin:5px 2px 0 0;height:auto;}
 #sidebarAccordion, #sidebarAccordion2 {width:auto;}
-#sidebarAccordion h3, #sidebarAccordion2 h3 {height:30px; text-align:center; border-color:darkGray;}
+#sidebarAccordion h3, #sidebarAccordion2 h3 {height:30px;text-align:center;border-color:darkGray;}
 .use-sidebar #indi_left {width:77%;}
 .use-sidebar #sidebar {display:block;}
 .sidebar-at-right #sidebar {width:20%;}
 .use-sidebar.sidebar-at-right #sidebar, .sidebar-at-right #separator {float:right;}
-#separator {float:right; display:block; background:#ccc url(images/indi_sprite.png) no-repeat -26px 100px; min-width:6px; max-width:10px; width:0.75%; border:1px solid darkGray; border-radius-topleft:3px; border-radius-topright:3px; margin-top:5px;}
+#separator {float:right;display:block;background:#ccc url(images/indi_sprite.png) no-repeat -26px 100px;min-width:6px;max-width:10px;width:0.75%;border:1px solid darkGray;border-top-left-radius:3px;border-top-right-radius:3px;margin-top:5px;}
 .use-sidebar #separator {background:#ccc url(images/indi_sprite.png) no-repeat -1px 100px;}
 
 html[dir='rtl'] #indi_left {float:right;}
 html[dir='rtl'] #tabs {float:right;}
 html[dir='rtl'] #sidebar  {margin:5px 0 0 2px;}
 html[dir='rtl'] .use-sidebar.sidebar-at-right #sidebar, html[dir='rtl'] .sidebar-at-right #separator  {float:left;}
-html[dir='rtl'] #separator {float:left; background:#ccc url(images/indi_sprite.png) no-repeat -1px 100px;}
+html[dir='rtl'] #separator {float:left;background:#ccc url(images/indi_sprite.png) no-repeat -1px 100px;}
 html[dir='rtl'] .use-sidebar #separator {background:#ccc url(images/indi_sprite.png) no-repeat -26px 100px;}
 
 /* ============== Sidebar content items ============== */
@@ -1376,45 +1375,45 @@ html[dir='rtl'] .use-sidebar #separator {background:#ccc url(images/indi_sprite.
 #sb_family_nav_content {margin-top:2px;}
 .nam a:hover {color:red;}
 .nav_content {width:100%;padding:10px 0;}
-.flyout {color:#000000; text-align:left; margin-top:-20px; right:210px; padding:3px;}
-.flyout2 {color:#000000; text-align:left;margin-top:-2px; left:40px; padding:3px;}
+.flyout {color:#000000;text-align:left;margin-top:-20px;right:210px;padding:3px;}
+.flyout2 {color:#000000;text-align:left;margin-top:-2px;left:40px;padding:3px;}
 .flyout2 a:hover {color:#ff0000;}
-.flyout4 {color:#000000; text-align:left; margin-top:0;margin-left:0; padding:3px;}
-.flyout3, .flyout3 a {background:none; border:none; text-decoration:none; text-align:left; margin-top:0; left:0; padding:0;}
-.famnav_link div {font-size:12px; padding:0; width:100%;}
+.flyout4 {color:#000000;text-align:left;margin-top:0;margin-left:0;padding:3px;}
+.flyout3, .flyout3 a {background:none;border:none;text-decoration:none;text-align:left;margin-top:0;left:0;padding:0;}
+.famnav_link div {font-size:12px;padding:0;width:100%;}
 
-html[dir='rtl'] .flyout {text-align:right; left:210px;}
-html[dir='rtl'] .flyout2 {text-align:right; right:40px;}
+html[dir='rtl'] .flyout {text-align:right;left:210px;}
+html[dir='rtl'] .flyout2 {text-align:right;right:40px;}
 html[dir='rtl'] .flyout3 {text-align:right;}
 
 /* Descendancy */
-#sb_desc_content {margin-left:3px; font-size:0.8em;}
-#sb_desc_content ul {padding:0; margin:0;}
+#sb_desc_content {margin-left:3px;font-size:0.8em;}
+#sb_desc_content ul {padding:0;margin:0;}
 .sb_desc_indi_li {list-style-type:none;}
 .desc_tree_div {display:none;}
-.desc_tree_div ul {padding:0; margin-left:10px; margin-top:0; margin-right:0;}
+.desc_tree_div ul {padding:0;margin-left:10px;margin-top:0;margin-right:0;}
 
 html[dir='rtl'] #sb_desc_content {margin-right:3px;}
-html[dir='rtl'] .desc_tree_div ul {margin-right:10px; margin-left:0;}
+html[dir='rtl'] .desc_tree_div ul {margin-right:10px;margin-left:0;}
 
 /* Individuals, Families */
 .sb_indi_surname_li, .sb_fam_surname_li {list-style-image:url(images/plus.png);}
 .name_tree_div li, .name_tree_div_visible li {white-space:normal;}
 .name_tree_div {display:none;}
-.name_tree_div li,  .name_tree_div_visible li {list-style:none; margin:0; padding:0;}
-.name_tree_div ul, .name_tree_div_visible ul {padding:0; margin:0;}
+.name_tree_div li,  .name_tree_div_visible li {list-style:none;margin:0;padding:0;}
+.name_tree_div ul, .name_tree_div_visible ul {padding:0;margin:0;}
 
 /* Clippings */
-#sb_clippings_content li {list-style:none; margin:0; padding:0;}
-#sb_clippings_content ul {padding:0; margin:0;}
+#sb_clippings_content li {list-style:none;margin:0;padding:0;}
+#sb_clippings_content ul {padding:0;margin:0;}
 
 /* Extra info */
-#sb_content_extra_info {font-size:80%; font-weight:bold; margin-top:1px; overflow:hidden; padding:5px;}
-#sb_content_extra_info .editfacts {float:right; margin-top:-10px;}
+#sb_content_extra_info {font-size:80%;font-weight:bold;margin-top:1px;overflow:hidden;padding:5px;}
+#sb_content_extra_info .editfacts {float:right;margin-top:-10px;}
 #sb_content_extra_info a {display:block;}
 #sb_content_extra_info span {font-weight:normal;}
 #sb_content_extra_info span a {display:inline;}
-#sb_content_extra_info #hitcounter {border-top:1px solid #B2C7D7; font-weight:bold; padding-top:5px;}
+#sb_content_extra_info #hitcounter {border-top:1px solid #B2C7D7;font-weight:bold;padding-top:5px;}
 
 html[dir='rtl'] #sb_content_extra_info .editfacts {float:left;}
 
@@ -1424,35 +1423,35 @@ fieldset {
 html[dir='rtl'] fieldset {text-align:right;}
 
 /* ============== find.php ======================= */
-#find-page h3, #find-page h4{margin: 10px; text-align:center;}
-#find-header {background-color:#ccc; border:1px solid darkGray; border-radius:3px; margin:10px auto; padding:5px 20px; width:50%;}
-#find-header p {margin:5px; text-align:center;}
+#find-page h3, #find-page h4{margin:10px;text-align:center;}
+#find-header {background-color:#ccc;border:1px solid darkGray;border-radius:3px;margin:10px auto;padding:5px 20px;width:50%;}
+#find-header p {margin:5px;text-align:center;}
 #find-header span {}
-#find-output, #find-output-special {background-color:#ddd; border:1px solid darkGray; border-radius:3px; margin:20px 5px; padding:10px;}
-#find-output p {border-top:1px solid darkGray; font-weight: bold; margin:0; padding-top:10px; text-align: center;}
-#find-media {background-color:#ccc; border:1px solid darkGray; padding:5px; text-align:center;}
-#find-media span {border:0; font-weight: bold; margin:auto; padding:5px;}
-.find-media-dirs {border-bottom:1px solid darkGray; padding:3px;}
-.find-media-media {border:1px solid darkGray; overflow: hidden; margin:1px; padding:2px;}
-.find-media-thumb {clear:left; float:left;}
+#find-output, #find-output-special {background-color:#ddd;border:1px solid darkGray;border-radius:3px;margin:20px 5px;padding:10px;}
+#find-output p {border-top:1px solid darkGray;font-weight:bold;margin:0;padding-top:10px;text-align:center;}
+#find-media {background-color:#ccc;border:1px solid darkGray;padding:5px;text-align:center;}
+#find-media span {border:0;font-weight:bold;margin:auto;padding:5px;}
+.find-media-dirs {border-bottom:1px solid darkGray;padding:3px;}
+.find-media-media {border:1px solid darkGray;overflow:hidden;margin:1px;padding:2px;}
+.find-media-thumb {clear:left;float:left;}
 .find-media-thumb img {width:50px;}
 .find-media-details {float:left;}
-#find-output .find-media-details p {border:0; padding:0 5px 2px 5px; font-weight:normal; text-align:left;}
-#find-output .find-media-details div span {font-weight:normal; padding:0 5px 2px 5px;}
+#find-output .find-media-details p {border:0;padding:0 5px 2px 5px;font-weight:normal;text-align:left;}
+#find-output .find-media-details div span {font-weight:normal;padding:0 5px 2px 5px;}
 #find-output p.find-media-title {font-weight:bold;}
-.find-media-details ul {padding:0; margin:0px 20px 10px 20px; list-style-type:none;}
+.find-media-details ul {padding:0;margin:0px 20px 10px 20px;list-style-type:none;}
 #find-facts-header .list_label {text-align:inherit;}
 
 /* ============== search.php ======================= */
-#search-page h2, #search_submit {margin:20px; text-align:center;}
-#search-page-table {background-color:#ccc; border:1px solid darkGray; border-radius:3px; margin:20px auto 0; width:580px;}
-#search-page-table .label{float:left; font-weight:bold; margin:1px; padding:5px 10px 0; width:150px;}
-#search-page-table .value {background-color:#ddd; border:1px solid #fff; margin:0 0 0 170px; padding:5px; white-space:nowrap;}
+#search-page h2, #search_submit {margin:20px;text-align:center;}
+#search-page-table {background-color:#ccc;border:1px solid darkGray;border-radius:3px;margin:20px auto 0;width:580px;}
+#search-page-table .label{float:left;font-weight:bold;margin:1px;padding:5px 10px 0;width:150px;}
+#search-page-table .value {background-color:#ddd;border:1px solid #fff;margin:0 0 0 170px;padding:5px;white-space:nowrap;}
 #search-page-table p {margin:0;}
 html[dir='rtl'] #search-page-table .label{float:right;}
 html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
 
- /* ======= Who is online block ========== */
+/* ======= Who is online block ========== */
 .logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}
 
 /* Icons */
