@@ -208,16 +208,19 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		}
 		$js.='var CB_SlShowTime  = "'.get_module_setting('lightbox', 'LB_SS_SPEED', '6').'"; // Slide show timer
 		var CB_Animation = "'.get_module_setting('lightbox', 'LB_TRANSITION', 'warp').'";'; // Next/Prev Image transition effect
-		$controller->addInlineJavascript($js)
-			->addExternalJavascript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/Sound.js')
-			->addExternalJavascript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/clearbox.js')
-			->addExternalJavascript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/wz_tooltip.js')
-			->addExternalJavascript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/tip_centerwindow.js');
+
+		$js.=file_get_contents(WT_MODULES_DIR.$this->getName().'/js/Sound.js');
+		$js.=file_get_contents(WT_MODULES_DIR.$this->getName().'/js/clearbox.js');
+		$js.=file_get_contents(WT_MODULES_DIR.$this->getName().'/js/wz_tooltip.js');
+		$js.=file_get_contents(WT_MODULES_DIR.$this->getName().'/js/tip_centerwindow.js');
+		$js.=file_get_contents(WT_MODULES_DIR.$this->getName().'/js/clsource_music.js');
 		if ($TEXT_DIRECTION=='ltr') {
-			$controller->addExternalJavascript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/tip_balloon.js');
+			$js.=file_get_contents(WT_MODULES_DIR.$this->getName().'/js/tip_balloon.js');
 		} else {
-			$controller->addExternalJavascript(WT_STATIC_URL.WT_MODULES_DIR.$this->getName().'/js/tip_balloon_RTL.js');
+			$js.=file_get_contents(WT_MODULES_DIR.$this->getName().'/js/tip_balloon_RTL.js');
 		}
+
+		$controller->addInlineJavascript($js);
 		return true;
 	}
 

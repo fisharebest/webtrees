@@ -351,20 +351,3 @@
 	var firstTime = 1;
 	var objSpeakerImage;
 	var saveLoopMusic;
-
-		
-/*
-	Az al?bbi k?don ne v?ltoztass, ellenkez? esetben a ClearBox nem (megfelel?en) fog m?k?dni!.
-	clearbox.js el?r?si ?tj?nak megkeres?se, majd ez alapj?n cbsource.js beilleszt?se a html dokumentumba:
-*/
-
-		var CB_Scripts = document.getElementsByTagName('script');
-		for (i=0;i<CB_Scripts.length;i++){
-			if (CB_Scripts[i].src.match('clearbox.js')!=null){
-				var CB_jsdir=CB_Scripts[i].src.substring(0,CB_Scripts[i].src.length-11);
-			}
-		}
-		document.write('<' + 'script');
-		document.write(' type="text/javascript"');
-		document.write(' src="'+CB_jsdir+'clsource_music.js">');
-		document.write('</' + 'script' + '>');
