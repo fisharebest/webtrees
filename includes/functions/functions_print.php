@@ -1152,33 +1152,34 @@ function print_add_new_fact($id, $usedfacts, $type) {
 * @param none
 */
 function init_calendar_popup() {
-	global $WEEK_START;
+	global $WEEK_START, $controller;
 
-	echo
-		'<script>',
-		'cal_setMonthNames(',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'January'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'February'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'March'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'April'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'May'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'June'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'July'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'August'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'September'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'October'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'November'), '",',
-			'"', WT_I18N::translate_c('NOMINATIVE', 'December'), '");',
-			'cal_setDayHeaders(',
-			'"', WT_I18N::translate('Sun'), '",',
-			'"', WT_I18N::translate('Mon'), '",',
-			'"', WT_I18N::translate('Tue'), '",',
-			'"', WT_I18N::translate('Wed'), '",',
-			'"', WT_I18N::translate('Thu'), '",',
-			'"', WT_I18N::translate('Fri'), '",',
-			'"', WT_I18N::translate('Sat'), '");',
-			'cal_setWeekStart(', $WEEK_START, ');',
-			'</script>';
+	$controller->addInlineJavascript('
+		cal_setMonthNames(
+			"' . WT_I18N::translate_c('NOMINATIVE', 'January') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'February') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'March') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'April') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'May') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'June') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'July') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'August') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'September') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'October') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'November') . '",
+			"' . WT_I18N::translate_c('NOMINATIVE', 'December') . '"
+		)
+		cal_setDayHeaders(
+			"' . WT_I18N::translate('Sun') . '",
+			"' . WT_I18N::translate('Mon') . '",
+			"' . WT_I18N::translate('Tue') . '",
+			"' . WT_I18N::translate('Wed') . '",
+			"' . WT_I18N::translate('Thu') . '",
+			"' . WT_I18N::translate('Fri') . '",
+			"' . WT_I18N::translate('Sat') . '"
+		)
+		cal_setWeekStart(' . $WEEK_START . ');
+	');
 }
 
 function print_findindi_link($element_id, $indiname='', $ged=WT_GEDCOM) {

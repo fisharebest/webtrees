@@ -29,7 +29,10 @@ require './includes/session.php';
 $controller=new WT_Controller_Simple();
 $controller
 	->requireMemberLogin()
-	->addExternalJavascript('js/autocomplete.js')
+	->addExternalJavascript(WT_JQUERY_URL)
+	->addExternalJavascript(WT_JQUERYUI_URL)
+	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->setPageTitle(WT_I18N::translate('Edit'))
 	->pageHeader();
 
