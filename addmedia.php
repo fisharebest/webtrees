@@ -56,7 +56,7 @@ $controller
 		if (value.substr(value.length-1, 1) == "/") value = value.substr(0, value.length-1);
 		if (value.substr(0, 1) == "/") value = value.substr(1, value.length-1);
 		result = value.split("/");
-		if (result.length > <?php echo $MEDIA_DIRECTORY_LEVELS; ?>) {
+		if (result.length > '.$MEDIA_DIRECTORY_LEVELS.  ') {
 			alert("' . WT_I18N::translate('You can enter no more than %s subdirectory names', $MEDIA_DIRECTORY_LEVELS) . '");
 			folder.focus();
 		}
