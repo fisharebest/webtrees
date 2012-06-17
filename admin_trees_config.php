@@ -373,7 +373,7 @@ if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple
 		<td colspan="2">
 			<div id="tabs" style="display:none">
 				<ul>
-					<li><a href="#file-options"><span><?php echo WT_I18N::translate('GEDCOM Basics'); ?></span></a></li>
+					<li><a href="#file-options"><span><?php echo WT_I18N::translate('General'); ?></span></a></li>
 					<li><a href="#access-options"><span><?php echo WT_I18N::translate('Access'); ?></span></a></li>
 					<li><a href="#privacy"><span><?php echo WT_I18N::translate('Privacy'); ?></span></a></li>
 					<li><a href="#config-media"><span><?php echo WT_I18N::translate('Media'); ?></span></a></li>
@@ -381,12 +381,12 @@ if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple
 					<li><a href="#hide-show"><span><?php echo WT_I18N::translate('Hide &amp; Show'); ?></span></a></li>
 					<li><a href="#edit-options"><span><?php echo WT_I18N::translate('Edit options'); ?></span></a></li>
 				</ul>
-			<!-- GEDCOM BASICS -->
+			<!-- GENERAL -->
 			<div id="file-options">
 				<table>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('GEDCOM title'), help_link('gedcom_title'); ?>
+							<?php echo WT_I18N::translate('Family tree title'), help_link('gedcom_title'); ?>
 						</td>
 						<td>
 							<input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" maxlength="255">
