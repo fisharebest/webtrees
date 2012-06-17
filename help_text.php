@@ -1395,8 +1395,8 @@ case 'gedcom_news_limit':
 	break;
 
 case 'gedcom_title':
-	$title=WT_I18N::translate('GEDCOM title');
-	$text=WT_I18N::translate('Enter a descriptive title to be displayed when users are choosing among GEDCOM datasets at your site.');
+	$title=WT_I18N::translate('Family tree title');
+	$text=WT_I18N::translate('Enter a descriptive title to be displayed when users are choosing among family trees at your site.');
 	break;
 
 case 'gen_missing_thumbs':
