@@ -29,8 +29,8 @@ $controller
 	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Module administration'))
 	->pageHeader()
-	->addExternalJaveScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
-	->addInlineJaveScript('
+	->addExternalJavaScript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
+	->addInlineJavaScript('
 	  function reindexMods(id) {
 			jQuery("#"+id+" input").each(
 				function (index, value) {
