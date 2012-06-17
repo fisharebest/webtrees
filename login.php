@@ -447,7 +447,7 @@ case 'register':
 						frm.user_realname.focus();
 						return false;
 					}
-					if (frm.emailaddress.value=="") {
+					if (frm.user_email.value=="") {
 						alert("'.WT_I18N::translate('You must enter an email address.').'");
 						frm.user_email.focus();
 						return false;
