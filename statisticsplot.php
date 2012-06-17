@@ -31,7 +31,8 @@ require './includes/session.php';
 
 $controller=new WT_Controller_Ajax();
 $controller->setPageTitle(WT_I18N::translate('Statistics plot'));
-$controller->pageHeader();
+// TODO: why does this line break the modal dialog boxes?
+//$controller->pageHeader();
 
 $stats = new WT_Stats($GEDCOM);
 
@@ -660,9 +661,7 @@ function myplot($mytitle, $n, $xdata, $xtitle, $ydata, $ytitle, $legend) {
 	// in PHP 5.3.0 we can use
 	//$title = strstr($mytitle, '|', true);
 	$title = substr($mytitle, 0, strpos($mytitle, '|'));
-	echo '<center><div class="statistics_chart">';
 	echo '<img src="', $imgurl, '" width="950" height="300" alt="', htmlspecialchars($title), '" title="', htmlspecialchars($title), '">';
-	echo '</div></center><br><br>';
 }
 
 function calc_axis($xas_grenzen) {
@@ -889,8 +888,7 @@ if ($action=='update') {
 	unset($savedInput);
 }
 
-echo '<div id="statistics-plot">';
-echo '<h2 class="center">', WT_I18N::translate('Statistics plot'), '</h2>';
+echo '<div class="statistics_chart" title="', WT_I18N::translate('Statistics plot'), '">';
 
 //-- Set params for request out of the information for plot
 $g_xas = '1,2,3,4,5,6,7,8,9,10,11,12'; //should not be needed. but just for month

@@ -446,21 +446,16 @@ if (!$ajax) {
 				}
 			}
 			function statsModalDialog(url, title) {
-				var $form = jQuery('#own-stats-form');
-				jQuery.post($form.attr('action'), $form.serialize(), function(response) {
-					jQuery('div#statistics-plot').html(response);
-				});
-				dialog=jQuery('<div title="'+title+'"></div>')
-					.load(url)
-					.dialog({
+				var form = jQuery('#own-stats-form');
+				jQuery.post(form.attr('action'), form.serialize(), function(response) {
+					jQuery(response).dialog({
 						modal: true,
-						width: 962,
-						position: ['center',50],
-						close: function(event, ui) { $(this).remove(); }
+						width: 964
 					});
-				// Close the window when we click outside it.
-				jQuery(".ui-widget-overlay").live("click", function () {
-					jQuery("div:ui-dialog:visible").dialog("close");
+					// Close the window when we click outside it.
+					jQuery(".ui-widget-overlay").live("click", function () {
+						jQuery("div:ui-dialog:visible").dialog("close");
+					});
 				});
 				return false;
 			}
