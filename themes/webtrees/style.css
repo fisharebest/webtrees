@@ -175,6 +175,8 @@ html[dir="rtl"] .pedigree_image {float:right;margin:0 0 0 4px;}
 .helptext {font-size:12px;}
 
 /*-- pedigree chart specific stylesheets --*/
+#pedigree-page table.list_table {margin:0 auto;width:500px;}
+.pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
 #pedigree_chart {position:relative;top:-200px;left:0;}
 html[dir='rtl'] #pedigree_chart {left:auto;right:10px;}
 
@@ -336,6 +338,7 @@ td.descriptionbox a {color:#fff;}/* this keeps the tag color the same when it is
 #pending h2 {text-align:center;margin-bottom:20px;}
 #pending h3 {text-align:center;margin-top:20px;}
 
+/* ============== person box details ============== */
 .charts_block .person_box, .charts_block .person_boxF, .charts_block .person_boxNN,
 .gedcom_favorites_block,.user_favorites_block, 
 #ancestry_chart .person_box, #ancestry_chart .person_boxF, #ancestry_chart .person_boxNN,
@@ -346,6 +349,9 @@ td.descriptionbox a {color:#fff;}/* this keeps the tag color the same when it is
 #pedigree_chart .person_box, #pedigree_chart .person_boxF, #pedigree_chart .person_boxNN,
 #relatives_content .person_box, #relatives_content .person_boxF, #relatives_content .person_boxNN,
 #relationship_chart .person_box, #relationship_chart .person_boxF, #relationship_chart .person_boxNN {overflow:visible !important;}
+.person_box_template .noprint { width:25px;height:50px; position:relative;}
+.person_box_template .chart_textbox {height:auto;overflow: hidden;}
+.person_box_template  .details div {display:block;}
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls {margin:0 auto;}
 #medialist-page .list_table, #medialist-page .list_table_controls {width:100%;}

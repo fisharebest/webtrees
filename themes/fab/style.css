@@ -316,6 +316,8 @@ html[dir="rtl"] .pedigree_image {
 }
 
 /*-- pedigree chart specific stylesheets --*/
+#pedigree-page table.list_table {margin:0 auto;width:500px;}
+.pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
 #pedigree_chart {
 	position:relative;
 	top:-230px;
@@ -1000,6 +1002,9 @@ html[dir="rtl"] dt {
 #relationship_chart .person_box, #relationship_chart .person_boxF, #relationship_chart .person_boxNN {
 overflow:visible !important;
 }
+.person_box_template .noprint { width:25px;height:50px; position:relative;}
+.person_box_template .chart_textbox {height:auto;overflow: hidden;}
+.person_box_template  .details div {display:block;}
 
 #branches-page table, #medialist-page .list_table, #medialist-page .list_table_controls  {margin:0 auto;}
 #medialist-page .list_table_controls  {width:100%;}

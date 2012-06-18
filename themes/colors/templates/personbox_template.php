@@ -32,9 +32,9 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '<div id="out-',$boxID,'" ',$outBoxAdd,'>
-	<div class="noprint" id="icons-',$boxID,'" style="',$iconsStyleAdd,' width: 25px; height: 50px; position: relative;">', $icons, '</div>',
-	'<div class="chart_textbox" style="height:auto; max-height:', $bheight,'px; overflow: hidden;">',
+echo '<div id="out-',$boxID,'" ',$outBoxAdd,' class="personbox_template">
+	<div class="noprint" id="icons-',$boxID,'" style="',$iconsStyleAdd,'">', $icons, '</div>',
+	'<div class="chart_textbox" style="max-height:', $bheight,'px;">',
 	$thumbnail,
 
 	'<a onclick="event.cancelBubble=true;" href="individual.php?pid=', $pid, '&amp;ged=', rawurlencode($GEDCOM), '">
@@ -42,7 +42,7 @@ echo '<div id="out-',$boxID,'" ',$outBoxAdd,'>
 		<span class="name',$style,'"> ',$genderImage,'</span>
 	</a>
 	<div id="fontdef-',$boxID,'" class="details',$style,'">
-		<div id="inout2-',$boxID,'" style="display:block; max-height:', ($bheight*.9),'px;">',$BirthDeath,'</div>
+		<div id="inout2-',$boxID,'" style="max-height:', ($bheight*.9),'px;">',$BirthDeath,'</div>
 	</div>
 	</div>
 	<div id="inout-',$boxID,'" style="display:none;">

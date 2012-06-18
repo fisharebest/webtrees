@@ -38,64 +38,55 @@ if (WT_USE_LIGHTBOX) {
 	$album->getPreLoadContent();
 }
 ?>
-
-<table>
-	<tr>
-		<td valign="middle">
-			<h2><?php echo $controller->getPageTitle(); ?></h2>
-		</td>
-		<td width="50px">&nbsp;</td>
-		<td>
-			<form name="people" id="people" method="get" action="?">
-				<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
-				<table class="list_table" width="500" align="center">
-					<tr>
-						<td class="descriptionbox wrap">
-							<?php echo WT_I18N::translate('Individual'); ?>
-						</td>
-						<td class="descriptionbox wrap">
-							<?php echo WT_I18N::translate('Generations'); ?>
-						</td>
-						<td class="descriptionbox wrap">
-							<?php echo WT_I18N::translate('Layout'); ?>
-						</td>
-						<td class="descriptionbox wrap">
-							<?php echo WT_I18N::translate('Show Details'); ?>
-						</td>
-						<td rowspan="2" class="facts_label03">
-							<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
-						</td>
-					</tr>
-					<tr>
-						<td class="optionbox">
-							<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
-							<?php echo print_findindi_link('rootid'); ?>
-						</td>
-						<td class="optionbox">
-							<select name="PEDIGREE_GENERATIONS">
-								<?php
-								for ($i=3; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
-									echo "<option value=\"", $i, "\"" ;
-									if ($i == $controller->PEDIGREE_GENERATIONS) echo " selected=\"selected\"";
-									echo ">", $i, "</option>";
-								}
-								?>
-							</select>
-						</td>
-						<td class="optionbox">
-							<?php echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset); ?>
-						</td>
-						<td class="optionbox">
-							<input type="checkbox" value="<?php
-							if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
-							else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
-						</td>
-					</tr>
-				</table>
-			</form>
-		</td>
-	</tr>
-</table>
+<div id="pedigree-page">
+	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<form name="people" id="people" method="get" action="?">
+		<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
+		<table class="list_table">
+			<tr>
+				<td class="descriptionbox wrap">
+					<?php echo WT_I18N::translate('Individual'); ?>
+				</td>
+				<td class="descriptionbox wrap">
+					<?php echo WT_I18N::translate('Generations'); ?>
+				</td>
+				<td class="descriptionbox wrap">
+					<?php echo WT_I18N::translate('Layout'); ?>
+				</td>
+				<td class="descriptionbox wrap">
+					<?php echo WT_I18N::translate('Show Details'); ?>
+				</td>
+				<td rowspan="2" class="facts_label03">
+					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
+				</td>
+			</tr>
+			<tr>
+				<td class="optionbox">
+					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
+					<?php echo print_findindi_link('rootid'); ?>
+				</td>
+				<td class="optionbox">
+					<select name="PEDIGREE_GENERATIONS">
+						<?php
+						for ($i=3; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
+							echo "<option value=\"", $i, "\"" ;
+							if ($i == $controller->PEDIGREE_GENERATIONS) echo " selected=\"selected\"";
+							echo ">", $i, "</option>";
+						}
+						?>
+					</select>
+				</td>
+				<td class="optionbox">
+					<?php echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset); ?>
+				</td>
+				<td class="optionbox">
+					<input type="checkbox" value="<?php
+					if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
+					else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
+				</td>
+			</tr>
+		</table>
+	</form>
 
 <?php
 
@@ -276,13 +267,13 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 
 		echo $xoffset, "px; top:", ($yoffset-1), "px; width:", ($controller->pbwidth+$widthadd), "px; height:", $controller->pbheight, "px; ";
 		echo "z-index: ", $zindex, ";\">";
-		echo "<table border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" dir=\"$TEXT_DIRECTION\">";
+		echo "<table class=\"pedigree_chart_table\" dir=\"$TEXT_DIRECTION\">";
 		if (($talloffset < 2) && ($curgen > $talloffset) && ($curgen < $controller->PEDIGREE_GENERATIONS)) {
 			echo "<tr><td>";
 			echo "<img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" alt=\"\">";
-			echo "</td><td width=\"100%\">";
+			echo "</td><td class=\"width100\">";
 		} else {
-			echo "<tr><td width=\"100%\">";
+			echo "<tr><td class=\"width100\">";
 		}
 		if (!isset($controller->treeid[$i])) {
 			$controller->treeid[$i] = false;
@@ -408,7 +399,8 @@ if (count($famids)>0) {
 	echo '</td></tr></table>';
 	echo '</div>';
 }
-echo '</div>';
+echo '</div>'; //close #pedigree_chart
+echo '</div>'; //close #pedigree-page
 // Expand <div id="content"> to include the absolutely-positioned elements.
 $controller->addInlineJavascript('
 	content_div = document.getElementById("content");
