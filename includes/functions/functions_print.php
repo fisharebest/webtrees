@@ -129,8 +129,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 			}
 			$personlinks .= '</ul>';
 			// NOTE: Start div out-$pid.$personcount.$count
-			if ($style==1) $outBoxAdd .= " class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden; z-index:-1;\"";
-			else $outBoxAdd .= " class=\"person_box$isF\" style=\"padding: 2px;\"";
+			if ($style==1) $outBoxAdd .= " class=\"person_box$isF person_box_template style1\" style=\"width: ".$bwidth."px; height: ".$bheight."px; z-index:-1;\"";
+			else $outBoxAdd .= " class=\"person_box$isF person_box_template style0\"";
 			// NOTE: Zoom
 			if (!$show_full) {
 				$outBoxAdd .= $mouseAction4;
@@ -151,9 +151,9 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		}
 	} else {
 		if ($style==1) {
-			$outBoxAdd .= "class=\"person_box$isF\" style=\"width: ".$bwidth."px; height: ".$bheight."px; overflow: hidden;\"";
+			$outBoxAdd .= "class=\"person_box$isF person_box_template style1\" style=\"width: ".$bwidth."px; height: ".$bheight."px;\"";
 		} else {
-			$outBoxAdd .= "class=\"person_box$isF\" style=\" overflow: hidden;\"";
+			$outBoxAdd .= "class=\"person_box$isF person_box_template style0\"";
 		}
 	}
 	//-- find the name

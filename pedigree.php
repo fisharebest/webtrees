@@ -285,11 +285,11 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 				$did++;
 			}
 			if ($talloffset==3) {
-				echo "</td></tr><tr><td align=\"center\">";
+				echo "</td></tr><tr><td>";
 				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$controller->talloffset}\" ";
 				echo 'class="icon-darrow noprint"></a>';
 			} elseif ($talloffset < 2) {
-				echo "</td><td valign=\"middle\">";
+				echo "</td><td>";
 				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\" ";
 				if ($TEXT_DIRECTION=="rtl") {
 					echo 'class="icon-larrow noprint"></a>';

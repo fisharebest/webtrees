@@ -1002,6 +1002,8 @@ html[dir="rtl"] dt {
 #relationship_chart .person_box, #relationship_chart .person_boxF, #relationship_chart .person_boxNN {
 overflow:visible !important;
 }
+.person_box_template .style1 {overflow:hidden;}
+.person_box_template .style0 {padding: 2px;}
 .person_box_template .noprint { width:25px;height:50px; position:relative;}
 .person_box_template .chart_textbox {height:auto;overflow: hidden;}
 .person_box_template  .details div {display:block;}
