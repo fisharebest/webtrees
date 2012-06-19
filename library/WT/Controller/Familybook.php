@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Controller_Familybook extends WT_Controller_Chart {
 	// Data for the view
-	public $loopcnt = 0;
+	private $loopcnt = 0;
 	public $pid		   =" ";
 	public $show_full  =null;
 	public $show_spouse=null;
@@ -56,7 +56,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$this->box_width  =safe_GET_integer('box_width',     50, 300, 100);
 
 		// Box sizes are set globally in the theme.  Modify them here.
-		global $bwidth, $bheight, $cbwidth, $cbheight, $Dbwidth, $bhalfheight, $Dbheight, $loopcnt; 
+		global $bwidth, $bheight, $cbwidth, $cbheight, $Dbwidth, $bhalfheight, $Dbheight; 
 		$Dbwidth =$this->box_width * $bwidth  / 100;
 		$Dbheight=$this->box_width * $bheight / 100;
 		$bwidth  =$Dbwidth;
@@ -99,7 +99,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	* @return void
 	*/
 	function print_descendency($person, $count) {
-		global $bwidth, $bheight, $bhalfheight, $loopcnt;
+		global $bwidth, $bheight, $bhalfheight;
 		global $TEXT_DIRECTION, $WT_IMAGES;
 		
 		if ($count>$this->dgenerations) return 0;
@@ -113,10 +113,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		if ($count>=$this->dgenerations) {
 			return 0;
 		}
-		$loopcnt++;
-		echo "<table id=\"table2_$loopcnt\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
-		echo "<tr>";
-		echo "<td width=\"".($bwidth-2)."\">";
+		$this->loopcnt++;
+		echo '<table id="table2_', $this->loopcnt, '" cellspacing="0" cellpadding="0" border="0">';
+		echo '<tr>';
+		echo '<td width="', ($bwidth-2), '">';
 		$gencount = 0;
 		$numkids = 0;
 		$familycount = 0;
@@ -132,10 +132,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				$familycount ++;
 				$children=$family->getChildren();
 				if (count($children)>0) {
-					$loopcnt++;
-					echo "<table id=\"table_$loopcnt\" cellspacing=\"0\" cellpadding=\"0\" border=\"0\">";  // Multiple families different wifes or husbands
+					$this->loopcnt++;
+					echo '<table id="table_', $this->loopcnt, '" cellspacing="0" cellpadding="0" border="0">';  // Multiple families different wifes or husbands
 					foreach ($children as $i=>$child) {
-						echo "<tr><td width=\"$bwidth\" style=\"padding-top: 2px;\">";
+						echo '<tr><td width="', $bwidth, '" style="padding-top: 2px;">';
 						if ($count < $this->dgenerations-1) {
 							$kids = $this->print_descendency($child, $count+1);
 							if ($i==0) $firstkids = $kids;
