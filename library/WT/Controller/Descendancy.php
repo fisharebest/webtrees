@@ -238,7 +238,7 @@ class WT_Controller_Descendancy extends WT_Controller_Chart {
 	
 		// children
 		$children = $family->getChildren();
-		echo '<tr><td colspan=\"3\" class=\"details1\" >&nbsp;&nbsp;';
+		echo '<tr><td colspan="3" class="details1" >&nbsp;&nbsp;';
 		if ($children) {
 			echo WT_Gedcom_Tag::getLabel('NCHI').': '.count($children);
 		} else {

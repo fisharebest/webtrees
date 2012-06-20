@@ -32,7 +32,7 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
-echo '<div id="out-',$boxID,'" ',$outBoxAdd,' class="personbox_template">
+echo '<div id="out-',$boxID,'" ',$outBoxAdd,'>
 	<div class="noprint" id="icons-',$boxID,'" style="',$iconsStyleAdd,'">', $icons, '</div>',
 	'<div class="chart_textbox" style="max-height:', $bheight,'px;">',
 	$thumbnail,

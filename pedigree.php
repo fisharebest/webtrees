@@ -270,7 +270,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		echo "<table class=\"pedigree_chart_table\" dir=\"$TEXT_DIRECTION\">";
 		if (($talloffset < 2) && ($curgen > $talloffset) && ($curgen < $controller->PEDIGREE_GENERATIONS)) {
 			echo "<tr><td>";
-			echo "<img src=\"", $WT_IMAGES["hline"], "\" align=\"left\" alt=\"\">";
+			echo "<img src=\"", $WT_IMAGES["hline"], "\" alt=\"\">";
 			echo "</td><td class=\"width100\">";
 		} else {
 			echo "<tr><td class=\"width100\">";
