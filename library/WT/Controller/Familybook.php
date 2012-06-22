@@ -30,7 +30,7 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_Controller_Familybook extends WT_Controller_Chart {
 	// Data for the view
-	public $pid		 =" ";
+	public $pid	        =" ";
 	public $show_full  =null;
 	public $show_spouse=null;
 	public $descent    =null;
@@ -114,7 +114,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			$lastGenSecondFam = true;
 		}
 		$this->loopcnt++;
-		echo '<table id="table2_', $this->loopcnt, '" cellspacing="0" cellpadding="0" border="0">';
+		echo "<table id=\"table_$pid\" acellspacing=\"0\" cellpadding=\"0\" border=\"0\">";
 		echo '<tr>';
 		echo '<td width="', ($bwidth-2), '">';
 		$gencount = 0;
@@ -182,7 +182,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo "</td><td width=\"$bwidth\">";
 			}
 		}
-		echo "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td>";
+		echo "<table id=\"table2_$pid\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr><td>";
 		print_pedigree_person($person);
 		echo "</td><td><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\">";
 		//----- Print the spouse
@@ -232,7 +232,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 			$height="100%";
 			echo "<tr>";
-			echo "<td valign=\"bottom\"><img class=\"line3\" name=\"pvline\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
+			echo "<td valign=\"bottom\"><img class=\"line3\" src=\"".$WT_IMAGES["vline"]."\" width=\"3\" height=\"$lh\" alt=\"\"></td>";
 			echo "<td><img class=\"line4\" src=\"".$WT_IMAGES["hline"]."\" width=\"7\" height=\"3\" alt=\"\"></td>";
 			echo "<td>";
 			//-- print the father box
@@ -313,5 +313,41 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				}
 			}
 		}
+	}
+
+	/**
+	 * setup all of the javascript that is needed for the hourglass chart
+	 *
+	 */
+	function setupJavascript() {
+		global $bhalfheight;
+?>
+
+<script>
+	function sizeLines() {
+		var vlines;
+		vlines = document.getElementsByName("tvertline");
+		for (i=0; i < vlines.length; i++) {
+			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
+			var hline = document.getElementById("table_"+pid);
+			var hline2 = document.getElementById("table2_"+pid);
+			var newHeight = Math.abs(hline.offsetHeight - (hline2.offsetTop + <?php echo $bhalfheight+8; ?>));
+			vlines[i].style.height=newHeight+'px';
+		}
+		vlines = document.getElementsByName("bvertline");
+		for (i=0; i < vlines.length; i++) {
+			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
+			var hline = document.getElementById("table_"+pid);
+			var hline2 = document.getElementById("table2_"+pid);
+			vlines[i].style.height=(hline.offsetTop+hline2.offsetTop + <?php echo $bhalfheight+6; ?>)+'px';
+		}
+		vlines = document.getElementsByName("pvline");
+		for (i=0; i < vlines.length; i++) {
+			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
+		}
+	}
+</script>
+<?php
+		return $this;
 	}
 }

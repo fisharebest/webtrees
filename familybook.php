@@ -29,8 +29,9 @@ require './includes/session.php';
 $controller=new WT_Controller_Familybook();
 $controller
 	->pageHeader()
-	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the "find indi" link
-	->addExternalJavascript('js/autocomplete.js');
+	->addExternalJavascript('js/autocomplete.js')
+	->setupJavascript()
+	->addInlineJavascript('sizeLines();');
 
 if (WT_USE_LIGHTBOX) {
 	$album = new lightbox_WT_Module();
