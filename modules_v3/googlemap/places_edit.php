@@ -36,8 +36,9 @@ if (isset($_REQUEST['placeid'])) $placeid = $_REQUEST['placeid'];
 if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
 
 $controller=new WT_Controller_Simple();
-$controller->setPageTitle(WT_I18N::translate('Geographic data'));
-$controller->pageHeader();
+$controller
+		->setPageTitle(WT_I18N::translate('Geographic data'))
+		->pageHeader();
 
 if (!WT_USER_IS_ADMIN) {
 	echo "<table class=\"facts_table\">";

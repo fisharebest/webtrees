@@ -460,8 +460,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require WT_ROOT.'includes/functions/functions_edit.php';
 
 		$controller=new WT_Controller_Simple();
-		$controller->setPageTitle(WT_I18N::translate('Select flag'));
-		$controller->pageHeader();
+		$controller
+				->setPageTitle(WT_I18N::translate('Select flag'))
+				->pageHeader();
 
 		$countries=WT_Stats::get_all_countries();
 		$action=safe_REQUEST($_REQUEST, 'action');
