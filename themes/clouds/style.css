@@ -693,6 +693,16 @@ padding-bottom:0;
 
 html[dir='rtl'] #descendancy_chart ul {background-position:right top;margin:0 15px 0 0;left:auto;}
 
+#familybook_chart {margin-left:10px; }
+#familybook_chart table {border-collapse: collapse; empty-cells: show;}
+#familybook_chart td {margin:0; padding:0;}
+#familybook_chart h2 {text-align:center;}
+#familybook_chart .line3, #familybook_chart .pvline, #familybook_chart .spacer{width: 3px}
+#familybook_chart .line4 {width: 7px}
+[ID^="vline"] {width:3px;}
+
+html[dir='rtl'] #familybook_chart{margin-right:10px;}
+
 /*-- pedigree chart specific stylesheets --*/
 #pedigree-page table.list_table {margin:0 auto;width:500px;}
 .pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
