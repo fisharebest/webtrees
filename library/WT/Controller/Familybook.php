@@ -40,6 +40,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 
 	// Data for the controller
 	private $dgenerations=null;
+	private $loopcnt=0;
 	public function __construct() {
 		parent::__construct();
 
@@ -111,7 +112,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			if (isset($lastGenSecondFam)) echo "<br>";
 			$lastGenSecondFam = true;
 		}
-
+		$this->loopcnt++;
 		echo '<table id="table_',$pid,'">';
 		echo '<tr>';
 		echo '<td width="', ($bwidth-2), '">';
@@ -140,7 +141,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					$person2 = $children[$i];
 					$chil = $person2->getXref();
 					echo '<tr>',
-						 '<td id="td_',$chil,'">';
+						 '<td>';
 					$kids = $this->print_descendency($person2, $count+1);
 					$numkids += $kids;
 					echo '</td>';
@@ -151,18 +152,18 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					if ($ct>1) {
 						if ($i==0) {
 							//-- adjust for the number of kids
-							$h= ((($bheight+7)*$kids) /2);
-							echo '<td valign="bottom">',
-								 '<img class="line1" name="tvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'"  height="',$h,'" alt=""></td>';
+							$h= round(((($bheight+7)*$kids) /2));
+							echo '<td class="tdbot">',
+								 '<img class="tvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'"  height="',$h,'" alt=""></td>';
 						} else if ($i==$ct-1) {
-							$h= ((($bheight+7)*$kids) /2);
+							$h= round(((($bheight+7)*$kids) /2));
 							if ($count<$this->dgenerations-1) {
 								if ($this->show_spouse) $h-=6;
 								else $h +=6;
 							}
 
-							echo '<td valign="top">',
-								 '<img name="bvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'" height="',$h,'" alt=""></td>';
+							echo '<td class="tdtop">',
+								 '<img class="bvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'" height="',$h,'" alt=""></td>';
 						} else {
 							echo '<td style="background: url(',$WT_IMAGES["vline"],');">',
 								 '<img class="spacer" src="',$WT_IMAGES["spacer"],'" alt=""></td>';
@@ -173,7 +174,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo '</table>';
 			}
 			echo '</td>';
-			echo '<td width="$bwidth">';
+			echo '<td width="',$bwidth,'">';
 		}
 		
 		if ($numkids==0) {
@@ -233,8 +234,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		foreach ($person->getChildFamilies() as $family) {
 			echo '<table>',
 				 '<tr>',
-				 '<td valign="bottom">',
-				 '<img class="line3" src="',$WT_IMAGES["vline"],'" height=',$lh,'" alt=""></td>',
+				 '<td class="tdbot">',
+				 '<img class="line3" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
 				 '<td>',
 				 '<img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
 				 '<td>';
@@ -243,14 +244,14 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '</td>';
 			if ($family->getHusband()) {
 				$ARID = $family->getHusband()->getXref();
-				echo '<td id="td_"',$ARID,'">';
+				echo '<td>';
 				
 				//-- recursively get the father's family
 				$this->print_person_pedigree($family->getHusband(), $count+1);
 				echo '</td>';
 			}
 			echo '</tr><tr>',
-				 '<td valign="top"><img class="pvline" name="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
+				 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
 				 '<td><img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
 				 '<td>';
 			
@@ -259,7 +260,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '</td>';
 			if ($family->getWife()) {
 				$ARID = $family->getWife()->getXref();
-				echo '<td id="td_',$ARID,'">';
+				echo '<td>';
 				//-- recursively print the mother's family
 				$this->print_person_pedigree($family->getWife(), $count+1);
 				echo '</td>';
@@ -304,10 +305,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo
 				'<h2>',
 				/* I18N: A title/heading. %s is a person's name */ WT_I18N::translate('Family of %s', $person->getFullName()),
-				'</h2><table class="t0"><tr><td valign="middle">';
+				'</h2><table class="t0"><tr><td class="tdmid">';
 			$this->dgenerations = $this->generations;
 			$this->print_descendency($person, 1);
-			echo '</td><td valign="middle">';
+			echo '</td><td class="tdmid">';
 			$this->print_person_pedigree($person, 1);
 			echo '</td></tr></table><br><br><hr style="page-break-after:always;"><br><br>';
 			foreach ($families as $family) {
@@ -329,7 +330,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 <script>
 	function sizeLines() {
 		var vlines;
-		vlines = document.getElementsByName("tvertline");
+		vlines = document.getElementsByClassName("tvertline");
 		for (i=0; i < vlines.length; i++) {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
@@ -337,14 +338,14 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			var newHeight = Math.abs(hline.offsetHeight - (hline2.offsetTop + <?php echo $bhalfheight+8; ?>));
 			vlines[i].style.height=newHeight+'px';
 		}
-		vlines = document.getElementsByName("bvertline");
+		vlines = document.getElementsByClassName("bvertline");
 		for (i=0; i < vlines.length; i++) {
 			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
 			var hline = document.getElementById("table_"+pid);
 			var hline2 = document.getElementById("table2_"+pid);
 			vlines[i].style.height=(hline.offsetTop+hline2.offsetTop + <?php echo $bhalfheight+6; ?>)+'px';
 		}
-		vlines = document.getElementsByName("pvline");
+		vlines = document.getElementsByClassName("pvline");
 		for (i=0; i < vlines.length; i++) {
 			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
 		}

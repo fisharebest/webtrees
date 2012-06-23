@@ -340,6 +340,10 @@ padding:5px;
 #familybook_chart .line4 {width: 7px}
 [ID^="vline"] {width:3px;}
 
+.tdtop {vertical-align:top;}
+.tdmid {vertical-align:middle;}
+.tdbot, .tvertline {vertical-align:bottom;}
+
 html[dir='rtl'] #familybook_chart{margin-right:10px;}
 
 /*-- pedigree chart rtl specific stylesheets --*/

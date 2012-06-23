@@ -42,7 +42,7 @@ if (WT_USE_LIGHTBOX) {
 
 <table>
 	<tr>
-		<td valign="top">
+		<td class="tdtop">
 			<h2><?php echo $controller->getPageTitle(); ?></h2>
 		</td>
 		<td width="50px">&nbsp;</td>
