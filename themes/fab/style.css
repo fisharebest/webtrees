@@ -324,7 +324,6 @@ html[dir="rtl"] .pedigree_image {
 	left:0;
 }
 #pedigree_canvas {color:darkGray;position:absolute;top:200px;z-index:-1000;}
-#pedigree_canvas p{width:300px;padding-top:200px;}
 
 .compact_view {cursor:url(images/zoomin.png),n-resize;}
 .compact_view p {font-size:90%;margin:0;}

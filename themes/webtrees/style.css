@@ -194,7 +194,6 @@ html[dir='rtl'] #familybook_chart{margin-right:10px;}
 #pedigree_chart {position:relative;top:-200px;left:0;}
 html[dir='rtl'] #pedigree_chart {left:auto;right:10px;}
 #pedigree_canvas {color:#81A9CB;position:absolute;top:200px;z-index:-1000;}
-#pedigree_canvas p{width:300px;padding-top:200px;}
 
 /*-- descendancy chart specific stylesheets --*/
 #descendancy_chart ul {background-image:url(images/vline.png);background-repeat:repeat-y;background-position:left top;list-style:none;margin:0 0 5px 15px;padding-top:0;padding-right:0;padding-bottom:0;}

@@ -728,7 +728,6 @@ html[dir='rtl'] #familybook_chart{margin-right:10px;}
 	left:10px;
 }
 #pedigree_canvas {position:absolute;top:200px;z-index:-1000;}
-#pedigree_canvas p{width:300px;padding-top:200px;}
 
 /*-- pedigree chart rtl specific stylesheets --*/
 html[dir='rtl'] #pedigree_chart {
