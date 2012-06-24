@@ -40,7 +40,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 
 	// Data for the controller
 	private $dgenerations=null;
-	private $loopcnt=0;
 	public function __construct() {
 		parent::__construct();
 
@@ -112,8 +111,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			if (isset($lastGenSecondFam)) echo "<br>";
 			$lastGenSecondFam = true;
 		}
-		$this->loopcnt++;
-		echo '<table id="table_',$pid,'">';
+		echo '<table>';
 		echo '<tr>';
 		echo '<td width="', ($bwidth-2), '">';
 		$gencount = 0;
@@ -151,17 +149,17 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					if ($ct==1) $twidth+=3;
 					if ($ct>1) {
 						if ($i==0) {
-							//-- adjust for the number of kids
-							$h= round(((($bheight+7)*$kids) /2));
+							//-- adjust for the first column on left
+							$h= round(((($bheight)*$kids)/2)-1);
+							//-- adjust for other vertical columns
+							if ($kids>1) $h = ((($kids-1)*4)+$h);
 							echo '<td class="tdbot">',
 								 '<img class="tvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'"  height="',$h,'" alt=""></td>';
 						} else if ($i==$ct-1) {
-							$h= round(((($bheight+7)*$kids) /2));
-							if ($count<$this->dgenerations-1) {
-								if ($this->show_spouse) $h-=6;
-								else $h +=6;
-							}
-
+							//-- adjust for the first column on left
+							$h= round(((($bheight)*$kids)/2)+10);
+							//-- adjust for other vertical columns
+							if ($kids>1) $h = ((($kids-1)*4)+$h);
 							echo '<td class="tdtop">',
 								 '<img class="bvertline" id="vline_',$chil,'" src="',$WT_IMAGES["vline"],'" height="',$h,'" alt=""></td>';
 						} else {
@@ -184,10 +182,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo '</td><td width="',$bwidth,'">';
 			}
 		}
-		echo '<table id="table2_',$pid,'"><tr><td>';
+		echo '<table><tr><td>';
 		print_pedigree_person($person);
 		echo '</td><td>',
-			 '<img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt="">';
+			 '<img class="line2" src="',$WT_IMAGES["hline"],'" width="7" height="3" alt="">';
 		//----- Print the spouse
 		if ($count==1 ) { 
 			if ($this->show_spouse) {
@@ -329,22 +327,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 
 <script>
 	function sizeLines() {
-		var vlines;
-		vlines = document.getElementsByClassName("tvertline");
-		for (i=0; i < vlines.length; i++) {
-			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
-			var hline = document.getElementById("table_"+pid);
-			var hline2 = document.getElementById("table2_"+pid);
-			var newHeight = Math.abs(hline.offsetHeight - (hline2.offsetTop + <?php echo $bhalfheight+8; ?>));
-			vlines[i].style.height=newHeight+'px';
-		}
-		vlines = document.getElementsByClassName("bvertline");
-		for (i=0; i < vlines.length; i++) {
-			var pid = vlines[i].id.substr(vlines[i].id.indexOf("_")+1);
-			var hline = document.getElementById("table_"+pid);
-			var hline2 = document.getElementById("table2_"+pid);
-			vlines[i].style.height=(hline.offsetTop+hline2.offsetTop + <?php echo $bhalfheight+6; ?>)+'px';
-		}
 		vlines = document.getElementsByClassName("pvline");
 		for (i=0; i < vlines.length; i++) {
 			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
