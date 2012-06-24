@@ -718,6 +718,8 @@ z-index:1;
 }
 
 html[dir='rtl'] #pedigree_chart {left:auto;right:0;}
+#pedigree_canvas {color:#8BF;position:absolute;z-index:-1000;}
+#pedigree_canvas p{width:300px;padding-top:200px;}
 
 #relationship_chart {
 z-index:1;

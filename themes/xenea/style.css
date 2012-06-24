@@ -996,6 +996,8 @@ html[dir='rtl'] #familybook_chart{margin-right:10px;}
 	top:-240px;
 	left:0;
 }
+#pedigree_canvas {color:#81A9CB;position:absolute;z-index:-1000;}
+#pedigree_canvas p{width:300px;padding-top:200px;}
 
 /*-- pedigree chart rtl specific stylesheets --*/
 html[dir='rtl'] #pedigree_chart {

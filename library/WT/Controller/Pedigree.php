@@ -51,11 +51,19 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		global $PEDIGREE_FULL_DETAILS, $PEDIGREE_LAYOUT, $MAX_PEDIGREE_GENERATIONS;
 		global $DEFAULT_PEDIGREE_GENERATIONS, $SHOW_EMPTY_BOXES;
 		global $bwidth, $bheight, $cbwidth, $cbheight, $baseyoffset, $basexoffset, $byspacing, $bxspacing;
+		global $linewidth, $shadowcolor, $shadowblur, $shadowoffsetX, $shadowoffsetY;
+
 		global $BROWSER_TYPE, $show_full, $talloffset;
 
 		parent::__construct();
 		$this->log2 = log(2);
-
+		
+		$this->linewidth = $linewidth;
+		$this->shadowcolor = $shadowcolor;
+		$this->shadowblur = $shadowblur;
+		$this->shadowoffsetX = $shadowoffsetX;
+		$this->shadowoffsetY = $shadowoffsetY;
+		
 		$this->show_full =safe_GET('show_full', array('0', '1'), $PEDIGREE_FULL_DETAILS);
 		$this->talloffset=safe_GET('talloffset', array('0', '1', '2', '3'), $PEDIGREE_LAYOUT);
 		$this->box_width  =safe_GET_integer('box_width',   50, 300, 100);
@@ -96,7 +104,6 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		//-- adjustments for portrait mode
 		if ($this->talloffset==0) {
 			$bxspacing+=12;
-			//$bwidth+=20;
 			$baseyoffset -= 20*($this->PEDIGREE_GENERATIONS-1);
 		}
 

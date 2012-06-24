@@ -101,17 +101,18 @@ if ($controller->error_message) {
 <?php
 //-- echo the boxes
 $curgen = 1;
-$lastvlength = 0; // -- used to save the last vertical line length where child had both father and mother
-$linexoffset = 0;
-$vlength = 0;
 $xoffset = 0;	
 $yoffset = 0;     // -- used to offset the position of each box as it is generated
 $prevxoffset = 0; // -- used to track the horizontal x position of the previous box
 $prevyoffset = 0; // -- used to track the vertical y position of the previous box
 $maxyoffset = 0;
-$linesize = 3;
-if (!isset($brborder)) $brborder = 1; // Avoid errors from old custom themes
+$lineDrawx = array(); // -- used to position joining lines on <canvas>
+$lineDrawy = array(); // -- used to position joining lines on <canvas>
+
 for ($i=($controller->treesize-1); $i>=0; $i--) {
+	// set positions for joining lines
+	$lineDrawx[$i] = $xoffset;
+	$lineDrawy[$i] = $yoffset;
 
 	// -- check to see if we have moved to the next generation
 	if ($i < floor($controller->treesize / (pow(2, $curgen)))) {
@@ -126,86 +127,12 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		$xoffset = $controller->offsetarray[$i]["y"];
 		$yoffset = $controller->offsetarray[$i]["x"];
 	}
-	// -- if we are in the middle generations then we need to draw the connecting lines
-
-	if (($curgen > 0 && $talloffset > 1) || (($curgen > $talloffset) && ($curgen < $controller->PEDIGREE_GENERATIONS))) {
-		if ($i%2==1) {
-			if ($SHOW_EMPTY_BOXES || ($controller->treeid[$i]) || ($controller->treeid[$i+1])) {
-
-				if ($talloffset < 2) {
-					$vlength = $prevyoffset-$yoffset;
-					$lastvlength = $vlength;
-					 // If no father then adjust lines
-					if (!$controller->treeid[$i] && (!$SHOW_EMPTY_BOXES)) { 
-						$vlength = ($lastvlength/2);
-						if ($talloffset == 0 && $show_full==1) $yoffset = $yoffset+$controller->pbheight+50; 
-						if ($talloffset == 0 && $show_full==0) $yoffset = $yoffset+$controller->pbheight+30; 
-						if ($talloffset == 1) $yoffset = $yoffset+$controller->pbheight+5; 
-					} 
-				}
-				else {
-					$vlength = $prevxoffset-$xoffset;
-				}
-				if (!$SHOW_EMPTY_BOXES && (empty($controller->treeid[$i+1]))) {
-					$parent = ceil(($i-1)/2);
-					$vlength = $controller->offsetarray[$parent]["y"]-$yoffset;
-				}
-				$linexoffset = $xoffset;
-				if ($talloffset < 2) {
-					echo '<div id="line', $i, '" dir="';
-					if ($TEXT_DIRECTION=="rtl") {
-						echo 'rtl" style="position:absolute; right:';
-					} else {
-						echo 'ltr" style="position:absolute; left:';
-					}
-
-					echo ($linexoffset-2), 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;">'; // vertical line joining boxes
-					echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($vlength-1), '" alt="" >'; // vertical line joining boxes
-					echo '</div>';
-				} else {
-					echo '<div id="vline', $i, '" dir="';
-					if ($TEXT_DIRECTION=="rtl") {
-						echo 'rtl" style="position:absolute; right:';
-					} else {
-						echo 'ltr" style="position:absolute; left:';
-					}
-					if ($talloffset > 2) {
-						echo ($linexoffset-2+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1-$controller->pbheight/2+10), 'px; z-index: 0;">';
-						echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" >';
-					} else {
-						echo ($linexoffset-1+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+1+$controller->pbheight/2+10), 'px; z-index: 0;">';
-						echo '<img src="', $WT_IMAGES['vline'], '" width="', $linesize, '" height="', ($controller->pbheight), '" alt="" >';
-					}
-					echo '</div>';
-					echo '<div id="line', $i, '" dir="';
-					if ($TEXT_DIRECTION=="rtl") {
-						echo 'rtl" style="position:absolute; right:';
-					} else {
-						echo 'ltr" style="position:absolute; left:';
-					}
-					echo ($linexoffset+$controller->pbwidth), 'px; top:', ($yoffset+1+$controller->pbheight/2), 'px; z-index: 0;\">';
-					echo '<img src="', $WT_IMAGES['hline'], '" width="', ($vlength-$controller->pbwidth), '" height="', $linesize, '" alt="">';
-					echo '</div>';
-				}
-			} else { // here if no parents and no empty boxes
-				$vlength = $prevxoffset-$xoffset;
-				$linexoffset = $xoffset;
-			}
-		}
-	}
 	// -- draw the box
 	if (!empty($controller->treeid[$i]) || $SHOW_EMPTY_BOXES) {
-		// Work around a bug in FireFox that mis-places some boxes in Portrait RTL, resulting in
-		// vertical lines that themselves appear to be mis-placed.
-
-		if ($TEXT_DIRECTION=="rtl") {
-			$xoffset += $brborder; // Account for thickness of right box border
-		}
 
 		if ($yoffset>$maxyoffset) {
 			$maxyoffset=$yoffset;
 		}
-		$widthadd = 0;
 		if ($i==0) {
 			$iref = rand();
 		} else {
@@ -215,22 +142,17 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		// Can we go back to an earlier generation?
 		$can_go_back=$curgen==1 && WT_Person::getInstance($controller->treeid[$i]) && WT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
 
-		if ($can_go_back) {
-			$widthadd = 20;
-		} elseif ($curgen >2 && $curgen < $controller->PEDIGREE_GENERATIONS) {
-			$widthadd = 10;
-		}
-		if ($talloffset == 2) {
+		if ($talloffset == 2) { // oldest at top
 			echo '<div id="uparrow" dir="';
 			if ($TEXT_DIRECTION=="rtl") {
 				echo 'rtl" style="position:absolute; right:';
 			} else {
 				echo 'ltr" style="position:absolute; left:';
 			}
-			echo ($xoffset+$controller->pbwidth/2-5), 'px; top:', ($yoffset-20), 'px; width:10px; height:10px;">';
+			echo ($xoffset+$controller->pbwidth/2), 'px; top:', ($yoffset), 'px;">';
 			if ($can_go_back) {
 				$did = 1;
-				if ($i > ($controller->treesize/2) + ($controller->treesize/4)-1) {
+				if ($i > ($controller->treesize/2) + ($controller->treesize/4)) {
 					$did++;
 				}
 				echo '<a href=pedigree.php?PEDIGREE_GENERATIONS=', $controller->PEDIGREE_GENERATIONS, '&amp;rootid=', $controller->treeid[$did], '&amp;show_full=', $controller->show_full, '&amp;talloffset=', $controller->talloffset, ' class="icon-uarrow noprint"></a>';
@@ -238,7 +160,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 			echo '</div>';
 		}
 		// beginning of box setup and display
-		echo '<div id="box';
+		echo '<div class="shadow" id="box';
 		if (empty($controller->treeid[$i])) {
 			echo "$iref";
 		} else {
@@ -250,55 +172,38 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 			echo ".1.$iref\" style=\"position:absolute; left:";
 		}
 
-		if ($talloffset == 2) {
-			$zindex = $PEDIGREE_GENERATIONS-$curgen;
-		} else {
-			$zindex = 0;
-		}
-		//Correct box spacing for Oldest on bottom
-		if (($talloffset == 3) && ($curgen ==1)) {
-			$yoffset +=25;
+		//Correct box spacing for different layouts
+		if ($talloffset == 2) {$zindex = $PEDIGREE_GENERATIONS-$curgen;} else {$zindex = 0;}	
+		if (($talloffset == 3) && ($curgen ==1)) {$yoffset +=25;}
+		if (($talloffset == 3) && ($curgen ==2)) {$yoffset +=10;}
 
-		}
+		echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";
 		
-		if (($talloffset == 3) && ($curgen ==2)) {
-			$yoffset +=10;
-		}
-
-		echo $xoffset, "px; top:", ($yoffset-1), "px; width:", ($controller->pbwidth+$widthadd), "px; height:", $controller->pbheight, "px; ";
-		echo "z-index: ", $zindex, ";\">";
-		echo "<table class=\"pedigree_chart_table\" dir=\"$TEXT_DIRECTION\">";
-		if (($talloffset < 2) && ($curgen > $talloffset) && ($curgen < $controller->PEDIGREE_GENERATIONS)) {
-			echo "<tr><td>";
-			echo "<img src=\"", $WT_IMAGES["hline"], "\" alt=\"\">";
-			echo "</td><td class=\"width100\">";
-		} else {
-			echo "<tr><td class=\"width100\">";
-		}
-		if (!isset($controller->treeid[$i])) {
-			$controller->treeid[$i] = false;
-		}
+		if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}
+		
 		print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);
+		
 		if ($can_go_back) {
 			$did = 1;
-			if ($i > ($controller->treesize/2) + ($controller->treesize/4)-1) {
+			if ($i > ($controller->treesize/2) + ($controller->treesize/4)) {
 				$did++;
 			}
 			if ($talloffset==3) {
-				echo "</td></tr><tr><td>";
-				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$controller->talloffset}\" ";
-				echo 'class="icon-darrow noprint"></a>';
+				echo '<div class="ancestorarrow" dir="ltr" style="position:absolute; left:', $controller->pbwidth/2, 'px; top:', $controller->pbheight, 'px;">';
+					echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$controller->talloffset.' class="icon-darrow noprint"></a>';
+				echo '</div>';
 			} elseif ($talloffset < 2) {
-				echo "</td><td>";
-				echo "<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid={$controller->treeid[$did]}&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\" ";
+				echo '<div class="ancestorarrow" dir="ltr" style="position:absolute; right:-22px; top:', ($controller->pbheight/2-10), 'px;">';
+				echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$talloffset.'"';
 				if ($TEXT_DIRECTION=="rtl") {
-					echo 'class="icon-larrow noprint"></a>';
+					echo ' class="icon-larrow noprint"></a>';
 				} else {
-					echo 'class="icon-rarrow noprint"></a>';
+					echo ' class="icon-rarrow noprint"></a>';
 				}
+				echo '</div>';
 			}
 		}
-		echo "</td></tr></table></div>";
+		echo '</div>';
 	}
 }
 
@@ -321,7 +226,7 @@ if (count($famids)>0) {
 		} else {
 			$addxoffset = 0;
 		}
-		echo $addxoffset, 'px; top:', $yoffset, 'px; width:10px; height:10px;">';
+		echo $addxoffset, 'px; top:', $yoffset, 'px;">';
 		if ($TEXT_DIRECTION=='rtl') {
 			echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-rarrow"></a>';
 		} else {
@@ -330,7 +235,7 @@ if (count($famids)>0) {
 		break;
 	case 1:
 		if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
-		echo $basexoffset, 'px; top:', $yoffset, 'px; width:10px; height:10px;">';
+		echo $basexoffset, 'px; top:', $yoffset, 'px;">';
 		if ($TEXT_DIRECTION=='rtl') {
 			echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-rarrow"></a>';
 		} else {
@@ -338,11 +243,11 @@ if (count($famids)>0) {
 		}
 		break;
 	case 2:
-		echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset+$controller->pbheight/2+10), 'px; width:10px; height:10px;">';
+		echo ($xoffset-10+$controller->pbwidth/2), 'px; top:', ($yoffset+$controller->pbheight/2+10), 'px;">';
 		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-darrow"></a>';
 		break;
 	case 3:
-		echo ($linexoffset-10+$controller->pbwidth/2+$vlength/2), 'px; top:', ($yoffset-$controller->pbheight/2-10), 'px; width:10px; height:10px;">';
+		echo ($xoffset-10+$controller->pbwidth/2), 'px; top:', ($yoffset-$controller->pbheight/2-10), 'px;">';
 		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-uarrow"></a>';
 		break;
 	}
@@ -350,12 +255,11 @@ if (count($famids)>0) {
 	$yoffset += ($controller->pbheight / 2)+10;
 	echo '<div id="childbox" dir="';
 	if ($TEXT_DIRECTION=='rtl') {
-		echo 'rtl" style="position:absolute; right:';
+		echo 'rtl" style="padding: 5px; background-color:white; border:1px solid; position:absolute; right:';
 	} else {
-		echo 'ltr" style="position:absolute; left:';
+		echo 'ltr" style="padding: 5px; background-color:white; border:1px solid; position:absolute; left:';
 	}
-	echo $xoffset, 'px; top:', $yoffset, 'px; width:', $controller->pbwidth, 'px; height:', $controller->pbheight, 'px; visibility: hidden;">';
-	echo '<table class="person_box"><tr><td>';
+	echo $xoffset, 'px; top:', $yoffset, 'px; visibility: hidden;">';
 	foreach ($famids as $family) {
 		$spouse=$family->getSpouse($controller->root);
 		if ($spouse) {
@@ -396,15 +300,90 @@ if (count($famids)>0) {
 			}
 		}
 	}
-	echo '</td></tr></table>';
 	echo '</div>';
 }
+// calculate canvas width
+if ($talloffset < 2) {$canvaswidth = $PEDIGREE_GENERATIONS*($controller->pbwidth+20);
+} else {
+$canvaswidth = pow(2,$PEDIGREE_GENERATIONS-1)*($controller->pbwidth+20);}
+echo '<canvas id="pedigree_canvas" width="'.$canvaswidth.'" height="'.($maxyoffset+200).'"><p>No lines between boxes? Unfortunately your browser does not support he HTML5 canvas feature.</p></canvas>';
 echo '</div>'; //close #pedigree_chart
 echo '</div>'; //close #pedigree-page
+
 // Expand <div id="content"> to include the absolutely-positioned elements.
 $controller->addInlineJavascript('
 	content_div = document.getElementById("content");
 	if (content_div) {
 		content_div.style.height="'.($maxyoffset+30).'px";
 	}
+function getStyle(oElm, strCssRule){
+	var strValue = "";
+	if(document.defaultView && document.defaultView.getComputedStyle){
+		strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+	}
+	else if(oElm.currentStyle){
+		strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
+			return p1.toUpperCase();
+		});
+		strValue = oElm.currentStyle[strCssRule];
+	}
+	return strValue;
+}
+	// Draw joining lines in <canvas>
+	// Set variables
+		var c=document.getElementById("pedigree_canvas");
+		var ctx=c.getContext("2d");
+		var offset_x = 20;
+		var offset_x2 = '.$controller->pbwidth.'/2;
+		var offset_y = '.$controller->pbheight.'/2;
+		var offset_y2 = '.$controller->pbheight.'*2-10;
+		var lineDrawx = new Array("'. join(array_reverse ($lineDrawx),'","'). '");
+		var lineDrawx2 = new Array("'. join($lineDrawx,'","'). '");
+		var lineDrawy = new Array("'. join(array_reverse ($lineDrawy),'","'). '");
+		var lineDrawy2 = new Array("'. join($lineDrawy,'","'). '");
+		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.'-1);
+		var maxjoins2 = Math.pow(2,'.$PEDIGREE_GENERATIONS.');
+		var talloffset = '.$talloffset.';
+		
+	//Draw the lines
+		if (talloffset < 2) { // landscape and portrait styles
+			for (var i = 0; i <= maxjoins-3; i++) {
+				if(i%2==0){
+					ctx.moveTo(lineDrawx[i],lineDrawy[i]-0+offset_y);
+					ctx.lineTo(lineDrawx[i]-offset_x,lineDrawy[i]-0+offset_y);
+					ctx.lineTo(lineDrawx[i+1]-offset_x,lineDrawy[i+1]-0+offset_y);
+					ctx.lineTo(lineDrawx[i+1],lineDrawy[i+1]-0+offset_y);
+				}
+			}
+		}
+	
+		if (talloffset == 2) { // oldest at top
+			for (var i = 0; i <= maxjoins2; i++) {
+				if(i%2!=0){
+					ctx.moveTo(lineDrawx2[i]-0+offset_x2,lineDrawy2[i]);
+					ctx.lineTo(lineDrawx2[i]-0+offset_x2,lineDrawy2[i]-0+offset_y2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2,lineDrawy2[i]-0+offset_y2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2,lineDrawy2[i]);
+				}
+			}
+		}
+
+		if (talloffset == 3) { // oldest at bottom
+			for (var i = 0; i <= maxjoins2; i++) {
+				if(i%2!=0){
+					ctx.moveTo(lineDrawx2[i]-0+offset_x2,lineDrawy2[i]);
+					ctx.lineTo(lineDrawx2[i]-0+offset_x2,lineDrawy2[i]-offset_y2/2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2,lineDrawy2[i]-offset_y2/2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2,lineDrawy2[i]);
+				}
+			}
+		}
+		// Set line styles
+		ctx.strokeStyle = getStyle(document.getElementById("pedigree_canvas"), "color");
+		ctx.lineWidth = '.$controller->linewidth.';
+		ctx.shadowColor = "'.$controller->shadowcolor.'";
+		ctx.shadowBlur = '.$controller->shadowblur.';
+		ctx.shadowOffsetX = '.$controller->shadowoffsetX.';
+		ctx.shadowOffsetY = '.$controller->shadowoffsetY.';
+		ctx.stroke();
 ');

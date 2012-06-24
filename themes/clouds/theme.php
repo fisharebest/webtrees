@@ -89,6 +89,11 @@ $basexoffset = 10; // -- position the pedigree and timeline charts relative to t
 $bxspacing = 4; // -- horizontal spacing between boxes on the pedigree chart
 $byspacing = 5; // -- vertical spacing between boxes on the pedigree chart
 $brborder = 1; // -- pedigree chart box right border thickness 
+$linewidth=1.5;			// width of joining lines
+$shadowcolor="";		// shadow color for joining lines
+$shadowblur=0;			// shadow blur for joining lines
+$shadowoffsetX=0;		// shadowOffsetX for joining lines
+$shadowoffsetY=0;		// shadowOffsetY for joining lines
 
 //-- Other settings that should not be touched
 $Dbxspacing = 5; // -- position vertical line between boxes in relationship chart
