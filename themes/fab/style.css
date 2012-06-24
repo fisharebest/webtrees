@@ -267,7 +267,7 @@ html[dir='rtl'] .makeMenu li ul li {
 	font:13px  arial;
 }
 
-.person_box, .person_boxF, .person_boxNN {margin:0 0 0 3px;}
+.person_box, .person_boxF, .person_boxNN {margin:0;}
 
 .person_box_lifespan {display:inline;}
 
@@ -323,7 +323,7 @@ html[dir="rtl"] .pedigree_image {
 	top:-230px;
 	left:0;
 }
-#pedigree_canvas {color:darkGray;position:absolute;z-index:-1000;}
+#pedigree_canvas {color:darkGray;position:absolute;top:200px;z-index:-1000;}
 #pedigree_canvas p{width:300px;padding-top:200px;}
 
 .compact_view {cursor:url(images/zoomin.png),n-resize;}

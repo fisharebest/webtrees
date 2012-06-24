@@ -333,7 +333,7 @@ html[dir='rtl'] #familybook_chart{margin-right:10px;}
 .pedigree_chart_table {border:0;border-collapse:collapse;padding:0;width:100%;}
 #pedigree_chart{position:relative;top:-200px;left:0;z-index:1;}
 html[dir='rtl'] #pedigree_chart{left:auto;right:0;}
-#pedigree_canvas {color:#81A9CB;position:absolute;z-index:-1000;}
+#pedigree_canvas {color:#999;position:absolute;top:200px;z-index:-1000;}
 #pedigree_canvas p{width:300px;padding-top:200px;}
 
 #relationship_chart{margin-left:10px;}
