@@ -34,6 +34,9 @@ $controller
 	->requireEditorLogin()
 	->setPageTitle(WT_I18N::translate('Link media'))
 	->pageHeader()
+	->addExternalJavascript(WT_JQUERY_URL)
+	->addExternalJavascript(WT_JQUERYUI_URL)
+	->addExternalJavascript('js/webtrees.js')
 	->addExternalJavascript('js/autocomplete.js');
 
 //-- page parameters and checking
