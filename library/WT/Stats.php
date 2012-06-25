@@ -2564,9 +2564,9 @@ class WT_Stats {
 				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
 				" FLOOR(married.d_year/100+1) AS century, ".
 				" 'M' AS sex ".
-				"FROM `wt_dates` AS married ".
-				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
-				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
+				"FROM `##dates` AS married ".
+				"JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
+				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('M', 'BOTH') AND ".
 				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
@@ -2578,9 +2578,9 @@ class WT_Stats {
 				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
 				" FLOOR(married.d_year/100+1) AS century, ".
 				" 'F' AS sex ".
-				"FROM `wt_dates` AS married ".
-				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
-				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
+				"FROM `##dates` AS married ".
+				"JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
+				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('F', 'BOTH') AND ".
 				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
@@ -2662,9 +2662,9 @@ class WT_Stats {
 				" fam.f_id, ".
 				" birth.d_gid, ".
 				" married.d_julianday2-birth.d_julianday1 AS age ".
-				"FROM `wt_dates` AS married ".
-				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
-				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
+				"FROM `##dates` AS married ".
+				"JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
+				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_husb AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('M', 'BOTH') AND {$years} ".
 				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
@@ -2675,9 +2675,9 @@ class WT_Stats {
 				" ROUND(AVG(married.d_julianday2-birth.d_julianday1-182.5)/365.25,1) AS age, ".
 				" FLOOR(married.d_year/100+1) AS century, ".
 				" 'F' AS sex ".
-				"FROM `wt_dates` AS married ".
-				"JOIN `wt_families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
-				"JOIN `wt_dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
+				"FROM `##dates` AS married ".
+				"JOIN `##families` AS fam ON (married.d_gid=fam.f_id AND married.d_file=fam.f_file) ".
+				"JOIN `##dates` AS birth ON (birth.d_gid=fam.f_wife AND birth.d_file=fam.f_file) ".
 				"WHERE ".
 				" '{$sex}' IN ('F', 'BOTH') AND {$years} ".
 				" married.d_file={$this->_ged_id} AND married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND married.d_fact='MARR' AND ".
