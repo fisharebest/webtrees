@@ -90,7 +90,6 @@ $baseyoffset=10;		// position the entire pedigree tree relative to the top of th
 $basexoffset=10;		// position the entire pedigree tree relative to the left of the page
 $bxspacing=10;			// horizontal spacing between boxes on the pedigree chart
 $byspacing=10;			// vertical spacing between boxes on the pedigree chart
-$brborder=1;			// box right border thickness
 $linewidth=1.5;			// width of joining lines
 $shadowcolor="";		// shadow color for joining lines
 $shadowblur=0;			// shadow blur for joining lines

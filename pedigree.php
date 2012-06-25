@@ -303,10 +303,12 @@ if (count($famids)>0) {
 	echo '</div>';
 }
 // calculate canvas width
-if ($talloffset < 2) {$canvaswidth = $PEDIGREE_GENERATIONS*($controller->pbwidth+20);
+if ($talloffset < 2) {
+	$canvaswidth = $PEDIGREE_GENERATIONS*($controller->pbwidth+20);
 } else {
-$canvaswidth = pow(2,$PEDIGREE_GENERATIONS-1)*($controller->pbwidth+20);}
-echo '<canvas id="pedigree_canvas" width="'.$canvaswidth.'" height="'.($maxyoffset+200).'"><p>No lines between boxes? Unfortunately your browser does not support he HTML5 canvas feature.</p></canvas>';
+	$canvaswidth = pow(2,$PEDIGREE_GENERATIONS-1)*($controller->pbwidth+20);
+}
+echo '<canvas id="pedigree_canvas" width="'.(int)($canvaswidth).'" height="'.(int)($maxyoffset+200).'"><p>No lines between boxes? Unfortunately your browser does not support he HTML5 canvas feature.</p></canvas>';
 echo '</div>'; //close #pedigree_chart
 echo '</div>'; //close #pedigree-page
 
@@ -316,32 +318,32 @@ $controller->addInlineJavascript('
 	if (content_div) {
 		content_div.style.height="'.($maxyoffset+30).'px";
 	}
-function getStyle(oElm, strCssRule){
-	var strValue = "";
-	if(document.defaultView && document.defaultView.getComputedStyle){
-		strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+	function getStyle(oElm, strCssRule){
+		var strValue = "";
+		if(document.defaultView && document.defaultView.getComputedStyle){
+			strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+		}
+		else if(oElm.currentStyle){
+			strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
+				return p1.toUpperCase();
+			});
+			strValue = oElm.currentStyle[strCssRule];
+		}
+		return strValue;
 	}
-	else if(oElm.currentStyle){
-		strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
-			return p1.toUpperCase();
-		});
-		strValue = oElm.currentStyle[strCssRule];
-	}
-	return strValue;
-}
 	// Draw joining lines in <canvas>
 	// Set variables
 		var c=document.getElementById("pedigree_canvas");
 		var ctx=c.getContext("2d");
 		var offset_x = 20;
-		var offset_x2 = '.$controller->pbwidth.'/2;
-		var offset_y = '.$controller->pbheight.'/2;
-		var offset_y2 = '.$controller->pbheight.'*2-10;
+		var offset_x2 = '.$controller->pbwidth.'/2+'.$controller->linewidth.';
+		var offset_y = '.$controller->pbheight.'/2+'.$controller->linewidth.';
+		var offset_y2 = '.$controller->pbheight.'*2;
 		var lineDrawx = new Array("'. join(array_reverse ($lineDrawx),'","'). '");
 		var lineDrawx2 = new Array("'. join($lineDrawx,'","'). '");
 		var lineDrawy = new Array("'. join(array_reverse ($lineDrawy),'","'). '");
 		var lineDrawy2 = new Array("'. join($lineDrawy,'","'). '");
-		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.'-1);
+		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.');
 		var maxjoins2 = Math.pow(2,'.$PEDIGREE_GENERATIONS.');
 		var talloffset = '.$talloffset.';
 		
@@ -349,10 +351,10 @@ function getStyle(oElm, strCssRule){
 		if (talloffset < 2) { // landscape and portrait styles
 			for (var i = 0; i <= maxjoins-3; i++) {
 				if(i%2==0){
-					ctx.moveTo(lineDrawx[i],lineDrawy[i]-0+offset_y);
-					ctx.lineTo(lineDrawx[i]-offset_x,lineDrawy[i]-0+offset_y);
-					ctx.lineTo(lineDrawx[i+1]-offset_x,lineDrawy[i+1]-0+offset_y);
-					ctx.lineTo(lineDrawx[i+1],lineDrawy[i+1]-0+offset_y);
+					ctx.moveTo(lineDrawx[i],lineDrawy[i]-0+offset_y+offset_x/2);
+					ctx.lineTo(lineDrawx[i]-offset_x,lineDrawy[i]-0+offset_y+offset_x/2);
+					ctx.lineTo(lineDrawx[i+1]-offset_x,lineDrawy[i+1]-0+offset_y-offset_x/2);
+					ctx.lineTo(lineDrawx[i+1],lineDrawy[i+1]-0+offset_y-offset_x/2);
 				}
 			}
 		}
@@ -360,10 +362,10 @@ function getStyle(oElm, strCssRule){
 		if (talloffset == 2) { // oldest at top
 			for (var i = 0; i <= maxjoins2; i++) {
 				if(i%2!=0){
-					ctx.moveTo(lineDrawx2[i]-0+offset_x2,lineDrawy2[i]);
-					ctx.lineTo(lineDrawx2[i]-0+offset_x2,lineDrawy2[i]-0+offset_y2);
-					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2,lineDrawy2[i]-0+offset_y2);
-					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2,lineDrawy2[i]);
+					ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]);
+					ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]-0+offset_y2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-0+offset_y2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
 				}
 			}
 		}
@@ -371,10 +373,10 @@ function getStyle(oElm, strCssRule){
 		if (talloffset == 3) { // oldest at bottom
 			for (var i = 0; i <= maxjoins2; i++) {
 				if(i%2!=0){
-					ctx.moveTo(lineDrawx2[i]-0+offset_x2,lineDrawy2[i]);
-					ctx.lineTo(lineDrawx2[i]-0+offset_x2,lineDrawy2[i]-offset_y2/2);
-					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2,lineDrawy2[i]-offset_y2/2);
-					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2,lineDrawy2[i]);
+					ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]);
+					ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]-offset_y2/2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-offset_y2/2);
+					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
 				}
 			}
 		}
