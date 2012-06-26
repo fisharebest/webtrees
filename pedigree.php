@@ -188,18 +188,20 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 			if ($i > ($controller->treesize/2) + ($controller->treesize/4)) {
 				$did++;
 			}
+			if ($TEXT_DIRECTION=="rtl") {
+				$posn = 'left';
+				$arrow = 'icon-larrow';
+			} else {
+				$posn = 'right';
+				$arrow = 'icon-rarrow';
+			}
 			if ($talloffset==3) {
-				echo '<div class="ancestorarrow" dir="ltr" style="position:absolute; left:', $controller->pbwidth/2, 'px; top:', $controller->pbheight, 'px;">';
+				echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':', $controller->pbwidth/2, 'px; top:', $controller->pbheight, 'px;">';
 					echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$controller->talloffset.' class="icon-darrow noprint"></a>';
 				echo '</div>';
 			} elseif ($talloffset < 2) {
-				echo '<div class="ancestorarrow" dir="ltr" style="position:absolute; right:-22px; top:', ($controller->pbheight/2-10), 'px;">';
-				echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$talloffset.'"';
-				if ($TEXT_DIRECTION=="rtl") {
-					echo ' class="icon-larrow noprint"></a>';
-				} else {
-					echo ' class="icon-rarrow noprint"></a>';
-				}
+				echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':-22px; top:', ($controller->pbheight/2-10), 'px;">';
+					echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$talloffset.'" class=" ',$arrow,' noprint"></a>';
 				echo '</div>';
 			}
 		}
@@ -318,6 +320,7 @@ $controller->addInlineJavascript('
 	if (content_div) {
 		content_div.style.height="'.($maxyoffset+30).'px";
 	}
+	// need to be able to read styles from style.css files
 	function getStyle(oElm, strCssRule){
 		var strValue = "";
 		if(document.defaultView && document.defaultView.getComputedStyle){
@@ -331,50 +334,67 @@ $controller->addInlineJavascript('
 		}
 		return strValue;
 	}
+	
+	
 	// Draw joining lines in <canvas>
 	// Set variables
 		var c=document.getElementById("pedigree_canvas");
 		var ctx=c.getContext("2d");
+		var textdirection = "'.$TEXT_DIRECTION.'";
+		var talloffset = '.$talloffset.';
+		var canvaswidth = '.($canvaswidth).';
 		var offset_x = 20;
-		var offset_x2 = '.$controller->pbwidth.'/2+'.$controller->linewidth.';
 		var offset_y = '.$controller->pbheight.'/2+'.$controller->linewidth.';
-		var offset_y2 = '.$controller->pbheight.'*2;
 		var lineDrawx = new Array("'. join(array_reverse ($lineDrawx),'","'). '");
-		var lineDrawx2 = new Array("'. join($lineDrawx,'","'). '");
 		var lineDrawy = new Array("'. join(array_reverse ($lineDrawy),'","'). '");
+		var offset_x2 = '.$controller->pbwidth.'/2+'.$controller->linewidth.';
+		var offset_y2 = '.$controller->pbheight.'*2;
+		var lineDrawx2 = new Array("'. join($lineDrawx,'","'). '");
 		var lineDrawy2 = new Array("'. join($lineDrawy,'","'). '");
 		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.');
-		var maxjoins2 = Math.pow(2,'.$PEDIGREE_GENERATIONS.');
-		var talloffset = '.$talloffset.';
 		
 	//Draw the lines
 		if (talloffset < 2) { // landscape and portrait styles
 			for (var i = 0; i <= maxjoins-3; i++) {
 				if(i%2==0){
-					ctx.moveTo(lineDrawx[i],lineDrawy[i]-0+offset_y+offset_x/2);
-					ctx.lineTo(lineDrawx[i]-offset_x,lineDrawy[i]-0+offset_y+offset_x/2);
-					ctx.lineTo(lineDrawx[i+1]-offset_x,lineDrawy[i+1]-0+offset_y-offset_x/2);
-					ctx.lineTo(lineDrawx[i+1],lineDrawy[i+1]-0+offset_y-offset_x/2);
+					if (textdirection == "rtl") {
+						ctx.moveTo(canvaswidth-lineDrawx[i],lineDrawy[i]-0+offset_y+offset_x/2);
+						ctx.lineTo(canvaswidth-lineDrawx[i]+offset_x,lineDrawy[i]-0+offset_y+offset_x/2);
+						ctx.lineTo(canvaswidth-lineDrawx[i+1]+offset_x,lineDrawy[i+1]-0+offset_y-offset_x/2);
+						ctx.lineTo(canvaswidth-lineDrawx[i+1],lineDrawy[i+1]-0+offset_y-offset_x/2);
+					} else {
+						ctx.moveTo(lineDrawx[i],lineDrawy[i]-0+offset_y+offset_x/2);
+						ctx.lineTo(lineDrawx[i]-offset_x,lineDrawy[i]-0+offset_y+offset_x/2);
+						ctx.lineTo(lineDrawx[i+1]-offset_x,lineDrawy[i+1]-0+offset_y-offset_x/2);
+						ctx.lineTo(lineDrawx[i+1],lineDrawy[i+1]-0+offset_y-offset_x/2);
+					}
 				}
 			}
 		}
 	
 		if (talloffset == 2) { // oldest at top
-			for (var i = 0; i <= maxjoins2; i++) {
+			for (var i = 0; i <= maxjoins; i++) {
 				if(i%2!=0){
-					ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]);
-					ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]-0+offset_y2);
-					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-0+offset_y2);
-					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
+					if (textdirection == "rtl") {
+						ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]);
+						ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]-0+offset_y2);
+						ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-0+offset_y2);
+						ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
+					} else {
+						ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]);
+						ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]-0+offset_y2);
+						ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-0+offset_y2);
+						ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
+					}
 				}
 			}
 		}
 
 		if (talloffset == 3) { // oldest at bottom
-			for (var i = 0; i <= maxjoins2; i++) {
+			for (var i = 0; i <= maxjoins; i++) {
 				if(i%2!=0){
-					ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]);
-					ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x/2,lineDrawy2[i]-offset_y2/2);
+					ctx.moveTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]);
+					ctx.lineTo(lineDrawx2[i]-0+offset_x2-offset_x,lineDrawy2[i]-offset_y2/2);
 					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]-offset_y2/2);
 					ctx.lineTo(lineDrawx2[i+1]-0+offset_x2+offset_x/2,lineDrawy2[i]);
 				}
