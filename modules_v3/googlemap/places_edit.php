@@ -247,7 +247,6 @@ if ($action=='add') {
 	echo '</b><br>';
 }
 
-echo '<script src="', WT_GM_SCRIPT, '"></script>';
 include_once 'wt_v3_places_edit.js.php';
 $api='v3';
 
