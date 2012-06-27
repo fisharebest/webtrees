@@ -997,6 +997,12 @@ html[dir='rtl'] #familybook_chart{margin-right:10px;}
 	left:0;
 }
 #pedigree_canvas {color:#81A9CB;position:absolute;top:200px;z-index:-1000;}
+#pedigree_chart a.arrow{width:20px;height:20px;background-image:url(images/larrow.png);display:inline-block;}
+#pedigree_chart a.arrow:hover{width:20px;height:20px;background-image:url(images/larrow2.png);display:inline-block;}
+html[dir='rtl'] #pedigree_chart a.arrow{width:20px;height:20px;background-image:url(images/rarrow.png);}
+html[dir='rtl'] #pedigree_chart a.arrow:hover{width:20px;height:20px;background-image:url(images/rarrow2.png);}
+#pedigree_chart #childarrow, #pedigree_chart #uparrow, #pedigree_chart .shadow {position:absolute;}
+#pedigree_chart #childbox {border:1px solid;background-color:white;padding:5px;position:absolute;visibility:hidden;}
 
 /*-- pedigree chart rtl specific stylesheets --*/
 html[dir='rtl'] #pedigree_chart {

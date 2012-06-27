@@ -37,68 +37,46 @@ if (WT_USE_LIGHTBOX) {
 	$album = new lightbox_WT_Module();
 	$album->getPreLoadContent();
 }
-?>
+
+echo '
 <div id="pedigree-page">
-	<h2><?php echo $controller->getPageTitle(); ?></h2>
+	<h2>'. $controller->getPageTitle(). '</h2>
 	<form name="people" id="people" method="get" action="?">
-		<input type="hidden" name="show_full" value="<?php echo $controller->show_full; ?>">
+		<input type="hidden" name="show_full" value="'. $controller->show_full. '">
 		<table class="list_table">
 			<tr>
-				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Individual'); ?>
-				</td>
-				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Generations'); ?>
-				</td>
-				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Layout'); ?>
-				</td>
-				<td class="descriptionbox wrap">
-					<?php echo WT_I18N::translate('Show Details'); ?>
-				</td>
-				<td rowspan="2" class="facts_label03">
-					<input type="submit" value="<?php echo WT_I18N::translate('View'); ?>">
-				</td>
+				<th class="descriptionbox wrap">'. WT_I18N::translate('Individual'). '</th>
+				<th class="descriptionbox wrap">'. WT_I18N::translate('Generations'). '</th>
+				<th class="descriptionbox wrap">'. WT_I18N::translate('Layout'). '</th>
+				<th class="descriptionbox wrap">'. WT_I18N::translate('Show Details'). '</th>
+				<th rowspan="2" class="facts_label03"><input type="submit" value="'. WT_I18N::translate('View'). '"></th>
 			</tr>
 			<tr>
 				<td class="optionbox">
-					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="<?php echo $controller->rootid; ?>">
-					<?php echo print_findindi_link('rootid'); ?>
-				</td>
-				<td class="optionbox">
-					<select name="PEDIGREE_GENERATIONS">
-						<?php
+					<input class="pedigree_form" type="text" id="rootid" name="rootid" size="3" value="'. $controller->rootid. '">'. print_findindi_link('rootid'). '</td>
+				<td class="optionbox center">
+					<select name="PEDIGREE_GENERATIONS">';
 						for ($i=3; $i<=$MAX_PEDIGREE_GENERATIONS; $i++) {
-							echo "<option value=\"", $i, "\"" ;
-							if ($i == $controller->PEDIGREE_GENERATIONS) echo " selected=\"selected\"";
-							echo ">", $i, "</option>";
+							echo '<option value="', $i, '"';
+							if ($i == $controller->PEDIGREE_GENERATIONS) echo ' selected="selected"';
+							echo '>', $i, '</option>';
 						}
-						?>
-					</select>
+					echo '</select>
 				</td>
-				<td class="optionbox">
-					<?php echo select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset); ?>
-				</td>
-				<td class="optionbox">
-					<input type="checkbox" value="<?php
-					if ($controller->show_full) echo "1\" checked=\"checked\" onclick=\"document.people.show_full.value='0';";
-					else echo "0\" onclick=\"document.people.show_full.value='1';"; ?>">
+				<td class="optionbox center">'. select_edit_control('talloffset', array(0=>WT_I18N::translate('Portrait'), 1=>WT_I18N::translate('Landscape'), 2=>WT_I18N::translate('Oldest at top'), 3=>WT_I18N::translate('Oldest at bottom')), null, $talloffset). '</td>
+				<td class="optionbox center">
+					<input type="checkbox" value="';
+					if ($controller->show_full) echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
+					else echo '0" onclick="document.people.show_full.value=\';'. '">
 				</td>
 			</tr>
 		</table>
-	</form>
-
-<?php
-
+	</form>';
 if ($controller->error_message) {
 	echo '<p class="ui-state-error">', $controller->error_message, '</p>';
 	exit;
 }
-
-?>
-
-<div id="pedigree_chart"> 
-<?php
+echo '<div id="pedigree_chart">';
 //-- echo the boxes
 $curgen = 1;
 $xoffset = 0;	
@@ -113,7 +91,6 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	// set positions for joining lines
 	$lineDrawx[$i] = $xoffset;
 	$lineDrawy[$i] = $yoffset-200; //200 adjustment necessary to move canvas below menus and options. Matched to similar amount on canvas style.
-
 	// -- check to see if we have moved to the next generation
 	if ($i < floor($controller->treesize / (pow(2, $curgen)))) {
 		$curgen++;
@@ -138,16 +115,12 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		} else {
 			$iref = $i;
 		}
-
 		// Can we go back to an earlier generation?
 		$can_go_back=$curgen==1 && WT_Person::getInstance($controller->treeid[$i]) && WT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
 
 		if ($talloffset == 2) { // oldest at top
 			echo '<div id="uparrow" dir="';
-			if ($TEXT_DIRECTION=="rtl") {
-				echo 'rtl" style="position:absolute; right:';
-			} else {
-				echo 'ltr" style="position:absolute; left:';
+			if ($TEXT_DIRECTION=="rtl") {echo 'rtl" style="right:';} else {echo 'ltr" style="left:';
 			}
 			echo ($xoffset+$controller->pbwidth/2), 'px; top:', ($yoffset), 'px;">';
 			if ($can_go_back) {
@@ -166,35 +139,21 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		} else {
 			echo $controller->treeid[$i];
 		}
-		if ($TEXT_DIRECTION=="rtl") {
-			echo ".1.$iref\" style=\"position:absolute; right:";
-		} else {
-			echo ".1.$iref\" style=\"position:absolute; left:";
-		}
-
+		echo '.1'.$iref;
+		if ($TEXT_DIRECTION=="rtl") {echo '" style="right:';} else {echo '" style="left:';}
 		//Correct box spacing for different layouts
 		if ($talloffset == 2) {$zindex = $PEDIGREE_GENERATIONS-$curgen;} else {$zindex = 0;}	
 		if (($talloffset == 3) && ($curgen ==1)) {$yoffset +=25;}
 		if (($talloffset == 3) && ($curgen ==2)) {$yoffset +=10;}
-
-		echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";
-		
-		if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}
-		
-		print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);
-		
+		echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";		
+		if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}	
+		print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);		
 		if ($can_go_back) {
 			$did = 1;
 			if ($i > ($controller->treesize/2) + ($controller->treesize/4)) {
 				$did++;
 			}
-			if ($TEXT_DIRECTION=="rtl") {
-				$posn = 'left';
-				$arrow = 'icon-larrow';
-			} else {
-				$posn = 'right';
-				$arrow = 'icon-rarrow';
-			}
+			if ($TEXT_DIRECTION=="rtl") {$posn = 'left';$arrow = 'icon-larrow';} else {$posn = 'right';	$arrow = 'icon-rarrow';	}
 			if ($talloffset==3) {
 				echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':', $controller->pbwidth/2, 'px; top:', $controller->pbheight, 'px;">';
 					echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$controller->talloffset.' class="icon-darrow noprint"></a>';
@@ -208,7 +167,6 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		echo '</div>';
 	}
 }
-
 // -- echo left arrow for decendants so that we can move down the tree
 $yoffset += ($controller->pbheight / 2)-10;
 $famids = $controller->root->getSpouseFamilies();
@@ -216,11 +174,7 @@ $famids = $controller->root->getSpouseFamilies();
 $cfamids = $controller->root->getChildFamilies();
 if (count($famids)>0) {
 	echo '<div id="childarrow" dir="';
-	if ($TEXT_DIRECTION=='rtl') {
-		echo 'rtl" style="position:absolute; right:';
-	} else {
-		echo 'ltr" style="position:absolute; left:';
-	}
+	if ($TEXT_DIRECTION=='rtl') {echo 'rtl" style="right:';} else {echo 'ltr" style="left:';}
 	switch ($talloffset) {
 	case 0:
 		if ($PEDIGREE_GENERATIONS<6) {
@@ -229,20 +183,12 @@ if (count($famids)>0) {
 			$addxoffset = 0;
 		}
 		echo $addxoffset, 'px; top:', $yoffset, 'px;">';
-		if ($TEXT_DIRECTION=='rtl') {
-			echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-rarrow"></a>';
-		} else {
-			echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-larrow"></a>';
-		}
+		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="arrow"></a>';
 		break;
 	case 1:
 		if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
 		echo $basexoffset, 'px; top:', $yoffset, 'px;">';
-		if ($TEXT_DIRECTION=='rtl') {
-			echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-rarrow"></a>';
-		} else {
-			echo '<a href="#" onclick="togglechildrenbox(); return false;" class="icon-larrow"></a>';
-		}
+		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="arrow"></a>';
 		break;
 	case 2:
 		echo ($xoffset-10+$controller->pbwidth/2), 'px; top:', ($yoffset+$controller->pbheight/2+10), 'px;">';
@@ -256,12 +202,8 @@ if (count($famids)>0) {
 	echo '</div>';
 	$yoffset += ($controller->pbheight / 2)+10;
 	echo '<div id="childbox" dir="';
-	if ($TEXT_DIRECTION=='rtl') {
-		echo 'rtl" style="padding: 5px; background-color:white; border:1px solid; position:absolute; right:';
-	} else {
-		echo 'ltr" style="padding: 5px; background-color:white; border:1px solid; position:absolute; left:';
-	}
-	echo $xoffset, 'px; top:', $yoffset, 'px; visibility: hidden;">';
+	if ($TEXT_DIRECTION=='rtl') {echo 'rtl" style="right:';} else {echo 'ltr" style="left:';}
+	echo $xoffset, 'px; top:', $yoffset, 'px;">';
 	foreach ($famids as $family) {
 		$spouse=$family->getSpouse($controller->root);
 		if ($spouse) {
@@ -271,7 +213,6 @@ if (count($famids)>0) {
 			echo $name;
 			echo '<br></span></a>';
 		}
-
 		$children = $family->getChildren();
 		foreach ($children as $child) {
 			echo "&nbsp;&nbsp;<a href=\"pedigree.php?PEDIGREE_GENERATIONS={$controller->PEDIGREE_GENERATIONS}&amp;rootid=".$child->getXref()."&amp;show_full={$controller->show_full}&amp;talloffset={$talloffset}\"><span ";
@@ -320,6 +261,8 @@ $controller->addInlineJavascript('
 	if (content_div) {
 		content_div.style.height="'.($maxyoffset+30).'px";
 	}
+
+	// Draw joining lines in <canvas>
 	// need to be able to read styles from style.css files
 	function getStyle(oElm, strCssRule){
 		var strValue = "";
@@ -333,10 +276,7 @@ $controller->addInlineJavascript('
 			strValue = oElm.currentStyle[strCssRule];
 		}
 		return strValue;
-	}
-	
-	
-	// Draw joining lines in <canvas>
+	}	
 	// Set variables
 		var c=document.getElementById("pedigree_canvas");
 		var ctx=c.getContext("2d");
@@ -351,8 +291,7 @@ $controller->addInlineJavascript('
 		var offset_y2 = '.$controller->pbheight.'*2;
 		var lineDrawx2 = new Array("'. join($lineDrawx,'","'). '");
 		var lineDrawy2 = new Array("'. join($lineDrawy,'","'). '");
-		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.');
-		
+		var maxjoins = Math.pow(2,'.$PEDIGREE_GENERATIONS.');		
 	//Draw the lines
 		if (talloffset < 2) { // landscape and portrait styles
 			for (var i = 0; i <= maxjoins-3; i++) {
@@ -370,8 +309,7 @@ $controller->addInlineJavascript('
 					}
 				}
 			}
-		}
-	
+		}	
 		if (talloffset == 2) { // oldest at top
 			for (var i = 0; i <= maxjoins; i++) {
 				if(i%2!=0){
@@ -389,7 +327,6 @@ $controller->addInlineJavascript('
 				}
 			}
 		}
-
 		if (talloffset == 3) { // oldest at bottom
 			for (var i = 0; i <= maxjoins; i++) {
 				if(i%2!=0){
