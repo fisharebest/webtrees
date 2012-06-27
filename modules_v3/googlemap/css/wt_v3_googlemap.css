@@ -87,7 +87,7 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 .icon_birt {background-position:-120px -120px; width:60px; height:60px;}
 
 /* places_edit */
-#gname {vertical-align:text-middle; margin-top:0px; white-space:pre-wrap; width:200px; height:60px;}
+#gname {vertical-align:middle; margin-top:0px; white-space:pre-wrap; width:200px; height:60px;}
 #namelink {padding-bottom:5px;}
 #iwcontent_edit {background-color:#eeeeee; border:1px solid #bbbbbb; height:60px; margin-right:0em;}
 #iwcontent_edit a {color:black;}
