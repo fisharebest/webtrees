@@ -67,7 +67,8 @@ echo '
 				<td class="optionbox center">
 					<input type="checkbox" value="';
 					if ($controller->show_full) echo '1" checked="checked" onclick="document.people.show_full.value=\'0\';';
-					else echo '0" onclick="document.people.show_full.value=\';'. '">
+					else echo '0" onclick="document.people.show_full.value=\'1\';';
+					echo '">
 				</td>
 			</tr>
 		</table>
@@ -251,7 +252,7 @@ if ($talloffset < 2) {
 } else {
 	$canvaswidth = pow(2,$PEDIGREE_GENERATIONS-1)*($controller->pbwidth+20);
 }
-echo '<canvas id="pedigree_canvas" width="'.(int)($canvaswidth).'" height="'.(int)($maxyoffset+200).'"><p>No lines between boxes? Unfortunately your browser does not support he HTML5 canvas feature.</p></canvas>';
+echo '<canvas id="pedigree_canvas" width="'.(int)($canvaswidth).'" height="'.(int)($maxyoffset).'"><p>No lines between boxes? Unfortunately your browser does not support he HTML5 canvas feature.</p></canvas>';
 echo '</div>'; //close #pedigree_chart
 echo '</div>'; //close #pedigree-page
 
