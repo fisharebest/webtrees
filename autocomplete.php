@@ -139,7 +139,7 @@ case 'CEME': // Cemetery fields, that contain the search term
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person=WT_Person::getInstance($row);
-		if (preg_match('/\n2 CEME (.*'.preg_quote($term).'.*)/i', $person->getGedcomRecord(), $match)) {
+		if (preg_match('/\n2 CEME (.*'.preg_quote($term, '/').'.*)/i', $person->getGedcomRecord(), $match)) {
 			$data[]=$match[1];
 		}
 	}	
@@ -352,10 +352,10 @@ case 'SOUR_PAGE': // Citation details, for a given source, that contain the sear
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$person=WT_Person::getInstance($row);
-		if (preg_match('/\n1 SOUR @'.$sid.'@(?:\n[2-9].*)*\n2 PAGE (.*'.str_replace(' ', '.+', preg_quote($term)).'.*)/i', $person->getGedcomRecord(), $match)) {
+		if (preg_match('/\n1 SOUR @'.$sid.'@(?:\n[2-9].*)*\n2 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $person->getGedcomRecord(), $match)) {
 			$data[]=$match[1];
 		}
-		if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term)).'.*)/i', $person->getGedcomRecord(), $match)) {
+		if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $person->getGedcomRecord(), $match)) {
 			$data[]=$match[1];
 		}
 	}
@@ -371,10 +371,10 @@ case 'SOUR_PAGE': // Citation details, for a given source, that contain the sear
 	// Filter for privacy
 	foreach ($rows as $row) {
 		$family=WT_Family::getInstance($row);
-		if (preg_match('/\n1 SOUR @'.$sid.'@(?:\n[2-9].*)*\n2 PAGE (.*'.str_replace(' ', '.+', preg_quote($term)).'.*)/i', $family->getGedcomRecord(), $match)) {
+		if (preg_match('/\n1 SOUR @'.$sid.'@(?:\n[2-9].*)*\n2 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $family->getGedcomRecord(), $match)) {
 			$data[]=$match[1];
 		}
-		if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term)).'.*)/i', $family->getGedcomRecord(), $match)) {
+		if (preg_match('/\n2 SOUR @'.$sid.'@(?:\n[3-9].*)*\n3 PAGE (.*'.str_replace(' ', '.+', preg_quote($term, '/')).'.*)/i', $family->getGedcomRecord(), $match)) {
 			$data[]=$match[1];
 		}
 	}
