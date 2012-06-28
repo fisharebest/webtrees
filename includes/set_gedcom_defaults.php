@@ -3,7 +3,7 @@
 //
 // The calling module must set $ged_id and $ged_name
 //
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -100,7 +100,6 @@ set_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB',         false);
 set_gedcom_setting($ged_id, 'SHOW_AGE_DIFF',                false);
 set_gedcom_setting($ged_id, 'SHOW_COUNTER',                 true);
 set_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE',             WT_PRIV_PUBLIC);
-set_gedcom_setting($ged_id, 'SHOW_EMPTY_BOXES',             true);
 set_gedcom_setting($ged_id, 'SHOW_EST_LIST_DATES',          false);
 set_gedcom_setting($ged_id, 'SHOW_FACT_ICONS',              true);
 set_gedcom_setting($ged_id, 'SHOW_GEDCOM_RECORD',           false);

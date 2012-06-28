@@ -256,7 +256,6 @@ function load_gedcom_settings($ged_id=WT_GED_ID) {
 	global $SHOW_AGE_DIFF;                $SHOW_AGE_DIFF                =get_gedcom_setting($ged_id, 'SHOW_AGE_DIFF');
 	global $SHOW_COUNTER;                 $SHOW_COUNTER                 =get_gedcom_setting($ged_id, 'SHOW_COUNTER');
 	global $SHOW_DEAD_PEOPLE;             $SHOW_DEAD_PEOPLE             =get_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE');
-	global $SHOW_EMPTY_BOXES;             $SHOW_EMPTY_BOXES             =get_gedcom_setting($ged_id, 'SHOW_EMPTY_BOXES');
 	global $SHOW_FACT_ICONS;              $SHOW_FACT_ICONS              =get_gedcom_setting($ged_id, 'SHOW_FACT_ICONS');
 	global $SHOW_GEDCOM_RECORD;           $SHOW_GEDCOM_RECORD           =get_gedcom_setting($ged_id, 'SHOW_GEDCOM_RECORD');
 	global $SHOW_HIGHLIGHT_IMAGES;        $SHOW_HIGHLIGHT_IMAGES        =get_gedcom_setting($ged_id, 'SHOW_HIGHLIGHT_IMAGES');

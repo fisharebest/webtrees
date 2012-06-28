@@ -711,7 +711,6 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	@set_gedcom_setting($ged_id, 'SHOW_AGE_DIFF',                $SHOW_AGE_DIFF);
 	@set_gedcom_setting($ged_id, 'SHOW_COUNTER',                 $SHOW_COUNTER);
 	@set_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE',             $SHOW_DEAD_PEOPLE);
-	@set_gedcom_setting($ged_id, 'SHOW_EMPTY_BOXES',             $SHOW_EMPTY_BOXES);
 	@set_gedcom_setting($ged_id, 'SHOW_EST_LIST_DATES',          $SHOW_EST_LIST_DATES);
 	@set_gedcom_setting($ged_id, 'SHOW_FACT_ICONS',              $SHOW_FACT_ICONS);
 	@set_gedcom_setting($ged_id, 'SHOW_GEDCOM_RECORD',           $SHOW_GEDCOM_RECORD);

@@ -221,7 +221,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	* @access public
 	*/
 	function print_person_pedigree($person, $count) {
-		global $SHOW_EMPTY_BOXES, $WT_IMAGES, $bhalfheight;
+		global $WT_IMAGES, $bhalfheight;
 
 		if ($count>=$this->generations) return;
 		if (!$person) return;

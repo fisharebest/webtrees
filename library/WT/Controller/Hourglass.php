@@ -114,7 +114,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	 * @return void
 	 */
 	function print_person_pedigree($person, $count) {
-		global $SHOW_EMPTY_BOXES, $WT_IMAGES, $bhalfheight;
+		global $WT_IMAGES, $bhalfheight;
 
 		if ($count>=$this->generations) return;
 		if (!$person) return;

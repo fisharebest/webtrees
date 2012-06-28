@@ -95,7 +95,7 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 	 * @param int $depth the ascendancy depth to show
 	 */
 	function print_child_ascendancy($person, $sosa, $depth) {
-		global $OLD_PGENS, $WT_IMAGES, $Dindent, $SHOW_EMPTY_BOXES, $pidarr, $box_width;
+		global $OLD_PGENS, $WT_IMAGES, $Dindent, $pidarr, $box_width;
 
 		if ($person) {
 			$pid=$person->getXref();
@@ -136,9 +136,6 @@ class WT_Controller_Ancestry extends WT_Controller_Chart {
 		}
 		// parents
 		$family=$person->getPrimaryChildFamily();
-		if (!$family && $SHOW_EMPTY_BOXES) {
-			$family=new WT_Family('');
-		}
 
 		if ($family && $new && $depth>0) {
 			// print marriage info

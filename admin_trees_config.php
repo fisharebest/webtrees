@@ -225,7 +225,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SHOW_AGE_DIFF',                safe_POST_bool('NEW_SHOW_AGE_DIFF'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_COUNTER',                 safe_POST_bool('NEW_SHOW_COUNTER'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_DEAD_PEOPLE',             safe_POST('SHOW_DEAD_PEOPLE'));
-	set_gedcom_setting(WT_GED_ID, 'SHOW_EMPTY_BOXES',             safe_POST_bool('NEW_SHOW_EMPTY_BOXES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES',          safe_POST_bool('NEW_SHOW_EST_LIST_DATES'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_FACT_ICONS',              safe_POST_bool('NEW_SHOW_FACT_ICONS'));
 	set_gedcom_setting(WT_GED_ID, 'SHOW_GEDCOM_RECORD',           safe_POST_bool('NEW_SHOW_GEDCOM_RECORD'));
@@ -1190,14 +1189,6 @@ if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple
 						<th colspan="2">
 							<?php echo WT_I18N::translate('Charts'); ?>
 						</th>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Empty boxes on pedigree charts'), help_link('SHOW_EMPTY_BOXES'); ?>
-						</td>
-						<td>
-							<?php echo radio_buttons('NEW_SHOW_EMPTY_BOXES', array(false=>WT_I18N::translate('hide'),true=>WT_I18N::translate('show')), $SHOW_EMPTY_BOXES); ?>
-						</td>
 					</tr>
 					<tr>
 						<td>

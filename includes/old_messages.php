@@ -33,6 +33,9 @@ exit;
 
 // MESSAGES DELETED IN WEBTREES-1.3.1
 
+/* I18N: This message is deleted in webtrees-1.3.1  */ WT_I18N::translate('Empty boxes on pedigree charts');
+/* I18N: This message is deleted in webtrees-1.3.1  */ WT_I18N::translate('This option controls whether or not to show empty boxes on Pedigree charts.');
+
 // MESSAGES DELETED IN WEBTREES-1.3.0
 
 /* I18N: This message is deleted in webtrees-1.3.0  */ WT_I18N::translate('<span class="label">%1$s:</span> <span class="field">%2$s</span>');

@@ -106,67 +106,64 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		$yoffset = $controller->offsetarray[$i]["x"];
 	}
 	// -- draw the box
-	if (!empty($controller->treeid[$i]) || $SHOW_EMPTY_BOXES) {
+	if ($yoffset>$maxyoffset) {
+		$maxyoffset=$yoffset;
+	}
+	if ($i==0) {
+		$iref = rand();
+	} else {
+		$iref = $i;
+	}
+	// Can we go back to an earlier generation?
+	$can_go_back=$curgen==1 && WT_Person::getInstance($controller->treeid[$i]) && WT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
 
-		if ($yoffset>$maxyoffset) {
-			$maxyoffset=$yoffset;
+	if ($talloffset == 2) { // oldest at top
+		echo '<div id="uparrow" dir="';
+		if ($TEXT_DIRECTION=="rtl") {echo 'rtl" style="right:';} else {echo 'ltr" style="left:';
 		}
-		if ($i==0) {
-			$iref = rand();
-		} else {
-			$iref = $i;
-		}
-		// Can we go back to an earlier generation?
-		$can_go_back=$curgen==1 && WT_Person::getInstance($controller->treeid[$i]) && WT_Person::getInstance($controller->treeid[$i])->getChildFamilies();
-
-		if ($talloffset == 2) { // oldest at top
-			echo '<div id="uparrow" dir="';
-			if ($TEXT_DIRECTION=="rtl") {echo 'rtl" style="right:';} else {echo 'ltr" style="left:';
-			}
-			echo ($xoffset+$controller->pbwidth/2), 'px; top:', ($yoffset), 'px;">';
-			if ($can_go_back) {
-				$did = 1;
-				if ($i > ($controller->treesize/2) + ($controller->treesize/4)) {
-					$did++;
-				}
-				echo '<a href=pedigree.php?PEDIGREE_GENERATIONS=', $controller->PEDIGREE_GENERATIONS, '&amp;rootid=', $controller->treeid[$did], '&amp;show_full=', $controller->show_full, '&amp;talloffset=', $controller->talloffset, ' class="icon-uarrow noprint"></a>';
-			}
-			echo '</div>';
-		}
-		// beginning of box setup and display
-		echo '<div class="shadow" id="box';
-		if (empty($controller->treeid[$i])) {
-			echo "$iref";
-		} else {
-			echo $controller->treeid[$i];
-		}
-		echo '.1'.$iref;
-		if ($TEXT_DIRECTION=="rtl") {echo '" style="right:';} else {echo '" style="left:';}
-		//Correct box spacing for different layouts
-		if ($talloffset == 2) {$zindex = $PEDIGREE_GENERATIONS-$curgen;} else {$zindex = 0;}	
-		if (($talloffset == 3) && ($curgen ==1)) {$yoffset +=25;}
-		if (($talloffset == 3) && ($curgen ==2)) {$yoffset +=10;}
-		echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";		
-		if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}	
-		print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);		
+		echo ($xoffset+$controller->pbwidth/2), 'px; top:', ($yoffset), 'px;">';
 		if ($can_go_back) {
 			$did = 1;
 			if ($i > ($controller->treesize/2) + ($controller->treesize/4)) {
 				$did++;
 			}
-			if ($TEXT_DIRECTION=="rtl") {$posn = 'left';$arrow = 'icon-larrow';} else {$posn = 'right';	$arrow = 'icon-rarrow';	}
-			if ($talloffset==3) {
-				echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':', $controller->pbwidth/2, 'px; top:', $controller->pbheight, 'px;">';
-					echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$controller->talloffset.' class="icon-darrow noprint"></a>';
-				echo '</div>';
-			} elseif ($talloffset < 2) {
-				echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':-22px; top:', ($controller->pbheight/2-10), 'px;">';
-					echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$talloffset.'" class=" ',$arrow,' noprint"></a>';
-				echo '</div>';
-			}
+			echo '<a href=pedigree.php?PEDIGREE_GENERATIONS=', $controller->PEDIGREE_GENERATIONS, '&amp;rootid=', $controller->treeid[$did], '&amp;show_full=', $controller->show_full, '&amp;talloffset=', $controller->talloffset, ' class="icon-uarrow noprint"></a>';
 		}
 		echo '</div>';
 	}
+	// beginning of box setup and display
+	echo '<div class="shadow" id="box';
+	if (empty($controller->treeid[$i])) {
+		echo "$iref";
+	} else {
+		echo $controller->treeid[$i];
+	}
+	echo '.1'.$iref;
+	if ($TEXT_DIRECTION=="rtl") {echo '" style="right:';} else {echo '" style="left:';}
+	//Correct box spacing for different layouts
+	if ($talloffset == 2) {$zindex = $PEDIGREE_GENERATIONS-$curgen;} else {$zindex = 0;}	
+	if (($talloffset == 3) && ($curgen ==1)) {$yoffset +=25;}
+	if (($talloffset == 3) && ($curgen ==2)) {$yoffset +=10;}
+	echo $xoffset, "px; top:", $yoffset, "px; width:", ($controller->pbwidth), "px; height:", $controller->pbheight, "px; z-index:", $zindex, ";\">";		
+	if (!isset($controller->treeid[$i])) {$controller->treeid[$i] = false;}	
+	print_pedigree_person(WT_Person::getInstance($controller->treeid[$i]), 1, $iref, 1);		
+	if ($can_go_back) {
+		$did = 1;
+		if ($i > ($controller->treesize/2) + ($controller->treesize/4)) {
+			$did++;
+		}
+		if ($TEXT_DIRECTION=="rtl") {$posn = 'left';$arrow = 'icon-larrow';} else {$posn = 'right';	$arrow = 'icon-rarrow';	}
+		if ($talloffset==3) {
+			echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':', $controller->pbwidth/2, 'px; top:', $controller->pbheight, 'px;">';
+				echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$controller->talloffset.' class="icon-darrow noprint"></a>';
+			echo '</div>';
+		} elseif ($talloffset < 2) {
+			echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':-22px; top:', ($controller->pbheight/2-10), 'px;">';
+				echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$talloffset.'" class=" ',$arrow,' noprint"></a>';
+			echo '</div>';
+		}
+	}
+	echo '</div>';
 }
 // -- echo left arrow for decendants so that we can move down the tree
 $yoffset += ($controller->pbheight / 2)-10;

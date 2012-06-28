@@ -913,11 +913,6 @@ case 'SHOW_DEAD_PEOPLE':
 	$text=WT_I18N::translate('Set the privacy access level for all dead people.');
 	break;
 
-case 'SHOW_EMPTY_BOXES':
-	$title=WT_I18N::translate('Empty boxes on pedigree charts');
-	$text=WT_I18N::translate('This option controls whether or not to show empty boxes on Pedigree charts.');
-	break;
-
 case 'SHOW_EST_LIST_DATES':
 	$title=WT_I18N::translate('Estimated dates for birth and death');
 	$text=WT_I18N::translate('This option controls whether or not to show estimated dates for birth and death instead of leaving blanks on individual lists and charts for individuals whose dates are not known.');
