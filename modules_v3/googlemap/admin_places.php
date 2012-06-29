@@ -609,12 +609,10 @@ foreach ($placelist as $place) {
 	echo '<td>';
 	if (($place['icon'] == NULL) || ($place['icon'] == '')) {
 		if (($place['lati'] == NULL) || ($place['long'] == NULL) || (($place['lati'] == '0') && ($place['long'] == '0'))) {
-			echo '&nbsp;';
-			echo '<img src="', WT_STATIC_URL.WT_MODULES_DIR, '"googlemap/images/mm_20_yellow.png">';
+			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_yellow.png">';
 		}
 		else {
-			echo '&nbsp;';
-			echo '<img src="', WT_STATIC_URL.WT_MODULES_DIR, '"googlemap/images/mm_20_red.png">';
+			echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/images/mm_20_red.png">';
 		}
 	} else {
 		echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/', $place['icon'], '" width="25" height="15">';
