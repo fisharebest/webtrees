@@ -930,7 +930,7 @@ if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple
 							<?php echo WT_I18N::translate('Custom welcome text'), help_link('WELCOME_TEXT_AUTH_MODE_CUST'); ?>
 						</td>
 						<td>
-							<textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" maxlength="255" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE)); ?>"></textarea>
+							<textarea name="NEW_WELCOME_TEXT_AUTH_MODE_4" maxlength="255"><?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE)); ?></textarea>
 						</td>
 					</tr>
 					<tr>
