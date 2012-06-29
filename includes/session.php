@@ -318,7 +318,7 @@ case 'unknown':
 	break;
 case '':
 	WT_DB::prepare(
-		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?)"
+		"INSERT INTO `##site_access_rule` (ip_address_start, ip_address_end, user_agent_pattern, comment) VALUES (IFNULL(INET_ATON(?), 0), IFNULL(INET_ATON(?), 4294967295), ?, '')"
 	)->execute(array($_SERVER['REMOTE_ADDR'], $_SERVER['REMOTE_ADDR'], $_SERVER['HTTP_USER_AGENT']));
 	$SEARCH_SPIDER=true;
 	break;
