@@ -118,8 +118,9 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 
 		if ($count>=$this->generations) return;
 		if (!$person) return;
+		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
-		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-1));
+		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-$genoffset));
 		foreach ($person->getChildFamilies() as $family) {
 			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 			$height="100%";
