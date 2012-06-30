@@ -64,7 +64,7 @@ class WT_Date_Calendar {
 		}
 
 		// Construct from an equivalent xxxxDate object
-		if ($this->CALENDAR_ESCAPE()==$date->CALENDAR_ESCAPE()) {
+		if (get_class($this)==get_class($date)) {
 			// NOTE - can't copy whole object - need to be able to copy Hebrew to Jewish, etc.
 			$this->y=$date->y;
 			$this->m=$date->m;

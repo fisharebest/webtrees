@@ -1196,11 +1196,11 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 	$found_facts=array();
 	foreach (array(new WT_Date_Gregorian($jd), new WT_Date_Julian($jd), new WT_Date_French($jd), new WT_Date_Jewish($jd), new WT_Date_Hijri($jd), new WT_Date_Jalali($jd)) as $anniv) {
 		// Build a SQL where clause to match anniversaries in the appropriate calendar.
-		$where="WHERE d_type='".$anniv->CALENDAR_ESCAPE()."'";
+		$where="WHERE d_type='".$anniv->Format('%@')."'";
 		// SIMPLE CASES:
 		// a) Non-hebrew anniversaries
 		// b) Hebrew months TVT, SHV, IYR, SVN, TMZ, AAV, ELL
-		if ($anniv->CALENDAR_ESCAPE()!='@#DHEBREW@' || in_array($anniv->m, array(1, 5, 9, 10, 11, 12, 13))) {
+		if (!$anniv instanceof WT_Date_Jewish || in_array($anniv->m, array(1, 5, 9, 10, 11, 12, 13))) {
 			// Dates without days go on the first day of the month
 			// Dates with invalid days go on the last day of the month
 			if ($anniv->d==1) {

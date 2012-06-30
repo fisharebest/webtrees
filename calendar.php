@@ -76,7 +76,7 @@ if (preg_match('/^(\d+)-(\d+)$/', $year, $match)) {
 $cal_date=&$ged_date->date1;
 
 // Invalid month?  Pick a sensible one.
-if ($cal_date->CALENDAR_ESCAPE()=='@#DHEBREW@' && $cal_date->m==7 && $cal_date->y!=0 && !$cal_date->IsLeapYear())
+if ($cal_date instanceof WT_Date_Jewish && $cal_date->m==7 && $cal_date->y!=0 && !$cal_date->IsLeapYear())
 	$cal_date->m=6;
 
 // Fill in any missing bits with todays date
@@ -151,7 +151,7 @@ echo '<td class="optionbox" colspan="3">';
 for ($n=1; $n<=$cal_date->NUM_MONTHS(); ++$n) {
 	$month_name=$cal_date->NUM_TO_MONTH_NOMINATIVE($n, $cal_date->IsLeapYear());
 	$m=$cal_date->NUM_TO_GEDCOM_MONTH($n, $cal_date->IsLeapYear());
-	if ($m=='ADS' && $cal_date->CALENDAR_ESCAPE()=='@#DHEBREW@' && !$cal_date->IsLeapYear()) {
+	if ($m=='ADS' && $cal_date instanceof WT_Date_Jewish && !$cal_date->IsLeapYear()) {
 		// No month 7 in Jewish leap years.
 		continue;
 	}
@@ -301,10 +301,10 @@ foreach (array(
 		if ($n++) {
 			echo ' | ';
 		}
-		if ($tmp->CALENDAR_ESCAPE()==$cal_date->CALENDAR_ESCAPE()) {
+		if (get_class($tmp)==get_class($cal_date)) {
 			echo "<span class=\"error\">{$cal_name}</span>";
 		} else {
-			$newcalesc=urlencode($tmp->CALENDAR_ESCAPE());
+			$newcalesc=urlencode($tmp->Format('%@'));
 			$tmpmonth=$tmp->FormatGedcomMonth();
 			echo "<a href=\"calendar.php?cal={$newcalesc}&amp;day={$tmp->d}&amp;month={$tmpmonth}&amp;year={$tmp->y}&amp;filterev={$filterev}&amp;filterof={$filterof}&amp;filtersx={$filtersx}&amp;action={$action}\">{$cal_name}</a>";
 		}
@@ -492,7 +492,7 @@ case 'calendar':
 			// Show a converted date
 			foreach (explode('_and_', $CALENDAR_FORMAT) as $convcal) {
 				$alt_date=$cal_date->convert_to_cal($convcal);
-				if ($alt_date->CALENDAR_ESCAPE()!=$cal_date->CALENDAR_ESCAPE()) {
+				if (get_class($alt_date)!=get_class($cal_date)) {
 					list($alt_date->y, $alt_date->m, $alt_date->d)=$alt_date->JDtoYMD($cal_date->minJD+$d-1);
 					$alt_date->SetJDfromYMD();
 					echo "<span class=\"rtl_cal_day\">".$alt_date->Format("%j %M")."</span>";
