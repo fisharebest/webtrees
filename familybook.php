@@ -75,7 +75,7 @@ if (WT_USE_LIGHTBOX) {
 						<td class="optionbox">
 							<select name="generations">
 								<?php
-								for ($i=2; $i<=4; $i++) {
+								for ($i=2; $i<=$MAX_DESCENDANCY_GENERATIONS; $i++) {
 									echo "<option value=\"".$i."\"" ;
 									if ($i == $controller->generations) echo " selected=\"selected\"";
 									echo ">".WT_I18N::number($i)."</option>";

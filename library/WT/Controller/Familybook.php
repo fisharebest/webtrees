@@ -225,15 +225,15 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 
 		if ($count>=$this->generations) return;
 		if (!$person) return;
-
+		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
-		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-1));
-
+		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-$genoffset));
 		foreach ($person->getChildFamilies() as $family) {
+
 			echo '<table>',
 				 '<tr>',
 				 '<td class="tdbot">',
-				 '<img class="line3" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
+				 '<img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
 				 '<td>',
 				 '<img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
 				 '<td>';
