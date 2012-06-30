@@ -81,7 +81,7 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 	if ($TEXT_DIRECTION=="rtl") $iconsStyleAdd="float: left; ";
 
 	$disp=$person->canDisplayDetails();
-	$uniqueID = floor(microtime() * 1000000);
+	$uniqueID = (int)(microtime() * 1000000);
 	$boxID = $pid.".".$personcount.".".$count.".".$uniqueID;
 	$mouseAction4 = " onclick=\"expandbox('".$boxID."', $style); return false;\"";
 	if ($person->canDisplayName()) {
@@ -449,7 +449,7 @@ function print_favorite_selector($option=0) {
 function print_note_record($text, $nlevel, $nrec, $textOnly=false, $return=false, $npage=false) {
 	global $EXPAND_SOURCES, $EXPAND_NOTES;
 
-	$elementID = 'N-'.floor(microtime()*1000000);
+	$elementID = 'N-'.(int)(microtime()*1000000);
 	$text = trim($text);
 
 	// Check if Shared Note and if so enable url link on title -------------------

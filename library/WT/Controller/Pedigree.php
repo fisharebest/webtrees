@@ -153,7 +153,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 		//-- calculation the box positions
 		for ($i=($this->treesize-1); $i>=0; $i--) {
 			// -- check to see if we have moved to the next generation
-			if ($i < floor($this->treesize / (pow(2, $this->curgen)))) {
+			if ($i < (int)($this->treesize / (pow(2, $this->curgen)))) {
 				$this->curgen++;
 			}
 			//-- box position in current generation
@@ -181,7 +181,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 				}
 				//-- compact the tree
 				if ($this->curgen<$this->PEDIGREE_GENERATIONS) {
-					$parent = floor(($i-1)/2);
+					$parent = (int)(($i-1)/2);
 					if ($i%2 == 0) $this->yoffset=$this->yoffset - (($boxspacing/2) * ($this->curgen-1));
 					else $this->yoffset=$this->yoffset + (($boxspacing/2) * ($this->curgen-1));
 					$pgen = $this->curgen;
@@ -195,7 +195,7 @@ class WT_Controller_Pedigree extends WT_Controller_Chart {
 							if ($parent%2 == 0) $this->yoffset=$this->yoffset - (($boxspacing/2) * $temp);
 							else $this->yoffset=$this->yoffset + (($boxspacing/2) * $temp);
 						}
-						$parent = floor(($parent-1)/2);
+						$parent = (int)(($parent-1)/2);
 					}
 					if ($this->curgen>3) {
 						$temp=0;

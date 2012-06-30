@@ -4,7 +4,7 @@
 // Displays events on a daily, monthly, or yearly calendar.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
@@ -458,7 +458,7 @@ case 'calendar':
 	echo "<table class=\"list_table width100\"><tr>";
 	for ($week_day=0; $week_day<$days_in_week; ++$week_day) {
 		$day_name=$cal_date->LONG_DAYS_OF_WEEK(($week_day+$week_start) % $days_in_week);
-		echo "<td class=\"descriptionbox\" width=\"".floor(100/$days_in_week)."%\">{$day_name}</td>";
+		echo "<td class=\"descriptionbox\" width=\"".(100/$days_in_week)."%\">{$day_name}</td>";
 	}
 	echo "</tr>";
 	// Print days 1-n of the month...

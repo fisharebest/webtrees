@@ -9,7 +9,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -58,20 +58,20 @@ class WT_Date_Julian extends WT_Date_Calendar {
 	static function YMDtoJD($y, $m, $d) {
 		if ($y<0) // 0=1BC, -1=2BC, etc.
 			++$y;
-		$a=floor((14-$m)/12);
+		$a=(int)((14-$m)/12);
 		$y=$y+4800-$a;
 		$m=$m+12*$a-3;
-		return $d+floor((153*$m+2)/5)+365*$y+floor($y/4)-32083;
+		return $d+(int)((153*$m+2)/5)+365*$y+(int)($y/4)-32083;
 	}
 
 	static function JDtoYMD($j) {
 		$c=$j+32082;
-		$d=floor((4*$c+3)/1461);
-		$e=$c-floor(1461*$d/4);
-		$m=floor((5*$e+2)/153);
-		$day=$e-floor((153*$m+2)/5)+1;
-		$month=$m+3-12*floor($m/10);
-		$year=$d-4800+floor($m/10);
+		$d=(int)((4*$c+3)/1461);
+		$e=$c-(int)(1461*$d/4);
+		$m=(int)((5*$e+2)/153);
+		$day=$e-(int)((153*$m+2)/5)+1;
+		$month=$m+3-12*(int)($m/10);
+		$year=$d-4800+(int)($m/10);
 		if ($year<1) // 0=1BC, -1=2BC, etc.
 		--$year;
 		return array($year, $month, $day);

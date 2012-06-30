@@ -125,7 +125,7 @@ class WT_Report_HTML extends WT_Report_Base {
 			$this->pageh = $tmpw;
 		}
 		// Store the pagewidth without margins
-		$this->noMarginWidth = floor($this->pagew - $this->leftmargin - $this->rightmargin);
+		$this->noMarginWidth = (int)($this->pagew - $this->leftmargin - $this->rightmargin);
 		// If RTL
 		if ($this->rtl) {
 			$this->alignRTL = "right";
@@ -424,7 +424,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	* @return float
 	*/
 	function getRemainingWidth() {
-		return floor($this->noMarginWidth - $this->X);
+		return (int)($this->noMarginWidth - $this->X);
 	}
 
 	function getPageHeight() {
@@ -516,7 +516,7 @@ class WT_Report_HTML extends WT_Report_Base {
 	*/
 	function textWrap(&$str, $width) {
 		// Calculate the line width
-		$lw = floor($width / ($this->getCurrentStyleHeight() / 2));
+		$lw = (int)($width / ($this->getCurrentStyleHeight() / 2));
 		// Wordwrap each line
 			//@@ indi source texts, note text, indi sub-titles, footer texts	
 			$lines = explode("\n", $str);

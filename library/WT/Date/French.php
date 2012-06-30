@@ -8,7 +8,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -177,13 +177,13 @@ class WT_Date_French extends WT_Date_Calendar {
 	}
 
 	static function YMDtoJD($y, $m, $d) {
-		return 2375444+$d+$m*30+$y*365+floor($y/4);
+		return 2375444+$d+$m*30+$y*365+(int)($y/4);
 	}
 
 	static function JDtoYMD($j) {
-		$y=floor(($j-2375109)*4/1461)-1;
-		$m=floor(($j-2375475-$y*365-floor($y/4))/30)+1;
-		$d=$j-2375444-$m*30-$y*365-floor($y/4);
+		$y=(int)(($j-2375109)*4/1461)-1;
+		$m=(int)(($j-2375475-$y*365-(int)($y/4))/30)+1;
+		$d=$j-2375444-$m*30-$y*365-(int)($y/4);
 		return array($y, $m, $d);
 	}
 

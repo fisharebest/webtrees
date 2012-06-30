@@ -35,7 +35,7 @@ if (!defined('WT_WEBTREES')) {
 function format_indi_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $MAX_ALIVE_AGE, $controller;
 
-	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$SHOW_EST_LIST_DATES=get_gedcom_setting(WT_GED_ID, 'SHOW_EST_LIST_DATES');
 	if ($option=='MARR_PLAC') return;
 	$html = '';
@@ -297,7 +297,7 @@ function format_indi_table($datalist, $option='') {
 				$html .= $birth_date->Display(!$SEARCH_SPIDER);
 			}
 			if ($birth_dates[0]->gregorianYear()>=1550 && $birth_dates[0]->gregorianYear()<2030 && !isset($unique_indis[$person->getXref()])) {
-				$birt_by_decade[floor($birth_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
+				$birt_by_decade[(int)($birth_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
 			}
 		} else {
 			$birth_date=$person->getEstimatedBirthDate();
@@ -341,7 +341,7 @@ function format_indi_table($datalist, $option='') {
 				$html .= $death_date->Display(!$SEARCH_SPIDER);
 			}
 			if ($death_dates[0]->gregorianYear()>=1550 && $death_dates[0]->gregorianYear()<2030 && !isset($unique_indis[$person->getXref()])) {
-				$deat_by_decade[floor($death_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
+				$deat_by_decade[(int)($death_dates[0]->gregorianYear()/10)*10] .= $person->getSex();
 			}
 		} else {
 			$death_date=$person->getEstimatedDeathDate();
@@ -445,7 +445,7 @@ function format_indi_table($datalist, $option='') {
 // print a table of families
 function format_fam_table($datalist, $option='') {
 	global $GEDCOM, $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
-	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	if ($option=='BIRT_PLAC' || $option=='DEAT_PLAC') return;
 	$html = '';
 
@@ -706,7 +706,7 @@ function format_fam_table($datalist, $option='') {
 		$hdate=$husb->getBirthDate();
 		if ($hdate->isOK() && $mdate->isOK()) {
 			if ($hdate->gregorianYear()>=1550 && $hdate->gregorianYear()<2030) {
-				$birt_by_decade[floor($hdate->gregorianYear()/10)*10] .= $husb->getSex();
+				$birt_by_decade[(int)($hdate->gregorianYear()/10)*10] .= $husb->getSex();
 			}
 			$hage=WT_Date::getAge($hdate, $mdate, 0);
 			if ($hage>=0 && $hage<=$max_age) {
@@ -752,7 +752,7 @@ function format_fam_table($datalist, $option='') {
 		$wdate=$wife->getBirthDate();
 		if ($wdate->isOK() && $mdate->isOK()) {
 			if ($wdate->gregorianYear()>=1550 && $wdate->gregorianYear()<2030) {
-				$birt_by_decade[floor($wdate->gregorianYear()/10)*10] .= $wife->getSex();
+				$birt_by_decade[(int)($wdate->gregorianYear()/10)*10] .= $wife->getSex();
 			}
 			$wage=WT_Date::getAge($wdate, $mdate, 0);
 			if ($wage>=0 && $wage<=$max_age) {
@@ -770,7 +770,7 @@ function format_fam_table($datalist, $option='') {
 				$html .= '<div>'. $marriage_date->Display(!$SEARCH_SPIDER). '</div>';
 			}
 			if ($marriage_dates[0]->gregorianYear()>=1550 && $marriage_dates[0]->gregorianYear()<2030) {
-				$marr_by_decade[floor($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
+				$marr_by_decade[(int)($marriage_dates[0]->gregorianYear()/10)*10] .= $husb->getSex().$wife->getSex();
 			}
 		} else if (get_sub_record(1, '1 _NMR', $family->getGedcomRecord())) {
 			$hus = $family->getHusband();
@@ -898,7 +898,7 @@ function format_fam_table($datalist, $option='') {
 function format_sour_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = "ID".floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = "ID".(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavascript('
@@ -1038,7 +1038,7 @@ function format_sour_table($datalist) {
 function format_note_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavascript('
@@ -1139,7 +1139,7 @@ function format_note_table($datalist) {
 function format_repo_table($repos) {
 	global $SHOW_LAST_CHANGE, $SEARCH_SPIDER, $controller;
 	$html = '';
-	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavascript('
@@ -1231,7 +1231,7 @@ function format_repo_table($repos) {
 function format_media_table($datalist) {
 	global $SHOW_LAST_CHANGE, $controller;
 	$html = '';
-	$table_id = 'ID'.floor(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
+	$table_id = 'ID'.(int)(microtime()*1000000); // lists requires a unique ID in case there are multiple lists per page
 	$controller
 		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavascript('
@@ -1581,7 +1581,7 @@ function print_changes_table($change_ids, $sort) {
 
 	$return = '';
 	$n = 0;
-	$table_id = "ID" . floor(microtime() * 1000000); // create a unique ID
+	$table_id = "ID" . (int)(microtime() * 1000000); // create a unique ID
 	switch ($sort) {
 	case 'name':        //name
 		$aaSorting = "[5,'asc'], [4,'desc']";
@@ -1695,7 +1695,7 @@ function print_changes_table($change_ids, $sort) {
 function print_events_table($startjd, $endjd, $events='BIRT MARR DEAT', $only_living=false, $sort_by='anniv') {
 	global $controller;
 	$html = '';
-	$table_id = "ID".floor(microtime()*1000000); // each table requires a unique ID
+	$table_id = "ID".(int)(microtime()*1000000); // each table requires a unique ID
 	$controller
 		->addExternalJavascript(WT_STATIC_URL.'js/jquery/jquery.dataTables.min.js')
 		->addInlineJavascript('
@@ -1991,12 +1991,12 @@ function print_chart_by_age($data, $title) {
 	$chart_url .= "|1:||".rawurlencode(WT_I18N::percentage($vmax/$count)); // y axis
 	$chart_url .= "|2:||";
 	$step = $vmax;
-	for ($d=floor($vmax); $d>0; $d--) {
-		if ($vmax<($d*10+1) && fmod($vmax, $d)==0) $step = $d;
+	for ($d=$vmax; $d>0; $d--) {
+		if ($vmax<($d*10+1) && ($vmax % $d)==0) $step = $d;
 	}
-	if ($step==floor($vmax)) {
-		for ($d=floor($vmax-1); $d>0; $d--) {
-			if (($vmax-1)<($d*10+1) && fmod(($vmax-1), $d)==0) $step = $d;
+	if ($step==$vmax) {
+		for ($d=$vmax-1; $d>0; $d--) {
+			if (($vmax-1)<($d*10+1) && (($vmax-1) % $d)==0) $step = $d;
 		}
 	}
 	for ($n=$step; $n<$vmax; $n+=$step) {
@@ -2007,11 +2007,11 @@ function print_chart_by_age($data, $title) {
 	$chart_url .= "&amp;chd=s:"; // data : simple encoding from A=0 to 9=61
 	$CHART_ENCODING61 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	for ($age=0; $age<=$agemax; $age++) {
-		$chart_url .= $CHART_ENCODING61[(int)floor(substr_count($data[$age], "M")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[(int)(substr_count($data[$age], "M")*61/$vmax)];
 	}
 	$chart_url .= ",";
 	for ($age=0; $age<=$agemax; $age++) {
-		$chart_url .= $CHART_ENCODING61[(int)floor(substr_count($data[$age], "F")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[(int)(substr_count($data[$age], "F")*61/$vmax)];
 	}
 	$html = '<img src="'. $chart_url. '" alt="'. $title. '" title="'. $title. '" class="gchart">';
 	return $html;
@@ -2041,12 +2041,12 @@ function print_chart_by_decade($data, $title) {
 	$chart_url .= "|1:||".rawurlencode(WT_I18N::percentage($vmax/$count)); // y axis
 	$chart_url .= "|2:||";
 	$step = $vmax;
-	for ($d=floor($vmax); $d>0; $d--) {
-		if ($vmax<($d*10+1) && fmod($vmax, $d)==0) $step = $d;
+	for ($d=$vmax; $d>0; $d--) {
+		if ($vmax<($d*10+1) && ($vmax % $d)==0) $step = $d;
 	}
-	if ($step==floor($vmax)) {
-		for ($d=floor($vmax-1); $d>0; $d--) {
-			if (($vmax-1)<($d*10+1) && fmod(($vmax-1), $d)==0) $step = $d;
+	if ($step==$vmax) {
+		for ($d=$vmax-1; $d>0; $d--) {
+			if (($vmax-1)<($d*10+1) && (($vmax-1) % $d)==0) $step = $d;
 		}
 	}
 	for ($n=$step; $n<$vmax; $n+=$step) {
@@ -2057,11 +2057,11 @@ function print_chart_by_decade($data, $title) {
 	$chart_url .= "&amp;chd=s:"; // data : simple encoding from A=0 to 9=61
 	$CHART_ENCODING61 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 	for ($y=1570; $y<2030; $y+=10) {
-		$chart_url .= $CHART_ENCODING61[(int)floor(substr_count($data[$y], "M")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[(int)(substr_count($data[$y], "M")*61/$vmax)];
 	}
 	$chart_url .= ",";
 	for ($y=1570; $y<2030; $y+=10) {
-		$chart_url .= $CHART_ENCODING61[(int)floor(substr_count($data[$y], "F")*61/$vmax)];
+		$chart_url .= $CHART_ENCODING61[(int)(substr_count($data[$y], "F")*61/$vmax)];
 	}
 	$html = '<img src="'. $chart_url. '" alt="'. $title. '" title="'. $title. '" class="gchart">';
 	return $html;

@@ -120,7 +120,7 @@ function select_edit_control_inline($name, $values, $empty, $selected, $controll
 function radio_buttons($name, $values, $selected, $extra='') {
 	$html='';
 	foreach ($values as $key=>$value) {
-		$uniqueID = $name.floor(microtime() * 1000000);
+		$uniqueID = $name.(int)(microtime() * 1000000);
 		$html.='<input type="radio" name="'.$name.'" id="'.$uniqueID.'" value="'.htmlspecialchars($key).'"';
 		if ($key==$selected) {
 			$html.=' checked';
@@ -1225,7 +1225,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 
 	// element id : used by javascript functions
 	if ($level==0) $element_id=$fact; // ex: NPFX | GIVN ...
-	else $element_id=$fact.floor(microtime()*1000000); // ex: SOUR56402
+	else $element_id=$fact.(int)(microtime()*1000000); // ex: SOUR56402
 	if ($upperlevel) $element_id=$upperlevel."_".$fact; // ex: BIRT_DATE | DEAT_DATE ...
 
 	// field value

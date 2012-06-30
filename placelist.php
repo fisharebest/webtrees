@@ -222,13 +222,13 @@ if ($display=='hierarchy') {
 		echo '</a></li>';
 		$i++;
 		if ($ct1 > 20) {
-			if ($i == floor($ct1 / 3)) {
+			if ($i == (int)($ct1 / 3)) {
 				echo '</ul></td><td class="list_value"><ul>';
 			}
-			if ($i == floor(($ct1 / 3) * 2)) {
+			if ($i == (int)(($ct1 / 3) * 2)) {
 				echo '</ul></td><td class="list_value"><ul>';
 			}
-		} elseif ($ct1 > 4 && $i == floor($ct1 / 2)) {
+		} elseif ($ct1 > 4 && $i == (int)($ct1 / 2)) {
 			echo '</ul></td><td class="list_value"><ul>';
 		}
 	}
@@ -361,13 +361,13 @@ if ($display=='list') {
 			echo htmlspecialchars($revplace), '</a></li>';
 			$i++;
 			if ($ct > 20) {
-				if ($i == floor($ct / 3)) {
+				if ($i == (int)($ct / 3)) {
 					echo '</ul></td><td class="list_value_wrap"><ul>';
 				}
-				if ($i == floor(($ct / 3) * 2)) {
+				if ($i == (int)(($ct / 3) * 2)) {
 					echo '</ul></td><td class="list_value_wrap"><ul>';
 				}
-			} elseif ($i == floor($ct/2)) {
+			} elseif ($i == (int)($ct/2)) {
 				echo '</ul></td><td class="list_value_wrap"><ul>';
 			}
 		}

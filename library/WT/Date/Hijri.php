@@ -9,7 +9,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -148,13 +148,13 @@ class WT_Date_Hijri extends WT_Date_Calendar {
 	}
 
 	static function YMDtoJD($y, $m, $d) {
-		return $d+29*($m-1)+floor((6*$m-1)/11)+$y*354+floor((3+11*$y)/30)+1948084;
+		return $d+29*($m-1)+(int)((6*$m-1)/11)+$y*354+(int)((3+11*$y)/30)+1948084;
 	}
 
 	static function JDtoYMD($j) {
-		$y=floor((30*($j-1948439)+10646)/10631);
-		$m=floor((11*($j-$y*354-floor((3+11*$y)/30)-1948085)+330)/325);
-		$d=$j-29*($m-1)-floor((6*$m-1)/11)-$y*354-floor((3+11*$y)/30)-1948084;
+		$y=(int)((30*($j-1948439)+10646)/10631);
+		$m=(int)((11*($j-$y*354-(int)((3+11*$y)/30)-1948085)+330)/325);
+		$d=$j-29*($m-1)-(int)((6*$m-1)/11)-$y*354-(int)((3+11*$y)/30)-1948084;
 		return array($y, $m, $d);
 	}
 }

@@ -104,7 +104,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				$c++;
 			}
 			if ($limit=='date') {
-				if (floor(($td - $news['date']) / 86400) > $flag) {
+				if ((int)(($td - $news['date']) / 86400) > $flag) {
 					break;
 				}
 			}

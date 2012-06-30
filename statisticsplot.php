@@ -265,7 +265,7 @@ function agbi() {
 		$num = $stats->_statsAge(false, 'BIRT');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_ydata(0, floor($age_value/365.25), 1);
+				fill_ydata(0, (int)($age_value/365.25), 1);
 				$n1++;
 			}
 		}
@@ -273,14 +273,14 @@ function agbi() {
 		$num = $stats->_statsAge(false, 'BIRT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_ydata(0, floor($age_value/365.25), 1);
+				fill_ydata(0, (int)($age_value/365.25), 1);
 				$n1++;
 			}
 		}
 		$num = $stats->_statsAge(false, 'BIRT', 'F');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_ydata(1, floor($age_value/365.25), 1);
+				fill_ydata(1, (int)($age_value/365.25), 1);
 				$n1++;
 			}
 		}
@@ -290,7 +290,7 @@ function agbi() {
 			$num = $stats->_statsAge(false, 'BIRT', 'BOTH', $zstart, $boundary);
 			foreach ($num as $values) {
 				foreach ($values as $age_value) {
-					fill_ydata($boundary, floor($age_value/365.25), 1);
+					fill_ydata($boundary, (int)($age_value/365.25), 1);
 					$n1++;
 				}
 			}
@@ -307,7 +307,7 @@ function agde() {
 		$num = $stats->_statsAge(false, 'DEAT');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_ydata(0, floor($age_value/365.25), 1);
+				fill_ydata(0, (int)($age_value/365.25), 1);
 				$n1++;
 			}
 		}
@@ -315,14 +315,14 @@ function agde() {
 		$num = $stats->_statsAge(false, 'DEAT', 'M');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_ydata(0, floor($age_value/365.25), 1);
+				fill_ydata(0, (int)($age_value/365.25), 1);
 				$n1++;
 			}
 		}
 		$num = $stats->_statsAge(false, 'DEAT', 'F');
 		foreach ($num as $values) {
 			foreach ($values as $age_value) {
-				fill_ydata(1, floor($age_value/365.25), 1);
+				fill_ydata(1, (int)($age_value/365.25), 1);
 				$n1++;
 			}
 		}
@@ -332,7 +332,7 @@ function agde() {
 			$num = $stats->_statsAge(false, 'DEAT', 'BOTH', $zstart, $boundary);
 			foreach ($num as $values) {
 				foreach ($values as $age_value) {
-					fill_ydata($boundary, floor($age_value/365.25), 1);
+					fill_ydata($boundary, (int)($age_value/365.25), 1);
 					$n1++;
 				}
 			}
@@ -348,23 +348,23 @@ function agma() {
 	if ($z_as == 300) {
 		$num = $stats->_statsMarrAge(false, 'M');
 		foreach ($num as $values) {
-			fill_ydata(0, floor($values['age']/365.25), 1);
+			fill_ydata(0, (int)($values['age']/365.25), 1);
 			$n1++;
 		}
 		$num = $stats->_statsMarrAge(false, 'F');
 		foreach ($num as $values) {
-			fill_ydata(0, floor($values['age']/365.25), 1);
+			fill_ydata(0, (int)($values['age']/365.25), 1);
 			$n1++;
 		}
 	} else if ($z_as == 301) {
 		$num = $stats->_statsMarrAge(false, 'M');
 		foreach ($num as $values) {
-			fill_ydata(0, floor($values['age']/365.25), 1);
+			fill_ydata(0, (int)($values['age']/365.25), 1);
 			$n1++;
 		}
 		$num = $stats->_statsMarrAge(false, 'F');
 		foreach ($num as $values) {
-			fill_ydata(1, floor($values['age']/365.25), 1);
+			fill_ydata(1, (int)($values['age']/365.25), 1);
 			$n1++;
 		}
 	} else {
@@ -372,12 +372,12 @@ function agma() {
 		foreach ($zgrenzen as $boundary) {
 			$num = $stats->_statsMarrAge(false, 'M', $zstart, $boundary);
 			foreach ($num as $values) {
-				fill_ydata($boundary, floor($values['age']/365.25), 1);
+				fill_ydata($boundary, (int)($values['age']/365.25), 1);
 				$n1++;
 			}
 			$num = $stats->_statsMarrAge(false, 'F', $zstart, $boundary);
 			foreach ($num as $values) {
-				fill_ydata($boundary, floor($values['age']/365.25), 1);
+				fill_ydata($boundary, (int)($values['age']/365.25), 1);
 				$n1++;
 			}
 			$zstart=$boundary+1;
@@ -394,7 +394,7 @@ function agma1() {
 		$indi=array();
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
-				fill_ydata(0, floor($values['age']/365.25), 1);
+				fill_ydata(0, (int)($values['age']/365.25), 1);
 				$n1++;
 				$indi[]=$values['d_gid'];
 			}
@@ -403,7 +403,7 @@ function agma1() {
 		$indi=array();
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
-				fill_ydata(0, floor($values['age']/365.25), 1);
+				fill_ydata(0, (int)($values['age']/365.25), 1);
 				$n1++;
 				$indi[]=$values['d_gid'];
 			}
@@ -413,7 +413,7 @@ function agma1() {
 		$indi=array();
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
-				fill_ydata(0, floor($values['age']/365.25), 1);
+				fill_ydata(0, (int)($values['age']/365.25), 1);
 				$n1++;
 				$indi[]=$values['d_gid'];
 			}
@@ -422,7 +422,7 @@ function agma1() {
 		$indi=array();
 		foreach ($num as $values) {
 			if (!in_array($values['d_gid'], $indi)) {
-				fill_ydata(1, floor($values['age']/365.25), 1);
+				fill_ydata(1, (int)($values['age']/365.25), 1);
 				$n1++;
 				$indi[]=$values['d_gid'];
 			}
@@ -434,7 +434,7 @@ function agma1() {
 			$num = $stats->_statsMarrAge(false, 'M', $zstart, $boundary);
 			foreach ($num as $values) {
 				if (!in_array($values['d_gid'], $indi)) {
-					fill_ydata($boundary, floor($values['age']/365.25), 1);
+					fill_ydata($boundary, (int)($values['age']/365.25), 1);
 					$n1++;
 					$indi[]=$values['d_gid'];
 				}
@@ -442,7 +442,7 @@ function agma1() {
 			$num = $stats->_statsMarrAge(false, 'F', $zstart, $boundary);
 			foreach ($num as $values) {
 				if (!in_array($values['d_gid'], $indi)) {
-					fill_ydata($boundary, floor($values['age']/365.25), 1);
+					fill_ydata($boundary, (int)($values['age']/365.25), 1);
 					$n1++;
 					$indi[]=$values['d_gid'];
 				}

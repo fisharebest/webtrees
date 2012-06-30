@@ -1229,7 +1229,7 @@ class TextPDF extends Text {
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
-			$wrapWidthRemaining = floor($this->wrapWidthRemaining);
+			$wrapWidthRemaining = (int)($this->wrapWidthRemaining);
 			if (($lw >= ($wrapWidthRemaining)) or ($lfct > 1)) {
 				$newtext = "";
 				$lines = explode("\n", $this->text);
@@ -1387,7 +1387,7 @@ class FootnotePDF extends Footnote {
 		if ($this->wrapWidthRemaining > 0) {
 			// Check with line counter too!
 			// but floor the $wrapWidthRemaining first to keep it bugfree!
-			$wrapWidthRemaining = floor($this->wrapWidthRemaining);
+			$wrapWidthRemaining = (int)($this->wrapWidthRemaining);
 			if (($lw >= $wrapWidthRemaining) or ($lfct > 1)) {
 				$newtext = "";
 				$lines = explode("\n", $this->numText);

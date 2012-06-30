@@ -8,7 +8,7 @@
 // midday.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -157,10 +157,6 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 		}
 	}
 	
-	static function mod($a, $b){
-		return $a - ($b * floor($a / $b));
-	}
-	
 	static function CAL_START_JD() {
 		return 1948321;
 	}
@@ -171,31 +167,31 @@ class WT_Date_Jalali extends WT_Date_Calendar {
 
 	static function YMDtoJD($year, $month, $day) {
 		$epbase = $year - (($year >= 0) ? 474 : 473);
-		$epyear = 474 + self::mod($epbase, 2820);
+		$epyear = 474 + $epbase % 2820;
 	
 		return $day +
 				(($month <= 7) ?
 					(($month - 1) * 31) :
 					((($month - 1) * 30) + 6)
 				) +
-				floor((($epyear * 682) - 110) / 2816) +
+				(int)((($epyear * 682) - 110) / 2816) +
 				($epyear - 1) * 365 +
-				floor($epbase / 2820) * 1029983 +
+				(int)($epbase / 2820) * 1029983 +
 				(self::CAL_START_JD() - 1);
 	}
 
 	static function JDtoYMD($jd) {
-		$jd = floor($jd) + 0.5;
+		$jd = (int)($jd) + 0.5;
 	
 		$depoch = $jd - self::YMDtoJD(475, 1, 1);
-		$cycle = floor($depoch / 1029983);
-		$cyear = self::mod($depoch, 1029983);
+		$cycle = (int)($depoch / 1029983);
+		$cyear = $depoch % 1029983;
 		if ($cyear == 1029982) {
 			$ycycle = 2820;
 		} else {
-			$aux1 = floor($cyear / 366);
-			$aux2 = self::mod($cyear, 366);
-			$ycycle = floor(((2134 * $aux1) + (2816 * $aux2) + 2815) / 1028522) +
+			$aux1 = (int)($cyear / 366);
+			$aux2 = $cyear % 366;
+			$ycycle = (int)(((2134 * $aux1) + (2816 * $aux2) + 2815) / 1028522) +
 						$aux1 + 1;
 		}
 		$year = $ycycle + (2820 * $cycle) + 474;

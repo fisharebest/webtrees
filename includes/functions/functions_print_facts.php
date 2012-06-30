@@ -112,7 +112,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 	if ($fact->getLineNumber()==-1) $styleadd='histo'; // historical facts
 
 	if ($styleadd=='') {
-		$rowID = 'row_'.floor(microtime()*1000000);
+		$rowID = 'row_'.(int)(microtime()*1000000);
 	} else {
 		$rowID = 'row_'.$styleadd;
 	}
@@ -482,7 +482,7 @@ function print_fact_sources($factrec, $level, $return=false) {
 				$lt = preg_match_all("/$nlevel \w+/", $srec, $matches);
 				$data .= '<div class="fact_SOUR">';
 				$data .= '<span class="label">';
-				$elementID = $sid."-".floor(microtime()*1000000);
+				$elementID = $sid."-".(int)(microtime()*1000000);
 				if ($EXPAND_SOURCES) {
 					$plusminus='icon-minus';
 				} else {

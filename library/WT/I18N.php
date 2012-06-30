@@ -384,19 +384,19 @@ class WT_I18N {
 		// in different contexts.
 		// We must AVOID combining phrases to make sentences.
 		if ($seconds>$year) {
-			$years=floor($seconds/$year);
+			$years=(int)($seconds/$year);
 			return self::plural('%s year ago', '%s years ago', $years, self::number($years));
 		} elseif ($seconds>$month) {
-			$months=floor($seconds/$month);
+			$months=(int)($seconds/$month);
 			return self::plural('%s month ago', '%s months ago', $months, self::number($months));
 		} elseif ($seconds>$day) {
-			$days=floor($seconds/$day);
+			$days=(int)($seconds/$day);
 			return self::plural('%s day ago', '%s days ago', $days, self::number($days));
 		} elseif ($seconds>$hour) {
-			$hours=floor($seconds/$hour);
+			$hours=(int)($seconds/$hour);
 			return self::plural('%s hour ago', '%s hours ago', $hours, self::number($hours));
 		} elseif ($seconds>$minute) {
-			$minutes=floor($seconds/$minute);
+			$minutes=(int)($seconds/$minute);
 			return self::plural('%s minute ago', '%s minutes ago', $minutes, self::number($minutes));
 		} else {
 			return self::plural('%s second ago', '%s seconds ago', $seconds, self::number($seconds));

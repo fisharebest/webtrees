@@ -279,7 +279,7 @@ class WT_Date {
 		return $tmp->maxJD;
 	}
 	function JD() {
-		return floor(($this->MinJD()+$this->MaxJD())/2);
+		return (int)(($this->MinJD()+$this->MaxJD())/2);
 	}
 
 	// Offset this date by N years, and round to the whole year

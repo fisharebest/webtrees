@@ -187,7 +187,7 @@ class WT_Controller_Timeline extends WT_Controller_Base {
 				$yoffset = $baseyoffset+(($year-$this->baseyear) * $this->scale)-($this->scale);
 				$yoffset = $yoffset + (($month / 12) * $this->scale);
 				$yoffset = $yoffset + (($day / 30) * ($this->scale/12));
-				$yoffset = floor($yoffset);
+				$yoffset = (int)($yoffset);
 				$place = round($yoffset / $this->bheight);
 				$i=1;
 				$j=0;

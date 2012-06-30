@@ -106,7 +106,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 				$line .= "$word";
 			}
 			else {
-				$p = max(0,floor(($maxlen-$len)/2));
+				$p = max(0,(int)(($maxlen-$len)/2));
 				if (!empty($line)) {
 					$line = str_repeat(" ", $p) . "$line"; // center alignment using spaces
 					$text .= "$line\n";
@@ -118,7 +118,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		if (!empty($line)) {
 			$len = strlen($line);
 			if (in_array(ord($line{0}),$RTLOrd)) $len/=2;
-			$p = max(0,floor(($maxlen-$len)/2));
+			$p = max(0,(int)(($maxlen-$len)/2));
 			$line = str_repeat(" ", $p) . "$line"; // center alignment using spaces
 			$text .= "$line";
 		}
@@ -258,7 +258,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 	//Do we still need?
 
 					// split and center text by lines
-					$wmax = floor($angle*7/$fanChart['size']*$scale);
+					$wmax = (int)($angle*7/$fanChart['size']*$scale);
 					$wmax = min($wmax, 35*$scale);
 					if ($gen==0) $wmax = min($wmax, 17*$scale);
 					$text = $this->split_align_text($text, $wmax);
