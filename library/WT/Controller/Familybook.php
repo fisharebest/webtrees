@@ -227,7 +227,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		if (!$person) return;
 		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
-		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-$genoffset));
+		$lh = ($bhalfheight+3) * pow(2, ($genoffset-$count-1));
 		foreach ($person->getChildFamilies() as $family) {
 
 			echo '<table>',
@@ -329,7 +329,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	function sizeLines() {
 		vlines = document.getElementsByClassName("pvline");
 		for (i=0; i < vlines.length; i++) {
-			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
+			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2-1)+'px';
 		}
 	}
 </script>

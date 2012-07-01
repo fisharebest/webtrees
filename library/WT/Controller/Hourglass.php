@@ -120,7 +120,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		if (!$person) return;
 		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
-		$lh = ($bhalfheight+3) * pow(2, ($this->generations-$count-$genoffset));
+		$lh = ($bhalfheight+3) * pow(2, ($genoffset-$count-1));
 		foreach ($person->getChildFamilies() as $family) {
 			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 			$height="100%";
@@ -519,7 +519,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		//alert(vlines[0].parentNode.parentNode.parentNode);
 		for (i=0; i < vlines.length; i++) {
 			//vlines[i].parentNode.style.height="50%";
-			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2)+'px';
+			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2-1)+'px';
 		}
 	}
 </script>
