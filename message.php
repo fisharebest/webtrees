@@ -201,9 +201,9 @@ case 'send':
 			AddToLog('Unable to send message.  FROM:'.$from.' TO:'.$to.' (failed to send)', 'error');
 		}
 		$i++;
-		$controller
-			->pageHeader()
-			->addInlineJavascript('window.opener.location.reload(); window.close();');
 	}
+	$controller
+		->pageHeader()
+		->addInlineJavascript('window.opener.location.reload(); window.close();');
 	break;
 }
