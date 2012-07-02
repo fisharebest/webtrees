@@ -93,7 +93,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 	$lineDrawx[$i] = $xoffset;
 	$lineDrawy[$i] = $yoffset-200; //200 adjustment necessary to move canvas below menus and options. Matched to similar amount on canvas style.
 	// -- check to see if we have moved to the next generation
-	if ($i < ($controller->treesize / (pow(2, $curgen)))) {
+	if ($i < (int)($controller->treesize / (pow(2, $curgen)))) {
 		$curgen++;
 	}
 	$prevxoffset = $xoffset;
