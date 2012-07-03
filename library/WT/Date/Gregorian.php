@@ -24,8 +24,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
-// @author Greg Roach
-// @version $Id$
+// $Id$
 
 if (!defined('WT_WEBTREES')) {
 	header('HTTP/1.0 403 Forbidden');
@@ -45,7 +44,11 @@ class WT_Date_Gregorian extends WT_Date_Calendar {
 	}
 
 	function IsLeapYear() {
-		return $this->y%4==0 && $this->y%100!=0 || $this->y%400==0;
+		if ($this->y>0) {
+			return $this->y%4==0 && $this->y%100!=0 || $this->y%400==0;
+		} else {
+			return $this->y%4==-1 && $this->y%100!=-1 || $this->y%400==-1;
+		}
 	}
 
 	static function YMDtoJD($y, $m, $d) {
