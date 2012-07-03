@@ -224,10 +224,43 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		global $WT_IMAGES, $bhalfheight;
 
 		if ($count>=$this->generations) return;
-		if (!$person) return;
+		//if (!$person) return;
 		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
 		$lh = ($bhalfheight+3) * pow(2, ($genoffset-$count-1));
+		//
+		//the following code prints empty boxes for children w/o parents up to the max generation
+		//
+		if (count($person->getChildFamilies())==0) { 
+			$saveperson=$person;
+			$nullperson=null;
+			echo '<table>',
+				 '<tr>',
+				 '<td class="tdbot"><img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
+				 '<td><img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
+				 '<td>';
+				 print_pedigree_person($nullperson);
+			echo '</td>';
+			echo '<td>';
+				
+				//-- recursively get the father's family
+				$this->print_person_pedigree($person, $count+1);
+				echo '</td>';
+				echo '<td>';
+			echo '</tr><tr>',
+				 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
+				 '<td><img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
+				 '<td>';
+				 print_pedigree_person($nullperson);
+				 echo '</td>';
+			echo '<td>';
+				//-- recursively get the father's family
+				$this->print_person_pedigree($person, $count+1);
+				echo '</td>';
+				echo '<td>';
+			echo '</tr></table>';
+		}
+		//Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
 
 			echo '<table>',
@@ -241,7 +274,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			print_pedigree_person($family->getHusband());
 			echo '</td>';
 			if ($family->getHusband()) {
-				$ARID = $family->getHusband()->getXref();
 				echo '<td>';
 				
 				//-- recursively get the father's family
@@ -257,7 +289,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			print_pedigree_person($family->getWife());
 			echo '</td>';
 			if ($family->getWife()) {
-				$ARID = $family->getWife()->getXref();
 				echo '<td>';
 				//-- recursively print the mother's family
 				$this->print_person_pedigree($family->getWife(), $count+1);
