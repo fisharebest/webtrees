@@ -83,7 +83,7 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 		
 		// -- adjust size of the compact box
 		if (!$this->show_full) {
-			$bwidth = $cbwidth;
+			$bwidth = $this->box_width * $cbwidth  / 100;
 			$bheight = $cbheight;
 		}
 
@@ -114,13 +114,40 @@ class WT_Controller_Hourglass extends WT_Controller_Chart {
 	 * @return void
 	 */
 	function print_person_pedigree($person, $count) {
-		global $WT_IMAGES, $bhalfheight;
+		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
 
 		if ($count>=$this->generations) return;
-		if (!$person) return;
+		//if (!$person) return;
 		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
 		$lh = ($bhalfheight+3) * pow(2, ($genoffset-$count-1));
+		//
+		//Prints empty table columns for children w/o parents up to the max generation
+		//This allows vertical line spacing to be consistent
+		//
+		if (count($person->getChildFamilies())==0) { 
+			echo '<table>',
+				 '<tr>',
+				 '<td>',
+				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>';
+			echo '</td>';
+			echo '<td>';
+				
+				//-- recursively get the father's family
+				$this->print_person_pedigree($person, $count+1);
+				echo '</td>';
+				echo '<td>';
+			echo '</tr><tr>',
+				 '<td>',
+				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>';
+				 echo '</td>';
+			echo '<td>';
+				//-- recursively get the father's family
+				$this->print_person_pedigree($person, $count+1);
+				echo '</td>';
+				echo '<td>';
+			echo '</tr></table>';
+		}
 		foreach ($person->getChildFamilies() as $family) {
 			echo "<table cellspacing=\"0\" cellpadding=\"0\" border=\"0\" style=\"empty-cells: show;\">";
 			$height="100%";
