@@ -90,17 +90,11 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	
 	/**
 	* Prints descendency of passed in person
-	*
-	* @param mixed $pid ID of person to print descendency for
-	* @param mixed $count count of generations to print
-	* @access public
-	* @return void
 	*/
 	function print_descendency($person, $count) {
 		global $TEXT_DIRECTION, $WT_IMAGES, $bwidth, $bheight, $bhalfheight;
 		global $show_full, $box_width; // print_pedigree_person() requires these globals.
 		if ($count>$this->dgenerations) return 0;
-
 		$show_full=$this->show_full;
 		$box_width=$this->box_width;
 		echo '<table>';
@@ -112,7 +106,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$kids = 0;
 		$famNum = 0;
 		$lh = 0;
-		
 		// if real person load child array
 		if ($person) { 
 			$sfamilies=$person->getSpouseFamilies();
@@ -133,7 +126,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		if ($count < $this->dgenerations) {
 			if ($ct==0 ) { // empty boxes
 				echo '<table>';
-				for ($i=0; $i<2; $i++) {
+				for ($i=0; $i<1; $i++) { //set to 2 for two child boxes
 					echo '<tr>',
 						 '<td>';
 					 $person2=null;
@@ -175,7 +168,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 					$kids = $this->print_descendency($person2, $count+1);
 					$numkids += $kids;
 					echo '</td>';
-
 					//-- print the lines
 					$twidth = 7;
 					if ($ct==1) $twidth+=3;
@@ -218,9 +210,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			 '<img class="line2" src="',$WT_IMAGES["hline"],'" width="7" height="3" alt="">';
 		} else { // blank table spaces
 			echo '<div style="width:',$bwidth+16,'px; height:',$bheight+8,'px;"></div>',
-				 '</div></td><td width="7">';
+				 '</td><td width="7">';
 		}
-
 		//----- Print the spouse
 		if ($count==1 ) { 
 			if ($this->show_spouse) {
@@ -251,13 +242,10 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 	}
 	
 	/**
-	* Prints pedigree of the person passed in. Which is the descendancy
-	* @param mixed $pid ID of person to print the pedigree for
-	* @access public
+	* Prints pedigree of the person passed in
 	*/
 	function print_person_pedigree($person, $count) {
 		global $WT_IMAGES, $bheight, $bwidth, $bhalfheight;
-
 		if ($count>=$this->generations) return;
 		//if (!$person) return;
 		$genoffset = $this->generations;  // handle pedigree n generations lines
@@ -271,28 +259,26 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '<table>',
 				 '<tr>',
 				 '<td>',
-				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>';
-			echo '</td>';
-			echo '<td>';
-				
+				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>',
+				 '</td>',
+				 '<td>';
 				//-- recursively get the father's family
-				$this->print_person_pedigree($person, $count+1);
-				echo '</td>';
-				echo '<td>';
-			echo '</tr><tr>',
+			$this->print_person_pedigree($person, $count+1);
+			echo '</td>',
 				 '<td>',
-				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>';
-				 echo '</td>';
-			echo '<td>';
-				//-- recursively get the father's family
-				$this->print_person_pedigree($person, $count+1);
-				echo '</td>';
-				echo '<td>';
-			echo '</tr></table>';
+				 '</tr><tr>',
+				 '<td>',
+				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>',
+				 '</td>',
+				 '<td>';
+			//-- recursively get the father's family
+			$this->print_person_pedigree($person, $count+1);
+			echo '</td>',
+				 '<td>',
+				 '</tr></table>';
 		}
 		//Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
-
 			echo '<table>',
 				 '<tr>',
 				 '<td class="tdbot">',
@@ -314,7 +300,6 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
 				 '<td><img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
 				 '<td>';
-			
 			//-- print the mother box
 			print_pedigree_person($family->getWife());
 			echo '</td>';
@@ -324,18 +309,13 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				$this->print_person_pedigree($family->getWife(), $count+1);
 				echo '</td>';
 			}
-			echo '</tr>';
-			echo '</table>';
+			echo '</tr>',
+				 '</table>';
 			break;
 		}
 	}
 		/**
 	 * Calculates number of generations a person has
-	 *
-	 * @param mixed $pid ID of person to see how far down the descendency goes
-	 * @param mixed $depth Pass in 0 and it calculates how far down descendency goes
-	 * @access public
-	 * @return maxdc Amount of generations the descendency actually goes
 	 */
 	function max_descendency_generations($pid, $depth) {
 		if ($depth > $this->generations) return $depth;
@@ -377,15 +357,12 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			}
 		}
 	}
-
 	/**
-	 * setup all of the javascript that is needed for the hourglass chart
-	 *
+	 * Javascript for pedigree side of Familybook
 	 */
 	function setupJavascript() {
 		global $bhalfheight;
 ?>
-
 <script>
 	function sizeLines() {
 		vlines = document.getElementsByClassName("pvline");
