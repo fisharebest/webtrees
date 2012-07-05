@@ -250,7 +250,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		//if (!$person) return;
 		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
-		$lh = ($bhalfheight+4) * pow(2, ($genoffset-$count-1));
+		$lh = ($bhalfheight+3) * pow(2, ($genoffset-$count-1));
 		//
 		//Prints empty table columns for children w/o parents up to the max generation
 		//This allows vertical line spacing to be consistent
@@ -259,7 +259,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '<table>',
 				 '<tr>',
 				 '<td>',
-				 '<div style="width:',$bwidth+16,'px; height:',$bheight+8,'px;"></div>',
+				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>',
 				 '</td>',
 				 '<td>';
 				//-- recursively get the father's family
@@ -268,7 +268,7 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				 '<td>',
 				 '</tr><tr>',
 				 '<td>',
-				 '<div style="width:',$bwidth+16,'px; height:',$bheight+8,'px;"></div>',
+				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>',
 				 '</td>',
 				 '<td>';
 			//-- recursively get the father's family
@@ -282,9 +282,9 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '<table>',
 				 '<tr>',
 				 '<td class="tdbot">',
-				 '<img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh+6,'" alt=""></td>',
+				 '<img class="line3 pvline"  src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
 				 '<td>',
-				 '<img class="line5" src="',$WT_IMAGES["hline"],'" width="7" height="3" alt=""></td>',
+				 '<img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
 				 '<td>';
 			//-- print the father box
 			print_pedigree_person($family->getHusband());
@@ -297,8 +297,8 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				echo '</td>';
 			}
 			echo '</tr><tr>',
-				 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh+6,'" alt=""></td>',
-				 '<td><img class="line1" src="',$WT_IMAGES["hline"],'" width="7"  height="3" alt=""></td>',
+				 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
+				 '<td><img class="line4" src="',$WT_IMAGES["hline"],'" height="3" alt=""></td>',
 				 '<td>';
 			//-- print the mother box
 			print_pedigree_person($family->getWife());
@@ -356,5 +356,22 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				}
 			}
 		}
+	}
+	/**
+	 * Javascript for pedigree side of Familybook
+	 */
+	function setupJavascript() {
+		global $bhalfheight;
+?>
+<script>
+	function sizeLines() {
+		vlines = document.getElementsByClassName("pvline");
+		for (i=0; i < vlines.length; i++) {
+			vlines[i].style.height=(vlines[i].parentNode.offsetHeight/2-1)+'px';
+		}
+	}
+</script>
+<?php
+		return $this;
 	}
 }
