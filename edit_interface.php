@@ -2232,37 +2232,23 @@ case 'reorder_fams_update':
 }
 
 
-// Redirect to new record, if requested
-if (isset($_REQUEST['goto'])) {
-	$goto = $_REQUEST['goto'];
-}
-if (isset($_REQUEST['link'])) {
-	$link = $_REQUEST['link'];
-}
-if (empty($goto) || empty($link)) {
+if (empty($link)) {
 	$link='';
 }
 
 // autoclose window when update successful unless debug on
-if ($success && !WT_DEBUG ) {
-	echo '<script>';
-	if ($action=="copy") {
-		echo "window.close();";
-	} elseif (isset($closeparent) && $closeparent=="yes" ) {
-		// echo "window.opener.close(); window.opener.edit_close('{$link}'); window.close(); ";
-		echo "window.close(); ";
+if ($success && !WT_DEBUG) {
+	if ($action=='copy') {
+		$controller->addInlineJavascript('window.close();');
 	} else {
-		echo "edit_close('{$link}');";
+		$controller->addInlineJavascript('edit_close("'.$link.'");');
 	}
-	echo '</script>';
 }
 
 // Decide whether to print footer or not
 if ($action == 'addmedia_links' || $action == 'addnewnote_assisted' ) {
 	// Do not print footer.
 	echo "<br><div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div>';
-} elseif (isset($closeparent) && $closeparent=="yes" ) {
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div><br>';
 } else {
 	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div><br>';
 }
