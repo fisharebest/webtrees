@@ -30,7 +30,6 @@ $controller=new WT_Controller_Familybook();
 $controller
 	->pageHeader()
 	->addExternalJavascript('js/autocomplete.js')
-	->setupJavascript()
 	->addInlineJavascript('sizeLines();');
 
 if (WT_USE_LIGHTBOX) {
