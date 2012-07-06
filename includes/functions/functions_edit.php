@@ -2462,7 +2462,7 @@ function insert_missing_subtags($level1tag, $add_date=false) {
 
 	foreach ($level2_tags as $key=>$value) {
 		if ($key=='DATE' && in_array($level1tag, $nondatefacts) || $key=='PLAC' && in_array($level1tag, $nonplacfacts)) {
-			break;
+			continue;
 		}
 		if (in_array($level1tag, $value) && !in_array($key, $tags)) {
 			if ($key=="TYPE") {
