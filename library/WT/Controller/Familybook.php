@@ -250,33 +250,29 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		//if (!$person) return;
 		$genoffset = $this->generations;  // handle pedigree n generations lines
 		//-- calculate how tall the lines should be
-		$lh = ($bhalfheight+3) * pow(2, ($genoffset-$count-1));
+		$lh = ($bhalfheight+4) * pow(2, ($genoffset-$count-1));
 		//
 		//Prints empty table columns for children w/o parents up to the max generation
 		//This allows vertical line spacing to be consistent
 		//
 		if (count($person->getChildFamilies())==0) { 
-			echo '<table>',
-				 '<tr>',
-				 '<td>',
-				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>',
-				 '</td>',
-				 '<td>';
-				//-- recursively get the father's family
+			echo '<table>';
+			$this->printEmptyBox($bwidth, $bheight);
+
+			//-- recursively get the father's family
 			$this->print_person_pedigree($person, $count+1);
 			echo '</td>',
 				 '<td>',
-				 '</tr><tr>',
-				 '<td>',
-				 '<div style="width:',$bwidth,'px; height:',$bheight,'px;"></div>',
-				 '</td>',
-				 '<td>';
-			//-- recursively get the father's family
+				 '</tr>';
+			$this->printEmptyBox($bwidth, $bheight);
+
+			//-- recursively get the mother's family
 			$this->print_person_pedigree($person, $count+1);
 			echo '</td>',
 				 '<td>',
 				 '</tr></table>';
 		}
+		
 		//Empty box section done, now for regular pedigree
 		foreach ($person->getChildFamilies() as $family) {
 			echo '<table>',
@@ -291,10 +287,18 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 			echo '</td>';
 			if ($family->getHusband()) {
 				echo '<td>';
-				
 				//-- recursively get the father's family
 				$this->print_person_pedigree($family->getHusband(), $count+1);
 				echo '</td>';
+			} else {
+				echo '<td>';
+				for ($i=$count; $i<$genoffset-1; $i++) { 
+					echo '<table>';
+					$this->printEmptyBox($bwidth, $bheight);
+					echo '</tr>';
+					$this->printEmptyBox($bwidth, $bheight);
+					echo '</tr></table>';
+				}
 			}
 			echo '</tr><tr>',
 				 '<td class="tdtop"><img class="pvline" src="',$WT_IMAGES["vline"],'" height="',$lh,'" alt=""></td>',
@@ -308,13 +312,24 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 				//-- recursively print the mother's family
 				$this->print_person_pedigree($family->getWife(), $count+1);
 				echo '</td>';
+			} else {
+				echo '<td>';
+				for ($i=$count; $i<$genoffset-1; $i++) { 
+					echo '<table>';
+						 '<tr>';
+					$this->printEmptyBox($bwidth, $bheight);
+					echo '</tr>';
+					$this->printEmptyBox($bwidth, $bheight);
+					echo '</tr></table>';
+				}
 			}
 			echo '</tr>',
 				 '</table>';
 			break;
 		}
 	}
-		/**
+	
+	/**
 	 * Calculates number of generations a person has
 	 */
 	function max_descendency_generations($pid, $depth) {
@@ -332,6 +347,16 @@ class WT_Controller_Familybook extends WT_Controller_Chart {
 		$maxdc++;
 		if ($maxdc==1) $maxdc++;
 		return $maxdc;
+	}
+	/**
+	* Print empty box
+	*/
+	function printEmptyBox($bwidth, $bheight){
+	echo '<tr>',
+		 '<td>',
+		 '<div style="width:',$bwidth+16,'px; height:',$bheight+8,'px;"></div>',
+		 '</td>',
+		 '<td>';
 	}
 	function print_family_book($person, $descent) {
 		global $firstrun;
