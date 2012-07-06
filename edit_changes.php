@@ -45,10 +45,6 @@ echo '<script>';
 		var recwin = window.open("gedrecord.php?fromfile=1&pid="+xref, "_blank", edit_window_specs);
 	}
 
-	function showchanges() {
-		window.location = '<?php echo WT_SCRIPT_NAME; ?>';
-	}
-
 	function show_diff(diffurl) {
 		window.opener.location = diffurl;
 		return false;
@@ -230,18 +226,10 @@ if ($changed_gedcoms) {
 
 	echo
 		$output2, $output, $output2,
-		'<h3>',
-		'<a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">',
-		WT_I18N::translate('Close Window'),
-		'</a>';
+		'<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';
 } else {
 	// No pending changes - refresh the parent window and close this one
-	echo
-		'<script>',
-		'if (window.opener.showchanges)	window.opener.showchanges();',
-		'window.close();',
-		'</script>',
-		'</h3>';
+	$controller->addInlineJavascript('closePopupAndReloadParent();');
 }
 
 echo '</div>';

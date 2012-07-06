@@ -81,7 +81,7 @@ function closePopupAndReloadParent(url) {
 	if (parent.opener) {
 		if (url == null) {
 			if (parent.opener.showchanges) {
-				parent.opener.location.showchanges(); // showchanges() is old/deprecated
+				parent.opener.showchanges(); // showchanges() is old/deprecated
 			} else {
 				parent.opener.location.reload();
 			}
