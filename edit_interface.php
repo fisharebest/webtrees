@@ -2232,7 +2232,14 @@ case 'reorder_fams_update':
 }
 
 
-if (empty($link)) {
+// Redirect to new record, if requested
+if (isset($_REQUEST['goto'])) {
+	$goto = $_REQUEST['goto'];
+}
+if (isset($_REQUEST['link'])) {
+	$link = $_REQUEST['link'];
+}
+if (empty($goto) || empty($link)) {
 	$link='';
 }
 
