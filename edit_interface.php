@@ -1344,7 +1344,6 @@ case 'addchildaction':
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref";
 	if ($xref) {
-		echo "<br><br>", WT_I18N::translate('Update successful');
 		$gedrec = "";
 		if (!empty($famid)) {
 			// Insert new child at the right place [ 1686246 ]
@@ -1398,11 +1397,6 @@ case 'addspouseaction':
 
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref";
-	if ($xref) {
-		echo "<br><br>", WT_I18N::translate('Update successful');
-	} else {
-		exit;
-	}
 	$success = true;
 	if ($famid=="new") {
 		$famrec = "0 @new@ FAM";
@@ -1546,11 +1540,6 @@ case 'addnewparentaction':
 
 	$xref = append_gedrec($gedrec, WT_GED_ID);
 	$link = "individual.php?pid=$xref";
-	if ($xref) {
-		echo "<br><br>", WT_I18N::translate('Update successful');
-	} else {
-		exit;
-	}
 	$success = true;
 	if ($famid=="new") {
 		$famrec = "0 @new@ FAM";
@@ -1656,7 +1645,6 @@ case 'addopfchildaction':
 		}
 		append_gedrec($gedrec, WT_GED_ID);
 		append_gedrec($famrec, WT_GED_ID);
-		echo '<br><br>', WT_I18N::translate('Update successful');
 	}
 	break;
 //------------------------------------------------------------------------------
@@ -1727,12 +1715,8 @@ case 'reorder_media_update': // Update sort using popup
 	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
 		$success=true;
 	}
-	echo '<br>', WT_I18N::translate('Update successful'), '<br><br>';
 
 	$link = "individual.php?pid=$pid";
-	echo '<script>';
-	echo "edit_close('{$link}')";
-	echo '</script>';
 	break;
 
 //------------------------------------------------------------------------------
@@ -1747,11 +1731,7 @@ case 'al_reset_media_update': // Reset sort using Album Page
 	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
 		$success=true;
 	}
-	echo "<br>", WT_I18N::translate('Update successful'), "<br><br>";
 	$link = "individual.php?pid=$pid";
-	echo '<script>';
-	echo "edit_close('{$link}')";
-	echo '</script>';
 	break;
 
 //------------------------------------------------------------------------------
@@ -1780,9 +1760,6 @@ case 'al_reorder_media_update': // Update sort using Album Page
 		$success=true;
 	}
 	$link = "individual.php?pid=$pid";
-	echo '<script>';
-	echo "edit_close('{$link}')";
-	echo '</script>';
 	break;
 
 //LBox ===================================================
@@ -2227,7 +2204,6 @@ case 'reorder_fams_update':
 	if (replace_gedrec($pid, WT_GED_ID, $newgedrec, $update_CHAN)) {
 		$success=true;
 	}
-	echo "<br><br>", WT_I18N::translate('Update successful');
 	break;
 }
 
@@ -2245,17 +2221,7 @@ if (empty($goto) || empty($link)) {
 
 // autoclose window when update successful unless debug on
 if ($success && !WT_DEBUG) {
-	if ($action=='copy') {
-		$controller->addInlineJavascript('window.close();');
-	} else {
-		$controller->addInlineJavascript('edit_close("'.$link.'");');
-	}
-}
-
-// Decide whether to print footer or not
-if ($action == 'addmedia_links' || $action == 'addnewnote_assisted' ) {
-	// Do not print footer.
-	echo "<br><div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div>';
+	$controller->addInlineJavascript('edit_close("'.$link.'");');
 } else {
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('{$link}');\">", WT_I18N::translate('Close Window'), '</a></div><br>';
+	echo '<p class="center"><a href="#" onclick="edit_close(\'', $link, '\');">', WT_I18N::translate('Close Window'), '</a></p>';
 }
