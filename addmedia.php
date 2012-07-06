@@ -617,14 +617,9 @@ if ($action=='editmedia') {
 }
 // **** end action 'editmedia'
 
+// autoclose window when update successful unless debug on
 if ($success && !WT_DEBUG) {
-	echo
-		'<script>',
-		'if (window.opener.showchanges) window.opener.showchanges();',
-		'window.close();',
-		'</script>';
+	$controller->addInlineJavascript('closePopupAndReloadParent();');
 } else {
-	echo '<br>';
-	echo '<div class="center"><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">'.WT_I18N::translate('Close Window').'</a></div>';
-	echo '<br>';
+	echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';
 }

@@ -129,15 +129,6 @@ echo '<script>';
 			updatewholename();
 		}
 	}
-
-	function edit_close(newurl) {
-		if (newurl)
-			window.opener.location=newurl;
-		else
-			if (window.opener.showchanges)
-				window.opener.showchanges();
-		window.close();
-	}
 <?php
 echo '</script>';
 //-- check if user has access to the gedcom record
@@ -2221,7 +2212,7 @@ if (empty($goto) || empty($link)) {
 
 // autoclose window when update successful unless debug on
 if ($success && !WT_DEBUG) {
-	$controller->addInlineJavascript('edit_close("'.$link.'");');
+	$controller->addInlineJavascript('closePopupAndReloadParent("'.$link.'");');
 } else {
-	echo '<p class="center"><a href="#" onclick="edit_close(\'', $link, '\');">', WT_I18N::translate('Close Window'), '</a></p>';
+	echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent(\'', $link, '\');">', WT_I18N::translate('Close Window'), '</a></p>';
 }

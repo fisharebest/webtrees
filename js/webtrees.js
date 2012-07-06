@@ -77,6 +77,21 @@ function modalDialogSubmitAjax(form) {
 	return false;
 }
 
+function closePopupAndReloadParent(url) {
+	if (parent.opener) {
+		if (url == null) {
+			if (parent.opener.showchanges) {
+				parent.opener.location.showchanges(); // showchanges() is old/deprecated
+			} else {
+				parent.opener.location.reload();
+			}
+		} else {
+			parent.opener.location=url;
+		}
+	}
+	window.close();
+}
+
 function openImage(filename, width, height) {
 	height=height+50;
 	screenW = screen.width;
