@@ -316,9 +316,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		echo 'icon_type.shadowSize = google.maps.Size(37, 34);';
 		echo 'var point = new google.maps.LatLng(0, 0);';
 		if ($lastlevel)
-			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br>";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "'><br>";
 		else {
-			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", ($level+1), $linklevels, "&amp;parent[{$level}]=";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "&amp;parent[{$level}]=";
 			if ($place2['place'] == "Unknown") echo "'><br>";
 			else echo addslashes($place2['place']), "'><br>";
 		}
@@ -396,9 +396,9 @@ function print_gm_markers($place2, $level, $parent, $levelm, $linklevels, $place
 		}
 		echo "var point = new google.maps.LatLng({$lati}, {$long});";
 		if ($lastlevel) {
-			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", $level, $linklevels, "'><br>";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "'><br>";
 		} else {
-			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?level=", ($level+1), $linklevels, "&amp;parent[{$level}]=";
+			echo "var marker = createMarker(point, \"<div class='iwstyle' style='width: 250px;'><a href='?action=find", $linklevels, "&amp;parent[{$level}]=";
 			if ($place2['place'] == 'Unknown') {
 				echo "'><br>";
 			} else {

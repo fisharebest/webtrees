@@ -203,7 +203,7 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 								}
 							}
 							if (!$SEARCH_SPIDER) {
-								$tempURL = 'placelist.php?level='.count($levels);
+								$tempURL = 'placelist.php?action=find';
 								foreach (array_reverse($levels) as $pindex=>$ppart) {
 									$tempURL .= '&amp;parent%5B'.$pindex.'%5D='.rawurlencode($ppart);
 								}

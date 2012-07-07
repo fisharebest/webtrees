@@ -1743,12 +1743,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 				$levels=explode(",", $place_list[$x]);
 				$parts=count($levels);
 				$levels=array_reverse($levels);
-				$placestr.="<a href=\"placelist.php?action=show&amp;";
+				$placestr.="<a href=\"placelist.php?action=show";
 				foreach ($levels as $pindex=>$ppart) {
 					$ppart=urlencode(trim($ppart));
-					$placestr.="parent[$pindex]=".$ppart."&amp;";
+					$placestr.="&amp;parent[$pindex]=".$ppart."";
 				}
-				$placestr.="level=".count($levels);
 				$placestr.="\">".$place_list[$x]."</a>";
 				$gedplace="<tr><td>".$placestr."</td>";
 				$z=0;

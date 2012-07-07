@@ -909,7 +909,7 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 		$html=$event->getPlace();
 		if (!$SEARCH_SPIDER) {
 			$n=count($name_parts);
-			$url='placelist.php?action=show&amp;level='.$n;
+			$url='placelist.php?action=show';
 			for ($i=0; $i<$n; ++$i) {
 				$url.='&amp;parent%5B'.$i.'%5D='.rawurlencode($name_parts[$n-$i-1]);
 			}

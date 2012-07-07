@@ -2,7 +2,7 @@
 // Functions for places selection (clickable maps, autocompletion...)
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009  PGV Development Team.  All rights reserved.
@@ -34,11 +34,10 @@ if (!defined('WT_WEBTREES')) {
  */
 function get_place_url($gedcom_place) {
 	global $GEDCOM;
-	$exp = explode(', ', $gedcom_place);
-	$level = count($exp);
-	$url = "placelist.php?action=show&amp;level=".$level;
-	for ($i=0; $i<$level; $i++) {
-		$url .= "&amp;parent%5B".$i."%5D=".rawurlencode($exp[$level-$i-1]);
+
+	$url = "placelist.php?action=show";
+	foreach (array_reverse(explode(', ', $gedcom_place)) as $level=>$place) {
+		$url.='&amp;parent%5B'.$level.'%5D='.rawurlencode($place);
 	}
 	$url .= "&amp;ged=".rawurlencode($GEDCOM);
 	return $url;

@@ -46,7 +46,7 @@ function case_in_array($value, $array) {
 $action =safe_GET('action',  array('find', 'show'), 'find');
 $display=safe_GET('display', array('hierarchy', 'list'), 'hierarchy');
 $parent =safe_GET('parent');
-$level  =safe_GET('level');
+$level  =count($parent);
 
 if ($display=='hierarchy') {
 	$controller->setPageTitle(WT_I18N::translate('Place hierarchy'));
@@ -88,10 +88,6 @@ else {
 	else $parent = array_values($parent);
 }
 
-if (!isset($level)) {
-	$level=0;
-}
-
 if ($level>count($parent)) $level = count($parent);
 if ($level<count($parent)) $level = 0;
 
@@ -102,14 +98,6 @@ if ($display=='hierarchy') {
 	// -- sort the array
 	$placelist = array_unique($placelist);
 	uasort($placelist, 'utf8_strcasecmp');
-
-	//-- create a query string for passing to search page
-	$tempparent = array_reverse($parent);
-	if (count($tempparent)>0) $squery = '&query='.urlencode($tempparent[0]);
-	else $squery='';
-	for ($i=1; $i<$level; $i++) {
-		$squery.=', '.urlencode($tempparent[$i]);
-	}
 
 	//-- if the number of places found is 0 then automatically redirect to search page
 	if ($numfound==0) {
@@ -129,7 +117,7 @@ if ($display=='hierarchy') {
 		$numls = count($parent)-1;
 		$num_place='';
 		for ($i=$numls; $i>=0; $i--) {
-			echo '<a href="?level=', ($i+1);
+			echo '<a href="?action=find';
 			for ($j=0; $j<=$i; $j++) {
 				$levels = explode(', ', trim($parent[$j]));
 				// Routine for replacing ampersands
@@ -158,7 +146,7 @@ if ($display=='hierarchy') {
 			}
 		}
 	}
-	echo '<a href="?level=0">';
+	echo '<a href="', WT_SCRIPT_NAME, '">';
 	echo WT_I18N::translate('Top Level');
 	echo '</a>',
 		'</h4>';
@@ -213,7 +201,7 @@ if ($display=='hierarchy') {
 			echo '</td></tr><tr><td class="list_value"><ul>';
 		}
 
-		echo '<li><a href="?action=', $action, '&amp;level=', $level+1, $linklevels;
+		echo '<li><a href="?action=', $action, $linklevels;
 		echo '&amp;parent%5B', $level, '%5D=', urlencode($value), '" class="list_item">';
 
 		if (trim($value)=='') echo WT_I18N::translate('unknown');
@@ -251,7 +239,7 @@ if ($display=='hierarchy') {
 				echo 'colspan="2"';
 			}
 			echo ' style="text-align: center;">';
-			echo '<a href="?action=show&amp;level=', $level;
+			echo '<a href="?action=show';
 			foreach ($parent as $key=>$value) {
 				echo '&amp;parent%5B', $key, '%5D=', urlencode(trim($value));
 			}
@@ -357,7 +345,7 @@ if ($display=='list') {
 				if ($place=='') $revplace .= WT_I18N::translate('unknown');
 				else $revplace .= $place;
 			}
-			echo '<li><a href="?action=show&amp;display=hierarchy&amp;level=', $level, $linklevels, '">';
+			echo '<li><a href="?action=show&amp;display=hierarchy', $linklevels, '">';
 			echo htmlspecialchars($revplace), '</a></li>';
 			$i++;
 			if ($ct > 20) {

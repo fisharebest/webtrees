@@ -37,13 +37,12 @@ function print_fact_place_map($factrec) {
 		$place = trim($match[1]);
 		// reverse the array so that we get the top level first
 		$levels = array_reverse($levels);
-		$retStr .= '<a href="placelist.php?action=show&amp;';
+		$retStr .= '<a href="placelist.php?action=show';
 		foreach ($levels as $pindex=>$ppart) {
 			// routine for replacing ampersands
 			$ppart = preg_replace("/amp\%3B/", "", trim($ppart));
-			$retStr .= "parent[$pindex]=".$ppart."&amp;";
+			$retStr .= "&amp;parent[$pindex]=".$ppart;
 		}
-		$retStr .= 'level='.count($levels);
 		$retStr .= '"> '.htmlspecialchars($place).'</a>';
 		return $retStr;
 	}
