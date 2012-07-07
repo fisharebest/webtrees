@@ -124,7 +124,7 @@ function set_levelm($level, $parent) {
 }
 
 function create_map($placelevels) {
-	$level = safe_GET('level');
+	global $level;
 	global $GOOGLEMAP_PH_XSIZE, $GOOGLEMAP_PH_YSIZE, $GOOGLEMAP_MAP_TYPE, $levelm, $plzoom, $controller;
 	
 	// *** ENABLE STREETVIEW *** (boolean) =========================================================
