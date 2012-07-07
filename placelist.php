@@ -257,63 +257,61 @@ if ($display=='hierarchy') {
 	echo '</td></tr></table>';
 }
 
-$positions = get_place_positions($parent, $level);
-if ($level > 0) {
-	if ($action=='show') {
-		// -- array of names
-		$myindilist = array();
-		$mysourcelist = array();
-		$myfamlist = array();
-		foreach ($positions as $position) {
-			$record=WT_GedcomRecord::getInstance($position);
-			if ($record->canDisplayDetails()) {
-				switch ($record->getType()) {
-				case 'INDI':
-					$myindilist[]=$record;
-					break;
-				case 'SOUR':
-					$mysourcelist[]=$record;
-					break;
-				case 'FAM':
-					$myfamlist[]=$record;
-					break;
-				}
+if ($level > 0 && $action=='show') {
+	// -- array of names
+	$myindilist = array();
+	$mysourcelist = array();
+	$myfamlist = array();
+	$positions = get_place_positions($parent, $level);
+	foreach ($positions as $position) {
+		$record=WT_GedcomRecord::getInstance($position);
+		if ($record->canDisplayDetails()) {
+			switch ($record->getType()) {
+			case 'INDI':
+				$myindilist[]=$record;
+				break;
+			case 'SOUR':
+				$mysourcelist[]=$record;
+				break;
+			case 'FAM':
+				$myfamlist[]=$record;
+				break;
 			}
 		}
-		echo '<br>';
-
-		//-- display results
-		$controller
-			->addInlineJavascript('jQuery("#places-tabs").tabs();')
-			->addInlineJavascript('jQuery("#places-tabs").css("visibility", "visible");')
-			->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
-
-		echo '<div class="loading-image">&nbsp;</div>';
-		echo '<div id="places-tabs"><ul>';
-		if ($myindilist) {
-			echo '<li><a href="#places-indi"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
-		}
-		if ($myfamlist) {
-			echo '<li><a href="#places-fam"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';
-		}
-		if ($mysourcelist) {
-			echo '<li><a href="#places-source"><span id="mediasource">', WT_I18N::translate('Sources'), '</span></a></li>';
-		}
-		echo '</ul>';
-		if ($myindilist) {
-			echo '<div id="places-indi">', format_indi_table($myindilist), '</div>';
-		}
-		if ($myfamlist) {
-			echo '<div id="places-fam">', format_fam_table($myfamlist), '</div>';
-		}
-		if ($mysourcelist) {
-			echo '<div id="places-source">', format_sour_table($mysourcelist), '</div>';
-		}
-		if (!$myindilist && !$myfamlist && !$mysourcelist) {
-			echo '<div id="places-indi">', format_indi_table(array()), '</div>';
-		}
-		echo '</div>';//close #places-tabs
 	}
+	echo '<br>';
+
+	//-- display results
+	$controller
+		->addInlineJavascript('jQuery("#places-tabs").tabs();')
+		->addInlineJavascript('jQuery("#places-tabs").css("visibility", "visible");')
+		->addInlineJavascript('jQuery(".loading-image").css("display", "none");');
+
+	echo '<div class="loading-image">&nbsp;</div>';
+	echo '<div id="places-tabs"><ul>';
+	if ($myindilist) {
+		echo '<li><a href="#places-indi"><span id="indisource">', WT_I18N::translate('Individuals'), '</span></a></li>';
+	}
+	if ($myfamlist) {
+		echo '<li><a href="#places-fam"><span id="famsource">', WT_I18N::translate('Families'), '</span></a></li>';
+	}
+	if ($mysourcelist) {
+		echo '<li><a href="#places-source"><span id="mediasource">', WT_I18N::translate('Sources'), '</span></a></li>';
+	}
+	echo '</ul>';
+	if ($myindilist) {
+		echo '<div id="places-indi">', format_indi_table($myindilist), '</div>';
+	}
+	if ($myfamlist) {
+		echo '<div id="places-fam">', format_fam_table($myfamlist), '</div>';
+	}
+	if ($mysourcelist) {
+		echo '<div id="places-source">', format_sour_table($mysourcelist), '</div>';
+	}
+	if (!$myindilist && !$myfamlist && !$mysourcelist) {
+		echo '<div id="places-indi">', format_indi_table(array()), '</div>';
+	}
+	echo '</div>'; // <div id="places-tabs">
 }
 
 //-- list type display
