@@ -1372,7 +1372,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span {left:auto;right:0;margin-right:-2
 #search-result-tabs, #places-tabs {margin:auto;width:98%;visibility:hidden;}
 #search-result-tabs h3 {text-align:center;}
 #searchAccordion-indi, #searchAccordion-fam, #searchAccordion-source, #searchAccordion-note {margin:auto;width:99%;}
-#place-heirarchy h2, #place-heirarchy h4 {text-align:center;}
+#place-hierarchy h2, #place-hierarchy h4 {text-align:center;}
 
 html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-child, html[dir='rtl'] .repo-list th:last-child {margin:0 1px 1px -2px;}
 

@@ -841,7 +841,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span{left:auto;right:0;margin-right:-20
 #firstfocus{font-size:12px;width:330px;}
 #search-result-tabs,#places-tabs{margin:auto;visibility:hidden;width:98%;}
 #searchAccordion-indi,#searchAccordion-fam,#searchAccordion-source,#searchAccordion-note{margin:auto;width:99%;}
-#search-result-tabs h3,#place-heirarchy h2,#place-heirarchy h4{text-align:center;}
+#search-result-tabs h3,#place-hierarchy h2,#place-hierarchy h4{text-align:center;}
 
 html[dir='rtl'] .source-list th:last-child, html[dir='rtl'] .note-list th:last-child, html[dir='rtl'] .repo-list th:last-child{margin:0 1px 1px -2px;}
 
