@@ -85,7 +85,6 @@ $linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
 $controller
 	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('function showchanges() { window.location="' .$controller->record->getRawUrl() . '"; }')
 	->addInlineJavascript('jQuery("#source-tabs").tabs();')
 	->addInlineJavascript('jQuery("#source-tabs").css("visibility", "visible");');
 

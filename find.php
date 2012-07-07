@@ -831,7 +831,7 @@ if ($action=="filter") {
 		echo '</p></div>';
 	}
 }
-echo '<h4><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a></h4>';
+echo '<h4><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></h4>';
 echo "</div>"; // Close div="find-page"
 
 // Set focus to the input field

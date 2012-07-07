@@ -79,12 +79,8 @@ function modalDialogSubmitAjax(form) {
 
 function closePopupAndReloadParent(url) {
 	if (parent.opener) {
-		if (url == null) {
-			if (parent.opener.showchanges) {
-				parent.opener.showchanges(); // showchanges() is old/deprecated
-			} else {
-				parent.opener.location.reload();
-			}
+		if (url == null || url == "") {
+			parent.opener.location.reload();
 		} else {
 			parent.opener.location=url;
 		}

@@ -532,10 +532,6 @@ if ($action=='DeleteRecord') {
 
 ?>
 <script>
-function showchanges() {
-	window.location = '<?php echo basename($_SERVER['REQUEST_URI']); ?>&show_changes=yes';
-}
-
 function updateList(inactive) {
 	window.location.href='<?php if (strstrb($_SERVER['REQUEST_URI'], '&inactive')) { $uri=strstrb($_SERVER['REQUEST_URI'], '&inactive');} else { $uri=$_SERVER['REQUEST_URI']; } echo $uri, '&inactive='; ?>'+inactive;
 }

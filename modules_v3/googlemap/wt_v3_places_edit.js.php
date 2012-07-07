@@ -320,11 +320,6 @@ if (!defined('WT_WEBTREES')) {
 		marker.setMap(null);
 	}
 
-	function edit_close() {
-		if (window.opener.showchanges) window.opener.showchanges();
-		window.close();
-	}
-
 	function setLoc(lat, lng) {
 		prec = 20;
 		for (i=0;i<document.editplaces.NEW_PRECISION.length;i++) {

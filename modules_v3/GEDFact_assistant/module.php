@@ -439,7 +439,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		echo "</table>"; // Close table with find options
 		
 		echo "<br>";
-		echo "<a href=\"#\" onclick=\"if (window.opener.showchanges) window.opener.showchanges(); window.close();\">", WT_I18N::translate('Close Window'), "</a><br>";
+		echo "<a href=\"#\" onclick=\"window.close();\">", WT_I18N::translate('Close Window'), "</a><br>";
 		echo "<br>";
 		
 		if ($action=="filter") {

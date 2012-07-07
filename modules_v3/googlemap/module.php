@@ -510,7 +510,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		if ($action == 'ChangeFlag') {
 		?>
 			<script>
-				function edit_close() {
 		<?php if ($_POST['selcountry'] == 'Countries') { ?>
 					window.opener.document.editplaces.icon.value = 'places/flags/<?php echo $flags[$_POST['FLAGS']]; ?>.png';
 					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/flags/<?php echo $country[$_POST['FLAGS']]; ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
@@ -521,15 +520,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					window.opener.document.editplaces.icon.value = "places/<?php echo $countrySelected, "/flags/", $flags[$_POST['FLAGS']]; ?>.png";
 					window.opener.document.getElementById('flagsDiv').innerHTML = "<img src=\"<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>googlemap/places/<?php echo $countrySelected, "/flags/", $flags[$_POST['FLAGS']]; ?>.png\">&nbsp;&nbsp;<a href=\"#\" onclick=\"change_icon();return false;\"><?php echo WT_I18N::translate('Change flag'); ?></a>&nbsp;&nbsp;<a href=\"#\" onclick=\"remove_icon();return false;\"><?php echo WT_I18N::translate('Remove flag'); ?></a>";
 		<?php } ?>
+					window.opener.updateMap();
 					window.close();
-				}
 			</script>
 		<?php
-			// autoclose window when update successful unless debug on
-			if (!WT_DEBUG) {
-				echo '<script>edit_close();</script>';
-			}
-			echo '<div class="center"><a href="#" onclick="edit_close();">', WT_I18N::translate('Close Window'), '</a></div><br>';
 			exit;
 		}
 		else {
@@ -551,11 +545,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 					window.location="module.php?mod=googlemap&mod_action=flags&countrySelected=" + document.flags.COUNTRYSELECT.value;
 				}
 			}
-
-			function edit_close() {
-				window.close();
-			}
-
 		</script>
 		<?php
 		}
@@ -674,7 +663,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			<input id="savebutton" name="save2" type="submit" disabled="true" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
 		</form>
 		<?php
-		echo '<div class="center"><a href="#" onclick="edit_close();">', WT_I18N::translate('Close Window'), '</a></div><br>';
+		echo '<div class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></div><br>';
 	}
 
 	private function pedigree_map() {
@@ -1721,9 +1710,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 			function add_place_location(placeid) {
 				window.open('module.php?mod=googlemap&mod_action=places_edit&action=add&placeid='+placeid, '_blank', indx_window_specs);
 				return false;
-			}
-			function showchanges() {
-				window.location='<?php echo $_SERVER["REQUEST_URI"]; ?>&show_changes=yes';
 			}
 			</script>
 			<?php

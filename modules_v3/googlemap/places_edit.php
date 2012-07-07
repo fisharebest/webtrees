@@ -38,6 +38,7 @@ if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
 $controller=new WT_Controller_Simple();
 $controller
 		->setPageTitle(WT_I18N::translate('Geographic data'))
+		->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
 		->pageHeader();
 
 if (!WT_USER_IS_ADMIN) {
@@ -49,18 +50,6 @@ if (!WT_USER_IS_ADMIN) {
 }
 // echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet">';
 echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
-?>
-<script>
-function edit_close(newurl) {
-	if (newurl) window.opener.location=newurl;
-	else if (window.opener.showchanges) window.opener.showchanges();
-	window.close();
-}
-function showchanges() {
-	updateMap();
-}
-</script>
-<?php
 
 // Take a place id and find its place in the hierarchy
 // Input: place ID
@@ -100,9 +89,9 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "<script>edit_close('');</script>";
+		echo "<script>closePopupAndReloadParent();</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
 	exit;
 }
 
@@ -118,9 +107,9 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "<script>edit_close('');</script>";
+		echo "<script>closePopupAndReloadParent();</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close('');return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
 	exit;
 }
 
@@ -138,9 +127,9 @@ if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {
 		WT_DB::prepare("UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?");		
 	$statement->execute(array($_REQUEST['svlati'], $_REQUEST['svlong'], $_REQUEST['svbear'], $_REQUEST['svelev'], $_REQUEST['svzoom'], $placeid));
 	if (!WT_DEBUG) {
-		echo "<script>edit_close('');</script>";
+		echo "<script>closePopupAndReloadParent();</script>";
 	}
-	echo "<div class=\"center\"><a href=\"#\" onclick=\"edit_close();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
+	echo "<div class=\"center\"><a href=\"#\" onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
 	exit;
 }
 
@@ -360,4 +349,4 @@ $api='v3';
 	<input name="save2" type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"><br>
 </form>
 <?php
-echo "<center><a href=\"#\" onclick=\"edit_close('')\">", WT_I18N::translate('Close Window'), "</a><br></center>";
+echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';

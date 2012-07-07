@@ -304,10 +304,6 @@ function checkpath(folder) {
 	}
 }
 
-function showchanges() {
-	window.location = '<?php echo WT_SCRIPT_NAME."?directory=".$directory."&level=".$level."&filter=".$filter."&subclick=".$subclick; ?>';
-}
-
 </script>
 <?php
 if (check_media_structure()) {

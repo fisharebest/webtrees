@@ -117,7 +117,7 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 			echo '<br>', WT_I18N::translate('You have no access to'), ' pid ', $pid;
 		}
 	}
-	echo '<br><br><div class="center"><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close();">', WT_I18N::translate('Close Window'), '</a></div>';
+	echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';
 	exit;
 }
 
@@ -417,7 +417,7 @@ if ($action=='newentry') {
 				$success=true;
 			} else {
 				if (!WT_DEBUG) {
-					echo '<script>if (window.opener.showchanges) window.opener.showchanges(); window.opener.paste_id("'.$mediaid.'"); window.close();</script>';
+					echo '<script>if (window.opener.paste_id("'.$mediaid.'"); window.close();</script>';
 				} 
 				echo '<a href="#" onclick="window.opener.paste_id(\'', $mediaid, '\'); return false;">', WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), ' <b>', $mediaid, '</b></a><br><br>';
 			}

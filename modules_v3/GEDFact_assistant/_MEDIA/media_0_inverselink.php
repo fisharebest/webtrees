@@ -627,7 +627,7 @@ function shiftlinks() {
 <?php
 	echo '</table>';
 	echo '</form>';
-	echo '<br><br><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br></center>';
+	echo '<br><br><center><a href="#" onclick="closePopupAndReloadParent(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br></center>';
 
 } elseif ($action == "update" && $paramok) {
 
@@ -668,10 +668,10 @@ function shiftlinks() {
 		echo '<br>';
 	}
 
-	echo '<br><br><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br></center>';
+	echo '<br><br><center><a href="#" onclick="closePopupAndReloadParent(); winNav.close(); ">', WT_I18N::translate('Close Window'), '</a><br></center>';
 } else {
 	// echo '<center>You must be logged in as an Administrator<center>';
-	echo '<br><br><center><a href="#" onclick="if (window.opener.showchanges) window.opener.showchanges(); window.close(); winNav.close();">', WT_I18N::translate('Close Window'), '</a><br></center>';
+	echo '<br><br><center><a href="#" onclick="closePopupAndReloadParent(); winNav.close();">', WT_I18N::translate('Close Window'), '</a><br></center>';
 }
 
 /**

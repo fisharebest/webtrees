@@ -165,7 +165,6 @@ $controller->addInlineJavascript('
 	function show_gedcom_record() {
 		var recwin=window.open("gedrecord.php?pid='. $controller->record->getXref(). '", "_blank", edit_window_specs);
 	}	
-	function showchanges(){window.location="'.$controller->record->getRawUrl().'";}
 
 	jQuery("#header_accordion1").accordion({
 		active: 0,

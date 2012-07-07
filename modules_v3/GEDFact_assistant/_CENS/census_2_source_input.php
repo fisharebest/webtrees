@@ -124,15 +124,6 @@ if (!defined('WT_WEBTREES')) {
 		pastefield.value += value;
 	}
 
-	function edit_close(newurl) {
-		if (newurl)
-			window.opener.location=newurl;
-		else
-			if (window.opener.showchanges)
-				window.opener.showchanges();
-		window.close();
-	}
-
 	function changeCtry() {
 		// Change Year field Colour ----------------------------------------------
 		if (document.getElementById('censYear').value=="") {

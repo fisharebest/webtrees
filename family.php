@@ -92,7 +92,6 @@ echo '<script>';
 echo 'function show_gedcom_record() {';
 echo ' var recwin=window.open("gedrecord.php?pid=', $controller->record->getXref(), '", "_blank", edit_window_specs);';
 echo '}';
-echo 'function showchanges() { window.location="'.$controller->record->getRawUrl().'"; }';
 echo '</script>';
 
 ?>

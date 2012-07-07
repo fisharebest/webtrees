@@ -85,7 +85,6 @@ $linkToID=$controller->record->getXref(); // Tell addmedia.php what to link to
 
 $controller
 	->addInlineJavascript('function show_gedcom_record() {var recwin=window.open("gedrecord.php?pid=' . $controller->record->getXref() . '", "_blank", edit_window_specs);}')
-	->addInlineJavascript('function showchanges() { window.location="' . $controller->record->getRawUrl() . '"; }')
 	->addInlineJavascript('function edit_note() {var win04 = window.open("edit_interface.php?action=editnote&pid=' . $linkToID . '", "win04", edit_window_specs);if (window.focus) {win04.focus();}}')
 	->addInlineJavascript('jQuery("#note-tabs").tabs();')
 	->addInlineJavascript('jQuery("#note-tabs").css("visibility", "visible");');

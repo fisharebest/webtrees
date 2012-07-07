@@ -602,14 +602,14 @@ echo "</td></tr>";
 echo "</table>"; // Close table with find options
 
 echo "<br>";
-echo "<a href=\"#\" onclick=\"if (window.opener.showchanges) window.opener.showchanges(); window.close();\">", WT_I18N::translate('Close Window'), "</a><br>";
+echo "<a href=\"#\" onclick=\"window.close();\">", WT_I18N::translate('Close Window'), "</a><br>";
 echo "<br>";
 
 if ($action=="filter") {
 	$filter = trim($filter);
 	$filter_array=explode(' ', preg_replace('/ {2,}/', ' ', $filter));
 
-	// Output Individual fot GEDFact Assistant ======================
+	// Output Individual for GEDFact Assistant ======================
 	if ($type == "indi") {
 		echo "<table class=\"tabs_table width90\"><tr>";
 		$myindilist=search_indis_names($filter_array, array(WT_GED_ID), 'AND');
