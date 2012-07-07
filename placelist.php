@@ -35,61 +35,27 @@ if ($use_googlemap) {
 	require WT_ROOT.WT_MODULES_DIR.'googlemap/placehierarchy.php';
 }
 
-function case_in_array($value, $array) {
-	foreach ($array as $key=>$val) {
-		if (strcasecmp($value, $val)==0) {
-			return true;
-		}
-	}
-	return false;
-}
 $action =safe_GET('action',  array('find', 'show'), 'find');
 $display=safe_GET('display', array('hierarchy', 'list'), 'hierarchy');
 $parent =safe_GET('parent');
-$level  =count($parent);
+if (!is_array($parent)) {
+	$parent = array();
+}
+$level=count($parent);
 
 if ($display=='hierarchy') {
-	$controller->setPageTitle(WT_I18N::translate('Place hierarchy'));
+	if ($level) {
+		$controller->setPageTitle(WT_I18N::translate('Place hierarchy') . ' - ' . htmlspecialchars(end($parent)));
+	} else {
+		$controller->setPageTitle(WT_I18N::translate('Place hierarchy'));
+	}
 } else {
 	$controller->setPageTitle(WT_I18N::translate('Place List'));
 }
+
 $controller->pageHeader();
 
-echo '<div id="place-heirarchy"><h2>';
-if ($display=='hierarchy' && $level == 0)  {
-	echo WT_I18N::translate('Place hierarchy');
-} else if ($display=='hierarchy' && $level > 0) {
-	echo WT_I18N::translate('Place hierarchy'), ' - ', $parent[$level-1];
-} else {
-	echo WT_I18N::translate('Place List');
-}
-echo '</h2>';
-
-// Set original place name found (used later)
-$base_parent = $parent[$level-1];
-
-// Make sure the "parent" array has no holes
-if (isset($parent) && is_array($parent)) {
-	$parentKeys = array_keys($parent);
-	$highKey = max($parentKeys);
-	
-	for ($j=0; $j<=$highKey; $j++) {
-		if (!isset($parent[$j])) {
-			$parent[$j] = '';
-		}
-	}
-	ksort($parent, SORT_NUMERIC);
-}
-
-
-if (!isset($parent)) $parent=array();
-else {
-	if (!is_array($parent)) $parent = array();
-	else $parent = array_values($parent);
-}
-
-if ($level>count($parent)) $level = count($parent);
-if ($level<count($parent)) $level = 0;
+echo '<div id="place-hierarchy"><h2>', $controller->getPageTitle(), '</h2>';
 
 //-- hierarchical display
 if ($display=='hierarchy') {
@@ -103,7 +69,6 @@ if ($display=='hierarchy') {
 	if ($numfound==0) {
 		$action='show';
 	}
-	
 
 	// -- echo the breadcrumb hierarchy
 	echo '<h4>';
@@ -120,22 +85,13 @@ if ($display=='hierarchy') {
 			echo '<a href="?action=find';
 			for ($j=0; $j<=$i; $j++) {
 				$levels = explode(', ', trim($parent[$j]));
-				// Routine for replacing ampersands
 				foreach ($levels as $pindex=>$ppart) {
-					if ($j==$numls) {
-						$ppart = rawurlencode($base_parent);
-					} else {
-						$ppart = rawurlencode($ppart);
-					}
-					$ppart = preg_replace('/amp\%3B/', '', trim($ppart));
-					echo '&amp;parent%5B', $j, '%5D=', $ppart;
+					echo '&amp;parent%5B', $j, '%5D=', rawurlencode($ppart);
 				}
 			}
 			echo '"><bdi dir="auto">';
-			if (trim($parent[$i])=='') {
+			if ($parent[$i]=='') {
 				echo WT_I18N::translate('unknown');
-			} else if ($i == $numls) {
-				echo $base_parent; 
 			} else {
 				echo htmlspecialchars($parent[$i]);
 			}
