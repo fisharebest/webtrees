@@ -117,7 +117,7 @@ if (!WT_USER_CAN_EDIT || !$disp || !$ALLOW_EDIT_GEDCOM) {
 			echo '<br>', WT_I18N::translate('You have no access to'), ' pid ', $pid;
 		}
 	}
-	echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';
+	echo '<p class="center"><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
 	exit;
 }
 
@@ -419,7 +419,7 @@ if ($action=='newentry') {
 				if (!WT_DEBUG) {
 					echo '<script>if (window.opener.paste_id("'.$mediaid.'"); window.close();</script>';
 				} 
-				echo '<a href="#" onclick="window.opener.paste_id(\'', $mediaid, '\'); return false;">', WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), ' <b>', $mediaid, '</b></a><br><br>';
+				echo '<a href="#" onclick="window.opener.paste_id(\'', $mediaid, '\'); window.close();">', WT_I18N::translate('Paste the following ID into your editing fields to reference the newly created record '), ' <b>', $mediaid, '</b></a><br><br>';
 			}
 		}
 		echo WT_I18N::translate('Update successful');
@@ -619,7 +619,7 @@ if ($action=='editmedia') {
 
 // autoclose window when update successful unless debug on
 if ($success && !WT_DEBUG) {
-	$controller->addInlineJavascript('closePopupAndReloadParent();');
+	$controller->addInlineJavascript('window.close();');
 } else {
-	echo '<p class="center"><a href="#" onclick="closePopupAndReloadParent();">', WT_I18N::translate('Close Window'), '</a></p>';
+	echo '<p class="center"><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
 }
