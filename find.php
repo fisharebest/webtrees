@@ -709,35 +709,27 @@ if ($action=="filter") {
 	// Output Places
 	if ($type == "place") {
 		echo '<div id="find-output">';
-		$placelist = array();
-		if ($all || $filter) {
-			$placelist=find_place_list($filter);
-			$ctplace = count($placelist);
-			if ($ctplace>0) {
-				$revplacelist = array();
-				foreach ($placelist as $indexval => $place) {
-					$levels = explode(',', $place); // -- split the place into comma seperated values
-					$levels = array_reverse($levels); // -- reverse the array so that we get the top level first
-					$placetext = "";
-					$j=0;
-					foreach ($levels as $indexval => $level) {
-						if ($j>0) $placetext .= ", ";
-						$placetext .= trim($level);
-						$j++;
-					}
-					$revplacelist[] = $placetext;
+		if (!$filter || $all) {
+			$places=WT_Place::allPlaces(WT_GED_ID);
+		} else {
+			$places=WT_Place::findPlaces($filter, WT_GED_ID);
+		}
+		if ($places) {
+			echo '<ul>';
+			foreach ($places as $place) {
+				echo '<li><a href="#" onclick="pasteid(\'', htmlspecialchars($place->getGedcomName()), '\');">';
+				if (!$filter || $all) {
+					echo $place->getReverseName(); // When displaying all names, sort/display by the country, then region, etc.
+				} else {
+					echo $place->getFullName(); // When we've searched for a place, sort by this place
 				}
-				uasort($revplacelist, "utf8_strcasecmp");
-				echo '<ul>';
-				foreach ($revplacelist as $place) {
-					echo "<li><a href=\"#\" onclick=\"pasteid('", str_replace(array("'", '"'), array("\'", '&quot;'), $place), "');\">", htmlspecialchars($place), "</a></li>";
-				}
-				echo '</ul>
-				<p>', WT_I18N::translate('Places found'), '&nbsp;', $ctplace, '</p>';
+				echo '</a></li>';
 			}
-			else {
-				echo '<p>', WT_I18N::translate('No results found.'), '</p>';
-			}
+			echo '</ul>
+			<p>', WT_I18N::translate('Places found'), '&nbsp;', count($places), '</p>';
+		}
+		else {
+			echo '<p>', WT_I18N::translate('No results found.'), '</p>';
 		}
 		echo '</div>';
 	}

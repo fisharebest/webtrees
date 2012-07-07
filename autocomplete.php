@@ -231,23 +231,10 @@ case 'OBJE':
 
 case 'PLAC': // Place names (with hierarchy), that include the search term
 	// Do not filter by privacy.  Place names on their own do not identify individuals.
-	$data=
-		WT_DB::prepare(
-			"SELECT SQL_CACHE CONCAT_WS(', ', p1.p_place, p2.p_place, p3.p_place, p4.p_place, p5.p_place, p6.p_place, p7.p_place, p8.p_place, p9.p_place)".
-			" FROM      `##places` AS p1".
-			" LEFT JOIN `##places` AS p2 ON (p1.p_parent_id=p2.p_id)".
-			" LEFT JOIN `##places` AS p3 ON (p2.p_parent_id=p3.p_id)".
-			" LEFT JOIN `##places` AS p4 ON (p3.p_parent_id=p4.p_id)".
-			" LEFT JOIN `##places` AS p5 ON (p4.p_parent_id=p5.p_id)".
-			" LEFT JOIN `##places` AS p6 ON (p5.p_parent_id=p6.p_id)".
-			" LEFT JOIN `##places` AS p7 ON (p6.p_parent_id=p7.p_id)".
-			" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)".
-			" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)".
-			" WHERE p1.p_place LIKE CONCAT('%', ?, '%') AND p1.p_file=?".
-			" ORDER BY p1.p_place"
-		)
-		->execute(array($term, WT_GED_ID))
-		->fetchOneColumn();
+	$data=array();
+	foreach (WT_Place::findPlaces($term, WT_GED_ID) as $place) {
+		$data[]=$place->getGedcomName();
+	}
 	if (!$data && get_gedcom_setting(WT_GED_ID, 'USE_GEONAMES')) {
 		// No place found?  Use an external gazetteer
 		$url=
