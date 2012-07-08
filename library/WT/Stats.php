@@ -979,13 +979,13 @@ class WT_Stats {
 		if ($fact) {
 			if ($what=='INDI') {
 				$rows=
-					WT_DB::prepare("SELECT SQL_CACHE i_gedcom AS ged FROM `##individuals` WHERE i_file=?")
+					WT_DB::prepare("SELECT i_gedcom AS ged FROM `##individuals` WHERE i_file=?")
 					->execute(array($this->_ged_id))
 					->fetchAll();
 			}
 			else if ($what=='FAM') {
 				$rows=
-					WT_DB::prepare("SELECT SQL_CACHE f_gedcom AS ged FROM `##families` WHERE f_file=?")
+					WT_DB::prepare("SELECT f_gedcom AS ged FROM `##families` WHERE f_file=?")
 					->execute(array($this->_ged_id))
 					->fetchAll();
 			}
@@ -994,10 +994,10 @@ class WT_Stats {
 				$factrec = trim(get_sub_record(1, "1 {$fact}", $row->ged, 1));
 				if (!empty($factrec) && preg_match("/2 PLAC (.+)/", $factrec, $match)) {
 					if ($country) {
-						$place = getPlaceCountry(trim($match[1]));
+						$place = end(explode(WT_Place::GEDCOM_SEPARATOR, $match[1]));
 					}
 					else {
-						$place = trim($match[1]);
+						$place = $match[1];
 					}
 					if (!isset($placelist[$place])) {
 						$placelist[$place] = 1;
