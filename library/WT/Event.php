@@ -223,16 +223,6 @@ class WT_Event {
 		return $this->detail;
 	}
 
-	/**
-	 * Check whether this fact has information to display
-	 * Checks for a date or a place
-	 *
-	 * @return boolean
-	 */
-	function hasDatePlace() {
-		return ($this->getDate() || $this->getPlace());
-	}
-
 	function getLabel($abbreviate=false) {
 		if ($abbreviate) {
 			return WT_Gedcom_Tag::getAbbreviation($this->tag);

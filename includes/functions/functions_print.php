@@ -999,26 +999,6 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 	}
 	return $html;
 }
-/**
-* print first major fact for an Individual
-*
-* @param string $key indi pid
-*/
-function format_first_major_fact($key, $majorfacts = array("BIRT", "CHR", "BAPM", "DEAT", "BURI", "BAPL", "ADOP")) {
-	$html='';
-	$person = WT_GedcomRecord::getInstance($key);
-	if (is_null($person)) return;
-	foreach ($majorfacts as $indexval => $fact) {
-		$event = $person->getFactByType($fact);
-		if (!is_null($event) && $event->hasDatePlace() && $event->canShow()) {
-			$html.='<br><em>';
-			$html .= $event->getLabel();
-			$html.=' '.format_fact_date($event, $person, false, false).' '.format_fact_place($event).'</em>';
-			break;
-		}
-	}
-	return $html;
-}
 
 /**
 * Check for facts that may exist only once for a certain record type.
