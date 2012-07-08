@@ -101,7 +101,21 @@ class WT_Place {
 		return implode(WT_I18N::$list_separator, $tmp);
 	}
 
-	// For the "view as list" option of placelist.php
+	// For lists and charts, where the full name won't fit.
+	public function getShortName() {
+		global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX;
+
+		// Abbreviate the place name, for lists
+		if ($SHOW_PEDIGREE_PLACES_SUFFIX) {
+			// The *last* $SHOW_PEDIGREE_PLACES components
+			return implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
+		} else {
+			// The *first* $SHOW_PEDIGREE_PLACES components
+			return implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
+		}
+	}
+
+	// For the "view all" option of placelist.php and find.php
 	public function getReverseName() {
 		$tmp=array();
 		foreach (array_reverse($this->gedcom_place) as $place) {

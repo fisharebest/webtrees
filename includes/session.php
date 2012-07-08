@@ -207,7 +207,6 @@ require WT_ROOT.'includes/functions/functions_rtl.php';
 require WT_ROOT.'includes/functions/functions_mediadb.php';
 require WT_ROOT.'includes/functions/functions_date.php';
 require WT_ROOT.'includes/functions/functions_charts.php';
-require WT_ROOT.'includes/functions/functions_places.php';
 require WT_ROOT.'includes/functions/functions_utf-8.php';
 
 set_error_handler('wt_error_handler');

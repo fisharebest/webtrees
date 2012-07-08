@@ -317,14 +317,15 @@ function format_indi_table($datalist, $option='') {
 		//-- Birth place
 		$html .= '<td>';
 		foreach ($person->getAllBirthPlaces() as $n=>$birth_place) {
+			$tmp=new WT_Place($birth_place, WT_GED_ID);
 			if ($n) {
 				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				$html .= get_place_short($birth_place);
+				$html .= $tmp->getShortName();
 			} else {
-				$html .= '<a href="'. get_place_url($birth_place). '" title="'. $birth_place. '">';
-				$html .= highlight_search_hits(get_place_short($birth_place)). '</a>';
+				$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
+				$html .= highlight_search_hits($tmp->getShortName()). '</a>';
 			}
 		}
 		$html .= '</td>';
@@ -370,14 +371,15 @@ function format_indi_table($datalist, $option='') {
 		//-- Death place
 		$html .= '<td>';
 		foreach ($person->getAllDeathPlaces() as $n=>$death_place) {
+			$tmp=new WT_Place($death_place, WT_GED_ID);
 			if ($n) {
 				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				$html .= get_place_short($death_place);
+				$html .= $tmp->getShortName();
 			} else {
-				$html .= '<a href="'. get_place_url($death_place). '" title="'. $death_place. '">';
-				$html .= highlight_search_hits(get_place_short($death_place)). '</a>';
+				$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
+				$html .= highlight_search_hits($tmp->getShortName()). '</a>';
 			}
 		}
 		$html .= '</td>';
@@ -812,14 +814,15 @@ function format_fam_table($datalist, $option='') {
 		//-- Marriage place
 		$html .= '<td>';
 		foreach ($family->getAllMarriagePlaces() as $n=>$marriage_place) {
+			$tmp=new WT_Place($marriage_place, WT_GED_ID);
 			if ($n) {
 				$html .= '<br>';
 			}
 			if ($SEARCH_SPIDER) {
-				$html .= get_place_short($marriage_place);
+				$html .= $tmp->getShortName();
 			} else {
-				$html .= '<a href="'. get_place_url($marriage_place). '" title="'. $marriage_place. '">';
-				$html .= highlight_search_hits(get_place_short($marriage_place)). '</a>';
+				$html .= '<a href="'. $tmp->getURL() . '" title="'. strip_tags($tmp->getFullName()) . '">';
+				$html .= highlight_search_hits($tmp->getShortName()). '</a>';
 			}
 		}
 		$html .= '</td>';
@@ -1918,7 +1921,10 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		$html .= "<br><div class=\"indent\">";
 		$html .= WT_Gedcom_Tag::getLabel($value['fact']).' - '.$value['date']->Display(true);
 		if ($value['anniv']!=0) $html .= " (" . WT_I18N::translate('%s year anniversary', $value['anniv']).")";
-		if (!empty($value['plac'])) $html .= " - <a href=\"".get_place_url($value['plac'])."\">".$value['plac']."</a>";
+		if (!empty($value['plac'])) {
+			$tmp=new WT_Place($value['plac']);
+			$html .= " - <a href=\"".$tmp->getURL()."\">".$tmp->getFullName()."</a>";
+		}
 		$html .= "</div>";
 	}
 

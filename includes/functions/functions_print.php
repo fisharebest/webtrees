@@ -244,7 +244,8 @@ function print_pedigree_person($person, $style=1, $count=0, $personcount="1") {
 		if (!in_array($birttag, $opt_tags)) {
 			$event = $person->getFactByType($birttag);
 			if (!is_null($event) && ($event->getDate()->isOK() || $event->getPlace()) && $event->canShow()) {
-				$birthplace .= get_place_short($event->getPlace());
+				$tmp=new WT_Place($event->getPlace(), WT_GED_ID);
+				$birthplace .= $tmp->getShortName();
 				break;
 			}
 		}
