@@ -102,7 +102,11 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 			$this->pids=$pids;
 		} elseif ($place) {
 			// All records found in a place
-			$this->pids=get_place_positions($place);
+			$wt_place=new WT_Place($place, WT_GED_ID);
+			$this->pids=
+				WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
+				->execute(array($wt_place->getPlaceId(), WT_GED_ID))
+				->fetchOneColumn();
 			$this->place=$place;
 		} else {
 			// Modify an existing list of records
@@ -135,7 +139,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 				if ($value != $remove) {
 					$this->pids[$key] = $value;
 					$person = WT_Person::getInstance($value);
-					// get_place_positions() returns families as well as individuals.
+					// list of linked records includes families as well as individuals.
 					if ($person && $person->getType()=='INDI') {
 						$bdate = $person->getEstimatedBirthDate();
 						$ddate = $person->getEstimatedDeathDate();

@@ -80,7 +80,7 @@ function get_place_list_loc($parent_id, $inactive=false) {
 			WT_DB::prepare(
 				"SELECT DISTINCT pl_id, pl_place, pl_lati, pl_long, pl_zoom, pl_icon".
 				" FROM `##placelocation`".
-				" INNER JOIN `##places` ON `##placelocation`.pl_place=`##places`.p_place AND `##placelocation`.pl_level=`##places`.p_level".
+				" INNER JOIN `##places` ON `##placelocation`.pl_place=`##places`.p_place".
 				" WHERE pl_parent_id=? ORDER BY pl_place"
 			)
 			->execute(array($parent_id))
@@ -91,7 +91,6 @@ function get_place_list_loc($parent_id, $inactive=false) {
 	foreach ($rows as $row) {
 		$placelist[]=array('place_id'=>$row->pl_id, 'place'=>$row->pl_place, 'lati'=>$row->pl_lati, 'long'=>$row->pl_long, 'zoom'=>$row->pl_zoom, 'icon'=>$row->pl_icon);
 	}
-	uasort($placelist, 'placesort');
 	return $placelist;
 }
 

@@ -49,7 +49,7 @@ $controller
 			year = frm.year.value;
 			fname = frm.firstname.value;
 			lname = frm.lastname.value;
-			place = frm.place.value;
+			place = frm.place2.value;
 
 			// display an error message if there is insufficient data to perform a search on
 			if (year == "") {
@@ -58,7 +58,7 @@ $controller
 					message = false;
 				if (lname.length >= 2)
 					message = false;
-				if (place.length >= 2)
+				if (place2.length >= 2)
 					message = false;
 				if (message) {
 					alert("<?php echo WT_I18N::translate('Please enter more than one character'); ?>");
@@ -73,7 +73,7 @@ $controller
 					message = false;
 				if (lname != "")
 					message = false;
-				if (place != "")
+				if (place2 != "")
 					message = false;
 				if (message) {
 					alert("<?php echo WT_I18N::translate('Please enter a Given name, Last name, or Place in addition to Year'); ?>");
@@ -190,7 +190,7 @@ echo '<div id="search-page">
 				<div class="label">' , WT_I18N::translate('Last name'), '</div>
 				<div class="value"><input tabindex="4" type="text" name="lastname" value="' , htmlspecialchars($controller->lastname), '"></div>
 				<div class="label">' , WT_I18N::translate('Place'), '</div>
-				<div class="value"><input tabindex="5" type="text" name="place" value="' , htmlspecialchars($controller->place), '"></div>
+				<div class="value"><input tabindex="5" type="text" name="place2" value="' , htmlspecialchars($controller->place), '"></div>
 				<div class="label">' , WT_I18N::translate('Year'), '</div>
 				<div class="value"><input tabindex="6" type="text" name="year" value="' , htmlspecialchars($controller->year), '"></div>';
 			

@@ -1049,8 +1049,8 @@ try {
 
 echo '<p>pgv_places => wt_places ...</p>'; ob_flush(); flush(); usleep(50000);
 WT_DB::prepare(
-	"REPLACE INTO `##places` (p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex)".
-	" SELECT p_id, p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex FROM `{$DBNAME}`.`{$TBLPREFIX}places`"
+	"REPLACE INTO `##places` (p_id, p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex)".
+	" SELECT p_id, p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex FROM `{$DBNAME}`.`{$TBLPREFIX}places`"
 )->execute();
 
 ////////////////////////////////////////////////////////////////////////////////

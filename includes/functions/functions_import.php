@@ -751,10 +751,10 @@ function update_places($gid, $ged_id, $gedrec) {
 			"INSERT IGNORE INTO `##placelinks` (pl_p_id, pl_gid, pl_file) VALUES (?,?,?)"
 		);
 		$sql_insert_places=WT_DB::prepare(
-			"INSERT INTO `##places` (p_place, p_level, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?,?)"
+			"INSERT INTO `##places` (p_place, p_parent_id, p_file, p_std_soundex, p_dm_soundex) VALUES (?,?,?,?,?)"
 		);
 		$sql_select_places=WT_DB::prepare(
-			"SELECT p_id FROM `##places` WHERE p_level=? AND p_file=? AND p_parent_id=? AND p_place LIKE ?"
+			"SELECT p_id FROM `##places` WHERE p_file=? AND p_parent_id=? AND p_place=?"
 		);
 	}
 
@@ -777,14 +777,13 @@ function update_places($gid, $ged_id, $gedrec) {
 		//-- reverse the array to start at the highest level
 		$secalp = array_reverse($places);
 		$parent_id = 0;
-		$level = 0;
 		$search = true;
 
 		foreach ($secalp as $indexval => $place) {
 			$place = trim($place);
 			$place=preg_replace('/\\\"/', "", $place);
 			$place=preg_replace("/[\><]/", "", $place);
-			$key = strtolower($place."_".$level."_".$parent_id);
+			$key = strtolower($place."_".$parent_id);
 			//-- if this place has already been added then we don't need to add it again
 			if (isset($placecache[$key])) {
 				$parent_id = $placecache[$key];
@@ -792,14 +791,13 @@ function update_places($gid, $ged_id, $gedrec) {
 					$personplace[$key]=1;
 					$sql_insert_placelinks->execute(array($parent_id, $gid, $ged_id));
 				}
-				$level++;
 				continue;
 			}
 
 			//-- only search the database while we are finding places in it
 			if ($search) {
 				//-- check if this place and level has already been added
-				$tmp=$sql_select_places->execute(array($level, $ged_id, $parent_id, $place))->fetchOne();
+				$tmp=$sql_select_places->execute(array($ged_id, $parent_id, $place))->fetchOne();
 				if ($tmp) {
 					$p_id = $tmp;
 				} else {
@@ -811,7 +809,7 @@ function update_places($gid, $ged_id, $gedrec) {
 			if (!$search) {
 				$std_soundex = WT_Soundex::soundex_std($place);
 				$dm_soundex = WT_Soundex::soundex_dm($place);
-				$sql_insert_places->execute(array($place, $level, $parent_id, $ged_id, $std_soundex, $dm_soundex));
+				$sql_insert_places->execute(array($place, $parent_id, $ged_id, $std_soundex, $dm_soundex));
 				$p_id=WT_DB::getInstance()->lastInsertId();
 			}
 
@@ -820,7 +818,6 @@ function update_places($gid, $ged_id, $gedrec) {
 			$parent_id = $p_id;
 			$placecache[$key] = $p_id;
 			$personplace[$key]=1;
-			$level++;
 		}
 	}
 }

@@ -151,8 +151,8 @@ class WT_Controller_Search extends WT_Controller_Base {
 		} else {
 			$this->lastname="";
 		}
-		if (!empty ($_REQUEST["place"])) {
-			$this->place = $_REQUEST["place"];
+		if (!empty ($_REQUEST["place2"])) {
+			$this->place = $_REQUEST["place2"];
 		} else {
 			$this->place="";
 		}

@@ -969,12 +969,7 @@ function extract_filename($fullpath) {
 function factsort($a, $b) {
 	return utf8_strcasecmp(WT_I18N::translate($a), WT_I18N::translate($b));
 }
-/**
- * Function to sort place names array
- */
-function placesort($a, $b) {
-	return utf8_strcasecmp($a['place'], $b['place']);
-}
+
 ////////////////////////////////////////////////////////////////////////////////
 // Sort a list events for the today/upcoming blocks
 ////////////////////////////////////////////////////////////////////////////////

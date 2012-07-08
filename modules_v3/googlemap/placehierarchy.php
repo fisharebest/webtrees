@@ -75,8 +75,8 @@ function get_p_id($place) {
 		$placelist = create_possible_place_names($par[$i], $i+1);
 		foreach ($placelist as $key => $placename) {
 			$pl_id=
-				WT_DB::prepare("SELECT p_id FROM `##places` WHERE p_level=? AND p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
-				->execute(array($i, $place_id, WT_GED_ID, $placename))
+				WT_DB::prepare("SELECT p_id FROM `##places` WHERE p_parent_id=? AND p_file=? AND p_place LIKE ? ORDER BY p_place")
+				->execute(array($place_id, WT_GED_ID, $placename))
 				->fetchOne();
 			if (!empty($pl_id)) break;
 		}

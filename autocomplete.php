@@ -40,9 +40,9 @@ case 'ASSO': // Associates of an individuals, whose name contains the search ter
 			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
 			" FROM `##individuals`".
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
-			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=? ORDER BY n_full"
+			" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full"
 		)
-		->execute(array($term, WT_GED_ID))
+		->execute(array($term, $term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
 	// Filter for privacy - and whether they could be alive at the right time
 	$pid=safe_GET_xref('pid');
@@ -187,9 +187,9 @@ case 'INDI': // Individuals, whose name contains the search terms
 			"SELECT 'INDI' AS type, i_id AS xref, i_file AS ged_id, i_gedcom AS gedrec, n_full".
 			" FROM `##individuals`".
 			" JOIN `##name` ON (i_id=n_id AND i_file=n_file)".
-			" WHERE n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') AND i_file=? ORDER BY n_full"
+			" WHERE (n_full LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%') OR n_surn LIKE CONCAT('%', REPLACE(?, ' ', '%'), '%')) AND i_file=? ORDER BY n_full"
 		)
-		->execute(array($term, WT_GED_ID))
+		->execute(array($term, $term, WT_GED_ID))
 		->fetchAll(PDO::FETCH_ASSOC);
 	// Filter for privacy
 	foreach ($rows as $row) {

@@ -122,12 +122,12 @@ jQuery("input[id$=xref], input[name^=gid], #cart_item_id").autocomplete({
 });
 
 // PLAC : with hierarchy
-jQuery(".PLAC, #place, input[id=place], input[name*=PLACS], input[name*=PLAC3], input[name^=PLAC], input[name$=PLAC]").autocomplete({
+jQuery(".PLAC, #place, input[name=place], input[id=place], input[name*=PLACS], input[name*=PLAC3], input[name^=PLAC], input[name$=PLAC]").autocomplete({
 	source: "autocomplete.php?field=PLAC"
 });
 
 // PLAC : without hierarchy
-jQuery("input[name=place], input[id=birthplace], input[id=marrplace], input[id=deathplace], input[id=bdmplace]").autocomplete({
+jQuery("input[name=place2], input[id=birthplace], input[id=marrplace], input[id=deathplace], input[id=bdmplace]").autocomplete({
 	source: "autocomplete.php?field=PLAC2"
 });
 

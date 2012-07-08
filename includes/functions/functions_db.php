@@ -957,95 +957,10 @@ function search_repos($query, $geds, $match, $skip) {
 	return $list;
 }
 
-/**
-* get place parent ID
-* @param array $parent
-* @param int $level
-* @return int
-*/
-function get_place_parent_id($parent, $level) {
-	static $statement=null;
-
-	if (is_null($statement)) {
-		$statement=WT_DB::prepare("SELECT p_id FROM `##places` WHERE p_level=? AND p_parent_id=? AND p_place LIKE ? AND p_file=?");
-	}
-
-	$parent_id=0;
-	for ($i=0; $i<$level; $i++) {
-		$p_id=$statement->execute(array($i, $parent_id, $parent[$i], WT_GED_ID))->fetchOne();
-		if (is_null($p_id)) {
-			break;
-		}
-		$parent_id = $p_id;
-	}
-	return $parent_id;
-}
-
-/**
-* find all of the places in the hierarchy
-* The $parent array holds the parent hierarchy of the places
-* we want to get.  The level holds the level in the hierarchy that
-* we are at.
-*/
-function get_place_list($parent, $level) {
-	// --- find all of the place in the file
-	if ($level==0) {
-		return
-			WT_DB::prepare("SELECT p_place FROM `##places` WHERE p_level=? AND p_file=? ORDER BY p_place")
-			->execute(array(0, WT_GED_ID))
-			->fetchOneColumn();
-	} else {
-		return
-			WT_DB::prepare("SELECT p_place FROM `##places` WHERE p_level=? AND p_parent_id=? AND p_file=? ORDER BY p_place")
-			->execute(array($level, get_place_parent_id($parent, $level), WT_GED_ID))
-			->fetchOneColumn();
-	}
-}
-
-/**
-* get all of the place connections
-* @param array $parent
-* @param int $level
-* @return array
-*/
-function get_place_positions($parent, $level=null) {
-	// TODO: this function needs splitting into two
-
-	if ($level!==null) {
-		// placelist.php - we know the exact hierarchy
-		$rows=
-			WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks` WHERE pl_p_id=? AND pl_file=?")
-			->execute(array(get_place_parent_id($parent, $level), WT_GED_ID))
-			->fetchOneColumn();
-		$place_regex='\n2 PLAC '.'(.*)'.preg_quote(implode(', ', array_reverse($parent)), '/').'(\n|$)';
-		// The placelinks table does not take account of private records.
-		$xrefs=array();
-		foreach ($rows as $row) {
-			$record=WT_GedcomRecord::getInstance($row);
-			if ($record && preg_match('/'.$place_regex.'/i', $record->getGedcomRecord())) {
-				$xrefs[]=$row;
-			}
-		}
-	} else {
-		// lifespan.php - we don't know the level so get the any matching place
-		$rows=
-			WT_DB::prepare("SELECT DISTINCT pl_gid FROM `##placelinks`, `##places` WHERE p_place LIKE ? AND p_file=pl_file AND p_id=pl_p_id AND p_file=?")
-			->execute(array($parent, WT_GED_ID))
-			->fetchOneColumn();
-		$place_regex='\n2 PLAC '.preg_quote($parent, '/').'(\n|,|$)';
-		// The placelinks table does not take account of private person records.
-		$xrefs=array();
-		foreach ($rows as $row) {
-			$indi=WT_Person::getInstance($row);
-			if ($indi && preg_match('/'.$place_regex.'/i', $indi->getGedcomRecord())) {
-				$xrefs[]=$row;
-			}
-		}
-	}
-	return $xrefs;
-}
-
-//-- find all of the places
+// THIS FUNCTION IS OLD AND DEPRECATED.  Use WT_Place::findPlaces() instead.
+//
+// It is still called from the GEDFact_assistant module (although the calling
+// code seems to be unreachable??)
 function find_place_list($place) {
 	$rows=
 		WT_DB::prepare("SELECT p_id, p_place, p_parent_id  FROM `##places` WHERE p_file=? ORDER BY p_parent_id, p_id")
