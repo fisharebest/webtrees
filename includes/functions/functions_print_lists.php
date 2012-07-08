@@ -1922,7 +1922,7 @@ function print_events_list($startjd, $endjd, $events='BIRT MARR DEAT', $only_liv
 		$html .= WT_Gedcom_Tag::getLabel($value['fact']).' - '.$value['date']->Display(true);
 		if ($value['anniv']!=0) $html .= " (" . WT_I18N::translate('%s year anniversary', $value['anniv']).")";
 		if (!empty($value['plac'])) {
-			$tmp=new WT_Place($value['plac']);
+			$tmp=new WT_Place($value['plac'], WT_GED_ID);
 			$html .= " - <a href=\"".$tmp->getURL()."\">".$tmp->getFullName()."</a>";
 		}
 		$html .= "</div>";
