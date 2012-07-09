@@ -418,25 +418,6 @@ function contact_links($ged_id=WT_GED_ID) {
 	}
 }
 
-//-- print user favorites
-function print_favorite_selector($option=0) {
-	$menu=WT_MenuBar::getFavoritesMenu();
-
-	if ($menu) {
-		echo '<div class="favorites_form">';
-		switch($option) {
-		case 1:
-			echo WT_MenuBar::getFavoritesMenu()->getMenu();
-			break;
-		default:
-			echo '<form class="favorites_form">';
-			echo WT_MenuBar::getFavoritesMenu()->getMenuAsDropdown();
-			echo '</form>';
-			break;
-		}
-		echo '</div>';
-	}
-}
 /**
 * print a note record
 * @param string $text
