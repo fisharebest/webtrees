@@ -41,7 +41,7 @@ try {
 		" CHANGE fv_type  favorite_type ENUM('INDI', 'FAM', 'SOUR', 'REPO', 'OBJE', 'NOTE', 'URL') NOT NULL,".
 		" CHANGE fv_url   url           VARCHAR(255) NULL,".
 		" CHANGE fv_title title         VARCHAR(255) NULL,".
-		" CHANGE fv_note  note          VARCHAR(255) NULL,".
+		" CHANGE fv_note  note          VARCHAR(1000) NULL,".
 		" ADD user_id   INTEGER     NULL AFTER favorite_id,".
 		" ADD gedcom_id INTEGER NOT NULL AFTER user_id,".
 		" DROP KEY ix1,".
