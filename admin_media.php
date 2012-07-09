@@ -734,19 +734,19 @@ if (check_media_structure()) {
 
 		} else {
 			$menu->addLabel(WT_I18N::translate('Set link'));
-			$menu->addClass("", "", "submenu");
+			$menu->addClass('', 'submenu');
 			$submenu = new WT_Menu(WT_I18N::translate('To Person'));
-			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
+			$submenu->addClass("submenuitem".$classSuffix);
 			$submenu->addOnClick("return ilinkitem('$mediaid', 'person')");
 			$menu->addSubMenu($submenu);
 
 			$submenu = new WT_Menu(WT_I18N::translate('To Family'));
-			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
+			$submenu->addClass("submenuitem".$classSuffix);
 			$submenu->addOnClick("return ilinkitem('$mediaid', 'family')");
 			$menu->addSubMenu($submenu);
 
 			$submenu = new WT_Menu(WT_I18N::translate('To Source'));
-			$submenu->addClass("submenuitem".$classSuffix, "submenuitem_hover".$classSuffix);
+			$submenu->addClass("submenuitem".$classSuffix);
 			$submenu->addOnClick("return ilinkitem('$mediaid', 'source')");
 			$menu->addSubMenu($submenu);
 		}

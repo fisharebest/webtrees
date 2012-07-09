@@ -842,36 +842,7 @@ function restorebox(boxid, bstyle) {
 	return true;
 }
 
-/**
- * changes a CSS class for the given element
- *
- * @author John Finlay
- * @param string elementid the id for the dom element you want to give a new class
- * @param string newclass the name of the new class to apply to the element
- */
-function change_class(elementid, newclass) {
-	var element = document.getElementById(elementid);
-	if (element) {
-		element.className = newclass;
-	}
-}
-
-/**
- * changes the src of an image
- *
- * @author John Finlay
- * @param string elementid the id for the dom element you want to give a new icon
- * @param string newicon the src path of the new icon to apply to the element
- */
-function change_icon(elementid, newicon) {
-	var element = document.getElementById(elementid);
-	if (element) {
-		element.src = newicon;
-	}
-}
-
 var menutimeouts = new Array();
-var currentmenu = null;
 /**
  * Shows a submenu
  *
@@ -945,7 +916,6 @@ function show_submenu(elementid, parentid, dir) {
 			element.style.overflow = 'auto';
 		}
 
-		currentmenu = elementid;
 		element.style.visibility='visible';
 	}
 	clearTimeout(menutimeouts[elementid]);

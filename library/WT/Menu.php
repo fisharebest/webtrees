@@ -33,12 +33,9 @@ class WT_Menu {
 	var $labelpos = 'right';
 	var $link = '#';
 	var $onclick = null;
-	var $icon = null;
-	var $hovericon = null;
 	var $flyout = 'down';
 	var $class = '';
 	var $id=null;
-	var $hoverclass = '';
 	var $submenuclass = '';
 	var $iconclass = '';
 	var $target = null;
@@ -78,30 +75,14 @@ class WT_Menu {
 		$this->onclick = $onclick;
 	}
 
-	function addIcon($icon, $hovericon=null) {
-		global $WT_IMAGES;
-
-		if (isset($WT_IMAGES[$icon])) {
-			$this->icon = $WT_IMAGES[$icon];
-		} else {
-			$this->icon = null;
-		}
-		if (isset($WT_IMAGES[$hovericon])) {
-			$this->hovericon = $WT_IMAGES[$hovericon];
-		} else {
-			$this->hovericon = null;
-		}
-	}
-
 	function addFlyout($flyout='down')
 	{
 		$this->flyout = $flyout;
 	}
 
-	function addClass($class, $hoverclass='', $submenuclass='', $iconclass='icon_general')
+	function addClass($class, $submenuclass='', $iconclass='icon_general')
 	{
 		$this->class = $class;
-		$this->hoverclass = $hoverclass;
 		$this->submenuclass = $submenuclass;
 		$this->iconclass = $iconclass;
 	}
@@ -184,21 +165,9 @@ class WT_Menu {
 		if ($c >= 0) {
 			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}', '{$this->flyout}');";
 		}
-		if ($this->hoverclass !== null) {
-			$link .= "change_class('menu{$id}', '{$this->hoverclass}');";
-		}
-		if ($this->hovericon !== null) {
-			$link .= "change_icon('menu{$id}_icon', '{$this->hovericon}');";
-		}
 		$link .= '" onmouseout="';
 		if ($c >= 0) {
 			$link .= "timeout_submenu('menu{$id}_subs');";
-		}
-		if ($this->hoverclass !== null) {
-			$link .= "change_class('menu{$id}', '{$this->class}');";
-		}
-		if ($this->hovericon !== null) {
-			$link .= "change_icon('menu{$id}_icon', '{$this->icon}');";
 		}
 		if ($this->onclick !== null) {
 			$link .= "\" onclick=\"{$this->onclick}";
@@ -207,46 +176,9 @@ class WT_Menu {
 			$link .= '" target="'.$this->target;
 		}
 		$link .= "\">";
-		if ($this->icon !== null) {
-			$tempTitle = str_replace("\"", '', $this->label);
-			$MenuIcon = "<img id=\"menu{$id}_icon\" src=\"{$this->icon}\" class=\"icon\" alt=\"{$tempTitle}\" title=\"{$tempTitle}\">";
-			switch ($this->labelpos) {
-			case "right":
-				$output .= $link;
-				$output .= $MenuIcon;
-				$output .= $this->label;
-				$output .= "</a>";
-				break;
-			case "left":
-				$output .= $link;
-				$output .= $this->label;
-				$output .= $MenuIcon;
-				$output .= "</a>";
-				break;
-			case "down":
-				$output .= $link;
-				$output .= $MenuIcon;
-				$output .= "<br>";
-				$output .= $this->label;
-				$output .= "</a>";
-				break;
-			case "up":
-				$output .= $link;
-				$output .= $this->label;
-				$output .= "<br>";
-				$output .= $MenuIcon;
-				$output .= "</a>";
-				break;
-			default:
-				$output .= $link;
-				$output .= $MenuIcon;
-				$output .= "</a>";
-			}
-		} else {
-			$output .= $link;
-			$output .= $this->label;
-			$output .= "</a>";
-		}
+		$output .= $link;
+		$output .= $this->label;
+		$output .= "</a>";
 
 		if ($c > 0) {
 			$submenuid = "menu{$id}_subs";

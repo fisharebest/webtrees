@@ -163,7 +163,6 @@ if ($pid=="") {
 						$marn  = $nam[1]['surname'];
 					}
 					$menu = new WT_Menu("&nbsp;" . $people["husb"]->getLabel());
-					// $menu->addClass("", "", "submenu");
 					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
@@ -247,7 +246,6 @@ if ($pid=="") {
 					}
 	
 					$menu = new WT_Menu("&nbsp;" . $people["wife"]->getLabel());
-					//$menu->addClass("", "", "submenu");
 					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
@@ -341,7 +339,6 @@ if ($pid=="") {
 						}
 	
 						$menu = new WT_Menu("&nbsp;" . $child->getLabel());
-						//$menu->addClass("", "", "submenu");
 						$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 						$slabel .= $spouselinks;
 						$submenu = new WT_Menu($slabel);
@@ -462,7 +459,6 @@ if ($pid=="") {
 					} else {
 						$menu->addLabel("&nbsp;" . $people["husb"]->getLabel());
 					}
-					//$menu->addClass("", "", "submenu");
 					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
@@ -552,7 +548,6 @@ if ($pid=="") {
 					} else {
 						$menu->addLabel("&nbsp;" . $people["wife"]->getLabel());
 					}
-					//$menu->addClass("", "", "submenu");
 					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
@@ -646,7 +641,6 @@ if ($pid=="") {
 							$marn  = $nam[1]['surname'];
 						}
 						$menu = new WT_Menu("&nbsp;" . $child->getLabel());
-						//$menu->addClass("", "", "submenu");
 						$slabel  = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 						$slabel .= $spouselinks;
 						$submenu = new WT_Menu($slabel);
@@ -738,7 +732,6 @@ if ($pid=="") {
 						$marn  = $nam[1]['surname'];
 					}
 					$menu = new WT_Menu("&nbsp;" . $people["husb"]->getLabel());
-					//$menu->addClass("", "", "submenu");
 					$slabel  = print_pedigree_person_nav2($people["husb"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
@@ -834,7 +827,6 @@ if ($pid=="") {
 						$marn  = $surn;
 					}
 					$menu = new WT_Menu("&nbsp;" . $people["wife"]->getLabel());
-					//$menu->addClass("", "", "submenu");
 					$slabel  = print_pedigree_person_nav2($people["wife"]->getXref(), 2, 0, $personcount++, $currpid, $censyear);
 					$slabel .= $parentlinks;
 					$submenu = new WT_Menu($slabel);
@@ -940,7 +932,6 @@ if ($pid=="") {
 							$marn  = $surn;
 						}
 						$menu = new WT_Menu("&nbsp;" . $child->getLabel());
-						//$menu->addClass("", "", "submenu");
 						$slabel = print_pedigree_person_nav2($child->getXref(), 2, 0, $personcount++, $child->getLabel(), $censyear);
 						$slabel .= $spouselinks;
 						$submenu = new WT_Menu($slabel);
