@@ -1253,7 +1253,7 @@ class WT_Stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$tmp=new WT_Place($country_name, $this->_ged_id);
+			$tmp=new WT_Place($place, $this->_ged_id);
 			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
@@ -1268,7 +1268,7 @@ class WT_Stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$tmp=new WT_Place($country_name, $this->_ged_id);
+			$tmp=new WT_Place($place, $this->_ged_id);
 			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
@@ -1283,7 +1283,7 @@ class WT_Stats {
 		$i = 1;
 		arsort($places);
 		foreach ($places as $place=>$count) {
-			$tmp=new WT_Place($country_name, $this->_ged_id);
+			$tmp=new WT_Place($place, $this->_ged_id);
 			$place = '<a href="' . $tmp->getURL() . '" class="list_item">' . $tmp->getFullName() . '</a>';
 			$top10[]='<li>'.$place.' - '.WT_I18N::number($count).'</li>';
 			if ($i++==10) break;
