@@ -450,23 +450,23 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				// The current indi ================================
 				if (!empty($this_person)) {
 					$class = 'pedigree_image';
-					if ($gmark['fact'] == 'Census') {
+					if ($gmark['fact'] == WT_I18N::translate('Census')) {
 						$image = "<i class='icon_cens'></i>";
-					} else if ($gmark['fact'] == 'Birth') {
+					} else if ($gmark['fact'] == WT_I18N::translate('Birth')) {
 						$image = "<i class='icon_birt'></i>";
-					} else if ($gmark['fact'] == 'Baptism' || $gmark['fact'] == 'Christening') {
+					} else if ($gmark['fact'] == WT_I18N::translate('Baptism') || $gmark['fact'] == WT_I18N::translate('Christening')) {
 						$image = "<i class='icon_bapm'></i>";
-					} else if ($gmark['fact'] == 'Military') {
+					} else if ($gmark['fact'] == WT_I18N::translate('Military')) {
 						$image = "<i class='icon_mili'></i>";
-					} else if ($gmark['fact'] == 'Occupation') {
+					} else if ($gmark['fact'] == WT_I18N::translate('Occupation')) {
 						$image = "<i class='icon_occu'></i>";
-					} else if ($gmark['fact'] == 'Residence') {
+					} else if ($gmark['fact'] == WT_I18N::translate('Residence')) {
 						$image = "<i class='icon_resi'></i>";
-					} else if ($gmark['fact'] == 'Death') {
+					} else if ($gmark['fact'] == WT_I18N::translate('Death')) {
 						$image = "<i class='icon_deat'></i>";
-					} else if ($gmark['fact'] == 'Burial' || $gmark['fact'] == 'Cremation') {
+					} else if ($gmark['fact'] == WT_I18N::translate('Burial') || $gmark['fact'] == WT_I18N::translate('Cremation')) {
 						$image = "<i class='icon_buri'></i>";
-					} else if ($gmark['fact'] == 'Retirement' ) {
+					} else if ($gmark['fact'] == WT_I18N::translate('Retirement')) {
 						$image = "<i class='icon_reti'></i>";
 					} else {
 						$indirec = $this_person->getGedcomRecord();
