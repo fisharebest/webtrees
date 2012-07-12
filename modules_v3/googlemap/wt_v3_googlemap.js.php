@@ -450,24 +450,8 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				// The current indi ================================
 				if (!empty($this_person)) {
 					$class = 'pedigree_image';
-					if ($gmark['fact'] == WT_I18N::translate('Census')) {
-						$image = "<i class='icon_cens'></i>";
-					} else if ($gmark['fact'] == WT_I18N::translate('Birth')) {
-						$image = "<i class='icon_birt'></i>";
-					} else if ($gmark['fact'] == WT_I18N::translate('Baptism') || $gmark['fact'] == WT_I18N::translate('Christening')) {
-						$image = "<i class='icon_bapm'></i>";
-					} else if ($gmark['fact'] == WT_I18N::translate('Military')) {
-						$image = "<i class='icon_mili'></i>";
-					} else if ($gmark['fact'] == WT_I18N::translate('Occupation')) {
-						$image = "<i class='icon_occu'></i>";
-					} else if ($gmark['fact'] == WT_I18N::translate('Residence')) {
-						$image = "<i class='icon_resi'></i>";
-					} else if ($gmark['fact'] == WT_I18N::translate('Death')) {
-						$image = "<i class='icon_deat'></i>";
-					} else if ($gmark['fact'] == WT_I18N::translate('Burial') || $gmark['fact'] == WT_I18N::translate('Cremation')) {
-						$image = "<i class='icon_buri'></i>";
-					} else if ($gmark['fact'] == WT_I18N::translate('Retirement')) {
-						$image = "<i class='icon_reti'></i>";
+					if (in_array($gmark['fact'], array('CENS', 'BIRT', 'BAPM', 'CHR', '_MILI', 'OCCU', 'RESI', 'DEAT', 'CREM', 'BURI', 'RETI'))) {
+						$image = '<i class="icon_'.$gmark['fact'].'"></i>';
 					} else {
 						$indirec = $this_person->getGedcomRecord();
 						$image = '';

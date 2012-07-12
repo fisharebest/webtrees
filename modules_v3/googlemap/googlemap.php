@@ -280,25 +280,18 @@ function build_indiv_map($indifacts, $famids) {
 			}
 			if (($ctla>0) && ($ctlo>0) && ($useThisItem==true)) {
 				$i++;
-				$markers[$i]=array('class'=>'optionbox', 'index'=>'', 'tabindex'=>'', 'placed'=>'no');
-				if ($fact == "EVEN" || $fact=="FACT") {
-					$eventrec = get_sub_record(1, '2 TYPE', $factrec);
-					if (preg_match("/\d TYPE (.*)/", $eventrec, $match3)) {
-						$markers[$i]['fact']=$match3[1];
-					} else {
-						$markers[$i]['fact']=WT_Gedcom_Tag::getLabel($fact);
-					}
-				} else {
-					$markers[$i]['fact']=WT_Gedcom_Tag::getLabel($fact);
-				}
-				if (!empty($fact_data) && $fact_data!='Y') {
-						$markers[$i]['info'] = $fact_data;
-				}
-				$markers[$i]['placerec'] = $placerec;
-				$match1[1] = trim($match1[1]);
-				$match2[1] = trim($match2[1]);
-				$markers[$i]['lati'] = str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]);
-				$markers[$i]['lng'] = str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]);
+				$markers[$i]=array(
+					'class'      => 'optionbox',
+					'index'      => '',
+					'tabindex'   => '',
+					'placed'     => 'no',
+					'fact'       => $fact,
+					'fact_label' => WT_Gedcom_Tag::getLabel($fact /* TODO: specify the individual */),
+					'info'       => $fact_data=='Y' ? '' : $fact_data,
+					'placerec'   => $placerec,
+					'lati'       => str_replace(array('N', 'S', ','), array('', '-', '.') , $match1[1]),
+					'lng'        => str_replace(array('E', 'W', ','), array('', '-', '.') , $match2[1]),
+				);
 				$ctd = preg_match("/2 DATE (.+)/", $factrec, $match);
 				if ($ctd>0) {
 					$markers[$i]['date'] = $match[1];
@@ -319,22 +312,17 @@ function build_indiv_map($indifacts, $famids) {
 					}
 					if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
 						$i++;
-						$markers[$i]=array('class'=>'optionbox', 'index'=>'', 'tabindex'=>'', 'placed'=>'no');
-						if ($fact == "EVEN" || $fact=="FACT") {
-							$eventrec = get_sub_record(1, '2 TYPE', $factrec);
-							if (preg_match("/\d TYPE (.*)/", $eventrec, $match3)) {
-								$markers[$i]['fact']=$match3[1];
-							} else {
-								$markers[$i]['fact']=WT_Gedcom_Tag::getLabel($fact);
-							}
-						} else {
-							$markers[$i]['fact']=WT_Gedcom_Tag::getLabel($fact);
-						}
-						if (!empty($fact_data) && $fact_data!='Y') {
-							$markers[$i]['info'] = $fact_data;
-						}
+						$markers[$i]=array(
+							'class'      => 'optionbox',
+							'index'      => '',
+							'tabindex'   => '',
+							'placed'     => 'no',
+							'fact'       => $fact,
+							'fact_label' => WT_Gedcom_Tag::getLabel($fact /* TODO: specify the individual */),
+							'info'       => $fact_data=='Y' ? '' : $fact_data,
+							'placerec'   => $placerec,
+						);
 						$markers[$i]['icon'] = $latlongval['icon'];
-						$markers[$i]['placerec'] = $placerec;
 						if ($GOOGLEMAP_MAX_ZOOM > $latlongval['zoom']) {
 							$GOOGLEMAP_MAX_ZOOM = $latlongval['zoom'];
 						}
@@ -384,15 +372,18 @@ function build_indiv_map($indifacts, $famids) {
 										$i++;
 										$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
 										if (strpos($srec, "\n1 SEX F")!==false) {
-											$markers[$i]['fact'] = WT_I18N::translate('daughter');
-											$markers[$i]['class'] = 'person_boxF';
+											$markers[$i]['fact']       = 'BIRT';
+											$markers[$i]['fact_label'] = WT_I18N::translate('daughter');
+											$markers[$i]['class']      = 'person_boxF';
 										} else {
 											if (strpos($srec, "\n1 SEX M")!==false) {
-												$markers[$i]['fact'] = WT_I18N::translate('son');
-												$markers[$i]['class'] = 'person_box';
+												$markers[$i]['fact']       = 'BIRT';
+												$markers[$i]['fact_label'] = WT_I18N::translate('son');
+												$markers[$i]['class']      = 'person_box';
 											} else {
-												$markers[$i]['fact']  = WT_I18N::translate('child');
-												$markers[$i]['class'] = 'person_boxNN';
+												$markers[$i]['fact']       = 'BIRT';
+												$markers[$i]['fact_label'] = WT_I18N::translate('child');
+												$markers[$i]['class']      = 'person_boxNN';
 											}
 										}
 										$markers[$i]['placerec'] = $placerec;
@@ -417,15 +408,18 @@ function build_indiv_map($indifacts, $famids) {
 										if ((count($latlongval) != 0) && ($latlongval['lati'] != NULL) && ($latlongval['long'] != NULL)) {
 											$i++;
 											$markers[$i]=array('index'=>'', 'tabindex'=>'', 'placed'=>'no');
-											$markers[$i]['fact']	= WT_I18N::translate('child');
-											$markers[$i]['class']	= 'option_boxNN';
+											$markers[$i]['fact']	     = 'BIRT';
+											$markers[$i]['fact_label'] = WT_I18N::translate('child');
+											$markers[$i]['class']	     = 'option_boxNN';
 											if (strpos($srec, "\n1 SEX F")!==false) {
-												$markers[$i]['fact'] = WT_I18N::translate('daughter');
-												$markers[$i]['class'] = 'person_boxF';
+												$markers[$i]['fact']       = 'BIRT';
+												$markers[$i]['fact_label'] = WT_I18N::translate('daughter');
+												$markers[$i]['class']      = 'person_boxF';
 											}
 											if (strpos($srec, "\n1 SEX M")!==false) {
-												$markers[$i]['fact'] = WT_I18N::translate('son');
-												$markers[$i]['class'] = 'person_box';
+												$markers[$i]['fact']       = 'BIRT';
+												$markers[$i]['fact_label'] = WT_I18N::translate('son');
+												$markers[$i]['class']      = 'person_box';
 											}
 											$markers[$i]['icon'] = $latlongval['icon'];
 											$markers[$i]['placerec'] = $placerec;
@@ -514,7 +508,7 @@ function build_indiv_map($indifacts, $famids) {
 		foreach($markers as $marker) {
 			echo '<tr>';
 			echo '<td class="facts_label">';
-			echo '<a href="#" onclick="myclick(', $z, ', ', $marker['index'], ', ', $marker['tabindex'], ')">', $marker['fact'], '</a></td>';
+			echo '<a href="#" onclick="myclick(', $z, ', ', $marker['index'], ', ', $marker['tabindex'], ')">', $marker['fact_label'], '</a></td>';
 			$z++;
 			echo '<td class="', $marker['class'], '" style="white-space: normal">';
 			if (!empty($marker['info'])) {
