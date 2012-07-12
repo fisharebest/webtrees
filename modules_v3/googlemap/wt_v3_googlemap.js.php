@@ -451,7 +451,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				if (!empty($this_person)) {
 					$class = 'pedigree_image';
 					if (in_array($gmark['fact'], array('CENS', 'BIRT', 'BAPM', 'CHR', '_MILI', 'OCCU', 'RESI', 'DEAT', 'CREM', 'BURI', 'RETI'))) {
-						$image = '<i class="icon_'.$gmark['fact'].'"></i>';
+						$image = "<i class='icon_".strtolower($gmark['fact'])."'></i>";
 					} else {
 						$indirec = $this_person->getGedcomRecord();
 						$image = '';
@@ -468,7 +468,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 							}
 						} // end of add image
 					}
-				}
+			}
 
 				// Other people
 				if (!empty($person)) {
@@ -490,7 +490,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 			?>
 				[
 					// Elements 0-9. Basic parameters
-					"<?php echo $gmark['fact'].''; ?>",
+					"<?php echo $gmark['fact_label'].''; ?>",
 					"<?php echo $gmark['lati']; ?>",
 					"<?php echo $gmark['lng']; ?>",
 					"<?php if (!empty($gmark['date'])) { $date=new WT_Date($gmark['date']); echo addslashes($date->Display(true)); } else { echo WT_I18N::translate('Date not known'); } ?>",
