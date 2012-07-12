@@ -275,6 +275,8 @@ class gedcom_favorites_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($favorite['user_id']) {
 			$sql.=" AND user_id=?";
 			$vars[]=$favorite['user_id'];
+		} else {
+			$sql.=" AND user_id IS NULL";
 		}
 
 		if (WT_DB::prepare($sql)->execute($vars)->fetchOne()) {
