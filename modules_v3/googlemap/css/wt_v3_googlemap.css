@@ -28,7 +28,7 @@ div.infowindow {max-height:260px; overflow-x:hidden;}
 
 #iwhead {text-align:center; font-size:10px; white-space:normal; margin-right:0px; margin-left:-2px; margin-top:-1px; background:#ffffff; border-top:1px solid #bbbbbb; border-bottom:1px solid #bbbbbb; border-left:0px solid #bbbbbb; border-right:0px solid #bbbbbb; padding-left:.2em; padding-right:.2em; padding-top:.3em; padding-bottom:.3em; width:300px;}
 #iwhead a:hover {color:red;}
-#iwcontent {background-color:#eeeeee; border:1px solid #bbbbbb; min-height:260px; margin-right:0em;}
+#iwcontent {background-color:#eeeeee; border:1px solid #bbbbbb; margin-right:0em;}
 #iwcontent a {color:black;}
 #iwhead a {color:#0000cc;}
 #iwcontent a:hover {color:red;}
