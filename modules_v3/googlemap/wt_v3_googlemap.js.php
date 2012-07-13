@@ -451,7 +451,7 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				if (!empty($this_person)) {
 					$class = 'pedigree_image';
 					if (in_array($gmark['fact'], array('CENS', 'BIRT', 'BAPM', 'CHR', '_MILI', 'OCCU', 'RESI', 'DEAT', 'CREM', 'BURI', 'RETI'))) {
-						$image = "<i class='icon_".strtolower($gmark['fact'])."'></i>";
+						$image = "<i class='icon_".$gmark['fact']."'></i>";
 					} else {
 						$indirec = $this_person->getGedcomRecord();
 						$image = '';

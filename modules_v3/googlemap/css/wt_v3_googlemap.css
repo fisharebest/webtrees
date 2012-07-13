@@ -75,18 +75,18 @@ ul.tabs a.current {background-color:#fff; border-bottom:1px solid #ddd; color:#0
 #s_bar td{padding-left:5px; width:370px; text-decoration:none; color:#4444ff; background:#aabbd8;}
 
 /* TODO: use the same markup as the icons on the facts/events tab? */
-.icon_bapm, .icon_chr, .icon_reti, .icon_cens, .icon_buri, .icon_crem, .icon__mili, .icon_resi, .icon_deat, .icon_occu, .icon_birt {display:block; background:url(../images/css_sprite_facts.png) no-repeat;}
-.icon_bapm,
-.icon_chr   {background-position:-0px -0px; width:60px; height:60px;}
-.icon_reti  {background-position:-60px -0px; width:60px; height:60px;}
-.icon_cens  {background-position:-120px -0px; width:60px; height:60px;}
-.icon_crem,
-.icon_buri  {background-position:-0px -60px; width:60px; height:60px;}
-.icon__mili {background-position:-60px -60px; width:60px; height:60px;}
-.icon_resi  {background-position:-120px -60px; width:60px; height:60px;}
-.icon_deat  {background-position:-0px -120px; width:60px; height:60px;}
-.icon_occu  {background-position:-60px -120px; width:60px; height:60px;}
-.icon_birt  {background-position:-120px -120px; width:60px; height:60px;}
+.icon_BAPM, .icon_CHR, .icon_RETI, .icon_CENS, .icon_BURI, .icon_CREM, .icon__MILI, .icon_RESI, .icon_DEAT, .icon_OCCU, .icon_BIRT {display:block; background:url('../images/css_sprite_facts.png') no-repeat;}
+.icon_BAPM,
+.icon_CHR   {background-position:-0px -0px; width:60px; height:60px;}
+.icon_RETI  {background-position:-60px -0px; width:60px; height:60px;}
+.icon_CENS  {background-position:-120px -0px; width:60px; height:60px;}
+.icon_CREM,
+.icon_BURI  {background-position:-0px -60px; width:60px; height:60px;}
+.icon__MILI {background-position:-60px -60px; width:60px; height:60px;}
+.icon_RESI  {background-position:-120px -60px; width:60px; height:60px;}
+.icon_DEAT  {background-position:-0px -120px; width:60px; height:60px;}
+.icon_OCCU  {background-position:-60px -120px; width:60px; height:60px;}
+.icon_BIRT  {background-position:-120px -120px; width:60px; height:60px;}
 
 /* places_edit */
 #gname {vertical-align:middle; margin-top:0px; white-space:pre-wrap; width:200px; height:60px;}
