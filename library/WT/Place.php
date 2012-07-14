@@ -105,13 +105,20 @@ class WT_Place {
 	public function getShortName() {
 		global $SHOW_PEDIGREE_PLACES, $SHOW_PEDIGREE_PLACES_SUFFIX;
 
-		// Abbreviate the place name, for lists
-		if ($SHOW_PEDIGREE_PLACES_SUFFIX) {
-			// The *last* $SHOW_PEDIGREE_PLACES components
-			return implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
+		if ($SHOW_PEDIGREE_PLACES >= count($this->gedcom_place)) {
+			// A short place name - no need to abbreviate
+			return $this->getFullName();
 		} else {
-			// The *first* $SHOW_PEDIGREE_PLACES components
-			return implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
+			// Abbreviate the place name, for lists
+			if ($SHOW_PEDIGREE_PLACES_SUFFIX) {
+				// The *last* $SHOW_PEDIGREE_PLACES components
+				$short_name=implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, -$SHOW_PEDIGREE_PLACES));
+			} else {
+				// The *first* $SHOW_PEDIGREE_PLACES components
+				$short_name=implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
+			}
+			// Add a tool-tip showing the full name
+			return '<span title="'.htmlspecialchars($this->getGedcomName()).'">'.$short_name.'</span>';
 		}
 	}
 

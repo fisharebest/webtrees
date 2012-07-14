@@ -883,55 +883,32 @@ function format_fact_place(WT_Event $event, $anchor=false, $sub=false, $lds=fals
 
 	$factrec = $event->getGedcomRecord();
 
+	$wt_place=new WT_Place($event->getPlace(), WT_GED_ID);
+
 	$name_parts=explode(', ', $event->getPlace());
 	$ct=count($name_parts);
 
 	if ($anchor) {
 		// Show the full place name, for facts/events tab
-		$html=$event->getPlace();
-		if (!$SEARCH_SPIDER) {
-			$n=count($name_parts);
-			$url='placelist.php?action=show';
-			for ($i=0; $i<$n; ++$i) {
-				$url.='&amp;parent%5B'.$i.'%5D='.rawurlencode($name_parts[$n-$i-1]);
-			}
-			$html='<a href="'.$url.'">'.$html.'</a>';
+		if ($SEARCH_SPIDER) {
+			$html=$wt_place->getFullName();
+		} else {
+			$html='<a href="' . $wt_place->getURL() . '">' . $wt_place->getFullName() . '</a>';
 		}
 	} else {
 		// Abbreviate the place name, for chart boxes
-		if ($SHOW_PEDIGREE_PLACES_SUFFIX) {
-			// The *last* $SHOW_PEDIGREE_PLACES components
-			$html=implode(', ', array_slice($name_parts, -$SHOW_PEDIGREE_PLACES));
-		} else {
-			// The *first* $SHOW_PEDIGREE_PLACES components
-			$html=implode(', ', array_slice($name_parts, 0, $SHOW_PEDIGREE_PLACES));
-		}
-
-		// If we abbreviated the place, show the full name as a tooltip
-		if ($ct>$SHOW_PEDIGREE_PLACES) {
-			$html=' – <span title="'.htmlspecialchars($event->getPlace()).'">'.$html.'</span>';
-		}
-		// Chart boxes don't have room for temple names, alternate place names, etc.
-		return $html;
+		return ' - ' . $wt_place->getShortName();
 	}
 
 	$ctn=0;
 	if ($sub) {
 		$placerec = get_sub_record(2, '2 PLAC', $factrec);
 		if (!empty($placerec)) {
-			$cts = preg_match('/\d ROMN (.*)/', $placerec, $match);
-			if ($cts>0) {
-				if ($ct>0) {
-					$html.=" – ";
+			if (preg_match_all('/\n3 (?:_HEB|ROMN) (.+)/', $placerec, $matches)) {
+				foreach ($matches[1] as $match) {
+					$wt_place=new WT_Place($match, WT_GED_ID);
+					$html.=' - ' . $wt_place->getFullName();
 				}
-				$html.=' '.$match[1];
-			}
-			$cts = preg_match('/\d _HEB (.*)/', $placerec, $match);
-			if ($cts>0) {
-				if ($ct>0) {
-					$html.=' – ';
-				}
-				$html.=' '.$match[1];
 			}
 			$map_lati="";
 			$cts = preg_match('/\d LATI (.*)/', $placerec, $match);

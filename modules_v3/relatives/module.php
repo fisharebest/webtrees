@@ -192,24 +192,8 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 							if (!empty($place)) echo ' -- ';
 						}
 						if (!empty($place)) {
-							$html='';
-							$levels = explode(', ', $place);
-							for ($level=0; $level<$SHOW_PEDIGREE_PLACES; $level++) {
-								if (!empty($levels[$level])) {
-									if ($level>0) {
-										$html.=", ";
-									}
-									$html.='<span dir="auto">'.htmlspecialchars($levels[$level]).'</span>';
-								}
-							}
-							if (!$SEARCH_SPIDER) {
-								$tempURL = 'placelist.php?action=find';
-								foreach (array_reverse($levels) as $pindex=>$ppart) {
-									$tempURL .= '&amp;parent%5B'.$pindex.'%5D='.rawurlencode($ppart);
-								}
-								$html = '<a href="'.$tempURL.'">'.$html.'</a>';
-							}
-							echo $html;
+							$tmp=new WT_Place($place, WT_GED_ID);
+							echo $tmp->getShortName();
 						}
 					} else if (get_sub_record(1, "1 _NMR", find_family_record($famid, WT_GED_ID))) {
 						$husb = $family->getHusband();
