@@ -41,15 +41,8 @@ define('WT_WEBTREES_WIKI',   'http://wiki.webtrees.net/');
 define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
 
 // Optionally, specify a CDN server for static content (e.g. CSS, JS, PNG)
-// For example, "http://my.cdn.com/webtrees-static-1.2.3/"
-// Note that some servers (e.g. Amazon S3) require separate compressed/uncompressed data.
-if (isset($_SERVER['HTTP_ACCEPT_ENCODING']) && strpos($_SERVER['HTTP_ACCEPT_ENCODING'], 'gzip')!==false) {
-	// Pre-compressed resources, served with a "Content-encoding: gzip" header.
-	define('WT_STATIC_URL', ''); // For example, "http://my.cdn.com/webtrees-static-1.2.3z/"
-} else {
-	// Uncompressed resources, served without a "Content-encoding: gzip" header.
-	define('WT_STATIC_URL', ''); // For example, "http://my.cdn.com/webtrees-static-1.2.3/"
-}
+// For example, "http://my.cdn.com/webtrees-static-1.3.1/"
+define('WT_STATIC_URL', ''); // For example, "http://my.cdn.com/webtrees-static-1.3.1/"
 
 // Optionally, load major JS libraries from Google's public CDN
 define ('WT_USE_GOOGLE_API', false);

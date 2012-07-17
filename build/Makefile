@@ -101,6 +101,7 @@ $(MO_DIR)/%.mo: $(PO_DIR)/%.po
 ################################################################################
 # Extract the static files for use on a content-delivery-network.
 # Minify the CSS and JS files, if a suitable tool is available.
+# Compress CSS and JS files using GZIP
 ################################################################################
 webtrees-static-$(WT_VERSION):
 	rm -Rf $@
@@ -110,27 +111,15 @@ webtrees-static-$(WT_VERSION):
 	if [ -f ~/bin/yuicompressor-2.4.6.jar ]; then find $@ -name "*.css" | while read FILE; do java -jar ~/bin/yuicompressor-2.4.6.jar --charset UTF-8 --verbose -o tmp.css "$$FILE" && mv tmp.css "$$FILE"; done; fi
 	# Minify JS using Google's closure compiler
 	if [ -f ~/bin/compiler.jar ]; then find $@ -name "*.js" | while read FILE; do java -jar ~/bin/compiler.jar --js "$$FILE" --js_output_file tmp.js && mv tmp.js "$$FILE"; done; fi
-
-################################################################################
-# Create a second copy of the static files, with compressed CSS and JS,
-# for servers that require two versions, such as Amazon S3
-################################################################################
-webtrees-static-$(WT_VERSION)z: webtrees-static-$(WT_VERSION)
-	cp -pR $< $@
+	# Compress CSS and JS files - but keep the names the same
 	find $@ "(" -name "*.js" -o -name "*.css" ")" -exec gzip {} \; -exec mv {}.gz {} \;
 
 ################################################################################
-# Create .ZIP archives of the static files, for use with a CDN.
-################################################################################
-static: webtrees-static-$(WT_VERSION)z.zip webtrees-static-$(WT_VERSION).zip
-
-################################################################################
 # Upload the static files to an S3 bucket.
-# Explicitly set the mime type for files that we have compressed.
-# Set the bucket using, for example, "export S3_BUCKET=my_bucket".
+# Explicitly set the Content-Encoding header for files that we have compressed.
+# Set the bucket using, for example, "S3_BUCKET=my_bucket make static-S3".
 ################################################################################
-static-S3: webtrees-static-$(WT_VERSION) webtrees-static-$(WT_VERSION)z
-	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --guess-mime-type webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
-	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --guess-mime-type "--rexclude=(css|js)$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
-	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --mime-type=text/css --add-header=Content-Encoding:gzip "--rinclude=css$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
-	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --mime-type=application/javascript --add-header=Content-Encoding:gzip "--rinclude=js$$" webtrees-static-$(WT_VERSION)z s3://$(S3_BUCKET)/
+static-S3: webtrees-static-$(WT_VERSION)
+	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --guess-mime-type "--rexclude=(css|js)$$" webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
+	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --mime-type=text/css --add-header=Content-Encoding:gzip "--rinclude=css$$" webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
+	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --mime-type=application/javascript --add-header=Content-Encoding:gzip "--rinclude=js$$" webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
