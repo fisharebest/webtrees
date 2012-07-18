@@ -65,6 +65,13 @@ case 'site_setting':
 	// Validation
 	switch ($id1) {
 	case 'MAX_EXECUTION_TIME':
+		if ($value=='') {
+			// Delete the existing value
+			$value=null;
+		} elseif (!is_numeric($value)) {
+			fail();
+		}
+		break;
 	case 'SESSION_TIME':
 	case 'SMTP_PORT':
 		if (!is_numeric($value)) {
@@ -77,8 +84,11 @@ case 'site_setting':
 		}
 		break;
 	case 'MEMORY_LIMIT':
-		// Must specify K, M or G.
-		if (!preg_match('/^[0-9]+[KMG]$/', $value)) {
+		if ($value=='') {
+			// Delete the existing value
+			$value=null;
+		} elseif (!preg_match('/^[0-9]+[KMG]$/', $value)) {
+			// A number must be followed by K, M or G.
 			fail();
 		}
 		break;
