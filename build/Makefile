@@ -11,6 +11,12 @@ WT_VERSION=$(shell grep "'WT_VERSION'" ../includes/session.php | cut -d "'" -f 4
 WT_VERSION_RELEASE=$(shell grep "'WT_VERSION_RELEASE'" ../includes/session.php | cut -d "'" -f 4)
 BUILD_VERSION=$(if $(WT_VERSION_RELEASE),$(SVN_VERSION),$(WT_VERSION)$(WT_VERSION_RELEASE))
 
+# Location of google's "closure" tools for compressing CSS and JS
+CLOSURE_JS=~/bin/compiler.jar
+CLOSURE_CSS=~/bin/closure-stylesheets.jar
+
+#.PHONY: clean dist-clean default webtrees webtrees-static-$(WT_VERSION)
+
 ################################################################################
 # Create a release from this SVN working copy
 ################################################################################
@@ -99,27 +105,25 @@ $(MO_DIR)/%.mo: $(PO_DIR)/%.po
 	msgfmt --output=$@ $<
 
 ################################################################################
-# Extract the static files for use on a content-delivery-network.
-# Minify the CSS and JS files, if a suitable tool is available.
-# Compress CSS and JS files using GZIP
+# Extract and minify the static files for use on a content-delivery-network.
 ################################################################################
-webtrees-static-$(WT_VERSION):
-	rm -Rf $@
+webtrees-static-files: clean
 	mkdir $@
 	cd .. && find . "(" -name "*.css" -o -name "*.gif" -o -name "*.html" -o -name "*.ico" -o -name "*.jpg" -o -name "*.js" -o -name "*.mp3" -o -name "*.png" -o -name "*.swf" ")" -print0 | xargs -0 tar cf - | (cd build/$@ && tar xfp -)
-	# Minify CSS using the YUI compressor
-	if [ -f ~/bin/yuicompressor-2.4.6.jar ]; then find $@ -name "*.css" | while read FILE; do java -jar ~/bin/yuicompressor-2.4.6.jar --charset UTF-8 --verbose -o tmp.css "$$FILE" && mv tmp.css "$$FILE"; done; fi
-	# Minify JS using Google's closure compiler
-	if [ -f ~/bin/compiler.jar ]; then find $@ -name "*.js" | while read FILE; do java -jar ~/bin/compiler.jar --js "$$FILE" --js_output_file tmp.js && mv tmp.js "$$FILE"; done; fi
-	# Compress CSS and JS files - but keep the names the same
-	find $@ "(" -name "*.js" -o -name "*.css" ")" -exec gzip {} \; -exec mv {}.gz {} \;
+	# Minify CSS
+	find $@ -name "*.css" -exec java -jar $(CLOSURE_CSS) --output-file "{}.tmp" "{}" \; -exec mv "{}.tmp" "{}" \;
+	# Minify JS
+	find $@ -name "*.js" -exec java -jar $(CLOSURE_JS) --js "{}" --js_output_file "{}.tmp" \; -exec mv "{}.tmp" "{}" \;
 
 ################################################################################
 # Upload the static files to an S3 bucket.
-# Explicitly set the Content-Encoding header for files that we have compressed.
-# Set the bucket using, for example, "S3_BUCKET=my_bucket make static-S3".
+# Pre-compress CSS and JS files using GZIP, and set the Content-Encoding header.
+# Sprecify the bucket using "S3_BUCKET=<<my_bucket>> make static-S3".
 ################################################################################
-static-S3: webtrees-static-$(WT_VERSION)
-	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --guess-mime-type "--rexclude=(css|js)$$" webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
-	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --mime-type=text/css --add-header=Content-Encoding:gzip "--rinclude=css$$" webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
-	s3cmd sync --acl-private --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --mime-type=application/javascript --add-header=Content-Encoding:gzip "--rinclude=js$$" webtrees-static-$(WT_VERSION) s3://$(S3_BUCKET)/
+static-S3: webtrees-static-files
+	# Compress CSS and JS files - but keep the names the same
+	find $< "(" -name "*.js" -o -name "*.css" ")" -exec gzip {} \; -exec mv {}.gz {} \;
+	# Upload uncompressed files
+	s3cmd sync --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --guess-mime-type "--rexclude=(css|js)$$" $< s3://$(S3_BUCKET)/
+	# Upload compressed files
+	s3cmd sync --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --guess-mime-type "--rinclude=(css|js)$$" --add-header=Content-Encoding:gzip $< s3://$(S3_BUCKET)/
