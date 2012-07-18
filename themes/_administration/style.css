@@ -25,7 +25,7 @@
 html {overflow-y:scroll;}
 
 /* general styles */
-body {font-family:Trebuchet MS, Tahoma, Verdana, Arial, sans-serif; font-size:12px; margin:10px; min-width:800px;}
+body {font-family:"Trebuchet MS",Tahoma,Verdana,Arial,sans-serif; font-size:12px; margin:10px; min-width:800px;}
 input.ui-button {padding:1px 3px;}
 input, textarea, select {color:black; font:inherit; padding:0 3px; /*height:22px;*/}
 button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] {background:url(jquery/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6; border:1px solid #CBC7BD; color:#654B24; font-weight:700; border-radius:3px; margin:0.3em;}
@@ -172,7 +172,7 @@ input.log-date {text-align:center; width:70px;}
 input.log-filter {width:120px;}
 table#log_list {width:100%}
 #log_list th {min-width:80px;white-space:nowrap;}
-#log_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap: break-word;-ms-word-break: break-all;word-break: break-all; word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto; hyphens: auto;}
+#log_list pre {margin:0 0 20px 0;max-width:250px;white-space:pre-wrap;word-wrap: break-word;-ms-word-break: break-all;word-break: break-all;-webkit-hyphens: auto;-moz-hyphens: auto; hyphens: auto;}
  #log_list a {color:blue;}
  #log_list a:hover, #log_list a:visited {color:red;}
  
@@ -424,7 +424,7 @@ table#story_table {width:100%}
 
 /* Autocomplete styles */
 .ui-autocomplete-input {background-color:#EEE8AA;}
-.ui-autocomplete {padding:0; border:1px solid black; background-color:white; z-index:99999;list-style-position:outside; list-style:none; padding:0; margin:0;;max-height:200px;overflow-y:auto;}
+.ui-autocomplete {padding:0; border:1px solid black; background-color:white; z-index:99999;list-style-position:outside; list-style:none; margin:0;;max-height:200px;overflow-y:auto;}
 .ui-autocomplete li {margin:0; padding:2px 5px; cursor:default; display:block; font:menu;font-size:12px; line-height:14px; overflow:hidden;}
 .ui-autocomplete-loading {background:white url(images/indicator.gif) right center no-repeat;}
 .ui-autocomplete li:nth-child(odd) {background-color:#eee;}
