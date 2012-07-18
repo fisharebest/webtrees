@@ -48,7 +48,7 @@ if ($surn) {
 }
 $controller
 	->pageHeader()
-	->addExternalJavascript('js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 ?>
 <div id="branches-page">

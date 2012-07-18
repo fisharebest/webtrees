@@ -226,7 +226,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 				}
 				$controller
 					->pageHeader()
-					->addExternalJavascript('js/autocomplete.js')
+					->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 					// for the findindi link
 					->addInlineJavascript('var pastefield;function paste_id(value){pastefield.value=value;}');
 

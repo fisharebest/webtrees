@@ -48,7 +48,7 @@ if (empty($keep1)) $keep1=array();
 if (empty($keep2)) $keep2=array();
 
 if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
-	$controller->addExternalJavascript('js/autocomplete.js');
+	$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 }
 
 if ($action!='choose') {

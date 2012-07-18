@@ -94,7 +94,7 @@ if (!empty($_SESSION['pid2']) && $_SESSION['pid2']!=$pid2) {
 $controller
 	->pageHeader()
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }') // For the 'find indi' link
-	->addExternalJavascript('js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 if (WT_USE_LIGHTBOX) {
 	$album = new lightbox_WT_Module();

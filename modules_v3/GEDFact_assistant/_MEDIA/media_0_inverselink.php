@@ -33,7 +33,7 @@ $exist_links = safe_REQUEST($_REQUEST, 'exist_links', WT_REGEX_UNSAFE);
 $gid = safe_GET_xref('gid');
 $update_CHAN = safe_REQUEST($_REQUEST, 'preserve_last_changed', WT_REGEX_UNSAFE);
 
-$controller->addExternalJavascript('js/autocomplete.js');
+$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 $paramok =  true;
 if (!empty($linktoid)) $paramok = WT_GedcomRecord::getInstance($linktoid)->canDisplayDetails();

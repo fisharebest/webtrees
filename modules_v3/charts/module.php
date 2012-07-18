@@ -198,7 +198,7 @@ class charts_WT_Module extends WT_Module implements WT_Module_Block {
 		$type   =get_block_setting($block_id, 'type',    'pedigree');
 		$pid    =get_block_setting($block_id, 'pid', WT_USER_ID ? (WT_USER_GEDCOM_ID ? WT_USER_GEDCOM_ID : $PEDIGREE_ROOT_ID) : $PEDIGREE_ROOT_ID);
 
-		$controller->addExternalJavascript('js/autocomplete.js');
+		$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 	?>
 		<tr><td class="descriptionbox wrap width33"><?php echo WT_I18N::translate('Chart type'); ?></td>
 		<td class="optionbox">

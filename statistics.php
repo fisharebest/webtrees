@@ -36,7 +36,7 @@ $ajax = safe_GET('ajax', WT_REGEX_NOSCRIPT, 0);
 if (!$ajax) {
 	$controller=new WT_Controller_Base();
 	$controller->setPageTitle(WT_I18N::translate('Statistics'))
-		->addExternalJavascript('js/autocomplete.js')
+		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 		->addInlineJavascript('jQuery("#stats-tabs").tabs({ spinner: "<i class=\"icon-loading-small\"></i>", cache: true });')
 		->addInlineJavascript('jQuery("#stats-tabs").css("visibility", "visible");')
 		->pageHeader();
@@ -60,7 +60,7 @@ if (!$ajax) {
 	$controller=new WT_Controller_Ajax();
 	$controller
 		->pageHeader()
-		->addExternalJavascript('js/autocomplete.js');
+		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 	$stats = new WT_Stats($GEDCOM);
 	if ($tab==0) {
 		echo '<fieldset>

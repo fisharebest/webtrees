@@ -33,7 +33,7 @@ $zoomfactor=10;
 $controller=new WT_Controller_Lifespan();
 $controller
 	->pageHeader()
-	->addExternalJavascript('js/autocomplete.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('
 		var pastefield; function paste_id(value) { pastefield.value=value; }  // For the "find indi" link
 	

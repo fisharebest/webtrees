@@ -30,7 +30,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Fanchart();
 $controller
 	->pageHeader()
-	->addExternalJavascript('js/autocomplete.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->addInlineJavascript('var pastefield; function paste_id(value) { pastefield.value=value; }'); // For the 'find indi' link
 
 ?>

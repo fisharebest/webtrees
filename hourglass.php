@@ -31,7 +31,7 @@ require './includes/session.php';
 $controller=new WT_Controller_Hourglass();
 $controller
 	->pageHeader()
-	->addExternalJavascript('js/autocomplete.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
 	->setupJavascript()
 	->addInlineJavascript('sizeLines();');
 

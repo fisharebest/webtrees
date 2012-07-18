@@ -36,8 +36,8 @@ $controller
 	->pageHeader()
 	->addExternalJavascript(WT_JQUERY_URL)
 	->addExternalJavascript(WT_JQUERYUI_URL)
-	->addExternalJavascript('js/webtrees.js')
-	->addExternalJavascript('js/autocomplete.js');
+	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
+	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 //-- page parameters and checking
 $linktoid = safe_GET_xref('linktoid');

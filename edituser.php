@@ -95,7 +95,7 @@ if ($form_action=='update') {
 } else {
 	$controller
 		->pageHeader()
-		->addExternalJavascript('js/autocomplete.js');
+		->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 }
 
 // Form validation

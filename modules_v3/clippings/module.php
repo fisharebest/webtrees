@@ -64,7 +64,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 			$controller
 				->setPageTitle($this->getTitle())
 				->PageHeader()
-				->addExternalJavascript('js/autocomplete.js');
+				->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 
 			echo '<script>';
 			echo 'function radAncestors(elementid) {var radFamilies=document.getElementById(elementid);radFamilies.checked=true;}';
