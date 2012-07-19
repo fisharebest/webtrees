@@ -128,16 +128,6 @@ echo '<div id="search-page">
 				echo ' value="yes" id="srnote" name="srnote">
 					<label for="srnote">' ,  WT_I18N::translate('Shared notes'), '</label>
 			</p></div>
-			<div class="label">' , WT_I18N::translate('Exclude filter'), help_link('search_exclude_tags'), '</div>
-			<div class="value"><p>
-				<input type="radio" id="tagfilter_on" name="tagfilter" value="on"';
-				if (($controller->tagfilter == 'on') || ($controller->tagfilter == "")) echo ' checked="checked"';
-				echo '><label for="tagfilter_on">' , WT_I18N::translate('Exclude some non-genealogical data'), '</label>
-				</p><p>
-				<input type="radio" id="tagfilter_off" name="tagfilter" value="off"';
-				if ($controller->tagfilter == "off") echo ' checked="checked"';
-				echo '><label for="tagfilter_off">' , WT_I18N::translate('Off'), '</label>
-			</p></div>
 			<div class="label">' , WT_I18N::translate('Associates'), help_link('search_include_ASSO'), '</div>
 			<div class="value"><input type="checkbox" id="showasso" name="showasso" value="on"';
 				if ($controller->showasso == 'on') echo ' checked="checked"'; 

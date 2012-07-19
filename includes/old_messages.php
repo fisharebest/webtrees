@@ -34,6 +34,8 @@ exit;
 // MESSAGES DELETED IN WEBTREES-1.3.1
 
 /* I18N: This message is deleted in webtrees-1.3.1  */ WT_I18N::translate('Empty boxes on pedigree charts');
+/* I18N: This message is deleted in webtrees-1.3.1  */ WT_I18N::translate('Exclude filter');
+/* I18N: This message is deleted in webtrees-1.3.1  */ WT_I18N::translate('The <b>Exclude some non-genealogical data</b> choice will cause the Search function to ignore the following GEDCOM tags:<div style="padding-left:30px;"><b>_WT_USER</b> - Last change by<br /><b>CHAN</b> - Last change date<br /><b>FILE</b> - External File<br /><b>FORM</b> - Format<br /><b>TYPE</b> - Type<br /><b>SUBM</b> - Submitter<br /><b>REFN</b> - Reference Number</div><br />In addition to these optionally excluded tags, the Search function always excludes these tags:<div style="padding-left:30px;"><b>_UID</b> - Globally unique Identifier<br /><b>RESN</b> - Restriction</div>');
 /* I18N: This message is deleted in webtrees-1.3.1  */ WT_I18N::translate('This option controls whether or not to show empty boxes on Pedigree charts.');
 
 // MESSAGES DELETED IN WEBTREES-1.3.0

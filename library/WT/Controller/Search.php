@@ -48,7 +48,6 @@ class WT_Controller_Search extends WT_Controller_Base {
 	var $soundex = "DaitchM";
 	var $subaction = "";
 	var $nameprt = "";
-	var $tagfilter = "on";
 	var $showasso = "off";
 	var $name="";
 	var $myname;
@@ -117,7 +116,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 
 		// TODO: fetch each variable independently, using appropriate validation
 		// Aquire all the variables values from the $_REQUEST
-		$varNames = array ("isPostBack", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "tagfilter", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
+		$varNames = array ("isPostBack", "srfams", "srindi", "srsour", "srnote", "view", "soundex", "subaction", "nameprt", "showasso", "resultsPageNum", "resultsPerPage", "totalResults", "totalGeneralResults", "indiResultsPrinted", "famResultsPrinted", "srcResultsPrinted", "myindilist", "mysourcelist", "mynotelist", "myfamlist");
 		$this->setRequestValues($varNames);
 
 		if (!$this->isPostBack) {
@@ -231,7 +230,6 @@ class WT_Controller_Search extends WT_Controller_Base {
 		$this->inputFieldNames[] = "deathdate";
 		$this->inputFieldNames[] = "deathplace";
 		$this->inputFieldNames[] = "gender";
-		$this->inputFieldNames[] = "tagfilter";
 
 		// Get the search results based on the action
 		if ($topsearch) {
@@ -324,7 +322,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 
 			// Search the indi's
 			if (isset ($this->srindi)) {
-				$this->myindilist=search_indis($query_terms, array_keys($this->sgeds), 'AND', $this->tagfilter=='on');
+				$this->myindilist=search_indis($query_terms, array_keys($this->sgeds), 'AND');
 			} else {
 				$this->myindilist=array();
 			}
@@ -332,7 +330,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 			// Search the fams
 			if (isset ($this->srfams)) {
 				$this->myfamlist=array_merge(
-					search_fams($query_terms, array_keys($this->sgeds), 'AND', $this->tagfilter=='on'),
+					search_fams($query_terms, array_keys($this->sgeds), 'AND'),
 					search_fams_names($query_terms, array_keys($this->sgeds), 'AND')
 				);
 				$this->myfamlist=array_unique($this->myfamlist);
@@ -343,7 +341,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 			// Search the sources
 			if (isset ($this->srsour)) {
 				if (!empty ($this->query))
-				$this->mysourcelist=search_sources($query_terms, array_keys($this->sgeds), 'AND', $this->tagfilter=='on');
+				$this->mysourcelist=search_sources($query_terms, array_keys($this->sgeds), 'AND');
 			} else {
 				$this->mysourcelist=array();
 			}
@@ -351,7 +349,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 			// Search the notes
 			if (isset ($this->srnote)) {
 				if (!empty ($this->query))
-				$this->mynotelist=search_notes($query_terms, array_keys($this->sgeds), 'AND', $this->tagfilter=='on');
+				$this->mynotelist=search_notes($query_terms, array_keys($this->sgeds), 'AND');
 			} else {
 				$this->mynotelist=array();
 			}

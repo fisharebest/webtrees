@@ -10,8 +10,6 @@
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2010  PGV Development Team.  All rights reserved.
 //
-// Modifications Copyright (c) 2010 Greg Roach
-//
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License, or
@@ -439,8 +437,7 @@ function search_fams_custom($join, $where, $order) {
 // $query - array of search terms
 // $geds - array of gedcoms to search
 // $match - AND or OR
-// $skip - ignore data in certain tags
-function search_indis($query, $geds, $match, $skip) {
+function search_indis($query, $geds, $match) {
 	global $GEDCOM;
 
 	// No query => no results
@@ -473,14 +470,16 @@ function search_indis($query, $geds, $match, $skip) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$record=WT_Person::getInstance($row);
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$gedrec=utf8_strtoupper($record->getGedcomRecord());
-		if ($skip) {
-			$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|SUBM|REFN|RESN) .*/', '', $gedrec);
-		}
+		$record=WT_Person::getInstance($row);
+		// Ignore non-genealogical data
+		$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcomRecord());
+		// Ignore links and tags
+		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
+		// Re-apply the filtering
+		$gedrec=utf8_strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
-			if (!preg_match('/\n\d '.WT_REGEX_TAG.' .*'.$regex.'/', $gedrec)) {
+			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
 			}
 		}
@@ -678,8 +677,7 @@ function search_indis_dates($day, $month, $year, $facts) {
 // $query - array of search terms
 // $geds - array of gedcoms to search
 // $match - AND or OR
-// $skip - ignore data in certain tags
-function search_fams($query, $geds, $match, $skip) {
+function search_fams($query, $geds, $match) {
 	global $GEDCOM;
 
 	// No query => no results
@@ -712,14 +710,18 @@ function search_fams($query, $geds, $match, $skip) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$record=WT_Family::getInstance($row);
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$gedrec=utf8_strtoupper($record->getGedcomRecord());
-		if ($skip) {
-			$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|SUBM|REFN|RESN) .*/', '', $gedrec);
-		}
+		$record=WT_Person::getInstance($row);
+		// Ignore non-genealogical data
+		$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcomRecord());
+		// Ignore links and tags
+		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
+		// Ignore tags
+		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
+		// Re-apply the filtering
+		$gedrec=utf8_strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
-			if (!preg_match('/\n\d '.WT_REGEX_TAG.' .*'.$regex.'/', $gedrec)) {
+			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
 			}
 		}
@@ -783,8 +785,7 @@ function search_fams_names($query, $geds, $match) {
 // $query - array of search terms
 // $geds - array of gedcoms to search
 // $match - AND or OR
-// $skip - ignore data in certain tags
-function search_sources($query, $geds, $match, $skip) {
+function search_sources($query, $geds, $match) {
 	global $GEDCOM;
 
 	// No query => no results
@@ -817,14 +818,18 @@ function search_sources($query, $geds, $match, $skip) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$record=WT_Source::getInstance($row);
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$gedrec=utf8_strtoupper($record->getGedcomRecord());
-		if ($skip) {
-			$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|SUBM|REFN|RESN) .*/', '', $gedrec);
-		}
+		$record=WT_Person::getInstance($row);
+		// Ignore non-genealogical data
+		$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcomRecord());
+		// Ignore links and tags
+		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
+		// Ignore tags
+		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
+		// Re-apply the filtering
+		$gedrec=utf8_strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
-			if (!preg_match('/\n\d '.WT_REGEX_TAG.' .*'.$regex.'/', $gedrec)) {
+			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
 			}
 		}
@@ -842,8 +847,7 @@ function search_sources($query, $geds, $match, $skip) {
 // $query - array of search terms
 // $geds - array of gedcoms to search
 // $match - AND or OR
-// $skip - ignore data in certain tags
-function search_notes($query, $geds, $match, $skip) {
+function search_notes($query, $geds, $match) {
 	global $GEDCOM;
 
 	// No query => no results
@@ -876,14 +880,18 @@ function search_notes($query, $geds, $match, $skip) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$record=WT_Note::getInstance($row);
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$gedrec=utf8_strtoupper($record->getGedcomRecord());
-		if ($skip) {
-			$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|SUBM|REFN|RESN) .*/', '', $gedrec);
-		}
+		$record=WT_Person::getInstance($row);
+		// Ignore non-genealogical data
+		$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcomRecord());
+		// Ignore links and tags
+		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
+		// Ignore tags
+		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
+		// Re-apply the filtering
+		$gedrec=utf8_strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
-			if (!preg_match('/\n\d '.WT_REGEX_TAG.' .*'.$regex.'/', $gedrec)) {
+			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
 			}
 		}
@@ -902,8 +910,7 @@ function search_notes($query, $geds, $match, $skip) {
 // $query - array of search terms
 // $geds - array of gedcoms to search
 // $match - AND or OR
-// $skip - ignore data in certain tags
-function search_repos($query, $geds, $match, $skip) {
+function search_repos($query, $geds, $match) {
 	global $GEDCOM;
 
 	// No query => no results
@@ -936,14 +943,18 @@ function search_repos($query, $geds, $match, $skip) {
 			load_gedcom_settings($row['ged_id']);
 			$GED_ID=$row['ged_id'];
 		}
-		$record=WT_Note::getInstance($row);
 		// SQL may have matched on private data or gedcom tags, so check again against privatized data.
-		$gedrec=utf8_strtoupper($record->getGedcomRecord());
-		if ($skip) {
-			$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|SUBM|REFN|RESN) .*/', '', $gedrec);
-		}
+		$record=WT_Person::getInstance($row);
+		// Ignore non-genealogical data
+		$gedrec=preg_replace('/\n\d (_UID|_WT_USER|FILE|FORM|TYPE|CHAN|REFN|RESN) .*/', '', $record->getGedcomRecord());
+		// Ignore links and tags
+		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.'( @'.WT_REGEX_XREF.'@)?/', '', $gedrec);
+		// Ignore tags
+		$gedrec=preg_replace('/\n\d '.WT_REGEX_TAG.' ?/', '', $gedrec);
+		// Re-apply the filtering
+		$gedrec=utf8_strtoupper($gedrec);
 		foreach ($queryregex as $regex) {
-			if (!preg_match('/\n\d '.WT_REGEX_TAG.' .*'.$regex.'/', $gedrec)) {
+			if (!preg_match('/'.$regex.'/', $gedrec)) {
 				continue 2;
 			}
 		}
