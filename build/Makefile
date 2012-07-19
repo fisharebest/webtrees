@@ -15,6 +15,9 @@ BUILD_VERSION=$(if $(WT_VERSION_RELEASE),$(SVN_VERSION),$(WT_VERSION)$(WT_VERSIO
 CLOSURE_JS=~/bin/compiler.jar
 CLOSURE_CSS=~/bin/closure-stylesheets.jar
 
+# Use maximum compression
+GZIP=gzip -9
+
 #.PHONY: clean dist-clean default webtrees webtrees-static-$(WT_VERSION)
 
 ################################################################################
@@ -107,7 +110,7 @@ $(MO_DIR)/%.mo: $(PO_DIR)/%.po
 ################################################################################
 # Extract and minify the static files for use on a content-delivery-network.
 ################################################################################
-webtrees-static-files: clean
+webtrees-static-$(WT_VERSION): clean
 	mkdir $@
 	cd .. && find . "(" -name "*.css" -o -name "*.gif" -o -name "*.html" -o -name "*.ico" -o -name "*.jpg" -o -name "*.js" -o -name "*.mp3" -o -name "*.png" -o -name "*.swf" ")" -print0 | xargs -0 tar cf - | (cd build/$@ && tar xfp -)
 	# Minify CSS
@@ -120,9 +123,9 @@ webtrees-static-files: clean
 # Pre-compress CSS and JS files using GZIP, and set the Content-Encoding header.
 # Sprecify the bucket using "S3_BUCKET=<<my_bucket>> make static-S3".
 ################################################################################
-static-S3: webtrees-static-files
+static-S3: webtrees-static-$(WT_VERSION)
 	# Compress CSS and JS files - but keep the names the same
-	find $< "(" -name "*.js" -o -name "*.css" ")" -exec gzip {} \; -exec mv {}.gz {} \;
+	find $< "(" -name "*.js" -o -name "*.css" ")" -exec $(GZIP) {} \; -exec mv {}.gz {} \;
 	# Upload uncompressed files
 	s3cmd sync --no-delete-removed --add-header=Cache-Control:public,max-age=864000 --guess-mime-type "--rexclude=(css|js)$$" $< s3://$(S3_BUCKET)/
 	# Upload compressed files
