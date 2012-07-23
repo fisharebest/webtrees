@@ -162,8 +162,18 @@ class WT_Controller_Base {
 	// We've collected up Javascript fragments while rendering the page.
 	// Now display them.
 	public function getJavascript() {
-		// Load external libraries first
 		$html='';
+		// Insert the high priority scripts before external resources
+		if ($this->inline_javascript) {
+			$html.=PHP_EOL.'<script>';
+			foreach ($this->inline_javascript[self::JS_PRIORITY_HIGH] as $script) {
+				$html.=$script;
+			}
+			$html.='</script>';
+		}
+		$this->inline_javascript[self::JS_PRIORITY_HIGH] = array();
+
+		// Load external libraries first
 		foreach (array_keys($this->external_javascript) as $script_name) {
 			$html.=PHP_EOL.'<script src="'.htmlspecialchars($script_name).'"></script>';
 		}
@@ -225,7 +235,7 @@ class WT_Controller_Base {
 			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 			var WT_LOCALE      = "'.WT_LOCALE.'";
 			var accesstime     = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
-		');
+		', self::JS_PRIORITY_HIGH);
 	
 		// Temporary fix for access to main menu hover elements on android touch devices
 		$this->addInlineJavascript('

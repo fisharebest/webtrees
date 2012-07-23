@@ -69,45 +69,6 @@ echo '<script>';
 ?>
 	var locale_date_format='<?php echo preg_replace('/[^DMY]/', '', str_replace(array('J', 'F'), array('D', 'M'), strtoupper($DATE_FORMAT))); ?>';
 
-	function findIndi(field, indiname) {
-		pastefield = field;
-		findwin = window.open('find.php?type=indi', '_blank', find_window_specs);
-		return false;
-	}
-	function findPlace(field) {
-		pastefield = field;
-		findwin = window.open('find.php?type=place', '_blank', find_window_specs);
-		return false;
-	}
-	function findMedia(field, choose, ged) {
-		pastefield = field;
-		if (!choose) choose="0all";
-		findwin = window.open('find.php?type=media&choose='+choose+'&ged='+ged, '_blank', find_window_specs);
-		return false;
-	}
-	function findSource(field) {
-		pastefield = field;
-		findwin = window.open('find.php?type=source', '_blank', find_window_specs);
-		return false;
-	}
-	// Shared Notes =========================
-	function findnote(field) {
-		pastefield = field;
-		findwin = window.open('find.php?type=note', '_blank', find_window_specs);
-		return false;
-	}
-	// =====================================
-	function findRepository(field) {
-		pastefield = field;
-		findwin = window.open('find.php?type=repo', '_blank', find_window_specs);
-		return false;
-	}
-	function findFamily(field) {
-		pastefield = field;
-		findwin = window.open('find.php?type=fam', '_blank', find_window_specs);
-		return false;
-	}
-
 	function addnewrepository(field) {
 		pastefield = field;
 		window.open('edit_interface.php?action=addnewrepository&pid=newrepo', '_blank', find_window_specs);

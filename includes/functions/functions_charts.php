@@ -387,7 +387,7 @@ function print_family_children($famid, $childid = "", $sosa = 0, $label="", $per
 						echo "</td>";
 						// spouse information
 						echo "<td style=\"vertical-align: center;";
-						if (!empty($divrec)) echo " filter:alpha(opacity=40);-moz-opacity:0.4\">";
+						if (!empty($divrec)) echo " filter:alpha(opacity=40);opacity:0.4;\">";
 						else echo "\">";
 						print_pedigree_person(WT_Person::getInstance($spouse), 1, 9, $personcount);
 						$personcount++;

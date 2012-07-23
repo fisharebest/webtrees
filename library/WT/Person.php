@@ -1810,7 +1810,7 @@ class WT_Person extends WT_GedcomRecord {
 			}
 			$max_surn = $char-$i*2;
 			if ($len_surn > $max_surn) {
-				$surn = substr($surn, 0, $max_surn).'...';
+				$surn = substr($surn, 0, $max_surn).'…';
 				$len_surn = utf8_strlen($surn);
 			}
 			$shortname =  str_replace(

@@ -6,11 +6,7 @@
 */
 function createXmlHttpRequest() {
  try {
-   if (typeof ActiveXObject != 'undefined') {
-     return new ActiveXObject('Microsoft.XMLHTTP');
-   } else if (window["XMLHttpRequest"]) {
-     return new XMLHttpRequest();
-   }
+   return createXMLHttp();
  } catch (e) {
    changeStatus(e);
  }
