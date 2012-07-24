@@ -405,8 +405,6 @@ if (!$ajax) {
 		</table>
 		</fieldset>';
 	} else if ($tab==3) {
-		require_once WT_ROOT.'includes/functions/functions_places.php';
-
 		echo '<fieldset>
 		<legend>', WT_I18N::translate('Create your own chart'), '</legend>';
 		?>
