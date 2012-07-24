@@ -76,8 +76,16 @@ balloon.OnCreateContentString = function()
 {
 	if(!tt_aV[BALLOON])
 		return false;
-		
+
 	var aImg, sImgZ, sCssCrn, sVaT, sVaB, sCssImg;
+
+	var isRtl = textDirection == "rtl";
+	var iImgTopStart = isRtl ? 3 : 1;
+	var iImgTopEnd = isRtl ? 1 : 3;
+	var iImgBorderStart = isRtl ? 4 : 8;
+	var iImgBorderEnd = isRtl ? 8 : 4;
+	var iImgButtonStart = isRtl ? 5 : 7;
+	var iImgBottomEnd = isRtl ? 7 : 5;
 
 	// Cache balloon images in advance:
 	// Either use the pre-cached default images...
@@ -95,7 +103,7 @@ balloon.OnCreateContentString = function()
 	tt_sContent = '<table border="0" cellpadding="0" cellspacing="0" style="width:auto;padding:0px;margin:0px;left:0px;top:0px;"><tr>'
 				// Left-top corner
 				+ '<td' + sCssCrn + sVaB + '>'
-				+ '<img src="' + aImg[1].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
+				+ '<img src="' + aImg[iImgTopStart].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
 				+ '</td>'
 				// Top border
 				+ '<td valign="bottom" style="position:relative;padding:0px;margin:0px;overflow:hidden;">'
@@ -105,13 +113,13 @@ balloon.OnCreateContentString = function()
 				+ '</td>'
 				// Right-top corner
 				+ '<td' + sCssCrn + sVaB + '>'
-				+ '<img src="' + aImg[3].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
+				+ '<img src="' + aImg[iImgTopEnd].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
 				+ '</td>'
 				+ '</tr><tr>'
 				// Left border
-				+ '<td style="position:relative;padding:0px;margin:0px;width:' + tt_aV[BALLOONEDGESIZE] + 'px;overflow:hidden;background-image:url(' + aImg[8].src + ');">'
+				+ '<td style="position:relative;padding:0px;margin:0px;width:' + tt_aV[BALLOONEDGESIZE] + 'px;overflow:hidden;background-image:url(' + aImg[iImgBorderStart].src + ');">'
 				// Redundant image for bugous old Geckos that won't auto-expand TD height to 100%
-				+ '<img width="' + tt_aV[BALLOONEDGESIZE] + '" height="100%" src="' + aImg[8].src + sImgZ
+				+ '<img width="' + tt_aV[BALLOONEDGESIZE] + '" height="100%" src="' + aImg[iImgBorderStart].src + sImgZ
 				+ '</td>'
 				// Content
 				+ '<td id="bALlO0nBdY" style="position:relative;line-height:normal;'
@@ -125,14 +133,14 @@ balloon.OnCreateContentString = function()
 				+ ';width:' + ((balloon.width > 0) ? (balloon.width + 'px') : 'auto')
 				+ ';">' + tt_sContent + '</td>'
 				// Right border
-				+ '<td style="position:relative;padding:0px;margin:0px;width:' + tt_aV[BALLOONEDGESIZE] + 'px;overflow:hidden;background-image:url(' + aImg[4].src + ');">'
+				+ '<td style="position:relative;padding:0px;margin:0px;width:' + tt_aV[BALLOONEDGESIZE] + 'px;overflow:hidden;background-image:url(' + aImg[iImgBorderEnd].src + ');">'
 				// Image redundancy for bugous old Geckos that won't auto-expand TD height to 100%
-				+ '<img width="' + tt_aV[BALLOONEDGESIZE] + '" height="100%" src="' + aImg[4].src + sImgZ
+				+ '<img width="' + tt_aV[BALLOONEDGESIZE] + '" height="100%" src="' + aImg[iImgBorderEnd].src + sImgZ
 				+ '</td>'
 				+ '</tr><tr>'
 				// Left-bottom corner
 				+ '<td' + sCssCrn + sVaT + '>'
-				+ '<img src="' + aImg[7].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
+				+ '<img src="' + aImg[iImgButtonStart].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
 				+ '</td>'
 				// Bottom border
 				+ '<td valign="top" style="position:relative;padding:0px;margin:0px;overflow:hidden;">'
@@ -141,7 +149,7 @@ balloon.OnCreateContentString = function()
 				+ '</td>'
 				// Right-bottom corner
 				+ '<td' + sCssCrn + sVaT + '>'
-				+ '<img src="' + aImg[5].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
+				+ '<img src="' + aImg[iImgButtonEnd].src + '" width="' + tt_aV[BALLOONEDGESIZE] + '" height="' + tt_aV[BALLOONEDGESIZE] + sImgZ
 				+ '</td>'
 				+ '</tr></table>';
 	return true;
@@ -185,8 +193,9 @@ balloon.OnMoveAfter = function()
 
 function Balloon_CalcStemX()
 {
-	var x = tt_musX - tt_x + tt_aV[BALLOONSTEMOFFSET] - tt_aV[BALLOONEDGESIZE];
-	return Math.max(Math.min(x, tt_w - tt_aV[BALLOONSTEMWIDTH] - (tt_aV[BALLOONEDGESIZE] << 1) - 2), 2);
+	var rtlMultiplier = (textDirection == "rtl" ? -1 : 1);
+	var x = rtlMultiplier * tt_musX - tt_x + tt_aV[BALLOONSTEMOFFSET] - tt_aV[BALLOONEDGESIZE];
+	return Math.max(Math.min(x, tt_w - tt_aV[BALLOONSTEMWIDTH] - (tt_aV[BALLOONEDGESIZE] << 1) - 2), rtlMultiplier * 2);
 }
 
 function Balloon_CacheImgs(sPath)

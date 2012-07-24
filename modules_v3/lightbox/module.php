@@ -59,6 +59,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 			echo file_get_contents(WT_MODULES_DIR.$this->getName().'/js/wz_tooltip.js');
 			echo file_get_contents(WT_MODULES_DIR.$this->getName().'/js/tip_centerwindow.js');
 			echo file_get_contents(WT_MODULES_DIR.$this->getName().'/js/clsource_music.js');
+			echo file_get_contents(WT_MODULES_DIR.$this->getName().'/js/tip_balloon.js');
 			break;
 		default:
 			header('HTTP/1.0 404 Not Found');
@@ -223,12 +224,6 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 		}
 		$js.='var CB_SlShowTime  = "'.get_module_setting('lightbox', 'LB_SS_SPEED', '6').'"; // Slide show timer
 		var CB_Animation = "'.get_module_setting('lightbox', 'LB_TRANSITION', 'warp').'";'; // Next/Prev Image transition effect
-
-		if ($TEXT_DIRECTION=='ltr') {
-			$js.=file_get_contents(WT_MODULES_DIR.$this->getName().'/js/tip_balloon.js');
-		} else {
-			$js.=file_get_contents(WT_MODULES_DIR.$this->getName().'/js/tip_balloon_RTL.js');
-		}
 
 		$controller->addExternalJavascript('module.php?mod='.$this->getName().'&mod_action=js');
 		$controller->addInlineJavascript($js);
