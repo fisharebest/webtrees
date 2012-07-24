@@ -172,7 +172,7 @@ case 'GIVN': // Given names, that start with the search term
 			"SELECT SQL_CACHE DISTINCT n_givn".
 			" FROM `##name`".
 			" WHERE n_givn LIKE CONCAT(?, '%') AND n_file=?".
-			" ORDER BY LOCATE(' ', n_givn), n_givn"
+			" ORDER BY n_givn"
 		)
 		->execute(array($term, WT_GED_ID))
 		->fetchOneColumn()
