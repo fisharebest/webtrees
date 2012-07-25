@@ -536,28 +536,31 @@ function change_family_members(famid) {
 }
 
 function addnewsource(field) {
-  edit_interface({
-    "action": "addnewsource",
-    "pid": "newsour"
-  }, null, field);
-  return false;
+	pastefield=field;
+	edit_interface({
+		"action": "addnewsource",
+		"pid": "newsour"
+	}, null, field);
+	return false;
 }
 
 function addnewnote(field) {
-  edit_interface({
-    "action": "addnewnote",
-    "noteid": "newnote"
-  }, null, field);
-  return false;
+	pastefield=field;
+	edit_interface({
+		"action": "addnewnote",
+		"noteid": "newnote"
+	}, null, field);
+	return false;
 }
 
 function addnewnote_assisted(field, iid) {
-  edit_interface({
-    "action": "addnewnote_assisted",
-    "noteid": "newnote",
-    "pid": iid
-  }, assist_window_specs, field);
-  return false;
+	pastefield=field;
+	edit_interface({
+		"action": "addnewnote_assisted",
+		"noteid": "newnote",
+		"pid": iid
+	}, assist_window_specs, field);
+	return false;
 }
 
 function addmedia_links(field, iid, iname) {
