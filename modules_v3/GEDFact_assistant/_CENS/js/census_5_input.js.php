@@ -662,11 +662,11 @@ function addRowToTable(num, pid, nam, mnam, label, gend, cond, dom, dob, age2, d
 		}
 
 		// Calculate birth places -----------------------------------------
-		 birthpl =  birthpl.split(', ');
+		 birthpl =  birthpl.split(", ");
 		ibirthpl =  birthpl.reverse();
-		fbirthpl = fbirthpl.split(', ');
+		fbirthpl = fbirthpl.split(", ");
 		fbirthpl = fbirthpl.reverse();
-		mbirthpl = mbirthpl.split(', ');
+		mbirthpl = mbirthpl.split(", ");
 		mbirthpl = mbirthpl.reverse();
 
 		// get Chapman Code for US ----------------------------------------
