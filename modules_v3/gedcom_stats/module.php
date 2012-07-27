@@ -122,7 +122,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '</td></tr>';
 		}
 		if (!$block) {
-			$content .= '</table></td><td><br></td><td><table class="facts_table">';
+			$content .= '</table></td><td><table class="facts_table">';
 		}
 		if ($stat_first_birth) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Earliest birth year').'</td><td class="facts_value stats_value">'.$stats->firstBirthYear().'</td>';
@@ -191,8 +191,8 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($show_common_surnames) {
 			$surnames = get_common_surnames(get_gedcom_setting(WT_GED_ID, 'COMMON_NAMES_THRESHOLD'));
 			if (count($surnames)>0) {
-				$content .= '<br><b>'.WT_I18N::translate('Most Common Surnames').'</b>';
-				$content .= '<br>';
+				$content .= '<p><b>'.WT_I18N::translate('Most Common Surnames').'</b></p>';
+				$content .= '<div class="common_surnames">';
 				$i=0;
 				foreach ($surnames as $indexval => $surname) {
 					if (stristr($surname['name'], '@N.N')===false) {
@@ -203,6 +203,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 						$i++;
 					}
 				}
+				$content .= '</div>';
 			}
 		}
 
