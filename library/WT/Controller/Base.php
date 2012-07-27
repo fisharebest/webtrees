@@ -247,6 +247,11 @@ class WT_Controller_Base {
 			}
 		');
 		
+		// Tell IE to use standards mode instead of compatability mode.
+		if ($BROWSERTYPE=='msie') {
+			header("X-UA-Compatible: IE=Edge");
+		}
+		
 		header('Content-Type: text/html; charset=UTF-8');
 		require WT_ROOT.$headerfile;
 
