@@ -122,7 +122,7 @@ class gedcom_stats_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= '</td></tr>';
 		}
 		if (!$block) {
-			$content .= '</table></td><td><br></td><td><table>';
+			$content .= '</table></td><td><br></td><td><table class="facts_table">';
 		}
 		if ($stat_first_birth) {
 			$content .= '<tr><td class="facts_label">'.WT_I18N::translate('Earliest birth year').'</td><td class="facts_value stats_value">'.$stats->firstBirthYear().'</td>';
