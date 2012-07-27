@@ -31,6 +31,7 @@ $controller=new WT_Controller_Simple();
 $controller
 	->requireAcceptLogin()
 	->setPageTitle(WT_I18N::translate('Pending changes'))
+	->addExternalJavascript(WT_JQUERY_URL)
 	->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
 	->pageHeader();
 
