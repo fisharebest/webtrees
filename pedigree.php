@@ -152,13 +152,13 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		if ($i > ($controller->treesize/2) + ($controller->treesize/4)) {
 			$did++;
 		}
-		if ($TEXT_DIRECTION=="rtl") {$posn = 'left';$arrow = 'icon-larrow';} else {$posn = 'right';	$arrow = 'icon-rarrow';	}
+		if ($TEXT_DIRECTION=="rtl") {$posn = 'right';$arrow = 'icon-larrow';} else {$posn = 'left';	$arrow = 'icon-rarrow';	}
 		if ($talloffset==3) {
 			echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':', $controller->pbwidth/2, 'px; top:', $controller->pbheight, 'px;">';
 				echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$controller->talloffset.' class="icon-darrow noprint"></a>';
 			echo '</div>';
 		} elseif ($talloffset < 2) {
-			echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':-22px; top:', ($controller->pbheight/2-10), 'px;">';
+			echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':', $controller->pbwidth+5, 'px; top:', ($controller->pbheight/2-10), 'px;">';
 				echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$talloffset.'" class=" ',$arrow,' noprint"></a>';
 			echo '</div>';
 		}
