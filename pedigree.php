@@ -152,7 +152,7 @@ for ($i=($controller->treesize-1); $i>=0; $i--) {
 		if ($i > ($controller->treesize/2) + ($controller->treesize/4)) {
 			$did++;
 		}
-		if ($TEXT_DIRECTION=="rtl") {$posn = 'right';$arrow = 'icon-larrow';} else {$posn = 'left';	$arrow = 'icon-rarrow';	}
+		if ($TEXT_DIRECTION=="rtl") {$posn = 'right'; $arrow = 'icon-larrow';} else {$posn = 'left';	$arrow = 'icon-rarrow';	}
 		if ($talloffset==3) {
 			echo '<div class="ancestorarrow" style="position:absolute; ',$posn,':', $controller->pbwidth/2, 'px; top:', $controller->pbheight, 'px;">';
 				echo '<a href="pedigree.php?PEDIGREE_GENERATIONS='.$controller->PEDIGREE_GENERATIONS.'&amp;rootid='.$controller->treeid[$did].'&amp;show_full='.$controller->show_full.'&amp;talloffset='.$controller->talloffset.' class="icon-darrow noprint"></a>';
@@ -172,7 +172,8 @@ $famids = $controller->root->getSpouseFamilies();
 $cfamids = $controller->root->getChildFamilies();
 if (count($famids)>0) {
 	echo '<div id="childarrow" dir="';
-	if ($TEXT_DIRECTION=='rtl') {echo 'rtl" style="right:';} else {echo 'ltr" style="left:';}
+	if ($TEXT_DIRECTION=='rtl') {
+		echo 'rtl" style="right:'; $arrow = 'icon-rarrow';} else {echo 'ltr" style="left:'; $arrow = 'icon-larrow';}
 	switch ($talloffset) {
 	case 0:
 		if ($PEDIGREE_GENERATIONS<6) {
@@ -181,12 +182,12 @@ if (count($famids)>0) {
 			$addxoffset = 0;
 		}
 		echo $addxoffset, 'px; top:', $yoffset, 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="arrow"></a>';
+		echo '<a href="#" onclick="togglechildrenbox(); return false;" class=" ',$arrow,'"></a>';
 		break;
 	case 1:
 		if ($PEDIGREE_GENERATIONS<4) $basexoffset += 60;
 		echo $basexoffset, 'px; top:', $yoffset, 'px;">';
-		echo '<a href="#" onclick="togglechildrenbox(); return false;" class="arrow"></a>';
+		echo '<a href="#" onclick="togglechildrenbox(); return false;" class=" ',$arrow,'"></a>';
 		break;
 	case 2:
 		echo ($xoffset-10+$controller->pbwidth/2), 'px; top:', ($yoffset+$controller->pbheight/2+10), 'px;">';
