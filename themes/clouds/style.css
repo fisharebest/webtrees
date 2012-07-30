@@ -2840,13 +2840,14 @@ text-align:center;
 
 #search-page-table {
 background-color:#95B8E0;
-border:1px outset #95B8E0;
+border:1px outset #ccc;
 border-top:0;
 margin:20px auto 0;
 width:580px;
 }
 
 #search-page-table .label {
+border-top:1px solid #ccc;
 color:#fff;
 float:left;
 font-weight:700;
@@ -2856,7 +2857,7 @@ width:150px;
 
 #search-page-table .value {
 background-color:#fff;
-border-top:1px solid #95B8E0;
+border-top:1px solid #ccc;
 margin:0 0 0 170px;
 padding:5px;
 white-space:nowrap;
@@ -2868,6 +2869,16 @@ margin:0;
 
 html[dir='rtl'] #search-page-table .label{float:right;}
 html[dir='rtl'] #search-page-table .value {margin:0 170px 0 0;}
+
+/* ============== edituser.php ======================= */
+#edituser-page h2, #edituser_submit {margin:20px;text-align:center;}
+#edituser-table {background-color:#95B8E0;border:1px outset #ccc;border-top:0;margin:20px auto 0;width:800px;}
+#edituser-table .label{border-top:1px solid #ccc;color:#fff;float:left;font-weight:bold;padding:5px 10px 0;width:240px;white-space:nowrap;}
+#edituser-table .value {background-color:#fff;border-top:1px solid #ccc;margin:0 0 0 260px;padding:5px;}
+#edituser-table .label span{margin:0 10px;}
+#edituser-table select{margin:0;}
+html[dir='rtl'] #edituser-table .label{float:right;}
+html[dir='rtl'] #edituser-table .value {margin:0 260px 0 0;}
 
 /* ======= Who is online block ========== */
 .logged_in_list{margin:5px 0 0 0;padding:0;line-height:20px;}

@@ -939,6 +939,17 @@ html[dir='rtl'] #sb_content_extra_info .editfacts,.find-media-details{float:left
 html[dir='rtl'] #search-page-table .label{float:right;}
 html[dir='rtl'] #search-page-table .value{margin:0 170px 0 0;}
 
+/*  edituser.php  */
+#edituser-page h2, #edituser_submit {margin:20px;text-align:center;}
+#edituser-table {border:1px solid #999;border-radius:3px;margin:20px auto 0;width:800px;}
+#edituser-table .label{float:left;font-weight:700;padding:5px 10px 0;width:240px;white-space:nowrap;}
+#edituser-table .value {background-color:#ECF5FF;border-top:1px solid #999;color:#333;margin:0 0 0 260px;padding:5px;}
+#edituser-table .label span{margin:0 10px;}
+#edituser-table div:nth-of-type(2){border:0;}
+#edituser-table select{margin:0;}
+html[dir='rtl'] #edituser-table .label{float:right;}
+html[dir='rtl'] #edituser-table .value {margin:0 260px 0 0;}
+
 @media print{
 	form,button,input{display:none;}
 	#header select,#header input,#footer select,#backprint, #sidebar{display:none;}

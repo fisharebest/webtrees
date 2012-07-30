@@ -132,84 +132,54 @@ function paste_id(value) {
 <?php
 
 // show the form to edit a user account details
-$tab=0;
-echo '<form name="editform" method="post" action="" onsubmit="return checkform(this);">';
-echo '<input type="hidden" name="form_action" value="update">';
-echo '<table class="list_table">';
-
-echo '<tr><td class="topbottombar" colspan="2"><h2>', WT_I18N::translate('My account'), '</h2></td></tr>';
-
-echo '<tr><td class="descriptionbox width20 wrap">';
-echo WT_I18N::translate('Username'), help_link('username'), '</td><td class="optionbox">';
-echo '<input type="text" name="form_username" value="', WT_USER_NAME, '" autofocus>';
-echo '</td></tr>';
-
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Real name'), help_link('real_name'), '</td><td class="optionbox">';
-echo '<input type="text" name="form_realname" value="', getUserFullName(WT_USER_ID), '">';
-echo '</td></tr>';
-
-$person=WT_Person::getInstance(WT_USER_GEDCOM_ID);
-if ($person) {
-	echo '<tr><td class="descriptionbox wrap">';
-	echo WT_I18N::translate('Individual record'), help_link('edituser_gedcomid'), '</td><td class="optionbox">';
-	echo $person->format_list('span');
-	echo '</td></tr>';
-}
-
-$person=WT_Person::getInstance(WT_USER_ROOT_ID);
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Default individual'), help_link('default_individual'), '</td><td class="optionbox">';
-echo '<input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '">';
-echo print_findindi_link('rootid'), '<br>';
-if ($person) {
-	echo $person->format_list('span');
-}
-echo '</td></tr>';
-
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Password'), help_link('password'), '</td><td class="optionbox">';
-echo '<input type="password" name="form_pass1"> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</td></tr>';
-
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</td><td class="optionbox">';
-echo '<input type="password" name="form_pass2"></td></tr>';
-
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Language'), help_link('edituser_change_lang');
-echo '</td><td class="optionbox" valign="top">';
-echo edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language'));
-echo '</td></tr>';
-
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Email address'), help_link('email'), '</td><td class="optionbox" valign="top">';
-echo '<input type="email" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50"></td></tr>';
-
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Theme'), help_link('THEME'), '</td><td class="optionbox" valign="top">';
-echo '<select name="form_theme">';
-echo '<option value="">', htmlspecialchars(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
-foreach (get_theme_names() as $themename=>$themedir) {
-	echo '<option value="', $themedir, '"';
-	if ($themedir==get_user_setting(WT_USER_ID, 'theme')) {
-		echo ' selected="selected"';
-	}
-	echo '>', $themename, '</option>';
-}
-echo '</select></td></tr>';
-
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Preferred contact method'), help_link('edituser_contact_meth');
-echo '</td><td class="optionbox">';
-echo edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod'));
-echo '</td></tr>';
-
-echo '<tr><td class="descriptionbox wrap">';
-echo WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline');
-echo '</td><td class="optionbox">';
-echo checkbox('form_visible_online', get_user_setting(WT_USER_ID, 'visibleonline'));
-echo '</td></tr>';
-
-echo '<tr><td class="topbottombar" colspan="2"><input type="submit" value="', WT_I18N::translate('Save'), '"></td></tr>';
-
-echo '</table></form>';
+echo '<div id="edituser-page">
+	<h2>', WT_I18N::translate('My account'), '</h2>
+	<form name="editform" method="post" action="" onsubmit="return checkform(this);">
+	<input type="hidden" name="form_action" value="update">
+	<div id="edituser-table">
+		<div class="label">', WT_I18N::translate('Username'), help_link('username'), '</div>
+		<div class="value"><input type="text" name="form_username" value="', WT_USER_NAME, '" autofocus></div>
+		<div class="label">', WT_I18N::translate('Real name'), help_link('real_name'), '</div>
+		<div class="value"><input type="text" name="form_realname" value="', getUserFullName(WT_USER_ID), '"></div>';
+		$person=WT_Person::getInstance(WT_USER_GEDCOM_ID);
+		if ($person) {
+			echo '<div class="label">', WT_I18N::translate('Individual record'), help_link('edituser_gedcomid'), '</div>
+				<div class="value">', $person->format_list('span'), '</div>';
+		}
+		$person=WT_Person::getInstance(WT_USER_ROOT_ID);
+		echo '<div class="label">', WT_I18N::translate('Default individual'), help_link('default_individual'), '</div>
+			<div class="value"><input type="text" name="form_rootid" id="rootid" value="', WT_USER_ROOT_ID, '">';
+				echo print_findindi_link('rootid'), '<br>';
+				if ($person) {
+					echo $person->format_list('span');
+				}		
+			echo '</div>
+		<div class="label">', WT_I18N::translate('Password'), help_link('password'), '</div>
+		<div class="value"><input type="password" name="form_pass1"> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</div>
+		<div class="label">', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</div>
+		<div class="value"><input type="password" name="form_pass2"></div>
+		<div class="label">', WT_I18N::translate('Language'), help_link('edituser_change_lang'), '</div>
+		<div class="value">', edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language')), '</div>
+		<div class="label">', WT_I18N::translate('Email address'), help_link('email'), '</div>
+		<div class="value"><input type="email" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50"></div>
+		<div class="label">', WT_I18N::translate('Theme'), help_link('THEME'), '</div>
+		<div class="value">
+			<select name="form_theme">
+			<option value="">', htmlspecialchars(/* I18N: default option in list of themes */ WT_I18N::translate('<default theme>')), '</option>';
+			foreach (get_theme_names() as $themename=>$themedir) {
+				echo '<option value="', $themedir, '"';
+				if ($themedir==get_user_setting(WT_USER_ID, 'theme')) {
+					echo ' selected="selected"';
+				}
+				echo '>', $themename, '</option>';
+			}
+			echo '</select>
+		</div>
+		<div class="label">', WT_I18N::translate('Preferred contact method'), help_link('edituser_contact_meth'), '</div>
+		<div class="value">', edit_field_contact('form_contact_method', get_user_setting(WT_USER_ID, 'contactmethod')), '</div>
+		<div class="label">', WT_I18N::translate('Visible to other users when online'), help_link('useradmin_visibleonline'), '</div>
+		<div class="value">', checkbox('form_visible_online', get_user_setting(WT_USER_ID, 'visibleonline')), '</div>
+	</div>'; // close edituser-table
+	echo '<div id="edituser_submit"><input type="submit" value="', WT_I18N::translate('Save'), '"></div>';
+	echo '</form>
+</div>'; // close edituser-page

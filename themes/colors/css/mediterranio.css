@@ -40,7 +40,7 @@ color:#FFFFFF;}
 .descriptionbox, .descriptionbox a, .facts_label03,
 .topbottombar,.topbottombar a,.topbottombar h2,
 .facts_label,.facts_label a, .facts_label h2,.facts_label .date,
-.list_label, .list_label a, #search-page-table,
+.list_label, .list_label a, #search-page-table, #edituser-table,
 #lightbox_content span a,#lightbox_content span a:hover,
 #separator, .use-sidebar #separator, #family_nav, 
 .ui-state-active a:link, .ui-state-active a:visited 
@@ -56,7 +56,7 @@ background:#fc6d1d;
 
 /* Base */
 #indi_header h3,
-.blockcontent,#search,#search-page-table .value,
+.blockcontent,#search,#search-page-table .value,#edituser-table .value,
 .makeMenu ul li a:hover,
 .optionbox,
 .list_value,.list_value_wrap,.list_value_wrap a,
