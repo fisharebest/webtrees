@@ -341,7 +341,7 @@ ul.clist {list-style-image:none;text-decoration:none;margin:0;}
 .execution_stats {padding-top:12px;text-align:center;}
 
 dl {margin:0;}
-dt {float:left;font-weight:bold;margin-right:10px;clear:both;}
+dt {float:left;font-weight:bold;margin-right:10px;}
 html[dir="rtl"] dt {float:right;margin-right:auto;margin-left:10px;}
 
 /* Find special characters */
