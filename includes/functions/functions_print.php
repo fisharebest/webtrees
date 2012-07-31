@@ -825,6 +825,10 @@ function format_fact_date(WT_Event $event, WT_GedcomRecord $record, $anchor=fals
 							$ageText = '('.WT_I18N::translate('on the date of death').')';
 						} else {
 							$ageText = '('.$age.' '.WT_I18N::translate('after death').')';
+							// Family events which occur after death are probably errors
+							if ($event->getFamilyId()) {
+								$ageText.='<i class="icon-warning"></i>';
+							}
 						}
 					}
 				}
