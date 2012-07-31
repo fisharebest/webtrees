@@ -1629,7 +1629,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		if ($fact=="FILE") print_findmedia_link($element_id, "0file");
 		if ($fact=="SOUR") {
 			echo print_findsource_link($element_id), ' ', print_addnewsource_link($element_id);
-			//print_autopaste_link($element_id, array("S1", "S2"), false, false, true);
 			//-- checkboxes to apply '1 SOUR' to BIRT/MARR/DEAT as '2 SOUR'
 			if ($level==1) {
 				echo '<br>';
@@ -1734,9 +1733,9 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 	}
 	// pastable values
 	if ($readOnly=='') {
-		if ($fact=="SPFX") print_autopaste_link($element_id, $SPFX_accept);
-		if ($fact=="NSFX") print_autopaste_link($element_id, $NSFX_accept);
-		if ($fact=="FORM" && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept, false, false);
+		if ($fact=="SPFX") print_autopaste_link($element_id, $SPFX_accept, true);
+		if ($fact=="NSFX") print_autopaste_link($element_id, $NSFX_accept, true);
+		if ($fact=="FORM" && $upperlevel=='OBJE') print_autopaste_link($element_id, $FILE_FORM_accept, false);
 	}
 
 	if ($noClose != "NOCLOSE") echo "</td></tr>";
