@@ -690,12 +690,13 @@ $STREETVIEW=get_module_setting('googlemap', 'GM_USE_STREETVIEW');
 				bounds.extend(myLatLng);
 				map.fitBounds(bounds);
 				// Correct zoom level when multiple markers have the same coordinates ==
-				var listener1 = google.maps.event.addListener(map, "idle", function() { 
-  					if (map.getZoom() > zoomLevel) {
-  						map.setZoom(zoomLevel);
-  					}
-  					google.maps.event.removeListener(listener1); 
-				}); 
+				// This code commented out to reolve bug #1022362 "google maps won't zoom in occasionally"
+//				var listener1 = google.maps.event.addListener(map, "idle", function() { 
+//  					if (map.getZoom() > zoomLevel) {
+//  						map.setZoom(zoomLevel);
+//  					}
+// 					google.maps.event.removeListener(listener1); 
+//				}); 
 			}	
 		
 		}  // end loop through location markers
