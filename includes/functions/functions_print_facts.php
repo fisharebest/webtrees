@@ -553,7 +553,7 @@ function print_media_links($factrec, $level, $pid='') {
 				$imgsize = findImageSize($mainMedia);
 				$imgwidth = $imgsize[0]+40;
 				$imgheight = $imgsize[1]+150;
-				if ($objectNum > 0) echo '<br style="clear:both;">';
+				if ($objectNum > 0) echo '<br class="media-separator" style="clear:both;">';
 				echo '<div id="media-display">
 					<div id="media-display-image">';;
 				if ($isExternal || media_exists($thumbnail)) {
