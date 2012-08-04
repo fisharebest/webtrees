@@ -648,7 +648,7 @@ html[dir='rtl'] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
 .makeMenu {font-weight:bold;}
 .makeMenu li {display:inline;position:relative;white-space:nowrap;border-left:2px solid;padding:0 5px;}
 .makeMenu li:first-child, .makeMenu li ul li {border:none;}
-.makeMenu li ul {display:none;font-weight:normal;position:absolute;left:0;right:auto;top:1.1em;background-color:#fff;border:thin solid #aaa;z-index:999;}
+.makeMenu li ul {display:none;font-weight:normal;position:absolute;top:1.1em;background-color:#fff;border:thin solid #aaa;z-index:999;}
 .makeMenu li ul li {padding:2px;display:block;text-align:left;}
 .makeMenu, .makeMenu li ul {list-style:none;margin:0;padding:1px;}
 .makeMenu li:hover > ul {display:block;}
