@@ -192,7 +192,7 @@ if ($controller->record->canDisplayDetails()) {
 	echo '<h3 class="name_one ', $controller->getPersonStyle($controller->record), '"><span>', $controller->record->getFullName(), '</span>'; // First name accordion header
 	$bdate=$controller->record->getBirthDate();
 	$ddate=$controller->record->getDeathDate();
-	echo '<span class="header_age">';
+	echo '<div class="header_age">';
 	if ($bdate->isOK() && !$controller->record->isDead()) {
 		// If living display age
 		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate), true), '<span>');
@@ -200,7 +200,7 @@ if ($controller->record->canDisplayDetails()) {
 		// If dead, show age at death
 		echo WT_Gedcom_Tag::getLabelValue('AGE', get_age_at_event(WT_Date::GetAgeGedcom($bdate, $ddate), false), '<span>');
 	}
-	echo '</span>';
+	echo '</div>';
 	// Display summary birth/death info.
 	echo '<span id="dates">', $controller->record->getLifeSpan(), '</span>';
 	//Display gender icon
