@@ -40,7 +40,7 @@ if (WT_USE_LIGHTBOX) {
 	$album = new lightbox_WT_Module();
 	$album->getPreLoadContent();
 }
-
+echo '<div id="ancestry-page">';
 echo '<table><tr><td valign="middle">';
 echo '<h2>', $controller->getPageTitle(), '</h2>';
 ?>
@@ -219,3 +219,4 @@ case 3:
 	echo '</div>';
 	break;
 }
+echo '</div>'; // close div ancestry-page
