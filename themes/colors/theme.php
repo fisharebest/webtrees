@@ -33,7 +33,9 @@ function getMenuAsCustomList($menu) {
 		// Create a inert menu - to use as a label
 		$tmp=new WT_Menu(strip_tags($menu->label), '');
 		// Insert the label into the submenu
-		array_unshift($menu->submenus, $tmp);
+		if ($menu->submenus) {
+			array_unshift($menu->submenus, $tmp);
+		}
 		// Neutralise the top-level menu
 		$menu->label='';
 		$menu->onclick='';

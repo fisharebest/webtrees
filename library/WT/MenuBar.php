@@ -39,12 +39,14 @@ class WT_MenuBar {
 		$ALLOW_CHANGE_GEDCOM=get_site_setting('ALLOW_CHANGE_GEDCOM');
 		foreach ($gedcom_titles as $gedcom_title) {
 			if ($gedcom_title->gedcom_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
-				$submenu = new WT_Menu(
-					'<span dir="auto">'.htmlspecialchars($gedcom_title->gedcom_title).'</span>',
-					'index.php?ctype=gedcom&amp;ged='.rawurlencode($gedcom_title->gedcom_name),
-					'menu-tree-'.$gedcom_title->gedcom_id // Cannot use name - it must be a CSS identifier
-				);
-				$menu->addSubmenu($submenu);
+				if (count($gedcom_titles)>1) {
+					$submenu = new WT_Menu(
+						'<span dir="auto">'.htmlspecialchars($gedcom_title->gedcom_title).'</span>',
+						'index.php?ctype=gedcom&amp;ged='.rawurlencode($gedcom_title->gedcom_name),
+						'menu-tree-'.$gedcom_title->gedcom_id // Cannot use name - it must be a CSS identifier
+					);
+					$menu->addSubmenu($submenu);
+				}
 			}
 		}
 		return $menu;
