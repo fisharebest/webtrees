@@ -57,6 +57,7 @@ class WT_Menu {
 		$this->id      =$id;
 		$this->flyout  =$flyout;
 		$this->submenus=array();
+		$this->title   =$label;
 	}
 
 	function addLabel($label=' ', $pos='right')
@@ -110,7 +111,11 @@ class WT_Menu {
 				}
 				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
 			} else {
-				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
+				if ($this->submenus) {
+					$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
+				} else {
+					$html='<a class="'.$this->iconclass.'" title="'.$this->title.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
+				}	
 			}
 		} else {
 			$html=$this->label;
