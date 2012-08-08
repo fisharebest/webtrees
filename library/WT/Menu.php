@@ -57,7 +57,7 @@ class WT_Menu {
 		$this->id      =$id;
 		$this->flyout  =$flyout;
 		$this->submenus=array();
-		$this->title   =htmlentities($label);
+		$this->title   = htmlentities(strip_tags($label));
 	}
 
 	function addLabel($label=' ', $pos='right')
