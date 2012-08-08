@@ -331,6 +331,13 @@ class WT_Stats {
 		return "<a href=\"{$this->_server_url}index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"right\" class=\"gedcom_highlight\" alt=\"\" /></a>";
 	}
 
+	function gedcomRootID() {
+		$root = WT_Person::getInstance(get_gedcom_setting(WT_GED_ID, 'PEDIGREE_ROOT_ID'));
+		$root = substr($root, 0, stripos($root, "@") );
+		return $root;
+	}
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Totals                                                                    //
 ///////////////////////////////////////////////////////////////////////////////
