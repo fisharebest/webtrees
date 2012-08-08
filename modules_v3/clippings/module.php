@@ -331,8 +331,10 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 		}
 		//-- main clippings menu item
 		$menu = new WT_Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.WT_GEDURL, 'menu-clippings');
-		$submenu = new WT_Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.WT_GEDURL, 'menu-clippingscart');
-		$menu->addSubmenu($submenu);
+		if (isset($controller->record)) {
+			$submenu = new WT_Menu($this->getTitle(), 'module.php?mod=clippings&amp;mod_action=index&amp;ged='.WT_GEDURL, 'menu-clippingscart');
+			$menu->addSubmenu($submenu);
+		}
 		if (!empty($controller->record) && $controller->record->canDisplayDetails()) {
 			$submenu = new WT_Menu(WT_I18N::translate('Add to clippings cart'), 'module.php?mod=clippings&amp;mod_action=index&amp;action=add&amp;id='.$controller->record->getXref(), 'menu-clippingsadd');
 			$menu->addSubmenu($submenu);
