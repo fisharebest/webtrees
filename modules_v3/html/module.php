@@ -275,19 +275,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '<tr><td class="descriptionbox wrap width33">',
 			WT_I18N::translate('Templates'),
 			help_link('block_html_template', $this->getName()),
-			'</td><td class="optionbox">'
-		;
-		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-			echo '<script>',
-				'function loadTemplate(html) {',
-				' var oEditor = CKEDITOR.instances["html"];',
-				' oEditor.setData(html);',
-				'}',
-				'</script>',
-				'<select name="template" onchange="loadTemplate(document.block.template.options[document.block.template.selectedIndex].value);">';
-		} else {
-			echo '<select name="template" onchange="document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;">';
-		}
+			'</td><td class="optionbox">';
+		echo '<select name="template" onchange="document.block.html.value=document.block.template.options[document.block.template.selectedIndex].value;">';
 		echo '<option value="', htmlspecialchars($html), '">', WT_I18N::translate('Custom'), '</option>';
 		foreach ($templates as $title=>$template) {
 			echo '<option value="', htmlspecialchars($template), '">', $title, '</option>';
@@ -319,20 +308,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			help_link('block_html_content', $this->getName()),
 			'<br><br></td>',
 			'<td class="optionbox">';
-		if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-			// use CKeditor module
-			require_once WT_ROOT.WT_MODULES_DIR.'ckeditor/ckeditor.php';
-			$oCKeditor = new CKEditor();
-			$oCKeditor->basePath =  WT_MODULES_DIR.'ckeditor/';
-			$oCKeditor->config['width'] = 700;
-			$oCKeditor->config['height'] = 400;
-			$oCKeditor->config['AutoDetectLanguage'] = false ;
-			$oCKeditor->config['DefaultLanguage'] = 'en';
-			$oCKeditor->editor('html', $html);
-		} else {
-			//use standard textarea
-			echo '<textarea name="html" rows="10" cols="80">', htmlspecialchars($html), '</textarea>';
-		}
+		echo '<textarea name="html" class="html-edit" rows="10" cols="80">', htmlspecialchars($html), '</textarea>';
 		echo '</td></tr>';
 
 		$show_timestamp=get_block_setting($block_id, 'show_timestamp', false);

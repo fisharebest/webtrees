@@ -40,6 +40,13 @@ $block=new $class_name;
 $controller=new WT_Controller_Ajax();
 $controller->pageHeader();
 
+if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
+	$controller
+		->addExternalJavascript(WT_MODULES_DIR.'ckeditor/ckeditor.js')
+		->addExternalJavascript(WT_MODULES_DIR.'ckeditor/adapters/jquery.js')
+		->addInlineJavascript('CKEDITOR.basePath="'.WT_MODULES_DIR.'ckeditor/";jQuery(".html-edit").ckeditor();');
+}
+
 ?>
 <form name="block" method="post" action="block_edit.php?block_id=<?php echo $block_id; ?>" onsubmit="return modalDialogSubmitAjax(this);" >
 	<input type="hidden" name="save" value="1">

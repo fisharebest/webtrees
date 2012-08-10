@@ -166,20 +166,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			echo '<tr><th>';
 			echo WT_I18N::translate('Answer');
 			echo '</th></tr><tr><td>';
-			if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-			// use CKeditor module
-				require_once WT_ROOT.WT_MODULES_DIR.'ckeditor/ckeditor.php';
-				$oCKeditor = new CKEditor();
-				$oCKeditor->basePath =  WT_MODULES_DIR.'ckeditor/';
-				$oCKeditor->config['width'] = 900;
-				$oCKeditor->config['height'] = 400;
-				$oCKeditor->config['AutoDetectLanguage'] = false ;
-				$oCKeditor->config['DefaultLanguage'] = 'en';
-				$oCKeditor->editor('faqbody', $faqbody);
-			} else {
-			//use standard textarea
-			echo '<textarea name="faqbody" rows="10" cols="90" tabindex="2">', htmlspecialchars($faqbody), '</textarea>';
-			}
+			echo '<textarea name="faqbody" class="html-edit" rows="10" cols="90" tabindex="2">', htmlspecialchars($faqbody), '</textarea>';
 			echo '</td></tr>';
 			echo '</table><table id="faq_module2">';
 			echo '<tr>';
