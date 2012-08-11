@@ -172,14 +172,18 @@ function edit_language_checkboxes($field_prefix, $languages) {
 		}
 		$content .= '><label for="'.$field_prefix.$code.'"> '.$name.'</label>';
 		// print in two columns
-		if (($i % 2)==0) {
-			echo '<tr><td>', $content, '</td>';
-		} else {
-			echo '<td>', $content, '</td></tr>';
+		switch ($i % 3) {
+		case 0: echo '<tr><td>', $content, '</td>'; break;
+		case 1: echo '<td>', $content, '</td>'; break;
+		case 2: echo '<td>', $content, '</td></tr>'; break;
 		}
 		$i++;
 	}
-	if (($i % 2)!=0) echo '</tr>';
+	switch ($i % 3) {
+	case 0: echo '</tr>'; break;
+	case 1: echo '</td></td></tr>'; break;
+	case 2: echo '</td></tr>'; break;
+	}
 	echo '</table>';
 }
 
