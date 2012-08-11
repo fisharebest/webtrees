@@ -41,12 +41,7 @@ $controller=new WT_Controller_Ajax();
 $controller->pageHeader();
 
 if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
-	$controller
-		->addExternalJavascript(WT_MODULES_DIR.'ckeditor/ckeditor.js')
-		->addExternalJavascript(WT_MODULES_DIR.'ckeditor/adapters/jquery.js')
-		->addInlineJavascript('CKEDITOR.basePath+="'.WT_MODULES_DIR.'ckeditor/";jQuery(".html-edit").ckeditor();')
-//		->addInlineJavascript('alert( CKEDITOR.basePath );')
-		;
+	ckeditor_WT_Module::enableEditor($controller);
 }
 
 ?>

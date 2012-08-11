@@ -38,4 +38,17 @@ class ckeditor_WT_Module extends WT_Module {
 	public function getDescription() {
 		return /* I18N: Description of the "CKEditor" module.  WYSIWYG = "what you see is what you get" */ WT_I18N::translate('Allow other modules to edit text using a “WYSIWYG” editor, instead of using HTML codes.');
 	}
+
+	// Convert <textarea class="html-edit"> fields to CKEditor fields
+	public static function enableEditor($controller) {
+		$controller
+			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/ckeditor.js')
+			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/adapters/jquery.js')
+			// Need to specify the path before we load the libary
+			->addInlineJavascript('var CKEDITOR_BASEPATH="'.WT_MODULES_DIR.'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
+			// Disable the SAVE button - we must use the form's onSubmit() action instead.
+			->addInlineJavascript('/* insert CKEDITOR configuration here */')
+			// Activate the editor
+			->addInlineJavascript('jQuery(".html-edit").ckeditor();');
+	}
 }
