@@ -46,9 +46,21 @@ class ckeditor_WT_Module extends WT_Module {
 			->addExternalJavascript(WT_MODULES_DIR.'ckeditor/adapters/jquery.js')
 			// Need to specify the path before we load the libary
 			->addInlineJavascript('var CKEDITOR_BASEPATH="'.WT_MODULES_DIR.'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
-			// Disable the SAVE button - we must use the form's onSubmit() action instead.
-			->addInlineJavascript('/* insert CKEDITOR configuration here */')
 			// Activate the editor
-			->addInlineJavascript('jQuery(".html-edit").ckeditor();');
+			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){}, {toolbar:[
+        ["Source"],
+        ["Cut","Copy","Paste","PasteText","PasteFromWord"],
+        ["Undo","Redo","-","SelectAll","RemoveFormat"],
+        "/",
+        ["Bold","Italic","-","Subscript","Superscript"],
+        ["NumberedList","BulletedList","-","Outdent","Indent","Blockquote"],
+        ["JustifyLeft","JustifyCenter","JustifyRight","JustifyBlock"],
+        ["Link","Unlink","Anchor"],
+        ["Image","Table","SpecialChar"],
+        "/",
+        ["Styles","Format","FontSize"],
+        ["TextColor"],
+        ["Maximize", "ShowBlocks"]
+    ]});');
 	}
 }
