@@ -272,7 +272,7 @@ class clippings_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module
 				<br><a href="module.php?mod=clippings&amp;mod_action=index&amp;action=empty"><?php echo WT_I18N::translate('Empty Cart'); ?></a><?php echo help_link('empty_cart', $this->getName()); ?>
 				</td></tr>
 
-				<tr><td class="topbottombar"><h2><?php echo WT_I18N::translate('Family Tree Clippings Cart'), help_link('clip_cart', $this->getName()); ?></h2></td></tr>
+				<tr><td class="topbottombar"><h2><?php echo WT_I18N::translate('Family Tree Clippings Cart'); ?></h2></td></tr>
 
 				<tr><td valign="top">
 				<table id="mycart" class="sortable list_table width100">
