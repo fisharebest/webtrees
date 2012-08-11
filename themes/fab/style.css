@@ -1038,7 +1038,7 @@ overflow:visible !important;
 #login-register-page .confirm p+p  {font-size:12px;font-weight:normal;}
 #login-text, #register-text, #user-verify {margin:20px auto;width:610px;text-align:justify;}
 #login-box, #register-box {text-align:center;}
-#login-form, #new_passwd_form, #register-form  {background-color:#ccc;border:1px solid darkGray;border-radius:3px;display:inline-block;margin:10px auto 0 auto;padding:5px;}
+#login-form, #new_passwd_form, #register-form , #verify-form {background-color:#ccc;border:1px solid darkGray;border-radius:3px;display:inline-block;margin:10px auto 0 auto;padding:5px;}
 #login-form div, #login-form div a, #new_passwd_form div, #register-form div, #verify-form div  {font-weight:bold;margin:auto;padding:5px;text-align:center;}
 #login-form label, #new_passwd_form label, #verify-form  label  {display:block;text-align:right;}
 #login-form label input, #new_passwd_form label input, #verify-form  input {width:140px;margin:0 10px;}

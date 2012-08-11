@@ -611,7 +611,7 @@ a.showit:hover > span{background:#444;border-bottom:2px solid #000;border-left:1
 
 #login-text,#register-text,#user-verify{margin:20px auto;text-align:justify;width:610px;}
 
-#login-form,#new_passwd_form,#register-form{border:1px solid #999;border-radius:3px;display:inline-block;margin:10px auto 0;padding:5px;}
+#login-form,#new_passwd_form,#register-form,#verify-form{border:1px solid #999;border-radius:3px;display:inline-block;margin:10px auto 0;padding:5px;}
 #login-form div,#login-form div a,#new_passwd_form div,#register-form div,#verify-form div{margin:auto;padding:5px;text-align:center;}
 #login-form label,#new_passwd_form label,#verify-form label{display:block;text-align:right;}
 #login-form label input,#new_passwd_form label input,#verify-form input{margin:0 10px;width:140px;}

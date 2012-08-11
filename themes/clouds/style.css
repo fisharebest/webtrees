@@ -1760,7 +1760,7 @@ display:block;
 text-align:right;
 }
 
-#login-form,#new_passwd_form,#register-form {
+#login-form,#new_passwd_form,#register-form,#verify-form {
 background-color:#95B8E0;
 border-radius:3px;
 display:inline-block;
