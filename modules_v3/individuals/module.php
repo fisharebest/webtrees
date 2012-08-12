@@ -141,10 +141,7 @@ class individuals_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		');
 
 		
-		$out='
-		<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;">
-		<input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="'.WT_I18N::translate('Search').'">
-		<p>';
+		$out='<form method="post" action="module.php?mod='.$this->getName().'&amp;mod_action=ajax" onsubmit="return false;"><input type="search" name="sb_indi_name" id="sb_indi_name" placeholder="'.WT_I18N::translate('Search').'"><p>';
 		foreach ($initials as $letter=>$count) {
 			switch ($letter) {
 				case '@':

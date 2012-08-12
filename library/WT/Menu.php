@@ -2,7 +2,7 @@
 // System for generating menus.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2002 to 2009 PGV Development Team. All rights reserved.
@@ -166,7 +166,7 @@ class WT_Menu {
 		}
 		$id = $menucount.rand();
 		$c = count($this->submenus);
-		$output = "<div id=\"menu{$id}\" class=\"{$this->class}\">\n";
+		$output = "<div id=\"menu{$id}\" class=\"{$this->class}\">";
 		$link = "<a href=\"{$this->link}\" onmouseover=\"";
 		if ($c >= 0) {
 			$link .= "show_submenu('menu{$id}_subs', 'menu{$id}', '{$this->flyout}');";
@@ -201,14 +201,14 @@ class WT_Menu {
 					$output .= ' right: 50px;';
 				}
 			}
-			$output .= "\" onmouseover=\"show_submenu('{$this->parentmenu}'); show_submenu('{$submenuid}');\" onmouseout=\"timeout_submenu('menu{$id}_subs');\">\n";
+			$output .= "\" onmouseover=\"show_submenu('{$this->parentmenu}'); show_submenu('{$submenuid}');\" onmouseout=\"timeout_submenu('menu{$id}_subs');\">";
 			foreach ($this->submenus as $submenu) {
 				$submenu->parentmenu = $submenuid;
 				$output .= $submenu->getMenu();
 			}
-			$output .= "</div></div>\n";
+			$output .= "</div></div>";
 		}
-		$output .= "</div>\n";
+		$output .= "</div>";
 		return $output;
 	}
 
