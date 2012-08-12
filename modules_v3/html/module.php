@@ -267,12 +267,12 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		$title=get_block_setting($block_id, 'title');
 		$html=get_block_setting($block_id, 'html');
 		// title
-		echo '<tr><td class="descriptionbox wrap width20">',
+		echo '<tr><td class="descriptionbox wrap">',
 			WT_Gedcom_Tag::getLabel('TITL'),
 			'</td><td class="optionbox"><input type="text" name="title" size="30" value="', htmlspecialchars($title), '"></td></tr>';
 
 		// templates
-		echo '<tr><td class="descriptionbox wrap width20">',
+		echo '<tr><td class="descriptionbox wrap">',
 			WT_I18N::translate('Templates'),
 			help_link('block_html_template', $this->getName()),
 			'</td><td class="optionbox">';
@@ -289,7 +289,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		if (count($gedcoms) > 1) {
 			if ($gedcom == '__current__') {$sel_current = ' selected="selected"';} else {$sel_current = '';}
 			if ($gedcom == '__default__') {$sel_default = ' selected="selected"';} else {$sel_default = '';}
-			echo '<tr><td class="descriptionbox wrap width20">',
+			echo '<tr><td class="descriptionbox wrap">',
 				WT_I18N::translate('Family tree'),
 				'</td><td class="optionbox">',
 				'<select name="gedcom">',
@@ -308,11 +308,11 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			help_link('block_html_content', $this->getName()),
 			'</td></tr><tr>',
 			'<td colspan="2" class="optionbox">';
-		echo '<textarea name="html" class="html-edit" rows="10" cols="80">', htmlspecialchars($html), '</textarea>';
+		echo '<textarea name="html" class="html-edit" rows="10" style="width:98%;">', htmlspecialchars($html), '</textarea>';
 		echo '</td></tr>';
 
 		$show_timestamp=get_block_setting($block_id, 'show_timestamp', false);
-		echo '<tr><td class="descriptionbox wrap width20">';
+		echo '<tr><td class="descriptionbox wrap">';
 		echo WT_I18N::translate('Show the date and time of update');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_timestamp', $show_timestamp);
@@ -320,7 +320,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</td></tr>';
 
 		$languages=get_block_setting($block_id, 'languages');
-		echo '<tr><td class="descriptionbox wrap width20">';
+		echo '<tr><td class="descriptionbox wrap">';
 		echo WT_I18N::translate('Show this block for which languages?');
 		echo '</td><td class="optionbox">';
 		echo edit_language_checkboxes('lang_', $languages);
