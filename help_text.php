@@ -1389,11 +1389,6 @@ case 'gedcom_news_limit':
 	$text=WT_I18N::translate('You can limit the number of News articles displayed, thereby reducing the height of the GEDCOM News block.<br /><br />This option determines whether any limits should be applied or whether the limit should be according to the age of the article or according to the number of articles.');
 	break;
 
-case 'gedcom_title':
-	$title=WT_I18N::translate('Family tree title');
-	$text=WT_I18N::translate('Enter a descriptive title to be displayed when users are choosing among family trees at your site.');
-	break;
-
 case 'gen_missing_thumbs':
 	$title=WT_I18N::translate('Create missing thumbnails');
 	$text=WT_I18N::translate('This option will generate thumbnails for all files in the current directory which don\'t already have a thumbnail.  This is much more convenient than clicking the <b>Create thumbnail</b> link for each such file.<br /><br />If you wish to retain control over which files should have corresponding thumbnails, you should not use this option.  Instead, click the appropriate <b>Create thumbnail</b> links.');

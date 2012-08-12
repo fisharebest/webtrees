@@ -385,7 +385,7 @@ if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple
 				<table>
 					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Family tree title'), help_link('gedcom_title'); ?>
+							<?php echo WT_I18N::translate('Family tree title'); ?>
 						</td>
 						<td>
 							<input type="text" name="gedcom_title" dir="ltr" value="<?php echo htmlspecialchars(get_gedcom_setting(WT_GED_ID, 'title')); ?>" size="40" maxlength="255">
