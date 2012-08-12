@@ -47,20 +47,24 @@ class ckeditor_WT_Module extends WT_Module {
 			// Need to specify the path before we load the libary
 			->addInlineJavascript('var CKEDITOR_BASEPATH="'.WT_MODULES_DIR.'ckeditor/";', WT_Controller_Base::JS_PRIORITY_HIGH)
 			// Activate the editor
-			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){}, {toolbar:[
-        ["Source"],
-        ["Cut","Copy","Paste","PasteText","PasteFromWord"],
-        ["Undo","Redo","-","SelectAll","RemoveFormat"],
-        "/",
-        ["Bold","Italic","-","Subscript","Superscript"],
-        ["NumberedList","BulletedList","-","Outdent","Indent","Blockquote"],
-        ["JustifyLeft","JustifyCenter","JustifyRight","JustifyBlock"],
-        ["Link","Unlink","Anchor"],
-        ["Image","Table","SpecialChar"],
-        "/",
-        ["Styles","Format","FontSize"],
-        ["TextColor"],
-        ["Maximize", "ShowBlocks"]
-    ]});');
+			->addInlineJavascript('jQuery(".html-edit").ckeditor(function(){}, {
+				toolbar:[
+					["Source"],
+					["Cut","Copy","Paste","PasteText","PasteFromWord"],
+					["Undo","Redo","-","Find","Replace","-","SelectAll"],
+					["Styles"],
+					["Link","Unlink","Anchor"],
+					"/",
+					["Bold","Italic","Underline","-","Subscript","Superscript","RemoveFormat"],
+					["NumberedList","BulletedList","-","Outdent","Indent","Blockquote","CreateDiv"],
+					["JustifyLeft","JustifyCenter","JustifyRight","JustifyBlock"],				
+					["Image","Table","HorizontalRule","SpecialChar"],
+					"/",
+					["Format","Font","FontSize"],
+					["TextColor","BGColor"],
+					["Maximize", "ShowBlocks"]
+				],
+				skin : "v2"
+			});');
 	}
 }

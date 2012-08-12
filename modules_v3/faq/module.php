@@ -153,6 +153,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				$gedcom_id=WT_GED_ID;
 			}
 			$controller->pageHeader();
+			if (array_key_exists('ckeditor', WT_Module::getActiveModules())) {
+				ckeditor_WT_Module::enableEditor($controller);
+			}
 
 			// "Help for this page" link
 			echo '<div id="page_help">', help_link('add_faq_item', $this->getName()), '</div>';
