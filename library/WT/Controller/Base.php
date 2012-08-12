@@ -198,7 +198,7 @@ class WT_Controller_Base {
 		);
 		$this->external_javascript=array();
 
-		return '<script>Modernizr.load({load:'.$load_js.',complete:function(){'.$complete_js.'}});</script>';
+		return $html.'<script>Modernizr.load({load:'.$load_js.',complete:function(){'.$complete_js.'}});</script>';
 	}
 
 	// Print the page header, using the theme
