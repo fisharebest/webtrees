@@ -164,30 +164,33 @@ class WT_Controller_Base {
 	public function getJavascript() {
 		$html='';
 		// Insert the high priority scripts before external resources
-		if ($this->inline_javascript) {
+		if ($this->inline_javascript[self::JS_PRIORITY_HIGH]) {
 			$html.=PHP_EOL.'<script>';
 			foreach ($this->inline_javascript[self::JS_PRIORITY_HIGH] as $script) {
 				$html.=$script;
 			}
 			$html.='</script>';
+			$this->inline_javascript[self::JS_PRIORITY_HIGH] = array();
 		}
-		$this->inline_javascript[self::JS_PRIORITY_HIGH] = array();
 
-		// Load external libraries first
+		// Load external libraries asynchronously
+		$load_js=array();
 		foreach (array_keys($this->external_javascript) as $script_name) {
-			$html.=PHP_EOL.'<script src="'.htmlspecialchars($script_name).'"></script>';
+			$load_js[]='"'.htmlspecialchars($script_name).'"';
 		}
-		// Process the scripts, in priority order
+		$load_js='[' . implode(',', $load_js) . ']';
+		
+		// Process the scripts, in priority order, after the libraries have loaded
+		$complete_js='';
 		if ($this->inline_javascript) {
-			$html.=PHP_EOL.'<script>';
 			foreach ($this->inline_javascript as $scripts) {
 				foreach ($scripts as $script) {
-					$html.=$script;
+					$complete_js.=$script;
 				}
 			}
-			$html.='</script>';
 		}
 
+		// We could, in theory, inject JS at any point in the page (not just the bottom) - prepare for next time
 		$this->inline_javascript=array(
 			self::JS_PRIORITY_HIGH  =>array(),
 			self::JS_PRIORITY_NORMAL=>array(),
@@ -195,7 +198,7 @@ class WT_Controller_Base {
 		);
 		$this->external_javascript=array();
 
-		return $html;
+		return '<script>Modernizr.load({load:'.$load_js.',complete:function(){'.$complete_js.'}});</script>';
 	}
 
 	// Print the page header, using the theme
@@ -221,7 +224,7 @@ class WT_Controller_Base {
 
 		// This javascript needs to be loaded in the header, *before* the CSS.
 		// All other javascript should be defered until the end of the page
-		$javascript= '<!--[if lt IE 9]><script src="'.WT_STATIC_URL.'js/html5.js"></script><![endif]-->';
+		$javascript= '<script src="'.WT_STATIC_URL.'js/modernizr.custom-2.6.1.js"></script>';
 		// Give Javascript access to some PHP constants
 		$this->addInlineJavascript('
 			var WT_STATIC_URL  = "'.WT_STATIC_URL.'";
