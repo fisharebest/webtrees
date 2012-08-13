@@ -1802,10 +1802,13 @@ function get_user_blocks($user_id) {
 		"SELECT SQL_CACHE location, block_id, module_name".
 		" FROM  `##block`".
 		" JOIN  `##module` USING (module_name)".
+		" JOIN  `##module_privacy` USING (module_name)".
 		" WHERE user_id=?".
 		" AND   status='enabled'".
+		" AND   `##module_privacy`.gedcom_id=?".
+		" AND   access_level>=?".
 		" ORDER BY location, block_order"
-	)->execute(array($user_id))->fetchAll();
+	)->execute(array($user_id, WT_GED_ID, WT_USER_ACCESS_LEVEL))->fetchAll();
 	if (!$rows) {
 		// No rows found - create from defaults
 		WT_DB::prepare(
@@ -1818,10 +1821,13 @@ function get_user_blocks($user_id) {
 			"SELECT SQL_CACHE location, block_id, module_name".
 			" FROM  `##block`".
 			" JOIN  `##module` USING (module_name)".
+			" JOIN  `##module_privacy` USING (module_name)".
 			" WHERE user_id=?".
 			" AND   status='enabled'".
+			" AND   `##module_privacy`.gedcom_id=?".
+			" AND   access_level>=?".
 			" ORDER BY location, block_order"
-		)->execute(array($user_id))->fetchAll();
+		)->execute(array($user_id, WT_GED_ID, WT_USER_ACCESS_LEVEL))->fetchAll();
 	}
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id]=$row->module_name;
@@ -1829,16 +1835,21 @@ function get_user_blocks($user_id) {
 	return $blocks;
 }
 
+// NOTE - this function is only correct when $gedcom_id==WT_GED_ID
+// since the privacy depends on WT_USER_ACCESS_LEVEL, which depends
+// on WT_GED_ID		"SELECT SQL_CACHE location, block_id, module_name".
 function get_gedcom_blocks($gedcom_id) {
 	$blocks=array('main'=>array(), 'side'=>array());
 	$rows=WT_DB::prepare(
 		"SELECT SQL_CACHE location, block_id, module_name".
 		" FROM  `##block`".
 		" JOIN  `##module` USING (module_name)".
+		" JOIN  `##module_privacy` USING (module_name, gedcom_id)".
 		" WHERE gedcom_id=?".
-		" AND status='enabled'".
+		" AND   status='enabled'".
+		" AND   access_level>=?".
 		" ORDER BY location, block_order"
-	)->execute(array($gedcom_id))->fetchAll();
+	)->execute(array($gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
 	if (!$rows) {
 		// No rows found - create from defaults
 		WT_DB::prepare(
@@ -1847,14 +1858,16 @@ function get_gedcom_blocks($gedcom_id) {
 			" FROM `##block`".
 			" WHERE gedcom_id=-1"
 		)->execute(array($gedcom_id));
-		$rows=WT_DB::prepare(
+			$rows=WT_DB::prepare(
 			"SELECT SQL_CACHE location, block_id, module_name".
 			" FROM  `##block`".
 			" JOIN  `##module` USING (module_name)".
+			" JOIN  `##module_privacy` USING (module_name, gedcom_id)".
 			" WHERE gedcom_id=?".
-			" AND status='enabled'".
+			" AND   status='enabled'".
+			" AND   access_level>=?".
 			" ORDER BY location, block_order"
-		)->execute(array($gedcom_id))->fetchAll();
+		)->execute(array($gedcom_id, WT_USER_ACCESS_LEVEL))->fetchAll();
 	}
 	foreach ($rows as $row) {
 		$blocks[$row->location][$row->block_id]=$row->module_name;
