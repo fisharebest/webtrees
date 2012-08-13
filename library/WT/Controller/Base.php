@@ -162,6 +162,10 @@ class WT_Controller_Base {
 	// We've collected up Javascript fragments while rendering the page.
 	// Now display them.
 	public function getJavascript() {
+		// Modernizr.load() doesn't seem to work well with AJAX responses.
+		// Temporarily disable this while we investigate
+		$TMP_HTML='';
+
 		$html='';
 		// Insert the high priority scripts before external resources
 		if ($this->inline_javascript[self::JS_PRIORITY_HIGH]) {
@@ -177,6 +181,7 @@ class WT_Controller_Base {
 		$load_js=array();
 		foreach (array_keys($this->external_javascript) as $script_name) {
 			$load_js[]='"'.$script_name.'"';
+			$TMP_HTML.='<script src="'.htmlspecialchars($script_name).'"></script>';
 		}
 		$load_js='[' . implode(',', $load_js) . ']';
 		
@@ -198,6 +203,7 @@ class WT_Controller_Base {
 		);
 		$this->external_javascript=array();
 
+		return $TMP_HTML.'<script>'.$complete_js.'</script>';
 		return $html.'<script>Modernizr.load({load:'.$load_js.',complete:function(){'.$complete_js.'}});</script>';
 	}
 
