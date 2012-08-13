@@ -176,7 +176,7 @@ class WT_Controller_Base {
 		// Load external libraries asynchronously
 		$load_js=array();
 		foreach (array_keys($this->external_javascript) as $script_name) {
-			$load_js[]='"'.htmlspecialchars($script_name).'"';
+			$load_js[]='"'.$script_name.'"';
 		}
 		$load_js='[' . implode(',', $load_js) . ']';
 		
