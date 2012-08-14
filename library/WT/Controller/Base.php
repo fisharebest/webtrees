@@ -165,6 +165,7 @@ class WT_Controller_Base {
 		// Modernizr.load() doesn't seem to work well with AJAX responses.
 		// Temporarily disable this while we investigate
 		$TMP_HTML='';
+		$TMP_JS='';
 
 		$html='';
 		// Insert the high priority scripts before external resources
@@ -172,6 +173,7 @@ class WT_Controller_Base {
 			$html.=PHP_EOL.'<script>';
 			foreach ($this->inline_javascript[self::JS_PRIORITY_HIGH] as $script) {
 				$html.=$script;
+				$TMP_JS.=$script;
 			}
 			$html.='</script>';
 			$this->inline_javascript[self::JS_PRIORITY_HIGH] = array();
@@ -203,8 +205,8 @@ class WT_Controller_Base {
 		);
 		$this->external_javascript=array();
 
-		return $TMP_HTML.'<script>'.$complete_js.'</script>';
-		return $html.'<script>Modernizr.load({load:'.$load_js.',complete:function(){'.$complete_js.'}});</script>';
+		return '<script>' . $TMP_JS . '</script>' . $TMP_HTML . '<script>' . $complete_js . '</script>';
+		return $html . '<script>Modernizr.load({load:' . $load_js . ',complete:function(){' . $complete_js . '}});</script>';
 	}
 
 	// Print the page header, using the theme
