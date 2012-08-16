@@ -118,7 +118,6 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 	echo '<div id="topMenu"><ul class="makeMenu">';
 	foreach ($menu_items as $menu) {
 		if ($menu) {
-			$menu->title = '';
 			echo $menu->getMenuAsList();
 		}
 	}

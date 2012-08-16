@@ -137,7 +137,6 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 			'<ul id="main-menu">';
 				foreach ($menu_items as $menu) {
 					if ($menu) {
-						$menu->title = '';
 						echo $menu->getMenuAsList();
 					}
 				}

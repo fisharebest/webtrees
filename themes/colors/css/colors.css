@@ -73,7 +73,8 @@ html[dir='rtl'] #main-menu li{float:right;}
 #main-menu ul{background:#fff;border:1px solid #ccc;display:none;left:0;position:absolute;right:auto;top:40px;z-index:2001;}
 html[dir='rtl'] #main-menu ul{right:0;left:auto;}
 
-#main-menu ul li a{font-size:12px;padding:5px;text-align:left;white-space:nowrap;}
+#main-menu ul li{white-space:nowrap;}
+#main-menu ul li a{font-size:12px;padding:5px;text-align:left;}
 html[dir='rtl'] #main-menu ul li a{text-align:right;float:right;padding-right:30px;}
 
 #main-menu #menu-chart li ul{display:none;}

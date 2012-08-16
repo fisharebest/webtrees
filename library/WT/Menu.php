@@ -57,7 +57,6 @@ class WT_Menu {
 		$this->id      =$id;
 		$this->flyout  =$flyout;
 		$this->submenus=array();
-		$this->title   = htmlentities(strip_tags($label));
 	}
 
 	function addLabel($label=' ', $pos='right')
@@ -111,11 +110,7 @@ class WT_Menu {
 				}
 				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
 			} else {
-				if ($this->submenus) {
-					$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
-				} else {
-					$html='<a class="'.$this->iconclass.'" title="'.$this->title.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
-				}	
+				$html='<a class="'.$this->iconclass.'" href="'.$this->link.'"'.$link.'>'.$this->label.'</a>';
 			}
 		} else {
 			$html=$this->label;
@@ -123,7 +118,6 @@ class WT_Menu {
 		if ($this->submenus) {
 			$html.='<ul>';
 			foreach ($this->submenus as $submenu) {
-				$submenu->title = '';
 				if ($submenu) {
 					if ($submenu->submenus) {
 						$submenu->iconclass.=' icon_arrow';

@@ -35,6 +35,8 @@ function getMenuAsCustomList($menu) {
 		// Insert the label into the submenu
 		if ($menu->submenus) {
 			array_unshift($menu->submenus, $tmp);
+		} else {
+			$menu->addSubmenu($tmp);
 		}
 		// Neutralise the top-level menu
 		$menu->label='';

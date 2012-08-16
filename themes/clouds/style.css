@@ -127,11 +127,14 @@ border:1px solid #ccc;
 display:none;
 }
 
+#main-menu ul li {
+white-space:nowrap;
+}
+
 #main-menu ul li a {
 font-size:12px;
 padding:5px;
 text-align:left;
-white-space:nowrap;
 }
 
 html[dir='rtl'] #main-menu ul {right:0;left:auto;text-align:right;}
