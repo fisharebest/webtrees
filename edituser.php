@@ -158,7 +158,7 @@ echo '<div id="edituser-page">
 		<div class="value"><input type="password" name="form_pass1"> ', WT_I18N::translate('Leave password blank if you want to keep the current password.'), '</div>
 		<div class="label">', WT_I18N::translate('Confirm password'), help_link('password_confirm'), '</div>
 		<div class="value"><input type="password" name="form_pass2"></div>
-		<div class="label">', WT_I18N::translate('Language'), help_link('edituser_change_lang'), '</div>
+		<div class="label">', WT_I18N::translate('Language'), '</div>
 		<div class="value">', edit_field_language('form_language', get_user_setting(WT_USER_ID, 'language')), '</div>
 		<div class="label">', WT_I18N::translate('Email address'), help_link('email'), '</div>
 		<div class="value"><input type="email" name="form_email" value="', getUserEmail(WT_USER_ID), '" size="50"></div>

@@ -533,7 +533,7 @@ case 'register':
 					</label>
 				</div>
 				<div>
-					<label for="user_language">', WT_I18N::translate('Language'), help_link('edituser_change_lang'),
+					<label for="user_language">', WT_I18N::translate('Language'),
 						edit_field_language('user_language', WT_LOCALE),
 					'</label>
 				</div>
