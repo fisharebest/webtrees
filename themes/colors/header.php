@@ -147,10 +147,8 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo '</div>'; // <div id="flash-messages">
 }
 
-// Remove label from home, FAQ and Clipping sub-menus
-$this->addInlineJavascript(
-	'if (jQuery("#menu-tree ul li").length == 1) jQuery("#menu-tree ul").remove();
-	if (jQuery("#menu-help ul li").length == 1) jQuery("#menu-help ul").remove();
-	if (jQuery("#menu-clippings ul li").length == 1) jQuery("#menu-clippings ul").remove();'
-);
+// Remove label from menus with no submenus.  This is a contentious issue, as
+// some feel that icons without labels are confusing.
+$this->addInlineJavascript('jQuery("#main-menu > li > ul").each(function(){if (jQuery(this).children().size()==1){jQuery(this).remove()};});');
+
 echo $javascript, '<div id="content">';
