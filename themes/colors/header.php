@@ -147,8 +147,10 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo '</div>'; // <div id="flash-messages">
 }
 
-// Remove submenu from home
+// Remove label from home, FAQ and Clipping sub-menus
 $this->addInlineJavascript(
-	'if (jQuery("#menu-tree ul li").length == 1) jQuery("#menu-tree ul").remove();'
+	'if (jQuery("#menu-tree ul li").length == 1) jQuery("#menu-tree ul").remove();
+	if (jQuery("#menu-help ul li").length == 1) jQuery("#menu-help ul").remove();
+	if (jQuery("#menu-clippings ul li").length == 1) jQuery("#menu-clippings ul").remove();'
 );
 echo $javascript, '<div id="content">';
