@@ -247,9 +247,6 @@ $level2_tags=array(
 		'ORDN',
 		'RETI',
 	),
-	'CAUS'=>array(
-		'DEAT',
-	),
 	'CALN'=>array(
 		'REPO',
 	),
@@ -383,6 +380,9 @@ $level2_tags=array(
 		'ORDN',
 		'PROP',
 		'RESI',
+	),
+	'CAUS'=>array(
+		'DEAT',
 	),
 	'PHON'=>array(
 		'OCCU',
