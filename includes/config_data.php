@@ -303,6 +303,10 @@ $level2_tags=array(
 		'WILL',
 		'_TODO',
 	),
+	'AGE'=>array(
+		'CENS',
+		'DEAT',
+	),
 	'TEMP'=>array(
 		'BAPL',
 		'CONL',
@@ -399,10 +403,6 @@ $level2_tags=array(
 	'EMAIL'=>array(
 		'OCCU',
 		'RESI',
-	),
-	'AGE'=>array(
-		'CENS',
-		'DEAT',
 	),
 	'HUSB'=>array(
 		'MARR',
