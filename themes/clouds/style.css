@@ -196,6 +196,9 @@ overflow:hidden;
 width:17px;
 }
 
+#main-menu > li > ul > li:first-child{background:none;color:#333;font-weight:700;text-align:center;text-indent:0;}
+#main-menu > li > ul > li:nth-child(2){border-top:solid #ccc 2px;}
+
 /********************Menu Top Row Icons **********************/
 
 #menu-tree	{background-position:0 0;}

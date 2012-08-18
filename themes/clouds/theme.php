@@ -29,6 +29,23 @@ if (!defined('WT_WEBTREES')) {
 	exit;
 }
 
+// Convert a menu into our theme-specific format
+function getMenuAsCustomList($menu) {
+		// Create an inert menu - to use as a label
+		$tmp=new WT_Menu(strip_tags($menu->label), '');
+		// Insert the label into the submenu
+		if (is_array($menu->submenus)) {
+			array_unshift($menu->submenus, $tmp);
+		} else {
+			$menu->addSubmenu($tmp);
+		}
+		// Neutralise the top-level menu
+		$menu->label='';
+		$menu->onclick='';
+		$menu->iconclass='';
+		return $menu->getMenuAsList();
+}
+
 $theme_name = "clouds"; // need double quotes, as file is scanned/parsed by script
 $stylesheet = WT_THEME_URL . 'style.css';
 $headerfile = WT_THEME_DIR . 'header.php';
