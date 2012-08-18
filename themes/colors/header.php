@@ -147,8 +147,4 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	echo '</div>'; // <div id="flash-messages">
 }
 
-// Remove label from menus with no submenus.  This is a contentious issue, as
-// some feel that icons without labels are confusing.
-$this->addInlineJavascript('jQuery("#main-menu > li > ul").each(function(){if (jQuery(this).children().size()==1){jQuery(this).remove()};});');
-
 echo $javascript, '<div id="content">';
