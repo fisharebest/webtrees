@@ -64,7 +64,7 @@ html[dir='rtl'] .makeMenu li ul li {text-align:right;}
 #topMenu ul li {margin:0;padding:0;	width:auto;padding-left:5px;padding-right:5px;border:1px solid #999;float:left;position:relative;left:50%;}
 #topMenu ul li a {display:block;font-size:14px;text-align:center;padding:5px 5px 5px 5px;background-color:#fff;}
 /* Subnavigation section */
-#topMenu ul ul {display:none;position:absolute;top:27px;left:0;right:auto;border:1px solid #999;white-space:nowrap;	background:#fff;}
+#topMenu ul ul {display:none;position:absolute;top:27px;left:0;right:auto;border:1px solid #999;white-space:nowrap;background:#fff;z-index:600;}
 /* sub-sub-menus */
 #topMenu ul ul ul {z-index:2100;top:0;left:100px;}
 #topMenu ul ul li {border:0;left:auto;margin:0;padding-left:0;	padding-right:0;clear:left;float:left;width:100%;}
