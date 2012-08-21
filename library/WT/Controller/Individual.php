@@ -289,30 +289,30 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			switch ($sex) {
 			case 'M':
 				echo 'male_gender"';
-					if ($this->record->canEdit() && !$event->getIsOld()) {
-						echo ' title="',WT_I18N::translate('Male'),' - ',WT_I18N::translate('Edit'),'">';
-						echo '<a style="display:block" href="#" onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;</a>';
-					} else {
-						echo ' title="',WT_I18N::translate('Male'),'">&nbsp;';
-					}	
+				if ($this->record->canEdit() && !$event->getIsOld()) {
+					 echo ' title="',WT_I18N::translate('Male'),' - ',WT_I18N::translate('Edit'),'"';
+					 echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
+				 } else {
+					  echo ' title="',WT_I18N::translate('Male'),'">&nbsp;';
+				 }
 				break;
 			case 'F':
 				echo 'female_gender"';
-					if ($this->record->canEdit() && !$event->getIsOld()) {
-						echo ' title="',WT_I18N::translate('Female'),' - ',WT_I18N::translate('Edit'),'">';
-						echo '<a style="display:block" href="#" onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;</a>';
-					} else {
-						echo ' title="'.WT_I18N::translate('Female'),'">&nbsp;';
-					}	
+				if ($this->record->canEdit() && !$event->getIsOld()) {
+					 echo ' title="',WT_I18N::translate('Female'),' - ',WT_I18N::translate('Edit'),'"';
+					 echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
+				 } else {
+					  echo ' title="',WT_I18N::translate('Male'),'">&nbsp;';
+				 }
 				break;
 			case 'U':
 				echo 'unknown_gender"';
-					if ($this->record->canEdit() && !$event->getIsOld()) {
-						echo ' title="',WT_I18N::translate('Unknown'),' - ',WT_I18N::translate('Edit'),'">';
-						echo '<a style="display:block" href="#" onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;</a>';
-					} else {
-						echo ' title="',WT_I18N::translate('Unknown'),'">&nbsp;';
-					}	
+				if ($this->record->canEdit() && !$event->getIsOld()) {
+					 echo ' title="',WT_I18N::translate('Unknown'),' - ',WT_I18N::translate('Edit'),'"';
+					 echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
+				 } else {
+					  echo ' title="',WT_I18N::translate('Male'),'">&nbsp;';
+				 }
 				break;
 			}
 		echo '</span>';
