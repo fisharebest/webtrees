@@ -196,8 +196,7 @@ overflow:hidden;
 width:17px;
 }
 
-#main-menu > li > ul > li:first-child{background:none;color:#333;font-weight:700;text-align:center;text-indent:0;}
-#main-menu > li > ul > li:nth-child(2){border-top:solid #ccc 2px;}
+#main-menu > li > ul > li:first-child{background: none;color: #333;font-weight: 700;text-align: center;text-indent: 0;padding: 5px;line-height: 1;height: auto;}
 
 /********************Menu Top Row Icons **********************/
 
