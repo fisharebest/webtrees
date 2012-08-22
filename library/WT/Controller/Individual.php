@@ -290,28 +290,28 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 			case 'M':
 				echo 'male_gender"';
 				if ($this->record->canEdit() && !$event->getIsOld()) {
-					 echo ' title="',WT_I18N::translate('Male'),' - ',WT_I18N::translate('Edit'),'"';
-					 echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
+					echo ' title="', WT_I18N::translate('Male'), ' - ', WT_I18N::translate('Edit'), '"';
+					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
 				 } else {
-					  echo ' title="',WT_I18N::translate('Male'),'">&nbsp;';
+					echo ' title="', WT_I18N::translate('Male'), '">&nbsp;';
 				 }
 				break;
 			case 'F':
 				echo 'female_gender"';
 				if ($this->record->canEdit() && !$event->getIsOld()) {
-					 echo ' title="',WT_I18N::translate('Female'),' - ',WT_I18N::translate('Edit'),'"';
-					 echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
+					echo ' title="', WT_I18N::translate('Female'), ' - ', WT_I18N::translate('Edit'), '"';
+					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
 				 } else {
-					  echo ' title="',WT_I18N::translate('Male'),'">&nbsp;';
+					echo ' title="', WT_I18N::translate('Female'), '">&nbsp;';
 				 }
 				break;
 			case 'U':
 				echo 'unknown_gender"';
 				if ($this->record->canEdit() && !$event->getIsOld()) {
-					 echo ' title="',WT_I18N::translate('Unknown'),' - ',WT_I18N::translate('Edit'),'"';
-					 echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
+					echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), ' - ', WT_I18N::translate('Edit'), '"';
+					echo ' onclick="edit_record(\''.$this->record->getXref().'\', '.$event->getLineNumber().'); return false;">&nbsp;';
 				 } else {
-					  echo ' title="',WT_I18N::translate('Male'),'">&nbsp;';
+					echo ' title="', WT_I18N::translate_c('unknown gender', 'Unknown'), '">&nbsp;';
 				 }
 				break;
 			}
