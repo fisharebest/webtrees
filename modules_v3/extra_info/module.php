@@ -54,13 +54,15 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$indifacts = $controller->getIndiFacts();
 		if (count($indifacts)==0) {
 			echo WT_I18N::translate('There are no Facts for this individual.');
-		}
-		foreach ($indifacts as $fact) {
-			if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
-				print_fact($fact, $controller->record);
+		} else {
+			echo '<table>';
+			foreach ($indifacts as $fact) {
+				if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
+					print_fact($fact, $controller->record);
+				}
 			}
+			echo '</table>';
 		}
-
 		echo '<div id="hitcounter">';
 		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
 			//print indi counter only if displaying a non-private person
