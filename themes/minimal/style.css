@@ -59,7 +59,7 @@ html[dir='rtl'] .makeMenu ul ul {top:0;left:auto;right:100px;}
 html[dir='rtl'] .makeMenu li ul li {text-align:right;}
 
 /* set up container for menu */
-#topMenu {border-bottom:1px solid;clear:both;float:left;width:100%;margin:10px 0 0 0;padding:0 0 10px 0;margin-top:18px;z-index:2000;position:relative;}
+#topMenu {border-bottom:1px solid;clear:both;float:left;width:100%;margin:10px 0 0 0;padding:0 0 10px 0;margin-top:18px;position:relative;}
 #topMenu ul {	margin:0;padding:0;list-style:none;float:right;position:relative;right:50%;}
 #topMenu ul li {margin:0;padding:0;	width:auto;padding-left:5px;padding-right:5px;border:1px solid #999;float:left;position:relative;left:50%;}
 #topMenu ul li a {display:block;font-size:14px;text-align:center;padding:5px 5px 5px 5px;background-color:#fff;}
