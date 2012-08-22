@@ -184,10 +184,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			echo '</td><td>';
 			echo '<input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '"></td>';
 			echo '</td><td>';
-				echo '<select name="gedcom_id" tabindex="4">';
-					echo '<option value="">', WT_I18N::translate('All'), '</option>';
-					echo '<option value="', WT_GED_ID, '" selected="selected">', WT_I18N::translate('%s', get_gedcom_setting(WT_GED_ID, 'title')), '</option';
-				echo '</select>';
+			echo select_edit_control('gedcom_id', get_all_gedcoms(), '', $gedcom_id, 'tabindex="4"');
 			echo '</td></tr>';
 			echo '</table>';
 
@@ -337,9 +334,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			" WHERE module_name=?".
 			" AND bs1.setting_name='header'".
 			" AND bs2.setting_name='faqbody'".
-			" AND IFNULL(gedcom_id, ?)=?".
 			" ORDER BY block_order"
-		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
+		)->execute(array($this->getName()))->fetchAll();
 
 		$min_block_order=WT_DB::prepare(
 			"SELECT MIN(block_order) FROM `##block` WHERE module_name=?"
