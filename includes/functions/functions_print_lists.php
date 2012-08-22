@@ -1353,7 +1353,7 @@ function format_surname_table($surnames, $script) {
 			"aaSorting": [],
 			"aoColumns": [
 				/*  0 name  */ {iDataSort:1},
-				/*  1 NAME  */ {bVisible:false, sType:"num"},
+				/*  1 NAME  */ {bVisible:false},
 				/*  2 count */ {iDataSort:3, sClass:"center"},
 				/*  3 COUNT */ {bVisible:false}
 			],
@@ -1374,7 +1374,6 @@ function format_surname_table($surnames, $script) {
 		'<th>&nbsp;</th>'.
 		'</tr></thead>';
 
-	$n=0; // We have already sorted the data - use this as a surrogate sort key
 	$html .= '<tbody>';
 	foreach ($surnames as $surn=>$surns) {
 		// Each surname links back to the indi/fam surname list
@@ -1397,8 +1396,8 @@ function format_surname_table($surnames, $script) {
 			}
 		}
 		$html.='</td>';
-		// Surrogate sort column for name
-		$html.='<td>'.$n++.'</td>';
+		// Sort column for name
+		$html.='<td>'.$surn.'</td>';
 		// Surname count
 		$html.='<td>';
 		$subtotal=0;
