@@ -322,6 +322,8 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 	}
 
 	private function config() {
+		require_once 'includes/functions/functions_edit.php';
+
 		$controller=new WT_Controller_Base();
 		$controller->setPageTitle($this->getTitle());
 		$controller->pageHeader();
@@ -334,8 +336,9 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			" WHERE module_name=?".
 			" AND bs1.setting_name='header'".
 			" AND bs2.setting_name='faqbody'".
+			" AND IFNULL(gedcom_id, ?)=?".
 			" ORDER BY block_order"
-		)->execute(array($this->getName()))->fetchAll();
+		)->execute(array($this->getName(), WT_GED_ID, WT_GED_ID))->fetchAll();
 
 		$min_block_order=WT_DB::prepare(
 			"SELECT MIN(block_order) FROM `##block` WHERE module_name=?"
@@ -344,6 +347,15 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		$max_block_order=WT_DB::prepare(
 			"SELECT MAX(block_order) FROM `##block` WHERE module_name=?"
 		)->execute(array($this->getName()))->fetchOne();
+
+		echo
+			'<p><form method="get" action="', WT_SCRIPT_NAME ,'">',
+			WT_I18N::translate('Family tree'), ' ',
+			'<input type="hidden" name="mod", value="', $this->getName(), '">',
+			'<input type="hidden" name="mod_action", value="admin_config">',
+			select_edit_control('ged', array_combine(get_all_gedcoms(), get_all_gedcoms()), null, WT_GEDCOM),
+			'<input type="submit" value="', WT_I18N::translate('show'), '">',
+			'</form></p>';
 
 		echo '<a href="module.php?mod=', $this->getName(), '&amp;mod_action=admin_edit">', WT_I18N::translate('Add FAQ item'), '</a>';
 		echo help_link('add_faq_item', $this->getName());
