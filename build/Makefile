@@ -1,5 +1,5 @@
-LANGUAGES_BUILD=ar bg bs ca cs da de en_GB en_US es et fa fi fr he hr hu is it lt nb nl nn pl pt ru sk sl sv tr tt vi
-LANGUAGES_EXTRA=af dv el en_AU fo fr_CA gl id ja lv ka ms ne oc pt_BR ro sr sr@Latn ta uk zh
+LANGUAGES_BUILD=ar bg bs ca cs da de en_GB en_US es et fa fi fr he hr hu is it lt nb nl nn pl pt ru sk sl sv tr tt uk vi
+LANGUAGES_EXTRA=af dv el en_AU fo fr_CA gl id ja lv ka mr ms ne oc pt_BR ro sr sr@Latn ta zh
 # Note that we also have translations for mi (maori) and yi (yiddish), although Zend Framework v1 does not include support for these.
 PO_DIR=po
 MO_DIR=mo
@@ -56,7 +56,7 @@ dist-clean: clean
 # Create a release from this SVN working copy
 ################################################################################
 webtrees: $(PO_DIR) $(MO_DIR)
-	svn export .. $@
+	svn export --quiet .. $@
 	bzr revert $(PO_DIR)
 	bzr update $(PO_DIR)
 	make $(MO_FILES)
