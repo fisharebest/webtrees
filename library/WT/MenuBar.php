@@ -231,7 +231,7 @@ class WT_MenuBar {
 					}
 					$submenu = new WT_Menu(
 						WT_I18N::translate('Relationships'),
-						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL,
+						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
 						'menu-chart-relationship'
 					);
 					if (array_key_exists('user_favorites', WT_Module::getActiveModules())) {
@@ -242,7 +242,7 @@ class WT_MenuBar {
 								if ($person instanceof WT_Person) {
 									$subsubmenu = new WT_Menu(
 										$person->getFullName(),
-										'relationship.php?pid1='.$person->getXref().'&amp;pid2='.$pid2.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL,
+										'relationship.php?pid1='.$person->getXref().'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
 										'menu-chart-relationship-'.$person->getXref().'-'.$pid2 // We don't use these, but a custom theme might
 									);
 									$submenu->addSubmenu($subsubmenu);
@@ -256,7 +256,7 @@ class WT_MenuBar {
 					$pid2='';
 					$submenu = new WT_Menu(
 						WT_I18N::translate('Relationships'),
-						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;pretty=2&amp;followspouse=1&amp;ged='.WT_GEDURL,
+						'relationship.php?pid1='.$pid1.'&amp;pid2='.$pid2.'&amp;ged='.WT_GEDURL,
 						'menu-chart-relationship'
 					);
 				}
