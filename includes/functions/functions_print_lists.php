@@ -401,7 +401,7 @@ function format_indi_table($datalist, $option='') {
 		$html .= '</td>';
 		//-- Filtering by birth date
 		$html .= '<td>';
-		if (!$person->canDisplayDetails() || WT_Date::Compare($birth_dates[0], $d100y)>0) {
+		if (!$person->canDisplayDetails() || WT_Date::Compare($birth_date, $d100y)>0) {
 			$html .= 'Y100';
 		} else {
 			$html .= 'YES';
@@ -409,12 +409,11 @@ function format_indi_table($datalist, $option='') {
 		$html .= '</td>';
 		//-- Filtering by death date
 		$html .= '<td>';
-		if ($person->isDead()) {
-			if (WT_Date::Compare($death_dates[0], $d100y)>0) {
-				$html .= 'Y100';
-			} else {
-				$html .= 'YES';
-			}
+		// Died in last 100 years?  Died?  Not dead?
+		if (WT_Date::Compare($death_date, $d100y)>0) {
+			$html .= 'Y100';
+		} elseif ($death_date->minJD()) {
+			$html .= 'YES';
 		} else {
 			$html .= 'N';
 		}
