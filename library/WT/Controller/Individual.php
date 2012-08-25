@@ -774,11 +774,6 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 					collapsible: true,
 					icons:{ "header": "ui-icon-triangle-1-s", "headerSelected": "ui-icon-triangle-1-n" }
 				});
-				//jQuery code to remove table elements from INDI facts
-				jQuery("#sb_content_extra_info table").replaceWith(function() { return jQuery(this).contents(); });
-				jQuery("#sb_content_extra_info tbody").replaceWith(function() { return jQuery(this).contents(); });
-				jQuery("#sb_content_extra_info tr").replaceWith(function() { return jQuery(this).contents();	});
-				jQuery("#sb_content_extra_info td").replaceWith(function() { return jQuery(this).contents();	});
 			');
 
 		return '<div id="sidebar"><div id="sidebarAccordion">'.$html.'</div></div>';
