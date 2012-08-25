@@ -28,6 +28,15 @@ require './includes/session.php';
 require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Fanchart();
+
+if (safe_GET_bool('img')) {
+	$img=$controller->generate_fan_chart('png');
+	header('Content-type: image/png');
+	header('Content-length: '.strlen($img));
+	echo $img;
+	exit;
+}
+
 $controller
 	->pageHeader()
 	->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js')
@@ -87,4 +96,6 @@ if ($controller->error_message) {
 	exit;
 }
 
-echo $controller->chart_html;
+if ($controller->root) {
+	echo $controller->generate_fan_chart('html');
+}

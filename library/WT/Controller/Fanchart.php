@@ -51,9 +51,6 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 				/* I18N: http://en.wikipedia.org/wiki/Family_tree#Fan_chart - %s is a person's name */
 				WT_I18N::translate('Fan chart of %s', $this->root->getFullName())
 			);
-			// Generate the chart.  We need to store the image in the session, so
-			// need to do this before we display the page header.
-			$this->chart_html=$this->generate_fan_chart();
 		} else {
 			$this->setPageTitle(WT_I18N::translate('Fan chart'));
 		}
@@ -125,11 +122,9 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		return $text;
 	}
 
-	/**
-	 * print ancestors on a fan chart
-	 */
-	public function generate_fan_chart() {
-		global $GEDCOM, $fanChart;
+	// Generate either the HTML or PNG components of the chart - we send them separately
+	public function generate_fan_chart($what) {
+		global $fanChart;
 
 		$treeid=ancestry_array($this->root->getXref(), $this->generations);
 		$fanw  =640*$this->fan_width/100;
@@ -234,13 +229,6 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 					ImageFilledArc($image, $cx, $cy, $rx, $rx, $deg1, $deg2, $bg, IMG_ARC_PIE);
 
-	//$name = str_replace(array('<span class="starredname">', '</span>'), '', $name);
-	//$addname = str_replace(array('<span class="starredname">', '</span>'), '', $addname);
-	//$name = str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $name); //@@
-	//$addname = str_replace(array('<span class="starredname">', '</span>'), array('<u>', '</u>'), $addname); //@@
-	// ToDo - print starred names underlined - 1985154
-	// Todo - print Arabic letters combined - 1360209
-
 					$text = reverseText($name) . "\n";
 					if (!empty($addname)) $text .= reverseText($addname). "\n";
 
@@ -255,8 +243,7 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 
 					$text = unhtmlentities($text);
 					$text = strip_tags($text);
-	//Do we still need?
-
+	
 					// split and center text by lines
 					$wmax = (int)($angle*7/$fanChart['size']*$scale);
 					$wmax = min($wmax, 35*$scale);
@@ -317,9 +304,8 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 					$imagemap .= '" href="'.$person->getHtmlUrl().'"';
 					$tempURL = 'fanchart.php?rootid='.$pid.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;fan_style='.$this->fan_style.'&amp;ged='.WT_GEDURL;
 					$count=0;
-					$lbwidth=200;
-					$html.= "<div id=\"I".$pid.".".$count."links\" style=\"position:absolute; >";
-					$html.= "left:".$tx."px; top:".$ty."px; width: ".($lbwidth)."px; visibility:hidden; z-index:'100';\">";
+					$html.= "<div id=\"I".$pid.".".$count."links\" style=\"position:absolute;";
+					$html.= "left:".$tx."px; top:".$ty."px; width:200px; visibility:hidden; z-index:100;\">";
 					$html.= "<table class=\"person_box\"><tr><td class=\"details1\">";
 					$html.= "<a href=\"".$person->getHtmlUrl()."\" class=\"name1\">" . $name;
 					if (!empty($addname)) $html.= "<br>" . $addname;
@@ -378,31 +364,17 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 		}
 
 		$imagemap .= '</map>';
-		$html.= $imagemap;
 
-		ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_SERVER_NAME.WT_SCRIPT_PATH, $color);
-
-		// here we cannot send image to browser ('header already sent')
-		// and we dont want to use a tmp file
-
-		// step 1. save image data in a session variable
-		ob_start();
-		ImagePng($image);
-		$image_data = ob_get_contents();
-		ob_end_clean();
-		$image_data = serialize($image_data);
-		unset ($_SESSION['image_data']);
-		$_SESSION['image_data']=$image_data;
-
-		// step 2. call imageflush.php to read this session variable and display image
-		// note: arg "image_name=" is to avoid image miscaching
-		$image_name= "V".time();
-		unset($_SESSION[$image_name]); // statisticsplot.php uses this to hold a filename to send to browser
-		$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($name));
-		$html.= "<p align=\"center\" >";
-		$html.= "<img src=\"imageflush.php?image_type=png&amp;image_name=$image_name&amp;height=$fanh&amp;width=$fanw\" width=\"$fanw\" height=\"$fanh\" alt=\"$image_title\" title=\"$image_title\" usemap=\"#fanmap\">";
-		$html.= "</p>";
-		ImageDestroy($image);
-		return $html;
+		switch ($what) {
+		case 'html':
+			$image_title=WT_I18N::translate('Fan chart of %s', strip_tags($name));
+			return $html.$imagemap.'<p align="center"><img src="'.WT_SCRIPT_NAME.'?rootid='.$this->rootid.'&amp;fan_style='.$this->fan_style.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;img=1" width="'.$fanw.'" height="'.$fanh.'" alt="'.$image_title.'" title="'.$image_title.'" usemap="#fanmap"></p>';
+		case 'png':
+			ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_SERVER_NAME.WT_SCRIPT_PATH, $color);
+			ob_start();
+			ImagePng($image);
+			ImageDestroy($image);
+			return ob_get_flush();
+		}
 	}
 }
