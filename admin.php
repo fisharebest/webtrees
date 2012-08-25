@@ -1386,6 +1386,13 @@ function old_paths() {
 		WT_ROOT.'themes/xenea/images/statistic.png',
 		WT_ROOT.'themes/xenea/images/timeline.png',
 		WT_ROOT.'themes/xenea/images/w_22.png',
+		// Removed in 1.3.1
+		WT_ROOT.'imageflush.php',
+		WT_ROOT.'includes/functions/functions_places.php',
+		WT_ROOT.'js/html5.js',
+		WT_ROOT.'js/jquery/jquery.scrollfollow.js',
+		WT_ROOT.'modules_v3/googlemap/wt_v3_pedigree_map.js.php',
+		WT_ROOT.'modules_v3/lightbox/js/tip_balloon_RTL.js',
 	);
 }
 
