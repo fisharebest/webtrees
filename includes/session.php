@@ -364,9 +364,9 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 if (isset($_REQUEST['ged'])) {
 	// .... from the URL or form action
 	$GEDCOM=$_REQUEST['ged'];
-} elseif (isset($_SESSION['GEDCOM'])) {
+} elseif ($WT_SESSION->GEDCOM) {
 	// .... the most recently used one
-	$GEDCOM=$_SESSION['GEDCOM'];
+	$GEDCOM=$WT_SESSION->GEDCOM;
 } else {
 	// .... we'll need to query the DB to find one
 	$GEDCOM='';
@@ -394,7 +394,7 @@ define('WT_GEDURL', rawurlencode(WT_GEDCOM));
 load_gedcom_settings(WT_GED_ID);
 
 // Set our gedcom selection as a default for the next page
-$_SESSION['GEDCOM']=WT_GEDCOM;
+$WT_SESSION->GEDCOM=WT_GEDCOM;
 
 if (empty($WEBTREES_EMAIL)) {
 	$WEBTREES_EMAIL='webtrees-noreply@'.preg_replace('/^www\./i', '', $_SERVER['SERVER_NAME']);
@@ -445,8 +445,6 @@ if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {
 // The login URL must be an absolute URL, and can be user-defined
 define('WT_LOGIN_URL', get_site_setting('LOGIN_URL', WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php'));
 
-if (!isset($_SESSION['wt_user'])) $_SESSION['wt_user'] = '';
-
 if (WT_SCRIPT_NAME!='help_text.php') {
 	if (!get_gedcom_setting(WT_GED_ID, 'imported') && substr(WT_SCRIPT_NAME, 0, 5)!=='admin' && !in_array(WT_SCRIPT_NAME, array('help_text.php', 'login.php', 'edit_changes.php', 'import.php', 'message.php', 'save.php'))) {
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
@@ -462,17 +460,13 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 		header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode($url));
 		exit;
 	}
-
-	if (!isset($_SESSION['timediff'])) {
-		$_SESSION['timediff'] = 0;
-	}
 }
 
 if (WT_USER_ID) {
 	//-- update the login time every 5 minutes
-	if (!isset($_SESSION['activity_time']) || (time()-$_SESSION['activity_time'])>300) {
+	if ($WT_SESSION->activity_time && time()-$WT_SESSION->activity_time > 300) {
 		userUpdateLogin(WT_USER_ID);
-		$_SESSION['activity_time'] = time();
+		$WT_SESSION->activity_time = time();
 	}
 }
 

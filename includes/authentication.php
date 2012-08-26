@@ -40,6 +40,8 @@ if (!defined('WT_WEBTREES')) {
 // On success, store the user-id in the session and return it
 // On failure, return an error code
 function authenticateUser($user_name, $password) {
+	global $WT_SESSION;
+	
 	// If we were already logged in, log out first
 	if (getUserId()) {
 		userLogout(getUserId());
@@ -53,7 +55,7 @@ function authenticateUser($user_name, $password) {
 			if ($verified && $approved || $is_admin) {
 				// Whenever we change our authorisation level change the session ID
 				Zend_Session::regenerateId();
-				$_SESSION['wt_user'] = $user_id;
+				$WT_SESSION->wt_user = $user_id;
 				AddToLog('Login successful', 'auth');
 				return $user_id;
 			} elseif (!$is_admin && !$verified) {
@@ -106,11 +108,9 @@ function userUpdateLogin($user_id) {
  */
 
 function getUserId() {
-	if (empty($_SESSION['wt_user'])) {
-		return 0;
-	} else {
-		return $_SESSION['wt_user'];
-	}
+	global $WT_SESSION;
+
+	return (int)($WT_SESSION->wt_user);
 }
 
 function getUserName() {
