@@ -83,7 +83,7 @@ default:
 
 		default: // Success
 			if ($usertime) {
-				$WT__SESSION->usertime=@strtotime($usertime);
+				$WT_SESSION->usertime=@strtotime($usertime);
 			} else {
 				$WT_SESSION->usertime=time();
 			}
