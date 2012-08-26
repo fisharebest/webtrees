@@ -70,7 +70,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 	private $nonfacts=array('FAMS', 'FAMC', 'MAY', 'BLOB', 'OBJE', 'SEX', 'NAME', 'SOUR', 'NOTE', 'BAPL', 'ENDL', 'SLGC', 'SLGS', '_TODO', '_WT_OBJE_SORT', 'CHAN', 'HUSB', 'WIFE', 'CHIL', 'BIRT', 'DEAT', 'BURI');
 
 	function __construct() {
-		global $GEDCOM_ID_PREFIX;
+		global $WT_SESSION;
 
 		parent::__construct();
 		$this->setPageTitle(WT_I18N::translate('Lifespans'));
@@ -110,8 +110,8 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 			$this->place=$place;
 		} else {
 			// Modify an existing list of records
-			if (isset($_SESSION['timeline_pids'])) {
-				$this->pids = $_SESSION['timeline_pids'];
+			if (is_array($WT_SESSION->timeline_pids))) {
+				$this->pids = $WT_SESSION->timeline_pids;
 			} else {
 				$this->pids=array();
 			}
@@ -128,7 +128,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 				$this->addFamily($this->getSignificantIndividual(), false);
 			}
 		}
-		$_SESSION['timeline_pids']=$this->pids;
+		$WT_SESSION->timeline_pids=$this->pids;
 
 		$this->beginYear=$beginYear;
 		$this->endYear=$endYear;
@@ -174,7 +174,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 					}
 				}
 			}
-			unset($_SESSION['timeline_pids']);
+			$WT_SESSION->timeline_pids=null;
 		}
 
 		//--Sort the arrar in order of being year
