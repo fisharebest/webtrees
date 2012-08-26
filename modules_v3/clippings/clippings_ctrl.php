@@ -57,23 +57,27 @@ class WT_Controller_Clippings {
 		global $SCRIPT_NAME, $MEDIA_DIRECTORY, $MEDIA_FIREWALL_ROOTDIR, $WT_SESSION;
 		
 		// Our cart is an array of items in the session
-		if (empty($WT_SESSION->cart)) {
+		if (!is_array($WT_SESSION->cart)) {
 			$WT_SESSION->cart=array();
 		}
 		if (!array_key_exists(WT_GED_ID, $WT_SESSION->cart)) {
 			$WT_SESSION->cart[WT_GED_ID]=array();
 		}
 
-		if (!isset($_SESSION['exportConvPath'])) $_SESSION['exportConvPath'] = $MEDIA_DIRECTORY;
-		if (!isset($_SESSION['exportConvSlashes'])) $_SESSION['exportConvSlashes'] = 'forward';
+		if (!$WT_SESSION->exportConvPath) {
+			$WT_SESSION->exportConvPath = $MEDIA_DIRECTORY;
+		}
+		if (!$WT_SESSION->exportConvSlashes) {
+			$WT_SESSION->exportConvSlashes = 'forward';
+		}
 
 		$this->action = safe_GET("action");
 		$this->id = safe_GET('id');
 		$convert = safe_GET('convert',"yes","no");
 		$this->Zip = safe_GET('Zip');
 		$this->IncludeMedia = safe_GET('IncludeMedia');
-		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT, $_SESSION['exportConvPath']);
-		$this->conv_slashes = safe_GET('conv_slashes', array('forward', 'backward'), $_SESSION['exportConvSlashes']);
+		$this->conv_path = safe_GET('conv_path', WT_REGEX_NOSCRIPT, $WT_SESSION->exportConvPath);
+		$this->conv_slashes = safe_GET('conv_slashes', array('forward', 'backward'), $WT_SESSION->exportConvSlashes);
 		$this->privatize_export = safe_GET('privatize_export', array('none', 'visitor', 'user', 'gedadmin'), 'visitor');
 		$this->level1 = safe_GET('level1', WT_REGEX_INTEGER, PHP_INT_MAX);
 		$this->level2 = safe_GET('level2', WT_REGEX_INTEGER, PHP_INT_MAX);
@@ -88,8 +92,8 @@ class WT_Controller_Clippings {
 			$this->privatize_export='visitor';
 		}
 
-		$_SESSION['exportConvPath'] = $this->conv_path; // remember this for the next Download
-		$_SESSION['exportConvSlashes'] = $this->conv_slashes;
+		$WT_SESSION->exportConvPath = $this->conv_path; // remember this for the next Download
+		$WT_SESSION->exportConvSlashes = $this->conv_slashes;
 
 		if ($this->action == 'add') {
 			if (empty($this->type) && !empty($this->id)) {
