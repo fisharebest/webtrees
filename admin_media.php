@@ -802,9 +802,8 @@ if (check_media_structure()) {
 		<tr align="center">	
 			<?php
 				// Directory pick list
-				if (empty($directory)) {
-					if (!empty($_SESSION['upload_folder'])) $directory = $_SESSION['upload_folder'];
-					else $directory = $MEDIA_DIRECTORY;
+				if (!$directory) {
+					$directory = $MEDIA_DIRECTORY;
 				}
 				if ($MEDIA_DIRECTORY_LEVELS >= 0) {
 					$folders = get_media_folders();

@@ -189,12 +189,11 @@ if (WT_USE_LIGHTBOX) {
 		<td class="optionbox wrap width25">
 			<?php
 				//if ($MEDIA_DIRECTORY_LEVELS > 0) {
-				if (empty($folder)) {
-					if (!empty($WT_SESSION->upload_folder)) $folder = $WT_SESSION->upload_folder;
-					else $folder = 'ALL';
+				if (!$folder) {
+					$folder = 'ALL';
 				}
-					$folders = array_merge(array('ALL'), get_media_folders());
-					echo '<span dir="ltr"><select name="folder">';
+				$folders = array_merge(array('ALL'), get_media_folders());
+				echo '<span dir="ltr"><select name="folder">';
 				foreach ($folders as $f) {
 					echo '<option value="', $f, '"';
 					if ($folder==$f) echo ' selected="selected"';

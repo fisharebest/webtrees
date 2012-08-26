@@ -144,7 +144,6 @@ if ($action=='newentry') {
 		$folderName = dirname($folderName).'/';
 		$thumbFolderName = str_replace($MEDIA_DIRECTORY, $MEDIA_DIRECTORY.'thumbs/', $folderName);
 
-		$_SESSION['upload_folder'] = $folderName; // store standard media folder in session
 		$realFolderName = $folderName;
 		$realThumbFolderName = $thumbFolderName;
 		if ($USE_MEDIA_FIREWALL) {
@@ -287,7 +286,6 @@ if ($action=='newentry') {
 			if ($oldFolder=='/') $oldFolder = '';
 			$oldFolder = check_media_depth($oldFolder.'y.z', 'BACK');
 			$oldFolder = dirname($oldFolder).'/';
-			$_SESSION['upload_folder'] = $folder; // store standard media folder in session
 
 			$finalResult = true;
 			if ($filename!=$oldFilename || $folder!=$oldFolder) {
@@ -553,8 +551,6 @@ if ($action == 'update') {
 	}
 
 	if ($finalResult) {
-		$_SESSION['upload_folder'] = $folder; // store standard media folder in session
-
 		// Insert the 1 FILE xxx record into the arrays used by function handle_updates()
 		$glevels = array_merge(array('1'), $glevels);
 		$tag = array_merge(array('FILE'), $tag);
