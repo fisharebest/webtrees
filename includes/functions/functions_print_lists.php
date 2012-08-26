@@ -412,7 +412,7 @@ function format_indi_table($datalist, $option='') {
 		// Died in last 100 years?  Died?  Not dead?
 		if (WT_Date::Compare($death_date, $d100y)>0) {
 			$html .= 'Y100';
-		} elseif ($death_date->minJD()) {
+		} elseif ($death_date->minJD() || $person->isDead()) {
 			$html .= 'YES';
 		} else {
 			$html .= 'N';
