@@ -110,7 +110,7 @@ class WT_Controller_Lifespan extends WT_Controller_Base {
 			$this->place=$place;
 		} else {
 			// Modify an existing list of records
-			if (is_array($WT_SESSION->timeline_pids))) {
+			if (is_array($WT_SESSION->timeline_pids)) {
 				$this->pids = $WT_SESSION->timeline_pids;
 			} else {
 				$this->pids=array();
