@@ -69,9 +69,6 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		$alpha   =safe_GET('alpha'); // All surnames beginning with this letter where "@"=unknown and ","=none
 		$surname =safe_GET('surname', '[^<>&%{};]*'); // All indis with this surname.  NB - allow ' and "
 		$search   =safe_GET('search');
-
-		$last = array('alpha'=>$alpha, 'surname'=>$surname, 'search'=>$search);
-		$_SESSION['sb_families_last'] = $last;
 		
 		if ($search) {
 			return $this->search($search);
@@ -164,21 +161,6 @@ class families_WT_Module extends WT_Module implements WT_Module_Sidebar {
 
 		$out .= '</p>';
 		$out .= '<div id="sb_fam_content">';
-
-		if (isset($_SESSION['sb_individuals_last'])) {
-			$alpha   = $_SESSION['sb_individuals_last']['alpha'];
-			$search  = $_SESSION['sb_individuals_last']['search'];
-			$surname = $_SESSION['sb_individuals_last']['surname'];
-			
-			if ($search) {
-				$out.=$this->search($search);
-			} elseif ($alpha=='@' || $alpha==',' || $surname) {
-				$out.=$this->getSurnameFams($alpha, $surname);
-			} elseif ($alpha) {
-				$out.=$this->getAlphaSurnames($alpha, $surname);
-			}
-		}
-
 		$out .= '</div></form>';
 		return $out;
 	}
