@@ -584,11 +584,6 @@ if ($PGV_SCHEMA_VERSION>=12) {
 	}
 }
 
-////////////////////////////////////////////////////////////////////////////////
-// Our user ID will have changed.  Switch to the PGV user with the same name.
-// If this does not exist, we'll get logged out by session.php on the next page.
-$_SESSION['wt_user']=get_user_id(WT_USER_NAME);
-
 define('PGV_PHPGEDVIEW', true);
 define('PGV_PRIV_PUBLIC', WT_PRIV_PUBLIC);
 define('PGV_PRIV_USER', WT_PRIV_USER);
