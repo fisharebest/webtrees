@@ -83,11 +83,11 @@ default:
 
 		default: // Success
 			if ($usertime) {
-				$_SESSION['usertime']=@strtotime($usertime);
+				$WT__SESSION->usertime=@strtotime($usertime);
 			} else {
-				$_SESSION['usertime']=time();
+				$WT_SESSION->usertime=time();
 			}
-			$_SESSION['timediff']=time()-$_SESSION['usertime'];
+			$WT_SESSION->timediff=time()-$WT_SESSION->usertime;
 			$WT_SESSION->locale   =get_user_setting($user_id, 'language');
 			$WT_SESSION->theme_dir=get_user_setting($user_id, 'theme');
 
@@ -251,7 +251,7 @@ case 'register':
 		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH);
 		exit;
 	}
-	$_SESSION['good_to_send'] = true;
+	$WT_SESSION->good_to_send = true;
 	if (!$user_name) {
 		$user_name_false = true;
 	} else {
@@ -314,11 +314,11 @@ case 'register':
 			exit;
 		}
 
-		if (!isset($_SESSION['good_to_send']) || $_SESSION['good_to_send']!==true) {
+		if ($WT_SESSION->good_to_send!==true) {
 			AddToLog('Invalid session reference while trying to register a user.  Possible spam attack.', 'auth');
 			exit;
 		}
-		$_SESSION['good_to_send'] = false;
+		$WT_SESSION->good_to_send = false;
 
 		if (isset($user_name)) {
 			// Generate an email in the admin's language

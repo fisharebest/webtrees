@@ -138,11 +138,8 @@ function timestamp_to_gedcom_date($time) {
 // Get the current timestamp of the client, not the server
 ////////////////////////////////////////////////////////////////////////////////
 function client_time() {
-	if (isset($_SESSION["timediff"])) {
-		return time()-$_SESSION["timediff"];
-	} else {
-		return time();
-	}
+	global $WT_SESSION;
+	return time()-$WT_SESSION->timediff;
 }
 
 ?>
