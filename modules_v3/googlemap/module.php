@@ -548,39 +548,34 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		</script>
 		<?php
 		}
-			if (!isset($_SESSION['flags_countrylist'])) {
-				$countryList = array();
-				$placesDir = scandir(WT_MODULES_DIR.'googlemap/places/');
-				for ($i = 0; $i < count($country); $i++) {
-					if (count(preg_grep('/'.$country[$i].'/', $placesDir)) != 0) {
-						$rep = opendir(WT_MODULES_DIR.'googlemap/places/'.$country[$i].'/');
-						while ($file = readdir($rep)) {
-							if (stristr($file, 'flags')) {
-								$countryList[$country[$i]] = $countries[$country[$i]];
-							}
-						}
-						closedir($rep);
+		$countryList = array();
+		$placesDir = scandir(WT_MODULES_DIR.'googlemap/places/');
+		for ($i = 0; $i < count($country); $i++) {
+			if (count(preg_grep('/'.$country[$i].'/', $placesDir)) != 0) {
+				$rep = opendir(WT_MODULES_DIR.'googlemap/places/'.$country[$i].'/');
+				while ($file = readdir($rep)) {
+					if (stristr($file, 'flags')) {
+						$countryList[$country[$i]] = $countries[$country[$i]];
 					}
 				}
-				asort($countryList);
-				$_SESSION['flags_countrylist'] = serialize($countryList);
-			} else {
-				$countryList = unserialize($_SESSION['flags_countrylist']);
+				closedir($rep);
 			}
-			$stateList = array();
-			if ($countrySelected != 'Countries') {
-				$placesDir = scandir(WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/');
-				for ($i = 0; $i < count($flags); $i++) {
-					if (in_array($flags[$i], $placesDir)) {
-						$rep = opendir(WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/'.$flags[$i].'/');
-						while ($file = readdir($rep)) {
-							$stateList[$flags[$i]] = $flags[$i];
-						}
-						closedir($rep);
+		}
+		asort($countryList);
+		$stateList = array();
+		if ($countrySelected != 'Countries') {
+			$placesDir = scandir(WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/');
+			for ($i = 0; $i < count($flags); $i++) {
+				if (in_array($flags[$i], $placesDir)) {
+					$rep = opendir(WT_MODULES_DIR.'googlemap/places/'.$countrySelected.'/flags/'.$flags[$i].'/');
+					while ($file = readdir($rep)) {
+						$stateList[$flags[$i]] = $flags[$i];
 					}
+					closedir($rep);
 				}
-				asort($stateList);
 			}
+			asort($stateList);
+		}
 		?>
 		<form method="post" id="flags" name="flags" action="module.php?mod=googlemap&amp;mod_action=flags&amp;countrySelected=<?php echo $countrySelected; ?>&amp;stateSelected=<?php echo $stateSelected; ?>">
 			<input type="hidden" name="action" value="ChangeFlag">
