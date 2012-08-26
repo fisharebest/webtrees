@@ -1514,32 +1514,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$country  =safe_POST     ('country',   WT_REGEX_UNSAFE,              ''         );
 		if (!$country) {
 			// allow placelist to link directly to a specific country/state
-			$country=safe_GET    ('country',   WT_REGEX_UNSAFE,              'XYZ'      );
+			$country=safe_GET('country', WT_REGEX_UNSAFE, 'XYZ');
 		}
-		$state    =safe_POST     ('state',     WT_REGEX_UNSAFE,              ''         );
+		$state=safe_POST('state', WT_REGEX_UNSAFE, '');
 		if (!$state) {
-			$state=safe_GET      ('state',     WT_REGEX_UNSAFE,              'XYZ'      );
-		}
-		if (isset($_REQUEST['show_changes']) && $_REQUEST['show_changes']=='yes') {
-			$show_changes = true;
-		} else {
-			$show_changes = false;
-		}
-
-		if ($show_changes && !empty($_SESSION['placecheck_gedcom_id'])) {
-			$gedcom_id = $_SESSION['placecheck_gedcom_id'];
-		} else {
-			$_SESSION['placecheck_gedcom_id'] = $gedcom_id;
-		}
-		if ($show_changes && !empty($_SESSION['placecheck_country'])) {
-			$country = $_SESSION['placecheck_country'];
-		} else {
-			$_SESSION['placecheck_country'] = $country;
-		}
-		if ($show_changes && !empty($_SESSION['placecheck_state'])) {
-			$state = $_SESSION['placecheck_state'];
-		} else {
-			$_SESSION['placecheck_state'] = $state;
+			$state=safe_GET('state', WT_REGEX_UNSAFE, 'XYZ');
 		}
 
 		$controller=new WT_Controller_Base();
@@ -1631,9 +1610,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '</td><td><input type="checkbox" name="matching" value="active"';
 		if ($matching) {
 			echo ' checked="checked"';
-		}
-		if ($show_changes) {
-			$action = 'go';
 		}
 		echo '></td></tr>';
 		echo '</table>';
