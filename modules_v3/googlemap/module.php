@@ -1504,17 +1504,11 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	private function admin_placecheck() {
 		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
-		$action   =safe_POST     ('action'                                              );
-		$gedcom_id=safe_POST     ('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID );
-		$country  =safe_POST     ('country',   WT_REGEX_UNSAFE,              ''         );
-		if (!$country) {
-			// allow placelist to link directly to a specific country/state
-			$country=safe_GET('country', WT_REGEX_UNSAFE, 'XYZ');
-		}
-		$state=safe_POST('state', WT_REGEX_UNSAFE, '');
-		if (!$state) {
-			$state=safe_GET('state', WT_REGEX_UNSAFE, 'XYZ');
-		}
+		$action   =safe_GET('action'                                             );
+		$gedcom_id=safe_GET('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID);
+		$country  =safe_GET('country',   WT_REGEX_UNSAFE,               'XYZ'    );
+		$state    =safe_GET('state',     WT_REGEX_UNSAFE,               'XYZ'    );
+		$matching =safe_GET_bool('matching');
 
 		$controller=new WT_Controller_Base();
 		$controller
@@ -1546,8 +1540,10 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		<?php
 
 		//Start of User Defined options
+		echo '<form method="get" name="placecheck" action="module.php">';
+		echo '<input type="hidden" name="mod" value="', $this->getName(), '">';
+		echo '<input type="hidden" name="mod_action" value="admin_placecheck">';
 		echo '<table id="gm_check_outer">';
-		echo '<form method="post" name="placecheck" action="module.php?mod=googlemap&amp;mod_action=admin_placecheck">';
 		echo '<tr valign="top">';
 		echo '<td>';
 		echo '<table class="gm_check_top" align="left">';
@@ -1595,7 +1591,6 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '</table>';
 		echo '</td>';
 		//Show Filter table
-		if (!isset ($_POST['matching'])) {$matching=false;} else {$matching=true;}
 		echo '<td>';
 		echo '<table class="gm_check_top"  align="center">';
 		echo '<tr><th colspan="2">';
