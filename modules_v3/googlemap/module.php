@@ -1597,7 +1597,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo WT_I18N::translate('List filtering options');
 		echo '</th></tr><tr><td>';
 		echo WT_I18N::translate('Include fully matched places: ');
-		echo '</td><td><input type="checkbox" name="matching" value="active"';
+		echo '</td><td><input type="checkbox" name="matching" value="1"';
 		if ($matching) {
 			echo ' checked="checked"';
 		}
