@@ -82,7 +82,7 @@ if ($action=='addrecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "<script>closePopupAndReloadParent();</script>";
+		$controller->addInlineJavaScript('closePopupAndReloadParent();');
 	}
 	echo "<div class=\"center\"><a href=\"#\" onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
 	exit;
@@ -100,7 +100,7 @@ if ($action=='updaterecord' && WT_USER_IS_ADMIN) {
 
 	// autoclose window when update successful unless debug on
 	if (!WT_DEBUG) {
-		echo "<script>closePopupAndReloadParent();</script>";
+		$controller->addInlineJavaScript('closePopupAndReloadParent();');
 	}
 	echo "<div class=\"center\"><a href=\"#\" onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
 	exit;
@@ -120,7 +120,7 @@ if ($action=='update_sv_params' && WT_USER_IS_ADMIN) {
 		WT_DB::prepare("UPDATE `##placelocation` SET sv_lati=?, sv_long=?, sv_bearing=?, sv_elevation=?, sv_zoom=? WHERE pl_id=?");		
 	$statement->execute(array($_REQUEST['svlati'], $_REQUEST['svlong'], $_REQUEST['svbear'], $_REQUEST['svelev'], $_REQUEST['svzoom'], $placeid));
 	if (!WT_DEBUG) {
-		echo "<script>closePopupAndReloadParent();</script>";
+		$controller->addInlineJavaScript('closePopupAndReloadParent();');
 	}
 	echo "<div class=\"center\"><a href=\"#\" onclick=\"closePopupAndReloadParent();return false;\">", WT_I18N::translate('Close Window'), "</a></div><br>";
 	exit;
