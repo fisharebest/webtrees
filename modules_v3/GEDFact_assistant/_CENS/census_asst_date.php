@@ -74,7 +74,7 @@
 		<option id="FR1951" name="FR1951" class="FR" value="1951, 0, 01, FR">FR 1951</option>
 		<option id="FR1946" name="FR1946" class="FR" value="1946, 0, 01, FR">FR 1946</option>
 		<option id="FR1941" name="FR1941" class="FR" value="1941, 0, 01, FR">FR 1941</option>
-		<option id="FR1936" name="FR1936" class="FR" value="1936, 0, 01, FR">FR 1936</option>>
+		<option id="FR1936" name="FR1936" class="FR" value="1936, 0, 01, FR">FR 1936</option>
 		<option id="FR1931" name="FR1931" class="FR" value="1931, 0, 01, FR">FR 1931</option>
 		<option id="FR1926" name="FR1926" class="FR" value="1926, 0, 01, FR">FR 1926</option>
 		<option id="FR1921" name="FR1921" class="FR" value="1921, 0, 01, FR">FR 1921</option>

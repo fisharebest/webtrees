@@ -69,17 +69,17 @@ if (!defined('WT_WEBTREES')) {
 		} else if (cenyear == 1886) { var cendate = new Date(1886, 31, 12);    // 06 AUG 1810
 		} else if (cenyear == 1891) { var cendate = new Date(1891, 31, 12);    // 07 AUG 1820
 		} else if (cenyear == 1896) { var cendate = new Date(1896, 31, 12);    // 01 JUN 1830
-		} else if (cenyear == 1901) { var cendate = new Date(1901,  31, 12);    // 01 JUN 1840
-		} else if (cenyear == 1906) { var cendate = new Date(1906,  31, 12);    // 01 JUN 1850
-		} else if (cenyear == 1911) { var cendate = new Date(1911,  31, 12);    // 01 JUN 1860
-		} else if (cenyear == 1916) { var cendate = new Date(1916,  31, 12);    // 01 JUN 1870
-		} else if (cenyear == 1921) { var cendate = new Date(1921,  31, 12);    // 01 JUN 1880
-		} else if (cenyear == 1926) { var cendate = new Date(1926,  31, 12);    // 01 JUN 1890
-		} else if (cenyear == 1931) { var cendate = new Date(1931,  31, 12);    // 01 JUN 1900
-		} else if (cenyear == 1936) { var cendate = new Date(1936,  31, 12);    // 15 APR 1910
-		} else if (cenyear == 1941) { var cendate = new Date(1941,  31, 12);    // 01 JAN 1920
-		} else if (cenyear == 1946) { var cendate = new Date(1946,  31, 12);    // 01 APR 1930
-		} else if (cenyear == 1951) { var cendate = new Date(1951,  31, 12);    // 01 APR 1940
+		} else if (cenyear == 1901) { var cendate = new Date(1901,  31, 12);   // 01 JUN 1840
+		} else if (cenyear == 1906) { var cendate = new Date(1906,  31, 12);   // 01 JUN 1850
+		} else if (cenyear == 1911) { var cendate = new Date(1911,  31, 12);   // 01 JUN 1860
+		} else if (cenyear == 1916) { var cendate = new Date(1916,  31, 12);   // 01 JUN 1870
+		} else if (cenyear == 1921) { var cendate = new Date(1921,  31, 12);   // 01 JUN 1880
+		} else if (cenyear == 1926) { var cendate = new Date(1926,  31, 12);   // 01 JUN 1890
+		} else if (cenyear == 1931) { var cendate = new Date(1931,  31, 12);   // 01 JUN 1900
+		} else if (cenyear == 1936) { var cendate = new Date(1936,  31, 12);   // 15 APR 1910
+		} else if (cenyear == 1941) { var cendate = new Date(1941,  31, 12);   // 01 JAN 1920
+		} else if (cenyear == 1946) { var cendate = new Date(1946,  31, 12);   // 01 APR 1930
+		} else if (cenyear == 1951) { var cendate = new Date(1951,  31, 12);   // 01 APR 1940
 		
 		// Default Date
 		} else {
@@ -123,17 +123,17 @@ if (!defined('WT_WEBTREES')) {
 		} else if (prevcenyear == 1886) { var prevcendate = new Date(1886, 31, 12);    // 06 AUG 1810
 		} else if (prevcenyear == 1891) { var prevcendate = new Date(1891, 31, 12);    // 07 AUG 1820
 		} else if (prevcenyear == 1896) { var prevcendate = new Date(1896, 31, 12);    // 01 JUN 1830
-		} else if (prevcenyear == 1901) { var prevcendate = new Date(1901,  31, 12);    // 01 JUN 1840
-		} else if (prevcenyear == 1906) { var prevcendate = new Date(1906,  31, 12);    // 01 JUN 1850
-		} else if (prevcenyear == 1911) { var prevcendate = new Date(1911,  31, 12);    // 01 JUN 1860
-		} else if (prevcenyear == 1916) { var prevcendate = new Date(1916,  31, 12);    // 01 JUN 1870
-		} else if (prevcenyear == 1921) { var prevcendate = new Date(1921,  31, 12);    // 01 JUN 1880
-		} else if (prevcenyear == 1926) { var prevcendate = new Date(1926,  31, 12);    // 01 JUN 1890
-		} else if (prevcenyear == 1931) { var prevcendate = new Date(1931,  31, 12);    // 01 JUN 1900
-		} else if (prevcenyear == 1936) { var prevcendate = new Date(1936,  31, 12);    // 15 APR 1910
-		} else if (prevcenyear == 1941) { var prevcendate = new Date(1941,  31, 12);    // 01 JAN 1920
-		} else if (prevcenyear == 1946) { var prevcendate = new Date(1946,  31, 12);    // 01 APR 1930
-		} else if (prevcenyear == 1951) { var prevcendate = new Date(1951,  31, 12);    // 01 APR 1940
+		} else if (prevcenyear == 1901) { var prevcendate = new Date(1901,  31, 12);   // 01 JUN 1840
+		} else if (prevcenyear == 1906) { var prevcendate = new Date(1906,  31, 12);   // 01 JUN 1850
+		} else if (prevcenyear == 1911) { var prevcendate = new Date(1911,  31, 12);   // 01 JUN 1860
+		} else if (prevcenyear == 1916) { var prevcendate = new Date(1916,  31, 12);   // 01 JUN 1870
+		} else if (prevcenyear == 1921) { var prevcendate = new Date(1921,  31, 12);   // 01 JUN 1880
+		} else if (prevcenyear == 1926) { var prevcendate = new Date(1926,  31, 12);   // 01 JUN 1890
+		} else if (prevcenyear == 1931) { var prevcendate = new Date(1931,  31, 12);   // 01 JUN 1900
+		} else if (prevcenyear == 1936) { var prevcendate = new Date(1936,  31, 12);   // 15 APR 1910
+		} else if (prevcenyear == 1941) { var prevcendate = new Date(1941,  31, 12);   // 01 JAN 1920
+		} else if (prevcenyear == 1946) { var prevcendate = new Date(1946,  31, 12);   // 01 APR 1930
+		} else if (prevcenyear == 1951) { var prevcendate = new Date(1951,  31, 12);   // 01 APR 1940
 		
 		// Default Date
 		} else {
@@ -198,7 +198,6 @@ if (!defined('WT_WEBTREES')) {
 		// Toggle Countries when the preset UK Cens Date has been been used -------------
 		if (TheCenCtry=="UK") {
 			if (cenyear!=TheCenYear && cenctry!=TheCenCtry) {
-				// alert('IN THE USA');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
 				censyear.forValue("UK").addOptions("", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
@@ -211,7 +210,6 @@ if (!defined('WT_WEBTREES')) {
 				TheCenYear='';
 			}
 			if (TheCenYear=='' && cenctry==TheCenCtry) {
-				// alert('IN THE UK');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
 				censyear.forValue("UK").addOptions("", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", cenyear);
@@ -224,7 +222,6 @@ if (!defined('WT_WEBTREES')) {
 				TheCenYear='';
 			}
 			if (TheCenYear=='' && cenctry==TheCenCtry) {
-				// alert('IN THE FR');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
 				censyear.forValue("UK").addOptions("", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", cenyear);
@@ -240,7 +237,6 @@ if (!defined('WT_WEBTREES')) {
 		// Toggle Countries when the preset US Cens Date has been been used -------------
 		if (TheCenCtry=="USA") {
 			if (cenyear!=TheCenYear && cenctry!=TheCenCtry) {
-				// alert('NOW IN THE UK');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
 				censyear.forValue("UK").addOptions("", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931", cenyear);
@@ -253,7 +249,6 @@ if (!defined('WT_WEBTREES')) {
 				TheCenYear='';
 			}
 			if (TheCenYear=='' && cenctry==TheCenCtry) {
-				// alert('NOW IN THE USA');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
 				censyear.forValue("UK").addOptions("", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
@@ -266,7 +261,6 @@ if (!defined('WT_WEBTREES')) {
 				TheCenYear='';
 			}
 			if (TheCenYear=='' && cenctry==TheCenCtry) {
-				// alert('NOW IN THE FR');
 				censyear = new DynamicOptionList();
 				censyear.addDependentFields("censCtry","censYear");
 				censyear.forValue("UK").addOptions("", "1841", "1851", "1861", "1871", "1881", "1891", "1901", "1911", "1921", "1931");
