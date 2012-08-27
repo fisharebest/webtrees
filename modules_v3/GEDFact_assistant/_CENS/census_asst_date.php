@@ -71,6 +71,23 @@
 		<option id="USA1800" name="USA1800" class="USA" value="1800, 7, 04, USA">US 1800</option>
 		<option id="USA1790" name="USA1790" class="USA" value="1790, 7, 02, USA">US 1790</option>
 		<option value=""></option>
+		<option id="FR1951" name="FR1951" class="FR" value="1951, 0, 01, FR">FR 1951</option>
+		<option id="FR1946" name="FR1946" class="FR" value="1946, 0, 01, FR">FR 1946</option>
+		<option id="FR1941" name="FR1941" class="FR" value="1941, 0, 01, FR">FR 1941</option>
+		<option id="FR1936" name="FR1936" class="FR" value="1936, 0, 01, FR">FR 1936</option>>
+		<option id="FR1931" name="FR1931" class="FR" value="1931, 0, 01, FR">FR 1931</option>
+		<option id="FR1926" name="FR1926" class="FR" value="1926, 0, 01, FR">FR 1926</option>
+		<option id="FR1921" name="FR1921" class="FR" value="1921, 0, 01, FR">FR 1921</option>
+		<option id="FR1916" name="FR1916" class="FR" value="1916, 0, 01, FR">FR 1916</option>
+		<option id="FR1911" name="FR1911" class="FR" value="1911, 0, 01, FR">FR 1911</option>
+		<option id="FR1906" name="FR1906" class="FR" value="1906, 0, 01, FR">FR 1906</option>
+		<option id="FR1901" name="FR1901" class="FR" value="1901, 0, 01, FR">FR 1901</option>
+		<option id="FR1896" name="FR1896" class="FR" value="1896, 0, 01, FR">FR 1896</option>
+		<option id="FR1891" name="FR1891" class="FR" value="1891, 0, 01, FR">FR 1891</option>
+		<option id="FR1886" name="FR1886" class="FR" value="1886, 0, 01, FR">FR 1886</option>
+		<option id="FR1881" name="FR1881" class="FR" value="1881, 0, 01, FR">FR 1881</option>
+		<option id="FR1876" name="FR1876" class="FR" value="1876, 0, 01, FR">FR 1876</option>
+		<option value=""></option>
 	</select>
 
 	<input type="hidden" id="setctry" name="setctry" value="">

@@ -404,7 +404,23 @@ function preview() {
 				}
 			}
 
-		} else {
+		} else if (NoteCtry.value=="FR") {
+			// FR  ==========Modele FR  AD 2012=====
+			// Faire figurer les champs qui ne doivent pas apparaitre dans la zone texte
+			if (NoteYear.value !="1930") {
+				for (var j=2; j<tr.cells.length-3; j++) { // == j=2 means miss out cols 0 and 1 (# and pid), cells.length-3 means miss out del, ins and item #
+					if ( j==5 || j==6 || j==8  || j==10 || j==11 || (j>=12 &&  j<16) || (j>=17 &&  j<21) || (j>=22 &&  j<=29) || (j>=30 &&  j<33)|| (j>=34 &&  j<46) || (j>=47 &&  j<49)|| (j>=50 && j<=73) ) {
+							continue;
+					} else {
+						if (i==0) {
+							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].id;
+						} else {
+						
+							strRow += (strRow==''?'':'|') + tr.cells[j].childNodes[0].value;
+						}
+					}
+				}
+			}
 			// Other country stuff
 		}
 
