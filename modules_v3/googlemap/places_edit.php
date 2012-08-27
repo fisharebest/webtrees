@@ -37,18 +37,11 @@ if (isset($_REQUEST['place_name'])) $place_name = $_REQUEST['place_name'];
 
 $controller=new WT_Controller_Simple();
 $controller
+		->requireAdminLogin()
 		->setPageTitle(WT_I18N::translate('Geographic data'))
 		->addExternalJavascript(WT_STATIC_URL.'js/webtrees.js')
 		->pageHeader();
 
-if (!WT_USER_IS_ADMIN) {
-	echo "<table class=\"facts_table\">";
-	echo "<tr><td colspan=\"2\" class=\"facts_value\">", WT_I18N::translate('Page only for Administrators');
-	echo "</td></tr></table>";
-	echo "<br><br><br>";
-	exit;
-}
-// echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/googlemap_style.css" rel="stylesheet">';
 echo '<link type="text/css" href ="', WT_STATIC_URL, WT_MODULES_DIR, 'googlemap/css/wt_v3_googlemap.css" rel="stylesheet">';
 
 // Take a place id and find its place in the hierarchy
