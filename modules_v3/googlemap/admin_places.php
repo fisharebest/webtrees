@@ -139,13 +139,9 @@ function findFiles($path) {
 	}
 }
 
-if (!WT_USER_IS_ADMIN) {
-	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin.php');
-	exit;
-}
-
-global $GOOGLEMAP_MAX_ZOOM;
-
+$controller=new WT_Controller_Base();
+$controller->requireAdminLogin();
+	
 if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 	$tmp = place_id_to_hierarchy($parent);
 	$maxLevel = getHighestLevel();
@@ -169,9 +165,9 @@ if ($action=='ExportFile' && WT_USER_IS_ADMIN) {
 	exit;
 }
 
-$controller=new WT_Controller_Base();
-$controller->setPageTitle(WT_I18N::translate('Google Maps™'));
-$controller->pageHeader();
+$controller
+	->setPageTitle(WT_I18N::translate('Google Maps™'))
+	->pageHeader();
 
 ?>
 <table id="gm_config">
