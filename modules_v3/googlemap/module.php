@@ -1510,34 +1510,47 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		$state    =safe_GET('state',     WT_REGEX_UNSAFE,               'XYZ'    );
 		$matching =safe_GET_bool('matching');
 
+		if (!empty($WT_SESSION['placecheck_gedcom_id'])) {
+			$gedcom_id = $WT_SESSION['placecheck_gedcom_id'];
+		} else {
+			$WT_SESSION['placecheck_gedcom_id'] = $gedcom_id;
+		}
+		if (!empty($WT_SESSION['placecheck_country'])) {
+			$country = $WT_SESSION['placecheck_country'];
+		} else {
+			$WT_SESSION['placecheck_country'] = $country;
+		}
+		if (!empty($WT_SESSION['placecheck_state'])) {
+			$state = $WT_SESSION['placecheck_state'];
+		} else {
+			$WT_SESSION['placecheck_state'] = $state;
+		}
+
 		$controller=new WT_Controller_Base();
 		$controller
 			->requireAdminLogin()
 			->setPageTitle(WT_I18N::translate('Google Maps™'))
 			->pageHeader();
 
-		?>
-		<table id="gm_config">
-			<tr>
-				<th>
-					<a href="module.php?mod=googlemap&amp;mod_action=admin_config">
-						<?php echo WT_I18N::translate('Google Maps™ preferences'); ?>
-					</a>
-				</th>
-				<th>
-					<a href="module.php?mod=googlemap&amp;mod_action=admin_places">
-						<?php echo WT_I18N::translate('Geographic data'); ?>
-					</a>
-				</th>
-				<th>
-					<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
-						<?php echo WT_I18N::translate('Place Check'); ?>
-					</a>
-				</th>
-			</tr>
-		</table>
+		echo '
+			<table id="gm_config">
+				<tr>
+					<th>
+						<a href="module.php?mod=googlemap&amp;mod_action=admin_config">', WT_I18N::translate('Google Maps™ preferences'),'</a>
+					</th>
+					<th>
+						<a href="module.php?mod=googlemap&amp;mod_action=admin_places">
+							', WT_I18N::translate('Geographic data'),'
+						</a>
+					</th>
+					<th>
+						<a class="current" href="module.php?mod=googlemap&amp;mod_action=admin_placecheck">
+							', WT_I18N::translate('Place Check'),'
+						</a>
+					</th>
+				</tr>
+			</table>';
 
-		<?php
 
 		//Start of User Defined options
 		echo '<form method="get" name="placecheck" action="module.php">';
