@@ -32,6 +32,7 @@ var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollb
 var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 var mord_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
 var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
+var gmap_window_specs='width=600,height=620,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
 
 // TODO: This function loads help_text.php twice.  It should only load it once.
 function helpDialog(which, mod) {
