@@ -615,7 +615,7 @@ if ($action=='editmedia') {
 
 // autoclose window when update successful unless debug on
 if ($success && !WT_DEBUG) {
-	$controller->addInlineJavascript('window.close();');
+	$controller->addInlineJavascript('closePopupAndReloadParent();');
 } else {
 	echo '<p class="center"><a href="#" onclick="window.close();">', WT_I18N::translate('Close Window'), '</a></p>';
 }
