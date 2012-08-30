@@ -146,7 +146,6 @@ class WT_Stats {
 
 		// Extract all tags from the provided text
 		$ct = preg_match_all("/#([^#]+)(?=#)/", (string)$text, $match);
-		var_dump($match);
 		$tags = $match[1];
 		$c = count($tags);
 		$new_tags = array(); // tag to replace
