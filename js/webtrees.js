@@ -27,12 +27,13 @@
 var edit_window_specs='width=650,height=600,left=175,top=100,resizable=1,scrollbars=1'; // edit_interface.php, add_media.php, gedrecord.php
 var indx_window_specs='width=600,height=500,left=200,top=150,resizable=1,scrollbars=1'; // index_edit.php, module configuration
 var help_window_specs='width=500,height=400,left=250,top=200,resizable=1,scrollbars=1'; // help.php
-var find_window_specs='width=500,height=500,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
+var find_window_specs='width=550,height=600,left=250,top=150,resizable=1,scrollbars=1'; // find.php, inverse_link.php
 var mesg_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // message.php
 var chan_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_changes.php
 var mord_window_specs='width=500,height=600,left=250,top=100,resizable=1,scrollbars=1'; // edit_interface.php, media reorder
 var assist_window_specs='width=900,height=800,left=70,top=70,resizable=1,scrollbars=1'; // edit_interface.php, used for census assistant
 var gmap_window_specs='width=600,height=620,left=200,top=150,resizable=1,scrollbars=1'; // googlemap module place editing
+var fam_nav_specs='width=300,height=600,left=817,top=150,resizable=1,scrollbars=1'; // media_0_inverselink.php
 
 // TODO: This function loads help_text.php twice.  It should only load it once.
 function helpDialog(which, mod) {

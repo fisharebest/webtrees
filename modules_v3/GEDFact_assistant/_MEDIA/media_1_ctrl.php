@@ -64,7 +64,8 @@ if ($pid=="") {
 	}
 	$currpid=$pid;
 
-	echo '<table width=400 class="facts_table center">';
+	echo '<div id="media-links">';
+	echo '<table class="facts_table center">';
 	echo '<tr><td class="topbottombar" colspan="1">';
 	echo '<b>', WT_I18N::translate('Family navigator'), '</b>';
 	echo '</td></tr>';
@@ -72,7 +73,7 @@ if ($pid=="") {
 	//echo '<td class="optionbox wrap" valign="top" align="left" width="50%" >';
 	//echo WT_I18N::translate('Add Family, and Search links');
 	//echo '</td>';
-	echo '<td valign="top" width=400>';
+	echo '<td valign="top">';
 	//-- Search  and Add Family Members Area =========================================
 	?>
 	<table class="outer_nav center">
@@ -1007,7 +1008,6 @@ if ($pid=="") {
 					</tr>
 					<?php
 				}
-				echo "<tr><td><font size=1><br></font></td></tr>";
 			}
 			?>
 	
@@ -1019,6 +1019,7 @@ if ($pid=="") {
 	echo '</td>';
 	echo '</tr>';
 	echo '</table>';
+	echo '</div>';// close "media-links"
 
 } // End IF test for Base pid
 

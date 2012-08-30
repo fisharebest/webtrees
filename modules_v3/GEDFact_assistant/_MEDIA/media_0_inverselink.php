@@ -74,7 +74,7 @@ if ($action == 'choose' && $paramok) {
 	<link href ="<?php echo WT_STATIC_URL, WT_MODULES_DIR; ?>GEDFact_assistant/css/media_0_inverselink.css" rel="stylesheet" type="text/css" media="screen">
 
 	<?php
-	echo '<form name="link" method="get" action="inverselink.php">';
+	echo '<form class="medialink" name="link" method="get" action="inverselink.php">';
 	// echo '<input type="hidden" name="action" value="choose">';
 	echo '<input type="hidden" name="action" value="update">';
 	if (!empty($mediaid)) {
@@ -212,7 +212,7 @@ if ($action == 'choose' && $paramok) {
 		//id=document.getElementById('gid').value;
 		if (id.match("I")=="I" || id.match("i")=="i") {
 			id = id.toUpperCase();
-			winNav = window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'winNav', edit_window_specs);
+			winNav = window.open('edit_interface.php?action=addmedia_links&noteid=newnote&pid='+id, 'winNav', fam_nav_specs);
 			if (window.focus) {winNav.focus();}
 		} else if (id.match("F")=="F") {
 			id = id.toUpperCase();
