@@ -1264,8 +1264,9 @@ function get_anniversary_events($jd, $facts='', $ged_id=WT_GED_ID) {
 					} else
 						$year_regex="0*".$row['d_year'];
 					$ged_date_regex="/2 DATE.*(".($row['d_day']>0 ? "0?{$row['d_day']}\s*" : "").$row['d_month']."\s*".($row['d_year']!=0 ? $year_regex : "").")/i";
-					foreach (get_all_subrecords($row['gedrec'], $skipfacts, false, false) as $factrec) {
-						if (preg_match("/(^1 {$row['d_fact']}|^1 (FACT|EVEN).*\n2 TYPE {$row['d_fact']})/s", $factrec) && preg_match($ged_date_regex, $factrec) && preg_match('/2 DATE (.+)/', $factrec, $match)) {
+					preg_match_all('/\n(1 ('.WT_REGEX_TAG.').*(\n[2-9] .*)*)/', $row['gedrec'], $matches);
+					foreach ($matches[1] as $factrec) {
+						if (preg_match('/^1 '.$row['d_fact'].'[ \n]/', $factrec) && preg_match($ged_date_regex, $factrec, $match)) {
 							$date=new WT_Date($match[1]);
 							if (preg_match('/2 PLAC (.+)/', $factrec, $match)) {
 								$plac=$match[1];
@@ -1335,8 +1336,8 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 		$rows=WT_DB::prepare($sql)->fetchAll(PDO::FETCH_NUM);
 		foreach ($rows as $row) {
 			// Generate a regex to match the retrieved date - so we can find it in the original gedcom record.
-			// TODO having to go back to the original gedcom is lame.  This is why it is so slow, and needs
-			// to be cached.  We should store the level1 fact here (or somewhere)
+			// TODO having to go back to the original gedcom is inneficient and slow.
+			// We should store the level1 fact here (or somewhere)
 			if ($row[8]=='@#DJULIAN@') {
 				if ($row[6]<0) {
 					$year_regex=$row[6].' ?[Bb]\.? ?[Cc]\.\ ?';
@@ -1347,8 +1348,9 @@ function get_calendar_events($jd1, $jd2, $facts='', $ged_id=WT_GED_ID) {
 				$year_regex="0*".$row[6];
 			}
 			$ged_date_regex="/2 DATE.*(".($row[4]>0 ? "0?{$row[4]}\s*" : "").$row[5]."\s*".($row[6]!=0 ? $year_regex : "").")/i";
-			foreach (get_all_subrecords($row[1], $skipfacts, false, false) as $factrec) {
-				if (preg_match("/(^1 {$row[7]}|^1 (FACT|EVEN).*\n2 TYPE {$row[7]})/s", $factrec) && preg_match($ged_date_regex, $factrec) && preg_match('/2 DATE (.+)/', $factrec, $match)) {
+			preg_match_all('/\n(1 ('.WT_REGEX_TAG.').*(\n[2-9] .*)*)/', $row[1], $matches);
+			foreach ($matches[1] as $factrec) {
+				if (preg_match('/^1 '.$row[7].'[ \n]/', $factrec) && preg_match($ged_date_regex, $factrec, $match)) {
 					$date=new WT_Date($match[1]);
 					if (preg_match('/2 PLAC (.+)/', $factrec, $match)) {
 						$plac=$match[1];

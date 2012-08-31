@@ -1616,60 +1616,62 @@ function show_media_form($pid, $action = "newentry", $filename = "", $linktoid =
 	add_simple_tag("3 $gedtype");
 
 	// 2 TITL
-	if ($gedrec == "")
+	if ($gedrec == "") {
 		$gedtitl = "TITL";
-	else {
+	} else {
 		$gedtitl = get_first_tag(2, "TITL", $gedrec);
-		if (empty($gedtitl))
+		if (empty($gedtitl)) {
 			$gedtitl = get_first_tag(1, "TITL", $gedrec);
-		if (empty($gedtitl))
+		}
+		if (empty($gedtitl)) {
 			$gedtitl = "TITL";
+		}
 	}
 	add_simple_tag("2 $gedtitl");
 
 	if (strstr($ADVANCED_NAME_FACTS, "_HEB")!==false) {
 		// 3 _HEB
-		if ($gedrec == "")
+		if ($gedrec == "") {
 			$gedtitl = "_HEB";
-		else {
+		} else {
 			$gedtitl = get_first_tag(3, "_HEB", $gedrec);
-			if (empty($gedtitl))
+			if (empty($gedtitl)) {
 				$gedtitl = "_HEB";
+			}
 		}
 		add_simple_tag("3 $gedtitl");
 	}
 
 	if (strstr($ADVANCED_NAME_FACTS, "ROMN")!==false) {
 		// 3 ROMN
-		if ($gedrec == "")
+		if ($gedrec == "") {
 			$gedtitl = "ROMN";
-		else {
+		} else {
 			$gedtitl = get_first_tag(3, "ROMN", $gedrec);
-			if (empty($gedtitl))
+			if (empty($gedtitl)) {
 				$gedtitl = "ROMN";
+			}
 		}
 		add_simple_tag("3 $gedtitl");
 	}
 
-	//-- don't show _PRIM option to regular users
-	//if (WT_USER_GEDCOM_ADMIN) {
-		// 2 _PRIM
-		if ($gedrec == "")
+	// 2 _PRIM
+	if ($gedrec == "") {
+		$gedprim = "_PRIM";
+	} else {
+		//  $gedprim = get_sub_record(1, "_PRIM", $gedrec);
+		$gedprim = get_first_tag(1, "_PRIM", $gedrec);
+		if (empty($gedprim)) {
 			$gedprim = "_PRIM";
-		else {
-			//  $gedprim = get_sub_record(1, "_PRIM", $gedrec);
-			$gedprim = get_first_tag(1, "_PRIM", $gedrec);
-			if (empty($gedprim))
-				$gedprim = "_PRIM";
 		}
-		add_simple_tag("1 $gedprim");
-	//}
+	}
+	add_simple_tag("1 $gedprim");
 
 	//-- print out editing fields for any other data in the media record
 	$sourceSOUR = "";
 	if (!empty($gedrec)) {
-		$subrecs = get_all_subrecords($gedrec, "FILE,FORM,TYPE,TITL,_PRIM,_THUM,CHAN,DATA");
-		foreach ($subrecs as $ind => $subrec) {
+		preg_match_all('/\n(1 (?!FILE|FORM|TYPE|TITL|_PRIM|_THUM|CHAN|DATA).*(\n[2-9] .*)*)/', $gedrec, $matches);
+		foreach ($matches[1] as $subrec) {
 			$pieces = explode("\n", $subrec);
 			foreach ($pieces as $piece) {
 				$ft = preg_match("/(\d) (\w+)(.*)/", $piece, $match);
