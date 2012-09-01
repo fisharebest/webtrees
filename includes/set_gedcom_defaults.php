@@ -120,7 +120,6 @@ set_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX',             'S');
 set_gedcom_setting($ged_id, 'SOUR_FACTS_ADD',               'NOTE,REPO,SHARED_NOTE,RESN');
 set_gedcom_setting($ged_id, 'SOUR_FACTS_QUICK',             'TEXT,NOTE,REPO');
 set_gedcom_setting($ged_id, 'SOUR_FACTS_UNIQUE',            'AUTH,ABBR,TITL,PUBL,TEXT');
-set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_F',            '200');
 set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I',            '200');
 set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           'style2');
 switch (WT_LOCALE) {

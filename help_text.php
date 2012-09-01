@@ -1009,19 +1009,9 @@ case 'SOUR_FACTS_UNIQUE':
 	$text=WT_I18N::translate('This is the list of GEDCOM facts that your users can only add <u>once</u> to sources.  For example, if TITL is in this list, users will not be able to add more than one TITL record to a source.  Fact names that appear in this list must not also appear in the <i>Source Add Facts</i> list.');
 	break;
 
-case 'SUBLIST_TRIGGER_F':
-	$title=WT_I18N::translate('Maximum number of surnames on family list');
-	$text=WT_I18N::translate('Long lists of families with the same name can be broken into smaller sub-lists according to the first letter of the given name.<br /><br />This option determines when sub-listing of family names will occur.  To disable sub-listing completely, set this option to zero.');
-	break;
-
 case 'SUBLIST_TRIGGER_I':
 	$title=WT_I18N::translate('Maximum number of surnames on individual list');
 	$text=WT_I18N::translate('Long lists of persons with the same surname can be broken into smaller sub-lists according to the first letter of the individual\'s given name.<br /><br />This option determines when sub-listing of surnames will occur.  To disable sub-listing completely, set this option to zero.');
-	break;
-
-case 'SURNAME_LIST_STYLE':
-	$title=WT_I18N::translate('Surname list style');
-	$text=WT_I18N::translate('<p>Lists of surnames, as they appear in the Top 10 Surnames block, the Individual lists, and the Family lists, can be shown in different styles.</p><dl><dt>Table</dt><dd>In this style, the surnames are shown in a table that can be sorted either by surname or by count.</dd><dt>Tag cloud</dt><dd>In this style, the surnames are shown in a list, and the font size used for each name depends on the number of occurrences of that name in the database.  The list is not sortable.</dd><dt>List</dt><dd>This is a simple list of names, with a count of each name, in a tabulated format of up to four columns</dd></dl>');
 	break;
 
 case 'SURNAME_TRADITION':

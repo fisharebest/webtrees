@@ -31,7 +31,10 @@
 
 exit;
 
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('<p>Lists of surnames, as they appear in the Top 10 Surnames block, the Individual lists, and the Family lists, can be shown in different styles.</p><dl><dt>Table</dt><dd>In this style, the surnames are shown in a table that can be sorted either by surname or by count.</dd><dt>Tag cloud</dt><dd>In this style, the surnames are shown in a list, and the font size used for each name depends on the number of occurrences of that name in the database.  The list is not sortable.</dd><dt>List</dt><dd>This is a simple list of names, with a count of each name, in a tabulated format of up to four columns</dd></dl>');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Drag-and-drop thumbnails to re-order media items');
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Long lists of families with the same name can be broken into smaller sub-lists according to the first letter of the given name.<br /><br />This option determines when sub-listing of family names will occur.  To disable sub-listing completely, set this option to zero.');
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Maximum number of surnames on family list');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Quit and return');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Reset to the original order');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Saves the sorted media to the database');

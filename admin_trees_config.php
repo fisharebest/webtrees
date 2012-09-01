@@ -246,7 +246,6 @@ case 'update':
 	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_ADD',               str_replace(' ', '', safe_POST('NEW_SOUR_FACTS_ADD')));
 	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_QUICK',             str_replace(' ', '', safe_POST('NEW_SOUR_FACTS_QUICK')));
 	set_gedcom_setting(WT_GED_ID, 'SOUR_FACTS_UNIQUE',            str_replace(' ', '', safe_POST('NEW_SOUR_FACTS_UNIQUE')));
-	set_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_F',            safe_POST('NEW_SUBLIST_TRIGGER_F', WT_REGEX_INTEGER, 200));
 	set_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I',            safe_POST('NEW_SUBLIST_TRIGGER_I', WT_REGEX_INTEGER, 200));
 	set_gedcom_setting(WT_GED_ID, 'SURNAME_LIST_STYLE',           safe_POST('NEW_SURNAME_LIST_STYLE'));
 	set_gedcom_setting(WT_GED_ID, 'SURNAME_TRADITION',            safe_POST('NEW_SURNAME_TRADITION'));
@@ -1009,8 +1008,13 @@ if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple
 						</td>
 					</tr>
 					<tr>
+						<th colspan="2">
+							<?php echo WT_I18N::translate('Individual list'), WT_I18N::$list_separator, WT_I18N::translate('Family list'); ?>
+						</th>
+					</tr>
+					<tr>
 						<td>
-							<?php echo WT_I18N::translate('Surname list style'), help_link('SURNAME_LIST_STYLE'); ?>
+							<?php echo WT_I18N::translate('Surname list style'); ?>
 						</td>
 						<td>
 							<select name="NEW_SURNAME_LIST_STYLE">
@@ -1026,14 +1030,6 @@ if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple
 						</td>
 						<td>
 							<input type="text" name="NEW_SUBLIST_TRIGGER_I" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_I'); ?>" size="5" maxlength="5">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<?php echo WT_I18N::translate('Maximum number of surnames on family list'), help_link('SUBLIST_TRIGGER_F'); ?>
-						</td>
-						<td>
-							<input type="text" name="NEW_SUBLIST_TRIGGER_F" value="<?php echo get_gedcom_setting(WT_GED_ID, 'SUBLIST_TRIGGER_F'); ?>" size="5" maxlength="5">
 						</td>
 					</tr>
 					<tr>
