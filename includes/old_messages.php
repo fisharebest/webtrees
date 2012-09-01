@@ -31,6 +31,7 @@
 
 exit;
 
-// MESSAGES DELETED IN WEBTREES-1.3.2
-
-/* I18N: This message is deleted in webtrees-1.3.2  */
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Drag-and-drop thumbnails to re-order media items');
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Quit and return');
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Reset to the original order');
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Saves the sorted media to the database');

@@ -54,9 +54,9 @@ $controller->addInlineJavascript('
 		<input type="hidden" name="pid" value="<?php echo $pid; ?>">
 
 		<p><center>
-		<button type="submit" title="<?php echo WT_I18N::translate('Saves the sorted media to the database'); ?>"><?php echo WT_I18N::translate('Save'); ?></button>
-		<button type="submit" title="<?php echo WT_I18N::translate('Reset to the original order'); ?>" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>
-		<button type="submit" title="<?php echo WT_I18N::translate('Quit and return'); ?>" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
+		<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
+		<button type="submit" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>
+		<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
 		</center>
 <ul id="reorder_media_list">
 	<?php
@@ -187,8 +187,8 @@ $controller->addInlineJavascript('
 		echo '</td></tr></table><br>';
 	}
 	?>
-	<button type="submit" title="<?php echo WT_I18N::translate('Saves the sorted media to the database'); ?>"><?php echo WT_I18N::translate('Save'); ?></button>
-	<button type="submit" title="<?php echo WT_I18N::translate('Reset to the original order'); ?>" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>
-	<button type="submit" title="<?php echo WT_I18N::translate('Quit and return'); ?>" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
+	<button type="submit"><?php echo WT_I18N::translate('Save'); ?></button>
+	<button type="submit" onclick="document.reorder_form.action.value='reset_media_update'; document.reorder_form.submit();"><?php echo WT_I18N::translate('Reset'); ?></button>
+	<button type="submit" onclick="window.close();"><?php echo WT_I18N::translate('Cancel'); ?></button>
 	</center></p>
 	</form>

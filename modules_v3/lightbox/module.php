@@ -92,65 +92,35 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 
 		require_once WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lightbox_print_media.php';
 		$html='<div id="'.$this->getName().'_content">';
-		// If in re-order mode do not show header links, but instead, show drag and drop title.
-		if (safe_GET_bool('reorder')) {
-			$html.='<center><b>'.WT_I18N::translate('Drag-and-drop thumbnails to re-order media items').'</b></center>';
-			$html.='<br>';
-		} else {
-			//Show Lightbox-Album header Links
-			if (WT_USER_CAN_EDIT) {
-				$html.='<table class="facts_table"><tr>';
-				$html.='<td class="descriptionbox rela">';
-				// Add a new media object
-				if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
-					$html.='<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid='.$controller->record->getXref().'\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
-					$html.='<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_add.gif" id="head_icon" class="icon" title="'.WT_I18N::translate('Add a new media object').'" alt="'.WT_I18N::translate('Add a new media object').'">';
-					$html.=WT_I18N::translate('Add a new media object');
-					$html.='</a></span>';
-					// Link to an existing item
-					$html.='<span><a href="#" onclick="window.open(\'inverselink.php?linktoid='.$controller->record->getXref().'&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
-					$html.= '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_link.gif" id="head_icon" class="icon" title="'.WT_I18N::translate('Link to an existing media object').'" alt="'.WT_I18N::translate('Link to an existing media object').'">';
-					$html.=WT_I18N::translate('Link to an existing media object');
-					$html.='</a></span>';
-				}
-				if (WT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
-					// Popup Reorder Media
-					$html.='<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\')">';
-					$html.='<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/images.gif" id="head_icon" class="icon" title="'.WT_I18N::translate('Re-order media').'" alt="'.WT_I18N::translate('Re-order media').'">';
-					$html.=WT_I18N::translate('Re-order media');
-					$html.='</a></span>';
-					$html.='</td>';
-				}
-				$html.='</tr></table>';
+		//Show Lightbox-Album header Links
+		if (WT_USER_CAN_EDIT) {
+			$html.='<table class="facts_table"><tr>';
+			$html.='<td class="descriptionbox rela">';
+			// Add a new media object
+			if (get_gedcom_setting(WT_GED_ID, 'MEDIA_UPLOAD') >= WT_USER_ACCESS_LEVEL) {
+				$html.='<span><a href="#" onclick="window.open(\'addmedia.php?action=showmediaform&linktoid='.$controller->record->getXref().'\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=780,width=600\');return false;">';
+				$html.='<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_add.gif" id="head_icon" class="icon" title="'.WT_I18N::translate('Add a new media object').'" alt="'.WT_I18N::translate('Add a new media object').'">';
+				$html.=WT_I18N::translate('Add a new media object');
+				$html.='</a></span>';
+				// Link to an existing item
+				$html.='<span><a href="#" onclick="window.open(\'inverselink.php?linktoid='.$controller->record->getXref().'&linkto=person\', \'_blank\', \'resizable=1,scrollbars=1,top=50,height=300,width=450\');">';
+				$html.= '<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/image_link.gif" id="head_icon" class="icon" title="'.WT_I18N::translate('Link to an existing media object').'" alt="'.WT_I18N::translate('Link to an existing media object').'">';
+				$html.=WT_I18N::translate('Link to an existing media object');
+				$html.='</a></span>';
 			}
+			if (WT_USER_GEDCOM_ADMIN && $this->get_media_count()>1) {
+				// Popup Reorder Media
+				$html.='<span><a href="#" onclick="reorder_media(\''.$controller->record->getXref().'\')">';
+				$html.='<img src="'.WT_STATIC_URL.WT_MODULES_DIR.'lightbox/images/images.gif" id="head_icon" class="icon" title="'.WT_I18N::translate('Re-order media').'" alt="'.WT_I18N::translate('Re-order media').'">';
+				$html.=WT_I18N::translate('Re-order media');
+				$html.='</a></span>';
+				$html.='</td>';
+			}
+			$html.='</tr></table>';
 		}
 		$media_found = false;
-		$reorder=safe_GET_bool('reorder');
+
 		// Used when sorting media on album tab page
-		if ($reorder==1) {
-			$sort_i=0; // Used in sorting on lightbox_print_media.php page
-			// This script saves the dranNdrop reordered info into a hidden form input element (name=order2)
-			$js='function saveOrder() {
-				// var sections = document.getElementsByClassName("section");
-				var sections = $(".section");
-				var order = "";
-				sections.each(function(section) {
-					order += Sortable.sequence(section) + ",";
-					document.getElementById("ord2").value = order;
-				});
-			};';
-			$controller->addInlineJavascript($js);
-			$html.='<form name="reorder_form" method="post" action="edit_interface.php">
-				<input type="hidden" name="action" value="al_reorder_media_update">
-				<input type="hidden" name="pid" value="'.$controller->record->getXref().'">
-				<input type="hidden" id="ord2" name="order2" value="">
-				<center>
-					<button type="submit" title="'.WT_I18N::translate('Saves the sorted media to the database').'" onclick="saveOrder();" >'.WT_I18N::translate('Save').'</button>&nbsp;
-					<button type="submit" title="'.WT_I18N::translate('Reset to the original order').'" onclick="document.reorder_form.action.value=\'al_reset_media_update\'; document.reorder_form.submit();">'.WT_I18N::translate('Reset').'</button>&nbsp;
-					<button type="button" title="'.WT_I18N::translate('Quit and return').'" onClick="location.href=\''.WT_SCRIPT_NAME.'?pid='.$controller->record->getXref().'\'">'.WT_I18N::translate('Cancel').'</button>
-				</center>
-				</form>';
-		}
 		$html.='<table width="100%" cellpadding="0" border="0"><tr>';
 		$html.='<td width="100%" valign="top" >';
 		ob_start();
@@ -337,9 +307,7 @@ class lightbox_WT_Module extends WT_Module implements WT_Module_Config, WT_Modul
 					</td>
 				</tr>
 			</table>
-			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>"">
-			&nbsp;&nbsp;
-			<input type="reset" value="<?php echo WT_I18N::translate('Reset'); ?>">
+			<input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>">
 		</form>
 		<?php
 	}

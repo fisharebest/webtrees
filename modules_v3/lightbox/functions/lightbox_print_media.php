@@ -172,16 +172,6 @@ function lightbox_print_media($pid, $level=1, $related=false, $kind=1, $noedit=f
 			echo '<div id="thumbcontainer', $kind, '">';
 			echo '<ul class="section" id="thumblist_', $kind, '">';
 		}
-		// Album Reorder include =============================
-		// Following used for Album media sort ------------------
-		$reorder=safe_GET_bool('reorder');
-		if ($reorder==1) {
-			if ($kind==1) $rownum1=$numm;
-			if ($kind==2) $rownum2=$numm;
-			if ($kind==3) $rownum3=$numm;
-			if ($kind==4) $rownum4=$numm;
-			if ($kind==5) require WT_ROOT.WT_MODULES_DIR.'lightbox/functions/lb_horiz_sort.php';
-		}
 		// ==================================================
 		// Start pulling media items into thumbcontainer div ==============================
 		foreach ($rows as $rowm) {
@@ -338,10 +328,7 @@ Requests for commercial publication of these or other UK census images appearing
  */
 function lightbox_print_media_row($rtype, $rowm, $pid) {
 
-	global $TEXT_DIRECTION;
-	global $item, $sort_i, $notes;
-
-	$reorder=safe_GET_bool('reorder');
+	global $TEXT_DIRECTION, $sort_i, $notes;
 
 	$mainMedia = check_media_depth($rowm['m_file'], 'NOTRUNC');
 	// If media file is missing from "media" directory, but is referenced in Gedcom
@@ -379,13 +366,8 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			return false;
 		} else {
 			// Media is NOT linked to private person
-			// If reorder media has been clicked
-			if (isset($reorder) && $reorder==1) {
-				echo '<li class="facts_value" style="border:0px;" id="li_', $rowm['m_media'], '" >';
-
-			// Else If reorder media has NOT been clicked
 			// Highlight Album Thumbnails - Changed=new (blue), Changed=old (red), Changed=no (none)
-			} else if ($rtype=='new') {
+			 if ($rtype=='new') {
 				echo '<li class="li_new">';
 			} else if ($rtype=='old') {
 				echo '<li class="li_old">';
@@ -601,20 +583,8 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 				echo "<td align=\"center\" rowspan=\"2\" >";
 				echo '<img src="', WT_STATIC_URL, WT_MODULES_DIR, 'lightbox/images/transp80px.gif" height="100px" alt=""></img>';
 				echo "</td>";
-
-				// Check for Notes associated media item
-				if ($reorder) {
-					// If reorder media has been clicked
-					echo "<td width=\"90% align=\"center\"><b><font size=\"2\" style=\"cursor:move;margin-bottom:2px;\">" . $rowm['m_media'] . "</font></b></td>";
-					echo "</tr>";
-				}
-				$item++;
-
 				echo "<td colspan=\"3\" valign=\"middle\" align=\"center\" >";
-				// If not reordering, enable Lightbox or popup and show thumbnail tooltip ------
-				if (!$reorder) {
-					echo '<a href="', $mediaInfo['url'], '">';
-				}
+				echo '<a href="', $mediaInfo['url'], '">';
 			}
 
 			// Now finally print the thumbnail -----------------------------------------------------
@@ -633,17 +603,13 @@ function lightbox_print_media_row($rtype, $rowm, $pid) {
 			echo "</td></tr>";
 
 			//View Edit Menu ----------------------------------
-			if (!$reorder) {
-				// If not reordering media print View or View-Edit Menu
-				echo "<tr>";
-				echo "<td width=\"5px\"></td>";
-				echo "<td valign=\"bottom\" align=\"center\" class=\"nowrap\">";
-				echo $menu->getMenu();
-				echo "</td>";
-				echo "<td width=\"5px\"></td>";
-				echo "</tr>";
-			}
-			// echo "</table>";
+			echo "<tr>";
+			echo "<td width=\"5px\"></td>";
+			echo "<td valign=\"bottom\" align=\"center\" class=\"nowrap\">";
+			echo $menu->getMenu();
+			echo "</td>";
+			echo "<td width=\"5px\"></td>";
+			echo "</tr>";
 		}
 	} // NOTE End If Show fact details
 
