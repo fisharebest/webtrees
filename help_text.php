@@ -979,11 +979,6 @@ case 'SHOW_REGISTER_CAUTION':
 	$text=WT_I18N::translate('When set to <b>Yes</b>, the following message will appear above the input fields on the «Request new user account» page:<div class="list_value_wrap"><div class="largeError">Notice:</div><div class="error">By completing and submitting this form, you agree:<ul><li>to protect the privacy of living people listed on our site;</li><li>and in the text box below, to explain to whom you are related, or to provide us with information on someone who should be listed on our site.</li></ul></div></div>');
 	break;
 
-case 'SHOW_RELATIVES_EVENTS':
-	$title=WT_I18N::translate('Show events of close relatives on individual page');
-	$text=WT_I18N::translate('Births, marriages, and deaths of relatives are important events in one\'s life. This option controls whether or not to show these events on the <i>Personal facts and details</i> tab on the Individual page.<br /><br />The events affected by this option are:<ul><li>Death of spouse</li><li>Birth and death of children</li><li>Death of parents</li><li>Birth and death of siblings</li><li>Death of grand-parents</li><li>Birth and death of parents\' siblings</li></ul>');
-	break;
-
 case 'SHOW_STATS':
 	$title=WT_I18N::translate('Execution statistics');
 	$text=WT_I18N::translate('Show runtime statistics and database queries at the bottom of every page.');

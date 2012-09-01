@@ -1087,7 +1087,7 @@ if (get_gedcom_count()==1) { //Removed because it doesn't work here for multiple
 					</tr>
 					<tr>
 						<td colspan="2">
-							<?php echo WT_I18N::translate('Show events of close relatives on individual page'), help_link('SHOW_RELATIVES_EVENTS'); ?>
+							<?php echo WT_I18N::translate('Show events of close relatives on individual page'); ?>
 						</td>
 					</tr>
 					<tr>
