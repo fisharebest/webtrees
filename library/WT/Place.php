@@ -65,7 +65,7 @@ class WT_Place {
 		}
 
 		$rows=
-			WT_DB::prepare("SELECT SQL_CACHE p_place FROM `##places` WHERE p_parent_id=? AND p_file=? ORDER BY p_place")
+			WT_DB::prepare("SELECT SQL_CACHE p_place FROM `##places` WHERE p_parent_id=? AND p_file=? ORDER BY p_place COLLATE '".WT_I18N::$collation."'")
 			->execute(array($this->getPlaceId(), $this->gedcom_id))
 			->fetchOneColumn();
 		foreach ($rows as $row) {
@@ -146,7 +146,7 @@ class WT_Place {
 				" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)".
 				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)".
 				" WHERE p1.p_file=?".
-				" ORDER BY CONCAT_WS(', ', p9.p_place, p8.p_place, p7.p_place, p6.p_place, p5.p_place, p4.p_place, p3.p_place, p2.p_place, p1.p_place)"
+				" ORDER BY CONCAT_WS(', ', p9.p_place, p8.p_place, p7.p_place, p6.p_place, p5.p_place, p4.p_place, p3.p_place, p2.p_place, p1.p_place) COLLATE '".WT_I18N::$collation."'"
 			)
 			->execute(array($gedcom_id))
 			->fetchOneColumn();
@@ -171,7 +171,7 @@ class WT_Place {
 				" LEFT JOIN `##places` AS p8 ON (p7.p_parent_id=p8.p_id)".
 				" LEFT JOIN `##places` AS p9 ON (p8.p_parent_id=p9.p_id)".
 				" WHERE p1.p_place LIKE CONCAT('%', ?, '%') AND p1.p_file=?".
-				" ORDER BY p1.p_place"
+				" ORDER BY p1.p_place COLLATE '".WT_I18N::$collation."'"
 			)
 			->execute(array($filter, $gedcom_id))
 			->fetchOneColumn();
