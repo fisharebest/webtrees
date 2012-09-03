@@ -35,6 +35,10 @@
 .cens_sour_year {float: left; width:20px;}
 .cens_sour_scs {	float:right; width:430px;}
 .cens_text {font-size:11px; text-align:left;}
+.cens_text_header {text-align: center;line-height: 40px;vertical-align: middle;}
+.cens_text_header span:nth-of-type(1) {float:left;}
+.cens_text_header span:nth-of-type(3) {float:right;}
+.cens_text_header input[type="button"], .cens_text_header input[type="submit"]  {padding: 1px 5px;}
 textarea#NOTE {font-size: 12px;height:250px; width:98.5%; overflow:auto;}
 .cens_header_left {float:left; font-weight:bold;}
 .cens_header_right {float: right; width:50%;}
@@ -74,6 +78,9 @@ html[dir='rtl'] .cens_textinput_left  {float:right;}
 html[dir='rtl'] .cens_textinput_right  {float:left;}
 html[dir='rtl'] .cens_addrows {clear:both; float:right;}
 html[dir='rtl'] .headimg2 {margin-right:0px;}
+html[dir='rtl'] .cens_text_header span:nth-of-type(1) {float:right;}
+html[dir='rtl'] .cens_text_header span:nth-of-type(3) {float:left;}
+
 
 
 
