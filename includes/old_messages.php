@@ -37,6 +37,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Drag-and-drop thumbnails to re-order media items');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Long lists of families with the same name can be broken into smaller sub-lists according to the first letter of the given name.<br /><br />This option determines when sub-listing of family names will occur.  To disable sub-listing completely, set this option to zero.');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Maximum number of surnames on family list');
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('OK');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Quit and return');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Reset to the original order');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Saves the sorted media to the database');
