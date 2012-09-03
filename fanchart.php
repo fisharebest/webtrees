@@ -30,10 +30,8 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 $controller=new WT_Controller_Fanchart();
 
 if (safe_GET_bool('img')) {
-	$img=$controller->generate_fan_chart('png');
 	header('Content-type: image/png');
-	header('Content-length: '.strlen($img));
-	echo $img;
+	$controller->generate_fan_chart('png');
 	exit;
 }
 

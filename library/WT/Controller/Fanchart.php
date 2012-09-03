@@ -371,10 +371,8 @@ class WT_Controller_Fanchart extends WT_Controller_Chart {
 			return $html.$imagemap.'<p align="center"><img src="'.WT_SCRIPT_NAME.'?rootid='.$this->rootid.'&amp;fan_style='.$this->fan_style.'&amp;generations='.$this->generations.'&amp;fan_width='.$this->fan_width.'&amp;img=1" width="'.$fanw.'" height="'.$fanh.'" alt="'.$image_title.'" title="'.$image_title.'" usemap="#fanmap"></p>';
 		case 'png':
 			ImageStringUp($image, 1, $fanw-10, $fanh/3, WT_SERVER_NAME.WT_SCRIPT_PATH, $color);
-			ob_start();
 			ImagePng($image);
 			ImageDestroy($image);
-			return ob_get_flush();
 		}
 	}
 }
