@@ -44,7 +44,7 @@ class GEDFact_assistant_WT_Module extends WT_Module {
 		switch($mod_action) {
 		case '_CENS/census_3_find':
 			// TODO: this file should be a method in this class
-			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/'.$mod_action.'.php';
+			require WT_ROOT.WT_MODULES_DIR.$this->getName().'/_CENS/census_3_find.php';
 			break;
 		case 'media_3_find':
 			self::media_3_find();
