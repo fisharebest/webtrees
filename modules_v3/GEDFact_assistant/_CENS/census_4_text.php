@@ -4,7 +4,7 @@
 // Census Proposed Text Area File
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
 // Derived from PhpGedView
 // Copyright (C) 2007 to 2010  PGV Development Team.  All rights reserved.
@@ -33,18 +33,11 @@ if (!defined('WT_WEBTREES')) {
 <!--   ---- The proposed Census Text -------- -->
 <div class="optionbox cens_text wrap">
 <!--[if IE]><style>.cens_text{margin-top:-1.3em;}</style><![EndIf]-->
-<!--	<span><?php// echo WT_I18N::translate('Click &quot;Preview&quot; to copy Edit Input Fields'); ?></span>-->
 	<div class="cens_text_header">
 		<span><input type="button" value="<?php echo WT_I18N::translate('Preview'); ?>" onclick="preview();"></span>
 		<span><b><?php echo WT_I18N::translate('Proposed Census Text&nbsp;&nbsp;'); ?></b></span>
 		<span><input type="submit" value="<?php echo WT_I18N::translate('Save'); ?>" onclick="caSave();"></span>
 	</div>
-<!--	<br><br>
-	<span class="descriptionbox width15 nowrap">
-		<?php
-//			echo WT_I18N::translate('Shared note'), help_link('SHARED_NOTE');
-		?>
-	</span>-->
 	<div class="optionbox">
 		<textarea wrap="off" name="NOTE" id="NOTE"></textarea><br>
 		<center>
