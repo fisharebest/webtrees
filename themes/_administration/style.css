@@ -351,7 +351,7 @@ html[dir='rtl'] #batch_update2 td+td {text-align:right;}
 table#faq_module, table#faq_module2 {background:OldLace; border:1px inset #D9D6C4; border-collapse:separate; border-spacing:0; margin:0 0 10px 0; padding:5px; width:918px;}
 #faq_module th {font-size:105%; font-weight:bold; text-align:left; vertical-align:top;}
 #faq_module2 th, #faq_module2 td {vertical-align:top; text-align:left;}
-table#faq_edit  {border:1px solid; border-radius:5px;  margin-top:30px; padding:5px;}
+table#faq_edit  {border:1px solid; border-radius:5px; font-size:12px; margin-top:30px; padding:5px;}
 #faq_edit td {padding: 0 10px 10px 10px; vertical-align:top;}
 #faq_edit td p {margin:0;}
 .faq_edit_pos td {white-space:nowrap;}
