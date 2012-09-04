@@ -130,8 +130,8 @@ if ($action=="filter") {
 			if (!isset($marrdate)) { $marrdate = ""; }
 
 			//-- Get Children's Name, DOB, DOD --------------------------
+			$chBLDarray = Array();
 			if (isset($children)) {
-				$chBLDarray = Array();
 				foreach ($children as $key=>$child) {
 					$chnam   = $child->getAllNames();
 					$chfulln = rtrim($chnam[0]['givn'],'*')." ".$chnam[0]['surname'];
@@ -146,7 +146,7 @@ if ($action=="filter") {
 					array_push($chBLDarray, $chBLD);
 				}
 			}
-			if (isset($chBLDarray) && $indi->getSex()=="F") {
+			if ($chBLDarray && $indi->getSex()=="F") {
 				$chBLDarray = implode("::", $chBLDarray);
 			} else {
 				$chBLDarray = '';
