@@ -87,16 +87,6 @@ function userLogout($user_id) {
 }
 
 /**
- * Updates the login time in the database of the given user
- * The login time is used to automatically logout users who have been
- * inactive for the defined session time
- * @param string $username the username to update the login info for
- */
-function userUpdateLogin($user_id) {
-	set_user_setting($user_id, 'sessiontime', time());
-}
-
-/**
  * get the current user's ID and Name
  *
  * Returns 0 and NULL if we are not logged in.

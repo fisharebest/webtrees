@@ -464,8 +464,8 @@ if (WT_SCRIPT_NAME!='help_text.php') {
 
 if (WT_USER_ID) {
 	//-- update the login time every 5 minutes
-	if ($WT_SESSION->activity_time && time()-$WT_SESSION->activity_time > 300) {
-		userUpdateLogin(WT_USER_ID);
+	if (time()-$WT_SESSION->activity_time > 300) {
+		set_user_setting(WT_USER_ID, 'sessiontime', time());
 		$WT_SESSION->activity_time = time();
 	}
 }
