@@ -214,6 +214,7 @@ case 'requestpw':
 
 		set_user_password($user_id, $user_new_pw);
 		set_user_setting($user_id, 'pwrequested', 1);
+		$user_name = get_user_name($user_id);
 
 		$mail_body = '';
 		$mail_body .= WT_I18N::translate('Hello %s ...', getUserFullName($user_id)) . "\r\n\r\n";
