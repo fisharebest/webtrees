@@ -50,13 +50,13 @@ class WT_I18N {
 		if (ini_get('apc.enabled')) {
 			self::$cache=Zend_Cache::factory('Core', 'Apc', $cache_options, array());
 		} else {
-			if (!is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
+			if (!is_dir(WT_DATA_DIR.'cache')) {
 				// We may not have permission - especially during setup, before we instruct
 				// the user to "chmod 777 /data"
-				@mkdir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache');
+				@mkdir(WT_DATA_DIR.'cache');
 			}
 			if (is_dir(WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache')) {
-				self::$cache=Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir'=>WT_DATA_DIR.DIRECTORY_SEPARATOR.'cache'));
+				self::$cache=Zend_Cache::factory('Core', 'File', $cache_options, array('cache_dir'=>WT_DATA_DIR.'cache'));
 			} else {
 				// No cache available :-(
 				self::$cache=Zend_Cache::factory('Core', 'Zend_Cache_Backend_BlackHole', $cache_options, array(), false, true);
