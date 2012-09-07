@@ -35,7 +35,6 @@ $controller
 
 ?>
 <script>
-<!--
 var pastefield = null;
 function paste_id(value) {
 	pastefield.value=value;
@@ -217,6 +216,7 @@ function MM(e) {
 		}
 	}
 }
+</script><script>
 
 function MU() {
 	ob = null;
