@@ -314,7 +314,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$filter=get_block_setting($block_id, 'filter', 'all');
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show only persons, events, or all?'), help_link('random_media_persons_or_all', $this->getName());
+		echo WT_I18N::translate('Show only persons, events, or all?');
 		echo '</td><td class="optionbox">';
 		echo select_edit_control('filter', array('indi'=>WT_I18N::translate('Individuals'), 'event'=>WT_I18N::translate('Facts and events'), 'all'=>WT_I18N::translate('All')), null, $filter, '');
 		echo '</td></tr>';
@@ -352,7 +352,7 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 		);
 
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Filter'), help_link('random_media_filter', $this->getName());
+		echo WT_I18N::translate('Filter');
 ?>
 	</td>
 		<td class="optionbox">
@@ -429,14 +429,14 @@ class random_media_WT_Module extends WT_Module implements WT_Module_Block {
 
 		$controls=get_block_setting($block_id, 'controls', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Show slide show controls?'), help_link('random_media_ajax_controls', $this->getName());
+		echo WT_I18N::translate('Show slide show controls?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('controls', $controls);
 		echo '</td></tr>';
 
 		$start=get_block_setting($block_id, 'start', false);
 		echo '<tr><td class="descriptionbox wrap width33">';
-		echo WT_I18N::translate('Start slide show on page load?'), help_link('random_media_start_slide', $this->getName());
+		echo WT_I18N::translate('Start slide show on page load?');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('start', $start);
 		echo '</td></tr>';
