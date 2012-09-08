@@ -55,13 +55,11 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if (count($indifacts)==0) {
 			echo WT_I18N::translate('There are no Facts for this individual.');
 		} else {
-//			echo '<table>';
 			foreach ($indifacts as $fact) {
 				if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
-					strip_tags(print_fact($fact, $controller->record));
+					print_fact($fact, $controller->record);
 				}
 			}
-//			echo '</table>';
 		}
 		echo '<div id="hitcounter">';
 		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
@@ -70,7 +68,7 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 			echo WT_I18N::translate('Hit Count:'). ' '. $hitCount;
 		}
 		echo '</div>';// close #hitcounter
-		return ob_get_clean();
+		return strip_tags(ob_get_clean(), '<a><div><span>');
 	}
 	
 	// Implement WT_Module_Sidebar
