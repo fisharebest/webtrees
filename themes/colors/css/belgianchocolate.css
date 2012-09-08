@@ -24,7 +24,7 @@
  * $Id$
  */
 
-/* Ash Palette */
+/* Belgianchocolate Palette */
 
 /* Header */
 #header {
@@ -58,7 +58,7 @@ background:#311900;
 #indi_header h3,
 .blockcontent,#search,#search-page-table .value,#edituser-table .value,
 .makeMenu ul li a:hover,
-.optionbox,
+.optionbox,#indi_header .ui-state-active a:link,
 .list_value,.list_value_wrap,.list_value_wrap a,
 #login-form,#new_passwd_form,#register-form {
 background:#f6edd5;

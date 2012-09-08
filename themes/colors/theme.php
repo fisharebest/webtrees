@@ -30,15 +30,13 @@ if (!defined('WT_WEBTREES')) {
 }
 // Convert a menu into our theme-specific format
 function getMenuAsCustomList($menu) {
-		// Insert the label into the submenu, except for menus with only one item.
-		if (count($menu->submenus)>1) {
-			// Create a inert menu - to use as a label
-			$tmp=new WT_Menu(strip_tags($menu->label), '');
-			if ($menu->submenus) {
-				array_unshift($menu->submenus, $tmp);
-			} else {
-				$menu->addSubmenu($tmp);
-			}
+		// Create an inert menu - to use as a label
+		$tmp=new WT_Menu(strip_tags($menu->label), '');
+		// Insert the label into the submenu
+		if (is_array($menu->submenus)) {
+			array_unshift($menu->submenus, $tmp);
+		} else {
+			$menu->addSubmenu($tmp);
 		}
 		// Neutralise the top-level menu
 		$menu->label='';
@@ -80,6 +78,7 @@ $COLOR_THEME_LIST=array(
 	'nocturnal'       => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Nocturnal'),
 	'olivia'          => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Olivia'),
 	'pinkplastic'     => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Pink Plastic'),
+	'sage'            => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Sage'),
 	'shinytomato'     => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Shiny Tomato'),
 	'tealtop'         => /* I18N: The name of a colour-scheme */ WT_I18N::translate('Teal Top'),
 );

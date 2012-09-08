@@ -74,8 +74,8 @@ html[dir='rtl'] #main-menu li{float:right;}
 html[dir='rtl'] #main-menu ul{right:0;left:auto;}
 
 #main-menu ul li{white-space:nowrap;}
-#main-menu ul li a{font-size:12px;padding:5px;text-align:left;}
-html[dir='rtl'] #main-menu ul li a{text-align:right;float:right;padding-right:30px;}
+#main-menu ul li a{font-size:12px;padding:0 5px;line-height:30px;text-align:left; }
+html[dir='rtl'] #main-menu ul li a{text-align:right;float:right;padding-right:30px;line-height: 26px;}
 
 #main-menu #menu-chart li ul{display:none;}
 #main-menu li:hover ul{display:block;} /* main menu hover */
@@ -87,10 +87,10 @@ html[dir='rtl'] #main-menu #menu-chart li:hover ul{right:100%;left:auto;}
 #main-menu > li{background-image:url(../images/sprites-top-menu.png);background-repeat:no-repeat;height:40px;line-height:40px;margin:7px 0 0 16px;text-indent:32px;width:40px;}
 html[dir='rtl'] #main-menu > li{margin:7px 16px 0 0px;}
 
-#main-menu li ul li{background-image:url(../images/sprites-sub-menu.png);background-repeat:no-repeat;height:22px;line-height:15px;margin:5px 0;text-indent:22px;}
+#main-menu li ul li{background-image:url(../images/sprites-sub-menu.png);background-repeat:no-repeat;height:28px;line-height:15px;margin:0;text-indent:22px;}
 html[dir='rtl'] #main-menu li ul li{text-indent:0;}
 
-#main-menu > li > ul > li:first-child{background-image:none;border-bottom:2px solid #ddd;color:#333;font-weight:700;text-align:center;text-indent:0;}
+#main-menu li ul li:first-child{background-image:none;color:#333;font-weight:700;text-align:center;text-indent:0;font-size:14px;padding:5px 5px 0 5px;height:19px;border-bottom:1px solid #ddd;}
 
 /* Options Menu  */
 .makeMenu{float:right;margin:40px 10px 4px 0;}
@@ -112,129 +112,129 @@ html[dir='rtl'] .makeMenu li ul{left:auto;right:0;}
 html[dir='rtl'] .makeMenu li ul li{text-align:right;}
 
 /* Menu Icons */
-#menu-tree	{background-position:center 0;}
-#menu-chart{background-position:center -41px;}
-#menu-list	{background-position:center -82px;}
+#menu-tree		{background-position:center     0;}
+#menu-chart		{background-position:center -41px;}
+#menu-list		{background-position:center -82px;}
 #menu-calendar	{background-position:center -123px;}
 #menu-report	{background-position:center -164px;}
 #menu-search	{background-position:center -205px;}
-#menu-help	{background-position:center -246px;}
+#menu-help		{background-position:center -246px;}
 #menu-mymenu	{background-position:center -287px;}
 #menu-clippings	{background-position:center -328px;}
-#menu-indi	{background-position:center -369px;}
-#menu-sour	{background-position:center -451px;}
-#menu-fam	{background-position:center -410px;}
-#menu-note	{background-position:center -492px;}
-#menu-obje	{background-position:center -533px;}
-#menu-repo	{background-position:center -574px;}
-#menu-story	{background-position:center -616px;}
+#menu-indi		{background-position:center -369px;}
+#menu-sour		{background-position:center -451px;}
+#menu-fam		{background-position:center -410px;}
+#menu-note		{background-position:center -492px;}
+#menu-obje		{background-position:center -533px;}
+#menu-repo		{background-position:center -574px;}
+#menu-story		{background-position:center -616px;}
 
 /* Submenu Icons */
-#menu-chart-ancestry	{background-position:left -184px;} html[dir=rtl] #menu-chart-ancestry	{background-position:right -184px;}
-#menu-chart-fanchart	{background-position:left  -23px;} html[dir=rtl] #menu-chart-fanchart	{background-position:right -23px;}
-#menu-chart-compact 	{background-position:left  -46px;} html[dir=rtl] #menu-chart-compact	{background-position:right -46px;}
-#menu-chart-descendancy	{background-position:left   -0px;} html[dir=rtl] #menu-chart-descendancy	{background-position:right  -0px;}
-#menu-chart-familybook	{background-position:left  -92px;} html[dir=rtl] #menu-chart-familybook		{background-position:right -92px;}
-#menu-chart-hourglass	{background-position:left -115px;} html[dir=rtl] #menu-chart-hourglass	{background-position:right -115px;}
-#menu-chart-tree		{background-position:left -138px;} html[dir=rtl] #menu-chart-tree	{background-position:right -138px;}
-#menu-chart-lifespan	{background-position:left -161px;} html[dir=rtl] #menu-chart-lifespan 	{background-position:right -161px;}
-#menu-chart-pedigree	{background-position:left -184px;} html[dir=rtl] #menu-chart-pedigree	{background-position:right -184px;}
-#menu-chart-pedigree_map{background-position:left -207px;} html[dir=rtl] #menu-chart-pedigree_map	{background-position:right -207px;}
-#menu-chart-relationship{background-position:left -230px;} html[dir=rtl] #menu-chart-relationship	{background-position:right -230px;}
-#menu-chart-relationship li{background-position:left -230px;} html[dir=rtl] #menu-chart-relationship li{background-position:right -230px;}
-#menu-chart-statistics {background-position:left -253px;} html[dir=rtl] #menu-chart-statistics	{background-position:right -253px;}
-#menu-chart-timeline	{background-position:left -276px;} html[dir=rtl] #menu-chart-timeline 	{background-position:right -276px;}
-#menu-chart-timeline li{background-position:left -276px;} html[dir=rtl] #menu-chart-timeline li{background-position:right -276px;}
+#menu-chart-ancestry		{background-position:left -208px;} html[dir=rtl] #menu-chart-ancestry		{background-position:right -208px;}
+#menu-chart-fanchart		{background-position:left  -26px;} html[dir=rtl] #menu-chart-fanchart		{background-position:right -26px;}
+#menu-chart-compact 		{background-position:left  -52px;} html[dir=rtl] #menu-chart-compact		{background-position:right -52px;}
+#menu-chart-descendancy		{background-position:left   -0px;} html[dir=rtl] #menu-chart-descendancy	{background-position:right  -0px;}
+#menu-chart-familybook		{background-position:left -104px;} html[dir=rtl] #menu-chart-familybook		{background-position:right -104px;}
+#menu-chart-hourglass		{background-position:left -130px;} html[dir=rtl] #menu-chart-hourglass		{background-position:right -130px;}
+#menu-chart-tree			{background-position:left -156px;} html[dir=rtl] #menu-chart-tree			{background-position:right -156px;}
+#menu-chart-lifespan		{background-position:left -182px;} html[dir=rtl] #menu-chart-lifespan 		{background-position:right -182px;}
+#menu-chart-pedigree		{background-position:left -208px;} html[dir=rtl] #menu-chart-pedigree		{background-position:right -208px;}
+#menu-chart-pedigree_map	{background-position:left -234px;} html[dir=rtl] #menu-chart-pedigree_map	{background-position:right -234px;}
+#menu-chart-relationship	{background-position:left -260px;} html[dir=rtl] #menu-chart-relationship	{background-position:right -260px;}
+#menu-chart-relationship li	{background-position:left -260px;} html[dir=rtl] #menu-chart-relationship li{background-position:right -260px;}
+#menu-chart-statistics 		{background-position:left -286px;} html[dir=rtl] #menu-chart-statistics		{background-position:right -286px;}
+#menu-chart-timeline		{background-position:left -312px;} html[dir=rtl] #menu-chart-timeline 		{background-position:right -312px;}
+#menu-chart-timeline li		{background-position:left -312px;} html[dir=rtl] #menu-chart-timeline li	{background-position:right -312px;}
 
-#menu-list-obje	{background-position:left -299px;} html[dir=rtl] #menu-list-obje	{background-position:right -299px;}
-#menu-list-plac	{background-position:left -322px;} html[dir=rtl] #menu-list-plac	{background-position:right -322px;}
-#menu-list-repo	{background-position:left -345px;} html[dir=rtl] #menu-list-repo	{background-position:right -345px;}
-#menu-list-note	{background-position:left -368px;} html[dir=rtl] #menu-list-note	{background-position:right -368px;}
-#menu-list-sour	{background-position:left -391px;} html[dir=rtl] #menu-list-sour	{background-position:right -391px;}
-#menu-branches	{background-position:left -414px;} html[dir=rtl] #menu-branches		{background-position:right -414px;}
-#menu-list-fam	{background-position:left -437px;} html[dir=rtl] #menu-list-fam 	{background-position:right -437px;}
-#menu-list-indi	{background-position:left -460px;} html[dir=rtl] #menu-list-indi	{background-position:right -460px;}
+#menu-list-obje				{background-position:left -338px;} html[dir=rtl] #menu-list-obje	{background-position:right -338px;}
+#menu-list-plac				{background-position:left -364px;} html[dir=rtl] #menu-list-plac	{background-position:right -364px;}
+#menu-list-repo				{background-position:left -390px;} html[dir=rtl] #menu-list-repo	{background-position:right -390px;}
+#menu-list-note				{background-position:left -416px;} html[dir=rtl] #menu-list-note	{background-position:right -416px;}
+#menu-list-sour				{background-position:left -442px;} html[dir=rtl] #menu-list-sour	{background-position:right -442px;}
+#menu-branches				{background-position:left -468px;} html[dir=rtl] #menu-branches		{background-position:right -468px;}
+#menu-list-fam				{background-position:left -494px;} html[dir=rtl] #menu-list-fam 	{background-position:right -494px;}
+#menu-list-indi				{background-position:left -520px;} html[dir=rtl] #menu-list-indi	{background-position:right -520px;}
 
 /* Report Icons */
-#menu-report li	{background-position:left -483px;} html[dir=rtl] #menu-report li 	{background-position:right -483px;}
+#menu-report li				{background-position:left -546px;} html[dir=rtl] #menu-report li 	{background-position:right -546px;}
 
 /* Calendar Icons */
-#menu-calendar-day 	{background-position:left -506px;} html[dir=rtl] #menu-calendar-day		{background-position:right -506px;}
-#menu-calendar-month{background-position:left -506px;} html[dir=rtl] #menu-calendar-month	{background-position:right -506px;}
-#menu-calendar-year{background-position:left -506px;} html[dir=rtl] #menu-calendar-year 	{background-position:right -506px;}
+#menu-calendar-day 			{background-position:left -572px;} html[dir=rtl] #menu-calendar-day		{background-position:right -572px;}
+#menu-calendar-month		{background-position:left -572px;} html[dir=rtl] #menu-calendar-month	{background-position:right -572px;}
+#menu-calendar-year			{background-position:left -572px;} html[dir=rtl] #menu-calendar-year 	{background-position:right -572px;}
 
 /* Search Icons */
-#menu-search-general	{background-position:left -529px;} html[dir=rtl] #menu-search-general	{background-position:right -529px;}
-#menu-search-soundex	{background-position:left -529px;} html[dir=rtl] #menu-search-soundex	{background-position:right -529px;}
-#menu-search-advanced	{background-position:left -529px;} html[dir=rtl] #menu-search-advanced	{background-position:right -529px;}
-#menu-search-replace	{background-position:left -529px;} html[dir=rtl] #menu-search-replace	{background-position:right -529px;}
+#menu-search-general		{background-position:left -598px;} html[dir=rtl] #menu-search-general	{background-position:right -598px;}
+#menu-search-soundex		{background-position:left -598px;} html[dir=rtl] #menu-search-soundex	{background-position:right -598px;}
+#menu-search-advanced		{background-position:left -598px;} html[dir=rtl] #menu-search-advanced	{background-position:right -598px;}
+#menu-search-replace		{background-position:left -598px;} html[dir=rtl] #menu-search-replace	{background-position:right -598px;}
 
 /* Help Icons */
-#menu-help-genealogy{background-position:left -552px;} html[dir=rtl] #menu-help-genealogy 	{background-position:right -552px;}
-#menu-help-show		{background-position:left -552px;} html[dir=rtl] #menu-help-show		{background-position:right -552px;}
-#menu-help-contents{background-position:left -552px;} html[dir=rtl] #menu-help-contents	{background-position:right -552px;}
-#menu-help-hide		{background-position:left -552px;} html[dir=rtl] #menu-help-hide		{background-position:right -552px;}
-#menu-help-faq		{background-position:left -552px;} html[dir=rtl] #menu-help-faq			{background-position:right -552px;}
-#menu-help-wiki		{background-position:left -575px;} html[dir=rtl] #menu-help-wiki		{background-position:right -575px;}
-#menu-help-technical{background-position:left -598px;} html[dir=rtl] #menu-help-technical	{background-position:right -598px;}
+#menu-help-genealogy		{background-position:left -624px;} html[dir=rtl] #menu-help-genealogy 	{background-position:right -624px;}
+#menu-help-show				{background-position:left -624px;} html[dir=rtl] #menu-help-show		{background-position:right -624px;}
+#menu-help-contents			{background-position:left -624px;} html[dir=rtl] #menu-help-contents	{background-position:right -624px;}
+#menu-help-hide				{background-position:left -624px;} html[dir=rtl] #menu-help-hide		{background-position:right -624px;}
+#menu-help-faq				{background-position:left -624px;} html[dir=rtl] #menu-help-faq			{background-position:right -624px;}
+#menu-help-wiki				{background-position:left -650px;} html[dir=rtl] #menu-help-wiki		{background-position:right -650px;}
+#menu-help-technical		{background-position:left -676px;} html[dir=rtl] #menu-help-technical	{background-position:right -676px;}
 
 /* MyPage Icons */
-#menu-mypage	{background-position:left -598px;} html[dir=rtl] #menu-mypage 		{background-position:right -598px;}
-#menu-myaccount	{background-position:left -598px;} html[dir=rtl] #menu-myaccount	{background-position:right -598px;}
-#menu-mypedigree{background-position:left -184px;} html[dir=rtl] #menu-mypedigree	{background-position:right -828px;}
-#menu-myrecord	{background-position:left -460px;} html[dir=rtl] #menu-myrecord		{background-position:right -460px;}
-#menu-admin 	{background-position:left -644px;} html[dir=rtl] #menu-admin		{background-position:right -644px;}
-#menu-tree li	{background-position:left -667px;} html[dir=rtl] #menu-tree li		{background-position:right -667px;}
+#menu-mypage				{background-position:left -676px;} html[dir=rtl] #menu-mypage 		{background-position:right -676px;}
+#menu-myaccount				{background-position:left -676px;} html[dir=rtl] #menu-myaccount	{background-position:right -676px;}
+#menu-mypedigree			{background-position:left -208px;} html[dir=rtl] #menu-mypedigree	{background-position:right -208px;}
+#menu-myrecord				{background-position:left -520px;} html[dir=rtl] #menu-myrecord		{background-position:right -520px;}
+#menu-admin 				{background-position:left -728px;} html[dir=rtl] #menu-admin		{background-position:right -728px;}
+#menu-tree li				{background-position:left -754px;} html[dir=rtl] #menu-tree li		{background-position:right -754px;}
 
 /* Family Icons */
-#menu-fam-addchil	{background-position:left -759px;} html[dir=rtl] #menu-fam-addchil	{background-position:right -759px;}
-#menu-fam-addfav	{background-position:left -736px;} html[dir=rtl] #menu-fam-addfav	{background-position:right -736px;}
-#menu-fam-change	{background-position:left -759px;} html[dir=rtl] #menu-fam-change	{background-position:right -759px;}
-#menu-fam-del		{background-position:left -828px;} html[dir=rtl] #menu-fam-del		{background-position:right -713px;}
-#menu-fam-editraw	{background-position:left -667px;} html[dir=rtl] #menu-fam-editraw	{background-position:right -667px;}
-#menu-fam-orderchil	{background-position:left -759px;} html[dir=rtl] #menu-fam-orderchil{background-position:right -759px;}
+#menu-fam-addchil			{background-position:left -858px;} html[dir=rtl] #menu-fam-addchil	{background-position:right -858px;}
+#menu-fam-addfav			{background-position:left -832px;} html[dir=rtl] #menu-fam-addfav	{background-position:right -832px;}
+#menu-fam-change			{background-position:left -858px;} html[dir=rtl] #menu-fam-change	{background-position:right -858px;}
+#menu-fam-del				{background-position:left -936px;} html[dir=rtl] #menu-fam-del		{background-position:right -936px;}
+#menu-fam-editraw			{background-position:left -754px;} html[dir=rtl] #menu-fam-editraw	{background-position:right -754px;}
+#menu-fam-orderchil			{background-position:left -858px;} html[dir=rtl] #menu-fam-orderchil{background-position:right -858px;}
 
 /* Clipping Icons */
-#menu-clippingscart{background-position:left -621px;} html[dir=rtl] #menu-clippingscart{background-position:right -621px;}
-#menu-clippingsadd 	{background-position:left -621px;} html[dir=rtl] #menu-clippingsadd {background-position:right -621px;}
+#menu-clippingscart			{background-position:left -702px;} html[dir=rtl] #menu-clippingscart{background-position:right -702px;}
+#menu-clippingsadd 			{background-position:left -702px;} html[dir=rtl] #menu-clippingsadd {background-position:right -702px;}
 
 /* Edit Icons */
-#menu-indi-editraw	{background-position:left -667px;} html[dir=rtl] #menu-indi-editraw	{background-position:right -667px;}
-#menu-indi-addname	{background-position:left -690px;} html[dir=rtl] #menu-indi-addname	{background-position:right -690px;}
-#menu-indi-editsex	{background-position:left -690px;} html[dir=rtl] #menu-indi-editsex	{background-position:right -690px;}
-#menu-indi-del		{background-position:left -713px;} html[dir=rtl] #menu-indi-del		{background-position:right -713px;}
-#menu-indi-addfav	{background-position:left -736px;} html[dir=rtl] #menu-indi-addfav {background-position:right -736px;}
+#menu-indi-editraw	{background-position:left -754px;} html[dir=rtl] #menu-indi-editraw	{background-position:right -754px;}
+#menu-indi-addname	{background-position:left -780px;} html[dir=rtl] #menu-indi-addname	{background-position:right -780px;}
+#menu-indi-editsex	{background-position:left -780px;} html[dir=rtl] #menu-indi-editsex	{background-position:right -780px;}
+#menu-indi-del		{background-position:left -806px;} html[dir=rtl] #menu-indi-del		{background-position:right -806px;}
+#menu-indi-addfav	{background-position:left -832px;} html[dir=rtl] #menu-indi-addfav 	{background-position:right -832px;}
 
 /* Edit Notes */
-#menu-note-addfav	{background-position:left -736px;} html[dir=rtl] #menu-note-fav		{background-position:right -736px;}
-#menu-note-del		{background-position:left -713px;} html[dir=rtl] #menu-note-del		{background-position:right -713px;}
-#menu-note-edit		{background-position:left -805px;} html[dir=rtl] #menu-note-edit	{background-position:right -805px;}
-#menu-note-editraw	{background-position:left -667px;} html[dir=rtl] #menu-note-editraw	{background-position:right -667px;}
+#menu-note-addfav	{background-position:left -832px;} html[dir=rtl] #menu-note-fav		{background-position:right -832px;}
+#menu-note-del		{background-position:left -806px;} html[dir=rtl] #menu-note-del		{background-position:right -806px;}
+#menu-note-edit		{background-position:left -910px;} html[dir=rtl] #menu-note-edit	{background-position:right -910px;}
+#menu-note-editraw	{background-position:left -754px;} html[dir=rtl] #menu-note-editraw	{background-position:right -754px;}
 
 /* Objects */
-#menu-obje-addfav	{background-position:left -736px;} html[dir=rtl] #menu-obje-addfav	{background-position:right -736px;}
-#menu-obje-del		{background-position:left -920px;} html[dir=rtl] #menu-obje-del		{background-position:right -713px;}
-#menu-obje-edit		{background-position:left -851px;} html[dir=rtl] #menu-obje-edit	{background-position:right -852px;}
-#menu-obje-editraw	{background-position:left -667px;} html[dir=rtl] #menu-obje-editraw	{background-position:right -667px;}
-#menu-obje-link		{background-position:left -874px;} html[dir=rtl] #menu-obje-link	{background-position:right -875px;}
-#menu-obje-linkfam	{background-position:left -437px;} html[dir=rtl] #menu-obje-linkfam	{background-position:right -437px;}
-#menu-obje-link-ind{background-position:left -460px;} html[dir=rtl] #menu-obje-link-ind{background-position:right -460px;}
-#menu-obje-link-sour{background-position:left -391px;} html[dir=rtl] #menu-obje-link-sour{background-position:right -391px;}
+#menu-obje-addfav	{background-position:left -832px;} html[dir=rtl] #menu-obje-addfav	{background-position:right -832px;}
+#menu-obje-del		{background-position:left -1040px;} html[dir=rtl] #menu-obje-del	{background-position:right -1040px;}
+#menu-obje-edit		{background-position:left -962px;} html[dir=rtl] #menu-obje-edit	{background-position:right -962px;}
+#menu-obje-editraw	{background-position:left -754px;} html[dir=rtl] #menu-obje-editraw	{background-position:right -754px;}
+#menu-obje-link		{background-position:left -988px;} html[dir=rtl] #menu-obje-link	{background-position:right -988px;}
+#menu-obje-linkfam	{background-position:left -494px;} html[dir=rtl] #menu-obje-linkfam	{background-position:right -494px;}
+#menu-obje-link-ind	{background-position:left -520px;} html[dir=rtl] #menu-obje-link-ind{background-position:right -520px;}
+#menu-obje-link-sour{background-position:left -442px;} html[dir=rtl] #menu-obje-link-sour{background-position:right -442px;}
 
 /* Repository */
-#menu-repo-addfav	{background-position:left -736px;} html[dir=rtl] #menu-repo-addfav	{background-position:right -736px;}
-#menu-repo-del		{background-position:left -713px;} html[dir=rtl] #menu-repo-del		{background-position:right -713px;}
-#menu-repo-edit		{background-position:left -897px;} html[dir=rtl] #menu-repo-edit	{background-position:right -897px;}
-#menu-repo-editraw	{background-position:left -667px;} html[dir=rtl] #menu-repo-editraw	{background-position:right -667px;}
+#menu-repo-addfav	{background-position:left -832px;} html[dir=rtl] #menu-repo-addfav	{background-position:right -832px;}
+#menu-repo-del		{background-position:left -806px;} html[dir=rtl] #menu-repo-del		{background-position:right -806px;}
+#menu-repo-edit		{background-position:left -1014px;} html[dir=rtl] #menu-repo-edit	{background-position:right -1014px;}
+#menu-repo-editraw	{background-position:left -754px;} html[dir=rtl] #menu-repo-editraw	{background-position:right -754px;}
 
 /* Source */
-#menu-sour-addfav	{background-position:left -736px;} html[dir=rtl] #menu-sour-addfav	{background-position:right -736px;}
-#menu-sour-del		{background-position:left -943px;} html[dir=rtl] #menu-sour-del		{background-position:right -713px;}
-#menu-sour-edit		{background-position:left -782px;} html[dir=rtl] #menu-sour-edit	{background-position:right -782px;}
-#menu-sour-editraw	{background-position:left -667px;} html[dir=rtl] #menu-sour-editraw	{background-position:right -667px;}
+#menu-sour-addfav	{background-position:left -832px;} html[dir=rtl] #menu-sour-addfav	{background-position:right -832px;}
+#menu-sour-del		{background-position:left -1066px;} html[dir=rtl] #menu-sour-del	{background-position:right -1066px;}
+#menu-sour-edit		{background-position:left -884px;} html[dir=rtl] #menu-sour-edit	{background-position:right -884px;}
+#menu-sour-editraw	{background-position:left -754px;} html[dir=rtl] #menu-sour-editraw	{background-position:right -754px;}
 
 /* Stories */
-#menu-story-sub		{background-position:left -966px;} html[dir=rtl] #menu-story-sub	{background-position:right -920px;}
+#menu-story-sub		{background-position:left -1092px;} html[dir=rtl] #menu-story-sub	{background-position:right -1040px;}
 
 /* Always LTR, even on RTL pages */
 /*
