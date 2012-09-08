@@ -119,7 +119,6 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 					(int)safe_POST('block_order')
 				));
 				$block_id=WT_DB::getInstance()->lastInsertId();
-				var_dump($block_id);
 			}
 			set_block_setting($block_id, 'header',  safe_POST('header',  WT_REGEX_UNSAFE));
 			set_block_setting($block_id, 'faqbody', safe_POST('faqbody', WT_REGEX_UNSAFE)); // allow html
