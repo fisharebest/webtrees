@@ -55,13 +55,13 @@ class extra_info_WT_Module extends WT_Module implements WT_Module_Sidebar {
 		if (count($indifacts)==0) {
 			echo WT_I18N::translate('There are no Facts for this individual.');
 		} else {
-			echo '<table>';
+//			echo '<table>';
 			foreach ($indifacts as $fact) {
 				if (in_array($fact->getTag(), WT_Gedcom_Tag::getReferenceFacts())) {
-					print_fact($fact, $controller->record);
+					strip_tags(print_fact($fact, $controller->record));
 				}
 			}
-			echo '</table>';
+//			echo '</table>';
 		}
 		echo '<div id="hitcounter">';
 		if ($SHOW_COUNTER && (empty($SEARCH_SPIDER))) {
