@@ -238,7 +238,7 @@ class descendancy_WT_Module extends WT_Module implements WT_Module_Sidebar {
 					$out .= $this->getPersonLi($child, $generations-1);
 				}
 			} else {
-				$out .= WT_I18N::translate('No children');
+				$out .= '<li>'.WT_I18N::translate('No children').'</li>';
 			}
 		}
 		if ($out) {
