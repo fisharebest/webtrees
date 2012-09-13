@@ -45,10 +45,10 @@ define('WT_TRANSLATORS_URL', 'https://translations.launchpad.net/webtrees/');
 define('WT_STATIC_URL', ''); // For example, "http://my.cdn.com/webtrees-static-1.3.1/"
 
 // Optionally, load major JS libraries from Google's public CDN
-define ('WT_USE_GOOGLE_API', false);
+define ('WT_USE_GOOGLE_API', true);
 if (WT_USE_GOOGLE_API) {
-	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js');
-	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/jquery-ui.min.js');
+	define('WT_JQUERY_URL',        'https://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js');
+	define('WT_JQUERYUI_URL',      'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js');
 } else {
 	define('WT_JQUERY_URL',        WT_STATIC_URL.'js/jquery/jquery.min.js');
 	define('WT_JQUERYUI_URL',      WT_STATIC_URL.'js/jquery/jquery-ui.min.js');
