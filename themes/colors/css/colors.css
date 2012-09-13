@@ -834,6 +834,7 @@ html[dir='rtl'] .DataTables_sort_wrapper span{left:auto;right:0;margin-right:-20
 
 .search_hit{background:#FF0;color:#000;}
 .search_item{font-weight:600;}
+.search-icon{margin-bottom:-1px;}
 
 #firstfocus{font-size:12px;width:330px;}
 #search-result-tabs,#places-tabs{margin:auto;visibility:hidden;width:98%;}
