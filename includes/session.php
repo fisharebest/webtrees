@@ -389,7 +389,7 @@ if (isset($_REQUEST['ged'])) {
 $ged_id=null;
 foreach (WT_Tree::getAll() as $tree) {
 	$ged_id=$tree->tree_id;
-	if ($tree->tree_name == $GEDCOM && $tree->imported || WT_USER_IS_ADMIN) {
+	if ($tree->tree_name == $GEDCOM && ($tree->imported || WT_USER_IS_ADMIN)) {
 		break;
 	}
 }
