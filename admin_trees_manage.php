@@ -22,6 +22,7 @@
 
 define('WT_SCRIPT_NAME', 'admin_trees_manage.php');
 require './includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Base();
 $controller
@@ -240,17 +241,8 @@ if (WT_USER_IS_ADMIN) {
 		echo
 			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
 			'<input type="hidden" name="action" value="setdefault">',
-			'<select name="default_ged" class="header_select" onchange="document.defaultform.submit();">';
-		$DEFAULT_GEDCOM=get_site_setting('DEFAULT_GEDCOM');
-		if (empty($DEFAULT_GEDCOM)) {
-			echo '<option value="" selected="selected"></option>';
-		}
-		foreach (WT_Tree::GetAll() as $tree) {
-			echo '<option value="', $tree->tree_name_html, '"';
-			if ($DEFAULT_GEDCOM==$tree->tree_name) echo ' selected="selected"';
-			echo '>', $tree->tree_name_html, '</option>';
-		}
-		echo '</select></form></td>';
+			select_edit_control('default_ged', WT_Tree::getList(), '', get_site_setting('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
+			'</form></td>';
 	}
 	echo
 		'<td class="button">',
