@@ -1132,12 +1132,12 @@ function print_addnewrepository_link($element_id) {
 }
 
 function print_addnewnote_link($element_id) {
-	return '<a href="#" onclick="addnewnote(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new Shared Note').'">';
+	return '<a href="#" onclick="addnewnote(document.getElementById(\''.$element_id.'\')); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new Shared Note').'"></a>';
 }
 
 /// Used in GEDFact CENS assistant
 function print_addnewnote_assisted_link($element_id, $pid) {
-	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$pid.'\'); return false;" class="icon-button_addnote" title="'.WT_I18N::translate('Create a new Shared Note using Assistant').'"></a>';
+	return '<a href="#" onclick="addnewnote_assisted(document.getElementById(\''.$element_id.'\'), \''.$pid.'\'); return false;">'.WT_I18N::translate('Create a new Shared Note using Assistant').'</a>';
 }
 
 function print_editnote_link($note_id) {
@@ -1370,11 +1370,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 			break;
 		case 'NOTE':
 			if ($islink) {
-				if ($pid && $label=='GEDFact Assistant' && array_key_exists('GEDFact_assistant', WT_Module::getActiveModules())) {
-					echo help_link('edit_add_GEDFact_ASSISTED');
-				} else {
-					echo help_link('edit_add_SHARED_NOTE');
-				}
+				echo help_link('edit_add_SHARED_NOTE');
 			} else {
 				echo help_link($fact);
 			}
@@ -1440,15 +1436,6 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 		echo "<input type=\"hidden\" name=\"glevels[]\" value=\"", $level, "\">";
 		echo "<input type=\"hidden\" name=\"islink[]\" value=\"", $islink, "\">";
 		echo "<input type=\"hidden\" name=\"tag[]\" value=\"", $fact, "\">";
-
-		// Shared Notes Debug ------------------------------------------------
-		// Please leave until GEDFact assistant/_CENS is released - B.Holland
-			// echo "<br>Label = ".$label;
-			// echo "<br>Level = ".$level;
-			// echo "<br>Link  = ".$islink;
-			// echo "<br>Fact  = ".$fact;
-			// echo "<br>Value = ".$value;
-		// End Debug ---------------------------------------------------------
 	}
 	echo "</td>";
 
@@ -1698,12 +1685,7 @@ function add_simple_tag($tag, $upperlevel='', $label='', $readOnly='', $noClose=
 				if ($event_add=="census_add") {
 					$type_pid=WT_GedcomRecord::getInstance($pid);
 					if ($type_pid->getType()=="INDI" ) {
-						echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-						echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-						echo "<a href=\"#\" onclick=\"addnewnote_assisted(document.getElementById('", $element_id, "'), '", $pid, "' ); return false;\" title=\"".WT_I18N::translate('Create a new Shared Note using Assistant')."\" alt=\"".WT_I18N::translate('Create a new Shared Note using Assistant')."\">";
-						echo WT_I18N::translate('Shared Note using Assistant');
-						echo '</a> ';
-						echo print_addnewnote_assisted_link($element_id, $pid);
+						echo '<br>', print_addnewnote_assisted_link($element_id, $pid);
 					}
 				}
 			}
