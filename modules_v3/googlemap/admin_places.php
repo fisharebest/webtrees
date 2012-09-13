@@ -192,12 +192,11 @@ $controller
 <?php
 
 if ($action=='ImportGedcom') {
-	$ged_id=safe_GET('ged_id');
 	$placelist=array();
 	$j=0;
 	$statement=
 		WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_file=? UNION ALL SELECT f_gedcom FROM `##families` WHERE f_file=?")
-		->execute(array($ged_id, $ged_id));
+		->execute(array(WT_GED_ID, WT_GED_ID));
 	while ($gedrec=$statement->fetchColumn()) {
 		$i = 1;
 		$placerec = get_sub_record(2, '2 PLAC', $gedrec, $i);
@@ -647,7 +646,7 @@ foreach ($placelist as $place) {
 				<input type="hidden" name="mod" value="googlemap">
 				<input type="hidden" name="mod_action" value="admin_places">
 				<input type="hidden" name="action" value="ImportGedcom">
-				<?php echo select_edit_control('ged_id', get_all_gedcoms(), null, WT_GED_ID); ?>
+				<?php echo select_edit_control('ged', WT_Tree::GetList(), null, WT_GEDCOM); ?>
 				<input type="submit" value="<?php echo WT_I18N::translate('Import'); ?>">
 			</form>
 		</td>

@@ -126,12 +126,11 @@ class WT_Controller_Search extends WT_Controller_Base {
 		}
 
 		// Retrieve the gedcoms to search in
-		$all_gedcoms=get_all_gedcoms();
-		if (count($all_gedcoms)>1 && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
-			foreach ($all_gedcoms as $ged_id=>$gedcom) {
-				$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
+		if (count(WT_Tree::getAll())>1 && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
+			foreach (WT_Tree::getAll() as $tree) {
+				$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $tree->tree_name);
 				if (isset ($_REQUEST["$str"]) || $topsearch) {
-					$this->sgeds[$ged_id] = $gedcom;
+					$this->sgeds[$tree->tree_id] = $tree->tree_name;
 					$_REQUEST["$str"] = 'yes';
 				}
 			}

@@ -94,13 +94,10 @@ if (WT_USER_IS_ADMIN) {
 }
 echo '<li><ul>';
 //-- gedcom list
-foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-	if (userGedcomAdmin(WT_USER_ID, $ged_id)) {
+foreach (WT_Tree::getAll() as $tree) {
+	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
 		echo
-			'<li><span><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID==$ged_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.rawurlencode($gedcom).'" title="',
-			WT_I18N::translate('%s', htmlspecialchars(get_gedcom_setting($ged_id, 'title'))),
-			'">',
-			WT_I18N::translate('%s', htmlspecialchars(get_gedcom_setting($ged_id, 'title'))),
+			'<li><span><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="', $tree->tree_title, '">', $tree->tree_title,
 			'</a></span></li>';
 	}
 }

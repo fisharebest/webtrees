@@ -48,11 +48,11 @@ $action = safe_POST('action');
 
 if ($action=='update_mods') {
 	foreach ($modules as $module_name=>$module) {
-		foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-			$access_level = safe_POST("sidebaraccess-{$module_name}-{$ged_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
+		foreach (WT_Tree::getAll() as $tree) {
+			$access_level = safe_POST("sidebaraccess-{$module_name}-{$tree->tree_id}", WT_REGEX_INTEGER, $module->defaultAccessLevel());
 			WT_DB::prepare(
 				"REPLACE INTO `##module_privacy` (module_name, gedcom_id, component, access_level) VALUES (?, ?, 'sidebar', ?)"
-			)->execute(array($module_name, $ged_id, $access_level));
+			)->execute(array($module_name, $tree->tree_id, $access_level));
 		}
 		$order = safe_POST('sidebarorder-'.$module_name);
 		WT_DB::prepare(
@@ -88,15 +88,15 @@ if ($action=='update_mods') {
 						<td>
 							<table class="modules_table2">
 								<?php
-								foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-									$varname = 'sidebaraccess-'.$module_name.'-'.$ged_id;
+								foreach (WT_Tree::getAll() as $tree) {
+									$varname = 'sidebaraccess-'.$module_name.'-'.$tree->tree_id;
 									$access_level=WT_DB::prepare(
 										"SELECT access_level FROM `##module_privacy` WHERE gedcom_id=? AND module_name=? AND component='sidebar'"
-									)->execute(array($ged_id, $module_name))->fetchOne();
+									)->execute(array($tree->tree_id, $module_name))->fetchOne();
 									if ($access_level===null) {
 										$access_level=$module->defaultAccessLevel();
 									}
-									echo '<tr><td>',  WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td><td>';
+									echo '<tr><td>', $tree->tree_title_html, '</td><td>';
 									echo edit_field_access_level($varname, $access_level);
 								}
 								?>

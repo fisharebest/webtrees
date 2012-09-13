@@ -593,8 +593,8 @@ $PRIV_PUBLIC=WT_PRIV_PUBLIC;
 $PRIV_USER=WT_PRIV_USER;
 $PRIV_NONE=WT_PRIV_NONE;
 $PRIV_HIDE=WT_PRIV_HIDE;
-foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-	$config=get_gedcom_setting($ged_id, 'config');
+foreach (WT_Tree::getAll() as $tree) {
+	$config=get_gedcom_setting($tree->tree_id, 'config');
 	if ($PGV_SCHEMA_VERSION>=12) {
 	$config=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $config);
 	} else {
@@ -606,7 +606,7 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	if (is_readable($config)) {
 		require $config;
 	}
-	$privacy=get_gedcom_setting($ged_id, 'privacy');
+	$privacy=get_gedcom_setting($tree->tree_id, 'privacy');
 	if ($PGV_SCHEMA_VERSION>=12) {
 	$privacy=str_replace('${INDEX_DIRECTORY}', $INDEX_DIRECTORY.DIRECTORY_SEPARATOR, $privacy);
 	} else {
@@ -619,106 +619,106 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 		require $privacy;
 	}
 
-	@set_gedcom_setting($ged_id, 'ABBREVIATE_CHART_LABELS',      $ABBREVIATE_CHART_LABELS);
-	@set_gedcom_setting($ged_id, 'ADVANCED_NAME_FACTS',          $ADVANCED_NAME_FACTS);
-	@set_gedcom_setting($ged_id, 'ADVANCED_PLAC_FACTS',          $ADVANCED_PLAC_FACTS);
-	@set_gedcom_setting($ged_id, 'ALLOW_EDIT_GEDCOM',            $ALLOW_EDIT_GEDCOM);
-	@set_gedcom_setting($ged_id, 'ALLOW_THEME_DROPDOWN',         $ALLOW_THEME_DROPDOWN);
-	@set_gedcom_setting($ged_id, 'AUTO_GENERATE_THUMBS',         $AUTO_GENERATE_THUMBS);
-	@set_gedcom_setting($ged_id, 'CALENDAR_FORMAT',              $CALENDAR_FORMAT);
-	@set_gedcom_setting($ged_id, 'CHART_BOX_TAGS',               $CHART_BOX_TAGS);
-	@set_gedcom_setting($ged_id, 'COMMON_NAMES_ADD',             $COMMON_NAMES_ADD);
-	@set_gedcom_setting($ged_id, 'COMMON_NAMES_REMOVE',          $COMMON_NAMES_REMOVE);
-	@set_gedcom_setting($ged_id, 'COMMON_NAMES_THRESHOLD',       $COMMON_NAMES_THRESHOLD);
-	@set_gedcom_setting($ged_id, 'CONTACT_USER_ID',              get_user_id($CONTACT_EMAIL));
-	@set_gedcom_setting($ged_id, 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS);
-	@set_gedcom_setting($ged_id, 'EXPAND_NOTES',                 $EXPAND_NOTES);
-	@set_gedcom_setting($ged_id, 'EXPAND_RELATIVES_EVENTS',      $EXPAND_RELATIVES_EVENTS);
-	@set_gedcom_setting($ged_id, 'EXPAND_SOURCES',               $EXPAND_SOURCES);
-	@set_gedcom_setting($ged_id, 'FAM_FACTS_ADD',                $FAM_FACTS_ADD);
-	@set_gedcom_setting($ged_id, 'FAM_FACTS_QUICK',              $FAM_FACTS_QUICK);
-	@set_gedcom_setting($ged_id, 'FAM_FACTS_UNIQUE',             $FAM_FACTS_UNIQUE);
-	@set_gedcom_setting($ged_id, 'FAM_ID_PREFIX',                $FAM_ID_PREFIX);
-	@set_gedcom_setting($ged_id, 'FULL_SOURCES',                 $FULL_SOURCES);
-	@set_gedcom_setting($ged_id, 'GEDCOM_ID_PREFIX',             $GEDCOM_ID_PREFIX);
-	@set_gedcom_setting($ged_id, 'GENERATE_UIDS',                $GENERATE_UIDS);
-	@set_gedcom_setting($ged_id, 'HIDE_GEDCOM_ERRORS',           $HIDE_GEDCOM_ERRORS);
-	@set_gedcom_setting($ged_id, 'HIDE_LIVE_PEOPLE',             $HIDE_LIVE_PEOPLE);
-	@set_gedcom_setting($ged_id, 'INDI_FACTS_ADD',               $INDI_FACTS_ADD);
-	@set_gedcom_setting($ged_id, 'INDI_FACTS_QUICK',             $INDI_FACTS_QUICK);
-	@set_gedcom_setting($ged_id, 'INDI_FACTS_UNIQUE',            $INDI_FACTS_UNIQUE);
+	@set_gedcom_setting($tree->tree_id, 'ABBREVIATE_CHART_LABELS',      $ABBREVIATE_CHART_LABELS);
+	@set_gedcom_setting($tree->tree_id, 'ADVANCED_NAME_FACTS',          $ADVANCED_NAME_FACTS);
+	@set_gedcom_setting($tree->tree_id, 'ADVANCED_PLAC_FACTS',          $ADVANCED_PLAC_FACTS);
+	@set_gedcom_setting($tree->tree_id, 'ALLOW_EDIT_GEDCOM',            $ALLOW_EDIT_GEDCOM);
+	@set_gedcom_setting($tree->tree_id, 'ALLOW_THEME_DROPDOWN',         $ALLOW_THEME_DROPDOWN);
+	@set_gedcom_setting($tree->tree_id, 'AUTO_GENERATE_THUMBS',         $AUTO_GENERATE_THUMBS);
+	@set_gedcom_setting($tree->tree_id, 'CALENDAR_FORMAT',              $CALENDAR_FORMAT);
+	@set_gedcom_setting($tree->tree_id, 'CHART_BOX_TAGS',               $CHART_BOX_TAGS);
+	@set_gedcom_setting($tree->tree_id, 'COMMON_NAMES_ADD',             $COMMON_NAMES_ADD);
+	@set_gedcom_setting($tree->tree_id, 'COMMON_NAMES_REMOVE',          $COMMON_NAMES_REMOVE);
+	@set_gedcom_setting($tree->tree_id, 'COMMON_NAMES_THRESHOLD',       $COMMON_NAMES_THRESHOLD);
+	@set_gedcom_setting($tree->tree_id, 'CONTACT_USER_ID',              get_user_id($CONTACT_EMAIL));
+	@set_gedcom_setting($tree->tree_id, 'DEFAULT_PEDIGREE_GENERATIONS', $DEFAULT_PEDIGREE_GENERATIONS);
+	@set_gedcom_setting($tree->tree_id, 'EXPAND_NOTES',                 $EXPAND_NOTES);
+	@set_gedcom_setting($tree->tree_id, 'EXPAND_RELATIVES_EVENTS',      $EXPAND_RELATIVES_EVENTS);
+	@set_gedcom_setting($tree->tree_id, 'EXPAND_SOURCES',               $EXPAND_SOURCES);
+	@set_gedcom_setting($tree->tree_id, 'FAM_FACTS_ADD',                $FAM_FACTS_ADD);
+	@set_gedcom_setting($tree->tree_id, 'FAM_FACTS_QUICK',              $FAM_FACTS_QUICK);
+	@set_gedcom_setting($tree->tree_id, 'FAM_FACTS_UNIQUE',             $FAM_FACTS_UNIQUE);
+	@set_gedcom_setting($tree->tree_id, 'FAM_ID_PREFIX',                $FAM_ID_PREFIX);
+	@set_gedcom_setting($tree->tree_id, 'FULL_SOURCES',                 $FULL_SOURCES);
+	@set_gedcom_setting($tree->tree_id, 'GEDCOM_ID_PREFIX',             $GEDCOM_ID_PREFIX);
+	@set_gedcom_setting($tree->tree_id, 'GENERATE_UIDS',                $GENERATE_UIDS);
+	@set_gedcom_setting($tree->tree_id, 'HIDE_GEDCOM_ERRORS',           $HIDE_GEDCOM_ERRORS);
+	@set_gedcom_setting($tree->tree_id, 'HIDE_LIVE_PEOPLE',             $HIDE_LIVE_PEOPLE);
+	@set_gedcom_setting($tree->tree_id, 'INDI_FACTS_ADD',               $INDI_FACTS_ADD);
+	@set_gedcom_setting($tree->tree_id, 'INDI_FACTS_QUICK',             $INDI_FACTS_QUICK);
+	@set_gedcom_setting($tree->tree_id, 'INDI_FACTS_UNIQUE',            $INDI_FACTS_UNIQUE);
 	switch ($LANGUAGE) {
-	case 'catalan':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'ca'); break;
-	case 'english-uk': @set_gedcom_setting($ged_id, 'LANGUAGE', 'en_GB'); break;
-	case 'polish':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'pl'); break;
-	case 'italian':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'it'); break;
-	case 'spanish':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'es'); break;
-	case 'finnish':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'fi'); break;
-	case 'french':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'fr'); break;
-	case 'german':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'de'); break;
-	case 'danish':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'da'); break;
-	case 'portuguese': @set_gedcom_setting($ged_id, 'LANGUAGE', 'pt'); break;
-	case 'hebrew':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'he'); break;
-	case 'estonian':   @set_gedcom_setting($ged_id, 'LANGUAGE', 'et'); break;
-	case 'turkish':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'tr'); break;
-	case 'dutch':      @set_gedcom_setting($ged_id, 'LANGUAGE', 'nl'); break;
-	case 'slovak':     @set_gedcom_setting($ged_id, 'LANGUAGE', 'sk'); break;
-	case 'norwegian':  @set_gedcom_setting($ged_id, 'LANGUAGE', 'nn'); break;
-	case 'slovenian':  @set_gedcom_setting($ged_id, 'LANGUAGE', 'sl'); break;
-	case 'hungarian':  @set_gedcom_setting($ged_id, 'LANGUAGE', 'hu'); break;
-	case 'swedish':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'sv'); break;
-	case 'russian':    @set_gedcom_setting($ged_id, 'LANGUAGE', 'ru'); break;
-	default:           @set_gedcom_setting($ged_id, 'LANGUAGE', 'en_US'); break;
+	case 'catalan':    @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'ca'); break;
+	case 'english-uk': @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'en_GB'); break;
+	case 'polish':     @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'pl'); break;
+	case 'italian':    @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'it'); break;
+	case 'spanish':    @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'es'); break;
+	case 'finnish':    @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'fi'); break;
+	case 'french':     @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'fr'); break;
+	case 'german':     @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'de'); break;
+	case 'danish':     @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'da'); break;
+	case 'portuguese': @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'pt'); break;
+	case 'hebrew':     @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'he'); break;
+	case 'estonian':   @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'et'); break;
+	case 'turkish':    @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'tr'); break;
+	case 'dutch':      @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'nl'); break;
+	case 'slovak':     @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'sk'); break;
+	case 'norwegian':  @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'nn'); break;
+	case 'slovenian':  @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'sl'); break;
+	case 'hungarian':  @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'hu'); break;
+	case 'swedish':    @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'sv'); break;
+	case 'russian':    @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'ru'); break;
+	default:           @set_gedcom_setting($tree->tree_id, 'LANGUAGE', 'en_US'); break;
 	}
-	@set_gedcom_setting($ged_id, 'MAX_ALIVE_AGE',                $MAX_ALIVE_AGE);
-	@set_gedcom_setting($ged_id, 'MAX_DESCENDANCY_GENERATIONS',  $MAX_DESCENDANCY_GENERATIONS);
-	@set_gedcom_setting($ged_id, 'MAX_PEDIGREE_GENERATIONS',     $MAX_PEDIGREE_GENERATIONS);
-	@set_gedcom_setting($ged_id, 'MAX_RELATION_PATH_LENGTH',     $MAX_RELATION_PATH_LENGTH);
-	@set_gedcom_setting($ged_id, 'MEDIA_DIRECTORY',              'media/');
-	@set_gedcom_setting($ged_id, 'MEDIA_DIRECTORY_LEVELS',       $MEDIA_DIRECTORY_LEVELS);
-	@set_gedcom_setting($ged_id, 'MEDIA_EXTERNAL',               $MEDIA_EXTERNAL);
-	@set_gedcom_setting($ged_id, 'MEDIA_FIREWALL_ROOTDIR',       $MEDIA_FIREWALL_ROOTDIR);
-	@set_gedcom_setting($ged_id, 'MEDIA_FIREWALL_THUMBS',        $MEDIA_FIREWALL_THUMBS);
-	@set_gedcom_setting($ged_id, 'MEDIA_ID_PREFIX',              $MEDIA_ID_PREFIX);
-	@set_gedcom_setting($ged_id, 'META_DESCRIPTION',             $META_DESCRIPTION);
-	@set_gedcom_setting($ged_id, 'META_TITLE',                   $META_TITLE);
-	@set_gedcom_setting($ged_id, 'MEDIA_UPLOAD',                 $MULTI_MEDIA); // see schema v12-13
-	@set_gedcom_setting($ged_id, 'NOTE_FACTS_ADD',               $NOTE_FACTS_ADD);
-	@set_gedcom_setting($ged_id, 'NOTE_FACTS_QUICK',             $NOTE_FACTS_QUICK);
-	@set_gedcom_setting($ged_id, 'NOTE_FACTS_UNIQUE',            $NOTE_FACTS_UNIQUE);
-	@set_gedcom_setting($ged_id, 'NOTE_ID_PREFIX',               'N');
-	@set_gedcom_setting($ged_id, 'NO_UPDATE_CHAN',               $NO_UPDATE_CHAN);
-	@set_gedcom_setting($ged_id, 'PEDIGREE_FULL_DETAILS',        $PEDIGREE_FULL_DETAILS);
-	@set_gedcom_setting($ged_id, 'PEDIGREE_LAYOUT',              $PEDIGREE_LAYOUT);
-	@set_gedcom_setting($ged_id, 'PEDIGREE_ROOT_ID',             $PEDIGREE_ROOT_ID);
-	@set_gedcom_setting($ged_id, 'PEDIGREE_SHOW_GENDER',         $PEDIGREE_SHOW_GENDER);
-	@set_gedcom_setting($ged_id, 'POSTAL_CODE',                  $POSTAL_CODE);
-	@set_gedcom_setting($ged_id, 'PREFER_LEVEL2_SOURCES',        $PREFER_LEVEL2_SOURCES);
-	@set_gedcom_setting($ged_id, 'QUICK_REQUIRED_FACTS',         $QUICK_REQUIRED_FACTS);
-	@set_gedcom_setting($ged_id, 'QUICK_REQUIRED_FAMFACTS',      $QUICK_REQUIRED_FAMFACTS);
-	@set_gedcom_setting($ged_id, 'REPO_FACTS_ADD',               $REPO_FACTS_ADD);
-	@set_gedcom_setting($ged_id, 'REPO_FACTS_QUICK',             $REPO_FACTS_QUICK);
-	@set_gedcom_setting($ged_id, 'REPO_FACTS_UNIQUE',            $REPO_FACTS_UNIQUE);
-	@set_gedcom_setting($ged_id, 'REPO_ID_PREFIX',               $REPO_ID_PREFIX);
-	@set_gedcom_setting($ged_id, 'REQUIRE_AUTHENTICATION',       $REQUIRE_AUTHENTICATION);
-	@set_gedcom_setting($ged_id, 'SAVE_WATERMARK_IMAGE',         $SAVE_WATERMARK_IMAGE);
-	@set_gedcom_setting($ged_id, 'SAVE_WATERMARK_THUMB',         $SAVE_WATERMARK_THUMB);
-	@set_gedcom_setting($ged_id, 'SHOW_AGE_DIFF',                $SHOW_AGE_DIFF);
-	@set_gedcom_setting($ged_id, 'SHOW_COUNTER',                 $SHOW_COUNTER);
-	@set_gedcom_setting($ged_id, 'SHOW_DEAD_PEOPLE',             $SHOW_DEAD_PEOPLE);
-	@set_gedcom_setting($ged_id, 'SHOW_EST_LIST_DATES',          $SHOW_EST_LIST_DATES);
-	@set_gedcom_setting($ged_id, 'SHOW_FACT_ICONS',              $SHOW_FACT_ICONS);
-	@set_gedcom_setting($ged_id, 'SHOW_GEDCOM_RECORD',           $SHOW_GEDCOM_RECORD);
-	@set_gedcom_setting($ged_id, 'SHOW_HIGHLIGHT_IMAGES',        $SHOW_HIGHLIGHT_IMAGES);
-	@set_gedcom_setting($ged_id, 'SHOW_LDS_AT_GLANCE',           $SHOW_LDS_AT_GLANCE);
-	@set_gedcom_setting($ged_id, 'SHOW_LEVEL2_NOTES',            $SHOW_LEVEL2_NOTES);
-	@set_gedcom_setting($ged_id, 'SHOW_LIST_PLACES',             $SHOW_LIST_PLACES);
-	@set_gedcom_setting($ged_id, 'SHOW_LIVING_NAMES',            $SHOW_LIVING_NAMES);
-	@set_gedcom_setting($ged_id, 'SHOW_MEDIA_DOWNLOAD',          $SHOW_MEDIA_DOWNLOAD);
-	@set_gedcom_setting($ged_id, 'SHOW_PARENTS_AGE',             $SHOW_PARENTS_AGE);
-	@set_gedcom_setting($ged_id, 'SHOW_PEDIGREE_PLACES',         $SHOW_PEDIGREE_PLACES);
-	@set_gedcom_setting($ged_id, 'SHOW_PRIVATE_RELATIONSHIPS',   $SHOW_PRIVATE_RELATIONSHIPS);
-	@set_gedcom_setting($ged_id, 'SHOW_REGISTER_CAUTION',        $SHOW_REGISTER_CAUTION);
+	@set_gedcom_setting($tree->tree_id, 'MAX_ALIVE_AGE',                $MAX_ALIVE_AGE);
+	@set_gedcom_setting($tree->tree_id, 'MAX_DESCENDANCY_GENERATIONS',  $MAX_DESCENDANCY_GENERATIONS);
+	@set_gedcom_setting($tree->tree_id, 'MAX_PEDIGREE_GENERATIONS',     $MAX_PEDIGREE_GENERATIONS);
+	@set_gedcom_setting($tree->tree_id, 'MAX_RELATION_PATH_LENGTH',     $MAX_RELATION_PATH_LENGTH);
+	@set_gedcom_setting($tree->tree_id, 'MEDIA_DIRECTORY',              'media/');
+	@set_gedcom_setting($tree->tree_id, 'MEDIA_DIRECTORY_LEVELS',       $MEDIA_DIRECTORY_LEVELS);
+	@set_gedcom_setting($tree->tree_id, 'MEDIA_EXTERNAL',               $MEDIA_EXTERNAL);
+	@set_gedcom_setting($tree->tree_id, 'MEDIA_FIREWALL_ROOTDIR',       $MEDIA_FIREWALL_ROOTDIR);
+	@set_gedcom_setting($tree->tree_id, 'MEDIA_FIREWALL_THUMBS',        $MEDIA_FIREWALL_THUMBS);
+	@set_gedcom_setting($tree->tree_id, 'MEDIA_ID_PREFIX',              $MEDIA_ID_PREFIX);
+	@set_gedcom_setting($tree->tree_id, 'META_DESCRIPTION',             $META_DESCRIPTION);
+	@set_gedcom_setting($tree->tree_id, 'META_TITLE',                   $META_TITLE);
+	@set_gedcom_setting($tree->tree_id, 'MEDIA_UPLOAD',                 $MULTI_MEDIA); // see schema v12-13
+	@set_gedcom_setting($tree->tree_id, 'NOTE_FACTS_ADD',               $NOTE_FACTS_ADD);
+	@set_gedcom_setting($tree->tree_id, 'NOTE_FACTS_QUICK',             $NOTE_FACTS_QUICK);
+	@set_gedcom_setting($tree->tree_id, 'NOTE_FACTS_UNIQUE',            $NOTE_FACTS_UNIQUE);
+	@set_gedcom_setting($tree->tree_id, 'NOTE_ID_PREFIX',               'N');
+	@set_gedcom_setting($tree->tree_id, 'NO_UPDATE_CHAN',               $NO_UPDATE_CHAN);
+	@set_gedcom_setting($tree->tree_id, 'PEDIGREE_FULL_DETAILS',        $PEDIGREE_FULL_DETAILS);
+	@set_gedcom_setting($tree->tree_id, 'PEDIGREE_LAYOUT',              $PEDIGREE_LAYOUT);
+	@set_gedcom_setting($tree->tree_id, 'PEDIGREE_ROOT_ID',             $PEDIGREE_ROOT_ID);
+	@set_gedcom_setting($tree->tree_id, 'PEDIGREE_SHOW_GENDER',         $PEDIGREE_SHOW_GENDER);
+	@set_gedcom_setting($tree->tree_id, 'POSTAL_CODE',                  $POSTAL_CODE);
+	@set_gedcom_setting($tree->tree_id, 'PREFER_LEVEL2_SOURCES',        $PREFER_LEVEL2_SOURCES);
+	@set_gedcom_setting($tree->tree_id, 'QUICK_REQUIRED_FACTS',         $QUICK_REQUIRED_FACTS);
+	@set_gedcom_setting($tree->tree_id, 'QUICK_REQUIRED_FAMFACTS',      $QUICK_REQUIRED_FAMFACTS);
+	@set_gedcom_setting($tree->tree_id, 'REPO_FACTS_ADD',               $REPO_FACTS_ADD);
+	@set_gedcom_setting($tree->tree_id, 'REPO_FACTS_QUICK',             $REPO_FACTS_QUICK);
+	@set_gedcom_setting($tree->tree_id, 'REPO_FACTS_UNIQUE',            $REPO_FACTS_UNIQUE);
+	@set_gedcom_setting($tree->tree_id, 'REPO_ID_PREFIX',               $REPO_ID_PREFIX);
+	@set_gedcom_setting($tree->tree_id, 'REQUIRE_AUTHENTICATION',       $REQUIRE_AUTHENTICATION);
+	@set_gedcom_setting($tree->tree_id, 'SAVE_WATERMARK_IMAGE',         $SAVE_WATERMARK_IMAGE);
+	@set_gedcom_setting($tree->tree_id, 'SAVE_WATERMARK_THUMB',         $SAVE_WATERMARK_THUMB);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_AGE_DIFF',                $SHOW_AGE_DIFF);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_COUNTER',                 $SHOW_COUNTER);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_DEAD_PEOPLE',             $SHOW_DEAD_PEOPLE);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_EST_LIST_DATES',          $SHOW_EST_LIST_DATES);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_FACT_ICONS',              $SHOW_FACT_ICONS);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_GEDCOM_RECORD',           $SHOW_GEDCOM_RECORD);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_HIGHLIGHT_IMAGES',        $SHOW_HIGHLIGHT_IMAGES);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_LDS_AT_GLANCE',           $SHOW_LDS_AT_GLANCE);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_LEVEL2_NOTES',            $SHOW_LEVEL2_NOTES);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_LIST_PLACES',             $SHOW_LIST_PLACES);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_LIVING_NAMES',            $SHOW_LIVING_NAMES);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_MEDIA_DOWNLOAD',          $SHOW_MEDIA_DOWNLOAD);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_PARENTS_AGE',             $SHOW_PARENTS_AGE);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_PEDIGREE_PLACES',         $SHOW_PEDIGREE_PLACES);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_PRIVATE_RELATIONSHIPS',   $SHOW_PRIVATE_RELATIONSHIPS);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_REGISTER_CAUTION',        $SHOW_REGISTER_CAUTION);
 
 	// Update these - see db_schema_5_6.php
 	$SHOW_RELATIVES_EVENTS=preg_replace('/_(BIRT|MARR|DEAT)_(COUS|MSIB|FSIB|GGCH|NEPH|GGPA)/', '', $SHOW_RELATIVES_EVENTS);
@@ -726,48 +726,48 @@ foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
 	$SHOW_RELATIVES_EVENTS=preg_replace('/_MARR_(MOTH|FATH|FAMC)/', '_MARR_PARE', $SHOW_RELATIVES_EVENTS);
 	$SHOW_RELATIVES_EVENTS=preg_replace('/_DEAT_(MOTH|FATH)/', '_DEAT_PARE', $SHOW_RELATIVES_EVENTS);
 	preg_match_all('/[_A-Z]+/', $SHOW_RELATIVES_EVENTS, $match);
-	set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0])));
+	set_gedcom_setting($tree->tree_id, 'SHOW_RELATIVES_EVENTS', implode(',', array_unique($match[0])));
 
-	@set_gedcom_setting($ged_id, 'SHOW_RELATIVES_EVENTS',        $SHOW_RELATIVES_EVENTS);
-	@set_gedcom_setting($ged_id, 'SHOW_STATS',                   $SHOW_STATS);
-	@set_gedcom_setting($ged_id, 'SOURCE_ID_PREFIX',             $SOURCE_ID_PREFIX);
-	@set_gedcom_setting($ged_id, 'SOUR_FACTS_ADD',               $SOUR_FACTS_ADD);
-	@set_gedcom_setting($ged_id, 'SOUR_FACTS_QUICK',             $SOUR_FACTS_QUICK);
-	@set_gedcom_setting($ged_id, 'SOUR_FACTS_UNIQUE',            $SOUR_FACTS_UNIQUE);
-	@set_gedcom_setting($ged_id, 'SUBLIST_TRIGGER_I',            $SUBLIST_TRIGGER_I);
-	@set_gedcom_setting($ged_id, 'SURNAME_LIST_STYLE',           $SURNAME_LIST_STYLE);
-	@set_gedcom_setting($ged_id, 'SURNAME_TRADITION',            $SURNAME_TRADITION);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_RELATIVES_EVENTS',        $SHOW_RELATIVES_EVENTS);
+	@set_gedcom_setting($tree->tree_id, 'SHOW_STATS',                   $SHOW_STATS);
+	@set_gedcom_setting($tree->tree_id, 'SOURCE_ID_PREFIX',             $SOURCE_ID_PREFIX);
+	@set_gedcom_setting($tree->tree_id, 'SOUR_FACTS_ADD',               $SOUR_FACTS_ADD);
+	@set_gedcom_setting($tree->tree_id, 'SOUR_FACTS_QUICK',             $SOUR_FACTS_QUICK);
+	@set_gedcom_setting($tree->tree_id, 'SOUR_FACTS_UNIQUE',            $SOUR_FACTS_UNIQUE);
+	@set_gedcom_setting($tree->tree_id, 'SUBLIST_TRIGGER_I',            $SUBLIST_TRIGGER_I);
+	@set_gedcom_setting($tree->tree_id, 'SURNAME_LIST_STYLE',           $SURNAME_LIST_STYLE);
+	@set_gedcom_setting($tree->tree_id, 'SURNAME_TRADITION',            $SURNAME_TRADITION);
 	switch (@$THEME_DIR) {
-	case '':                   @set_gedcom_setting($ged_id, 'THEME_DIR', '');
-	case 'themes/cloudy/':     @set_gedcom_setting($ged_id, 'THEME_DIR', 'clouds');
-	case 'themes/minimal/':    @set_gedcom_setting($ged_id, 'THEME_DIR', 'minimal');
+	case '':                   @set_gedcom_setting($tree->tree_id, 'THEME_DIR', '');
+	case 'themes/cloudy/':     @set_gedcom_setting($tree->tree_id, 'THEME_DIR', 'clouds');
+	case 'themes/minimal/':    @set_gedcom_setting($tree->tree_id, 'THEME_DIR', 'minimal');
 	case 'themes/simplyblue/':
 	case 'themes/simplygreen/':
-	case 'themes/simplyred/':  @set_gedcom_setting($ged_id, 'THEME_DIR', 'colors');
-	case 'themes/xenea/':      @set_gedcom_setting($ged_id, 'THEME_DIR', 'xenea');
-	default:                   @set_gedcom_setting($ged_id, 'THEME_DIR', 'webtrees');
+	case 'themes/simplyred/':  @set_gedcom_setting($tree->tree_id, 'THEME_DIR', 'colors');
+	case 'themes/xenea/':      @set_gedcom_setting($tree->tree_id, 'THEME_DIR', 'xenea');
+	default:                   @set_gedcom_setting($tree->tree_id, 'THEME_DIR', 'webtrees');
 	}
-	@set_gedcom_setting($ged_id, 'THUMBNAIL_WIDTH',              $THUMBNAIL_WIDTH);
-	@set_gedcom_setting($ged_id, 'USE_GEONAMES',                 $USE_GEONAMES);
-	@set_gedcom_setting($ged_id, 'USE_MEDIA_FIREWALL',           $USE_MEDIA_FIREWALL);
-	@set_gedcom_setting($ged_id, 'USE_MEDIA_VIEWER',             $USE_MEDIA_VIEWER);
-	@set_gedcom_setting($ged_id, 'USE_RELATIONSHIP_PRIVACY',     $USE_RELATIONSHIP_PRIVACY);
-	@set_gedcom_setting($ged_id, 'USE_RIN',                      $USE_RIN);
-	@set_gedcom_setting($ged_id, 'USE_SILHOUETTE',               $USE_SILHOUETTE);
-	@set_gedcom_setting($ged_id, 'WATERMARK_THUMB',              $WATERMARK_THUMB);
-	@set_gedcom_setting($ged_id, 'WEBMASTER_USER_ID',            get_user_id($WEBMASTER_EMAIL));
-	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE',       $WELCOME_TEXT_AUTH_MODE);
-	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE, $WELCOME_TEXT_AUTH_MODE_4);
-	@set_gedcom_setting($ged_id, 'WELCOME_TEXT_CUST_HEAD',       $WELCOME_TEXT_CUST_HEAD);
-	@set_gedcom_setting($ged_id, 'WORD_WRAPPED_NOTES',           $WORD_WRAPPED_NOTES);
+	@set_gedcom_setting($tree->tree_id, 'THUMBNAIL_WIDTH',              $THUMBNAIL_WIDTH);
+	@set_gedcom_setting($tree->tree_id, 'USE_GEONAMES',                 $USE_GEONAMES);
+	@set_gedcom_setting($tree->tree_id, 'USE_MEDIA_FIREWALL',           $USE_MEDIA_FIREWALL);
+	@set_gedcom_setting($tree->tree_id, 'USE_MEDIA_VIEWER',             $USE_MEDIA_VIEWER);
+	@set_gedcom_setting($tree->tree_id, 'USE_RELATIONSHIP_PRIVACY',     $USE_RELATIONSHIP_PRIVACY);
+	@set_gedcom_setting($tree->tree_id, 'USE_RIN',                      $USE_RIN);
+	@set_gedcom_setting($tree->tree_id, 'USE_SILHOUETTE',               $USE_SILHOUETTE);
+	@set_gedcom_setting($tree->tree_id, 'WATERMARK_THUMB',              $WATERMARK_THUMB);
+	@set_gedcom_setting($tree->tree_id, 'WEBMASTER_USER_ID',            get_user_id($WEBMASTER_EMAIL));
+	@set_gedcom_setting($tree->tree_id, 'WELCOME_TEXT_AUTH_MODE',       $WELCOME_TEXT_AUTH_MODE);
+	@set_gedcom_setting($tree->tree_id, 'WELCOME_TEXT_AUTH_MODE_'.WT_LOCALE, $WELCOME_TEXT_AUTH_MODE_4);
+	@set_gedcom_setting($tree->tree_id, 'WELCOME_TEXT_CUST_HEAD',       $WELCOME_TEXT_CUST_HEAD);
+	@set_gedcom_setting($tree->tree_id, 'WORD_WRAPPED_NOTES',           $WORD_WRAPPED_NOTES);
 
 	// TODO import whatever privacy settings as are compatible with the new system
 
-	set_gedcom_setting($ged_id, 'config',   null);
-	set_gedcom_setting($ged_id, 'privacy',  null);
-	set_gedcom_setting($ged_id, 'path',     null);
-	set_gedcom_setting($ged_id, 'pgv_ver',  null);
-	set_gedcom_setting($ged_id, 'imported', 1);
+	set_gedcom_setting($tree->tree_id, 'config',   null);
+	set_gedcom_setting($tree->tree_id, 'privacy',  null);
+	set_gedcom_setting($tree->tree_id, 'path',     null);
+	set_gedcom_setting($tree->tree_id, 'pgv_ver',  null);
+	set_gedcom_setting($tree->tree_id, 'imported', 1);
 }
 
 // webtrees 1.0.5 combines user and gedcom settings for relationship privacy
@@ -808,9 +808,9 @@ if ($PGV_SCHEMA_VERSION>=13) {
 	// Copied from PGV's db_schema_12_13
 	$statement=WT_DB::prepare("INSERT IGNORE INTO `##hit_counter` (gedcom_id, page_name, page_parameter, page_count) VALUES (?, ?, ?, ?)");
 
-	foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
+	foreach (WT_Tree::getAll() as $tree) {
 		// Caution these files might be quite large...
-		$file=$INDEX_DIRECTORY.'/'.$ged_name.'pgv_counters.txt';
+		$file=$INDEX_DIRECTORY.'/'.$tree->tree_name.'pgv_counters.txt';
 		echo '<p>', $file, ' => wt_hit_counter ...</p>';
 		flush();
 		if (ini_get('output_buffering')) {
@@ -824,10 +824,10 @@ if ($PGV_SCHEMA_VERSION>=13) {
 						$page_parameter=$match[2];
 					} else {
 						$page_name='index.php';
-						$page_parameter='gedcom:'.$ged_id;
+						$page_parameter='gedcom:'.$tree->tree_id;
 					}
 					try {
-						$statement->execute(array($ged_id, $page_name, $page_parameter, $match[3]));
+						$statement->execute(array($tree->tree_id, $page_name, $page_parameter, $match[3]));
 					} catch (PDOException $ex) {
 						// Primary key violation?  Ignore?
 					}
@@ -890,8 +890,8 @@ if ($PGV_SCHEMA_VERSION>=14) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-	WT_Module::setDefaultAccess($ged_id);
+foreach (WT_Tree::getAll() as $tree) {
+	WT_Module::setDefaultAccess($tree->tree_id);
 }
 
 echo '<p>pgv_site_setting => wt_module_setting ...</p>'; ob_flush(); flush(); usleep(50000);

@@ -34,13 +34,13 @@ $controller->pageHeader();
 // Choose one...
 $html='<p><form method="post" action="'.WT_SCRIPT_NAME.'" name="tree"><select name="ged" onChange="tree.submit();">';
 $n=0;
-foreach (get_gedcom_titles() as $gedcom) {
-	if (userGedcomAdmin(WT_USER_ID, $gedcom->gedcom_id)) {
-		$html.='<option value="'.htmlspecialchars($gedcom->gedcom_name).'"';
-		if ($gedcom->gedcom_id==WT_GED_ID) {
+foreach (WT_Tree::getAll() as $tree) {
+	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
+		$html.='<option value="'.$tree->tree_name_url.'"';
+		if ($tree->tree_id==WT_GED_ID) {
 			$html.=' selected="selected"';
 		}
-		$html.='>'.$gedcom->gedcom_title.'</option>';
+		$html.='>'.$tree->tree_title_html.'</option>';
 		++$n;
 	}
 }

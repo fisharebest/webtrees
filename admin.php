@@ -40,9 +40,6 @@ if (preg_match('/^[0-9.]+\|[0-9.]+\|/', $latest_version_txt)) {
 	$latest_version='';
 }
 
-// Load all available gedcoms
-$all_gedcoms = get_all_gedcoms();
-
 $stats=new WT_Stats(WT_GEDCOM);
 	$totusers  =0;       // Total number of users
 	$warnusers =0;       // Users with warning
@@ -141,13 +138,13 @@ echo
 			if (get_user_setting($user_id, 'canadmin')) {
 				$adminusers++;
 			}
-			foreach ($all_gedcoms as $ged_id=>$ged_name) {
-				if (get_user_gedcom_setting($user_id, $ged_id, 'canedit')=='admin') {
-					if (isset($gedadmin[$ged_id])) {
-						$gedadmin[$ged_id]["number"]++;
+			foreach (WT_Tree::getAll() as $tree) {
+				if (get_user_gedcom_setting($user_id, $tree->tree_id, 'canedit')=='admin') {
+					if (isset($gedadmin[$tree->tree_id])) {
+						$gedadmin[$tree->tree_id]["number"]++;
 					} else {
-						$gedadmin[$ged_id]["number"] = 1;
-						$gedadmin[$ged_id]["ged"] = $ged_name;
+						$gedadmin[$tree->tree_id]["number"] = 1;
+						$gedadmin[$tree->tree_id]["ged"] = $tree->tree_name;
 					}
 				}
 			}
@@ -204,8 +201,8 @@ echo
 	'<div id="trees">',// id=trees
 	'<div id="tree_stats">';
 $n=0;
-foreach ($all_gedcoms as $ged_id=>$gedcom) {
-	$stats = new WT_Stats($gedcom);
+foreach (WT_Tree::getAll() as $tree) {
+	$stats = new WT_Stats($tree->tree_name);
 	if ($ged_id==WT_GED_ID) {
 		$accordion_element=$n;
 	}
@@ -215,22 +212,22 @@ foreach ($all_gedcoms as $ged_id=>$gedcom) {
 		'<div>',
 		'<table>',
 		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Count'), '</span></td></tr>',
-		'<tr><th><a href="indilist.php?ged=',  rawurlencode($gedcom), '">',
+		'<tr><th><a href="indilist.php?ged=', $tree->tree_name_url, '">',
 		WT_I18N::translate('Individuals'), '</a></th><td>', $stats->totalIndividuals(),
 		'</td></tr>',
-		'<tr><th><a href="famlist.php?ged=',   rawurlencode($gedcom), '">',
+		'<tr><th><a href="famlist.php?ged=', $tree->tree_name_url, '">',
 		WT_I18N::translate('Families'), '</a></th><td>', $stats->totalFamilies(),
 		'</td></tr>',
-		'<tr><th><a href="sourcelist.php?ged=',  rawurlencode($gedcom), '">',
+		'<tr><th><a href="sourcelist.php?ged=', $tree->tree_name_url, '">',
 		WT_I18N::translate('Sources'), '</a></th><td>', $stats->totalSources(),
 		'</td></tr>',
-		'<tr><th><a href="repolist.php?ged=',  rawurlencode($gedcom), '">',
+		'<tr><th><a href="repolist.php?ged=', $tree->tree_name_url, '">',
 		WT_I18N::translate('Repositories'), '</a></th><td>', $stats->totalRepositories(),
 		'</td></tr>',
-		'<tr><th><a href="medialist.php?ged=', rawurlencode($gedcom), '">',
+		'<tr><th><a href="medialist.php?ged=', $tree->tree_name_url, '">',
 		WT_I18N::translate('Media objects'), '</a></th><td>', $stats->totalMedia(),
 		'</td></tr>',
-		'<tr><th><a href="notelist.php?ged=',  rawurlencode($gedcom), '">',
+		'<tr><th><a href="notelist.php?ged=', $tree->tree_name_url, '">',
 		WT_I18N::translate('Notes'), '</a></th><td>', $stats->totalNotes(),
 		'</td></tr>',
 		'</table>',
@@ -248,22 +245,22 @@ echo
 	echo
 	'<div id="changes">';
 $n=0;
-foreach ($all_gedcoms as $ged_id=>$gedcom) {
-	if ($ged_id==WT_GED_ID) {
+foreach (WT_Tree::GetAll() as $tree) {
+	if ($tree->tree_id==WT_GED_ID) {
 		$accordion_element=$n;
 	}
 	++$n;
 	echo 
-		'<h3>', get_gedcom_setting($ged_id, 'title'), '</h3>',
+		'<h3>', $tree->tree_title_html, '</h3>',
 		'<div>',
 		'<table>',
 		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Day'), '</span></td><td><span>', WT_I18N::translate('Week'), '</span></td><td><span>', WT_I18N::translate('Month'), '</span></td></tr>',
-		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', WT_Query_Admin::countIndiChangesToday($ged_id), '</td><td>', WT_Query_Admin::countIndiChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countIndiChangesMonth($ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', WT_Query_Admin::countFamChangesToday($ged_id), '</td><td>', WT_Query_Admin::countFamChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countFamChangesMonth($ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>',  WT_Query_Admin::countSourChangesToday($ged_id), '</td><td>', WT_Query_Admin::countSourChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countSourChangesMonth($ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Repositories'), '</th><td>',  WT_Query_Admin::countRepoChangesToday($ged_id), '</td><td>', WT_Query_Admin::countRepoChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countRepoChangesMonth($ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Media objects'), '</th><td>', WT_Query_Admin::countObjeChangesToday($ged_id), '</td><td>', WT_Query_Admin::countObjeChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countObjeChangesMonth($ged_id), '</td></tr>',
-		'<tr><th>', WT_I18N::translate('Notes'), '</th><td>', WT_Query_Admin::countNoteChangesToday($ged_id), '</td><td>', WT_Query_Admin::countNoteChangesWeek($ged_id), '</td><td>', WT_Query_Admin::countNoteChangesMonth($ged_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Individuals'), '</th><td>', WT_Query_Admin::countIndiChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countIndiChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countIndiChangesMonth($tree->tree_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Families'), '</th><td>', WT_Query_Admin::countFamChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countFamChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countFamChangesMonth($tree->tree_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Sources'), '</th><td>',  WT_Query_Admin::countSourChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countSourChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countSourChangesMonth($tree->tree_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Repositories'), '</th><td>',  WT_Query_Admin::countRepoChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countRepoChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countRepoChangesMonth($tree->tree_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Media objects'), '</th><td>', WT_Query_Admin::countObjeChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countObjeChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countObjeChangesMonth($tree->tree_id), '</td></tr>',
+		'<tr><th>', WT_I18N::translate('Notes'), '</th><td>', WT_Query_Admin::countNoteChangesToday($tree->tree_id), '</td><td>', WT_Query_Admin::countNoteChangesWeek($tree->tree_id), '</td><td>', WT_Query_Admin::countNoteChangesMonth($tree->tree_id), '</td></tr>',
 		'</table>',
 		'</div>';
 	}

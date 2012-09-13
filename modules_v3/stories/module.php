@@ -186,7 +186,7 @@ class stories_WT_Module extends WT_Module implements WT_Module_Block, WT_Module_
 					WT_DB::prepare(
 						"INSERT INTO `##block` (gedcom_id, xref, module_name, block_order) VALUES (?, ?, ?, ?)"
 					)->execute(array(
-						safe_POST('gedcom_id', array_keys(get_all_gedcoms())),
+						safe_POST('gedcom_id'),
 						safe_POST('xref'),
 						$this->getName(),
 						0

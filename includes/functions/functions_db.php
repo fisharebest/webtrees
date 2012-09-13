@@ -1012,43 +1012,6 @@ function find_rin_id($rin) {
 }
 
 /**
-* Delete a gedcom from the database and the system
-* Does not delete the file from the file system
-* @param string $ged  the filename of the gedcom to delete
-*/
-function delete_gedcom($ged_id) {
-	// If this is the current default, then unset it
-	if (get_site_setting('DEFAULT_GEDCOM')==get_gedcom_from_id($ged_id)) {
-		set_site_setting('DEFAULT_GEDCOM', '');
-	}
-	// Don't delete the logs.
-	WT_DB::prepare("UPDATE `##log` SET gedcom_id=NULL   WHERE gedcom_id =?")->execute(array($ged_id));
-
-	WT_DB::prepare("DELETE `##block_setting` FROM `##block_setting` JOIN `##block` USING (block_id) WHERE gedcom_id=?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##block`               WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##dates`               WHERE d_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##families`            WHERE f_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##gedcom_setting`      WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##individuals`         WHERE i_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##link`                WHERE l_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##media`               WHERE m_gedfile =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##media_mapping`       WHERE mm_gedfile=?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##module_privacy`      WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##name`                WHERE n_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##next_id`             WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##other`               WHERE o_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##placelinks`          WHERE pl_file   =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##places`              WHERE p_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##sources`             WHERE s_file    =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##hit_counter`         WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##change`              WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##default_resn`        WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##gedcom_chunk`        WHERE gedcom_id =?")->execute(array($ged_id));
-	WT_DB::prepare("DELETE FROM `##gedcom`              WHERE gedcom_id =?")->execute(array($ged_id));
-}
-
-/**
  * Get array of common surnames
  *
  * This function returns a simple array of the most common surnames
@@ -1444,66 +1407,6 @@ function set_site_setting($setting_name, $setting_value) {
 // Functions to access the WT_GEDCOM table
 ////////////////////////////////////////////////////////////////////////////////
 
-function get_all_gedcoms() {
-	return
-		WT_DB::prepare("SELECT SQL_CACHE gedcom_id, gedcom_name FROM `##gedcom` WHERE gedcom_id>0 ORDER BY gedcom_name")
-		->fetchAssoc();
-	// Alternative implementation that just lists trees with access.
-	// Doesn't work with current session.php startup logic.
-	return
-		WT_DB::prepare(
-			"SELECT SQL_CACHE g.gedcom_id, gedcom_name".
-			" FROM `##gedcom` g".
-			" LEFT JOIN `##gedcom_setting` gs ON (g.gedcom_id=gs.gedcom_id AND gs.setting_name='REQUIRE_AUTHENTICATION')".
-			" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.user_id=? AND ugs.setting_name='canedit')".
-			" WHERE g.gedcom_id>0 AND (".
-			"  IFNULL(gs.setting_value, 1)<>1 OR". // allow visitors
-			"  IFNULL(ugs.setting_value, 'none')<>'none' OR". // explicit access
-			"  EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)". // admin
-			" )".
-			" ORDER BY gedcom_name"
-		)
-		->execute(array(WT_USER_ID, WT_USER_ID))
-		->fetchAssoc();
-}
-
-function get_gedcom_count() {
-	return
-		WT_DB::prepare("SELECT SQL_CACHE COUNT(*) FROM `##gedcom` WHERE gedcom_id>0")
-		->fetchOne();
-}
-
-function get_gedcom_titles() {
-	return
-		WT_DB::prepare(
-			"SELECT SQL_CACHE g.gedcom_id, g.gedcom_name, COALESCE(gs.setting_value, g.gedcom_name) AS gedcom_title".
-			" FROM `##gedcom` g".
-			" LEFT JOIN `##gedcom_setting` gs ON (g.gedcom_id=gs.gedcom_id AND gs.setting_name=?)".
-			" WHERE g.gedcom_id>0".
-			" ORDER BY g.sort_order, 3"
-		)
-		->execute(array('title'))
-		->fetchAll();
-	// Alternative implementation that just lists trees with access.
-	// Doesn't work with current session.php startup logic.
-	return
-		WT_DB::prepare(
-			"SELECT SQL_CACHE g.gedcom_id, g.gedcom_name, COALESCE(gs1.setting_value, g.gedcom_name) AS gedcom_title".
-			" FROM `##gedcom` g".
-			" LEFT JOIN `##gedcom_setting` gs1 ON (g.gedcom_id=gs1.gedcom_id AND gs1.setting_name='title')".
-			" LEFT JOIN `##gedcom_setting` gs2 ON (g.gedcom_id=gs2.gedcom_id AND gs2.setting_name='REQUIRE_AUTHENTICATION')".
-			" LEFT JOIN `##user_gedcom_setting` ugs ON (g.gedcom_id=ugs.gedcom_id AND ugs.user_id=? AND ugs.setting_name='canedit')".
-			" WHERE g.gedcom_id>0 AND (".
-			"  IFNULL(gs2.setting_value, 1)<>1 OR". // allow visitors
-			"  IFNULL(ugs.setting_value, 'none')<>'none' OR". // explicit access
-			"  EXISTS (SELECT 1 FROM `##user_setting` WHERE user_id=? AND setting_name='canadmin' AND setting_value=1)". // admin
-			" )".
-			" ORDER BY g.sort_order, 3"
-		)
-		->execute(array(WT_USER_ID, WT_USER_ID))
-		->fetchAll();
-}
-
 function get_gedcom_from_id($ged_id) {
 	// No need to look up the default gedcom
 	if (defined('WT_GED_ID') && defined('WT_GEDCOM') && $ged_id==WT_GED_ID) {
@@ -1517,23 +1420,10 @@ function get_gedcom_from_id($ged_id) {
 }
 
 // Convert an (external) gedcom name to an (internal) gedcom ID.
-// Optionally create an entry for it, if it does not exist.
-function get_id_from_gedcom($ged_name, $create=false) {
+function get_id_from_gedcom($ged_name) {
 	// No need to look up the default gedcom
 	if (defined('WT_GED_ID') && defined('WT_GEDCOM') && $ged_name==WT_GEDCOM) {
 		return WT_GED_ID;
-	}
-
-	if ($create) {
-		try {
-			WT_DB::prepare("INSERT INTO `##gedcom` (gedcom_name) VALUES (?)")
-				->execute(array($ged_name));
-			$ged_id=WT_DB::getInstance()->lastInsertId();
-			require WT_ROOT.'includes/set_gedcom_defaults.php';
-			return $ged_id;
-		} catch (PDOException $ex) {
-			// The gedcom already exists - can't create
-		}
 	}
 
 	return

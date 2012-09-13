@@ -71,8 +71,8 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 					// Which users have pending changes?
 					$users_with_changes=array();
 					foreach (get_all_users() as $user_id=>$user_name) {
-						foreach (get_all_gedcoms() as $ged_id=>$ged_name) {
-							if (exists_pending_change($user_id, $ged_id)) {
+						foreach (WT_Tree::getAll() as $tree) {
+							if (exists_pending_change($user_id, $tree->tree_id)) {
 								$users_with_changes[$user_id]=$user_name;
 								break;
 							}

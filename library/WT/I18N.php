@@ -89,7 +89,7 @@ class WT_I18N {
 				} else {
 					$prefs=array();
 				}
-				if (WT_GED_ID) {
+				if (defined('WT_GED_ID')) {
 					// Add the gedcom's default language as a low-priority
 					$locale=get_gedcom_setting(WT_GED_ID, 'language');
 					if (!array_key_exists($locale, $installed_languages)) {

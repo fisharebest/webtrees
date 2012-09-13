@@ -261,22 +261,21 @@ function AddToLog($log_message, $log_type='error') {
 		$log_message,
 		$_SERVER['REMOTE_ADDR'],
 		getUserId() && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' ? getUserId() : null,
-		defined('WT_GED_ID') ? WT_GED_ID : null // logs raised before we select the gedcom won't have this.
+		WT_GED_ID ? WT_GED_ID : null // logs raised before we select the gedcom won't have this.
 	));
 }
 
 //----------------------------------- AddToSearchLog
 //-- requires a string to add into the searchlog-file
 function AddToSearchLog($log_message, $geds) {
-	$all_geds=get_all_gedcoms();
-	foreach ($geds as $ged_id=>$ged_name) {
+	foreach (WT_Tree::getAll() as $tree) {
 		WT_DB::prepare(
 			"INSERT INTO `##log` (log_type, log_message, ip_address, user_id, gedcom_id) VALUES ('search', ?, ?, ?, ?)"
 		)->execute(array(
-			(count($all_geds)==count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
+			(count(WT_Tree::getAll())==count($geds) ? 'Global search: ' : 'Gedcom search: ').$log_message,
 			$_SERVER['REMOTE_ADDR'],
 			WT_USER_ID ? WT_USER_ID : null,
-			$ged_id
+			$tree->tree_id
 		));
 	}
 }

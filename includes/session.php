@@ -360,6 +360,19 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 	// An existing session
 }
 
+// Who are we?
+define('WT_USER_ID', getUserId());
+define('WT_USER_NAME',         getUserName());
+define('WT_USER_IS_ADMIN',     userIsAdmin   (WT_USER_ID));
+define('WT_USER_AUTO_ACCEPT',  userAutoAccept(WT_USER_ID));
+
+// With no parameters, init() looks to the environment to choose a language
+define('WT_LOCALE', WT_I18N::init());
+$WT_SESSION->locale=WT_I18N::$locale;
+
+// Non-latin languages may need non-latin digits
+define('WT_NUMBERING_SYSTEM', Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnumberingsystem'));
+
 // Set the active GEDCOM
 if (isset($_REQUEST['ged'])) {
 	// .... from the URL or form action
@@ -368,28 +381,30 @@ if (isset($_REQUEST['ged'])) {
 	// .... the most recently used one
 	$GEDCOM=$WT_SESSION->GEDCOM;
 } else {
-	// .... we'll need to query the DB to find one
-	$GEDCOM='';
-}
-
-// Does the requested GEDCOM exist?
-$ged_id=get_id_from_gedcom($GEDCOM);
-if (!$ged_id) {
 	// Try the site default
 	$GEDCOM=get_site_setting('DEFAULT_GEDCOM');
-	$ged_id=get_id_from_gedcom($GEDCOM);
-	// Try any one
-	if (!$ged_id) {
-		foreach (get_all_gedcoms() as $ged_id=>$GEDCOM) {
-			if (get_gedcom_setting($ged_id, 'imported')) {
-				break;
-			}
-		}
+}
+
+// Choose the selected tree (if it exists), or any valid tree otherwise
+$ged_id=null;
+foreach (WT_Tree::getAll() as $tree) {
+	$ged_id=$tree->tree_id;
+	if ($tree->tree_name == $GEDCOM && $tree->imported || WT_USER_IS_ADMIN) {
+		break;
 	}
 }
-define('WT_GEDCOM', $GEDCOM);
-define('WT_GED_ID', $ged_id);
-define('WT_GEDURL', rawurlencode(WT_GEDCOM));
+if ($ged_id) {
+	define('WT_GEDCOM',   $tree->tree_name);
+	define('WT_GED_ID',   $tree->tree_id);
+	define('WT_GEDURL',   $tree->tree_name_url);
+	define('WT_IMPORTED', $tree->imported);
+} else {
+	define('WT_GEDCOM',   '');
+	define('WT_GED_ID',   '');
+	define('WT_GEDURL',   '');
+	define('WT_IMPORTED', false);
+}
+
 
 load_gedcom_settings(WT_GED_ID);
 
@@ -405,16 +420,6 @@ if (empty($WEBTREES_EMAIL)) {
 define('WT_SERVER_JD', 2440588+(int)(time()/86400));
 define('WT_CLIENT_JD', 2440588+(int)(client_time()/86400));
 
-// Who are we?
-define('WT_USER_ID', getUserId());
-
-// With no parameters, init() looks to the environment to choose a language
-define('WT_LOCALE', WT_I18N::init());
-$WT_SESSION->locale=WT_I18N::$locale;
-
-// Non-latin languages may need non-latin digits
-define('WT_NUMBERING_SYSTEM', Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnumberingsystem'));
-
 // Application configuration data - things that aren't (yet?) user-editable
 require WT_ROOT.'includes/config_data.php';
 
@@ -422,9 +427,6 @@ require WT_ROOT.'includes/config_data.php';
 require WT_ROOT.'includes/functions/functions_privacy.php';
 
 // The current user's profile - from functions in authentication.php
-define('WT_USER_NAME',         getUserName());
-define('WT_USER_IS_ADMIN',     userIsAdmin   (WT_USER_ID));
-define('WT_USER_AUTO_ACCEPT',  userAutoAccept(WT_USER_ID));
 define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
 define('WT_USER_CAN_ACCEPT',   WT_USER_GEDCOM_ADMIN || userCanAccept  (WT_USER_ID, WT_GED_ID));
 define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));
@@ -445,21 +447,22 @@ if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {
 // The login URL must be an absolute URL, and can be user-defined
 define('WT_LOGIN_URL', get_site_setting('LOGIN_URL', WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php'));
 
-if (WT_SCRIPT_NAME!='help_text.php') {
-	if (!get_gedcom_setting(WT_GED_ID, 'imported') && substr(WT_SCRIPT_NAME, 0, 5)!=='admin' && !in_array(WT_SCRIPT_NAME, array('help_text.php', 'login.php', 'edit_changes.php', 'import.php', 'message.php', 'save.php'))) {
-		header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
-		exit;
-	}
+// If we are in the middle of importing (or have not imported) the current tree,
+// then stay on the manage-trees page.
+if (!WT_IMPORTED && WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!='import.php' && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='help_text.php') {
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.'admin_trees_manage.php');
+	exit;
+}
 
-	if ($REQUIRE_AUTHENTICATION && !WT_USER_ID && !in_array(WT_SCRIPT_NAME, array('login.php', 'help_text.php', 'message.php'))) {
-		if (WT_SCRIPT_NAME=='index.php') {
-			$url='index.php?ged='.WT_GEDCOM;
-		} else {
-			$url=WT_SCRIPT_NAME.'?'.$QUERY_STRING;
-		}
-		header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode($url));
-		exit;
+// If authentication is required for this tree, and we are not authenticated....
+if ($REQUIRE_AUTHENTICATION && !WT_USER_ID && !in_array(WT_SCRIPT_NAME, array('login.php', 'help_text.php', 'message.php'))) {
+	if (WT_SCRIPT_NAME=='index.php') {
+		$url='index.php?ged='.WT_GEDCOM;
+	} else {
+		$url=WT_SCRIPT_NAME.'?'.$QUERY_STRING;
 	}
+	header('Location: '.WT_LOGIN_URL.'?url='.rawurlencode($url));
+	exit;
 }
 
 if (WT_USER_ID) {

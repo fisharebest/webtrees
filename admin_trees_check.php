@@ -38,7 +38,7 @@ $controller
 
 echo '<form method="get" action="', WT_SCRIPT_NAME, '">';
 echo '<input type="hidden" name="go" value="1">';
-echo select_edit_control('ged', array_combine(get_all_gedcoms(), get_all_gedcoms()), null, WT_GEDCOM);
+echo select_edit_control('ged', WT_Tree::getList(), null, WT_GEDCOM);
 echo '<input type="submit" value="', $controller->getPageTitle(), '">';
 echo '</form>';
 

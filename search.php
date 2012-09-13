@@ -204,17 +204,16 @@ echo '<div id="search-page">
 		}			
 		// If the search is a general or soundex search then possibly display checkboxes for the gedcoms
 		if ($controller->action == "general" || $controller->action == "soundex") {
-			$all_gedcoms=get_all_gedcoms();
 			// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
-			if ((count($all_gedcoms) > 1) && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
+			if ((count(WT_Tree::getAll()) > 1) && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
 				// More Than 3 Gedcom Filess enable elect all & select none buttons
-				if (count($all_gedcoms)>3) {
+				if (count(WT_Tree::getAll())>3) {
 					echo '<div class="label">&nbsp;</div>
 						<div class="value">
 						<input type="button" value="', /* I18N: select all (of the family trees) */ WT_I18N::translate('select all'), '" onclick="jQuery(\'#search_trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', true);});return false;">
 							<input type="button" value="', /* I18N: select none (of the family trees) */ WT_I18N::translate('select none'), '" onclick="jQuery(\'#search_trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', false);});return false;">';							
 							// More Than 10 Gedcom Files enable invert selection button
-							if (count($all_gedcoms)>10) {
+							if (count(WT_Tree::getAll())>10) {
 								echo '<input type="button" value="', WT_I18N::translate('invert selection'), '" onclick="jQuery(\'#search_trees :checkbox\').each(function(){jQuery(this).attr(\'checked\', !jQuery(this).attr(\'checked\'));});return false;">';
 							}	
 						echo '</div>';
@@ -222,15 +221,14 @@ echo '<div id="search-page">
 				echo '<div class="label">' , WT_I18N::translate('Family trees'), '</div>
 				<div id="search_trees" class="value">';	
 					//-- sorting menu by gedcom filename
-					asort($all_gedcoms);
-					foreach ($all_gedcoms as $ged_id=>$gedcom) {
-						$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $gedcom);
+					foreach (WT_Tree::getAll() as $tree) {
+						$str = str_replace(array (".", "-", " "), array ("_", "_", "_"), $tree->tree_name);
 						$controller->inputFieldNames[] = "$str";
 						echo '<p><input type="checkbox" ';
 						if (isset ($_REQUEST["$str"])) {
 							echo 'checked="checked" ';
 						}
-						echo 'value="yes" id="checkbox_', $ged_id , '" name="', $str, '"><label for="checkbox_', $ged_id , '">', get_gedcom_setting($ged_id, 'title'), '</label></p>', "\n";
+						echo 'value="yes" id="checkbox_', $tree->tree_id , '" name="', $str, '"><label for="checkbox_', $tree->tree_id , '">', $tree->tree_title, '</label></p>', "\n";
 					}
 				echo '</div>';
 			}

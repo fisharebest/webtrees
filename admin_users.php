@@ -70,11 +70,6 @@ $editaccount       =safe_POST_bool('editaccount');
 $verified          =safe_POST_bool('verified');
 $verified_by_admin =safe_POST_bool('verified_by_admin');
 
-// Load all available gedcoms
-$all_gedcoms = get_all_gedcoms();
-//-- sorting by gedcom filename
-asort($all_gedcoms);
-
 switch ($action) {
 case 'deleteuser':
 	// Delete a user - but don't delete ourselves!
@@ -243,21 +238,21 @@ case 'load1row':
 		'<th>', WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'), '</th>',
 		'</tr>';
 
-	foreach ($all_gedcoms as $ged_id=>$ged_name) {
+	foreach (WT_Tree::getAll() as $tree) {
 		echo
 			'<tr><td>',
-			WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), 
+			$tree->tree_title_html,
 			//Pedigree root person
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
-			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-rootid', get_user_gedcom_setting($user_id, $ged_id, 'rootid')),
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-rootid', get_user_gedcom_setting($user_id, $tree->tree_id, 'rootid')),
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
-			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-gedcomid', get_user_gedcom_setting($user_id, $ged_id, 'gedcomid')),
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-gedcomid', get_user_gedcom_setting($user_id, $tree->tree_id, 'gedcomid')),
 			'</td><td>',
-			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-canedit', $ALL_EDIT_OPTIONS, null, get_user_gedcom_setting($user_id, $ged_id, 'canedit', 'none')),
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-canedit', $ALL_EDIT_OPTIONS, null, get_user_gedcom_setting($user_id, $tree->tree_id, 'canedit', 'none')),
 			'</td><td>',
-			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$ged_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, get_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', '0')),
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, get_user_gedcom_setting($user_id, $tree->tree_id, 'RELATIONSHIP_PATH_LENGTH', '0')),
 			'</td></tr>';
 	}
 	echo '</table>';
@@ -295,15 +290,15 @@ case 'createuser':
 		set_user_setting($user_id, 'editaccount',          $editaccount);
 		set_user_setting($user_id, 'verified',             $verified);
 		set_user_setting($user_id, 'verified_by_admin',    $verified_by_admin);
-		foreach ($all_gedcoms as $ged_id=>$ged_name) {
-			set_user_gedcom_setting($user_id, $ged_id, 'gedcomid', safe_POST_xref('gedcomid'.$ged_id));
-			set_user_gedcom_setting($user_id, $ged_id, 'rootid',   safe_POST_xref('rootid'.$ged_id));
-			set_user_gedcom_setting($user_id, $ged_id, 'canedit',  safe_POST('canedit'.$ged_id, array_keys($ALL_EDIT_OPTIONS)));
-			if (safe_POST_xref('gedcomid'.$ged_id)) {
-				set_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', safe_POST_integer('RELATIONSHIP_PATH_LENGTH'.$ged_id, 0, 10, 0));
+		foreach (WT_Tree::allTrees() as $tree) {
+			set_user_gedcom_setting($user_id, $tree->tree_id, 'gedcomid', safe_POST_xref('gedcomid'.$tree->tree_id));
+			set_user_gedcom_setting($user_id, $tree->tree_id, 'rootid',   safe_POST_xref('rootid'.$tree->tree_id));
+			set_user_gedcom_setting($user_id, $tree->tree_id, 'canedit',  safe_POST('canedit'.$tree->tree_id, array_keys($ALL_EDIT_OPTIONS)));
+			if (safe_POST_xref('gedcomid'.$tree->tree_id)) {
+				set_user_gedcom_setting($user_id, $tree->tree_id, 'RELATIONSHIP_PATH_LENGTH', safe_POST_integer('RELATIONSHIP_PATH_LENGTH'.$tree->tree_id, 0, 10, 0));
 			} else {
 				// Do not allow a path length to be set if the individual ID is not
-				set_user_gedcom_setting($user_id, $ged_id, 'RELATIONSHIP_PATH_LENGTH', null);
+				set_user_gedcom_setting($user_id, $tree->tree_id, 'RELATIONSHIP_PATH_LENGTH', null);
 			}
 		}
 		AddToLog("User ->{$username}<- created", 'auth');
@@ -314,7 +309,7 @@ case 'createuser':
 // Pass 2 - display page
 switch ($action) {
 case 'createform':
-	if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
+	if (count(WT_Tree::getAll())==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 		$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 	}
 
@@ -456,21 +451,21 @@ case 'createform':
 							<th><?php echo WT_I18N::translate('Restrict to immediate family'), help_link('RELATIONSHIP_PATH_LENGTH'); ?></th>
 						</tr>
 						<?php
-							foreach ($all_gedcoms as $ged_id=>$ged_name) {
+							foreach (WT_Tree::getAll() as $tree) {
 								echo '<tr>',
-									'<td>', WT_I18N::translate('%s', get_gedcom_setting($ged_id, 'title')), '</td>',
+									'<td>', $tree->tree_title_html, '</td>',
 									//Pedigree root person
 									'<td>';
-										$varname='rootid'.$ged_id;
-										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', htmlspecialchars(safe_POST_xref('gedcomid'.$ged_id)), '"> ', print_findindi_link($varname),
+										$varname='rootid'.$tree->tree_id;
+										echo '<input type="text" size="12" name="', $varname, '" id="', $varname, '" value="', htmlspecialchars(safe_POST_xref('gedcomid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
 									'</td>',						
 									// GEDCOM INDI Record ID
 									'<td>';
-										$varname='gedcomid'.$ged_id;
-										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', htmlspecialchars(safe_POST_xref('rootid'.$ged_id)), '"> ', print_findindi_link($varname),
+										$varname='gedcomid'.$tree->tree_id;
+										echo '<input type="text" size="12" name="',$varname, '" id="',$varname, '" value="', htmlspecialchars(safe_POST_xref('rootid'.$tree->tree_id)), '"> ', print_findindi_link($varname),
 									'</td>',
 									'<td>';
-										$varname='canedit'.$ged_id;
+										$varname='canedit'.$tree->tree_id;
 										echo '<select name="', $varname, '">';
 										foreach ($ALL_EDIT_OPTIONS as $EDIT_OPTION=>$desc) {
 											echo '<option value="', $EDIT_OPTION, '" ';
@@ -483,7 +478,7 @@ case 'createform':
 									'</td>',
 									//Relationship path
 									'<td>';
-										$varname = 'RELATIONSHIP_PATH_LENGTH'.$ged_id;
+										$varname = 'RELATIONSHIP_PATH_LENGTH'.$tree->tree_id;
 										echo '<select name="', $varname, '" id="', $varname, '" class="relpath">';
 											for ($n=0; $n<=10; ++$n) {
 												echo

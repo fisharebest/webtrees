@@ -61,8 +61,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		case '__default__':
 			$GEDCOM=get_site_setting('DEFAULT_GEDCOM');
 			if (!$GEDCOM) {
-				foreach (get_all_gedcoms() as $gedcom) {
-					$GEDCOM=$gedcom;
+				foreach (WT_Trees::getAll() as $tree) {
+					$GEDCOM=$tree->tree_name;
 					break;
 				}
 			}
@@ -284,9 +284,8 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo '</select></td></tr>';
 
 		// gedcom
-		$gedcoms = get_all_gedcoms();
 		$gedcom=get_block_setting($block_id, 'gedcom');
-		if (count($gedcoms) > 1) {
+		if (count(WT_Tree::getAll()) > 1) {
 			if ($gedcom == '__current__') {$sel_current = ' selected="selected"';} else {$sel_current = '';}
 			if ($gedcom == '__default__') {$sel_default = ' selected="selected"';} else {$sel_default = '';}
 			echo '<tr><td class="descriptionbox wrap">',
@@ -295,9 +294,9 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 				'<select name="gedcom">',
 				'<option value="__current__"', $sel_current, '>', WT_I18N::translate('Current'), '</option>',
 				'<option value="__default__"', $sel_default, '>', WT_I18N::translate('Default'), '</option>';
-			foreach ($gedcoms as $ged_id=>$ged_name) {
-				if ($ged_name == $gedcom) {$sel = ' selected="selected"';} else {$sel = '';}
-				echo '<option value="', $ged_name, '"', $sel, ' dir="auto">', htmlspecialchars(get_gedcom_setting($ged_id, 'title')), '</option>';
+			foreach (WT_Tree::getAll() as $tree) {
+				if ($tree->tree_name == $gedcom) {$sel = ' selected="selected"';} else {$sel = '';}
+				echo '<option value="', $tree->tree_name, '"', $sel, ' dir="auto">', $tree->tree_title_html, '</option>';
 			}
 			echo '</select></td></tr>';
 		}

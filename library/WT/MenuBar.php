@@ -32,17 +32,14 @@ if (!defined('WT_WEBTREES')) {
 
 class WT_MenuBar {
 	public static function getGedcomMenu() {
-		//-- main menu
 		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree');
-		//-- gedcom list
-		$gedcom_titles=get_gedcom_titles();
-		$ALLOW_CHANGE_GEDCOM=get_site_setting('ALLOW_CHANGE_GEDCOM');
-		foreach ($gedcom_titles as $gedcom_title) {
-			if (($gedcom_title->gedcom_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) && count($gedcom_titles)>1) {
+		$ALLOW_CHANGE_GEDCOM=get_site_setting('ALLOW_CHANGE_GEDCOM') && count(WT_Tree::getAll())>1;
+		foreach (WT_Tree::getAll() as $tree) {
+			if ($tree->tree_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new WT_Menu(
-					'<span dir="auto">'.htmlspecialchars($gedcom_title->gedcom_title).'</span>',
-					'index.php?ctype=gedcom&amp;ged='.rawurlencode($gedcom_title->gedcom_name),
-					'menu-tree-'.$gedcom_title->gedcom_id // Cannot use name - it must be a CSS identifier
+					'<span dir="auto">'.$tree->tree_title_html.'</span>',
+					'index.php?ctype=gedcom&amp;ged='.$tree->tree_name_url,
+					'menu-tree-'.$tree->tree_id // Cannot use name - it must be a CSS identifier
 				);
 				$menu->addSubmenu($submenu);
 			}

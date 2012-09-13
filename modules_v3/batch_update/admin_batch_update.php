@@ -63,10 +63,8 @@ class batch_update {
 			'<th>'.WT_I18N::translate('Family tree').'</th>'.
 			'<td><select name="ged" onchange="reset_reload();">';
 
-		$all_gedcoms=get_all_gedcoms();
-		asort($all_gedcoms);
-		foreach ($all_gedcoms as $ged_id=>$gedcom) {
-			$html.='<option value="'.$gedcom.'"'.($ged_id==WT_GED_ID ? ' selected="selected"' : '').'>'.get_gedcom_setting($ged_id, 'title').'</option>';
+		foreach (WT_Tree::getAll() as $tree) {
+			$html.='<option value="'.$tree->tree_name_html.'"'.($tree->tree_id==WT_GED_ID ? ' selected="selected"' : '').'>'.$tree->tree_title.'</option>';
 		}
 		$html.='</select></td></tr><tr><th>'.WT_I18N::translate('Batch update').'</th><td><select name="plugin" onchange="reset_reload();">';
 		if (!$this->plugin) {

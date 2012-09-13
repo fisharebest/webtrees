@@ -1505,7 +1505,7 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
 		$action   =safe_GET('action'                                             );
-		$gedcom_id=safe_GET('gedcom_id', array_keys(get_all_gedcoms()), WT_GED_ID);
+		$gedcom_id=safe_GET('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
 		$country  =safe_GET('country',   WT_REGEX_UNSAFE,               'XYZ'    );
 		$state    =safe_GET('state',     WT_REGEX_UNSAFE,               'XYZ'    );
 		$matching =safe_GET_bool('matching');
@@ -1564,8 +1564,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		//Option box to select gedcom
 		echo '<tr><td>', WT_I18N::translate('Family tree'), '</td>';
 		echo '<td><select name="gedcom_id">';
-		foreach (get_all_gedcoms() as $ged_id=>$gedcom) {
-			echo '<option value="', $ged_id, '"', $ged_id==$gedcom_id?' selected="selected"':'', '>', get_gedcom_setting($ged_id, 'title'), '</option>';
+		foreach (WT_Tree::getAll() as $tree) {
+			echo '<option value="', $tree->tree_id, '"', $tree->tree_id==$gedcom_id?' selected="selected"':'', '>', $tree->tree_title_html, '</option>';
 		}
 		echo '</select></td></tr>';
 		//Option box to select Country within Gedcom

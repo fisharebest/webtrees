@@ -183,7 +183,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			echo '</td><td>';
 			echo '<input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '"></td>';
 			echo '</td><td>';
-			echo select_edit_control('gedcom_id', get_all_gedcoms(), '', $gedcom_id, 'tabindex="4"');
+			echo select_edit_control('gedcom_id', WT_Tree::getList(), '', $gedcom_id, 'tabindex="4"');
 			echo '</td></tr>';
 			echo '</table>';
 
@@ -352,7 +352,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			WT_I18N::translate('Family tree'), ' ',
 			'<input type="hidden" name="mod", value="', $this->getName(), '">',
 			'<input type="hidden" name="mod_action", value="admin_config">',
-			select_edit_control('ged', array_combine(get_all_gedcoms(), get_all_gedcoms()), null, WT_GEDCOM),
+			select_edit_control('ged', WT_Tree::getList(), null, WT_GEDCOM),
 			'<input type="submit" value="', WT_I18N::translate('show'), '">',
 			'</form></p>';
 

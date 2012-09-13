@@ -74,8 +74,7 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 // Process GET actions
 switch (safe_GET('action')) {
 case 'delete':
-	$ged=safe_GET('ged');
-	delete_gedcom(get_id_from_gedcom($ged));
+	WT_Tree::delete(WT_GED_ID);
 	break;
 }
 
@@ -87,21 +86,7 @@ case 'setdefault':
 case 'new_ged':
 	$ged_name=basename(safe_POST('ged_name'));
 	if ($ged_name) {
-		$gedcom_id=get_id_from_gedcom($ged_name);
-		// check it doesn't already exist before we create it
-		if (!$gedcom_id) {
-			$gedcom_id=get_id_from_gedcom($ged_name, true);
-			// I18N: This should be a common/default/placeholder name of a person.  Put slashes around the surname.
-			$john_doe=WT_I18N::translate('John /DOE/');
-			$note=WT_I18N::translate('Edit this individual and replace their details with your own');
-			WT_DB::prepare("DELETE FROM `##gedcom_chunk` WHERE gedcom_id=?")->execute(array($gedcom_id));
-			WT_DB::prepare(
-				"INSERT INTO `##gedcom_chunk` (gedcom_id, chunk_data) VALUES (?, ?)"
-			)->execute(array(
-				$gedcom_id,
-				"0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n"
-			));
-		}
+		WT_Tree::create($ged_name);
 	}
 	break;
 case 'replace_upload':
@@ -126,8 +111,6 @@ case 'replace_import':
 	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME.'?keep_media'.$gedcom_id.'='.safe_POST_bool('keep_media'.$gedcom_id));
 	exit;
 }
-
-$gedcoms=get_all_gedcoms();
 
 $controller->pageHeader();
 
@@ -188,60 +171,60 @@ case 'importform':
 
 
 // List the gedcoms available to this user
-foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
-	if (userGedcomAdmin(WT_USER_ID, $gedcom_id)) {
+foreach (WT_Tree::GetAll() as $tree) {
+	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
 
 		echo
 			'<table class="gedcom_table">',
 			'<tr><th>', WT_I18N::translate('Family tree'),
-			'</th><th><a class="accepted" href="index.php?ctype=gedcom&amp;ged=', rawurlencode($gedcom_name), '">',
-			WT_I18N::translate('%s', get_gedcom_setting($gedcom_id, 'title')), '</a>',
-			'</th></tr><tr><th class="accepted">', htmlspecialchars($gedcom_name),
+			'</th><th><a class="accepted" href="index.php?ctype=gedcom&amp;ged=', $tree->tree_name_url, '">',
+			$tree->tree_title_html, '</a>',
+			'</th></tr><tr><th class="accepted">', $tree->tree_name_html,
 			'</th><td>';
 
 		// The third row shows an optional progress bar and a list of maintenance options
 		$importing=WT_DB::prepare(
 			"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=0 LIMIT 1"
-		)->execute(array($gedcom_id))->fetchOne();
+		)->execute(array($tree->tree_id))->fetchOne();
 		if ($importing) {
 			$in_progress=WT_DB::prepare(
 				"SELECT 1 FROM `##gedcom_chunk` WHERE gedcom_id=? AND imported=1 LIMIT 1"
-			)->execute(array($gedcom_id))->fetchOne();
+			)->execute(array($tree->tree_id))->fetchOne();
 			if (!$in_progress) {
-				echo '<div id="import', $gedcom_id, '"><div id="progressbar', $gedcom_id, '"><div style="position:absolute;">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
+				echo '<div id="import', $tree->tree_id, '"><div id="progressbar', $tree->tree_id, '"><div style="position:absolute;">', WT_I18N::translate('Deleting old genealogy data…'), '</div></div></div>';
 			$controller->addInlineJavascript(
-				'jQuery("#progressbar'.$gedcom_id.'").progressbar({value: 0});'
+				'jQuery("#progressbar'.$tree->tree_id.'").progressbar({value: 0});'
 			);
 			} else {
-				echo '<div id="import', $gedcom_id, '"></div>';
+				echo '<div id="import', $tree->tree_id, '"></div>';
 			}
 			$controller->addInlineJavascript(
-				'jQuery("#import'.$gedcom_id.'").load("import.php?gedcom_id='.$gedcom_id.'&keep_media'.$gedcom_id.'='.safe_GET('keep_media'.$gedcom_id).'");'
+				'jQuery("#import'.$tree->tree_id.'").load("import.php?gedcom_id='.$tree->tree_id.'&keep_media'.$tree->tree_id.'='.safe_GET('keep_media'.$tree->tree_id).'");'
 			);
-			echo '<table border="0" width="100%" id="actions', $gedcom_id, '" style="display:none">';
+			echo '<table border="0" width="100%" id="actions', $tree->tree_id, '" style="display:none">';
 		} else {
-			echo '<table border="0" width="100%" id="actions', $gedcom_id, '">';
+			echo '<table border="0" width="100%" id="actions', $tree->tree_id, '">';
 		}
 		echo
 			'<tr align="center">',
 			// export
-			'<td><a href="admin_trees_export.php?export=', rawurlencode($gedcom_name), '" onclick="return modalDialog(\'admin_trees_export.php?export=', rawurlencode($gedcom_name), '\', \'', WT_I18N::translate('Export'), '\');">', WT_I18N::translate('Export'), '</a>',
+			'<td><a href="admin_trees_export.php?ged=', $tree->tree_name_url, '" onclick="return modalDialog(\'admin_trees_export.php?ged=', $tree->tree_name_url, '\', \'', WT_I18N::translate('Export'), '\');">', WT_I18N::translate('Export'), '</a>',
 			help_link('export_gedcom'),
 			'</td>',
 			// import
-			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $gedcom_id, '">', WT_I18N::translate('Import'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=importform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Import'), '</a>',
 			help_link('import_gedcom'),
 			'</td>',
 			// download
-			'<td><a href="admin_trees_download.php?ged=', rawurlencode($gedcom_name),'">', WT_I18N::translate('Download'), '</a>',
+			'<td><a href="admin_trees_download.php?ged=', $tree->tree_name_url,'">', WT_I18N::translate('Download'), '</a>',
 			help_link('download_gedcom'),
 			'</td>',
 			// upload
-			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $gedcom_id, '">', WT_I18N::translate('Upload'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=uploadform&amp;gedcom_id=', $tree->tree_id, '">', WT_I18N::translate('Upload'), '</a>',
 			help_link('upload_gedcom'),
 			'</td>',
 			// delete
-			'<td><a href="', WT_SCRIPT_NAME, '?action=delete&amp;ged=', rawurlencode($gedcom_name), '" onclick="return confirm(\''.htmlspecialchars(WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?', $gedcom_name)),'\');">', WT_I18N::translate('Delete'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=delete&amp;ged=', $tree->tree_name_url, '" onclick="return confirm(\''.WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?', $tree->tree_title_html),'\');">', WT_I18N::translate('Delete'), '</a>',
 			'</td></tr></table></td></tr></table><br>';
 	}
 }
@@ -249,11 +232,11 @@ foreach ($gedcoms as $gedcom_id=>$gedcom_name) {
 // Options for creating new gedcoms and setting defaults
 if (WT_USER_IS_ADMIN) {
 	echo '<table class="gedcom_table2"><tr>';
-	if (count($gedcoms)>1) {
+	if (count(WT_Tree::GetAll())>1) {
 		echo '<th>', WT_I18N::translate('Default family tree'), help_link('default_gedcom'), '</th>';
 	}
 	echo '<th>', WT_I18N::translate('Create a new family tree'), help_link('add_new_gedcom'), '</th></tr><tr>';
-	if (count($gedcoms)>1) {
+	if (count(WT_Tree::GetAll())>1) {
 		echo
 			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
 			'<input type="hidden" name="action" value="setdefault">',
@@ -262,10 +245,10 @@ if (WT_USER_IS_ADMIN) {
 		if (empty($DEFAULT_GEDCOM)) {
 			echo '<option value="" selected="selected"></option>';
 		}
-		foreach ($gedcoms as $gedcom_name) {
-			echo '<option value="', htmlspecialchars($gedcom_name), '"';
-			if ($DEFAULT_GEDCOM==$gedcom_name) echo ' selected="selected"';
-			echo '>', htmlspecialchars($gedcom_name), '</option>';
+		foreach (WT_Tree::GetAll() as $tree) {
+			echo '<option value="', $tree->tree_name_html, '"';
+			if ($DEFAULT_GEDCOM==$tree->tree_name) echo ' selected="selected"';
+			echo '>', $tree->tree_name_html, '</option>';
 		}
 		echo '</select></form></td>';
 	}
@@ -280,7 +263,7 @@ if (WT_USER_IS_ADMIN) {
 		'</tr></table><br>';
 
 		// display link to PGV-WT transfer wizard on first visit to this page, before any GEDCOM is loaded
-		if (count($gedcoms)==0 && get_user_count()==1) {
+		if (count(WT_Tree::GetAll())==0 && get_user_count()==1) {
 			echo
 				'<div class="center">',
 				'<a style="color:green; font-weight:bold;" href="admin_pgv_to_wt.php">',

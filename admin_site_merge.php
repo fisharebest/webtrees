@@ -47,7 +47,7 @@ $keep2=safe_POST('keep2', WT_REGEX_UNSAFE);
 if (empty($keep1)) $keep1=array();
 if (empty($keep2)) $keep2=array();
 
-if (get_gedcom_count()==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
+if (count(WT_Tree::getAll())==1) { //Removed becasue it doesn't work here for multiple GEDCOMs. Can be reinstated when fixed (https://bugs.launchpad.net/webtrees/+bug/613235)
 	$controller->addExternalJavascript(WT_STATIC_URL.'js/autocomplete.js');
 }
 
@@ -272,18 +272,16 @@ if ($action=='choose') {
 		'</td><td>
 		<input type="text" name="gid1" id="gid1" value="', $gid1, '" size="10" tabindex="1" autofocus="autofocus">
 		<select name="ged" tabindex="4"';
-	if (get_gedcom_count()==1) {
+	if (count(WT_Tree::getAll())==1) {
 		echo 'style="width:1px;visibility:hidden;"';
 	}
 	echo ' >';
-	$all_gedcoms=get_all_gedcoms();
-	asort($all_gedcoms);
-	foreach ($all_gedcoms as $ged_id=>$ged_name) {
-		echo '<option value="', $ged_name, '"';
-		if (empty($ged) && $ged_id==WT_GED_ID || !empty($ged) && $ged==$ged_name) {
+	foreach (WT_Tree::getAll() as $tree) {
+		echo '<option value="', $tree->tree_name_html, '"';
+		if (empty($ged) && $tree->tree_id==WT_GED_ID || !empty($ged) && $ged==$tree->tree_name) {
 			echo ' selected="selected"';
 		}
-		echo ' dir="auto">', htmlspecialchars(get_gedcom_setting($ged_id, 'title')), '</option>';
+		echo ' dir="auto">', $tree->tree_title_html, '</option>';
 	}
 	echo
 		'</select>
@@ -295,16 +293,16 @@ if ($action=='choose') {
 		'</td><td>
 		<input type="text" name="gid2" id="gid2" value="', $gid2, '" size="10" tabindex="2">&nbsp;',
 		'<select name="ged2" tabindex="5"';
-	if (get_gedcom_count()==1) {
+	if (count(WT_Tree::getAll())==1) {
 		echo 'style="width:1px;visibility:hidden;"';
 	}
 	echo ' >';
-	foreach ($all_gedcoms as $ged_id=>$ged_name) {
-		echo '<option value="', $ged_name, '"';
-		if (empty($ged2) && $ged_id==WT_GED_ID || !empty($ged2) && $ged2==$ged_name) {
+	foreach (WT_Tree::getAll() as $tree) {
+		echo '<option value="', $tree->tree_name_html, '"';
+		if (empty($ged2) && $tree->tree_id==WT_GED_ID || !empty($ged2) && $ged2==$tree->tree_name) {
 			echo ' selected="selected"';
 		}
-		echo ' dir="auto">', htmlspecialchars(get_gedcom_setting($ged_id, 'title')), '</option>';
+		echo ' dir="auto">', $tree->tree_title_html, '</option>';
 	}
 	echo
 		'</select>
