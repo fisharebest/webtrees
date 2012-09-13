@@ -44,7 +44,7 @@ exit;
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Quit and return');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Reset to the original order');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Saves the sorted media to the database');
-/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Shared Note using Assistant')
+/* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Shared Note using Assistant');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Should the slideshow start automatically when the page is loaded.<br /><br />The slideshow changes the contents of the block without preloading information from the server and without reloading the entire page.');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('Show only persons, events, or all?');
 /* I18N: This message is deleted in webtrees-1.3.2  */ WT_I18N::translate('This option lets you determine the type of media to show.<br /><br />When you select <b>Persons</b>, only media associated with persons will be shown.  Usually, this would be a person\'s photograph.  When you select <b>Events</b>, only media associated with facts or events will be shown.  This might be an image of a certificate.  When you select <b>ALL</b>, this block will show all types of media.');
