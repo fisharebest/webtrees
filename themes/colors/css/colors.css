@@ -475,7 +475,7 @@ html[dir="rtl"] .optionbox input{margin-left:5px;}
 
 .descriptionbox{border:1px solid #999;border-radius:3px;padding:3px;vertical-align:top;white-space:nowrap;}
 .formField{font-size:12px;width:140px;}
-.rela{opacity:0.67px;}
+.rela{opacity:0.67;}
 .sex_image{border:none;height:9px;padding-left:3px;padding-right:3px;vertical-align:middle;width:9px;}
 .starredname{text-decoration:underline;}
 .subbar{background:#fff;border:1pt solid #ddd;border-radius:3px;font-size:11px;padding:3px;vertical-align:top;white-space:nowrap;}
