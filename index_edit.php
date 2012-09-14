@@ -83,10 +83,8 @@ foreach (WT_Module::getActiveBlocks() as $name=>$block) {
 }
 
 if ($user_id) {
-	$controller->setPageTitle(WT_I18N::translate('My page'));
 	$blocks=get_user_blocks($user_id);
 } elseif ($gedcom_id) {
-	$controller->setPageTitle(WT_I18N::translate(get_gedcom_setting(WT_GED_ID, 'title')));
 	$blocks=get_gedcom_blocks($gedcom_id);
 }
 

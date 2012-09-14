@@ -145,6 +145,7 @@ echo
 					} else {
 						$gedadmin[$tree->tree_id]["number"] = 1;
 						$gedadmin[$tree->tree_id]["ged"] = $tree->tree_name;
+						$gedadmin[$tree->tree_id]["title"] = $tree->tree_title_html;
 					}
 				}
 			}
@@ -164,7 +165,7 @@ echo
 		'<tr><td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="admin_users.php?action=listusers&amp;filter=adminusers">', WT_I18N::translate('Administrators'), '</a></td><td>', $adminusers, '</td></tr>',
 		'<tr><td colspan="2">', WT_I18N::translate('Managers'), '</td></tr>';
 		foreach ($gedadmin as $ged_id=>$geds) {
-			echo '<tr><td><div><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '" dir="auto">', htmlspecialchars(get_gedcom_setting($ged_id, 'title')), '</a></div></td><td>', $geds['number'], '</td></tr>';
+			echo '<tr><td><div><a href="admin_users.php?action=listusers&amp;filter=gedadmin&amp;ged='.rawurlencode($geds['ged']), '" dir="auto">', $geds['title'], '</a></div></td><td>', $geds['number'], '</td></tr>';
 		}
 	echo '<tr><td>';
 	if ($warnusers == 0) {
@@ -203,7 +204,7 @@ echo
 $n=0;
 foreach (WT_Tree::getAll() as $tree) {
 	$stats = new WT_Stats($tree->tree_name);
-	if ($ged_id==WT_GED_ID) {
+	if ($tree->tree_id==WT_GED_ID) {
 		$accordion_element=$n;
 	}
 	++$n;

@@ -46,7 +46,7 @@ class gedcom_block_WT_Module extends WT_Module implements WT_Module_Block {
 		$indi_xref=$controller->getSignificantIndividual()->getXref();
 		$id=$this->getName().$block_id;
 		$class=$this->getName().'_block';
-		$title='<span dir="auto">'.get_gedcom_setting(WT_GED_ID, 'title').'</span>';
+		$title='<span dir="auto">'.WT_TREE_TITLE.'</span>';
 		$content = '<table><tr>';
 		$content .= '<td><a href="pedigree.php?rootid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-pedigree"></i><br>'.WT_I18N::translate('Default chart').'</a></td>';
 		$content .= '<td><a href="individual.php?pid='.$indi_xref.'&amp;ged='.WT_GEDURL.'"><i class="icon-indis"></i><br>'.WT_I18N::translate('Default individual').'</a></td>';

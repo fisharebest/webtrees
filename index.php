@@ -79,7 +79,7 @@ if ($ctype=='user') {
 	$controller->requireMemberLogin();
 }
 $controller
-	->setPageTitle($ctype=='user' ? WT_I18N::translate('My page') : get_gedcom_setting(WT_GED_ID, 'title'))
+	->setPageTitle($ctype=='user' ? WT_I18N::translate('My page') : WT_TREE_TITLE)
 	->setMetaRobots('index,follow')
 	->pageHeader()
 	// By default jQuery modifies AJAX URLs to disable caching, causing JS libraries to be loaded many times.
