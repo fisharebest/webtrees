@@ -195,23 +195,6 @@ function userAutoAccept($user_id=WT_USER_ID) {
 	return get_user_setting($user_id, 'auto_accept');
 }
 
-// Get current user's access level
-function getUserAccessLevel($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
-	if ($user_id) {
-		if (userGedcomAdmin($user_id, $ged_id)) {
-			return WT_PRIV_NONE;
-		} else {
-			if (userCanAccess($user_id, $ged_id)) {
-				return WT_PRIV_USER;
-			} else {
-				return WT_PRIV_PUBLIC;
-			}
-		}
-	} else {
-		return WT_PRIV_PUBLIC;
-	}
-}
-
 // Get the full name for a user
 function getUserFullName($user_id) {
 	return WT_DB::prepare("SELECT SQL_CACHE real_name FROM `##user` WHERE user_id=?")->execute(array($user_id))->fetchOne();

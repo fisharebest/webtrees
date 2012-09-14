@@ -432,10 +432,17 @@ define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_I
 define('WT_USER_CAN_ACCEPT',   WT_USER_GEDCOM_ADMIN || userCanAccept  (WT_USER_ID, WT_GED_ID));
 define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));
 define('WT_USER_CAN_ACCESS',   WT_USER_CAN_EDIT     || userCanAccess  (WT_USER_ID, WT_GED_ID));
-define('WT_USER_ACCESS_LEVEL', getUserAccessLevel(WT_USER_ID, WT_GED_ID));
 define('WT_USER_GEDCOM_ID',    getUserGedcomId   (WT_USER_ID, WT_GED_ID));
 define('WT_USER_ROOT_ID',      getUserRootId     (WT_USER_ID, WT_GED_ID));
 define('WT_USER_PATH_LENGTH',  get_user_gedcom_setting(WT_USER_ID, WT_GED_ID, 'RELATIONSHIP_PATH_LENGTH'));
+
+if (WT_USER_GEDCOM_ADMIN) {
+	define('WT_USER_ACCESS_LEVEL', WT_PRIV_NONE);
+} elseif (WT_USER_CAN_ACCESS) {
+	define('WT_USER_ACCESS_LEVEL', WT_PRIV_USER);
+} else {
+	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
+}
 
 // If we are logged in, and logout=1 has been added to the URL, log out
 // If we were logged in, but our account has been deleted, log out.
