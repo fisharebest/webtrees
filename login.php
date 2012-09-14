@@ -328,7 +328,8 @@ case 'register':
 
 			$mail1_body=
 				WT_I18N::translate('Hello Administrator ...')."\r\n\r\n".
-				WT_I18N::translate('A prospective user has registered with webtrees at %s.', get_gedcom_setting(WT_GED_ID, 'title').' - '.WT_SERVER_NAME.WT_SCRIPT_PATH)."\r\n\r\n".
+				/* I18N: %s is a server name/URL */
+				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME.WT_SCRIPT_PATH)."\r\n\r\n".
 				WT_I18N::translate('Username')      .' '.$user_name    ."\r\n".
 				WT_I18N::translate('Real name')     .' '.$user_realname."\r\n".
 				WT_I18N::translate('Email Address:').' '.$user_email   ."\r\n\r\n".
@@ -345,7 +346,7 @@ case 'register':
 				"DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n".
 				"LANGUAGE: ".WT_LOCALE."\r\n";
 
-			$mail1_subject=WT_I18N::translate('New registration at %s', get_gedcom_setting(WT_GED_ID, 'title').' - '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+			$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 			$mail1_to     =$WEBTREES_EMAIL;
 			$mail1_from   =$user_email;
 			$mail1_method =get_user_setting($webmaster_user_id, 'contact_method');
@@ -409,7 +410,7 @@ case 'register':
 					WT_I18N::translate('Comments').": " . $user_comments . "\r\n\r\n".
 					WT_I18N::translate('If you didn\'t request an account, you can just delete this message.') . "  ".
 					WT_I18N::translate('You won\'t get any more email from this site, because the account request will be deleted automatically after seven days.') . "\r\n";
-				$mail2_subject=WT_I18N::translate('Your registration at %s', get_gedcom_setting(WT_GED_ID, 'title').' - '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+				$mail2_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('Your registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 				$mail2_to     =$user_email;
 				$mail2_from   =$WEBTREES_EMAIL;
 
@@ -629,7 +630,7 @@ case 'verify_hash':
 
 	$mail1_to=$WEBTREES_EMAIL;
 	$mail1_from=getUserEmail($user_id);
-	$mail1_subject=WT_I18N::translate('New user at %s', get_gedcom_setting(WT_GED_ID, 'title').' - '.WT_SERVER_NAME.WT_SCRIPT_PATH);
+	$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
 	$mail1_method=get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
 
 	// Change to the new user's language
