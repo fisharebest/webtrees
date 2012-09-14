@@ -60,9 +60,7 @@ echo
 if ($view!='simple') { // Use "simple" headers for popup windows
 	echo 
 	'<div id="header">',
-		'<span class="title" dir="auto">',
-			htmlspecialchars($GEDCOM_TITLE),
-		'</span>',
+		'<span class="title" dir="auto">', WT_TREE_TITLE, '</span>',
 		'<div class="hsearch">';
 	echo 
 			'<form action="search.php" method="post">',

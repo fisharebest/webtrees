@@ -79,9 +79,8 @@ if ($view!='simple') {
 		echo $menu->getMenuAsList();
 	}
 	global $WT_IMAGES;
-	echo '</ul><div class="title" dir="auto">',
-		htmlspecialchars($GEDCOM_TITLE),
-		'</div>',
+	echo '</ul>',
+		'<div class="title" dir="auto">', WT_TREE_TITLE, '</div>',
 		'<div class="header_search">',
 		'<form action="search.php" method="post">',
 		'<input type="hidden" name="action" value="general">',

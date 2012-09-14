@@ -222,8 +222,7 @@ class WT_Controller_Base {
 		// Initialise variables for the theme's header.php
 		$LINK_CANONICAL  =$this->canonical_url;
 		$META_ROBOTS     =$this->meta_robots;
-		$GEDCOM_TITLE    =get_gedcom_setting(WT_GED_ID, 'title');
-		$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION', $GEDCOM_TITLE);
+		$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION', WT_TREE_TITLE);
 		$META_GENERATOR  =WT_WEBTREES.'-'.WT_VERSION_TEXT.' - '.WT_WEBTREES_URL;
 		$META_TITLE      =get_gedcom_setting(WT_GED_ID, 'META_TITLE');
 		if ($META_TITLE) {

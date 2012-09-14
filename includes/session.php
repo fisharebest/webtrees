@@ -394,17 +394,18 @@ foreach (WT_Tree::getAll() as $tree) {
 	}
 }
 if ($ged_id) {
-	define('WT_GEDCOM',   $tree->tree_name);
-	define('WT_GED_ID',   $tree->tree_id);
-	define('WT_GEDURL',   $tree->tree_name_url);
-	define('WT_IMPORTED', $tree->imported);
+	define('WT_GEDCOM',     $tree->tree_name);
+	define('WT_GED_ID',     $tree->tree_id);
+	define('WT_GEDURL',     $tree->tree_name_url);
+	define('WT_TREE_TITLE', $tree->tree_title_html);
+	define('WT_IMPORTED',   $tree->imported);
 } else {
-	define('WT_GEDCOM',   '');
-	define('WT_GED_ID',   '');
-	define('WT_GEDURL',   '');
-	define('WT_IMPORTED', false);
+	define('WT_GEDCOM',     '');
+	define('WT_GED_ID',     '');
+	define('WT_GEDURL',     '');
+	define('WT_TREE_TITLE', '');
+	define('WT_IMPORTED',   false);
 }
-
 
 load_gedcom_settings(WT_GED_ID);
 

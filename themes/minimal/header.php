@@ -59,7 +59,7 @@ echo
 if ($view!='simple') {
 	echo '<div id="header">';
 	echo '<ul class="makeMenu">';
-	echo '<li class="title" dir="auto">',htmlspecialchars($GEDCOM_TITLE),'</li>';
+	echo '<li class="title" dir="auto">', WT_TREE_TITLE ,'</li>';
 	echo '<div>';
 	if (WT_USER_ID) {
 		echo '<li><a href="edituser.php">', getUserFullName(WT_USER_ID), '</a></li> <li>', logout_link(), '</li>';

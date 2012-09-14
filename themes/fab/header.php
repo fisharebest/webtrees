@@ -109,10 +109,7 @@ if ($view!='simple') { // Use "simple" headers for popup windows
 		$menu_items[]=$menu;
 	}
 
-	echo
-		'<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;" dir="auto">',
-			htmlspecialchars($GEDCOM_TITLE),
-		'</div>';
+	echo '<div style="float:', WT_CSS_ALIGN, '; clear:', WT_CSS_ALIGN, '; font-size:175%;" dir="auto">', WT_TREE_TITLE, '</div>';
 
 	// Print the menu bar
 	echo '<div id="topMenu"><ul class="makeMenu">';
