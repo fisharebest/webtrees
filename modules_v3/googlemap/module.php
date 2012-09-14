@@ -1628,7 +1628,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		switch ($action) {
 		case 'go':
 			//Identify gedcom file
-			echo '<div id="gm_check_title"><span>', htmlspecialchars(get_gedcom_setting($gedcom_id, 'title')), '</span></div>';
+			$trees=WT_Tree::getAll();
+			echo '<div id="gm_check_title"><span>', $trees[$gedcom_id]->tree_title_html, '</span></div>';
 			//Select all '2 PLAC ' tags in the file and create array
 			$place_list=array();
 			$ged_data=WT_DB::prepare("SELECT i_gedcom FROM `##individuals` WHERE i_gedcom LIKE ? AND i_file=?")

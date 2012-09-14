@@ -64,7 +64,14 @@ class WT_Tree {
 
 	// Create arguments to select_edit_control()
 	// Note - these will be escaped later
-	public static function getList() {
+	public static function getIdList() {
+		$list=array();
+		foreach (self::getAll() as $tree) {
+			$list[$tree->tree_id]=$tree->tree_title;
+		}
+		return $list;
+	}
+	public static function getNameList() {
 		$list=array();
 		foreach (self::getAll() as $tree) {
 			$list[$tree->tree_name]=$tree->tree_title;

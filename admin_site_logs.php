@@ -233,7 +233,7 @@ echo
 					WT_I18N::translate('User'), '<br>', select_edit_control('user', $users_array, '', $user, ''),
 				'</td>',
 				'<td>',
-					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getList(), '', $gedc, WT_USER_IS_ADMIN ? '' : 'disabled'),
+					WT_I18N::translate('Family tree'), '<br>',  select_edit_control('gedc', WT_Tree::getNameList(), '', $gedc, WT_USER_IS_ADMIN ? '' : 'disabled'),
 				'</td>',
 			'</tr><tr>',
 				'<td colspan="6">',

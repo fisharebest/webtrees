@@ -173,7 +173,7 @@ function applyWatermark($im) {
 	// in the future these options will be set in the gedcom configuration area
 
 	// text to watermark with
-	$word1_text   = get_gedcom_setting(WT_GED_ID, 'title');
+	$word1_text   = WT_TREE_TITLE;
 	// maximum font size for "word1" ; will be automaticaly reduced to fit in the image
 	$word1_maxsize = 100;
 	// rgb color codes for text

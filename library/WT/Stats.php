@@ -201,7 +201,10 @@ class WT_Stats {
 
 	function gedcomID() {return $this->_ged_id;}
 
-	function gedcomTitle() {return htmlspecialchars(get_gedcom_setting($this->_ged_id, 'title'));}
+	function gedcomTitle() {
+		$trees=WT_Tree::getAll();
+		return $trees[$this->_ged_id]->tree_title_html;
+	}
 
 	function _gedcomHead() {
 		$title = "";

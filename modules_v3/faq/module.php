@@ -183,7 +183,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			echo '</td><td>';
 			echo '<input type="text" name="block_order" size="3" tabindex="3" value="', $block_order, '"></td>';
 			echo '</td><td>';
-			echo select_edit_control('gedcom_id', WT_Tree::getList(), '', $gedcom_id, 'tabindex="4"');
+			echo select_edit_control('gedcom_id', WT_Tree::getIdList(), '', $gedcom_id, 'tabindex="4"');
 			echo '</td></tr>';
 			echo '</table>';
 
@@ -352,7 +352,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 			WT_I18N::translate('Family tree'), ' ',
 			'<input type="hidden" name="mod", value="', $this->getName(), '">',
 			'<input type="hidden" name="mod_action", value="admin_config">',
-			select_edit_control('ged', WT_Tree::getList(), null, WT_GEDCOM),
+			select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM),
 			'<input type="submit" value="', WT_I18N::translate('show'), '">',
 			'</form></p>';
 
@@ -363,6 +363,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 		if (empty($faqs)) {
 			echo '<tr><td class="error center" colspan="5">', WT_I18N::translate('The FAQ list is empty.'), '</td></tr></table>';
 		} else {
+			$trees=WT_Tree::getAll();
 			foreach ($faqs as $faq) {
 				// NOTE: Print the position of the current item
 				echo '<tr class="faq_edit_pos"><td>';
@@ -370,7 +371,7 @@ class faq_WT_Module extends WT_Module implements WT_Module_Menu, WT_Module_Block
 				if ($faq->gedcom_id==null) {
 					echo WT_I18N::translate('All');
 				} else {
-					echo WT_I18N::translate('%s', get_gedcom_setting($faq->gedcom_id, 'title'));
+					echo $trees[$faq->gedcom_id]->tree_title_html;
 				}
 				echo '</td>';
 				// NOTE: Print the edit options of the current item

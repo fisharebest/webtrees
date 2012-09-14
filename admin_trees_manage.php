@@ -241,7 +241,7 @@ if (WT_USER_IS_ADMIN) {
 		echo
 			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
 			'<input type="hidden" name="action" value="setdefault">',
-			select_edit_control('default_ged', WT_Tree::getList(), '', get_site_setting('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
+			select_edit_control('default_ged', WT_Tree::getNameList(), '', get_site_setting('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
 			'</form></td>';
 	}
 	echo

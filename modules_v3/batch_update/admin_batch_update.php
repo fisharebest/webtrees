@@ -61,7 +61,7 @@ class batch_update {
 			'<input type="hidden" name="data"   value="">'. // will be set by javascript for next update
 			'<table id="batch_update"><tr>'.
 			'<th>'.WT_I18N::translate('Family tree').'</th>'.
-			'<td>'.select_edit_control('ged', WT_Tree::getList(), '', WT_GEDCOM, 'onchange="reset_reload();"').
+			'<td>'.select_edit_control('ged', WT_Tree::getNameList(), '', WT_GEDCOM, 'onchange="reset_reload();"').
 			'</td></tr><tr><th>'.WT_I18N::translate('Batch update').'</th><td><select name="plugin" onchange="reset_reload();">';
 		if (!$this->plugin) {
 			$html.='<option value="" selected="selected"></option>';
