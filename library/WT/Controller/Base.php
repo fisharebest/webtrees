@@ -244,7 +244,7 @@ class WT_Controller_Base {
 			var browserType    = "'.$BROWSERTYPE.'";
 			var WT_SCRIPT_NAME = "'.WT_SCRIPT_NAME.'";
 			var WT_LOCALE      = "'.WT_LOCALE.'";
-			var accesstime     = '.WT_DB::prepare("SELECT UNIX_TIMESTAMP(NOW())")->fetchOne().';
+			var accesstime     = '.WT_TIMESTAMP.';
 		', self::JS_PRIORITY_HIGH);
 	
 		// Temporary fix for access to main menu hover elements on android touch devices
