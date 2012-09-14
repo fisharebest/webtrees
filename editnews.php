@@ -50,7 +50,7 @@ case 'compose':
 		$news = array();
 		$news['user_id'] = $user_id;
 		$news['gedcom_id'] = $gedcom_id;
-		$news['date'] = time();
+		$news['date'] = WT_TIMESTAMP;
 		$news['title'] = '';
 		$news['text'] = '';
 	}
@@ -85,9 +85,9 @@ case 'save':
 	}
 	$message['user_id'] = $user_id;
 	$message['gedcom_id'] = $gedcom_id;
-	$message['date']=time();
+	$message['date'] = WT_TIMESTAMP;
 	$message['title'] = $title;
-	$message['text'] = $text;
+	$message['text']  = $text;
 	addNews($message);
 	$controller->addInlineJavascript('window.opener.location.reload();window.close();');
 	break;

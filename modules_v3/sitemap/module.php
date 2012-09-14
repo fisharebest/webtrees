@@ -71,7 +71,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	private function generate_index() {
 		// Check the cache
 		$timestamp=get_module_setting($this->getName(), 'sitemap.timestamp');
-		if ($timestamp > time()-self::CACHE_LIFE) {
+		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
 			$data=get_module_setting($this->getName(), 'sitemap.xml');
 		} else {
 			$data='';
@@ -115,7 +115,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$data='<'.'?xml version="1.0" encoding="UTF-8" ?'.'>'.PHP_EOL.'<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'.PHP_EOL.$data.'</sitemapindex>'.PHP_EOL;
 			// Cache this data
 			set_module_setting($this->getName(), 'sitemap.xml', $data);
-			set_module_setting($this->getName(), 'sitemap.timestamp', time());
+			set_module_setting($this->getName(), 'sitemap.timestamp', WT_TIMESTAMP);
 		}
 		header('Content-Type: application/xml');
 		header('Content-Length: '.strlen($data));
@@ -126,7 +126,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 	private function generate_file($ged_id, $rec_type, $volume) {
 		// Check the cache
 		$timestamp=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp');
-		if ($timestamp > time()-self::CACHE_LIFE) {
+		if ($timestamp > WT_TIMESTAMP - self::CACHE_LIFE) {
 			$data=get_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml');
 		} else {
 			$data='';
@@ -222,7 +222,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 			$data='<'.'?xml version="1.0" encoding="UTF-8" ?'.'>'.PHP_EOL.'<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">'.PHP_EOL.$data.'</urlset>'.PHP_EOL;
 			// Cache this data
 			set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.xml', $data);
-			set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp', time());
+			set_module_setting($this->getName(), 'sitemap-'.$ged_id.'-'.$rec_type.'-'.$volume.'.timestamp', WT_TIMESTAMP);
 		}
 		header('Content-Type: application/xml');
 		header('Content-Length: '.strlen($data));

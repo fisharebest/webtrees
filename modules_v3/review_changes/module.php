@@ -64,8 +64,8 @@ class review_changes_WT_Module extends WT_Module implements WT_Module_Block {
 		if ($changes) {
 			//-- if the time difference from the last email is greater than 24 hours then send out another email
 			$LAST_CHANGE_EMAIL=WT_Site::preference('LAST_CHANGE_EMAIL');
-			if (time()-$LAST_CHANGE_EMAIL > (60*60*24*$days)) {
-				$LAST_CHANGE_EMAIL = time();
+			if (WT_TIMESTAMP - $LAST_CHANGE_EMAIL > (60*60*24*$days)) {
+				$LAST_CHANGE_EMAIL = WT_TIMESTAMP;
 				WT_Site::preference('LAST_CHANGE_EMAIL', $LAST_CHANGE_EMAIL);
 				if ($sendmail=="yes") {
 					// Which users have pending changes?

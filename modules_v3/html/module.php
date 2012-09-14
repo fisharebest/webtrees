@@ -106,7 +106,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		$content = $html;
 
 		if (get_block_setting($block_id, 'show_timestamp', false)) {
-			$content.='<br>'.format_timestamp(get_block_setting($block_id, 'timestamp', time()));
+			$content.='<br>'.format_timestamp(get_block_setting($block_id, 'timestamp', WT_TIMESTAMP));
 		}
 
 		if ($template) {
@@ -315,7 +315,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		echo WT_I18N::translate('Show the date and time of update');
 		echo '</td><td class="optionbox">';
 		echo edit_field_yes_no('show_timestamp', $show_timestamp);
-		echo '<input type="hidden" name="timestamp" value="'.time().'">';
+		echo '<input type="hidden" name="timestamp" value="', WT_TIMESTAMP, '">';
 		echo '</td></tr>';
 
 		$languages=get_block_setting($block_id, 'languages');

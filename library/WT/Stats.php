@@ -3843,17 +3843,17 @@ class WT_Stats {
 // Date & Time                                                               //
 ///////////////////////////////////////////////////////////////////////////////
 
-	static function serverDate     () { return timestamp_to_gedcom_date(time())->Display(false);}
+	static function serverDate     () { return timestamp_to_gedcom_date(WT_TIMESTAMP)->Display(false);}
 
 	static function serverTime     () { return date('g:i a');}
 	static function serverTime24   () { return date('G:i');}
 	static function serverTimezone () { return date('T');}
 
-	static function browserDate    () { return timestamp_to_gedcom_date(client_time())->Display(false);}
+	static function browserDate    () { return timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP)->Display(false);}
 
-	static function browserTime    () { return date('g:i a', client_time());}
-	static function browserTime24  () { return date('G:i',   client_time());}
-	static function browserTimezone() { return date('T',     client_time());}
+	static function browserTime    () { return date('g:i a', WT_CLIENT_TIMESTAMP);}
+	static function browserTime24  () { return date('G:i',   WT_CLIENT_TIMESTAMP);}
+	static function browserTimezone() { return date('T',     WT_CLIENT_TIMESTAMP);}
 
 ///////////////////////////////////////////////////////////////////////////////
 // Tools                                                                     //

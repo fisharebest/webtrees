@@ -170,13 +170,13 @@ function fetch_remote_file($host, $path, $timeout=3) {
 // installation statistics which can be found at http://svn.webtrees.net/statistics.html
 function fetch_latest_version() {
 	$last_update_timestamp=WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP');
-	if ($last_update_timestamp < time()-24*60*60) {
+	if ($last_update_timestamp < WT_TIMESTAMP - 24*60*60) {
 		$row=WT_DB::prepare("SHOW VARIABLES LIKE 'version'")->fetchOneRow();
 		$params='?w='.WT_VERSION.WT_VERSION_RELEASE.'&p='.PHP_VERSION.'&m='.$row->value.'&o='.(DIRECTORY_SEPARATOR=='/'?'u':'w');
 		$latest_version_txt=fetch_remote_file('svn.webtrees.net', '/build/latest-version.txt'.$params);
 		if ($latest_version_txt) {
 			WT_Site::preference('LATEST_WT_VERSION', $latest_version_txt);
-			WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP', time());
+			WT_Site::preference('LATEST_WT_VERSION_TIMESTAMP', WT_TIMESTAMP);
 			return $latest_version_txt;
 		} else {
 			// Cannot connect to server - use cached version (if we have one)

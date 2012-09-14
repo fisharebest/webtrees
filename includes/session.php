@@ -361,7 +361,7 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 }
 
 // Who are we?
-define('WT_USER_ID', getUserId());
+define('WT_USER_ID',           getUserId());
 define('WT_USER_NAME',         getUserName());
 define('WT_USER_IS_ADMIN',     userIsAdmin   (WT_USER_ID));
 define('WT_USER_AUTO_ACCEPT',  userAutoAccept(WT_USER_ID));
@@ -418,8 +418,11 @@ if (empty($WEBTREES_EMAIL)) {
 
 // Use the server date to calculate privacy, etc.
 // Use the client date to show ages, etc.
-define('WT_SERVER_JD', 2440588+(int)(time()/86400));
-define('WT_CLIENT_JD', 2440588+(int)(client_time()/86400));
+define('WT_TIMESTAMP',        time());
+define('WT_CLIENT_TIMESTAMP', WT_TIMESTAMP - $WT_SESSION->timediff);
+
+define('WT_SERVER_JD', 2440588 + (int)(WT_TIMESTAMP       /86400));
+define('WT_CLIENT_JD', 2440588 + (int)(WT_CLIENT_TIMESTAMP/86400));
 
 // Application configuration data - things that aren't (yet?) user-editable
 require WT_ROOT.'includes/config_data.php';
@@ -479,9 +482,9 @@ if ($REQUIRE_AUTHENTICATION && !WT_USER_ID && !in_array(WT_SCRIPT_NAME, array('l
 
 if (WT_USER_ID) {
 	//-- update the login time every 5 minutes
-	if (time()-$WT_SESSION->activity_time > 300) {
-		set_user_setting(WT_USER_ID, 'sessiontime', time());
-		$WT_SESSION->activity_time = time();
+	if (WT_TIMESTAMP-$WT_SESSION->activity_time > 300) {
+		set_user_setting(WT_USER_ID, 'sessiontime', WT_TIMESTAMP);
+		$WT_SESSION->activity_time = WT_TIMESTAMP;
 	}
 }
 

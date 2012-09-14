@@ -95,7 +95,6 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 			$content .= WT_I18N::translate('No News articles have been submitted.').'<br>';
 		}
 		$c = 0;
-		$td = time();
 		foreach ($usernews as $news) {
 			if ($limit=='count') {
 				if ($c >= $flag) {
@@ -104,7 +103,7 @@ class gedcom_news_WT_Module extends WT_Module implements WT_Module_Block {
 				$c++;
 			}
 			if ($limit=='date') {
-				if ((int)(($td - $news['date']) / 86400) > $flag) {
+				if ((int)((WT_TIMESTAMP - $news['date']) / 86400) > $flag) {
 					break;
 				}
 			}

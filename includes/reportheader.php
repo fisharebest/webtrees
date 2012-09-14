@@ -190,7 +190,7 @@ function InputSHandler($attrs) {
 				if ($match[1]=="-") {
 					$plus = -1;
 				}
-				$input["default"] = date("d M Y", time()+$plus*60*60*24*$match[2]);
+				$input["default"] = date("d M Y", WT_TIMESTAMP + $plus*60*60*24*$match[2]);
 			} else {
 				$input["default"] = $attrs["default"];
 			}

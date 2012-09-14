@@ -390,7 +390,7 @@ $filetime = $controller->record->getFiletime($which);
 $filetimeHeader = gmdate("D, d M Y H:i:s", $filetime).' GMT';
 $expireOffset = 3600 * 24;  // tell browser to cache this image for 24 hours
 if (safe_GET('cb')) $expireOffset = $expireOffset * 7; // if cb parameter was sent, cache for 7 days 
-$expireHeader = gmdate("D, d M Y H:i:s", time() + $expireOffset) . " GMT";
+$expireHeader = gmdate("D, d M Y H:i:s", WT_TIMESTAMP + $expireOffset) . " GMT";
 
 $type = isImageTypeSupported($imgsize['ext']);
 $usewatermark = false;

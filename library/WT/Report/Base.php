@@ -1619,7 +1619,7 @@ function CellEHandler() {
 function NowSHandler() {
 	global $currentElement;
 
-	$g = timestamp_to_gedcom_date(client_time());
+	$g = timestamp_to_gedcom_date(WT_CLIENT_TIMESTAMP);
 	$currentElement->addText($g->Display());
 }
 

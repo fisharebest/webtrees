@@ -83,11 +83,10 @@ default:
 
 		default: // Success
 			if ($usertime) {
-				$WT_SESSION->usertime=@strtotime($usertime);
+				$WT_SESSION->timediff=WT_TIMESTAMP - strtotime($usertime);
 			} else {
-				$WT_SESSION->usertime=time();
+				$WT_SESSION->timediff=0;
 			}
-			$WT_SESSION->timediff=time()-$WT_SESSION->usertime;
 			$WT_SESSION->locale   =get_user_setting($user_id, 'language');
 			$WT_SESSION->theme_dir=get_user_setting($user_id, 'theme');
 

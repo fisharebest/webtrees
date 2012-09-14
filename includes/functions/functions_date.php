@@ -133,13 +133,3 @@ function format_timestamp($time) {
 function timestamp_to_gedcom_date($time) {
 	return new WT_Date(strtoupper(date('j M Y', $time)));
 }
-
-////////////////////////////////////////////////////////////////////////////////
-// Get the current timestamp of the client, not the server
-////////////////////////////////////////////////////////////////////////////////
-function client_time() {
-	global $WT_SESSION;
-	return time()-$WT_SESSION->timediff;
-}
-
-?>

@@ -161,7 +161,7 @@ case 'loadrows':
 		}
 		// $aData[9] is the sortable last-login timestamp
 		if ($aData[9]) {
-			$aData[10]=format_timestamp($aData[9]).'<br>'.WT_I18N::time_ago(time() - $aData[9]);
+			$aData[10]=format_timestamp($aData[9]).'<br>'.WT_I18N::time_ago(WT_TIMESTAMP - $aData[9]);
 		} else {
 			$aData[10]=WT_I18N::translate('Never');
 		}

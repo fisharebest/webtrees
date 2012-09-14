@@ -170,11 +170,11 @@ case 'send':
 		$sixmos = 60*60*24*30*6; //-- timestamp for six months
 		foreach (get_all_users() as $user_id=>$user_name) {
 			// SEE Bug [ 1827547 ] Message to inactive users sent to newcomers
-			if (get_user_setting($user_id,'sessiontime')>0 && (time() - get_user_setting($user_id, 'sessiontime') > $sixmos)) {
+			if (get_user_setting($user_id,'sessiontime')>0 && (WT_TIMESTAMP - get_user_setting($user_id, 'sessiontime') > $sixmos)) {
 				$toarray[$user_id] = $user_name;
 			}
 			//-- not verified by registration past 6 months
-			else if (!get_user_setting($user_id, 'verified_by_admin') && (time() - get_user_setting($user_id, 'reg_timestamp') > $sixmos)) {
+			else if (!get_user_setting($user_id, 'verified_by_admin') && (WT_TIMESTAMP - get_user_setting($user_id, 'reg_timestamp') > $sixmos)) {
 				$toarray[$user_id] = $user_name;
 			}
 		}
@@ -190,7 +190,7 @@ case 'send':
 		}
 		$message['subject'] = $subject;
 		$message['body'] = $body;
-		$message['created'] = time();
+		$message['created'] = WT_TIMESTAMP;
 		$message['method'] = $method;
 		$message['url'] = $url;
 		if ($i>0) $message['no_from'] = true;
