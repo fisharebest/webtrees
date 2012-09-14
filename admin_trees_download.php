@@ -55,9 +55,9 @@ $fileName = WT_GEDCOM;
 if ($action == "download" && $zip == "yes") {
 	require WT_ROOT.'library/pclzip.lib.php';
 
-	$temppath = get_site_setting('INDEX_DIRECTORY') . "tmp/";
+	$temppath = WT_Site::preference('INDEX_DIRECTORY') . "tmp/";
 	$zipname = "dl" . date("YmdHis") . $fileName . ".zip";
-	$zipfile = get_site_setting('INDEX_DIRECTORY') . $zipname;
+	$zipfile = WT_Site::preference('INDEX_DIRECTORY') . $zipname;
 	$gedname = $temppath . $fileName;
 
 	$removeTempDir = false;

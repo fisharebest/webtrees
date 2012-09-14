@@ -118,7 +118,7 @@ function move_file($src, $dest) {
 */
 function move_files($path, $protect) {
 	global $MEDIA_FIREWALL_THUMBS, $starttime, $operation_count;
-	$timelimit=get_site_setting('MAX_EXECUTION_TIME');
+	$timelimit=WT_Site::preference('MAX_EXECUTION_TIME');
 	if ($dir=@opendir($path)) {
 		while (($element=readdir($dir))!== false) {
 			$exectime = time() - $starttime;
@@ -180,7 +180,7 @@ function set_perms($path) {
 	if (strpos($path."/", $MEDIA_FIREWALL_ROOTDIR.$MEDIA_DIRECTORY)!==0 && strpos($path."/", $MEDIA_DIRECTORY)!==0) {
 		return false;
 	}
-	$timelimit=get_site_setting('MAX_EXECUTION_TIME');
+	$timelimit=WT_Site::preference('MAX_EXECUTION_TIME');
 	if ($dir=@opendir($path)) {
 		while (($element=readdir($dir))!== false) {
 			$exectime = time() - $starttime;

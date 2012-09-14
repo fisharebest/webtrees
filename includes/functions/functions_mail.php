@@ -36,15 +36,15 @@ if (!defined('WT_WEBTREES')) {
  * for deatiled info on MIME (RFC 1521) email see: http://www.freesoft.org/CIE/RFC/1521/index.htm
  */
 function webtreesMail($to, $from, $subject, $message) {
-	$SMTP_ACTIVE   =get_site_setting('SMTP_ACTIVE');
-	$SMTP_HOST     =get_site_setting('SMTP_HOST');
-	$SMTP_HELO     =get_site_setting('SMTP_HELO');
-	$SMTP_FROM_NAME=get_site_setting('SMTP_FROM_NAME');
-	$SMTP_PORT     =get_site_setting('SMTP_PORT');
-	$SMTP_AUTH     =get_site_setting('SMTP_AUTH');
-	$SMTP_AUTH_USER=get_site_setting('SMTP_AUTH_USER');
-	$SMTP_AUTH_PASS=get_site_setting('SMTP_AUTH_PASS');
-	$SMTP_SSL      =get_site_setting('SMTP_SSL');
+	$SMTP_ACTIVE   =WT_Site::preference('SMTP_ACTIVE');
+	$SMTP_HOST     =WT_Site::preference('SMTP_HOST');
+	$SMTP_HELO     =WT_Site::preference('SMTP_HELO');
+	$SMTP_FROM_NAME=WT_Site::preference('SMTP_FROM_NAME');
+	$SMTP_PORT     =WT_Site::preference('SMTP_PORT');
+	$SMTP_AUTH     =WT_Site::preference('SMTP_AUTH');
+	$SMTP_AUTH_USER=WT_Site::preference('SMTP_AUTH_USER');
+	$SMTP_AUTH_PASS=WT_Site::preference('SMTP_AUTH_PASS');
+	$SMTP_SSL      =WT_Site::preference('SMTP_SSL');
 	global $TEXT_DIRECTION;
 	$mailFormat = "plain";
 	//$mailFormat = "html";

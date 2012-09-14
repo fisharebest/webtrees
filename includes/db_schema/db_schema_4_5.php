@@ -54,4 +54,4 @@ self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('PAGE_AFTER_LO
 self::exec("UPDATE `##gedcom_setting` SET setting_value='SOUR' WHERE setting_value='ASSO,SOUR,NOTE,REPO' AND setting_name='NOTE_FACTS_ADD'");
 
 // Update the version to indicate success
-set_site_setting($schema_name, $next_version);
+WT_Site::preference($schema_name, $next_version);

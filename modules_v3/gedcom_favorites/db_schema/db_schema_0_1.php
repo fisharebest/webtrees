@@ -54,4 +54,4 @@ WT_DB::exec(
 );
 
 // Update the version to indicate success
-set_site_setting($schema_name, $next_version);
+WT_Site::preference($schema_name, $next_version);

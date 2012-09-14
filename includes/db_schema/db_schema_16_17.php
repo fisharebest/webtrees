@@ -50,5 +50,5 @@ self::exec("INSERT IGNORE INTO `##block` (gedcom_id, location, block_order, modu
 self::exec("ALTER TABLE `##module_setting` CHANGE setting_value setting_value MEDIUMTEXT COLLATE utf8_unicode_ci NOT NULL");
 
 // Update the version to indicate success
-set_site_setting($schema_name, $next_version);
+WT_Site::preference($schema_name, $next_version);
 

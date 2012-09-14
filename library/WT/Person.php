@@ -1339,8 +1339,8 @@ class WT_Person extends WT_GedcomRecord {
 		$dDate=$this->getEstimatedDeathDate();
 		if (!$bDate->isOK()) return;
 
-		if (file_exists(get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
-			require get_site_setting('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php';
+		if (file_exists(WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php')) {
+			require WT_Site::preference('INDEX_DIRECTORY').'histo.'.WT_LOCALE.'.php';
 			foreach ($histo as $indexval=>$hrec) {
 				$sdate=new WT_Date(get_gedcom_value('DATE', 2, $hrec, '', false));
 				if ($sdate->isOK() && WT_Date::Compare($this->getEstimatedBirthDate(), $sdate)<=0 && WT_Date::Compare($sdate, $this->getEstimatedDeathDate())<=0) {

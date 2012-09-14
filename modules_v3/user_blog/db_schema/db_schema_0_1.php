@@ -12,10 +12,8 @@
 // seconds, for systems with low timeout values.
 //
 // webtrees: Web based Family History software
-// Copyright (C) 2011 webtrees development team.
+// Copyright (C) 2012 webtrees development team.
 //
-// Derived from PhpGedView
-// Copyright (C) 2009 Greg Roach
 //
 // This program is free software; you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -51,4 +49,4 @@ WT_DB::exec(
 );
 
 // Update the version to indicate success
-set_site_setting($schema_name, $next_version);
+WT_Site::preference($schema_name, $next_version);

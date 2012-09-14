@@ -1374,36 +1374,6 @@ function is_media_used_in_other_gedcom($file_name, $ged_id) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-// Functions to access the WT_SITE_SETTING table
-// We can't cache/reuse prepared statements here, as we need to call these
-// functions after performing DDL statements, and these invalidate any
-// existing prepared statement handles in some databases.
-////////////////////////////////////////////////////////////////////////////////
-function get_site_setting($setting_name, $default_value=null) {
-	static $statement=null;
-	if ($statement===null) {
-		$statement=WT_DB::prepare(
-			"SELECT SQL_CACHE setting_value FROM `##site_setting` WHERE setting_name=?"
-		);
-	}
-	$setting_value=$statement->execute(array($setting_name))->fetchOne();
-	return $setting_value===null ? $default_value : $setting_value;
-}
-
-function set_site_setting($setting_name, $setting_value) {
-	if (get_site_setting($setting_name)!=$setting_value) {
-		AddToLog('Site setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
-	}
-	if ($setting_value===null) {
-		WT_DB::prepare("DELETE FROM `##site_setting` WHERE setting_name=?")
-			->execute(array($setting_name));
-	} else {
-		$rowcount=WT_DB::prepare("REPLACE INTO `##site_setting` (setting_name, setting_value) VALUES (?, LEFT(?, 255))")
-			->execute(array($setting_name, $setting_value));
-	}
-}
-
-////////////////////////////////////////////////////////////////////////////////
 // Functions to access the WT_GEDCOM table
 ////////////////////////////////////////////////////////////////////////////////
 

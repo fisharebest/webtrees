@@ -205,7 +205,7 @@ echo '<div id="search-page">
 		// If the search is a general or soundex search then possibly display checkboxes for the gedcoms
 		if ($controller->action == "general" || $controller->action == "soundex") {
 			// If more than one GEDCOM, switching is allowed AND DB mode is set, let the user select
-			if ((count(WT_Tree::getAll()) > 1) && get_site_setting('ALLOW_CHANGE_GEDCOM')) {
+			if ((count(WT_Tree::getAll()) > 1) && WT_Site::preference('ALLOW_CHANGE_GEDCOM')) {
 				// More Than 3 Gedcom Filess enable elect all & select none buttons
 				if (count(WT_Tree::getAll())>3) {
 					echo '<div class="label">&nbsp;</div>

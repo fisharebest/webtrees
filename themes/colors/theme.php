@@ -90,7 +90,7 @@ if (isset($_GET['themecolor']) && array_key_exists($_GET['themecolor'], $COLOR_T
 	if (WT_USER_ID) {
 		set_user_setting(WT_USER_ID, 'themecolor', $subColor);
 		if (WT_USER_IS_ADMIN) {
-			set_site_setting('DEFAULT_COLOR_PALETTE', $subColor);
+			WT_Site::preference('DEFAULT_COLOR_PALETTE', $subColor);
 		}
 	}
 	unset($_GET['themecolor']);
@@ -108,7 +108,7 @@ if (!$subColor) {
 }
 // We haven't selected one this session?  Use the site default
 if (!$subColor) {
-	$subColor=get_site_setting('DEFAULT_COLOR_PALETTE');
+	$subColor=WT_Site::preference('DEFAULT_COLOR_PALETTE');
 }
 // Make sure our selected palette actually exists
 if (!array_key_exists($subColor, $COLOR_THEME_LIST)) {

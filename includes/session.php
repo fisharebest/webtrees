@@ -245,11 +245,11 @@ try {
 
 // The config.ini.php file must always be in a fixed location.
 // Other user files can be stored elsewhere...
-define('WT_DATA_DIR', realpath(get_site_setting('INDEX_DIRECTORY', 'data')).DIRECTORY_SEPARATOR);
+define('WT_DATA_DIR', realpath(WT_Site::preference('INDEX_DIRECTORY', 'data')).DIRECTORY_SEPARATOR);
 
 // If we have a preferred URL (e.g. https instead of http, or www.example.com instead of
 // www.isp.com/~example), then redirect to it.
-$SERVER_URL=get_site_setting('SERVER_URL');
+$SERVER_URL=WT_Site::preference('SERVER_URL');
 if ($SERVER_URL && $SERVER_URL != WT_SERVER_NAME.WT_SCRIPT_PATH) {
 	header('Location: '.$SERVER_URL.WT_SCRIPT_NAME.($QUERY_STRING ? '?'.$QUERY_STRING : ''), true, 301);
 	exit;
@@ -260,11 +260,11 @@ ignore_user_abort(false);
 
 // Request more resources - if we can/want to
 if (!ini_get('safe_mode')) {
-	$memory_limit=get_site_setting('MEMORY_LIMIT');
+	$memory_limit=WT_Site::preference('MEMORY_LIMIT');
 	if ($memory_limit) {
 		ini_set('memory_limit', $memory_limit);
 	}
-	$max_execution_time=get_site_setting('MAX_EXECUTION_TIME');
+	$max_execution_time=WT_Site::preference('MAX_EXECUTION_TIME');
 	if ($max_execution_time && strpos(ini_get('disable_functions'), 'set_time_limit')===false) {
 		set_time_limit($max_execution_time);
 	}
@@ -332,7 +332,7 @@ define('WT_SESSION_NAME', 'WT_SESSION');
 $cfg=array(
 	'name'            => WT_SESSION_NAME,
 	'cookie_lifetime' => 0,
-	'gc_maxlifetime'  => get_site_setting('SESSION_TIME'),
+	'gc_maxlifetime'  => WT_Site::preference('SESSION_TIME'),
 	'gc_probability'  => 1,
 	'gc_divisor'      => 100,
 	'cookie_path'     => WT_SCRIPT_PATH,
@@ -382,7 +382,7 @@ if (isset($_REQUEST['ged'])) {
 	$GEDCOM=$WT_SESSION->GEDCOM;
 } else {
 	// Try the site default
-	$GEDCOM=get_site_setting('DEFAULT_GEDCOM');
+	$GEDCOM=WT_Site::preference('DEFAULT_GEDCOM');
 }
 
 // Choose the selected tree (if it exists), or any valid tree otherwise
@@ -446,7 +446,11 @@ if (WT_USER_ID && (safe_GET_bool('logout') || !WT_USER_NAME)) {
 }
 
 // The login URL must be an absolute URL, and can be user-defined
-define('WT_LOGIN_URL', get_site_setting('LOGIN_URL', WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php'));
+if (WT_Site::preference('LOGIN_URL')) {
+	define('WT_LOGIN_URL', WT_Site::preference('LOGIN_URL'));
+} else {
+	define('WT_LOGIN_URL', WT_SERVER_NAME.WT_SCRIPT_PATH.'login.php');
+}
 
 // If we are in the middle of importing (or have not imported) the current tree,
 // then stay on the manage-trees page.
@@ -479,7 +483,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 	// Administration scripts begin with 'admin' and use a special administration theme
 	define('WT_THEME_DIR', WT_THEMES_DIR.'_administration/');
 } else {
-	if (get_site_setting('ALLOW_USER_THEMES')) {
+	if (WT_Site::preference('ALLOW_USER_THEMES')) {
 		// Requested change of theme?
 		$THEME_DIR=safe_GET('theme', get_theme_names());
 		unset($_GET['theme']);
@@ -498,7 +502,7 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		// 4) first one found
 		$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
 		if (!in_array($THEME_DIR, get_theme_names())) {
-			$THEME_DIR=get_site_setting('THEME_DIR');
+			$THEME_DIR=WT_Site::preference('THEME_DIR');
 		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
 			$THEME_DIR='webtrees';

@@ -30,7 +30,7 @@ $controller
 	->setPageTitle(WT_I18N::translate('Export'))
 	->requireManagerLogin();
 
-$filename = get_site_setting('INDEX_DIRECTORY').WT_GEDCOM;
+$filename = WT_Site::preference('INDEX_DIRECTORY').WT_GEDCOM;
 if (strtolower(substr($filename, -4))!=='.ged') {
 	$filename.='.ged';
 }

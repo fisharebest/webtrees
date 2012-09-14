@@ -82,7 +82,7 @@ case 'delete':
 // Process POST actions
 switch (safe_POST('action')) {
 case 'setdefault':
-	set_site_setting('DEFAULT_GEDCOM', safe_POST('default_ged'));
+	WT_Site::preference('DEFAULT_GEDCOM', safe_POST('default_ged'));
 	break;
 case 'new_ged':
 	$ged_name=basename(safe_POST('ged_name'));
@@ -241,7 +241,7 @@ if (WT_USER_IS_ADMIN) {
 		echo
 			'<td><form name="defaultform" method="post" action="', WT_SCRIPT_NAME, '">',
 			'<input type="hidden" name="action" value="setdefault">',
-			select_edit_control('default_ged', WT_Tree::getNameList(), '', get_site_setting('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
+			select_edit_control('default_ged', WT_Tree::getNameList(), '', WT_Site::preference('DEFAULT_GEDCOM'), 'onchange="document.defaultform.submit();"'),
 			'</form></td>';
 	}
 	echo

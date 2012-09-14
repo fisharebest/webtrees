@@ -120,7 +120,7 @@ case 'site_setting':
 		// The password will be displayed as "click to edit" on screen.
 		// Accept the update, but pretend to fail.  This will leave the "click to edit" on screen
 		if ($value) {
-			set_site_setting($id1, $value);
+			WT_Site::preference($id1, $value);
 		}
 		fail();
 	default:
@@ -129,7 +129,7 @@ case 'site_setting':
 	}
 
 	// Authorised and valid - make update
-	set_site_setting($id1, $value);
+	WT_Site::preference($id1, $value);
 	ok();
 
 case 'site_access_rule':

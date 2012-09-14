@@ -147,7 +147,7 @@ class WT_Tree {
 		set_gedcom_setting($tree_id, 'MEDIA_DIRECTORY',              'media/');
 		set_gedcom_setting($tree_id, 'MEDIA_DIRECTORY_LEVELS',       '0');
 		set_gedcom_setting($tree_id, 'MEDIA_EXTERNAL',               true);
-		set_gedcom_setting($tree_id, 'MEDIA_FIREWALL_ROOTDIR',       get_site_setting('INDEX_DIRECTORY'));
+		set_gedcom_setting($tree_id, 'MEDIA_FIREWALL_ROOTDIR',       WT_Site::preference('INDEX_DIRECTORY'));
 		set_gedcom_setting($tree_id, 'MEDIA_FIREWALL_THUMBS',        false);
 		set_gedcom_setting($tree_id, 'MEDIA_ID_PREFIX',              'M');
 		set_gedcom_setting($tree_id, 'MEDIA_UPLOAD',                 WT_PRIV_USER); 
@@ -249,8 +249,8 @@ class WT_Tree {
 
 	public static function delete($tree_id) {
 		// If this is the default tree, then unset 
-		if (get_site_setting('DEFAULT_GEDCOM')==self::getNameFromId($tree_id)) {
-			set_site_setting('DEFAULT_GEDCOM', '');
+		if (WT_Site::preference('DEFAULT_GEDCOM')==self::getNameFromId($tree_id)) {
+			WT_Site::preference('DEFAULT_GEDCOM', '');
 		}
 		// Don't delete the logs.
 		WT_DB::prepare("UPDATE `##log` SET gedcom_id=NULL   WHERE gedcom_id =?")->execute(array($tree_id));

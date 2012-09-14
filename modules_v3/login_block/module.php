@@ -87,7 +87,7 @@ class login_block_WT_Module extends WT_Module implements WT_Module_Block {
 				<div>
 					<a href="#" id="passwd_click">'. WT_I18N::translate('Request new password').'</a>
 				</div>';
-			if (get_site_setting('USE_REGISTRATION_MODULE')) {
+			if (WT_Site::preference('USE_REGISTRATION_MODULE')) {
 				$content.= '<div><a href="'.WT_LOGIN_URL.'?action=register">'. WT_I18N::translate('Request new user account').'</a></div>';
 			}
 		$content.= '</form>'; // close "login-form"

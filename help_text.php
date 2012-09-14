@@ -706,7 +706,7 @@ case 'MEDIA_EXTERNAL':
 
 case 'MEDIA_FIREWALL_ROOTDIR':
 	$title=WT_I18N::translate('Media firewall root directory');
-	$text=WT_I18N::translate('Directory in which the protected Media directory can be created.  When this field is empty, the <b>%s</b> directory will be used.', get_site_setting('INDEX_DIRECTORY'));
+	$text=WT_I18N::translate('Directory in which the protected Media directory can be created.  When this field is empty, the <b>%s</b> directory will be used.', WT_Site::preference('INDEX_DIRECTORY'));
 	break;
 
 case 'MEDIA_FIREWALL_THUMBS':

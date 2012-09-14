@@ -59,7 +59,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 		case '':
 			break;
 		case '__default__':
-			$GEDCOM=get_site_setting('DEFAULT_GEDCOM');
+			$GEDCOM=WT_Site::preference('DEFAULT_GEDCOM');
 			if (!$GEDCOM) {
 				foreach (WT_Trees::getAll() as $tree) {
 					$GEDCOM=$tree->tree_name;

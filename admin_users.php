@@ -421,7 +421,7 @@ case 'createform':
 				<td><?php echo WT_I18N::translate('Language'); ?></td>
 				<td colspan="3"><?php echo edit_field_language('user_language', $user_language); ?></td>
 			</tr>
-			<?php if (get_site_setting('ALLOW_USER_THEMES')) { ?>
+			<?php if (WT_Site::preference('ALLOW_USER_THEMES')) { ?>
 				<tr>
 					<td><?php echo WT_I18N::translate('Theme'), help_link('THEME'); ?></td>
 					<td colspan="3">

@@ -33,7 +33,7 @@ if (!defined('WT_WEBTREES')) {
 class WT_MenuBar {
 	public static function getGedcomMenu() {
 		$menu = new WT_Menu(WT_I18N::translate('Home page'), 'index.php?ctype=gedcom&amp;ged='.WT_GEDURL, 'menu-tree');
-		$ALLOW_CHANGE_GEDCOM=get_site_setting('ALLOW_CHANGE_GEDCOM') && count(WT_Tree::getAll())>1;
+		$ALLOW_CHANGE_GEDCOM=WT_Site::preference('ALLOW_CHANGE_GEDCOM') && count(WT_Tree::getAll())>1;
 		foreach (WT_Tree::getAll() as $tree) {
 			if ($tree->tree_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new WT_Menu(
@@ -445,7 +445,7 @@ class WT_MenuBar {
 	public static function getThemeMenu() {
 		global $SEARCH_SPIDER;
 
-		if (!$SEARCH_SPIDER && get_site_setting('ALLOW_USER_THEMES') && get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')) {
+		if (!$SEARCH_SPIDER && WT_Site::preference('ALLOW_USER_THEMES') && get_gedcom_setting(WT_GED_ID, 'ALLOW_THEME_DROPDOWN')) {
 			$menu=new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme');
 			foreach (get_theme_names() as $themename=>$themedir) {
 				$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir), '&amp;'), 'menu-theme-'.$themedir);

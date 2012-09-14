@@ -42,5 +42,5 @@ self::exec("DELETE FROM `##gedcom_setting` WHERE setting_name IN ('SEARCH_FACTS_
 self::exec("ALTER TABLE `##user` CHANGE password password VARCHAR(128) COLLATE utf8_unicode_ci NOT NULL");
 
 // Update the version to indicate success
-set_site_setting($schema_name, $next_version);
+WT_Site::preference($schema_name, $next_version);
 
