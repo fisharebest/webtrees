@@ -429,9 +429,9 @@ if (!defined('WT_WEBTREES')) {
 								$submenu = new WT_Menu($slabel);
 								$menu->addSubMenu($submenu);
 
-								if ($child->getXref()==$pid) {
+	//							if ($child->getXref()==$pid) {
 									//Only print Head of Family in Immediate Family Block
-								} else {
+	//							} else {
 									?>
 									<tr>
 										<td align="left" class="linkcell optionbox">
@@ -528,7 +528,7 @@ if (!defined('WT_WEBTREES')) {
 										</td>
 									</tr>
 									<?php
-								}
+	//							}
 							}
 							$elderdate = $child->getBirthDate(false);
 						}
