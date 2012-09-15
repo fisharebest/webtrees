@@ -163,20 +163,12 @@ class relatives_WT_Module extends WT_Module implements WT_Module_Tab {
 			$date = $family->getMarriageDate();
 			$place = $family->getMarriagePlace();
 			$famid = $family->getXref();
-			if (!$date && ($famrec = find_updated_record($famid))!==null) {
-				$marrrec = get_sub_record(1, "1 MARR", $famrec);
-				if ($marrrec!=$family->getMarriageRecord()) {
-					$date = new WT_Date(get_gedcom_value("MARR:DATE", 1, $marrrec));
-					$place = get_gedcom_value("MARR:PLAC", 1, $marrrec);
-					$styleadd = "blue";
-				}
-			}
 			?>
 			<tr>
-				<td class="facts_label"><br>
+				<td class="facts_label">
+					&nbsp;
 				</td>
 				<td class="facts_value<?php echo $styleadd; ?>">
-					<?php //echo "<span class=\"details_label\">".WT_Gedcom_Tag::getLabel('NCHI').": </span>".$family->getNumberOfChildren()."<br>"; ?>
 					<?php $marr_type = strtoupper($family->getMarriageType());
 					if ($marr_type=='CIVIL' || $marr_type=='PARTNERS' || $marr_type=='RELIGIOUS' || $marr_type=='UNKNOWN') {
 						$marr_fact = WT_Gedcom_Tag::getLabel("MARR_".$marr_type);
