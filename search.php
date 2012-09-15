@@ -228,7 +228,7 @@ echo '<div id="search-page">
 						if (isset ($_REQUEST["$str"])) {
 							echo 'checked="checked" ';
 						}
-						echo 'value="yes" id="checkbox_', $tree->tree_id , '" name="', $str, '"><label for="checkbox_', $tree->tree_id , '">', $tree->tree_title, '</label></p>', "\n";
+						echo 'value="yes" id="checkbox_', $tree->tree_id , '" name="', $str, '"><label for="checkbox_', $tree->tree_id , '" dir="auto">', $tree->tree_title, '</label></p>', "\n";
 					}
 				echo '</div>';
 			}
