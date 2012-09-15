@@ -497,29 +497,9 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
 	}
 	if ($ct > 0) {
 		$value = trim($match[1]);
-		$ct = preg_match("/@(.*)@/", $value, $match);
-		if (($ct > 0 ) && ($t!="DATE")) {
+		if ($t=='NOTE' && preg_match('/^@(.+)@$/', $value, $match)) {
 			$oldsub = $subrec;
-			switch ($t) {
-			case 'HUSB':
-			case 'WIFE':
-			case 'CHIL':
-				$subrec = find_person_record($match[1], $ged_id);
-				break;
-			case 'FAMC':
-			case 'FAMS':
-				$subrec = find_family_record($match[1], $ged_id);
-				break;
-			case 'SOUR':
-				$subrec = find_source_record($match[1], $ged_id);
-				break;
-			case 'REPO':
-				$subrec = find_other_record($match[1], $ged_id);
-				break;
-			default:
-				$subrec = find_gedcom_record($match[1], $ged_id);
-				break;
-			}
+			$subrec = find_other_record($match[1], $ged_id);
 			if ($subrec) {
 				$value=$match[1];
 				$ct = preg_match("/0 @$match[1]@ $t (.+)/", $subrec, $match);
@@ -528,9 +508,10 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
 					$level = 0;
 				} else
 					$subrec = $oldsub;
-			} else
+			} else {
 				//-- set the value to the id without the @
 				$value = $match[1];
+			}
 		}
 		if ($level!=0 || $t!="NOTE") {
 			$value .= get_cont($level+1, $subrec);
