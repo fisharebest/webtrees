@@ -80,9 +80,9 @@ function select_edit_control($name, $values, $empty, $selected, $extra='') {
 	}
 	foreach ($values as $key=>$value) {
 		if ($key==$selected) {
-			$html.='<option value="'.htmlspecialchars($key).'" selected="selected">'.htmlspecialchars($value).'</option>';
+			$html.='<option value="'.htmlspecialchars($key).'" selected="selected" dir="auto">'.htmlspecialchars($value).'</option>';
 		} else {
-			$html.='<option value="'.htmlspecialchars($key).'">'.htmlspecialchars($value).'</option>';
+			$html.='<option value="'.htmlspecialchars($key).'" dir="auto">'.htmlspecialchars($value).'</option>';
 		}
 	}
 	return '<select id="'.$name.'" name="'.$name.'" '.$extra.'>'.$html.'</select>';

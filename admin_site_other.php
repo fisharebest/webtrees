@@ -25,49 +25,46 @@
 
 define('WT_SCRIPT_NAME', 'admin_site_other.php');
 require './includes/session.php';
+require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Base();
 $controller->setPageTitle(WT_I18N::translate('Add unlinked records'));
 $controller->pageHeader();
 
-// The addnewXXX() functions work only for the default tree.
-// Choose one...
-$html='<p><form method="post" action="'.WT_SCRIPT_NAME.'" name="tree"><select name="ged" onChange="tree.submit();">';
-$n=0;
-foreach (WT_Tree::getAll() as $tree) {
-	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
-		$html.='<option value="'.$tree->tree_name_url.'"';
-		if ($tree->tree_id==WT_GED_ID) {
-			$html.=' selected="selected"';
-		}
-		$html.='>'.$tree->tree_title_html.'</option>';
-		++$n;
-	}
-}
-$html.='</select></form></p>';
-
-// Don't show gedcom list if there is only one...
-if ($n==1) {
-	$html='';
-}
-
-
-echo
-	'<div id="other">',
-	'<p>', WT_I18N::translate('Add unlinked records'), '</p>',
-	$html,
-	'<table id="other">',
-	'<tr><td>',
-	'<a href="#" onclick="addnewchild(\'\'); return false;">', WT_I18N::translate('Add an unlinked person'), '</a>',
-	help_link('edit_add_unlinked_person'),
-	'</td></tr>',
-	'<tr><td>',
-	'<a href="#" onclick="addnewnote(\'\'); return false;">', WT_I18N::translate('Add an unlinked note'), '</a>',
-	help_link('edit_add_unlinked_note'),
-	'</td></tr>',
-	'<tr><td>',
-	'<a href="#" onclick="addnewsource(\'\'); return false;">', WT_I18N::translate('Add an unlinked source'), '</a>',
-	help_link('edit_add_unlinked_source'),
-	'</td></tr>',
-	'</table>',
-	'</div>';
+?>
+<div id="other">
+	<p>
+		<?php echo WT_I18N::translate('Add unlinked records'); ?>
+	</p>
+	<p>
+		<form method="post" action="#" name="tree">
+			<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM, ' onchange="tree.submit();"'); ?>
+		</form>
+	</p>
+	<table id="other">
+		<tr>
+			<td>
+				<a href="#" onclick="addnewchild(''); return false;">
+					<?php echo WT_I18N::translate('Add an unlinked person'); ?>
+				</a>
+				<?php echo help_link('edit_add_unlinked_person'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="#" onclick="addnewnote(''); return false;">
+					<?php echo WT_I18N::translate('Add an unlinked note'); ?>
+				</a>
+				<?php echo help_link('edit_add_unlinked_note'); ?>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<a href="#" onclick="addnewsource(''); return false;">
+					<?php echo WT_I18N::translate('Add an unlinked source'); ?>
+				</a>
+				<?php echo help_link('edit_add_unlinked_source'); ?>
+			</td>
+		</tr>
+	</table>
+</div>
