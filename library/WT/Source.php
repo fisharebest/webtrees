@@ -63,7 +63,7 @@ class WT_Source extends WT_GedcomRecord {
 	}
 
 	public function getAuth() {
-		return get_gedcom_value('AUTH', 1, $this->getGedcomRecord(), '', false);
+		return get_gedcom_value('AUTH', 1, $this->getGedcomRecord());
 	}
 
 	// Generate a URL to this record, suitable for use in HTML

@@ -2568,10 +2568,10 @@ function ifSHandler($attrs) {
 			if ($level==0) {
 				$level++;
 			}
-			$value = get_gedcom_value($id, $level, $gedrec, "", false);
+			$value = get_gedcom_value($id, $level, $gedrec);
 			if (empty($value)) {
 				$level++;
-				$value = get_gedcom_value($id, $level, $gedrec, "", false);
+				$value = get_gedcom_value($id, $level, $gedrec);
 			}
 			$value = "\"".addslashes($value)."\"";
 		}
@@ -3225,7 +3225,7 @@ function ListSHandler($attrs) {
 					}
 					$tags = explode(":", $tag);
 					$t = end($tags);
-					$v = get_gedcom_value($tag, 1, $grec, "", false);
+					$v = get_gedcom_value($tag, 1, $grec);
 					//-- check for EMAIL and _EMAIL (silly double gedcom standard :P)
 					if ($t=="EMAIL" && empty($v)) {
 						$tag = str_replace("EMAIL", "_EMAIL", $tag);

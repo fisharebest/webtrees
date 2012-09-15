@@ -139,7 +139,7 @@ function print_fams($person, $famid=null) {
 	if ($famid && $person->getChildFamilyPedigree($famid)) {
 		$sex = $person->getSex();
 		$famcrec = get_sub_record(1, '1 FAMC @'.$famid.'@', $person->getGedcomRecord());
-		$pedi = get_gedcom_value('PEDI', 2, $famcrec, '', false);
+		$pedi = get_gedcom_value('PEDI', 2, $famcrec);
 		if ($pedi) {
 			$label = WT_Gedcom_Code_Pedi::getValue($pedi, $person);
 		}

@@ -445,11 +445,10 @@ function get_sub_record($level, $tag, $gedrec, $num=1) {
  * @param int $level The gedcom line level of the first tag to find, setting level to 0 will cause it to use 1+ the level of the incoming record
  * @param string $gedrec The gedcom record to get the value from
  * @param int $truncate Should the value be truncated to a certain number of characters
- * @param boolean $convert Should data like dates be converted using the configuration settings
  * @return string
  */
-function get_gedcom_value($tag, $level, $gedrec, $truncate='', $convert=true) {
-	global $SHOW_PEDIGREE_PLACES, $GEDCOM;
+function get_gedcom_value($tag, $level, $gedrec, $truncate='') {
+	global $GEDCOM;
 	$ged_id=get_id_from_gedcom($GEDCOM);
 
 	if (empty($gedrec)) {
@@ -538,79 +537,6 @@ function get_gedcom_value($tag, $level, $gedrec, $truncate='', $convert=true) {
 		}
 		$value = preg_replace("'\n'", "", $value);
 		$value = preg_replace("'<br>'", "\n", $value);
-		$value = trim($value);
-		//-- if it is a date value then convert the date
-		if ($convert && $t=="DATE") {
-			$g = new WT_Date($value);
-			$value = $g->Display();
-			if (!empty($truncate)) {
-				if (utf8_strlen($value)>$truncate) {
-					$value = preg_replace("/\(.+\)/", "", $value);
-					//if (utf8_strlen($value)>$truncate) {
-						//$value = preg_replace_callback("/([a-zśź]+)/ui", create_function('$matches', 'return utf8_substr($matches[1], 0, 3);'), $value);
-					//}
-				}
-			}
-		} else
-			//-- if it is a place value then apply the pedigree place limit
-			if ($convert && $t=="PLAC") {
-				if ($SHOW_PEDIGREE_PLACES>0) {
-					$plevels = explode(',', $value);
-					$value = "";
-					for ($plevel=0; $plevel<$SHOW_PEDIGREE_PLACES; $plevel++) {
-						if (!empty($plevels[$plevel])) {
-							if ($plevel>0) {
-								$value .= ", ";
-							}
-							$value .= trim($plevels[$plevel]);
-						}
-					}
-				}
-				if (!empty($truncate)) {
-					if (strlen($value)>$truncate) {
-						$plevels = explode(',', $value);
-						$value = "";
-						for ($plevel=0; $plevel<count($plevels); $plevel++) {
-							if (!empty($plevels[$plevel])) {
-								if (strlen($plevels[$plevel])+strlen($value)+3 < $truncate) {
-									if ($plevel>0) {
-										$value .= ", ";
-									}
-									$value .= trim($plevels[$plevel]);
-								} else
-									break;
-							}
-						}
-					}
-				}
-			} else
-				if ($convert && $t=="SEX") {
-					if ($value=="M") {
-						$value = utf8_substr(WT_I18N::translate('Male'), 0, 1);
-					} elseif ($value=="F") {
-						$value = utf8_substr(WT_I18N::translate('Female'), 0, 1);
-					} else {
-						$value = utf8_substr(WT_I18N::translate_c('unknown gender', 'Unknown'), 0, 1);
-					}
-				} else {
-					if (!empty($truncate)) {
-						if (strlen($value)>$truncate) {
-							$plevels = explode(' ', $value);
-							$value = "";
-							for ($plevel=0; $plevel<count($plevels); $plevel++) {
-								if (!empty($plevels[$plevel])) {
-									if (strlen($plevels[$plevel])+strlen($value)+3 < $truncate) {
-										if ($plevel>0) {
-											$value .= " ";
-										}
-										$value .= trim($plevels[$plevel]);
-									} else
-										break;
-								}
-							}
-						}
-					}
-				}
 		return $value;
 	}
 	return "";

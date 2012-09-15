@@ -679,7 +679,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 				}
 				if ($include_pedi==true) {
 					$famcrec = get_sub_record(1, "1 FAMC @".$family->getXref()."@", $children[$i]->getGedcomRecord());
-					$pedi = get_gedcom_value("PEDI", 2, $famcrec, '', false);
+					$pedi = get_gedcom_value("PEDI", 2, $famcrec);
 					if ($pedi) {
 						$label.='<br>('.WT_Gedcom_Code_Pedi::getValue($pedi, $children[$i]).')';
 					}

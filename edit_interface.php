@@ -1424,7 +1424,7 @@ case 'linkspouseaction':
 		if ($gedrec) {
 			if ($famid=="new") {
 				$famrec = "0 @new@ FAM";
-				$SEX = get_gedcom_value("SEX", 1, $gedrec, '', false);
+				$SEX = get_gedcom_value("SEX", 1, $gedrec);
 				if ($SEX=="M") $famtag = "HUSB";
 				if ($SEX=="F") $famtag = "WIFE";
 				if ($famtag=="HUSB") {

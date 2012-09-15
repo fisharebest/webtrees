@@ -623,8 +623,8 @@ class WT_GedcomRecord {
 			return $tmp;
 		} else {
 			if (
-				preg_match('/^\d\d:\d\d:\d\d/', get_gedcom_value('DATE:TIME', 2, $chan_x->getGedcomRecord(), '', false).':00', $match_x) &&
-				preg_match('/^\d\d:\d\d:\d\d/', get_gedcom_value('DATE:TIME', 2, $chan_y->getGedcomRecord(), '', false).':00', $match_y)
+				preg_match('/^\d\d:\d\d:\d\d/', get_gedcom_value('DATE:TIME', 2, $chan_x->getGedcomRecord()).':00', $match_x) &&
+				preg_match('/^\d\d:\d\d:\d\d/', get_gedcom_value('DATE:TIME', 2, $chan_y->getGedcomRecord()).':00', $match_y)
 			) {
 				return strcmp($match_x[0], $match_y[0]);
 			} else {
@@ -937,7 +937,7 @@ class WT_GedcomRecord {
 		if ($chan) {
 			// The record does have a CHAN event
 			$d = $chan->getDate()->MinDate();
-			if (preg_match('/^(\d\d):(\d\d):(\d\d)/', get_gedcom_value('DATE:TIME', 2, $chan->getGedcomRecord(), '', false).':00', $match)) {
+			if (preg_match('/^(\d\d):(\d\d):(\d\d)/', get_gedcom_value('DATE:TIME', 2, $chan->getGedcomRecord()).':00', $match)) {
 				$t=mktime((int)$match[1], (int)$match[2], (int)$match[3], (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
 			} else {
 				$t=mktime(0, 0, 0, (int)$d->Format('%n'), (int)$d->Format('%j'), (int)$d->Format('%Y'));
