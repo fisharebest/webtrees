@@ -646,7 +646,7 @@ foreach ($placelist as $place) {
 				<input type="hidden" name="mod" value="googlemap">
 				<input type="hidden" name="mod_action" value="admin_places">
 				<input type="hidden" name="action" value="ImportGedcom">
-				<?php echo select_edit_control('ged', WT_Tree::GetList(), null, WT_GEDCOM); ?>
+				<?php echo select_edit_control('ged', WT_Tree::getNameList(), null, WT_GEDCOM); ?>
 				<input type="submit" value="<?php echo WT_I18N::translate('Import'); ?>">
 			</form>
 		</td>
