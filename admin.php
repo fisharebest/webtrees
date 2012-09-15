@@ -209,7 +209,7 @@ foreach (WT_Tree::getAll() as $tree) {
 	}
 	++$n;
 	echo
-		'<h3>', $stats->gedcomTitle(), '</h3>',
+		'<h3><span dir="auto">', $stats->gedcomTitle(), '</span></h3>',
 		'<div>',
 		'<table>',
 		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Count'), '</span></td></tr>',
@@ -252,7 +252,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 	}
 	++$n;
 	echo 
-		'<h3>', $tree->tree_title_html, '</h3>',
+		'<h3><span dir="auto">', $tree->tree_title_html, '</span></h3>',
 		'<div>',
 		'<table>',
 		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Day'), '</span></td><td><span>', WT_I18N::translate('Week'), '</span></td><td><span>', WT_I18N::translate('Month'), '</span></td></tr>',
