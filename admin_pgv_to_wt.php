@@ -551,7 +551,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 					$id=get_id_from_gedcom($gedcom);
 					if ($id) {
 						// Allow for old/invalid gedcom values in array
-						set_user_gedcom_setting($setting->user_id, $id, 'gedcomid', $value);
+						WT_Tree::get($id)->userPreference($setting->user_id, 'gedcomid', $value);
 					}
 				}
 			}
@@ -561,7 +561,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 					$id=get_id_from_gedcom($gedcom);
 					if ($id) {
 						// Allow for old/invalid gedcom values in array
-						set_user_gedcom_setting($setting->user_id, $id, 'rootid', $value);
+						WT_Tree::get($id)->userPreference($setting->user_id, 'rootid', $value);
 					}
 				}
 			}
@@ -571,7 +571,7 @@ if ($PGV_SCHEMA_VERSION>=12) {
 					$id=get_id_from_gedcom($gedcom);
 					if ($id) {
 						// Allow for old/invalid gedcom values in array
-						set_user_gedcom_setting($setting->user_id, $id, 'canedit', $value);
+						WT_Tree::get($id)->userPreference($setting->user_id, 'canedit', $value);
 					}
 				}
 			}

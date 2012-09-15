@@ -361,10 +361,9 @@ if (!$SEARCH_SPIDER && !$WT_SESSION->initiated) {
 }
 
 // Who are we?
-define('WT_USER_ID',           getUserId());
-define('WT_USER_NAME',         getUserName());
-define('WT_USER_IS_ADMIN',     userIsAdmin   (WT_USER_ID));
-define('WT_USER_AUTO_ACCEPT',  userAutoAccept(WT_USER_ID));
+define('WT_USER_ID',       getUserId());
+define('WT_USER_NAME',     getUserName());
+define('WT_USER_IS_ADMIN', userIsAdmin(WT_USER_ID));
 
 // With no parameters, init() looks to the environment to choose a language
 define('WT_LOCALE', WT_I18N::init());
@@ -386,19 +385,19 @@ if (isset($_REQUEST['ged'])) {
 }
 
 // Choose the selected tree (if it exists), or any valid tree otherwise
-$ged_id=null;
+$WT_TREE=null;
 foreach (WT_Tree::getAll() as $tree) {
-	$ged_id=$tree->tree_id;
-	if ($tree->tree_name == $GEDCOM && ($tree->imported || WT_USER_IS_ADMIN)) {
+	$WT_TREE=$tree;
+	if ($WT_TREE->tree_name == $GEDCOM && ($WT_TREE->imported || WT_USER_IS_ADMIN)) {
 		break;
 	}
 }
-if ($ged_id) {
-	define('WT_GEDCOM',     $tree->tree_name);
-	define('WT_GED_ID',     $tree->tree_id);
-	define('WT_GEDURL',     $tree->tree_name_url);
-	define('WT_TREE_TITLE', $tree->tree_title_html);
-	define('WT_IMPORTED',   $tree->imported);
+if ($WT_TREE) {
+	define('WT_GEDCOM',     $WT_TREE->tree_name);
+	define('WT_GED_ID',     $WT_TREE->tree_id);
+	define('WT_GEDURL',     $WT_TREE->tree_name_url);
+	define('WT_TREE_TITLE', $WT_TREE->tree_title_html);
+	define('WT_IMPORTED',   $WT_TREE->imported);
 } else {
 	define('WT_GEDCOM',     '');
 	define('WT_GED_ID',     '');
@@ -430,14 +429,14 @@ require WT_ROOT.'includes/config_data.php';
 //-- load the privacy functions
 require WT_ROOT.'includes/functions/functions_privacy.php';
 
-// The current user's profile - from functions in authentication.php
+// The current user's profile in this tree
 define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
-define('WT_USER_CAN_ACCEPT',   WT_USER_GEDCOM_ADMIN || userCanAccept  (WT_USER_ID, WT_GED_ID));
+define('WT_USER_CAN_ACCEPT',   $WT_TREE->canAcceptChanges(WT_USER_ID));
 define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));
 define('WT_USER_CAN_ACCESS',   WT_USER_CAN_EDIT     || userCanAccess  (WT_USER_ID, WT_GED_ID));
-define('WT_USER_GEDCOM_ID',    getUserGedcomId   (WT_USER_ID, WT_GED_ID));
-define('WT_USER_ROOT_ID',      getUserRootId     (WT_USER_ID, WT_GED_ID));
-define('WT_USER_PATH_LENGTH',  get_user_gedcom_setting(WT_USER_ID, WT_GED_ID, 'RELATIONSHIP_PATH_LENGTH'));
+define('WT_USER_GEDCOM_ID',    $WT_TREE->userPreference(WT_USER_ID, 'gedcomid'));
+define('WT_USER_ROOT_ID',      $WT_TREE->userPreference(WT_USER_ID, 'rootid') ? $WT_TREE->userPreference(WT_USER_ID, 'rootid') : WT_USER_GEDCOM_ID);
+define('WT_USER_PATH_LENGTH',  $WT_TREE->userPreference(WT_USER_ID, 'RELATIONSHIP_PATH_LENGTH'));
 
 if (WT_USER_GEDCOM_ADMIN) {
 	define('WT_USER_ACCESS_LEVEL', WT_PRIV_NONE);

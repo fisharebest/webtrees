@@ -81,7 +81,7 @@ if ($form_action=='update') {
 		$WT_SESSION->locale=$form_language; // switch to the new language right away
 		set_user_setting(WT_USER_ID, 'contactmethod', $form_contact_method);
 		set_user_setting(WT_USER_ID, 'visibleonline', $form_visible_online);
-		set_user_gedcom_setting(WT_USER_ID, WT_GED_ID, 'rootid', $form_rootid);
+		$WT_TREE->userPreference(WT_USER_ID, 'rootid', $form_rootid);
 
 		// Change username
 		if ($form_username!=WT_USER_NAME) {

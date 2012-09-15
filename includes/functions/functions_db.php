@@ -320,16 +320,13 @@ function gedcom_record_type($xref, $ged_id) {
 
 // Find out if there are any pending changes that a given user may accept
 function exists_pending_change($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
-	if (userCanAccept($user_id, $ged_id)) {
-		return
-			WT_DB::prepare(
-				"SELECT 1".
-				" FROM `##change`".
-				" WHERE status='pending' AND gedcom_id=?"
-			)->execute(array($ged_id))->fetchOne();
-	} else {
-		return false;
-	}
+	return
+		WT_Tree::get($ged_id)->canAcceptChanges($user_id) &&
+		WT_DB::prepare(
+			"SELECT 1".
+			" FROM `##change`".
+			" WHERE status='pending' AND gedcom_id=?"
+		)->execute(array($ged_id))->fetchOne();
 }
 
 // get a list of all the sources
@@ -1407,28 +1404,12 @@ function get_id_from_gedcom($ged_name) {
 // Functions to access the WT_GEDCOM_SETTING table
 ////////////////////////////////////////////////////////////////////////////////
 
-function get_gedcom_setting($gedcom_id, $setting_name, $default_value=null) {
-	static $statement;
-	if ($statement===null) {
-		$statement=WT_DB::prepare(
-			"SELECT SQL_CACHE setting_value FROM `##gedcom_setting` WHERE gedcom_id=? AND setting_name=?"
-		);
-	}
-	$setting_value=$statement->execute(array($gedcom_id, $setting_name))->fetchOne();
-	return $setting_value===null ? $default_value : $setting_value;
+function get_gedcom_setting($gedcom_id, $setting_name) {
+	return WT_Tree::get($gedcom_id)->preference($setting_name);
 }
 
-function set_gedcom_setting($ged_id, $setting_name, $setting_value) {
-	if (get_gedcom_setting($ged_id, $setting_name)!=$setting_value) {
-		AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
-	}
-	if ($setting_value===null) {
-		WT_DB::prepare("DELETE FROM `##gedcom_setting` WHERE gedcom_id=? AND setting_name=?")
-			->execute(array($ged_id, $setting_name));
-	} else {
-		WT_DB::prepare("REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))")
-			->execute(array($ged_id, $setting_name, $setting_value));
-	}
+function set_gedcom_setting($gedcom_id, $setting_name, $setting_value) {
+	WT_Tree::get($gedcom_id)->preference($setting_name, $setting_value);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -1624,27 +1605,6 @@ function admin_user_exists() {
 ////////////////////////////////////////////////////////////////////////////////
 // Functions to access the WT_USER_GEDCOM_SETTING table
 ////////////////////////////////////////////////////////////////////////////////
-
-function get_user_gedcom_setting($user_id, $gedcom_id, $setting_name, $default_value=null) {
-	$statement=null;
-	if ($statement===null) {
-		$statement=WT_DB::prepare(
-			"SELECT SQL_CACHE setting_value FROM `##user_gedcom_setting` WHERE user_id=? AND gedcom_id=? AND setting_name=?"
-		);
-	}
-	$setting_value=$statement->execute(array($user_id, $gedcom_id, $setting_name))->fetchOne();
-	return $setting_value===null ? $default_value : $setting_value;
-}
-
-function set_user_gedcom_setting($user_id, $ged_id, $setting_name, $setting_value) {
-	if ($setting_value===null) {
-		WT_DB::prepare("DELETE FROM `##user_gedcom_setting` WHERE user_id=? AND gedcom_id=? AND setting_name=?")
-			->execute(array($user_id, $ged_id, $setting_name));
-	} else {
-		WT_DB::prepare("REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, LEFT(?, 255))")
-			->execute(array($user_id, $ged_id, $setting_name, $setting_value));
-	}
-}
 
 function get_user_from_gedcom_xref($ged_id, $xref) {
 	return

@@ -380,7 +380,7 @@ function replace_gedrec($xref, $ged_id, $gedrec, $chan=true) {
 			));
 		}
 
-		if (WT_USER_AUTO_ACCEPT) {
+		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
 			accept_all_changes($xref, $ged_id);
 		}
 		return true;
@@ -414,7 +414,7 @@ function append_gedrec($gedrec, $ged_id) {
 
 		AddToLog("Appending new $type record $xref", 'edit');
 
-		if (WT_USER_AUTO_ACCEPT) {
+		if (get_user_setting(WT_USER_ID, 'auto_accept')) {
 			accept_all_changes($xref, WT_GED_ID);
 		}
 		return $xref;
@@ -437,7 +437,7 @@ function delete_gedrec($xref, $ged_id) {
 
 	AddToLog("Deleting gedcom record $xref", 'edit');
 
-	if (WT_USER_AUTO_ACCEPT) {
+	if (get_user_setting(WT_USER_ID, 'auto_accept')) {
 		accept_all_changes($xref, WT_GED_ID);
 	}
 }

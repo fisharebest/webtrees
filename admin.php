@@ -139,7 +139,7 @@ echo
 				$adminusers++;
 			}
 			foreach (WT_Tree::getAll() as $tree) {
-				if (get_user_gedcom_setting($user_id, $tree->tree_id, 'canedit')=='admin') {
+				if ($tree->userPreference($user_id, 'canedit')=='admin') {
 					if (isset($gedadmin[$tree->tree_id])) {
 						$gedadmin[$tree->tree_id]["number"]++;
 					} else {

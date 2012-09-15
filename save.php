@@ -224,7 +224,7 @@ case 'user_gedcom_setting':
 	}
 
 	// Authorised and valid - make update
-	set_user_gedcom_setting($id1, $id2, $id3, $value);
+	WT_Tree::get($id2)->userPreference($id1, $id3, $value);
 	ok();
 
 case 'user_setting':

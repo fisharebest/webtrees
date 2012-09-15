@@ -245,14 +245,14 @@ case 'load1row':
 			//Pedigree root person
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
-			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-rootid', get_user_gedcom_setting($user_id, $tree->tree_id, 'rootid')),
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-rootid', $tree->userPreference($user_id, 'rootid')),
 			'</td><td>',
 			// TODO: autocomplete/find/etc. for this field
-			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-gedcomid', get_user_gedcom_setting($user_id, $tree->tree_id, 'gedcomid')),
+			edit_field_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-gedcomid', $tree->userPreference($user_id, 'gedcomid')),
 			'</td><td>',
-			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-canedit', $ALL_EDIT_OPTIONS, null, get_user_gedcom_setting($user_id, $tree->tree_id, 'canedit', 'none')),
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-canedit', $ALL_EDIT_OPTIONS, null, $tree->userPreference($user_id, 'canedit')),
 			'</td><td>',
-			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, get_user_gedcom_setting($user_id, $tree->tree_id, 'RELATIONSHIP_PATH_LENGTH', '0')),
+			select_edit_control_inline('user_gedcom_setting-'.$user_id.'-'.$tree->tree_id.'-RELATIONSHIP_PATH_LENGTH', array(0=>WT_I18N::translate('no'), 1=>1, 2=>2, 3=>3, 4=>4, 5=>5, 6=>6, 7=>7, 8=>8, 9=>9, 10=>10), null, $tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH')),
 			'</td></tr>';
 	}
 	echo '</table>';
@@ -291,14 +291,14 @@ case 'createuser':
 		set_user_setting($user_id, 'verified',             $verified);
 		set_user_setting($user_id, 'verified_by_admin',    $verified_by_admin);
 		foreach (WT_Tree::allTrees() as $tree) {
-			set_user_gedcom_setting($user_id, $tree->tree_id, 'gedcomid', safe_POST_xref('gedcomid'.$tree->tree_id));
-			set_user_gedcom_setting($user_id, $tree->tree_id, 'rootid',   safe_POST_xref('rootid'.$tree->tree_id));
-			set_user_gedcom_setting($user_id, $tree->tree_id, 'canedit',  safe_POST('canedit'.$tree->tree_id, array_keys($ALL_EDIT_OPTIONS)));
+			$tree->userPreference($user_id, 'gedcomid', safe_POST_xref('gedcomid'.$tree->tree_id));
+			$tree->userPreference($user_id, 'rootid',   safe_POST_xref('rootid'.$tree->tree_id));
+			$tree->userPreference($user_id, 'canedit',  safe_POST('canedit'.$tree->tree_id, array_keys($ALL_EDIT_OPTIONS)));
 			if (safe_POST_xref('gedcomid'.$tree->tree_id)) {
-				set_user_gedcom_setting($user_id, $tree->tree_id, 'RELATIONSHIP_PATH_LENGTH', safe_POST_integer('RELATIONSHIP_PATH_LENGTH'.$tree->tree_id, 0, 10, 0));
+				$tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH', safe_POST_integer('RELATIONSHIP_PATH_LENGTH'.$tree->tree_id, 0, 10, 0));
 			} else {
 				// Do not allow a path length to be set if the individual ID is not
-				set_user_gedcom_setting($user_id, $tree->tree_id, 'RELATIONSHIP_PATH_LENGTH', null);
+				$tree->userPreference($user_id, 'RELATIONSHIP_PATH_LENGTH', null);
 			}
 		}
 		AddToLog("User ->{$username}<- created", 'auth');
@@ -577,37 +577,6 @@ case 'cleanup2':
 			delete_user($user_id);
 			AddToLog("deleted user ->{$user_name}<-", 'auth');
 			echo WT_I18N::translate('Deleted user: '); echo $user_name, "<br>";
-		} else {
-			$tempArray = unserialize(get_user_setting($user_id, 'canedit'));
-			if (is_array($tempArray)) {
-				foreach ($tempArray as $gedid=>$data) {
-					$var = "delg_".str_replace(array(".", "-", " "), "_", $gedid);
-					if (safe_POST($var)=='1' && get_user_gedcom_setting($user_id, $gedid, 'canedit')) {
-						set_user_gedcom_setting($user_id, $gedid, 'canedit', null);
-						echo $gedid, ":&nbsp;&nbsp;", WT_I18N::translate('Unset GEDCOM rights for '), $user_name, "<br>";
-					}
-				}
-			}
-			$tempArray = unserialize(get_user_setting($user_id, 'rootid'));
-			if (is_array($tempArray)) {
-				foreach ($tempArray as $gedid=>$data) {
-					$var = "delg_".str_replace(array(".", "-", " "), "_", $gedid);
-					if (safe_POST($var)=='1' && get_user_gedcom_setting($user_id, $gedid, 'rootid')) {
-						set_user_gedcom_setting($user_id, $gedid, 'rootid', null);
-						echo $gedid, ":&nbsp;&nbsp;", WT_I18N::translate('Unset root ID for '), $user_name, "<br>";
-					}
-				}
-			}
-			$tempArray = unserialize(get_user_setting($user_id, 'gedcomid'));
-			if (is_array($tempArray)) {
-				foreach ($tempArray as $gedid=>$data) {
-					$var = "delg_".str_replace(array(".", "-", " "), "_", $gedid);
-					if (safe_POST($var)=='1' && get_user_gedcom_setting($user_id, $gedid, 'gedcomid')) {
-						set_user_gedcom_setting($user_id, $gedid, 'gedcomid', null);
-						echo $gedid, ":&nbsp;&nbsp;", WT_I18N::translate('Unset GEDCOM ID for '), $user_name, "<br>";
-					}
-				}
-			}
 		}
 	}
 	break;

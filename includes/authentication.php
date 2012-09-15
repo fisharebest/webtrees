@@ -127,7 +127,7 @@ function userIsAdmin($user_id=WT_USER_ID) {
  */
 function userGedcomAdmin($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 	if ($user_id) {
-		return get_user_gedcom_setting($user_id, $ged_id, 'canedit')=='admin' || userIsAdmin($user_id);
+		return WT_Tree::get($ged_id)->userPreference($user_id, 'canedit') || userIsAdmin($user_id);
 	} else {
 		return false;
 	}
@@ -141,7 +141,7 @@ function userCanAccess($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 		if (userIsAdmin($user_id)) {
 			return true;
 		} else {
-			$tmp=get_user_gedcom_setting($user_id, $ged_id, 'canedit');
+			$tmp=WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
 			return $tmp=='admin' || $tmp=='accept' || $tmp=='edit' || $tmp=='access';
 		}
 	} else {
@@ -159,40 +159,12 @@ function userCanEdit($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 		if (userIsAdmin($user_id)) {
 			return true;
 		} else {
-			$tmp=get_user_gedcom_setting($user_id, $ged_id, 'canedit');
+			$tmp=WT_Tree::get($ged_id)->userPreference($user_id, 'canedit');
 			return $tmp=='admin' || $tmp=='accept' || $tmp=='edit';
 		}
 	} else {
 		return false;
 	}
-}
-
-/**
- * check if the given user can accept changes for the given gedcom
- *
- * takes a username and checks if the user has write privileges to
- * change the gedcom data and accept changes
- * @param string $username the username of the user check privileges
- * @return boolean true if user can accept false if user cannot accept
- */
-function userCanAccept($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
-	global $ALLOW_EDIT_GEDCOM;
-
-	// An admin can always accept changes, even if editing is disabled
-	if (userGedcomAdmin($user_id, $ged_id)) {
-		return true;
-	}
-	if ($ALLOW_EDIT_GEDCOM) {
-		$tmp=get_user_gedcom_setting($user_id, $ged_id, 'canedit');
-		return $tmp=='admin' || $tmp=='accept';
-	} else {
-		return false;
-	}
-}
-
-// Should user's changed automatically be accepted
-function userAutoAccept($user_id=WT_USER_ID) {
-	return get_user_setting($user_id, 'auto_accept');
 }
 
 // Get the full name for a user
@@ -213,24 +185,6 @@ function getUserEmail($user_id) {
 // Set the email for a user
 function setUserEmail($user_id, $email) {
 	return WT_DB::prepare("UPDATE `##user` SET email=? WHERE user_id=?")->execute(array($email, $user_id));
-}
-
-// Get the root person for this gedcom
-function getUserRootId($user_id, $ged_id) {
-	if ($user_id) {
-		return get_user_gedcom_setting(WT_USER_ID, WT_GED_ID, 'rootid');
-	} else {
-		return getUserGedcomId($user_id, $ged_id);
-	}
-}
-
-// Get the user's ID in the given gedcom
-function getUserGedcomId($user_id, $ged_id) {
-	if ($user_id) {
-		return get_user_gedcom_setting(WT_USER_ID, WT_GED_ID, 'gedcomid');
-	} else {
-		return null;
-	}
 }
 
 // add a message into the log-file

@@ -26,13 +26,110 @@ if (!defined('WT_WEBTREES')) {
 }
 
 class WT_Tree {
-	// We can query the list of trees many times per page, so keep a local copy.
-	private static $trees=null;
+	// Tree attributes
+	public $tree_id         =null; // The "gedcom ID" number
+	public $tree_name       =null; // The "gedcom name" text
+	public $tree_name_url   =null;
+	public $tree_name_html  =null;
+	public $tree_title      =null; // The "gedcom title" text
+	public $tree_title_html =null;
+	public $imported        =null;
+
+	// Tree settings
+	private $preference     =null;    // wt_gedcom_setting table
+	private $user_preference=array(); // wt_user_gedcom_setting table
+
+	// Create a tree object.  This is a private constructor - it can only
+	// be called from WT_Tree::getAll() to ensure proper initialisation.
+	private function __construct($tree_id, $tree_name, $tree_title, $imported) {
+		if (strpos($tree_title, '%')===false) {
+			// Allow users to translate tree titles.
+			$tree_title=WT_I18N::Translate($tree_title);
+		}
+		$this->tree_id        =$tree_id;
+		$this->tree_name      =$tree_name;
+		$this->tree_name_url  =rawurlencode($tree_name);
+		$this->tree_name_html =htmlspecialchars($tree_name);
+		$this->tree_title     =$tree_title;
+		$this->tree_title_html=htmlspecialchars($tree_title);
+		$this->imported       =$imported;
+	}
+
+	// Get and Set the tree's configuration settings
+	public function preference($setting_name, $setting_value=null) {
+		// There are lots of settings, and we need to fetch lots of them on every page
+		// so it is quicker to fetch them all in one go.
+		if ($this->preference===null) {
+			$this->preference=WT_DB::prepare(
+				"SELECT SQL_CACHE setting_name, setting_value FROM `##gedcom_setting` WHERE gedcom_id=?"
+			)->execute(array($this->tree_id))->fetchAssoc();
+		}
+
+		// If $setting_value is null, then GET the setting
+		if ($setting_value===null) {
+			// If parameter two is not specified, GET the setting
+			if (!array_key_exists($setting_name, $this->preference)) {
+				$this->preference[$setting_name]=null;
+			}
+			return $this->preference[$setting_name];
+		} else {
+			// If parameter two is specified, then SET the setting
+			if ($this->preference($setting_name)!=$setting_value) {
+				// Audit log of changes
+				AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
+			}
+			WT_DB::prepare(
+				"REPLACE INTO `##gedcom_setting` (gedcom_id, setting_name, setting_value) VALUES (?, ?, LEFT(?, 255))"
+			)->execute(array($this->tree_id, $setting_name, $setting_value));
+			return $this;
+		}
+	}
 	
+	// Get and Set the tree's configuration settings
+	public function userPreference($user_id, $setting_name, $setting_value=null) {
+		// There are lots of settings, and we need to fetch lots of them on every page
+		// so it is quicker to fetch them all in one go.
+		if (!array_key_exists($user_id, $this->user_preference)) {
+			$this->user_preference[$user_id]=WT_DB::prepare(
+				"SELECT SQL_CACHE setting_name, setting_value FROM `##user_gedcom_setting` WHERE user_id=? AND gedcom_id=?"
+			)->execute(array($user_id, $this->tree_id))->fetchAssoc();
+		}
+
+		// If $setting_value is null, then GET the setting
+		if ($setting_value===null) {
+			// If parameter two is not specified, GET the setting
+			if (!array_key_exists($setting_name, $this->user_preference[$user_id])) {
+				$this->user_preference[$user_id][$setting_name]=null;
+			}
+			return $this->user_preference[$user_id][$setting_name];
+		} else {
+			// If parameter two is specified, then SET the setting.
+			if ($this->preference($setting_name)!=$setting_value) {
+				// Audit log of changes
+				AddToLog('Gedcom setting "'.$setting_name.'" set to "'.$setting_value.'"', 'config');
+			}
+			WT_DB::prepare(
+				"REPLACE INTO `##user_gedcom_setting` (user_id, gedcom_id, setting_name, setting_value) VALUES (?, ?, ?, LEFT(?, 255))"
+			)->execute(array($user_id, $this->tree_id, $setting_name, $setting_value));
+			return $this;
+		}
+	}
+	
+	// Can a user accept changes for this tree?
+	public function canAcceptChanges($user_id) {
+		// An admin/manager can always accept changes, even if editing is disabled
+		return
+			userIsAdmin($user_id) ||
+			$this->userPreference($user_id, 'canedit')=='admin' ||
+			$this->preference('ALLOW_EDIT_GEDCOM') && $this->userPreference($user_id, 'canedit')=='accept';
+	}
+
 	// Fetch all the trees that we have permission to access.
 	public static function getAll() {
-		if (self::$trees===null) {
-			self::$trees=array();
+		static $trees=null;
+
+		if ($trees===null) {
+			$trees=array();
 			$rows=WT_DB::prepare(
 				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported".
 				" FROM `##gedcom` g".
@@ -52,17 +149,17 @@ class WT_Tree {
 				" ORDER BY g.sort_order, 3"
 			)->execute(array(WT_USER_ID, WT_USER_ID))->fetchAll();
 			foreach ($rows as $row) {
-				if (strpos($row->tree_title, '%')===false) {
-					// Allow users to translate tree titles.
-					$row->tree_title=WT_I18N::Translate($row->tree_title);
-				}
-				$row->tree_title_html=htmlspecialchars($row->tree_title);
-				$row->tree_name_url=rawurlencode($row->tree_name);
-				$row->tree_name_html=htmlspecialchars($row->tree_name);
-				self::$trees[$row->tree_id]=$row;
+				$trees[$row->tree_id]=new WT_Tree($row->tree_id, $row->tree_name, $row->tree_title, $row->imported);
 			}
 		}
-		return self::$trees;
+		return $trees;
+	}
+
+	// Get the tree with a specific ID.  TODO - is this function needed long-term, or just while
+	// we integrate this class into the rest of the code?
+	public static function get($tree_id) {
+		$trees=self::getAll();
+		return $trees[$tree_id];
 	}
 
 	// Create arguments to select_edit_control()
@@ -74,6 +171,9 @@ class WT_Tree {
 		}
 		return $list;
 	}
+
+	// Create arguments to select_edit_control()
+	// Note - these will be escaped later
 	public static function getNameList() {
 		$list=array();
 		foreach (self::getAll() as $tree) {
@@ -92,8 +192,7 @@ class WT_Tree {
 	}
 
 	public static function getNameFromId($tree_id) {
-		$trees=self::getAll();
-		return $trees[$tree_id]->tree_name;
+		return self::get($tree_id)->tree_name;
 	}
 
 	// Create a new tree
