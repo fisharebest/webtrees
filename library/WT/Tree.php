@@ -52,7 +52,7 @@ class WT_Tree {
 				" ORDER BY g.sort_order, 3"
 			)->execute(array(WT_USER_ID, WT_USER_ID))->fetchAll();
 			foreach ($rows as $row) {
-				$row->tree_title=WT_I18N::Translate('%s', $row->tree_title); // Allow users to translate tree titles.
+				$row->tree_title=WT_I18N::Translate($row->tree_title); // Allow users to translate tree titles.
 				$row->tree_title_html=htmlspecialchars($row->tree_title);
 				$row->tree_name_url=rawurlencode($row->tree_name);
 				$row->tree_name_html=htmlspecialchars($row->tree_name);
