@@ -1004,7 +1004,8 @@ class WT_Stats {
 				$factrec = trim(get_sub_record(1, "1 {$fact}", $row->ged, 1));
 				if (!empty($factrec) && preg_match("/2 PLAC (.+)/", $factrec, $match)) {
 					if ($country) {
-						$place = end(explode(WT_Place::GEDCOM_SEPARATOR, $match[1]));
+						$tmp=explode(WT_Place::GEDCOM_SEPARATOR, $match[1]);
+						$place = end($tmp);
 					}
 					else {
 						$place = $match[1];
