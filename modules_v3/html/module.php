@@ -68,9 +68,7 @@ class html_WT_Module extends WT_Module implements WT_Module_Block {
 			}
 			break;
 		default:
-			if (get_gedcom_setting(get_gedcom_from_id($gedcom), 'imported')) {
-				$GEDCOM = $gedcom;
-			}
+			$GEDCOM = $gedcom;
 			break;
 		}
 
