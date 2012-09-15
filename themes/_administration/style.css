@@ -29,7 +29,7 @@ body {font-family:"Trebuchet MS",Tahoma,Verdana,Arial,sans-serif; font-size:12px
 input.ui-button {padding:1px 3px;}
 input, textarea, select {color:black; font:inherit; padding:0 3px; /*height:22px;*/}
 button, input[type="submit"], input[type="reset"], input[type="button"], input[type="file"] {background:url(jquery/images/ui-bg_fine-grain_10_f8f7f6_60x60.png) 50% 50% #F8F7F6; border:1px solid #CBC7BD; color:#654B24; font-weight:700; border-radius:3px; margin:0.3em;}
-button:hover, input:hover[type="submit"], input:hover[type="reset"], input:hover[type="button"], input:hover[type="file"] {background:url(jquery/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24; border:1px solid #654B24; color:#FFFFFF; font-weight:700; border-radius:3px; margin:0.3em;}
+button:hover, input:hover[type="submit"], input:hover[type="reset"], input:hover[type="button"], input:hover[type="file"] {background:url(jquery/images/ui-bg_fine-grain_65_654b24_60x60.png) 50% 50% #654B24; border:1px solid #654B24; color:#FFFFFF; font-weight:700; border-radius:3px;}
 fieldset {margin:8px 8px 4px 8px;}
 legend {font-style:italic; font-weight:bold; padding:0 5px 5px; vertical-align:top;}
 img {border:none; vertical-align:middle;}
