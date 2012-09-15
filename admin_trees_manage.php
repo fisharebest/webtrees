@@ -26,7 +26,7 @@ require WT_ROOT.'includes/functions/functions_edit.php';
 
 $controller=new WT_Controller_Base();
 $controller
-	->requireManagerLogin()
+	->requireAdminLogin()
 	->setPageTitle(WT_I18N::translate('Family trees'));
 
 // Don't allow the user to cancel the request.  We do not want to be left
@@ -76,6 +76,7 @@ function import_gedcom_file($gedcom_id, $path, $filename) {
 switch (safe_GET('action')) {
 case 'delete':
 	WT_Tree::delete(WT_GED_ID);
+	header('Location: '.WT_SERVER_NAME.WT_SCRIPT_PATH.WT_SCRIPT_NAME);
 	break;
 }
 

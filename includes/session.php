@@ -393,20 +393,42 @@ foreach (WT_Tree::getAll() as $tree) {
 	}
 }
 if ($WT_TREE) {
-	define('WT_GEDCOM',     $WT_TREE->tree_name);
-	define('WT_GED_ID',     $WT_TREE->tree_id);
-	define('WT_GEDURL',     $WT_TREE->tree_name_url);
-	define('WT_TREE_TITLE', $WT_TREE->tree_title_html);
-	define('WT_IMPORTED',   $WT_TREE->imported);
+	define('WT_GEDCOM',            $WT_TREE->tree_name);
+	define('WT_GED_ID',            $WT_TREE->tree_id);
+	define('WT_GEDURL',            $WT_TREE->tree_name_url);
+	define('WT_TREE_TITLE',        $WT_TREE->tree_title_html);
+	define('WT_IMPORTED',          $WT_TREE->imported);
+	define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
+	define('WT_USER_CAN_ACCEPT',   $WT_TREE->canAcceptChanges(WT_USER_ID));
+	define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));
+	define('WT_USER_CAN_ACCESS',   WT_USER_CAN_EDIT     || userCanAccess  (WT_USER_ID, WT_GED_ID));
+	define('WT_USER_GEDCOM_ID',    $WT_TREE->userPreference(WT_USER_ID, 'gedcomid'));
+	define('WT_USER_ROOT_ID',      $WT_TREE->userPreference(WT_USER_ID, 'rootid') ? $WT_TREE->userPreference(WT_USER_ID, 'rootid') : WT_USER_GEDCOM_ID);
+	define('WT_USER_PATH_LENGTH',  $WT_TREE->userPreference(WT_USER_ID, 'RELATIONSHIP_PATH_LENGTH'));
+	if (WT_USER_GEDCOM_ADMIN) {
+		define('WT_USER_ACCESS_LEVEL', WT_PRIV_NONE);
+	} elseif (WT_USER_CAN_ACCESS) {
+		define('WT_USER_ACCESS_LEVEL', WT_PRIV_USER);
+	} else {
+		define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
+	}
+	load_gedcom_settings(WT_GED_ID);
 } else {
 	define('WT_GEDCOM',     '');
-	define('WT_GED_ID',     '');
+	define('WT_GED_ID',     null);
 	define('WT_GEDURL',     '');
 	define('WT_TREE_TITLE', '');
 	define('WT_IMPORTED',   false);
+	define('WT_USER_GEDCOM_ADMIN', false);
+	define('WT_USER_CAN_ACCEPT',   false);
+	define('WT_USER_CAN_EDIT',     false);
+	define('WT_USER_CAN_ACCESS',   false);
+	define('WT_USER_GEDCOM_ID',    '');
+	define('WT_USER_ROOT_ID',      '');
+	define('WT_USER_PATH_LENGTH',  0);
+	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 }
 
-load_gedcom_settings(WT_GED_ID);
 
 // Set our gedcom selection as a default for the next page
 $WT_SESSION->GEDCOM=WT_GEDCOM;
@@ -428,23 +450,6 @@ require WT_ROOT.'includes/config_data.php';
 
 //-- load the privacy functions
 require WT_ROOT.'includes/functions/functions_privacy.php';
-
-// The current user's profile in this tree
-define('WT_USER_GEDCOM_ADMIN', WT_USER_IS_ADMIN     || userGedcomAdmin(WT_USER_ID, WT_GED_ID));
-define('WT_USER_CAN_ACCEPT',   $WT_TREE->canAcceptChanges(WT_USER_ID));
-define('WT_USER_CAN_EDIT',     WT_USER_CAN_ACCEPT   || userCanEdit    (WT_USER_ID, WT_GED_ID));
-define('WT_USER_CAN_ACCESS',   WT_USER_CAN_EDIT     || userCanAccess  (WT_USER_ID, WT_GED_ID));
-define('WT_USER_GEDCOM_ID',    $WT_TREE->userPreference(WT_USER_ID, 'gedcomid'));
-define('WT_USER_ROOT_ID',      $WT_TREE->userPreference(WT_USER_ID, 'rootid') ? $WT_TREE->userPreference(WT_USER_ID, 'rootid') : WT_USER_GEDCOM_ID);
-define('WT_USER_PATH_LENGTH',  $WT_TREE->userPreference(WT_USER_ID, 'RELATIONSHIP_PATH_LENGTH'));
-
-if (WT_USER_GEDCOM_ADMIN) {
-	define('WT_USER_ACCESS_LEVEL', WT_PRIV_NONE);
-} elseif (WT_USER_CAN_ACCESS) {
-	define('WT_USER_ACCESS_LEVEL', WT_PRIV_USER);
-} else {
-	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
-}
 
 // If we are logged in, and logout=1 has been added to the URL, log out
 // If we were logged in, but our account has been deleted, log out.
@@ -469,7 +474,7 @@ if (!WT_IMPORTED && WT_SCRIPT_NAME!='admin_trees_manage.php' && WT_SCRIPT_NAME!=
 }
 
 // If authentication is required for this tree, and we are not authenticated....
-if ($REQUIRE_AUTHENTICATION && !WT_USER_ID && !in_array(WT_SCRIPT_NAME, array('login.php', 'help_text.php', 'message.php'))) {
+if ((!$WT_TREE || $WT_TREE->preference('REQUIRE_AUTHENTICATION')) && !WT_USER_ID && WT_SCRIPT_NAME!='login.php' && WT_SCRIPT_NAME!='help_text.php' && WT_SCRIPT_NAME!='message.php') {
 	if (WT_SCRIPT_NAME=='index.php') {
 		$url='index.php?ged='.WT_GEDCOM;
 	} else {
@@ -509,7 +514,9 @@ if (substr(WT_SCRIPT_NAME, 0, 5)=='admin' || WT_SCRIPT_NAME=='module.php' && sub
 		// 2) site setting
 		// 3) webtrees
 		// 4) first one found
-		$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+		if (WT_GED_ID) {
+			$THEME_DIR=get_gedcom_setting(WT_GED_ID, 'THEME_DIR');
+		}
 		if (!in_array($THEME_DIR, get_theme_names())) {
 			$THEME_DIR=WT_Site::preference('THEME_DIR');
 		}
@@ -532,7 +539,7 @@ define('WT_THEME_URL', WT_STATIC_URL.WT_THEME_DIR);
 require WT_ROOT.WT_THEME_DIR.'theme.php';
 
 // Page hit counter - load after theme, as we need theme formatting
-if ($SHOW_COUNTER && !$SEARCH_SPIDER) {
+if ($WT_TREE && $WT_TREE->preference('SHOW_COUNTER') && !$SEARCH_SPIDER) {
 	require WT_ROOT.'includes/hitcount.php';
 } else {
 	$hitCount='';

@@ -222,12 +222,12 @@ class WT_Controller_Base {
 		// Initialise variables for the theme's header.php
 		$LINK_CANONICAL  =$this->canonical_url;
 		$META_ROBOTS     =$this->meta_robots;
-		$META_DESCRIPTION=get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION');
+		$META_DESCRIPTION=WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_DESCRIPTION') : '';
 		if (!$META_DESCRIPTION) {
 			$META_DESCRIPTION=WT_TREE_TITLE;
 		}
 		$META_GENERATOR  =WT_WEBTREES.'-'.WT_VERSION_TEXT.' - '.WT_WEBTREES_URL;
-		$META_TITLE      =get_gedcom_setting(WT_GED_ID, 'META_TITLE');
+		$META_TITLE      =WT_GED_ID ? get_gedcom_setting(WT_GED_ID, 'META_TITLE') : '';
 		if ($META_TITLE) {
 			$title.=' - '.$META_TITLE;
 		}
@@ -287,7 +287,9 @@ class WT_Controller_Base {
 	protected function pageFooter() {
 		global $footerfile, $TEXT_DIRECTION, $view;
 
-		require WT_ROOT.$footerfile;
+		if (WT_GED_ID) {
+			require WT_ROOT.$footerfile;
+		}
 
 		if (WT_DEBUG_SQL) {
 			echo WT_DB::getQueryLog();

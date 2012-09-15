@@ -35,6 +35,9 @@ class WT_Tree {
 	public $tree_title_html =null;
 	public $imported        =null;
 
+	// List of all trees
+	private static $trees   =null;
+
 	// Tree settings
 	private $preference     =null;    // wt_gedcom_setting table
 	private $user_preference=array(); // wt_user_gedcom_setting table
@@ -126,10 +129,8 @@ class WT_Tree {
 
 	// Fetch all the trees that we have permission to access.
 	public static function getAll() {
-		static $trees=null;
-
-		if ($trees===null) {
-			$trees=array();
+		if (self::$trees===null) {
+			self::$trees=array();
 			$rows=WT_DB::prepare(
 				"SELECT SQL_CACHE g.gedcom_id AS tree_id, g.gedcom_name AS tree_name, gs1.setting_value AS tree_title, gs2.setting_value AS imported".
 				" FROM `##gedcom` g".
@@ -149,10 +150,10 @@ class WT_Tree {
 				" ORDER BY g.sort_order, 3"
 			)->execute(array(WT_USER_ID, WT_USER_ID))->fetchAll();
 			foreach ($rows as $row) {
-				$trees[$row->tree_id]=new WT_Tree($row->tree_id, $row->tree_name, $row->tree_title, $row->imported);
+				self::$trees[$row->tree_id]=new WT_Tree($row->tree_id, $row->tree_name, $row->tree_title, $row->imported);
 			}
 		}
-		return $trees;
+		return self::$trees;
 	}
 
 	// Get the tree with a specific ID.  TODO - is this function needed long-term, or just while
@@ -207,6 +208,9 @@ class WT_Tree {
 			// A tree with that name already exists?
 			return;
 		}
+
+		// Update the list of trees;
+		self::$trees=null;
 
 		// Module privacy
 		WT_Module::setDefaultAccess($tree_id);
@@ -344,9 +348,6 @@ class WT_Tree {
 			$tree_id,
 			"0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n"
 		));
-
-		// After updating the database, we need to fetch a new (sorted) copy
-		self::$trees=null;
 	}
 
 	public static function delete($tree_id) {
