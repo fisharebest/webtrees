@@ -240,7 +240,7 @@ case 'load1row':
 
 	foreach (WT_Tree::getAll() as $tree) {
 		echo
-			'<tr><td>',
+			'<tr><td dir="auto">',
 			$tree->tree_title_html,
 			//Pedigree root person
 			'</td><td>',
