@@ -127,7 +127,7 @@ function userIsAdmin($user_id=WT_USER_ID) {
  */
 function userGedcomAdmin($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 	if ($user_id) {
-		return WT_Tree::get($ged_id)->userPreference($user_id, 'canedit') || userIsAdmin($user_id);
+		return WT_Tree::get($ged_id)->userPreference($user_id, 'canedit')=='admin' || userIsAdmin($user_id);
 	} else {
 		return false;
 	}
