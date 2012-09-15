@@ -97,7 +97,7 @@ echo '<li><ul>';
 foreach (WT_Tree::getAll() as $tree) {
 	if (userGedcomAdmin(WT_USER_ID, $tree->tree_id)) {
 		echo
-			'<li><span><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="', $tree->tree_title, '">', $tree->tree_title,
+			'<li><span><a ', (WT_SCRIPT_NAME=="admin_trees_config.php" && WT_GED_ID==$tree->tree_id ? 'class="current" ' : ''), 'href="admin_trees_config.php?ged='.$tree->tree_name_url.'" title="', $tree->tree_title, '" dir="auto">', $tree->tree_title,
 			'</a></span></li>';
 	}
 }

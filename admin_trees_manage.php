@@ -179,7 +179,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 		echo
 			'<table class="gedcom_table">',
 			'<tr><th>', WT_I18N::translate('Family tree'),
-			'</th><th><a class="accepted" href="index.php?ctype=gedcom&amp;ged=', $tree->tree_name_url, '">',
+			'</th><th><a class="accepted" href="index.php?ctype=gedcom&amp;ged=', $tree->tree_name_url, '" dir="auto">',
 			$tree->tree_title_html, '</a>',
 			'</th></tr><tr><th class="accepted">', $tree->tree_name_html,
 			'</th><td>';
