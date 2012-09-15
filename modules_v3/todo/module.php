@@ -106,7 +106,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 		foreach (get_calendar_events(0, $end_jd, '_TODO', WT_GED_ID) as $todo) {
 			$record=WT_GedcomRecord::getInstance($todo['id']);
 			if ($record && $record->canDisplayDetails()) {
-				$user_name=get_gedcom_value('_WT_USER', 2, $todo['factrec']);
+				$user_name = preg_match('/\n2 _WT_USER (.+)/', $todo['factrec'], $match) ? $match[1] : '';
 				if ($user_name==WT_USER_NAME || !$user_name && $show_unassigned || $user_name && $show_other) {
 					$content.='<tr>';
 					//-- Event date (sortable)
@@ -118,7 +118,7 @@ class todo_WT_Module extends WT_Module implements WT_Module_Block {
 					if ($show_unassigned || $show_other) {
 						$content.='<td class="wrap">'.$user_name.'</td>';
 					}
-					$text=get_gedcom_value('_TODO', 1, $todo['factrec']);
+					$text = preg_match('/^1 _TODO (.+)/', $todo['factrec'], $match) ? $match[1] : '';
 					$content.='<td class="wrap">'.$text.'</td>';
 					$content.='</tr>';
 					$found=true;
