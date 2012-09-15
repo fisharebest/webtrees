@@ -330,7 +330,7 @@ case 'register':
 			$mail1_body=
 				WT_I18N::translate('Hello Administrator ...')."\r\n\r\n".
 				/* I18N: %s is a server name/URL */
-				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME.WT_SCRIPT_PATH)."\r\n\r\n".
+				WT_I18N::translate('A prospective user has registered with webtrees at %s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_TREE_TITLE) . "\r\n\r\n".
 				WT_I18N::translate('Username')      .' '.$user_name    ."\r\n".
 				WT_I18N::translate('Real name')     .' '.$user_realname."\r\n".
 				WT_I18N::translate('Email Address:').' '.$user_email   ."\r\n\r\n".
@@ -347,7 +347,7 @@ case 'register':
 				"DNS LOOKUP: ".gethostbyaddr($_SERVER['REMOTE_ADDR'])."\r\n".
 				"LANGUAGE: ".WT_LOCALE."\r\n";
 
-			$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
+			$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New registration at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_TREE_TITLE);
 			$mail1_to     =$WEBTREES_EMAIL;
 			$mail1_from   =$user_email;
 			$mail1_method =get_user_setting($webmaster_user_id, 'contact_method');
@@ -393,7 +393,7 @@ case 'register':
 				$mail2_body=
 					WT_I18N::translate('Hello %s ...', $user_realname) . "\r\n\r\n".
 					/* I18N: %1$s is the site URL and %2$s is an email address */
-					WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME.WT_SCRIPT_PATH, $user_email) . "  ".
+					WT_I18N::translate('You (or someone claiming to be you) has requested an account at %1$s using the email address %2$s.', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_TREE_TITLE, $user_email) . '  '.
 					WT_I18N::translate('Information about the request is shown under the link below.') . "\r\n\r\n".
 					WT_I18N::translate('Please click on the following link and fill in the requested data to confirm your request and email address.') . "\r\n\r\n";
 				if ($TEXT_DIRECTION=='rtl') {
@@ -631,7 +631,7 @@ case 'verify_hash':
 
 	$mail1_to=$WEBTREES_EMAIL;
 	$mail1_from=getUserEmail($user_id);
-	$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME.WT_SCRIPT_PATH);
+	$mail1_subject=/* I18N: %s is a server name/URL */ WT_I18N::translate('New user at %s', WT_SERVER_NAME . WT_SCRIPT_PATH . ' ' . WT_TREE_TITLE);
 	$mail1_method=get_user_setting($webmaster_user_id, 'CONTACT_METHOD');
 
 	// Change to the new user's language
