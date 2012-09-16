@@ -37,7 +37,7 @@ class WT_MenuBar {
 		foreach (WT_Tree::getAll() as $tree) {
 			if ($tree->tree_id==WT_GED_ID || $ALLOW_CHANGE_GEDCOM) {
 				$submenu = new WT_Menu(
-					'<span dir="auto">'.$tree->tree_title_html.'</span>',
+					$tree->tree_title_html,
 					'index.php?ctype=gedcom&amp;ged='.$tree->tree_name_url,
 					'menu-tree-'.$tree->tree_id // Cannot use name - it must be a CSS identifier
 				);

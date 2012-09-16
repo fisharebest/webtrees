@@ -1504,6 +1504,8 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 	private function admin_placecheck() {
 		require WT_ROOT.WT_MODULES_DIR.'googlemap/defaultconfig.php';
 		require_once WT_ROOT.WT_MODULES_DIR.'googlemap/googlemap.php';
+		require_once WT_ROOT.'includes/functions/functions_edit.php';
+
 		$action   =safe_GET('action'                                             );
 		$gedcom_id=safe_GET('gedcom_id', array_keys(WT_Tree::getAll()), WT_GED_ID);
 		$country  =safe_GET('country',   WT_REGEX_UNSAFE,               'XYZ'    );
@@ -1563,11 +1565,9 @@ class googlemap_WT_Module extends WT_Module implements WT_Module_Config, WT_Modu
 		echo '<tr><th colspan="2">', WT_I18N::translate('PlaceCheck List Options'), '</th></tr>';
 		//Option box to select gedcom
 		echo '<tr><td>', WT_I18N::translate('Family tree'), '</td>';
-		echo '<td><select name="gedcom_id">';
-		foreach (WT_Tree::getAll() as $tree) {
-			echo '<option value="', $tree->tree_id, '"', $tree->tree_id==$gedcom_id?' selected="selected"':'', '>', $tree->tree_title_html, '</option>';
-		}
-		echo '</select></td></tr>';
+		echo '<td>';
+		echo select_edit_control('gedcom_id', WT_Tree::getIdList(), null, $gedcom_id);
+		echo '</td></tr>';
 		//Option box to select Country within Gedcom
 		echo '<tr><td>', WT_I18N::translate('Country'), '</td>';
 		echo '<td><select name="country">';

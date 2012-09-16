@@ -263,7 +263,7 @@ class sitemap_WT_Module extends WT_Module implements WT_Module_Config {
 				echo ' checked="checked"';
 				$include_any=true;
 			}
-			echo '><span dir="auto">', $tree->tree_title_html, '</span></p>';
+			echo '>', $tree->tree_title_html, '</p>';
 		}
 		echo
 			'<input type="submit" value="', WT_I18N::translate('Save'), '">',

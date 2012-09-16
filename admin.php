@@ -209,7 +209,7 @@ foreach (WT_Tree::getAll() as $tree) {
 	}
 	++$n;
 	echo
-		'<h3><span dir="auto">', $stats->gedcomTitle(), '</span></h3>',
+		'<h3>', $stats->gedcomTitle(), '</h3>',
 		'<div>',
 		'<table>',
 		'<tr><td>&nbsp;</td><td><span>', WT_I18N::translate('Count'), '</span></td></tr>',

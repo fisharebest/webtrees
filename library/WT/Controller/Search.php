@@ -608,7 +608,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span dir="auto">', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+						echo '<h3 class="indi-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
 							<div class="indi-acc_content">',
 							format_indi_table($datalist);
 						echo '</div>';//indi-acc_content
@@ -632,7 +632,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span dir="auto">', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+						echo '<h3 class="fam-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
 							<div class="fam-acc_content">',
 							format_fam_table($datalist);
 						echo '</div>';//fam-acc_content
@@ -656,7 +656,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span dir="auto">', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+						echo '<h3 class="source-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
 							<div class="source-acc_content">',
 							format_sour_table($datalist);
 						echo '</div>';//fam-acc_content
@@ -680,7 +680,7 @@ class WT_Controller_Search extends WT_Controller_Base {
 						usort($datalist, array('WT_GedcomRecord', 'Compare'));
 						$GEDCOM=$gedcom;
 						load_gedcom_settings($ged_id);
-						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span dir="auto">', $trees[$ged_id]->tree_title_html, '</span></a></h3>
+						echo '<h3 class="note-acc-header"><a href="#"><span class="search_item" dir="auto">', $this->myquery, '</span> @ <span>', $trees[$ged_id]->tree_title_html, '</span></a></h3>
 							<div class="note-acc_content">',
 							format_note_table($datalist);
 						echo '</div>';//note-acc_content

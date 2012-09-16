@@ -90,7 +90,7 @@ class WT_Place {
 
 	public function getPlaceName() {
 		$place=reset($this->gedcom_place);
-		return $place ? htmlspecialchars($place) : WT_I18N::translate('unknown');
+		return $place ? '<span dir="auto">'.htmlspecialchars($place).'</span>' : WT_I18N::translate('unknown');
 	}
 
 	public function getFullName() {
@@ -118,7 +118,7 @@ class WT_Place {
 				$short_name=implode(self::GEDCOM_SEPARATOR, array_slice($this->gedcom_place, 0, $SHOW_PEDIGREE_PLACES));
 			}
 			// Add a tool-tip showing the full name
-			return '<span title="'.htmlspecialchars($this->getGedcomName()).'">'.$short_name.'</span>';
+			return '<span title="'.htmlspecialchars($this->getGedcomName()).'" dir="auto">'.htmlspecialchars($short_name).'</span>';
 		}
 	}
 
