@@ -226,7 +226,7 @@ foreach (WT_Tree::GetAll() as $tree) {
 			help_link('upload_gedcom'),
 			'</td>',
 			// delete
-			'<td><a href="', WT_SCRIPT_NAME, '?action=delete&amp;ged=', $tree->tree_name_url, '" onclick="return confirm(\''.WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?', $tree->tree_title_html),'\');">', WT_I18N::translate('Delete'), '</a>',
+			'<td><a href="', WT_SCRIPT_NAME, '?action=delete&amp;ged=', $tree->tree_name_url, '" onclick="return confirm(\''.WT_I18N::translate('Permanently delete the GEDCOM %s and all its settings?', $tree->tree_name_html),'\');">', WT_I18N::translate('Delete'), '</a>',
 			'</td></tr></table></td></tr></table><br>';
 	}
 }
