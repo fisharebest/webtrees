@@ -155,7 +155,7 @@ function userCanAccess($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 function userCanEdit($user_id=WT_USER_ID, $ged_id=WT_GED_ID) {
 	global $ALLOW_EDIT_GEDCOM;
 
-	if ($ALLOW_EDIT_GEDCOM && $user_id) {
+	if ($user_id && WT_Tree::get($ged_id)->preference('ALLOW_EDIT_GEDCOM')) {
 		if (userIsAdmin($user_id)) {
 			return true;
 		} else {
