@@ -85,10 +85,10 @@ case 'accept':
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
-			update_record($change->old_gedcom, $ged_id, true);
+			update_record($change->old_gedcom, $gedcom_id, true);
 		} else {
 			// add/update
-			update_record($change->new_gedcom, $ged_id, false);
+			update_record($change->new_gedcom, $gedcom_id, false);
 		}
 		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
@@ -99,7 +99,7 @@ case 'undoall':
 		"UPDATE `##change`".
 		" SET status='rejected'".
 		" WHERE status='pending' AND gedcom_id=?"
-	)->execute(array(get_id_from_gedcom($ged)));
+	)->execute(array(WT_GED_ID));
 	break;
 case 'acceptall':
 	$changes=WT_DB::prepare(
@@ -108,14 +108,14 @@ case 'acceptall':
 		" JOIN `##gedcom` g USING (gedcom_id)".
 		" WHERE c.status='pending' AND gedcom_id=?".
 		" ORDER BY change_id"
-	)->execute(array(get_id_from_gedcom($ged)))->fetchAll();
+	)->execute(array(WT_GED_ID))->fetchAll();
 	foreach ($changes as $change) {
 		if (empty($change->new_gedcom)) {
 			// delete
-			update_record($change->old_gedcom, $ged_id, true);
+			update_record($change->old_gedcom, $change->gedcom_id, true);
 		} else {
 			// add/update
-			update_record($change->new_gedcom, $ged_id, false);
+			update_record($change->new_gedcom, $change->gedcom_id, false);
 		}
 		WT_DB::prepare("UPDATE `##change` SET status='accepted' WHERE change_id=?")->execute(array($change->change_id));
 		AddToLog("Accepted change {$change->change_id} for {$change->xref} / {$change->gedcom_name} into database", 'edit');
