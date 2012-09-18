@@ -2115,18 +2115,18 @@ float:left;
 padding:0;
 }
 
-#indi_name_details {
+.indi_name_details {
 margin:0;
 overflow:hidden !important;
 padding:5px;
 }
 
-#indi_name_details .warning {
+.indi_name_details .warning {
 color:red;
 font-size:1em;
 }
 
-#indi_name_details dt:after {
+.indi_name_details dt:after {
 content:":";
 }
 

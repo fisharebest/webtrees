@@ -202,7 +202,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		
 		$this->name_count++;
 		if ($this->name_count >1) { echo '<h3 class="name_two">',$dummy->getFullName(), '</h3>'; } //Other names accordion element
-		echo '<div id="indi_name_details"';
+		echo '<div class="indi_name_details"';
 		if ($event->getIsOld()) {
 			echo " class=\"namered\"";
 		}
@@ -211,7 +211,7 @@ class WT_Controller_Individual extends WT_Controller_GedcomRecord {
 		}
 		echo ">";
 
-		echo '<div id="name1">';
+		echo '<div class="name1">';
 		echo '<dl><dt class="label">', WT_I18N::translate('Name'), '</dt>';
 		$dummy->setPrimaryName(0);
 		echo '<dd class="field">', $dummy->getFullName();

@@ -101,7 +101,7 @@ table.center {margin-left:auto;margin-right:auto;}
 .tab_inactive_bottom {border-left:none;border-right:none;border-top:outset #81a9cb 2px;height:5px;}
 .tab_inactive_bottom_right {border-left:none;border-right:none;border-top:outset #81a9cb 2px;width:33%;height:5px;}
 
-.name1 {color:#333;font-weight:bold;font-size:12px;}
+.name1 {color:#333;font-weight:bold;font-size:12px;padding-top:5px;}
 a:hover .name1 {color:#f00;font-weight:bold;font-size:12px;}
 a:hover .name2 {color:#f00;font-weight:bold;font-size:12px;}
 a:hover .nameZoom {color:#f00;font-weight:bold;font-size:14px;}
@@ -681,25 +681,17 @@ html[dir='rtl'].field .editlink, html[dir='rtl'].field .deletelink {float:left;}
 #indi_header h3 a {display:inline;}
 #indi_header a {color:#337;font-size:0.75em;font-weight:normal;}
 #indi_header a:hover {color:#f00;}
-
 #main_name {float:left;font-size:2em;margin:10px;font-weight:bold;}
-
 #indi_mainimage {float:left;}
 #indi_mainimage a img {float:left;padding:0;}
-
-#indi_name_details {margin:0;overflow:hidden !important;padding:5px;}
-#indi_name_details .warning {color:#f00;font-size:1em;}
-#indi_name_details dt:after {content:":";}
-
-#name1 {}
+.indi_name_details {margin:0;overflow:hidden !important;padding:5px;}
+.indi_name_details .warning {color:#f00;font-size:1em;}
+.indi_name_details dt:after {content:":";}
 #indi_note {margin:0 0 5px 0;}
-
 #header_accordion1 {float:right;}
-
 .indi_table {clear:left;}
 #sex {float:right;}
 #dates {float:right;}
-
 dd .editlink, dd .deletelink {float:right;}
 #indi_note .fact_NOTE {float:left;margin:0 5px 0 0;}
 #indi_note .note_details {font-size:100%;}
