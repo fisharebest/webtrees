@@ -197,8 +197,8 @@ function AddToLog($log_message, $log_type='error') {
 		$log_type,
 		$log_message,
 		$_SERVER['REMOTE_ADDR'],
-		getUserId() && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' ? getUserId() : null,
-		WT_GED_ID
+		defined('WT_USER_ID') && WT_USER_ID && WT_SCRIPT_NAME!='admin_pgv_to_wt.php' ? WT_USER_ID : null,
+		defined('WT_GED_ID') ? WT_GED_ID : null
 	));
 }
 
