@@ -54,6 +54,7 @@ class WT_Site {
 			WT_DB::prepare(
 				"REPLACE INTO `##site_setting` (setting_name, setting_value) VALUES (?, LEFT(?, 255))"
 			)->execute(array($setting_name, $setting_value));
+			self::$setting[$setting_name]=$setting_value;
 		}
 	}
 }
