@@ -442,56 +442,7 @@ case 'register':
 	} else {
 		$controller
 			->setPageTitle(WT_I18N::translate('Request new user account'))
-			->pageHeader()
-			->addInlineJavascript('
-				function checkform(frm) {
-					if (frm.user_realname.value == "") {
-						alert("' . WT_I18N::translate('You must enter your real name.') . '");
-						frm.user_realname.focus();
-						return false;
-					}
-					if (frm.user_email.value=="") {
-						alert("'.WT_I18N::translate('You must enter an email address.').'");
-						frm.user_email.focus();
-						return false;
-					}
-					if (frm.user_name.value == "") {
-						alert("' . WT_I18N::translate('You must enter a user name.') . '");
-						frm.user_name.focus();
-						return false;
-					}
-					if (frm.user_password01.value == "") {
-						alert("' . WT_I18N::translate('You must enter a password.') . '");
-						frm.user_password01.focus();
-						return false;
-					}
-					if (frm.user_password01.value.length < 6) {
-						alert("' . WT_I18N::translate('Passwords must contain at least 6 characters.') . '");
-						frm.user_password01.value = "";
-						frm.user_password02.value = "";
-						frm.user_password01.focus();
-						return false;
-					}
-					if (frm.user_password02.value == "") {
-						alert("' . WT_I18N::translate('You must confirm the password.') . '");
-						frm.user_password02.focus();
-						return false;
-					}
-					if (frm.user_password01.value != frm.user_password02.value) {
-						alert("' . WT_I18N::translate('Passwords do not match.') . '");
-						frm.user_password01.value = "";
-						frm.user_password02.value = "";
-						frm.user_password01.focus();
-						return false;
-					}
-					if (frm.user_comments.value == "") {
-						alert("' . WT_I18N::translate('Please enter your relationship to the data in the Comments field.') . '");
-						frm.user_comments.focus();
-						return false;
-					}
-					return true;
-				}
-			');
+			->pageHeader();
 
 		echo '<div id="login-register-page">
 			<h2>', WT_I18N::translate('Request new user account'), '</h2>';
@@ -506,43 +457,43 @@ case 'register':
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 				<div>
 					<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
-						'<input type="text" id="user_realname" name="user_realname" value="';
+						'<input type="text" id="user_realname" name="user_realname" value="" required pattern="."';
 							if (!$user_realname_false) echo $user_realname;
 						echo '" autofocus>
 					</label>		
 				</div>
 				<div>
 					<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
-						'<input type="email" id="user_email" name="user_email" value="';
+						'<input type="email" id="user_email" name="user_email" value="" required';
 							if (!$user_email_false) echo $user_email;
-						echo '">
+						echo '>
 					</label>
 				</div>
 				<div>
 					<label for="username">', WT_I18N::translate('Desired user name'), help_link('username'),
-						'<input type="text" id="username" name="user_name" value="';
+						'<input type="text" id="username" name="user_name" value="" required ';
 							if (!$user_name_false) echo $user_name;
-						echo '">
+						echo '>
 					</label>
 				</div>
 				<div>
 					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-						'<input type="password" id="user_password01" name="user_password01" value="">
+						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = this.value;">
 					</label>
 				</div>
 				<div>
 					<label for="user_password02">', WT_I18N::translate('Confirm password'), help_link('password_confirm'),
-						'<input type="password" id="user_password02" name="user_password02" value="">
+						'<input type="password" id="user_password02" name="user_password02" value="" required placeholder="', WT_I18N::translate('Same password as above'),'" pattern="'. WT_REGEX_PASSWORD .'">
 					</label>
 				</div>
 				<div>
-					<label for="user_language">', WT_I18N::translate('Language'),
+					<label for="user_language">', WT_I18N::translate('Language'), help_link('edituser_change_lang'),
 						edit_field_language('user_language', WT_LOCALE),
 					'</label>
 				</div>
 				<div>
 					<label for="user_comments">', WT_I18N::translate('Comments'), help_link('register_comments'),
-						'<textarea cols="50" rows="5" id="user_comments" name="user_comments">';
+						'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', WT_I18N::translate('Please explain why you are requesting an account.'),'">';
 							if (!$user_comments_false) echo $user_comments;
 						echo '</textarea>
 					</label>
