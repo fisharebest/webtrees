@@ -392,6 +392,8 @@ foreach (WT_Tree::getAll() as $tree) {
 		break;
 	}
 }
+
+// These attributes of the currently-selected tree are used frequently
 if ($WT_TREE) {
 	define('WT_GEDCOM',            $WT_TREE->tree_name);
 	define('WT_GED_ID',            $WT_TREE->tree_id);
@@ -414,11 +416,11 @@ if ($WT_TREE) {
 	}
 	load_gedcom_settings(WT_GED_ID);
 } else {
-	define('WT_GEDCOM',     '');
-	define('WT_GED_ID',     null);
-	define('WT_GEDURL',     '');
-	define('WT_TREE_TITLE', '');
-	define('WT_IMPORTED',   false);
+	define('WT_GEDCOM',            '');
+	define('WT_GED_ID',            null);
+	define('WT_GEDURL',            '');
+	define('WT_TREE_TITLE',        WT_WEBTREES);
+	define('WT_IMPORTED',          false);
 	define('WT_USER_GEDCOM_ADMIN', false);
 	define('WT_USER_CAN_ACCEPT',   false);
 	define('WT_USER_CAN_EDIT',     false);
@@ -428,7 +430,6 @@ if ($WT_TREE) {
 	define('WT_USER_PATH_LENGTH',  0);
 	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 }
-
 
 // Set our gedcom selection as a default for the next page
 $WT_SESSION->GEDCOM=WT_GEDCOM;
