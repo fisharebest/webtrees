@@ -442,7 +442,8 @@ case 'register':
 	} else {
 		$controller
 			->setPageTitle(WT_I18N::translate('Request new user account'))
-			->pageHeader();			
+			->pageHeader()
+			->addInlineJavascript('function regex_quote(str) {return str.replace(/[\\\\.?+*()[\](){}|]/g, "\\\\$&");}');
 
 		echo '<div id="login-register-page">
 			<h2>', WT_I18N::translate('Request new user account'), '</h2>';
@@ -472,7 +473,7 @@ case 'register':
 				</div>
 				<div>
 					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = this.value.replace(/[\\\\.?+*()[\](){}|]/g, \'\\\\$&amp;\');">
+						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = regex_quote(this.value);">
 					</label>
 				</div>
 				<div>
