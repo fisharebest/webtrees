@@ -28,7 +28,6 @@
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
-	<!--		<Cell align="center" newline="1" style="label"><var var="WT_I18N::translate('Vital records')" /></Cell>-->
 			<Cell align="center" newline="1" style="header">
 				<var var="WT_I18N::translate('Vital records')" />
 				<if condition="$name!=''">
