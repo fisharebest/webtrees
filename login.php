@@ -478,7 +478,7 @@ case 'register':
 				</div>
 				<div>
 					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = preg_quote(this.value);">
+						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = this.value.replace(/[\\\\.?+*()[\](){}|]/g, \'\\\\$&\');">
 					</label>
 				</div>
 				<div>

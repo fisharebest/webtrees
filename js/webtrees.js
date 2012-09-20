@@ -1304,69 +1304,48 @@ function message(username, method, url, subject) {
  *
  */
 function include_css(css_file) {
-    var html_doc = document.getElementsByTagName('head')[0];
-    var css = document.createElement('link');
-    css.setAttribute('rel', 'stylesheet');
-    css.setAttribute('type', 'text/css');
-    css.setAttribute('href', css_file);
-    html_doc.appendChild(css);
+	var html_doc = document.getElementsByTagName('head')[0];
+	var css = document.createElement('link');
+	css.setAttribute('rel', 'stylesheet');
+	css.setAttribute('type', 'text/css');
+	css.setAttribute('href', css_file);
+	html_doc.appendChild(css);
 }
 
 function include_js(file) {
-    var html_doc = document.getElementsByTagName('head')[0];
-    var js = document.createElement('script');
-    js.setAttribute('type', 'text/javascript');
-    js.setAttribute('src', file);
-    html_doc.appendChild(js);
+	var html_doc = document.getElementsByTagName('head')[0];
+	var js = document.createElement('script');
+	js.setAttribute('type', 'text/javascript');
+	js.setAttribute('src', file);
+	html_doc.appendChild(js);
 }
 
-  function findPosX(obj)
-  {
-    var curleft = 0;
-    if(obj.offsetParent)
-        while(1)
-        {
-          curleft += obj.offsetLeft;
-          if(!obj.offsetParent)
-            break;
-          obj = obj.offsetParent;
-        }
-    else if(obj.x)
-        curleft += obj.x;
-    return curleft;
-  }
+function findPosX(obj) {
+	var curleft = 0;
+	if(obj.offsetParent)
+		while(1) {
+			curleft += obj.offsetLeft;
+			if(!obj.offsetParent)
+				break;
+			obj = obj.offsetParent;
+		}
+	else if(obj.x)
+		curleft += obj.x;
+	return curleft;
+}
 
-  function findPosY(obj)
-  {
-    var curtop = 0;
-    if(obj.offsetParent)
-        while(1)
-        {
-        	if (obj.style.position=="relative") break;
-          curtop += obj.offsetTop;
-          if(!obj.offsetParent)
-            break;
-          obj = obj.offsetParent;
-        }
-    else if(obj.y)
-        curtop += obj.y;
-    return curtop;
-  }
-
-  function preg_quote (str, delimiter) {
-    // Quote regular expression characters plus an optional character  
-    // version: 1109.2015
-    // discuss at: http://phpjs.org/functions/preg_quote
-    // +   original by: booeyOH
-    // +   improved by: Ates Goral (http://magnetiq.com)
-    // +   improved by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
-    // +   bugfixed by: Onno Marsman
-    // +   improved by: Brett Zamir (http://brett-zamir.me)
-    // *     example 1: preg_quote("$40");
-    // *     returns 1: '\$40'
-    // *     example 2: preg_quote("*RRRING* Hello?");
-    // *     returns 2: '\*RRRING\* Hello\?'
-    // *     example 3: preg_quote("\\.+*?[^]$(){}=!<>|:");
-    // *     returns 3: '\\\.\+\*\?\[\^\]\$\(\)\{\}\=\!\<\>\|\:'
-    return (str + '').replace(new RegExp('[.\\\\+*?\\[\\^\\]$(){}=!<>|:\\' + (delimiter || '') + '-]', 'g'), '\\$&');
+function findPosY(obj) {
+	var curtop = 0;
+	if(obj.offsetParent)
+		while(1) {
+			if (obj.style.position=="relative")
+				break;
+			curtop += obj.offsetTop;
+			if(!obj.offsetParent)
+				break;
+			obj = obj.offsetParent;
+		}
+	else if(obj.y)
+		curtop += obj.y;
+	return curtop;
 }
