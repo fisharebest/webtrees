@@ -28,13 +28,14 @@
 
 	<Doc pageSize="$pageSize" orientation="landscape">
 		<Header>
-			<Cell align="center" newline="1" style="label"><var var="WT_I18N::translate('Vital records')" /></Cell>
+	<!--		<Cell align="center" newline="1" style="label"><var var="WT_I18N::translate('Vital records')" /></Cell>-->
 			<Cell align="center" newline="1" style="header">
+				<var var="WT_I18N::translate('Vital records')" />
 				<if condition="$name!=''">
-				    <var var="name" /> 
+				    : <var var="name" /> 
 				</if>
 				<if condition="$bdmplace!=''">
-					<var var="bdmplace" />
+					: <var var="bdmplace" />
 				</if>
 			</Cell>
 			<Cell align="rightrtl" height="10" newline="1" style="pagenum"><var var="WT_I18N::translate('Page')" /> <PageNum /> <var var="WT_I18N::translate('of')" /> <TotalPages /></Cell>
