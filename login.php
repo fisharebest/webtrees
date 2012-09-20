@@ -457,28 +457,22 @@ case 'register':
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 				<div>
 					<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
-						'<input type="text" id="user_realname" name="user_realname" value="" required pattern=".*"';
-							if (!$user_realname_false) echo $user_realname;
-						echo '" autofocus>
+						'<input type="text" id="user_realname" name="user_realname" required pattern=".*" value="', htmlspecialchars($user_realname), '" autofocus>
 					</label>		
 				</div>
 				<div>
 					<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
-						'<input type="email" id="user_email" name="user_email" value="" required';
-							if (!$user_email_false) echo $user_email;
-						echo '>
+						'<input type="email" id="user_email" name="user_email" required value="', htmlspecialchars($user_email), '">
 					</label>
 				</div>
 				<div>
 					<label for="username">', WT_I18N::translate('Desired user name'), help_link('username'),
-						'<input type="text" id="username" name="user_name" value="" required ';
-							if (!$user_name_false) echo $user_name;
-						echo '>
+						'<input type="text" id="username" name="user_name" required value="', htmlspecialchars($user_name), '">
 					</label>
 				</div>
 				<div>
 					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = this.value.replace(/[\\\\.?+*()[\](){}|]/g, \'\\\\$&\');">
+						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = this.value.replace(/[\\\\.?+*()[\](){}|]/g, \'\\\\$&amp;\');">
 					</label>
 				</div>
 				<div>
@@ -493,9 +487,9 @@ case 'register':
 				</div>
 				<div>
 					<label for="user_comments">', WT_I18N::translate('Comments'), help_link('register_comments'),
-						'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', WT_I18N::translate('Please explain why you are requesting an account.'),'">';
-							if (!$user_comments_false) echo $user_comments;
-						echo '</textarea>
+						'<textarea cols="50" rows="5" id="user_comments" name="user_comments" required placeholder="', WT_I18N::translate('Please explain why you are requesting an account.'),'">',
+							htmlspecialchars($user_comments),
+						'</textarea>
 					</label>
 				</div>
 				<hr>
