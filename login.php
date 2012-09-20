@@ -458,17 +458,17 @@ case 'register':
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 				<div>
 					<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
-						'<input type="text" id="user_realname" name="user_realname" required pattern=".*" value="', htmlspecialchars($user_realname), '" autofocus>
+						'<input type="text" id="user_realname" name="user_realname" required maxlength="64" value="', htmlspecialchars($user_realname), '" autofocus>
 					</label>		
 				</div>
 				<div>
 					<label for="user_email">', WT_I18N::translate('Email address'), help_link('email'),
-						'<input type="email" id="user_email" name="user_email" required value="', htmlspecialchars($user_email), '">
+						'<input type="email" id="user_email" name="user_email" required maxlength="64" value="', htmlspecialchars($user_email), '">
 					</label>
 				</div>
 				<div>
 					<label for="username">', WT_I18N::translate('Desired user name'), help_link('username'),
-						'<input type="text" id="username" name="user_name" required value="', htmlspecialchars($user_name), '">
+						'<input type="text" id="username" name="user_name" required maxlength="32" value="', htmlspecialchars($user_name), '">
 					</label>
 				</div>
 				<div>
