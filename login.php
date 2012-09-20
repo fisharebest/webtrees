@@ -457,7 +457,7 @@ case 'register':
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 				<div>
 					<label for="user_realname">', WT_I18N::translate('Real name'), help_link('real_name'),
-						'<input type="text" id="user_realname" name="user_realname" value="" required pattern="."';
+						'<input type="text" id="user_realname" name="user_realname" value="" required pattern=".*"';
 							if (!$user_realname_false) echo $user_realname;
 						echo '" autofocus>
 					</label>		
