@@ -935,7 +935,7 @@ a.icon-ddarrow:hover{width:20px;height:20px;background-image:url(images/ddarrow2
 .icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list{width:20px;height:20px;background-image:url(images/family.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
-.icon-help{width:15px;height:15px;background-image:url(images/help2.png);}
+.icon-help{margin:0 5px;width:15px;height:15px;background-image:url(images/help2.png);}
 .icon-indi-list{width:20px;height:20px;background-image:url(images/indis.png);}
 .icon-indis{width:20px;height:20px;background-image:url(images/indis.png);}
 .icon-larrow{width:20px;height:20px;background-image:url(images/larrow.png);}
