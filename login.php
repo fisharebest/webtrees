@@ -452,7 +452,7 @@ case 'register':
 				echo '</div>';
 			}
 			echo '<div id="register-box">
-				<form id="register-form" name="register-form" method="post" action="'.WT_LOGIN_URL.'" onsubmit="return checkform(this);">
+				<form id="register-form" name="register-form" method="post" action="'.WT_LOGIN_URL.'" onsubmit="return checkform(this);" autocomplete="off">
 				<input type="hidden" name="action" value="register">
 				<h4>', WT_I18N::translate('All fields must be completed.'), '</h4><hr>
 				<div>
@@ -478,7 +478,7 @@ case 'register':
 				</div>
 				<div>
 					<label for="user_password01">', WT_I18N::translate('Desired password'), help_link('password'),
-						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = preg_quote(this.value;)">
+						'<input type="password" id="user_password01" name="user_password01" value="" required placeholder="', WT_I18N::translate('At least 6 characters'),'" pattern="'. WT_REGEX_PASSWORD .'" onchange="form.user_password02.pattern = preg_quote(this.value);">
 					</label>
 				</div>
 				<div>
