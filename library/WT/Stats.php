@@ -3146,7 +3146,7 @@ class WT_Stats {
 			" children.l_to=mchildren.l_from AND".
 			" mchildren.l_type='FAMS' AND".
 			" mchildren.l_to=gchildren.l_from AND".
-			" gchildren.l_type='CHIL'"
+			" gchildren.l_type='CHIL'".
 			" GROUP BY id".
 			" ORDER BY tot DESC".
 			" LIMIT ".$total
