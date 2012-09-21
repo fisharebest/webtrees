@@ -1992,7 +1992,7 @@ class WT_Stats {
 			" married.d_julianday1 < husbdeath.d_julianday2 AND".
 			" married.d_julianday1 <> 0".
 			" GROUP BY family".
-			" ORDER B age {$age_dir}");
+			" ORDER BY age {$age_dir}");
 		$wrows=self::_runSQL(
 			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(wifedeath.d_julianday2-married.d_julianday1) AS age".
 			" FROM `##families` AS fam".
