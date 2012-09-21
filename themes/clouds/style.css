@@ -480,10 +480,6 @@ color:#f50;
 font-size:13px;
 }
 
-td .optionbox .help img {
-background:inherit;
-}
-
 table.header {
 margin:0;
 padding:0 10px;
@@ -1168,11 +1164,6 @@ background:#cef;
 margin-top:1px;
 font-size:14px;
 color:#FFF;
-}
-
-.help {
-font-weight:700;
-cursor:help;
 }
 
 .current_day {
@@ -2959,7 +2950,7 @@ a.icon-darrow:hover{width:20px;height:20px;background-image:url(images/darrow2.p
 .icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list{width:22px;height:22px;background-image:url(images/sfamily.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
-.icon-help{width:15px;height:15px;background-image:url(images/help.png);}
+.icon-help{cursor:help;width:15px;height:15px;background-image:url(images/help.png);}
 .icon-indi-list{width:22px;height:22px;background-image:url(images/indis.png);}
 .icon-indis{width:22px;height:22px;background-image:url(images/indis.png);}
 .icon-larrow{width:20px;height:20px;background-image:url(images/larrow.png);}

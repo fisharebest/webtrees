@@ -750,12 +750,6 @@ html[dir='rtl'] .icon {
 	color:white;
 }
 
-
-.help {
-	font-weight:bold;
-	cursor:help;
-}
-
 .menuitem {
 	color:black;
 	font-size:11px;
@@ -2094,7 +2088,7 @@ a.icon-darrow:hover{width:20px;height:20px;background-image:url(images/darrow2.p
 .icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list{width:25px;height:25px;background-image:url(images/sfamily.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
-.icon-help{width:15px;height:15px;background-image:url(images/help.png);}
+.icon-help{cursor:help;width:15px;height:15px;background-image:url(images/help.png);}
 .icon-indi-list{width:25px;height:25px;background-image:url(images/indis.png);}
 .icon-indis{width:25px;height:25px;background-image:url(images/indis.png);}
 .icon-larrow{width:20px;height:20px;background-image:url(images/larrow.png);}

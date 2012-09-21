@@ -597,7 +597,7 @@ function print_privacy_error() {
 
 // Print a link for a popup help window
 function help_link($help_topic, $module='') {
-	return '<span class="help icon-help" onclick="helpDialog(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;</span>';
+	return '<span class="icon-help" onclick="helpDialog(\''.$help_topic.'\',\''.$module.'\'); return false;">&nbsp;</span>';
 }
 
 

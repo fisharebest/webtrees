@@ -537,11 +537,6 @@ html[dir='rtl'] .icon {
 	margin-top:0;
 }
 
-.help {
-	font-weight:bold;
-	cursor:help;
-}
-
 .submenu {
 	background-color:#eee;
 	border:solid #555 1px;
@@ -1789,7 +1784,7 @@ a.icon-ddarrow{width:20px;height:20px;background-image:url(images/ddarrow2.png);
 .icon-children{width:16px;height:16px;background-image:url(images/children.png);}
 .icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
-.icon-help{width:15px;height:15px;background-image:url(images/help.png);}
+.icon-help{cursor:help;width:15px;height:15px;background-image:url(images/help.png);}
 .icon-lifespan-chunk{width:50px;height:37px;background-image:url(images/lifespan-chunk.png);}
 .icon-larrow{width:20px;height:20px;background-image:url(images/larrow.png);}
 a.icon-larrow:hover{width:20px;height:20px;background-image:url(images/larrow2.png);}

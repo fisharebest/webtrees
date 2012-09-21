@@ -86,12 +86,6 @@ a:hover, a:active {
 	color:White !important;
 	background-color:DarkSlateGray;
 }
-a.help, span.help {
-	font-weight:bold;
-	text-shadow:Black 1px 1px 1px;
-	color:Yellow !important;
-	cursor:help;
-}
 
 body {
 	color:DimGray;
@@ -1521,7 +1515,7 @@ a.icon-darrow:hover{width:20px;height:20px;background-image:url(images/darrow2.p
 .icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list{width:24px;height:24px;background-image:url(images/sfamily.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
-.icon-help{width:15px;height:15px;background-image:url(images/help.png);}
+.icon-help{cursor:help;width:15px;height:15px;background-image:url(images/help.png);}
 .icon-indis{width:24px;height:24px;background-image:url(images/indis.png);}
 .icon-indi-list{width:50px;height:50px;background-image:url(images/indis.png);}
 .icon-larrow{width:20px;height:20px;background-image:url(images/larrow.png);}

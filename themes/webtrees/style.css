@@ -153,8 +153,6 @@ html[dir="rtl"] .pedigree_image {float:right;margin:0 0 0 4px;}
 .border1 {border:solid #000 1px;}
 .header_select {font-size:9pt;}
 .favorites_form {margin-top:0;}
-.help {cursor:help;font-weight:bold;line-height:16px;}
-.help img {vertical-align:bottom;}
 .menuitem {text-decoration:none;font-size:11px;padding:1px;}
 .menuitem_hover {text-decoration:none;font-size:11px;padding:1px;}
 .submenu {text-decoration:none;font-size:11px;background-color:#edf7fd;border:solid #81a9cb 1px;white-space:nowrap;visibility:hidden;position:absolute;padding:5px;}
@@ -936,7 +934,7 @@ a.icon-ddarrow:hover{width:20px;height:20px;background-image:url(images/ddarrow2
 .icon-email{width:16px;height:16px;background-image:url(images/email.png);}
 .icon-fam-list{width:20px;height:20px;background-image:url(images/family.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(images/googlemaps.png);}
-.icon-help{margin:0 5px;width:15px;height:15px;background-image:url(images/help2.png);}
+.icon-help{cursor:help;margin:0 5px;width:15px;height:15px;background-image:url(images/help2.png);}
 .icon-indi-list{width:20px;height:20px;background-image:url(images/indis.png);}
 .icon-indis{width:20px;height:20px;background-image:url(images/indis.png);}
 .icon-larrow{width:20px;height:20px;background-image:url(images/larrow.png);}

@@ -429,8 +429,6 @@ a:hover .nameZoom{font-size:14px;color:red;font-weight:700;}
 .footer{direction:ltr;text-align:center;width:99%;}
 .gender_image{border:none;padding-left:3px;padding-right:3px;vertical-align:middle;}
 
-.help img {vertical-align:bottom;}
-.help{cursor:help;font-weight:700;}
 .helpheader {}
 .helpstart{color:#00f;font-size:14px;font-weight:700;text-decoration:none;}
 .helptext{color:#000;}
@@ -995,7 +993,7 @@ a.icon-darrow:hover{width:20px;height:20px;background-image:url(../images/darrow
 .icon-edit_indi{width:22px;height:22px;background-image:url(../images/edit_indi.png);}
 .icon-fam-list{width:32px;height:32px;background-image:url(../images/sfamily.png);}
 .icon-googlemaps{width:16px;height:16px;background-image:url(../images/googlemaps.png);}
-.icon-help{width:15px;height:15px;background-image:url(../images/help.png);}
+.icon-help{cursor:help;width:15px;height:15px;background-image:url(../images/help.png);}
 .icon-indi-list{width:32px;height:32px;background-image:url(../images/indis.png);}
 .icon-indis{width:22px;height:25px;background-image:url(../images/mypage.png);}
 .icon-larrow{width:20px;height:20px;background-image:url(../images/larrow.png);}
