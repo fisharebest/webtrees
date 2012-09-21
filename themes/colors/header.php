@@ -146,6 +146,6 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 }
 // Remove list from home when only 1 gedcom 
 $this->addInlineJavaScript(
-	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree-1").remove();'
+	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree ul li:last-child").remove();'
 );
 echo $javascript, '<div id="content">';
