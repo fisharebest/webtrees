@@ -34,7 +34,7 @@ if (!defined('WT_WEBTREES')) {
 require_once WT_ROOT.'includes/functions/functions_print_lists.php';
 
 // Methods not allowed to be used in a statistic
-define('STATS_NOT_ALLOWED', 'stats,getAllTags,getTags,embedTags');
+define('STATS_NOT_ALLOWED', 'stats,getAllTags,getTags,embedTags,iso3166,get_all_countries');
 
 class WT_Stats {
 	var $_gedcom;
