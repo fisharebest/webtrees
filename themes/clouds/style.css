@@ -400,6 +400,10 @@ margin-right:5px;
 content:"";
 }
 
+.makeMenu li ul li a.lang-active, .makeMenu li ul li a.theme-active{
+color:#006;font-weight:900;
+}
+
 html[dir='rtl'] .makeMenu li ul {left:auto;right:-10px!important;}
 html[dir='rtl'] .makeMenu li ul li {text-align:right;}
 

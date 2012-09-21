@@ -85,6 +85,7 @@ html[dir='rtl'] .hsearch {float:left;padding-left:10px;}
 #login-menu {position:absolute;left:30%;top:15px;}
 #lang-menu {float:right;margin-right:10px;margin-top:5px;text-align:right;}
 #lang-menu .makeMenu li ul {left:auto;right:0;}
+.lang-active, .theme-active{color:#006;font-weight:900;}
 
 /* LTR to RTL Translation */
 html[dir='rtl'] #theme-menu {float:right;margin-right:10px;}
@@ -102,6 +103,7 @@ html[dir='rtl'] #lang-menu .makeMenu li ul {right:auto;left:0;}
 .makeMenu li ul li a:hover {color:red;}
 .makeMenu, .makeMenu li ul {list-style:none;margin:0;padding:1px;}
 .makeMenu li:hover > ul {display:block;}
+.makeMenu li ul li a.lang-active, .makeMenu li ul li a.theme-active{color:#006;font-weight:900;}
 
 html[dir='rtl'] li up li {text-align:right;}
 html[dir='rtl'] .makeMenu li ul {left:auto;right:0;}

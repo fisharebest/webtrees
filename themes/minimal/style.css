@@ -54,6 +54,7 @@ li.title {border:0;font-size:26px;font-weight:900;}
 .makeMenu, .makeMenu li ul {list-style:none;margin:0;padding:1px;z-index:3000;}
 .makeMenu li:hover > ul {display:block;}
 .makeMenu ul li a {padding:0 5px 0 2px;display:block;}
+.lang-active, .theme-active{font-weight:900;}
 
 /* --- RTL --- */
 html[dir='rtl'] ul.makeMenu div {float:left;}

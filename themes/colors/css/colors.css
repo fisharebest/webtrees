@@ -110,6 +110,7 @@ html[dir='rtl'] #main-menu li ul li{text-indent:0;}
 .makeMenu ul li a{background-color:#fff;display:block;padding:0 5px 0 2px;}
 .makeMenu ul li a:hover{color:#000;}
 .makeMenu li ul li:before,.makeMenu li:first-child:before{content:"";}
+.lang-active, .theme-active{font-weight:900;}
 
 html[dir='rtl'] .makeMenu{display:block;float:left;margin:40px 0 0 10px;}
 html[dir='rtl'] .makeMenu li ul{left:auto;right:0;}

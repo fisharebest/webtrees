@@ -656,6 +656,7 @@ html[dir='rtl'] #main-menu li li a {float:right;padding:1px 5px 1px 10px;}
 .makeMenu li ul li {padding:2px;display:block;text-align:left;}
 .makeMenu, .makeMenu li ul {list-style:none;margin:0;padding:1px;}
 .makeMenu li:hover > ul {display:block;}
+.lang-active, .theme-active{color:#006;font-weight:900;}
 
 html[dir='rtl'] #extra-menu {float:left;margin:20px 0 0 10px;}
 html[dir='rtl'] #extra-menu.makeMenu li ul {left:0;right:auto;}

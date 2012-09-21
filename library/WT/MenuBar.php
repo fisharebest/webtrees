@@ -449,6 +449,7 @@ class WT_MenuBar {
 			$menu=new WT_Menu(WT_I18N::translate('Theme'), '#', 'menu-theme');
 			foreach (get_theme_names() as $themename=>$themedir) {
 				$submenu=new WT_Menu($themename, get_query_url(array('theme'=>$themedir), '&amp;'), 'menu-theme-'.$themedir);
+				if (WT_THEME_DIR == 'themes/'.$themedir.'/') {$submenu->addClass('','','theme-active');}
 				$menu->addSubMenu($submenu);
 			}
 			return $menu;
@@ -467,6 +468,7 @@ class WT_MenuBar {
 
 			foreach (WT_I18N::installed_languages() as $lang=>$name) {
 				$submenu=new WT_Menu($name, get_query_url(array('lang'=>$lang), '&amp;'), 'menu-language-'.$lang);
+				if (WT_LOCALE == $lang) {$submenu->addClass('','','lang-active');}
 				$menu->addSubMenu($submenu);
 			}
 			if (count($menu->submenus)>1) {

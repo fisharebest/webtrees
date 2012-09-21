@@ -244,6 +244,8 @@ html[dir='rtl'] .makeMenu li ul li {
 	color:#000;
 }
 
+.lang-active, .theme-active{font-weight:900;}
+
 #menu-language li {text-align:left;} /* The language menu is always LTR, even on RTL pages */
 #menu-theme    li {text-align:left;} /* The theme menu is always LTR, even on RTL pages */
 
