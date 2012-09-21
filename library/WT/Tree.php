@@ -209,7 +209,7 @@ class WT_Tree {
 			return;
 		}
 
-		// Update the list of trees;
+		// Update the list of trees - to include this new one
 		self::$trees=null;
 
 		// Module privacy
@@ -348,6 +348,9 @@ class WT_Tree {
 			$tree_id,
 			"0 HEAD\n0 @I1@ INDI\n1 NAME {$john_doe}\n1 SEX M\n1 BIRT\n2 DATE 01 JAN 1850\n2 NOTE {$note}\n0 TRLR\n"
 		));
+
+		// Update the list of trees - to include the new configuration settings
+		self::$trees=null;
 	}
 
 	public static function delete($tree_id) {
