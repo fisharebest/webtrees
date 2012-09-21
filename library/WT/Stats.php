@@ -2798,7 +2798,7 @@ class WT_Stats {
 			"  child1.d_gid = link1.l_to AND".
 			"  child1.d_fact = 'BIRT' AND".
 			"  d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND".
-			"  child1.d_month <> """.
+			"  child1.d_month <> ''".
 			$sql_years.
 			"  ORDER BY date".
 			" ) AS children".
