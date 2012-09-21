@@ -40,7 +40,6 @@ class WT_Stats {
 	var $_gedcom;
 	var $_gedcom_url;
 	var $_ged_id;
-	var $_server_url; // Absolute URL for generating external links. (TODO: is this really needed?)
 	static $_not_allowed = false;
 	static $_media_types = array('audio', 'book', 'card', 'certificate', 'coat', 'document', 'electronic', 'magazine', 'manuscript', 'map', 'fiche', 'film', 'newspaper', 'painting', 'photo', 'tombstone', 'video', 'other');
 
@@ -49,7 +48,6 @@ class WT_Stats {
 	function __construct($gedcom, $server_url='') {
 		self::$_not_allowed = explode(',', STATS_NOT_ALLOWED);
 		$this->_setGedcom($gedcom);
-		$this->_server_url = $server_url;
 	}
 
 	function _setGedcom($gedcom) {
@@ -299,7 +297,7 @@ class WT_Stats {
 		}
 		if (!$highlight) {return '';}
 		$imgsize=findImageSize($highlight);
-		return "<a href=\"{$this->_server_url}index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" class=\"gedcom_highlight\" alt=\"\" /></a>";
+		return "<a href=\"index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" class=\"gedcom_highlight\" alt=\"\" /></a>";
 	}
 
 	function gedcomHighlightLeft() {
@@ -315,7 +313,7 @@ class WT_Stats {
 			return '';
 		}
 		$imgsize=findImageSize($highlight);
-		return "<a href=\"{$this->_server_url}index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"left\" class=\"gedcom_highlight\" alt=\"\" /></a>";
+		return "<a href=\"index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"left\" class=\"gedcom_highlight\" alt=\"\" /></a>";
 	}
 
 	function gedcomHighlightRight() {
@@ -331,7 +329,7 @@ class WT_Stats {
 			return '';
 		}
 		$imgsize=findImageSize($highlight);
-		return "<a href=\"{$this->_server_url}index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"right\" class=\"gedcom_highlight\" alt=\"\" /></a>";
+		return "<a href=\"index.php?ctype=gedcom&amp;ged={$this->_gedcom_url}\" style=\"border-style:none;\"><img src=\"{$highlight}\" {$imgsize[3]} style=\"border:none; padding:2px 6px 2px 2px;\" align=\"right\" class=\"gedcom_highlight\" alt=\"\" /></a>";
 	}
 
 	function gedcomRootID() {
@@ -941,7 +939,7 @@ class WT_Stats {
 				$result=format_fact_place($fact, true, true, true);
 				break;
 		}
-		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
+		return $result;
 	}
 
 	function _statsPlaces($what='ALL', $fact=false, $parent=0, $country=false) {
@@ -1471,7 +1469,7 @@ class WT_Stats {
 				$result="<a href=\"".$person->getHtmlUrl()."\">".$person->getFullName()."</a>";
 				break;
 		}
-		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
+		return $result;
 	}
 
 	function _topTenOldest($type='list', $sex='BOTH', $params=null) {
@@ -1771,7 +1769,7 @@ class WT_Stats {
 	}
 
 	// Both Sexes
-	function statsAge($params=null) {return $this->_statsAge(true, 'BIRT', 'BOTH', -1, -1, $params);}.
+	function statsAge($params=null) {return $this->_statsAge(true, 'BIRT', 'BOTH', -1, -1, $params);}
 
 	function longestLife()     { return $this->_longlifeQuery('full', 'BOTH'); }
 	function longestLifeAge()  { return $this->_longlifeQuery('age',  'BOTH'); }
@@ -1878,7 +1876,7 @@ class WT_Stats {
 				$result=format_fact_place($fact, true, true, true);
 				break;
 		}
-		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
+		return $result;
 	}
 
 	function firstEvent() {
@@ -1973,7 +1971,7 @@ class WT_Stats {
 				}
 				break;
 		}
-		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
+		return $result;
 	}
 
 	function _ageOfMarriageQuery($type='list', $age_dir='ASC', $params=null) {
@@ -2204,7 +2202,7 @@ class WT_Stats {
 				}
 				break;
 		}
-		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
+		return $result;
 	}
 
 	function _statsMarr($simple=true, $first=false, $year1=-1, $year2=-1, $params=null) {
@@ -2609,8 +2607,7 @@ class WT_Stats {
 				$result="<a href=\"".$family->getHtmlUrl()."\">".$family->getFullName().'</a>';
 				break;
 		}
-		// Statistics are used by RSS feeds, etc., so need absolute URLs.
-		return str_replace('<a href="', '<a href="'.$this->_server_url, $result);
+		return $result;
 	}
 
 	function _topTenFamilyQuery($type='list', $params=null) {
