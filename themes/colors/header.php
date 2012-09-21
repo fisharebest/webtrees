@@ -144,5 +144,8 @@ if  ($view!='simple') { // Use "simple" headers for popup windows
 	}
 	echo '</div>'; // <div id="flash-messages">
 }
-
+// Remove list from home when only 1 gedcom 
+$this->addInlineJavaScript(
+	'if (jQuery("#menu-tree ul li").length == 2) jQuery("#menu-tree-1").remove();'
+);
 echo $javascript, '<div id="content">';
