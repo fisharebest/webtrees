@@ -893,17 +893,13 @@ class WT_Stats {
 	function _mortalityQuery($type='full', $life_dir='ASC', $birth_death='BIRT') {
 		global $listDir;
 		if ($birth_death == 'MARR') {
-			//$query_field = "'".str_replace('|', "','", WT_EVENTS_MARR)."'";
 			$query_field = "'MARR'";
 		} else if ($birth_death == 'DIV') {
-			//$query_field = "'".str_replace('|', "','", WT_EVENTS_DIV)."'";
 			$query_field = "'DIV'";
 		} else if ($birth_death == 'BIRT') {
-			//$query_field = "'".str_replace('|', "','", WT_EVENTS_BIRT)."'";
 			$query_field = "'BIRT'";
 		} else {
 			$birth_death = 'DEAT';
-			//$query_field = "'".str_replace('|', "','", WT_EVENTS_DEAT)."'";
 			$query_field = "'DEAT'";
 		}
 		if ($life_dir == 'ASC') {
@@ -912,51 +908,14 @@ class WT_Stats {
 			$dmod = 'MAX';
 			$life_dir = 'DESC';
 		}
-		$rows=self::_runSQL(''
-			."SELECT SQL_CACHE d_year, d_type, d_fact, d_gid"
-			." FROM `##dates`"
-			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1=("
-			." SELECT {$dmod}( d_julianday1 )"
-			." FROM `##dates`"
-			." WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )"
- 			." LIMIT 1"
-
-		/*//testing - too slow
-			.' SELECT'
-				.' d2.d_year,'
-				.' d2.d_type,'
-				.' d2.d_fact,'
-				.' d2.d_gid'
-			.' FROM'
-				." `##dates` AS d2"
-			.' WHERE'
-				." d2.d_file={$this->_ged_id} AND"
-				." d2.d_fact IN ({$query_field}) AND"
-				.' d2.d_julianday1=('
-					.' SELECT'
-						." {$dmod}(d_julianday1)"
-					.' FROM'
-						." `##dates`"
-					.' JOIN ('
-						.' SELECT'
-							.' d1.d_gid, MIN(d1.d_julianday1) as date'
-						.' FROM'
-							."  `##dates` AS d1"
-						.' WHERE'
-							." d1.d_fact IN ({$query_field}) AND"
-							." d1.d_file={$this->_ged_id} AND"
-							.' d1.d_julianday1!=0'
-						.' GROUP BY'
-							.' d1.d_gid'
-					.') AS d3'
-					.' WHERE'
-						." d_file={$this->_ged_id} AND"
-						." d_fact IN ({$query_field}) AND"
-						.' d_julianday1=date'
-				.' )'
-			.' ORDER BY'
-				." d_julianday1 {$life_dir}, d_type"
-		*/
+		$rows=self::_runSQL(
+			"SELECT SQL_CACHE d_year, d_type, d_fact, d_gid".
+			" FROM `##dates`".
+			" WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1=(".
+			" SELECT {$dmod}( d_julianday1 )".
+			" FROM `##dates`".
+			" WHERE d_file={$this->_ged_id} AND d_fact IN ({$query_field}) AND d_julianday1<>0 )".
+ 			" LIMIT 1"
 		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
@@ -1031,18 +990,18 @@ class WT_Stats {
 			else {
 				$join = "";
 			}
-			$rows=self::_runSQL(''
-				.' SELECT SQL_CACHE'
-				.' p_place AS place,'
-				.' COUNT(*) AS tot'
-				.' FROM'
-					." `##places`"
-				." JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id"
-				.$join
-				.' WHERE'
-					." p_id={$parent} AND"
-					." p_file={$this->_ged_id}"
-				.' GROUP BY place'
+			$rows=self::_runSQL(
+				" SELECT SQL_CACHE".
+				" p_place AS place,".
+				" COUNT(*) AS tot".
+				" FROM".
+				" `##places`".
+				" JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id".
+				$join.
+				" WHERE".
+				" p_id={$parent} AND".
+				" p_file={$this->_ged_id}".
+				" GROUP BY place"
 			);
 			if (!isset($rows[0])) {return '';}
 			return $rows;
@@ -1057,18 +1016,18 @@ class WT_Stats {
 			else {
 				$join = "";
 			}
-			$rows=self::_runSQL(''
-					.' SELECT SQL_CACHE'
-						.' p_place AS country,'
-						.' COUNT(*) AS tot'
-					.' FROM'
-						." `##places`"
-					." JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id"
-					.$join
-					.' WHERE'
-						." p_file={$this->_ged_id}"
-						." AND p_parent_id='0'"
-					.' GROUP BY country ORDER BY tot DESC, country ASC'
+			$rows=self::_runSQL(
+					" SELECT SQL_CACHE".
+					" p_place AS country,".
+					" COUNT(*) AS tot".
+					" FROM".
+					" `##places`".
+					" JOIN `##placelinks` ON pl_file=p_file AND p_id=pl_p_id".
+					$join.
+					" WHERE".
+					" p_file={$this->_ged_id}".
+					" AND p_parent_id='0'".
+					" GROUP BY country ORDER BY tot DESC, country ASC"
 					);
 			if (!isset($rows[0])) {return '';}
 			return $rows;
@@ -1307,25 +1266,28 @@ class WT_Stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` "
-					."WHERE "
-						."d_file={$this->_ged_id} AND "
-						.'d_year<>0 AND '
-						."d_fact='BIRT' AND "
-						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+			$sql =
+			 	"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` ".
+				"WHERE ".
+				"d_file={$this->_ged_id} AND ".
+				"d_year<>0 AND ".
+				"d_fact='BIRT' AND ".
+				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else if ($sex) {
-			$sql = "SELECT SQL_CACHE d_month, i_sex, COUNT(*) AS total FROM `##dates` "
-					."JOIN `##individuals` ON d_file = i_file AND d_gid = i_id "
-					."WHERE "
-						."d_file={$this->_ged_id} AND "
-						."d_fact='BIRT' AND "
-						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+			$sql =
+				"SELECT SQL_CACHE d_month, i_sex, COUNT(*) AS total FROM `##dates` ".
+				"JOIN `##individuals` ON d_file = i_file AND d_gid = i_id ".
+				"WHERE ".
+				"d_file={$this->_ged_id} AND ".
+				"d_fact='BIRT' AND ".
+				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else {
-			$sql = "SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` "
-					."WHERE "
-						."d_file={$this->_ged_id} AND "
-						."d_fact='BIRT' AND "
-						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+			$sql =
+				"SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` ".
+				"WHERE ".
+				"d_file={$this->_ged_id} AND ".
+				"d_fact='BIRT' AND ".
+				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		}
 		if ($year1>=0 && $year2>=0) {
 			$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
@@ -1365,25 +1327,28 @@ class WT_Stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` "
-					."WHERE "
-						."d_file={$this->_ged_id} AND "
-						.'d_year<>0 AND '
-						."d_fact='DEAT' AND "
-						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+			$sql =
+				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` ".
+				"WHERE ".
+				"d_file={$this->_ged_id} AND ".
+				'd_year<>0 AND '.
+				"d_fact='DEAT' AND ".
+				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else if ($sex) {
-			$sql = "SELECT SQL_CACHE d_month, i_sex, COUNT(*) AS total FROM `##dates` "
-					."JOIN `##individuals` ON d_file = i_file AND d_gid = i_id "
-					."WHERE "
-						."d_file={$this->_ged_id} AND "
-						."d_fact='DEAT' AND "
-						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+			$sql =
+				"SELECT SQL_CACHE d_month, i_sex, COUNT(*) AS total FROM `##dates` ".
+				"JOIN `##individuals` ON d_file = i_file AND d_gid = i_id ".
+				"WHERE ".
+				"d_file={$this->_ged_id} AND ".
+				"d_fact='DEAT' AND ".
+				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		} else {
-			$sql = "SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` "
-					."WHERE "
-						."d_file={$this->_ged_id} AND "
-						."d_fact='DEAT' AND "
-						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+			$sql =
+				"SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` ".
+				"WHERE ".
+				"d_file={$this->_ged_id} AND ".
+				"d_fact='DEAT' AND ".
+				"d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
 		}
 		if ($year1>=0 && $year2>=0) {
 			$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
@@ -1465,72 +1430,27 @@ class WT_Stats {
 			$sex_search = " i_sex='M'";
 		}
 
-		$rows=self::_runSQL(''
-		/*//old
-			.' SELECT'
-				.' death.d_gid AS id,'
-				.' death.d_julianday2-birth.d_julianday1 AS age'
-			.' FROM'
-				." `##dates` AS death,"
-				." `##dates` AS birth,"
-				." `##individuals` AS indi"
-			.' WHERE'
-				.' indi.i_id=birth.d_gid AND'
-				.' birth.d_gid=death.d_gid AND'
-				." death.d_file={$this->_ged_id} AND"
-				.' birth.d_file=death.d_file AND'
-				.' birth.d_file=indi.i_file AND'
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
-				." death.d_fact IN ('DEAT', 'BURI', 'CREM') AND"
-				.' birth.d_julianday1<>0 AND'
-				.' death.d_julianday1>birth.d_julianday2 AND'
-				.$sex_search
-			.' ORDER BY'
-				.' age DESC'
-		//testing - too slow
-			.' SELECT'
-				.' i_id AS id,'
-				.' death.death_jd-birth.birth_jd AS age'
-			.' FROM'
-				.' (SELECT d_gid, d_file, MIN(d_julianday2) AS death_jd'
-					.' FROM `##dates`'
-					." WHERE d_fact IN ('DEAT', 'BURI', 'CREM') AND d_julianday2>0"
-					.' GROUP BY d_gid, d_file'
-				.' ) AS death'
-			.' JOIN'
-				.' (SELECT d_gid, d_file, MIN(d_julianday1) AS birth_jd'
-					.' FROM `##dates`'
-					." WHERE d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND d_julianday1>0"
-					.' GROUP BY d_gid, d_file'
-				.' ) AS birth USING (d_gid, d_file)'
-			.' JOIN `##individuals` ON (d_gid=i_id AND d_file=i_file)'
-			.' WHERE'
-				." i_file={$this->_ged_id} AND"
-				.$sex_search
-			.' ORDER BY'
-				.' age DESC'
-		*/
-		// use only BIRT and DEAT
-			.' SELECT SQL_CACHE'
-				.' death.d_gid AS id,'
-				.' death.d_julianday2-birth.d_julianday1 AS age'
-			.' FROM'
-				." `##dates` AS death,"
-				." `##dates` AS birth,"
-				." `##individuals` AS indi"
-			.' WHERE'
-				.' indi.i_id=birth.d_gid AND'
-				.' birth.d_gid=death.d_gid AND'
-				." death.d_file={$this->_ged_id} AND"
-				.' birth.d_file=death.d_file AND'
-				.' birth.d_file=indi.i_file AND'
-				." birth.d_fact='BIRT' AND"
-				." death.d_fact='DEAT' AND"
-				.' birth.d_julianday1<>0 AND'
-				.' death.d_julianday1>birth.d_julianday2 AND'
-				.$sex_search
-			.' ORDER BY'
-				.' age DESC LIMIT 1'
+		$rows=self::_runSQL(
+			" SELECT SQL_CACHE".
+			" death.d_gid AS id,".
+			" death.d_julianday2-birth.d_julianday1 AS age".
+			" FROM".
+			" `##dates` AS death,".
+			" `##dates` AS birth,".
+			" `##individuals` AS indi".
+			" WHERE".
+			" indi.i_id=birth.d_gid AND".
+			" birth.d_gid=death.d_gid AND".
+			" death.d_file={$this->_ged_id} AND".
+			" birth.d_file=death.d_file AND".
+			" birth.d_file=indi.i_file AND".
+			" birth.d_fact='BIRT' AND".
+			" death.d_fact='DEAT' AND".
+			" birth.d_julianday1<>0 AND".
+			" death.d_julianday1>birth.d_julianday2 AND".
+			$sex_search.
+			" ORDER BY".
+			" age DESC LIMIT 1"
 		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
@@ -1567,27 +1487,27 @@ class WT_Stats {
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
 		$rows=self::_runSQL(
-			'SELECT SQL_CACHE '.
-			' MAX(death.d_julianday2-birth.d_julianday1) AS age, '.
-			' death.d_gid AS deathdate '.
-			'FROM '.
+			"SELECT SQL_CACHE ".
+			" MAX(death.d_julianday2-birth.d_julianday1) AS age, ".
+			" death.d_gid AS deathdate ".
+			"FROM ".
 			" `##dates` AS death, ".
 			" `##dates` AS birth, ".
 			" `##individuals` AS indi ".
-			'WHERE '.
-			' indi.i_id=birth.d_gid AND '.
-			' birth.d_gid=death.d_gid AND '.
+			"WHERE ".
+			" indi.i_id=birth.d_gid AND ".
+			" birth.d_gid=death.d_gid AND ".
 			" death.d_file={$this->_ged_id} AND ".
-			' birth.d_file=death.d_file AND '.
-			' birth.d_file=indi.i_file AND '.
-			" birth.d_fact='BIRT' AND ". // Only use BIRT/DEAT.  Using CHR/BURI can give spurious results.
+			" birth.d_file=death.d_file AND ".
+			" birth.d_file=indi.i_file AND ".
+			" birth.d_fact='BIRT' AND ".
 			" death.d_fact='DEAT' AND ".
-			' birth.d_julianday1<>0 AND '.
-			' death.d_julianday1>birth.d_julianday2 '.
+			" birth.d_julianday1<>0 AND ".
+			" death.d_julianday1>birth.d_julianday2 ".
 			$sex_search.
-			'GROUP BY deathdate '.
-			'ORDER BY age DESC '.
-			'LIMIT '.$total
+			"GROUP BY deathdate ".
+			"ORDER BY age DESC ".
+			"LIMIT ".$total
 		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
@@ -1637,25 +1557,24 @@ class WT_Stats {
 		}
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
-		$rows=self::_runSQL(''
-			." SELECT SQL_CACHE"
-			." birth.d_gid AS id,"
-			." MIN(birth.d_julianday1) AS age"
-			." FROM"
-			." `##dates` AS birth,"
-			." `##individuals` AS indi"
-			." WHERE"
-			." indi.i_id=birth.d_gid AND"
-			." indi.i_gedcom NOT REGEXP '\n1 (".WT_EVENTS_DEAT.")' AND"
-			." birth.d_file={$this->_ged_id} AND"
-			." birth.d_fact='BIRT' AND"
-			." birth.d_file=indi.i_file AND"
-			." birth.d_julianday1<>0"
-			.$sex_search
-			.' GROUP BY'
-			.' id'
-			.' ORDER BY'
-			.' age ASC LIMIT '.$total
+		$rows=self::_runSQL(
+			"SELECT SQL_CACHE".
+			" birth.d_gid AS id,".
+			" MIN(birth.d_julianday1) AS age".
+			" FROM".
+			" `##dates` AS birth,".
+			" `##individuals` AS indi".
+			" WHERE".
+			" indi.i_id=birth.d_gid AND".
+			" indi.i_gedcom NOT REGEXP '\n1 (".WT_EVENTS_DEAT.")' AND".
+			" birth.d_file={$this->_ged_id} AND".
+			" birth.d_fact='BIRT' AND".
+			" birth.d_file=indi.i_file AND".
+			" birth.d_julianday1<>0".
+			$sex_search.
+			" GROUP B id".
+			" ORDER BY age".
+			" ASC LIMIT ".$total
 		);
 		if (!isset($rows)) {return 0;}
 		$top10 = array();
@@ -1711,7 +1630,7 @@ class WT_Stats {
 			" death.d_file=".$this->_ged_id. " AND ".
 			" birth.d_file=death.d_file AND ".
 			" birth.d_file=indi.i_file AND ".
-			" birth.d_fact='BIRT' AND ". // Use only BIRT and DEAT.  Using CHR/BURI can give spurious results.
+			" birth.d_fact='BIRT' AND ".
 			" death.d_fact='DEAT' AND ".
 			" birth.d_julianday1<>0 AND ".
 			" death.d_julianday1>birth.d_julianday2 ".
@@ -1738,28 +1657,28 @@ class WT_Stats {
 		if ($simple) {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '230x250';}
 			$sizes = explode('x', $size);
-			$rows=self::_runSQL(''
-				.' SELECT SQL_CACHE'
-					.' ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age,'
-					.' FLOOR(death.d_year/100+1) AS century,'
-					.' i_sex AS sex'
-				.' FROM'
-					." `##dates` AS death,"
-					." `##dates` AS birth,"
-					." `##individuals` AS indi"
-				.' WHERE'
-					.' indi.i_id=birth.d_gid AND'
-					.' birth.d_gid=death.d_gid AND'
-					." death.d_file={$this->_ged_id} AND"
-					.' birth.d_file=death.d_file AND'
-					.' birth.d_file=indi.i_file AND'
-					." birth.d_fact='BIRT' AND"
-					." death.d_fact='DEAT' AND"
-					.' birth.d_julianday1<>0 AND'
-					." birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
-					." death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
-					.' death.d_julianday1>birth.d_julianday2'
-				.' GROUP BY century, sex ORDER BY century, sex');
+			$rows=self::_runSQL(
+				"SELECT SQL_CACHE".
+				" ROUND(AVG(death.d_julianday2-birth.d_julianday1)/365.25,1) AS age,".
+				" FLOOR(death.d_year/100+1) AS century,".
+				" i_sex AS sex".
+				" FROM".
+				" `##dates` AS death,".
+				" `##dates` AS birth,".
+				" `##individuals` AS indi".
+				" WHERE".
+				" indi.i_id=birth.d_gid AND".
+				" birth.d_gid=death.d_gid AND".
+				" death.d_file={$this->_ged_id} AND".
+				" birth.d_file=death.d_file AND".
+				" birth.d_file=indi.i_file AND".
+				" birth.d_fact='BIRT' AND".
+				" death.d_fact='DEAT' AND".
+				" birth.d_julianday1<>0 AND".
+				" birth.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND".
+				" death.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND".
+				" death.d_julianday1>birth.d_julianday2".
+				" GROUP BY century, sex ORDER BY century, sex");
 			if (empty($rows)) return '';
 			$chxl = '0:|';
 			$countsm = '';
@@ -1826,33 +1745,33 @@ class WT_Stats {
 					$years = " AND death.d_year BETWEEN '{$year1}' AND '{$year2}'";
 				}
 			}
-			$rows=self::_runSQL(''
-				.' SELECT SQL_CACHE'
-					.' death.d_julianday2-birth.d_julianday1 AS age'
-				.' FROM'
-					." `##dates` AS death,"
-					." `##dates` AS birth,"
-					." `##individuals` AS indi"
-				.' WHERE'
-					.' indi.i_id=birth.d_gid AND'
-					.' birth.d_gid=death.d_gid AND'
-					." death.d_file={$this->_ged_id} AND"
-					.' birth.d_file=death.d_file AND'
-					.' birth.d_file=indi.i_file AND'
-					." birth.d_fact='BIRT' AND"
-					." death.d_fact='DEAT' AND"
-					.' birth.d_julianday1<>0 AND'
-					.' death.d_julianday1>birth.d_julianday2'
-					.$years
-					.$sex_search
-				.' ORDER BY age DESC');
+			$rows=self::_runSQL(
+				"SELECT SQL_CACHE".
+				" death.d_julianday2-birth.d_julianday1 AS age".
+				" FROM".
+				" `##dates` AS death,".
+				" `##dates` AS birth,".
+				" `##individuals` AS indi".
+				" WHERE".
+				" indi.i_id=birth.d_gid AND".
+				" birth.d_gid=death.d_gid AND".
+				" death.d_file={$this->_ged_id} AND".
+				" birth.d_file=death.d_file AND".
+				" birth.d_file=indi.i_file AND".
+				" birth.d_fact='BIRT' AND".
+				" death.d_fact='DEAT' AND".
+				" birth.d_julianday1<>0 AND".
+				" death.d_julianday1>birth.d_julianday2".
+				$years.
+				$sex_search.
+				" ORDER BY age DESC");
 			if (!isset($rows)) {return 0;}
 			return $rows;
 		}
 	}
 
 	// Both Sexes
-	function statsAge($params=null) {return $this->_statsAge(true, 'BIRT', 'BOTH', -1, -1, $params);}
+	function statsAge($params=null) {return $this->_statsAge(true, 'BIRT', 'BOTH', -1, -1, $params);}.
 
 	function longestLife()     { return $this->_longlifeQuery('full', 'BOTH'); }
 	function longestLifeAge()  { return $this->_longlifeQuery('age',  'BOTH'); }
@@ -2003,88 +1922,24 @@ class WT_Stats {
 	function _marriageQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
 		if ($sex == 'F') {$sex_field = 'f_wife';} else {$sex_field = 'f_husb';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
-		$rows=self::_runSQL(''
-		/* //old
-			.' SELECT'
-				.' fam.f_id AS famid,'
-				." fam.{$sex_field},"
-				.' married.d_julianday2-birth.d_julianday1 AS age,'
-				.' indi.i_id AS i_id'
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
-			.' WHERE'
-				.' birth.d_gid = indi.i_id AND'
-				.' married.d_gid = fam.f_id AND'
-				." indi.i_id = fam.{$sex_field} AND"
-				." fam.f_file = {$this->_ged_id} AND"
-				." birth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
-				." married.d_fact = 'MARR' AND"
-				.' birth.d_julianday1 <> 0 AND'
-				.' married.d_julianday2 > birth.d_julianday1 AND'
-				." i_sex='{$sex}'"
-			.' ORDER BY'
-				." married.d_julianday2-birth.d_julianday1 {$age_dir}"
-		//testing - too slow
-			. 'SELECT'
-				.' fam.f_id AS famid,'
-				." fam.{$sex_field},"
-				.' married.d_julianday2-birth.d_julianday1 AS age,'
-				.' indi.i_id AS i_id'
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS birth ON birth.d_file = {$this->_ged_id} AND birth.d_fact = 'BIRT'"
-			.' LEFT JOIN'
-				." `##dates` AS birth_act ON birth_act.d_file = {$this->_ged_id} AND birth_act.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM')"
-			.' LEFT JOIN'
-				." `##dates` AS married ON married.d_file = {$this->_ged_id} AND married.d_fact = 'MARR'"
-			.' LEFT JOIN'
-				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
-			.' WHERE'
-				.' birth.d_gid = indi.i_id AND'
-				.' birth_act.d_gid = indi.i_id AND'
-				.' married.d_gid = fam.f_id AND'
-				." indi.i_id = fam.{$sex_field} AND"
-				." fam.f_file = {$this->_ged_id} AND"
-				.' ((birth.d_julianday1 <> 0) OR (birth_act.d_julianday1 <> 0)) AND'
-				.' ((married.d_julianday2 > birth.d_julianday1) OR (married.d_julianday2 > birth_act.d_julianday1)) AND'
-				.' birth.d_julianday1 <= birth_act.d_julianday1 AND'
-				." i_sex='{$sex}'"
-			.' ORDER BY'
-				." married.d_julianday2-birth.d_julianday1 {$age_dir}"
-		*/
-		// use only BIRT and MARR
-			.' SELECT SQL_CACHE'
-				.' fam.f_id AS famid,'
-				." fam.{$sex_field},"
-				.' married.d_julianday2-birth.d_julianday1 AS age,'
-				.' indi.i_id AS i_id'
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
-			.' WHERE'
-				.' birth.d_gid = indi.i_id AND'
-				.' married.d_gid = fam.f_id AND'
-				." indi.i_id = fam.{$sex_field} AND"
-				." fam.f_file = {$this->_ged_id} AND"
-				." birth.d_fact = 'BIRT' AND"
-				." married.d_fact = 'MARR' AND"
-				.' birth.d_julianday1 <> 0 AND'
-				.' married.d_julianday2 > birth.d_julianday1 AND'
-				." i_sex='{$sex}'"
-			.' ORDER BY'
-				." married.d_julianday2-birth.d_julianday1 {$age_dir} LIMIT 1"
+		$rows=self::_runSQL(
+			" SELECT SQL_CACHE fam.f_id AS famid, fam.{$sex_field}, married.d_julianday2-birth.d_julianday1 AS age, indi.i_id AS i_id".
+			" FROM `##families` AS fam".
+			" LEFT JOIN `##dates` AS birth ON birth.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->_ged_id}".
+			" WHERE".
+			" birth.d_gid = indi.i_id AND".
+			" married.d_gid = fam.f_id AND".
+			" indi.i_id = fam.{$sex_field} AND".
+			" fam.f_file = {$this->_ged_id} AND".
+			" birth.d_fact = 'BIRT' AND".
+			" married.d_fact = 'MARR' AND".
+			" birth.d_julianday1 <> 0 AND".
+			" married.d_julianday2 > birth.d_julianday1 AND".
+			" i_sex='{$sex}'".
+			" ORDER BY".
+			" married.d_julianday2-birth.d_julianday1 {$age_dir} LIMIT 1"
 		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
@@ -2125,72 +1980,51 @@ class WT_Stats {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
-		$hrows=self::_runSQL(''
-			.' SELECT SQL_CACHE DISTINCT'
-				.' fam.f_id AS family,'
-				.' MIN(husbdeath.d_julianday2-married.d_julianday1) AS age'
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##dates` AS husbdeath ON husbdeath.d_file = {$this->_ged_id}"
-			.' WHERE'
-				." fam.f_file = {$this->_ged_id} AND"
-				.' husbdeath.d_gid = fam.f_husb AND'
-				." husbdeath.d_fact = 'DEAT' AND"
-				.' married.d_gid = fam.f_id AND'
-				." married.d_fact = 'MARR' AND"
-				.' married.d_julianday1 < husbdeath.d_julianday2 AND'
-				.' married.d_julianday1 <> 0'
-			.' GROUP BY'
-				.' family'
-			.' ORDER BY'
-				." age {$age_dir}");
-		$wrows=self::_runSQL(''
-			.' SELECT SQL_CACHE DISTINCT'
-				.' fam.f_id AS family,'
-				.' MIN(wifedeath.d_julianday2-married.d_julianday1) AS age'
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##dates` AS wifedeath ON wifedeath.d_file = {$this->_ged_id}"
-			.' WHERE'
-				." fam.f_file = {$this->_ged_id} AND"
-				.' wifedeath.d_gid = fam.f_wife AND'
-				." wifedeath.d_fact = 'DEAT' AND"
-				.' married.d_gid = fam.f_id AND'
-				." married.d_fact = 'MARR' AND"
-				.' married.d_julianday1 < wifedeath.d_julianday2 AND'
-				.' married.d_julianday1 <> 0'
-			.' GROUP BY'
-				.' family'
-			.' ORDER BY'
-				." age {$age_dir}");
-		$drows=self::_runSQL(''
-			.' SELECT SQL_CACHE DISTINCT'
-				.' fam.f_id AS family,'
-				.' MIN(divorced.d_julianday2-married.d_julianday1) AS age'
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##dates` AS divorced ON divorced.d_file = {$this->_ged_id}"
-			.' WHERE'
-				." fam.f_file = {$this->_ged_id} AND"
-				.' married.d_gid = fam.f_id AND'
-				." married.d_fact = 'MARR' AND"
-				.' divorced.d_gid = fam.f_id AND'
-				." divorced.d_fact IN ('DIV', 'ANUL', '_SEPR', '_DETS') AND"
-				.' married.d_julianday1 < divorced.d_julianday2 AND'
-				.' married.d_julianday1 <> 0'
-			.' GROUP BY'
-				.' family'
-			.' ORDER BY'
-				." age {$age_dir}");
+		$hrows=self::_runSQL(
+			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(husbdeath.d_julianday2-married.d_julianday1) AS age".
+			" FROM `##families` AS fam".
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS husbdeath ON husbdeath.d_file = {$this->_ged_id}".
+			" WHERE".
+			" fam.f_file = {$this->_ged_id} AND".
+			" husbdeath.d_gid = fam.f_husb AND".
+			" husbdeath.d_fact = 'DEAT' AND".
+			" married.d_gid = fam.f_id AND".
+			" married.d_fact = 'MARR' AND".
+			" married.d_julianday1 < husbdeath.d_julianday2 AND".
+			" married.d_julianday1 <> 0".
+			" GROUP BY family".
+			" ORDER B age {$age_dir}");
+		$wrows=self::_runSQL(
+			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(wifedeath.d_julianday2-married.d_julianday1) AS age".
+			" FROM `##families` AS fam".
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS wifedeath ON wifedeath.d_file = {$this->_ged_id}".
+			" WHERE".
+			" fam.f_file = {$this->_ged_id} AND".
+			" wifedeath.d_gid = fam.f_wife AND".
+			" wifedeath.d_fact = 'DEAT' AND".
+			" married.d_gid = fam.f_id AND".
+			" married.d_fact = 'MARR' AND".
+			" married.d_julianday1 < wifedeath.d_julianday2 AND".
+			" married.d_julianday1 <> 0".
+			" GROUP BY family".
+			" ORDER BY age {$age_dir}");
+		$drows=self::_runSQL(
+			" SELECT SQL_CACHE DISTINCT fam.f_id AS family, MIN(divorced.d_julianday2-married.d_julianday1) AS age".
+			" FROM `##families` AS fam".
+			" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->_ged_id}".
+			" WHERE".
+			" fam.f_file = {$this->_ged_id} AND".
+			" married.d_gid = fam.f_id AND".
+			" married.d_fact = 'MARR' AND".
+			" divorced.d_gid = fam.f_id AND".
+			" divorced.d_fact IN ('DIV', 'ANUL', '_SEPR', '_DETS') AND".
+			" married.d_julianday1 < divorced.d_julianday2 AND".
+			" married.d_julianday1 <> 0".
+			" GROUP BY family".
+			" ORDER BY age {$age_dir}");
 		if (!isset($hrows) && !isset($wrows) && !isset($drows)) {return 0;}
 		$rows = array();
 		foreach ($drows as $family) {
@@ -2258,37 +2092,26 @@ class WT_Stats {
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if ($age_dir=='DESC') {
 			$query1 = ' MIN(wifebirth.d_julianday2-husbbirth.d_julianday1) AS age';
-			$query2 = ' wifebirth.d_julianday2 >= husbbirth.d_julianday1 AND'
-					 .' husbbirth.d_julianday1 <> 0';
+			$query2 = ' wifebirth.d_julianday2 >= husbbirth.d_julianday1 AND husbbirth.d_julianday1 <> 0';
 		} else {
 			$query1 = ' MIN(husbbirth.d_julianday2-wifebirth.d_julianday1) AS age';
-			$query2 = ' wifebirth.d_julianday1 < husbbirth.d_julianday2 AND'
-					 .' wifebirth.d_julianday1 <> 0';
+			$query2 = ' wifebirth.d_julianday1 < husbbirth.d_julianday2 AND wifebirth.d_julianday1 <> 0';
 		}
 		$total=(int)$total;
-		$rows=self::_runSQL(''
-			.' SELECT SQL_CACHE'
-				.' fam.f_id AS family,'
-				.$query1
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS wifebirth ON wifebirth.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##dates` AS husbbirth ON husbbirth.d_file = {$this->_ged_id}"
-			.' WHERE'
-				." fam.f_file = {$this->_ged_id} AND"
-				.' husbbirth.d_gid = fam.f_husb AND'
-				//." husbbirth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
-				." husbbirth.d_fact = 'BIRT' AND"
-				.' wifebirth.d_gid = fam.f_wife AND'
-				//." wifebirth.d_fact IN ('BIRT', 'CHR', 'BAPM', '_BRTM') AND"
-				." wifebirth.d_fact = 'BIRT' AND"
-				.$query2
-			.' GROUP BY'
-				.' family'
-			.' ORDER BY'
-				." age DESC LIMIT ".$total
+		$rows=self::_runSQL(
+			" SELECT SQL_CACHE fam.f_id AS family," .$query1.
+			" FROM `##families` AS fam".
+			" LEFT JOIN `##dates` AS wifebirth ON wifebirth.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS husbbirth ON husbbirth.d_file = {$this->_ged_id}".
+			" WHERE".
+			" fam.f_file = {$this->_ged_id} AND".
+			" husbbirth.d_gid = fam.f_husb AND".
+			" husbbirth.d_fact = 'BIRT' AND".
+			" wifebirth.d_gid = fam.f_wife AND".
+			" wifebirth.d_fact = 'BIRT' AND".
+			$query2.
+			" GROUP BY family".
+			" ORDER BY age DESC LIMIT ".$total
 		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
@@ -2329,31 +2152,26 @@ class WT_Stats {
 	function _parentsQuery($type='full', $age_dir='ASC', $sex='F', $show_years=false) {
 		if ($sex == 'F') {$sex_field = 'WIFE';} else {$sex_field = 'HUSB';}
 		if ($age_dir != 'ASC') {$age_dir = 'DESC';}
-		$rows=self::_runSQL(''
-			.' SELECT SQL_CACHE'
-				.' parentfamily.l_to AS id,'
-				.' childbirth.d_julianday2-birth.d_julianday1 AS age'
-			.' FROM'
-				." `##link` AS parentfamily"
-			.' JOIN'
-				." `##link` AS childfamily ON childfamily.l_file = {$this->_ged_id}"
-			.' JOIN'
-				." `##dates` AS birth ON birth.d_file = {$this->_ged_id}"
-			.' JOIN'
-				." `##dates` AS childbirth ON childbirth.d_file = {$this->_ged_id}"
-			.' WHERE'
-				.' birth.d_gid = parentfamily.l_to AND'
-				.' childfamily.l_to = childbirth.d_gid AND'
-				." childfamily.l_type = 'CHIL' AND"
-				." parentfamily.l_type = '{$sex_field}' AND"
-				.' childfamily.l_from = parentfamily.l_from AND'
-				." parentfamily.l_file = {$this->_ged_id} AND"
-				." birth.d_fact = 'BIRT' AND"
-				." childbirth.d_fact = 'BIRT' AND"
-				.' birth.d_julianday1 <> 0 AND'
-				.' childbirth.d_julianday2 > birth.d_julianday1'
-			.' ORDER BY'
-				." age {$age_dir} LIMIT 1"
+		$rows=self::_runSQL(
+			" SELECT SQL_CACHE".
+			" parentfamily.l_to AS id,".
+			" childbirth.d_julianday2-birth.d_julianday1 AS age".
+			" FROM `##link` AS parentfamily".
+			" JOIN `##link` AS childfamily ON childfamily.l_file = {$this->_ged_id}".
+			" JOIN `##dates` AS birth ON birth.d_file = {$this->_ged_id}".
+			" JOIN `##dates` AS childbirth ON childbirth.d_file = {$this->_ged_id}".
+			" WHERE".
+			" birth.d_gid = parentfamily.l_to AND".
+			" childfamily.l_to = childbirth.d_gid AND".
+			" childfamily.l_type = 'CHIL' AND".
+			" parentfamily.l_type = '{$sex_field}' AND".
+			" childfamily.l_from = parentfamily.l_from AND".
+			" parentfamily.l_file = {$this->_ged_id} AND".
+			" birth.d_fact = 'BIRT' AND".
+			" childbirth.d_fact = 'BIRT' AND".
+			" birth.d_julianday1 <> 0 AND".
+			" childbirth.d_julianday2 > birth.d_julianday1".
+			" ORDER BY age {$age_dir} LIMIT 1"
 		);
 		if (!isset($rows[0])) {return '';}
 		$row=$rows[0];
@@ -2393,47 +2211,37 @@ class WT_Stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` "
-					."WHERE "
-						."d_file={$this->_ged_id} AND "
-						.'d_year<>0 AND '
-						."d_fact='MARR' AND "
-						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-						if ($year1>=0 && $year2>=0) {
-							$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-						}
-					$sql .= " GROUP BY century ORDER BY century";
+			$sql =
+				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total".
+				" FROM `##dates`".
+				" WHERE d_file={$this->_ged_id} AND d_year<>0 AND d_fact='MARR' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+			if ($year1>=0 && $year2>=0) {
+				$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
+			}
+			$sql .= " GROUP BY century ORDER BY century";
 		} else if ($first) {
 			$years = '';
 			if ($year1>=0 && $year2>=0) {
 				$years = " married.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
 			}
-			$sql=''
-			.' SELECT SQL_CACHE'
-				.' fam.f_id AS fams,'
-				.' fam.f_husb, fam.f_wife,'
-				.' married.d_julianday2 AS age,'
-				.' married.d_month AS month,'
-				.' indi.i_id AS indi'
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
-			.' WHERE'
-				.' married.d_gid = fam.f_id AND'
-				." fam.f_file = {$this->_ged_id} AND"
-				." married.d_fact = 'MARR' AND"
-				.' married.d_julianday2 <> 0 AND'
-				.$years
-				.' (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)'
-			.' ORDER BY fams, indi, age ASC';
+			$sql=
+				" SELECT SQL_CACHE fam.f_id AS fams, fam.f_husb, fam.f_wife, married.d_julianday2 AS age, married.d_month AS month, indi.i_id AS indi".
+				" FROM `##families` AS fam".
+				" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
+				" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->_ged_id}".
+				" WHERE".
+				" married.d_gid = fam.f_id AND".
+				" fam.f_file = {$this->_ged_id} AND".
+				" married.d_fact = 'MARR' AND".
+				" married.d_julianday2 <> 0 AND".
+				$years.
+				" (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)".
+				" ORDER BY fams, indi, age ASC";
 		} else {
-			$sql = "SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` "
-				."WHERE "
-				."d_file={$this->_ged_id} AND "
-				."d_fact='MARR'";
+			$sql =
+				"SELECT SQL_CACHE d_month, COUNT(*) AS total".
+				" FROM `##dates`".
+				" WHERE d_file={$this->_ged_id} AND d_fact='MARR'";
 				if ($year1>=0 && $year2>=0) {
 					$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 				}
@@ -2469,47 +2277,36 @@ class WT_Stats {
 		global $WT_STATS_CHART_COLOR1, $WT_STATS_CHART_COLOR2, $WT_STATS_S_CHART_X, $WT_STATS_S_CHART_Y;
 
 		if ($simple) {
-			$sql = "SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total FROM `##dates` "
-					."WHERE "
-						."d_file={$this->_ged_id} AND "
-						.'d_year<>0 AND '
-						."d_fact = 'DIV' AND "
-						."d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
-						if ($year1>=0 && $year2>=0) {
-							$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
-						}
-					$sql .= " GROUP BY century ORDER BY century";
+			$sql =
+				"SELECT SQL_CACHE FLOOR(d_year/100+1) AS century, COUNT(*) AS total".
+				" FROM `##dates`".
+				" WHERE d_file={$this->_ged_id} AND d_year<>0 AND d_fact = 'DIV' AND d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')";
+				if ($year1>=0 && $year2>=0) {
+					$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
+				}
+				$sql .= " GROUP BY century ORDER BY century";
 		} else if ($first) {
 			$years = '';
 			if ($year1>=0 && $year2>=0) {
 				$years = " divorced.d_year BETWEEN '{$year1}' AND '{$year2}' AND";
 			}
-			$sql=''
-			.' SELECT SQL_CACHE'
-				.' fam.f_id AS fams,'
-				.' fam.f_husb, fam.f_wife,'
-				.' divorced.d_julianday2 AS age,'
-				.' divorced.d_month AS month,'
-				.' indi.i_id AS indi'
-			.' FROM'
-				." `##families` AS fam"
-			.' LEFT JOIN'
-				." `##dates` AS divorced ON divorced.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##individuals` AS indi ON indi.i_file = {$this->_ged_id}"
-			.' WHERE'
-				.' divorced.d_gid = fam.f_id AND'
-				." fam.f_file = {$this->_ged_id} AND"
-				." divorced.d_fact = 'DIV' AND"
-				.' divorced.d_julianday2 <> 0 AND'
-				.$years
-				.' (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)'
-			.' ORDER BY fams, indi, age ASC';
+			$sql=
+			" SELECT SQL_CACHE fam.f_id AS fams, fam.f_husb, fam.f_wife, divorced.d_julianday2 AS age, divorced.d_month AS month, indi.i_id AS indi".
+			" FROM `##families` AS fam".
+			" LEFT JOIN `##dates` AS divorced ON divorced.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##individuals` AS indi ON indi.i_file = {$this->_ged_id}".
+			" WHERE".
+			" divorced.d_gid = fam.f_id AND".
+			" fam.f_file = {$this->_ged_id} AND".
+			" divorced.d_fact = 'DIV' AND".
+			" divorced.d_julianday2 <> 0 AND".
+			$years.
+			" (indi.i_id = fam.f_husb OR indi.i_id = fam.f_wife)".
+			" ORDER BY fams, indi, age ASC";
 		} else {
-			$sql = "SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` "
-				."WHERE "
-				."d_file={$this->_ged_id} AND "
-				."d_fact = 'DIV'";
+			$sql =
+				"SELECT SQL_CACHE d_month, COUNT(*) AS total FROM `##dates` ".
+				"WHERE d_file={$this->_ged_id} AND d_fact = 'DIV'";
 				if ($year1>=0 && $year2>=0) {
 					$sql .= " AND d_year BETWEEN '{$year1}' AND '{$year2}'";
 				}
@@ -2781,19 +2578,17 @@ class WT_Stats {
 ///////////////////////////////////////////////////////////////////////////////
 
 	function _familyQuery($type='full') {
-		$rows=self::_runSQL(''
-			.' SELECT SQL_CACHE'
-				.' f_numchil AS tot,'
-				.' f_id AS id'
-			.' FROM'
-				." `##families`"
-			.' WHERE'
-				." f_file={$this->_ged_id}"
-				.' AND f_numchil = ('
-				.' SELECT max( f_numchil )'
-				." FROM `##families`" 
-				." WHERE f_file ={$this->_ged_id})" 
-				.' LIMIT 1'
+		$rows=self::_runSQL(
+			" SELECT SQL_CACHE f_numchil AS tot, f_id AS id".
+			" FROM `##families`".
+			" WHERE".
+			" f_file={$this->_ged_id}".
+			" AND f_numchil = (".
+			"  SELECT max( f_numchil )".
+			"  FROM `##families`" .
+			"  WHERE f_file ={$this->_ged_id}".
+			" )".
+			" LIMIT 1"
 		);
 		if (!isset($rows[0])) {return '';}
 		$row = $rows[0];
@@ -2822,16 +2617,13 @@ class WT_Stats {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
-		$rows=self::_runSQL(''
-			.' SELECT SQL_CACHE'
-				.' f_numchil AS tot,'
-				.' f_id AS id'
-			.' FROM'
-				." `##families`"
-			.' WHERE'
-				." f_file={$this->_ged_id}"
-			.' ORDER BY'
-				.' tot DESC LIMIT '.$total
+		$rows=self::_runSQL(
+			"SELECT SQL_CACHE f_numchil AS tot, f_id AS id".
+			" FROM `##families`".
+			" WHERE".
+			" f_file={$this->_ged_id}".
+			" ORDER BY tot DESC".
+			" LIMIT ".$total
 		);
 		if (!isset($rows[0])) {return '';}
 		if (count($rows) < $total) {$total = count($rows);}
@@ -2870,34 +2662,30 @@ class WT_Stats {
 		if (isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		if (isset($params[1])) {$one = $params[1];} else {$one = false;} // each family only once if true
 		$total=(int)$total;
-		$rows=self::_runSQL(''
-			.' SELECT SQL_CACHE DISTINCT'
-				.' link1.l_from AS family,'
-				.' link1.l_to AS ch1,'
-				.' link2.l_to AS ch2,'
-				.' child1.d_julianday2-child2.d_julianday2 AS age'
-			.' FROM'
-				." `##link` AS link1"
-			.' LEFT JOIN'
-				." `##dates` AS child1 ON child1.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##dates` AS child2 ON child2.d_file = {$this->_ged_id}"
-			.' LEFT JOIN'
-				." `##link` AS link2 ON link2.l_file = {$this->_ged_id}"
-			.' WHERE'
-				." link1.l_file = {$this->_ged_id} AND"
-				.' link1.l_from = link2.l_from AND'
-				." link1.l_type = 'CHIL' AND"
-				.' child1.d_gid = link1.l_to AND'
-				." child1.d_fact = 'BIRT' AND"
-				." link2.l_type = 'CHIL' AND"
-				.' child2.d_gid = link2.l_to AND'
-				." child2.d_fact = 'BIRT' AND"
-				.' child1.d_julianday2 > child2.d_julianday2 AND'
-				.' child2.d_julianday2 <> 0 AND'
-				.' child1.d_gid <> child2.d_gid'
-			.' ORDER BY'
-				." age DESC LIMIT ".$total
+		$rows=self::_runSQL(
+			" SELECT SQL_CACHE DISTINCT".
+			" link1.l_from AS family,".
+			" link1.l_to AS ch1,".
+			" link2.l_to AS ch2,".
+			" child1.d_julianday2-child2.d_julianday2 AS age".
+			" FROM `##link` AS link1".
+			" LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##dates` AS child2 ON child2.d_file = {$this->_ged_id}".
+			" LEFT JOIN `##link` AS link2 ON link2.l_file = {$this->_ged_id}".
+			" WHERE".
+			" link1.l_file = {$this->_ged_id} AND".
+			" link1.l_from = link2.l_from AND".
+			" link1.l_type = 'CHIL' AND".
+			" child1.d_gid = link1.l_to AND".
+			" child1.d_fact = 'BIRT' AND".
+			" link2.l_type = 'CHIL' AND".
+			" child2.d_gid = link2.l_to AND".
+			" child2.d_fact = 'BIRT' AND".
+			" child1.d_julianday2 > child2.d_julianday2 AND".
+			" child2.d_julianday2 <> 0 AND".
+			" child1.d_gid <> child2.d_gid".
+			" ORDER BY age DESC".
+			" LIMIT ".$total
 		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
@@ -2993,38 +2781,33 @@ class WT_Stats {
 			$sql_sex1 = '';
 			$sql_sex2 = '';
 		}
-		$sql = "SELECT SQL_CACHE d_month{$sql_sex1}, COUNT(*) AS total"
-			.' FROM ('
-				." SELECT family{$sql_sex1}, MIN(date) AS d_date, d_month"
-					.' FROM ('
-						.' SELECT'
-							.' link1.l_from AS family,'
-							.' link1.l_to AS child,'
-							.' child1.d_julianday2 as date,'
-							.' child1.d_month as d_month'
-							.$sql_sex1
-						.' FROM'
-							." `##link` AS link1"
-						.' LEFT JOIN'
-							." `##dates` AS child1 ON child1.d_file = {$this->_ged_id}"
-						.$sql_sex2
-						.' WHERE'
-							." link1.l_file = {$this->_ged_id} AND"
-							." link1.l_type = 'CHIL' AND"
-							.' child1.d_gid = link1.l_to AND'
-							." child1.d_fact = 'BIRT' AND"
-							." d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND"
-							.' child1.d_month <> ""'
-							.$sql_years
-						.' ORDER BY'
-							.' date'
-					.') AS children'
-				.' GROUP BY'
-					.' family'
-			.') AS first_child'
-			.' GROUP BY'
-				.' d_month'
-		;
+		$sql =
+			"SELECT SQL_CACHE d_month{$sql_sex1}, COUNT(*) AS total ".
+			"FROM (".
+			" SELECT family{$sql_sex1}, MIN(date) AS d_date, d_month".
+			" FROM (".
+			"  SELECT".
+			"  link1.l_from AS family,".
+			"  link1.l_to AS child,".
+			"  child1.d_julianday2 as date,".
+			"  child1.d_month as d_month".
+			$sql_sex1.
+			"  FROM `##link` AS link1".
+			"  LEFT JOIN `##dates` AS child1 ON child1.d_file = {$this->_ged_id}".
+			$sql_sex2.
+			"  WHERE".
+			"  link1.l_file = {$this->_ged_id} AND".
+			"  link1.l_type = 'CHIL' AND".
+			"  child1.d_gid = link1.l_to AND".
+			"  child1.d_fact = 'BIRT' AND".
+			"  d_type IN ('@#DGREGORIAN@', '@#DJULIAN@') AND".
+			"  child1.d_month <> """.
+			$sql_years.
+			"  ORDER BY date".
+			" ) AS children".
+			" GROUP BY family".
+			") AS first_child ".
+			"GROUP BY d_month";
 		if ($sex) $sql .= ', i_sex';
 		$rows=self::_runSQL($sql);
 		if ($simple) {
@@ -3106,16 +2889,12 @@ class WT_Stats {
 		if (isset($params[3]) && $params[3] != '') {$total = strtolower($params[3]);} else {$total = 10;}
 		$sizes = explode('x', $size);
 		$total=(int)$total;
-		$rows=self::_runSQL(''
-			.' SELECT SQL_CACHE'
-				.' f_numchil AS tot,'
-				.' f_id AS id'
-			.' FROM'
-				." `##families`"
-			.' WHERE'
-				." f_file={$this->_ged_id}"
-			.' ORDER BY'
-				.' tot DESC LIMIT '.$total
+		$rows=self::_runSQL(
+			" SELECT SQL_CACHE f_numchil AS tot, f_id AS id".
+			" FROM `##families`".
+			" WHERE f_file={$this->_ged_id}".
+			" ORDER BY tot DESC".
+			" LIMIT ".$total
 		);
 		if (!isset($rows[0])) {return '';}
 		$tot = 0;
@@ -3156,20 +2935,17 @@ class WT_Stats {
 			if (isset($params[0]) && $params[0] != '') {$size = strtolower($params[0]);} else {$size = '220x200';}
 			$sizes = explode('x', $size);
 			$max = 0;
-			$rows=self::_runSQL(''
-				.' SELECT SQL_CACHE'
-					.' ROUND(AVG(f_numchil),2) AS num,'
-					.' FLOOR(married.d_year/100+1) AS century'
-				.' FROM'
-					." `##families` AS fam"
-				.' LEFT JOIN'
-					." `##dates` AS married ON married.d_file = {$this->_ged_id}"
-				.' WHERE'
-					.' married.d_gid = fam.f_id AND'
-					." fam.f_file = {$this->_ged_id} AND"
-					." married.d_fact = 'MARR' AND"
-					." married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')"
-				.' GROUP BY century ORDER BY century');
+			$rows=self::_runSQL(
+				" SELECT SQL_CACHE ROUND(AVG(f_numchil),2) AS num, FLOOR(married.d_year/100+1) AS century".
+				" FROM `##families` AS fam".
+				" LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}".
+				" WHERE".
+				" married.d_gid = fam.f_id AND".
+				" fam.f_file = {$this->_ged_id} AND".
+				" married.d_fact = 'MARR' AND".
+				" married.d_type IN ('@#DGREGORIAN@', '@#DJULIAN@')".
+				" GROUP BY century".
+				" ORDER BY century");
 			if (empty($rows)) return '';
 			foreach ($rows as $values) {
 				if ($max<$values['num']) $max = $values['num'];
@@ -3193,38 +2969,39 @@ class WT_Stats {
 			return "<img src=\"https://chart.googleapis.com/chart?cht=bvg&amp;chs={$sizes[0]}x{$sizes[1]}&amp;chf=bg,s,ffffff00|c,s,ffffff00&amp;chm=D,FF0000,0,0,3,1|{$chm}&amp;chd=e:{$chd}&amp;chco=0000FF&amp;chbh=30,3&amp;chxt=x,x,y,y&amp;chxl=".rawurlencode($chxl)."\" width=\"{$sizes[0]}\" height=\"{$sizes[1]}\" alt=\"".WT_I18N::translate('Average number of children per family')."\" title=\"".WT_I18N::translate('Average number of children per family')."\" />";
 		} else {
 			if ($sex=='M') {
-				$sql = "SELECT SQL_CACHE num, COUNT(*) AS total FROM "
-						."(SELECT count(i_sex) AS num FROM `##link` "
-							."LEFT OUTER JOIN `##individuals` "
-							."ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' "
-							."JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
-						.") boys"
-						." GROUP BY num ORDER BY num ASC";
-			}
-			else if ($sex=='F') {
-				$sql = "SELECT SQL_CACHE num, COUNT(*) AS total FROM "
-						."(SELECT count(i_sex) AS num FROM `##link` "
-							."LEFT OUTER JOIN `##individuals` "
-							."ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' "
-							."JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to"
-						.") girls"
-						." GROUP BY num ORDER BY num ASC";
-			}
-			else {
+				$sql =
+					"SELECT SQL_CACHE num, COUNT(*) AS total FROM ".
+					"(SELECT count(i_sex) AS num FROM `##link` ".
+					"LEFT OUTER JOIN `##individuals` ".
+					"ON l_from=i_id AND l_file=i_file AND i_sex='M' AND l_type='FAMC' ".
+					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to".
+					") boys".
+					" GROUP BY num".
+					" ORDER BY num";
+			} elseif ($sex=='F') {
+				$sql =
+					"SELECT SQL_CACHE num, COUNT(*) AS total FROM ".
+					"(SELECT count(i_sex) AS num FROM `##link` ".
+					"LEFT OUTER JOIN `##individuals` ".
+					"ON l_from=i_id AND l_file=i_file AND i_sex='F' AND l_type='FAMC' ".
+					"JOIN `##families` ON f_file=l_file AND f_id=l_to WHERE f_file={$this->_ged_id} GROUP BY l_to".
+					") girls".
+					" GROUP BY num".
+					" ORDER BY num";
+			} else {
 				$sql = "SELECT SQL_CACHE f_numchil, COUNT(*) AS total FROM `##families` ";
 				if ($year1>=0 && $year2>=0) {
-					$sql .= "AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}"
-						.' WHERE'
-						.' married.d_gid = fam.f_id AND'
+					$sql .=
+						"AS fam LEFT JOIN `##dates` AS married ON married.d_file = {$this->_ged_id}"
+						." WHERE"
+						." married.d_gid = fam.f_id AND"
 						." fam.f_file = {$this->_ged_id} AND"
 						." married.d_fact = 'MARR' AND"
 						." married.d_year BETWEEN '{$year1}' AND '{$year2}'";
+				} else {
+					$sql .="WHERE f_file={$this->_ged_id}";
 				}
-				else {
-					$sql .='WHERE '
-						."f_file={$this->_ged_id}";
-				}
-				$sql .= ' GROUP BY f_numchil';
+				$sql .= " GROUP BY f_numchil";
 			}
 			$rows=self::_runSQL($sql);
 			if (!isset($rows)) {return 0;}
@@ -3240,14 +3017,14 @@ class WT_Stats {
 	function topAgeBetweenSiblingsList    ($params=null) { return $this->_ageBetweenSiblingsQuery($type='list',   $params=null); }
 
 	function noChildrenFamilies() {
-		$rows=self::_runSQL(''
-			.' SELECT SQL_CACHE'
-				.' COUNT(*) AS tot'
-			.' FROM'
-				." `##families` AS fam"
-			.' WHERE'
-				.' f_numchil = 0 AND'
-				." fam.f_file = {$this->_ged_id}");
+		$rows=self::_runSQL(
+			" SELECT SQL_CACHE".
+			" COUNT(*) AS tot".
+			" FROM".
+			" `##families` AS fam".
+			" WHERE".
+			" f_numchil = 0 AND".
+			" fam.f_file = {$this->_ged_id}");
 		$row=$rows[0];
 		return WT_I18N::number($row['tot']);
 	}
@@ -3256,14 +3033,10 @@ class WT_Stats {
 	function noChildrenFamiliesList($params = null) {
 		global $TEXT_DIRECTION;
 		if (isset($params[0]) && $params[0] != '') {$type = strtolower($params[0]);} else {$type = 'list';}
-		$rows=self::_runSQL(''
-			.' SELECT SQL_CACHE'
-				.' f_id AS family'
-			.' FROM'
-				." `##families` AS fam"
-			.' WHERE'
-				.' f_numchil = 0 AND'
-				." fam.f_file = {$this->_ged_id}");
+		$rows=self::_runSQL(
+			" SELECT SQL_CACHE f_id AS family".
+			" FROM `##families` AS fam".
+			" WHERE f_numchil = 0 AND fam.f_file = {$this->_ged_id}");
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
 		foreach ($rows as $row) {
@@ -3363,30 +3136,23 @@ class WT_Stats {
 		global $TEXT_DIRECTION;
 		if ($params !== null && isset($params[0])) {$total = $params[0];} else {$total = 10;}
 		$total=(int)$total;
-		$rows=self::_runSQL(''
-			.' SELECT SQL_CACHE'
-				.' COUNT(*) AS tot,'
-				.' f_id AS id'
-			.' FROM'
-				." `##families`"
-			.' JOIN'
-				." `##link` AS children ON children.l_file = {$this->_ged_id}"
-			.' JOIN'
-				." `##link` AS mchildren ON mchildren.l_file = {$this->_ged_id}"
-			.' JOIN'
-				." `##link` AS gchildren ON gchildren.l_file = {$this->_ged_id}"
-			.' WHERE'
-				." f_file={$this->_ged_id} AND"
-				." children.l_from=f_id AND"
-				." children.l_type='CHIL' AND"
-				." children.l_to=mchildren.l_from AND"
-				." mchildren.l_type='FAMS' AND"
-				." mchildren.l_to=gchildren.l_from AND"
-				." gchildren.l_type='CHIL'"
-			.' GROUP BY'
-				.' id'
-			.' ORDER BY'
-				.' tot DESC LIMIT '.$total
+		$rows=self::_runSQL(
+			"SELECT SQL_CACHE COUNT(*) AS tot, f_id AS id".
+			" FROM `##families`".
+			" JOIN `##link` AS children ON children.l_file = {$this->_ged_id}".
+			" JOIN `##link` AS mchildren ON mchildren.l_file = {$this->_ged_id}".
+			" JOIN `##link` AS gchildren ON gchildren.l_file = {$this->_ged_id}".
+			" WHERE".
+			" f_file={$this->_ged_id} AND".
+			" children.l_from=f_id AND".
+			" children.l_type='CHIL' AND".
+			" children.l_to=mchildren.l_from AND".
+			" mchildren.l_type='FAMS' AND".
+			" mchildren.l_to=gchildren.l_from AND".
+			" gchildren.l_type='CHIL'"
+			" GROUP BY id".
+			" ORDER BY tot DESC".
+			" LIMIT ".$total
 		);
 		if (!isset($rows[0])) {return '';}
 		$top10 = array();
