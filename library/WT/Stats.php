@@ -1570,7 +1570,7 @@ class WT_Stats {
 			" birth.d_file=indi.i_file AND".
 			" birth.d_julianday1<>0".
 			$sex_search.
-			" GROUP B id".
+			" GROUP BY id".
 			" ORDER BY age".
 			" ASC LIMIT ".$total
 		);
