@@ -362,17 +362,15 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 				echo WT_Gedcom_Tag::getLabelValue('PLAC', $plac_match[1]);
 			}
 			break;
-		case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC
+		case 'FAMC': // 0 INDI / 1 ADOP / 2 FAMC / 3 ADOP
 			$family=WT_Family::getInstance(str_replace('@', '', $match[2]));
 			if ($family) { // May be a pointer to a non-existant record
-				echo WT_Gedcom_Tag::getLabelValue('FAMC', '<a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a>');
+				echo WT_Gedcom_Tag::getLabelValue('FAM', '<a href="'.$family->getHtmlUrl().'">'.$family->getFullName().'</a>');
+				if (preg_match('/\n3 ADOP (HUSB|WIFE|BOTH)/', $fact->getGedcomRecord(), $match)) {
+					echo WT_Gedcom_Tag::getLabelValue('ADOP', WT_Gedcom_Code_Adop::getValue($match[1], $label_person));
+				}
 			} else {
-				echo WT_Gedcom_Tag::getLabelValue('FAMC', '<span class="error">'.$match[2].'</span>');
-			}
-			if (preg_match('/\n3 ADOP (HUSB|WIFE)/', $fact->getGedcomRecord(), $match)) {
-				echo WT_Gedcom_Tag::getLabelValue('ADOP', WT_Gedcom_Tag::getLabel($match[1]));
-			} else {
-				echo WT_Gedcom_Tag::getLabelValue('ADOP', WT_Gedcom_Tag::getLabel('HUSB').'+'.WT_Gedcom_Tag::getLabel('WIFE'));
+				echo WT_Gedcom_Tag::getLabelValue('FAM', '<span class="error">'.$match[2].'</span>');
 			}
 			break;
 		case '_WT_USER':
