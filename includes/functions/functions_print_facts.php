@@ -370,7 +370,7 @@ function print_fact(WT_Event $fact, WT_GedcomRecord $record) {
 				echo WT_Gedcom_Tag::getLabelValue('FAMC', '<span class="error">'.$match[2].'</span>');
 			}
 			if (preg_match('/\n3 ADOP (HUSB|WIFE)/', $fact->getGedcomRecord(), $match)) {
-				echo WT_Gedcom_Tag::getLabelValue('ADOP', $match[1]);
+				echo WT_Gedcom_Tag::getLabelValue('ADOP', WT_Gedcom_Tag::getLabel($match[1]));
 			} else {
 				echo WT_Gedcom_Tag::getLabelValue('ADOP', WT_Gedcom_Tag::getLabel('HUSB').'+'.WT_Gedcom_Tag::getLabel('WIFE'));
 			}
