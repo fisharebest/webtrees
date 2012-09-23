@@ -507,7 +507,7 @@ html[dir='rtl'] #index_small_blocks {float:left;}
 table.faq {background-color:#e0e0e0;margin:5px 0 50px 5px;width:98%;}
 table.faq tr.odd td {background-color:#e7eef3;}
 div.faq_title {background-color:#e0e0e0;margin:1em 0;padding:.25em;font-weight:bold;width:98%;}
-div.faq_body {clear:both;margin:1em 0;padding:1em;}
+div.faq_body {clear:both;padding:0 1em;}
 .faq_italic {font-style:italic;font-weight:bold;font-size:90%;padding:0 10px;}
 .faq_top {float:right;}
 .faq_edit {float:right;}
