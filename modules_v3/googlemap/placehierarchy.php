@@ -46,7 +46,7 @@ function place_id_to_hierarchy($id) {
 }
 
 function get_placeid($place) {
-	$par = explode (",", $place);
+	$par = explode (",", strip_tags($place));
 	$par = array_reverse($par);
 	$place_id = 0;
 	for ($i=0; $i<count($par); $i++) {
