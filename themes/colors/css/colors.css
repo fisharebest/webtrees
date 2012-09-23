@@ -70,7 +70,7 @@ html[dir='rtl'] .title{float:right;margin-right:12px;}
 #topMenu ul {margin:0;padding:0;}
 html[dir='rtl'] #topMenu{float:right;}
 
-#main-menu > li > a {display:block;height:27px;}
+#main-menu > li > a {display:block;height:40px;}
 #main-menu li{float:left;list-style:none;position:relative;}
 html[dir='rtl'] #main-menu li{float:right;}
 
@@ -107,7 +107,7 @@ html[dir='rtl'] #main-menu li ul li{text-indent:0;}
 .makeMenu,.makeMenu li ul{color:#fff;list-style:none;margin-left:0;padding:1px;top:5px;}
 .makeMenu li:hover > ul{display:block;}
 .makeMenu li a:hover{color:#f5003d;}
-.makeMenu ul li a{background-color:#fff;display:block;padding:0 5px 0 2px;}
+.makeMenu ul li a{background-color:#fff;display:block;padding:2px 5px 2px 2px;}
 .makeMenu ul li a:hover{color:#000;}
 .makeMenu li ul li:before,.makeMenu li:first-child:before{content:"";}
 .lang-active, .theme-active{font-weight:900;}
@@ -664,13 +664,13 @@ html[dir='rtl'] .itr:hover .popup {left:0;right:auto;}
 #tabDefinedTagsShow td,#tabAction td{text-align:center;width:50%;}
 
 /* FAQ table  */
-table.faq{background-color:#eee;margin:5px 0 50px 5px;width:98%;}
+table.faq{background-color:#eee;margin:5px 0 15px 5px;width:98%;}
 table.faq tr.odd td{background-color:#eee;}
 
 div.faq_title{background-color:#eee;font-weight:700;margin:1em 0;padding:.25em;width:98%;}
-div.faq_body{clear:both;margin:1em 0;padding:1em;}
+div.faq_body{clear:both;margin:1em 0;padding:.5em;}
 
-.faq_italic{font-size:10px;font-style:italic;font-weight:700;padding:0 10px;}
+.faq_italic{font-size:12px;font-style:italic;font-weight:700;padding:0 10px;}
 .faq_top,.faq_edit{float:right;}
 
 html[dir='rtl'] .faq_top{float:left;}

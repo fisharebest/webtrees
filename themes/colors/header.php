@@ -32,7 +32,6 @@ echo
 	'<html ', WT_I18N::html_markup(), '>',
 	'<head>',
 	'<meta charset="UTF-8">',
-	'<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />',
 	'<title>', htmlspecialchars($title), '</title>',
 	header_links($META_DESCRIPTION, $META_ROBOTS, $META_GENERATOR, $LINK_CANONICAL),
 	'<link rel="icon" href="', WT_THEME_URL, 'favicon.png" type="image/png">',
@@ -41,6 +40,7 @@ echo
 	'<link rel="stylesheet" href="', $stylesheet, '" type="text/css" media="all">';
 
 if (stristr($_SERVER['HTTP_USER_AGENT'], 'iPad')) {
+	echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.8, maximum-scale=2.0" />';
 	$BROWSERTYPE = 'ipad';
 }
 
