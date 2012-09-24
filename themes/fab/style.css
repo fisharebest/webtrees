@@ -1247,7 +1247,8 @@ html[dir='rtl'].field  .editlink, html[dir='rtl'].field  .deletelink  {float:lef
 #indi_mainimage {float:right;}
 #indi_mainimage a img {float:right;padding:0;}
 .indi_name_details {margin:0;overflow:hidden !important;padding:5px;}
-.indi_name_details .warning {color:red;font-size:1em;}
+#indi_header a.warning {color:red;font-size:1em;}
+#indi_header a:hover{background-color: DarkSlateGray!important;}
 .indi_name_details dt:after {content:":";}
 #indi_note {margin:0 0 5px 0;}
 #indi_note .fact_NOTE {float:left;margin:0 10px 0 0;}

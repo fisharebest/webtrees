@@ -1460,8 +1460,7 @@ html[dir='rtl'].field .editlink, html[dir='rtl'].field .deletelink {float:left;}
 #indi_header h3 .header_age {padding:7px 0 5px 5px;float:right;font-weight:normal;font-size:65%;}
 #indi_header h3 span.details1 {font-size:1em;}
 #indi_header h3 a {display:inline;}
-#indi_header a {font-size:0.75em;font-weight:normal;}
-#indi_header a:hover {color:red;}
+#indi_header a.warning {color:red;font-weight:normal;}
 
 #main_name {float:left;font-size:2em;margin:10px;font-weight:bold;}
 
@@ -1473,6 +1472,8 @@ html[dir='rtl'].field .editlink, html[dir='rtl'].field .deletelink {float:left;}
 .indi_name_details dl {height:10px;margin-top:0;}
 .indi_name_details dt:after {content:":";}
 .indi_name_details dt.label, .indi_name_details dd.field {font-size:12px;}
+.indi_name_details .name1{font-weight:normal;}
+.indi_name_details .name1:hover{text-decoration:none;}
 
 #indi_note {margin:0 0 5px 0;}
 #indi_note .fact_NOTE .label {float:left;margin:0 10px 0 0;}

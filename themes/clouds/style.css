@@ -2116,7 +2116,7 @@ overflow:hidden !important;
 padding:5px;
 }
 
-.indi_name_details .warning {
+#indi_header a.warning {
 color:red;
 font-size:1em;
 }
@@ -2124,6 +2124,8 @@ font-size:1em;
 .indi_name_details dt:after {
 content:":";
 }
+
+.indi_name_details .name1{font-weight:normal;}
 
 #indi_note {
 margin:0 0 5px;
