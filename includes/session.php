@@ -365,13 +365,6 @@ define('WT_USER_ID',       getUserId());
 define('WT_USER_NAME',     getUserName());
 define('WT_USER_IS_ADMIN', userIsAdmin(WT_USER_ID));
 
-// With no parameters, init() looks to the environment to choose a language
-define('WT_LOCALE', WT_I18N::init());
-$WT_SESSION->locale=WT_I18N::$locale;
-
-// Non-latin languages may need non-latin digits
-define('WT_NUMBERING_SYSTEM', Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnumberingsystem'));
-
 // Set the active GEDCOM
 if (isset($_REQUEST['ged'])) {
 	// .... from the URL or form action
@@ -430,6 +423,13 @@ if ($WT_TREE) {
 	define('WT_USER_PATH_LENGTH',  0);
 	define('WT_USER_ACCESS_LEVEL', WT_PRIV_PUBLIC);
 }
+
+// With no parameters, init() looks to the environment to choose a language
+define('WT_LOCALE', WT_I18N::init());
+$WT_SESSION->locale=WT_I18N::$locale;
+
+// Non-latin languages may need non-latin digits
+define('WT_NUMBERING_SYSTEM', Zend_Locale_Data::getContent(WT_LOCALE, 'defaultnumberingsystem'));
 
 // Set our gedcom selection as a default for the next page
 $WT_SESSION->GEDCOM=WT_GEDCOM;
