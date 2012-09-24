@@ -24,6 +24,10 @@ GZIP=gzip -9
 # Create a release from this SVN working copy
 ################################################################################
 default: clean webtrees
+	# Remove the group-write permission - some badly configured hosts don't like it.
+	chmod -R go-w webtrees
+	# Hosts running PHP as an Apache module may need this
+	chmod go+w webtrees/media webtrees/media/thumbs webtrees/data
 	# Package up the extra language files
 	zip -qr language-extra.zip $(MO_EXTRA)
 	rm -f $(MO_EXTRA)
@@ -70,12 +74,6 @@ webtrees: $(PO_DIR) $(MO_DIR)
 	if find $@ -name '*.php' -exec php -l {} \; | grep -v "No syntax errors"; then false; else true; fi
 	# Add standard language files
 	cp $(MO_FILES) $@/language/
-
-################################################################################
-# Zip a directory to create an archive
-################################################################################
-%.zip: %
-	zip -qrTm $@ $<
 
 ################################################################################
 # PO files are stored in launchpad.net
